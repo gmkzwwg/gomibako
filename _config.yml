@@ -1,13 +1,13 @@
 # 1. Site Settings
 title               : Rubbish Bin
-owner               : "DeerRIDER"
+owner               : "gmkzwwg"
 #url                 : "http://127.0.0.1:4000"
-url                : "https://bcqlr.com"
+url                : "https://gmkz.top/"
 ## baseurl            : ""
 permalink           : /:title/
-description         : "Personal rubbish of DeerRIDER"
+description         : "Personal rubbish of gmkzwwg"
 markdown            : kramdown
-statement           : "Designed by DeerRIDER, All Rights Reserved"
+statement           : "Designed by gmkzwwg, All Rights Reserved"
 bgtext              : "αβγδεζηθικλμνξοπρστυφχψω∝∞∑∏∪∩∈∵∴⊥∠⊙≌∽√∀∂∆∇⋈∅∫∬∳∯∱∲ℂℍℚℝℕℙℤⅈⅉⅇℼℽℵ" # texts randomly displayed in background
 # bgtext              : "01"
 # bgtext              : "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
