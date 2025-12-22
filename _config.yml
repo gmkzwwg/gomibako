@@ -1,8 +1,8 @@
 # 1. Site Settings
-title               : Rubbish Bin
+title               : ゴミ箱
 owner               : "gmkzwwg"
 #url                 : "http://127.0.0.1:4000"
-url                : "https://gmkz.top/"
+url                : "https://gmkz.top" # A trailing “/” at the end of the field is unnecessary.
 ## baseurl            : ""
 permalink           : /:title/
 description         : "Personal rubbish of gmkzwwg"
