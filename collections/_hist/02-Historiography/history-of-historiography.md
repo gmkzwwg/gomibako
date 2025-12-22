@@ -13,7 +13,7 @@ The CONCEPTUAL CHANGE of `history`:
 
 > `Last Judgment`: Christianity considers the Second Coming of Jesus Christ to entail the final judgment by God of all people who have ever lived, resulting in the salvation of a few and the damnation of many.
 
-The OBJECT of `history of historiology`:
+The OBJECT of `history of historiography`:
 
 
 ## Classical Foundations (5th c. BCE – 2nd c. CE)

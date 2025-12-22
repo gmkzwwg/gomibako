@@ -57,3 +57,19 @@ linear Algebra
 `STEP ε`: Identify and study a small number of seminal papers, high-quality review articles, and recent research in the field.
 
 > At this stage, the focused study of the course is complete. But if new insights arise in future learning, be sure to revisit and update the tutorials accordingly.
+
+## Prompt for Generating Learnning 
+
+For 
+
+For sub-decipline intro:
+请作为资深教师，请系统性且严谨地给我一份关于【此学科】的学习提纲，由以下内容构成：
+1. 概述：用一句话概述本学科的主要内容
+2. 先修课程：
+3. 核心问题：基础概念-和此基础概念相关的核心问题
+4. 研究范围：给出本学科所有的研究内容
+5. 历史需求：请概述本学科是出于什么目的、为了解决什么问题而产生
+6. 研究范式：
+7. 能力目标：
+8. 关键术语
+9. 与其他学科的关联，在本学科中扮演的角色

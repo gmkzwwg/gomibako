@@ -7,39 +7,50 @@ tags: Notes
 
 ## 基础数学范围
 
+> 括号中为元数学角度的阐释。
 
 ### 1. 数与运算（实数体系）
 
-**要点**
+* **自然数/整数/有理数/实数/复数**：数系扩张与封闭性。（$$ (\mathbb N,+) $$  的一阶理论可判定〔Presburger〕； $$ (\mathbb N,+,\times) $$  不可判定且不完全； $$ (\mathbb R,+,\times) $$  即“实闭域”一阶理论可判定且完全〔Tarski 消量词〕； $$ (\mathbb C,+,\times) $$  即“代数闭域特征0”一阶理论可判定且完全。）
+  * 数集链： $$ \mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R\subset\mathbb C $$ 
 
-* 运算顺序：先括号 → 乘除 → 加减；同级自左向右。
-* 数集链： $$  \mathbb N\subset\mathbb Z\subset\mathbb Q\subset\mathbb R\subset\mathbb C $$ 
-* 近似与有效数字；科学记数法；绝对值与距离。
+* 分数/百分数/小数： $$ \frac{a}{b}=a\div b $$ ；百分数=小数×100%。
+  * 有理/有限/循环小数互化； $$ \sqrt{a}\sqrt{b}=\sqrt{ab} $$ （限 $$ a,b\ge0 $$ ）。
 
-**常用公式**
 
-* 交换/结合/分配： $$ a+b=b+a $$ ， $$ (a+b)+c=a+(b+c) $$ ， $$ a(b+c)=ab+ac $$ 。
-* 绝对值： $$ \|a\|=\sqrt{a^2} $$ ， $$ \|ab\|=\|a\|\|b\| $$ ， $$ \|a+b\|\le\|a\|+\|b\| $$ 。
+**基础运算**
+  * 
+
+**运算顺序**
+  * 括号 → 乘方 → 乘除 → 加减 → 从左到右。（它保证表达式有唯一的语法解析树（Parse Tree），避免歧义。）
+  * **交换律 commutativity**：$$ a+b=b+a $$ ，加法、乘法符合。（把运算看作二元重写规则，它断言“参数置换不改变值”，故可把有序对的顺序当作等价类忽略。）
+  * **结合律 associativity**：$$ (a+b)+c=a+(b+c) $$，加法、乘法符合，减法触发。（把运算视为把二元树折叠成标量，它断言“括号位置不影响值”，故可把任意多元聚合视为无歧义的 n 元运算。）
+  * **分配律 distributivity**：$$ a(b+c)=ab+ac $$，乘法对加法分配。（把一个运算视为到另一个代数结构的同态，它断言“外运算是内运算的同态”，从而允许规范化展开与合并。）
+
+
+
+* 有序与绝对值：大小关系与距离。（有序实闭域可判定且量词可消去；绝对值在一阶语言中可由分段定义。）
+  * $$ \|a\|=\sqrt{a^2} $$ ， $$ \|ab\|=\|a\|\|b\| $$ ， $$ \|a+b\|\le\|a\|+\|b\| $$ 。
+* 科学计数与有效数字：规模表达与近似。（舍入运算引入非代数可定义性，精确形式化需更强语言或算术扩展。）
+  * $$ a\times10^n $$ （ $$ 1\le a<10 $$ ）
+* 区间与邻域：集合化的取值范围。（半代数集在 RCF 中可定义且闭合于布尔运算与投影；可判定。）
+
 * 平方差： $$ a^2-b^2=(a-b)(a+b) $$ 。
-* 科学记数： $$ a\times10^n $$ （ $$ 1\le a<10 $$ ）。
-* 有理/有限/循环小数互化； $$ \sqrt{a}\sqrt{b}=\sqrt{ab} $$ （限  $$ a,b\ge0 $$ ）。
 
 **易错**
 
-*  $$ \sqrt{a+b}\ne \sqrt a+\sqrt b $$ ； $$ \|a+b\|=\|a\|+\|b\| $$ 仅当同号或其一为零。
+* $$ \sqrt{a+b}\ne \sqrt a+\sqrt b $$ ； $$ \|a+b\|=\|a\|+\|b\| $$ 仅当同号或其一为零。
 * 有效数字与四舍五入位次混淆。
-
 
 ### 2. 因数与整除（初等数论入门）
 
-**要点**
-
-* 质合数；最大公因数gcd、最小公倍数lcm；欧几里得算法；同余。
+* 质数、合数；最大公因数gcd、最小公倍数lcm；欧几里得算法；同余。
 * 质因数分解唯一性。
+* 因数与倍数：质合数、最大公因数（辗转相除）、最小公倍数（ $$ ab/\gcd(a,b) $$ ）。
 
-**常用公式**
 
-*  $$ ab=\gcd(a,b)\cdot\mathrm{lcm}(a,b) $$ 。
+
+* $$ ab=\gcd(a,b)\cdot\mathrm{lcm}(a,b) $$ 。
 * 整除判别： $$ 2,3,4,5,8,9,11 $$ 等规则。
 * 裴蜀等式： $$ \gcd(a,b)=ax+by $$ 。
 * 同余： $$ a\equiv b\pmod m \iff m\mid(a-b) $$ 。
@@ -52,31 +63,31 @@ tags: Notes
 
 ### 3. 代数式与因式分解
 
-**要点**
+
 
 * 括号化简、幂指运算；常用恒等式；二项式定理。
 
-**常用公式**
+
 
 * 完全平方： $$ a^2\pm2ab+b^2=(a\pm b)^2 $$ 。
 * 立方和差： $$ a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2) $$ 。
-* 多项式除法、余式定理： $$ P(a)= $$  以 $$ (x-a) $$ 除之余数。
+* 多项式除法、余式定理： $$ P(a)= $$ 以 $$ (x-a) $$ 除之余数。
 * 二项式： $$ (x+y)^n=\sum_{k=0}^n\binom nk x^{n-k}y^k $$ 。
 
 **易错**
 
-*  $$ a^2+b^2 $$ 不可再因式分解于实数域。
+* $$ a^2+b^2 $$ 不可再因式分解于实数域。
 * 展开与合并同类项的指数与系数对齐错误。
 
 
 ### 4. 方程与不等式
 
-**要点**
+
 
 * 一元、二元方程与方程组；一元二次判别式；根与系数。
 * 绝对值与分式方程的整式化；不等式的区间解集。
 
-**常用公式**
+
 
 * 一元二次： $$ ax^2+bx+c=0\Rightarrow x=\frac{-b\pm\sqrt{b^2-4ac}}{2a} $$ 。
 * 判别式： $$ \Delta=b^2-4ac $$ ；韦达： $$ x_1+x_2=-\frac ba $$ ， $$ x_1x_2=\frac ca $$ 。
@@ -91,12 +102,12 @@ tags: Notes
 
 ### 5. 函数与图像变换
 
-**要点**
+
 
 * 定义域、值域、单调、奇偶、周期；平移、伸缩、对称。
 * 基本库：一次、二次、幂函数、指数、对数、根式、分式、绝对值。
 
-**常用公式**
+
 
 * 指数： $$ a^x a^y=a^{x+y} $$ ， $$ (a^x)^y=a^{xy} $$ 。
 * 对数： $$ \log_a bc=\log_a b+\log_a c $$ ， $$ \log_a b=\frac{\log_c b}{\log_c a} $$ 。
@@ -110,14 +121,14 @@ tags: Notes
 
 ### 6. 多项式与方程根性态
 
-**要点**
+
 
 * 因式定理；重根；综合除法；有理根判别。
 * 根与系数对称关系的利用。
 
-**常用公式**
 
-*  $$ P(x)=(x-r)^mQ(x)\Rightarrow r $$ 为 $$ m $$ 重根且 $$ P^{(k)}(r)=0 $$ （ $$ k<m $$ ）。
+
+* $$ P(x)=(x-r)^mQ(x)\Rightarrow r $$ 为 $$ m $$ 重根且 $$ P^{(k)}(r)=0 $$ （ $$ k<m $$ ）。
 * 有理根定理：若 $$ P\in\mathbb Z[x] $$ ，有理根形如 $$ \pm\frac{因数(c)}{因数(a)} $$ 。
 
 **易错**
@@ -127,11 +138,11 @@ tags: Notes
 
 ### 7. 数列与求和
 
-**要点**
+
 
 * 等差、等比；通项、前 $$ n $$ 项和；错位相减；递推与归纳。
 
-**常用公式**
+
 
 * 等差： $$ a_n=a_1+(n-1)d $$ ， $$ S_n=\frac n2(2a_1+(n-1)d)=\frac n2(a_1+a_n) $$ 。
 * 等比： $$ a_n=a_1q^{n-1} $$ ， $$ S_n=a_1\frac{1-q^n}{1-q}\,(q\ne1) $$ 。
@@ -145,17 +156,17 @@ tags: Notes
 
 ### 8. 平面几何
 
-**要点**
+
 
 * 全等与相似；平行线角；三角形性质；四边形；圆几何。
 * 证明思路：角度、长度、面积与比；辅助线；相似放缩。
 
-**常用公式**
+
 
 * 三角形面积： $$ S=\frac12ab\sin C=\frac12ah_a $$ 。
 * 正弦定理： $$ \frac a{\sin A}=\frac b{\sin B}=\frac c{\sin C}=2R $$ 。
 * 余弦定理： $$ c^2=a^2+b^2-2ab\cos C $$ 。
-* 圆周角/弧度：弧长  $$ l=R\theta $$ ，扇形面积  $$ S=\frac12R^2\theta $$ 。
+* 圆周角/弧度：弧长 $$ l=R\theta $$ ，扇形面积 $$ S=\frac12R^2\theta $$ 。
 
 **易错**
 
@@ -165,15 +176,15 @@ tags: Notes
 
 ### 9. 解析几何（坐标法）
 
-**要点**
+
 
 * 直线、圆；距离与夹角；点到直线距离；简单轨迹。
 * 圆锥曲线入门（可选）：抛物线、椭圆、双曲线的标准式与焦点定义。
 
-**常用公式**
 
-* 直线：点斜式  $$ y-y_1=k(x-x_1) $$ ；两点式；一般式  $$ Ax+By+C=0 $$ 。
-* 夹角： $$ \tan\theta=\frac{k_2-k_1}{1+k_1k_2} $$ ；距离  $$ d=\frac{\|Ax_0+By_0+C\|}{\sqrt{A^2+B^2}} $$ 。
+
+* 直线：点斜式 $$ y-y_1=k(x-x_1) $$ ；两点式；一般式 $$ Ax+By+C=0 $$ 。
+* 夹角： $$ \tan\theta=\frac{k_2-k_1}{1+k_1k_2} $$ ；距离 $$ d=\frac{\|Ax_0+By_0+C\|}{\sqrt{A^2+B^2}} $$ 。
 * 圆： $$ (x-a)^2+(y-b)^2=R^2 $$ 。
 * 抛： $$ y^2=2px $$ ；椭： $$ \frac{x^2}{a^2}+\frac{y^2}{b^2}=1 $$ ；双： $$ \frac{x^2}{a^2}-\frac{y^2}{b^2}=1 $$ 。
 
@@ -185,11 +196,11 @@ tags: Notes
 
 ### 10. 三角学
 
-**要点**
+
 
 * 弧度；单位圆定义；诱导公式；和差、倍半角；积化和与和化积；解三角形。
 
-**常用公式**
+
 
 * 基本： $$ \sin^2x+\cos^2x=1 $$ ， $$ 1+\tan^2x=\sec^2x $$ 。
 * 和差： $$ \sin(\alpha\pm\beta)=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta $$ 。
@@ -206,12 +217,12 @@ tags: Notes
 
 ### 11. 向量与复数
 
-**要点**
+
 
 * 向量加减、数乘、点积；投影与夹角；坐标表示。
 * 复数代数/几何表示；共轭；模与辐角；乘除与棣莫弗。
 
-**常用公式**
+
 
 * 点积： $$ \mathbf a\cdot\mathbf b=\|a\|\|b\|\cos\theta=a_xb_x+a_yb_y(+a_zb_z) $$ 。
 * 投影： $$ \mathrm{proj}_{\mathbf b}\mathbf a=\frac{\mathbf a\cdot\mathbf b}{\\|\mathbf b\\|^2}\mathbf b $$ 。
@@ -226,17 +237,17 @@ tags: Notes
 
 ### 12. 立体几何与空间度量
 
-**要点**
+
 
 * 棱柱、棱锥、柱锥台、球；体积与表面积；空间角与距离。
 
-**常用公式**
+
 
 * 体积：
 
-  * 棱柱/柱： $$ V=S_{\text{底}}h $$ ；棱锥/锥： $$ V=\frac13S_{\text{底}}h $$ 。
-  * 台体： $$ V=\frac h3(S_1+S_2+\sqrt{S_1S_2}) $$ 。
-  * 球： $$ V=\frac43\pi R^3 $$ ， $$ S=4\pi R^2 $$ 。
+ * 棱柱/柱： $$ V=S_{\text{底}}h $$ ；棱锥/锥： $$ V=\frac13S_{\text{底}}h $$ 。
+ * 台体： $$ V=\frac h3(S_1+S_2+\sqrt{S_1S_2}) $$ 。
+ * 球： $$ V=\frac43\pi R^3 $$ ， $$ S=4\pi R^2 $$ 。
 * 斜高与母线关系；勾股在空间的推广。
 
 **易错**
@@ -246,11 +257,11 @@ tags: Notes
 
 ### 13. 计数原理（组合数学）
 
-**要点**
+
 
 * 分类与分步：加法、乘法原理；排列、组合；二项系数恒等式；容斥；抽屉原理；错排。
 
-**常用公式**
+
 
 * 排列： $$ A_n^m=\frac{n!}{(n-m)!} $$ ；组合： $$ \binom nm=\frac{n!}{m!(n-m)!} $$ 。
 * 恒等式： $$ \binom n0+\cdots+\binom nn=2^n $$ ； $$ \binom nk=\binom n{n-k} $$ 。
@@ -264,13 +275,13 @@ tags: Notes
 
 ### 14. 概率
 
-**要点**
+
 
 * 古典概率；条件概率与独立性；全概率与贝叶斯；二项分布。
 
-**常用公式**
 
-*  $$ P(A)=\frac{\text{有利}}{\text{等可能总数}} $$ 。
+
+* $$ P(A)=\frac{\text{有利}}{\text{等可能总数}} $$ 。
 * 条件： $$ P(A\|B)=\frac{P(A\cap B)}{P(B)} $$ ；独立： $$ P(A\cap B)=P(A)P(B) $$ 。
 * 全概率： $$ P(A)=\sum_i P(A\|B_i)P(B_i) $$ （ $$ \{B_i\} $$ 为完备划分）。
 * 贝叶斯： $$ P(B_j\|A)=\frac{P(A\|B_j)P(B_j)}{\sum_i P(A\|B_i)P(B_i)} $$ 。
@@ -284,11 +295,11 @@ tags: Notes
 
 ### 15. 统计
 
-**要点**
+
 
 * 集中趋势：均值、中位数、众数；离散程度：极差、方差、标准差、四分位差；箱线图。
 
-**常用公式**
+
 
 * 均值： $$ \bar x=\frac1n\sum x_i $$ 。
 * 方差： $$ s^2=\frac1n\sum(x_i-\bar x)^2=\overline{x^2}-\bar x^{\,2} $$ ；标准差 $$ s=\sqrt{s^2} $$ 。
@@ -302,12 +313,12 @@ tags: Notes
 
 ### 16. 集合与逻辑
 
-**要点**
+
 
 * 集合运算：并、交、差、补；德摩根律；区间表示。
 * 命题、逆否、充要；量词及其否定。
 
-**常用公式**
+
 
 * 德摩根： $$ \overline{A\cup B}=\overline A\cap\overline B $$ ， $$ \overline{A\cap B}=\overline A\cup\overline B $$ 。
 * 逻辑： $$ p\Rightarrow q $$ 等价于 $$ \lnot q\Rightarrow \lnot p $$ （逆否等价）。
@@ -320,11 +331,11 @@ tags: Notes
 
 ### 17. 不等式与估计
 
-**要点**
+
 
 * 估算、放缩、配方法；均值不等式链；柯西与三角不等式。
 
-**常用公式**
+
 
 * AM-GM： $$ \frac{a_1+\cdots+a_n}{n}\ge\sqrt[n]{a_1\cdots a_n} $$ （ $$ a_i\ge0 $$ ）。
 * Cauchy-Schwarz： $$ (\sum a_ib_i)^2\le(\sum a_i^2)(\sum b_i^2) $$ 。
@@ -338,11 +349,11 @@ tags: Notes
 
 ### 18. 初等微积分入门（选学）
 
-**要点**
+
 
 * 极限直观、连续；导数与几何意义；基本求导；单调、极值；原函数与定积分几何意义。
 
-**常用公式**
+
 
 * 基本极限： $$ \lim_{x\to0}\frac{\sin x}{x}=1 $$ ， $$ \lim_{x\to\infty}(1+\frac1x)^x=e $$ 。
 * 求导： $$ (x^n)'=nx^{n-1} $$ ， $$ (e^x)'=e^x $$ ， $$ (\ln x)'=\frac1x $$ ， $$ (\sin x)'=\cos x $$ ， $$ (\cos x)'=-\sin x $$ 。
@@ -370,7 +381,7 @@ tags: Notes
 
 ### 20. 常见常数与单位速查
 
-*  $$ \pi\approx3.14159 $$ ， $$ e\approx2.71828 $$ ， $$ \sqrt2\approx1.4142 $$ ， $$ \sqrt3\approx1.732 $$ 。
+* $$ \pi\approx3.14159 $$ ， $$ e\approx2.71828 $$ ， $$ \sqrt2\approx1.4142 $$ ， $$ \sqrt3\approx1.732 $$ 。
 * 角度-弧度： $$ 180^\circ=\pi $$ ；常用三角特值： $$ 0,30^\circ,45^\circ,60^\circ,90^\circ $$ 。
 
 ## 初等数学常用证明方法
@@ -410,7 +421,7 @@ tags: Notes
 
 **想法** 由起步到递推，完成对所有自然数的证明。
 **场景** 整数命题、递推式、求和恒等式。
-**模板** 证成立于  $$ n=1 $$  → 设  $$ n=k $$  成立 → 证  $$ n=k+1 $$ 。
+**模板** 证成立于 $$ n=1 $$ → 设 $$ n=k $$ 成立 → 证 $$ n=k+1 $$ 。
 **易错** 递推步跳跃推理，或用到未被证明的更强条件。
 
 ### 6. 构造法
@@ -457,16 +468,16 @@ tags: Notes
 
 ### 12. 同余与整除
 
-**想法** 在模  $$ m $$  下化简与比较。
+**想法** 在模 $$ m $$ 下化简与比较。
 **场景** 余数类、奇偶性、周期性。
-**模板** 设定模数 → 用  $$ a\equiv b\pmod m $$  简化 → 回到原命题。
+**模板** 设定模数 → 用 $$ a\equiv b\pmod m $$ 简化 → 回到原命题。
 **易错** 在模运算下随意约分，忽略互素条件。
 
 ### 13. 代入与换元
 
 **想法** 用新变量或恒等变换简化结构。
 **场景** 对称式、齐次式、分式与根式。
-**模板** 观察对称或齐次 → 设  $$ u=f(x,y,\ldots) $$  → 化简求证。
+**模板** 观察对称或齐次 → 设 $$ u=f(x,y,\ldots) $$ → 化简求证。
 **易错** 换元域与原域不一致。
 
 ### 14. 系数比较与待定系数
@@ -536,14 +547,14 @@ tags: Notes
 
 **想法** 用度数和、连通性、奇偶度数。
 **场景** 手握度数信息的存在性问题。
-**模板** 计算度数和  $$ 2|E| $$  → 推出矛盾或存在性。
+**模板** 计算度数和 $$ 2|E| $$ → 推出矛盾或存在性。
 **易错** 忽略多重边或自环的约定。
 
 ### 24. 欧几里得算法与最大公因数
 
 **想法** 用辗转相除式不变性。
 **场景** 线性丢番图、整除、同余解。
-**模板** 写  $$ \gcd(a,b)=\gcd(b,a\bmod b) $$  迭代 → 回代得解。
+**模板** 写 $$ \gcd(a,b)=\gcd(b,a\bmod b) $$ 迭代 → 回代得解。
 **易错** 忘记整系数解的参数刻画。
 
 ### 25. 递推不等式与归纳结合
@@ -844,7 +855,7 @@ $$
 & = \frac{1}{1-\tan\theta}-\frac{1}{1+\tan\theta}\\
 \end{align}$$
 
-三倍角公式： $$\tan 3\theta ={\frac  {3\tan \theta -\tan ^{3}\theta }{1-3\tan ^{2}\theta }}$$
+三倍角公式： $$\tan 3\theta ={\frac {3\tan \theta -\tan ^{3}\theta }{1-3\tan ^{2}\theta }}$$
 
 半角公式： $$\begin{align} \tan \frac{\theta}{2} &= \csc \theta - \cot \theta \\ &= \pm\, \sqrt{1 - \cos \theta \over 1 + \cos \theta} \\ &= \frac{\sin \theta}{1 + \cos \theta} \\ &= \frac{1-\cos \theta}{\sin \theta} \\ &= \frac{\cos \theta+\sin \theta-1}{\cos \theta-\sin \theta+1} \end{align}$$
 
@@ -868,19 +879,19 @@ $$
 $$
 \cot\theta
 = {\sqrt{1-\sin ^{2}\theta } \over \sin \theta}
-= {\cos \theta  \over {\sqrt  {1-\cos ^{2}\theta }}}
+= {\cos \theta \over {\sqrt {1-\cos ^{2}\theta }}}
 = {1 \over \tan \theta }
-= {1 \over {\sqrt  {\sec ^{2}\theta -1}}}
-= {\sqrt  {\csc ^{2}\theta -1}}
+= {1 \over {\sqrt {\sec ^{2}\theta -1}}}
+= {\sqrt {\csc ^{2}\theta -1}}
 $$
 
-和差角公式： $$\cot(\theta \pm \psi )={\frac  {\cot \theta \cot \psi \mp 1}{\cot \psi \pm \cot \theta }}$$
+和差角公式： $$\cot(\theta \pm \psi )={\frac {\cot \theta \cot \psi \mp 1}{\cot \psi \pm \cot \theta }}$$
 
-半角公式： $${\begin{aligned}\cot {\frac  {\theta }{2}}&=\csc \theta +\cot \theta \\&=\pm \,{\sqrt  {1+\cos \theta  \over 1-\cos \theta }}\\&={\frac  {\sin \theta }{1-\cos \theta }}\\&={\frac  {1+\cos \theta }{\sin \theta }}\\&={\frac  {\cos \theta -\sin \theta +1}{\cos \theta +\sin \theta -1}}\end{aligned}}$$
+半角公式： $${\begin{aligned}\cot {\frac {\theta }{2}}&=\csc \theta +\cot \theta \\&=\pm \,{\sqrt {1+\cos \theta \over 1-\cos \theta }}\\&={\frac {\sin \theta }{1-\cos \theta }}\\&={\frac {1+\cos \theta }{\sin \theta }}\\&={\frac {\cos \theta -\sin \theta +1}{\cos \theta +\sin \theta -1}}\end{aligned}}$$
 
 二倍角公式： $${\displaystyle {\begin{aligned}\cot 2\theta &={\frac {\cot ^{2}\theta -1}{2\cot \theta }}\\&={\frac {1}{\cot \theta -1}}-{\frac {1}{\cot \theta +1}}\\\end{aligned}}}$$
 
-三倍角公式： $$\cot 3\theta ={\frac  {\cot ^{3}\theta -3\cot \theta }{3\cot ^{2}\theta -1}}$$
+三倍角公式： $$\cot 3\theta ={\frac {\cot ^{3}\theta -3\cot \theta }{3\cot ^{2}\theta -1}}$$
 
 ### 正割函数、余割函数
 
@@ -920,13 +931,13 @@ $$
 
 符号：haversin，英语：Haversed sine、Haversine
 
-定义： $$haversin\theta ={\frac  {versin\theta }{2}}={\frac  {1-\cos \theta }{2}}$$
+定义： $$haversin\theta ={\frac {versin\theta }{2}}={\frac {1-\cos \theta }{2}}$$
 
 **半余矢函数**
 
 符号：hacoversin，英语：Hacoversed sine、Hacoversine
 
-定义： $$hacoversin\theta ={\frac  {coversin}\theta}{2}}={\frac  {1-\sin \theta }{2}}$$
+定义： $$hacoversin\theta ={\frac {coversin}\theta}{2}}={\frac {1-\sin \theta }{2}}$$
 
 ## 正弦定理、余弦定理、正切定理、余切定理
 
