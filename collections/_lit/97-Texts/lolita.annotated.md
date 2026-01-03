@@ -1,6 +1,7 @@
 ---
+category: Text
 title: The Annotated Lolita
-categories: Texts
+tags: Texts
 ---
 
 ## The Annotated Lolita

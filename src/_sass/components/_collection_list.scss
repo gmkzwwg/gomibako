@@ -165,6 +165,13 @@
     line-height: 150%;
     @include simple_link_style;
   }
+  .a_categories {
+    color: $color-third;
+    padding: 0;
+    font-size: $font-tiny;
+    line-height: 150%;
+    @include simple_link_style;
+  }
   // labels of "all" collections in right part
   .h_collection_label {
     margin: 0 0 0.5em 0;

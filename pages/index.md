@@ -51,5 +51,5 @@ permalink: /
     |  ||  ||  ||;     (~<a href="/cv">ME</a>)      :                          
     |  ||  || #||.                ·              ..          
     | c||  ||  || ,  ~@~         ;              /+%^·,       
-    .,F@,__JL__ldb__'= =,··,~@ ='    !-@&*^)#$%^_(()_+)<a href="/texts">.</a>. <a href="/notes">n</a><a href="/cheatsheets">C</a><a href="/ongoing">g</a>
+    .,F@,_<a href="/notes">N</a><a href="/cheatsheets">C</a><a href="/ongoing">g</a>L__ldb__'= =,··,~@ ='   <a href="/texts">.</a>.  !-@&*^)#$%^_(()_+)
 </pre></div>
