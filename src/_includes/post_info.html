@@ -3,21 +3,28 @@
   {% if page.author %}
   <span>
     <i class="fa fa-user-secret"></i>
-    {{ page.author }}
+    {{ page.author }}&nbsp;
   </span>
   {% endif %}
   <!-- date -->
   {% if page.show_date %}
   <span>
     <i class="fa fa-calendar"></i>
-    {{ page.date | date: "%b %d, %Y" }}
+    {{ page.date | date: "%b %d, %Y" }}&nbsp;
   </span>
   {% endif %}
   <!-- category -->
   {% if page.category %}
   <span>
     <i class="fa fa-archive"></i>
-    {{ page.category }}
+    {{ page.category }}&nbsp;
+  </span>
+  {% endif %}
+  <!-- category -->
+  {% if page.tags %}
+  <span>
+    <i class="fa fa-tag"></i>
+    {{ page.tags }}&nbsp;
   </span>
   {% endif %}
 </div>
