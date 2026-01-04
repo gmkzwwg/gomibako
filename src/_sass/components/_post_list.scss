@@ -1,6 +1,7 @@
 // post-list
 .post_list {
   .td_title {
+    color: $color-primary;
     text-transform: capitalize;
     @include simple_link_style;
   }

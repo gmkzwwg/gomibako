@@ -16,10 +16,9 @@
     <!-- title -->
     <title>
         {% if page.title %}
-            {{ page.title | esscape }}
+            {{ page.title | escape }}
         {% else %}
-            {{ site.title |
-    escape }}
+            {{ site.title | escape }}
         {% endif %}
     </title>
     <!-- global script of my site-->
@@ -43,5 +42,4 @@
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/{{site.mermaid_version}}/mermaid.min.js"></script>
     <script async src="{{site.url}}{{site.baseurl}}/src/assets/js/init-mermaid.js"></script>
     <!-- The tag `feed_meta` is unrecognized by Github Pages -->
-    <!--  -->
 </head>
