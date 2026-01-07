@@ -55,8 +55,9 @@ tags: Tips
 
 | Syntax                           | Syntax Name                 | Description                                     | Example                                        |
 | -------------------------------- | --------------------------- | ----------------------------------------------- | ---------------------------------------------- |
-| `a\|b`                           | alternation                 | match left or right                             | `cat\|dog`                                     |
+| a\|b                             | alternation                 | match left or right                             | cat\|dog                                     |
 | `( … )`                          | capturing group             | capture for backref/extract                     | `(\d{4})-(\d{2})-(\d{2})`                      |
+| `$n`                               | duplicate group n           | when replacing, copy group n in result        | (adc)apc then $1!$1  → adc!adc
 | `(?: … )`                        | non-capturing group         | group w/o capture                               | `(?:https?)://\S+`                             |
 | `(?P<name> … )` / `(?<name> … )` | named capture               | capture by name (syntax varies)                 | `(?P<y>\d{4})-(?P<m>\d{2})`                    |
 | `\1` `\2`                        | numbered backref            | repeat captured text                            | `(\w+)\s+\1` → doubled word                    |

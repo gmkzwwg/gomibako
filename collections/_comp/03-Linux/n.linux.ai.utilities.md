@@ -49,3 +49,12 @@ marker --output_dir marker_output/ --output_format markdown marker_input/ --work
 
 
 ```
+
+## install ollama in cn
+
+curl cannot connect to the official site of ollama.
+
+```
+export OLLAMA_MIRROR="https://ghproxy.cn/https://github.com/ollama/ollama/releases/latest/download"
+curl -fsSL https://ollama.com/install.sh | sed "s|https://ollama.com/download|$OLLAMA_MIRROR|g" | sh
+```
