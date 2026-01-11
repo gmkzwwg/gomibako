@@ -1,0 +1,78 @@
+<head>
+    <meta charset="utf-8"/>
+    <!-- MULTI-DEVICE WIDTH -->
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <!-- SITE DESCRIPTION -->
+    {% if page.excerpt %}
+        {% assign desc = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+    {% else %}
+        {% assign desc = site.description %}
+    {% endif %}
+    <meta content="{{ desc }}" name="description"/>
+    <!-- REFERER FOR 3RD-PART IMAGES-->
+    <meta content="no-referrer" name="referrer"/>
+    <!-- SITE TITLE -->
+    <title>
+        {% if page.title %}
+            {{ page.title | escape }}
+        {% else %}
+            {{ site.title | escape }}
+        {% endif %}
+    </title>
+    <!-- GLOBAL SCRIPT-->
+    <script src="{{site.url}}{{site.baseurl}}/src/assets/js/main.js" async></script>
+    <!-- SITE ICON -->
+    <link href="{{site.url }}{{site.baseurl}}/src/assets/img/rubbish.png" rel="shortcut icon bookmark" type="image/x-icon"/>
+    <!-- GLOBAL STYLESHEET -->
+    <link rel="stylesheet" href="{{site.url}}{{site.baseurl}}/src/assets/css/main.css" type="text/css"/> 
+    <!-- SJCL -->
+    <script src="{{site.url}}{{site.baseurl}}/src/assets/js/sjcl.js" async></script>   
+    <!-- FONTAWESOME < 4.7.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"/>    
+    <!-- FONTAWESOME > 4.7.0 -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/all.min.css" type="text/css"/> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/svg-with-js.min.css" type="text/css"/> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/regular.min.css" type="text/css"/> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/solid.min.css" type="text/css"/> -->
+    <!-- MATHJAX -->
+    {% if site.mathjax_version %}
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    {% endif %}
+    <!-- KATEX -->
+    {% if site.katex_version %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@{{site.katex_version}}/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@{{site.katex_version}}/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@{{site.katex_version}}/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},    // $$ ... $$
+                {left: '$', right: '$', display: false},     // $ ... $
+                {left: '\\(', right: '\\)', display: false}, // \( ... \)
+                {left: '\\[', right: '\\]', display: true},  // \[ ... \]
+            ],
+            ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code", "option"], // ignore some html tags
+            throwOnError: false
+        });
+    });
+    </script>
+    {% endif %}
+    <!-- MERMAID -->
+    {% if site.mermaid_version %}
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/{{site.mermaid_version}}/mermaid.min.js"></script>
+    <script>
+        var config = {
+            startOnLoad:true,
+            theme: 'dark',
+            flowchart:{
+                    useMaxWidth:false,
+                    htmlLabels:true
+                }
+            };
+            mermaid.initialize(config);
+            window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+    </script>
+    {% endif %}
+    <!-- The tag `feed_meta` is unrecognized by Github Pages -->
+</head>

@@ -1,0 +1,19 @@
+---
+layout: default
+comment: true
+---
+
+<script>
+if (ctner_state == 0) {
+    ctner.style.top = "0";    
+    ctner.style.width = "100%";
+    ctner.style.height = "100%";
+    ctner.style.maxWidth = "100%";
+    if (document.getElementById("mxmz_text")) {
+        document.getElementById("mxmz_text").innerHTML = "Restore";
+    }
+    ctner_state = 1;
+}
+</script>
+
+{{ content }}

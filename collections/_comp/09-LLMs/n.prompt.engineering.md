@@ -6,14 +6,70 @@ tags: Tips
 
 ## Quick Reference
 
-Frequent use cases
+### Problem Solving
+
+#### The answer lacks depth and merely lists simple nouns or questions 答案没有深度、只是简单的名词或问题罗列
+
+Issues:
+  - Simply asking "explain XX" triggers the AI's default popular science mode (resulting in list-like responses). 简单的“解释XX”会导致AI进入默认的科普模式（即列表化）。
+  - Failing to specify a "literary prose" or "academic paper" style leads the AI to prioritize readability at the expense of depth. 未规定“散文体”或“论文体”会导致AI为了易读性而牺牲深度。
+  - Not explicitly requesting the use of "first principles" or an "academic context" results in language that is overly colloquial. 未明确要求“使用第一性原理”或“学术语境”，会导致语言过于口语化
+
+Solution: Utilize precise logical prompt keywords.
+  - Generate high-quality prompts by considering Register (Style/Tone), Logical Architecture, and Depth Constraints. 从**语体风格（Register）**、**逻辑架构（Architecture）**与**深度约束（Depth Constraints）**角度生成高质量提示词。
+
+| 中文 | English (Prompt-Optimized) | Explanation |
+| --- | --- | --- |
+| **进行学术性述评** | *Provide a scholarly critical review* | 强调评判性思维而非简单描述 |
+| **产生深度讲义** | *Generate high-density, comprehensive lecture notes* | 约束输出的信息密度与教学结构 |
+| **进行跨学科互文分析** | *Conduct cross-disciplinary intertextual analysis* | 触发不同知识领域间的关联建模 |
+| **形成逻辑连贯的深度长文** | *Construct a logically coherent, long-form narrative* | 规避列表化，确保文本流（Textual Flow） |
+| **具备严密的因果递进关系** | *Maintain rigorous causal progression and logical sequencing* | 强制逻辑链的完整性 |
+| **采用可操作性的决策语言** | *Employ actionable, decision-oriented language* | 强调结果导向与实践逻辑 |
+| **百科全书式的全面阐释** | *Provide an encyclopedic and exhaustive exposition* | 扩张知识覆盖的广度与深度 |
+| **揭示底层逻辑** | *Uncover the first principles and underlying mechanics* | 引导模型进行本质论（Ontological）分析 |
+| **使用学术语境** | *Maintain a formal academic register and scholarly discourse* | 统一语言的严肃性与专业性 |
+| **拒绝碎片化输出** | *Avoid fragmented outputs and prioritize narrative cohesion* | 直接否定低质量的列表化模式 |
+| **使用MEMC分析法**  | *Use a MECE framework* | 不重叠、不遗漏的分类 |
+
+> MECE，是 Mutually Exclusive Collectively Exhaustive，中文意思是“相互独立，完全穷尽”。也就是对于一个重大的议题，能够做到不重叠、不遗漏的分类，而且能够借此有效把握问题的核心，并解决问题的方法。该方法被应用于高等教育课程设计中的深度理解策略。
+
+#### The answer is filled with imperative statements using "you" and "I" 答案中充斥着“你”“我”命令式语句
+
+Linguistics 语言学:
+  - `Impersonalities / Impersonal Voice` 非人称语态
+
+Laws and Academic Writing 法律和学术写作:
+  - `Procedural Neutrality` 程序性中立 `Normative Statement` 规范性陈述
+
+Literature 文学:
+  - `Limited Third-person Perspective` 第三人称限制视角
+
+## Meta Prompting
+
+**For academic review papers**
+
+```
+我需要你提供 prompt engineering 方面的专业帮助。我想用一篇结构化的英语文章，全面叙述整个[anna freud]的学术体系，Maintain a formal academic register and scholarly discourse，Uncover the first principles and underlying mechanics，揭示整个理论形成的逻辑链，Construct a logically coherent, long-form narrative。章节应足够涵盖所有主要内容。你给出优化后的 prompt that use a MECE framework in English
+```
+
+**For Data Sheets**
+
+```
+我需要你提供 prompt engineering 方面的专业帮助。我想用 markdown table 的形式，列举和对比[]的主要信息和数据，Use a MECE framework, Maintain a formal academic register, include LaTeX for formulas where necessary, Only use verified empirical data; indicate N/A if unknown, 你给出优化后的提示词，英文
+```
+**For Academic Structure**
+
+```
+我需要你提供 prompt engineering 方面的专业帮助。我需要用大概一页纸的长度，用高度结构化的名词罗列，来展现[]学科的整体知识体系和架构，Uncover the first principles and underlying mechanics，揭示整个理论发展的逻辑链。在必要的地方添加主要理论者的名称和关键时间、milestone、关键书籍或论文。你给出优化后的提示词，英文
+```
 
 ## Prompt Engineering with ChatGPT 4 and 5: A Progressive Tutorial
 
 
 **Welcome!** This tutorial will guide you step-by-step in using ChatGPT (version 4.x and the upcoming 5.x) as an effective learning and research assistant. Even if you have no background in computer science, AI, or programming, you’ll learn how to craft prompts (the instructions or questions you give to ChatGPT) to get the best possible responses. We’ll start with the basics and gradually move to advanced techniques. Along the way, we’ll cover practical examples for academic study, research, literature analysis, translation, and more. By the end, you’ll have a toolkit of prompt strategies that should generalize well to future models, not just GPT-4. Let’s dive in!
 
-#### Introduction to Prompt Engineering and ChatGPT
+### Introduction to Prompt Engineering and ChatGPT
 
 Prompt engineering is the art of writing **effective instructions** that guide a language model like ChatGPT to produce the output you want. Large Language Models (LLMs) **do not automatically know what kind of answer you need** – they rely on your guidance. A poorly worded or vague prompt can lead to irrelevant or confusing answers. A clear, tailored prompt, on the other hand, helps ChatGPT understand your request and respond accurately.
 
@@ -32,7 +88,7 @@ Prompt B is likely to produce a much clearer and more useful summary, because it
 
 **Key takeaway:** Always aim to be clear and specific about what you want. In the next sections, we’ll build on this idea and introduce various techniques – from basic prompting to advanced methods – that can greatly improve ChatGPT’s performance as your assistant.
 
-#### Basic Techniques for Effective Prompts
+### Basic Techniques for Effective Prompts
 
 Let’s start with fundamental prompting techniques that apply to any interaction with ChatGPT:
 
@@ -66,7 +122,7 @@ Each of these helps the model align with your needs. Even GPT-5 (whenever it arr
 
 **Try it yourself:** Take a simple prompt like _“Tell me about climate change.”_ and improve it using the tips above. For example, you might say, _“Explain the main causes and effects of climate change in 5-6 bullet points, suitable for a high school science class, and suggest one action individuals can take.”_ Run both versions through ChatGPT and compare the responses. Notice how the latter prompt yields a more structured and targeted answer.
 
-#### Zero-Shot Prompting: Asking Direct Questions
+### Zero-Shot Prompting: Asking Direct Questions
 
 **Zero-shot prompting** means you ask the model a question or give an instruction _without_ providing any examples in the prompt. It’s the most straightforward way to use ChatGPT – just ask your question in natural language. GPT-4 is very powerful at zero-shot queries, especially for common tasks that were well-covered in its training data.
 
@@ -82,7 +138,7 @@ _Example (research assistance):_ You might ask, _“What are the latest findings
 
 **When to use zero-shot vs. not:** If your query is straightforward and you’re getting good answers, great. But for **complex, ambiguous, or specialized tasks**, zero-shot might fall short. In those cases, you’ll get better results by moving to the next techniques: one-shot and few-shot prompting.
 
-#### Few-Shot Prompting: Guiding the Model with Examples
+### Few-Shot Prompting: Guiding the Model with Examples
 
 Few-shot prompting means providing **examples** of the task in your prompt so the model can learn from them **in context**. This is like saying, “Here’s how I want it done, now do it for a new case.” By giving one or more Q&A pairs or input-output examples, you essentially show the model the format or approach you expect. GPT-4 (and likely GPT-5) are very capable of learning patterns from just a few demonstrations in the prompt – this is called _in-context learning_. It’s powerful for steering the model on tasks that have a specific style or require understanding something beyond a basic instruction.
 
@@ -125,7 +181,7 @@ A few things to keep in mind with few-shot prompts:
 
 **Try it yourself:** If you’re doing academic research, try a few-shot prompt where you show the model how to cite sources. For example: provide a short paragraph and a fake citation as an example, then ask it to write a new paragraph with citations. Alternatively, for language learning, give one example of a sentence translated and explained word-by-word, then ask it to do the same for a new sentence. Observe how the output follows your example’s pattern.
 
-#### Chain-of-Thought Prompting: Reasoning Step by Step
+### Chain-of-Thought Prompting: Reasoning Step by Step
 
 Often, the most powerful technique for tough problems is **Chain-of-Thought (CoT) prompting**, which involves asking the model to **show its reasoning step by step** before giving the final answer. This is like having the model “think out loud.” Instead of jumping straight to an answer, the model will list intermediate steps, considerations, or calculations. This approach has been found to significantly improve accuracy on complex tasks such as math word problems, logic puzzles, and multi-step reasoning questions.
 
@@ -156,7 +212,7 @@ The image above illustrates this: On the **left**, the model was asked a questio
 
 For instance, you could try: _“If a library has 30 shelves with 40 books each, and 1/6 of all books are checked out, how many books are currently on the shelves? Let’s think step by step.”_ Watch how the model breaks it down (total books = 30×40, books checked out = one-sixth of that, subtract from total, etc.) and arrives at the answer. This approach mimics how you’d work it out yourself, reinforcing your understanding.
 
-#### Self-Critique and Reflection: Letting the Model Check Its Work
+### Self-Critique and Reflection: Letting the Model Check Its Work
 
 Even with careful prompting, ChatGPT’s first answer may not always be **complete, correct, or optimal**. An advanced (but very useful) strategy is to have the model **review and critique its own response**, then improve it. Think of it as asking ChatGPT to be its own peer reviewer or editor. This can lead to more accurate and refined answers, because the model might catch its earlier mistakes or add details it missed.
 
@@ -202,8 +258,7 @@ You don’t need to use those verbatim (though you can!). The key is to **explic
 
 **Try it yourself:** After ChatGPT answers a question for you (any question where accuracy matters), respond with something like _“Can you double-check your answer for accuracy and completeness?”_ and see what happens. For example, ask _“What were the causes of the 2008 financial crisis?”_ Get the answer, then follow up: _“Thanks. Now, critique that answer. Did you miss any major cause or detail? Please revise the answer if needed.”_ You might see the model add a point about, say, deregulation or incorrect risk assessments if it missed those initially. This exercise shows the value of giving the model a second pass to _think more critically_.
 
-Tool-Augmented Prompting: Extending ChatGPT’s Abilities with External Tools
----------------------------------------------------------------------------
+### Tool-Augmented Prompting: Extending ChatGPT’s Abilities with External Tools
 
 By itself, ChatGPT (even GPT-4) has limitations: it has a fixed knowledge cutoff (it won’t naturally know events after a certain date, like late 2021 for GPT-4’s base model), it can’t browse the web on its own (unless augmented), and it might struggle with tasks like heavy calculations or data analysis within the text model. **Tool-augmented prompting** is about leveraging external tools or data to overcome these limits. In simple terms, this means either **providing additional information to the model** or **having the model invoke outside help** when needed.
 
@@ -235,7 +290,7 @@ As a user, you don’t need to know the API details, but it’s useful to know *
 
 **Try it yourself:** If you have access to ChatGPT plugins or the browsing mode, give them a spin. For example, turn on the browsing feature and ask: _“What were the headlines in tech news today? Use the browsing tool to give me the latest update.”_ You’ll see the model perform searches and then answer. Or use the Advanced Data Analysis mode: upload a CSV file of something (maybe a small dataset from Kaggle) and ask questions about it. This will show you how the model can act as a **research assistant with tools**, not just a Q&A bot.
 
-#### Agentic Prompting: Making ChatGPT an Autonomous Assistant
+### Agentic Prompting: Making ChatGPT an Autonomous Assistant
 
 As we explore advanced territory, **agentic prompting** is about pushing the model to behave more like an **independent agent** that can handle a complex objective through planning, reasoning, and tool use. In simpler terms, instead of a single Q&A, you give the model a **role, a goal, and some freedom to figure out the steps** to achieve that goal. This is an emerging area, especially with the development of GPT-4-based agents (like AutoGPT, BabyAGI, and frameworks in 2024-2025 that let GPT plan multi-step tasks).
 
@@ -264,7 +319,7 @@ This might sound like just a structured way of doing a task, and it is – the d
 
 **Try it yourself:** A fun exercise to experience agentic prompting: _“You are ChatGPT-5, an AI agent who can use a calculator and the internet. Your mission is to plan a one-week trip itinerary for Tokyo for under $1000. Outline your plan day by day, ensuring the total budget is within $1000. Use the calculator if needed to sum costs, and search for any specific attraction details if needed.”_ – If you have browsing, the AI might actually search for ticket prices, etc. If not, it might make reasonable assumptions. The key is it will outline a day-by-day plan with costs, effectively acting like a travel agent planning, calculating, adjusting. This gives a taste of treating ChatGPT not just as an answer-generator, but as an **agent that handles a complex task**.
 
-#### Putting It All Together: Best Practices and Conclusion
+### Putting It All Together: Best Practices and Conclusion
 
 We’ve covered a lot: from basic prompting tips to advanced techniques like chain-of-thought, self-critique, tool use, and agentic planning. Here’s a quick summary of how you can combine these in practice for various scenarios:
 

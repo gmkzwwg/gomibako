@@ -1,6 +1,6 @@
 ---
 category: Map
-title: Big Pictures of History
+title: History - Its Learning Map, Knowledge Architecture, and Fundamental Theory
 tags: Basics
 ---
 

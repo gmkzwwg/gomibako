@@ -1,6 +1,6 @@
 ---
 category: Map
-title: Learning Map and Basics of Literature
+title: Literature - Its Learning Map, Knowledge Architecture, and Fundamental Theory
 tags: Basics
 ---
 

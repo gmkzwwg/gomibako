@@ -1,3 +1,10 @@
+---
+category: Sheet
+title: 数学术语速查表2
+tags: Basics
+layout: compact
+---
+
 ### 1) Numerals, bases, and place value (数字与位值)
 
 | Symbol | English term                          | Terme français               | 中文术语（English）              | Brief explanation                                       | Example + how read aloud (EN / FR / 中文)                                                                                                                                                                                 |

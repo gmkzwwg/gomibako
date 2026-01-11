@@ -1,6 +1,6 @@
 # 1. Site Settings
 title               : 普通的垃圾箱
-owner               : "gmkzwwg"
+owner               : "垃圾残渣"
 #url                 : "http://127.0.0.1:4000"
 url                : "https://gmkz.top" # A trailing “/” at the end of the field is unnecessary.
 ## baseurl            : ""
@@ -110,7 +110,8 @@ plugins:
 # 8. JS version
 # Search Plugins on: https://cdnjs.com/
 # This is functioned in ./src/_includes/head.html
-mathjax_version     : "3.2.2"
+mathjax_version     : # "3.2.2"
+katex_version       : "0.16.9"
 mermaid_version     : "11.12.0"
 fontawesome_version : "4.6.0"
 

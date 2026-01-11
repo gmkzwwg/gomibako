@@ -104,6 +104,8 @@ a "one" b "two"
 
 ## Practical Usage
 
+
+
 | Practical Target                    | Regex (Common)                                                                    | → Matches / Use                            |
 | ----------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------ |
 | email (basic)                       | `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b`                              | → typical emails (not RFC-perfect)         |

@@ -1,0 +1,22 @@
+// table style
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 2px;
+    line-height: 1;
+    thead {
+        border: none;
+        th {
+        padding: 10px 10px;
+        font-size: $font-size-primary;
+        }
+    }
+    tbody {
+        border-bottom: none;
+        td {  
+        padding: 8px 10px;
+        font-size: $font-smaller;
+        }
+    }
+}
+

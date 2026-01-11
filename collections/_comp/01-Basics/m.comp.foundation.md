@@ -1,6 +1,6 @@
 ---
 category: Map
-title: Learning Map and Basics of Computer Science
+title: Computer Science - Its Learning Map, Knowledge Architecture, and Fundamental Theory
 tags: Basics
 ---
 

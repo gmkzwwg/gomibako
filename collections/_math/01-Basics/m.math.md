@@ -1,6 +1,6 @@
 ---
 category: Map
-title: Big Pictures of Learning Mathematics
+title: Mathematics - Its Learning Map, Knowledge Architecture, and Fundamental Theory
 tags: Basics
 ---
 

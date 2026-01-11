@@ -1,0 +1,36 @@
+<div class="post_info">
+  <!-- author -->
+  {% if page.author %}
+  <span>
+    <i class="fa fa-user-secret"></i>
+    {{ page.author }}&nbsp;
+  </span>
+  {% endif %}
+  <!-- date -->
+  {% if page.show_date %}
+  <span>
+    <i class="fa fa-calendar"></i>
+    {{ page.date | date: "%b %d, %Y" }}&nbsp;
+  </span>
+  {% endif %}
+  <!-- category -->
+  {% if page.category %}
+  <span>
+    <i class="fa fa-archive"></i>
+    {{ page.category }}&nbsp;
+  </span>
+  {% endif %}
+  <!-- tags -->
+  {% if page.tags[1] %}
+  <span>
+    <i class="fa fa-tag"></i>
+    {{ page.tags }}&nbsp;
+  </span>
+  {% endif %}
+</div>
+<!-- abstract -->
+{% if page.abstract %}
+<div class="abstract">
+  <p>{{ page.abstract }}</p>
+</div>
+{% endif %}

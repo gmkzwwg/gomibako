@@ -1,6 +1,6 @@
 ---
 category: Map
-title: 西方哲学史学习地图
+title: Western Philosophy - Its Learning Map, Knowledge Architecture, and Fundamental Theory
 tags: Basics
 ---
 
