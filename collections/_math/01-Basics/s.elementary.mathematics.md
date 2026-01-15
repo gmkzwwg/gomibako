@@ -2,7 +2,7 @@
 category: Sheet
 title: 基础数学速查表
 tags: Basics
-toc_level: 2
+toc_depth: 2
 ---
 
 ## 基础数学范围

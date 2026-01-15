@@ -3,7 +3,7 @@ layout: compact
 category: Sheet
 title: 英语语法速查表
 tags: English
-toc_level: 4
+toc_depth: 4
 ---
 
 # English Grammer Quick Reference

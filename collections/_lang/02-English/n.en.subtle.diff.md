@@ -2,7 +2,7 @@
 category: Notes
 title: Subtle Differences Between English Words
 tags: English
-toc_level: 2
+toc_depth: 2
 ---
 
 # 动词 verb

@@ -5,6 +5,126 @@ tags: Basics
 ---
 
 
+## The Knowledge Structure of History - Modern Academic Historical Inquiry Worldwide, Including Historiography, Methods, and Major Subfields.
+
+###  First principles (axioms) and core commitments
+
+* Pastness (irreversibility): non-repeatability; asymmetry between past events and present access.
+* Trace-dependence: inferential dependence on surviving traces (documents, artifacts, memories, data).
+* Contextuality: meaning as context-relative (linguistic, institutional, material, cultural).
+* Temporal structuration: change/stasis; sequence; duration; conjuncture; periodization.
+* Causal pluralism: multi-causality; conjunctural causation; contingent pathways.
+* Perspectival situatedness: positionality; standpoint; interpretive horizons.
+* Fallibilism: revisability under new evidence, methods, or conceptual frameworks.
+* Normativity-awareness: value-ladenness in selection, framing, and narration (without collapsing into arbitrariness).
+
+### Ontology of historical objects (what “counts” as the unit of analysis)
+
+* Event-objects: punctual occurrences; turning points; “milestone events” as heuristics.
+* Process-objects: long-run transformations (state formation, industrialization, secularization).
+* Structure-objects: durable constraints (institutions, class systems, ecologies, infrastructures).
+* Agent-objects: individuals; groups; classes; networks; organizations.
+* Meaning-objects: discourses; symbols; practices; mentalities; ideologies.
+* Material-objects: technologies; resources; demographics; epidemiology; climate proxies.
+* Scale-objects: microhistory ↔ macrohistory; local ↔ global; short durée ↔ longue durée (Braudel).
+
+### Evidence architecture (trace types) and access channels
+
+* Written records: administrative archives; letters; legal texts; newspapers; inscriptions.
+* Material culture: archaeology; art/architecture; tools; coins; built environment.
+* Oral sources: interviews; testimony; tradition; performance; memory studies.
+* Quantitative traces: censuses; prices; trade flows; registers; cliometrics datasets.
+* Visual/audio: photographs; film; radio; sound archives; GIS layers.
+* Born-digital: social media; logs; web archives; platform data; computational corpora.
+* Provenance chain: creation → custody → survival → cataloging → retrieval → interpretation.
+
+### Core mechanics (the pipeline from trace to claim)
+   Dependency spine: Trace selection → Source criticism → Contextual reconstruction → Inferential modeling → Narrative/explanatory synthesis → Peer adjudication → Public transmission → Revision loop
+
+* Problem-framing: research question formation; scope bounding; concept specification.
+* Heuristic search: archive strategy; sampling logic; corpus construction; metadata control.
+* External criticism: authenticity; provenance; authorship; dating; integrity.
+* Internal criticism: credibility; bias; genre conventions; intended audience; speech acts.
+* Corroboration: triangulation across independent traces; consistency checks; negative evidence.
+* Contextualization: institutional setting; semantic drift; material constraints; power relations.
+* Causal inference (historical): mechanism specification; process tracing; counterfactual analysis; comparative method.
+* Interpretation: hermeneutics; thick description; discourse analysis; conceptual history.
+* Synthesis: argument architecture; narrative emplotment; explanation-vs-understanding balancing.
+* Validation: peer review; replication (where possible); archival transparency; data/code release (digital history).
+
+### Explanatory logics (theory families) and mutual dependencies
+
+> Organized as “what must be assumed” to use the logic; arrows indicate typical dependence.
+
+* Intentionalist explanation (agency-first): reasons, choices, strategy (Thucydides; Collingwood).
+  * Depends on: interpretive access to actors’ reasons (texts, testimony) + context semantics.
+* Structural explanation (constraint-first): institutions, class, demography, ecology (Marx; Weber; Skocpol; Wallerstein).
+  * Depends on: aggregated evidence + comparative baselines + model of constraint.
+* Cultural/meaning explanation (signification-first): discourse, ritual, representation (Geertz; Foucault; cultural history).
+  * Depends on: linguistic/contextual reconstruction + genre analysis.
+* Material/technological explanation (infrastructure-first): energy, disease, technology (environmental history; STS).
+  * Depends on: physical proxies + interdisciplinary methods (archaeometry, climate science).
+* Comparative-historical explanation (difference-making): controlled comparison; typologies (Weber; Tilly).
+  * Depends on: commensurability assumptions + case selection logic.
+* Microhistorical explanation (exception-as-window): intensive local reconstruction (Ginzburg; Levi).
+  * Depends on: unusually dense trace survival + high-resolution contextualization.
+* Quantitative/cliometric explanation (measurement-first): econometrics; formal models (Fogel; North).
+  * Depends on: operationalization + statistical assumptions + data quality audit.
+* Post-structural / narrative critique (representation-first): historiography as rhetoric (Hayden White).
+  * Depends on: textuality thesis + analysis of emplotment/tropes.
+
+### Historiography (disciplinary self-theories) as a developmental sequence
+
+* Classical foundations: inquiry and causation (Herodotus, 5th c. BCE; Thucydides, 5th c. BCE).
+* Universal history and moral philosophy: providential/teleological schemas (late antiquity–early modern).
+* Social theory of history: cyclical/structural dynamics (Ibn Khaldun, 14th c.).
+* Critical philology and source method: textual criticism, chronology (early modern scholarship).
+* Professionalization and archival positivism: “wie es eigentlich gewesen” (Ranke, 19th c.); seminar model.
+  * "Rankean seminar/archival professionalization (c.1820s–1870s)"
+* Materialist and sociological turns: class, capitalism, rationalization (Marx, 19th c.; Weber, early 20th c.).
+* Annales and total history: longue durée; interdisciplinarity (Bloch/Febvre; Braudel).
+  * "Annales journal founded (1929)"
+* Philosophy of history debates: explanation vs understanding; critique of historicism (Collingwood; Popper; Carr).
+* Social history “from below”: labor, everyday life, experience (E.P. Thompson; Hobsbawm).
+* Linguistic/cultural turns: discourse, power/knowledge, representation (Foucault; Geertz).
+  * "Linguistic turn (1970s)"
+* Postcolonial/subaltern critiques: empire, epistemic violence, provincializing Europe (Guha; Spivak; Chakrabarty).
+  * "Subaltern Studies emergence (1980s)"
+* Memory and trauma studies: testimony, commemoration regimes, politics of memory (late 20th c.–).
+* Digital/computational history: text-as-data, GIS, network analysis, web archives.
+  * "Digital humanities expansion (1990s–present)"
+
+### Subfields (Domain Partitions) as Applications of the Same Mechanics
+
+* Political history: sovereignty; diplomacy; statecraft; governance.
+* Social history: class; gender; race; kinship; migration; demography.
+* Economic history: production; markets; inequality; institutions; development.
+* Intellectual history: concepts; ideologies; political thought (Skinner; Pocock; Koselleck).
+* Cultural history: symbols; practices; everyday life; media.
+* Legal history: norms; institutions; adjudication; legal pluralism.
+* Religious history: belief systems; institutions; ritual; secularization.
+* Military history: violence; organization; technology; strategy.
+* Science/technology/medicine history: knowledge systems; laboratories; epidemics; infrastructures.
+* Environmental history: climate; disease ecology; resource regimes; Anthropocene debates.
+* Global/transnational history: flows; empires; diasporas; world-systems.
+  (Each subfield = evidence bundle + preferred scale + favored explanatory logic.)
+
+### Tips
+
+Common pitfalls and counterpoints
+* Teleology: outcome-driven narration; “inevitability” bias.
+* Anachronism: present meanings imposed on past terms/practices.
+* Mono-causality: single-factor reduction (economic-only, ideology-only, etc.).
+* Archive fetishism: equating “archived” with “true”; ignoring silences and power.
+* Category reification: treating analytical categories (nation, race, class) as timeless substances.
+* Overfitting narrative: coherence imposed beyond evidential warrant.
+
+What changes under different assumptions
+* Strong positivism: heavier weighting on reproducible claims, measurement, and causal identification.
+* Interpretivism/hermeneutics: heavier weighting on meaning reconstruction and actor categories.
+* Critical/postcolonial stance: heavier weighting on archive critique, epistemic justice, and standpoint.
+* Computational turn: heavier weighting on scale, pattern discovery, and transparency of pipelines.
+
 ## Historiographical Foundations for Global History
 
 **Introduction.** In contemporary scholarship, history is reconceived beyond national borders. Global processes and entangled networks now define the historical pastassets.press.princeton.edu. As Sebastian Conrad notes, globalization poses “a fundamental challenge” to older frameworks – entanglements and networks characterize the present world, requiring historians to ask new questions beyond nation-centered narrativesassets.press.princeton.edu. This review maps the core knowledge that a global historian must master: the ontology of history as a discipline, key paradigm shifts in historiography, shared methods and reasoning, the blend of traditional and interdisciplinary techniques, and the underlying epistemological debates. It is structured as a scholarly review with clear sections and authoritative citations for each major point.

@@ -4,118 +4,393 @@ title: Writing Mathematical Formulas in LaTeX
 tags: Basics
 ---
 
+## Minimal Guide
+
+What LaTeX is
+  - LaTeX = a markup-based typesetting system: you write structured plain text + commands; it compiles into a high-quality PDF.
+  - Core idea: describe structure (sections, figures, references), not pixel-level layout.
+
+Why use LaTeX
+  - Typography quality: consistent spacing, hyphenation, pagination, professional output.
+  - Structure-first writing: headings, cross-references, tables/figures behave predictably.
+  - Large documents: stable management of long reports, theses, books.
+  - References: citations/bibliographies scale well (BibTeX/biblatex).
+  - Collaboration/versioning: plain text works well with Git and diff tools.
+  - Reuse: templates and macros let you standardize formatting across documents.
+
+Use LaTeX when you need:
+  - Long or structured documents (papers, theses, books, lecture notes).
+  - Many figures/tables and lots of cross-referencing.
+  - Formal bibliography management.
+  - Consistent, publication-style formatting.
+  - Collaboration where plain-text + Git is beneficial.
+
+Best-practice workflow:
+  1. Start from a reputable template.(Journal/conference template (IEEE/ACM/Springer) or a clean article template.)
+  2. Keep structure clean
+    - Use `\section/\subsection`, not manual formatting for headings.
+    - Use `\label` + `\ref` for numbering, never type “Figure 3” manually.
+  3. Use packages deliberately (small, stable set)
+    - `geometry`, `graphicx`, `hyperref`, `booktabs`, `enumitem`, `biblatex` + `biber`
+  4. Separate content: main.tex + sections/*.tex + figures/* + refs.bib
+  5. Compile consistently. Stick to one engine unless you know why: pdfLaTeX (common), XeLaTeX/LuaLaTeX (better Unicode/font handling).
+
+Tips
+  - **Use labels everywhere** you’ll refer back to: Put `\label{...}` right after `\caption{...}` for figures/tables.
+  - Escape special characters: If you need literal `# % & $ _ { } \` you must escape them: `\# \% \& \$ \_ \{ \} \textbackslash`
+  - Use booktabs for tables: Avoid vertical lines; use \toprule \midrule \bottomrule.
+  - Add hyperlinks early: hyperref makes refs/cites clickable in the PDF.
+
+
 ## Basic Usage
 
-**Document Structure**
+**Document Structure and Sectioning**
 
 ```latex
-\documentclass{article}     % Document type
-\usepackage{package_name}   % Including a package
-\begin{document}            % Start of the document
-\end{document}              % End of the document
-```
+% This is a single, compilable LaTeX tutorial file
 
-**Text Formatting**
+% Document Structure and Sectioning
+\documentclass{11pt}{article}      % [OPTIONS]{CLASS}; Common CLASSES: article, report, book, letter, beamer
 
-```latex
-\textbf{Bold text}
-\textit{Italic text}
-\underline{Underlined text}
-\emph{Emphasized text}
-```
 
-**Sectioning**
+% [1] PACKAGES
+% Engine detection (so the same file works in pdfLaTeX / XeLaTeX / LuaLaTeX) 
+\usepackage{iftex}                 % [OPTIONS]{PACKAGE}Including a package
 
-```latex
-\section{Section Title}
-\subsection{Subsection Title}
-\subsubsection{Sub-subsection Title}
-```
+% (1.1) Encoding / Language
+\ifPDFTeX
+  % inputenc (legacy): allow UTF-8 input in pdfLaTeX
+  \usepackage[utf8]{inputenc}
+  % fontenc: better output encoding (copy/paste and hyphenation for Western languages)
+  \usepackage[T1]{fontenc}
+  % babel: language-specific hyphenation and typographic rules
+  \usepackage[english]{babel}
+  % lmodern: improved default fonts for pdfLaTeX
+  \usepackage{lmodern}
+\else
+  % fontspec: use system/OpenType fonts (XeLaTeX/LuaLaTeX)
+  \usepackage{fontspec}
+  % polyglossia: language support designed for XeLaTeX/LuaLaTeX
+  \usepackage{polyglossia}
+  \setmainlanguage{english}
+  % A safe default font (usually available); you can replace with a system font.
+  \setmainfont{Latin Modern Roman}
+\fi
 
-**Lists**
+% (2) Layout / Spacing
+\usepackage[margin=1in]{geometry} % geometry: set margins/page size
+\usepackage{setspace}            % setspace: line spacing control
 
-- Unordered List
+% (3) Graphics / Color / Links
+\usepackage{graphicx}            % graphicx: \includegraphics
+\usepackage{xcolor}              % xcolor: \textcolor, color definitions
+\usepackage[colorlinks=true]{hyperref} % hyperref: clickable refs, URLs, PDF metadata
 
-```latex
-\begin{itemize}
-  \item First item
-  \item Second item
+% (4) Lists / Tables
+\usepackage{enumitem}            % enumitem: list spacing and labels
+\usepackage{booktabs}            % booktabs: professional table rules
+\usepackage{tabularx}            % tabularx: auto-width columns (X)
+\usepackage{longtable}           % longtable: multi-page tables
+
+% (5) Bibliography (choose ONE system in practice)
+% Recommended modern approach:
+\usepackage[backend=biber,style=authoryear]{biblatex} % biblatex: flexible citations/bibliography
+\addbibresource{\jobname.bib}
+
+% Alternative legacy approach (disabled here):
+% \usepackage[authoryear]{natbib}   % natbib: classic citation commands
+% Then use BibTeX with \bibliographystyle{...} and \bibliography{...}
+
+% [2] TITLE / META
+\TITLE{A Minimal Practical \LaTeX\ Tutorial (One File)}
+\author{Gomikuzu}
+\date{\today}
+
+\hypersetup{
+  pdftitle  = {Minimal Practical LaTeX Tutorial},
+  pdfauthor = {Gomikuzu}
+}
+
+\definecolor{Accent}{HTML}{1F5FBF} % Example custom color
+
+
+% [3] DOCUMENT STRUCTURE
+\begin{document}                   % Start of the document
+
+\maketitle
+\onehalfspacing
+\tableofcontents                   % Generate table of content
+\newpage
+
+% (3.1) Sectioning
+% \part{PART NAME}                   % Largest unit of a BOOK. 1 part = n chapters
+% \chapter{NAME}                     % REPORT/BOOKS ONLY. Establish a NEW PAGE
+\section{What this file is}        % Largest unit of class ARTICLE
+This is a real \LaTeX\ document that explains the most common syntax and the function of several high-value packages.
+\section*{Unnumbered Section}                   % Unnumbered section                    
+The goal is to show you the \emph{workflow-ready core} (structure, lists, tables, figures, references, bibliography).
+
+\section{Document structure}
+\begin{itemize}[noitemsep,leftmargin=*]
+  \item \textbf{Preamble} (above \verb|\begin{document}|): configuration, packages, custom commands.
+  \item \textbf{Body} (between \verb|\begin{document}| and \verb|\end{document}|): your content.
+  \item \textbf{Commands} start with a backslash, e.g., \verb|\section{Title}|.
+  \item \textbf{Environments} wrap blocks, e.g., \verb|\begin{itemize} ... \end{itemize}|.
 \end{itemize}
-```
 
-- Ordered List
+\subsection{Texts}
+\subsubsection{Comments and paragraphs}
+A percent sign starts a comment. Blank lines start a new paragraph.
 
-```latex
-\begin{enumerate}
-  \item First item
-  \item Second item
+\subsubsection{Special characters (escaping)}
+To print these characters literally, escape them: \verb|\# \% \& \$ \_ \{ \} \textbackslash|.
+
+\subsubsection{Text Formatting}              % Do not appear in toc(depends on \setcounter{tocdepth}{n})
+\textbf{BOLD TEXT}                 % Boldface
+\textit{ITALIC TEXT}               % Italic
+\texttt{TYPEWRITER TEXT}           % Typewriter. Used for codes or URL.
+\textsc{SMALL CAPS}                % Small Caps. Used for name, abbreviations, terminologies.
+\underline{UNDERLINED TEXT}        % Underlined
+\emph{EMPHASIZED TEXT}             % Emphasis
+
+\paragraph{Dashing}                   % Used for paragraph headings. Unnumbered, run-in heading
+\textbf{Hyphen (-)}: Used for compound words, such as \textit{high-tech}.
+\textbf{En-dash (--)}: Used for numerical ranges, such as 1921--2026.
+\textbf{Em-dash (---)}: Used for pauses within a sentence or as parenthetical dashes, indicating a shift in thought.
+\ldots                             % For ellipsis, instead of ...
+
+\subparagraph{Cross-references and navigation}                % Smallest unit of LaTeX
+\label{KEY}                        % The ANCHOR. It records the current value of the most recent counter (e.g., section number, figure number) and the page number.
+\ref{KEY}                          % The ECHO. It prints the value of the counter associated with the label.
+\pageref{KEY}                      % Prints the page number where the label is located.
+\cite{KEY}
+
+\subsubsection{Quoting}            % Use `csquotes` package
+\enquote{First level quoting, \enquote{nested quoting}.}
+
+\appendix                          % THEN sectioning commands. Rarely used.
+
+\subsubsection{Font Size Declarations}
+{\small Small texts.}              % 0.9x
+{\normalsize Normal size text.}    % 1.0x
+{\large Large text.}               % 1.2x
+{\Large Larger than large.}        % 1.44x
+{\LARGE More Larger.}              % 1.73x
+{\huge Huge text.}                 % 2.07x
+{\Huge Larger than Huge.}          % 2.49x
+
+\section{Color and hyperlinks}
+\subsection{\texttt{xcolor}}
+Use \texttt{xcolor} for colored text and custom color definitions.
+\begin{itemize}[noitemsep,leftmargin=*]
+  \item \textcolor{Accent}{Colored text} via \verb|\textcolor{Accent}{...}|.
+  \item Named colors and HEX colors via \verb|\definecolor|.
+\end{itemize}
+
+\subsection{\texttt{hyperref}}
+Use \texttt{hyperref} to make references, citations, and URLs clickable in the PDF.
+\begin{itemize}[noitemsep,leftmargin=*]
+  \item URL: \url{https://www.latex-project.org}
+  \item Named link: \href{https://www.ctan.org}{CTAN}
+\end{itemize}
+
+\section{Lists (80/20 formatting control with \texttt{enumitem})}
+Default lists are often too spaced out. \texttt{enumitem} gives compact control:
+\begin{itemize}[noitemsep,leftmargin=*]
+  \item Bullets: \verb|itemize|
+  \item Numbers: \verb|enumerate|
+  \item Control spacing/indent: \verb|[noitemsep,leftmargin=*]|
+\end{itemize}
+
+\subsection{Examples}
+\begin{enumerate}[noitemsep,leftmargin=*]
+  \item First numbered item
+  \item Second numbered item
 \end{enumerate}
-```
 
-**Mathematics**
+\section{Figures (syntax) and \texttt{graphicx}}
+In real documents, figures are usually wrapped in a \verb|figure| environment and referenced by \verb|\label|/\verb|\ref|.
 
-- Inline Math:
+\subsection{A compile-safe placeholder figure}
+Figure~\ref{fig:placeholder} is a placeholder that compiles without external image files.
 
-```latex
-$$  a^2 + b^2 = c^2  $$
-```
-
-- Display Math:
-
-```latex
-\[
-  E = mc^2
-\]
-```
-
-**Symbols**
-
-```latex
-\alpha, \beta, \gamma, \lambda   % Greek letters
-\geq, \leq, \neq                 % Comparison operators
-\sum, \prod, \int                % Summation, product, integral
-\frac{a}{b}                      % Fraction
-```
-
-**Aligning Equations**
-
-```latex
-\begin{align*}
-  a + b &= c \\
-  x - y &= z
-\end{align*}
-```
-
-**Figures**
-
-```latex
-\begin{figure}[h]
+\begin{figure}[t]
   \centering
-  \includegraphics[width=0.5\textwidth]{filename}
-  \caption{Caption text}
-  \label{fig:label}
+  \fbox{\rule{0pt}{1.5in}\rule{0.85\linewidth}{0pt}}
+  \caption{Placeholder figure box (replace with \texttt{\textbackslash includegraphics}).}
+  \label{fig:placeholder}
 \end{figure}
+
+\subsection{Real image inclusion (source syntax)}
+\begin{verbatim}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/myplot.pdf}
+  \caption{My plot.}
+  \label{fig:myplot}
+\end{figure}
+\end{verbatim}
+
+\section{Tables (the most common stack: \texttt{booktabs} + \texttt{tabularx} + \texttt{longtable})}
+\subsection{\texttt{booktabs}: publication-quality rules}
+Table~\ref{tab:booktabs} uses \verb|\toprule|/\verb|\midrule|/\verb|\bottomrule| (preferred over vertical lines).
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lrr}
+    \toprule
+    Method & Score & Time (s) \\
+    \midrule
+    Baseline & 0.71 & 12.4 \\
+    Improved & 0.79 & 13.1 \\
+    \bottomrule
+  \end{tabular}
+  \caption{A \texttt{booktabs} example.}
+  \label{tab:booktabs}
+\end{table}
+
+\subsection{\texttt{tabularx}: auto-wrapping columns}
+Use \texttt{tabularx} when you have a text-heavy column that must fit the page width.
+
+\begin{table}[t]
+  \centering
+  \begin{tabularx}{0.95\linewidth}{lX}
+    \toprule
+    Key & Description (auto-wrapping X column) \\
+    \midrule
+    Traceability & A short narrative that wraps naturally without manual line breaks. \\
+    Reproducibility & Enough detail for another reader to verify sources and computations. \\
+    \bottomrule
+  \end{tabularx}
+  \caption{A \texttt{tabularx} example.}
+\end{table}
+
+\subsection{\texttt{longtable}: tables that can span pages}
+Use \texttt{longtable} for long datasets in appendices. This example shows the syntax (it may or may not page-break depending on your PDF layout).
+
+\begin{longtable}{ll}
+\caption{A \texttt{longtable} example (multi-page capable).}\label{tab:longtable}\\
+\toprule
+ID & Note \\
+\midrule
+\endfirsthead
+\toprule
+ID & Note (continued) \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{Continued on next page} \\
+\endfoot
+\bottomrule
+\endlastfoot
+01 & Row content \\
+02 & Row content \\
+03 & Row content \\
+04 & Row content \\
+05 & Row content \\
+06 & Row content \\
+07 & Row content \\
+08 & Row content \\
+09 & Row content \\
+10 & Row content \\
+11 & Row content \\
+12 & Row content \\
+13 & Row content \\
+14 & Row content \\
+15 & Row content \\
+16 & Row content \\
+17 & Row content \\
+18 & Row content \\
+19 & Row content \\
+20 & Row content \\
+\end{longtable}
+
+\section{Cross-references (the non-negotiable habit)}
+Use \verb|\label| and \verb|\ref| instead of hardcoding numbers.
+\begin{itemize}[noitemsep,leftmargin=*]
+  \item Figure reference: Figure~\ref{fig:placeholder}
+  \item Table reference: Table~\ref{tab:booktabs}
+\end{itemize}
+
+\noindent Best practice:
+\begin{verbatim}
+\caption{...}
+\label{fig:meaningful-key} % label AFTER caption in figures/tables
+\end{verbatim}
+
+\section{Bibliography (biblatex + biber) and the natbib alternative}
+This document uses \texttt{biblatex} (recommended for new projects). Here are two citations:
+Knuth's \emph{The \TeX book} \parencite{knuth1984texbook} and Lamport's \LaTeX\ book \parencite{lamport1994latex}.
+
+\subsection{Core biblatex syntax}
+\begin{verbatim}
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{refs.bib}
+Cite: \parencite{key} or \textcite{key}
+Print: \printbibliography
+\end{verbatim}
+
+\subsection{natbib + BibTeX (when to use)}
+Use \texttt{natbib} when a venue/template requires BibTeX \texttt{.bst} styles or provides a fixed BibTeX pipeline.
+\begin{verbatim}
+\usepackage{natbib}
+Cite: \citet{key} \citep{key}
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{verbatim}
+
+\printbibliography
+
+\section{Minimal practice checklist}
+\begin{enumerate}[noitemsep,leftmargin=*]
+  \item Change the margin in \texttt{geometry} and recompile.
+  \item Add one new item to a list and recompile.
+  \item Add a new row to a table and recompile.
+  \item Add a new citation entry in the embedded \texttt{.bib} and cite it.
+  \item Add a \verb|\label|/\verb|\ref| pair somewhere new and verify it resolves (compile twice).
+\end{enumerate}
+
+\end{document}
 ```
 
-**Tables**
+### Common Packages
 
-```latex
-\begin{tabular}{|c|c|c|}
-  \hline
-  Column 1 & Column 2 & Column 3 \\
-  \hline
-  Data 1   & Data 2   & Data 3   \\
-  \hline
-\end{tabular}
-```
+Encoding/language: 
+  * `inputenc` (legacy): Enables UTF-8 input for pdfLaTeX; use only for older pdfLaTeX workflows or legacy templates—avoid if using modern UTF-8-by-default setups or XeLaTeX/LuaLaTeX.
+  * `fontenc`: Controls font encoding in pdfLaTeX (e.g., T1) for correct hyphenation and copy/paste of accented characters; use for Western-language documents compiled with pdfLaTeX.
+  * `babel`: Language and typographic rules (hyphenation patterns, captions, date formats) primarily for pdfLaTeX (also works elsewhere); use when writing in one or multiple languages and you want correct language-specific conventions.
+  * `polyglossia`: Language management designed for XeLaTeX/LuaLaTeX as an alternative to `babel`; use when compiling with XeLaTeX/LuaLaTeX, especially for multilingual documents.
 
-**Referencing**
+Fonts:  (XeLaTeX/LuaLaTeX)
+  * `lmodern`: Provides Latin Modern fonts (a cleaner, extended Computer Modern) with good PDF output; use for a quick, high-quality default in pdfLaTeX documents.
+  * `fontspec`: Lets you select system/OpenType fonts and control font features; use when compiling with XeLaTeX/LuaLaTeX and you need modern fonts, Unicode scripts, or precise typography.
 
-```latex
-\label{sec:label}       % Label a section
-\ref{sec:label}         % Reference a section
-\cite{reference_key}    % Cite a reference
-```
+Layout:
+  * `geometry`: Sets page size and margins with simple options; use whenever you need predictable margin control (papers, theses, submissions).
+  * `setspace`: Adjusts line spacing (single/1.5/double) cleanly; use for thesis requirements, manuscripts, or reviewer-friendly drafts.
+
+Graphics:
+  * `graphicx`: Adds `\includegraphics` and sizing/rotation options for images; use whenever you insert figures (PNG/JPG/PDF).
+
+Color: 
+  * `xcolor`: Defines and manages colors for text, tables, and drawing packages; use when you need colored text/links/tables or any custom color definitions.
+
+Hyperlinks:
+  * `hyperref`: Creates clickable references, citations, URLs, and PDF metadata; use in almost all documents intended for digital reading, typically loaded late in the preamble.
+  * `cleveref`: A "smart" referencing tool. It detects the type of element (Table, Figure, Section) and automatically adds the prefix (e.g., instead of typing Section~`\ref{sec:intro}`, you just type `\cref{sec:intro}`).
+
+Lists: 
+  * `enumitem`: Controls list spacing, indentation, and labels for `itemize/enumerate`; use when default list formatting is too spaced out or you need consistent compact lists.
+
+Tables: 
+  * `booktabs`: Provides professional horizontal rules (`\toprule`, `\midrule`, `\bottomrule`) and promotes clean table design; use for publication-quality tables (avoid vertical rules).
+  * `tabularx`: Adds a table environment that auto-adjusts column widths to a target table width; use when you have text-heavy columns and want the table to fit the page neatly.
+  * `longtable`: Enables tables that span multiple pages with repeating headers; use for long datasets, catalogs, or appendices where tables cannot fit on one page.
+
+Bibliography:
+`* `biblatex` + `biber`: Modern bibliography system with flexible styles, robust localization, and fine-grained control; use for new projects unless a venue forces BibTeX/natbib.
+* `natbib` + BibTeX: Classic citation interface widely supported by journal templates and legacy workflows; use when a publisher/template requires BibTeX-based compilation or provides `.bst` styles.
+`
 
 ## Math Symbols
 

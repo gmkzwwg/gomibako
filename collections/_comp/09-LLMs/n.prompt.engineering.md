@@ -47,6 +47,7 @@ Literature 文学:
 
 ## Meta Prompting
 
+### For Knowledges
 **For academic review papers**
 
 ```
@@ -61,8 +62,65 @@ Literature 文学:
 **For Academic Structure**
 
 ```
-我需要你提供 prompt engineering 方面的专业帮助。我需要用大概一页纸的长度，用高度结构化的名词罗列，来展现[]学科的整体知识体系和架构，Uncover the first principles and underlying mechanics，揭示整个理论发展的逻辑链。在必要的地方添加主要理论者的名称和关键时间、milestone、关键书籍或论文。你给出优化后的提示词，英文
+我需要你提供 prompt engineering 方面的专业帮助。我需要用大概一页纸的长度，用高度结构化的名词化条目，来展现[]学科的整体知识体系和架构，Uncover the first principles and underlying mechanics，揭示各个理论互相依赖的关系，或发展的顺序。在必要的地方添加主要理论者的名称和关键时间、milestone、关键书籍或论文。你给出优化后的提示词，英文
 ```
+
+**for minimal knowledge or tutorial**
+
+```
+Provide a minimal viable tutorial for [XXX] so I can start practicing immediately. Focus only on the '80/20'—the 20% of core concepts that handle 80% of real-world use cases. Please include: 1. Essential setup 2. The most common workflow 3. One concrete 
+example
+
+Give me a TL;DR summary of [XXX] for a first-time practitioner. What is the absolute minimum I need to know before I 'run' this? Skip the fluff and give me the 'Checklist' and 'The Big Picture'.
+```
+
+### For Via Negativa
+
+针对您作为跨学科研究者的需求，获取“负面知识”（Via Negativa）——即通过了解“什么是不对的”来锁定“什么是正确的”——是一种极其高效的认知策略。
+
+以下我为您设计了三套不同深度的提示词模板，并回答了关于“除了三类常见错误外还会有哪些问题”的深度分析。
+
+---
+
+### 1. 深度学习版：针对研究者的“知识解构”提示词
+
+此提示词利用您的研究背景，强制 AI 进行跨学科的错误比对。
+
+> **"As a research assistant, I want to master [学科名称]. To build a robust mental model, please provide a comprehensive 'Map of Failure' including:**
+> 1. **Conceptual Misconceptions**: Key terms that are frequently misunderstood or oversimplified (the 'pseudo-knowledge').
+> 2. **Procedural/Methodological Errors**: Common mistakes in the actual application or research process of this field.
+> 3. **Pedagogical Pitfalls**: Why traditional learning paths for this subject often fail or lead to dead ends.
+> 4. **Expert vs. Novice Gap**: Where do beginners usually get stuck compared to how experts actually think?
+> 5. **Boundary Conditions**: Under what specific assumptions do the core theories of this field break down?
+> **Please present this in a rigorous, analytical style, avoiding clichés."**
+> 
+> 
+
+---
+
+### 2. 极简版：针对快速上手的“避坑指南”
+
+如果您需要快速进入一个新领域（如学习一个新的 LaTeX 宏包或编程语言）：
+
+> **"Give me a 'Anti-Tutorial' for [学科/技术]. Instead of telling me what to do, tell me what NOT to do. List the top 10 most common mistakes in concepts, methods, and learning strategy. Also, identify the 'Invisible Hurdles' that beginners don't even know they are tripping over."**
+
+---
+
+
+> 作为研究者，在掌握了误区、理解错误和方法错误后，通常还会遇到以下四个更深层次的**认知陷阱**：
+> **A. 术语的“语义漂移” (Semantic Drift)**: 在跨学科学习中，同一个词在不同学科含义迥异。
+> * **例子**：在计算机科学中，"Logic" 可能是布尔代数；在哲学中，它是形式逻辑；在法律中，它是法律推论。
+> * **问题**：你以为你懂了，其实你是在用 A 学科的定义去读 B 学科的书。
+> **B. 知识的“惰性化” (Inert Knowledge)**
+> * **定义**：你掌握了公式和定义，但在实际面临复杂问题时，无法提取并激活这些知识。
+> * **表现**：能考满分，但无法解决现实中的非标准化（Non-standard）问题。
+> **C. 缺乏“元认知”监测 (Metacognitive Blindness)**
+> * **问题**：不清楚自己知识版图的边界在哪里（即“不知道自己不知道”）。
+> * **后果**：在错误的假设上构建了极其复杂的逻辑大厦。
+> **D. 环境与生态位缺失 (Lack of Contextual Nuance)**
+> * **问题**：脱离了历史脉络或实际场景去学习理论。
+> * **分析**：任何学科的理论都有其产生的“母体”。忽略了当时的学术争鸣，就会把动态的真理看作死板的教条。
+
 
 ## Prompt Engineering with ChatGPT 4 and 5: A Progressive Tutorial
 

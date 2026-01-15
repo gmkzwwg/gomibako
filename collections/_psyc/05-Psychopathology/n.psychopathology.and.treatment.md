@@ -150,21 +150,9 @@ DSM-5 还提供“其他特定（Other Specified）/未特定（Unspecified）�
 
 ## 常见精神类药物
 
-你希望我把先前内容（含表格与后续分析）完整译为中文，并尽量在中文语境中为关键术语标注其英文对应（例如 SSRI、SERT、NMDA 等）。以下为中文译文（保留原有 Markdown 表格与 LaTeX 记号；引文标记亦原样保留）。
-
-
-
-你要的是：（i）按 MECE 框架（Mutually Exclusive, Collectively Exhaustive）组织的现代精神药物（psychotropic agents）代表性清单表：按治疗类别（therapeutic class）分组，包含**分子式**（molecular formula，LaTeX）、**核心药效学**（pharmacodynamics：受体/靶点谱）、**消除半衰期**（elimination half-life，$t_{1/2}$）、**主要 FDA/EMA 适应证**（indications）、与**重要不良反应/黑框警告**（adverse effects/boxed warnings）；以及（ii）约 500 字的批判性综合分析：将**受体结合谱 → 临床疗效**做逻辑链条解释，并把这些分子层面干预置于**生物—心理—社会**（biopsychosocial）转向之中，同时在**神经可塑性**（neuroplasticity）研究背景下批评“化学失衡”（chemical imbalance）假说的局限。
-
-所用假设：（1）$t_{1/2}$、适应证、黑框警告等经验数据以**FDA 标示（DailyMed/accessdata）**与必要时的 **EMA SmPC/EPAR**为准；（2）受体/靶点描述保持“机制上忠实但定性”（例如“强/临床相关” vs “弱”），与标准精神药理教材（如 *Maudsley*、*Stahl*）一致。
-
-## 结论 / 要点（Conclusion / takeaway）
 
 在现代精神药物中，临床差异化（differentiation）最能由以下因素预测：**(a) 靶点选择性（target selectivity）**、**(b) 动力学（kinetics：尤其 $t_{1/2}$ 与活性代谢物）**、以及 **(c) 下游可塑性与系统级适应（downstream plasticity & systems-level adaptation）**。速效谷氨酸能（glutamatergic）抗抑郁药最清楚地体现这一点：其近端机制（proximal mechanism，如 NMDA 拮抗）不同于单胺类，带来更“压缩”的起效时间窗，而效应似乎更依赖突触重塑（synaptic remodeling）而非持续性的“单胺校正”。
 
-
-
-# 现代精神药物的比较药理学谱系（A Comparative Pharmacological Profile of Modern Psychotropic Agents）
 
 | 治疗类别（Therapeutic class, MECE）                                         | 通用名 & 分子式（Generic name & molecular formula）                            | 作用机制（Mechanism of action, pharmacodynamics）                                                                    | 消除半衰期（Elimination $t_{1/2}$）                                                                             | 主要临床适应证（FDA/EMA）                                                                                                                                       | 不良反应谱（Adverse effects：显著/黑框）                                                     |
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
@@ -190,54 +178,3 @@ DSM-5 还提供“其他特定（Other Specified）/未特定（Unspecified）�
 | ADHD 兴奋剂（stimulant；安非他明前药）                                            | Lisdexamfetamine（利斯的安非他明）；$C_{15}H_{25}N_{3}O\cdot (CH_{4}O_{3}S)_{2}$ | 前药 → dextroamphetamine；促进儿茶酚胺释放（VMAT2/逆向转运）                                                                    | Lisdexamfetamine < $1,\mathrm{h}$；dextroamphetamine $\approx 12,\mathrm{h}$                              | ADHD；成人暴食障碍（binge eating disorder）                                                                                                                     | **黑框：滥用/误用/成瘾（abuse/misuse/addiction）** ；失眠/焦虑；易感者心血管风险                          |
 | ADHD 非兴奋剂（non-stimulant；NET 抑制剂）                                      | Atomoxetine（托莫西汀）；$C_{17}H_{21}NO\cdot HCl$                            | 选择性 NET 抑制（并可通过 NET 机制间接 ↑ PFC DA）                                                                             | EM（广泛代谢者；extensive metabolizer）：$\approx 5,\mathrm{h}$；PM（弱代谢者；poor metabolizer）：$\approx 24,\mathrm{h}$ | ADHD                                                                                                                                                   | **黑框：自杀意念（儿童/青少年）** ；罕见肝损伤；血压/心率升高                                               |
 | ADHD 非兴奋剂（$\alpha_{2A}$ 激动剂）                                          | Guanfacine ER（胍法辛缓释，Intuniv）；（标示为盐形式）                                  | $\alpha_{2A}$ 激动（调制 PFC 网络“信噪比” signal-to-noise）；交感抑制亦致镇静/低血压                                                  | $t_{1/2}\approx 18\pm 4,\mathrm{h}$（成人）                                                                  | ADHD（多为儿科标示；成人使用视地区/产品而异）                                                                                                                              | 镇静/乏力；低血压/心动过缓；骤停反跳性高血压                                                          |
-
-
-
-## 元心理学与生物学综合（Metapsychological and Biological Synthesis，≈500 字）
-
-“元心理学”（metapsychology；希腊语 *meta* + *psychē*，意为“超出/关于心灵”）在此有启发性，因为精神药物同时在两个层面起作用：**近端的分子扰动**（proximal molecular perturbations：靶点/受体）与**远端的计算—行为组织变化**（distal computational/behavioral organization：注意、显著性 salience、情绪调节、学习）。这条因果链很少是线性的，但也并非任意。
-
-**从结合到疗效的因果推进（causal progression）。** 抗抑郁药是关键范例。SSRI 在数小时内即可占据 SERT，但症状改善往往滞后；这种时间上的解耦削弱了“更多 5-HT = 更少抑郁”的简单映射。更可辩护的叙事是：SERT/NET 阻断改变神经调质（neuromodulator）基调，从而**重新加权边缘系统—皮层的增益控制（gain control）**，改变威胁与奖赏学习（threat/reward learning），并逐步诱导受体与细胞内适应，支持情绪与认知新的稳定“吸引子”（attractors）。SNRI 进一步引入 NET 维度，常改善精力/驱动，但以自主神经副作用（血压/心率）为代价。多模式药物（如伏硫西汀）试图通过额外受体约束来塑形网络后果（例如通过 $5\text{-}HT_{3}$ 拮抗降低某些不良反应，并调制锥体细胞—中间神经元平衡），但这种“受体设计”是否在不同人群中稳定地产生可区分的认知—情感获益，仍是需要分层验证的经验问题。
-
-抗精神病药的“受体—综合征”映射更清晰：**$D_2$ 拮抗/部分激动**与阳性症状的抗精神病疗效强相关，主要通过中脑—边缘（mesolimbic）多巴胺信号实现。SDA 的 $5\text{-}HT_{2A}$ 组成改变疗效与副作用轮廓：通过影响纹状体/皮层多巴胺释放，可降低 EPS 负担，并对情感/负性维度产生不同方向的影响。部分激动剂（如阿立哌唑、卡利拉嗪）用**状态依赖的调制**替代纯“阻断”：在多巴胺过强时下调，在基线时保留功能——往往以静坐不能风险换取较低的泌乳素与部分代谢负担。氯氮平的独特性很可能与其广谱、非 $D_2$ 主导的药理相关，但其疗效与**生物学成本**不可分割（例如 REMS 下的血液学监测）。
-
-**生物—心理—社会的互文性转向（biopsychosocial intertextual shift）。** 该模型把药物从“与心理治疗对抗”改写为“情境塑形器（context-shaper）”：降低过度唤醒、侵入性显著性或认知噪声，可扩大心理治疗学习（暴露、认知重评、人际修复）的可行空间。反之，镇静、情感迟钝或静坐不能会削弱心理治疗赖以发生的能力（注意、反思功能 reflective function、治疗联盟）。因此，当药物打开“可塑性窗口（plasticity window）”时可能**支持**心理治疗；当其压缩能动性或扭曲内感受线索（interoception）时则可能**破坏**之。艾司氯胺酮的监管与给药形式（监督下、时限性）把这一点显性化：这是一种嵌入临床仪式的药理学，而不仅是化学输入。
-
-**“化学失衡”假说在神经可塑性背景下的局限。** 当代可塑性研究推动我们从“失衡纠正”转向**适应工程（adaptation engineering）**。抑郁与精神病越来越被建模为网络动力学障碍（连接、预测误差权重 prediction-error weighting、显著性归因），神经调质更像增益控制器而非单一因果底物。对“失衡口号”最直接的反证来自动力学：单胺变化很快，而康复往往很慢。更有生产力的假设类是：精神药物在统计意义上偏置**突触重塑、消退学习（extinction learning）、与应激系统校准（stress-system calibration）**，并与环境与心理治疗交互，形成可持续改变。于是，药理学问题不再是“哪种递质低了？”，而是“在多大生物学代价下，哪些回路层面的相变（circuit-level transition）可被治疗性地抵达，并需要怎样的社会—心理支架（psychosocial scaffolding）？”
-
-
-
-## 最小工作化对比（Minimal worked comparison；具体实例）
-
-在“精神病性症状 + 明显代谢风险”的患者中，两种策略可对照理解：
-
-* 具有强 $H_1$/毒蕈碱亲和力（affinity）的 SDA（如奥氮平）即使改善精神病性症状，也更倾向出现**镇静 + 代谢毒性**。
-* $D_2$ 部分激动剂（如阿立哌唑）相对奥氮平往往更能维持代谢指标，但更易出现**静坐不能**，可增加主观痛苦并削弱治疗参与。
-  因此，“最佳选择”不是某一受体真理，而是围绕疗效、耐受性与功能参与进行的**多目标优化（multi-objective optimization）**。
-
-
-
-## 常见陷阱 / 反论点（Common pitfalls/counterpoints）
-
-* 把 $t_{1/2}$ 当作决定论：动力学还受活性代谢物、依从性、CYP 表型（如托莫西汀 EM vs PM）、器官功能影响。
-* 过度解读受体标签：例如“$5\text{-}HT_{2A}$ 拮抗”并不在缺乏剂量、占有率（occupancy）与回路背景时唯一预测结局。
-* 混淆类警告与个体风险：黑框反映群体层面信号，而非个体层面确定预后。
-
-
-
-## 在不同假设下会如何变化（What would change under different assumptions）
-
-* **药物基因组学（pharmacogenomics）**（如 CYP2D6 状态）可显著改变暴露量、$t_{1/2}$ 与不良事件概率，进而改变一线选择（尤其托莫西汀；部分 SSRIs）。
-* **合并症靶点（comorbidity targets）**（疼痛、睡眠、PTSD）会改变效用函数（utility function）：例如度洛西汀的 NET 成分与疼痛适应证可能压倒“更纯净的精神科耐受性”考虑。
-* **监管辖区（regulatory jurisdiction）**很关键：FDA 与 EMA 在适应证与措辞上可能不同，即便临床实践趋同。
-
-
-
-## 关键参考（Key references）
-
-* **FDA 说明书（Prescribing Information）**（DailyMed / Drugs@FDA）：分子式、适应证、黑框警告与药代动力学。
-* **EMA SmPC/EPAR**：艾司氯胺酮的药代数据与欧盟适应证表述。
-* *The Maudsley Prescribing Guidelines in Psychiatry*（Taylor, Paton, Kapur）。
-* *Stahl’s Essential Psychopharmacology* 与 *Stahl’s Prescriber’s Guide*（Stahl）。
-
-如需，我也可以在同一证据标准下把表格按 MECE 扩展到更多类别（如 MAOI、TCA、食欲素受体拮抗剂 orexin antagonists、褪黑素能抗抑郁药 melatonergic antidepressants、长效针剂 LAI 抗精神病药等），并保持相同字段与格式。
