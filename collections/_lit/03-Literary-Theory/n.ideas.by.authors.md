@@ -1,6 +1,6 @@
 ---
 category: Notes
-title: Anthology of Literary Theories by Various Authors
+title: 不同作家对于文学创作的理论和倾向
 tags: Literary-Theory
 ---
 

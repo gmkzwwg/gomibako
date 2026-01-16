@@ -90,24 +90,9 @@ Give me a TL;DR summary of [XXX] for a first-time practitioner. What is the abso
 
 如果您需要快速进入一个新领域（如学习一个新的 LaTeX 宏包或编程语言）：
 
-> **"Give me a 'Anti-Tutorial' for [学科/技术]. Instead of telling me what to do, tell me what NOT to do. List the top 10 most common mistakes in concepts, methods, and learning strategy. Also, identify the 'Invisible Hurdles' that beginners don't even know they are tripping over."**
-
----
-
-
-> 作为研究者，在掌握了误区、理解错误和方法错误后，通常还会遇到以下四个更深层次的**认知陷阱**：
-> **A. 术语的“语义漂移” (Semantic Drift)**: 在跨学科学习中，同一个词在不同学科含义迥异。
-> * **例子**：在计算机科学中，"Logic" 可能是布尔代数；在哲学中，它是形式逻辑；在法律中，它是法律推论。
-> * **问题**：你以为你懂了，其实你是在用 A 学科的定义去读 B 学科的书。
-> **B. 知识的“惰性化” (Inert Knowledge)**
-> * **定义**：你掌握了公式和定义，但在实际面临复杂问题时，无法提取并激活这些知识。
-> * **表现**：能考满分，但无法解决现实中的非标准化（Non-standard）问题。
-> **C. 缺乏“元认知”监测 (Metacognitive Blindness)**
-> * **问题**：不清楚自己知识版图的边界在哪里（即“不知道自己不知道”）。
-> * **后果**：在错误的假设上构建了极其复杂的逻辑大厦。
-> **D. 环境与生态位缺失 (Lack of Contextual Nuance)**
-> * **问题**：脱离了历史脉络或实际场景去学习理论。
-> * **分析**：任何学科的理论都有其产生的“母体”。忽略了当时的学术争鸣，就会把动态的真理看作死板的教条。
+```
+**"Give me a 'Anti-Tutorial' for [学科/技术]. Instead of telling me what to do, tell me what NOT to do. List the top 10 most common mistakes in concepts, methods, and learning strategy. Also, identify the 'Invisible Hurdles' that beginners don't even know they are tripping over."**
+```
 
 
 ## Prompt Engineering with ChatGPT 4 and 5: A Progressive Tutorial
