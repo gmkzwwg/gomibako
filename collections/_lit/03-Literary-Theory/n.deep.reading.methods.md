@@ -1,6 +1,6 @@
 ---
 category: Notes
-title: Reading as Craft and Scholarship - A Holistic Framework for Rigorous Textual Deconstruction, Knowledge Extraction, and Writerly Development
+title: Deep Reading Methods for Literary Analysis and Craft
 tags: Literary-Theory
 ---
 
