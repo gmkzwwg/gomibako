@@ -4,224 +4,207 @@ title: Software Foundations
 tags: Software-Foundations
 ---
 
-原书地址：https://softwarefoundations.cis.upenn.edu/；版本：Version 6.6 (2024-01-03 15:03, Coq 8.17 or later)；翻译来自 ChatGPT-4；释义来自于必应词典；本页面仅供个人学习，不对外开放，无法被搜索引擎收录。
+> 原书地址：https://softwarefoundations.cis.upenn.edu/；版本：Version 6.6 (2024-01-03 15:03, Coq 8.17 or later)；翻译来自 ChatGPT-4；释义来自于必应词典；本页面仅供个人学习，不对外开放，无法被搜索引擎收录。
 
-# Volume 1 Logical Foundations 逻辑基础
+## Volume 1 Logical Foundations 逻辑基础
 
-## Preface 前言
+### Preface 前言
 
-### Welcome 欢迎
+#### Welcome 欢迎
 
 This is the entry point to a series of electronic textbooks on various aspects of Software Foundations, the mathematical underpinnings of reliable software. Topics in the series include basic concepts of logic, computer-assisted theorem proving, the Coq proof assistant, functional programming, operational semantics, logics and techniques for reasoning about programs, static type systems, property-based random testing, and verification of practical C code. The exposition is intended for a broad range of readers, from advanced undergraduates to PhD students and researchers. No specific background in logic or programming languages is assumed, though a degree of mathematical maturity will be helpful.
 
-这是《软件基础》系列电子教材的入口，涵盖了可靠软件的数学基础。该系列的主题包括逻辑基本概念、计算机辅助定理证明、Coq证明助手、函数式编程、操作语义、程序推理的逻辑和技术、静态类型系统、基于属性的随机测试，以及实际C代码的验证。本系列旨在面向广泛的读者群体，从高年级本科生到博士生及研究人员。尽管不需要具备特定的逻辑或编程语言背景，但具备一定的数学成熟度会有所帮助。
-  
-> - underpinning [ˈʌndə(r)ˌpɪnɪŋ] n.支柱；〈口〉加支柱；墙基；支援
-> -  underpin [ˌʌndə(r)ˈpɪn] v.巩固；加固（墙）基
-> -  `计算机辅助定理证明（Computer-Assisted Theorem Proving, 简称 CATP）`是指使用计算机软件来帮助验证数学定理的真伪。在计算机辅助定理证明中，计算机程序被用来检查定理证明的每一个步骤，确保所有逻辑推理都是正确的。与传统的手工证明相比，计算机辅助定理证明能够处理更加庞大和复杂的证明，减少人工错误，提高证明的可靠性。Coq、Isabelle、HOL Light 和 Lean 是一些常见的定理证明器。它们提供了一个框架，用户可以在其中构建和验证证明。`模型检测（Model Checking）`是另一种形式的计算机辅助证明，主要用于验证有限状态系统的性质。通过遍历系统的所有可能状态，模型检测可以验证系统是否满足特定的逻辑性质。
-> -  `函数式编程（Functional Programming）`是一种编程范式，它强调使用函数来构建和组合程序，尤其注重不可变性和纯函数的使用。纯函数是指那些在相同输入下始终产生相同输出、且不产生任何副作用（如修改全局变量或执行I/O操作）的函数。
-> -  `操作语义（Operational Semantics）`是计算机科学中的一种形式化方法，用于定义编程语言的行为。它描述了程序的执行方式，即程序的每个操作或语句在特定语境下的运行步骤。这种方法通过给出一个程序在计算机上逐步执行的规则，来描述程序的语义。操作语义通常用一种数学化的方式来表达，常见的方法包括大步语义（big-step semantics）和小步语义（small-step semantics）。
-> -  exposition [.ekspə'zɪʃ(ə)n] n.阐述；（产品的）展销；商品交易会；产品博览会
+> 这是《软件基础》系列电子教材的入口，涵盖了可靠软件的数学基础。该系列的主题包括逻辑基本概念、计算机辅助定理证明、Coq证明助手、函数式编程、操作语义、程序推理的逻辑和技术、静态类型系统、基于属性的随机测试，以及实际C代码的验证。本系列旨在面向广泛的读者群体，从高年级本科生到博士生及研究人员。尽管不需要具备特定的逻辑或编程语言背景，但具备一定的数学成熟度会有所帮助。
+- underpinning [ˈʌndə(r)ˌpɪnɪŋ] n.支柱；〈口〉加支柱；墙基；支援
+-  underpin [ˌʌndə(r)ˈpɪn] v.巩固；加固（墙）基
+-  `计算机辅助定理证明（Computer-Assisted Theorem Proving, 简称 CATP）`是指使用计算机软件来帮助验证数学定理的真伪。在计算机辅助定理证明中，计算机程序被用来检查定理证明的每一个步骤，确保所有逻辑推理都是正确的。与传统的手工证明相比，计算机辅助定理证明能够处理更加庞大和复杂的证明，减少人工错误，提高证明的可靠性。Coq、Isabelle、HOL Light 和 Lean 是一些常见的定理证明器。它们提供了一个框架，用户可以在其中构建和验证证明。`模型检测（Model Checking）`是另一种形式的计算机辅助证明，主要用于验证有限状态系统的性质。通过遍历系统的所有可能状态，模型检测可以验证系统是否满足特定的逻辑性质。
+-  `函数式编程（Functional Programming）`是一种编程范式，它强调使用函数来构建和组合程序，尤其注重不可变性和纯函数的使用。纯函数是指那些在相同输入下始终产生相同输出、且不产生任何副作用（如修改全局变量或执行I/O操作）的函数。
+-  `操作语义（Operational Semantics）`是计算机科学中的一种形式化方法，用于定义编程语言的行为。它描述了程序的执行方式，即程序的每个操作或语句在特定语境下的运行步骤。这种方法通过给出一个程序在计算机上逐步执行的规则，来描述程序的语义。操作语义通常用一种数学化的方式来表达，常见的方法包括大步语义（big-step semantics）和小步语义（small-step semantics）。
+-  exposition [.ekspə'zɪʃ(ə)n] n.阐述；（产品的）展销；商品交易会；产品博览会
 
 The principal novelty of the series is that it is one hundred percent formalized and machine-checked: each text is literally a script for Coq. The books are intended to be read alongside (or inside) an interactive session with Coq. All the details in the text are fully formalized in Coq, and most of the exercises are designed to be worked using Coq.
 
-本系列的主要创新之处在于其内容完全形式化且经过机器验证：每本书实际上都是一个Coq脚本。这些书籍需要与Coq的交互会话一起阅读，或者在会话中进行阅读。书中所有细节都在Coq中完全形式化，且大部分练习设计为使用Coq来完成。
-
-> -  principal ['prɪnsəp(ə)l] n.本金；委托人；资本；主角 adj.最重要的；主要的（与 principle 同音）
-> -  novelty [ˈnɒv(ə)lti] n.新颖；新奇；新鲜；新奇的事物（或人、环境） adj.新奇的；风格独特的
+> 本系列的主要创新之处在于其内容完全形式化且经过机器验证：每本书实际上都是一个Coq脚本。这些书籍需要与Coq的交互会话一起阅读，或者在会话中进行阅读。书中所有细节都在Coq中完全形式化，且大部分练习设计为使用Coq来完成。
+- principal ['prɪnsəp(ə)l] n.本金；委托人；资本；主角 adj.最重要的；主要的（与 principle 同音）
+- novelty [ˈnɒv(ə)lti] n.新颖；新奇；新鲜；新奇的事物（或人、环境） adj.新奇的；风格独特的
 
 The files in each book are organized into a sequence of core chapters, covering about one semester's worth of material and organized into a coherent linear narrative, plus a number of "offshoot" chapters covering additional topics. All the core chapters are suitable for both upper-level undergraduate and graduate students.
 
-每本书的文件分为一系列核心章节，涵盖大约一个学期的内容，并按照连贯的线性叙事组织起来，此外还有一些“分支”章节，涵盖额外的主题。所有核心章节都适合本科高年级和研究生。
-
-> -  coherent [kəʊˈhɪərənt] adj.合乎逻辑的；有条理的；清楚易懂的；有表达能力的
-> -  narrative [ˈnærətɪv] n.叙述；讲故事；叙事技巧 adj.叙述的；故事体的；善于叙述的
-> -  offshoot [ˈɒfˌʃuːt] n.分支；（尤指）分支机构；蘗枝；分枝
+> 每本书的文件分为一系列核心章节，涵盖大约一个学期的内容，并按照连贯的线性叙事组织起来，此外还有一些“分支”章节，涵盖额外的主题。所有核心章节都适合本科高年级和研究生。
+- coherent [kəʊˈhɪərənt] adj.合乎逻辑的；有条理的；清楚易懂的；有表达能力的
+- narrative [ˈnærətɪv] n.叙述；讲故事；叙事技巧 adj.叙述的；故事体的；善于叙述的
+- offshoot [ˈɒfˌʃuːt] n.分支；（尤指）分支机构；蘗枝；分枝
 
 This book, Logical Foundations, lays groundwork for the others, introducing the reader to the basic ideas of functional programming, constructive logic, and the Coq proof assistant.
 
-本书《逻辑基础》为其他书奠定基础，向读者介绍了函数式编程、构造逻辑和Coq证明助手的基本思想。
+> 本书《逻辑基础》为其他书奠定基础，向读者介绍了函数式编程、构造逻辑和Coq证明助手的基本思想。
+- groundwork [ˈɡraʊn(d)ˌwɜː(r)k] n.基础工作；准备工作
+- `构造性逻辑（Constructive Logic）`，也称为`直觉主义逻辑（Intuitionistic Logic）`，是一种逻辑体系，强调证明的构造性和可计算性。在构造性逻辑中，要证明一个命题成立，必须明确地构造出一个证明，而不仅仅是通过排除所有其他可能性来证明其存在。与经典逻辑不同，构造性逻辑拒绝使用排中律（Law of Excluded Middle），即命题 \( P \) 或其否定 \( \neg P \) 必有一个成立。在构造性逻辑中，只有当我们能够构造出 \( P \) 的证明时，才能断定 \( P \) 为真。构造性逻辑在计算机科学中有广泛的应用，尤其是在形式化证明、类型理论和编程语言设计领域。例如，Coq这样的定理证明器基于构造性逻辑，允许用户通过构造性的方式来编写程序和证明数学命题。因为每个证明都具有计算内容，构造性逻辑也与可计算性理论密切相关。
 
-> -  groundwork [ˈɡraʊn(d)ˌwɜː(r)k] n.基础工作；准备工作
-> -  `构造性逻辑（Constructive Logic）`，也称为`直觉主义逻辑（Intuitionistic Logic）`，是一种逻辑体系，强调证明的构造性和可计算性。在构造性逻辑中，要证明一个命题成立，必须明确地构造出一个证明，而不仅仅是通过排除所有其他可能性来证明其存在。与经典逻辑不同，构造性逻辑拒绝使用排中律（Law of Excluded Middle），即命题 \( P \) 或其否定 \( \neg P \) 必有一个成立。在构造性逻辑中，只有当我们能够构造出 \( P \) 的证明时，才能断定 \( P \) 为真。构造性逻辑在计算机科学中有广泛的应用，尤其是在形式化证明、类型理论和编程语言设计领域。例如，Coq这样的定理证明器基于构造性逻辑，允许用户通过构造性的方式来编写程序和证明数学命题。因为每个证明都具有计算内容，构造性逻辑也与可计算性理论密切相关。
-
-### Overview 概述
+#### Overview 概述
 
 Building **reliable software** is really hard -- really hard. The scale and complexity of modern systems, the number of people involved, and the range of demands placed on them make it challenging to build software that is even more-or-less correct, much less 100% correct. At the same time, the increasing degree to which information processing is woven into every aspect of society greatly amplifies the cost of bugs and insecurities.
 
-构建**可靠的软件**非常困难——非常困难。现代系统的规模和复杂性、涉及人员的数量以及对系统的广泛需求，使得构建即使是“基本正确”的软件都很具有挑战性，更不用说100%正确的软件了。同时，信息处理在社会各个方面的渗透程度不断提高，放大了软件漏洞和安全问题的代价。
-
-> -  still/much/even less 更不用说；更何况
-> -  weave wove woven 编织；交织
-> -  amplify ['æmplɪ.faɪ] v.放大；阐发
+> 构建**可靠的软件**非常困难——非常困难。现代系统的规模和复杂性、涉及人员的数量以及对系统的广泛需求，使得构建即使是“基本正确”的软件都很具有挑战性，更不用说100%正确的软件了。同时，信息处理在社会各个方面的渗透程度不断提高，放大了软件漏洞和安全问题的代价。
+- still/much/even less 更不用说；更何况
+- weave wove woven 编织；交织
+- amplify ['æmplɪ.faɪ] v.放大；阐发
 
 Computer scientists and software engineers have responded to these challenges by developing a host of techniques for improving software reliability, ranging from recommendations about managing software projects teams (e.g., extreme programming) to design philosophies for libraries (e.g., model-view-controller, publish-subscribe, etc.) and programming languages (e.g., object-oriented programming, aspect-oriented programming, functional programming, ...) to **mathematical techniques for specifying and reasoning about properties of software and tools for helping validate these properties**. The Software Foundations series is focused on this last set of tools.
 
-计算机科学家和软件工程师通过开发一系列技术来应对这些挑战，这些技术包括关于如何管理软件项目团队的建议（如极限编程）、库的设计理念（如模型-视图-控制器、发布-订阅等）以及编程语言的设计理念（如面向对象编程、面向方面编程、函数式编程等），以及**数学技术来指定和推理软件的性质并帮助验证这些性质**。《软件基础》系列主要集中在最后一类工具上。
-
-> -  a host of 许多的，大量的
-> -  `极限编程（Extreme Programming，简称XP）`是一种敏捷软件开发方法，由Kent Beck在20世纪90年代提出。它是一种以提高软件质量和增强开发团队的响应能力为目标的方法，核心理念包括：客户参与、持续反馈、简单设计、持续集成、测试驱动开发（TDD）、结对编程、持续重构、小型发布、集体代码所有权、40小时工作周。
-> -  `Model-View-Controller（MVC）`是一种软件架构模式，用于分离应用程序的逻辑、用户界面和数据模型。它通过将应用程序的不同部分分开管理，使得代码更加模块化、易于维护和扩展。MVC 广泛应用于图形用户界面应用程序以及Web应用程序的设计和开发。
-> -  `面向对象编程（Object-Oriented Programming, OOP）`是一种编程范式，它将程序设计任务分解为一个个对象，而每个对象都是一个类的实例。对象封装了数据（属性）和行为（方法），这样可以更好地组织代码，使其更易于管理和扩展。
-> -  `面向方面编程（Aspect-Oriented Programming, AOP）`是一种编程范式，旨在提高代码的模块化，特别是**关注点的分离**。AOP通过将那些跨越多个模块的关注点（如日志记录、安全性、事务管理等）从核心业务逻辑中分离出来，使代码更加清晰和可维护。在面向对象编程中，有些功能（如日志记录或错误处理）往往会在多个类或方法中重复出现，这些功能被称为`横切关注点（Cross-Cutting Concerns）`。AOP的目标就是将这些横切关注点提取出来，并将其与核心业务逻辑分离。
+> 计算机科学家和软件工程师通过开发一系列技术来应对这些挑战，这些技术包括关于如何管理软件项目团队的建议（如极限编程）、库的设计理念（如模型-视图-控制器、发布-订阅等）以及编程语言的设计理念（如面向对象编程、面向方面编程、函数式编程等），以及**数学技术来指定和推理软件的性质并帮助验证这些性质**。《软件基础》系列主要集中在最后一类工具上。
+- a host of 许多的，大量的
+- `极限编程（Extreme Programming，简称XP）`是一种敏捷软件开发方法，由Kent Beck在20世纪90年代提出。它是一种以提高软件质量和增强开发团队的响应能力为目标的方法，核心理念包括：客户参与、持续反馈、简单设计、持续集成、测试驱动开发（TDD）、结对编程、持续重构、小型发布、集体代码所有权、40小时工作周。
+- `Model-View-Controller（MVC）`是一种软件架构模式，用于分离应用程序的逻辑、用户界面和数据模型。它通过将应用程序的不同部分分开管理，使得代码更加模块化、易于维护和扩展。MVC 广泛应用于图形用户界面应用程序以及Web应用程序的设计和开发。
+- `面向对象编程（Object-Oriented Programming, OOP）`是一种编程范式，它将程序设计任务分解为一个个对象，而每个对象都是一个类的实例。对象封装了数据（属性）和行为（方法），这样可以更好地组织代码，使其更易于管理和扩展。
+- `面向方面编程（Aspect-Oriented Programming, AOP）`是一种编程范式，旨在提高代码的模块化，特别是**关注点的分离**。AOP通过将那些跨越多个模块的关注点（如日志记录、安全性、事务管理等）从核心业务逻辑中分离出来，使代码更加清晰和可维护。在面向对象编程中，有些功能（如日志记录或错误处理）往往会在多个类或方法中重复出现，这些功能被称为`横切关注点（Cross-Cutting Concerns）`。AOP的目标就是将这些横切关注点提取出来，并将其与核心业务逻辑分离。
 
 This volume weaves together three conceptual threads:
   1. basic tools from logic for making and **justifying precise claims about programs**;
   2. the use of proof assistants to **construct rigorous logical arguments**;
   3. functional programming, both as **a method of programming that simplifies reasoning about programs** and as **a bridge between programming and logic**.
 
-本书将三条概念线索交织在一起：
+> 本书将三条概念线索交织在一起：
 1. 逻辑中的基本工具，用于**对程序进行精确的断言和证明**。
 2. 使用证明助手来构建**严谨的逻辑论证**。
 3. 函数式编程，既作为**简化程序推理的一种编程方法**，也作为**连接编程与逻辑的桥梁**。
+- rigorous ['rɪɡərəs] adj.谨慎的；细致的；彻底的；严格的
 
-> -  rigorous ['rɪɡərəs] adj.谨慎的；细致的；彻底的；严格的
-
-#### Logic 逻辑
+##### Logic 逻辑
 
 `Logic` is the field of study whose **subject matter is proofs** -- *unassailable arguments for the truth of particular propositions*. Volumes have been written about the central role of logic in computer science. Manna and Waldinger called it "the calculus of computer science," while Halpern et al.'s paper On the *Unusual Effectiveness of Logic in Computer Science* catalogs scores of ways in which logic offers critical tools and insights. Indeed, they observe that, "As a matter of fact, logic has turned out to be significantly more effective in computer science than it has been in mathematics. This is quite remarkable, especially since much of the impetus for the development of logic during the past one hundred years came from mathematics."
 
-`逻辑`是**研究证明**的学科——*对特定命题的不可争辩的真理性论证*。关于逻辑在计算机科学中的核心作用已经有许多著作。Manna 和 Waldinger 称其为“计算机科学的微积分”，而 Halpern 等人的论文《逻辑在计算机科学中的非同寻常的有效性》列举了逻辑在计算机科学中提供关键工具和洞察力的诸多方式。实际上，他们指出，“已经成为事实的是，逻辑在计算机科学中的有效性明显超过了在数学中的有效性。这非常引人注目，特别是因为过去一百年间逻辑的发展动力主要来自数学。”
-
-> -  unassailable [.ʌnə'seɪləb(ə)l] adj.无法摧毁的；不可战胜的；不容置疑的
-  > -  assail [ə'seɪl] v.攻击；困扰；袭击；抨击
-  > -  assailant [ə'seɪlənt] n.攻击者；行凶者 adj.攻击的
-> -  (play a) central role (in) 在……中起着核心作用
-> -  scores of 许多，大量
-> -  impetus [ˈɪmpɪtəs] n.动力；推动；促进；刺激
+> `逻辑`是**研究证明**的学科——*对特定命题的不可争辩的真理性论证*。关于逻辑在计算机科学中的核心作用已经有许多著作。Manna 和 Waldinger 称其为“计算机科学的微积分”，而 Halpern 等人的论文《逻辑在计算机科学中的非同寻常的有效性》列举了逻辑在计算机科学中提供关键工具和洞察力的诸多方式。实际上，他们指出，“已经成为事实的是，逻辑在计算机科学中的有效性明显超过了在数学中的有效性。这非常引人注目，特别是因为过去一百年间逻辑的发展动力主要来自数学。”
+- unassailable [.ʌnə'seɪləb(ə)l] adj.无法摧毁的；不可战胜的；不容置疑的
+  - assail [ə'seɪl] v.攻击；困扰；袭击；抨击
+  - assailant [ə'seɪlənt] n.攻击者；行凶者 adj.攻击的
+- (play a) central role (in) 在……中起着核心作用
+- scores of 许多，大量
+- impetus [ˈɪmpɪtəs] n.动力；推动；促进；刺激
 
 In particular, *the fundamental tools of **inductive proof** are ubiquitous in all of computer science*. You have surely seen them before, perhaps in a course on discrete math or analysis of algorithms, but in this course we will examine them more deeply than you have probably done so far.
 
-尤其是，归纳证明的基本工具在整个计算机科学中无处不在。你以前可能在离散数学或算法分析课程中见过它们，但在本课程中，我们将比你以前所做的更深入地研究它们。
+> 尤其是，归纳证明的基本工具在整个计算机科学中无处不在。你以前可能在离散数学或算法分析课程中见过它们，但在本课程中，我们将比你以前所做的更深入地研究它们。
+- ubiquitous  [juːˈbɪkwɪtəs] adj.似乎无所不在的；十分普遍的
 
-> -  ubiquitous  [juːˈbɪkwɪtəs] adj.似乎无所不在的；十分普遍的
-
-#### Proof Assistants 证明助手
+##### Proof Assistants 证明助手
 
 The flow of ideas between logic and computer science has not been unidirectional: CS has also made important contributions to logic. One of these has been the development of **software tools for helping construct proofs of logical propositions**. These tools fall into two broad categories:
 
-逻辑与计算机科学之间的思想流动并非单向：计算机科学也对逻辑做出了重要贡献。其中之一就是开发了**帮助构建逻辑命题证明的软件工具**。这些工具大致分为两类：
-
-> -  the flow of ideas 思绪；思维的流动；灵感；源源不断的想法
-> -  unidirectional 单向性的；单向关联；单方向
+> 逻辑与计算机科学之间的思想流动并非单向：计算机科学也对逻辑做出了重要贡献。其中之一就是开发了**帮助构建逻辑命题证明的软件工具**。这些工具大致分为两类：
+- the flow of ideas 思绪；思维的流动；灵感；源源不断的想法
+- unidirectional 单向性的；单向关联；单方向
 
 `Automated theorem provers` provide "push-button" operation: **you give them a proposition and they return either true or false (or, sometimes, don't know: ran out of time)**. Although their capabilities are still limited to specific domains, they have matured tremendously in recent years and are used now in a multitude of settings. Examples of such tools include `SAT solvers`, `SMT solvers`, and `model checkers`.
 
-`自动定理证明器`提供“按下按钮”操作：**你给它一个命题，它返回真或假（有时会返回“未知：超时”）**。尽管它们的能力仍限于特定领域，但近年来已经大大成熟，并且现在被广泛应用于各种场合。此类工具的例子包括`SAT求解器`、`SMT求解器`和`模型检查器`。
-
-> -  `自动定理证明器（Automated Theorem Provers，简称ATP）`是用于自动证明或反驳数学定理的软件工具。这些工具在形式逻辑的领域中操作，定理被表示为形式化的语句，目标是通过逻辑推理规则来判断这些语句的有效性，而无需人为干预。其步骤为：
-  > -  定理的形式化：定理和假设被表示为形式化语言，通常是谓词逻辑的一种形式。这需要精确的定义和表达，以避免歧义。
-  > -  使用算法来探索可能的证明空间。它们应用逻辑推理规则，从现有的语句生成新的语句，寻找从假设到定理的一系列步骤。
-  > -  如果找到了一系列有效的逻辑步骤能够得出定理，自动定理证明器就会宣布定理得到证明。
-> -  tremendous(ly) [trə'mendəs] adj.巨大的；极大的；极好的；精彩的 adv.非常
-> -  `SAT求解器（SAT Solvers）`是一类专门用于解决`布尔可满足性问题（Boolean Satisfiability Problem，简称SAT）`的算法或工具。SAT问题中的布尔公式由布尔变量和逻辑运算符（如与、或、非）组成。SAT问题的目标是找到一种布尔变量的赋值，使得整个公式为真。
-> -  `SMT求解器（SMT Solvers）`是用于解决`可满足性模理论问题（Satisfiability Modulo Theories，简称SMT）`的工具。SMT问题是布尔可满足性问题（SAT问题）的推广，涉及在特定理论下判断一个逻辑公式是否可满足。
-  > -  `模理论（Modulo ['mɒdjʊləʊ] Theories）`：SMT问题不仅涉及布尔逻辑，还包含各种理论，如算术（整数和实数）、数组、位向量、数据结构（如列表、集合）、以及线性整数或实数约束等。这些理论为变量赋值提供了更复杂的约束。
-> -  `模型检验器（Model Checker）`是一种自动化工具，用于验证系统模型（通常是硬件或软件系统）是否符合某些规范或属性。模型检验器通过系统地检查所有可能的状态和状态转移来确保模型的行为符合预期，*特别是在并发系统或嵌入式系统的验证中*，模型检验器被广泛应用。
+> `自动定理证明器`提供“按下按钮”操作：**你给它一个命题，它返回真或假（有时会返回“未知：超时”）**。尽管它们的能力仍限于特定领域，但近年来已经大大成熟，并且现在被广泛应用于各种场合。此类工具的例子包括`SAT求解器`、`SMT求解器`和`模型检查器`。
+- `自动定理证明器（Automated Theorem Provers，简称ATP）`是用于自动证明或反驳数学定理的软件工具。这些工具在形式逻辑的领域中操作，定理被表示为形式化的语句，目标是通过逻辑推理规则来判断这些语句的有效性，而无需人为干预。其步骤为：
+  - 定理的形式化：定理和假设被表示为形式化语言，通常是谓词逻辑的一种形式。这需要精确的定义和表达，以避免歧义。
+  - 使用算法来探索可能的证明空间。它们应用逻辑推理规则，从现有的语句生成新的语句，寻找从假设到定理的一系列步骤。
+  - 如果找到了一系列有效的逻辑步骤能够得出定理，自动定理证明器就会宣布定理得到证明。
+- tremendous(ly) [trə'mendəs] adj.巨大的；极大的；极好的；精彩的 adv.非常
+- `SAT求解器（SAT Solvers）`是一类专门用于解决`布尔可满足性问题（Boolean Satisfiability Problem，简称SAT）`的算法或工具。SAT问题中的布尔公式由布尔变量和逻辑运算符（如与、或、非）组成。SAT问题的目标是找到一种布尔变量的赋值，使得整个公式为真。
+- `SMT求解器（SMT Solvers）`是用于解决`可满足性模理论问题（Satisfiability Modulo Theories，简称SMT）`的工具。SMT问题是布尔可满足性问题（SAT问题）的推广，涉及在特定理论下判断一个逻辑公式是否可满足。
+  - `模理论（Modulo ['mɒdjʊləʊ] Theories）`：SMT问题不仅涉及布尔逻辑，还包含各种理论，如算术（整数和实数）、数组、位向量、数据结构（如列表、集合）、以及线性整数或实数约束等。这些理论为变量赋值提供了更复杂的约束。
+- `模型检验器（Model Checker）`是一种自动化工具，用于验证系统模型（通常是硬件或软件系统）是否符合某些规范或属性。模型检验器通过系统地检查所有可能的状态和状态转移来确保模型的行为符合预期，*特别是在并发系统或嵌入式系统的验证中*，模型检验器被广泛应用。
 
 `Proof assistants` are hybrid tools that automate the more routine aspects of building proofs while depending on human guidance for more difficult aspects. Widely used proof assistants include Isabelle, Agda, Twelf, ACL2, PVS, and Coq, among many others.
 
-`证明助手`是混合工具，能够自动化构建证明过程中较为常规的部分，同时依赖人类的指导来处理较难的部分。广泛使用的证明助手包括Isabelle、Agda、Twelf、ACL2、PVS和Coq等。
-
-> -  `证明辅助工具（Proof Assistants）`，也称为`交互式定理证明器`，是一类软件工具，帮助用户在数学和逻辑领域中构建和验证形式化证明。**与自动定理证明器不同**，证明辅助工具通常**需要用户提供更多的指导**，用户通过与工具的交互**逐步构建证明**。
+> `证明助手`是混合工具，能够自动化构建证明过程中较为常规的部分，同时依赖人类的指导来处理较难的部分。广泛使用的证明助手包括Isabelle、Agda、Twelf、ACL2、PVS和Coq等。
+- `证明辅助工具（Proof Assistants）`，也称为`交互式定理证明器`，是一类软件工具，帮助用户在数学和逻辑领域中构建和验证形式化证明。**与自动定理证明器不同**，证明辅助工具通常**需要用户提供更多的指导**，用户通过与工具的交互**逐步构建证明**。
 
 This course is based around Coq, a proof assistant that has been under development since 1983 and that in recent years has attracted a large community of users in both research and industry. Coq **provides a rich environment for interactive development of machine-checked formal reasoning**. The kernel of the Coq system is a simple proof-checker, which guarantees that only correct deduction steps are ever performed. On top of this kernel, the Coq environment provides high-level facilities for proof development, including a large library of common definitions and lemmas, powerful tactics for constructing complex proofs semi-automatically, and a special-purpose programming language for defining new proof-automation tactics for specific situations.
 
-本课程围绕Coq展开，这是一款自1983年以来一直在开发的证明助手，近年来吸引了大量研究和工业用户。Coq**为`机器验证的形式化推理`提供了一个丰富的交互式开发环境**。Coq系统的**内核是一个简单的证明检查器**，确保只执行正确的推理步骤。在此内核之上，Coq环境提供了高层次的**证明开发工具**，包括一个庞大的**常见定义和引理库、强大的策略**，用于半自动地构建复杂的证明，以及一个**专用的编程语言**，用于为特定情况定义新的自动化证明策略。
-
-> -  `形式化推理（Formal Reasoning）`是指使用**严格定义的逻辑和数学规则**来进行**推理**的过程。它涉及将问题、陈述或系统的行为表达为精确的形式化语言，并通过应用逻辑推理规则来得出结论或证明某个陈述的真伪。
-> -  `机器验证的形式化推理（Machine-Checked Formal Reasoning）`是指通过计算机辅助工具进行的形式化推理过程，其中推理的所有步骤和结论都由机器自动检查和验证。与传统的手工形式化推理不同，这种方法利用自动化工具确保推理的每一步都是逻辑上正确的，极大地提高了验证的可靠性和效率。
+> 本课程围绕Coq展开，这是一款自1983年以来一直在开发的证明助手，近年来吸引了大量研究和工业用户。Coq**为`机器验证的形式化推理`提供了一个丰富的交互式开发环境**。Coq系统的**内核是一个简单的证明检查器**，确保只执行正确的推理步骤。在此内核之上，Coq环境提供了高层次的**证明开发工具**，包括一个庞大的**常见定义和引理库、强大的策略**，用于半自动地构建复杂的证明，以及一个**专用的编程语言**，用于为特定情况定义新的自动化证明策略。
+- `形式化推理（Formal Reasoning）`是指使用**严格定义的逻辑和数学规则**来进行**推理**的过程。它涉及将问题、陈述或系统的行为表达为精确的形式化语言，并通过应用逻辑推理规则来得出结论或证明某个陈述的真伪。
+- `机器验证的形式化推理（Machine-Checked Formal Reasoning）`是指通过计算机辅助工具进行的形式化推理过程，其中推理的所有步骤和结论都由机器自动检查和验证。与传统的手工形式化推理不同，这种方法利用自动化工具确保推理的每一步都是逻辑上正确的，极大地提高了验证的可靠性和效率。
 
 Coq has been a critical enabler for a huge variety of work across computer science and mathematics:
 
 As **a platform for modeling programming languages**, it has become **a standard tool for researchers who need to describe and reason about complex language definitions**. It has been used, for example, to check the security of the JavaCard platform, obtaining the highest level of common criteria certification, and for formal specifications of the x86 and LLVM instruction sets and programming languages such as C.
 
-Coq为计算机科学和数学的众多工作提供了重要支持：
+> Coq为计算机科学和数学的众多工作提供了重要支持：
 
-作为一种**编程语言建模的平台**，它已**成为需要描述和推理复杂语言定义的研究人员的标准工具**。例如，它被用来检查JavaCard平台的安全性，从而获得了最高级别的通用标准认证，还用于x86和LLVM指令集、编程语言（如C）的形式化规范。
-
-> -  `JavaCard平台`是一种微型平台，允许智能卡和其他小型嵌入式设备运行Java程序。
-> -  `Common Criteria Certification（通用准则认证）`是一种国际公认的标准，用于评估和认证信息技术（IT）产品和系统的安全性。Common Criteria (CC) 是一个框架，允许用户、开发者和测试实验室使用统一的标准来评估产品的安全属性，确保产品能够满足特定的安全需求。
-  > -  criteria [kraɪˈtɪəriən] n.标准；尺度
-  > -  certification  [ˌsɜ:tɪfɪ'keɪʃn] n.证书；证明；检定；合格证
-> -  `Formal Specifications（形式化规范）`是用数学方法精确定义系统或软件行为的描述方式。形式化规格通过使用形式化语言（如逻辑、集合论、代数等），为系统的设计、开发和验证提供了一个精确且无二义性的基础。
-> -  `x86指令集架构（ISA, Instruction Set Architecture）`属于CISC架构，是由英特尔开发的计算机处理器指令集架构，规定了处理器可以执行的指令、寄存器的使用、内存地址模式以及与操作系统和应用程序的交互方式。x86指令集具有很强的向后兼容性，从最早的8086处理器到现代的x86-64处理器，新的处理器可以执行旧的x86指令。
-> -  `LLVM（Low-Level Virtual Machine）指令集`是LLVM编译器基础设施项目中的一种`中间表示（IR, Intermediate Representation）`，用于描述程序的逻辑和操作。在编译器中，LLVM IR**起着桥梁作用，将高级语言代码转换为底层机器代码**。LLVM IR被设计为一个`面向静态单赋值（SSA, Static Single Assignment）`的语言，是一种**高级的、平台无关的中间表示形式**。
+> 作为一种**编程语言建模的平台**，它已**成为需要描述和推理复杂语言定义的研究人员的标准工具**。例如，它被用来检查JavaCard平台的安全性，从而获得了最高级别的通用标准认证，还用于x86和LLVM指令集、编程语言（如C）的形式化规范。
+- `JavaCard平台`是一种微型平台，允许智能卡和其他小型嵌入式设备运行Java程序。
+- `Common Criteria Certification（通用准则认证）`是一种国际公认的标准，用于评估和认证信息技术（IT）产品和系统的安全性。Common Criteria (CC) 是一个框架，允许用户、开发者和测试实验室使用统一的标准来评估产品的安全属性，确保产品能够满足特定的安全需求。
+  - criteria [kraɪˈtɪəriən] n.标准；尺度
+  - certification  [ˌsɜ:tɪfɪ'keɪʃn] n.证书；证明；检定；合格证
+- `Formal Specifications（形式化规范）`是用数学方法精确定义系统或软件行为的描述方式。形式化规格通过使用形式化语言（如逻辑、集合论、代数等），为系统的设计、开发和验证提供了一个精确且无二义性的基础。
+- `x86指令集架构（ISA, Instruction Set Architecture）`属于CISC架构，是由英特尔开发的计算机处理器指令集架构，规定了处理器可以执行的指令、寄存器的使用、内存地址模式以及与操作系统和应用程序的交互方式。x86指令集具有很强的向后兼容性，从最早的8086处理器到现代的x86-64处理器，新的处理器可以执行旧的x86指令。
+- `LLVM（Low-Level Virtual Machine）指令集`是LLVM编译器基础设施项目中的一种`中间表示（IR, Intermediate Representation）`，用于描述程序的逻辑和操作。在编译器中，LLVM IR**起着桥梁作用，将高级语言代码转换为底层机器代码**。LLVM IR被设计为一个`面向静态单赋值（SSA, Static Single Assignment）`的语言，是一种**高级的、平台无关的中间表示形式**。
 
 As **an environment for developing formally certified software and hardware**, Coq has been used, for example, to build CompCert, a fully-verified optimizing compiler for C, and CertiKOS, a fully verified hypervisor, for proving the correctness of subtle algorithms involving floating point numbers, and as the basis for CertiCrypt, an environment for reasoning about the security of cryptographic algorithms. It is also being used to build verified implementations of the open-source RISC-V processor architecture.
 
-作为一种**用于开发形式认证软件和硬件的环境**，Coq已被用于构建CompCert（一个完全验证的C优化编译器）、CertiKOS（一个完全验证的虚拟机监视器）、用于证明涉及浮点数的复杂算法的正确性，并作为CertiCrypt的基础（一个用于推理加密算法安全性的环境）。它还被用于构建开源RISC-V处理器架构的验证实现。
-
-> -  `CompCert`是一个用于编写高可靠性软件的C编译器，主要用于需要高度安全性和准确性的系统中，例如航空航天、军事和医疗设备。它由法国Inria研究所开发，独特之处在于其编译器的正确性得到了形式化验证。
-> -  `CertiKOS`是一个经过形式化验证的微内核操作系统，旨在为高安全性和高可靠性系统提供基础。它是由耶鲁大学的计算机科学团队开发的，其核心部分通过Coq证明助手，使用了形式化方法来验证操作系统的正确性。CertiKOS的主要目标是确保内核代码的安全性、可靠性和正确性，特别是在并发执行环境中。
-> -  hypervisor ['haɪpəvaɪzə] n.管理程序
-> -  subtle ['sʌt(ə)l] adj.不易察觉的；不明显的；微妙的；机智的
-> -  `Cryptographic Algorithms（加密算法）`是用于保护信息安全的数学方法和技术。它们通过加密和解密过程确保数据的机密性、完整性和真实性。加密算法可以分为对称加密、非对称加密、哈希函数和数字签名等几类，每一类算法都有其特定的用途和特点。
-  > -  cryptographic ['krɪptəʊ'græfɪk] adj.关于暗号的 n.隐晶文象状
+> 作为一种**用于开发形式认证软件和硬件的环境**，Coq已被用于构建CompCert（一个完全验证的C优化编译器）、CertiKOS（一个完全验证的虚拟机监视器）、用于证明涉及浮点数的复杂算法的正确性，并作为CertiCrypt的基础（一个用于推理加密算法安全性的环境）。它还被用于构建开源RISC-V处理器架构的验证实现。
+- `CompCert`是一个用于编写高可靠性软件的C编译器，主要用于需要高度安全性和准确性的系统中，例如航空航天、军事和医疗设备。它由法国Inria研究所开发，独特之处在于其编译器的正确性得到了形式化验证。
+- `CertiKOS`是一个经过形式化验证的微内核操作系统，旨在为高安全性和高可靠性系统提供基础。它是由耶鲁大学的计算机科学团队开发的，其核心部分通过Coq证明助手，使用了形式化方法来验证操作系统的正确性。CertiKOS的主要目标是确保内核代码的安全性、可靠性和正确性，特别是在并发执行环境中。
+- hypervisor ['haɪpəvaɪzə] n.管理程序
+- subtle ['sʌt(ə)l] adj.不易察觉的；不明显的；微妙的；机智的
+- `Cryptographic Algorithms（加密算法）`是用于保护信息安全的数学方法和技术。它们通过加密和解密过程确保数据的机密性、完整性和真实性。加密算法可以分为对称加密、非对称加密、哈希函数和数字签名等几类，每一类算法都有其特定的用途和特点。
+  - cryptographic ['krɪptəʊ'græfɪk] adj.关于暗号的 n.隐晶文象状
 
 As a realistic environment for **functional programming with dependent types**, it has inspired numerous innovations. For example, the Ynot system embeds "relational Hoare reasoning" (an extension of the Hoare Logic we will see later in this course) in Coq.
 
-作为**带有依赖类型的函数式编程的一个现实环境**，它启发了众多创新。例如，Ynot系统在Coq中嵌入了‘关系霍尔推理’（这是霍尔逻辑的扩展，我们将在本课程后面学习到）。
-
-> -  `Dependent types（依赖类型）`是编程语言和形式化证明系统中的一种高级类型系统，它允许*一个类型不仅可以依赖于其他类型，还可以依赖于程序中的具体值或表达式*。
-> -  `Ynot`是一个基于Coq证明助手的系统，旨在形式化地描述和验证具有副作用的程序。它提供了一个框架，使得开发者能够在Coq中编写和验证具有副作用的程序，比如那些涉及状态变更、I/O操作或并发的程序。
-> -  embed [ɪm'bed] v.把…牢牢地嵌入（或插入、埋入）；派遣（战地记者、摄影记者等）
-> -  `Hoare Reasoning`，也称为`Hoare Logic`，是一种**用于形式化验证程序正确性的逻辑系统**。它以C.A.R. Hoare在1969年提出的`Hoare三元组（Hoare Triple）`为基础，帮助开发者证明程序在特定条件下的正确性。Hoare Logic 被广泛应用于程序验证和编译器优化等领域。
-  > -  其核心概念Hoare三元组，通常表示为：{𝑃} 𝐶 {𝑄}。P（前置条件）：程序 𝐶 执行之前应满足的条件。C（程序）：待验证的程序片段或语句。Q（后置条件）：程序 𝐶 执行完成后应满足的条件。
-  > -  `Relational Hoare Reasoning` 是一种扩展的 Hoare 逻辑，用于形式化验证两个程序之间的关系。传统的 Hoare 逻辑（Hoare Logic）通常用于验证一个程序的前置条件（precondition）和后置条件（postcondition），而 Relational Hoare Logic (RHL) 则将这种思路推广到比较两个程序的行为。
+> 作为**带有依赖类型的函数式编程的一个现实环境**，它启发了众多创新。例如，Ynot系统在Coq中嵌入了‘关系霍尔推理’（这是霍尔逻辑的扩展，我们将在本课程后面学习到）。
+- `Dependent types（依赖类型）`是编程语言和形式化证明系统中的一种高级类型系统，它允许*一个类型不仅可以依赖于其他类型，还可以依赖于程序中的具体值或表达式*。
+- `Ynot`是一个基于Coq证明助手的系统，旨在形式化地描述和验证具有副作用的程序。它提供了一个框架，使得开发者能够在Coq中编写和验证具有副作用的程序，比如那些涉及状态变更、I/O操作或并发的程序。
+- embed [ɪm'bed] v.把…牢牢地嵌入（或插入、埋入）；派遣（战地记者、摄影记者等）
+- `Hoare Reasoning`，也称为`Hoare Logic`，是一种**用于形式化验证程序正确性的逻辑系统**。它以C.A.R. Hoare在1969年提出的`Hoare三元组（Hoare Triple）`为基础，帮助开发者证明程序在特定条件下的正确性。Hoare Logic 被广泛应用于程序验证和编译器优化等领域。
+  - 其核心概念Hoare三元组，通常表示为：{𝑃} 𝐶 {𝑄}。P（前置条件）：程序 𝐶 执行之前应满足的条件。C（程序）：待验证的程序片段或语句。Q（后置条件）：程序 𝐶 执行完成后应满足的条件。
+  - `Relational Hoare Reasoning` 是一种扩展的 Hoare 逻辑，用于形式化验证两个程序之间的关系。传统的 Hoare 逻辑（Hoare Logic）通常用于验证一个程序的前置条件（precondition）和后置条件（postcondition），而 Relational Hoare Logic (RHL) 则将这种思路推广到比较两个程序的行为。
 
 As a **proof assistant for higher-order logic**, it has been used to validate a number of important results in mathematics. For example, its ability to include complex computations inside proofs made it possible to develop the first formally verified proof of the `4-color theorem`. This proof had previously been controversial among mathematicians because it required checking a large number of configurations using a program. In the Coq formalization, everything is checked, including the correctness of the computational part. More recently, an even more massive effort led to a Coq formalization of the Feit-Thompson Theorem, the first major step in the classification of finite simple groups.
 
-作为**高阶逻辑的证明助手**，它被用来验证数学中的许多重要结果。例如，它将复杂计算包含在证明中的能力，使得开发`四色定理`的第一个正式验证成为可能。该证明曾在数学家中引发争议，因为它需要使用程序检查大量配置。在Coq形式化中，一切都得到了验证，包括计算部分的正确性。最近，一项更为庞大的努力导致了Feit-Thompson定理的Coq形式化，这是分类有限单群的第一步。
-
-> - `Higher-order logic（HOL，高阶逻辑）`是逻辑学中`一阶逻辑（first-order logic）`的一种扩展形式。一阶逻辑仅允许对个体对象进行量化。即在一阶逻辑中，量化符号（如“∃”（存在量词）和“∀”（全称量词））只适用于个体变量。在高阶逻辑中，不仅可以对个体对象进行量化，**还可以对谓词、函数和关系进行量化**。这意味着你可以量化那些在一阶逻辑中仅作为变量出现的概念。例如，可以说“对所有属性P，P在某个对象上成立”。
-> -  `四色定理（Four Color Theorem）`是图论中的一个著名定理，涉及地图的着色问题。它断言，对于任何一个平面地图，只需要使用不超过四种颜色，就可以使得地图上的相邻区域（即有共同边界的区域）着色不同。 
-  > -  四色定理最早由英格兰数学家弗朗西斯·古斯里（Francis Guthrie）在1852年提出，但正式的证明在一个多世纪内都未能成功。
-  > -  Kenneth Appel 和 Wolfgang Haken 在1976年首次使用计算机辅助证明了四色定理。他们的方法通过将问题分解成大量的特殊情况，然后使用计算机验证每一种情况都满足四色定理。这个证明非常复杂，涉及上千小时的计算机计算，虽然产生了一些争议，但最终被数学界接受。*它成为了数学史上第一个通过计算机辅助证明的重要定理。*
+> 作为**高阶逻辑的证明助手**，它被用来验证数学中的许多重要结果。例如，它将复杂计算包含在证明中的能力，使得开发`四色定理`的第一个正式验证成为可能。该证明曾在数学家中引发争议，因为它需要使用程序检查大量配置。在Coq形式化中，一切都得到了验证，包括计算部分的正确性。最近，一项更为庞大的努力导致了Feit-Thompson定理的Coq形式化，这是分类有限单群的第一步。
+- `Higher-order logic（HOL，高阶逻辑）`是逻辑学中`一阶逻辑（first-order logic）`的一种扩展形式。一阶逻辑仅允许对个体对象进行量化。即在一阶逻辑中，量化符号（如“∃”（存在量词）和“∀”（全称量词））只适用于个体变量。在高阶逻辑中，不仅可以对个体对象进行量化，**还可以对谓词、函数和关系进行量化**。这意味着你可以量化那些在一阶逻辑中仅作为变量出现的概念。例如，可以说“对所有属性P，P在某个对象上成立”。
+- `四色定理（Four Color Theorem）`是图论中的一个著名定理，涉及地图的着色问题。它断言，对于任何一个平面地图，只需要使用不超过四种颜色，就可以使得地图上的相邻区域（即有共同边界的区域）着色不同。 
+  - 四色定理最早由英格兰数学家弗朗西斯·古斯里（Francis Guthrie）在1852年提出，但正式的证明在一个多世纪内都未能成功。
+  - Kenneth Appel 和 Wolfgang Haken 在1976年首次使用计算机辅助证明了四色定理。他们的方法通过将问题分解成大量的特殊情况，然后使用计算机验证每一种情况都满足四色定理。这个证明非常复杂，涉及上千小时的计算机计算，虽然产生了一些争议，但最终被数学界接受。*它成为了数学史上第一个通过计算机辅助证明的重要定理。*
 
 By the way, in case you're wondering about the name, here's what the official Coq web site at INRIA (the French national research lab where Coq has mostly been developed) says about it: "Some French computer scientists have a tradition of naming their software as animal species: Caml, Elan, Foc or Phox are examples of this tacit convention. In French, 'coq' means rooster, and it sounds like the initials of the Calculus of Constructions (CoC) on which it is based." The rooster is also the national symbol of France, and C-o-q are the first three letters of the name of Thierry Coquand, one of Coq's early developers.
 
-顺便说一下，如果你对Coq的名字感到好奇，以下是INRIA（主要开发Coq的法国国家研究实验室）官方网站上的解释：“一些法国计算机科学家有一个将他们的软件命名为动物种类的传统：Caml、Elan、Foc或Phox就是这种默许惯例的例子。在法语中，‘coq’的意思是公鸡，它听起来像CoC（构造微积分）的首字母缩写，这是其基础。公鸡也是法国的国家象征，C-o-q也是Coq早期开发者之一Thierry Coquand的名字的前三个字母。”
+> 顺便说一下，如果你对Coq的名字感到好奇，以下是INRIA（主要开发Coq的法国国家研究实验室）官方网站上的解释：“一些法国计算机科学家有一个将他们的软件命名为动物种类的传统：Caml、Elan、Foc或Phox就是这种默许惯例的例子。在法语中，‘coq’的意思是公鸡，它听起来像CoC（构造微积分）的首字母缩写，这是其基础。公鸡也是法国的国家象征，C-o-q也是Coq早期开发者之一Thierry Coquand的名字的前三个字母。”
 
-#### Functional Programming 函数式编程
+##### Functional Programming 函数式编程
 
 The term functional programming refers both to a collection of programming idioms that can be used in almost any programming language and to a family of programming languages designed to emphasize these idioms, including Haskell, OCaml, Standard ML, F#, Scala, Scheme, Racket, Common Lisp, Clojure, Erlang, and Coq.
 
-函数式编程这个术语既指可以在几乎任何编程语言中使用的一组编程习惯，也指一组强调这些习惯的编程语言，包括Haskell、OCaml、Standard ML、F#、Scala、Scheme、Racket、Common Lisp、Clojure、Erlang和Coq。
+> 函数式编程这个术语既指可以在几乎任何编程语言中使用的一组编程习惯，也指一组强调这些习惯的编程语言，包括Haskell、OCaml、Standard ML、F#、Scala、Scheme、Racket、Common Lisp、Clojure、Erlang和Coq。
 
 Functional programming has been developed over many decades -- indeed, its roots go back to Church's lambda-calculus, which was invented in the 1930s, well before the first electronic computers! But since the early '90s it has enjoyed a surge of interest among industrial engineers and language designers, playing a key role in high-value systems at companies like Jane Street Capital, Microsoft, Facebook, Twitter, and Ericsson.
 
-函数式编程已经发展了数十年——实际上，其根源可以追溯到1930年代Church发明的λ演算，远早于第一台电子计算机的出现！但是，自90年代初以来，它在工业工程师和语言设计者中重新引起了极大的兴趣，成为像Jane Street Capital、微软、Facebook、Twitter和爱立信等公司关键系统中的核心部分。
+> 函数式编程已经发展了数十年——实际上，其根源可以追溯到1930年代Church发明的λ演算，远早于第一台电子计算机的出现！但是，自90年代初以来，它在工业工程师和语言设计者中重新引起了极大的兴趣，成为像Jane Street Capital、微软、Facebook、Twitter和爱立信等公司关键系统中的核心部分。
 
 The most basic tenet of functional programming is that, as much as possible, computation should be pure, in the sense that the only effect of execution should be to produce a result: it should be free from side effects such as I/O, assignments to mutable variables, redirecting pointers, etc. For example, whereas an imperative sorting function might take a list of numbers and rearrange its pointers to put the list in order, a pure sorting function would take the original list and return a new list containing the same numbers in sorted order.
 
-函数式编程最基本的原则是，尽可能地，使计算纯粹化，意味着执行的唯一效果应当是生成结果：它应当避免诸如I/O、可变变量赋值、指针重定向等副作用。例如，一个命令式的排序函数可能会接受一个数字列表并重新排列其指针以使列表有序，而一个纯排序函数则会接受原列表并返回一个包含相同数字的有序新列表。
+> 函数式编程最基本的原则是，尽可能地，使计算纯粹化，意味着执行的唯一效果应当是生成结果：它应当避免诸如I/O、可变变量赋值、指针重定向等副作用。例如，一个命令式的排序函数可能会接受一个数字列表并重新排列其指针以使列表有序，而一个纯排序函数则会接受原列表并返回一个包含相同数字的有序新列表。
 
 A significant benefit of this style of programming is that it makes programs easier to understand and reason about. If every operation on a data structure yields a new data structure, leaving the old one intact, then there is no need to worry about how that structure is being shared and whether a change by one part of the program might break an invariant relied on by another part of the program. These considerations are particularly critical in concurrent systems, where every piece of mutable state that is shared between threads is a potential source of pernicious bugs. Indeed, a large part of the recent interest in functional programming in industry is due to its simpler behavior in the presence of concurrency.
 
-这种编程风格的一个显著好处是，它使程序更易于理解和推理。如果对数据结构的每个操作都会产生一个新的数据结构，并且保持旧的数据结构不变，那么就不需要担心该结构是如何被共享的，也不需要担心程序的某个部分进行的更改会破坏另一个部分依赖的不变量。这些考虑在并发系统中特别关键，因为每一个在线程间共享的可变状态都是可能导致严重错误的潜在来源。实际上，业界对函数式编程的兴趣大部分是因为它在并发情况下表现出更简单的行为。
+> 这种编程风格的一个显著好处是，它使程序更易于理解和推理。如果对数据结构的每个操作都会产生一个新的数据结构，并且保持旧的数据结构不变，那么就不需要担心该结构是如何被共享的，也不需要担心程序的某个部分进行的更改会破坏另一个部分依赖的不变量。这些考虑在并发系统中特别关键，因为每一个在线程间共享的可变状态都是可能导致严重错误的潜在来源。实际上，业界对函数式编程的兴趣大部分是因为它在并发情况下表现出更简单的行为。
 
 Another reason for the current excitement about functional programming is related to the first: functional programs are often much easier to parallelize and physically distribute than their imperative counterparts. If running a computation has no effect other than producing a result, then it does not matter where it is run. Similarly, if a data structure is never modified destructively, then it can be copied freely, across cores or across the network. Indeed, the "Map-Reduce" idiom, which lies at the heart of massively distributed query processors like Hadoop and is used by Google to index the entire web is a classic example of functional programming.
 
-对函数式编程的当前兴奋点的另一个原因也与第一个原因相关：函数式程序通常比命令式程序更容易并行化和物理分布。如果运行一个计算除了产生结果之外没有其他影响，那么它在哪里运行并不重要。同样地，如果数据结构从未被破坏性修改，那么它可以自由地复制，无论是在不同的处理器核心之间还是在网络上。实际上，Map-Reduce这种模式正是函数式编程的经典示例，它在Hadoop等大规模分布式查询处理器中起到了核心作用，并被Google用来索引整个互联网。
+> 对函数式编程的当前兴奋点的另一个原因也与第一个原因相关：函数式程序通常比命令式程序更容易并行化和物理分布。如果运行一个计算除了产生结果之外没有其他影响，那么它在哪里运行并不重要。同样地，如果数据结构从未被破坏性修改，那么它可以自由地复制，无论是在不同的处理器核心之间还是在网络上。实际上，Map-Reduce这种模式正是函数式编程的经典示例，它在Hadoop等大规模分布式查询处理器中起到了核心作用，并被Google用来索引整个互联网。
 
 For purposes of this course, functional programming has yet another significant attraction: it serves as a bridge between logic and computer science. Indeed, Coq itself can be viewed as a combination of a small but extremely expressive functional programming language plus a set of tools for stating and proving logical assertions. Moreover, when we come to look more closely, we find that these two sides of Coq are actually aspects of the very same underlying machinery -- i.e., proofs are programs.
 
-对于本课程的目的，函数式编程还有另一个显著的吸引力：它可以作为逻辑与计算机科学之间的桥梁。实际上，Coq本身可以被视为一个小而非常表达力强的函数式编程语言与一组用于陈述和证明逻辑断言的工具的结合体。此外，当我们仔细观察时，我们会发现Coq的这两个方面实际上是同一个基础机制的两个方面——即证明就是程序。
+> 对于本课程的目的，函数式编程还有另一个显著的吸引力：它可以作为逻辑与计算机科学之间的桥梁。实际上，Coq本身可以被视为一个小而非常表达力强的函数式编程语言与一组用于陈述和证明逻辑断言的工具的结合体。此外，当我们仔细观察时，我们会发现Coq的这两个方面实际上是同一个基础机制的两个方面——即证明就是程序。
 
-#### Further Reading 延伸阅读
+##### Further Reading 延伸阅读
 
 This text is intended to be self contained, but readers looking for a deeper treatment of particular topics will find some suggestions for further reading in the Postscript chapter. Bibliographic information for all cited works can be found in the file Bib.
 
-本文旨在自成一体，但对于希望深入探讨特定主题的读者，可以在附录章节找到进一步阅读的建议。所有引用作品的书目信息都可以在 Bib 文件中找到。
+> 本文旨在自成一体，但对于希望深入探讨特定主题的读者，可以在附录章节找到进一步阅读的建议。所有引用作品的书目信息都可以在 Bib 文件中找到。
 
-### Practicalities 实践操作指南
+#### Practicalities 实践操作指南
 
-#### System Requirements 系统需求
+##### System Requirements 系统需求
 
 Coq runs on Windows, Linux, and macOS. The files in this book have been tested with Coq 8.17.
 
-Coq 可以在 Windows、Linux 和 macOS 上运行。本书中的文件已在 Coq 8.17 版本上进行过测试。
+> Coq 可以在 Windows、Linux 和 macOS 上运行。本书中的文件已在 Coq 8.17 版本上进行过测试。
 
 You will need:
   - A current installation of Coq, available from the Coq home page. The "Coq Platform" usually offers the smoothest installation experience.
@@ -234,7 +217,7 @@ You will need:
     - CoqIDE is a simpler stand-alone IDE. It is distributed with Coq, so it should be available once you have Coq installed. It can also be compiled from scratch, but on some platforms this may involve installing additional packages for GUI libraries and such.
     - Users who like CoqIDE should consider running it with the "asynchronous" and "error resilience" modes disabled:
 
-你需要：
+> 你需要：
   - 当前版本的 Coq 安装，可以从 Coq 官方主页下载。“Coq 平台”通常提供最流畅的安装体验。
   - 如果你使用下面描述的 VSCode + Docker 选项，则不需要单独安装 Coq。
   - 用于与 Coq 交互的 IDE。有几个选择：
@@ -250,7 +233,7 @@ You will need:
           -async-proofs-command-error-resilience off Foo.v & ]] *)
 ```
 
-#### Using Coq with VSCode and Docker
+##### Using Coq with VSCode and Docker
 
 The Visual Studio Code IDE can cooperate with the Docker virtualization platform to compile Coq scripts without the need for any separate Coq installation. To get things set up, follow these steps:
   - Install Docker from https://www.docker.com/get-started/ or make sure your existing installation is up to date.
@@ -272,7 +255,7 @@ Visual Studio Code IDE 可以与 Docker 虚拟化平台协作，编译 Coq 脚�
   - 通过双击左侧列表中的 Basics.v 文件来检查 VSCoq 是否正常工作（你应该看到在打开的窗口中有一个闪烁的光标；如果没有，你可以点击该窗口以选中它），然后多次按下 alt+下箭头（在 macOS 上，按 control+option+下箭头）。你应该看到光标在文件中移动，光标上方的区域被高亮显示。
   - 要查看其他可用的快捷键，请按 F1 然后输入 Coq:，或者访问 VSCoq 的网页：VSCoq GitHub。
 
-#### Exercises 练习说明
+##### Exercises 练习说明
 
 Each chapter includes numerous exercises. Each is marked with a "star rating," which can be interpreted as follows:
   - One star: easy exercises that underscore points in the text and that, for most readers, should take only a minute or two. Get in the habit of working these as you reach them.
@@ -280,7 +263,7 @@ Each chapter includes numerous exercises. Each is marked with a "star rating," w
   - Three stars: exercises requiring a bit of thought (ten minutes to half an hour).
   - Four and five stars: more difficult exercises (half an hour and up).
 
-每个章节包含大量练习。每个练习都标有“星级评分”，可以解释如下：
+> 每个章节包含大量练习。每个练习都标有“星级评分”，可以解释如下：
   - 一星：简单的练习，强调文本中的要点，对于大多数读者来说，只需一两分钟即可完成。养成在遇到它们时立即练习的习惯。
   - 二星：直接的练习（五到十分钟）。
   - 三星：需要一些思考的练习（十分钟到半小时）。
@@ -295,7 +278,7 @@ Those using SF in a classroom setting should note that the autograder assigns ex
   - 4 stars = 6 points
   - 5 stars = 10 points
 
-那些在课堂环境中使用 SF 的用户应注意，自动评分程序会为难度较大的练习分配额外的分数：
+> 那些在课堂环境中使用 SF 的用户应注意，自动评分程序会为难度较大的练习分配额外的分数：
   - 1 星 = 1 分
   - 2 星 = 2 分
   - 3 星 = 3 分
@@ -304,35 +287,35 @@ Those using SF in a classroom setting should note that the autograder assigns ex
 
 Some exercises are marked "advanced," and some are marked "optional." Doing just the non-optional, non-advanced exercises should provide good coverage of the core material. Optional exercises provide a bit of extra practice with key concepts and introduce secondary themes that may be of interest to some readers. Advanced exercises are for readers who want an extra challenge and a deeper cut at the material.
 
-有些练习被标记为“高级”，有些被标记为“可选”。仅完成非可选、非高级的练习应该可以很好地覆盖核心材料。可选练习提供了对关键概念的额外练习，并介绍了一些可能对某些读者感兴趣的次要主题。高级练习适合那些想要额外挑战和更深入学习材料的读者。
+> 有些练习被标记为“高级”，有些被标记为“可选”。仅完成非可选、非高级的练习应该可以很好地覆盖核心材料。可选练习提供了对关键概念的额外练习，并介绍了一些可能对某些读者感兴趣的次要主题。高级练习适合那些想要额外挑战和更深入学习材料的读者。
 
 **Please do not post solutions to the exercises in a public place**. Software Foundations is widely used both for self-study and for university courses. Having solutions easily available makes it much less useful for courses, which typically have graded homework assignments. We especially request that readers not post solutions to the exercises anyplace where they can be found by search engines.
 
-**请不要在公共场所发布习题的解答**。《软件基础》广泛用于自学和大学课程。如果解答轻易可以获得，将大大降低其在课程中的价值，特别是那些有评分作业的课程。我们特别请求读者不要在可以被搜索引擎找到的地方发布习题解答。
+> **请不要在公共场所发布习题的解答**。《软件基础》广泛用于自学和大学课程。如果解答轻易可以获得，将大大降低其在课程中的价值，特别是那些有评分作业的课程。我们特别请求读者不要在可以被搜索引擎找到的地方发布习题解答。
 
-#### Downloading the Coq Files 下载 Coq 文件
+##### Downloading the Coq Files 下载 Coq 文件
 
 A tar file containing the full sources for the "release version" of this book (as a collection of Coq scripts and HTML files) is available at https://softwarefoundations.cis.upenn.edu.
 
-包含本书“发布版本”完整源码的 tar 文件（作为 Coq 脚本和 HTML 文件的集合）可以在 Software Foundations 网站 获取。
+> 包含本书“发布版本”完整源码的 tar 文件（作为 Coq 脚本和 HTML 文件的集合）可以在 Software Foundations 网站 获取。
 
 If you are using the book as part of a class, your professor may give you access to a locally modified version of the files; you should use that one instead of the public release version, so that you get any local updates during the semester.
 
-如果你正在课堂上使用这本书，你的教授可能会给你提供访问本地修改版本文件的权限；你应该使用该版本，而不是公开发布版本，以便在学期内获得本地更新。
+> 如果你正在课堂上使用这本书，你的教授可能会给你提供访问本地修改版本文件的权限；你应该使用该版本，而不是公开发布版本，以便在学期内获得本地更新。
 
-#### Chapter Dependencies 章节依赖关系
+##### Chapter Dependencies 章节依赖关系
 
 A diagram of the dependencies between chapters and some suggested paths through the material can be found in the file deps.html.
 
-章节之间依赖关系的图表以及一些材料的建议路径可以在 deps.html 文件中找到。
+> 章节之间依赖关系的图表以及一些材料的建议路径可以在 deps.html 文件中找到。
 
 ![deps](https://coq-zh.github.io/SF-zh/lf-current/deps.gif)
 
-#### Recommended Citation Format 推荐引用格式
+##### Recommended Citation Format 推荐引用格式
 
 If you want to refer to this volume in your own writing, please do so as follows:
 
-如果你想在自己的写作中引用本卷，请按以下格式进行：
+> 如果你想在自己的写作中引用本卷，请按以下格式进行：
 
 ```
     @book            {Pierce:SF1,
@@ -353,30 +336,30 @@ If you want to refer to this volume in your own writing, please do so as follows
     note         =   {Version 6.5, \URL{http://softwarefoundations.cis.upenn.edu}}
     }
 ```
-### Resources 资源
+#### Resources 资源
 
-#### Sample Exams 考试样本
+##### Sample Exams 考试样本
 
 A large compendium of exams from many offerings of CIS5000 ("Software Foundations") at the University of Pennsylvania can be found at https://www.seas.upenn.edu/~cis5000/current/exams/index.html. There has been some drift of notations over the years, but most of the problems are still relevant to the current text.
 
-样本考试：可以在 University of Pennsylvania 网站找到许多 CIS5000 (“Software Foundations”) 课程的考试样本。
+> 样本考试：可以在 University of Pennsylvania 网站找到许多 CIS5000 (“Software Foundations”) 课程的考试样本。
 
-#### Lecture Videos 视频课程
+##### Lecture Videos 视频课程
 
 Lectures for two intensive summer courses based on Logical Foundations (part of the DeepSpec summer school series) can be found at https://deepspec.org/event/dsss17and https://deepspec.org/event/dsss18/. The video quality in the 2017 lectures is poor at the beginning but gets better in the later lectures.
 
-讲座视频：基于《逻辑基础》的两门密集型暑期课程的讲座可以在 DeepSpec Summer School 2017 和 DeepSpec Summer School 2018 找到。2017 年讲座的视频质量在开始时较差，但在后来的讲座中有所改善。
+> 讲座视频：基于《逻辑基础》的两门密集型暑期课程的讲座可以在 DeepSpec Summer School 2017 和 DeepSpec Summer School 2018 找到。2017 年讲座的视频质量在开始时较差，但在后来的讲座中有所改善。
 
-#### Note for Instructors and Contributors 对讲师和贡献者的说明
+##### Note for Instructors and Contributors 对讲师和贡献者的说明
 
 If you plan to use these materials in your own teaching, or if you are using software foundations for self study and are finding things you'd like to help add or improve, your contributions are welcome! You are warmly invited to join the private SF git repo.
 
-如果你计划在自己的教学中使用这些材料，或者你在自学 Software Foundations 时发现了你想要添加或改进的内容，欢迎你贡献！我们热情邀请你加入 SF 的私人 Git 仓库。
+> 如果你计划在自己的教学中使用这些材料，或者你在自学 Software Foundations 时发现了你想要添加或改进的内容，欢迎你贡献！我们热情邀请你加入 SF 的私人 Git 仓库。
 
 In order to keep the legalities simple and to have a single point of responsibility in case the need should ever arise to adjust the license terms, sublicense, etc., we ask all contributors (i.e., everyone with access to the developers' repository) to assign copyright in their contributions to the appropriate "author of record," as follows:
    - I hereby assign copyright in my past and future contributions to the Software Foundations project to the Author of Record of each volume or component, to be licensed under the same terms as the rest of Software Foundations. I understand that, at present, the Authors of Record are as follows: For Volumes 1 and 2, known until 2016 as "Software Foundations" and from 2016 as (respectively) "Logical Foundations" and "Programming Foundations," and for Volume 4, "QuickChick: Property-Based Testing in Coq," the Author of Record is Benjamin C. Pierce. For Volume 3, "Verified Functional Algorithms," and volume 5, "Verifiable C," the Author of Record is Andrew W. Appel. For Volume 6, "Separation Logic Foundations," the author of record is Arthur Chargueraud. For components outside of designated volumes (e.g., typesetting and grading tools and other software infrastructure), the Author of Record is Benjamin Pierce.
 
-为了使法律问题简单化，并在需要时调整许可证条款、再许可等情况下有一个单一的责任点，我们要求所有贡献者（即拥有开发者仓库访问权限的每个人）将其贡献的版权分配给相应的“记录作者”，并按照与 Software Foundations 其余部分相同的条款进行许可。我理解目前“记录作者”如下：
+> 为了使法律问题简单化，并在需要时调整许可证条款、再许可等情况下有一个单一的责任点，我们要求所有贡献者（即拥有开发者仓库访问权限的每个人）将其贡献的版权分配给相应的“记录作者”，并按照与 Software Foundations 其余部分相同的条款进行许可。我理解目前“记录作者”如下：
   - 对于卷 1 和卷 2，分别称为“Logical Foundations”和“Programming Foundations”：记录作者为 Benjamin C. Pierce。
   - 对于卷 3“Verified Functional Algorithms” 和卷 5“Verifiable C”：记录作者为 Andrew W. Appel。
   - 对于卷 4“QuickChick: Property-Based Testing in Coq” 和卷 6“Separation Logic Foundations”：记录作者为 Arthur Chargueraud。
@@ -384,30 +367,30 @@ In order to keep the legalities simple and to have a single point of responsibil
 
 To get started, please send an email to Benjamin Pierce, describing yourself and how you plan to use the materials and including (1) the above copyright transfer text and (2) your github username.
 
-要开始，请发送电子邮件至 Benjamin Pierce，描述你自己以及你计划如何使用这些材料，并包括：1. 上述版权转让文本 2. 你的 GitHub 用户名。
+> 要开始，请发送电子邮件至 Benjamin Pierce，描述你自己以及你计划如何使用这些材料，并包括：1. 上述版权转让文本 2. 你的 GitHub 用户名。
 
 We'll set you up with access to the git repository and developers' mailing lists. In the repository you'll find the files INSTRUCTORS and CONTRIBUTING with further instructions.
 
-我们将为你设置访问 Git 仓库和开发者邮件列表的权限。在仓库中，你会找到 INSTRUCTORS 和 CONTRIBUTING 文件，里面有进一步的说明。
+> 我们将为你设置访问 Git 仓库和开发者邮件列表的权限。在仓库中，你会找到 INSTRUCTORS 和 CONTRIBUTING 文件，里面有进一步的说明。
 
-#### Translations 翻译
+##### Translations 翻译
 
 Thanks to the efforts of a team of volunteer translators, Software Foundations can be enjoyed in Japanese at http://proofcafe.org/sf. A Chinese translation is also underway; you can preview it at https://coq-zh.github.io/SF-zh/.
 
-感谢志愿翻译团队的努力，Software Foundations 可以在 ProofCafe 网站上以日语阅读。中文翻译也正在进行中；你可以在 Coq 中文网站 预览。
+> 感谢志愿翻译团队的努力，Software Foundations 可以在 ProofCafe 网站上以日语阅读。中文翻译也正在进行中；你可以在 Coq 中文网站 预览。
 
-#### Thanks 鸣谢
+##### Thanks 鸣谢
 Development of the Software Foundations series has been supported, in part, by the National Science Foundation under the NSF Expeditions grant 1521523, The Science of Deep Specification.
 
-《软件基础》系列的开发部分得到了国家科学基金会（National Science Foundation）NSF Expeditions 1521523 号项目“深度规范科学”的支持。
+> 《软件基础》系列的开发部分得到了国家科学基金会（National Science Foundation）NSF Expeditions 1521523 号项目“深度规范科学”的支持。
 
 (* 2023-12-29 17:12 *)
 
-## Basics
+### Basics
 
 Functional Programming in Coq
 
-### Introduction
+#### Introduction
 
 The functional style of programming is founded on simple, everyday mathematical intuitions: If a procedure or method has no side effects, then (ignoring efficiency) all we need to understand about it is how it maps inputs to outputs -- that is, we can think of it as just a concrete method for computing a mathematical function. This is one sense of the word "functional" in "functional programming." The direct connection between programs and simple mathematical objects supports both formal correctness proofs and sound informal reasoning about program behavior.
 
@@ -417,15 +400,15 @@ Other common features of functional languages include algebraic data types and p
 
 The first half of this chapter introduces the most essential elements of Coq's native functional programming language, Gallina. The second half introduces some basic tactics that can be used to prove properties of Gallina programs.
 
-### Data and Functions
+#### Data and Functions
 
-#### Enumerated Types
+##### Enumerated Types
 
 One notable thing about Coq is that its set of built-in features is extremely small. For example, instead of providing the usual palette of atomic data types (booleans, integers, strings, etc.), Coq offers a powerful mechanism for defining new data types from scratch, with all these familiar types as instances.
 
 Naturally, the Coq distribution comes with an extensive standard library providing definitions of booleans, numbers, and many common data structures like lists and hash tables. But there is nothing magic or primitive about these library definitions. To illustrate this, in this course we will explicitly recapitulate (almost) all the definitions we need, rather than getting them from the standard library.
 
-#### Days of the Week
+##### Days of the Week
 
 To see how this definition mechanism works, let's start with a very simple example. The following declaration tells Coq that we are defining a set of data values -- a type.
 
@@ -491,7 +474,7 @@ Third, we can ask Coq to extract, from our Definition, a program in a more conve
 
 Indeed, this is one of the main uses for which Coq was developed. We'll come back to this topic in later chapters.
 
-#### Homework Submission Guidelines
+##### Homework Submission Guidelines
 
 If you are using Software Foundations in a course, your instructor may use automatic scripts to help grade your homework assignments. In order for these scripts to work correctly (and ensure that you get full credit for your work!), please be careful to follow these rules:
 * Do not change the names of exercises. Otherwise the grading scripts will be unable to find your solution.
@@ -519,7 +502,7 @@ The Require Export statement on the next line tells Coq to use the String module
 From Coq Require Export String.
 ```
 
-#### Booleans
+##### Booleans
 
 Following the pattern of the days of the week above, we can define the standard type bool of booleans, with members true and false.
 
@@ -615,7 +598,7 @@ Example test_nandb4: (nandb true true) = false.
 ☐
 ```
 
-###### Exercise: 1 star, standard (andb3)
+####### Exercise: 1 star, standard (andb3)
 
 ```coq
 Do the same for the andb3 function below. This function should return true when all of its inputs are true, and false otherwise.
@@ -632,7 +615,7 @@ Example test_andb34: (andb3 true true false) = false.
 ☐
 ```
 
-#### Types
+##### Types
 Every expression in Coq has a type describing what sort of thing it computes. The Check command asks Coq to print the type of an expression.
 
 ```coq
@@ -658,7 +641,7 @@ Check negb
 
 The type of negb, written bool → bool and pronounced "bool arrow bool," can be read, "Given an input of type bool, this function produces an output of type bool." Similarly, the type of andb, written bool → bool → bool, can be read, "Given two inputs, each of type bool, this function produces an output of type bool."
 
-#### New Types from Old
+##### New Types from Old
 
 The types we have defined so far are examples of "enumerated types": their definitions explicitly enumerate a finite set of elements, called constructors. Here is a more interesting type definition, where one of the constructors takes an argument:
 
@@ -725,7 +708,7 @@ The pattern "primary _" here is shorthand for "the constructor primary applied t
 
 (The wildcard pattern _ has the same effect as the dummy pattern variable p in the definition of monochrome.)
 
-#### Modules
+##### Modules
 
 Coq provides a module system to aid in organizing large developments. We won't need most of its features, but one is useful here: If we enclose a collection of declarations between Module X and End X markers, then, in the remainder of the file after the End, these definitions are referred to by names like X.foo instead of just foo. We will use this feature to limit the scope of definitions, so that we are free to reuse names.
 
@@ -738,7 +721,7 @@ Check Playground.foo : rgb.
 Check foo : bool.
 ```
 
-#### Tuples
+##### Tuples
 
 ```coq
 Module TuplePlayground.
@@ -773,7 +756,7 @@ Compute (all_zero (bits B0 B0 B0 B0)).
 End TuplePlayground.
 ```
 
-#### Numbers
+##### Numbers
 We put this section in a module so that our own definition of natural numbers does not interfere with the one from the standard library. In the rest of the book, we'll want to use the standard library's.
 
 ```coq
@@ -955,7 +938,7 @@ Fixpoint exp (base power : nat) : nat :=
   end.
 ```
 
-###### Exercise: 1 star, standard (factorial)
+####### Exercise: 1 star, standard (factorial)
 
 Recall the standard mathematical factorial function:
 
@@ -1047,7 +1030,7 @@ Proof. simpl. reflexivity. Qed.
 
 We now have two symbols that both look like equality: = and =?. We'll have much more to say about their differences and similarities later. For now, the main thing to notice is that x = y is a logical claim -- a "proposition" -- that we can try to prove, while x =? y is a boolean expression whose value (either true or false) we can compute.
 
-###### Exercise: 1 star, standard (ltb)
+####### Exercise: 1 star, standard (ltb)
 
 The ltb function tests natural numbers for less-than, yielding a boolean. Instead of making up a new Fixpoint for this one, define it in terms of a previously defined function. (It can be done with just one previously defined function, but you can use two if you want.)
 
@@ -1064,7 +1047,7 @@ Example test_ltb3: (ltb 4 2) = false.
 ☐
 ```
 
-## Proof by Simplification
+### Proof by Simplification
 
 Now that we've looked at a few datatypes and functions, let's turn to stating and proving properties of their behavior.
 
@@ -1121,7 +1104,7 @@ The _l suffix in the names of these theorems is pronounced "on the left."
 
 It is worth stepping through these proofs to observe how the context and the goal change. You may want to add calls to simpl before reflexivity to see the simplifications that Coq performs on the terms before checking that they are equal.
 
-## Proof by Rewriting
+### Proof by Rewriting
 
 The following theorem is a bit more interesting than the ones we've seen:
 
@@ -1152,7 +1135,7 @@ The first line of the proof moves the universally quantified variables n and m i
 
 (The arrow symbol in the rewrite has nothing to do with implication: it tells Coq to apply the rewrite from left to right. In fact, we can omit the arrow, and Coq will default to rewriting left to right. To rewrite from right to left, use rewrite <-. Try making this change in the above proof and see what changes.)
 
-###### Exercise: 1 star, standard (plus_id_exercise)
+####### Exercise: 1 star, standard (plus_id_exercise)
 
 Remove "Admitted." and fill in the proof. (Note that the theorem has two hypotheses -- n = m and m = o -- each to the left of an implication arrow.)
 
@@ -1189,7 +1172,7 @@ Proof.
   reflexivity. Qed.
 ```
 
-###### Exercise: 1 star, standard (mult_n_1)
+####### Exercise: 1 star, standard (mult_n_1)
 
 Use mult_n_Sm and mult_n_0 to prove the following theorem. (Recall that 1 is S O.)
 
@@ -1201,7 +1184,7 @@ Proof.
 ☐
 ```
 
-## Proof by Case Analysis
+### Proof by Case Analysis
 
 Of course, not everything can be proved by simple calculation and rewriting: In general, unknown, hypothetical values (arbitrary numbers, booleans, lists, etc.) can block simplification. For example, if we try to prove the following fact using the simpl tactic as above, we get stuck. (We then use the Abort command to give up on it for the moment.)
 Theorem plus_1_neq_0_firsttry : ∀ n : nat,
@@ -1312,7 +1295,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 2 stars, standard (andb_true_elim2)
+####### Exercise: 2 stars, standard (andb_true_elim2)
 
 Prove the following claim, marking cases (and subcases) with bullets when you use destruct.
 
@@ -1359,7 +1342,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 1 star, standard (zero_nbeq_plus_1)
+####### Exercise: 1 star, standard (zero_nbeq_plus_1)
 
 ```coq
 Theorem zero_nbeq_plus_1 : ∀ n : nat,
@@ -1369,7 +1352,7 @@ Proof.
 ☐
 ```
 
-#### More on Notation (Optional)
+##### More on Notation (Optional)
 
 (In general, sections marked Optional are not needed to follow the rest of the book, except possibly other Optional sections. On a first reading, you might want to just skim these sections so that you know what's there for future reference.)
 
@@ -1391,7 +1374,7 @@ Each notation symbol is also associated with a notation scope. Coq tries to gues
 Notation scopes also apply to numeral notations (3, 4, 5, 42, etc.), so you may sometimes see 0%nat, which means O (the natural number 0 that we're using in this chapter), or 0%Z, which means the integer zero (which comes from a different part of the standard library).
 Pro tip: Coq's notation mechanism is not especially powerful. Don't expect too much from it.
 
-#### Fixpoints and Structural Recursion (Optional)
+##### Fixpoints and Structural Recursion (Optional)
 
 Here is a copy of the definition of addition:
 
@@ -1407,7 +1390,7 @@ When Coq checks this definition, it notes that plus' is "decreasing on 1st argum
 
 This requirement is a fundamental feature of Coq's design: In particular, it guarantees that every function that can be defined in Coq will terminate on all inputs. However, because Coq's "decreasing analysis" is not very sophisticated, it is sometimes necessary to write functions in slightly unnatural ways.
 
-###### Exercise: 2 stars, standard, optional (decreasing)
+####### Exercise: 2 stars, standard, optional (decreasing)
 
 To get a concrete sense of this, find a way to write a sensible Fixpoint definition (of a simple function on numbers, say) that does terminate on all inputs, but that Coq will reject because of this restriction.
 
@@ -1416,11 +1399,11 @@ To get a concrete sense of this, find a way to write a sensible Fixpoint definit
 (* FILL IN HERE *)
 ☐
 
-### More Exercises
+#### More Exercises
 
-#### Warmups
+##### Warmups
 
-###### Exercise: 1 star, standard (identity_fn_applied_twice)
+####### Exercise: 1 star, standard (identity_fn_applied_twice)
 
 Use the tactics you have learned so far to prove the following theorem about boolean functions.
 
@@ -1434,7 +1417,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard (negation_fn_applied_twice)
+####### Exercise: 1 star, standard (negation_fn_applied_twice)
 
 Now state and prove a theorem negation_fn_applied_twice similar to the previous one but where the second hypothesis says that the function f has the property that f x = negb x.
 
@@ -1448,7 +1431,7 @@ Definition manual_grade_for_negation_fn_applied_twice : option (nat×string) := 
 
 (The last definition is used by the autograder.) ☐
 
-###### Exercise: 3 stars, standard, optional (andb_eq_orb)
+####### Exercise: 3 stars, standard, optional (andb_eq_orb)
 
 Prove the following theorem. (Hint: This can be a bit tricky, depending on how you approach it. You will probably need both destruct and rewrite, but destructing everything in sight is not the best way.)
 
@@ -1462,7 +1445,7 @@ Proof.
 ☐
 ```
 
-#### Course Late Policies, Formalized
+##### Course Late Policies, Formalized
 
 Suppose that a course has a grading policy based on late days, where a student's final letter grade is lowered if they submit too many homework assignments late.
 
@@ -1575,7 +1558,7 @@ Definition modifier_comparison (m1 m2 : modifier) : comparison :=
   end.
 ```
 
-###### Exercise: 2 stars, standard (grade_comparison)
+####### Exercise: 2 stars, standard (grade_comparison)
 
 Use pattern matching to complete the following definition.
 
@@ -1649,7 +1632,7 @@ Qed.
 
 With this insight, we can state a better version of the lower letter theorem that actually is provable. In this version, the hypothesis about F says that F is strictly smaller than l, which rules out the problematic case above. In other words, as long as l is bigger than F, it will be lowered.
 
-###### Exercise: 2 stars, standard (lower_letter_lowers)
+####### Exercise: 2 stars, standard (lower_letter_lowers)
 
 Prove the following theorem.
 
@@ -1663,7 +1646,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (lower_grade)
+####### Exercise: 2 stars, standard (lower_grade)
 
 We can now use the lower_letter definition as a helper to define what it means to lower a grade by one step. Complete the definition below so that it sends a grade g to one step lower (unless it is already Grade F Minus, which should remain unchanged). Once you have implemented it correctly, the subsequent "unit test" examples should hold trivially.
 
@@ -1721,7 +1704,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard (lower_grade_lowers)
+####### Exercise: 3 stars, standard (lower_grade_lowers)
 
 Prove the following theorem, which says that, as long as the grade starts out above F-, the lower_grade option does indeed lower the grade. As usual, destructing everything in sight is not a good idea. Judicious use of destruct along with rewriting is a better strategy.
 
@@ -1742,7 +1725,7 @@ Now that we have implemented and tested a function that lowers a grade by one st
 This function encodes the following policy:
 
 ```coq
-      # late days     penalty
+      ## late days     penalty
          0 - 8        no penalty
          9 - 16       lower grade by one step (A+ => A, A => A-, A- => B+, etc.)
         17 - 20       lower grade by two steps
@@ -1776,7 +1759,7 @@ Now let's prove some properties about this policy.
 
 The next theorem states that if a student accrues no more than eight late days throughout the semester, their grade is unaffected. It is easy to prove: once you use the apply_late_policy_unfold you can rewrite using the hypothesis.
 
-###### Exercise: 2 stars, standard (no_penalty_for_mostly_on_time)
+####### Exercise: 2 stars, standard (no_penalty_for_mostly_on_time)
 
 ```coq
 Theorem no_penalty_for_mostly_on_time :
@@ -1790,7 +1773,7 @@ Proof.
 
 The following theorem states that, if a student has between 9 and 16 late days, their final grade is lowered by one step.
 
-###### Exercise: 2 stars, standard (graded_lowered_once)
+####### Exercise: 2 stars, standard (graded_lowered_once)
 
 ```coq
 Theorem grade_lowered_once :
@@ -1805,9 +1788,9 @@ Proof.
 End LateDays.
 ```
 
-#### Binary Numerals
+##### Binary Numerals
 
-###### Exercise: 3 stars, standard (binary)
+####### Exercise: 3 stars, standard (binary)
 
 We can generalize our unary representation of natural numbers to the more efficient binary representation by treating a binary number as a sequence of constructors B0 and B1 (representing 0s and 1s), terminated by a Z. For comparison, in the unary representation, a number is a sequence of S constructors terminated by an O.
 
@@ -1866,7 +1849,7 @@ Example test_bin_incr6 :
 ☐
 ```
 
-### Testing Your Solutions
+#### Testing Your Solutions
 Each SF chapter comes with a test file containing scripts that check whether you have solved the required exercises. If you're using SF as part of a course, your instructor will likely be running these test files to autograde your solutions. You can also use these test files, if you like, to make sure you haven't missed anything.
 
 (Important: This step is optional: if you've completed all the non-optional exercises and Coq accepts your answers, this already shows that you are in good shape.)
@@ -1891,9 +1874,9 @@ Exercises that are manually graded will also show up in the output. But since th
 
 (* 2024-08-25 14:45 *)
 
-## Induction Proof by Induction
+### Induction Proof by Induction
 
-### Separate Compilation
+#### Separate Compilation
 
 Before getting started on this chapter, we need to import all of our definitions from the previous chapter:
 
@@ -1967,7 +1950,7 @@ Another common reason is that the library Bar was modified and recompiled withou
 
 One more tip for CoqIDE users: If you see messages like Error: Unable to locate library Basics, a likely reason is inconsistencies between compiling things within CoqIDE vs using coqc from the command line. This typically happens when there are two incompatible versions of coqc installed on your system (one associated with CoqIDE, and one associated with coqc from the terminal). The workaround for this situation is compiling using CoqIDE only (i.e. choosing "make" from the menu), and avoiding using coqc directly at all.
 
-### Proof by Induction
+#### Proof by Induction
 
 We can prove that 0 is a neutral element for + on the left using just reflexivity. But the proof that it is also a neutral element on the right ...
 
@@ -2038,7 +2021,7 @@ Proof.
 
 (The use of the intros tactic in these proofs is actually redundant. When applied to a goal that contains quantified variables, the induction tactic will automatically move them into the context as needed.)
 
-###### Exercise: 2 stars, standard, especially useful (basic_induction)
+####### Exercise: 2 stars, standard, especially useful (basic_induction)
 
 Prove the following using induction. You might need previously proven results.
 
@@ -2062,7 +2045,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (double_plus)
+####### Exercise: 2 stars, standard (double_plus)
 
 Consider the following function, which doubles its argument:
 
@@ -2079,7 +2062,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (eqb_refl)
+####### Exercise: 2 stars, standard (eqb_refl)
 
 The following theorem relates the computational equality =? on nat with the definitional equality = on bool.
 
@@ -2091,7 +2074,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (even_S)
+####### Exercise: 2 stars, standard, optional (even_S)
 
 One inconvenient aspect of our definition of even n is the recursive call on n - 2. This makes proofs about even n harder when done by induction on n, since we may need an induction hypothesis about n - 2. The following lemma gives an alternative characterization of even (S n) that works better with induction:
 
@@ -2103,7 +2086,7 @@ Proof.
 ☐
 ```
 
-### Proofs Within Proofs
+#### Proofs Within Proofs
 
 In Coq, as in informal mathematics, large proofs are often broken into a sequence of theorems, with later proofs referring to earlier theorems. But sometimes a proof will involve some miscellaneous fact that is too trivial and of too little general interest to bother giving it its own top-level name. In such cases, it is convenient to be able to simply state and prove the needed "sub-theorem" right at the point where it is used. The assert tactic allows us to do this.
 
@@ -2146,7 +2129,7 @@ Proof.
   rewrite H. reflexivity. Qed.
 ```
 
-### Formal vs. Informal Proof "_Informal proofs are algorithms; formal proofs are code."
+#### Formal vs. Informal Proof "_Informal proofs are algorithms; formal proofs are code."
 
 What constitutes a successful proof of a mathematical claim? The question has challenged philosophers for millennia, but a rough and ready definition could be this: A proof of a mathematical proposition P is a written (or spoken) text that instills in the reader or hearer the certainty that P is true -- an unassailable argument for the truth of P. That is, a proof is an act of communication.
 
@@ -2200,7 +2183,7 @@ which is immediate from the induction hypothesis. Qed.
 
 The overall form of the proof is basically similar, and of course this is no accident: Coq has been designed so that its induction tactic generates the same sub-goals, in the same order, as the bullet points that a mathematician would write. But there are significant differences of detail: the formal proof is much more explicit in some ways (e.g., the use of reflexivity) but much less explicit in others (in particular, the "proof state" at any given point in the Coq proof is completely implicit, whereas the informal proof reminds the reader several times where things stand).
 
-###### Exercise: 2 stars, advanced, especially useful (add_comm_informal)
+####### Exercise: 2 stars, advanced, especially useful (add_comm_informal)
 
 Translate your solution for add_comm into an informal proof:
 
@@ -2217,7 +2200,7 @@ Definition manual_grade_for_add_comm_informal : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (eqb_refl_informal)
+####### Exercise: 2 stars, standard, optional (eqb_refl_informal)
 
 Write an informal proof of the following theorem, using the informal proof of add_assoc as a model. Don't just paraphrase the Coq tactics into English!
 
@@ -2231,9 +2214,9 @@ Definition manual_grade_for_eqb_refl_informal : option (nat×string) := None.
 ☐
 ```
 
-### More Exercises
+#### More Exercises
 
-###### Exercise: 3 stars, standard, especially useful (mul_comm)
+####### Exercise: 3 stars, standard, especially useful (mul_comm)
 
 Use assert to help prove add_shuffle3. You don't need to use induction yet.
 
@@ -2254,7 +2237,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (plus_leb_compat_l)
+####### Exercise: 2 stars, standard, optional (plus_leb_compat_l)
 
 If a hypothesis has the form H: P → a = b, then rewrite H will rewrite a to b in the goal, and add P as a new subgoal. Use that in the inductive step of this exercise.
 
@@ -2267,7 +2250,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (more_exercises)
+####### Exercise: 3 stars, standard, optional (more_exercises)
 
 Take a piece of paper. For each of the following theorems, first think about whether (a) it can be proved using only simplification and rewriting, (b) it also requires case analysis (destruct), or (c) it also requires induction. Write down your prediction. Then fill in the proof. (There is no need to turn in your piece of paper; this is just to encourage you to reflect before you hack!)
 
@@ -2310,7 +2293,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (add_shuffle3')
+####### Exercise: 2 stars, standard, optional (add_shuffle3')
 
 The replace tactic allows you to specify a particular subterm to rewrite and what you want it rewritten to: replace (t) with (u) replaces (all copies of) expression t in the goal by expression u, and generates t = u as an additional subgoal. This is often useful when a plain rewrite acts on the wrong part of the goal.
 
@@ -2324,7 +2307,7 @@ Proof.
 ☐
 ```
 
-### Nat to Bin and Back to Nat
+#### Nat to Bin and Back to Nat
 
 Recall the bin type we defined in Basics:
 
@@ -2347,7 +2330,7 @@ Fixpoint bin_to_nat (m:bin) : nat
 
 In Basics, we did some unit testing of bin_to_nat, but we didn't prove its correctness. Now we'll do so.
 
-###### Exercise: 3 stars, standard, especially useful (binary_commute)
+####### Exercise: 3 stars, standard, especially useful (binary_commute)
 
 Prove that the following diagram commutes:
 
@@ -2374,7 +2357,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard (nat_bin_nat)
+####### Exercise: 3 stars, standard (nat_bin_nat)
 
 Write a function to convert natural numbers to binary numbers.
 
@@ -2394,7 +2377,7 @@ Proof.
 ☐
 ```
 
-### Bin to Nat and Back to Bin (Advanced)
+#### Bin to Nat and Back to Bin (Advanced)
 
 The opposite direction -- starting with a bin, converting to nat, then converting back to bin -- turns out to be problematic. That is, the following theorem does not hold.
 
@@ -2405,7 +2388,7 @@ Abort.
 
 Let's explore why that theorem fails, and how to prove a modified version of it. We'll start with some lemmas that might seem unrelated, but will turn out to be relevant.
 
-###### Exercise: 2 stars, advanced (double_bin)
+####### Exercise: 2 stars, advanced (double_bin)
 Prove this lemma about double, which we defined earlier in the chapter.
 
 ```coq
@@ -2448,7 +2431,7 @@ Explain in a comment, below, why this failure occurs. Your explanation will not 
 
 To solve that problem, we can introduce a normalization function that selects the simplest bin out of all the equivalent bin. Then we can prove that the conversion from bin to nat and back again produces that normalized, simplest bin.
 
-###### Exercise: 4 stars, advanced (bin_nat_bin)
+####### Exercise: 4 stars, advanced (bin_nat_bin)
 
 Define normalize. You will need to keep its definition as simple as possible for later proofs to go smoothly. Do not use bin_to_nat or nat_to_bin, but do use double_bin.
 
@@ -2476,14 +2459,14 @@ Proof.
 
 (* 2024-08-25 14:45 *)
 
-## Lists Working with Structured Data
+### Lists Working with Structured Data
 
 ```coq
 From LF Require Export Induction.
 Module NatList.
 ```
 
-### Pairs of Numbers
+#### Pairs of Numbers
 
 In an Inductive type definition, each constructor can take any number of arguments -- none (as with true and O), one (as with S), or more than one (as with nybble, and the following):
 
@@ -2596,7 +2579,7 @@ Proof.
 
 Notice that, by contrast with the behavior of destruct on nats, where it generates two subgoals, destruct generates just one subgoal here. That's because natprods can only be constructed in one way.
 
-###### Exercise: 1 star, standard (snd_fst_is_swap)
+####### Exercise: 1 star, standard (snd_fst_is_swap)
 
 ```coq
 Theorem snd_fst_is_swap : ∀ (p : natprod),
@@ -2606,7 +2589,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard, optional (fst_swap_is_snd)
+####### Exercise: 1 star, standard, optional (fst_swap_is_snd)
 
 ```coq
 Theorem fst_swap_is_snd : ∀ (p : natprod),
@@ -2616,7 +2599,7 @@ Proof.
 ☐
 ```
 
-### Lists of Numbers
+#### Lists of Numbers
 
 Generalizing the definition of pairs, we can describe the type of lists of numbers like this: "A list is either the empty list or else a pair of a number and another list."
 
@@ -2662,7 +2645,7 @@ The second and third Notation declarations above introduce the standard square-b
 
 Again, don't worry if some of these parsing details are puzzling: all the notations you'll need in this course will be defined for you.
 
-##### Repeat
+###### Repeat
 
 Next let's look at several functions for constructing and manipulating lists. First, the repeat function, which takes a number n and a count and returns a list of length count in which every element is n.
 
@@ -2674,7 +2657,7 @@ Fixpoint repeat (n count : nat) : natlist :=
   end.
 ```
 
-##### Length
+###### Length
 
 ```coq
 The length function calculates the length of a list.
@@ -2685,7 +2668,7 @@ Fixpoint length (l:natlist) : nat :=
   end.
 ```
 
-##### Append
+###### Append
 
 The app function appends (concatenates) two lists.
 
@@ -2713,7 +2696,7 @@ Example test_app3: [1;2;3] ++ nil = [1;2;3].
 Proof. reflexivity. Qed.
 ```
 
-##### Head and Tail
+###### Head and Tail
 Here are two smaller examples of programming with lists. The hd function returns the first element (the "head") of the list, while tl returns everything but the first element (the "tail"). Since the empty list has no first element, we pass a default value to be returned in that case.
 
 ```coq
@@ -2735,8 +2718,8 @@ Example test_tl: tl [1;2;3] = [2;3].
 Proof. reflexivity. Qed.
 ```
 
-##### Exercises
-###### Exercise: 2 stars, standard, especially useful (list_funs)
+###### Exercises
+####### Exercise: 2 stars, standard, especially useful (list_funs)
 
 Complete the definitions of nonzeros, oddmembers, and countoddmembers below. Have a look at the tests to understand what these functions should do.
 
@@ -2770,7 +2753,7 @@ Example test_countoddmembers3:
 ☐
 ```
 
-###### Exercise: 3 stars, advanced (alternate)
+####### Exercise: 3 stars, advanced (alternate)
 Complete the following definition of alternate, which interleaves two lists into one, alternating between elements taken from the first list and elements from the second. See the tests below for more specific examples.
 
 Hint: there are natural ways of writing alternate that fail to satisfy Coq's requirement that all Fixpoint definitions be structurally recursive, as mentioned in Basics. If you encounter this difficulty, consider pattern matching against both lists at the same time with the "multiple pattern" syntax we've seen before.
@@ -2792,14 +2775,14 @@ Example test_alternate4:
   (* FILL IN HERE *) Admitted.
 ☐
 ```
-##### Bags via Lists
+###### Bags via Lists
 A bag (or multiset) is like a set, except that each element can appear multiple times rather than just once. One way of representating a bag of numbers is as a list.
 
 ```coq
 Definition bag := natlist.
 ```
 
-###### Exercise: 3 stars, standard, especially useful (bag_functions)
+####### Exercise: 3 stars, standard, especially useful (bag_functions)
 
 Complete the following definitions for the functions count, sum, add, and member for bags.
 
@@ -2839,7 +2822,7 @@ Example test_member2: member 2 [1;4;1] = false.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (bag_more_functions)
+####### Exercise: 3 stars, standard, optional (bag_more_functions)
 Here are some more bag functions for you to practice with.
 
 When remove_one is applied to a bag without the number to remove, it should return the same bag unchanged. (This exercise is optional, but students following the advanced track will need to fill in the definition of remove_one for a later exercise.)
@@ -2878,7 +2861,7 @@ Example test_included2: included [1;2;2] [2;1;4;1] = false.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, especially useful (add_inc_count)
+####### Exercise: 2 stars, standard, especially useful (add_inc_count)
 Adding a value to a bag should increase the value's count by one. State this as a theorem and prove it in Coq.
 
 ```coq
@@ -2893,7 +2876,7 @@ Definition manual_grade_for_add_inc_count : option (nat×string) := None.
 ☐
 ```
 
-### Reasoning About Lists
+#### Reasoning About Lists
 
 As with numbers, simple facts about list-processing functions can sometimes be proved entirely by simplification. For example, the simplification performed by reflexivity is enough for this theorem...
 
@@ -2924,7 +2907,7 @@ Usually, though, interesting theorems about lists require induction for their pr
 
 (Micro-Sermon: As we get deeper into this material, simply reading proof scripts will not help you very much. Rather, it is important to step through the details of each one using Coq and think about what each step achieves. Otherwise it is more or less guaranteed that the exercises will make no sense when you get to them. 'Nuff said.)
 
-#### Induction on Lists
+##### Induction on Lists
 Proofs by induction over datatypes like natlist are a little less familiar than standard natural number induction, but the idea is equally simple. Each Inductive declaration defines a set of data values that can be built up using the declared constructors. For example, a boolean can be either true or false; a number can be either O or else S applied to another number; and a list can be either nil or else cons applied to a number and a list. Moreover, applications of the declared constructors to one another are the only possible shapes that elements of an inductively defined set can have.
 
 This last fact directly gives rise to a way of reasoning about inductively defined sets: a number is either O or else it is S applied to some smaller number; a list is either nil or else it is cons applied to some number and some smaller list; etc. Thus, if we have in mind some proposition P that mentions a list l and we want to argue that P holds for all lists, we can reason as follows:
@@ -2967,7 +2950,7 @@ By the definition of ++, this follows from
 which is immediate from the induction hypothesis. ☐
 ```
 
-##### Reversing a List
+###### Reversing a List
 For a slightly more involved example of inductive proof over lists, suppose we use app to define a list-reversing function rev:
 
 ```coq
@@ -3075,7 +3058,7 @@ Proof: First observe, by a straightforward induction on l, that length (l ++ [n]
 
 Which style is preferable in a given situation depends on the sophistication of the expected audience and how similar the proof at hand is to ones that they will already be familiar with. The more pedantic style is a good default for our present purposes because we're trying to be ultra-clear about the details.
 
-##### Search
+###### Search
 
 We've seen that proofs can make use of other theorems we've already proved, e.g., using rewrite. But in order to refer to a theorem, we need to know its name! Indeed, it is often hard even to remember what theorems have been proven, much less what they are called.
 
@@ -3109,8 +3092,8 @@ Search (?x + ?y = ?y + ?x).
 
 Keep Search in mind as you do the following exercises and throughout the rest of the book; it can save you a lot of time!
 
-#### List Exercises, Part 1
-###### Exercise: 3 stars, standard (list_exercises)
+##### List Exercises, Part 1
+####### Exercise: 3 stars, standard (list_exercises)
 More practice with lists:
 
 ```coq
@@ -3148,7 +3131,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (eqblist)
+####### Exercise: 2 stars, standard (eqblist)
 Fill in the definition of eqblist, which compares lists of numbers for equality. Prove that eqblist l l yields true for every list l.
 
 ```coq
@@ -3170,9 +3153,9 @@ Proof.
 ☐
 ```
 
-##### List Exercises, Part 2
+###### List Exercises, Part 2
 Here are a couple of little theorems to prove about your definitions about bags above.
-###### Exercise: 1 star, standard (count_member_nonzero)
+####### Exercise: 1 star, standard (count_member_nonzero)
 
 ```coq
 Theorem count_member_nonzero : ∀ (s : bag),
@@ -3197,7 +3180,7 @@ Proof.
 
 Before doing the next exercise, make sure you've filled in the definition of remove_one above.
 
-###### Exercise: 3 stars, advanced (remove_does_not_increase_count)
+####### Exercise: 3 stars, advanced (remove_does_not_increase_count)
 
 ```coq
 Theorem remove_does_not_increase_count: ∀ (s : bag),
@@ -3207,12 +3190,12 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (bag_count_sum)
+####### Exercise: 3 stars, standard, optional (bag_count_sum)
 Write down an interesting theorem bag_count_sum about bags involving the functions count and sum, and prove it using Coq. (You may find that the difficulty of the proof depends on how you defined count! Hint: If you defined count using =? you may find it useful to know that destruct works on arbitrary expressions, not just simple identifiers.)
 (* FILL IN HERE *)
 ☐
 
-###### Exercise: 3 stars, advanced (involution_injective)
+####### Exercise: 3 stars, advanced (involution_injective)
 Prove that every involution is injective.
 
 Involutions were defined above in rev_involutive. An injective function is one-to-one: it maps distinct inputs to distinct outputs, without any collisions.
@@ -3225,7 +3208,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, advanced (rev_injective)
+####### Exercise: 2 stars, advanced (rev_injective)
 Prove that rev is injective. Do not prove this by induction -- that would be hard. Instead, re-use the same proof technique that you used for involution_injective. (But: Don't try to use that exercise directly as a lemma: the types are not the same!)
 
 ```coq
@@ -3236,7 +3219,7 @@ Proof.
 ☐
 ```
 
-### Options
+#### Options
 Suppose we want to write a function that returns the nth element of some list. If we give it type nat → natlist → nat, then we'll have to choose some number to return when the list is too short...
 
 ```coq
@@ -3293,7 +3276,7 @@ Definition option_elim (d : nat) (o : natoption) : nat :=
   end.
 ```
 
-###### Exercise: 2 stars, standard (hd_error)
+####### Exercise: 2 stars, standard (hd_error)
 Using the same idea, fix the hd function from earlier so we don't have to pass a default element for the nil case.
 
 ```coq
@@ -3308,7 +3291,7 @@ Example test_hd_error3 : hd_error [5;6] = Some 5.
 ☐
 ```
 
-###### Exercise: 1 star, standard, optional (option_elim_hd)
+####### Exercise: 1 star, standard, optional (option_elim_hd)
 This exercise relates your new hd_error to the old hd.
 
 ```coq
@@ -3320,7 +3303,7 @@ Proof.
 End NatList.
 ```
 
-### Partial Maps
+#### Partial Maps
 As a final illustration of how data structures can be defined in Coq, here is a simple partial map data type, analogous to the map or dictionary data structures found in most programming languages.
 
 First, we define a new inductive datatype id to serve as the "keys" of our partial maps.
@@ -3341,7 +3324,7 @@ Definition eqb_id (x1 x2 : id) :=
   end.
 ```
 
-###### Exercise: 1 star, standard (eqb_id_refl)
+####### Exercise: 1 star, standard (eqb_id_refl)
 ```coq
 Theorem eqb_id_refl : ∀ x, eqb_id x x = true.
 Proof.
@@ -3382,7 +3365,7 @@ Fixpoint find (x : id) (d : partial_map) : natoption :=
   end.
 ```
 
-###### Exercise: 1 star, standard (update_eq)
+####### Exercise: 1 star, standard (update_eq)
 ```coq
 Theorem update_eq :
   ∀ (d : partial_map) (x : id) (v: nat),
@@ -3392,7 +3375,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard (update_neq)
+####### Exercise: 1 star, standard (update_neq)
 
 ```coq
 Theorem update_neq :
@@ -3405,11 +3388,11 @@ End PartialMap.
 ```
 (* 2024-08-25 14:45 *)
 
-## Poly Polymorphism and Higher-Order Functions From LF Require Export Lists.
-### Polymorphism
+### Poly Polymorphism and Higher-Order Functions From LF Require Export Lists.
+#### Polymorphism
 In this chapter we continue our development of basic concepts of functional programming. The critical new ideas are polymorphism (abstracting functions over the types of the data they manipulate) and higher-order functions (treating functions as data). We begin with polymorphism.
 
-#### Polymorphic Lists
+##### Polymorphic Lists
 For the last chapter, we've been working with lists containing just numbers. Obviously, interesting programs also need to be able to manipulate lists with elements from other types -- lists of booleans, lists of lists, etc. We could just define a new inductive datatype for each of these, for example...
 
 ```coq
@@ -3494,7 +3477,7 @@ Example test_repeat2 :
 Proof. reflexivity. Qed.
 ```
 
-###### Exercise: 2 stars, standard, optional (mumble_grumble)
+####### Exercise: 2 stars, standard, optional (mumble_grumble)
 Consider the following two inductively defined types.
 
 ```coq
@@ -3523,7 +3506,7 @@ End MumbleGrumble.
 ☐
 ```
 
-##### Type Annotation Inference
+###### Type Annotation Inference
 Let's write the definition of repeat again, but this time we won't specify the types of any of the arguments. Will Coq still accept it?
 
 ```coq
@@ -3547,7 +3530,7 @@ It has exactly the same type as repeat. Coq was able to use type inference to de
 
 This powerful facility means we don't always have to write explicit type annotations everywhere, although explicit type annotations can still be quite useful as documentation and sanity checks, so we will continue to use them much of the time.
 
-##### Type Argument Synthesis
+###### Type Argument Synthesis
 To use a polymorphic function, we need to pass it one or more types in addition to its other arguments. For example, the recursive call in the body of the repeat function above must pass along the type X. But since the second argument to repeat is an element of X, it seems entirely obvious that the first argument can only be X -- why should we have to write it explicitly?
 
 Fortunately, Coq permits us to avoid this kind of redundancy. In place of any type argument we can write a "hole" _, which can be read as "Please try to figure out for yourself what belongs here." More precisely, when Coq encounters a _, it will attempt to unify all locally available information -- the type of the function being applied, the types of the other arguments, and the type expected by the context in which the application appears -- to determine what concrete type should replace the _.
@@ -3589,7 +3572,7 @@ Definition list123 :=
   cons _ 1 (cons _ 2 (cons _ 3 (nil _))).
 ```
 
-##### Implicit Arguments
+###### Implicit Arguments
 In fact, we can go further and even avoid writing _'s in most cases by telling Coq always to infer the type argument(s) of a given function.
 
 The Arguments directive specifies the name of the function (or constructor) and then lists the (leading) argument names to be treated as implicit, each surrounded by curly braces.
@@ -3658,7 +3641,7 @@ Example test_length1: length (cons 1 (cons 2 (cons 3 nil))) = 3.
 Proof. reflexivity. Qed.
 ```
 
-##### Supplying Type Arguments Explicitly
+###### Supplying Type Arguments Explicitly
 One small problem with declaring arguments to be implicit is that, once in a while, Coq does not have enough local information to determine a type argument; in such cases, we need to tell Coq that we want to give the argument explicitly just this time. For example, suppose we write this:
 
 ```coq
@@ -3693,8 +3676,8 @@ Now lists can be written just the way we'd hope:
 Definition list123''' := [1; 2; 3].
 ```
 
-##### Exercises
-###### Exercise: 2 stars, standard (poly_exercises)
+###### Exercises
+####### Exercise: 2 stars, standard (poly_exercises)
 Here are a few simple exercises, just like ones in the Lists chapter, for practice with polymorphism. Complete the proofs below.
 
 ```coq
@@ -3713,7 +3696,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (more_poly_exercises)
+####### Exercise: 2 stars, standard (more_poly_exercises)
 Here are some slightly more interesting ones...
 
 ```coq
@@ -3728,7 +3711,7 @@ Proof.
 ☐
 ```
 
-#### Polymorphic Pairs
+##### Polymorphic Pairs
 Following the same pattern, the definition for pairs of numbers that we gave in the last chapter can be generalized to polymorphic pairs, often called products:
 
 ```coq
@@ -3778,7 +3761,7 @@ Fixpoint combine {X Y : Type} (lx : list X) (ly : list Y)
   end.
 ```
 
-###### Exercise: 1 star, standard, optional (combine_checks)
+####### Exercise: 1 star, standard, optional (combine_checks)
 Try answering the following questions on paper and checking your answers in Coq:
 * What is the type of combine (i.e., what does Check @combine print?)
 * What does
@@ -3788,7 +3771,7 @@ print?
 ☐
 ```
 
-###### Exercise: 2 stars, standard, especially useful (split)
+####### Exercise: 2 stars, standard, especially useful (split)
 The function split is the right inverse of combine: it takes a list of pairs and returns a pair of lists. In many functional languages, it is called unzip.
 
 Fill in the definition of split below. Make sure it passes the given unit test.
@@ -3803,7 +3786,7 @@ Proof.
 ☐
 ```
 
-#### Polymorphic Options
+##### Polymorphic Options
 Our last polymorphic type for now is polymorphic options, which generalize natoption from the previous chapter. (We put the definition inside a module because the standard library already defines option and it's this one that we want to use below.)
 
 ```coq
@@ -3836,7 +3819,7 @@ Example test_nth_error3 : nth_error [true] 2 = None.
 Proof. reflexivity. Qed.
 ```
 
-###### Exercise: 1 star, standard, optional (hd_error_poly)
+####### Exercise: 1 star, standard, optional (hd_error_poly)
 Complete the definition of a polymorphic version of the hd_error function from the last chapter. Be sure that it passes the unit tests below.
 
 ```coq
@@ -3855,10 +3838,10 @@ Example test_hd_error2 : hd_error [[1];[2]] = Some [1].
 ☐
 ```
 
-### Functions as Data
+#### Functions as Data
 Like most modern programming languages -- especially other "functional" languages, including OCaml, Haskell, Racket, Scala, Clojure, etc. -- Coq treats functions as first-class citizens, allowing them to be passed as arguments to other functions, returned as results, stored in data structures, etc.
 
-#### Higher-Order Functions
+##### Higher-Order Functions
 Functions that manipulate other functions are often called higher-order functions. Here's a simple one:
 
 ```coq
@@ -3877,7 +3860,7 @@ Example test_doit3times': doit3times negb true = false.
 Proof. reflexivity. Qed.
 ```
 
-#### Filter
+##### Filter
 Here is a more useful higher-order function, taking a list of Xs and a predicate on X (a function from X to bool) and "filtering" the list, returning a new list containing just those elements for which the predicate returns true.
 
 ```coq
@@ -3921,7 +3904,7 @@ Example test_countoddmembers'2: countoddmembers' [0;2;4] = 0.
 Example test_countoddmembers'3: countoddmembers' nil = 0.
 ```
 
-#### Anonymous Functions
+##### Anonymous Functions
 It is arguably a little sad, in the example just above, to be forced to define the function length_is_1 and give it a name just to be able to pass it as an argument to filter, since we will probably never use it again. Moreover, this is not an isolated example: when using higher-order functions, we often want to pass as arguments "one-off" functions that we will never use again; having to give each of these functions a name would be tedious.
 
 Fortunately, there is a better way. We can construct a function "on the fly" without declaring it at the top level or giving it a name.
@@ -3944,7 +3927,7 @@ Example test_filter2':
 Proof. reflexivity. Qed.
 ```
 
-###### Exercise: 2 stars, standard (filter_even_gt7)
+####### Exercise: 2 stars, standard (filter_even_gt7)
 Use filter (instead of Fixpoint) to write a Coq function filter_even_gt7 that takes a list of natural numbers as input and returns a list of just those that are even and greater than 7.
 
 ```coq
@@ -3959,7 +3942,7 @@ Example test_filter_even_gt7_2 :
 ☐
 ```
 
-###### Exercise: 3 stars, standard (partition)
+####### Exercise: 3 stars, standard (partition)
 
 ```coq
 Use filter to write a Coq function partition:
@@ -3982,7 +3965,7 @@ Example test_partition2: partition (fun x ⇒ false) [5;9;0] = ([], [5;9;0]).
 ☐
 ```
 
-#### Map
+##### Map
 Another handy higher-order function is called map.
 
 ```coq
@@ -4017,8 +4000,8 @@ Example test_map3:
 Proof. reflexivity. Qed.
 ```
 
-##### Exercises
-###### Exercise: 3 stars, standard (map_rev)
+###### Exercises
+####### Exercise: 3 stars, standard (map_rev)
 Show that map and rev commute. You may need to define an auxiliary lemma.
 
 ```coq
@@ -4029,7 +4012,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, especially useful (flat_map)
+####### Exercise: 2 stars, standard, especially useful (flat_map)
 The function map maps a list X to a list Y using a function of type X → Y. We can define a similar function, flat_map, which maps a list X to a list Y using a function f of type X → list Y. Your definition should work by 'flattening' the results of f, like so:
 
 ```coq
@@ -4056,10 +4039,10 @@ Definition option_map {X Y : Type} (f : X → Y) (xo : option X)
   end.
 ```
 
-###### Exercise: 2 stars, standard, optional (implicit_args)
+####### Exercise: 2 stars, standard, optional (implicit_args)
 The definitions and uses of filter and map use implicit arguments in many places. Replace the curly braces around the implicit arguments with parentheses, and then fill in explicit type parameters where necessary and use Coq to check that you've done so correctly. (This exercise is not to be turned in; it is probably easiest to do it on a copy of this file that you can throw away afterwards.) ☐
 
-##### Fold
+###### Fold
 
 An even more powerful higher-order function is called fold. This function is the inspiration for the "reduce" operation that lies at the heart of Google's map/reduce distributed programming framework.
 
@@ -4101,13 +4084,13 @@ Example fold_example3 :
 Proof. reflexivity. Qed.
 ```
 
-###### Exercise: 1 star, standard, optional (fold_types_different)
+####### Exercise: 1 star, standard, optional (fold_types_different)
 Observe that the type of fold is parameterized by two type variables, X and Y, and the parameter f is a binary operator that takes an X and a Y and returns a Y. Can you think of a situation where it would be useful for X and Y to be different?
 
 (* FILL IN HERE *)
 ☐
 
-#### Functions That Construct Functions
+##### Functions That Construct Functions
 Most of the higher-order functions we have talked about so far take functions as arguments. Let's look at some examples that involve returning functions as the results of other functions. To begin, here is a function that takes a value x (drawn from some type X) and returns a function from nat to X that yields x whenever it is called, ignoring its nat argument.
 
 ```coq
@@ -4139,13 +4122,13 @@ Example test_plus3'' : doit3times (plus 3) 0 = 9.
 Proof. reflexivity. Qed.
 ```
 
-### Additional Exercises
+#### Additional Exercises
 
 ```coq
 Module Exercises.
 ```
 
-###### Exercise: 2 stars, standard (fold_length)
+####### Exercise: 2 stars, standard (fold_length)
 Many common functions on lists can be implemented in terms of fold. For example, here is an alternative definition of length:
 
 ```coq
@@ -4165,7 +4148,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard (fold_map)
+####### Exercise: 3 stars, standard (fold_map)
 We can also define map in terms of fold. Finish fold_map below.
 
 ```coq
@@ -4186,7 +4169,7 @@ Definition manual_grade_for_fold_map : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 2 stars, advanced (currying)
+####### Exercise: 2 stars, advanced (currying)
 The type X → Y → Z can be read as describing functions that take two arguments, one of type X and another of type Y, and return an output of type Z. Strictly speaking, this type is written X → (Y → Z) when fully parenthesized. That is, if we have f : X → Y → Z, and we give f an input of type X, it will give us as output a function of type Y → Z. If we then give that function an input of type Y, it will return an output of type Z. That is, every function in Coq takes only one input, but some functions return a function as output. This is precisely what enables partial application, as we saw above with plus3.
 
 By contrast, functions of type X × Y → Z -- which when fully parenthesized is written (X × Y) → Z -- require their single input to be a pair. Both arguments must be given at once; there is no possibility of partial application.
@@ -4234,7 +4217,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, advanced (nth_error_informal)
+####### Exercise: 2 stars, advanced (nth_error_informal)
 Recall the definition of the nth_error function:
 
 ```coq
@@ -4262,7 +4245,7 @@ Definition manual_grade_for_informal_proof : option (nat×string) := None.
 ☐
 ```
 
-#### Church Numerals (Advanced)
+##### Church Numerals (Advanced)
 The following exercises explore an alternative way of defining natural numbers using the Church numerals, which are named after their inventor, the mathematician Alonzo Church. We can represent a natural number n as a function that takes a function f as a parameter and returns f iterated n times.
 
 ```coq
@@ -4325,7 +4308,7 @@ But the intellectually exciting implication of the Church numerals is that we do
 
 Of course, it's not enough to represent numerals; we need to be able to do arithmetic with them. Show that we can by completing the definitions of the following functions. Make sure that the corresponding unit tests pass by proving them with reflexivity.
 
-###### Exercise: 2 stars, advanced (church_scc)
+####### Exercise: 2 stars, advanced (church_scc)
 Define a function that computes the successor of a Church numeral. Given a Church numeral n, its successor scc n should iterate its function argument once more than n. That is, given fun X f x ⇒ f^n x as input, scc should produce fun X f x ⇒ f^(n+1) x as output. In other words, do it n times, then do it once more.
 
 ```coq
@@ -4340,7 +4323,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced (church_plus)
+####### Exercise: 3 stars, advanced (church_plus)
 Define a function that computes the addition of two Church numerals. Given fun X f x ⇒ f^n x and fun X f x ⇒ f^m x as input, plus should produce fun X f x ⇒ f^(n + m) x as output. In other words, do it n times, then do it m more times.
 
 Hint: the "zero" argument to a Church numeral need not be just x.
@@ -4358,7 +4341,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced (church_mult)
+####### Exercise: 3 stars, advanced (church_mult)
 Define a function that computes the multiplication of two Church numerals.
 
 Hint: the "successor" argument to a Church numeral need not be just f.
@@ -4377,7 +4360,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced (church_exp)
+####### Exercise: 3 stars, advanced (church_exp)
 Exponentiation:
 
 Define a function that computes the exponentiation of two Church numerals.
@@ -4400,7 +4383,7 @@ End Exercises.
 
 (* 2024-08-25 14:45 *)
 
-## Tactics More Basic Tactics
+### Tactics More Basic Tactics
 This chapter introduces several additional proof strategies and tactics that allow us to begin proving more interesting properties of functional programs.
 
 We will see:
@@ -4413,7 +4396,7 @@ more details on how to reason by case analysis.
 From LF Require Export Poly.
 ```
 
-### The apply Tactic
+#### The apply Tactic
 We often encounter situations where the goal to be proved is exactly the same as some hypothesis in the context or some previously proved lemma.
 
 ```coq
@@ -4455,7 +4438,7 @@ Proof.
   apply eq2. apply eq1. Qed.
 ```
 
-###### Exercise: 2 stars, standard, optional (silly_ex)
+####### Exercise: 2 stars, standard, optional (silly_ex)
 Complete the following proof using only intros and apply.
 
 ```coq
@@ -4490,7 +4473,7 @@ but we can use the symmetry tactic, which switches the left and right sides of a
   symmetry. apply H. Qed.
 ```
 
-###### Exercise: 2 stars, standard (apply_exercise1)
+####### Exercise: 2 stars, standard (apply_exercise1)
 You can use apply with previously defined theorems, not just hypotheses in the context. Use Search to find a previously-defined theorem about rev from Lists. Use that theorem as part of your (relatively short) solution to this exercise. You do not need induction.
 
 ```coq
@@ -4502,14 +4485,14 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard, optional (apply_rewrite)
+####### Exercise: 1 star, standard, optional (apply_rewrite)
 Briefly explain the difference between the tactics apply and rewrite. What are the situations where both can usefully be applied?
 
 (* FILL IN HERE *)
 
 ☐
 
-### The apply with Tactic
+#### The apply with Tactic
 The following silly example uses two rewrites in a row to get from [a;b] to [e;f].
 
 ```coq
@@ -4565,7 +4548,7 @@ Proof.
   apply eq1. apply eq2. Qed.
 ```
 
-###### Exercise: 3 stars, standard, optional (trans_eq_exercise)
+####### Exercise: 3 stars, standard, optional (trans_eq_exercise)
 
 ```coq
 Example trans_eq_exercise : ∀ (n m o p : nat),
@@ -4577,7 +4560,7 @@ Proof.
 ☐
 ```
 
-### The injection and discriminate Tactics
+#### The injection and discriminate Tactics
 Recall the definition of natural numbers:
 
 ```coq
@@ -4638,7 +4621,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard (injection_ex3)
+####### Exercise: 3 stars, standard (injection_ex3)
 
 ```coq
 Example injection_ex3 : ∀ (X : Type) (x y z : X) (l j : list X),
@@ -4675,7 +4658,7 @@ If you find the principle of explosion confusing, remember that these proofs are
 
 We'll explore the principle of explosion in more detail in the next chapter.
 
-###### Exercise: 1 star, standard (discriminate_ex3)
+####### Exercise: 1 star, standard (discriminate_ex3)
 
 ```coq
 Example discriminate_ex3 :
@@ -4737,7 +4720,7 @@ Theorem eq_implies_succ_equal' : ∀ (n m : nat),
 Proof. intros n m H. f_equal. apply H. Qed.
 ```
 
-### Using Tactics on Hypotheses
+#### Using Tactics on Hypotheses
 By default, most tactics work on the goal formula and leave the context unchanged. However, most tactics also have a variant that performs a similar operation on a statement in the context.
 
 For example, the tactic "simpl in H" performs simplification on the hypothesis H in the context.
@@ -4773,7 +4756,7 @@ Forward reasoning starts from what is given (premises, previously proven theorem
 
 The informal proofs seen in math or computer science classes tend to use forward reasoning. By contrast, idiomatic use of Coq generally favors backward reasoning, though in some situations the forward style can be easier to think about.
 
-### Specializing Hypotheses
+#### Specializing Hypotheses
 Another handy tactic for fiddling with hypotheses is specialize. It is essentially just a combination of assert and apply, but it often provides a pleasingly smooth way to nail down overly general assumptions. It works like this:
 
 If H is a quantified hypothesis in the current context -- i.e., H : ∀ (x:T), P -- then specialize H with (x := e) will change H so that it looks like [x:=e]P, that is, P with x replaced by e.
@@ -4931,7 +4914,7 @@ The thing to take away from all this is that you need to be careful, when using 
 
 The following exercise, which further strengthens the link between =? and =, follows the same pattern.
 
-###### Exercise: 2 stars, standard (eqb_true)
+####### Exercise: 2 stars, standard (eqb_true)
 ```coq
 Theorem eqb_true : ∀ n m,
   n =? m = true → n = m.
@@ -4940,7 +4923,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, advanced (eqb_true_informal)
+####### Exercise: 2 stars, advanced (eqb_true_informal)
 Give a careful informal proof of eqb_true, stating the induction hypothesis explicitly and being as explicit as possible about quantifiers, everywhere.
 
 (* FILL IN HERE *)
@@ -4953,7 +4936,7 @@ Definition manual_grade_for_informal_proof : option (nat×string) := None.
 
 ☐
 
-###### Exercise: 3 stars, standard, especially useful (plus_n_n_injective)
+####### Exercise: 3 stars, standard, especially useful (plus_n_n_injective)
 In addition to being careful about how you use intros, practice using "in" variants in this proof. (Hint: use plus_n_Sm.)
 
 ```coq
@@ -5025,7 +5008,7 @@ If n = 0, then by definition double n = 0, a contradiction.
 
 Thus, we may assume that n = S n' for some n', and again by the definition of double we have S (S (double n')) = S (S (double m')), which implies by injectivity that double n' = double m'. Instantiating the induction hypothesis with n' thus allows us to conclude that n' = m', and it follows immediately that S n' = S m'. Since S n' = n and S m' = m, this is just what we wanted to show. ☐
 
-###### Exercise: 3 stars, standard, especially useful (gen_dep_practice)
+####### Exercise: 3 stars, standard, especially useful (gen_dep_practice)
 Prove this by induction on l.
 
 ```coq
@@ -5037,7 +5020,7 @@ Proof.
 ☐
 ```
 
-### Unfolding Definitions
+#### Unfolding Definitions
 It sometimes happens that we need to manually unfold a name that has been introduced by a Definition so that we can manipulate the expression it stands for.
 
 For example, if we define...
@@ -5150,7 +5133,7 @@ Now it is apparent that we are stuck on the match expressions on both sides of t
 Qed.
 ```
 
-### Using destruct on Compound Expressions
+#### Using destruct on Compound Expressions
 We have seen many examples where destruct is used to perform case analysis of the value of some variable. Sometimes we need to reason by cases on the result of some expression. We can also do this with destruct.
 
 Here are some examples:
@@ -5175,7 +5158,7 @@ After unfolding sillyfun in the above proof, we find that we are stuck on if (n 
 
 In general, the destruct tactic can be used to perform case analysis of the results of arbitrary computations. If e is an expression whose type is some inductively defined type T, then, for each constructor c of T, destruct e generates a subgoal in which all occurrences of e (in the goal and in the context) are replaced by c.
 
-###### Exercise: 3 stars, standard (combine_split)
+####### Exercise: 3 stars, standard (combine_split)
 Here is an implementation of the split function mentioned in chapter Poly:
 
 ```coq
@@ -5256,7 +5239,7 @@ When we come to the second equality test in the body of the function we are reas
         + (* e5 = false *) discriminate eq. Qed.
 ```
 
-###### Exercise: 2 stars, standard (destruct_eqn_practice)
+####### Exercise: 2 stars, standard (destruct_eqn_practice)
 
 ```coq
 Theorem bool_fn_applied_thrice :
@@ -5267,7 +5250,7 @@ Proof.
 ☐
 ```
 
-### Review
+#### Review
 We've now seen many of Coq's most fundamental tactics. We'll introduce a few more in the coming chapters, and later on we'll see some more powerful automation tactics that make Coq help us with low-level details. But basically we've got what we need to get work done.
 
 Here are the ones we've seen:
@@ -5294,8 +5277,8 @@ Here are the ones we've seen:
 * generalize dependent x: move the variable x (and anything else that depends on it) from the context back to an explicit hypothesis in the goal formula
 * f_equal: change a goal of the form f x = f y into x = y
 
-### Additional Exercises
-###### Exercise: 3 stars, standard (eqb_sym)
+#### Additional Exercises
+####### Exercise: 3 stars, standard (eqb_sym)
 
 ```coq
 Theorem eqb_sym : ∀ (n m : nat),
@@ -5305,7 +5288,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced, optional (eqb_sym_informal)
+####### Exercise: 3 stars, advanced, optional (eqb_sym_informal)
 Give an informal proof of this lemma that corresponds to your formal proof above:
 
 Theorem: For any nats n m, (n =? m) = (m =? n).
@@ -5314,7 +5297,7 @@ Proof:
    (* FILL IN HERE *)
 ☐
 
-###### Exercise: 3 stars, standard, optional (eqb_trans)
+####### Exercise: 3 stars, standard, optional (eqb_trans)
 
 ```coq
 Theorem eqb_trans : ∀ n m p,
@@ -5326,7 +5309,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced (split_combine)
+####### Exercise: 3 stars, advanced (split_combine)
 We proved, in an exercise above, that combine is the inverse of split. Complete the definition of split_combine_statement below with a property that states that split is the inverse of combine. Then, prove that the property holds.
 
 Hint: Take a look at the definition of combine in Poly. Your property will need to account for the behavior of combine in its base cases, which possibly drop some list elements.
@@ -5344,7 +5327,7 @@ Definition manual_grade_for_split_combine : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced (filter_exercise)
+####### Exercise: 3 stars, advanced (filter_exercise)
 ```coq
 Theorem filter_exercise : ∀ (X : Type) (test : X → bool)
                                  (x : X) (l lf : list X),
@@ -5355,7 +5338,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 4 stars, advanced, especially useful (forall_exists_challenge)
+####### Exercise: 4 stars, advanced, especially useful (forall_exists_challenge)
 Define two recursive Fixpoints, forallb and existsb. The first checks whether every element in a list satisfies a given predicate:
 
 ```coq
@@ -5409,7 +5392,7 @@ Proof. (* FILL IN HERE *) Admitted.
 
 (* 2024-08-25 14:45 *)
 
-## Logic Logic in Coq
+### Logic Logic in Coq
 
 ```coq
 Set Warnings "-notation-overridden,-parsing".
@@ -5496,8 +5479,8 @@ Check @eq : ∀ A : Type, A → A → Prop.
 
 (Notice that we wrote @eq instead of eq: The type argument A to eq is declared as implicit, and we need to turn off the inference of this implicit argument to see the full type of eq.)
 
-### Logical Connectives
-#### Conjunction
+#### Logical Connectives
+##### Conjunction
 The conjunction, or logical and, of propositions A and B is written A ∧ B; it represents the claim that both A and B are true.
 
 ```coq
@@ -5531,7 +5514,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 2 stars, standard (and_exercise)
+####### Exercise: 2 stars, standard (and_exercise)
 
 ```coq
 Example and_exercise :
@@ -5608,7 +5591,7 @@ Proof.
   apply HP. Qed.
 ```
 
-###### Exercise: 1 star, standard, optional (proj2)
+####### Exercise: 1 star, standard, optional (proj2)
 
 ```coq
 Lemma proj2 : ∀ P Q : Prop,
@@ -5630,7 +5613,7 @@ Proof.
     - (* right *) apply HP. Qed.
 ```
 
-###### Exercise: 2 stars, standard (and_assoc)
+####### Exercise: 2 stars, standard (and_assoc)
 (In the following proof of associativity, notice how the nested intros pattern breaks the hypothesis H : P ∧ (Q ∧ R) down into HP : P, HQ : Q, and HR : R. Finish the proof.)
 
 ```coq
@@ -5648,7 +5631,7 @@ Finally, the infix notation ∧ is actually just syntactic sugar for and A B. Th
 Check and : Prop → Prop → Prop.
 ```
 
-#### Disjunction
+##### Disjunction
 Another important connective is the disjunction, or logical or, of two propositions: A ∨ B is true when either A or B is. This infix notation stands for or A B, where or : Prop → Prop → Prop.
 
 To use a disjunctive hypothesis in a proof, we proceed by case analysis -- which, as with other data types like nat, can be done explicitly with destruct or implicitly with an intros pattern:
@@ -5692,7 +5675,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 1 star, standard (mult_is_O)
+####### Exercise: 1 star, standard (mult_is_O)
 
 ```coq
 Lemma mult_is_O :
@@ -5702,7 +5685,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard (or_commut)
+####### Exercise: 1 star, standard (or_commut)
 
 ```coq
 Theorem or_commut : ∀ P Q : Prop,
@@ -5712,7 +5695,7 @@ Proof.
 ☐
 ```
 
-#### Falsehood and Negation
+##### Falsehood and Negation
 Up to this point, we have mostly been concerned with proving "positive" statements -- addition is commutative, appending lists is associative, etc. Of course, we are sometimes also interested in negative results, demonstrating that some given proposition is not true. Such statements are expressed with the logical negation operator ¬.
 
 To see how negation works, recall the principle of explosion from the Tactics chapter, which asserts that, if we assume a contradiction, then any other proposition can be derived.
@@ -5739,7 +5722,7 @@ Proof.
 
 The Latin ex falso quodlibet means, literally, "from falsehood follows whatever you like"; this is another common name for the principle of explosion.
 
-###### Exercise: 2 stars, standard, optional (not_implies_our_not)
+####### Exercise: 2 stars, standard, optional (not_implies_our_not)
 Show that Coq's definition of negation implies the intuitive one mentioned above.
 
 Hint: while getting accustomed to Coq's definition of not, you might find it helpful to unfold not near the beginning of proofs.
@@ -5802,7 +5785,7 @@ Proof.
   (* WORKED IN CLASS *)
   intros P H. unfold not. intros G. apply G. apply H. Qed.
 ```
-###### Exercise: 2 stars, advanced (double_neg_inf)
+####### Exercise: 2 stars, advanced (double_neg_inf)
 Write an informal proof of double_neg:
 
 Theorem: P implies ~~P, for any proposition P.
@@ -5815,7 +5798,7 @@ Definition manual_grade_for_double_neg_inf : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, especially useful (contrapositive)
+####### Exercise: 2 stars, standard, especially useful (contrapositive)
 
 ```coq
 Theorem contrapositive : ∀ (P Q : Prop),
@@ -5825,7 +5808,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard (not_both_true_and_false)
+####### Exercise: 1 star, standard (not_both_true_and_false)
 
 ```coq
 Theorem not_both_true_and_false : ∀ P : Prop,
@@ -5835,7 +5818,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, advanced (informal_not_PNP)
+####### Exercise: 1 star, advanced (informal_not_PNP)
 Write an informal proof (in English) of the proposition ∀ P : Prop, ~(P ∧ ¬P).
 
 (* FILL IN HERE *)
@@ -5847,7 +5830,7 @@ Definition manual_grade_for_informal_not_PNP : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (de_morgan_not_or)
+####### Exercise: 2 stars, standard (de_morgan_not_or)
 De Morgan's Laws, named for Augustus De Morgan, describe how negation interacts with conjunction and disjunction. The following law says that "the negation of a disjunction is the conjunction of the negations." There is a corresponding law de_morgan_not_and_not that we will return to at the end of this chapter.
 
 ```coq
@@ -5894,7 +5877,7 @@ Proof.
 Qed.
 ```
 
-#### Truth
+##### Truth
 Besides False, Coq's standard library also defines True, a proposition that is trivially true. To prove it, we use the constant I : True, which is also defined in the standard library:
 
 ```coq
@@ -5928,7 +5911,7 @@ To generalize this to other constructors, we simply have to provide an appropria
 
 The built-in discriminate tactic takes care of all this for us!
 
-#### Logical Equivalence
+##### Logical Equivalence
 The handy "if and only if" connective, which asserts that two propositions have the same truth value, is simply the conjunction of two implications.
 
 ```coq
@@ -5969,7 +5952,7 @@ Lemma apply_iff_example2:
 Qed.
 ```
 
-###### Exercise: 3 stars, standard (or_distributes_over_and)
+####### Exercise: 3 stars, standard (or_distributes_over_and)
 
 ```coq
 Theorem or_distributes_over_and : ∀ P Q R : Prop,
@@ -5979,7 +5962,7 @@ Proof.
 ☐
 ```
 
-#### Setoids and Logical Equivalence
+##### Setoids and Logical Equivalence
 Some of Coq's tactics treat iff statements specially, avoiding some low-level proof-state manipulation. In particular, rewrite and reflexivity can be used with iff statements, not just equalities. To enable this behavior, we have to import the Coq library that supports it:
 
 ```coq
@@ -6031,7 +6014,7 @@ Proof.
 Qed.
 ```
 
-#### Existential Quantification
+##### Existential Quantification
 Another basic logical connective is existential quantification. To say that there is some x of type T such that some property P holds of x, we write ∃ x : T, P. As with ∀, the type annotation : T can be omitted if Coq is able to infer from the context what the type of x should be.
 
 To prove a statement of the form ∃ x, P, we must show that P holds for some specific choice for x, known as the witness of the existential. This is done in two steps: First, we explicitly tell Coq which witness t we have in mind by invoking the tactic ∃ t. Then we prove that P holds after all occurrences of x are replaced by t.
@@ -6057,7 +6040,7 @@ Proof.
   apply Hm. Qed.
 ```
 
-###### Exercise: 1 star, standard, especially useful (dist_not_exists)
+####### Exercise: 1 star, standard, especially useful (dist_not_exists)
 Prove that "P holds for all x" implies "there is no x for which P does not hold." (Hint: destruct H as [x E] works on existential assumptions!)\
 
 ```coq
@@ -6068,7 +6051,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (dist_exists_or)
+####### Exercise: 2 stars, standard (dist_exists_or)
 Prove that existential quantification distributes over disjunction.
 
 ```coq
@@ -6079,7 +6062,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (leb_plus_exists)
+####### Exercise: 3 stars, standard, optional (leb_plus_exists)
 
 ```coq
 Theorem leb_plus_exists : ∀ n m, n <=? m = true → ∃ x, m = n+x.
@@ -6091,7 +6074,7 @@ Proof.
 ☐
 ```
 
-### Programming with Propositions
+#### Programming with Propositions
 The logical connectives that we have seen provide a rich vocabulary for defining complex propositions from simpler ones. To illustrate, let's look at how to express the claim that an element x occurs in a list l. Notice that this property has a simple recursive structure:
 * If l is the empty list, then x cannot occur in it, so the property "x appears in l" is simply false.
 * Otherwise, l has the form x' :: l'. In this case, x occurs in l if it is equal to x' or if it occurs in l'.
@@ -6153,7 +6136,7 @@ This way of defining propositions recursively is very convenient in some cases, 
 
 In the next chapter, we will see how to define propositions inductively -- a different technique with its own strengths and limitations.
 
-###### Exercise: 3 stars, standard (In_map_iff)
+####### Exercise: 3 stars, standard (In_map_iff)
 
 ```coq
 Theorem In_map_iff :
@@ -6167,7 +6150,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (In_app_iff)
+####### Exercise: 2 stars, standard (In_app_iff)
 
 ```coq
 Theorem In_app_iff : ∀ A l l' (a:A),
@@ -6178,7 +6161,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, especially useful (All)
+####### Exercise: 3 stars, standard, especially useful (All)
 We noted above that functions returning propositions can be seen as properties of their arguments. For instance, if P has type nat → Prop, then P n says that property P holds of n.
 
 Drawing inspiration from In, write a recursive function All stating that some property P holds of all elements of a list l. To make sure your definition is correct, prove the All_In lemma below. (Of course, your definition should not just restate the left-hand side of All_In.)
@@ -6195,7 +6178,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (combine_odd_even)
+####### Exercise: 2 stars, standard, optional (combine_odd_even)
 Complete the definition of combine_odd_even below. It takes as arguments two properties of numbers, Podd and Peven, and it should return a property P such that P n is equivalent to Podd n when n is odd and equivalent to Peven n otherwise.
 
 ```coq
@@ -6230,7 +6213,7 @@ Proof.
 ☐
 ```
 
-### Applying Theorems to Arguments
+#### Applying Theorems to Arguments
 One feature that distinguishes Coq from some other popular proof assistants (e.g., ACL2 and Isabelle) is that it treats proofs as first-class objects.
 
 There is a great deal to be said about this, but it is not necessary to understand it all in order to use Coq. This section gives just a taste, leaving a deeper exploration for the optional chapters ProofObjects and IndPrinciples.
@@ -6393,7 +6376,7 @@ Qed.
 
 We will see many more examples in later chapters.
 
-### Working with Decidable Properties
+#### Working with Decidable Properties
 We've seen two different ways of expressing logical claims in Coq: with booleans (of type bool), and with propositions (of type Prop).
 
 Here are the key differences between bool and Prop:
@@ -6443,7 +6426,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard (even_double_conv)
+####### Exercise: 3 stars, standard (even_double_conv)
 
 ```coq
 Lemma even_double_conv : ∀ n, ∃ k,
@@ -6590,7 +6573,7 @@ Qed.
 
 We won't discuss reflection any further for the moment, but it serves as a good example showing the different strengths of booleans and general propositions; we will return to it in later chaptersbeing able to cross back and forth between the boolean and propositional worlds will often be convenient.
 
-###### Exercise: 2 stars, standard (logical_connectives)
+####### Exercise: 2 stars, standard (logical_connectives)
 The following theorems relate the propositional connectives studied in this chapter to the corresponding boolean operations.
 
 ```coq
@@ -6605,7 +6588,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard (eqb_neq)
+####### Exercise: 1 star, standard (eqb_neq)
 The following theorem is an alternate "negative" formulation of eqb_eq that is more convenient in certain situations. (We'll see examples in later chapters.) Hint: not_true_iff_false.
 
 ```coq
@@ -6616,7 +6599,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard (eqb_list)
+####### Exercise: 3 stars, standard (eqb_list)
 Given a boolean operator eqb for testing equality of elements of some type A, we can define a function eqb_list for testing equality of lists with elements in A. Complete the definition of the eqb_list function below. To make sure that your definition is correct, prove the lemma eqb_list_true_iff.
 
 ```coq
@@ -6632,7 +6615,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, especially useful (All_forallb)
+####### Exercise: 2 stars, standard, especially useful (All_forallb)
 Prove the theorem below, which relates forallb, from the exercise forall_exists_challenge in chapter Tactics, to the All property defined above.
 
 Copy the definition of forallb from your Tactics here so that this file can be graded on its own.
@@ -6649,13 +6632,13 @@ Proof.
 ☐
 ```
 
-### The Logic of Coq
+#### The Logic of Coq
 Coq's logical core, the Calculus of Inductive Constructions, differs in some important ways from other formal systems that are used by mathematicians to write down precise and rigorous definitions and proofs -- in particular from Zermelo-Fraenkel Set Theory (ZFC), the most popular foundation for paper-and-pencil mathematics.
 
 
 We conclude this chapter with a brief discussion of some of the most significant differences between these two worlds.
 
-#### Functional Extensionality
+##### Functional Extensionality
 Coq's logic is quite minimalistic. This means that one occasionally encounters cases where translating standard mathematical reasoning into Coq is cumbersome -- or even impossible -- unless we enrich its core logic with additional axioms.
 
 For example, the equality assertions that we have seen so far mostly have concerned elements of inductive types (nat, bool, etc.). But, since Coq's equality operator is polymorphic, we can use it at any type -- in particular, we can write propositions claiming that two functions are equal to each other:
@@ -6728,7 +6711,7 @@ To check whether a particular proof relies on any additional axioms, use the Pri
 
 (If you try this yourself, you may also see add_comm listed as an assumption, depending on whether the copy of Tactics.v in the local directory has the proof of add_comm filled in.)
 
-###### Exercise: 4 stars, standard (tr_rev_correct)
+####### Exercise: 4 stars, standard (tr_rev_correct)
 One problem with the definition of the list-reversing function rev that we have is that it performs a call to app on each step. Running app takes time asymptotically linear in the size of the list, which means that rev is asymptotically quadratic.
 
 We can improve this with the following two-argument definition:
@@ -6754,7 +6737,7 @@ Proof.
 ☐
 ```
 
-#### Classical vs. Constructive Logic
+##### Classical vs. Constructive Logic
 We have seen that it is not possible to test whether or not a proposition P holds while defining a Coq function. You may be surprised to learn that a similar restriction applies in proofs! In other words, the following intuitive reasoning principle is not derivable in Coq:
 
 ```coq
@@ -6811,7 +6794,7 @@ It takes some practice to understand which proof techniques must be avoided in c
 
 The technical flaw here, from a constructive standpoint, is that we claimed to prove ∃ x, P x using a proof of ¬ ¬ (∃ x, P x). Allowing ourselves to remove double negations from arbitrary statements is equivalent to assuming the excluded middle law, as shown in one of the exercises below. Thus, this line of reasoning cannot be encoded in Coq without assuming additional axioms.
 
-###### Exercise: 3 stars, standard (excluded_middle_irrefutable)
+####### Exercise: 3 stars, standard (excluded_middle_irrefutable)
 Proving the consistency of Coq with the general excluded middle axiom requires complicated reasoning that cannot be carried out within Coq itself. However, the following theorem implies that it is always safe to assume a decidability axiom (i.e., an instance of excluded middle) for any particular Prop P. Why? Because the negation of such an axiom leads to a contradiction. If ¬ (P ∨ ¬P) were provable, then by de_morgan_not_or as proved above, P ∧ ¬P would be provable, which would be a contradiction. So, it is safe to add P ∨ ¬P as an axiom for any particular P.
 
 Succinctly: for any proposition P, Coq is consistent ==> (Coq + P ∨ ¬P) is consistent.
@@ -6824,7 +6807,7 @@ Proof.
 ☐
 ```
 
-##### Exercise: 3 stars, advanced (not_exists_dist)
+###### Exercise: 3 stars, advanced (not_exists_dist)
 It is a theorem of classical logic that the following two assertions are equivalent:
 
 ```coq
@@ -6844,7 +6827,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 5 stars, standard, optional (classical_axioms)
+####### Exercise: 5 stars, standard, optional (classical_axioms)
 For those who like a challenge, here is an exercise adapted from the Coq'Art book by Bertot and Casteran (p. 123). Each of the following five statements, together with excluded_middle, can be considered as characterizing classical logic. We can't prove any of them in Coq, but we can consistently add any one of them as an axiom if we wish to work in classical logic.
 
 Prove that all six propositions (these five plus excluded_middle) are equivalent.
@@ -6868,21 +6851,21 @@ Definition consequentia_mirabilis := ∀ P:Prop,
 
 (* 2024-08-25 14:45 *)
 
-## IndProp Inductively Defined Propositions
+### IndProp Inductively Defined Propositions
 
 ```coq
 Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
 From LF Require Export Logic.
 ```
 
-### Inductively Defined Propositions
+#### Inductively Defined Propositions
 In the Logic chapter, we looked at several ways of writing propositions, including conjunction, disjunction, and existential quantification.
 
 In this chapter, we bring yet another new tool into the mix: inductively defined propositions.
 
 To begin, some examples...
 
-#### Example: The Collatz Conjecture
+##### Example: The Collatz Conjecture
 The Collatz Conjecture is a famous open problem in number theory.
 
 Its statement is quite simple. First, we define a function f on numbers, as follows:
@@ -6954,7 +6937,7 @@ Conjecture collatz : ∀ n, Collatz_holds_for n.
 
 If you succeed in proving this conjecture, you've got a bright future as a number theorist! But don't spend too long on it -- it's been open since 1937.
 
-#### Example: Ordering
+##### Example: Ordering
 A binary relation on a set X is a family of propositions parameterized by two elements of X -- i.e., a proposition about pairs of elements of X.
 
 For example, one familiar binary relation on nat is le, the less-than-or-equal-to relation. We've already seen how to define it as a boolean computation. Here is a "direct" propositional definition.
@@ -6982,7 +6965,7 @@ Inductive le : nat → nat → Prop :=
   where "n <= m" := (le n m).
 ```
 
-#### Example: Transitive Closure
+##### Example: Transitive Closure
 As another example, the transitive closure of a relation R is the smallest relation that contains R and that is transitive.
 
 ```coq
@@ -7018,14 +7001,14 @@ Proof.
   - apply t_step. apply po_CM. Qed.
 ```
 
-###### Exercise: 1 star, standard, optional (close_refl_trans)
+####### Exercise: 1 star, standard, optional (close_refl_trans)
 How would you modify this definition so that it defines reflexive and transitive closure? How about reflexive, symmetric, and transitive closure?
 
 (* FILL IN HERE *)
 
 ☐
 
-#### Example: Permutations
+##### Example: Permutations
 The familiar mathematical concept of permutation also has an elegant formulation as an inductive relation. For simplicity, let's focus on permutations of lists with exactly three elements.
 
 ```coq
@@ -7043,7 +7026,7 @@ This definition says:
 * If l2 can be obtained from l1 by swapping the second and third elements, then l2 is a permutation of l1.
 * If l2 is a permutation of l1 and l3 is a permutation of l2, then l3 is a permutation of l1.
 
-###### Exercise: 1 star, standard, optional (perm)
+####### Exercise: 1 star, standard, optional (perm)
 According to this definition, is [1;2;3] a permutation of [3;2;1]? Is [1;2;3] a permutation of itself?
 
 (* FILL IN HERE *)
@@ -7058,7 +7041,7 @@ Proof.
   - apply perm3_swap23. Qed.
 ```
 
-#### Example: Evenness (yet again)
+##### Example: Evenness (yet again)
 We've already seen two ways of stating a proposition that a number n is even: We can say
 1. even n = true, or
 2.  ∃ k, n = double k.
@@ -7140,7 +7123,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 1 star, standard (ev_double)
+####### Exercise: 1 star, standard (ev_double)
 
 ```coq
 Theorem ev_double : ∀ n,
@@ -7150,7 +7133,7 @@ Proof.
 ☐
 ```
 
-### Using Evidence in Proofs
+#### Using Evidence in Proofs
 Besides constructing evidence that numbers are even, we can also destruct such evidence, reasoning about how it could have been built.
 
 Defining ev with an Inductive declaration tells Coq not only that the constructors ev_0 and ev_SS are valid ways to build evidence that some number is ev, but also that these two constructors are the only ways to build evidence that numbers are ev.
@@ -7161,7 +7144,7 @@ In other words, if someone gives us evidence E for the assertion ev n, then we k
 
 This suggests that it should be possible to analyze a hypothesis of the form ev n much as we do inductively defined data structures; in particular, it should be possible to argue by case analysis or by induction on such evidence. Let's look at a few examples to see what this means in practice.
 
-#### Inversion on Evidence
+##### Inversion on Evidence
 Suppose we are proving some fact involving a number n, and we are given ev n as a hypothesis. We already know how to perform case analysis on n using destruct or induction, generating separate subgoals for the case where n = O and the case where n = S n' for some n'. But for some proofs we may instead want to analyze the evidence for ev n directly.
 
 As a tool for such proofs, we can formalize the intuitive characterization that we gave above for evidence of ev n, using destruct.
@@ -7225,7 +7208,7 @@ Proof.
   intros H. inversion H. Qed.
 ```
 
-###### Exercise: 1 star, standard (inversion_practice)
+####### Exercise: 1 star, standard (inversion_practice)
 Prove the following result using inversion. (For extra practice, you can also prove it using the inversion lemma.)
 
 ```coq
@@ -7236,7 +7219,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, standard (ev5_nonsense)
+####### Exercise: 1 star, standard (ev5_nonsense)
 Prove the following result using inversion.
 
 ```coq
@@ -7313,7 +7296,7 @@ Now it is obvious that we are trying to prove another instance of the same theor
 Abort.
 ```
 
-#### Induction on Evidence
+##### Induction on Evidence
 If this story feels familiar, it is no coincidence: We encountered similar problems in the Induction chapter, when trying to use case analysis to prove results that required induction. And once again the solution is... induction!
 
 The behavior of induction on evidence is the same as its behavior on data: It causes Coq to generate one subgoal for each constructor that could have used to build that evidence, while providing an induction hypothesis for each recursive occurrence of the property in question.
@@ -7357,7 +7340,7 @@ As we will see in later chapters, induction on evidence is a recurring technique
 
 The following exercises provide simple examples of this technique, to help you familiarize yourself with it.
 
-###### Exercise: 2 stars, standard (ev_sum)
+####### Exercise: 2 stars, standard (ev_sum)
 
 ```coq
 Theorem ev_sum : ∀ n m, ev n → ev m → ev (n + m).
@@ -7366,7 +7349,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 4 stars, advanced, optional (ev'_ev)
+####### Exercise: 4 stars, advanced, optional (ev'_ev)
 In general, there may be multiple ways of defining a property inductively. For example, here's a (slightly contrived) alternative definition for ev:
 
 ```coq
@@ -7385,7 +7368,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced, especially useful (ev_ev__ev)
+####### Exercise: 3 stars, advanced, especially useful (ev_ev__ev)
 
 ```coq
 Theorem ev_ev__ev : ∀ n m,
@@ -7397,7 +7380,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (ev_plus_plus)
+####### Exercise: 3 stars, standard, optional (ev_plus_plus)
 This exercise can be completed without induction or case analysis. But, you will need a clever assertion and some tedious rewriting. Hint: Is (n+m) + (n+p) even?
 
 ```coq
@@ -7408,7 +7391,7 @@ Proof.
 ☐
 ```
 
-### Inductive Relations
+#### Inductive Relations
 A proposition parameterized by a number (such as ev) can be thought of as a property -- i.e., it defines a subset of nat, namely those numbers for which the proposition is provable. In the same way, a two-argument proposition can be thought of as a relation -- i.e., it defines a set of pairs for which the proposition is provable.
 
 ```coq
@@ -7456,7 +7439,7 @@ Notation "n < m" := (lt n m).
 End Playground.
 ```
 
-###### Exercise: 2 stars, standard, optional (total_relation)
+####### Exercise: 2 stars, standard, optional (total_relation)
 Define an inductive binary relation total_relation that holds between every pair of natural numbers.
 
 ```coq
@@ -7469,7 +7452,7 @@ Theorem total_relation_is_total : ∀ n m, total_relation n m.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (empty_relation)
+####### Exercise: 2 stars, standard, optional (empty_relation)
 Define an inductive binary relation empty_relation (on numbers) that never holds.
 
 ```coq
@@ -7486,7 +7469,7 @@ From the definition of le, we can sketch the behaviors of destruct, inversion, a
 
 Here are a number of facts about the ≤ and < relations that we are going to need later in the course. The proofs make good practice exercises.
 
-###### Exercise: 5 stars, standard, optional (le_and_lt_facts)
+####### Exercise: 5 stars, standard, optional (le_and_lt_facts)
 
 ```coq
 Lemma le_trans : ∀ m n o, m ≤ n → n ≤ o → m ≤ o.
@@ -7554,7 +7537,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 4 stars, standard, optional (more_le_exercises)
+####### Exercise: 4 stars, standard, optional (more_le_exercises)
 
 ```coq
 Theorem leb_complete : ∀ n m,
@@ -7588,7 +7571,7 @@ Proof.
 Module R.
 ```
 
-###### Exercise: 3 stars, standard, especially useful (R_provability)
+####### Exercise: 3 stars, standard, especially useful (R_provability)
 We can define three-place relations, four-place relations, etc., in just the same way as binary relations. For example, consider the following three-place relation on numbers:
 
 ```coq
@@ -7616,7 +7599,7 @@ Definition manual_grade_for_R_provability : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (R_fact)
+####### Exercise: 3 stars, standard, optional (R_fact)
 The relation R above actually encodes a familiar function. Figure out which function; then state and prove this equivalence in Coq.
 
 ```coq
@@ -7629,7 +7612,7 @@ Proof.
 End R.
 ```
 
-###### Exercise: 3 stars, advanced (subsequence)
+####### Exercise: 3 stars, advanced (subsequence)
 A list is a subsequence of another list if all of the elements in the first list occur in the same order in the second list, possibly with some extra elements in between. For example,
 
 ```coq
@@ -7681,7 +7664,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (R_provability2)
+####### Exercise: 2 stars, standard, optional (R_provability2)
 Suppose we give Coq the following definition:
 
 ```coq
@@ -7700,7 +7683,7 @@ Which of the following propositions are provable?
 
 ☐
 
-### A Digression on Notation
+#### A Digression on Notation
 There are several equivalent ways of writing inductive types.  We've mostly seen this style...
 
 ```coq
@@ -7734,7 +7717,7 @@ Inductive bin : Type :=
 
 For inductively defined propositions, we need to explicitly give the result type for each constructor (because they are not all the same), so the first style doesn't make sense, but we can use either the second or the third interchangeably.
 
-### Case Study: Regular Expressions
+#### Case Study: Regular Expressions
 The ev property provides a simple example for illustrating inductive definitions and the basic techniques for reasoning about them, but it is not terribly exciting -- after all, it is equivalent to the two non-inductive definitions of evenness that we had already seen, and does not seem to offer any concrete benefit over them.
 
 To give a better sense of the power of inductive definitions, we now show how to use them to model a classic concept in computer science: regular expressions.
@@ -7866,7 +7849,7 @@ Qed.
 
 (Note the use of app_nil_r to change the goal of the theorem to exactly the shape expected by MStarApp.)
 
-###### Exercise: 3 stars, standard (exp_match_ex1)
+####### Exercise: 3 stars, standard (exp_match_ex1)
 The following lemmas show that the informal matching rules given at the beginning of the chapter can be obtained from the formal inductive definition.
 
 ```coq
@@ -7968,7 +7951,7 @@ Here again we get two induction hypotheses, and they illustrate why we need indu
 Qed.
 ```
 
-###### Exercise: 4 stars, standard (re_not_empty)
+####### Exercise: 4 stars, standard (re_not_empty)
 Write a recursive function re_not_empty that tests whether a regular expression matches some string. Prove that your function is correct.
 
 ```coq
@@ -7981,7 +7964,7 @@ Proof.
 ☐
 ```
 
-#### The remember Tactic
+##### The remember Tactic
 One potentially confusing feature of the induction tactic is that it will let you try to perform an induction over a term that isn't sufficiently general. The effect of this is to lose information (much as destruct without an eqn: clause can do), and leave you unable to complete the proof. Here's an example:
 
 ```coq
@@ -8088,7 +8071,7 @@ The interesting cases are those that correspond to Star. Note that the induction
 Qed.
 ```
 
-###### Exercise: 4 stars, standard, optional (exp_match_ex2)
+####### Exercise: 4 stars, standard, optional (exp_match_ex2)
 The MStar'' lemma below (combined with its converse, the MStar' exercise above), shows that our definition of exp_match for Star is equivalent to the informal one given previously.
 Lemma MStar'' : ∀ T (s : list T) (re : reg_exp T),
 
@@ -8102,7 +8085,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 5 stars, advanced (weak_pumping)
+####### Exercise: 5 stars, advanced (weak_pumping)
 One of the first really interesting theorems in the theory of regular expressions is the so-called pumping lemma, which states, informally, that any sufficiently long string s matching a regular expression re can be "pumped" by repeating some middle section of s an arbitrary number of times to produce a new string also matching re. (For the sake of simplicity in this exercise, we consider a slightly weaker theorem than is usually stated in courses on automata theory -- hence the name weak_pumping.)
 
 To get started, we need to define "sufficiently long." Since we are working in a constructive logic, we actually need to be able to calculate, for each regular expression re, the minimum length for strings s to guarantee "pumpability."
@@ -8230,7 +8213,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 5 stars, advanced, optional (pumping)
+####### Exercise: 5 stars, advanced, optional (pumping)
 Now here is the usual version of the pumping lemma. In addition to requiring that s2 ≠ [], it also requires that length s1 + length s2 ≤ pumping_constant re.
 
 ```coq
@@ -8260,7 +8243,7 @@ End Pumping.
 ☐
 ```
 
-### Case Study: Improving Reflection
+#### Case Study: Improving Reflection
 We've seen in the Logic chapter that we sometimes need to relate boolean computations to statements in Prop. But performing this conversion as we did there can result in tedious proof scripts. Consider the proof of the following theorem:
 
 ```coq
@@ -8313,7 +8296,7 @@ Qed.
 
 Now you prove the right-to-left implication:
 
-###### Exercise: 2 stars, standard, especially useful (reflect_iff)
+####### Exercise: 2 stars, standard, especially useful (reflect_iff)
 
 ```coq
 Theorem reflect_iff : ∀ P b, reflect P b → (P ↔ b = true).
@@ -8356,7 +8339,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard, especially useful (eqbP_practice)
+####### Exercise: 3 stars, standard, especially useful (eqbP_practice)
 Use eqbP as above to prove the following:
 
 ```coq
@@ -8377,8 +8360,8 @@ This small example shows reflection giving us a small gain in convenience; in la
 
 This way of using reflect was popularized by SSReflect, a Coq library that has been used to formalize important results in mathematics, including the 4-color theorem and the Feit-Thompson theorem. The name SSReflect stands for small-scale reflection, i.e., the pervasive use of reflection to streamline small proof steps by turning them into boolean computations.
 
-### Additional Exercises
-###### Exercise: 3 stars, standard, especially useful (nostutter_defn)
+#### Additional Exercises
+####### Exercise: 3 stars, standard, especially useful (nostutter_defn)
 Formulating inductive definitions of properties is an important skill you'll need in this course. Try to solve this exercise without any help.
 
 We say that a list "stutters" if it repeats the same element consecutively. (This is different from not containing duplicates: the sequence [1;4;1] has two occurrences of the element 1 but does not stutter.) The property "nostutter mylist" means that mylist does not stutter. Formulate an inductive definition for nostutter.
@@ -8423,7 +8406,7 @@ Definition manual_grade_for_nostutter : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 4 stars, advanced (filter_challenge)
+####### Exercise: 4 stars, advanced (filter_challenge)
 Let's prove that our definition of filter from the Poly chapter matches an abstract specification. Here is the specification, written out informally in English:
 
 A list l is an "in-order merge" of l1 and l2 if it contains all the same elements as l1 and l2, in the same order as l1 and l2, but possibly interleaved. For example,
@@ -8463,14 +8446,14 @@ Proof.
 ☐
 ```
 
-###### Exercise: 5 stars, advanced, optional (filter_challenge_2)
+####### Exercise: 5 stars, advanced, optional (filter_challenge_2)
 A different way to characterize the behavior of filter goes like this: Among all subsequences of l with the property that test evaluates to true on all their members, filter test l is the longest. Formalize this claim and prove it.
 
 (* FILL IN HERE *)
 
 ☐
 
-###### Exercise: 4 stars, standard, optional (palindromes)
+####### Exercise: 4 stars, standard, optional (palindromes)
 A palindrome is a sequence that reads the same backwards as forwards.
 * Define an inductive proposition pal on list X that captures what it means to be a palindrome. (Hint: You'll need three cases. Your definition should be based on the structure of the list; just having a single constructor like
 
@@ -8502,7 +8485,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 5 stars, standard, optional (palindrome_converse)
+####### Exercise: 5 stars, standard, optional (palindrome_converse)
 Again, the converse direction is significantly more difficult, due to the lack of evidence. Using your definition of pal from the previous exercise, prove that
 
 ```coq
@@ -8514,7 +8497,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 4 stars, advanced, optional (NoDup)
+####### Exercise: 4 stars, advanced, optional (NoDup)
 Recall the definition of the In property from the Logic chapter, which asserts that a value x appears at least once in a list l:
 
 ```coq
@@ -8544,7 +8527,7 @@ Definition manual_grade_for_NoDup_disjoint_etc : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 4 stars, advanced, optional (pigeonhole_principle)
+####### Exercise: 4 stars, advanced, optional (pigeonhole_principle)
 The pigeonhole principle states a basic fact about counting: if we distribute more than n items into n pigeonholes, some pigeonhole must contain at least two items. As often happens, this apparently trivial fact about numbers requires non-trivial machinery to prove, but we now have enough...
 
 First prove an easy and useful lemma.
@@ -8583,7 +8566,7 @@ Proof.
 ☐
 ```
 
-#### Extended Exercise: A Verified Regular-Expression Matcher
+##### Extended Exercise: A Verified Regular-Expression Matcher
 We have now defined a match relation over regular expressions and polymorphic lists. We can use such a definition to manually prove that a given regex matches a given string, but it does not give us a program that we can run to determine a match automatically.
 
 It would be reasonable to hope that we can translate the definitions of the inductive rules for constructing evidence of the match relation into cases of a recursive function that reflects the relation by recursing on a given regex. However, it does not seem straightforward to define such a function in which the given regex is a recursion variable recognized by Coq. As a result, Coq will not accept that the function always terminates.
@@ -8700,7 +8683,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard, optional (app_ne)
+####### Exercise: 3 stars, standard, optional (app_ne)
 App re0 re1 matches a::s iff re0 matches the empty string and a::s matches re1 or s=s0++s1, where a::s0 matches re0 and s1 matches re1.
 
 Even though this is a property of purely the match relation, it is a critical observation behind the design of our regex matcher. So (1) take time to understand it, (2) prove it, and (3) look for how you'll use it later.
@@ -8731,7 +8714,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard, optional (star_ne)
+####### Exercise: 3 stars, standard, optional (star_ne)
 a::s matches Star re iff s = s0 ++ s1, where a::s0 matches re and s1 matches Star re. Like app_ne, this observation is critical, so understand it, prove it, and keep it in mind.
 
 Hint: you'll need to perform induction. There are quite a few reasonable candidates for Prop's to prove by induction. The only one that will work is splitting the iff into two implications and proving one by induction on the evidence for a :: s =~ Star re. The other implication can be proved without induction.
@@ -8754,7 +8737,7 @@ Definition refl_matches_eps m :=
   ∀ re : reg_exp ascii, reflect ([ ] =~ re) (m re).
 ```
 
-###### Exercise: 2 stars, standard, optional (match_eps)
+####### Exercise: 2 stars, standard, optional (match_eps)
 Complete the definition of match_eps so that it tests if a given regex matches the empty string:
 
 ```coq
@@ -8763,7 +8746,7 @@ Fixpoint match_eps (re: reg_exp ascii) : bool
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (match_eps_refl)
+####### Exercise: 3 stars, standard, optional (match_eps_refl)
 Now, prove that match_eps indeed tests if a given regex matches the empty string. (Hint: You'll want to use the reflection lemmas ReflectT and ReflectF.)
 
 ```coq
@@ -8788,7 +8771,7 @@ A function d derives strings if, given character a and regex re, it evaluates to
 Definition derives d := ∀ a re, is_der re a (d a re).
 ```
 
-###### Exercise: 3 stars, standard, optional (derive)
+####### Exercise: 3 stars, standard, optional (derive)
 Define derive so that it derives strings. One natural implementation uses match_eps in some cases to determine if key regex's match the empty string.
 
 ```coq
@@ -8870,7 +8853,7 @@ Proof.
   (* FILL IN HERE *) Admitted.
 ```
 
-###### Exercise: 4 stars, standard, optional (derive_corr)
+####### Exercise: 4 stars, standard, optional (derive_corr)
 Prove that derive in fact always derives strings.
 
 Hint: one proof performs induction on re, although you'll need to carefully choose the property that you prove by induction by generalizing the appropriate terms.
@@ -8895,7 +8878,7 @@ Definition matches_regex m : Prop :=
   ∀ (s : string) re, reflect (s =~ re) (m s re).
 ```
 
-###### Exercise: 2 stars, standard, optional (regex_match)
+####### Exercise: 2 stars, standard, optional (regex_match)
 Complete the definition of regex_match so that it matches regexes.
 
 ```coq
@@ -8904,7 +8887,7 @@ Fixpoint regex_match (s : string) (re : reg_exp ascii) : bool
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (regex_match_correct)
+####### Exercise: 3 stars, standard, optional (regex_match_correct)
 Finally, prove that regex_match in fact matches regexes.
 
 Hint: if your definition of regex_match applies match_eps to regex re, then a natural proof applies match_eps_refl to re and destructs the result to generate cases in which you may assume that re does or does not match the empty string.
@@ -8920,14 +8903,14 @@ Proof.
 
 (* 2024-08-25 14:45 *)
 
-## Maps Total and Partial Maps
+### Maps Total and Partial Maps
 Maps (or dictionaries) are ubiquitous data structures both in ordinary programming and in the theory of programming languages; we're going to need them in many places in the coming chapters.
 
 They also make a nice case study using ideas we've seen in previous chapters, including building data structures out of higher-order functions (from Basics and Poly) and the use of reflection to streamline proofs (from IndProp).
 
 We'll define two flavors of maps: total maps, which include a "default" element to be returned when a key being looked up doesn't exist, and partial maps, which instead return an option to indicate success or failure. The latter is defined in terms of the former, using None as the default element.
 
-### The Coq Standard Library
+#### The Coq Standard Library
 One small digression before we begin...
 
 Unlike the chapters we have seen so far, this one does not Require Import the chapter before it (nor, transitively, all the earlier chapters). Instead, in this chapter and from now, on we're going to import the definitions and theorems we need directly from Coq's standard library stuff. You should not notice much difference, though, because we've been careful to name our own definitions and theorems the same as their counterparts in the standard library, wherever they overlap.
@@ -8960,7 +8943,7 @@ Print Init.Nat.add.
 
 We'll see some more uses of Locate in the Imp chapter.
 
-### Identifiers
+#### Identifiers
 First, we need a type for the keys that we will use to index into our maps. In Lists.v we introduced a fresh type id for a similar purpose; here and for the rest of Software Foundations we will use the string type from Coq's standard library.
 
 To compare strings, we use the function eqb from the String module in the standard library.
@@ -8981,7 +8964,7 @@ Check String.eqb_spec :
   ∀ x y : string, reflect (x = y) (String.eqb x y).
 ```
 
-### Total Maps
+#### Total Maps
 Our main job in this chapter will be to build a definition of partial maps that is similar in behavior to the one we saw in the Lists chapter, plus accompanying lemmas about its behavior.
 
 
@@ -9057,7 +9040,7 @@ Even if you don't bother to work the following exercises, make sure you thorough
 (Some of the proofs require the functional extensionality axiom, which was discussed in the Logic chapter.)
 ```
 
-###### Exercise: 1 star, standard, optional (t_apply_empty)
+####### Exercise: 1 star, standard, optional (t_apply_empty)
 First, the empty map returns its default element for all keys:
 
 ```coq
@@ -9068,7 +9051,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (t_update_eq)
+####### Exercise: 2 stars, standard, optional (t_update_eq)
 Next, if we update a map m at a key x with a new value v and then look up x in the map resulting from the update, we get back v:
 
 ```coq
@@ -9079,7 +9062,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (t_update_neq)
+####### Exercise: 2 stars, standard, optional (t_update_neq)
 On the other hand, if we update a map m at a key x1 and then look up a different key x2 in the resulting map, we get the same result that m would have given:
 
 ```coq
@@ -9091,7 +9074,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (t_update_shadow)
+####### Exercise: 2 stars, standard, optional (t_update_shadow)
 If we update a map m at a key x with a value v1 and then update again with the same key x and another value v2, the resulting map behaves the same (gives the same result when applied to any key) as the simpler map obtained by performing just the second update on m:
 
 ```coq
@@ -9102,7 +9085,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (t_update_same)
+####### Exercise: 2 stars, standard (t_update_same)
 Given strings x1 and x2, we can use the tactic destruct (eqb_spec x1 x2) to simultaneously perform case analysis on the result of String.eqb x1 x2 and generate hypotheses about the equality (in the sense of =) of x1 and x2. With the example in chapter IndProp as a template, use 
 ```coq
 String.eqb_spec
@@ -9117,7 +9100,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, especially useful (t_update_permute)
+####### Exercise: 3 stars, standard, especially useful (t_update_permute)
 
 Similarly, use String.eqb_spec to prove one final property of the update function: If we update a map m at two distinct keys, it doesn't matter in which order we do the updates.
 
@@ -9133,7 +9116,7 @@ Proof.
 ☐
 ```
 
-### Partial maps
+#### Partial maps
 Lastly, we define partial maps on top of total maps. A partial map with elements of type A is simply a total map with elements of type option A and default element None.
 
 ```coq
@@ -9259,7 +9242,7 @@ This property is quite useful for reasoning about languages with variable bindin
 
 (* 2024-08-25 14:45 *)
 
-## ProofObjects The Curry-Howard Correspondence
+### ProofObjects The Curry-Howard Correspondence
 
 ```coq
 Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
@@ -9348,7 +9331,7 @@ Proof.
 Qed.
 ```
 
-### Proof Scripts
+#### Proof Scripts
 The proof objects we've been discussing lie at the core of how Coq operates. When Coq is following a proof script, what is happening internally is that it is gradually constructing a proof object -- a term whose type is the proposition being proved. The tactics between Proof and Qed tell it how to build up a term of the required type. To see this process in action, let's use the Show Proof command to display the current state of the proof tree at various points in the following tactic proof.
 
 ```coq
@@ -9388,7 +9371,7 @@ Print ev_4'''.
 (* ===> ev_4''' =   ev_SS 2 (ev_SS 0 ev_0) : ev 4 *)
 ```
 
-###### Exercise: 2 stars, standard (eight_is_even)
+####### Exercise: 2 stars, standard (eight_is_even)
 Give a tactic proof and a proof object showing that ev 8.
 
 ```coq
@@ -9400,7 +9383,7 @@ Definition ev_8' : ev 8
 ☐
 ```
 
-### Quantifiers, Implications, Functions
+#### Quantifiers, Implications, Functions
 In Coq's computational universe (where data structures and programs live), there are two sorts of values that have arrows in their types: constructors introduced by Inductively defined data types, and functions.
 
 Similarly, in Coq's logical universe (where we carry out proofs), there are two ways of giving evidence for an implication: constructors introduced by Inductively defined propositions, and... functions!
@@ -9476,7 +9459,7 @@ Definition ev_plus2'' : Prop :=
 
 In general, "P → Q" is just syntactic sugar for "∀ (_:P), Q".
 
-### Programming with Tactics
+#### Programming with Tactics
 If we can build proofs by giving explicit terms rather than executing tactic scripts, you may be wondering whether we can build programs using tactics rather than by writing down explicit terms.
 
 Naturally, the answer is yes!
@@ -9501,7 +9484,7 @@ Notice that we terminated the Definition with a . rather than with := followed b
 
 This feature is mainly useful for writing functions with dependent types, which we won't explore much further in this book. But it does illustrate the uniformity and orthogonality of the basic ideas in Coq.
 
-### Logical Connectives as Inductive Types
+#### Logical Connectives as Inductive Types
 Inductive definitions are powerful enough to express most of the connectives we have seen so far. Indeed, only universal quantification (with implication as a special case) is built into Coq; all the others are defined inductively.
 
 Let's see how.
@@ -9510,7 +9493,7 @@ Let's see how.
 Module Props.
 ```
 
-#### Conjunction
+##### Conjunction
 To prove that P ∧ Q holds, we must present evidence for both P and Q. Thus, it makes sense to define a proof object for P ∧ Q to consist of a pair of two proofs: one for P and another one for Q. This leads to the following definition.
 
 ```coq
@@ -9568,7 +9551,7 @@ Definition and_comm' P Q : P ∧ Q ↔ Q ∧ P :=
   conj (and_comm'_aux P Q) (and_comm'_aux Q P).
 ```
 
-###### Exercise: 2 stars, standard (conj_fact)
+####### Exercise: 2 stars, standard (conj_fact)
 Construct a proof object for the following proposition.
 
 ```coq
@@ -9577,7 +9560,7 @@ Definition conj_fact : ∀ P Q R, P ∧ Q → Q ∧ R → P ∧ R
 ☐
 ```
 
-#### Disjunction
+##### Disjunction
 The inductive definition of disjunction uses two constructors, one for each side of the disjunct:
 
 ```coq
@@ -9617,7 +9600,7 @@ Qed.
 End Or.
 ```
 
-###### Exercise: 2 stars, standard (or_commut')
+####### Exercise: 2 stars, standard (or_commut')
 Construct a proof object for the following proposition.
 
 ```coq
@@ -9626,7 +9609,7 @@ Definition or_commut' : ∀ P Q, P ∨ Q → Q ∨ P
 ☐
 ```
 
-#### Existential Quantification
+##### Existential Quantification
 To give evidence for an existential quantifier, we package a witness x together with a proof that x satisfies the property P:
 
 ```coq
@@ -9655,7 +9638,7 @@ Definition some_nat_is_even : ∃ n, ev n :=
   ex_intro ev 4 (ev_SS 2 (ev_SS 0 ev_0)).
 ```
 
-###### Exercise: 2 stars, standard (ex_ev_Sn)
+####### Exercise: 2 stars, standard (ex_ev_Sn)
 Construct a proof object for the following proposition.
 
 ```coq
@@ -9664,7 +9647,7 @@ Definition ex_ev_Sn : ex (fun n ⇒ ev (S n))
 ☐
 ```
 
-#### True and False
+##### True and False
 The inductive definition of the True proposition is simple:
 
 ```coq
@@ -9674,7 +9657,7 @@ Inductive True : Prop :=
 
 It has one constructor (so every proof of True is the same, so being given a proof of True is not informative.)
 
-###### Exercise: 1 star, standard (p_implies_true)
+####### Exercise: 1 star, standard (p_implies_true)
 Construct a proof object for the following proposition.
 
 ```coq
@@ -9706,7 +9689,7 @@ Definition false_implies_zero_eq_one : False → 0 = 1 :=
 
 Since there are no branches to evaluate, the match expression can be considered to have any type we want, including 0 = 1. Fortunately, it's impossible to ever cause the match to be evaluated, because we can never construct a value of type False to pass to the function.
 
-###### Exercise: 1 star, standard (ex_falso_quodlibet')
+####### Exercise: 1 star, standard (ex_falso_quodlibet')
 Construct a proof object for the following proposition.
 
 ```coq
@@ -9716,7 +9699,7 @@ Definition ex_falso_quodlibet' : ∀ P, False → P
 End Props.
 ```
 
-### Equality
+#### Equality
 Even Coq's equality relation is not built in. We can define it ourselves:
 
 ```coq
@@ -9781,7 +9764,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 2 stars, standard (eq_cons)
+####### Exercise: 2 stars, standard (eq_cons)
 Construct the proof object for this theorem. Use pattern matching against the equality hypotheses.
 
 ```coq
@@ -9791,7 +9774,7 @@ Definition eq_cons : ∀ (X : Type) (h1 h2 : X) (t1 t2 : list X),
 ☐
 ```
 
-###### Exercise: 2 stars, standard (equality__leibniz_equality)
+####### Exercise: 2 stars, standard (equality__leibniz_equality)
 The inductive definition of equality implies Leibniz equality: what we mean when we say "x and y are equal" is that every property on P that is true of x is also true of y. Prove that.
 
 ```coq
@@ -9802,7 +9785,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (equality__leibniz_equality_term)
+####### Exercise: 2 stars, standard (equality__leibniz_equality_term)
 Construct the proof object for the previous exercise. All it requires is anonymous functions and pattern-matching; the large proof term constructed by tactics in the previous exercise is needessly complicated. Hint: pattern-match as soon as possible.
 
 ```coq
@@ -9812,7 +9795,7 @@ Definition equality__leibniz_equality_term : ∀ (X : Type) (x y: X),
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (leibniz_equality__equality)
+####### Exercise: 3 stars, standard, optional (leibniz_equality__equality)
 Show that, in fact, the inductive definition of equality is equivalent to Leibniz equality. Hint: the proof is quite short; about all you need to do is to invent a clever property P to instantiate the antecedent.
 
 ```coq
@@ -9824,7 +9807,7 @@ Proof.
 End EqualityPlayground.
 ```
 
-#### Inversion, Again
+##### Inversion, Again
 We've seen inversion used with both equality hypotheses and hypotheses about inductively defined propositions. Now that we've seen that these are actually the same thing, we're in a position to take a closer look at how inversion behaves.
 
 In general, the inversion tactic...
@@ -9842,7 +9825,7 @@ Example: If we invert a hypothesis built with and, there is only one constructor
 
 Example: If we invert a hypothesis built with eq, there is again only one constructor, so only one subgoal gets generated. Now, though, the form of the eq_refl constructor does give us some extra information: it tells us that the two arguments to eq must be the same! The inversion tactic adds this fact to the context.
 
-### Coq's Trusted Computing Base
+#### Coq's Trusted Computing Base
 One question that arises with any automated proof assistant is "why should we trust it?" -- i.e., what if there is a bug in the implementation that renders all its reasoning suspect?
 
 While it is impossible to allay such concerns completely, the fact that Coq is based on the Curry-Howard correspondence gives it a strong foundation. Because propositions are just types and proofs are just terms, checking that an alleged proof of a proposition is valid just amounts to type-checking the term. Type checkers are relatively small and straightforward programs, so the "trusted computing base" for Coq -- the part of the code that we have to believe is operating correctly -- is small too.
@@ -9877,10 +9860,10 @@ Recursive function infinite_loop purports to return a value of any type X that y
 
 Note that the soundness of Coq depends only on the correctness of this typechecking engine, not on the tactic machinery. If there is a bug in a tactic implementation (and this certainly does happen!), that tactic might construct an invalid proof term. But when you type Qed, Coq checks the term for validity from scratch. Only theorems whose proofs pass the type-checker can be used in further proof developments.
 
-### More Exercises
+#### More Exercises
 Most of the following theorems were already proved with tactics in Logic. Now construct the proof objects for them directly.
 
-###### Exercise: 2 stars, standard (and_assoc)
+####### Exercise: 2 stars, standard (and_assoc)
 ```coq
 Definition and_assoc : ∀ P Q R : Prop,
     P ∧ (Q ∧ R) → (P ∧ Q) ∧ R
@@ -9888,7 +9871,7 @@ Definition and_assoc : ∀ P Q R : Prop,
 ☐
 ```
 
-###### Exercise: 3 stars, standard (or_distributes_over_and)
+####### Exercise: 3 stars, standard (or_distributes_over_and)
 ```coq
 Definition or_distributes_over_and : ∀ P Q R : Prop,
     P ∨ (Q ∧ R) ↔ (P ∨ Q) ∧ (P ∨ R)
@@ -9896,7 +9879,7 @@ Definition or_distributes_over_and : ∀ P Q R : Prop,
 ☐
 ```
 
-###### Exercise: 3 stars, standard (negations)
+####### Exercise: 3 stars, standard (negations)
 ```coq
 Definition double_neg : ∀ P : Prop,
     P → ~~P
@@ -9910,7 +9893,7 @@ Definition de_morgan_not_or : ∀ P Q : Prop,
 ☐
 ```
 
-###### Exercise: 2 stars, standard (currying)
+####### Exercise: 2 stars, standard (currying)
 
 ```coq
 Definition curry : ∀ P Q R : Prop,
@@ -9922,7 +9905,7 @@ Definition uncurry : ∀ P Q R : Prop,
 ☐
 ```
 
-### Proof Irrelevance (Advanced)
+#### Proof Irrelevance (Advanced)
 In Logic we saw that functional extensionality could be added to Coq. A similar notion about propositions can also be defined (and added as an axiom, if desired):
 
 ```coq
@@ -9932,7 +9915,7 @@ Definition propositional_extensionality : Prop :=
 
 Propositional extensionality asserts that if two propositions are equivalent -- i.e., each implies the other -- then they are in fact equal. The proof objects for the propositions might be syntactically different terms. But propositional extensionality overlooks that, just as functional extensionality overlooks the syntactic differences between functions.
 
-###### Exercise: 1 star, advanced (pe_implies_or_eq)
+####### Exercise: 1 star, advanced (pe_implies_or_eq)
 Prove the following consequence of propositional extensionality.
 
 ```coq
@@ -9944,7 +9927,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 1 star, advanced (pe_implies_true_eq)
+####### Exercise: 1 star, advanced (pe_implies_true_eq)
 Prove that if a proposition P is provable, then it is equal to True -- as a consequence of propositional extensionality.
 
 ```coq
@@ -9955,7 +9938,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced (pe_implies_pi)
+####### Exercise: 3 stars, advanced (pe_implies_pi)
 Acknowledgment: this theorem and its proof technique are inspired by Gert Smolka's manuscript Modeling and Proving in Computational Type Theory Using the Coq Proof Assistant, 2021.
 
 Another, perhaps surprising, consequence of propositional extensionality is that it implies proof irrelevance, which asserts that all proof objects for a proposition are equal.
@@ -9976,10 +9959,10 @@ Proof. (* FILL IN HERE *) Admitted.
 
 (* 2024-08-25 14:45 *)
 
-## IndPrinciples Induction Principles
+### IndPrinciples Induction Principles
 Every time we declare a new Inductive datatype, Coq automatically generates an induction principle for this type. This induction principle is a theorem like any other: If t is defined inductively, the corresponding induction principle is called t_ind.
 
-### Basics
+#### Basics
 Here is the induction principle for natural numbers:
 
 ```coq
@@ -10016,7 +9999,7 @@ Third, we had to manually supply the name of the induction principle with apply,
 
 These conveniences make induction nicer to use in practice than applying induction principles like nat_ind directly. But it is important to realize that, modulo these bits of bookkeeping, applying nat_ind is what we are really doing.
 
-###### Exercise: 2 stars, standard (plus_one_r')
+####### Exercise: 2 stars, standard (plus_one_r')
 Complete this proof without using the induction tactic.
 
 ```coq
@@ -10054,7 +10037,7 @@ Check time_ind :
     ∀ t : time, P t.
 ```
 
-###### Exercise: 1 star, standard, optional (rgb)
+####### Exercise: 1 star, standard, optional (rgb)
 Write out the induction principle that Coq will generate for the following datatype. Write down your answer on paper or type it into a comment, and then compare it with what Coq prints.
 
 ```coq
@@ -10116,7 +10099,7 @@ Check natlist'_ind :
     ∀ n : natlist', P n.
 ```
 
-###### Exercise: 2 stars, standard (booltree_ind)
+####### Exercise: 2 stars, standard (booltree_ind)
 Here is a type for trees that contain a boolean value at each leaf and branch.
 
 ```coq
@@ -10153,7 +10136,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (toy_ind)
+####### Exercise: 2 stars, standard (toy_ind)
 Here is an induction principle for a toy type:
 
 ```coq
@@ -10183,7 +10166,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-### Polymorphism
+#### Polymorphism
 What about polymorphic datatypes?
 
 The inductive definition of polymorphic lists
@@ -10207,7 +10190,7 @@ The induction principle is likewise parameterized on X:
 
 Note that the whole induction principle is parameterized on X. That is, list_ind can be thought of as a polymorphic function that, when applied to a type X, gives us back an induction principle specialized to the type list X.
 
-###### Exercise: 1 star, standard, optional (tree)
+####### Exercise: 1 star, standard, optional (tree)
 Write out the induction principle that Coq will generate for the following datatype. Compare your answer with what Coq prints.
 
 ```coq
@@ -10218,7 +10201,7 @@ Check tree_ind.
 ☐
 ```
 
-###### Exercise: 1 star, standard, optional (mytype)
+####### Exercise: 1 star, standard, optional (mytype)
 Find an inductive definition that gives rise to the following induction principle:
 
 ```coq
@@ -10232,7 +10215,7 @@ Find an inductive definition that gives rise to the following induction principl
 ☐
 ```
 
-###### Exercise: 1 star, standard, optional (foo)
+####### Exercise: 1 star, standard, optional (foo)
 Find an inductive definition that gives rise to the following induction principle:
 
 ```coq
@@ -10246,7 +10229,7 @@ Find an inductive definition that gives rise to the following induction principl
 ☐
 ```
 
-###### Exercise: 1 star, standard, optional (foo')
+####### Exercise: 1 star, standard, optional (foo')
 Consider the following inductive definition:
 
 ```coq
@@ -10268,7 +10251,7 @@ What induction principle will Coq generate for foo'? (Fill in the blanks, then c
 ☐
 ```
 
-### Induction Hypotheses
+#### Induction Hypotheses
 Where does the phrase "induction hypothesis" fit into this story?
 
 The induction principle for numbers
@@ -10312,7 +10295,7 @@ Proof.
 
 This extra naming step isn't something that we do in normal proofs, but it is useful to do it explicitly for an example or two, because it allows us to see exactly what the induction hypothesis is. If we prove ∀ n, P_m0r n by induction on n (using either induction or apply nat_ind), we see that the first subgoal requires us to prove P_m0r 0 ("P holds for zero"), while the second subgoal requires us to prove ∀ n', P_m0r n' → P_m0r (S n') (that is "P holds of S n' if it holds of n'" or, more elegantly, "P is preserved by S"). The induction hypothesis is the premise of this latter implication -- the assumption that P holds of n', which we are allowed to use in proving that P holds for S n'.
 
-### More on the induction Tactic
+#### More on the induction Tactic
 The induction tactic actually does even more low-level bookkeeping for us than we discussed above.
 
 Recall the informal statement of the induction principle for natural numbers:
@@ -10370,14 +10353,14 @@ Proof.
     rewrite <- plus_n_Sm. reflexivity. Qed.
 ```
 
-###### Exercise: 1 star, standard, optional (plus_explicit_prop)
+####### Exercise: 1 star, standard, optional (plus_explicit_prop)
 Rewrite both add_assoc' and add_comm' and their proofs in the same style as mul_0_r'' above -- that is, for each theorem, give an explicit Definition of the proposition being proved by induction, and state the theorem and proof in terms of this defined proposition.
 
 (* FILL IN HERE *)
 
 ☐
 
-### Induction Principles for Propositions
+#### Induction Principles for Propositions
 Inductive definitions of propositions also cause Coq to generate induction priniciples. For example, recall our proposition ev from IndProp:
 
 ```coq
@@ -10453,7 +10436,7 @@ Check le2_ind :
     ∀ n0 : nat, n <=2 n0 → P n0.
 ```
 
-### Another Form of Induction Principles on Propositions (Optional)
+#### Another Form of Induction Principles on Propositions (Optional)
 The induction principle that Coq generated for ev was parameterized on a natural number n. It could have additionally been parameterized on the evidence that n was even, which would have led to this induction principle:
 
 ```coq
@@ -10482,7 +10465,7 @@ This is more flexibility than we normally need or want: it is giving us a way to
 
 That is why Coq actually generates the induction principle ev_ind that we saw before.
 
-### Formal vs. Informal Proofs by Induction
+#### Formal vs. Informal Proofs by Induction
 Question: What is the relation between a formal proof of a proposition P and an informal proof of the same proposition P?
 
 Answer: The latter should teach the reader everything they would need to understand to be able to produce the former.
@@ -10501,7 +10484,7 @@ Since we've spent much of this chapter looking "under the hood" at formal proofs
 
 In the real world of mathematical communication, written proofs range from extremely longwinded and pedantic to extremely brief and telegraphic. Although the ideal is somewhere in between, while one is getting used to the style it is better to start out at the pedantic end. Also, during the learning phase, it is probably helpful to have a clear standard to compare against. With this in mind, we offer two templates -- one for proofs by induction over data (i.e., where the thing we're doing induction on lives in Type) and one for proofs by induction over evidence (i.e., where the inductively defined thing lives in Prop).
 
-#### Induction Over an Inductively Defined Set
+##### Induction Over an Inductively Defined Set
 Template:
 * Theorem: <Universally quantified proposition of the form "For all n:S, P(n)," where S is some inductively defined set.>
 Proof: By induction on n.
@@ -10534,7 +10517,7 @@ it suffices to show that
 
 But this follows directly from the induction hypothesis, picking n' to be length l'. ☐
 
-#### Induction Over an Inductively Defined Proposition
+##### Induction Over an Inductively Defined Proposition
 Since inductively defined proof objects are often called "derivation trees," this form of proof is also known as induction on derivations.
 
 Template:
@@ -10555,7 +10538,7 @@ Example
   
   But then, by le_S, n ≤ S o'. ☐
 
-### Explicit Proof Objects for Induction (Optional)
+#### Explicit Proof Objects for Induction (Optional)
 Although tactic-based proofs are normally much easier to work with, the ability to write a proof term directly is sometimes very handy, particularly when we want Coq to do something slightly non-standard.
 
 Recall again the induction principle on naturals that Coq generates for us automatically from the Inductive declaration for nat.
@@ -10651,7 +10634,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 4 stars, standard, optional (t_tree)
+####### Exercise: 4 stars, standard, optional (t_tree)
 What if we wanted to define binary trees as follows, using a constructor that bundles the children and value at a node into a tuple?
 
 ```coq
@@ -10712,7 +10695,7 @@ Proof. (* FILL IN HERE *) Admitted.
 
 (* 2024-08-25 14:45 *)
 
-## Rel Properties of Relations
+### Rel Properties of Relations
 This short (and optional) chapter develops some basic definitions and a few theorems about binary relations in Coq. The key definitions are repeated where they are actually used (in the Smallstep chapter of Programming Language Foundations), so readers who are already comfortable with these ideas can safely skim or skip this chapter. However, relations are also a good source of exercises for developing facility with Coq's basic reasoning facilities, so it may be useful to look at this material just after the IndProp chapter.
 
 ```coq
@@ -10720,7 +10703,7 @@ Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
 From LF Require Export IndProp.
 ```
 
-### Relations
+#### Relations
 A binary relation on a set X is a family of propositions parameterized by two elements of X -- i.e., a proposition about pairs of elements of X.
 
 ```coq
@@ -10742,10 +10725,10 @@ Check le : relation nat.
 
 (Why did we write it this way instead of starting with Inductive le : relation nat...? Because we wanted to put the first nat to the left of the :, which makes Coq generate a somewhat nicer induction principle for reasoning about ≤.)
 
-### Basic Properties
+#### Basic Properties
 As anyone knows who has taken an undergraduate discrete math course, there is a lot to be said about relations in general, including ways of classifying relations (as reflexive, transitive, etc.), theorems that can be proved generically about certain sorts of relations, constructions that build one relation from another, etc. For example...
 
-##### Partial Functions
+###### Partial Functions
 A relation R on a set X is a partial function if, for every x, there is at most one y such that R x y -- i.e., R x y1 and R x y2 together imply y1 = y2.
 
 ```coq
@@ -10782,7 +10765,7 @@ Proof.
   discriminate Nonsense. Qed.
 ```
 
-###### Exercise: 2 stars, standard, optional (total_relation_not_partial_function)
+####### Exercise: 2 stars, standard, optional (total_relation_not_partial_function)
 Show that the total_relation defined in (an exercise in) IndProp is not a partial function.
 
 Copy the definition of total_relation from your IndProp here so that this file can be graded on its own.
@@ -10798,7 +10781,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (empty_relation_partial_function)
+####### Exercise: 2 stars, standard, optional (empty_relation_partial_function)
 Show that the empty_relation defined in (an exercise in) IndProp is a partial function.
 
 Copy the definition of empty_relation from your IndProp here so that this file can be graded on its own.
@@ -10814,7 +10797,7 @@ Proof.
 ☐
 ```
 
-#### Reflexive Relations
+##### Reflexive Relations
 A reflexive relation on a set X is one for which every element of X is related to itself.
 
 ```coq
@@ -10826,7 +10809,7 @@ Proof.
   unfold reflexive. intros n. apply le_n. Qed.
 ```
 
-##### Transitive Relations
+###### Transitive Relations
 A relation R is transitive if R a c holds whenever R a b and R b c do.
 
 ```coq
@@ -10851,7 +10834,7 @@ Proof.
   apply Hmo. Qed.
 ```
 
-###### Exercise: 2 stars, standard, optional (le_trans_hard_way)
+####### Exercise: 2 stars, standard, optional (le_trans_hard_way)
 We can also prove lt_trans more laboriously by induction, without using le_trans. Do this.
 Theorem lt_trans' :
 
@@ -10866,7 +10849,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (lt_trans'')
+####### Exercise: 2 stars, standard, optional (lt_trans'')
 Prove the same thing again by induction on o.
 
 ```coq
@@ -10891,7 +10874,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 1 star, standard, optional (le_S_n)
+####### Exercise: 1 star, standard, optional (le_S_n)
 
 ```coq
 Theorem le_S_n : ∀ n m,
@@ -10901,7 +10884,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (le_Sn_n_inf)
+####### Exercise: 2 stars, standard, optional (le_Sn_n_inf)
 Provide an informal proof of the following theorem:
 
 Theorem: For every n, ¬ (S n ≤ n)
@@ -10914,7 +10897,7 @@ Proof:
 
 ☐
 
-###### Exercise: 1 star, standard, optional (le_Sn_n)
+####### Exercise: 1 star, standard, optional (le_Sn_n)
 
 ```coq
 Theorem le_Sn_n : ∀ n,
@@ -10926,7 +10909,7 @@ Proof.
 
 Reflexivity and transitivity are the main concepts we'll need for later chapters, but, for a bit of additional practice working with relations in Coq, let's look at a few other common ones...
 
-###### Symmetric and Antisymmetric Relations
+####### Symmetric and Antisymmetric Relations
 A relation R is symmetric if R a b implies R b a.
 
 ```coq
@@ -10934,7 +10917,7 @@ Definition symmetric {X: Type} (R: relation X) :=
   ∀ a b : X, (R a b) → (R b a).
 ```
 
-###### Exercise: 2 stars, standard, optional (le_not_symmetric)
+####### Exercise: 2 stars, standard, optional (le_not_symmetric)
 
 ```coq
 Theorem le_not_symmetric :
@@ -10951,7 +10934,7 @@ Definition antisymmetric {X: Type} (R: relation X) :=
   ∀ a b : X, (R a b) → (R b a) → a = b.
 ```
 
-###### Exercise: 2 stars, standard, optional (le_antisymmetric)
+####### Exercise: 2 stars, standard, optional (le_antisymmetric)
 
 ```coq
 Theorem le_antisymmetric :
@@ -10961,7 +10944,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (le_step)
+####### Exercise: 2 stars, standard, optional (le_step)
 
 ```coq
 Theorem le_step : ∀ n m p,
@@ -10973,7 +10956,7 @@ Proof.
 ☐
 ```
 
-##### Equivalence Relations
+###### Equivalence Relations
 A relation is an equivalence if it's reflexive, symmetric, and transitive.
 
 ```coq
@@ -10981,7 +10964,7 @@ Definition equivalence {X:Type} (R: relation X) :=
   (reflexive R) ∧ (symmetric R) ∧ (transitive R).
 ```
 
-##### Partial Orders and Preorders
+###### Partial Orders and Preorders
 A relation is a partial order when it's reflexive, anti-symmetric, and transitive. In the Coq standard library it's called just "order" for short.
 
 ```coq
@@ -11004,7 +10987,7 @@ Proof.
       + (* transitive. *) apply le_trans. Qed.
 ```
 
-### Reflexive, Transitive Closure
+#### Reflexive, Transitive Closure
 The reflexive, transitive closure of a relation R is the smallest relation that contains R and that is both reflexive and transitive. Formally, it is defined like this in the Relations module of the Coq standard library:
 
 ```coq
@@ -11065,7 +11048,7 @@ Proof.
   apply rt1n_trans with y. apply H. apply rt1n_refl. Qed.
 ```
 
-###### Exercise: 2 stars, standard, optional (rsc_trans)
+####### Exercise: 2 stars, standard, optional (rsc_trans)
 
 ```coq
 Lemma rsc_trans :
@@ -11080,7 +11063,7 @@ Proof.
 
 Then we use these facts to prove that the two definitions of reflexive, transitive closure do indeed define the same relation.
 
-###### Exercise: 3 stars, standard, optional (rtc_rsc_coincide)
+####### Exercise: 3 stars, standard, optional (rtc_rsc_coincide)
 
 ```coq
 Theorem rtc_rsc_coincide :
@@ -11093,7 +11076,7 @@ Proof.
 
 (* 2024-08-25 14:45 *)
 
-## Imp Simple Imperative Programs
+### Imp Simple Imperative Programs
 In this chapter, we take a more serious look at how to use Coq as a tool to study other things. Our case study is a simple imperative programming language called Imp, embodying a tiny core fragment of conventional mainstream languages such as C and Java.
 
 Here is a familiar mathematical function written in Imp.
@@ -11122,10 +11105,10 @@ From LF Require Import Maps.
 Set Default Goal Selector "!".
 ```
 
-### Arithmetic and Boolean Expressions
+#### Arithmetic and Boolean Expressions
 We'll present Imp in three parts: first a core language of arithmetic and boolean expressions, then an extension of these with variables, and finally a language of commands including assignment, conditionals, sequencing, and loops.
 
-#### Syntax
+##### Syntax
 
 ```coq
 Module AExp.
@@ -11186,7 +11169,7 @@ Compared to the Coq version above...
 
 It's good to be comfortable with both sorts of notations: informal ones for communicating between humans and formal ones for carrying out implementations and proofs.
 
-#### Evaluation
+##### Evaluation
 Evaluating an arithmetic expression produces a number.
 
 ```coq
@@ -11218,7 +11201,7 @@ Fixpoint beval (b : bexp) : bool :=
   end.
 ```
 
-#### Optimization
+##### Optimization
 We haven't defined very much yet, but we can already get some mileage out of the definitions. Suppose we define a function that takes an arithmetic expression and slightly simplifies it, changing every occurrence of 0 + e (i.e., (APlus (ANum 0) e) into just e.
 
 ```coq
@@ -11270,15 +11253,15 @@ Proof.
     simpl. rewrite IHa1. rewrite IHa2. reflexivity. Qed.
 ```
 
-### Coq Automation
+#### Coq Automation
 The amount of repetition in this last proof is a little annoying. And if either the language of arithmetic expressions or the optimization being proved sound were significantly more complex, it would start to be a real problem.\
 
 So far, we've been doing all our proofs using just a small handful of Coq's tactics and completely ignoring its powerful facilities for constructing parts of proofs automatically. This section introduces some of these facilities, and we will see more over the next several chapters. Getting used to them will take some energy -- Coq's automation is a power tool -- but it will allow us to scale up our efforts to more complex definitions and more interesting properties without becoming overwhelmed by boring, repetitive, low-level details.
 
-#### Tacticals
+##### Tacticals
 Tacticals is Coq's term for tactics that take other tactics as arguments -- "higher-order tactics," if you will.
 
-##### The try Tactical
+###### The try Tactical
 If T is a tactic, then try T is a tactic that is just like T except that, if T fails, try T successfully does nothing at all (rather than failing).
 
 ```coq
@@ -11296,7 +11279,7 @@ Qed.
 
 There is not much reason to use try in completely manual proofs like these, but it is very useful for doing automated proofs in conjunction with the ; tactical, which we show next.
 
-##### The ; Tactical (Simple Form)
+###### The ; Tactical (Simple Form)
 In its most common form, the ; tactical takes two tactics as arguments. The compound tactic T;T' first performs T and then performs T' on each subgoal generated by T.
 
 For example, consider the following trivial lemma:
@@ -11396,7 +11379,7 @@ Proof.
       simpl; rewrite IHa2; reflexivity. Qed.
 ```
 
-##### The ; Tactical (General Form)
+###### The ; Tactical (General Form)
 The ; tactical also has a more general form than the simple T;T' we've seen above. If T, T1, ..., Tn are tactics, then
 
 ```coq
@@ -11411,7 +11394,7 @@ So T;T' is just special notation for the case when all of the Ti's are the same 
       T; [T' | T' | ... | T']
 ```
 
-##### The repeat Tactical
+###### The repeat Tactical
 The repeat tactical takes another tactic and keeps applying this tactic until it fails or until it succeeds but doesn't make any progress.
 
 Here is an example proving that 10 is in a long list using repeat.
@@ -11454,7 +11437,7 @@ Sort of.
 
 While evaluation in Coq's term language, Gallina, is guaranteed to terminate, tactic evaluation is not. This does not affect Coq's logical consistency, however, since the job of repeat and other tactics is to guide Coq in constructing proofs; if the construction process diverges (i.e., it does not terminate), this simply means that we have failed to construct a proof at all, not that we have constructed a bad proof.
 
-###### Exercise: 3 stars, standard (optimize_0plus_b_sound)
+####### Exercise: 3 stars, standard (optimize_0plus_b_sound)
 Since the optimize_0plus transformation doesn't change the value of aexps, we should be able to apply it to all the aexps that appear in a bexp without changing the bexp's value. Write a function that performs this transformation on bexps and prove it is sound. Use the tacticals we've just seen to make the proof as short and elegant as possible.
 
 ```coq
@@ -11467,14 +11450,14 @@ Proof.
 ☐
 ```
 
-###### Exercise: 4 stars, standard, optional (optimize)
+####### Exercise: 4 stars, standard, optional (optimize)
 Design exercise: The optimization implemented by our optimize_0plus function is only one of many possible optimizations on arithmetic and boolean expressions. Write a more sophisticated optimizer and prove it correct. (You will probably find it easiest to start small -- add just a single, simple optimization and its correctness proof -- and build up incrementally to something more interesting.)
 
 (* FILL IN HERE *)
 
 ☐
 
-#### Defining New Tactics
+##### Defining New Tactics
 Coq also provides facilities for "programming" in tactic scripts.
 
 The Ltac idiom illustrated below gives a handy way to define "shorthand tactics" that bundle several tactics into a single command.
@@ -11502,7 +11485,7 @@ Lemma invert_example1: ∀ {a b c: nat}, [a ;b] = [a;c] → b = c.
 Qed.
 ```
 
-#### The lia Tactic
+##### The lia Tactic
 The lia tactic implements a decision procedure for integer linear arithmetic, a subset of propositional logic and arithmetic.
 
 If the goal is a universally quantified formula made out of
@@ -11532,7 +11515,7 @@ Qed.
 
 (Note the From Coq Require Import Lia. at the top of this file, which makes lia available.)
 
-#### A Few More Handy Tactics
+##### A Few More Handy Tactics
 Finally, here are some miscellaneous tactics that you may find convenient.
 * clear H: Delete hypothesis H from the context.
 * subst x: Given a variable x, find an assumption x = e or e = x in the context, replace x with e throughout the context and current goal, and clear the assumption.
@@ -11544,7 +11527,7 @@ Finally, here are some miscellaneous tactics that you may find convenient.
 
 We'll see examples of all of these as we go along.
 
-### Evaluation as a Relation
+#### Evaluation as a Relation
 We have presented aeval and beval as functions defined by Fixpoints. Another way to think about evaluation -- one that is often more flexible -- is as a relation between expressions and their values. This perspective leads to Inductive definitions like the following...
 
 ```coq
@@ -11625,7 +11608,7 @@ Inductive aevalR : aexp → nat → Prop :=
   where "e '==>' n" := (aevalR e n) : type_scope.
 ```
 
-#### Inference Rule Notation
+##### Inference Rule Notation
 In informal discussions, it is convenient to write the rules for aevalR and similar relations in the more readable graphical form of inference rules, where the premises above the line justify the conclusion below the line.
 
 For example, the constructor E_APlus...
@@ -11669,7 +11652,7 @@ e2 ==> n2	(E_AMult)
 AMult e1 e2 ==> n1*n2	
 ```
 
-###### Exercise: 1 star, standard, optional (beval_rules)
+####### Exercise: 1 star, standard, optional (beval_rules)
 Here, again, is the Coq definition of the beval function:
 
 ```coq
@@ -11698,7 +11681,7 @@ Definition manual_grade_for_beval_rules : option (nat×string) := None.
 
 ☐
 
-#### Equivalence of the Definitions
+##### Equivalence of the Definitions
 It is straightforward to prove that the relational and functional definitions of evaluation agree:
 
 ```coq
@@ -11755,7 +11738,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard (bevalR)
+####### Exercise: 3 stars, standard (bevalR)
 Write a relation bevalR in the same style as aevalR, and prove that it is equivalent to beval.
 
 ```coq
@@ -11771,7 +11754,7 @@ Proof.
 End AExp.
 ```
 
-#### Computational vs. Relational Definitions
+##### Computational vs. Relational Definitions
 For the definitions of evaluation for arithmetic and boolean expressions, the choice of whether to use functional or relational definitions is mainly a matter of taste: either way works fine.
 
 However, there are many situations where relational definitions of evaluation work much better than functional ones.
@@ -11865,12 +11848,12 @@ Furthermore, functions can be directly "extracted" from Gallina to executable co
 
 Ultimately, the choice often comes down to either the specifics of a particular situation or simply a question of taste. Indeed, in large Coq developments it is common to see a definition given in both functional and relational styles, plus a lemma stating that the two coincide, allowing further proofs to switch from one point of view to the other at will.
 
-### Expressions With Variables
+#### Expressions With Variables
 Let's return to defining Imp, where the next thing we need to do is to enrich our arithmetic and boolean expressions with variables.
 
 To keep things simple, we'll assume that all variables are global and that they only hold numbers.
 
-#### States
+##### States
 Since we'll want to look variables up to find out their current values, we'll use total maps from the Maps chapter.
 
 A machine state (or just state) represents the current values of all variables at some point in the execution of a program.
@@ -11881,7 +11864,7 @@ For simplicity, we assume that the state is defined for all variables, even thou
 Definition state := total_map nat.
 ```
 
-#### Syntax
+##### Syntax
 We can add variables to the arithmetic expressions we had before simply by including one more constructor:
 
 ```coq
@@ -11918,7 +11901,7 @@ Inductive bexp : Type :=
   | BAnd (b1 b2 : bexp).
 ```
 
-#### Notations
+##### Notations
 To make Imp programs easier to read and write, we introduce some notations and implicit coercions.
 
 You do not need to understand exactly what these declarations do.
@@ -11964,7 +11947,7 @@ Definition example_aexp : aexp := <{ 3 + (X × 2) }>.
 Definition example_bexp : bexp := <{ true && ¬(X ≤ 4) }>.
 ```
 
-#### Evaluation
+##### Evaluation
 The arith and boolean evaluators must now be extended to handle variables in the obvious way, taking a state st as an extra argument:
 
 ```coq
@@ -12022,10 +12005,10 @@ Example bexp1 :
 Proof. reflexivity. Qed.
 ```
 
-### Commands
+#### Commands
 Now we are ready to define the syntax and behavior of Imp commands (or statements).
 
-#### Syntax
+##### Syntax
 Informally, commands c are described by the following BNF grammar.
 
 ```coq
@@ -12082,7 +12065,7 @@ Definition fact_in_coq : com :=
      end }>.
 ```
 
-#### Desugaring Notations
+##### Desugaring Notations
 Coq offers a rich set of features to manage the increasing complexity of the objects we work with, such as coercions and notations. However, their heavy usage can make it hard to understand what the expressions we enter actually mean. In such situations it is often instructive to "turn off" those features to get a more elementary picture of things, using the following commands:
 * Unset Printing Notations (undo with Set Printing Notations)
 * Set Printing Coercions (undo with Unset Printing Coercions)
@@ -12120,8 +12103,8 @@ Print fact_in_coq.
 Unset Printing Coercions.
 ```
 
-##### Locate Again
-##### Finding identifiers
+###### Locate Again
+###### Finding identifiers
 When used with an identifier, the Locate prints the full path to every value in scope with the same name. This is useful to troubleshoot problems due to variable shadowing.
 
 ```coq
@@ -12137,7 +12120,7 @@ Locate aexp.
 *)
 ```
 
-##### Finding notations
+###### Finding notations
 When faced with an unknown notation, you can use Locate with a string containing one of its symbols to see its possible interpretations.
 
 ```coq
@@ -12163,8 +12146,8 @@ Locate "while".
 *)
 ```
 
-#### More Examples
-##### Assignment:
+##### More Examples
+###### Assignment:
 
 ```coq
 Definition plus2 : com :=
@@ -12173,7 +12156,7 @@ Definition XtimesYinZ : com :=
   <{ Z := X × Y }>.
 ```
 
-##### Loops
+###### Loops
 
 ```coq
 Definition subtract_slowly_body : com :=
@@ -12189,7 +12172,7 @@ Definition subtract_3_from_5_slowly : com :=
      subtract_slowly }>.
 ```
 
-##### An infinite loop:
+###### An infinite loop:
 
 ```coq
 Definition loop : com :=
@@ -12198,10 +12181,10 @@ Definition loop : com :=
      end }>.
 ```
 
-### Evaluating Commands
+#### Evaluating Commands
 Next we need to define what it means to evaluate an Imp command. The fact that while loops don't necessarily terminate makes defining an evaluation function tricky...
 
-#### Evaluation as a Function (Failed Attempt)
+##### Evaluation as a Function (Failed Attempt)
 Here's an attempt at defining an evaluation function for commands (with a bogus while case).
 
 ```coq
@@ -12248,14 +12231,14 @@ That is, propositions like False would become provable (loop_false 0 would be a 
 
 Thus, because it doesn't terminate on all inputs, ceval_fun cannot be written in Coq -- at least not without additional tricks and workarounds (see chapter ImpCEvalFun if you're curious about those).
 
-#### Evaluation as a Relation
+##### Evaluation as a Relation
 Here's a better way: define ceval as a relation rather than a function -- i.e., make its result a Prop rather than a state, similar to what we did for aevalR above.
 
 This is an important change. Besides freeing us from awkward workarounds, it gives us a ton more flexibility in the definition. For example, if we add nondeterministic features like any to the language, we want the definition of evaluation to be nondeterministic -- i.e., not only will it not be total, it will not even be a function!
 
 We'll use the notation st =[ c ]=> st' for the ceval relation: st =[ c ]=> st' means that executing program c in a starting state st results in an ending state st'. This can be pronounced "c takes state st to st'".
 
-##### Operational Semantics
+###### Operational Semantics
 Here is an informal definition of evaluation, presented as inference rules for readability:
 
 ```coq
@@ -12336,7 +12319,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 2 stars, standard (ceval_example2)
+####### Exercise: 2 stars, standard (ceval_example2)
 
 ```coq
 Example ceval_example2:
@@ -12352,7 +12335,7 @@ Set Printing Implicit.
 Check @ceval_example2.
 ```
 
-###### Exercise: 3 stars, standard, optional (pup_to_n)
+####### Exercise: 3 stars, standard, optional (pup_to_n)
 Write an Imp program that sums the numbers from 1 to X (inclusive: 1 + 2 + ... + X) in the variable Y. Your program should update the state as shown in theorem pup_to_2_ceval, which you can reverse-engineer to discover the program you should write. The proof of that theorem will be somewhat lengthy.
 
 ```coq
@@ -12367,7 +12350,7 @@ Proof.
 ☐
 ```
 
-#### Determinism of Evaluation
+##### Determinism of Evaluation
 Changing from a computational to a relational definition of evaluation is a good move because it frees us from the artificial requirement that evaluation should be a total function. But it also raises a question: Is the second definition of evaluation really a partial function? Or is it possible that, beginning from the same state st, we could evaluate some command c in different ways to reach two different output states st' and st''?
 
 In fact, this cannot happen: ceval is a partial function:
@@ -12405,7 +12388,7 @@ Proof.
     apply IHE1_2. assumption. Qed.
 ```
 
-### Reasoning About Imp Programs
+#### Reasoning About Imp Programs
 We'll get into more systematic and powerful techniques for reasoning about Imp programs in Programming Language Foundations, but we can already do a few things (albeit in a somewhat low-level way) just by working with the bare definitions. This section explores some examples.
 
 ```coq
@@ -12424,7 +12407,7 @@ Inverting Heval essentially forces Coq to expand one step of the ceval computati
   apply t_update_eq. Qed.
 ```
 
-###### Exercise: 3 stars, standard, optional (XtimesYinZ_spec)
+####### Exercise: 3 stars, standard, optional (XtimesYinZ_spec)
 State and prove a specification of XtimesYinZ.
 
 (* FILL IN HERE *)
@@ -12437,7 +12420,7 @@ Definition manual_grade_for_XtimesYinZ_spec : option (nat×string) := None.
 
 ☐
 
-###### Exercise: 3 stars, standard, especially useful (loop_never_stops)
+####### Exercise: 3 stars, standard, especially useful (loop_never_stops)
 
 ```coq
 Theorem loop_never_stops : ∀ st st',
@@ -12454,7 +12437,7 @@ Proceed by induction on the assumed derivation showing that loopdef terminates. 
 
 ☐
 
-###### Exercise: 3 stars, standard (no_whiles_eqv)
+####### Exercise: 3 stars, standard (no_whiles_eqv)
 Consider the following function:
 
 ```coq
@@ -12486,7 +12469,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 4 stars, standard (no_whiles_terminating)
+####### Exercise: 4 stars, standard (no_whiles_terminating)
 Imp programs that don't involve while loops always terminate. State and prove a theorem no_whiles_terminating that says this. Use either no_whiles or no_whilesR, as you prefer.
 
 (* FILL IN HERE *)
@@ -12499,8 +12482,8 @@ Definition manual_grade_for_no_whiles_terminating : option (nat×string) := None
 
 ☐
 
-### Additional Exercises
-###### Exercise: 3 stars, standard (stack_compiler)
+#### Additional Exercises
+####### Exercise: 3 stars, standard (stack_compiler)
 Old HP Calculators, programming languages like Forth and Postscript, and abstract machines like the Java Virtual Machine all evaluate arithmetic expressions using a stack. For instance, the expression
 
 ```coq
@@ -12586,7 +12569,7 @@ Example s_compile1 :
 ☐
 ```
 
-###### Exercise: 3 stars, standard (execute_app)
+####### Exercise: 3 stars, standard (execute_app)
 Execution can be decomposed in the following sense: executing stack program p1 ++ p2 is the same as executing p1, taking the resulting stack, and executing p2 from that stack. Prove that fact.
 
 ```coq
@@ -12597,7 +12580,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard (stack_compiler_correct)
+####### Exercise: 3 stars, standard (stack_compiler_correct)
 Now we'll prove the correctness of the compiler implemented in the previous exercise. Begin by proving the following lemma. If it becomes difficult, consider whether your implementation of s_execute or s_compile could be simplified.
 
 ```coq
@@ -12617,7 +12600,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, standard, optional (short_circuit)
+####### Exercise: 3 stars, standard, optional (short_circuit)
 Most modern programming languages use a "short-circuit" evaluation rule for boolean and: to evaluate BAnd b1 b2, first evaluate b1. If it evaluates to false, then the entire BAnd expression evaluates to false immediately, without evaluating b2. Otherwise, b2 is evaluated to determine the result of the BAnd expression.
 
 Write an alternate version of beval that performs short-circuit evaluation of BAnd in this manner, and prove that it is equivalent to beval. (N.b. This is only true because expression evaluation in Imp is rather simple. In a bigger language where evaluating an expression might diverge, the short-circuiting BAnd would not be equivalent to the original, since it would make more programs terminate.)
@@ -12629,7 +12612,7 @@ Write an alternate version of beval that performs short-circuit evaluation of BA
 Module BreakImp.
 ```
 
-###### Exercise: 4 stars, advanced (break_imp)
+####### Exercise: 4 stars, advanced (break_imp)
 Imperative languages like C and Java often include a break or similar statement for interrupting the execution of loops. In this exercise we consider how to add break to Imp. First, we need to enrich the language of commands with an additional case.
 
 ```coq
@@ -12739,7 +12722,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced, optional (while_break_true)
+####### Exercise: 3 stars, advanced, optional (while_break_true)
 
 ```coq
 Theorem while_break_true : ∀ b c st st',
@@ -12751,7 +12734,7 @@ Proof.
 ☐
 ```
 
-###### Exercise: 4 stars, advanced, optional (ceval_deterministic)
+####### Exercise: 4 stars, advanced, optional (ceval_deterministic)
 
 ```coq
 Theorem ceval_deterministic: ∀ (c:com) st st1 st2 s1 s2,
@@ -12764,7 +12747,7 @@ Proof.
 End BreakImp.
 ```
 
-###### Exercise: 4 stars, standard, optional (add_for_loop)
+####### Exercise: 4 stars, standard, optional (add_for_loop)
 Add C-style for loops to the language of commands, update the ceval definition to define the semantics of for loops, and add cases for for loops as needed so that all the proofs in this file are accepted by Coq.
 
 A for loop should be parameterized by (a) a statement executed initially, (b) a test that is run on each iteration of the loop to determine whether the loop should continue, (c) a statement executed at the end of each loop iteration, and (d) a statement that makes up the body of the loop. (You don't need to worry about making up a concrete Notation for for loops, but feel free to play with this too if you like.)
@@ -12775,7 +12758,7 @@ A for loop should be parameterized by (a) a statement executed initially, (b) a 
 
 (* 2024-08-25 14:45 *)
 
-## ImpParser Lexing and Parsing in Coq
+### ImpParser Lexing and Parsing in Coq
 The development of the Imp language in Imp.v completely ignores issues of concrete syntax -- how an ascii string that a programmer might write gets translated into abstract syntax trees defined by the datatypes aexp, bexp, and com. In this chapter, we illustrate how the rest of the story can be filled in by building a simple lexical analyzer and parser using Coq's functional programming facilities.
 
 It is not important to understand all the details here (and accordingly, the explanations are fairly terse and there are no exercises). The main point is simply to demonstrate that it can be done. You are invited to look through the code -- most of it is not very complicated, though the parser relies on some "monadic" programming idioms that may require a little work to make out -- but most readers will probably want to just skim down to the Examples section at the very end to get the punchline.
@@ -12791,8 +12774,8 @@ From Coq Require Import Lists.List. Import ListNotations.
 From LF Require Import Maps Imp.
 ```
 
-### Internals
-#### Lexical Analysis
+#### Internals
+##### Lexical Analysis
 
 ```coq
 Definition isWhite (c : ascii) : bool :=
@@ -12864,8 +12847,8 @@ Example tokenize_ex1 :
 Proof. reflexivity. Qed.
 ```
 
-#### Parsing
-##### Options With Errors
+##### Parsing
+###### Options With Errors
 An option type with error messages:
 
 ```coq
@@ -12896,7 +12879,7 @@ Notation "'TRY' e1 'OR' e2"
     at level 60, e1 at next level, e2 at next level).
 ```
 
-##### Generic Combinators for Building Parsers
+###### Generic Combinators for Building Parsers
 
 ```coq
 Open Scope string_scope.
@@ -12942,7 +12925,7 @@ Definition expect (t : token) : parser unit :=
   firstExpect t (fun xs ⇒ SomeE (tt, xs)).
 ```
 
-##### A Recursive-Descent Parser for Imp
+###### A Recursive-Descent Parser for Imp
 Identifiers:
 
 ```coq
@@ -13172,7 +13155,7 @@ Definition parse (str : string) : optionE com :=
   end.
 ```
 
-### Examples
+#### Examples
 
 ```coq
 Example eg1 : parse " if x = y + 1 + 2 - y * 6 + 3 then x := x * 1; y := 0 else skip end "
@@ -13205,10 +13188,10 @@ Proof. cbv. reflexivity. Qed.
 
 (* 2024-08-25 14:45 *)
 
-## ImpCEvalFun An Evaluation Function for Imp
+### ImpCEvalFun An Evaluation Function for Imp
 We saw in the Imp chapter how a naive approach to defining a function representing evaluation for Imp runs into difficulties. There, we adopted the solution of changing from a functional to a relational definition of evaluation. In this optional chapter, we consider strategies for getting the functional approach to work.
 
-### A Broken Evaluator
+#### A Broken Evaluator
 
 ```coq
 From Coq Require Import Lia.
@@ -13259,7 +13242,7 @@ That is, propositions like False would become provable (e.g., loop_false 0 would
 
 Thus, because it doesn't terminate on all inputs, the full version of ceval_step1 cannot be written in Coq -- at least not without one additional trick...
 
-### A Step-Indexed Evaluator
+#### A Step-Indexed Evaluator
 The trick we need is to pass an additional parameter to the evaluation function that tells it how long to run. Informally, we start the evaluator with a certain amount of "gas" in its tank, and we allow it to run until either it terminates in the usual way or it runs out of gas, at which point we simply stop evaluating and say that the final result is the empty memory. (We could also say that the result is the current state at the point where the evaluator runs out of gas -- it doesn't really matter because the result is going to be wrong in either case!)
 
 ```coq
@@ -13374,7 +13357,7 @@ Example example_test_ceval :
 Proof. reflexivity. Qed.
 ```
 
-###### Exercise: 1 star, standard, optional (pup_to_n)
+####### Exercise: 1 star, standard, optional (pup_to_n)
 Write an Imp program that sums the numbers from 1 to X (inclusive -- i.e., 1 + 2 + ... + X) in the variable Y. Make sure your solution satisfies the test that follows.
 
 ```coq
@@ -13390,14 +13373,14 @@ Proof. reflexivity. Qed.
 ☐
 ```
 
-###### Exercise: 2 stars, standard, optional (peven)
+####### Exercise: 2 stars, standard, optional (peven)
 Write an Imp program that sets Z to 0 if X is even and sets Z to 1 otherwise. Use test_ceval to test your program.
 
 (* FILL IN HERE *)
 
 ☐
 
-### Relational vs. Step-Indexed Evaluation
+#### Relational vs. Step-Indexed Evaluation
 As for arithmetic and boolean expressions, we'd hope that the two alternative definitions of evaluation would actually amount to the same thing in the end. This section shows that this is the case.
 
 ```coq
@@ -13450,7 +13433,7 @@ Proof.
           apply E_WhileFalse. apply Heqr. Qed.
 ```
 
-###### Exercise: 4 stars, advanced (ceval_step__ceval_inf)
+####### Exercise: 4 stars, advanced (ceval_step__ceval_inf)
 Write an informal proof of ceval_step__ceval, following the usual template. (The template for case analysis on an inductively defined value should look the same as for induction, except that there is no induction hypothesis.) Make your proof communicate the main ideas to a human reader; do not simply transcribe the steps of the formal proof.
 
 (* FILL IN HERE *)
@@ -13504,7 +13487,7 @@ induction i1 as [|i1']; intros i2 st st' c Hle Hceval.
         simpl in Hceval. discriminate Hceval. Qed.
 ```
 
-###### Exercise: 3 stars, standard, especially useful (ceval__ceval_step)
+####### Exercise: 3 stars, standard, especially useful (ceval__ceval_step)
 Finish the following proof. You'll need ceval_step_more in a few places, as well as some basic facts about ≤ and plus.
 
 ```coq
@@ -13525,7 +13508,7 @@ Proof.
 Qed.
 ```
 
-### Determinism of Evaluation Again
+#### Determinism of Evaluation Again
 Using the fact that the relational and step-indexed definition of evaluation are the same, we can give a slicker proof that the evaluation relation is deterministic.
 
 ```coq
@@ -13547,8 +13530,8 @@ Proof.
 
 (* 2024-08-25 14:45 *)
 
-## Extraction Extracting OCaml from Coq
-### Basic Extraction
+### Extraction Extracting OCaml from Coq
+#### Basic Extraction
 In its simplest form, extracting an efficient program from one written in Coq is completely straightforward.
 
 First we say what language we want to extract into. Options are OCaml (the most mature), Haskell (mostly works), and Scheme (a bit out of date).
@@ -13575,7 +13558,7 @@ Extraction "imp1.ml" ceval_step.
 
 When Coq processes this command, it generates a file imp1.ml containing an extracted version of ceval_step, together with everything that it recursively depends on. Compile the present .v file and have a look at imp1.ml now.
 
-### Controlling Extraction of Specific Types
+#### Controlling Extraction of Specific Types
 We can tell Coq to extract certain Inductive definitions to specific OCaml types. For each one, we must say
 * how the Coq type itself should be represented in OCaml, and
 * how each constructor should be translated.
@@ -13614,7 +13597,7 @@ Extraction "imp2.ml" ceval_step.
 
 Have a look at the file imp2.ml. Notice how the fundamental definitions have changed from imp1.ml.
 
-### A Complete Example
+#### A Complete Example
 To use our extracted evaluator to run Imp programs, all we need to add is a tiny driver program that calls the evaluator and prints out the result.
 
 For simplicity, we'll print results by dumping out the first four memory locations in the final state.
@@ -13651,14 +13634,14 @@ Next, compile the driver together with the extracted code and execute it, as fol
 ```
 
 (The -w flags to ocamlc are just there to suppress a few spurious warnings.)
-### Discussion
+#### Discussion
 Since we've proved that the ceval_step function behaves the same as the ceval relation in an appropriate sense, the extracted program can be viewed as a certified Imp interpreter. Of course, the parser we're using is not certified, since we didn't prove anything about it!
-### Going Further
+#### Going Further
 Further details about extraction can be found in the Extract chapter in Verified Functional Algorithms (Software Foundations volume 3).
 
 (* 2024-08-25 14:46 *)
 
-## Auto More Automation
+### Auto More Automation
 
 ```coq
 Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
@@ -13710,7 +13693,7 @@ Proof.
     apply IHE1_2. assumption. Qed.
 ```
 
-### The auto Tactic
+#### The auto Tactic
 Thus far, our proof scripts mostly apply relevant hypotheses or lemmas by name, and only one at a time.
 
 ```coq
@@ -13931,7 +13914,7 @@ Proof with auto.
 Qed.
 ```
 
-### Searching For Hypotheses
+#### Searching For Hypotheses
 The proof has become simpler, but there is still an annoying amount of repetition. Let's start by tackling the contradiction cases. Each of them occurs in a situation where we have both
 
 ```coq
@@ -14152,7 +14135,7 @@ End Repeat.
 
 These examples just give a flavor of what "hyper-automation" can achieve in Coq. The details of match goal are a bit tricky (and debugging scripts using it is, frankly, not very pleasant). But it is well worth adding at least simple uses to your proofs, both to avoid tedium and to "future proof" them.
 
-### bThe eapply and eauto tactics
+#### bThe eapply and eauto tactics
 To close the chapter, we'll introduce one more convenient feature of Coq: its ability to delay instantiation of quantifiers. To motivate this feature, recall this example from the Imp chapter:
 
 ```coq
@@ -14227,7 +14210,7 @@ The eauto tactic works just like auto, except that it uses eapply instead of app
 
 Pro tip: One might think that, since eapply and eauto are more powerful than apply and auto, we should just use them all the time. Unfortunately, they are also significantly slower especially eauto. Coq experts tend to use apply and auto most of the time, only switching to the e variants when the ordinary variants don't do the job.
 
-### Constraints on Existential Variables
+#### Constraints on Existential Variables
 In order for Qed to succeed, all existential variables need to be determined by the end of the proof. Otherwise Coq will (rightly) refuse to accept the proof. Remember that the Coq tactics build proof objects, and proof objects containing existential variables are not complete.
 
 ```coq
@@ -14307,7 +14290,7 @@ Qed.
 
 (* 2024-08-25 14:46 *)
 
-## AltAuto A Streamlined Treatment of Automation
+### AltAuto A Streamlined Treatment of Automation
 So far, we've been doing all our proofs using just a small handful of Coq's tactics and completely ignoring its powerful facilities for constructing parts of proofs automatically. Getting used to them will take some work -- Coq's automation is a power tool -- but it will allow us to scale up our efforts to more complex definitions and more interesting properties without becoming overwhelmed by boring, repetitive, low-level details.
 
 In this chapter, we'll learn about
@@ -14384,9 +14367,9 @@ Qed.
 
 The amount of repetition in that proof is annoying. And if we wanted to extend the optimization function to handle other, similar, rewriting opportunities, it would start to be a real problem. We can streamline the proof with tacticals, which we turn to, next.
 
-### Tacticals
+#### Tacticals
 Tacticals are tactics that take other tactics as arguments -- "higher-order tactics," if you will.
-#### The try Tactical
+##### The try Tactical
 If T is a tactic, then try T is a tactic that is just like T except that, if T fails, try T successfully does nothing at all instead of failing.
 
 ```coq
@@ -14403,7 +14386,7 @@ Qed.
 
 There is no real reason to use try in completely manual proofs like these, but it is very useful for doing automated proofs in conjunction with the ; tactical, which we show next.
 
-#### The Sequence Tactical ; (Simple Form)
+##### The Sequence Tactical ; (Simple Form)
 In its most common form, the sequence tactical, written with semicolon ;, takes two tactics as arguments. The compound tactic T; T' first performs T and then performs T' on each subgoal generated by T.
 
 For example, consider the following trivial lemma:
@@ -14441,7 +14424,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard (try_sequence)
+####### Exercise: 3 stars, standard (try_sequence)
 Prove the following theorems using try and ;. Like simple_semi'' above, each proof script should be a sequence t1; ...; tn. of tactics, and there should be only one period in between Proof. and Qed.. Let's call that a "one shot" proof.
 
 ```coq
@@ -14498,7 +14481,7 @@ Proof.
 Qed.
 ```
 
-#### The Sequence Tactical ; (Local Form)
+##### The Sequence Tactical ; (Local Form)
 The sequence tactical ; also has a more general form than the simple T; T' we saw above. If T, T1, ..., Tn are tactics, then
 
 ```coq
@@ -14536,7 +14519,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 1 star, standard (notry_sequence)
+####### Exercise: 1 star, standard (notry_sequence)
 Prove the following theorem with a one-shot proof, but this time, do not use try.
 
 ```coq
@@ -14573,7 +14556,7 @@ Proof.
 Qed.
 ```
 
-#### The repeat Tactical
+##### The repeat Tactical
 The repeat tactical takes another tactic and keeps applying this tactic until it fails or stops making progress. Here is an example showing that 10 is in a long list:
 
 ```coq
@@ -14595,7 +14578,7 @@ Qed.
 
 The tactic repeat T also does not have any upper bound on the number of times it applies T. If T is a tactic that always succeeds, then repeat T will loop forever (e.g., repeat simpl loops, since simpl always succeeds). Evaluation in Coq's term language, Gallina, is guaranteed to terminate, but tactic evaluation is not. This does not affect Coq's logical consistency, however, since the job of repeat and other tactics is to guide Coq in constructing proofs. If the construction process diverges, it simply means that we have failed to construct a proof, not that we have constructed an incorrect proof.
 
-###### Exercise: 1 star, standard (ev100)
+####### Exercise: 1 star, standard (ev100)
 Prove that 100 is even. Your proof script should be quite short.
 
 ```coq
@@ -14604,8 +14587,8 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-#### An Optimization Exercise
-###### Exercise: 4 stars, standard (re_opt)
+##### An Optimization Exercise
+####### Exercise: 4 stars, standard (re_opt)
 Consider this more powerful version of the regular expression optimizer.
 
 ```coq
@@ -14836,7 +14819,7 @@ Definition manual_grade_for_re_opt : option (nat×string) := None.
 ☐
 ```
 
-### Tactics that Make Mentioning Names Unnecessary
+#### Tactics that Make Mentioning Names Unnecessary
 So far we have been dependent on knowing the names of hypotheses. For example, to prove the following simple theorem, we hardcode the name HP:
 
 ```coq
@@ -14848,7 +14831,7 @@ Qed.
 
 We took the trouble to invent a name for HP, then we had to remember that name. If we later change the name in one place, we have to change it everywhere. Likewise, if we were to add new arguments to the theorem, we would have to adjust the intros list. That makes it challenging to maintain large proofs. So, Coq provides several tactics that make it possible to write proof scripts that do not hardcode names.
 
-#### The assumption tactic
+##### The assumption tactic
 The assumption tactic is useful to streamline the proof above. It looks through the hypotheses and, if it finds the goal as one them, it uses that to finish the proof.
 
 ```coq
@@ -14862,7 +14845,7 @@ Some might argue to the contrary that hypothesis names improve self-documention 
 
 Anyway, unlike informal (good) mathematical proofs, Coq proof scripts are generally not that illuminating to readers. Worries about rich, self-documenting names for hypotheses might be misplaced.
 
-#### The contradiction tactic
+##### The contradiction tactic
 The contradiction tactic handles some ad hoc situations where a hypothesis contains False, or two hypotheses derive False.
 
 ```coq
@@ -14884,7 +14867,7 @@ Proof.
 Qed.
 ```
 
-#### The subst tactic
+##### The subst tactic
 The subst tactic substitutes away an identifier, replacing it everywhere and eliminating it from the context. That helps us to avoid naming hypotheses in rewrites.
 
 ```coq
@@ -14908,7 +14891,7 @@ Actually there are two forms of this tactic.
 * subst x finds an assumption x = e or e = x in the context, replaces x with e throughout the context and current goal, and removes the assumption from the context.
 * subst substitutes away all assumptions of the form x = e or e = x.
 
-#### The constructor tactic
+##### The constructor tactic
 The constructor tactic tries to find a constructor c (from the appropriate Inductive definition in the current environment) that can be applied to solve the current goal.
 
 ```coq
@@ -14926,12 +14909,12 @@ Qed.
 
 Warning: if more than one constructor can apply, constructor picks the first one, in the order in which they were defined in the Inductive definition. That might not be the one you want.
 
-### Automatic Solvers
+#### Automatic Solvers
 Coq has several special-purpose tactics that can solve certain kinds of goals in a completely automated way. These tactics are based on sophisticated algorithms developed for verification in specific mathematical or logical domains.
 
 Some automatic solvers are decision procedures, which are algorithms that always terminate, and always give a correct answer. Here, that means that they always find a correct proof, or correctly determine that the goal is invalid. Other automatic solvers are incomplete: they might fail to find a proof of a valid goal.
 
-#### Linear Integer Arithmetic: The lia Tactic
+##### Linear Integer Arithmetic: The lia Tactic
 The lia tactic implements a decision procedure for integer linear arithmetic, a subset of propositional logic and arithmetic. As input it accepts goals constructed as follows:
 * variables and constants of type nat, Z, and other integer types;
 * arithmetic operators +, -, ×, and ^;
@@ -14976,7 +14959,7 @@ Proof.
 Qed.
 ```
 
-#### Equalities: The congruence Tactic
+##### Equalities: The congruence Tactic
 The lia tactic makes use of facts about addition and multiplication to prove equalities. A more basic way of treating such formulas is to regard every function appearing in them as a black box: nothing is known about the function's behavior. Based on the properties of equality itself, it is still possible to prove some formulas. For example, y = f x → g y = g (f x), even if we know nothing about f or g:
 
 ```coq
@@ -15024,7 +15007,7 @@ Proof.
 Qed.
 ```
 
-#### Propositions: The intuition Tactic
+##### Propositions: The intuition Tactic
 A tautology is a logical formula that is always provable. A formula is propositional if it does not use quantifiers -- or at least, if quantifiers do not have to be instantiated to carry out the proof. The intuition tactic implements a decision procedure for propositional tautologies in Coq's constructive (that is, intuitionistic) logic. Even if a goal is not a propositional tautology, intuition will still attempt to reduce it to simpler subgoals.
 
 ```coq
@@ -15058,8 +15041,8 @@ Proof.
 Qed.
 ```
 
-#### Exercises with Automatic Solvers
-###### Exercise: 2 stars, standard (automatic_solvers)
+##### Exercises with Automatic Solvers
+####### Exercise: 2 stars, standard (automatic_solvers)
 The exercises below are gleaned from previous chapters, where they were proved with (relatively) long proof scripts. Each should now be provable with just a single invocation of an automatic solver.
 
 ```coq
@@ -15079,12 +15062,12 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-### Search Tactics
+#### Search Tactics
 The automated solvers we just discussed are capable of finding proofs in specific domains. Some of them might pay attention to local hypotheses, but overall they don't make use of any custom lemmas we've proved, or that are provided by libraries that we load.
 
 Another kind of automation that Coq provides does just that: the auto tactic and its variants search for proofs that can be assembled out of hypotheses and lemmas.
 
-#### The auto Tactic
+##### The auto Tactic
 Until this chapter, our proof scripts mostly applied relevant hypotheses or lemmas by name, and one at a time.
 
 ```coq
@@ -15246,7 +15229,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 3 stars, standard (re_opt_match_auto)
+####### Exercise: 3 stars, standard (re_opt_match_auto)
 Use auto to shorten your proof of re_opt_match even more. Eliminate all uses of apply, thus removing the need to name specific constructors and lemmas about regular expressions. The number of lines of proof script won't decrease that much, because auto won't be able to find induction, destruct, or inversion opportunities by itself.
 
 Hint: again, use a bottom-up approach. Always keep the proof compiling. You might find it easier to return to the original, very long proof, and shorten it, rather than starting with re_opt_match'; but, either way can work.
@@ -15261,7 +15244,7 @@ Definition manual_grade_for_re_opt_match'' : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced, optional (pumping_redux)
+####### Exercise: 3 stars, advanced, optional (pumping_redux)
 Use auto, lia, and any other useful tactics from this chapter to shorten your proof (or the "official" solution proof) of the weak Pumping Lemma exercise from IndProp.
 
 ```coq
@@ -15280,7 +15263,7 @@ Definition manual_grade_for_pumping_redux : option (nat×string) := None.
 ☐
 ```
 
-###### Exercise: 3 stars, advanced, optional (pumping_redux_strong)
+####### Exercise: 3 stars, advanced, optional (pumping_redux_strong)
 Use auto, lia, and any other useful tactics from this chapter to shorten your proof (or the "official" solution proof) of the stronger Pumping Lemma exercise from IndProp.
 
 ```coq
@@ -15306,7 +15289,7 @@ Definition manual_grade_for_pumping_redux_strong : option (nat×string) := None.
 ☐
 ```
 
-#### The eauto variant
+##### The eauto variant
 There is a variant of auto (and other tactics, such as apply) that makes it possible to delay instantiation of quantifiers. To motivate this feature, consider again this simple example:
 
 ```coq
@@ -15367,14 +15350,14 @@ The eauto tactic works just like auto, except that it uses eapply instead of app
 
 Pro tip: One might think that, since eapply and eauto are more powerful than apply and auto, it would be a good idea to use them all the time. Unfortunately, they are also significantly slower -- especially eauto. Coq experts tend to use apply and auto most of the time, only switching to the e variants when the ordinary variants don't do the job.
 
-### Ltac: The Tactic Language
+#### Ltac: The Tactic Language
 Most of the tactics we have been using are implemented in OCaml, where they are able to use an API to access Coq's internal structures at a low level. But this is seldom worth the trouble for ordinary Coq users.
 
 Coq has a high-level language called Ltac for programming new tactics in Coq itself, without having to escape to OCaml. Actually we've been using Ltac all along -- anytime we are in proof mode, we've been writing Ltac programs. At their most basic, those programs are just invocations of built-in tactics. The tactical constructs we learned at the beginning of this chapter are also part of Ltac.
 
 What we turn to, next, is ways to use Ltac to reduce the amount of proof script we have to write ourselves.
 
-#### Ltac Functions
+##### Ltac Functions
 Here is a simple Ltac example:
 
 ```coq
@@ -15440,7 +15423,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 1 star, standard (andb3_exchange)
+####### Exercise: 1 star, standard (andb3_exchange)
 Re-prove the following theorem from Basics, using only intros and destructpf. You should have a one-shot proof.
 
 ```coq
@@ -15450,7 +15433,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-###### Exercise: 2 stars, standard (andb_true_elim2)
+####### Exercise: 2 stars, standard (andb_true_elim2)
 The following theorem from Basics can't be proved with destructpf.
 
 ```coq
@@ -15490,7 +15473,7 @@ Proof. (* FILL IN HERE *) Admitted.
 ☐
 ```
 
-#### Ltac Pattern Matching
+##### Ltac Pattern Matching
 Here is another common proof pattern that we have seen in many simple proofs by induction:
 
 ```coq
@@ -15724,7 +15707,7 @@ Proof.
 Qed.
 ```
 
-#### Using match goal to Prove Tautologies
+##### Using match goal to Prove Tautologies
 The Ltac source code of intuition can be found in the GitHub repo for Coq in theories/Init/Tauto.v. At heart, it is a big loop that runs match goal to find propositions it can apply and destruct.
 
 Let's build our own simplified "knock off" of intuition. Here's a start on implication:
@@ -15790,7 +15773,7 @@ Proof.
 Qed.
 ```
 
-###### Exercise: 4 stars, advanced (nor_intuition)
+####### Exercise: 4 stars, advanced (nor_intuition)
 Create your own tactic nor_intuition. It should be able to prove the three theorems above -- nor_not_and, nor_comm, and nor_not -- fully automatically. You may not use intuition or any other automated solvers in your solution.
 
 Begin by copying the code from imp_intuition. You will then need to expand it to handle conjunctions, negations, bi-implications, and nor.
@@ -15816,7 +15799,7 @@ Definition manual_grade_for_nor_intuition : option (nat×string) := None.
 ☐
 ```
 
-### Review
+#### Review
 We've learned a lot of new features and tactics in this chapter:
 * try, ;, repeat
 * assumption, contradiction, subst, constructor
@@ -15826,8 +15809,8 @@ We've learned a lot of new features and tactics in this chapter:
 
 (* 2024-08-25 14:46 *)
 
-## Postscript Congratulations: We've made it to the end of Logical Foundations!
-### Looking Back
+### Postscript Congratulations: We've made it to the end of Logical Foundations!
+#### Looking Back
 We've covered quite a bit of ground so far. Here's a quick review...
 * Functional programming:
   * "declarative" programming style (recursion over immutable data structures, rather than looping over mutable arrays or pointer structures)
@@ -15849,10 +15832,10 @@ We've covered quite a bit of ground so far. Here's a quick review...
   * core tactics
   * automation
 
-### Looking Forward
+#### Looking Forward
 If what you've seen so far has whetted your interest, you have several choices for further reading in later volumes of the Software Foundations series. Some of these are intended to be accessible to readers immediately after finishing Logical Foundations; others require a few chapters from Volume 2, Programming Language Foundations. The Preface chapter in each volume gives details about prerequisites.
 
-### Resources
+#### Resources
 Here are some other good places to learn more...
 * This book includes some optional chapters covering topics that you may find useful. Take a look at the table of contents and the chapter dependency diagram to find them.
 * For questions about Coq, the #coq area of Stack Overflow (https://stackoverflow.com/questions/tagged/coq) is an excellent community resource.
@@ -15868,8 +15851,8 @@ Here are some other good places to learn more...
 
 (* 2024-08-25 14:46 *)
 
-## Bib Bibliography
-### Resources cited in this volume
+### Bib Bibliography
+#### Resources cited in this volume
 [Bertot 2004] Interactive Theorem Proving and Program Development: Coq'Art: The Calculus of Inductive Constructions, by Yves Bertot and Pierre Casteran. Springer-Verlag, 2004. https://tinyurl.com/z3o7nqu
 
 [Chlipala 2013] Certified Programming with Dependent Types, by Adam Chlipala. MIT Press. 2013. https://tinyurl.com/zqdnyg2

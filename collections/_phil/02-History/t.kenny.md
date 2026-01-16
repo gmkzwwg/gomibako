@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title:  A New History of Western Philosophy
 tags: History
 ---

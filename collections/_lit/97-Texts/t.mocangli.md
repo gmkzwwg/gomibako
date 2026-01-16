@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: 孤鸿寄语默苍离主要剧情
 tags: Texts
 ---

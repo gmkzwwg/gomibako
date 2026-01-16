@@ -4,8 +4,8 @@
   width: 100%;
   height: auto;
   z-index: 3;
-  border: $secondary-border;
-  border-bottom: $medium-border;
+  border: $border-secondary;
+  border-bottom: $border-normal;
   .vertical_center_table {
     width: 100%;
     height: $header-height; // the real height of header

@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: 网络哲学文章
 tags: Readings
 ---

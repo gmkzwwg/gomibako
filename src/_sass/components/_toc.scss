@@ -22,8 +22,8 @@
   background-color: rgba($color-postbg, 0.85);
   text-align: left;
   padding: 0px 0;
-  border-left: $medium-border;
-  border-bottom: $medium-border;
+  border-left: $border-normal;
+  border-bottom: $border-normal;
   @include thin_scrollbar;
   ul {
     padding: 0 4px 0 18px;

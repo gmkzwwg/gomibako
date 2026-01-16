@@ -41,7 +41,7 @@ h3 {
   font-weight: lighter;
   // text-transform: capitalize;
   margin: 1.6em 0 0.8em 0;
-  // border-bottom: $dotted-border-2;
+  // border-bottom: $border-dotted-third;
   cursor: $cursor-green-text;
 }
 h4::before {
@@ -108,13 +108,13 @@ video {
 textarea {
   margin: 0;
   padding: 0;
-  border: $thin-border;
+  border: $border-thin;
   background-color: rgba($color-postbg, 0.7);
   color: $color-warning;
   font-size: 15px;
 }
 button {
-  border: $medium-border;
+  border: $border-normal;
   background-color: rgba($color-postbg, 0.7);
   color: $color-primary;
   cursor: $cursor-green-pointer;
@@ -163,7 +163,7 @@ blockquote {
   line-height: 1.5;
   color: $article-blockquote;
   padding: 0 0.23em 0 0.5em;
-  border: 0.5px dotted $article-blockquote;
+  border: $border-dotted-blockquote;
   cursor: $cursor-green-text;
 //  border-left: 2.5px solid $article-blockquote;
 }

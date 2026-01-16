@@ -1,6 +1,6 @@
 ---
-category: Map
-title: Literature - Its Learning Map, Knowledge Architecture, and Fundamental Theory
+category: Prime
+title: Literature - Its Roadmap and Knowledge Architecture
 tags: Basics
 ---
 

@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: Contemporary Theories of Knowledge
 tags: Epistemology
 ---

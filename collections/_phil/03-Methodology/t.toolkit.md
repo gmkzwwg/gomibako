@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: The Philosophier's Toolkit
 tags: Methodology
 ---

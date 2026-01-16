@@ -1,5 +1,5 @@
 ---
-category: Outline
+category: Annal
 title: 数学史和数学思想
 tags: Basics
 ---

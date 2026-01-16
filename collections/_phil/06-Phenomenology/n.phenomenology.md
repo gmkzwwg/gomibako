@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: Phenomenology
 tags: Phenomenology
 ---

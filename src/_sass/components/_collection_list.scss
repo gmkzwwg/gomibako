@@ -31,12 +31,12 @@
   overflow: none;
   box-sizing: border-box; // interior border
   background-color: rgba($color-postbg, 0.9);
-  border: $secondary-border;
+  border: $border-secondary;
   .collection_list_header {
     height: $collection-list-header-size;
     text-align: left;
     padding: 0;
-    border-bottom: $secondary-border;
+    border-bottom: $border-secondary;
     .collection_list_header_title {
       height: auto;
       width: auto;
@@ -65,7 +65,7 @@
       position: absolute;
       text-align: center;
       vertical-align: middle;
-      border-left: $secondary-border;
+      border-left: $border-secondary;
       @include simple_link_style;
     }
     .close_btn_icon {
@@ -109,7 +109,7 @@
     overflow-x: hidden;
     overflow-y: hidden;
     text-align: left;
-    border-left: $thin-border;
+    border-left: $border-thin;
     td {
       padding: 0;
     }
@@ -177,7 +177,7 @@
     margin: 0 0 0.5em 0;
     font-size: $font-size-h6;
     text-transform: capitalize;
-    border-bottom: $thin-border;
+    border-bottom: $border-thin;
   }
 }
 

@@ -9,6 +9,12 @@
   color: rgba($color-primary, 0.9);
   padding: 1.1em 2.8em;
   p {
-    border-bottom: $thin-border;
+    border-bottom: $border-thin;
   }
+}
+.tag {
+  color: $color-primary;
+}
+.category {
+  color: $color-primary;
 }

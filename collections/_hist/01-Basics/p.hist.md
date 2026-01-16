@@ -1,6 +1,6 @@
 ---
-category: Map
-title: History - Its Learning Map, Knowledge Architecture, and Fundamental Theory
+category: Prime
+title: History - Its Roadmap and Knowledge Architecture
 tags: Basics
 ---
 

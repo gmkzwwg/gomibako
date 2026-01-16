@@ -1,5 +1,5 @@
 ---
-category: Map
+category: Prime
 title: Basic Problems in Literary Theory and Literary Criticism
 tags: Literary-Theory
 ---

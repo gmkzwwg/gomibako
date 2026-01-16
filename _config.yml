@@ -22,11 +22,13 @@ collection_order    :
     "psyc",
     "math",
     "comp",
+    "phys",
     "lang",
   ]
+
 collections:
   math:
-    output          : ture
+    output          : true
     permalink       : /:collection/:categories/:title/
     alias           : "MATH"
   phil:
@@ -54,6 +56,10 @@ collections:
     output          : true
     permalink       : /:collection/:categories/:title/
     alias           : "PSYC"
+  phys:
+    output          : true
+    permalink       : /:collection/:categories/:title/
+    alias           : "PHYS"
 
 # 3. Comment settings（disqus.com）
 disqus_username     : gmkzwwg
@@ -101,10 +107,9 @@ img                 : /images      # When inserting images, could use "{{site.im
 
 # 7. Plugins
 
-plugins:
+plugins:            # if "Jekyll::Errors::MissingDependencyException" -> Gem install jekyll-xxx
   - jekyll-feed
   - jekyll-sitemap
- # - jekyll-seo-tag
   - jekyll-mermaid
 
 # 8. JS version

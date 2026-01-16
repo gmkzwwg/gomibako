@@ -1,6 +1,6 @@
 ---
-category: Map
-title: Mathematics - Its Learning Map, Knowledge Architecture, and Fundamental Theory
+category: Prime
+title: Mathematics - Its Roadmap and Knowledge Architecture
 tags: Basics
 ---
 

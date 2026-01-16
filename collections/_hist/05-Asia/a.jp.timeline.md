@@ -1,5 +1,5 @@
 ---
-category: Chronology
+category: Annal
 title: 日本古代史时间线
 tags: Asia
 ---

@@ -76,27 +76,15 @@ Give me a TL;DR summary of [XXX] for a first-time practitioner. What is the abso
 
 ### For Via Negativa
 
-针对您作为跨学科研究者的需求，获取“负面知识”（Via Negativa）——即通过了解“什么是不对的”来锁定“什么是正确的”——是一种极其高效的认知策略。
+**Force AI to generate
+"As a research assistant, I want to master [学科名称]. To build a robust mental model, please provide a comprehensive 'Map of Failure' including:**
+**Conceptual Misconceptions**: Key terms that are frequently misunderstood or oversimplified (the 'pseudo-knowledge').
+**Procedural/Methodological Errors**: Common mistakes in the actual application or research process of this field.
+**Pedagogical Pitfalls**: Why traditional learning paths for this subject often fail or lead to dead ends.
+**Expert vs. Novice Gap**: Where do beginners usually get stuck compared to how experts actually think?
+**Boundary Conditions**: Under what specific assumptions do the core theories of this field break down?
+**Please present this in a rigorous, analytical style, avoiding clichés."**
 
-以下我为您设计了三套不同深度的提示词模板，并回答了关于“除了三类常见错误外还会有哪些问题”的深度分析。
-
----
-
-### 1. 深度学习版：针对研究者的“知识解构”提示词
-
-此提示词利用您的研究背景，强制 AI 进行跨学科的错误比对。
-
-> **"As a research assistant, I want to master [学科名称]. To build a robust mental model, please provide a comprehensive 'Map of Failure' including:**
-> 1. **Conceptual Misconceptions**: Key terms that are frequently misunderstood or oversimplified (the 'pseudo-knowledge').
-> 2. **Procedural/Methodological Errors**: Common mistakes in the actual application or research process of this field.
-> 3. **Pedagogical Pitfalls**: Why traditional learning paths for this subject often fail or lead to dead ends.
-> 4. **Expert vs. Novice Gap**: Where do beginners usually get stuck compared to how experts actually think?
-> 5. **Boundary Conditions**: Under what specific assumptions do the core theories of this field break down?
-> **Please present this in a rigorous, analytical style, avoiding clichés."**
-> 
-> 
-
----
 
 ### 2. 极简版：针对快速上手的“避坑指南”
 

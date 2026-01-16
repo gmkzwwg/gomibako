@@ -1,5 +1,5 @@
 ---
-category: Chronology
+category: Annal
 title: Key Milestones in European History
 tags: Europe
 ---

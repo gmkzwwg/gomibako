@@ -69,12 +69,13 @@ $collection-list-header-size: 30px;
 $global-section-margin: 0.30em;
 
 // standard border
-$thick-border: 2.1px solid $color-primary;
-$secondary-border: 1.35px solid rgba($color-primary, 0.87);
-$medium-border: 0.95px solid rgba($color-primary, 0.83);
-$thin-border: 0.5px solid rgba($color-primary, 0.6);
-$dotted-border: 0.7px dotted rgba($color-primary, 0.87);
-$dotted-border-2: 0.7px dotted rgba($color-third, 0.87);
+$border-thick: 2.5px solid $color-primary;
+$border-secondary: 1.4px solid rgba($color-primary, 0.8);
+$border-normal: 1px solid rgba($color-primary, 0.8);
+$border-thin: 0.5px solid rgba($color-primary, 0.6);
+$border-dotted-normal: 1px dotted rgba($color-primary, 0.8);
+$border-dotted-third: 0.7px dotted rgba($color-third, 0.8);
+$border-dotted-blockquote: 0.2px dotted rgba($article-blockquote, 0.4);
 
 // syntax highlight
 $code-primary:     $color-primary;

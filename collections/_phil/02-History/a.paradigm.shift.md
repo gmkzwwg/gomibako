@@ -1,5 +1,5 @@
 ---
-category: Chronology
+category: Annal
 title: Paradigm Shift of Western Philosophy
 tags: History
 ---

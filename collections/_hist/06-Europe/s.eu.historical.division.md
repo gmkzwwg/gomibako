@@ -1,5 +1,5 @@
 ---
-category: Chronology
+category: Annal
 title: Historical Divisions of European History
 tags: Europe
 ---

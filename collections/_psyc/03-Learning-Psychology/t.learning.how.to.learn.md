@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: Learning how to Learn
 tags: Learning-Psychology
 ---

@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: 中文社区哲学学习辅助资料
 tags: Readings
 ---

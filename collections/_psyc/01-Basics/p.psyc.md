@@ -1,6 +1,6 @@
 ---
-category: Map
-title: Psychology - Its Learning Map, Knowledge Architecture, and Fundamental Theory
+category: Prime
+title: Psychology - Its Roadmap and Knowledge Architecture
 tags: Basics
 ---
 

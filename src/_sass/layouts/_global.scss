@@ -26,7 +26,7 @@
   position: relative;
   z-index: 1;
   overflow-x: hidden;
-  border: $secondary-border;
+  border: $border-secondary;
   border-top: none;
   @include thin_scrollbar;
   article {
@@ -40,10 +40,10 @@
     margin: 10px 0 13px 0;
   }
   th {
-    border: $dotted-border-2; 
+    border: $border-dotted-third; 
   }
   td {
-    border: $dotted-border-2;  
+    border: $border-dotted-third;  
   }
   .encrypted {
     color: rgba($color-warning, 0.9);
@@ -69,7 +69,7 @@
     top: 0 !important;
     left: 0 !important;
     margin: 0;
-    border: $thick-border;
+    border: $border-thick;
     background-color: rgba($color-postbg, 0.7);
   }
   .page .container .div_article {
@@ -83,7 +83,7 @@
 }
 @media screen and (max-width: 400px) {
   .page .container {
-    border: $medium-border;
+    border: $border-normal;
   }
   .page .container .div_article #main_atcl {
     padding: 0px 5px 5px 5px ;

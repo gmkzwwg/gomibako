@@ -1,5 +1,5 @@
 ---
-category: Chronology
+category: Annal
 title: 古代欧洲史时间线
 tags: Europe
 ---

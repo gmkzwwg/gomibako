@@ -1,7 +1,7 @@
 ---
-category: Map
-title: Western Philosophy - Its Learning Map, Knowledge Architecture, and Fundamental Theory
-tags: Basics
+category: Prime
+title: Western Philosophy - Its Roadmap and Knowledge Architecture
+tags: Basics f f
 ---
 
 ## 什么是哲学？

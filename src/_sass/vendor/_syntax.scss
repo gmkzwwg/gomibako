@@ -191,7 +191,7 @@
         padding-right: 1em;
         width: 1em;
         color: $code-primary;
-        border-right: $medium-border;
+        border-right: $border-normal;
         text-align: right;
       }
       /* code */
@@ -207,7 +207,7 @@
 .highlight pre {
   background-color: $code-background;  
   overflow-x: auto;
-  border: $thin-border;
+  border: $border-thin;
   @include thin_scrollbar; 
   // max-width: 99%;
   }

@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: Writing Principles of Talented Writers - A Personal Collection
 tags: Texts
 ---

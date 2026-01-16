@@ -1,5 +1,5 @@
 ---
-category: Text
+category: Texts
 title: Quotes and Original text of Philosophiers
 tags: Readings
 ---

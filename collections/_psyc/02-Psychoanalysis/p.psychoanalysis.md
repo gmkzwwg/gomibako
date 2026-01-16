@@ -1,6 +1,6 @@
 ---
-category: Map
-title: Psychoanalysis - Its Learning Map, Knowledge Architecture, and Fundamental Theory
+category: Prime
+title: Psychoanalysis - Its Roadmap and Knowledge Architecture
 tags: Psychoanalysis
 ---
 

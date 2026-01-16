@@ -1,5 +1,5 @@
 ---
-category: Chronology
+category: Annal
 title: Highlighted Events in World History
 tags: Global
 ---

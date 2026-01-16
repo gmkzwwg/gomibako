@@ -1,6 +1,6 @@
 ---
-category: Map
-title: Computer Science - Its Learning Map, Knowledge Architecture, and Fundamental Theory
+category: Prime
+title: Computer Science - Its Roadmap and Knowledge Architecture
 tags: Basics
 ---
 

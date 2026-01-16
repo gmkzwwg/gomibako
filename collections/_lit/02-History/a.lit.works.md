@@ -1,5 +1,5 @@
 ---
-category: Chronology
+category: Annal
 title: Timelines of Development of Western Literature
 tags: History
 ---

@@ -1,5 +1,5 @@
 ---
-category: Outline
+category: Annal
 title: 古代埃及史大纲
 tags: Africa
 ---
