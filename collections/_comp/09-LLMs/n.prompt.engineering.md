@@ -45,64 +45,70 @@ Laws and Academic Writing 法律和学术写作:
 Literature 文学:
   - `Limited Third-person Perspective` 第三人称限制视角
 
+### For Knowledge Architecture / Minimal Tutorial
+
+1. Ontology
+2. Core Concepts and First principles
+3. Full Skill Stack / (Layerd) Knowledge Structure
+4. Clearcut Compare (e.g. Literary Criticism v.s. Literary Theory)
+5. Worked Examples
+6. Key  Milestones
+7. Casual Chain
+8. Common Pitfalls
+9. Gate of Theory / Meta-assumptions
+
 ## Meta Prompting
 
 ### For Knowledges
-**For academic review papers**
 
-```
-我需要你提供 prompt engineering 方面的专业帮助。我想用一篇结构化的英语文章，全面叙述整个[anna freud]的学术体系，Maintain a formal academic register and scholarly discourse，Uncover the first principles and underlying mechanics，揭示整个理论形成的逻辑链，Construct a logically coherent, long-form narrative。章节应足够涵盖所有主要内容。你给出优化后的 prompt that use a MECE framework in English
-```
+**For academic review papers**:
+
+> 我需要你提供 prompt engineering 方面的专业帮助。我想用一篇结构化的英语文章，全面叙述整个[xxx]的学术体系，Maintain a formal academic register and scholarly discourse，Uncover the first principles and underlying mechanics，揭示整个理论形成的逻辑链，Construct a logically coherent, long-form narrative。章节应足够涵盖所有主要内容。你给出优化后的 prompt that use a MECE framework in English
 
 **For Data Sheets**
 
-```
-我需要你提供 prompt engineering 方面的专业帮助。我想用 markdown table 的形式，列举和对比[]的主要信息和数据，Use a MECE framework, Maintain a formal academic register, include LaTeX for formulas where necessary, Only use verified empirical data; indicate N/A if unknown, 你给出优化后的提示词，英文
-```
+> 我需要你提供 prompt engineering 方面的专业帮助。我想用 markdown table 的形式，列举和对比[xxx]的主要信息和数据，Use a MECE framework, Maintain a formal academic register, include LaTeX for formulas where necessary, Only use verified empirical data; indicate N/A if unknown, 你给出优化后的提示词，英文
+
 **For Academic Structure**
 
-```
-我需要你提供 prompt engineering 方面的专业帮助。我需要用大概一页纸的长度，用高度结构化的名词化条目，来展现[]学科的整体知识体系和架构，Uncover the first principles and underlying mechanics，揭示各个理论互相依赖的关系，或发展的顺序。在必要的地方添加主要理论者的名称和关键时间、milestone、关键书籍或论文。你给出优化后的提示词，英文
-```
+> 我需要你提供 prompt engineering 方面的专业帮助。我需要用大概一页纸的长度，用高度结构化的名词化条目，来展现[xxx]学科的整体知识体系和架构，Uncover the first principles and underlying mechanics，揭示各个理论互相依赖的关系，或发展的顺序。在必要的地方添加主要理论者的名称和关键时间、milestone、关键书籍或论文。你给出优化后的提示词，英文
+
 
 **for minimal knowledge or tutorial**
 
-```
-Provide a minimal viable tutorial for [XXX] so I can start practicing immediately. Focus only on the '80/20'—the 20% of core concepts that handle 80% of real-world use cases. Please include: 1. Essential setup 2. The most common workflow 3. One concrete 
-example
+> Provide a minimal viable tutorial for [XXX] so I can start practicing immediately. Focus only on the '80/20'—the 20% of core concepts that handle 80% of real-world use cases. Please include: 1. Essential setup 2. The most common workflow 3. One concrete example
 
-Give me a TL;DR summary of [XXX] for a first-time practitioner. What is the absolute minimum I need to know before I 'run' this? Skip the fluff and give me the 'Checklist' and 'The Big Picture'.
-```
-
-### For Via Negativa
-
-**Force AI to generate
-"As a research assistant, I want to master [学科名称]. To build a robust mental model, please provide a comprehensive 'Map of Failure' including:**
-**Conceptual Misconceptions**: Key terms that are frequently misunderstood or oversimplified (the 'pseudo-knowledge').
-**Procedural/Methodological Errors**: Common mistakes in the actual application or research process of this field.
-**Pedagogical Pitfalls**: Why traditional learning paths for this subject often fail or lead to dead ends.
-**Expert vs. Novice Gap**: Where do beginners usually get stuck compared to how experts actually think?
-**Boundary Conditions**: Under what specific assumptions do the core theories of this field break down?
-**Please present this in a rigorous, analytical style, avoiding clichés."**
+> Give me a TL;DR summary of [XXX] for a first-time practitioner. What is the absolute minimum I need to know before I 'run' this? Skip the fluff and give me the 'Checklist' and 'The Big Picture'.
 
 
-### 2. 极简版：针对快速上手的“避坑指南”
 
-如果您需要快速进入一个新领域（如学习一个新的 LaTeX 宏包或编程语言）：
+## For Pitfalls
 
-```
-**"Give me a 'Anti-Tutorial' for [学科/技术]. Instead of telling me what to do, tell me what NOT to do. List the top 10 most common mistakes in concepts, methods, and learning strategy. Also, identify the 'Invisible Hurdles' that beginners don't even know they are tripping over."**
-```
+**Force AI to generate Common Pitfalls**
 
+> "As a research assistant, I want to master [学科名称]. To build a robust mental model, please provide a comprehensive 'Map of Failure' including:  
+> **Conceptual Misconceptions**: Key terms that are frequently misunderstood or oversimplified (the 'pseudo-knowledge').  
+> **Procedural/Methodological Errors**: Common mistakes in the actual application or research process of this field.  
+> **Pedagogical Pitfalls**: Why traditional learning paths for this subject often fail or lead to dead ends.  
+> **Expert vs. Novice Gap**: Where do beginners usually get stuck compared to how experts actually think?  
+> **Boundary Conditions**: Under what specific assumptions do the core theories of this field break down?  
+> Please present this in a rigorous, analytical style, avoiding clichés."
+
+**Anti-Tutorial For begginners**
+
+> "Give me a 'Anti-Tutorial' for [学科/技术]. Instead of telling me what to do, tell me what NOT to do. List the top 10 most common mistakes in concepts, methods, and learning strategy. Also, identify the 'Invisible Hurdles' that beginners don't even know they are tripping over."
 
 ## Prompt Engineering with ChatGPT 4 and 5: A Progressive Tutorial
 
+This tutorial will guide you step-by-step in using ChatGPT (version 4.x and 5.x) as an effective learning and research assistant. Even if you have no background in computer science, AI, or programming, you’ll learn how to craft prompts (the instructions or questions you give to ChatGPT) to get the best possible responses. We’ll start with the basics and gradually move to advanced techniques. Along the way, we’ll cover practical examples for academic study, research, literature analysis, translation, and more. By the end, you’ll have a toolkit of prompt strategies that should generalize well to future models, not just GPT-4. Let’s dive in!
 
-**Welcome!** This tutorial will guide you step-by-step in using ChatGPT (version 4.x and the upcoming 5.x) as an effective learning and research assistant. Even if you have no background in computer science, AI, or programming, you’ll learn how to craft prompts (the instructions or questions you give to ChatGPT) to get the best possible responses. We’ll start with the basics and gradually move to advanced techniques. Along the way, we’ll cover practical examples for academic study, research, literature analysis, translation, and more. By the end, you’ll have a toolkit of prompt strategies that should generalize well to future models, not just GPT-4. Let’s dive in!
+> 本教程将一步一步引导你，学习如何将 ChatGPT（4.x 版本以及 5.x 版本）作为高效的学习与研究助手来使用。即使你没有计算机科学、人工智能或编程背景，也可以通过本教程学会如何编写提示（即你提供给 ChatGPT 的指令或问题），从而获得尽可能优质的回答。我们将从基础内容入手，逐步过渡到高级技巧。在此过程中，会涵盖学术学习、研究、文学分析、翻译等多种实际应用示例。完成本教程后，你将掌握一套提示策略工具箱，这些策略不仅适用于 GPT-4，也能较好地泛化到未来的模型。现在开始吧。
 
 ### Introduction to Prompt Engineering and ChatGPT
 
 Prompt engineering is the art of writing **effective instructions** that guide a language model like ChatGPT to produce the output you want. Large Language Models (LLMs) **do not automatically know what kind of answer you need** – they rely on your guidance. A poorly worded or vague prompt can lead to irrelevant or confusing answers. A clear, tailored prompt, on the other hand, helps ChatGPT understand your request and respond accurately.
+
+> 提示工程（Prompt Engineering）是一种编写有效指令的技术，其目标是引导像 ChatGPT 这样的语言模型生成你所期望的输出。大型语言模型（LLMs）并不会自动知道你需要什么样的回答——它们依赖于你的引导。一个措辞含糊或不清晰的提示，往往会导致无关或令人困惑的回答；而一个清楚、针对性强的提示，则有助于 ChatGPT 准确理解你的需求并给出恰当的回应。
 
 **How ChatGPT works (in a nutshell):** ChatGPT is an AI that generates text by predicting likely words based on the input and its training. It has a conversation memory, meaning it remembers what you’ve said earlier in the chat (up to a limit), and it follows instructions given in the conversation. There are usually **three roles** in a ChatGPT conversation: a **system message** (background instructions that set the stage or behavior), the **user message** (your prompt or question), and the **assistant message** (ChatGPT’s reply). In the ChatGPT interface, you mostly provide user prompts, but you can also set persistent preferences through **custom instructions** (which function like a system message to tell ChatGPT about your needs or style for all responses). We’ll discuss these more soon.
 
@@ -175,12 +181,12 @@ Few-shot prompting means providing **examples** of the task in your prompt so th
 
 **One-shot prompting:** You provide **one example** along with the instruction. For instance, if you want the model to follow a particular format, you could do:
 
-```vbnet
+vbnet
 
 `**Instruction:** Convert the following sentence to Shakespearean-style English.
 
 **Example:** Modern:  "Where are you going?"  Shakespearean:  "Whither goest thou?" **Now, convert this sentence:** Modern:  "Hello, how are you?"  Shakespearean:` 
-```
+
 
 In the above prompt, we gave one demonstration of how a modern sentence was converted to Shakespearean. The model will then continue and produce the Shakespearean version of _“Hello, how are you?”_. Even without explicitly explaining the task, the one-shot example clarifies it. This is useful when the task might be ambiguous or the model might not know exactly what format you need just from a description.
 
@@ -188,14 +194,14 @@ In the above prompt, we gave one demonstration of how a modern sentence was conv
 
 For example, imagine you’re working on classifying movie review sentiments (positive/negative/neutral) but the reviews are phrased in tricky ways. A few-shot prompt could be:
 
-```vbnet
+vbnet
 
 `Classify the sentiment of  each review as  "Positive", "Negative", or  "Neutral".
 
 **Examples:** Review:  "I absolutely loved the cinematography and the story had me in tears. Truly beautiful."  Sentiment: Positive Review:  "The movie was a bit long and I nearly fell asleep. It had some good moments though."  Sentiment: Neutral Review:  "Despite the hype, I found it boring and poorly written. Not worth the time."  Sentiment: Negative
 
 **Now classify this new review:** "I think the film had great actors but the plot was a disaster and I regret watching it."  Sentiment:` 
-```
+
 
 Here we gave three examples (few-shot). The model will likely output _“Negative”_ for the new review, following the pattern and reasoning from the examples. Few-shot prompting is particularly handy for **domain-specific tasks**, or where the wording of the question might be interpreted in different ways. The examples reduce ambiguity by showing exactly what you expect as output.
 
