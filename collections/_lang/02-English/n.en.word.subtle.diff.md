@@ -2,12 +2,11 @@
 category: Notes
 title: Subtle Differences Between English Words
 tags: English
-toc_depth: 2
 ---
 
-# 动词 verb
+## 动词 verb
 
-## 看 look, see, watch, glance
+### 看 look, see, watch, glance
 
 | 词          | 核心含义                        | 特点                                    | 常用结构                       | 例句                                                                    |
 | - |  | - | -- |  |
@@ -23,10 +22,10 @@ toc_depth: 2
 * **对象状态**：watch 常看“会动或会变化”的东西（比赛、电影、儿童）。look/see/glance 可用于静物。
 * **搭配**：look 与介词 at 搭配最紧密；glance 亦多接 at；watch 和 see 直接宾语。
 
-## 说 talk, speak
+### 说 talk, speak
 
 | 维度   | **speak**                                                                                  | **talk**                                                                                      |
-| - |  |  |
+| - | - | - |
 | 核心含义 | 发出语言、表达言辞；强调“说话这一行为”本身                                                                     | 交谈、聊天；强调“彼此交流”                                                                                |
 | 语体色彩 | 相对正式                                                                                       | 相对口语、随意                                                                                       |
 | 典型场景 | • 演讲、官方声明<br>• 谈论语言能力：*speak French*<br>• 谈论发言权或轮到谁说：*May I speak?*                        | • 非正式对话：*talk with friends*<br>• 讨论问题：*talk about plans*<br>• 建议某人沟通：*You should talk to her* |
@@ -54,7 +53,7 @@ toc_depth: 2
 > * **speak** → “说（能力/正式发言）”
 > * **talk** → “聊（互动/口语对话）”
 
-## 说明 explain, state, account for, illustrate, declare, announce, claim, proclaim, assert, demonstrate, show, confirm, corroborate, support, affirm, indicate,
+### 说明 explain, state, account for, illustrate, declare, announce, claim, proclaim, assert, demonstrate, show, confirm, corroborate, support, affirm, indicate,
 
 | 词               | 中文核心义        | 语义侧重 / 语域                | 常见搭配与构式                                                 | 英文示例句                                                           |
 |  |  |  | - |  |
@@ -81,11 +80,10 @@ toc_depth: 2
 * `illustrate` 已列一次，重复处省略。
 * 每个词条选用不同语境，避免机械同义。
 
-
 * **语体强度**：proclaim > declare > announce > state；assert 承上启下；claim 含怀疑；explain / illustrate 偏教学说明；account for 专讲原因或比例。
 * **主观-客观**：state、account for 更客观；assert、claim 带个人立场；declare、proclaim 带官方或庄重色彩。
 
-## 证明 demonstrate, prove, show, confirm, cooraborate, support, affirm, illustate, display, manifest, exhibit, indicate
+### 证明 demonstrate, prove, show, confirm, cooraborate, support, affirm, illustate, display, manifest, exhibit, indicate
 
 | 词               | 核心含义             | 语义侧重               | 常用搭配                                               | 例句                                                                  |
 |  | - |  | -- | - |
@@ -107,7 +105,7 @@ toc_depth: 2
 * show、indicate、support层次递增：show呈现，indicate带暗示，support提供支撑。
 * illustrate侧重“例子/图形”教学，display/exhibit/manifest多讲“外显”——display偏日常陈列，exhibit较正式，manifest带“原本隐藏”意味。
 
-## 包含 incorporate, involve, contain, include, comprise
+### 包含 incorporate, involve, contain, include, comprise
 
 | 词               | 核心含义                                                          | 语义侧重                                               | 典型结构                                                  | 例句                                                                                     |
 |  | - | -- | -- | -- |
@@ -123,7 +121,7 @@ toc_depth: 2
 * **include** 提到部分成员，暗示不完整；
 * **comprise** 描述整体与部分的组成关系，语序与 include 相反。
 
-## 组成、构成 constitute, form, make up, compose, compirse, consist
+### 组成、构成 constitute, form, make up, compose, compirse, consist
 
 | 动词             | 词性/及物性 | 典型句型 → **主语-宾语方向**                                        | 语义侧重                | 常见限制                                  | 例句（英-中）                                                                                                    |
 | -- |  |  | - | - | - |
@@ -180,7 +178,7 @@ toc_depth: 2
 
    * *The jury **consists of** twelve citizens.*
 
-## 开始 begin, start, initiate, establish, launch, set about, commence, put one's hand to, turn to, undertake, go about, take up, enter into, go at
+### 开始 begin, start, initiate, establish, launch, set about, commence, put one's hand to, turn to, undertake, go about, take up, enter into, go at
 
 | 词（短语）                 | 基本含义 / 语域               | 常见搭配 & 语法                                   | 语气 / 习惯语用      | 英文例句                                                    |
 |  | -- | - | -- | - |
@@ -200,9 +198,45 @@ toc_depth: 2
 | **go at**             | （口语）猛扑、积极攻克             | go at + task / object                       | 动作猛烈、带劲头；亦可指攻击 | *They **went at** the puzzle and solved it in minutes.* |
 
 
-# 名词
+## 名词 noun
 
-## 家、房屋 home, house, room, residence, dwelling, apartment, suite, condo, mansion, villa, cottage
+### 垃圾 trash, junk, waste, garbage, rubbish, grunge
+
+
+| 词汇          | 核心含义                    | 语义重心            | 地域偏好         | 可数性                       | 语域 / 风格   | 典型搭配与例句                                                           |
+| ----------- | ----------------------- | --------------- | ------------ | ------------------------- | --------- | ----------------------------------------------------------------- |
+| **junk**    | 无用之物、破烂、低价值物品；也指质量低劣的内容 | **价值判断**（没用、劣质） | 英美通用         | 不可数 / 可数（a piece of junk） | 口语、评价性强   | junk food, junk mail, junk data；This garage is full of junk.      |
+| **waste**   | 被浪费或不应再利用的物质/资源/行为      | **资源与过程**（浪费性）  | 英美通用         | 不可数；复数 *wastes*（技术/法规）    | 中性—正式     | waste water, toxic waste, waste time；Food waste is a major issue. |
+| **trash**   | 被丢弃的日常废弃物；也可作贬损性评价      | **处理行为**（丢弃）    | **美式**       | 不可数 / 可数                  | 口语为主      | take out the trash；That movie was trash.                          |
+| **garbage** | 厨余等生活垃圾；也可指胡言乱语         | **物理垃圾**（尤其湿垃圾） | **美式 / 加拿大** | 不可数                       | 中性—口语     | garbage disposal, garbage truck；That’s garbage.                   |
+| **rubbish** | 无用之物、垃圾；也可指胡扯           | **价值+判断**       | **英式**       | 不可数                       | 口语—中性     | rubbish bin；That idea is rubbish.                                 |
+| **grunge**  | 污垢、油腻污渍；引申为肮脏风格         | **状态与质感**（脏）    | 英美通用         | 不可数                       | 描述性；次文化用法 | bathroom grunge, grunge style；The tiles were covered in grunge.   |
+
+
+1. **价值 vs. 处理 vs. 资源**
+
+   * **junk / rubbish**：强调“没价值、劣质”（评价）。
+   * **trash / garbage**：强调“被丢弃的日常垃圾”（行为与实体）。
+   * **waste**：强调“浪费的资源或不当过程”（抽象、制度化）。
+   * **grunge**：强调“肮脏状态或质感”，并非“垃圾类别”。
+
+2. **地域差异**
+
+   * **美式**：trash, garbage
+   * **英式**：rubbish
+   * **中性通用**：junk, waste, grunge
+
+3. **可数性**
+
+   * 多数为**不可数名词**；*junk* 可说 *a piece of junk*；*waste* 的复数 *wastes* 多见于技术/法律语境。
+
+4. **语体与扩展义**
+
+   * **trash / rubbish / garbage** 可作贬损性评价（“胡扯/很烂”）。
+   * **junk** 强烈价值判断（低质）。
+   * **grunge** 常用于描述“污垢”或“审美风格”（如音乐/时尚）。
+
+### 家、房屋 home, house, room, residence, dwelling, apartment, suite, condo, mansion, villa, cottage
 
 | 英文词                       | 词性              | 核心含义                       | 常见情境与特点                                                         | 典型搭配或表达 |
 | ------------------------- | --------------- | -------------------------- | --------------------------------------------------------------- | ------- |
@@ -224,7 +258,7 @@ toc_depth: 2
 * **residence / dwelling**：均属正式或法律词汇；residence可指“合法居留地”，dwelling偏建筑学或法规。
 
 
-## 问题 problem, issue, question, matter, trouble
+### 问题 problem, issue, question, matter, trouble
 
 | 词            | 核心含义              | 语义侧重 / 语域              | 常见搭配                                                                | 例句 (+ 译)                                                                 |
 | ------------ | ----------------- | ---------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -241,7 +275,7 @@ toc_depth: 2
 * **口吻**：说 “We have an **issue**” 比 “We have a **problem**” 缓和；“He’s in **trouble**” 最具警示感。
 
 
-## 工作、职业 work, job, career, staff, business, profession, operation
+### 工作、职业 work, job, career, staff, business, profession, operation
 
 | 词              | 词性           | 核心含义 & 典型语境                   | 语义侧重             | English example (+ 中译)                                      |
 | -- |  | -- | - | -- |
@@ -280,7 +314,7 @@ toc_depth: 2
 
 掌握“抽象 vs. 具体”“一次性任务 vs. 长期路径”“个人劳动 vs. 集体组织”等维度，即可灵活区分这些常见词。
 
-## 公理、引理、定理 axiom, lemma, theorem, proposition, corollary, conjecture, claim, postulate, hypothesis, assumption, definition
+### 公理、引理、定理 axiom, lemma, theorem, proposition, corollary, conjecture, claim, postulate, hypothesis, assumption, definition
 
 | 术语 (英文 / 中文)                   | 是否需要证明 | 逻辑性质¹          | 主要功能与使用场景              | 常见位置与格式                         | 示例（简化表述）                    |
 | ------------------------------ | ------ | -------------- | ---------------------- | ------------------------------- | --------------------------- | -------------- | ----- | -- |
@@ -309,9 +343,9 @@ toc_depth: 2
 4. **Claim 的局部性** 一段证明里可能出现多个 *Claim A, Claim B…*，解决后再回到主线。
 5. **Conjecture 的陈述** 应给出充分动机、已知结果与可能的研究方向，方便后来者跟进。
 
-# 形容词 Adjective
+## 形容词 Adjective
 
-## 大 big, large, great, huge, enormous, tremendous, colossal, immense, vast, bulky, infinite
+### 大 big, large, great, huge, enormous, tremendous, colossal, immense, vast, bulky, infinite
 
 | 词              | 基本含义与语义强度\*              | 典型语境 / 搭配                                     | 情绪色彩     | 例句（英）                                               |
 | -- |  |  | -- |  |
@@ -336,7 +370,7 @@ toc_depth: 2
 * bulky：强调体积大而不便搬运。
 * infinite：哲学或数学语义“无穷”，不直接量度实体体积。
 
-## 大量的 vast, a mass of, abundant, plentiful, a good deal of, a great many, plenty of, a number of, a lot of
+### 大量的 vast, a mass of, abundant, plentiful, a good deal of, a great many, plenty of, a number of, a lot of
 
 | 词 / 词组             | 词性   | 适用名词             | 语域/语气 | 典型语法                                   | 语义侧重与示例                                                          |
 |  | - | - | -- | -- | - |
@@ -376,7 +410,7 @@ toc_depth: 2
 
 按照名词类型、正式度与强调程度选择，即可自然区分并运用。
 
-## 小 small, little, tiny, miniature, minute, microscopic, minuscule
+### 小 small, little, tiny, miniature, minute, microscopic, minuscule
 
 | 词                      | 常见中文对应      | 典型语境／语用色彩                                | 含义强度\* |
 | - | -- | - |  |

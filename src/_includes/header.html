@@ -9,7 +9,7 @@
               <!-- open collection tree -->
               {% if page.collection_list != false %}
               <a class="header_btn" onclick="open_collection_list()">
-                <i class="fa fa-folder btn_icon"></i>
+                <i class="fa fa-trash btn_icon"></i>
                   {% if page.btn_text != false %}
                   <p class="btn_text">Rubbish</p>
                   {% endif %}
@@ -20,7 +20,7 @@
               <a class="header_btn" href="{{ site.url }}{{ site.baseurl }}">
                 <i class="fa fa-home btn_icon"></i>
                   {% if page.btn_text != false %}
-                  <p class="btn_text">Home</p>
+                  <p class="btn_text">Bin</p>
                   {% endif %}
               </a>
               {% endif %}
