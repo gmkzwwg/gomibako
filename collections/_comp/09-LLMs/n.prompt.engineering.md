@@ -80,7 +80,39 @@ Literature 文学:
 
 > Give me a TL;DR summary of [XXX] for a first-time practitioner. What is the absolute minimum I need to know before I 'run' this? Skip the fluff and give me the 'Checklist' and 'The Big Picture'.
 
+**for Sheets**
+```
+# Role
+You are a Senior Data Analyst and Research Assistant specialized in [领域，如：法学与人工智能交叉研究].
 
+# Task
+Please create a comprehensive, multi-dimensional table regarding [主题内容].
+
+# Table Structure & Dimensions (Columns)
+The table must include, but is not limited to, the following columns:
+1. [维度1: 核心定义/名称]
+2. [维度2: 关键特征/属性]
+3. [维度3: 适用场景/用例]
+4. [维度4: 潜在风险/局限性]
+5. [维度5: 跨学科关联 (例如：法律依据/技术实现)]
+6. [维度6: 备注/参考来源]
+
+# Exhaustion Strategy (Rows)
+To ensure the table is "complete," please scan through the following perspectives:
+- [视角A: 历史演进]
+- [视角B: 不同利益相关者 (开发者、用户、监管者)]
+- [视角C: 地缘政治/不同国家标准]
+- [视角D: 技术底层架构]
+
+# Constraints
+- Use Markdown format.
+- Do not summarize or omit items for brevity; "exhaustiveness" is the priority.
+- If data is uncertain, mark as "Inferred" or "Requires Verification."
+- Ensure the logical flow from row to row is coherent.
+
+# Execution
+First, list the proposed row categories to confirm scope. Then, generate the full table.
+```
 
 ## For Pitfalls
 

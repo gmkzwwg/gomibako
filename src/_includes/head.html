@@ -75,4 +75,28 @@
     </script>
     {% endif %}
     <!-- The tag `feed_meta` is unrecognized by Github Pages -->
+    <!-- Copy Code Button -->
+    <script type="module">
+        document.querySelectorAll('pre.highlight, .highlight pre').forEach((codeBox) => {
+        // 1. 创建按钮
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-code-button';
+        copyBtn.type = 'button';
+        copyBtn.innerText = 'Copy';
+
+        // 2. 挂载按钮：通常挂载在 pre 的父级以便定位
+        const container = codeBox.parentNode;
+        container.style.position = 'relative'; 
+        container.appendChild(copyBtn);
+
+        // 3. 剪切板逻辑
+        copyBtn.addEventListener('click', () => {
+            const code = codeBox.innerText;
+            window.navigator.clipboard.writeText(code).then(() => {
+            copyBtn.innerText = 'Copied!';
+            setTimeout(() => { copyBtn.innerText = 'Copy'; }, 2000);
+            });
+        });
+        });
+    </script>
 </head>

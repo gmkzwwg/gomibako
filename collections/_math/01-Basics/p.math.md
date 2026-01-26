@@ -330,6 +330,7 @@ Analysis - 数学分析：
 * Terrence Tao - *Analysis I/II* - 高观点、清晰易读
 * Vladimir A. Zorich - *Mathematical Analysis I/II* - 全面、现代、多视角
 * Rudin - *Principles of Mathematical Analysis* - 高观点、简略、抽象、高质量习题
+* *Thomas Calculus*
 
 Complex Analysis - 复变函数
 * Stein - *Complex Analysis* - 经典

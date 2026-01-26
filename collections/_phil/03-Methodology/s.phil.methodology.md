@@ -1,5 +1,5 @@
 ---
-category: Sheet
+category: Notes
 title: Methodology of Philosophy
 tags: Methodology
 ---

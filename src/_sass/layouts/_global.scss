@@ -5,7 +5,7 @@
   padding: 0;
   position: fixed;
   // text-align: center;
-  background-color: $color-bg;
+  background-color: $color-background;
   background-image: $image-background;
 }
 .container {
@@ -17,7 +17,7 @@
   overflow: none;
   margin: 0 auto;
   box-sizing: border-box; // interior border
-  background-color: rgba($color-postbg, 0.72);
+  background-color: rgba($color-post-background, 0.72);
 }
 .div_article {
   top: $header-height + 1px;
@@ -51,7 +51,7 @@
   }
   .no-border {
     td {
-      border: 1px solid rgba($color-postbg, 0);
+      border: 1px solid rgba($color-post-background, 0);
     }
   }
 }
@@ -70,7 +70,7 @@
     left: 0 !important;
     margin: 0;
     border: $border-thick;
-    background-color: rgba($color-postbg, 0.7);
+    background-color: rgba($color-post-background, 0.7);
   }
   .page .container .div_article {
     border: none;
