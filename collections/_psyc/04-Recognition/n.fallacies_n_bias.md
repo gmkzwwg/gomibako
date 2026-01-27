@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Logical Fallacies and Cognitive Bias
-tags: Self-Efficacy
+tags: Recognition
 ---
 
 > 逻辑谬误和认知偏误都是人们错误认识人事物的行为。逻辑谬误是论证学上的观点，而认知偏误是认知心理学和经济学上的观点，两者各有侧重，也存在重合。
