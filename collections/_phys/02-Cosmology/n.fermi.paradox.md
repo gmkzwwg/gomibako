@@ -1,6 +1,6 @@
 ---
-category: Sheet
-title: 费米悖论和解释
+category: Notes
+title: 费米悖论 Fermi Paradox 
 tags: Cosmology
 ---
 
