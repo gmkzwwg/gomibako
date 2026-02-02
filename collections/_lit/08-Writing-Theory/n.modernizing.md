@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Modernizing Ancient Novels - A Comprehensive Tutorial
-tags: Narratology
+tags: Writing-Theory
 ---
 
 Modernizing an ancient novel – whether a Chinese classical epic, a Greco-Roman myth, or a medieval romance – is a creative act of **adaptation**. It involves translating the spirit of an old story into modern prose, updating themes and characters for contemporary audiences, and often reimagining settings or structures. This tutorial provides a step-by-step guide, grounded in theory and practice, on how to approach such a project. We will cover foundational literary frameworks, the core mechanics of modernization, case studies of successes (and pitfalls) across various traditions, the impact of 21st-century cultural shifts, and methods for rigorous intertextual and cross-disciplinary analysis. Throughout, key terms and concepts are highlighted for clarity.
