@@ -37,4 +37,3 @@ permalink: /
 %t@]Q&;~g\k9<}^!pZ/|,V*2`r(=xW#'u_7)J:>e{0$"L-?aB+Y[8s\F!^mR]3
 </pre></div>
 <h1 class="post_list_title">Post List</h1>
-{% include post_info.html %}
