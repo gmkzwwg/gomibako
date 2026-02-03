@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'zh-CN' }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    /* 1. 基础排版：模拟书页感 */
+    body {
+      font-family: "Georgia", "Source Han Serif SC", "SimSun", serif; /* 衬线体适合打印阅读 */
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2cm; /* 预留装订/打印边距 */
+    }
+
+    h1, h2, h3 { line-height: 1.2; margin-top: 1.5em; }
+    h1 { font-size: 2.2em; text-align: center; border-bottom: none; }
+    .post-meta { text-align: center; color: #666; font-size: 0.9em; margin-bottom: 3em; }
+    
+    /* 2. 图像与代码块：防止溢出 */
+    img { max-width: 100%; height: auto; display: block; margin: 1em auto; }
+    pre, code { 
+      background: #f5f5f5 !important; 
+      font-family: "Courier New", monospace; 
+      font-size: 0.85em;
+      white-space: pre-wrap; /* 强制换行防止截断 */
+      word-wrap: break-word;
+    }
+
+    /* 3. 链接：打印时不显示下划线，直接显示 URL (可选) */
+    a { color: #000; text-decoration: none; }
+
+    /* 4. 专门针对打印机的优化 */
+    @media print {
+      body { padding: 0; margin: 0; font-size: 12pt; }
+      .no-print { display: none; } /* 标记为 no-print 的元素不打印 */
+      
+      /* 强制标题后不立即断页，保持内容连贯 */
+      h2, h3 { page-break-after: avoid; }
+      blockquote { border-left: 3px solid #ccc; padding-left: 1em; font-style: italic; }
+      
+      /* 链接后自动打印网址 (如果你需要科研引用参考) */
+      /* a:after { content: " (" attr(href) ")"; font-size: 0.8em; } */
+    }
+    /* 针对 code 标签进行样式重置 */
+    code.language-plaintext.highlighter-rouge {
+        background: transparent !important; /* 移除灰色背景 */
+        padding: 0 !important;             /* 移除内边距 */
+        color: inherit !important;           /* 继承文本颜色 */
+        font-family: inherit !important;     /* 关键：继承正文字体，不再使用等宽字体 */
+        font-size: 1em !important;           /* 与正文大小一致 */
+        font-weight: bold;                   /* 设置为粗体 */
+    }
+
+    /* 如果你的正文粗体使用了特定的 font-weight（如 600 或 700）*/
+    strong, code.language-plaintext.highlighter-rouge {
+        font-weight: 700; 
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+</head>
+
+<body>
+  <article>
+    <header>
+      <h1>{{ page.title }}</h1>
+      <div class="post-meta">
+        {{ page.date | date: "%Y-%m-%d" }} 
+        {% if page.author %} • {{ page.author }}{% endif %}
+      </div>
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="no-print" style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8em; color: #999;">
+      <p>注意：此页面已优化用于打印。请直接使用浏览器的 Ctrl+P 进行导出。</p>
+    </footer>
+  </article>
+</body>
+</html>
