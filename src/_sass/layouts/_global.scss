@@ -28,12 +28,18 @@
   overflow-x: hidden;
   border: $border-secondary;
   border-top: none;
+
   @include thin_scrollbar;
   article {
     margin: 0;
     padding: 10px 19px 19px 19px;
-    text-align: left !important;
     min-height: 88%; 
+  .content {
+    text-align: justify !important; /* 1. 实现两端对齐 */
+    text-justify: inter-character;  /* 2. 优化中文排版：调整字符间距而非仅词间距 */
+    word-break: break-all;          /* 3. 解决西文/长单词导致的巨大空隙 (避头尾法则) */
+    text-align-last: left;          /* 4. 强制段落最后一行左对齐 (默认行为，显式声明以防万一) */
+  }
   }
   table {
     color: $color-third;

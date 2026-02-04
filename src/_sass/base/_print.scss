@@ -1,0 +1,75 @@
+// 无法解决打印只有一页的问题
+@media print {
+    /* 1. 强制白底黑字，隐藏所有背景 */
+    * {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-print-color-adjust: economy !important;
+        print-color-adjust: economy !important;
+    }
+
+    /* 2. 摧毁一切导致单页显示的容器 */
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+        position: static !important;
+    }
+
+    /* 关键：将被包裹的嵌套容器转化为“透明”容器，允许内容跨页流动 */
+    #__next, [class*="layout"], [class*="wrapper"], [class*="container"], main, section {
+        display: contents !important; /* 彻底打散容器，仅保留内容 */
+        height: auto !important;
+        overflow: visible !important;
+        position: static !important;
+    }
+
+    /* 3. 隐藏所有交互组件、侧边栏、模态框、页眉页脚 */
+    header, footer, nav, aside, 
+    .imt-action-container, .imt-retry-text, button,
+    [class*="sidebar"], [class*="ad-"], [class*="popup"], 
+    #nprogress, .no-print {
+        display: none !important;
+    }
+
+    /* 4. 文字排版优化：书本感 */
+    body {
+        font-family: "Source Han Serif SC", "SimSun", "STKaiti", serif !important;
+        font-size: 12pt !important;
+        line-height: 1.8 !important;
+        padding: 0 !important;
+    }
+
+    article, .imt-modal-content-text, .markdown-body {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: justify !important;
+    }
+
+    /* 5. 强制断页控制 */
+    p, blockquote {
+        orphans: 3; /* 防止段落末尾孤行 */
+        widows: 3;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid !important;
+        margin-top: 1.5em !important;
+    }
+
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid !important;
+        filter: grayscale(100%) !important;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 2cm;
+}

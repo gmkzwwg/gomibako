@@ -1,78 +1,235 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: 'zh-CN' }}">
+
 <head>
   <meta charset="UTF-8">
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <style>
     /* 1. 基础排版：模拟书页感 */
     body {
-      font-family: "Georgia", "Source Han Serif SC", "SimSun", serif; /* 衬线体适合打印阅读 */
+      font-family: "Georgia", "Source Han Serif SC", "SimSun", serif;
+      /* 衬线体适合打印阅读 */
       line-height: 1.6;
       color: #000;
       background: #fff;
-      max-width: 800px;
       margin: 0 auto;
-      padding: 2cm; /* 预留装订/打印边距 */
+      padding: 2cm;
     }
 
-    h1, h2, h3 { line-height: 1.2; margin-top: 1.5em; }
-    h1 { font-size: 2.2em; text-align: center; border-bottom: none; }
-    .post-meta { text-align: center; color: #666; font-size: 0.9em; margin-bottom: 3em; }
-    
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      margin-top: 1.5em;
+    }
+
+    h1 {
+      font-size: 2.1em;
+      text-align: center;
+      border-bottom: none;
+    }
+
+    .post-meta {
+      text-align: center;
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 3em;
+    }
+
+    main {
+      /* 1. 实现两端对齐 */
+      text-align: justify;
+      /* 2. 优化中文排版：调整字符间距而非仅词间距 */
+      text-justify: inter-character;
+      /* 3. 解决西文/长单词导致的巨大空隙 (避头尾法则) */
+      word-break: break-all;
+      /* 4. 强制段落最后一行左对齐 (默认行为，显式声明以防万一) */
+      text-align-last: left;
+    }
+
     /* 2. 图像与代码块：防止溢出 */
-    img { max-width: 100%; height: auto; display: block; margin: 1em auto; }
-    pre, code { 
-      background: #f5f5f5 !important; 
-      font-family: "Courier New", monospace; 
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+    }
+
+    pre,
+    code {
+      background: #f5f5f5 !important;
+      font-family: "Courier New", monospace;
       font-size: 0.85em;
-      white-space: pre-wrap; /* 强制换行防止截断 */
+      white-space: pre-wrap;
+      /* 强制换行防止截断 */
       word-wrap: break-word;
     }
 
     /* 3. 链接：打印时不显示下划线，直接显示 URL (可选) */
-    a { color: #000; text-decoration: none; }
-
-    /* 4. 专门针对打印机的优化 */
-    @media print {
-      body { padding: 0; margin: 0; font-size: 12pt; }
-      .no-print { display: none; } /* 标记为 no-print 的元素不打印 */
-      
-      /* 强制标题后不立即断页，保持内容连贯 */
-      h2, h3 { page-break-after: avoid; }
-      blockquote { border-left: 3px solid #ccc; padding-left: 1em; font-style: italic; }
-      
-      /* 链接后自动打印网址 (如果你需要科研引用参考) */
-      /* a:after { content: " (" attr(href) ")"; font-size: 0.8em; } */
+    a {
+      color: #000;
+      text-decoration: none;
     }
-    /* 针对 code 标签进行样式重置 */
+
+    /* 针对特定代码块的样式深度定制 */
     code.language-plaintext.highlighter-rouge {
-        background: transparent !important; /* 移除灰色背景 */
-        padding: 0 !important;             /* 移除内边距 */
-        color: inherit !important;           /* 继承文本颜色 */
-        font-family: inherit !important;     /* 关键：继承正文字体，不再使用等宽字体 */
-        font-size: 1em !important;           /* 与正文大小一致 */
-        font-weight: bold;                   /* 设置为粗体 */
+      font-family: "Kaiti", "STKaiti", "楷体", "楷体_GB2312", serif !important;
+      font-weight: bold;
+      color: #242424 !important;
+      /* 稍浅的深灰色，模拟央视国际色彩风格 */
+      background: transparent !important;
+      padding: 0 !important;
+      border: none !important;
+      font-size: 1.05em !important;
+      /* 楷体通常视觉偏小，略微放大以平衡行气 */
     }
 
-    /* 如果你的正文粗体使用了特定的 font-weight（如 600 或 700）*/
-    strong, code.language-plaintext.highlighter-rouge {
-        font-weight: 700; 
+    blockquote {
+      margin: 1.5em 0;
+      padding: 1em 1.5em;
+      border-left: 4px solid #cccccc;
+      /* 淡灰色边框线 */
+      background-color: #f9f9f9 !important;
+      font-size: 0.92em !important;
+      /* 略小于正文 */
+      color: #313131 !important;
+      /* 深灰色，央视国际色调 */
+      line-height: 1.5;
+      /* 稍微收紧行高，增加块状感 */
+      font-style: normal;
+      /* 如果不希望强制斜体，设为 normal */
+    }
+
+    blockquote p {
+      margin: 0.5em 0;
+      text-align: justify;
+      text-align-last: left;
+    }
+    /* 1. 学术三线表基础配置 */
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important; /* 合并边框 */
+        margin: 1.5em 0 !important;
+        /* 顶线：粗线 */
+        border-top: 1.5pt solid #000 !important; 
+        /* 底线：粗线 */
+        border-bottom: 1.5pt solid #000 !important;
+        font-family: "SimSun", serif !important;
+        /* 减小字号：学术论文表格通常比正文小 1-2 号 */
+        font-size: 10pt !important; 
+    }
+
+    /* 2. 栏目线：单元格头部下方细线 */
+    table thead {
+        border-bottom: 0.75pt solid #000 !important; 
+        /* padding: 8px 4px !important;
+        font-weight: bold !important; */
+    }
+
+    /* 3. 去除所有竖线和内部横线 */
+    table td, table th {
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+        border-bottom: none !important;
+        padding: 6px 4px !important;
+        text-align: center !important; /* 学术表格数据通常居中 */
+    }
+
+    /* 4. 斑马纹消除：确保纯净背景 */
+    table tr {
+        background-color: transparent !important;
+    }
+
+    /* 5. 处理表格标题（Caption） */
+    table caption {
+        font-size: 10pt !important;
+        font-weight: bold !important;
+        margin-bottom: 0.5em !important;
+        color: #000 !important;
+    }
+    @media print {
+      body {
+        /* width: 100%; */
+        padding: 0;
+        margin: 1.5cm;
+        /* 打印时回归标准纸张边距 */
+        font-size: 12pt;
+      }
+      h2,
+      h3 {
+        page-break-after: avoid;
+      }
+
+      blockquote {
+        padding-left: 1em;
+        background-color: #f2f2f2 !important;
+        /* 打印时背景稍微加重一点点以确保可见 */
+        border-left: 3px solid #666666;
+        /* 边框加深 */
+        color: #333333 !important;
+        /* 打印时文字颜色微调，保证对比度 */
+        page-break-inside: avoid;
+        /* 极其重要：防止引用块跨页断开 */
+      }
+
+      code.language-plaintext.highlighter-rouge {
+        color: #555555 !important;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .no-print {
+        display: none;
+      }
+
+      /* 标记为 no-print 的元素不打印 */
+    }
+
+    @media screen and (min-width: 769px) {
+      body {
+        max-width: 850px;
+        padding: 2cm;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        width: 95%;
+        padding: 15px 10px;
+      }
+
+      blockquote {
+        margin: 1em 0;
+        padding: 0.8em 1em;
+      }
+
+      pre,
+      code {
+        word-break: break-all;
+        white-space: pre-wrap;
+      }
+
+      h1 {
+        font-size: 1.6em;
+        /* 缩小手机端标题，避免占满首屏 */
+      }
     }
   </style>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
 </head>
 
 <body>
   <article>
     <header>
       <h1>{{ page.title }}</h1>
-      <div class="post-meta">
-        {{ page.date | date: "%Y-%m-%d" }} 
+      <div class="post-meta" align="center">
+        {{ page.date | date: "%Y-%m-%d" }}
         {% if page.author %} • {{ page.author }}{% endif %}
       </div>
     </header>
@@ -81,9 +238,11 @@
       {{ content }}
     </main>
 
-    <footer class="no-print" style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8em; color: #999;">
+    <footer class="no-print"
+      style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8em; color: #999;">
       <p>注意：此页面已优化用于打印。请直接使用浏览器的 Ctrl+P 进行导出。</p>
     </footer>
   </article>
 </body>
+
 </html>
