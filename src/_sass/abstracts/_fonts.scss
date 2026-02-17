@@ -4,13 +4,19 @@
     src: url("../fonts/FiraCode-Regular.woff");
   }
 
-// font family
-$font-serif: "Droid Serif", "Nimbus Roman", Times, serif, "Source Han Sans CN Medium", "PingFang SC",
-  "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei" !default;
-$font-sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
-  "Helvetica Neue", "Lucida Grande", Arial, sans-serif, "Source Han Serif CN Medium",
-  "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei",
-  "WenQuanYi Micro Hei" !default;
-$monospace: Monaco, Consolas, "Lucida Console", monospace !default;
-$font-monospace: "Fira Code", "Source Code Pro", "Fira Code Online", Monaco,
-  Consolas, "Lucida Console", monospace !default;  
+$font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", 
+                  Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", 
+                  "Source Han Sans SC", "Noto Sans CJK SC", "Ubuntu", sans-serif;
+$font-serif: "Times New Roman", Times, Georgia, "Songti SC", "STSong", "SimSun", 
+             "Source Han Serif SC", "Noto Serif CJK SC", "AR PL UMing CN", serif;
+$font-monospace: "Fira Code", "Source Code Pro", "JetBrains Mono", "Fira Code Online",
+                 Monaco, "SFMono-Regular", Consolas, "Liberation Mono", "Menlo", 
+                 "Courier New", "Source Code Pro", "PingFang SC", "Microsoft YaHei", 
+                 monospace !default;  
+$font-decorative: 'Orbitron', "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", 
+                  "STSong", "SimSun", "宋体", "AR PL UMing CN",
+                  "Kaiti SC", "STKaiti", "KaiTi", "楷体",
+                  "AR PL UKai CN", "FandolKai", sans-serif;
+$font-kaiti: "Kaiti SC", "STKaiti", "KaiTi", "楷体", "AR PL UKai CN", "FandolKai";
+$font-songti: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", 
+              "SimSun", "宋体", "AR PL UMing CN";

@@ -8,9 +8,9 @@ Note: Official Manjaro i3wm images are now available from the official website.
 
 ## Download Manjaro and Create a Bootable USB Drive
 
-1. Download Manjaro: [Official Mirrors](https://manjaro.org/downloads/official/xfce/)
-2. Download Rufus: [Official Download](https://rufus.ie/en_US/)
-3. Insert the USB drive and launch Rufus.
+1. Download `Manjaro`: [Official Mirrors](https://manjaro.org/downloads/official/xfce/)
+2. Download `Rufus`: [Official Download](https://rufus.ie/en_US/)
+3. Insert the USB drive and launch `Rufus`.
 4. Select the target device under the **Device** option.
 5. Select the downloaded ISO image under the **Boot selection** option.
 6. Set the **Partition scheme** to MBR (default).
@@ -53,7 +53,7 @@ Note: Official Manjaro i3wm images are now available from the official website.
 **Advantages**
 
 * **The AUR (Arch User Repository):** Access to almost every Linux application imaginable without searching for external websites or PPAs.
-* **Always Up-to-Date:** You get the latest versions of GNOME, Plasma, and the Linux kernel much faster than on Ubuntu or Debian.
+* **Always Up-to-Date:** You get the latest versions of `GNOME`, `Plasma`, and the Linux kernel much faster than on `Ubuntu` or `Debian`.
 * **No "Reinstalling":** Since it is a rolling release, you never have to "reinstall" the OS to get the next major version.
 * **Hardware Manager (MHWD):** Excellent at automatically identifying and installing the correct proprietary drivers (especially for Nvidia cards).
 
@@ -65,7 +65,7 @@ Note: Official Manjaro i3wm images are now available from the official website.
 
 ### i3wm as a Windows Manager
 
-| Category                                    | i3wm                                                              | KDE Plasma                                              | Windows                                                 | macOS                                                              |
+| Category                                    | `i3wm`                                                              | `KDE Plasma`                                              | `Windows`                                                 | `macOS`                                                             |
 | ------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
 | Primary interaction style                   | Keyboard-first; you drive everything with shortcuts               | Keyboard + mouse balanced; highly customizable          | Mouse-first with strong keyboard helpers                | Trackpad/mouse-first with strong keyboard helpers                  |
 | Window organization                         | True tiling as the default; layouts are consistent and repeatable | Traditional desktop with optional tiling-like behavior  | Traditional desktop with Snap for quick layouts         | Traditional desktop with built-in tiling/splitting                 |
@@ -135,11 +135,11 @@ gem install bundler jekyll jekyll-sitemap jekyll-feed jekyll-seo-tag jekyll-merm
 ```
 
 Software Descriptions
-  - net-tools: Includes the netstat networking utility.
-  - fragments: A BitTorrent (BT) download client.
-  - arandr: A GUI front-end for xrandr, used for managing monitors and screen resolutions under i3wm.
-  - cloc: A utility for counting lines of code in various programming languages.
-  - tldr / cheat: Command-line cheat sheets and documentation tools that provide simplified, practical examples.
+  - `net-tools`: Includes the netstat networking utility.
+  - `fragments`: A BitTorrent (BT) download client.
+  - `arandr`: A GUI front-end for xrandr, used for managing monitors and screen resolutions under i3wm.
+  - `cloc`: A utility for counting lines of code in various programming languages.
+  - `tldr` / `cheat`: Command-line cheat sheets and documentation tools that provide simplified, practical examples.
 
 ### troubleshooting "Dependency conflict occurred during installation: exists in filesystem"
 
@@ -159,9 +159,9 @@ sudo pacman -S [PCKAGE_NAME] --overwrite /PATH/TO/FILE/*
 
 By default, the Linux **Real-time Clock (RTC)** is set to **Coordinated Universal Time (UTC)**, which is the time at the zero meridian. The system time is then calculated by adding the timezone offset.
 
-While Linux is running, the **system time** and **hardware time** operate asynchronously and independently. The hardware time is maintained by the BIOS battery, whereas the system time is driven by CPU ticks.
+While `Linux` is running, the **system time** and **hardware time** operate asynchronously and independently. The hardware time is maintained by the BIOS battery, whereas the system time is driven by CPU ticks.
 
-In a dual-boot setup, **Windows** treats the BIOS time as **Local Time**, while **Linux** treats it as **UTC**. Since Linux adds the timezone offset based on this reference, it results in the timezone being applied twice, causing an incorrect time display.
+In a dual-boot setup, `Windows` treats the BIOS time as **Local Time**, while `Linux` treats it as **UTC**. Since Linux adds the timezone offset based on this reference, it results in the timezone being applied twice, causing an incorrect time display.
 
 ```bash
 # Check if Local Time, UTC, and Timezone are correct
@@ -185,40 +185,38 @@ sudo hwclock --show
 
 > **Note:** Synchronizing time with `ntpdate` can cause "time jumps," which may affect time-sensitive programs and services. In such cases, using the `ntpd` service is recommended.
 
-> **Tip:** When using **ChatGPT**, if there is a significant discrepancy between your system time and the actual time, you may encounter a **"Your connection is not private"** error.
-
----
+> **Tip:** When using `ChatGPT`, if there is a significant discrepancy between your system time and the actual time, you may encounter a **"Your connection is not private"** error.
 
 ## Configuring the i3-wm Window Manager
 
-1. Download the **i3wm-themer** themes.
+1. Download the `i3wm-themer` themes.
 
 ```bash
 cd ~/.config/ && mkdir i3 && cd
 git clone https://github.com/unix121/i3wm-themer && cd i3wm-themer
 ```
 
-1. Install requirements.
+2. Install requirements.
 
 ```bash
 cd i3wm-themer && pip install -r requirements.txt
 ./install_arch.sh
 ```
 
-1. Copy polybar scripts.
+3. Copy `polybar` scripts.
 
 ```bash
 cp -r scripts/* /home/$USER/.config/polybar/
 ```
 
-1. Install and themes and switch to one of them.
+4. Install and themes and switch to one of them.
 
 ```bash
 python3 i3wm-themer.py --config config.yaml --install defaults/
 python3 i3wm-themer.py --config config.yaml --load themes/002.json # alternatives can be 000.json - 012.json
 ```
 
-1. Edit `/home/$USER/.config/i3/config`: config i3-wm.
+5. Edit `/home/$USER/.config/i3/config`: config i3-wm.
 
 ```bash
 # [Modified] keybinding of fuction key
@@ -272,7 +270,7 @@ Common Display DPI Reference Table
 | **27"** | 3840 x 2160 | Desktop 4K | 163 | **144 - 168** |
 | **32"** | 3840 x 2160 | Desktop 4K | 138 | **144** |
 
-7. Use the shortcut **Mod + D** to run `rofi-theme-selector` and choose a theme for **Rofi**. Press **Alt + A** to apply your selection.
+7. Use the shortcut **Mod + D** to run `rofi-theme-selector` and choose a theme for `rofi`. Press **Alt + A** to apply your selection.
 
 ## Configuring Chinese Input Method
 
@@ -349,32 +347,86 @@ ime.register_command("ga", "GreekAlphabet", "希腊字母")
 
 ## Configuring Network Proxy (Magic Crossing)
 
-1. Modify the `/etc/trojan/config.json` file to configure **Trojan**. The configuration text is provided by your service provider.
-2. Modify the `/etc/proxychains.conf` file to configure **Proxychains**. Change the last line to:
+### Option 1: trojan
+
+1. Modify the `/etc/trojan/config.json` file to configure `Trojan`. The configuration text is provided by your service provider.
+2. Modify the `/etc/proxychains.conf` file to configure `proxychains`. Change the last line to:
 
 ```bash
 sock5 127.0.0.1 1080
 ```
-
-3. Set a temporary proxy for Chrome to access the Web Store:
-
-```bash
-google-chrome-stable --proxy-server=socks5://127.0.0.1:1080
-
-```
-
-4. Visit the Chrome Web Store, search for, and install **ZeroOmega**.
-5. Open the ZeroOmega settings interface and import your configuration file.
-6. Set **Trojan** to start automatically on boot. Append the following to the end of your `~/.config/i3/config` file:
+3. Set `Trojan` to start automatically on boot. Append lines below to `~/.config/i3/config`:
 
 ```bash
 exec --no-startup-id trojan
 
 ```
 
+### Option2: mihomo + metacubex
+
+1. Install
+
+```bash
+sudo pacman -S mihomo metacubexd-bin
+```
+
+2. Config mihomo with `/.config/mihomo/config.yaml`
+
+```yaml
+mixed-port: 1080 # https+socks5 port
+external-controller: 0.0.0.0:9090 # claim for metacubex
+ipv6: false
+
+proxy-providers:
+  my-provider:
+    type: http
+    url: "[YOUR_SUBSCRIBE_ULR]" # subscribe link form service provider 
+    interval: 3600
+    path: ./proxies/provider.yaml # file that proxies saved to
+    health-check:
+      enable: true
+      interval: 6000
+      url: http://www.gstatic.com/generate_204
+
+proxy-groups:
+  - name: "Manual"
+    type: select
+    use:
+      - my-provider # ref to the service provider before
+
+  - name: "Auto"
+    type: url-test
+    use:
+      - my-provider
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+```
+
+1. Set `mihomo` to start automatically on boot. Append lines below to `~/.config/i3/config`:
+
+```bash
+exec --no-startup-id mihomo
+```
+
+4. Config with broswer, visit: https://metacubex.github.io/metacubexd/
+  - Running mode: GLOBAL
+  - Proxies: "Manual" - Choose one; Global - "Manual"
+
+### Setup Chrome
+
+1. Utilize a temporary proxy for `Chrome` to access the Web Store:
+
+```bash
+google-chrome-stable --proxy-server=socks5://127.0.0.1:1080
+
+```
+
+2. Visit the Chrome Web Store, search for, and install `ZeroOmega`.
+4. Open the `ZeroOmega` settings interface and import your configuration file.
+
 ## Configuring Git
 
-1. Configure the Git proxy.
+1. Configure the **Git proxy**.
 
 ```bash
 git config --global http.proxy socks5://127.0.0.1:1080
@@ -388,7 +440,7 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
-3. Persist Git Credentials
+3. Persist **Git Credentials**.
 
 ```bash
 # Store credentials in a file on disk (Permanent)
@@ -462,7 +514,7 @@ colors:
 
 ## Sharing File - Samba
 
-1. Edit `/etc/samba/smb.conf`: configuring samba.
+1. Edit `/etc/samba/smb.conf`: configuring `samba`.
 
 ```bash
 [global]
@@ -498,7 +550,7 @@ sudo systemctl restart smb
 
 ## Eye Care Software - Redshift
 
-Start **Redshift** (or add it to your i3wm configuration file):
+Start `redshift` (or add it to your i3wm configuration file):
 
 ```bash
 redshift -O 5000
@@ -573,7 +625,7 @@ alias matlab="sh /usr/local/MATLAB/R2018a/bin/matlab"
 
 ## Configuring Mozart Oz
 
-1. Installing Oz.
+1. Installing `Oz`.
 
 ```bash
 # Mozart 1.4

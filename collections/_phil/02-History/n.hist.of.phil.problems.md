@@ -298,3 +298,184 @@ Ultimately, philosophy of religion wrestles with the deepest existential and met
 ---
 
 **Sources:** The discussion above draws upon several key ideas and developments documented in the literature. For instance, the definition of metaphysics and its central questions is summarized from Shaw’s _Philosopher’s Quest_ and the _Stanford Encyclopedia_[pressbooks.ccconline.org](https://pressbooks.ccconline.org/introtophilosophy/part/chapter-5-metaphysics-2/#:~:text=Have%20you%20ever%20stopped%20to,it%20real%3F%20What%20is%20space)[en.wikipedia.org](https://en.wikipedia.org/wiki/Metaphysics#:~:text=necessary,whether%20there%20is%20%20196). The historical stances in metaphysics—Platonic Forms, Aristotelian substances, Cartesian dualism, Spinozistic monism—are well attested[en.wikipedia.org](https://en.wikipedia.org/wiki/History_of_metaphysics#:~:text=Plato%20%20is%20famous%20for,others%20of%20their%20respective%20kind)[en.wikipedia.org](https://en.wikipedia.org/wiki/History_of_metaphysics#:~:text=,nature). In epistemology, the summary of rationalist vs empiricist positions and concepts like justification and skepticism builds on sources such as the _Wikipedia_ overview of epistemology[en.wikipedia.org](https://en.wikipedia.org/wiki/Epistemology#:~:text=The%20school%20of%20skepticism%20,or%20also%20by%20external%20circumstances)[en.wikipedia.org](https://en.wikipedia.org/wiki/Epistemology#:~:text=Early%20reflections%20on%20the%20nature%2C,sciences%20%20and%20%20240), while the impact of Gettier is noted in the literature[en.wikipedia.org](https://en.wikipedia.org/wiki/Epistemology#:~:text=Image%3A%20Venn%20diagram%20with%20circles,50)[en.wikipedia.org](https://en.wikipedia.org/wiki/Epistemology#:~:text=person%20would%20not%20have%20the,58). Ethical theories (virtue ethics, deontology, consequentialism) and classic problems like the Euthyphro dilemma are treated in the portal of philosophy and Kant’s works[en.wikipedia.org](https://en.wikipedia.org/wiki/Portal:Philosophy/Branches#:~:text=,When%20can%20I%20say%20that)[human.libretexts.org](<https://human.libretexts.org/Courses/Folsom_Lake_College/PHIL_300%3A_Introduction_to_Philosophy_(Bauer)/07%3A_Ethics/7.05%3A_Ethics#:~:text=As%20a%20branch%20of%20philosophy%2C,descriptive%20ethics%2C%20and%20value%20theory>). The portal also provided guiding questions in logic, aesthetics, and political philosophy[en.wikipedia.org](https://en.wikipedia.org/wiki/Portal:Philosophy/Branches#:~:text=I%20live%3F%20What%20is%20happiness%3F,institutions%20and%20their%20exercise%20of)[en.wikipedia.org](https://en.wikipedia.org/wiki/Portal:Philosophy/Branches#:~:text=,against%20inhabitants%20of%20other%20states), and references on science highlight Popper’s and Kuhn’s contributions[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_science#:~:text=discipline%20only%20in%20the%2020th,the%20set%20of%20questions%2C%20concepts)[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_science#:~:text=Early%20attempts%20by%20the%20logical,6). The definition and scope of philosophy of language (meaning, reference, etc.) are outlined in Wikipedia’s and Philopedia’s entries[en.wikipedia.org](https://en.wikipedia.org/wiki/Category:Philosophy_of_language#:~:text=Philosophy%20of%20language%20%20is,112%2C%20and%20translation)[en.wikipedia.org](https://en.wikipedia.org/wiki/Category:Philosophy_of_language#:~:text=meaning%20%2C%20%20107%2C%20language,interpretation%20%2C%20and%20%20113). Aesthetics’ definition and relation to art and beauty follow standard formulations[en.wikipedia.org](https://en.wikipedia.org/wiki/Category:Concepts_in_aesthetics#:~:text=The%20main%20article%20for%20this,category%20%20is%20%2078)[en.wikipedia.org](https://en.wikipedia.org/wiki/Category:Concepts_in_aesthetics#:~:text=Aesthetics%20is%20a%20branch%20of,84%20of%20sentiment%20and%20taste), and the notes on family resemblance theory of art refer to Weitz’s influential idea[en.wikipedia.org](https://en.wikipedia.org/wiki/Family_resemblance#:~:text=Morris%20Weitz%20first%20applied%20family,Umberto%20Eco%20argued). The philosophy of science section cites the _Wikipedia_ entry for its initial definition and key questions[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_science#:~:text=Philosophy%20of%20science%20is%20the,of%20science%20is%20both%20a)[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_science#:~:text=central%20questions%20are%20the%20difference,Ethical%20issues%20such%20as), and acknowledges Kuhn’s paradigm concept[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_science#:~:text=criticized%20logical%20positivism%20and%20helped,in%20a%20particular%20historical%20period). Finally, the philosophy of religion’s scope is introduced per Britannica and SEP[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_religion#:~:text=Philosophy%20of%20religion%20is%20,2)[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_religion#:~:text=The%20philosophy%20of%20religion%20differs,that%20it%20seeks%20to%20evaluate), with mention of Plantinga’s reformed epistemology and the problem of evil following sources like SEP and classic texts[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_religion#:~:text=fideists%20and%20reformed%20epistemologists,29%20%5D%20The)[en.wikipedia.org](https://en.wikipedia.org/wiki/Philosophy_of_religion#:~:text=match%20at%20L1358%20Plantinga%2C%20Mackie,worked%20on%20the%20nature%20of).
+
+
+
+
+## 哲学主要研究的问题有哪些？
+
+### 形而上学
+
+实在论（本体论，Ontology）
+  - 什么是最真实的？——上帝、元素、Apeiron、原子、Logos、理式、意识、唯一实体、单子
+  - 实在拥有什么性质？
+  - 最终真实的的非物质世界与物质事物的关系？
+  - 心灵、身体何者更真实？
+    - 如果两者皆真实，心灵和身体的关联是什么？
+  - 世界是否有最终目的？——目的论
+  - 两个世界：
+    - 柏拉图：（变化消长的）生成的世界；（理式的）存在的世界
+    - 康德：自然和知识的世界；行动、道德和信仰的世界
+
+自由意志
+  - 为什么我们认为自由重要？实际上有多重要？
+  - 自由的含义？
+    - 内在自由（自由意志）——社会自由、情感自由、理性自由
+    - 外在自由（政治的）——积极自由、消极自由
+  - 人是否有自由？——决定论、非决定论、相容论（弱决定论）、自由意志论
+  - 如果一个行为或决定是被引起的，那么它怎么可能是自由的？
+  - 什么是自由选择？
+
+### 认识论
+
+经验真理与必然真理
+
+认识真理的方式：经验还是理性？
+
+认识真理的过程中，有哪些预设是无法避免的？——世界存在、普遍因果性原理
+  - 这些预设是否可辩护？——经验论、唯理论、怀疑论
+  - 两个世界的假设：外部世界、经验世界
+    1. 存在着一个“外部”世界——处于我们的经验和信念之外，不会受我们想法影响的世界
+    2. 我们不能直接认识世界本身，只能直接认识我们自己的心灵内容——我们的观念、信念、各种经验以及所谓的必然真理
+  - 笛卡尔怀疑方法——一切皆可疑——只有我在思考一事是我无法怀疑——我思故我在——哲学的关键恰恰就在于超越那些我们起初以为不证自明的东西
+  - 康德对两个世界假设的推翻：心灵把形式和范畴加诸经验之上，其为“先天综合”，否则经验无以为存
+
+真理的本性？——符合论、融贯论、实用论
+
+合理性和真理是如何相关的？
+
+主体性：真理是否依赖于主体，并随着主体变化？
+
+相对主义：如何理解经验的主观诠释？是否有人知道真理？
+
+### 伦理学
+
+生活的意义。主要人物：加缪、尼采、马丁·路德
+  - 对意义的反思：什么是意义？
+    1. 何谓意义？意义超越了表象，**指向**事物背后的概念、原因、影响、价值、结果。
+    2. 从语言学角度，“意义”必须涉及具体语境，此时可以等同于**目的、涵义、影响、结果**等。但这不能解释生活本身的所有要素。人为地选取“意义”，这不是哲学上的“终级关怀”。也许无法把“意义”用在生活上。
+    3. 人类持不同的哲学观点、世界观。于是人类从生活的某些角度，发掘出了对意义的**片面观察**和**表象的总结**。
+  - 生活有无意义？
+    - 如果有，是什么？
+    - 对于生活意义的一些解答方式：
+      1. 将意义**诉诸获取价值**。如：以此生“践行某种生活方式”，获取**来生**的价值回报；获取人类整体上的价值、他人的价值；或者把人生看作**投资**，获取世俗意义上的回报。
+      2. 将意义**诉诸宗教**。如：将所有的意义问题推给上帝，生活的所有目标就是完成**上帝**的使命；人类要在此世达到无欲无求的“**涅槃**”状态。
+      3. 将意义**诉诸生活的过程**。如：把人生看作**游戏**、**喜剧**，轻松地享受其过程，也不要过分看重目的、结果；或者承受生活的**悲苦**。
+      4. 将意义**诉诸艺术**，把生活的标准定位文学作品、电影或者艺术品的标准。生活需要做的就是完成出演角色，或者塑造性格、发展出“风格”。
+      5. 将意义**诉诸生活的组成部分**，比如生活中的人际关系，获取荣誉（也是一种价值），满足各式各样的欲望。 
+      6. 认为生活**无意义**。如加缪，通常用“**荒谬**”形容生活。生活对人来说是“荒谬”的，生活在于反抗这些荒谬；或者认为生活其实是病态的。
+    - 以上解答，或延迟正面回答，把意义推给第三者（如上帝、孩子）；或从生活的内容上“盲人摸象”；或继续了宗教惯性、文化惯性。
+
+道德哲学
+  - 何谓良好的生活？——快乐、理性、沉思
+  - 为什么快乐生活不是良好生活？
+  - 自利在道德中的作用？——心理利己主义、心理利他主义、伦理利己主义、伦理利他主义
+  - 道德是相对的还是绝对的？是否拥有普适性？——文化相对主义、道德相对主义、道德绝对主义（形成道德的标准是绝对的，可以用于所有文化）
+- 道德理论——义务论道德（善良意志）、后果论理论（功利主义）、美德伦理学、关怀伦理学
+
+### 美学
+
+人类为何要创造艺术、音乐、故事？
+
+人类为何欣赏艺术？
+  - 艺术有教育作用
+  - 使人变得更好
+  - 深入洞察自己
+  - 超越自我本位
+  - 美学价值应该取代道德价值
+
+是什么使得艺术品成为艺术品？
+  - 艺术揭示了世界的某种深层实在（真）
+  - 美就是终极实在，是“理式”
+  - 艺术展现的是理想，而非现实
+  - 艺术能表达和激发信仰
+  - 使艺术品美的是其形式
+  - 悲剧释放、净化了一些最乱人心神的情感
+
+如何区分艺术的好坏？
+  - 品位是客观的，存在于艺术品中、或其背后的客观领域中
+  - 品位是主观的，其特征是激发审美情感
+  - 品位取决于某位权威者的审美
+  - 品位取决于人类心灵内在的结构
+
+为什么它是艺术？
+  - 它强化了人类陷入与实在相对的现象的倾向
+  - “模仿”艺术存在局限性，它变得拥有反思性，关注人物的内心世界，涉及对主观体验的沉思
+  - 功能主义：它展现了某种功能
+  - 程序主义：它经过了某位艺术家施以的程序
+  - 它处在艺术家的理论氛围之中
+  - 它有精英主义印象，确保了专家权威的支配性
+
+艺术是否是为了博取人类的喜爱？
+
+### 心灵哲学
+
+我真实的本质自我是什么？——上帝面前的灵魂、动物、意识、记忆、唯我论、激情、情感
+
+认识自我时，认识到了什么？
+
+他心问题。——类比、心灵无法直接认识
+
+身心问题。——行为主义、同一性理论、功能主义
+
+其他自我理论。
+  - 自我是一种选择，不可在意识中找到，它存在于未来，当我们试图把自己变成某物时的目标所向
+  - 没有自我，只是特定类型的社会培养出来的幻觉
+  - 许多自我，像多层皮、无核心的葱头
+  - 社会性存在，精神共同体培养出的个体
+
+自我观念所肇始的我们之间的关系本质是什么？——差异、认同、冲突
+
+### 政治哲学
+
+社会的性质是什么？——城邦政体、君权神授、私有财产权、个人权力
+
+统治者的合法性？正当性？——强权、正义、无政府主义、自由市场
+
+什么是正义？
+  - 报应的正义
+  - 分配的正义
+
+什么是平等？——法律上的平等、平等的机会、平等尊重
+
+社会契约的形成——减少纷争、保护财产、因轻信远离自然而败坏
+
+如何划定人类权利和义务的范围和性质？——自由至上主义、自由主义、共同体主义、法西斯主义
+
+### 宗教哲学
+
+上帝是何种形象？
+  1. 西方传统**一神论**认为，上帝是唯一的造物主，赋予人类生命意义，保持了世界的正义、美。基督教中的上帝具有绝对的神秘性，超越人类的日常经验，无法被人类理解和知晓。
+  2. **自然神论**。上帝是非人格化的造物者，也无道德特征，不关心人类。
+  3. **泛神论**。斯宾诺莎认为上帝等同于宇宙的整体存在，人类是它的一部分，并且无须信仰上帝。黑格尔则将上帝精神化，认为人类本质上是精神的附庸，所有“精神”的整体即是上帝。人类的精神不断进化演变，上帝也是如此。
+  4. **无须认识其形象**。克尔凯郭尔认为重点是人类本身绝对确信其存在、在场的激情，而不是理解他。
+
+上帝是否拥有道德特征？
+  - 如果有，有哪些？
+  - 如果上帝全知全能，且是善的，那么他如何对待地球上的苦难和恶？
+    1. 拒绝承认恶的存在。
+    2. 上帝选择了苦难和恶最少的世界，它们无法避免。
+    3. 恶是世界发展的关键一步（神正论）。
+    4. 来世，上帝会惩恶扬善。
+    5. 上帝赋予人类自由意志，导致恶和苦难的是人类自己。
+    6. 我们不能质疑上帝，因为无法理解他。
+
+上帝的存在可以证明吗？
+  - 如果可以，如何证明？——宇宙论证明、设计论证、本体论论证、 道德论证、帕斯卡的赌注、无须论证、神秘体验
+  - 如何否定上帝存在？——童年幻觉、缓和痛楚的毒品
+
+上帝为什么是可证明的？
+  1. 上帝的知识本质是理性的，则可通过考察自己的思想而得知其存在。
+
+如何证明上帝存在？
+  1. 宇宙论证明。宇宙须创造，创造者即上帝。
+  2. 设计论证。宇宙的设计如此完美，无法设想这些都是偶然产生的。
+  3. 本体论论证。
+  4. 道德论证。如要确保正义得到实行，除恶扬善，则必须要有上帝裁判。上帝是道德和正义的基础。
+  5. 帕斯卡的赌注。宁可信其有，有益无害，收益远大于成本。
+  6. 无须论证。
+  7. 神秘体验，无法言表。
+
+如何否定上帝存在？
+  1. 弗洛伊德认为上帝信仰只是儿童时期的幻觉。它给了人们毫无根据的态度和期望。
+  2. 马克思认为，宗教是人民的毒品。它减轻了痛苦，制造了美好的幻觉，但是妨害了人类真正改善世界。

@@ -4,6 +4,17 @@ title: LLM Prompt Engineering
 tags: Tips
 ---
 
+## Goal Clearfication
+
+一个 Cheatsheet 应包含：
+1. Background and tacit Knowledge
+2. Minimal explanation: how to use, when to use, perfect to do
+3. Regular Options/Syntax 
+4. Common Usage in Practice
+5. Common Pitfalls in Practice
+6. Minimal Example
+7. Complete tutorial
+
 ## Quick Reference
 
 ### Problem Solving

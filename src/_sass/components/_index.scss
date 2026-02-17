@@ -4,9 +4,9 @@
 }
 
 .ascii_art{
-    font: 19px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+    font: 16px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
     text-align: center;
-    line-height: 103%;
+    line-height: 135%;
     a {
       color: $color-index-link;
     }
@@ -18,7 +18,8 @@
         font: 26px Monospace;
     }
     .ascii_art {
-       font: 17px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       font: 16px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       line-height: 135%;
        text-align: center;
     }
 }
@@ -28,7 +29,8 @@
         font: 22px Monospace;
     }
     .ascii_art {
-       font: 16px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       font: 12px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       line-height: 135%;
        text-align: center;
     }
 }
@@ -38,7 +40,8 @@
         font: 20px Monospace;
     }
     .ascii_art {
-       font: 11.5px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       font: 10px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       line-height: 135%;
        text-align: center;
     }
 }
@@ -48,7 +51,8 @@
         font: 18px Monospace;
     }
     .ascii_art {
-       font: 9px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       font: 6px Consolas, Source Code Pro, Monospace, Georgia, sans-serif;
+       line-height: 135%;
        text-align: center;
     }
 }
