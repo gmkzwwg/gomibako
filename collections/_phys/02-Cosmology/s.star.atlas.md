@@ -6,7 +6,7 @@ tags: Cosmology
 
 ## Sky Chart
 
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/sky-chart.png)
+![]({{site.img}}/phys/star-atlas/sky-chart.png)
 
 这是一张**赤道坐标系（equatorial coordinates, RA/Dec）：**下的**全天矩形投影**星图（可理解为把天球展开成一张经纬网地图）。
 它回答的是：“全天所有星座/亮星在天球上的固定位置关系是什么？”而不是“今晚某时某地抬头会看到什么”（后者需要地平坐标或时间/地点转换）。
@@ -91,85 +91,85 @@ tags: Cosmology
 3. **星座信息**：星座连线、星座边界（粗细不同的边界线）、以及拜耳命名（希腊字母）等。
 4. **深空天体（DSO）与符号**：顶部图例给出星团/星云/星系/行星状星云等符号类别；图内常见 Messier（M）与 NGC/IC 等编号。
 
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/01.png)
+![]({{site.img}}/phys/star-atlas/01.png)
 
 **A1（RA 22h30–25h30，Dec +30° 到 +90°）：**
 北天极附近的一块极区扇形，覆盖仙后、仙王、仙女、英仙与小熊/天龙的高赤纬部分，是典型“北天拱极区”。知识点是“拱极星”与“极区投影畸变”：越靠近北天极（Polaris 附近）RA 线越密，星跳时更依赖形状与亮星锚点。适合北半球观测者做全年可见目标库（如仙女/英仙的亮深空目标、若干开放星团）。
 
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/02.png)
+![]({{site.img}}/phys/star-atlas/02.png)
 
 **A2（RA 19h30–22h30，Dec +30° 到 +90°）：**
 覆盖天鹅—天琴—天龙—仙王的高赤纬区，常落在“夏秋银河”北段附近。知识点是“银河带的星场密度”：同样星等下，银河附近点更密、星团/星云符号更集中，星图阅读要更重视星座骨架（如天鹅十字、天琴织女星区域）。适合找北天著名发射星云与星团密集区（例如天鹅座附近的深空天体群）。
 
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/03.png)
+![]({{site.img}}/phys/star-atlas/03.png)
 
 **A3（RA 16h30–19h30，Dec +30° 到 +90°）：**
 以北天极环（Polaris 附近）为上方中心，向下延伸到武仙/天琴/天龙的高赤纬地带。你会看到 M57（环状星云）、M13/M92（球状星团）等典型“不同物理类型”的深空目标。知识点：**球状星团**（老年恒星、球形浓集）与**行星状星云**（恒星晚期外壳）在图上符号不同、观测外观也截然不同。
 
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/04.png)
+![]({{site.img}}/phys/star-atlas/04.png)
 **A4（RA 13h30–16h30，Dec +30° 到 +90°）：**
 覆盖大熊座柄部、猎犬座、高赤纬牧夫/武仙等区域，常见春季星系群（例如 M51 旋涡、M101 风车等在这一带附近）。知识点：春季“星系季”与高银纬星系分布——远离银河平面时，星系符号显著增多。适合练习用“大熊座指向”做星系跳转。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/05.png)
+![]({{site.img}}/phys/star-atlas/05.png)
 **A5（RA 10h30–13h30，Dec +30° 到 +90°）：**
 大熊座与周边是主角：M81/M82、M97（猫头鹰）、M109 等多种星系/星云符号混排。知识点：同一区域内可把不同类别 DSO 当作“分类学训练集”——星系、行星状星云、开放星团的符号与位置关系。用途是春末到初夏的北天深空巡天。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/06.png)
+![]({{site.img}}/phys/star-atlas/06.png)
 **A6（RA 7h30–10h30，Dec +30° 到 +90°）：**
 覆盖鹿豹/天猫/御夫—双子北侧一带的高赤纬天区，星场相对“稀一些”但散布许多小型星团与暗弱星系。知识点：**极区图的 RA 感**——你会注意到同样 RA 宽度在图上的“横向尺度”随 Dec 改变，读图时要优先跟着网格线确认方位。适合做冬末春初的高赤纬目标补完。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/07.png)
+![]({{site.img}}/phys/star-atlas/07.png)
 **A7（RA 4h30–7h30，Dec +30° 到 +90°）：**
 御夫座（Capella）与英仙北缘、鹿豹/仙王交界处常在该幅出现，开放星团（如 M36/M37/M38 一带）容易形成“团簇链”。知识点：开放星团与恒星形成区常在银河附近成群出现；星跳时可用“星团链”当作路标。用途：冬季北天深空（开放星团为主）。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/08.png)
+![]({{site.img}}/phys/star-atlas/08.png)
 **A8（RA 1h30–4h30，Dec +30° 到 +90°）：**
 偏向英仙—仙后—鹿豹方向的北天高赤纬区，常见英仙座双星团附近的密集标注。知识点：用“亮星+密集星团”快速定场（field identification）。用途：冬季北天银河亮区的快速扫掠。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/09.png)
+![]({{site.img}}/phys/star-atlas/09.png)
 **A9（RA 22h40–25h20，Dec −30° 到 +30°）：**
 进入“赤道带”分幅：网格更接近矩形、畸变小，最适合新手练星跳。该幅跨越双鱼—飞马—宝瓶—鲸鱼等秋季星座的赤道附近。知识点：赤道带图的阅读逻辑更像地图——“向东/向西”与 RA 的增减关系更直观；也更适合配合赤道仪。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/10.png)
+![]({{site.img}}/phys/star-atlas/10.png)
 **A10（RA 20h00–22h40，Dec −30° 到 +30°）：**
 宝瓶—飞马—摩羯附近，包含多类深空天体（球状星团、行星状星云等）并穿过部分银河边缘。知识点：秋季深空目标往往“离银河不远但不在最密段”，图上星点密度与 DSO 密度介于两端。用途：秋季观测（尤其是球状星团、行星状星云的练习）。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/11.png)
+![]({{site.img}}/phys/star-atlas/11.png)
 **A11（RA 17h20–20h00，Dec −30° 到 +30°）：**
 这是“夏季银河核心带”的经典一页：天鹰—盾牌—人马—蛇夫一带深空标注极密，Messier 集中（如 M8/M20/M16/M17/M22 等附近）。知识点：HII 区/发射星云、开放星团、球状星团在银河中心方向高度聚集；读图时要学会在拥挤背景里用网格定位。用途：夏季深空观测的主力页面。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/12.png)
+![]({{site.img}}/phys/star-atlas/12.png)
 **A12（RA 14h40–17h20，Dec −30° 到 +30°）：**
 跨天秤/天蝎北部—蛇夫—蛇一带，球状星团密集（多颗 M 号球团分布在蛇夫/天蝎附近）。知识点：球状星团“沿银河隆起区密集”的天文背景（银河核周边的老年球团系统）。用途：夏季球状星团巡礼，以及练习在复杂星座边界间确认目标归属。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/13.png)
+![]({{site.img}}/phys/star-atlas/13.png)
 **A13（RA 12h00–14h40，Dec −30° 到 +30°）：**
 春季星系最密的核心页之一：室女—后发—狮子尾部附近，常见大量星系符号（含室女星系团方向）。知识点：星系团（cluster of galaxies）在图上表现为“同一小片区域堆满星系符号”；这是把“宇宙大尺度结构”落实到观测层面的入口。用途：春季“刷星系”的关键页。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/14.png)
+![]({{site.img}}/phys/star-atlas/14.png)
 **A14（RA 9h20–12h00，Dec −30° 到 +30°）：**
 狮子座主体与周边（M65/M66、M95/M96/M105 等狮子座星系群常在这一带），星系符号显著但星场不如银河方向拥挤。知识点：星系群（group）与星系团（cluster）在图上密度与尺度不同；狮子座一带适合理解“群”的尺度。用途：春季中前段的星系观测与对比。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/15.png)
+![]({{site.img}}/phys/star-atlas/15.png)
 **A15（RA 6h40–9h20，Dec −30° 到 +30°）：**
 双子—巨蟹—船底/船尾边缘等冬末春初赤道带，开放星团与若干著名星云/星团并存（如蜂巢星团 M44 周边）。知识点：开放星团作为“距离较近的恒星集合”，在望远镜里解析度与球状星团完全不同；是训练观测记录（分辨、星数估计、视场对比）的好页面。用途：冬末春初的星团夜。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/16.png)
+![]({{site.img}}/phys/star-atlas/16.png)
 **A16（RA 4h00–6h40，Dec −30° 到 +30°）：**
 猎户—金牛—麒麟一带的冬季王牌页：M42（猎户座大星云）、M45（昴星团）、M1（蟹状星云）、玫瑰/马头等著名星云群常在此。知识点：恒星形成区（分子云、HII 区）与开放星团共生的天体物理背景；同一页能看到“从尘埃到电离气体”的多种结构。用途：冬季深空摄影与目视的核心页。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/17.png)
+![]({{site.img}}/phys/star-atlas/17.png)
 **A17（RA 1h20–4h00，Dec −30° 到 +30°）：**
 白羊—三角—鲸鱼部分、以及金牛西侧，包含一些典型“暗淡但经典”的外星系目标（如 M33、M74 一带）与明亮星团（昴星团边缘也可见）。知识点：对比“亮星团容易、低面亮度星系难”：同为 Messier，观测难度由面亮度决定而非总星等。用途：冬季后半夜到秋末的外星系练习。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/18.png)
+![]({{site.img}}/phys/star-atlas/18.png)
 **A18（RA 22h30–25h30，Dec −90° 到 −30°）：**
 南天极区第一页：以南天极附近的投影为主，赤纬更负，北半球很多地点不可见。知识点：南极区同样存在“拱极”概念，但取决于你在南半球的纬度；极区图的 RA 汇聚更明显。用途：南半球观测者做极区定向与全年目标规划。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/19.png)
+![]({{site.img}}/phys/star-atlas/19.png)
 **A19（RA 19h30–22h30，Dec −90° 到 −30°）：**
 覆盖天鹤/杜鹃等南天星座，常见 47 Tucanae（47 Tuc）这类南天著名球状星团标注。知识点：南天球状星团与矮星系/星云的丰富度对比北天不同；这是理解“银河系球状星团系统在天空中分布”的好例子。用途：南半球深空巡天、球状星团夜。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/20.png)
+![]({{site.img}}/phys/star-atlas/20.png)
 **A20（RA 16h30–19h30，Dec −90° 到 −30°）：**
 包含天蝎尾部—矩尺/南冕/南三角等方向的南天深空密集带（靠近银河）。知识点：银河中心方向向南天延伸后，深空符号再次变得拥挤；与 A11 的拥挤形成南北呼应。用途：夏季南天银河观测。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/21.png)
+![]({{site.img}}/phys/star-atlas/21.png)
 **A21（RA 13h30–16h30，Dec −90° 到 −30°）：**
 半人马座区域是亮点：Omega Centauri（ω Cen）等极著名目标会在该页附近出现；也常包含南天亮星系（如 M83 一带）。知识点：ω Cen 作为“异常巨大的球状星团/可能的矮星系核残骸”的讨论背景，是把观测对象连接到银河系形成史的入口。用途：南天最强球状星团与亮星系的观测页。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/22.png)
+![]({{site.img}}/phys/star-atlas/22.png)
 **A22（RA 10h30–13h30，Dec −90° 到 −30°）：**
 船底座与南十字附近：Eta Carinae（η Car）与船底星云（Carina Nebula）区域、煤袋暗云（Coal Sack）常在此页显著。知识点：大质量恒星形成区、暗星云遮挡效应（“缺星的黑洞”在星图上也能读出来）。用途：南天发射星云/暗星云与星团的主力页。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/23.png)
+![]({{site.img}}/phys/star-atlas/23.png)
 **A23（RA 7h30–10h30，Dec −90° 到 −30°）：**
 仍在船底—飞鱼/圆规等南天银河段，船底星云复合体及周边小型星云/星团密集。知识点：同一区域可把“星云复合体”看成多尺度结构：亮星云、暗带、星团共同组成。用途：深空摄影取景规划（大场景+细节）。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/24.png)
+![]({{site.img}}/phys/star-atlas/24.png)
 **A24（RA 4h30–7h30，Dec −90° 到 −30°）：**
 覆盖船帆/船尾—绘架/杜鹃南段等方向，常见 Canopus 等南天亮星与若干南天大尺度结构的边缘。知识点：在极区页里，亮星可用作“投影导航锚点”，把复杂星座边界串起来。用途：南天亮星定向、以及连接多页星跳的“过渡页”。
-![]({{site.url}}{{site.baseurl}}/images/phys/star-atlas/25.png)
+![]({{site.img}}/phys/star-atlas/25.png)
 **A25（RA 1h30–4h30，Dec −90° 到 −30°）：**
 靠近南天波江/凤凰等区域并仍含极区投影，常作为南天极区分幅的收尾，与 A18 在 RA 上首尾相接。知识点：RA 的“回绕”——图头会出现类似 25h 的写法，本质等同于 1h（跨越 0h）。用途：做整圈极区拼接与跨页定位练习。
 ## 如何看星图？

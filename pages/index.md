@@ -1,6 +1,5 @@
 ---
 layout: default
-post_list: false
 toc: false
 comment: false
 home_btn: true
@@ -30,7 +29,7 @@ permalink: /
      \ ||  ||  ||  |.- -''`- -._    /                        
      /\||  ||  ||  ;            :  /                         
     |  ||  ||  || ;    ,_c_      ;                           
-    |  ||  ||  ||;     (~<a href="/cv">ME</a>)      :                          
+    |  ||  ||  ||;     (~<a href="/test">TEST</a>)    :                          
     |  ||  || #||.                ·              ..          
     | c||  ||  ||Z,  ~@~         ;              /+%^·,       
     .,F@,__Jl__Jldbz_'= =,··,~@ ='    ..  !-@&*^)#$%^_(()_+)

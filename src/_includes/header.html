@@ -24,6 +24,15 @@
                   {% endif %}
               </a>
               {% endif %}
+              <!-- bilingual -->
+              {% if page.bilingual != false %}
+              <a class="header_btn"onclick="BilingualToggle.toggleAll()">
+                <i class="fa fa-language btn_icon"></i>
+                  {% if page.btn_text != false %}
+                  <p class="btn_text">Bilingual</p>
+                  {% endif %}
+              </a>
+              {% endif %}
               <!-- maximize -->
               {% if page.maximize != false %}
               <a class="header_btn" id="mxmz_btn" onclick="toggle_maximize()">

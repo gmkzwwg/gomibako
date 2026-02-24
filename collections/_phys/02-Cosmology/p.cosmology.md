@@ -12,7 +12,7 @@ Cosmology – the study of the universe as a whole – has undergone a revolutio
 
 ### The Universe’s History: From the Big Bang to Today
 
-![https://science.nasa.gov/universe/overview/]({{site.url}}{{site.baseurl}}/images/phys/cosmic-history.png)
+![https://science.nasa.gov/universe/overview/]({{site.img}}/phys/cosmic-history.png)
 
 _Figure: A timeline of cosmic history from the very early universe to the present day. This diagram (adapted from NASA imagery) depicts major epochs: **Inflation** (far left, at ~$10^{-32}$ seconds, an initial flash of exponential expansion), formation of the first subatomic **particles** and nuclei within minutes of the Big Bang, release of the first light (the **cosmic microwave background** radiation) about 380,000 years later, the **“Cosmic Dark Ages”** before stars, the ignition of the **first stars** and galaxies a few hundred million years after the Big Bang, the emergence of galaxies within a **dark matter** scaffold over billions of years, the onset of **dark energy**-driven accelerated expansion ~5–6 billion years ago, and the universe today (13.8 billion years old) teeming with galaxies._
 
@@ -54,7 +54,7 @@ Our understanding of the universe’s composition is a triumph of precision cosm
 
 On scales of billions of light years, the universe exhibits a magnificent **large-scale structure**: galaxies are not distributed uniformly at random, but form a **“cosmic web”** of clusters, filaments, and voids. Much like soap bubbles or Swiss cheese, matter in the universe is arranged in a pattern of relatively dense regions separated by vast low-density voids. This arises naturally from the gravitational amplification of initial fluctuations: over cosmic time, regions slightly denser than average attract more matter and grow, while less dense regions empty out. The result is a hierarchy of structure: galaxies bind together by gravity into **groups** and **clusters**; these clusters themselves cluster into **superclusters** and long **filaments**; and between these lie **cosmic voids** with few galaxies. It’s a striking example of self-organization on the largest possible scales.
 
-![https://science.nasa.gov/universe/galaxies/large-scale-structures/]({{site.url}}{{site.baseurl}}/images/phys/ultra-deep.png)
+![https://science.nasa.gov/universe/galaxies/large-scale-structures/]({{site.img}}/phys/ultra-deep.png)
 
 _Figure: The **Hubble Ultra Deep Field**, an image of a tiny patch of sky, reveals an estimated 10,000 galaxies of various shapes and sizes, each a collection of billions of stars. Every point of light in this image (save a few foreground stars) is a distant galaxy. Such deep exposures illustrate the vast scale and number of galaxies in the observable universe. Galaxies are not isolated in space but typically found in groups and clusters, which themselves connect into filamentary superclusters. The large-scale structure has been likened to a cosmic web or foam, with galaxies lining the filaments and sheets and enormous dark voids in between._
 

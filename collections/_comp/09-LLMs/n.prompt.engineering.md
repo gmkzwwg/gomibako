@@ -1,7 +1,7 @@
 ---
 category: Notes
-title: LLM Prompt Engineering
-tags: Tips
+title: LLM Prompt Engineering for Study Assistance
+tags: LLMs
 ---
 
 ## Goal Clearfication
@@ -14,6 +14,20 @@ tags: Tips
 5. Common Pitfalls in Practice
 6. Minimal Example
 7. Complete tutorial
+
+## 作为学习助手，LLM 可以超越人类做到的事情是：
+
+过去人力不可及的
+
+之前需要穷人之一生之力的
+1. 整理整个知识架构
+2. 当获得碎片知识时，找出整个知识架构，和这个知识的位置
+3. 知识的谱系学
+
+人力整理效率低的
+3. 元认知、元知识
+
+隐性知识，难以收录成册的边缘知识
 
 ## Quick Reference
 

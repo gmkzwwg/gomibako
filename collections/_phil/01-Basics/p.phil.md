@@ -2,6 +2,7 @@
 category: Prime
 title: Western Philosophy - Its Roadmap and Knowledge Architecture
 tags: Basics
+bilingual: true
 ---
 
 ## Q1: What Is Philosophy?

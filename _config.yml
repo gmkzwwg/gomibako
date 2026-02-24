@@ -86,6 +86,7 @@ defaults:
       comment             : false
       footer              : false       # whether show footer by default
       highlight           : false
+      bilingual           : false       # whether use <blockquote> as bilingual section
 
 # 5. Social Media Accounts
 email               : "gmkzwwg@outlook.com" 
