@@ -1710,3 +1710,167 @@ Each of the above thinkers helped map the intellectual landscape of the 20th cen
 > 上述每一位思想家都参与绘制了20世纪的智识版图。通过对分析哲学、现象学、存在主义、实用主义、结构主义与后结构主义、后现代主义以及批判理论等运动的梳理，这一概览展示了这些流派如何共同定义了现代哲学思维。他们的观念与著作构成了当代哲学的概念地图，反映了关于语言、心智、社会与存在的具有严密逻辑与历史根基的辩论。
 
 **Sources:** Authoritative biographies and philosophical surveys were used to compile these profiles[plato.stanford.edu](https://plato.stanford.edu/entries/russell/#:~:text=Bertrand%20Arthur%20William%20Russell%20,exclusively%20mental%20nor%20exclusively%20physical)[britannica.com](https://www.britannica.com/biography/G-E-Moore#:~:text=Cambridge%2C%20Cambridgeshire,an%20outstanding%20modern%20British%20thinker)[britannica.com](https://www.britannica.com/biography/Ludwig-Wittgenstein#:~:text=Ludwig%20Wittgenstein%20,in%20philosophy%2C%20especially%20within%20the)[plato.stanford.edu](https://plato.stanford.edu/entries/quine/#:~:text=Willard%20Van%20Orman%20Quine%20,wholesale%20reorientation%20of%20the%20subject)[britannica.com](https://www.britannica.com/biography/Saul-Kripke#ref918554:~:text=Kripke%E2%80%99s%20most%20important%20philosophical%20publication%2C%20Naming%20and%20Necessity%20%281980%29%2C%20based%20on%20transcripts%20of%20three%20lectures%20he%20delivered%20at%20Princeton%20in%201970%2C%20changed%20the%20course%20of%20analytic%20philosophy.%20It%20provided%20the%20first%20cogent%20account%20of%20necessity%20and%20possibility%20as%20metaphysical%20concepts%2C%20and%20it#:~:text=fact%20%28see%20analytic%20proposition%20%29,true%20in%20some)[plato.stanford.edu](https://plato.stanford.edu/entries/carnap/#:~:text=Rudolf%20Carnap%20,the%20efforts%20of%20the%20next)[plato.stanford.edu](https://plato.stanford.edu/entries/ayer/#:~:text=A,the%20meaning%20of%20key%20terms)[plato.stanford.edu](https://plato.stanford.edu/entries/husserl/#:~:text=Edmund%20Husserl%20,influenced%20discussions%20in%20social%20philosophy)[plato.stanford.edu](https://plato.stanford.edu/entries/heidegger/#:~:text=Martin%20Heidegger%20,in%20Japan%2C%20and%20North%20American)[britannica.com](https://www.britannica.com/biography/Jean-Paul-Sartre#:~:text=What%20are%20some%20of%20Jean,Sartre%E2%80%99s%20most%20famous%20works)[iep.utm.edu](https://iep.utm.edu/simone-de-beauvoir/#:~:text=Image%3A%20beauvoir%20Simone%20de%20Beauvoir,fiction%2C%20autobiography%2C%20and%20%2033)[britannica.com](https://www.britannica.com/biography/Albert-Camus#:~:text=Albert%20Camus%20used%20his%20debut,the%20inadequacy%20of%20traditional%20values)[anthropology.ua.edu](https://anthropology.ua.edu/theory/structuralism/#:~:text=Claude%20Levi,he%20derived%20the%20concept%20of)[iep.utm.edu](https://iep.utm.edu/foucault/#:~:text=Image%3A%20Michel%20FoucaultMichel%20Foucault%20was,prominent%20living%20intellectual%20in%20France)[plato.stanford.edu](https://plato.stanford.edu/entries/derrida/#:~:text=Jacques%20Derrida%20,Beside%20critique)[plato.stanford.edu](https://plato.stanford.edu/entries/lyotard/#:~:text=Jean,Foucault%2C%20Jacques%20Derrida%2C%20Gilles%20Deleuze)[plato.stanford.edu](https://plato.stanford.edu/entries/baudrillard/#:~:text=Associated%20with%20postmodern%20and%20poststructuralist,cultural%20and%20sociological%20phenomena%20of)[plato.stanford.edu](https://plato.stanford.edu/entries/baudrillard/#:~:text=Simulacra%20%281994%20,consumption%20of%20commodities%2C%20while%20postmodern)[iep.utm.edu](https://iep.utm.edu/james-o/#:~:text=William%20James%20)[iep.utm.edu](https://iep.utm.edu/john-dewey/#:~:text=Image%20John%20Dewey%20was%20a,adaptation%20of%20organism%20to)[iep.utm.edu](https://iep.utm.edu/freud/#:~:text=Image%3A%20freud%20Sigmund%20Freud%2C%20the,and%20the%20treatment%20of%20abnormal)[iep.utm.edu](https://iep.utm.edu/freud/#:~:text=work%20alone%20to%20develop%20and,until%201908%2C%20when%20the%20first).
+
+
+# Has Philosophy Become Ineffective in the 21st Century? A Critical, Evidence-Based Assessment for Scientists
+
+## Executive summary
+
+Claims that philosophy has become “ineffective,” “dead,” or educationally obsolete recur whenever science—especially physics—achieves dramatic explanatory or technological successes. The 21st-century versions are often associated with public remarks by prominent physicists, e.g., entity["people","Stephen Hawking","theoretical physicist"] and entity["people","Leonard Mlodinow","physicist writer"] in entity["book","The Grand Design","2010 popular science book"], which declares that philosophy “has not kept up with modern developments in science” and is “dead.”  A related critique appears in entity["people","Steven Weinberg","theoretical physicist"]’s entity["book","Dreams of a Final Theory","1992 popular science book"], where he reports finding “no help in professional philosophy” and claims not to know a postwar physicist whose research was “significantly helped” by philosophers. 
+
+A careful evaluation yields a mixed verdict. Parts of what used to be called “philosophy” (especially “natural philosophy”) have indeed been absorbed by mathematics and the empirical sciences; this is a long-run historical process rather than a uniquely 21st-century event.  But the strongest “philosophy is dead” rhetoric usually trades on an equivocation: it uses “philosophy” to mean (i) speculative cosmology or armchair metaphysics about nature, while ignoring (ii) philosophy of science, logic, and conceptual analysis of modeling, representation, explanation, and measurement—areas that remain practically relevant to scientific practice, including current physics. 
+
+Institutionally, philosophy faces nontrivial pressures in the 21st century, largely tied to broader humanities contractions and marketization of higher education, including department closures and enrollment declines in some countries and periods.  Yet philosophy’s educational value has not “evaporated” in any straightforward sense: empirical indicators regularly show philosophy majors performing at or near the top on verbal/analytical standardized tests, and recent work attempts to control for selection effects by comparing SAT-adjusted outcomes. 
+
+The most defensible conclusion is not that philosophy is “dead,” but that it is bifurcating. Some subfields risk low impact when detached from scientific and social realities; other subfields (philosophy of science/physics, logic, ethics of technology) are becoming more methodologically integrated with domain sciences and policy. The practical question for scientists is therefore not “philosophy or not,” but **how to extract high-value philosophical insight efficiently while avoiding unproductive debates**—a task this essay operationalizes into a concrete checklist.
+
+## Philosophy’s historical role and the long arc of “displacement”
+
+The idea that science “replaces” philosophy is historically accurate in one important respect: what early modern and Renaissance thinkers called **natural philosophy** covered many topics now housed in specialized sciences.  Classical figures—e.g., entity["people","René Descartes","philosopher mathematician"] and entity["people","Gottfried Wilhelm Leibniz","philosopher mathematician"]—developed theories we would now classify as physics (or proto-physics), and the modern boundary between “physics” and “philosophy of physics” did not yet exist as an institutional division of labor. 
+
+A second major “displacement” happened inside philosophy itself: **logic became formalized and mathematicized**. entity["people","Gottlob Frege","logician philosopher"] is widely credited with inventing or inaugurating modern quantificational logic via a formal logical calculus; this shift did not merely add technical tools—it changed what counted as a rigorous argument form.  The subsequent foundational program of logicism and formalist foundations was crystallized in entity["book","Principia Mathematica","1910–1913 formal logic treatise"] by entity["people","Alfred North Whitehead","philosopher mathematician"] and entity["people","Bertrand Russell","philosopher logician"], which helped popularize modern mathematical logic and shaped 20th-century foundations work. 
+
+A third “displacement” is methodological: 20th-century naturalistic and Quinean tendencies argue that parts of epistemology should be continuous with empirical science rather than a priori reflection. entity["people","Willard Van Orman Quine","philosopher logician"]’s “naturalized epistemology” is a canonical statement of this pressure toward scientific integration. 
+
+These historical episodes support the limited claim that **some questions originally treated philosophically (about nature, logic, and knowledge) migrate into mathematics and physics once technical methods mature**.  They do **not** support the stronger claim that philosophy becomes educationally or intellectually obsolete, because the migration typically leaves behind higher-order questions about: what counts as explanation, what models represent, how evidence supports theory, what assumptions are doing the work, and what values govern application. 
+
+## Contemporary institutional status and educational value in the 21st century
+
+A credible “philosophy is losing educational value” thesis must be anchored in institutional and pedagogical evidence, not only in elite scientific opinion. On the institutional side, the entity["organization","American Academy of Arts and Sciences","us learned society"] reports long-run growth in philosophy degrees through 2013 but also documents a sharp decline in the mid-2010s at some levels (e.g., a notable drop from 2013 to 2014 in BA completions and a post-2012 doctorate decline), alongside a falling share of total degrees since the mid-2000s.  Its broader Humanities Indicators updates highlight cross-humanities declines (with some sectoral exceptions), consistent with a general trend of enrollment pressure rather than a purely philosophy-specific collapse. 
+
+Internationally, financial pressures and “marketization” dynamics have also been linked to closures or downsizing in humanities and social sciences, sometimes explicitly including philosophy departments (with recent UK university cases often cited in journalism on institutional restructuring).  This suggests that part of philosophy’s contemporary contraction is explained by structural incentives—funding models, employability narratives, and managerial metrics—rather than by a simple discovery that philosophy “teaches nothing.” 
+
+On the educational-value side, multiple data sources indicate that philosophy education remains strongly associated with skills valued in analytic reading, argument evaluation, and writing. The entity["organization","American Philosophical Association","professional association"] compiles standardized-test statistics showing philosophy majors ranking near the top on the LSAT (second among large-major fields in 2022–2023, behind economics) and leading overall on GRE verbal and analytical writing (2019–2022), while remaining comparatively strong among humanities on GRE quantitative.  More importantly, a recent study in the Journal of the American Philosophical Association reports SAT-adjusted evidence consistent with a positive effect of studying philosophy on certain reasoning outcomes (notably verbal/logical measures), addressing the standard selection-effect objection. 
+
+These facts do not prove that philosophy is universally well taught or that all curricula deliver high value. But they do falsify a blanket claim that philosophy has “lost educational value” in the 21st century. 
+
+## Displacement and co-evolution: where math/physics take over and where philosophy still bites
+
+A rigorous analysis should distinguish at least three senses of “being supplanted.”
+
+### Supplanting as replacing answers to first-order questions
+
+There are many first-order questions once treated as metaphysical that physics now addresses with mathematical models and experiments: the structure of space and time, the nature of simultaneity, constraints on causality, and the geometry of gravitation. SEP discussions of classical versus relativistic spacetime theories emphasize how debates between absolute and relational conceptions evolved into more technically articulated disputes once physics supplied new representational resources.  Likewise, SEP treatments of “being and becoming” show that modern physics does not end metaphysical debate about time, but it **sharpens** the debate by clarifying what claims are compatible with relativity and what kinds of “flow” can be meaningfully defined. 
+
+In this sense, physics does supplant some philosophical speculation: **it constrains the space of live positions** by ruling out models inconsistent with empirical structure. 
+
+### Supplanting as changing the standards of rigor and admissible inference
+
+Physics can also “supplant” by setting methodological standards: formal equivalence, gauge redundancy, and model-theoretic/representation-theoretic clarity often replace informal metaphysical argumentation. A clear example is the hole argument literature in the philosophy of spacetime: what looks like a metaphysical dispute (substantivalism vs relationalism) becomes entangled with technical issues about diffeomorphism invariance and determinism.  Recent philosophical work continues to interact with mathematical physics to diagnose which versions of the argument survive formal scrutiny, illustrating co-evolution rather than replacement. 
+
+### Supplanting as shifting “philosophical” work into scientific practice under a different name
+
+A central practical point is that many scientists who reject “philosophy” still perform philosophical labor—often implicitly—when they debate interpretation, explanation, realism vs instrumentalism, model choice, and evidential standards. This is one reason critiques like Hawking’s or Weinberg’s are frequently met with the reply that the supposed death of philosophy is unstable: their own arguments rely on philosophical claims about the status of models, reality, explanation, and scientific methodology. 
+
+A contemporary example of “philosophical work inside physics” is entity["people","N. David Mermin","physicist"]’s essay arguing that persistent conceptual confusion in quantum mechanics reflects unexamined assumptions about scientific explanation, and calling for a reframing that is explicitly methodological and conceptual.  Another example is entity["people","Carlo Rovelli","theoretical physicist"]’s argument that anti-philosophical ideology can damage the fertility of physics and that recent empirical developments invite clearer reflection on methodological assumptions. 
+
+## Which parts of philosophy seem less impactful, and why that perception is not baseless
+
+The “philosophy is ineffective” narrative gains plausibility from real pathologies in parts of the discipline—especially those that appear (to outsiders and sometimes insiders) to operate with weak feedback from either empirical constraint or practical problem pressure.
+
+One prominent line of critique targets forms of analytic metaphysics that proceed largely from intuitions and armchair conceptual analysis, arguing for a “naturalized metaphysics” continuous with contemporary science. entity["people","James Ladyman","philosopher of science"] and entity["people","Don Ross","philosopher economist"]’s entity["book","Every Thing Must Go","2007 metaphysics book"] is a widely cited statement of this critique (often summarized as: metaphysics should be disciplined by our best science), and it has generated explicit defenses of analytic metaphysics as a legitimate enterprise.  The existence of this internal debate is itself evidence that philosophers recognize the risk of insularity and are contesting its remedies rather than ignoring it. 
+
+A second driver of the “ineffective” perception is persistent, visible disagreement in core areas. The 2020 PhilPapers Survey of professional philosophers provides a structured snapshot showing substantial divergence across many “big questions,” which is often used (fairly or unfairly) to argue that philosophy lacks progress.  Contemporary metaphilosophy directly addresses this by refining what “progress” could mean in philosophy—e.g., progress as improved understanding, argument frameworks, conceptual tools, or conditional results rather than convergence on final answers. 
+
+A third issue is pedagogical and sociological: when philosophy is taught as a history-of-ideas survey without tight training in argument reconstruction, formalization, and engagement with live problems, it becomes easy for scientifically trained readers to conclude that philosophy is primarily commentary rather than knowledge production.  Conversely, the growth of “experimental philosophy” can be seen as one institutional response: importing empirical methods to test claims about intuitions and ordinary concepts, thereby adding new feedback loops. 
+
+In short, the perception that some subfields are “outdated” is not purely anti-intellectual prejudice; it often reflects identifiable mismatches between method and target: weak constraint, unclear success conditions, or low cross-domain transfer. 
+
+## Counterarguments: why philosophy remains relevant and cannot be replaced by math/physics
+
+Even under a scientist-friendly, naturalist conception, there are at least four domains where philosophy continues to deliver uniquely high value.
+
+### Methodology of modeling, representation, and idealization
+
+Much of modern science proceeds by models that are known to be idealized, partial, and purpose-relative. Philosophical analysis of models and idealization clarifies what modeling claims commit one to, what “fit” and “explanation” mean under idealization, and how to interpret robustness across modeling frameworks.  This is not replaceable by mathematics alone, because mathematics can articulate models without answering the meta-question “what does this model represent and in what sense?” 
+
+### Evidence, underdetermination, and scientific realism
+
+Debates about scientific realism and underdetermination are not scholastic leftovers; they are live in fields where multiple theories can reproduce the same observables (e.g., interpretation-heavy or duality-heavy contexts). SEP discussions of scientific realism and underdetermination articulate why evidence may be insufficient to select uniquely among rival theoretical frameworks, and what kinds of inference (abduction, robustness) might be rationally permissible. 
+
+Here philosophy functions as “epistemic engineering”: it does not deliver new experimental results, but it can improve how scientists understand the evidential status of their own theoretical commitments. 
+
+### Conceptual clarification in fundamental physics
+
+In domains like quantum foundations, spacetime ontology, dualities, and emergence, scientists routinely face questions about equivalence, interpretation, and the meaning of theoretical terms—questions that are simultaneously scientific (because they track constraints on theory construction) and philosophical (because they involve semantics, ontology, and explanation). The hole argument literature is a long-running example where philosophical diagnosis interacts with formal results about determinism and covariance. 
+
+Similarly, recent work on dualities explicitly targets the philosophical problem of theoretical equivalence and underdetermination raised by dual descriptions in modern physics, showing an ongoing, technically informed interaction between philosophy and physics rather than a replacement. 
+
+### Normative domains: ethics, AI, and policy-facing science
+
+Physics and mathematics cannot determine normative constraints by themselves. In AI and robotics, for example, applied ethics is now a central interface domain, and SEP explicitly treats it as a young, rapidly evolving field with few established overviews—exactly the kind of area where philosophical rigor can be practically important.  At the same time, empirical critiques of “AI ethics guidelines” suggest that ethical discourse can become performative or weakly enforced, which underscores the need for better institutional mechanisms and conceptual clarity—not the irrelevance of ethics. 
+
+## Case studies where philosophical work improved scientific practice
+
+A demand for “evidence of impact” is legitimate; the most convincing cases are those where philosophical work (often interdisciplinary) improved clarity of assumptions, increased methodological robustness, or reframed a research program in a way that produced technical progress.
+
+**Causal inference and the formalization of counterfactual reasoning**  
+Modern causal modeling (widely used in statistics, AI, economics, epidemiology) is tightly connected to philosophical work on counterfactuals and intervention, and SEP explicitly tracks how structural causal model logics developed alongside (and in contrast to) possible-world semantics associated with counterfactual theories.  The practical improvement is that causal questions become formally expressible and algorithmically tractable, enabling clear separation of “association” from “intervention” and supporting identifiability analyses.  This is a concrete instance where philosophical semantics (counterfactual understanding) and mathematical formalization co-produced tools now embedded in scientific curricula. 
+
+**Spacetime ontology and gauge/representation discipline**  
+The hole argument tradition shows how philosophical concerns about substantivalism, determinism, and representation force explicit attention to mathematical structure: when do two mathematically distinct models represent the same physical situation? SEP’s presentation makes this a central question in the metaphysics of spacetime.  Historical-critical work argues that one key lesson for future theories (e.g., quantum gravity) is the importance of background independence and permutation/diffeomorphism-related representational equivalence—claims with direct programmatic impact on how physicists think about theory construction. 
+
+**Dualities and theoretical equivalence in high-energy/quantum gravity contexts**  
+Dualities pose an acute underdetermination-style problem: if two formalisms are (in some regime) equivalent, what is the ontology, and what does “same physics” mean? Recent monographic work on dualities in physics explicitly integrates philosophical analysis (equivalence, interpretation, realism) with technical examples (including gauge–gravity duality).  Even when such work does not directly produce new experimental predictions, it can improve the conceptual hygiene of theory development—especially in areas where empirical constraint is weak and theoretical coherence is a primary filter. 
+
+## Practical guidance for scientists: separating wheat from chaff
+
+The core practical recommendation is to treat philosophy as **a toolkit for conceptual risk management** in scientific work: identifying hidden assumptions, clarifying inference types, distinguishing representational choices from ontological commitments, and mapping where normative constraints enter.
+
+### High-yield topics to prioritize
+
+**Philosophy of scientific modeling and representation** (high yield for all theoretical and computational scientists)  
+Start with the notion that models represent targets in diverse ways (idealization, abstraction, surrogates), and that scientific progress often involves switching modeling frameworks rather than merely de-idealizing one model. 
+
+**Evidence, confirmation, and underdetermination** (high yield in foundational physics, cosmology, and any highly underconstrained modeling domain)  
+Underdetermination clarifies why multiple incompatible hypotheses can fit the same data, and why “fit” is not identical to “justification.” 
+
+**Causation and inference** (high yield for experimentalists, data scientists, and theorists making counterfactual claims)  
+Use causal models and interventionist reasoning to audit whether your inference is purely correlational or genuinely causal; SEP’s causal models entry provides a rigorous road map connecting formal tools to philosophical semantics. 
+
+**Logic and foundations as precision tools** (high yield for mathematicians and formal-methods communities)  
+The educational value here is not “philosophical debate” but formal clarity about inference rules, expressive power, and the structure of proofs—historically exemplified by the formalization of logic and foundational work. 
+
+**Ethics of AI and robotics (and scientific responsibility)** (high yield for anyone building or deploying systems with social impact)  
+Treat ethics not as a list of slogans but as design constraints plus governance mechanisms; SEP’s AI ethics entry offers an orientation, while empirical evaluations suggest why guideline-only approaches may be ineffective without enforcement. 
+
+### Efficient reading strategy for scientists
+
+A scientifically efficient workflow is:
+
+1. Read a high-quality encyclopedia map first (SEP) to learn the problem space, vocabulary, and canonical options.   
+2. Then read one “anchor text” chosen for **method**, not for fame. For modeling, start from models/representation; for interpretation-heavy physics, start from the relevant philosophy-of-physics entry or a recent technically informed monograph.   
+3. Only then sample the “debate literature,” and do so selectively: look for papers that either (a) change the state space of options (new distinctions, new formal results), or (b) connect to live scientific practice (measurement constraints, inference procedures, modeling regimes). 
+
+### Integrating philosophy into research practice
+
+The most reliable integration points are procedural:
+
+- **Conceptual audit before committing to a model**: list the core idealizations, what they buy you, and what failure modes they induce; compare across at least two modeling frameworks when possible.   
+- **Assumption checks tied to observables**: for each major assumption, identify which observable patterns would count against it (or which would be invariant under alternatives). This is a practical response to underdetermination.   
+- **Interpretation discipline in gauge/duality contexts**: explicitly distinguish mathematical redundancy from physical degrees of freedom; treat “equivalence” claims as needing representational criteria, not only formal mappings.   
+- **Causal reasoning protocol in data-driven work**: write down the causal estimand, the intervention semantics, and identifiability conditions before fitting models.   
+- **Ethics-by-design** rather than ethics-by-guideline: connect normative principles to enforceable constraints, audits, and accountability mechanisms; guideline ineffectiveness is a known empirical risk.   
+
+### How to avoid unproductive debates
+
+Unproductive philosophical engagement is usually detectable by at least one of these red flags:
+
+- **No contact with constraints**: the debate does not specify what could count as evidence, a decisive argument, or a discriminating formal criterion.   
+- **Vocabulary drift**: key terms (e.g., “real,” “explain,” “cause”) are used without operational or inferential roles, leading to verbal disputes.   
+- **Ignoring live scientific practice**: claims about “how science works” that do not engage with how models are actually used and shifted in real research programs.   
+
+## Critical conclusion and actionable checklist
+
+The 21st century has not made philosophy “dead,” but it has made **low-feedback philosophy easier to ignore** and **high-integration philosophy more valuable**. The strongest evidence for “decline” is institutional and sociological (humanities contraction, governance pressures, some department closures), not an empirical refutation of philosophy’s educational or intellectual value.  The strongest evidence against “death” is (i) continuing demonstrable educational outcomes in reasoning/writing measures, and (ii) the ongoing necessity of conceptual, methodological, and normative work that mathematics and physics do not automatically provide. 
+
+A practical, prioritized checklist for scientists:
+
+- **Start with SEP maps** for: scientific realism, models/representation, theory/observation, underdetermination, causal models, and AI ethics.   
+- **Run a quarterly “conceptual audit”**: write 1–2 pages answering: What is the target of my model? What is idealized away? What evidence would force revision?   
+- **Add a causality layer** to empirical claims: explicitly state whether your claim is correlational, causal, or counterfactual; use structural causal tools when appropriate.   
+- **In foundational physics, treat interpretation as part of theory-quality control**: use representational criteria and equivalence diagnostics (gauge redundancy, duality) rather than intuition-driven ontology alone.   
+- **In high-impact tech domains, connect ethics to enforcement**: do not rely on guidelines alone; build auditing, documentation, and accountability pathways into workflows.   
+- **Avoid philosophy that cannot state what would change anyone’s practice**: if a debate never cashes out in inferential norms, modeling choices, or conceptual constraints, treat it as optional reading.   
+
+Philosophy is not being straightforwardly supplanted by mathematics and physics; rather, it is being **selectively absorbed where it becomes technical** and **selectively ignored where it fails to connect to constraints or practice**. The most realistic path forward is transformation through integration: philosophy that is literate in current science, rigorous about inference and representation, and serious about normative governance in technology will remain high-value for 21st-century scholars. 

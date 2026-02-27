@@ -17,13 +17,13 @@ bgtext              : "αβγδεζηθικλμνξοπρστυφχψω∝∞∑
 collection_order    : 
   [
     "phil",    
-    "lit",
+    "litr",
     "hist",
     "psyc",
     "math",
     "comp",
     "phys",
-    "lang",
+    "misc",
   ]
 
 collections:
@@ -40,18 +40,18 @@ collections:
     permalink       : /:collection/:categories/:title/
     sort_by         : name
     alias           : "HIST"
-  lit:
+  litr:
     output          : true
     permalink       : /:collection/:categories/:title/
-    alias           : "LIT"
+    alias           : "LITR"
   comp:
     output          : true
     permalink       : /:collection/:categories/:title/
     alias           : "COMP"
-  lang:
+  misc:
     output          : true
     permalink       : /:collection/:categories/:title/
-    alias           : "LANG"
+    alias           : "MISC"
   psyc:
     output          : true
     permalink       : /:collection/:categories/:title/

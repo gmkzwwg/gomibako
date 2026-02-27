@@ -22,46 +22,95 @@ excerpt: "This is excerpt." # string
 abstract: "This is abstract. Abstract is blank by default." # string
 ---
 
+# Heading 1
 
-# H1 标题 / Heading 1
+**Paragraph** 
+  - **bold**, *italic*, ~~strikethrough~~, `inline code`
+  - ==highlight== (requires the kramdown extension), $$H_2~O$$ (quires katex)
 
-段落：**粗体**、*斜体*、~~删除线~~、`行内代码`、==高亮==（依赖 kramdown 扩展）、$$H_2~O$$、
+**Line break** *(two trailing spaces)*  
+New line.
+  - Line break in lists *(two trailing spaces)*  
+    New line.
 
-公式（Katex or Mathjax）
-1. 贝叶斯公式（含证据项）
+New Paragraph *(separated by a blank line)*.
+
+**Decrypt and encrypt** text (access token: 233):
+<p class="encrypted" id="/MZAf/PKx9jpw8/Jnp7XQQFki2ibGnArZP46W+keVThXquhWwFROEFnbY8eC57Tw==">Encrypted content!</p>
+
+**Blockquote**
+> Single-line quote.
+{: data-bt="0"}
+> Multi-line quote *(two trailing spaces)*  
+> continuing the same block.
+{: data-bt="0"}
+
+
+
+## Heading 2
+
+[Link](https://example.com) and autolink <https://example.com>, as well as email <a href="mailto:test@example.com">mail</a>.
+
+![Alt text]({{site.img}}/phys/cosmos/observable-universe-logarithmic-map.png "title")
+
+Blockquote for bilingual support. Click Bilingual Button or set page.bilingual `false` to show.
+> Blockquote: used for bilingual folding test. First paragraph.
+>
+> Second paragraph (multi-paragraph).
+{: .lang-alt}
+
+> Skip processing
+{: data-bt="0"}
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+**Formulas** (KaTeX or MathJax)
+1. Bayes’ theorem (including the evidence term)
+
    $$
    p(\theta\mid x)=\frac{p(x\mid \theta)p(\theta)}{p(x)},\qquad
    p(x)=\int p(x\mid \theta)p(\theta),d\theta
    $$
 
-2. KL 散度与交叉熵关系
+2. Relationship between KL divergence and cross-entropy
+
    $$
    D_{\mathrm{KL}}(p\Vert q)=\int p(x)\log\frac{p(x)}{q(x)},dx
    ,\qquad
    H(p,q)=H(p)+D_{\mathrm{KL}}(p\Vert q)
    $$
 
-3. 变分下界（ELBO）
+3. Evidence Lower Bound (ELBO)
+   
    $$
    \log p(x)=\mathcal{L}(q)+D_{\mathrm{KL}}!\bigl(q(z)\Vert p(z\mid x)\bigr),
    \qquad
    \mathcal{L}(q)=\mathbb{E}_{q(z)}[\log p(x,z)-\log q(z)]
    $$
 
-4. 多元高斯密度
+4. Multivariate Gaussian density
+   
    $$
    \mathcal{N}(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{d/2},|\Sigma|^{1/2}}
    \exp!\left(-\frac12(x-\mu)^\top\Sigma^{-1}(x-\mu)\right)
    $$
 
-5. 线性回归的闭式解（最小二乘）
+5. Closed-form solution of linear regression (least squares)
+   
    $$
    \hat{\beta}=\arg\min_{\beta}|y-X\beta|_2^2
    \quad\Rightarrow\quad
    \hat{\beta}=(X^\top X)^{-1}X^\top y
    $$
 
-6. 拉格朗日对偶（原始—对偶—KKT骨架）
+6. Lagrangian duality (primal–dual–KKT skeleton)
+   
    $$
    \min_x f(x)\ \text{s.t.}\ g_i(x)\le 0,\ h_j(x)=0
    $$
@@ -70,12 +119,14 @@ abstract: "This is abstract. Abstract is blank by default." # string
    \max_{\lambda\ge 0,\nu}\ \inf_x L(x,\lambda,\nu)
    $$
 
-7. 欧拉—拉格朗日方程（变分法/经典力学）
+7. Euler–Lagrange equation (calculus of variations / classical mechanics)
+   
    $$
    \frac{\partial \mathcal{L}}{\partial q}-\frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot q}\right)=0
    $$
 
-8. 麦克斯韦方程组（SI）
+8. Maxwell’s equations (SI)
+   
    $$
    \nabla\cdot \mathbf{E}=\frac{\rho}{\varepsilon_0},\quad
    \nabla\cdot \mathbf{B}=0,\quad
@@ -83,128 +134,135 @@ abstract: "This is abstract. Abstract is blank by default." # string
    \nabla\times \mathbf{B}=\mu_0\mathbf{J}+\mu_0\varepsilon_0\frac{\partial \mathbf{E}}{\partial t}
    $$
 
+## Lists and Tables
 
-换行（两个空格结尾）  
-新行。
+### Ordered and Unordered Lists
 
-Decrypt and encrypt text (access token: 233):
-<p class="encrypted" id="/MZAf/PKx9jpw8/Jnp7XQQFki2ibGnArZP46W+keVThXquhWwFROEFnbY8eC57Tw==">Encrypted content!</p>
-
-
-## H2 标题
-
-### H3 标题
-
-[链接](https://example.com) 与自动链接 <https://example.com>，以及邮箱 <a href="mailto:test@example.com">mail</a>。
-
-![图片替代文本]({{site.img}}/phys/cosmos/observable-universe-logarithmic-map.png "title")
-
-> Blockquote：用于双语折叠测试。第一段。
->
-> 第二段（多段落）。
-{: .lang-alt}
-
-> 跳过处理
-{: data-bt="0"}
-
-
-## 列表 / Lists
-
-- 无序 1
-- 无序 2
-  - 嵌套 2.1
-  - 嵌套 2.2
-  > 第三段 用于双语折叠测试。
+- Unordered 1
+- Unordered 2
+  - Nested 2.1
+  - Nested 2.2
+  > Third paragraph used for bilingual folding test.
   {: .lang-alt}
 
-1. 有序 1
-2. 有序 2
-   1. 嵌套 2.1
-   > 第四段 用于双语折叠测试。
+1. Ordered 1
+2. Ordered 2
+   1. Nested 2.1
+   > Fourth paragraph used for bilingual folding test.
 
 - [x] Task done
 - [ ] Task todo
-> 第五段 用于双语折叠测试。
+> Fifth paragraph used for bilingual folding test.
 
-### 定义列表 / Definition List (kramdown)
+### Definition Lists (kramdown)
 
-术语 A
-: 定义 A
-> 第六段 用于双语折叠测试。
+Term A
+: Definition A
+> Sixth paragraph used for bilingual folding test.
+: Definition A2
+: Definition A3
+  : Definition A 3.1
 
-术语 B
-: 定义 B
+1. Term B
+: Definition B
+2. Term C
+   1. Term C 1.1
+   : Definition
+   - Term C 1.2
+   : Definition
 
-## 代码 / Code
-
-行内：`const x = 1;`
-
-```js
-// fenced code
-function hello(name){ return `hi ${name}`; }
-```
-
-```python
-# another block
-print("ok")
-```
-## 表格 / Table
+### Tables
 
 | colA | colB | colC |
 | :--: | ---: | :--- |
 |   a  |    1 | left |
 |   b  |   20 | text |
 
-## 脚注 / Footnotes (kramdown)
+## Code
 
-脚注示例[^1] 与第二个[^two]。
+Inline: `const x = 1;`
 
-[^1]: 这是脚注 1。
+```js
+// fenced code
+function hello(name){ return `hi ${name}`; }
+````
 
-[^two]: 这是脚注 two。
+```python
+# another block
+print("ok")
+```
 
-## 引用与引用块 / Quotes
+## Footnotes (kramdown)
 
-> 单行引用。
-{: data-bt="0"}
-> 多行引用
-> 继续同一块。
-{: data-bt="0"}
+Footnote example[^1] and the second one[^two].
 
-## 分隔与转义 / HR & Escapes
+[^1]: This is footnote 1.
 
-*星号不斜体*，_下划线不斜体_，# 不当标题。
+[^two]: This is footnote two.
 
-## 内联 HTML（常用元素） / Inline HTML
+## Horizontal Rules & Escapes
+
+\*Asterisks not italic\*  
+\_underscores not italic\_  
+\# not a heading  
+\> not a blockquote  
+\- not a list item  
+\+ not a list item  
+1\. not an ordered list  
+\[not a link\]\(not a URL\)  
+\!\[not an image\]\(not a URL\)  
+\`not code\`  
+\\ not an escape start  
+\| not a table cell  
+\: not table alignment  
+\~\~not strikethrough\~\~  
+\<not an HTML tag\>  
+\& not an entity  
+\=\=not highlight\=\=  
+\^\[not a footnote\]  
+\$not math\$.
+
+```markdown
+\*Asterisks not italic\*  
+\_underscores not italic\_  
+\# not a heading  
+\> not a blockquote  
+\- not a list item  
+\+ not a list item  
+1\. not an ordered list  
+\[not a link\]\(not a URL\)  
+\!\[not an image\]\(not a URL\)  
+\`not code\`  
+\\ not an escape start  
+\| not a table cell  
+\: not table alignment  
+\~\~not strikethrough\~\~  
+\<not an HTML tag\>  
+\& not an entity  
+\=\=not highlight\=\=  
+\^\[not a footnote\]  
+\$not math\$.
+```
+
+## Inline HTML (common elements)
 
 <div class="note">
-  <strong>HTML 区块：</strong> div / strong / em / span / br<br>
-  <em>强调</em> 与 <span style="text-decoration:underline;">下划线</span>
+  <strong>HTML block:</strong> div / strong / em / span / br<br>
+  <em>Emphasis</em> and <span style="text-decoration:underline;">underline</span>
 </div>
 
 <details>
   <summary>details/summary</summary>
-  <p>折叠内容（HTML 原生）。</p>
+  <p>Collapsed content (native HTML).</p>
 </details>
 
 <blockquote class="lang-alt" data-bt-default="expanded">
-  <p>纯 HTML blockquote（含 class/attr），测试与 JS 选择器联动。</p>
+  <p>Pure HTML blockquote (with class/attr), testing linkage with JS selectors.</p>
 </blockquote>
 
-## 锚点 / IDs
+## Anchors / IDs
 
-### 小节标题 {#custom-id}
+### Subsection heading {#custom-id}
 
-跳转到 [自定义锚点](#custom-id)。
-
-## 分割线与空行压力测试
-
-段落 A。
-
-段落 B（空行分隔）。
-
-<span id="inline-anchor"></span>
-跳转到 [inline anchor](#inline-anchor)。
-
-```
+Jump to the [custom anchor](#custom-id)。
 

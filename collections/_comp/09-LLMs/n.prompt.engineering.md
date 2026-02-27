@@ -534,3 +534,155 @@ In practical terms, this means knowledge workers can read **fewer but more impac
 This method exemplifies a meta-principle of knowledge work: **augment human judgment with AI**. You do the critical thinking (what to highlight and outline); ChatGPT does the tedious writing. The combination preserves the depth of understanding while boosting efficiency. For writers, researchers, and anyone building a “second brain,” it’s a practical workflow for turning passive reading into active, reusable insights.
 
 **Sources:** Transcript of Tiago Forte’s video _“The BEST Way to Summarize Books with ChatGPT”_ and related Forte Labs writings on summarization. These explain each step of the process, its rationale, and the dramatic improvement in summary quality and speed.
+
+# 面向实践者与研究者的 Prompt Engineering 精要教程（2026 视角）
+
+## 执行摘要
+
+Prompt engineering（提示工程）可被视为“把任务需求、约束、上下文与评测目标，编译成可稳定驱动大模型行为的上下文程序（context program）”。它既包含**手工提示设计**（清晰指令、示例、结构化输出、约束与失败模式修补），也包含更系统化的**自动优化与可复现评测**（自动生成/搜索/进化提示、把提示当参数或可学习对象、把提示链/agent 编排当程序并做编译优化）。这一视角在近几年从“写提示”逐步走向“构建可测的 LLM 系统”，尤其在 RAG、工具调用与代理式工作流中更明显。
+
+从方法谱系看：少样本/上下文学习让“提示即任务接口”成为主流（Brown et al., 2020）；链式思维/自一致性/树思维等把推理过程显式化并引入搜索与投票（Wei et al., 2022; Wang et al., 2022; Yao et al., 2023）；RAG 把外部知识作为“非参数记忆”注入，提升事实性并便于更新（Lewis et al., 2020；Asai et al., 2023）。与此同时，安全对抗（提示注入、越狱、对齐绕过）迫使提示工程与系统工程（输入隔离、权限最小化、红队评测）捆绑推进。
+
+本文以“分类—工作流—评测—安全—配方—工具—前沿”组织，强调**可操作**与**可验证**：任何提示策略都应对应可测指标（如 HELM 的多维指标、BIG-bench 的能力压力、TruthfulQA 的事实性风险），并通过自动化回归测试避免“凭感觉调参”。
+
+## 背景与范围：定义、分类与边界
+
+**定义与范围**：狭义 prompt engineering 指对“离散文本提示（hard prompts）”的设计与迭代；广义则涵盖从离散提示到**软提示/连续提示**（prompt tuning、prefix-tuning）乃至**参数高效微调（PEFT）**与**指令微调/对齐训练**的整套“控制模型行为”的技术栈。
+
+**常用分类（taxonomy）**可按“输入构造—推理机制—外部能力—安全约束”划分：  
+- Prompt design / instruction engineering：明确角色、目标、受众、格式、约束与示例；并将复杂任务拆分为可验证子任务。  
+- Few-shot / in-context learning：通过少量示例传递隐式规范与输出形态（Brown et al., 2020）。  
+- Chain-of-thought（CoT）与推理脚手架：CoT、自一致性、least-to-most、plan-and-solve、tree-of-thoughts 等。  
+- RAG：检索增强生成，外部知识+生成（Lewis et al., 2020），以及自反式 RAG（Self-RAG）等“按需检索+自评”。  
+- Tool/agent prompts：把模型嵌入循环，交替“思考—行动—观察”，典型如 ReAct。  
+- Safety/guardrails：对齐训练（RLHF、Constitutional AI）与系统级防护（prompt injection 防御、红队与系统卡）。
+
+## 方法与工作流：从手工技巧到自动化优化
+
+**手工设计的“80/20”工作流**：先固定评测集与输出规范，再迭代提示。实践上可按“任务说明 → 约束与边界 → 输入语料/参考 → 输出 schema → 失败模式补丁”的顺序写提示，并用少量高信息示例（反例也可）稳定格式。官方最佳实践与工业经验普遍强调：指令要具体、给足上下文、要求结构化输出、允许模型表达不确定性以减少幻觉。
+
+**推理增强提示**：  
+- CoT：用少量“输入—思路—答案”示例可显著提升多步推理任务表现（Wei et al., 2022）。  
+- Self-consistency：对同题采样多条推理路径并对答案投票，可提升推理准确率但计算成本上升（Wang et al., 2022）；后续工作尝试用置信度加权降低采样开销。  
+- Least-to-most / Plan-and-Solve / ToT：通过分解、先计划后执行、或在“思维单元”层面搜索与回溯，改善“示例难度不够”或“需要前瞻搜索”的任务。  
+- Tool/agent（ReAct）：将推理与动作交替生成，可减少纯推理的幻觉累积，并把知识获取外包给工具/检索。
+
+**自动化提示优化（Auto / Search / Compile）**正在成为“最新视角”的核心：  
+- 自动生成与选择：APE 把“指令当程序”，用模型生成候选指令并用评分函数选择（Zhou et al., 2022）。  
+- 黑盒/语言式优化：OPRO 用 LLM 充当优化器，在自然语言空间优化目标函数。  
+- 梯度/进化搜索：AutoPrompt 用梯度引导搜索离散模板；Promptbreeder 用自指进化改进任务提示与“突变提示”。  
+- “提示编译器”：DSPy 将提示链写成声明式模块，并通过编译优化在给定指标上自动改写提示/示例。  
+这类方法的共同前提是：**先定义可自动计算的指标**，否则优化会退化为“迎合评分器”。
+
+**软提示与 PEFT/对齐训练的边界**：当你需要跨大量样本稳定提升、或提示长度/上下文受限时，软提示与 PEFT 往往比反复手改文本更稳。prompt tuning 与 prefix-tuning 通过学习连续“虚拟 token”在冻结模型上适配任务；LoRA 等 PEFT 用低秩参数注入实现低成本微调；指令微调与 RLHF 则从训练层面改变“遵循指令”的总体能力。
+
+## 评测与基准：从“效果”走向“鲁棒性与可信度”
+
+Prompt engineering 的工程化关键是把“好不好”分解为可测维度：任务成功率、鲁棒性（提示扰动/输入噪声/长文）、校准与不确定性、真实性/事实性、指令遵循、毒性与风险等。HELM 的贡献之一是把评测从单一准确率扩展到包含校准、鲁棒性、偏见/毒性与效率等多指标，并提供统一提示与输出记录以便复现。
+
+**能力压力测试**常用 BIG-bench 与 MMLU：BIG-bench 强调“超出现有能力”的任务集合与规模效应；MMLU 提供跨学科多任务考试式评测，适合做“总体能力变化”的粗测。 但基准也可能被“过拟合提示”或数据污染影响，因此需要自建私有 eval 与持续回归（尤其当模型升级、提示重写、RAG 索引更新时）。
+
+**事实性/忠实性（faithfulness）**方面，TruthfulQA 之类基准揭示“规模增大不必然更真实”，并推动把“引用证据、允许不知道、约束来源”纳入提示与系统设计。 对 RAG 系统，可用 RAGAS 这类无需人工标注的多维指标拆分检索相关性与生成忠实性，加快迭代。
+
+## 安全、对齐与对抗鲁棒：把提示当作攻击面
+
+将 LLM 集成到检索、浏览、工作流编排后，“数据与指令边界”变得模糊，prompt injection（尤其 indirect injection）成为突出风险：攻击者可把恶意指令埋入网页/文档，使系统在检索后把它当成上层指令执行。 另一类是“越狱/对齐绕过”：自动构造通用后缀诱导模型输出被禁止内容，且具有跨模型迁移性。
+
+**防护思路（优先级从系统到提示）**：  
+1) **系统隔离**：把检索内容标记为不可信数据，永不允许其覆盖系统/开发者指令；对工具调用设置最小权限与可审计日志。  
+2) **输入净化与解析**：对外部文档进行剥离（去除隐藏指令、HTML/markdown 载荷）、分段与来源白名单。  
+3) **输出约束与过滤**：结构化输出校验、规则/策略过滤、拒答策略一致性。对齐训练路线包括 RLHF（InstructGPT）与 Constitutional AI（用原则监督自改进）。  
+4) **红队与持续评测**：系统卡与外部红队实践表明，应把对抗测试作为发布与迭代流程的一部分，而非一次性检查。
+
+## 实用配方：中文 prompt 模板与例子（可直接改）
+
+以下示例强调三件事：**上下文分隔**、**输出 schema**、**失败时的退路**（不确定就说不确定、请求更多信息或给出假设）。
+
+**摘要（长文→要点+行动项）**  
+> 角色：你是科研助理。目标：把材料压缩为“结论—证据—风险—下一步”。  
+> 输入：<<<文档…>>>  
+> 输出格式：  
+> 1) 一句话结论（<=30字）  
+> 2) 3–5条要点（每条含“证据片段/段落号”）  
+> 3) 不确定点与需要补充的信息  
+> 若文档不足以支持结论，明确写“无法从文档支持”。（强调减少幻觉的实践建议）
+
+**结构化抽取（合同/简历→JSON）**  
+> 只输出合法 JSON，schema：{name, dates[], parties[], obligations[], risks[]}；  
+> 若字段缺失，填 null；不得臆造。  
+> 输入：<<<文本>>>  
+（结构化约束与“不得臆造”属于常见 prompt 可靠性策略）
+
+**推理题（分解→求解→自检）**  
+> 请先把问题分解为 3–6 个子问题（least-to-most），逐个求解；  
+> 最后给出答案并做一次一致性检查（列出可能出错的步骤）。
+
+**代码生成（带测试与边界条件）**  
+> 语言：Python。任务：实现 XXX。  
+> 约束：O(n log n)；包含类型注解；写 5 个单元测试覆盖边界；  
+> 输出：先给设计说明（接口、复杂度、异常），再给代码与测试。
+
+**RAG 问答（必须引用来源）**  
+> 你只能使用提供的“检索片段”回答；若片段不足，回答“信息不足”并列出需要检索的关键词。  
+> 片段：<<<chunk1(来源A)…>>> <<<chunk2(来源B)…>>>  
+> 输出：逐条结论 + 引用(来源/段落)。  
+（RAG 的“限定证据域+可追溯引用”是降低幻觉的主流做法）
+
+**工具/代理（ReAct 风格的最小循环）**  
+> 你可以调用工具：Search(query), Calc(expr)。  
+> 每轮输出：Thought(简短) / Action / Observation / Next。  
+（把推理与行动交替，有助于在检索/操作任务中减少纯文本幻觉）
+
+## 工具与可复现实验：从“写提示”到“测试提示”
+
+**版本化与回归测试**：建议把 prompt 当代码：用 Git 管理；用固定样本集做回归；把“提示+模型+温度+检索配置”作为完整实验签名，并在模型升级时运行对比。 代表性工具/框架：OpenAI Evals（评测框架）、promptfoo（本地 prompt/agent/RAG 测试与红队）、LangChain/LlamaIndex（RAG 与代理组件化）、DSPy（提示链编译优化）。
+
+```python
+# 伪代码：prompt 回归测试（最小骨架）
+cases = load_jsonl("eval_cases.jsonl")   # {id, input, gold(optional), rubric}
+prompt = load_text("prompt_v12.txt")
+
+for c in cases:
+    y = llm(prompt.format(**c["input"]), temperature=0.2)
+    score = grade(y, c["rubric"], gold=c.get("gold"))  # 规则/LLM-judge/混合
+    log(id=c["id"], output=y, score=score)
+
+report = aggregate_scores()
+assert report["mean_score"] >= threshold
+```
+
+```python
+# 伪代码：RAG pipeline（检索→拼接→生成→引用检查）
+docs = load_corpus()
+index = build_vector_index(docs)     # chunk + embedding
+def answer(query):
+    ctx = index.retrieve(query, k=5)
+    prompt = make_rag_prompt(query, ctx)   # 强制引用/不够就说不够
+    y = llm(prompt)
+    return postcheck_citations(y, ctx)     # 忠实性/引用覆盖率
+```
+
+（RAG 的基本工程分解与 LangChain/LlamaIndex 文档一致；评测层可用 RAGAS 之类指标加速迭代。）
+
+## 研究前沿与注释书目（精选，偏 2020–2026）
+
+**前沿问题（高价值方向）**：  
+- 自动提示合成与优化的“可迁移性”：不同模型、不同上下文长度下提示策略能否稳定迁移？（自动提示优化综述与方法仍在快速演进。）  
+- Prompt 解释性与“提示编译”：把提示链当程序进行静态/动态分析，给出可诊断的失败原因与自动修补（DSPy 路线）。  
+- RAG 的自反与代理化：按需检索、反思生成、可信引用与“agentic retrieval”逐步替代朴素 top-k chunk（Self-RAG 与工业实践）。  
+- 安全对抗：prompt injection 可能难以彻底消除，研究重心转向“降低损失半径、提升可审计与可恢复性”。  
+- 评测的过拟合与误导：开放基准与提示调优可能产生“指标漂移”，需要私有 eval、分布外测试与多指标报告。  
+
+**注释书目（至少 12 篇/项，按主题）**  
+- In-context / few-shot：Brown et al., 2020（提示即接口的起点）。  
+- Prompt learning 总综述：Liu et al., 2021/2023（概念与分类框架）。  
+- 软提示：Lester et al., 2021；Li & Liang, 2021（prompt/prefix tuning）。  
+- PEFT：Hu et al., 2021（LoRA）；PEFT survey 2024/2025（方法谱系）。  
+- 指令微调/对齐：Wei et al., 2021（FLAN）；Ouyang et al., 2022（InstructGPT/RLHF）。  
+- 推理提示：Wei et al., 2022（CoT）；Wang et al., 2022（Self-consistency）；Taubenfeld et al., 2025（计算更省的自一致性变体）。  
+- 分解/规划/搜索：Zhou et al., 2022（least-to-most）；Wang et al., 2023（plan-and-solve）；Yao et al., 2023（ToT）。  
+- 自动提示优化：Shin et al., 2020（AutoPrompt）；Zhou et al., 2022（APE）；Fernando et al., 2023（Promptbreeder）；Ramnath et al., 2025（自动提示优化综述）。  
+- RAG 与自反：Lewis et al., 2020（RAG）；Asai et al., 2023（Self-RAG）；RAGAS 2023/2024（RAG 自动评测）。  
+- 代理与工具：Yao et al., 2022（ReAct）。  
+- 评测基准：Liang et al., 2022（HELM）；Srivastava et al., 2022（BIG-bench）；Hendrycks et al., 2020/2021（MMLU）；Lin et al., 2021（TruthfulQA）。  
+- 安全对抗与红队：Greshake et al., 2023（indirect prompt injection）；Zou et al., 2023（通用越狱后缀）；GPT-4/4o system cards 与外部红队方法论文（OpenAI 2023–2025）。
