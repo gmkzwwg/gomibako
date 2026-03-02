@@ -497,6 +497,23 @@ ul {
   cursor: url(/src/assets/cursor/cursor-green-text.png), auto;
 }
 
+dl {
+  color: auto;
+}
+
+dfn {
+  font-style: italic;
+}
+
+dt {
+  color: #0fca1c;
+  font-weight: 700;
+}
+
+dd {
+  color: #d2cccc;
+}
+
 blockquote {
   background-color: #000000;
   margin: 0.3em 0em 0.45em 0em;

@@ -14,10 +14,6 @@ In humans, analogous processes occur: cultural ideals of **masculinity** (e.g. t
 
 This synthesis catalogs display types by mode (visual, acoustic, chemical, behavioral) and function, reviews mechanisms (genetic/developmental, endocrine, sensory), and places human masculinity constructs in context. We identify that **display extravagance evolves when the benefits (attracting mates, dominating rivals) outweigh costs (energy, predation, immune suppression)**, moderated by ecology (mating system, sex ratio, predation) and social structure. Major gaps include causal tests in humans and cross-species phylogenetic analyses. We propose field and laboratory experiments (e.g. hormone manipulations, EMA studies) and ethical safeguards to test how performance anxiety and status motive drive compensatory displays.  
 
-The expansion of the universe is accelerating.
-> [!汉] 宇宙的膨胀正在加速。
-
-
 ### Abstract
 
 Male-typical displays (ornaments, songs, gestures, chemical signals) are widespread across animals, serving courtship, competition, and status functions. We present a structured review integrating ethology, behavioral ecology, and psychology on male displays and “masculinity” signals. We define key concepts (sexual display, agonistic behavior, dominance signals, social manhood beliefs) and provide a **taxonomic classification** of displays: **visual ornaments** (plumage, antlers, coloration), **acoustic signals** (calls, drumming, songs), **chemical signals** (pheromones, scent marks), and **behavioral displays** (courtship dances, threat postures, gift-giving). For each class we synthesize proximate mechanisms (hormonal regulation, neural pathways, genetic control, perceptual tuning) and ultimate functions (mate attraction, rival deterrence, status signaling, alliance formation). 

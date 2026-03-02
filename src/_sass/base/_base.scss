@@ -159,6 +159,19 @@ ul {
   list-style: disc;
   cursor: $cursor-green-text;
 }
+dl { // Description List: 描述列表容器。它定义了整个列表的范围
+  color: auto;
+}
+dfn { // Definition Element: 表示术语的定义实例。通常嵌套在 <dt> 或段落中
+  font-style: italic;
+}
+dt { // Description Term: 描述术语。代表列表中的项目名称（Key/Term）
+  color: $color-primary;
+  font-weight: 700;
+}
+dd { // Description Details: 描述详情。代表对前一个术语的具体说明或数值（Value/Definition）。
+  color: $color-third;
+}
 blockquote {
   background-color: $color-post-background;
   margin: $global-section-margin 0em 0.45em 0em;
