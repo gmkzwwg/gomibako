@@ -5,6 +5,9 @@ tags: Basics
 layout: compact
 ---
 
+
+Symbol, Term in En Fr Zh, Latex, Brief Explanation, Example
+
 ## Arithmetic & Number Systems in Elementary Mathematics
 
 ### Numerals, bases, and place value 数字与位值

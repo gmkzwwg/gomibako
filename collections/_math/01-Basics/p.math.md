@@ -4,6 +4,8 @@ title: Mathematics - Its Roadmap and Knowledge Architecture
 tags: Basics
 ---
 
+TODO: 调查学习高等数学之前需要哪些基础？
+
 ## Knowledge Structure of Pure Mathematics
 
 ### First principles and underlying mechanics
