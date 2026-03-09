@@ -2,7 +2,12 @@
 category: Notes
 title: LLM Prompt Engineering for Study Assistance
 tags: LLMs
+bilingual: true
 ---
+
+todo pe的局限性、pe误区（写太多，三样一样一个）
+
+## Intro to Prompt Engineering
 
 ## Goal Clearfication
 
@@ -28,6 +33,7 @@ tags: LLMs
 3. 元认知、元知识
 4. 关键时间线的骨架，timelines of wwii
 5. 速查表
+6. 随地大小解释名词、原理、分析、公式
 
 隐性知识，难以收录成册的边缘知识
 1. 应用技巧
@@ -164,13 +170,13 @@ First, list the proposed row categories to confirm scope. Then, generate the ful
 
 This tutorial will guide you step-by-step in using ChatGPT (version 4.x and 5.x) as an effective learning and research assistant. Even if you have no background in computer science, AI, or programming, you’ll learn how to craft prompts (the instructions or questions you give to ChatGPT) to get the best possible responses. We’ll start with the basics and gradually move to advanced techniques. Along the way, we’ll cover practical examples for academic study, research, literature analysis, translation, and more. By the end, you’ll have a toolkit of prompt strategies that should generalize well to future models, not just GPT-4. Let’s dive in!
 
-> 本教程将一步一步引导你，学习如何将 ChatGPT（4.x 版本以及 5.x 版本）作为高效的学习与研究助手来使用。即使你没有计算机科学、人工智能或编程背景，也可以通过本教程学会如何编写提示（即你提供给 ChatGPT 的指令或问题），从而获得尽可能优质的回答。我们将从基础内容入手，逐步过渡到高级技巧。在此过程中，会涵盖学术学习、研究、文学分析、翻译等多种实际应用示例。完成本教程后，你将掌握一套提示策略工具箱，这些策略不仅适用于 GPT-4，也能较好地泛化到未来的模型。现在开始吧。
+> 本教程将逐步引导您将 ChatGPT（4.x 及 5.x 版本）用作高效的学习与研究辅助工具。即便您在计算机科学、人工智能或编程领域毫无基础，亦可通过本教程掌握提示词（即您向 ChatGPT 输入的指令或问题）的构建方法，从而获取最优质的回应。教程将由基础概念出发，循序渐进地推进至高阶技巧。在此过程中，我们将涵盖学术研究、文献分析、翻译实践等多元应用场景下的具体范例。教程结束时，您将系统掌握一套提示词策略体系——其适用性不局限于 GPT-4，而可广泛迁移至后续模型。现在，让我们正式开始。
 
 ### Introduction to Prompt Engineering and ChatGPT
 
 Prompt engineering is the art of writing **effective instructions** that guide a language model like ChatGPT to produce the output you want. Large Language Models (LLMs) **do not automatically know what kind of answer you need** – they rely on your guidance. A poorly worded or vague prompt can lead to irrelevant or confusing answers. A clear, tailored prompt, on the other hand, helps ChatGPT understand your request and respond accurately.
 
-> 提示工程（Prompt Engineering）是一种编写有效指令的技术，其目标是引导像 ChatGPT 这样的语言模型生成你所期望的输出。大型语言模型（LLMs）并不会自动知道你需要什么样的回答——它们依赖于你的引导。一个措辞含糊或不清晰的提示，往往会导致无关或令人困惑的回答；而一个清楚、针对性强的提示，则有助于 ChatGPT 准确理解你的需求并给出恰当的回应。
+> 提示词工程是一门撰写**有效指令**的技艺，旨在引导 ChatGPT 等大型语言模型生成符合预期的输出结果。大型语言模型（LLMs）**并不会自动研判您所需的回应类型**——其运作依赖于使用者的明确引导。措辞欠妥或表意模糊的提示词，往往导致模型输出无关紧要乃至语义混乱的内容。反之，一个表述清晰、针对性强的提示词，则能有效帮助 ChatGPT 准确理解请求意图，并给出精准的回应。
 
 **How ChatGPT works (in a nutshell):** ChatGPT is an AI that generates text by predicting likely words based on the input and its training. It has a conversation memory, meaning it remembers what you’ve said earlier in the chat (up to a limit), and it follows instructions given in the conversation. There are usually **three roles** in a ChatGPT conversation: a **system message** (background instructions that set the stage or behavior), the **user message** (your prompt or question), and the **assistant message** (ChatGPT’s reply). In the ChatGPT interface, you mostly provide user prompts, but you can also set persistent preferences through **custom instructions** (which function like a system message to tell ChatGPT about your needs or style for all responses). We’ll discuss these more soon.
 

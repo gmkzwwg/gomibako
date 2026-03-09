@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Frequently Used Prompts of ChatGPT for Learning and Research
-tags: Tips
+tags: LLMs
 ---
 
 ## General Prompts
