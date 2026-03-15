@@ -6,7 +6,7 @@ home_btn: true
 btn_text: true
 footer: true
 highlight: false
-post_list: date
+# post_list: date
 permalink: /
 ---
 
