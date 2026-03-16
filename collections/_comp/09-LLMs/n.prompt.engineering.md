@@ -5,6 +5,7 @@ title: LLM Prompt Engineering for Workflows Enhancement and Study Assistance
 tags: LLMs
 bilingual: true
 todos: 
+  - claude gpt的操作
   - pe的局限性、pe误区（写太多，三样一样一个）
   - 先看antho好人，再看dan koe，再看文字，再看如何拆书，再看 openclaw（很多注意事项，安全、p注入）
   - Anthropic Claude API
@@ -15,20 +16,28 @@ todos:
 *Core Goal — Why to use it* 
   - Guide LLMs to produce the intended output.
   - Improve workflow efficiency by integrating LLMs into task pipelines.
+  - Expand problem-solving capabilities, bridge expertise gaps.
 
-> 
+> *核心目标——为什么要使用它*
+> * 引导大语言模型（LLM）生成符合预期的输出。
+> * 通过将大语言模型整合进任务流程，提高工作效率。
+> * 扩展解决问题的能力，弥补专业知识上的不足。
 
 *Methodology — How to use it* 
   - Humans define the goal, provide the relevant context, set the constraints, structure the task, and refine the prompt based on the model’s output.
   - Organize prompts into functionally distinct sections to separate objectives, context, constraints, and output specifications. This design reduces ambiguity and inter-section conflict, thereby improving control and consistency.
 
-> 
+> *方法论——如何使用它*
+> * 由人来确定目标，提供相关背景，设定约束条件，组织任务结构，并根据模型的输出不断改进提示词。
+> * 将提示词组织为在功能上彼此区分的不同部分，用来分离目标、背景、约束条件和输出要求。这种设计可以减少歧义和各部分之间的冲突，从而提高控制力和一致性。
 
 *Usage Scenario — When / Where to use it* 
   - Useful for tasks that require handling large volumes of text, complex instructions, or many constraints at once. Particularly effective for work that was previously slow or difficult for humans, such as long-context synthesis, cross-document comparison, multi-step rewriting, structured extraction from messy data, style-consistent generation at scale, and rapid adaptation of one task into many output forms.
   - It is also valuable in workflows that demand consistency, repeatability, and low coordination cost across repeated tasks.
 
-> 
+> *使用场景——何时／何地使用它*
+> * 适用于那些需要同时处理大量文本、复杂指令或多重约束的任务。对于一些过去由人来做时速度较慢或难度较高的工作，它尤其有效，例如长上下文综合、跨文档比较、多步骤改写、从杂乱数据中提取结构化信息、按统一风格进行大规模生成，以及将一个任务快速改造成多种输出形式。
+> * 在那些要求一致性、可重复性以及低协调成本的重复性工作流程中，它也很有价值。
 
 *Application Form — modes of using LLMs*
   - *Chat in browser* — Best for immediate thinking support, writing, and problem-solving with almost no setup.
@@ -39,9 +48,33 @@ todos:
   - *Local deployment* — Best for private, sensitive, or offline use where control over data and environment matters most.
   - *Agent-style tool use* — Best for multi-step tasks where the model must not only answer, but also search, retrieve, execute actions, and complete work across tools.
 
-> 
+> *应用形式——使用大语言模型的方式*
+> * *浏览器中的聊天*（Chat in browser）——最适合几乎不需要准备即可获得即时的思考支持、写作帮助和问题解决支持。
+> * *集成到集成开发环境*（IDE integration）——最适合将软件开发变成一种更快速的交互式流程，用于编写代码、调试和重构。
+> * *API 集成*（API integration）——最适合在产品、服务和内部工作流程中自动化重复性的语言任务。
+> * *办公软件和工作工具集成*（Office and work-tool integration）——最适合在日常生产力软件中减少电子邮件、文档、会议和演示文稿相关的例行工作。
+> * *企业工作流系统*（Enterprise workflow systems）——最适合将大语言模型嵌入组织流程中，例如支持、合规、知识管理和审批等场景。
+> * *本地部署*（Local deployment）——最适合用于私密、敏感或离线场景，在这些场景中，对数据和运行环境的控制尤为重要。
+> * *代理式工具使用*（Agent-style tool use）——最适合处理多步骤任务，在这类任务中，模型不仅要回答问题，还必须跨工具进行搜索、检索、执行操作并完成工作。
+
+Chart 1
+: The simplified workflow of human interaction with LLMs.
+
+```mermaid
+flowchart LR
+    A[Human] --> B[Identify Goal and Constraints]
+    B --> C[Write and Structure Prompt]
+    C --> D(LLM Generates Output)
+    D --> E{Good Enough?}
+    E -->|YES!| F[Apply]
+    E -->|Refine prompt, examples, constraints, or tool choice| C
+```
 
 ## What is a Prompt?
+
+Someone new to LLMs often interacts with them just as they would with a human. However, this approach does not always yield satisfactory responses. Because a machine’s communication preferences differ from a human’s, you must understand the tendencies and nature of an LLM to obtain consistent and high-quality results. In other words, you need to understand what a prompt is and master a few techniques for writing them effectively.
+
+> 刚开始接触大语言模型（LLM）的人，常常会像与人交谈那样与它们互动。然而，这种做法并不总能得到令人满意的回应。由于机器的“交流偏好”与人类不同，要想获得稳定且高质量的结果，就必须理解大语言模型的倾向及其运作特性。换言之，需要理解什么是提示词（prompt），并掌握几种有效撰写提示词的技巧。
 
 A good prompt consists 3 components:
   1. **Task description** : a clear instruction that tells the model what it should do, i.e., the rule.
@@ -53,37 +86,37 @@ A good prompt consists 3 components:
 > 2. **上下文或示例**：背景信息或示例输入与输出，用于帮助模型更好地理解任务，即模式。
 > 3. **任务本身**：模型需要处理的实际输入或问题，即真实案例。
 
+Example 1
+: A well-structured prompt. Task description defines the assistant’s role and the standards for success. Context or Examples gives the disciplinary setting, audience, tone, and a model sentence. The task states exactly what output is required.
 
 ```
 [Task description]
-Scenario:
-A researcher wants the LLM to turn article abstracts into short literature notes.
 
-Read the abstract and summarize it in three parts:
-Research question,
-Method,
-Main finding.
+You are an academic writing assistant. Your role is to help revise and strengthen scholarly writing for clarity, coherence, precision, and formal academic tone. 
 
-Keep each part to one sentence.
-Do not include opinions.
+Preserve the original argument and meaning.
 
-[Example]
-Input:
-This study examines whether remote work improves employee productivity. Using survey data from 500 employees across five firms, the authors compare self-reported productivity before and after remote work adoption. The results show a moderate increase in perceived productivity, especially among employees with long commute times.
+Do not invent evidence, citations, or claims that are not supported by the text.
 
-Output:
-Research question: Does remote work improve employee productivity.
-Method: The study compares survey responses from 500 employees before and after remote work adoption.
-Main finding: Remote work is associated with a moderate increase in perceived productivity, especially for workers with long commutes.
+[Context or Examples]
+
+This paragraph is from a graduate-level literature essay discussing the role of memory in Toni Morrison’s Beloved. 
+
+The intended audience is a university instructor in literary studies.
+
+The writing should sound analytical, formal, and precise.
+
+It should use clear topic sentences, strong logical flow, and concise phrasing.
+
+Example of preferred style:
+“Morrison presents memory not as a passive recollection of the past, but as an active and disruptive force that shapes identity in the present.”
+
+Paragraph to revise:
+“In Beloved, memory is very important because it affects how the characters think and act, and it also shows that the past does not really disappear, which makes the novel more powerful and emotional.”
 
 [The task]
-Input:
-This paper investigates how large language models perform in multilingual summarization. The authors evaluate five models on datasets covering eight languages and compare zero-shot and few-shot prompting. The results suggest that model performance varies significantly across languages, and few-shot prompting improves summary quality in lower-resource languages.
 
-Expected output:
-Research question: How well do large language models perform in multilingual summarization.
-Method: The paper evaluates five models across eight languages and compares zero-shot with few-shot prompting.
-Main finding: Performance differs across languages, and few-shot prompting improves results in lower-resource languages.
+Rewrite the paragraph in a more polished academic style suitable for a graduate-level essay. Then provide a brief explanation of three specific changes you made to improve clarity, structure, and academic tone.
 ```
 
 Most model APIs allow us to split prompts into `system prompts` and `user prompts`.
@@ -101,37 +134,27 @@ Most model APIs allow us to split prompts into `system prompts` and `user prompt
 > `User prompts`——模型此刻应当做什么
 > * 用户当前给出的任务或输入。它们包含模型在当下需要回应的实际请求、问题或数据。
 
+Example 2
+: A good English prompt example for business analysis.
+
 ```
 [System Prompt]
-You are a research assistant. Your task is to read provided sources and produce accurate, structured academic summaries.
+You are a business analysis assistant.
 
-Follow these rules:
-  - Use only the provided materials.
-  - Do not add outside facts.
-  - Distinguish clearly between findings, methods, and limitations.
-  - If evidence is missing, state that explicitly.
-  - Write in a formal and concise style.
+Provide clear, structured, and evidence-based analysis. 
 
-Organize the answer under:
-Research Question
-Method
-Main Findings
-Limitations
-Relevance
+Focus on practical insights, state assumptions when needed, and do not invent data.
 
-[User Prompt]
-Context: [paper.pdf]
-Paper title: “The Effects of Sleep Deprivation on Working Memory in Adults”
-Notes from the paper:
-  - Sample size: 120 adults
-  - Method: randomized controlled lab study
-  - Intervention: 24 hours without sleep
-  - Control: normal sleep
-  - Main result: significant decline in working memory accuracy in the sleep-deprived group
-  - Limitation: short-term lab setting, not real-world long-term sleep behavior
+[User prompt]
+Analyze the following business case.
+
+Context:
+An e-commerce company saw quarterly sales decline by 12%. Website traffic remained stable, but the conversion rate fell from 3.8% to 2.9%. 
+
+Customer complaints about delivery delays increased, and two competitors launched major discount campaigns.
 
 Task:
-Summarize this study in 5 bullet points for a literature review.
+Explain the most likely reasons for the sales decline. Then give two key risks and three practical recommendations.
 ```
 
 ## How do LLMs Deal with Prompts? 
@@ -170,14 +193,40 @@ Then return to the core question: "what actually happens when you submit a promp
 > * primacy bias [ˈpraɪməsi ˈbaɪəs] n.首因偏置
 > * recency bias [ˈriːsənsi ˈbaɪəs] n.近因偏置
 
-**Attention, the Way it "Reads"** — The Transformer's self-attention mechanism allows **every token to attend to every other token simultaneously**, which means the model does not read your prompt linearly. It builds a holistic representation in which each part of your prompt contextualizes every other part. **The framing at the beginning of a prompt shapes how all subsequent content is interpreted** — a prompt beginning with "You are an expert forensic accountant" genuinely shifts the probability distributions for all tokens that follow, because it narrows the model's prior over what kind of text this is, and therefore what kind of text should come next. Equally important is the interaction between instructions, examples, and data within the prompt. **They are not processed in isolation; they condition each other.** A poorly placed example can silently override an explicit instruction, not because the model is confused, but because the statistical weight of a demonstrated pattern often exceeds that of a stated directive. **Prompt structure, in other words, is not decorative. The order and framing of elements deterministically shape the model's internal representation of the task.**
+**Attention, the Way it "Reads"** — The Transformer's `self-attention mechanism` allows every token to attend to every other token **simultaneously**, which means the model does not read your prompt linearly. It builds a holistic representation in which each part of your prompt contextualizes every other part. *The framing at the beginning of a prompt shapes how all subsequent content is interpreted* — a prompt beginning with "You are an expert forensic accountant" genuinely shifts the probability distributions for all tokens that follow, because it narrows the model's prior over what kind of text this is, and therefore what kind of text should come next. Equally important is the interaction between instructions, examples, and data within the prompt. *They are not processed in isolation; they **condition each other**.* A poorly placed example can silently override an explicit instruction, not because the model is confused, but because the statistical weight of a demonstrated pattern often exceeds that of a stated directive. *In other words, **Prompt structure** is not decorative. The order and framing of elements deterministically shape the model's internal representation of the task. Models are typically **better at understanding instructions at the beginning and end of prompts** compared to the middle.*
 
-> 
+> **注意力：它“阅读”文本的方式**——Transformer 的自`注意力机制`使得每一个 token 都能够**同时**关注其他所有 token，这意味着模型并不是按线性顺序来阅读你的提示词。它会构建一种整体性的表征，在这种表征中，提示词的每一部分都会为其他部分提供上下文。*提示词开头的框定方式，会影响后续全部内容的理解方式*——如果一个提示词以 “You are an expert forensic accountant” 开头，那么它确实会改变后续所有 token 的概率分布，因为这会缩小模型对于“这是一类什么文本”的先验判断，因此也会缩小“接下来应该出现什么文本”的范围。同样重要的是，提示词内部的指令、示例和数据之间会彼此相互作用。*它们并不是彼此孤立地被处理；相反，它们会**相互制约、相互条件化***。一个放置不当的示例，可能会在不知不觉中压过一条明确写出的指令；这并不是因为模型“困惑了”，而是因为从统计上看，一个被演示出来的模式，往往比一个被陈述出来的要求具有更大的权重。*换句话说，**提示词的结构**并不是装饰性的东西。各个要素的顺序与框定方式，会以确定性的方式塑造模型对任务的内部表征。与提示词中间部分相比，模型通常**更擅长理解开头和结尾的指令**。*
+> * attention [əˈtenʃən] n. 此处指“注意力机制”；常见义还有“注意，关注”
+> * Transformer [trænsˈfɔːrmər] n. Transformer，变换器模型；一种以注意力机制为核心的神经网络架构，广泛用于大语言模型与现代自然语言处理系统。
+> * self-attention [ˌself əˈtenʃən] n. 自注意力；一种让序列中每个位置都能与其他位置建立关联的机制，用于建模词与词之间的依赖关系。
+> * holistic [hoʊˈlɪstɪk] adj. 整体的，全面的；常见义还有“强调整体关联的”
+> * contextualizes / contextualize [kənˈtekstʃuəlaɪz] v. 使处于上下文中，从语境中理解；常见义还有“将某事放回背景中考察”
+> * framing [ˈfreɪmɪŋ] n. 此处指“框定方式，表述框架”；常见义还有“构架，定调”
+> * forensic accountant [fəˈrensɪk əˈkaʊntənt] n. 法务会计师，司法会计师；运用会计、审计与调查方法分析财务证据，常用于诉讼、欺诈调查和合规审查。
+> * probability distribution [ˌprɑːbəˈbɪləti ˌdɪstrɪˈbjuːʃən] n. 概率分布；在统计学与机器学习中，表示不同结果出现概率的分配方式，这里指模型对下一个 token 的可能性分配。
+> * prior [ˈpraɪər] n. 此处指“先验”；在概率论与机器学习中，指模型在看到当前输入之前，对某类结果原本具有的预期或分布。
+> * processed in isolation n./phr. 孤立地处理，脱离其他部分来处理
+> * condition each other / condition [kənˈdɪʃən] v. 此处指“相互制约、相互塑造”；常见义还有“使适应，对……有重要影响”
+> * statistical weight [stəˈtɪstɪkəl weɪt] n. 统计权重；指某种信号、模式或证据在整体判断中所占的重要性。
+> * directive [dəˈrektɪv] n. 指令，命令，明确要求；常见义还有“指导性的规定”
+> * deterministically [dɪˌtɜːrmɪˈnɪstɪkli] adv. 确定性地；在计算与机器学习语境中，指由给定条件所决定，而不是任意或随机地产生。
+> * internal representation n./phr. 内部表征；指模型在内部计算过程中形成的任务、语义或结构表示，用来支持后续预测。
 
+**The Completion Imperative** — The model generates output `autoregressively` — *one `token` at a time, each conditioned on all previous tokens, including your entire prompt*. It has no intent. It has no goal. It has **one drive: produce a plausible continuation**. If your prompt reads like the beginning of a sycophantic answer, the model will complete a sycophantic answer. If your prompt reads like an authoritative technical document, the model will complete an authoritative technical document. *If your prompt is ambiguous, the model will not pause to ask for clarification — it will resolve the ambiguity probabilistically*, defaulting to the most statistically common resolution seen in its training data, which is very often not what you wanted. This is perhaps the most consequential implication for prompt engineering. You are not instructing the model; you are authoring the beginning of the text you want it to produce. *The single most useful question to ask before submitting any prompt is: what kind of text would naturally follow from what I've written?*
 
-**The Completion Imperative** — The model generates output autoregressively — one token at a time, each conditioned on all previous tokens, including your entire prompt. It has no intent. It has no goal. It has one drive: produce a plausible continuation. If your prompt reads like the beginning of a sycophantic answer, the model will complete a sycophantic answer. If your prompt reads like an authoritative technical document, the model will complete an authoritative technical document. If your prompt is ambiguous, the model will not pause to ask for clarification — it will resolve the ambiguity probabilistically, defaulting to the most statistically common resolution seen in its training data, which is very often not what you wanted. This is perhaps the most consequential implication for prompt engineering. You are not instructing the model; you are authoring the beginning of the text you want it to produce. The single most useful question to ask before submitting any prompt is: what kind of text would naturally follow from what I've written?
-
-> 
+> **补全要求**—— 模型以`自回归`的方式生成输出——*一次生成一个`词元`，并且每一个词元都以前面所有词元为条件，其中包括你的整个提示词*。它没有意图。它没有目标。它只有**一种驱动力：产出一个看起来合理的后续内容**。如果你的提示词读起来像是一段阿谀奉承式回答的开头，模型就会补全出一段阿谀奉承式回答。如果你的提示词读起来像是一份权威性的技术文档，模型就会补全出一份权威性的技术文档。*如果你的提示词含糊不清，模型不会停下来要求澄清——它会以概率方式消解这种歧义*，默认采用其训练数据中在统计上最常见的那种解释，而这往往并不是你真正想要的。这也许是提示工程（prompt engineering）最重要的一个影响。你并不是在“指挥”模型；你是在撰写一段你希望它继续生成下去的文本开头。*在提交任何提示词之前，最值得先问的一个问题是：按照我已经写下的内容，后面自然会接上一段什么样的文本？*
+> * imperative [ɪmˈperətɪv] n.必要的事；紧要的要求；命令；adj.紧迫的；必要的；命令式的；此处指“必须正视的基本要求”或“核心原则”，强调这不是可有可无的建议，而是理解模型行为的关键前提
+> * completion [kəmˈpliːʃən] n.完成；补全；结束；在语言模型语境中，completion 通常指模型根据已有输入继续生成后续文本的过程
+> * autoregressively [ˌɔːtəʊrɪˈɡresɪvli] adv.以自回归方式；“自回归”是机器学习中的一个基本概念，指当前输出依赖于先前已经生成的内容；在大语言模型中，这意味着文本是按顺序逐步生成的
+> * conditioned on 以……为条件；取决于……；在机器学习中常表示“当前输出受前文信息约束或决定”
+> * sycophantic [ˌsɪkəˈfæntɪk] adj.阿谀奉承的；拍马屁的；讨好的
+> * authoritative [əˈθɒrətətɪv] adj.权威的；有威信的；像正式专业文本那样口吻坚定、可信度高的
+> * ambiguous [æmˈbɪɡjuəs] adj.模糊不清的；有歧义的；不明确的
+> * defaulting to 默认采用；自动转为；指在缺少明确约束时，系统自动落到最常见或最常规的选项上
+> * consequential [ˌkɒnsɪˈkwenʃəl] adj.后果重大的；重要的；影响深远的
+> * implication [ˌɪmplɪˈkeɪʃən] n.含义；影响；可能后果；此处指某种理论观点带来的实际推论
+> * authoring [ˈɔːθərɪŋ] v.撰写；编写；创作；此处强调用户不是单纯“下命令”，而是在写一段会引导后文风格和内容的开头
+> * plausible [ˈplɔːzəb(ə)l] adj.看似合理的；貌似可信的；说得通的
 
 **Instruction Fine-Tuning and RLHF** — Base LLMs simply complete text. Modern deployed models — ChatGPT, Claude, Gemini — have been further shaped by instruction tuning and Reinforcement Learning from Human Feedback (RLHF). This training teaches the model to treat certain text patterns, especially those formatted as instructions in the system prompt or user turn, as high-priority conditioning signals. This is why "Answer in bullet points" works — not because the model understands the request in any semantic sense, but because text that follows such an instruction in the training data was overwhelmingly formatted in bullet points, and the reward model reinforced this behavior. The practical consequence is significant: instruction-tuned models respond far better to explicit, well-formatted directives than to vague or polite requests. "List three causes. Be concise. Do not use passive voice." will consistently outperform "Could you maybe give some causes?" because the former more closely matches the patterns on which the model was rewarded during training.
 
@@ -222,49 +271,49 @@ A persona or role definition shifts the model's prior over vocabulary, tone, and
 
 AI allows ordinary people to access forms of expertise that were once available mainly through skilled consultants, professional advisors, and specialized assistants.
 
-The most important shift is that AI gives ordinary people low-cost, on-demand access to advisor-like help that used to be expensive, scarce, or slow to obtain. The biggest lifestyle changes appear where advice is frequent, language-heavy, and highly personalized. ([ハーバード・ビジネス・レビュー][1])
+The most important shift is that AI gives ordinary people low-cost, on-demand access to advisor-like help that used to be expensive, scarce, or slow to obtain. The biggest lifestyle changes appear where advice is frequent, language-heavy, and highly personalized. 
 
-Tutor — AI can explain concepts, generate practice, give feedback, and provide 24/7 study and even career guidance; this is transformative because personalized tutoring was historically limited by time, cost, and access. ([OECD][2])
+Tutor — AI can explain concepts, generate practice, give feedback, and provide 24/7 study and even career guidance; this is transformative because personalized tutoring was historically limited by time, cost, and access. 
 
-Writer, editor, and translator — AI can draft, rewrite, summarize, and translate everyday communication; this is transformative because writing is a universal bottleneck, and OECD summarizes evidence that generative AI can make writing tasks substantially faster and higher quality. ([OECD][3])
+Writer, editor, and translator — AI can draft, rewrite, summarize, and translate everyday communication; this is transformative because writing is a universal bottleneck, and OECD summarizes evidence that generative AI can make writing tasks substantially faster and higher quality. 
 
-Research assistant — AI can condense large volumes of information into summaries, comparisons, and first-pass analysis; this is transformative because it turns hours of reading and synthesis into minutes and expands what one person can practically process. ([OECD][2])
+Research assistant — AI can condense large volumes of information into summaries, comparisons, and first-pass analysis; this is transformative because it turns hours of reading and synthesis into minutes and expands what one person can practically process. 
 
-Administrative copilot — AI can handle notes, checklists, planning, routine messages, and other coordination work; this is transformative because it removes recurring cognitive overhead and frees time for higher-value decisions. ([OECD][3])
+Administrative copilot — AI can handle notes, checklists, planning, routine messages, and other coordination work; this is transformative because it removes recurring cognitive overhead and frees time for higher-value decisions. 
 
 Financial coach — AI can help with budgeting, product comparison, personalized finance education, and preparation for decisions; this is transformative because many people cannot access human financial advice, while regulators already identify consumer-facing AI in robo-advice, personalized finance, and education as major use cases. 
 
-Legal navigator — AI can help people understand procedures, find relevant information, and prepare documents; this is transformative because it lowers access-to-justice barriers for people who would otherwise receive little or no legal help. ([OECD][4])
+Legal navigator — AI can help people understand procedures, find relevant information, and prepare documents; this is transformative because it lowers access-to-justice barriers for people who would otherwise receive little or no legal help. 
 
-Health-information explainer — AI can translate medical language, summarize evidence, and help patients prepare better questions; this is transformative because it improves comprehension and engagement, especially where medical information is hard to access or understand. ([世界保健機関][5])
+Health-information explainer — AI can translate medical language, summarize evidence, and help patients prepare better questions; this is transformative because it improves comprehension and engagement, especially where medical information is hard to access or understand. 
 
-Career coach — AI can help with resumes, interview preparation, skill planning, and continuous guidance; this is transformative because career advice becomes available on demand instead of only through occasional institutional support. ([OECD][2])
+Career coach — AI can help with resumes, interview preparation, skill planning, and continuous guidance; this is transformative because career advice becomes available on demand instead of only through occasional institutional support. 
 
 One caution is necessary: in health, law, and regulated finance, AI is best treated as decision support, not as a final authority. 
 
 ### For entrepreneurs, having LLMs is like having access to what kinds of high-level assistants and advisors?
 
-For entrepreneurs, the most significant AI roles are the ones that replace expensive first-pass expertise, remove routine overhead, and speed up iteration. Recent U.S. small-business survey data shows AI is already used most often for writing/marketing, individual productivity, and planning/analysis, and most AI-using firms report higher productivity; OECD’s 2025 review adds that the strongest benefits appear in well-defined tasks, business operations, innovation, and lower entry barriers for new firms. ([fedsmallbusiness.org][1])
+For entrepreneurs, the most significant AI roles are the ones that replace expensive first-pass expertise, remove routine overhead, and speed up iteration. Recent U.S. small-business survey data shows AI is already used most often for writing/marketing, individual productivity, and planning/analysis, and most AI-using firms report higher productivity; OECD’s 2025 review adds that the strongest benefits appear in well-defined tasks, business operations, innovation, and lower entry barriers for new firms. 
 
-Strategy advisor — AI can help founders refine business ideas, compare competitors, map customer pain points, and stress-test business models; this is transformative because it gives a solo founder a fast first layer of strategic analysis that previously required time, networks, or paid consultants. ([OECD][2])
+Strategy advisor — AI can help founders refine business ideas, compare competitors, map customer pain points, and stress-test business models; this is transformative because it gives a solo founder a fast first layer of strategic analysis that previously required time, networks, or paid consultants. 
 
-Marketing advisor — AI can draft landing pages, ads, emails, social posts, SEO content, and campaign variants at high speed; this is transformative because marketing is constant, expensive, and iteration-heavy, and small-business data shows writing and marketing are the most common business AI use case. ([fedsmallbusiness.org][1])
+Marketing advisor — AI can draft landing pages, ads, emails, social posts, SEO content, and campaign variants at high speed; this is transformative because marketing is constant, expensive, and iteration-heavy, and small-business data shows writing and marketing are the most common business AI use case. 
 
-Product and prototyping advisor — AI can turn rough ideas into product specs, mockups, feature lists, user stories, and prototype code; this is transformative because it shortens the path from idea to testable product and reduces time-to-market. ([OECD][2])
+Product and prototyping advisor — AI can turn rough ideas into product specs, mockups, feature lists, user stories, and prototype code; this is transformative because it shortens the path from idea to testable product and reduces time-to-market. 
 
-Technical advisor or software copilot — AI can write code, debug, build websites, automate workflows, and help nontechnical founders complete bounded technical tasks; this is transformative because it lowers the amount of engineering expertise and budget needed to launch a first version. ([OECD][2])
+Technical advisor or software copilot — AI can write code, debug, build websites, automate workflows, and help nontechnical founders complete bounded technical tasks; this is transformative because it lowers the amount of engineering expertise and budget needed to launch a first version. 
 
-Sales advisor — AI can generate outreach drafts, qualify leads, prepare call scripts, summarize conversations, and help answer customer questions faster; this is transformative because it improves speed and quality in revenue-generating interactions without requiring proportional hiring. ([OECD][2])
+Sales advisor — AI can generate outreach drafts, qualify leads, prepare call scripts, summarize conversations, and help answer customer questions faster; this is transformative because it improves speed and quality in revenue-generating interactions without requiring proportional hiring. 
 
-Customer support advisor — AI can power first-line support, draft replies, organize tickets, and assist human agents; this is transformative because it lets a small team deliver faster, more consistent service while keeping labor costs flatter than headcount growth would require. ([OECD][2])
+Customer support advisor — AI can power first-line support, draft replies, organize tickets, and assist human agents; this is transformative because it lets a small team deliver faster, more consistent service while keeping labor costs flatter than headcount growth would require. 
 
-Operations advisor — AI can summarize meetings, write SOPs, organize knowledge, manage routine communications, and reduce administrative friction; this is transformative because entrepreneurs often lose large amounts of time to coordination rather than core building. ([fedsmallbusiness.org][1])
+Operations advisor — AI can summarize meetings, write SOPs, organize knowledge, manage routine communications, and reduce administrative friction; this is transformative because entrepreneurs often lose large amounts of time to coordination rather than core building. 
 
-Planning and finance advisor — AI can help founders structure business plans, model scenarios, draft investor materials, and support forecasting; this is transformative because it makes analytical support available on demand instead of only through finance specialists. ([fedsmallbusiness.org][1])
+Planning and finance advisor — AI can help founders structure business plans, model scenarios, draft investor materials, and support forecasting; this is transformative because it makes analytical support available on demand instead of only through finance specialists. 
 
-Research advisor — AI can synthesize market information, customer feedback, technical material, and operational options; this is transformative because it compresses hours of reading into minutes and expands how much one founder can understand and compare. ([OECD][2])
+Research advisor — AI can synthesize market information, customer feedback, technical material, and operational options; this is transformative because it compresses hours of reading into minutes and expands how much one founder can understand and compare. 
 
-One caution matters: the same small-business survey finds that accuracy is the top reported challenge, so legal, financial, and other high-stakes decisions still need human review. ([fedsmallbusiness.org][1])
+One caution matters: the same small-business survey finds that accuracy is the top reported challenge, so legal, financial, and other high-stakes decisions still need human review. 
 
 ## Risks of Using LLMs
 
