@@ -11,6 +11,8 @@ todos:
   - Anthropic Claude API
 ---
 
+> *If the main text is difficult to read, you may refer only to the conclusion section in italics.*
+
 ## Meta-info of Prompting Engineering
 
 *Core Goal — Why to use it* 
@@ -156,6 +158,19 @@ Customer complaints about delivery delays increased, and two competitors launche
 Task:
 Explain the most likely reasons for the sales decline. Then give two key risks and three practical recommendations.
 ```
+## Core Prompting Techniques
+
+From telling the model exactly what you want with no examples (zero-shot), to demonstrating it through cases (few-shot), to forcing visible reasoning before conclusions (chain-of-thought), to recalibrating the model's entire output distribution through a persona (role prompting), to decomposing complex workflows into sequential, focused operations (prompt chaining) — these five techniques represent the core levers by which a prompt engineer controls what a language model produces and how reliably it produces it.
+
+### 1. Zero-Shot Prompting
+
+### 2. Few-Shot Prompting
+
+### 3. Chain-of-Thought Prompting
+
+### 4. Role / Persona Prompting
+
+### 5. Prompt Chaining
 
 ## How do LLMs Deal with Prompts? 
 
@@ -175,7 +190,7 @@ Then return to the core question: "what actually happens when you submit a promp
 
 **Tokenization** — Your text is never read as words. It is first broken into `tokens` — subword units determined by the model's vocabulary (GPT-4, for instance, uses roughly 100,000 BPE tokens). The string "unbelievable" might become ["un", "believ", "able"]. This has real consequences. Unusual spellings, rare words, and non-English text fragment into more tokens, giving the model less coherent signal per semantic unit. Token boundaries also affect arithmetic reasoning, since numbers split unpredictably. Even leading whitespace and capitalization change tokenization and, subtly, outputs. The practical implication for prompt engineering is straightforward: *use common, well-formed language, and avoid unnecessary abbreviations or unconventional spelling*, because the cleaner your text, the more efficiently the model encodes its meaning.
 
->**词元化**——你的文本从来不是按“单词”被读取的。它首先会被拆分成 `tokens`（词元）——由模型词汇表决定的子词单位（例如，GPT-4 使用的大约是 100,000 个 BPE 词元）。字符串 “unbelievable” 可能会被拆成 ["un", "believ", "able"]。这会带来真实后果。不同寻常的拼写、罕见词汇以及非英语文本，往往会被切分成更多词元，使模型在每个语义单位上获得的连贯信号更少。词元边界还会影响算术推理，因为数字的切分方式并不稳定。甚至前导空格和大小写也会改变词元化结果，并进而微妙地影响输出。对提示工程来说，其实际含义很直接：*使用常见、规范的语言，避免不必要的缩写或非标准拼写*，因为你的文本越干净，模型编码其含义的效率就越高。
+> **词元化**——你的文本从来不是按“单词”被读取的。它首先会被拆分成 `tokens`（词元）——由模型词汇表决定的子词单位（例如，GPT-4 使用的大约是 100,000 个 BPE 词元）。字符串 “unbelievable” 可能会被拆成 ["un", "believ", "able"]。这会带来真实后果。不同寻常的拼写、罕见词汇以及非英语文本，往往会被切分成更多词元，使模型在每个语义单位上获得的连贯信号更少。词元边界还会影响算术推理，因为数字的切分方式并不稳定。甚至前导空格和大小写也会改变词元化结果，并进而微妙地影响输出。对提示工程来说，其实际含义很直接：*使用常见、规范的语言，避免不必要的缩写或非标准拼写*，因为你的文本越干净，模型编码其含义的效率就越高。
 > * tokenization [ˌtəʊkənaɪˈzeɪʃən] n.词元化；切词处理
 > * fragment into 分裂成；被切分为
 > * coherent [kəʊˈhɪərənt] adj.连贯的；一致的
@@ -228,40 +243,501 @@ Then return to the core question: "what actually happens when you submit a promp
 > * authoring [ˈɔːθərɪŋ] v.撰写；编写；创作；此处强调用户不是单纯“下命令”，而是在写一段会引导后文风格和内容的开头
 > * plausible [ˈplɔːzəb(ə)l] adj.看似合理的；貌似可信的；说得通的
 
-**Instruction Fine-Tuning and RLHF** — Base LLMs simply complete text. Modern deployed models — ChatGPT, Claude, Gemini — have been further shaped by instruction tuning and Reinforcement Learning from Human Feedback (RLHF). This training teaches the model to treat certain text patterns, especially those formatted as instructions in the system prompt or user turn, as high-priority conditioning signals. This is why "Answer in bullet points" works — not because the model understands the request in any semantic sense, but because text that follows such an instruction in the training data was overwhelmingly formatted in bullet points, and the reward model reinforced this behavior. The practical consequence is significant: instruction-tuned models respond far better to explicit, well-formatted directives than to vague or polite requests. "List three causes. Be concise. Do not use passive voice." will consistently outperform "Could you maybe give some causes?" because the former more closely matches the patterns on which the model was rewarded during training.
+**Instruction Fine-Tuning and RLHF** — Base LLMs simply complete text. Modern deployed models — ChatGPT, Claude, Gemini — have been further shaped by instruction tuning and Reinforcement `Learning from Human Feedback (RLHF)`. This training teaches the model to treat certain text patterns, especially those formatted as instructions in the system prompt or user turn, as **high-priority conditioning signals**. This is why **"Answer in bullet points"** works — not because the model understands the request in any semantic sense, but because text that follows such an instruction in the training data was overwhelmingly formatted in bullet points, and the reward model reinforced this behavior. The practical consequence is significant: *instruction-tuned models respond far better to explicit, well-formatted directives than to vague or polite requests.* "List three causes. Be concise. Do not use passive voice." will consistently outperform "Could you maybe give some causes?" because the former more closely matches the patterns on which the model was rewarded during training.
 
-> 
+> **指令微调与基于人类反馈的强化学习**——基础大语言模型（base LLMs）本质上只是对文本进行补全。现代已部署的模型——如 ChatGPT、Claude、Gemini——则进一步经过了指令微调和`基于人类反馈的强化学习`的塑造。这种训练使模型学会将某些文本模式，尤其是那些出现在系统提示（system prompt）或用户轮次（user turn）中、并以指令形式呈现的文本，视为**高优先级的条件信号**。这就是为什么“**Answer in bullet points**”这类要求能够生效——并不是因为模型在某种语义意义上“理解”了这个请求，而是因为在训练数据中，跟在这类指令后面的文本几乎总是被组织成项目符号的形式，而奖励模型（reward model）又进一步强化了这种行为。其实际后果非常明显：*经过指令微调的模型，对明确、格式清晰的指令响应效果，远远好于对含糊或客气请求的响应。*“列出三个原因。简明作答。不要使用被动语态。”通常会稳定地优于“你能不能大概说说有哪些原因？”因为前者与模型在训练过程中获得奖励时所对应的文本模式更加接近。
+> * fine-tuning [ˌfaɪn ˈtjuːnɪŋ] n. 微调；精细调整；在机器学习中，指在预训练模型基础上再用特定数据继续训练，使其更适合某类任务或行为模式
+> * instruction tuning 指令微调；一种让模型更好地遵循用户命令、问答格式和任务要求的训练方法，通常通过大量“指令—回答”样本来实现
+> * Reinforcement Learning from Human Feedback (RLHF) 基于人类反馈的强化学习；一种利用人工偏好评估来优化模型输出的方法，通常先收集人类对回答质量的比较，再据此训练奖励模型并优化主模型
+> * conditioning signals 条件信号；指在生成过程中会显著影响后续输出的输入信息；这里强调某些指令文本会被模型当作更重要的引导依据
+> * reward model 奖励模型；在 RLHF 流程中，用来学习人类偏好并给候选输出打分的模型，其评分会进一步指导主模型优化
+> * outperform [ˌaʊtpəˈfɔːm] v. 表现优于；胜过；在这里指某种提示写法通常能带来更好的模型输出
 
-**The Core Mechanics of Prompt Influence** — With the underlying machinery in view, the mechanics of how different prompt elements shape model behavior become legible. A persona or role definition shifts the model's prior over vocabulary, tone, and domain — it is not a costume but a genuine recalibration of probability. Providing examples, what is formally called few-shot prompting, directly constrains the output format and reasoning pattern through in-context learning, one of the most reliable tools available to a prompt engineer. Explicit step-by-step instructions activate chain-of-thought pathways and markedly improve performance on tasks requiring multi-step reasoning. Ambiguous phrasing, by contrast, gets resolved via statistical default — almost never the resolution you intended. Negative constraints, the "do not" formulations, carry weaker signal than positive framing, because negation is harder for the model to maintain across a long generation. And long, unfocused context dilutes attention, increasing the probability that the model loses track of the key task altogether.
+**The Core Mechanics of Prompt Influence** — With the underlying machinery in view, the mechanics of how different prompt elements shape model behavior become legible. **A persona or role** definition shifts the model's prior over vocabulary, tone, and domain — it is not a costume but a genuine recalibration of probability. **Providing examples**, what is formally called few-shot prompting, directly constrains the output format and reasoning pattern through in-context learning, one of the most reliable tools available to a prompt engineer. **Explicit step-by-step instructions** activate chain-of-thought pathways and markedly improve performance on tasks requiring multi-step reasoning. *Ambiguous phrasing*, by contrast, gets resolved via statistical default — almost never the resolution you intended. *Negative constraints*, the "do not" formulations, carry weaker signal than positive framing, because negation is harder for the model to maintain across a long generation. And long, *unfocused context* dilutes attention, increasing the probability that the model loses track of the key task altogether.
 
-> 
+> **提示词影响的核心机制**——在看清底层机制之后，不同提示词要素如何塑造模型行为这一过程就变得可以理解了。**人物设定**或角色定义会改变模型在词汇、语气和领域上的先验分布（prior）——它不是一种“扮演出来的外衣”，而是对概率分布的真实重新校准。**提供示例**，也就是正式所说的少样本提示（few-shot prompting），会通过上下文学习直接约束输出格式和推理模式；这是提示工程实践中最可靠的工具之一。**明确的分步指令**会激活链式思维路径，并显著提升模型在需要多步推理任务中的表现。相比之下，*含糊的表述*会按照统计上的默认方式被消解——而这几乎从来都不是你原本想要的解释。*否定性约束*，也就是“不要……”这种表达方式，传递的信号通常弱于正面表述，因为否定信息更难在较长的生成过程中被模型持续保持。而*冗长、失焦的上下文*会稀释注意力，从而提高模型完全偏离关键任务的概率。
+> * machinery [məˈʃiːnəri] n. 机制；运作系统；并不一定指实体机器，此处指模型背后的内部工作机制
+> * legible [ˈledʒəb(ə)l] adj. 可理解的；清晰可辨的；原义也可指“字迹清楚的”
+> * persona [ˌpɜːˈsəʊnə] n. 人物设定；角色形象；在提示词语境中，指赋予模型某种身份、口吻或专业立场的设定
+> * chain-of-thought 链式思维；指模型通过分步骤展开中间推理来完成复杂任务的方式，常用于提升多步推理表现
+> * formulations [ˌfɔːmjəˈleɪʃənz] n. 表述方式；措辞；公式化表达
+> * dilutes [daɪˈluːts] v. 稀释；削弱；使影响力变弱
+> * loses track of 脱离对……的把握；偏离对关键事项的持续关注
 
-Your job as a prompt engineer is to **author the beginning of the text you want to exist.** That means:
+To sum up, your job as a prompt engineer is to **author the beginning of the text you want to exist.** That means:
   1. **Be explicit** — state what you want, how you want it, what to exclude.
   2. **Use structure** — the model was trained on structured human text; it responds to it.
   3. **Provide examples** — in-context learning is one of the most reliable mechanisms available to you.
   4. **Control the frame** — the opening of your prompt is the strongest conditioning signal.
   5. **Never assume interpretation** — if it can be read two ways, it will be resolved without asking you.
 
-> 
+> 总而言之，作为提示工程师，你的工作是**为你希望出现的文本撰写开头**。这意味着：
+> 1. **要明确**——说清楚你想要什么、希望它以什么方式呈现、以及要排除什么。
+> 2. **要有结构**——模型是基于具有结构的人类文本训练出来的，因此它会对结构作出响应。
+> 3. **要提供示例**——上下文学习（in-context learning）是你能够使用的最可靠机制之一。
+> 4. **要控制框架**——提示词的开头是最强的条件信号。
+> 5. **不要默认模型会按你的意思理解**——如果一句话可以有两种理解方式，模型会在不询问你的情况下自行选定其中一种。
 
-A persona or role definition shifts the model's prior over vocabulary, tone, and domain, while providing examples — few-shot prompting — directly constrains the output format and reasoning pattern through in-context learning. Explicit step-by-step instructions activate chain-of-thought pathways and improve performance on tasks requiring multi-step reasoning. Ambiguous phrasing, on the other hand, gets resolved via statistical default, almost never the resolution you intended. Negative constraints like "do not" carry weaker signal than positive framing, because negation is harder for the model to sustain across a long generation. And long, unfocused context dilutes attention, increasing the probability that the model loses track of the key task altogether.
-
-> 
-
-## Core Prompting Techniques
-
-### 1. Zero-Shot Prompting
-
-### 2. Few-Shot Prompting
-
-### 3. Chain-of-Thought Prompting
-
-### 4. Role / Persona Prompting
-
-### 5. Prompt Chaining
 
 ## Guidelines for Prompting
+
+## The **"Dos and Don'ts"** of Prompt Phrasing
+
+# Prompt Sentence Patterns: A Reference Guide
+
+---
+
+## Part I: Patterns That Work Well
+
+---
+
+**"Focus on whichever of the following are most illuminating for the topic: ..."**
+and **"Include these selectively rather than exhaustively."**
+*Why it works:* LLMs suffer from verbosity bias — a tendency to include every possible detail in an attempt to be helpful. By explicitly authorizing selectivity, you force the model's attention mechanism to rank information by relevance rather than by completeness, resulting in a much higher signal-to-noise ratio.
+
+---
+
+**"Only where directly relevant, do ..."**
+*Why it works:* When a prompt requests a specific feature — quotes, examples, statistics — the model feels statistically obligated to fulfill it even when context makes it a poor fit, leading to forced or fabricated content. This phrase acts as a release valve, granting the model explicit permission to omit features that would otherwise feel shoehorned in.
+
+---
+
+**"Provide a scholarly critical review."**
+*Why it works:* This is a persona-plus instruction. It doesn't merely ask for a summary; it activates a specific subset of training data associated with academic skepticism, peer review, and balanced argumentation, shifting output from a descriptive register to an evaluative one. The word "scholarly" alone narrows the stylistic prior considerably.
+
+---
+
+**"Use a MECE framework."**
+*Why it works:* MECE (Mutually Exclusive, Collectively Exhaustive) is a consulting-grade organizational constraint. It prevents repetition across sections and ensures full coverage of the problem space, producing output that feels structurally complete and professionally organized rather than loosely assembled.
+
+---
+
+**"Uncover the first principles and underlying mechanics."**
+*Why it works:* This blocks the model from producing a surface-level or common-sense answer. It instructs the model to trace back from observable phenomena to foundational truths — the physics, logic, or core axioms beneath the topic. In short: don't give me the what; give me the why behind the how.
+
+---
+
+**"Think step by step before answering."**
+*Why it works:* This activates chain-of-thought reasoning, compelling the model to externalize its intermediate steps rather than collapsing directly to a conclusion. It is especially powerful on tasks where the intuitive answer is wrong, because it forces the model to check each inferential move rather than pattern-match to the most statistically common response.
+
+---
+
+**"Before answering, identify what you do not know and what assumptions you are making."**
+*Why it works:* LLMs are trained to produce fluent, confident text — which makes them prone to hallucination when knowledge is absent. This instruction interrupts the confidence-completion loop by forcing an explicit epistemic audit before generation begins. It substantially reduces confabulation on uncertain topics.
+
+---
+
+**"Steelman the opposing view before giving your own assessment."**
+*Why it works:* It invokes a well-defined argumentative structure associated with rigorous academic and legal writing. By requiring the model to first construct the strongest possible version of a position it may then critique, you prevent shallow dismissal and produce more intellectually honest output.
+
+---
+
+**"Respond as [role] speaking to [specific audience]."**
+*Why it works:* A double anchor — role plus audience — is far more powerful than either alone. The role sets domain expertise and epistemic stance; the audience sets vocabulary level, assumed prior knowledge, and rhetorical register. The combination produces a very narrow target distribution that the model can hit with high consistency.
+
+---
+
+**"What would a [domain expert] notice here that a layperson would miss?"**
+*Why it works:* This prompt structure bypasses the model's default mode of producing general knowledge and instead requests tacit, specialist-level insight. It activates training examples written by or for domain experts, surfacing non-obvious observations that would never appear in a generic treatment of the topic.
+
+---
+
+**"Explain this as if you were writing for [specific publication] — e.g., Nature, The Economist, The New Yorker."**
+*Why it works:* Named publications have highly distinctive and well-represented styles in training data. Invoking them functions as a dense stylistic prior — triggering not just tone but sentence length, hedging conventions, evidence standards, and structural norms characteristic of that outlet.
+
+---
+
+**"List assumptions this argument depends on."**
+*Why it works:* This forces deductive decomposition. Rather than evaluating a claim holistically — which tends to produce vague, hedged prose — the model must surface the hidden premises that make the argument valid or invalid. It is one of the most reliable ways to produce genuinely critical rather than superficially balanced output.
+
+---
+
+**"Distinguish between what is well-established, what is contested, and what is speculative."**
+*Why it works:* LLMs tend to flatten epistemic distinctions, presenting established consensus and fringe speculation in the same confident register. This three-part taxonomy forces the model to assign an explicit confidence tier to each claim, producing far more intellectually honest and useful output.
+
+---
+
+**"After your answer, identify the single most important caveat a reader should keep in mind."**
+*Why it works:* Appending a post-hoc caveat instruction separates generation from evaluation. The model completes its answer and then audits it from a critical standpoint — a two-pass structure that catches the overconfidence or oversimplification that the generation pass tends to produce.
+
+---
+
+**"Give me the answer, then explain the reasoning. Keep them clearly separated."**
+*Why it works:* This prevents the model from burying the conclusion inside its reasoning, a common failure mode on analytical prompts. The explicit structural separation also makes it easier to evaluate whether the reasoning actually supports the answer.
+
+---
+
+**"Ignore what is obvious and widely known. Focus on what is counterintuitive, underappreciated, or surprising."**
+*Why it works:* This directly suppresses the model's default toward high-frequency, consensus-level information — the statistical mode of its training distribution. By penalizing the obvious, it pushes generation toward lower-probability but higher-value content.
+
+---
+
+**"If there are multiple valid interpretations of this question, address the two most important ones."**
+*Why it works:* Rather than letting the model silently pick one interpretation and proceed, this forces it to make interpretive ambiguity explicit and productive. It yields richer, more honest output and often surfaces the interpretive choice that the user actually cared about.
+
+---
+
+**"Do not summarize. Analyze."**
+*Why it works:* "Summarize" and "analyze" activate different distributions in the model's training data. Summary is descriptive and compressive; analysis is evaluative and generative. Without this explicit instruction, models given analytical tasks often default to summarization — the more statistically common response pattern for text-plus-question inputs.
+
+---
+
+**"Be precise rather than comprehensive."**
+*Why it works:* It resolves the model's default trade-off in favor of depth over breadth. Without this constraint, models tend to produce surveys — wide, shallow coverage that satisfies the appearance of helpfulness without delivering real insight. Precision forces the model to commit to specific, defensible claims.
+
+---
+
+**"Where relevant, distinguish between the short-term and long-term implications."**
+*Why it works:* This temporal decomposition constraint prevents the conflation of immediate and downstream effects, a common analytical failure. It adds a structural dimension that forces the model to reason across time rather than treating a situation as a static snapshot.
+
+---
+
+**"Use concrete examples to anchor each abstract claim."**
+*Why it works:* Abstract claims are easy to generate fluently but are often vacuous. Requiring a concrete anchor for each abstraction creates a natural verification constraint — it is much harder to fabricate a plausible specific example than a plausible general statement, so this instruction also acts as a partial hallucination filter.
+
+---
+
+**"Synthesize, don't list."**
+*Why it works:* Bullet-point generation is the model's lowest-effort response pattern — it requires no connective reasoning between items. Explicitly requesting synthesis forces the model to establish logical or causal relationships between pieces of information, producing prose that reflects genuine analytical work rather than a formatted data dump.
+
+---
+
+## Part II: Patterns That Don't Work Well — And What to Use Instead
+
+---
+
+**Instead of "Don't do X," write "Instead of X, do Y."**
+*Why it works:* Negation is a weak signal. Saying "don't use jargon" activates the token for jargon prominently in the model's processing, paradoxically increasing its salience. A positive target — "use language accessible to a 12-year-old" — gives the model a statistical destination to move toward rather than an exclusion zone to navigate around.
+
+---
+
+**Instead of "briefly" or "in 30 words," write "in 1–3 sentences."**
+*Why it works:* "Briefly" is subjective and gets resolved against the model's default verbosity. Exact word counts are hard for models to track because they process tokens, not words. Sentence boundaries, however, are defined by punctuation — a discrete, unambiguous signal the model handles reliably. Sentence-count constraints produce consistent concision without the awkward truncation that word-count targeting often causes.
+
+---
+
+**Instead of "write a good essay," write "write an essay structured as: [claim] → [three supporting arguments] → [strongest counterargument] → [rebuttal] → [conclusion]."**
+*Why it works:* "Good" is entirely undefined in the model's generation context — it defaults to the statistical average of "good essays" in training data, which produces competent mediocrity. An explicit structural blueprint removes the model's freedom to default and instead provides a scaffold that constrains generation toward your actual intent.
+
+---
+
+**Instead of "be creative," write "approach this from an unexpected angle" or "use an analogy from a different domain entirely."**
+*Why it works:* "Creative" is one of the most overloaded and least actionable words in a prompt. The model interprets it as a license to use slightly more vivid language while following standard patterns. A specific creative operation — unexpected angle, cross-domain analogy, subverted expectation — gives the model a concrete generative maneuver to execute.
+
+---
+
+**Instead of "explain this simply," write "explain this to someone who understands [adjacent domain] but has never encountered [target domain]."**
+*Why it works:* "Simply" is calibrated against the model's default complexity level, which is rarely what you want. Specifying a concrete audience with known prior knowledge gives the model a precise epistemic gap to bridge, producing explanations that are genuinely calibrated rather than superficially simplified.
+
+---
+
+**Instead of "make this better," write "make this more [precise / persuasive / concrete / surprising] by [specific operation]."**
+*Why it works:* "Better" is an unanchored comparative — the model has no reference point for what dimension to optimize. Naming the quality and the operation (e.g., "replace every abstract noun with a concrete example") gives the model a specific editorial task rather than an open-ended quality judgment it cannot meaningfully perform.
+
+---
+
+**Instead of asking everything in one long prompt, chain it: first ask for an outline, then expand each section separately.**
+*Why it works:* A single long, complex prompt diffuses the model's attention across too many simultaneous constraints. Breaking the task into sequential prompts — each with a single, clear objective — produces higher accuracy at each step, and the structured output of each step provides cleaner, more reliable input to the next.
+
+---
+
+**Instead of "answer as an expert," write "answer as a [specific expert] with [specific background] speaking to [specific audience]."**
+*Why it works:* "Expert" without qualification defaults to a generic, authoritative-sounding register that is often neither domain-specific nor audience-appropriate. The more precisely you define the role and the audience, the narrower the target distribution becomes — and narrower targets are hit with far greater consistency.
+
+---
+
+**Instead of repeating the same prompt with minor variations hoping for a better answer, write "Your previous answer was too [vague / general / long]. Specifically, [state the gap]. Revise with that constraint."**
+*Why it works:* Submitting a near-identical prompt a second time produces near-identical output, because the model has no memory of what was unsatisfactory and no new conditioning signal. An explicit diagnostic — naming the failure mode and the correction — gives the model a meaningful new constraint and produces genuine improvement rather than a paraphrased version of the same answer.
+
+---
+
+**Instead of "give me a comprehensive overview," write "identify the three things someone must understand to reason correctly about this topic, and explain only those."**
+*Why it works:* "Comprehensive" triggers the model's verbosity bias at maximum intensity, producing wide, shallow coverage that prioritizes the appearance of completeness over genuine usefulness. Asking for the essential minimum forces the model to perform a relevance-ranking operation first, then generate — a two-step process that consistently produces higher-density, more valuable output.
+
+---
+
+**Instead of "use your judgment," write "if X, then do Y; if Z, then do W."**
+*Why it works:* "Use your judgment" hands the decision entirely to the model's statistical default — which may have no relationship to your actual preferences. Explicit conditional logic encodes your decision criteria directly into the prompt, making the model's behavior predictable and auditable rather than opaque and variable.
+
+---
+
+**Instead of stacking multiple tasks into one sentence, assign one task per prompt turn.**
+*Why it works:* When a single prompt contains multiple tasks — "summarize this, then critique it, then rewrite it for a general audience" — the model distributes attention across all three objectives simultaneously. Each task receives less processing weight and the final output frequently conflates or truncates one or more of them. Sequential prompting lets each task receive full attention and produces clean, separable outputs.
+
+---
+
+**Instead of "write in a [positive / engaging / professional] tone," write "write in the tone of [specific publication, author, or genre]."**
+*Why it works:* Tone adjectives like "engaging" or "professional" are too abstract to reliably shift output — every model already believes it is being engaging and professional by default. A named reference — "in the tone of a Harvard Business Review op-ed" or "in the style of a BBC documentary narration" — activates a dense, well-represented stylistic prior that produces consistently distinctive and intentional output.
+
+---
+
+**Instead of "consider all perspectives," write "argue for [Position A]. Then argue for [Position B]. Then identify where the two arguments most directly conflict."**
+*Why it works:* "Consider all perspectives" produces a bland, false-balance treatment in which the model nods superficially at multiple views without committing to any of them. Forcing the model to argue each position sequentially and then identify the crux of disagreement produces genuine dialectical reasoning rather than the appearance of balanced analysis.
+
+Below is a working reference, not a set of universal laws. Prompt wording and formatting can change results a lot, and underspecified prompts tend to produce more variance than prompts with clear instructions and tighter output constraints. Provider guidance also consistently recommends explicit formats, examples, delimiters, and step structure rather than vague requests. ([arXiv][1])
+
+## 1. Prompt sentence patterns that usually work well with LLMs
+
+1. "Return exactly these sections, in this order: ..."
+
+   Why it works: This gives the model an output contract. It reduces drift, stops the model from adding surprise sections, and makes the response easier to parse by both humans and downstream code. ([OpenAI][2])
+
+2. "If a format is required, output only that format."
+
+   Why it works: This sharply narrows the output space. It is especially useful for JSON, XML, SQL, Markdown, or other machine-read formats where extra prose breaks the result. ([OpenAI][2])
+
+3. "Use the following labels exactly: [A, B, C]."
+
+   Why it works: Exact label sets reduce ambiguity in classification and routing tasks. They also reduce synonym drift, where the model invents near-miss labels that are semantically close but operationally useless. ([Claude API Docs][3])
+
+4. "Your task is X. Constraints: A, B, C."
+
+   Why it works: This pattern separates goal from limits. Models tend to do better when the task and the boundaries are both explicit, rather than buried in a long paragraph. ([Claude API Docs][3])
+
+5. "Follow these steps in order: 1) ... 2) ... 3) ..."
+
+   Why it works: Numbered steps help when order matters or when the task is easy to skip through too quickly. Anthropic explicitly recommends sequential steps when completeness or order matters. ([Claude API Docs][3])
+
+6. "First classify the input. Then generate the response based on the class."
+
+   Why it works: This is a compact prompt-chaining pattern. It breaks a mixed task into two cleaner mental stages and often improves control, debugging, and consistency. Google also recommends breaking complex multi-step logic into smaller calls when needed. ([Google for Developers][4])
+
+7. "Here are a few examples. Follow the same pattern."
+
+   Why it works: Few-shot examples are one of the most reliable ways to control format, tone, and structure. They work especially well when instructions alone leave room for interpretation. ([Claude API Docs][3])
+
+8. "Examples: [input] -> [output]"
+
+   Why it works: A simple repeated template makes the pattern easier to infer than a loose paragraph of examples. Consistent formatting lowers the chance that the model learns the wrong surface cue from the demonstrations. ([Claude API Docs][3])
+
+9. "Act as a [specific role] who [audience, style, goal]."
+
+   Why it works: A specific role changes voice, depth, and priorities. "Act as a tax lawyer writing for a startup founder" is much stronger than "act as an expert," because it sets both perspective and audience. ([OpenAI][5])
+
+10. "Only include [quotes / examples / citations / equations] where directly relevant."
+
+    Why it works: This gives the model permission to be selective instead of mechanically satisfying every optional feature everywhere. It reduces forced additions and usually improves signal-to-noise ratio. This also aligns with official guidance to keep outputs compact and avoid unnecessary repetition. ([OpenAI][2])
+
+11. "Focus on the most relevant or most illuminating points, not every possible point."
+
+    Why it works: LLMs often default toward over-inclusion when trying to be helpful. This pattern pushes the model toward ranking and selection rather than exhaustive dumping. ([OpenAI][2])
+
+12. "Be concise and information-dense."
+
+    Why it works: This is better than simply saying "be short" because it points the model toward compression without asking it to omit important content. OpenAI’s current prompt guidance explicitly recommends concise, information-dense writing. ([OpenAI][2])
+
+13. "Use numbered bullets when order or completeness matters."
+
+    Why it works: Numbered structure helps the model keep coverage aligned with the prompt. It also makes omissions and duplicates easier to spot during review. ([Claude API Docs][3])
+
+14. "Separate the prompt into <context>, <instructions>, and <input>."
+
+    Why it works: Delimiters reduce confusion about what is background, what is binding instruction, and what is the material to operate on. Anthropic and Google both recommend explicit separation for complex prompts. ([Claude API Docs][3])
+
+15. "Wrap examples in <examples> ... </examples>."
+
+    Why it works: This helps the model distinguish demonstrations from rules. It is especially useful when the prompt mixes examples, context, and variable user input in the same message. ([Claude API Docs][3])
+
+16. "Use consistent, descriptive tags throughout the prompt."
+
+    Why it works: Reusing stable tags like `<instructions>`, `<documents>`, and `<answer_schema>` makes the prompt easier to parse and maintain. It also reduces ambiguity when prompts become long. ([Claude API Docs][3])
+
+17. "Think through the problem step by step, then give the final answer."
+
+    Why it works: For complex reasoning tasks, chain-of-thought prompting can improve performance by encouraging intermediate reasoning steps rather than a jump to the answer. This has strong support in the literature for arithmetic, commonsense, and symbolic reasoning tasks. ([arXiv][6])
+
+18. "First list the relevant facts. Then infer the answer from those facts."
+
+    Why it works: This is a structured version of step-by-step reasoning. It is often more stable than a generic "think carefully" instruction because it tells the model what the intermediate steps should look like. ([arXiv][6])
+
+19. "For code, begin with: import"
+
+    Why it works: OpenAI explicitly notes that "leading words" can nudge the model into the right completion pattern. The same idea often works with `SELECT`, `{`, or function signatures for code and structured text. ([OpenAI Help Center][7])
+
+20. "If newer instructions conflict with older ones, follow the newer instruction; preserve the rest."
+
+    Why it works: This pattern is useful in long-running assistants or agent prompts. It reduces confusion when the task evolves mid-conversation and gives the model a simple conflict rule. ([OpenAI][2])
+
+21. "If the task is clear and low-risk, proceed without asking; otherwise ask only for the missing critical information."
+
+    Why it works: This is a strong operational pattern for assistants and agents. It reduces unnecessary back-and-forth while still guarding against irreversible or high-impact actions. ([OpenAI][2])
+
+22. "State the answer first. Then give a brief rationale."
+
+    Why it works: This pattern improves usability for decision support, classification, and review tasks. It keeps the main output easy to read while still preserving enough reasoning to make the answer inspectable. It also matches the general provider guidance toward compact, structured responses. ([OpenAI][2])
+
+23. "Use 3 to 5 examples that mirror the real task."
+
+    Why it works: Anthropic explicitly recommends 3 to 5 examples for best results, and also stresses that examples should be relevant and diverse. This is a strong default for few-shot prompting when one example is too weak and many examples are too expensive. ([Claude API Docs][3])
+
+24. "Keep the prompt focused on one main task."
+
+    Why it works: Google’s guidance is very direct here: concise prompts with focused tasks work better, especially on smaller models. Narrow prompts reduce instruction collision and lower the chance that the model over-optimizes one part of the request at the expense of another. ([Google for Developers][4])
+
+## 2. Prompt sentence patterns that usually work poorly with LLMs
+
+These are not always useless, but they are often weaker, more brittle, or less controllable than the stronger replacements.
+
+1. Weak: "Be brief."
+
+   Better: "Answer in 1 to 3 sentences."
+
+   Why it works better: "Brief" is vague. OpenAI explicitly recommends replacing imprecise length language with a structural limit such as a sentence range. ([OpenAI Help Center][7])
+
+2. Weak: "Do not do X."
+
+   Better: "Instead of X, do Y."
+
+   Why it works better: OpenAI explicitly recommends saying what to do, not only what to avoid. Positive alternatives give the model a target behavior instead of only a prohibition. ([OpenAI Help Center][7])
+
+3. Weak: "Write a good answer."
+
+   Better: "Write a clear answer with 3 bullet points, one example, and no jargon."
+
+   Why it works better: "Good" is underspecified. Research on prompt sensitivity shows that weakly constrained prompts produce higher variance than prompts with specific instructions and output constraints. ([arXiv][1])
+
+4. Weak: "Explain this well."
+
+   Better: "Explain this for a first-year student using simple words and one concrete example."
+
+   Why it works better: "Well" does not define audience, depth, or style. Adding audience and output cues reduces the model’s need to guess your standard. ([Claude API Docs][3])
+
+5. Weak: "Cover everything."
+
+   Better: "Cover the 3 to 5 most decision-relevant points."
+
+   Why it works better: Exhaustive prompts often trigger verbosity and repetition. Current prompt guidance prefers compact, information-dense output over exhaustive dumping. ([OpenAI][2])
+
+6. Weak: "Use all of the following points: ..."
+
+   Better: "Use whichever of the following points are most relevant."
+
+   Why it works better: A forced-all-items rule often produces padding, awkward transitions, and weak prioritization. Selective instructions usually produce cleaner answers unless true completeness is required. ([OpenAI][2])
+
+7. Weak: A long fluffy preamble before the real instruction.
+
+   Better: Put the task first, then constraints, then input.
+
+   Why it works better: Google explicitly warns that verbose preambles with repeated instructions can hurt results. Extra setup text often buries the actual job. ([Google for Developers][4])
+
+8. Weak: One giant paragraph mixing context, rules, examples, and user input.
+
+   Better: Separate them with headings or tags.
+
+   Why it works better: Without delimiters, the model has to infer which text is instruction and which text is data. Anthropic and Google both recommend explicit separation to reduce misinterpretation. ([Claude API Docs][3])
+
+9. Weak: "Do X, and if X leads to A then do M, otherwise N, then maybe Y unless B ..."
+
+   Better: Break the task into multiple prompts or steps.
+
+   Why it works better: Google explicitly recommends breaking hard multi-step logic into smaller focused tasks. Complex branching in a single prompt is fragile and hard to debug. ([Google for Developers][4])
+
+10. Weak: No output format at all.
+
+    Better: "Return JSON with fields ...", or "Return exactly 4 bullets."
+
+    Why it works better: Format-free prompts leave too much room for drift. Official guidance across providers repeatedly emphasizes explicit output formats and constraints. ([Claude API Docs][3])
+
+11. Weak: "Act as an expert."
+
+    Better: "Act as a bankruptcy lawyer advising a small-business owner in plain English."
+
+    Why it works better: Generic roles are weak steering signals. Specific roles work better because they define viewpoint, audience, vocabulary, and likely priorities at the same time. ([OpenAI][5])
+
+12. Weak: "Think carefully."
+
+    Better: "First identify the facts. Then compare the options. Then decide."
+
+    Why it works better: A vague reasoning cue may help a little, but it still leaves the reasoning shape open. Structured reasoning prompts are usually more stable on multi-step tasks. ([arXiv][6])
+
+13. Weak: "Use examples."
+
+    Better: "Here are 3 examples in the exact input -> output format. Follow the same pattern."
+
+    Why it works better: Anthropic recommends examples that are relevant, diverse, and structured. Loose or badly framed examples often teach the wrong pattern. ([Claude API Docs][3])
+
+14. Weak: Too many few-shot examples.
+
+    Better: Start with 3 to 5 strong examples.
+
+    Why it works better: More examples increase prompt length and inference cost, and can also add noise. Official guidance recommends a smaller, high-quality set rather than an oversized block. ([Claude API Docs][3])
+
+15. Weak: Inconsistent examples.
+
+    Better: Keep examples in one stable format and one stable standard.
+
+    Why it works better: If the examples disagree in style, label logic, or structure, the model cannot tell which rule to copy. Anthropic’s guidance on relevance, diversity, and structure implies that consistency matters. ([Claude API Docs][3])
+
+16. Weak: "Just use common sense."
+
+    Better: State the decision rule explicitly.
+
+    Why it works better: "Common sense" is not a clear operational rule. Prompt underspecification is a known source of performance variance, especially in classification and decision tasks. ([arXiv][1])
+
+17. Weak: "Do not hallucinate."
+
+    Better: "If the answer is uncertain, say what is known, what is missing, and do not invent details."
+
+    Why it works better: A bare ban does not tell the model how to behave under uncertainty. Positive behavior instructions are generally stronger than negative-only ones. ([OpenAI Help Center][7])
+
+18. Weak: "Answer exactly in 37 words."
+
+    Better: "Answer in 1 to 2 sentences."
+
+    Why it works better: Very exact micro-length targets are brittle for normal prose prompts. A sentence range is usually easier to follow and still gives strong control over length. OpenAI’s own examples move from vague length wording to sentence-based constraints rather than exact tiny word quotas. ([OpenAI Help Center][7])
+
+19. Weak: "Based on the above, answer the question."
+
+    Better: "Using only the text inside <source> ... </source>, answer the question."
+
+    Why it works better: "The above" becomes unclear as prompts get long. Delimited source blocks reduce reference ambiguity and lower the chance of the model using the wrong context. ([Claude API Docs][3])
+
+20. Weak: A prompt that keeps changing criteria without saying which rule wins.
+
+    Better: "If newer instructions conflict with older ones, follow the newer ones."
+
+    Why it works better: Long conversations and layered prompts can create silent rule collisions. An explicit priority rule reduces confusion and improves consistency across turns. ([OpenAI][2])
+
+21. Weak: "Please do your best."
+
+    Better: Replace it with actual constraints or examples.
+
+    Why it works better: Polite filler rarely adds useful operational information. Provider guidance repeatedly favors clear, direct, explicit instructions over vague framing. ([Claude API Docs][3])
+
+22. Weak: "Give me a full chain of thought."
+
+    Better: "Give the answer first, then a short rationale or key steps."
+
+    Why it works better: In many real systems, the most useful visible output is not a long raw reasoning trace but a compact explanation that is easy to inspect. A short rationale also aligns better with the provider guidance toward compact, structured answers. ([OpenAI][2])
+
+## A compact rule of thumb
+
+The strongest prompt patterns usually do one or more of these things:
+
+* narrow the output space,
+* make the task and constraints explicit,
+* separate instruction from data,
+* show the pattern with examples,
+* break hard tasks into steps,
+* and reduce ambiguity about format, priority, and completeness. ([Claude API Docs][3])
+
+The weakest prompt patterns usually do the opposite:
+
+* they are vague,
+* underspecified,
+* overly broad,
+* mixed together without structure,
+* or they rely on the model to infer rules that should have been stated directly. ([arXiv][1])
+
+If you want, I can turn this into a cleaner one-page cheat sheet with only the pattern formulas and one-line explanations.
+
+
+## Clever Tricks for Prompting
+
+1. 写两遍
+2. 
+
+## Using Claude / ChatGPT / Gemini
 
 ## Pitfalls for Prompting
 
@@ -319,6 +795,56 @@ One caution matters: the same small-business survey finds that accuracy is the t
 
 有些 服务提供商 GEO服务 投毒
 OPENCLAW Prompting injection事件
+
+## For Learners, Methodology of Using LLMs
+
+### 作为学习助手，LLM 可以超越人类做到的事情是：
+
+过去人力不可及的
+
+之前需要穷人之一生之力的
+1. 整理整个知识架构
+2. 当获得碎片知识时，找出整个知识架构，和这个知识的位置
+3. 知识的谱系学
+
+人力整理效率低的
+1. 元认知、元知识
+2. 关键时间线的骨架，timelines of wwii
+3. 速查表
+4. 随地大小解释名词、原理、分析、公式
+5. 学习 Introduction 的时候，
+
+隐性知识，难以收录成册的边缘知识
+1. 应用技巧
+2. 连接理论和实操的手册
+
+### Easy Access Materials
+
+一个 Cheatsheet 应包含：
+1. Background and tacit Knowledge
+2. Minimal explanation: how to use, when to use, perfect to do
+3. Regular Options/Syntax 
+4. Common Usage in Practice
+5. Common Pitfalls in Practice
+6. Minimal Example
+7. Complete tutorial
+
+### For Knowledge Architecture / Minimal Tutorial
+
+1. Ontology
+2. Core Concepts and First principles
+3. Full Skill Stack / (Layerd) Knowledge Structure
+4. Clearcut Compare (e.g. Literary Criticism v.s. Literary Theory)
+5. Worked Examples
+6. Key  Milestones
+7. Casual Chain
+8. Common Pitfalls
+9. Gate of Theory / Meta-assumptions
+
+## Meta Prompting
+
+
+## Further Directions
 
 ## Personal Appendix 1: Meta-info Architecture
 

@@ -6,41 +6,6 @@ bilingual: true
 ---
 
 
-
-## Intro to Prompt Engineering
-
-## Goal Clearfication
-
-一个 Cheatsheet 应包含：
-1. Background and tacit Knowledge
-2. Minimal explanation: how to use, when to use, perfect to do
-3. Regular Options/Syntax 
-4. Common Usage in Practice
-5. Common Pitfalls in Practice
-6. Minimal Example
-7. Complete tutorial
-
-## 作为学习助手，LLM 可以超越人类做到的事情是：
-
-过去人力不可及的
-
-之前需要穷人之一生之力的
-1. 整理整个知识架构
-2. 当获得碎片知识时，找出整个知识架构，和这个知识的位置
-3. 知识的谱系学
-
-人力整理效率低的
-1. 元认知、元知识
-2. 关键时间线的骨架，timelines of wwii
-3. 速查表
-4. 随地大小解释名词、原理、分析、公式
-5. 学习 Introduction 的时候，
-
-隐性知识，难以收录成册的边缘知识
-1. 应用技巧
-2. 连接理论和实操的手册
-
-
 ## Quick Reference
 
 ### Problem Solving
@@ -82,19 +47,8 @@ Laws and Academic Writing 法律和学术写作:
 Literature 文学:
   - `Limited Third-person Perspective` 第三人称限制视角
 
-### For Knowledge Architecture / Minimal Tutorial
 
-1. Ontology
-2. Core Concepts and First principles
-3. Full Skill Stack / (Layerd) Knowledge Structure
-4. Clearcut Compare (e.g. Literary Criticism v.s. Literary Theory)
-5. Worked Examples
-6. Key  Milestones
-7. Casual Chain
-8. Common Pitfalls
-9. Gate of Theory / Meta-assumptions
 
-## Meta Prompting
 
 ### For Knowledges
 
