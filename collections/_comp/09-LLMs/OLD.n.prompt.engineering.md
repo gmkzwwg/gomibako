@@ -121,32 +121,7 @@ First, list the proposed row categories to confirm scope. Then, generate the ful
 
 > "Give me a 'Anti-Tutorial' for [学科/技术]. Instead of telling me what to do, tell me what NOT to do. List the top 10 most common mistakes in concepts, methods, and learning strategy. Also, identify the 'Invisible Hurdles' that beginners don't even know they are tripping over."
 
-## Prompt Engineering with ChatGPT 4 and 5: A Progressive Tutorial
 
-This tutorial will guide you step-by-step in using ChatGPT (version 4.x and 5.x) as an effective learning and research assistant. Even if you have no background in computer science, AI, or programming, you’ll learn how to craft prompts (the instructions or questions you give to ChatGPT) to get the best possible responses. We’ll start with the basics and gradually move to advanced techniques. Along the way, we’ll cover practical examples for academic study, research, literature analysis, translation, and more. By the end, you’ll have a toolkit of prompt strategies that should generalize well to future models, not just GPT-4. Let’s dive in!
-
-> 本教程将逐步引导您将 ChatGPT（4.x 及 5.x 版本）用作高效的学习与研究辅助工具。即便您在计算机科学、人工智能或编程领域毫无基础，亦可通过本教程掌握提示词（即您向 ChatGPT 输入的指令或问题）的构建方法，从而获取最优质的回应。教程将由基础概念出发，循序渐进地推进至高阶技巧。在此过程中，我们将涵盖学术研究、文献分析、翻译实践等多元应用场景下的具体范例。教程结束时，您将系统掌握一套提示词策略体系——其适用性不局限于 GPT-4，而可广泛迁移至后续模型。现在，让我们正式开始。
-
-### Introduction to Prompt Engineering and ChatGPT
-
-Prompt engineering is the art of writing **effective instructions** that guide a language model like ChatGPT to produce the output you want. Large Language Models (LLMs) **do not automatically know what kind of answer you need** – they rely on your guidance. A poorly worded or vague prompt can lead to irrelevant or confusing answers. A clear, tailored prompt, on the other hand, helps ChatGPT understand your request and respond accurately.
-
-> 提示词工程是一门撰写**有效指令**的技艺，旨在引导 ChatGPT 等大型语言模型生成符合预期的输出结果。大型语言模型（LLMs）**并不会自动研判您所需的回应类型**——其运作依赖于使用者的明确引导。措辞欠妥或表意模糊的提示词，往往导致模型输出无关紧要乃至语义混乱的内容。反之，一个表述清晰、针对性强的提示词，则能有效帮助 ChatGPT 准确理解请求意图，并给出精准的回应。
-
-**How ChatGPT works (in a nutshell):** ChatGPT is an AI that generates text by predicting likely words based on the input and its training. It has a conversation memory, meaning it remembers what you’ve said earlier in the chat (up to a limit), and it follows instructions given in the conversation. There are usually **three roles** in a ChatGPT conversation: a **system message** (background instructions that set the stage or behavior), the **user message** (your prompt or question), and the **assistant message** (ChatGPT’s reply). In the ChatGPT interface, you mostly provide user prompts, but you can also set persistent preferences through **custom instructions** (which function like a system message to tell ChatGPT about your needs or style for all responses). We’ll discuss these more soon.
-
-**Why does prompt engineering matter?** Because by crafting better prompts, you can control the output’s content, style, and usefulness. For example, if you’re doing research, you might need a detailed, structured answer with sources. Or if you’re studying a topic, you might want a simple explanation or an analogy. A well-designed prompt can make ChatGPT behave like a helpful tutor, a translator, a brainstorming partner, or a research assistant as needed.
-
-_Example:_ Imagine you want ChatGPT to summarize an article. You could simply say: _“Summarize this text.”_ But a more **engineered prompt** yields a better result. Compare these two prompts:
-
-*   **Prompt A (generic):** _“Summarize this text.”_
-    
-*   **Prompt B (specific):** _“Summarize the following text in 3-5 bullet points, focusing on the main arguments and key takeaways. Keep the tone neutral and avoid any unnecessary filler.”_
-    
-
-Prompt B is likely to produce a much clearer and more useful summary, because it specifies **format** (bullet points, 3-5 of them), **content focus** (main arguments, key takeaways), and **tone** (neutral). In contrast, Prompt A leaves these to the model’s guesswork. This simple example shows how adding detail and structure to your prompt steers the model’s output.
-
-**Key takeaway:** Always aim to be clear and specific about what you want. In the next sections, we’ll build on this idea and introduce various techniques – from basic prompting to advanced methods – that can greatly improve ChatGPT’s performance as your assistant.
 
 ### Basic Techniques for Effective Prompts
 
@@ -177,6 +152,94 @@ Below is a quick **cheat-sheet** of basic prompt improvements:
     
 *   Specify **style/tone**: e.g. _“Give a formal explanation,”_ or _“Explain in a fun, anecdotal way.”_
     
+下面先介绍一些适用于任何 ChatGPT 交互场景的基础提示技巧：
+
+* 清晰与具体：尽可能清楚地说明你的请求。要明确背景、任务以及期望的输出格式。歧义是高质量回答的最大障碍。记住：“精确胜过感觉”——不要指望 AI 去自行推断你想要什么；要直接告诉它。如果你想要一个列表，那就明确要求列表。如果你需要简短回答，也要直说。如果问题包含多个部分，可以考虑把它们逐条列出来。
+
+> - clarity [ˈklærəti] n. 清晰；明晰
+> - specificity [ˌspesɪˈfɪsəti] n. 具体性；明确性
+> - desired [dɪˈzaɪəd] adj. 所期望的；想要的
+> - ambiguity [ˌæmbɪˈɡjuːəti] n. 歧义；含糊不清
+> - enemy [ˈenəmi] n. 敌人；妨碍因素；此处指会破坏回答质量的关键问题
+> - precision [prɪˈsɪʒən] n. 精确；准确
+> - vibes 感觉；氛围；此处指模糊的直觉式表达，而不是明确要求
+> - infer [ɪnˈfɜː(r)] v. 推断；推知
+> - directly [dəˈrektli] adv. 直接地；明确地
+
+* 提供背景：如果你的问题涉及一些并不显然的内容，就要补充背景信息。除非你明确说出来，否则 ChatGPT 并不知道你正在上哪门课，也不知道你刚读过哪篇文章。例如，“我刚读了一篇关于黑洞的文章。你能解释一下霍金辐射是如何起作用的吗？”就比“解释霍金辐射”更好，因为前者提供了你关注的是黑洞这一领域的背景信息，这有助于模型把回答聚焦到正确方向上。
+
+> - context [ˈkɒntekst] n. 背景；上下文；语境
+> - obvious [ˈɒbviəs] adj. 明显的；显而易见的
+> - background info 背景信息；帮助界定问题范围和场景的补充说明
+> - domain [dəˈmeɪn] n. 领域；范围；学科范围
+> - focus its answer 聚焦其回答；使回答更集中于相关内容
+
+* 角色或人物设定指令：如果这样做有帮助，你可以要求 ChatGPT 扮演某种角色或采用某种人物设定。例如：“你是一位经验丰富的文学教授。请用简单的语言解释《罗密欧与朱丽叶》的主题……” 这样做可以为回答设定语气和深度。对于 GPT-4 及之后的模型来说，角色指令能够显著影响回答的风格或深度。（在 ChatGPT 的界面中，你也可以使用“自定义指令”（Custom Instructions）功能，长期写明你的背景或偏好，例如“我是一名三年级科学教师”或“请始终用公制单位回答”。）
+
+> - persona [pəˈsəʊnə] n. 人物设定；角色形象
+> - experienced [ɪkˈspɪəriənst] adj. 有经验的；经验丰富的
+> - literature professor 文学教授；从事文学教学与研究的教师
+> - theme [θiːm] n. 主题；中心思想
+> - significantly [sɪɡˈnɪfɪkəntli] adv. 显著地；明显地
+> - permanently [ˈpɜːmənəntli] adv. 持续地；长期地；永久性地
+> - preferences [ˈprefərənsɪz] n. 偏好；喜好
+> - metric units 公制单位；如米、千克、摄氏度等国际通用计量单位
+
+* 格式指令：如果你需要回答以某种特定格式呈现——例如项目符号列表、表格、代码片段，或者分步骤提纲——就把这一要求写进提示词里。例如：“请用表格比较这两种理论”或者“请用项目符号列出步骤。” 只要明确提出要求，ChatGPT 就可以生成格式良好的输出，例如表格、JSON、提纲等。
+
+> - formatting [ˈfɔːmætɪŋ] n. 格式安排；排版方式
+> - bullet points 项目符号要点；用列表形式逐条列出的信息点
+> - snippet [ˈsnɪpɪt] n. 片段；此处常指简短代码片段
+> - outline [ˈaʊtlaɪn] n. 提纲；纲要；轮廓
+> - well-formatted adj. 格式良好的；排版清晰的
+> - JSON [ˈdʒeɪsən] n. 一种常用的数据交换格式；常用于结构化输出
+
+* 长度与层次：要说明你想要简短回答还是详细回答，以及希望答案处于什么复杂程度。“像对五岁小孩解释一样说明”或者“给出技术性解释”都是很有用的提示。如果你把它用于学术学习，可以说“请用约 200 个词解释这个概念”或者“请给出一个充分展开并带有例子的解释”。
+
+> - complexity [kəmˈpleksəti] n. 复杂程度；复杂性
+> - cue [kjuː] n. 提示信号；线索；引导信息
+> - academic [ˌækəˈdemɪk] adj. 学术的；教学研究相关的
+> - concept [ˈkɒnsept] n. 概念；观念
+> - thorough [ˈθʌrə] adj. 充分的；全面细致的
+
+* 检查与改进：在得到回答之后，不要犹豫，可以继续改进提示词或提出追问。ChatGPT 支持迭代式对话（iterative dialogue）——你可以说：“这不是我的意思，我希望更多聚焦于 X。”或者“你能把第二点展开一点吗？” 迭代是提示工程中的正常组成部分；几乎没有哪个完美提示词第一次就能写出来。
+
+> - refine [rɪˈfaɪn] v. 改进；优化；提炼
+> - follow-up questions 追问；后续问题
+> - iterative dialogue 迭代式对话；指通过多轮来回调整，不断逼近理想结果的交互方式
+> - expand [ɪkˈspænd] v. 展开；扩充；进一步详细说明
+> - prompt engineering 提示工程；为获得更好模型输出而系统设计和优化提示词的方法
+> - rarely [ˈreəli] adv. 很少；难得
+
+下面是一份关于基础提示改进方法的简明速查表：
+
+> * cheat-sheet [ˈtʃiːt ʃiːt] n. 速查表；便于快速参考的简明说明
+> * prompt improvements 提示词改进方法；提升提示效果的具体做法
+
+* 使用直接指令：例如，“把下面这句话翻译成西班牙语。”（任务清晰）
+
+> - direct instructions 直接指令；不绕弯、明确说明任务内容的表达方式
+
+* 增加细节：例如，“把这句话翻译成西班牙语，然后用英语解释这个翻译。”
+
+> - detail [ˈdiːteɪl] n. 细节；具体信息
+
+* 设定背景或角色：例如，“你是一位导师。请一步一步解释这道数学题……”
+
+> - tutor [ˈtjuːtə(r)] n. 导师；家教；辅导者
+> - step by step 一步一步地；按步骤地
+
+* 要求特定输出形式：例如，“请用编号步骤列表给出答案。”
+
+> - specific output 特定输出；明确规定的输出形式
+> - numbered list 编号列表；按数字顺序排列的项目列表
+
+* 指定风格／语气：例如，“请用正式的方式解释”，或者“请用有趣、带点故事感的方式解释。”
+
+> - style [staɪl] n. 风格；表达方式
+> - tone [təʊn] n. 语气；口吻
+> - formal [ˈfɔːməl] adj. 正式的；规范的
+> - anecdotal [ˌænɪkˈdəʊtəl] adj. 轶事式的；带有小故事色彩的；常用于让表达更生动易懂
 
 Each of these helps the model align with your needs. Even GPT-5 (whenever it arrives) will benefit from clear instructions – as of 2025, newer models are becoming _more literal_ and will do exactly what you ask, so it’s important to describe what you want precisely.
 

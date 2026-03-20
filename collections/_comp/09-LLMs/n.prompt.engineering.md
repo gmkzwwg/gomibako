@@ -5,59 +5,65 @@ title: LLM Prompt Engineering for Workflows Enhancement and Study Assistance
 tags: LLMs
 bilingual: true
 todos: 
-  - claude gpt的操作
+  - claude gpt的操作，介绍它们提供的一些功能
   - pe的局限性、pe误区（写太多，三样一样一个）
   - 先看antho好人，再看dan koe，再看文字，再看如何拆书，再看 openclaw（很多注意事项，安全、p注入）
-  - Anthropic Claude API
+  - Anthropic Claude API，calude code, for excel
 ---
 
-> *If the main text is difficult to read, you may refer only to the conclusion section in italics.*
+*"The wise man doesn't give the right answers, he poses the right questions."* - Claude Levi-Strauss
+
+> *“智者并不给出正确的答案，而是提出正确的问题。”*——克洛德·列维-斯特劳斯
+
+*Tips: If the main text is difficult to read, you may refer only to the conclusion sentences in italics.*
+
+> *如果细节难以看懂，直接看斜体的结论。*
 
 ## Meta-info of Prompting Engineering
 
-*Core Goal — Why to use it* 
+**Core Goal — Why to use it** 
   - Guide LLMs to produce the intended output.
   - Improve workflow efficiency by integrating LLMs into task pipelines.
   - Expand problem-solving capabilities, bridge expertise gaps.
 
-> *核心目标——为什么要使用它*
+> **核心目标——为什么要使用它**
 > * 引导大语言模型（LLM）生成符合预期的输出。
 > * 通过将大语言模型整合进任务流程，提高工作效率。
 > * 扩展解决问题的能力，弥补专业知识上的不足。
 
-*Methodology — How to use it* 
+**Methodology — How to use it** 
   - Humans define the goal, provide the relevant context, set the constraints, structure the task, and refine the prompt based on the model’s output.
   - Organize prompts into functionally distinct sections to separate objectives, context, constraints, and output specifications. This design reduces ambiguity and inter-section conflict, thereby improving control and consistency.
 
-> *方法论——如何使用它*
+> **方法论——如何使用它**
 > * 由人来确定目标，提供相关背景，设定约束条件，组织任务结构，并根据模型的输出不断改进提示词。
 > * 将提示词组织为在功能上彼此区分的不同部分，用来分离目标、背景、约束条件和输出要求。这种设计可以减少歧义和各部分之间的冲突，从而提高控制力和一致性。
 
-*Usage Scenario — When / Where to use it* 
+**Usage Scenario — When / Where to use it** 
   - Useful for tasks that require handling large volumes of text, complex instructions, or many constraints at once. Particularly effective for work that was previously slow or difficult for humans, such as long-context synthesis, cross-document comparison, multi-step rewriting, structured extraction from messy data, style-consistent generation at scale, and rapid adaptation of one task into many output forms.
   - It is also valuable in workflows that demand consistency, repeatability, and low coordination cost across repeated tasks.
 
-> *使用场景——何时／何地使用它*
+> **使用场景——何时／何地使用它**
 > * 适用于那些需要同时处理大量文本、复杂指令或多重约束的任务。对于一些过去由人来做时速度较慢或难度较高的工作，它尤其有效，例如长上下文综合、跨文档比较、多步骤改写、从杂乱数据中提取结构化信息、按统一风格进行大规模生成，以及将一个任务快速改造成多种输出形式。
 > * 在那些要求一致性、可重复性以及低协调成本的重复性工作流程中，它也很有价值。
 
-*Application Form — modes of using LLMs*
-  - *Chat in browser* — Best for immediate thinking support, writing, and problem-solving with almost no setup.
-  - *IDE integration* — Best for turning software development into a faster interactive workflow of coding, debugging, and refactoring.
-  - *API integration* — Best for automating repeated language tasks inside products, services, and internal workflows.
-  - *Office and work-tool integration* — Best for reducing routine work in email, documents, meetings, and presentations inside everyday productivity software.
-  - *Enterprise workflow systems* — Best for embedding LLMs into organizational processes such as support, compliance, knowledge management, and approvals.
-  - *Local deployment* — Best for private, sensitive, or offline use where control over data and environment matters most.
-  - *Agent-style tool use* — Best for multi-step tasks where the model must not only answer, but also search, retrieve, execute actions, and complete work across tools.
+**Application Form — modes of using LLMs**
+  - **Chat in browser** — Best for immediate thinking support, writing, and problem-solving with almost no setup.
+  - **IDE integration** — Best for turning software development into a faster interactive workflow of coding, debugging, and refactoring.
+  - **API integration** — Best for automating repeated language tasks inside products, services, and internal workflows.
+  - **Office and work-tool integration** — Best for reducing routine work in email, documents, meetings, and presentations inside everyday productivity software.
+  - **Enterprise workflow systems** — Best for embedding LLMs into organizational processes such as support, compliance, knowledge management, and approvals.
+  - **Local deployment** — Best for private, sensitive, or offline use where control over data and environment matters most.
+  - **Agent-style tool use** — Best for multi-step tasks where the model must not only answer, but also search, retrieve, execute actions, and complete work across tools.
 
-> *应用形式——使用大语言模型的方式*
-> * *浏览器中的聊天*（Chat in browser）——最适合几乎不需要准备即可获得即时的思考支持、写作帮助和问题解决支持。
-> * *集成到集成开发环境*（IDE integration）——最适合将软件开发变成一种更快速的交互式流程，用于编写代码、调试和重构。
-> * *API 集成*（API integration）——最适合在产品、服务和内部工作流程中自动化重复性的语言任务。
-> * *办公软件和工作工具集成*（Office and work-tool integration）——最适合在日常生产力软件中减少电子邮件、文档、会议和演示文稿相关的例行工作。
-> * *企业工作流系统*（Enterprise workflow systems）——最适合将大语言模型嵌入组织流程中，例如支持、合规、知识管理和审批等场景。
-> * *本地部署*（Local deployment）——最适合用于私密、敏感或离线场景，在这些场景中，对数据和运行环境的控制尤为重要。
-> * *代理式工具使用*（Agent-style tool use）——最适合处理多步骤任务，在这类任务中，模型不仅要回答问题，还必须跨工具进行搜索、检索、执行操作并完成工作。
+> **应用形式——使用大语言模型的方式**
+> * **浏览器中的聊天**（Chat in browser）——最适合几乎不需要准备即可获得即时的思考支持、写作帮助和问题解决支持。
+> * **集成到集成开发环境**（IDE integration）——最适合将软件开发变成一种更快速的交互式流程，用于编写代码、调试和重构。
+> * **API 集成**（API integration）——最适合在产品、服务和内部工作流程中自动化重复性的语言任务。
+> * **办公软件和工作工具集成**（Office and work-tool integration）——最适合在日常生产力软件中减少电子邮件、文档、会议和演示文稿相关的例行工作。
+> * **企业工作流系统**（Enterprise workflow systems）——最适合将大语言模型嵌入组织流程中，例如支持、合规、知识管理和审批等场景。
+> * **本地部署**（Local deployment）——最适合用于私密、敏感或离线场景，在这些场景中，对数据和运行环境的控制尤为重要。
+> * **代理式工具使用**（Agent-style tool use）——最适合处理多步骤任务，在这类任务中，模型不仅要回答问题，还必须跨工具进行搜索、检索、执行操作并完成工作。
 
 Chart 1
 : The simplified workflow of human interaction with LLMs.
@@ -158,19 +164,118 @@ Customer complaints about delivery delays increased, and two competitors launche
 Task:
 Explain the most likely reasons for the sales decline. Then give two key risks and three practical recommendations.
 ```
-## Core Prompting Techniques
+## Basic Prompting Techniques
 
-From telling the model exactly what you want with no examples (zero-shot), to demonstrating it through cases (few-shot), to forcing visible reasoning before conclusions (chain-of-thought), to recalibrating the model's entire output distribution through a persona (role prompting), to decomposing complex workflows into sequential, focused operations (prompt chaining) — these five techniques represent the core levers by which a prompt engineer controls what a language model produces and how reliably it produces it.
+### 1. Zero-Shot Prompting — Asking Directly
 
-### 1. Zero-Shot Prompting
+Zero-shot prompting means giving the model instructions without providing any examples. *You simply describe what you want, and the model attempts to fulfill the request based entirely on its training.* It is the most direct form of prompting — nothing between your intent and the model's response except the instruction itself. This technique works best for tasks where the desired output is **self-evident** from the instruction alone, like *factual questions, definitions, straightforward transformations, or summarization of a given text.* "Translate the following text to French," "Summarize this article in three sentences," or "List the capitals of South American countries" are all effective zero-shot prompts because *the task definition leaves little room for **ambiguity***. The model has seen enough examples of these task types in training to execute them reliably without demonstration. 
+It works great for things 
 
-### 2. Few-Shot Prompting
+> 零样本提示（zero-shot prompting）是指在不给模型提供任何示例的情况下直接给出指令。*你只需描述自己想要什么，模型就会完全基于其训练内容来尝试完成这一请求。*这是最直接的一种提示方式——在你的意图与模型的回应之间，除了指令本身，没有任何中间层。当单靠指令本身就足以明确所需输出时，这种技术最为有效,比如：*事实性问题、定义、直接的转换任务，或者对给定文本进行总结。*“把下面这段文字翻译成法语”“用三句话总结这篇文章”或“列出南美各国的首都”都属于有效的零样本提示，因为这些任务的定义几乎没有留下歧义空间。模型在训练中已经见过足够多这类任务，因此即使没有示范，也通常能够可靠地执行。
+> * self-evident [ˌself ˈevɪdənt] adj. 不言自明的；一看就清楚的
+> * iterate on 对……反复改进；循环测试并逐步优化
 
-### 3. Chain-of-Thought Prompting
+The primary advantage is **efficiency**. Zero-shot prompts *use the fewest tokens*, which reduces cost and latency, and they are the simplest to write, iterate on, and maintain in production. For high-volume pipelines where speed and cost matter, zero-shot is the right default starting point.
 
-### 4. Role / Persona Prompting
+> 它的主要优势在于**效率**。零样本提示*使用的词元（token）最少*，因此能降低成本和延迟，而且它们也是最容易编写、迭代和在生产环境中维护的形式。对于那些重视速度和成本的高吞吐量流程来说，零样本是正确的默认起点。
+> * high-volume pipelines 高吞吐量流程；指需要频繁、大量处理任务的自动化流程或工作链路
+> * starting point 起点；开始采用的方法或初始方案
 
-### 5. Prompt Chaining
+
+Example 3
+: 10 zero-shot prompts that are clear, narrow, and low in ambiguity. 
+
+```
+1. Translation
+
+Translate the following sentence into French. Output only the translation.
+Sentence: "The meeting starts at 9 a.m."
+
+2. Sentiment classification
+
+Classify the sentiment of the following review as Positive, Negative, or Neutral. Output only one label.
+Review: "The battery lasts all day, but the screen is too dim."
+
+3. Date extraction
+
+Extract the date from the following sentence. Return it in YYYY-MM-DD format. Output only the date.
+Sentence: "The contract was signed on March 12, 2025."
+
+4. Entity extraction
+
+From the sentence below, extract the company name. Output only the company name.
+Sentence: "Microsoft announced a new cloud partnership on Tuesday."
+
+5. Grammar correction
+
+Correct the grammar in the following sentence. Keep the meaning unchanged. Output only the corrected sentence.
+Sentence: "She go to the library every Saturdays."
+
+6. Summarization with fixed length
+
+Summarize the following paragraph in exactly one sentence of no more than 20 words.
+Paragraph: "Solar energy is becoming cheaper each year. Many countries are investing in large-scale solar farms. Improvements in battery storage are also making solar power more practical."
+
+7. Keyword extraction
+
+Extract exactly 3 keywords from the following text. Output them as a comma-separated list.
+Text: "Machine learning models require data, computation, and careful evaluation."
+
+8. JSON formatting
+
+Convert the following information into valid JSON with exactly these keys: name, age, city.
+Information: Name: Alice Chen; Age: 29; City: Boston.
+Output only valid JSON.
+
+9. Title generation
+
+Write one clear title for the article below. Use no more than 8 words. Output only the title.
+Article: "A new study shows that regular walking improves heart health, sleep quality, and mood."
+
+10. Boolean decision
+
+Answer the question with only Yes or No.
+Question: Is 17 a prime number?
+```
+
+*If LLMs give an unsatisfactory answer on a zero-shot prompt, consider rephrasing the question or adding detail*. Sometimes *asking the same question in a clearer way* dramatically improves the result. For example, if “Explain quantum computing” gives a too-complex answer, try “Explain the concept of quantum computing in simple terms for a beginner.” *Zero-shot relies heavily on how you phrase the question*. If the task is complex or unusual, a single-shot prompt might not be enough for the model to figure out exactly what you need. In such cases, we move to few-shot prompting (next section) or add additional instructions.
+
+> *如果大语言模型（LLM）在零样本提示下给出的回答不理想，可以考虑重新表述问题，或者增加更多细节*。有时候，仅仅是*把同一个问题说得更清楚一些*，结果就会明显改善。例如，如果“解释量子计算”得到的回答过于复杂，可以改成“请用适合初学者的简单语言解释量子计算这一概念”。*零样本提示在很大程度上依赖于你如何表述问题*。如果任务复杂或不寻常，单次提示可能不足以让模型准确判断你到底需要什么。在这种情况下，就需要转向少样本提示（下一节会讲）或者加入更多附加说明。
+
+Example 4
+: Request ChatGPT to summarize an article.
+
+```
+[Prompt A (generic)]
+Summarize this text.
+
+[Prompt B (specific)]
+
+Summarize the following text in 3-5 bullet points, focusing on the main arguments and key takeaways. Keep the tone neutral and avoid any unnecessary filler.
+``` 
+
+Prompt B is likely to produce a much clearer and more useful summary, because *it specifies **format** (bullet points, 3-5 of them), **content focus** (main arguments, key takeaways), and **tone** (neutral)*. In contrast, Prompt A leaves these to the model’s guesswork. This simple example shows how adding detail and structure to your prompt steers the model’s output. **Key takeaway:** Always aim to be clear and specific about what you want. In the next sections, we’ll build on this idea and introduce various techniques – from basic prompting to advanced methods – that can greatly improve ChatGPT’s performance as your assistant. 
+
+> 提示词 B 很可能会生成一个更清晰、更有用的摘要，因为*它明确规定了**格式**（使用项目符号，并控制在 3 到 5 条之间）、**内容重点**（主要论点、关键结论）以及**语气**（中立）*。相比之下，提示词 A 把这些都留给了模型自己猜。这一简单例子说明，只要在提示词中加入更多细节和结构，就能够更有效地引导模型的输出。Key takeaway: Always aim to be clear and specific about what you want.
+
+For **complex, ambiguous, or specialized tasks**, zero-shot might fall short. The *limitation* emerges when the desired behavior departs from the model's statistical defaults — *when you need specific formatting, a particular reasoning style, or output that doesn't conform to the most common treatment of a topic in training data*.  In those cases, a bare instruction rarely suffices, and you'll need to either enrich the prompt with explicit structural guidance or move to few-shot examples. Best practice is always to begin with zero-shot and add complexity only when the output demonstrates a clear gap.
+
+> 但对于复杂、含糊或高度专业化的任务，零样本提示可能就不够用了。它的*局限*会在所需行为偏离模型的统计默认值时显现出来——也就是*当你需要特定格式、某种特定推理风格，或希望输出不遵循训练数据中某一主题最常见处理方式的时候*。在这些情况下，单纯的裸指令往往不够，此时就需要要么通过明确的结构性引导来丰富提示词，要么转向使用少样本示例。最佳实践始终是：先从零样本开始，只有当输出明显暴露出缺口时，再增加复杂性。
+> fall short 不足；达不到要求
+> * statistical defaults 统计默认值；指模型在训练数据中最常见、最自然倾向采用的输出方式
+> * conform to 符合；遵循；与某种常见模式保持一致
+> * bare instruction 裸指令；只有命令本身、没有附加示例或更多引导信息的提示
+> * suffices [səˈfaɪsɪz] v. 足够；能够满足需要
+> * demonstrates a clear gap 显示出明显缺口；指输出结果清楚表明当前提示方式还不能满足要求
+
+
+### 2. Few-Shot Prompting — Demonstrating Through Cases 
+
+### 3. Chain-of-Thought Prompting — Forcing Visible Reasoning Before Conclusions
+
+### 4. Role / Persona Prompting — Recalibrating Entire Output Distribution Through a Persona
+
+### 5. Prompt Chaining — Decomposing Complex Workflows into Sequential, Focused Operations
 
 ## How do LLMs Deal with Prompts? 
 
@@ -735,7 +840,7 @@ If you want, I can turn this into a cleaner one-page cheat sheet with only the p
 ## Clever Tricks for Prompting
 
 1. 写两遍
-2. 
+2. 主要用英文，多语言夹杂
 
 ## Using Claude / ChatGPT / Gemini
 
