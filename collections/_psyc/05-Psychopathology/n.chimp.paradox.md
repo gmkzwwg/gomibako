@@ -370,3 +370,11 @@ Ronnie O’Sullivan, the greatest snooker player of all time, offered perhaps th
 > * vulnerable [ˈvʌlnərəb(ə)l] adj. 脆弱的；容易受伤或受影响的
 > * derail [diːˈreɪl] v. 使脱轨；此处比喻使一个人的表现或人生方向偏离正轨
 > * late-career renaissance 职业生涯后期的复兴；指在生涯较晚阶段重新达到高水平、焕发第二高峰
+
+Bibliography
+
+1. Chimp Management. “How High Performers Stay Calm Under Pressure Using The Chimp Model.” Accessed March 20, 2026. https://chimpmanagement.com/how-high-performers-stay-calm-under-pressure-using-the-chimp-model/.
+2. Chimp Management. “Research.” Accessed March 20, 2026. https://chimpmanagement.com/research/.
+3. Chimp Management. “The Chimp Model.” Accessed March 20, 2026. https://chimpmanagement.com/the-chimp-model/.
+4. Persaud, Raj. “The Chimp Paradox: Professor Steve Peters Explains His ‘Chimp’ Model of Human Behaviour.” Raj Persaud in Conversation - The Podcasts. Accessed March 20, 2026. https://rajpersaud.libsyn.com/the-chimp-paradox-professor-steve-peters-explains-his-chimp-model-of-human-behaviour.
+5. The Guardian. “Psychologist Puts Ronnie O’Sullivan in Winning Frame of Mind.” April 19, 2011. https://www.theguardian.com/sport/2011/apr/19/ronnie-osullivan-world-snooker-championship1.
