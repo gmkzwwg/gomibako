@@ -9,6 +9,7 @@ todos:
   - pe的局限性、pe误区（写太多，三样一样一个）
   - 先看antho好人，再看dan koe，再看文字，再看如何拆书，再看 openclaw（很多注意事项，安全、p注入）
   - Anthropic Claude API，calude code, for excel
+  - 幻觉
 ---
 
 *"The wise man doesn't give the right answers, he poses the right questions."* - Claude Levi-Strauss
@@ -268,9 +269,10 @@ For **complex, ambiguous, or specialized tasks**, zero-shot might fall short. Th
 > * suffices [səˈfaɪsɪz] v. 足够；能够满足需要
 > * demonstrates a clear gap 显示出明显缺口；指输出结果清楚表明当前提示方式还不能满足要求
 
-
 ### 2. Few-Shot Prompting — Demonstrating Through Cases 
+提示不只是一个等待解析的任务说明，而是模型功能状态的一部分，它直接塑造模型在生成响应时所构建并操作的表征。
 
+这种关于提示的功能性理解——把提示视为塑造内部表征的语境，而不是一条等待服从的指令——构成了大多数提示工程技术背后的概念基础。例如，它解释了为什么对于许多任务来说，演示示例比抽象指令更有效：与其告诉模型该做什么，不如通过示例把任务本身实例化到模型的表征空间中，从而激活参数中与正确输入—输出关系有关的模式。它也解释了为什么少样本提示中示例的顺序会显著影响性能——这一现象最早由 Zhao 等人在 2021 年系统记录下来——因为序列末尾的示例由于更接近生成点，会通过自回归生成中的近因敏感性，对模型的输出分布施加更强影响。它还解释了为什么表面上微不足道的提示变化——重述一个问题，加入一句背景性框架，改变一个词——都可能引发模型行为的显著变化：因为每一处变化都会移动模型运作所处的分布性语境，而这些位移可能具有决定性后果。
 ### 3. Chain-of-Thought Prompting — Forcing Visible Reasoning Before Conclusions
 
 ### 4. Role / Persona Prompting — Recalibrating Entire Output Distribution Through a Persona
@@ -386,195 +388,187 @@ To sum up, your job as a prompt engineer is to **author the beginning of the tex
 
 ## Guidelines for Prompting
 
-## The **"Dos and Don'ts"** of Prompt Phrasing
+## Prompt Patterns: Best vs. Worst Practices
 
-# Prompt Sentence Patterns: A Reference Guide
-
----
-
-## Part I: Patterns That Work Well
-
----
+### Part I: Patterns That Work Well
 
 **"Focus on whichever of the following are most illuminating for the topic: ..."**
 and **"Include these selectively rather than exhaustively."**
 *Why it works:* LLMs suffer from verbosity bias — a tendency to include every possible detail in an attempt to be helpful. By explicitly authorizing selectivity, you force the model's attention mechanism to rank information by relevance rather than by completeness, resulting in a much higher signal-to-noise ratio.
 
----
-
 **"Only where directly relevant, do ..."**
 *Why it works:* When a prompt requests a specific feature — quotes, examples, statistics — the model feels statistically obligated to fulfill it even when context makes it a poor fit, leading to forced or fabricated content. This phrase acts as a release valve, granting the model explicit permission to omit features that would otherwise feel shoehorned in.
 
----
+
 
 **"Provide a scholarly critical review."**
 *Why it works:* This is a persona-plus instruction. It doesn't merely ask for a summary; it activates a specific subset of training data associated with academic skepticism, peer review, and balanced argumentation, shifting output from a descriptive register to an evaluative one. The word "scholarly" alone narrows the stylistic prior considerably.
 
----
+
 
 **"Use a MECE framework."**
 *Why it works:* MECE (Mutually Exclusive, Collectively Exhaustive) is a consulting-grade organizational constraint. It prevents repetition across sections and ensures full coverage of the problem space, producing output that feels structurally complete and professionally organized rather than loosely assembled.
 
----
+
 
 **"Uncover the first principles and underlying mechanics."**
 *Why it works:* This blocks the model from producing a surface-level or common-sense answer. It instructs the model to trace back from observable phenomena to foundational truths — the physics, logic, or core axioms beneath the topic. In short: don't give me the what; give me the why behind the how.
 
----
+
 
 **"Think step by step before answering."**
 *Why it works:* This activates chain-of-thought reasoning, compelling the model to externalize its intermediate steps rather than collapsing directly to a conclusion. It is especially powerful on tasks where the intuitive answer is wrong, because it forces the model to check each inferential move rather than pattern-match to the most statistically common response.
 
----
+
 
 **"Before answering, identify what you do not know and what assumptions you are making."**
 *Why it works:* LLMs are trained to produce fluent, confident text — which makes them prone to hallucination when knowledge is absent. This instruction interrupts the confidence-completion loop by forcing an explicit epistemic audit before generation begins. It substantially reduces confabulation on uncertain topics.
 
----
+
 
 **"Steelman the opposing view before giving your own assessment."**
 *Why it works:* It invokes a well-defined argumentative structure associated with rigorous academic and legal writing. By requiring the model to first construct the strongest possible version of a position it may then critique, you prevent shallow dismissal and produce more intellectually honest output.
 
----
+
 
 **"Respond as [role] speaking to [specific audience]."**
 *Why it works:* A double anchor — role plus audience — is far more powerful than either alone. The role sets domain expertise and epistemic stance; the audience sets vocabulary level, assumed prior knowledge, and rhetorical register. The combination produces a very narrow target distribution that the model can hit with high consistency.
 
----
+
 
 **"What would a [domain expert] notice here that a layperson would miss?"**
 *Why it works:* This prompt structure bypasses the model's default mode of producing general knowledge and instead requests tacit, specialist-level insight. It activates training examples written by or for domain experts, surfacing non-obvious observations that would never appear in a generic treatment of the topic.
 
----
+
 
 **"Explain this as if you were writing for [specific publication] — e.g., Nature, The Economist, The New Yorker."**
 *Why it works:* Named publications have highly distinctive and well-represented styles in training data. Invoking them functions as a dense stylistic prior — triggering not just tone but sentence length, hedging conventions, evidence standards, and structural norms characteristic of that outlet.
 
----
+
 
 **"List assumptions this argument depends on."**
 *Why it works:* This forces deductive decomposition. Rather than evaluating a claim holistically — which tends to produce vague, hedged prose — the model must surface the hidden premises that make the argument valid or invalid. It is one of the most reliable ways to produce genuinely critical rather than superficially balanced output.
 
----
+
 
 **"Distinguish between what is well-established, what is contested, and what is speculative."**
 *Why it works:* LLMs tend to flatten epistemic distinctions, presenting established consensus and fringe speculation in the same confident register. This three-part taxonomy forces the model to assign an explicit confidence tier to each claim, producing far more intellectually honest and useful output.
 
----
+
 
 **"After your answer, identify the single most important caveat a reader should keep in mind."**
 *Why it works:* Appending a post-hoc caveat instruction separates generation from evaluation. The model completes its answer and then audits it from a critical standpoint — a two-pass structure that catches the overconfidence or oversimplification that the generation pass tends to produce.
 
----
+
 
 **"Give me the answer, then explain the reasoning. Keep them clearly separated."**
 *Why it works:* This prevents the model from burying the conclusion inside its reasoning, a common failure mode on analytical prompts. The explicit structural separation also makes it easier to evaluate whether the reasoning actually supports the answer.
 
----
+
 
 **"Ignore what is obvious and widely known. Focus on what is counterintuitive, underappreciated, or surprising."**
 *Why it works:* This directly suppresses the model's default toward high-frequency, consensus-level information — the statistical mode of its training distribution. By penalizing the obvious, it pushes generation toward lower-probability but higher-value content.
 
----
+
 
 **"If there are multiple valid interpretations of this question, address the two most important ones."**
 *Why it works:* Rather than letting the model silently pick one interpretation and proceed, this forces it to make interpretive ambiguity explicit and productive. It yields richer, more honest output and often surfaces the interpretive choice that the user actually cared about.
 
----
+
 
 **"Do not summarize. Analyze."**
 *Why it works:* "Summarize" and "analyze" activate different distributions in the model's training data. Summary is descriptive and compressive; analysis is evaluative and generative. Without this explicit instruction, models given analytical tasks often default to summarization — the more statistically common response pattern for text-plus-question inputs.
 
----
+
 
 **"Be precise rather than comprehensive."**
 *Why it works:* It resolves the model's default trade-off in favor of depth over breadth. Without this constraint, models tend to produce surveys — wide, shallow coverage that satisfies the appearance of helpfulness without delivering real insight. Precision forces the model to commit to specific, defensible claims.
 
----
+
 
 **"Where relevant, distinguish between the short-term and long-term implications."**
 *Why it works:* This temporal decomposition constraint prevents the conflation of immediate and downstream effects, a common analytical failure. It adds a structural dimension that forces the model to reason across time rather than treating a situation as a static snapshot.
 
----
+
 
 **"Use concrete examples to anchor each abstract claim."**
 *Why it works:* Abstract claims are easy to generate fluently but are often vacuous. Requiring a concrete anchor for each abstraction creates a natural verification constraint — it is much harder to fabricate a plausible specific example than a plausible general statement, so this instruction also acts as a partial hallucination filter.
 
----
+
 
 **"Synthesize, don't list."**
 *Why it works:* Bullet-point generation is the model's lowest-effort response pattern — it requires no connective reasoning between items. Explicitly requesting synthesis forces the model to establish logical or causal relationships between pieces of information, producing prose that reflects genuine analytical work rather than a formatted data dump.
 
----
 
-## Part II: Patterns That Don't Work Well — And What to Use Instead
 
----
+### Part II: Patterns That Don't Work Well — And What to Use Instead
+
+
 
 **Instead of "Don't do X," write "Instead of X, do Y."**
 *Why it works:* Negation is a weak signal. Saying "don't use jargon" activates the token for jargon prominently in the model's processing, paradoxically increasing its salience. A positive target — "use language accessible to a 12-year-old" — gives the model a statistical destination to move toward rather than an exclusion zone to navigate around.
 
----
+
 
 **Instead of "briefly" or "in 30 words," write "in 1–3 sentences."**
 *Why it works:* "Briefly" is subjective and gets resolved against the model's default verbosity. Exact word counts are hard for models to track because they process tokens, not words. Sentence boundaries, however, are defined by punctuation — a discrete, unambiguous signal the model handles reliably. Sentence-count constraints produce consistent concision without the awkward truncation that word-count targeting often causes.
 
----
+
 
 **Instead of "write a good essay," write "write an essay structured as: [claim] → [three supporting arguments] → [strongest counterargument] → [rebuttal] → [conclusion]."**
 *Why it works:* "Good" is entirely undefined in the model's generation context — it defaults to the statistical average of "good essays" in training data, which produces competent mediocrity. An explicit structural blueprint removes the model's freedom to default and instead provides a scaffold that constrains generation toward your actual intent.
 
----
+
 
 **Instead of "be creative," write "approach this from an unexpected angle" or "use an analogy from a different domain entirely."**
 *Why it works:* "Creative" is one of the most overloaded and least actionable words in a prompt. The model interprets it as a license to use slightly more vivid language while following standard patterns. A specific creative operation — unexpected angle, cross-domain analogy, subverted expectation — gives the model a concrete generative maneuver to execute.
 
----
+
 
 **Instead of "explain this simply," write "explain this to someone who understands [adjacent domain] but has never encountered [target domain]."**
 *Why it works:* "Simply" is calibrated against the model's default complexity level, which is rarely what you want. Specifying a concrete audience with known prior knowledge gives the model a precise epistemic gap to bridge, producing explanations that are genuinely calibrated rather than superficially simplified.
 
----
+
 
 **Instead of "make this better," write "make this more [precise / persuasive / concrete / surprising] by [specific operation]."**
 *Why it works:* "Better" is an unanchored comparative — the model has no reference point for what dimension to optimize. Naming the quality and the operation (e.g., "replace every abstract noun with a concrete example") gives the model a specific editorial task rather than an open-ended quality judgment it cannot meaningfully perform.
 
----
+
 
 **Instead of asking everything in one long prompt, chain it: first ask for an outline, then expand each section separately.**
 *Why it works:* A single long, complex prompt diffuses the model's attention across too many simultaneous constraints. Breaking the task into sequential prompts — each with a single, clear objective — produces higher accuracy at each step, and the structured output of each step provides cleaner, more reliable input to the next.
 
----
+
 
 **Instead of "answer as an expert," write "answer as a [specific expert] with [specific background] speaking to [specific audience]."**
 *Why it works:* "Expert" without qualification defaults to a generic, authoritative-sounding register that is often neither domain-specific nor audience-appropriate. The more precisely you define the role and the audience, the narrower the target distribution becomes — and narrower targets are hit with far greater consistency.
 
----
+
 
 **Instead of repeating the same prompt with minor variations hoping for a better answer, write "Your previous answer was too [vague / general / long]. Specifically, [state the gap]. Revise with that constraint."**
 *Why it works:* Submitting a near-identical prompt a second time produces near-identical output, because the model has no memory of what was unsatisfactory and no new conditioning signal. An explicit diagnostic — naming the failure mode and the correction — gives the model a meaningful new constraint and produces genuine improvement rather than a paraphrased version of the same answer.
 
----
+
 
 **Instead of "give me a comprehensive overview," write "identify the three things someone must understand to reason correctly about this topic, and explain only those."**
 *Why it works:* "Comprehensive" triggers the model's verbosity bias at maximum intensity, producing wide, shallow coverage that prioritizes the appearance of completeness over genuine usefulness. Asking for the essential minimum forces the model to perform a relevance-ranking operation first, then generate — a two-step process that consistently produces higher-density, more valuable output.
 
----
+
 
 **Instead of "use your judgment," write "if X, then do Y; if Z, then do W."**
 *Why it works:* "Use your judgment" hands the decision entirely to the model's statistical default — which may have no relationship to your actual preferences. Explicit conditional logic encodes your decision criteria directly into the prompt, making the model's behavior predictable and auditable rather than opaque and variable.
 
----
+
 
 **Instead of stacking multiple tasks into one sentence, assign one task per prompt turn.**
 *Why it works:* When a single prompt contains multiple tasks — "summarize this, then critique it, then rewrite it for a general audience" — the model distributes attention across all three objectives simultaneously. Each task receives less processing weight and the final output frequently conflates or truncates one or more of them. Sequential prompting lets each task receive full attention and produces clean, separable outputs.
 
----
+
 
 **Instead of "write in a [positive / engaging / professional] tone," write "write in the tone of [specific publication, author, or genre]."**
 *Why it works:* Tone adjectives like "engaging" or "professional" are too abstract to reliably shift output — every model already believes it is being engaging and professional by default. A named reference — "in the tone of a Harvard Business Review op-ed" or "in the style of a BBC documentary narration" — activates a dense, well-represented stylistic prior that produces consistently distinctive and intentional output.
 
----
+
 
 **Instead of "consider all perspectives," write "argue for [Position A]. Then argue for [Position B]. Then identify where the two arguments most directly conflict."**
 *Why it works:* "Consider all perspectives" produces a bland, false-balance treatment in which the model nods superficially at multiple views without committing to any of them. Forcing the model to argue each position sequentially and then identify the crux of disagreement produces genuine dialectical reasoning rather than the appearance of balanced analysis.

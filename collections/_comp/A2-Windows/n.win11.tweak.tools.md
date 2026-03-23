@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Best Windows 11 Tweak Tools
-tags: Tips
+tags: Windows
 ---
 
 ## windows 11 easy

@@ -1371,6 +1371,117 @@ This is not polished aphorism but raw collapse. The sentence links intellectual 
 
 ## Chinese Network Literature
 
+下面给你一组“短句型”精选，尽量覆盖你要的四类气质：冷酷格言型、哲学命题型、极其装逼型、一语道破型。为保证准确性，我先只收录短句、流传度高、出处相对稳定的条目；这不是“穷尽版”，而是第一批可直接拿来用的硬句。相关出处与流传信息可见：如《剑来》的“你只是知道自己要死了”，《雪中悍刀行》的数句名台词，《将夜》的代表性句子，以及《庆余年》的几条核心台词。 ([zh.moegirl.org.cn][1])
+
+1. 《剑来》，陈平安
+   Type: 冷酷格言型 / 一语道破型
+   Original: 你只是知道自己要死了。 ([zh.moegirl.org.cn][1])
+   Translation: You do not truly know that you were wrong; you only know that you are about to die.
+   Analysis: The force of the line lies in its brutal distinction between moral recognition and biological fear. It rejects performative repentance and reduces the speaker’s plea to pure survival instinct. The sentence is devastating because it removes all ethical disguise in a single stroke.
+
+2. 《雪中悍刀行》，李淳罡
+   Type: 极其装逼型 / 冷酷格言型
+   Original: 天不生我李淳罡，剑道万古如长夜。 ([搜狐][2])
+   Translation: Had Heaven not given birth to Li Chungang, the way of the sword would have remained an eternal night.
+   Analysis: This is grandiose self-mythologizing at its purest. The line does not merely praise skill; it casts the speaker as a civilizational event, a being whose existence changes the metaphysical brightness of an entire tradition. Its “high style” comes from hyperbole pushed to the edge of the sublime.
+
+3. 《雪中悍刀行》
+   Type: 哲学命题型 / 一语道破型
+   Original: 世间文字八万个，唯有情字最杀人。 ([知乎][3])
+   Translation: Of all the countless words in the world, only love kills most deeply.
+   Analysis: The sentence turns “情” into a lethal semantic center. It compresses an entire psychology of attachment into one aphoristic blow: language may name many things, but desire and affection wound most intimately. The elegance comes from the contrast between numerical abundance and singular fatality.
+
+4. 《雪中悍刀行》，轩辕敬城
+   Type: 哲学命题型 / 装逼型
+   Original: 人生当苦无妨，良人当归即好。 ([哔哩哔哩][4])
+   Translation: It does not matter that life is bitter, so long as the one beloved returns.
+   Analysis: The line reorders value. Suffering is demoted from absolute evil to tolerable background, while reunion becomes the true criterion of meaning. Its emotional authority comes from stoic tenderness: pain is accepted, not denied, because devotion has already established a higher scale of judgment.
+
+5. 《将夜》
+   Type: 极其装逼型 / 哲学命题型
+   Original: 天不生夫子，万古如长夜。 ([哔哩哔哩][5])
+   Translation: Had Heaven not given birth to the Master, all ages would have been like a long night.
+   Analysis: The line frames the sage as the condition of intelligibility itself. Without him, history is not merely poorer; it is dark. This produces a metaphysical scale of praise: the individual becomes a source of civilizational light, not just influence. The solemnity comes from its quasi-classical cadence.
+
+6. 《将夜》
+   Type: 哲学命题型 / 装逼型
+   Original: 鱼跃此时海，花开彼岸天。 ([搜狐][6])
+   Translation: At this moment fish leap into the sea; on the farther shore flowers bloom beneath the sky.
+   Analysis: This line is memorable because it achieves elevation through image rather than argument. The syntax is balanced, almost ceremonial, and the imagery suggests breakthrough, destiny, and a threshold crossing into a freer order of existence. Its “style” is not coldness but luminous transcendence.
+
+7. 《将夜》，宁缺
+   Type: 一语道破型 / 冷嘲型
+   Original: 你长得很美，所以就不要想得太美了。 ([句子控][7])
+   Translation: You are very beautiful, so do not imagine things too beautifully.
+   Analysis: The line works by turning a compliment into an immediate deflation. It is rhetorically sharp because the first clause raises expectation while the second clause punctures vanity. The result is social cruelty disguised as wit, which is why it feels both comic and cutting.
+
+8. 《庆余年》，陈萍萍
+   Type: 哲学命题型 / 一语道破型
+   Original: 人生一世，选条路，不退让，不更改，一直走到尽头，是件幸事。 ([cosmopolitan.com.hk][8])
+   Translation: In one lifetime, it is a blessing to choose a path, never retreat, never change, and walk it to the end.
+   Analysis: The sentence defines happiness not as comfort, but as existential coherence. It proposes that consistency of commitment gives shape to a life otherwise scattered by contingency. Its severity is important: fulfillment here comes from fidelity, not pleasure.
+
+9. 《庆余年》
+   Type: 哲学命题型 / 一语道破型
+   Original: 人生在世，总得努力地去做些什么，就算被人取笑天真，也总得默默试一下。 ([QQ阅读][9])
+   Translation: One must try to do something in this life; even if others laugh at such innocence, one must still attempt it quietly.
+   Analysis: This line is persuasive because it opposes cynicism without sounding naive. The phrase “默默试一下” gives heroism a modest form: not grand rebellion, but stubborn ethical experimentation. It is philosophically effective because it treats action, not certainty, as the basis of meaning.
+
+10. 《庆余年》
+    Type: 一语道破型 / 哲学命题型
+    Original: 人生在世，白驹过隙，要是选了个自己不喜欢的，那这辈子就白活了。 ([豆瓣][10])
+    Translation: Life passes like a white colt flashing through a crack; if one chooses what one does not truly like, that life is lived in vain.
+    Analysis: The line fuses classical temporality with modern individual choice. The first half stresses brevity; the second turns that brevity into an ethical demand for authenticity. Its impact comes from the speed of the turn: mortality is immediately converted into a criterion for decision.
+
+11. 《雪中悍刀行》
+    Type: 哲学命题型 / 一语道破型
+    Original: 人生两苦，想要却不得，拥有却失去。 ([搜狐][11])
+    Translation: There are two great sufferings in life: to desire and not obtain, and to possess and then lose.
+    Analysis: The sentence is structured like a distilled doctrine of lack. It covers both absence and deprivation, which makes it feel total: whether before attainment or after it, suffering remains. Its power lies in symmetry and compression; the rhythm itself makes the thought feel inevitable.
+
+12. 《雪中悍刀行》
+    Type: 冷酷格言型 / 哲学命题型
+    Original: 身后纵有万古名，不如生前一杯酒。 ([搜狐][11])
+    Translation: Even an everlasting fame after death is worth less than a single cup of wine while alive.
+    Analysis: This is a direct inversion of heroic value. Reputation, posterity, and historical immortality are dismissed in favor of present embodied experience. The line feels both cynical and lucid because it exposes the cost of abstract glory: it arrives too late for the one who paid for it.
+
+13. 《雪中悍刀行》
+    Type: 装逼型 / 哲学命题型
+    Original: 我心净时，何时不见如来？我心净处，何处不是西天？ ([搜狐][11])
+    Translation: When my mind is pure, when do I fail to see the Buddha? Where my mind is pure, what place is not the Western Paradise?
+    Analysis: The sentence shifts transcendence inward. Sacred geography collapses into mental condition: enlightenment is no longer elsewhere. Its prestige comes from its compressed quasi-Buddhist structure, which gives it the feel of a doctrinal revelation while remaining immediately quotable.
+
+14. 《将夜》
+    Type: 哲学命题型
+    Original: 心意不是行李，因为没有重量，所以才难提起，更难放下。 ([知乎][12])
+    Translation: Feelings are not luggage; precisely because they have no weight, they are harder to pick up, and harder still to put down.
+    Analysis: This line is philosophically elegant because it inverts the logic of burden. Emotional life is difficult not despite immateriality, but because of it. The metaphor works well because luggage is manageable through weight and form, while feeling resists such handling.
+
+15. 《庆余年》
+    Type: 冷酷格言型 / 一语道破型
+    Original: 人做了事，都应该有个结果。做对了，有糖吃；做错了，就应该受罚。 ([QQ阅读][9])
+    Translation: Whatever a person does should have a result. If it is done right, there is candy; if done wrong, punishment should follow.
+    Analysis: The apparent simplicity is what makes it severe. The line strips justice down to consequence, almost with a childlike moral grammar. That plainness creates force: it suggests that many corrupt systems fail not because justice is complex, but because they refuse even this basic clarity.
+
+如果你要，我下一条可以继续给你做：
+“第二批 20 条”，
+并且我可以按四类分别整理成：
+“最冷酷的”“最哲学的”“最能装的”“最适合当签名的”。
+
+[1]: https://zh.moegirl.org.cn/zh-cn/%E4%BD%A0%E4%B8%8D%E6%98%AF%E7%9F%A5%E9%81%93%E9%94%99%E4%BA%86%EF%BC%8C%E4%BD%A0%E5%8F%AA%E6%98%AF%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E8%A6%81%E6%AD%BB%E4%BA%86?utm_source=chatgpt.com "你不是知道错了，你只是知道自己要死了"
+[2]: https://www.sohu.com/a/513866221_100151658?utm_source=chatgpt.com "雪中悍刀行经典名句：深情情话一箩筐，天不生我李淳罡yyds"
+[3]: https://zhuanlan.zhihu.com/p/452551448?utm_source=chatgpt.com "《雪中悍刀行》：这五句经典，完美诠释爱情，令人欲罢不能"
+[4]: https://www.bilibili.com/video/BV1Hh4y1E7rB/?utm_source=chatgpt.com "《雪中悍刀行》人物志之轩辕敬城，人生当苦无妨，良人当归即 ..."
+[5]: https://www.bilibili.com/video/BV1TD4y1X7nE/?utm_source=chatgpt.com "将夜2:天不生夫子，万古如长夜！"
+[6]: https://www.sohu.com/a/273426726_100151658?utm_source=chatgpt.com "鱼跃此时海，花开彼岸天，将夜六大名句盘点，你喜欢几句呢"
+[7]: https://www.juzikong.com/posts/ffeaf63d-3985-4474-8fe1-a4756b88a20e?utm_source=chatgpt.com "你长得很美，所以就不要想得太美了。"
+[8]: https://www.cosmopolitan.com.hk/lifestyle/quote-of-joy-of-life-drama?utm_source=chatgpt.com "《慶餘年》9大金句影響人生抉擇！各角色都有精闢對白貫穿全劇"
+[9]: https://book.qq.com/book-shortage-post/r000002LKmyg1sBNNC00016A?utm_source=chatgpt.com "《庆余年》里笑死人的图片和让人清醒的金句！看了不后悔！"
+[10]: https://m.douban.com/group/topic/159796312/?utm_source=chatgpt.com "《庆余年》金句录- 小组讨论"
+[11]: https://www.sohu.com/a/595603580_121502021?utm_source=chatgpt.com "《雪中悍刀行》经典台词语录摘抄，特宇盛源"
+[12]: https://zhuanlan.zhihu.com/p/313197259?utm_source=chatgpt.com "《将夜》经典语录"
+
+
 ## Japanese Scripts of Movies, TV Series
 
 ## Japanese Scripts of Animations
@@ -2808,3 +2919,427 @@ Analysis: This sounds like a hard anthropological claim. Human dignity is locate
 [7]: https://ameblo.jp/818202/entry-10008594414.html?utm_source=chatgpt.com "名言その12「永遠なんてありえないよ。何もかもがいつかは ..."
 [8]: https://note.com/lain_lover1998/n/nabefa7ecc478?utm_source=chatgpt.com "『灰羽連盟』における原罪、そして赦し｜星凪樹"
 [9]: https://koryamata.jp/wordmanager/123/?utm_source=chatgpt.com "妄想代理人の名言・名セリフ - 漫画とアニメのこりゃまた!!"
+『エルゴプラクシー』，フーディー
+Original: 嘘はそれを嘘だと知るまでは真実だ。
+Translation: 谎言，在被知道是谎言之前，就是真实。
+Analysis: This is a cold epistemic verdict. Truth is defined not as hidden essence, but as what effectively functions as reality before exposure. ([note（ノート）][1])
+
+『エルゴプラクシー』，カズキスプラクシー
+Original: 暗闇を彷徨う者は誰しも光を求める。だが光に辿り着いた時、眩しさに目を逸らす。痛みすら感じる。真実もそういうものだ。
+Translation: 在黑暗中徘徊的人，无不追寻光明。但当他们真正抵达光明时，却会因刺眼而移开视线，甚至感到疼痛。真实也是如此。
+Analysis: The line turns truth into a paradox of desire: what is longed for in absence may become unbearable in presence. ([note（ノート）][1])
+
+『プリンセスチュチュ』，エデル
+Original: 真実は恥ずかしがりや。近付けば隠れてしまう。真実は寂しがりや。遠ざければ追ってくる。
+Translation: 真相是害羞的，靠近了它就会躲起来；真相又是寂寞的，远离了它反而会追上来。
+Analysis: This is almost perfectly aphoristic. Truth is personified in two opposite ways, producing a paradox that feels both literary and psychologically exact. ([レビューン][2])
+
+『プリンセスチュチュ』，エデル
+Original: 運命を受け入れる者に幸いあれ。運命に逆らう者に栄光あれ。
+Translation: 愿接受命运者得福；愿反抗命运者得荣耀。
+Analysis: The sentence sounds like an oracle. Its brilliance lies in refusing a single moral answer and granting dignity both to submission and to revolt. ([あなたを変える名言の森][3])
+
+『プリンセスチュチュ』，エデル
+Original: 炎は闇を照らすもの。けれども闇がなければ輝くことすらできない。
+Translation: 火焰本是照亮黑暗之物；但若没有黑暗，它甚至连发光都做不到。
+Analysis: This is a compact dialectical statement. It shows that what negates darkness still depends on darkness in order to appear at all. ([あなたを変える名言の森][3])
+
+『蟲師 続章 鈴の雫』，ギンコ
+Original: 草木も、虫も、獣も、人も、命の断りの元に生きている。
+Translation: 草木也好，虫也好，野兽也好，人也好，都活在生命的法则之下。
+Analysis: This has the structure of a cosmological proposition. Human beings are denied any privileged metaphysical status and folded back into the same order as all living things. ([ナカキヨの舟][4])
+
+『灰羽連盟』，レキ
+Original: 永遠なんてありえないよ。何もかもがいつかは終わる。だから、いいんだ。今が今しかないから、この瞬間がこんなにも大事なんだ。
+Translation: 永远这种东西根本不存在。所有一切终有结束的一天。正因如此才好。正因为此刻只此一次，这一瞬间才会如此重要。
+Analysis: It is a finitude maxim. Value is not threatened by impermanence; it is generated by impermanence. ([アメーバブログ（アメブロ）][5])
+
+『灰羽連盟』，話師
+Original: 罪を知るものに罪はない。では汝に問う。汝は罪人なりや？
+Translation: 知罪者无罪。那么我问你：你是罪人吗？
+Analysis: This is almost a theological riddle. It traps moral self-judgment in a loop: to know one’s guilt seems already to transform the status of guilt itself. ([note（ノート）][6])
+
+『妄想代理人』，猪狩慶一
+Original: その居場所がないって現実こそが、俺の、本当の居場所なんだ!
+Translation: 正是“自己根本没有归处”这一现实，才是我真正的归处！
+Analysis: The line is powerful because it transforms deprivation into definition. Instead of escaping homelessness, it names exposure to reality itself as the only honest dwelling place. ([note（ノート）][7])
+
+『serial experiments lain』，岩倉玲音
+Original: 私、もうワイヤードとリアルワールドとの境目、壊しちゃったみたいだから。
+Translation: 我好像已经把 Wired 和现实世界之间的边界打破了。
+Analysis: The sentence is metaphysical because it states boundary collapse as lived fact, not theory. The distinction between virtual and real ceases to be stable and becomes an existential condition. ([note（ノート）][1])
+
+『少女終末旅行』，イシイ
+Original: 誰かが見ていれば、それはきっと歴史になる。
+Translation: 只要有人看见，那就一定会成为历史。
+Analysis: This is a compact philosophy of witness. History is defined not by scale, but by being seen and retained. ([あなたを変える名言の森][8])
+
+『海獣の子供』，デデ
+Original: だが限りある言葉では、風のほんの一部しか捉えられない。
+Translation: 但凭借有限的语言，我们终究只能捕捉到风的极小一部分。
+Analysis: It is a precise statement on the poverty of language. Reality exceeds speech, and expression appears here as an inevitable reduction rather than mastery. ([ナカキヨの舟][4])
+
+下一轮我可以继续只找更偏这三类的小众作品：实验系、宗教寓言系、末世系。
+
+[1]: https://note.com/lain_/n/n6e7885f3e21c?utm_source=chatgpt.com "TEXHNOLYZE~地獄での希望ラフィア｜れあ"
+[2]: https://reviewne.jp/contents/12280/quotes?utm_source=chatgpt.com "少女革命ウテナの名言/名セリフ - アニメ"
+[3]: https://wordsforest.com/?p=1708&utm_source=chatgpt.com "世界を革命する力を！少女革命ウテナの名言"
+[4]: https://nakakiyonofune.blog.fc2.com/blog-entry-68.html?utm_source=chatgpt.com "TEXHNOLYZE（14）伽ノの台詞 書き起こし - nakakiyono"
+[5]: https://ameblo.jp/818202/entry-10008594414.html?utm_source=chatgpt.com "名言その12「永遠なんてありえないよ。何もかもがいつかは ..."
+[6]: https://note.com/jumptopond/n/n8c67a00bba15?utm_source=chatgpt.com "【灰羽連盟考察】罪を知るものに罪はない、汝は罪人なりや？"
+[7]: https://note.com/lnote4445/n/na08988314bd5?utm_source=chatgpt.com "「妄想代理人」paranoia agent｜さんぴん倶楽部"
+[8]: https://wordsforest.com/?p=1133&utm_source=chatgpt.com "今度こそ私はクラモリみたいに良い灰羽になるんだ。灰羽連盟 ..."
+『SHAMAN KING』，道円
+Original: 凡人が弱いのは…くだらぬ正義だの悪だのに、捉われ迷うからだ。この世の真理は、勝った者が正義であり…負けた者が悪ということのみ。
+Translation: 凡人之所以弱小……正是因为被那些无聊的正义与邪恶所束缚、所迷惑。这世上的真理只有一个：胜者为正义，败者为邪恶。
+Analysis: This is a brutally reductionist verdict. It strips morality down to outcome and treats ethical language as hesitation layered over force. ([アニメPhrases][1])
+
+『SHAMAN KING』，道珍
+Original: 正義や悪というものも、歴史や立場が変われば、まったく反対の意味となる。光と闇、美と醜と同じで、どちらかだけがあるものではない。
+Translation: 所谓正义与邪恶，一旦历史与立场改变，就会变成完全相反的意义。正如光与暗、美与丑一样，从来都不是只有单独一边存在的。
+Analysis: This line is philosophically strong because it treats moral categories as relational rather than absolute. It moves from ethics to ontology: opposition is built into the structure of things. ([アニメPhrases][2])
+
+『SHAMAN KING』，道円
+Original: 人には、それぞれの道があり。それは決して同じ道ではない。人はしょせん分かり合えぬ者同士。
+Translation: 人各有各自的道路，而且那绝不可能是同一条路。人终究是无法彼此完全理解的存在。
+Analysis: The line has the force of a pessimistic anthropology. It denies shared essence and makes incomprehension a constitutive feature of human plurality. ([アニメPhrases][1])
+
+『SHAMAN KING』，道蓮
+Original: 人間というやつは自分が迷っている最中では…どうしても道を見失ってしまうものらしい。
+Translation: 人这种东西，在自己正陷于迷惘之中的时候……终究还是会把路看丢。
+Analysis: This is a compact proposition about self-knowledge. Confusion does not merely block progress; it distorts one’s ability to perceive the path at all. ([アニメPhrases][1])
+
+『妄想代理人』，猪狩慶一
+Original: その居場所がないって現実こそが、俺の、本当の居場所なんだ!
+Translation: 正是“自己根本没有归处”这一现实，才是我真正的归处！
+Analysis: The line is powerful because it converts deprivation into definition. It refuses fantasy refuge and identifies reality itself, however harsh, as the only honest dwelling place. ([アニメPhrases][3])
+
+『灰羽連盟』，話師
+Original: 罪を知るものに罪はない。では汝に問う。汝は罪人なりや？
+Translation: 知罪者无罪。那么我问你：你是罪人吗？
+Analysis: This is almost a theological paradox. It traps moral judgment in reflexivity: awareness of guilt seems already to alter the status of guilt itself. ([アニメPhrases][3])
+
+『灰羽連盟』，レキ
+Original: 永遠なんてありえないよ。何もかもがいつかは終わる。だから、いいんだ。今が今しかないから、この瞬間がこんなにも大事なんだ。
+Translation: 永远这种东西根本不存在。所有一切终有结束的一天。正因如此才好。正因为此刻只此一次，这一瞬间才会如此重要。
+Analysis: This is a pure finitude maxim. Value is not threatened by impermanence; it is generated by impermanence. ([アニメPhrases][3])
+
+『少女終末旅行』，イシイ
+Original: 誰かが見ていれば、それはきっと歴史になる。
+Translation: 只要有人看见，那就一定会成为历史。
+Analysis: The sentence defines history through witness rather than scale. An event enters meaningful time not because it is grand, but because it is seen and retained. ([アニメPhrases][4])
+
+『海獣の子供』，デデ
+Original: だが限りある言葉では、風のほんの一部しか捉えられない。
+Translation: 但凭借有限的语言，我们终究只能捕捉到风的极小一部分。
+Analysis: This is a concise philosophy of language. Reality exceeds expression, and speech appears as a necessary but diminishing reduction of what is actually there. ([アニメPhrases][5])
+
+『海獣の子供』，アングラード
+Original: もしかしたら、僕たちの住むこの世界は…深海を埋め尽くす、無数の貝が、吐き出す夢なのかもしれないね。
+Translation: 也许，我们所居住的这个世界……不过是铺满深海的无数贝类所吐出的一个梦。
+Analysis: The line reads like speculative metaphysics. It radically dec enters the human standpoint and imagines the world itself as derivative, dreamlike, and alien in origin. ([アニメPhrases][6])
+
+『蟲師 続章 鈴の雫』，ギンコ
+Original: 草木も、虫も、獣も、人も、命の断りの元に生きている。
+Translation: 草木也好，虫也好，野兽也好，人也好，都活在生命的法则之下。
+Analysis: This has the structure of a cosmological proposition. Human beings are denied metaphysical privilege and folded back into the same order as all living things. ([アニメPhrases][4])
+
+『プリンセスチュチュ』，エデル
+Original: 炎は闇を照らすもの。けれども闇がなければ輝くことすらできない。
+Translation: 火焰本是照亮黑暗之物；但若没有黑暗，它甚至连发光都做不到。
+Analysis: This is a compact dialectical statement. It shows that what negates darkness still depends on darkness in order to appear at all. ([アニメPhrases][3])
+
+『プリンセスチュチュ』，エデル
+Original: 真実は恥ずかしがりや。近付けば隠れてしまう。真実は寂しがりや。遠ざければ追ってくる。
+Translation: 真相是害羞的，靠近了它就会躲起来；真相又是寂寞的，远离了它反而会追上来。
+Analysis: This is almost perfectly aphoristic. Truth is personified in opposite ways, producing a paradox that captures the unstable relation between inquiry and revelation. ([アニメPhrases][3])
+
+下一轮我可以继续只补两种之一：更阴冷、更像判词的；或者更玄、更像形而上命题的。
+
+[1]: https://ja.animephrases.com/quotes/title%3D668 "『SHAMAN KING』TVアニメ（2021）の名言・セリフ - アニメPhrases"
+[2]: https://ja.animephrases.com/quote/3400?utm_source=chatgpt.com "『SHAMAN KING』TVアニメ・セリフ＃3400 - アニメPhrases"
+[3]: https://ja.animephrases.com/quotes/user%3DShounen%26s%3Dviews%26p%3D7?utm_source=chatgpt.com "Shounenさんによって追加された名言・セリフ（人気順）"
+[4]: https://ja.animephrases.com/quotes/tag%3D131?utm_source=chatgpt.com "「動物」タグが付いた名言・セリフ（最高） - アニメPhrases"
+[5]: https://ja.animephrases.com/quotes/chara%3D1179%26s%3Dtop?utm_source=chatgpt.com "『海獣の子供』デデの名言・セリフ（最高） - アニメPhrases"
+[6]: https://ja.animephrases.com/quotes/title%3D609?utm_source=chatgpt.com "『海獣の子供』アニメ映画（2019）の名言・セリフ - アニメPhrases"
+
+『serial experiments lain』，岩倉康男
+Original: この世界は、リアルワールドでもワイヤードでも、人間はみんなが繋がってそれで社会が動いている。
+Translation: 这个世界，无论是现实世界还是 Wired，人与人都是彼此连接着，而社会也正因此运转。
+Analysis: This line reads like a compact ontology of connection. It does not treat human relation as sentiment, but as the hidden infrastructure of reality itself. ([serial-experiments-lain.com][1])
+
+『serial experiments lain』，四方田千砂
+Original: 死ぬって簡単な事じゃ…無いよ。
+Translation: 死，并不是那么简单的事。
+Analysis: The force lies in its refusal of easy nihilism. It strips death of theatrical glamour and restores weight, opacity, and metaphysical gravity to it. ([serial-experiments-lain.com][1])
+
+『灰羽連盟』，話師
+Original: 罪を知るものに罪はない。では汝に問う。汝は罪人なりや？
+Translation: 知罪者无罪。那么我问你：你是罪人吗？
+Analysis: This is almost a theological paradox or a Zen kōan. It traps self-judgment in a loop where acknowledging guilt seems already to alter the status of guilt itself. ([kirishin.com][2])
+
+『灰羽連盟』，レキ
+Original: 永遠なんてありえないよ。何もかもがいつかは終わる。だから、いいんだ。今が今しかないから、この瞬間がこんなにも大事なんだ。
+Translation: 永远这种东西根本不存在。所有一切终有结束的一天。正因如此才好。正因为此刻只此一次，这一瞬间才会如此重要。
+Analysis: This is a finitude maxim in nearly pure form. Value is not threatened by impermanence; it is generated by impermanence. ([アメーバブログ（アメブロ）][3])
+
+『妄想代理人』，猪狩慶一
+Original: その居場所がないって現実こそが、俺の、本当の居場所なんだ!
+Translation: 正是“自己根本没有归处”这一现实，才是我真正的归处！
+Analysis: The line is powerful because it converts deprivation into definition. Instead of escaping homelessness, it names exposure to reality itself as the only honest dwelling place. ([koryamata.jp][4])
+
+『妄想代理人』，猪狩美佐江
+Original: そう、人間とはそういうものなのです。どんなにつらくても、その現実に立ち向かうことができるのです。
+Translation: 没错，人就是这样的存在。无论再怎么痛苦，也能够去直面那样的现实。
+Analysis: This sounds like a hard anthropological proposition. Human dignity is located not in innocence or comfort, but in the ability to confront reality without counterfeit salvation. ([koryamata.jp][5])
+
+『プリンセスチュチュ』，エデル
+Original: 夢を見続ける人と夢から覚めた人はどちらが幸せ？
+Translation: 一直做梦的人，与从梦中醒来的人，究竟谁更幸福？
+Analysis: The line is philosophical because it refuses the easy prestige of “awakening.” It asks whether truth is always preferable to sustaining illusion, and leaves the question painfully open. ([アニメPhrases][6])
+
+『プリンセスチュチュ』，エデル
+Original: 可哀想なのはみゅうと？るう？それとも、あひる？
+Translation: 可怜的到底是缪特？露？还是小鸭？
+Analysis: The cleverness lies in its sudden re-indexing of pity. The line breaks sentimental certainty by forcing the listener to reconsider where suffering actually resides. ([アニメPhrases][7])
+
+『プリンセスチュチュ』，ドロッセルマイヤー
+Original: 完璧な主人公ほど退屈なものはないからね。
+Translation: 没有什么比完美的主人公更无聊了。
+Analysis: This is both meta-narrative and philosophical. It implies that flaw, fracture, and incompletion are not defects in a protagonist but the very conditions of drama and significance. ([アニメPhrases][8])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: 止めるのは、いつだってできる。だから、続けようと思う。
+Translation: 要停下，随时都可以。所以，我才想继续走下去。
+Analysis: The line is subtle because it grounds perseverance not in obligation but in freedom. Continuation matters more when abandonment remains fully available. ([電撃文庫・電撃の新文芸公式サイト][9])
+
+如果你要，我下一批可以继续只找这三种更冷门的来源：
+实验系，
+宗教寓言系，
+或者末世系。
+
+[1]: https://www.serial-experiments-lain.com/?utm_source=chatgpt.com "Serial Experiments Lain"
+[2]: https://www.kirishin.com/2020/11/09/46086/?utm_source=chatgpt.com "【空想神学読本】 「灰羽連盟」にみる現代人の「罪の輪」から ..."
+[3]: https://ameblo.jp/818202/entry-10008594414.html?utm_source=chatgpt.com "名言その12「永遠なんてありえないよ。何もかもがいつかは ..."
+[4]: https://koryamata.jp/wordmanager/123/ch1572.html?utm_source=chatgpt.com "猪狩慶一の名言・名セリフ| 妄想代理人"
+[5]: https://koryamata.jp/wordmanager/123/?utm_source=chatgpt.com "妄想代理人の名言・名セリフ - 漫画とアニメのこりゃまた!!"
+[6]: https://ja.animephrases.com/quotes/title%3D225%26tag%3D38?utm_source=chatgpt.com "『プリンセスチュチュ』TVアニメ（2002）の名言 ... - アニメPhrases"
+[7]: https://ja.animephrases.com/quote/3664?utm_source=chatgpt.com "『プリンセスチュチュ』TVアニメ・セリフ＃3664"
+[8]: https://ja.animephrases.com/quote/3650?utm_source=chatgpt.com "『プリンセスチュチュ』TVアニメ・セリフ＃3650 - アニメPhrases"
+[9]: https://dengekibunko.jp/novecomi/novel/16817330662084399618/16817330662084417047.html?utm_source=chatgpt.com "プロローグ 「森の中で・b」 | キノの旅 the Beautiful World"
+『TEXHNOLYZE』，吉井一穂
+Original: 本当の自由は何にも寄りかかれない。それは儚く、寂しく、険しい。その先に保証や見返りを求めちゃ駄目だ。
+Translation: 真正的自由，不能依附于任何东西。它脆弱、孤独、险峻。到了那里，就不能再去索求保证或回报。
+Analysis: This is a severe proposition on freedom. Freedom is defined not as permission or comfort, but as the condition of having nothing external to lean on. ([X (formerly Twitter)][1])
+
+『ブギーポップは笑わない～Boogiepop Phantom～』，ブギーポップ
+Original: 昔を懐かしむ事と過去に囚われる事は別の次元のものだよ。町の風景が変わるように人も前に進まなければならない。
+Translation: 怀念过去，与被过去困住，是两个不同层次的东西。就像街道风景会改变一样，人也必须向前走。
+Analysis: The line is philosophically exact because it splits memory into two modes: recollection as life, and fixation as paralysis. ([アメーバブログ（アメブロ）][2])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: 止めるのは、いつだってできる。だから、続けようと思う。
+Translation: 要停下，随时都可以。所以，我才想继续下去。
+Analysis: Its elegance lies in grounding perseverance in freedom rather than necessity. Continuation matters more when abandonment remains fully available. ([電撃文庫・電撃の新文芸公式サイト][3])
+
+『プリンセスチュチュ』，ドロッセルマイヤー
+Original: 完璧な主人公ほど退屈なものはないからね。
+Translation: 没有什么比完美的主人公更无聊了。
+Analysis: This is a meta-literary maxim. It implies that fracture, lack, and vulnerability are not defects in a protagonist, but the very condition of narrative significance. ([アニメPhrases][4])
+
+『プリンセスチュチュ』，エデル
+Original: 夢を見続ける人と夢から覚めた人はどちらが幸せ？
+Translation: 一直做梦的人，与从梦中醒来的人，究竟谁更幸福？
+Analysis: The line is philosophically sharp because it refuses the easy prestige of awakening. It asks whether truth is always superior to sustaining illusion, and leaves the question painfully unresolved. ([アニメPhrases][5])
+
+『プリンセスチュチュ』，ナレーター
+Original: 昔々、誰よりも花を愛する少女がおりました。街中が美しい花でいっぱいになりますようにと、少女は毎日祈りをささげ。そのために、醜い雑草は残らず、引き抜いて捨ててしまいました。やがて少女の願い通り、街は花で埋めつくされました。でも、色とりどりの美しい花でつつまれた町は、なんだか、灰色の景色に見えたということです。
+Translation: 从前，有一个比任何人都更爱花的少女。她每天祈祷，希望整座城市都开满美丽的花。为此，她把那些丑陋的杂草一株不留地拔掉丢弃了。后来，城市果然如她所愿被花朵填满了。可是，被五彩斑斓的花包围的城市，看起来却不知为何成了一片灰色的景象。
+Analysis: This is a near-parable on purity. The attempt to eliminate the ugly completely ends by draining beauty itself of contrast, plurality, and life. ([アニメPhrases][6])
+
+『灰羽連盟』，話師
+Original: 罪を知るものに罪はない。では汝に問う。汝は罪人なりや？
+Translation: 知罪者无罪。那么我问你：你是罪人吗？
+Analysis: The line is almost a theological riddle. It traps moral judgment in reflexivity, where awareness of guilt seems already to transform the status of guilt itself. ([あなたを変える名言の森][7])
+
+『灰羽連盟』，レキ
+Original: 永遠なんてありえないよ。何もかもがいつかは終わる。だから、いいんだ。今が今しかないから、この瞬間がこんなにも大事なんだ。
+Translation: 永远这种东西根本不存在。所有一切终有结束的一天。正因如此才好。正因为此刻只此一次，这一瞬间才会如此重要。
+Analysis: This is a pure finitude maxim. Value is not threatened by impermanence; it is generated by impermanence. ([あなたを変える名言の森][7])
+
+『少女革命ウテナ』，桐生冬芽
+Original: 卵の殻を破らねば、雛鳥は生まれずに死んでいく。雛は我らだ、卵は世界だ。世界の殻を破らねば、我らは生まれずに死んでいく。世界の殻を破壊せよ、世界を革命するために。
+Translation: 若不打破蛋壳，雏鸟就会未曾出生便死去。雏鸟就是我们，蛋壳就是世界。若不打破世界的壳，我们就会在未诞生之前死去。去破坏世界的壳吧，为了革命世界。
+Analysis: This is one of anime’s clearest existential allegories. The “world” is cast as both shelter and prison, and becoming fully alive requires violating the form that encloses you. ([reviewne.jp][8])
+
+『妄想代理人』，猪狩美佐江
+Original: そう、人間とはそういうものなのです。どんなにつらくても、その現実に立ち向かうことができるのです。
+Translation: 没错，人就是这样的存在。无论再怎么痛苦，也能够去直面那样的现实。
+Analysis: The sentence has the force of a hard anthropological claim. Human dignity is located not in innocence or happiness, but in the ability to confront reality without fantasy as final refuge. ([無とは何もないこと][9])
+
+『serial experiments lain』，岩倉康男
+Original: この世界は、リアルワールドでもワイヤードでも、人間はみんなが繋がってそれで社会が動いている。
+Translation: 这个世界，无论是现实世界还是 Wired，人与人都是彼此连接着，而社会也正因此运转。
+Analysis: This reads like a compact ontology of connection. Relation is not treated as optional intimacy, but as the invisible infrastructure of reality itself. ([note（ノート）][10])
+
+『海獣の子供』，デデ
+Original: だが限りある言葉では、風のほんの一部しか捉えられない。
+Translation: 但凭借有限的语言，我们终究只能捕捉到风的极小一部分。
+Analysis: It is a precise statement on the poverty of language. Reality exceeds speech, and expression appears here as an inevitable reduction rather than mastery. ([note（ノート）][10])
+
+如果你继续，我下一批可以专门只做两种中的一种：更阴冷、更像判词的；或者更玄、更像形而上命题的。
+
+[1]: https://x.com/AnimeQuotes700/status/1754610852248887649?utm_source=chatgpt.com "寂しく、険しい。その先に保証や見返りを求めちゃ駄目だ。 - X"
+[2]: https://ameblo.jp/818202/entry-10008666196.html?utm_source=chatgpt.com "名言その14「昔を懐かしむ事と過去に囚われる事は別の次元 ..."
+[3]: https://dengekibunko.jp/novecomi/novel/16817330662084399618/16817330662084417047.html?utm_source=chatgpt.com "プロローグ 「森の中で・b」 | キノの旅 the Beautiful World"
+[4]: https://ja.animephrases.com/quotes/chara%3D1465?utm_source=chatgpt.com "『プリンセスチュチュ』ドロッセルマイヤーの名言・セリフ ..."
+[5]: https://ja.animephrases.com/quotes/title%3D225%26s%3Dtop%26p%3D2?utm_source=chatgpt.com "『プリンセスチュチュ』TVアニメ（2002）の名言・セリフ ..."
+[6]: https://ja.animephrases.com/quotes/user%3DShounen%26s%3Deps%26p%3D6?utm_source=chatgpt.com "Shounenさんによって追加された名言・セリフ（年代順）"
+[7]: https://wordsforest.com/?p=1133&utm_source=chatgpt.com "今度こそ私はクラモリみたいに良い灰羽になるんだ。灰羽連盟 ..."
+[8]: https://reviewne.jp/contents/12280/quotes?utm_source=chatgpt.com "少女革命ウテナの名言/名セリフ - アニメ"
+[9]: https://nes-2-dolphin.hatenablog.com/entry/TEXHNOLYZE-wo-mita?utm_source=chatgpt.com "TEXHNOLYZE 感想 - 無とは何もないこと"
+[10]: https://note.com/lain_/n/n6e7885f3e21c?utm_source=chatgpt.com "TEXHNOLYZE~地獄での希望ラフィア｜れあ"
+『TEXHNOLYZE』，吉井一穂
+Original: 本当の自由は何にも寄りかかれない。それは儚く、寂しく、険しい。その先に保証や見返りを求めちゃ駄目だ。
+Translation: 真正的自由，不能依附于任何东西。它脆弱、孤独、险峻。到了那里，就不能再去索求保证或回报。
+Analysis: The line defines freedom in negative terms: not comfort, not protection, not reward, but unsupported existence. Its severity comes from stripping liberty of every sentimental ornament. ([X (formerly Twitter)][1])
+
+『ブギーポップは笑わない Boogiepop Phantom』，霧間誠一
+Original: 過去は唐突に現在を襲ってくる。必ず記憶の痛みを伴って。
+Translation: 过去会突然袭击现在，而且总是伴随着记忆的疼痛。
+Analysis: This is a compact proposition on trauma and temporality. The past is not over; it remains latent force, capable of breaking into the present as pain rather than as mere recollection. ([X (formerly Twitter)][2])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: 利益は正義を作り、正義は利益を生む。
+Translation: 利益制造正义，正义也会制造利益。
+Analysis: The line is chilling because it collapses ethics into circulation. Justice is no longer a transcendent norm, but a label generated by material advantage and then used to reproduce it. ([Phoenix Wind][3])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: あなたが泣いたり、あなたが怒ったり、あなたが憤ったり、あなたが憎んだり、あなたが叫んだり、あなたが苦しんだり、あなたが悲しんだり、あなたが絶望したり、あなたが決意したりすることは――あなたが正しいことの証明にはならない。
+Translation: 你哭泣也好，愤怒也好，愤慨也好，憎恨也好，呐喊也好，痛苦也好，悲伤也好，绝望也好，决意也好——这些都不能证明你是正确的。
+Analysis: This is a ruthless anti-sentimental maxim. Intensity of feeling is separated from validity, and subjective sincerity is denied the status of proof. ([LIVE THE WAY][4])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: 人は、他人の残酷さにはよく気づく。
+Translation: 人，总是很容易察觉到别人的残酷。
+Analysis: Its sharpness comes from asymmetry. Moral perception is shown to be strongest where self-implication is weakest, which makes the line an aphorism on hypocrisy and blindness. ([X (formerly Twitter)][5])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: 誰だって、悪いことはしない。誰だって、何が悪いかは自分で決めている。
+Translation: 谁都不会觉得自己在做坏事。谁都由自己来决定什么才算坏。
+Analysis: This line is philosophically dangerous in exactly the right way. It shifts evil from essence to perspective and shows morality as self-authorizing judgment rather than neutral truth. ([LIVE THE WAY][4])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: あなたを幸せにするのは、最後はいつだってあなた。
+Translation: 最终能够让你幸福的，永远都只能是你自己。
+Analysis: Beneath its gentleness lies a hard existential claim: happiness cannot be outsourced. The line rejects rescue fantasy and returns responsibility to the self. ([LIVE THE WAY][4])
+
+『少女革命ウテナ』，桐生冬芽
+Original: 卵の殻を破らねば、雛鳥は生まれずに死んでいく。雛は我らだ、卵は世界だ。世界の殻を破らねば、我らは生まれずに死んでいく。世界の殻を破壊せよ、世界を革命するために。
+Translation: 若不打破蛋壳，雏鸟就会未曾出生便死去。雏鸟就是我们，蛋壳就是世界。若不打破世界的壳，我们就会在未诞生前死去。去破坏世界的壳吧，为了革命世界。
+Analysis: This is one of anime’s clearest existential allegories. The world appears as both shelter and prison, and becoming oneself requires violence against the very form that contains one’s life. ([あなたを変える名言の森][6])
+
+『灰羽連盟』，話師
+Original: 考えなさい。答えは自分で見つけなければならない。
+Translation: 去思考。答案必须由你自己找到。
+Analysis: The line sounds simple, but it is philosophically hard. Truth here is not transmissible as doctrine; it must be achieved as an act of inward labor. ([note（ノート）][7])
+
+『妄想代理人』，馬庭光弘
+Original: 幻を知るものが、幻を屠るために手にしたいにしえの剣だ。
+Translation: 这是知晓幻象之人，为了斩除幻象而握住的古老之剑。
+Analysis: The line is cryptic in a deliberately philosophical way. Only one who understands illusion from within can hope to destroy it; knowledge and combat become inseparable. ([koryamata.jp][8])
+
+『プリンセスチュチュ』，ドロッセルマイヤー
+Original: 完璧な主人公ほど退屈なものはないからね。
+Translation: 没有什么比完美的主人公更无聊了。
+Analysis: This is meta-literary, but also ontological. A flawless self is dramatically dead; lack, fracture, and vulnerability are what make existence narratable and therefore meaningful. ([iris.dti.ne.jp][9])
+
+如果你继续，我下一轮可以专门只找两类之一：
+更小众、更阴冷、像宣判书的；
+或者更小众、更玄、更像形而上命题的。
+
+[1]: https://x.com/AnimeQuotes700/status/1754610852248887649?utm_source=chatgpt.com "険しい。その先に保証や見返りを求めちゃ駄目だ。 ... - X"
+[2]: https://x.com/AnimeQuotes700/status/1806945701450186980?utm_source=chatgpt.com "過去は唐突に現在を襲ってくる。必ず記憶の痛みを伴って。"
+[3]: https://phoenix-wind.com/maxim/anime/kinonotabi.php?utm_source=chatgpt.com "『キノの旅』名言・セリフ集～心に残る言葉の力～"
+[4]: https://live-the-way.com/anime-comic/kinos-journey/?utm_source=chatgpt.com "キノの旅の名言30選｜心に響く言葉"
+[5]: https://x.com/novel_meigen/status/1384614045983010817?utm_source=chatgpt.com "It's Hard to Say, But We Are Wrong.― 『キノの旅XIII』"
+[6]: https://wordsforest.com/?p=1708&utm_source=chatgpt.com "世界を革命する力を！少女革命ウテナの名言"
+[7]: https://note.com/4747_yanagida/n/nda6bad6001c6?utm_source=chatgpt.com "令和に残したい名作アニメ ”灰羽連盟” 〜人生でドツボにハマっ ..."
+[8]: https://koryamata.jp/wordmanager/123/?utm_source=chatgpt.com "妄想代理人の名言・名セリフ - 漫画とアニメのこりゃまた!!"
+[9]: https://www.iris.dti.ne.jp/~niino/xanadu/novel/kadono/boogie/serifu.html?utm_source=chatgpt.com "名セリフ - DTI"
+『TEXHNOLYZE』，吉井一穂
+Original: 本当の自由は何にも寄りかかれない。それは儚く、寂しく、険しい。その先に保証や見返りを求めちゃ駄目だ。
+Translation: 真正的自由，不能依附于任何东西。它脆弱、孤独、险峻。到了那里，就不能再去索求保证或回报。
+Analysis: The line defines freedom negatively and ruthlessly. Freedom is not comfort, safety, or permission, but unsupported existence without guarantees. ([アニメPhrases][1])
+
+『ブギーポップは笑わない～Boogiepop Phantom～』，ブギーポップ
+Original: 昔を懐かしむ事と過去に囚われる事は別の次元のものだよ。町の風景が変わるように人も前に進まなければならない。
+Translation: 怀念过去，与被过去困住，是两个不同层次的东西。就像街道风景会改变一样，人也必须向前走。
+Analysis: This is a precise distinction between memory and fixation. The line refuses to romanticize attachment to the past and turns movement forward into an existential necessity. ([アメーバブログ（アメブロ）][2])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: 利益は正義を作り、正義は利益を生む。
+Translation: 利益制造正义，正义也会制造利益。
+Analysis: The sentence is chilling because it collapses ethics into circulation. Justice is no longer a transcendent norm, but a label generated by material advantage and then used to reproduce it. ([phoenix-wind.com][3])
+
+『キノの旅 -the Beautiful World-』，キノ
+Original: あなたが泣いたり、あなたが怒ったり、あなたが憤ったり、あなたが憎んだり、あなたが叫んだり、あなたが苦しんだり、あなたが悲しんだり、あなたが絶望したり、あなたが決意したりすることは――あなたが正しいことの証明にはならない。
+Translation: 你哭泣也好，愤怒也好，愤慨也好，憎恨也好，呐喊也好，痛苦也好，悲伤也好，绝望也好，决意也好——这些都不能证明你是正确的。
+Analysis: This is a ruthless anti-sentimental proposition. Intensity of feeling is separated from validity, and subjective sincerity is denied the status of proof. ([LIVE THE WAY][4])
+
+『プリンセスチュチュ』，エデル
+Original: 夢を見続ける人と夢から覚めた人はどちらが幸せ？
+Translation: 一直做梦的人，与从梦中醒来的人，究竟谁更幸福？
+Analysis: The line is philosophically sharp because it refuses the easy prestige of awakening. It asks whether truth is always preferable to sustaining illusion, and leaves the question painfully open. ([アニメPhrases][5])
+
+『プリンセスチュチュ』，ドロッセルマイヤー
+Original: 完璧な主人公ほど退屈なものはないからね。
+Translation: 没有什么比完美的主人公更无聊了。
+Analysis: This is meta-literary, but also philosophical. Flaw, fracture, and incompletion are treated not as defects of existence, but as the condition of drama, individuality, and meaning. ([アニメPhrases][6])
+
+『灰羽連盟』，レキ
+Original: 永遠なんてありえないよ。何もかもがいつかは終わる。だから、いいんだ。今が今しかないから、この瞬間がこんなにも大事なんだ。
+Translation: 永远这种东西根本不存在。所有一切终有结束的一天。正因如此才好。正因为此刻只此一次，这一瞬间才会如此重要。
+Analysis: This is a finitude maxim in nearly pure form. Value is not threatened by impermanence; it is generated by impermanence. ([アメーバブログ（アメブロ）][7])
+
+『少女革命ウテナ』，桐生冬芽
+Original: 卵の殻を破らねば、雛鳥は生まれずに死んでいく。雛は我らだ、卵は世界だ。世界の殻を破らねば、我らは生まれずに死んでいく。世界の殻を破壊せよ、世界を革命するために。
+Translation: 若不打破蛋壳，雏鸟就会未曾出生便死去。雏鸟就是我们，蛋壳就是世界。若不打破世界的壳，我们就会在未诞生前死去。去破坏世界的壳吧，为了革命世界。
+Analysis: This is one of anime’s clearest existential allegories. The world appears as both shelter and prison, and becoming fully alive requires violence against the form that encloses you. ([Cosense][8])
+
+『少女終末旅行』，イシイ
+Original: 誰かが見ていれば、それはきっと歴史になる。
+Translation: 只要有人看见，那就一定会成为历史。
+Analysis: The line defines history through witness rather than scale. An event enters meaningful time not because it is grand, but because it is seen and retained. ([アニメとマンガの名言サイト][9])
+
+『海獣の子供』，デデ
+Original: だが限りある言葉では、風のほんの一部しか捉えられない。
+Translation: 但凭借有限的语言，我们终究只能捕捉到风的极小一部分。
+Analysis: It is a concise philosophy of language. Reality exceeds expression, and speech appears here as a necessary but diminishing reduction of what is actually there. ([アニメPhrases][10])
+
+『地球外少年少女』，七瀬・Б・心葉
+Original: 子供は、都合よく偏った内容だけ編集して見せれば、いい子に育つのかな。無編集のありのままの世界を見せたら、悪い子に育つのかな。
+Translation: 如果只把经过筛选、对人方便的内容编辑后给孩子看，他们就会长成“好孩子”吗？如果让他们看到未经剪辑、原原本本的世界，他们就会变成“坏孩子”吗？
+Analysis: The line is philosophically incisive because it questions whether morality is education or curation. It exposes how “goodness” may depend less on truth than on controlled exposure to reality. ([アニメPhrases][11])
+
+『妄想代理人』，猪狩慶一
+Original: その居場所がないって現実こそが、俺の、本当の居場所なんだ!
+Translation: 正是“自己根本没有归处”这一现实，才是我真正的归处！
+Analysis: The line is powerful because it converts deprivation into definition. Instead of escaping homelessness, it names exposure to reality itself as the only honest dwelling place. ([note（ノート）][12])
+
+如果你继续，我下一轮就只做两种之一：
+更小众、更阴冷、像宣判书的；
+或者更小众、更玄、更像形而上命题的。
+
+[1]: https://ja.animephrases.com/quotes/tag%3D99%26s%3Dnewest?utm_source=chatgpt.com "「真理」タグが付いた名言・セリフ（最新） - アニメPhrases"
+[2]: https://ameblo.jp/818202/entry-10008666196.html?utm_source=chatgpt.com "名言その14「昔を懐かしむ事と過去に囚われる事は別の次元 ..."
+[3]: https://phoenix-wind.com/ranking/vote/vote_kinonotabi.php/1000?utm_source=chatgpt.com "『キノの旅』名言ランキング（投票）～心に残る言葉の力～"
+[4]: https://live-the-way.com/anime-comic/kinos-journey/?utm_source=chatgpt.com "キノの旅の名言30選｜心に響く言葉"
+[5]: https://ja.animephrases.com/quote/3665?utm_source=chatgpt.com "『プリンセスチュチュ』TVアニメ・セリフ＃3665 - アニメPhrases"
+[6]: https://ja.animephrases.com/quote/3650?utm_source=chatgpt.com "『プリンセスチュチュ』TVアニメ・セリフ＃3650 - アニメPhrases"
+[7]: https://ameblo.jp/818202/entry-10008594414.html?utm_source=chatgpt.com "名言その12「永遠なんてありえないよ。何もかもがいつかは ..."
+[8]: https://scrapbox.io/mtane0412/%E5%8D%B5%E3%81%AE%E6%AE%BB%E3%82%92%E7%A0%B4%E3%82%89%E3%81%AD%E3%81%B0%E3%80%81%E9%9B%9B%E9%B3%A5%E3%81%AF%E7%94%9F%E3%81%BE%E3%82%8C%E3%81%9A%E3%81%AB%E6%AD%BB%E3%82%93%E3%81%A7%E3%81%84%E3%81%8F%E3%80%82%E9%9B%9B%E3%81%AF%E6%88%91%E3%82%89%E3%81%A0%E3%80%81%E5%8D%B5%E3%81%AF%E4%B8%96%E7%95%8C%E3%81%A0%E3%80%82%E4%B8%96%E7%95%8C%E3%81%AE%E6%AE%BB%E3%82%92%E7%A0%B4%E3%82%89%E3%81%AD%E3%81%B0%E3%80%81%E6%88%91%E3%82%89%E3%81%AF%E7%94%9F%E3%81%BE%E3%82%8C%E3%81%9A%E3%81%AB%E6%AD%BB%E3%82%93%E3%81%A7%E3%81%84%E3%81%8F%E3%80%82%E4%B8%96%E7%95%8C%E3%81%AE%E6%AE%BB%E3%82%92%E7%A0%B4%E5%A3%8A%E3%81%9B%E3%82%88%E3%80%81%E4%B8%96%E7%95%8C%E3%82%92%E9%9D%A9%E5%91%BD%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AB?utm_source=chatgpt.com "卵の殻を破らねば、雛鳥は生まれずに死んでいく。雛は我らだ"
+[9]: https://animemanga33.com/archives/25074?utm_source=chatgpt.com "「少女終末旅行(しょうじょしゅうまつりょこう)」の名言 ..."
+[10]: https://ja.animephrases.com/quotes/title%3D609?utm_source=chatgpt.com "『海獣の子供』アニメ映画（2019）の名言・セリフ - アニメPhrases"
+[11]: https://ja.animephrases.com/quotes/title%3D775%26s%3Dtop?utm_source=chatgpt.com "『地球外少年少女』Webアニメ（2022）の名言・セリフ（最高 ..."
+[12]: https://note.com/lnote4445/n/na08988314bd5?utm_source=chatgpt.com "「妄想代理人」paranoia agent｜さんぴん倶楽部"

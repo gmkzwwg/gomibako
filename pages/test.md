@@ -6,7 +6,7 @@ show_date: true
 category: 测试页面
 tags: Markdown 测试
 publish: true
-post_list: false
+post_list: date
 toc: false
 toc_depth: 6
 comment: true
