@@ -79,11 +79,30 @@ flowchart LR
     E -->|Refine prompt, examples, constraints, or tool choice| C
 ```
 
+## What do LLMs feel like?
+
+LLMs are like extremely well-read improvisational librarians: they have absorbed patterns from vast numbers of books, articles, conversations, and examples, so when you ask a question, they do not “look up” a fixed answer so much as assemble a likely next sequence of words based on what fits the request. That lets them explain ideas, summarize texts, translate, draft emails, brainstorm, tutor, and help with coding, but it also means they are not the same as a database, a scientist, or a witness to facts, because they can sound confident even when mistaken.
+
+> 大型语言模型就像知识极其广博、又擅长即兴应答的图书管理员：它们从海量的书籍、文章、对话和实例中吸收了各种模式，因此当你提出问题时，它们并不是去“查找”一个固定答案，而是根据什么样的后续词语最符合你的请求，来组织出一个可能的词语序列。正因如此，它们能够解释概念、总结文本、进行翻译、起草电子邮件、开展头脑风暴、辅导学习，并帮助编程；但这也意味着，它们并不等同于数据库、科学家，或事实的亲历见证者，因为它们即使出错，也可能听起来十分自信。
+> * LLMs [ˌel el ˈemz] 大型语言模型（Large Language Models）的缩写
+> * improvisational [ˌɪmprəvaɪˈzeɪʃənəl] adj.即兴发挥的；即席的
+> * absorbed [əbˈzɔːbd] v.吸收；汲取；理解并掌握
+> * vast [vɑːst] adj.巨大的；大量的；广阔的
+> * look up 查找；检索
+> * assemble [əˈsembl] v.组装；整合；组织
+> * sequence [ˈsiːkwəns] n.序列；顺序；一连串事物
+> * summarize [ˈsʌməraɪz] v.总结；概括
+> * brainstorm [ˈbreɪnstɔːm] v./n.集思广益；头脑风暴
+> * tutor [ˈtjuːtə(r)] v.辅导；指导学习 n.家庭教师；辅导者
+> * database [ˈdeɪtəbeɪs] n.数据库
+> * witness to facts 对事实的见证者；指能够直接证明或陈述事实情况的人
+> * mistaken [mɪˈsteɪkən] adj.错误的；弄错的
+
 ## What is a Prompt?
 
-Someone new to LLMs often interacts with them just as they would with a human. However, this approach does not always yield satisfactory responses. Because a machine’s communication preferences differ from a human’s, you must understand the tendencies and nature of an LLM to obtain consistent and high-quality results. In other words, you need to understand what a prompt is and master a few techniques for writing them effectively.
+Someone new to LLMs often talks with them just as they would with a human. However, this approach does not always yield satisfactory responses. Because a machine’s communication preferences differ from a human’s, you must understand the tendencies and nature of an LLM to obtain consistent and high-quality results. In other words, you need to understand what a prompt is and master a few techniques for writing them effectively.
 
-> 刚开始接触大语言模型（LLM）的人，常常会像与人交谈那样与它们互动。然而，这种做法并不总能得到令人满意的回应。由于机器的“交流偏好”与人类不同，要想获得稳定且高质量的结果，就必须理解大语言模型的倾向及其运作特性。换言之，需要理解什么是提示词（prompt），并掌握几种有效撰写提示词的技巧。
+> 刚开始接触大语言模型（LLM）的人，与大语言模型交谈的方式与人类之间的对话很相似。然而，这种做法并不总能得到令人满意的回应。由于机器的“交流偏好”与人类不同，要想获得稳定且高质量的结果，就必须理解大语言模型的倾向及其运作特性。换言之，需要理解什么是提示词（prompt），并掌握几种有效撰写提示词的技巧。
 
 A good prompt consists 3 components:
   1. **Task description** : a clear instruction that tells the model what it should do, i.e., the rule.

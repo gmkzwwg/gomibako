@@ -7,7 +7,6 @@ comment: true
 home_btn: true
 btn_text: true
 footer: false
-highlight: false
 permalink: /cv
 ---
 

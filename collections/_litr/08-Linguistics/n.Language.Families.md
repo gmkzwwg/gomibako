@@ -1,5 +1,6 @@
 ---
-category: Prime
+category: Notes
+abbreviation: Language Families
 title: Comparative Lecture Notes on the World’s Major Language Families
 tags: Linguistics
 ---

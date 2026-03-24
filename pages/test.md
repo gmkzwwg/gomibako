@@ -5,7 +5,6 @@ author: 垃圾残渣
 show_date: true
 category: 测试页面
 tags: Markdown 测试
-publish: true
 post_list: date
 toc: false
 toc_depth: 6
@@ -13,7 +12,6 @@ comment: true
 home_btn: true
 btn_text: true
 footer: true
-highlight: false
 bilingual: true
 encrypted_text: true
 permalink: /test
@@ -45,7 +43,9 @@ New Paragraph *(separated by a blank line)*.
 > continuing the same block.
 {: data-bt="0"}
 
+New page with HTML5 + CSS 3:
 
+<div style="break-after: page;"></div>
 
 ## Heading 2
 

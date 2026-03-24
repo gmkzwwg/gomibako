@@ -70,8 +70,7 @@ defaults:
     scope:
       path          : ""  # an empty string here means all files in the project
     values:
-      layout              : "post"      # which layout to use by default
-      publish             : true        # whether to show by default      
+      layout              : "post"      # which layout to use by default  
       btn_text            : true        # whether show button text by default
       collection_list     : true        # whether show archive button by default
       home_btn            : true        # whether show home by default
@@ -85,7 +84,6 @@ defaults:
       post_list           : false       # whether show list of post by default      
       comment             : false
       footer              : false       # whether show footer by default
-      highlight           : false
       bilingual           : false       # whether use <blockquote> as bilingual section
 
 # 5. Social Media Accounts
