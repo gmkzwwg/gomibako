@@ -2,9 +2,18 @@
 layout: default
 ---
 
+{% if page.todos != false %}
+    <script src="{{site.url}}{{site.baseurl}}/src/assets/js/todo-summary.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        initTodoCollector('.div_article');
+      });
+    </script>
+{% endif %}
 <h1 id="{{page.title}}">{{ page.title }}</h1>
 {% include post_info.html %}
 <br />
 <div class="content">
 {{ content }}
 </div>
+

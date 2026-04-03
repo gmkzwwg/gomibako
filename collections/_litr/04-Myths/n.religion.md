@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 世界各宗教世界观、主张和主要经典
-tags: Myths
+subclass: Myths
 ---
 
 

@@ -2,7 +2,7 @@
 layout: print
 category: Notes
 title: Claude vs ChatGPT
-tags: LLMs
+subclass: LLMs
 ---
 
 - [宇宙学](#宇宙学)

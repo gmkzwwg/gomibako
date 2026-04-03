@@ -1,0 +1,114 @@
+<div>
+  {%- assign ordered_names = page.collections_to_show | default: site.collection_order -%}
+
+  {%- if ordered_names -%}
+    {%- for col_in_order in ordered_names -%}
+      {%- for collection in site.collections -%}
+        {%- if collection.label == col_in_order -%}
+          <div style="margin-bottom: 2rem;">
+            <div style="margin-bottom: 0.7rem; color: white; font-weight: 700; font-size: 1.05rem;">
+              {%- if collection.alias -%}
+                {{ collection.alias }}
+              {%- else -%}
+                {{ collection.label }}
+              {%- endif -%}
+            </div>
+
+            {%- capture all_subclasses_raw -%}
+              {%- for post in collection.docs -%}
+                {%- if post.publish != false and post.subclass and post.subclass != "" -%}
+                  {{- post.subclass | strip -}}|||
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endcapture -%}
+
+            {%- assign all_subclasses = all_subclasses_raw | split: '|||' | uniq -%}
+
+            {%- for current_subclass in all_subclasses -%}
+              {%- assign clean_subclass = current_subclass | strip -%}
+              {%- if clean_subclass != "" -%}
+                <div style="display: grid; grid-template-columns: 15rem 1fr; column-gap: 1rem; align-items: start; padding: 0.45rem 0; border-top: 1px solid rgba(255,255,255,0.16);">
+                  <div style="color: white; padding-left: 2ch; padding-right: 1rem; border-right: 1px solid rgba(255,255,255,0.16);">
+                    [{{ clean_subclass }}]
+                  </div>
+
+                  <div style="color: #00ff41;">
+                    {%- for post in collection.docs -%}
+                      {%- if post.publish != false and post.subclass -%}
+                        {%- assign post_subclass = post.subclass | strip -%}
+                        {%- if post_subclass == clean_subclass -%}
+                          <div style="margin-bottom: 0.35rem;">
+                            <a
+                              class="a_title"
+                              href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                              style="color: #00ff41; text-decoration: none;"
+                            >
+                              {{ post.title }}
+                            </a>
+                          </div>
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+
+  {%- else -%}
+    {%- for collection in site.collections -%}
+      <div style="margin-bottom: 2rem;">
+        <div style="margin-bottom: 0.7rem; color: white; font-weight: 700; font-size: 1.05rem;">
+          {%- if collection.alias -%}
+            {{ collection.alias }}
+          {%- else -%}
+            {{ collection.label }}
+          {%- endif -%}
+        </div>
+
+        {%- capture all_subclasses_raw -%}
+          {%- for post in collection.docs -%}
+            {%- if post.publish != false and post.subclass and post.subclass != "" -%}
+              {{- post.subclass | strip -}}|||
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+
+        {%- assign all_subclasses = all_subclasses_raw | split: '|||' | uniq -%}
+
+        {%- for current_subclass in all_subclasses -%}
+          {%- assign clean_subclass = current_subclass | strip -%}
+          {%- if clean_subclass != "" -%}
+            <div style="display: grid; grid-template-columns: 15rem 1fr; column-gap: 1rem; align-items: start; padding: 0.45rem 0; border-top: 1px solid rgba(255,255,255,0.16);">
+              <div style="color: white; padding-left: 2ch; padding-right: 1rem; border-right: 1px solid rgba(255,255,255,0.16);">
+                [{{ clean_subclass }}]
+              </div>
+
+              <div style="color: #00ff41;">
+                {%- for post in collection.docs -%}
+                  {%- if post.publish != false and post.subclass -%}
+                    {%- assign post_subclass = post.subclass | strip -%}
+                    {%- if post_subclass == clean_subclass -%}
+                      <div style="margin-bottom: 0.35rem;">
+                        <a
+                          class="a_title"
+                          href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                          style="color: #00ff41; text-decoration: none;"
+                        >
+                          {{ post.title }}
+                        </a>
+                      </div>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
+</div>

@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Mathematical Analysis
-tags: Analysis
+subclass: Analysis
 ---
 
 

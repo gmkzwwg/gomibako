@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: 网络哲学文章
-tags: Readings
+subclass: Readings
 ---
 
 注：本页面目的仅为个人学习、摘抄、备忘，其他人员不得以任何理由使用。所有内容著作权归原作者本人所有。

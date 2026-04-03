@@ -3,7 +3,7 @@ layout: print
 category: Notes
 abbreviation: Prompting Engineering
 title: 用于增进工作效能和辅助学习的大语言模型提示词工程
-tags: LLMs
+subclass: LLMs
 ---
 
 > *如果正文阅读有困难，可以只看斜体的结论部分。*

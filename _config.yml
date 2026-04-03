@@ -76,7 +76,7 @@ defaults:
       home_btn            : true        # whether show home by default
       maximize            : true        # whether show maximize button by default
       encrypted_text      : false       # whether use encrytion function by default
-      toc                 : true        # whether show table of content by default
+      toc                 : "chart"     # whether show table of content by default
       toc_depth           : 4           # the toc depth by default
       author              :             # author name by default
       show_date           : false       # whether show date message by default

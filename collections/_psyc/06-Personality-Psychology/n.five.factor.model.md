@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 大五人格维度简介
-tags: Personality-Psychology
+subclass: Personality-Psychology
 ---
 
 人格心理学在 20 世纪很长时间面临一个基础难题：如果我们承认人有稳定差异（stable individual differences），那么这些差异应该用什么“最小但充分”的坐标系来表示，才能让研究结果可累积、可比较、可复现。精神分析、人本主义、社会学习等传统提供的是机制叙事与临床解释，但在跨样本可重复的量化维度上缺乏统一标准；情境主义（situationism）与“特质稳定性（trait stability）”之争又进一步迫使研究者区分：我们要讨论的到底是“人随情境改变的状态（state）”，还是“跨时间、跨情境分布稳定的倾向参数（trait）”。

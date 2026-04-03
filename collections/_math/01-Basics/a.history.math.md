@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: 数学史和数学思想
-tags: Basics
+subclass: Basics
 ---
 
 ## 古希腊时期：几何为主、注重推理和证明、形成抽象

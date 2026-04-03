@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Latin Words in English
-tags: English
+subclass: English
 ---
 
 | **Latin Word**              | **Pronunciation**                   | **Meaning**                            | **Example Sentence**                                                              |

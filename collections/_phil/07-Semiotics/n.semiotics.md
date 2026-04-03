@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 符号学笔记
-tags: Semiotics
+subclass: Semiotics
 ---
 
 ## 符号学的基本概念

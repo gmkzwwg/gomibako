@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 宇宙学原理 Cosmological Principle
-tags: Cosmology
+subclass: Cosmology
 ---
 
 ## 定义和解释

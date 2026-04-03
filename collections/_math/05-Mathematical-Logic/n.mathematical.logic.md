@@ -1,7 +1,7 @@
 ---
 category: Notes
 title:  Mathematical Logic
-tags: Mathematical-Logic
+subclass: Mathematical-Logic
 ---
 
 Resources:

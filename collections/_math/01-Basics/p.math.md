@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Mathematics - Its Roadmap and Knowledge Architecture
-tags: Basics
+subclass: Basics
 ---
 
 TODO: 调查学习高等数学之前需要哪些基础？

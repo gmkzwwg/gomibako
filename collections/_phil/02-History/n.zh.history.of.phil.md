@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 西方哲学史大纲
-tags: History
+subclass: History
 ---
 
 ## 西方哲学史的元问题

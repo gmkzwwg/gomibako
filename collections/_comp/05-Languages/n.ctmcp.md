@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Concepts, Techniques, and Models of Computer Programming
-tags: Languages
+subclass: Languages
 ---
 
 ## 第一章 程序设计概念简介

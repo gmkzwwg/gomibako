@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Coding Aesthetic
-tags: Programming
+subclass: Programming
 ---
 
 Video Course: [Youtube @CodeAesthetic](https://www.youtube.com/@CodeAesthetic)

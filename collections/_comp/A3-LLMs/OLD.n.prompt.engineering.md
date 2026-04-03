@@ -2,7 +2,7 @@
 layout: print
 category: Notes
 title: LLM Prompt Engineering for Study Assistance
-tags: LLMs todo
+subclass: LLMs todo
 bilingual: true
 ---
 

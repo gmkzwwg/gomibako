@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 世界神话体系故事、神表和社会意识形态分析
-tags: Myths
+subclass: Myths
 ---
 
 ## 全球神话体系的结构母题比较与综合论析

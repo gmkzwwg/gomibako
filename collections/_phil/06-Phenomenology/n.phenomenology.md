@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: Phenomenology
-tags: Phenomenology
+subclass: Phenomenology
 ---
 
 ## 一句话解释

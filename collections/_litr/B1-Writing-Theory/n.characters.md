@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: How to Create Characters with Rich Inner Depth
-tags: Writing-Theory
+subclass: Writing-Theory
 ---
 
 # A Cross-Disciplinary Framework for Character Realism

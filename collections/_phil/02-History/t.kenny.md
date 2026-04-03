@@ -1,7 +1,7 @@
 ---
 category: Texts
 title:  A New History of Western Philosophy
-tags: History
+subclass: History
 ---
 
 ## Preface

@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: Timelines of Development of Western Literature
-tags: History
+subclass: History
 ---
 
 <!-- ## 世界文学史大事年表

@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: 增加人类学习和工作能力的神经心理学和脑科学小技巧
-tags: Learning-Psychology
+subclass: Learning-Psychology
 ---
 
 分级：

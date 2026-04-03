@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: Contemporary Theories of Knowledge
-tags: Epistemology
+subclass: Epistemology
 ---
 
 Author: John Pollock, Joseph Cruz

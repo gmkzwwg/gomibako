@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Advanced Algebra
-tags: Algebra
+subclass: Algebra
 ---
 
 主要参考资料：

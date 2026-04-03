@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: Quotes and Original text of Philosophiers
-tags: Readings
+subclass: Readings
 ---
 
 CLARIFICATION: Collecting well-known sayings of philosophiers is not a way to learn phylosophy.

@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: The Theory Architecture of Sigmund Freud
-tags: Psychoanalysis
+subclass: Psychoanalysis
 ---
 
 ## Introduction

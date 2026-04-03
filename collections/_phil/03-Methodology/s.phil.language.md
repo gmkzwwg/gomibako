@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Quick Tutorial of Philosophy Language
-tags: Methodology
+subclass: Methodology
 ---
 
 ## Continental Philosophy: Language, Style, and Core Concepts

@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Commonly Used Units in Astronomy and Cosmology
-tags: Cosmology
+subclass: Cosmology
 ---
 
 

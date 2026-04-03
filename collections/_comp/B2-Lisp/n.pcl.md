@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Practical Common Lisp
-tags: Lisp
+subclass: Lisp
 ---
 
 ### Chapter 4

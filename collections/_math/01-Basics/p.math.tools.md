@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Learn Mathematics with Modern Tools and Workflow
-tags: Basics
+subclass: Basics
 ---
 
 ## Modern Math Learning and Research: Tools & Workflows

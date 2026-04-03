@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: 天区图 Sky Chart 和星图 Star Atlas
-tags: Cosmology
+subclass: Cosmology
 ---
 
 ## Sky Chart

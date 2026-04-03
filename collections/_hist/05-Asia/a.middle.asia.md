@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: 中亚古代史时间线
-tags: Asia
+subclass: Asia
 ---
 
 ## 中亚主要国家兴衰

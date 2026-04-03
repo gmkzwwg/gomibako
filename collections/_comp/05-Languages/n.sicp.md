@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Structure and Interpretation of Computer Programs
-tags: Languages
+subclass: Languages
 ---
 
 Textbook: 

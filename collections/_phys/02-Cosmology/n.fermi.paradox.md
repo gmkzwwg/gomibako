@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 费米悖论 Fermi Paradox 
-tags: Cosmology
+subclass: Cosmology
 ---
 
 ## 费米悖论

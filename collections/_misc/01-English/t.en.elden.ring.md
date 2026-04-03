@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Elden Ring Dialogue in Order
-tags: English
+subclass: English
 ---
 
 ## 开幕动画 Intro Cinematic

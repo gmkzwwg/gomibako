@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: The Theory Architecture of Jacques Lacan
-tags: Psychoanalysis
+subclass: Psychoanalysis
 ---
 
 Lacan’s work is a "return to Freud" through the lens of Saussurean linguistics and Hegelian dialectics.

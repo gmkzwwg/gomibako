@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Psychoanalysis - Its Roadmap and Knowledge Architecture
-tags: Psychoanalysis
+subclass: Psychoanalysis
 ---
 
 ## A MECE Brief History of Psychoanalysis (Classical → Relational → Structural)

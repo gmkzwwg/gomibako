@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: awk - Quick Reference and Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 **This cheatsheet does not relate to default settings.**

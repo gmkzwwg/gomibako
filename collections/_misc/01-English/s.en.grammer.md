@@ -2,7 +2,7 @@
 layout: compact
 category: Sheet
 title: 英语语法速查表
-tags: English
+subclass: English
 toc_depth: 4
 ---
 

@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Low Power-Comsumption NAS Crafting
-tags: Linux
+subclass: Linux
 ---
 
 ## Truenas Scale Quick Start Guide

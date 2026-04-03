@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Model Theory
-tags: Mathematical-Logic
+subclass: Mathematical-Logic
 ---

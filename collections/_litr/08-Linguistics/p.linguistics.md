@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Linguistics - Its Roadmap and Knowledge Architecture
-tags: Linguistics
+subclass: Linguistics
 ---
 
 ## Knowledge Architecture

@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Subtle Differences Between English Words
-tags: English
+subclass: English
 ---
 
 ## 动词 verb

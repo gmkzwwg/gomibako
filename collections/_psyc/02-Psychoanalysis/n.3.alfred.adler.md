@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: The Theory Architecture of Alfred Adler
-tags: Psychoanalysis
+subclass: Psychoanalysis
 ---
 ## Introduction
 

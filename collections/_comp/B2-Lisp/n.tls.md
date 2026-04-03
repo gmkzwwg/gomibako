@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: The Little Schemer
-tags: Lisp
+subclass: Lisp
 ---
 
 1. The five rules of Scheme

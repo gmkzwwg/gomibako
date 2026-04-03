@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: The Theory Architecture of Anna Freud
-tags: Psychoanalysis
+subclass: Psychoanalysis
 ---
 
 ## Introduction The Architecture of the Inner World: A Structural Analysis of Melanie Klein’s Psychoanalytic System

@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: markdown - Quick Reference and Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 ## Markdown Basics

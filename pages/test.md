@@ -4,7 +4,7 @@ title: Jekyll Markdown + HTML Feature Test
 author: 垃圾残渣
 show_date: true
 category: 测试页面
-tags: Markdown 测试
+subclass: Markdown 测试
 post_list: date
 toc: false
 toc_depth: 6

@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Introduction to Western Philosophy
-tags: Basics
+subclass: Basics
 ---
 
 ## 什么是哲学？

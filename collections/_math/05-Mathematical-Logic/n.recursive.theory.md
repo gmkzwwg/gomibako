@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Recursive Theory
-tags: Mathematical-Logic
+subclass: Mathematical-Logic
 ---

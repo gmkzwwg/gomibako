@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Literature - Its Roadmap and Knowledge Architecture
-tags: Basics
+subclass: Basics
 bilingual: true
 ---
 

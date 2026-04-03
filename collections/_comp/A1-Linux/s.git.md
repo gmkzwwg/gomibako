@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: git - Quick Reference and Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 A useful and brief Git cheatsheet.

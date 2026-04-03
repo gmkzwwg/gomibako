@@ -6,25 +6,67 @@ function toggle_toc() {
 // open collection list -> header.html -> .collection_list
 function open_collection_list() {
     document.getElementById("the_collection_list").classList.add("show");
-    show_collection("all");
-}
-// close collection list -> collections.html -> .collection_list
-function close_collection_list() {
-    document.getElementById("the_collection_list").classList.remove("show");
+
     var collection_labels = document.getElementsByClassName("post_list_in_1_collection");
-    for (idx = 0; idx < collection_labels.length; idx++) {
+    for (var idx = 0; idx < collection_labels.length; idx++) {
         collection_labels[idx].classList.remove("show");
+    }
+
+    var panel = document.getElementById("archive_panel");
+    if (panel) {
+        panel.classList.add("show");
+        panel.scrollTop = 0;
+    }
+
+    var title = document.getElementById("clh_title");
+    if (title) {
+        title.innerHTML = "";
     }
 }
 
-// toggle  -> collections.html -> .post_list
-function show_collection(col_name) {
+// close collection list -> collections.html -> .collection_list
+function close_collection_list() {
+    document.getElementById("the_collection_list").classList.remove("show");
+
     var collection_labels = document.getElementsByClassName("post_list_in_1_collection");
-    for (idx = 0; idx < collection_labels.length; idx++) {
+    for (var idx = 0; idx < collection_labels.length; idx++) {
         collection_labels[idx].classList.remove("show");
     }
-    document.getElementById(col_name).classList.add("show");
-    document.getElementById("clh_title").innerHTML = col_name;
+
+    var title = document.getElementById("clh_title");
+    if (title) {
+        title.innerHTML = "";
+    }
+}
+
+// click collection label -> scroll inside the single archive panel
+function show_collection(col_name, display_name) {
+    var collection_labels = document.getElementsByClassName("post_list_in_1_collection");
+    for (var idx = 0; idx < collection_labels.length; idx++) {
+        collection_labels[idx].classList.remove("show");
+    }
+
+    var panel = document.getElementById("archive_panel");
+    if (!panel) return;
+
+    panel.classList.add("show");
+
+    var target = document.getElementById("collection_" + col_name);
+    if (target) {
+        var top = target.getBoundingClientRect().top
+                - panel.getBoundingClientRect().top
+                + panel.scrollTop;
+
+        panel.scrollTo({
+            top: top,
+            behavior: "smooth"
+        });
+    }
+
+    var title = document.getElementById("clh_title");
+    if (title) {
+        title.innerHTML = display_name || col_name;
+    }
 }
 
 //scroll page -> header.html -> .span_right prev & next btn

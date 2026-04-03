@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Web Development, HTML, CSS and Javascript 
-tags: Webdev
+subclass: Webdev
 ---
 
 Abbreviation Glossary. 

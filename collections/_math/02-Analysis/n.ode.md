@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Ordinary Differential Equation
-tags: Analysis
+subclass: Analysis
 ---

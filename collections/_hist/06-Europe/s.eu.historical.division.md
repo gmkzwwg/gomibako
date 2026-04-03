@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: Historical Divisions of European History
-tags: Europe
+subclass: Europe
 ---
 
 ## Historical Divisions

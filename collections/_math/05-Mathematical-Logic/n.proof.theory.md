@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Proof Theory
-tags: Mathematical-Logic
+subclass: Mathematical-Logic
 ---

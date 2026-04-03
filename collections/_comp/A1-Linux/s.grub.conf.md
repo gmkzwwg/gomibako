@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Grub Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 ## Introduction to GNU Grub

@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: French Pronouncation Tips
-tags: French
+subclass: French
 ---
 
 ## Letters and their pronunciation

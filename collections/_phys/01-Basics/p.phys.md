@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Physics - Its Roadmap and Knowledge Architecture
-tags: Basics
+subclass: Basics
 ---
 
 ## Systematic Knowledge Framework for the 21st-Century Theoretical Physicist

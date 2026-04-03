@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: historical Division of World History
-tags: Basics
+subclass: Basics
 ---
 
 ## 埃及 [5450bc-639]

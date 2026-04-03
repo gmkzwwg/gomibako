@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: The Annotated Lolita
-tags: Texts
+subclass: Texts
 ---
 
 ## The Annotated Lolita

@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Writing Mathematical Formulas in LaTeX 
-tags: Basics
+subclass: Basics
 ---
 
 ## Minimal Guide

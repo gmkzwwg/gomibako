@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: Timeline of the History of Literature and Literary Theory
-tags: History
+subclass: History
 ---
 
 Guidelines:

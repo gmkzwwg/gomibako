@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: A List of Thinking Models and Cognitive Structures
-tags: Epistemology
+subclass: Epistemology
 ---
 
 ## 一元论

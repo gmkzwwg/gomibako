@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Emacs Quick Reference
-tags: Programming
+subclass: Programming
 ---
 
 <!--

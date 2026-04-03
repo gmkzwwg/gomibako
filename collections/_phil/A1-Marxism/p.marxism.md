@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 马克思主义的基础结构和发展
-tags: Marxism
+subclass: Marxism
 ---
 
 ## 概述

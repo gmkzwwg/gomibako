@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: 古代埃及史大纲
-tags: Africa
+subclass: Africa
 ---
 
 **早期社会的共性**

@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Basic Problems in Literary Theory and Literary Criticism
-tags: Literary-Theory
+subclass: Literary-Theory
 ---
 
 

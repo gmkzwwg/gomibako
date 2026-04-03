@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Commutative Algebra
-tags: Algebra
+subclass: Algebra
 ---

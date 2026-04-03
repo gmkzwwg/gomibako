@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Surnames and Their Origins in English
-tags: English
+subclass: English
 ---
 
 常见来源：

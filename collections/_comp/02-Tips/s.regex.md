@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Regex - Basic Syntax and Practical Usage
-tags: Tips
+subclass: Tips
 ---
 
 ## Basic Syntax

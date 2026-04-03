@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Narratology - the Theory of Narrative
-tags: Narratology
+subclass: Narratology
 ---
 
 

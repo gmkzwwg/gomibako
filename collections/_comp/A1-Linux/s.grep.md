@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: grep - Quick Reference and Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 `grep` is a command-line utility in Unix and Linux systems used to search for specific patterns or text within files. Its name stands for `Global Regular Expression Print`. grep is powerful and commonly used for text processing, system administration, and searching logs or codebases.

@@ -2,7 +2,7 @@
 layout: compact
 category: Sheet
 title: 日语语法速查表
-tags: Japanese
+subclass: Japanese
 ---
 
 ## 句子成分和词性

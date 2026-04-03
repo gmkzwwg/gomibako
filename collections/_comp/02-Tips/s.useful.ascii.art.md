@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Useful ASCII Art
-tags: Tips
+subclass: Tips
 ---
 
 ### ASCII art repositories

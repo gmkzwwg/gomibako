@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: Learning how to Learn
-tags: Learning-Methodology
+subclass: Learning-Methodology
 ---
 
 <details>
@@ -740,7 +740,7 @@ In this video, we're going to get into the specifics of harnessing your zombie p
 
 在这个视频中，我们将具体探讨如何利用习惯的“僵尸力量”来帮助您避免拖延，同时*尽量减少对意志力的使用*。您不需要彻底改变旧习惯，只需覆盖部分习惯并发展一些新习惯。覆盖习惯的关键是改变您对提示的反应。您只需在提示出现时运用意志力来改变反应。为了理解这一点，回顾习惯的四个组成部分，并从拖延的角度重新分析它们是很有帮助的。
 
-The first one is `the cue`. Recognize what launches you into your zombie procrastination mode. **Cues usually fall into one of the four following tags: 1. Location 2. Time 3. How you feel, and 4. Reactions either to other people or to something that just happened.** Do you look something up on the web and then find yourself web surfing? Does a text message disturb your studying taking you 10 minutes to get back into the flow of things even when you try to keep yourself on task? *The issue with procrastination is that because it's an automatic habit, you're often unaware that you've begun to procrastinate. You can prevent the most damaging cues by shutting off your cell phone or keeping yourself away from the internet and other distractions for brief periods of time, as when you're doing a pomodoro.*
+The first one is `the cue`. Recognize what launches you into your zombie procrastination mode. **Cues usually fall into one of the four following subclass: 1. Location 2. Time 3. How you feel, and 4. Reactions either to other people or to something that just happened.** Do you look something up on the web and then find yourself web surfing? Does a text message disturb your studying taking you 10 minutes to get back into the flow of things even when you try to keep yourself on task? *The issue with procrastination is that because it's an automatic habit, you're often unaware that you've begun to procrastinate. You can prevent the most damaging cues by shutting off your cell phone or keeping yourself away from the internet and other distractions for brief periods of time, as when you're doing a pomodoro.*
 
 第一个是`提示`。识别是什么促使您进入拖延的“僵尸模式”。**提示通常分为以下四类：1. 地点 2. 时间 3. 您的情绪 4. 对他人或某事发生的反应。**您是否在网上查找某些东西后开始随意浏览网页？短信打扰了您的学习，让您花费十分钟才重新进入状态，即使您努力保持专注。*拖延的问题在于，由于它是自动习惯，您常常没有意识到自己已经开始拖延。您可以通过关掉手机或在进行番茄工作法时短时间远离互联网和其他干扰来防止最具破坏性的提示。*
 

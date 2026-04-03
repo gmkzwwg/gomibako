@@ -1,0 +1,138 @@
+{% assign source = include.content | default: content | default: page.content %}
+
+{% assign h1_rows = '' %}
+{% assign toc_rows = '' %}
+
+{% assign current_h2_title = '' %}
+{% assign current_h2_id = '' %}
+{% assign current_h3_list = '' %}
+
+{% assign parts = source | split: '<h' %}
+
+{% for part in parts offset:1 %}
+  {% assign open_tag = part | split: '>' | first %}
+  {% assign level = open_tag | slice: 0, 1 %}
+
+  {% if level == '1' or level == '2' or level == '3' %}
+    {% assign inner_html = part | split: '</h' | first | split: '>' | last %}
+    {% assign title = inner_html | strip_html | strip %}
+
+    {% assign heading_id = '' %}
+    {% if open_tag contains 'id="' %}
+      {% assign heading_id = open_tag | split: 'id="' | last | split: '"' | first %}
+    {% endif %}
+
+    {% if title != '' %}
+      {% if level == '1' %}
+        {% capture h1_rows %}
+          {{ h1_rows }}
+          <div class="liquid-toc__h1">
+            {% if heading_id != '' %}
+              <a href="#{{ heading_id }}">{{ title }}</a>
+            {% else %}
+              <span>{{ title }}</span>
+            {% endif %}
+          </div>
+        {% endcapture %}
+
+      {% elsif level == '2' %}
+        {% if current_h2_title != '' %}
+          {% if current_h3_list != '' %}
+            {% capture toc_rows %}
+              {{ toc_rows }}
+              <div class="liquid-toc__row liquid-toc__row--split">
+                <div class="liquid-toc__col liquid-toc__col--h2">
+                  {% if current_h2_id != '' %}
+                    <a href="#{{ current_h2_id }}">{{ current_h2_title }}</a>
+                  {% else %}
+                    <span>{{ current_h2_title }}</span>
+                  {% endif %}
+                </div>
+                <div class="liquid-toc__col liquid-toc__col--h3">
+                  <ul>
+                    {{ current_h3_list }}
+                  </ul>
+                </div>
+              </div>
+            {% endcapture %}
+          {% else %}
+            {% capture toc_rows %}
+              {{ toc_rows }}
+              <div class="liquid-toc__row liquid-toc__row--single">
+                <div class="liquid-toc__single">
+                  {% if current_h2_id != '' %}
+                    <a href="#{{ current_h2_id }}">{{ current_h2_title }}</a>
+                  {% else %}
+                    <span>{{ current_h2_title }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endcapture %}
+          {% endif %}
+        {% endif %}
+
+        {% assign current_h2_title = title %}
+        {% assign current_h2_id = heading_id %}
+        {% assign current_h3_list = '' %}
+
+      {% elsif level == '3' %}
+        {% if current_h2_title != '' %}
+          {% capture current_h3_list %}
+            {{ current_h3_list }}
+            <li>
+              {% if heading_id != '' %}
+                <a href="#{{ heading_id }}">{{ title }}</a>
+              {% else %}
+                <span>{{ title }}</span>
+              {% endif %}
+            </li>
+          {% endcapture %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if current_h2_title != '' %}
+  {% if current_h3_list != '' %}
+    {% capture toc_rows %}
+      {{ toc_rows }}
+      <div class="liquid-toc__row liquid-toc__row--split">
+        <div class="liquid-toc__col liquid-toc__col--h2">
+          {% if current_h2_id != '' %}
+            <a href="#{{ current_h2_id }}">{{ current_h2_title }}</a>
+          {% else %}
+            <span>{{ current_h2_title }}</span>
+          {% endif %}
+        </div>
+        <div class="liquid-toc__col liquid-toc__col--h3">
+          <ul>
+            {{ current_h3_list }}
+          </ul>
+        </div>
+      </div>
+    {% endcapture %}
+  {% else %}
+    {% capture toc_rows %}
+      {{ toc_rows }}
+      <div class="liquid-toc__row liquid-toc__row--single">
+        <div class="liquid-toc__single">
+          {% if current_h2_id != '' %}
+            <a href="#{{ current_h2_id }}">{{ current_h2_title }}</a>
+          {% else %}
+            <span>{{ current_h2_title }}</span>
+          {% endif %}
+        </div>
+      </div>
+    {% endcapture %}
+  {% endif %}
+{% endif %}
+
+{% if h1_rows != '' or toc_rows != '' %}
+<nav class="liquid-toc" aria-label="Table of contents">
+  {{ h1_rows }}
+  <div class="liquid-toc__body">
+    {{ toc_rows }}
+  </div>
+</nav>
+{% endif %}

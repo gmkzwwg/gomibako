@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Psychology - Its Roadmap and Knowledge Architecture
-tags: Basics
+subclass: Basics
 ---
 
 

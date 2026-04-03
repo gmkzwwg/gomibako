@@ -1,7 +1,9 @@
 ---
 category: Sheet
 title: 写作者可操控变量的分层总结
-tags: Writing-Theory
+subclass: Writing-Theory
+todos: 
+  - 继续添加
 ---
 
 <!-- PROMPT
@@ -1364,6 +1366,8 @@ This is not polished aphorism but raw collapse. The sentence links intellectual 
 ## Myths
 
 ## English Scripts of Movies, TV Series
+
+《肖申克的救赎》：有些鸟儿是永远关不住的，因为它们的每一片羽翼上都沾满了自由的光辉
 
 ## Chinese Classical Novels
 

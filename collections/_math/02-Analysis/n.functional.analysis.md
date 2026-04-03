@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Funtioncal Analysis
-tags: Analysis
+subclass: Analysis
 ---

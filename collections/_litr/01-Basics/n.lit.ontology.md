@@ -1,7 +1,7 @@
 ---
 category: Notes
 title:  Ontology of Literature
-tags: Ontology
+subclass: Ontology
 ---
 
 TODO:

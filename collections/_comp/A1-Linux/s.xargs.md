@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: xargs - Quick Reference and Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 

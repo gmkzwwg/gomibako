@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Linux Utilities and AI Tools
-tags: Linux
+subclass: Linux
 ---
 
 ## ffmpeg

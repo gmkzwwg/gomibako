@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Learning Resource 
-tags: Basics
+subclass: Basics
 ---
 
 ## Programming Language Research

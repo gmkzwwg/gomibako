@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Build Efficient working Environment with Manjaro and i3wm
-tags: Linux
+subclass: Linux
 ---
 
 Note: Official Manjaro i3wm images are now available from the official website.

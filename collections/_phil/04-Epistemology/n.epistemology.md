@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Modern Epistemology
-tags: Epistemology
+subclass: Epistemology
 ---
 
 > epistēmē/ἐπιστήμη: epistemology [ɪˌpɪstə'mɒlədʒi] epistemic [ˌepɪ'sti:mɪk] epistemological [ɪˌpɪstəməˈlɒdʒɪk(ə)l]

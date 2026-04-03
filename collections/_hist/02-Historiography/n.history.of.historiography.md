@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: History of Weastern Historiography
-tags: Historiography
+subclass: Historiography
 ---
 
 ## Overview

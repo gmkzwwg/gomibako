@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Complex Analysis
-tags: Analysis
+subclass: Analysis
 ---

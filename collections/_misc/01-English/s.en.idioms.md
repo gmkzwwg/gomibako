@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: English Collocations and Idioms
-tags: English
+subclass: English
 ---
 
 ## 固定搭配和习语记录

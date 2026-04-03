@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: 古代欧洲史时间线
-tags: Europe
+subclass: Europe
 ---
 
 ## 腓尼基人 [3000bc-8cbc]

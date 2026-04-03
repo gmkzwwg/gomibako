@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Deep Reading Methods for Literary Analysis and Craft
-tags: Reading-Theory
+subclass: Reading-Theory
 ---
 
 ## The Art of Deep Reading: A Holistic Framework for Literary Analysis and Craft

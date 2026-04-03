@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Computer Systems, a Programmer's Perspective
-tags: Computer-Systems
+subclass: Computer-Systems
 ---
 
 ## 第一章 漫游计算机系统

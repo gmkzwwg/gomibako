@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: T-SQL Quick Reference and Usage
-tags: Tips
+subclass: Tips
 ---
 
 ## Basic Syntax

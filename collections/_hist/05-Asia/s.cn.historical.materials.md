@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 中国历代主要文字史料及其效力评判
-tags: Asia
+subclass: Asia
 ---
 
 判定“文字史料”的最小标准：

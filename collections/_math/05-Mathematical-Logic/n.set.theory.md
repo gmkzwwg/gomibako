@@ -1,5 +1,5 @@
 ---
 category: Notes
 title: Axiomatic Set Theory
-tags: Mathematical-Logic
+subclass: Mathematical-Logic
 ---

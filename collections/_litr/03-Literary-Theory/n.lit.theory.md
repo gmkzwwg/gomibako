@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Western Literary Theory
-tags: Literary-Theory
+subclass: Literary-Theory
 ---
 
 ## What and How Problems

@@ -2,7 +2,7 @@
 layout: print
 category: Sheet
 title: 美丽的星云
-tags: Cosmology
+subclass: Cosmology
 ---
 
 ## 辐射机制分类

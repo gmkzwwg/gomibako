@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Sexual Dysfunction and Compensatory Masculinity Performance
-tags: Behavioural-Psychology
+subclass: Behavioural-Psychology
 ---
 
 ## Male-Typical Displays Across Taxa: A Comparative Synthesis

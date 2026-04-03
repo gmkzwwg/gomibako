@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: The Theory Architecture of Karl Young
-tags: Psychoanalysis
+subclass: Psychoanalysis
 ---
 ## Introduction
 

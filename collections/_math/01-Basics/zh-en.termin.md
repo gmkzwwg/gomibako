@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: 数学术语速查表2
-tags: Basics
+subclass: Basics
 layout: compact
 ---
 

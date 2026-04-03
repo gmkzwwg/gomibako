@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Linux - Check Hardware infomation and Specification
-tags: Linux
+subclass: Linux
 ---
 
 ## 操作系统、内核

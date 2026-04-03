@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: 文学阅读计划
-tags: Reading-Theory
+subclass: Reading-Theory
 ---
 
 ## 阅读之前

@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: 写作者可操控变量的分层总结
-tags: Writing-Theory
+subclass: Writing-Theory
 ---
 
 ## 分层总览

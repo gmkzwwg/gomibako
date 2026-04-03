@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Long Sentences in English
-tags: English
+subclass: English
 ---
 
 ## The Philosophier's Toolkit

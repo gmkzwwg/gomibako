@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Python Using Tips
-tags: Python
+subclass: Python
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: 中文社区哲学学习辅助资料
-tags: Readings
+subclass: Readings
 ---
 
 - [康的哲学的现代意义 张志伟](#康的哲学的现代意义-张志伟)

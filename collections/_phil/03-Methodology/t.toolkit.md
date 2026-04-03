@@ -1,7 +1,7 @@
 ---
 category: Texts
 title: The Philosophier's Toolkit
-tags: Methodology
+subclass: Methodology
 ---
 
 ## 1 Basic Tools for Argument 论证的基本工具

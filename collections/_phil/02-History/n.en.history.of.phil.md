@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Outline of History of Western Philosophy
-tags: History
+subclass: History
 ---
 
 **Resources:**

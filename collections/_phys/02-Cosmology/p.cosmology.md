@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Cosmology - Its Roadmap and Knowledge Architecture
-tags: Basics
+subclass: Basics
 ---
 
 ## The Cosmos in Perspective: A Modern Cosmological Overview

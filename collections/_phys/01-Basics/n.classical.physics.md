@@ -1,7 +1,7 @@
 ---
 category: Prime
 title: Classical Physics
-tags: Basics
+subclass: Basics
 ---
 
 # 经典物理学的知识体系：宏观决定论、理论演进与自然哲学的数理化整合

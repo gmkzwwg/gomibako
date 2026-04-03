@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Linux Shell - Quick Reference and Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 ## Shell Programming&&

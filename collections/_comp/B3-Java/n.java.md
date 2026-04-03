@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Outdated Java Notes
-tags: Java
+subclass: Java
 ---
 
 <!-- TOC -->

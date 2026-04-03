@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: 常见心理疾病的介绍和精神药物简介
-tags: Psychopathology
+subclass: Psychopathology
 ---
 重要提示：以下信息不能替代专业医疗诊断和治疗。如果您或您身边的人出现相关症状，寻求合格的心理健康专业人士（如精神科医生、心理治疗师）的帮助是至关重要且最有效的一步。
 

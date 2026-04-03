@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: 基础数学速查表
-tags: Basics
+subclass: Basics
 toc_depth: 2
 ---
 

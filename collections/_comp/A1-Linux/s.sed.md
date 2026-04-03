@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: sed - Quick Reference and Minimal Tutorial
-tags: Linux
+subclass: Linux
 ---
 
 <table>

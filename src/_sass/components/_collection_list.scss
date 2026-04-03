@@ -78,7 +78,7 @@
   .collection_name_list {
     top: 28px + $collection-list-header-size;
     bottom: 28px;
-    width: 25%;
+    width: 10em;
     height: auto;
     position: absolute;
     margin: 0;
@@ -100,7 +100,7 @@
   .posts_by_cate {
     top: 28px + $collection-list-header-size;
     bottom: 28px;
-    left: 25%;
+    left: 10em;
     right: 0;
     width: auto;
     height: auto;
@@ -120,6 +120,9 @@
     }
     li {
       list-style-type: disc;
+    }
+    .archive_single_panel {
+    visibility: inherit;
     }
     .post_list_in_1_collection {
       position: absolute;
@@ -152,7 +155,7 @@
   // left part
   .a_collection_label {
     padding: 0;
-    font-size: $font-size-h3;
+    font-size: $font-size-h1;
     line-height: 160%;
     text-transform: capitalize;
     padding: 5px 0;
@@ -174,10 +177,10 @@
   }
   // labels of "all" collections in right part
   .h_collection_label {
-    margin: 0 0 0.5em 0;
+    margin: 0;
     font-size: $font-size-h6;
     text-transform: capitalize;
-    border-bottom: $border-thin;
+    // border-bottom: $border-thin;
   }
 }
 

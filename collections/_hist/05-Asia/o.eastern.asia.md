@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: 东亚古代史时间线
-tags: Asia
+subclass: Asia
 ---
 
 

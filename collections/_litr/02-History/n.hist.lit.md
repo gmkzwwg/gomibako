@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: History of Western Literature
-tags: History
+subclass: History
 ---
 
 ## 西方文学发展脉络

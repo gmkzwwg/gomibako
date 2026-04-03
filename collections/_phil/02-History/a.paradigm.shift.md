@@ -1,7 +1,7 @@
 ---
 category: Annal
 title: Paradigm Shift of Western Philosophy
-tags: History
+subclass: History
 ---
 
 ## 西方哲学的进步历程？

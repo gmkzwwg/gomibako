@@ -1,7 +1,7 @@
 ---
 category: Notes
 title: Methodology of Philosophy
-tags: Methodology
+subclass: Methodology
 ---
 
 ## 基本信息

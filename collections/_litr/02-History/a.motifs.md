@@ -1,7 +1,7 @@
 ---
 category: Sheet
 title: Motifs of World Literature Tradition
-tags: Basics
+subclass: Basics
 ---
 
 ## Motifs in World Literature
