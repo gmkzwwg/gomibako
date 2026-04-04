@@ -70,7 +70,7 @@
         <!-- right: one single panel -->
         <div class="posts_by_cate">
             <div class="post_list_in_1_collection" id="archive_panel">
-                <div style="padding: 0 2.2em 0 2.2em;">
+                <div class="post_list_container">
                     {% if site.collection_order %}
                         {% for col_in_order in site.collection_order %}
                             {% for collection in site.collections %}
@@ -112,7 +112,7 @@
                                                 >
                                                     <div
                                                         style="
-                                                            padding-left: 2ch;
+                                                            padding-left: 1ch;
                                                             text-align: left;
                                                             display: flex;
                                                             align-items: center;
