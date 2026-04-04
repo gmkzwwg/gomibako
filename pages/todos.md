@@ -8,7 +8,6 @@ subclass: TODO
 post_list: date
 toc: false
 toc_depth: 6
-comment: true
 home_btn: true
 btn_text: true
 footer: true

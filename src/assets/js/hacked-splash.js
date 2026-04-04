@@ -1,17 +1,19 @@
 (function () {
-  const faceLayer = document.getElementById("hacked-face-layer");
-  const flashLayer = document.getElementById("hacked-flash-layer");
-  const canvas = document.getElementById("hacked-splash-canvas");
+  const faceLayer = document.getElementById("hacked-face-layer"); // 获取脸和黑背景所在的容器层
+  const flashLayer = document.getElementById("hacked-flash-layer"); // 获取 flash word 独立显示层
+  const canvas = document.getElementById("hacked-splash-canvas"); // 获取用来绘制字符画的 canvas
 
-  if (!faceLayer || !flashLayer || !canvas) return;
+  if (!faceLayer || !flashLayer || !canvas) return; // 任一关键节点不存在时，直接终止，避免后续报错
 
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d"); // 获取 canvas 的 2D 绘图上下文
 
-  const ASCII_PALETTE = Array.from({ length: 94 }, (_, i) =>
-    String.fromCharCode(i + 33),
-  );
+  const ASCII_PALETTE = Array.from(
+    { length: 94 },
+    (_, i) => String.fromCharCode(i + 33), // 生成可打印 ASCII 字符：从 ! 到 ~
+  ); // 构造 ASCII 字符池，供背景噪声和扰动字符随机使用
 
   const FACE_LIBRARY = [
+    // 多组字符画脸的数组，后面会从这里随机选取一组
     [
       "                                                                                ",
       "                -:-                           :-:                           -:- ",
@@ -274,7 +276,7 @@
     ctx.textBaseline = "top";
 
     cellW = clamp(Math.min(width / 155, height / 82), 12, 25);
-    cellH = cellW * 1.1;
+    cellH = cellW * 1.4;
 
     cols = Math.max(56, Math.floor(width / cellW));
     rows = Math.max(32, Math.floor(height / cellH));
