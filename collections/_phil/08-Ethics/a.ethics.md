@@ -1,5 +1,10 @@
+---
+category: Annal
+title: Western Ethics from Antiquity to the Present
+subclass: Ethics
+---
 
-# Western Ethics from Antiquity to the Present
+![]({{site.img}}/phil/Ethics/ethics_timeline.svg)
 
 ## Executive summary
 
@@ -302,9 +307,7 @@ Common mistakes, tacit knowledge, and easily confused concepts
 
 5. Misunderstanding care ethics as “mere emotion” or “mere partiality.” Care ethics is typically presented as a normative claim about the moral significance of relationships and dependency structures, not only a psychological report that people care; its challenge is to articulate principled forms of contextual judgment rather than rejecting normativity. citeturn7search4turn7search1turn7search8
 
-# 西方伦理学史：道德观念的底层逻辑与演化轨迹
 
----
 
 ## 一、何为"底层逻辑"？——一个元理论的问题
 

@@ -1,0 +1,143 @@
+#hacked-face-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 999998;
+  overflow: hidden;
+  background: #000;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 180ms linear;
+}
+
+#hacked-face-layer.is-leaving {
+  opacity: 0;
+}
+
+#hacked-splash-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#hacked-flash-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hacked-splash__flash {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%) rotate(var(--r));
+  transform-origin: center center;
+  white-space: nowrap;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace;
+  font-size: clamp(15px, 1vw, 20px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  padding: 0.1em 0.4em;
+  border: 1px solid currentColor;
+  background: rgba(0, 0, 0, 0.22);
+
+  color: var(--color);
+  mix-blend-mode: screen;
+  opacity: var(--settle, 0.82);
+  filter: blur(0);
+
+  text-shadow:
+    0 0 4px var(--glow),
+    0 0 10px var(--glow),
+    0 0 22px var(--glow),
+    1px 0 0 rgba(255, 255, 255, 0.12),
+    -1px 0 0 rgba(255, 0, 0, 0.12);
+
+  box-shadow:
+    0 0 8px var(--glow),
+    inset 0 0 8px rgba(255, 255, 255, 0.04);
+
+  animation:
+    hackedFlashIn var(--dur) steps(2, end) forwards,
+    hackedJitter 80ms steps(2, end) infinite;
+
+  transition:
+    opacity var(--outdur, 320ms) linear,
+    transform var(--outdur, 320ms) linear,
+    filter var(--outdur, 320ms) linear;
+}
+
+.hacked-splash__flash.is-decaying {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(var(--r)) scale(0.96);
+  filter: blur(2px);
+}
+
+@keyframes hackedFlashIn {
+  0% {
+    opacity: 0;
+    filter: blur(1px);
+  }
+
+  12% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  30% {
+    opacity: 0.18;
+  }
+
+  46% {
+    opacity: 1;
+  }
+
+  64% {
+    opacity: 0.12;
+  }
+
+  78% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: var(--settle, 0.82);
+    filter: blur(0);
+  }
+}
+
+@keyframes hackedJitter {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--r)) translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-50%, -50%) rotate(var(--r)) translate(1px, 0);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(var(--r)) translate(-1px, 1px);
+  }
+
+  75% {
+    transform: translate(-50%, -50%) rotate(var(--r)) translate(1px, -1px);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(var(--r)) translate(0, 0);
+  }
+}
