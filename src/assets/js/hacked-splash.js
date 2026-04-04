@@ -254,8 +254,9 @@
     return raw.map((line) => line.padEnd(maxLen, " "));
   }
 
+  // FlashWord 同屏最大数量
   function getFlashLimit() {
-    return Math.min(2200, Math.max(700, Math.floor((width * height) / 2600)));
+    return Math.min(2000, Math.max(600, Math.floor((width * height) / 2600)));
   }
 
   function resize() {
@@ -461,21 +462,21 @@
     let count;
     const roll = Math.random();
 
+    // 这里控制Flashword生成频率
     if (roll < 0.18) {
-      count = 20;
+      count = 10;
     } else if (roll < 0.45) {
-      count = 16;
-    } else if (roll < 0.78) {
-      count = 12;
-    } else {
       count = 8;
+    } else if (roll < 0.78) {
+      count = 6;
+    } else {
+      count = 4;
     }
-
     for (let i = 0; i < count; i += 1) {
       createFlashWord();
     }
 
-    window.setTimeout(flashAddLoop, rand(6, 14));
+    window.setTimeout(flashAddLoop, rand(7, 16)); // 这里控制生成间隔，也相关频率
   }
 
   function decayFlashWord(el) {
