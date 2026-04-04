@@ -1,12 +1,12 @@
 ---
-layout: default
+layout: post
 title: Jekyll Markdown + HTML Feature Test
 author: 垃圾残渣
 show_date: true
-category: 测试页面
+category: TEST
 subclass: Markdown 测试
 post_list: date
-toc: false
+toc: "chart"
 toc_depth: 6
 comment: true
 home_btn: true
@@ -42,6 +42,8 @@ New Paragraph *(separated by a blank line)*.
 > Multi-line quote *(two trailing spaces)*  
 > continuing the same block.
 {: data-bt="0"}
+
+Values: tags {{page.tags}}
 
 New page with HTML5 + CSS 3:
 
