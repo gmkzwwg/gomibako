@@ -1,0 +1,385 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="2080" viewBox="0 0 3000 2080">
+<defs>
+<linearGradient id="bg" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#FBFCFE"/><stop offset="100%" stop-color="#F3F7FB"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="170%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#D7DEE8" flood-opacity="0.55"/></filter>
+<marker id="arrow" viewBox="0 0 10 10" refX="7.8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94A4B9"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="url(#bg)"/>
+<rect x="40" y="40" width="2920" height="2000" rx="32" fill="none" stroke="#E3EAF3" stroke-width="2"/>
+
+<text x="1500.0" y="88" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="42" font-weight="700" fill="#22304A">Mathematics Self-Learning Map</text>
+<text x="1500.0" y="126" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" fill="#54657F">Core → advanced theory / applied mathematics → frontier directions • Read top to bottom</text>
+<rect x="825.0" y="148" width="24" height="24" rx="8" fill="#EAF2FF" stroke="#5B8DEF" stroke-width="2"/>
+<text x="861.0" y="166" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#57657A">Foundation</text>
+<rect x="1095.0" y="148" width="24" height="24" rx="8" fill="#E8F6EE" stroke="#46A06F" stroke-width="2"/>
+<text x="1131.0" y="166" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#57657A">Core / Bridge</text>
+<rect x="1365.0" y="148" width="24" height="24" rx="8" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2"/>
+<text x="1401.0" y="166" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#57657A">Advanced Theory</text>
+<rect x="1635.0" y="148" width="24" height="24" rx="8" fill="#FFF4E8" stroke="#D68A3C" stroke-width="2"/>
+<text x="1671.0" y="166" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#57657A">Applied / Frontier</text>
+<rect x="1905.0" y="148" width="24" height="24" rx="8" fill="#FFF8D9" stroke="#B78B00" stroke-width="2"/>
+<text x="1941.0" y="166" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#57657A">Current Growth Areas</text>
+<path d="M220.0,356.0 V428.0 H220.0 V500.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,356.0 V428.0 H1073.3 V500.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,646.0 V573.0 H1926.7 V500.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1500.0,356.0 V428.0 H1926.7 V500.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1500.0,356.0 V428.0 H2780.0 V500.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,356.0 V428.0 H2780.0 V500.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,646.0 V718.0 H220.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1073.3,646.0 V718.0 H220.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,646.0 V718.0 H732.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,646.0 V718.0 H1244.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1500.0,356.0 V573.0 H1244.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1500.0,356.0 V573.0 H1756.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1926.7,646.0 V718.0 H2268.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,356.0 V573.0 H2780.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,646.0 V718.0 H2780.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1073.3,646.0 V718.0 H2780.0 V790.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1244.0,936.0 V1008.0 H220.0 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1244.0,936.0 V1008.0 H646.7 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,936.0 V1008.0 H1073.3 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M646.7,1226.0 V1153.0 H1073.3 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1244.0,936.0 V1008.0 H1500.0 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,936.0 V1008.0 H1926.7 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M732.0,936.0 V1008.0 H1926.7 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1500.0,1226.0 V1153.0 H1926.7 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1073.3,646.0 V863.0 H2353.3 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,936.0 V1008.0 H2353.3 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1926.7,646.0 V863.0 H2780.0 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2268.0,936.0 V1008.0 H2780.0 V1080.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1756.0,936.0 V1153.0 H220.0 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1756.0,936.0 V1153.0 H585.7 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1073.3,1226.0 V1298.0 H585.7 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1500.0,356.0 V863.0 H951.4 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,646.0 V1008.0 H1317.1 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M951.4,1516.0 V1443.0 H1317.1 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2268.0,936.0 V1153.0 H1682.9 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2353.3,1226.0 V1298.0 H1682.9 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,936.0 V1153.0 H1682.9 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M732.0,936.0 V1153.0 H2048.6 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2353.3,1226.0 V1298.0 H2048.6 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,1226.0 V1298.0 H2048.6 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1926.7,1226.0 V1298.0 H2414.3 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,936.0 V1153.0 H2414.3 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,646.0 V1008.0 H2780.0 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1926.7,646.0 V1008.0 H2780.0 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2353.3,1226.0 V1298.0 H2780.0 V1370.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M220.0,1516.0 V1588.0 H220.0 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1317.1,1516.0 V1588.0 H220.0 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1073.3,646.0 V1153.0 H585.7 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1317.1,1516.0 V1588.0 H585.7 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1926.7,1226.0 V1443.0 H951.4 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,936.0 V1298.0 H951.4 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1926.7,1226.0 V1443.0 H1317.1 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,1226.0 V1443.0 H1317.1 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,1226.0 V1443.0 H1682.9 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2414.3,1516.0 V1588.0 H1682.9 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2268.0,936.0 V1298.0 H1682.9 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2048.6,1516.0 V1588.0 H2048.6 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1682.9,1516.0 V1588.0 H2048.6 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2048.6,1516.0 V1588.0 H2414.3 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M1682.9,1516.0 V1588.0 H2414.3 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2353.3,1226.0 V1443.0 H2780.0 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,1516.0 V1588.0 H2780.0 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<path d="M2780.0,1226.0 V1443.0 H2780.0 V1660.0" fill="none" stroke="#94A4B9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.76" marker-end="url(#arrow)"/>
+<g filter="url(#shadow)"><rect x="80.0" y="210.0" width="280" height="146" rx="24" fill="#EAF2FF" stroke="#5B8DEF" stroke-width="2.6"/></g>
+<clipPath id="clip-lang"><rect x="86.0" y="218.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-lang)">
+<text x="220.0" y="242.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Math Language &amp;</text>
+<text x="220.0" y="263.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Functions</text>
+<text x="220.0" y="296.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Sets, logic, functions,</text>
+<text x="220.0" y="313.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">trigonometry, vectors, and</text>
+<text x="220.0" y="330.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">symbolic fluency.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1360.0" y="210.0" width="280" height="146" rx="24" fill="#EAF2FF" stroke="#5B8DEF" stroke-width="2.6"/></g>
+<clipPath id="clip-proof"><rect x="1366.0" y="218.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-proof)">
+<text x="1500.0" y="242.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Proofs &amp; Discrete Math</text>
+<text x="1500.0" y="275.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Logic, induction, counting, graphs,</text>
+<text x="1500.0" y="292.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">and the habit of rigorous</text>
+<text x="1500.0" y="309.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">argument.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2640.0" y="210.0" width="280" height="146" rx="24" fill="#EAF2FF" stroke="#5B8DEF" stroke-width="2.6"/></g>
+<clipPath id="clip-prog"><rect x="2646.0" y="218.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-prog)">
+<text x="2780.0" y="242.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Programming for</text>
+<text x="2780.0" y="263.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Mathematics</text>
+<text x="2780.0" y="296.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Python, numerical experiments,</text>
+<text x="2780.0" y="313.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">LaTeX, symbolic tools, and</text>
+<text x="2780.0" y="330.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">reproducible workflows.</text>
+</g>
+<g filter="url(#shadow)"><rect x="80.0" y="500.0" width="280" height="146" rx="24" fill="#E8F6EE" stroke="#46A06F" stroke-width="2.6"/></g>
+<clipPath id="clip-calc"><rect x="86.0" y="508.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-calc)">
+<text x="220.0" y="532.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Calculus I–II</text>
+<text x="220.0" y="565.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Limits, derivatives, integrals,</text>
+<text x="220.0" y="582.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">series, and continuous change.</text>
+</g>
+<g filter="url(#shadow)"><rect x="933.3" y="500.0" width="280" height="146" rx="24" fill="#E8F6EE" stroke="#46A06F" stroke-width="2.6"/></g>
+<clipPath id="clip-linalg"><rect x="939.3" y="508.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-linalg)">
+<text x="1073.3" y="532.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Linear Algebra</text>
+<text x="1073.3" y="565.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Vector spaces, matrices,</text>
+<text x="1073.3" y="582.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">eigenideas, and the geometry of</text>
+<text x="1073.3" y="599.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">linear systems.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1786.7" y="500.0" width="280" height="146" rx="24" fill="#E8F6EE" stroke="#46A06F" stroke-width="2.6"/></g>
+<clipPath id="clip-prob"><rect x="1792.7" y="508.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-prob)">
+<text x="1926.7" y="532.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Probability &amp; Statistics</text>
+<text x="1926.7" y="565.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Randomness, distributions,</text>
+<text x="1926.7" y="582.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">estimation, inference, and</text>
+<text x="1926.7" y="599.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">data-aware reasoning.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2640.0" y="500.0" width="280" height="146" rx="24" fill="#E8F6EE" stroke="#46A06F" stroke-width="2.6"/></g>
+<clipPath id="clip-comb"><rect x="2646.0" y="508.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-comb)">
+<text x="2780.0" y="532.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Combinatorics &amp;</text>
+<text x="2780.0" y="553.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Graphs</text>
+<text x="2780.0" y="586.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Counting structures, graph models,</text>
+<text x="2780.0" y="603.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">discrete optimization, and network</text>
+<text x="2780.0" y="620.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">intuition.</text>
+</g>
+<g filter="url(#shadow)"><rect x="80.0" y="790.0" width="280" height="146" rx="24" fill="#EFF4FF" stroke="#6C8CD5" stroke-width="2.6"/></g>
+<clipPath id="clip-multi"><rect x="86.0" y="798.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-multi)">
+<text x="220.0" y="822.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Multivariable Calculus</text>
+<text x="220.0" y="855.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Several variables, gradients,</text>
+<text x="220.0" y="872.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Jacobians, and vector fields.</text>
+</g>
+<g filter="url(#shadow)"><rect x="592.0" y="790.0" width="280" height="146" rx="24" fill="#EFF4FF" stroke="#6C8CD5" stroke-width="2.6"/></g>
+<clipPath id="clip-ode"><rect x="598.0" y="798.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-ode)">
+<text x="732.0" y="822.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">ODEs &amp; Dynamical</text>
+<text x="732.0" y="843.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Systems</text>
+<text x="732.0" y="876.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Time evolution, phase portraits,</text>
+<text x="732.0" y="893.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">stability, and modeling of change.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1104.0" y="790.0" width="280" height="146" rx="24" fill="#EFF4FF" stroke="#6C8CD5" stroke-width="2.6"/></g>
+<clipPath id="clip-analysis"><rect x="1110.0" y="798.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-analysis)">
+<text x="1244.0" y="822.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Real Analysis</text>
+<text x="1244.0" y="855.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Precise limits, continuity,</text>
+<text x="1244.0" y="872.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">convergence, and the foundations</text>
+<text x="1244.0" y="889.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">of calculus.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1616.0" y="790.0" width="280" height="146" rx="24" fill="#EFF4FF" stroke="#6C8CD5" stroke-width="2.6"/></g>
+<clipPath id="clip-algebra"><rect x="1622.0" y="798.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-algebra)">
+<text x="1756.0" y="822.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Abstract Algebra</text>
+<text x="1756.0" y="855.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Groups, rings, fields, symmetry,</text>
+<text x="1756.0" y="872.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">and structural thinking.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2128.0" y="790.0" width="280" height="146" rx="24" fill="#EFF4FF" stroke="#6C8CD5" stroke-width="2.6"/></g>
+<clipPath id="clip-inference"><rect x="2134.0" y="798.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-inference)">
+<text x="2268.0" y="822.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Statistical Inference</text>
+<text x="2268.0" y="855.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Likelihood, regression, Bayesian</text>
+<text x="2268.0" y="872.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">ideas, and uncertainty from data.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2640.0" y="790.0" width="280" height="146" rx="24" fill="#EFF4FF" stroke="#6C8CD5" stroke-width="2.6"/></g>
+<clipPath id="clip-num"><rect x="2646.0" y="798.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-num)">
+<text x="2780.0" y="822.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Numerical Analysis</text>
+<text x="2780.0" y="855.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Approximation, error, numerical</text>
+<text x="2780.0" y="872.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">linear algebra, and computation at</text>
+<text x="2780.0" y="889.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">scale.</text>
+</g>
+<g filter="url(#shadow)"><rect x="80.0" y="1080.0" width="280" height="146" rx="24" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2.6"/></g>
+<clipPath id="clip-complex"><rect x="86.0" y="1088.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-complex)">
+<text x="220.0" y="1112.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Complex Analysis</text>
+<text x="220.0" y="1145.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Analytic functions, contour</text>
+<text x="220.0" y="1162.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">methods, and powerful integral</text>
+<text x="220.0" y="1179.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">techniques.</text>
+</g>
+<g filter="url(#shadow)"><rect x="506.7" y="1080.0" width="280" height="146" rx="24" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2.6"/></g>
+<clipPath id="clip-topology"><rect x="512.7" y="1088.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-topology)">
+<text x="646.7" y="1112.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Topology</text>
+<text x="646.7" y="1145.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Continuity, compactness,</text>
+<text x="646.7" y="1162.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">connectivity, and shape beyond</text>
+<text x="646.7" y="1179.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">coordinates.</text>
+</g>
+<g filter="url(#shadow)"><rect x="933.3" y="1080.0" width="280" height="146" rx="24" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2.6"/></g>
+<clipPath id="clip-geometry"><rect x="939.3" y="1088.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-geometry)">
+<text x="1073.3" y="1112.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Differential Geometry</text>
+<text x="1073.3" y="1145.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Curves, surfaces, manifolds, and</text>
+<text x="1073.3" y="1162.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">geometry with calculus.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1360.0" y="1080.0" width="280" height="146" rx="24" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2.6"/></g>
+<clipPath id="clip-measure"><rect x="1366.0" y="1088.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-measure)">
+<text x="1500.0" y="1112.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Measure &amp; Functional</text>
+<text x="1500.0" y="1133.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Analysis</text>
+<text x="1500.0" y="1166.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Measure, integration,</text>
+<text x="1500.0" y="1183.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Hilbert/Banach spaces, and</text>
+<text x="1500.0" y="1200.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">infinite-dimensional methods.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1786.7" y="1080.0" width="280" height="146" rx="24" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2.6"/></g>
+<clipPath id="clip-pde"><rect x="1792.7" y="1088.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-pde)">
+<text x="1926.7" y="1112.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">PDEs</text>
+<text x="1926.7" y="1145.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Diffusion, waves, fluids, and</text>
+<text x="1926.7" y="1162.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">equations for fields in space and</text>
+<text x="1926.7" y="1179.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">time.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2213.3" y="1080.0" width="280" height="146" rx="24" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2.6"/></g>
+<clipPath id="clip-optim"><rect x="2219.3" y="1088.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-optim)">
+<text x="2353.3" y="1112.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Optimization &amp;</text>
+<text x="2353.3" y="1133.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Variational Methods</text>
+<text x="2353.3" y="1166.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Convexity, gradients, duality,</text>
+<text x="2353.3" y="1183.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">optimal transport, and learning</text>
+<text x="2353.3" y="1200.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">objectives.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2640.0" y="1080.0" width="280" height="146" rx="24" fill="#F3EEFF" stroke="#8B6FCF" stroke-width="2.6"/></g>
+<clipPath id="clip-stoch"><rect x="2646.0" y="1088.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-stoch)">
+<text x="2780.0" y="1112.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Stochastic Processes</text>
+<text x="2780.0" y="1145.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Markov chains, martingales, SDEs,</text>
+<text x="2780.0" y="1162.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">and dynamics under randomness.</text>
+</g>
+<g filter="url(#shadow)"><rect x="80.0" y="1370.0" width="280" height="146" rx="24" fill="#F7F0FF" stroke="#9A6FD1" stroke-width="2.6"/></g>
+<clipPath id="clip-nt"><rect x="86.0" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-nt)">
+<text x="220.0" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Number Theory</text>
+<text x="220.0" y="1435.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Primes, congruences, Diophantine</text>
+<text x="220.0" y="1452.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">ideas, and arithmetic structures.</text>
+</g>
+<g filter="url(#shadow)"><rect x="445.7" y="1370.0" width="280" height="146" rx="24" fill="#F7F0FF" stroke="#9A6FD1" stroke-width="2.6"/></g>
+<clipPath id="clip-agr"><rect x="451.7" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-agr)">
+<text x="585.7" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Algebraic Geometry &amp;</text>
+<text x="585.7" y="1423.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Representation</text>
+<text x="585.7" y="1456.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Geometry of polynomial equations</text>
+<text x="585.7" y="1473.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">and symmetry through linear</text>
+<text x="585.7" y="1490.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">actions.</text>
+</g>
+<g filter="url(#shadow)"><rect x="811.4" y="1370.0" width="280" height="146" rx="24" fill="#F7F0FF" stroke="#9A6FD1" stroke-width="2.6"/></g>
+<clipPath id="clip-logic"><rect x="817.4" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-logic)">
+<text x="951.4" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Logic, Foundations &amp;</text>
+<text x="951.4" y="1423.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Category</text>
+<text x="951.4" y="1456.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Formal systems, computability,</text>
+<text x="951.4" y="1473.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">type-like abstractions, and</text>
+<text x="951.4" y="1490.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">mathematical language.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1177.1" y="1370.0" width="280" height="146" rx="24" fill="#F7F0FF" stroke="#9A6FD1" stroke-width="2.6"/></g>
+<clipPath id="clip-algo"><rect x="1183.1" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-algo)">
+<text x="1317.1" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Algorithms &amp;</text>
+<text x="1317.1" y="1423.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Complexity</text>
+<text x="1317.1" y="1456.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Efficient computation, hardness,</text>
+<text x="1317.1" y="1473.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">randomness, and information</text>
+<text x="1317.1" y="1490.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">limits.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1542.9" y="1370.0" width="280" height="146" rx="24" fill="#FFF4E8" stroke="#D68A3C" stroke-width="2.6"/></g>
+<clipPath id="clip-ml"><rect x="1548.9" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-ml)">
+<text x="1682.9" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Data Science &amp;</text>
+<text x="1682.9" y="1423.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Machine Learning</text>
+<text x="1682.9" y="1456.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">High-dimensional statistics,</text>
+<text x="1682.9" y="1473.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">optimization, geometric ML, and</text>
+<text x="1682.9" y="1490.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">trustworthy AI.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1908.6" y="1370.0" width="280" height="146" rx="24" fill="#FFF4E8" stroke="#D68A3C" stroke-width="2.6"/></g>
+<clipPath id="clip-control"><rect x="1914.6" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-control)">
+<text x="2048.6" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Control, Robotics &amp;</text>
+<text x="2048.6" y="1423.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Autonomy</text>
+<text x="2048.6" y="1456.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Feedback, planning, estimation,</text>
+<text x="2048.6" y="1473.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">and dynamics for engineered</text>
+<text x="2048.6" y="1490.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">systems.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2274.3" y="1370.0" width="280" height="146" rx="24" fill="#FFF4E8" stroke="#D68A3C" stroke-width="2.6"/></g>
+<clipPath id="clip-imaging"><rect x="2280.3" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-imaging)">
+<text x="2414.3" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Imaging, Signals &amp;</text>
+<text x="2414.3" y="1423.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Inverse Problems</text>
+<text x="2414.3" y="1456.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Reconstruction, sensing,</text>
+<text x="2414.3" y="1473.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">compression, PDEs, and applied</text>
+<text x="2414.3" y="1490.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">harmonic analysis.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2640.0" y="1370.0" width="280" height="146" rx="24" fill="#FFF4E8" stroke="#D68A3C" stroke-width="2.6"/></g>
+<clipPath id="clip-social"><rect x="2646.0" y="1378.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-social)">
+<text x="2780.0" y="1402.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Networks, Economics &amp;</text>
+<text x="2780.0" y="1423.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Game Theory</text>
+<text x="2780.0" y="1456.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Strategic behavior, diffusion,</text>
+<text x="2780.0" y="1473.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">auctions, matching, and networked</text>
+<text x="2780.0" y="1490.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">systems.</text>
+</g>
+<g filter="url(#shadow)"><rect x="80.0" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-crypto"><rect x="86.0" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-crypto)">
+<text x="220.0" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Cryptography, Coding</text>
+<text x="220.0" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">&amp; Digital Security</text>
+<text x="220.0" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Lattices, codes, zero-knowledge,</text>
+<text x="220.0" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">secure computation, and</text>
+<text x="220.0" y="1780.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">post-quantum migration.</text>
+</g>
+<g filter="url(#shadow)"><rect x="445.7" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-quantum"><rect x="451.7" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-quantum)">
+<text x="585.7" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Quantum Information &amp;</text>
+<text x="585.7" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Computing</text>
+<text x="585.7" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Linear algebra, probability,</text>
+<text x="585.7" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">algorithms, error correction, and</text>
+<text x="585.7" y="1780.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">quantum control.</text>
+</g>
+<g filter="url(#shadow)"><rect x="811.4" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-phys"><rect x="817.4" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-phys)">
+<text x="951.4" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Computational Physics,</text>
+<text x="951.4" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Chemistry &amp; Materials</text>
+<text x="951.4" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Simulation of molecules, fields,</text>
+<text x="951.4" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">PDEs, and multiscale physical</text>
+<text x="951.4" y="1780.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">systems.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1177.1" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-climate"><rect x="1183.1" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-climate)">
+<text x="1317.1" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Climate, Energy &amp;</text>
+<text x="1317.1" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Earth Systems</text>
+<text x="1317.1" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Dynamical models, UQ, PDEs, data</text>
+<text x="1317.1" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">assimilation, and sustainability.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1542.9" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-bio"><rect x="1548.9" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-bio)">
+<text x="1682.9" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Mathematical Biology,</text>
+<text x="1682.9" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Medicine &amp; Omics</text>
+<text x="1682.9" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Population models, systems</text>
+<text x="1682.9" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">biology, imaging, inference, and</text>
+<text x="1682.9" y="1780.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">digital health.</text>
+</g>
+<g filter="url(#shadow)"><rect x="1908.6" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-neuro"><rect x="1914.6" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-neuro)">
+<text x="2048.6" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Neuroscience &amp;</text>
+<text x="2048.6" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Cognitive Modeling</text>
+<text x="2048.6" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Neural dynamics, information</text>
+<text x="2048.6" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">processing, learning, and</text>
+<text x="2048.6" y="1780.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">brain-inspired models.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2274.3" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-twins"><rect x="2280.3" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-twins)">
+<text x="2414.3" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Digital Twins &amp;</text>
+<text x="2414.3" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Scientific AI</text>
+<text x="2414.3" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Hybrid models that fuse physics,</text>
+<text x="2414.3" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">data, control, and real-time</text>
+<text x="2414.3" y="1780.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">updating.</text>
+</g>
+<g filter="url(#shadow)"><rect x="2640.0" y="1660.0" width="280" height="146" rx="24" fill="#FFF8D9" stroke="#B78B00" stroke-width="2.6" stroke-dasharray="8 7"/></g>
+<clipPath id="clip-or"><rect x="2646.0" y="1668.0" width="268" height="130" rx="18"/></clipPath>
+<g clip-path="url(#clip-or)">
+<text x="2780.0" y="1692.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Operations Research &amp;</text>
+<text x="2780.0" y="1713.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="700" fill="#21314C">Decision Science</text>
+<text x="2780.0" y="1746.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">Scheduling, logistics, simulation,</text>
+<text x="2780.0" y="1763.0" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" fill="#516071">risk, and large-scale planning.</text>
+</g>
+<text x="1500.0" y="2044" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" fill="#66768A">Core courses remain in the main stream; edge nodes show open expansion into theory, engineering, and neighboring sciences.</text>
+</svg>

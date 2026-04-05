@@ -1,10 +1,10 @@
 ---
 category: Notes
-abbreviation: Prompting Engineering
-title: LLM Prompt Engineering for Workflows Enhancement and Study Assistance
+abbreviation: Prompt Engineering
+title: LLM Prompt Engineering for Workflows Enhancement
 subclass: LLMs
+date: 2025-4-4
 bilingual: true
-toc: chart
 todos: 
   - claude gpt的操作，介绍它们提供的一些功能
   - pe的局限性、pe误区（写太多，三样一样一个）
@@ -78,6 +78,15 @@ flowchart LR
     D --> E{Good Enough?}
     E -->|YES!| F[Apply]
     E -->|Refine prompt, examples, constraints, or tool choice| C
+```
+```mermaid
+flowchart LR
+    A[人类] --> B[找出目标和月数]
+    B --> C[写出结构化的提示词]
+    C --> D(LLM 给出输出)
+    D --> E{足够好吗？}
+    E -->|YES!| F[采用]
+    E -->|改进提示词、示例、约束条件或工具选择| C
 ```
 
 ## What do LLMs feel like?
@@ -198,7 +207,7 @@ It works great for things
 
 The primary advantage is **efficiency**. Zero-shot prompts *use the fewest tokens*, which reduces cost and latency, and they are the simplest to write, iterate on, and maintain in production. For high-volume pipelines where speed and cost matter, zero-shot is the right default starting point.
 
-> 它的主要优势在于**效率**。零样本提示*使用的词元（token）最少*，因此能降低成本和延迟，而且它们也是最容易编写、迭代和在生产环境中维护的形式。对于那些重视速度和成本的高吞吐量流程来说，零样本是正确的默认起点。
+> 它的主要优势在于**效率**。零样本提示*使用的 token 最少*，因此能降低成本和延迟，而且它们也是最容易编写、迭代和在生产环境中维护的形式。对于那些重视速度和成本的高吞吐量流程来说，零样本是正确的默认起点。
 > * high-volume pipelines 高吞吐量流程；指需要频繁、大量处理任务的自动化流程或工作链路
 > * starting point 起点；开始采用的方法或初始方案
 
@@ -291,16 +300,255 @@ For **complex, ambiguous, or specialized tasks**, zero-shot might fall short. Th
 
 ### 2. Few-Shot Prompting — Demonstrating Through Cases 
 
+
+Few-shot prompting involves *providing examples that demonstrate how you want the model to respond before posing the actual task*. One example is called one-shot prompting; two to five or more constitutes few-shot. Rather than specifying desired behavior in the abstract, you show it — and the model learns the pattern directly from the demonstration through in-context learning. *Few-shot prompting does not mean "more examples are necessarily better"; the quality of examples is generally more important than sheer quantity. It serves not only to teach the content of the answer but also to simultaneously demonstrate the output format, evaluation criteria, and the scale of distinction.*
+
+> 少样本提示是指，*在提出实际任务之前，先提供若干示例，用来展示你希望模型如何作答*。提供一个示例，称为一次示例提示（one-shot prompting）；提供两个到五个或更多示例，则构成少样本提示。与其抽象地说明期望行为，不如直接把这种行为展示出来——模型会通过上下文学习（in-context learning），直接从示范中学到这种模式。*少样本提示不是“多举几个例子就一定更好”；示例质量通常比单纯数量更重要。少样本提示不仅是在教“答案内容”，更是在同时教输出格式、判断标准和区分尺度。*
+> * in-context learning [ɪn ˈkɒntekst ˈlɜːnɪŋ] 上下文学习；模型不通过参数更新，而是在当前提示中根据示例临时学会任务模式
+> * specify in the abstract 抽象地说明；只用概念性语言描述，而不直接举例
+
+*This technique becomes essential when the desired behavior is difficult or inefficient to articulate through instructions alone, when you need highly consistent output formatting, or when the task requires a specific tone, register, or evaluative stance that is hard to describe but easy to demonstrate.* A children's educational bot illustrates this well: without an example, asking "Will Santa bring me presents?" might elicit a factually accurate but contextually disastrous response explaining that Santa is fictional. Providing a prior exchange — "Q: Is the tooth fairy real? A: Of course! Put your tooth under your pillow tonight" — teaches the model the imaginative register, the emotional stance, and the appropriate level of literalism, *none of which an instruction like "be warm and playful" reliably captures.*
+
+> *当期望行为很难仅靠指令清楚表达，或者仅靠指令来表达会非常低效；当你需要高度一致的输出格式；或者当任务要求一种特定的语气、语域（register）或评价立场，而这些东西很难说清，却很容易通过示例表现出来时，这种技术就会变得非常重要。*一个儿童教育机器人可以很好地说明这一点：如果没有示例，面对“圣诞老人会给我带礼物吗？”这个问题，模型可能会给出一个事实层面正确、但在语境上非常糟糕的回答，解释说圣诞老人是虚构的。若先提供一组先前对话——“问：牙仙子是真的吗？答：当然是真的！今晚把你的牙齿放到枕头下面吧”——模型就会学到这种富于想象的语域、情感立场，以及恰当的非字面理解程度，而这些内容，*并不是一句“要温暖、要活泼”就能可靠传达出来的。*
+> * articulate [ɑːˈtɪkjuleɪt] v.清楚表达；明确说出
+> * consistent output formatting 一致的输出格式；指模型每次都按同一种形式作答
+> * register [ˈredʒɪstə(r)] n.语域；语体；语言在正式、口语、教学、想象性等不同场景中的风格层次
+> * evaluative stance 评价立场；在回答中对对象采取的态度、判断方式或价值取向
+> * contextually disastrous 在语境上很糟糕；指虽然事实上没错，但在具体交流情境里非常不合适
+> * fictional [ˈfɪkʃənl] adj.虚构的；并非真实存在的
+> * imaginative register 富于想象的语域；带有幻想、童话或游戏感的表达风格
+> * emotional stance 情感立场；说话时表现出的情绪态度
+> * literalism [ˈlɪtərəlɪzəm] n.按字面理解的倾向；不考虑语境、情感和隐含意义而直接照字面解释
+
+The advantages of few-shot prompting are precision and consistency. Examples constrain the output distribution far more tightly than instructions, which is especially valuable in production systems where output variability is costly. The trade-offs are real, however: examples consume tokens, increasing cost and latency with every additional demonstration, and poorly chosen examples can mislead the model just as surely as a bad instruction. The number of examples matters — more generally improves performance, but three to five strikes a practical balance for most applications. Format your examples efficiently: "pizza → edible" carries the same information as "Input: pizza, Output: edible" at lower token cost, and those savings compound. The most important usage scenario for few-shot prompting is any task where the output format, tone, or reasoning style is highly specific and non-default.
+
+
+> 少样本提示的优势，在于精确性和一致性。示例对输出分布的约束，远比单纯指令更强；这一点在生产系统中尤其重要，因为在那里，输出的波动往往代价很高。不过，这种方法的代价也是真实存在的：示例会消耗词元（tokens），每增加一个示范，成本和延迟都会上升；而如果示例选得不好，它误导模型的程度，并不会比一条糟糕指令更轻。示例数量也很重要——一般来说，示例越多，表现越好；但对大多数应用而言，三到五个示例通常是在效果与成本之间较为实际的平衡。示例格式也应尽量简洁高效：“pizza → edible”与“Input: pizza, Output: edible”传达的信息相同，但前者的词元成本更低，而且这种节省会不断累积。少样本提示最重要的适用场景，是那些对输出格式、语气或推理风格有高度具体而且并非默认要求的任务。
+> * precision [prɪˈsɪʒən] n.精确性；准确而明确的控制程度
+> * consistency [kənˈsɪstənsi] n.一致性；前后稳定、不随意变化的特征
+> * constrain [kənˈstreɪn] v.约束；限制；使输出更集中在某个范围内
+> * output distribution 输出分布；模型所有可能输出及其概率结构。这里指示例会更强地限制模型“可能说什么”
+> * production systems 生产系统；真正部署给用户或业务使用的系统，而不是实验环境
+> * variability [ˌveəriəˈbɪləti] n.可变性；波动性
+> * trade-offs [ˈtreɪd ɒfs] n.权衡；为了获得某种好处而必须付出的代价
+> * tokens [ˈtəʊkənz] n.词元；模型处理文本时使用的基本单位，不一定等同于完整单词
+> * latency [ˈleɪtənsi] n.延迟；从发出请求到得到回应所需的时间
+> * demonstrations [ˌdemənˈstreɪʃənz] n.示范；作为例子的输入输出样本
+> * practical balance 实际的平衡；在真实应用中可行的折中点
+> * compound [kəmˈpaʊnd] v.累积；叠加增长
+> * non-default 非默认的；不是模型通常自然会给出的那种表现
+
 TODO:提示不只是一个等待解析的任务说明，而是模型功能状态的一部分，它直接塑造模型在生成响应时所构建并操作的表征。
 
 这种关于提示的功能性理解——把提示视为塑造内部表征的语境，而不是一条等待服从的指令——构成了大多数提示工程技术背后的概念基础。例如，它解释了为什么对于许多任务来说，演示示例比抽象指令更有效：与其告诉模型该做什么，不如通过示例把任务本身实例化到模型的表征空间中，从而激活参数中与正确输入—输出关系有关的模式。它也解释了为什么少样本提示中示例的顺序会显著影响性能——这一现象最早由 Zhao 等人在 2021 年系统记录下来——因为序列末尾的示例由于更接近生成点，会通过自回归生成中的近因敏感性，对模型的输出分布施加更强影响。它还解释了为什么表面上微不足道的提示变化——重述一个问题，加入一句背景性框架，改变一个词——都可能引发模型行为的显著变化：因为每一处变化都会移动模型运作所处的分布性语境，而这些位移可能具有决定性后果。
 
 
 ### 3. Chain-of-Thought Prompting — Forcing Visible Reasoning Before Conclusions
-TODO:
+
+Chain-of-thought prompting, commonly abbreviated CoT, involves explicitly asking the model to reason through a problem step by step before delivering its final answer. The simplest implementation adds a phrase like "think step by step" or "explain your reasoning before concluding" to the prompt. The model then externalizes its intermediate reasoning, making each inferential move visible before arriving at a conclusion.
+
+
+> 思维链提示（chain-of-thought prompting），通常缩写为 CoT，是指明确要求模型在给出最终答案之前，先按步骤对问题进行推理。最简单的实现方式，就是在提示中加入类似“请一步一步思考”或“请先解释你的推理，再给出结论”这样的短语。这样一来，模型就会把中间推理过程外显出来，使每一步推断在到达结论之前都变得可见。
+
+> * chain-of-thought prompting [tʃeɪn əv θɔːt ˈprɒmptɪŋ] 思维链提示；要求模型显式写出中间推理步骤的提示方法
+> * abbreviated [əˈbriːvieɪtɪd] adj.缩写的；简写的
+> * explicitly [ɪkˈsplɪsɪtli] adv.明确地；直白地
+> * reason through 对……进行推理；逐步思考并解决问题
+> * externalizes [ɪkˈstɜːnəlaɪzɪz] v.外显；把内部过程表达出来
+> * intermediate reasoning 中间推理；从题目到结论之间的步骤性思考
+> * inferential [ˌɪnfəˈrenʃəl] adj.推断的；由推理构成的
+
+
+The impact on complex tasks is well-documented and substantial. CoT consistently improves performance on mathematical problems, formal logic, multi-step planning, and causal reasoning — precisely the task types where the model's tendency to pattern-match to a plausible-sounding answer is most dangerous. It also meaningfully reduces hallucination, because the model must justify each step rather than leaping directly to a confident conclusion. The reasoning chain acts as a self-audit: errors that would survive a direct generation pass often become visible — and are corrected — when the model is forced to show its work.
+
+> 它对复杂任务的影响，已有充分而且显著的研究记录。思维链提示会稳定提升模型在数学问题、形式逻辑、多步规划和因果推理中的表现——而这些恰恰是最容易因为模型去匹配一个“听起来合理”的答案而出问题的任务类型。它也确实能在相当程度上减少幻觉，因为模型必须为每一步提供理由，而不能直接跳到一个听起来很自信的结论。整条推理链就像一种自我审计：那些在直接生成答案时可能被保留下来的错误，往往会在模型被迫“展示解题过程”时变得可见——并进一步得到修正。
+> * well-documented 有充分文献记录的；已有较多研究和证据支持的
+> * substantial [səbˈstænʃəl] adj.显著的；相当大的
+> * formal logic [ˈfɔːməl ˈlɒdʒɪk] 形式逻辑；用严格规则研究推理有效性的逻辑体系
+> * multi-step planning 多步规划；为实现目标而分阶段设计步骤
+> * causal reasoning [ˈkɔːzəl ˈriːzənɪŋ] 因果推理；根据原因与结果关系进行判断和分析
+> * pattern-match 模式匹配；根据以往见过的模式直接生成看起来合适的回答，而不一定真正完成了严格推理
+> * plausible-sounding 听起来合理的；表面上很像正确答案的
+> * hallucination [həˌluːsɪˈneɪʃən] n.幻觉；在人工智能中通常指模型生成了貌似合理但实际不真实或无依据的信息
+> * justify [ˈdʒʌstɪfaɪ] v.证明有理；给出理由
+> * self-audit 自我审计；对自身过程进行检查和核验
+> * direct generation pass 直接生成过程；不展开中间步骤、直接一次性产出答案的方式
+> * show its work 展示解题过程；把每一步计算或推理过程写出来
+
+The implementation choices matter. Zero-shot CoT, simply adding "think step by step," is sufficient for many tasks. For greater control, you can specify the exact reasoning structure you want the model to follow ("First identify the given information. Then identify what is being asked. Then solve."), or provide few-shot examples that demonstrate both the reasoning process and the final answer format — a combination that is particularly powerful for domain-specific reasoning tasks. The trade-off is cost and latency: because the model generates substantially more tokens working through its reasoning, each call is slower and more expensive. For complex, high-stakes tasks where accuracy is the primary constraint, this is almost always the right trade. For high-volume, simple tasks, it is not.
+
+> 具体如何实现，是有差别的。零样本思维链（zero-shot CoT），也就是只加上一句“请一步一步思考”，对很多任务来说已经足够。若想获得更强控制，还可以明确规定模型应遵循的推理结构，例如“先识别已知信息，再识别问题要求，最后求解”；也可以提供少样本示例，同时示范推理过程和最终答案格式——这种组合对于领域特定的推理任务尤其强大。它的代价是成本和延迟：由于模型在展开推理时会生成明显更多的词元（tokens），所以每次调用都会更慢，也更贵。对于复杂而且高风险、并以准确性为首要约束的任务，这几乎总是值得的；但对于高频、简单的任务，就不是如此了。
+
+> * implementation choices 实现选择；具体采用哪种提示设计方案
+> * zero-shot CoT [ˌzɪərəʊ ʃɒt siː əʊ ˈtiː] 零样本思维链；不提供示例，只要求模型逐步思考的思维链提示方式
+> * specify [ˈspesɪfaɪ] v.明确规定；具体说明
+> * reasoning structure 推理结构；推理应按什么顺序和步骤展开
+> * few-shot examples 少样本示例；用少量范例来示范任务模式和输出方式
+> * domain-specific [dəˌmeɪn spəˈsɪfɪk] adj.领域特定的；只适用于某一专业领域或任务场景的
+> * trade-off [ˈtreɪd ɒf] n.权衡；为了获得某种收益而必须接受的代价
+> * latency [ˈleɪtənsi] n.延迟；从输入到得到输出所需的时间
+> * tokens [ˈtəʊkənz] n.词元；模型处理文本时的基本单位，不一定等同于完整单词
+> * high-stakes tasks 高风险任务；错误代价很高的任务，如医疗、法律、金融或关键决策场景
+> * primary constraint 首要约束；最优先需要满足的条件
+
+**Example:** *"A store sells apples for $0.75 each and oranges for $1.25 each. Maya buys 4 apples and 3 oranges. How much does she spend in total? Think step by step."*
+This works because without the CoT instruction, the model may collapse the calculation into a single step and make an arithmetic error; the step-by-step constraint forces it to compute each sub-total independently and then sum them, reducing the probability of error at each stage.
+
+* 思维链提示并不等于“只要写得更长就更正确”；关键在于中间步骤是否真正有助于推理，而不是单纯增加篇幅。
+* 它通常能减少幻觉和错误，但不能保证完全正确；错误的推理链仍然可能存在。
+* 零样本思维链和少样本思维链不是对立关系；前者更简便，后者在复杂或专业任务中往往更稳。
+* “展示推理过程”与“提高准确性”常常相关，但并不总是同步；有时模型只是把表面上像推理的内容写了出来。
+* 高风险任务适合使用思维链，高频简单任务则未必值得承担额外的成本与延迟。
+
 ### 4. Role / Persona Prompting — Recalibrating Entire Output Distribution Through a Persona
 
+Role prompting assigns a specific persona or area of expertise to the model before the main task begins. By instructing the model to inhabit a particular role, you shift its vocabulary, its level of detail, its evaluative standards, and its fundamental orientation toward the task. This is not a cosmetic adjustment — as discussed earlier, it is a genuine recalibration of the probability distribution over what an appropriate response looks like, because the model's prior over relevant training examples narrows significantly when a role is established.
+
+> 角色提示（role prompting）是指，在主要任务开始之前，先为模型指定一个特定的人设或专业领域。通过要求模型进入某种角色，你会改变它的词汇选择、细节层次、评价标准，以及它面对任务时的基本取向。这并不是一种表面的修饰——正如前文所说，这实际上是对“什么样的回应才算合适”这一概率分布的真实再校准，因为一旦角色被设定，模型对相关训练样本的先验范围就会明显收窄。
+> * role prompting [rəʊl ˈprɒmptɪŋ] 角色提示；在正式任务前先为模型设定角色、人设或专业身份，以改变其回答方式
+> * persona [ˌpɜːˈsəʊnə] n.人设；角色形象；在这里指模型被要求呈现的身份或风格
+> * area of expertise 专业领域；擅长或应以专家身份处理的知识范围
+> * inhabit a role 进入某个角色；以该角色的视角和方式来回应任务
+> * evaluative standards 评价标准；判断好坏、优劣、是否合格所依据的标准
+> * orientation [ˌɔːriənˈteɪʃən] n.取向；基本倾向；面对任务时的总体方向
+> * cosmetic adjustment 表面调整；只改变外观、不改变实质的修改
+> * recalibration [ˌriːˌkælɪˈbreɪʃən] n.重新校准；重新调整判断或输出的基准
+> * probability distribution 概率分布；这里指模型对各种可能回答赋予概率的整体结构
+> * prior [ˈpraɪə(r)] n.先验；在得到当前输入前，模型原本带有的偏向或预期
+> * narrows significantly 明显收窄；指可能调用的训练模式范围变得更集中
+
+
+The canonical illustration: ask the model to score a simple student essay and it will evaluate it against adult writing standards, likely giving a low score. Instruct it first to act as an encouraging first-grade teacher, and it evaluates the same essay against age-appropriate criteria — weighting effort, clarity, and basic coherence rather than rhetorical sophistication. The input is unchanged; the role transforms the evaluative frame entirely. Role prompting is particularly effective in customer service (where tone and brand voice matter), education (where audience calibration is critical), creative writing (where perspective shapes everything), legal and medical explanation (where expertise level determines what to include and what to simplify), and any domain where the appropriate response is fundamentally shaped by who is speaking and to whom.
+
+> 一个典型例子是：让模型给一篇简单的学生作文打分，它往往会按照成人写作标准来评价，因此很可能给出低分。但如果先要求它扮演一位鼓励型的一年级老师，它就会按照适合该年龄的标准来评价同一篇作文——更看重努力、清晰度和基本连贯性，而不是修辞上的成熟程度。输入完全没有变化；真正被彻底改变的，是评价框架。角色提示在客服场景中尤其有效，因为那里语气和品牌声音很重要；在教育场景中也很有效，因为受众校准至关重要；在创意写作中同样如此，因为视角会塑造一切；在法律和医疗解释中也非常有用，因为专业程度会决定哪些内容应当纳入、哪些内容应当简化。更一般地说，凡是“合适的回答”本身会被“是谁在说、又是在对谁说”这一点根本性塑造的领域，角色提示都非常有效。
+> * canonical [kəˈnɒnɪkəl] adj.典型的；标准性的；最常用来说明某一概念的
+> * score [skɔː(r)] v.评分；打分
+> * age-appropriate criteria 适龄标准；适合该年龄阶段的评价标准
+> * weighting [ˈweɪtɪŋ] v./n.赋予更大权重；在评价中更重视某些因素
+> * coherence [kəʊˈhɪərəns] n.连贯性；前后是否通顺、一致、有条理
+> * rhetorical sophistication 修辞成熟度；语言表达在修辞、结构和技巧上的成熟程度
+> * evaluative frame 评价框架；决定如何评判内容的整体视角和标准
+> * customer service 客服；面向客户的支持与沟通工作
+> * brand voice 品牌声音；品牌在表达中保持的一贯语气和风格
+> * audience calibration 受众校准；根据对象是谁来调整语言、内容和难度
+> * perspective [pəˈspektɪv] n.视角；看问题和表达问题的立场
+> * expertise level 专业程度；所具有或应表现出的专业知识水平
+> * fundamentally shaped by 从根本上受……塑造；本质上由……决定
+
+The key best practice is specificity. "Act as a teacher" is a weak instruction — it leaves the model to resolve every relevant dimension by default. "Act as an encouraging first-grade teacher who prioritizes effort over technical correctness and uses simple, cheerful language" is strong, because it resolves vocabulary level, evaluative stance, and emotional register simultaneously. A double anchor — role plus audience — is stronger still: "You are a senior cardiologist explaining a diagnosis to a patient with no medical background" simultaneously sets domain expertise, communication register, and the epistemic gap to bridge. The limitation of role prompting is that no persona instruction, however detailed, fully overrides the model's training when the requested behavior is outside its learned patterns — a role cannot grant the model knowledge it doesn't have.
+
+> 角色提示的关键最佳实践，是具体性。“扮演一位老师”是很弱的指令——它把几乎所有相关维度都留给模型按默认方式自行决定。“扮演一位鼓励型的一年级老师，把努力看得比技术正确性更重要，并使用简单、愉快的语言”则是强指令，因为它同时明确了词汇层级、评价立场和情感语域。双重锚定——也就是“角色”加上“受众”——会更强。例如：“你是一位资深心脏科医生，正在向一位没有医学背景的病人解释诊断结果。”这句话同时设定了专业领域、沟通语域，以及需要被跨越的认识差距。角色提示的局限在于：无论一个人设指令多么详细，都无法在所请求行为超出模型既有学习模式时，完全覆盖模型的训练。角色不能赋予模型原本并不具备的知识。
+> * best practice 最佳实践；在实践中被证明最有效、最稳妥的做法
+> * specificity [ˌspesɪˈfɪsəti] n.具体性；明确到什么程度
+> * vocabulary level 词汇层级；所使用词语的难度和复杂程度
+> * evaluative stance 评价立场；在判断和评论时采取的态度与取向
+> * emotional register 情感语域；表达中体现出的情绪风格和语气层次
+> * double anchor 双重锚定；同时用两个维度来稳定模型的回答方式，这里指角色与受众并用
+> * senior cardiologist [ˈsiːniə(r) ˌkɑːdiˈɒlədʒɪst] 资深心脏科医生；专门研究和治疗心脏及心血管疾病的高级医生
+> * diagnosis [ˌdaɪəɡˈnəʊsɪs] n.诊断；对疾病或问题性质的判断结果
+> * communication register 沟通语域；与对象交流时所采用的风格和难度层次
+> * epistemic gap [ˌepɪˈstiːmɪk ɡæp] 认识差距；说话者与听者在知识、理解程度上的差距
+> * override [ˌəʊvəˈraɪd] v.覆盖；压过；使原有倾向失效
+> * learned patterns 已学得的模式；模型在训练中形成的既有行为和知识结构
+
+**Example:** *"You are a hostile peer reviewer for a top-tier machine learning conference. Review the following abstract and identify every weakness you can find."*
+This works because the adversarial role activates a specific subset of training data associated with rigorous academic critique, shifting the model away from its default tendency toward diplomatic, balanced evaluation and toward the precise, skeptical analysis the task requires.
+
+例子：“你是一位顶级机器学习会议上态度尖刻的同行评审。请审阅下面这份摘要，并找出你能发现的每一个弱点。”
+
+> * hostile [ˈhɒstaɪl] adj.敌对的；不友善的；这里指批评态度强硬、尖锐
+> * peer reviewer 同行评审；学术领域中负责评审论文质量的同领域专家
+> * top-tier 顶级的；处于最高水平或最有影响力层级的
+> * machine learning conference 机器学习会议；研究者提交并评审论文的重要学术会议
+> * abstract [ˈæbstrækt] n.摘要；论文或研究内容的简要概述
+
+之所以有效，是因为这种对抗性的角色，会激活训练数据中与严格学术批评相联系的一组特定模式，从而把模型从默认的、偏向外交式和均衡式评价的倾向中拉开，转向任务所真正需要的那种精确而怀疑性的分析。
+
+> * adversarial role 对抗性角色；以挑错、质疑、严格审查为取向的角色设定
+> * rigorous [ˈrɪɡərəs] adj.严格的；严密的；要求高的
+> * academic critique 学术批评；按学术标准对内容进行严格评价和质疑
+> * diplomatic [ˌdɪpləˈmætɪk] adj.圆融的；委婉克制的；尽量避免直接冲突的
+> * balanced evaluation 平衡式评价；同时强调优点和缺点、较为中和的评价方式
+> * skeptical [ˈskeptɪkəl] adj.怀疑性的；不轻易接受、倾向于审查和质疑的
+> * precise [prɪˈsaɪs] adj.精确的；准确而不含糊的
+
+易错点与易混点
+
+* 角色提示不只是“换个语气说话”；它会同时改变词汇、标准、细节层次和任务取向。
+* “角色”与“风格”不完全相同；风格更偏表达方式，角色还包含立场、职责和判断标准。
+* 角色设定越具体，效果通常越稳定；过于笼统的人设往往会让模型退回默认行为。
+* “角色 + 受众”通常比单独设定角色更强，因为它同时限定了专业身份和解释对象。
+* 角色提示能改变回答方式，但不能凭空增加模型没有学过的知识。
+
 ### 5. Prompt Chaining — Decomposing Complex Workflows into Sequential, Focused Operations
+
+Prompt chaining means decomposing a complex task into a sequence of smaller, focused subtasks, each handled by its own prompt, where the output of one step becomes the input to the next. Rather than asking a single prompt to carry the full cognitive weight of a sophisticated workflow, you break the problem into its constituent operations and address each one cleanly.
+
+> 提示链（prompt chaining）是指，把一个复杂任务分解成一连串更小、更聚焦的子任务，每个子任务分别由自己的提示来处理，并且前一步的输出会成为后一步的输入。与其让一个单独的提示承担整个复杂流程的全部认知负担，不如把问题拆成其构成性的操作，再分别清楚地处理每一步。
+> * prompt chaining [prɒmpt ˈtʃeɪnɪŋ] 提示链；把复杂任务拆成多个顺序步骤，并让前一步输出成为后一步输入的提示设计方法
+> * decompose [ˌdiːkəmˈpəʊz] v.分解；拆解成较小部分
+> * focused subtasks 聚焦的子任务；范围较窄、目标明确的任务步骤
+> * constituent [kənˈstɪtʃuənt] adj.构成性的；组成整体的
+> * cognitive weight 认知负担；完成任务所需承担的思考复杂度和处理压力
+> * sophisticated workflow 复杂工作流；由多个步骤组成、要求较高的处理流程
+
+The customer support example makes the logic concrete. The full task — receiving a customer message and generating an appropriate response — contains two genuinely distinct operations: understanding what the customer wants, and knowing how to respond to that specific need. Collapsing both into one prompt forces the model to simultaneously classify intent and generate domain-specific content, which dilutes attention and degrades accuracy on both. Separating them — one prompt for intent classification, a second prompt conditioned on that classification for response generation — allows each step to be executed at full accuracy. The output of step one is clean and structured; step two receives a reliable input rather than an ambiguous one.
+
+> 客服的例子可以把其中的逻辑具体说明出来。完整任务——接收一条客户消息并生成恰当回复——实际上包含两个真正不同的操作：一是理解客户想要什么，二是知道应当如何针对这种具体需求作出回应。如果把这两步压缩到一个提示里，模型就必须同时完成意图分类和领域特定内容生成，这会分散注意力，并降低两方面的准确性。把它们分开——第一步用一个提示进行意图分类，第二步根据这个分类结果再用另一个提示生成回复——就能让每一步都以更高的准确度执行。第一步的输出是干净而结构化的；第二步接收到的是可靠输入，而不是含糊输入。
+> * customer support 客服；面向客户的问题处理与沟通服务
+> * intent classification 意图分类；判断用户消息究竟是在提问、投诉、退款、求助等哪一类需求
+> * domain-specific content 领域特定内容；依赖某一业务、行业或场景知识的内容
+> * dilute attention 分散注意力；使模型无法集中处理某一个子问题
+> * degrade accuracy 降低准确性；使结果变差
+> * conditioned on 以……为条件；根据前一步结果来决定后一步输入
+> * structured [ˈstrʌktʃəd] adj.结构化的；具有清晰格式和明确字段的
+> * ambiguous [æmˈbɪɡjuəs] adj.含糊的；不明确的；可有多种理解的
+
+The advantages compound significantly in complex pipelines. Each step can be monitored, tested, and debugged independently, which is invaluable in production systems. Different models can be assigned to different steps — a fast, inexpensive model for classification, a more capable model for nuanced generation — optimizing both cost and quality across the pipeline. Independent steps can be parallelized, reducing total latency. And because each prompt is narrow and focused, each is easier to write, maintain, and improve over time. The primary drawback is perceived latency for end users: multiple sequential round-trips replace a single call, and users wait longer for the final output. For real-time conversational applications, this can be a meaningful constraint. For complex document processing, analysis, or back-end workflows where accuracy and reliability matter more than response speed, prompt chaining is almost always the superior architecture.
+
+> 在复杂流程中，这种方法的优势会进一步累积放大。每一步都可以被单独监控、测试和调试，这在生产系统中尤其宝贵。还可以把不同模型分配给不同步骤——例如用一个快速、便宜的模型来做分类，再用一个能力更强的模型来完成细致生成——从而在整个流程中同时优化成本与质量。各个独立步骤还可以并行化，从而降低总延迟。而且由于每个提示都更窄、更聚焦，所以它们都更容易编写、维护，并且随着时间推移持续改进。它的主要缺点，是用户感知到的延迟：原本一次调用即可完成的任务，现在变成了多次顺序往返，因此用户要等待更久才能拿到最终输出。在实时对话应用中，这可能是一个实际而明显的限制。但对于复杂文档处理、分析任务，或那些更看重准确性和可靠性、而不是响应速度的后端流程来说，提示链几乎总是更优的架构。
+> * compound [kəmˈpaʊnd] v.叠加增长；累积增强
+> * pipelines [ˈpaɪplaɪnz] n.流程管线；由多个处理步骤构成的整体处理链
+> * monitored [ˈmɒnɪtəd] v.监控；持续观察运行状态
+> * debugged [ˌdiːˈbʌɡd] v.调试；查找并修复错误
+> * invaluable [ɪnˈvæljuəbl] adj.极其宝贵的；非常有用的
+> * optimize [ˈɒptɪmaɪz] v.优化；使在某个目标上尽可能好
+> * parallelized [ˈpærəlelaɪzd] v.并行化；让多个步骤同时执行
+> * latency [ˈleɪtənsi] n.延迟；从输入到得到输出所需的时间
+> * perceived latency 感知延迟；用户实际感觉到的等待时间
+> * round-trips 往返调用；一次请求发送并收到返回结果的完整过程
+> * real-time conversational applications 实时对话应用；要求快速即时响应的交互系统
+> * back-end workflows 后端工作流；在用户界面背后运行的处理流程
+> * architecture [ˈɑːkɪtektʃə(r)] n.架构；系统整体设计方式
+
+**Example:** A research synthesis pipeline where the first prompt extracts all factual claims from a document, the second classifies each claim by confidence level (established, contested, speculative), and the third generates a structured summary that preserves those epistemic distinctions.
+This works because each step is narrow enough to be executed with high accuracy, and the structured output of each step provides the next prompt with clean, unambiguous input — a guarantee that a single monolithic prompt attempting all three operations simultaneously could not reliably provide.
+
+例子：一个研究综合流程中，第一条提示从文档中提取所有事实性主张，第二条提示按照置信等级对每条主张进行分类（已确立、有争议、推测性），第三条提示再生成一份结构化摘要，并保留这些认识论上的区分。
+
+> * research synthesis 研究综合；把多项研究或一份复杂材料中的信息整理、归纳为系统结果
+> * factual claims 事实性主张；声称某件事为真的具体陈述
+> * confidence level 置信等级；对某一说法成立程度或可靠程度的分级
+> * established [ɪˈstæblɪʃt] adj.已确立的；已有较强证据支持的
+> * contested [kənˈtestɪd] adj.有争议的；存在明显分歧的
+> * speculative [ˈspekjələtɪv] adj.推测性的；尚未充分证实的
+> * structured summary 结构化摘要；按明确栏目或层级组织的总结
+> * epistemic distinctions 认识论区分；对“知道得多确定、依据多充分”这类知识状态所作的区分
+
+之所以有效，是因为每一步都足够狭窄，因此可以以较高准确率完成；而且每一步的结构化输出，都会为下一条提示提供干净、明确而不含糊的输入——这一点，是试图用一个单块式提示同时完成这三项操作时，无法可靠保证的。
+
+> * monolithic prompt 单块式提示；把多个复杂操作硬塞进同一个提示中的做法
+> * unambiguous [ˌʌnæmˈbɪɡjuəs] adj.明确无歧义的；只有一种清晰解释的
+> * guarantee [ˌɡærənˈtiː] n./v.保证；确保
+> * reliably [rɪˈlaɪəbli] adv.可靠地；稳定地
+
+易错点与易混点
+
+* 提示链不是简单地“把一个长提示拆短”；关键在于按功能把任务分成真正不同的操作步骤。
+* 步骤拆分过粗，仍会让单步任务负担过重；拆分过细，则可能增加不必要的延迟和复杂度。
+* 提示链的优势不只是准确率更高，还包括更容易测试、调试、替换模型和长期维护。
+* 它并不总适合实时场景；当响应速度比精度更重要时，单步处理可能更合适。
+* 结构化中间输出非常关键；如果前一步输出仍然含糊，后一步就无法真正受益。
 
 ## How do LLMs Deal with Prompts? 
 
@@ -310,7 +558,7 @@ TODO:
 
 This is not a metaphor. It is the literal computational act. Every LLM, at its core, is a next-token predictor: given a sequence of tokens, it produces a probability distribution over what comes next. Your prompt is not a command sent to an intelligent agent — it is the opening of a sequence that the model is statistically compelled to complete in the most probable way, given everything it has learned. Everything about effective prompting follows from this single fact.
 
-> 这不是比喻。这是字面意义上的计算过程。每个大语言模型（LLM）在其核心上，都是一个“下一个词元预测器”：给定一个词元序列，它会对接下来可能出现的内容生成一个概率分布。你的提示词并不是发送给某个智能代理的命令——它是一个序列的开端，而模型会在其既有学习经验的基础上，以统计上最可能的方式被“驱动”去完成这个序列。关于有效提示的一切，都是由这一基本事实推导出来的。
+> 这不是比喻。这是字面意义上的计算过程。每个大语言模型（LLM）在其核心上，都是一个“下一个它喔可预测器”：给定一个 token 序列，它会对接下来可能出现的内容生成一个概率分布。你的提示词并不是发送给某个智能代理的命令——它是一个序列的开端，而模型会在其既有学习经验的基础上，以统计上最可能的方式被“驱动”去完成这个序列。关于有效提示的一切，都是由这一基本事实推导出来的。
 > * probability distribution [ˌprɒbəˈbɪləti ˌdɪstrɪˈbjuːʃən] n.概率分布
 > * compelled [kəmˈpeld] adj.被迫的；被驱动的
 
@@ -320,8 +568,8 @@ Then return to the core question: "what actually happens when you submit a promp
 
 **Tokenization** — Your text is never read as words. It is first broken into `tokens` — subword units determined by the model's vocabulary (GPT-4, for instance, uses roughly 100,000 BPE tokens). The string "unbelievable" might become ["un", "believ", "able"]. This has real consequences. Unusual spellings, rare words, and non-English text fragment into more tokens, giving the model less coherent signal per semantic unit. Token boundaries also affect arithmetic reasoning, since numbers split unpredictably. Even leading whitespace and capitalization change tokenization and, subtly, outputs. The practical implication for prompt engineering is straightforward: *use common, well-formed language, and avoid unnecessary abbreviations or unconventional spelling*, because the cleaner your text, the more efficiently the model encodes its meaning.
 
-> **词元化**——你的文本从来不是按“单词”被读取的。它首先会被拆分成 `tokens`（词元）——由模型词汇表决定的子词单位（例如，GPT-4 使用的大约是 100,000 个 BPE 词元）。字符串 “unbelievable” 可能会被拆成 ["un", "believ", "able"]。这会带来真实后果。不同寻常的拼写、罕见词汇以及非英语文本，往往会被切分成更多词元，使模型在每个语义单位上获得的连贯信号更少。词元边界还会影响算术推理，因为数字的切分方式并不稳定。甚至前导空格和大小写也会改变词元化结果，并进而微妙地影响输出。对提示工程来说，其实际含义很直接：*使用常见、规范的语言，避免不必要的缩写或非标准拼写*，因为你的文本越干净，模型编码其含义的效率就越高。
-> * tokenization [ˌtəʊkənaɪˈzeɪʃən] n.词元化；切词处理
+> ** token 化**——你的文本从来不是按“单词”被读取的。它首先会被拆分成 `tokens`——由模型词汇表决定的子词单位（例如，GPT-4 使用的大约是 100,000 个 BPE token ）。字符串 “unbelievable” 可能会被拆成 ["un", "believ", "able"]。这会带来真实后果。不同寻常的拼写、罕见词汇以及非英语文本，往往会被切分成更多 token ，使模型在每个语义单位上获得的连贯信号更少。 token 边界还会影响算术推理，因为数字的切分方式并不稳定。甚至前导空格和大小写也会改变 token 化结果，并进而微妙地影响输出。对提示工程来说，其实际含义很直接：*使用常见、规范的语言，避免不必要的缩写或非标准拼写*，因为你的文本越干净，模型编码其含义的效率就越高。
+> * tokenization [ˌtəʊkənaɪˈzeɪʃən] n. token 化；切词处理
 > * fragment into 分裂成；被切分为
 > * coherent [kəʊˈhɪərənt] adj.连贯的；一致的
 > * semantic [sɪˈmæntɪk] adj.语义的
@@ -331,7 +579,7 @@ Then return to the core question: "what actually happens when you submit a promp
 
 **Embedding and Positional Encoding** — Once tokenized, each token is mapped to a high-dimensional vector — its embedding — and position in the sequence is encoded separately, so the model knows token 1 precedes token 2. However, attention is not uniform across positions. Empirically, LLMs exhibit a primacy and recency bias, attending more strongly to tokens near the beginning and end of the context window. Content buried deep in the middle of a long prompt is statistically less influential on the output. This means *your most critical instructions belong at the start or end of the prompt*. In long contexts especially, placing the core task specification in the middle is one of the most common and costly mistakes a prompt engineer can make.
 
-> **嵌入与位置编码**——完成词元化之后，每个词元都会被映射为一个高维向量——也就是它的嵌入（embedding），而它在序列中的位置则会被单独编码，这样模型才知道词元 1 出现在词元 2 之前。然而，注意力在不同位置上的分布并不均匀。经验研究表明，大语言模型表现出首因偏置和近因偏置，更倾向于关注上下文窗口开头和结尾附近的词元。埋在长提示中部深处的内容，在统计上对输出的影响较弱。这意味着，*你最关键的指令应当放在提示词的开头或结尾*。尤其是在长上下文中，把核心任务说明放在中间，是提示工程师最常见、代价也最高的错误之一。
+> **嵌入与位置编码**——完成 token 化之后，每个 token 都会被映射为一个高维向量——也就是它的嵌入（embedding），而它在序列中的位置则会被单独编码，这样模型才知道 token  1 出现在 token  2 之前。然而，注意力在不同位置上的分布并不均匀。经验研究表明，大语言模型表现出首因偏置和近因偏置，更倾向于关注上下文窗口开头和结尾附近的 token 。埋在长提示中部深处的内容，在统计上对输出的影响较弱。这意味着，*你最关键的指令应当放在提示词的开头或结尾*。尤其是在长上下文中，把核心任务说明放在中间，是提示工程师最常见、代价也最高的错误之一。
 > * embedding [ɪmˈbedɪŋ] n.嵌入表示
 > * positional encoding [pəˈzɪʃənəl ɪnˈkəʊdɪŋ] n.位置编码
 > * empirically [ɪmˈpɪrɪkli] adv.根据经验地；从实证上看
@@ -359,7 +607,7 @@ Then return to the core question: "what actually happens when you submit a promp
 
 **The Completion Imperative** — The model generates output `autoregressively` — *one `token` at a time, each conditioned on all previous tokens, including your entire prompt*. It has no intent. It has no goal. It has **one drive: produce a plausible continuation**. If your prompt reads like the beginning of a sycophantic answer, the model will complete a sycophantic answer. If your prompt reads like an authoritative technical document, the model will complete an authoritative technical document. *If your prompt is ambiguous, the model will not pause to ask for clarification — it will resolve the ambiguity probabilistically*, defaulting to the most statistically common resolution seen in its training data, which is very often not what you wanted. This is perhaps the most consequential implication for prompt engineering. You are not instructing the model; you are authoring the beginning of the text you want it to produce. *The single most useful question to ask before submitting any prompt is: what kind of text would naturally follow from what I've written?*
 
-> **补全要求**—— 模型以`自回归`的方式生成输出——*一次生成一个`词元`，并且每一个词元都以前面所有词元为条件，其中包括你的整个提示词*。它没有意图。它没有目标。它只有**一种驱动力：产出一个看起来合理的后续内容**。如果你的提示词读起来像是一段阿谀奉承式回答的开头，模型就会补全出一段阿谀奉承式回答。如果你的提示词读起来像是一份权威性的技术文档，模型就会补全出一份权威性的技术文档。*如果你的提示词含糊不清，模型不会停下来要求澄清——它会以概率方式消解这种歧义*，默认采用其训练数据中在统计上最常见的那种解释，而这往往并不是你真正想要的。这也许是提示工程（prompt engineering）最重要的一个影响。你并不是在“指挥”模型；你是在撰写一段你希望它继续生成下去的文本开头。*在提交任何提示词之前，最值得先问的一个问题是：按照我已经写下的内容，后面自然会接上一段什么样的文本？*
+> **补全要求**—— 模型以`自回归`的方式生成输出——*一次生成一个`token`，并且每一个 token 都以前面所有 token 为条件，其中包括你的整个提示词*。它没有意图。它没有目标。它只有**一种驱动力：产出一个看起来合理的后续内容**。如果你的提示词读起来像是一段阿谀奉承式回答的开头，模型就会补全出一段阿谀奉承式回答。如果你的提示词读起来像是一份权威性的技术文档，模型就会补全出一份权威性的技术文档。*如果你的提示词含糊不清，模型不会停下来要求澄清——它会以概率方式消解这种歧义*，默认采用其训练数据中在统计上最常见的那种解释，而这往往并不是你真正想要的。这也许是提示工程（prompt engineering）最重要的一个影响。你并不是在“指挥”模型；你是在撰写一段你希望它继续生成下去的文本开头。*在提交任何提示词之前，最值得先问的一个问题是：按照我已经写下的内容，后面自然会接上一段什么样的文本？*
 > * imperative [ɪmˈperətɪv] n.必要的事；紧要的要求；命令；adj.紧迫的；必要的；命令式的；此处指“必须正视的基本要求”或“核心原则”，强调这不是可有可无的建议，而是理解模型行为的关键前提
 > * completion [kəmˈpliːʃən] n.完成；补全；结束；在语言模型语境中，completion 通常指模型根据已有输入继续生成后续文本的过程
 > * autoregressively [ˌɔːtəʊrɪˈɡresɪvli] adv.以自回归方式；“自回归”是机器学习中的一个基本概念，指当前输出依赖于先前已经生成的内容；在大语言模型中，这意味着文本是按顺序逐步生成的
@@ -523,83 +771,6 @@ and **"Include these selectively rather than exhaustively."**
 *Why it works:* Bullet-point generation is the model's lowest-effort response pattern — it requires no connective reasoning between items. Explicitly requesting synthesis forces the model to establish logical or causal relationships between pieces of information, producing prose that reflects genuine analytical work rather than a formatted data dump.
 
 
-
-### Part II: Patterns That Don't Work Well — And What to Use Instead
-
-
-
-**Instead of "Don't do X," write "Instead of X, do Y."**
-*Why it works:* Negation is a weak signal. Saying "don't use jargon" activates the token for jargon prominently in the model's processing, paradoxically increasing its salience. A positive target — "use language accessible to a 12-year-old" — gives the model a statistical destination to move toward rather than an exclusion zone to navigate around.
-
-
-
-**Instead of "briefly" or "in 30 words," write "in 1–3 sentences."**
-*Why it works:* "Briefly" is subjective and gets resolved against the model's default verbosity. Exact word counts are hard for models to track because they process tokens, not words. Sentence boundaries, however, are defined by punctuation — a discrete, unambiguous signal the model handles reliably. Sentence-count constraints produce consistent concision without the awkward truncation that word-count targeting often causes.
-
-
-
-**Instead of "write a good essay," write "write an essay structured as: [claim] → [three supporting arguments] → [strongest counterargument] → [rebuttal] → [conclusion]."**
-*Why it works:* "Good" is entirely undefined in the model's generation context — it defaults to the statistical average of "good essays" in training data, which produces competent mediocrity. An explicit structural blueprint removes the model's freedom to default and instead provides a scaffold that constrains generation toward your actual intent.
-
-
-
-**Instead of "be creative," write "approach this from an unexpected angle" or "use an analogy from a different domain entirely."**
-*Why it works:* "Creative" is one of the most overloaded and least actionable words in a prompt. The model interprets it as a license to use slightly more vivid language while following standard patterns. A specific creative operation — unexpected angle, cross-domain analogy, subverted expectation — gives the model a concrete generative maneuver to execute.
-
-
-
-**Instead of "explain this simply," write "explain this to someone who understands [adjacent domain] but has never encountered [target domain]."**
-*Why it works:* "Simply" is calibrated against the model's default complexity level, which is rarely what you want. Specifying a concrete audience with known prior knowledge gives the model a precise epistemic gap to bridge, producing explanations that are genuinely calibrated rather than superficially simplified.
-
-
-
-**Instead of "make this better," write "make this more [precise / persuasive / concrete / surprising] by [specific operation]."**
-*Why it works:* "Better" is an unanchored comparative — the model has no reference point for what dimension to optimize. Naming the quality and the operation (e.g., "replace every abstract noun with a concrete example") gives the model a specific editorial task rather than an open-ended quality judgment it cannot meaningfully perform.
-
-
-
-**Instead of asking everything in one long prompt, chain it: first ask for an outline, then expand each section separately.**
-*Why it works:* A single long, complex prompt diffuses the model's attention across too many simultaneous constraints. Breaking the task into sequential prompts — each with a single, clear objective — produces higher accuracy at each step, and the structured output of each step provides cleaner, more reliable input to the next.
-
-
-
-**Instead of "answer as an expert," write "answer as a [specific expert] with [specific background] speaking to [specific audience]."**
-*Why it works:* "Expert" without qualification defaults to a generic, authoritative-sounding register that is often neither domain-specific nor audience-appropriate. The more precisely you define the role and the audience, the narrower the target distribution becomes — and narrower targets are hit with far greater consistency.
-
-
-
-**Instead of repeating the same prompt with minor variations hoping for a better answer, write "Your previous answer was too [vague / general / long]. Specifically, [state the gap]. Revise with that constraint."**
-*Why it works:* Submitting a near-identical prompt a second time produces near-identical output, because the model has no memory of what was unsatisfactory and no new conditioning signal. An explicit diagnostic — naming the failure mode and the correction — gives the model a meaningful new constraint and produces genuine improvement rather than a paraphrased version of the same answer.
-
-
-
-**Instead of "give me a comprehensive overview," write "identify the three things someone must understand to reason correctly about this topic, and explain only those."**
-*Why it works:* "Comprehensive" triggers the model's verbosity bias at maximum intensity, producing wide, shallow coverage that prioritizes the appearance of completeness over genuine usefulness. Asking for the essential minimum forces the model to perform a relevance-ranking operation first, then generate — a two-step process that consistently produces higher-density, more valuable output.
-
-
-
-**Instead of "use your judgment," write "if X, then do Y; if Z, then do W."**
-*Why it works:* "Use your judgment" hands the decision entirely to the model's statistical default — which may have no relationship to your actual preferences. Explicit conditional logic encodes your decision criteria directly into the prompt, making the model's behavior predictable and auditable rather than opaque and variable.
-
-
-
-**Instead of stacking multiple tasks into one sentence, assign one task per prompt turn.**
-*Why it works:* When a single prompt contains multiple tasks — "summarize this, then critique it, then rewrite it for a general audience" — the model distributes attention across all three objectives simultaneously. Each task receives less processing weight and the final output frequently conflates or truncates one or more of them. Sequential prompting lets each task receive full attention and produces clean, separable outputs.
-
-
-
-**Instead of "write in a [positive / engaging / professional] tone," write "write in the tone of [specific publication, author, or genre]."**
-*Why it works:* Tone adjectives like "engaging" or "professional" are too abstract to reliably shift output — every model already believes it is being engaging and professional by default. A named reference — "in the tone of a Harvard Business Review op-ed" or "in the style of a BBC documentary narration" — activates a dense, well-represented stylistic prior that produces consistently distinctive and intentional output.
-
-
-
-**Instead of "consider all perspectives," write "argue for [Position A]. Then argue for [Position B]. Then identify where the two arguments most directly conflict."**
-*Why it works:* "Consider all perspectives" produces a bland, false-balance treatment in which the model nods superficially at multiple views without committing to any of them. Forcing the model to argue each position sequentially and then identify the crux of disagreement produces genuine dialectical reasoning rather than the appearance of balanced analysis.
-
-Below is a working reference, not a set of universal laws. Prompt wording and formatting can change results a lot, and underspecified prompts tend to produce more variance than prompts with clear instructions and tighter output constraints. Provider guidance also consistently recommends explicit formats, examples, delimiters, and step structure rather than vague requests. ([arXiv][1])
-
-## 1. Prompt sentence patterns that usually work well with LLMs
-
 1. "Return exactly these sections, in this order: ..."
 
    Why it works: This gives the model an output contract. It reduces drift, stops the model from adding surprise sections, and makes the response easier to parse by both humans and downstream code. ([OpenAI][2])
@@ -696,7 +867,11 @@ Below is a working reference, not a set of universal laws. Prompt wording and fo
 
     Why it works: Google’s guidance is very direct here: concise prompts with focused tasks work better, especially on smaller models. Narrow prompts reduce instruction collision and lower the chance that the model over-optimizes one part of the request at the expense of another. ([Google for Developers][4])
 
-## 2. Prompt sentence patterns that usually work poorly with LLMs
+### Part II: Patterns That Don't Work Well — And What to Use Instead
+
+
+
+
 
 These are not always useless, but they are often weaker, more brittle, or less controllable than the stronger replacements.
 
@@ -832,6 +1007,78 @@ These are not always useless, but they are often weaker, more brittle, or less c
 
     Why it works better: In many real systems, the most useful visible output is not a long raw reasoning trace but a compact explanation that is easy to inspect. A short rationale also aligns better with the provider guidance toward compact, structured answers. ([OpenAI][2])
 
+**Instead of "Don't do X," write "Instead of X, do Y."**
+*Why it works:* Negation is a weak signal. Saying "don't use jargon" activates the token for jargon prominently in the model's processing, paradoxically increasing its salience. A positive target — "use language accessible to a 12-year-old" — gives the model a statistical destination to move toward rather than an exclusion zone to navigate around.
+
+
+
+**Instead of "briefly" or "in 30 words," write "in 1–3 sentences."**
+*Why it works:* "Briefly" is subjective and gets resolved against the model's default verbosity. Exact word counts are hard for models to track because they process tokens, not words. Sentence boundaries, however, are defined by punctuation — a discrete, unambiguous signal the model handles reliably. Sentence-count constraints produce consistent concision without the awkward truncation that word-count targeting often causes.
+
+
+
+**Instead of "write a good essay," write "write an essay structured as: [claim] → [three supporting arguments] → [strongest counterargument] → [rebuttal] → [conclusion]."**
+*Why it works:* "Good" is entirely undefined in the model's generation context — it defaults to the statistical average of "good essays" in training data, which produces competent mediocrity. An explicit structural blueprint removes the model's freedom to default and instead provides a scaffold that constrains generation toward your actual intent.
+
+
+
+**Instead of "be creative," write "approach this from an unexpected angle" or "use an analogy from a different domain entirely."**
+*Why it works:* "Creative" is one of the most overloaded and least actionable words in a prompt. The model interprets it as a license to use slightly more vivid language while following standard patterns. A specific creative operation — unexpected angle, cross-domain analogy, subverted expectation — gives the model a concrete generative maneuver to execute.
+
+
+
+**Instead of "explain this simply," write "explain this to someone who understands [adjacent domain] but has never encountered [target domain]."**
+*Why it works:* "Simply" is calibrated against the model's default complexity level, which is rarely what you want. Specifying a concrete audience with known prior knowledge gives the model a precise epistemic gap to bridge, producing explanations that are genuinely calibrated rather than superficially simplified.
+
+
+
+**Instead of "make this better," write "make this more [precise / persuasive / concrete / surprising] by [specific operation]."**
+*Why it works:* "Better" is an unanchored comparative — the model has no reference point for what dimension to optimize. Naming the quality and the operation (e.g., "replace every abstract noun with a concrete example") gives the model a specific editorial task rather than an open-ended quality judgment it cannot meaningfully perform.
+
+
+
+**Instead of asking everything in one long prompt, chain it: first ask for an outline, then expand each section separately.**
+*Why it works:* A single long, complex prompt diffuses the model's attention across too many simultaneous constraints. Breaking the task into sequential prompts — each with a single, clear objective — produces higher accuracy at each step, and the structured output of each step provides cleaner, more reliable input to the next.
+
+
+
+**Instead of "answer as an expert," write "answer as a [specific expert] with [specific background] speaking to [specific audience]."**
+*Why it works:* "Expert" without qualification defaults to a generic, authoritative-sounding register that is often neither domain-specific nor audience-appropriate. The more precisely you define the role and the audience, the narrower the target distribution becomes — and narrower targets are hit with far greater consistency.
+
+
+
+**Instead of repeating the same prompt with minor variations hoping for a better answer, write "Your previous answer was too [vague / general / long]. Specifically, [state the gap]. Revise with that constraint."**
+*Why it works:* Submitting a near-identical prompt a second time produces near-identical output, because the model has no memory of what was unsatisfactory and no new conditioning signal. An explicit diagnostic — naming the failure mode and the correction — gives the model a meaningful new constraint and produces genuine improvement rather than a paraphrased version of the same answer.
+
+
+
+**Instead of "give me a comprehensive overview," write "identify the three things someone must understand to reason correctly about this topic, and explain only those."**
+*Why it works:* "Comprehensive" triggers the model's verbosity bias at maximum intensity, producing wide, shallow coverage that prioritizes the appearance of completeness over genuine usefulness. Asking for the essential minimum forces the model to perform a relevance-ranking operation first, then generate — a two-step process that consistently produces higher-density, more valuable output.
+
+
+
+**Instead of "use your judgment," write "if X, then do Y; if Z, then do W."**
+*Why it works:* "Use your judgment" hands the decision entirely to the model's statistical default — which may have no relationship to your actual preferences. Explicit conditional logic encodes your decision criteria directly into the prompt, making the model's behavior predictable and auditable rather than opaque and variable.
+
+
+
+**Instead of stacking multiple tasks into one sentence, assign one task per prompt turn.**
+*Why it works:* When a single prompt contains multiple tasks — "summarize this, then critique it, then rewrite it for a general audience" — the model distributes attention across all three objectives simultaneously. Each task receives less processing weight and the final output frequently conflates or truncates one or more of them. Sequential prompting lets each task receive full attention and produces clean, separable outputs.
+
+
+
+**Instead of "write in a [positive / engaging / professional] tone," write "write in the tone of [specific publication, author, or genre]."**
+*Why it works:* Tone adjectives like "engaging" or "professional" are too abstract to reliably shift output — every model already believes it is being engaging and professional by default. A named reference — "in the tone of a Harvard Business Review op-ed" or "in the style of a BBC documentary narration" — activates a dense, well-represented stylistic prior that produces consistently distinctive and intentional output.
+
+
+
+**Instead of "consider all perspectives," write "argue for [Position A]. Then argue for [Position B]. Then identify where the two arguments most directly conflict."**
+*Why it works:* "Consider all perspectives" produces a bland, false-balance treatment in which the model nods superficially at multiple views without committing to any of them. Forcing the model to argue each position sequentially and then identify the crux of disagreement produces genuine dialectical reasoning rather than the appearance of balanced analysis.
+
+Below is a working reference, not a set of universal laws. Prompt wording and formatting can change results a lot, and underspecified prompts tend to produce more variance than prompts with clear instructions and tighter output constraints. Provider guidance also consistently recommends explicit formats, examples, delimiters, and step structure rather than vague requests. ([arXiv][1])
+
+
+
 ## A compact rule of thumb
 
 The strongest prompt patterns usually do one or more of these things:
@@ -867,9 +1114,6 @@ Well-educated ones are often given a great deal of technical training and factua
 
 > 受到良好教育的人们，总是被灌输大量的技术和知识，但他们遭遇的茫然无措一点都不会减少，因为“什么时候应该应用什么技能和知识”这种**隐性知识**很难获取，往往需要经验和时间的堆积。好在我们现在拥有了“博学”的LLMs。本节就是一个由 ChatGPT 5.4 Thinking 生成的**小提示**列表，它将为你烦恼”何时、如何高效地求助 LLMs“时提供灵感。
 
-## Pitfalls for Prompting
-
-## When Should One Seek Help From LLMs
 
 ### What Experts Do LLMs Put at Your Fingertips?
 
@@ -919,13 +1163,13 @@ Research advisor — AI can synthesize market information, customer feedback, te
 
 One caution matters: the same small-business survey finds that accuracy is the top reported challenge, so legal, financial, and other high-stakes decisions still need human review. 
 
+## Pitfalls for Prompting
+
 ## Risks of Using LLMs
 
 有些 服务提供商 GEO服务 投毒
 OPENCLAW Prompting injection事件
 
-
 ## Meta Prompting
-
 
 ## Further Directions

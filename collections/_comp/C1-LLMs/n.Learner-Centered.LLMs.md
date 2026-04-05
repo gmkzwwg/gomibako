@@ -1,3 +1,11 @@
+---
+category: Notes
+abbreviation: Learner-Centered LLMs
+title: Learner-Centered Use of Large Language Models
+subclass: LLMs
+bilingual: true
+todos: drafting
+---
 
 ## For Learners, Methodology of Using LLMs
 

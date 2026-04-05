@@ -9,7 +9,7 @@ footer: true
 permalink: /
 ---
 
-<h1 class="index_title">普通的垃圾箱</h1>
+<h1 class="index_title">我居住的普通垃圾箱</h1>
 
 <br>
 

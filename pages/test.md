@@ -64,7 +64,38 @@ Blockquote for bilingual support. Click Bilingual Button or set page.bilingual `
 > Skip processing
 {: data-bt="0"}
 
-### Heading 3
+### Multi-Language Test
+
+`简体中文 (Simplified Chinese)` — 你好，世界！这是一个**多语言测试页面**。*守望先锋* 的**天使**非常*可爱*。
+
+`繁體中文 (Traditional Chinese)` — 你好，世界！這是一個**多語言測試頁面**。*守望先鋒* 的**天使**非常*可愛*。
+
+`English` — Hello, world! This is a **multilingual test page**. *Mercy* from **Overwatch** is very *cute*.
+
+`日本語 (Japanese)` — こんにちは、世界！これは**多言語テストページ**です。*オーバーウォッチ* の**エンジェル**はとても*かわいい*です。
+
+`한국어 (Korean)` — 안녕하세요, 세계! 이것은 **다국어 테스트 페이지**입니다. *오버워치* 의 **메르시**는 매우 *귀여워요*.
+
+`Español (Spanish)` — ¡Hola, mundo! Esta es una **página de prueba multilingüe**. *Mercy* de **Overwatch** es muy *linda*.
+
+`Français (French)` — Bonjour, le monde ! Ceci est une **page de test multilingue**. *Mercy* d'**Overwatch** est très *mignonne*.
+
+`Deutsch (German)` — Hallo, Welt! Dies ist eine **mehrsprachige Testseite**. *Mercy* aus **Overwatch** ist sehr *süß*.
+
+`Русский (Russian)` — Привет, мир! Это **многоязычная тестовая страница**. *Ангел* из **Overwatch** очень *милая*.
+
+`العربية (Arabic)` — مرحبا بالعالم! هذه **صفحة اختبار متعددة اللغات**. *ميرشي* من **أوفر ووتش** لطيفة *جداً*.
+
+`हिन्दी (Hindi)` — नमस्ते, दुनिया! यह एक **बहुभाषी परीक्षण पृष्ठ** है। *ओवरवॉच* की **मर्सी** बहुत *प्यारी* है।
+
+`ไทย (Thai)` — สวัสदीโลก! นี่คือหน้าเว็บ**ทดสอบหลายภาษา** *เมอร์ซี่* จาก **โอเวอร์วอッチ** น่ารัก*มาก*
+
+`Tiếng Việt (Vietnamese)` — Xin chào thế giới! Đây là **trang kiểm tra đa ngôn ngữ**. *Mercy* trong **Overwatch** rất *dễ thương*.
+
+`Português (Portuguese)` — Olá, mundo! Esta é uma **página de teste multilíngue**. *Mercy* de **Overwatch** é muito *fofa*.
+
+`Italiano (Italian)` — Ciao, mondo! Questa è una **pagina di test multilingue**. *Mercy* di **Overwatch** è molto *carina*.
+
 
 #### Heading 4
 

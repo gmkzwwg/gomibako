@@ -1,7 +1,8 @@
 ---
-layout: print
+layout: post
 category: Notes
-title: Claude vs ChatGPT
+abbreviation: LLMs Comparing
+title: LLMs Comparing - Claude vs ChatGPT
 subclass: LLMs
 ---
 

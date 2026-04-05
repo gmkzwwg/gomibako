@@ -153,25 +153,31 @@
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/matrix-letter-bomb.js"></script>
   <script>
     MatrixLetterRain.start({
-      startDelaySeconds: 3,  // 开始延迟
-      intervalSeconds: 5,    // 生成间隔
-      fontSize: 15,          // 字体大小
-      speedMultiplier: 3.5,    // 速度因子
-      candidates: 'αβγδεζηθικλμνξοπρστυφχψω∝∞∑∏∪∩∈∵∴⊥∠⊙≌∽√∀∂∆∇⋈∅∫∬∳∯∱∲ℂℍℚℝℕℙℤⅈⅉⅇℼℽℵ',
+      startDelaySeconds: 3, // 开始延迟
+      intervalSeconds: 5, // 生成间隔
+      fontSize: 15, // 字体大小
+      speedMultiplier: 3.2, // 速度因子
+      candidates:
+        "αβγδεζηθικλμνξοπρστυφχψω∝∞∑∏∪∩∈∵∴⊥∠⊙≌∽√∀∂∆∇⋈∅∫∬∳∯∱∲ℂℍℚℝℕℙℤⅈⅉⅇℼℽℵ",
       color: "#0fca1c",
     });
   </script>
   <!-- Title Hacker -->
-   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/text-glitch.js"></script>
-<script>
-  const glitch = new TextGlitchFx({
-    selector: "h1, h2",     // 指定，或者".hero-title",
-    intervalRange: [4, 10],  // 6~12 秒随机触发一次
-    duration: 800,
-    effects: ["scramble", "blocks", "blink", "error"],
-    maxCharChangeRatio: 0.48
-  });
+  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/text-glitch.js"></script>
+  <script>
+    const glitch = new TextGlitchFx({
+      selector: "h1, h2, .abstract, .post_info_text, .btn_text", // 指定，或者".hero-title",
+      intervalRange: [3, 6], // x~y 秒随机触发一次
+      duration: 800,
+      effects: ["scramble", "blocks", "blink", "error"],
+      maxCharChangeRatio: 0.48,
+    });
 
-  glitch.start();
-</script>
+    glitch.start();
+  </script>
+  <!-- Luo Xia Gu Wu Wen Kai Font -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
+  />
 </head>
