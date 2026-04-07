@@ -1,0 +1,13 @@
+<!-- Title Hacker -->
+<script src="{{site.url}}{{site.baseurl}}/src/assets/js/text-glitch.js"></script>
+<script>
+  const glitch = new TextGlitchFx({
+    selector: "h1, h2, .abstract, .post_info_text, .btn_text", // 指定，或者".hero-title",
+    intervalRange: [3, 6], // x~y 秒随机触发一次
+    duration: 800,
+    effects: ["scramble", "blocks", "blink", "error"],
+    maxCharChangeRatio: 0.48,
+  });
+
+  glitch.start();
+</script>

@@ -12,7 +12,7 @@ comment: true
 home_btn: true
 btn_text: true
 footer: true
-bilingual: true
+layout: bilingual
 encrypted_text: true
 permalink: /test
 date: 2019-5-25 # YYYY-MM-DD

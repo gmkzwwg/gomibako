@@ -2,7 +2,7 @@
 category: Prime
 title: Literature - Its Roadmap and Knowledge Architecture
 subclass: Basics
-bilingual: true
+layout: bilingual
 ---
 
 ## Full Skill Stack

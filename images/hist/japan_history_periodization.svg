@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1085" viewBox="0 0 760 1085">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>
+  .gname { font: 700 16px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif; fill: #18212f; }
+  .grange { font: 400 12px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif; fill: #526071; }
+  .colhead { font: 600 11px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif; fill: #64748b; }
+  .item { font: 600 12px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif; fill: #18212f; }
+  .date { font: 400 11px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif; fill: #3e4a59; }
+</style>
+<g>
+<rect x="12" y="12" width="736" height="162" rx="10" fill="#EEF6FF" stroke="#e5e7eb" stroke-width="0.8"/>
+<text x="24" y="36" class="gname">史前时代</text>
+<text x="106" y="36" class="grange">前12000以前—250</text>
+<text x="24" y="60" class="colhead">时代</text>
+<text x="385.0" y="60" class="colhead">文化</text>
+<rect x="24" y="70" width="351.0" height="28" rx="8" fill="#CFE4FF"/>
+<text x="34" y="87" class="item">旧石器时代</text>
+<text x="365.0" y="87" text-anchor="end" class="date">前12000以前</text>
+<rect x="24" y="103" width="351.0" height="28" rx="8" fill="#CFE4FF"/>
+<text x="34" y="120" class="item">绳文时代</text>
+<text x="365.0" y="120" text-anchor="end" class="date">前12000—前300</text>
+<rect x="24" y="136" width="351.0" height="28" rx="8" fill="#CFE4FF"/>
+<text x="34" y="153" class="item">弥生时代</text>
+<text x="365.0" y="153" text-anchor="end" class="date">前300—250</text>
+<rect x="385.0" y="70" width="351.0" height="28" rx="8" fill="#CFE4FF"/>
+<text x="395.0" y="87" class="item">绳文文化</text>
+<text x="726.0" y="87" text-anchor="end" class="date">前12000—前300</text>
+<rect x="385.0" y="103" width="351.0" height="28" rx="8" fill="#CFE4FF"/>
+<text x="395.0" y="120" class="item">弥生文化</text>
+<text x="726.0" y="120" text-anchor="end" class="date">前300—250</text>
+</g>
+<g>
+<rect x="12" y="184" width="736" height="261" rx="10" fill="#EEF8F0" stroke="#e5e7eb" stroke-width="0.8"/>
+<text x="24" y="208" class="gname">古代</text>
+<text x="106" y="208" class="grange">250—1185</text>
+<text x="24" y="232" class="colhead">时代</text>
+<text x="385.0" y="232" class="colhead">文化</text>
+<rect x="24" y="242" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="34" y="259" class="item">古坟时代</text>
+<text x="365.0" y="259" text-anchor="end" class="date">250—592</text>
+<rect x="24" y="275" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="34" y="292" class="item">飞鸟时代</text>
+<text x="365.0" y="292" text-anchor="end" class="date">592—710</text>
+<rect x="24" y="308" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="34" y="325" class="item">奈良时代</text>
+<text x="365.0" y="325" text-anchor="end" class="date">710—794</text>
+<rect x="24" y="341" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="34" y="358" class="item">平安时代</text>
+<text x="365.0" y="358" text-anchor="end" class="date">794—1185</text>
+<rect x="385.0" y="242" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="395.0" y="259" class="item">古坟文化</text>
+<text x="726.0" y="259" text-anchor="end" class="date">250—592</text>
+<rect x="385.0" y="275" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="395.0" y="292" class="item">飞鸟文化</text>
+<text x="726.0" y="292" text-anchor="end" class="date">592—645</text>
+<rect x="385.0" y="308" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="395.0" y="325" class="item">白凤文化</text>
+<text x="726.0" y="325" text-anchor="end" class="date">645—710</text>
+<rect x="385.0" y="341" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="395.0" y="358" class="item">天平文化</text>
+<text x="726.0" y="358" text-anchor="end" class="date">710—794</text>
+<rect x="385.0" y="374" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="395.0" y="391" class="item">弘仁·贞观文化</text>
+<text x="726.0" y="391" text-anchor="end" class="date">9世纪前半</text>
+<rect x="385.0" y="407" width="351.0" height="28" rx="8" fill="#D3EFD8"/>
+<text x="395.0" y="424" class="item">国风文化</text>
+<text x="726.0" y="424" text-anchor="end" class="date">9世纪后半—12世纪</text>
+</g>
+<g>
+<rect x="12" y="455" width="736" height="228" rx="10" fill="#FFF4EA" stroke="#e5e7eb" stroke-width="0.8"/>
+<text x="24" y="479" class="gname">中世</text>
+<text x="106" y="479" class="grange">1068—1590</text>
+<text x="24" y="503" class="colhead">时代</text>
+<text x="385.0" y="503" class="colhead">文化</text>
+<rect x="24" y="513" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="34" y="530" class="item">院政时代</text>
+<text x="365.0" y="530" text-anchor="end" class="date">1068—1185</text>
+<rect x="24" y="546" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="34" y="563" class="item">镰仓时代</text>
+<text x="365.0" y="563" text-anchor="end" class="date">1185—1333</text>
+<rect x="24" y="579" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="34" y="596" class="item">南北朝时代</text>
+<text x="365.0" y="596" text-anchor="end" class="date">1336—1392</text>
+<rect x="24" y="612" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="34" y="629" class="item">室町时代</text>
+<text x="365.0" y="629" text-anchor="end" class="date">1336—1573</text>
+<rect x="24" y="645" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="34" y="662" class="item">战国时代</text>
+<text x="365.0" y="662" text-anchor="end" class="date">1467—1590</text>
+<rect x="385.0" y="513" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="395.0" y="530" class="item">院政期文化</text>
+<text x="726.0" y="530" text-anchor="end" class="date">11世纪后半—12世纪</text>
+<rect x="385.0" y="546" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="395.0" y="563" class="item">镰仓文化</text>
+<text x="726.0" y="563" text-anchor="end" class="date">12世纪末—14世纪前半</text>
+<rect x="385.0" y="579" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="395.0" y="596" class="item">北山文化</text>
+<text x="726.0" y="596" text-anchor="end" class="date">14世纪末—15世纪前半</text>
+<rect x="385.0" y="612" width="351.0" height="28" rx="8" fill="#F9D8BE"/>
+<text x="395.0" y="629" class="item">东山文化</text>
+<text x="726.0" y="629" text-anchor="end" class="date">15世纪后半—16世纪前半</text>
+</g>
+<g>
+<rect x="12" y="693" width="736" height="162" rx="10" fill="#FFF0F3" stroke="#e5e7eb" stroke-width="0.8"/>
+<text x="24" y="717" class="gname">近世</text>
+<text x="106" y="717" class="grange">1573—1868</text>
+<text x="24" y="741" class="colhead">时代</text>
+<text x="385.0" y="741" class="colhead">文化</text>
+<rect x="24" y="751" width="351.0" height="28" rx="8" fill="#F8D0D9"/>
+<text x="34" y="768" class="item">安土桃山时代</text>
+<text x="365.0" y="768" text-anchor="end" class="date">1573—1603</text>
+<rect x="24" y="784" width="351.0" height="28" rx="8" fill="#F8D0D9"/>
+<text x="34" y="801" class="item">江户时代</text>
+<text x="365.0" y="801" text-anchor="end" class="date">1603—1868</text>
+<rect x="385.0" y="751" width="351.0" height="28" rx="8" fill="#F8D0D9"/>
+<text x="395.0" y="768" class="item">桃山文化</text>
+<text x="726.0" y="768" text-anchor="end" class="date">16世纪后半—17世纪初</text>
+<rect x="385.0" y="784" width="351.0" height="28" rx="8" fill="#F8D0D9"/>
+<text x="395.0" y="801" class="item">元禄文化</text>
+<text x="726.0" y="801" text-anchor="end" class="date">17世纪后半—18世纪初</text>
+<rect x="385.0" y="817" width="351.0" height="28" rx="8" fill="#F8D0D9"/>
+<text x="395.0" y="834" class="item">化政文化</text>
+<text x="726.0" y="834" text-anchor="end" class="date">1804—1830</text>
+</g>
+<g>
+<rect x="12" y="865" width="736" height="208" rx="10" fill="#F4F0FF" stroke="#e5e7eb" stroke-width="0.8"/>
+<text x="24" y="889" class="gname">近现代</text>
+<text x="106" y="889" class="grange">1868—</text>
+<rect x="24" y="903" width="712" height="28" rx="8" fill="#DDD2FF"/>
+<text x="34" y="920" class="item">明治时代</text>
+<text x="726" y="920" text-anchor="end" class="date">1868—1912</text>
+<rect x="24" y="936" width="712" height="28" rx="8" fill="#DDD2FF"/>
+<text x="34" y="953" class="item">大正时代</text>
+<text x="726" y="953" text-anchor="end" class="date">1912—1926</text>
+<rect x="24" y="969" width="712" height="28" rx="8" fill="#DDD2FF"/>
+<text x="34" y="986" class="item">昭和时代</text>
+<text x="726" y="986" text-anchor="end" class="date">1926—1989</text>
+<rect x="24" y="1002" width="712" height="28" rx="8" fill="#DDD2FF"/>
+<text x="34" y="1019" class="item">平成时代</text>
+<text x="726" y="1019" text-anchor="end" class="date">1989—2019</text>
+<rect x="24" y="1035" width="712" height="28" rx="8" fill="#DDD2FF"/>
+<text x="34" y="1052" class="item">令和时代</text>
+<text x="726" y="1052" text-anchor="end" class="date">2019—</text>
+</g>
+</svg>

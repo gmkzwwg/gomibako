@@ -3,7 +3,7 @@ category: Notes
 abbreviation: Chimp Paradox
 title: Chimp Paradox - How to Manage Emotion Without Suppressing It
 subclass: Psychopathology
-bilingual: true
+layout: bilingual
 ---
 
 `The Chimp Paradox` is best understood as a practical model of emotion regulation, not as a literal atlas of the brain. Steve Peters presents it as a way to simplify complex neuroscience into something usable in daily life: a “Human” that works with facts, logic, perspective, and solutions; a “Chimp” that reacts through feelings, impressions, urgency, and self-protection; and a “Computer” that stores habits, beliefs, memories, and automatic routines. Peters himself has also described the model as *not being a strict scientific fact, but a usable way of understanding and managing the mind*; that distinction matters, because the value of the model lies less in anatomical precision than in its power to make inner conflict understandable and trainable. 

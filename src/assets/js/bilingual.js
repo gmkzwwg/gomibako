@@ -1,4 +1,4 @@
-/* bilingual-toggle.js
+/* bilingual.js
  *
  * 更新点：
  * 1) 可在 JS 配置是否显示“单独按钮”（showButton，默认 true）。
@@ -15,7 +15,7 @@
  *       buttonIndentEm: 1.4          // 按钮占位缩进（展开时给标签补的左内边距，单位 em）
  *     };
  *   </script>
- *   <script src="/assets/bilingual-toggle.js"></script>
+ *   <script src="/assets/bilingual.js"></script>
  *
  * API：
  *   BilingualToggle.expandAll()

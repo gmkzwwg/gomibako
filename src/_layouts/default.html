@@ -1,15 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  {% include head.html %}
+  <head>
+    {% include head.html %} {% include copy_code_button.html %} {% include
+    hacked_splash_css.html %} {% include matrix_letter_bomb.html %} {% include
+    title_hacker.html %} {% if page.layout == "bilingual" %}
+    <script src="{{site.url}}{{site.baseurl}}/src/assets/js/bilingual.js"></script>
+    {% endif %}
+    <script src="{{site.url}}{{site.baseurl}}/src/assets/js/image-viewer.js""></script>
+  </head>
+
   <body class="page">
-<!-- Hacked Splash -->
-    {% include hacked_splash.html %}
-    <script src="{{ '/src/assets/js/hacked-splash.js' | relative_url }}" defer></script>
+    {% if page.todos != false %} {% include todo_summary.html %} {% endif %}
+    <!-- Hacked Splash -->
+    {% include hacked_splash.html %}、
+    <!-- Timeline -->
+    <script src="{{ site.url }}{{ site.baseurl }}/src/assets/js/timeline-list.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        JekyllTimeline.init(".div_article", {
+          summaryWidth: "11%", // 左侧标题栏宽度；建议 8% - 16%
+          gap: "0.92rem", // 左侧标题到中轴线、以及中轴线到右侧内容的水平间距
+          axisWidth: "0.3rem", // 中轴所在列的宽度
+          lineWidth: "0.3rem", // 中轴竖线宽度
+          boxConnectorWidth: '1px', // 每个右侧 box 向左延伸出去的辅助线宽度
+          boxConnectorBallSize: '0.6rem', // 辅助线左端圆球的直径
+          detailRadius: "12px", // 右侧每个独立框的圆角
+          detailPadding: "0.62rem 0.78rem", // 右侧每个独立框的内边距
+          detailGroupGap: "0.48rem", // 右侧多个独立框之间的垂直间距
+          leftTitleMinHeight: "2.2rem", // 左侧标题栏的最小高度
+          summaryTopLineOffset: '0.2rem', // 左侧 summary 顶部那条极细实线距离顶部的位置
+          summaryTopLineGap: '0.36rem', // 左侧顶部实线与标题正文之间的距离
+          summaryTopLineWidth: '1px', // 左侧顶部实线宽度
+          lineColor: "rgba(120, 150, 180, 0.34)", // 中轴竖线颜色
+          fallbackTitlePrefix: "Unknown ", // 左侧标题为空时的默认前缀
+         detailColorMode: 'random', // 随机选择颜色，还是顺序
+        });
+      });
+    </script>
     <!-- Main -->
-    {% include background.html %}
-    {% include collection_list.html %}
+    {% include background.html %} {% include collection_list.html %}
     <div class="container" id="ctner">
-       {% include header.html %}
+      {% include header.html %}
       <div class="div_article" id="div_atcl">
         <div class="hook" id="top_hook"></div>
         <article

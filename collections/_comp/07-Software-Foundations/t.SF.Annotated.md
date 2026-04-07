@@ -1,10 +1,14 @@
 ---
+layout: parallel
 category: Texts
-title: Software Foundations
+abbreviation: SF Annotated
+title: Software Foundations Personal Annotated
 subclass: Software-Foundations
 ---
 
-> 原书地址：https://softwarefoundations.cis.upenn.edu/；版本：Version 6.6 (2024-01-03 15:03, Coq 8.17 or later)；翻译来自 ChatGPT-4；释义来自于必应词典；本页面仅供个人学习，不对外开放，无法被搜索引擎收录。
+原书地址：https://softwarefoundations.cis.upenn.edu/  
+版本：Version 6.6 (2024-01-03 15:03, Coq 8.17 or later)  
+本页面仅供个人学习，不对外开放，无法被搜索引擎收录。
 
 ## Volume 1 Logical Foundations 逻辑基础
 
@@ -15,49 +19,53 @@ subclass: Software-Foundations
 This is the entry point to a series of electronic textbooks on various aspects of Software Foundations, the mathematical underpinnings of reliable software. Topics in the series include basic concepts of logic, computer-assisted theorem proving, the Coq proof assistant, functional programming, operational semantics, logics and techniques for reasoning about programs, static type systems, property-based random testing, and verification of practical C code. The exposition is intended for a broad range of readers, from advanced undergraduates to PhD students and researchers. No specific background in logic or programming languages is assumed, though a degree of mathematical maturity will be helpful.
 
 > 这是《软件基础》系列电子教材的入口，涵盖了可靠软件的数学基础。该系列的主题包括逻辑基本概念、计算机辅助定理证明、Coq证明助手、函数式编程、操作语义、程序推理的逻辑和技术、静态类型系统、基于属性的随机测试，以及实际C代码的验证。本系列旨在面向广泛的读者群体，从高年级本科生到博士生及研究人员。尽管不需要具备特定的逻辑或编程语言背景，但具备一定的数学成熟度会有所帮助。
-- underpinning [ˈʌndə(r)ˌpɪnɪŋ] n.支柱；〈口〉加支柱；墙基；支援
--  underpin [ˌʌndə(r)ˈpɪn] v.巩固；加固（墙）基
--  `计算机辅助定理证明（Computer-Assisted Theorem Proving, 简称 CATP）`是指使用计算机软件来帮助验证数学定理的真伪。在计算机辅助定理证明中，计算机程序被用来检查定理证明的每一个步骤，确保所有逻辑推理都是正确的。与传统的手工证明相比，计算机辅助定理证明能够处理更加庞大和复杂的证明，减少人工错误，提高证明的可靠性。Coq、Isabelle、HOL Light 和 Lean 是一些常见的定理证明器。它们提供了一个框架，用户可以在其中构建和验证证明。`模型检测（Model Checking）`是另一种形式的计算机辅助证明，主要用于验证有限状态系统的性质。通过遍历系统的所有可能状态，模型检测可以验证系统是否满足特定的逻辑性质。
--  `函数式编程（Functional Programming）`是一种编程范式，它强调使用函数来构建和组合程序，尤其注重不可变性和纯函数的使用。纯函数是指那些在相同输入下始终产生相同输出、且不产生任何副作用（如修改全局变量或执行I/O操作）的函数。
--  `操作语义（Operational Semantics）`是计算机科学中的一种形式化方法，用于定义编程语言的行为。它描述了程序的执行方式，即程序的每个操作或语句在特定语境下的运行步骤。这种方法通过给出一个程序在计算机上逐步执行的规则，来描述程序的语义。操作语义通常用一种数学化的方式来表达，常见的方法包括大步语义（big-step semantics）和小步语义（small-step semantics）。
--  exposition [.ekspə'zɪʃ(ə)n] n.阐述；（产品的）展销；商品交易会；产品博览会
+
+> - underpinning [ˈʌndə(r)ˌpɪnɪŋ] n.支柱；〈口〉加支柱；墙基；支援
+> - underpin [ˌʌndə(r)ˈpɪn] v.巩固；加固（墙）基
+> -  `操作语义（Operational Semantics）`是计算机科学中的一种形式化方法，用于定义编程语言的行为。它描述了程序的执行方式，即程序的每个操作或语句在特定语境下的运行步骤。这种方法通过给出一个程序在计算机上逐步执行的规则，来描述程序的语义。操作语义通常用一种数学化的方式来表达，常见的方法包括大步语义（big-step semantics）和小步语义（small-step semantics）。
+> -  exposition [.ekspə'zɪʃ(ə)n] n.阐述；（产品的）展销；商品交易会；产品博览会
 
 The principal novelty of the series is that it is one hundred percent formalized and machine-checked: each text is literally a script for Coq. The books are intended to be read alongside (or inside) an interactive session with Coq. All the details in the text are fully formalized in Coq, and most of the exercises are designed to be worked using Coq.
 
 > 本系列的主要创新之处在于其内容完全形式化且经过机器验证：每本书实际上都是一个Coq脚本。这些书籍需要与Coq的交互会话一起阅读，或者在会话中进行阅读。书中所有细节都在Coq中完全形式化，且大部分练习设计为使用Coq来完成。
-- principal ['prɪnsəp(ə)l] n.本金；委托人；资本；主角 adj.最重要的；主要的（与 principle 同音）
-- novelty [ˈnɒv(ə)lti] n.新颖；新奇；新鲜；新奇的事物（或人、环境） adj.新奇的；风格独特的
+
+> - principal ['prɪnsəp(ə)l] n.本金；委托人；资本；主角 adj.最重要的；主要的（与 principle 同音）
+> - novelty [ˈnɒv(ə)lti] n.新颖；新奇；新鲜；新奇的事物（或人、环境） adj.新奇的；风格独特的
 
 The files in each book are organized into a sequence of core chapters, covering about one semester's worth of material and organized into a coherent linear narrative, plus a number of "offshoot" chapters covering additional topics. All the core chapters are suitable for both upper-level undergraduate and graduate students.
 
 > 每本书的文件分为一系列核心章节，涵盖大约一个学期的内容，并按照连贯的线性叙事组织起来，此外还有一些“分支”章节，涵盖额外的主题。所有核心章节都适合本科高年级和研究生。
-- coherent [kəʊˈhɪərənt] adj.合乎逻辑的；有条理的；清楚易懂的；有表达能力的
-- narrative [ˈnærətɪv] n.叙述；讲故事；叙事技巧 adj.叙述的；故事体的；善于叙述的
-- offshoot [ˈɒfˌʃuːt] n.分支；（尤指）分支机构；蘗枝；分枝
+
+> - coherent [kəʊˈhɪərənt] adj.合乎逻辑的；有条理的；清楚易懂的；有表达能力的
+> - narrative [ˈnærətɪv] n.叙述；讲故事；叙事技巧 adj.叙述的；故事体的；善于叙述的
+> - offshoot [ˈɒfˌʃuːt] n.分支；（尤指）分支机构；蘗枝；分枝
 
 This book, Logical Foundations, lays groundwork for the others, introducing the reader to the basic ideas of functional programming, constructive logic, and the Coq proof assistant.
 
 > 本书《逻辑基础》为其他书奠定基础，向读者介绍了函数式编程、构造逻辑和Coq证明助手的基本思想。
-- groundwork [ˈɡraʊn(d)ˌwɜː(r)k] n.基础工作；准备工作
-- `构造性逻辑（Constructive Logic）`，也称为`直觉主义逻辑（Intuitionistic Logic）`，是一种逻辑体系，强调证明的构造性和可计算性。在构造性逻辑中，要证明一个命题成立，必须明确地构造出一个证明，而不仅仅是通过排除所有其他可能性来证明其存在。与经典逻辑不同，构造性逻辑拒绝使用排中律（Law of Excluded Middle），即命题 \( P \) 或其否定 \( \neg P \) 必有一个成立。在构造性逻辑中，只有当我们能够构造出 \( P \) 的证明时，才能断定 \( P \) 为真。构造性逻辑在计算机科学中有广泛的应用，尤其是在形式化证明、类型理论和编程语言设计领域。例如，Coq这样的定理证明器基于构造性逻辑，允许用户通过构造性的方式来编写程序和证明数学命题。因为每个证明都具有计算内容，构造性逻辑也与可计算性理论密切相关。
+
+> - groundwork [ˈɡraʊn(d)ˌwɜː(r)k] n.基础工作；准备工作
+> - `构造性逻辑（Constructive Logic）`，也称为`直觉主义逻辑（Intuitionistic Logic）`，是一种逻辑体系，强调证明的构造性和可计算性。在构造性逻辑中，要证明一个命题成立，必须明确地构造出一个证明，而不仅仅是通过排除所有其他可能性来证明其存在。与经典逻辑不同，构造性逻辑拒绝使用排中律（Law of Excluded Middle），即命题 \( P \) 或其否定 \( \neg P \) 必有一个成立。在构造性逻辑中，只有当我们能够构造出 \( P \) 的证明时，才能断定 \( P \) 为真。构造性逻辑在计算机科学中有广泛的应用，尤其是在形式化证明、类型理论和编程语言设计领域。例如，Coq这样的定理证明器基于构造性逻辑，允许用户通过构造性的方式来编写程序和证明数学命题。因为每个证明都具有计算内容，构造性逻辑也与可计算性理论密切相关。
 
 #### Overview 概述
 
-Building **reliable software** is really hard -- really hard. The scale and complexity of modern systems, the number of people involved, and the range of demands placed on them make it challenging to build software that is even more-or-less correct, much less 100% correct. At the same time, the increasing degree to which information processing is woven into every aspect of society greatly amplifies the cost of bugs and insecurities.
+Building **reliable software** is really hard -> - really hard. The scale and complexity of modern systems, the number of people involved, and the range of demands placed on them make it challenging to build software that is even more-or-less correct, much less 100% correct. At the same time, the increasing degree to which information processing is woven into every aspect of society greatly amplifies the cost of bugs and insecurities.
 
 > 构建**可靠的软件**非常困难——非常困难。现代系统的规模和复杂性、涉及人员的数量以及对系统的广泛需求，使得构建即使是“基本正确”的软件都很具有挑战性，更不用说100%正确的软件了。同时，信息处理在社会各个方面的渗透程度不断提高，放大了软件漏洞和安全问题的代价。
-- still/much/even less 更不用说；更何况
-- weave wove woven 编织；交织
-- amplify ['æmplɪ.faɪ] v.放大；阐发
+
+> - still/much/even less 更不用说；更何况
+> - weave wove woven 编织；交织
+> - amplify ['æmplɪ.faɪ] v.放大；阐发
 
 Computer scientists and software engineers have responded to these challenges by developing a host of techniques for improving software reliability, ranging from recommendations about managing software projects teams (e.g., extreme programming) to design philosophies for libraries (e.g., model-view-controller, publish-subscribe, etc.) and programming languages (e.g., object-oriented programming, aspect-oriented programming, functional programming, ...) to **mathematical techniques for specifying and reasoning about properties of software and tools for helping validate these properties**. The Software Foundations series is focused on this last set of tools.
 
 > 计算机科学家和软件工程师通过开发一系列技术来应对这些挑战，这些技术包括关于如何管理软件项目团队的建议（如极限编程）、库的设计理念（如模型-视图-控制器、发布-订阅等）以及编程语言的设计理念（如面向对象编程、面向方面编程、函数式编程等），以及**数学技术来指定和推理软件的性质并帮助验证这些性质**。《软件基础》系列主要集中在最后一类工具上。
-- a host of 许多的，大量的
-- `极限编程（Extreme Programming，简称XP）`是一种敏捷软件开发方法，由Kent Beck在20世纪90年代提出。它是一种以提高软件质量和增强开发团队的响应能力为目标的方法，核心理念包括：客户参与、持续反馈、简单设计、持续集成、测试驱动开发（TDD）、结对编程、持续重构、小型发布、集体代码所有权、40小时工作周。
-- `Model-View-Controller（MVC）`是一种软件架构模式，用于分离应用程序的逻辑、用户界面和数据模型。它通过将应用程序的不同部分分开管理，使得代码更加模块化、易于维护和扩展。MVC 广泛应用于图形用户界面应用程序以及Web应用程序的设计和开发。
-- `面向对象编程（Object-Oriented Programming, OOP）`是一种编程范式，它将程序设计任务分解为一个个对象，而每个对象都是一个类的实例。对象封装了数据（属性）和行为（方法），这样可以更好地组织代码，使其更易于管理和扩展。
-- `面向方面编程（Aspect-Oriented Programming, AOP）`是一种编程范式，旨在提高代码的模块化，特别是**关注点的分离**。AOP通过将那些跨越多个模块的关注点（如日志记录、安全性、事务管理等）从核心业务逻辑中分离出来，使代码更加清晰和可维护。在面向对象编程中，有些功能（如日志记录或错误处理）往往会在多个类或方法中重复出现，这些功能被称为`横切关注点（Cross-Cutting Concerns）`。AOP的目标就是将这些横切关注点提取出来，并将其与核心业务逻辑分离。
+
+> - a host of 许多的，大量的
+> - `极限编程（Extreme Programming，简称XP）`是一种敏捷软件开发方法，由Kent Beck在20世纪90年代提出。它是一种以提高软件质量和增强开发团队的响应能力为目标的方法，核心理念包括：客户参与、持续反馈、简单设计、持续集成、测试驱动开发（TDD）、结对编程、持续重构、小型发布、集体代码所有权、40小时工作周。
+> - `Model-View-Controller（MVC）`是一种软件架构模式，用于分离应用程序的逻辑、用户界面和数据模型。它通过将应用程序的不同部分分开管理，使得代码更加模块化、易于维护和扩展。MVC 广泛应用于图形用户界面应用程序以及Web应用程序的设计和开发。
+> - `面向对象编程（Object-Oriented Programming, OOP）`是一种编程范式，它将程序设计任务分解为一个个对象，而每个对象都是一个类的实例。对象封装了数据（属性）和行为（方法），这样可以更好地组织代码，使其更易于管理和扩展。
+> - `面向方面编程（Aspect-Oriented Programming, AOP）`是一种编程范式，旨在提高代码的模块化，特别是**关注点的分离**。AOP通过将那些跨越多个模块的关注点（如日志记录、安全性、事务管理等）从核心业务逻辑中分离出来，使代码更加清晰和可维护。在面向对象编程中，有些功能（如日志记录或错误处理）往往会在多个类或方法中重复出现，这些功能被称为`横切关注点（Cross-Cutting Concerns）`。AOP的目标就是将这些横切关注点提取出来，并将其与核心业务逻辑分离。
 
 This volume weaves together three conceptual threads:
   1. basic tools from logic for making and **justifying precise claims about programs**;
@@ -65,102 +73,111 @@ This volume weaves together three conceptual threads:
   3. functional programming, both as **a method of programming that simplifies reasoning about programs** and as **a bridge between programming and logic**.
 
 > 本书将三条概念线索交织在一起：
-1. 逻辑中的基本工具，用于**对程序进行精确的断言和证明**。
-2. 使用证明助手来构建**严谨的逻辑论证**。
-3. 函数式编程，既作为**简化程序推理的一种编程方法**，也作为**连接编程与逻辑的桥梁**。
-- rigorous ['rɪɡərəs] adj.谨慎的；细致的；彻底的；严格的
+> 1. 逻辑中的基本工具，用于**对程序进行精确的断言和证明**。
+> 2. 使用证明助手来构建**严谨的逻辑论证**。
+> 3. 函数式编程，既作为**简化程序推理的一种编程方法**，也作为**连接编程与逻辑的桥梁**。
+
+> - rigorous ['rɪɡərəs] adj.谨慎的；细致的；彻底的；严格的
 
 ##### Logic 逻辑
 
-`Logic` is the field of study whose **subject matter is proofs** -- *unassailable arguments for the truth of particular propositions*. Volumes have been written about the central role of logic in computer science. Manna and Waldinger called it "the calculus of computer science," while Halpern et al.'s paper On the *Unusual Effectiveness of Logic in Computer Science* catalogs scores of ways in which logic offers critical tools and insights. Indeed, they observe that, "As a matter of fact, logic has turned out to be significantly more effective in computer science than it has been in mathematics. This is quite remarkable, especially since much of the impetus for the development of logic during the past one hundred years came from mathematics."
+`Logic` is the field of study whose **subject matter is proofs** -> - *unassailable arguments for the truth of particular propositions*. Volumes have been written about the central role of logic in computer science. Manna and Waldinger called it "the calculus of computer science," while Halpern et al.'s paper On the *Unusual Effectiveness of Logic in Computer Science* catalogs scores of ways in which logic offers critical tools and insights. Indeed, they observe that, "As a matter of fact, logic has turned out to be significantly more effective in computer science than it has been in mathematics. This is quite remarkable, especially since much of the impetus for the development of logic during the past one hundred years came from mathematics."
 
 > `逻辑`是**研究证明**的学科——*对特定命题的不可争辩的真理性论证*。关于逻辑在计算机科学中的核心作用已经有许多著作。Manna 和 Waldinger 称其为“计算机科学的微积分”，而 Halpern 等人的论文《逻辑在计算机科学中的非同寻常的有效性》列举了逻辑在计算机科学中提供关键工具和洞察力的诸多方式。实际上，他们指出，“已经成为事实的是，逻辑在计算机科学中的有效性明显超过了在数学中的有效性。这非常引人注目，特别是因为过去一百年间逻辑的发展动力主要来自数学。”
-- unassailable [.ʌnə'seɪləb(ə)l] adj.无法摧毁的；不可战胜的；不容置疑的
-  - assail [ə'seɪl] v.攻击；困扰；袭击；抨击
-  - assailant [ə'seɪlənt] n.攻击者；行凶者 adj.攻击的
-- (play a) central role (in) 在……中起着核心作用
-- scores of 许多，大量
-- impetus [ˈɪmpɪtəs] n.动力；推动；促进；刺激
+
+> - unassailable [.ʌnə'seɪləb(ə)l] adj.无法摧毁的；不可战胜的；不容置疑的
+  > - assail [ə'seɪl] v.攻击；困扰；袭击；抨击
+  > - assailant [ə'seɪlənt] n.攻击者；行凶者 adj.攻击的
+> - (play a) central role (in) 在……中起着核心作用
+> - scores of 许多，大量
+> - impetus [ˈɪmpɪtəs] n.动力；推动；促进；刺激
 
 In particular, *the fundamental tools of **inductive proof** are ubiquitous in all of computer science*. You have surely seen them before, perhaps in a course on discrete math or analysis of algorithms, but in this course we will examine them more deeply than you have probably done so far.
 
 > 尤其是，归纳证明的基本工具在整个计算机科学中无处不在。你以前可能在离散数学或算法分析课程中见过它们，但在本课程中，我们将比你以前所做的更深入地研究它们。
-- ubiquitous  [juːˈbɪkwɪtəs] adj.似乎无所不在的；十分普遍的
+
+> - ubiquitous  [juːˈbɪkwɪtəs] adj.似乎无所不在的；十分普遍的
 
 ##### Proof Assistants 证明助手
 
 The flow of ideas between logic and computer science has not been unidirectional: CS has also made important contributions to logic. One of these has been the development of **software tools for helping construct proofs of logical propositions**. These tools fall into two broad categories:
 
 > 逻辑与计算机科学之间的思想流动并非单向：计算机科学也对逻辑做出了重要贡献。其中之一就是开发了**帮助构建逻辑命题证明的软件工具**。这些工具大致分为两类：
-- the flow of ideas 思绪；思维的流动；灵感；源源不断的想法
-- unidirectional 单向性的；单向关联；单方向
+
+> - the flow of ideas 思绪；思维的流动；灵感；源源不断的想法
+> - unidirectional 单向性的；单向关联；单方向
 
 `Automated theorem provers` provide "push-button" operation: **you give them a proposition and they return either true or false (or, sometimes, don't know: ran out of time)**. Although their capabilities are still limited to specific domains, they have matured tremendously in recent years and are used now in a multitude of settings. Examples of such tools include `SAT solvers`, `SMT solvers`, and `model checkers`.
 
 > `自动定理证明器`提供“按下按钮”操作：**你给它一个命题，它返回真或假（有时会返回“未知：超时”）**。尽管它们的能力仍限于特定领域，但近年来已经大大成熟，并且现在被广泛应用于各种场合。此类工具的例子包括`SAT求解器`、`SMT求解器`和`模型检查器`。
-- `自动定理证明器（Automated Theorem Provers，简称ATP）`是用于自动证明或反驳数学定理的软件工具。这些工具在形式逻辑的领域中操作，定理被表示为形式化的语句，目标是通过逻辑推理规则来判断这些语句的有效性，而无需人为干预。其步骤为：
-  - 定理的形式化：定理和假设被表示为形式化语言，通常是谓词逻辑的一种形式。这需要精确的定义和表达，以避免歧义。
-  - 使用算法来探索可能的证明空间。它们应用逻辑推理规则，从现有的语句生成新的语句，寻找从假设到定理的一系列步骤。
-  - 如果找到了一系列有效的逻辑步骤能够得出定理，自动定理证明器就会宣布定理得到证明。
-- tremendous(ly) [trə'mendəs] adj.巨大的；极大的；极好的；精彩的 adv.非常
-- `SAT求解器（SAT Solvers）`是一类专门用于解决`布尔可满足性问题（Boolean Satisfiability Problem，简称SAT）`的算法或工具。SAT问题中的布尔公式由布尔变量和逻辑运算符（如与、或、非）组成。SAT问题的目标是找到一种布尔变量的赋值，使得整个公式为真。
-- `SMT求解器（SMT Solvers）`是用于解决`可满足性模理论问题（Satisfiability Modulo Theories，简称SMT）`的工具。SMT问题是布尔可满足性问题（SAT问题）的推广，涉及在特定理论下判断一个逻辑公式是否可满足。
-  - `模理论（Modulo ['mɒdjʊləʊ] Theories）`：SMT问题不仅涉及布尔逻辑，还包含各种理论，如算术（整数和实数）、数组、位向量、数据结构（如列表、集合）、以及线性整数或实数约束等。这些理论为变量赋值提供了更复杂的约束。
-- `模型检验器（Model Checker）`是一种自动化工具，用于验证系统模型（通常是硬件或软件系统）是否符合某些规范或属性。模型检验器通过系统地检查所有可能的状态和状态转移来确保模型的行为符合预期，*特别是在并发系统或嵌入式系统的验证中*，模型检验器被广泛应用。
+
+> - `自动定理证明器（Automated Theorem Provers，简称ATP）`是用于自动证明或反驳数学定理的软件工具。这些工具在形式逻辑的领域中操作，定理被表示为形式化的语句，目标是通过逻辑推理规则来判断这些语句的有效性，而无需人为干预。其步骤为：
+  > - 定理的形式化：定理和假设被表示为形式化语言，通常是谓词逻辑的一种形式。这需要精确的定义和表达，以避免歧义。
+  > - 使用算法来探索可能的证明空间。它们应用逻辑推理规则，从现有的语句生成新的语句，寻找从假设到定理的一系列步骤。
+  > - 如果找到了一系列有效的逻辑步骤能够得出定理，自动定理证明器就会宣布定理得到证明。
+> - tremendous(ly) [trə'mendəs] adj.巨大的；极大的；极好的；精彩的 adv.非常
+> - `SAT求解器（SAT Solvers）`是一类专门用于解决`布尔可满足性问题（Boolean Satisfiability Problem，简称SAT）`的算法或工具。SAT问题中的布尔公式由布尔变量和逻辑运算符（如与、或、非）组成。SAT问题的目标是找到一种布尔变量的赋值，使得整个公式为真。
+> - `SMT求解器（SMT Solvers）`是用于解决`可满足性模理论问题（Satisfiability Modulo Theories，简称SMT）`的工具。SMT问题是布尔可满足性问题（SAT问题）的推广，涉及在特定理论下判断一个逻辑公式是否可满足。
+  > - `模理论（Modulo ['mɒdjʊləʊ] Theories）`：SMT问题不仅涉及布尔逻辑，还包含各种理论，如算术（整数和实数）、数组、位向量、数据结构（如列表、集合）、以及线性整数或实数约束等。这些理论为变量赋值提供了更复杂的约束。
+> - `模型检验器（Model Checker）`是一种自动化工具，用于验证系统模型（通常是硬件或软件系统）是否符合某些规范或属性。模型检验器通过系统地检查所有可能的状态和状态转移来确保模型的行为符合预期，*特别是在并发系统或嵌入式系统的验证中*，模型检验器被广泛应用。
 
 `Proof assistants` are hybrid tools that automate the more routine aspects of building proofs while depending on human guidance for more difficult aspects. Widely used proof assistants include Isabelle, Agda, Twelf, ACL2, PVS, and Coq, among many others.
 
 > `证明助手`是混合工具，能够自动化构建证明过程中较为常规的部分，同时依赖人类的指导来处理较难的部分。广泛使用的证明助手包括Isabelle、Agda、Twelf、ACL2、PVS和Coq等。
-- `证明辅助工具（Proof Assistants）`，也称为`交互式定理证明器`，是一类软件工具，帮助用户在数学和逻辑领域中构建和验证形式化证明。**与自动定理证明器不同**，证明辅助工具通常**需要用户提供更多的指导**，用户通过与工具的交互**逐步构建证明**。
+
+> - `证明辅助工具（Proof Assistants）`，也称为`交互式定理证明器`，是一类软件工具，帮助用户在数学和逻辑领域中构建和验证形式化证明。**与自动定理证明器不同**，证明辅助工具通常**需要用户提供更多的指导**，用户通过与工具的交互**逐步构建证明**。
 
 This course is based around Coq, a proof assistant that has been under development since 1983 and that in recent years has attracted a large community of users in both research and industry. Coq **provides a rich environment for interactive development of machine-checked formal reasoning**. The kernel of the Coq system is a simple proof-checker, which guarantees that only correct deduction steps are ever performed. On top of this kernel, the Coq environment provides high-level facilities for proof development, including a large library of common definitions and lemmas, powerful tactics for constructing complex proofs semi-automatically, and a special-purpose programming language for defining new proof-automation tactics for specific situations.
 
 > 本课程围绕Coq展开，这是一款自1983年以来一直在开发的证明助手，近年来吸引了大量研究和工业用户。Coq**为`机器验证的形式化推理`提供了一个丰富的交互式开发环境**。Coq系统的**内核是一个简单的证明检查器**，确保只执行正确的推理步骤。在此内核之上，Coq环境提供了高层次的**证明开发工具**，包括一个庞大的**常见定义和引理库、强大的策略**，用于半自动地构建复杂的证明，以及一个**专用的编程语言**，用于为特定情况定义新的自动化证明策略。
-- `形式化推理（Formal Reasoning）`是指使用**严格定义的逻辑和数学规则**来进行**推理**的过程。它涉及将问题、陈述或系统的行为表达为精确的形式化语言，并通过应用逻辑推理规则来得出结论或证明某个陈述的真伪。
-- `机器验证的形式化推理（Machine-Checked Formal Reasoning）`是指通过计算机辅助工具进行的形式化推理过程，其中推理的所有步骤和结论都由机器自动检查和验证。与传统的手工形式化推理不同，这种方法利用自动化工具确保推理的每一步都是逻辑上正确的，极大地提高了验证的可靠性和效率。
+
+> - `形式化推理（Formal Reasoning）`是指使用**严格定义的逻辑和数学规则**来进行**推理**的过程。它涉及将问题、陈述或系统的行为表达为精确的形式化语言，并通过应用逻辑推理规则来得出结论或证明某个陈述的真伪。
+> - `机器验证的形式化推理（Machine-Checked Formal Reasoning）`是指通过计算机辅助工具进行的形式化推理过程，其中推理的所有步骤和结论都由机器自动检查和验证。与传统的手工形式化推理不同，这种方法利用自动化工具确保推理的每一步都是逻辑上正确的，极大地提高了验证的可靠性和效率。
 
 Coq has been a critical enabler for a huge variety of work across computer science and mathematics:
-
-As **a platform for modeling programming languages**, it has become **a standard tool for researchers who need to describe and reason about complex language definitions**. It has been used, for example, to check the security of the JavaCard platform, obtaining the highest level of common criteria certification, and for formal specifications of the x86 and LLVM instruction sets and programming languages such as C.
+  - As **a platform for modeling programming languages**, it has become **a standard tool for researchers who need to describe and reason about complex language definitions**. It has been used, for example, to check the security of the JavaCard platform, obtaining the highest level of common criteria certification, and for formal specifications of the x86 and LLVM instruction sets and programming languages such as C.
 
 > Coq为计算机科学和数学的众多工作提供了重要支持：
+> - 作为一种**编程语言建模的平台**，它已**成为需要描述和推理复杂语言定义的研究人员的标准工具**。例如，它被用来检查JavaCard平台的安全性，从而获得了最高级别的通用标准认证，还用于x86和LLVM指令集、编程语言（如C）的形式化规范。
 
-> 作为一种**编程语言建模的平台**，它已**成为需要描述和推理复杂语言定义的研究人员的标准工具**。例如，它被用来检查JavaCard平台的安全性，从而获得了最高级别的通用标准认证，还用于x86和LLVM指令集、编程语言（如C）的形式化规范。
-- `JavaCard平台`是一种微型平台，允许智能卡和其他小型嵌入式设备运行Java程序。
-- `Common Criteria Certification（通用准则认证）`是一种国际公认的标准，用于评估和认证信息技术（IT）产品和系统的安全性。Common Criteria (CC) 是一个框架，允许用户、开发者和测试实验室使用统一的标准来评估产品的安全属性，确保产品能够满足特定的安全需求。
-  - criteria [kraɪˈtɪəriən] n.标准；尺度
-  - certification  [ˌsɜ:tɪfɪ'keɪʃn] n.证书；证明；检定；合格证
-- `Formal Specifications（形式化规范）`是用数学方法精确定义系统或软件行为的描述方式。形式化规格通过使用形式化语言（如逻辑、集合论、代数等），为系统的设计、开发和验证提供了一个精确且无二义性的基础。
-- `x86指令集架构（ISA, Instruction Set Architecture）`属于CISC架构，是由英特尔开发的计算机处理器指令集架构，规定了处理器可以执行的指令、寄存器的使用、内存地址模式以及与操作系统和应用程序的交互方式。x86指令集具有很强的向后兼容性，从最早的8086处理器到现代的x86-64处理器，新的处理器可以执行旧的x86指令。
-- `LLVM（Low-Level Virtual Machine）指令集`是LLVM编译器基础设施项目中的一种`中间表示（IR, Intermediate Representation）`，用于描述程序的逻辑和操作。在编译器中，LLVM IR**起着桥梁作用，将高级语言代码转换为底层机器代码**。LLVM IR被设计为一个`面向静态单赋值（SSA, Static Single Assignment）`的语言，是一种**高级的、平台无关的中间表示形式**。
+> - `JavaCard平台`是一种微型平台，允许智能卡和其他小型嵌入式设备运行Java程序。
+> - `Common Criteria Certification（通用准则认证）`是一种国际公认的标准，用于评估和认证信息技术（IT）产品和系统的安全性。Common Criteria (CC) 是一个框架，允许用户、开发者和测试实验室使用统一的标准来评估产品的安全属性，确保产品能够满足特定的安全需求。
+  > - criteria [kraɪˈtɪəriən] n.标准；尺度
+  > - certification  [ˌsɜ:tɪfɪ'keɪʃn] n.证书；证明；检定；合格证
+> - `Formal Specifications（形式化规范）`是用数学方法精确定义系统或软件行为的描述方式。形式化规格通过使用形式化语言（如逻辑、集合论、代数等），为系统的设计、开发和验证提供了一个精确且无二义性的基础。
+> - `x86指令集架构（ISA, Instruction Set Architecture）`属于CISC架构，是由英特尔开发的计算机处理器指令集架构，规定了处理器可以执行的指令、寄存器的使用、内存地址模式以及与操作系统和应用程序的交互方式。x86指令集具有很强的向后兼容性，从最早的8086处理器到现代的x86-64处理器，新的处理器可以执行旧的x86指令。
+> - `LLVM（Low-Level Virtual Machine）指令集`是LLVM编译器基础设施项目中的一种`中间表示（IR, Intermediate Representation）`，用于描述程序的逻辑和操作。在编译器中，LLVM IR**起着桥梁作用，将高级语言代码转换为底层机器代码**。LLVM IR被设计为一个`面向静态单赋值（SSA, Static Single Assignment）`的语言，是一种**高级的、平台无关的中间表示形式**。
 
 As **an environment for developing formally certified software and hardware**, Coq has been used, for example, to build CompCert, a fully-verified optimizing compiler for C, and CertiKOS, a fully verified hypervisor, for proving the correctness of subtle algorithms involving floating point numbers, and as the basis for CertiCrypt, an environment for reasoning about the security of cryptographic algorithms. It is also being used to build verified implementations of the open-source RISC-V processor architecture.
 
 > 作为一种**用于开发形式认证软件和硬件的环境**，Coq已被用于构建CompCert（一个完全验证的C优化编译器）、CertiKOS（一个完全验证的虚拟机监视器）、用于证明涉及浮点数的复杂算法的正确性，并作为CertiCrypt的基础（一个用于推理加密算法安全性的环境）。它还被用于构建开源RISC-V处理器架构的验证实现。
-- `CompCert`是一个用于编写高可靠性软件的C编译器，主要用于需要高度安全性和准确性的系统中，例如航空航天、军事和医疗设备。它由法国Inria研究所开发，独特之处在于其编译器的正确性得到了形式化验证。
-- `CertiKOS`是一个经过形式化验证的微内核操作系统，旨在为高安全性和高可靠性系统提供基础。它是由耶鲁大学的计算机科学团队开发的，其核心部分通过Coq证明助手，使用了形式化方法来验证操作系统的正确性。CertiKOS的主要目标是确保内核代码的安全性、可靠性和正确性，特别是在并发执行环境中。
-- hypervisor ['haɪpəvaɪzə] n.管理程序
-- subtle ['sʌt(ə)l] adj.不易察觉的；不明显的；微妙的；机智的
-- `Cryptographic Algorithms（加密算法）`是用于保护信息安全的数学方法和技术。它们通过加密和解密过程确保数据的机密性、完整性和真实性。加密算法可以分为对称加密、非对称加密、哈希函数和数字签名等几类，每一类算法都有其特定的用途和特点。
-  - cryptographic ['krɪptəʊ'græfɪk] adj.关于暗号的 n.隐晶文象状
+
+> - `CompCert`是一个用于编写高可靠性软件的C编译器，主要用于需要高度安全性和准确性的系统中，例如航空航天、军事和医疗设备。它由法国Inria研究所开发，独特之处在于其编译器的正确性得到了形式化验证。
+> - `CertiKOS`是一个经过形式化验证的微内核操作系统，旨在为高安全性和高可靠性系统提供基础。它是由耶鲁大学的计算机科学团队开发的，其核心部分通过Coq证明助手，使用了形式化方法来验证操作系统的正确性。CertiKOS的主要目标是确保内核代码的安全性、可靠性和正确性，特别是在并发执行环境中。
+> - hypervisor ['haɪpəvaɪzə] n.管理程序
+> - subtle ['sʌt(ə)l] adj.不易察觉的；不明显的；微妙的；机智的
+> - `Cryptographic Algorithms（加密算法）`是用于保护信息安全的数学方法和技术。它们通过加密和解密过程确保数据的机密性、完整性和真实性。加密算法可以分为对称加密、非对称加密、哈希函数和数字签名等几类，每一类算法都有其特定的用途和特点。
+  > - cryptographic ['krɪptəʊ'græfɪk] adj.关于暗号的 n.隐晶文象状
 
 As a realistic environment for **functional programming with dependent types**, it has inspired numerous innovations. For example, the Ynot system embeds "relational Hoare reasoning" (an extension of the Hoare Logic we will see later in this course) in Coq.
 
 > 作为**带有依赖类型的函数式编程的一个现实环境**，它启发了众多创新。例如，Ynot系统在Coq中嵌入了‘关系霍尔推理’（这是霍尔逻辑的扩展，我们将在本课程后面学习到）。
-- `Dependent types（依赖类型）`是编程语言和形式化证明系统中的一种高级类型系统，它允许*一个类型不仅可以依赖于其他类型，还可以依赖于程序中的具体值或表达式*。
-- `Ynot`是一个基于Coq证明助手的系统，旨在形式化地描述和验证具有副作用的程序。它提供了一个框架，使得开发者能够在Coq中编写和验证具有副作用的程序，比如那些涉及状态变更、I/O操作或并发的程序。
-- embed [ɪm'bed] v.把…牢牢地嵌入（或插入、埋入）；派遣（战地记者、摄影记者等）
-- `Hoare Reasoning`，也称为`Hoare Logic`，是一种**用于形式化验证程序正确性的逻辑系统**。它以C.A.R. Hoare在1969年提出的`Hoare三元组（Hoare Triple）`为基础，帮助开发者证明程序在特定条件下的正确性。Hoare Logic 被广泛应用于程序验证和编译器优化等领域。
-  - 其核心概念Hoare三元组，通常表示为：{𝑃} 𝐶 {𝑄}。P（前置条件）：程序 𝐶 执行之前应满足的条件。C（程序）：待验证的程序片段或语句。Q（后置条件）：程序 𝐶 执行完成后应满足的条件。
-  - `Relational Hoare Reasoning` 是一种扩展的 Hoare 逻辑，用于形式化验证两个程序之间的关系。传统的 Hoare 逻辑（Hoare Logic）通常用于验证一个程序的前置条件（precondition）和后置条件（postcondition），而 Relational Hoare Logic (RHL) 则将这种思路推广到比较两个程序的行为。
+
+> - `Dependent types（依赖类型）`是编程语言和形式化证明系统中的一种高级类型系统，它允许*一个类型不仅可以依赖于其他类型，还可以依赖于程序中的具体值或表达式*。
+> - `Ynot`是一个基于Coq证明助手的系统，旨在形式化地描述和验证具有副作用的程序。它提供了一个框架，使得开发者能够在Coq中编写和验证具有副作用的程序，比如那些涉及状态变更、I/O操作或并发的程序。
+> - embed [ɪm'bed] v.把…牢牢地嵌入（或插入、埋入）；派遣（战地记者、摄影记者等）
+> - `Hoare Reasoning`，也称为`Hoare Logic`，是一种**用于形式化验证程序正确性的逻辑系统**。它以C.A.R. Hoare在1969年提出的`Hoare三元组（Hoare Triple）`为基础，帮助开发者证明程序在特定条件下的正确性。Hoare Logic 被广泛应用于程序验证和编译器优化等领域。
+  > - 其核心概念Hoare三元组，通常表示为：{𝑃} 𝐶 {𝑄}。P（前置条件）：程序 𝐶 执行之前应满足的条件。C（程序）：待验证的程序片段或语句。Q（后置条件）：程序 𝐶 执行完成后应满足的条件。
+  > - `Relational Hoare Reasoning` 是一种扩展的 Hoare 逻辑，用于形式化验证两个程序之间的关系。传统的 Hoare 逻辑（Hoare Logic）通常用于验证一个程序的前置条件（precondition）和后置条件（postcondition），而 Relational Hoare Logic (RHL) 则将这种思路推广到比较两个程序的行为。
 
 As a **proof assistant for higher-order logic**, it has been used to validate a number of important results in mathematics. For example, its ability to include complex computations inside proofs made it possible to develop the first formally verified proof of the `4-color theorem`. This proof had previously been controversial among mathematicians because it required checking a large number of configurations using a program. In the Coq formalization, everything is checked, including the correctness of the computational part. More recently, an even more massive effort led to a Coq formalization of the Feit-Thompson Theorem, the first major step in the classification of finite simple groups.
 
 > 作为**高阶逻辑的证明助手**，它被用来验证数学中的许多重要结果。例如，它将复杂计算包含在证明中的能力，使得开发`四色定理`的第一个正式验证成为可能。该证明曾在数学家中引发争议，因为它需要使用程序检查大量配置。在Coq形式化中，一切都得到了验证，包括计算部分的正确性。最近，一项更为庞大的努力导致了Feit-Thompson定理的Coq形式化，这是分类有限单群的第一步。
-- `Higher-order logic（HOL，高阶逻辑）`是逻辑学中`一阶逻辑（first-order logic）`的一种扩展形式。一阶逻辑仅允许对个体对象进行量化。即在一阶逻辑中，量化符号（如“∃”（存在量词）和“∀”（全称量词））只适用于个体变量。在高阶逻辑中，不仅可以对个体对象进行量化，**还可以对谓词、函数和关系进行量化**。这意味着你可以量化那些在一阶逻辑中仅作为变量出现的概念。例如，可以说“对所有属性P，P在某个对象上成立”。
-- `四色定理（Four Color Theorem）`是图论中的一个著名定理，涉及地图的着色问题。它断言，对于任何一个平面地图，只需要使用不超过四种颜色，就可以使得地图上的相邻区域（即有共同边界的区域）着色不同。 
-  - 四色定理最早由英格兰数学家弗朗西斯·古斯里（Francis Guthrie）在1852年提出，但正式的证明在一个多世纪内都未能成功。
-  - Kenneth Appel 和 Wolfgang Haken 在1976年首次使用计算机辅助证明了四色定理。他们的方法通过将问题分解成大量的特殊情况，然后使用计算机验证每一种情况都满足四色定理。这个证明非常复杂，涉及上千小时的计算机计算，虽然产生了一些争议，但最终被数学界接受。*它成为了数学史上第一个通过计算机辅助证明的重要定理。*
+
+> - `Higher-order logic（HOL，高阶逻辑）`是逻辑学中`一阶逻辑（first-order logic）`的一种扩展形式。一阶逻辑仅允许对个体对象进行量化。即在一阶逻辑中，量化符号（如“∃”（存在量词）和“∀”（全称量词））只适用于个体变量。在高阶逻辑中，不仅可以对个体对象进行量化，**还可以对谓词、函数和关系进行量化**。这意味着你可以量化那些在一阶逻辑中仅作为变量出现的概念。例如，可以说“对所有属性P，P在某个对象上成立”。
+> - `四色定理（Four Color Theorem）`是图论中的一个著名定理，涉及地图的着色问题。它断言，对于任何一个平面地图，只需要使用不超过四种颜色，就可以使得地图上的相邻区域（即有共同边界的区域）着色不同。 
+  > - 四色定理最早由英格兰数学家弗朗西斯·古斯里（Francis Guthrie）在1852年提出，但正式的证明在一个多世纪内都未能成功。
+  > - Kenneth Appel 和 Wolfgang Haken 在1976年首次使用计算机辅助证明了四色定理。他们的方法通过将问题分解成大量的特殊情况，然后使用计算机验证每一种情况都满足四色定理。这个证明非常复杂，涉及上千小时的计算机计算，虽然产生了一些争议，但最终被数学界接受。*它成为了数学史上第一个通过计算机辅助证明的重要定理。*
 
 By the way, in case you're wondering about the name, here's what the official Coq web site at INRIA (the French national research lab where Coq has mostly been developed) says about it: "Some French computer scientists have a tradition of naming their software as animal species: Caml, Elan, Foc or Phox are examples of this tacit convention. In French, 'coq' means rooster, and it sounds like the initials of the Calculus of Constructions (CoC) on which it is based." The rooster is also the national symbol of France, and C-o-q are the first three letters of the name of Thierry Coquand, one of Coq's early developers.
 
@@ -172,7 +189,7 @@ The term functional programming refers both to a collection of programming idiom
 
 > 函数式编程这个术语既指可以在几乎任何编程语言中使用的一组编程习惯，也指一组强调这些习惯的编程语言，包括Haskell、OCaml、Standard ML、F#、Scala、Scheme、Racket、Common Lisp、Clojure、Erlang和Coq。
 
-Functional programming has been developed over many decades -- indeed, its roots go back to Church's lambda-calculus, which was invented in the 1930s, well before the first electronic computers! But since the early '90s it has enjoyed a surge of interest among industrial engineers and language designers, playing a key role in high-value systems at companies like Jane Street Capital, Microsoft, Facebook, Twitter, and Ericsson.
+Functional programming has been developed over many decades -> - indeed, its roots go back to Church's lambda-calculus, which was invented in the 1930s, well before the first electronic computers! But since the early '90s it has enjoyed a surge of interest among industrial engineers and language designers, playing a key role in high-value systems at companies like Jane Street Capital, Microsoft, Facebook, Twitter, and Ericsson.
 
 > 函数式编程已经发展了数十年——实际上，其根源可以追溯到1930年代Church发明的λ演算，远早于第一台电子计算机的出现！但是，自90年代初以来，它在工业工程师和语言设计者中重新引起了极大的兴趣，成为像Jane Street Capital、微软、Facebook、Twitter和爱立信等公司关键系统中的核心部分。
 
@@ -188,7 +205,7 @@ Another reason for the current excitement about functional programming is relate
 
 > 对函数式编程的当前兴奋点的另一个原因也与第一个原因相关：函数式程序通常比命令式程序更容易并行化和物理分布。如果运行一个计算除了产生结果之外没有其他影响，那么它在哪里运行并不重要。同样地，如果数据结构从未被破坏性修改，那么它可以自由地复制，无论是在不同的处理器核心之间还是在网络上。实际上，Map-Reduce这种模式正是函数式编程的经典示例，它在Hadoop等大规模分布式查询处理器中起到了核心作用，并被Google用来索引整个互联网。
 
-For purposes of this course, functional programming has yet another significant attraction: it serves as a bridge between logic and computer science. Indeed, Coq itself can be viewed as a combination of a small but extremely expressive functional programming language plus a set of tools for stating and proving logical assertions. Moreover, when we come to look more closely, we find that these two sides of Coq are actually aspects of the very same underlying machinery -- i.e., proofs are programs.
+For purposes of this course, functional programming has yet another significant attraction: it serves as a bridge between logic and computer science. Indeed, Coq itself can be viewed as a combination of a small but extremely expressive functional programming language plus a set of tools for stating and proving logical assertions. Moreover, when we come to look more closely, we find that these two sides of Coq are actually aspects of the very same underlying machinery -> - i.e., proofs are programs.
 
 > 对于本课程的目的，函数式编程还有另一个显著的吸引力：它可以作为逻辑与计算机科学之间的桥梁。实际上，Coq本身可以被视为一个小而非常表达力强的函数式编程语言与一组用于陈述和证明逻辑断言的工具的结合体。此外，当我们仔细观察时，我们会发现Coq的这两个方面实际上是同一个基础机制的两个方面——即证明就是程序。
 
@@ -207,26 +224,26 @@ Coq runs on Windows, Linux, and macOS. The files in this book have been tested w
 > Coq 可以在 Windows、Linux 和 macOS 上运行。本书中的文件已在 Coq 8.17 版本上进行过测试。
 
 You will need:
-  - A current installation of Coq, available from the Coq home page. The "Coq Platform" usually offers the smoothest installation experience.
-  - If you use the VSCode + Docker option described below, you don't need to install Coq separately.
-  - An IDE for interacting with Coq. There are several choices:
-    - The VSCoq extension for Visual Studio Code offers a simple interface via a familiar IDE. This option is the recommended default.
-    - VSCoq can be used as an ordinary IDE or it can be combined with Docker (see below) for a lightweight installation experience.
-    - Proof General is an Emacs-based IDE. It tends to be preferred by users who are already comfortable with Emacs. It requires a separate installation (google "Proof General").
-    - Adventurous users of Coq within Emacs may want to check out extensions such as company-coq and control-lock.
-    - CoqIDE is a simpler stand-alone IDE. It is distributed with Coq, so it should be available once you have Coq installed. It can also be compiled from scratch, but on some platforms this may involve installing additional packages for GUI libraries and such.
-    - Users who like CoqIDE should consider running it with the "asynchronous" and "error resilience" modes disabled:
+  > - A current installation of Coq, available from the Coq home page. The "Coq Platform" usually offers the smoothest installation experience.
+  > - If you use the VSCode + Docker option described below, you don't need to install Coq separately.
+  > - An IDE for interacting with Coq. There are several choices:
+    > - The VSCoq extension for Visual Studio Code offers a simple interface via a familiar IDE. This option is the recommended default.
+    > - VSCoq can be used as an ordinary IDE or it can be combined with Docker (see below) for a lightweight installation experience.
+    > - Proof General is an Emacs-based IDE. It tends to be preferred by users who are already comfortable with Emacs. It requires a separate installation (google "Proof General").
+    > - Adventurous users of Coq within Emacs may want to check out extensions such as company-coq and control-lock.
+    > - CoqIDE is a simpler stand-alone IDE. It is distributed with Coq, so it should be available once you have Coq installed. It can also be compiled from scratch, but on some platforms this may involve installing additional packages for GUI libraries and such.
+    > - Users who like CoqIDE should consider running it with the "asynchronous" and "error resilience" modes disabled:
 
 > 你需要：
-  - 当前版本的 Coq 安装，可以从 Coq 官方主页下载。“Coq 平台”通常提供最流畅的安装体验。
-  - 如果你使用下面描述的 VSCode + Docker 选项，则不需要单独安装 Coq。
-  - 用于与 Coq 交互的 IDE。有几个选择：
-    - Visual Studio Code 的 VSCoq 扩展：通过一个熟悉的 IDE 提供了一个简单的界面。这个选项是推荐的默认选择。
-    - VSCoq 可以作为普通 IDE 使用，或与 Docker 结合使用（见下文），以实现轻量级的安装体验。
-    - Proof General 是一个基于 Emacs 的 IDE。通常被已经熟悉 Emacs 的用户所青睐。它需要单独安装（请搜索 "Proof General"）。
-    - 喜欢在 Emacs 中使用 Coq 的高级用户可能想试试诸如 company-coq 和 control-lock 这样的扩展。
-    - CoqIDE 是一个更简单的独立 IDE。它与 Coq 一起发布，因此一旦安装了 Coq，就应该可用。它也可以从头开始编译，但在某些平台上可能需要安装额外的 GUI 库等软件包。
-    - 喜欢 CoqIDE 的用户可以考虑在禁用“异步”和“错误弹性”模式的情况下运行：
+  > - 当前版本的 Coq 安装，可以从 Coq 官方主页下载。“Coq 平台”通常提供最流畅的安装体验。
+  > - 如果你使用下面描述的 VSCode + Docker 选项，则不需要单独安装 Coq。
+  > - 用于与 Coq 交互的 IDE。有几个选择：
+    > - Visual Studio Code 的 VSCoq 扩展：通过一个熟悉的 IDE 提供了一个简单的界面。这个选项是推荐的默认选择。
+    > - VSCoq 可以作为普通 IDE 使用，或与 Docker 结合使用（见下文），以实现轻量级的安装体验。
+    > - Proof General 是一个基于 Emacs 的 IDE。通常被已经熟悉 Emacs 的用户所青睐。它需要单独安装（请搜索 "Proof General"）。
+    > - 喜欢在 Emacs 中使用 Coq 的高级用户可能想试试诸如 company-coq 和 control-lock 这样的扩展。
+    > - CoqIDE 是一个更简单的独立 IDE。它与 Coq 一起发布，因此一旦安装了 Coq，就应该可用。它也可以从头开始编译，但在某些平台上可能需要安装额外的 GUI 库等软件包。
+    > - 喜欢 CoqIDE 的用户可以考虑在禁用“异步”和“错误弹性”模式的情况下运行：
 
 ```
           coqide -async-proofs off \
@@ -236,54 +253,54 @@ You will need:
 ##### Using Coq with VSCode and Docker
 
 The Visual Studio Code IDE can cooperate with the Docker virtualization platform to compile Coq scripts without the need for any separate Coq installation. To get things set up, follow these steps:
-  - Install Docker from https://www.docker.com/get-started/ or make sure your existing installation is up to date.
-  - Make sure Docker is running.
-  - Install VSCode from https://code.visualstudio.com and start it running.
-  - Install VSCode's Remote Containers Extention from https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
-  - Set up a directory for this SF volume by downloading the provided .tgz file. Besides the .v file for each chapter, this directory will contain a .devcontainer subdirectory with instructions for VSCode about where to find an appropriate Docker image and a _CoqProject file, whose presence triggers the VSCoq extension.
-  - In VSCode, use File > Open Folder to open the new directory. VSCode should ask you whether you want to run the project in the associated Docker container. (If it does not ask you, you can open the command palette by pressing F1 and run the command “Dev Containers: Reopen in Container”.)
-  - Check that VSCoq is working by double-clicking the file Basics.v from the list on the left (you should see a blinking cursor in the window that opens; if not you can click in that window to select it), and pressing alt+downarrow (on MacOS, control+option+downarrow) a few times. You should see the cursor move through the file and the region above the cursor get highlighted.
-  - To see what other key bindings are available, press F1 and then type Coq:, or visit the VSCoq web pages: https://github.com/coq-community/vscoq/tree/vscoq1.
+  > - Install Docker from https://www.docker.com/get-started/ or make sure your existing installation is up to date.
+  > - Make sure Docker is running.
+  > - Install VSCode from https://code.visualstudio.com and start it running.
+  > - Install VSCode's Remote Containers Extention from https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
+  > - Set up a directory for this SF volume by downloading the provided .tgz file. Besides the .v file for each chapter, this directory will contain a .devcontainer subdirectory with instructions for VSCode about where to find an appropriate Docker image and a _CoqProject file, whose presence triggers the VSCoq extension.
+  > - In VSCode, use File > Open Folder to open the new directory. VSCode should ask you whether you want to run the project in the associated Docker container. (If it does not ask you, you can open the command palette by pressing F1 and run the command “Dev Containers: Reopen in Container”.)
+  > - Check that VSCoq is working by double-clicking the file Basics.v from the list on the left (you should see a blinking cursor in the window that opens; if not you can click in that window to select it), and pressing alt+downarrow (on MacOS, control+option+downarrow) a few times. You should see the cursor move through the file and the region above the cursor get highlighted.
+  > - To see what other key bindings are available, press F1 and then type Coq:, or visit the VSCoq web pages: https://github.com/coq-community/vscoq/tree/vscoq1.
 
 Visual Studio Code IDE 可以与 Docker 虚拟化平台协作，编译 Coq 脚本，而无需单独安装 Coq。要设置环境，请按照以下步骤操作：
-  - 从 Docker 网站 安装 Docker，或确保现有安装是最新的。
-  - 确保 Docker 正在运行。
-  - 从 Visual Studio Code 网站 安装 VSCode，并启动。
-  - 从 VSCode 扩展市场 安装 VSCode 的 Remote Containers 扩展。
-  - 为本书的 SF 卷设置一个目录，方法是下载提供的 .tgz 文件。除了每个章节的 .v 文件外，这个目录还包含一个 .devcontainer 子目录，其中包含 VSCode 关于在何处查找适当 Docker 镜像的说明，以及一个 _CoqProject 文件，其存在触发 VSCoq 扩展。
-  - 在 VSCode 中，使用“文件 > 打开文件夹”来打开新目录。VSCode 应该会询问你是否要在关联的 Docker 容器中运行该项目。（如果它没有询问，你可以按下 F1 打开命令面板，并运行命令“Dev Containers: Reopen in Container”）。
-  - 通过双击左侧列表中的 Basics.v 文件来检查 VSCoq 是否正常工作（你应该看到在打开的窗口中有一个闪烁的光标；如果没有，你可以点击该窗口以选中它），然后多次按下 alt+下箭头（在 macOS 上，按 control+option+下箭头）。你应该看到光标在文件中移动，光标上方的区域被高亮显示。
-  - 要查看其他可用的快捷键，请按 F1 然后输入 Coq:，或者访问 VSCoq 的网页：VSCoq GitHub。
+  > - 从 Docker 网站 安装 Docker，或确保现有安装是最新的。
+  > - 确保 Docker 正在运行。
+  > - 从 Visual Studio Code 网站 安装 VSCode，并启动。
+  > - 从 VSCode 扩展市场 安装 VSCode 的 Remote Containers 扩展。
+  > - 为本书的 SF 卷设置一个目录，方法是下载提供的 .tgz 文件。除了每个章节的 .v 文件外，这个目录还包含一个 .devcontainer 子目录，其中包含 VSCode 关于在何处查找适当 Docker 镜像的说明，以及一个 _CoqProject 文件，其存在触发 VSCoq 扩展。
+  > - 在 VSCode 中，使用“文件 > 打开文件夹”来打开新目录。VSCode 应该会询问你是否要在关联的 Docker 容器中运行该项目。（如果它没有询问，你可以按下 F1 打开命令面板，并运行命令“Dev Containers: Reopen in Container”）。
+  > - 通过双击左侧列表中的 Basics.v 文件来检查 VSCoq 是否正常工作（你应该看到在打开的窗口中有一个闪烁的光标；如果没有，你可以点击该窗口以选中它），然后多次按下 alt+下箭头（在 macOS 上，按 control+option+下箭头）。你应该看到光标在文件中移动，光标上方的区域被高亮显示。
+  > - 要查看其他可用的快捷键，请按 F1 然后输入 Coq:，或者访问 VSCoq 的网页：VSCoq GitHub。
 
 ##### Exercises 练习说明
 
 Each chapter includes numerous exercises. Each is marked with a "star rating," which can be interpreted as follows:
-  - One star: easy exercises that underscore points in the text and that, for most readers, should take only a minute or two. Get in the habit of working these as you reach them.
-  - Two stars: straightforward exercises (five or ten minutes).
-  - Three stars: exercises requiring a bit of thought (ten minutes to half an hour).
-  - Four and five stars: more difficult exercises (half an hour and up).
+  > - One star: easy exercises that underscore points in the text and that, for most readers, should take only a minute or two. Get in the habit of working these as you reach them.
+  > - Two stars: straightforward exercises (five or ten minutes).
+  > - Three stars: exercises requiring a bit of thought (ten minutes to half an hour).
+  > - Four and five stars: more difficult exercises (half an hour and up).
 
 > 每个章节包含大量练习。每个练习都标有“星级评分”，可以解释如下：
-  - 一星：简单的练习，强调文本中的要点，对于大多数读者来说，只需一两分钟即可完成。养成在遇到它们时立即练习的习惯。
-  - 二星：直接的练习（五到十分钟）。
-  - 三星：需要一些思考的练习（十分钟到半小时）。
-  - 四星和五星：更困难的练习（半小时及以上）。
+  > - 一星：简单的练习，强调文本中的要点，对于大多数读者来说，只需一两分钟即可完成。养成在遇到它们时立即练习的习惯。
+  > - 二星：直接的练习（五到十分钟）。
+  > - 三星：需要一些思考的练习（十分钟到半小时）。
+  > - 四星和五星：更困难的练习（半小时及以上）。
 
 
 
 Those using SF in a classroom setting should note that the autograder assigns extra points to harder exercises:
-  - 1 star  = 1 point
-  - 2 stars = 2 points
-  - 3 stars = 3 points
-  - 4 stars = 6 points
-  - 5 stars = 10 points
+  > - 1 star  = 1 point
+  > - 2 stars = 2 points
+  > - 3 stars = 3 points
+  > - 4 stars = 6 points
+  > - 5 stars = 10 points
 
 > 那些在课堂环境中使用 SF 的用户应注意，自动评分程序会为难度较大的练习分配额外的分数：
-  - 1 星 = 1 分
-  - 2 星 = 2 分
-  - 3 星 = 3 分
-  - 4 星 = 6 分
-  - 5 星 = 10 分
+  > - 1 星 = 1 分
+  > - 2 星 = 2 分
+  > - 3 星 = 3 分
+  > - 4 星 = 6 分
+  > - 5 星 = 10 分
 
 Some exercises are marked "advanced," and some are marked "optional." Doing just the non-optional, non-advanced exercises should provide good coverage of the core material. Optional exercises provide a bit of extra practice with key concepts and introduce secondary themes that may be of interest to some readers. Advanced exercises are for readers who want an extra challenge and a deeper cut at the material.
 
@@ -357,13 +374,13 @@ If you plan to use these materials in your own teaching, or if you are using sof
 > 如果你计划在自己的教学中使用这些材料，或者你在自学 Software Foundations 时发现了你想要添加或改进的内容，欢迎你贡献！我们热情邀请你加入 SF 的私人 Git 仓库。
 
 In order to keep the legalities simple and to have a single point of responsibility in case the need should ever arise to adjust the license terms, sublicense, etc., we ask all contributors (i.e., everyone with access to the developers' repository) to assign copyright in their contributions to the appropriate "author of record," as follows:
-   - I hereby assign copyright in my past and future contributions to the Software Foundations project to the Author of Record of each volume or component, to be licensed under the same terms as the rest of Software Foundations. I understand that, at present, the Authors of Record are as follows: For Volumes 1 and 2, known until 2016 as "Software Foundations" and from 2016 as (respectively) "Logical Foundations" and "Programming Foundations," and for Volume 4, "QuickChick: Property-Based Testing in Coq," the Author of Record is Benjamin C. Pierce. For Volume 3, "Verified Functional Algorithms," and volume 5, "Verifiable C," the Author of Record is Andrew W. Appel. For Volume 6, "Separation Logic Foundations," the author of record is Arthur Chargueraud. For components outside of designated volumes (e.g., typesetting and grading tools and other software infrastructure), the Author of Record is Benjamin Pierce.
+   > - I hereby assign copyright in my past and future contributions to the Software Foundations project to the Author of Record of each volume or component, to be licensed under the same terms as the rest of Software Foundations. I understand that, at present, the Authors of Record are as follows: For Volumes 1 and 2, known until 2016 as "Software Foundations" and from 2016 as (respectively) "Logical Foundations" and "Programming Foundations," and for Volume 4, "QuickChick: Property-Based Testing in Coq," the Author of Record is Benjamin C. Pierce. For Volume 3, "Verified Functional Algorithms," and volume 5, "Verifiable C," the Author of Record is Andrew W. Appel. For Volume 6, "Separation Logic Foundations," the author of record is Arthur Chargueraud. For components outside of designated volumes (e.g., typesetting and grading tools and other software infrastructure), the Author of Record is Benjamin Pierce.
 
 > 为了使法律问题简单化，并在需要时调整许可证条款、再许可等情况下有一个单一的责任点，我们要求所有贡献者（即拥有开发者仓库访问权限的每个人）将其贡献的版权分配给相应的“记录作者”，并按照与 Software Foundations 其余部分相同的条款进行许可。我理解目前“记录作者”如下：
-  - 对于卷 1 和卷 2，分别称为“Logical Foundations”和“Programming Foundations”：记录作者为 Benjamin C. Pierce。
-  - 对于卷 3“Verified Functional Algorithms” 和卷 5“Verifiable C”：记录作者为 Andrew W. Appel。
-  - 对于卷 4“QuickChick: Property-Based Testing in Coq” 和卷 6“Separation Logic Foundations”：记录作者为 Arthur Chargueraud。
-  - 对于超出指定卷（例如排版和评分工具及其他软件基础设施）的组件：记录作者为 Benjamin Pierce。
+  > - 对于卷 1 和卷 2，分别称为“Logical Foundations”和“Programming Foundations”：记录作者为 Benjamin C. Pierce。
+  > - 对于卷 3“Verified Functional Algorithms” 和卷 5“Verifiable C”：记录作者为 Andrew W. Appel。
+  > - 对于卷 4“QuickChick: Property-Based Testing in Coq” 和卷 6“Separation Logic Foundations”：记录作者为 Arthur Chargueraud。
+  > - 对于超出指定卷（例如排版和评分工具及其他软件基础设施）的组件：记录作者为 Benjamin Pierce。
 
 To get started, please send an email to Benjamin Pierce, describing yourself and how you plan to use the materials and including (1) the above copyright transfer text and (2) your github username.
 
@@ -392,9 +409,9 @@ Functional Programming in Coq
 
 #### Introduction
 
-The functional style of programming is founded on simple, everyday mathematical intuitions: If a procedure or method has no side effects, then (ignoring efficiency) all we need to understand about it is how it maps inputs to outputs -- that is, we can think of it as just a concrete method for computing a mathematical function. This is one sense of the word "functional" in "functional programming." The direct connection between programs and simple mathematical objects supports both formal correctness proofs and sound informal reasoning about program behavior.
+The functional style of programming is founded on simple, everyday mathematical intuitions: If a procedure or method has no side effects, then (ignoring efficiency) all we need to understand about it is how it maps inputs to outputs -> - that is, we can think of it as just a concrete method for computing a mathematical function. This is one sense of the word "functional" in "functional programming." The direct connection between programs and simple mathematical objects supports both formal correctness proofs and sound informal reasoning about program behavior.
 
-The other sense in which functional programming is "functional" is that it emphasizes the use of functions as first-class values -- i.e., values that can be passed as arguments to other functions, returned as results, included in data structures, etc. The recognition that functions can be treated as data gives rise to a host of useful and powerful programming idioms.
+The other sense in which functional programming is "functional" is that it emphasizes the use of functions as first-class values -> - i.e., values that can be passed as arguments to other functions, returned as results, included in data structures, etc. The recognition that functions can be treated as data gives rise to a host of useful and powerful programming idioms.
 
 Other common features of functional languages include algebraic data types and pattern matching, which make it easy to construct and manipulate rich data structures, and polymorphic type systems supporting abstraction and code reuse. Coq offers all of these features.
 
@@ -410,7 +427,7 @@ Naturally, the Coq distribution comes with an extensive standard library providi
 
 ##### Days of the Week
 
-To see how this definition mechanism works, let's start with a very simple example. The following declaration tells Coq that we are defining a set of data values -- a type.
+To see how this definition mechanism works, let's start with a very simple example. The following declaration tells Coq that we are defining a set of data values -> - a type.
 
 ```coq
 Inductive day : Type :=
@@ -440,7 +457,7 @@ Definition next_weekday (d:day) : day :=
   end.
 ```
 
-Note that the argument and return types of this function are explicitly declared here. Like most functional programming languages, Coq can often figure out these types for itself when they are not given explicitly -- i.e., it can do type inference -- but we'll generally include them to make reading easier.
+Note that the argument and return types of this function are explicitly declared here. Like most functional programming languages, Coq can often figure out these types for itself when they are not given explicitly -> - i.e., it can do type inference -> - but we'll generally include them to make reading easier.
 
 Having defined a function, we can check that it works on some examples. There are actually three different ways to do examples in Coq. First, we can use the command Compute to evaluate a compound expression involving next_weekday.
 
@@ -534,7 +551,7 @@ Definition orb (b1:bool) (b2:bool) : bool :=
 
 (Although we are rolling our own booleans here for the sake of building up everything from scratch, Coq does, of course, provide a default implementation of the booleans, together with a multitude of useful functions and lemmas. Whereever possible, we've named our own definitions and theorems to match the ones in the standard library.)
 
-The last two of these illustrate Coq's syntax for multi-argument function definitions. The corresponding multi-argument application syntax is illustrated by the following "unit tests," which constitute a complete specification a truth table -- for the orb function:
+The last two of these illustrate Coq's syntax for multi-argument function definitions. The corresponding multi-argument application syntax is illustrated by the following "unit tests," which constitute a complete specification a truth table -> - for the orb function:
 
 ```coq
 Example test_orb1: (orb true false) = true.
@@ -578,7 +595,7 @@ Since the bool type is not built in, Coq actually supports conditional expressio
 
 Exercise: 1 star, standard (nandb)
 
-The Admitted command can be used as a placeholder for an incomplete proof. We use it in exercises to indicate the parts that we're leaving for you -- i.e., your job is to replace Admitteds with real proofs.
+The Admitted command can be used as a placeholder for an incomplete proof. We use it in exercises to indicate the parts that we're leaving for you -> - i.e., your job is to replace Admitteds with real proofs.
 
 Remove "Admitted." and complete the definition of the following function; then make sure that the Example assertions below can each be verified by Coq. (I.e., fill in each proof, following the model of the orb tests above, and make sure Coq accepts it.) The function should return true if either or both of its inputs are false.
 
@@ -763,7 +780,7 @@ We put this section in a module so that our own definition of natural numbers do
 Module NatPlayground.
 ```
 
-All the types we have defined so far -- both "enumerated types" such as day, bool, and bit and tuple types such as nybble built from them -- are finite. The natural numbers, on the other hand, are an infinite set, so we'll need to use a slightly richer form of type declaration to represent them.
+All the types we have defined so far -> - both "enumerated types" such as day, bool, and bit and tuple types such as nybble built from them -> - are finite. The natural numbers, on the other hand, are an infinite set, so we'll need to use a slightly richer form of type declaration to represent them.
 
 There are many representations of numbers to choose from. You are almost certainly most familiar with decimal notation (base 10), using the digits 0 through 9, for example, to form the number 123. You may very likely also have encountered hexadecimal notation (base 16), in which the same number is represented as 7B, or octal (base 8), where it is 173, or binary (base 2), where it is 1111011. Using an enumerated type to represent digits, we could use any of these as our representation natural numbers. Indeed, there are circumstances where each of these choices would be useful.
 
@@ -782,7 +799,7 @@ With this definition, 0 is represented by O, 1 by S O, 2 by S (S O), and so on.
 Informally, the clauses of the definition can be read:
 
 * O is a natural number (remember this is the letter "O," not the numeral "0").
-* S can be put in front of a natural number to yield another one -- i.e., if n is a natural number, then S n is too.
+* S can be put in front of a natural number to yield another one -> - i.e., if n is a natural number, then S n is too.
 
 Again, let's look at this a bit more closely. The definition of nat says how expressions in the set nat can be built:
 * the constructor expression O belongs to the set nat;
@@ -791,7 +808,7 @@ Again, let's look at this a bit more closely. The definition of nat says how exp
 
 These conditions are the precise force of the Inductive declaration that we gave to Coq. They imply that the constructor expression O, the constructor expression S O, the constructor expression S (S O), the constructor expression S (S (S O)), and so on all belong to the set nat, while other constructor expressions like true, andb true false, S (S false), and O (O (O S)) do not.
 
-A critical point here is that what we've done so far is just to define a representation of numbers: a way of writing them down. The names O and S are arbitrary, and at this point they have no special meaning -- they are just two different marks that we can use to write down numbers, together with a rule that says any nat will be written as some string of S marks followed by an O. If we like, we can write essentially the same definition this way:
+A critical point here is that what we've done so far is just to define a representation of numbers: a way of writing them down. The names O and S are arbitrary, and at this point they have no special meaning -> - they are just two different marks that we can use to write down numbers, together with a rule that says any nat will be written as some string of S marks followed by an O. If we like, we can write essentially the same definition this way:
 
 ```coq
 Inductive otherNat : Type :=
@@ -801,7 +818,7 @@ Inductive otherNat : Type :=
 
 The interpretation of these marks arises from how we use them to compute.
 
-We can do this by writing functions that pattern match on representations of natural numbers just as we did above with booleans and days -- for example, here is the predecessor function:
+We can do this by writing functions that pattern match on representations of natural numbers just as we did above with booleans and days -> - for example, here is the predecessor function:
 
 ```coq
 Definition pred (n : nat) : nat :=
@@ -838,7 +855,7 @@ Check pred : nat → nat.
 Check minustwo : nat → nat.
 ```
 
-These are all things that can be applied to a number to yield a number. However, there is a fundamental difference between S and the other two: functions like pred and minustwo are defined by giving computation rules -- e.g., the definition of pred says that pred 2 can be simplified to 1 -- while the definition of S has no such behavior attached. Although it is like a function in the sense that it can be applied to an argument, it does not do anything at all! It is just a way of writing down numbers.
+These are all things that can be applied to a number to yield a number. However, there is a fundamental difference between S and the other two: functions like pred and minustwo are defined by giving computation rules -> - e.g., the definition of pred says that pred 2 can be simplified to 1 -> - while the definition of S has no such behavior attached. Although it is like a function in the sense that it can be applied to an argument, it does not do anything at all! It is just a way of writing down numbers.
 
 Think about standard decimal numerals: the numeral 1 is not a computation; it's a piece of data. When we write 111 to mean the number one hundred and eleven, we are using 1, three times, to write down a concrete representation of a number.
 
@@ -866,7 +883,7 @@ Example test_odd2: odd 4 = false.
 Proof. simpl. reflexivity. Qed.
 ```
 
-(You may notice if you step through these proofs that simpl actually has no effect on the goal -- all of the work is done by reflexivity. We'll discuss why shortly.)
+(You may notice if you step through these proofs that simpl actually has no effect on the goal -> - all of the work is done by reflexivity. We'll discuss why shortly.)
 
 Naturally, we can also define multi-argument functions by recursion.
 
@@ -967,7 +984,7 @@ Again, we can make numerical expressions easier to read and write by introducing
 Notation "x + y" := (plus x y)
                        (at level 50, left associativity)
                        : nat_scope.
-Notation "x - y" := (minus x y)
+Notation "x > - y" := (minus x y)
                        (at level 50, left associativity)
                        : nat_scope.
 Notation "x * y" := (mult x y)
@@ -1028,7 +1045,7 @@ Example test_leb3': (4 <=? 2) = false.
 Proof. simpl. reflexivity. Qed.
 ```
 
-We now have two symbols that both look like equality: = and =?. We'll have much more to say about their differences and similarities later. For now, the main thing to notice is that x = y is a logical claim -- a "proposition" -- that we can try to prove, while x =? y is a boolean expression whose value (either true or false) we can compute.
+We now have two symbols that both look like equality: = and =?. We'll have much more to say about their differences and similarities later. For now, the main thing to notice is that x = y is a logical claim -> - a "proposition" -> - that we can try to prove, while x =? y is a boolean expression whose value (either true or false) we can compute.
 
 ####### Exercise: 1 star, standard (ltb)
 
@@ -1053,7 +1070,7 @@ Now that we've looked at a few datatypes and functions, let's turn to stating an
 
 Actually, we've already started doing this: each Example in the previous sections made a precise claim about the behavior of some function on some particular inputs. The proofs of these claims were always the same: use simpl to simplify both sides of the equation, then use reflexivity to check that both sides contain identical values.
 
-The same sort of "proof by simplification" can be used to establish more interesting properties as well. For example, the fact that 0 is a "neutral element" for + on the left can be proved just by observing that 0 + n reduces to n no matter what n is -- a fact that can be read off directly from the definition of plus.
+The same sort of "proof by simplification" can be used to establish more interesting properties as well. For example, the fact that 0 is a "neutral element" for + on the left can be proved just by observing that 0 + n reduces to n no matter what n is -> - a fact that can be read off directly from the definition of plus.
 
 ```coq
 Theorem plus_O_n : ∀ n : nat, 0 + n = n.
@@ -1071,7 +1088,7 @@ Proof.
   intros n. reflexivity. Qed.
 ```
 
-Moreover, it will be useful to know that reflexivity does somewhat more simplification than simpl does -- for example, it tries "unfolding" defined terms, replacing them with their right-hand sides. The reason for this difference is that, if reflexivity succeeds, the whole goal is finished and we don't need to look at whatever expanded expressions reflexivity has created by all this simplification and unfolding; by contrast, simpl is used in situations where we may have to read and understand the new goal that it creates, so we would not want it blindly expanding definitions and leaving the goal in a messy state.
+Moreover, it will be useful to know that reflexivity does somewhat more simplification than simpl does -> - for example, it tries "unfolding" defined terms, replacing them with their right-hand sides. The reason for this difference is that, if reflexivity succeeds, the whole goal is finished and we don't need to look at whatever expanded expressions reflexivity has created by all this simplification and unfolding; by contrast, simpl is used in situations where we may have to read and understand the new goal that it creates, so we would not want it blindly expanding definitions and leaving the goal in a messy state.
 
 The form of the theorem we just stated and its proof are almost exactly the same as the simpler examples we saw earlier; there are just a few differences.
 
@@ -1137,7 +1154,7 @@ The first line of the proof moves the universally quantified variables n and m i
 
 ####### Exercise: 1 star, standard (plus_id_exercise)
 
-Remove "Admitted." and fill in the proof. (Note that the theorem has two hypotheses -- n = m and m = o -- each to the left of an implication arrow.)
+Remove "Admitted." and fill in the proof. (Note that the theorem has two hypotheses -> - n = m and m = o -> - each to the left of an implication arrow.)
 
 ```coq
 Theorem plus_id_exercise : ∀ n m o : nat,
@@ -1167,8 +1184,8 @@ Theorem mult_n_0_m_0 : ∀ p q : nat,
   (p × 0) + (q × 0) = 0.
 Proof.
   intros p q.
-  rewrite <- mult_n_O.
-  rewrite <- mult_n_O.
+  rewrite <> - mult_n_O.
+  rewrite <> - mult_n_O.
   reflexivity. Qed.
 ```
 
@@ -1199,7 +1216,7 @@ Abort.
 
 The reason for this is that the definitions of both eqb and + begin by performing a match on their first argument. Here, the first argument to + is the unknown number n and the argument to eqb is the compound expression n + 1; neither can be simplified.
 
-To make progress, we need to consider the possible forms of n separately. If n is O, then we can calculate the final result of (n + 1) =? 0 and check that it is, indeed, false. And if n = S n' for some n', then -- although we don't know exactly what number n + 1 represents -- we can calculate that at least it will begin with one S; and this is enough to calculate that, again, (n + 1) =? 0 will yield false.
+To make progress, we need to consider the possible forms of n separately. If n is O, then we can calculate the final result of (n + 1) =? 0 and check that it is, indeed, false. And if n = S n' for some n', then -> - although we don't know exactly what number n + 1 represents -> - we can calculate that at least it will begin with one S; and this is enough to calculate that, again, (n + 1) =? 0 will yield false.
 
 The tactic that tells Coq to consider, separately, the cases where n = O and where n = S n' is called destruct.
 
@@ -1208,33 +1225,33 @@ Theorem plus_1_neq_0 : ∀ n : nat,
   (n + 1) =? 0 = false.
 Proof.
   intros n. destruct n as [| n'] eqn:E.
-  - reflexivity.
-  - reflexivity. Qed.
+  > - reflexivity.
+  > - reflexivity. Qed.
 ```
 
 The destruct generates two subgoals, which we must then prove, separately, in order to get Coq to accept the theorem.
 
 The annotation "as [| n']" is called an intro pattern. It tells Coq what variable names to introduce in each subgoal. In general, what goes between the square brackets is a list of lists of names, separated by |. In this case, the first component is empty, since the O constructor doesn't take any arguments. The second component gives a single name, n', since S is a unary constructor.
 
-In each subgoal, Coq remembers the assumption about n that is relevant for this subgoal -- either n = 0 or n = S n' for some n'. The eqn:E annotation tells destruct to give the name E to this equation. (Leaving off the eqn:E annotation causes Coq to elide these assumptions in the subgoals. This slightly streamlines proofs where the assumptions are not explicitly used, but it is better practice to keep them for the sake of documentation, as they can help keep you oriented when working with the subgoals.)
+In each subgoal, Coq remembers the assumption about n that is relevant for this subgoal -> - either n = 0 or n = S n' for some n'. The eqn:E annotation tells destruct to give the name E to this equation. (Leaving off the eqn:E annotation causes Coq to elide these assumptions in the subgoals. This slightly streamlines proofs where the assumptions are not explicitly used, but it is better practice to keep them for the sake of documentation, as they can help keep you oriented when working with the subgoals.)
 
-The - signs on the second and third lines are called bullets, and they mark the parts of the proof that correspond to the two generated subgoals. The part of the proof script that comes after a bullet is the entire proof for the corresponding subgoal. In this example, each of the subgoals is easily proved by a single use of reflexivity, which itself performs some simplification -- e.g., the second one simplifies (S n' + 1) =? 0 to false by first rewriting (S n' + 1) to S (n' + 1), then unfolding eqb, and then simplifying the match.
+The > - signs on the second and third lines are called bullets, and they mark the parts of the proof that correspond to the two generated subgoals. The part of the proof script that comes after a bullet is the entire proof for the corresponding subgoal. In this example, each of the subgoals is easily proved by a single use of reflexivity, which itself performs some simplification -> - e.g., the second one simplifies (S n' + 1) =? 0 to false by first rewriting (S n' + 1) to S (n' + 1), then unfolding eqb, and then simplifying the match.
 
 Marking cases with bullets is optional: if bullets are not present, Coq simply expects you to prove each subgoal in sequence, one at a time. But it is a good idea to use bullets. For one thing, they make the structure of a proof apparent, improving readability. Moreover, bullets instruct Coq to ensure that a subgoal is complete before trying to verify the next one, preventing proofs for different subgoals from getting mixed up. These issues become especially important in larger developments, where fragile proofs can lead to long debugging sessions!
 
-There are no hard and fast rules for how proofs should be formatted in Coq -- e.g., where lines should be broken and how sections of the proof should be indented to indicate their nested structure. However, if the places where multiple subgoals are generated are marked with explicit bullets at the beginning of lines, then the proof will be readable almost no matter what choices are made about other aspects of layout.
+There are no hard and fast rules for how proofs should be formatted in Coq -> - e.g., where lines should be broken and how sections of the proof should be indented to indicate their nested structure. However, if the places where multiple subgoals are generated are marked with explicit bullets at the beginning of lines, then the proof will be readable almost no matter what choices are made about other aspects of layout.
 
-This is also a good place to mention one other piece of somewhat obvious advice about line lengths. Beginning Coq users sometimes tend to the extremes, either writing each tactic on its own line or writing entire proofs on a single line. Good style lies somewhere in the middle. One reasonable guideline is to limit yourself to 80- (or, if you have a wide screen or good eyes, 120-) character lines.
+This is also a good place to mention one other piece of somewhat obvious advice about line lengths. Beginning Coq users sometimes tend to the extremes, either writing each tactic on its own line or writing entire proofs on a single line. Good style lies somewhere in the middle. One reasonable guideline is to limit yourself to 80> - (or, if you have a wide screen or good eyes, 120-) character lines.
 
-The destruct tactic can be used with any inductively defined datatype. For example, we use it next to prove that boolean negation is involutive -- i.e., that negation is its own inverse.
+The destruct tactic can be used with any inductively defined datatype. For example, we use it next to prove that boolean negation is involutive -> - i.e., that negation is its own inverse.
 
 ```coq
 Theorem negb_involutive : ∀ b : bool,
   negb (negb b) = b.
 Proof.
   intros b. destruct b eqn:E.
-  - reflexivity.
-  - reflexivity. Qed.
+  > - reflexivity.
+  > - reflexivity. Qed.
 ```
 
 Note that the destruct here has no as clause because none of the subcases of the destruct need to bind any variables, so there is no need to specify any names. In fact, we can omit the as clause from any destruct and Coq will fill in variable names automatically. This is generally considered bad style, since Coq often makes confusing choices of names when left to its own devices.
@@ -1245,10 +1262,10 @@ It is sometimes useful to invoke destruct inside a subgoal, generating yet more 
 Theorem andb_commutative : ∀ b c, andb b c = andb c b.
 Proof.
   intros b c. destruct b eqn:Eb.
-  - destruct c eqn:Ec.
+  > - destruct c eqn:Ec.
     + reflexivity.
     + reflexivity.
-  - destruct c eqn:Ec.
+  > - destruct c eqn:Ec.
     + reflexivity.
     + reflexivity.
 Qed.
@@ -1256,7 +1273,7 @@ Qed.
 
 Each pair of calls to reflexivity corresponds to the subgoals that were generated after the execution of the destruct c line right above it.
 
-Besides - and +, we can use × (asterisk) or any repetition of a bullet symbol (e.g. -- or ***) as a bullet. We can also enclose sub-proofs in curly braces:
+Besides > - and +, we can use × (asterisk) or any repetition of a bullet symbol (e.g. -> - or ***) as a bullet. We can also enclose sub-proofs in curly braces:
 
 ```coq
 Theorem andb_commutative' : ∀ b c, andb b c = andb c b.
@@ -1278,20 +1295,20 @@ Theorem andb3_exchange :
   ∀ b c d, andb (andb b c) d = andb (andb b d) c.
 Proof.
   intros b c d. destruct b eqn:Eb.
-  - destruct c eqn:Ec.
+  > - destruct c eqn:Ec.
     { destruct d eqn:Ed.
-      - reflexivity.
-      - reflexivity. }
+      > - reflexivity.
+      > - reflexivity. }
     { destruct d eqn:Ed.
-      - reflexivity.
-      - reflexivity. }
-  - destruct c eqn:Ec.
+      > - reflexivity.
+      > - reflexivity. }
+  > - destruct c eqn:Ec.
     { destruct d eqn:Ed.
-      - reflexivity.
-      - reflexivity. }
+      > - reflexivity.
+      > - reflexivity. }
     { destruct d eqn:Ed.
-      - reflexivity.
-      - reflexivity. }
+      > - reflexivity.
+      > - reflexivity. }
 Qed.
 ```
 
@@ -1324,8 +1341,8 @@ Theorem plus_1_neq_0' : ∀ n : nat,
   (n + 1) =? 0 = false.
 Proof.
   intros [|n].
-  - reflexivity.
-  - reflexivity. Qed.
+  > - reflexivity.
+  > - reflexivity. Qed.
 ```
 
 If there are no constructor arguments that need names, we can just write [] to get the case analysis.
@@ -1335,10 +1352,10 @@ Theorem andb_commutative'' :
   ∀ b c, andb b c = andb c b.
 Proof.
   intros [] [].
-  - reflexivity.
-  - reflexivity.
-  - reflexivity.
-  - reflexivity.
+  > - reflexivity.
+  > - reflexivity.
+  > - reflexivity.
+  > - reflexivity.
 Qed.
 ```
 
@@ -1386,7 +1403,7 @@ Fixpoint plus' (n : nat) (m : nat) : nat :=
   end.
 ```
 
-When Coq checks this definition, it notes that plus' is "decreasing on 1st argument." What this means is that we are performing a structural recursion over the argument n -- i.e., that we make recursive calls only on strictly smaller values of n. This implies that all calls to plus' will eventually terminate. Coq demands that some argument of every Fixpoint definition be "decreasing."
+When Coq checks this definition, it notes that plus' is "decreasing on 1st argument." What this means is that we are performing a structural recursion over the argument n -> - i.e., that we make recursive calls only on strictly smaller values of n. This implies that all calls to plus' will eventually terminate. Coq demands that some argument of every Fixpoint definition be "decreasing."
 
 This requirement is a fundamental feature of Coq's design: In particular, it guarantees that every function that can be defined in Coq will terminate on all inputs. However, because Coq's "decreasing analysis" is not very sophisticated, it is sometimes necessary to write functions in slightly unnatural ways.
 
@@ -1462,7 +1479,7 @@ Inductive letter : Type :=
   | A | B | C | D | F.
 ```
 
-Then we define the modifiers -- a Natural A is just a "plain" grade of A.
+Then we define the modifiers -> - a Natural A is just a "plain" grade of A.
 
 ```coq
 Inductive modifier : Type :=
@@ -1612,11 +1629,11 @@ Theorem lower_letter_lowers: ∀ (l : letter),
 Proof.
   intros l.
   destruct l.
-  - simpl. reflexivity.
-  - simpl. reflexivity.
-  - simpl. reflexivity.
-  - simpl. reflexivity.
-  - simpl. (* We get stuck here. *)
+  > - simpl. reflexivity.
+  > - simpl. reflexivity.
+  > - simpl. reflexivity.
+  > - simpl. reflexivity.
+  > - simpl. (* We get stuck here. *)
 Abort.
 ```
 
@@ -1650,7 +1667,7 @@ Proof.
 
 We can now use the lower_letter definition as a helper to define what it means to lower a grade by one step. Complete the definition below so that it sends a grade g to one step lower (unless it is already Grade F Minus, which should remain unchanged). Once you have implemented it correctly, the subsequent "unit test" examples should hold trivially.
 
-Hint: To make this a succinct definition that is easy to prove properties about, you will probably want to use nested pattern matching. The outer match should not match on the specific letter component of the grade -- it should consider only the modifier. You should definitely not try to enumerate all of the cases.
+Hint: To make this a succinct definition that is easy to prove properties about, you will probably want to use nested pattern matching. The outer match should not match on the specific letter component of the grade -> - it should consider only the modifier. You should definitely not try to enumerate all of the cases.
 
 Our solution is under 10 lines of code total.
 
@@ -1726,9 +1743,9 @@ This function encodes the following policy:
 
 ```coq
       ## late days     penalty
-         0 - 8        no penalty
-         9 - 16       lower grade by one step (A+ => A, A => A-, A- => B+, etc.)
-        17 - 20       lower grade by two steps
+         0 > - 8        no penalty
+         9 > - 16       lower grade by one step (A+ => A, A => A-, A> - => B+, etc.)
+        17 > - 20       lower grade by two steps
           >= 21       lower grade by three steps (a whole letter)
 Definition apply_late_policy (late_days : nat) (g : grade) : grade :=
   if late_days <? 9 then g
@@ -1809,7 +1826,7 @@ For example:
            8        B0 (B0 (B0 (B1 Z)))    S (S (S (S (S (S (S (S O)))))))
 ```
 
-Note that the low-order bit is on the left and the high-order bit is on the right -- the opposite of the way binary numbers are usually written. This choice makes them easier to manipulate.
+Note that the low-order bit is on the left and the high-order bit is on the right -> - the opposite of the way binary numbers are usually written. This choice makes them easier to manipulate.
 
 (Comprehension check: What unary numeral does B0 Z represent?)
 
@@ -1975,9 +1992,9 @@ Theorem add_0_r_secondtry : ∀ n:nat,
   n + 0 = n.
 Proof.
   intros n. destruct n as [| n'] eqn:E.
-  - (* n = 0 *)
+  > - (* n = 0 *)
     reflexivity. (* so far so good... *)
-  - (* n = S n' *)
+  > - (* n = S n' *)
     simpl. (* ...but here we are stuck again *)
 Abort.
 ```
@@ -1997,8 +2014,8 @@ In Coq, the steps are the same: we begin with the goal of proving P(n) for all n
 Theorem add_0_r : ∀ n:nat, n + 0 = n.
 Proof.
   intros n. induction n as [| n' IHn'].
-  - (* n = 0 *) reflexivity.
-  - (* n = S n' *) simpl. rewrite → IHn'. reflexivity. Qed.
+  > - (* n = 0 *) reflexivity.
+  > - (* n = S n' *) simpl. rewrite → IHn'. reflexivity. Qed.
 ```
 
 Like destruct, the induction tactic takes an as... clause that specifies the names of the variables to be introduced in the subgoals. Since there are two subgoals, the as... clause has two parts, separated by |. (Strictly speaking, we can omit the as... clause and Coq will choose names for us. In practice, this is a bad idea, as Coq's automatic choices tend to be confusing.)
@@ -2013,9 +2030,9 @@ Theorem minus_n_n : ∀ n,
 Proof.
   (* WORKED IN CLASS *)
   intros n. induction n as [| n' IHn'].
-  - (* n = 0 *)
+  > - (* n = 0 *)
     simpl. reflexivity.
-  - (* n = S n' *)
+  > - (* n = S n' *)
     simpl. rewrite → IHn'. reflexivity. Qed.
 ```
 
@@ -2076,7 +2093,7 @@ Proof.
 
 ####### Exercise: 2 stars, standard, optional (even_S)
 
-One inconvenient aspect of our definition of even n is the recursive call on n - 2. This makes proofs about even n harder when done by induction on n, since we may need an induction hypothesis about n - 2. The following lemma gives an alternative characterization of even (S n) that works better with induction:
+One inconvenient aspect of our definition of even n is the recursive call on n > - 2. This makes proofs about even n harder when done by induction on n, since we may need an induction hypothesis about n > - 2. The following lemma gives an alternative characterization of even (S n) that works better with induction:
 
 ```coq
 Theorem even_S : ∀ n : nat,
@@ -2131,13 +2148,13 @@ Proof.
 
 #### Formal vs. Informal Proof "_Informal proofs are algorithms; formal proofs are code."
 
-What constitutes a successful proof of a mathematical claim? The question has challenged philosophers for millennia, but a rough and ready definition could be this: A proof of a mathematical proposition P is a written (or spoken) text that instills in the reader or hearer the certainty that P is true -- an unassailable argument for the truth of P. That is, a proof is an act of communication.
+What constitutes a successful proof of a mathematical claim? The question has challenged philosophers for millennia, but a rough and ready definition could be this: A proof of a mathematical proposition P is a written (or spoken) text that instills in the reader or hearer the certainty that P is true -> - an unassailable argument for the truth of P. That is, a proof is an act of communication.
 
 Acts of communication may involve different sorts of readers. On one hand, the "reader" can be a program like Coq, in which case the "belief" that is instilled is that P can be mechanically derived from a certain set of formal logical rules, and the proof is a recipe that guides the program in checking this fact. Such recipes are formal proofs.
 
 Alternatively, the reader can be a human being, in which case the proof will be written in English or some other natural language, and will thus necessarily be informal. Here, the criteria for success are less clearly specified. A "valid" proof is one that makes the reader believe P. But the same proof may be read by many different readers, some of whom may be convinced by a particular way of phrasing the argument, while others may not be. Some readers may be particularly pedantic, inexperienced, or just plain thick-headed; the only way to convince them will be to make the argument in painstaking detail. But other readers, more familiar in the area, may find all this detail so overwhelming that they lose the overall thread; all they want is to be told the main ideas, since it is easier for them to fill in the details for themselves than to wade through a written presentation of them. Ultimately, there is no universal standard, because there is no single way of writing an informal proof that is guaranteed to convince every conceivable reader.
 
-In practice, however, mathematicians have developed a rich set of conventions and idioms for writing about complex mathematical objects that -- at least within a certain community -- make communication fairly reliable. The conventions of this stylized form of communication give a fairly clear standard for judging proofs good or bad.
+In practice, however, mathematicians have developed a rich set of conventions and idioms for writing about complex mathematical objects that -> - at least within a certain community -> - make communication fairly reliable. The conventions of this stylized form of communication give a fairly clear standard for judging proofs good or bad.
 
 Because we are using Coq in this course, we will be working heavily with formal proofs. But this doesn't mean we can completely forget about informal ones! Formal proofs are useful in many ways, but they are not very efficient ways of communicating ideas between human beings.
 For example, here is a proof that addition is associative:
@@ -2156,9 +2173,9 @@ Theorem add_assoc'' : ∀ n m p : nat,
   n + (m + p) = (n + m) + p.
 Proof.
   intros n m p. induction n as [| n' IHn'].
-  - (* n = 0 *)
+  > - (* n = 0 *)
     reflexivity.
-  - (* n = S n' *)
+  > - (* n = S n' *)
     simpl. rewrite IHn'. reflexivity. Qed.
 ```
 
@@ -2379,7 +2396,7 @@ Proof.
 
 #### Bin to Nat and Back to Bin (Advanced)
 
-The opposite direction -- starting with a bin, converting to nat, then converting back to bin -- turns out to be problematic. That is, the following theorem does not hold.
+The opposite direction -> - starting with a bin, converting to nat, then converting back to bin -> - turns out to be problematic. That is, the following theorem does not hold.
 
 ```coq
 Theorem bin_nat_bin_fails : ∀ b, nat_to_bin (bin_to_nat b) = b.
@@ -2448,7 +2465,7 @@ It would be wise to do some Example proofs to check that your definition of norm
 
 Finally, prove the main theorem. The inductive cases could be a bit tricky.
 
-Hint: Start by trying to prove the main statement, see where you get stuck, and see if you can find a lemma -- perhaps requiring its own inductive proof -- that will allow the main proof to make progress. We have one lemma for the B0 case (which also makes use of double_incr_bin) and another for the B1 case.
+Hint: Start by trying to prove the main statement, see where you get stuck, and see if you can find a lemma -> - perhaps requiring its own inductive proof -> - that will allow the main proof to make progress. We have one lemma for the B0 case (which also makes use of double_incr_bin) and another for the B1 case.
 
 ```coq
 Theorem bin_nat_bin : ∀ b, nat_to_bin (bin_to_nat b) = normalize b.
@@ -2468,7 +2485,7 @@ Module NatList.
 
 #### Pairs of Numbers
 
-In an Inductive type definition, each constructor can take any number of arguments -- none (as with true and O), one (as with S), or more than one (as with nybble, and the following):
+In an Inductive type definition, each constructor can take any number of arguments -> - none (as with true and O), one (as with S), or more than one (as with nybble, and the following):
 
 ```coq
 Inductive natprod : Type :=
@@ -2895,9 +2912,9 @@ Theorem tl_length_pred : ∀ l:natlist,
   pred (length l) = length (tl l).
 Proof.
   intros l. destruct l as [| n l'].
-  - (* l = nil *)
+  > - (* l = nil *)
     reflexivity.
-  - (* l = cons n l' *)
+  > - (* l = cons n l' *)
     reflexivity. Qed.
 ```
 
@@ -2923,15 +2940,15 @@ Theorem app_assoc : ∀ l1 l2 l3 : natlist,
   (l1 ++ l2) ++ l3 = l1 ++ (l2 ++ l3).
 Proof.
   intros l1 l2 l3. induction l1 as [| n l1' IHl1'].
-  - (* l1 = nil *)
+  > - (* l1 = nil *)
     reflexivity.
-  - (* l1 = cons n l1' *)
+  > - (* l1 = cons n l1' *)
     simpl. rewrite → IHl1'. reflexivity. Qed.
 ```
 
 Notice that, as we saw with induction on natural numbers, the as... clause provided to the induction tactic gives a name to the induction hypothesis corresponding to the smaller list l1' in the cons case.
 
-Once again, this Coq proof is not especially illuminating as a static document -- it is easy to see what's going on if you are reading the proof in an interactive Coq session and you can see the current goal and context at each point, but this state is not visible in the written-down parts of the Coq proof. So a natural-language proof -- one written for human readers -- should include more explicit signposts; in particular, it will help the reader stay oriented if we remind them exactly what the induction hypothesis is in the second case.
+Once again, this Coq proof is not especially illuminating as a static document -> - it is easy to see what's going on if you are reading the proof in an interactive Coq session and you can see the current goal and context at each point, but this state is not visible in the written-down parts of the Coq proof. So a natural-language proof -> - one written for human readers -> - should include more explicit signposts; in particular, it will help the reader stay oriented if we remind them exactly what the induction hypothesis is in the second case.
 
 For comparison, here is an informal proof of the same theorem.
 
@@ -2972,9 +2989,9 @@ Theorem rev_length_firsttry : ∀ l : natlist,
   length (rev l) = length l.
 Proof.
   intros l. induction l as [| n l' IHl'].
-  - (* l = nil *)
+  > - (* l = nil *)
     reflexivity.
-  - (* l = n :: l' *)
+  > - (* l = n :: l' *)
     (* This is the tricky case.  Let's begin as usual
        by simplifying. *)
     simpl.
@@ -2983,7 +3000,7 @@ Proof.
        in either the immediate context or in the global
        environment!  We can make a little progress by using
        the IH to rewrite the goal... *)
-    rewrite <- IHl'.
+    rewrite <> - IHl'.
     (* ... but now we can't go any further. *)
 Abort.
 ```
@@ -2996,9 +3013,9 @@ Theorem app_length : ∀ l1 l2 : natlist,
 Proof.
   (* WORKED IN CLASS *)
   intros l1 l2. induction l1 as [| n l1' IHl1'].
-  - (* l1 = nil *)
+  > - (* l1 = nil *)
     reflexivity.
-  - (* l1 = cons *)
+  > - (* l1 = cons *)
     simpl. rewrite → IHl1'. reflexivity. Qed.
 ```
 
@@ -3011,9 +3028,9 @@ Theorem rev_length : ∀ l : natlist,
   length (rev l) = length l.
 Proof.
   intros l. induction l as [| n l' IHl'].
-  - (* l = nil *)
+  > - (* l = nil *)
     reflexivity.
-  - (* l = cons *)
+  > - (* l = cons *)
     simpl. rewrite → app_length.
     simpl. rewrite → IHl'. rewrite add_comm.
     reflexivity.
@@ -3172,9 +3189,9 @@ Theorem leb_n_Sn : ∀ n,
   n <=? (S n) = true.
 Proof.
   intros n. induction n as [| n' IHn'].
-  - (* 0 *)
+  > - (* 0 *)
     simpl. reflexivity.
-  - (* S n' *)
+  > - (* S n' *)
     simpl. rewrite IHn'. reflexivity. Qed.
 ```
 
@@ -3209,7 +3226,7 @@ Proof.
 ```
 
 ####### Exercise: 2 stars, advanced (rev_injective)
-Prove that rev is injective. Do not prove this by induction -- that would be hard. Instead, re-use the same proof technique that you used for involution_injective. (But: Don't try to use that exercise directly as a lemma: the types are not the same!)
+Prove that rev is injective. Do not prove this by induction -> - that would be hard. Instead, re-use the same proof technique that you used for involution_injective. (But: Don't try to use that exercise directly as a lemma: the types are not the same!)
 
 ```coq
 Theorem rev_injective : ∀ (l1 l2 : natlist),
@@ -3393,7 +3410,7 @@ End PartialMap.
 In this chapter we continue our development of basic concepts of functional programming. The critical new ideas are polymorphism (abstracting functions over the types of the data they manipulate) and higher-order functions (treating functions as data). We begin with polymorphism.
 
 ##### Polymorphic Lists
-For the last chapter, we've been working with lists containing just numbers. Obviously, interesting programs also need to be able to manipulate lists with elements from other types -- lists of booleans, lists of lists, etc. We could just define a new inductive datatype for each of these, for example...
+For the last chapter, we've been working with lists containing just numbers. Obviously, interesting programs also need to be able to manipulate lists with elements from other types -> - lists of booleans, lists of lists, etc. We could just define a new inductive datatype for each of these, for example...
 
 ```coq
 Inductive boollist : Type :=
@@ -3418,7 +3435,7 @@ What sort of thing is list itself? A good way to think about it is that the defi
 Check list : Type → Type.
 ```
 
-The X in the definition of list automatically becomes a parameter to the constructors nil and cons -- that is, nil and cons are now polymorphic constructors; when we use them, we must now provide a first argument that is the type of the list they are building. For example, nil nat constructs the empty list of type nat.
+The X in the definition of list automatically becomes a parameter to the constructors nil and cons -> - that is, nil and cons are now polymorphic constructors; when we use them, we must now provide a first argument that is the type of the list they are building. For example, nil nat constructs the empty list of type nat.
 
 ```coq
 Check (nil nat) : list nat.
@@ -3442,7 +3459,7 @@ Similarly, the type of cons from the definition looks like X → list X → list
 Check cons : ∀ X : Type, X → list X → list X.
 ```
 
-(A side note on notations: In .v files, the "forall" quantifier is spelled out in letters. In the corresponding HTML files (and in the way some IDEs show .v files, depending on the settings of their display controls), ∀ is usually typeset as the standard mathematical "upside down A," though you'll still see the spelled-out "forall" in a few places. This is just a quirk of typesetting -- there is no difference in meaning.)
+(A side note on notations: In .v files, the "forall" quantifier is spelled out in letters. In the corresponding HTML files (and in the way some IDEs show .v files, depending on the settings of their display controls), ∀ is usually typeset as the standard mathematical "upside down A," though you'll still see the spelled-out "forall" in a few places. This is just a quirk of typesetting -> - there is no difference in meaning.)
 
 Having to supply a type argument for every single use of a list constructor would be rather burdensome; we will soon see ways of reducing this annotation burden.
 
@@ -3531,11 +3548,11 @@ It has exactly the same type as repeat. Coq was able to use type inference to de
 This powerful facility means we don't always have to write explicit type annotations everywhere, although explicit type annotations can still be quite useful as documentation and sanity checks, so we will continue to use them much of the time.
 
 ###### Type Argument Synthesis
-To use a polymorphic function, we need to pass it one or more types in addition to its other arguments. For example, the recursive call in the body of the repeat function above must pass along the type X. But since the second argument to repeat is an element of X, it seems entirely obvious that the first argument can only be X -- why should we have to write it explicitly?
+To use a polymorphic function, we need to pass it one or more types in addition to its other arguments. For example, the recursive call in the body of the repeat function above must pass along the type X. But since the second argument to repeat is an element of X, it seems entirely obvious that the first argument can only be X -> - why should we have to write it explicitly?
 
-Fortunately, Coq permits us to avoid this kind of redundancy. In place of any type argument we can write a "hole" _, which can be read as "Please try to figure out for yourself what belongs here." More precisely, when Coq encounters a _, it will attempt to unify all locally available information -- the type of the function being applied, the types of the other arguments, and the type expected by the context in which the application appears -- to determine what concrete type should replace the _.
+Fortunately, Coq permits us to avoid this kind of redundancy. In place of any type argument we can write a "hole" _, which can be read as "Please try to figure out for yourself what belongs here." More precisely, when Coq encounters a _, it will attempt to unify all locally available information -> - the type of the function being applied, the types of the other arguments, and the type expected by the context in which the application appears -> - to determine what concrete type should replace the _.
 
-This may sound similar to type annotation inference -- and, indeed, the two procedures rely on the same underlying mechanisms. Instead of simply omitting the types of some arguments to a function, like
+This may sound similar to type annotation inference -> - and, indeed, the two procedures rely on the same underlying mechanisms. Instead of simply omitting the types of some arguments to a function, like
 
 ```coq
       repeat' X x count : list X :=
@@ -3839,7 +3856,7 @@ Example test_hd_error2 : hd_error [[1];[2]] = Some [1].
 ```
 
 #### Functions as Data
-Like most modern programming languages -- especially other "functional" languages, including OCaml, Haskell, Racket, Scala, Clojure, etc. -- Coq treats functions as first-class citizens, allowing them to be passed as arguments to other functions, returned as results, stored in data structures, etc.
+Like most modern programming languages -> - especially other "functional" languages, including OCaml, Haskell, Racket, Scala, Clojure, etc. -> - Coq treats functions as first-class citizens, allowing them to be passed as arguments to other functions, returned as results, stored in data structures, etc.
 
 ##### Higher-Order Functions
 Functions that manipulate other functions are often called higher-order functions. Here's a simple one:
@@ -4109,7 +4126,7 @@ In fact, the multiple-argument functions we have already seen are also examples 
 Check plus : nat → nat → nat.
 ```
 
-Each → in this expression is actually a binary operator on types. This operator is right-associative, so the type of plus is really a shorthand for nat → (nat → nat) -- i.e., it can be read as saying that "plus is a one-argument function that takes a nat and returns a one-argument function that takes another nat and returns a nat." In the examples above, we have always applied plus to both of its arguments at once, but if we like we can supply just the first. This is called partial application.
+Each → in this expression is actually a binary operator on types. This operator is right-associative, so the type of plus is really a shorthand for nat → (nat → nat) -> - i.e., it can be read as saying that "plus is a one-argument function that takes a nat and returns a one-argument function that takes another nat and returns a nat." In the examples above, we have always applied plus to both of its arguments at once, but if we like we can supply just the first. This is called partial application.
 
 ```coq
 Definition plus3 := plus 3.
@@ -4138,7 +4155,7 @@ Example test_fold_length1 : fold_length [4;7;0] = 3.
 Proof. reflexivity. Qed.
 ```
 
-Prove the correctness of fold_length. (Hint: It may help to know that reflexivity simplifies expressions a bit more aggressively than simpl does -- i.e., you may find yourself in a situation where simpl does nothing but reflexivity solves the goal.)
+Prove the correctness of fold_length. (Hint: It may help to know that reflexivity simplifies expressions a bit more aggressively than simpl does -> - i.e., you may find yourself in a situation where simpl does nothing but reflexivity solves the goal.)
 
 ```coq
 Theorem fold_length_correct : ∀ X (l : list X),
@@ -4172,7 +4189,7 @@ Definition manual_grade_for_fold_map : option (nat×string) := None.
 ####### Exercise: 2 stars, advanced (currying)
 The type X → Y → Z can be read as describing functions that take two arguments, one of type X and another of type Y, and return an output of type Z. Strictly speaking, this type is written X → (Y → Z) when fully parenthesized. That is, if we have f : X → Y → Z, and we give f an input of type X, it will give us as output a function of type Y → Z. If we then give that function an input of type Y, it will return an output of type Z. That is, every function in Coq takes only one input, but some functions return a function as output. This is precisely what enables partial application, as we saw above with plus3.
 
-By contrast, functions of type X × Y → Z -- which when fully parenthesized is written (X × Y) → Z -- require their single input to be a pair. Both arguments must be given at once; there is no possibility of partial application.
+By contrast, functions of type X × Y → Z -> - which when fully parenthesized is written (X × Y) → Z -> - require their single input to be a pair. Both arguments must be given at once; there is no possibility of partial application.
 
 It is possible to convert a function between these two types. Converting from X × Y → Z to X → Y → Z is called currying, in honor of the logician Haskell Curry. Converting from X → Y → Z to X × Y → Z is called uncurrying.
 
@@ -4388,7 +4405,7 @@ This chapter introduces several additional proof strategies and tactics that all
 
 We will see:
 * how to use auxiliary lemmas in both "forward-" and "backward-style" proofs;
-* how to reason about data constructors -- in particular, how to use the fact that they are injective and disjoint;
+* how to reason about data constructors -> - in particular, how to use the fact that they are injective and disjoint;
 * how to strengthen an induction hypothesis, and when such strengthening is required; and
 more details on how to reason by case analysis.
 
@@ -4452,7 +4469,7 @@ Proof.
 ☐
 ```
 
-To use the apply tactic, the (conclusion of the) fact being applied must match the goal exactly (perhaps after simplification) -- for example, apply will not work if the left and right sides of the equality are swapped.
+To use the apply tactic, the (conclusion of the) fact being applied must match the goal exactly (perhaps after simplification) -> - for example, apply will not work if the left and right sides of the equality are swapped.
 
 ```coq
 Theorem silly3 : ∀ (n m : nat),
@@ -4588,7 +4605,7 @@ Proof.
 Qed.
 ```
 
-This technique can be generalized to any constructor by writing the equivalent of pred -- i.e., writing a function that "undoes" one application of the constructor.
+This technique can be generalized to any constructor by writing the equivalent of pred -> - i.e., writing a function that "undoes" one application of the constructor.
 
 As a more convenient alternative, Coq provides a tactic called injection that allows us to exploit the injectivity of any constructor. Here is an alternate proof of the above theorem using injection:
 
@@ -4683,14 +4700,14 @@ We can proceed by case analysis on n. The first case is trivial.
 
 ```coq
   destruct n as [| n'] eqn:E.
-  - (* n = 0 *)
+  > - (* n = 0 *)
     intros H. reflexivity.
 ```
 
 However, the second one doesn't look so simple: assuming 0 =? (S n') = true, we must show S n' = 0! The way forward is to observe that the assumption itself is nonsensical:
 
 ```coq
-  - (* n = S n' *)
+  > - (* n = S n' *)
     simpl.
 ```
 
@@ -4759,7 +4776,7 @@ The informal proofs seen in math or computer science classes tend to use forward
 #### Specializing Hypotheses
 Another handy tactic for fiddling with hypotheses is specialize. It is essentially just a combination of assert and apply, but it often provides a pleasingly smooth way to nail down overly general assumptions. It works like this:
 
-If H is a quantified hypothesis in the current context -- i.e., H : ∀ (x:T), P -- then specialize H with (x := e) will change H so that it looks like [x:=e]P, that is, P with x replaced by e.
+If H is a quantified hypothesis in the current context -> - i.e., H : ∀ (x:T), P -> - then specialize H with (x := e) will change H so that it looks like [x:=e]P, that is, P with x replaced by e.
 
 For example:
 
@@ -4799,7 +4816,7 @@ Varying the Induction Hypothesis
 
 Sometimes it is important to control the exact form of the induction hypothesis when carrying out inductive proofs in Coq. In particular, we may need to be careful about which of the assumptions we move (using intros) from the goal to the context before invoking the induction tactic.
 
-For example, suppose we want to show that double is injective -- i.e., that it maps different arguments to different results:
+For example, suppose we want to show that double is injective -> - i.e., that it maps different arguments to different results:
 
 ```coq
        Theorem double_injective: ∀ n m,
@@ -4826,15 +4843,15 @@ Theorem double_injective_FAILED : ∀ n m,
   n = m.
 Proof.
   intros n m. induction n as [| n' IHn'].
-  - (* n = O *) simpl. intros eq. destruct m as [| m'] eqn:E.
+  > - (* n = O *) simpl. intros eq. destruct m as [| m'] eqn:E.
     + (* m = O *) reflexivity.
     + (* m = S m' *) discriminate eq.
-  - (* n = S n' *) intros eq. destruct m as [| m'] eqn:E.
+  > - (* n = S n' *) intros eq. destruct m as [| m'] eqn:E.
     + (* m = O *) discriminate eq.
     + (* m = S m' *) f_equal.
 ```
 
-At this point, the induction hypothesis (IHn') does not give us n' = m' -- there is an extra S in the way -- so the goal is not provable.
+At this point, the induction hypothesis (IHn') does not give us n' = m' -> - there is an extra S in the way -> - so the goal is not provable.
 
 ```coq
 Abort.
@@ -4842,7 +4859,7 @@ Abort.
 
 What went wrong?
 
-The problem is that, at the point where we invoke the induction hypothesis, we have already introduced m into the context -- intuitively, we have told Coq, "Let's consider some particular n and m..." and we now have to prove that, if double n = double m for these particular n and m, then n = m.
+The problem is that, at the point where we invoke the induction hypothesis, we have already introduced m into the context -> - intuitively, we have told Coq, "Let's consider some particular n and m..." and we now have to prove that, if double n = double m for these particular n and m, then n = m.
 
 The next tactic, induction n says to Coq: We are going to show the goal by induction on n. That is, we are going to prove, for all n, that the proposition
 * P n = "if double n = double m, then n = m"
@@ -4860,7 +4877,7 @@ If we look closely at the second statement, it is saying something rather strang
 then we can prove
 
 * "if double (S n) = double m then S n = m".
-To see why this is strange, let's think of a particular m -- say, 5. The statement is then saying that, if we know
+To see why this is strange, let's think of a particular m -> - say, 5. The statement is then saying that, if we know
 * Q = "if double n = 10 then n = 5"
 
 then we can prove
@@ -4878,10 +4895,10 @@ Theorem double_injective : ∀ n m,
   n = m.
 Proof.
   intros n. induction n as [| n' IHn'].
-  - (* n = O *) simpl. intros m eq. destruct m as [| m'] eqn:E.
+  > - (* n = O *) simpl. intros m eq. destruct m as [| m'] eqn:E.
     + (* m = O *) reflexivity.
     + (* m = S m' *) discriminate eq.
-  - (* n = S n' *)
+  > - (* n = S n' *)
 ```
 
 Notice that both the goal and the induction hypothesis are different this time: the goal asks us to prove something more general (i.e., we must prove the statement for every m), but the IH is correspondingly more flexible, allowing us to choose any m we like when we apply the IH.
@@ -4956,10 +4973,10 @@ Theorem double_injective_take2_FAILED : ∀ n m,
   n = m.
 Proof.
   intros n m. induction m as [| m' IHm'].
-  - (* m = O *) simpl. intros eq. destruct n as [| n'] eqn:E.
+  > - (* m = O *) simpl. intros eq. destruct n as [| n'] eqn:E.
     + (* n = O *) reflexivity.
     + (* n = S n' *) discriminate eq.
-  - (* m = S m' *) intros eq. destruct n as [| n'] eqn:E.
+  > - (* m = S m' *) intros eq. destruct n as [| n'] eqn:E.
     + (* n = O *) discriminate eq.
     + (* n = S n' *) f_equal.
         (* We are stuck here, just like before. *)
@@ -4983,10 +5000,10 @@ Proof.
   (* Now n is back in the goal and we can do induction on
      m and get a sufficiently general IH. *)
   induction m as [| m' IHm'].
-  - (* m = O *) simpl. intros n eq. destruct n as [| n'] eqn:E.
+  > - (* m = O *) simpl. intros n eq. destruct n as [| n'] eqn:E.
     + (* n = O *) reflexivity.
     + (* n = S n' *) discriminate eq.
-  - (* m = S m' *) intros n eq. destruct n as [| n'] eqn:E.
+  > - (* m = S m' *) intros n eq. destruct n as [| n'] eqn:E.
     + (* n = O *) discriminate eq.
     + (* n = S n' *) f_equal.
       apply IHm'. injection eq as goal. apply goal. Qed.
@@ -5108,8 +5125,8 @@ Fact silly_fact_2 : ∀ m, bar m + 1 = bar (m + 1) + 1.
 Proof.
   intros m.
   destruct m eqn:E.
-  - simpl. reflexivity.
-  - simpl. reflexivity.
+  > - simpl. reflexivity.
+  > - simpl. reflexivity.
 Qed.
 ```
 
@@ -5128,8 +5145,8 @@ Now it is apparent that we are stuck on the match expressions on both sides of t
 
 ```coq
   destruct m eqn:E.
-  - reflexivity.
-  - reflexivity.
+  > - reflexivity.
+  > - reflexivity.
 Qed.
 ```
 
@@ -5148,8 +5165,8 @@ Theorem sillyfun_false : ∀ (n : nat),
 Proof.
   intros n. unfold sillyfun.
   destruct (n =? 3) eqn:E1.
-    - (* n =? 3 = true *) reflexivity.
-    - (* n =? 3 = false *) destruct (n =? 5) eqn:E2.
+    > - (* n =? 3 = true *) reflexivity.
+    > - (* n =? 3 = false *) destruct (n =? 5) eqn:E2.
       + (* n =? 5 = true *) reflexivity.
       + (* n =? 5 = false *) reflexivity. Qed.
 ```
@@ -5208,7 +5225,7 @@ Proof.
 Abort.
 ```
 
-... then we are stuck at this point because the context does not contain enough information to prove the goal! The problem is that the substitution performed by destruct is quite brutal -- in this case, it throws away every occurrence of n =? 3, but we need to keep some memory of this expression and how it was destructed, because we need to be able to reason that, since we are assuming n =? 3 = true in this branch of the case analysis, it must be that n = 3, from which it follows that n is odd.
+... then we are stuck at this point because the context does not contain enough information to prove the goal! The problem is that the substitution performed by destruct is quite brutal -> - in this case, it throws away every occurrence of n =? 3, but we need to keep some memory of this expression and how it was destructed, because we need to be able to reason that, since we are assuming n =? 3 = true in this branch of the case analysis, it must be that n = 3, from which it follows that n is odd.
 
 What we want here is to substitute away all existing occurrences of n =? 3, but at the same time add an equation to the context that records which case we are in. This is precisely what the eqn: qualifier does.
 
@@ -5224,9 +5241,9 @@ Proof.
 Now we have the same state as at the point where we got stuck above, except that the context contains an extra equality assumption, which is exactly what we need to make progress.
 
 ```coq
-    - (* e3 = true *) apply eqb_true in Heqe3.
+    > - (* e3 = true *) apply eqb_true in Heqe3.
       rewrite → Heqe3. reflexivity.
-    - (* e3 = false *)
+    > - (* e3 = false *)
 ```
 
 When we come to the second equality test in the body of the function we are reasoning about, we can use eqn: again in the same way, allowing us to finish the proof.
@@ -5357,7 +5374,7 @@ The second checks whether there exists an element in the list that satisfies a g
       existsb even [] = false
 ```
 
-Next, define a nonrecursive version of existsb -- call it existsb' -- using forallb and negb.
+Next, define a nonrecursive version of existsb -> - call it existsb' -> - using forallb and negb.
 
 Finally, prove a theorem existsb_existsb' stating that existsb' and existsb have the same behavior.
 
@@ -5419,7 +5436,7 @@ Check 3 = 2 : Prop.
 Check ∀ n : nat, n = 2 : Prop.
 ```
 
-Indeed, propositions don't just have types -- they are first-class entities that can be manipulated in all the same ways as any of the other things in Coq's world.
+Indeed, propositions don't just have types -> - they are first-class entities that can be manipulated in all the same ways as any of the other things in Coq's world.
 
 So far, we've seen one primary place that propositions can appear: in Theorem (and Lemma and Example) declarations.
 
@@ -5436,7 +5453,7 @@ Definition plus_claim : Prop := 2 + 2 = 4.
 Check plus_claim : Prop.
 ```
 
-We can later use this name in any situation where a proposition is expected -- for example, as the claim in a Theorem declaration.
+We can later use this name in any situation where a proposition is expected -> - for example, as the claim in a Theorem declaration.
 
 ```coq
 Theorem plus_claim_is_true :
@@ -5444,7 +5461,7 @@ Theorem plus_claim_is_true :
 Proof. reflexivity. Qed.
 ```
 
-We can also write parameterized propositions -- that is, functions that take arguments of some type and return a proposition.
+We can also write parameterized propositions -> - that is, functions that take arguments of some type and return a proposition.
 
 For instance, the following function takes a number and returns a proposition asserting that this number is equal to three:
 
@@ -5492,8 +5509,8 @@ To prove a conjunction, use the split tactic. This will generate two subgoals, o
 ```coq
 Proof.
   split.
-  - (* 3 + 4 = 7 *) reflexivity.
-  - (* 2 * 2 = 4 *) reflexivity.
+  > - (* 3 + 4 = 7 *) reflexivity.
+  > - (* 2 * 2 = 4 *) reflexivity.
 Qed.
 ```
 
@@ -5509,8 +5526,8 @@ Since applying a theorem with hypotheses to some goal has the effect of generati
 Example and_example' : 3 + 4 = 7 ∧ 2 × 2 = 4.
 Proof.
   apply conj.
-  - (* 3 + 4 = 7 *) reflexivity.
-  - (* 2 + 2 = 4 *) reflexivity.
+  > - (* 3 + 4 = 7 *) reflexivity.
+  > - (* 2 + 2 = 4 *) reflexivity.
 Qed.
 ```
 
@@ -5524,7 +5541,7 @@ Proof.
 ☐
 ```
 
-So much for proving conjunctive statements. To go in the other direction -- i.e., to use a conjunctive hypothesis to help prove something else -- we employ the destruct tactic.
+So much for proving conjunctive statements. To go in the other direction -> - i.e., to use a conjunctive hypothesis to help prove something else -> - we employ the destruct tactic.
 
 When the current proof context contains a hypothesis H of the form A ∧ B, writing destruct H as [HA HB] will remove H from the context and replace it with two new hypotheses: HA, stating that A is true, and HB, stating that B is true.
 
@@ -5609,8 +5626,8 @@ Theorem and_commut : ∀ P Q : Prop,
 Proof.
   intros P Q [HP HQ].
   split.
-    - (* left *) apply HQ.
-    - (* right *) apply HP. Qed.
+    > - (* left *) apply HQ.
+    > - (* right *) apply HP. Qed.
 ```
 
 ####### Exercise: 2 stars, standard (and_assoc)
@@ -5634,7 +5651,7 @@ Check and : Prop → Prop → Prop.
 ##### Disjunction
 Another important connective is the disjunction, or logical or, of two propositions: A ∨ B is true when either A or B is. This infix notation stands for or A B, where or : Prop → Prop → Prop.
 
-To use a disjunctive hypothesis in a proof, we proceed by case analysis -- which, as with other data types like nat, can be done explicitly with destruct or implicitly with an intros pattern:
+To use a disjunctive hypothesis in a proof, we proceed by case analysis -> - which, as with other data types like nat, can be done explicitly with destruct or implicitly with an intros pattern:
 
 ```coq
 Lemma factor_is_O:
@@ -5643,10 +5660,10 @@ Proof.
   (* This pattern implicitly does case analysis on
      n = 0 ∨ m = 0 *)
   intros n m [Hn | Hm].
-  - (* Here, n = 0 *)
+  > - (* Here, n = 0 *)
     rewrite Hn. reflexivity.
-  - (* Here, m = 0 *)
-    rewrite Hm. rewrite <- mult_n_O.
+  > - (* Here, m = 0 *)
+    rewrite Hm. rewrite <> - mult_n_O.
     reflexivity.
 Qed.
 ```
@@ -5670,8 +5687,8 @@ Lemma zero_or_succ :
 Proof.
   (* WORKED IN CLASS *)
   intros [|n'].
-  - left. reflexivity.
-  - right. reflexivity.
+  > - left. reflexivity.
+  > - right. reflexivity.
 Qed.
 ```
 
@@ -5696,7 +5713,7 @@ Proof.
 ```
 
 ##### Falsehood and Negation
-Up to this point, we have mostly been concerned with proving "positive" statements -- addition is commutative, appending lists is associative, etc. Of course, we are sometimes also interested in negative results, demonstrating that some given proposition is not true. Such statements are expressed with the logical negation operator ¬.
+Up to this point, we have mostly been concerned with proving "positive" statements -> - addition is commutative, appending lists is associative, etc. Of course, we are sometimes also interested in negative results, demonstrating that some given proposition is not true. Such statements are expressed with the logical negation operator ¬.
 
 To see how negation works, recall the principle of explosion from the Tactics chapter, which asserts that, if we assume a contradiction, then any other proposition can be derived.
 Following this intuition, we could define ¬ P ("not P") as ∀ Q, P → Q.
@@ -5749,7 +5766,7 @@ Proof.
 ```
 
 ```coq
-The proposition 0 ≠ 1 is exactly the same as ~(0 = 1) -- that is, not (0 = 1) -- which unfolds to (0 = 1) → False. (We use unfold not explicitly here, to illustrate that point, but generally it can be omitted.)
+The proposition 0 ≠ 1 is exactly the same as ~(0 = 1) -> - that is, not (0 = 1) -> - which unfolds to (0 = 1) → False. (We use unfold not explicitly here, to illustrate that point, but generally it can be omitted.)
 
   unfold not.
 
@@ -5845,7 +5862,7 @@ Since inequality involves a negation, it also requires a little practice to be a
 
 If you are trying to prove a goal that is nonsensical (e.g., the goal state is false = true), apply ex_falso_quodlibet to change the goal to False.
 
-This makes it easier to use assumptions of the form ¬P that may be available in the context -- in particular, assumptions of the form x≠y.
+This makes it easier to use assumptions of the form ¬P that may be available in the context -> - in particular, assumptions of the form x≠y.
 
 ```coq
 Theorem not_true_is_false : ∀ b : bool,
@@ -5853,11 +5870,11 @@ Theorem not_true_is_false : ∀ b : bool,
 Proof.
   intros b H.
   destruct b eqn:HE.
-  - (* b = true *)
+  > - (* b = true *)
     unfold not in H.
     apply ex_falso_quodlibet.
     apply H. reflexivity.
-  - (* b = false *)
+  > - (* b = false *)
     reflexivity.
 Qed.
 ```
@@ -5869,11 +5886,11 @@ Theorem not_true_is_false' : ∀ b : bool,
   b ≠ true → b = false.
 Proof.
   intros [] H. (* note implicit destruct b here *)
-  - (* b = true *)
+  > - (* b = true *)
     unfold not in H.
     exfalso. (* <=== *)
     apply H. reflexivity.
-  - (* b = false *) reflexivity.
+  > - (* b = false *) reflexivity.
 Qed.
 ```
 
@@ -5926,15 +5943,15 @@ Proof.
   (* WORKED IN CLASS *)
   intros P Q [HAB HBA].
   split.
-  - (* -> *) apply HBA.
-  - (* <- *) apply HAB. Qed.
+  > - (* -> *) apply HBA.
+  > - (* <> - *) apply HAB. Qed.
 Lemma not_true_iff_false : ∀ b,
   b ≠ true ↔ b = false.
 Proof.
   (* WORKED IN CLASS *)
   intros b. split.
-  - (* -> *) apply not_true_is_false.
-  - (* <- *)
+  > - (* -> *) apply not_true_is_false.
+  > - (* <> - *)
     intros H. rewrite H. intros H'. discriminate H'.
 Qed.
 ```
@@ -5969,7 +5986,7 @@ Some of Coq's tactics treat iff statements specially, avoiding some low-level pr
 From Coq Require Import Setoids.Setoid.
 ```
 
-A "setoid" is a set equipped with an equivalence relation -- that is, a relation that is reflexive, symmetric, and transitive. When two elements of a set are equivalent according to the relation, rewrite can be used to replace one by the other.
+A "setoid" is a set equipped with an equivalence relation -> - that is, a relation that is reflexive, symmetric, and transitive. When two elements of a set are equivalent according to the relation, rewrite can be used to replace one by the other.
 
 We've seen this already with the equality relation = in Coq: when x = y, we can use rewrite to replace x with y or vice-versa.
 
@@ -5983,19 +6000,19 @@ First, let's prove a couple of basic iff equivalences.
 Lemma mul_eq_0 : ∀ n m, n × m = 0 ↔ n = 0 ∨ m = 0.
 Proof.
   split.
-  - apply mult_is_O.
-  - apply factor_is_O.
+  > - apply mult_is_O.
+  > - apply factor_is_O.
 Qed.
 
 Theorem or_assoc :
   ∀ P Q R : Prop, P ∨ (Q ∨ R) ↔ (P ∨ Q) ∨ R.
 Proof.
   intros P Q R. split.
-  - intros [H | [H | H]].
+  > - intros [H | [H | H]].
     + left. left. apply H.
     + left. right. apply H.
     + right. apply H.
-  - intros [[H | H] | H].
+  > - intros [[H | H] | H].
     + left. apply H.
     + right. left. apply H.
     + right. right. apply H.
@@ -6104,8 +6121,8 @@ Proof.
   (* WORKED IN CLASS *)
   simpl.
   intros n [H | [H | []]].
-  - ∃ 1. rewrite <- H. reflexivity.
-  - ∃ 2. rewrite <- H. reflexivity.
+  > - ∃ 1. rewrite <> - H. reflexivity.
+  > - ∃ 2. rewrite <> - H. reflexivity.
 Qed.
 ```
 
@@ -6121,9 +6138,9 @@ Theorem In_map :
 Proof.
   intros A B f l x.
   induction l as [|x' l' IHl'].
-  - (* l = nil, contradiction *)
+  > - (* l = nil, contradiction *)
     simpl. intros [].
-  - (* l = x' :: l' *)
+  > - (* l = x' :: l' *)
     simpl. intros [H | H].
     + rewrite H. left. reflexivity.
     + right. apply IHl'. apply H.
@@ -6134,7 +6151,7 @@ Qed.
 
 This way of defining propositions recursively is very convenient in some cases, less so in others. In particular, it is subject to Coq's usual restrictions regarding the definition of recursive functions, e.g., the requirement that they be "obviously terminating."
 
-In the next chapter, we will see how to define propositions inductively -- a different technique with its own strengths and limitations.
+In the next chapter, we will see how to define propositions inductively -> - a different technique with its own strengths and limitations.
 
 ####### Exercise: 3 stars, standard (In_map_iff)
 
@@ -6230,7 +6247,7 @@ Coq checks the statement of the add_comm theorem (or prints it for us, if we lea
 
 Why?
 
-The reason is that the identifier add_comm actually refers to a proof object -- a logical derivation establishing of the truth of the statement ∀ n m : nat, n + m = m + n. The type of this object is the proposition that it is a proof of.
+The reason is that the identifier add_comm actually refers to a proof object -> - a logical derivation establishing of the truth of the statement ∀ n m : nat, n + m = m + n. The type of this object is the proposition that it is a proof of.
 
 Intuitively, this makes sense because the statement of a theorem tells us what we can use that theorem for.
 
@@ -6359,7 +6376,7 @@ Qed.
 
 You can "use a theorem as a function" in this way with almost any tactic that can take a theorem's name as an argument.
 
-Note, also, that theorem application uses the same inference mechanisms as function application; thus, it is possible, for example, to supply wildcards as arguments to be inferred, or to declare some hypotheses to a theorem as implicit by default. These features are illustrated in the proof below. (The details of how this proof works are not critical -- the goal here is just to illustrate applying theorems to arguments.)
+Note, also, that theorem application uses the same inference mechanisms as function application; thus, it is possible, for example, to supply wildcards as arguments to be inferred, or to declare some hypotheses to a theorem as implicit by default. These features are illustrated in the proof below. (The details of how this proof works are not critical -> - the goal here is just to illustrate applying theorems to arguments.)
 
 ```coq
 Example lemma_application_ex :
@@ -6370,7 +6387,7 @@ Proof.
   intros n ns H.
   destruct (proj1 _ _ (In_map_iff _ _ _ _ _) H)
            as [m [Hm _]].
-  rewrite mul_0_r in Hm. rewrite <- Hm. reflexivity.
+  rewrite mul_0_r in Hm. rewrite <> - Hm. reflexivity.
 Qed.
 ```
 
@@ -6389,7 +6406,7 @@ Here are the key differences between bool and Prop:
            works with rewrite tactic?      no        yes
 ```
 
-The crucial difference between the two worlds is decidability. Every (closed) Coq expression of type bool can be simplified in a finite number of steps to either true or false -- i.e., there is a terminating mechanical procedure for deciding whether or not it is true.
+The crucial difference between the two worlds is decidability. Every (closed) Coq expression of type bool can be simplified in a finite number of steps to either true or false -> - i.e., there is a terminating mechanical procedure for deciding whether or not it is true.
 
 This means that, for example, the type nat → bool is inhabited only by functions that, given a nat, always yield either true or false in finite time; and this, in turn, means (by a standard computability argument) that there is no function in nat → bool that checks whether a given number is the code of a terminating Turing machine.
 
@@ -6421,8 +6438,8 @@ We first need two helper lemmas.
 Lemma even_double : ∀ k, even (double k) = true.
 Proof.
   intros k. induction k as [|k' IHk'].
-  - reflexivity.
-  - simpl. apply IHk'.
+  > - reflexivity.
+  > - simpl. apply IHk'.
 Qed.
 ```
 
@@ -6444,9 +6461,9 @@ Theorem even_bool_prop : ∀ n,
   even n = true ↔ Even n.
 Proof.
   intros n. split.
-  - intros H. destruct (even_double_conv n) as [k Hk].
+  > - intros H. destruct (even_double_conv n) as [k Hk].
     rewrite Hk. rewrite H. ∃ k. reflexivity.
-  - intros [k Hk]. rewrite Hk. apply even_double.
+  > - intros [k Hk]. rewrite Hk. apply even_double.
 Qed.
 ````
 
@@ -6465,8 +6482,8 @@ Theorem eqb_eq : ∀ n1 n2 : nat,
   n1 =? n2 = true ↔ n1 = n2.
 Proof.
   intros n1 n2. split.
-  - apply eqb_true.
-  - intros H. rewrite H. rewrite eqb_refl. reflexivity.
+  > - apply eqb_true.
+  > - intros H. rewrite H. rewrite eqb_refl. reflexivity.
 Qed.
 ```
 
@@ -6539,14 +6556,14 @@ For example, suppose we state the non-evenness of 1001 propositionally:
 Example not_even_1001' : ~(Even 1001).
 ```
 
-Proving this directly -- by assuming that there is some n such that 1001 = double n and then somehow reasoning to a contradiction -- would be rather complicated.
+Proving this directly -> - by assuming that there is some n such that 1001 = double n and then somehow reasoning to a contradiction -> - would be rather complicated.
 
 But if we convert it to a claim about the boolean even function, we can let Coq do the work for us.
 
 ```coq
 Proof.
   (* WORKED IN CLASS *)
-  rewrite <- even_bool_prop.
+  rewrite <> - even_bool_prop.
   unfold not.
   simpl.
   intro H.
@@ -6633,15 +6650,15 @@ Proof.
 ```
 
 #### The Logic of Coq
-Coq's logical core, the Calculus of Inductive Constructions, differs in some important ways from other formal systems that are used by mathematicians to write down precise and rigorous definitions and proofs -- in particular from Zermelo-Fraenkel Set Theory (ZFC), the most popular foundation for paper-and-pencil mathematics.
+Coq's logical core, the Calculus of Inductive Constructions, differs in some important ways from other formal systems that are used by mathematicians to write down precise and rigorous definitions and proofs -> - in particular from Zermelo-Fraenkel Set Theory (ZFC), the most popular foundation for paper-and-pencil mathematics.
 
 
 We conclude this chapter with a brief discussion of some of the most significant differences between these two worlds.
 
 ##### Functional Extensionality
-Coq's logic is quite minimalistic. This means that one occasionally encounters cases where translating standard mathematical reasoning into Coq is cumbersome -- or even impossible -- unless we enrich its core logic with additional axioms.
+Coq's logic is quite minimalistic. This means that one occasionally encounters cases where translating standard mathematical reasoning into Coq is cumbersome -> - or even impossible -> - unless we enrich its core logic with additional axioms.
 
-For example, the equality assertions that we have seen so far mostly have concerned elements of inductive types (nat, bool, etc.). But, since Coq's equality operator is polymorphic, we can use it at any type -- in particular, we can write propositions claiming that two functions are equal to each other:
+For example, the equality assertions that we have seen so far mostly have concerned elements of inductive types (nat, bool, etc.). But, since Coq's equality operator is polymorphic, we can use it at any type -> - in particular, we can write propositions claiming that two functions are equal to each other:
 
 ```coq
 Example function_equality_ex1 :
@@ -6659,7 +6676,7 @@ In common mathematical practice, two functions f and g are considered equal if t
 
 This is known as the principle of functional extensionality.
 
-(Informally, an "extensional property" is one that pertains to an object's observable behavior. Thus, functional extensionality simply means that a function's identity is completely determined by what we can observe from it -- i.e., the results we obtain after applying it.)
+(Informally, an "extensional property" is one that pertains to an object's observable behavior. Thus, functional extensionality simply means that a function's identity is completely determined by what we can observe from it -> - i.e., the results we obtain after applying it.)
 
 However, functional extensionality is not part of Coq's built-in logic. This means that some intuitively obvious propositions are not provable.
 
@@ -6692,7 +6709,7 @@ Proof.
 Qed.
 ```
 
-Naturally, we need to be quite careful when adding new axioms into Coq's logic, as this can render it inconsistent -- that is, it may become possible to prove every proposition, including False, 2+2=5, etc.!\
+Naturally, we need to be quite careful when adding new axioms into Coq's logic, as this can render it inconsistent -> - that is, it may become possible to prove every proposition, including False, 2+2=5, etc.!\
 
 In general, there is no simple way of telling whether an axiom is safe to add: hard work by highly trained mathematicians is often required to establish the consistency of any particular combination of axioms.
 
@@ -6754,8 +6771,8 @@ Theorem restricted_excluded_middle : ∀ P b,
   (P ↔ b = true) → P ∨ ¬ P.
 Proof.
   intros P [] H.
-  - left. rewrite H. reflexivity.
-  - right. rewrite H. intros contra. discriminate contra.
+  > - left. rewrite H. reflexivity.
+  > - right. rewrite H. intros contra. discriminate contra.
 Qed.
 ```
 
@@ -6774,7 +6791,7 @@ Qed.
 
 Sadly, this trick only works for decidable propositions.
 
-It may seem strange that the general excluded middle is not available by default in Coq, since it is a standard feature of familiar logics like ZFC. But there is a distinct advantage in not assuming the excluded middle: statements in Coq make stronger claims than the analogous statements in standard mathematics. Notably, a Coq proof of ∃ x, P x always includes a particular value of x for which we can prove P x -- in other words, every proof of existence is constructive.
+It may seem strange that the general excluded middle is not available by default in Coq, since it is a standard feature of familiar logics like ZFC. But there is a distinct advantage in not assuming the excluded middle: statements in Coq make stronger claims than the analogous statements in standard mathematics. Notably, a Coq proof of ∃ x, P x always includes a particular value of x for which we can prove P x -> - in other words, every proof of existence is constructive.
 
 Logics like Coq's, which do not assume the excluded middle, are referred to as constructive logics.
 
@@ -6935,10 +6952,10 @@ The Collatz conjecture then states that the sequence beginning from any number r
 Conjecture collatz : ∀ n, Collatz_holds_for n.
 ```
 
-If you succeed in proving this conjecture, you've got a bright future as a number theorist! But don't spend too long on it -- it's been open since 1937.
+If you succeed in proving this conjecture, you've got a bright future as a number theorist! But don't spend too long on it -> - it's been open since 1937.
 
 ##### Example: Ordering
-A binary relation on a set X is a family of propositions parameterized by two elements of X -- i.e., a proposition about pairs of elements of X.
+A binary relation on a set X is a family of propositions parameterized by two elements of X -> - i.e., a proposition about pairs of elements of X.
 
 For example, one familiar binary relation on nat is le, the less-than-or-equal-to relation. We've already seen how to define it as a boolean computation. Here is a "direct" propositional definition.
 
@@ -6997,8 +7014,8 @@ Definition ancestor_of : Person → Person → Prop :=
 Example ancestor_of1 : ancestor_of Sage Moss.
 Proof.
   unfold ancestor_of. apply t_trans with Cleo.
-  - apply t_step. apply po_SC.
-  - apply t_step. apply po_CM. Qed.
+  > - apply t_step. apply po_SC.
+  > - apply t_step. apply po_CM. Qed.
 ```
 
 ####### Exercise: 1 star, standard, optional (close_refl_trans)
@@ -7037,8 +7054,8 @@ According to this definition, is [1;2;3] a permutation of [3;2;1]? Is [1;2;3] a 
 Example Perm3_example1 : Perm3 [1;2;3] [2;3;1].
 Proof.
   apply perm3_trans with [2;1;3].
-  - apply perm3_swap12.
-  - apply perm3_swap23. Qed.
+  > - apply perm3_swap12.
+  > - apply perm3_swap23. Qed.
 ```
 
 ##### Example: Evenness (yet again)
@@ -7050,7 +7067,7 @@ A third possibility, which we'll use as a running example for the rest of this c
 * The number 0 is even.
 * If n is even, then S (S n) is even.
 
-(Defining evenness in this way may seem a bit confusing, since we have already seen another perfectly good way of doing it -- "n is even if it is equal to the result of doubling some number". It makes a convenient running example because it is simple and compact, but we will see more compelling examples in future chapters.)
+(Defining evenness in this way may seem a bit confusing, since we have already seen another perfectly good way of doing it -> - "n is even if it is equal to the result of doubling some number". It makes a convenient running example because it is simple and compact, but we will see more compelling examples in future chapters.)
 
 To illustrate how this new definition of evenness works, let's imagine using it to show that 4 is even. First, we give the rules names for easy reference:
 * Rule ev_0: The number 0 is even.
@@ -7066,7 +7083,7 @@ Inductive ev : nat → Prop :=
   | ev_SS (n : nat) (H : ev n) : ev (S (S n)).
 ```
 
-This definition is interestingly different from previous uses of Inductive. For one thing, we are defining not a Type (like nat) or a function yielding a Type (like list), but rather a function from nat to Prop -- that is, a property of numbers. But what is really new is that, because the nat argument of ev appears to the right of the colon on the first line, it is allowed to take different values in the types of different constructors: 0 in the type of ev_0 and S (S n) in the type of ev_SS. Accordingly, the type of each constructor must be specified explicitly (after a colon), and each constructor's type must have the form ev n for some natural number n.
+This definition is interestingly different from previous uses of Inductive. For one thing, we are defining not a Type (like nat) or a function yielding a Type (like list), but rather a function from nat to Prop -> - that is, a property of numbers. But what is really new is that, because the nat argument of ev appears to the right of the colon on the first line, it is allowed to take different values in the types of different constructors: 0 in the type of ev_0 and S (S n) in the type of ev_SS. Accordingly, the type of each constructor must be specified explicitly (after a colon), and each constructor's type must have the form ev n for some natural number n.
 
 In contrast, recall the definition of list:
 
@@ -7155,9 +7172,9 @@ Theorem ev_inversion : ∀ (n : nat),
     (n = 0) ∨ (∃ n', n = S (S n') ∧ ev n').
 Proof.
   intros n E. destruct E as [ | n' E'] eqn:EE.
-  - (* E = ev_0 : ev 0 *)
+  > - (* E = ev_0 : ev 0 *)
     left. reflexivity.
-  - (* E = ev_SS n' E' : ev (S (S n')) *)
+  > - (* E = ev_SS n' E' : ev (S (S n')) *)
     right. ∃ n'. split. reflexivity. apply E'.
 Qed.
 ```
@@ -7172,8 +7189,8 @@ We can use the inversion lemma that we proved above to help structure proofs:
 Theorem evSS_ev : ∀ n, ev (S (S n)) → ev n.
 Proof.
   intros n H. apply ev_inversion in H. destruct H as [H0|H1].
-  - discriminate H0.
-  - destruct H1 as [n' [Hnm Hev]]. injection Hnm as Heq.
+  > - discriminate H0.
+  > - destruct H1 as [n' [Hnm Hev]]. injection Hnm as Heq.
     rewrite Heq. apply Hev.
 Qed.
 ```
@@ -7200,8 +7217,8 @@ The inversion tactic can apply the principle of explosion to "obviously contradi
 Theorem one_not_even : ¬ ev 1.
 Proof.
   intros H. apply ev_inversion in H. destruct H as [ | [m [Hm _]]].
-  - discriminate H.
-  - discriminate Hm.
+  > - discriminate H.
+  > - discriminate Hm.
 Qed.
 Theorem one_not_even' : ¬ ev 1.
 Proof.
@@ -7247,7 +7264,7 @@ Here's how inversion works in general.
 * Suppose the name H refers to an assumption P in the current context, where P has been defined by an Inductive declaration.
 * Then, for each of the constructors of P, inversion H generates a subgoal in which H has been replaced by the specific conditions under which this constructor could have been used to prove P.
 * Some of these subgoals will be self-contradictory; inversion throws these away.
-* The ones that are left represent the cases that must be proved to establish the original goal. For those, inversion adds to the proof context all equations that must hold of the arguments given to P -- e.g., n' = n in the proof of evSS_ev).
+* The ones that are left represent the cases that must be proved to establish the original goal. For those, inversion adds to the proof context all equations that must hold of the arguments given to P -> - e.g., n' = n in the proof of evSS_ev).
 
 The ev_double exercise above shows that our new notion of evenness is implied by the two earlier ones (since, by even_bool_prop in chapter Logic, we already know that those are equivalent to each other). To show that all three coincide, we just need the following lemma.
 
@@ -7262,8 +7279,8 @@ We could try to proceed by case analysis or induction on n. But since ev is ment
 
 ```coq
   intros n E. inversion E as [EQ' | n' E' EQ'].
-  - (* E = ev_0 *) ∃ 0. reflexivity.
-  - (* E = ev_SS n' E' *)
+  > - (* E = ev_0 *) ∃ 0. reflexivity.
+  > - (* E = ev_SS n' E' *)
 ```
 
 Unfortunately, the second case is harder. We need to show ∃ n0, S (S n') = double n0, but the only available assumption is E', which states that ev n' holds. Since this isn't directly useful, it seems that we are stuck and that performing case analysis on E was a waste of time.
@@ -7280,7 +7297,7 @@ which is the same as the original statement, but with n' instead of n. Indeed, i
     assert (H: (∃ k', n' = double k')
                → (∃ n0, S (S n') = double n0)).
         { intros [k' EQ'']. ∃ (S k'). simpl.
-          rewrite <- EQ''. reflexivity. }
+          rewrite <> - EQ''. reflexivity. }
     apply H.
 ```
 
@@ -7290,7 +7307,7 @@ Unfortunately, now we are stuck. To see this clearly, let's move E' back into th
     generalize dependent E'.
 ```
 
-Now it is obvious that we are trying to prove another instance of the same theorem we set out to prove -- only here we are talking about n' instead of n.
+Now it is obvious that we are trying to prove another instance of the same theorem we set out to prove -> - only here we are talking about n' instead of n.
 
 ```coq
 Abort.
@@ -7311,9 +7328,9 @@ Lemma ev_Even : ∀ n,
 Proof.
   intros n E.
   induction E as [|n' E' IH].
-  - (* E = ev_0 *)
+  > - (* E = ev_0 *)
     unfold Even. ∃ 0. reflexivity.
-  - (* E = ev_SS n' E'
+  > - (* E = ev_SS n' E'
        with IH : Even n' *)
     unfold Even in IH.
     destruct IH as [k Hk].
@@ -7331,12 +7348,12 @@ Theorem ev_Even_iff : ∀ n,
   ev n ↔ Even n.
 Proof.
   intros n. split.
-  - (* -> *) apply ev_Even.
-  - (* <- *) unfold Even. intros [k Hk]. rewrite Hk. apply ev_double.
+  > - (* -> *) apply ev_Even.
+  > - (* <> - *) unfold Even. intros [k Hk]. rewrite Hk. apply ev_double.
 Qed.
 ```
 
-As we will see in later chapters, induction on evidence is a recurring technique across many areas -- in particular for formalizing the semantics of programming languages.
+As we will see in later chapters, induction on evidence is a recurring technique across many areas -> - in particular for formalizing the semantics of programming languages.
 
 The following exercises provide simple examples of this technique, to help you familiarize yourself with it.
 
@@ -7392,7 +7409,7 @@ Proof.
 ```
 
 #### Inductive Relations
-A proposition parameterized by a number (such as ev) can be thought of as a property -- i.e., it defines a subset of nat, namely those numbers for which the proposition is provable. In the same way, a two-argument proposition can be thought of as a relation -- i.e., it defines a set of pairs for which the proposition is provable.
+A proposition parameterized by a number (such as ev) can be thought of as a property -> - i.e., it defines a subset of nat, namely those numbers for which the proposition is provable. In the same way, a two-argument proposition can be thought of as a relation -> - i.e., it defines a set of pairs for which the proposition is provable.
 
 ```coq
 Module Playground.
@@ -7411,7 +7428,7 @@ Notation "n <= m" := (le n m).
 
 Proofs of facts about ≤ using the constructors le_n and le_S follow the same patterns as proofs about properties, like ev above. We can apply the constructors to prove ≤ goals (e.g., to show that 3<=3 or 3<=6), and we can use tactics like inversion to extract information from ≤ hypotheses in the context (e.g., to prove that (2 ≤ 1) → 2+2=5.)
 
-Here are some sanity checks on the definition. (Notice that, although these are the same kind of simple "unit tests" as we gave for the testing functions we wrote in the first few lectures, we must construct their proofs explicitly -- simpl and reflexivity don't do the job, because the proofs aren't just a matter of simplifying computations.)
+Here are some sanity checks on the definition. (Notice that, although these are the same kind of simple "unit tests" as we gave for the testing functions we wrote in the first few lectures, we must construct their proofs explicitly -> - simpl and reflexivity don't do the job, because the proofs aren't just a matter of simplifying computations.)
 
 ```coq
 Theorem test_le1 :
@@ -7639,7 +7656,7 @@ but it is not a subsequence of any of the lists
 * Define an inductive proposition subseq on list nat that captures what it means to be a subsequence. (Hint: You'll need three cases.)
 * Prove subseq_refl that subsequence is reflexive, that is, any list is a subsequence of itself.
 * Prove subseq_app that for any lists l1, l2, and l3, if l1 is a subsequence of l2, then l1 is also a subsequence of l2 ++ l3.
-* (Harder) Prove subseq_trans that subsequence is transitive -- that is, if l1 is a subsequence of l2 and l2 is a subsequence of l3, then l1 is a subsequence of l3.
+* (Harder) Prove subseq_trans that subsequence is transitive -> - that is, if l1 is a subsequence of l2 and l2 is a subsequence of l3, then l1 is a subsequence of l3.
 
 ```coq
 Inductive subseq : list nat → list nat → Prop :=
@@ -7718,7 +7735,7 @@ Inductive bin : Type :=
 For inductively defined propositions, we need to explicitly give the result type for each constructor (because they are not all the same), so the first style doesn't make sense, but we can use either the second or the third interchangeably.
 
 #### Case Study: Regular Expressions
-The ev property provides a simple example for illustrating inductive definitions and the basic techniques for reasoning about them, but it is not terribly exciting -- after all, it is equivalent to the two non-inductive definitions of evenness that we had already seen, and does not seem to offer any concrete benefit over them.
+The ev property provides a simple example for illustrating inductive definitions and the basic techniques for reasoning about them, but it is not terribly exciting -> - after all, it is equivalent to the two non-inductive definitions of evenness that we had already seen, and does not seem to offer any concrete benefit over them.
 
 To give a better sense of the power of inductive definitions, we now show how to use them to model a classic concept in computer science: regular expressions.
 
@@ -7740,7 +7757,7 @@ Arguments Union {T} _ _.
 Arguments Star {T} _.
 ```
 
-Note that this definition is polymorphic: Regular expressions in reg_exp T describe strings with characters drawn from T -- that is, lists of elements of T.
+Note that this definition is polymorphic: Regular expressions in reg_exp T describe strings with characters drawn from T -> - that is, lists of elements of T.
 
 (Technical aside: We depart slightly from standard practice in that we do not require the type T to be finite. This results in a somewhat different theory of regular expressions, but the difference is not significant for present purposes.)
 
@@ -7795,8 +7812,8 @@ Qed.
 Example reg_exp_ex2 : [1; 2] =~ App (Char 1) (Char 2).
 Proof.
   apply (MApp [1]).
-  - apply MChar.
-  - apply MChar.
+  > - apply MChar.
+  > - apply MChar.
 Qed.
 ```
 
@@ -7840,10 +7857,10 @@ Lemma MStar1 :
     s =~ Star re.
 Proof.
   intros T s re H.
-  rewrite <- (app_nil_r _ s).
+  rewrite <> - (app_nil_r _ s).
   apply MStarApp.
-  - apply H.
-  - apply MStar0.
+  > - apply H.
+  > - apply MStar0.
 Qed.
 ```
 
@@ -7909,12 +7926,12 @@ Proof.
         | s1 re1 re2 Hmatch IH | re1 s2 re2 Hmatch IH
         | re | s1 s2 re Hmatch1 IH1 Hmatch2 IH2].
   (* WORKED IN CLASS *)
-  - (* MEmpty *)
+  > - (* MEmpty *)
     simpl in Hin. destruct Hin.
-  - (* MChar *)
+  > - (* MChar *)
     simpl. simpl in Hin.
     apply Hin.
-  - (* MApp *)
+  > - (* MApp *)
     simpl.
 ```
 
@@ -7927,15 +7944,15 @@ Something interesting happens in the MApp case. We obtain two induction hypothes
       left. apply (IH1 Hin).
     + (* In x s2 *)
       right. apply (IH2 Hin).
-  - (* MUnionL *)
+  > - (* MUnionL *)
     simpl. rewrite In_app_iff.
     left. apply (IH Hin).
-  - (* MUnionR *)
+  > - (* MUnionR *)
     simpl. rewrite In_app_iff.
     right. apply (IH Hin).
-  - (* MStar0 *)
+  > - (* MStar0 *)
     destruct Hin.
-  - (* MStarApp *)
+  > - (* MStarApp *)
     simpl.
 ```
 
@@ -7988,7 +8005,7 @@ Now, just doing an inversion on H1 won't get us very far in the recursive cases.
 But now, although we get seven cases (as we would expect from the definition of exp_match), we have lost a very important bit of information from H1: the fact that s1 matched something of the form Star re. This means that we have to give proofs for all seven constructors of this definition, even though all but two of them (MStar0 and MStarApp) are contradictory. We can still get the proof to go through for a few constructors, such as MEmpty...
 
 ```coq
-  - (* MEmpty *)
+  > - (* MEmpty *)
     simpl. intros H. apply H.
 ```
 
@@ -8002,7 +8019,7 @@ But now, although we get seven cases (as we would expect from the definition of 
 which is clearly impossible.
 
 ```coq
-  - (* MChar. *) intros H. simpl. (* Stuck... *)
+  > - (* MChar. *) intros H. simpl. (* Stuck... *)
 Abort.
 ```
 
@@ -8049,20 +8066,20 @@ We now have Heqre' : re' = Star re.
 The Heqre' is contradictory in most cases, allowing us to conclude immediately.
 
 ```coq
-  - (* MEmpty *) discriminate.
-  - (* MChar *) discriminate.
-  - (* MApp *) discriminate.
-  - (* MUnionL *) discriminate.
-  - (* MUnionR *) discriminate.
+  > - (* MEmpty *) discriminate.
+  > - (* MChar *) discriminate.
+  > - (* MApp *) discriminate.
+  > - (* MUnionL *) discriminate.
+  > - (* MUnionR *) discriminate.
 ```
 
 The interesting cases are those that correspond to Star. Note that the induction hypothesis IH2 on the MStarApp case mentions an additional premise Star re'' = Star re, which results from the equality generated by remember.
 
 ```coq
-  - (* MStar0 *)
+  > - (* MStar0 *)
     intros H. apply H.
-  - (* MStarApp *)
-    intros H1. rewrite <- app_assoc.
+  > - (* MStarApp *)
+    intros H1. rewrite <> - app_assoc.
     apply MStarApp.
     + apply Hmatch1.
     + apply IH2.
@@ -8086,7 +8103,7 @@ Proof.
 ```
 
 ####### Exercise: 5 stars, advanced (weak_pumping)
-One of the first really interesting theorems in the theory of regular expressions is the so-called pumping lemma, which states, informally, that any sufficiently long string s matching a regular expression re can be "pumped" by repeating some middle section of s an arbitrary number of times to produce a new string also matching re. (For the sake of simplicity in this exercise, we consider a slightly weaker theorem than is usually stated in courses on automata theory -- hence the name weak_pumping.)
+One of the first really interesting theorems in the theory of regular expressions is the so-called pumping lemma, which states, informally, that any sufficiently long string s matching a regular expression re can be "pumped" by repeating some middle section of s an arbitrary number of times to produce a new string also matching re. (For the sake of simplicity in this exercise, we consider a slightly weaker theorem than is usually stated in courses on automata theory -> - hence the name weak_pumping.)
 
 To get started, we need to define "sufficiently long." Since we are working in a constructive logic, we actually need to be able to calculate, for each regular expression re, the minimum length for strings s to guarantee "pumpability."
 
@@ -8114,21 +8131,21 @@ Lemma pumping_constant_ge_1 :
     pumping_constant re ≥ 1.
 Proof.
   intros T re. induction re.
-  - (* EmptySet *)
+  > - (* EmptySet *)
     apply le_n.
-  - (* EmptyStr *)
+  > - (* EmptyStr *)
     apply le_n.
-  - (* Char *)
+  > - (* Char *)
     apply le_S. apply le_n.
-  - (* App *)
+  > - (* App *)
     simpl.
     apply le_trans with (n:=pumping_constant re1).
     apply IHre1. apply le_plus_l.
-  - (* Union *)
+  > - (* Union *)
     simpl.
     apply le_trans with (n:=pumping_constant re1).
     apply IHre1. apply le_plus_l.
-  - (* Star *)
+  > - (* Star *)
     simpl. apply IHre.
 Qed.
 ```
@@ -8165,8 +8182,8 @@ Lemma napp_plus: ∀ T (n m : nat) (l : list T),
 Proof.
   intros T n m l.
   induction n as [|n IHn].
-  - reflexivity.
-  - simpl. rewrite IHn, app_assoc. reflexivity.
+  > - reflexivity.
+  > - simpl. rewrite IHn, app_assoc. reflexivity.
 Qed.
 ```
 
@@ -8178,8 +8195,8 @@ Lemma napp_star :
 Proof.
   intros T m s1 s2 re Hs1 Hs2.
   induction m.
-  - simpl. apply Hs2.
-  - simpl. rewrite <- app_assoc.
+  > - simpl. apply Hs2.
+  > - simpl. rewrite <> - app_assoc.
     apply MStarApp.
     + apply Hs1.
     + apply IHm.
@@ -8207,7 +8224,7 @@ Proof.
     as [ | x | s1 re1 s2 re2 Hmatch1 IH1 Hmatch2 IH2
        | s1 re1 re2 Hmatch IH | re1 s2 re2 Hmatch IH
        | re | s1 s2 re Hmatch1 IH1 Hmatch2 IH2 ].
-  - (* MEmpty *)
+  > - (* MEmpty *)
     simpl. intros contra. inversion contra.
   (* FILL IN HERE *) Admitted.
 ☐
@@ -8236,7 +8253,7 @@ Proof.
     as [ | x | s1 re1 s2 re2 Hmatch1 IH1 Hmatch2 IH2
        | s1 re1 re2 Hmatch IH | re1 s2 re2 Hmatch IH
        | re | s1 s2 re Hmatch1 IH1 Hmatch2 IH2 ].
-  - (* MEmpty *)
+  > - (* MEmpty *)
     simpl. intros contra. inversion contra.
   (* FILL IN HERE *) Admitted.
 End Pumping.
@@ -8252,9 +8269,9 @@ Theorem filter_not_empty_In : ∀ n l,
   In n l.
 Proof.
   intros n l. induction l as [|m l' IHl'].
-  - (* l =  *)
+  > - (* l =  *)
     simpl. intros H. apply H. reflexivity.
-  - (* l = m :: l' *)
+  > - (* l = m :: l' *)
     simpl. destruct (n =? m) eqn:H.
     + (* n =? m = true *)
       intros _. rewrite eqb_eq in H. rewrite H.
@@ -8289,8 +8306,8 @@ Theorem iff_reflect : ∀ P b, (P ↔ b = true) → reflect P b.
 Proof.
   (* WORKED IN CLASS *)
   intros P b H. destruct b eqn:Eb.
-  - apply ReflectT. rewrite H. reflexivity.
-  - apply ReflectF. rewrite H. intros H'. discriminate.
+  > - apply ReflectT. rewrite H. reflexivity.
+  > - apply ReflectF. rewrite H. intros H'. discriminate.
 Qed.
 ```
 
@@ -8328,9 +8345,9 @@ Theorem filter_not_empty_In' : ∀ n l,
   In n l.
 Proof.
   intros n l. induction l as [|m l' IHl'].
-  - (* l =  *)
+  > - (* l =  *)
     simpl. intros H. apply H. reflexivity.
-  - (* l = m :: l' *)
+  > - (* l = m :: l' *)
     simpl. destruct (eqbP n m) as [H | H].
     + (* n = m *)
       intros _. rewrite H. left. reflexivity.
@@ -8550,7 +8567,7 @@ Inductive repeats {X:Type} : list X → Prop :=
 Definition manual_grade_for_check_repeats : option (nat×string) := None.
 ```
 
-Now, here's a way to formalize the pigeonhole principle. Suppose list l2 represents a list of pigeonhole labels, and list l1 represents the labels assigned to a list of items. If there are more items than labels, at least two items must have the same label -- i.e., list l1 must contain repeats.
+Now, here's a way to formalize the pigeonhole principle. Suppose list l2 represents a list of pigeonhole labels, and list l1 represents the labels assigned to a list of items. If there are more items than labels, at least two items must have the same label -> - i.e., list l1 must contain repeats.
 
 This proof is much easier if you use the excluded_middle hypothesis to show that In is decidable, i.e., ∀ x l, (In x l) ∨ ¬ (In x l). However, it is also possible to make the proof go through without assuming that In is decidable; if you manage to do this, you will not need the excluded_middle hypothesis.
 
@@ -8593,8 +8610,8 @@ Lemma provable_equiv_true : ∀ (P : Prop), P → (P ↔ True).
 Proof.
   intros.
   split.
-  - intros. constructor.
-  - intros _. apply H.
+  > - intros. constructor.
+  > - intros _. apply H.
 Qed.
 ```
 
@@ -8605,8 +8622,8 @@ Lemma not_equiv_false : ∀ (P : Prop), ¬P → (P ↔ False).
 Proof.
   intros.
   split.
-  - apply H.
-  - intros. destruct H0.
+  > - apply H.
+  > - intros. destruct H0.
 Qed.
 ```
 
@@ -8627,8 +8644,8 @@ EmptyStr only matches the empty string.
 Lemma empty_matches_eps : ∀ (s : string), s =~ EmptyStr ↔ s = [ ].
 Proof.
   split.
-  - intros. inversion H. reflexivity.
-  - intros. rewrite H. apply MEmpty.
+  > - intros. inversion H. reflexivity.
+  > - intros. rewrite H. apply MEmpty.
 Qed.
 EmptyStr matches no non-empty string.
 Lemma empty_nomatch_ne : ∀ (a : ascii) s, (a :: s =~ EmptyStr) ↔ False.
@@ -8661,8 +8678,8 @@ If Char a matches a non-empty string, then the string's tail is empty.
 Lemma char_eps_suffix : ∀ (a : ascii) s, a :: s =~ Char a ↔ s = [ ].
 Proof.
   split.
-  - intros. inversion H. reflexivity.
-  - intros. rewrite H. apply MChar.
+  > - intros. inversion H. reflexivity.
+  > - intros. rewrite H. apply MChar.
 Qed.
 ```
 
@@ -8675,10 +8692,10 @@ Lemma app_exists : ∀ (s : string) re0 re1,
 Proof.
   intros.
   split.
-  - intros. inversion H. ∃ s1, s2. split.
+  > - intros. inversion H. ∃ s1, s2. split.
     × reflexivity.
     × split. apply H3. apply H4.
-  - intros [ s0 [ s1 [ Happ [ Hmat0 Hmat1 ] ] ] ].
+  > - intros [ s0 [ s1 [ Happ [ Hmat0 Hmat1 ] ] ] ].
     rewrite Happ. apply (MApp s0 _ s1 _ Hmat0 Hmat1).
 Qed.
 ```
@@ -8705,10 +8722,10 @@ Lemma union_disj : ∀ (s : string) re0 re1,
   s =~ Union re0 re1 ↔ s =~ re0 ∨ s =~ re1.
 Proof.
   intros. split.
-  - intros. inversion H.
+  > - intros. inversion H.
     + left. apply H2.
     + right. apply H1.
-  - intros [ H | H ].
+  > - intros [ H | H ].
     + apply MUnionL. apply H.
     + apply MUnionR. apply H.
 Qed.
@@ -9174,8 +9191,8 @@ Theorem update_neq : ∀ (A : Type) (m : partial_map A) x1 x2 v,
 Proof.
   intros A m x1 x2 v H.
   unfold update. rewrite t_update_neq.
-  - reflexivity.
-  - apply H.
+  > - reflexivity.
+  > - apply H.
 Qed.
 ```
 
@@ -9193,7 +9210,7 @@ Theorem update_same : ∀ (A : Type) (m : partial_map A) x v,
   m x = Some v →
   (x ⊢> v ; m) = m.
 Proof.
-  intros A m x v H. unfold update. rewrite <- H.
+  intros A m x v H. unfold update. rewrite <> - H.
   apply t_update_same.
 Qed.
 ```
@@ -9216,7 +9233,7 @@ Definition includedin {A : Type} (m m' : partial_map A) :=
   ∀ x v, m x = Some v → m' x = Some v.
 ```
 
-We can then show that map update preserves map inclusion -- that is:
+We can then show that map update preserves map inclusion -> - that is:
 
 ```coq
 Lemma includedin_update : ∀ (A : Type) (m m' : partial_map A)
@@ -9228,9 +9245,9 @@ Proof.
   intros A m m' x vx H.
   intros y vy.
   destruct (eqb_spec x y) as [Hxy | Hxy].
-  - rewrite Hxy.
+  > - rewrite Hxy.
     rewrite update_eq. rewrite update_eq. intro H1. apply H1.
-  - rewrite update_neq.
+  > - rewrite update_neq.
     + rewrite update_neq.
       × apply H.
       × apply Hxy.
@@ -9238,7 +9255,7 @@ Proof.
 Qed.
 ```
 
-This property is quite useful for reasoning about languages with variable binding -- e.g., the Simply Typed Lambda Calculus, which we will see in Programming Language Foundations, where maps are used to keep track of which program variables are defined in a given scope.
+This property is quite useful for reasoning about languages with variable binding -> - e.g., the Simply Typed Lambda Calculus, which we will see in Programming Language Foundations, where maps are used to keep track of which program variables are defined in a given scope.
 
 (* 2024-08-25 14:45 *)
 
@@ -9271,7 +9288,7 @@ Inductive ev : nat → Prop :=
 
 Suppose we introduce an alternative pronunciation of ":". Instead of "has type," we can say "is a proof of." For example, the second line in the definition of ev declares that ev_0 : ev 0. Instead of "ev_0 has type ev 0," we can say that "ev_0 is a proof of ev 0."
 
-This pun between types and propositions -- between : as "has type" and : as "is a proof of" or "is evidence for" -- is called the Curry-Howard correspondence. It proposes a deep connection between the world of logic and the world of computation:
+This pun between types and propositions -> - between : as "has type" and : as "is a proof of" or "is evidence for" -> - is called the Curry-Howard correspondence. It proposes a deep connection between the world of logic and the world of computation:
 
 ```coq
                  propositions  ~  types
@@ -9289,7 +9306,7 @@ Check ev_SS
     ev (S (S n)).
 ```
 
-This can be read "ev_SS is a constructor that takes two arguments -- a number n and evidence for the proposition ev n -- and yields evidence for the proposition ev (S (S n))."
+This can be read "ev_SS is a constructor that takes two arguments -> - a number n and evidence for the proposition ev n -> - and yields evidence for the proposition ev (S (S n))."
 
 Now let's look again at a previous proof involving ev.
 
@@ -9332,7 +9349,7 @@ Qed.
 ```
 
 #### Proof Scripts
-The proof objects we've been discussing lie at the core of how Coq operates. When Coq is following a proof script, what is happening internally is that it is gradually constructing a proof object -- a term whose type is the proposition being proved. The tactics between Proof and Qed tell it how to build up a term of the required type. To see this process in action, let's use the Show Proof command to display the current state of the proof tree at various points in the following tactic proof.
+The proof objects we've been discussing lie at the core of how Coq operates. When Coq is following a proof script, what is happening internally is that it is gradually constructing a proof object -> - a term whose type is the proposition being proved. The tactics between Proof and Qed tell it how to build up a term of the required type. To see this process in action, let's use the Show Proof command to display the current state of the proof tree at various points in the following tactic proof.
 
 ```coq
 Theorem ev_4'' : ev 4.
@@ -9402,7 +9419,7 @@ Qed.
 
 What is the proof object corresponding to ev_plus4?
 
-We're looking for an expression whose type is ∀ n, ev n → ev (4 + n) -- that is, a function that takes two arguments (one number and a piece of evidence) and returns a piece of evidence!
+We're looking for an expression whose type is ∀ n, ev n → ev (4 + n) -> - that is, a function that takes two arguments (one number and a piece of evidence) and returns a piece of evidence!
 
 Here it is:
 
@@ -9513,7 +9530,7 @@ Print prod.
    | pair : X -> Y -> X * Y. *)
 ```
 
-This similarity should clarify why destruct and intros patterns can be used on a conjunctive hypothesis. Case analysis allows us to consider all possible ways in which P ∧ Q was proved -- here just one (the conj constructor).
+This similarity should clarify why destruct and intros patterns can be used on a conjunctive hypothesis. Case analysis allows us to consider all possible ways in which P ∧ Q was proved -> - here just one (the conj constructor).
 
 ```coq
 Theorem proj1' : ∀ P Q,
@@ -9530,10 +9547,10 @@ Similarly, the split tactic actually works for any inductively defined propositi
 Lemma and_comm : ∀ P Q : Prop, P ∧ Q ↔ Q ∧ P.
 Proof.
   intros P Q. split.
-  - intros [HP HQ]. split.
+  > - intros [HP HQ]. split.
     + apply HQ.
     + apply HP.
-  - intros [HQ HP]. split.
+  > - intros [HQ HP]. split.
     + apply HP.
     + apply HQ.
 Qed.
@@ -9594,8 +9611,8 @@ Theorem or_elim' : ∀ (P Q R : Prop), (P ∨ Q) → (P → R) → (Q → R) →
 Proof.
   intros P Q R HPQ HPR HQR.
   destruct HPQ as [HP | HQ].
-  - apply HPR. apply HP.
-  - apply HQR. apply HQ.
+  > - apply HPR. apply HP.
+  > - apply HQR. apply HQ.
 Qed.
 End Or.
 ```
@@ -9666,13 +9683,13 @@ Definition p_implies_true : ∀ P, P → True
 ☐
 ```
 
-False is equally simple -- indeed, so simple it may look syntactically wrong at first glance!
+False is equally simple -> - indeed, so simple it may look syntactically wrong at first glance!
 
 ```coq
 Inductive False : Prop := .
 ```
 
-That is, False is an inductive type with no constructors -- i.e., no way to build evidence for it. For example, there is no way to complete the following definition such that it succeeds.
+That is, False is an inductive type with no constructors -> - i.e., no way to build evidence for it. For example, there is no way to complete the following definition such that it succeeds.
 
 ```coq
 Fail
@@ -9826,9 +9843,9 @@ Example: If we invert a hypothesis built with and, there is only one constructor
 Example: If we invert a hypothesis built with eq, there is again only one constructor, so only one subgoal gets generated. Now, though, the form of the eq_refl constructor does give us some extra information: it tells us that the two arguments to eq must be the same! The inversion tactic adds this fact to the context.
 
 #### Coq's Trusted Computing Base
-One question that arises with any automated proof assistant is "why should we trust it?" -- i.e., what if there is a bug in the implementation that renders all its reasoning suspect?
+One question that arises with any automated proof assistant is "why should we trust it?" -> - i.e., what if there is a bug in the implementation that renders all its reasoning suspect?
 
-While it is impossible to allay such concerns completely, the fact that Coq is based on the Curry-Howard correspondence gives it a strong foundation. Because propositions are just types and proofs are just terms, checking that an alleged proof of a proposition is valid just amounts to type-checking the term. Type checkers are relatively small and straightforward programs, so the "trusted computing base" for Coq -- the part of the code that we have to believe is operating correctly -- is small too.
+While it is impossible to allay such concerns completely, the fact that Coq is based on the Curry-Howard correspondence gives it a strong foundation. Because propositions are just types and proofs are just terms, checking that an alleged proof of a proposition is valid just amounts to type-checking the term. Type checkers are relatively small and straightforward programs, so the "trusted computing base" for Coq -> - the part of the code that we have to believe is operating correctly -> - is small too.
 
 What must a typechecker do? Its primary job is to make sure that in each function application the expected and actual argument types match, that the arms of a match expression are constructor patterns belonging to the inductive type being matched over and all arms of the match return the same type, and so on.
 
@@ -9913,7 +9930,7 @@ Definition propositional_extensionality : Prop :=
   ∀ (P Q : Prop), (P ↔ Q) → P = Q.
 ```
 
-Propositional extensionality asserts that if two propositions are equivalent -- i.e., each implies the other -- then they are in fact equal. The proof objects for the propositions might be syntactically different terms. But propositional extensionality overlooks that, just as functional extensionality overlooks the syntactic differences between functions.
+Propositional extensionality asserts that if two propositions are equivalent -> - i.e., each implies the other -> - then they are in fact equal. The proof objects for the propositions might be syntactically different terms. But propositional extensionality overlooks that, just as functional extensionality overlooks the syntactic differences between functions.
 
 ####### Exercise: 1 star, advanced (pe_implies_or_eq)
 Prove the following consequence of propositional extensionality.
@@ -9928,7 +9945,7 @@ Proof.
 ```
 
 ####### Exercise: 1 star, advanced (pe_implies_true_eq)
-Prove that if a proposition P is provable, then it is equal to True -- as a consequence of propositional extensionality.
+Prove that if a proposition P is provable, then it is equal to True -> - as a consequence of propositional extensionality.
 
 ```coq
 Lemma pe_implies_true_eq :
@@ -9984,8 +10001,8 @@ Theorem mul_0_r' : ∀ n:nat,
   n × 0 = 0.
 Proof.
   apply nat_ind.
-  - (* n = O *) reflexivity.
-  - (* n = S n' *) simpl. intros n' IHn'. rewrite → IHn'.
+  > - (* n = O *) reflexivity.
+  > - (* n = S n' *) simpl. intros n' IHn'. rewrite → IHn'.
     reflexivity. Qed.
 ```
 
@@ -9993,7 +10010,7 @@ This proof is basically the same as the earlier one, but a few minor differences
 
 First, in the induction step of the proof (the S case), we have to do a little bookkeeping manually (the intros) that induction does automatically.
 
-Second, we do not introduce n into the context before applying nat_ind -- the conclusion of nat_ind is a quantified formula, and apply needs this conclusion to exactly match the shape of the goal state, including the quantifier. By contrast, the induction tactic works either with a variable in the context or a quantified variable in the goal.
+Second, we do not introduce n into the context before applying nat_ind -> - the conclusion of nat_ind is a quantified formula, and apply needs this conclusion to exactly match the shape of the goal state, including the quantifier. By contrast, the induction tactic works either with a variable in the context or a quantified variable in the goal.
 
 Third, we had to manually supply the name of the induction principle with apply, but induction figures that out itself.
 
@@ -10286,14 +10303,14 @@ Theorem mul_0_r'' : ∀ n:nat,
   P_m0r n.
 Proof.
   apply nat_ind.
-  - (* n = O *) reflexivity.
-  - (* n = S n' *)
+  > - (* n = O *) reflexivity.
+  > - (* n = S n' *)
     (* Note the proof state at this point! *)
     intros n IHn.
     unfold P_m0r in IHn. unfold P_m0r. simpl. apply IHn. Qed.
 ```
 
-This extra naming step isn't something that we do in normal proofs, but it is useful to do it explicitly for an example or two, because it allows us to see exactly what the induction hypothesis is. If we prove ∀ n, P_m0r n by induction on n (using either induction or apply nat_ind), we see that the first subgoal requires us to prove P_m0r 0 ("P holds for zero"), while the second subgoal requires us to prove ∀ n', P_m0r n' → P_m0r (S n') (that is "P holds of S n' if it holds of n'" or, more elegantly, "P is preserved by S"). The induction hypothesis is the premise of this latter implication -- the assumption that P holds of n', which we are allowed to use in proving that P holds for S n'.
+This extra naming step isn't something that we do in normal proofs, but it is useful to do it explicitly for an example or two, because it allows us to see exactly what the induction hypothesis is. If we prove ∀ n, P_m0r n by induction on n (using either induction or apply nat_ind), we see that the first subgoal requires us to prove P_m0r 0 ("P holds for zero"), while the second subgoal requires us to prove ∀ n', P_m0r n' → P_m0r (S n') (that is "P holds of S n' if it holds of n'" or, more elegantly, "P is preserved by S"). The induction hypothesis is the premise of this latter implication -> - the assumption that P holds of n', which we are allowed to use in proving that P holds for S n'.
 
 #### More on the induction Tactic
 The induction tactic actually does even more low-level bookkeeping for us than we discussed above.
@@ -10321,8 +10338,8 @@ Proof.
      and hence also for the particular n that is in the context
      at the moment. *)
   induction n as [| n'].
-  - (* n = O *) reflexivity.
-  - (* n = S n' *)
+  > - (* n = O *) reflexivity.
+  > - (* n = S n' *)
     simpl. rewrite → IHn'. reflexivity. Qed.
 ```
 
@@ -10333,12 +10350,12 @@ Theorem add_comm' : ∀ n m : nat,
   n + m = m + n.
 Proof.
   induction n as [| n'].
-  - (* n = O *) intros m. rewrite → add_0_r. reflexivity.
-  - (* n = S n' *) intros m. simpl. rewrite → IHn'.
-    rewrite <- plus_n_Sm. reflexivity. Qed.
+  > - (* n = O *) intros m. rewrite → add_0_r. reflexivity.
+  > - (* n = S n' *) intros m. simpl. rewrite → IHn'.
+    rewrite <> - plus_n_Sm. reflexivity. Qed.
 ```
 
-Note that induction n leaves m still bound in the goal -- i.e., what we are proving inductively is a statement beginning with ∀ m.
+Note that induction n leaves m still bound in the goal -> - i.e., what we are proving inductively is a statement beginning with ∀ m.
 
 If we do induction on a variable that is quantified in the goal after some other quantifiers, the induction tactic will automatically introduce the variables bound by these quantifiers into the context.
 
@@ -10348,13 +10365,13 @@ Theorem add_comm'' : ∀ n m : nat,
 Proof.
   (* Let's do induction on m this time, instead of n... *)
   induction m as [| m']. (* n is already introduced into the context *)
-  - (* m = O *) simpl. rewrite → add_0_r. reflexivity.
-  - (* m = S m' *) simpl. rewrite <- IHm'.
-    rewrite <- plus_n_Sm. reflexivity. Qed.
+  > - (* m = O *) simpl. rewrite → add_0_r. reflexivity.
+  > - (* m = S m' *) simpl. rewrite <> - IHm'.
+    rewrite <> - plus_n_Sm. reflexivity. Qed.
 ```
 
 ####### Exercise: 1 star, standard, optional (plus_explicit_prop)
-Rewrite both add_assoc' and add_comm' and their proofs in the same style as mul_0_r'' above -- that is, for each theorem, give an explicit Definition of the proposition being proved by induction, and state the theorem and proof in terms of this defined proposition.
+Rewrite both add_assoc' and add_comm' and their proofs in the same style as mul_0_r'' above -> - that is, for each theorem, give an explicit Definition of the proposition being proved by induction, and state the theorem and proof in terms of this defined proposition.
 
 (* FILL IN HERE *)
 
@@ -10393,9 +10410,9 @@ Inductive ev' : nat → Prop :=
 Theorem ev_ev' : ∀ n, ev n → ev' n.
 Proof.
   apply ev_ind.
-  - (* ev_0 *)
+  > - (* ev_0 *)
     apply ev'_0.
-  - (* ev_SS *)
+  > - (* ev_SS *)
     intros m Hm IH.
     apply (ev'_sum 2 m).
     + apply ev'_2.
@@ -10448,13 +10465,13 @@ The induction principle that Coq generated for ev was parameterized on a natural
 ```
 
 ... because:
-* Since ev is indexed by a number n (every ev object E is a piece of evidence that some particular number n is even), the proposition P is parameterized by both n and E -- that is, the induction principle can be used to prove assertions involving both an even number and the evidence that it is even.
+* Since ev is indexed by a number n (every ev object E is a piece of evidence that some particular number n is even), the proposition P is parameterized by both n and E -> - that is, the induction principle can be used to prove assertions involving both an even number and the evidence that it is even.
 * Since there are two ways of giving evidence of evenness (even has two constructors), applying the induction principle generates two subgoals:
   * We must prove that P holds for O and ev_0.
   * We must prove that, whenever m is an even number and E is an evidence of its evenness, if P holds of m and E, then it also holds of S (S m) and ev_SS m E.
 * If these subgoals can be proved, then the induction principle tells us that P is true for all even numbers n and evidence E of their evenness.
 
-This is more flexibility than we normally need or want: it is giving us a way to prove logical assertions where the assertion involves properties of some piece of evidence of evenness, while all we really care about is proving properties of numbers that are even -- we are interested in assertions about numbers, not about evidence. It would therefore be more convenient to have an induction principle for proving propositions P that are parameterized just by n and whose conclusion establishes P for all even numbers n:
+This is more flexibility than we normally need or want: it is giving us a way to prove logical assertions where the assertion involves properties of some piece of evidence of evenness, while all we really care about is proving properties of numbers that are even -> - we are interested in assertions about numbers, not about evidence. It would therefore be more convenient to have an induction principle for proving propositions P that are parameterized just by n and whose conclusion establishes P for all even numbers n:
 
 ```coq
        ∀ P : nat → Prop,
@@ -10478,11 +10495,11 @@ At one end of the spectrum, we can essentially give the reader the whole formal 
 
 At the other end of the spectrum, we can say "The theorem is true and you can figure out why for yourself if you think about it hard enough." This is also not a good teaching strategy, because often writing the proof requires one or more significant insights into the thing we're proving, and most readers will give up before they rediscover all the same insights as we did.
 
-In the middle is the golden mean -- a proof that includes all of the essential insights (saving the reader the hard work that we went through to find the proof in the first place) plus high-level suggestions for the more routine parts to save the reader from spending too much time reconstructing these (e.g., what the IH says and what must be shown in each case of an inductive proof), but not so much detail that the main ideas are obscured.
+In the middle is the golden mean -> - a proof that includes all of the essential insights (saving the reader the hard work that we went through to find the proof in the first place) plus high-level suggestions for the more routine parts to save the reader from spending too much time reconstructing these (e.g., what the IH says and what must be shown in each case of an inductive proof), but not so much detail that the main ideas are obscured.
 
 Since we've spent much of this chapter looking "under the hood" at formal proofs by induction, now is a good moment to talk a little about informal proofs by induction.
 
-In the real world of mathematical communication, written proofs range from extremely longwinded and pedantic to extremely brief and telegraphic. Although the ideal is somewhere in between, while one is getting used to the style it is better to start out at the pedantic end. Also, during the learning phase, it is probably helpful to have a clear standard to compare against. With this in mind, we offer two templates -- one for proofs by induction over data (i.e., where the thing we're doing induction on lives in Type) and one for proofs by induction over evidence (i.e., where the inductively defined thing lives in Prop).
+In the real world of mathematical communication, written proofs range from extremely longwinded and pedantic to extremely brief and telegraphic. Although the ideal is somewhere in between, while one is getting used to the style it is better to start out at the pedantic end. Also, during the learning phase, it is probably helpful to have a clear standard to compare against. With this in mind, we offer two templates -> - one for proofs by induction over data (i.e., where the thing we're doing induction on lives in Type) and one for proofs by induction over evidence (i.e., where the inductively defined thing lives in Prop).
 
 ##### Induction Over an Inductively Defined Set
 Template:
@@ -10531,7 +10548,7 @@ Template:
   * <other cases similarly...> ☐
 Example
 
-* Theorem: The ≤ relation is transitive -- i.e., for all numbers n, m, and o, if n ≤ m and m ≤ o, then n ≤ o.
+* Theorem: The ≤ relation is transitive -> - i.e., for all numbers n, m, and o, if n ≤ m and m ≤ o, then n ≤ o.
   Proof: By induction on a derivation of m ≤ o.
   * Suppose the final rule used to show m ≤ o is le_n. Then m = o and we must show that n ≤ m, which is immediate by hypothesis.
   * Suppose the final rule used to show m ≤ o is le_S. Then o = S o' for some o' with m ≤ o'. We must show that n ≤ S o'. By induction hypothesis, n ≤ o'.
@@ -10586,8 +10603,8 @@ We can adapt this approach to proving nat_ind to help prove non-standard inducti
 Lemma even_ev : ∀ n: nat, even n = true → ev n.
 Proof.
   induction n; intros.
-  - apply ev_0.
-  - destruct n.
+  > - apply ev_0.
+  > - destruct n.
     + simpl in H. inversion H.
     + simpl in H.
       apply ev_SS.
@@ -10624,10 +10641,10 @@ Lemma even_ev : ∀ n, even n = true → ev n.
 Proof.
   intros.
   induction n as [ | |n'] using nat_ind2.
-  - apply ev_0.
-  - simpl in H.
+  > - apply ev_0.
+  > - simpl in H.
     inversion H.
-  - simpl in H.
+  > - simpl in H.
     apply ev_SS.
     apply IHn'.
     apply H.
@@ -10664,8 +10681,8 @@ Theorem reflect_involution : ∀ (X : Type) (t : t_tree X),
     reflect (reflect t) = t.
 Proof.
   intros X t. induction t.
-  - reflexivity.
-  - destruct p as [[l v] r]. simpl. Abort.
+  > - reflexivity.
+  > - destruct p as [[l v] r]. simpl. Abort.
 ```
 
 We get stuck, because we have no inductive hypothesis for l or r. So, we need to define our own custom induction principle, and use it to complete the proof.
@@ -10704,7 +10721,7 @@ From LF Require Export IndProp.
 ```
 
 #### Relations
-A binary relation on a set X is a family of propositions parameterized by two elements of X -- i.e., a proposition about pairs of elements of X.
+A binary relation on a set X is a family of propositions parameterized by two elements of X -> - i.e., a proposition about pairs of elements of X.
 
 ```coq
 Definition relation (X: Type) := X → X → Prop.
@@ -10729,7 +10746,7 @@ Check le : relation nat.
 As anyone knows who has taken an undergraduate discrete math course, there is a lot to be said about relations in general, including ways of classifying relations (as reflexive, transitive, etc.), theorems that can be proved generically about certain sorts of relations, constructions that build one relation from another, etc. For example...
 
 ###### Partial Functions
-A relation R on a set X is a partial function if, for every x, there is at most one y such that R x y -- i.e., R x y1 and R x y2 together imply y1 = y2.
+A relation R on a set X is a partial function if, for every x, there is at most one y such that R x y -> - i.e., R x y1 and R x y2 together imply y1 = y2.
 
 ```coq
 Definition partial_function {X: Type} (R: relation X) :=
@@ -10760,8 +10777,8 @@ Proof.
   unfold not. unfold partial_function. intros Hc.
   assert (0 = 1) as Nonsense. {
     apply Hc with (x := 0).
-    - apply le_n.
-    - apply le_S. apply le_n. }
+    > - apply le_n.
+    > - apply le_S. apply le_n. }
   discriminate Nonsense. Qed.
 ```
 
@@ -10820,8 +10837,8 @@ Theorem le_trans :
 Proof.
   intros n m o Hnm Hmo.
   induction Hmo.
-  - (* le_n *) apply Hnm.
-  - (* le_S *) apply le_S. apply IHHmo. Qed.
+  > - (* le_n *) apply Hnm.
+  > - (* le_S *) apply le_S. apply IHHmo. Qed.
 
 Theorem lt_trans:
   transitive lt.
@@ -10869,8 +10886,8 @@ The transitivity of le, in turn, can be used to prove some facts that will be us
 Theorem le_Sn_le : ∀ n m, S n ≤ m → n ≤ m.
 Proof.
   intros n m H. apply le_trans with (S n).
-  - apply le_S. apply le_n.
-  - apply H.
+  > - apply le_S. apply le_n.
+  > - apply H.
 Qed.
 ```
 
@@ -10927,7 +10944,7 @@ Proof.
 ☐
 ```
 
-A relation R is antisymmetric if R a b and R b a together imply a = b -- that is, if the only "cycles" in R are trivial ones.
+A relation R is antisymmetric if R a b and R b a together imply a = b -> - that is, if the only "cycles" in R are trivial ones.
 
 ```coq
 Definition antisymmetric {X: Type} (R: relation X) :=
@@ -10981,8 +10998,8 @@ Theorem le_order :
   order le.
 Proof.
   unfold order. split.
-    - (* refl *) apply le_reflexive.
-    - split.
+    > - (* refl *) apply le_reflexive.
+    > - split.
       + (* antisym *) apply le_antisymmetric.
       + (* transitive. *) apply le_trans. Qed.
 ```
@@ -11006,13 +11023,13 @@ Theorem next_nat_closure_is_le : ∀ n m,
   (n ≤ m) ↔ ((clos_refl_trans next_nat) n m).
 Proof.
   intros n m. split.
-  - (* -> *)
+  > - (* -> *)
     intro H. induction H.
     + (* le_n *) apply rt_refl.
     + (* le_S *)
       apply rt_trans with m. apply IHle. apply rt_step.
       apply nn.
-  - (* <- *)
+  > - (* <> - *)
     intro H. induction H.
     + (* rt_step *) inversion H. apply le_S. apply le_n.
     + (* rt_refl *) apply le_n.
@@ -11086,7 +11103,7 @@ Here is a familiar mathematical function written in Imp.
        Y := 1;
        while Z ≠ 0 do
          Y := Y × Z;
-         Z := Z - 1
+         Z := Z > - 1
        end
 ```
 
@@ -11133,7 +11150,7 @@ Inductive bexp : Type :=
   | BAnd (b1 b2 : bexp).
 ```
 
-In this chapter, we'll mostly elide the translation from the concrete syntax that a programmer would actually write to these abstract syntax trees -- the process that, for example, would translate the string "1 + 2 × 3" to the AST
+In this chapter, we'll mostly elide the translation from the concrete syntax that a programmer would actually write to these abstract syntax trees -> - the process that, for example, would translate the string "1 + 2 × 3" to the AST
 
 ```coq
       APlus (ANum 1) (AMult (ANum 2) (ANum 3)).
@@ -11146,7 +11163,7 @@ For comparison, here's a conventional BNF (Backus-Naur Form) grammar defining th
 ```coq
     a := nat
         | a + a
-        | a - a
+        | a > - a
         | a × a
 
     b := true
@@ -11160,12 +11177,12 @@ For comparison, here's a conventional BNF (Backus-Naur Form) grammar defining th
 ```
 
 Compared to the Coq version above...
-  * The BNF is more informal -- for example, it gives some suggestions about the surface syntax of expressions (like the fact that the addition operation is written with an infix +) while leaving other aspects of lexical analysis and parsing (like the relative precedence of +, -, and ×, the use of parens to group subexpressions, etc.) unspecified. Some additional information -- and human intelligence -- would be required to turn this description into a formal definition, e.g., for implementing a compiler.
+  * The BNF is more informal -> - for example, it gives some suggestions about the surface syntax of expressions (like the fact that the addition operation is written with an infix +) while leaving other aspects of lexical analysis and parsing (like the relative precedence of +, -, and ×, the use of parens to group subexpressions, etc.) unspecified. Some additional information -> - and human intelligence -> - would be required to turn this description into a formal definition, e.g., for implementing a compiler.
 
   The Coq version consistently omits all this information and concentrates on the abstract syntax only.
   * Conversely, the BNF version is lighter and easier to read. Its informality makes it flexible, a big advantage in situations like discussions at the blackboard, where conveying general ideas is more important than nailing down every detail precisely.
 
-  Indeed, there are dozens of BNF-like notations and people switch freely among them -- usually without bothering to say which kind of BNF they're using, because there is no need to: a rough-and-ready informal understanding is all that's important.
+  Indeed, there are dozens of BNF-like notations and people switch freely among them -> - usually without bothering to say which kind of BNF they're using, because there is no need to: a rough-and-ready informal understanding is all that's important.
 
 It's good to be comfortable with both sorts of notations: informal ones for communicating between humans and formal ones for carrying out implementations and proofs.
 
@@ -11177,7 +11194,7 @@ Fixpoint aeval (a : aexp) : nat :=
   match a with
   | ANum n ⇒ n
   | APlus a1 a2 ⇒ (aeval a1) + (aeval a2)
-  | AMinus a1 a2 ⇒ (aeval a1) - (aeval a2)
+  | AMinus a1 a2 ⇒ (aeval a1) > - (aeval a2)
   | AMult a1 a2 ⇒ (aeval a1) × (aeval a2)
   end.
 Example test_aeval1:
@@ -11226,15 +11243,15 @@ Example test_optimize_0plus:
 Proof. reflexivity. Qed.
 ```
 
-But if we want to be certain the optimization is correct -- that evaluating an optimized expression always gives the same result as the original -- we should prove it!
+But if we want to be certain the optimization is correct -> - that evaluating an optimized expression always gives the same result as the original -> - we should prove it!
 
 ```coq
 Theorem optimize_0plus_sound: ∀ a,
   aeval (optimize_0plus a) = aeval a.
 Proof.
   intros a. induction a.
-  - (* ANum *) reflexivity.
-  - (* APlus *) destruct a1 eqn:Ea1.
+  > - (* ANum *) reflexivity.
+  > - (* APlus *) destruct a1 eqn:Ea1.
     + (* a1 = ANum n *) destruct n eqn:En.
       × (* n = 0 *) simpl. apply IHa2.
       × (* n <> 0 *) simpl. rewrite IHa2. reflexivity.
@@ -11247,19 +11264,19 @@ Proof.
     + (* a1 = AMult a1_1 a1_2 *)
       simpl. simpl in IHa1. rewrite IHa1.
       rewrite IHa2. reflexivity.
-  - (* AMinus *)
+  > - (* AMinus *)
     simpl. rewrite IHa1. rewrite IHa2. reflexivity.
-  - (* AMult *)
+  > - (* AMult *)
     simpl. rewrite IHa1. rewrite IHa2. reflexivity. Qed.
 ```
 
 #### Coq Automation
 The amount of repetition in this last proof is a little annoying. And if either the language of arithmetic expressions or the optimization being proved sound were significantly more complex, it would start to be a real problem.\
 
-So far, we've been doing all our proofs using just a small handful of Coq's tactics and completely ignoring its powerful facilities for constructing parts of proofs automatically. This section introduces some of these facilities, and we will see more over the next several chapters. Getting used to them will take some energy -- Coq's automation is a power tool -- but it will allow us to scale up our efforts to more complex definitions and more interesting properties without becoming overwhelmed by boring, repetitive, low-level details.
+So far, we've been doing all our proofs using just a small handful of Coq's tactics and completely ignoring its powerful facilities for constructing parts of proofs automatically. This section introduces some of these facilities, and we will see more over the next several chapters. Getting used to them will take some energy -> - Coq's automation is a power tool -> - but it will allow us to scale up our efforts to more complex definitions and more interesting properties without becoming overwhelmed by boring, repetitive, low-level details.
 
 ##### Tacticals
-Tacticals is Coq's term for tactics that take other tactics as arguments -- "higher-order tactics," if you will.
+Tacticals is Coq's term for tactics that take other tactics as arguments -> - "higher-order tactics," if you will.
 
 ###### The try Tactical
 If T is a tactic, then try T is a tactic that is just like T except that, if T fails, try T successfully does nothing at all (rather than failing).
@@ -11290,8 +11307,8 @@ Proof.
   intros.
   destruct n.
     (* Leaves two subgoals, which are discharged identically...  *)
-    - (* n=0 *) simpl. reflexivity.
-    - (* n=Sn' *) simpl. reflexivity.
+    > - (* n=0 *) simpl. reflexivity.
+    > - (* n=Sn' *) simpl. reflexivity.
 Qed.
 ```
 
@@ -11320,10 +11337,10 @@ Proof.
   induction a;
     (* Most cases follow directly by the IH... *)
     try (simpl; rewrite IHa1; rewrite IHa2; reflexivity).
-    (* ... but the remaining cases -- ANum and APlus --
+    (* ... but the remaining cases -> - ANum and APlus --
        are different: *)
-  - (* ANum *) reflexivity.
-  - (* APlus *)
+  > - (* ANum *) reflexivity.
+  > - (* APlus *)
     destruct a1 eqn:Ea1;
       (* Again, most cases follow directly by the IH: *)
       try (simpl; simpl in IHa1; rewrite IHa1;
@@ -11359,7 +11376,7 @@ The interesting case is when a1 = ANum n for some n. If n = 0, then
 
 and the IH for a2 is exactly what we need. On the other hand, if n = S n' for some n', then again optimize_0plus simply calls itself recursively, and the result follows from the IH. ☐
 
-However, this proof can still be improved: the first case (for a = ANum n) is very trivial -- even more trivial than the cases that we said simply followed from the IH -- yet we have chosen to write it out in full. It would be better and clearer to drop it and just say, at the top, "Most cases are either immediate or direct from the IH. The only interesting case is the one for APlus..." We can make the same improvement in our formal proof too. Here's how it looks:
+However, this proof can still be improved: the first case (for a = ANum n) is very trivial -> - even more trivial than the cases that we said simply followed from the IH -> - yet we have chosen to write it out in full. It would be better and clearer to drop it and just say, at the top, "Most cases are either immediate or direct from the IH. The only interesting case is the one for APlus..." We can make the same improvement in our formal proof too. Here's how it looks:
 
 ```coq
 Theorem optimize_0plus_sound'': ∀ a,
@@ -11372,7 +11389,7 @@ Proof.
     (* ... or are immediate by definition *)
     try reflexivity.
   (* The interesting case is when a = APlus a1 a2. *)
-  - (* APlus *)
+  > - (* APlus *)
     destruct a1; try (simpl; simpl in IHa1; rewrite IHa1;
                       rewrite IHa2; reflexivity).
     + (* a1 = ANum n *) destruct n;
@@ -11431,7 +11448,7 @@ Proof.
 Admitted.
 ```
 
-Wait -- did we just write an infinite loop in Coq?!?!
+Wait -> - did we just write an infinite loop in Coq?!?!
 
 Sort of.
 
@@ -11451,7 +11468,7 @@ Proof.
 ```
 
 ####### Exercise: 4 stars, standard, optional (optimize)
-Design exercise: The optimization implemented by our optimize_0plus function is only one of many possible optimizations on arithmetic and boolean expressions. Write a more sophisticated optimizer and prove it correct. (You will probably find it easiest to start small -- add just a single, simple optimization and its correctness proof -- and build up incrementally to something more interesting.)
+Design exercise: The optimization implemented by our optimize_0plus function is only one of many possible optimizations on arithmetic and boolean expressions. Write a more sophisticated optimizer and prove it correct. (You will probably find it easiest to start small -> - add just a single, simple optimization and its correctness proof -> - and build up incrementally to something more interesting.)
 
 (* FILL IN HERE *)
 
@@ -11489,7 +11506,7 @@ Qed.
 The lia tactic implements a decision procedure for integer linear arithmetic, a subset of propositional logic and arithmetic.
 
 If the goal is a universally quantified formula made out of
-* numeric constants, addition (+ and S), subtraction (- and pred), and multiplication by constants (this is what makes it Presburger arithmetic),
+* numeric constants, addition (+ and S), subtraction (> - and pred), and multiplication by constants (this is what makes it Presburger arithmetic),
 * equality (= and ≠) and ordering (≤ and >), and
 * the logical connectives ∧, ∨, ¬, and →,
 then invoking lia will either solve the goal or fail, meaning that the goal is actually false. (If the goal is not of this form, lia will fail.)
@@ -11528,7 +11545,7 @@ Finally, here are some miscellaneous tactics that you may find convenient.
 We'll see examples of all of these as we go along.
 
 #### Evaluation as a Relation
-We have presented aeval and beval as functions defined by Fixpoints. Another way to think about evaluation -- one that is often more flexible -- is as a relation between expressions and their values. This perspective leads to Inductive definitions like the following...
+We have presented aeval and beval as functions defined by Fixpoints. Another way to think about evaluation -> - one that is often more flexible -> - is as a relation between expressions and their values. This perspective leads to Inductive definitions like the following...
 
 ```coq
 Module aevalR_first_try.
@@ -11542,7 +11559,7 @@ Inductive aevalR : aexp → nat → Prop :=
   | E_AMinus (e1 e2 : aexp) (n1 n2 : nat) :
       aevalR e1 n1 →
       aevalR e2 n2 →
-      aevalR (AMinus e1 e2) (n1 - n2)
+      aevalR (AMinus e1 e2) (n1 > - n2)
   | E_AMult (e1 e2 : aexp) (n1 n2 : nat) :
       aevalR e1 n1 →
       aevalR e2 n2 →
@@ -11563,7 +11580,7 @@ Inductive aevalR : aexp → nat → Prop :=
   | E_AMinus (e1 e2 : aexp) (n1 n2 : nat)
       (H1 : aevalR e1 n1)
       (H2 : aevalR e2 n2) :
-      aevalR (AMinus e1 e2) (n1 - n2)
+      aevalR (AMinus e1 e2) (n1 > - n2)
   | E_AMult (e1 e2 : aexp) (n1 n2 : nat)
       (H1 : aevalR e1 n1)
       (H2 : aevalR e2 n2) :
@@ -11599,7 +11616,7 @@ Inductive aevalR : aexp → nat → Prop :=
   | E_AMinus (e1 e2 : aexp) (n1 n2 : nat) :
       (e1 ==> n1) →
       (e2 ==> n2) →
-      (AMinus e1 e2) ==> (n1 - n2)
+      (AMinus e1 e2) ==> (n1 > - n2)
   | E_AMult (e1 e2 : aexp) (n1 n2 : nat) :
       (e1 ==> n1) →
       (e2 ==> n2) →
@@ -11689,7 +11706,7 @@ Theorem aeval_iff_aevalR : ∀ a n,
   (a ==> n) ↔ aeval a = n.
 Proof.
   split.
-  - (* -> *)
+  > - (* -> *)
     intros H.
     induction H; simpl.
     + (* E_ANum *)
@@ -11700,7 +11717,7 @@ Proof.
       rewrite IHaevalR1. rewrite IHaevalR2. reflexivity.
     + (* E_AMult *)
       rewrite IHaevalR1. rewrite IHaevalR2. reflexivity.
-  - (* <- *)
+  > - (* <> - *)
     generalize dependent n.
     induction a;
        simpl; intros; subst.
@@ -11729,9 +11746,9 @@ Theorem aeval_iff_aevalR' : ∀ a n,
 Proof.
   (* WORKED IN CLASS *)
   split.
-  - (* -> *)
+  > - (* -> *)
     intros H; induction H; subst; reflexivity.
-  - (* <- *)
+  > - (* <> - *)
     generalize dependent n.
     induction a; simpl; intros; subst; constructor;
        try apply IHa1; try apply IHa2; reflexivity.
@@ -11771,7 +11788,7 @@ Inductive aexp : Type :=
   | APlus (a1 a2 : aexp)
   | AMinus (a1 a2 : aexp)
   | AMult (a1 a2 : aexp)
-  | ADiv (a1 a2 : aexp). (* <--- NEW *)
+  | ADiv (a1 a2 : aexp). (* <--> - NEW *)
 ```
 
 Extending the definition of aeval to handle this new operation would not be straightforward (what should we return as the result of ADiv (ANum 5) (ANum 0)?). But extending aevalR is very easy.
@@ -11783,10 +11800,10 @@ Inductive aevalR : aexp → nat → Prop :=
   | E_APlus (a1 a2 : aexp) (n1 n2 : nat) :
       (a1 ==> n1) → (a2 ==> n2) → (APlus a1 a2) ==> (n1 + n2)
   | E_AMinus (a1 a2 : aexp) (n1 n2 : nat) :
-      (a1 ==> n1) → (a2 ==> n2) → (AMinus a1 a2) ==> (n1 - n2)
+      (a1 ==> n1) → (a2 ==> n2) → (AMinus a1 a2) ==> (n1 > - n2)
   | E_AMult (a1 a2 : aexp) (n1 n2 : nat) :
       (a1 ==> n1) → (a2 ==> n2) → (AMult a1 a2) ==> (n1 × n2)
-  | E_ADiv (a1 a2 : aexp) (n1 n2 n3 : nat) : (* <----- NEW *)
+  | E_ADiv (a1 a2 : aexp) (n1 n2 n3 : nat) : (* <----> - NEW *)
       (a1 ==> n1) → (a2 ==> n2) → (n2 > 0) →
       (mult n2 n3 = n1) → (ADiv a1 a2) ==> n3
 
@@ -11802,11 +11819,11 @@ Module aevalR_extended.
 
 Or suppose that we want to extend the arithmetic operations by a nondeterministic number generator any that, when evaluated, may yield any number.
 
-(Note that this is not the same as making a probabilistic choice among all possible numbers -- we're not specifying any particular probability distribution for the results, just saying what results are possible.)
+(Note that this is not the same as making a probabilistic choice among all possible numbers -> - we're not specifying any particular probability distribution for the results, just saying what results are possible.)
 
 ```coq
 Inductive aexp : Type :=
-  | AAny (* <--- NEW *)
+  | AAny (* <--> - NEW *)
   | ANum (n : nat)
   | APlus (a1 a2 : aexp)
   | AMinus (a1 a2 : aexp)
@@ -11818,13 +11835,13 @@ Again, extending aeval would be tricky, since now evaluation is not a determinis
 ```coq
 Inductive aevalR : aexp → nat → Prop :=
   | E_Any (n : nat) :
-      AAny ==> n (* <--- NEW *)
+      AAny ==> n (* <--> - NEW *)
   | E_ANum (n : nat) :
       (ANum n) ==> n
   | E_APlus (a1 a2 : aexp) (n1 n2 : nat) :
       (a1 ==> n1) → (a2 ==> n2) → (APlus a1 a2) ==> (n1 + n2)
   | E_AMinus (a1 a2 : aexp) (n1 n2 : nat) :
-      (a1 ==> n1) → (a2 ==> n2) → (AMinus a1 a2) ==> (n1 - n2)
+      (a1 ==> n1) → (a2 ==> n2) → (AMinus a1 a2) ==> (n1 > - n2)
   | E_AMult (a1 a2 : aexp) (n1 n2 : nat) :
       (a1 ==> n1) → (a2 ==> n2) → (AMult a1 a2) ==> (n1 × n2)
 
@@ -11870,7 +11887,7 @@ We can add variables to the arithmetic expressions we had before simply by inclu
 ```coq
 Inductive aexp : Type :=
   | ANum (n : nat)
-  | AId (x : string) (* <--- NEW *)
+  | AId (x : string) (* <--> - NEW *)
   | APlus (a1 a2 : aexp)
   | AMinus (a1 a2 : aexp)
   | AMult (a1 a2 : aexp).
@@ -11925,7 +11942,7 @@ Notation "f x .. y" := (.. (f x) .. y)
                   f constr at level 0, x constr at level 9,
                   y constr at level 9) : com_scope.
 Notation "x + y" := (APlus x y) (in custom com at level 50, left associativity).
-Notation "x - y" := (AMinus x y) (in custom com at level 50, left associativity).
+Notation "x > - y" := (AMinus x y) (in custom com at level 50, left associativity).
 Notation "x * y" := (AMult x y) (in custom com at level 40, left associativity).
 Notation "'true'" := true (at level 1).
 Notation "'true'" := BTrue (in custom com at level 0).
@@ -11951,16 +11968,16 @@ Definition example_bexp : bexp := <{ true && ¬(X ≤ 4) }>.
 The arith and boolean evaluators must now be extended to handle variables in the obvious way, taking a state st as an extra argument:
 
 ```coq
-Fixpoint aeval (st : state) (* <--- NEW *)
+Fixpoint aeval (st : state) (* <--> - NEW *)
                (a : aexp) : nat :=
   match a with
   | ANum n ⇒ n
-  | AId x ⇒ st x (* <--- NEW *)
+  | AId x ⇒ st x (* <--> - NEW *)
   | <{a1 + a2}> ⇒ (aeval st a1) + (aeval st a2)
-  | <{a1 - a2}> ⇒ (aeval st a1) - (aeval st a2)
+  | <{a1 > - a2}> ⇒ (aeval st a1) > - (aeval st a2)
   | <{a1 × a2}> ⇒ (aeval st a1) × (aeval st a2)
   end.
-Fixpoint beval (st : state) (* <--- NEW *)
+Fixpoint beval (st : state) (* <--> - NEW *)
                (b : bexp) : bool :=
   match b with
   | <{true}> ⇒ true
@@ -11974,7 +11991,7 @@ Fixpoint beval (st : state) (* <--- NEW *)
   end.
 ```
 
-We can use our notation for total maps in the specific case of states -- i.e., we write the empty state as (_ !-> 0).
+We can use our notation for total maps in the specific case of states -> - i.e., we write the empty state as (_ !-> 0).
 
 ```coq
 Definition empty_st := (_ !-> 0).
@@ -12061,7 +12078,7 @@ Definition fact_in_coq : com :=
      Y := 1;
      while Z ≠ 0 do
        Y := Y × Z;
-       Z := Z - 1
+       Z := Z > - 1
      end }>.
 ```
 
@@ -12097,7 +12114,7 @@ Print fact_in_coq.
      Y := (ANum 1);
      while ~ (AId Z) = (ANum 0) do
        Y := (AId Y) * (AId Z);
-       Z := (AId Z) - (ANum 1)
+       Z := (AId Z) > - (ANum 1)
      end }>
        : com *)
 Unset Printing Coercions.
@@ -12160,8 +12177,8 @@ Definition XtimesYinZ : com :=
 
 ```coq
 Definition subtract_slowly_body : com :=
-  <{ Z := Z - 1 ;
-     X := X - 1 }>.
+  <{ Z := Z > - 1 ;
+     X := X > - 1 }>.
 Definition subtract_slowly : com :=
   <{ while X ≠ 0 do
        subtract_slowly_body
@@ -12229,12 +12246,12 @@ Here is an example showing what would go wrong if Coq allowed non-terminating re
 
 That is, propositions like False would become provable (loop_false 0 would be a proof of False), which would be a disaster for Coq's logical consistency.
 
-Thus, because it doesn't terminate on all inputs, ceval_fun cannot be written in Coq -- at least not without additional tricks and workarounds (see chapter ImpCEvalFun if you're curious about those).
+Thus, because it doesn't terminate on all inputs, ceval_fun cannot be written in Coq -> - at least not without additional tricks and workarounds (see chapter ImpCEvalFun if you're curious about those).
 
 ##### Evaluation as a Relation
-Here's a better way: define ceval as a relation rather than a function -- i.e., make its result a Prop rather than a state, similar to what we did for aevalR above.
+Here's a better way: define ceval as a relation rather than a function -> - i.e., make its result a Prop rather than a state, similar to what we did for aevalR above.
 
-This is an important change. Besides freeing us from awkward workarounds, it gives us a ton more flexibility in the definition. For example, if we add nondeterministic features like any to the language, we want the definition of evaluation to be nondeterministic -- i.e., not only will it not be total, it will not even be a function!
+This is an important change. Besides freeing us from awkward workarounds, it gives us a ton more flexibility in the definition. For example, if we add nondeterministic features like any to the language, we want the definition of evaluation to be nondeterministic -> - i.e., not only will it not be total, it will not even be a function!
 
 We'll use the notation st =[ c ]=> st' for the ceval relation: st =[ c ]=> st' means that executing program c in a starting state st results in an ending state st'. This can be pronounced "c takes state st to st'".
 
@@ -12310,9 +12327,9 @@ Example ceval_example1:
 Proof.
   (* We must supply the intermediate state *)
   apply E_Seq with (X !-> 2).
-  - (* assignment command *)
+  > - (* assignment command *)
     apply E_Asgn. reflexivity.
-  - (* if command *)
+  > - (* if command *)
     apply E_IfFalse.
     + reflexivity.
     + apply E_Asgn. reflexivity.
@@ -12364,26 +12381,26 @@ Proof.
   intros c st st1 st2 E1 E2.
   generalize dependent st2.
   induction E1; intros st2 E2; inversion E2; subst.
-  - (* E_Skip *) reflexivity.
-  - (* E_Asgn *) reflexivity.
-  - (* E_Seq *)
+  > - (* E_Skip *) reflexivity.
+  > - (* E_Asgn *) reflexivity.
+  > - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in ×.
     apply IHE1_2. assumption.
-  - (* E_IfTrue, b evaluates to true *)
+  > - (* E_IfTrue, b evaluates to true *)
       apply IHE1. assumption.
-  - (* E_IfTrue,  b evaluates to false (contradiction) *)
+  > - (* E_IfTrue,  b evaluates to false (contradiction) *)
       rewrite H in H5. discriminate.
-  - (* E_IfFalse, b evaluates to true (contradiction) *)
+  > - (* E_IfFalse, b evaluates to true (contradiction) *)
       rewrite H in H5. discriminate.
-  - (* E_IfFalse, b evaluates to false *)
+  > - (* E_IfFalse, b evaluates to false *)
       apply IHE1. assumption.
-  - (* E_WhileFalse, b evaluates to false *)
+  > - (* E_WhileFalse, b evaluates to false *)
     reflexivity.
-  - (* E_WhileFalse, b evaluates to true (contradiction) *)
+  > - (* E_WhileFalse, b evaluates to true (contradiction) *)
     rewrite H in H2. discriminate.
-  - (* E_WhileTrue, b evaluates to false (contradiction) *)
+  > - (* E_WhileTrue, b evaluates to false (contradiction) *)
     rewrite H in H4. discriminate.
-  - (* E_WhileTrue, b evaluates to true *)
+  > - (* E_WhileTrue, b evaluates to true *)
     rewrite (IHE1_1 st'0 H3) in ×.
     apply IHE1_2. assumption. Qed.
 ```
@@ -12400,7 +12417,7 @@ Proof.
   intros st n st' HX Heval.
 ```
 
-Inverting Heval essentially forces Coq to expand one step of the ceval computation -- in this case revealing that st' must be st extended with the new value of X, since plus2 is an assignment.
+Inverting Heval essentially forces Coq to expand one step of the ceval computation -> - in this case revealing that st' must be st extended with the new value of X, since plus2 is an assignment.
 
 ```coq
   inversion Heval. subst. clear Heval. simpl.
@@ -12493,20 +12510,20 @@ Old HP Calculators, programming languages like Forth and Postscript, and abstrac
 would be written as
 
 ```coq
-      2 3 * 3 4 2 - * +
+      2 3 * 3 4 2 > - * +
 ```
 
 
 and evaluated like this (where we show the program being evaluated on the right and the contents of the stack on the left):
 
 ```coq
-      [ ]           |    2 3 * 3 4 2 - * +
-      [2]           |    3 * 3 4 2 - * +
-      [3, 2]        |    * 3 4 2 - * +
-      [6]           |    3 4 2 - * +
-      [3, 6]        |    4 2 - * +
-      [4, 3, 6]     |    2 - * +
-      [2, 4, 3, 6]  |    - * +
+      [ ]           |    2 3 * 3 4 2 > - * +
+      [2]           |    3 * 3 4 2 > - * +
+      [3, 2]        |    * 3 4 2 > - * +
+      [6]           |    3 4 2 > - * +
+      [3, 6]        |    4 2 > - * +
+      [4, 3, 6]     |    2 > - * +
+      [2, 4, 3, 6]  |    > - * +
       [2, 3, 6]     |    * +
       [6, 6]        |    +
       [12]          |
@@ -12563,7 +12580,7 @@ After you've defined s_compile, prove the following to test that it works.
 
 ```coq
 Example s_compile1 :
-  s_compile <{ X - (2 × Y) }>
+  s_compile <{ X > - (2 × Y) }>
   = [SLoad X; SPush 2; SLoad Y; SMult; SMinus].
 (* FILL IN HERE *) Admitted.
 ☐
@@ -12618,7 +12635,7 @@ Imperative languages like C and Java often include a break or similar statement 
 ```coq
 Inductive com : Type :=
   | CSkip
-  | CBreak (* <--- NEW *)
+  | CBreak (* <--> - NEW *)
   | CAsgn (x : string) (a : aexp)
   | CSeq (c1 c2 : com)
   | CIf (b : bexp) (c1 c2 : com)
@@ -12654,7 +12671,7 @@ One important point is what to do when there are multiple loops enclosing a give
            break
          end;
          X := 1;
-         Y := Y - 1
+         Y := Y > - 1
        end
 ```
 
@@ -12670,7 +12687,7 @@ Inductive result : Type :=
 
 Intuitively, st =[ c ]=> st' / s means that, if c is started in state st, then it terminates in state st' and either signals that the innermost surrounding loop (or the whole program) should exit immediately (s = SBreak) or that execution should continue normally (s = SContinue).
 
-The definition of the "st =[ c ]=> st' / s" relation is very similar to the one we gave above for the regular evaluation relation (st =[ c ]=> st') -- we just need to handle the termination signals appropriately:
+The definition of the "st =[ c ]=> st' / s" relation is very similar to the one we gave above for the regular evaluation relation (st =[ c ]=> st') -> - we just need to handle the termination signals appropriately:
 * If the command is skip, then the state doesn't change and execution of any enclosing loop can continue normally.
 * If the command is break, the state stays unchanged but we signal a SBreak.
 * If the command is an assignment, then we update the binding for that variable in the state accordingly and signal that execution can continue normally.
@@ -12759,9 +12776,9 @@ A for loop should be parameterized by (a) a statement executed initially, (b) a 
 (* 2024-08-25 14:45 *)
 
 ### ImpParser Lexing and Parsing in Coq
-The development of the Imp language in Imp.v completely ignores issues of concrete syntax -- how an ascii string that a programmer might write gets translated into abstract syntax trees defined by the datatypes aexp, bexp, and com. In this chapter, we illustrate how the rest of the story can be filled in by building a simple lexical analyzer and parser using Coq's functional programming facilities.
+The development of the Imp language in Imp.v completely ignores issues of concrete syntax -> - how an ascii string that a programmer might write gets translated into abstract syntax trees defined by the datatypes aexp, bexp, and com. In this chapter, we illustrate how the rest of the story can be filled in by building a simple lexical analyzer and parser using Coq's functional programming facilities.
 
-It is not important to understand all the details here (and accordingly, the explanations are fairly terse and there are no exercises). The main point is simply to demonstrate that it can be done. You are invited to look through the code -- most of it is not very complicated, though the parser relies on some "monadic" programming idioms that may require a little work to make out -- but most readers will probably want to just skim down to the Examples section at the very end to get the punchline.
+It is not important to understand all the details here (and accordingly, the explanations are fairly terse and there are no exercises). The main point is simply to demonstrate that it can be done. You are invited to look through the code -> - most of it is not very complicated, though the parser relies on some "monadic" programming idioms that may require a little work to make out -> - but most readers will probably want to just skim down to the Examples section at the very end to get the punchline.
 
 ```coq
 Set Warnings "-notation-overridden,-parsing,-deprecated-hint-without-locality".
@@ -12862,7 +12879,7 @@ Arguments NoneE {X}.
 Some syntactic sugar to make writing nested match-expressions on optionE more convenient.
 
 ```coq
-Notation "' p <- e1 ;; e2"
+Notation "' p <> - e1 ;; e2"
    := (match e1 with
        | SomeE p ⇒ e2
        | NoneE err ⇒ NoneE err
@@ -12971,14 +12988,14 @@ Fixpoint parsePrimaryExp (steps:nat)
   match steps with
   | 0 ⇒ NoneE "Too many recursive calls"
   | S steps' ⇒
-      TRY ' (i, rest) <- parseIdentifier xs ;;
+      TRY ' (i, rest) <> - parseIdentifier xs ;;
           SomeE (AId i, rest)
       OR
-      TRY ' (n, rest) <- parseNumber xs ;;
+      TRY ' (n, rest) <> - parseNumber xs ;;
           SomeE (ANum n, rest)
       OR
-      ' (e, rest) <- firstExpect "(" (parseSumExp steps') xs ;;
-      ' (u, rest') <- expect ")" rest ;;
+      ' (e, rest) <> - firstExpect "(" (parseSumExp steps') xs ;;
+      ' (u, rest') <> - expect ")" rest ;;
       SomeE (e,rest')
   end
 ```
@@ -12989,8 +13006,8 @@ with parseProductExp (steps:nat)
   match steps with
   | 0 ⇒ NoneE "Too many recursive calls"
   | S steps' ⇒
-    ' (e, rest) <- parsePrimaryExp steps' xs ;;
-    ' (es, rest') <- many (firstExpect "*" (parsePrimaryExp steps'))
+    ' (e, rest) <> - parsePrimaryExp steps' xs ;;
+    ' (es, rest') <> - many (firstExpect "*" (parsePrimaryExp steps'))
                           steps' rest ;;
     SomeE (fold_left AMult es e, rest')
   end
@@ -13001,7 +13018,7 @@ with parseSumExp (steps:nat) (xs : list token) :=
   match steps with
   | 0 ⇒ NoneE "Too many recursive calls"
   | S steps' ⇒
-    ' (e, rest) <- parseProductExp steps' xs ;;
+    ' (e, rest) <> - parseProductExp steps' xs ;;
     ' (es, rest') <-
         many (fun xs ⇒
                 TRY ' (e,rest') <-
@@ -13033,29 +13050,29 @@ Fixpoint parseAtomicExp (steps:nat)
 match steps with
   | 0 ⇒ NoneE "Too many recursive calls"
   | S steps' ⇒
-     TRY ' (u,rest) <- expect "true" xs ;;
+     TRY ' (u,rest) <> - expect "true" xs ;;
          SomeE (BTrue,rest)
      OR
-     TRY ' (u,rest) <- expect "false" xs ;;
+     TRY ' (u,rest) <> - expect "false" xs ;;
          SomeE (BFalse,rest)
      OR
-     TRY ' (e,rest) <- firstExpect "~"
+     TRY ' (e,rest) <> - firstExpect "~"
                                    (parseAtomicExp steps')
                                    xs ;;
          SomeE (BNot e, rest)
      OR
-     TRY ' (e,rest) <- firstExpect "("
+     TRY ' (e,rest) <> - firstExpect "("
                                    (parseConjunctionExp steps')
                                    xs ;;
-         ' (u,rest') <- expect ")" rest ;;
+         ' (u,rest') <> - expect ")" rest ;;
          SomeE (e, rest')
      OR
-     ' (e, rest) <- parseProductExp steps' xs ;;
-     TRY ' (e', rest') <- firstExpect "="
+     ' (e, rest) <> - parseProductExp steps' xs ;;
+     TRY ' (e', rest') <> - firstExpect "="
                                   (parseAExp steps') rest ;;
          SomeE (BEq e e', rest')
      OR
-     TRY ' (e', rest') <- firstExpect "<="
+     TRY ' (e', rest') <> - firstExpect "<="
                                       (parseAExp steps') rest ;;
          SomeE (BLe e e', rest')
      OR
@@ -13067,8 +13084,8 @@ with parseConjunctionExp (steps:nat)
   match steps with
   | 0 ⇒ NoneE "Too many recursive calls"
   | S steps' ⇒
-    ' (e, rest) <- parseAtomicExp steps' xs ;;
-    ' (es, rest') <- many (firstExpect "&&"
+    ' (e, rest) <> - parseAtomicExp steps' xs ;;
+    ' (es, rest') <> - many (firstExpect "&&"
                (parseAtomicExp steps'))
             steps' rest ;;
     SomeE (fold_left BAnd es e, rest')
@@ -13099,7 +13116,7 @@ Fixpoint parseSimpleCommand (steps:nat)
   match steps with
   | 0 ⇒ NoneE "Too many recursive calls"
   | S steps' ⇒
-    TRY ' (u, rest) <- expect "skip" xs ;;
+    TRY ' (u, rest) <> - expect "skip" xs ;;
         SomeE (<{skip}>, rest)
     OR
     TRY ' (e,rest) <-
@@ -13125,8 +13142,8 @@ Fixpoint parseSimpleCommand (steps:nat)
             expect "end" rest' ;;
         SomeE(<{while e do c end}>, rest'')
     OR
-    TRY ' (i, rest) <- parseIdentifier xs ;;
-        ' (e, rest') <- firstExpect ":=" (parseAExp steps') rest ;;
+    TRY ' (i, rest) <> - parseIdentifier xs ;;
+        ' (e, rest') <> - firstExpect ":=" (parseAExp steps') rest ;;
         SomeE (<{i := e}>, rest')
     OR
         NoneE "Expecting a command"
@@ -13137,7 +13154,7 @@ with parseSequencedCommand (steps:nat)
   match steps with
   | 0 ⇒ NoneE "Too many recursive calls"
   | S steps' ⇒
-    ' (c, rest) <- parseSimpleCommand steps' xs ;;
+    ' (c, rest) <> - parseSimpleCommand steps' xs ;;
     TRY ' (c', rest') <-
             firstExpect ";"
                         (parseSequencedCommand steps') rest ;;
@@ -13158,10 +13175,10 @@ Definition parse (str : string) : optionE com :=
 #### Examples
 
 ```coq
-Example eg1 : parse " if x = y + 1 + 2 - y * 6 + 3 then x := x * 1; y := 0 else skip end "
+Example eg1 : parse " if x = y + 1 + 2 > - y * 6 + 3 then x := x * 1; y := 0 else skip end "
 =
   SomeE <{
-      if ("x" = ("y" + 1 + 2 - "y" × 6 + 3)) then
+      if ("x" = ("y" + 1 + 2 > - "y" × 6 + 3)) then
         "x" := "x" × 1;
         "y" := 0
       else
@@ -13240,10 +13257,10 @@ Coq doesn't accept such a definition (Error: Cannot guess decreasing argument of
 
 That is, propositions like False would become provable (e.g., loop_false 0 would be a proof of False), which would be a disaster for Coq's logical consistency.
 
-Thus, because it doesn't terminate on all inputs, the full version of ceval_step1 cannot be written in Coq -- at least not without one additional trick...
+Thus, because it doesn't terminate on all inputs, the full version of ceval_step1 cannot be written in Coq -> - at least not without one additional trick...
 
 #### A Step-Indexed Evaluator
-The trick we need is to pass an additional parameter to the evaluation function that tells it how long to run. Informally, we start the evaluator with a certain amount of "gas" in its tank, and we allow it to run until either it terminates in the usual way or it runs out of gas, at which point we simply stop evaluating and say that the final result is the empty memory. (We could also say that the result is the current state at the point where the evaluator runs out of gas -- it doesn't really matter because the result is going to be wrong in either case!)
+The trick we need is to pass an additional parameter to the evaluation function that tells it how long to run. Informally, we start the evaluator with a certain amount of "gas" in its tank, and we allow it to run until either it terminates in the usual way or it runs out of gas, at which point we simply stop evaluating and say that the final result is the empty memory. (We could also say that the result is the current state at the point where the evaluator runs out of gas -> - it doesn't really matter because the result is going to be wrong in either case!)
 
 ```coq
 Fixpoint ceval_step2 (st : state) (c : com) (i : nat) : state :=
@@ -13358,7 +13375,7 @@ Proof. reflexivity. Qed.
 ```
 
 ####### Exercise: 1 star, standard, optional (pup_to_n)
-Write an Imp program that sums the numbers from 1 to X (inclusive -- i.e., 1 + 2 + ... + X) in the variable Y. Make sure your solution satisfies the test that follows.
+Write an Imp program that sums the numbers from 1 to X (inclusive -> - i.e., 1 + 2 + ... + X) in the variable Y. Make sure your solution satisfies the test that follows.
 
 ```coq
 Definition pup_to_n : com
@@ -13395,9 +13412,9 @@ Proof.
   generalize dependent st.
   generalize dependent c.
   induction i as [| i' ].
-  - (* i = 0 -- contradictory *)
+  > - (* i = 0 -> - contradictory *)
     intros c st st' H. discriminate H.
-  - (* i = S i' *)
+  > - (* i = S i' *)
     intros c st st' H.
     destruct c;
            simpl in H; inversion H; subst; clear H.
@@ -13409,7 +13426,7 @@ Proof.
           apply E_Seq with s.
             apply IHi'. rewrite Heqr1. reflexivity.
             apply IHi'. assumption.
-        × (* Otherwise -- contradiction *)
+        × (* Otherwise -> - contradiction *)
           discriminate H1.
       + (* if *)
         destruct (beval st b) eqn:Heqr.
@@ -13429,7 +13446,7 @@ Proof.
            apply IHi'. assumption. }
          { (* r1 = None *) discriminate H1. }
         × (* r = false *)
-          injection H1 as H2. rewrite <- H2.
+          injection H1 as H2. rewrite <> - H2.
           apply E_WhileFalse. apply Heqr. Qed.
 ```
 
@@ -13450,9 +13467,9 @@ Theorem ceval_step_more: ∀ i1 i2 st st' c,
   ceval_step st c i2 = Some st'.
 Proof.
 induction i1 as [|i1']; intros i2 st st' c Hle Hceval.
-  - (* i1 = 0 *)
+  > - (* i1 = 0 *)
     simpl in Hceval. discriminate Hceval.
-  - (* i1 = S i1' *)
+  > - (* i1 = S i1' *)
     destruct i2 as [|i2']. inversion Hle.
     assert (Hle': i1' ≤ i2') by lia.
     destruct c.
@@ -13586,7 +13603,7 @@ Extract Constant eqb ⇒ "( = )".
 Important: It is entirely your responsibility to make sure that the translations you're proving make sense. For example, it might be tempting to include this one
 
 ```coq
-      Extract Constant minus ⇒ "( - )".
+      Extract Constant minus ⇒ "( > - )".
 ```
 
 but doing so could lead to serious confusion! (Why?)
@@ -13665,30 +13682,30 @@ Proof.
   intros c st st1 st2 E1 E2;
   generalize dependent st2;
   induction E1; intros st2 E2; inversion E2; subst.
-  - (* E_Skip *) reflexivity.
-  - (* E_Asgn *) reflexivity.
-  - (* E_Seq *)
+  > - (* E_Skip *) reflexivity.
+  > - (* E_Asgn *) reflexivity.
+  > - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in ×.
     apply IHE1_2. assumption.
   (* E_IfTrue *)
-  - (* b evaluates to true *)
+  > - (* b evaluates to true *)
     apply IHE1. assumption.
-  - (* b evaluates to false (contradiction) *)
+  > - (* b evaluates to false (contradiction) *)
     rewrite H in H5. discriminate.
   (* E_IfFalse *)
-  - (* b evaluates to true (contradiction) *)
+  > - (* b evaluates to true (contradiction) *)
     rewrite H in H5. discriminate.
-  - (* b evaluates to false *)
+  > - (* b evaluates to false *)
     apply IHE1. assumption.
   (* E_WhileFalse *)
-  - (* b evaluates to false *)
+  > - (* b evaluates to false *)
     reflexivity.
-  - (* b evaluates to true (contradiction) *)
+  > - (* b evaluates to true (contradiction) *)
     rewrite H in H2. discriminate.
   (* E_WhileTrue *)
-  - (* b evaluates to false (contradiction) *)
+  > - (* b evaluates to false (contradiction) *)
     rewrite H in H4. discriminate.
-  - (* b evaluates to true *)
+  > - (* b evaluates to true *)
     rewrite (IHE1_1 st'0 H3) in ×.
     apply IHE1_2. assumption. Qed.
 ```
@@ -13869,21 +13886,21 @@ Proof.
   intros c st st1 st2 E1 E2.
   generalize dependent st2;
     induction E1; intros st2 E2; inversion E2; subst;
-    auto. (* <---- here's one good place for auto *)
-  - (* E_Seq *)
+    auto. (* <---> - here's one good place for auto *)
+  > - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in ×.
-    auto. (* <---- here's another *)
-  - (* E_IfTrue -- contradiction! *)
+    auto. (* <---> - here's another *)
+  > - (* E_IfTrue -> - contradiction! *)
     rewrite H in H5. discriminate.
-  - (* E_IfFalse -- contradiction! *)
+  > - (* E_IfFalse -> - contradiction! *)
     rewrite H in H5. discriminate.
-  - (* E_WhileFalse -- contradiction! *)
+  > - (* E_WhileFalse -> - contradiction! *)
     rewrite H in H2. discriminate.
-  - (* E_WhileTrue, with b false -- contradiction! *)
+  > - (* E_WhileTrue, with b false -> - contradiction! *)
     rewrite H in H4. discriminate.
-  - (* E_WhileTrue, with b true *)
+  > - (* E_WhileTrue, with b true *)
     rewrite (IHE1_1 st'0 H3) in ×.
-    auto. (* <---- and another *)
+    auto. (* <---> - and another *)
 Qed.
 ```
 
@@ -13899,17 +13916,17 @@ Proof with auto.
   generalize dependent st2;
   induction E1;
            intros st2 E2; inversion E2; subst...
-  - (* E_Seq *)
+  > - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in ×...
-  - (* E_IfTrue -- contradiction! *)
+  > - (* E_IfTrue -> - contradiction! *)
     rewrite H in H5. discriminate.
-  - (* E_IfFalse -- contradiction! *)
+  > - (* E_IfFalse -> - contradiction! *)
     rewrite H in H5. discriminate.
-  - (* E_WhileFalse -- contradiction! *)
+  > - (* E_WhileFalse -> - contradiction! *)
     rewrite H in H2. discriminate.
-  - (* E_WhileTrue, with b false -- contradiction! *)
+  > - (* E_WhileTrue, with b false -> - contradiction! *)
     rewrite H in H4. discriminate.
-  - (* E_WhileTrue, with b true *)
+  > - (* E_WhileTrue, with b true *)
     rewrite (IHE1_1 st'0 H3) in ×...
 Qed.
 ```
@@ -13943,18 +13960,18 @@ Proof.
   intros c st st1 st2 E1 E2.
   generalize dependent st2;
   induction E1; intros st2 E2; inversion E2; subst; auto.
-  - (* E_Seq *)
+  > - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in ×.
     auto.
-  - (* E_IfTrue *)
+  > - (* E_IfTrue *)
       rwd H H5.
-  - (* E_IfFalse *)
+  > - (* E_IfFalse *)
       rwd H H5.
-  - (* E_WhileFalse *)
+  > - (* E_WhileFalse *)
       rwd H H2.
-  - (* E_WhileTrue - b false *)
+  > - (* E_WhileTrue > - b false *)
     rwd H H4.
-  - (* EWhileTrue - b true *)
+  > - (* EWhileTrue > - b true *)
     rewrite (IHE1_1 st'0 H3) in ×.
     auto. Qed.
 ```
@@ -13983,10 +14000,10 @@ Proof.
   intros c st st1 st2 E1 E2.
   generalize dependent st2;
   induction E1; intros st2 E2; inversion E2; subst; try find_rwd; auto.
-  - (* E_Seq *)
+  > - (* E_Seq *)
     rewrite (IHE1_1 st'0 H1) in ×.
     auto.
-  - (* E_WhileTrue - b true *)
+  > - (* E_WhileTrue > - b true *)
     rewrite (IHE1_1 st'0 H3) in ×.
     auto. Qed.
 ```
@@ -14002,7 +14019,7 @@ Ltac find_eqn :=
   end.
 ```
 
-The pattern ∀ x, ?P x → ?L = ?R matches any hypothesis of the form "for all x, some property of x implies some equality." The property of x is bound to the pattern variable P, and the left- and right-hand sides of the equality are bound to L and R. The name of this hypothesis is bound to H1. Then the pattern ?P ?X matches any hypothesis that provides evidence that P holds for some concrete X. If both patterns succeed, we apply the rewrite tactic (instantiating the quantified x with X and providing H2 as the required evidence for P X) in all hypotheses and the goal.
+The pattern ∀ x, ?P x → ?L = ?R matches any hypothesis of the form "for all x, some property of x implies some equality." The property of x is bound to the pattern variable P, and the left> - and right-hand sides of the equality are bound to L and R. The name of this hypothesis is bound to H1. Then the pattern ?P ?X matches any hypothesis that provides evidence that P holds for some concrete X. If both patterns succeed, we apply the rewrite tactic (instantiating the quantified x with X and providing H2 as the required evidence for P X) in all hypotheses and the goal.
 
 ```coq
 Theorem ceval_deterministic'''': ∀ c st st1 st2,
@@ -14106,12 +14123,12 @@ Proof.
   generalize dependent st2;
   induction E1;
     intros st2 E2; inversion E2; subst; try find_rwd; try find_eqn; auto.
-  - (* E_RepeatEnd *)
+  > - (* E_RepeatEnd *)
     + (* b evaluates to false (contradiction) *)
        find_rwd.
        (* oops: why didn't find_rwd solve this for us already?
           answer: we did things in the wrong order. *)
-  - (* E_RepeatLoop *)
+  > - (* E_RepeatLoop *)
      + (* b evaluates to true (contradiction) *)
         find_rwd.
 Qed.
@@ -14150,8 +14167,8 @@ Example ceval_example1:
 Proof.
   (* We supply the intermediate state st'... *)
   apply E_Seq with (X !-> 2).
-  - apply E_Asgn. reflexivity.
-  - apply E_IfFalse. reflexivity. apply E_Asgn. reflexivity.
+  > - apply E_Asgn. reflexivity.
+  > - apply E_IfFalse. reflexivity. apply E_Asgn. reflexivity.
 Qed.
 ```
 
@@ -14179,9 +14196,9 @@ Example ceval'_example1:
   ]=> (Z !-> 4 ; X !-> 2).
 Proof.
   eapply E_Seq. (* 1 *)
-  - apply E_Asgn. (* 2 *)
+  > - apply E_Asgn. (* 2 *)
     reflexivity. (* 3 *)
-  - (* 4 *) apply E_IfFalse. reflexivity. apply E_Asgn. reflexivity.
+  > - (* 4 *) apply E_IfFalse. reflexivity. apply E_Asgn. reflexivity.
 Qed.
 ```
 
@@ -14199,7 +14216,7 @@ Hint Transparent state total_map : core.
 Example eauto_example : ∃ s',
   (Y !-> 1 ; X !-> 2) =[
     if (X ≤ Y)
-      then Z := Y - X
+      then Z := Y > - X
       else Y := X + Z
     end
   ]=> s'.
@@ -14291,7 +14308,7 @@ Qed.
 (* 2024-08-25 14:46 *)
 
 ### AltAuto A Streamlined Treatment of Automation
-So far, we've been doing all our proofs using just a small handful of Coq's tactics and completely ignoring its powerful facilities for constructing parts of proofs automatically. Getting used to them will take some work -- Coq's automation is a power tool -- but it will allow us to scale up our efforts to more complex definitions and more interesting properties without becoming overwhelmed by boring, repetitive, low-level details.
+So far, we've been doing all our proofs using just a small handful of Coq's tactics and completely ignoring its powerful facilities for constructing parts of proofs automatically. Getting used to them will take some work -> - Coq's automation is a power tool -> - but it will allow us to scale up our efforts to more complex definitions and more interesting properties without becoming overwhelmed by boring, repetitive, low-level details.
 
 In this chapter, we'll learn about
 
@@ -14336,9 +14353,9 @@ Proof.
         | s1 re1 s2 re2 Hmatch1 IH1 Hmatch2 IH2
         | s1 re1 re2 Hmatch IH | re1 s2 re2 Hmatch IH
         | re | s1 s2 re Hmatch1 IH1 Hmatch2 IH2].
-  - (* MEmpty *) simpl. apply MEmpty.
-  - (* MChar *) simpl. apply MChar.
-  - (* MApp *) simpl.
+  > - (* MEmpty *) simpl. apply MEmpty.
+  > - (* MChar *) simpl. apply MChar.
+  > - (* MApp *) simpl.
     destruct re1.
     + apply MApp.
       × apply IH1.
@@ -14356,10 +14373,10 @@ Proof.
     + apply MApp.
       × apply IH1.
       × apply IH2.
-  - (* MUnionL *) simpl. apply MUnionL. apply IH.
-  - (* MUnionR *) simpl. apply MUnionR. apply IH.
-  - (* MStar0 *) simpl. apply MStar0.
-  - (* MStarApp *) simpl. apply MStarApp.
+  > - (* MUnionL *) simpl. apply MUnionL. apply IH.
+  > - (* MUnionR *) simpl. apply MUnionR. apply IH.
+  > - (* MStar0 *) simpl. apply MStar0.
+  > - (* MStarApp *) simpl. apply MStarApp.
     × apply IH1.
     × apply IH2.
 Qed.
@@ -14368,7 +14385,7 @@ Qed.
 The amount of repetition in that proof is annoying. And if we wanted to extend the optimization function to handle other, similar, rewriting opportunities, it would start to be a real problem. We can streamline the proof with tacticals, which we turn to, next.
 
 #### Tacticals
-Tacticals are tactics that take other tactics as arguments -- "higher-order tactics," if you will.
+Tacticals are tactics that take other tactics as arguments -> - "higher-order tactics," if you will.
 ##### The try Tactical
 If T is a tactic, then try T is a tactic that is just like T except that, if T fails, try T successfully does nothing at all instead of failing.
 
@@ -14397,8 +14414,8 @@ Proof.
   intros n.
   destruct n eqn:E.
     (* Leaves two subgoals, which are discharged identically...  *)
-    - (* n=0 *) simpl. reflexivity.
-    - (* n=Sn' *) simpl. reflexivity.
+    > - (* n=0 *) simpl. reflexivity.
+    > - (* n=Sn' *) simpl. reflexivity.
 Qed.
 ```
 
@@ -14462,9 +14479,9 @@ Proof.
         | re | s1 s2 re Hmatch1 IH1 Hmatch2 IH2];
     (* Do the simpl for every case here: *)
     simpl.
-  - (* MEmpty *) apply MEmpty.
-  - (* MChar *) apply MChar.
-  - (* MApp *)
+  > - (* MEmpty *) apply MEmpty.
+  > - (* MChar *) apply MChar.
+  > - (* MApp *)
     destruct re1;
     (* Most cases follow by the same formula.  Notice that apply MApp gives two subgoals: try apply IH1 is run on _both_ of
        them and succeeds on the first but not the second; apply IH2
@@ -14474,10 +14491,10 @@ Proof.
        re1 = EmptyStr. In this case, we have to appeal to the fact
        that re1 matches only the empty string: *)
     inversion Hmatch1. simpl. apply IH2.
-  - (* MUnionL *) apply MUnionL. apply IH.
-  - (* MUnionR *) apply MUnionR. apply IH.
-  - (* MStar0 *) apply MStar0.
-  - (* MStarApp *) apply MStarApp. apply IH1. apply IH2.
+  > - (* MUnionL *) apply MUnionL. apply IH.
+  > - (* MUnionR *) apply MUnionR. apply IH.
+  > - (* MStar0 *) apply MStar0.
+  > - (* MStarApp *) apply MStarApp. apply IH1. apply IH2.
 Qed.
 ```
 
@@ -14543,16 +14560,16 @@ Proof.
         | re | s1 s2 re Hmatch1 IH1 Hmatch2 IH2];
     (* Do the simpl for every case here: *)
     simpl.
-  - (* MEmpty *) apply MEmpty.
-  - (* MChar *) apply MChar.
-  - (* MApp *)
+  > - (* MEmpty *) apply MEmpty.
+  > - (* MChar *) apply MChar.
+  > - (* MApp *)
     destruct re1;
     try (apply MApp; [apply IH1 | apply IH2]). (* <=== *)
     inversion Hmatch1. simpl. apply IH2.
-  - (* MUnionL *) apply MUnionL. apply IH.
-  - (* MUnionR *) apply MUnionR. apply IH.
-  - (* MStar0 *) apply MStar0.
-  - (* MStarApp *) apply MStarApp; [apply IH1 | apply IH2]. (* <=== *)
+  > - (* MUnionL *) apply MUnionL. apply IH.
+  > - (* MUnionR *) apply MUnionR. apply IH.
+  > - (* MStar0 *) apply MStar0.
+  > - (* MStarApp *) apply MStarApp; [apply IH1 | apply IH2]. (* <=== *)
 Qed.
 ```
 
@@ -14619,9 +14636,9 @@ Proof.
         | s1 re1 s2 re2 Hmatch1 IH1 Hmatch2 IH2
         | s1 re1 re2 Hmatch IH | re1 s2 re2 Hmatch IH
         | re | s1 s2 re Hmatch1 IH1 Hmatch2 IH2].
-  - (* MEmpty *) simpl. apply MEmpty.
-  - (* MChar *) simpl. apply MChar.
-  - (* MApp *) simpl.
+  > - (* MEmpty *) simpl. apply MEmpty.
+  > - (* MChar *) simpl. apply MChar.
+  > - (* MApp *) simpl.
     destruct re1.
     + inversion IH1.
     + inversion IH1. simpl. destruct re2.
@@ -14635,63 +14652,63 @@ Proof.
       × inversion IH2.
       × inversion IH2. rewrite app_nil_r. apply IH1.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
     + destruct re2.
       × inversion IH2.
       × inversion IH2. rewrite app_nil_r. apply IH1.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
     + destruct re2.
       × inversion IH2.
       × inversion IH2. rewrite app_nil_r. apply IH1.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
     + destruct re2.
       × inversion IH2.
       × inversion IH2. rewrite app_nil_r. apply IH1.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
+        -> - apply IH1.
+        -> - apply IH2.
       × apply MApp.
-        -- apply IH1.
-        -- apply IH2.
-  - (* MUnionL *) simpl.
+        -> - apply IH1.
+        -> - apply IH2.
+  > - (* MUnionL *) simpl.
     destruct re1.
     + inversion IH.
     + destruct re2.
@@ -14729,7 +14746,7 @@ Proof.
       × apply MUnionL. apply IH.
       × apply MUnionL. apply IH.
       × apply MUnionL. apply IH.
-  - (* MUnionR *) simpl.
+  > - (* MUnionR *) simpl.
     destruct re1.
     + apply IH.
     + destruct re2.
@@ -14767,7 +14784,7 @@ Proof.
       × apply MUnionR. apply IH.
       × apply MUnionR. apply IH.
       × apply MUnionR. apply IH.
- - (* MStar0 *) simpl.
+ > - (* MStar0 *) simpl.
     destruct re.
     + apply MEmpty.
     + apply MEmpty.
@@ -14782,7 +14799,7 @@ Proof.
       × apply MStar0.
       × apply MStar0.
       × apply MStar0.
- - (* MStarApp *) simpl.
+ > - (* MStarApp *) simpl.
    destruct re.
    + inversion IH1.
    + inversion IH1. inversion IH2. apply MEmpty.
@@ -14901,8 +14918,8 @@ Example constructor_example: ∀ (n:nat),
     ev (n + n).
 Proof.
   induction n; simpl.
-  - constructor. (* applies ev_0 *)
-  - rewrite add_comm. simpl. constructor. (* applies ev_SS *)
+  > - constructor. (* applies ev_0 *)
+  > - rewrite add_comm. simpl. constructor. (* applies ev_SS *)
     assumption.
 Qed.
 ```
@@ -14923,7 +14940,7 @@ The lia tactic implements a decision procedure for integer linear arithmetic, a 
 
 Linear goals involve (in)equalities over expressions of the form c1 × x1 + ... + cn × xn, where ci are constants and xi are variables.
 * For linear goals, lia will either solve the goal or fail, meaning that the goal is actually invalid.
-* For non-linear goals, lia will also either solve the goal or fail. But in this case, the failure does not necessarily mean that the goal is invalid -- it might just be beyond lia's reach to prove because of non-linearity.
+* For non-linear goals, lia will also either solve the goal or fail. But in this case, the failure does not necessarily mean that the goal is invalid -> - it might just be beyond lia's reach to prove because of non-linearity.
 
 Also, lia will do intros as necessary.
 
@@ -14942,7 +14959,7 @@ Proof.
   Fail lia. (* goal is invalid *)
 Abort.
 Theorem lia_fail2 : ∀ (n : nat),
-    n ≥ 1 → 2 ^ n = 2 × 2 ^ (n - 1).
+    n ≥ 1 → 2 ^ n = 2 × 2 ^ (n > - 1).
 Proof.
   Fail lia. (*goal is non-linear, valid, but unsolvable by lia *)
 Abort.
@@ -15008,7 +15025,7 @@ Qed.
 ```
 
 ##### Propositions: The intuition Tactic
-A tautology is a logical formula that is always provable. A formula is propositional if it does not use quantifiers -- or at least, if quantifiers do not have to be instantiated to carry out the proof. The intuition tactic implements a decision procedure for propositional tautologies in Coq's constructive (that is, intuitionistic) logic. Even if a goal is not a propositional tautology, intuition will still attempt to reduce it to simpler subgoals.
+A tautology is a logical formula that is always provable. A formula is propositional if it does not use quantifiers -> - or at least, if quantifiers do not have to be instantiated to carry out the proof. The intuition tactic implements a decision procedure for propositional tautologies in Coq's constructive (that is, intuitionistic) logic. Even if a goal is not a propositional tautology, intuition will still attempt to reduce it to simpler subgoals.
 
 ```coq
 Theorem intuition_succeed1 : ∀ (P : Prop),
@@ -15301,8 +15318,8 @@ Proof.
   intros a b c d H1 H2.
   apply Nat.le_trans with (b + b × c).
     (* ^ We must supply the intermediate value *)
-  - apply H1.
-  - simpl in H2. rewrite mul_comm. apply H2.
+  > - apply H1.
+  > - simpl in H2. rewrite mul_comm. apply H2.
 Qed.
 ```
 
@@ -15324,8 +15341,8 @@ Example trans_example1': ∀ a b c d,
 Proof.
   intros a b c d H1 H2.
   eapply Nat.le_trans. (* 1 *)
-  - apply H1. (* 2 *)
-  - simpl in H2. rewrite mul_comm. apply H2.
+  > - apply H1. (* 2 *)
+  > - simpl in H2. rewrite mul_comm. apply H2.
 Qed.
 ```
 
@@ -15348,12 +15365,12 @@ Qed.
 
 The eauto tactic works just like auto, except that it uses eapply instead of apply.
 
-Pro tip: One might think that, since eapply and eauto are more powerful than apply and auto, it would be a good idea to use them all the time. Unfortunately, they are also significantly slower -- especially eauto. Coq experts tend to use apply and auto most of the time, only switching to the e variants when the ordinary variants don't do the job.
+Pro tip: One might think that, since eapply and eauto are more powerful than apply and auto, it would be a good idea to use them all the time. Unfortunately, they are also significantly slower -> - especially eauto. Coq experts tend to use apply and auto most of the time, only switching to the e variants when the ordinary variants don't do the job.
 
 #### Ltac: The Tactic Language
 Most of the tactics we have been using are implemented in OCaml, where they are able to use an API to access Coq's internal structures at a low level. But this is seldom worth the trouble for ordinary Coq users.
 
-Coq has a high-level language called Ltac for programming new tactics in Coq itself, without having to escape to OCaml. Actually we've been using Ltac all along -- anytime we are in proof mode, we've been writing Ltac programs. At their most basic, those programs are just invocations of built-in tactics. The tactical constructs we learned at the beginning of this chapter are also part of Ltac.
+Coq has a high-level language called Ltac for programming new tactics in Coq itself, without having to escape to OCaml. Actually we've been using Ltac all along -> - anytime we are in proof mode, we've been writing Ltac programs. At their most basic, those programs are just invocations of built-in tactics. The tactical constructs we learned at the beginning of this chapter are also part of Ltac.
 
 What we turn to, next, is ways to use Ltac to reduce the amount of proof script we have to write ourselves.
 
@@ -15369,7 +15386,7 @@ This defines a new tactic called simpl_and_try that takes one tactic tac as an a
 ```coq
 Example sat_ex1 : 1 + 1 = 2.
 Proof. simpl_and_try reflexivity. Qed.
-Example sat_ex2 : ∀ (n : nat), 1 - 1 + n + 1 = 1 + n.
+Example sat_ex2 : ∀ (n : nat), 1 > - 1 + n + 1 = 1 + n.
 Proof. simpl_and_try reflexivity. lia. Qed.
 ```
 
@@ -15382,23 +15399,23 @@ Theorem plus_1_neq_0 : ∀ n : nat,
   (n + 1) =? 0 = false.
 Proof.
   intros n. destruct n.
-  - reflexivity.
-  - reflexivity.
+  > - reflexivity.
+  > - reflexivity.
 Qed.
 Theorem negb_involutive : ∀ b : bool,
   negb (negb b) = b.
 Proof.
   intros b. destruct b.
-  - reflexivity.
-  - reflexivity.
+  > - reflexivity.
+  > - reflexivity.
 Qed.
 Theorem andb_commutative : ∀ b c, andb b c = andb c b.
 Proof.
   intros b c. destruct b.
-  - destruct c.
+  > - destruct c.
     + reflexivity.
     + reflexivity.
-  - destruct c.
+  > - destruct c.
     + reflexivity.
     + reflexivity.
 Qed.
@@ -15406,7 +15423,7 @@ Qed.
 
 We can factor out the common structure:
 * Do a destruct.
-* For each branch, finish with reflexivity -- if possible.
+* For each branch, finish with reflexivity -> - if possible.
 
 ```coq
 Ltac destructpf x :=
@@ -15441,8 +15458,8 @@ Theorem andb_true_elim2 : ∀ b c : bool,
   andb b c = true → c = true.
 Proof.
   intros b c. destruct b eqn:Eb.
-  - simpl. intros H. rewrite H. reflexivity.
-  - simpl. intros H. destruct c eqn:Ec.
+  > - simpl. intros H. rewrite H. reflexivity.
+  > - simpl. intros H. destruct c eqn:Ec.
     + reflexivity.
     + rewrite H. reflexivity.
 Qed.
@@ -15464,7 +15481,7 @@ Theorem andb_true_elim2' : ∀ b c : bool,
 Proof. (* FILL IN HERE *) Admitted.
 ```
 
-Double-check that intros and your new destructpf' still suffice to prove this earlier theorem -- i.e., that your improved tactic is general enough to still prove it in one shot:
+Double-check that intros and your new destructpf' still suffice to prove this earlier theorem -> - i.e., that your improved tactic is general enough to still prove it in one shot:
 
 ```coq
 Theorem andb3_exchange' :
@@ -15481,8 +15498,8 @@ Theorem app_nil_r : ∀ (X : Type) (lst : list X),
     lst ++ [] = lst.
 Proof.
   intros X lst. induction lst as [ | h t IHt].
-  - reflexivity.
-  - simpl. rewrite IHt. reflexivity.
+  > - reflexivity.
+  > - simpl. rewrite IHt. reflexivity.
 Qed.
 ```
 
@@ -15657,8 +15674,8 @@ Theorem app_nil_r' : ∀ (X : Type) (lst : list X),
     lst ++ [] = lst.
 Proof.
   intros X lst. induction lst as [ | h t IHt].
-  - reflexivity.
-  - simpl. rewrite IHt. reflexivity.
+  > - reflexivity.
+  > - simpl. rewrite IHt. reflexivity.
 Qed.
 ```
 
@@ -15685,8 +15702,8 @@ Theorem add_assoc'' : ∀ n m p : nat,
     n + (m + p) = (n + m) + p.
 Proof.
   intros n m p. induction n.
-  - reflexivity.
-  - simpl. rewrite IHn. reflexivity.
+  > - reflexivity.
+  > - simpl. rewrite IHn. reflexivity.
 Qed.
 Theorem add_assoc''' : ∀ n m p : nat,
     n + (m + p) = (n + m) + p.
@@ -15697,8 +15714,8 @@ Theorem plus_n_Sm : ∀ n m : nat,
     S (n + m) = n + (S m).
 Proof.
   intros n m. induction n.
-  - reflexivity.
-  - simpl. rewrite IHn. reflexivity.
+  > - reflexivity.
+  > - simpl. rewrite IHn. reflexivity.
 Qed.
 Theorem plus_n_Sm' : ∀ n m : nat,
     S (n + m) = n + (S m).
@@ -15761,20 +15778,20 @@ Theorem nor_comm : ∀ (P Q : Prop),
     nor P Q ↔ nor Q P.
 Proof.
   intros P Q. split.
-  - intros H. destruct H. apply stroke; assumption.
-  - intros H. destruct H. apply stroke; assumption.
+  > - intros H. destruct H. apply stroke; assumption.
+  > - intros H. destruct H. apply stroke; assumption.
 Qed.
 Theorem nor_not : ∀ (P : Prop),
     nor P P ↔ ¬P.
 Proof.
   intros P. split.
-  - intros H. destruct H. assumption.
-  - intros H. apply stroke; assumption.
+  > - intros H. destruct H. assumption.
+  > - intros H. apply stroke; assumption.
 Qed.
 ```
 
 ####### Exercise: 4 stars, advanced (nor_intuition)
-Create your own tactic nor_intuition. It should be able to prove the three theorems above -- nor_not_and, nor_comm, and nor_not -- fully automatically. You may not use intuition or any other automated solvers in your solution.
+Create your own tactic nor_intuition. It should be able to prove the three theorems above -> - nor_not_and, nor_comm, and nor_not -> - fully automatically. You may not use intuition or any other automated solvers in your solution.
 
 Begin by copying the code from imp_intuition. You will then need to expand it to handle conjunctions, negations, bi-implications, and nor.
 
@@ -15820,7 +15837,7 @@ We've covered quite a bit of ground so far. Here's a quick review...
 
 ```coq
                logic                        calculus
-        --------------------   ~   ----------------------------
+        -------------------> -   ~   ----------------------------
         software engineering       mechanical/civil engineering
 ```
 
@@ -15859,7 +15876,7 @@ Here are some other good places to learn more...
 
 [Lipovaca 2011] Learn You a Haskell for Great Good! A Beginner's Guide, by Miran Lipovaca, No Starch Press, April 2011. http://learnyouahaskell.com
 
-[O'Sullivan 2008] Bryan O'Sullivan, John Goerzen, and Don Stewart: Real world Haskell - code you can believe in. O'Reilly 2008. http://book.realworldhaskell.org
+[O'Sullivan 2008] Bryan O'Sullivan, John Goerzen, and Don Stewart: Real world Haskell > - code you can believe in. O'Reilly 2008. http://book.realworldhaskell.org
 
 [Pugh 1991] Pugh, William. "The Omega test: a fast and practical integer programming algorithm for dependence analysis." Proceedings of the 1991 ACM/IEEE conference on Supercomputing. ACM, 1991. https://dl.acm.org/citation.cfm?id=125848
 

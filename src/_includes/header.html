@@ -10,45 +10,54 @@
               {% if page.collection_list != false %}
               <a class="header_btn" onclick="open_collection_list()">
                 <i class="fa fa-trash btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Rubbish</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Rubbish</p>
+                {% endif %}
               </a>
               {% endif %}
               <!-- home -->
               {% if page.home_btn != false %}
               <a class="header_btn" href="{{ site.url }}{{ site.baseurl }}">
                 <i class="fa fa-home btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Bin</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Bin</p>
+                {% endif %}
               </a>
               {% endif %}
               <!-- bilingual -->
-              {% if page.bilingual != false %}
-              <a class="header_btn"onclick="BilingualToggle.toggleAll()">
+              {% if page.layout == "bilingual" %}
+              <a class="header_btn" onclick="BilingualToggle.toggleAll()">
                 <i class="fa fa-language btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Bilingual</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Bilingual</p>
+                {% endif %}
               </a>
+              {% endif %}
+              <!-- parallel -->
+              {% if page.layout == "parallel" %}
+              <a class="header_btn" href="javascript:void(0)" onclick="window.parallelTextColumns.toggle('.content')">
+  <i class="fa fa-language btn_icon"></i>
+  {% if page.btn_text != false %}
+  <p class="btn_text">Parallel</p>
+  {% endif %}
+</a>
               {% endif %}
               <!-- maximize -->
               {% if page.maximize != false %}
               <a class="header_btn" id="mxmz_btn" onclick="toggle_maximize()">
                 <i class="fa fa-window-maximize btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text" id="mxmz_text">Maximize</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text" id="mxmz_text">Maximize</p>
+                {% endif %}
               </a>
               {% endif %}
               <!-- access token -->
               {% if page.encrypted_text == true %}
               <a class="header_btn" id="acs_btn" onclick="apply_token()">
                 <i class="fa fa-key btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Token</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Token</p>
+                {% endif %}
               </a>
               <textarea
                 class="access_token"
@@ -61,41 +70,43 @@
             <!-- right header -->
             <span class="span_right">
               {% if page.toc != false %}
-               <!-- back to top -->
-               <a class="header_btn" id="back_to_top_btn" href="#top_hook">
+              <!-- back to top -->
+              <a class="header_btn" id="back_to_top_btn" href="#top_hook">
                 <i class="fa fa-fast-backward btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Top</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Top</p>
+                {% endif %}
               </a>
               <!-- scroll up -->
               <a class="header_btn" onclick="scroll_percentage(-0.88)">
                 <i class="fa fa-backward btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Prev</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Prev</p>
+                {% endif %}
               </a>
               <!-- scroll down -->
               <a class="header_btn" onclick="scroll_percentage(0.88)">
                 <i class="fa fa-forward btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Next</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Next</p>
+                {% endif %}
               </a>
               <!-- popup table of content -->
               <a class="header_btn popup_btn" onclick="toggle_toc()">
                 <i class="fa fa-list btn_icon"></i>
-                  {% if page.btn_text != false %}
-                  <p class="btn_text">Index</p>
-                  {% endif %}
+                {% if page.btn_text != false %}
+                <p class="btn_text">Index</p>
+                {% endif %}
               </a>
               {% else %}
               <a class="site_title" href="{{site.url}}{{site.baseurl}}">
-                {{ site.title }}</a>
+                {{ site.title }}</a
+              >
               {% if site.owner != false%}
               <a class="site_owner"> - </a>
               <a class="site_owner" href="https://github.com/{{site.github}}">
-                {{ site.owner }}</a>
+                {{ site.owner }}</a
+              >
               {% endif %} {% endif %}
             </span>
           </ul>
@@ -108,17 +119,19 @@
 <!-- table of content -->
 {% if page.toc == "list" %}
 <div class="div_toc toc" id="popup_toc">
-  {% if page.toc_depth %} {% assign toclv = page.toc_depth %} {% elsif
-  site.toc_depth %} {% assign toclv = site.toc_depth %} {% else %} {% assign
-  toclv = 3 %} {% endif %}
+  {% if page.toc_depth %} 
+    {% assign toclv = page.toc_depth %} 
+    {% elsif site.toc_depth %} 
+    {% assign toclv = site.toc_depth %} 
+  {% else %} 
+    {% assign toclv = 3 %} 
+  {% endif %}
   <!-- generate toc -->
-  {% include toc-list.html html=content sanitize=true class="ul_toc" id="ul_toc"
-  h_min=2 h_max=toclv %}
+  {% include toc_list.html html=content sanitize=true class="ul_toc" id="ul_toc" h_min=2 h_max=toclv %}
 </div>
-{% endif %}
-{% if page.toc == "chart" %}
+{% endif %} {% if page.toc == "chart" %}
 <div class="div_toc toc" id="popup_toc">
-{% include toc-chart.html content=content %}
+  {% include toc_chart.html content=content %}
 </div>
 {% endif %}
 <!-- toggle maximize -->
@@ -128,10 +141,4 @@
   var ctner = document.getElementById("ctner");
 </script>
 {% endif %}
-<!-- encrypt and decrypt -->
-{% if page.encrypted_text == true %}
-<script
-  src="{{ site.url }}{{ site.baseurl }}/src/assets/js/sjcl.js"
-  async
-></script>
-{% endif %}
+

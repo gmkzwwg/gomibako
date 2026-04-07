@@ -3,7 +3,7 @@ category: Notes
 abbreviation: Gulf War
 title: Reconstruction of the 1990–1991 Gulf War
 subclass: Wars
-bilingual: true
+layout: bilingual
 todos: read
 ---
 

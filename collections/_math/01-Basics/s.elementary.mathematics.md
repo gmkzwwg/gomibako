@@ -968,3 +968,5 @@ $$
 那么，余切定理告诉我们： $$\cot{ \frac{\alpha}{2 }} = \frac{s-a}{\zeta }$$
 
 以及： $${\displaystyle {\frac {\cot(\alpha /2)}{s-a}}={\frac {\cot(\beta /2)}{s-b}}={\frac {\cot(\gamma /2)}{s-c}}}$$
+
+

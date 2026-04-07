@@ -1,10 +1,10 @@
 ---
+layout: parallel
 category: Notes
-abbreviation: Prompt Engineering
-title: LLM Prompt Engineering for Workflows Enhancement
 subclass: LLMs
-date: 2025-4-4
-bilingual: true
+abbreviation: Prompt Engineering
+date: 2026-4-4
+title: LLM Prompt Engineering for Workflows Enhancement
 todos: 
   - claude gpt的操作，介绍它们提供的一些功能
   - pe的局限性、pe误区（写太多，三样一样一个）
@@ -158,19 +158,16 @@ Rewrite the paragraph in a more polished academic style suitable for a graduate-
 ```
 
 Most model APIs allow us to split prompts into `system prompts` and `user prompts`.
-
-`System prompts` — how the model should behave
-- High-level instructions that define the model’s overall behavior. They usually set the role, goals, rules, tone, constraints, or response format that should remain stable across the interaction.
-
-`User prompts` — what the model should do now
-- The current task or inputs given by the user. They contain the actual request, question, or data that the model should respond to at that moment.
+  - `System prompts` — how the model should behave
+    - High-level instructions that define the model’s overall behavior. They usually set the role, goals, rules, tone, constraints, or response format that should remain stable across the interaction.
+  - `User prompts` — what the model should do now
+    - The current task or inputs given by the user. They contain the actual request, question, or data that the model should respond to at that moment.
 
 > 大多数模型 API 都允许我们将提示拆分为 `system prompts` 和 `user prompts`。  
-> `System prompts`——模型应当如何表现
-> * 用于定义模型整体行为的高层指令。它们通常设定角色、目标、规则、语气、约束或响应格式，并且这些内容应在整个交互过程中保持稳定。
->   
-> `User prompts`——模型此刻应当做什么
-> * 用户当前给出的任务或输入。它们包含模型在当下需要回应的实际请求、问题或数据。
+> - `System prompts`——模型应当如何表现
+>   * 用于定义模型整体行为的高层指令。它们通常设定角色、目标、规则、语气、约束或响应格式，并且这些内容应在整个交互过程中保持稳定。
+> - `User prompts`——模型此刻应当做什么
+>   * 用户当前给出的任务或输入。它们包含模型在当下需要回应的实际请求、问题或数据。
 
 Example 2
 : A good English prompt example for business analysis.

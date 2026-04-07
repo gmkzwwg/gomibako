@@ -1,9 +1,9 @@
 ---
+layout: bilingual
 category: Notes
+subclass: LLMs
 abbreviation: Learner-Centered LLMs
 title: Learner-Centered Use of Large Language Models
-subclass: LLMs
-bilingual: true
 todos: drafting
 ---
 
