@@ -70,13 +70,14 @@ defaults:
     scope:
       path          : ""  # an empty string here means all files in the project
     values:
-      layout              : "post"      # which layout to use by default  
+      layout              : "post"      # "post"/"parallel"/"compact"/"bilingual"/"print"
       btn_text            : true        # whether show button text by default
       collection_list     : true        # whether show archive button by default
       home_btn            : true        # whether show home by default
       maximize            : true        # whether show maximize button by default
       encrypted_text      : false       # whether use encrytion function by default
-      toc                 : "chart"     # whether show table of content by default
+      toc                 : "chart"     # toc right-up conner: "chart"/"compact"/"list"
+      toc_before_content  : false       # toc before content: "chart"/"compact"/"list"
       toc_depth           : 4           # the toc depth by default
       author              :             # author name by default
       show_date           : false       # whether show date message by default

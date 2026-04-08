@@ -1,16 +1,21 @@
 <!doctype html>
 <html>
   <head>
-    {% include head.html %} {% include copy_code_button.html %} {% include
-    hacked_splash_css.html %} {% include matrix_letter_bomb.html %} {% include
-    title_hacker.html %} {% if page.layout == "bilingual" %}
+    {% include head.html %}
+    {% include copy_code_button.html %}
+    {% include hacked_splash_css.html %}
+    {% include matrix_letter_bomb.html %}
+    {% include title_hacker.html %}
+    {% if page.layout == "bilingual" %}
     <script src="{{site.url}}{{site.baseurl}}/src/assets/js/bilingual.js"></script>
     {% endif %}
     <script src="{{site.url}}{{site.baseurl}}/src/assets/js/image-viewer.js""></script>
   </head>
 
-  <body class="page">
-    {% if page.todos != false %} {% include todo_summary.html %} {% endif %}
+  <body class=" page">
+    {% if page.todos != false %}
+     {% include todo_summary.html %}
+      {% endif %}
     <!-- Hacked Splash -->
     {% include hacked_splash.html %}、
     <!-- Timeline -->
@@ -33,21 +38,18 @@
           summaryTopLineWidth: '1px', // 左侧顶部实线宽度
           lineColor: "rgba(120, 150, 180, 0.34)", // 中轴竖线颜色
           fallbackTitlePrefix: "Unknown ", // 左侧标题为空时的默认前缀
-         detailColorMode: 'random', // 随机选择颜色，还是顺序
+          detailColorMode: 'random', // 随机选择颜色，还是顺序
         });
       });
     </script>
-    <!-- Main -->
-    {% include background.html %} {% include collection_list.html %}
+    <!-- Main Content -->
+    {% include background.html %}
+    {% include collection_list.html %}
     <div class="container" id="ctner">
       {% include header.html %}
       <div class="div_article" id="div_atcl">
         <div class="hook" id="top_hook"></div>
-        <article
-          id="main_atcl"
-          itemscope
-          itemtype="http://schema.org/BlogPosting"
-        >
+        <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
           {{content}} {% include post_list.html %} {% include comment.html %}
         </article>
         {% if page.footer != false %} {% include footer.html %} {% endif %}

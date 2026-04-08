@@ -36,11 +36,11 @@
               <!-- parallel -->
               {% if page.layout == "parallel" %}
               <a class="header_btn" href="javascript:void(0)" onclick="window.parallelTextColumns.toggle('.content')">
-  <i class="fa fa-language btn_icon"></i>
-  {% if page.btn_text != false %}
-  <p class="btn_text">Parallel</p>
-  {% endif %}
-</a>
+                <i class="fa fa-language btn_icon"></i>
+                {% if page.btn_text != false %}
+                <p class="btn_text">Parallel</p>
+                {% endif %}
+              </a>
               {% endif %}
               <!-- maximize -->
               {% if page.maximize != false %}
@@ -59,12 +59,7 @@
                 <p class="btn_text">Token</p>
                 {% endif %}
               </a>
-              <textarea
-                class="access_token"
-                cols="8"
-                id="acs_tkn"
-                rows="1"
-              ></textarea>
+              <textarea class="access_token" cols="8" id="acs_tkn" rows="1"></textarea>
               {% endif %}
             </li>
             <!-- right header -->
@@ -100,13 +95,11 @@
               </a>
               {% else %}
               <a class="site_title" href="{{site.url}}{{site.baseurl}}">
-                {{ site.title }}</a
-              >
+                {{ site.title }}</a>
               {% if site.owner != false%}
               <a class="site_owner"> - </a>
               <a class="site_owner" href="https://github.com/{{site.github}}">
-                {{ site.owner }}</a
-              >
+                {{ site.owner }}</a>
               {% endif %} {% endif %}
             </span>
           </ul>
@@ -116,24 +109,32 @@
     </tr>
   </table>
 </div>
-<!-- table of content -->
-{% if page.toc == "list" %}
-<div class="div_toc toc" id="popup_toc">
-  {% if page.toc_depth %} 
-    {% assign toclv = page.toc_depth %} 
-    {% elsif site.toc_depth %} 
-    {% assign toclv = site.toc_depth %} 
-  {% else %} 
-    {% assign toclv = 3 %} 
+<!-- toc -->
+<div class="toc">
+  {% if page.toc == "list" %}
+  <div class="div_toc toc" id="popup_toc">
+    {% if page.toc_depth %}
+    {% assign toclv = page.toc_depth %}
+    {% elsif site.toc_depth %}
+    {% assign toclv = site.toc_depth %}
+    {% else %}
+    {% assign toclv = 3 %}
+    {% endif %}
+    <!-- generate toc -->
+    {% include toc_list.html html=content sanitize=true class="ul_toc" id="ul_toc" h_min=2 h_max=toclv %}
+  </div>
   {% endif %}
-  <!-- generate toc -->
-  {% include toc_list.html html=content sanitize=true class="ul_toc" id="ul_toc" h_min=2 h_max=toclv %}
+  {% if page.toc == "chart" %}
+  <div class="div_toc toc" id="popup_toc">
+    {% include toc_chart.html content=content %}
+  </div>
+  {% endif %}
+  {% if page.toc == "compact" %}
+  <div class="div_toc toc" id="popup_toc">
+    {% include toc_chart.html content=content compact=true %}
+  </div>
+  {% endif %}
 </div>
-{% endif %} {% if page.toc == "chart" %}
-<div class="div_toc toc" id="popup_toc">
-  {% include toc_chart.html content=content %}
-</div>
-{% endif %}
 <!-- toggle maximize -->
 {% if page.maximize != false %}
 <script>
@@ -141,4 +142,3 @@
   var ctner = document.getElementById("ctner");
 </script>
 {% endif %}
-

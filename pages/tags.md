@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: print
 title: TODO List
 author: 垃圾残渣
 show_date: false

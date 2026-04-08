@@ -1,4 +1,6 @@
 {% assign source = include.content | default: content | default: page.content %}
+<!-- Whether Compact H3 Mode -->
+{% assign toc_compact = include.compact | default: false %}
 
 {% assign h1_rows = '' %}
 {% assign toc_rows = '' %}
@@ -129,7 +131,7 @@
 {% endif %}
 
 {% if h1_rows != '' or toc_rows != '' %}
-<nav class="liquid-toc" aria-label="Table of contents">
+<nav class="liquid-toc{% if toc_compact %} liquid-toc--compact{% endif %}" aria-label="Table of contents">
   {{ h1_rows }}
   <div class="liquid-toc__body">
     {{ toc_rows }}

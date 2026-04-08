@@ -5,6 +5,30 @@ layout: default
 <h1 id="{{page.title}}">{{ page.title }}</h1>
 {% include post_info.html %}
 <br />
+<!-- toc_before_content -->
+{% if page.toc_before_content == "list" %}
+<div class="toc_before_content">
+  {% if page.toc_depth %}
+  {% assign toclv = page.toc_depth %}
+  {% elsif site.toc_depth %}
+  {% assign toclv = site.toc_depth %}
+  {% else %}
+  {% assign toclv = 3 %}
+  {% endif %}
+  <!-- generate toc -->
+  {% include toc_list.html html=content sanitize=true class="ul_toc" id="ul_toc" h_min=2 h_max=toclv %}
+</div>
+{% endif %}
+{% if page.toc_before_content == "chart" %}
+<div class="toc_before_content">
+  {% include toc_chart.html content=content %}
+</div>
+{% endif %}
+{% if page.toc_before_content == "compact" %}
+<div class="toc_before_content">
+  {% include toc_chart.html content=content compact=true %}
+</div>
+{% endif %}
 <div class="content">
 {{ content }}
 </div>
