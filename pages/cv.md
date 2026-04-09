@@ -1,14 +1,16 @@
 ---
-layout: post
+layout: slide
+title_selector: h1
 title: Curriculum Vitae
 post_list: false
 toc: false
-comment: true
 home_btn: true
-btn_text: true
+btn_text: false
 footer: false
 permalink: /cv
 ---
+
+# Curriculum Vitae
 
 ## RUBBISH WITH NO VALUE 
 
@@ -78,7 +80,7 @@ permalink: /cv
 
 <i class="fa fa-trash"> **联排垃圾箱** \| *腥臭小镇, 巨大荒漠, 000000*  
 
-<i class="fa fa-envelope-square"> valueless@trash.com \| <i class="fa fa-phone"> +1145141919 \| <i class="fa fa-linkedin">毫无价值的垃圾残渣  \| <i class="fa fa-home"> 个人主页: [大垃圾箱](https://bcqlr.com)
+<i class="fa fa-envelope-square"> valueless@trash.com \| <i class="fa fa-phone"> +1145141919 \| <i class="fa fa-linkedin">毫无价值的垃圾残渣  \| <i class="fa fa-home"> 个人主页: [大垃圾箱](https://gmkz.top)
 
 
 ## 个人简述
@@ -126,4 +128,60 @@ permalink: /cv
 
 **贫乏的通用语**: “但我无话可说。”
 
+# curriculum vitae
+
+## Débris d’ordures totalement sans valeur
+
+<img src="src/assets/img/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
+
+**[Déchet senior]**
+
+<i class="fa fa-trash"> **Rangée de poubelles** | *Ville nauséabonde, Grand désert, 000000*
+
+<i class="fa fa-envelope-square"> [valueless@trash.com](mailto:valueless@trash.com) | <i class="fa fa-phone"> +1145141919 | <i class="fa fa-linkedin">Débris d’ordures totalement sans valeur | <i class="fa fa-home"> Site personnel : [Grande poubelle](https://gmkz.top)
+
+## Profil personnel
+
+*« Complètement bon à rien. Inutile à tout, ambitieux en paroles mais incapable d’agir, savoir superficiel… En somme, un déchet du début à la fin. »*
+
+*« Je rampe ignorant sur le sol, tel un reptile aveugle ; emporté vers une folie et un désespoir sans fin… »*
+
+## Compétences
+
+* `Compétence 1` : *« Faire semblant de travailler »*
+* `Compétence 2` : *« Être accro aux vidéos courtes »*
+* `Compétence 3` : *« Paresseux, sans volonté »*
+* `Compétence 4` : *« Géant des paroles, nain de l’action »*
+
+## Parcours
+
+#### `Recroquevillé dans une benne à ordures`
+
+*« Poubelle », visible partout au bord des rues*
+
+`[??,20??] – [Éternité]`
+
+* *Regarder les gens aller et venir à la hâte dans la rue.*
+* *Ramasser dans la poubelle un hamburger déjà froid. Expirer par les narines ; une masse dure et glaciale gonfle dans l’œsophage et glisse lentement vers le bas.*
+* *La nuit. La rue bruyante retrouve son calme. Je lève les yeux et regarde un instant le ciel.*
+
+#### `Formation`
+
+**Licence de sciences en « l’art de faire le mort »**
+
+*Université de l’ignorance démente, Grand désert*
+
+`[??,18??] – [??,19??]`
+
+* GPA : 1.01 - *« J’ai essayé, peut-être bien. »*
+* Mémoire de fin d’études : *« Comment rendre chaque déchet meilleur et plus bienveillant »*.
+
+## Certificats et récompenses
+
+* **« Regardez, là-bas, quel immense déchet ! »** - *Un garçon vif de passage*
+* **« Quelle puanteur ! »** - *Une femme en talons pressée ; je n’ai pas vu clairement son visage*
+
+## Langues
+
+**Langue commune misérable** : *« Mais je n’ai rien à dire. »*
 

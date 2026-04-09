@@ -42,7 +42,15 @@
                 {% endif %}
               </a>
               {% endif %}
-
+              <!-- maximize -->
+              {% if page.maximize != false %}
+              <a class="header_btn" id="mxmz_btn" onclick="toggle_maximize()">
+                <i class="fa fa-window-maximize btn_icon"></i>
+                {% if page.btn_text != false %}
+                <p class="btn_text" id="mxmz_text">Maximize</p>
+                {% endif %}
+              </a>
+              {% endif %}
               <!-- access token -->
               {% if page.encrypted_text == true %}
               <a class="header_btn" id="acs_btn" onclick="apply_token()">
@@ -64,15 +72,6 @@
                 <p class="btn_text">Top</p>
                 {% endif %}
               </a>
-              <!-- maximize -->
-              {% if page.maximize != false %}
-              <a class="header_btn" id="mxmz_btn" onclick="toggle_maximize()">
-                <i class="fa fa-window-maximize btn_icon"></i>
-                {% if page.btn_text != false %}
-                <p class="btn_text" id="mxmz_text">Maximize</p>
-                {% endif %}
-              </a>
-              {% endif %}
               <!-- popup table of content -->
               <a class="header_btn popup_btn" onclick="toggle_toc()">
                 <i class="fa fa-list btn_icon"></i>
