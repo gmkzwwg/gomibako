@@ -30,7 +30,7 @@ permalink: /
     |  ||  ||  ||; (unrecyclable) :              \           
     |  ||  || #||.                ·              ..          
     | c||  ||  ||Z,  ~@<a href="/test">TEST</a>~     ;              /+%^·,       
-    .,F@,__Jl__Jldbz_'= =,··,~@ ='    ..  !-@&*^)#$%^_(()_+) 
+    .,F@,_<a href="/all">all</a>__Jldbz_'= =,··,~@ ='    ..  !-@&*^)#$%^_(()_+) 
 %t@]Q&;~g\k9<}^!pZ/|,V*2`r(=xW#'u_7)J:>e{0$"L-?aB+Y[8s\F!^mR]3
 </pre></div>
 

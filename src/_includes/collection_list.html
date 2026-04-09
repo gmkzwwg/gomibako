@@ -222,13 +222,11 @@ const ARCHIVE_WINDOW_CONFIG = {
     dragHandleId: "archive-window-drag-handle",
     sectionSelector: ".js-archive-collection-section",
     buttonSelector: ".js-archive-collection-button",
-    openAnimationMs: 180,
-    closeAnimationMs: 160,
-    scrambleDurationMs: 280,
+    openAnimationMs: 140,
+    closeAnimationMs: 120,
+    switchFadeMs: 120,
     mobileBreakpoint: 800
 };
-
-const ARCHIVE_SCRAMBLE_CHARSET = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&@*+-_/\\\\[]{}<>?";
 
 const archiveWindowDragState = {
     active: false,
@@ -313,103 +311,9 @@ function updateArchiveWindowStatus(collectionTitle, collectionLabel) {
     }
 }
 
-function getRandomScrambleChar() {
-    return ARCHIVE_SCRAMBLE_CHARSET[
-        Math.floor(Math.random() * ARCHIVE_SCRAMBLE_CHARSET.length)
-    ];
-}
-
-function getStoredOriginalText(element) {
-    if (!element.dataset.archiveOriginalText) {
-        element.dataset.archiveOriginalText = element.textContent;
-    }
-    return element.dataset.archiveOriginalText;
-}
-
-function scrambleElementToText(element, finalText, durationMs, delayMs) {
-    if (!element) return;
-
-    const token = String(Date.now() + Math.random());
-    const finalChars = Array.from(finalText);
-
-    element.dataset.archiveScrambleToken = token;
-
-    window.setTimeout(function () {
-        const startTime = performance.now();
-
-        function frame(now) {
-            if (element.dataset.archiveScrambleToken !== token) {
-                return;
-            }
-
-            const progress = Math.min((now - startTime) / durationMs, 1);
-            const revealCount = Math.floor(finalChars.length * progress);
-
-            const nextText = finalChars.map(function (char, index) {
-                if (/\s/.test(char)) return char;
-                if (index < revealCount) return char;
-                return getRandomScrambleChar();
-            }).join("");
-
-            element.textContent = nextText;
-
-            if (progress < 1) {
-                requestAnimationFrame(frame);
-            } else {
-                element.textContent = finalText;
-            }
-        }
-
-        requestAnimationFrame(frame);
-    }, delayMs || 0);
-}
-
-function runArchiveVisibleTextScramble() {
-    const { sections, statusText, statusMeta } = getArchiveWindowDom();
-    const targets = [];
-
-    sections.forEach(function (section) {
-        if (section.hidden) return;
-
-        section.querySelectorAll(
-            ".archive-collection-section__title, .archive-post-group__label, .archive-post-link"
-        ).forEach(function (element) {
-            targets.push({
-                element: element,
-                finalText: getStoredOriginalText(element)
-            });
-        });
-    });
-
-    if (statusText) {
-        targets.push({
-            element: statusText,
-            finalText: statusText.textContent
-        });
-    }
-
-    if (statusMeta) {
-        targets.push({
-            element: statusMeta,
-            finalText: statusMeta.textContent
-        });
-    }
-
-    targets.forEach(function (target, index) {
-        scrambleElementToText(
-            target.element,
-            target.finalText,
-            ARCHIVE_WINDOW_CONFIG.scrambleDurationMs,
-            Math.min(index * 8, 120)
-        );
-    });
-}
-
-function showArchiveCollection(collectionLabel, collectionTitle) {
-    const { content, sections } = getArchiveWindowDom();
-
+function applyArchiveCollectionVisibility(collectionLabel) {
+    const { sections } = getArchiveWindowDom();
     const normalizedLabel = collectionLabel || "all";
-    const normalizedTitle = collectionTitle || "All";
 
     sections.forEach(function (section) {
         const shouldShow =
@@ -419,15 +323,37 @@ function showArchiveCollection(collectionLabel, collectionTitle) {
         section.hidden = !shouldShow;
         section.classList.toggle("is-hidden", !shouldShow);
     });
+}
+
+function showArchiveCollection(collectionLabel, collectionTitle) {
+    const { content } = getArchiveWindowDom();
+    const normalizedLabel = collectionLabel || "all";
+    const normalizedTitle = collectionTitle || "All";
 
     setArchiveWindowButtons(normalizedLabel);
-    updateArchiveWindowStatus(normalizedTitle, normalizedLabel);
 
-    if (content) {
-        content.scrollTop = 0;
+    if (!content) {
+        applyArchiveCollectionVisibility(normalizedLabel);
+        updateArchiveWindowStatus(normalizedTitle, normalizedLabel);
+        return;
     }
 
-    runArchiveVisibleTextScramble();
+    content.classList.remove("is-fade-in");
+    content.classList.add("is-fade-out");
+
+    window.setTimeout(function () {
+        applyArchiveCollectionVisibility(normalizedLabel);
+        updateArchiveWindowStatus(normalizedTitle, normalizedLabel);
+        content.scrollTop = 0;
+
+        content.classList.remove("is-fade-out");
+        void content.offsetWidth;
+        content.classList.add("is-fade-in");
+
+        window.setTimeout(function () {
+            content.classList.remove("is-fade-in");
+        }, ARCHIVE_WINDOW_CONFIG.switchFadeMs);
+    }, ARCHIVE_WINDOW_CONFIG.switchFadeMs);
 }
 
 function centerArchiveWindow(force) {
@@ -490,7 +416,9 @@ function openCollectionList() {
         "is-fade-in",
         ARCHIVE_WINDOW_CONFIG.openAnimationMs
     );
-    showArchiveCollection("all", "All");
+    applyArchiveCollectionVisibility("all");
+    setArchiveWindowButtons("all");
+    updateArchiveWindowStatus("All", "all");
 }
 
 function closeCollectionList() {

@@ -14,11 +14,9 @@
   inset: 0;
   z-index: 0;
   pointer-events: auto;
-  background: rgba($color-background, 0.42);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  background: rgba($color-primary, 0.2);
   opacity: 0;
-  transition: opacity 0.18s ease;
+  transition: opacity 0.14s ease;
 }
 
 .archive-window:not([hidden]) .archive-window__backdrop {
@@ -37,14 +35,13 @@
   box-sizing: border-box;
   overflow: hidden;
   pointer-events: auto;
-  background: rgba($color-post-background, 0.9);
+  background: rgba($color-post-background, 0.92);
   border: $border-secondary;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.05),
     0 18px 50px rgba(0, 0, 0, 0.34);
-  transform: translateX(-50%);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  transform: none;
+  opacity: 1;
 }
 
 .archive-window__panel.is-dragging {
@@ -53,21 +50,19 @@
 }
 
 .archive-window__panel.is-fade-in {
-  animation: archive-window-fade-in 180ms ease both;
+  animation: archive-window-fade-in 140ms ease both;
 }
 
 .archive-window__panel.is-fade-out {
-  animation: archive-window-fade-out 160ms ease both;
+  animation: archive-window-fade-out 120ms ease both;
 }
 
 @keyframes archive-window-fade-in {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(6px);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
   }
 }
 
@@ -87,7 +82,7 @@
   min-height: 1.95rem;
   padding: 0 0 0 0.45rem;
   border-bottom: $border-secondary;
-  background: rgba($color-background, 0.22);
+  background: rgba($color-primary, 0.4);
   cursor: move;
 }
 
@@ -113,7 +108,8 @@
   flex: 0 0 auto;
   appearance: none;
   border: $border-thin;
-  background: rgba($color-background, 0.16);
+  border-color: rgba($color-primary, 0.7);
+  background: #000;
   color: inherit;
   cursor: pointer;
   white-space: nowrap;
@@ -123,21 +119,20 @@
   font-size: $font-tiny * 0.96;
   line-height: 1;
   transition:
-    background-color 0.16s ease,
-    border-color 0.16s ease,
-    transform 0.16s ease,
-    opacity 0.16s ease;
+    background-color 0.12s ease,
+    border-color 0.12s ease,
+    opacity 0.12s ease;
 }
 
 .archive-collection-button:hover,
 .archive-collection-button:focus-visible {
-  background: rgba($color-primary, 0.12);
-  border-color: rgba($color-primary, 0.4);
+  border-color: rgba($color-primary, 0.65);
+  background: #000;
 }
 
 .archive-collection-button.is-active {
-  background: rgba($color-primary, 0.18);
-  border-color: rgba($color-primary, 0.78);
+  background: rgba($color-third, 0.2);
+  border-color: rgba($color-primary, 0.9);
 }
 
 .archive-window__close-button {
@@ -152,18 +147,19 @@
   font-size: 0.88rem;
   line-height: 1;
   transition:
-    background-color 0.16s ease,
-    opacity 0.16s ease;
+    background-color 0.12s ease,
+    opacity 0.12s ease;
 }
 
 .archive-window__close-button:hover,
 .archive-window__close-button:focus-visible {
-  background: rgba($color-primary, 0.14);
+  background: rgba(0, 0, 0, 0.22);
 }
 
 .archive-window__body {
   min-height: 0;
   display: block;
+  overflow: hidden;
 }
 
 .archive-window__content {
@@ -172,7 +168,17 @@
   height: 100%;
   overflow: auto;
   padding: 0.95rem 1.05rem 1rem 1.05rem;
+  opacity: 1;
+  transition: opacity 0.12s ease;
   @include thin_scrollbar;
+}
+
+.archive-window__content.is-fade-out {
+  opacity: 0;
+}
+
+.archive-window__content.is-fade-in {
+  opacity: 1;
 }
 
 .archive-collection-section {
@@ -235,6 +241,8 @@
 }
 
 .archive-window__statusbar {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -242,14 +250,25 @@
   min-height: 1.5rem;
   padding: 0.1rem 0.65rem;
   border-top: $border-secondary;
-  background: rgba($color-background, 0.22);
+  background: $color-post-background;
   font-size: $font-tiny * 0.95;
   line-height: 1.05;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.82);
+  overflow: hidden;
+}
+
+.archive-window__statusbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba($color-primary, 0.4);
+  pointer-events: none;
 }
 
 .archive-window__status-text,
 .archive-window__status-meta {
+  position: relative;
+  z-index: 1;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -258,9 +277,7 @@
 
 @media screen and (max-width: 800px) {
   .archive-window__backdrop {
-    background: rgba($color-background, 0.5);
-    backdrop-filter: blur(0);
-    -webkit-backdrop-filter: blur(0);
+    background: rgba($color-primary, 0.2);
   }
 
   .archive-window__panel {
@@ -318,6 +335,6 @@
   .archive-window__statusbar {
     min-height: 1.35rem;
     padding: 0.08rem 0.55rem;
-    background: rgba($color-background, 0.22);
+    background: rgba($color-primary, 0.4);
   }
 }
