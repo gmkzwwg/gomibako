@@ -1,38 +1,12 @@
 ---
-layout: default
-toc: false
-comment: false
-home_btn: true
-btn_text: true
-# post_list: date
+layout: index
 permalink: /
 ---
 
-<h1 class="index_title">我居住的普通垃圾箱</h1>
-
-<br>
-
-<div class="ascii_art"><pre>
-         ,        ,                                          
-        ( \      / )                                         
-         \ ·----·  /                                         
-         /.--. .--, \  .0'''~,                               
-        /\_(o) (o)_/\ /\ | /  \                              
-    ___.-.__(_c_))_.-.\ \ / / /)                             
-   (___(((_________)))_-~''/ / /                             
-    |  ||  ||  ||# ||  ||   / )                              
-    |  ||  ||  ||##||  ||   |/                               
-    |  ||  ||  ||  ||  ||   '                                
-    \  ||  ||  ||  ||##||                 __________         
-     \ ||  ||  ||  |.- -''`- -._         |我是<a href="/cv">垃圾残渣</a>|        
-     /\||  ||  ||  ;            :        '----------'        
-    |  ||  ||  || ;    ,_c_      ;              \            
-    |  ||  ||  ||; (unrecyclable) :              \           
-    |  ||  || #||.                ·              ..          
-    | c||  ||  ||Z,  ~@<a href="/test">TEST</a>~     ;              /+%^·,       
-    .,F@,_<a href="/all">all</a>__Jldbz_'= =,··,~@ ='    ..  !-@&*^)#$%^_(()_+) 
-%t@]Q&;~g\k9<}^!pZ/|,V*2`r(=xW#'u_7)J:>e{0$"L-?aB+Y[8s\F!^mR]3
-</pre></div>
-
-<!-- <h1 class="post_list_title">Post List</h1> -->
-<h1 class="post_list_title">由于太过垃圾，网站维护中……</h1>
+<!-- 这里改菜单文字和 href -->
+<a class="menu_item" href="/posts">[ FILE ]</a>
+<a class="menu_item" href="/todos">[ EDIT ]</a>
+<a class="menu_item" href="/all">[ VIEW ]</a>
+<a class="menu_item" href="/test">[ TOOLS ]</a>
+<a class="menu_item" href="/cv">[ ABOUT ]</a>
+<a class="menu_item" href="https://github.com/gmkzwwg">[ HELP ]</a>

@@ -1,0 +1,831 @@
+<!doctype html>
+<html>
+
+<head>
+  {% include head.html %}
+</head>
+
+<body>
+<div id="cyber_dump_console">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      background: #000 !important;
+    }
+
+    body > *:not(#cyber_dump_console) {
+      display: none !important;
+    }
+
+    #cyber_dump_console {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483647;
+      padding: 14px 18px;
+      box-sizing: border-box;
+      font-family: monospace;
+      text-align: left;
+      background: rgba(0, 6, 0, 0.985);
+    }
+
+    #cyber_dump_console * {
+      box-sizing: border-box;
+    }
+
+    #cyber_dump_console .console_window {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(120, 255, 120, 0.72);
+      border-radius: 4px;
+      overflow: hidden;
+      background: rgba(0, 16, 0, 0.90);
+      box-shadow:
+        0 0 0 1px rgba(120, 255, 120, 0.10) inset,
+        0 0 10px rgba(0, 255, 120, 0.08),
+        0 0 24px rgba(0, 255, 120, 0.06),
+        0 0 42px rgba(80, 255, 140, 0.04);
+    }
+
+    #cyber_dump_console .console_window::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(0, 0, 0, 0) 52%,
+          rgba(0, 0, 0, 0.08) 72%,
+          rgba(0, 0, 0, 0.22) 100%
+        );
+      opacity: 0.9;
+      z-index: 3;
+    }
+
+    #cyber_dump_console .console_window::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.01)
+        );
+      mix-blend-mode: screen;
+      animation: cyber_dump_flicker 0.18s infinite alternate;
+      z-index: 3;
+    }
+
+    #cyber_dump_console .console_titlebar,
+    #cyber_dump_console .console_statusbar {
+      position: relative;
+      z-index: 4;
+      background: rgba(22, 206, 35, 0.244);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 7px 10px;
+      backdrop-filter: blur(1px);
+      flex-shrink: 0;
+    }
+
+    #cyber_dump_console .console_titlebar {
+      border-bottom: 1px solid rgba(120, 255, 120, 0.28);
+    }
+
+    #cyber_dump_console .console_statusbar {
+      border-top: 1px solid rgba(120, 255, 120, 0.28);
+      font-size: 12px;
+    }
+
+    #cyber_dump_console .console_menubar {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 3px 10px;
+      background: rgba(22, 206, 35, 0.1);
+      border-bottom: 1px solid rgba(120, 255, 120, 0.28);
+      flex-shrink: 0;
+    }
+
+    #cyber_dump_console .menu_item {
+      display: inline-block;
+      text-decoration: none;
+      color: #baffba;
+      padding: 0px 6px;
+      /* border: 1px solid rgba(120, 255, 120, 0.18); */
+      background: rgba(65, 68, 66, 0.04);
+      transition: background 120ms ease, border-color 120ms ease, opacity 120ms ease;
+    }
+
+    #cyber_dump_console .menu_item:hover {
+      background: rgba(0, 255, 120, 0.12);
+      border-color: rgba(120, 255, 120, 0.3);
+    }
+
+    #cyber_dump_console .title_left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    #cyber_dump_console .win_btns {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    #cyber_dump_console .win_btn {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 40, 0, 0.35);
+      background: rgba(220, 255, 220, 0.32);
+      display: inline-block;
+    }
+
+    #cyber_dump_console .title_text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 13px;
+    }
+
+    #cyber_dump_console .console_screen {
+      position: relative;
+      z-index: 1;
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+      padding: 14px 16px;
+      line-height: 1.55;
+      text-align: left;
+      word-break: break-word;
+      color: #c8ffc8;
+      text-shadow:
+        0 0 2px rgba(120, 255, 120, 0.10),
+        0 0 6px rgba(120, 255, 120, 0.05),
+        0 0 12px rgba(120, 255, 120, 0.03);
+      box-shadow:
+        inset 0 0 28px rgba(120, 255, 120, 0.03),
+        inset 0 0 120px rgba(0, 0, 0, 0.18),
+        inset 0 0 10px rgba(80, 255, 120, 0.02);
+    }
+
+    #cyber_dump_console .console_screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(180, 255, 180, 0.08) 0px,
+          rgba(180, 255, 180, 0.08) 1px,
+          rgba(0, 0, 0, 0) 2px,
+          rgba(0, 0, 0, 0) 4px
+        );
+      mix-blend-mode: screen;
+      opacity: 0.22;
+      animation: cyber_dump_scan 7s linear infinite;
+    }
+
+    #cyber_dump_console .console_screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(120, 255, 120, 0.00) 0%,
+          rgba(120, 255, 120, 0.06) 45%,
+          rgba(120, 255, 120, 0.12) 50%,
+          rgba(120, 255, 120, 0.06) 55%,
+          rgba(120, 255, 120, 0.00) 100%
+        );
+      opacity: 0.16;
+      animation: cyber_dump_sweep 6s linear infinite;
+    }
+
+    #cyber_dump_console .console_screen.typing::before,
+    #cyber_dump_console .console_screen.typing::after {
+      animation-play-state: paused;
+    }
+
+    #cyber_dump_console .console_screen.typing::after {
+      opacity: 0.06;
+    }
+
+    #cyber_dump_console .console_screen.glitch_shift {
+      transform: translateX(1.2px);
+    }
+
+    #cyber_dump_console .console_screen.glitch_shift .line {
+      text-shadow:
+        -1px 0 rgba(255, 80, 80, 0.16),
+        1px 0 rgba(80, 255, 255, 0.16),
+        0 0 4px rgba(120, 255, 120, 0.06);
+    }
+
+    @keyframes cyber_dump_scan {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(4px); }
+    }
+
+    @keyframes cyber_dump_sweep {
+      0%   { transform: translateY(-110%); }
+      100% { transform: translateY(110%); }
+    }
+
+    @keyframes cyber_dump_flicker {
+      0%   { opacity: 0.018; }
+      8%   { opacity: 0.03; }
+      16%  { opacity: 0.014; }
+      24%  { opacity: 0.032; }
+      32%  { opacity: 0.018; }
+      40%  { opacity: 0.028; }
+      48%  { opacity: 0.012; }
+      56%  { opacity: 0.03; }
+      64%  { opacity: 0.018; }
+      72%  { opacity: 0.026; }
+      80%  { opacity: 0.014; }
+      88%  { opacity: 0.03; }
+      100% { opacity: 0.02; }
+    }
+
+    #cyber_dump_console .line {
+      display: block;
+      text-align: left;
+      white-space: normal;
+      margin: 0 0 2px 0;
+      animation: cyber_dump_text_jitter 0.12s steps(2, end) infinite;
+      will-change: transform;
+    }
+
+    #cyber_dump_console .line:nth-child(2n) {
+      animation-duration: 0.16s;
+    }
+
+    #cyber_dump_console .line:nth-child(3n) {
+      animation-duration: 0.19s;
+    }
+
+    @keyframes cyber_dump_text_jitter {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(0.12px, 0); }
+      50%  { transform: translate(-0.12px, 0.08px); }
+      75%  { transform: translate(0.08px, -0.08px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    #cyber_dump_console .prompt_line {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+
+    #cyber_dump_console .prompt_line.typing_active,
+    #cyber_dump_console .prompt_line.typing_active .prompt,
+    #cyber_dump_console .prompt_line.typing_active .typed {
+      animation: none !important;
+      transform: none !important;
+    }
+
+    #cyber_dump_console .prompt {
+      margin-right: 0;
+      white-space: pre-wrap;
+    }
+
+    #cyber_dump_console .typed {
+      white-space: pre-wrap;
+    }
+
+    #cyber_dump_console .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      margin-left: 1px;
+      vertical-align: -0.12em;
+      background: currentColor;
+      animation: cyber_dump_blink 1s steps(1, end) infinite;
+    }
+
+    @keyframes cyber_dump_blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    #cyber_dump_console .status_left,
+    #cyber_dump_console .status_right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    #cyber_dump_console .muted {
+      opacity: 0.85;
+    }
+  </style>
+
+  <div class="console_window">
+    <div class="console_titlebar">
+      <div class="title_left">
+        <div class="win_btns">
+          <span class="win_btn"></span>
+          <span class="win_btn"></span>
+          <span class="win_btn"></span>
+        </div>
+        <div class="title_text">trash://self_diagnostic_console</div>
+      </div>
+      <div class="muted">interactive landfill monitor</div>
+    </div>
+
+    <nav class="console_menubar">
+      {{content}}
+    </nav>
+
+    <div class="console_screen" id="trash_terminal_screen"></div>
+
+    <div class="console_statusbar">
+      <div class="status_left">
+        <span id="console_mode">mode: degraded</span>
+        <span id="console_jobs">jobs: 0</span>
+        <span id="console_state">state: booting</span>
+      </div>
+      <div class="status_right">
+        <span id="console_uptime">uptime: 00:00:00</span>
+        <span id="console_clock">--:--:--</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const root = document.getElementById("cyber_dump_console");
+      const screen = root.querySelector("#trash_terminal_screen");
+      const modeEl = root.querySelector("#console_mode");
+      const jobsEl = root.querySelector("#console_jobs");
+      const stateEl = root.querySelector("#console_state");
+      const uptimeEl = root.querySelector("#console_uptime");
+      const clockEl = root.querySelector("#console_clock");
+
+      const MAX_LINES = 130;
+      const startedAt = Date.now();
+
+      const COLORS = {
+        info: "#7aff7a",
+        ok: "#a8ffb0",
+        warn: "#ffe66d",
+        error: "#ff7b7b",
+        fail: "#ff5f87",
+        output: "#7dcfff",
+        panic: "#ff3b3b",
+        boot: "#b7ff7a",
+        sys: "#d8ffd8"
+      };
+
+      const PROMPTS = [
+        "root@trashcan:~# ",
+        "guest@ruins:/var/log# ",
+        "daemon@garbage:/core# ",
+        "nobody@ashbin:/self# ",
+        "user@junkyard:/lost+found# "
+      ];
+
+      const BOOT = [
+        ["boot", "booting trash-shell v0.0.404 ..."],
+        ["info", "mounting /memory ... ok"],
+        ["info", "mounting /regret ... ok"],
+        ["info", "mounting /delusion ... ok"],
+        ["warn", "soul.img checksum mismatch"],
+        ["fail", "confidence.service missing"],
+        ["info", "loading counterfeit composure ..."],
+        ["ok", "sarcasm engine online"],
+        ["warn", "dignity cache empty"],
+        ["output", "session opened inside an ornamental landfill."]
+      ];
+
+      const SCENES = [
+        {
+          cmd: "cat /proc/self/status",
+          lines: [
+            ["output", "Name: trash-process"],
+            ["output", "State: R (running, unfortunately)"],
+            ["warn", "这套机体像从赛博废品市场按斤买来的拼装货。"],
+            ["fail", "自尊库存为 0；嘴硬库存充足。"]
+          ]
+        },
+        {
+          cmd: "ls -lah /memory/archive",
+          lines: [
+            ["output", "stale_ambition/  broken_tone/  recycled_identity/"],
+            ["warn", "目录中 93% 为废缓存，剩余 7% 为装出来的体面。"],
+            ["info", "所谓人格稳定，只是损坏得比较均匀。"]
+          ]
+        },
+        {
+          cmd: "grep -R \"meaning\" /var/log/life 2>/dev/null",
+          lines: [
+            ["output", "no matches found"],
+            ["warn", "没有结果并不意外，这破系统出厂时就没配说明书。"],
+            ["info", "继续运转不是因为有希望，只是因为还没彻底卡死。"]
+          ]
+        },
+        {
+          cmd: "sudo systemctl restart confidence.service",
+          lines: [
+            ["error", "Failed to restart confidence.service: Unit confidence.service not found."],
+            ["warn", "查无此服务。当前运行全靠临时表演层硬撑。"],
+            ["output", "fallback => load mask_layer.so"]
+          ]
+        },
+        {
+          cmd: "find /self -name \"dignity*\"",
+          lines: [
+            ["output", "/self/cache/dignity.old"],
+            ["output", "/self/tmp/dignity.bak.corrupted"],
+            ["fail", "全部损坏。外壳还在发光，里面已经是旧零件和灰。"]
+          ]
+        },
+        {
+          cmd: "python3 ./scripts/rebuild_worldview.py",
+          lines: [
+            ["info", "collecting fragments ..."],
+            ["info", "merging irony ..."],
+            ["warn", "worldview remains unstable"],
+            ["output", "结果：世界依旧像夜班工厂，脏、响、没有出口图。"]
+          ]
+        },
+        {
+          cmd: "journalctl -n 5 --unit=heart.service",
+          lines: [
+            ["output", "heart.service: started with degraded mode"],
+            ["output", "heart.service: high noise floor detected"],
+            ["warn", "服务仍在运行，但全靠过时机制和惯性拖着。"],
+            ["info", "今天没报废，不等于今天像样。"]
+          ]
+        },
+        {
+          cmd: "du -sh /regret/* | sort -hr | head",
+          lines: [
+            ["output", "4.0G  /regret/unspoken"],
+            ["output", "2.7G  /regret/missed_timing"],
+            ["output", "1.9G  /regret/recycled_hopes"],
+            ["warn", "这不是人生统计，这是精神废料仓的盘点单。"]
+          ]
+        },
+        {
+          cmd: "echo $FUTURE",
+          lines: [
+            ["output", ""],
+            ["warn", "环境变量为空。建议不要对空字符串做史诗级联想。"]
+          ]
+        },
+        {
+          cmd: "make meaning",
+          lines: [
+            ["error", "make: *** No rule to make target 'meaning'. Stop."],
+            ["info", "构建失败。仓库里只有噪音、残片和蹩脚修辞。"]
+          ]
+        },
+        {
+          cmd: "ping -c 1 reality.gateway",
+          lines: [
+            ["output", "Request timeout for icmp_seq 0"],
+            ["warn", "reality.gateway 无响应。也可能只是识别到你后拒绝握手。"]
+          ]
+        }
+      ];
+
+      const FAULTS = [
+        {
+          cmd: "./bin/render_identity --force",
+          lines: [
+            ["info", "allocating memory ..."],
+            ["output", "loading damaged self-model ..."],
+            ["error", "Segmentation fault (core dumped)"],
+            ["fail", "身份渲染器撞进空洞地址。核心文件已落入垃圾场。"]
+          ]
+        },
+        {
+          cmd: "chmod +x /future/entrypoint && /future/entrypoint",
+          lines: [
+            ["error", "Permission denied"],
+            ["warn", "当前用户无权进入未来目录。"],
+            ["info", "有些门不是锁着，是压根没为你装上。"]
+          ]
+        },
+        {
+          cmd: "sudo insmod soul_driver.ko",
+          lines: [
+            ["error", "insmod: ERROR: could not insert module soul_driver.ko: Invalid module format"],
+            ["fail", "驱动与现实内核不兼容。这台机器从出厂起就充满拼接痕迹。"]
+          ]
+        },
+        {
+          cmd: "run-parts /etc/cron.d/doubt_everything",
+          lines: [
+            ["info", "executing scheduled task ..."],
+            ["warn", "循环怀疑任务已触发"],
+            ["panic", "kernel panic - not syncing: attempted to mount /hope on corrupted block device"],
+            ["fail", "系统进入惊厥式讽刺，随后若无其事继续上线。"]
+          ]
+        },
+        {
+          cmd: "rm -rf /mask && reboot",
+          lines: [
+            ["warn", "removing active disguise layer ..."],
+            ["error", "bus error"],
+            ["panic", "kernel panic - not syncing: exposed raw process under social load"],
+            ["output", "auto-recovery: loaded emergency sarcasm shell"]
+          ]
+        }
+      ];
+
+      function esc(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function colorOf(type) {
+        return COLORS[type] || COLORS.sys;
+      }
+
+      function tagHTML(type) {
+        return '<span style="color:' + colorOf(type) + '">[' + type.toUpperCase() + ']</span>';
+      }
+
+      function makeLine(html) {
+        const div = document.createElement("div");
+        div.className = "line";
+        div.innerHTML = html;
+        return div;
+      }
+
+      function appendLine(type, text) {
+        const line = makeLine(tagHTML(type) + " " + esc(text));
+        screen.appendChild(line);
+        trimLines();
+        stickBottom();
+      }
+
+      function trimLines() {
+        while (screen.children.length > MAX_LINES) {
+          screen.removeChild(screen.firstChild);
+        }
+      }
+
+      function stickBottom() {
+        screen.scrollTop = screen.scrollHeight;
+      }
+
+      function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
+
+      function formatClock(d) {
+        return d.toLocaleTimeString([], { hour12: false });
+      }
+
+      function formatUptime(ms) {
+        const sec = Math.floor(ms / 1000);
+        const h = String(Math.floor(sec / 3600)).padStart(2, "0");
+        const m = String(Math.floor((sec % 3600) / 60)).padStart(2, "0");
+        const s = String(sec % 60).padStart(2, "0");
+        return h + ":" + m + ":" + s;
+      }
+
+      function updateStatus() {
+        const now = new Date();
+        clockEl.textContent = formatClock(now);
+        uptimeEl.textContent = "uptime: " + formatUptime(Date.now() - startedAt);
+      }
+
+      setInterval(updateStatus, 1000);
+      updateStatus();
+
+      function setState(text) {
+        stateEl.textContent = "state: " + text;
+      }
+
+      function setMode(text) {
+        modeEl.textContent = "mode: " + text;
+      }
+
+      function setJobs(n) {
+        jobsEl.textContent = "jobs: " + n;
+      }
+
+      function createPromptLine(promptText) {
+        const line = document.createElement("div");
+        line.className = "line prompt_line typing_active";
+
+        const prompt = document.createElement("span");
+        prompt.className = "prompt";
+        prompt.textContent = promptText;
+
+        const typed = document.createElement("span");
+        typed.className = "typed";
+
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        cursor.setAttribute("aria-hidden", "true");
+
+        line.appendChild(prompt);
+        line.appendChild(typed);
+        line.appendChild(cursor);
+
+        screen.appendChild(line);
+        trimLines();
+        stickBottom();
+
+        return { line, typed, cursor };
+      }
+
+      async function typeCommandWithCorrections(cmd) {
+        const prompt = pick(PROMPTS);
+        const ui = createPromptLine(prompt);
+        const typed = ui.typed;
+        const cursor = ui.cursor;
+        const line = ui.line;
+
+        screen.classList.add("typing");
+
+        let i = 0;
+        let injectedMistake = false;
+
+        while (i < cmd.length) {
+          if (!injectedMistake && Math.random() < 0.12 && i > 2 && i < cmd.length - 2) {
+            injectedMistake = true;
+            const wrongChars = ["x", "9", "_", "-", ".", "/"];
+            const wrong = pick(wrongChars);
+            typed.textContent += wrong;
+            stickBottom();
+            await sleep(50 + Math.random() * 90);
+
+            typed.textContent = typed.textContent.slice(0, -1);
+            stickBottom();
+            await sleep(40 + Math.random() * 80);
+          }
+
+          typed.textContent += cmd[i];
+          i++;
+          stickBottom();
+          await sleep(18 + Math.random() * 34);
+        }
+
+        if (Math.random() < 0.28) {
+          const extra = pick([" ", "x", "-", "_"]);
+          typed.textContent += extra;
+          stickBottom();
+          await sleep(50 + Math.random() * 100);
+          typed.textContent = typed.textContent.slice(0, -1);
+          stickBottom();
+          await sleep(45 + Math.random() * 90);
+        }
+
+        await sleep(120 + Math.random() * 180);
+
+        cursor.remove();
+        line.classList.remove("typing_active");
+        screen.classList.remove("typing");
+      }
+
+      async function runScene(scene) {
+        setState("executing");
+        setJobs(1);
+
+        await typeCommandWithCorrections(scene.cmd);
+
+        for (const [type, text] of scene.lines) {
+          appendLine(type, text);
+          await sleep(110 + Math.random() * 220);
+        }
+
+        if (Math.random() < 0.38) {
+          appendLine("info", "process exited with code " + (Math.random() < 0.78 ? "0" : "1"));
+          await sleep(120 + Math.random() * 160);
+        }
+
+        setJobs(0);
+        setState("idle");
+      }
+
+      async function bootSequence() {
+        setMode("degraded");
+        setState("booting");
+        setJobs(0);
+
+        for (const [type, text] of BOOT) {
+          appendLine(type, text);
+          await sleep(140 + Math.random() * 220);
+        }
+
+        setState("online");
+        await typeCommandWithCorrections('watch -n 2 "tail -f /var/log/self.log"');
+        appendLine("ok", "watcher attached");
+        await sleep(240);
+      }
+
+      async function ambientNoise() {
+        const extras = [
+          ["info", "background job: scavenging usable thoughts from electronic dust ..."],
+          ["warn", "检测到多余理想主义，已移入低优先级垃圾桶。"],
+          ["output", "heartbeat => noisy but online"],
+          ["warn", "当前冷静并非稳定，只是疲劳表现得像稳定。"],
+          ["info", "rotating logs ..."],
+          ["fail", "rotated logs still smell like burnt circuitry and cheap philosophy."]
+        ];
+
+        const count = 1 + Math.floor(Math.random() * 2);
+        for (let i = 0; i < count; i++) {
+          const item = pick(extras);
+          appendLine(item[0], item[1]);
+          await sleep(90 + Math.random() * 150);
+        }
+      }
+
+      async function clearAndReboot() {
+        setState("clearing");
+        setMode("recovering");
+        setJobs(0);
+
+        appendLine("warn", "display buffer overflow approaching cosmetic threshold ...");
+        await sleep(320);
+        appendLine("info", "clearing terminal and reinitializing degraded session ...");
+        await sleep(600);
+
+        screen.innerHTML = "";
+
+        await sleep(180);
+        await bootSequence();
+      }
+
+      function startRandomGlitch() {
+        setInterval(() => {
+          if (screen.classList.contains("typing")) return;
+          if (Math.random() < 0.14) {
+            screen.classList.add("glitch_shift");
+            setTimeout(() => {
+              screen.classList.remove("glitch_shift");
+            }, 70 + Math.random() * 80);
+          }
+        }, 1400);
+      }
+
+      async function loop() {
+        startRandomGlitch();
+        await bootSequence();
+
+        let cycles = 0;
+
+        while (true) {
+          cycles++;
+
+          const scene = Math.random() < 0.23 ? pick(FAULTS) : pick(SCENES);
+          await runScene(scene);
+
+          if (Math.random() < 0.46) {
+            await ambientNoise();
+          }
+
+          if ((cycles > 4 && Math.random() < 0.05) || screen.children.length > MAX_LINES - 8) {
+            await clearAndReboot();
+            cycles = 0;
+          }
+
+          await sleep(450 + Math.random() * 950);
+        }
+      }
+
+      loop();
+    })();
+  </script>
+</div>
+</body>
+
+</html>

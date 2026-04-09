@@ -1,5 +1,4 @@
 ---
-layout: print
 category: Sheet
 title: 美丽的星云
 subclass: Cosmology

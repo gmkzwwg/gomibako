@@ -1,5 +1,4 @@
 ---
-layout: print
 category: Notes
 title: 平方和立方的差别，怎样悄悄决定了现实世界
 subclass: Basics

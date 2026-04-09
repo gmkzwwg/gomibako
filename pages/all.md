@@ -4,7 +4,7 @@ title: All Posts
 author: 垃圾残渣
 show_date: false
 category: false
-post_list: date
+post_list: false
 toc: false
 home_btn: true
 btn_text: true
