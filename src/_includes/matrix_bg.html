@@ -1,0 +1,194 @@
+<div id="matrix-bg" aria-hidden="true"
+  style="position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1;background:#000;">
+  <canvas id="matrix-bg-canvas" style="display:block;width:100%;height:100%;"></canvas>
+</div>
+<script>
+  (function () {
+    if (window.__matrixBgInitialized__) return;
+    window.__matrixBgInitialized__ = true;
+
+    var root = document.getElementById("matrix-bg");
+    var canvas = document.getElementById("matrix-bg-canvas");
+    if (!root || !canvas) return;
+
+    var ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    var TEXT = "{{ include.chars | default: site.matrix_bg_text | default: '01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-' | escape }}";
+    var chars = String(TEXT).split("");
+    if (!chars.length) chars = ["0", "1"];
+
+    var FONT_SIZE = {{ include.font_size | default: 16
+  }};
+  var FPS = {{ include.fps | default: 60 }}; // 帧率 = 速度
+  var FRAME_INTERVAL = 1000 / FPS;
+
+  var ERROR_CHANCE = {{ include.error_chance | default: 0.0008 }};
+  var RESET_CHANCE = {{ include.reset_chance | default: 0.0015 }};
+  var TRAIL_ALPHA = {{ include.trail_alpha | default: 0.09 }};
+
+  var WHITE_CHANCE = 0.14;
+
+  var width = 0;
+  var height = 0;
+  var dpr = 1;
+  var columns = 0;
+  var streams = [];
+  var rafId = 0;
+  var lastTime = 0;
+  var resizeTimer = 0;
+  var paused = false;
+
+  function rand(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  function pickChar() {
+    return chars[(Math.random() * chars.length) | 0];
+  }
+
+  function pickColor() {
+    return Math.random() < WHITE_CHANCE ? "#f2f2f2" : "#49ff49";
+  }
+
+  function makeStream(i) {
+    return {
+      x: i * FONT_SIZE,
+      row: -((Math.random() * 20) | 0),   // 用行号，不用连续像素
+      speedFrames: 1 + ((Math.random() * 2) | 0), // 1 或 2 帧前进一格
+      frameCounter: 0,
+      errorFrames: 0,
+      errorRow: 0
+    };
+  }
+
+  function setupCanvas() {
+    width = window.innerWidth || document.documentElement.clientWidth || 0;
+    height = window.innerHeight || document.documentElement.clientHeight || 0;
+
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+
+    canvas.width = Math.max(1, Math.floor(width * dpr));
+    canvas.height = Math.max(1, Math.floor(height * dpr));
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+
+    ctx.font = FONT_SIZE + "px monospace";
+    ctx.textBaseline = "top";
+
+    columns = Math.max(1, Math.floor(width / FONT_SIZE));
+    streams = new Array(columns);
+
+    for (var i = 0; i < columns; i++) {
+      streams[i] = makeStream(i);
+    }
+
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  function resetStream(s) {
+    s.row = -(((Math.random() * 12) | 0) + 2);
+    s.speedFrames = 1 + ((Math.random() * 2) | 0);
+    s.frameCounter = 0;
+    s.errorFrames = 0;
+    s.errorRow = 0;
+  }
+
+  function drawError(s) {
+    var word = "ERROR";
+    var y = s.errorRow * FONT_SIZE;
+
+    // 让第 3 个字母 R 对齐当前列
+    // E(0) R(1) R(2) O(3) R(4)
+    // 所以起点 x = 当前列 x - 2 * FONT_SIZE
+    var startX = s.x - 2 * FONT_SIZE;
+
+    ctx.save();
+    ctx.fillStyle = "#ff2a2a";
+    ctx.fillText(word, startX, y);
+    ctx.restore();
+
+    s.errorFrames--;
+    if (s.errorFrames <= 0) {
+      resetStream(s);
+    }
+  }
+
+  function drawStream(s) {
+    var x = s.x;
+    var y = s.row * FONT_SIZE;
+
+    ctx.fillStyle = pickColor();
+    ctx.fillText(pickChar(), x, y);
+
+    if (Math.random() < 0.22) {
+      ctx.fillStyle = "#ffffff";
+      ctx.fillText(pickChar(), x, y - FONT_SIZE);
+    }
+
+    if (Math.random() < ERROR_CHANCE) {
+      s.errorFrames = 4;
+      s.errorRow = s.row;
+      return;
+    }
+
+    s.frameCounter++;
+    if (s.frameCounter >= s.speedFrames) {
+      s.row += 1;              // 固定每次移动 1 格
+      s.frameCounter = 0;
+    }
+
+    if (y > height + FONT_SIZE || Math.random() < RESET_CHANCE) {
+      resetStream(s);
+    }
+  }
+
+  function renderFrame(now) {
+    if (paused) {
+      rafId = requestAnimationFrame(renderFrame);
+      return;
+    }
+
+    if (!lastTime) lastTime = now;
+    if (now - lastTime < FRAME_INTERVAL) {
+      rafId = requestAnimationFrame(renderFrame);
+      return;
+    }
+    lastTime = now;
+
+    ctx.fillStyle = "rgba(0,0,0," + TRAIL_ALPHA + ")";
+    ctx.fillRect(0, 0, width, height);
+
+    for (var i = 0; i < streams.length; i++) {
+      var s = streams[i];
+      if (s.errorFrames > 0) {
+        drawError(s);
+      } else {
+        drawStream(s);
+      }
+    }
+
+    rafId = requestAnimationFrame(renderFrame);
+  }
+
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      setupCanvas();
+    }, 120);
+  }
+
+  function onVisibilityChange() {
+    paused = document.hidden;
+  }
+
+  setupCanvas();
+  document.addEventListener("visibilitychange", onVisibilityChange, { passive: true });
+  window.addEventListener("resize", onResize, { passive: true });
+  rafId = requestAnimationFrame(renderFrame);
+  }) ();
+</script>

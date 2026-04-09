@@ -28,6 +28,308 @@ Lists files and directories and is the standard command for inspecting directory
 
 Displays directory contents as a hierarchical tree, useful for understanding project or filesystem structure.
 
+**Best high-frequency `tree` commands to memorize**
+
+```bash
+tree
+# Show the full tree of the current directory
+
+tree /path/to/dir
+# Show the tree of a specific directory
+
+tree -L 2
+# Limit output to 2 levels; useful for a quick overview
+
+tree -d
+# Show directories only; useful for studying folder structure
+
+tree -a
+# Include hidden files and directories such as .git and .env
+
+tree -I "node_modules|.git|dist|build"
+# Exclude noisy folders by pattern
+
+tree -P "*.py"
+# Show only names matching the pattern, for example Python files
+
+tree -P "*.md"
+# Show only Markdown files
+
+tree -f
+# Show full path for each entry
+
+tree -pugh
+# Show permissions, owner, group, and human-readable sizes
+
+tree -a -L 3 -I ".git|node_modules|venv|__pycache__|dist|build"
+# A practical everyday command for code projects:
+# include hidden files, limit depth, and ignore common noise directories
+
+tree -L 3 -I ".git|node_modules|venv" -o structure.txt
+# Save a filtered tree view to a text file
+
+tree -H . -o tree.html
+# Export the tree as HTML
+
+tree -d -L 3
+# Show only directories up to 3 levels deep
+
+tree -sh
+# Show sizes in human-readable form
+
+tree -C
+# Force colored output
+
+tree -A
+# Use ASCII characters instead of line-drawing characters
+```
+
+#### **Classic usage**
+
+The main point: `tree` prints directories and files in a tree-shaped layout, so the structure of a project becomes easy to read.
+
+Basic form:
+
+```bash
+tree
+```
+
+This shows the current directory recursively.
+
+If a path is given, `tree` shows that location instead:
+
+```bash
+tree /etc
+tree ~/project
+```
+
+A typical output looks like this:
+
+```bash
+.
+├── README.md
+├── src
+│   ├── main.py
+│   └── utils.py
+└── tests
+    └── test_main.py
+```
+
+This means:
+
+* `.` is the current directory
+* `src` and `tests` are subdirectories
+* indentation shows hierarchy
+* `├──` means there are more entries at the same level
+* `└──` means this is the last entry at that level
+
+**Most useful commands to learn first**
+
+1. Show only a few levels
+
+```bash
+tree -L 2
+```
+
+This is one of the most practical forms. Large folders become unreadable if every level is printed. `-L 2` means: only show two levels deep.
+
+1. Show directories only
+
+```bash
+tree -d
+```
+
+This is useful when the goal is to understand the structure of a project, not every single file.
+
+1. Include hidden files
+
+```bash
+tree -a
+```
+
+By default, hidden names such as `.git`, `.env`, and `.bashrc` are not shown. `-a` includes them.
+
+1. Ignore noisy folders
+
+```bash
+tree -I "node_modules|.git|dist"
+```
+
+This is extremely common. `-I` excludes names that match the pattern. It is often used to hide build folders, dependency folders, cache folders, and Git metadata.
+
+1. Show only certain files
+
+```bash
+tree -P "*.py"
+```
+
+`-P` keeps only names matching the pattern. This is useful for locating all Python files, Markdown files, shell scripts, and so on.
+
+1. Show full paths
+
+```bash
+tree -f
+```
+
+Without `-f`, only filenames are printed. With `-f`, each entry includes its full path.
+
+**High-value combinations**
+
+For project structure:
+
+```bash
+tree -L 2 -I "node_modules|.git|dist|build"
+```
+
+For directory design only:
+
+```bash
+tree -d -L 3
+```
+
+For Python files only:
+
+```bash
+tree -P "*.py"
+```
+
+For hidden files plus limited depth:
+
+```bash
+tree -a -L 2
+```
+
+For detailed metadata:
+
+```bash
+tree -pugh
+```
+
+This shows permissions, owner, group, and human-readable sizes.
+
+For saving output:
+
+```bash
+tree -L 3 -I ".git|node_modules|venv" > structure.txt
+```
+
+Or:
+
+```bash
+tree -L 3 -I ".git|node_modules|venv" -o structure.txt
+```
+
+**How to think about the command**
+
+A simple way to remember `tree` is to divide options into four groups:
+
+* scope: where and how deep to look
+* filter: what to include or exclude
+* display: how much detail to print
+* output: where the result goes
+
+So in practice, many real commands look like this:
+
+```bash
+tree [path] [depth control] [filters] [display options]
+```
+
+Example:
+
+```bash
+tree ~/project -L 3 -I ".git|node_modules|__pycache__" -a
+```
+
+This means:
+
+* inspect `~/project`
+* go three levels deep
+* exclude common noisy directories
+* include hidden files
+
+**A very practical default template**
+
+```bash
+tree -a -L 3 -I ".git|node_modules|venv|__pycache__|dist|build"
+```
+
+This is a good everyday command for code repositories.
+
+**If `tree` is not installed**
+
+Ubuntu / Debian:
+
+```bash
+sudo apt install tree
+```
+
+Fedora:
+
+```bash
+sudo dnf install tree
+```
+
+CentOS / RHEL:
+
+```bash
+sudo yum install tree
+```
+
+Arch Linux:
+
+```bash
+sudo pacman -S tree
+```
+
+#### **Option reference table**
+
+| Option | Meaning | Common values / inputs | What the common values mean |
+||---|---|---|
+| `tree [path]` | Show a directory tree | `.`, `/etc`, `~/project` | If no path is given, `tree` uses the current directory. Any valid directory path can be used. |
+| `-a` | Show all files | none | Includes hidden files and hidden directories, such as `.git` and `.env`. |
+| `-d` | Show directories only | none | Excludes regular files and prints only directories. |
+| `-L <level>` | Limit depth | `1`, `2`, `3`, `4` | `1` shows only the top level. `2` shows one layer below that. Larger numbers show deeper levels. |
+| `-f` | Show full path | none | Prints the full path prefix for every entry instead of only the name. |
+| `-P <pattern>` | Include only matching names | `"*.py"`, `"*.md"`, `"src*"` | `"*.py"` means only Python files. `"*.md"` means only Markdown files. `"src*"` means names beginning with `src`. |
+| `-I <pattern>` | Exclude matching names | `"node_modules"`, `"*.log"`, `"node_modules|.git|dist"` | A single name excludes one target. `"*.log"` excludes log files. Patterns separated by `|` mean “exclude any of these”. |
+| `--matchdirs` | Match directories with patterns too | none | Usually used with `-P`. Makes directory names themselves participate in matching. |
+| `--prune` | Hide empty branches | none | Commonly used with `-P` or `-I`. If filtering makes a directory branch empty, that empty branch is removed from the output. |
+| `-p` | Show permissions | none | Prints Unix permission bits such as `drwxr-xr-x`. |
+| `-u` | Show owner | none | Prints the username of the file owner. |
+| `-g` | Show group | none | Prints the group name for each entry. |
+| `-s` | Show size | none | Displays file size, usually in bytes unless combined with `-h`. |
+| `-h` | Human-readable sizes | none | Often used with `-s`. Sizes appear as `4.0K`, `12M`, `2.1G` instead of raw bytes. |
+| `-D` | Show modification time | none | Prints the last modification date and time. |
+| `--timefmt <format>` | Set time format | `"%Y-%m-%d"`, `"%F %T"`, `"%H:%M"` | `"%Y-%m-%d"` gives year-month-day. `"%F %T"` gives full date and time. `"%H:%M"` gives only hour and minute. |
+| `-t` | Sort by modification time | none | Newer or older ordering is used instead of normal alphabetical sorting. |
+| `-r` | Reverse sorting | none | Reverses the current order. Often combined with `-t`. |
+| `--dirsfirst` | Show directories before files | none | Keeps directories grouped before regular files. |
+| `-N` | Print raw filenames | none | Prevents escaping of non-ASCII characters. Useful for Chinese, Japanese, Korean, and other non-Latin filenames. |
+| `-Q` | Quote filenames | none | Wraps names in double quotes. Useful when names contain spaces or special characters. |
+| `-i` | Do not draw indentation lines | none | Removes the line graphics from the tree view. Output becomes simpler but less visual. |
+| `-A` | Use ASCII graphics | none | Uses plain ASCII characters instead of extended line-drawing characters. Useful for limited terminals. |
+| `-n` | Turn off colors | none | Disables colored output. Good for scripts, logs, or plain text copying. |
+| `-C` | Force colors | none | Forces colored output even when automatic detection would not use it. |
+| `-x` | Stay on one filesystem | none | Prevents crossing into mounted filesystems under the target directory. |
+| `-o <file>` | Write output to a file | `tree.txt`, `output.log`, `structure.md` | Saves the printed tree into a file instead of standard output. |
+| `-H <baseHREF>` | Output HTML | `.`, `/`, `https://example.com/` | Generates HTML output. `.` is common for a local relative base. A URL can be used as the base for links. |
+| `-T <title>` | Set HTML page title | `"Project Tree"`, `"Directory Index"` | Used with `-H`. Sets the HTML document title. |
+| `--charset <charset>` | Set output charset | `UTF-8`, `ASCII`, `ISO-8859-1` | `UTF-8` is the common modern default. `ASCII` is safer for very old terminals. |
+| `--filelimit <number>` | Do not descend into very large directories | `100`, `500`, `1000` | If a directory has more than this number of entries, `tree` will not expand it further. |
+| `--du` | Show directory sizes | none | Calculates cumulative directory sizes based on their contents. |
+| `--noreport` | Hide summary line | none | Suppresses the final line like “X directories, Y files”. |
+| `--help` | Show help | none | Prints the built-in help message. |
+| `--version` | Show version | none | Prints the installed version of `tree`. |
+
+**Common mistakes and easily confused points**
+
+* `-P` means include matching names, while `-I` means exclude matching names.
+* `-h` is most useful together with `-s`; by itself it does not make much sense.
+* `-L` limits depth, not the total number of files.
+* Hidden files are not shown unless `-a` is used.
+* `tree` can become too verbose on large directories; in practice, `-L` and `-I` are often essential.
+* Pattern strings usually need quotes, especially when they contain `*` or `|`, so the shell does not process them first.
+
 ### realpath
 
 Resolves a path to its canonical absolute form, which is useful when symlinks or relative paths are involved.
@@ -287,11 +589,13 @@ Copies standard input to both standard output and files and is useful for loggin
 Builds and runs commands from standard input and is commonly used to turn text input into command arguments.
 
 #### Basic Syntax
+
 ```bash
 command | xargs [options] [command]
 ```
 
 #### Common Options
+
 | Option         | Description                                                                 |
 |----------------|-----------------------------------------------------------------------------|
 | `-n [num]`     | Specifies the number of arguments per command invocation.                   |
@@ -320,11 +624,12 @@ command | xargs [options] [command]
 | `echo "path1 path2" | xargs -L 1 mkdir`           | Create directories for each path listed, one `mkdir` per line.       |
 
 #### Advanced Tips
+
 - **Parallel Execution**: Use `--max-procs` for parallel processing:
   ```bash
   cat urls.txt | xargs --max-procs=4 wget
   ```
-- **Nested Commands**: Combine `xargs` with `find`, `grep`, `awk`, etc., for flexible batch operations:
+* **Nested Commands**: Combine `xargs` with `find`, `grep`, `awk`, etc., for flexible batch operations:
   ```bash
   find . -name "*.c" | xargs grep 'main'
   ```
@@ -334,40 +639,40 @@ This cheatsheet provides a quick reference to `xargs` for handling multiple argu
 Here are some advanced `xargs` tips that help leverage its full power:
 
 1. **Limit Arguments per Command Execution**
-   - Using `-n` and `-L` together allows you to control the number of arguments and lines, creating more flexibility in splitting tasks.
+   * Using `-n` and `-L` together allows you to control the number of arguments and lines, creating more flexibility in splitting tasks.
    ```bash
    cat large_list.txt | xargs -n 5 -L 2 echo
    ```
    This command processes 5 arguments at a time, but reads 2 lines per command invocation.
 
 2. **Execute Commands in Parallel with Output Ordering**
-   - `xargs` with `--max-procs` runs commands in parallel but can have mixed output. Combine with `wait` or use output redirection to maintain order.
+   * `xargs` with `--max-procs` runs commands in parallel but can have mixed output. Combine with `wait` or use output redirection to maintain order.
    ```bash
    cat urls.txt | xargs -n 1 -P 4 -I {} sh -c 'wget {} -O {}.html && echo "Downloaded {}"'
    ```
    Here, 4 downloads run in parallel with the downloaded filenames ordered correctly.
 
 3. **Avoid Errors with Filenames Containing Spaces or Special Characters**
-   - When working with files with spaces, use `-print0` in `find` and `-0` in `xargs` to handle special characters safely.
+   * When working with files with spaces, use `-print0` in `find` and `-0` in `xargs` to handle special characters safely.
    ```bash
    find /path -name "*.txt" -print0 | xargs -0 grep 'pattern'
    ```
 
 4. **Pipe Command Output to `xargs` as Input for Other Commands**
-   - Chain `xargs` with multiple commands to perform compound operations.
+   * Chain `xargs` with multiple commands to perform compound operations.
    ```bash
    cat list.txt | xargs -I {} sh -c 'echo "Processing {}" && grep "keyword" {} && echo "Done with {}"'
    ```
    This executes `echo`, `grep`, and another `echo` for each item in `list.txt`.
 
 5. **Control Command Failure with `xargs` and `||`**
-   - Set up a fallback command to handle failed executions using `||`.
+   * Set up a fallback command to handle failed executions using `||`.
    ```bash
    cat files.txt | xargs -I {} sh -c 'cp {} /backup || echo "Failed to copy {}"'
    ```
 
 6. **Batch Process Files in Chunks**
-   - Sometimes you want to process files in batches (e.g., 10 at a time). Use `-n` for chunking and a loop for multi-batch processing.
+   * Sometimes you want to process files in batches (e.g., 10 at a time). Use `-n` for chunking and a loop for multi-batch processing.
    ```bash
    cat files.txt | xargs -n 10 | while read batch; do
        echo "Processing batch: $batch"
@@ -376,25 +681,25 @@ Here are some advanced `xargs` tips that help leverage its full power:
    ```
 
 7. **Run Interactive Commands Using `xargs`**
-   - For commands that need interaction (like `rm -i`), combine `xargs` with `-p` for user confirmation:
+   * For commands that need interaction (like `rm -i`), combine `xargs` with `-p` for user confirmation:
    ```bash
    ls *.tmp | xargs -p rm
    ```
 
 8. **Capture Standard Error and Redirect Outputs Separately**
-   - To handle errors or redirect specific outputs, redirect `stderr` to a log while still displaying `stdout`.
+   * To handle errors or redirect specific outputs, redirect `stderr` to a log while still displaying `stdout`.
    ```bash
    cat files.txt | xargs -I {} sh -c 'cp {} /backup 2>>error.log'
    ```
 
 9. **Use `xargs` with `rsync` or `scp` for Remote Operations**
-   - Sync or copy multiple files to a remote server using `xargs`.
+   * Sync or copy multiple files to a remote server using `xargs`.
    ```bash
    cat files.txt | xargs -I {} rsync -av {} user@remote:/destination/
    ```
 
 10. **Process Command Substitution with `xargs`**
-   - Use command substitution to pass `xargs` output to another command inline.
+* Use command substitution to pass `xargs` output to another command inline.
    ```bash
    echo $(cat files.txt | xargs echo)
    ```
@@ -402,7 +707,7 @@ Here are some advanced `xargs` tips that help leverage its full power:
 
 These tips allow `xargs` to streamline batch processing tasks, especially in complex or parallel workflows.
 
-#### xargs: unmatched single quote;
+#### xargs: unmatched single quote
 
 ls | xargs -d "\n" -I {} ffmpeg -i {} -q:a 0 -map a {}.mp3
 
@@ -447,7 +752,6 @@ Waits for background jobs or child processes to finish and is essential in shell
 ### grep
 
 Searches text using regular expressions and is the standard Unix filtering tool.
-
 
 `grep` is a command-line utility in Unix and Linux systems used to search for specific patterns or text within files. Its name stands for `Global Regular Expression Print`. grep is powerful and commonly used for text processing, system administration, and searching logs or codebases.
 
@@ -531,7 +835,6 @@ Edits text streams non-interactively and is used for substitutions, deletions, a
 ### awk
 
 Processes text by fields and patterns and is one of the most important Unix text-processing languages.
-
 
 <table>
   <tr>
@@ -812,7 +1115,6 @@ SELECTIVE DELETION OF CERTAIN LINES:
  awk '!a[$0]++'                     # most concise script
  awk '!($0 in a){a[$0];print}'      # most efficient script
 ```
-
 
 ### cut
 

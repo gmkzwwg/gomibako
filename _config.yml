@@ -8,9 +8,9 @@ permalink           : /:title/
 description         : "Personal rubbish of gmkzwwg"
 markdown            : kramdown
 statement           : "Designed by gmkzwwg, All Rights Reserved"
-bgtext              : "αβγδεζηθικλμνξοπρστυφχψω∝∞∑∏∪∩∈∵∴⊥∠⊙≌∽√∀∂∆∇⋈∅∫∬∳∯∱∲ℂℍℚℝℕℙℤⅈⅉⅇℼℽℵ" # texts randomly displayed in background
-# bgtext              : "01"
-# bgtext              : "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+# matrix_bg_text             : "αβγδεζηθικλμνξοπρστυφχψω∝∞∑∏∪∩∈∵∴⊥∠⊙≌∽√∀∂∆∇⋈∅∫∬∳∯∱∲ℂℍℚℝℕℙℤⅈⅉⅇℼℽℵ" # texts randomly displayed in background
+# matrix_bg_text              : "01"
+matrix_bg_text             : "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-"
 
 
 # 2. Collections

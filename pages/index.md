@@ -4,7 +4,6 @@ toc: false
 comment: false
 home_btn: true
 btn_text: true
-footer: true
 # post_list: date
 permalink: /
 ---
