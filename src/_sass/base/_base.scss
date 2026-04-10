@@ -252,7 +252,10 @@ input[type="checkbox"]:checked::before {
   font-size: 15px;
   font-weight: bold;
 }
-
+// 中文缩进
+.content p.zh-paragraph {
+  text-indent: 2em;
+}
 // resize table when screen is thin
 
 @media screen and (max-width: 800px) and (min-width: 400px) {
