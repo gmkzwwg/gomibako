@@ -4,7 +4,51 @@
 <head>
   {% include head.html %}
 </head>
-
+<!-- 功能：
+1. 全屏覆盖显示
+   * 整个界面固定铺满浏览器视口。
+   * 四周保留少量边距，形成终端窗口外框效果。
+   * 页面其他内容被隐藏，只显示这个界面与矩阵雨背景。
+2. 终端主窗口
+   * 独立的 `cyber_dump_console` 终端面板。
+   * 包含标题栏、菜单栏、主显示区、状态栏。
+   * 终端窗口使用半透明黑色背景，可透出后方动画。
+3. 标题栏与状态栏
+   * 标题栏更矮，视觉更接近老式终端。
+   * 边框、标题栏、状态栏颜色增强，偏黑客帝国绿色。
+   * 标题栏按钮改为纯文字，不再使用圆点和边框。
+4. 菜单栏
+   * 菜单栏为独立 HTML 元素。
+   * 每个菜单项都可直接修改显示文字和跳转链接。
+   * 可按需要增加、删除、重排菜单项。
+5. 终端动态输出
+   * 自动循环输出伪命令和伪日志。
+   * 日志内容分为普通场景和故障场景。
+   * 支持 `Segmentation fault`、`Permission denied`、`kernel panic` 等故障演出。
+6. 模拟输入效果
+   * 命令会逐字输入。
+   * 输入过程中会随机打错，再退格修正。
+   * 光标会闪烁。
+   * 已修复输入期间文字“滚动/抖动”的问题。
+7. 文本视觉效果
+   * 扫描线效果。
+   * CRT 式轻微闪烁。
+   * 字符轻微抖动。
+   * 偶发水平错位 glitch 效果。
+   * 不使用 `pre`，文本左对齐，适合普通块布局。
+8. 日志管理
+   * 限制终端中显示的最大条目数。
+   * 超出上限后自动删除最旧内容。
+   * 偶尔自动清屏并重新启动终端会话。
+9. 状态信息
+   * 状态栏显示当前模式、任务数、运行状态。
+   * 显示实时系统时钟。
+   * 显示启动后的累计运行时间。
+10. 可配置初始化参数
+    * 通过 `initMatrixRain({...})` 统一初始化。
+    * 可调字体大小、颜色、白字比例、速度、拖尾长度、帧率、淡出强度、发光强度等。
+    * 支持重新初始化、停止、启动、销毁、窗口尺寸变化自适应。
+-->
 <body>
 <div id="cyber_dump_console">
   <style>
@@ -41,12 +85,12 @@
       height: 100%;
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(120, 255, 120, 0.72);
+      border: 1px solid rgba(15, 202, 28, 0.72);
       border-radius: 4px;
       overflow: hidden;
       background: rgba(0, 16, 0, 0.90);
       box-shadow:
-        0 0 0 1px rgba(120, 255, 120, 0.10) inset,
+        0 0 0 1px rgba(15, 202, 28, 0.10) inset,
         0 0 10px rgba(0, 255, 120, 0.08),
         0 0 24px rgba(0, 255, 120, 0.06),
         0 0 42px rgba(80, 255, 140, 0.04);
@@ -89,22 +133,22 @@
     #cyber_dump_console .console_statusbar {
       position: relative;
       z-index: 4;
-      background: rgba(22, 206, 35, 0.244);
+      background: rgba(15, 202, 28, 0.244);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 7px 10px;
+      padding: 4px 10px;
       backdrop-filter: blur(1px);
       flex-shrink: 0;
     }
 
     #cyber_dump_console .console_titlebar {
-      border-bottom: 1px solid rgba(120, 255, 120, 0.28);
+      border-bottom: 1px solid rgba(15, 202, 28, 0.28);
     }
 
     #cyber_dump_console .console_statusbar {
-      border-top: 1px solid rgba(120, 255, 120, 0.28);
+      border-top: 1px solid rgba(15, 202, 28, 0.28);
       font-size: 12px;
     }
 
@@ -115,10 +159,13 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
-      padding: 3px 10px;
-      background: rgba(22, 206, 35, 0.1);
-      border-bottom: 1px solid rgba(120, 255, 120, 0.28);
+      padding: 1px 10px;
+      background: rgba(15, 202, 28, 0.1);
+      border-bottom: 1px solid rgba(15, 202, 28, 0.28);
       flex-shrink: 0;
+      p {
+        margin: 0;
+      }
     }
 
     #cyber_dump_console .menu_item {
@@ -126,14 +173,14 @@
       text-decoration: none;
       color: #baffba;
       padding: 0px 6px;
-      /* border: 1px solid rgba(120, 255, 120, 0.18); */
+      /* border: 1px solid rgba(15, 202, 28, 0.18); */
       background: rgba(65, 68, 66, 0.04);
       transition: background 120ms ease, border-color 120ms ease, opacity 120ms ease;
     }
 
     #cyber_dump_console .menu_item:hover {
       background: rgba(0, 255, 120, 0.12);
-      border-color: rgba(120, 255, 120, 0.3);
+      border-color: rgba(15, 202, 28, 0.3);
     }
 
     #cyber_dump_console .title_left {
@@ -178,11 +225,11 @@
       word-break: break-word;
       color: #c8ffc8;
       text-shadow:
-        0 0 2px rgba(120, 255, 120, 0.10),
-        0 0 6px rgba(120, 255, 120, 0.05),
-        0 0 12px rgba(120, 255, 120, 0.03);
+        0 0 2px rgba(15, 202, 28, 0.10),
+        0 0 6px rgba(15, 202, 28, 0.05),
+        0 0 12px rgba(15, 202, 28, 0.03);
       box-shadow:
-        inset 0 0 28px rgba(120, 255, 120, 0.03),
+        inset 0 0 28px rgba(15, 202, 28, 0.03),
         inset 0 0 120px rgba(0, 0, 0, 0.18),
         inset 0 0 10px rgba(80, 255, 120, 0.02);
     }
@@ -213,11 +260,11 @@
       background:
         linear-gradient(
           to bottom,
-          rgba(120, 255, 120, 0.00) 0%,
-          rgba(120, 255, 120, 0.06) 45%,
-          rgba(120, 255, 120, 0.12) 50%,
-          rgba(120, 255, 120, 0.06) 55%,
-          rgba(120, 255, 120, 0.00) 100%
+          rgba(15, 202, 28, 0.00) 0%,
+          rgba(15, 202, 28, 0.06) 45%,
+          rgba(15, 202, 28, 0.12) 50%,
+          rgba(15, 202, 28, 0.06) 55%,
+          rgba(15, 202, 28, 0.00) 100%
         );
       opacity: 0.16;
       animation: cyber_dump_sweep 6s linear infinite;
@@ -240,7 +287,7 @@
       text-shadow:
         -1px 0 rgba(255, 80, 80, 0.16),
         1px 0 rgba(80, 255, 255, 0.16),
-        0 0 4px rgba(120, 255, 120, 0.06);
+        0 0 4px rgba(15, 202, 28, 0.06);
     }
 
     @keyframes cyber_dump_scan {
