@@ -4,7 +4,7 @@ title: World History Timeline
 subclass: Global
 ---
 
-## Part I — Origins of Humanity and the First Settled Worlds c. 300,000 BCE–4000 BCE
+## Origins of Humanity and the First Settled Worlds c. 300,000 BCE–4000 BCE
 
 Timeline:
 
@@ -98,7 +98,7 @@ Timeline:
 
     * These zones became important, but world history did not begin only in great river basins. Other ecologies also produced complexity, mobility, and innovation.
 
-## Part II — Cities, States, and the First Interregional Orders c. 4000 BCE–1200 BCE
+## Cities, States, and the First Interregional Orders c. 4000 BCE–1200 BCE
 
 Timeline:
 
@@ -201,7 +201,7 @@ Timeline:
 
     * The Americas were not outside history before later transoceanic contact. They followed their own long and creative civilizational paths.
 
-## Part III — Classical Empires and the Age of Foundational Thought c. 1200 BCE–300 CE
+## Classical Empires and the Age of Foundational Thought c. 1200 BCE–300 CE
 
 Timeline:
 
@@ -488,8 +488,6 @@ Timeline:
 
     * Ancient imperial rule was not always justified only through glory and domination. It could also speak in the language of remorse, welfare, and ethical responsibility.
 
-
-
 * c. 200 BCE–200 CE
 
   * Afro-Eurasia becomes more densely connected through empires, merchants, roads, and moving frontiers
@@ -704,7 +702,7 @@ Timeline:
 
     * The more worlds depend on long chains of exchange and legitimacy, the more vulnerable they become when those chains are disrupted.
 
-## Part IV — Late Antiquity and the Remaking of the Old Worlds c. 300 CE–700 CE
+## Late Antiquity and the Remaking of the Old Worlds c. 300 CE–700 CE
 
 Timeline:
 
@@ -986,7 +984,7 @@ Timeline:
 
     * Its later global power should not be projected backward onto its early medieval condition.
 
-## Part V — Regional Florescence and Expanding Exchange c. 700 CE–1200 CE
+## Regional Florescence and Expanding Exchange c. 700 CE–1200 CE
 
 Timeline:
 
@@ -1205,7 +1203,7 @@ Timeline:
 
     * World history is often made through the meeting of multiple strong regions rather than through the expansion of one universal core.
 
-## Part VI — Mongol Expansion and the High Integration of Afro-Eurasia c. 1200 CE–1450 CE
+## Mongol Expansion and the High Integration of Afro-Eurasia c. 1200 CE–1450 CE
 
 Timeline:
 
@@ -1453,7 +1451,7 @@ Timeline:
 
     * Any timeline that starts “global history” with Europe’s oceanic expansion misses the centuries of integration that made that expansion possible and intelligible.
 
-## Part VII — Oceanic Expansion and the Making of the Early Modern World c. 1450 CE–1650 CE
+## Oceanic Expansion and the Making of the Early Modern World c. 1450 CE–1650 CE
 
 Timeline:
 
@@ -1661,7 +1659,7 @@ Timeline:
 
     * European powers first became important by entering existing networks before they became capable of dominating many of them.
 
-## Part VIII — Empire, Commerce, Slavery, and Revolution c. 1650 CE–1800 CE
+## Empire, Commerce, Slavery, and Revolution c. 1650 CE–1800 CE
 
 Timeline:
 
@@ -1861,7 +1859,7 @@ Timeline:
 
     * Revolution and slavery, liberty and empire, industry and coercion all entered the new century together.
 
-## Part IX — Industry, Empire, and the Global Nineteenth Century c. 1800 CE–1914 CE
+## Industry, Empire, and the Global Nineteenth Century c. 1800 CE–1914 CE
 
 Timeline:
 
@@ -2092,7 +2090,7 @@ Timeline:
 
     * Dense trade, advanced technology, and diplomatic complexity can coexist with catastrophic war.
 
-## Part X — World War, Revolution, and Catastrophe 1914 CE–1945 CE
+## World War, Revolution, and Catastrophe 1914 CE–1945 CE
 
 Timeline:
 
@@ -2339,7 +2337,7 @@ Timeline:
 
     * The twentieth century repeatedly showed that technical brilliance can deepen humanity’s capacity for destruction.
 
-## Part XI — Decolonization, the Cold War, and Postwar Transformation 1945 CE–1991 CE
+## Decolonization, the Cold War, and Postwar Transformation 1945 CE–1991 CE
 
 Timeline:
 
@@ -2605,7 +2603,7 @@ Timeline:
 
     * The fall of one rival system often exposes rather than resolves the deeper contradictions of the world order that remains.
 
-## Part XII — Globalization, Digital Power, and the Unfinished Present 1991 CE–present
+## Globalization, Digital Power, and the Unfinished Present 1991 CE–present
 
 Timeline:
 
