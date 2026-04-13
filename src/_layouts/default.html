@@ -6,13 +6,21 @@
   {% include copy_code_button.html %}
   {% include matrix_letter_bomb.html %}
   {% include title_hacker.html %}
+  {% if page.anticopy == true %}
+  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/anticopy.js"></script>
+  {% endif %}
+  {% if page.watermark == true %}
+  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/watermark.js"></script>
+  {% endif %}
   {% if page.layout == "bilingual" %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/bilingual.js"></script>
   {% endif %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/image-viewer.js""></script>
+  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/context-menu.js"></script>
   </head>
 
   <body class=" page">
+    {% include context_menu.html %}
     {% if page.todos != false %}
      {% include todo_summary.html %}
       {% endif %}
@@ -42,33 +50,55 @@
       });
     });
   </script>
+
+  <!-- 2em Indent for Chinese Paragraph -->
+  <!-- page.language should be set as "zh" -->
+  {% assign lang = page.language | default: "" | strip %}
+  {% if lang == "zh" or lang == "中文" or lang == "汉语" %}
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const paragraphs = document.querySelectorAll(".content p");
+      const container = document.querySelector(".content");
+      if (!container) return;
 
-      paragraphs.forEach(function (p) {
+      container.querySelectorAll("p").forEach(function (p) {
+        if (
+          p.closest("li, ul, ol, table, thead, tbody, tfoot, tr, th, td, blockquote, dl, dt, dd, pre, code, summary, details")
+        ) {
+          return;
+        }
+
+        if (
+          p.querySelector(".katex-display, .MathJax_Display, mjx-container, .katex, .MathJax")
+        ) {
+          return;
+        }
+
         const text = p.textContent.trim();
-
         if (!text) {
           return;
         }
 
-        const chineseMatches = text.match(/[\u4E00-\u9FFF]/g) || [];
-        const chineseCount = chineseMatches.length;
-        const totalCount = text.replace(/\s+/g, "").length;
+        const chars = Array.from(text).filter(function (ch) {
+          return !/\s/.test(ch);
+        });
 
-        if (totalCount === 0) {
+        if (chars.length === 0) {
           return;
         }
 
-        const chineseRatio = chineseCount / totalCount;
+        const chineseCount = chars.filter(function (ch) {
+          return /[\u4E00-\u9FFF]/.test(ch);
+        }).length;
 
-        if (chineseRatio >= 0.3) {
-          p.classList.add("zh-paragraph");
+        const ratio = chineseCount / chars.length;
+
+        if (ratio > 0.5) {
+          p.classList.add("zh-indent");
         }
       });
     });
   </script>
+  {% endif %}
   <!-- Main Content -->
   {% include matrix_bg.html %}
   {% include collection_list.html %}

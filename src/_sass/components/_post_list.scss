@@ -4,11 +4,26 @@
     color: $color-primary;
     text-transform: capitalize;
     @include simple_link_style;
+    text-align: left;
   }
   .td_date {
-    max-width: 100px;
+    width: 110px !important;
+    text-align: center;
   }
   .td_category {
-    max-width: 150px;
+    width: 90px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .td_title {
+    width: fit-content;
+  }
+    .td_date {
+    width: fit-content;
+  }
+  .td_category {
+    width: fit-content;
   }
 }

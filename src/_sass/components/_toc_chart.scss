@@ -27,20 +27,20 @@
 
 .liquid-toc__body {
   display: grid;
-  padding: 0 0 0.5rem 0;
+  padding: 0 0 0.4rem 0;
   gap: 0.75rem;
 }
 
 .liquid-toc__row {
   display: grid;
-  grid-template-columns: minmax(8rem, 12rem) 1fr;
+  grid-template-columns: minmax(4rem, 9rem) 1fr;
   gap: 1.25rem;
   align-items: stretch;
-  margin: 0 0.5rem;
-  padding: 0.5rem 0.5rem;
+  margin: 0 0.4rem;
+  padding: 0.4rem 0.4rem;
   border: 1px solid $color-primary;
   background: rgba(0, 0, 0, 0.02);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
@@ -72,7 +72,7 @@
 
 .liquid-toc__row--split {
   display: grid;
-  grid-template-columns: minmax(8rem, 12rem) 1fr;
+  grid-template-columns: minmax(4rem, 9rem) 1fr;
   gap: 1.25rem;
   align-items: stretch;
 }
