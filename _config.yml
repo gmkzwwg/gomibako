@@ -11,7 +11,7 @@ description         : "Personal rubbish of gmkzwwg"
 statement           : "Designed by gmkzwwg, All Rights Reserved"
 archive_btn_text    : Trash
 home_btn_text       : Bin
-matrix_bg_text             : "αβγδεζηθικλμνξοπρστυφχψω∀∂∆∇⋈∅∫∳ℂℍℚℝℕℙℤⅈⅉⅇℼℽ" # texts randomly displayed in background
+matrix_bg_text             : "αβγδεζηθικλμνξοπρστυφχψω#$%&*+-" # texts randomly displayed in background
 # matrix_bg_text             : "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-"
 
 # 2. Collections
