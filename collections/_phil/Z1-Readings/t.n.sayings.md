@@ -119,6 +119,19 @@ Politics: Man is a political animal.
 We should consider every day lost on which we have not danced at least once.
   - 每一个不曾起舞的日子，都是对生命的辜负。
 
+## 亨利·柏格森
+
+那些听不见音乐的人认为那些跳舞的人疯了
+
+Il suffit que nous bouchions nos oreilles au son de la musique, dans un salon ou l'on danse pour que les danseurs nous paraissent aussitot ridicules. 
+
+It is enough for us to stop up our ears to the sound of music, in a room where people are dancing, in order for the dancers to at once appear ridiculous.
+
+作者：CaoRainy
+链接：https://www.zhihu.com/question/40310910/answer/557225351
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 ## 怀特海 Alfred North Whitehead 1861 - 1947
 
 - “整个西方哲学史，无非是对柏拉图的一系列注脚。”

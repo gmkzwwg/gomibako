@@ -1102,7 +1102,7 @@ If you want, I can turn this into a cleaner one-page cheat sheet with only the p
 
 1. 写两遍
 2. 主要用英文，多语言夹杂
-
+3. 命令、辱骂之后，llm会表现得更好
 ## Using Claude / ChatGPT / Gemini
 
 ## Hints for where to use LLMs

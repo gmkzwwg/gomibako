@@ -5,83 +5,821 @@ subclass: Programming
 todo: 用代码理解代码美学，真正地看到权衡利弊，而不是单纯对概念泛泛而谈
 ---
 
-Video Course: [Youtube @CodeAesthetic](https://www.youtube.com/@CodeAesthetic)
-
-## Naming Variables
+## Naming
 
 `Don't` name variables with **single letter**.
-  - e.g. i, x, y.
-  - Code is not a mathematical expression, which are invented for simplicity.
+* e.g. i, x, y.
+* Code is not a mathematical expression, which are invented for simplicity.
 
 `Don't` **abbreviate** names.
-  - Outdated. Context aren't acknowledged.
+* Outdated. Context aren't acknowledged.
 
 `Don't` put **types** in variable names.
-  - Outdated. Nowadays *static typed languages* could tell you exactly what type a symbol is.
+* Outdated. Nowadays *static typed languages* could tell you exactly what type a symbol is.
 
 `Show the unit` in the variable name.
-  - A better way is implementing a new type，with which users no longer needs to consider the unit.
-  - e.g. int Delay() -> int DelaySeconds() -> timeSpan Delay()
+* A better way is implementing a new type，with which users no longer needs to consider the unit.
+* e.g. int Delay() -> int DelaySeconds() -> timeSpan Delay()
 
 `Don't` put types in your types.
-  - e.g. AbstractX, BaseX, InterfaceX.
-  - Users won't care about this.
+* e.g. AbstractX, BaseX, InterfaceX.
+* Users won't care about this.
 
 `Refactor` if there are **"Utils"**.
-  - In most cases, these codes could be included in the specific classes, or implemented as Generic Classes.
-  - Additionally, abstracting general patterns and building own utility packages are important abilities for programmers.
+* In most cases, these codes could be included in the specific classes, or implemented as Generic Classes.
+* Additionally, abstracting general patterns and building own utility packages are important abilities for programmers.
 
-## Comments and Documentation
+## Commenting
 
-### Code is a bettter way to express intent about code
+#### Code is a bettter way to express intent about code
 
 In Conditional Statement `if`:
-  - Create a well-named constant to represent the variable instead.
-    - e.g. "if status == 5: ## MESSAGE_SENT" -> "if status == MESSAGE_SENT:", where "MESSAGE_SENT" is 5.
-  - When the conditions is too long or complicated, better to create a well-named function to replace the condition than comments.
-    - e.g. "if can_do_sth?():"
+* Create a well-named constant to represent the variable instead.
+  * e.g. "if status == 5: ### MESSAGE_SENT" -> "if status == MESSAGE_SENT:", where "MESSAGE_SENT" is 5.
+* When the conditions is too long or complicated, better to create a well-named function to replace the condition than comments.
+  * e.g. "if can_do_sth?():"
 
 Use built-in functions of a language to state the situation of code.
-  - Better to `throw Exceptions or Errors` than using comments to tell you what is invalid.
+* Better to `throw Exceptions or Errors` than using comments to tell you what is invalid.
 
 Comments can **lie**, and **get bugs** like code.
-  - There's no way to test comments.
-  - Comments may be not kept updated when code changes.
+* There's no way to test comments.
+* Comments may be not kept updated when code changes.
 
 Don't comment, unless there is:
   1. **Non obvious** Performance Optimization.
   2. Reference to Math or Algorithms.
 
-### Documentation v.s. Comments
+#### Documentation v.s. Comments
 
 Code documentation tells how code **is used**, by describing the high-level architecutre and public APIs of a system.
-  - What to document: 
-    - what a class or API represents; 
-    - Interface expectations: thread safety, possible states, error conditions.
+* What to document:
+  * what a class or API represents;
+  * Interface expectations: thread safety, possible states, error conditions.
 
 Comments tell you how code **worked**.
 
-## Abstraction
+## Nesting and Conditioning
+
+**Definition**: This guide explains how to use **conditional logic**, **nesting**, and **code depth** well. The goal is not to eliminate nesting completely. The goal is to make code easy to read, easy to change, and hard to break.
+
+**Conclusion**: Deep nesting is not always wrong. It becomes a problem when it hides the structure of the program, mixes too many concerns, or makes errors hard to detect. Good code keeps structure visible, limits depth, and isolates complexity.
+
+### 1. Why nesting becomes a problem
+
+**Background**: Nesting appears whenever one block is placed inside another block. This happens in many languages:
+
+* `if` inside `if`
+* loops inside conditionals
+* UI elements inside containers
+* helper calls inside other expressions
+
+Nesting is natural. The problem begins when a reader must mentally track too many layers at once.
+
+Badly nested code usually causes three things:
+
+* structure becomes hard to see
+* bugs become easier to introduce
+* changes become more expensive
+
+For example, this Python code is valid, but difficult to scan:
+
+```python
+def process_orders(orders, user):
+    if user is not None:
+        if user.is_active:
+            if orders:
+                for order in orders:
+                    if order.is_paid:
+                        if not order.is_shipped:
+                            if order.total > 100:
+                                print(f"Priority order: {order.id}")
+```
+
+A reader must track many nested conditions before reaching the actual action.
+
+### 2. The main principle: make the shape of the code obvious
+
+**Analysis**: Good code lets the reader answer these questions quickly:
+
+* What is the main path?
+* What are the exceptional cases?
+* Where does each block begin and end?
+* What part is structure, and what part is logic?
+
+When these answers are not obvious, the code is too tangled.
+
+Compare the earlier example with this version:
+
+```python
+def process_orders(orders, user):
+    if user is None:
+        return
+
+    if not user.is_active:
+        return
+
+    if not orders:
+        return
+
+    for order in orders:
+        if not order.is_paid:
+            continue
+
+        if order.is_shipped:
+            continue
+
+        if order.total <= 100:
+            continue
+
+        print(f"Priority order: {order.id}")
+```
+
+This version is flatter. The logic is the same, but the structure is much clearer.
+
+**Conclusion**: Prefer code that reveals the main flow early and pushes exceptional cases out of the way.
+
+### 3. Deep nesting is not automatically bad
+
+**Definition**: Nesting is justified when the problem itself is hierarchical.
+
+Examples include:
+
+* tree traversal
+* recursive parsing
+* nested menus
+* document structures
+* JSON-like data with real parent-child depth
+
+For example, recursive traversal is naturally nested:
+
+```python
+def print_tree(node, level=0):
+    print("  " * level + node["name"])
+    for child in node.get("children", []):
+        print_tree(child, level + 1)
+```
+
+This is acceptable because the data is genuinely nested.
+
+**Conclusion**: Nesting is fine when it matches the shape of the data or the problem. It is poor style when it exists only because logic was piled together carelessly.
+
+### 4. A practical rule: avoid making the reader track two structures at once
+
+**Analysis**: One common source of confusion is forcing the reader to track two separate hierarchies at the same time.
+
+For example, in frontend code, this often happens when **business rules** and **UI structure** are interwoven too tightly.
+
+A React example:
+
+```jsx
+function Dashboard({ user, reports }) {
+  return (
+    <div>
+      {user ? (
+        user.isAdmin ? (
+          reports.length > 0 ? (
+            <section>
+              {reports.map(report =>
+                report.isPublished ? (
+                  <article key={report.id}>{report.title}</article>
+                ) : null
+              )}
+            </section>
+          ) : (
+            <p>No reports available.</p>
+          )
+        ) : (
+          <p>Access denied.</p>
+        )
+      ) : (
+        <p>Please sign in.</p>
+      )}
+    </div>
+  );
+}
+```
+
+This is not impossible to read, but it is harder than necessary because UI nesting and conditional nesting are tightly mixed.
+
+A clearer version:
+
+```jsx
+function Dashboard({ user, reports }) {
+  if (!user) {
+    return <p>Please sign in.</p>;
+  }
+
+  if (!user.isAdmin) {
+    return <p>Access denied.</p>;
+  }
+
+  const publishedReports = reports.filter(report => report.isPublished);
+
+  if (publishedReports.length === 0) {
+    return <p>No reports available.</p>;
+  }
+
+  return (
+    <section>
+      {publishedReports.map(report => (
+        <article key={report.id}>{report.title}</article>
+      ))}
+    </section>
+  );
+}
+```
+
+**Conclusion**: Separate structural layout from branching logic whenever possible.
+
+### 5. The most useful technique: handle special cases early
+
+**Definition**: This is often called a **guard clause** or **early return** pattern.
+
+Instead of wrapping the main logic in many layers of `if`, reject invalid cases first.
+
+Bad:
+
+```javascript
+function sendEmail(user, message) {
+  if (user) {
+    if (user.email) {
+      if (message) {
+        if (message.length <= 500) {
+          emailService.send(user.email, message);
+        }
+      }
+    }
+  }
+}
+```
+
+Better:
+
+```javascript
+function sendEmail(user, message) {
+  if (!user) return;
+  if (!user.email) return;
+  if (!message) return;
+  if (message.length > 500) return;
+
+  emailService.send(user.email, message);
+}
+```
+
+This pattern reduces indentation and emphasizes the actual action.
+
+**Conclusion**: Use early exits to keep the main path flat.
+
+### 6. One block should answer one question
+
+**Analysis**: Deep nesting often appears because one function is trying to answer many questions at once.
+
+For example:
+
+```python
+def handle_request(request, user, database):
+    if request.method == "POST":
+        if user is not None:
+            if user.has_permission("create"):
+                if request.data is not None:
+                    if "title" in request.data:
+                        if len(request.data["title"]) > 3:
+                            database.save(request.data)
+                            return {"status": "ok"}
+    return {"status": "error"}
+```
+
+This function mixes several concerns:
+
+* request method validation
+* user existence
+* permission checking
+* payload validation
+* persistence
+
+A clearer version:
+
+```python
+def is_valid_title(data):
+    return data is not None and "title" in data and len(data["title"]) > 3
+
+
+def handle_request(request, user, database):
+    if request.method != "POST":
+        return {"status": "error", "reason": "invalid method"}
+
+    if user is None:
+        return {"status": "error", "reason": "missing user"}
+
+    if not user.has_permission("create"):
+        return {"status": "error", "reason": "forbidden"}
+
+    if not is_valid_title(request.data):
+        return {"status": "error", "reason": "invalid data"}
+
+    database.save(request.data)
+    return {"status": "ok"}
+```
+
+**Conclusion**: If nesting becomes deep, the usual reason is that responsibilities were not separated.
+
+### 7. Prefer named intermediate variables over complex inline logic
+
+**Problem**: Code becomes hard to read when too much logic is placed directly inside a condition.
+
+Bad:
+
+```java
+if (customer != null && customer.getAccount() != null &&
+    customer.getAccount().isActive() &&
+    customer.getOrders() != null &&
+    customer.getOrders().size() > 0) {
+    process(customer);
+}
+```
+
+Better:
+
+```java
+boolean hasCustomer = customer != null;
+boolean hasAccount = hasCustomer && customer.getAccount() != null;
+boolean isActive = hasAccount && customer.getAccount().isActive();
+boolean hasOrders = hasCustomer && customer.getOrders() != null && !customer.getOrders().isEmpty();
+
+if (hasCustomer && hasAccount && isActive && hasOrders) {
+    process(customer);
+}
+```
+
+Or better still:
+
+```java
+if (canProcess(customer)) {
+    process(customer);
+}
+```
+
+with:
+
+```java
+boolean canProcess(Customer customer) {
+    if (customer == null) return false;
+    if (customer.getAccount() == null) return false;
+    if (!customer.getAccount().isActive()) return false;
+    if (customer.getOrders() == null || customer.getOrders().isEmpty()) return false;
+    return true;
+}
+```
+
+**Conclusion**: A condition should be easy to read as a sentence. If it is not, extract part of it.
+
+### 8. Keep branching at the right level
+
+**Analysis**: Not every branch belongs in the same place. Some branches decide **structure**. Others decide **details**.
+
+For example, in a web endpoint:
+
+* high-level branch: admin user vs normal user
+* low-level branch: show one label or another
+
+Good separation:
+
+```python
+def render_dashboard(user):
+    if user.is_admin:
+        return render_admin_dashboard(user)
+    return render_user_dashboard(user)
+```
+
+Then inside a smaller rendering function:
+
+```python
+def render_user_badge(user):
+    return "Pro" if user.is_pro else "Free"
+```
+
+This is better than writing one giant function full of mixed branches.
+
+**Conclusion**: High-level conditions should choose large modes or paths. Low-level conditions should control small details.
+
+### 9. A common code smell: “staircase code”
+
+**Definition**: Staircase code is code that shifts farther right with each condition and makes the main action appear only at the deepest point.
+
+Example:
+
+```python
+if condition_a:
+    if condition_b:
+        if condition_c:
+            if condition_d:
+                do_work()
+```
+
+This shape often suggests poor structure.
+
+Possible fixes:
+
+* use guard clauses
+* extract helper functions
+* invert conditions
+* split the function
+
+For example:
+
+```python
+if not condition_a:
+    return
+
+if not condition_b:
+    return
+
+if not condition_c:
+    return
+
+if not condition_d:
+    return
+
+do_work()
+```
+
+### 10. Another common smell: mixing loops, conditions, and side effects
+
+**Problem**: Nesting becomes dangerous when a loop contains conditionals, which contain data mutation, which contain more conditionals.
+
+Example:
+
+```javascript
+for (const user of users) {
+  if (user.isActive) {
+    if (user.orders) {
+      for (const order of user.orders) {
+        if (order.total > 100) {
+          if (!order.flagged) {
+            order.flagged = true;
+            save(order);
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+A clearer version:
+
+```javascript
+for (const user of users) {
+  if (!user.isActive || !user.orders) continue;
+
+  for (const order of user.orders) {
+    if (order.total <= 100 || order.flagged) continue;
+
+    order.flagged = true;
+    save(order);
+  }
+}
+```
+
+This version is flatter and makes the mutation easier to find.
+
+### 11. Reasonable depth: how deep is too deep?
+
+**Analysis**: There is no universal numeric rule, but some practical guidelines are useful.
+
+A rough rule:
+
+* 1 to 2 levels: usually fine
+* 3 levels: still normal, but inspect readability
+* 4 levels: often a warning sign
+* 5 or more levels: usually restructure unless the problem is inherently hierarchical
+
+This is not a law. It is a heuristic.
+
+For example, this may be acceptable in a parser:
+
+```python
+for token in tokens:
+    if token.type == "BLOCK":
+        for statement in token.statements:
+            if statement.kind == "IF":
+                for branch in statement.branches:
+                    handle(branch)
+```
+
+But the same depth in ordinary business logic usually needs refactoring.
+
+**Conclusion**: Do not count levels mechanically. Ask whether each level reflects real structure or accidental complexity.
+
+### 12. Prefer complete blocks over fragmented blocks
+
+**Analysis**: A common mistake is to let one control structure open a region and let another distant line close it indirectly. This makes code fragile.
+
+Bad style in many languages looks like this in spirit:
+
+```python
+if show_section:
+    print("<section>")
+
+for item in items:
+    print(item)
+
+if show_section:
+    print("</section>")
+```
+
+The reader must remember that the closing tag depends on a condition seen earlier.
+
+Better:
+
+```python
+if show_section:
+    print("<section>")
+    for item in items:
+        print(item)
+    print("</section>")
+else:
+    for item in items:
+        print(item)
+```
+
+Or better, separate the rendering concerns into helper functions.
+
+**Conclusion**: Prefer self-contained blocks. Do not split one structural unit across distant conditions unless there is a strong reason.
+
+### 13. Refactor by extracting intent, not just lines
+
+**Problem**: Some refactoring makes code shorter without making it clearer.
+
+Bad original:
+
+```python
+if user is not None:
+    if user.is_active:
+        if user.age >= 18:
+            approve(user)
+```
+
+Weak refactor:
+
+```python
+if user is not None and user.is_active and user.age >= 18:
+    approve(user)
+```
+
+This is shorter, but not necessarily more readable.
+
+Better refactor:
+
+```python
+def can_be_approved(user):
+    if user is None:
+        return False
+    if not user.is_active:
+        return False
+    if user.age < 18:
+        return False
+    return True
+
+
+if can_be_approved(user):
+    approve(user)
+```
+
+This version gives the condition a name. That improves meaning.
+
+**Conclusion**: Refactoring should reveal intent, not merely compress syntax.
+
+### 14. Use polymorphism or dispatch when branching becomes repetitive
+
+**Analysis**: Sometimes too many `if` or `switch` statements indicate that behavior should be delegated.
+
+Bad:
+
+```python
+def calculate_discount(customer):
+    if customer.type == "student":
+        return 0.10
+    elif customer.type == "senior":
+        return 0.15
+    elif customer.type == "vip":
+        return 0.20
+    else:
+        return 0.0
+```
+
+This is acceptable when small. But when each branch grows large, another pattern may be better.
+
+For example:
+
+```python
+class StudentDiscount:
+    def calculate(self):
+        return 0.10
+
+
+class SeniorDiscount:
+    def calculate(self):
+        return 0.15
+
+
+class VipDiscount:
+    def calculate(self):
+        return 0.20
+```
+
+Or use a dispatch table:
+
+```python
+DISCOUNT_BY_TYPE = {
+    "student": 0.10,
+    "senior": 0.15,
+    "vip": 0.20,
+}
+
+def calculate_discount(customer):
+    return DISCOUNT_BY_TYPE.get(customer.type, 0.0)
+```
+
+**Conclusion**: When many branches repeat the same structural pattern, consider replacing conditional complexity with data or delegated behavior.
+
+### 15. Good examples and bad examples across languages
+
+#### Python
+
+Bad:
+
+```python
+def register(user):
+    if user:
+        if user.email:
+            if "@" in user.email:
+                save(user)
+```
+
+Better:
+
+```python
+def register(user):
+    if not user or not user.email or "@" not in user.email:
+        return
+    save(user)
+```
+
+#### JavaScript
+
+Bad:
+
+```javascript
+function render(items) {
+  if (items) {
+    if (items.length > 0) {
+      return items.map(item => `<li>${item}</li>`).join("");
+    } else {
+      return "<p>No items</p>";
+    }
+  } else {
+    return "<p>No data</p>";
+  }
+}
+```
+
+Better:
+
+```javascript
+function render(items) {
+  if (!items) return "<p>No data</p>";
+  if (items.length === 0) return "<p>No items</p>";
+  return items.map(item => `<li>${item}</li>`).join("");
+}
+```
+
+#### Java
+
+Bad:
+
+```java
+if (order != null) {
+    if (order.isPaid()) {
+        if (!order.isCancelled()) {
+            ship(order);
+        }
+    }
+}
+```
+
+Better:
+
+```java
+if (order == null) return;
+if (!order.isPaid()) return;
+if (order.isCancelled()) return;
+
+ship(order);
+```
+
+### 16. When to keep nested `if` statements
+
+**Analysis**: Nested `if` statements are acceptable when each inner level logically depends on the outer level and the dependency itself is meaningful.
+
+Example:
+
+```python
+if response.status_code == 200:
+    data = response.json()
+    if "user" in data:
+        user = data["user"]
+        if user.get("is_active"):
+            activate_session(user)
+```
+
+This is not automatically bad because each step depends on the previous one. Still, if the block grows much larger, it should be simplified.
+
+A flatter version may still be clearer:
+
+```python
+if response.status_code != 200:
+    return
+
+data = response.json()
+user = data.get("user")
+
+if not user:
+    return
+
+if not user.get("is_active"):
+    return
+
+activate_session(user)
+```
+
+### 17. Style rules that work well in most codebases
+
+**Conclusion**: The following rules are practical and widely useful.
+
+**Rule 1**: Use **guard clauses** for invalid or exceptional cases.
+
+**Rule 2**: Keep the **main path** visually obvious.
+
+**Rule 3**: Do not let ordinary business logic drift past **3 to 4 levels** of nesting without checking whether it should be refactored.
+
+**Rule 4**: Extract helper functions when a block is answering more than one question.
+
+**Rule 5**: Replace complicated inline conditions with **named variables** or **well-named predicates**.
+
+**Rule 6**: Keep high-level branching separate from low-level detail branching.
+
+**Rule 7**: Prefer complete, self-contained blocks over fragmented structural logic.
+
+**Rule 8**: If nesting reflects real hierarchy, it may be correct. If it reflects accumulated clutter, it should be reduced.
+
+### 18. A simple refactoring checklist
+
+**Next Step**: When a function feels too nested, apply this checklist in order.
+
+1. Can invalid cases be rejected earlier?
+2. Can one long condition be given a name?
+3. Can repeated logic be moved to a helper?
+4. Can high-level mode selection be separated from detailed rendering or processing?
+5. Can a data table, dispatch map, or object replace repeated branching?
+6. Does the current depth reflect the real problem, or only the current implementation?
+
+### 19. Final rule of thumb
+
+**Conclusion**: Good code does not merely run correctly. It shows its structure clearly. Use nesting where the problem truly requires hierarchy. Reduce nesting where it only hides intent. The best code usually makes the important path easy to see and the exceptional path easy to isolate.
+
+**Common misconceptions**:
+
+1. Shorter code is not always better code.
+2. Fewer lines do not necessarily mean lower complexity.
+3. A single dense condition may be worse than several simple ones.
+4. Deep nesting is acceptable in recursive or hierarchical problems, but often poor in ordinary application logic.
+5. Removing indentation is not enough; the real goal is to improve meaning and structure.
+
+I can also turn this into a more formal **style-guide chapter** format, with sections like **Principles**, **Anti-patterns**, **Refactoring patterns**, and **Exercises**.
+
+### Abstraction
 
 Abstraction is not always worth it, as it increases **coupling** and makes the code harder to understand.
 
 Two conditions that abstraction will be worthy:
-  - Re-use codes among 3 more instances.
-  - One will **call** the methods, but didn't know which instance.
+* Re-use codes among 3 more instances.
+* One will **call** the methods, but didn't know which instance.
 
 Some duplicated codes are not evil.
 
-## Prefer Composition Over Inheritance
+### Prefer Composition Over Inheritance
 
 `Composition` and `Inheritance` are both ways to re-use codes.
 
 Changing code may breaks the original structure
-  - `Inheritance` forces coders bunlde common parts of classes into a parent class, then when a exceptional child class appears, the entire code needs refactoring.
-  - `Composition` means abstract classes are no longer used, the original class is splited into a class which simply represent the object(data), and multiple method classes which manipulate the object(data). Interfaces are used to indicate which methods could be 
+* `Inheritance` forces coders bunlde common parts of classes into a parent class, then when a exceptional child class appears, the entire code needs refactoring.
+* `Composition` means abstract classes are no longer used, the original class is splited into a class which simply represent the object(data), and multiple method classes which manipulate the object(data). Interfaces are used to indicate which methods could be
 
-`Interfaces` v.s.` Abstract Classes`
-  - `Interfaces` are **minimal**, tell you what these classes **can do** (like a sign).
-  - `Abstract Classes` tells you **what methods should be implemented at least**. When exceptional class appears, some part would be redundant, and the whole code would be difficult to change.
+`Interfaces` v.s.`Abstract Classes`
+* `Interfaces` are **minimal**, tell you what these classes **can do** (like a sign).
+* `Abstract Classes` tells you **what methods should be implemented at least**. When exceptional class appears, some part would be redundant, and the whole code would be difficult to change.
 
 ```java
 // Inheritance
@@ -89,7 +827,7 @@ Changing code may breaks the original structure
 abstract class Parent
 {
   private data = new DataGenerator(args);
-  public abstract void Procedure(args); ## thing might be redundant
+  public abstract void Procedure(args); ### thing might be redundant
 }
 
 class Child: Parent
@@ -111,27 +849,27 @@ class ClassWhoNeedTheProcedure: Procedure
 }
 ```
 
-## Never Nests
+### Never Nests
 
 > *Linux Kernel Guidelines*: If you need more than 3 levels of indentation, you're screwed anyway,and should fix your program.
 
 2 ways to denest:
-  - **Extracting** some blocks into a separated functions.
-  - **Inversing conditions**.
-    - Some validation gatekeeping sections will end code with `return` or `Exception`, which shield core code. Try inversing the conditions, list these terminators firstly, and remaining core code in the end.
+* **Extracting** some blocks into a separated functions.
+* **Inversing conditions**.
+  * Some validation gatekeeping sections will end code with `return` or `Exception`, which shield core code. Try inversing the conditions, list these terminators firstly, and remaining core code in the end.
 
-## Premature Optimization
+### Premature Optimization
 
 > Donald Knuth: Premature / ˈpremətʃə(r) / Optimization is the root of all evil.
 
 The Impossible Trinity in Coding:
-  - Performance
-  - Velocity
-  - Adaptability
+* Performance
+* Velocity
+* Adaptability
 
 2 level of Performance:
-  - **Macro Performance** at design level.
-  - **Micro Performance**, it means whether the code is fine tuned. *Premature optimization usually occurs for micro performance*.
+* **Macro Performance** at design level.
+* **Micro Performance**, it means whether the code is fine tuned. *Premature optimization usually occurs for micro performance*.
 
 Optimization is not the most important thing. Until you've shown that the function specifically is the leading cause of performance issues, go with what's more readable.
 
@@ -142,7 +880,7 @@ How to optimize
   4. Profile and fix hot spots. **Measure**.
   5. Analyze what the code is doing under the hood & Memory. **Measure**.
 
-## “可阅读、可维护、工业级”应当遵守三个原则
+### “可阅读、可维护、工业级”应当遵守三个原则
 
 “可阅读、可维护、工业级”代码，不是指代码看起来高级，而是指代码在多人协作、长期迭代、频繁修改时，仍然容易理解、容易修改、不容易出错。要做到这一点，最基本也最有效的三条原则是：
 
@@ -780,3 +1518,9 @@ single source of truth，会让自动化更有效。
 
 5. 能跑不等于可维护
    一次性 demo 可以混写，但长期项目必须分层、去重、自动化，否则后期成本会迅速上升。
+
+### Reference
+
+1. Video Course: [Youtube @CodeAesthetic](https://www.youtube.com/@CodeAesthetic)
+2. <https://github.com/trekhleb/state-of-the-art-shitcode>
+3. <https://github.com/Droogans/unmaintainable-code>
