@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: 美丽的星云
 subclass: Cosmology
 ---

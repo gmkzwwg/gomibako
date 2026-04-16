@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: 符号学笔记
 subclass: Semiotics
 ---

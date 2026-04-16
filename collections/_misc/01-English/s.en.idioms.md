@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: English Collocations and Idioms
 subclass: English
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-category: Sheet
+categories: Sheet
 subclass: Linux
 abbreviation: Linux Developing
 title: Linux Tools Developing - Quick Reference and Minimal Tutorial

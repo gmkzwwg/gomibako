@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: LLM Prompt Engineering for Study Assistance
 subclass: LLMs
 layout: bilingual

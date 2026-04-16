@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Elden Ring Dialogue in Order
 subclass: English
 ---

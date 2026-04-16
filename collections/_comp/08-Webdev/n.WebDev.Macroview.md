@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Web Development Principles and Practical Skills
 subclass: Webdev
 todos: 给出技术趋势和技术栈的解析，如为什么ts代替js

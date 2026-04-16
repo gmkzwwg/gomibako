@@ -1,6 +1,6 @@
 ---
 layout: compact
-category: Sheet
+categories: Sheet
 title: 英语语法速查表
 subclass: English
 toc_depth: 4

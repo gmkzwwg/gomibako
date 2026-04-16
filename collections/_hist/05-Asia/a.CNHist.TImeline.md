@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 abbreviation: CNHist Timeline
 title: 中国古代史时间线
 subclass: Asia

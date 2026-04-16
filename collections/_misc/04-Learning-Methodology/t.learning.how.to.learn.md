@@ -1,5 +1,5 @@
 ---
-category: Texts
+categories: Texts
 title: Learning how to Learn
 subclass: Learning-Methodology
 ---

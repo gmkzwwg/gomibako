@@ -1,5 +1,5 @@
 ---
-category: Prime
+categories: Prime
 title: Physics - Its Roadmap and Knowledge Architecture
 subclass: Basics
 ---

@@ -1,5 +1,5 @@
 ---
-category: Prime
+categories: Prime
 title: Learn Mathematics with Modern Tools and Workflow
 subclass: Basics
 ---

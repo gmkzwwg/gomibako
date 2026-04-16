@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Latin Words in English
 subclass: English
 ---

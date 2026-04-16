@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: The Little Schemer
 subclass: Lisp
 ---

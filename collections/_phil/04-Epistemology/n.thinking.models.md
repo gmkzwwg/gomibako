@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: A List of Thinking Models and Cognitive Structures
 subclass: Epistemology
 ---

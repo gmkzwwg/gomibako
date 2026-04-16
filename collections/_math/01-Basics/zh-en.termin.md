@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: 数学术语速查表2
 subclass: Basics
 layout: compact

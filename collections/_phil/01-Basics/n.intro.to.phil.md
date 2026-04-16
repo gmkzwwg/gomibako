@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Introduction to Western Philosophy
 subclass: Basics
 ---

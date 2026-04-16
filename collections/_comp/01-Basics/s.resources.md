@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Learning Resource 
 subclass: Basics
 ---

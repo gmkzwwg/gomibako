@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Writing Mathematical Formulas in LaTeX 
 subclass: Basics
 ---

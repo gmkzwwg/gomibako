@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Modernizing Ancient Novels - A Comprehensive Tutorial
 subclass: Writing-Theory
 ---

@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: 写作者可操控变量的分层总结
 subclass: Writing-Theory
 ---

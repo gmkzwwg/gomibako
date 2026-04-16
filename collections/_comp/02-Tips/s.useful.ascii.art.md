@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Useful ASCII Art
 subclass: Tips
 ---

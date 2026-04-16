@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: 西方哲学史大纲
 subclass: History
 ---

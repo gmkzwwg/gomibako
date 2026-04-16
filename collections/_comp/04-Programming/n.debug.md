@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Coding Debug Tips
 subclass: Programming
 ---

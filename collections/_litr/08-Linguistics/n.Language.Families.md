@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 abbreviation: Language Families
 title: Comparative Lecture Notes on the World’s Major Language Families
 subclass: Linguistics

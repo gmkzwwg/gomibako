@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Quick Tutorial of Philosophy Language
 subclass: Methodology
 ---

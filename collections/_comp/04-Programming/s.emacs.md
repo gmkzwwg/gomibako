@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Emacs Quick Reference
 subclass: Programming
 ---

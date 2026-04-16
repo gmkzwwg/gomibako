@@ -1,5 +1,5 @@
 ---
-category: Prime
+categories: Prime
 title: 文学阅读计划
 subclass: Reading-Theory
 ---

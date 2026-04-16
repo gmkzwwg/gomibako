@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Linux - Check Hardware infomation and Specification
 subclass: Linux
 ---

@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Commonly Used Units in Astronomy and Cosmology
 subclass: Cosmology
 ---

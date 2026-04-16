@@ -1,6 +1,6 @@
 ---
 layout: parallel
-category: Notes
+categories: Notes
 subclass: LLMs
 abbreviation: Prompt Engineering
 date: 2026-4-4

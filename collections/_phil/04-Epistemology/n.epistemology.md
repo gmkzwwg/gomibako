@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Modern Epistemology
 subclass: Epistemology
 ---

@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Deep Reading Methods for Literary Analysis and Craft
 subclass: Reading-Theory
 ---

@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Best Windows 11 Tweak Tools
 subclass: Windows
 ---

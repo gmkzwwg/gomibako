@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: 天区图 Sky Chart 和星图 Star Atlas
 subclass: Cosmology
 ---

@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: markdown - Quick Reference and Minimal Tutorial
 subclass: Linux
 ---

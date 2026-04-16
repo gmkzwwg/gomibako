@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Logical Fallacies and Cognitive Bias
 subclass: Recognition
 ---

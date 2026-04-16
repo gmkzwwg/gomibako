@@ -1,0 +1,26 @@
+{% assign posts = include.posts %}
+{% assign date_format = include.date_format %}
+
+<div class="post-list post-list--book">
+  {% for post in posts %}
+    <article class="post-book">
+      <div class="post-book__row">
+        {% if include.meta_mode != "none" %}
+          <div class="post-book__meta">
+            {% include post-list/meta.html post=post meta_mode=include.meta_mode %}
+          </div>
+        {% endif %}
+
+        <p class="post-title post-title--book">
+          <a class="post-title__link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </p>
+
+        <span class="post-book__leader" aria-hidden="true"></span>
+
+        <time class="post-date post-date--book" datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: date_format }}
+        </time>
+      </div>
+    </article>
+  {% endfor %}
+</div>

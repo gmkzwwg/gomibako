@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Motifs of World Literature Tradition
 subclass: Basics
 ---

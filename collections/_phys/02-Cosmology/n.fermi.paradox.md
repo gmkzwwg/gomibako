@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: 费米悖论 Fermi Paradox 
 subclass: Cosmology
 ---

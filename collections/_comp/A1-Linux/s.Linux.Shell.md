@@ -1,6 +1,6 @@
 ---
 layout: post
-category: Sheet
+categories: Sheet
 subclass: Linux
 abbreviation: Linux Shell
 title: Linux Shell Programming

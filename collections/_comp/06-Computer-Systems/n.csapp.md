@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Computer Systems, a Programmer's Perspective
 subclass: Computer-Systems
 ---

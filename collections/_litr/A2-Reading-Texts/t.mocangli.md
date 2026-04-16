@@ -1,5 +1,5 @@
 ---
-category: Texts
+categories: Texts
 title: 孤鸿寄语默苍离主要剧情
 subclass: Texts
 ---

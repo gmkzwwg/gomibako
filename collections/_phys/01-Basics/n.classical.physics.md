@@ -1,5 +1,5 @@
 ---
-category: Prime
+categories: Prime
 title: Classical Physics
 subclass: Basics
 ---

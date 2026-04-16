@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Mathematical Analysis
 subclass: Analysis
 ---

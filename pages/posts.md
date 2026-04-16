@@ -1,31 +1,25 @@
 ---
 layout: default
-permalink: /posts
 toc: false
-footer: false
-post_list: date
+footer: true
+post_list_style: book
+post_meta_mode: categories 
+post_show_excerpt: false
+post_date_format: "%Y-%m-%d"
+context_menu: false
+permalink: /posts
 ---
 
-# 瞧！那个 SB
 
-### 我为什么这么愚蠢
 
-### 我为什么这么笨拙
+# 瞧！那个垃圾
 
-### 我为什么如此缺少知识
+<img src="images/sumimaro.png" alt="sumimaro" style="float: right; max-width: 180px; margin: 5px;">
 
-我这种垃圾写的东西没任何价值。建议还是别看了，纯浪费时间。
+#### 我为什么这么愚蠢
 
-MD 修饰：
-* `**粗体**`：核心术语（人名、地名）首次出现、段首标签、结论核、关键对象、UI 名称（不适合标题）
-* `*斜体*`：轻强调、暂定判断、语义上的轻提醒、对比焦点、外文词首次出现
-* `***粗斜体***`：最高优先级内容、核心结论、风险提醒、必须立即注意的动作
-* `` `行内代码` ``：标技术对象、命令、函数名、变量名、文件名、路径、参数、配置项（不适合普通概念词、人名地名）
-* `> 引用块`：直接引语、文献摘录、法条原文、定义原文
-* **段首标签**：**定义**、**背景**、**问题**、**分析**、**例子**、**反例**、**比较**、**结论**、**下一步**、**待验证**。
+#### 我为什么这么笨拙
 
-<br>
+#### 我为什么如此缺少知识
 
-![sumimaro]({{site.img}}/sumimaro.png)
-
-<br>
+#### ***我这种垃圾写的东西没任何价值。建议还是别看了，纯浪费时间。***

@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: 常见心理疾病的介绍和精神药物简介
 subclass: Psychopathology
 ---

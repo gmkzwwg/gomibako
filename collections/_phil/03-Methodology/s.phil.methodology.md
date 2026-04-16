@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Methodology of Philosophy
 subclass: Methodology
 ---

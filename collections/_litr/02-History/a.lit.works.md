@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: Timelines of Development of Western Literature
 subclass: History
 ---

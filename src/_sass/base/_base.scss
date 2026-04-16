@@ -8,7 +8,7 @@ body {
 }
 h1 {
   font-size: $font-size-h1;
-  text-align: center !important;
+  text-align: center;
   font-weight: normal;
   text-transform: uppercase;
   margin: 1.6em 0 1.5em 0;
@@ -30,7 +30,7 @@ h2 {
   margin: 1.6em 0 0.8em 0;
   cursor: $cursor-green-text;
   strong {
-    color: $color-primary !important;
+    color: $color-primary;
   }
 }
 h3::before {
@@ -134,7 +134,7 @@ a:hover {
   color: $color-link-hover;
   font-weight: auto;
   text-decoration: none;
-  cursor: $cursor-green-pointer !important;
+  cursor: $cursor-green-pointer;
   @include text_blink;
 }
 img {
@@ -187,7 +187,7 @@ blockquote {
 sup a{
   font-size: 105%;
   color: $article-blockquote;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 // code highlight
 pre {
@@ -261,14 +261,14 @@ input[type="checkbox"]:checked::before {
 @media screen and (max-width: 800px) and (min-width: 400px) {
   thead {
     th {
-      padding: 5px 5px !important;
-      font-size: $font-smaller !important;
+      padding: 5px 5px;
+      font-size: $font-smaller;
     }
   }
   tbody {
     td {  
-      padding: 4px 5px !important;
-      font-size: $font-tiny !important;
+      padding: 4px 5px;
+      font-size: $font-tiny;
     }
   }
 }
@@ -280,14 +280,14 @@ input[type="checkbox"]:checked::before {
   }
   thead {
     th {
-      padding: 3px 1px !important;
-      font-size: $font-tiny !important;
+      padding: 3px 1px;
+      font-size: $font-tiny;
     }
   }
   tbody {
     td {  
-      padding: 1px 1px !important;
-      font-size: $font-micro !important;
+      padding: 1px 1px;
+      font-size: $font-micro;
     }
   }
 }

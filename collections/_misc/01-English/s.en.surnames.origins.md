@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Surnames and Their Origins in English
 subclass: English
 ---

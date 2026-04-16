@@ -1,5 +1,5 @@
 ---
-category: Prime
+categories: Prime
 title: Western Philosophy - Its Roadmap and Knowledge Architecture
 subclass: Basics
 layout: bilingual

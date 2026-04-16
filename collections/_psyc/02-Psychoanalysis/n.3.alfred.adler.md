@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: The Theory Architecture of Alfred Adler
 subclass: Psychoanalysis
 ---

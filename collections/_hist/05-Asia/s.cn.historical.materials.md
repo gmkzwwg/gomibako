@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: 中国历代主要文字史料及其效力评判
 subclass: Asia
 ---

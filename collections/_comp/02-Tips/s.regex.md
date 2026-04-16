@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: Regex - Basic Syntax and Practical Usage
 subclass: Tips
 ---

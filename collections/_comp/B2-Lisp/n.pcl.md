@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Practical Common Lisp
 subclass: Lisp
 ---

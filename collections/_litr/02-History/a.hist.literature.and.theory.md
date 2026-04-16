@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: Timeline of the History of Literature and Literary Theory
 subclass: History
 ---

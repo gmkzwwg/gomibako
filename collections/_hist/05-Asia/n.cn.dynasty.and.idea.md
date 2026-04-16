@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: 中国历代主要思想观念及其对后世影响研究
 subclass: Asia
 ---

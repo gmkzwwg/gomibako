@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Subtle Differences Between English Words
 subclass: English
 ---

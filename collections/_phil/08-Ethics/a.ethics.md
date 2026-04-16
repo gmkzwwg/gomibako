@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: Western Ethics from Antiquity to the Present
 subclass: Ethics
 ---

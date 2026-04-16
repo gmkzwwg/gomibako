@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Long Sentences in English
 subclass: English
 ---

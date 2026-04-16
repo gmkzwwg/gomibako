@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: 中亚古代史时间线
 subclass: Asia
 ---

@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: historical Division of World History
 subclass: Basics
 ---

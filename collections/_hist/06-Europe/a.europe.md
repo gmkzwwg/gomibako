@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: Key Milestones in European History
 subclass: Europe
 ---

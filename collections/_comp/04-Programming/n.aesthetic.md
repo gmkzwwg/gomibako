@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Coding Aesthetic
 subclass: Programming
 todo: 用代码理解代码美学，真正地看到权衡利弊，而不是单纯对概念泛泛而谈

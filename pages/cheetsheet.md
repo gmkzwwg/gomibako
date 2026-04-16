@@ -3,7 +3,7 @@ layout: default
 title: Jekyll Markdown + HTML Feature Test
 author: 垃圾残渣
 show_date: false
-category: 测试页面
+categories: 测试页面
 subclass: Markdown 测试
 post_list: date
 toc: false

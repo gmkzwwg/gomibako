@@ -1,6 +1,6 @@
 ---
 layout: post
-category: Sheet
+categories: Sheet
 subclass: Linux
 abbreviation: Linux Operating
 title: Linux Operating - Quick Reference and Minimal Tutorial

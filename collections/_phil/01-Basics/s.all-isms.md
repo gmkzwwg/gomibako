@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: A Comprehesive Summary of All -ism in Western Tradition
 subclass: Basics
 ---

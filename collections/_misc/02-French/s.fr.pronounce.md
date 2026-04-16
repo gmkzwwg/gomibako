@@ -1,5 +1,5 @@
 ---
-category: Sheet
+categories: Sheet
 title: French Pronouncation Tips
 subclass: French
 ---

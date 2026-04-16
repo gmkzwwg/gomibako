@@ -1,5 +1,5 @@
 ---
-category: Prime
+categories: Prime
 title: Literature - Its Roadmap and Knowledge Architecture
 subclass: Basics
 layout: bilingual

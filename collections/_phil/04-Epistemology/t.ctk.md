@@ -1,5 +1,5 @@
 ---
-category: Texts
+categories: Texts
 title: Contemporary Theories of Knowledge
 subclass: Epistemology
 ---

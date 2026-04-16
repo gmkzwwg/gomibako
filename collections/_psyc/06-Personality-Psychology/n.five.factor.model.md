@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: 大五人格维度简介
 subclass: Personality-Psychology
 ---

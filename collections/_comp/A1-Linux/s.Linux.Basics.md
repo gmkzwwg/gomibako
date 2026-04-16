@@ -1,6 +1,6 @@
 ---
 layout: post
-category: Sheet
+categories: Sheet
 subclass: Linux
 abbreviation: Linux Basics
 title: Linux Basics - Quick Reference and Minimal Tutorial

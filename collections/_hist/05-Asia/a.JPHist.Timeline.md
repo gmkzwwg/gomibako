@@ -1,6 +1,6 @@
 ---
 layout: post
-category: Annal
+categories: Annal
 subclass: Asia
 abbreviation: JPHist Timeline
 title: 日本古代史时间线

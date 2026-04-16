@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: 数学史和数学思想
 subclass: Basics
 ---

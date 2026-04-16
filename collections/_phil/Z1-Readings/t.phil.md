@@ -1,5 +1,5 @@
 ---
-category: Texts
+categories: Texts
 title: 中文社区哲学学习辅助资料
 subclass: Readings
 ---

@@ -1,5 +1,5 @@
 ---
-category: Texts
+categories: Texts
 title: Phenomenology
 subclass: Phenomenology
 ---

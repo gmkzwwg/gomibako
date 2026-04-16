@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Western Literary Theory
 subclass: Literary-Theory
 ---

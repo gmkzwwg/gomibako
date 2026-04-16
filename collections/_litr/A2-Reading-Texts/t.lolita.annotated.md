@@ -1,5 +1,5 @@
 ---
-category: Texts
+categories: Texts
 title: The Annotated Lolita
 subclass: Texts
 ---

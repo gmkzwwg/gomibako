@@ -3,7 +3,7 @@ layout: post
 title: Jekyll Markdown + HTML Feature Test
 author: 垃圾残渣
 show_date: true
-category: TEST
+categories: TEST
 subclass: Markdown 测试
 post_list: date
 toc: "chart"

@@ -5,6 +5,19 @@
 @import "abstracts/variables";
 @import "abstracts/mixins";
 @import "abstracts/animations";
+
+:root {
+  --color-primary: #{$green-1};
+  --color-primary-rgb: #{$green-1};
+
+  --color-heading: #{$green-1};
+  --color-text: #{$white-1};
+  --color-muted: #{$white-1};
+
+  --color-surface-rgb: #{$green-3};
+}
+
+
 // vendor
 @import "vendor/syntax";
 // base styles
@@ -16,7 +29,6 @@
 @import "components/collection_list";
 @import "components/header";
 @import "components/post_info";
-@import "components/post_list";
 @import "components/toc_chart";
 @import "components/toc_list";
 @import "components/comment";
@@ -26,6 +38,7 @@
 @import "components/hacked_splash";
 @import "components/slide";
 @import "components/context_menu";
+@import "components/post-list";
 
 // layout
 @import "layouts/global";

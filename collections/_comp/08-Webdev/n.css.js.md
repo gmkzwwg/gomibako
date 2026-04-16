@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Web Development, HTML, CSS and Javascript 
 subclass: Webdev
 ---

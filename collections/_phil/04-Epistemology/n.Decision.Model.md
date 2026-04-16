@@ -1,6 +1,6 @@
 ---
 title: Decision Model
-category: Notes
+categories: Notes
 subclass: Epistemology
 ---
 

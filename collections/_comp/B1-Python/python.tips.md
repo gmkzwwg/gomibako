@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Python Using Tips
 subclass: Python
 ---

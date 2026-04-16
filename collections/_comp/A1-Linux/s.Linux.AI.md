@@ -1,6 +1,6 @@
 ---
 layout: post
-category: Sheet
+categories: Sheet
 subclass: Linux
 abbreviation: Linux AI
 title: Linux AI Tools - Quick Reference and Minimal Tutorial

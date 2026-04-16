@@ -1,5 +1,5 @@
 ---
-category: Prime
+categories: Prime
 title: Cosmology - Its Roadmap and Knowledge Architecture
 subclass: Basics
 ---

@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 abbreviation: Soviet-Afghan War
 title: Reconstruction of the 1979-1989 Soviet-Afghan War
 subclass: Wars

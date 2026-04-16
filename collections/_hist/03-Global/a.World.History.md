@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: World History Timeline
 subclass: Global
 ---

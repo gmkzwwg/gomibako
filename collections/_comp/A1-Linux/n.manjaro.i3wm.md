@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Build Efficient working Environment with Manjaro and i3wm
 subclass: Linux
 ---

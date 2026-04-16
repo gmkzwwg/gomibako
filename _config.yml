@@ -13,6 +13,7 @@ archive_btn_text    : Trash
 home_btn_text       : Bin
 matrix_bg_text             : "αβγδεζηθικλμνξοπρστυφχψω#$%&*+-" # texts randomly displayed in background
 # matrix_bg_text             : "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-"
+empty_text: "No posts yet."
 
 # 2. Collections
 collection_order    : 
@@ -86,6 +87,7 @@ defaults:
       post_list           : false       # whether show list of post by default      
       comment             : false
       footer              : false       # whether show footer by default
+      context_menu        : true        # Change right-click menu
 
 # 5. Social Media Accounts
 email               : "gmkzwwg@outlook.com" 

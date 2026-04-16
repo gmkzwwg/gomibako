@@ -3,7 +3,7 @@ layout: default
 title: TODO List
 author: 垃圾残渣
 show_date: false
-category: false
+categories: false
 subclass: TODO
 post_list: date
 toc: false

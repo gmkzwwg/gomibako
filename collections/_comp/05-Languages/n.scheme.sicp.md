@@ -1,5 +1,5 @@
 ---
-category: Notes
+categories: Notes
 title: Structure and Interpretation of Computer Programs
 subclass: Languages
 ---

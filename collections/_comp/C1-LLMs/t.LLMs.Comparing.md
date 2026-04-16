@@ -1,6 +1,6 @@
 ---
 layout: post
-category: Notes
+categories: Notes
 abbreviation: LLMs Comparing
 title: LLMs Comparing - Claude vs ChatGPT
 subclass: LLMs

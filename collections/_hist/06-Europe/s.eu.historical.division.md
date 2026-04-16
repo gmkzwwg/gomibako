@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: Historical Divisions of European History
 subclass: Europe
 ---

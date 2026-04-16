@@ -1,5 +1,5 @@
 ---
-category: Annal
+categories: Annal
 title: 古代欧洲史时间线
 subclass: Europe
 ---
