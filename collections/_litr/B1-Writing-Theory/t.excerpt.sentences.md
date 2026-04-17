@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: 写作者可操控变量的分层总结
+categories: Sheet
 subclass: Writing-Theory
 todos: 
   - 继续添加

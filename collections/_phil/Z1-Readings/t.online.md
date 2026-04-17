@@ -1,6 +1,6 @@
 ---
-categories: Texts
 title: 网络哲学文章
+categories: Texts
 subclass: Readings
 ---
 

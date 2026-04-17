@@ -1,6 +1,6 @@
 ---
-categories: Annal
 title: 古代埃及史大纲
+categories: Annal
 subclass: Africa
 ---
 

@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Sexual Dysfunction and Compensatory Masculinity Performance
+categories: Notes
 subclass: Behavioural-Psychology
 ---
 

@@ -1,6 +1,6 @@
 ---
-categories: Annal
 title: Key Milestones in European History
+categories: Annal
 subclass: Europe
 ---
 

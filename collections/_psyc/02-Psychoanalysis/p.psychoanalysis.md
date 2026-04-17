@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Psychoanalysis - Its Roadmap and Knowledge Architecture
+categories: Prime
 subclass: Psychoanalysis
 ---
 

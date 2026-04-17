@@ -1,6 +1,6 @@
 ---
-categories: Texts
 title:  A New History of Western Philosophy
+categories: Texts
 subclass: History
 ---
 

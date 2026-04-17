@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Learn Mathematics with Modern Tools and Workflow
+categories: Prime
 subclass: Basics
 ---
 

@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: The Principles of Naming
+categories: Notes
 subclass: Writing-Theory
 ---
 

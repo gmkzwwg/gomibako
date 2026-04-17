@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: How to Create Characters with Rich Inner Depth
+categories: Notes
 subclass: Writing-Theory
 ---
 

@@ -1,8 +1,8 @@
 ---
-categories: Sheet
 title: 数学术语速查表
-subclass: Basics
 layout: compact
+categories: Sheet
+subclass: Basics
 ---
 
 

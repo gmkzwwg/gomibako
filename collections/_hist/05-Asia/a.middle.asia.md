@@ -1,6 +1,6 @@
 ---
-categories: Annal
 title: 中亚古代史时间线
+categories: Annal
 subclass: Asia
 ---
 

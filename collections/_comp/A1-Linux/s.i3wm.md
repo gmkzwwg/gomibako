@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: awk - Quick Reference and Minimal Tutorial
+categories: Sheet
 subclass: Linux
 ---
 

@@ -1,9 +1,9 @@
 ---
+title: Linux Basics - Quick Reference and Minimal Tutorial
 layout: post
 categories: Sheet
 subclass: Linux
 abbreviation: Linux Basics
-title: Linux Basics - Quick Reference and Minimal Tutorial
 toc_before_content: compact
 todos: 
   - 补完

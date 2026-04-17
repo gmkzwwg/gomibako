@@ -1,9 +1,9 @@
 ---
+title: Linux AI Tools - Quick Reference and Minimal Tutorial
 layout: post
 categories: Sheet
 subclass: Linux
 abbreviation: Linux AI
-title: Linux AI Tools - Quick Reference and Minimal Tutorial
 toc_before_content: compact
 todos: 框架已成！
 ---

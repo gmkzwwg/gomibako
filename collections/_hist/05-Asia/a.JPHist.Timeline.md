@@ -1,9 +1,9 @@
 ---
+title: 日本古代史时间线
 layout: post
 categories: Annal
 subclass: Asia
 abbreviation: JPHist Timeline
-title: 日本古代史时间线
 toc_before_content: false
 todos: 奈良以后的refresh
 ---

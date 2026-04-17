@@ -1,10 +1,10 @@
 ---
+title: LLM Prompt Engineering for Workflows Enhancement
 layout: parallel
 categories: Notes
 subclass: LLMs
 abbreviation: Prompt Engineering
 date: 2026-4-4
-title: LLM Prompt Engineering for Workflows Enhancement
 todos: 
   - claude gpt的操作，介绍它们提供的一些功能
   - pe的局限性、pe误区（写太多，三样一样一个）

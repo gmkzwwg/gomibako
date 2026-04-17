@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: Learning Resource 
+categories: Sheet
 subclass: Basics
 ---
 

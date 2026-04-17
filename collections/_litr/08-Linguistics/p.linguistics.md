@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Linguistics - Its Roadmap and Knowledge Architecture
+categories: Prime
 subclass: Linguistics
 ---
 

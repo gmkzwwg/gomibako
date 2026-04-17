@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Western Literary Theory
+categories: Notes
 subclass: Literary-Theory
 ---
 

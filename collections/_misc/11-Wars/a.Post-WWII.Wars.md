@@ -1,9 +1,9 @@
 ---
+title: Timeline of the Principal Post-1945 Wars
 layout: bilingual
 categories: Annal
 subclass: Wars
 abbreviation: Post-WWII Wars
-title: Timeline of the Principal Post-1945 Wars
 todos: read
 ---
 

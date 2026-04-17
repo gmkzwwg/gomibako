@@ -1,8 +1,8 @@
 ---
+title: LLMs Comparing - Claude vs ChatGPT
 layout: post
 categories: Notes
 abbreviation: LLMs Comparing
-title: LLMs Comparing - Claude vs ChatGPT
 subclass: LLMs
 ---
 

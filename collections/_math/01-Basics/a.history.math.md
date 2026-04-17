@@ -1,6 +1,6 @@
 ---
-categories: Annal
 title: 数学史和数学思想
+categories: Annal
 subclass: Basics
 ---
 

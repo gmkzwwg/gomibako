@@ -1,6 +1,6 @@
 ---
-categories: Texts
 title: Phenomenology
+categories: Texts
 subclass: Phenomenology
 ---
 

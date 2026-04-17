@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Long Sentences in English
+categories: Notes
 subclass: English
 ---
 

@@ -1,9 +1,9 @@
 ---
+title: Linux Shell Programming
 layout: post
 categories: Sheet
 subclass: Linux
 abbreviation: Linux Shell
-title: Linux Shell Programming
 toc: list
 ---
 

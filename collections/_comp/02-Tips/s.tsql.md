@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: T-SQL Quick Reference and Usage
+categories: Sheet
 subclass: Tips
 ---
 

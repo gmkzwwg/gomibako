@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: The Theory Architecture of Donald Winnicott
+categories: Notes
 subclass: Psychoanalysis
 ---
 ## The Ontogenesis of the Self: A Structural and Relational Analysis of Donald Winnicott’s Theoretical System

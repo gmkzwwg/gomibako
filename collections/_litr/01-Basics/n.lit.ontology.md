@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title:  Ontology of Literature
+categories: Notes
 subclass: Ontology
 ---
 

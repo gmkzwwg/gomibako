@@ -1,8 +1,8 @@
 ---
-categories: Prime
 title: Western Philosophy - Its Roadmap and Knowledge Architecture
-subclass: Basics
 layout: bilingual
+categories: Prime
+subclass: Basics
 ---
 
 ## Q1: What Is Philosophy?

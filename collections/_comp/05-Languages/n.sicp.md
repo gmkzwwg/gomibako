@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Structure and Interpretation of Computer Programs
+categories: Notes
 subclass: Languages
 ---
 

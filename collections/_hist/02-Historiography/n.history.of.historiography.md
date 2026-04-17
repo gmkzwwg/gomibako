@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: History of Weastern Historiography
+categories: Notes
 subclass: Historiography
 ---
 

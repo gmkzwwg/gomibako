@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: Regex - Basic Syntax and Practical Usage
+categories: Sheet
 subclass: Tips
 ---
 

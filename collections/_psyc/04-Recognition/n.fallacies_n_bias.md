@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: Logical Fallacies and Cognitive Bias
+categories: Sheet
 subclass: Recognition
 ---
 

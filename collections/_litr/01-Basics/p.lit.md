@@ -1,8 +1,8 @@
 ---
-categories: Prime
 title: Literature - Its Roadmap and Knowledge Architecture
-subclass: Basics
 layout: bilingual
+categories: Prime
+subclass: Basics
 ---
 
 ## Full Skill Stack

@@ -1,6 +1,6 @@
 ---
-categories: Texts
 title: Contemporary Theories of Knowledge
+categories: Texts
 subclass: Epistemology
 ---
 

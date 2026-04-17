@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: The Little Schemer
+categories: Notes
 subclass: Lisp
 ---
 

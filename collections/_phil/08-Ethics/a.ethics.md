@@ -1,6 +1,6 @@
 ---
-categories: Annal
 title: Western Ethics from Antiquity to the Present
+categories: Annal
 subclass: Ethics
 ---
 

@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: The Theory Architecture of Jacques Lacan
+categories: Notes
 subclass: Psychoanalysis
 ---
 

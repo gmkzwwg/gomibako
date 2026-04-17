@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: Emacs Quick Reference
+categories: Sheet
 subclass: Programming
 ---
 

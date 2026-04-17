@@ -1,6 +1,6 @@
 ---
-categories: Texts
 title: Quotes and Original text of Philosophiers
+categories: Texts
 subclass: Readings
 ---
 

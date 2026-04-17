@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: 世界神话体系故事、神表和社会意识形态分析
+categories: Notes
 subclass: Myths
 ---
 

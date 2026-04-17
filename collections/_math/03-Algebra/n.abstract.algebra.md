@@ -1,5 +1,5 @@
 ---
-categories: Notes
 title: Abstract Algebra
+categories: Notes
 subclass: Algebra
 ---

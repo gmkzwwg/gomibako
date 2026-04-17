@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Modern Epistemology
+categories: Notes
 subclass: Epistemology
 ---
 

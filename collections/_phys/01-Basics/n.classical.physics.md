@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Classical Physics
+categories: Prime
 subclass: Basics
 ---
 

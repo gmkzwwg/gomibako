@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Essentials of Programming Languages 
+categories: Notes
 subclass: Languages
 ---
 

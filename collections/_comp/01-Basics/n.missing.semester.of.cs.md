@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: MIT Null, The Missing Semester of Your CS Education
+categories: Notes
 subclass: Basics
 ---
 

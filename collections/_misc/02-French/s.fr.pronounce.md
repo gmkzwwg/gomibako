@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: French Pronouncation Tips
+categories: Sheet
 subclass: French
 ---
 

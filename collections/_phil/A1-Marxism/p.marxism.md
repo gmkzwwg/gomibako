@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: 马克思主义的基础结构和发展
+categories: Notes
 subclass: Marxism
 ---
 

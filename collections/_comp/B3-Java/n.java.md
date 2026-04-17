@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Outdated Java Notes
+categories: Notes
 subclass: Java
 ---
 

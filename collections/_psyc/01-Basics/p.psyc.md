@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Psychology - Its Roadmap and Knowledge Architecture
+categories: Prime
 subclass: Basics
 ---
 

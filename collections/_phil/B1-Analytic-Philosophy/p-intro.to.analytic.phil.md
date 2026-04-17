@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Introduction to Analytic Philosophy
+categories: Notes
 subclass: Basics
 ---
 

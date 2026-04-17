@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Computer Science - Its Roadmap and Knowledge Architecture
+categories: Prime
 subclass: Basics
 todo: 框架已成！
 ---

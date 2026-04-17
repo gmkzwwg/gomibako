@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Low Power-Comsumption NAS Crafting
+categories: Notes
 subclass: Linux
 ---
 

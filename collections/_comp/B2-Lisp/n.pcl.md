@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Practical Common Lisp
+categories: Notes
 subclass: Lisp
 ---
 

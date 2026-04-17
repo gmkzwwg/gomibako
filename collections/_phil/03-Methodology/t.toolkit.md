@@ -1,6 +1,6 @@
 ---
-categories: Texts
 title: The Philosophier's Toolkit
+categories: Texts
 subclass: Methodology
 ---
 

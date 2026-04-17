@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Cosmology - Its Roadmap and Knowledge Architecture
+categories: Prime
 subclass: Basics
 ---
 

@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Advanced Algebra
+categories: Notes
 subclass: Algebra
 ---
 

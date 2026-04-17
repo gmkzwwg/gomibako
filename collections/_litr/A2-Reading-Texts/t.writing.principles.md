@@ -1,6 +1,6 @@
 ---
-categories: Texts
 title: Writing Principles of Talented Writers - A Personal Collection
+categories: Texts
 subclass: Texts
 ---
 

@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: 增加人类学习和工作能力的神经心理学和脑科学小技巧
+categories: Sheet
 subclass: Learning-Psychology
 ---
 

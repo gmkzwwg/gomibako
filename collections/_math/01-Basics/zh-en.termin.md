@@ -1,8 +1,8 @@
 ---
-categories: Sheet
 title: 数学术语速查表2
-subclass: Basics
 layout: compact
+categories: Sheet
+subclass: Basics
 ---
 
 ### 1) Numerals, bases, and place value (数字与位值)

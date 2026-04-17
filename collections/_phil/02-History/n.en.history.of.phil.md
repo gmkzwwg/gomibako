@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Outline of History of Western Philosophy
+categories: Notes
 subclass: History
 ---
 

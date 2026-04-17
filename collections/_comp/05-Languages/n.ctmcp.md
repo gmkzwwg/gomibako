@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Concepts, Techniques, and Models of Computer Programming
+categories: Notes
 subclass: Languages
 ---
 

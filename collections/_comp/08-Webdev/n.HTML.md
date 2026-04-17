@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: HTML - Quick Reference
+categories: Notes
 subclass: Webdev
 todos: 给出技术趋势和技术栈的解析，如为什么ts代替js
 ---
@@ -353,3 +353,740 @@ Common mistakes and easily confused points
 * Confusing HTML with the entire front end; HTML is only one layer of the web platform
 * Assuming “HTML5” is the main current formal model; in standards terms, the more accurate idea today is the HTML Living Standard
 
+## HTML5 Design Philosophy: Why It Recommends Some Things and Discourages Others
+
+**Definition**: **HTML5** is not just a larger set of tags. It reflects a design philosophy about what the web should be: **semantic**, **device-independent**, **forward-compatible**, **accessible**, and **separated by responsibility**.
+
+**Core claim**: Most HTML5 recommendations follow one deep rule:
+
+> **HTML should describe meaning and structure, not visual appearance or device-specific behavior.**
+
+Once this principle is understood, many “recommended vs discouraged” choices become easy to explain.
+
+---
+
+### **1. The central design model of HTML5**
+
+**Analysis**: HTML5 assumes that a web document is not only seen by a person in one browser on one screen. It may also be consumed by:
+
+* search engines
+* screen readers
+* browsers with different default styles
+* mobile devices
+* parsers, readers, and extraction tools
+* future software not yet written
+
+Because of this, HTML5 prefers markup that answers questions like:
+
+* What is this content?
+* What role does this part play?
+* How are these parts related?
+
+It does **not** want HTML to answer questions like:
+
+* Should this text be green?
+* Should this image sit 5 pixels from the edge?
+* Should this text be bold because I want emphasis, or just because I want thick letters?
+
+Those presentation questions belong mostly to **CSS**. Behavioral questions belong mostly to **JavaScript**.
+
+**Conclusion**: HTML5 is built around **separation of concerns**:
+
+* **HTML** = structure and meaning
+* **CSS** = presentation
+* **JavaScript** = behavior
+
+This is the single most important underlying principle.
+
+---
+
+### **2. Why HTML5 discourages presentational markup**
+
+**Background**: Older HTML often mixed content and presentation. For example:
+
+```html
+<font color="red" size="4">Warning</font>
+<center><b>Hello</b></center>
+<img align="right" hspace="5">
+```
+
+This style made sense in a much earlier web, when CSS was weak or inconsistently supported. But HTML5 moved away from that model.
+
+#### **Why this is discouraged**
+
+**First**, presentational markup is fragile. If appearance is embedded directly into HTML, changing the site’s design becomes slow and repetitive.
+
+**Second**, presentational markup is semantically poor. `<font color="red">Warning</font>` tells the browser what it should look like, but not what it means. Is it a warning? A label? A critical error? A decorative phrase?
+
+**Third**, presentation is context-dependent. A mobile layout, a dark theme, a print stylesheet, and a screen reader all need different output behavior. Hard-coding appearance in HTML interferes with this flexibility.
+
+#### **Bad example**
+
+```html
+<center>
+  <font color="green" size="5">My Blog</font>
+</center>
+```
+
+#### **Better example**
+
+```html
+<h1 class="site-title">My Blog</h1>
+```
+
+```css
+.site-title {
+  text-align: center;
+  color: green;
+  font-size: 2rem;
+}
+```
+
+**Why the second is better**:
+
+* HTML now says: “this is the main heading”
+* CSS says: “center it and make it green”
+* meaning and presentation are no longer fused
+
+---
+
+### **3. Why HTML5 prefers semantic elements**
+
+**Definition**: A **semantic element** is an element whose name communicates its role in the document.
+
+Examples include:
+
+* `<header>`
+* `<nav>`
+* `<main>`
+* `<article>`
+* `<section>`
+* `<aside>`
+* `<footer>`
+
+Older markup often used many generic `<div>` elements:
+
+```html
+<div class="top">
+  <div class="menu">...</div>
+  <div class="content">...</div>
+</div>
+```
+
+HTML5 does not ban `<div>`, but it encourages replacing generic containers with meaningful ones when possible.
+
+#### **Bad example**
+
+```html
+<div class="post">
+  <div class="title">On Reading</div>
+  <div class="body">...</div>
+  <div class="info">April 16, 2026</div>
+</div>
+```
+
+#### **Better example**
+
+```html
+<article class="post">
+  <h2>On Reading</h2>
+  <div class="post-body">...</div>
+  <footer>
+    <time datetime="2026-04-16">April 16, 2026</time>
+  </footer>
+</article>
+```
+
+**Analysis**: The better version gives structure to the content:
+
+* this whole thing is an **article**
+* its title is a **heading**
+* its date is a **time**
+* the date is in the **footer** of the article
+
+This improves:
+
+* accessibility
+* machine readability
+* maintainability
+* search and extraction quality
+
+**Conclusion**: HTML5 favors semantic elements because meaning scales better than presentation.
+
+---
+
+### **4. Why HTML5 favors accessibility-friendly structure**
+
+**Background**: HTML5 assumes the web should work for more than sighted mouse users. This is not a secondary concern. It is one of the architectural assumptions of the platform.
+
+That is why HTML5 strongly favors:
+
+* correct headings
+* labels for forms
+* alt text for images
+* meaningful buttons and links
+* structural landmarks like `<main>` and `<nav>`
+
+#### **Bad example**
+
+```html
+<div onclick="submitForm()">Submit</div>
+```
+
+#### **Better example**
+
+```html
+<button type="submit">Submit</button>
+```
+
+**Why the second is better**:
+
+* it is keyboard-friendly by default
+* screen readers recognize it as a button
+* browsers know how to interact with it
+* less custom code is needed
+
+This shows another major HTML5 principle:
+
+> **Prefer native semantics and native browser behavior over re-creating them manually.**
+
+#### **Another bad example**
+
+```html
+<img src="author.jpg">
+```
+
+#### **Better example**
+
+```html
+<img src="author.jpg" alt="Portrait of the author">
+```
+
+Or, if the image is decorative:
+
+```html
+<img src="divider.png" alt="">
+```
+
+**Analysis**: HTML5 does not want the meaning of an image to be left ambiguous. The browser needs explicit help.
+
+---
+
+### **5. Why HTML5 discourages obsolete attributes**
+
+Attributes such as:
+
+* `align`
+* `bgcolor`
+* `hspace`
+* `vspace`
+* `border`
+* many uses of `width` and `height` for styling purposes
+
+are discouraged or obsolete in modern HTML practice.
+
+#### **Underlying reason**
+
+These attributes are mostly remnants of an earlier web where layout and style were done in HTML because CSS was not mature enough.
+
+HTML5 moved the platform toward a cleaner model:
+
+* structural meaning in HTML
+* visual control in CSS
+
+#### **Bad example**
+
+```html
+<img src="avatar.png" align="right" hspace="5" vspace="5">
+```
+
+#### **Better example**
+
+```html
+<img src="avatar.png" alt="Author avatar" class="avatar">
+```
+
+```css
+.avatar {
+  float: right;
+  margin: 5px;
+}
+```
+
+**Conclusion**: HTML5 discourages obsolete presentational attributes because they mix responsibilities and reduce flexibility.
+
+---
+
+### **6. Why HTML5 treats headings as document structure, not just big text**
+
+**Analysis**: A heading is not “text that should look large.” A heading defines the outline and hierarchy of a document.
+
+That is why HTML5 prefers:
+
+```html
+<h1>Main title</h1>
+<h2>Section title</h2>
+<h3>Subsection title</h3>
+```
+
+instead of:
+
+```html
+<p class="big-bold">Main title</p>
+<p class="medium-bold">Section title</p>
+```
+
+The second version can be made to look similar, but it does not communicate hierarchy as clearly.
+
+#### **Bad example**
+
+```html
+<div class="title">Course Notes</div>
+<div class="subtitle">Week 1</div>
+```
+
+#### **Better example**
+
+```html
+<h1>Course Notes</h1>
+<h2>Week 1</h2>
+```
+
+**Why this matters**:
+
+* screen readers navigate by headings
+* search tools infer importance from headings
+* styling can still be customized later with CSS
+
+#### **Important nuance**
+
+HTML5 does **not** require you to accept default heading appearance. It only wants you to use headings for heading roles.
+
+So this is perfectly good:
+
+```html
+<h2 class="post-title">A Theory of Reading</h2>
+```
+
+```css
+.post-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+```
+
+**Conclusion**: HTML5 encourages semantic structure even when the final visual style differs from browser defaults.
+
+---
+
+### **7. Why HTML5 favors meaningful form markup**
+
+Forms are a strong example of HTML5’s design logic. A form is not just a set of boxes. It is a structured interaction between user and system.
+
+That is why HTML5 encourages:
+
+* `<label>`
+* semantic input types such as `email`, `url`, `date`
+* `<fieldset>` and `<legend>` when grouping related controls
+* native validation where suitable
+
+#### **Bad example**
+
+```html
+<div>Email</div>
+<input>
+```
+
+#### **Better example**
+
+```html
+<label for="email">Email</label>
+<input id="email" type="email" name="email">
+```
+
+The better version has:
+
+* an explicit label
+* an input type with semantic meaning
+* a named field that can be submitted properly
+
+HTML5’s preference here follows the same principle: **describe intent, not only shape**.
+
+---
+
+### **8. Why HTML5 likes native elements more than custom re-creation**
+
+**Analysis**: A major HTML5 principle is that native browser elements are valuable because they already come with behavior, semantics, keyboard support, accessibility support, and predictable interaction.
+
+#### **Bad example**
+
+```html
+<div class="fake-link" onclick="location.href='/about'">About</div>
+```
+
+#### **Better example**
+
+```html
+<a href="/about">About</a>
+```
+
+#### **Bad example**
+
+```html
+<div class="fake-checkbox"></div>
+```
+
+#### **Better example**
+
+```html
+<input type="checkbox" id="agree">
+<label for="agree">I agree</label>
+```
+
+**Conclusion**: HTML5 prefers native elements because they encode tested platform behavior. Replacing them without need often creates weaker, less accessible interfaces.
+
+---
+
+### **9. Why HTML5 tolerates generic containers but prefers purposeful ones**
+
+HTML5 does not reject `<div>` or `<span>`. They are still necessary. But it treats them as **generic containers of last resort**.
+
+#### **Use `<div>` and `<span>` when**
+
+* there is no suitable semantic element
+* you need a styling or scripting hook
+* the role is purely structural and not semantically distinct
+
+#### **Do not overuse them when**
+
+* a semantic element exists
+* you are masking real document structure
+
+#### **Bad example**
+
+```html
+<div class="navigation">
+  <div class="navigation-item"><a href="/">Home</a></div>
+</div>
+```
+
+#### **Better example**
+
+```html
+<nav>
+  <a href="/">Home</a>
+</nav>
+```
+
+**Principle**: Use generic containers when necessary, but not as a substitute for meaning.
+
+---
+
+### **10. Why HTML5 values machine-readable annotations**
+
+HTML5 often encourages forms of markup that help software interpret content, even when the user sees almost no difference.
+
+Examples include:
+
+* `datetime` on `<time>`
+* `alt` on images
+* `lang` on documents or sections
+* `type="email"` on inputs
+* `meta` tags for document information
+
+#### **Example**
+
+```html
+<time datetime="2026-04-16">April 16, 2026</time>
+```
+
+This does more than display a date. It tells machines what the date *is* in normalized form.
+
+This reflects a deep HTML5 assumption:
+
+> **Documents should be understandable both visually and structurally.**
+
+---
+
+### **11. Why HTML5 prefers progressive enhancement over brittle dependence**
+
+**Definition**: **Progressive enhancement** means starting with a functional semantic base, then adding styling and interactivity on top.
+
+HTML5 fits this philosophy well because semantic markup can stand on its own better than purely visual or script-dependent markup.
+
+#### **Bad example**
+
+```html
+<div class="menu-button" onclick="toggleMenu()">Menu</div>
+<div id="menu" style="display:none">...</div>
+```
+
+#### **Better example**
+
+```html
+<button type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+<nav id="menu">...</nav>
+```
+
+Then JavaScript can enhance the behavior.
+
+**Analysis**: HTML5 prefers resilient structure. If CSS or JavaScript fails, the underlying document should still be meaningful and as usable as possible.
+
+---
+
+### **12. Why some old patterns feel “wrong” in HTML5 even if they still work**
+
+This is an important point. Many discouraged patterns are not forbidden because browsers must remain backward-compatible. The web cannot break old pages too easily.
+
+So HTML5 often tolerates bad legacy markup, but does not recommend it.
+
+This means:
+
+* **working** is not the same as **good**
+* browser support is not the same as semantic quality
+* backward compatibility should not be mistaken for modern best practice
+
+#### **Example**
+
+```html
+<table>
+  <tr>
+    <td><b>Title</b></td>
+  </tr>
+</table>
+```
+
+This may render. But if the purpose is layout rather than tabular data, HTML5 considers it poor practice.
+
+#### **Better**
+
+Use tables for actual data tables, not page layout.
+
+---
+
+### **13. Abstract principles behind HTML5 recommendations**
+
+Here are the deeper principles that explain most of HTML5’s advice.
+
+#### **Principle 1: Meaning before appearance**
+
+Markup should say what something *is*, not merely how it should look.
+
+#### **Principle 2: Separate concerns**
+
+Structure belongs to HTML, style to CSS, behavior to JavaScript.
+
+#### **Principle 3: Prefer built-in semantics**
+
+Native elements are usually better than handcrafted imitations.
+
+#### **Principle 4: Design for multiple consumers**
+
+Documents are read by humans, browsers, assistive tools, search engines, parsers, and future systems.
+
+#### **Principle 5: Keep documents resilient**
+
+A page should remain understandable even if style or script is reduced or changed.
+
+#### **Principle 6: Favor maintainability**
+
+Semantic, structured markup is easier to scale and refactor than presentation-heavy markup.
+
+---
+
+### **14. Good vs bad examples in one place**
+
+#### **A. Image alignment**
+
+**Bad**
+
+```html
+<img src="photo.jpg" align="right" hspace="5" vspace="5">
+```
+
+**Good**
+
+```html
+<img src="photo.jpg" alt="Portrait photo" class="side-image">
+```
+
+```css
+.side-image {
+  float: right;
+  margin: 5px;
+}
+```
+
+---
+
+#### **B. Text styling**
+
+**Bad**
+
+```html
+<font color="red"><b>Important</b></font>
+```
+
+**Good**
+
+```html
+<strong class="warning-text">Important</strong>
+```
+
+```css
+.warning-text {
+  color: red;
+}
+```
+
+**Analysis**: `<strong>` expresses importance. CSS expresses redness.
+
+---
+
+#### **C. Page layout**
+
+**Bad**
+
+```html
+<table>
+  <tr>
+    <td>Sidebar</td>
+    <td>Main content</td>
+  </tr>
+</table>
+```
+
+**Good**
+
+```html
+<div class="layout">
+  <aside>Sidebar</aside>
+  <main>Main content</main>
+</div>
+```
+
+```css
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+```
+
+**Reason**: Tables are for tabular data, not layout structure.
+
+---
+
+#### **D. Clickable controls**
+
+**Bad**
+
+```html
+<div onclick="save()">Save</div>
+```
+
+**Good**
+
+```html
+<button type="button">Save</button>
+```
+
+---
+
+#### **E. Document structure**
+
+**Bad**
+
+```html
+<div class="header">My Notes</div>
+<div class="section-title">Chapter 1</div>
+```
+
+**Good**
+
+```html
+<h1>My Notes</h1>
+<h2>Chapter 1</h2>
+```
+
+---
+
+#### **F. Metadata**
+
+**Bad**
+
+```html
+<span>2026-04-16</span>
+```
+
+**Good**
+
+```html
+<time datetime="2026-04-16">2026-04-16</time>
+```
+
+---
+
+### **15. A useful rule of thumb**
+
+When writing HTML, ask two questions:
+
+**Question 1**: *If all CSS disappeared, would this still have understandable structure?*
+If the answer is no, the HTML may be too presentational or too generic.
+
+**Question 2**: *Am I using this element because of what it means, or only because of how it looks by default?*
+If it is only about appearance, the choice is probably weak.
+
+This is a very effective test.
+
+---
+
+### **16. The deepest abstraction**
+
+**Conclusion**: The deepest principle behind HTML5 is this:
+
+> **A web document is not a painted canvas first. It is a structured, meaningful information object first.**
+
+Visual design still matters greatly. But HTML5 assumes that visual styling should be layered on top of semantic structure, not baked into the structure itself.
+
+That is why HTML5 tends to recommend:
+
+* semantic elements
+* native controls
+* proper headings
+* CSS for presentation
+* JavaScript for behavior
+* metadata and accessibility support
+
+And it tends to discourage:
+
+* obsolete presentational attributes
+* layout tables
+* fake controls
+* generic containers used where semantic ones exist
+* styling decisions embedded directly into markup
+
+---
+
+### **Final summary**
+
+**HTML5 recommends** what improves:
+
+* semantic clarity
+* accessibility
+* maintainability
+* interoperability
+* resilience
+* multi-device and multi-tool compatibility
+
+**HTML5 discourages** what confuses:
+
+* structure with style
+* meaning with appearance
+* native semantics with custom imitation
+* presentational hacks with durable markup
+
+In one sentence:
+
+***Good HTML5 describes the document; bad HTML pretends to style the document from inside the document.***
+
+I can also turn this into a more formal **style guide chapter** with sections like **semantic structure**, **obsolete patterns**, **accessibility logic**, and **migration advice from old HTML to HTML5**.

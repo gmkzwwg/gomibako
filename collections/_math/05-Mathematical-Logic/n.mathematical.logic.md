@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title:  Mathematical Logic
+categories: Notes
 subclass: Mathematical-Logic
 ---
 

@@ -1,6 +1,6 @@
 ---
-categories: Annal
 title: Paradigm Shift of Western Philosophy
+categories: Annal
 subclass: History
 ---
 

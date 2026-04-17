@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: 基础数学速查表
+categories: Sheet
 subclass: Basics
 toc_depth: 2
 ---

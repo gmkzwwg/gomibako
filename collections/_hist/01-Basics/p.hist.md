@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: History - Its Roadmap and Knowledge Architecture
+categories: Prime
 subclass: Basics
 ---
 

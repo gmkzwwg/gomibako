@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: The Theory Architecture of Sigmund Freud
+categories: Notes
 subclass: Psychoanalysis
 ---
 

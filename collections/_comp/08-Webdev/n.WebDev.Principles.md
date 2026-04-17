@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Web Development Principles and Practical Skills
+categories: Notes
 subclass: Webdev
 ---
 

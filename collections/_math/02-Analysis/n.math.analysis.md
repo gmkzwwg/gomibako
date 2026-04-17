@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: Mathematical Analysis
+categories: Notes
 subclass: Analysis
 ---
 

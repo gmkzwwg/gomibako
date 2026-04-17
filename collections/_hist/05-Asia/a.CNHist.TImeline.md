@@ -1,7 +1,7 @@
 ---
+title: 中国古代史时间线
 categories: Annal
 abbreviation: CNHist Timeline
-title: 中国古代史时间线
 subclass: Asia
 todo: 重新修订
 ---

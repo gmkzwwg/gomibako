@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: The Theory Architecture of Anna Freud
+categories: Notes
 subclass: Psychoanalysis
 ---
 

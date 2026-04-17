@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: 宇宙学原理 Cosmological Principle
+categories: Notes
 subclass: Cosmology
 ---
 

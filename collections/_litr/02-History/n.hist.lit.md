@@ -1,6 +1,6 @@
 ---
-categories: Notes
 title: History of Western Literature
+categories: Notes
 subclass: History
 ---
 

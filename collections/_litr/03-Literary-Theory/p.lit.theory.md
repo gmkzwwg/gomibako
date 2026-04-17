@@ -1,6 +1,6 @@
 ---
-categories: Prime
 title: Basic Problems in Literary Theory and Literary Criticism
+categories: Prime
 subclass: Literary-Theory
 ---
 

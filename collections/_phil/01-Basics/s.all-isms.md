@@ -1,6 +1,6 @@
 ---
-categories: Sheet
 title: A Comprehesive Summary of All -ism in Western Tradition
+categories: Sheet
 subclass: Basics
 ---
 
