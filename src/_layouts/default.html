@@ -109,9 +109,15 @@
     <div class="div_article" id="div_atcl">
       <div class="hook" id="top_hook"></div>
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
-        {{content}} {% include post_list.html %} {% include comment.html %}
+        {{content}}
+        {% if post_list_style %}
+        {% include post_list.html %}
+        {% endif %}
+        {% include comment.html %}
       </article>
-      {% if page.footer != false %} {% include footer.html %} {% endif %}
+      {% if page.footer != false %}
+      {% include footer.html %}
+      {% endif %}
     </div>
   </div>
   </body>

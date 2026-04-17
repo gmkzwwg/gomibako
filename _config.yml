@@ -84,10 +84,14 @@ defaults:
       author              :             # author name by default
       show_date           : false       # whether show date message by default
       category            :             # category by default
-      post_list           : false       # whether show list of post by default      
+    
       comment             : false
       footer              : false       # whether show footer by default
       context_menu        : true        # Change right-click menu
+      post_list_style     : false
+      post_meta_mode      : categories 
+      post_show_excerpt   : false
+      post_date_format    : "%Y-%m-%d"
 
 # 5. Social Media Accounts
 email               : "gmkzwwg@outlook.com" 
