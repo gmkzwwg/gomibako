@@ -23,3 +23,7 @@ permalink: /posts
 #### 我为什么如此缺少知识
 
 #### ***我这种垃圾写的东西没任何价值。建议还是别看了，纯浪费时间。***
+
+{% if page.post_list_style != false %}
+{% include post_list.html %}
+{% endif %}
