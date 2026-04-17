@@ -62,6 +62,8 @@ collections:
     output          : true
     permalink       : /:collection/:categories/:title/
     alias           : "PHYS"
+  posts:
+    language        : zh
 
 # 3. Comment settings（disqus.com）
 disqus_username     : gmkzwwg
@@ -88,10 +90,6 @@ defaults:
       comment             : false
       footer              : false       # whether show footer by default
       context_menu        : true        # Change right-click menu
-      post_list_style     : false
-      post_meta_mode      : categories 
-      post_show_excerpt   : false
-      post_date_format    : "%Y-%m-%d"
 
 # 5. Social Media Accounts
 email               : "gmkzwwg@outlook.com" 

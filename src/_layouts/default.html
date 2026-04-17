@@ -109,8 +109,8 @@
     <div class="div_article" id="div_atcl">
       <div class="hook" id="top_hook"></div>
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
-        {{content}}
-        {% if post_list_style %}
+        {{content}} 
+        {% if page.post_list_style != false %}
         {% include post_list.html %}
         {% endif %}
         {% include comment.html %}
