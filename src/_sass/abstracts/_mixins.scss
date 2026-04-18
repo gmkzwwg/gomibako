@@ -1,10 +1,24 @@
-@mixin thin_scrollbar {
+@mixin thin_scrollbar($thumb-color, $track-color) {
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color $track-color;
+
   &::-webkit-scrollbar {
     width: 4.5px;
     height: 4.5px;
   }
+
   &::-webkit-scrollbar-thumb {
-    background-color: $color-primary;
+    background-color: $thumb-color;
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $track-color;
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
   }
 }
 

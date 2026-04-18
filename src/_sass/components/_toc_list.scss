@@ -24,7 +24,7 @@
   padding: 0px 0;
   border-left: $border-normal;
   border-bottom: $border-normal;
-  @include thin_scrollbar;
+  @include thin_scrollbar($color-primary, rgba($color-primary, 0.035));
   ul {
     padding: 0 4px 0 18px;
     margin: 5px 4px;

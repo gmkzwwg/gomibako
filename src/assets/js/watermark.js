@@ -36,7 +36,7 @@
       "main",
       "article",
       ".main-content",
-      ".content",
+      ".post-content",
       ".post",
       ".article",
       "body"

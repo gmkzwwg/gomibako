@@ -3,7 +3,7 @@ categories: Notes
 abbreviation: LLI
 title: Low Latent Inhibition - Neurocognitive Mechanisms, Psychopathology, and Creativity
 subclass: Psychopathology
-layout: bilingual
+layout: post-bilingual
 ---
 
 ### Definition and Foundations of Latent Inhibition (LI)

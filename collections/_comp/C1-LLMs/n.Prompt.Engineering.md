@@ -1,6 +1,6 @@
 ---
 title: LLM Prompt Engineering for Workflows Enhancement
-layout: parallel
+layout: post-bilingual
 categories: Notes
 subclass: LLMs
 abbreviation: Prompt Engineering

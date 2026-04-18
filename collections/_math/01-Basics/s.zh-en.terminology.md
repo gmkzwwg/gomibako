@@ -1,6 +1,6 @@
 ---
 title: 数学术语速查表
-layout: compact
+layout: post-compact
 categories: Sheet
 subclass: Basics
 ---

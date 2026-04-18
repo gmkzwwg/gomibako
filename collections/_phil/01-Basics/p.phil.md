@@ -1,6 +1,6 @@
 ---
 title: Western Philosophy - Its Roadmap and Knowledge Architecture
-layout: bilingual
+layout: post-bilingual
 categories: Prime
 subclass: Basics
 ---

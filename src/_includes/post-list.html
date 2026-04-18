@@ -1,3 +1,61 @@
+{% comment %}
+File: _includes/post-list.html
+
+Overview:
+  Universal post list include with standard layouts
+  (card-grid, minimal, timeline, book)
+  and category-grouped layouts
+  (category-card, category-minimal, category-book).
+
+Usage:
+  {% include post-list.html %}
+  {% include post-list.html style="minimal" %}
+  {% include post-list.html style="category-minimal" group_show_tags=true %}
+  {% include post-list.html style="category-book" group_collapsible=true group_open="first" group_title_tag="h3" %}
+
+Key parameters:
+  style                string   default: minimal
+                       card-grid | minimal | timeline | book
+                       category-card | category-minimal | category-book
+
+  posts                array    default: site.posts
+  meta_mode            string   default: categories
+                       categories | tags | both | none
+                       Standard layouts only.
+
+  show_excerpt         boolean  default: false
+  date_format          string   default: "%Y-%m-%d"
+  empty_text           string   default: "No posts yet."
+
+  group_show_tags      boolean  default: false
+                       Category-grouped layouts only.
+                       true => show tags only
+                       false => show no post meta
+
+  group_collapsible    boolean  default: false
+  group_open           string   default: all
+                       all | first | none
+                       Used only when group_collapsible=true.
+
+  group_title_tag      string   default: h2
+                       h1-h6 | p | a | strong
+
+  uncategorized_label  string   default: Uncategorized
+
+Notes:
+  - Priority:
+    include params > page front matter > site.post_list.* > defaults
+  - Category-grouped layouts sort groups by post order, so categories
+    containing the newest posts appear first.
+  - Posts without categories go into uncategorized_label.
+  - Standard layouts use meta_mode.
+  - Category-grouped layouts never show categories on individual posts;
+    only group_show_tags controls tag display.
+  - Requires:
+    _sass/components/_post-list.scss
+
+{% endcomment %}
+
 {% assign list_style = include.style | default: page.post_list_style | default: site.post_list.style | default: "minimal" | strip | downcase %}
 {% assign meta_mode = include.meta_mode | default: page.post_meta_mode | default: site.post_list.meta_mode | default: "categories" | strip | downcase %}
 {% assign date_format = include.date_format | default: page.post_date_format | default: site.post_list.date_format | default: "%Y-%m-%d" %}

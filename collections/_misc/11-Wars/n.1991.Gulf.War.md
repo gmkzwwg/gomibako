@@ -1,6 +1,6 @@
 ---
 title: Reconstruction of the 1990–1991 Gulf War
-layout: bilingual
+layout: post-bilingual
 categories: Notes
 abbreviation: Gulf War
 subclass: Wars

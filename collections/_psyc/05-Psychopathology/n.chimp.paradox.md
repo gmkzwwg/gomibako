@@ -1,6 +1,6 @@
 ---
 title: Chimp Paradox - How to Manage Emotion Without Suppressing It
-layout: bilingual
+layout: post-bilingual
 categories: Notes
 abbreviation: Chimp Paradox
 subclass: Psychopathology

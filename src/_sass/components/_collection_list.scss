@@ -94,7 +94,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.18rem 0.35rem 0.18rem 0;
-  @include thin_scrollbar;
+  @include thin_scrollbar($color-primary, rgba($color-primary, 0.035));
 }
 
 .archive-window__titlebar-actions {
@@ -170,7 +170,7 @@
   padding: 0.95rem 1.05rem 1rem 1.05rem;
   opacity: 1;
   transition: opacity 0.12s ease;
-  @include thin_scrollbar;
+  @include thin_scrollbar($color-primary, rgba($color-primary, 0.035));
 }
 
 .archive-window__content.is-fade-out {

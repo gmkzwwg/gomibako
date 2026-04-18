@@ -1,5 +1,5 @@
 ---
-layout: slide
+layout: slide-language
 title_selector: h1
 title: Curriculum Vitae
 post_list: false
@@ -10,7 +10,7 @@ footer: false
 permalink: /cv
 ---
 
-# Curriculum Vitae
+# ENGLISH
 
 ## RUBBISH WITH NO VALUE 
 
@@ -70,7 +70,7 @@ permalink: /cv
 **POOR ENGLISH**: "But I have nothing to say."
 
 
-# 个人简历
+# 中文
 
 ## 毫无价值的垃圾残渣
 
@@ -128,7 +128,7 @@ permalink: /cv
 
 **贫乏的通用语**: “但我无话可说。”
 
-# curriculum vitae
+# Françai
 
 ## Débris d’ordures totalement sans valeur
 

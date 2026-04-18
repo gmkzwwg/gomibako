@@ -1,6 +1,6 @@
 ---
 title: Reconstruction of the 1979-1989 Soviet-Afghan War
-layout: bilingual
+layout: post-bilingual
 categories: Notes
 abbreviation: Soviet-Afghan War
 subclass: Wars

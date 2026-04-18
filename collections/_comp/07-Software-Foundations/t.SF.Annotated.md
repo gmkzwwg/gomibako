@@ -1,6 +1,6 @@
 ---
 title: Software Foundations Personal Annotated
-layout: parallel
+layout: post-parallel
 categories: Texts
 abbreviation: SF Annotated
 subclass: Software-Foundations

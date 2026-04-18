@@ -49,6 +49,9 @@
 
     DEFAULT_LANGUAGE_LABEL: 'Text',
     BLOCK_MIN_TEXT_LENGTH: 12,
+    SCROLLBAR_SIZE: '4.5px',
+    SCROLLBAR_THUMB_ALPHA: 1,
+    SCROLLBAR_TRACK_ALPHA: 0.035,
 
     ENABLE_COPY_BUTTON: true,
     ENABLE_RUN_BUTTON: true,
@@ -102,7 +105,22 @@
       bash: (code) => `https://onecompiler.com/bash?code=${encodeURIComponent(code)}`,
       shell: (code) => `https://onecompiler.com/bash?code=${encodeURIComponent(code)}`,
       sh: (code) => `https://onecompiler.com/bash?code=${encodeURIComponent(code)}`
-    }
+    },
+    SKIP_LANGUAGES: new Set([
+      'mermaid',
+      'katex',
+      'math'
+    ]),
+
+    SKIP_SELECTORS: [
+      '.mermaid',
+      '.katex',
+      '.MathJax',
+      '[class*="language-mermaid"]',
+      '[class*="lang-mermaid"]',
+      '[data-language="mermaid"]',
+      '[data-lang="mermaid"]'
+    ],
   };
 
   const state = {
@@ -132,6 +150,7 @@
     plaintext: 'text',
     txt: 'text',
     md: 'markdown',
+    mmd: 'mermaid',
     yml: 'yaml'
   };
 
@@ -160,6 +179,7 @@
     json: 'JSON',
     yaml: 'YAML',
     markdown: 'Markdown',
+    mermaid: 'Mermaid',
     text: 'Text'
   };
 
@@ -188,7 +208,20 @@
     rescan(false);
     if (CONFIG.OBSERVE_MUTATIONS) startObserver();
   }
-
+  /** Check whether a node or its subtree should be skipped entirely. @param {HTMLElement} node Candidate node. @returns {boolean} Whether to skip. */
+  function shouldSkipNode(node) {
+    if (!node || !(node instanceof HTMLElement)) return true;
+    if (node.matches(CONFIG.SKIP_SELECTORS.join(','))) return true;
+    if (node.closest(CONFIG.SKIP_SELECTORS.join(','))) return true;
+    return false;
+  }
+  /** Check whether detected language or markup should be skipped. @param {string} language Normalized language. @param {HTMLElement} root Logical root. @returns {boolean} Whether to skip rebuild. */
+  function shouldSkipLanguage(language, root) {
+    if (language && CONFIG.SKIP_LANGUAGES.has(language)) return true;
+    if (root && root.matches(CONFIG.SKIP_SELECTORS.join(','))) return true;
+    if (root && root.querySelector(CONFIG.SKIP_SELECTORS.join(','))) return true;
+    return false;
+  }
   function rescan(reset) {
     if (reset) resetProcessedBlocks();
     collectStandaloneBlocks().forEach(enhanceBlock);
@@ -289,7 +322,39 @@
         overflow: auto;
         box-sizing: border-box;
       }
+      .${CONFIG.BODY_CLASS},
+      .${CONFIG.BODY_CLASS} > pre,
+      .${CONFIG.BODY_CLASS} pre {
+        scrollbar-width: thin;
+        scrollbar-color: var(--cbe-scrollbar-thumb) var(--cbe-scrollbar-track);
+      }
 
+      .${CONFIG.BODY_CLASS}::-webkit-scrollbar,
+      .${CONFIG.BODY_CLASS} > pre::-webkit-scrollbar,
+      .${CONFIG.BODY_CLASS} pre::-webkit-scrollbar {
+        width: ${CONFIG.SCROLLBAR_SIZE};
+        height: ${CONFIG.SCROLLBAR_SIZE};
+      }
+
+      .${CONFIG.BODY_CLASS}::-webkit-scrollbar-thumb,
+      .${CONFIG.BODY_CLASS} > pre::-webkit-scrollbar-thumb,
+      .${CONFIG.BODY_CLASS} pre::-webkit-scrollbar-thumb {
+        background: var(--cbe-scrollbar-thumb);
+        border-radius: 999px;
+      }
+
+      .${CONFIG.BODY_CLASS}::-webkit-scrollbar-track,
+      .${CONFIG.BODY_CLASS} > pre::-webkit-scrollbar-track,
+      .${CONFIG.BODY_CLASS} pre::-webkit-scrollbar-track {
+        background: var(--cbe-scrollbar-track);
+        border-radius: 999px;
+      }
+
+      .${CONFIG.BODY_CLASS}::-webkit-scrollbar-corner,
+      .${CONFIG.BODY_CLASS} > pre::-webkit-scrollbar-corner,
+      .${CONFIG.BODY_CLASS} pre::-webkit-scrollbar-corner {
+        background: transparent;
+      }
       .${CONFIG.BODY_CLASS} > pre,
       .${CONFIG.BODY_CLASS} > .highlight,
       .${CONFIG.BODY_CLASS} > .hljs,
@@ -316,6 +381,7 @@
 
     document.querySelectorAll(CONFIG.CANDIDATE_SELECTORS.join(',')).forEach((node) => {
       if (!(node instanceof HTMLElement)) return;
+      if (shouldSkipNode(node)) return;
       const root = findLogicalRoot(node);
       if (!root) return;
       if (seen.has(root)) return;
@@ -423,6 +489,8 @@
     if (!contentNode) return;
 
     const language = detectLanguage(root, codeText);
+    if (shouldSkipLanguage(language, root)) return; // Skip mermaid-like blocks.
+
     const languageLabel = LANGUAGE_LABELS[language] || toTitleCase(language || CONFIG.DEFAULT_LANGUAGE_LABEL.toLowerCase()) || CONFIG.DEFAULT_LANGUAGE_LABEL;
     const rebuilt = buildUnifiedBlock({
       theme,
@@ -608,6 +676,8 @@
     body.style.padding = '0';
     body.style.background = theme.background;
     body.style.color = theme.color;
+    body.style.setProperty('--cbe-scrollbar-thumb', theme.borderColor);
+    body.style.setProperty('--cbe-scrollbar-track', mixColorWithAlpha(theme.color, CONFIG.SCROLLBAR_TRACK_ALPHA));
 
     normalizeContentNode(contentNode, theme);
     body.appendChild(contentNode);
@@ -778,7 +848,7 @@
         await navigator.clipboard.writeText(text);
         return true;
       }
-    } catch (_) {}
+    } catch (_) { }
 
     try {
       const ta = document.createElement('textarea');

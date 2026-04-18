@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: post-bilingual
 title: Jekyll Markdown + HTML Feature Test
 author: 垃圾残渣
 show_date: true
@@ -12,13 +12,15 @@ comment: true
 home_btn: true
 btn_text: true
 footer: true
-layout: bilingual
 encrypted_text: true
+context_menu: false
 permalink: /test
 date: 2019-5-25 # YYYY-MM-DD
 excerpt: "This is excerpt." # string
 abstract: "This is abstract. Abstract is blank by default." # string
 ---
+
+[test-slide](/slide)
 
 # Heading 1
 

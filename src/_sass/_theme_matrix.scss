@@ -1,6 +1,5 @@
 @charset 'utf-8';
 
-// abstracts
 @import "abstracts/fonts";
 @import "abstracts/variables";
 @import "abstracts/mixins";
@@ -17,14 +16,14 @@
   --color-surface-rgb: #{$green-3};
 }
 
-
-// vendor
 @import "vendor/syntax";
-// base styles
+@import "vendor/hacked_splash";
+@import "vendor/copy_code";
+
 @import "base/base";
 @import "base/details";
 @import "base/table";
-// components
+
 @import "components/footer";
 @import "components/collection_list";
 @import "components/header";
@@ -33,13 +32,10 @@
 @import "components/toc_list";
 @import "components/comment";
 @import "components/tags";
-@import "components/index";
-@import "components/copy_code";
-@import "components/hacked_splash";
-@import "components/slide";
 @import "components/context_menu";
 @import "components/post-list";
 
-// layout
 @import "layouts/global";
+@import "layouts/slide";
+@import "layouts/index";
 

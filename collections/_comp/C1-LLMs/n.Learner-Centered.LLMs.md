@@ -1,6 +1,6 @@
 ---
 title: Learner-Centered Use of Large Language Models
-layout: bilingual
+layout: post-bilingual
 categories: Notes
 subclass: LLMs
 abbreviation: Learner-Centered LLMs

@@ -1,6 +1,6 @@
 ---
 title: 日语语法速查表
-layout: compact
+layout: post-compact
 categories: Sheet
 subclass: Japanese
 ---

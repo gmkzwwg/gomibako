@@ -208,7 +208,7 @@
   background-color: $code-background;  
   overflow-x: auto;
   border: $border-thin;
-  @include thin_scrollbar; 
+  @include thin_scrollbar($color-primary, rgba($color-primary, 0.035)); 
   // max-width: 99%;
   }
 .highlight .hll {

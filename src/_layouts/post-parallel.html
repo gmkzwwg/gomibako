@@ -8,7 +8,7 @@ layout: default
 <script> 
 document.addEventListener('DOMContentLoaded', function () {
   window.parallelTextColumns.init({
-    selectors: ['.content'], // 选择应用的【直接！】容器
+    selectors: ['.post-content'], // 选择应用的【直接！】容器
     autoEnable: true, // 自动开启
     includeHeadings: false, // 不翻译标题
     fontSize: '14px', // 统一字体大小
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
   {% include toc_chart.html content=content compact=true %}
 </div>
 {% endif %}
-<div class="content">
+<div class="post-content">
 {{ content }}
 </div>
 
