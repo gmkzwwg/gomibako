@@ -9,7 +9,7 @@ toc: false
 home_btn: true
 btn_text: true
 footer: true
-permalink: /all
+permalink: /notes
 ---
 
 {% include post_by_subclass.html %}

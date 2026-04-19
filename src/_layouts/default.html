@@ -59,7 +59,7 @@
   {% if lang == "zh" or lang == "中文" or lang == "汉语" %}
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const container = document.querySelector(".post-content");
+      const container = document.querySelector(".content");
       if (!container) return;
 
       container.querySelectorAll("p").forEach(function (p) {
@@ -110,7 +110,6 @@
       <div class="hook" id="top_hook"></div>
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
         {{content}} 
-        
         {% include comment.html %}
       </article>
       {% if page.footer != false %}

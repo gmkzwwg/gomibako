@@ -31,39 +31,37 @@ collection_order    :
 collections:
   math:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     alias           : "MATH"
   phil:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     alias           : "PHIL"
   hist:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     sort_by         : name
     alias           : "HIST"
   litr:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     alias           : "LITR"
   comp:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     alias           : "COMP"
   misc:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     alias           : "MISC"
   psyc:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     alias           : "PSYC"
   phys:
     output          : true
-    permalink       : /:collection/:categories/:title/
+    permalink       : /:collection/:title/
     alias           : "PHYS"
-  posts:
-    language        : zh
 
 # 3. Comment settings（disqus.com）
 disqus_username     : gmkzwwg
