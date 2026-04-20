@@ -1,7 +1,7 @@
 ---
 title: 孤鸿寄语默苍离主要剧情
 categories: Texts
-subclass: Texts
+subclass: Literary-Texts
 ---
 
 ## 三道考验  
