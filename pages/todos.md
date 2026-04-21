@@ -34,7 +34,7 @@ permalink: /todos
                                 </h5>
 
                                 {% for post in collection.docs %}
-                                    {% if post.publish != false %}
+                                    
                                         {% assign todo_is_present = false %}
 
                                         {% if post.todos %}
@@ -62,7 +62,7 @@ permalink: /todos
                                                 {% endif %}
                                             </li>
                                         {% endif %}
-                                    {% endif %}
+                                   
                                 {% endfor %}
                             {% endif %}
                         {% endfor %}
@@ -83,7 +83,7 @@ permalink: /todos
                                     </h5>
 
                                     {% for post in collection.docs %}
-                                        {% if post.publish != false %}
+                                        
                                             {% assign todo_is_present = false %}
 
                                             {% if post.todos %}
@@ -111,7 +111,7 @@ permalink: /todos
                                                     {% endif %}
                                                 </li>
                                             {% endif %}
-                                        {% endif %}
+                                        
                                     {% endfor %}
                                 {% endif %}
                             {% endfor %}
@@ -129,7 +129,7 @@ permalink: /todos
                             </p>
 
                             {% for post in collection.docs %}
-                                {% if post.publish != false %}
+                                
                                     {% assign todo_is_present = false %}
 
                                     {% if post.todos %}
@@ -157,7 +157,7 @@ permalink: /todos
                                             {% endif %}
                                         </li>
                                     {% endif %}
-                                {% endif %}
+                                
                             {% endfor %}
                             <br/>
                         {% endfor %}

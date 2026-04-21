@@ -35,7 +35,7 @@ tag_to_show: cheatsheet
                                 <hr>
                                 </h5>
                                 {% for post in collection.docs %}
-                                    {% if post.publish != false %}
+
                                         {% if post.tags != false %}
                                             {% for tag in post.tags %}
                                                 {% if tag == page.tag_to_show %}
@@ -44,7 +44,7 @@ tag_to_show: cheatsheet
                                                     </li>
                                                 {% endif %}
                                             {% endfor %}
-                                        {% endif %}
+                                        
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
@@ -64,7 +64,7 @@ tag_to_show: cheatsheet
                                     <hr>
                                     </h5>
                                     {% for post in collection.docs %}
-                                        {% if post.publish != false %}
+                                        
                                             {% if post.tags != false %}
                                                 {% for tag in post.tags %}
                                                     {% if tag == page.tag_to_show %}
@@ -73,7 +73,7 @@ tag_to_show: cheatsheet
                                                         </li>
                                                     {% endif %}
                                                 {% endfor %}
-                                            {% endif %}
+                                           
                                         {% endif %}
                                     {% endfor %}
                                 {% endif %}
@@ -90,7 +90,7 @@ tag_to_show: cheatsheet
                             <hr>
                             </p>
                             {% for post in collection.docs %}
-                                {% if post.publish != false %}
+                                
                                     {% if post.tags != false %}
                                         {% for tag in post.tags %}
                                             {% if tag == page.tag_to_show %}
@@ -100,7 +100,7 @@ tag_to_show: cheatsheet
                                             {% endif %}
                                         {% endfor %}
                                     {% endif %}
-                                {% endif %}
+                                
                             {% endfor %}
                             <br/>
                         {% endfor %}

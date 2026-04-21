@@ -9,9 +9,10 @@ title               : 垃圾箱
 owner               : 垃圾残渣
 description         : "Personal rubbish of gmkzwwg"
 statement           : "Designed by gmkzwwg, All Rights Reserved"
-archive_btn_text    : Trash
-home_btn_text       : Bin
-matrix_bg_text             : "αβγδεζηθικλμνξοπρστυφχψω#$%&*+-" # texts randomly displayed in background
+posts_btn_text      : Posts
+archive_btn_text    : Notes
+home_btn_text       : Home
+matrix_bg_text             : "01αβγδεζηθικλμνξοπρστυφχψωijxyz#$%&*+" # texts randomly displayed in background
 # matrix_bg_text             : "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-"
 empty_text: "No posts yet."
 
@@ -74,7 +75,8 @@ defaults:
     values:
       layout              : "post"      # "post"/"parallel"/"compact"/"bilingual"/"print"
       btn_text            : true        # whether show button text by default
-      collection_list     : true        # whether show archive button by default
+      show_posts          : true
+      show_collections    : true        # whether show archive button by default
       home_btn            : true        # whether show home by default
       maximize            : true        # whether show maximize button by default
       encrypted_text      : false       # whether use encrytion function by default

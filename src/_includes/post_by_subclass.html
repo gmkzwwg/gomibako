@@ -16,7 +16,7 @@
 
             {%- capture all_subclasses_raw -%}
               {%- for post in collection.docs -%}
-                {%- if post.publish != false and post.subclass and post.subclass != "" -%}
+                {%- if post.subclass and post.subclass != "" -%}
                   {{- post.subclass | strip -}}|||
                 {%- endif -%}
               {%- endfor -%}
@@ -34,7 +34,7 @@
 
                   <div style="color: #00ff41;">
                     {%- for post in collection.docs -%}
-                      {%- if post.publish != false and post.subclass -%}
+                      {%- if post.subclass -%}
                         {%- assign post_subclass = post.subclass | strip -%}
                         {%- if post_subclass == clean_subclass -%}
                           <div style="margin-bottom: 0.35rem;">
@@ -71,7 +71,7 @@
 
         {%- capture all_subclasses_raw -%}
           {%- for post in collection.docs -%}
-            {%- if post.publish != false and post.subclass and post.subclass != "" -%}
+            {%- if post.subclass and post.subclass != "" -%}
               {{- post.subclass | strip -}}|||
             {%- endif -%}
           {%- endfor -%}
@@ -89,7 +89,7 @@
 
               <div style="color: #00ff41;">
                 {%- for post in collection.docs -%}
-                  {%- if post.publish != false and post.subclass -%}
+                  {%- if post.subclass -%}
                     {%- assign post_subclass = post.subclass | strip -%}
                     {%- if post_subclass == clean_subclass -%}
                       <div style="margin-bottom: 0.35rem;">

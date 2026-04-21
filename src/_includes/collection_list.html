@@ -100,9 +100,7 @@
 
                                     {% capture all_subclasses_raw -%}
                                         {%- for post in collection.docs -%}
-                                            {%- if post.publish != false -%}
-                                                {{- post.subclass | default: 'Unclassified' | strip -}}|||
-                                            {%- endif -%}
+                                            {{- post.subclass | default: 'Unclassified' | strip -}}|||
                                         {%- endfor -%}
                                     {%- endcapture %}
 
@@ -118,16 +116,14 @@
 
                                                 <div class="archive-post-group__items">
                                                     {% for post in collection.docs %}
-                                                        {% if post.publish != false %}
-                                                            {% assign post_subclass = post.subclass | default: 'Unclassified' | strip %}
-                                                            {% if post_subclass == clean_subclass %}
-                                                                <a
-                                                                    class="archive-post-link"
-                                                                    href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
-                                                                >
-                                                                    {{ post.title }}
-                                                                </a>
-                                                            {% endif %}
+                                                        {% assign post_subclass = post.subclass | default: 'Unclassified' | strip %}
+                                                        {% if post_subclass == clean_subclass %}
+                                                            <a
+                                                                class="archive-post-link"
+                                                                href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                                                            >
+                                                                {{ post.title }}
+                                                            </a>
                                                         {% endif %}
                                                     {% endfor %}
                                                 </div>
@@ -155,9 +151,7 @@
 
                             {% capture all_subclasses_raw -%}
                                 {%- for post in collection.docs -%}
-                                    {%- if post.publish != false -%}
-                                        {{- post.subclass | default: 'Unclassified' | strip -}}|||
-                                    {%- endif -%}
+                                    {{- post.subclass | default: 'Unclassified' | strip -}}|||
                                 {%- endfor -%}
                             {%- endcapture %}
 
@@ -173,16 +167,14 @@
 
                                         <div class="archive-post-group__items">
                                             {% for post in collection.docs %}
-                                                {% if post.publish != false %}
-                                                    {% assign post_subclass = post.subclass | default: 'Unclassified' | strip %}
-                                                    {% if post_subclass == clean_subclass %}
-                                                        <a
-                                                            class="archive-post-link"
-                                                            href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
-                                                        >
-                                                            {{ post.title }}
-                                                        </a>
-                                                    {% endif %}
+                                                {% assign post_subclass = post.subclass | default: 'Unclassified' | strip %}
+                                                {% if post_subclass == clean_subclass %}
+                                                    <a
+                                                        class="archive-post-link"
+                                                        href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                                                    >
+                                                        {{ post.title }}
+                                                    </a>
                                                 {% endif %}
                                             {% endfor %}
                                         </div>
