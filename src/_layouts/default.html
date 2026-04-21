@@ -17,19 +17,19 @@
   {% endif %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/image-viewer.js""></script>
   {% if page.context_menu == true %}
-  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/context-menu.js"></script>
+  <script src=" {{site.url}}{{site.baseurl}}/src/assets/js/context-menu.js"></script>
   {% endif %}
-  </head>
+</head>
 
-  <body class=" page">
-    {% include context_menu.html %}
-    {% if page.todos != false %}
-     {% include todo_summary.html %}
-      {% endif %}
-    <!-- Hacked Splash -->
-    {% include hacked_splash.html %}
-    <!-- Timeline -->
-    <script src="{{ site.url }}{{ site.baseurl }}/src/assets/js/timeline-list.js"></script>
+<body class=" page">
+  {% include context_menu.html %}
+  {% if page.todos != false %}
+  {% include todo_summary.html %}
+  {% endif %}
+  <!-- Hacked Splash -->
+  {% include hacked_splash.html %}
+  <!-- Timeline -->
+  <script src="{{ site.url }}{{ site.baseurl }}/src/assets/js/timeline-list.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       JekyllTimeline.init(".div_article", {
@@ -54,12 +54,10 @@
   </script>
 
   <!-- 2em Indent for Chinese Paragraph -->
-  <!-- page.language should be set as "zh" -->
-  {% assign lang = page.language | default: "" | strip %}
-  {% if lang == "zh" or lang == "中文" or lang == "汉语" %}
+  {% if page.text_indent == true %}
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const container = document.querySelector(".post_content");
+      const container = document.querySelector(".post-content");
       if (!container) return;
 
       container.querySelectorAll("p").forEach(function (p) {
@@ -94,8 +92,8 @@
 
         const ratio = chineseCount / chars.length;
 
-        if (ratio > 0.5) {
-          p.classList.add("zh-indent");
+        if (!p.style.textIndent) {
+          p.style.textIndent = "2em";
         }
       });
     });
@@ -109,7 +107,7 @@
     <div class="div_article" id="div_atcl">
       <div class="hook" id="top_hook"></div>
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
-        {{content}} 
+        {{content}}
         {% include comment.html %}
       </article>
       {% if page.footer != false %}
@@ -117,6 +115,6 @@
       {% endif %}
     </div>
   </div>
-  </body>
+</body>
 
 </html>

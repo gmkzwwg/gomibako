@@ -1,5 +1,5 @@
 ---
-language: zh
+text_indent: true
 ---
 ## 挑错的位置
 

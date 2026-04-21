@@ -1,5 +1,5 @@
 ---
-language: zh
+text_indent: true
 ---
 在一代游戏从业者的努力下，游戏终于从益智动脑变成了精神鸦片
 

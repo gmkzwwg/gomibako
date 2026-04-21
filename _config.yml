@@ -90,6 +90,7 @@ defaults:
       comment             : false
       footer              : false       # whether show footer by default
       context_menu        : true        # Change right-click menu
+      text_indent         : false
 
 # 5. Social Media Accounts
 email               : "gmkzwwg@outlook.com" 
