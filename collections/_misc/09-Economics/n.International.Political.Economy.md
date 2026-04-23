@@ -1,8 +1,9 @@
-
+---
 title: Hard-core International Political Economy
-layout: slide-language
+layout: slide-simple
 categories: Sheet
 subclass: Economy
+---
 
 ## **第一讲：什么叫“无帝国的帝国主义”**
 
