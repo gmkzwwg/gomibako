@@ -74,21 +74,21 @@ defaults:
       path          : ""  # an empty string here means all files in the project
     values:
       layout              : "post"      # "post"/"parallel"/"compact"/"bilingual"/"print"
-      btn_text            : true        # whether show button text by default
+      btn_text            : true        # show button text by default
       show_posts          : true
-      show_collections    : true        # whether show archive button by default
-      home_btn            : true        # whether show home by default
-      maximize            : true        # whether show maximize button by default
-      encrypted_text      : false       # whether use encrytion function by default
+      show_collections    : true        # show archive button by default
+      home_btn            : true        # show home by default
+      maximize            : true        # show maximize button by default
+      encrypted_text      : false       # use encrytion function by default
       toc                 : "chart"     # toc right-up conner: "chart"/"compact"/"list"
       toc_before_content  : false       # toc before content: "chart"/"compact"/"list"
       toc_depth           : 4           # the toc depth by default
       author              :             # author name by default
-      show_date           : false       # whether show date message by default
+      show_date           : false       # show date message by default
       category            :             # category by default
     
       comment             : false
-      footer              : false       # whether show footer by default
+      footer              : false       # show footer by default
       context_menu        : true        # Change right-click menu
       text_indent         : false
 
