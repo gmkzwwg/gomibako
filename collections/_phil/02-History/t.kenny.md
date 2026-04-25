@@ -163,7 +163,6 @@ In accordance with the strategy outlined in the general introduction I offer in 
 The history of philosophy does not begin with Aristotle, but the historiography of philosophy does. Aristotle was the first philosopher who systematically studied, recorded, and criticized the work of previous philosophers. In the first book of the Metaphysics he summarizes the teachings of his predecessors, from his distant intellectual ancestors Pythagoras and Thales up to Plato, his teacher for twenty years. To this day he is one of the most copious, and most reliable, sources of our information about philosophy in its infancy.
 
 哲学史的开端并不在亚里士多德，但哲学史学的开端却始于他。亚里士多德是第一位系统地研究、记录并批评前人哲学工作的哲学家。在《形而上学》的第一卷中，他总结了从他远古的智识祖先毕达哥拉斯和泰勒斯直到柏拉图（他的老师长达二十年）的教义。直到今天，他仍然是我们获取关于哲学初期信息的最丰富、最可靠的来源之一。
-
   - predecessor [ˈpriːdɪˌsesə(r)] n.前任；原先的东西；被替代的事物
   - copious [ˈkəʊpiəs] adj.大量的；充裕的；丰富的
   - infancy ['ɪnfənsi] n.婴儿期；初期；幼儿期；初创期
@@ -627,10 +626,8 @@ Consider the following. Socrates, Simmias, and Cebes are all called 'men'; they 
 In many cases where we would say that a common predicate was true of a number of individuals, Plato will say that they are all related to a certain Idea or Form: where A, B, C, are all F, they are related to a single Form of F. Sometimes he will describe this relation as one of imitation: A, B, C, all resemble F. Sometimes he will talk rather of participation: A, B, C all share in F, they have F in common between them. It is not clear how universally we are to apply the principle that behind common predication there lies a common Idea. Sometimes Plato states it universally, sometimes he hesitates about applying it to certain particular sorts of predicate. Certainly he lists Ideas of many diVerent types, such as the Idea of Good, the Idea of Bed, the Idea of Circle, the Idea of Being. He is prepared to extend the theory beyond single-place predicates such as 'is round' to two-place predicates like 'is distinct from'. When we say that A is distinct from B and when we say that B is distinct from A, although we use the word 'distinct' twice, each time we are applying it to a single entity.
 
 We may state a number of Platonic theses about Ideas and their relations to ordinary things in the world.
-
 - (1) The Principle of Commonality. Wherever several things are F, this is because they participate in or imitate a single Idea of F (Phd. 100c; Men. 72c, 75a; Rep. 5. 476a10, 597c).
 - (2) The Principle of Separation. The Idea of F is distinct from all the things that are F (Phd. 74c; Smp. 211b).
-
 - (3) The Principle of Self-Predication. The Idea of F is itself F (Hp. Ma. 292e; Prt. 230c–e; Prm. 132a–b).
 - (4) The Principle of Purity. The Idea of F is nothing but F (Phd. 74c; Smp. 211e).
 - (5) The Principle of Uniqueness. Nothing but the Idea of F is really, truly, altogether F (Phd. 74d, Rep. 5. 479a–d).
@@ -1255,7 +1252,6 @@ Triads of these diVerent kinds were, in later ages, called 'moods' of the syllog
 Aristotle sets himself the task of determining which of the possible moods produces a valid inference. He addresses it by trying out the various possible pairs of premisses and asking whether any conclusion can be drawn from them. If no conclusion can be validly drawn from a pair of premisses, he says that there is no syllogism. For instance, he says that if B belongs to no C, and A belongs to some B, there cannot be a syllogism; and he gives the terms 'white', 'horse', 'swan' as the test instance (1. 3. 25a38). What he is doing is inviting us to consider the pair of premisses 'No swan is a horse' and 'Some horses are white' and to observe that from these premisses no conclusion can be drawn about the whiteness or otherwise of swans.
 
 His procedure appears, at Wrst sight, to be both haphazard and intuitive; but in the course of his discussion he is able to produce a number of general rules which, between them, are adequate to determine which moods yield a conclusion and which do not. There are three rules which apply to syllogisms in all Wgures:
-
 - (1) At least one premiss must be universal.
 - (2) At least one premiss must be afWrmative.
 - (3) If either premiss is negative, the conclusion must be negative.
@@ -1263,7 +1259,6 @@ His procedure appears, at Wrst sight, to be both haphazard and intuitive; but in
 3 No valid argument has true premisses and a false conclusion, but of course there can be valid arguments from false premisses to false conclusions, and invalid arguments for true conclusions.
 
 These rules are of universal application, but they take more speciWc form in relation to particular Wgures. The rules peculiar to the Wrst Wgure are
-
 - (4) The major premiss (the one containing the major term) must be universal.
 - (5) The minor premiss (the one containing the minor term) must be afWrmative.
 
@@ -1413,7 +1408,6 @@ The necessary basis for a modal logic, she concludes, is a logic of unanalysed p
 In the generation after Aristotle modal logic was developed in an interesting way in the school of Megara. For Diodorus Cronos a proposition is possible iV it either is or will be true, is impossible iV it is false and will never be true, and is necessary iV it is true and will never be false.10 Diodorus, like Aristotle, accepted that propositions were fundamentally tensed and could change their truth-values; but unlike Aristotle he does not need to make a sharp distinction between actuality and potentiality, since potentialities are deWned in terms of actualities. Propositions, on Diodorus' deWnitions, change not only their truth-values but also their modalities. 'The Persian Empire has been destroyed' was untrue but possible when Socrates was alive; after Alexander's victories it was true and necessary (LS 38e). For Diodorus, as for Aristotle, a special necessity applies to the past.
 
 It is a feature of Diodorus' deWnition of possibility that there are no possibilities that are forever unrealized: whatever is possible is or will be one day true. This appears to involve a form of fatalism: no one can ever do anything other than what they in fact do. Diodorus seems to have supported this by a line of reasoning that became known (we know not why) as the Master Argument. Starting from the premiss (1) that past truths are necessary, Diodorus oVered a proof that nothing is possible that neither is nor will be true. Let us suppose (taking an example used in ancient discussions of the argument) that there is a shell in shallow water, let us call it Nautilus, which will never in fact be seen. We can construct an argument from this premiss to show that it is impossible for it to be seen.
-
 - (2) Nautilus will not ever be seen.
 - (3) It has always been the case that
 - (4) It is necessary that Nautilus will not ever be seen. (from (4) and (1))
@@ -1498,7 +1492,6 @@ It is, fortunately, not necessary to resolve these uncertainties in order to pre
 The criterion for the invalidity of an inference was analogous to the one Chrysippus oVered for the truth-value of a conditional. An inference was valid (perantikos) if the contradictory of the conclusion conXicted with the conjunction of the premisses; if it did not conXict, then the inference was invalid. A typical invalid inference was 'If it is day, it is light. But it is day. Therefore Dion is walking' (D.L. 7. 77). Nowadays we are accustomed to distinguish between valid inferences and sound inferences. An inference may be valid but unsound if one or more of its premisses is untrue. The Stoics made a similar distinction, but used the Greek word for 'true', alethes, to correspond to 'sound' and 'false' to correspond to 'unsound'. An inference was unsound, they said, if either it was invalid or it contained some falsity in its premisses (D.L. 7. 79).
 
 Inferences came in various forms, called 'moods'. Chrysippus listed Wve basic forms of valid inference, or 'indemonstrable moods' (D.L. 7. 79). They may be set out as follows, using cardinal numbers rather than ordinals.
-
 - (A) If 1 then 2; but 1; therefore 2.
 - (B) If 1 then 2; but not 2; therefore not 1.
 - (C) Not both 1 and 2; but 1; therefore not 2.
@@ -1644,7 +1637,6 @@ Plato frequently emphasized the unstable and confusing nature of senseexperience
 look both concave and convex because colours mislead the eye; and all kinds of similar confusion are manifest in our souls' (602c–d). He contrasted this with the constancy of the results of the calculations and measurements carried out by the reasoning part of the soul.
 
 Aristotle considers the epistemic status of the senses in the course of defending the principle of contradiction against Protagorean arguments in Metaphysics C (5. 1009b1 V.). The problem arises from the occurrence of conXicting senseimpressions. We have these four propositions.
-
 - (1) Sense says that p.
 - (2) Sense says that not-p.
 - (3) What Sense says is true.
@@ -1731,7 +1723,6 @@ A cognitive appearance, we are told, is 'that which arises from what is and is s
 First, we are told that the impressions of the insane are not cognitive. (Sometimes, indeed, the Stoics denied that they were genuine impressions, calling them instead 'phantasms'; D.L. 7. 49.) They 'arise purely externally and fortuitously, so that they are often not positive about them and do not assent to them' (S.E., M. 7. 248). But suppose they do assent to them: clearly that does not make them cognitive, since they are not true and only a true appearance can be cognitive. But what epistemological rule have the insane violated? Well, perhaps they have not examined the degree of detail in their impression: for a second piece of information we are given is that a cognitive impression must be highly comprehensive, so that all the characteristics of its original are reproduced. 'Just as the seals on rings always stamp their features accurately on the wax, so those impressions that create cognition of objects should incorporate all their peculiarities' (S.E., M. 2. 750). However, if cognitive impressions are ones that are fully comprehensive in detail, they must be very few and far between.
 
 Perhaps, we might conjecture, cognitive impressions have a specially persuasive quality that marks them out. The Stoics did indeed classify impressions in terms of their persuasiveness into four classes:
-
 - (1) Persuasive; e.g. 'It is day', 'I am talking'.
 - (2) Unpersuasive; e.g. 'If it is dark, it is day'.
 - (3) Persuasive and unpersuasive; e.g. philosophical paradoxes.
@@ -2006,7 +1997,6 @@ Nonetheless, Chrysippus is entitled to reject the Lazy Argument. Consider the pr
 (2) If I do not call the doctor, I will recover.
 
 If I am fated to recover, then the consequent of each of these propositions is true; and if we interpret each of the propositions truth-functionally, in the manner of Philo, each of them will on that supposition be true. In that sense it will be true that whether or not I call the doctor I will recover. But as these propositions are normally used in guiding behaviour, they must be understood not simply truthfunctionally, but also as supporting the corresponding counterfactuals
-
 - (3) If I called the doctor, I would recover.
 - (4) If I did not call the doctor, I would recover.
 
@@ -2111,7 +2101,6 @@ Scholars disagree about both the nature of each of the two parts and their relat
 fallacies in them, or did he himself regard them as valid? Either way, what is the relevance of the second part to the assault on the Ideas in the Wrst part?1
 
 Before outlining the main problems for the Theory of Ideas that are put forward in the Wrst part, it is worth repeating at this point the six principles that we identiWed in Chapter 1 as constituting the core of the classical Theory.
-
 - (1) The Principle of Commonality. Wherever several things are F, this is because they participate in or imitate a single Idea of F (Rep. 5. 476a).
 - (2) The Principle of Separation. The Idea of F is distinct from all the things that are F (Phd. 74c).
 - (3) The Principle of Self-Predication. The Idea of F is itself F.
@@ -2120,11 +2109,8 @@ Before outlining the main problems for the Theory of Ideas that are put forward 
 - (6) The Principle of Sublimity. Ideas are everlasting, they have no parts and undergo no change, and they are not perceptible to the senses (Phd. 78d).
 
 The problems set out in the Wrst part of the dialogue are as follows.
-
 1. According to the theory, particular Fs are F because they participate in the Idea of F. But what does 'participation' mean? Does a particular F share only a part of the Idea, or does it contain the whole of the Idea? There are diYculties either way. If a particular large thing L has the whole Idea of Large, then the Idea seems to be scattered and lack the unity of an Idea; but if L shares only a part of the Large, then it is large by something which is itself small, because being only a part it must be smaller than the Large (131a V.).
-
 2. It is essential to the theory that wherever several things are F they derive this from some other entity which is the Idea of F. Thus, the several large things derive their largeness from the Idea of Large. But if we put together the original set of large things plus the Idea, we have a new set of large things, which must derive their largeness from some other entity. 'So another form of largeness will appear, alongside the Idea of Large and the things that participated in it, and then another again over all of these'—so that we are set oV on an inWnite regress (132b). This line of thought much impressed Aristotle, who, substituting 'man' instead of 'large' for F in the original premiss, named it the Third Man argument, after the Man who would appear as a Super-idea, after (a) the men in the world and (b) the Ideal Man.
-
 3. There is a special diYculty with relational predicates. Suppose I am a slave. According to the theory, that must be because I resemble the Ideal Slave. But who is the Ideal Slave's owner? Surely, the Ideal Owner. But I am not a slave of the
 
 > 1:In what follows I am indebted to Constance C. Meinwald's Plato's Parmenides (New York: Oxford University Press, 1991), though I diVer from her on important points of interpretation.
@@ -2554,7 +2540,6 @@ Augustine oVers to prove that wanting is in our power. The exact lines of his pr
 If it is in my power to do X, in the sense earlier outlined by Augustine, then it must be in my power not to do X. This weakens his argument to show that wanting is in our power. For whatever plausibility there is in the claim that if I want to want something I want it, there is none in the claim that if I want not to want something then I do not want it. I may very sincerely want to give up smoking: that does not prevent my passionate want for a cigarette at this moment.
 
 No doubt Augustine can respond by making distinctions between diVerent kinds of wanting: but in the present context it would not be proWtable to follow further his analysis of volition. The part of the de Libero Arbitrio most relevant to the issue of determinism and freedom is his consideration of the foreknowledge of God. Augustine believed that at any moment God foreknew all future events. He can then construct the following argument against the possibility of voluntary sin.
-
 - (1) God foreknew that Adam was going to sin.
 - (2) If God foreknew that Adam was going to sin, necessarily Adam was going to sin.
 - (3) If Adam was necessarily going to sin, then Adam sinned necessarily.
@@ -3729,9 +3714,7 @@ convince of what, and what are the strongest things that can be said on the othe
 To illustrate the structure of the Summa I quote one of its shortest articles, the tenth article of question nineteen of the First Part, which poses the question 'Does God have free will?'
 
 It seems that God does not have free will.
-
 1. St Jerome says, in his homily on the Prodigal Son, 'God is the only one who is not, and cannot be, involved in sin; all other things, since they have free will, can turn either way.'
-
 2. Moreover, free will is the power of reason and will by which good and evil are chosen. But God, as has been said, never wills evil. Therefore, there is no free will in God.
 
 But on the other hand, St Ambrose, in his book on Faith, says this: 'The Holy Spirit makes his gifts to individuals as he wills, in accordance with the choice of his free will, and not in observance of any necessity.'
@@ -3881,7 +3864,6 @@ On many major issues Scotus took the opposite side to Aquinas. In his own mind, 
 Scotus broke with the Aristotelian tradition by maintaining that the concepts of being and of other universally applicable predicates such as 'good' were not analogous but univocal, and could be used about God in exactly the same sense as about creatures.9 Metaphysics was the science that studied the univocal concept of being and its fundamental properties. Aristotle had deWned metaphysics as the science that studies Being qua being. Scotus makes great use of this deWnition, but he understands it in a highly personal way and broadens its scope immeasurably by including within Being the inWnite Christian God. Whatever belongs to any of Aristotle's categories—substance or accident—is part of Being; but Being is much greater than this, for whatever falls within the categories is Wnite, and Being contains the inWnite. The most important division to be made within the realm of Being was the division between Wnite and inWnite being.10
 
 The existence of an inWnite being is something that, for Scotus, can be philosophically proved. In this he agrees with Aquinas and the great majority of medieval thinkers. But he rejects the proofs of God's existence oVered by Aquinas on the ground that they are too dependent on Aristotelian physics, and he oVers an elaborate metaphysical proof of his own to establish the existence of God as Wrst eYcient cause, ultimate Wnal cause, and most excellent of all beings. Unlike Aquinas, he thinks that divine attributes such as omniscience and omnipotence can be known only by revelation and cannot be established by natural reason alone.11
-
 - 9 Scotus' theory of univocity is discussed in Ch. 3 below.
 - 10 Scotus' metaphysics is treated in more detail in Ch. 5 below.
 - 11 Scotus' natural theology is discussed in Ch. 9 below.
@@ -4467,7 +4449,6 @@ A second distinction that Ockham makes is between consequences whose validity is
 Finally, Ockham distinguishes between material and formal consequences. From the examples he gives it appears that he regards as formal consequences both those that are externally valid and those that are internally valid. In material consequences, on the other hand, the impossibility of the antecedent's being true without the consequent depends not on any connection, external or internal, between the content of the antecedent and the content of the consequent. It arises either from the antecedent's being necessarily false, or from the consequent's being necessarily true. Thus 'If a man is an ass, then God does not exist' and 'If a man is running, then God exists', are both valid material consequences (OPh. III. 3. 1).
 
 The Wrst of these is an instance of a general rule, 'Anything whatever follows from what is impossible', and the second is an instance of 'What is necessary follows from anything whatever'. Ockham formulates a set of such rules that apply to inference of very varied kinds. They include the following six:
-
 - 1. What is false does not follow from what is true.
 - 2. What is true may follow from what is false.
 - 3. Whatever follows from the consequent follows from the antecedent.
@@ -5158,7 +5139,6 @@ In each of these transitions from potentiality towards actuality there is, for A
 It is hard to conceive exactly how this causality operates; it appears to be something like involuntary telepathy. Perhaps, to use a metaphor unavailable to Avicenna, the agent intellect is like a radio station perpetually broadcasting, on diVerent wavelengths, all the thoughts that there are. The human intellect's movement from potentiality to act is the result of its being tuned in on an appropriate wavelength. To explain how a human being does the tuning in, Avicenna presents an elaborate theory of interior sensation.
 
 In addition to the Wve familiar external senses, Avicenna believed that we have Wve internal senses:
-
 - (1) the common sense, which collects impressions from the Wve exterior senses;
 - (2) the retentive imagination, which stores the images thus collected;
 - (3) the compositive imagination, which deploys these images;
@@ -5820,7 +5800,6 @@ The ancient nominalists said that 'Christ is born', 'Christ will be born' and 'C
 So if we take the object of God's knowledge to be propositional, it is not true that whatever God once knew he now knows. But this does not mean that God's knowledge is Wckle: it simply means that his knowledge is not exercised through propositions in the way that our knowledge is.
 
 Aquinas' own solution to the problem of reconciling divine foreknowledge with contingency is presented in two stages. The Wrst stage, which has been common currency since Boethius, appeals to two diVerent ways in which modal propositions can be analysed.9 The proposition 'Whatever is known by God is necessarily true' is ambiguous: it may mean (A) or (B):
-
 - (A) 'Whatever is known by God is true' is a necessary truth.
 - (B) Whatever is known by God is a necessary truth.
 
@@ -7293,7 +7272,6 @@ Philonous, the idealist in the dialogue, in order to undermine Hylas' belief in 
 heat cannot be in the material substance. All degrees of heat are equally real, and so if a great heat is not something in an external object, neither is any heat.
 
 The argument is full of fallacies that are artfully concealed by Berkeley. The false moves are placed in the mouth of Hylas, not Philonous. Philonous simply asks leading questions, which Hylas then answers with a 'yes' or 'no' when he should be making distinctions. Let us give some instances:
-
 - Phil. Heat then is a sensible thing?
 - Hyl. Certainly.
 - Phil. Doth the reality of sensible things consist in being perceived? or is it something distinct from their being perceived, and that bears no relation to the mind?
@@ -7302,7 +7280,6 @@ The argument is full of fallacies that are artfully concealed by Berkeley. The f
 Let us accept that we are talking of heat as a perceptible quality, not as a form of energy deWnable in physical terms. Hylas is right to say that to exist is not the same as to be perceived: the Wre in the Wreplace may be hot when no one is standing near enough to feel the heat. But he should not have accepted—as he goes on to do—Philonous' equation of 'distinct from being perceived' and 'bearing no relation to the mind'. A shrewder defender of the objectivity of qualities might have admitted that they have a relation to perception, while still insisting that their existence is distinct from their actually being perceived. Another example:
 
 Phil. Is not the most vehement and intense degree of heat a very great pain?
-
 - Hyl. No one can deny it.
 - Phil. And is any unperceiving thing capable of pain or pleasure?
 - Hyl. No certainly.
@@ -7832,7 +7809,6 @@ Both Leibniz and Berkeley are phenomenalists in the sense that they agree that t
 If neither of these two philosophies is in the end credible, this is not due to any lack of ingenuity in their inventors. Rather, the defects in each system can be traced back to a single root: the confused epistemology of ideas, which was bequeathed to rationalists by Descartes and to empiricists by Locke. The philosopher in whose work we can see most fully the consequences of such an epistemology is David Hume. His oYcial system, according to which everything whatever is a mere collection of ideas and impressions, is nothing less than absurd. Nonetheless, Hume's genius is such that despite the distortions and constraints which his system imposed upon him, he was able to make highly signiWcant contributions to philosophy. Nowhere is this more evident than in his treatment of causality.
 
 Prior to Hume, the following propositions about causes were very widely held by philosophers:
-
 - 1. Every contingent being must have a cause.
 - 2. Cause and eVect must resemble each other.
 - 3. Given a cause, its eVect must necessarily follow.
@@ -7856,7 +7832,6 @@ Since the ideas can be separated, so can the objects; so there is no contradicti
 If there is no absurdity in conceiving something coming into existence without any cause at all, there is a fortiori no absurdity in conceiving of it coming into existence without a cause of a particular kind. Anything, Hume says, may produce anything. There is no logical reason to believe that like must be caused by like. 'Where objects are not contrary, nothing hinders them from having that constant conjunction, on which the relation of cause and eVect totally depends' (T, 173). Because many diVerent eVects are logically conceivable as arising from a particular cause, only experience leads us to expect the actual one. But on what basis?
 
 Hume oVers three rules by which to judge of causes and eVects:
-
 - 1. The cause and eVect must be contiguous in space and time.
 - 2. The cause must be prior to the eVect.
 - 3. There must be a constant union betwixt the cause and the eVect. (T, 173)
@@ -10011,7 +9986,6 @@ Even if a system is complete, it does not follow that there will always be a way
 Meanwhile, other logicians were studying a branch of logic that had been neglected since the Middle Ages, modal logic. Modal logic is the logic of the notions of necessity and possibility. Its study in modern times dates from the work of C. I. Lewis in 1918, who approached it via the theory of implication. What is it for a proposition p to imply a proposition q? Russell and Whitehead treated their horseshoe sign (the truth-functional 'if ') as a sign of implication, on the grounds that 'If p and p ! q then q' was a valid inference. But they realized that it was an odd form of implication—it entails, for instance, that any false proposition implies every proposition—and so they gave it the name of 'material implication'. Lewis insisted that the only genuine implication was strict implication: p implies q only if it is impossible that p should be true and q false. 'p strictly implies q', he maintained, was equivalent to 'q follows logically from p'. He drew up axiomatic systems in which the sign for material implication was replaced by a new sign to represent strict implication, and these systems were the first formal systems of modal logic. Strict implication struck many critics as being hardly less paradoxical than material implication, since an impossible proposition strictly implies every proposition, so that 'If cats are dogs then pigs can fly' comes out true.
 
 Lewis's modal researches, however, were interesting in their own right. He offered five different axiom systems, which he numbered S1 to S5, and showed that each of the axiom sets was consistent and independent. They vary in strength. S1, for instance, does not allow a proof of 'If p&q is possible, then p is possible and q is possible' (which seems very plausible), while S5 contains 'If p is possible, then p is necessarily possible' (which seems rather dubious). In some ways the most interesting system is S4, which Go¨del showed was equivalent to the logic of Principia Mathematica with the following additional axioms (reading 'if ' as material, not strict, implication):
-
 - (1) If necessarily p, then p.
 - (2) If necessarily p, then (if necessarily [if p then q] then necessarily q).
 - (3) If necessarily p, then necessarily necessarily p.
@@ -10142,7 +10116,6 @@ For some x, (1) x wrote Hamlet and (2) For all y, if y wrote Hamlet, y is identi
 The first element says that at least one individual wrote Hamlet, and the second that at most one individual wrote Hamlet. Having thus established that exactly one individual wrote Hamlet, the analysed sentence uses the third element to go on to say that that unique individual was a genius. In the unanalysed sentence 'the author of Hamlet' looks like a complex name, and would have been treated as one in Frege's system. As analysed by Russell no such nominal expression appears, and instead we have a combination of predicates and quantifiers. The analysis is meant to apply not only when—as in this case—there actually is an object that answers to the definite description, but also when the description is a vacuous one, such as 'the present King of France'. A sentence such as 'The King of France is bald', when analysed along Russellian lines, turns out to be false.
 
 Consider the following two sentences:
-
 - (1) The sovereign of the United Kingdom is male.
 - (2) The sovereign of the United States is male.
 
@@ -10200,7 +10173,6 @@ So, to understand a name is to grasp its reference; to understand a proposition 
 to understand the sense of a proposition no explanation is necessary. A proposition can communicate a new sense with old words: we can understand a proposition that we have never heard before and whose truth-value we do not know. It is this fact to which Wittgenstein appeals when he asserts that a proposition is a picture.
 
 What Wittgenstein meant by calling a proposition a picture can be summed up in nine theses:
-
 - (1) A proposition, unlike a name, is essentially composite. (TLP 4. 032)
 - (2) The elements of a proposition are correlated by human decision with elements of reality. (TLP 3. 315)
 - (3) The combination of these elements into a proposition presents—without further human intervention—a possible situation or state of affairs. (TLP 4. 026)
@@ -12050,12 +12022,10 @@ Some of these dates are approximate and others, especially in the earlier years,
 # Reference
 
 ## Part One
-
 - CHHP K. Algra, J. Barnes, J. Mansfeld, and M. Schofield (eds.), The Cambridge History of Hellenistic Philosophy (Cambridge: Cambridge University Press, 1999) CHLGP A. H. Armstrong (ed.), The Cambridge History of Later Greek and Early Medieval Philosophy (Cambridge: Cambridge University Press, 1967) DK H. Diels and W. Kranz (eds.), Die Fragmente der Vorsokratiker, 6th edn., 3 vols. (Berlin: Wiedmann, 1951); cited as DK, followed by the chapter, letter, and the number of the fragment (e.g. DK 8 B115). Each chapter of this work is divided into two sections, A (which contains references
 - handed down verbatim) D.L. Diogenes Laertius, Lives of the Philosophers, trans. R. D. Hicks, Loeb Classical Library, 2 vols. (Cambridge, Mass.: Harvard University Press, 1972); cited by book and paragraph (e.g. 8. 8)
 
 in ancient authors) and B (which contains fragments that have been
-
 - Ep. Epistle
 - fr. fragment
 - KRS G. S. Kirk, J. E. Raven, and M. Schofield (eds.), The Presocratic Philosophers, 2nd edn. (Cambridge: Cambridge University Press, 1983); cited as KRS, followed by the number of the fragment in the single series that runs through the edition (e.g. KRS 433)
@@ -12597,7 +12567,6 @@ See under Marx.
 |---|----------------------------------------------|-------------------------------------------|
 |   | University<br>Press,<br>1995)                |                                           |
 |   |                                              |                                           |
-
 - CM Karl Marx and Friedrich Engels, The Communist Manifesto, ed. D. McLellan, Oxford World's Classics (Oxford: Oxford University Press, 1992)
 - CPE Critique of Political Economy (Moscow: Progress, 1971)
 - EW Early Writings (Harmondsworth: Penguin, 1975)
@@ -12737,7 +12706,6 @@ This bibliography does not contain all the works cited in footnotes, nor all the
 Brunschwig, J., and Lloyd, G. E. R., Greek Thought: A Guide to Classical Knowledge (Cambridge, Mass.: Harvard University Press, 2000).
 
 Frede, M., Essays in Ancient Philosophy (Oxford: Clarendon Press, 1987).
-
 - Gottlieb, A., The Dream of Reason: A History of Western Philosophy from the Greeks to the Renaissance (London: Allen Lane, 2000).
 - Irwin, T., Classical Philosophy, Oxford Readers (Oxford: Oxford University Press, 1999).
 - Owen, G. E. L., Logic, Science, and Dialectic: Collected Papers in Greek Philosophy, ed. M. Nussbaum (London: Duckworth, 1986).
@@ -12750,7 +12718,6 @@ The standard collection of the original texts of the surviving fragments of the 
 There is a helpful, though less complete, collection which contains English translations in addition to the original texts: G. S. Kirk, J. E. Raven, and M. SchoWeld (eds.), The Presocratic Philosophers, 2nd edn. (Cambridge: Cambridge University Press, 1983).
 
 An excellent collection of texts in translation alone is J. Barnes, Early Greek Philosophy (Harmondsworth: Penguin, 1987). A more recent translation is R. Water-Weld, The First Philosophers: The Presocratics and the Sophists, World's Classics (Oxford: Oxford University Press, 2000).
-
 - Barnes, J., The Presocratic Philosophers, rev. edn. (London: Routledge, 1982).
 - Cornford, F. M., Plato and Parmenides (London: Kegan Paul, 1939).
 - de Romilly, Jacqueline, The Great Sophists in Periclean Athens (Oxford: Clarendon Press, 1992).
@@ -12773,7 +12740,6 @@ All the works of Plato in the original Greek are contained in Wve volumes of the
 The Clarendon Plato series (Oxford: Clarendon Press, 1973– ) contains translations with notes of the major Platonic dialogues, notably Theaetetus (ed. J. McDowell, 1973), Philebus (ed. J. C. B. Gosling, 1975), and Phaedo (ed. D. Gallop, 1975). Many dialogues are translated in volumes of the Penguin Classics and of the Oxford World's Classics series.
 
 The Socratic works of Xenophon appear in two volumes of the Loeb Classical Library: Memorabilia (trans. E. C. Marchant, London, 1923) and Symposium and Apology (trans. O. J. Todd, London, 1961). A good English translation is Xenophon, Conversations of Socrates, ed. H. Tredennick and R. WaterWeld (Harmondsworth: Penguin, 1990).
-
 - Adam, J. (ed.), The Republic of Plato, 2 vols. (Cambridge: Cambridge University Press, 1902).
 - Allen, R. E., Plato's Euthyphro and the Earlier Theory of Forms (London: Routledge & Kegan Paul, 1970).
 - —— (ed.), Studies in Plato's Metaphysics (London: Routledge & Kegan Paul, 1965).
@@ -12783,7 +12749,6 @@ The Socratic works of Xenophon appear in two volumes of the Loeb Classical Libra
 - Brickhouse, T. C., and Smith, N. D., Socrates on Trial (Oxford: Oxford University Press, 1989).
 
 —— —— Plato's Socrates (New York: Oxford University Press, 1994).
-
 - Dover, K. (ed.), Plato: Symposium (Cambridge: Cambridge University Press, 1980).
 - Gosling, J. C. B., Plato (London: Routledge & Kegan Paul, 1973).
 - Hackforth, R., Plato's Examination of Pleasure (Cambridge: Cambridge University Press, 1945).
@@ -12814,20 +12779,17 @@ Many of Aristotle's works are available in translation in Penguin Classics or in
 Ackrill, J. L., Aristotle the Philosopher (Oxford: Oxford University Press, 1981).
 
 Anscombe, G. E. M., and Geach, P. T., Three Philosophers (Oxford: Blackwell, 1961).
-
 - Bambrough, R. (ed.), New Essays on Plato and Aristotle (London: Routledge & Kegan Paul, 1965).
 - Barnes, J. (ed.), The Cambridge Companion to Aristotle (Cambridge: Cambridge University Press, 1995).
 - —— Aristotle: A Very Short Introduction (Oxford: Oxford University Press, 2000).
 
 —— Schofield, M., and Sorabji, R. (eds.), Articles on Aristotle, i: Science; ii: Ethics and Politics; iii: Metaphysics; iv: Psychology and Aesthetics (London: Duckworth, 1975).
-
 - Broadie, S., and Rowe, C., Aristotle: Nicomachean Ethics, trans., introd., and comm. (Oxford: Oxford University Press, 2002).
 - Irwin, T. H., Aristotle's First Principles (Oxford: Oxford University Press, 1988).
 
 Jaeger, W., Aristotle: Fundamentals of the History of his Development, trans. R. Robinson, 2nd edn. (Oxford: Clarendon Press, 1948).
 
 Kenny, A., The Aristotelian Ethics (Oxford: Clarendon Press, 1978).
-
 - Kraut, R., Aristotle: Political Philosophy (Oxford: Oxford University Press, 2002).
 - Lear, J., Aristotle and Logical Theory (Cambridge: Cambridge University Press, 1980).
 - Lloyd, G. E. R., Aristotle: The Growth and Structure of his Thought (Cambridge: Cambridge University Press, 1968).
@@ -12839,7 +12801,6 @@ Sorabji, R., Time, Creation and the Continuum (London: Duckworth, 1983).
 <sup>——</sup> Aristotle on the Perfect Life (Oxford: Clarendon Press, 1992).
 
 <sup>——</sup> Aristotle's Physics (Oxford: Clarendon Press, 1936).
-
 - Sorabji, R., Matter, Place and Motion: Theories in Antiquity and their Sequel (London: Duckworth, 1988).
 - Waterlow, S., Passage and Possibility: A Study of Aristotle's Modal Concepts (Oxford: Clarendon Press, 1982).
 
@@ -12860,7 +12821,6 @@ Asmis, E., Epicurus' ScientiWc Method (Ithaca, NY: Cornell University Press, 198
 Barnes, J., Brunschwig, J., Burnyeat, M., and Schofield, M., Science and Speculation: Studies in Hellenistic Theory and Practice (Cambridge: Cambridge University Press, 1982).
 
 Burnyeat, M., The Sceptical Tradition (Berkeley: University of California Press, 1983).
-
 - Furley, D. J., Two Studies in the Greek Atomists (Princeton: Princeton University Press, 1967).
 - Long, A. A., Hellenistic Philosophy, 2nd edn. (Berkeley: University of California Press, 1986).
 
@@ -12875,7 +12835,6 @@ Sharples, R. W., Stoics, Epicureans and Sceptics (London: Routledge, 1994).
 The works of Epictetus, Marcus Aurelius, and Plotinus have appeared in the Loeb Classical Library, and those of Plotinus as an Oxford Classical Text edited by P. Henry and H.-R. Schyzer, which has become the standard edition (Oxford: Oxford University Press, 1964–82).
 
 O'Donnell, J. J., Augustine: Confessions, 3 vols. (Oxford: Clarendon Press, 1992).
-
 - There are many translations of Confessions, notably H. Chadwick in the World's Classics series (Oxford: Oxford University Press, 1991).
 - Armstrong, A. H. (ed.), The Cambridge History of Later Greek and Early Medieval Philosophy (Cambridge: Cambridge University Press, 1970).
 - Bailey, C., Titi Lucreti Cari de Rerum Natura Libri Sex, 3 vols. (Oxford: Oxford University Press, 1947).
@@ -12892,7 +12851,6 @@ O'Donnell, J. J., Augustine: Confessions, 3 vols. (Oxford: Clarendon Press, 1992
 - Stump, E., and Kretzmann, N., The Cambridge Companion to Augustine (Cambridge: Cambridge University Press, 2001).
 
 ## Logic (Chapter 3)
-
 - Kneale, W. C., and Kneale, M., The Development of Logic (Oxford: Clarendon Press, 1962).
 - Łukasiewicz, J., Aristotle's Syllogistic from the Standpoint of Modern Formal Logic, 2nd edn. (Oxford: Clarendon Press, 1957).
 - Mates, B., Stoic Logic, 2nd edn. (Berkeley: University of California Press, 1961).
@@ -12908,7 +12866,6 @@ Prior, A. N., Time and Modality (Oxford: Clarendon Press, 1957).
 Bostock, D., Plato's Theaetetus (Oxford: Clarendon Press, 1988).
 
 Hankinson, R. J., The Sceptics (London: Routledge, 1994).
-
 - McKirahan, R. D., Principles and Proofs: Aristotle's Theory of Demonstrative Science (Princeton: Princeton University Press, 1992).
 - Schofield, M., Burnyeat, M., and Barnes, J., Doubt and Dogmatism: Studies in Hellenistic Epistemology (Oxford: Clarendon Press, 1980).
 
@@ -12917,7 +12874,6 @@ White, N. P., Plato on Knowledge and Reality (Indianapolis: Hackett, 1976).
 ## Philosophy of Physics (Chapter 5)
 
 Bobzien, S., Determinism and Freedom in Stoic Philosophy (Oxford: Clarendon Press, 1998).
-
 - Hankinson, R. J., Cause and Explanation in Ancient Greek Thought (Oxford: Clarendon Press, 1998).
 - Hoenen, P., Cosmologia (Rome: PontiWcal Gregorian University, 1949).
 - Sorabji, R., Necessity, Cause, and Blame (London: Duckworth, 1980).
@@ -12927,7 +12883,6 @@ Bobzien, S., Determinism and Freedom in Stoic Philosophy (Oxford: Clarendon Pres
 Waterlow, S., Nature, Change, and Agency in Aristotle's Physics (Oxford: Clarendon Press, 1982).
 
 ## Metaphysics (Chapter 6)
-
 - Barnes, J., and Mignucci, M. (eds.), Matter and Metaphysics (Naples: Bibliopolis, 1988).
 - Fine, Gail, On Ideas: Aristotle's Cricitism of Plato's Theory of Forms (Oxford: Clarendon Press, 1993).
 - Graham, D. W., Aristotle's Two Systems (Oxford: Oxford University Press, 1987).
@@ -12937,7 +12892,6 @@ Waterlow, S., Nature, Change, and Agency in Aristotle's Physics (Oxford: Clarend
 ## Philosophy of Mind (Chapter 7)
 
 Annas, J. E., Hellenistic Philosophy of Mind (Berkeley: University of California Press, 1992).
-
 - Brunschwig, J., and Nussbaum, M. (eds.), Passions and Perceptions: Studies in Hellenistic Philosophy of Mind (Cambridge: Cambridge University Press, 1993).
 - Hicks, R. D. (ed.), Aristotle: De Anima, with trans., introd., and comm. (Cambridge: Cambridge University Press, 1907).
 - Nussbaum, M. C. (ed.), Aristotle: De Motu Animalium, with trans., introd., and essays (Princeton: Princeton University Press, 1978).
@@ -12948,7 +12902,6 @@ Annas, J. E., Hellenistic Philosophy of Mind (Berkeley: University of California
 Annas, J., Platonic Ethics Old and New (Ithaca: Cornell University Press, 1999).
 
 Broadie, S., Ethics with Aristotle (New York: Oxford University Press, 1991).
-
 - Gosling, J. C. B., and Taylor, C. C. W., The Greeks on Pleasure (Oxford: Clarendon Press, 1982).
 - Inwood, B., Ethics and Human Action in Early Stoicism (Oxford: Clarendon Press, 1985).
 
@@ -12969,7 +12922,6 @@ Kretzmann, Norman, The Metaphysics of Theism (Oxford: Oxford University Press, 1
 ## Part Two
 
 ## General
-
 - Armstrong, A. H. (ed.), The Cambridge History of Later Greek and Early Medieval Philosophy (Cambridge: Cambridge University Press, 1967).
 - Catto, J. I., The History of the University of Oxford, i: The Early Oxford Schools (Oxford: Oxford University Press, 1984).
 - —— and Evans, T. A. R., The History of the University of Oxford, ii: Late Medieval Oxford (Oxford: Oxford University Press, 1992).
@@ -12979,7 +12931,6 @@ Kretzmann, Norman, The Metaphysics of Theism (Oxford: Oxford University Press, 1
 Denzinger, H. (ed.), Enchiridion Symbolorum, 33rd edn. (Barcelona: Herder, 1950); trans. as The Sources of Catholic Dogma by R. J. DeFerrari (Fitzwilliam, NY: Loreto Publications, 1955). [Texts of oYcial Church documents.]
 
 Geach, P. T., Reference and Generality: An Examination of Some Medieval and Modern Theories (Ithaca, NY: Cornell University Press, 1980).
-
 - Gracia, J., and Noone, T., A Companion to Philosophy in the Middle Ages (Oxford: Blackwell, 2003).
 - Grant, E., God and Reason in the Middle Ages (Cambridge: Cambridge University Press, 2001).
 - Hughes, Philip, A History of the Church, iii: Aquinas to Luther (London: Sheed & Ward, 1947).
@@ -12990,10 +12941,8 @@ Kenny, A., A Brief History of Western Philosophy (Oxford: Blackwell, 1998).
 —— (ed.), The Oxford Illustrated History of Western Philosophy (Oxford: Oxford University Press, 1994).
 
 Kneale, W., and Kneale, M., The Development of Logic (Oxford: Oxford University Press, 1962).
-
 - Knuutilla, S., Modalities in Medieval Philosophy (London: Routledge, 1993).
 - Kretzmann, N., Kenny, A., and Pinborg, J., The Cambridge History of Later Medieval Philosophy (Cambridge: Cambridge University Press, 1982).
-
 - Kretzmann, N., Kenny, A., Stump, E., et al., The Cambridge Translations of Medieval Philosophical Texts, i: Logic and the Philosophy of Language; ii: Ethics and Political Philosophy; iii: Mind and Knowledge (Cambridge: Cambridge University Press, 1998– ).
 - Leftow, B., Time and Eternity (Ithaca, NY: Cornell University Press, 1991).
 - McGrade, A. S., The Cambridge Companion to Medieval Philosophy (Cambridge: Cambridge University Press, 2003).
@@ -13009,7 +12958,6 @@ Kneale, W., and Kneale, M., The Development of Logic (Oxford: Oxford University 
 ## Augustine
 
 The City of God, trans. H. Bettenson (Harmondsworth: Penguin, 1972).
-
 - Confessions, trans. H. Chadwick (Oxford: Oxford University Press, 1991).
 - Confessions, text, trans., and comm. J. J. O'Donnell, 3 vols. (Oxford: Clarendon Press, 1992).
 - De Bono Conjugali, CSEL 41 (Vienna: Tempsky, 1900).
@@ -13025,11 +12973,9 @@ The City of God, trans. H. Bettenson (Harmondsworth: Penguin, 1972).
 - Brown, P., The Body and Society (New York: Columbia University Press, 1988).
 
 —— Augustine of Hippo: A Biography, rev. edn. (London: Faber & Faber, 2000).
-
 - Dihle, A., The Theory of the Will in Classical Antiquity (Berkeley: University of California Press, 1982).
 - Jordan, Mark D., The Ethics of Sex (Oxford: Blackwell, 2002).
 - Kirwan, C., Augustine (London: Routledge, 1989).
-
 - Markus, R. A., 'Augustine', in A. H. Armstrong (ed.), The Cambridge History of Later Greek and Early Medieval Philosophy (Cambridge: Cambridge University Press, 1967).
 - Matthews, G. B., The Augustinian Tradition(Berkeley: University of California Press, 1999).
 - Menn, Stephen, Descartes and Augustine (Cambridge: Cambridge University Press, 1998).
@@ -13041,7 +12987,6 @@ Stump, E., and Kretzmann, N., The Cambridge Companion to Augustine (Cambridge: C
 Wills, Garry, St Augustine (London: Weidenfeld & Nicolson, 1999).
 
 ## Boethius
-
 - Boethius: The Theological Tractates and The Consolation of Philosophy, text and trans. H. J. Stewart and E. K. Rand, rev. S. J. Tester, Loeb Classical Library (Cambridge, Mass.: Harvard University Press, 1973).
 - Chadwick, H., Boethius: The Consolations of Music, Logic, Theology & Philosophy (Oxford: Clarendon Press, 1981).
 
@@ -13052,7 +12997,6 @@ Marenbon, J., Boethius (Oxford: Oxford University Press, 2003).
 Philoponus, Against Aristotle on the Eternity of the World, trans. Christian Wildberg (London: Duckworth, 1987).
 
 —— On Aristotle on the Intellect, trans. W. Charlton (London: Duckworth, 1991).
-
 - Proclus, The Elements of Theology, ed. and trans. E. R. Dodds (Oxford: Clarendon Press, 1992).
 - Chadwick, H., East and West: The Making of a Rift in the Church (Oxford: Oxford University Press, 2003).
 
@@ -13061,7 +13005,6 @@ Sorabji, R. (ed.), Philoponus and the Rejection of Aristotelian Science (London:
 ## Eriugena
 
 De Praedestinatione Divina, CCCM 50 (Turnhout: Brepols, 1978).
-
 - Periphyseon (The Division of Nature), ed. E. Jeanneau, CCSL 161–5 (Turnhout: Brepols, 1996–2003).
 - Periphyseon (The Division of Nature), trans. I. P. Sheldon-Williams, rev. J. J. O'Meara (Dublin: Dublin Institute for Advanced Studies, 1968–95).
 - Moran, D., The Philosophy of John Scottus Eriugena (Cambridge: Cambridge University Press, 1989).
@@ -13073,7 +13016,6 @@ O'Meara, J. J., Eriugena (Oxford: Clarendon Press, 1988).
 Avicenna, MetaWsica, trans. O. Lizzini (Milan: Bompiani, 2002).
 
 Avicenna Latinus, Liber de Anima, ed. S. van Riet, 2 vols. (Louvain-la-Neuve: Institut Supe´rieur de Philosophie, 1977–83).
-
 - Avicenna Latinus,Liber de Philosophia Prima, ed. S. van Riet, 3 vols. (Louvain-la-Neuve: Institut Supe´rieur de Philosophie, 1977–83).
 - Craig, William Lane, The Kalam Cosmological Argument (London: Macmillan, 1979).
 - Davidson, H. A., Alfarabi, Avicenna and Averroes on Intellect (New York: Oxford University Press, 1992).
@@ -13099,7 +13041,6 @@ Southern, R. W., St Anselm and his Biographer (Cambridge: Cambridge University P
 —— Anselm: A Portrait in a Landscape (Cambridge: Cambridge University Press, 1990).
 
 ## Averroes
-
 - Commentary on Plato's Republic, ed. E. Rosenthal (Cambridge: Cambridge University Press, 1956).
 - The Incoherence of the Incoherence, trans. and introd. S. van den Bergh, 2 vols. (London: Luzac, 1954).
 - Middle Commentaries on Aristotle's Categories and De Interpretatione, trans. C. Butterworth (Princeton: Princeton University Press, 1983).
@@ -13117,7 +13058,6 @@ Southern, R. W.,Scholastic Humanism and the UniWcation of Europe (Oxford: Blackw
 ## Abelard
 
 Dialectica, ed. L. M. de Rijk (Assen: van Gorcum, 1971). Ethics (Scito te ipsum), ed. and trans. D. Luscombe (Oxford: Oxford University Press, 1971).
-
 - Logica, in Peter Abelards philosophische Schriften, Beitrage zur Geschichte der Philosophie des Mittelalters 15 (Munster: AschendorV, 1919–31). [Contains Logica Ingredientibus and Logica Nostrorum Petitioni.]
 - Marenbon, J., The Philosophy of Peter Abelard (Cambridge: Cambridge University Press, 1997).
 
@@ -13128,7 +13068,6 @@ The Guide of the Perplexed, trans. S. Pines, 2 vols. (Chicago: Chicago Universit
 Rudavsky, T. (ed.), Divine Omniscience and Omnipotence in Medieval Philosophy (Dordrecht: Reidel, 1982).
 
 ## Grosseteste and Albert
-
 - Grosseteste, Robert, Hexaemeron, ed. Richard Dales and Servus Gieben (London: British Academy, 1982).
 - Die philosophischen Werke des Robert Grosseteste, ed. L. Bauer, Beitra¨ge zur Geschichte der Philosophie des Mittelalters 9 (Munster: AschendorV, 1912).
 
@@ -13203,14 +13142,12 @@ Broadie, A., The Shadow of Scotus: Philosophy and Faith in Pre-Reformation Scotl
 Cross, Richard, The Physics of Duns Scotus: The ScientiWc Context of a Theological Vision (Oxford: Clarendon Press, 1998).
 
 —— Duns Scotus (Oxford: Oxford University Press, 1999).
-
 - Langston, Douglas C., God's Willing Knowledge: The InXuence of Scotus' Analysis of Omniscience (Philadelphia: University of Pennsylvania Press, 1986).
 - Vos Jaczn, Antonie, et al., John Duns Scotus: Contingency and Freedom (Dordrecht: Kluwer, 1994).
 - Williams, T. (ed.), The Cambridge Companion to Duns Scotus (Cambridge: Cambridge University Press, 2003).
 - Wolter, Allan B., The Philosophical Theology of John Duns Scotus, ed. M. M. Adams (Ithaca, NY: Cornell University Press, 1990).
 
 ## Ockham
-
 - Opera Philosophica et Theologica, ed. Gedeon Ga´l et al., 17 vols. (St Bonaventure, NY: Franciscan Institute, 1985).
 - Opera Politica, ed. H. S. OZer et al., 4 vols. (vols. i–iii Manchester: Manchester University Press, 1956–74; vol. iv Oxford: Oxford University Press, 1997).
 - Philosophical Writings, trans. P. Boehner (Indianapolis: Hackett, 1990).
@@ -13220,7 +13157,6 @@ Cross, Richard, The Physics of Duns Scotus: The ScientiWc Context of a Theologic
 - Spade, P. V. (ed.), The Cambridge Companion to Ockham (Cambridge: Cambridge University Press, 1999).
 
 ## Philosophy after Ockham
-
 - Burley, Walter, The Pure Art of Logic, ed. Philotheus Boehner (St Bonaventure, NY: Franciscan Institute, 1955).
 - Cajetan, Thomas de Vio, Commentary on Being and Essence, trans. L. H. Kendzierski and F. C. Wade (Milwaukee, Wis.: Marquette University Press, 1964).
 - Kilvington, Richard, The Sophismata of Richard Kilvington, introd., trans., and comm. Norman Kretzmann and Barbara Ensign Kretzmann (Cambridge: Cambridge University Press, 1990).
@@ -13239,12 +13175,10 @@ Kretzmann, Norman (ed.), InWnity and Continuity in Ancient and Medieval Thought 
 ## Part Three
 
 ## General works
-
 - Bennett, Jonathan, Locke, Berkeley, Hume: Central Themes (Oxford: Oxford University Press, 1971).
 - Copleston, Frederick, History of Philosophy, 9 vols. (London: Burns Oates and Search Press, 1943–7).
 
 Cottingham, John, The Rationalists (Oxford: Oxford University Press, 1988).
-
 - Craig, E. G., The Mind of God and the Works of Man (Oxford: Oxford University Press, 1987).
 - Garber, Daniel and Ayers, Michael, The Cambridge History of Seventeenth-Century Philosophy, 2 vols. (Cambridge: Cambridge University Press, 1998).
 
@@ -13253,7 +13187,6 @@ Gribbin, John, Science, a History 1543–2001 (Harmondsworth: Penguin, 2002).
 Kenny, Anthony, The God of the Philosophers (Oxford: Clarendon Press, 1979).
 
 ——The Metaphysics of Mind (Oxford: Clarendon Press, 1989).
-
 - Kneale, William and Kneale, Martha, The Development of Logic (Oxford: Clarendon Press, 1979).
 - Popkin, R. H., The History of Scepticism from Erasmus to Spinoza (Leiden: Gorcum van Assen, 1979).
 - Schmitt, Charles B., and Skinner, Quentin, The Cambridge History of Renaissance Philosophy (Cambridge: Cambridge University Press, 1988).
@@ -13263,7 +13196,6 @@ Woolhouse, R. S., The Empiricists (Oxford: Oxford University Press, 1988).
 ——Descartes, Spinoza, Leibniz: the Concept of Substance in Seventeenth-Century Metaphysics (London: Routledge, 1993).
 
 ## Sixteenth-Century Philosophy
-
 - Coleman, Janet, A History of Political Thought from the Middle Ages to the Renaissance (Oxford: Blackwell, 2000).
 - Copenhaver, B. P. and Schmitt, Charles B., Renaissance Philosophy (Oxford: Oxford University Press, 1992).
 
@@ -13380,7 +13312,6 @@ The current standard edition of the philosophical writings is Die Philosophische
 Adams, Robert,Leibniz: Determinist, Theist, Idealist(Oxford: Oxford University Press, 1994). Ariew, Roger, The Cambridge Companion to Leibniz (Cambridge: Cambridge University Press, 1995).
 
 Brown, Stuart, Leibniz (Brighton: Harvester Press, 1984).
-
 - Ishiguro, Hide, Leibniz's Philosophy of Logic and Language (London: Duckworth, 1972).
 - Mates, Benson, The Philosophy of Leibniz: Metaphysics and Language (Oxford: Oxford University Press, 1986).
 - Parkinson, G. H. R., Logic and Reality in Leibniz's Metaphysics (Oxford: Oxford University Press, 1965).
@@ -13471,7 +13402,6 @@ Solomon, Robert, In the Spirit of Hegel (Oxford: Oxford University Press, 1983).
 The Routledge History of Philosophy contains five volumes that overlap with the period of this volume. They are volume VI, The Age of German Idealism, ed. Robert Solomon and Kathleen Higgins; VII, The Nineteenth Century, ed. C. L. Ten; VIII, Continental Philosophy in the 20th Century, ed. Richard Kearney; IX, Philosophy of Science, Logic and Mathematics in the 20th Century, ed. S. G. Shanker; and X, Philosophy of Meaning, Knowledge and Value in the 20th Century. The Routledge Encyclopaedia of Philosophy also contains many articles about the people and topics treated here.
 
 Titles marked 'AP' appeared in the Routledge series Arguments of the Philosophers, and titles marked 'PM' appeared in the Oxford series Past Masters.
-
 - Copleston, F. C., A History of Philosophy, vols. vii–ix (London: Burnes Oates, 1963–75)
 - Kenny, A., A Brief History of Western Philosophy (Oxford: Blackwell, 1998)
 - —— (ed.), The Oxford Illustrated History of Western Philosophy (Oxford: Oxford University Press, 1994)
@@ -13483,7 +13413,6 @@ MacIntyre, Alasdair, A Short History of Ethics (London: Macmillan, 1966)
 —— After Virtue: A Study in Moral Theory (London: Duckworth, 1981)
 
 ## Bentham
-
 - The Collected Works of Jeremy Bentham, ed. J. H. Burns, J. R. Dinwiddy, and F. Rosen (London: Athlone, 1968– )
 - Introduction to the Principles of Morals and Legislation, ed. J. H. Burns and H. L. A. Hart (London: Oxford University Press, 1982)
 
@@ -13496,7 +13425,6 @@ Hart, H. L. A., Essays on Jurisprudence and Political Theory (Oxford: 1982)
 ## Mill and Sidgwick
 
 The Collected Works of John Stuart Mill, ed. John M. Robson, 33 vols. (Toronto: University of Toronto Press, 1963–91)
-
 - Mill, On Liberty, Oxford World's Classics (Oxford: Oxford University Press, 1991)
 - Mill, Principles of Political Economy, Oxford World's Classics (Oxford: Oxford University Press, 1994)
 - The Cambridge Companion to Mill, ed. J. Skorupski (Cambridge: Cambridge University Press, 1998)
@@ -13584,14 +13512,12 @@ Brent, J., Charles Sanders Peirce: A Life (Bloomington: Indiana University Press
 ## Frege
 
 The most widely available works of Frege in English are the following:
-
 - Conceptual Notation and Related Articles, trans. T. W. Bynum (Oxford: Oxford University Press, 1972)
 - The Foundations of Arithmetic, trans. J. L. Austin (Oxford: Oxford University Press, 1950, 1980)
 - Collected Papers on Mathematics, Logic and Philosophy, ed. B. McGuinness (Oxford: Blackwell, 1984)
 - The Basic Laws of Arithmetic: Exposition of the System, trans. Montgomery Furth (Berkeley: University of California Press, 1964)
 
 Dummett, Michael, Frege: Philosophy of Language (London: Duckworth, 1973)
-
 - —— The Interpretation of Frege's Philosophy (London: Duckworth, 1981)
 - —— Frege: Philosophy of Mathematics (London: Duckworth, 1991)
 
@@ -13678,7 +13604,6 @@ Kluwer, 1980); Husserl, Shorter Works, ed. and trans. P. McCormick and F. Ellist
 The Cambridge Companion to Husserl, ed. Barry Smith and David Woodruff Smith (Cambridge: Cambridge University Press, 1995).
 
 Bell, David, Husserl (London: Routledge, 1989) (AP)
-
 - Dreyfus, H. L. (ed.), Husserl, Intentionality and Cognitive Science (Cambridge, Mass.: MIT Press, 1982)
 - Mohanty, J. N., and McKenna, W. R. (eds.), Husserl's Phenomenology: A Textbook (Lanham, Md.: Centre for Advanced Research in Phenomenology, 1989)
 - Simons, Peter, Philosophy and Logic in Central Europe from Bolzano to Tarski (Dordrecht: Kluwer, 1992)
@@ -13686,7 +13611,6 @@ Bell, David, Husserl (London: Routledge, 1989) (AP)
 ## Heidegger
 
 A Gesamtausgabe of Heidegger's works is planned in approximately 100 volumes. Some seventy have now been published by Klostermann (Frankfurt am Main). English translations of the major works include: Being and Time, trans J. Stambaugh (Albany, NY: SUNY Press, 1996); Basic Writings, ed. D. F. Krell (New York: Harper & Row, 1977); What is Philosophy?, trans. W. Kluback and J. T. Wilde (New Haven, Conn.: College & University Press, 1958)
-
 - The Cambridge Companion to Heidegger, ed. C. Guignon (Cambridge: Cambridge University Press, 1993)
 - Dreyfus, H. L., Being-in-the-World: A Commentary on Heidegger's 'Being and Time' Division I (Cambridge, Mass.: MIT Press, 1991)
 - Mulhall, Stephen, On Being in the World: Wittgenstein and Heidegger on Seeing Aspects (London: Routledge, 1990)
@@ -13697,7 +13621,6 @@ Steiner, George, Martin Heidegger (Chicago: University of Chicago Press, 1987)
 ## Sartre
 
 La Nause´e (Paris, 1938), trans. Robert Baldick as Nausea (Harmondsworth: Penguin, 1965)
-
 - L'Eˆtre et le ne´ant (Paris, 1943), trans. Hazel Barnes as Being and Nothingness (London: Routledge, 1969)
 - L'Existentialisme est un humanisme (Paris, 1946), trans. Philip Mairet as Existentialism and Humanism (London: Methuen, 1948)
 
@@ -13708,7 +13631,6 @@ Cooper, David, Existentialism, a Reconstruction (Oxford: Blackwell, 1990)
 Warnock, Mary, The Philosophy of Sartre (London: Hutchinson, 1965)
 
 ## Derrida
-
 - De la grammatologie (Paris, 1967), trans. G. C. Spivak as Of Grammatology (Baltimore: Johns Hopkins University Press, 1976)
 - L'E´criture et la diffe´rence (Paris, 1967), trans. Alan Bass as Writing and Difference (London: Routledge & Kegan Paul, 1978)
 

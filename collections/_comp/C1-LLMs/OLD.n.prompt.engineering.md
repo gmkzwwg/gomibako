@@ -8,34 +8,22 @@ layout: post-bilingual
 ## Basic Techniques for Effective Prompts
 
 Let’s start with fundamental prompting techniques that apply to any interaction with ChatGPT:
-
 *   **Clarity and Specificity:** State your request as clearly as possible. Specify the context, the task, and the desired format. Ambiguity is the enemy of good responses. Remember: _“Precision beats vibes”_ – don’t rely on the AI to _infer_ what you want; **tell it directly**. If you want a list, ask for a list. If you need a brief answer, say so. If the question has multiple parts, consider listing them.
-    
 *   **Provide Context:** If your question refers to something not obvious, provide background info. ChatGPT doesn’t know _which course you’re in or which article you just read_ unless you tell it. For example, _“I just read an article about black holes. Can you explain how Hawking radiation works?”_ is better than _“Explain Hawking radiation,”_ because the former gives context that you’re in the domain of black holes (helping the model focus its answer).
-    
 *   **Role or Persona Instructions:** You can ask ChatGPT to take on a role or persona if that helps. For instance, _“You are an experienced literature professor. Explain the theme of **Romeo and Juliet** in simple terms...”_ By doing this, you set a tone and level for the answer. With GPT-4 and beyond, role instructions can shape the style or depth of the response significantly. (In ChatGPT’s interface, you might use the **Custom Instructions** feature to permanently note your context or preferences, such as _“I am a 3rd-grade science teacher”_ or _“Please always provide answers with metric units”_.)
-    
 *   **Formatting Instructions:** If you need the answer in a certain format – e.g., bullet points, a table, code snippet, or a step-by-step outline – include that in your prompt. For example: _“Give the answer as a table comparing the two theories”_ or _“List the steps as bullet points.”_ ChatGPT can produce well-formatted outputs (like tables, JSON, outlines, etc.) when asked.
-    
 *   **Length and Level:** Specify if you want a brief answer or a detailed one, and at what level of complexity. _“Explain like I’m 5”_ or _“Give a technical explanation”_ are useful cues. If you’re using this for academic study, you might say _“Explain the concept in ~200 words”_ or _“Provide a thorough explanation with an example.”_
-    
 *   **Check and Refine:** After you get a response, don’t hesitate to refine your prompt or ask follow-up questions. ChatGPT allows an **iterative dialogue** – you can say _“That’s not what I meant, I wanted more focus on X”_ or _“Can you expand the second point?”_ Iteration is a normal part of prompt engineering; rarely a perfect prompt comes out on first try.
     
 
 Below is a quick **cheat-sheet** of basic prompt improvements:
-
 *   Use **direct instructions**: e.g. _“Translate the following sentence into Spanish.”_ (clear task)
-    
 *   Add **detail**: e.g. _“Translate this sentence into Spanish and then explain the translation in English.”_
-    
 *   Set **context or role**: e.g. _“You are a tutor. Explain this math problem step by step...”_
-    
 *   Request **specific output**: e.g. _“Provide the answer as a numbered list of steps.”_
-    
 *   Specify **style/tone**: e.g. _“Give a formal explanation,”_ or _“Explain in a fun, anecdotal way.”_
     
 下面先介绍一些适用于任何 ChatGPT 交互场景的基础提示技巧：
-
 * 清晰与具体：尽可能清楚地说明你的请求。要明确背景、任务以及期望的输出格式。歧义是高质量回答的最大障碍。记住：“精确胜过感觉”——不要指望 AI 去自行推断你想要什么；要直接告诉它。如果你想要一个列表，那就明确要求列表。如果你需要简短回答，也要直说。如果问题包含多个部分，可以考虑把它们逐条列出来。
 
 > - clarity [ˈklærəti] n. 清晰；明晰
@@ -47,7 +35,6 @@ Below is a quick **cheat-sheet** of basic prompt improvements:
 > - vibes 感觉；氛围；此处指模糊的直觉式表达，而不是明确要求
 > - infer [ɪnˈfɜː(r)] v. 推断；推知
 > - directly [dəˈrektli] adv. 直接地；明确地
-
 * 提供背景：如果你的问题涉及一些并不显然的内容，就要补充背景信息。除非你明确说出来，否则 ChatGPT 并不知道你正在上哪门课，也不知道你刚读过哪篇文章。例如，“我刚读了一篇关于黑洞的文章。你能解释一下霍金辐射是如何起作用的吗？”就比“解释霍金辐射”更好，因为前者提供了你关注的是黑洞这一领域的背景信息，这有助于模型把回答聚焦到正确方向上。
 
 > - context [ˈkɒntekst] n. 背景；上下文；语境
@@ -55,7 +42,6 @@ Below is a quick **cheat-sheet** of basic prompt improvements:
 > - background info 背景信息；帮助界定问题范围和场景的补充说明
 > - domain [dəˈmeɪn] n. 领域；范围；学科范围
 > - focus its answer 聚焦其回答；使回答更集中于相关内容
-
 * 角色或人物设定指令：如果这样做有帮助，你可以要求 ChatGPT 扮演某种角色或采用某种人物设定。例如：“你是一位经验丰富的文学教授。请用简单的语言解释《罗密欧与朱丽叶》的主题……” 这样做可以为回答设定语气和深度。对于 GPT-4 及之后的模型来说，角色指令能够显著影响回答的风格或深度。（在 ChatGPT 的界面中，你也可以使用“自定义指令”（Custom Instructions）功能，长期写明你的背景或偏好，例如“我是一名三年级科学教师”或“请始终用公制单位回答”。）
 
 > - persona [pəˈsəʊnə] n. 人物设定；角色形象
@@ -66,7 +52,6 @@ Below is a quick **cheat-sheet** of basic prompt improvements:
 > - permanently [ˈpɜːmənəntli] adv. 持续地；长期地；永久性地
 > - preferences [ˈprefərənsɪz] n. 偏好；喜好
 > - metric units 公制单位；如米、千克、摄氏度等国际通用计量单位
-
 * 格式指令：如果你需要回答以某种特定格式呈现——例如项目符号列表、表格、代码片段，或者分步骤提纲——就把这一要求写进提示词里。例如：“请用表格比较这两种理论”或者“请用项目符号列出步骤。” 只要明确提出要求，ChatGPT 就可以生成格式良好的输出，例如表格、JSON、提纲等。
 
 > - formatting [ˈfɔːmætɪŋ] n. 格式安排；排版方式
@@ -75,7 +60,6 @@ Below is a quick **cheat-sheet** of basic prompt improvements:
 > - outline [ˈaʊtlaɪn] n. 提纲；纲要；轮廓
 > - well-formatted adj. 格式良好的；排版清晰的
 > - JSON [ˈdʒeɪsən] n. 一种常用的数据交换格式；常用于结构化输出
-
 * 长度与层次：要说明你想要简短回答还是详细回答，以及希望答案处于什么复杂程度。“像对五岁小孩解释一样说明”或者“给出技术性解释”都是很有用的提示。如果你把它用于学术学习，可以说“请用约 200 个词解释这个概念”或者“请给出一个充分展开并带有例子的解释”。
 
 > - complexity [kəmˈpleksəti] n. 复杂程度；复杂性
@@ -83,7 +67,6 @@ Below is a quick **cheat-sheet** of basic prompt improvements:
 > - academic [ˌækəˈdemɪk] adj. 学术的；教学研究相关的
 > - concept [ˈkɒnsept] n. 概念；观念
 > - thorough [ˈθʌrə] adj. 充分的；全面细致的
-
 * 检查与改进：在得到回答之后，不要犹豫，可以继续改进提示词或提出追问。ChatGPT 支持迭代式对话（iterative dialogue）——你可以说：“这不是我的意思，我希望更多聚焦于 X。”或者“你能把第二点展开一点吗？” 迭代是提示工程中的正常组成部分；几乎没有哪个完美提示词第一次就能写出来。
 
 > - refine [rɪˈfaɪn] v. 改进；优化；提炼
@@ -97,25 +80,20 @@ Below is a quick **cheat-sheet** of basic prompt improvements:
 
 > * cheat-sheet [ˈtʃiːt ʃiːt] n. 速查表；便于快速参考的简明说明
 > * prompt improvements 提示词改进方法；提升提示效果的具体做法
-
 * 使用直接指令：例如，“把下面这句话翻译成西班牙语。”（任务清晰）
 
 > - direct instructions 直接指令；不绕弯、明确说明任务内容的表达方式
-
 * 增加细节：例如，“把这句话翻译成西班牙语，然后用英语解释这个翻译。”
 
 > - detail [ˈdiːteɪl] n. 细节；具体信息
-
 * 设定背景或角色：例如，“你是一位导师。请一步一步解释这道数学题……”
 
 > - tutor [ˈtjuːtə(r)] n. 导师；家教；辅导者
 > - step by step 一步一步地；按步骤地
-
 * 要求特定输出形式：例如，“请用编号步骤列表给出答案。”
 
 > - specific output 特定输出；明确规定的输出形式
 > - numbered list 编号列表；按数字顺序排列的项目列表
-
 * 指定风格／语气：例如，“请用正式的方式解释”，或者“请用有趣、带点故事感的方式解释。”
 
 > - style [staɪl] n. 风格；表达方式
@@ -196,11 +174,8 @@ vbnet
 Here we gave three examples (few-shot). The model will likely output _“Negative”_ for the new review, following the pattern and reasoning from the examples. Few-shot prompting is particularly handy for **domain-specific tasks**, or where the wording of the question might be interpreted in different ways. The examples reduce ambiguity by showing exactly what you expect as output.
 
 A few things to keep in mind with few-shot prompts:
-
 *   Make sure your examples are **correct and representative** of the task. The model will pick up on errors or inconsistencies, which could mislead it.
-    
 *   Keep the examples **consistent in format**. If one example output is a full sentence and another is just one word, the model might get confused. In the above example, each “Sentiment:” was one of the three labels; we wouldn’t want one of the example outputs to suddenly be a sentence like “It was a positive review” because that breaks the pattern.
-    
 *   Few-shot uses up some of the model’s context length (which is the limit of how much text the model can consider at once). GPT-4 supports large prompts (up to 8,000 tokens in standard, and some versions up to 32,000 tokens), so a few examples are usually fine. But don’t overdo it – adding 50 examples would likely exhaust the prompt length or be cut off. Research has shown that performance can improve with more examples up to a point, but in practice 3-5 good examples often suffice.
     
 
@@ -243,11 +218,8 @@ _Comparison of a model’s response without vs. with a chain-of-thought prompt. 
 The image above illustrates this: On the **left**, the model was asked a question and it immediately gave a (wrong) answer (zero-shot prompting). On the **right**, the same question was asked with the instruction “Let’s think step by step,” and the model listed its reasoning and arrived at the correct answer. This demonstrates the power of CoT prompting for reasoning tasks.
 
 **How to use chain-of-thought in practice:**
-
 1.  **Implicit CoT:** Simply instruct the model to think aloud. E.g., _“How many prime numbers are between 1 and 100? Let’s work this out step by step.”_ The model will usually enumerate primes or outline its checking process, then conclude with the count. For many tasks (like math or logical reasoning), this dramatically improves reliability because the model’s _chain of thought_ helps ensure no step is skipped.
-    
 2.  **Explicit CoT with examples:** You can also combine few-shot with CoT. Provide an example problem and show a step-by-step solution in the prompt (this is called _few-shot CoT_). Then ask it to do a new but similar problem. For instance, in the prompt you might write: _“**Example:** Q: If 3 cats catch 3 mice in 3 minutes, how many cats are needed to catch 100 mice in 100 minutes? **Solution:** Let’s think step by step: In 3 minutes, 3 cats catch 3 mice, so the rate is 1 mouse per cat per 3 minutes... \[and so on\] ... Thus, the answer is 3 cats.”_ Then say _“**Question:** \[your new question\] **Solution:** Let’s think step by step:”_. This primes the model to follow the reasoning format.
-    
 3.  **Asking for intermediate steps:** If you prefer, you can prompt the model in stages. Ask: _“What are the steps to solve XYZ?”_ Let it list the approach. Then ask: _“Great, now using those steps, solve the problem.”_ This is a bit like manual CoT – you guide the reasoning first, then execution. GPT-4 is usually capable of doing it in one go, but this human-in-the-loop approach can help if the model is getting answers wrong; you can inspect its plan first.
     
 
@@ -294,13 +266,9 @@ Even with careful prompting, ChatGPT’s first answer may not always be **comple
 **What is self-critique?** In prompt engineering terms, self-critique (or _self-reflection_) means prompting the model to reflect on its answer, identify any flaws or gaps, and then revise accordingly. It’s inspired by how humans often review their work and make improvements. Recent research suggests that this iterative reflection can make LLMs more **logical and consistent**. For example, an LLM might initially give a slightly illogical solution to a puzzle; if asked to scrutinize its solution, it could recognize the error and fix it in a second attempt.
 
 **How to do it:** Usually, you perform self-critique in a **separate turn** after the initial answer (treating it as a second step). Here’s a simple sequence:
-
 1.  **User:** _(Asks a question or gives a task.)_
-    
 2.  **Assistant:** _(Gives initial answer.)_
-    
 3.  **User:** _“Please review your answer above. Are there any mistakes or things you might have missed? If so, correct them. Explain your reasoning.”_
-    
 4.  **Assistant:** _(Critically evaluates its previous answer and makes corrections if needed.)_
     
 By explicitly requesting a review, you nudge ChatGPT to allocate “brainpower” to double-checking itself. GPT-4 is quite capable of this. For instance, in math problems, it might say, _“Upon reflection, I realize I made an arithmetic error computing the sum. Let me correct that…”_ and then provide a corrected answer. In a research context, you could ask it, _“Does the answer above consider all key points? Please critique it and improve the answer if necessary.”_
@@ -310,22 +278,15 @@ By explicitly requesting a review, you nudge ChatGPT to allocate “brainpower�
 **Benefits of self-critique:** As noted, it can catch logical errors, **reduce contradictions**, and cause the model to acknowledge uncertainty if something truly isn’t known. For you as a learner, this means a more reliable final answer. Also, seeing the model’s critique is educational: you observe _how it evaluates an answer_. This might expose subtle points you didn’t consider. For example, if you have it critique an essay it wrote, it might say _“I realized I didn’t address the counterargument about X, which could strengthen the essay.”_ This is a valuable insight.
 
 **Example use cases:**
-
 *   **Academic essay or solution checking:** After ChatGPT writes an essay or a proof, ask it to critique its work: _“Can you check if your essay fully answers the question and follows a logical flow? What could be improved?”_ It may point out if it went off-topic or if it lacks evidence in one section, then it can rewrite that part.
-    
 *   **Programming help:** If it provides code, you can ask _“Does this code handle all edge cases? Please double-check and fix any bugs.”_ It might then realize a scenario that would break the code and adjust it.
-    
 *   **Fact-checking:** If you’re using ChatGPT for research summaries, you can prompt: _“Double-check the factual claims you made and ensure they are supported by known information. Correct any inaccuracies.”_ The model might not have browsing (unless you enable it), but it can sometimes internally verify with its training data or at least flag uncertain claims (e.g., _“I mentioned X, but I’m not entirely sure if that date is correct.”_).
     
 
 **Prompt templates for self-critique:** You can use polite, instructive language. Here are some examples derived from prompt engineering guides:
-
 *   _“Could you go over your previous response step by step to ensure nothing was overlooked?”_
-    
 *   _“Please re-examine your last answer and check for any errors or missed details.”_
-    
 *   _“I'd like you to critique your previous response and then improve it based on that critique.”_
-    
 *   _“Analyze your last answer and verify if all parts of the question were addressed, correcting any mistakes.”_
     
 
@@ -365,13 +326,9 @@ By itself, ChatGPT (even GPT-4) has limitations: it has a fixed knowledge cutoff
 OpenAI has introduced features like **plugins and function calling** to allow models to use tools. For example, ChatGPT can be connected to a web browser, calculators, code interpreters, or custom knowledge bases. When such tools are enabled, the model can decide to call them. For instance, if you ask _“What’s the weather in Osaka right now?”_ and a weather plugin is enabled, the model might call a `get_weather` function and then respond with the real-time weather instead of saying it doesn’t know. The model’s ability to detect when to use a function and produce a correct function call is something it’s been trained on. In the API, developers define tool “interfaces,” and the model will output a JSON object to use them when appropriate. In ChatGPT’s interface, this happens behind the scenes with plugins.
 
 As a user, you don’t need to know the API details, but it’s useful to know **when and how to prompt for tool usage**:
-
 *   **Explicitly ask for up-to-date info:** If you have the browsing tool or web access plugin on, you can phrase your query to encourage its use. For example: _“Using the browsing tool, find the latest research on renewable energy in 2025 and summarize it.”_ The model will likely initiate a web search. If you just said “summarize the latest research on renewable energy in 2025” without mentioning the tool, the model might either say it can’t or (worse) try to guess. So indicating that it should use the tool is helpful.
-    
 *   **Data or text analysis with Code/Advanced Data tools:** ChatGPT has an **Advanced Data Analysis** (formerly called Code Interpreter) mode where it can execute Python code. If you have this, you can upload a dataset and then ask: _“Analyze this dataset for trends in climate over years. Use the Python tool to generate a chart.”_ The model will then write and execute code to do so. This is incredibly powerful for research assistance – for example, analyzing experimental data or large text corpora. Prompt engineering for this involves clearly stating what analysis or output you want (mean, plot, regression, etc.) just as you would instruct a human data analyst.
-    
 *   **Retrieval-augmented generation:** If you have a custom knowledge base (say, a bunch of academic papers or notes), some plugins or systems allow ChatGPT to fetch relevant documents when answering your question. In prompting terms, you might not see this directly, but you could phrase: _“According to the provided literature, what are the main theories about dark matter?”_ The system could then retrieve the relevant snippets from your uploaded papers and the model will incorporate them in the answer. If you suspect ChatGPT might not know something, you can feed it the info. For example: _“Here is the abstract of a paper \[paste abstract\]. Summarize it and then critique its methodology.”_ Now the model has that info and can work with it.
-    
 *   **Math and calculation:** If you don’t have a calculator tool, ChatGPT will try to calculate itself, but it might make arithmetic mistakes for very long calculations (it’s not a perfect calculator). If a calculation is critical, you can either do it separately or use the _“let’s do this step by step”_ approach to minimize errors. But if a calculator tool is available, use it! You could say: _“Use the calculator to compute the standard deviation of these values: \[list of numbers\].”_ The model will then likely offload that to the tool.
     
 
@@ -380,9 +337,7 @@ As a user, you don’t need to know the API details, but it’s useful to know *
 **Agentic use of tools:** There’s also the concept of **ReAct (Reason + Act)** prompting, where the model iteratively reasons and uses a tool in a loop until it finds an answer. This is more of a developer setup (like how AutoGPT works, giving the model a goal and letting it plan, search, etc.). However, even as a user, you can manually do a bit of this: ask the model what it needs to solve a problem, let it tell you it needs data, you give it data, and so on. We’ll talk more about agentic prompting in the next section, but keep in mind that tool-use is a core part of making an AI agentic (able to act).
 
 **Examples:**
-
 *   _Literature research example:_ _“Use the browser to find the publication year of the article _‘Quantum Entanglement in Photosynthesis’_ and then explain the main finding.”_ The model should do a web search (if enabled), find the info (e.g. year 2024), and then give you the explanation with the correct year referenced.
-    
 *   _Multilingual example:_ If you want a translation with context, you could use a translation plugin or just provide examples. But interestingly, GPT-4 itself is strong in languages, so tools aren’t needed for translation. However, a dictionary API could be a plugin – you might prompt _“Use the dictionary tool to get precise definitions of the following technical terms: X, Y, Z.”_
     
 
@@ -429,11 +384,8 @@ As we explore advanced territory, **agentic prompting** is about pushing the mod
 With GPT-4 and presumably GPT-5, such multi-step prompting is possible. In fact, a prompting guide for GPT-4.1 noted that _“giving GPT a mission”_ and asking it to stay persistent, use tools, and reflect between steps turned it into a more capable assistant. They suggest adding instructions like **“stay persistent, use tools instead of guessing, and reflect after each step”** for an agentic effect. This basically instructs the model to not give up easily, to actually leverage tools (if available) rather than hallucinate, and to self-monitor progress.
 
 **How to prompt agentically:** The key is to **set a clear high-level objective and constraints**, and often to ask for a plan first. For instance:
-
 *   **Step 1: Role + Goal:** _“You are a diligent research assistant AI. Your goal is to help me write a literature review on quantum computing in medicine.”_ This sets context and purpose.
-    
 *   **Step 2: Request a plan:** _“Outline the steps you would take to gather information and compile the literature review. Number these steps.”_ The model will then produce something like: 1) Identify key subtopics, 2) Search for relevant papers, 3) Summarize each paper, 4) Organize summaries into sections, etc.
-    
 *   **Step 3: Let it execute step by step:** You can then either manually guide it (“Okay, perform step 1 now.”) or, if using an autonomous agent setup, the model might loop through steps on its own. In ChatGPT’s normal interface, you’ll have to go step by step. For example, you say: _“Great. Now do step 1: identify key subtopics in quantum computing applied to medicine.”_ It does that. Then you say, _“Now step 2: find relevant papers (you can just name some known key papers or areas).”_ If browsing is on, it might try to search; if not, it might say we need papers on X, Y, Z. Then you proceed accordingly. Essentially, **you and ChatGPT form a plan and follow it.**
     
 
@@ -481,17 +433,11 @@ GPT-4 以及未来更强的模型已经能够在一定程度上支持这种多�
 ### Putting It All Together: Best Practices and Conclusion
 
 We’ve covered a lot: from basic prompting tips to advanced techniques like chain-of-thought, self-critique, tool use, and agentic planning. Here’s a quick summary of how you can combine these in practice for various scenarios:
-
 *   **Start simple, then iteratively refine:** Often you begin with a straightforward question (zero-shot). If the answer is off, clarify or add context. If it’s a complex problem, move to step-by-step or give an example (few-shot). Treat the conversation like a funnel: broad question → more guided → even more guided, until you get what you need. Remember, ChatGPT learns from the conversation – use that to your advantage by refining your prompt based on its last answer.
-    
 *   **Use the right tool from the toolkit:** If you notice the task is about reasoning or calculation, prompt it to show steps (CoT). If it’s about a tricky format or lesser-known task, provide an example (few-shot). If the answer seems suspect or incomplete, do a self-critique round. If the question requires outside info and you have plugins, use them – or paste in the info yourself. For big tasks, outline a plan with the AI (agentic approach).
-    
 *   **Be mindful of model limitations:** GPT-4 (and presumably 5) are incredibly capable, but they can still make mistakes, especially factual ones or misinterpretation if prompts are unclear. Always double-check critical facts. Use self-critique or ask the model to provide sources (though be careful: models can hallucinate fake sources; verifying with a real search is wise). If the model says something confidently, it’s usually correct, but not always – maintain a slight skepticism as you would when researching with any single source.
-    
 *   **Leverage system messages/custom instructions for persistent needs:** If you always want answers in a certain style (say you prefer concise answers, or always with metric units, or translated to Spanish), you can set that in a system message or the custom instructions feature of ChatGPT. For example, telling ChatGPT “Always answer with a brief summary first, then a detailed explanation” as a system-level instruction can save you from repeating that each time. Just remember that extremely long or complex system instructions could still be overridden or forgotten in very long conversations, but generally, they help steer the tone and behavior globally.
-    
 *   **Consider the _temperature_ if you have access to it:** The “temperature” setting (mostly available via API or certain modes) controls randomness/creativity. A high temperature (~0.8-1.0) gives more varied and creative responses, which is great for brainstorming, generating ideas, or creative writing. A low temperature (~0.2-0.3) makes the output more deterministic and focused, which is better for studying factual content or getting a consistent answer. In the ChatGPT interface, you might not set this directly (unless future versions allow choosing a “creative” vs “precise” mode, which essentially tweaks temperature behind the scenes). But if you ever feel the answers are too _random_ or too _dry_, this is why. Multiple tries of the same prompt will yield slightly different phrasings due to randomness. If you need a really stable answer, you can prompt in a way that leaves little room for variation, or use the API with low temperature. Conversely, for a creative push, you can ask the model to “give 3 different ideas” or just regenerate the answer to see alternatives.
-    
 *   **Stay ethical and within usage policies:** This is more of a meta-tip – as you get crafty with prompts, remember ChatGPT has rules (e.g., it won’t do certain harmful tasks or give disallowed content). If you ever encounter a refusal or safety filter, re-read your prompt to see if you unintentionally tripped some wire. Usually, rephrasing to clarify a legitimate intent can help. For example, instead of _“Explain how to pick a lock”_ (which might be disallowed as illicit behavior), you could frame a legitimate scenario like _“I’m writing a novel, and a character needs to pick a lock. Can you describe in theory how they might do it?”_ Always use these AI powers for good and learning!
     
 
@@ -525,7 +471,6 @@ Finally, **keep experimenting and learning**. Prompt engineering is part science
 > * versatile collaborator 多用途协作者；能在多类任务中提供有效帮助的助手
 
 易错点与易混点
-
 * 零样本提示并不等于“简单提问一定够用”；一旦问题涉及复杂推理、时效性事实或特殊格式，往往需要补充说明或转向少样本提示。
 * 少样本提示的关键不只是“给例子”，而是“给一致、正确、具有代表性的例子”；示例格式混乱会直接拉低效果。
 * 思维链提示适合复杂推理，但不一定适合所有任务；对非常简单的问题强行要求长推理，可能只会让回答更冗长。
@@ -567,7 +512,6 @@ The first step is **active reading**. As you read the book (on an e-reader or ap
 > * active reading 主动阅读；指带着筛选、标记和思考去阅读，而不是被动浏览
 > * jump out 突出；显得格外醒目；一下子抓住注意力
 > * resonant [ˈrezənənt] adj.引发共鸣的；意味深长的
-
 - Use an e-reader or reading app (e.g. Kindle, Apple Books) to **mark up the text** as you go. Highlight the main thesis statements, key definitions, memorable quotes, and especially anything **unusual or personally meaningful**.
 - Employ a sync service (like Readwise) to **export those highlights** into your note-taking system. Readwise aggregates highlights from books, articles, PDFs, etc., so all your clippings appear together in one app. This means you can work with your notes in Evernote, Notion, Obsidian, or any tool of your choice.
 - The result of Step 1 is a long note (often 5–15 pages) of **unprocessed highlights**. These are all things you thought were interesting or important, but they usually contain **too much detail** for ChatGPT’s prompt window (which tops out around 1,000–1,200 words).
@@ -593,7 +537,6 @@ With the raw highlights in front of you, the next move is **distillation**. Fort
 **Why “bolding”?** Imagine you have a page of text and you want to highlight its essence. Bolding is like applying a second, thicker marker: it forces you to **zero in** on the most important fragments. This first-pass editing trims the page of highlights down by about half or more, keeping only the “best of the best” points.
 
 Key tips for this step:
-
 - **Main Arguments:** Always bold the book’s central claims. If the author explicitly states “the argument of this book is…,” that sentence goes in bold. It encapsulates the core theme.
 - **Unique Insights:** Bold analogies, examples, or statements that are especially **creative or surprising**. Forte notes that good writing often hides in “interesting unique unusual details”, so mark those.
 - **Personal Resonance:** Bold what spoke to you personally. Since you saved highlights that moved you, bolding them again selects your favorite insights. Forte said his notes already contained only “valuable” content, and now he’s choosing _the best of the best_.
@@ -615,7 +558,6 @@ After this bolding pass, each note typically has a handful of bold lines among a
 The bolded sentences now become the raw material for an outline. In this step, create a new note (or document) and **copy the bolded points into it as bullet points**, organizing them hierarchically. Start with the book’s thesis at the top, then list supporting ideas as sub-bullets. This outline tells ChatGPT **which points are main ideas and which are supporting details**.
 
 Forte suggests the following approach:
-
 - Split your screen or use two notes side-by-side. On the left, view the note with bolded highlights; on the right, create a fresh “Book Outline” note.
 - For each bolded line you’ve marked, decide if it’s a _core point_ or a _support detail_. Copy the really critical ones into the outline on the right as main bullets. You don’t have to use _every_ bolded line – this is another chance to filter. (Forte explicitly says, “I shouldn’t do all of them…deciding if it’s truly so good it must be in my summary”.)
 - Label and format the outline clearly. For example, give the outline note a title like “Outline – _Where Good Ideas Come From_ Summary” and use indented bullets for sub-points.
@@ -627,11 +569,9 @@ Forte suggests the following approach:
 > * reverse-engineering [rɪˈvɜːs ˌendʒɪˈnɪərɪŋ] 逆向拆解；从成品中还原出其结构和组织方式
 
 This is effectively **reverse-engineering the book’s structure**. You’re extracting the flow that the author may have built into the text and making it explicit. Forte notes that by outlining these points, “you are extracting the structure that is already part of the book” – information that was only implicit in the text is now visible in bullet form. The outline might look like:
-
 - **Main Argument:** \[Author’s thesis sentence\]
   - _Supporting Idea 1:_ \[Bolded sentence providing evidence or explanation\]
   - _Supporting Idea 2:_ \[Another key point or example\]
-
 - **Secondary Theme:** \[Second big idea, bolded sentence\]
   - _Example/Detail:_ \[Bolded detail\]
 
@@ -676,7 +616,6 @@ Within seconds, GPT-4 will spit out a polished summary. In Forte’s demo it too
 ## Tools and Workflow Integration
 
 This method relies on a small set of digital tools working together:
-
 - **E-reader/App (Kindle, iPad, etc.)** – for the original reading and highlighting. Forte reads on Kindle, which lets him mark passages as he goes.
 - **Readwise (or similar)** – a service that **syncs highlights** from your e-reader into a notes app. Readwise imports all your Kindle highlights so that you have a single repository of excerpts.
 - **Note-taking app (Notion, Evernote, Obsidian, etc.)** – this is where you edit and organize. You paste your Readwise highlights into a note, do the bolding and outlining there, and later copy the outline out. The app doesn’t much matter as long as it supports text formatting and easy copy-paste.
@@ -730,7 +669,6 @@ In practical terms, this means knowledge workers can read **fewer but more impac
 
 
 **Key takeaways:**
-
 - Read actively and highlight what strikes you (main thesis, surprises). Use a tool like Readwise to save all highlights automatically.
 - Refine those highlights by bolding the single most important phrases or sentences (Progressive Summarization). This zeroes in on each book’s core ideas.
 - Organize the bolded points into a structured outline (bullets or headings), which reveals the book’s argument flow and signals priority for the AI.
@@ -912,7 +850,6 @@ def answer(query):
 ### 1. LLM学习助手的功能谱系
 
 LLM作为学习助手具有多种功能，本文分为以下几大类，每类均给出应用示例和典型交互模式：
-
 - **信息检索与摘要**：通过自然语言查询LLM，获取针对性知识和文献总结。例如，提示 `"请解释 [主题] 的核心概念与关键参考文献"`，LLM会从内部知识和联网工具检索（或RAG框架）返回主题概述和参考链接。伪代码示例：
 
 ```python
@@ -924,7 +861,6 @@ LLM作为学习助手具有多种功能，本文分为以下几大类，每类�
 ```
   
   此功能解放了学生手动查找资料的负担，尤其适用于快速了解新领域。但LLM生成的总结需要谨慎验证，建议结合专业数据库或向LLM明确要求提供来源链接。
-
 - **解释/教学**：LLM可充当智能导师，以不同难度层次逐步讲解概念。比如在数学学习中输入 `"从零开始讲解偏微分方程与其物理意义"`，LLM可生成分层解释、示例题解和练习提示。示例prompt：
 
 ```
@@ -933,7 +869,6 @@ LLM作为学习助手具有多种功能，本文分为以下几大类，每类�
 ```
   
   这种交互可即时纠正误解、回答追问，相当于自适应辅导。然而，LLM的解释可能缺乏深度，建议辅以权威教材比对，并在必要时要求引用原理或定义以避免“编造”信息。
-
 - **练习/反馈**：利用LLM自动生成练习题并给出反馈。比如对学习者回答进行解析反馈，或根据学习进度定制题目。示例prompt：
   
 ```
@@ -952,7 +887,6 @@ LLM作为学习助手具有多种功能，本文分为以下几大类，每类�
 ```
   
   相关研究表明，LLM在自动批改和个性化辅导中可显著提高效率（OpenAI Evals手册；EDUCAUSE 2023）。仍需注意，题目设计要明确可自动判定的标准，否则辅助评估的准确性受限。
-
 - **代码/实验辅助**：为计算任务和实验设计提供辅助。通过代码提示和调试建议，LLM能帮助生成模拟脚本、算法原型或数据处理流程。例如调用Python工具：
   
 ```python
@@ -965,14 +899,10 @@ LLM作为学习助手具有多种功能，本文分为以下几大类，每类�
 ```
   
   在训练领域，这类似于GitHub Copilot的辅助编码（Brown et al. 2020）。LLM还能指导实验设计，例如 `"我打算研究XX反应，请设计实验步骤"`。例如 Anthropic 的指导性中AI可以检查方法合理性。不过，LLM生成的代码/方案可能包含错误，需要用户验证执行结果并进行迭代（Guo 2023）。
-
 - **创意/类比激发**：LLM可辅助创造性思考和跨域联想。通过类比和脑图式询问，帮助学习者构建新见解。例如提示 `"将生物群落动态比作市场经济，请给出类比说明"`，LLM可能生成有趣的隐喻，激发讨论。 
   此外，AI能够提出不常见的研究视角或组合，例如自动生成研究问题清单、假设等，弥补人类思考局限。但须警惕LLM偶尔提出的“看似合理但错误”的类比，需要专业评估验证。
-
 - **元认知/学习策略**：LLM可以指导学习技巧、时间管理和认知策略。例如 `"如何高效阅读一篇心理学论文？"`，LLM可回答包含划重点、做笔记、复述等方法。也可模拟计划生成，如 `"请给一个博士生的6个月研究进度安排"`。这些元策略建议来源于广泛文献（学习科学中的总结），但需要适配个人情况，教育工作者可校对和定制。
-
 - **协作/社群中介**：LLM平台可以中介学生与专家的交流，比如自动回答常见问题、组织在线讨论或推荐协作伙伴。比如使用问答系统自动回答论坛提问（类似StackExchange的自动回复助手）。也可以提供多语言同步，减少语言障碍。这提高了知识分享效率，但也需防止依赖过度，导致人际互动减少。
-
 - **评估/测评**：LLM可作为考试或项目的自动评估工具，尤其是开放式答案。通过大规模评测框架（如OpenAI Evals）自动化评测，可以实现更加即时和细粒度的反馈 (HELM 2022)。例如构造 rubric 问题，让LLM根据评分标准打分。需要注意防止培训好的模型作弊（AoIR 2023建议）及保证评分一致性。建议结合同行人工检查来纠正系统偏差。
 
 **功能总结**：LLM 提供了一套新的“AI导师”功能谱系，包括查找、解释、反馈、编码、创意、反思和协作等多方面。这些功能的典型工作流程往往涉及：明确指令（System role + User prompt），必要时传入上下文/示例，调用模型生成输出（可通过链式调用如 LangChain 实现多步逻辑）。以下各部分将结合具体案例详细探讨LLM如何在过去需要耗费大量时间和资源的任务上发挥变革作用。
@@ -980,19 +910,12 @@ LLM作为学习助手具有多种功能，本文分为以下几大类，每类�
 ### 2. “终身任务”被加速：案例与分析
 
 LLM出现前，许多学术活动需要多年训练和大量人工劳动，现今被显著加速或普及。主要维度如下：
-
 - **跨学科文献综述与整合**：传统上，学者需要阅读和整理成百上千篇论文来掌握一个领域前沿，耗时甚至数年。现在，可以通过LLM快速生成研究领域报告或综述。比如输入“请为XX领域撰写综述并列出核心文献”，LLM可结合已有的知识和检索结果（如RAG检索相关论文摘要）生成结构化综述（Wu et al. 2023）。效果：初稿可在几分钟内完成，后续人工再校对、补充不足之处。局限：AI可能遗漏最新的未公开信息，或在交叉引用方面出错，因此需要专家验证。公开案例：某化学家团队发布了基于LLM的文献综述系统，实现了对千余篇文献的快速分析（Wu et al. 2024）。
-
 - **复杂数学/物理推导草稿**：涉及高级符号推理的工作，如证明一个定理或推导复杂方程，过去多需长期笔耕。现在LLM（尤其结合符号计算引擎）能辅助生成推导步骤。比如结合Wolfram Alpha API的 Prompt 可让模型输出符号化推导。应用示例：自动生成积分证明框架或数值模拟代码框架；对步骤提出建议。效果：节约了推导时间，研究者可专注检验与创新。局限：LLM尚未真正“懂”数学细节，常在复杂运算上出错，需要专业人士纠错。例如 DeepMind 的 AlphaMath 提示LLM可解决部分数学竞赛题，但复杂证明仍需人力。
-
 - **实验设计与仿真原型**：设计实验流程和仿真方案是科研核心任务。传统上，依赖实验经验和专业知识制定方案。LLM 可根据描述自动推荐实验步骤或参数设置。示例提示：“设计一个在X条件下验证Y效应的实验方案”，LLM可输出变量控制、仪器选择、统计分析方法等要点。结合仿真平台（如 SciPy、OpenAI Gym）和自动化脚本，可以快速生成实验原型。已见案例：学术实验室使用 GPT-4 生成初步实验方案并通过自动化流水线测试可行性。局限：实际实验环境复杂多变，AI方案需要专家评估安全性和可行性，且目前还无法替代对实验细节的精细把控。
-
 - **历史档案的语义检索与注释**：过去研究历史文本需手工翻译和注解，极为费力。LLM在自然语言理解方面的优势，使得处理古文档更高效。例如输入历史档案中的古汉语或拉丁语片段，LLM可以自动生成现代语言翻译和注释。通过语义搜索功能，研究者能快速检索相关历史资料和学术评论。效果：解放了语言障碍，边缘文献得以快速纳入学术讨论。局限：翻译准确度受限于训练数据；非主流方言或罕见专业术语可能被曲解。应用如CLTK等开源知识库可与LLM配合，提高古文档处理效率。
-
 - **边缘知识的可访问化**：科学和人文学科中，许多专家经验或少数语种的知识此前难以系统学习。LLM通过大规模语料可以提取并呈现部分隐性经验。比如对于某个小众领域（如偏微生物生态系统）的最新研究方法，询问LLM可能获得及时答案，而这些可能尚无统一教材。又如跨文化领域知识（民俗、方言、次文化中的惯例），LLM训练时吸收了多源数据，可作为入门参考。案例：LLM曾被用于翻译和整合非英语学术资源，帮助研究者挖掘国际研究成果。风险：LLM可能将部分未证实信息泛化为表述，或无意中强化数据偏见（如特定文化视角的误导性描述），需要用户具备源批判意识。
-
 - **代码库理解与迁移**：大型项目代码复杂难懂。过去需要长期阅读和手动注释。LLM 编程助手可以自动生成代码注释、找出函数用途并推荐迁移方案。例如给出一个复杂的函数，LLM可解释其逻辑并写出文档；迁移场景中输入“将此Python算法迁移到Julia”，LLM可自动转换并说明细节。使用Prompt示例：“解释以下代码的功能并优化性能。” 执行后LLM输出注释和性能瓶颈建议。Copilot、CodeT5 等工具已显示，这类加速显著减少了上手开销。局限：生成的代码需严格测试；迁移过程中语言差异可能产生未捕捉的错误。
-
 - **教学课程与评估自动化**：以往编写教学大纲和试题需要老师手工完成。现在可让LLM根据课程主题自动生成课堂计划、教材提纲、习题集及答案示例。例如提示“为软件工程课程设计大纲，包括主要主题和练习题”，LLM能给出示例课程表和关键练习。结合OpenAI Evals等，可以自动批改客观题并给出评分反馈。案例：某大学试点使用LLM生成期末考试题库，教师审阅后使用在线考试平台评估学生表现。局限：AI生成的评估不一定符合学习目标，教师仍需校正确保问题质量与教学目标一致。
 
 以上案例说明：**传统高成本工作正在被LLM工具链显著降低**。由于LLM可组合检索（RAG）、提示设计、微调和专业工具（如数学引擎、语料库）协同完成任务，过往需要一生磨砺的知识积累被部分自动化。效果是效率极大提升、边界知识民主化，但其局限也显而易见：需要学者审慎把控输出质量、验证真伪，避免因依赖AI而失去批判性思考。科学研究与学习仍需人工反复验证与创新。
@@ -1008,13 +931,9 @@ LLM出现前，许多学术活动需要多年训练和大量人工劳动，现�
 ### 4. 学习范式的系统性变革
 
 LLM的引入不仅改变单项任务的执行方式，更在多个层面**重塑学习范式**：
-
 - **认知层面**：LLM作为外部记忆库和“虚拟导师”，使得人类记忆的需求减小，学习者更多进行概念理解和批判性思考而非死记硬背。在迁移能力上，LLM可以提供多元视角和类比激发，帮助学习者形成跨领域的联想（如GPT-4提供多种解题思路）。这意味着教育焦点将从记忆知识转向如何有效利用信息和培养思辨能力。  
-
 - **方法论层面**：研究设计和假设生成变得更为动态。以前研究者需从零开始提出假设，现在可利用LLM辅助检查假设可行性、快速浏览相关理论。同时，AI的“反事实”思维（即探索“如果如此”）能力，可以在模拟不同场景时给出启发性反馈。如在科研前期进行敏感性分析或结果检验。总的来说，科学研究中人机协同的“双向思考”模式得到强化（Machine-in-the-loop）。  
-
 - **社会层面**：传统的师生关系和同行评审也受到影响。LLM可以部分承担导师的一些职能（如答疑解惑、作文指导），使学生学习更自主，但这可能稀释面对面交流的深度。此外，同行评审过程可借助LLM进行初步审查（自动检测常见错误）。学术分工方面，基础性文献整理等重复性工作将更多由AI完成，学者可以将精力放在创造性研究上。  
-
 - **教育制度层面**：课程设计和评估需要重构。教学内容将更加强调信息素养（如何提出有效查询）和批判性思维训练。考试设计要防止学生仅靠AI答题：可能更多使用开放式问题、口头考试或项目作业。学术诚信政策需更新，例如引入AI引用和查重规范。MOOC和在线教育可能利用LLM提供个性化辅导，教育资源分配趋向数字化与全球化。
 
 以上变革需要系统考虑：不仅技术层面集成工具，也需培训师生学会“AI思维”。例如教会学生如何设计高质量提示（Prompt Engineering），以及如何使用工具组合（如RAG+LLM）来查证信息。教育机构需制定新的评价标准，关注学习过程和创造能力而非知识复制。
@@ -1022,7 +941,6 @@ LLM的引入不仅改变单项任务的执行方式，更在多个层面**重塑
 ### 5. 实践建议：工作流与工具链
 
 为了让学者、研究生和教师有效利用LLM，以下为可操作的工作流和工具链建议：
-
 - **提示工程模板**：开发领域/任务特定的Prompt模板。例如：
   - **文献综述**："请阅读以下摘要，并整合主要观点：\n\n\n输出包含：每篇文献的结论、共性发现以及研究空白。"
   - **概念梳理**："解释‘迁移学习’概念，并举例说明其在计算机视觉中的应用。"
@@ -1032,7 +950,6 @@ LLM的引入不仅改变单项任务的执行方式，更在多个层面**重塑
   - **论文写作/审稿反馈**："我是论文评审人，请对以下摘要提出修改意见并指出不足。"
   
   在实际使用中，先提供角色设定（System：“你是XX领域的专家…”），再给任务指令，有利于提高结果质量。提示模板应当根据目标不断调整。
-
 - **工具链集成示例**：构建多工具协作平台。以科研为例，可设计如下流程：
   1. **知识检索（RAG）**：使用 LlamaIndex 或 LangChain 建立领域知识库（文献、笔记），以提供给LLM检索接口。
   2. **LLM对话**：利用OpenAI或Anthropic模型执行对话式查询，上述Prompt模板即在此阶段使用。
@@ -1052,47 +969,32 @@ LLM的引入不仅改变单项任务的执行方式，更在多个层面**重塑
   ## 例：根据检索结果提取方法步骤
   steps = query_LLM("请依据上述文献描述XX实验步骤。")
 ```
-
 - **评估与回归测试**：为重要任务建立测试集，定期回归测试LLM输出质量。例如，在生成文献综述时，保持一个验证集（高质量摘要）。更新模型或提示前后，自动检测摘要覆盖度和正确率，防止性能回退。
-
 - **知识管理**：建议使用数字笔记和版本控制记录学习过程与AI交互记录。工具如Obsidian或Notion可以存储对话、笔记和反馈。对Prompt、代码片段进行集中管理，确保可追溯。专业团队可考虑内部私有云部署LLM并配备访问审计日志，以满足安全和隐私要求。
 
 ### 6. 伦理、可靠性与可验证性
 
 在LLM辅助学习/研究中，保证信息来源可靠与学术诚信极为重要。建议实践如下：
-
 - **可追溯引用**：要求LLM输出时提供信息来源或参考文献。使用检索增强(RAG)时，可要求模型标注其用到的文献。示例Prompt：“引用相关文献(标题+年份)来支持你的观点。” 可以减少错误信息无依据地被接受。
-  
 - **证据链与核查**：在关键结论处，通过“Chain of Thought”提示让模型展示推理步骤。然后使用事实核查工具或检索数据库验证这些步骤。例如设计提示引导模型演示公式推导过程或列出知识点出处。
-  
 - **对抗/红队测试**：定期对系统进行安全测试，包括输入“敌对式”恶意prompt，检查模型输出行为。参考OpenAI GPT-4安全卡片(2023)和社区研究，以识别模型可能给出的误导或敏感信息。
-  
 - **系统卡/模型卡**：记录使用的LLM版本、训练数据域、已知局限等。使用严格的模型卡报告流程，透明说明模型能力和盲点（尽量遵循Hendrycks 2023最佳实践）。
-  
 - **退避策略**：当LLM不确定或可能生成错误时，系统应明确拒绝或谨慎回答。例如在Prompt中预设“如果不知道，请如实回答不确定”。教育者需鼓励学生对AI结果保持怀疑，并验证关键信息。这符合学术诚信要求。
-  
 - **偏差与隐私**：注意语言模型的文化和性别偏差（涉及教育公平问题）。在教学应用时要监督回答中是否出现偏见，并在必要时补充多元视角。同时严格保护学生数据隐私，遵循GDPR等规定。 
 
 ### 7. 研究前沿与未来展望
 
 在未来3–5年，LLM在学习助手领域的研究和应用可能关注以下方向：
-
 - **自动化知识发现**：发展LLM主动探索未被充分研究的领域（例如通过自动生成研究问题或标注大规模数据）。结合强化学习，使AI不仅回答提问而是能自主“提出知识”或假设。
-  
 - **LLM与专家系统混合**：研究如何将符号推理或可验证的专家系统与LLM结合，如在医疗或法律领域，既利用LLM理解能力又保持规则系统的可解释性和安全性。
-  
 - **可解释性/可证明性**：增强LLM生成结果的可解释度，例如自动生成逻辑证明、来源追踪图或可验证证明。新兴的Symbolic+Neural融合模型可能使输出更加透明。
-  
 - **长期记忆与知识库一致性**：开发“终身学习”型LLM，使其能在使用过程中不断吸收新知识并更新自身知识库，而不是依赖静态训练集，保持与最新研究同步。例如内置定期爬取机制，或将私人知识库融合到RAG架构中。
-  
 - **跨文化与多语料偏差**：补齐不同文化和语言的知识覆盖，防止主流语言数据过度占主导。开发多语种、专门针对低资源语种微调的模型，使边缘文化知识平等可用。
-  
 - **教育评估标准化**：创建针对AI协助学习的新评估标准和协议。例如如何评估学生在AI辅助环境下的学习效果；以及建立AI答题检测和防欺诈机制。  
 
 **未来路线图建议**：教育技术研究者应推动与LLM厂商和教育机构的合作，建立开源平台来收集最佳实践和反馈。比如举办 “AI+教育”黑客松、开发教学案例库，以及在学术会议中设立交叉主题讨论（例如NeurIPS的教育工具轨迹）。工程上，应开发适合学术用途的开源工具链（继LangChain后，期待有更多学术场景优化的框架），并强调可复现性与安全性。教学实践中，首先在小范围试点，再收集反馈优化指南，最终形成制度化流程。
 
 ### 参考文献
-
 - OpenAI (2023): GPT-4 技术报告、GPT-4o系统卡以及 Evals 框架。  
 - Anthropic (2022–2025): 对话模型与红队安全研究。  
 - Brown et al. (2020): *Language Models are Few-Shot Learners*. GPT-3 算法基础。  

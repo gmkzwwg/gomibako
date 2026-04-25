@@ -87,11 +87,8 @@ This shift is conceptually necessary because it explains why anxiety often prece
 #### 2) Economic and dynamic perspectives: libido, Trieb, Besetzung as fuel and vector
 
 At this point the metapsychological triad—topographical, dynamic, economic—becomes fully operational.
-
 * The **dynamic** perspective asks: which forces are in conflict? Here Freud speaks of *Triebe* (drives) pressing for satisfaction and defensive agencies opposing them. The psyche is a field of vectors, not a set of contents.
-
 * The **economic** perspective asks: with what quantities are these conflicts powered? Here the key terms are *Libido* (as the energy of sexual drives in Freud’s classical formulation) and *Besetzung* (cathexis), the investment of energy in representations, objects, or ego structures. Repression is economically expensive because it requires sustained counter-cathexis; symptoms are economically rational because they allow partial satisfaction while avoiding maximal punishment.
-
 * The **topographical/structural** perspectives specify where and by whom the conflict is organized: systems (Ucs/Pcs/Cs) and agencies (Es/Ich/Über-Ich).
 
 Freud’s insistence on libido is not an obsession with sexuality as content; it is a theoretical claim that the mind’s most intense, most formative investments—attachment, identification, fantasy, inhibition—are energized by the same drive economy that underlies sexuality. Libido is the name for the quantitative dimension of investment, especially where bodily excitation and meaning become inseparable.
@@ -197,7 +194,6 @@ The tragedy in Freud is therefore not rhetorical pessimism; it is architectural.
 #### 2）经济与动力视角：力比多、驱力与贯注作为燃料与向量
 
 至此，元心理学三联——地形、动力、经济——全数启动。
-
 * **动力视角**问：哪些力量在冲突？在这里，弗洛伊德谈*Triebe*（驱力）施压求满足，防御机构与之对抗。心灵是向量场，而非内容集合。
 * **经济视角**问：这些冲突由什么“量”供能？关键词是*Libido*（力比多，弗洛伊德经典表述中为性驱力的能量）与*Besetzung*（贯注/投注），即能量对表象、对象或自我结构的投资。压抑之所以昂贵，是因为需要持续反贯注；症状之所以“合理”，是因为它允许部分满足而避免最大惩罚。
 * **地形/结构视角**规定冲突在哪里、由谁组织：系统（Ucs/Pcs/Cs）与机构（Es/Ich/Über-Ich）。

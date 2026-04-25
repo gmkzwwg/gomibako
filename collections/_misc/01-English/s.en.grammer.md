@@ -59,7 +59,6 @@ toc_depth: 4
 ## 动词和时态、语态、语气 (Verbs and Tenses, Voice, Mood)
 
 `动词（Verb）`是英语句子中最重要的成分之一，因为它们表达动作、状态或存在，并且在句子中担任谓语的核心。按`语法功能`可以分为以下四类：
-
   - **实义动词（Main Verb）**：表示`具体`动作或状态的动词，比如：*run*（跑）、*think*（思考）、*exist*（存在）。实义动词又可以分两类：
     - **及物动词（Transitive Verb）**：需要直接接宾语的动词。例如：*He bought a book.*（他买了一本书）。
     - **不及物动词（Intransitive Verb）**：不需要宾语的动词。例如：*He runs fast.*（他跑得很快）。
@@ -122,7 +121,6 @@ toc_depth: 4
 | 过去将来完成进行时 | would have been / should have been + `动词ing` | 过去时间点对将来时间点之前，一直持续动作的预期               |
 
 #### 1.**一般现在时 (Simple Present)**
-
    - **结构**: 主语 + `动词原形` (第三人称单数加 -s)
    - **肯定句**: He `plays` football.
    - **否定句**: He `does not (doesn't) play` football.
@@ -130,7 +128,6 @@ toc_depth: 4
    - **用法**: 表示*习惯性动作、普遍真理、经常性行为*。
 
 ##### **【动词变化规则】第三人称单数**
-
    - **一般情况**下：在动词原形后面加 **-s**。
      - 例：play → plays、read → reads
    - **以 s, x, ch, sh, o 结尾**的动词：在词尾加 **-es**。
@@ -144,7 +141,6 @@ toc_depth: 4
 > 动词的第三人称单数形式`只`出现在`一般现在时`。
 
 #### 2.**一般过去时 (Simple Past)**
-
    - **结构**: 主语 + `动词过去式`
    - **肯定句**: She `went` to the store.
    - **否定句**: She` did not (didn't) go` to the store.
@@ -154,7 +150,6 @@ toc_depth: 4
 ##### **【动词变化规则】动词过去式、过去分词**
 
 除某些特殊变化外，大部动词的过去式与过去分词相同。
-
 - **一般规则**：直接在动词原形后加 **-ed**。
   - 例：*play → played*、*want → wanted*
 - **以不发音的 e 结尾的动词**：直接加 **-d**。
@@ -293,7 +288,6 @@ toc_depth: 4
 > 动词的过去式并不仅仅局限于`一般过去时`（Simple Past Tense）中，它还可以出现在其他时态或语法结构中，例如在`某些完成时态`、`条件句`、`虚拟语气`、`间接引语`中等。
 
 #### 3.**一般将来时 (Simple Future)**
-
    - **结构**: 主语 + `will` + `动词原形`
    - **肯定句**: They `will travel` tomorrow.
    - **否定句**: They `will not (won't) travel` tomorrow.
@@ -301,7 +295,6 @@ toc_depth: 4
    - **用法**: 描述*未来将发生的动作或计划*。
 
 #### 4.**一般过去将来时（Past Future Simple Tense）**
-
    - **结构**: 主语 + `would / should` + `动词原形`
      - 通常 should 用于表示第一人称主语（如 I 或 We）的过去意图，而 would 则更广泛。
    - **例句**: 
@@ -312,7 +305,6 @@ toc_depth: 4
      - 常用于`间接引语`（reported speech）或`虚拟语气`中。
 
 #### 5.**现在进行时 (Present Continuous)**
-
    - **结构**: 主语 + `am/is/are` + `动词ing`
    - **肯定句**: She `is studying` now.
    - **否定句**: She `is not (isn't) studying` now.
@@ -320,7 +312,6 @@ toc_depth: 4
    - **用法**: 描述*现在正在进行的动作或事件*。
 
 ##### **【动词变化规则】动词 ing 形式**
-
 1. **一般规则**：直接在动词后加 **-ing**。
    - 例：*work → working*、*play → playing*
 2. **以不发音的 e 结尾的动词**：去掉 **e** 再加 **-ing**。
@@ -344,7 +335,6 @@ toc_depth: 4
 > 动词 ing 形式可用在`现在分词`（Present Participle）、`动名词`（Gerund）、`形容词性用法`（Adjectival Use）、`名词修饰语`（Noun Modifier）、`固定搭配和表达`（Fixed Phrases）中。
 
 #### 6.**过去进行时 (Past Continuous)**
-
    - **结构**: 主语 + `was/were` + `动词ing`
    - **肯定句**: He `was reading` at 8 PM.
    - **否定句**: He `was not (wasn't) reading` at 8 PM.
@@ -352,7 +342,6 @@ toc_depth: 4
    - **用法**: 描述*过去某一时间正在进行的动作*。
 
 #### 7.**将来进行时 (Future Continuous)**
-
    - **结构**: 主语 + `will be` + `动词ing`
    - **肯定句**: They `will be working` at 6 PM.
    - **否定句**: They `will not (won't) be working` at 6 PM.
@@ -360,7 +349,6 @@ toc_depth: 4
    - **用法**: 描述*未来某一时间正在进行的动作*。
 
 #### 8.**过去将来进行时（Past Future Continuous Tense）**
-
    - **结构**: 主语 + `would be` / `should be` + 动词`-ing` 形式
    - **例句**:
      - **He told me** he `would be studying` at this time tomorrow.（他告诉我，他明天这个时候会在学习。）
@@ -371,7 +359,6 @@ toc_depth: 4
      - 过去将来进行时通常表示动作的“延续性”或“进行状态”，而且是`从过去的角度来看未来`某个时间点正在发生的事件。
 
 #### 9.**现在完成时 (Present Perfect)**
-
    - **结构**: 主语 + `have/has` + `过去分词`
    - **肯定句**: She `has visited` Japan.
    - **否定句**: She `has not (hasn't) visited` Japan.
@@ -385,7 +372,6 @@ toc_depth: 4
 > 过去分词（Past Participle）是动词的一种非谓语形式，通常表示已完成的动作或被动状态。在英语语法中，过去分词有多种用法，例如在`完成时态`（Perfect Tenses）中表示已完成的动作，在`被动语态`（Passive Voice）中表示被动状态，或者`作为形容词`用来修饰名词或代词。
 
 #### 10.**过去完成时 (Past Perfect)**
-
    - **结构**: 主语 + `had` + `过去分词`
    - **肯定句**: They `had finished` the project before the deadline.
    - **否定句**: They `had not (hadn't) finished` the project before the deadline.
@@ -393,7 +379,6 @@ toc_depth: 4
    - **用法**: 描述*在过去某个时间之前已经完成的动作*。
 
 #### 11.**将来完成时 (Future Perfect)**
-
    - **结构**: 主语 + `will have` + `过去分词`
    - **肯定句**: She `will have graduated` by next year.
    - **否定句**: She `will not (won't) have graduated` by next year.
@@ -401,7 +386,6 @@ toc_depth: 4
    - **用法**: 描述*在未来某个时间之前已经完成的动作*。
 
 #### 12.**过去将来完成时（Past Future Perfect Tense）**
-
   - **结构**: 主语 + `would have / should have` + `过去分词`
    - **例句**:
      - **By the end of last year**, **he thought** he `would have finished` his project.（到去年的年底时，他以为他会完成他的项目。）
@@ -411,7 +395,6 @@ toc_depth: 4
      - 强调动作的`“完成性”或“结果”`，常用于表示`假设`、`计划`或`预期`的结果。
 
 #### 13.**现在完成进行时 (Present Perfect Continuous)**
-
   - **结构**: 主语 + `have/has been` + `动词ing`
   - **肯定句**: He `has been working` for three hours.
   - **否定句**: He `has not (hasn't) been working` for three hours.
@@ -419,7 +402,6 @@ toc_depth: 4
   - **用法**: 描述*从过去某个时间开始，一直持续到现在的动作，并可能继续*。
 
 #### 14.**过去完成进行时 (Past Perfect Continuous)**
-
    - **结构**: 主语 + `had been` + `动词ing`
    - **肯定句**: She `had been studying` for two hours before dinner.
    - **否定句**: She `had not (hadn't) been studying` for two hours before dinner.
@@ -427,7 +409,6 @@ toc_depth: 4
    - **用法**: 描述*过去某个时间之前一直在进行的动作*。
 
 #### 15.**将来完成进行时 (Future Perfect Continuous)**
-
    - **结构**: 主语 + `will have been` + `动词ing`
    - **肯定句**: By next year, they `will have been living` here for ten years.
    - **否定句**: By next year, they `will not (won't) have been living` here for ten years.
@@ -435,7 +416,6 @@ toc_depth: 4
    - **用法**: 描述*在未来某个时间之前一直在进行的动作*。
 
 #### 16. **过去将来完成进行时（Past Future Perfect Continuous Tense）**
-  
   - **结构**: 主语 + `would have been` / `should have been` + `动词-ing` 形式
   - **例句**: 
     - He said he `would have been working` at the company for 5 years by the end of 2023.（他说，到2023年底时，他应该会在这家公司工作满5年。）
@@ -484,24 +464,19 @@ toc_depth: 4
 | **将来完成时** | 主语 + will have been + 过去分词  | The task **will have been completed**.  |
 
 #### **主动与被动语态的转换**
-
 - 主动语态转换为被动语态时，将 **宾语** 变为 **主语**，并使用 **be + 过去分词** 来表示被动。动词后的宾语在被动语态中成为主语时，原来的主语用 `by` 来引入。 
 
 #### 主动语态到被动语态的转换规则：
 - **主动语态**：She **writes** a letter.  
   **被动语态**：A letter **is written** `by` her.
-  
 - **主动语态**：They **built** a new house.  
   **被动语态**：A new house **was built** `by` them.
 
 #### **被动语态的使用场景**
-
 - **当执行者不重要或不需要强调时**：  
   **例句**: The roads **were repaired** last year. (不需要提谁修的路)
-  
 - **当执行者未知时**：  
   **例句**: My wallet **was stolen**. (不知道是谁偷的)
-
 - **强调接受动作的主体**：  
   **例句**: The new law **was passed** by the government.
 
@@ -537,30 +512,22 @@ toc_depth: 4
 #### 虚拟语气（Subjunctive Mood）
 
 虚拟语气的用法复杂，虚拟语气常用于以下几种特殊的句型中：
-
 1. **条件句（If Clauses）**
    条件句是最常见的虚拟语气使用场景之一。常用以下三种类型的虚拟条件句：
-
    - **与现在事实相反的假设**：  
      - If I **were** you, I **would choose** a different job.（如果我是你，我会选择一个不同的工作。）
-
    - **与过去事实相反的假设**：  
      - If she **had known** earlier, she **would have changed** her decision.（如果她早知道，她就会改变决定。）
-
    - **与将来事实相反的假设**：  
      - If I **were to win** the lottery, I **would buy** a big house.  
        （如果我中了彩票，我会买一栋大房子。）
-
 1. **愿望句型（Wish Clauses）**
    - **表示对现在的愿望（与现在事实相反）**：  
      - I wish I **were** taller.（我希望我更高。——事实是我现在不够高。）
-
    - **表示对过去的遗憾（与过去事实相反）**：  
      - I wish I **had studied** harder in school.（我希望我在学校时更用功。——事实是我当时没有用功。）
-
    - **表示对将来的愿望（不太可能发生的）**：  
      - I wish it **would stop** raining tomorrow.（我希望明天雨停。——表示对未来不太可能发生的情况的愿望。）
-
 2. **建议或要求句型（Suggest/Recommend Clauses）**
    - 在表达建议、命令或要求时，虚拟语气常用在从句中，结构为：**主语 + suggest/recommend + (that) + 主语 + 动词原形**。
    - 例句：  
@@ -650,7 +617,6 @@ toc_depth: 4
 - **同位语从句**对名词的内容进行`解释`，**定语从句**`修饰`名词。
   - 例句：The idea **that we should start early** is good.  
     （这个我们应该早点开始的想法很好。）—— **同位语从句**（解释“idea”的内容）
-
   - 例句：The idea **which he proposed** is good.  
     （他提出的想法很好。）—— **定语从句**（修饰“idea”）
 
@@ -661,7 +627,6 @@ toc_depth: 4
 #### 2.1 **限制性定语从句** (Restrictive Relative Clauses)
 
 **不可省略，用于提供必要信息**
-
 - **结构**: 先行词 + who/which/that + 从句。
 - **例句**: The book `that I borrowed` is very interesting.（我借的那本书非常有趣。）
 - **常用引导词**: who, whom, whose, which, that
@@ -677,7 +642,6 @@ toc_depth: 4
 #### 2.2 **非限制性定语从句** (Non-restrictive Relative Clauses)
 
 **提供附加信息，可省略，常用逗号隔开**
-
   - 结构: 先行词 + , who/which + 从句。
   - 例句: My sister, `who lives in New York`, is coming to visit.（我住在纽约的姐姐要来看我了。）
   - 常用引导词: who, whom, whose, which
@@ -687,15 +651,12 @@ toc_depth: 4
 ### 3. **状语从句** (Adverbial Clauses)、
 
 状语从句`修饰整个句子`，表时间、原因、条件、目的、结果等。
-
 1. **状语从句的语序通常保持正常陈述语序**，即主语在前，谓语在后。
    - 错误：If **will you** come, tell me.
    - 正确：If **you will** come, tell me.
-
 2. **主从句顺序的变化**：状语从句可以放在主句之前或之后。放在主句之前时，通常用逗号分隔：
    - 例句：**If** it rains, we’ll stay inside.（状语从句在主句之前）
    - 例句：We’ll stay inside **if** it rains.（状语从句在主句之后）
-
 3. **虚拟语气的使用**：在某些条件状语从句中，尤其是与过去、未来可能性不大的条件搭配时，需要使用虚拟语气：
    - 例句：**If** I **were** you, I **would** quit the job.  
      （如果我是你，我就会辞职。）
@@ -790,17 +751,14 @@ toc_depth: 4
   - **常用引导词**: **as, as if, as though**
 
 #### 3.8 **比较状语从句（Adverbial Clause of Comparison）**
-
   - **解释**:表示主句与从句的比较关系。
   - **常用引导词**：**than, as ... as, the more ... the more**
 
 **例句**：
   - **Than**：比……
     - 例句：He runs faster **than** I do.（他跑得比我快。）
-
   - **As ... as**：和……一样
     - 例句：She is **as** tall **as** her sister.（她和她姐姐一样高。）
-
   - **The more ... the more**：越……越……
     - 例句：**The more** you read, **the more** you learn.（你读得越多，你学得越多。）
 
@@ -819,17 +777,14 @@ toc_depth: 4
 表示`假设`的情况，通常用 if 引导。
 
 #### **第一条件句**：表示`现实可能发生`的情况。
-
   - **结构**: If + 一般现在时，主句 + will/can + 动词原形
   - **例句**: `If it rains`, we will stay home.
 
 #### **第二条件句**：表示`不大可能发生`的假设情况。
-
   - 结构: If + 一般过去时，主句 + would/could + 动词原形
   - 例句: `If I were you`, I would take the job.
 
 #### **第三条件句**：表示`过去不可能改变`的假设。
-
   - 结构: If + 过去完成时，主句 + would/could have + 过去分词
   - 例句: If I had known, I would have helped you.
 
@@ -1079,7 +1034,6 @@ toc_depth: 4
 1.**表示不同种类（Different Types）**
 
 当不可数名词用来表示**不同种类或品种**时，可以变为复数形式表示多种类型。通常，这种用法出现在**学术、商业**或**日常语言**中，帮助区分不同的类别或形式。
-
 - **例子**：
   - *Cheese*（奶酪，通常不可数） → **Cheeses**（不同种类的奶酪）
     - *There are many **cheeses** from France.*（法国有许多种类的奶酪。）
@@ -1095,7 +1049,6 @@ toc_depth: 4
 2.**表示单位或份（Units or Portions）**
 
 不可数名词可以通过加入量词（**a piece of, a glass of, a cup of**）或将其转变为可数形式，表示**具体的单位或份量**。这种用法通常用来表达**可量化的部分**，使不可数名词变得可以计数。
-
 - **例子**：
   - *A coffee*（一杯咖啡）
     - *I'd like **two coffees**, please.*（我想要两杯咖啡。）
@@ -1111,7 +1064,6 @@ toc_depth: 4
 3.**表示特定数量（Specific Quantities）**
 
 在某些情境下，不可数名词可以通过添加表示数量的**度量词**（如 *a kilo of, a piece of*）来表达特定数量。这种用法在谈论具体度量时特别常见。
-
 - **例子**：
   - *A bread*（一块面包）
     - *I'd like **two breads**, please.*（我想要两块面包。）
@@ -1125,7 +1077,6 @@ toc_depth: 4
 4.**表示具体事物的特例（Specific Instances）**
 
 有些不可数名词可以通过改变形式或上下文使用来表示**具体实例**或**特定情况**。在这种用法中，不可数名词变为可数名词以描述特定的事件或例子。
-
 - **例子**：
   - *Experience*（经验，不可数） → **Experiences**（具体经历）
     - *She shared her **experiences** in Africa.*（她分享了在非洲的经历。）
@@ -1139,7 +1090,6 @@ toc_depth: 4
 5.**修饰限定（限定不可数名词的某种具体情况）**
 
 有些不可数名词在表示**特定情况、表现形式**或**具体上下文**时，会变为可数名词。通过添加限定词或上下文引导，这些名词能够表示特定的状态或实例。
-
 - **例子**：
   - *A love*（一段爱情或一种爱的形式）
     - *It was **a love** that could not be described.*（那是一种无法形容的爱。）
@@ -1151,15 +1101,12 @@ toc_depth: 4
 > **注意**：这种用法通常用于文学、演讲或情感表达中，强调特定的情感、状态或经验，而不是泛指该名词的整体概念。
 
 ### 名词的格（Case）
-
 1. **主格（Nominative Case）**
    - 名词在句中作**主语**时处于主格形式。
    - 例：*The **cat** is sleeping.*（猫在睡觉。）
-
 2. **宾格（Objective Case）**
    - 名词在句中作**宾语**时处于宾格形式。
    - 例：*I saw the **dog**.*（我看见了狗。）
-
 3. **所有格（Possessive Case）**
    - 所有格表示名词之间的**所属关系**，通常在名词后加上 **'s** 或 **'** 来表示所有格形式。
 
@@ -1178,7 +1125,6 @@ toc_depth: 4
 **名词短语（Noun Phrase）**是由名词及其修饰成分（如限定词、形容词、介词短语、定语从句等）构成的一个短语结构。名词短语的核心是名词（或代词），其他词汇用来修饰、限定或补充这个名词的意义。在句子中，名词短语通常充当主语、宾语、表语、定语或介词宾语等。理解和使用名词短语可以帮助我们更准确、复杂地表达思想和描述事物。
 
 名词短语通常由以下几部分组成：
-
 1. **中心词（Head Noun）**
 2. **前置修饰语（Premodifiers）**
 3. **后置修饰语（Postmodifiers）**
@@ -1191,14 +1137,12 @@ toc_depth: 4
 
 #### 1. 中心词（Head Noun）
 名词短语的核心部分是**名词或代词**，其余部分都是围绕这个中心词来修饰或补充其意义。
-
 - **例子**：
   - *The **boy** ran away.*（男孩跑了。）
   - *A **book** on the table.*（桌子上的一本书。）
 
 #### 2. 前置修饰语（Premodifiers）
 位于名词之前，用来限定名词的数量、性质或范围，通常包括**限定词（Determiner）**、**形容词（Adjective）**和其他修饰成分。
-
 - **常见前置修饰语种类**：
   1. **限定词（Determiner）**：用来指明名词的特定性或数量。
      - **冠词**：*a, an, the*
@@ -1209,19 +1153,16 @@ toc_depth: 4
      - **例子**：*beautiful, old, interesting*
   3. **名词作定语（Noun as Modifier）**：用另一个名词来修饰中心名词。
      - **例子**：*school bus*（校车），*science teacher*（科学老师）
-
 - **例子**：
   - *The **beautiful old house** was sold.*（那座美丽的老房子被卖了。）
   - *My **younger brother** is in college.*（我弟弟在上大学。）
 
 #### 3. 后置修饰语（Postmodifiers）
 位于名词之后，对名词进行补充说明或进一步限定。常见的后置修饰语包括：
-
 1. **介词短语（Prepositional Phrase）**
 2. **定语从句（Relative Clause）**
 3. **非谓语动词短语（非限定动词短语，如现在分词、过去分词、不定式短语）**
 4. **名词同位语（Noun Apposition）**
-
 - **例子**：
   - *The book **on the table** is mine.*（桌子上的书是我的。）——**介词短语**
   - *The girl **who is wearing a red dress** is my friend.*（穿红色裙子的女孩是我的朋友。）——**定语从句**
@@ -1232,7 +1173,6 @@ toc_depth: 4
 
 #### 1. 简单名词短语（Simple Noun Phrase）
 简单名词短语通常只有一个名词或代词，可能带有一个简单的限定词。
-
 - **例子**：
   - *A book*（一本书）
   - *The boy*（那个男孩）
@@ -1242,7 +1182,6 @@ toc_depth: 4
 
 #### 2. 复杂名词短语（Complex Noun Phrase）
 复杂名词短语包含多个修饰成分，如形容词、介词短语、定语从句等。
-
 - **例子**：
   - *The **beautiful old house** on the hill*（山上的那座美丽的老房子）
   - *A **well-written** book about history*（一本关于历史的写得很好的书）
@@ -1251,14 +1190,12 @@ toc_depth: 4
 
 #### 3. 名词性定语从句短语（Noun Phrase with Relative Clause）
 名词短语中包含**定语从句**，用来补充说明中心名词，进一步阐述其特征或情况。
-
 - **例子**：
   - *The man **who is standing by the door** is my uncle.*（站在门口的那个人是我的叔叔。）
   - *The movie **that I watched last night** was fantastic.*（我昨晚看的那部电影非常精彩。）
 
 #### 4. 名词性介词短语（Noun Phrase with Prepositional Phrase）
 名词短语中包含**介词短语**，用来描述名词的位置、状态或所属关系。
-
 - **例子**：
   - *The house **on the corner** belongs to my family.*（角落上的房子是我家的。）
   - *The cat **under the table** is sleeping.*（桌子底下的猫在睡觉。）
@@ -1301,26 +1238,21 @@ toc_depth: 4
 
 #### **不定代词作主语**
 当不定代词（如：**someone, everyone, no one, anybody, nobody, something**）作主语时，谓语动词用**单数**形式。
-
 - **例句**：
   - **Everyone** **wants** to be happy. （每个人都想要幸福。）
   - **Something** **is** wrong. （出问题了。）
-
 - **注意**：这些代词虽然表示的是不特定的人或物，但它们在语法上被视为单数主语。
 
 #### **集体名词作主语**
 集体名词（如：**team, family, class, group, government, staff**）表示一个整体时，通常被视为**单数**主语，谓语动词用单数形式。
-
 - **例句**：
   - The **team** **is** winning. （这支队伍正在获胜。）
   - The **family** **has** a new car. （这家人有了一辆新车。）
-
 - **注意**：当强调集体名词中的个体成员时，可以视为复数主语，谓语动词用复数形式。
   - 例句：The **team** **are** arguing among themselves.（这支队伍的队员们正在争论。）
 
 #### **名词短语或主语从句作主语**
 名词短语（如：**the news, the cost of goods**）或由主语从句（如：**What he said**）构成的主语通常视为单数。
-
 - **例句**：
   - **The cost of goods** **has** risen significantly. （商品成本大幅上涨。）
   - **What he said** **makes** sense. （他说的有道理。）
@@ -1328,13 +1260,11 @@ toc_depth: 4
 #### **复合主语的主谓一致**
 - **使用“and”连接的复合主语**通常被视为复数，谓语动词用复数形式。
   - 例句：**Tom and Jerry** **are** friends. （汤姆和杰瑞是朋友。）
-
 - **使用“and”连接但表示同一概念的复合主语**，谓语动词用单数形式。
   - 例句：**Bread and butter** **is** my favorite breakfast. （黄油面包是我最喜欢的早餐。）
 
 #### **就近原则（Proximity Agreement）**
 当两个或多个名词或代词通过“**or, either ... or, neither ... nor**”连接时，动词形式与**最靠近的主语**一致。
-
 - **例句**：
   - Either **my brothers or my sister is** coming. （不是我兄弟，就是我妹妹要来。）
   - Neither **the teacher nor the students are** happy. （老师和学生都不高兴。）
@@ -1342,7 +1272,6 @@ toc_depth: 4
 #### **量词和数词作主语**
 - **表示时间、金钱、距离等的量词短语**，通常用单数形式。
   - 例句：**Ten dollars** **is** not enough. （十美元不够。）
-
 - **表示数量的短语**：
   - A number of + 复数名词 + 复数动词：
     - 例句：A number of students **are** present.（一些学生出席。）
@@ -1355,7 +1284,6 @@ toc_depth: 4
 **第三人称单数动词形式（-s 或 -es）**
 - 一般现在时的动词在主语是**第三人称单数**时，需要在动词后加 **-s** 或 **-es**。
   - 例句：She **reads** books.（她读书。）
-
 - **规则**：
   - 直接加“s”：go → goes, read → reads
   - 以“ch, sh, s, x, o”结尾的动词加“es”：watch → watches
@@ -1367,15 +1295,12 @@ toc_depth: 4
   - 例句：**There are** many books on the table.（桌子上有许多书。）
 
 #### **英语主谓一致中的常见错误类型**
-
 - **主语和动词形式不匹配**：
   - 错误：The books **is** on the table.
   - 正确：The books **are** on the table.
-
 - **复合主语的动词形式不一致**：
   - 错误：Neither my father nor my brothers **is** going.
   - 正确：Neither my father nor my brothers **are** going.（动词与最接近的主语一致）
-
 - **集体名词视作复数时动词使用错误**：
   - 错误：The team **is** arguing among themselves.
   - 正确：The team **are** arguing among themselves.（当集体名词强调个体成员时）
@@ -1389,26 +1314,22 @@ toc_depth: 4
 #### 1. 不定冠词（Indefinite Article）
 
 **不定冠词**用来表示**泛指**，通常用在**单数可数名词**前，表示一个`未特定指明`的人、物或概念。不定冠词有两种形式：**a** 和 **an**，根据首字母发音的不同来选择。
-
 - **a**：用于以辅音音素开头的单词之前。
   - **例子**：
     - *a book*（一本书）
     - *a university*（一所大学，注意 *university* 以 /ju:/ 开头，发音以辅音音素开头）
     - *a European country*（一个欧洲国家）
-
 - **an**：用于以元音音素（a, e, i, o, u 的元音发音）开头的单词之前。
   - **例子**：
     - *an apple*（一个苹果）
     - *an hour*（一个小时，“hour” 以元音音素 /au/ 开头）
     - *an honest man*（一个诚实的人，“honest” 以元音音素 /ɒ/ 开头）
-
 - **用途**：
   - **表示泛指**：用于提到某个对象或事物，但没有具体指明。
     - *I need **a pen**.*（我需要一支笔——不特定的任何一支笔。）
   - **表示类别或身份**：用于表示职业、身份或某个类别的成员。
     - *He is **a doctor**.*（他是一名医生。）
     - *She wants to be **an artist**.*（她想成为一名艺术家。）
-
 - **注意**：
   1. “a”和“an”取决于单词的**首音素**，而不是首字母。例如：*an MP*（一名国会议员），因为 “MP” 发音以元音音素 /em/ 开头。
   2. 不定冠词**只能用在单数可数名词**前，不能用于不可数名词（如 *information, water*）和复数名词。
@@ -1416,12 +1337,10 @@ toc_depth: 4
 #### 2. 定冠词（Definite Article）
 
 **定冠词 "the"** 用来表示**特指**的名词，表示`说话者和听话者都知道或理解`的`特定`事物、人物或地点。定冠词可以用于**单数、复数可数名词**和**不可数名词**前。
-
 - **例子**：
   - *the book*（那本书）
   - *the students*（那些学生）
   - *the water*（那水）
-
 - **用途**：
   - **特指已知的事物**：表示特定的、之前提到过或上下文中明确指明的事物。
     - *Please pass me **the salt**.*（请把那盐递给我。——双方都知道是哪一份盐。）
@@ -1432,7 +1351,6 @@ toc_depth: 4
     - *I’m going to **the bank**.*（我要去银行。——特指我们都知道的那家银行。）
   - **表示复数可数名词的特指**：用于描述特定的一组事物或人。
     - *The children are playing outside.*（这些孩子在外面玩。）
-
 - **固定搭配**：
   - **用在某些特定的地理名词前**：
     - *the United States*（美国）
@@ -1446,12 +1364,10 @@ toc_depth: 4
 #### 3. 零冠词（Zero Article）
 
 **零冠词**指在名词前`不使用冠词`，表示该名词具有`泛指意义、抽象意义或习惯用法`。通常用于**复数可数名词**、**不可数名词**以及某些专有名词前。
-
 - **例子**：
   - *Books are expensive.*（书很贵。——泛指所有书）
   - *I love coffee.*（我喜欢咖啡。——泛指所有咖啡）
   - *Children need love.*（孩子们需要爱。）
-
 - **用途**：
   - **表示泛指**：表示整体或类别，而不是特指某个个体。
     - *Dogs are loyal animals.*（狗是忠诚的动物。）
@@ -1461,7 +1377,6 @@ toc_depth: 4
     - *We have lunch at noon.*（我们中午吃午饭。）
     - *He plays tennis every weekend.*（他每周末打网球。）
     - *I go to work by bus.*（我乘公交车上班。）
-
 - **特殊规则**：
   1. **学科名词**前不加冠词：*I study biology.*（我学生物。）
   2. **语言名词**前不加冠词：*She speaks Spanish.*（她会说西班牙语。）
@@ -1470,15 +1385,12 @@ toc_depth: 4
 ### 冠词的使用规则与例外情况
 
 #### 1. **冠词与名词的搭配规则**
-
 - **单数可数名词**：`必须`使用冠词（或其他限定词，如 *this, my, one*）。
   - *He is **a** teacher.*
   - ***The** book on the table is mine.*
-
 - **不可数名词**：通常不使用冠词（使用`零冠词`），但当表示`特定情况`时使用 *the*。
   - ***Water** is essential for life.*（水对生命至关重要。）
   - *Please pass **the water**.*（请把那水递给我。）
-
 - **复数名词**：一般不用不定冠词（使用`零冠词`），但`可以用 *the* 表示特指`。
   - ***Books** are expensive nowadays.*（书籍现在很贵。）
   - ***The books** on the shelf are new.*（架子上的那些书是新的。）
@@ -1486,7 +1398,6 @@ toc_depth: 4
 #### 2. **冠词与形容词的搭配**
 
 冠词可以和形容词一起使用，以进一步修饰名词。
-
 - **例子**：
   - ***A beautiful flower** bloomed in the garden.*（一朵美丽的花在花园里开放。）
   - ***An interesting book** caught my attention.*（一本有趣的书吸引了我的注意。）
@@ -1494,17 +1405,14 @@ toc_depth: 4
 #### 3. **冠词与专有名词的搭配**
 
 大多数**专有名词**前不使用冠词，但有些特殊情况除外：
-
 - **地理名词**：
   - 大洲、国家、城市等通常不用冠词：
     - *Europe, China, London*
   - 但复数地名、含有“共和国、王国、联合体”等的国家名词使用 *the*：
     - *the United States, the Netherlands, the Philippines*
-
 - **机构与建筑物**：
   - 使用 *the* 修饰某些表示特定用途的建筑物：
     - *the Eiffel Tower, the White House*
-
 - **人名与头衔**：
   - 头衔或称谓名词前通常不用冠词：
     - *President Biden*
@@ -1514,15 +1422,12 @@ toc_depth: 4
 #### 4. **三餐、球类运动和交通工具**
 
 在谈到三餐、球类运动和某些交通工具时，`冠词通常省略`，表示的是常规活动或习惯性的事物，不特指某个具体的饭、运动或交通工具。
-
 - **三餐**：
   - *We have **lunch** at noon.*（我们中午吃午饭。）
   - *She invited me to **dinner**.*（她邀请我吃晚饭。）
-
 - **球类运动**：
   - *He plays **football** every weekend.*（他每周末踢足球。）
   - *Do you like to play **tennis**?*（你喜欢打网球吗？）
-
 - **交通工具**：
   - *I go to work by **bus**.*（我乘公交车上班。）
   - *They traveled to Paris by **train**.*（他们乘火车去巴黎。）
@@ -1532,17 +1437,13 @@ toc_depth: 4
 #### 5. **专有名词**
 
 冠词通常省略在某些**专有名词**之前，尤其是表示国家、大洲、城市、街道、语言、学科、节日、月份和星期的名词。
-
 - **国家和城市**：
   - *He is from **Japan**.*（他来自日本。）
   - *I live in **London**.*（我住在伦敦。）
-
 - **语言**：
   - *She speaks **Spanish** fluently.*（她会说流利的西班牙语。）
-
 - **学科**：
   - *I study **biology** at university.*（我在大学学习生物。）
-
 - **节日和月份**：
   - *We celebrate **Christmas** every year.*（我们每年庆祝圣诞节。）
   - *The meeting is in **July**.*（会议在七月份举行。）
@@ -1550,7 +1451,6 @@ toc_depth: 4
 #### 5. **某些固定短语**
 
 一些固定搭配或习惯表达中，冠词也被省略，这些短语已经成为英语中约定俗成的用法。
-
 - **例子**：
   - *at home*（在家）
   - *in bed*（在床上）
@@ -1601,12 +1501,10 @@ toc_depth: 4
    - **-body** 和 **-one** 系列通常可以互换使用，表示人，但 **-thing** 表示事物。
    - *Somebody*（某人）与 *someone*（某人）意义相近，但 *something*（某物）表示非生命的事物。
    - *Anyone*（任何人）与 *anything*（任何事）在疑问句和否定句中使用。
-
 2. **复合不定代词的主谓一致**：
    - 当 **-body, -one, -thing** 系列代词作主语时，谓语动词用**单数形式**：
      - *Everyone **is** here.*（每个人都在这里。）
      - *Something **was** wrong.*（有点不对劲。）
-
 3. **“each” 与 “every” 的区别**：
    - **each** 强调个体，即“一人一个”或“每一个”。
    - **every** 强调整体，即“全部的每个”。
@@ -1618,14 +1516,12 @@ toc_depth: 4
 #### 1. **相互代词的用法**
 - **each other**：表示**两者之间**的相互关系。
 - **one another**：表示**三者或三者以上**的相互关系（但在现代英语中，**each other** 和 **one another** 常可互换）。
-
 - **例子**：
   - *John and Mary love **each other**.*（约翰和玛丽彼此相爱。）
   - *All the students help **one another** with their homework.*（所有学生互相帮助做作业。）
 
 #### 2. **相互代词的所有格形式**
 相互代词可以有所有格形式：**each other's** 和 **one another's**，表示互相拥有的关系。
-
 - **例子**：
   - *They respect **each other's** opinions.*（他们尊重彼此的意见。）
   - *The team members used **one another's** resources.*（队员们使用了彼此的资源。）
@@ -1650,11 +1546,9 @@ toc_depth: 4
      - *Who called you?*（谁给你打电话了？）
    - **whom** 用作宾语，询问“谁”是动作的对象（现代英语中，常用 **who** 代替）：
      - *Whom are you waiting for?*（你在等谁？）
-
 2. **what 与 which 的区别**：
    - **what** 用于泛指、开放性的问题，表示“什么”。
    - **which** 用于在特定范围内作出选择，表示“哪一个”。
-
 3. **疑问代词与疑问词的区别**
    - 疑问代词用于代替名词或名词性成分，通常可以独立使用：
      - Who is that?（那是谁？）
@@ -1678,7 +1572,6 @@ toc_depth: 4
 
 #### 2. **关系代词省略**
 当关系代词在从句中作**宾语**时，可以省略。
-
 - **例子**：
   - *The book (that) I bought yesterday is interesting.*（我昨天买的那本书很有趣。）
 
@@ -1701,31 +1594,24 @@ toc_depth: 4
 #### 连接代词与疑问代词的区别
 
 连接代词与疑问代词在形式上相同，但用法不同：
-
 1. **连接代词**引导的是**名词性从句**，在句中充当从句成分（主语、宾语、表语等），而**疑问代词**用于**疑问句**中，表示疑问。
-
 - **连接代词例子**：
   - *I don’t know **who** called.*（我不知道是谁打来的。——宾语从句）
   - *The question is **which** one you prefer.*（问题是你更喜欢哪一个。——表语从句）
-
 - **疑问代词例子**：
   - ***Who** called?*（谁打来的？）
   - ***Which** one do you prefer?*（你更喜欢哪一个？）
-
 2. **疑问代词**在句中用于直接提问，而**连接代词**用来引导从句表达某个疑问或不确定的内容。
 
 ### 连接代词的特殊用法
-
 1. **连接代词作从句的主语或宾语时不可省略**。
    - **例子**：
      - *I wonder **what** she is doing.*（我想知道她在做什么。）
      - *Do you know **which** is the best choice?*（你知道哪个是最好的选择吗？）
-
 2. **当连接代词作介词宾语时，介词可以放在从句前或从句后**。
    - **例子**：
      - *She asked me **with whom** I went to the party.*（她问我和谁一起去参加了派对。——正式）
      - *She asked me **whom** I went to the party **with**.*（她问我和谁一起去参加了派对。——常见用法）
-
 3. **连接代词在句中承担句子成分时，要`根据从句`的具体内容来决定其形式**。
    - **例子**：
      - *Tell me **what** you like.*（告诉我你喜欢什么。）
@@ -1738,22 +1624,17 @@ toc_depth: 4
 ### 形容词的用法与功能
 
 形容词可以在句中起到**修饰名词**、**限定名词的范围**、**描述名词的性质**或**表示名词的数量**等作用。形容词在句子中常充当以下几种成分：
-
 1. **定语（Attribute）**：直接修饰名词，位于名词之前或后置（用于某些特殊结构中）。
    - *A **beautiful** garden*（一个美丽的花园）
    - *The story **told** by him*（他讲的故事）
-
 2. **表语（Predicative）**：位于系动词（如 *be, seem, become*）之后，描述主语的状态或性质。
    - *She is **happy**.*（她很高兴。）
    - *The cake looks **delicious**.*（这蛋糕看起来很美味。）
-
 3. **宾语补足语（Object Complement）**：用于补充说明宾语的性质或状态。
    - *We found the room **empty**.*（我们发现房间是空的。）
-
 4. **主语补足语（Subject Complement）**：主动语态中的宾语补足语，可以转化为被动语态中的主语补足语。
    - *They caught the boy **stealing**.* （stealing 作为宾语补足语）
    - 转化为被动语态：*The boy was caught **stealing**.* （stealing转化为主语补足语）
-
 5. **形容词作状语（Adjective as Adverbial）**：某些形容词可以在句中充当状语，表示伴随状态或情感，通常描述主语在某种状态下做某事。形容词作状语常见于以下结构：
    1. **With + 宾语 + 形容词**
       - 例句：She left the room **with** her head **held** high. (她昂首离开了房间。)
@@ -1762,30 +1643,24 @@ toc_depth: 4
    3. **形容词作伴随状语**
       - 例句：He stood there **motionless**. (他静静地站在那里。)
       - 例句：She came home **tired**. (她疲惫地回到了家。)
-
 6. **形容词作动名词或不定式的补语**：形容词可以用在动名词或不定式后，表示动名词或不定式动作的性质或状态。
   - **例句**：
     - The problem is **difficult** to solve. (这个问题很难解决。) —— 形容词“difficult”修饰不定式“to solve”。
     - The movie was **exciting** to watch. (这部电影看起来很刺激。) —— 形容词“exciting”修饰动名词“watch”。
-
 7. **形容词作感叹句的核心**：形容词在感叹句中可以用来表示强烈的情感或态度，通常放在句首，表示“多么……”。
    - **例句**：
      - **How beautiful** the flowers are! (这些花多么美丽！)
      - **What an interesting** book! (多么有趣的一本书！)
-
 8. **形容词作修饰性补足语（Adjectival Complement）**：形容词用于补充说明名词的特征或状态，通常出现在某些固定句型中。
    - **例句**：
      - There are many problems **unresolved**. (有许多未解决的问题。)
      - We left the door **open**. (我们让门开着。)
 
 ### 形容词的常见句型结构
-
 1. **It + be + 形容词 + to do sth.**
    - 例句：It is **important** to stay healthy. (保持健康很重要。)
-   
 2. **It + be + 形容词 + that …**
    - 例句：It is **obvious** that he lied. (很明显他撒谎了。)
-   
 3. **主语 + be + 形容词 + for sb. to do sth.**
    - 例句：This book is **difficult** for me to read. (这本书对我来说很难读。)
 
@@ -1823,37 +1698,31 @@ toc_depth: 4
 
 #### **原级（Positive Degree）**
 表示事物的普通性质或特征，没有涉及比较。
-
 - **例子**：
   - *big*（大）
   - *beautiful*（美丽的）
   - *interesting*（有趣的）
-
 - **例句**：
   - *This house is **big**.*（这房子很大。）
 
 #### **比较级（Comparative Degree）**
 表示**两个**事物之间的**差异**，用于表示“更……的”意义。常在形容词后加 **-er** 或用 **more** 构成。
-
 - **规则变化**：
   - 单音节形容词：加 **-er**。
     - *tall → taller*（更高）
   - 多音节形容词：用 **more** 置于形容词前。
     - *beautiful → more beautiful*（更美丽）
-
 - **例句**：
   - *She is **taller** than me.*（她比我高。）
   - *This book is **more interesting** than the last one.*（这本书比上一本有趣。）
 
 #### **最高级（Superlative Degree）**
 表示**三个或更多**事物之间的差异，用来表示“最……的”意义。常在形容词后加 **-est** 或用 **most** 构成。
-
 - **规则变化**：
   - 单音节形容词：加 **-est**。
     - *tall → tallest*（最高的）
   - 多音节形容词：用 **most** 置于形容词前。
     - *beautiful → most beautiful*（最美丽的）
-
 - **例句**：
   - *She is the **tallest** in her class.*（她是班上最高的。）
   - *This is the **most beautiful** place I’ve ever seen.*（这是我见过的
@@ -1877,11 +1746,9 @@ toc_depth: 4
 
 
 #### **形容词作比较级和最高级的特殊用法**
-
 1. **形容词的比较级表示选择**
    - 例句：The **bigger**, the **better**. (越大越好。)
    - **结构**：The + 比较级，the + 比较级。表示随着一个特征的变化，另一个特征也随之变化。
-
 2. **形容词的最高级表示唯一**
    - 例句：This is the **best** way to solve the problem. (这是解决问题的最佳方法。)
    - **特殊用法**：最高级常与“the only, the very”等词搭配使用，表示某事物在某范围内是最……的。
@@ -1889,7 +1756,6 @@ toc_depth: 4
 ### 形容词的排序规则（Order of Adjectives）
 
 当多个形容词修饰同一个名词时，它们的排列顺序通常遵循以下规则：
-
 1. **限定词（Determiner）**：如 *a, an, the, some, many*
 2. **数量（Quantity）**：如 *one, two, several, a few*
 3. **观点/评价（Opinion）**：如 *beautiful, lovely, boring*
@@ -1900,7 +1766,6 @@ toc_depth: 4
 8. **产地/起源（Origin）**：如 *American, Chinese, French*
 9. **材质（Material）**：如 *wooden, cotton, metal*
 10. **用途（Purpose）**：如 *sleeping (as in sleeping bag)*
-
 - **例子**：
   - *A **beautiful big old white French wooden** table*（一张漂亮的、又大又旧的、白色的法国木制桌子）
 
@@ -1980,116 +1845,81 @@ toc_depth: 4
 在`正式或文学语境`中，“of + 名词” 结构更加常见，而在日常口语中，形容词更为常用。
 
 #### 常见用法与意义
-
 1. **表示所属关系**
    “of + 名词” 结构用于表示某物属于某人或某个群体的所有权、从属关系或身份背景。例如：
-
    - **The president of the company**（公司的总裁）
      - 这里的 “of the company” 描述了“总裁”与“公司”的从属关系，即该总裁属于这家公司。
-     
    - **The capital of France**（法国的首都）
      - “of France” 描述了“首都”归属于“法国”。
-     
    - **A friend of mine**（我的一个朋友）
      - “of mine” 表示所有权，意思是“我的朋友”。
-
 2. **表示部分或整体**
    “of + 名词” 用于表示某个事物的一部分或整体中的个体。例如：
-
    - **A slice of cake**（一片蛋糕）
      - “of cake” 表示整体，即该“片”来自“蛋糕”。
-     
    - **The handle of the door**（门把手）
      - “of the door” 指出“把手”是“门”的一部分。
-
 3. **表示特性或性质**
    当“of + 名词”用于形容人的特质或事物的特性时，常常相当于“具有某种特质”或“带有某种性质”。例如：
-
    - **A man of courage**（一个勇敢的人）
      - “of courage” 表示“这个人有勇气”。
-     
    - **A woman of intelligence**（一位聪明的女性）
      - “of intelligence” 描述该女性的特质是“聪明”。
-     
    - **A city of great importance**（一个重要的城市）
      - “of great importance” 用来描述这个城市“非常重要”。
-
 4. **表示来源或产地**
    “of + 名词” 也可以表示某物的产地或来源，尤其是用在商品、艺术品或文化的描述中。例如：
-
    - **A wine of Italy**（意大利的酒）
      - 表示这瓶酒的来源地是意大利。
-     
    - **A painting of the Renaissance**（文艺复兴时期的画作）
      - “of the Renaissance” 指出该画作的创作背景是“文艺复兴”时期。
-
 5. **表示度量或数量**
    “of + 名词” 常用于表达度量、数量、或单位，指出某个数值或数量的具体属性。例如：
-
    - **A kilogram of rice**（一公斤大米）
      - “of rice” 表示“公斤”所测量的对象是“大米”。
-     
    - **A cup of coffee**（一杯咖啡）
      - “of coffee” 指出“杯”中装的内容是“咖啡”。
-
 6. **表示种类或类别**
    当“of + 名词” 用于表示物品的类别或种类时，能够进一步限定名词的范围。例如：
-
    - **A species of bird**（一种鸟类）
      - 这里的 “of bird” 表示特定种类的“鸟”。
-     
    - **A type of music**（一种音乐类型）
      - “of music” 指明种类的范围是“音乐”。
-
 7. **表示身份、职位或称呼**
    当描述某人的职位或身份时，也可以使用“of + 名词”结构。例如：
-
    - **The King of Spain**（西班牙国王）
      - “of Spain” 表示身份所属的国家是“西班牙”。
-     
    - **The manager of the department**（部门经理）
      - “of the department” 表示职位的从属范围是“部门”。
-
 8. **表示抽象概念的修饰**
    在表达一些抽象的特质或概念时，“of + 名词” 能够使语义更加明确。例如：
-
    - **A sense of responsibility**（责任感）
      - “of responsibility” 强调该“感觉”是“责任”的感受。
-     
    - **An act of kindness**（一个善举）
      - “of kindness” 用来描述该行为是出于“善意”的举动。
 
 #### 常见结构总结
-
 1. **of importance**  
    - **This project is of great importance.** （这个项目非常重要。）
-
 2. **of value**  
    - **The discovery is of significant value.** （这一发现具有重大价值。）
-
 3. **of interest**  
    - **The topic is of interest to many researchers.**（这个话题对很多研究者都很有吸引力。）
-
 4. **of use**  
    - **This tool is of no use to us.** （这个工具对我们没有用。）
-
 5. **of benefit**  
    - **The new policy is of great benefit to the community.**（新政策对社区大有裨益。）
-
 6. **of influence**  
    - **He is a man of great influence.** （他是一个很有影响力的人。）
-
 7. **of necessity**  
    - **Water is of necessity to all living things.** （水是所有生物的必需品。）
 
 #### 与形容词的比较
 
 “of + 名词” 结构在语义上有时与形容词接近，但两者表达的重点有所不同：
-
 1. **形容词：直接修饰名词，表达特质或状态**  
    - **valuable advice**（有价值的建议）
    - **interesting topic**（有趣的话题）
-
 2. **of + 名词：强调某种性质、类别或抽象概念**  
    - **advice of value**（有实际价值的建议）
    - **a topic of great interest**（一个引起极大兴趣的话题）
@@ -2101,42 +1931,35 @@ toc_depth: 4
 ### **副词的分类**
 
 副词可以根据它们的功能或所修饰的内容分为以下几类：
-
 1. **方式副词（Adverbs of Manner）**
    - 表示动作或行为的方式，`回答“how”`（怎样做）。
    - 常见例子：**quickly, slowly, carefully, loudly, happily**。
    - 位置：通常放在动词后或句尾。
    - 例句：She speaks **fluently**. (她说得很流利。)
-
 2. **时间副词（Adverbs of Time）**
    - 表示动作发生的时间，`回答“when”`（何时）。
    - 常见例子：**yesterday, today, now, soon, later**。
    - 位置：通常放在句尾或句首。
    - 例句：I will call you **tomorrow**. (我明天给你打电话。)
-
 3. **地点副词（Adverbs of Place）**
    - 表示动作发生的地点或方向，`回答“where”`（在哪里）。
    - 常见例子：**here, there, everywhere, outside, nearby**。
    - 位置：通常放在动词或句尾。
    - 例句：Let's go **outside**. (我们到外面去吧。)
-
 4. **频率副词（Adverbs of Frequency）**
    - 表示动作发生的频率，`回答“how often”`（多频繁）。
    - 常见例子：**always, usually, often, sometimes, never**。
    - **频率副词的位置**：`通常位于助动词、情态动词（如 can、will）之后，实义动词之前。`
    - 例句：He **always** gets up early. (他总是早起。)
-
 5. **程度副词（Adverbs of Degree）**
    - 表示某个动作或状态的程度，`回答“how much”`（多……）。
    - 常见例子：**very, too, quite, enough, almost, extremely**。
    - 位置：通常放在被修饰的形容词或副词之前。
    - 例句：It is **very** cold today. (今天很冷。)
-
 6. **疑问副词（Interrogative Adverbs）**
    - 用于引导疑问句，[**不同于疑问代词**](#疑问代词interrogative-pronouns提出问题询问对象)。
    - 常见例子：**how, when, where, why**。
    - 例句：**How** did you do that? (你是怎么做到的？)
-
 7. **连接副词（Conjunctive Adverbs）**
    - 用于`连接句子或句子成分`。
    - 常见例子：**however, therefore, moreover, thus, meanwhile**。
@@ -2145,18 +1968,14 @@ toc_depth: 4
 ### **副词的位置**
 
 副词在句子中的位置会影响句子的意思。常见的位置有以下几种：
-
 1. **放在动词后面**
    - 例句：He runs **fast**. (他跑得很快。)
-
 2. **放在动词或助动词之前**
    - 例句：She **always** gets up early. (她总是早起。)
    - 例句：I have **never** seen such a beautiful sunset. (我从未见过如此美丽的日落。)
-
 3. **放在句首或句尾**
    - 例句：**Yesterday**, I met an old friend. (昨天，我遇见了一个老朋友。)
    - 例句：We will finish the project **soon**. (我们很快就会完成项目。)
-
 4. **放在形容词或副词之前**
    - 例句：The movie was **extremely** interesting. (这部电影非常有趣。)
    - 例句：She sang **very** well. (她唱得非常好。)
@@ -2164,17 +1983,14 @@ toc_depth: 4
 ### **副词的比较级和最高级**
 
 某些副词也有比较级和最高级的形式，特别是表示方式和程度的副词。规则变化和形容词相似。
-
 1. **规则副词的比较级和最高级**：
    - 在副词后加“**-er**”和“**-est**”：
      - fast → **faster**, **fastest**
      - hard → **harder**, **hardest**
-
 2. **多音节副词的比较级和最高级**：
    - 在副词前加“**more**”和“**most**”：
      - carefully → **more carefully**, **most carefully**
      - quietly → **more quietly**, **most quietly**
-
 3. **不规则副词的比较级和最高级**：
 
 | **原级** (Positive) | **比较级** (Comparative) | **最高级** (Superlative) |
@@ -2196,7 +2012,6 @@ toc_depth: 4
 
 ### **特殊用法**
 某些副词可以修饰整个句子，表示说话者的态度或观点。这类副词被称为**句子副词（Sentence Adverbs）**。
-
 - 例句：**Fortunately**, nobody was hurt. (幸运的是，没人受伤。)
 - 例句：**Honestly**, I didn’t expect this result. (老实说，我没想到这个结果。)
 
@@ -3025,7 +2840,6 @@ toc_depth: 4
   - **1/4**: one-fourth (或 a quarter)
   - **2/3**: two-thirds
   - **3/4**: three-fourths
-
 - 如果分子大于1，分母使用复数形式，如 **3/5**: three-fifths。
 
 特殊用法：
@@ -3041,7 +2855,6 @@ toc_depth: 4
 - 小数点后的每个数字单独读出：
   - **2.75**: two point seven five
   - **0.03**: zero point zero three
-
 - 特殊用法：在科学和数学领域，表示更大或更小的数字时，经常使用科学记数法（scientific notation），如：
   - **3.5 x 10^8**: three point five times ten to the power of eight
 
@@ -3060,16 +2873,13 @@ toc_depth: 4
 
 ### 表示时间的数字（Time）
 时间的表达分为**整点、半点、刻钟**和**时间段**。
-
 - 整点：用“o’clock”表示：
   - **5:00**: five o’clock
   - **12:00**: twelve o’clock (midnight or noon)
-
 - 半点和刻钟：
   - **2:30**: half past two
   - **7:15**: a quarter past seven
   - **8:45**: a quarter to nine
-
 - 其他时间表达：
   - **5:10**: ten past five
   - **6:50**: ten to seven
@@ -3077,14 +2887,12 @@ toc_depth: 4
 ### 电话号码和年份（Phone Numbers & Years）
 - **电话号码**：每一位数字分开读，有时会将“0”读作“oh”：
   - **555-1234**: five five five, one two three four
-
 - **年份**：通常将前两位和后两位分开读：
   - **1998**: nineteen ninety-eight
   - **2024**: twenty twenty-four
 
 ### 货币（Currency）
 货币表达通常有以下几种形式：
-
 1. **整数金额**：直接读出数字加上货币单位：
    - **$50**: fifty dollars
    - **€20**: twenty euros
@@ -3111,10 +2919,8 @@ toc_depth: 4
 ### 英语作为分析语的例子
 1. **词序的重要性**：英语中主语、动词和宾语的位置通常固定：
    - **“John loves Mary”**（约翰爱玛丽）与 **“Mary loves John”**（玛丽爱约翰）的意义不同。
-
 2. **功能词的使用**：
    - 如所有格的表示：**“the book of John”**（约翰的书）中的“of”表示所有格，而不是通过词形变化来表示（不同于一些屈折语中通过词尾的变化，如拉丁语中的所有格后缀）。
-
 3. **时态和语态的表达**：
    - 例如：**“He will go”** 中的“will”表示未来时，而不是通过动词本身的变化来表示。
 
@@ -3130,23 +2936,19 @@ toc_depth: 4
 
 ### 英语作为屈折语的例子
 尽管现代英语的屈折系统相比古英语大大简化，但仍然保留了以下几个重要的屈折变化：
-
 1. **动词屈折变化**：
    - **时态变化**：通过添加词缀来表示时态。
      - **“walk”** → **“walked”**（表示过去时）
      - **“play”** → **“playing”**（表示进行时）
    - **第三人称单数形式**：
      - **“She runs”** 中“runs”表示第三人称单数的屈折形式。
-  
 2. **名词复数形式**：
    - 许多名词通过在词尾添加 **-s / -es** 来表示复数：
      - **“cat”** → **“cats”**
      - **“box”** → **“boxes”**
-
 3. **形容词比较级和最高级**：
    - 形容词通过词形变化表示比较级和最高级：
      - **“big”** → **“bigger”** → **“biggest”**
-
 4. **名词的所有格形式**：
    - 英语中名词的所有格可以通过在词尾添加 **-’s** 来表示：
      - **“John’s car”**（约翰的车）
@@ -3161,7 +2963,6 @@ toc_depth: 4
 
 ### 结论
 综上所述，**现代英语**被归类为**分析语和屈折语**，是因为：
-
 1. **分析语特征**：主要依靠词序和功能词（如助动词、介词）来表达语法关系，而不是依靠复杂的词形变化。
 2. **屈折语特征**：虽然屈折特征已经大大简化，但仍然保留了部分词形变化（如动词时态、名词复数、形容词比较级等）。
 

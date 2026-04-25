@@ -5,21 +5,17 @@
 ## Wysiwyg Markdown Editor
 
 ### Hide markup
-
 1. Enable `M-x markdown-toggle-markup-hidding (C-c C-x RET)`
 
 ### Display inline math formula
 
 > Emacs package "math-preview" requires external nodejs program "math-preview"
-
 1. Install math-preview
 
 ```shell
 npm install -g git+https://gitlab.com/matsievskiysv/math-preview
 ```
-
 2. Upgrade Emacs by `M-x package-upgrade-all`
-
 3. Install math-preview plugin by `M-x package-install RET math-preview`
 
 ### Functions

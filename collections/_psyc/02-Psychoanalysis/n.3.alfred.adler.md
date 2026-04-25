@@ -66,7 +66,6 @@ But a further question is unavoidable. If the style of life is organized around 
 #### 1. Gemeinschaftsgefühl as the necessary criterion of mental health
 
 Adler’s most stringent claim is that psychological health is inseparable from social embeddedness. *Gemeinschaftsgefühl*—social interest or community feeling—is not a sentimental virtue; it is the functional capacity to coordinate one’s striving with the realities of cooperative life. In Adler’s logic, compensation can take two forms:
-
 * **Constructive compensation:** movement from minus to plus as growth of competence, resilience, and contribution.
 * **Defensive compensation:** movement from minus to “pseudo-plus” as protected status, privilege, or superiority over others—often achieved through avoidance, domination, or symptom-mediated exemption.
 
@@ -77,7 +76,6 @@ This yields a key Adlerian inference: **social interest is the logical outcome o
 #### 2. The three life tasks as reality-tests of the person’s logic
 
 Adler operationalizes mental health through the **three life tasks**—the primary domains in which a person’s style of life meets objective constraint:
-
 1. **Social relations (Soziale Beziehungen):** capacity for cooperation, reciprocity, and tolerance of difference.
 2. **Work (Arbeit):** capacity to sustain effort, accept evaluation, learn from error, and contribute.
 3. **Intimacy/Love (Liebe/Intimität):** capacity for mutuality, equality, responsibility, and non-instrumental attachment.
@@ -93,7 +91,6 @@ In Adler’s teleological framework, neurosis is not merely something that “ha
 #### 1. Structure of private logic
 
 Private logic typically exhibits:
-
 * **Absolutized goals:** e.g., “I must not fail,” “I must be exceptional,” “I must never be vulnerable.”
 * **Evasion of testing:** avoidance of situations where competence or mutuality would be evaluated (work, intimacy, cooperation).
 * **Protective self-idealization:** moral superiority, intellectualization, or victim-privilege that secures exemption from ordinary reciprocity.
@@ -174,7 +171,6 @@ On this reconstruction, social interest is not a moral appendage to a psychologi
 #### 1. 共同体感（Gemeinschaftsgefühl）作为心理健康的必要标准
 
 阿德勒最严格的主张是：心理健康与社会嵌入不可分。*Gemeinschaftsgefühl*（共同体感/社会兴趣）不是温情美德，而是把自身追求与合作生活现实相协调的能力。在阿德勒逻辑中，补偿有两类：
-
 * **建设性补偿**：从 minus 到 plus 的运动体现为能力、韧性与贡献的增长。
 * **防御性补偿**：从 minus 到“伪 plus”的运动体现为特权、优越地位或凌驾他人的比较性胜利，常通过回避、支配或症状性豁免实现。
 
@@ -185,7 +181,6 @@ On this reconstruction, social interest is not a moral appendage to a psychologi
 #### 2. 三大生活任务：生活逻辑的现实检验
 
 阿德勒以“三大生活任务”操作化心理健康，作为生活风格面对客观约束的主要场域：
-
 1. **社会关系（Soziale Beziehungen）**：合作、互惠、容纳差异的能力。
 2. **工作（Arbeit）**：持续努力、接受评价、从错误学习并做出贡献的能力。
 3. **亲密/爱（Liebe/Intimität）**：互惠、平等、责任与非工具化依恋的能力。
@@ -201,7 +196,6 @@ On this reconstruction, social interest is not a moral appendage to a psychologi
 #### 1. 私人逻辑的结构
 
 私人逻辑通常表现为：
-
 * **绝对化目标**：“我必须不失败”“我必须卓越”“我必须永不脆弱”。
 * **逃避检验**：回避会被评价的场域（工作、亲密、合作）。
 * **保护性自我理想化**：以道德高地、知识优越或受害特权获得豁免。
@@ -224,7 +218,6 @@ On this reconstruction, social interest is not a moral appendage to a psychologi
 
 
 ### Rationale：本译文如何满足你的核心要求
-
 * **目的论认识论**：明确对比因果—还原解释与阿德勒终极论方法，并用费兴格“仿佛哲学”解释虚构性终极论。
 * **运动机制**：从器官劣势→自卑感/自卑情结→补偿与“趋向优越”，强调“优越”是从 minus 到 plus 的功能性增长而非支配他人。
 * **整体论**：将*Lebensstil*作为统一图式，并以创造性自我说明遗传与环境的非机械综合。

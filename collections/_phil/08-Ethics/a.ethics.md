@@ -69,15 +69,12 @@ Diagram: three analytic layers that stabilize in modern philosophy
 
 ```text
 Ethics (broad) asks: what should be done, and why?
-
 1) Normative ethics:
    - What makes actions right/wrong, lives good/bad, traits virtuous/vicious?
-
 2) Metaethics:
    - What are moral claims (truth-apt or not)?
    - Are there moral facts? How can they be known?
    - How do moral judgments connect to motivation and reasons?
-
 3) Applied ethics:
    - How should we reason about concrete domains (war, medicine, animals, poverty, etc.)?
    - How do institutions embody or corrupt moral norms?
@@ -170,7 +167,6 @@ This diagram compresses complexity: in the historical record, these streams inte
 Ancient Western ethics emerges in Greek city-state culture where moral excellence is tied to education, character, citizenship, and the question of what sort of life is worth living. Socrates’ life as portrayed in Plato highlights ethics as rational interrogation of virtue and the soul, expressed in the claim that the examined life matters most. This orientation makes moral philosophy inseparable from moral psychology: to ask what virtue is is to ask what sort of knowledge, motivation, and self-governance makes a life good. citeturn16search14turn1search8turn16search11
 
 A canonical reconstruction of Socratic intellectualism can be formulated as an explanatory strategy rather than a simple syllogism:
-
 1. If virtue is knowledge of what is good, then the virtuous agent reliably chooses the good.  
 2. If wrongdoing results from ignorance (mistaking apparent good for real good), then genuine knowledge prevents wrongdoing.  
 3. Therefore, ethics becomes partly epistemology: improve life by improving cognition and self-understanding.
@@ -180,7 +176,6 @@ The point is not merely “people never act against their better judgment” (wh
 Plato develops this into a structured account of justice and the soul. In the Republic, the fundamental challenge is why one should be just if injustice looks instrumentally profitable. Socrates’ response ties justice to flourishing: justice makes the soul function well, and a well-functioning soul is constitutive of happiness (not merely a means to external rewards). Historically, this is crucial because it builds a template in which “moral” and “prudential” reasons are not sharply separated: to be just is, at bottom, to be well-ordered. citeturn13search10turn20search0turn8search0
 
 A simplified reconstruction of the Republic’s strategy (especially Books II–IV) looks like this:
-
 1. A thing’s virtue is what enables it to perform its function well.  
 2. The soul has a function (governing life through rational organization of desires and emotions).  
 3. Justice is the soul’s virtue: an internal harmony, not merely outward conformity.  
@@ -191,7 +186,6 @@ Even when one rejects Plato’s metaphysics or political proposals, this “inte
 Aristotle’s Nicomachean Ethics offers the most influential ancient “bottom-level logic” for virtue ethics. Aristotle argues that ethical inquiry is practical: its aim is not only to know but to live better. He begins by observing that action aims at some good, and that human life has a highest end (eudaimonia), while acknowledging that ethical generalizations hold only “for the most part” because life is variable. This methodological realism—ethics as reasoned but not mathematical—becomes a recurring point of contrast with modern ethical system-building. citeturn10search11turn16search4turn12search2
 
 Aristotle’s “function argument” (ergon) can be reconstructed as:
-
 1. For beings with a characteristic function, the good is performing that function well.  
 2. The distinctively human function involves rational activity.  
 3. Therefore, human flourishing is rational activity in accordance with virtue, over a complete life.
@@ -211,7 +205,6 @@ Late antiquity and medieval ethics are shaped by the intellectual project of int
 Aquinas synthesizes Aristotelian teleology with Christian doctrine and becomes decisive for the natural-law tradition. In Aquinas’s natural law, the first precept—“good is to be done and pursued, and evil avoided”—functions as a basic principle of practical reason from which more specific precepts are derived by reflecting on human inclinations and goods. This is historically important because it treats moral norms as intelligible reasons rooted in human nature, not merely as commands. The natural-law tradition then becomes a bridge to early modern moral and legal philosophy: it offers a template for grounding obligations in reason and human goods even as theological authority becomes contested. citeturn20search2turn1search3turn17search10turn15search11
 
 A “bottom-level” reconstruction of the natural-law form (highly simplified) is:
-
 1. Practical reason necessarily operates under the form “pursue goods, avoid harms.”  
 2. Human nature includes objective goods (life, knowledge, sociability, etc.) that practical reason can identify.  
 3. Therefore, moral norms can be derived as requirements of rational pursuit of genuine human goods.  
@@ -223,7 +216,6 @@ The early modern period is a transition zone where moral philosophy is pressured
 Hobbes transforms the contract tradition by beginning from a stark moral psychology and a political problem: how to avoid violent conflict. Hobbes’s “laws of nature” are rational requirements (e.g., seek peace) that, given vulnerability and competing desires, motivate the need for a sovereign authority created through covenant. The Hobbesian move is foundational for contractarian logic: moral and political norms are justified as what rational agents would agree to under certain conditions, often conditions of conflict or uncertainty. In later moral theory, this yields two durable ideas: moral requirements as constraints of rational cooperation, and the thought that legitimacy requires a standpoint of fair agreement. citeturn2search0turn20search12turn9search2turn2search14
 
 A basic reconstruction of Hobbes’s first law of nature and contract move:
-
 1. In conditions without common power, rational agents face insecurity and conflict.  
 2. Given the overriding interest in self-preservation, rational agents have reason to seek peace if others will too.  
 3. Peace requires enforceable covenants; enforcement requires a common power.  
@@ -242,7 +234,6 @@ Hume develops moral sentimentalism: reason alone does not generate moral distinc
 Kant, by contrast, grounds morality in a principle of rational autonomy: moral requirements are unconditional and apply to rational agents as such, not because of contingent desires. His Formula of Universal Law instructs agents to act only on maxims they can will as universal laws, and his broader framework treats persons as ends in themselves. Historically, Kant consolidates a “deontological” model where rightness and duty are not analysable as maximizing the good; rather, the moral law structures permissible maxims and generates duties (perfect and imperfect). citeturn12search1turn0search5turn13search2turn6search2
 
 A simplified formalization of the deontological structure (not a faithful rendering of Kant’s full argument, but a useful “logic skeleton”) is:
-
 - Let $$M$$ be a maxim (a subjective principle of action).  
 - Test: $$\text{Permissible}(M) \leftrightarrow \text{Universalizable}(M)$$.  
 - Duties emerge when universalization produces contradiction in conception (perfect duties) or contradiction in will (imperfect duties), on prominent interpretations. citeturn12search1turn13search20turn0search1
@@ -296,15 +287,10 @@ Another implication concerns the relation between normative ethics and metaethic
 Applied ethics now functions as a driver of theory change. Debates about animal status, public health, bioethics, or global justice force questions about aggregation, rights, partiality, and the scope of moral community. This explains why contemporary ethics often looks less like a single system and more like a toolkit: pluralist theories, mid-level principles, and domain-specific justificatory practices have proliferated. The historical pattern is not “decline of theory” but a repeated cycle: grand unifiers provoke counterexamples; counterexamples provoke refinements; refinements provoke new foundational questions. citeturn11search3turn7search22turn7search26turn4search2turn6search3
 
 Common mistakes, tacit knowledge, and easily confused concepts
-
 1. Confusing “ethics as flourishing” with “ethics as rules.” Ancient virtue ethics often treats right action as downstream from character and a conception of the good life; modern deontology often treats rightness as conceptually prior to goodness (constraints first). Mixing these without noticing leads to misreadings of Plato/Aristotle or of Kant. citeturn10search3turn10search11turn0search1turn0search5
-
 2. Treating “utilitarianism” as a single doctrine. Historically and conceptually, utilitarianism is a family within consequentialism (act vs rule, hedonistic vs preference vs objective-list accounts of welfare, institutional vs act-focused versions). Critiques often target one subtype while defenders shift to another. citeturn3search3turn0search10turn3search19
-
 3. Confusing metaethics with normative ethics. Saying “morality is subjective” can mean (a) anti-realism (no objective moral facts), (b) non-cognitivism (not truth-apt), or (c) relativism (truth relative to standards). These differ and have different implications for argument and disagreement. citeturn0search7turn5search13turn6search1
-
 4. Reading “social contract” and “contractualism” as the same. Contractarianism (often Hobbesian) can be grounded in mutual advantage; Scanlonian contractualism targets interpersonal justifiability and “what we owe to each other,” not the whole of morality, and is explicitly contrasted with utilitarian scope. citeturn2search0turn6search3turn2search14
-
 5. Misunderstanding care ethics as “mere emotion” or “mere partiality.” Care ethics is typically presented as a normative claim about the moral significance of relationships and dependency structures, not only a psychological report that people care; its challenge is to articulate principled forms of contextual judgment rather than rejecting normativity. citeturn7search4turn7search1turn7search8
 
 
@@ -515,7 +501,6 @@ Common mistakes, tacit knowledge, and easily confused concepts
 **定言命令（Kategorischer Imperativ）**
 
 道德法则的形式是一个定言命令（无条件的命令），而非假言命令（"如果你想要X，则做Y"）。康德给出了三个等价的表述：
-
 1. **普遍法则公式**："只按照你同时能够意愿它成为普遍法则的那个准则而行动。"（Act only according to that maxim whereby you can at the same time will that it should become a universal law.）
 2. **人性公式**："你的行动，要把人性——无论是你自己身上的还是他人身上的——始终同时当作目的，绝不仅仅当作手段。"（Act so that you treat humanity, whether in your own person or in that of another, always as an end and never as a means only.）
 3. **自律公式**：把自己视为通过意志立法的立法者，只遵从自己为所有理性存在者立法的法则。
@@ -549,7 +534,6 @@ Common mistakes, tacit knowledge, and easily confused concepts
 ### 7.3 功利主义的内在张力
 
 功利主义具有直觉上的强大吸引力——后果确实重要，不考虑后果的道德理论似乎是眼瞎的。但它也面临严重的反驳：
-
 - **正义问题**：为了多数人的利益而伤害无辜少数人（如器官摘取案例）是否可以被功利计算所辩护？
 - **权利问题**：权利能否被后果计算所压倒？
 - **测量问题**：不同人、不同类型的幸福如何比较？

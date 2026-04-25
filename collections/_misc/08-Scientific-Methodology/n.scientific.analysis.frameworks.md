@@ -47,7 +47,6 @@ A **non-MECE** example immediately illuminates the principle's value: categoriza
 MECE thinking is typically instantiated through **issue trees** (also called logic trees or problem trees). An issue tree decomposes a top-level problem statement into MECE sub-problems, each of which may itself be decomposed again, producing a hierarchical structure. The two main types of trees are WHY trees and HOW trees. A tree is built by asking questions. When doing root cause analysis, the questions are WHY questions, such as "Why won't my car start?" Once a root cause is found, attention shifts to HOW can it be resolved, with the questions becoming HOW questions, such as "How can I find my lost phone?"
 
 Five canonical issue frameworks—listed from tightest to loosest structural guarantee of MECEness—are commonly recognized:
-
 1. **Opposite words** ("too high or too low," "direct or indirect")—the most structurally airtight, as opposites are definitionally mutually exclusive and collectively exhaustive.
 2. **Mathematical identities** (Revenue = Price × Volume; Profit = Revenue − Cost)—airtight by algebraic construction.
 3. **Process flows** (sequential stages in a pipeline)—potentially airtight when stages are discretely defined.
@@ -73,7 +72,6 @@ MECE is deceptively difficult to achieve in practice. Several structural tension
 ### 2.6 MECE Beyond Consulting: Scientific Applications
 
 While MECE originated in management consulting, its logical structure is native to several scientific domains:
-
 - **Taxonomy and classification** (in biology, linguistics, library science): species classification aspires to MECEness within any given rank.
 - **Experimental design**: blocking variables in a factorial design should partition the experimental space MECE to prevent confounding.
 - **Software engineering**: module boundaries in well-designed systems aspire to MECE—each module handles one concern, and together they handle all concerns.
@@ -382,7 +380,6 @@ The history of science is, in no small part, a history of the progressive formal
 ---
 
 ## Key References
-
 - Minto, B. (2002). *The Pyramid Principle: Logic in Writing and Thinking*. Prentice Hall.
 - Richardson, W.S., Wilson, M.C., Nishikawa, J., & Hayward, R.S.A. (1995). The well-built clinical question: a key to evidence-based decisions. *ACP Journal Club*, 123, A12–A13.
 - Hill, A.B. (1965). The environment and disease: association or causation? *Proceedings of the Royal Society of Medicine*, 58(5), 295–300.

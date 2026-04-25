@@ -539,7 +539,6 @@ subclass: English
 
 
 ### Reference
-
 * Patrick Hanks 等：Oxford 系列姓氏辞典（英爱姓氏、美国姓氏），提供权威的历史证据链与多源条目处理方式。
 * Reaney & Wilson：English Surnames（经典英格兰姓氏语源学框架）。
 * Behind the Name（Surname 数据库）：便于快速核对常见姓氏的主流词源与拼写变体，但学术严谨度需以辞典类成果复核。

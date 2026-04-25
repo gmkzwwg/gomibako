@@ -24,7 +24,6 @@ The goal is not to become a theorist but to acquire **an X-ray machine** — the
 2. Feed the LLM two passages — one from Austen, one from Dostoevsky — and ask it to analyze the difference in "dialogism" using Bakhtin's framework.
 
 ### Module 2: Stylistics — Language as Material
-
 - Roman Jakobson, "Linguistics and Poetics" — the poetic function; why *how* something is said constitutes *what* is said.
 - Viktor Shklovsky, "Art as Device" — defamiliarization (остранение). The single most important concept for any avant-garde writer.
 - Leech & Short, *Style in Fiction* — systematic method for analyzing lexis, syntax, figures, and cohesion in prose.
@@ -112,7 +111,6 @@ Move beyond E.M. Forster's "flat vs. round." Think of characters as nodes in a s
 ### Module 6: The Sentence — Prose Style as Thought
 
 **The fundamental unit of literary fiction is the sentence.** This module is about developing conscious control over sentence-level craft.
-
 - Read: Stanley Fish, *How to Write a Sentence and How to Read One*
 - Read: Virginia Tufte, *Artful Sentences: Syntax as Style*
 - Study the **periodic sentence** (Ciceronian suspension, used by Henry James), the **cumulative sentence** (right-branching, used by Faulkner), the **paratactic sentence** (Hemingway, Carver, early Cormac McCarthy).
@@ -131,7 +129,6 @@ This is not about "improving your English." It is about developing a **literary 
 ### Module 7: The Translingual Tradition — Your Predecessors
 
 You are not the first to face this. Study writers who made a second language into a literary instrument:
-
 - **Joseph Conrad** (Polish → English): Read *Heart of Darkness* and *Lord Jim*. Notice how his English has a formal, slightly estranged quality — the prose of someone who sees the language from outside. Read Najder's biography for Conrad's own account of his linguistic struggle.
 - **Vladimir Nabokov** (Russian → English): Read *Lolita* and *Speak, Memory*. Nabokov's English is deliberately excessive, baroque, playful — a non-native speaker who outperforms native speakers at their own game. Study his use of wordplay, alliteration, and phonetic texture.
 - **Samuel Beckett** (English → French → English): Beckett wrote in French to escape the "style" of English, then translated himself back. Read *Molloy* in both languages. This is the most radical case of translingual writing as aesthetic strategy.
@@ -164,7 +161,6 @@ You are not the first to face this. Study writers who made a second language int
 ### Module 9: The Poetics of In-Betweenness
 
 **Turning your bilingualism from obstacle into method:**
-
 - **Code-switching as literary device**: Study how Junot Díaz uses untranslated Spanish in English prose — it creates an insider/outsider dynamic with the reader. Consider where and how untranslated Chinese could function in your English fiction.
 - **Syntax as cultural signature**: Chinese parataxis (并列) vs. English hypotaxis (从属). Chinese literary prose tends toward juxtaposition; English literary prose tends toward subordination. This difference can be a tool: deliberately using paratactic English can create an estrangement effect that is both formally interesting and culturally legible.
 - **The problem of "thinking in Chinese, writing in English"**: This is not a problem to be solved. It is a condition to be exploited. The slight delay, the faint ghost of another grammar beneath your sentences — this is what gives translingual writing its distinctive texture.
@@ -206,7 +202,6 @@ You are not the first to face this. Study writers who made a second language int
 - Yan Lianke (阎连科), *The Four Books* — mythorealism (神实主义); political trauma rendered through allegory and formal distortion.
 
 ### Module 11: 21st-Century New Forms
-
 - **Autofiction**: Karl Ove Knausgård, *My Struggle*; Rachel Cusk, *Outline* trilogy; Sheila Heti, *How Should a Person Be?* The collapse of fiction/autobiography boundaries.
 - **Hybrid texts**: Maggie Nelson, *The Argonauts*; Claudia Rankine, *Citizen*; Jenny Offill, *Dept. of Speculation*. Genre as fluid medium.
 - **Algorithmic and digital literature**: Electronic literature (explore the Electronic Literature Collection, eliterature.org). Consider: what does it mean to write literature in the age of LLMs? What new forms become possible when the machine can generate text? Your CS background makes you uniquely positioned here.
@@ -234,7 +229,6 @@ You are not the first to face this. Study writers who made a second language int
 ## PHASE V — Revision, Identity, Publication (Months 12–30, overlapping)
 
 ### Module 13: The Art of Revision
-
 - **First draft**: Write fast, write intuitively, do not self-censor. The first draft is for discovery.
 - **Structural revision (2nd draft)**: Map the narrative architecture. Use the LLM to diagram the plot, identify dead weight, stress-test causation. Ask: "Does every chapter earn its place?"
 - **Language revision (3rd draft)**: Read every sentence aloud. Kill clichés, cut adverbs, test every metaphor. Ask: "Is this sentence doing work that no other sentence in the piece does?"

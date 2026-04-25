@@ -13,7 +13,6 @@ show_date: true
 **`jekyll-tree-slides-v1.2.js`** 是一个专门用于 **Jekyll / Markdown 页面树状幻灯片展示** 的独立脚本。
 
 它只处理 **tree 模式**，即：
-
 - **`h1`** 表示 **大节**（major section）
 - **`h2`** 表示 **小节 / slide**
 
@@ -26,18 +25,15 @@ show_date: true
 ### 1. 树状 slide 解析
 
 脚本只识别如下结构：
-
 - **`h1 -> h2 -> 内容`**
 
 当前版本的规则是：
-
 - 只有当某个 **`h1`** 下方 **至少有一个 `h2`** 时，它才会被视为一个 **major section**。
 - 如果某个 **`h1`** 下没有 **`h2`**，那么这个 **`h1`** 及其对应内容 **不会参与 tree 模式**。
 - **`h1`** 与它的第一个 **`h2`** 之间的所有内容，都会被**直接剔除**。
 - 因此，一个大节的**第一页永远是第一个 `h2`**。
 
 这使得逻辑保持简单：
-
 - **大节**：由 `h1` 定义
 - **分页**：只由 `h2` 定义
 - **正文**：只取每个 `h2` 下方直到下一个 `h2` 或下一个 `h1` 之前的内容
@@ -47,19 +43,16 @@ show_date: true
 ### 2. 幻灯片显示
 
 页面加载后，脚本会：
-
 - 找到主内容块
 - 解析其中的 `h1 / h2`
 - 把页面改造成 slide 视图
 - **默认直接显示第一页**
 
 slide 视图由两部分组成：
-
 - **`jsd-heading`**：当前 `h2` 标题
 - **`jsd-slide-body`**：当前小节正文
 
 其中：
-
 - **`jsd-heading`** 使用独立的 **`div`**，不是 `strong`
 - 标题为 **加粗、居中显示**
 - 标题字号可通过配置倍率控制
@@ -69,13 +62,11 @@ slide 视图由两部分组成：
 ### 3. 右下角悬浮控件
 
 脚本会在页面 **右下角** 生成一个独立悬浮控件，包含：
-
 - 标题栏
 - 小地图（mini-map）
 - 4 个控制按钮
 
 特点：
-
 - **`position: fixed`** 固定在右下角
 - 可拖动
 - 不插入正文流中
@@ -86,18 +77,15 @@ slide 视图由两部分组成：
 ### 4. 小地图（mini-map）
 
 小地图用于显示树状结构：
-
 - **纵向**：表示大节之间的上下关系
 - **横向**：表示同一大节内部小节之间的左右关系
 
 显示规则：
-
 - 每个大节的**第一个小节**使用**空心大圆点**
 - 其他小节使用**实心小圆点**
 - 当前页会被高亮显示
 
 透明度规则：
-
 - 平时整体透明度：**`0.2`**
 - 鼠标悬停时整体透明度：**`0.7`**
 
@@ -106,7 +94,6 @@ slide 视图由两部分组成：
 ### 5. 控制按钮
 
 tree 模式下有 **4 个按钮**：
-
 - `<<`：上一大节
 - `<`：上一页
 - `>`：下一页
@@ -115,7 +102,6 @@ tree 模式下有 **4 个按钮**：
 按钮文字不是 emoji，而是普通字符。
 
 对应键盘绑定：
-
 - `ArrowUp`：上一大节
 - `ArrowLeft`：上一页
 - `ArrowRight`：下一页
@@ -126,7 +112,6 @@ tree 模式下有 **4 个按钮**：
 ### 6. 循环切换
 
 切换是**循环**的：
-
 - 最后一页的下一页会回到第一页
 - 第一页的上一页会回到最后一页
 - 上一大节 / 下一大节也会循环
@@ -136,7 +121,6 @@ tree 模式下有 **4 个按钮**：
 ### 7. 切换动画
 
 每次切换 slide 时，会在 3 种简单动画中随机选择一种：
-
 - 淡入
 - 向上浮入
 - 轻微缩放淡入
@@ -150,7 +134,6 @@ tree 模式下有 **4 个按钮**：
 脚本内置手机模式判断。
 
 当屏幕宽度小于等于 **`mobileBreakpoint`** 时：
-
 - **`jsd-heading`** 的 padding 自动变为 `0`
 - **`jsd-slide-body`** 的 padding 自动变为 `0`
 
@@ -392,7 +375,6 @@ Content C
 ```
 
 在这个结构中：
-
 - `# Part 1` 是一个大节
 - `Some intro text here will be discarded.` 会被剔除
 - `## Slide 1` 才是这个大节的第一页
@@ -402,7 +384,6 @@ Content C
 ## 不会显示的内容
 
 以下内容不会出现在 tree slide 中：
-
 - 页面最开头、但还没进入任何 `h1` 的内容
 - 某个 `h1` 下没有 `h2` 的整段内容
 - `h1` 与第一个 `h2` 之间的内容
@@ -426,7 +407,6 @@ Content C
 ### `window.JSDTreeSlides.getState()`
 
 获取当前状态，包括：
-
 - 当前大节索引
 - 当前页索引
 - 大节总数
@@ -439,7 +419,6 @@ Content C
 ---
 
 ## 限制说明
-
 1. 当前版本只支持 **tree 模式**。
 2. 只会处理**一个目标内容块**，即第一个匹配到的元素。
 3. slide 分页只识别 **`h1 / h2`**，不会识别 `h3` 作为独立分页层级。
@@ -454,7 +433,6 @@ Content C
 **`jekyll-tree-slides-v1.2.js`** is a standalone script for turning a **Jekyll / Markdown page** into a **tree-structured slide view**.
 
 It handles **tree mode only**, with the following meaning:
-
 - **`h1`** = **major section**
 - **`h2`** = **subsection / slide**
 
@@ -467,18 +445,15 @@ The script restructures the display of the selected content block into a slide-b
 ### 1. Tree slide parsing
 
 The script only recognizes this structure:
-
 - **`h1 -> h2 -> content`**
 
 The current rules are:
-
 - A **`h1`** is treated as a **major section** only if it contains **at least one `h2`**.
 - If a **`h1`** has no **`h2`**, that entire block is **ignored** in tree mode.
 - Any content between a **`h1`** and its first **`h2`** is **discarded**.
 - Therefore, the **first slide** of a major section is always its **first `h2`**.
 
 This keeps the logic simple:
-
 - **Major sections** are defined by `h1`
 - **Slides** are defined only by `h2`
 - **Body content** is the content under each `h2`, up to the next `h2` or the next `h1`
@@ -488,19 +463,16 @@ This keeps the logic simple:
 ### 2. Slide display
 
 After the page loads, the script will:
-
 - find the main content block
 - parse its `h1 / h2`
 - convert the page into a slide view
 - **show the first slide immediately**
 
 The slide view has two main parts:
-
 - **`jsd-heading`**: the current `h2` title
 - **`jsd-slide-body`**: the current slide body
 
 Details:
-
 - **`jsd-heading`** is a standalone **`div`**, not a `strong`
 - the title is **bold** and **centered**
 - the title size can be controlled by a scale factor
@@ -510,13 +482,11 @@ Details:
 ### 3. Floating widget in the bottom-right corner
 
 The script creates an independent floating widget in the **bottom-right corner** of the page. It contains:
-
 - a header bar
 - a mini-map
 - 4 control buttons
 
 Characteristics:
-
 - fixed with **`position: fixed`**
 - draggable
 - not inserted into the article flow
@@ -527,18 +497,15 @@ Characteristics:
 ### 4. Mini-map
 
 The mini-map shows the tree structure:
-
 - **vertical direction** = relation among major sections
 - **horizontal direction** = relation among slides inside the same major section
 
 Display rules:
-
 - the **first slide** of a major section is shown as a **large hollow dot**
 - the other slides are shown as **small solid dots**
 - the current slide is highlighted
 
 Opacity rules:
-
 - idle opacity: **`0.2`**
 - hover opacity: **`0.7`**
 
@@ -547,7 +514,6 @@ Opacity rules:
 ### 5. Control buttons
 
 In tree mode there are **4 buttons**:
-
 - `<<` = previous major section
 - `<` = previous slide
 - `>` = next slide
@@ -556,7 +522,6 @@ In tree mode there are **4 buttons**:
 They use plain text characters, not emoji.
 
 Keyboard bindings:
-
 - `ArrowUp` = previous major section
 - `ArrowLeft` = previous slide
 - `ArrowRight` = next slide
@@ -567,7 +532,6 @@ Keyboard bindings:
 ### 6. Loop navigation
 
 Navigation is **cyclic**:
-
 - advancing past the last slide returns to the first slide
 - moving backward from the first slide returns to the last slide
 - previous / next major section also loop
@@ -577,7 +541,6 @@ Navigation is **cyclic**:
 ### 7. Transition animations
 
 Each slide switch randomly selects one of 3 simple animations:
-
 - fade in
 - upward fade in
 - slight zoom fade in
@@ -591,7 +554,6 @@ The animation duration is configurable.
 The script includes a mobile mode rule.
 
 When the screen width is less than or equal to **`mobileBreakpoint`**:
-
 - the padding of **`jsd-heading`** becomes `0`
 - the padding of **`jsd-slide-body`** becomes `0`
 
@@ -833,7 +795,6 @@ Content C
 ```
 
 In this structure:
-
 - `# Part 1` is a major section
 - `Some intro text here will be discarded.` is removed
 - `## Slide 1` is the true first slide of that major section
@@ -843,7 +804,6 @@ In this structure:
 ## Content that will not be shown
 
 The following content will not appear in tree slide mode:
-
 - content before the first valid `h1`
 - an entire `h1` block that has no `h2`
 - content between a `h1` and its first `h2`
@@ -867,7 +827,6 @@ Destroys the slide mode and restores the original DOM.
 ### `window.JSDTreeSlides.getState()`
 
 Returns the current state, including:
-
 - current major index
 - current slide index
 - total number of major sections
@@ -880,7 +839,6 @@ Returns the current configuration.
 ---
 
 ## Limitations
-
 1. The current version supports **tree mode only**.
 2. It processes only **one target content block**, namely the first matched element.
 3. Slide pagination recognizes only **`h1 / h2`**; it does not treat `h3` as another paging level.
@@ -897,7 +855,6 @@ Returns the current configuration.
 这个脚本只负责 **linear 系列模式**，不包含 tree 模式。
 
 它的设计目标是：
-
 - **尽量保留原站样式**，只控制内容组织、显示/隐藏、标题显示和悬浮控件。
 - **引入即生效**。
 - 可通过页面中的 `updateLinearConfig()` 覆盖默认配置。
@@ -908,7 +865,6 @@ Returns the current configuration.
 ## 2. 已实现的功能
 
 ### 2.1 基础功能
-
 - 自动寻找页面中的**主内容容器**。
 - 将容器中的内容解析为一组**线性 slide**。
 - 打开页面后**直接显示第一页**。
@@ -925,7 +881,6 @@ Returns the current configuration.
 ### 2.2 控件相关功能
 
 控件系统内置 6 个按钮位：
-
 1. `menu`：菜单 / 选页
 2. `first`：第一页
 3. `prev`：上一页
@@ -934,12 +889,10 @@ Returns the current configuration.
 6. `autoplay`：自动播放
 
 这些按钮都可以通过 `config.controls` 控制：
-
 - 是否显示：`show`
 - 显示文字：`label`
 
 默认字符为：
-
 - `menu`: `≣`
 - `first`: `«`
 - `prev`: `‹`
@@ -948,13 +901,11 @@ Returns the current configuration.
 - `autoplay`: `▸`
 
 ### 2.3 自动播放
-
 - 点击自动播放按钮后，每隔 `n` 秒跳到下一页。
 - 自动循环播放。
 - 间隔由 `autoplayInterval` 指定，单位为秒。
 
 ### 2.4 菜单功能
-
 - 菜单按钮可展开**标题菜单**。
 - 菜单项默认按 slide 顺序列出。
 - 点击菜单项可直接跳转到对应 slide。
@@ -964,7 +915,6 @@ Returns the current configuration.
   - `::-webkit-scrollbar`
 
 ### 2.5 透明度与悬浮
-
 - widget 在非 hover 状态下默认透明度为 **`0.4`**。
 - hover 后默认透明度为 **`0.7`**。
 - 二者都可通过配置修改：
@@ -972,7 +922,6 @@ Returns the current configuration.
   - `opacityHover`
 
 ### 2.6 手机兼容
-
 - 通过 `mobileBreakpoint` 判断是否进入手机模式。
 - 手机模式下：
   - `headingPadding` 自动视为 `0`
@@ -982,7 +931,6 @@ Returns the current configuration.
 ### 2.7 键盘支持
 
 默认支持：
-
 - `ArrowLeft`：上一页
 - `ArrowRight`：下一页
 - `Home`：第一页
@@ -1002,12 +950,10 @@ Returns the current configuration.
 标准线性模式。
 
 默认按钮：
-
 - `prev`
 - `next`
 
 即默认显示：
-
 - `‹`
 - `›`
 
@@ -1016,7 +962,6 @@ Returns the current configuration.
 简化线性模式。
 
 当前版本中，`simple` 的默认控件布局与 `linear` 一样：
-
 - `prev`
 - `next`
 
@@ -1027,15 +972,12 @@ Returns the current configuration.
 语言切换模式。
 
 默认按钮：
-
 - `menu`
 
 菜单按钮默认显示文字：
-
 - `Language`
 
 此模式下：
-
 - 每个**直接子级 `h1`** 被视为一个语言块。
 - `h1` 文本作为菜单标题。
 - 每个语言块中的**第一个 `h2`~`h6`** 会被取出作为 `jsd-heading`。
@@ -1046,17 +988,14 @@ Returns the current configuration.
 注释模式。
 
 默认按钮：
-
 - `first`
 - `next`
 
 默认文字：
-
 - `Original`
 - `Annotation`
 
 注意：
-
 - `annotation` 当前是一个**控件预设模式**。
 - 它本身不引入单独的解析器。
 - slide 的解析逻辑仍然来自普通 linear 解析。
@@ -1071,12 +1010,10 @@ Returns the current configuration.
 脚本会优先寻找目标容器**直接子级标题**中的最外层标题级别。
 
 例如：
-
 - 如果直接子级里有 `h2`，没有 `h1`，那么最外层标题级别就是 `h2`
 - 如果直接子级里有 `h3`，没有 `h1/h2`，那么最外层标题级别就是 `h3`
 
 随后：
-
 - 每遇到一个该级别标题，就开始一个新的 slide
 - 该标题文字会作为：
   - `menuTitle`
@@ -1084,12 +1021,10 @@ Returns the current configuration.
 - 直到下一个同级标题出现之前的内容，都属于当前 slide
 
 如果目标容器里完全没有标题：
-
 - 整个容器内容会被视为一个 slide
 - `jsd-heading` 为空
 
 ### 4.2 language 的解析规则
-
 - 只识别目标容器的**直接子级 `h1`**
 - 每个 `h1` 开始一个语言 slide
 - `h1` 文字用作菜单标题
@@ -1200,7 +1135,6 @@ updateLinearConfig({
 #### `mode`
 
 可选值：
-
 - `linear`
 - `simple`
 - `language`
@@ -1213,7 +1147,6 @@ updateLinearConfig({
 #### `widgetPosition`
 
 控制右下角悬浮控件的位置：
-
 - `right`
 - `bottom`
 
@@ -1260,7 +1193,6 @@ updateLinearConfig({
 #### `headingPadding`
 
 标题区域 padding：
-
 - `top`
 - `right`
 - `bottom`
@@ -1269,7 +1201,6 @@ updateLinearConfig({
 #### `bodyPadding`
 
 正文区域 padding：
-
 - `top`
 - `right`
 - `bottom`
@@ -1292,7 +1223,6 @@ updateLinearConfig({
 控制六个按钮的显示与文字。
 
 字段：
-
 - `menu`
 - `first`
 - `prev`
@@ -1309,7 +1239,6 @@ updateLinearConfig({
 #### `labels`
 
 模式预设中使用的文字：
-
 - `languageMenu`
 - `annotationOriginal`
 - `annotationNext`
@@ -1321,7 +1250,6 @@ updateLinearConfig({
 脚本内部会先根据 `mode` 应用一层默认控件预设，然后再把你传入的 `controls` 合并进去。
 
 这意味着：
-
 - 你可以先用 `mode` 得到一个大体布局
 - 再用 `controls` 精细覆盖
 
@@ -1446,7 +1374,6 @@ updateLinearConfig({
 ### `window.JSDLinearSlides.getState()`
 
 返回当前运行状态，包括：
-
 - `mode`
 - `currentIndex`
 - `totalSlides`
@@ -1478,7 +1405,6 @@ updateLinearConfig({
 ### 10.2 annotation 是控件预设，不是专用解析器
 
 当前 `annotation` 更准确地说是：
-
 - 一个按钮布局预设
 - 一个默认文案预设
 
@@ -1492,7 +1418,6 @@ updateLinearConfig({
 ### 10.4 颜色与背景尽量继承原站
 
 脚本没有强行重写页面主色、背景色，只处理：
-
 - 布局容器
 - 标题显示
 - 悬浮控件
@@ -1563,7 +1488,6 @@ It transforms the main content area into a **linear slide system** by restructur
 This script is dedicated to the **linear family of modes** and does not include tree mode.
 
 Design goals:
-
 - **Preserve the original site style as much as possible** and only control content grouping, visibility, heading rendering, and the floating widget.
 - **Work immediately after inclusion**.
 - Allow runtime customization through `updateLinearConfig()`.
@@ -1574,7 +1498,6 @@ Design goals:
 ## 2. Implemented Features
 
 ### 2.1 Core features
-
 - Automatically locate the **main content container**.
 - Parse the container into a sequence of **linear slides**.
 - **Open on the first slide** by default.
@@ -1591,7 +1514,6 @@ Design goals:
 ### 2.2 Control system
 
 The widget has six built-in control slots:
-
 1. `menu`: menu / jump list
 2. `first`: first slide
 3. `prev`: previous slide
@@ -1600,12 +1522,10 @@ The widget has six built-in control slots:
 6. `autoplay`: autoplay toggle
 
 Each control can be configured through `config.controls`:
-
 - visibility: `show`
 - displayed text: `label`
 
 Default labels:
-
 - `menu`: `≣`
 - `first`: `«`
 - `prev`: `‹`
@@ -1614,13 +1534,11 @@ Default labels:
 - `autoplay`: `▸`
 
 ### 2.3 Autoplay
-
 - Clicking the autoplay button advances to the next slide every `n` seconds.
 - Playback loops automatically.
 - The interval is controlled by `autoplayInterval` in seconds.
 
 ### 2.4 Menu
-
 - The menu button opens a **title list**.
 - Menu items are listed in slide order.
 - Clicking a menu item jumps directly to the corresponding slide.
@@ -1630,7 +1548,6 @@ Default labels:
   - `::-webkit-scrollbar`
 
 ### 2.5 Opacity and hover behavior
-
 - Default widget opacity in non-hover state: **`0.4`**
 - Default widget opacity on hover: **`0.7`**
 - Both values are configurable through:
@@ -1638,7 +1555,6 @@ Default labels:
   - `opacityHover`
 
 ### 2.6 Mobile compatibility
-
 - Mobile mode is determined by `mobileBreakpoint`.
 - In mobile mode:
   - `headingPadding` is forced to `0`
@@ -1648,7 +1564,6 @@ Default labels:
 ### 2.7 Keyboard support
 
 Built-in keyboard shortcuts:
-
 - `ArrowLeft`: previous slide
 - `ArrowRight`: next slide
 - `Home`: first slide
@@ -1668,12 +1583,10 @@ The script derives several variants from a single implementation via `mode`.
 Standard linear mode.
 
 Default visible controls:
-
 - `prev`
 - `next`
 
 Default labels:
-
 - `‹`
 - `›`
 
@@ -1682,7 +1595,6 @@ Default labels:
 Simplified linear mode.
 
 In the current version, the default control layout is the same as `linear`:
-
 - `prev`
 - `next`
 
@@ -1693,15 +1605,12 @@ Its primary value is semantic clarity: it explicitly states that the page should
 Language-switching mode.
 
 Default visible control:
-
 - `menu`
 
 Default menu button text:
-
 - `Language`
 
 Behavior in this mode:
-
 - Each **direct child `h1`** is treated as one language block.
 - The `h1` text becomes the menu title.
 - The **first `h2`~`h6`** inside that block becomes the `jsd-heading`.
@@ -1712,17 +1621,14 @@ Behavior in this mode:
 Annotation mode.
 
 Default visible controls:
-
 - `first`
 - `next`
 
 Default labels:
-
 - `Original`
 - `Annotation`
 
 Important note:
-
 - `annotation` is currently a **control preset mode**.
 - It does not introduce a dedicated parser.
 - Slide parsing still follows the normal linear parser.
@@ -1737,12 +1643,10 @@ Important note:
 The script first looks for the **outermost heading level among direct child headings** of the target container.
 
 Examples:
-
 - If the direct children contain `h2` but no `h1`, then `h2` becomes the slide boundary level.
 - If the direct children contain `h3` but no `h1` or `h2`, then `h3` becomes the slide boundary level.
 
 Then:
-
 - Every heading at that level starts a new slide.
 - Its text is used as:
   - `menuTitle`
@@ -1750,12 +1654,10 @@ Then:
 - All content until the next heading of the same level belongs to that slide.
 
 If the target container has no headings at all:
-
 - The entire container becomes a single slide.
 - `jsd-heading` remains empty.
 
 ### 4.2 Parsing rules for `language`
-
 - Only **direct child `h1`** nodes are recognized.
 - Each `h1` starts a language slide.
 - The `h1` text is used as the menu title.
@@ -1866,7 +1768,6 @@ updateLinearConfig({
 #### `mode`
 
 Supported values:
-
 - `linear`
 - `simple`
 - `language`
@@ -1879,7 +1780,6 @@ Selectors used to locate the main content container. Only the **first matched el
 #### `widgetPosition`
 
 Controls the floating widget position:
-
 - `right`
 - `bottom`
 
@@ -1926,7 +1826,6 @@ Default: `1.8`
 #### `headingPadding`
 
 Padding of the heading area:
-
 - `top`
 - `right`
 - `bottom`
@@ -1935,7 +1834,6 @@ Padding of the heading area:
 #### `bodyPadding`
 
 Padding of the body area:
-
 - `top`
 - `right`
 - `bottom`
@@ -1958,7 +1856,6 @@ Maximum menu height in pixels.
 Controls visibility and labels for all six control slots.
 
 Fields:
-
 - `menu`
 - `first`
 - `prev`
@@ -1975,7 +1872,6 @@ Each field uses this shape:
 #### `labels`
 
 Preset labels used by modes:
-
 - `languageMenu`
 - `annotationOriginal`
 - `annotationNext`
@@ -1987,7 +1883,6 @@ Preset labels used by modes:
 The script first applies a mode preset, then merges your custom `controls` overrides on top of it.
 
 This means you can:
-
 - start with a preset layout via `mode`
 - then refine the exact button layout via `controls`
 
@@ -2112,7 +2007,6 @@ Destroy the slide system and restore the original DOM.
 ### `window.JSDLinearSlides.getState()`
 
 Return the current runtime state, including:
-
 - `mode`
 - `currentIndex`
 - `totalSlides`
@@ -2144,7 +2038,6 @@ then this `h2` will not be treated as a top-level slide boundary by the current 
 ### 10.2 `annotation` is a control preset, not a dedicated parser
 
 At present, `annotation` is more accurately described as:
-
 - a button layout preset
 - a default label preset
 
@@ -2158,7 +2051,6 @@ If language titles are not direct child `h1` elements, the language grouping log
 ### 10.4 Colors and backgrounds are inherited when possible
 
 The script does not aggressively override the main theme colors or page background. It mainly manages:
-
 - layout containers
 - heading rendering
 - floating controls

@@ -9,7 +9,6 @@ subclass: Linux
 $mod is Alt in default, and Super is a better alternatives.
 
 **General**
- 
 * $mod+<Enter>: open a terminal
 * $mod+d: open dmenu (text based program launcher) to exec apps
 * $mod+shift+e: exit i3
@@ -34,12 +33,10 @@ Direction Keys := {\<up\>, \<left\>, \<down\>, \<right\>, i, j, k, l}. IJKL work
 * \<Direction Keys\>: widen or raise current window.
 
 **Workspaces**
-
 * $mod+\<num\>: switch to workspace \<num\>.
 * $mod+shift+\<num\>: move window to workspace \<num\>.
 
 **Floating**
-
 * $mod+shift+space: toggle floating
 * $mod+mouse 1: drag floating window
 

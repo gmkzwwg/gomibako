@@ -3,14 +3,12 @@ title: The Little Schemer
 categories: Notes
 subclass: Lisp
 ---
-
 1. The five rules of Scheme
   1. The primitive car is defined only for non-empty lists.
   2. The primitive cdr is defined only for non-empty lists.The cdr of any non-empty list is always another list.
   3. The primitive cons takes two arguments. The second argument to cons must be a list. The result is a list.
   4. The primitive null? is defined ONLY FOR LISTS.
   5. The primitive eq? takes two arguments.Each must be a non-numeric atom.
-
 2. The ten commandments
   1. Recurring
     * When recurring on a list of atoms, lat, ask two questions about it: (null? lat) and else.

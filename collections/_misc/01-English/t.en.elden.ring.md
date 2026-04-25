@@ -13,7 +13,6 @@ In our home, across the fog, the Lands Between.
 ……落叶捎来讯息：
 在雾的彼端，我们的故乡“交界地”，
 那伟大的艾尔登法环已经破碎──
-  
   - shatter / ˈʃætə(r) / v.（使）破碎，碎裂；破坏，摧毁（抽象物）；使极为惊愕难过，给予极大打击 n.碎片；受到极大打击的状态
   - `Lands Between “交界地”`
 
@@ -22,7 +21,6 @@ and in the Night of the Black Knives,
 Godwyn the Golden was first to perish.
 
 “永恒女王”玛莉卡销声匿迹，在黑刀阴谋之夜，“黄金”葛德文最先失去性命。
-
   - `Queen Marika the Eternal “永恒女王”玛莉卡`
   - `Night of the Black Knives 黑刀阴谋之夜`
   - `Godwyn the Golden “黄金”葛德文`
@@ -35,7 +33,6 @@ The mad taint of their newfound strength triggered the Shattering.
 
 玛莉卡之子──诸位半神拿到艾尔登法环的碎片，
 却因为那股力量堕入歧途、陷入疯狂、引发碎片战争……
-
   - offspring n.（人的）后代，子女；（动物的）幼崽，崽兽；结果，产物
   - demigod n.受崇拜的人，英雄人物；半神半人；小神（demi- 表示“此等”；表示“半”）
   - taint v.污染；玷污；使腐坏 n.腐坏；污染；污点；感染；难闻的气味
@@ -54,7 +51,6 @@ The call of long-lost grace speaks to us all.
 噢，所以啊，褪色者啊──
 依旧无法永眠的死者啊。
 那许久以前我们失去的赐福，正在出声呼唤。
-
   - ye pron.你们，汝等 art. the的古式
   - `Tarnished 褪色者`
     - tarnish v.使失去光泽，使变暗淡；玷污 n.（金属表面的）暗锈；颜色晦暗，无光泽；污点
@@ -71,7 +67,6 @@ And Sir Gideon Ofnir, the All-knowing.
 “死眠少女”菲雅、
 受尽唾弃的食粪者、
 “百智爵士”基甸·奥夫尼尔。
-
   - `Hoarah Loux, chieftain of the badlands “蛮荒地王者”荷莱·露`
     - chieftain n.酋长；首领；
   - `The ever-brilliant Goldmask 光耀金面具`
@@ -95,7 +90,6 @@ And become the Elden Lord.
 朝雾的彼端前进，抵达交界地，
 觐见艾尔登法环──
 当上艾尔登之王吧。
-
   - renown / rɪˈnaʊn / n.名誉，声望 v.使有声望
 
 ### 遇死亡的指引巫女，获得 Tarnished's Wizened Finger 褪色者老指
@@ -122,7 +116,6 @@ It is a relic of those who came before, left to help those who would come after.
 
 细瘦如骨的尸蜡化手指，
 是意图帮助后进的前人所留下的物品。
-
   - corpse / kɔːps / n.尸体 v.<英，非正式>使戏剧演员的演出僵住
   - wax 
     - n.蜡，蜂蜡；耳垢； <英，非正式，旧>一阵愤怒；<非正式>唱片；类似蜡的黏性物质（尤指液体或碳氢化合物）
@@ -134,7 +127,6 @@ It is a relic of those who came before, left to help those who would come after.
 ## 入 Chapel of Anticipation 侯王礼拜堂
 
 ### 被 Grafted Scion “接肢”贵族后裔 剧情杀
-
   - graft v.嫁接；移植；辛苦地工作；贪污；植根；引入；（尤指不恰当地）将（某物）永久地插入别的物体
   - scion / ˈsaɪən / n.[农学] 接穗；子孙
 
@@ -151,12 +143,10 @@ One of his/her kind is sure to seek the Elden Ring.
 还有救喔。终于找到了。
 这个人肯定也会追求艾尔登法环……
 即使这么做会背离黄金律法。
-
   - `Golden Order 黄金律法`
   - be sure to 务必，一定要：表示强调或建议某事务必要做，不能忽视。
 
 ## 入 Stranded Graveyard 漂流墓地
-
   - stranded adj.搁浅的；陷于困境的；有……股的（常用来构成复合词） v.搁浅（strand 的过去式和过去分词）
     - strand n.（绳、线、毛发等的）股，缕；串；（故事、观点、计划等的）部分；（海洋、湖或河的）岸，滨 v.使滞留，使困在（某处）；使（船，船员，海洋生物）搁浅；使（跑垒员）残留垒上
 
@@ -171,7 +161,6 @@ Recall the arts of war. And your warrior's blood.
 …………褪色者啊，跳下去吧。
 去学习，去回想吧──
 学习交战的方法，想起身为战士的事实。
-
   - plunge 
     - v.（使）突然向前倒下（跌落）；猛推，猛插；投入（液体中以使淹没）；（价值）猛跌；（剧烈）颠簸，震荡；（马）猛地用后腿直立；陡然向下倾斜；骤然陷入；（鲁莽地）开始；（使）投身，（使）突然开始从事；种下（植物）
     - n.（突然的）坠落；跳水，快速游泳；（价值或数量的）骤然下跌；突然陷入
@@ -181,7 +170,6 @@ Recall the arts of war. And your warrior's blood.
 **获得 Finger Severer、Tarnished Furled Finger**
 
 ## 入 Limgrave 宁姆格福
-
   - `Limgrave 宁姆格福`, *Lim 代表 Limb 四肢，暗示此处的领主葛瑞克使用人类的肢体拼接自己的身躯*
     - Limb n.肢；大树枝；（某物的）突出部，延伸部分；十字形四个分支中的一个；v.切断……的手足；从……上截下树枝
 
@@ -202,7 +190,6 @@ Feel free to go off and die in a ditch somewhere.
 但是呢，着实可悲可叹……
 你没有女巫陪伴，无法获得卢恩的力量，只是一个脱队的瑕疵品。
 死得默默无名的下场等着你啊。
-
   - plumb out of 完全地，彻底地
     - plumb vt.装水管；使垂直；探测，探索 vi.当管子工 n.垂直；铅锤；（Plumb）（英）普拉姆（人名） adv.恰恰，正；垂直地；彻底地 adj.垂直的
   - bit player 小角色：在戏剧、电影或电视剧中扮演一个不太重要的角色的演员。
@@ -230,7 +217,6 @@ maidenless as you are, to the perfect place to die in obscurity.
 那正是所谓“赐福的指引”，褪色者该行进的道路。
 ……是啊，没有错，指引会告诉你。
 没有女巫的你，最后死得默默无名的地方。
-  
   - can't seem to 似乎无法：表示某人尝试做某事，但似乎无法成功或达成目标。
   - wrap your head around 理解，领会：努力理解或接受某个概念或想法。
   - predicament / prɪˈdɪkəmənt / n.窘况，困境；状态
@@ -253,7 +239,6 @@ you may receive a summons. To the famed Roundtable Hold…
 前往断崖上的那座史东薇尔城。
 ……要是你有个万分之一的可能，抵达那座城，
 说不定连你也能受邀到圆桌厅堂……
-
   - `Castle Stormveil 史东薇尔`
   - cliff n.悬崖，峭壁
   - by chance 碰巧地、偶然地
@@ -274,7 +259,6 @@ you may receive a summons. To the famed Roundtable Hold…
 唉，我很同情你。没有女巫的陪伴，看了真让人于心不忍。
 ……噢，不过啊。 要是你有个万分之一的可能，抵达那座城，
 说不定连你也能受邀到圆桌厅堂……
-
   - decrepit / dɪˈkrepɪt / adj.衰老的；破旧的
   - `Godrick the Grafted “接肢”葛瑞克`
     - graft / ɡrɑːft / n.嫁接；移植；辛苦的工作；贪污 v.嫁接；移植；辛苦地工作；贪污；植根；引入；（尤指不恰当地）将（某物）永久地插入别的物体
@@ -346,7 +330,6 @@ I offer you an accord.
 穿越雾前来的人啊。
 我的名字是梅琳娜……
 想要和你谈个条件。
-
   - accord n.协议，条约；符合，一致 v.使受到，给予（某种待遇）；（与……）一致，符合
 
 Have you heard of the Finger Maidens?
@@ -366,7 +349,6 @@ To the foot of the Erdtree.
 只要你渴求艾尔登法环， 这件事肯定对你有帮助。
 ……所以，希望你能帮忙──
 带我到黄金树的树脚。
-
   - `Finger Maidens 指头女巫`
   - `Two Fingers 双指`
 
@@ -395,7 +377,6 @@ I bequeath to you this ring.
 想让卢恩化为自己的力量时， 请在赐福所在处呼唤我。
 ……对了，还有一件事。
 这枚戒指交给你。
-
   - bequeath / bɪˈkwiːð / vt.遗赠；把……遗赠给；把……传下去
 
 **获得 Spectral Steed Whistle**
@@ -409,7 +390,6 @@ Treat him with respect.
 那能够呼唤名为托雷特的骏马灵魂。
 ……托雷特选上了你，
 希望你好好待它。
-
   - traverse / trəˈvɜːs /
     - v.横穿，穿过；横越岩石面的攀爬；（滑雪时）横线下（坡）；<喻>整体考虑（问题），全面讨论；来回移动，斜向移动；转动（大炮等带轴设备）；<法律>否认（一项指控），反驳
     - n.（爬陡坡时的）斜向攀上（下）；越过，穿过；滑雪横切运动；（逆风时轮船所作的）曲线航行，折航；横断物，横档；通廊，楼厢；（大炮等的）横转装置；机器部件的横转，横向运动；（测量用的）导线；（军）（壕沟的）土护墙，屏障
@@ -464,7 +444,6 @@ I am Kalé. Purveyor of fine goods.
 好像不会攻击我。
 既然如此，要不要买些什么？
 我叫咖列。 可能看不太出来，我是做生意的。
-
   - purveyor / pəˈveɪə(r) / n.承办商；伙食承办商；供应粮食者；供应货物或提供服务的人或公司
 
 **选择 About Kalé**
@@ -480,7 +459,6 @@ Let's say you're a very welcome customer.
 艾尔登法环破碎之后，这块土地的人，脑袋几乎都变得不正常。
 好在有你们褪色者，我才得以摆脱毫无收入的下场。
 总之，之后也请多加惠顾了。
-
   - nomadic 游牧的
   - dry up 切断供应；蒸发、排干或切断供应而消失；逐渐失去活力而枯萎或死亡；指停止说话。
 
@@ -499,7 +477,6 @@ But the important thing is that you survive. Every customer counts, after all.
 要在这块土地奋战下去，颇需要这类东西。
 那确实有点价位，卖出去我也能赚个一笔……
 但我的初衷，是希望重要的客人能活下去。
-
   - spare
     - adj.备用的，外加的；不用的，闲置的；空闲的，空余的；多余的；简单的，简朴的；瘦的，瘦高的；少量的；节约的
     - v.抽出，拿出（时间、金钱等）；饶恕，赦免；省得，免去；节约，吝惜；保证（或满足）自己的需要（spare oneself）；剩余，剩下（时间、金钱或空间）；分让；删节
@@ -524,7 +501,6 @@ Your people, the Tarnished, and mine.
 在艾尔登法环破碎之后，我们还能**保有神智**，可能这就是原因吧。
 光这点看来，褪色者和流浪民族，
 我们两个还颇类似的。
-
   - wanderer / ˈwɒndərə(r) / n.流浪者；漫游者；迷路的动物
   - spurn vt.唾弃；冷落；一脚踢开 vi.摒弃；藐视 n.藐视，摒弃；踢开
   - pitiful adj.可怜的，令人同情的 pity n.同情，怜悯；可惜的，遗憾的事；仁慈，慈悲 v.同情，怜悯
@@ -559,7 +535,6 @@ Just the way we are. Deeply... unforgiving.
 这民族听起来很执着、很烦人吧？
 
 **未知触发条件，疑似开图，选 About Howling in Mistwood**
-
   - howling adj.咆哮的；极大的；哭哭啼啼的 n.啸鸣
 
 The howl of a wolf, in the Mistwood...
@@ -598,7 +573,6 @@ To call forth the spectral steed named Torrent.
 看来就是你啊。
 那名为托雷特的灵马──
 你能召唤它，没错吧？
-
   - hurtle vi.猛冲；猛烈碰撞 vt.猛投；冲向 n.碰撞；猛冲
   - surmise vt.猜测；推测 vi.猜测；认为 n.推测；猜度
   - thou art / thou'rt <古> you are
@@ -622,7 +596,6 @@ Now it is thine. To do with as thou wishest.
 没有回归黄金树的骨灰，能从中召唤出灵魂。
 而那些灵魂会暂时认你为主人， 重现生前战斗的模样。
 ……哎，照你的意思使用吧。
-
   - entrust v.委托，交托
   - tis <诗歌用语> it is
 
@@ -661,7 +634,6 @@ Lucky you came along, really.
 不受洞窟的其他人欢迎，被赶了出来……
 然后还被变成了树。
 ……所以说，你真的帮了我大忙。
-
   - clod n.土块；笨蛋；牛颈肉 vt.对……掷土块
   - come along 取得进展；出现；陪同
 
@@ -680,7 +652,6 @@ Then I'd be of some real use to you, I reckon.
 ……再等我一下下，
 我想偷偷回洞窟，拿回重要的东西。
 这样我就一定能帮到你的忙。
-
   - sneak v.偷偷地走，潜行；偷带，私运；<非正式>偷走（不重要的或小的东西）；偷偷地做（或获得）；<英>（尤作儿童用语）打小报告，告密 n.<英>打小报告的人，告状者（尤指儿童）；<非正式>鬼鬼祟祟的人；四分卫快速带球切入；<美，非正式>旅游鞋，软帮运动鞋；偷偷摸摸的行为
   - reckon / ˈrekən / v.估算，计算；<非正式>料想，认为；把……看作；<英，非正式>期望，指望
 
@@ -691,7 +662,6 @@ My knees start knockin'...just thinking about that god-awful cave on the shore..
 ……嗯，但是要再等一下。
 我还是……很怕他们…… 需要一点时间做心理准备。
 ……一想到他们，还有那座海岸的洞窟， 我就怕得脚都动不了……
-
   - gather oneself 使自己冷静下来，集中精力应对某种情况或任务
   - knockin' v．敲击，敲门：用手或物体敲击某物，通常是敲门
   - god-awful godawful adj.可憎的；非常恐怖的
@@ -705,7 +675,6 @@ You'll end up just like me.
 ……你怎么会来这里？
 这里很危险，快点逃吧。 他们肯定会跑过来攻击你。
 ……最后落得跟我一样的下场。
-
   - pulp n.浆状物；纸浆；（水果或蔬菜的）果肉，瓤；牙髓；矿浆；通俗（或耸人听闻）的劣质作品 vt.将……捣成浆；将（书或报纸）制成纸浆；把（某人的脸或身体）打得血肉模糊
 
 **探索洞窟，击杀两位亚人首领，回到洞口，与 Boc the Seamster 亚人柏克对话**
@@ -726,7 +695,6 @@ Then, I suppose I-I can't just curl up and die, can I.
 这是她的遗物。
 我想成为像母亲那样的裁缝师，
 所以不可以轻易死掉，对吧……？
-
   - seamstress n.女裁缝师；做针线活的妇女
   - seamster n.裁缝
   - curl up 蜷缩
@@ -750,7 +718,6 @@ Then, I suppose I can't just curl up and die, can I.
 Just joining the fray, Tarnished?
 
 ……你是新来的褪色者吧？
-
   - join the fray 加入战斗；f参与某个争论、竞赛或争斗
   - fray v.磨损，磨松；紧张，烦躁；用头磨 n.争论；打架；磨损处
 
@@ -761,7 +728,6 @@ So, unless you're mad, or wish to be burned alive...
 你要小心了，这座亚基尔湖是龙的地盘。
 龙兼具强大与美丽，但也十分可怕。
 除非你是希望龙焰烧死自己的长生者……
-
   - roost n.（鸟或蝙蝠的）栖息处 v.（鸟、蝙蝠）栖息；急潮流
   - fearsome adj.可怕的；害怕的；极大的
   - majestic adj.雄伟的，壮丽的，威严的 majesty n.雄伟，壮丽，威严；陛下（对国王或女王的称呼）；君权，王权
@@ -780,7 +746,6 @@ Seems I'm forever crossing paths with hotheads like you.
 ……你真的是个笨蛋啊，
 竟然异想天开，想挑战龙。
 老夫不再阻止你了，反正也是徒劳。
-
   - halfwit 笨蛋
   - see it through 坚持做某事直到完成，继续工作直到完成某事
   - cross paths with 与某人相遇，尤其是偶然相遇
@@ -804,7 +769,6 @@ then seek the decrepit church on the little island off the western coast.
 你手上那颗龙心脏，是龙飨用的供品。
 等到某一天，当你为了获得力量吃下它，心中因此萌生渴望，难以克制的时候……
 记得到西边海岸的尽头，那里有座小岛， 到岛上的废弃教堂一趟。
-
   - fell n.（尤指英格兰北部的）山（冈），丘陵，高沼地；采伐的木材数量；<古>兽皮，生皮 v.砍伐；击倒；把（接缝的边）缝平； 掉下，跌落（fall 的过去式形式）
   - yearn v.怀念，渴望
 
@@ -821,7 +785,6 @@ It's no surprise that Dragon Communion is ruinous.
 最后那念头会充斥全身，不断折磨着你。
 龙的力量既强大又美丽，却十分可怕──
 也因此，执行龙飨等同踏上毁灭的不归路。
-
   - partake / pɑːˈteɪk / vi.吃，喝；分享；参与；分担；带有某种性质 vt.分担；分享
   - shed v.去除，摆脱；（植物）落（叶），（动物）蜕（皮），脱（毛）；脱掉（所穿衣物）；掉落（货物）；挡水，防水；射出，发出（光）；流，洒，落（泪）；<正式>（尤指在战争中）造成伤亡，使流（血）；把（车）停在库棚内；（分区）切断（电力载荷）
   - floodgate n.水闸；水门；防潮水闸；制约（怒气）
@@ -845,7 +808,6 @@ It's quite the lark, when you think about it.
 手、脚、头全部被砍断，变成蜘蛛的一部分了。
 你知道吗？被接到蜘蛛身上之后， 人就会长得像是虫蛹喔。
 真的很奇妙，对不对？
-
   - only to 结果却：用于表示某种结果或情况是出乎意料或令人失望的。
   - stuck adj.卡住的，动不了的；被困住，陷入困境；难以继续的，被难倒的；被迫保留，不得不应付；停滞不前的，无所变化的 v.粘，贴；把……放（某处）；刺，戳，插（stick 的过去式和过去分词形式）
   - chrysalid / ˈkrɪs(ə)lɪd / n.蛹，蛹壳；形成状态，过渡状态（等于 chrysalis）adj.蛹的（等于 chrysalis）
@@ -868,7 +830,6 @@ I'm nothing but a craven.
 要被砍断手脚、砍断头，太可怕了。
 我很想和大家变得一样，但实在怕得不得了。
 我太懦弱了。
-
   - entice / ɪnˈtaɪs / v.诱使，引诱
   - come to be发生；形成
   - two peas in a pod 如出一辙：用来表示两个人或两件事非常相似。
@@ -889,7 +850,6 @@ They'd be glad of your company, I think, the little'uns.
 而且灵魂好像很喜欢你，
 我想这孩子也会很开心。
 我想这些孩子也会很开心。
-
   - fondly adv.天真地；怜爱地；温柔地
     - fond adj.喜爱的，喜欢做……的；美好的，愉悦的；慈爱的，深情的；天真的，不切实际的 v.<旧>盲目地喜欢；呵护，抚弄 n.烹饪后锅中的棕色残留物；（信息科学）全宗
   - un / ən / pron.家伙，东西（one 的另一种拼写）
@@ -905,7 +865,6 @@ Heh heh...
 “我爱你们。虽然还是很害怕，但迟早会变得和大家一模一样。”
 ……我终于比较不怕痛了。
 呵呵。
-
   - get the hang of (it/sth) 得知……的窍门；熟悉某物的用法；理解某事，摸清概况；鉴赏
 
 ### 在 Warmaster's Shack 习战者的破屋，遇 Knight Bernahl 叛逆者贝纳尔
@@ -923,7 +882,6 @@ despite the collapse of the Golden Order?
 你会待在这块交界地，不停战斗下去吗？
 即使黄金律法破碎到难以修复的境界，
 还会继续相信赐福的指引吗？
-
   - take up 开始从事（某项活动）；占用（时间、空间等）；接受（挑战、任务等）；收起（衣物）
 
 **选 My faith holds firm**
@@ -939,7 +897,6 @@ Now's the time to pass 'em on. To a good and proper Tarnished, like you.
 那么，你有意思继承我的战技吗？
 我只懂得用剑，心血全投注在战技上。
 我想把战技传承下去， 传给像你这种模范褪色者。
-
   - through and through 完全地、彻底地
   - pick up 抬起，拾起；收拾，整理；学会，掌握；接人，搭载；增加，提高；恢复，改善
 
@@ -958,7 +915,6 @@ Now's the time to pass 'em on. To a good Tarnished, like you.
 你有意思继承我的战技吗？
 我只懂得用剑，心血全投注在战技上。
 我想把战技传承下去，传给像你这样的褪色者。
-
   - to a fault 过分地，过度地；有缺陷的，有毛病的；有责任的，有过错的
   - behove vi.理所当然 vt.应该；理应（等于 behoove）
 
@@ -975,7 +931,6 @@ It grants meaning even to falling in battle, to death itself.
 是最为鲜明的英雄故事。
 所以我才会对剑，还有战技爱不释手──
 那传达、赋予了战败与死亡的意义。
-
   - myriad / ˈmɪriəd / n.<文>无数，大量；（多用于古典历史剧中）一万 adj.无数的，大量的  a myriad of
   - yet to 尚未：表示某事情还没有发生或完成。
   - memento / məˈmentəʊ / n.纪念品，引起回忆的东西
@@ -990,7 +945,6 @@ Well, there's no rush. Knowledge of the arts can wait another day.
 
 ……没兴趣吗？
 不急于一时。 等有意愿的时候，再来找我。
-
   - float your boat 引起某人的兴趣或满足某人的喜好
 
 ### 在 Saintbright 悬崖上方，遇 Alexander, Warrior Jar “战士壶”亚历山大
@@ -1025,7 +979,6 @@ Give it your all, I say!
 这样做应该就能顺利脱困。
 我很强壮，不用担心。毕竟有在练身体嘛。
 用力打下去就对了。
-
   - smack / smæk /
     - v.用巴掌打，掴；猛击，重撞；用拳猛击，强力打进（或推进、放入）；类似于，含有……的意味（smack of）；咂嘴；<美，非正式>声音响亮地吻；<古>甩（鞭子）
     - n.掌掴，拍击；猛击一拳；砰的一声，撞击声；响吻；海洛因；一丝，一点儿；小渔船
@@ -1045,7 +998,6 @@ Despite my appearance, I am but a chip off a greater jar. I'll pop out eventuall
 这样啊……太令人难过了……
 没事，抱歉，请别挂心。
 我好歹也是挤身壶类之流，总会顺利脱困的。
-
   - I am but a chip off a greater jar. 我不过是大罐子里的一小块碎片。
   - pop out 从表面鼓起；突然出现；突然出来、因外力出来
 
@@ -1062,7 +1014,6 @@ I thank you, and as a token of my appreciation, I'd like you to have this.
 哇哈哈哈。
 总归一句，多亏有你帮忙，我顺利脱困了。
 谢谢你。这是我的谢意，还请笑纳。
-
   - mighty adj.强大的，巨大的；（动作）用力的，需用力的 adv.很，非常，十分
   - wallop / ˈwɒləp / v.（非正式）猛击，痛打；击溃，击败（对手）；沸腾；颠簸；猛冲 n.（非正式）痛打，重击；冲击力；快感；巨大影响；含酒精的饮料（尤指啤酒）
   - spell the end 意味着结束或失败
@@ -1085,7 +1036,6 @@ Ha ha ha ha!
 话说战斗祭典，这个词只会出现在故事里，
 不觉得听起来就让人兴致勃勃吗？
 哇哈哈哈。
-
   - blighted adj.枯萎的；摧残的 v.使染上枯萎病；毁坏（blight 的过去式和过去分词）
   - `Redmane Castle 红狮子城`
   - breast n.乳房；胸部，胸脯；心情，内心 v.登上……的顶部；挺胸顶着……；与……搏斗，迎……而上
@@ -1117,7 +1067,6 @@ Honeyed rays of gold, deliver this spirit.
 但既然没有遭遇“死诞”，
 灵魂终究会回归大树。
 黄金啊，掌管此人的魂魄吧。
-
   - rite n.（宗教等的）仪式；礼节，惯例
   - honeyed adj.甜如蜜的；多蜜的；逢迎的；亲昵的
 
@@ -1136,7 +1085,6 @@ If you value your life, then go no further.
 死亡已经扩散到前面的村子，
 大概“船”也在。
 不想平白送命的话，别随意靠近。
-
   - `Those Who Live in Death 死诞者`
   - weed n.野草，杂草；<非正式>香烟，烟草（the weed）；水草，水生植物；大麻；<非正式>瘦弱的人，懦弱的人；<非正式>（长腿）瘦弱的马 v.除草，为……除杂草
   - `Deathroot 死根`
@@ -1164,7 +1112,6 @@ Unless you wish to lay down your life in vain.
 不要靠近死诞者。
 尤其是在“船”出现的时候。
 ……你应该不想平白送命吧？
-
   - all the more adv.更加
   - lay down 
     - 指放下武器，投降；
@@ -1223,7 +1170,6 @@ What say you?
 ……我有其他规划，
 古兰格大概也想换个帮手。
 你怎么想？
-
   - how would you like 询问对方对某事物的喜好或者期望
 
 **选择 Accept Introduction**
@@ -1237,7 +1183,6 @@ It will lead you to Gurranq, the beast clergyman.
 ……
 我在地图上做好标记了， 记号的地方有隐藏的传送门。
 用那传送门去见“野兽祭司”古兰格吧。
-
   - prowess / ˈpraʊəs / n.英勇；超凡技术；勇猛
   - `Gurranq, the beast clergyman “野兽祭司”古兰格`
     - clergyman / ˈklɜːdʒimən / n.牧师；教士 clergy / ˈklɜːdʒi / n.（总称）神职人员
@@ -1263,7 +1208,6 @@ And must be eradicated.
 那是不该有的不祥印记。
 ……有人意图玷污黄金律法，
 必须除之而后快。
-
   - spot
     - n.地点，场所；点，斑点；污点，污渍；丘疹，疱疹；某演员的固定节目；排名位置； <英>少量，一点；几滴，少许（液体）；困境，窘境；现货交易，现金交易；聚光灯（spotlight 的简称）；<美>（多米诺牌、纸牌或骰子上的）点；调灰泥板，调石膏板；<美，非正式>（特定面值的）钞票；（英足）点球点
     - v.看见，注意到；让分，让步；飘了几滴雨；<美，非正式>借（钱）给；使有斑点，使有污迹；稀疏地点缀；在场监护（运动员）；（军）确定敌人的位置；将（球）放在适当位置
@@ -1298,7 +1242,6 @@ Now on his knees, begging for mercy.
 黄金葛瑞克，耻辱之战。
 交战“米凯拉的锋刃”，兵败如山倒。
 跪伏于地，恳求饶命。
-
   - humiliate / hjuːˈmɪlieɪt / v.羞辱，使蒙羞
 
 ### 在 Murkwater Coast，二遇 Yura, Hunter of Bloody Fingers “血指猎人”尤拉
@@ -1320,7 +1263,6 @@ Don't let your emotions stay your blade.
 在这块土地上游走， 肯定免不了与他们一战。
 听好了，就算你念在彼此是同胞， 那群家伙也早就疯了，不可能和他们沟通。
 可别因为犹豫就手下留情。
-
   - smile upon 眷顾，赐予好运：表示某人或某事受到幸运、好运或赞同的待遇
   - thrall n.奴隶；束缚 adj.受奴役的 vt.使成为奴隶
   - cess n.税款；地方税；运气 v.征税
@@ -1344,7 +1286,6 @@ Cough up your coin, all of it!
 想偷偷摸摸拿走别人的东西喔？
 不要脸的小偷就活该遭天谴！
 把值钱的东西全部留下，滚吧！
-
   - scheming adj.腹黑
   - repentance / rɪˈpentəns / n.悔改；后悔
   - cough up 交出，付出；咳嗽时把物质从喉咙排除
@@ -1373,7 +1314,6 @@ Well, water under the bridge. Now we're squared up, how about we play nice from 
 还以为你是亚人之类的……
 总而言之，这种不幸的误会常有啦。
 话说开之后，恩怨就放水流吧。 之后再多多关照啦，如何？
-
   - take you for 认为你是；把你当作是；误认为你是
   - innocent adj.天真的，幼稚的；清白的，无罪的；无辜受害的；没有恶意的，无冒犯之意的 n.天真无邪的人，幼稚的人；无辜的受害者（尤指犯罪或战争的受害者）
   - assure you 向你保证
@@ -1406,7 +1346,6 @@ Ha ha ha...
 所以说，有空再过来喔。
 我会做好准备，等待你大驾光临。
 嘿嘿嘿……
-
   - `Patches, the Untethered “疯癫”帕奇`
     - Untethered adj.（似）不被绳索捆缚的
     - tether n.系链；拴绳 v.（用绳或链）拴住
@@ -1441,7 +1380,6 @@ Where you won't need a refund, 'cause everything's top notch.
 都是些临时进货的商品，别嫌弃来看看吧。
 欢迎光临帕奇商店，
 买到绝对让你赚到。
-
   - drop in 突然拜访：意指突然或随意地拜访某人，常与“on”连用。
   - emporium / emˈpɔːriəm / n.商场，大百货商店；商业中心
   - refund / ˈriːfʌnd / n.退款，偿还金额 v.退还（钱款）；退款给，还钱给（某人）
@@ -1465,7 +1403,6 @@ Worked to the bone by their high-and-mighty lord, only to be thrown out with the
 乍看之下，他们好像是战败的士兵。
 替某个大人物做牛做马，压榨完了就被随便一扔── 反正八九不离十，就是这回事吧。
 ……走到哪都在玩历史重演啊，混账东西。
-
   - make a clean break (with) 突然而完全地结束与某人的关系或与某事的联系。
   - foot soldier 步兵士兵。比喻义：指在支持组织或运动中从事积极而通常不起眼的工作的人，类似于步兵士兵
   - to the bone 彻骨地、非常地。尽可能地。 work to the bone 拼命工作
@@ -1487,7 +1424,6 @@ Eh? Everything is give and take, give and take.
 但是又觉得送出去很舍不得……
 唉，还不是贵客的话，这件事也不好说。
 你是明事理的人，应该也知道吧？ 就是所谓的人要互相、各取所需嘛。
-
   - fetch v.（去）拿来，（去）找来；售得，卖得；推导出，演绎出；吸引，迷住；抵达，到达；<非正式>给（某人）以（重重的一击或一巴掌）
   - spectacular / spekˈtækjələ(r) / adj.壮观的，令人惊叹的；惊人的，突如其来的 n.壮观场面，盛大演出
   - 妥协或互相让步的过程
@@ -1503,7 +1439,6 @@ An extra-special thanks, for an extra-special customer.
 感谢你时常光顾。
 我决定啦，那个宝箱就送给你吧。
 特殊宝物就送给你这位大贵客了。
-
   - thick and thin 困难和障碍：指在每一个困难和障碍面前坚持不懈，尤指在“through thick and thin”这一短语中使用。
     - thick-and-thin adj.忠实的；始终不变的；甘苦与共的
 
@@ -1518,7 +1453,6 @@ But a Patches Promise? Well, that's priceless!
 那个宝箱是你的了。
 ……舍不得，说实话真舍不得，
 但我男子汉帕奇一言既出，驷马难追！
-
   - in word and deed 在言语和实践上
 
 **被赠与宝箱前，打开 Patches 帕奇的宝箱，被陷阱传送**
@@ -1530,7 +1464,6 @@ The gods demand vengeance. Vengeance!
 哦哦哦？
 你真的是不要脸的小偷啊。
 那只能说活该遭天谴啦，这是天谴！
-
   - vengeance n.报仇，复仇；猛烈地，极度地（with a vengeance）
 
 **被赠与宝箱后，打开 Patches 帕奇的宝箱，被陷阱传送**
@@ -1542,7 +1475,6 @@ You're the finest customer a man ever had!
 嘿嘿嘿……
 多谢啊，你不打开我还伤脑筋咧。
 你真的是大贵客耶。
-
   - wrench v.猛拉，猛扭，挣脱；扭伤；夺走（某人），拆散；使痛苦，使十分难过（尤指以致哭喊出声）；用扳钳拧 n.扳手，扳钳；（离别的）痛苦，难受；猛扭，猛拉；（机械）偶单力组；扭伤；歪曲
 
 ### 入 Third Church of Marika 玛丽卡第三教堂，遇梅琳娜
@@ -1566,7 +1498,6 @@ Well? Perhaps that might serve you in lieu of a maiden's guidance.
 “当你们的双眸黯淡褪色， 我将放逐你们于交界地之外──”
 “于交界地之外征战，生存，死亡吧。”
 ……怎么样？希望多少能代替女巫的引导。
-
   - linger v.继续存留，缓慢消失；流连，逗留；持续看（或思考）；苟延残喘；消磨，缓慢度过
   - divest / daɪˈvest / vt.剥夺；使脱去，迫使放弃
   - thine adj.无效的；暗灰色的 v.使暗淡；变模糊（dim 的过去式）
@@ -1588,7 +1519,6 @@ And don't miss all the bargains, here at Patches' Emporium!
 就算我不知情，还是万分抱歉。 竟然发生这种不幸的意外。
 总而言之，你人没事就好。
 来逛一逛帕奇商店吧。
-
   - in blazes 究竟
   - in a blaze 突然发生的猛烈事件：形容某件事情突然发生或突然加剧，如火灾、暴乱等。
   - poof n.吹熄蜡烛的声音 int.哇（表示突然消失的）感叹词
@@ -1606,7 +1536,6 @@ O Erdtree! Grant me succour!
 任何能帮助我──肯尼斯·海德的人啊！
 志愿屏除不合理，维护正当秩序的人啊！
 啊，黄金树啊！请带来您的侍者吧！
-
   - repudiator n.抛弃者；休妻者；拒绝的人；主张拒付国债论者
     - repudiate vt.拒绝；否定；批判；与……断绝关系；拒付
   - celebrated / ˈselɪbreɪtɪd / adj.著名的，驰名的
@@ -1631,7 +1560,6 @@ A Knight commander from Stormveil took it. A fool, and plumb mad to boot. Simply
 褪色者啊，我有事要你帮忙。
 从这里往南走，穿过雾林有一座要塞── 那是我的要塞，希望你帮忙夺回来。
 都怪史东薇尔派来的骑士长 实在过于驽钝，竟然会为血痴狂。
-
   - despite appearances 尽管表面上看起来：表示虽然外表看起来不太可能，但实际上却是真实的
   - nobility n.贵族；崇高，高尚
   - next in line 下一个：指在某个队列或排队中，下一个要被服务的人或物
@@ -1651,7 +1579,6 @@ The celebrations will be lavish indeed, upon the dawn of my fort's retrieval.
 ……啊，原来如此。你想问报酬吧？
 别小看我肯尼斯·海德，打赏我绝不吝啬。
 只要确实夺回要塞，肯定大大有赏。
-
   - fret not 不要担心：表示不要担心或焦虑，用于安慰他人或自我安慰。
   - largesse / lɑːˈdʒes / n.慷慨的赠与；慷慨赠与物（等于 largess） 
   - lavish / ˈlævɪʃ / adj.奢侈的，盛大的；慷慨的，大方的
@@ -1675,7 +1602,6 @@ I almost feel sorry for the chap the more I think of it.
 实在是软弱无比，不知羞耻的男人。
 即便出身名门黄金一族， 也看得出来葛孚雷的血统淡了许多。
 仔细一想，还真是可悲。
-
   - furnish v.为（房间或房屋）配备家具；提供，供应
   - were I in your shoes 假如我是你
   - deprave / dɪˈpreɪv / vt.使堕落；使腐败
@@ -1777,7 +1703,6 @@ But a true and stalwart Lord of the proper lineage to take the reigns of Limgrav
 ……没有王的土地，实在惨不忍睹。
 我必须找到王，但绝非葛瑞克之流，
 是能将宁姆格福的正统政权托付于他， 走在正道上的强大王者。
-
   - heir / eə(r) / n.继承人，子嗣；接班人 v.继承
 
 I am sorry to have lifted your hopes...
@@ -1817,7 +1742,6 @@ I can offer you ample reward.
 听说他逃到这个地方来了。
 ……要是你遇见他，希望你通知我。
 我能提供一些谢礼。
-
   - busybody n.好事的人；爱管闲事的人
   - ample adj.充足的，充裕的；丰满的；宽敞的，巨大的
  
@@ -1826,7 +1750,6 @@ And in need of a fitting end to his tale.
 
 ……达瑞威尔是叛徒，
 而叛徒就该有叛徒的下场。
-
   - traitor n.叛徒，卖国贼
   - in need of 需要某物；急需某物；需要某人的帮助或关注；急需财政支持
   - fitting end 恰当的结束：指某件事情以一种合适、恰当的方式结束。
@@ -1842,7 +1765,6 @@ I think the two of you are sure to find the best in one another.
 那很好啊，我从中牵线也有价值了。
 他态度不怎么友善，为人笨拙， 找东西的能力也差到令人发噱……但人不错。
 希望认识彼此对你们来说，都是一件好事。
-
   - good egg 好人：指一个讨人喜欢的人。
 
 **击杀达瑞威尔后，附近**
@@ -1882,7 +1804,6 @@ Why are you here?
 ……哦，是褪色者啊？难得有这么稀奇的客人。
 我名为瑟濂，如你所见，是一名魔法师……
 那么，有何贵干？
-
   -  A wonder you should turn up here 你会出现在这里真是个奇迹
      -  wonder v.想知道，好奇，琢磨；不知是否（用于提问或礼貌地提出请求）；感到疑惑，（对…）感到不安；感到惊讶，觉得惊奇 n.惊讶，惊叹；奇观，奇迹；令人惊讶的事物，令人难以置信的事物；能人，奇才，有特效的东西
      -  turn up 找到，发现；增加，提高；查找，参考；翻开，翻过来；出现，显露；到达，露面；发生，出现；改变航向
@@ -1901,7 +1822,6 @@ Do you still wish to learn from me?
 我被逐出雷亚卢卡利亚学院，
 是众人避之唯恐不及，所谓的异端魔女。
 即使如此，你还坚持拜师吗？
-
   - yen n.日元（日本货币单位）；渴望 vi.渴望
   - glint v.闪烁；（光线）反射；闪闪发光；使发光；（眼睛）发亮（表达不友善的感情）n.闪烁；闪光，微光；（眼神中的）光亮
   - aptitude n.天资，天赋；自然的倾向，习性；适宜
@@ -1920,7 +1840,6 @@ Anticipate grievances, young apprentice.
 好吧，我愿意收你为徒，传授辉石魔法。
 但我很严格，不走温和教导那一套。
 可别后悔啊。
-
   - protégé / ˈprɒtəʒeɪ / n.门徒；被保护的人；受保护国居民（法语）
   - coddle vt.娇养；溺爱（等于 mollycoddle）；用文火煮
     - mollycoddle v.溺爱，纵容 n.女性化（或娇弱的）的男人

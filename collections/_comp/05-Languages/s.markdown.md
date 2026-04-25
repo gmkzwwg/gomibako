@@ -71,7 +71,6 @@ Use `>` for blockquotes:
    2. Sub-item 2<!-- 2 spaces after -->      
    Two spaces or `<br>` to break a line in lists.
       - Lists can hybrid.
-
         A blank line and appropriate number of spaces for new paragraph in lists.
 
 ```markdown
@@ -82,7 +81,6 @@ Use `>` for blockquotes:
    2. Sub-item 2<!-- 2 spaces after -->      
    Two spaces or `<br>` to break a line in lists.
       - Lists can hybrid.
-
         A blank line and spaces for new paragraph in lists.
 ```
 
@@ -95,7 +93,6 @@ Use `>` for blockquotes:
    + Sub-item 3<!-- 2 spaces after -->  
    Two spaces or `<br>` to break a line in lists.
       1. Lists can hybrid.
-
          A blank line and spaces for new paragraph in lists.
 
 ```markdown
@@ -106,12 +103,10 @@ Use `>` for blockquotes:
    + Sub-item 3<!-- 2 spaces after -->  
    Two spaces or `<br>` to break a line in lists.
       1. Lists can hybrid.
-
          A blank line and spaces for new paragraph in lists.
 ```
 
 ### Checkbox
-
 - [ ] `- [ ]` for an unchecked box
 - [x] `- [x]` for a checked box
 

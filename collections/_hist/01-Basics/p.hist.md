@@ -8,7 +8,6 @@ subclass: Basics
 ## The Knowledge Structure of History - Modern Academic Historical Inquiry Worldwide, Including Historiography, Methods, and Major Subfields.
 
 ###  First principles (axioms) and core commitments
-
 * Pastness (irreversibility): non-repeatability; asymmetry between past events and present access.
 * Trace-dependence: inferential dependence on surviving traces (documents, artifacts, memories, data).
 * Contextuality: meaning as context-relative (linguistic, institutional, material, cultural).
@@ -19,7 +18,6 @@ subclass: Basics
 * Normativity-awareness: value-ladenness in selection, framing, and narration (without collapsing into arbitrariness).
 
 ### Ontology of historical objects (what “counts” as the unit of analysis)
-
 * Event-objects: punctual occurrences; turning points; “milestone events” as heuristics.
 * Process-objects: long-run transformations (state formation, industrialization, secularization).
 * Structure-objects: durable constraints (institutions, class systems, ecologies, infrastructures).
@@ -29,7 +27,6 @@ subclass: Basics
 * Scale-objects: microhistory ↔ macrohistory; local ↔ global; short durée ↔ longue durée (Braudel).
 
 ### Evidence architecture (trace types) and access channels
-
 * Written records: administrative archives; letters; legal texts; newspapers; inscriptions.
 * Material culture: archaeology; art/architecture; tools; coins; built environment.
 * Oral sources: interviews; testimony; tradition; performance; memory studies.
@@ -40,7 +37,6 @@ subclass: Basics
 
 ### Core mechanics (the pipeline from trace to claim)
    Dependency spine: Trace selection → Source criticism → Contextual reconstruction → Inferential modeling → Narrative/explanatory synthesis → Peer adjudication → Public transmission → Revision loop
-
 * Problem-framing: research question formation; scope bounding; concept specification.
 * Heuristic search: archive strategy; sampling logic; corpus construction; metadata control.
 * External criticism: authenticity; provenance; authorship; dating; integrity.
@@ -55,7 +51,6 @@ subclass: Basics
 ### Explanatory logics (theory families) and mutual dependencies
 
 > Organized as “what must be assumed” to use the logic; arrows indicate typical dependence.
-
 * Intentionalist explanation (agency-first): reasons, choices, strategy (Thucydides; Collingwood).
   * Depends on: interpretive access to actors’ reasons (texts, testimony) + context semantics.
 * Structural explanation (constraint-first): institutions, class, demography, ecology (Marx; Weber; Skocpol; Wallerstein).
@@ -74,7 +69,6 @@ subclass: Basics
   * Depends on: textuality thesis + analysis of emplotment/tropes.
 
 ### Historiography (disciplinary self-theories) as a developmental sequence
-
 * Classical foundations: inquiry and causation (Herodotus, 5th c. BCE; Thucydides, 5th c. BCE).
 * Universal history and moral philosophy: providential/teleological schemas (late antiquity–early modern).
 * Social theory of history: cyclical/structural dynamics (Ibn Khaldun, 14th c.).
@@ -95,7 +89,6 @@ subclass: Basics
   * "Digital humanities expansion (1990s–present)"
 
 ### Subfields (Domain Partitions) as Applications of the Same Mechanics
-
 * Political history: sovereignty; diplomacy; statecraft; governance.
 * Social history: class; gender; race; kinship; migration; demography.
 * Economic history: production; markets; inequality; institutions; development.
@@ -216,7 +209,6 @@ The historian’s “stack” is best treated as a pipeline: **ontology → ques
 #### The historian’s core “ontology” (what you model as real)
 
 A rigorous historical project explicitly defines its working ontology—otherwise methods drift.
-
 * **Agents**: individuals, households, firms, states, churches, movements (with bounded rationality and constraints).
 * **Institutions**: rules, offices, legal regimes, property systems, bureaucracies (path dependence matters).
 * **Practices**: routines (tax collection, worship, policing, labor discipline) that reproduce structures.
@@ -229,7 +221,6 @@ A rigorous historical project explicitly defines its working ontology—otherwis
 #### Paradigm shifts you must be able to “translate” between
 
 A high-level historian can re-state one paradigm’s claim in another paradigm’s language and see what changes.
-
 1. **From great men/statecraft → social history**: structures (class, demography, labor) as engines.
 2. **Cultural/linguistic turn**: meanings, discourse, representation as causal (not just “superstructure”).
 3. **Postcolonial/global turns**: Europe as node in wider systems; empire and racial governance central.

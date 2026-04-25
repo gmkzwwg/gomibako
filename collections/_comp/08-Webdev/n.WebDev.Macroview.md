@@ -15,7 +15,6 @@ todos: 给出技术趋势和技术栈的解析，如为什么ts代替js
   5. Data layer
   6. Engineering layer
   7. Infrastructure layer
-
 1. Why divide the Web system this way?
 
 Because different problems belong to different levels of abstraction.
@@ -31,17 +30,14 @@ The infrastructure layer asks: where and how does it run?
 Without this separation, technical discussion becomes confused. A rendering problem may be mistaken for a state problem. A slow page may be blamed on frontend code when the real cause is database latency. A deployment failure may be treated as an application bug.
 
 This layered view helps with three things:
-
 * diagnosis
 * ownership
 * optimization
-
 1. Why is this layering useful for diagnosis?
 
 Because production failures rarely stay inside one layer.
 
 For example, a page feels slow. That may come from:
-
 * presentation layer: expensive layout and paint
 * interaction layer: too many renders
 * communication layer: slow API round trips
@@ -51,7 +47,6 @@ For example, a page feels slow. That may come from:
 * infrastructure layer: overloaded container or bad routing
 
 The layers help isolate where the real bottleneck is.
-
 1. Why is this layering useful for ownership?
 
 Because teams often divide responsibility across these boundaries.
@@ -62,7 +57,6 @@ Backend and data engineers focus on service and data.
 DevOps or platform teams focus on engineering and infrastructure.
 
 The model does not force team structure, but it makes ownership clearer.
-
 1. Why is this layering useful for optimization?
 
 Because each layer requires different optimization methods.
@@ -72,13 +66,11 @@ You do not solve lock contention with CSS refactoring.
 You do not solve flaky deployment pipelines with React memoization.
 
 Layering prevents category mistakes.
-
 1. What bottleneck appears most often across layers?
 
 The most common cross-layer bottleneck is mismatch of assumptions.
 
 Examples:
-
 * The UI assumes data is immediate, but the network is slow
 * The client assumes API fields are stable, but the backend changed them
 * The service assumes the database query is cheap, but it is not
@@ -86,7 +78,6 @@ Examples:
 * The infrastructure scales horizontally, but the application keeps hidden local state
 
 Many failures are not caused by one layer being weak, but by two layers making incompatible assumptions.
-
 1. What kinds of problems usually appear between adjacent layers?
 
 Between presentation and interaction:
@@ -106,13 +97,11 @@ Schema changes, tests, migrations, and local development setups drift apart.
 
 Between engineering and infrastructure:
 Build artifacts, runtime configuration, observability, and rollout behavior do not align.
-
 1. What kinds of problems appear across non-adjacent layers?
 
 These are often the hardest to debug.
 
 For example:
-
 * A frontend re-render storm may overload APIs, which then overload the database
 * A database slowdown may surface as a loading spinner problem in the browser
 * A misconfigured CDN may appear as a JavaScript application bug
@@ -128,7 +117,6 @@ The presentation layer is the visible structure and appearance of the applicatio
 Its job is to decide how information is structured and displayed.
 
 Its main bottlenecks are:
-
 * Large or deeply nested DOM trees
 * Expensive CSS selectors
 * Layout recalculation
@@ -136,7 +124,6 @@ Its main bottlenecks are:
 * Accessibility and semantic mistakes that make the UI harder to use and maintain
 
 The main problems between this layer and the interaction layer are:
-
 * The UI structure may not match the state model
 * DOM changes may be triggered too often by application logic
 * Visual state and business state may drift apart
@@ -149,7 +136,6 @@ The interaction layer handles behavior in the browser. It includes JavaScript or
 Its job is to answer: when the user acts, what should happen?
 
 Its main bottlenecks are:
-
 * Main thread blocking
 * Too many re-renders
 * Inefficient state updates
@@ -159,7 +145,6 @@ Its main bottlenecks are:
 * Poor component boundaries
 
 The main problems between this layer and the communication layer are:
-
 * UI assumes network success when the request may fail
 * Duplicate requests caused by repeated user actions
 * Inconsistent loading, error, and retry logic
@@ -173,7 +158,6 @@ The communication layer manages the exchange of data between browser and server.
 Its job is to move data reliably and securely across the network.
 
 Its main bottlenecks are:
-
 * Network latency
 * Bandwidth limits
 * Large payloads
@@ -183,7 +167,6 @@ Its main bottlenecks are:
 * Unclear API contracts
 
 The main problems between this layer and the service layer are:
-
 * Frontend and backend disagree on request or response structure
 * Status codes are used inconsistently
 * Authentication and authorization semantics are unclear
@@ -197,7 +180,6 @@ The service layer is the backend application logic. It includes controllers, dom
 Its job is to decide what the system should do with a request.
 
 Its main bottlenecks are:
-
 * Complex business logic
 * Synchronous dependency chains
 * CPU-heavy processing
@@ -207,7 +189,6 @@ Its main bottlenecks are:
 * Tight coupling between modules
 
 The main problems between this layer and the data layer are:
-
 * Business logic may not match the data model
 * Transaction boundaries may be unclear
 * Read and write patterns may overload the database
@@ -222,7 +203,6 @@ The data layer stores, retrieves, and organizes data. It includes relational dat
 Its job is to preserve system state and make it queryable.
 
 Its main bottlenecks are:
-
 * Slow queries
 * Missing or bad indexes
 * Lock contention
@@ -233,7 +213,6 @@ Its main bottlenecks are:
 * Data consistency problems across multiple systems
 
 The main problems between this layer and the engineering layer are:
-
 * Schema changes may not be safely deployed
 * Test data may not reflect production complexity
 * Migrations may fail or be irreversible
@@ -247,7 +226,6 @@ The engineering layer supports how software is built and maintained. It includes
 Its job is to make development reliable, repeatable, and safe.
 
 Its main bottlenecks are:
-
 * Slow builds
 * Fragile test suites
 * Poor deployment pipelines
@@ -257,7 +235,6 @@ Its main bottlenecks are:
 * Low release confidence
 
 The main problems between this layer and the infrastructure layer are:
-
 * Build output may not match runtime expectations
 * Environment variables may be misconfigured
 * Deployment artifacts may not be reproducible
@@ -271,7 +248,6 @@ The infrastructure layer is the runtime environment. It includes servers, contai
 Its job is to run the system in a stable, scalable, and secure way.
 
 Its main bottlenecks are:
-
 * CPU and memory limits
 * Disk I/O
 * Network throughput
@@ -282,7 +258,6 @@ Its main bottlenecks are:
 * Weak monitoring and alerting
 
 The main problems between this layer and all upper layers are:
-
 * The application assumes resources that do not exist
 * Timeouts are inconsistent across services
 * Network topology changes break assumptions
@@ -309,18 +284,13 @@ What coupling here will become expensive later?
 That is why this seven-layer model is useful. It is less a taxonomy than a way of thinking.
 
 Common mistakes and easily confused points
-
 1. The layers are analytical, not rigid physical boxes.
    One file or one service may involve several layers at once.
-
 2. The communication layer is not the same as the service layer.
    Transport concerns and business logic should not be mixed casually.
-
 3. The data layer is not just “the database.”
    Caches, search indexes, queues, and object storage also belong here.
-
 4. The engineering layer is not optional tooling.
    Without it, reliability, testing, and safe delivery collapse.
-
 5. The infrastructure layer is not only “ops work.”
    Runtime behavior directly shapes application correctness, latency, and failure modes.

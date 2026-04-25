@@ -1,5 +1,5 @@
 ---
-title: The Annotated Lolita
+title: Lolita The Annotated
 categories: Texts
 subclass: Literary-Texts
 ---
@@ -2759,7 +2759,6 @@ remain, throughout a devout widowhood, the dull, sedate and reliable person he h
 I remember letting myself into my flat and starting to say: Well, at least we shall now track them down—when the other letter began talking to me in a small matter-of-fact voice:
 
 #### DEAR DAD:
-
 - How's everything? I'm married. I'm going to have a baby. I guess he's going to be a big one. I guess he'll come right for Christmas. This is a hard letter to write. I'm going nuts because we don't have enough to pay our debts and get out of here. Dick is promised a big job in Alaska in his very specialized corner of the mechanical field, that's all I know about it but it's really grand. Pardon me for withholding our home address but you may still be mad at me, and Dick must not know. This town is something. You can't see the morons for the smog. Please do send us a check, Dad. We could manage with three or four hundred or even less, anything is welcome, you might sell my old things, because once we get there the dough will just start rolling in. Write, please. I have gone through much sadness and hardship.
  Yours expecting, DOLLY (MRS. RICHARD F. SCHILLER)
 

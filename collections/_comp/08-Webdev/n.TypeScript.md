@@ -10,7 +10,6 @@ todos: 给出技术趋势和技术栈的解析，如为什么ts代替js
 It is designed as a fast-start sheet for someone who already understands programming and formal language structure.
 
 One key distinction first:
-
 * value level: things that exist at runtime
 * type level: things that exist only for static checking
 
@@ -37,7 +36,6 @@ let direction: "left" | "right" = "left";
 ```
 
 Classic usage:
-
 * rely on inference for local variables
 * annotate public APIs, function signatures, and non-trivial structures
 
@@ -62,7 +60,6 @@ const point: readonly [number, number] = [10, 20];
 ```
 
 Classic usage:
-
 * tuples for coordinates, pairs, parser outputs
 * `readonly` for config and immutable data
 
@@ -96,7 +93,6 @@ const env: Dict = {
 ```
 
 Classic usage:
-
 * prefer explicit object shapes over broad index signatures
 * use index signatures only for genuinely dynamic maps
 
@@ -118,7 +114,6 @@ type Status = "idle" | "loading" | "done";
 ```
 
 Rule of thumb:
-
 * use `interface` for object contracts
 * use `type` for type expressions
 
@@ -142,7 +137,6 @@ type User2 = WithId & WithName;
 ```
 
 Classic usage:
-
 * union for multiple valid input shapes
 * intersection for composition
 
@@ -174,7 +168,6 @@ const format: (x: number) => string = (x) => x.toFixed(2);
 ```
 
 Classic usage:
-
 * annotate exported function return types
 * let callback types be inferred when obvious
 
@@ -204,7 +197,6 @@ if (typeof input === "object" && input !== null) {
 ```
 
 Rule:
-
 * prefer `unknown` over `any`
 * use `never` for exhaustiveness
 
@@ -246,7 +238,6 @@ function handle(value: unknown) {
 ```
 
 Classic usage:
-
 * validating external data
 * handling tagged state
 * moving from `unknown` to specific types
@@ -265,13 +256,11 @@ const config = {
 ```
 
 Effect of `as const`:
-
 * narrows literals
 * marks properties readonly
 * preserves tuple-like array literals
 
 Classic usage:
-
 * enum-like values
 * route names
 * permissions
@@ -289,7 +278,6 @@ const el = document.getElementById("app") as HTMLDivElement;
 ```
 
 Important:
-
 * assertion is not runtime conversion
 * it changes static interpretation, not actual value shape
 
@@ -318,7 +306,6 @@ type Direction2 = typeof Direction2[keyof typeof Direction2];
 ```
 
 Rule of thumb:
-
 * many codebases prefer `as const` objects over `enum`
 * `enum` is still valid, but has extra emitted/runtime semantics
 
@@ -335,7 +322,6 @@ class UserService {
 ```
 
 Useful features:
-
 * `public`, `private`, `protected`
 * parameter properties
 * `readonly`
@@ -387,7 +373,6 @@ const x: Box = { value: "hello" };
 ```
 
 Classic usage:
-
 * container types
 * reusable helpers
 * API wrappers preserving relationships between input and output
@@ -482,7 +467,6 @@ type E2 = ElementType<number>;   // number
 ```
 
 Classic usage:
-
 * extracting function return types
 * unwrapping promises
 * transforming generic input/output relations
@@ -517,7 +501,6 @@ type RequiredAll<T> = {
 ```
 
 Classic usage:
-
 * making all fields optional, required, mutable, readonly
 * deriving multiple views of a schema
 
@@ -538,7 +521,6 @@ type I18nKey = `${Lang}.${Key}`;
 ```
 
 Classic usage:
-
 * event names
 * route patterns
 * i18n keys
@@ -635,7 +617,6 @@ function render2(result: Result) {
 ```
 
 Classic usage:
-
 * request state
 * reducers
 * AST nodes
@@ -657,12 +638,10 @@ const palette = {
 ```
 
 Why it is useful:
-
 * safer than `as`
 * more precise than forcing an annotation
 
 Classic usage:
-
 * config objects
 * route tables
 * dictionaries with constrained keys
@@ -681,7 +660,6 @@ const t = tuple(["a", "b", "c"]);
 ```
 
 Classic usage:
-
 * library helpers that should preserve literal input structure
 * avoiding extra `as const` at call sites
 
@@ -697,7 +675,6 @@ function format(value: number | Date): string {
 ```
 
 Rule:
-
 * use overloads when the API meaning really differs by input shape
 * otherwise prefer unions
 
@@ -720,7 +697,6 @@ import { getUser } from "./user";
 ```
 
 Classic usage:
-
 * keep value imports and type imports distinct
 * reduce confusion between runtime and type-only dependencies
 
@@ -741,7 +717,6 @@ declare const __DEV__: boolean;
 ```
 
 Classic usage:
-
 * typing legacy JS
 * typing untyped third-party modules
 * declaring build-time globals
@@ -804,7 +779,6 @@ const routes = {
 ```
 
 ### Minimum set to become productive fast
-
 * `type`
 * `interface`
 * `|`
@@ -819,14 +793,12 @@ const routes = {
 * `Partial`, `Pick`, `Omit`, `Record`
 
 Then add:
-
 * discriminated unions
 * conditional types
 * mapped types
 * `satisfies`
 
 Common mistakes and easily confused points
-
 * `type` and `interface` overlap, but are not identical in use.
 * `as` is not runtime conversion.
 * `any` turns off checking; it is not “flexible typing.”
@@ -841,7 +813,6 @@ Common mistakes and easily confused points
 ## TypeScript by task pattern
 
 his sheet is organized by actual tasks:
-
 * define data
 * constrain inputs
 * derive types from values
@@ -850,11 +821,9 @@ his sheet is organized by actual tasks:
 * write reusable generic helpers
 * type external or unknown data
 * type modules and libraries
-
 1. Define a fixed object shape
 
 Use when:
-
 * you know the fields ahead of time
 * you want a stable contract for data or parameters
 
@@ -887,14 +856,11 @@ function sendWelcome(user: User) {
 ```
 
 Choose:
-
 * `interface` for object contracts
 * `type` if you may later compose with unions, intersections, or mapped types
-
 1. Define a dictionary or dynamic-key map
 
 Use when:
-
 * keys are not known in advance
 * values all share one type
 
@@ -928,14 +894,11 @@ const usersById: Record<string, { id: number; name: string }> = {
 ```
 
 Rule:
-
 * use explicit object types when keys are known
 * use `Record` or index signatures only for real maps
-
 1. Model a finite set of allowed values
 
 Use when:
-
 * a value should only be one of several exact strings or numbers
 
 Pattern:
@@ -952,16 +915,13 @@ status = "loading";
 ```
 
 Classic use cases:
-
 * state tags
 * event names
 * role names
 * route names
-
 1. Model “one of several shapes”
 
 Use when:
-
 * input or state may have different valid structures
 
 Pattern:
@@ -982,11 +942,9 @@ function printId(id: string | number) {
 ```
 
 This is the basic union pattern.
-
 1. Model “combine several capabilities”
 
 Use when:
-
 * one type should include all fields from multiple parts
 
 Pattern:
@@ -1008,11 +966,9 @@ const user: User = {
 ```
 
 Use intersection `&` for composition.
-
 1. Type function parameters and return values
 
 Use when:
-
 * you want explicit contracts at API boundaries
 
 Pattern:
@@ -1036,10 +992,8 @@ const formatPrice: Formatter = (value) => `$${value.toFixed(2)}`;
 ```
 
 Rule:
-
 * exported functions: annotate return type
 * local callbacks: let inference do most of the work
-
 1. Make a parameter optional or provide a default
 
 Optional parameter:
@@ -1059,14 +1013,11 @@ function greet(name = "world") {
 ```
 
 Difference:
-
 * optional means the argument may be omitted
 * default gives a runtime fallback automatically
-
 1. Type a configuration object
 
 Use when:
-
 * you have a fixed config schema
 * you want validation without losing literal precision
 
@@ -1099,15 +1050,12 @@ const config = {
 ```
 
 Why `satisfies` is often better:
-
 * checks compatibility
 * preserves narrow inferred values
 * avoids some unwanted widening
-
 1. Derive a type from a runtime value
 
 Use when:
-
 * the value already exists
 * you do not want to duplicate it manually at the type level
 
@@ -1136,11 +1084,9 @@ type RoutePath = typeof routes[RouteName];
 ```
 
 This is one of the most important real-world patterns in TS.
-
 1. Derive a union from an array of constants
 
 Use when:
-
 * you want a list of values and a type from the same source
 
 Pattern:
@@ -1159,16 +1105,13 @@ function canLogin(role: Role) {
 ```
 
 This is the standard pattern for:
-
 * roles
 * tags
 * route names
 * enum-like string sets
-
 1. Access a property type from another type
 
 Use when:
-
 * you want to reuse one field’s type
 * you want to keep types synchronized
 
@@ -1187,11 +1130,9 @@ type Profile = User["profile"];
 ```
 
 This is indexed access.
-
 1. Write a safe generic property getter
 
 Use when:
-
 * you want a helper that reads object properties safely
 
 Pattern:
@@ -1212,11 +1153,9 @@ const name = getProp(user, "name"); // string
 ```
 
 This is a canonical TypeScript pattern. Memorize it.
-
 1. Write a reusable generic wrapper type
 
 Use when:
-
 * you want one shape reusable across many data types
 
 Pattern:
@@ -1240,16 +1179,13 @@ const response: ApiResponse<User> = {
 ```
 
 Other common wrappers:
-
 * `Result<T>`
 * `Paginated<T>`
 * `Box<T>`
 * `Nullable<T>`
-
 1. Constrain a generic
 
 Use when:
-
 * a generic type must have certain properties or behavior
 
 Pattern:
@@ -1267,11 +1203,9 @@ getId({ id: 1, name: "Ada" }); // OK
 ```
 
 Use `extends` for generic constraints.
-
 1. Transform all fields of an existing type
 
 Use when:
-
 * you want a derived type from another type
 * you do not want to rewrite every property
 
@@ -1290,15 +1224,12 @@ type ReadonlyUser = Readonly<User>;
 ```
 
 Examples:
-
 * `Partial<T>` for update patches
 * `Required<T>` for validated final objects
 * `Readonly<T>` for immutable views
-
 1. Keep or remove specific fields
 
 Use when:
-
 * you want a subtype projection
 
 Pattern:
@@ -1316,15 +1247,12 @@ type SafeUser = Omit<User, "passwordHash">;
 ```
 
 Classic usage:
-
 * DTOs
 * API response shaping
 * removing secrets before serialization
-
 1. Model request or async state
 
 Use when:
-
 * data moves through loading, success, and failure states
 
 Pattern:
@@ -1356,11 +1284,9 @@ function render(state: RequestState<string[]>) {
 
 This is the discriminated union pattern.
 It is one of the most important business-code patterns in TS.
-
 1. Enforce exhaustive branching
 
 Use when:
-
 * every union member must be handled
 * you want the compiler to catch forgotten branches
 
@@ -1392,11 +1318,9 @@ function render(state: RequestState<string[]>) {
 ```
 
 This is the standard exhaustive-check pattern.
-
 1. Type unknown external data safely
 
 Use when:
-
 * you parse JSON
 * you receive untrusted input
 * you cross a system boundary
@@ -1422,15 +1346,12 @@ if (isUser(input)) {
 ```
 
 Rule:
-
 * external data should begin as `unknown`
 * narrow before using
 * avoid `any` here
-
 1. Type callbacks and higher-order functions
 
 Use when:
-
 * functions are passed around as values
 
 Pattern:
@@ -1450,11 +1371,9 @@ const lengths = mapArray(["a", "bb", "ccc"], (s) => s.length);
 ```
 
 This pattern is fundamental in utility and library code.
-
 1. Extract function parameters or return types
 
 Use when:
-
 * you want to reuse an existing function contract
 * you want wrapper functions to stay synchronized
 
@@ -1471,11 +1390,9 @@ type FetchUserResolved = Awaited<FetchUserReturn>;
 ```
 
 This avoids duplicate type definitions.
-
 1. Write type-level “if” logic
 
 Use when:
-
 * a type should change depending on another type
 
 Pattern:
@@ -1505,11 +1422,9 @@ type E2 = ElementType<number>;   // number
 ```
 
 This is the basic conditional type pattern.
-
 1. Create a new type by mapping over keys
 
 Use when:
-
 * you want systematic field transformation
 
 Pattern:
@@ -1533,11 +1448,9 @@ type FeatureFlags = BoolFlags<Features>;
 ```
 
 This is the mapped type pattern.
-
 1. Construct type-safe key strings
 
 Use when:
-
 * you want structured string names
 * you want compile-time-checked naming conventions
 
@@ -1557,11 +1470,9 @@ type I18nKey = `${Lang}.${Key}`;
 ```
 
 This is the template literal type pattern.
-
 1. Preserve literal precision in helpers
 
 Use when:
-
 * generic helpers should not widen literal inputs too much
 
 Classic `as const` use:
@@ -1582,11 +1493,9 @@ const t = tuple(["a", "b", "c"]);
 ```
 
 Use this in library-style helpers.
-
 1. Type overload-like APIs
 
 Use when:
-
 * function meaning truly changes with input shape
 
 Pattern:
@@ -1601,14 +1510,11 @@ function format(value: number | Date): string {
 ```
 
 Rule:
-
 * overload if distinct call signatures matter
 * otherwise prefer a union
-
 1. Type classes and constructor-based APIs
 
 Use when:
-
 * you model behavior with classes
 * you want constructor contracts
 
@@ -1629,15 +1535,12 @@ class User implements Serializable {
 ```
 
 Pattern notes:
-
 * `implements` checks the instance-side contract
 * use `readonly` for immutable instance data
 * use `abstract` for base classes with required methods
-
 1. Type module boundaries cleanly
 
 Use when:
-
 * you export values and types from files
 * you want clean separation between runtime and type-only dependencies
 
@@ -1662,11 +1565,9 @@ import { getUser } from "./user";
 ```
 
 Use `import type` when only the type is needed.
-
 1. Add types to JavaScript libraries or globals
 
 Use when:
-
 * a JS module has no types
 * build tooling injects globals
 * legacy code needs declarations
@@ -1686,7 +1587,6 @@ declare const __DEV__: boolean;
 ```
 
 This is the declaration-file pattern.
-
 1. Choose between annotation, assertion, and `satisfies`
 
 This is a common confusion point.
@@ -1719,7 +1619,6 @@ const config = {
 ```
 
 Rule:
-
 * annotation defines the variable’s type
 * assertion forces the compiler view, sometimes unsafely
 * `satisfies` checks compatibility while preserving better inference
@@ -1727,7 +1626,6 @@ Rule:
 Minimal pattern set to memorize
 
 If you only memorize 10 patterns, memorize these:
-
 1. fixed object shape
 2. finite union of literals
 3. discriminated union for state
@@ -1740,7 +1638,6 @@ If you only memorize 10 patterns, memorize these:
 10. `satisfies` for config objects
 
 Common mistakes and tacit knowledge
-
 * Many TS problems are really “value level vs type level” confusion.
 * `any` removes safety; use it only as a deliberate escape hatch.
 * `as` does not transform values at runtime.
@@ -1799,7 +1696,6 @@ So TypeScript does not replace JavaScript. It describes JavaScript more precisel
 TypeScript became important because JavaScript grew from small browser scripts into the foundation of large front-end and back-end systems. As projects became larger, developers needed stronger guarantees around refactoring, API design, and team-scale maintenance. JavaScript modules, bundlers, and large application architectures all increased the value of better static analysis. MDN’s account of JavaScript’s evolution toward larger modular applications explains the underlying pressure clearly. ([developer.mozilla.org][3])
 
 In short, TypeScript addresses problems such as:
-
 * accidental property access on the wrong object
 * unclear function contracts
 * fragile refactoring across large codebases
@@ -1956,7 +1852,6 @@ A TypeScript project can import JavaScript modules. If type information is avail
 #### 7.4 JavaScript projects can gradually adopt TypeScript
 
 You do not need a total rewrite. A common path is:
-
 1. keep most files in `.js`
 2. introduce TypeScript configuration
 3. add type checking gradually
@@ -2024,7 +1919,6 @@ The runtime consumer only sees JavaScript.
 ### When to choose JavaScript
 
 Choose JavaScript when:
-
 * the project is very small
 * speed of setup matters more than long-term maintainability
 * the code is mostly exploratory or disposable
@@ -2036,7 +1930,6 @@ JavaScript remains the universal execution layer and still dominates usage broad
 ### When to choose TypeScript
 
 Choose TypeScript when:
-
 * the project will grow
 * several developers will maintain it
 * the API surface is large
@@ -2057,7 +1950,6 @@ A third trend is faster toolchains. The 2024 State of JavaScript data notes stro
 A fourth trend is that JavaScript remains massively used even as TypeScript grows. In Stack Overflow’s 2025 survey language section, JavaScript shows broader usage than TypeScript among respondents, while TypeScript still appears as a major language rather than a niche one. That indicates coexistence, not replacement. ([survey.stackoverflow.co][8])
 
 So the technical trajectory can be summarized like this:
-
 * JavaScript remains the runtime and standards base
 * TypeScript continues growing as the preferred large-project authoring layer
 * native ESM (ECMAScript modules) is now normal
@@ -2071,7 +1963,6 @@ Main point: TypeScript is a development language for writing safer JavaScript. Y
 ### The lifecycle of using TypeScript
 
 A normal TypeScript workflow looks like this:
-
 1. create a project
 2. install TypeScript
 3. create a `tsconfig.json`
@@ -2084,7 +1975,6 @@ A normal TypeScript workflow looks like this:
 That is the whole cycle. TypeScript does most of its work at compile time. JavaScript does the runtime work. ([typescriptlang.org][2])
 
 A useful mental model is:
-
 * TypeScript = authoring and checking
 * JavaScript = execution
 
@@ -2164,7 +2054,6 @@ A good beginner configuration is:
 ```
 
 What these options do:
-
 * `target`: which JavaScript version to emit
 * `module`: which module system to use
 * `rootDir`: where your TypeScript source lives
@@ -2227,7 +2116,6 @@ npx tsc --watch
 This tells the compiler to keep running and rebuild whenever source files change. The CLI documentation includes watch-related usage as part of normal `tsc` workflows. ([typescriptlang.org][2])
 
 This is one of the easiest development loops:
-
 1. edit `src/*.ts`
 2. save
 3. TypeScript recompiles
@@ -2312,7 +2200,6 @@ TypeScript does not require a full rewrite.
 The official migration guide presents gradual migration as a normal path. One of the simplest first steps is to rename a JavaScript file from `.js` to `.ts`, then start fixing the type errors one file at a time. The same applies to `.jsx` becoming `.tsx` when JSX is involved. ([typescriptlang.org][6])
 
 A practical migration path is:
-
 1. install TypeScript
 2. add `tsconfig.json`
 3. convert one important file to `.ts`
@@ -2345,12 +2232,10 @@ That means you do not always need to convert everything to `.ts` immediately to 
 ### What the compiler actually does
 
 The TypeScript compiler, `tsc`, does two main jobs:
-
 * type checking
 * emitting output files
 
 Depending on your configuration, it can emit:
-
 * `.js`
 * source maps
 * declaration files such as `.d.ts`
@@ -2404,7 +2289,6 @@ This is a very common source of confusion.
 ### A good beginner workflow
 
 A clean beginner workflow is:
-
 1. create `src/`
 2. write `.ts` files there
 3. set `outDir` to `dist/`
@@ -2416,7 +2300,6 @@ This gives you clear separation between source and output, which the migration g
 ### What to learn next after the basics
 
 Once the basic compile-run loop is comfortable, the next concepts worth learning are:
-
 * basic types
 * object types
 * function typing
@@ -2432,7 +2315,6 @@ The official docs organize the language and project features in these broad area
 ### Final model
 
 The most useful summary is:
-
 * write TypeScript in `src/`
 * compile with `tsc`
 * get JavaScript in `dist/`

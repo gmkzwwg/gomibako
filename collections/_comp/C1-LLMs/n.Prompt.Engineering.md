@@ -11,6 +11,7 @@ todos:
   - 先看antho好人，再看dan koe，再看文字，再看如何拆书，再看 openclaw（很多注意事项，安全、p注入）
   - Anthropic Claude API，calude code, for excel
   - 幻觉
+  - 尊重llm的知识海洋：有时候让llm补充会更好。
 ---
 
 *"The wise man doesn't give the right answers, he poses the right questions."* - Claude Levi-Strauss
@@ -217,48 +218,39 @@ Example 3
 
 Translate the following sentence into French. Output only the translation.
 Sentence: "The meeting starts at 9 a.m."
-
 2. Sentiment classification
 
 Classify the sentiment of the following review as Positive, Negative, or Neutral. Output only one label.
 Review: "The battery lasts all day, but the screen is too dim."
-
 3. Date extraction
 
 Extract the date from the following sentence. Return it in YYYY-MM-DD format. Output only the date.
 Sentence: "The contract was signed on March 12, 2025."
-
 4. Entity extraction
 
 From the sentence below, extract the company name. Output only the company name.
 Sentence: "Microsoft announced a new cloud partnership on Tuesday."
-
 5. Grammar correction
 
 Correct the grammar in the following sentence. Keep the meaning unchanged. Output only the corrected sentence.
 Sentence: "She go to the library every Saturdays."
-
 6. Summarization with fixed length
 
 Summarize the following paragraph in exactly one sentence of no more than 20 words.
 Paragraph: "Solar energy is becoming cheaper each year. Many countries are investing in large-scale solar farms. Improvements in battery storage are also making solar power more practical."
-
 7. Keyword extraction
 
 Extract exactly 3 keywords from the following text. Output them as a comma-separated list.
 Text: "Machine learning models require data, computation, and careful evaluation."
-
 8. JSON formatting
 
 Convert the following information into valid JSON with exactly these keys: name, age, city.
 Information: Name: Alice Chen; Age: 29; City: Boston.
 Output only valid JSON.
-
 9. Title generation
 
 Write one clear title for the article below. Use no more than 8 words. Output only the title.
 Article: "A new study shows that regular walking improves heart health, sleep quality, and mood."
-
 10. Boolean decision
 
 Answer the question with only Yes or No.
@@ -390,7 +382,6 @@ The implementation choices matter. Zero-shot CoT, simply adding "think step by s
 
 **Example:** *"A store sells apples for $0.75 each and oranges for $1.25 each. Maya buys 4 apples and 3 oranges. How much does she spend in total? Think step by step."*
 This works because without the CoT instruction, the model may collapse the calculation into a single step and make an arithmetic error; the step-by-step constraint forces it to compute each sub-total independently and then sum them, reducing the probability of error at each stage.
-
 * 思维链提示并不等于“只要写得更长就更正确”；关键在于中间步骤是否真正有助于推理，而不是单纯增加篇幅。
 * 它通常能减少幻觉和错误，但不能保证完全正确；错误的推理链仍然可能存在。
 * 零样本思维链和少样本思维链不是对立关系；前者更简便，后者在复杂或专业任务中往往更稳。
@@ -470,7 +461,6 @@ This works because the adversarial role activates a specific subset of training 
 > * precise [prɪˈsaɪs] adj.精确的；准确而不含糊的
 
 易错点与易混点
-
 * 角色提示不只是“换个语气说话”；它会同时改变词汇、标准、细节层次和任务取向。
 * “角色”与“风格”不完全相同；风格更偏表达方式，角色还包含立场、职责和判断标准。
 * 角色设定越具体，效果通常越稳定；过于笼统的人设往往会让模型退回默认行为。
@@ -540,7 +530,6 @@ This works because each step is narrow enough to be executed with high accuracy,
 > * reliably [rɪˈlaɪəbli] adv.可靠地；稳定地
 
 易错点与易混点
-
 * 提示链不是简单地“把一个长提示拆短”；关键在于按功能把任务分成真正不同的操作步骤。
 * 步骤拆分过粗，仍会让单步任务负担过重；拆分过细，则可能增加不必要的延迟和复杂度。
 * 提示链的优势不只是准确率更高，还包括更容易测试、调试、替换模型和长期维护。
@@ -766,102 +755,53 @@ and **"Include these selectively rather than exhaustively."**
 
 **"Synthesize, don't list."**
 *Why it works:* Bullet-point generation is the model's lowest-effort response pattern — it requires no connective reasoning between items. Explicitly requesting synthesis forces the model to establish logical or causal relationships between pieces of information, producing prose that reflects genuine analytical work rather than a formatted data dump.
-
-
 1. "Return exactly these sections, in this order: ..."
-
    Why it works: This gives the model an output contract. It reduces drift, stops the model from adding surprise sections, and makes the response easier to parse by both humans and downstream code. ([OpenAI][2])
-
 2. "If a format is required, output only that format."
-
    Why it works: This sharply narrows the output space. It is especially useful for JSON, XML, SQL, Markdown, or other machine-read formats where extra prose breaks the result. ([OpenAI][2])
-
 3. "Use the following labels exactly: [A, B, C]."
-
    Why it works: Exact label sets reduce ambiguity in classification and routing tasks. They also reduce synonym drift, where the model invents near-miss labels that are semantically close but operationally useless. ([Claude API Docs][3])
-
 4. "Your task is X. Constraints: A, B, C."
-
    Why it works: This pattern separates goal from limits. Models tend to do better when the task and the boundaries are both explicit, rather than buried in a long paragraph. ([Claude API Docs][3])
-
 5. "Follow these steps in order: 1) ... 2) ... 3) ..."
-
    Why it works: Numbered steps help when order matters or when the task is easy to skip through too quickly. Anthropic explicitly recommends sequential steps when completeness or order matters. ([Claude API Docs][3])
-
 6. "First classify the input. Then generate the response based on the class."
-
    Why it works: This is a compact prompt-chaining pattern. It breaks a mixed task into two cleaner mental stages and often improves control, debugging, and consistency. Google also recommends breaking complex multi-step logic into smaller calls when needed. ([Google for Developers][4])
-
 7. "Here are a few examples. Follow the same pattern."
-
    Why it works: Few-shot examples are one of the most reliable ways to control format, tone, and structure. They work especially well when instructions alone leave room for interpretation. ([Claude API Docs][3])
-
 8. "Examples: [input] -> [output]"
-
    Why it works: A simple repeated template makes the pattern easier to infer than a loose paragraph of examples. Consistent formatting lowers the chance that the model learns the wrong surface cue from the demonstrations. ([Claude API Docs][3])
-
 9. "Act as a [specific role] who [audience, style, goal]."
-
    Why it works: A specific role changes voice, depth, and priorities. "Act as a tax lawyer writing for a startup founder" is much stronger than "act as an expert," because it sets both perspective and audience. ([OpenAI][5])
-
 10. "Only include [quotes / examples / citations / equations] where directly relevant."
-
     Why it works: This gives the model permission to be selective instead of mechanically satisfying every optional feature everywhere. It reduces forced additions and usually improves signal-to-noise ratio. This also aligns with official guidance to keep outputs compact and avoid unnecessary repetition. ([OpenAI][2])
-
 11. "Focus on the most relevant or most illuminating points, not every possible point."
-
     Why it works: LLMs often default toward over-inclusion when trying to be helpful. This pattern pushes the model toward ranking and selection rather than exhaustive dumping. ([OpenAI][2])
-
 12. "Be concise and information-dense."
-
     Why it works: This is better than simply saying "be short" because it points the model toward compression without asking it to omit important content. OpenAI’s current prompt guidance explicitly recommends concise, information-dense writing. ([OpenAI][2])
-
 13. "Use numbered bullets when order or completeness matters."
-
     Why it works: Numbered structure helps the model keep coverage aligned with the prompt. It also makes omissions and duplicates easier to spot during review. ([Claude API Docs][3])
-
 14. "Separate the prompt into <context>, <instructions>, and <input>."
-
     Why it works: Delimiters reduce confusion about what is background, what is binding instruction, and what is the material to operate on. Anthropic and Google both recommend explicit separation for complex prompts. ([Claude API Docs][3])
-
 15. "Wrap examples in <examples> ... </examples>."
-
     Why it works: This helps the model distinguish demonstrations from rules. It is especially useful when the prompt mixes examples, context, and variable user input in the same message. ([Claude API Docs][3])
-
 16. "Use consistent, descriptive tags throughout the prompt."
-
     Why it works: Reusing stable tags like `<instructions>`, `<documents>`, and `<answer_schema>` makes the prompt easier to parse and maintain. It also reduces ambiguity when prompts become long. ([Claude API Docs][3])
-
 17. "Think through the problem step by step, then give the final answer."
-
     Why it works: For complex reasoning tasks, chain-of-thought prompting can improve performance by encouraging intermediate reasoning steps rather than a jump to the answer. This has strong support in the literature for arithmetic, commonsense, and symbolic reasoning tasks. ([arXiv][6])
-
 18. "First list the relevant facts. Then infer the answer from those facts."
-
     Why it works: This is a structured version of step-by-step reasoning. It is often more stable than a generic "think carefully" instruction because it tells the model what the intermediate steps should look like. ([arXiv][6])
-
 19. "For code, begin with: import"
-
     Why it works: OpenAI explicitly notes that "leading words" can nudge the model into the right completion pattern. The same idea often works with `SELECT`, `{`, or function signatures for code and structured text. ([OpenAI Help Center][7])
-
 20. "If newer instructions conflict with older ones, follow the newer instruction; preserve the rest."
-
     Why it works: This pattern is useful in long-running assistants or agent prompts. It reduces confusion when the task evolves mid-conversation and gives the model a simple conflict rule. ([OpenAI][2])
-
 21. "If the task is clear and low-risk, proceed without asking; otherwise ask only for the missing critical information."
-
     Why it works: This is a strong operational pattern for assistants and agents. It reduces unnecessary back-and-forth while still guarding against irreversible or high-impact actions. ([OpenAI][2])
-
 22. "State the answer first. Then give a brief rationale."
-
     Why it works: This pattern improves usability for decision support, classification, and review tasks. It keeps the main output easy to read while still preserving enough reasoning to make the answer inspectable. It also matches the general provider guidance toward compact, structured responses. ([OpenAI][2])
-
 23. "Use 3 to 5 examples that mirror the real task."
-
     Why it works: Anthropic explicitly recommends 3 to 5 examples for best results, and also stresses that examples should be relevant and diverse. This is a strong default for few-shot prompting when one example is too weak and many examples are too expensive. ([Claude API Docs][3])
-
 24. "Keep the prompt focused on one main task."
-
     Why it works: Google’s guidance is very direct here: concise prompts with focused tasks work better, especially on smaller models. Narrow prompts reduce instruction collision and lower the chance that the model over-optimizes one part of the request at the expense of another. ([Google for Developers][4])
 
 ### Part II: Patterns That Don't Work Well — And What to Use Instead
@@ -871,135 +811,91 @@ and **"Include these selectively rather than exhaustively."**
 
 
 These are not always useless, but they are often weaker, more brittle, or less controllable than the stronger replacements.
-
 1. Weak: "Be brief."
-
    Better: "Answer in 1 to 3 sentences."
 
    Why it works better: "Brief" is vague. OpenAI explicitly recommends replacing imprecise length language with a structural limit such as a sentence range. ([OpenAI Help Center][7])
-
 2. Weak: "Do not do X."
-
    Better: "Instead of X, do Y."
 
    Why it works better: OpenAI explicitly recommends saying what to do, not only what to avoid. Positive alternatives give the model a target behavior instead of only a prohibition. ([OpenAI Help Center][7])
-
 3. Weak: "Write a good answer."
-
    Better: "Write a clear answer with 3 bullet points, one example, and no jargon."
 
    Why it works better: "Good" is underspecified. Research on prompt sensitivity shows that weakly constrained prompts produce higher variance than prompts with specific instructions and output constraints. ([arXiv][1])
-
 4. Weak: "Explain this well."
-
    Better: "Explain this for a first-year student using simple words and one concrete example."
 
    Why it works better: "Well" does not define audience, depth, or style. Adding audience and output cues reduces the model’s need to guess your standard. ([Claude API Docs][3])
-
 5. Weak: "Cover everything."
-
    Better: "Cover the 3 to 5 most decision-relevant points."
 
    Why it works better: Exhaustive prompts often trigger verbosity and repetition. Current prompt guidance prefers compact, information-dense output over exhaustive dumping. ([OpenAI][2])
-
 6. Weak: "Use all of the following points: ..."
-
    Better: "Use whichever of the following points are most relevant."
 
    Why it works better: A forced-all-items rule often produces padding, awkward transitions, and weak prioritization. Selective instructions usually produce cleaner answers unless true completeness is required. ([OpenAI][2])
-
 7. Weak: A long fluffy preamble before the real instruction.
-
    Better: Put the task first, then constraints, then input.
 
    Why it works better: Google explicitly warns that verbose preambles with repeated instructions can hurt results. Extra setup text often buries the actual job. ([Google for Developers][4])
-
 8. Weak: One giant paragraph mixing context, rules, examples, and user input.
-
    Better: Separate them with headings or tags.
 
    Why it works better: Without delimiters, the model has to infer which text is instruction and which text is data. Anthropic and Google both recommend explicit separation to reduce misinterpretation. ([Claude API Docs][3])
-
 9. Weak: "Do X, and if X leads to A then do M, otherwise N, then maybe Y unless B ..."
-
    Better: Break the task into multiple prompts or steps.
 
    Why it works better: Google explicitly recommends breaking hard multi-step logic into smaller focused tasks. Complex branching in a single prompt is fragile and hard to debug. ([Google for Developers][4])
-
 10. Weak: No output format at all.
-
     Better: "Return JSON with fields ...", or "Return exactly 4 bullets."
 
     Why it works better: Format-free prompts leave too much room for drift. Official guidance across providers repeatedly emphasizes explicit output formats and constraints. ([Claude API Docs][3])
-
 11. Weak: "Act as an expert."
-
     Better: "Act as a bankruptcy lawyer advising a small-business owner in plain English."
 
     Why it works better: Generic roles are weak steering signals. Specific roles work better because they define viewpoint, audience, vocabulary, and likely priorities at the same time. ([OpenAI][5])
-
 12. Weak: "Think carefully."
-
     Better: "First identify the facts. Then compare the options. Then decide."
 
     Why it works better: A vague reasoning cue may help a little, but it still leaves the reasoning shape open. Structured reasoning prompts are usually more stable on multi-step tasks. ([arXiv][6])
-
 13. Weak: "Use examples."
-
     Better: "Here are 3 examples in the exact input -> output format. Follow the same pattern."
 
     Why it works better: Anthropic recommends examples that are relevant, diverse, and structured. Loose or badly framed examples often teach the wrong pattern. ([Claude API Docs][3])
-
 14. Weak: Too many few-shot examples.
-
     Better: Start with 3 to 5 strong examples.
 
     Why it works better: More examples increase prompt length and inference cost, and can also add noise. Official guidance recommends a smaller, high-quality set rather than an oversized block. ([Claude API Docs][3])
-
 15. Weak: Inconsistent examples.
-
     Better: Keep examples in one stable format and one stable standard.
 
     Why it works better: If the examples disagree in style, label logic, or structure, the model cannot tell which rule to copy. Anthropic’s guidance on relevance, diversity, and structure implies that consistency matters. ([Claude API Docs][3])
-
 16. Weak: "Just use common sense."
-
     Better: State the decision rule explicitly.
 
     Why it works better: "Common sense" is not a clear operational rule. Prompt underspecification is a known source of performance variance, especially in classification and decision tasks. ([arXiv][1])
-
 17. Weak: "Do not hallucinate."
-
     Better: "If the answer is uncertain, say what is known, what is missing, and do not invent details."
 
     Why it works better: A bare ban does not tell the model how to behave under uncertainty. Positive behavior instructions are generally stronger than negative-only ones. ([OpenAI Help Center][7])
-
 18. Weak: "Answer exactly in 37 words."
-
     Better: "Answer in 1 to 2 sentences."
 
     Why it works better: Very exact micro-length targets are brittle for normal prose prompts. A sentence range is usually easier to follow and still gives strong control over length. OpenAI’s own examples move from vague length wording to sentence-based constraints rather than exact tiny word quotas. ([OpenAI Help Center][7])
-
 19. Weak: "Based on the above, answer the question."
-
     Better: "Using only the text inside <source> ... </source>, answer the question."
 
     Why it works better: "The above" becomes unclear as prompts get long. Delimited source blocks reduce reference ambiguity and lower the chance of the model using the wrong context. ([Claude API Docs][3])
-
 20. Weak: A prompt that keeps changing criteria without saying which rule wins.
-
     Better: "If newer instructions conflict with older ones, follow the newer ones."
 
     Why it works better: Long conversations and layered prompts can create silent rule collisions. An explicit priority rule reduces confusion and improves consistency across turns. ([OpenAI][2])
-
 21. Weak: "Please do your best."
-
     Better: Replace it with actual constraints or examples.
 
     Why it works better: Polite filler rarely adds useful operational information. Provider guidance repeatedly favors clear, direct, explicit instructions over vague framing. ([Claude API Docs][3])
-
 22. Weak: "Give me a full chain of thought."
-
     Better: "Give the answer first, then a short rationale or key steps."
 
     Why it works better: In many real systems, the most useful visible output is not a long raw reasoning trace but a compact explanation that is easy to inspect. A short rationale also aligns better with the provider guidance toward compact, structured answers. ([OpenAI][2])
@@ -1079,7 +975,6 @@ Below is a working reference, not a set of universal laws. Prompt wording and fo
 ## A compact rule of thumb
 
 The strongest prompt patterns usually do one or more of these things:
-
 * narrow the output space,
 * make the task and constraints explicit,
 * separate instruction from data,
@@ -1088,7 +983,6 @@ The strongest prompt patterns usually do one or more of these things:
 * and reduce ambiguity about format, priority, and completeness. ([Claude API Docs][3])
 
 The weakest prompt patterns usually do the opposite:
-
 * they are vague,
 * underspecified,
 * overly broad,
@@ -1099,7 +993,6 @@ If you want, I can turn this into a cleaner one-page cheat sheet with only the p
 
 
 ## Clever Tricks for Prompting
-
 1. 写两遍
 2. 主要用英文，多语言夹杂
 3. 命令、辱骂之后，llm会表现得更好

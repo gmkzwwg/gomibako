@@ -5,7 +5,6 @@ categories: Notes
 abbreviation: LLMs Comparing
 subclass: LLMs
 ---
-
 - [AI 模型学习场景推荐对比](#ai-模型学习场景推荐对比)
   - [📐 数学](#-数学)
   - [⚛️ 物理学](#️-物理学)

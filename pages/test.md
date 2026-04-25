@@ -107,45 +107,34 @@ Blockquote for bilingual support. Click Bilingual Button or set page.bilingual `
 
 **Formulas** (KaTeX or MathJax)
 1. Bayes’ theorem (including the evidence term)
-
    $$
    p(\theta\mid x)=\frac{p(x\mid \theta)p(\theta)}{p(x)},\qquad
    p(x)=\int p(x\mid \theta)p(\theta),d\theta
    $$
-
 2. Relationship between KL divergence and cross-entropy
-
    $$
    D_{\mathrm{KL}}(p\Vert q)=\int p(x)\log\frac{p(x)}{q(x)},dx
    ,\qquad
    H(p,q)=H(p)+D_{\mathrm{KL}}(p\Vert q)
    $$
-
 3. Evidence Lower Bound (ELBO)
-   
    $$
    \log p(x)=\mathcal{L}(q)+D_{\mathrm{KL}}!\bigl(q(z)\Vert p(z\mid x)\bigr),
    \qquad
    \mathcal{L}(q)=\mathbb{E}_{q(z)}[\log p(x,z)-\log q(z)]
    $$
-
 4. Multivariate Gaussian density
-   
    $$
    \mathcal{N}(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{d/2},|\Sigma|^{1/2}}
    \exp!\left(-\frac12(x-\mu)^\top\Sigma^{-1}(x-\mu)\right)
    $$
-
 5. Closed-form solution of linear regression (least squares)
-   
    $$
    \hat{\beta}=\arg\min_{\beta}|y-X\beta|_2^2
    \quad\Rightarrow\quad
    \hat{\beta}=(X^\top X)^{-1}X^\top y
    $$
-
 6. Lagrangian duality (primal–dual–KKT skeleton)
-   
    $$
    \min_x f(x)\ \text{s.t.}\ g_i(x)\le 0,\ h_j(x)=0
    $$
@@ -153,15 +142,11 @@ Blockquote for bilingual support. Click Bilingual Button or set page.bilingual `
    L(x,\lambda,\nu)=f(x)+\sum_i \lambda_i g_i(x)+\sum_j \nu_j h_j(x),\qquad
    \max_{\lambda\ge 0,\nu}\ \inf_x L(x,\lambda,\nu)
    $$
-
 7. Euler–Lagrange equation (calculus of variations / classical mechanics)
-   
    $$
    \frac{\partial \mathcal{L}}{\partial q}-\frac{d}{dt}\left(\frac{\partial \mathcal{L}}{\partial \dot q}\right)=0
    $$
-
 8. Maxwell’s equations (SI)
-   
    $$
    \nabla\cdot \mathbf{E}=\frac{\rho}{\varepsilon_0},\quad
    \nabla\cdot \mathbf{B}=0,\quad
@@ -172,19 +157,16 @@ Blockquote for bilingual support. Click Bilingual Button or set page.bilingual `
 ## Lists and Tables
 
 ### Ordered and Unordered Lists
-
 - Unordered 1
 - Unordered 2
   - Nested 2.1
   - Nested 2.2
   > Third paragraph used for bilingual folding test.
   {: .lang-alt}
-
 1. Ordered 1
 2. Ordered 2
    1. Nested 2.1
    > Fourth paragraph used for bilingual folding test.
-
 - [x] Task done
 - [ ] Task todo
 > Fifth paragraph used for bilingual folding test.
@@ -197,7 +179,6 @@ Term A
 : Definition A2
 : Definition A3
   : Definition A 3.1
-
 1. Term B
 : Definition B
 2. Term C

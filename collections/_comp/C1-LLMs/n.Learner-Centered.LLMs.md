@@ -45,7 +45,6 @@ todos: drafting
 7. Complete tutorial
 
 ### For Knowledge Architecture / Minimal Tutorial
-
 1. Ontology
 2. Core Concepts and First principles
 3. Full Skill Stack / (Layerd) Knowledge Structure

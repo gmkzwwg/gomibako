@@ -149,7 +149,6 @@ This table provides a structured view of how different letter combinations are p
 ### Silent Letters in Liaison
 
 In some cases, silent letters may become pronounced in liaison, where the final consonant of a word is pronounced with the initial vowel sound of the next word. This typically happens in formal or careful speech.
-
 - **S**: Often pronounced in liaison.
   - Examples: *les amis* (the friends) [lez‿ami] (the **s** is pronounced)
 - **T**: Pronounced in liaison.

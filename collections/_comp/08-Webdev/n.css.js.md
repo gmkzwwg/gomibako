@@ -177,27 +177,21 @@ E.G.
 ## CSS
 
 ### CSS Aesthetics
-
 1. **Consistent Indentation**:
    - Use 2 or 4 spaces per indentation level.
    - **Avoid tabs** to keep the indentation consistent across editors.
-
 2. **Meaningful Naming**:
    - For `Mixins`: describe what effects they take (functionality), rather than where to use (purpose).
    - Use semantic, **descriptive class names** like `.navbar`, `.btn-primary`, and `.container`.
    - Avoid unnecessary abbreviations; instead, aim for readability.
-
 3. **Organized Properties**:
    - Group related properties together (e.g., layout properties, typography, colors).
    - Use alphabetical order or logical grouping, depending on your preference and team conventions.
-
 4. **Avoid Inline Styles**:
    - Separate structure (HTML) from styling (CSS).
    - Only use inline styles for dynamic styling changes, especially with JavaScript.
-
 5. **Avoid !important**:
    - Use specificity correctly to avoid using `!important`, which can complicate overriding styles.
-
 6. **Use CSS Variables**:
    - Define variables for `colors`, `fonts`, `sizes`, and other `recurring values` to make the code **monolithic consistent and easy to update**.
    - Example:
@@ -207,19 +201,15 @@ E.G.
        --font-size-large: 18px;
      }
      ```
-
 7. **Comment Wisely**:
    - Use comments to explain non-obvious code, but avoid redundant comments.
    - Organize sections with comments if the CSS file is large.
-
 8. **Consistent Units**:
    - Use `rem` or `em` for font sizes and spacing for a scalable design.
    - Use percentages for widths in responsive design and `px` sparingly.
-
 9. **Minimize Selectors’ Depth**:
    - Keep selector depth to a minimum to reduce specificity issues and improve performance.
    - Avoid excessive nesting in preprocessors like SCSS.
-
 10. **Media Queries**:
     - Use media queries consistently and consider using a "mobile-first" approach.
     - Group media queries at the end of the file or organize them by screen size.
@@ -268,43 +258,33 @@ body {
 ## JavaScript
 
 ### JavaScript Aesthetics
-
 1. **Consistent Naming**:
    - Use `camelCase` for variables and functions, `PascalCase` for classes, and `ALL_CAPS` for constants.
    - Choose `descriptive names` that clearly indicate the `purpose` of the variable or function.
-
 2. **Modularize Code**:
    - Separate code into functions and modules to make it more readable and reusable.
    - Avoid long functions; instead, break them down into smaller, single-purpose functions.
-
 3. **Consistent Indentation and Spacing**:
    - Use 2 or 4 spaces per indentation level.
    - Use blank lines between blocks of code for better readability.
-
 4. **Use ES6+ Syntax**:
    - Use `let` and `const` instead of `var`.
    - Use arrow functions for cleaner syntax, especially for callbacks.
    - Utilize destructuring, template literals, and default parameters for more concise code.
-
 5. **Avoid Global Variables**:
    - Wrap code in functions or modules to avoid polluting the global namespace.
    - Use IIFEs (Immediately Invoked Function Expressions) or modules to encapsulate code.
-
 6. **Consistent Commenting**:
    - Use comments to explain complex code, but avoid over-commenting.
    - Document functions with JSDoc-style comments to describe their purpose, parameters, and return values.
-
 7. **Error Handling**:
    - Use `try...catch` for handling errors in code that may fail.
    - Log informative messages to make debugging easier.
-
 8. **Consistent Formatting**:
    - Follow a consistent style guide like Airbnb’s JavaScript Style Guide.
    - Use tools like Prettier and ESLint to enforce code formatting.
-
 9. **Avoid Nested Callbacks (Callback Hell)**:
    - Use Promises or async/await for asynchronous operations to avoid deeply nested callbacks.
-
 10. **Keep Functions Pure**:
     - Write pure functions that depend on their inputs and avoid side effects when possible. This makes code easier to test and debug.
 
@@ -371,9 +351,6 @@ Using these CSS and JavaScript aesthetic practices will make your codebase more 
 | 函数式组织（FP：Functional Core / Imperative Shell） | 核心逻辑做纯函数；副作用集中在边界                     | 易测试、可推理；副作用可控                | 对 DOM 操作仍需命令式外壳；需要分层习惯                                | 逻辑增长、希望降低维护成本                |
 | PubSub / Observer（事件总线）                      | 通过事件解耦触发者与执行者                         | 组件解耦；扩展点自然（监听/取消监听）          | 调试链路变长；事件名治理需要约定                                      | 多个组件协作、需要插件式扩展               |
 | MVC/MVP/MVVM/Flux（架构模式）                      | 分离状态/动作/视图更新                          | 大型交互可维护；职责分明                 | 对小脚本过重；样板多                                            | 页面变“应用”时（状态复杂、交互多）           |
-
-
-
 1. IIFE（含导出到 window）
 
 ```js
@@ -386,7 +363,6 @@ Using these CSS and JavaScript aesthetic practices will make your codebase more 
   w.BilingualToggle = { expandAll, collapseAll };
 })(window, document);
 ```
-
 2. 直接挂全局（Global Export）
 
 ```js
@@ -397,7 +373,6 @@ function collapseAll() {}
 
 window.BilingualToggle = { expandAll, collapseAll };
 ```
-
 3. 命名空间（Namespace）
 
 ```js
@@ -409,7 +384,6 @@ Site.BilingualToggle = Site.BilingualToggle || {};
 Site.BilingualToggle.expandAll = function () {};
 Site.BilingualToggle.collapseAll = function () {};
 ```
-
 4. Revealing Module（揭示模块）
 
 ```js
@@ -422,7 +396,6 @@ window.BilingualToggle = (function () {
   return { expandAll, collapseAll };
 })();
 ```
-
 5. 工厂函数（可多实例）
 
 ```js
@@ -437,7 +410,6 @@ function createBilingualToggle(opts) {
 const bt = createBilingualToggle({ selector: "blockquote" });
 bt.expandAll();
 ```
-
 6. 构造器 + 原型
 
 ```js
@@ -453,7 +425,6 @@ BilingualToggle.prototype.collapseAll = function () {};
 const bt = new BilingualToggle({ selector: "blockquote" });
 bt.expandAll();
 ```
-
 7. class
 
 ```js
@@ -470,7 +441,6 @@ class BilingualToggle {
 const bt = new BilingualToggle({ selector: "blockquote" });
 bt.expandAll();
 ```
-
 8. ESM（ES Modules）
    `/assets/bilingual-toggle.js`
 
@@ -496,7 +466,6 @@ HTML：
   window.BilingualToggle = BT;
 </script>
 ```
-
 9. CommonJS（Node / 打包环境）
 
 ```js
@@ -506,7 +475,6 @@ function collapseAll() {}
 module.exports = { expandAll, collapseAll };
 // 使用：const BT = require("./bilingual-toggle");
 ```
-
 10. AMD（RequireJS）
 
 ```js
@@ -516,7 +484,6 @@ define([], function () {
   return { expandAll, collapseAll };
 });
 ```
-
 11. UMD（库分发骨架）
 
 ```js
@@ -530,7 +497,6 @@ define([], function () {
   return { expandAll, collapseAll };
 });
 ```
-
 12. 依赖注入（DI）
 
 ```js
@@ -547,7 +513,6 @@ function createBilingualToggle(env, opts) {
 const BT = createBilingualToggle({ window, document }, { selector: "blockquote" });
 BT.expandAll();
 ```
-
 13. FP：Functional Core / Imperative Shell
 
 ```js
@@ -566,7 +531,6 @@ function expandAll(document, selector) {
   els.forEach(el => { el.classList.remove("collapsed"); });
 }
 ```
-
 14. PubSub / Observer（事件总线）
 
 ```js
@@ -580,7 +544,6 @@ function requestExpandAll() {
   bus.dispatchEvent(new Event("bt:expandAll"));
 }
 ```
-
 15. MVC/Flux（极简骨架）
 
 ```js

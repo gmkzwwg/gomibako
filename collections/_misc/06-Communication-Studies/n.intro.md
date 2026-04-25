@@ -28,7 +28,6 @@ In practice, these tools apply via concrete methods: Shannon’s model is used i
 **Interdisciplinary Collaborations:**  Communication studies draws on *Psychology* (cognitive, social, developmental), *Sociology* (social networks, stratification), *Political Science* (public opinion, propaganda), *Anthropology* (cultural norms), *Linguistics* (pragmatics, discourse), *Economics* (information economy), *Computer Science* (NLP, social media algorithms), *Health Sciences* (health campaigns), *Education* (pedagogy), *Law* (free speech), and *Cultural Studies* (media and identity). As [29] notes, scholars examine how communication intersects with gender, politics, health, and technology【29†L75-L84】. For example, collaboration with computer scientists yields computational content analysis; with psychologists yields persuasion experiments; with sociologists yields social network analysis. 
 
 **Knowledge-Map (Core Concepts):**  Below is a list of key concepts and terms (nouns) in the discipline’s system. These names form nodes in the knowledge network of communication studies:
-
 - *Message, Medium, Channel, Code, Signal, Noise*  
 - *Sender (Communicator), Receiver (Audience), Opinion Leader*  
 - *Content, Context, Feedback, Network*  

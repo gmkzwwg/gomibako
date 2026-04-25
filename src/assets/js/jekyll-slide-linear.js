@@ -22,6 +22,12 @@
     titleScale: 1.8,
     headingPadding: { top: 16, right: 24, bottom: 12, left: 24 },
     bodyPadding: { top: 0, right: 48, bottom: 0, left: 48 },
+    indexPage: {
+      enabled: true,
+      position: 'last',
+      menuTitle: 'Index',
+      headingText: "Here's Index & Thanks!"
+    },
     animationMs: 260,
     autoplayInterval: 5,
     menuMaxHeight: 240,
@@ -303,6 +309,38 @@
       .jsd-linear-menu-item.is-current {
         font-weight: 700;
       }
+      .jsd-index-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .jsd-index-item {
+        display: block;
+        width: 100%;
+      }
+      .jsd-index-btn {
+        width: 100%;
+        display: block;
+        text-align: left;
+        box-sizing: border-box;
+        border: 1px solid currentColor;
+        background: transparent;
+        color: inherit;
+        padding: 10px 12px;
+        font: inherit;
+        cursor: pointer;
+      }
+      .jsd-index-btn:focus-visible {
+        outline: 1px solid currentColor;
+        outline-offset: -1px;
+      }
+      .jsd-index-btn-num {
+        display: inline-block;
+        min-width: 2.6em;
+        font-weight: 700;
+      }
       .jsd-linear-empty {
         display: none;
       }
@@ -408,6 +446,42 @@
     return parseLinearSlides(scratch);
   }
 
+  function shouldAddIndexPage() {
+    const cfg = state.config.indexPage || {};
+    if (cfg.enabled === false) return false;
+    const position = String(cfg.position || 'last').toLowerCase();
+    return position === 'first' || position === 'last';
+  }
+
+  function getIndexPosition() {
+    const cfg = state.config.indexPage || {};
+    const position = String(cfg.position || 'last').toLowerCase();
+    if (position === 'first') return 'first';
+    if (position === 'none') return 'none';
+    return 'last';
+  }
+
+  function createIndexSlide() {
+    const cfg = state.config.indexPage || {};
+    const headingText = typeof cfg.headingText === 'string' ? cfg.headingText : '';
+    return {
+      key: 'index-slide',
+      type: 'index',
+      menuTitle: String(cfg.menuTitle || 'Index'),
+      heading: headingText,
+      nodes: []
+    };
+  }
+
+  function applyIndexPage(slides) {
+    const nextSlides = Array.isArray(slides) ? slides.slice() : [];
+    if (!shouldAddIndexPage()) return nextSlides;
+    const indexSlide = createIndexSlide();
+    if (getIndexPosition() === 'first') nextSlides.unshift(indexSlide);
+    else nextSlides.push(indexSlide);
+    return nextSlides;
+  }
+
   function clearAutoplay() {
     if (state.autoplayTimer) {
       window.clearInterval(state.autoplayTimer);
@@ -480,13 +554,51 @@
     return classes[Math.floor(Math.random() * classes.length)];
   }
 
+  function renderIndexBody(body) {
+    const list = document.createElement('div');
+    list.className = 'jsd-index-list';
+
+    state.slides.forEach(function (slide, index) {
+      if (slide.type === 'index') return;
+
+      const item = document.createElement('div');
+      item.className = 'jsd-index-item';
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'jsd-index-btn';
+
+      const num = document.createElement('span');
+      num.className = 'jsd-index-btn-num';
+      num.textContent = String(index + 1) + '.';
+
+      const title = document.createElement('span');
+      title.className = 'jsd-index-btn-title';
+      title.textContent = getMenuItemTitle(slide, index);
+
+      btn.appendChild(num);
+      btn.appendChild(title);
+      btn.addEventListener('click', function () {
+        goTo(index);
+      });
+
+      item.appendChild(btn);
+      list.appendChild(item);
+    });
+
+    body.appendChild(list);
+  }
+
   function renderCurrent() {
     const slide = state.slides[state.currentIndex];
     if (!slide || !state.dom.root) return;
 
     state.dom.root.innerHTML = '';
 
-    const showHeading = state.config.mode !== 'language' && Boolean((slide.heading || '').trim());
+    const showHeading = slide.type === 'index'
+      ? Boolean((slide.heading || '').trim())
+      : state.config.mode !== 'language' && Boolean((slide.heading || '').trim());
+
     let heading = null;
     if (showHeading) {
       heading = document.createElement('div');
@@ -497,9 +609,14 @@
 
     const body = document.createElement('div');
     body.className = 'jsd-slide-body ' + getAnimationClass();
-    slide.nodes.forEach(function (node) {
-      body.appendChild(node.cloneNode(true));
-    });
+
+    if (slide.type === 'index') {
+      renderIndexBody(body);
+    } else {
+      slide.nodes.forEach(function (node) {
+        body.appendChild(node.cloneNode(true));
+      });
+    }
 
     state.dom.root.appendChild(body);
     state.dom.heading = heading;
@@ -733,7 +850,7 @@
     } else if (!state.originalHTML) {
       state.originalHTML = nextTarget.innerHTML;
     }
-    state.slides = parseSlidesFromOriginal();
+    state.slides = applyIndexPage(parseSlidesFromOriginal());
     state.currentIndex = 0;
     return true;
   }

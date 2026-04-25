@@ -11,7 +11,6 @@ subclass: Linux
 Prerequisite:
   1. USB Flash Disk with 4 GiB Storage at least
   2. A computer with network connection
-
 1. Download TrueNAS Scale ISO image in official website: https://manjaro.com/.
 2. Download Rufus 4.1p: https://rufus.ie/.
 3. Make TrueNAS USB Flash Disk by rufus with default configuration and wait until the progress is completed.
@@ -34,7 +33,6 @@ In the management site:
 6. SAVE.
 
 ### 3. Disable DHCP service and allocate a static ip address to NAS.
-
 1. NETWORK.
 2. INTERFACES.
 3. Click the network card.
@@ -90,7 +88,6 @@ Create a dataset:
 In the opened folder, right-click the dataset folder and choose “Map network drive”. You will then see this drive under “This PC”.
 
 ### Linux
-
 1. Install `smbclient`
 
 ```bash
@@ -102,21 +99,17 @@ sudo apt install smblient
 # RHEL
 sudo yum install samba-client
 ```
-
 2. Access Samba shared resources
 
 ```bash
 smbclient //[HOSTNAME_OR_IP]/[SHARE_NAME] -U [USERNAME]
 ```
-
 3. Enter the password when prompted. After a successful connection, you will see the `smb: \>` prompt.
-
 4. Mount the dataset locally: install `cifs-utils` and create a mount point.
 
 ```bash
 sudo mkdir /mnt/[MOUNT_DIR_NAME]
 ```
-
 5. Mount the remote directory to the newly created local directory.
 
 ```bash
@@ -124,13 +117,11 @@ sudo mount -t cifs //[HOSTNAME_OR_IP]/[SHARE_NAME] /mnt/[MOUNT_DIR_NAME] -o user
 ```
 
 > Use `df -h` to check mount status; use `ll /mnt/[MOUNT_DIR_NAME]` to view files.
-
 6. Unmount
 
 ```bash
 umount /mnt/smbmount
 ```
-
 7. Configure auto-mount at boot
 
 Add the following entry to `/etc/fstab`:
@@ -142,7 +133,6 @@ Add the following entry to `/etc/fstab`:
 ## Storage Dashboard overview
 
 This page lists detailed information about the storage pool:
-
 * **Export/Disconnect**: Temporarily take a pool offline / bring it back online.
 * **Topology - Manage Devices**: View physical disk status, error counts, or add a VDEV.
 * **Usage - Manage Datasets**: Manage datasets.
@@ -156,7 +146,6 @@ This page lists detailed information about the storage pool:
 `Storage - in the Unassigned Disks tab, click Add to Pool - select Existing Pool - choose the name of the pool to add to.`
 
 Notes:
-
 1. The pool will then have multiple VDEVs. These VDEVs should keep the same number of physical disks, and they can only use the same RAID layout mode. In general, it is not recommended to expand a pool after creation; if expansion is needed, create a new pool instead (this will change file access paths).
 2. Once a VDEV is added to a pool, it cannot be detached, because files are distributed across the VDEVs.
 
@@ -165,7 +154,6 @@ Notes:
 `Storage - in the Topology tab, click Manage Devices - click the disk to be replaced - in the pop-up dialog, select the replacement disk - if the replacement disk is already partitioned, check Force - Replace Disk.`
 
 Notes:
-
 1. The replacement disk must have a larger capacity than the existing disk, regardless of how much space is currently used.
 2. Replacement takes time depending on how much data is on the pool.
 
@@ -206,30 +194,25 @@ fio --name=test --size=50g --rw=write --ioengine=posixaio --direct=1 --bs=1m
 ### Comparison of major NAS operating systems
 
 **TrueNAS Core**
-
 * Evolved from FreeNAS, based on FreeBSD;
 * Open-source; supports a wide range of NIC models; suitable for high-speed storage
 * ZFS: supports real-time compression; uses RAM as cache to extend drive lifespan; real-time snapshots
 
 **TrueNAS Scale**
-
 * Based on Debian; adds support for Docker and virtual machines
 
 **Synology**
-
 * Limited NIC model support; 10GbE upgrades are expensive
 * Has an app store; no need to manually change package sources
 * Provides recycle bin, snapshots, and versioning
 * Strong mobile app support, e.g. Moments for photo management; Drive for documents; Plex for video management
 
 **UNRAID**
-
 * Uses a parity-disk mechanism
 * Works well with disks of different capacities
 * Cannot build traditional RAID arrays
 
 **openmediavault**
-
 * Essentially a free “Synology-like” system without the package center/app services
 * Uses Portainer to manage Docker
 * Can install ZFS and supports snapshots
@@ -263,13 +246,11 @@ fio --name=test --size=50g --rw=write --ioengine=posixaio --direct=1 --bs=1m
 **SHR**: Synology Hybrid RAID. Automatically chooses a RAID mode; beginner-friendly. Can be configured with 1–2 redundancy disks.
 
 **RAID-Z**: A ZFS filesystem feature; no extra hardware/software needed. Requires large RAM, ideally ECC. Expansion is difficult.
-
 * **RAID-Z1**: Similar to RAID 5: 2 data disks + 1 parity equivalent.
 * **RAID-Z2**: Similar to RAID 6: 2 parity equivalents.
 * **RAID-Z3**: 3 parity equivalents.
 
 ### Use cases
-
 * Backup photos/videos from phone cameras
 * Archive media for a home theater
 * Windows/macOS system backups
@@ -282,11 +263,9 @@ fio --name=test --size=50g --rw=write --ioengine=posixaio --direct=1 --bs=1m
 ## NAS pitfalls
 
 ### CPU
-
 * Whether it has an iGPU for hardware video decoding. Low-power Xeon E3 CPUs with iGPU are rare (e.g., 1235L v5), while 1240L v5 has no iGPU.
 * NAS OSes update iGPU drivers slowly; iGPUs integrated in 10th-gen Core and newer may be unsupported.
 * NAS OS CPU requirements are generally low. Cases needing stronger CPU:
-
   * Running Docker
   * Slow 10GbE transfers
   * Multi-user online video editing
@@ -294,19 +273,16 @@ fio --name=test --size=50g --rw=write --ioengine=posixaio --direct=1 --bs=1m
   * Running virtual machines
 
 ### Memory
-
 * ZFS-based systems (e.g., TrueNAS) ideally need ECC RAM to mitigate bit flips caused by solar activity/electromagnetic interference.
 * Check whether the CPU supports ECC / registered ECC (RDIMM).
 * ECC type: unbuffered ECC vs registered ECC. Xeon E3 and some Pentium CPUs may support unbuffered ECC; higher-end server CPUs (e.g., Xeon E5) support registered ECC.
 * Registered ECC has higher power and heat (about 10W per DIMM), requiring strong case fans.
 * Frequency/speed is not important; start at 8GB. TrueNAS benefits from large RAM for caching. Rough guideline:
-
   * 10TB → 16–32GB RAM
   * 40TB → 32–64GB RAM
   * 100TB+ → 64–128GB RAM
 
 ### Motherboard
-
 * Do SATA ports conflict with M.2? Some boards disable certain SATA ports when M.2 is used.
 * “NAS ITX” no-name boards can be problematic: loud coolers, weak NICs, SATA conflicts.
 * OS installation temporarily needs video output. Confirm the board has a video port; if not, use a GPU temporarily and remove it after installation. Some workstation/industrial boards (e.g., X150 series) have no video outputs.
@@ -314,7 +290,6 @@ fio --name=test --size=50g --rw=write --ioengine=posixaio --direct=1 --bs=1m
 * ERYING boards with soldered CPUs look ideal on paper for low-power high-performance NAS, but may fail to boot when adding “data-containing HDDs”. They may also fail to boot after power loss.
 
 ### Hard drives
-
 * Extremely cheap drives are often used mining drives.
 * If speed is not critical, 5400 RPM drives are sufficient.
 * Most 2.5" drives are SMR; some 3.5" are too—prefer CMR.
@@ -325,7 +300,6 @@ fio --name=test --size=50g --rw=write --ioengine=posixaio --direct=1 --bs=1m
 * The OS install drive only needs >16GB. You can use RAID1 for stability. Even if the OS breaks, reinstalling can restore the disk array.
 
 ### Power supply
-
 * Many NAS cases only support 1U PSUs: low efficiency and noisy.
 * Power budgeting: if staggered spin-up is not supported, enterprise drives may draw 25–36W at spin-up; each RDIMM can draw ~10W.
 * Check how much power the PSU can deliver to SATA devices. For example, a Seasonic GX650 can allocate most of its 650W across drives, while an MSI MPG A650GF may limit SATA devices to ~300W.
@@ -333,27 +307,23 @@ fio --name=test --size=50g --rw=write --ioengine=posixaio --direct=1 --bs=1m
 * If power outages are possible, use a UPS. The UPS can send a shutdown command to the NAS via a data cable.
 
 ### Network card
-
 * Some older 10GbE NICs do not downshift to 2.5GbE (e.g., Intel X540). Intel X550 supports 10G/2.5G/1G.
 * Does the NIC require drivers? Does the NAS OS include them? Closed systems like Synology support fewer NICs.
 * Some server PCIe NICs are mechanically/electrically incompatible with consumer motherboard PCIe slots and require an adapter.
 * You can use driverless NICs (where supported).
 
 ### Case
-
 * With NAS cases, check CPU cooler height limits; many do not support tower coolers. Top-down coolers are usually compatible and sufficient.
 * Many cases support only 1U or SFX PSUs.
 * Check disk connectivity: direct SATA cables vs a hot-swap backplane.
 
 ### Operating system
-
 * For home use, Synology or OMV is often best due to strong phone-platform support.
 * Xpenology (“black Synology”) often needs an external boot device (USB stick or internal drive). Ensure it is durable, stable, and heat-resistant.
 * For professional uses like online video editing, TrueNAS is preferred and requires ECC RAM.
 * Avoid small-company NAS products using proprietary OSes; if the company shuts down, OS support may stop.
 
 ### During use
-
 * After one disk fails in RAID 5, rebuilding is difficult because there is a small chance of URE (Unrecoverable Read Error). On average, one URE may occur per ~12TB read. If a URE happens, the rebuild stops and must restart.
 * RAID-Z / Z2 / Z3 are not suitable for expansion. UNRAID is easier to expand.
 

@@ -8,7 +8,6 @@ subclass: Basics
 ## Full Skill Stack
 
 #### I. Foundations of Literary Cognition - What literature fundamentally is and does
-
 1. Philosophy of Language & Meaning
    - Semantics (reference, sense, ambiguity)
    - Pragmatics (implicature, context, silence)
@@ -16,7 +15,6 @@ subclass: Basics
    - Limits of representation (unsayable, negative capability)
 
 All literary effects presuppose theories of meaning, even when implicit.
-
 2. Aesthetics & Philosophy of Art
    - Mimesis vs construction
    - Form/content dialectic
@@ -24,7 +22,6 @@ All literary effects presuppose theories of meaning, even when implicit.
    - The aesthetic experience (attention, defamiliarization)
 
 Governs judgments of “literary value” across eras.
-
 3. Narrative Ontology
    - What constitutes a “story”
    - Event vs description
@@ -34,7 +31,6 @@ Governs judgments of “literary value” across eras.
 Prevents naïve plot-driven or purely lyrical writing.
 
 #### II. Literary Form Systems - How literature is structurally built
-
 4. Narratology
    - Story vs discourse
    - Focalization and voice
@@ -42,7 +38,6 @@ Prevents naïve plot-driven or purely lyrical writing.
    - Reliability and epistemic limits
 
 Core grammar of prose fiction.
-
 5. Stylistics & Rhetoric
    - Syntax as rhythm
    - Lexical registers
@@ -50,7 +45,6 @@ Core grammar of prose fiction.
    - Rhetorical economy and excess
 
 Style is not ornament; it _is_ meaning.
-
 6. Genre Theory
    - Genre as contract, not template
    - Genre evolution and hybridization
@@ -60,7 +54,6 @@ Style is not ornament; it _is_ meaning.
 21st-century literature is post-genre but not anti-genre.
 
 #### III. Historical & Cultural Embeddedness - Where literature sits in time and power
-
 7. Global Literary History
    - Modernity and its crises
    - Colonial/postcolonial formations
@@ -68,7 +61,6 @@ Style is not ornament; it _is_ meaning.
    - Digital and late-capitalist conditions
 
 Prevents historical naïveté and cultural anachronism.
-
 8. Sociology of Literature
    - Literary institutions (publishers, prizes, MFA systems)
    - Canon formation
@@ -76,7 +68,6 @@ Prevents historical naïveté and cultural anachronism.
    - Authorial persona construction
 
 Writing occurs inside systems, not in a vacuum.
-
 9. Ideology & Power Analysis
    - Class, gender, race as narrative forces
    - Normalization and exclusion
@@ -85,35 +76,30 @@ Writing occurs inside systems, not in a vacuum.
 Avoids unconscious reproduction of inherited power structures.
 
 #### IV. Critical Theory - How texts are read—and therefore how they must be written
-
 10. Formalism & Close Reading
     - Texture, pattern, internal coherence
     - Defamiliarization
     - Text-immanent meaning
 
 Baseline competence for literary seriousness.
-
 11.  Psychoanalytic Frameworks
     - Desire, repression, fantasy
     - Subject formation
     - The unconscious in narrative structure
 
 Deep character logic and symbolic density.
-
 12.  Marxist & Materialist Criticism
     - Base/superstructure
     - Ideology critique
     - Labor, commodification, alienation
 
 Structural understanding of social forces in narrative.
-
 13.  Post-structuralism & Deconstruction
     - Instability of meaning
     - Difference, trace, absence
     - Authorial death vs function
 
 Guards against naïve realism and moral certainty.
-
 14.  Contemporary Theory
     - Affect theory
     - Trauma studies
@@ -123,7 +109,6 @@ Guards against naïve realism and moral certainty.
 Engages present intellectual conditions without trend-chasing.
 
 ### V. Psychological & Cognitive Substrates - How readers and characters function
-
 15. Human Psychology (Non-clinical)
     - Motivation and conflict
     - Emotion regulation
@@ -131,7 +116,6 @@ Engages present intellectual conditions without trend-chasing.
     - Moral reasoning
 
 Characters must behave _psychologically_, not narratively.
-
 16.  Cognitive Narratology
     - Attention and memory
     - Empathy and simulation
@@ -141,14 +125,12 @@ Characters must behave _psychologically_, not narratively.
 Reader experience is cognitively constrained.
 
 ## VI. Ethical & Existential Dimensions - Why literature ultimately matters
-
 17. Moral Philosophy
     - Responsibility vs freedom
     - Guilt, judgment, forgiveness
     - Tragic vs ethical vision
 
 Serious literature inevitably stages moral problems.
-
 18.  Existential Thought
     - Meaning, absurdity, finitude
     - Identity and alienation
@@ -157,21 +139,18 @@ Serious literature inevitably stages moral problems.
 The modern literary condition is existential by default.
 
 ## VII. Craft Integration & Self-Regulation - How mastery is sustained
-
 19. Revision Theory
     - Structural vs surface revision
     - Distance and re-reading
     - Intent vs effect calibration
 
 Literary quality emerges in revision, not drafting.
-
 20.  Reading as Method
     - Analytical reading
     - Imitative reading
     - Diagnostic reading (why it works / fails)
 
 Writers are built from reading, not instruction.
-
 21.  Authorial Self-Management
     - Long-form concentration
     - Intellectual integrity
@@ -187,7 +166,6 @@ Literary mastery is a decades-long project.
 A serious modern writer benefits from a firm grasp of major literary theories that shape how we read and write texts. Knowing these frameworks not only enriches one’s interpretation of literature but also informs one’s own creative choices. Key theoretical approaches include:
 
 > 严肃的现代作家若能牢牢掌握那些塑造我们如何阅读与写作文本的主要文学理论，将大有裨益。理解这些理论框架不仅能深化对文学作品的阐释，也会反过来影响并丰富作家自身的创造性选择。重要的理论路径包括：
-
 *   **Structuralism:** An approach (influential in the 1950s–60s) that treats literature as a system of signs and codes rather than a mirror of reality. Structuralist critics analyze underlying narrative structures (plots, archetypes, myths) to reveal universal patterns. Language is seen as a stable system of interrelated signs, and meaning arises from structural relationships rather than reference to the real world. (E.g. the archetypal studies of Northrop Frye and the semiotics of Roland Barthes grew from structuralist thought.) By the late 1960s, structuralism’s quest for stable, universal meanings gave way to new theories.
 > 结构主义（Structuralism）： 一种在20世纪50—60年代极具影响力的研究取向，它把文学视为由符号与代码构成的系统，而不是对现实的镜像。结构主义批评家会分析叙事背后的深层结构（如情节模式、原型、神话），以揭示跨文化的普遍规律。在结构主义看来，语言是一个相对稳定、彼此关联的符号系统，意义来自结构关系本身，而非来自对现实世界的指称。（例如，诺思洛普·弗莱的原型研究以及罗兰·巴特的符号学，都深受结构主义思潮影响。）到20世纪60年代末，结构主义追求稳定、普遍意义的努力逐渐让位于新的理论。
 *   **Poststructuralism (Deconstruction):** A critical movement (largely French, 1970s onward) that reacted against structuralism’s orderly frameworks. Poststructuralist thinkers like Jacques Derrida and Michel Foucault emphasize the _instability_ of language and meaning. They argue every text has internal contradictions and “gaps” between what it says and what it means. The author’s intentions become less important than the reader’s interpretation, since texts can be read in multiple, even contradictory ways. In practical terms, this taught writers to be self-aware: a novel might undermine its own claims or have subtexts the author didn’t foresee. Poststructuralism opened the door for seeing literature as an interplay of **discourses** (e.g. about power, gender, race) rather than a fixed message.
@@ -251,7 +229,6 @@ In essence, mastering global literary history means **reading widely and with cu
 Beyond theoretical knowledge and historical awareness, a literary writer must hone the **craft of writing** itself – the stylistic and formal techniques that give fiction or creative nonfiction its artistry. Craft mastery involves everything from microscopic choices (diction, sentence rhythm) to grand design (plot architecture, narrative perspective). Below are key stylistic dimensions and tools a writer should command, along with current trends and innovations in each area:
 
 > 除了理论知识与历史意识之外，文学写作者还必须打磨写作本身的工艺（craft）——也就是那些赋予小说或创造性非虚构以艺术性的文体与形式技法。工艺的精通涵盖从微观选择（用词、句子节律）到宏观设计（情节结构、叙事视角）的各个层面。下面列出写作者应当掌握的关键文体维度与工具，并结合各领域的当代趋势与创新：
-
 *   **Point of View (POV):** The perspective from which a story is told is one of the most fundamental choices a writer makes. Mastery of POV means understanding the strengths and limitations of each option – first-person, second-person, third-person (limited or omniscient), etc. – and selecting the one that best serves the story. POV shapes the reader’s relationship to the narrative: for instance, a first-person narrator offers intimacy and subjective bias; a third-person omniscient can provide broad scope but may distance the reader. A skilled writer asks questions like: _Who is telling the story? Why that person? How much do they know and how honestly do they tell it?_ Each POV “opens up certain freedoms in telling a story while limiting or denying others,” and the goal is to tell it the **right way**, making the world believable to the reader. For example, the **unreliable narrator** (as in _The Catcher in the Rye_ or _Lolita_) creates irony and depth by withholding truth or misleading the reader – a deliberate POV strategy. Meanwhile, **free indirect style** in third-person allows blending the narrator’s voice with a character’s inner voice, achieving intimacy without “I” – a technique perfected by Jane Austen and later modernists. A contemporary trend is the use of _alternating POVs_: multiple first-person narrators or switching between close third-person on different characters, to provide a polyphonic view of the story (as seen in novels by Barbara Kingsolver or Yaa Gyasi). To master POV, study how great writers do it – e.g. Toni Morrison’s deft shifts from omniscient to inside a character’s mind, or the way Kazuo Ishiguro uses first-person narration to slowly reveal the truth. Experimenting with POV in your own writing (rewriting a scene from different perspectives) can yield insights into which perspective unlocks the emotional core of your story.
 > 视角（POV, Point of View）： 故事从何种视角被讲述，是写作者最根本的选择之一。掌握POV意味着理解不同选项的优势与局限——第一人称、第二人称、第三人称（限知或全知）等——并选择最能服务于故事的方案。视角会塑造读者与叙事之间的关系：例如，第一人称叙述带来亲密感与主观偏差；第三人称全知能提供广阔视野，但可能拉开读者距离。成熟的写作者会追问：谁在讲述这个故事？为什么必须是这个人？他/她知道多少？又以多大的诚实讲述？ 每一种POV都会“开启某些讲述自由，同时限制或剥夺另一些自由”，目标是在恰当的方式中把故事讲对，让读者相信这个世界。比如，不可靠叙述者（unreliable narrator）（如《麦田里的守望者》或《洛丽塔》）通过隐瞒真相或误导读者来制造反讽与纵深，这是有意识的视角策略。又如第三人称中的自由间接引语/自由间接风格（free indirect style），可以把叙述者声音与人物内心声音融合，在不使用“我”的前提下获得亲密效果；这一技法由简·奥斯汀臻于成熟，后被现代主义者进一步发展。当代写作中的一个趋势是使用交替视角（alternating POVs）：多个第一人称轮流叙述，或在不同人物之间切换近距离第三人称，以形成复调式（polyphonic）的故事图景（如芭芭拉·金索沃 Barbara Kingsolver 或雅·吉亚西 Yaa Gyasi 的小说中常见）。要真正掌握POV，应细读大师如何处理：例如托妮·莫里森如何在全知叙述与人物意识内部之间灵巧切换，或石黑一雄如何用第一人称叙述缓慢揭示真相。在自己的写作中进行POV实验（把同一场景改写成不同视角）也很有效，它常能帮助你判断：哪一种视角最能打开故事的情感核心。
 *   **Narrative Voice and Diction:** _Voice_ in writing is the distinctive personality or tone that comes through the text – it’s _how_ the story is told. This includes the narrator’s attitude, style of expression, and the _diction_ (word choice) and syntax used. A strong narrative voice can be as memorable as the story itself; think of the melancholic, reflective voice of Marcel Proust, or the direct, clipped voice of Hemingway. Voice can belong to the narrator or reflect the author’s own recognizable style (for instance, one can often identify a passage of Joyce or Cormac McCarthy by voice alone). Developing one’s voice involves choices about formality/informality, use of dialect or idiom, humor or seriousness, and so on. _“Voice is the distinct personality, style, and perspective that make a writer’s work unmistakably theirs,”_ as one writing guide puts it. A literary writer should be able to craft different voices: the colloquial slangy voice of a teenage protagonist, the ornate voice of a 19th-century letter writer, the terse inner voice of a hard-boiled detective, etc. This often means expanding one’s vocabulary and ear for language. **Diction** specifically refers to word choice – choosing the precise word with the right connotations. Poetic writers pay close attention to diction to create mood (e.g. using harsh consonant words vs. soft sibilant ones) and to establish voice. _Diction and voice_ also tie into authenticity: for dialogue and first-person narration especially, words must feel true to the character’s background and era. In current literary fiction, we see a range of voices: some authors favor a _minimalist style_ (short, plain sentences – e.g. Raymond Carver or, more recently, Jesmyn Ward in parts of her prose), while others embrace a _maximalist, baroque voice_ (e.g. Salman Rushdie’s exuberant, allusive sentences). Both can be effective. What matters is consistency and intentionality: understanding how your voice choices impact the reader’s experience. Reading your work aloud is a classic technique to test the voice – it should have a pleasing, natural rhythm and a personality that suits the material.
@@ -320,7 +297,6 @@ Being a “proficient 21st-century writer” entails not only private mastery of
 **Publishing Trends:** The publishing industry in the 21st century is dynamic, influenced by technological change, social movements, and economic pressures. A savvy writer keeps an eye on these trends, not to chase fads but to understand the context. Some notable trends include:
 
 > 出版趋势（Publishing Trends）： 21世纪的出版业处于动态变化之中，受技术变革、社会运动与经济压力共同影响。精明的写作者关注趋势，不是为了追逐风口，而是为了理解语境。若干值得注意的趋势包括：
-
 *   **Diversity and Inclusion:** There’s a conscious push for more diverse voices in publishing – more writers of color, LGBTQ+ writers, writers from non-Western countries, etc., and more stories featuring diverse characters. Initiatives like “We Need Diverse Books” and the Diversity Baseline Survey in publishing have highlighted underrepresentation. Many publishers have committed to more inclusive lists, and this is reflected in award categories and editorial imprints focusing on marginalized voices. The result is a wider array of perspectives making it to market, and openness to stories that might have been overlooked in earlier times. This trend means new opportunities but also an ongoing discussion about representation and avoiding tokenism. Writers should be aware of how their own background and identity situate them in this discourse and approach writing outside one’s lived experience with research and respect.
 > 多样性与包容（Diversity and Inclusion）： 出版界对更具多样性的声音有更明确的推动——更多有色人种作者、LGBTQ+作者、来自非西方国家的作者等，以及更多以多元人物为核心的故事。“We Need Diverse Books”等倡议以及出版业的多样性基线调查（Diversity Baseline Survey）凸显了长期存在的代表性不足。许多出版社已承诺更包容的选题结构，这也体现在奖项类别与专门聚焦边缘声音的出版子品牌（imprints）上。结果是：更广阔的视角进入市场，过去可能被忽略的故事类型也更容易获得机会。这一趋势带来新机遇，同时也持续引发关于再现（representation）与避免“象征性点缀”（tokenism）的讨论。写作者应意识到自身背景与身份在这一讨论中的位置；对于书写超出自身生活经验的对象，应以研究与尊重为前提。
 *   **Genre-Blending and Crossovers:** The old walls between “literary” and “genre” fiction are not as rigid as they once were. Many acclaimed novels now freely incorporate elements of science fiction, fantasy, thriller, or romance (e.g., Colson Whitehead’s _The Underground Railroad_ uses a fantastical conceit in a literary exploration of history; Emily St. John Mandel’s _Station Eleven_ is literary post-apocalyptic fiction). The term **speculative fiction** has gained currency for works that defy genre labels. There’s also a rise in **graphic novels** as a respected literary form (e.g. Art Spiegelman’s _Maus_ winning a Pulitzer, or the genre-bending work of Alison Bechdel and Marjane Satrapi). Similarly, creative nonfiction forms like the memoir are experimenting with novelistic techniques, and vice versa (novels often read like memoirs – autofiction again). Being aware of these crossovers can embolden a writer to mix influences. Agents and publishers today might be more open to, say, a literary novel with a time-travel premise or a mystery told in experimental prose, whereas decades ago marketing categories were stricter.
@@ -353,7 +329,6 @@ In conclusion, the literary marketplace is the environment in which a writer’s
 Although prose fiction and creative nonfiction are this guide’s focus, a well-rounded writer appreciates the storytelling techniques of **screenwriting and playwriting**, and how they intersect with literary craft. Many great writers have toggled between forms – novelists who write screenplays (Margaret Atwood, Kazuo Ishiguro trying his hand at film, or William Faulkner in Hollywood’s golden age), playwrights who pen novels, etc. Understanding these other narrative forms can sharpen one’s skills in any medium, since they each emphasize different aspects of storytelling:
 
 > 尽管本指南的重点是散文小说与创造性非虚构，但一位全面的写作者也会重视影视编剧与戏剧写作的叙事技术，以及它们与文学技艺的交叉地带。许多杰出作家都在不同体裁之间切换——小说家写剧本（如玛格丽特·阿特伍德、石黑一雄尝试电影写作，或好莱坞黄金时代的福克纳），剧作家也写小说，等等。理解这些叙事形态能反向提升任何媒介中的写作能力，因为它们各自强调讲故事的不同面向：
-
 *   **Narrative Structure in Different Media:** Screenwriting and stage playwriting are constrained by time in a way novels are not. A film typically runs 90-120 minutes, and a play perhaps 2-3 hours, which forces a certain tightness of structure. The classical **three-act structure** is practically religion in Hollywood: Act I (first ~25% of the film) sets up the protagonist, conflict, and _inciting incident_; Act II (50% or more) develops the conflict, with rising stakes, reaching a midpoint reversal and then a climax setup; Act III resolves the conflict with a climax and denouement. Screenwriters break these acts down further into beats or sequences (some follow a “Save the Cat” 15-beat template or Joseph Campbell’s hero’s journey steps). For a prose writer, studying this paradigm can be very useful for plotting – it’s essentially a distillation of how to maintain momentum and engage an audience. Even if literary fiction doesn’t follow a neat formula, the principles of clear _exposition_, _escalating conflict_, _climax_, and _resolution_ often still apply (albeit sometimes subtly). A novelist might borrow filmic structure techniques like **cold opens** (starting with a gripping scene), **cliffhangers** at chapter ends, or structuring a novel in “three acts” for pacing. Meanwhile, **stage plays** often adhere to a variation: classical plays had five acts (per Freytag’s pyramid: exposition, rising action, climax, falling action, catastrophe) – modern plays often use two or three acts. Theater storytelling tends to observe the **unity of place and time** more strictly (not always, but many plays have limited settings due to staging practicalities), which teaches economy: how to achieve character arcs and dramatic tension with compressed settings and via dialogue/action only. A fiction writer can learn from this by ensuring each scene has a purpose and tension, almost as if it were a mini one-act play.
 > 不同媒介中的叙事结构（Narrative Structure in Different Media）： 影视与舞台叙事在时间上受到小说所没有的强约束。电影通常为90—120分钟，戏剧可能为2—3小时，这迫使结构必须更紧凑。在好莱坞，经典的三幕结构（three-act structure）几乎如同信条：第一幕（影片约前25%）建立主人公、冲突与触发事件（inciting incident）；第二幕（50%或更长）推进冲突、抬升风险，常抵达“中点反转”（midpoint reversal），并为高潮搭台；第三幕以高潮与尾声（denouement）解决冲突。编剧往往会把三幕进一步拆为“节拍/段落”（beats or sequences）（有些遵循“Save the Cat”十五节拍模板，或坎贝尔英雄之旅的分步）。对散文写作者而言，研究这一范式对情节推进非常有用——它本质上是在提炼：如何维持动能、持续抓住受众。即使文学小说不遵循整齐公式，清晰的铺陈（exposition）、递进的冲突升级（escalating conflict）、高潮（climax）与解决（resolution）等原则往往仍然适用（只是可能更含蓄）。小说家也可能借用影视结构技法，例如冷开场（cold opens）（以强抓力场景起笔）、章节末的悬念钩子（cliffhangers），或以“三幕”来控制整体节奏。与此同时，舞台剧常遵循一种变体：古典戏剧常见“五幕”（可对应弗赖塔格金字塔：铺陈、上升行动、高潮、下降行动、灾变/结局），现代戏剧则多为两幕或三幕。舞台叙事往往更严格遵守时间与地点的统一（不总是如此，但由于舞台调度与布景限制，许多戏剧场景更集中），这会训练写作者的“节省与聚焦”：如何在压缩的场景与有限空间里，仅凭对话与动作完成角色弧线与戏剧张力。小说写作者可从中学习：确保每一个场景都有目的与张力，几乎像一出小型独幕剧那样自足而紧绷。
 *   **Character Development and Dialogue (Lessons from Stage/Screen):** Screenwriting and playwriting rely heavily on **externalizing** character through action and dialogue. In a film or play, you cannot directly narrate a character’s inner thoughts (except with voice-over, which is used sparingly). Thus, those forms teach _“show, don’t tell”_ in its purest sense. A character’s desires and conflicts must be shown through what they do and say. For a fiction writer, thinking like a dramatist can improve scenes – instead of explaining a character’s feelings through narration, how can you convey it via their gestures, their speech, their interactions? Dialogue especially is a skill honed in drama: it must carry weight and subtext because there’s no omniscient narrator to explain the subtext. Reading great plays (from Chekhov to Arthur Miller to August Wilson to Annie Baker) can show how characters reveal themselves in what they choose to say or conceal. Also, screenwriting emphasizes **visual storytelling** – “showing” via images. While a novelist can’t literally show a film clip, the principle of thinking visually can make prose more vivid: rather than abstractly stating “She was anxious,” a writer might describe her wringing her hands, staring at a ticking clock – concrete images that _show_ anxiety. Screenplays also highlight **economy**: a scene that doesn’t advance the plot or develop characters is typically cut. This discipline can help fiction writers cut indulgent tangents that detract from narrative momentum. Furthermore, film structure requires a clear _character arc_ for the protagonist – they start as X and through challenges become Y. Many novels share this DNA, and thinking in terms of arcs (what does the protagonist learn? how are they tested? do they change or tragically fail to change?) is useful. In plays, characters often undergo intense transformations or revelations in a concentrated span – studying how, say, _Death of a Salesman_ portrays Willy Loman’s psychological unravelling or how _Hamlet_ dramatizes indecision and resolve can inspire ways to dramatize internal conflicts in prose.
@@ -364,7 +339,6 @@ Although prose fiction and creative nonfiction are this guide’s focus, a well-
 > 改编理论与实践（Adaptation Theory and Practice）： 许多文学作品会被改编成电影或戏剧，反之亦然。研究改编（adaptation）能揭示故事的核心与不同媒介各自的优势。琳达·哈琴（Linda Hutcheon）在《改编理论》（A Theory of Adaptation）中指出，改编是一种再阐释（re-interpretation），是跨媒介叙事中的“一种核心讲故事方式”。例如把小说改编为电影时，常不得不简化或压缩支线情节、合并人物，或为内心独白寻找视觉对应物。这会迫使写作者辨别：哪些要素是“必不可少”的核心，哪些只是装饰性的枝蔓。若把你的短篇想象成一部短片：为了让故事成立，什么内容必须存在？答案往往就是核心冲突或核心关系。把自己的某个场景改写成剧本格式，也是很“澄清”的练习：它会暴露过量的背景交代（exposition），并逼迫你寻找“展示情感”的方式。反过来，从电影改写成小说（虽较少见）的案例则说明：散文能够加入层层内在性与背景铺陈，而电影往往只能暗示。改编中的忠实性（fidelity）（与原作贴合程度）与创新（为新媒介而改变）之间的张力，也与写作者在虚构化素材或真实事件时的选择相呼应：关键是抓住故事的“精神”（spirit），即便形式发生变化。一个经典例子是《教父》电影：它常被认为优于普佐（Puzo）的原著小说，原因之一在于电影删去枝节副线，把重心集中在家族史诗的核心上，并通过电影技法（蒙太奇、配乐等）提升戏剧力度。对写作者而言，思考改编还会凸显文学的独特优势：叙述者声音、语言的游戏性、复杂的内在生活——这些都是相较电影更具优势的“文学性”。相对地，强烈的视觉氛围或动能十足的动作场面可能更适合电影；但在文本中你也可以借助鲜明描写或节奏控制去模拟其中一部分效果。
    - Another facet is **adaptation as interpretation**: when you adapt something, you inevitably put a spin on it (for example, a stage production of a Shakespeare play might set it in a modern warzone, reinterpreting themes). Writers, when adapting myth or history into fiction, do similar interpretive work. Being aware of adaptation theory encourages you to ask: _what is my narrative’s interpretation of prior texts or events?_ – because all stories exist in conversation. Some contemporary novels explicitly engage in adaptation or retelling (Madeline Miller’s _Circe_ retells Greek myth, Jean Rhys retold _Jane Eyre_ from a new POV). The skill here is to bring something new while respecting the source’s power. Hutcheon argues that adaptation is _“central to storytelling”_ – we keep retelling because each version speaks to its time. As a writer, you might adapt your own life into fiction (that’s a form of adaptation too – reality to story), or adapt a historical incident into a narrative. Knowing how others have done it (what they chose to keep, what to alter) will guide you.
    > 另一个层面是“改编即阐释”（adaptation as interpretation）：改编必然带入你的立场与转向（例如某个莎士比亚戏剧的舞台演出被置于现代战区，就会重新阐释其主题）。写作者在把神话或历史改写为小说时，也在进行类似的阐释工作。理解改编理论会促使你追问：我的叙事是在如何阐释既有文本或既有事件？——因为所有故事都存在于对话之中。一些当代小说明确地以改编或重述为写作策略（如玛德琳·米勒的《喀耳刻》Circe 重述希腊神话；让·里斯以新的视角重写《简·爱》）。关键能力在于：在尊重源文本力量的同时，带来新的内容。哈琴认为改编“对于讲故事是核心性的”——我们不断重述，是因为每个版本都会对其时代发声。作为写作者，你也可能把自己的生活改写为虚构（这同样是一种改编：现实到故事），或把某个历史事件转化为叙事。理解他人如何取舍（保留什么、改变什么）会为你的选择提供参照。
-
 *   **Cross-Pollination of Skills:** Writing for screen or stage can be a complementary practice to writing prose. Screenwriting, with its focus on _visuals, brevity,_ and _external conflict_, can cure a prose writer’s tendencies toward verbosity or overly internal writing. It forces you to _“find the story”_ in actions and images. Playwriting, with its emphasis on _dialogue and subtext_, can sharply improve a writer’s ear for how people speak and how to convey tension in conversation. Moreover, these forms teach **collaboration** and awareness of audience in ways solitary fiction writing doesn’t: a playwright sees actors and directors interpret their script; a screenwriter sees cinematographers and editors further shape it. That humbles and teaches one about the many facets of storytelling – lighting, sound, performance, etc., which, while not directly used in writing a novel, can metaphorically inspire how you _“set a scene”_ or _“give stage directions”_ through descriptive prose. Some prose writers even imagine actors cast as their characters to help visualize scenes; that’s a screenwriting trick.
 > 技能的交叉授粉（Cross-Pollination of Skills）： 为影视或舞台写作可以作为散文写作的互补训练。编剧强调视觉性、简洁性与外部冲突，能纠正散文写作者冗长或过度内向化（过度在内心打转）的倾向；它迫使你在行动与图像中“找到故事”。剧作强调对话与潜台词，能显著提升写作者对语言口吻与会话张力的听觉敏感度。此外，这些形式还会以小说写作通常缺少的方式训练协作意识与受众意识：剧作家会看到演员与导演如何阐释脚本；编剧会看到摄影、剪辑等进一步塑造作品。这种经验既令人谦卑，也让人理解叙事的多面性——光线、声音、表演等。尽管这些元素不可能被原样“搬进”小说，但它们可以以隐喻方式启发你如何用描写散文去“布景”、去“给出舞台调度”。一些小说写作者甚至会想象演员阵容来帮助自己视觉化人物与场景——这本身就是一种编剧式技巧。  
 *   **Medium Awareness:** Knowing what each medium does best can also guard a writer against misuses. For example, in a novel you have the luxury of narration to clarify complex backstory, whereas in a film that might bog down the runtime – so films often simplify backstories. If you find your short story drowning in backstory, maybe that’s a sign to integrate it more artfully or pare down – akin to how a film would show just a brief flashback or a hint rather than a detailed history. On the flip side, a film might excel at a car chase or a visual spectacle which in prose could become tedious if over-described – so a writer might decide to focus less on blow-by-blow action (unless writing genre action-thrillers) and more on character perception of the action. Or consider **dialogue tags and attributions**: in a play we don’t have “he said angrily” – the anger must be in the line or the actor’s delivery. In fiction, you have dialogue tags but learning from plays, you might minimize heavy-handed tags and let the dialogue itself imply the tone whenever possible.
@@ -389,49 +363,27 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
 > 最重要的是，要记住：精通是一个持续的过程（mastery is an ongoing process）。文学永远在演化——新的理论会出现，历史不断被书写，风格潮起潮落。“熟练”的写作者，是终身学习文学与生活的人。通过在上述领域——理论、历史、技艺、批评、行业与跨媒介叙事——建立坚实基础，你所准备的不仅是写出一本好书，更是持续成长，并在本世纪对文学艺术做出有意义的贡献。正如歌德所预见、达姆罗什提醒我们的那样，我们正处于世界文学的时代——一场不断扩展的、全球化且跨学科的对话。要以最高水平参与其中，就需要以知识武装自己，保持开放心态，热烈阅读，并让你的艺术实践在**想象力与智性（imagination and intellect）**的充分投入中推进。这种全面的修炼将使你不仅能写出引人入胜的故事，也能理解它们为何动人、以及它们如何与更广阔的人类叙事相连——而这最终正是一位伟大文学写作者的标记。
 
 **Sources:**
-
 *   Poetry Foundation Glossary (Structuralism and Poststructuralism definitions)[poetryfoundation.org](https://www.poetryfoundation.org/education/glossary/structuralism#:~:text=primarily%20on%20the%20linguistic%20theories,works%20and%20the%20systems%20from)[poetryfoundation.org](https://www.poetryfoundation.org/education/glossary/Poststructuralism#:~:text=A%20school%20of%20thought%20that,both%20the%20text%20and%20the)
-    
 *   Poetry Foundation Glossary (Feminist Theory and Gender Studies)[poetryfoundation.org](https://www.poetryfoundation.org/education/glossary/feminist-theory#:~:text=Feminist%20theory%20is%20an%20extension,Carol%20Gilligan%2C%20and%20Adrienne%20Rich)[poetryfoundation.org](https://www.poetryfoundation.org/education/glossary/gender-studies#:~:text=An%20interdisciplinary%20approach%20to%20the,of%20representation%20and%20linguistic%20indeterminacy)
-    
 *   Nasrullah Mambrol, _Critical Race Theory_ overview[literariness.org](https://literariness.org/2018/08/20/critical-race-theory/#:~:text=The%20critical%20race%20theory%20,reasoning%2C%20Enlightenment%20rationalism%2C%20and%20neutral)
-    
 *   _An Introduction to Postcolonial Theory_ (U. of Washington)[art.washington.edu](https://art.washington.edu/sites/art/files/documents/about/an_introduction_to_post-colonialism_post-colonial_theory_and_post-colonial_literature.pdf#:~:text=What%20is%20Post,around%20concepts%20of%20otherness%20and)[art.washington.edu](https://art.washington.edu/sites/art/files/documents/about/an_introduction_to_post-colonialism_post-colonial_theory_and_post-colonial_literature.pdf#:~:text=Postcolonial%20theory%20became%20part%20of,as%20being%20the%20founding%20work)
-    
 *   Nasrullah Mambrol, _Ecocriticism_ essay[literariness.org](https://literariness.org/2016/11/27/ecocriticism/#:~:text=Ecocriticism%20is%20the%20study%20of,Environmental%20Imagination%2C%20by%20Lawrence%20Buell)[literariness.org](https://literariness.org/2016/11/27/ecocriticism/#:~:text=Ecocriticism%20investigates%20the%20relation%20between,Ecocriticism%20is%20an%20intentionally)
-    
 *   Fiveable Introduction to Literary Theory (Affect Theory definition)[fiveable.me](https://fiveable.me/key-terms/introduction-to-literary-theory/affect-theory#:~:text=Definition)
-    
 *   Britannica – Narratology definition[britannica.com](https://www.britannica.com/art/narratology#:~:text=narratology%2C%20in%20literary%20theory%2C%20the,makes%20one%20different%20from%20another)
-    
 *   Wikipedia – _Autofiction_ (discussion of term and recent usage)[en.wikipedia.org](https://en.wikipedia.org/wiki/Autofiction#:~:text=Serge%20Doubrovsky%20%20coined%20the,works%20popularizing%20the%20form%20of)[en.wikipedia.org](https://en.wikipedia.org/wiki/Autofiction#:~:text=In%20a%202018%20article%20for,He%20elaborated)
-    
 *   Wikipedia – _Metamodernism_ (overview of concept oscillating between sincerity and irony)[en.wikipedia.org](https://en.wikipedia.org/wiki/Metamodernism#:~:text=after%20postmodernism%20,1)[en.wikipedia.org](https://en.wikipedia.org/wiki/Metamodernism#:~:text=recent%20global%20events%20such%20as,7)
-    
 *   David Damrosch interview, _Harvard Magazine_ (on world literature concept and breadth)[complit.fas.harvard.edu](https://complit.fas.harvard.edu/article/from-harvard-magazine-a-world-of-literature-david-damroschs-literary-global-reach/#:~:text=,hymns%20envision%20a%20Christian%20God)[complit.fas.harvard.edu](https://complit.fas.harvard.edu/article/from-harvard-magazine-a-world-of-literature-david-damroschs-literary-global-reach/#:~:text=%E2%80%9CNorth%20American%20audiences%2C%20especially%20in,%E2%80%9D)
-    
 *   David Damrosch interview (on reading beyond one’s own era/culture to improve understanding)[complit.fas.harvard.edu](https://complit.fas.harvard.edu/article/from-harvard-magazine-a-world-of-literature-david-damroschs-literary-global-reach/#:~:text=work%20is%20littered%20with%20odd,%E2%80%9D)
-    
 *   Jane Friedman (Joseph Bates) on POV choices[janefriedman.com](https://janefriedman.com/point-of-view/#:~:text=All%20are%20questions%20you%20have,you%20create%20understandable%20and%20believable)
-    
 *   Daphne Gordon, _LinkedIn_ post (definition of voice)[linkedin.com](https://www.linkedin.com/posts/daphnegordon_what-is-voice-voice-is-the-distinct-personality-activity-7303228189500153857-fXAN#:~:text=,how%20they%20shape%20language%2C)
-    
 *   Arc Studio blog on Three-Act Structure in screenwriting[arcstudiopro.com](https://www.arcstudiopro.com/blog/three-act-structure-in-screenwriting#:~:text=The%20three,three%20distinct%20sections%20or%20acts)
-    
 *   _Helping Writers Become Authors_ blog (difference in pacing books vs movies)[helpingwritersbecomeauthors.com](https://www.helpingwritersbecomeauthors.com/5-important-ways-storytelling-different-books-vs-movies/#:~:text=5%20Important%20Ways%20Storytelling%20Is,there%20isn%27t%20time%20to)
-    
 *   John Domini, “Renaissance of the Weird” (LitHub article on experimental fiction flourishing)[lithub.com](https://lithub.com/renaissance-of-the-weird-experimental-fiction-as-the-new-american-normal/#:~:text=%E2%80%9CGhost%20Birds%E2%80%9D%20succeeds%20by%20defying,has%20rarely%20if%20ever%20seen)[lithub.com](https://lithub.com/renaissance-of-the-weird-experimental-fiction-as-the-new-american-normal/#:~:text=Smart%20young%20writers%20aren%E2%80%99t%20oblivious,outcasts%20start%20to%20look%20intriguing)
-    
 *   UNC Writing Center – writing about literature (what good interpretations do)[writingcenter.unc.edu](https://writingcenter.unc.edu/tips-and-tools/literature-fiction/#:~:text=will%3A)
-    
 *   Emily McAvan, _Overland_ “Writers need literary theory” (Ferrante on feminist theory influence)[overland.org.au](https://overland.org.au/2016/10/writers-need-literary-theory/#:~:text=,Caverero%2C%20Gagliasso%2C%20Haraway%2C%20Butler%2C%20Braidotti)
-    
 *   James Wood, _LitHub_ (on tradition of writer-critics from Johnson to Sontag)[lithub.com](https://lithub.com/james-wood-what-is-at-stake-when-we-write-literary-criticism/#:~:text=Alas%2C%20each%20kind%20of%20reading,do%E2%80%94amidst%20the%20crazy%20theorizing%20and)
-    
 *   Self-Publishing Advice Blog (diversity in book awards)[selfpublishingadvice.org](https://selfpublishingadvice.org/diverse-book-awards-update-may-2024/#:~:text=The%20book%20publishing%20world%20has,what%20stories%20were%20widely%20shared)[selfpublishingadvice.org](https://selfpublishingadvice.org/diverse-book-awards-update-may-2024/#:~:text=Major%20book%20award%20programs%20are,a%20more%20equitable%20playing%20field)
-    
 *   Literary Hub (2025 prize winners round-up)[lithub.com](https://lithub.com/here-are-all-the-award-winning-novels-of-2025/#:~:text=From%20the%20Booker%20to%20the,Congratulations%20to%20all)
-    
 *   Linda Hutcheon, _A Theory of Adaptation_ (adaptation as central to storytelling across media)[books.google.com](https://books.google.com/books/about/A_Theory_of_Adaptation.html?id=PRPReTQ2cYgC#:~:text=A%20Theory%20of%20Adaptation%20,telling).
 
 ## 一个路径
@@ -443,54 +395,42 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
 ### **文学常识**
 
 `文学/Literature`的定义和功能 - 文学本体论、审美、伦理、认知
-
 - 【书籍】J.希利斯·米勒，《文学死了吗/On Literature》 [#豆瓣 7.8](https://book.douban.com/subject/2077026/)
 
 文学`体裁/Genre` - 小说、诗歌、戏剧、散文的起源、结构、形式、技巧
-
 - 【课程】TGC，小说的崛起/Rise of the Novel [#阿哔无字幕](https://www.bilibili.com/video/BV1xK4y187Qg/)
 
 `叙事学/Narratology` - 对叙事者、故事情节和叙述之间差异的分析
-
 - 【书籍】Mieke Bal, NARRATOLOGY: Introduction to the Theory of Narrative [#豆瓣 8.7](https://book.douban.com/subject/4416852/)
 
 `语言学/Linguistics` - 人类语言本质、结构、使用和演变规律
-
 - 由语音学、音系学、形态学、句法学、语义学、语用学构成。
 - 【课程】MIT 24.900 语言学导论 Introduction to Linguistics [#阿哔中英](https://www.bilibili.com/video/BV1QSwzefEi8)
 
 ### 文学传统及文学史 Literary Tradition and History
 
 `文学史`导论 - 文学的演进和原则
-
 - 【课程】TGC，History of World Literature [#阿哔无字幕](https://www.bilibili.com/video/BV19t41117iw/)
 
 `古典文学/Classic literature` 5BCE~5CE
-
 - 希腊罗马文学、神话、史诗；通常探讨伦理秩序、命运。代表作品：_荷马《伊利亚特》《奥德赛》；索福克勒斯《俄狄浦斯王》；柏拉图《理想国》；维吉尔《埃涅阿斯纪》；奥维德《变形记》_
 
 `中世纪文学/Medieval literature` 5CE~14CE
-
 - 由宗教主导、拉丁文为媒介，主要为寓言、传奇、骑士文学；内容为基督教义、美德象征、上帝中心主义。代表作品：_但丁《神曲》、薄伽丘《十日谈》、骑士传说《圣杯传奇》_
 
 `文艺复兴/Renaissance`与`人文主义/Humanism` 14CE~17CE
-
 - 特点为古典复兴；强调人性、世俗、理性，即从神权回归人性，强调个体精神与理智探索。代表作家：莎士比亚、蒙田、塞万提斯、马基雅维利
 
 `启蒙运动/the Enlightenment`与`理性主义/Rationalist` 17CE~18CE
-
 - 推崇理性、科学与社会契约，文学成为教育与社会批判工具。代表作品：_伏尔泰《老实人》、卢梭《忏悔录》、斯威夫特《格列佛游记》_
 
 `浪漫主义/Romanticism` 18CE 末~19CE 中
-
 - 崇尚感性、自然、个体经验、民族精神；反对启蒙运动时期的理性至上，强调直觉、梦境与灵魂。代表作家：歌德、雪莱、拜伦、华兹华斯、雨果、普希金、济慈
 
 `现代主义/Modernism` 20CE 初~1945
-
 - 突破传统结构、意识流；语言与时间的解构；对“真理”“自我”的怀疑，强调碎片化与主观体验。代表作家：乔伊斯、伍尔夫、普鲁斯特、卡夫卡、福克纳、艾略特
 
 `后现代主义/Postmodernism` 1945~1980s
-
 - 对传统风格的模仿与讽刺，混合高雅与通俗文本。结构、叙事、语言、时间、人物呈现破碎、不连贯的状态
 - 对“意义”、“唯一绝对真理”、“自我”、“理性中心”等现代主义所执着的问题发起根本性怀疑，接受“差异”“异质”
 - 对语言的戏弄和解构，强调“语言不能确指意义”，即“游戏性”
@@ -500,20 +440,17 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
 - 代表作品：_博尔赫斯《小径分岔的花园》、卡尔维诺《如果在冬夜，一个旅人》、品钦《万有引力之虹》、玛格丽特·阿特伍德《使女的故事》、村上春树《1Q84》《世界尽头与冷酷仙境》_
 
 `当代文学` 1990s -
-
 - 探讨多元身份：强调族群、性别、性取向、语言与文化的边缘经验，如非裔、亚裔、酷儿文学
 - 代表作品：_石黑一雄《长日将尽》、托妮·莫里森《宠儿》_
 
 ### 文学理论和批评 Literary Criticism and Theory
 
 传统批评~19CE
-
 1. `传统文学批评`
    - 对自然、现实的`模仿/Mimesis`，服务于道德和教育，通过激发恐惧和怜悯，`净化/Catharsis`观众。代表人物：_亚里士多德《诗学》、柏拉图、贺拉斯_
 2. `文艺复兴与人文主义批评` - 秩序、理性、规范美，文学应体现“古典理想”与“普遍人性”。代表人物：西塞罗、乔治·普特南、蒲柏
 
 `现代文学理论` 20CE 初~20CE 中 - 回应现实主义危机与现代性焦虑
-
 1. 学习资料
    - **【课程】Yale ENGL200, Introduction to Theory of Literature**
    - **【书籍】特里·伊格尔顿，《二十世纪文学理论》**
@@ -533,7 +470,6 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
    - 解构“女性”概念本身，争取女性声音与代表性，关注语言与性别建构。代表人物：西蒙娜·波伏娃、伊莲·肖瓦特、朱莉娅·克里斯蒂娃、露丝·伊里格雷
 
 `当代表现主义与后结构主义理论` 1970s~去中心、多元、反权威
-
 1. `文化研究/Cultural Studies`
    - 主张文学只是文化中的一种符号实践；所有文化产品都应被“政治地”阅读；重视日常生活、流行文化与边缘声音。代表人物：霍尔（Stuart Hall）、雷蒙德·威廉斯、葛兰西
 2. `后结构主义/Post-structuralism`
@@ -548,17 +484,13 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
 ### 文学创作的思潮与流派
 
 **古希腊文学** 8BCE~1BCE
-
 1. 特点：古希腊文学具有强烈的公共性与仪式感，多在剧场、广场等场所朗诵或表演，强调语言的节奏与修辞美。它融合神话与理性，在史诗与戏剧中体现命运与人性的张力，并通过哲学与史学开启理性批判传统。文学体裁丰富，奠定了西方史诗、悲剧、抒情诗、史学与哲学写作的基本范式。
 2. 体裁：史诗、抒情诗、悲喜剧、史书、对话体、演说体、、牧歌、修辞散文，是西方文类谱系的源头。
 3. **古风/荷马时期** 8BCE~6BCE
-
 - 荷马*英雄史诗《伊利亚特》《奥德赛》*：六歩格[^hexameter]口传史诗高峰，成为西方叙事结构与神话密码库之源。
 - 赫西俄德*六歩格神谱诗《神谱》*：奠立宇宙生成论；_劝诫诗《工作与时日》_：讲述农耕伦理。
 - 萨福*抒情诗《诗集九卷残篇》*：首创女声主体抒情，使爱与私人情感进入文学核心。
-
 4. **古典雅典时期** 5BCE~4BCE
-
 - 埃斯库罗斯*悲剧《俄瑞斯忒亚》三部曲*：由“二役唱”向“三演员”革新，悲剧合唱向心理冲突过渡。
 - 索福克勒斯*悲剧《俄狄浦斯王》*：悲剧高潮、演绎命运悖论，是人性认知与戏剧结构典范。
 - 欧里庇得斯*悲剧《美狄亚》《特洛伊妇女》*：质疑神谕、刻画边缘人物，悲剧情感转向现实与怀疑。
@@ -567,48 +499,36 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
 - 修昔底德*史书《伯罗奔尼撒战争史》*：实证、因果分析，近代史学与政治写实先驱。
 - 柏拉图*对话体《理想国》《会饮篇》*：阐述乌托邦原型、理念论，文学、哲学双重遗产。
 - 亚里士多德*文论《诗学》《修辞学》*：对文学分类、阐述悲剧理论。西方文明第一部系统的美学和艺术理论作品，为西方文论奠定了基础。
-
 5. **希腊化时期** 3BCE~1BCE
-
 - 阿波罗尼奥斯·罗狄乌斯*学术化英雄史诗《阿尔戈英雄记》*：注重心理描写，成为史诗向小说过渡的桥梁。
 - 卡利马科斯*歌集《起源》《赫卡勒》*：“憎恨所有常见的事情”，擅用精辟的短诗和犀利的警句，影响罗马与现代“精致抒情”。
 - 忒奥克里托斯*田园诗集《Idyll》*：西方田园诗派的创始，歌咏牧歌景物与爱情，塑造自然美学。
 - 米南德*新喜剧《Dyskolos》等*：家庭伦理、机智对白，欧洲情景喜剧叙事雏形。
-
 6. **罗马帝国的希腊语文学** 1BCE~2CE
-
 - 普鲁塔克*纪传体《希腊罗马名人传》*：成对比较希腊、罗马人物，旨在说明人的性格如何决定命运。深刻影响文艺复兴“伟人观”。
 - 撒摩撒他的卢西安*对话体《神的对话》、《佩雷格林之死》*：直接反映和批判当时社会生活、哲学宗教、伦理道德，为后世游记讽刺与元小说源头。
 
 **古罗马文学** 3BCE~5CE
-
 1. 特点：使用古典拉丁语，讲究句式对称、修辞技法、押韵节奏；风格偏重简洁与逻辑。广泛吸收希腊文学体裁，服务于国家、法制与公民教育，是政治修辞、历史叙述和文化正统建构的工具，阐发“美德”“责任”“荣誉”等罗马核心价值。
 2. 体裁：史诗、抒情与讽刺诗、戏剧、小说、讽喻故事、史书、政治文学、哲学修辞。
 3. **文学初创期** 3BCE~1BCE 摹仿希腊文学
-
 - 普劳图斯*喜剧《孪生兄弟》《一坛黄金》*受希腊新喜剧影响，加入拉丁粗俗幽默，奠定罗马舞台喜剧结构与俗语传统。
 - 泰伦提乌斯*喜剧《安德罗斯女孩》*：语言精炼高雅、人情细腻 ，为欧洲情景喜剧滥觞。
 - 卢克莱修*哲理长诗《物性论》*：原子论长诗 把哲学科学化诗化，存古典理性火种
 - 西塞罗*哲学修辞《论演说家》《论义务》*：罗马最伟大的修辞家，文风明晰，兼政治与哲思于一体修辞教育范本，被誉“拉丁散文之父”。
-
 4. **黄金时代** 1BCE~1CE 初
-
 - 维吉尔*六步格史诗《埃涅阿斯纪》*:以希腊史诗形式塑造罗马起源与奥古斯都时代，成为格律典范。
 - 贺拉斯*六步格诗《颂歌》《诗艺》讽刺诗体《讽刺诗》*：诗体规范奠基人，倡导“适度”“幽默批评”与理性自足，规范拉丁诗歌艺术论，影响文艺复兴。
 - 奥维德*六步格诗《变形记》排律诗《爱的艺术》*：情爱主题丰富，文体精巧，影响了西方美术及西方文学理论。
 - 李维*史书《罗马史》*：共 142 卷，叙述民族起源，强调道德教化，成为欧洲史学教材。
-
 5. **白银时代** 1CE~2CE
-
 - 小塞内卡*悲剧《美狄亚》散文《论愤怒》*：斯多噶派代表，文风警句化，重伦理、反思与人生短暂。
 - 卢坎*史诗《法沙利亚》*：共和派史诗，描述凯撒与庞培之间的内战，否定神祇干预，史诗转为政治批判工具。
 - 尤维纳利斯*讽刺诗集《讽刺诗》*：_尤维纳利斯式讽刺_，对同时代的人和事进行的挖苦和讥讽，充满猛烈的人身攻击、强烈的道德愤慨以及悲观失望情绪。
 - 塔西佗*史书《编年史》《历史》*：语言凝练，揭露专制，风格悲观尖锐，使用心理-权力剖析，政治修辞与史料批判高峰。
 - 昆提利安*修辞学教科书《演说学院》*：在文艺复兴时期被广泛运用，教育思想对人文主义和现代全面发展观点有极大影响。
 - 佩特罗尼乌斯*讽刺小说《爱情神话》*：散文化长篇，为欧洲“小说”雏形与元叙事滥觞。
-
 6. **晚期及基督教化时期** 3CE~5CE
-
 - 阿普列尤斯*小说《金驴记》*：奇幻、宗教体验小说，神话与现实交织，西方最早长篇小说之一，描写人性与宗教体验，连接古典与中世纪浪漫叙事。
 - 奥古斯丁 (Augustinus) Confessiones, De Civitate Dei 自传神学、历史哲学 将古典修辞转入基督教思想核心
 - 普鲁登修斯 (Prudentius) Psychomachia 早期基督教寓言诗 道德二元斗争模式启发中世纪文学
@@ -664,27 +584,21 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
 非洲文学
 
 ### 写作基础
-
 1. 英语写作
    - Duke - 英文写作教程
 2. 汉语写作
-
 3. 读者的文本密读
-
    - 福楼拜，包法利夫人
    - 哈代，德伯家的苔丝
    - 陀思妥耶夫斯基，卡拉马佐夫兄弟
    - 詹姆斯·乔伊斯，尤利西斯
    - 司汤达，红与黑
-
 4. 哲学、思想流派、方法论
    - 赵恒毅，符号学：原理与推演
    - 哲学相关，参见本站[#哲学大局观]()
 
 ### 成为作者
-
 1. 英语写作基础
-
 2. 写作实践
    - TGC - Analysis and Critique - How to Engage and Write about Anything
    - TGC - Writing Great Fiction
@@ -692,7 +606,6 @@ Above all, remember that **mastery is an ongoing process**. Literature is always
    - 罗伯特·斯科尔斯，詹姆斯·费伦，罗伯特·凯洛格，叙事的本质
 
 ### 相关子学科
-
 1. 诗学
 2. 修辞学
 3. 体裁学

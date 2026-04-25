@@ -16,7 +16,6 @@ subclass: English
 | **glance** | **快速地瞥一眼**；动作短暂、匆匆               | 常用 at/over/through<br>含“不细看”               | glance (at/over/through)    | *She **glanced at** her phone and kept walking.*<br>「她瞥了手机一眼后继续走。」      |
 
 **对比要点**
-
 * **主动性**：see（被动） ⇢ look / watch / glance（主动）。
 * **时长与专注**：watch ＞ look（可能很短或较长） ＞ glance（瞬间）。
 * **对象状态**：watch 常看“会动或会变化”的东西（比赛、电影、儿童）。look/see/glance 可用于静物。
@@ -32,19 +31,13 @@ subclass: English
 | 搭配介词 | 常接 **to/with/about/on**，但也可省略宾语：*He spoke calmly.*                                      | 常接 **to/with/about**；不能单独省略对象（少见单独用 *talk*）                                                   |
 | 强调方式 | 1⃣ 说话能力：*He can’t speak after the surgery.*<br>2⃣ 正式演说：*She will speak at the conference.* | 1⃣ 双向交流：*We talked for hours.*<br>2⃣ “说服/责备”含义：*talk someone into/out of sth.*                        |
 | 语法特征 | 不可作名词（名词用 *speech*）                                                                      | 口语可作名词：*small talk, pep talk*                                                                            |
-
 1. **语言能力 vs. 话题讨论**
-
    * *She **speaks** Japanese fluently.*（能说日语）
    * *Let’s **talk** about your itinerary.*（谈行程）
-
 2. **正式发言 vs. 朋友聊天**
-
    * *The CEO will **speak** at the AGM tomorrow.*（正式演讲）
    * *They **talked** with each other until midnight.*（聊天到深夜）
-
 3. **劝说结构**
-
    * — *Try to **talk** him into joining us.*（劝他加入）
    * — 无对应的 *speak somebody into* 用法
 
@@ -76,10 +69,8 @@ subclass: English
 | **manifest**    | 显现；表现               | 把内在状态或特质外露；书面语                  | manifest itself in / as; manifest symptoms              | *Stress can **manifest** as insomnia.*                          |
 | **exhibit**     | 展出；呈现               | 正式陈列（展览）或表现某特征                  | exhibit at a gallery; exhibit signs of…                 | *Children may **exhibit** unusual behaviour when anxious.*      |
 | **indicate**    | 指示；表明               | 间接指出或暗示；证据往往非决定性              | indicate that…, indicators of…, data indicate           | *Early trials **indicate** the drug is effective.*              |
-
 * `illustrate` 已列一次，重复处省略。
 * 每个词条选用不同语境，避免机械同义。
-
 * **语体强度**：proclaim > declare > announce > state；assert 承上启下；claim 含怀疑；explain / illustrate 偏教学说明；account for 专讲原因或比例。
 * **主观-客观**：state、account for 更客观；assert、claim 带个人立场；declare、proclaim 带官方或庄重色彩。
 
@@ -99,7 +90,6 @@ subclass: English
 | **manifest**    | 使内在事物**显露**于外       | 书面语；常指情绪、态度、性质       | manifest itself in/as, manifest destiny            | *Symptoms **manifest** as severe fatigue.*                          |
 | **exhibit**     | 正式地**展出/表现**          | 博物馆、展览；或显露特质           | exhibit at a gallery, exhibit signs of…            | *Children may **exhibit** odd behavior when stressed.*              |
 | **indicate**    | **指出/暗示**某事实          | 语气客观，证据常为间接             | indicate that…, indicators of…                     | *Early data **indicate** a potential drug interaction.*             |
-
 * demonstrate vs. prove：前者展示过程可感知，后者强调最终定论。
 * confirm vs. corroborate：confirm自内核实，corroborate用外部独立来源强化。
 * show、indicate、support层次递增：show呈现，indicate带暗示，support提供支撑。
@@ -114,7 +104,6 @@ subclass: English
 | **contain**     | **内部**装有；把…限制在内部<br>to hold inside; keep within limits        | 空间或概念“盒子”里放有内容；有“遏制”义                                | contain + 具体/抽象名词                               | *This folder **contains** all the legal documents.*<br>「此文件夹内含所有法律文件。」                    |
 | **include**     | 举例列入；所列并非全体<br>to list as part of a set, often non-exhaustive | 列出成员作说明，可再加“but not limited to”                            | include A, B and C                                    | *Fees **include** meals, materials and field trips.*<br>「费用包含餐饮、材料和实地考察。」               |
 | **comprise**    | 由……**构成** / **组成**<br>to be made up of                              | 整体→部分：整体 **comprises** 部分；部分→整体：部分 **comprise** 整体 | (1) Whole comprises parts<br>(2) Parts comprise whole | *The committee **comprises** five professors and two students.*<br>「委员会由五名教授和两名学生组成。」  |
-
 * **incorporate** 主动并入；
 * **involve** 隐含必需；
 * **contain** 强调内部容纳或控制；
@@ -131,51 +120,36 @@ subclass: English
 | **compose**    | 及物；常被动 | (少见) A compose B（部分 → 整体）<br>常用：B be composed of A            | 正式；暗含“有条理地排列”            | 主动体多见于文学/音乐语境                              | *The coalition is **composed of** ten parties.* 该联盟由十个政党组成。                                                     |
 | **comprise**   | 及物         | **B comprise A**（整体 → 部分）<br>(争议) B be comprised of A            | 精准罗列全部组成部分                | 不接 *of*（传统语法），但口语已普遍接受 *comprised of* | *The course **comprises** six modules.* 该课程含六个单元。                                                                 |
 | **consist**    | 不及物       | **B consist of A**（整体 → 部分）                                        | 陈述组成；语气中性、偏书面          | 只能与 *of*；无被动；不用于进行时                      | *The portfolio **consists of** bonds and equities.* 该投资组合由债券和股票组成。                                           |
-
 * **主语方向**
-
   * “部分当主语” ➔ *constitute*, *form*, *make up*, (少用) *compose*.
   * “整体当主语” ➔ *comprise*, *consist of*, “be composed of”, “be made up of”.
-
 * **被动可行性**
-
   * 日常最常见被动：**be made up of**, **be composed of**。
   * *constituted by*、*comprised of* 存在但语域较正式或存在语法争议。
   * **consist** 无被动形式。
-
 * **语义色彩**
-
   * **constitute** 与法律、官方文件常见：*These rules constitute a contract.*
   * **form** 侧重“形成”过程，也可指几何外形：*Clouds formed rapidly.*
   * **make up** 兼具“占比”“补足”义：*We need one more player to make up the team.*
   * **compose** 附带“精心组织”之感，并有“作曲、作文”义。
   * **comprise / consist of** 仅叙述组成，无过程色彩，列举往往较完整。
-
 * **语法限制摘要**
-
   * **consist** 从不接宾语，只能 *consist of*；不可进行、被动。
   * **comprise** 传统上不可 *of*，现代口语可接受；被动罕见。
   * **constitute / compose / form / make up** 均可进行时，多数可改被动（除 consist）。
 
 额外示例
-
 1. **constitute**
-
    * *Twelve months **constitute** a year.*
 2. **form**
-
    * *Icebergs **form** when fresh water freezes on the ocean surface.*
 3. **make up**
-
    * *Volunteers **make up** most of the workforce.*
 4. **compose / be composed of**
-
    * *Water is **composed of** hydrogen and oxygen.*
 5. **comprise / be comprised of**
-
    * *Asia **comprises** roughly 30 % of Earth’s land area.*
 6. **consist of**
-
    * *The jury **consists of** twelve citizens.*
 
 ### 开始 begin, start, initiate, establish, launch, set about, commence, put one's hand to, turn to, undertake, go about, take up, enter into, go at
@@ -211,27 +185,18 @@ subclass: English
 | **garbage** | 厨余等生活垃圾；也可指胡言乱语                 | **物理垃圾**（尤其湿垃圾） | **美式 / 加拿大** | 不可数                             | 中性—口语          | garbage disposal, garbage truck；That’s garbage.                   |
 | **rubbish** | 无用之物、垃圾；也可指胡扯                     | **价值+判断**              | **英式**          | 不可数                             | 口语—中性          | rubbish bin；That idea is rubbish.                                 |
 | **grunge**  | 污垢、油腻污渍；引申为肮脏风格                 | **状态与质感**（脏）       | 英美通用          | 不可数                             | 描述性；次文化用法 | bathroom grunge, grunge style；The tiles were covered in grunge.   |
-
-
 1. **价值 vs. 处理 vs. 资源**
-
    * **junk / rubbish**：强调“没价值、劣质”（评价）。
    * **trash / garbage**：强调“被丢弃的日常垃圾”（行为与实体）。
    * **waste**：强调“浪费的资源或不当过程”（抽象、制度化）。
    * **grunge**：强调“肮脏状态或质感”，并非“垃圾类别”。
-
 2. **地域差异**
-
    * **美式**：trash, garbage
    * **英式**：rubbish
    * **中性通用**：junk, waste, grunge
-
 3. **可数性**
-
    * 多数为**不可数名词**；*junk* 可说 *a piece of junk*；*waste* 的复数 *wastes* 多见于技术/法律语境。
-
 4. **语体与扩展义**
-
    * **trash / rubbish / garbage** 可作贬损性评价（“胡扯/很烂”）。
    * **junk** 强烈价值判断（低质）。
    * **grunge** 常用于描述“污垢”或“审美风格”（如音乐/时尚）。
@@ -251,7 +216,6 @@ subclass: English
 | **mansion**               | 可数名词                      | 三层以上或占地极大的豪宅；往往带仆人房           | stately **mansion**, Gilded-Age **mansion**                         |                |
 | **villa**                 | 可数名词                      | ①（欧美）城外度假大宅；②地中海式独栋带花园泳池   | Tuscan **villa**, seaside **villa**                                 |                |
 | **cottage**               | 可数名词                      | 乡间或湖畔的小屋，多为木石结构，氛围质朴         | thatched-roof **cottage**, holiday **cottage**                      |                |
-
 * **home / house**：前者重感受，后者重建筑实体。
 * **apartment / condo / suite**：三者皆处于大楼内；condo强调产权，suite强调连通与档次。
 * **mansion / villa / cottage**：同属独栋住宅，差别在规模、用途与乡村—度假—奢华定位。
@@ -267,9 +231,7 @@ subclass: English
 | **question** | 需回答的“疑问”；引申为争议点  | 语气可中性也可怀疑；强调“询问或探讨”       | ask / raise / address a question; the question of …                 | *She raised an important **question** about the data.*<br>她对数据提出了一个重要疑问。 |
 | **matter**   | 要处理或关心的“事情 / 事务”   | 中性；重在“事由本身”而非难度               | a legal / personal matter; matter at hand; as a matter of fact      | *Let’s deal with this **matter** after lunch.*<br>午饭后再处理这件事。                 |
 | **trouble**  | 造成困扰或痛苦的不良状况      | 负面且带情绪，常含焦虑、危险               | get into / have trouble; trouble with …; financial / engine trouble | *He’s in **trouble** with the law again.*<br>他又触犯法律惹上麻烦。                    |
-
 * **范畴**：
-
   * *issue / question / matter* 可指抽象议题；*problem / trouble* 多指实际障碍。
 * **严重度**：*problem < trouble*（后者常含“麻烦／风险”情绪）。
 * **口吻**：说 “We have an **issue**” 比 “We have a **problem**” 缓和；“He’s in **trouble**” 最具警示感。
@@ -286,29 +248,19 @@ subclass: English
 | **business**   | n.              | ①“商业、买卖”②“公司”③“事务”                  | 侧重经济活动；也可泛指“正事”   | *Setting up a **business** takes capital.*<br>创业需要资金。           |
 | **profession** | n.              | 受专门训练并有资格认证的“职业”               | 专业性、资格、社会责任         | *Law is a respected **profession**.*<br>法律是一门受人尊敬的职业。     |
 | **operation**  | n.              | ①“运行、运营”②“军事行动”③“外科手术”          | 过程性的组织活动；也指设备运作 | *The factory’s **operations** were suspended.*<br>工厂运营被暂停。     |
-
 * **work vs. job**
   *work* 强调整体劳动；*job* 是某个单位的具体岗位或一次任务。
 
   > *I have a lot of **work** to finish after **my job** interview.*
-
 * **career** 涵盖一生或长期路径，可包含多份 *jobs*：
-
   > *Changing fields mid-**career** is common nowadays.*
-
 * **staff** 是群体名词，后接复数动词亦可单数：
-
   > *Our **staff are** highly trained.*
-
 * **business** 可作可数或不可数：
-
   > *She runs a small **business**.*（公司）
   > *It’s none of your **business**.*（事）
-
 * **profession** 与 *job* 的区别在于“需要专业资格和伦理规范”：doctor, engineer, architect。
-
 * **operation** 在企业语境指“日常运营”，在医疗指“手术”，在军事指“行动”：
-
   > *The bank's online **operations** were restored.*
   > *He underwent a heart **operation** yesterday.*
 
@@ -362,7 +314,6 @@ subclass: English
 | **infinite**   | 理论上“无限大”；强调无尽                 | infinite space, infinite patience             | 抽象、哲学感     | *Mathematics deals with **infinite** sets.*         |
 
 \* 语义强度示意：① 基础 → ⑥ 极端
-
 * big / large：单纯尺寸或数量；large 更正式且常用于统计、度量。
 * great：常兼具“重要”“优异”。
 * huge / enormous / tremendous：体量或程度的夸大，huge 最口语，enormous 最正式，tremendous 带情绪。
@@ -383,26 +334,18 @@ subclass: English
 | **plenty of**      | 量词短语 | 可数复数 + 不可数            | 中性口语   | plenty of **books / water**            | “充足，足够”且常含安慰意味<br>· *There’s plenty of time*                    |
 | **a number of**    | 量词短语 | **可数复数**                 | 中性       | a number of **issues** + **复数谓语**  | “若干，很多”（语义比 great many 弱）<br>· *A number of students are absent* |
 | **a lot of**       | 量词短语 | 可数复数 + 不可数            | 最口语     | a lot of **ideas / milk**              | 万能“很多”，正式文写可改用 large number/amount<br>· *a lot of work*         |
-
 1. **形容词 vs. 量词短语**
-
    * *vast, abundant, plentiful* → 放在名词前直接修饰。
    * 其余均为带 **of** 的量词短语，后接名词。
-
 2. **可数 / 不可数限制**
-
    * 仅修饰 **可数复数**：*a great many, a number of*。
    * 仅修饰 **不可数**：*a good deal of*。
    * 两类皆可：*a lot of, plenty of, vast, abundant, plentiful*。
-
 3. **语气强弱 & 场合**
-
    * **biggest** 书面力度：*vast > colossal*（见前问）…
    * 在本表：强调强度 *great many > plenty / a lot / abundant > a number / a good deal*。
    * 写论文、报告：多用 *large amount/number*, *abundant*, *plentiful*；少用 *a lot of*。
-
 4. **含义细节**
-
    * *plentiful / plenty of* 含“够用”且多→常与资源、食物搭配。
    * *abundant* 带“富饶”色彩。
    * *a mass of* 带“拥挤、混杂”隐含，不强调可数性。
@@ -424,49 +367,32 @@ subclass: English
 | **infinitesimal**                | 无限小的               | 数学／科学用词，强调趋近于零                                 | ➅          |
 
 \*数字越大表示“更微小”的语义强度；small/little 用作基准（➀）。
-
 1. **small**
-
    * *This is a **small** café that seats only 20 people.*
    * 这个咖啡馆面积不大，只能容纳 20 位顾客。
-
 2. **little**
-
    * *She gave me a **little** smile when she left.*
    * 她离开时朝我微微一笑。
    * *He has **little** patience for delays.*
    * 他几乎没有耐心等待耽搁（作名词前限定词，含量少）。
-
 3. **tiny**
-
    * *A **tiny** crack appeared in the glass after the impact.*
    * 玻璃受撞击后出现了一道细小裂纹。
-
 4. **miniature**
-
    * *The architect built a **miniature** of the new stadium for the presentation.*
    * 建筑师制作了新体育场的微缩模型用于展示。
-
 5. **minute**
-
    * *Minute traces of pollen were found on the artifact.*
    * 在该文物上发现了极微量的花粉痕迹。
-
 6. **microscopic**
-
    * *Under the electron microscope we observed **microscopic** defects in the alloy.*
    * 在电子显微镜下，我们观察到合金中的微观缺陷。
-
 7. **minuscule**
-
    * *The budget increase is **minuscule**—barely one percent.*
    * 预算增幅微乎其微，不到百分之一。
-
 8. **infinitesimal**
-
    * *Calculus lets us study changes that occur over **infinitesimal** intervals of time.*
    * 微积分使我们能研究在无限小时间区间里发生的变化。
-
 * **little** 可充当限定词或代词：*a little water*；**small** 只能作形容词。
 * **tiny / miniature** 偏口语或描述性；**minute / microscopic / infinitesimal** 偏学术。
 * **miniature** 暗示与“原版”有比例关系；**tiny** 不一定有参照物。
@@ -487,7 +413,6 @@ LLM Prompt Engineering for Workflows Enhancement and Study Assistance 和 LLM Pr
 说法 A：名词化结构 (The Nominal Approach)
 
 > **LLM Prompt Engineering for Workflows Enhancement and Study Assistance**
-
 * **语法点**：使用名词（Enhancement, Assistance）作为核心。
 * **优点**：显得稳重、客观。在学术索引中，名词结构更容易被归类。
 * **瑕疵**：*Workflows Enhancement* 存在微小的语法不协调。通常情况下，名词作定语时使用单数，即 **Workflow Enhancement**。复数形式 *Workflows* 在此处显得略为生硬。
@@ -496,18 +421,14 @@ LLM Prompt Engineering for Workflows Enhancement and Study Assistance 和 LLM Pr
 说法 B：动名词结构 (The Action-Oriented Approach)
 
 > **LLM Prompt Engineering for Enhancing Workflows and Assisting Study**
-
 * **语法点**：使用动名词（Enhancing, Assisting）引导动作。
 * **优点**：逻辑流动性（Flow）更好，明确表达了 Prompt Engineering 是**用来做什么**的工具。
 * **优势**：并行结构（Parallelism）非常完美（Enhancing A and Assisting B），符合英语写作的高阶审美。
-
 * **最推荐的学术写法（名词式）**：
 > **LLM Prompt Engineering for Workflow Augmentation and Research Assistance**
 > *(注：使用 Augmentation 替代 Enhancement 更有“AI 赋能”的专业感，Research 替代 Study 更符合研究者身份。)*
-
 * **最推荐的实用写法（动词式）**：
 > **Leveraging LLM Prompt Engineering to Augment Workflows and Assist Research**
 > *(注：加入 Leveraging 动词，使整个工作流的逻辑闭环更清晰。)*
-
 * 如果你是在写**论文、正式报告的标题**，选 **A**（但请将 *Workflows* 改为单数 *Workflow*）。
 * 如果你是在写**操作指南、项目描述或个人陈述**，选 **B**，它读起来更有生命力和执行力。

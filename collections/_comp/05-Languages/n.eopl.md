@@ -7,7 +7,6 @@ subclass: Languages
 ## Chapter 1 Inductive Sets of Data
 
 Main content:
-
 1. Definition and rules.
 2. Recur on data sets.
 3. Auxiliary procedures and Context argument.
@@ -18,7 +17,6 @@ Main content:
 **1. Inductive Spcicification to specify a set of values:**
 
 There are three ways to define:
-
 1. Top-down definition
 2. Bottom-up definition
 3. Rules-of-inference
@@ -28,12 +26,10 @@ There are three ways to define:
 _hypothesis_ or _antecedent_<br>
 ————————————————<br>
 _conclusion_ or _consequent_
-
 - If two or more hypotheses [haɪˈpɑθəsɪs] are listed, they are connected by an implicit [ɪmˈplɪsɪt] "and".
 - A rule with no hypotheses is called an _axiom_ [ˈæksiəm].
 
 **3. Define sets with Grammars**:
-
 - Nonterminal Symbols (syntactic [sɪnˈtæktɪk] categories).
 - Terminal Symbols.
 - Productions. The rules called productions has two parts, separated by the symbol "::=" \*(read "is" or "can be"). The left part is a nonterminal symbol, and the right part consists of terminal and nonterminal symbols.
@@ -81,7 +77,6 @@ We can use the inductive definitions in two ways: to prove theorems [ˈθiərəm
 **Proof By Structual Induction:**
 
 To prove that a propostion Induction Hypothesis is true for all structures s, prove the following:
-
 1. IH is true on simple strucures (those without substructures).
 2. If IH is true on the substructures of s, the it is true on s itself.
 
@@ -247,7 +242,6 @@ list-sum : Listof(Int) → Int
 > Vectors are heterogenous [ˌhetə'rɒdʒənəs] structures whose elements are indexed by exact non-negative integers. A vector typically occupies _less space_ than a list of the same length, and the average time required to _access a randomly chosen element_ is typically _less_ for the vector than for the list.
 
 **Appendix 1**: eq?, eqv?, equal? and = in scheme
-
 - = : numerical equal
 - eq? : whether two parameters represent the SAME OBJECT. The result for two primitive values like 2 and "a" depends on the implementation.
 - eqv? : whether same object. #t if two paramters are identical primitive values.
@@ -665,17 +659,12 @@ Data abstraction -> interface, implementation 2. Representation-independent 3. E
 <br>Interface:
 <br>&nbsp; Constant: zero
 <br>&nbsp; Procedures: iszero?, succ, pred 4. Opague <-> Transparent
-
 1. Kinds of data types:
-
 - aggregate: contains values of other types, e.g. array, record
 - union: values are of one or the other of multiple given types.
 - discriminated union: contain a value of one of the union's types and a tag indicating which type the value are belongs to.
-
 2. ENVIRONMENT:
-
 - associates values with variables.
-
 3. Variables may be represented by: symbols, strings, references into a hash table or even numbers.
 4. Environment interface:
 
@@ -686,7 +675,6 @@ Data abstraction -> interface, implementation 2. Representation-independent 3. E
 ```
 
 Designing an interface for a recursive data type
-
 1. Include one constructor for each kind of data in the data type.
 2. Include one predicate for each kind of data in the data type.
 3. Include one extractor for each piece of data passed to a constructorof the data type.
@@ -715,7 +703,6 @@ Designing an interface for a recursive data type
            ...)
        (else <default>)
 ```
-
 1. Abstract Syntax Tree
 2. Parse and un-parse
 

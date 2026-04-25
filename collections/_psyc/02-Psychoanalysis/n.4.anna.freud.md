@@ -47,11 +47,8 @@ Within this model, Anna Freud’s taxonomy is not a flat list but a set of opera
 “Identification with the Aggressor” is frequently misread as a descriptive label for victims who imitate perpetrators. In Anna Freud’s logic it is, more precisely, a *defensive conversion of position*: from endangered object to agent, from passive to active, from exposed to protected.
 
 Consider its mechanics in three linked moments.
-
 1. **Danger and signal anxiety.** The child confronts an external threat or an internalized threat (the anticipated aggression of the object, or the punitive superego). Anxiety functions as a signal that danger is imminent—danger understood not only as physical harm but as the collapse of the Ego’s coherence and the loss of object support.
-
 2. **Introjective appropriation of the threatening attributes.** The Ego responds by internalizing features of the aggressor—attitudes, behaviors, tone, even moral postures. This is not simply imitation; it is a structural maneuver. By bringing the aggressor “inside,” the Ego reduces the unpredictability of the external threat: what is internal can be anticipated, managed, and, crucially, enacted.
-
 3. **Repositioning of agency and redistribution of fear.** The internalization permits a reversal: the child now occupies the aggressor’s standpoint. Fear is transmuted into mastery. Aggression is redirected outward or, in some configurations, turned against the self. The defensive gain is twofold: (i) reduction of helplessness (a core traumatic affect), and (ii) conversion of anxiety into controlled action.
 
 In metapsychological terms, this defense is a hybrid operation spanning the structural and relational registers. Structurally, it fortifies the Ego by borrowing the aggressor’s power; relationally, it reorganizes object relations by narrowing the distance between self and threatening object. Its clinical consequences vary: it may generate a hardened, prematurely authoritarian character; it may produce bullying, cruelty, or moralistic harshness; it may also under certain conditions stabilize the Ego after shock by supplying a temporary scaffolding of control. Its pathological potential lies in its long-term cost: the Ego becomes organized around borrowed aggression, and the internalized aggressor can crystalize into a punitive superego. Yet its adaptive rationale is unmistakable: it is an attempt at survival by converting exposure into command.
@@ -59,11 +56,8 @@ In metapsychological terms, this defense is a hybrid operation spanning the stru
 ##### 4. Altruism as a Defense: Vicarious Gratification and Moral Adaptation
 
 Anna Freud’s concept of “Altruism” is equally liable to moral misunderstanding. It is not an ethical commendation but a structural description of how the Ego can manage forbidden or anxiety-laden wishes by translating them into socially valued action. Its mechanism is best understood as *vicarious drive satisfaction* under superego and reality constraints.
-
 1. **Presence of a wish under prohibition or guilt.** The child (and later the adult) carries a wish that generates conflict—often because it is competitively aggressive, envious, or narcissistically demanding.
-
 2. **Displacement of gratification to the other.** Instead of pursuing direct satisfaction, the Ego identifies with another person’s success, pleasure, or wellbeing. The original libidinal or aggressive cathexis is not annihilated; it is re-routed. The subject obtains pleasure through the other’s gratification, thereby satisfying the drive aim indirectly while evading guilt.
-
 3. **Ego-syntonic moralization and social insertion.** Because the behavior is socially rewarded, it becomes ego-syntonic and can be stabilized as a character trait. The defense thus doubles as an adaptive strategy: it secures love and approval, reduces internal conflict, and anchors the subject within a social economy of value.
 
 Altruism, in this reconstruction, is a defense that succeeds precisely by aligning psychic compromise with cultural norms. It exemplifies the Anna Freudian theme that adaptation is not the opposite of conflict but a *mode of conflict-resolution* that can become developmentally productive. The clinical risk is the hidden rigidity: when altruism becomes compulsive, it may conceal envy, aggression, or dependency; it may impoverish direct desire and produce depressive depletion. But its theoretical significance is that it demonstrates how defense can be an instrument of social integration rather than mere symptom production.
@@ -87,7 +81,6 @@ This is the point of the developmental lines (*lignes de développement*). They 
 ##### 2. What a Developmental Line Is: A Coordinated Vector, Not a Stage
 
 A developmental line is neither purely biological maturation nor purely cultural learning. It is the trajectory of a compromise between internal drive organization and Ego-mastery of external demands. It therefore integrates two axes:
-
 * **Libidinal organization** (drive aims and objects; *Triebziele*, *Objektwahl*): what the child seeks, loves, fears, and desires.
 * **Ego mastery** (reality testing, motor control, language, delay, symbolization): how the child can pursue aims within reality without collapse into chaos or omnipotent fantasy.
 
@@ -96,13 +89,9 @@ To speak of a line is to speak of *directionality under constraint*. The line is
 ##### 3. The Paradigm Line: From Dependency to Emotional Self-Reliance
 
 Anna Freud’s most emblematic line is the movement from dependency to emotional self-reliance. Its mechanics can be reconstructed as follows.
-
 1. **Primary dependency and object necessity.** The infant’s survival depends on the caregiver; drives are organized around immediate discharge and the securing of the object. Anxiety here is often catastrophic because the Ego is not yet equipped for sustained absence.
-
 2. **Emergence of internalization and object constancy.** With repeated experiences of care, the child internalizes the caregiver as a stable representation. This internalization is not merely cognitive; it is affectively cathected (*Besetzung*) and becomes a resource against absence. The Ego begins to tolerate delay and frustration.
-
 3. **Differentiation of self and object; mastery of separation.** As the child consolidates a sense of self, separation becomes thinkable without annihilation. The Ego’s defensive and adaptive capacities (symbolic play, language, transitional phenomena) mediate the loss of immediate object presence.
-
 4. **Self-reliance as regulated autonomy.** Emotional self-reliance is not the abolition of dependency but its regulation: the capacity to seek help without collapse, to be alone without panic, to invest in work and peers without abandoning object ties.
 
 This line synthesizes libidinal and reality mastery: the child’s attachment (object cathexis) must be coordinated with the Ego’s capacity to tolerate frustration and to internalize stabilizing representations. A failure in this coordination yields developmental disharmony—for instance, advanced cognitive mastery coupled with primitive separation anxiety, or apparent independence masking rigid defensive denial of need.
@@ -110,13 +99,9 @@ This line synthesizes libidinal and reality mastery: the child’s attachment (o
 ##### 4. Additional Lines: From Body to World, From Play to Work, From Egocentrism to Companionship
 
 The developmental-line framework generalizes across domains:
-
 * **From suckling to rational eating.** Here the libidinal pleasures of oral satisfaction are progressively reorganized into socially regulated feeding. The Ego’s role is to manage frustration, incorporate rules, and shift from immediate discharge to structured routines.
-
 * **From wetting/soiling to bladder and bowel control.** The anal phase is not merely libidinal; it is a training ground for Ego mastery (delay, control, compliance, defiance). The child’s negotiations around control are simultaneously negotiations with authority and with emerging superego demands.
-
 * **From narcissism to object relations and companionship.** The child’s capacity to recognize the other as a separate subject develops alongside the Ego’s capacity to manage rivalry, jealousy, and aggression. Defensive operations here are pivotal: projection, reaction formation, identification, and altruism can all serve to negotiate social reality.
-
 * **From play to work.** The shift is not a moral promotion but a transformation in the economy of gratification: pleasure becomes increasingly mediated by postponement, skill acquisition, and socially valued productivity. The Ego’s secondary-process thinking becomes central.
 
 In each case, the developmental line is a *mechanics of translation*: from drive immediacy to reality-mediated satisfaction, from affect storms to symbolization, from omnipotent fantasy to negotiated reciprocity.
@@ -136,11 +121,8 @@ This perspective changes clinical inference. Instead of asking only “What is t
 The Hampstead tradition is best understood as an epistemic and clinical apparatus: a formalization of how to observe, infer, and intervene when the object is a developing Ego. The central move is to render clinical judgment systematic without reducing it to checklists. This is precisely what the metapsychological profile accomplishes: it translates the first principle (Ego observability) and the developmental-line framework into a structured diagnostic practice.
 
 Three methodological commitments organize this formalization:
-
 1. **Developmental anchoring.** No single behavior is interpreted in isolation from developmental level. What is defensive pathology at one age may be normal transitional defense at another.
-
 2. **Multi-source observation.** Especially in child work, the analytic situation is not the sole data stream. The child’s functioning must be triangulated across play, school, peer relations, and caregiver reports—not as “environmental noise” but as the field in which adaptation is enacted.
-
 3. **Technique attuned to the Ego’s capacity.** Interpretation is not automatically therapeutic; it can overwhelm immature Ego functions. The timing, form, and depth of interpretation must be calibrated to the child’s reality testing and symbolization.
 
 These commitments do not dissolve psychoanalysis into pedagogy. Rather, they articulate a psychoanalytic logic suited to development: the analyst works with transference and unconscious fantasy, but does so with constant attention to the Ego’s maturational capacities and the reality conditions that shape the child’s conflicts.
@@ -150,13 +132,9 @@ These commitments do not dissolve psychoanalysis into pedagogy. Rather, they art
 The “metapsychological profile” is the diagnostic instrument that embodies Anna Freud’s reconstruction of clinical practice. Its logic is neither purely descriptive (symptom lists) nor purely etiological (single-cause explanations). It is *structural-genetic*: it maps the child’s psychic economy across multiple dimensions and assesses their coordination.
 
 A rigorous reconstruction identifies at least four interlocking axes:
-
 1. **Structural axis (Ich–Es–Über-Ich–Reality).** How differentiated is the Ego? How strong are reality testing and impulse control? How harsh or permissive is the superego? What is the typical configuration of tripartite conflict?
-
 2. **Dynamic-defensive axis (dominant defenses and their costs).** Which defenses predominate? Are they flexible or rigid? Do they produce ego-syntonic character adaptation or ego-dystonic symptoms? How do they shape transference?
-
 3. **Genetic-developmental axis (developmental lines and their harmony).** Where is the child along key developmental lines (dependency–self-reliance, play–work, egocentrism–companionship, etc.)? Are there disharmonies that generate compensatory defensive organizations?
-
 4. **Economic-affective axis (cathexis, affect tolerance, binding).** How is affect bound or unbound? Is anxiety signal-like and informative, or diffuse and flooding? Is there capacity for sublimation, symbolization, and delayed gratification?
 
 The profile’s transformation of practice is direct: diagnosis is no longer a naming of the symptom but an assessment of the *developmental viability of the Ego’s adaptations*. A phobia, for example, is interpreted not only by its latent meaning but by the defensive system it stabilizes and by the developmental disharmony it may be compensating. Treatment aims at reconfiguring the defensive economy and supporting developmental re-synchronization, not merely lifting repression.
@@ -170,11 +148,8 @@ This reconceptualization matters because it provides a non-moral criterion for e
 ##### 4. The Clinical Grammar of Intervention: Supporting Ego Development Without Abandoning Unconscious Conflict
 
 The formalization of observation does not entail a renunciation of interpretation. It entails a new grammar of intervention:
-
 * **Interpretation as Ego-addressed and capacity-sensitive.** Interpretations are shaped to what the Ego can metabolize. The analyst aims to increase the Ego’s reflective function and to loosen rigid defenses without precipitating flooding anxiety.
-
 * **Working with defenses explicitly.** Because defenses are the Ego’s operations, they can become objects of shared inquiry. The patient (child or adult) is helped to recognize what the defense achieves and what it costs—thereby transforming unconscious automaticity into choice.
-
 * **Developmental support as analytic, not merely educational.** Supporting mastery of reality (routines, social skills, frustration tolerance) is not a departure from psychoanalysis when it is understood as strengthening Ego capacities that make deeper analytic work possible.
 
 The Anna Freudian clinic thus becomes a practice of *structured adaptation*: the analyst treats defenses as mechanisms, development as coordinated trajectories, and diagnosis as the profile of a system seeking equilibrium under constraint.
@@ -184,15 +159,10 @@ The Anna Freudian clinic thus becomes a practice of *structured adaptation*: the
 #### Conclusion: The Enduring First Principles of the Freudian Revision
 
 A systematic reconstruction yields a concise set of first principles that define the Anna Freudian corpus.
-
 1. **The Ego is a legitimate object of psychoanalytic observation.** The epistemological shift is from a privileged focus on Ucs. depth alone to the Ego’s observable operations—especially defenses and resistances—as primary data. The Ego is not transparent; it is inferable through lawful patterns of work.
-
 2. **Defense is mechanism before it is symptom.** Defensive operations are not incidental distortions but the Ego’s engineering solutions to tripartite conflict (Id–Ego–Superego under reality constraints). Their adaptive value and pathological cost can only be assessed structurally and developmentally.
-
 3. **Adaptation is a metapsychological category.** Adaptation is not the externalist betrayal of depth-psychology; it is the internal logic by which conflict is managed, affects are bound, and social reality is negotiated. Mechanisms like identification with the aggressor and altruism exemplify how defenses can convert danger into mastery and guilt into socially viable action.
-
 4. **Development is best represented as coordinated lines rather than a single sequence.** The developmental lines (*lignes de développement*) synthesize libidinal stages with Ego mastery of reality, allowing the clinician to conceptualize health and pathology in terms of developmental harmony and disharmony.
-
 5. **Diagnosis is the profile of a system, not the name of a symptom.** The metapsychological profile transforms clinical practice by making the object of diagnosis the total configuration of structural capacities, dominant defenses, developmental-line coordination, and affect economy. Treatment aims at reorganizing the system toward greater flexibility, integration, and developmental viability.
 
 If classical psychoanalysis was, in one formulation, a hermeneutics of the unconscious, Anna Freud’s revision is a mechanics of adaptation: a theory of how psychic life engineers survivable compromise, and how that engineering—when flexible—becomes the very medium of development. The enduring power of this revision is that it preserves the Freudian commitment to conflict and unconscious life while giving the Ego theoretical dignity: not as a mere censor but as an organizer of experience, a regulator of affect, and, ultimately, the vehicle through which the person enters reality without forfeiting desire.
@@ -200,7 +170,6 @@ If classical psychoanalysis was, in one formulation, a hermeneutics of the uncon
 
 
 Key references (primary and closely related)
-
 * Anna Freud, *The Ego and the Mechanisms of Defence* (1936).
 * Anna Freud, *Normality and Pathology in Childhood* (1965).
 * Sigmund Freud, “The Ego and the Id” (1923) and related structural papers (for the Ich–Es–Über-Ich framework).
@@ -250,11 +219,8 @@ Key references (primary and closely related)
 “与攻击者认同”（Identification with the Aggressor）常被误读为“受害者模仿施害者”的描述标签。在安娜·弗洛伊德的逻辑中，它更准确地是“位置的防御性转换”：从受威胁的客体变为行动者，从被动变为能动，从暴露变为受保护。
 
 其机制可重建为三个相互衔接的环节：
-
 1. **危险与信号焦虑（signal anxiety）**：儿童面对外部威胁，或内化的威胁（预期客体的攻击，或惩罚性的超我）。焦虑作为信号表明危险临近——危险不仅是身体伤害，也包括自我连贯性的崩塌与客体支持的丧失。
-
 2. **对威胁属性的内摄性占有（introjective appropriation）**：自我通过内化攻击者的特征来回应——态度、行为、语调，甚至道德姿态。这不是简单模仿，而是一种结构动作：把攻击者“带入内部”，可降低外部威胁的不确定性；内部之物可以被预期、管理，并且关键地，可以被“实行”。
-
 3. **能动位置的重置与恐惧的再分配**：内化带来反转：儿童占据攻击者的视角。恐惧转化为掌控；攻击性被指向外部，或在某些构型中转而指向自身。防御收益双重：一是减少无助感（创伤的核心情感之一），二是将焦虑转化为可控行动。
 
 元心理学上，该防御跨越结构与关系两个层次。结构上，它通过借用攻击者的力量加固自我；关系上，它通过缩短自我与威胁客体之间的距离来重组客体关系。其临床后果多样：可能形成过早的权威化性格、霸凌与残酷、道德严苛；在特定条件下也可能在冲击后暂时稳定自我，提供控制的支架。其病理风险在于长期代价：自我围绕“借来的攻击性”组织，内化的攻击者可能固结为惩罚性超我。其适应性理据则清晰：通过将暴露转换为指挥，实现生存。
@@ -262,11 +228,8 @@ Key references (primary and closely related)
 ### 4. 利他作为防御：替代性满足与道德化适应
 
 “利他”（Altruism）同样容易被道德误解。它不是伦理褒奖，而是关于自我如何在超我与现实约束下，通过将令人焦虑的欲望转换为社会认可的行动来管理冲突的结构描述。其机制最好理解为：在禁令之下的“替代性驱力满足”（vicarious drive satisfaction）。
-
 1. **被禁止或引发内疚的欲望存在**：儿童（乃至成人）承载某种欲望并因此发生冲突——常见为竞争性攻击、嫉羡，或自恋性要求。
-
 2. **将满足移置到他者**：自我不追求直接满足，而是与他者的成功、快乐或福祉认同。原初的力比多或攻击投注并未被消灭，而是被改道；主体通过他者的满足获得快感，从而间接实现驱力目标并回避内疚。
-
 3. **自我同调的道德化与社会嵌入**：由于该行为获得社会奖励，它变得自我同调，并可能固化为性格特质。防御因此同时成为适应策略：获得爱与认可，降低内在冲突，并把主体锚定于社会价值经济之中。
 
 在此重建中，利他之所以成功，正在于它将心理折衷与文化规范对齐，从而体现安娜·弗洛伊德的主题：适应不是冲突的对立面，而是冲突解决的一种形式，并可转化为发展性的成果。临床风险在于隐藏的僵化：当利他变成强迫性，它可能遮蔽嫉羡、攻击或依赖；可能贫乏直接欲望并造成抑郁性枯竭。但其理论意义在于：它证明防御可以成为社会整合的工具，而不只是症状生产。
@@ -290,7 +253,6 @@ Key references (primary and closely related)
 ### 2. 何为发展线：协调向量而非阶段
 
 发展线既非纯生物成熟，也非纯文化学习；它是内在驱力组织与自我对外部要求之掌握之间折衷的轨迹。因此它整合两条轴线：
-
 * **力比多组织（libidinal organization）**：驱力目标与客体（drive aims and objects；*Triebziele* 与 *Objektwahl*），即儿童寻求、爱恋、恐惧与欲望的方式。
 * **自我掌握（Ego mastery）**：现实检验、运动控制、语言、延宕、象征化等能力，决定儿童如何在不崩溃为混乱或全能幻想（omnipotent fantasy）的前提下追求目标。
 
@@ -299,13 +261,9 @@ Key references (primary and closely related)
 ### 3. 范式发展线：从依赖到情感自立
 
 安娜·弗洛伊德最具代表性的发展线，是从依赖（dependency）到情感自立（emotional self-reliance）。其机制可重建如下：
-
 1. **初级依赖与客体必需性**：婴儿生存依赖照料者；驱力围绕即时释放与获得客体组织。此时焦虑常呈灾难性，因为自我尚不具备承受持续缺席的能力。
-
 2. **内化与客体恒常性（object constancy）的出现**：在重复的照料经验中，儿童将照料者内化为稳定表象。此内化不仅是认知性的，而且带有情感投注（cathexis；*Besetzung*），成为对抗缺席的资源。自我开始能容忍延宕与挫折。
-
 3. **自我—客体分化；分离掌握**：随着自我感巩固，分离变得可思而不致毁灭。自我的防御与适应能力（象征性游戏、语言、过渡性现象等）调解“失去即时客体在场”的体验。
-
 4. **自立作为受调节的自主**：情感自立不是取消依赖，而是调节依赖：能够在不崩溃的情况下求助，能够独处而不恐慌，能够投入工作与同伴关系而不抛弃客体纽带。
 
 此发展线将力比多与现实掌握综合：儿童的依恋（客体投注）必须与自我承受挫折与内化稳定表象的能力协调。若协调失败，便出现发展失谐：例如认知掌握超前而分离焦虑原始；或表面独立实则以僵硬否认需要为防御。
@@ -313,13 +271,9 @@ Key references (primary and closely related)
 ### 4. 其他发展线：从身体到世界、从游戏到工作、从自我中心到伙伴关系
 
 发展线框架可推广到多个领域：
-
 * **从吸吮到理性进食**：口欲满足的力比多快感逐步重组为社会调节的饮食。自我管理挫折、内化规则，并将即时释放转为结构化日常。
-
 * **从尿便失控到膀胱与肠道控制**：肛欲期不仅是力比多阶段，也是自我掌握（延宕、控制、顺从与反抗）的训练场。围绕控制的谈判同时是与权威与萌生中的超我要求的谈判。
-
 * **从自恋到客体关系与伙伴关系**：儿童把他者认作独立主体的能力，与自我管理竞争、嫉妒与攻击的能力并行发展。此处防御至关重要：投射、反向形成、认同与利他都可用于协商社会现实。
-
 * **从游戏到工作**：这不是道德晋升，而是满足经济的转变：快感越来越通过延迟、技能获得与社会认可的生产性来中介。自我的次级过程思维成为核心。
 
 在每种情形中，发展线都是一种“翻译机制”：从驱力的即时性到现实中介的满足，从情感风暴到象征化，从全能幻想到协商互惠。
@@ -339,11 +293,8 @@ Key references (primary and closely related)
 汉普斯特德传统最恰当的理解，是一种认识论与临床装置：在“发展中的自我”为对象时，它将如何观察、推断与干预加以形式化。其核心动作是：在不把临床判断降格为清单的前提下，使之系统化。元心理学剖面（metapsychological profile）正完成此事：它把第一原则（自我可观察）与发展线框架转译为结构化诊断实践。
 
 三项方法论承诺组织这一形式化：
-
 1. **发展锚定（developmental anchoring）**：任何行为不能脱离发展水平解释。某年龄的病理性防御，在另一年龄可能是正常过渡性防御。
-
 2. **多源观察（multi-source observation）**：尤其在儿童工作中，分析情境不是唯一数据流。儿童功能需在游戏、学校、同伴关系与照料者报告中三角验证——这些不是“环境噪声”，而是适应被实际实施的场域。
-
 3. **技术与自我能力匹配（capacity-attuned technique）**：解释并非必然治疗性；对未成熟自我，解释可能造成淹没（flooding）。解释的时机、形式与深度必须与儿童的现实检验与象征化能力相校准。
 
 这些承诺并未把精神分析稀释为教育学；相反，它们表达了一种适用于发展的精神分析逻辑：分析者仍以移情与无意识幻想为工作对象，但持续注意自我的成熟能力与塑造冲突的现实条件。
@@ -353,13 +304,9 @@ Key references (primary and closely related)
 元心理学剖面是体现安娜·弗洛伊德临床重建的诊断工具。它既非纯描述（症状列举），也非纯单因解释（single-cause）；它是结构—发生性的（structural-genetic）：在多个维度上映射儿童的心理经济，并评估其协调性。
 
 严格重建可辨识至少四条互锁轴线：
-
 1. **结构轴（Ich–Es–Über-Ich–Reality）**：自我分化程度如何？现实检验与冲动控制如何？超我苛刻或宽容的程度如何？三方冲突的典型构型是什么？
-
 2. **动力—防御轴（dominant defenses and costs）**：哪些防御占主导？其灵活还是僵化？它们生成自我同调性格适应，还是自我异调症状？它们如何塑造移情？
-
 3. **发生—发展轴（developmental lines and harmony）**：关键发展线（依赖—自立、游戏—工作、自我中心—伙伴关系等）推进到何处？是否存在引发补偿性防御组织的失谐？
-
 4. **经济—情感轴（cathexis, affect tolerance, binding）**：情感是被束缚还是失束缚？焦虑是信号性并具信息价值，还是弥散性并造成淹没？是否具备升华（sublimation）、象征化与延迟满足能力？
 
 该剖面对实践的改变是直接的：诊断不再是给症状命名，而是评估“自我适应的发展的可行性”（developmental viability）。例如，恐惧症（phobia）不仅按潜在意义理解，还要按其稳定的防御系统及其所补偿的发展失谐来理解。治疗目标是重组防御经济并支持发展再同步，而不只是解除压抑。
@@ -373,11 +320,8 @@ Key references (primary and closely related)
 ### 4. 干预的临床语法：在不放弃无意识冲突的前提下支持自我发展
 
 观察的形式化并不意味着放弃解释，而是意味着一种新的干预语法：
-
 * **解释以自我为受众，并与能力匹配**：解释的形式取决于自我能否“代谢”（metabolize）。分析者旨在提升自我的反思功能，松动僵硬防御，同时避免诱发淹没性焦虑。
-
 * **将防御作为明确工作对象**：既然防御是自我的操作，它就可以成为共同探究对象。帮助患者识别防御实现了什么、代价是什么，从而把无意识自动性转化为可选择性。
-
 * **发展支持是分析性的，而非仅教育性的**：支持现实掌握（作息、社交技能、挫折耐受）在此并非离开精神分析，因为它是增强自我能力，使更深的分析工作成为可能。
 
 安娜·弗洛伊德式临床因此成为“结构化适应”的实践：把防御当作机制，把发展当作协调轨迹，把诊断当作系统寻求在约束下平衡的剖面。
@@ -387,15 +331,10 @@ Key references (primary and closely related)
 ## 结语：弗洛伊德式修订的持久第一原则
 
 系统性重建可将安娜·弗洛伊德语料的第一原则凝练为以下命题：
-
 1. **自我是精神分析观察的合法对象**：认识论转向在于，从单一特权化的无意识深度，转向对自我可观察操作——尤其防御与阻抗——的优先性。自我并不透明，但可由其规律性工作模式推断。
-
 2. **防御首先是机制，其次才是症状**：防御操作不是偶然扭曲，而是自我在三方冲突（本我—自我—超我，在现实约束下）中的工程性解决方案。其适应价值与病理代价必须在结构与发展维度上评估。
-
 3. **适应是元心理学范畴**：适应不是对深度心理学的背弃；它是冲突被管理、情感被束缚、社会现实被协商的内在逻辑。与攻击者认同与利他表明，防御可将危险转为掌控、将内疚转为社会可行的行动。
-
 4. **发展应以多条协调线来表征，而非单一序列**：发展线（*lignes de développement*）将力比多阶段与自我对现实的掌握综合，使健康与病理能以发展和谐/失谐来把握。
-
 5. **诊断是系统剖面，而非症状名称**：元心理学剖面通过评估结构能力、主导防御、发展线协调与情感经济，把诊断对象从症状转移到“总体构型”。治疗旨在提升灵活性、整合性与发展的可行性，而非仅解除压抑。
 
 如果说古典精神分析在一种意义上是无意识的诠释学（hermeneutics），那么安娜·弗洛伊德的修订则是一种适应的力学（mechanics of adaptation）：关于心理生活如何工程化地制造可生存的折衷，以及当这种工程保持灵活时，它如何成为发展的媒介。其持久力量在于：它保留弗洛伊德对冲突与无意识生活的承诺，同时赋予自我理论尊严——自我不只是审查者（censor），更是经验的组织者、情感的调节者，并最终是个体进入现实而不放弃欲望的载体。
@@ -403,7 +342,6 @@ Key references (primary and closely related)
 
 
 参考文献（关键原典与密切相关著作）
-
 * 安娜·弗洛伊德：《自我与防御机制》（*The Ego and the Mechanisms of Defence*, 1936）。
 * 安娜·弗洛伊德：《儿童期的正常性与病理》（*Normality and Pathology in Childhood*, 1965）。
 * 西格蒙德·弗洛伊德：《自我与本我》（*The Ego and the Id*, 1923）及相关结构论论文（Ich–Es–Über-Ich 框架）。

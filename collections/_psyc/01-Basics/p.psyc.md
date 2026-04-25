@@ -119,7 +119,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 ### 心理学
 
 基础心理学
-
 1.  《[普通心理学](https://book.douban.com/subject/30762055/)》，彭聃龄，7分，中规中矩的教科书，很全面但也枯燥
 2.  《[心理学与生活](https://book.douban.com/subject/26286031/)》**【推荐】**，9分，心理学最佳入门书籍 （已读4遍，括号内表示阅读次数，超过1次才记录）
 3.  《[20世纪最伟大的心理学实验](https://book.douban.com/subject/4844724/)》，4分，一本会把新人带歪的入门书籍。。。[书评](https://zhuanlan.zhihu.com/p/478208156)
@@ -127,14 +126,12 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 5.  《[改变心理学的40项研究](https://book.douban.com/subject/30247656/)》，8分，不错的入门书，涵盖领域广。[书评](https://zhuanlan.zhihu.com/p/592514887)
 
 心理学史
-
 1.  《[现代心理学史](https://book.douban.com/subject/26270925/)》，**【推荐】**，9分，一本立足培养心理学家的教材。[书评](https://zhuanlan.zhihu.com/p/524066693)
 2.  《[心理学的故事：源起与演变](https://book.douban.com/subject/30421951/)》（上册），8分，对近代心理学发展写的很棒。[书评](https://zhuanlan.zhihu.com/p/566636644)
 3.  《[心理学的故事：源起与演变](https://book.douban.com/subject/30421951/)》（下册），7分，最后两章对心理学的整体讨论写的很好，其它部分感觉就是参杂了一点花边的普通心理学，感觉一般
 4.  《[心理学史导论](https://book.douban.com/review/14694082/)》，**【推荐】**，9分，可以当作心理学思想史来阅读。[书评](https://zhuanlan.zhihu.com/p/571619791)
 
 社会心理学
-
 1.  《[社会心理学](https://book.douban.com/subject/36249823/)》，阿伦森，第10版，【**推荐】**，9分，印刷排版质量大幅度提升，书籍内容与编排方式基本做到了“以读者为中心”。[书评](https://zhuanlan.zhihu.com/p/642320966)
 2.  《[社会性动物（12版）](https://book.douban.com/subject/34970886/)》，阿伦森，7分，不错的社会心理学科普，但是牵涉美国政治的争议成分太多。[书评](https://zhuanlan.zhihu.com/p/598613704)
 3.  《[西奥迪尼社会心理学](https://book.douban.com/subject/27054515/)》，8分，非学院类优秀的社会心理学教材，时间有一点久了。[书评](https://zhuanlan.zhihu.com/p/537545020)
@@ -153,14 +150,12 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 16.  《[怪诞行为学](https://book.douban.com/subject/27599381/)》，7分，行为经济学，或基于消费/市场行为的社会心理学科普。[书评](https://zhuanlan.zhihu.com/p/656932957)
 
 人际关系心理学&沟通
-
 1.  《[亲密关系](https://book.douban.com/subject/26585065/)》**【推荐】**，罗兰.米勒 版，10分。[书评](https://zhuanlan.zhihu.com/p/496913088) （2遍）
 2.  《[人际关系心理学](https://book.douban.com/subject/32062248/)》，埃伦·伯斯奇德， 7分，过于学术风格，看起来会很累。[书评](https://zhuanlan.zhihu.com/p/537126113)
 3.  《[非暴力沟通](https://book.douban.com/subject/35519608/)》，**【推荐】**， 马歇尔.卢森堡, 9分，教你如何像心理咨询师一样讲话。[书评+笔记](https://zhuanlan.zhihu.com/p/639112354)
 4.  《[原生家庭（婚恋版）：如何应对爱人父母的挑剔、侵扰或排斥](https://book.douban.com/subject/35924447/)》，6分，从女性主义的角度帮助读者改善与伴侣父母的互动关系。[书评+笔记](https://zhuanlan.zhihu.com/p/659228360)
 
 认知心理学
-
 1.  《[认知心理学（第5版）](https://book.douban.com/subject/35237345/)》，**【推荐】**，9分，越早学习认知心理学受益越大。[书评](https://zhuanlan.zhihu.com/p/528742550)
 2.  《[认知天性](https://book.douban.com/subject/30353486/)》，8分，讲述如何利用记忆相关的认知知识提高记忆和学习能力。[书评+笔记](https://zhuanlan.zhihu.com/p/493557820)
 3.  《[心理时间之谜](https://book.douban.com/subject/34795258/)》，6分，人们怎么看待与感受时间。[书评+笔记](https://zhuanlan.zhihu.com/p/503657306)
@@ -170,7 +165,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 7.  《[模因机器](https://book.douban.com/subject/35779512/)》，4分，泛化的模因论不过是唯上帝论的变体而已。[书评](https://zhuanlan.zhihu.com/p/662294760)
 
 神经科学及相关
-
 1.  《[从自然到使然](https://book.douban.com/subject/27069354/)》，4分，英文名为发展认知神经科学，此书为学术著作，非神经科学专业人士请绕道。[书评](https://zhuanlan.zhihu.com/p/543231329)
 2.  《[社会神经科学：脑、心理与社会](https://book.douban.com/subject/35169486/)》，6分，讲述社会脑，情境对人的影响等。由各学者编写的一系列专题构成。翻译不行。[书评](https://zhuanlan.zhihu.com/p/583224257)
 3.  《[哪些神经科学新发现即将改变世界](https://book.douban.com/subject/35556897/)》，7分，内容能让人了解神经科学前沿，只是英文版时间是2015年，有点过时了。[书评](https://zhuanlan.zhihu.com/p/576230155)
@@ -182,7 +176,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 9.  《[万物理论：自反性的物质、生命、系统和宇宙](https://book.douban.com/subject/35924084/)》，8分，关于自我的讨论，认识神经科学+复杂性理论。[书评+笔记](https://zhuanlan.zhihu.com/p/660894187)
 
 发展心理学
-
 1.  《[发展心理学](https://book.douban.com/subject/30399674/)》，林崇德，7分
 2.  《[发展心理学：人的毕生发展](https://book.douban.com/subject/25726681/)》，费尔德曼 著，**【推荐】**，9分，综合下来，这本最好！
 3.  《[社会性与人格发展](https://book.douban.com/subject/10740601/)》，6分，部分儿童发展心理学+社会心理学，学习了这本教材回头还要再补发展心理学和社会心理学，得不偿失。[书评](https://zhuanlan.zhihu.com/p/532323268)
@@ -193,13 +186,11 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 8.  《[婴幼儿的人际世界：精神分析与发展心理学视角](https://book.douban.com/subject/27078194/)》，6分，试图从实证意义建立一个婴儿“自我”发展框架的理论。[书评+笔记](https://zhuanlan.zhihu.com/p/660800174)
 
 人格心理学
-
 1.  《[人格心理学](https://book.douban.com/subject/26004131/)》，7分
 2.  《[直面内心的恐惧](https://book.douban.com/subject/2282946/)》，5分，四种恐惧人格，有点扯。[书评+笔记](https://zhuanlan.zhihu.com/p/472103007)
 3.  《[无处不在的人格](https://book.douban.com/subject/35862314/)》，7分，主要讲人格障碍，但是落脚点不是临床，更偏向人格问题的一些表现，包括日常生活中如何应对。[书评+笔记](https://zhuanlan.zhihu.com/p/539009187)
 
 变态心理学
-
 1.  《[变态心理学](https://book.douban.com/subject/27074856/)》，8分，该专栏大部分取自本书和DSM-5：[变态心理](https://www.zhihu.com/column/c_1481033975963906048)
 2.  《[精神障碍诊断与统计手册(第5版) DSM-5](https://book.douban.com/subject/26603084/)》**【必备书目】**，8分
 3.  《[理解DSM-5精神障碍](https://book.douban.com/subject/26837889/)》，5分
@@ -208,7 +199,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 6.  《[抑郁症的非药物疗法](https://book.douban.com/subject/26807324/)》，6分，一本详细的自助指导，[书评](https://zhuanlan.zhihu.com/p/659634556)
 
 **积极心理学**
-
 1.  《[心流：最优体验心理学](https://book.douban.com/subject/27186106/)》，5分，这书传销感有点大，好的理论不用这样。[书评](https://zhuanlan.zhihu.com/p/539765578)
 2.  《[积极心理学：探索人类优势的科学与实践](https://book.douban.com/subject/25763661/)》，6分，顶多可以重温一些心理学理论，这个领域特有的知识不多。[书评](https://zhuanlan.zhihu.com/p/547739521)
 3.  《[打开积极心理学之门](https://book.douban.com/subject/4926701/)》（中英文版），7分，本来应该是8分的作品，但中文翻译太差。[书评](https://zhuanlan.zhihu.com/p/552431603)
@@ -218,13 +208,11 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 7.  《[动机与人格](https://book.douban.com/subject/35660644/)》，5分，马斯洛需求框架理论经典作品。[书评](https://zhuanlan.zhihu.com/p/658623172)
 
 进化心理学
-
 1.  《[进化心理学](https://book.douban.com/subject/26683297/)》，戴维.巴斯 著**【推荐】**，9分，直指本源的心理学，很多现实问题原来是这么回事。[书评](https://zhuanlan.zhihu.com/p/543788857) （2遍）
 2.  《[进化心理学：从猿到人的心灵演化之路](https://book.douban.com/subject/5422847/)》，8分，偏重用进化的观点解释人的心理、生理和社会现象成因，与戴维.巴斯的作品内容完全不同。[书评](https://zhuanlan.zhihu.com/p/560485090)
 3.  《[人类的算法](https://book.douban.com/subject/34449459/)》，7分，围绕社会脑进化的科普作品。[书评](https://zhuanlan.zhihu.com/p/662723194)
 
 其它
-
 1.  《[说谎心理学](https://book.douban.com/subject/26367708/)》，乌特.艾尔哈特 版，6分，本书主要观点已记录，请见[链接](https://zhuanlan.zhihu.com/p/480248007)
 2.  《[恰如其分的自尊](https://book.douban.com/subject/26606002/)》，6分，围绕自尊展开，本书部分精华已摘要，请见[链接](https://zhuanlan.zhihu.com/p/538080292)
 3.  《[太聪明所以不幸福？](https://book.douban.com/subject/26647114/)》，7分，天才儿童及成人后的心理问题及临床建议。[书评](https://zhuanlan.zhihu.com/p/538539929)
@@ -237,7 +225,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 ### 心理咨询&流派
 
 咨询基础与会谈技术
-
 1.  《[心理咨询的技巧和策略](https://book.douban.com/subject/30280868/)》，8分，心理咨询基础技术，认真学完本书可直接上手。[书评+笔记](https://zhuanlan.zhihu.com/p/510288009)
 2.  《[心理咨询面谈技术](https://book.douban.com/subject/25851444/)》，8分，心理咨询基础技术
 3.  《[心理咨询师的问诊策略](https://book.douban.com/subject/3858060/)》，8分，心理咨询基础技术+认知行为疗法，本来应该是9分的水平，但翻译太差。[书评](https://zhuanlan.zhihu.com/p/520004746)
@@ -251,7 +238,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 11.  《[心理咨询师的14堂必修课](https://book.douban.com/subject/20258609/)》，8分，一位资深的精神分析取向的心理治疗师对新人咨询师的建议，比如咨询设置，伦理，个人成长等。[书评+笔记](https://zhuanlan.zhihu.com/p/651446716)
 
 心理动力学派与精神分析
-
 1.  《[心理动力学疗法（第二版）](https://book.douban.com/subject/33422007/)》，7分，心理动力学派，最佳阅读对象为不了解精神分析的读者。[书评](https://zhuanlan.zhihu.com/p/520559297)
 2.  《[心理动力学个案概念化](https://book.douban.com/subject/26327172/)》，7分，心理动力学派，与《心理动力学疗法》共同构成心理动力学疗法入门框架。[思维导图](https://zhuanlan.zhihu.com/p/536780928)
 3.  《[弗洛伊德及其后继者](https://book.douban.com/subject/2285530/)》，7分，比较好的讲述了自我心理学、自体心理学，客体关系心理学及最近的以弗洛伊德框架延申而来的精神分析理论发展。[书评](https://zhuanlan.zhihu.com/p/509149329) （2遍）
@@ -273,7 +259,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 19.  《[殊途：精神分析案例集](https://book.douban.com/subject/35631160/)》，**【推荐】**，9分，四个完整的精神分析案例，很有价值。[书评+笔记](https://zhuanlan.zhihu.com/p/662191309)
 
 弗洛伊德
-
 1.  《[精神分析引论](https://book.douban.com/subject/26968321/)》，7分，相对比较集中的反映了弗洛伊德的理论
 2.  《[自我与本我](https://book.douban.com/subject/26968319/)》，8分，包括三篇：超越唯乐原则、集体心理学和自我分析、自我与本我（推荐）
 3.  《[性学三论与爱情心理学](https://book.douban.com/subject/26968316/)》，7分，爱情心理学的内容比较有意思，性学三论的内容要么陈旧了，要么其它精神分析相关的材料（书籍）总结的很充分了
@@ -282,12 +267,10 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 6.  《[文明及其不满](https://book.douban.com/subject/34816984/)》，7分，弗洛伊德眼中的人类文明和宗教。[书评+笔记](https://zhuanlan.zhihu.com/p/660518188)。
 
 自我心理学派
-
 1.  《[心灵的面具：101种心理防御（第二版）](https://book.douban.com/subject/35524560/)》，6分，对各种心理防御机制讲解的比较全，[笔记+举例](https://zhuanlan.zhihu.com/p/479014243)
 2.  《[自我与防御机制](https://book.douban.com/subject/30162830/)》，6分，安娜.弗洛伊德的代表作品，[书评+笔记](https://zhuanlan.zhihu.com/p/646873784)
 
 客体关系&独立学派
-
 1.  《[谈话治疗：Tavistock临床中心的理念和实践方法](https://book.douban.com/subject/27021543/)》，5分，本书从出生开始写到老年，其中就一些常见的人生主题和精神分析展开比较**随意**的讨论，有亮点，没书看可以看看
 2.  《[婴儿观察：Tavistock临床中心解读人类的非言语沟通](https://book.douban.com/subject/30462163/)》，7分，精神分析学派里的客体关系学派，不错的观察婴儿的案例和理论分析，[书评](https://zhuanlan.zhihu.com/p/527749913)
 3.  《[临床克莱因](https://book.douban.com/subject/27110377/)》，7分，讲述了克莱因学派理论，这本书的案例内容阅读难度比较大。[书评](https://zhuanlan.zhihu.com/p/542241206)
@@ -301,13 +284,11 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 11.  《[心灵的母体](https://book.douban.com/subject/26944346/)》，7分，客体关系进阶作品，主要为克莱因和温尼科特理论，[书评+笔记](https://zhuanlan.zhihu.com/p/635154146)
 
 克莱因
-
 1.  《[爱.恨与修复](https://book.douban.com/review/14688719/)》，6分，琼.里维埃和梅兰妮.克莱因的演讲小册，[书评](https://zhuanlan.zhihu.com/p/570940853)
 2.  《[儿童精神分析](https://book.douban.com/subject/35315472/)》，8分，克莱因早期著作，写的很清楚，容易理解，[书评](https://zhuanlan.zhihu.com/p/596930738)
 3.  《[爱、罪疚与修复](https://book.douban.com/subject/35483686/)》，8分，克莱因1921-1945年作品集，克莱因理论比较全面。[书评+笔记](https://zhuanlan.zhihu.com/p/601115393)
 
 温尼科特
-
 1.  《[温尼科特与为人父母者的谈话](https://book.douban.com/subject/33402664/)》，6分，通俗易懂的育儿指南。[书评](https://zhuanlan.zhihu.com/p/568327396)
 2.  《[家是我们开始的地方](https://book.douban.com/subject/34866851/)》，8分，后半部分内容更好。[书评+笔记](https://zhuanlan.zhihu.com/p/622396891)
 3.  《[抱持与解释：一则精神分析的片断](https://book.douban.com/subject/26841720/)》，8分，8分的原因是相对比较完整的一个精神分析过程展示。[书评](https://zhuanlan.zhihu.com/p/631166978)
@@ -318,7 +299,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 8.  《[温尼科特的语言](https://book.douban.com/subject/35726707/)》，7分，英国精神分析师编写的温尼科特辞典，[书评+笔记](https://zhuanlan.zhihu.com/p/638732866)
 
 自体心理学派
-
 1.  《[自体心理学的理论与实践](https://book.douban.com/subject/20506638/)》，6分，讲述的比较简单，只能说对自体心理学有入门的概念。[书评](https://zhuanlan.zhihu.com/p/555572096)
 2.  《[自体心理学导论](https://book.douban.com/subject/27158270/)》，**【推荐】**，9分，非常全面，系统的讲述了自体心理学。[书评](https://zhuanlan.zhihu.com/p/567460225)
 3.  《[心理治疗实战录](https://book.douban.com/subject/25760338/)》**【推荐】**，9分，偏心理咨询案例，对新人心理咨询师价值很高，作者的咨询理论基于自体心理学派。[书评+笔记](https://zhuanlan.zhihu.com/p/499866126)
@@ -327,21 +307,18 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 6.  《[精神分析治愈之道](https://book.douban.com/subject/26425240/)》，8分，科胡特自体心理学三部曲第三部，理论更加凝练，翻译上了一个档次。[书评+笔记](https://zhuanlan.zhihu.com/p/655021104)
 
 主体间性学派
-
 1.  《[主体间性心理治疗](https://book.douban.com/subject/25757009/)》，8分，与传统精神分析渐行渐远。[书评](https://zhuanlan.zhihu.com/p/571926599)
 2.  《[体验的世界](https://book.douban.com/subject/36460992/)》，8分，创始人史托罗楼的作品，讲述主体间性精神分析为什么和是什么的问题。[书评+笔记](https://zhuanlan.zhihu.com/p/649710104)
 3.  《[精神分析复杂性理论](https://book.douban.com/subject/35596158/)》，8分，重点讲述了精神分析应该以复杂新理论为背景，持有一套更加灵活的态度，[书评](https://zhuanlan.zhihu.com/p/584290346)
 4.  《[精神分析的新发展：主体间自体心理学](https://book.douban.com/subject/36176994/)》，8分，对前缘和后缘的详细阐述，[书评+笔记](https://zhuanlan.zhihu.com/p/658591241)
 
 依恋与心智化
-
 1.  《[心理治疗中的依恋](https://book.douban.com/subject/25753137/)》，8分，心理动力取向，构架了一个清晰的基于依恋理论的互为主体关系的治疗框架。[书评](https://zhuanlan.zhihu.com/p/536570388)
 2.  《[情绪心智化](https://book.douban.com/subject/35544113/)》，6分，后半部分讲心智化的内容还可以。[书评](https://zhuanlan.zhihu.com/p/593440768)
 3.  《[精神分析、依恋理论和神经科学中的情绪发展 \- 创建联结](https://book.douban.com/subject/34446399/)》，6分，十篇不错的心智化相关文献，理论部分距今20年，不完全适用。[书评+笔记](https://zhuanlan.zhihu.com/p/653609007)
 4.  《[理解的心理学：心智化理论及其在沟通中的应用](https://book.douban.com/subject/35941111/)》，7分，心智化理论综述，截止到2014年。[书评+笔记](https://zhuanlan.zhihu.com/p/659542259)
 
 拉康
-
 1.  《[导读拉康](https://book.douban.com/subject/25928726/)》，8分，对拉康思想的入门。[书评+笔记](https://zhuanlan.zhihu.com/p/585065699) （2遍）
 2.  《[父亲的姓名](https://book.douban.com/subject/30136370/)》，拉康著，7分，两篇研讨会报告，一篇为《象征界、想象界、实在界》，另一篇为《父亲的姓名》。[笔记](https://zhuanlan.zhihu.com/p/593707429)
 3.  《[宗教的凯旋](https://book.douban.com/subject/33380580/)》，拉康著，6分，两篇对天主教徒的演讲和一篇新闻采访，内容简单。[笔记](https://zhuanlan.zhihu.com/p/660108670)
@@ -358,7 +335,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
   
 
 荣格
-
 1.  《[红书](https://book.douban.com/subject/26907984/)》，6分，看一部分就可以了，全部读完对大多数非荣格学派读者性价比不高，[书评](https://zhuanlan.zhihu.com/p/591631996)
 2.  《[荣格自传](https://book.douban.com/subject/25793666/)》，7分，看看荣格一生追寻的是啥，挺有意义，[书评](https://zhuanlan.zhihu.com/p/594255320)
 3.  《[荣格文集：分析心理学](https://book.douban.com/subject/27150610/)》，8分，基本囊括了荣格的主要思想，阅读难度低，[书评+笔记](https://zhuanlan.zhihu.com/p/597855907)
@@ -367,21 +343,18 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 6.  《[荣格心理学七讲](https://book.douban.com/subject/27052022/)》，8分，通俗易懂的入门书，[书评+笔记](https://zhuanlan.zhihu.com/p/659900078)
 
 个体心理学派
-
 1.  《[自卑与超越](https://book.douban.com/subject/26989781/)》，7分，个体心理学代表作，阿德勒作品，如果学过发展心理学，有价值内容几页纸可以概括，毕竟有一定年代了
 2.  《[儿童人格形成及培养](https://book.douban.com/subject/27133522/)》，6分，阿德勒的作品，比较重复。[书评+笔记](https://zhuanlan.zhihu.com/p/512964850)
 3.  《[阿德勒的治疗：理论与实践](https://book.douban.com/subject/10537769/)》，8分，国内比较少的清晰、系统讲述阿德勒流派的治疗理论、过程和技术等，由于阿德勒特有的一些专业术语，阅读难度偏高。[书评+笔记](https://zhuanlan.zhihu.com/p/549514167)
 4.  《[洞察人性](https://book.douban.com/subject/26861540/)》，6分，上半部分是个体心理学内容，下半部分讲人格，总的来说，上半部分价值更大。[书评+笔记](https://zhuanlan.zhihu.com/p/604944819)
 
 卡伦.霍妮
-
 1.  《[我们时代的神经症人格](https://book.douban.com/subject/35356018/)》，**【推荐】**，9分，既是心理学也是思想类著作，可读性很强。[书评+笔记](https://zhuanlan.zhihu.com/p/533143510)
 2.  《[我们内心的冲突](https://book.douban.com/subject/30354499/)》，6分，没有了“社会文化”加持，本书系平庸之作。[书评](https://zhuanlan.zhihu.com/p/550454124)
 3.  《[自我的挣扎](https://book.douban.com/subject/26989506/)》，5分，通篇都是表面分析，外加糟糕的翻译，有点“低配版”阿德勒的意思
 
 
 #### 行为&认知行为疗法
-
 1.  《[行为疗法](https://book.douban.com/subject/26909069/)》，7分，APA丛书系列，能对行为疗法有基本了解。[书评](https://zhuanlan.zhihu.com/p/581872515)
 2.  《[认知行为疗法](https://book.douban.com/subject/35459396/)》，7分，APA丛书系列，内容和《行为疗法》相似。[书评](https://zhuanlan.zhihu.com/p/581872515)
 3.  《[辩证行为疗法](https://book.douban.com/subject/26778193/)》，7分，很实用的基于辩证行为疗法（DBT）的技术手册。[书评](https://zhuanlan.zhihu.com/p/544253707)
@@ -392,21 +365,18 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 8.  《[人际关系疗法](https://book.douban.com/subject/26285031/)》，8分，APA丛书系列，人际关系疗法是一种短期聚焦疗法，最早用来治疗抑郁症。[书评+笔记](https://zhuanlan.zhihu.com/p/587987622)
 
 接纳承诺疗法(ACT)
-
 1.  《[跳出头脑，融入生活](https://book.douban.com/review/14530960/)》，6分，接纳承诺疗法（ACT）的技术讲解与指导。[书评+笔记](https://zhuanlan.zhihu.com/p/544664209)
 2.  《[接纳承诺疗法](https://book.douban.com/subject/35149202/)》，8分，创始人所著，APA丛书系列，系统的讲述了ACT疗法，可作为咨询师案头手册。[书评+笔记](https://zhuanlan.zhihu.com/p/545407696)
 3.  《[接纳承诺疗法(ACT):100个关键点与技巧](https://book.douban.com/subject/35548358/)》，8分，对治疗过程和治疗技术的介绍部分很好。[书评](https://zhuanlan.zhihu.com/p/582234005)
 
 
 #### 完形学派
-
 1.  《[格式塔咨询与治疗技术](https://book.douban.com/subject/26906478/)》，8分，完形疗法，非常系统讲述格式塔疗法的书
 2.  《[完形治疗：观点与应用](https://book.douban.com/subject/26336980/)》，6分，完形疗法，后半部分价值比较大。[书评](https://zhuanlan.zhihu.com/p/519484542)
 3.  《[完形治疗：100个关键点与技巧](https://book.douban.com/subject/30173754/)》，5分，完形疗法，有些内容有亮点，不多。[书评](https://zhuanlan.zhihu.com/p/526198393)
 4.  《[情绪聚焦疗法](https://book.douban.com/subject/26285030/)》，7分，APA丛书，该疗法很多方面和完形相似，可以互相借鉴。[笔记](https://zhuanlan.zhihu.com/p/586971138)
 
 #### 人本主义&后现代疗法
-
 1.  《[罗杰斯心理治疗：经典个案既专家点评](https://book.douban.com/subject/26778201/)》，**【推荐】**，9分，十个罗杰斯个案的记录，这些个案的点评很有价值。[书评](https://zhuanlan.zhihu.com/p/577962339)
 2.  《[以人为中心心理咨询实践](https://book.douban.com/subject/26301702/)》，6分，集中在来访者中心疗法理论和治疗过程讨论，案例单薄，阅读难度有点高。[书评](https://zhuanlan.zhihu.com/p/576416532)
 3.  《[动机式访谈手册（MI）](https://book.douban.com/subject/35218620/)》，６分，人本主义疗法之一，书不错，但MI应用范围有限，替代性比较高。[书评](https://zhuanlan.zhihu.com/p/529849024)
@@ -415,13 +385,11 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 6.  《[女性主义疗法](https://book.douban.com/subject/35458607/)》，8分，APA丛书系列，重在帮助来访者认识到自己的权力和如何运用自己的权力。[书评](https://zhuanlan.zhihu.com/p/560800286)
 
 叙事疗法
-
 1.  《[叙事疗法](https://book.douban.com/subject/27028472/)》，麦迪根 著，7分，APA丛书系列，对叙事疗法的思想探讨很有意思。[书评](https://zhuanlan.zhihu.com/p/556413455)
 2.  《[叙事疗法](https://book.douban.com/subject/10583558/)》, 佩恩 著，7分，对叙事疗法的治疗过程与技术讲解的比较详细，[书评](https://zhuanlan.zhihu.com/p/583845477)
 3.  《[叙事调解：用故事化解冲突](https://book.douban.com/subject/35094189/)》，6分，用叙事疗法的原理处理冲突，[书评+笔记](https://zhuanlan.zhihu.com/p/657690806)
 
 #### 存在主义流派
-
 1.  《[存在主义心理治疗](https://book.douban.com/subject/26304954/)》，7分，欧文.亚隆著，学习存在主义流派的咨询师必读的书目。[书评](https://zhuanlan.zhihu.com/p/559968935)
 2.  《[直视骄阳：征服死亡恐惧](https://book.douban.com/subject/26660579/)》，7分，欧文.亚隆 著，主要讨论死亡焦虑，文笔不错。[书评+笔记](https://zhuanlan.zhihu.com/p/517169076)
 3.  《[心理学与人类困境](https://book.douban.com/subject/4839259/%3F_dtcc%3D1)》，7分，作者为美国存在心理学之父，罗洛.梅，讨论心理治疗中的存在主义话题。[书评+笔记](https://zhuanlan.zhihu.com/p/544661388)
@@ -434,12 +402,10 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 10.  《[存在心理学：一种整合的临床观](https://book.douban.com/subject/4839258/)》，8分，一本存在主义治疗大杂脍。[书评+笔记](https://zhuanlan.zhihu.com/p/654440221)
 
 #### 意义疗法
-
 1.  《[活出生命的意义](https://book.douban.com/subject/5330333/)》，8分，弗兰克尔 著，关于集中营那段经历很感染人，书中内容比较适合自我疗愈，[书评](https://zhuanlan.zhihu.com/p/597534933)
 2.  《[追求意义的意志](https://book.douban.com/review/14644277/)》，7分，弗兰克尔 著，比较系统的介绍了意义治疗。[书评](https://zhuanlan.zhihu.com/p/563589030)
 
 #### 系统治疗&家庭治疗
-
 1.  《[萨提亚家庭治疗模式](https://book.douban.com/subject/30368422/%3F_dtcc%3D1)》，7分，比较系统的介绍了萨提亚家庭治疗模式，书中团体技术方面不建议自学。[书评](https://zhuanlan.zhihu.com/p/541065966)
 2.  《[新家庭如何塑造人](https://book.douban.com/subject/30852205/)》，6分，也是萨提亚家庭治疗，讲述家庭可能发生的问题和如何改善与经营家庭。比起咨询师读者，更适合新组建家庭的读者。[书评+笔记](https://zhuanlan.zhihu.com/p/546077270)
 3.  《[家庭与家庭治疗](https://book.douban.com/subject/3865964/)》，**【推荐】**，9分，结构家庭治疗，也可以说是系统式家庭治疗，这本书的案例部分非常强大。[书评](https://zhuanlan.zhihu.com/p/569624316)
@@ -447,7 +413,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
 5.  《[循环提问：系统式治疗案例教程](https://book.douban.com/subject/25723254/)》，**【推荐】**，9分，九个系统式家庭治疗案例解析。[书评+笔记](https://zhuanlan.zhihu.com/p/658568967)
 
 #### 其它流派
-
 1.  《[简明综合心理治疗](https://book.douban.com/subject/4013297/)》，**【重点推荐】**，10分，整合治疗取向，偏重认知行为流派。[书评](https://zhuanlan.zhihu.com/p/521743801)
 2.  《[心理咨询与治疗核心技术](https://book.douban.com/subject/35914009/)》，6分，将心理动力、认知行为、人本和系统式治疗整合的心理咨询入门作品。[书评见链接](https://zhuanlan.zhihu.com/p/588478929)
 3.  《[心理治疗中的人际过程](https://book.douban.com/subject/35571344/)》，7分，里面的对话非常有价值，但全书过于冗长，性价比不高。[书评](https://zhuanlan.zhihu.com/p/593181463)
@@ -455,7 +420,6 @@ In sum, 21st-century psychology constructs its knowledge through a networked str
   
 
 ### 心理学和心理咨询小说，杂文等
-
 1.  《[诊疗椅上的谎言](https://book.douban.com/subject/27018914/)》，8分，欧文.亚隆 著，心理咨询伦理小说，文学性不错。[书评+笔记](https://zhuanlan.zhihu.com/p/488503467)
 2.  《[蛤蟆先生去看心理医生](https://book.douban.com/subject/35143790/)》**【推荐】**，9分，虚拟心理咨询个案小说，文学性很高。[书评](https://zhuanlan.zhihu.com/p/477240425)
 3.  《[身体知道答案](https://book.douban.com/subject/26929199/)》，5分，心理学与心理咨询散文。[书评](https://zhuanlan.zhihu.com/p/493539867)

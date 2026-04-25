@@ -18,7 +18,6 @@ A shell script is usually not the place to build a large internal application mo
 ### When to Use It, and When not to Use It
 
 What shell programming is good at:
-
 * glue code between existing commands
 * automation of repetitive terminal tasks
 * deployment hooks and setup scripts
@@ -31,7 +30,6 @@ What shell programming is good at:
 * process and pipeline orchestration
 
 What makes shell attractive:
-
 * direct access to the Unix process model
 * natural use of pipes and redirection
 * easy integration with existing command-line tools
@@ -40,7 +38,6 @@ What makes shell attractive:
 * convenient for system-level scripting on Linux
 
 When shell is a good choice:
-
 * the task is mostly “run these commands in this order”
 * most of the work is being done by external tools
 * inputs and outputs are files, streams, or command results
@@ -50,7 +47,6 @@ When shell is a good choice:
 * fast iteration matters more than building a large software architecture
 
 When shell is usually the wrong tool:
-
 * the program needs complex data structures
 * the task requires complicated parsing
 * the codebase will become large
@@ -63,12 +59,10 @@ When shell is usually the wrong tool:
 * error handling becomes more complex than the command orchestration itself
 
 A practical rule:
-
 * use shell when the problem is mainly command orchestration
 * do not use shell when the problem is mainly application logic
 
 Typical examples where shell fits well:
-
 * backup scripts
 * installer scripts
 * project bootstrap scripts
@@ -79,7 +73,6 @@ Typical examples where shell fits well:
 * environment setup scripts
 
 Typical examples where another language is better:
-
 * a web service
 * a parser for a complicated file format
 * a stateful daemon
@@ -88,12 +81,10 @@ Typical examples where another language is better:
 * a large CLI application with substantial internal logic
 
 Language choice in practice:
-
 * use `sh` when strict POSIX portability is required
 * use `bash` when you want a richer and more practical scripting environment on Linux
 
 Bash is often preferred on Linux because it provides:
-
 * arrays
 * associative arrays
 * `[[ ... ]]`
@@ -189,7 +180,6 @@ IFS=$'\n\t'
 ```
 
 Meaning:
-
 * `set -e`: exit on unhandled command failure
 * `set -u`: error on unset variables
 * `set -o pipefail`: fail a pipeline if any command fails
@@ -964,7 +954,6 @@ diff <(sort file1) <(sort file2)
 ### Redirects and file descriptors: `0` `1` `2` `>&` `exec 3>`
 
 Standard descriptors:
-
 * `0`: stdin
 * `1`: stdout
 * `2`: stderr
@@ -1066,7 +1055,6 @@ shift $((OPTIND - 1))
 ```
 
 Meaning:
-
 * `v` is a flag
 * `o:` requires an argument
 * leading `:` changes error handling behavior
@@ -1291,7 +1279,6 @@ Use `source` for shared shell functions and constants.
 ### Portability notes: `sh` POSIX `[` no-arrays no-[[`
 
 If you need POSIX `sh` portability, avoid:
-
 * arrays
 * associative arrays
 * `[[ ... ]]`
@@ -1303,7 +1290,6 @@ If you need POSIX `sh` portability, avoid:
 * `shopt`
 
 Portable style uses:
-
 * `#!/bin/sh`
 * `[` instead of `[[`
 * external tools for more complex tasks
@@ -1566,7 +1552,6 @@ Inline comments explicitly label the comment type, such as `[style]`, `[function
 ### 1. Search text in a project safely
 
 Use case:
-
 * search for a keyword in the current directory
 * ignore `.git`
 * preserve spaces in the search term
@@ -1585,7 +1570,6 @@ grep -RIn --exclude-dir=.git -- "$pattern" "$path"  # [function] Recursive, line
 ```
 
 Why it is useful:
-
 * faster than manually typing a long `grep` every time
 * safe for patterns containing spaces
 * good baseline before switching to `rg`
@@ -1595,7 +1579,6 @@ Common Pitfalls: always quote the pattern and path; otherwise spaces or glob cha
 ### 2. Make a timestamped backup copy
 
 Use case:
-
 * create a quick backup of a file before editing
 * preserve the original file unchanged
 
@@ -1618,7 +1601,6 @@ printf 'Backup created: %s\n' "$dst"       # [function] Print the resulting back
 ```
 
 Why it is useful:
-
 * ideal before risky edits, refactors, or config changes
 * timestamp format sorts naturally
 
@@ -1627,7 +1609,6 @@ Common Pitfalls: do not build backup names without quoting; filenames may contai
 ### 3. Show the largest files in a directory tree
 
 Use case:
-
 * quickly find what is consuming disk space
 * useful when `df` says the disk is full
 
@@ -1651,7 +1632,6 @@ awk -F '\t' '{printf "%12d  %s\n", $1, $2}'  # [function] Clean aligned output.
 ```
 
 Why it is useful:
-
 * one of the most common real admin/user tasks
 * teaches `find | sort | head` composition
 
@@ -1660,7 +1640,6 @@ Common Pitfalls: `du` and `df` answer different questions; this script shows lar
 ### 4. Check whether required commands exist
 
 Use case:
-
 * validate a machine before running a project script
 * useful in setup scripts and CI helpers
 
@@ -1689,7 +1668,6 @@ exit "$missing"  # [function] Return nonzero if any dependency is missing.
 ```
 
 Why it is useful:
-
 * very common in bootstrap and tooling scripts
 * teaches `command -v` and exit-code design
 
@@ -1698,7 +1676,6 @@ Common Pitfalls: do not use `which` in scripts for dependency checks; `command -
 ### 5. Batch rename file extensions safely
 
 Use case:
-
 * rename many files from one extension to another
 * example: `.txt` to `.md`
 
@@ -1725,7 +1702,6 @@ done
 ```
 
 Why it is useful:
-
 * a classic daily file-management task
 * teaches null-delimited filename handling with `-print0` and `read -d ''`
 
@@ -1734,7 +1710,6 @@ Common Pitfalls: never do bulk renaming with `for f in $(find ...)`; filenames w
 ### 6. Tail and highlight important log lines
 
 Use case:
-
 * follow a log file in real time
 * only show lines that likely matter
 * useful for application logs, deployment logs, and service debugging
@@ -1756,7 +1731,6 @@ grep --line-buffered -Ei 'error|warn|fatal|panic|timeout|exception|failed'  # [f
 ```
 
 Why it is useful:
-
 * reduces noise in large logs
 * teaches `tail -F` and line-buffered filtering
 * practical for daily debugging
@@ -1766,7 +1740,6 @@ Common Pitfalls: plain `grep` in a pipeline may buffer too much for interactive 
 ### 7. Parse short options with `getopts`
 
 Use case:
-
 * build a proper CLI instead of ad hoc positional parsing
 * support flags like `-v` and options like `-o output.txt`
 
@@ -1801,7 +1774,6 @@ printf 'Remaining args: %s\n' "$*"               # [function] Show remaining pos
 ```
 
 Why it is useful:
-
 * teaches proper short-option parsing
 * scales much better than raw `$1`, `$2`, `$3`
 * common in real shell tools
@@ -1811,7 +1783,6 @@ Common Pitfalls: `getopts` handles short options well, but it does not natively 
 ### 8. Use a temp directory and clean it automatically
 
 Use case:
-
 * do multi-step work in a temp workspace
 * guarantee cleanup even on failure or interruption
 
@@ -1835,7 +1806,6 @@ printf 'done\n' > "$tmpdir/result.txt"  # [function] Example generated output in
 ```
 
 Why it is useful:
-
 * one of the most important real scripting patterns
 * prevents leftover temp files
 * teaches `mktemp` plus `trap`
@@ -1845,7 +1815,6 @@ Common Pitfalls: never invent temp paths manually under `/tmp`; use `mktemp` to 
 ### 9. Run jobs in parallel and wait for all of them
 
 Use case:
-
 * speed up repetitive independent tasks
 * useful for encoding, downloading, linting, or batch processing
 
@@ -1874,7 +1843,6 @@ done
 ```
 
 Why it is useful:
-
 * introduces background jobs and `wait`
 * extremely practical for daily batch tasks
 * small pattern, large payoff
@@ -1884,7 +1852,6 @@ Common Pitfalls: background jobs still compete for CPU, disk, network, and files
 ### 10. Build a simple menu-driven command dispatcher
 
 Use case:
-
 * wrap a few common tasks behind a tiny CLI
 * useful for project scripts like `start`, `stop`, `test`, `deploy`
 
@@ -1913,7 +1880,6 @@ esac
 ```
 
 Why it is useful:
-
 * one of the most common shell-script structures
 * teaches `case` as a subcommand dispatcher
 * good foundation for project automation scripts
@@ -1923,7 +1889,6 @@ Common Pitfalls: `case` matches shell patterns, not regular expressions, and eve
 ### 11. Check whether a port is listening
 
 Use case:
-
 * verify whether a local service has started
 * useful for databases, web servers, and development backends
 
@@ -1950,7 +1915,6 @@ fi
 ```
 
 Why it is useful:
-
 * simple health check for local services
 * helpful in scripts that wait for dependencies
 
@@ -1959,7 +1923,6 @@ Common Pitfalls: address formatting varies between IPv4 and IPv6, so do not assu
 ### 12. Wait until a service becomes reachable
 
 Use case:
-
 * wait for a local or remote HTTP service to become ready
 * useful in startup scripts and local development stacks
 
@@ -1987,7 +1950,6 @@ printf 'Service is ready: %s\n' "$url"  # [function] Success message.
 ```
 
 Why it is useful:
-
 * very common in Compose stacks, CI, and startup automation
 * better than inserting arbitrary `sleep 10`
 
@@ -1996,7 +1958,6 @@ Common Pitfalls: readiness is not always the same as process existence; a proces
 ### 13. Create a safe project archive
 
 Use case:
-
 * quickly archive a project directory
 * exclude obvious junk such as `.git` and caches
 
@@ -2024,7 +1985,6 @@ printf 'Archive created: %s\n' "$archive"  # [function] Show the resulting archi
 ```
 
 Why it is useful:
-
 * common for backups, transfers, and snapshots
 * teaches a practical `tar` pattern
 
@@ -2033,7 +1993,6 @@ Common Pitfalls: archiving from the wrong current directory may produce unexpect
 ### 14. Find recently modified files
 
 Use case:
-
 * inspect what changed recently in a directory tree
 * useful after builds, deployments, or debugging sessions
 
@@ -2054,7 +2013,6 @@ find "$path" -type f -mmin "-$minutes" -print  # [function] Show files modified 
 ```
 
 Why it is useful:
-
 * fast way to understand recent activity
 * handy after automated tooling changes many files
 
@@ -2063,7 +2021,6 @@ Common Pitfalls: file timestamps are not all the same concept; modification time
 ### 15. Compute hashes for files in bulk
 
 Use case:
-
 * verify file integrity
 * compare outputs across machines or runs
 * useful for artifacts, downloads, and backups
@@ -2102,7 +2059,6 @@ done
 ```
 
 Why it is useful:
-
 * a practical integrity-check pattern
 * teaches command dispatch with `case`
 
@@ -2111,7 +2067,6 @@ Common Pitfalls: `md5` is still useful for quick non-security checks, but it sho
 ### 16. Retry a flaky command with backoff
 
 Use case:
-
 * rerun a command that may fail transiently
 * useful for network requests, package downloads, and service startup checks
 
@@ -2143,7 +2098,6 @@ done
 ```
 
 Why it is useful:
-
 * wraps many unreliable commands without rewriting them
 * teaches `until` plus command passthrough
 
@@ -2152,7 +2106,6 @@ Common Pitfalls: always pass the target command as separate arguments, not as on
 ### 17. Protect a script with a lock file using `flock`
 
 Use case:
-
 * prevent concurrent runs of the same script
 * useful for cron jobs, backups, and periodic maintenance tasks
 
@@ -2175,7 +2128,6 @@ sleep 5                              # [function] Simulate work.
 ```
 
 Why it is useful:
-
 * solves a common real-world cron problem
 * avoids duplicate backups, duplicate syncs, and overlapping jobs
 
@@ -2184,7 +2136,6 @@ Common Pitfalls: a plain “create a file if missing” lock pattern is race-pro
 ### 18. Show disk usage warnings for large directories
 
 Use case:
-
 * quickly spot large top-level directories
 * useful when a machine or project workspace is filling up
 
@@ -2210,7 +2161,6 @@ done
 ```
 
 Why it is useful:
-
 * gives a fast top-level storage summary
 * practical before deeper cleanup
 
@@ -2219,7 +2169,6 @@ Common Pitfalls: `du` reports filesystem usage for paths, not free-space capacit
 ### 19. Pretty-print JSON from a file or stdin
 
 Use case:
-
 * inspect JSON quickly
 * useful for API responses, config files, and logs
 
@@ -2236,7 +2185,6 @@ fi
 ```
 
 Why it is useful:
-
 * works on many systems without extra dependencies
 * perfect as a quick inspection helper
 
@@ -2245,7 +2193,6 @@ Common Pitfalls: this expects valid JSON; many real-world “JSON-like” files 
 ### 20. Run one command on many hosts over SSH
 
 Use case:
-
 * execute a quick check or admin command across several servers
 * useful for service status checks, log inspection, and config verification
 
@@ -2271,7 +2218,6 @@ done < "$hosts_file"
 ```
 
 Why it is useful:
-
 * very practical for small fleets and personal servers
 * teaches safe line reading plus command forwarding
 
@@ -2280,7 +2226,6 @@ Common Pitfalls: remote quoting rules differ from local quoting rules, so comple
 ### 21. Compare two directories by file list and hashes
 
 Use case:
-
 * verify whether two directories contain the same files and contents
 * useful for backup validation and migration checks
 
@@ -2315,7 +2260,6 @@ diff -u -- "$tmp_a" "$tmp_b"  # [function] Show differences in file set or conte
 ```
 
 Why it is useful:
-
 * more meaningful than checking just file counts
 * practical for verifying copies and backups
 
@@ -2324,7 +2268,6 @@ Common Pitfalls: this detects content differences, but metadata such as ownershi
 ### 22. Move files to a local trash directory instead of deleting immediately
 
 Use case:
-
 * safer alternative to `rm`
 * useful for daily interactive cleanup
 
@@ -2357,7 +2300,6 @@ done
 ```
 
 Why it is useful:
-
 * gives a recovery window for accidental deletions
 * safer for daily shell usage
 
@@ -2366,7 +2308,6 @@ Common Pitfalls: this is a simple local trash pattern, not a full desktop-trash 
 ### 23. Extract one column from a CSV-like file quickly
 
 Use case:
-
 * grab a simple comma-separated column without opening a spreadsheet tool
 * useful for quick inspection or one-off scripting
 
@@ -2387,7 +2328,6 @@ cut -d',' -f"$column" -- "$file"  # [function] Extract the requested comma-delim
 ```
 
 Why it is useful:
-
 * very fast for simple CSV-like data
 * teaches `cut` as a quick extraction tool
 
@@ -2396,7 +2336,6 @@ Common Pitfalls: real CSV can contain quoted commas and embedded newlines, so `c
 ### 24. Apply chmod recursively to files and directories differently
 
 Use case:
-
 * fix permissions in a project tree
 * common for web apps, repos, and shared directories
 
@@ -2417,7 +2356,6 @@ find "$path" -type f -exec chmod 644 {} +  # [function] Set file permissions to 
 ```
 
 Why it is useful:
-
 * one of the most common project permission fixes
 * teaches that files and directories often need different modes
 
@@ -2426,7 +2364,6 @@ Common Pitfalls: do not blindly apply these modes to executables, private keys, 
 ### 25. Create a small utility menu with `select`
 
 Use case:
-
 * build a quick interactive helper for repeated manual tasks
 * useful for personal admin or project scripts
 
@@ -2459,7 +2396,6 @@ done
 ```
 
 Why it is useful:
-
 * very handy for small interactive tool hubs
 * teaches `select` plus `case`
 

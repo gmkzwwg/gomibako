@@ -59,11 +59,8 @@ Low latent inhibition has been observed in certain clinical and subclinical popu
 Another population in which low latent inhibition has been noted is `ADHD`, a disorder characterized by attentional dysregulation, impulsivity, and hyperactivity. Superficially, one might expect that the **distractibility and inability to concentrate** seen in ADHD could stem from a failure to filter out irrelevant stimuli – essentially an attentional gate that is too porous. Some theoretical accounts indeed label ADHD as a condition of _“hypo-filtering”_, where the individual’s focus is frequently captured by extraneous environmental stimuli. There is evidence supporting this view: **people with ADHD often report feeling “flooded” or overwhelmed by sensory input**, unable to ignore background sights or sounds, which can derail their focus. This subjective flooding is congruent with the notion of reduced latent inhibition or other gating deficits in ADHD. Empirically, a few studies have directly examined latent inhibition in ADHD. **The results are intriguing:** one study with adults found that, _off medication_, adults with ADHD showed latent inhibition comparable to healthy controls, but _when on their stimulant medication (methylphenidate)_, they actually showed **significantly less latent inhibition** than controls. In this experiment, off-med ADHD participants and control participants both had a normal LI effect (pre-exposure slowed learning), but when the ADHD group took their stimulant and repeated the task, the pre-exposure no longer made much difference – their ability to ignore the pre-exposed distractor was diminished. At first glance this is puzzling, since we think of ADHD medication as _improving_ attention. The authors explained it in terms of **attentional allocation**: the stimulant drug likely caused the ADHD individuals to hyper-focus on the primary task features, inadvertently _suppressing their processing of the pre-exposed stimulus during the exposure phase_. As a result, that stimulus was not effectively learned as “irrelevant,” and when it later became relevant, the medicated ADHD subjects learned about it quickly (appearing as reduced LI). In simpler terms, **the medication helped them focus so tightly that they didn’t even register the distractor stimulus initially – so it remained fresh/novel in the test phase**, producing no latent inhibition. This finding highlights that the manifestation of LLI in ADHD can depend on context and treatment. It suggests that **unmedicated ADHD individuals may have moderately low latent inhibition, but stimulants can paradoxically _increase_ their gating of irrelevant stimuli to the point of essentially zero pre-exposure effect**. Other research aligns with the idea that baseline, **ADHD involves some sensory gating deficits**: for example, children and adults with ADHD often have reduced P50 suppression and impaired prepulse inhibition, indicating difficulties in filtering sensory information at pre-attentive levels. These physiological measures correlate with attention problems. The picture that emerges is that **ADHD minds may naturally be more open to a wide array of stimuli**, which has a downside in conventional settings (distractibility) but might also endow some creative advantages (as discussed later). In day-to-day behavior, someone with LLI and ADHD might be the person who notices every sound in the room, every object on their desk, and whose train of thought is constantly diverted by associations triggered from the environment. Indeed, a comparison of attentional styles can be illustrative:
 
 > 另一个被注意到存在低潜在抑制的群体是 `ADHD（注意缺陷/多动障碍）`，这是一种以注意力失调、冲动和多动为特征的障碍。**从表面上看，人们可能会认为 ADHD 中表现出的分心和无法集中注意力可能源于无法过滤无关刺激——本质上是一个过于“多孔”的注意力门控。一些理论解释确实将 ADHD 标记为一种“低过滤（hypo-filtering）”状态，即个体的焦点频繁被无关的环境刺激所捕捉**。有证据支持这一观点：*ADHD 患者经常报告感到被感官输入“淹没”或压倒，无法忽略背景中的视觉或听觉信息，这会扰乱他们的专注力。这种主观的淹没感与 ADHD 中潜在抑制降低或其他门控缺陷的观点是一致的*。在实证方面，已有几项研究直接考察了 ADHD 中的潜在抑制。结果非常有趣：一项针对成人的研究发现，在不服药的情况下，ADHD 成年人的潜在抑制水平与健康对照组相当；但当他们服用刺激性药物（利他林）时，他们表现出的潜在抑制显著低于对照组。在这个实验中，未服药的 ADHD 组和对照组都有正常的 LI 效应（预暴露减慢了学习速度），但当 ADHD 组服用兴奋剂并重复任务时，预暴露不再产生明显影响——他们忽略预暴露干扰物的能力减弱了。乍一看这令人费解，因为我们认为 ADHD 药物能改善注意力。作者将其解释为`注意力的分配（attentional allocation）问题`：**兴奋剂药物可能导致 ADHD 个体过度专注于主要任务特征，无意中抑制了他们在预暴露阶段对该刺激的处理。结果，该刺激未能被有效地习得为“无关信息”，当它后来变得相关时，服药后的 ADHD 受试者能迅速学习它（表现为 LI 降低）**。简单来说，药物帮助他们过于紧密地专注于任务，以至于最初根本没有登记干扰刺激——因此在测试阶段，该刺激保持了新鲜感/新颖性，从而没有产生潜在抑制。这一发现强调了 ADHD 中 LLI 的表现取决于背景和治疗。它表明，未服药的 ADHD 个体可能具有中等程度的低潜在抑制，但兴奋剂可以矛盾地增加他们对无关刺激的门控，以至于产生几乎为零的预暴露效应。其他研究也支持 ADHD 基准状态涉及某些感觉门控缺陷的观点：例如，患有 ADHD 的儿童和成人通常表现出 P50 抑制减弱和前脉冲抑制（PPI）受损，这表明他们在`前注意阶段（pre-attentive levels）`过滤感觉信息存在困难。这些生理指标与注意力问题相关。**由此描绘出的图景是，ADHD 的大脑可能天然地对广泛的刺激持开放态度，这在常规环境下有弊端（易分心），但也可能赋予某些创造性优势（稍后讨论）**。在日常行为中，具有 LLI 和 ADHD 的人可能是那个会注意到房间里每一个声音、桌上每一个物体的人，其思绪不断被环境触发的联结所转移。事实上，注意力风格的对比非常具有说明性： 
-
 *   _Typical individuals_ (with average latent inhibition) can **focus on the task at hand** and relatively easily tune out irrelevant background stimuli.
-    
 *   _Individuals with ADHD_ tend to **focus on _all_ the irrelevant stimuli** _rather than_ sustaining attention on the single task, leading to scattered and shifting focus.
-    
 *   _People with low latent inhibition_ (including some artists or creatives) are able to **attend to both the relevant task and the seemingly irrelevant details simultaneously**, and may unconsciously **associate the two** in novel ways.
     
 > - 典型个体（具有平均水平的潜在抑制）能够专注于当下的任务，并相对容易地屏蔽无关的背景刺激。
@@ -163,7 +160,6 @@ Given the interdisciplinary interest in low latent inhibition, a variety of **me
 **Latent Inhibition Paradigms:** The classic way to measure latent inhibition is through a two-phase experimental task, as described earlier. In Phase 1 (pre-exposure), participants are repeatedly exposed to a specific stimulus (the to-be-conditioned stimulus, CS) without any meaningful outcome. In Phase 2 (conditioning/test), that same stimulus is now paired with an unconditioned stimulus (US) or outcome, and the speed or success of learning the association is measured. Latent inhibition is indicated if the **pre-exposed group learns the association more slowly or less fully than a control group that did not have pre-exposure**. In human experiments, the stimuli and tasks can take many forms. Some examples:
 
 > **潜在抑制范式**： 测量潜在抑制的经典方式是采用如前所述的双阶段实验任务。在阶段 1（预暴露）中，参与者反复接触一个特定的刺激（即待条件化的刺激，CS），且不产生任何有意义的结果。在阶段 2（条件化/测试）中，该刺激与一个无条件刺激（US）或结果配对，测量建立关联的速度或成功率。如果预暴露组比没有预暴露的控制组学习关联的速度更慢或更不充分，则表明存在潜在抑制。在人类实验中，刺激和任务可以采取多种形式。例如：
-
 *   **Auditory LI task:** Pre-expose participants to a certain tone or noise repeatedly while they perform an unrelated task (ensuring the sound has no consequences). Then, in the test phase, make that sound predictive of something (e.g., a reward point or a signal to press a button). Typically, participants who heard the sound earlier with no meaning will be slower to treat it as a signal now, compared to those hearing it for the first time.
 *   **Visual LI task:** The Lubow visual search task is one variant. Participants might first see displays where a particular shape or color consistently appears but is irrelevant to the task (e.g., find a different oddball target). Later, that previously irrelevant shape/color becomes the target that they must detect. Those with strong latent inhibition will be slower to detect it (having learned to ignore it earlier), whereas those with reduced LI will more quickly switch attention to it.
 *   **Conditioned learning task:** Ginton’s nonsense syllable experiment described earlier is a classic – exposure to syllables with or without a background noise, then using that noise as a conditioned stimulus predicting a points reward. Reaction times or number of trials to criterion serve as the measure. Other studies have used skin conductance responses (electrodermal conditioning) where a color or tone is pre-exposed and later paired with a mild aversive stimulus – the reduction in conditioned response serves as an index of LI (though interpretational confounds exist, as noted below).
@@ -216,7 +212,6 @@ Another theoretical contribution is the idea of **neural hyperconnectivity** –
 Despite these promising integrative models, there are **unresolved questions and active debates** about LLI:
 
 > 尽管这些整合模型展现出了广阔的前景，但关于 LLI（低潜伏抑制）仍存在一些尚未解决的问题以及激烈的学术争论：
-
 *   **Causality and Development:** It remains uncertain whether low latent inhibition is a cause of creativity/psychopathology or more of an accompanying feature. Longitudinal studies are needed to see if young people with especially low latent inhibition (measured in childhood) are more likely to either develop psychosis or achieve creative distinction later on. Is LLI a stable trait from an early age, or can life experiences alter one’s filtering? Some evidence suggests that **stress or trauma might temporarily reduce latent inhibition** (stress can increase dopamine, etc.), which could either precipitate a psychotic break or a creative epiphany in different cases. The developmental trajectory of LLI in, say, gifted children versus at-risk children, is not well-charted. It’s also possible that practicing certain kinds of thinking (like mindfulness meditation or divergent thinking training) could modulate latent inhibition – for instance, meditation sometimes leads to reports of heightened sensory awareness (lower filtering), whereas focused training might increase selective attention. These interventions haven’t been directly studied in relation to LI tasks yet.
 > **因果关系与发育**： 尚不确定低潜在抑制是创造力/精神病理的原因，还是仅仅是一个伴随特征。需要纵向研究来观察童年时期测得的低潜在抑制个体，在日后是否更有可能发展出精神病或取得卓越的创造性成就。LLI 是自幼便稳定的特质，还是生活经历可以改变一个人的过滤器？有证据表明，压力或创伤可能会暂时降低潜在抑制（压力会增加多巴胺等），这在不同案例中可能诱发精神崩溃或创造性顿悟。LLI 在天才儿童与高危儿童中的发育轨迹尚不明确。此外，练习某些思维方式（如正念冥想或发散性思维训练）也可能调节潜在抑制——例如，冥想有时被报告会增强感官察觉（低过滤），而专注训练则可能增加选择性注意。这些干预手段尚未直接在 LI 任务中进行研究。
 *   **State vs. Trait LLI:** As discussed, one controversy is to what extent latent inhibition can fluctuate within an individual. Is LLI a fixed trait that you either have or not (or somewhere in between) consistently? Or can someone willfully or contextually “lower” their latent inhibition when needed? Anecdotes about creative people suggest they might have some control – for example, famous authors have described entering altered states of consciousness when creating (which could be interpreted as temporarily suspending filters to allow ideas to flow). Experiments could test this by instructing participants to adopt different mindsets (e.g., “be as open as possible to everything you notice” versus “focus only on X”) and seeing if latent inhibition measures change. The outcome could inform whether creative training can include learning to toggle one’s filters. For now, **Martindale’s hypothesis that creatives manipulate their cognitive inhibition level remains speculative**, though it aligns with findings that both highly creative and high-schizotypy subjects show more disinhibited brain states during creative tasks. If true, that raises the bar for understanding LLI – it might not just be an innate setting but also a skill to use it beneficially.
@@ -235,85 +230,44 @@ In conclusion, **low latent inhibition is a multifaceted construct at the nexus 
 > 总之，低潜在抑制是一个位于我们注意、学习和创造方式交汇处的多元构念。目前的理论共识是，LLI 反映了大脑在经验开放性与秩序需求之间平衡方式的核心变异。这种平衡影响着一个人是趋向于精神疾病、非凡的创造力，还是在某些情况下两者兼而有之。虽然在理解 LLI 方面已取得了实质性进展——从多巴胺的作用到其与创造性成就的相关性——但仍有许多谜团。其中最关键的是学习如何优化渗漏型注意过滤器的益处，同时减轻其风险。对于艺术家或创新者，这可能意味着开发管理想法涌入的认知策略，以验证莱纳斯·鲍林（Linus Pauling）的名言：“要获得好的想法，你必须先有大量的想法……然后把坏的扔掉”。对于临床医生，这意味着识别那些正在挣扎的、具有认知去抑制的个体，并帮助他们强化思维中的结构。连接精神病理学和创造力的未来研究——例如研究精神分裂症患者中具有创造力的亲属，或观察压力下的创意人才——将进一步阐明低潜在抑制如何既是巨大脆弱性的来源，也是伟大才华的源泉。通过深化我们对 LLI 的跨学科理解，我们不仅能洞察精神疾病和天才的根源，也将更接近于回答关于人类思维过滤或释放意识内容的根本问题。
 
 **References:**
-
 *   **Ansburg, P. I., & Hill, K.** (2003). Creative and analytic thinkers differ in their use of attentional resources. _Personality and Individual Differences, 34_(7), 1141–1152. https://doi.org/10.1016/S0191-8869(02)00104-6
-    
 *   **Baruch, I., Hemsley, D. R., & Gray, J. A.** (1988). Latent inhibition and “psychotic proneness” in normal subjects. _Personality and Individual Differences, 9_(4), 777–783. https://doi.org/10.1016/0191-8869(88)90067-0
-    
 *   **Burch, G. S. J., Hemsley, D. R., Pavelis, C., & Corr, P. J.** (2006). Personality, creativity, and latent inhibition. _European Journal of Personality, 20_(2), 107–122. https://doi.org/10.1002/per.572
-    
 *   **Byrom, N. C., Msetfi, R. M., & Murphy, R. A.** (2018). Human latent inhibition: Problems with the stimulus exposure effect. _Psychonomic Bulletin & Review, 25_(6), 2102–2118. https://doi.org/10.3758/s13423-018-1455-4
-    
 *   **Carson, S. H.** (2011). Creativity and psychopathology: A shared vulnerability model. _Canadian Journal of Psychiatry, 56_(3), 144–153. https://doi.org/10.1177/070674371105600304
-    
 *   **Carson, S. H.** (2014). Cognitive disinhibition, creativity, and psychopathology. In D. K. Simonton (Ed.), _The Wiley handbook of genius_ (pp. 198–221). Wiley. https://doi.org/10.1002/9781118367377.ch11
-    
 *   **Carson, S. H., Peterson, J. B., & Higgins, D. M.** (2003). Decreased latent inhibition is associated with increased creative achievement in high-functioning individuals. _Journal of Personality and Social Psychology, 85_(3), 499–506. https://doi.org/10.1037/0022-3514.85.3.499
-    
 *   **Dorfman, L., Martindale, C., Gassimova, V., & Vartanian, O.** (2008). Creativity and speed of information processing: A double dissociation involving elementary versus inhibitory cognitive tasks. _Personality and Individual Differences, 44_(6), 1382–1390. https://doi.org/10.1016/j.paid.2007.12.006
-    
 *   **Eysenck, H. J.** (1993). Creativity and personality: Suggestions for a theory. _Psychological Inquiry, 4_(3), 147–178. https://doi.org/10.1207/s15326934crj1004_2 (CrossRef for context)
-    
 *   **Eysenck, H. J.** (1995). Creativity as a product of intelligence and personality. In D. H. Saklofske & M. Zeidner (Eds.), _International handbook of personality and intelligence_ (pp. 231–247). Springer. https://doi.org/10.1007/978-1-4757-5571-8_12
-    
 *   **Fink, A., Slamar-Halbedl, M., Unterrainer, H. F., & Weiss, E. M.** (2012). Creativity: Genius, madness, or a combination of both? _Psychology of Aesthetics, Creativity, and the Arts, 6_(1), 11–18. https://doi.org/10.1037/a0024874
-    
 *   **Forrest, D. R. L., Mather, M., & Harris, J. A.** (2018). Unmasking latent inhibition in humans. _Quarterly Journal of Experimental Psychology, 71_(2), 380–395. https://doi.org/10.1080/17470218.2016.1249894
-    
 *   **Granger, K. T., Moran, P. M., Buckley, M. G., & Haselgrove, M.** (2016). Enhanced latent inhibition in high schizotypy individuals. _Personality and Individual Differences, 91_, 31–39. https://doi.org/10.1016/j.paid.2015.11.040
-    
 *   **Hall, G.** (1991). _Perceptual and associative learning_. Clarendon Press.
-    
 *   **Hall, G., & Rodríguez, G.** (2010). Associative and nonassociative processes in latent inhibition: An elaboration of the Pearce–Hall model. In R. E. Lubow & I. Weiner (Eds.), _Latent inhibition: Cognition, neuroscience and applications to schizophrenia_ (pp. 114–136). Cambridge University Press. https://doi.org/10.1017/CBO9780511730184.007
-    
 *   **Hall, G., & Rodríguez, G.** (2011). Blocking of potentiation of latent inhibition. _Journal of Experimental Psychology: Animal Behavior Processes, 37_(1), 127–131. https://doi.org/10.1037/a0020716
-    
 *   **Holt, N. J., Simmonds-Moore, C. A., & Moore, S. L.** (2020). Does latent inhibition underpin creativity, positive schizotypy, and anomalous cognition? _Journal of Parapsychology, 84_(2), 156–178. https://doi.org/10.30891/jopar.2020.02.02
-    
 *   **Kasof, J.** (1997). Creativity and breadth of attention. _Creativity Research Journal, 10_(4), 303–315. https://doi.org/10.1207/s15326934crj1004_2
-    
 *   **Kennedy, N. G. W., Holmes, N. M., & Westbrook, R. F.** (2021). Latent inhibition is facilitated when a target stimulus is preexposed in compound with a nontarget stimulus, but only when the two stimuli coterminate: A test of the Hall–Rodríguez theory. _Journal of Experimental Psychology: Animal Learning and Cognition, 47_(2), 91–103. https://doi.org/10.1037/xan0000289
-    
 *   **Kéri, S.** (2011). Solitary minds and social capital: Latent inhibition, general intellectual functions and social network size predict creative achievements. _Psychology of Aesthetics, Creativity, and the Arts, 5_(3), 215–221. https://doi.org/10.1037/a0022000
-    
 *   **Le Pelley, M. E., & Schmidt-Hansen, M.** (2010). Latent inhibition and learned irrelevance in human contingency learning. In R. E. Lubow & I. Weiner (Eds.), _Latent inhibition: Cognition, neuroscience and applications to schizophrenia_ (pp. 94–113). Cambridge University Press. https://doi.org/10.1017/CBO9780511730184.006
-    
 *   **Liberal, U., Rodríguez, G., & Hall, G.** (2020). Inhibitory properties of a latent inhibitor after preexposure in compound with novel stimuli. _Journal of Experimental Psychology: Animal Learning and Cognition, 46_(2), 139–150. https://doi.org/10.1037/xan0000235
-    
 *   **Lubow, R. E.** (1989). _Latent inhibition and conditioned attention theory_. Cambridge University Press.
-    
 *   **Lubow, R. E.** (2010). A short history of latent inhibition research. In R. E. Lubow & I. Weiner (Eds.), _Latent inhibition: Cognition, neuroscience and applications to schizophrenia_ (pp. 1–19). Cambridge University Press. https://doi.org/10.1017/CBO9780511730184.002
-    
 *   **Lubow, R. E., & Gewirtz, J. C.** (1995). Latent inhibition in humans: Data, theory, and implications for schizophrenia. _Psychological Bulletin, 117_(1), 87–103. https://doi.org/10.1037/0033-2909.117.1.87
-    
 *   **Lubow, R. E., Ingberg-Sachs, Y., Zalstein-Orda, N., & Gewirtz, J. C.** (1992). Latent inhibition in low and high “psychotic-prone” normal subjects. _Personality and Individual Differences, 13_(5), 563–572. https://doi.org/10.1016/0191-8869(92)90197-W
-    
 *   **Lubow, R. E., & Moore, A. U.** (1959). Latent inhibition: The effect of nonreinforced pre-exposure to the conditional stimulus. _Journal of Comparative and Physiological Psychology, 52_, 415–419.
-    
 *   **Mackintosh, N. J.** (1975). A theory of attention: Variations in the associability of stimuli with reinforcement. _Psychological Review, 82_(4), 276–298. https://doi.org/10.1037/h0076778
-    
 *   **Mah, S. L., & Haselgrove, M.** (2024). A developmental trajectory of latent inhibition. _Journal of Experimental Psychology: Animal Learning and Cognition, 50_(3), 186–196. https://doi.org/10.1037/xan0000381
-    
 *   **Martindale, C.** (2013/2022). Creative imagination and neural activity. In R. G. Kunzendorf & A. A. Sheikh (Eds.), _The psychophysiology of mental imagery_ (pp. 89–108). Routledge. https://doi.org/10.4324/9781315223506-6 _(Original work published 1996)_
-    
 *   **McLaren, I. P. L., Kaye, H., & Mackintosh, N. J.** (1989). An associative theory of the representation of stimuli: Applications to perceptual learning and latent inhibition. In R. G. M. Morris (Ed.), _Parallel distributed processing: Implications for psychology and neurobiology_ (pp. 102–130). Oxford University Press.
-    
 *   **Mendelsohn, G. A., & Griswold, B. B.** (1966). Assessed creative potential, vocabulary level, and sex as predictors of the use of incidental cues in verbal problem solving. _Journal of Personality and Social Psychology, 4_(4), 423–431.
-    
 *   **Miller, R. R., & Matzel, L. D.** (1988). The comparator hypothesis: A response rule for the expression of associations. In G. H. Bower (Ed.), _The psychology of learning and motivation_ (Vol. 22, pp. 51–92). Academic Press. https://doi.org/10.1016/S0079-7421(08)60038-9
-    
 *   **Muñiz-Moreno, J., & Loy, I.** (2022). Context specificity of latent inhibition in the snail _Cornu aspersum_. _Animal Cognition, 25_(6), 1517–1526. https://doi.org/10.1007/s10071-022-01632-6
-    
 *   **Pearce, J. M., & Hall, G.** (1980). A model for Pavlovian learning: Variations in the effectiveness of conditioned but not of unconditioned stimuli. _Psychological Review, 87_(6), 532–552. https://doi.org/10.1037/0033-295X.87.6.532
-    
 *   **Rodríguez, G., Aranzubia-Olasolo, M., Liberal, U., Rodríguez-San Juan, F., & Hall, G.** (2019). Loss of salience as a source of latent inhibition in human associative learning. _Quarterly Journal of Experimental Psychology, 72_(5), 1047–1054. https://doi.org/10.1177/1747021818777694
-    
 *   **Rodríguez, G., & Hall, G.** (2017). Human latent inhibition and the density of predictive relationships in the context in which the target stimulus occurs. _Quarterly Journal of Experimental Psychology, 70_(4), 610–618. https://doi.org/10.1080/17470218.2016.1143957
-    
 *   **Wagner, A. R.** (1981). SOP: A model of automatic memory processing in animal behavior. In N. E. Spear & R. R. Miller (Eds.), _Information processing in animals: Memory mechanisms_ (pp. 5–47). Lawrence Erlbaum Associates.
-    
 *   **Westbrook, R. F., & Bouton, M. E.** (2010). Latent inhibition and extinction: Their signature phenomena and the role of prediction error. In R. E. Lubow & I. Weiner (Eds.), _Latent inhibition: Cognition, neuroscience and applications to schizophrenia_ (pp. 23–39). Cambridge University Press. https://doi.org/10.1017/CBO9780511730184.003
-    
 *   **Zabelina, D. L.** (2018). Attention and creativity. In R. E. Jung & O. Vartanian (Eds.), _The Cambridge handbook of the neuroscience of creativity_ (pp. 161–179). Cambridge University Press. https://doi.org/10.1017/9781316556238.010
-    
 *   **Zabelina, D., Saporta, A., & Beeman, M.** (2016). Flexible or leaky attention in creative people? Distinct patterns of attention for different types of creative thinking. _Memory & Cognition, 44_(3), 488–498. https://doi.org/10.3758/s13421-015-0569-4

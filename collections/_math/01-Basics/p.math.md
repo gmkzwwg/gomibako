@@ -9,7 +9,6 @@ TODO: 调查学习高等数学之前需要哪些基础？
 ## Knowledge Structure of Pure Mathematics
 
 ### First principles and underlying mechanics
-
 * **Axiomatization** (explicit primitive notions; constraint setting)
 * **Formal inference** (rule-governed derivation; proof as certified transformation)
 * **Abstraction / forgetful passage** (structure retention; data suppression)
@@ -29,7 +28,6 @@ TODO: 调查学习高等数学之前需要哪些基础？
 ### Knowledge System And Development Order
 
 #### A. Foundations (rules of the game)
-
 * **Axiomatic method**
   * Euclid, c. 300 BCE; “Elements” (axiomatic geometry)
   * Hilbert, 1899; “Foundations of Geometry”
@@ -47,7 +45,6 @@ TODO: 调查学习高等数学之前需要哪些基础？
   * Grothendieck, 1950s–60s; “Functors, sheaves, schemes” (unification engine)
 
 #### B. Algebra (discrete structure and symmetry)
-
 * **Group theory (symmetry algebra)**
   * Galois, 1830–32; “Galois theory” (symmetry of roots)
   * Lie, 1870s; “Continuous symmetry groups”
@@ -62,7 +59,6 @@ TODO: 调查学习高等数学之前需要哪些基础？
 * **Universal algebra (axioms for algebraic structures)**
 
 #### C. Topology and Geometry (space, form, invariance)
-
 * **Point-set topology (continuity substrate)**
   * Hausdorff, 1914; separation axioms
 * **Algebraic topology (invariants of shape)**
@@ -83,7 +79,6 @@ TODO: 调查学习高等数学之前需要哪些基础？
 * **Complex geometry (holomorphic structure; Hodge theory)**
 
 #### D. Analysis (continuum mechanics of functions and limits)
-
 * **Real analysis (limits, measure, integration)**
   * Cauchy (1820s); rigor of limits
   * Weierstrass (1860s); epsilon–delta
@@ -103,7 +98,6 @@ TODO: 调查学习高等数学之前需要哪些基础？
   * Kolmogorov–Arnold–Moser, 1950s–60s; stability theory
 
 #### E. Arithmetic and discrete mathematics (finitary worlds and exactness)
-
 * **Number theory (arithmetic core)**
   * Euclid; primes; Diophantus; Fermat (1630s)
   * Gauss, 1801; “Disquisitiones” milestone
@@ -116,11 +110,9 @@ TODO: 调查学习高等数学之前需要哪些基础？
   * Euler, 1736; “Königsberg bridges” milestone
 * **Discrete geometry; convexity**
 * **Theoretical computer science interface (pure-leaning)**
-
   * complexity theory; proof complexity; pseudorandomness (structural overlap with logic)
 
 #### F. Unification layers (cross-cutting frameworks; “bridges”)
-
 * **Category theory (universality + composition)**
   * adjunction; limits/colimits; monoidal categories; higher categories
 * **Sheaf theory and cohomology (local-to-global engine)**
@@ -136,7 +128,6 @@ TODO: 调查学习高等数学之前需要哪些基础？
 
 
 ###  Milestone chain
-
 * “Euclid’s Elements” (c. 300 BCE)
 * “Descartes’ analytic geometry” (1637)
 * “Newton/Leibniz calculus” (1660s–1700s)
@@ -295,17 +286,11 @@ In summary, a competitive pure-math researcher is extremely curious and imaginat
 #### Computational Tools in Research
 
 Modern mathematicians routinely use computer tools to support research. Three broad classes of software are employed:
-
 *   **Symbolic Computation (Computer Algebra Systems):** These tools manipulate mathematical expressions in exact (symbolic) form. Examples include _Mathematica_ (Wolfram), _Maple_, _SageMath_, and _Magma_. For instance, _Mathematica_ is a comprehensive system that “allows symbolic computation” as well as numeric work, with built-in libraries for calculus, algebra, graphing, optimization, etc.. _Maple_ similarly “is a symbolic and numeric computing environment… covering symbolic mathematics, numerical analysis, data processing, visualization, and others”#:~:text=Maple%20is%20a%20symbolic%20,physical%20modeling%20and%20code%20generation). SageMath is an open-source environment that integrates many packages (NumPy, SciPy, Sympy, Maxima, GAP, etc.) under a common Python interface; its mission is “creating a viable free open source alternative to Magma, Maple, Mathematica and MATLAB”. Magma (proprietary) is highly optimized for algebra, number theory and geometry computations: it is “designed to solve problems in algebra, number theory, geometry and combinatorics”.
-    
     These CAS are very powerful for tasks like factoring polynomials, solving symbolic equations, computing Gröbner bases, symbolic integration/differentiation, working with group or number-theoretic objects, and generating conjectural formulas. Their strength is speed and precision on algebraic manipulations (they never “blow up” with rounding error). However, they have limits: symbolic problems often grow combinatorially complex, and performance varies greatly between systems. As one user notes, “symbolic computation is extremely heavy-duty, and for almost any non-trivial task, performance varies wildly from software to software, with no single program being best for everything”. In practice mathematicians often use multiple CAS and choose the one best suited to a task (e.g. Sage or Magma for number-theoretic computations, Mathematica for complex algebraic expansions, etc.). In summary, symbolic tools automate tedious algebra and provide experimental insight into complicated formulas, but they complement rather than replace human reasoning.
-    
 *   **Numerical and Scientific Computing:** Numerical tools compute approximate solutions to mathematical problems. The prototypical system is **MATLAB**, a commercial numerical environment: _“MATLAB (Matrix Laboratory) is a proprietary… numeric computing environment… \. Such tools are used for large-scale linear algebra, eigenvalue problems, simulations, optimization, data fitting, finite-element PDE solvers (e.g. FEniCS, FreeFEM), and statistical analysis. They excel at numerical approximation, especially when exact symbolic answers are infeasible.
-    
     Numerical tools allow exploration of mathematical behavior (e.g. plotting graphs of solutions, testing conjectures on many cases, estimating integrals or eigenvalues). However, their output is approximate and depends on floating-point arithmetic or discretization. As noted in the literature of **experimental mathematics**, numerical results alone “by themselves produce no insight, and symbolic computations frequently fail to produce full-fledged, closed-form solutions”. In other words, raw computations need a human to interpret. When combined with symbolic reasoning and creative insight, numerical experimentation can suggest patterns or guide proofs, but it is not a substitute for rigorous argument. Mathematicians use numerical tools for evidence and intuition, and to tackle problems (like PDEs) that have no exact solution formula.
-    
 *   **Formal Proof Assistants:** These are interactive theorem-proving systems (e.g. _Coq_, _Lean_, _Isabelle/HOL_, _HOL Light_, etc.) that allow users to build fully machine-checked proofs from logical foundations. They are based on formal logic and type theory, with a tiny trusted kernel that verifies each proof step. Historically, they have been used to verify both software and deep mathematical theorems. For example, Georges Gonthier’s group formalized the **Four-Color Theorem** and later the **Feit–Thompson odd-order theorem** in Coq, and Thomas Hales formalized the **Kepler conjecture** (sphere packing) in HOL Light (the Flyspeck project). Isabelle/HOL has been used to formalize the **Prime Number Theorem**#:~:text=Isabelle%20has%20been%20used%20to,the%20formal%20proofs%20are%2C%20as) and many algebraic structures, while Lean’s community (mathlib) has formalized vast areas of modern math (algebra, analysis, topology) and is actively working on projects like a formal proof of **Fermat’s Last Theorem**.
-    
     These proof assistants are extremely powerful but require enormous effort: formalizing a major theorem can mean tens of thousands of lines of code and years of work. They excel at guaranteeing absolute correctness: once a proof is checked by a system like Coq or Lean, one is virtually certain there are no logical gaps. They also help organize mathematics into libraries of formally defined concepts. On the other hand, writing proofs in these systems is still much slower and more detailed than traditional paper proofs, so their use in daily research is growing slowly. Recently the development of libraries (e.g. Lean’s mathlib now has hundreds of thousands of lines of formalized math) and integration with automated reasoning (SMT solvers, AI tools) is making these assistants more practical.
     
 
@@ -450,7 +435,6 @@ String Theory - 弦论
 * Polchinski - String Theory I/II - 适合初学
 
 #### 1900年 希尔伯特的23个问题
-
 1. 康托的连续统基数问题。
 * 1874年，康托猜测在可数集基数和实数集基数之间没有别的基数，即著名的连续统假设。1938年，侨居美国的奥地利数理逻辑学家哥德尔证明连续统假设与ZF集合论公理系统的无矛盾性。1963年，美国数学家科恩（P.Choen）证明连续统假设与ZF公理彼此独立。因而，连续统假设不能用ZF公理加以证明。在这个意义下，问题已获解决。
 2. 算术公理系统的无矛盾性。
@@ -1264,7 +1248,6 @@ Introduction to Analytic Number Theory, Tom M. Apostol
 ##### Mathematical Logic - 数理逻辑
 
 Beginning Mathematical Logic: A Study Guide
-
 - Anil Nerode, Richard A. Shore - **Logic for applications** - 适合初学、计算机向
 - Michael Huth, Mark Ryan - **Logic in Computer Science - Modeling and Reasoning about Systems** - 适合初学、计算机向
 
@@ -2246,7 +2229,6 @@ flowchart TD
 说明：每条路线给出 6–8 门模块，按“目标 / 先修 / 推荐资源 / 预计投入”描述。资源优先引用可公开获取的讲义与教材；其中 OCW 模块普遍配套习题与解答，有利于自学闭环。
 
 **路线 A：纯数学研究导向（代数/几何/数论/范畴为主）**
-
 - 证明与离散基础（60–100h）：目标是掌握证明套路与反例意识；先修无；资源：MCS 体系；产出：能独立写严谨证明与读教材。  
 - 抽象代数（80–140h）：目标是熟练使用群/环/域/模语言；先修证明；资源：18.701 学生笔记；产出：会用同态与商结构做结构性推理。  
 - 范畴论（60–120h）：目标是会用泛性质、伴随组织构造；先修抽象代数；资源：Riehl；产出：能读懂现代几何/同调语言的“句法”。  
@@ -2257,7 +2239,6 @@ flowchart TD
 - 算术几何导论项目（120–240h，可选）：目标是把椭圆曲线/有理点问题跑出最小闭环；先修数论+代数几何；资源：数论讲义 + 代数几何讲义；产出：完成一个可讲 30 分钟的小专题。  
 
 **路线 B：应用/计算导向（数值/优化/概率/信息/离散为主）**
-
 - 线性代数（60–120h）：目标是分解与最小二乘/正定结构；资源：18.06；  
 - 概率与统计（80–140h）：目标是概率建模+基本推断；资源：18.05；  
 - 优化与凸分析（60–140h）：目标是对偶/KKT/算法实现；资源：Boyd–Vandenberghe；  
@@ -2268,7 +2249,6 @@ flowchart TD
 - 综合项目（80–200h）：例如“用凸优化 + 统计建模 + 数值算法”完成一个端到端系统（推荐主题：稀疏回归、图信号处理、PDE 反问题玩具版）。  
 
 **路线 C：数据科学/机器学习导向（线代/概率统计/优化/数值/信息/随机过程）**
-
 - 线性代数（60–120h）：目标是 SVD、投影、正定；资源：18.06；  
 - 概率统计（80–140h）：目标是条件概率、估计检验、回归；资源：18.05；  
 - 优化（80–140h）：目标是凸优化 + 一阶方法（大规模）；资源：Convex Optimization；  
@@ -2555,7 +2535,6 @@ As a practical routine: after each chapter, produce a one-page “interface note
 ### Time management: a sustainable loop
 
 A simple loop that tends to work for beginners transitioning to proof-based mathematics:
-
 - **Daily (30–90 min)**: solve 1–2 “core” problems fully; write solutions as if grading were strict.  
 - **Weekly (2–4 h)**: do a “compression pass”: rewrite chapter notes into definitions → lemmas → one flagship theorem → one counterexample.  
 - **Every 4–6 weeks (one afternoon)**: build a mini-project or synthesis note that combines two modules (e.g., “Markov chains + linear algebra spectral gap”; “convex duality + entropy”; “topology + complex analysis via winding number”).  
@@ -2563,7 +2542,6 @@ A simple loop that tends to work for beginners transitioning to proof-based math
 MIT OCW problem sets provide a natural cadence for this loop across multiple areas. 
 
 ### Tools: when to use Python/Julia/Mathematica/Sage/Lean/Coq (and why)
-
 - Use **Python** (NumPy/SciPy, CVXPY) for linear algebra experiments, optimization prototypes, and probabilistic simulation; it shortens the feedback loop between theorem and phenomenon.  
 - Use **Julia** when numerical linear algebra and PDE discretization become compute-heavy; it is also common in modern linear algebra instructional ecosystems.   
 - Use **Mathematica** when symbolic transforms (Fourier/Laplace) and complex-analytic visualization matter.  
@@ -2573,15 +2551,12 @@ MIT OCW problem sets provide a natural cadence for this loop across multiple are
 ### Sample 6-month plan (10–12 hours/week)
 
 This is designed for a technically trained beginner who wants a global map while steadily building transferable skill.
-
 - **Months 1–2 (10–12 h/wk):**  
   - Proof/discrete foundations (6 h/wk): MIT MCS chapters + problems.   
   - Linear algebra (4–6 h/wk): MIT 18.06 videos + problem sets + one coding mini-project.   
-
 - **Months 3–4 (10–12 h/wk):**  
   - Real analysis (6–7 h/wk): MIT 18.100B notes; write full proofs for core theorems (Bolzano–Weierstrass, Heine–Borel in metric spaces).   
   - Probability/statistics (4–5 h/wk): MIT 18.05 + simulations.   
-
 - **Months 5–6 (10–12 h/wk): choose one “capstone interface”**  
   - Option A (analysis interface): functional analysis (MIT 18.102).   
   - Option B (computational interface): numerical analysis (MIT 18.330) with 2–3 implemented algorithms.   
@@ -2590,11 +2565,9 @@ This is designed for a technically trained beginner who wants a global map while
 ### Sample 2-year plan (12–15 hours/week)
 
 This plan aims to move from “global overview” to “functional competence” in one chosen direction, while keeping breadth.
-
 - **Year 1 (core spine):**  
   - Proof/discrete foundations (MCS) → Linear algebra (18.06) → Real analysis (18.100B or Rudin-based 18.100C) → Abstract algebra (MIT algebra notes).   
   - Add one of: probability/statistics (18.05) or topology (18.901), depending on goals.   
-
 - **Year 2 (choose a specialization + interface):**  
   - Pure-math: category theory (Riehl) → algebraic topology (Hatcher) → algebraic geometry (MIT 18.725 + Vakil) → homological algebra (Stacks).   
   - Applied: numerical analysis (18.330) → PDE (18.152) → dynamical systems (18.385J) → optimization (Boyd) with a computational capstone (e.g., PDE-constrained optimization toy problem).   

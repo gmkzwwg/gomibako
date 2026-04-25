@@ -7,7 +7,6 @@ subclass: Linux
 Note: Official Manjaro i3wm images are now available from the official website.
 
 ## Download Manjaro and Create a Bootable USB Drive
-
 1. Download `Manjaro`: [Official Mirrors](https://manjaro.org/downloads/official/xfce/)
 2. Download `Rufus`: [Official Download](https://rufus.ie/en_US/)
 3. Insert the USB drive and launch `Rufus`.
@@ -16,7 +15,6 @@ Note: Official Manjaro i3wm images are now available from the official website.
 6. Set the **Partition scheme** to MBR (default).
 
 ## Install Manjaro
-
 1. Insert the USB drive, start the computer, and enter the **BIOS** before the system boots.
 2. Change the **OS Type** in the Boot tab to **Legacy OS**.
 3. Open **Hard Drive BBS Priorities** and set the bootable USB drive as the primary boot option.
@@ -51,14 +49,12 @@ Note: Official Manjaro i3wm images are now available from the official website.
 ### Pros and Cons of Manjaro
 
 **Advantages**
-
 * **The AUR (Arch User Repository):** Access to almost every Linux application imaginable without searching for external websites or PPAs.
 * **Always Up-to-Date:** You get the latest versions of `GNOME`, `Plasma`, and the Linux kernel much faster than on `Ubuntu` or `Debian`.
 * **No "Reinstalling":** Since it is a rolling release, you never have to "reinstall" the OS to get the next major version.
 * **Hardware Manager (MHWD):** Excellent at automatically identifying and installing the correct proprietary drivers (especially for Nvidia cards).
 
 **Disadvantages**
-
 * **Stability Risks:** Because software is new, updates can occasionally break system components (though Manjaro tests updates more than Arch).
 * **Maintenance Required:** You need to check the [Manjaro Forums](https://forum.manjaro.org/) during major updates to see if manual intervention is required.
 * **"The Manjaro Delay":** Manjaro holds back Arch packages for about two weeks to test them, which can sometimes cause compatibility issues with AUR packages that expect the absolute newest libraries.
@@ -83,14 +79,12 @@ Note: Official Manjaro i3wm images are now available from the official website.
 ## Configure Manjaro Mirrors
 
 ### pacman Mirrorlist
-
 1. Automatically rank and set the fastest mirrors.
 **
 
 ```bash
 sudo pacman-mirrors -i -c China -m rank
 ```
-
 1. Edit `/etc/pacman.conf`: add Archlinuxcn image.
 
 ```bash
@@ -98,7 +92,6 @@ sudo pacman-mirrors -i -c China -m rank
 SigLevel = Never
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
 ```
-
 3. Update keyring and all packages.
 
 ```bash
@@ -188,34 +181,29 @@ sudo hwclock --show
 > **Tip:** When using `ChatGPT`, if there is a significant discrepancy between your system time and the actual time, you may encounter a **"Your connection is not private"** error.
 
 ## Configuring the i3-wm Window Manager
-
 1. Download the `i3wm-themer` themes.
 
 ```bash
 cd ~/.config/ && mkdir i3 && cd
 git clone https://github.com/unix121/i3wm-themer && cd i3wm-themer
 ```
-
 2. Install requirements.
 
 ```bash
 cd i3wm-themer && pip install -r requirements.txt
 ./install_arch.sh
 ```
-
 3. Copy `polybar` scripts.
 
 ```bash
 cp -r scripts/* /home/$USER/.config/polybar/
 ```
-
 4. Install and themes and switch to one of them.
 
 ```bash
 python3 i3wm-themer.py --config config.yaml --install defaults/
 python3 i3wm-themer.py --config config.yaml --load themes/002.json # alternatives can be 000.json - 012.json
 ```
-
 5. Edit `/home/$USER/.config/i3/config`: config i3-wm.
 
 ```bash
@@ -269,11 +257,9 @@ Common Display DPI Reference Table
 | **27"** | 2560 x 1440 | Desktop 2K | 109 | **109 - 120** |
 | **27"** | 3840 x 2160 | Desktop 4K | 163 | **144 - 168** |
 | **32"** | 3840 x 2160 | Desktop 4K | 138 | **144** |
-
 7. Use the shortcut **Mod + D** to run `rofi-theme-selector` and choose a theme for `rofi`. Press **Alt + A** to apply your selection.
 
 ## Configuring Chinese Input Method
-
 1. After installing `ibus` and `ibus-libpinyin`, launch `ibus-setup` to add the Chinese input method: **Input Method** -> **Add** -> **Chinese** -> **Intelligent Pinyin**.
 2. Add the `ibus-daemon` to your startup applications and configure the environment parameters. Append the following lines to the end of your `~/.config/i3/config` file:
 
@@ -299,7 +285,6 @@ ibus-daemon -drx
 ### Enabling Greek Letter Input for ibus-libpinyin
 
 **[Option 1] Use Greek Letter Input Mode**
-
 1. Open `ibus-setup`, navigate to the **Input Method** tab, select **Intelligent Pinyin**, and click **Preferences**.
 2. In the pop-up window, select the **User Data** tab and click **Edit User Lua Script**. Add the following content to the opened file:
 
@@ -338,7 +323,6 @@ end
 
 ime.register_command("ga", "GreekAlphabet", "希腊字母")
 ```
-
 3. Enter `ibus restart` to restart iBus.
 4. When using iBus, press the keys in the following sequence: `i`, `Space`, `g`, `a` to enable Greek letter input mode, then select the Greek letter according to the table above.
 
@@ -348,7 +332,6 @@ ime.register_command("ga", "GreekAlphabet", "希腊字母")
 ## Configuring Network Proxy (Magic Crossing)
 
 ### Option 1: trojan
-
 1. Modify the `/etc/trojan/config.json` file to configure `Trojan`. The configuration text is provided by your service provider.
 2. Modify the `/etc/proxychains.conf` file to configure `proxychains`. Change the last line to:
 
@@ -363,13 +346,11 @@ exec --no-startup-id trojan
 ```
 
 ### Option2: mihomo + metacubex
-
 1. Install
 
 ```bash
 sudo pacman -S mihomo metacubexd-bin
 ```
-
 2. Config mihomo with `/.config/mihomo/config.yaml`
 
 ```yaml
@@ -393,7 +374,6 @@ proxy-groups:
     type: select
     use:
       - my-provider # ref to the service provider before
-
   - name: "Auto"
     type: url-test
     use:
@@ -401,45 +381,38 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 300
 ```
-
 1. Set `mihomo` to start automatically on boot. Append lines below to `~/.config/i3/config`:
 
 ```bash
 exec --no-startup-id mihomo
 ```
-
 4. Config with broswer, visit: https://metacubex.github.io/metacubexd/
   - Running mode: GLOBAL
   - Proxies: "Manual" - Choose one; Global - "Manual"
 
 ### Setup Chrome
-
 1. Utilize a temporary proxy for `Chrome` to access the Web Store:
 
 ```bash
 google-chrome-stable --proxy-server=socks5://127.0.0.1:1080
 
 ```
-
 2. Visit the Chrome Web Store, search for, and install `ZeroOmega`.
 4. Open the `ZeroOmega` settings interface and import your configuration file.
 
 ## Configuring Git
-
 1. Configure the **Git proxy**.
 
 ```bash
 git config --global http.proxy socks5://127.0.0.1:1080
 git config --global https.proxy socks5://127.0.0.1:1080
 ```
-
 2. Set up accounts.
 
 ```bash
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
-
 3. Persist **Git Credentials**.
 
 ```bash
@@ -451,13 +424,11 @@ git config --global credential.helper 'cache --timeout=3600'有
 ```
 
 ## Configuring Visual Studio Code
-
 1. Install the following extensions: **Awesome Emacs Keymap**, **Markdown All in One**, **Prettier**, and **Org Mode**.
 2. Add your preferred fonts under the **Editor: Font Family** option in Preferences.
 3. To enable ligatures for **Fira Code**, set the value of `"editor.fontLigatures"` to `true` in your `settings.json`.
 
 ## Configuring Alacritty
-
 1. Create a new file at `~/.config/alacritty/alacritty.yml` and add the following content:
 
 ```bash
@@ -513,7 +484,6 @@ colors:
 ```
 
 ## Sharing File - Samba
-
 1. Edit `/etc/samba/smb.conf`: configuring `samba`.
 
 ```bash
@@ -599,7 +569,6 @@ sudo mhwd -i pci video-nvidia
 Reboot to apply changes.
 
 ## Mathematics: Matlab
-
 1. Download, install, and crack Matlab 2018.
 
 
@@ -624,7 +593,6 @@ alias matlab="sh /usr/local/MATLAB/R2018a/bin/matlab"
 ```
 
 ## Configuring Mozart Oz
-
 1. Installing `Oz`.
 
 ```bash
@@ -650,7 +618,6 @@ sudo debian/rules binary
 sudo dpkg -i mozart-1.4.0.20080704-16189.i386.deb
 # Append codes below to Emacs config
 ```
-
 2. Configure Emacs:
 
 ```lisp

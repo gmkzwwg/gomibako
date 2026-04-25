@@ -924,7 +924,6 @@ If you want a stricter notion of “complete,” specify the scope: (i) single-v
 ---
 
 If you want this to be “complete” in the sense of a course reference sheet, specify the level:
-
 * **LA-1** (Gaussian elimination, eigenvalues, inner products),
 * **LA-2** (Jordan form, SVD, spectral theorem, bilinear forms),
 * **AA-1** (groups/rings/fields, isomorphism theorems),
@@ -1244,7 +1243,6 @@ If you want this to be “complete” at a specific level (e.g., **undergraduate
 ---
 
 If you want this to be “complete” at a particular syllabus level, specify one of these scopes and I will expand accordingly while keeping the same table format:
-
 * **Real analysis (UG core)**: metric spaces, compactness, uniform continuity, differentiation, Riemann integration.
 * **Real analysis (measure/Lebesgue)**: σ-algebras, outer measure, Radon–Nikodym, (L^p), weak convergence.
 * **Complex analysis (UG core)**: Cauchy theory, residues, conformal maps.
@@ -1374,7 +1372,6 @@ If you want this to be “complete” at a particular syllabus level, specify on
 ---
 
 If you want this to be “complete” for a specific course level, choose one scope and I can expand the table set accordingly while keeping the same format:
-
 * **Elementary number theory** (divisibility, congruences, quadratic residues, Diophantine).
 * **Analytic number theory** (Dirichlet characters ( \chi ), (L(s,\chi)), zero-free regions, explicit formula).
 * **Algebraic number theory** (number fields (K), ring of integers (\mathcal O_K), discriminant (\Delta_K), class group (\mathrm{Cl}(K)), factorization of primes).
@@ -1540,7 +1537,6 @@ If you want this to be “complete” for a specific course level, choose one sc
 ---
 
 If you want this to be “complete” for a particular track, specify one scope and I can expand the table accordingly without changing the format:
-
 * **Probability (measure-theoretic)**: filtrations ((\mathcal F_t)), martingales, stopping times, characteristic functions, weak convergence.
 * **Mathematical statistics**: sufficiency, Fisher information, CRLB, likelihood ratio tests, asymptotic normality.
 * **Applied statistics / ML**: GLMs, logistic regression, regularization, cross-validation, A/B testing, bootstrap.
@@ -1686,7 +1682,6 @@ If you want this to be “complete” for a particular track, specify one scope 
 ---
 
 If you want this to be “complete” for a particular level, specify the scope:
-
 * **General topology (core UG)**: all above + Urysohn lemma, Tietze extension, Baire category, Stone–Čech compactification.
 * **Algebraic topology**: homotopy, (\pi_1), homology/cohomology, covering spaces.
 * **Differential topology**: manifolds, charts, tangent bundles, transversality.

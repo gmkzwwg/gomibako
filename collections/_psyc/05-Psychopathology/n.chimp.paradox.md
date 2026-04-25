@@ -372,7 +372,6 @@ Ronnie O’Sullivan, the greatest snooker player of all time, offered perhaps th
 > * late-career renaissance 职业生涯后期的复兴；指在生涯较晚阶段重新达到高水平、焕发第二高峰
 
 Bibliography
-
 1. Chimp Management. “How High Performers Stay Calm Under Pressure Using The Chimp Model.” Accessed March 20, 2026. https://chimpmanagement.com/how-high-performers-stay-calm-under-pressure-using-the-chimp-model/.
 2. Chimp Management. “Research.” Accessed March 20, 2026. https://chimpmanagement.com/research/.
 3. Chimp Management. “The Chimp Model.” Accessed March 20, 2026. https://chimpmanagement.com/the-chimp-model/.

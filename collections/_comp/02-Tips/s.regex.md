@@ -76,7 +76,6 @@ subclass: Tips
 #### Greedy Mode v.s. Lazy Mode
 
 Greedy vs lazy (non-greedy) quantifiers in regex describe **how much text a quantifier tries to consume**.
-
 * **Greedy**: matches **as much as possible** while still allowing the overall match to succeed. Use **greedy** when you want to go to the **last possible delimiter** (last slash, last dot, last colon).
 * **Lazy / non-greedy**: matches **as little as possible** while still allowing the overall match to succeed. Use **lazy** when your delimiters repeat and you want the **nearest closing delimiter** (quotes, tags, parentheses, repeated blocks).
 
@@ -87,7 +86,6 @@ Text:
 ```text
 a "one" b "two"
 ```
-
 * Greedy: `".*"` → matches `"one" b "two"`
 * Lazy: `".*?"` → matches `"one"`
 
@@ -143,72 +141,48 @@ a "one" b "two"
 | Markdown Links | `\[.+?\]?\(.+?\)` | `[google official](www.google.com)` |
 
 ## Tips
-
 * What regex is (and isn’t)
-
   * Regex = pattern language for matching/extracting/replacing text in strings `→` “describe a shape of text”.
   * Regex is best for *regular* textual structure; it is a poor tool for full parsing of nested grammars (HTML/XML with nesting, full programming languages) `→` use a parser.
-
 * When to use regex
-
   * Find occurrences in free text `→` logs, configs, documents (`ERROR:…`, URLs, IDs).
   * Extract structured pieces `→` capture groups for dates, tags, key/value, filenames.
   * Normalize/clean text `→` trim, collapse whitespace, remove markup-like noise.
   * Quick pre-validation (screening) `→` “looks like an email/UUID” before deeper validation.
-
 * When not to use regex
-
   * When correctness requires full grammar compliance `→` RFC email, full URL grammar, IPv6 edge cases.
   * When structure is hierarchical/nested or context-sensitive `→` HTML with nested tags, balanced parentheses (beyond limited cases).
-
 * Minimal matching building blocks
-
   * Literals and escaping: `.` `*` `+` `?` `(` `)` `[` `]` are special `→` use `\.` `\+` `\(` to match them literally.
   * Character classes: `[abc]` `[a-z]` `[^…]` `→` “one char from a set”.
   * Shorthands: `\d \w \s` and their negations `\D \W \S` `→` digits/word/space (Unicode behavior varies by engine).
   * Anchors/boundaries: `^` `$` `\b` `\A` `\z` `→` “where” a match is allowed, not “what”.
-
 * Quantifiers and greediness (core failure source)
-
   * Repetition: `*` `+` `?` `{n,m}` `→` how many times.
   * Greedy vs lazy: `.*` grabs most; `.*?` grabs least `→` prefer lazy when delimiting with end markers.
   * Catastrophic backtracking risk: nested ambiguous quantifiers `→` avoid patterns like `(.*)*`, prefer tighter classes (e.g., `[^"]*` instead of `.*` inside quotes).
-
 * Grouping and extraction
-
   * Grouping: `( … )` groups; `(?: … )` groups without capturing.
   * Captures: `(\d{4})-(\d{2})-(\d{2})` `→` extract year/month/day.
   * Backreferences: `\1` (or named) `→` enforce repetition (e.g., duplicate words).
-
 * Alternatives and conditions
-
   * Alternation: `A|B` `→` choose one; always group when mixing with quantifiers: `(?:cat|dog)s?`.
-
 * Lookarounds (context without consuming)
-
   * Lookahead: `X(?=Y)` / `X(?!Y)` `→` “followed by / not followed by”.
   * Lookbehind: `(?<=X)Y` / `(?<!X)Y` `→` “preceded by / not preceded by” (support varies; often fixed-length only).
-
 * Flags / modes (change meaning of basics)
-
   * Case-insensitive: `i` `→` `(?i)`.
   * Multiline: `m` `→` `^/$` work per line.
   * Dotall: `s` `→` `.` includes newline.
   * Free-spacing: `x` `→` readable patterns with spaces/comments.
-
 * Engine reality (portability)
-
   * “Regex” is not one standard `→` PCRE, Java, .NET, JavaScript, Python differ (lookbehind, Unicode classes, possessive quantifiers, named-group syntax).
   * Always know the target engine (language/tool) before writing “clever” constructs.
-
 * How to use regex safely in practice
-
   * Start strict then relax: anchor first (`^…$`) if you mean full-string match; otherwise omit anchors for searching.
   * Prefer explicit character classes over `.` in structured contexts `→` `[^,]*` for CSV-like fields, `[^"]*` for quoted segments.
   * Make input normalization explicit `→` trim/casefold first when appropriate.
   * Treat regex validation as a filter `→` follow with actual parsing/validation where correctness matters.
-
 * Replacement essentials (using matches)
-
   * Replacement uses captured groups `→` `$1`/`${name}` (varies by engine).
   * Common transforms: `^\s+|\s+$` `→` trim; `\s+` `→` collapse spaces; `(\w+)\s+\1` `→` dedupe repeated word.

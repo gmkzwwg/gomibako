@@ -68,7 +68,6 @@ Comments tell you how code **worked**.
 ### 1. Why nesting becomes a problem
 
 **Background**: Nesting appears whenever one block is placed inside another block. This happens in many languages:
-
 * `if` inside `if`
 * loops inside conditionals
 * UI elements inside containers
@@ -77,7 +76,6 @@ Comments tell you how code **worked**.
 Nesting is natural. The problem begins when a reader must mentally track too many layers at once.
 
 Badly nested code usually causes three things:
-
 * structure becomes hard to see
 * bugs become easier to introduce
 * changes become more expensive
@@ -101,7 +99,6 @@ A reader must track many nested conditions before reaching the actual action.
 ### 2. The main principle: make the shape of the code obvious
 
 **Analysis**: Good code lets the reader answer these questions quickly:
-
 * What is the main path?
 * What are the exceptional cases?
 * Where does each block begin and end?
@@ -144,7 +141,6 @@ This version is flatter. The logic is the same, but the structure is much cleare
 **Definition**: Nesting is justified when the problem itself is hierarchical.
 
 Examples include:
-
 * tree traversal
 * recursive parsing
 * nested menus
@@ -291,7 +287,6 @@ def handle_request(request, user, database):
 ```
 
 This function mixes several concerns:
-
 * request method validation
 * user existence
 * permission checking
@@ -379,7 +374,6 @@ boolean canProcess(Customer customer) {
 **Analysis**: Not every branch belongs in the same place. Some branches decide **structure**. Others decide **details**.
 
 For example, in a web endpoint:
-
 * high-level branch: admin user vs normal user
 * low-level branch: show one label or another
 
@@ -420,7 +414,6 @@ if condition_a:
 This shape often suggests poor structure.
 
 Possible fixes:
-
 * use guard clauses
 * extract helper functions
 * invert conditions
@@ -489,7 +482,6 @@ This version is flatter and makes the mutation easier to find.
 **Analysis**: There is no universal numeric rule, but some practical guidelines are useful.
 
 A rough rule:
-
 * 1 to 2 levels: usually fine
 * 3 levels: still normal, but inspect readability
 * 4 levels: often a warning sign
@@ -777,7 +769,6 @@ activate_session(user)
 ### 18. A simple refactoring checklist
 
 **Next Step**: When a function feels too nested, apply this checklist in order.
-
 1. Can invalid cases be rejected earlier?
 2. Can one long condition be given a name?
 3. Can repeated logic be moved to a helper?
@@ -790,7 +781,6 @@ activate_session(user)
 **Conclusion**: Good code does not merely run correctly. It shows its structure clearly. Use nesting where the problem truly requires hierarchy. Reduce nesting where it only hides intent. The best code usually makes the important path easy to see and the exceptional path easy to isolate.
 
 **Common misconceptions**:
-
 1. Shorter code is not always better code.
 2. Fewer lines do not necessarily mean lower complexity.
 3. A single dense condition may be worse than several simple ones.
@@ -891,7 +881,6 @@ How to optimize
 这三条原则看起来简单，但它们几乎决定了一个项目会变成“清晰系统”，还是变成“不断堆补丁的大泥团”。
 
 下面用一个个人网站的例子来解释。假设网站有四类页面：
-
 * 首页
 * 技术博客
 * 简历
@@ -906,7 +895,6 @@ How to optimize
 工业级，是为了让项目能在真实开发环境中长期运行，而不是只在作者脑中成立。
 
 很多初学者写代码时，重点放在“能不能跑”。这当然必要，但远远不够。因为真正的成本往往不是第一次写出来，而是后面不断修改：
-
 * 三个月后自己还能不能看懂
 * 别人接手能不能继续开发
 * 新增功能时要不要复制粘贴一堆旧代码
@@ -927,7 +915,6 @@ How to optimize
 
 内容（content）
 指页面真正表达的信息，例如：
-
 * 博客标题与正文
 * 简历中的教育经历和项目经历
 * 照片墙里的图片说明
@@ -935,7 +922,6 @@ How to optimize
 
 结构（structure）
 指页面的组织骨架，例如：
-
 * 页头
 * 主内容区
 * 侧边栏
@@ -945,7 +931,6 @@ How to optimize
 
 表现（presentation）
 指视觉层，例如：
-
 * 字体
 * 颜色
 * 间距
@@ -955,7 +940,6 @@ How to optimize
 
 行为（behavior）
 指交互逻辑，例如：
-
 * 点击按钮展开菜单
 * 切换深色模式
 * 筛选照片
@@ -967,7 +951,6 @@ How to optimize
 因为这四类变化的频率不同，修改者也可能不同。
 
 例如：
-
 * 内容编辑者经常改文章，不应碰布局代码
 * 设计者经常改样式，不应碰数据逻辑
 * 前端工程师经常改交互，不应改每篇文章正文
@@ -991,7 +974,6 @@ How to optimize
 ```
 
 这里的问题是：
-
 * 内容写在 HTML 里
 * 样式写成内联 style
 * 行为写成 onclick
@@ -1100,7 +1082,6 @@ export function Header({ items }: HeaderProps) {
 因为重复数据会产生漂移。
 
 比如导航菜单，假设你有五个页面：
-
 * 首页
 * 博客页
 * 简历页
@@ -1121,7 +1102,6 @@ export function Header({ items }: HeaderProps) {
 那么有一天你把 “Resume” 改成 “CV”，就要改五遍。只要漏一页，站内就不一致了。
 
 这还只是菜单。更常见的还有：
-
 * 网站标题
 * 作者姓名
 * 社交链接
@@ -1214,7 +1194,6 @@ export const projects = [
 single source of truth 的本质
 
 它不是“所有东西都塞到一个文件”，而是：
-
 * 一类信息只在一个地方定义
 * 其他地方只消费，不重复制造
 * 修改点明确
@@ -1232,7 +1211,6 @@ single source of truth 的本质
 
 格式化（formatting）
 自动统一代码样式，例如：
-
 * 缩进
 * 引号风格
 * 逗号
@@ -1241,7 +1219,6 @@ single source of truth 的本质
 
 lint
 检查不规范或高风险写法，例如：
-
 * 未使用变量
 * 重复定义
 * 可疑逻辑
@@ -1250,7 +1227,6 @@ lint
 
 构建（build）
 把源码转成最终网站，例如：
-
 * 处理 TypeScript
 * 打包资源
 * 生成静态页面
@@ -1263,7 +1239,6 @@ lint
 为什么必须自动化
 
 因为手工做这些事有三个问题：
-
 1. 不稳定
    今天记得跑，明天忘了跑。
 2. 不一致
@@ -1274,7 +1249,6 @@ lint
 一个典型反例
 
 开发流程是这样的：
-
 * 手工改代码
 * 肉眼检查格式
 * 本地随便点一下页面
@@ -1318,23 +1292,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-
       - name: Install dependencies
         run: |
           corepack enable
           pnpm install
-
       - name: Format check
         run: pnpm biome check .
-
       - name: Type check
         run: pnpm typecheck
-
       - name: Build
         run: pnpm build
 ```
@@ -1346,7 +1315,6 @@ jobs:
 不是为了“显得专业”，而是为了让流程变成系统的一部分，而不是某个人脑中的习惯。
 
 一旦自动化到位，项目会出现很明显的变化：
-
 * 代码风格稳定
 * 错误更早暴露
 * 发布更可靠
@@ -1358,7 +1326,6 @@ jobs:
 假设你要做一个个人站。
 
 需求是：
-
 * 首页展示简介、精选文章、精选项目、最近照片
 * 博客有文章列表和文章页
 * 简历有教育、项目、技能
@@ -1375,7 +1342,6 @@ pages/
 ```
 
 每个页面都手写：
-
 * 同一个 header
 * 同一个 footer
 * 同一个网站标题
@@ -1384,7 +1350,6 @@ pages/
 * 各自复制出来的小脚本
 
 短期后果是“能跑”，长期后果是：
-
 * 全站改导航很痛苦
 * 简历和首页项目描述不一致
 * 样式越来越重复
@@ -1428,20 +1393,17 @@ src/
 然后三条原则同时生效：
 
 第一条，分层：
-
 * `content/` 负责内容
 * `components/` 负责结构
 * `styles/` 负责表现
 * 组件脚本负责行为
 
 第二条，单一真实来源：
-
 * `navigation.ts` 只定义一次菜单
 * `site-config.ts` 只定义一次网站信息
 * `resume.ts` 只定义一次简历数据
 
 第三条，自动化：
-
 * 格式化命令统一
 * lint 自动检查
 * build 自动生成
@@ -1463,7 +1425,6 @@ single source of truth，会让自动化更有效。
 因为格式化、lint、构建会阻止代码逐渐滑回混乱状态。
 
 也就是说，它们共同形成一个闭环：
-
 * 分层降低耦合
 * 单一来源降低重复
 * 自动化降低人为失误
@@ -1490,37 +1451,28 @@ single source of truth，会让自动化更有效。
 “可阅读、可维护、工业级”的核心，不在于用了多少流行技术，而在于是否建立了清晰边界和稳定流程。
 
 最重要的三条原则是：
-
 1. 内容、结构、表现、行为分层
    这样每类改动都有自己的位置，减少牵一发动全身。
-
 2. 让公共部分只有一个真实来源
    这样全站一致，修改点清晰，不会因为复制粘贴导致信息漂移。
-
 3. 把格式化、lint、构建、发布交给自动化
    这样规则从“个人习惯”升级成“系统约束”，项目才真正可靠。
 
 一个项目真正成熟，不是因为它用了最新框架，而是因为它能在不断变化中保持清晰。
 
 常见错误与易混点
-
 1. 分层不等于文件越多越好
    不是把每一行代码拆成一个文件，而是按职责拆分。过度拆分同样会降低可读性。
-
 2. single source of truth 不等于“所有内容放一个大文件”
    真正含义是“一类信息只定义一次”。不是把所有数据挤在一起。
-
 3. 自动化不等于工具越多越先进
    关键是让流程稳定，不是堆工具。一个清晰的 format + lint + build + deploy 流程，比十个互相重叠的工具更好。
-
 4. 工业级不等于复杂
    很多人误以为“工业级”就是目录特别深、配置特别多。其实工业级首先是清晰、稳定、可预测。
-
 5. 能跑不等于可维护
    一次性 demo 可以混写，但长期项目必须分层、去重、自动化，否则后期成本会迅速上升。
 
 ### Reference
-
 1. Video Course: [Youtube @CodeAesthetic](https://www.youtube.com/@CodeAesthetic)
 2. <https://github.com/trekhleb/state-of-the-art-shitcode>
 3. <https://github.com/Droogans/unmaintainable-code>

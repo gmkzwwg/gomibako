@@ -16,18 +16,14 @@ The notes below profile the families requested (plus several widely recognized a
 ## Sources and analytic framework
 
 These notes rely on three complementary “reference layers”:
-
 1.  Genealogy and macro-distribution: Glottolog for conservative family/dialect classification and bibliographic anchoring (current release indicated on its landing page and Zenodo metadata). 4
-    
 2.  Typological features: The World Atlas of Language Structures Online for cross-linguistic feature definitions and global distributions (e.g., tone; S/O/V order; fusion; exponence). 5
-    
 3.  Phonological inventories and comparability: PHOIBLE (release metadata and summary statistics) for inventories; and CLTS for cross-system transcription linking. 6
     
 
 For language counts and “largest families,” Ethnologue provides an alternative counting methodology and current estimates of living languages and large families (noting that counting depends on language/dialect decisions and is “in flux”). 7
 
 Analytic primitives used (high-level reminders, not exhaustive):
-
 *   Fusion and exponence (morphology): isolating vs concatenative vs non-linear; monoexponential vs cumulative markers. 2
 *   Tone: lexical vs grammatical tone; simple vs complex tone. 8
 *   Clause word order: dominant SOV/SVO/VSO etc, with the well-known caveat that “dominant order” abstracts away from pragmatically conditioned alternations and from pronominal clitic placement. 9
@@ -76,7 +72,6 @@ The strongest “learning takeaway” is that communicative efficiency is realiz
 ![Glottolog 5.3 -](https://images.openai.com/static-rsc-1/mKNUaVIKcODoo0F4Ws8haWfLgTaUmt0fp3RL4yVuZx4vcjJ7PPQXcaRPTIRz1pUoqnh6fhcbSZrIvuYrOWfudp4hSKZq4B1KlJ-klxsnmZj1IuhwVe-KiCdChvKMxCzqZMCqTDv33tj7V-8Vyd6qDA)![Distribution of tone languages according to the World Atlas of Language...  | Download Scientific Diagram](https://images.openai.com/static-rsc-1/RCHtyzYQMZMiL-xwr1JzroSYFHRk8KN6Dy04C7T_DtehN531LHQW23bbpMU5I7JJizMVxh9S0y94QhrOEB5h-S-UuBgH6ZZMsfzOpSyLPvudfYI0bQUehbflGvvOB1s5ImWP4NS-RA0N4DpyS2i4aA)![Language families - Meta-Wiki](https://images.openai.com/static-rsc-1/3v7mO08HznLOlrM0kXJAdk2bVtsKize1MwxfOBqrbxm7vodZMwu_Qa4kAtOkxbpRCo2bsuCH_z4QgO1g2GusiuvmWWCj0pemajnJHi-oY1gn9c1PqIY4GK2KKYi2ZBNr-qAmc4RVyYEyJz3onrrB5A)![Indo-European languages - Wikipedia](https://images.openai.com/static-rsc-1/PVQA4ewLtqJvCAySjyHsNvVEyYPRsbPp6ryPd_SiOjrMygS2CJnL8d4oMlWEPDjCBb-VW2CarBLrCEzbVOiBonuoNOjwE5e11YEwyLnGTXiChsCgL95E1KTGBdSyBjiUZ51KOvdYBj0qQTHz2PrV4w)
 
 Schematic typological “profiles” (heuristic, not a statistical model): each bar indicates where a family often places grammatical complexity.
-
 *   Analytic load (particles, word order, tone): Indo-European (English-like) ▓▓▓; Tai-Kadai ▓▓▓▓▓; Sinitic ▓▓▓▓▓
 *   Morphological load (affix chains, paradigms): Turkic ▓▓▓▓▓; Uralic ▓▓▓▓; Dravidian ▓▓▓▓
 *   Polysynthetic/template load (word-internal syntax): Eskimo-Aleut ▓▓▓▓▓; Na-Dene ▓▓▓▓▓; Algonquian ▓▓▓▓▓
@@ -1088,7 +1083,6 @@ Ainu (Ainuic): widely described as an isolate (or small Ainuic family of closely
 Caucasian families: three indigenous families are commonly recognized—Kartvelian (South Caucasian), Northwest Caucasian, and Nakh-Daghestanian (Northeast Caucasian)—with abundant cross-linguistically unusual phonologies (ejectives, rich consonant inventories) and ergativity patterns, and no consensus on deeper genetic relations among the three. 76
 
 Other widely recognized families/foci (briefly, because full profiles would require a separate volume):
-
 *   Mande (often discussed in Niger-Congo debates; tone and grammatical tone are important in some languages). 77
 *   Nilo-Saharan (a proposed phylum with continuing debate about unity; large areal spread). 78
 *   “Khoisan” is not accepted as a single genetic family by specialists; current practice recognizes families such as Khoe–Kwadi, Kx’a, and Tuu (plus East African Hadza/Sandawe not demonstrably related to southern groups). 79

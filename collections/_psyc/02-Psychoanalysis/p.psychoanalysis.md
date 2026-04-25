@@ -277,25 +277,17 @@ In the end, what unites the diverse applications of psychoanalysis is a commitme
 As we conclude this critical review, we recognize that psychoanalysis itself continues to adapt. In contemporary practice, it embraces diversity and cultural difference more conscientiously than in Freud’s day, shedding old biases and integrating new knowledge (for example, acknowledging trauma and external reality in ways Freud downplayed). As a cultural discourse, it remains a vital form of **epistemology** – not in the classical sense of justified true belief, but in the sense of a framework for making sense of human experience that neither dismisses the subjective nor isolates it from the social. The 21st-century psychoanalytic scholar, armed with Freud’s insights and those of his dissenters and successors, stands as a kind of _translator_ between worlds: inner and outer, personal and political, psychic and material. In each of the domains we explored, psychoanalysis provides a language to articulate the subterranean ties between these worlds. It teaches us that to truly understand a phenomenon – be it an illness, a work of art, or a legal norm – we must consider both the conscious intentions and the unconscious significations, the rational structure and the irrational underbelly. This holistic, depth-oriented approach is psychoanalysis’s enduring gift to modern thought. In an age often enamored with surface data and quick fixes, psychoanalysis reminds us of the value of the long look inward and the patience to find meaning in ambiguity. In doing so, it continues to shed light on the enigmas of our lives and our communities, helping us navigate the rich tapestry of symbols and stories that constitute human reality.
 
 **Sources:**
-
 *   Gabriel, Yiannis, & Carr, Adrian. _Organizations, management and psychoanalysis: an overview_. _Journal of Managerial Psychology_ 17(5):348–365 (2002).
-    
 *   Mambrol, Nasrullah. “Freudian Psychoanalysis.” _Literary Theory and Criticism_, April 16, 2016[literariness.org](https://literariness.org/2016/04/16/freudian-psychoanalysis/#:~:text=Psychoanalytic%20criticism%20,into%20an%20animalistic%20sex%20drive)[literariness.org](https://literariness.org/2016/04/16/freudian-psychoanalysis/#:~:text=opus%2C%20the%20notion%20of%20the,literary%20and%20cultural%20studies%20today)[literariness.org](https://literariness.org/2016/04/16/freudian-psychoanalysis/#:~:text=Repression%20is%20crucial%20to%20the,been%20the%20history%20of%20repression).
-    
 *   Sharpe, Charles. “Why we are creative and why we need to play: ideas from psychoanalysis.” _goodenoughcaring_ (2008)[goodenoughcaring.co.uk](https://goodenoughcaring.co.uk/writings/why-we-are-creative-and-why-we-need-to-play-ideas-from-psychoanalysis/#:~:text=we%20are%20driven%20to%20satisfying,a%20need%20to%20be%20creative)[goodenoughcaring.co.uk](https://goodenoughcaring.co.uk/writings/why-we-are-creative-and-why-we-need-to-play-ideas-from-psychoanalysis/#:~:text=Play%20according%20to%20Winnicott%20can%2C,of%20creativity%2C%20which%20means%20aliveness%E2%80%99).
-    
 *   Caliwan, Emmanuel S. “Law and the Unconscious: A Psychoanalytical Reading of Jurisprudence.” _Medium.com_, July 31, 2025[sociojuris.medium.com](https://sociojuris.medium.com/law-and-the-unconscious-a-psychoanalytical-reading-of-jurisprudence-a1b06e9e8641#:~:text=A%20psychoanalytical%20reading%20of%20jurisprudence,and%20the%20desire%20for%20authority)[sociojuris.medium.com](https://sociojuris.medium.com/law-and-the-unconscious-a-psychoanalytical-reading-of-jurisprudence-a1b06e9e8641#:~:text=desire%3F%20What%20does%20it%20fear%3F,in%20order%20to%20appear%20rational).
-    
 *   Freud, Sigmund. _Civilization and Its Discontents_ (1930). Excerpt in Twren, Loyola University Chicago[twren.sites.luc.edu](https://twren.sites.luc.edu/phil120/ch9/civilization.htm#:~:text=put%20into%20action%20against%20the,garrison%20in%20a%20conquered%20city).
-    
 *   “The New Psychoanalysis.” _Dissent Magazine_, Spring 2018[dissentmagazine.org](https://dissentmagazine.org/article/the-return-of-psychoanalysis/#:~:text=Paying%20attention%20to%20the%20analyst,way%20relationship%20that%20depends)[dissentmagazine.org](https://dissentmagazine.org/article/the-return-of-psychoanalysis/#:~:text=There%20is%20a%20similar%20movement,new%20generation%20learning%20from%20critical)[dissentmagazine.org](https://dissentmagazine.org/article/the-return-of-psychoanalysis/#:~:text=has%20been%20largely%20discredited%2C%20with,like%20films%2C%20as%20ways%20of).
-    
 *   Psychodynamic Thinking (Tony Burch). “Isabel Menzies-Lyth.” (2021)[psychodynamicthinking.info](https://psychodynamicthinking.info/isabel-menzies-lyth#:~:text=analyst%2C%20herself%20analysed%20by%20Wilfred,two%20volumes%20of%20her%20works).
     
 ## 阅读材料
 
 弗洛伊德：
-
 - 精神分析导论（弗洛伊德）弗洛伊德入门
 - 释梦（弗洛伊德）第七章对拉康较重要
 - **自我与本我**（弗洛伊德）必读
@@ -311,14 +303,12 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 - 荣格心理学入门 - 霍尔等
 
 拉康入门：
-
 - 雅克•拉康：阅读你的症状（吴琼）生平、理论简介
 - 拉康传（伊丽莎白•卢迪内斯）生平
 - **The Lacanian Subject**（Bruce Fink）英语的拉康研究世界
 - 拉康精神分析介绍性辞典（迪伦•埃文斯）工具书
 
 拉康进阶：
-
 - A Clinical Introduction to Freud （by Bruce Fink）
 - A Clinical Introduction to Lacanian Psychoanalysis （by Bruce Fink）
 - 雅克拉康研讨班七
@@ -330,13 +320,11 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 ### 什么是精神分析
 
 什么是**精神分析**？
-
 - 精神分析是这样一门学科，研究以个人在早年跟父母亲的关系中间，是怎样**形成人格**，以及成年之后，早年形成的**人格对其的影响**。
 - “人类教会了别人如何对待自己。”我们可以利用跟其他人在一起的感受，**了解这个人对我们做了什么**，以及他们人际交往的模式。
 - 人类从出生起，都需要学会很多自我保护机制。精神分析的主要内容之一就是研究人类如何**保护自己**。
 
 精神分析的**发展历程**？
-
 - 弗洛伊德是精神分析的创始人和初学者。
 - 从生物学角度定义了一个人为什么活着，即人类活着从事各种活动的动力的来自什么，即**力比多和攻击驱力的满足**。
 - 由于过于偏向生物学视角，许多弟子反对弗洛伊德，如荣格、弗洛姆。他们认为人活着是为了满足关系的需要。
@@ -344,42 +332,34 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 - 克莱因提出了**现代精神分析的客体关系理论**，成为了经典精神分析与现代精神分析的分水岭。
 
 **力比多**（libido）？
-
 - 即性驱力，这里不是指生殖意义上的性，而是泛指**创造、愉快、亲密、温暖……等美好的感受**。
 
 **攻击驱力**？
-
 - 具有对他人有意挑衅、侵犯或对事物的有意损毁、破坏等心理倾向和行为。泛指**竞争、追求卓越、自我攻击、毁坏他人、破坏社会……”等意愿**。
 - 攻击是用来掩盖亲密的，害怕距离过近，以致彼此双方都消失自我边界，所以需要攻击。
 
 **关系**？
-
 - 客体关系理论认为，人活着是为了寻找跟他人的链接。
 - 实验研究显示：早年被父母强烈忽略的人在成年之后，会有莫名其妙的全身疼痛或者某个部位疼痛，仿佛被打，虚拟了一个糟糕的关系。精神分析的定律为：**再糟糕的关系也比没有关系好**。
 
 克莱因的关系理论与弗洛伊德的驱力理论冲突吗？
-
 - 现代精神分析理论家倾向于整合二者。在生物学角度采用驱力理论，在社会化角度采用关系理论。
 
 精神分析的**四个驱力**：力比多、攻击性、关系、自恋（精神分析最基础的一级词汇）
 
 精神分析区分出的**三类人**：严重的精神病、人格障碍、神经症（即正常人）。
-
 - 这是一个连续谱，没有严格界限。
 - 边缘性人格障碍即处于人格障碍和精神分裂症之间。
 - 精神分裂和人格障碍的本质区别是是否能区分现实和幻想。
 
 正常人为何被视为神经症？
-
 1. 只要有神经质性冲突，即为神经症状态。
 2. 神经质性冲突，即俄狄浦斯冲突，主要有三类：生和死，男和女，成功和惩罚。
 
 精神分析的价值？
-
 - 育儿学、人格鉴赏学、认识人性、认识自己
 
 精神分析的特点？
-
 - 因果论观点。认为同年的经历决定人的性格。关键理论：移情、强迫性重复。
 - 把意识分成不同层面，并研究潜意识（Unconsciousness）层面的东西。
 
@@ -394,24 +374,20 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 ### 早年核心人格的形成
 
 人类的核心人格形成于非常早期：
-
 - 弗洛伊德认为，6 岁时人的中枢神经发育完全。即“6 岁之后没有新鲜事”
 - 克莱因和科胡特等人认为，核心人格在前语言期（两岁以前）就已经确定了。后续则改为 18 个月、4-6 个月就完成了心理整合。
 
 自闭状态：初生至一个月。处于原始的、虚幻的无指向的状态。这是原始的自恋状态，基本上没有客体指向。
-
 - 如果在此阶段发育受损，则无法脱离自恋的壳，即“儿童孤独症”。
 - 即使早年良好的父母和孩子的关系使孩子形成健康的核心人格，以后的阶段中出现重大创伤，会退行到早年。
 
 俄狄浦斯冲突主要研究：对成功的渴望，以及潜意识里面对成功后可能面临惩罚的恐惧。
 
 【案例】用嘴体现攻击性的行为：唠叨，如父母对孩子。
-
 - 这是因为他们的力比多的表达停留在口欲期（力比多和攻击性同时出现）。
 - 他们跟世界的链接通过嘴巴，唠叨实际上使用语言对他人进行心理强奸。
 
 【案例】游戏成瘾者：
-
 - 孩子可以通过多种方式表达内心强大的攻击性，如学习成绩、打架。打游戏是一种高级别的攻击性的表达。
 - 游戏成瘾者无法生活自理，他们被老师、父母过度攻击后，把游戏当成了自己的避难所。电子游戏在当代社会具有拯救孩子、避免精神病的作用。有高度的保护孩子的作用。
 
@@ -422,48 +398,39 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 抑郁症、焦虑症、强迫症，在精神分析学说中，区别是其**防御族不同**（心理防御的重点不同）。
 
 **抑郁症**的特点：
-
 1. 抑郁症与**攻击性的逆转**有关系。如果早年的攻击性无法向外转向，变成攻击自己，则变为抑郁症。
 2. **过于强大的超我**，自我不够强大，不能调整超我与本我的冲突，导致恶性自恋。最高级别的自恋就是自杀，攻击完全无法向外。
    - 抑郁症是处于对自我的爱中，是自恋的典型表现。
 3. **自我边界不清晰**，没有足够好的防御保护自己，容易使外界的事物进入内心。
 
 **强迫症**的发病机理：
-
 - 首先是攻击性和力比多的压抑。
 - 强迫行为是一种隔离的行为，是一种“仪式”行为，用来“隔离情感”。以避免再发生更糟糕的事情。
 - 强迫症表现为对自己的不接纳，或者将对自己的不接纳投射出去，变为对他人的不接纳。
 
 【案例】不断洗手的强迫症：
-
 - 洗手代表对自己的道德堕落的不接纳。
 
 **恐怖症**：恐惧是对热爱的掩饰。
-
 - 来访者通常有阻抗或者抵抗，治疗师需要对其的阻抗进行支持。
 
 恐惧与婴儿的强力**控制**：
-
 - 婴儿通过无助，强大地控制了母亲，而且这生死攸关。
 - 这些*控制欲会隐藏到没有成长好的人格中*，他需要在社交关系中控制他人，以缓解自己的恐惧。
 
 **玩弄恐惧**：人处在高度恐惧中，但又不被吓死。
-
 - 如吃辣，实际上是在体会婴儿般的无所不能的（控制力）。
 - 人类的挑战行为，就是在考验自己的无所不能。
 
 **焦虑症**
-
 - 原始焦虑：担心自身的破碎，_担心自己的边界被突破_，一般处于精神分裂或者人格障碍水平。这来自于几个月大时，幻想自己消失、母亲消失，却没有和母亲建立良好的关系。
 - 成熟的焦虑：害怕丧失客体或者客体之爱。神经质性焦虑，是正常的。
 - 从这个角度说，完全没有焦虑的、所谓人本主义说自我实现了人，会丧失创造和生活的活力。人不能追求过度的健康。
 
 精神分析关于成长的研究：**哀伤**
-
 - 每一步成长都跟哀伤在一起，成长的力量或能力直接等同于哀伤的能力。这种能力用以解决成长中的步步危机。
 
 **情感**分为两个部分：一个是感受，另外一个是跟这个感受捆绑的认知。
-
 - 抑郁情绪：糟糕的感觉，并认知糟糕的事情*已经*发生。
 - 恐惧情绪：糟糕的情绪，并认知糟糕的事情*正在*发生。
 - 焦虑情绪：糟糕的感觉，并认知糟糕的事情*将要*发生。
@@ -471,7 +438,6 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 - 高度合理化、情感隔离：无感觉，有认知
 
 不恰当的情绪：
-
 1. 对糟糕情绪的**过度反映**。但糟糕情绪，实际上是对人类的保护，使人类能回避危险。
 2. 另外一种是**对情绪的情绪**。对糟糕情绪的接纳本身，就是成长的标志。
    - 许多人失去了哀伤的能力，反倒变成病理性哀伤。如亲人去世，他们感觉不到哀伤，但不断回忆、收集亲人的物件，这就是确定的处在病理性抑郁中间。哀伤的时间过长、过重，即抑郁症，需要做心理治疗干预。
@@ -480,13 +446,11 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 ### 精神分析的心理治疗
 
 疾病是如何产生的？
-
 - 一个人的疾病来自他的力比多和攻击性投注和投注的方向出现问题。比如母亲缺乏、母亲回应不恰当（没有形成良好的客体关系）。此时，孩子的投注会变成物品，变成了恋物癖；或者投注自己，形成病理性自恋。
 
 成年时经历创伤性事件（诱发因素），然后发病。首次发病可以理解为童年创伤的延迟性冲突。
 
 **治疗**：
-
 - 其治疗应为其建立健康的人格。
 - 治疗中，来访者不可避免地把早年和父母的关系，转移为和治疗师的关系，即“移情”。**当下关系即是过去关系的重现**。治疗师的任务是，在来访者退行的情况下，回到童年，重新经历一次正确的童年。
   - 这个重构不是在现实中改变与父母的关系，而是重构他内化的的、对他人格有决定性影响的关系。
@@ -501,22 +465,18 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 ### 父母与孩子的冲突
 
 关于学习：
-
 - 正常教育被逼迫学习的时间，是被浪费的、遭受虐待的时间。
 - 享受学习的快乐，即在学习中能够享受攻击性和性驱力的满足。
 
 孩子的**两难冲突**：
-
 - 两个成年人的冲突会内化成孩子的内心冲突。
 - 观点的冲突从来不会导致伤害。情感和感情的冲突才会。
 
 **评论即限定**：人的一生都是一种**被催眠**的过程，如果小时候就被催眠成乖、顺从的孩子或者不乖、调皮的孩子，他就会向这个方向发展。分析师的任务是像温尼科特一样给孩子**抱持性环境**（holding environment），尽可能的**不被评论**（不被暗示），被评论就是被限定。
-
 - 一个人越是理解自己如何被早年所限定，越不会被早年所限定（背叛即成长）。
 - 马斯洛：“我们除了被过去限定之外，还有此时此刻改变自己的雄心壮志。”切断过去，从现在开始，让自己的人格有更大的成长。
 
 【案例】跨性别认同导致肥胖、成绩差、混迹女性社交群体：
-
 - 肥胖既是力比多的压抑，又是攻击性的压抑。
 - 成绩差是压抑自己的攻击性，避免自己攻击别人，显示自己在竞争中的一贯失败。
 - 只有精神上完全被阉割的人才能正常出入于女孩群体中而没有焦虑。正常的南海因为性的焦虑会有意回避女孩。逃避与男孩玩，也是避免与男孩进行体力和智力的竞争。
@@ -524,36 +484,29 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 ### 移情与反移情
 
 **移情**（transference），转移关系，将过去的客体关系转移到当下的关系之中。
-
 - 移情等于对时间的错误。来访者在童年对于一个客体（尤指父母）的情感，在治疗中转移给了治疗师。
 
 **反移情**（couter-transference），是被移情者勾起来（被刺激出）、治疗师所产生的“反应”。
-
 - 治疗师本身会对来访者产生自己的移情，以及反移情两种情感。
 - 好的治疗师，就像一面镜子。治疗师把自己的移情部分解决的越多，治疗师反射的部分就越大。
 
 【案例】一些人内心里有无法言说的痛苦，无人能理解。所以他们为了让自己的痛苦能被感知，所以去在人际关系中施加痛苦。（防御机制：投射性认同）
-
 - 退行到早年关系，即相当于婴儿通过让母亲肚子饿，知道自己肚子饿。
 
 治疗师应该帮助来访者：
-
 - 回忆既往生活史；
 - 理解在所有处境中的个人反应。
 
 掌握并理解**反移情是治疗的关键**。来访者在治疗中，会将早年形成的关系（通常是父母）潜意识地转移向治疗师，来访者都是以早年的心灵状态与治疗师接触。
-
 - 治疗师判断与来访者交流的心灵深度，可以用时间的深度判断。
 - 治疗师先**感受**自己跟病人在一起时的感受，然后再推导导致自己有此感受的病人的病因。治疗师永远要先考虑，在来访者面前是什么感觉？有什么想法？做了什么所谓错误的事情？
   > 利用反移情：我不管你是谁，我首先管我在你面前我是谁。我通过在你面前我是谁的这种感觉，我就知道了你是谁。
 
 反移情有两种：互补性，一致性。
-
 - 互补性：治疗师跟病人的关系中，治疗师感受到病人的原始客体（父母）对病人的感受，并向病人的原始客体一样的不恰当的对待病人。此时需要寻找一致性反移情。
 - 一致性：理解（代入）移情者的处境，共情了。
 
 对于反移情的处理。治疗师应该：
-
 - 对自己的心理发展及生活事件保持清醒的头脑；
 - 不要把来访者的感情往自己身上揽；
 - 不要让反移情见诸行动；
@@ -563,14 +516,12 @@ As we conclude this critical review, we recognize that psychoanalysis itself con
 - 当体验到互补性的反移情时，要寻找一致性的反移情。
 
 心理治疗的四个过程：
-
 1. 小时候曾经被不恰当对待，形成有问题的人格；
 2. 试图改变，找心理医生，希望被恰当对待；
 3. 在治疗关系中，潜意识会**诱导**心理医生像自己的父母或者其他人一样不恰当的对待自己；（移情）
 4. 心理医生要顶住被诱导出不恰当地对待病人的压力，坚决不要不恰当地对待病人。（处理反移情）
 
 **理智是对情感的防御**：
-
 - 内心情感过于丰富的人，因其害怕这类情感，所以会倾向于非常遵从理智。
 
 ### 口欲期、肛欲期、俄狄浦斯期

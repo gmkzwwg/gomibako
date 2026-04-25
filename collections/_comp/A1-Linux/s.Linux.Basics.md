@@ -116,7 +116,6 @@ A typical output looks like this:
 ```
 
 This means:
-
 * `.` is the current directory
 * `src` and `tests` are subdirectories
 * indentation shows hierarchy
@@ -124,7 +123,6 @@ This means:
 * `└──` means this is the last entry at that level
 
 **Most useful commands to learn first**
-
 1. Show only a few levels
 
 ```bash
@@ -132,7 +130,6 @@ tree -L 2
 ```
 
 This is one of the most practical forms. Large folders become unreadable if every level is printed. `-L 2` means: only show two levels deep.
-
 1. Show directories only
 
 ```bash
@@ -140,7 +137,6 @@ tree -d
 ```
 
 This is useful when the goal is to understand the structure of a project, not every single file.
-
 1. Include hidden files
 
 ```bash
@@ -148,7 +144,6 @@ tree -a
 ```
 
 By default, hidden names such as `.git`, `.env`, and `.bashrc` are not shown. `-a` includes them.
-
 1. Ignore noisy folders
 
 ```bash
@@ -156,7 +151,6 @@ tree -I "node_modules|.git|dist"
 ```
 
 This is extremely common. `-I` excludes names that match the pattern. It is often used to hide build folders, dependency folders, cache folders, and Git metadata.
-
 1. Show only certain files
 
 ```bash
@@ -164,7 +158,6 @@ tree -P "*.py"
 ```
 
 `-P` keeps only names matching the pattern. This is useful for locating all Python files, Markdown files, shell scripts, and so on.
-
 1. Show full paths
 
 ```bash
@@ -222,7 +215,6 @@ tree -L 3 -I ".git|node_modules|venv" -o structure.txt
 **How to think about the command**
 
 A simple way to remember `tree` is to divide options into four groups:
-
 * scope: where and how deep to look
 * filter: what to include or exclude
 * display: how much detail to print
@@ -241,7 +233,6 @@ tree ~/project -L 3 -I ".git|node_modules|__pycache__" -a
 ```
 
 This means:
-
 * inspect `~/project`
 * go three levels deep
 * exclude common noisy directories
@@ -322,7 +313,6 @@ sudo pacman -S tree
 | `--version` | Show version | none | Prints the installed version of `tree`. |
 
 **Common mistakes and easily confused points**
-
 * `-P` means include matching names, while `-I` means exclude matching names.
 * `-h` is most useful together with `-s`; by itself it does not make much sense.
 * `-L` limits depth, not the total number of files.
@@ -624,7 +614,6 @@ command | xargs [options] [command]
 | `echo "path1 path2" | xargs -L 1 mkdir`           | Create directories for each path listed, one `mkdir` per line.       |
 
 #### Advanced Tips
-
 - **Parallel Execution**: Use `--max-procs` for parallel processing:
   ```bash
   cat urls.txt | xargs --max-procs=4 wget
@@ -637,40 +626,34 @@ command | xargs [options] [command]
 This cheatsheet provides a quick reference to `xargs` for handling multiple arguments efficiently!
 
 Here are some advanced `xargs` tips that help leverage its full power:
-
 1. **Limit Arguments per Command Execution**
    * Using `-n` and `-L` together allows you to control the number of arguments and lines, creating more flexibility in splitting tasks.
    ```bash
    cat large_list.txt | xargs -n 5 -L 2 echo
    ```
    This command processes 5 arguments at a time, but reads 2 lines per command invocation.
-
 2. **Execute Commands in Parallel with Output Ordering**
    * `xargs` with `--max-procs` runs commands in parallel but can have mixed output. Combine with `wait` or use output redirection to maintain order.
    ```bash
    cat urls.txt | xargs -n 1 -P 4 -I {} sh -c 'wget {} -O {}.html && echo "Downloaded {}"'
    ```
    Here, 4 downloads run in parallel with the downloaded filenames ordered correctly.
-
 3. **Avoid Errors with Filenames Containing Spaces or Special Characters**
    * When working with files with spaces, use `-print0` in `find` and `-0` in `xargs` to handle special characters safely.
    ```bash
    find /path -name "*.txt" -print0 | xargs -0 grep 'pattern'
    ```
-
 4. **Pipe Command Output to `xargs` as Input for Other Commands**
    * Chain `xargs` with multiple commands to perform compound operations.
    ```bash
    cat list.txt | xargs -I {} sh -c 'echo "Processing {}" && grep "keyword" {} && echo "Done with {}"'
    ```
    This executes `echo`, `grep`, and another `echo` for each item in `list.txt`.
-
 5. **Control Command Failure with `xargs` and `||`**
    * Set up a fallback command to handle failed executions using `||`.
    ```bash
    cat files.txt | xargs -I {} sh -c 'cp {} /backup || echo "Failed to copy {}"'
    ```
-
 6. **Batch Process Files in Chunks**
    * Sometimes you want to process files in batches (e.g., 10 at a time). Use `-n` for chunking and a loop for multi-batch processing.
    ```bash
@@ -679,25 +662,21 @@ Here are some advanced `xargs` tips that help leverage its full power:
        # Replace with actual command
    done
    ```
-
 7. **Run Interactive Commands Using `xargs`**
    * For commands that need interaction (like `rm -i`), combine `xargs` with `-p` for user confirmation:
    ```bash
    ls *.tmp | xargs -p rm
    ```
-
 8. **Capture Standard Error and Redirect Outputs Separately**
    * To handle errors or redirect specific outputs, redirect `stderr` to a log while still displaying `stdout`.
    ```bash
    cat files.txt | xargs -I {} sh -c 'cp {} /backup 2>>error.log'
    ```
-
 9. **Use `xargs` with `rsync` or `scp` for Remote Operations**
    * Sync or copy multiple files to a remote server using `xargs`.
    ```bash
    cat files.txt | xargs -I {} rsync -av {} user@remote:/destination/
    ```
-
 10. **Process Command Substitution with `xargs`**
 * Use command substitution to pass `xargs` output to another command inline.
    ```bash

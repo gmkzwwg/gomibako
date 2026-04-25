@@ -40,11 +40,9 @@ subclass: History
   - Thales is usually named the inaugurator of `natural philosophy`.
 
 <!--THILLY ## Ancient philosophy (6c BC  - 1c AD)
-
 * Starts at nature, turns to human beings.
 
 ### Pre-Socratic Philosophy
-
 * Features: naturalistic, hylozoistic, ontological, mainly monistic, dogmatic.
 * Two interdependent problem: *substance* and *change*.
 
@@ -96,7 +94,6 @@ subclass: History
 * Being is infinite in both time and space.
 
 **ELEMENTALISM**: quality
-
 * Reveal that absolute creation or destruction is impossible - nothing can arise or disappear.
 * Try to *reconcile* [ˈrekənˌsaɪl] the static and the dynamic views of the world.
 
@@ -113,7 +110,6 @@ Anaxagoras, [ˌænækˈsæɡərəs], c. 500 - c. 428 BC.
 * *Atomism*: atoms are simple and indivisible, deffering from one another solely in quantitative. Motion is an intrinsic property of the atoms. Subject to mechanical law.
 
 ### Sophists and Socrates
-
 * Focus on human knowledge and conduct.
 * Sophist - skeptism, relativism.
 
@@ -134,7 +130,6 @@ Anaxagoras, [ˌænækˈsæɡərəs], c. 500 - c. 428 BC.
 
 
 ### Plato and Aristotle
-
 * Metaphisical problem - reality.
 * Humanistic problem - man's knowledge, conduct and place in the worldorder.
 
@@ -226,7 +221,6 @@ By the 21st century, the Presocratics remain focal for understanding philosophy�
 Contemporary scholarship uses the Presocratics both to trace conceptual lineages (e.g. monism in metaphysics, scientific explanation) and to explore historiography (how ancient ideas are filtered through Plato, Aristotle, etc.)【21†L97-L105】. Key recent developments include critical editions of fragments and interdisciplinary studies (e.g. the Derveni Papyrus linking Presocratic themes with Orphism). We should approach Pre-Socratic thought with both respect for its originality and caution about our reconstructions: our picture remains provisional, built from scattered shards. Nevertheless, by synthesizing these fragments, we can still glean a remarkably coherent vision: the first philosophers dared to explain the world without gods, seeking rational principles by which to understand all. 
 
 ## Further Reading (Select Annotated Bibliography)  
-
 - **Kirk, Raven, and Schofield (1983, 1988)** – *The Presocratic Philosophers*. The standard comprehensive source, translating all fragments with commentary. A classic reference for authentic quotes.  
 - **Barnes (1982)** – *The Presocratic Philosophers*. Thorough analysis of Presocratic thought, often cited for its historical approach.  
 - **Graham (2019)** – *Explaining the Cosmos: The Ionian Tradition of Scientific Philosophy*. A modern reevaluation of the Milesians and their intellectual milieu.  

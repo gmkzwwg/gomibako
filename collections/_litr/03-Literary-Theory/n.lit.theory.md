@@ -21,7 +21,6 @@ Literary Theory is the `practice` of theoretical, methodological, and sociologic
 Since around the turn of the century literary studies has turned against the “high theory” moment of the previous three decades, and more generally against its privileged model of textuality or of cultural or linguistic mediation. It has also been marked by a structural reaction against the dominance of the US academy and toward a recognition of “world” literature. The effect of these shifts has been the development of new forms of engagement with theory: a new pragmatism; ethical criticism; affect theory; the critique of critique; the “new materialism”; the rise of ever more fine-grained forms of identity politics; the rise of new models of formalism and new models of political engagement; and a return to or reinvention of poetics or rhetoric.[^orel]
 
 #### The similarity between Literary Theory and philosophy
-
 - Asking fundamental questions.
 - Building systems.
 - Focus on Human Experience.
@@ -48,7 +47,6 @@ Formal definitions of literature from various perspectives:
    - Example: "Literature is a critical exploration of life’s deepest truths, offering readers a lens through which to examine their existence." – Jean-Paul Sartre.
 
 **Postmodern Perspective**: 
-   
    - Literature is seen as a construct, deconstructing traditional narratives, questioning the nature of truth, and often blending genres and styles to challenge conventional boundaries.
    - Example: "Literature is not a fixed form but a dynamic process, challenging readers to rethink preconceived notions about reality and meaning." – Jacques Derrida.
 
@@ -102,7 +100,6 @@ Difference:
 In the classical era, people believed that they could directly possess reason and directly understand things themselves. Texts  are able to straightforwardly describe nature, mind, emotion, truth and human beings.
 
 **Modernity and skepticism**: consciousness is not real, the feeling of alive no longer involves angecy. The things we can do are limited, and this limitation arises from the way consciousness is determined in ways we cannot control or transcend.
-
    1. **Descartes**: *the distance between the mind and the things exists*, which is benificial for cognition.
    2. **Kant**: *the thing in itself cannot be known by people*, but we can sort of triangulate it and come to terms with it obliquely.
    3. **Hegel**: We have "unhappy consciousness,", which is the result of estrangement(Verfremdung), and which drives us too far away from the thing that we're looking at. We are no longer certain at all of what we're looking at. It's also that *consciousness is alienated from its own underpinnings, that it doesn't have any clear sense of where it's coming from*.

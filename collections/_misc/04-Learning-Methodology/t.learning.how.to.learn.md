@@ -7,7 +7,6 @@ subclass: Learning-Methodology
 <details>
 <summary><strong>Table of Contents</strong> (click to expand)</summary>
 <div markdown=1>
-
 - [Basics](#basics)
 - [Chunks](#chunks)
 - [Transcript - Learning How to Learn](#transcript---learning-how-to-learn)

@@ -38,7 +38,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 1. **Mythos to Logos (Ancient Greece, \~6th century BCE)**
 
 **Shift**: From mythological explanations of the cosmos to rational inquiry.
-
 * **Key Figures**: Thales, Anaximander, Heraclitus, Pythagoras
 * **Transformation**: Natural phenomena were no longer explained by gods and myths but through reasoned argument and observation.
 * **Significance**: Birth of **natural philosophy** and the **principle of sufficient reason**—a foundational moment for all Western philosophical inquiry.
@@ -48,7 +47,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 2. **Socratic Turn (5th–4th century BCE)**
 
 **Shift**: From cosmology to ethics and human-centered inquiry.
-
 * **Key Figures**: Socrates, Plato, Aristotle
 * **Transformation**: Emphasis moved from understanding the universe to understanding the self, virtue, and the good life.
 * **Significance**: Philosophy became reflective, dialogical, and normative; introduced dialectics and systematic logic.
@@ -58,7 +56,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 3. **Medieval Integration of Theology and Philosophy (\~4th–13th century CE)**
 
 **Shift**: Synthesis of Christian (and later Islamic and Jewish) theology with classical philosophy.
-
 * **Key Figures**: Augustine, Aquinas, Avicenna, Maimonides
 * **Transformation**: Use of reason to defend and elaborate religious doctrine; emphasis on metaphysics and divine order.
 * **Significance**: Created Scholasticism—rigorous logical systematization of faith; also introduced the problem of **faith vs. reason**.
@@ -68,7 +65,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 4. **Renaissance Humanism and the Rebirth of Secular Inquiry (14th–16th century)**
 
 **Shift**: Revival of classical texts and emphasis on human dignity, empirical inquiry, and individual reason.
-
 * **Key Figures**: Erasmus, Pico della Mirandola, Machiavelli
 * **Transformation**: Decline of theological dominance; reorientation toward political, moral, and aesthetic life in this world.
 * **Significance**: Paved the way for modern science, critical thinking, and secular philosophy.
@@ -78,7 +74,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 5. **Rationalism and Empiricism (17th–18th century)**
 
 **Shift**: Emergence of epistemology as central problem; split between rational deduction and sensory experience.
-
 * **Key Figures**: Descartes, Spinoza, Leibniz (rationalists); Locke, Berkeley, Hume (empiricists)
 * **Transformation**: Reframing philosophy around the **conditions of knowledge** rather than metaphysical systems.
 * **Significance**: Set stage for **Kantian synthesis** and **modern epistemology**.
@@ -88,7 +83,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 6. **Kantian Revolution (Late 18th century)**
 
 **Shift**: From metaphysical realism to **transcendental idealism**.
-
 * **Key Figure**: Immanuel Kant
 * **Transformation**: Claimed the mind plays an active role in shaping experience; knowledge is structured by **categories of understanding**.
 * **Significance**: Created modern epistemology; shifted philosophy toward **conditions of possibility for experience**.
@@ -98,7 +92,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 7. **German Idealism to Existentialism (19th–20th century)**
 
 **Shift**: From abstract system-building to focus on human freedom, subjectivity, and lived experience.
-
 * **Key Figures**: Hegel, Schopenhauer → Kierkegaard, Nietzsche, Heidegger, Sartre
 * **Transformation**: Emphasis on alienation, will, authenticity, and existential anxiety.
 * **Significance**: Responded to mechanistic science and Enlightenment optimism with more **phenomenological and existential** concerns.
@@ -108,7 +101,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 8. **Linguistic Turn (Early–Mid 20th century)**
 
 **Shift**: From consciousness and metaphysics to **language** as the medium of thought and meaning.
-
 * **Key Figures**: Frege, Wittgenstein, Russell, Austin, Quine
 * **Transformation**: Language seen as central to philosophical problems; logic and ordinary language analysis became dominant.
 * **Significance**: Redefined philosophy’s method and scope, especially in analytic tradition.
@@ -118,7 +110,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 9. **Post-Structuralism and Critical Theory (Mid–Late 20th century)**
 
 **Shift**: From structural universals to **power, discourse, and historicity**.
-
 * **Key Figures**: Foucault, Derrida, Adorno, Habermas, Butler
 * **Transformation**: Critique of Enlightenment reason, subjectivity, and metaphysical binaries; focus on social constructs and marginal voices.
 * **Significance**: Deepened philosophical attention to **ideology, language, gender, race, and institutional power**.
@@ -128,7 +119,6 @@ Here is a professional, systematic list of major **paradigm shifts in the histor
 ### 10. **Pragmatic and Interdisciplinary Turns (Late 20th–21st century)**
 
 **Shift**: From foundationalism to **practice-oriented, pluralistic, and interdisciplinary** approaches.
-
 * **Key Figures**: Dewey, Rorty, Putnam, Nussbaum, Latour
 * **Transformation**: Emphasis on philosophy's role in democratic life, practical consequences, and entanglement with science, technology, and ethics.
 * **Significance**: Reoriented philosophy toward **public engagement**, ethics, applied problems, and **global perspectives**.
@@ -156,7 +146,6 @@ Below is a concise—but academically rigorous—tour of the pivotal *paradigm s
 | **12** | **Global & Decolonial Re-Orientation (21st century)**                           | Critique of Eurocentrism, recovery of non-Western traditions (African Sage, Confucian revival, Amerindian relational ontology).                                                         | *Epistemic pluralism and intercultural dialogue reshape canonical boundaries; *philosophy* becomes a comparative practice sensitive to power, identity, and locality.*                          |
 
 ### Professional Observations
-
 1. **Methodological realignment is the common denominator.**  Each shift redefines *how* arguments are to be made—mythic narrative → dialectic, Scripture → reason, language → formal logic, local experience → global pluralism.
 2. **Institutional catalysts matter.**  The rise of the medieval university, the printing press, 19th-century research seminar, and today’s transnational networks structured which questions could even be asked.
 3. **Paradigms overlap rather than simply replace.**  Medieval metaphysics co-exists with Kantian critique; analytic precision now negotiates with phenomenological description and decolonial critique.

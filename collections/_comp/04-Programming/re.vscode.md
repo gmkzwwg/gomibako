@@ -1,7 +1,6 @@
 
 
 ## 使用技巧
-
 * 关注VS Code的更新文档
 * 关注扩展市场，活用扩展增加工作效率
 * 仔细查看官方文档
@@ -9,12 +8,10 @@
 * VS Code对Git的支持非常好，配合插件开发体验极佳
 
 ## 插件
-
 * **美化**
   * Material Theme: 高对比度主题
   * Background: 背景美化
 * **通用**
-
 * Auto Rename Tag: 标签自动重命名
 * Auto Close Tag: 自动生成闭合标签
 * Prettier Formatter: 代码格式化插件。(F1输入form格式化代码。)
@@ -37,30 +34,25 @@
 * vscode-pdf: 在VSC中显示pdf文件。
 
 **HTML**
-
 * Color Highlight: 颜色预览
 * HTML CSS Support: 增加.html中css的代码补全，可以手动增加配置文件来增加外部css中的class补全。详情见插件说明。
 * Debugger for Chrome:方便js调试的插件，前端项目在Chrome中运行起来之后，可以直接在VSCode中打断点、查看输出、查看控制台，需要配置launch.json,详情见插件说明。
 * Color Picker: 可以直接在编辑器里打开色板，选择各种模式的颜色。
 
 **Git**
-
 * Git History: 输入 git log有惊喜。
 * Git Lens: 加强 Vs Code 本身的
 
 **Python**
-
 * Python (by Microsoft): 支持使用pylint分析代码，debug，IntelliSense，代码迁移，代码重构，单元测试，Python Snippets。（需要使用pip安装pylint）
 * Python Docstring: 快速生成docstring。
 * Better Comments: 生成更易读的注释。也可将注解分为:Alert, Query, TODO, Highlight四类。
 * Trailing Spaces: 将尾部的空格高亮显示，并且可以一键删除。
 
 **Javascript**
-
 * Document This: 注释自动生成<br>双击 Ctrl+Alt+D
 
 ## 基本操作
-
 1. 入门
 2. 自定义
 3. 扩展
@@ -79,7 +71,6 @@
 **打开命令面板**
 
 轻松找出VS Code所有可用命令。
-
 * Mac：`cmd+shift+p` or `f1`
 * Windows / Linux：`ctrl+shift+p` or `f1`
 
@@ -106,7 +97,6 @@ Windows / Linux: `ctrl+p`
 ![](https://pic4.zhimg.com/80/v2-fe3e7d680eb792e71aeb2f70d2500f34_hd.jpg)![](https://pic4.zhimg.com/v2-1c96d879b481e301c1f289cdd90fd9d5_b.gif)
 
 **命令行参数**
-
 * Linux: Follow instructions [here](https://link.zhihu.com/?target=http%3A//code.visualstudio.com/docs/editor/setup%23_linux).
 * Windows: Follow instructions [here](https://link.zhihu.com/?target=http%3A//code.visualstudio.com/docs/editor/setup%23_windows).
 * Mac: see below.
@@ -136,7 +126,6 @@ code --help
 工作区文件夹在 **.vscode** 中，比如任务运行是 **tasks.json**，检查漏洞是 **launch.json**。
 
 **状态栏效果**
-
 * 错误和警告
 * Mac: `shift+cmd+m`* Windows / Linux: `ctrl+shift+m`
 
@@ -151,7 +140,6 @@ code --help
 ![](https://pic1.zhimg.com/80/v2-d6389a208a8ae267da6d69977b6183e0_hd.gif)
 
 **更改语言模式**
-
 * Mac: `cmd+k` `m`
 * Windows / Linux: `ctrl+k` `m`
 ![](https://pic4.zhimg.com/v2-9a9d769b4babd4d960f85ed020addcf5_b.gif）
@@ -163,7 +151,6 @@ code --help
 **设置编辑器**
 
 打开settings.json。
-
 * Mac: `cmd+,`
 * Windows / Linux: File -&gt; Preferences -&gt; User Settings
 
@@ -242,7 +229,6 @@ _忽略文件/文件夹_
 **贡献点**
 
 参考：[<span class="invisible">http://</span><span class="visible">code.visualstudio.com/d</span><span class="invisible">ocs/extensionAPI/extension-points</span><span class="ellipsis"></span>](https://link.zhihu.com/?target=http%3A//code.visualstudio.com/docs/extensionAPI/extension-points)
-
 * 配置
 * 命令
 * 快捷键
@@ -254,7 +240,6 @@ _忽略文件/文件夹_
 * json验证
 
 **找到扩展**
-
 1.  官方VS Code市场；
 2.  搜索产品（见下文）；
 3.  浏览扩展推荐（见下文）；
@@ -305,31 +290,26 @@ files.autoSave": "afterDelay"
 ```
 
 **开启侧边栏**
-
 * Mac: `cmd+b`
 * Windows / Linux: `ctrl+b`![](https://pic2.zhimg.com/v2-483e6b27f1df72d0ccdc7d0e10dd2220_b.gif)
 
 **分割（Side by side）编辑**
-
 * Mac: `cmd+\` or `cmd` then click a file from the file browser.
 * Windows / Linux: `ctrl+\`* Linux: `ctrl+2`
 
 ![](https://pic3.zhimg.com/v2-0d8606d3ce00f93633eabba4ee667c50_b.gif)
 
 **编辑器切换**
-
 * Mac: `cmd+1`, `cmd+2`, `cmd+3`
 * Windows / Linux: `ctrl+1`, `ctrl+2`, `ctrl+3`
 
 ![](https://pic3.zhimg.com/v2-c77d80dc10f1016f0e691745112ce51d_b.gif)
 
 **切换到资源管理器窗口（explorer window）**
-
 * Mac: **cmd+shift+e**
 * Windows / Linux: **ctrl+shift+e**
 
 **关闭当前文件夹**
-
 * Linux: `ctrl+k` `f`
 
 **历史**
@@ -337,19 +317,16 @@ files.autoSave": "afterDelay"
 用`ctrl+tab`来浏览历史
 
 **向后浏览：**
-
 * Mac: `ctrl+-`
 * Windows / Linux: `alt+left`
 
 **向前浏览：**
-
 * Mac: `ctrl+shift+up`
 * Windows / Linux: `alt+right`
 
 ![](https://pic4.zhimg.com/v2-50bd0d44e7822e80d100efea07b69f37_b.gif)
 
 **打开文件**
-
 * Mac: `cmd+e` or `cmd+p`
 * Windows / Linux: `ctrl+e` or `ctrl+p`
 
@@ -369,7 +346,6 @@ files.autoSave": "afterDelay"
 **括号匹配**
 
 更多内容请参考：[<span class="invisible">http://</span><span class="visible">code.visualstudio.com/d</span><span class="invisible">ocs/editor/editingevolved</span><span class="ellipsis"></span>](https://link.zhihu.com/?target=http%3A//code.visualstudio.com/docs/editor/editingevolved)
-
 * Mac: `cmd+shift+\`
 * Windows / Linux: `ctrl+shift+\`
 * ![](https://pic4.zhimg.com/v2-530567e1d01d1714b80d2e3f272df214_b.gif)
@@ -377,7 +353,6 @@ files.autoSave": "afterDelay"
 **多游标选择**
 
 更多内容请参考：[<span class="invisible">http://</span><span class="visible">code.visualstudio.com/d</span><span class="invisible">ocs/editor/editingevolved</span><span class="ellipsis"></span>](https://link.zhihu.com/?target=http%3A//code.visualstudio.com/docs/editor/editingevolved)
-
 * Mac: `opt+cmd+up` or `opt+cmd+down`
 * Windows: `ctrl+alt+up` or `ctrl+alt+down`
 * Linux: `alt+shift+up` or `alt+shift+down`
@@ -391,7 +366,6 @@ files.autoSave": "afterDelay"
 ![](https://pic3.zhimg.com/v2-6f6ac0a922c9496358eadadb1a76ced5_b.gif)
 
 **复制一行**
-
 * Mac: `opt+shift+up` or `opt+shift+down`
 * Windows / Linux([Issue #5363](https://link.zhihu.com/?target=https%3A//github.com/Microsoft/vscode/issues/5363)): `shift+alt+down` or `shift+alt+up`
 
@@ -400,48 +374,41 @@ files.autoSave": "afterDelay"
 **缩小/扩大选择**
 
 更多内容请参考：[<span class="invisible">http://</span><span class="visible">code.visualstudio.com/d</span><span class="invisible">ocs/editor/editingevolved</span><span class="ellipsis"></span>](https://link.zhihu.com/?target=http%3A//code.visualstudio.com/docs/editor/editingevolved)
-
 * Mac: `ctrl+shift+cmd+left` or `ctrl+shift+cmd+right`
 * Windows / Linux: `shift+alt+left` or `shift+alt+right`
 
 ![](https://pic1.zhimg.com/v2-5cf156cafe3a3763112c237dd4ddf8b1_b.gif)n></figure>
 
 **符号查找**
-
 * Mac: `cmd+shift+o`
 * Windows / Linux: `ctrl+shift+o`
 
 ![](https://pic4.zhimg.com/v2-907479da8bdad0f76d4f43eb126f53db_b.gif)
 
 **定位特定的一行**
-
 * Mac: `ctrl+g` or `cmd+p` `, :`* Windows / Linux: `ctrl+g`
 
 ![](https://pic4.zhimg.com/v2-373d834ea1681ec2a2e28587a1b8d81b_b.gif)
 
 **撤销游标位置**
-
 * Mac: `cmd+u`
 * Windows / Linux: `ctrl+u`
 
 ![](https://pic2.zhimg.com/v2-908aa10d9a78ff849243f83f3ca07a85_b.gif)>
 
 **上下移动一行**
-
 * Mac: `opt+up` or `opt+down`
 * Windows / Linux: `alt+up` or `alt+down`
 
 ![](https://pic2.zhimg.com/v2-1337cc0d48dd18350daffca514097580_b.gif)
 
 **修整行尾空格**
-
 * Mac: `cmd+shift+x`
 * Windows / Linux: `ctrl+shift+x`
   
 ![](https://pic2.zhimg.com/v2-8775e91ae2d8a77c93cebf85f2bc3860_b.gif)
 
 **代码格式化**
-
 * Mac: `opt+shift+f`
 * Windows / Linux: `shift+alt+f`
 
@@ -449,17 +416,14 @@ files.autoSave": "afterDelay"
 
 
 **代码折叠**
-
 * Mac: `shift+cmd+[` and `shift+cmd+]`
 * Windows / Linux: `ctrl+shift+[` and `ctrl+shift+]`![](https://pic2.zhimg.com/v2-a136700606899a79821f0b0d3a2cbf06_b.gif)
 
 **选择当前一行**
-
 * Mac: `cmd+i`
 * Windows / Linux: `ctrl+i`![](https://pic4.zhimg.com/v2-ad569606f98e79ce82fa051c95ba2fe9_b.gif)
 
 **回到文件开端/末尾**
-
 * Mac: `cmd+up` and `cmd+down`
 * Windows: `ctrl+up` and `ctrl+down`
 * Linux: `ctrl+home` and `ctrl+end`![](https://pic3.zhimg.com/v2-6b662d2301b15c57d7dcefe92e4b9c5d_b.gif)
@@ -467,14 +431,12 @@ files.autoSave": "afterDelay"
 **打开README预览**
 
 在markdown文件中使用：
-
 * Mac: `shift+cmd+v`
 * Windows / Linux: `ctrl+shift+v`![](https://pic1.zhimg.com/v2-47f3b5ec91700a82861a44e85cb55b51_b.gif)
 
 **分割（Side by Side）Markdown编辑和预览**
 
 在markdown文件中使用：
-
 * Linux: `ctrl+k v`
 
 ## 6.智能感应
@@ -637,12 +599,10 @@ Git工作流的流畅集成。
 ![](https://pic4.zhimg.com/v2-8626cb1f2176c58b609b422ae2aa7bdf_b.jpg)
 
 **Staging**
-
 * Stage所有文件
 
 一次选择多个文件，再点击加号按钮。
 ![](https://pic1.zhimg.com/v2-30397e5256377e34d14611f8557af047_b.gif)
-
 * Stage选择
 
 Stage文件一部分的方法是：使用箭头选择该文件，然后点击“more”按钮来stage“selected lines”。

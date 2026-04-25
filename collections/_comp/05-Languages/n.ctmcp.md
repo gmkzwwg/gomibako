@@ -149,7 +149,6 @@ end
 ```
 ### 1.11 数据流
 > aesthetic 美学的；radically 彻底地
-
 1. pAdding threads and delays to a program can radically change a program’s appearance. But as long as the same operations are invoked with the same arguments, it does not change the program’s results at all. This is the key property of dataflow
 concurrency.（covered in chapter 4)
 ### 1.12 显式状态
@@ -210,7 +209,6 @@ end
 
 ### 1.16 原子性
 > Atomicity 原子性；interleave 交错
-
 1. Programming with atomic actions is covered in chapter 8.
 2. Lock: only one thread at a time can be executing INSIDE.
 ```
@@ -231,7 +229,6 @@ thread
 end
 ```
 ### 1.17 下一步是什么？
-
 * Chapter 2 & 3: declarative model
 * Chapter 4: concurrent declarative model
 * Section 4.5: lazy declarative model
@@ -262,7 +259,6 @@ Programming encompasses: computation model, programming model(programming techni
 define the syntax and semantics of practical programming languages:
 
 **2.1.1 Laguage Syntax** 
-
 1. Extended Backus-Naur Form(EBNF)
 ```
 <digit> ::= 0|1|2|3|4|5|6|7|8|9

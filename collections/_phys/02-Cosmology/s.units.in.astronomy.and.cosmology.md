@@ -190,7 +190,6 @@ These are ubiquitous in data reduction but are **instrument-defined**. Conversio
 | Fluctuation amp.  | sigma-eight           | $$\sigma_8$$                    | dimensionless                                                                   | RMS in spheres of $$8,h^{-1},\mathrm{Mpc}$$                          |
 
 **Key References**
-
 * SI unit definitions (BIPM SI Brochure). ([BIPM][1])
 * IAU 2012 definition of the astronomical unit (au). ([syrte.obspm.fr][2])
 * IAU 2015 nominal solar/planet conversion constants (Resolution B3). ([arXiv][4])

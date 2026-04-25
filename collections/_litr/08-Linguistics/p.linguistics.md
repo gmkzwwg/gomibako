@@ -7,7 +7,6 @@ subclass: Linguistics
 ## Knowledge Architecture
 
 ### Core Concepts
-
 * **语言（language）**：社会约定的符号系统（conventional sign system），承担“形式—意义—情境/行动”的可重复映射。
 * **符号二元性（signifier/signified；法：signifiant/signifié）**：形式与意义的任意性与系统性耦合；结构语言学的起点（索绪尔《普通语言学教程》1916）。([Columbia University Press][1])
 * **语法（grammar）**：从有限资源生成（generate）无穷表达的机制性描述；对应“规则/约束 + 表示 + 推导/优化”三元组。
@@ -15,7 +14,6 @@ subclass: Linguistics
 * **可学习性（learnability）与可传播性（transmissibility）**：任何理论若不与习得/处理/传播相容，解释力受限。
 
 ### A Five-layer Architecture For Linguistics 语言学的“对象—表示—机制—证据—谱系”五层架构
-
 * **对象层（Phenomena layer）**
   * 形式（form）：语音/音系—形态—句法—构式
   * 意义（meaning）：词汇语义—组合语义—指称/量化—时体情态
@@ -39,7 +37,6 @@ subclass: Linguistics
 ## Core architecture: modules and dependencies (interface-centered)
 
 ### 1 The form chain and its dependencies 形式链与基本依赖
-
 * **语音学（phonetics）**：发音（articulatory）—声学（acoustic）—听觉（auditory）参数空间
   * 下游依赖：音系的对立与范畴化（categorization）
 * **音系学（phonology）**：音位对立（phonemic contrast）—特征系统（feature system）—韵律结构（prosody）
@@ -52,12 +49,10 @@ subclass: Linguistics
   * 上游约束：处理负担（processing）、信息结构（information structure）
 
 **典型依赖链（简图）**
-
 * 声学/发音 → 音系范畴 → 词形/形态 → 句法结构 → 组合语义 → 语用推理 → 篇章组织
   （同时存在“自上而下”反馈：语用/信息结构对韵律与句法选择的反向约束。）
 
 ### 2 The meaning chain and its interfaces 意义链与接口
-
 * **词汇语义（lexical semantics）**：事件结构（event structure）、角色（thematic roles）、多义/转喻
 * **形式语义（formal semantics）**：组合性（compositionality）、类型与λ演算（type theory & lambda calculus）、量化与指称
 * **动态语义（dynamic semantics）**：语境更新（context update）、指代与可及性（anaphora & accessibility）
@@ -66,12 +61,10 @@ subclass: Linguistics
   * 典型接口：句法（情态词/助动词结构）↔语义（量化域/情态基）
 
 ### 3 The use chain and inference mechanics 使用链与推理机制
-
 * **语用学（pragmatics）**：言语行为（speech acts）、含义（implicature）、预设（presupposition）、礼貌与面子（politeness/face）
 * **会话分析（conversation analysis）**：轮替组织（turn-taking）、修复（repair）、序列结构（sequence organization）
 * **篇章/信息结构（discourse & information structure）**：主题—焦点（topic/focus）、给定性（givenness）、指代链（reference tracking）
 * **推理核心（underlying mechanics）**
-
   * “编码—推断”二分：语义的编码内容 + 语用的理性推断（rational inference）
   * 语用最小模型：字面意义 + 合作原则/理性原则 → 含义推导（Grice tradition）
   * 概率化扩展：基于听话人模型与先验的推断（Bayesian pragmatics；RSA 等）
@@ -81,14 +74,12 @@ subclass: Linguistics
 结构:**核心承诺—典型表示—关键机制—依赖/对立—里程碑**。
 
 ### 1 Structuralism → distributionalism axis 结构主义—分布主义轴
-
 * **结构主义语言观（Saussurean structuralism）**：系统性对立（system of differences）、共时/历时区分（synchronic/diachronic）、langue/parole
   * 里程碑：索绪尔《普通语言学教程》1916。([Columbia University Press][1])
 * **布龙菲尔德传统（American structuralism）**：分布与切分（distribution & segmentation）、可观察性优先（methodological behaviorism）
   * 下游影响：语音/音系与形态描写范式、早期语料方法
 
 ### 2 Generativism axis: mechanism-centered syntax 生成语法轴：句法为中心的机制化理论
-
 * **生成语法（Generative Grammar）**
   * 核心承诺：显式规则系统 + 结构生成；“能力/运用”（competence/performance）区分
   * 里程碑：Chomsky《Syntactic Structures》1957（生成句法转向的标志性文本）。([维基百科][3])
@@ -100,14 +91,12 @@ subclass: Linguistics
   * 对立焦点：先天结构假设（UG）强弱、与使用/概率解释的竞争
 
 ### 3 Constraint–optimization axis: rules → constraints 约束—优化轴：从规则到约束互动
-
 * **最优性理论（Optimality Theory, OT）**
   * 核心承诺：普遍约束集（CON）+ 排序（ranking）+ 评估（EVAL）
   * 谱系依赖：生成音系的规则系统 → 约束化重写；功能压力（标记性/易发音/易感知）→ 约束来源讨论
   * 里程碑：1993 技术报告；书稿版本（Blackwell/Wiley 2004 版为常见引文锚点）。([onlinelibrary.wiley.com][4])
 
 ### 4 Functional–typological axis: communicative and processing pressures as explanation drivers 功能—类型轴：解释压力来自交际与加工
-
 * **功能语言学（functional linguistics）**：交际效率、加工可行性、信息结构驱动
 * **系统功能语言学（Systemic Functional Linguistics, Hallidayan）**：语篇功能（ideational/interpersonal/textual）分层、系统网络（system networks）
 * **语言类型学（linguistic typology）**
@@ -115,7 +104,6 @@ subclass: Linguistics
   * 依赖关系：对“强普遍语法”假设的外部约束；对语法化路径的实证支撑
 
 ### 5 Cognitive–usage axis: experience-driven representations and construction inventories 认知—使用轴：表示来自经验与构式库存
-
 * **认知语言学（cognitive linguistics）**：概念结构（conceptual structure）、图式（schemas）、原型（prototypes）
 * **构式语法（Construction Grammar）**
   * 核心承诺：构式（construction）作为形式—意义配对的基本单位；库存（inventory）与继承网络（inheritance network）
@@ -123,12 +111,10 @@ subclass: Linguistics
 * **使用基理论（usage-based）**：频率效应、分布学习、渐进抽象（gradual abstraction）
 
 ### 6 Sociolinguistics: language as a social variable system 社会—变异轴：语言作为社会变量系统
-
 * **变异社会语言学（Labovian variationism）**：变量规则（variable rules）、社会分层（stratification）、变化中的传播（change in progress）
 * **互动社会语言学/语用社会学（interactional/pragmatic sociology of language）**：身份指示（indexicality）、立场（stance）
 
 ### 7 Computational & Formal Tools 计算—形式工具轴：把理论“可执行化”
-
 * **形式语言与自动机（formal language theory）**：生成语法的计算边界；解析复杂度（parsing complexity）
 * **统计与信息论（statistics & information theory）**：预测加工（surprisal）、压缩（compression）与分布表示
 * **机器学习与表征学习（representation learning）**：分布语义、神经语言模型；对“结构显式性”提出新证据范式（同时引发可解释性争论）
@@ -185,7 +171,6 @@ subclass: Linguistics
 ### 同一现象在不同理论中的“名词化分解”
 
 **英语疑问句中的助动词前置（auxiliary inversion）**（如 *You are leaving.* → *Are you leaving?*）
-
 * **结构主义描写项**
   * 表层分布对比：陈述/疑问句型差异
   * 形式槽位（slot）与范畴标注：Aux 位置变化
@@ -206,7 +191,6 @@ subclass: Linguistics
 > **句法表示**提供可组合的结构骨架；**语义/语用**提供询问的更新语义与行动目标；**加工/频率**决定竞争形式的可得性与偏好；**社会变异**决定形式的分布与扩散速度。
 
 ## Key milestones and canonical anchors
-
 * **结构主义锚点**
   * Ferdinand de Saussure：*Cours de linguistique générale*（《普通语言学教程》）1916。([Columbia University Press][1])
 * **生成句法锚点**
@@ -247,7 +231,6 @@ Since the late 20th century, alternative approaches have gained prominence. **Ge
 Modern theoretical linguistics is typically organized by _levels of structure_ within language. Core subfields include **phonetics** (physical articulation and acoustics of speech sounds) and **phonology** (the abstract sound system of a language), **morphology** (the internal structure of words and morphemes), **syntax** (rules governing sentence structure and word order), **semantics** (principles of meaning and interpretation), and **pragmatics** (contextual meaning and language use). As one overview notes, “the fields that are generally considered the core of theoretical linguistics are phonology, morphology, syntax, and semantics” (with phonetics usually treated as foundational background). In practice, university curricula often offer courses or modules in each of these areas. For example:
 
 > 现代理论语言学通常按语言内部的_结构层级（levels of structure）_来组织。核心分支包括：**语音学（phonetics）**（言语声音的物理发音与声学属性）与**音系学（phonology）**（语言的抽象音系系统）、**形态学（morphology）**（词与语素的内部结构）、**句法学（syntax）**（支配句子结构与语序的规则）、**语义学（semantics）**（意义与解释的原则）、以及**语用学（pragmatics）**（语境中的意义与语言使用）。正如某一概述所言：“通常被认为是理论语言学核心的领域是音系学、形态学、句法学与语义学”（而语音学通常被视为更基础的背景）。在实际教学中，大学课程体系往往在这些领域分别设课或设模块。例如：
-
   *   **Phonetics:** Studies how speech sounds are produced, transmitted, and perceived (articulatory/acoustic analysis).
   > **语音学（Phonetics）**：研究言语声音如何被产生、传播与感知（发音学/声学分析）。
   *   **Phonology:** Deals with the patterns and systems of sounds (phonemes, features, rules of sound alternation). Phonology abstracts from raw acoustics to model the mental sound inventory and its organization.
@@ -266,7 +249,6 @@ These subfields interact: for instance, morphosyntax links morphology and syntax
 > 这些分支彼此交互：例如，形态句法连接形态与句法（如一致关系、语序限制），音系与形态相互作用（受语音条件制约的语素变体），语义/语用共同解释话语在语境中如何获得可理解性。（类型学、历史语言学、心理语言学与计算语言学等专门领域通常也建立在这些核心领域之上。）
 
 ### Core Concepts and Basics
-
 *   **Competence vs. Performance:** Chomsky distinguished a speaker’s _competence_ (the internalized knowledge of grammar) from _performance_ (actual language use with errors). Competence is the abstract system; performance is its real-world application. For example, speakers may fail to produce a grammatical sentence due to memory limits, but this does not change what their competence grammar allows.
 > * **能力（Competence）与表现（Performance）**：乔姆斯基区分说话者的_能力_（内化的语法知识）与_表现_（包含错误的实际语言使用）。能力是抽象系统；表现是该系统在现实世界中的应用。例如，说话者可能因记忆限制而未能产出一个语法句，但这并不改变其能力语法所允许的结构范围。    
 *   **Grammaticality:** Relatedly, linguists distinguish _grammatical_ (well-formed) sentences from _ungrammatical_ ones. Under a competence-based view, a sentence like _“That cats is eating the mouse”_ is ruled ungrammatical because English grammar requires agreement (so “cats” with plural demonstrative _those_). Grammaticality judgments are often elicited by linguists to infer the rules of competence.
@@ -492,7 +474,6 @@ Below is a compact “question → solution/argument → next question” chain 
 
 
 ## Common Pitfalls
-
 * **过度模块化幻觉**：把“音系—句法—语义—语用”当作完全单向流水线；忽略接口反馈（如信息结构对句法/韵律的反向约束）。
 * **描写充分性与解释充分性的混淆**：能覆盖数据 ≠ 给出机制；机制需要学习、加工、变异与演化的共同约束。
 * **单一证据源偏置**：只依赖语料/只依赖直觉判断/只依赖实验；跨证据一致性缺失时，理论承诺不稳。
@@ -502,7 +483,6 @@ Below is a compact “question → solution/argument → next question” chain 
 分类误区清单（“误解项 → 纠偏项 → 更佳方法项”）
 
 ### A. 对象层误区（把“语言是什么”搞错）
-
 1. 文字中心主义（orthography-centrism）
    → 口语优先性（speech primacy）与书写系统独立性
    → 音系/语音数据优先采集；转写规范训练（IPA/分段与韵律标注）
@@ -517,7 +497,6 @@ Below is a compact “question → solution/argument → next question” chain 
    → 词汇语义与句法框架联动学习（argument structure + event structure）
 
 ### 层级与接口误区（把模块关系搞错）
-
 1. 语音学=音系学混同（phonetics–phonology conflation）
    → 连续物理量 vs 离散对立系统
    → 最小对立体（minimal pairs）+ 声学证据双轨验证
@@ -532,7 +511,6 @@ Below is a compact “question → solution/argument → next question” chain 
    → 语调-焦点-歧义消解三联训练（同句不同重音→不同解读）
 
 ### 理论观误区（把“理论是什么”搞错）
-
 1. 理论实体化（reification）：把框架当事实
    → 理论工具观：机制假设集合，可比较、可替换
    → 同一现象的多框架“并列解释表”（表示/机制/预测/代价）
@@ -547,25 +525,20 @@ Below is a compact “question → solution/argument → next question” chain 
    → 解释模板固定化：现象→表示→机制→可检验预测→证据路径
 
 ### 数据与证据误区（把“证据力”排序搞错）
-
 1. 直觉判断万能（introspection absolutism）
    → 判断受语域/教育/频率/任务效应影响
    → 判断实验基本功：填充项、随机化、可接受度量表、重复测量
-
 2. “语料没有=不可能”（absence-of-evidence fallacy）
    → 语料的零频不等于语法不许可（data sparsity）
    → 语料-语法区分：语法许可 vs 使用偏好；用受控生成与搜索策略补强
-
 3. “出现过=语法正确”（attestation-as-grammaticality）
    → 口误、引语、非标准体与噪声存在
    → 语料清洗与分层；与判断/实验交叉验证
-
 4. 单一来源证据（single-source evidence）
    → 证据三角测量（triangulation）
    → 最小三角：判断 + 语料 + 一个外部来源（实验/田野/历时）
 
 ### 方法论与统计误区（把“方法当结论”或误用工具）
-
 1. 显著性崇拜（p-value worship）
    → 效应量、置信区间、模型诊断与可重复性
    → 报告规范化：模型假设、数据排除、稳健性检验、替代模型
@@ -580,7 +553,6 @@ Below is a compact “question → solution/argument → next question” chain 
    → 先定义可测指标，再讨论统计；不以“能算”为目标
 
 ### 跨语言、历时与变异误区（把“普遍性与差异性”处理错）
-
 1. 普遍语法=普遍表面形式（universals-as-surface-uniformity）
    → 普遍性可能在约束、倾向或学习偏置层面
    → 把“表面差异”映射到“深层机制”的显式论证（而非口号）
@@ -592,7 +564,6 @@ Below is a compact “question → solution/argument → next question” chain 
    → 变异建模：混合效应/层级模型；语域与说话人随机效应
 
 ### 计算与形式化误区（把“可计算性”或“深度学习”神话化）
-
 1. 形式化恐惧（formalism aversion）
    → 形式化是清晰化承诺与预测的工具
    → 从最小形式开始：类型、组合规则、约束集合、可判定性直觉
@@ -604,7 +575,6 @@ Below is a compact “question → solution/argument → next question” chain 
    → 处理指标（如阅读时长/困惑度）与语法许可分离报告
 
 ### 学习路径与训练策略误区（把“怎么学”做错）
-
 1. 只读理论、不做数据（theory-only study）
    → 语言学是证据学科；必须“做”判断、转写、标注、实验或田野
    → 每周固定产出：一个小现象的最小数据包（10–30 条）+ 分析备忘录
@@ -631,7 +601,6 @@ Below is a compact “question → solution/argument → next question” chain 
 ### 先天约束强度开关（strong UG ↔ weak bias）：语言结构的主要来源是什么？
 
 1 强UG（strong Universal Grammar）
-
 * 核心立场：人类大脑里有较强的、语言专属的先验结构（innate, domain-specific priors）。
 * 理论后果：
   * 语法差异被建模为少量参数（parameters）或约束集合的不同设定。
@@ -639,7 +608,6 @@ Below is a compact “question → solution/argument → next question” chain 
 * 证据偏好：贫乏刺激论证（poverty of the stimulus）、快速习得、跨语言深层共性、对负证据缺乏的解释。
 
 2 弱bias（weak bias）
-
 * 核心立场：先天偏置存在但更弱、更一般（domain-general inductive biases），语言结构更多由学习、使用、传播塑形。
 * 理论后果：
   * 语法规律更像从输入分布中涌现（distributional learning）并经由交流效率、加工限制、社会传播长期稳定。
@@ -651,7 +619,6 @@ Below is a compact “question → solution/argument → next question” chain 
 ### 离散—梯度开关（discrete ↔ gradient）：语言表征是“清晰分隔的类别”，还是“连续/概率的量”？
 
 1 离散优先（discrete-first）
-
 * 核心立场：音位、范畴、特征是离散的；语法规则/约束在离散对象上运算。
 * 理论后果：
   * 更容易写成形式系统：特征检查、规则推导、约束满足等。
@@ -659,7 +626,6 @@ Below is a compact “question → solution/argument → next question” chain 
 * 典型领域：生成句法的范畴与特征系统、经典音系的音位对立。
 
 2 梯度优先（gradient-first）
-
 * 核心立场：很多现象天然是连续的或概率性的：可接受度是梯度、音系边界可模糊、结构选择受频率/预测性影响。
 * 理论后果：
   * 把频率、可接受度分布、声学连续参数、变异概率纳入“核心解释”而非噪声。
@@ -670,7 +636,6 @@ Below is a compact “question → solution/argument → next question” chain 
 ### 符号—概率开关（symbolic ↔ probabilistic）：理论要优先追求“可解释的符号结构”，还是“概率预测与信息论指标”的统一解释？
 
 1 符号优先（symbolic-first）
-
 * 核心立场：语法是符号结构系统；解释的价值在于结构的可解释性与可证明性质。
 * 理论后果：
   * 强调生成能力（generative capacity）、复杂度、结构约束（如岛屿约束）等“形式性质”。
@@ -678,7 +643,6 @@ Below is a compact “question → solution/argument → next question” chain 
 * 适用优势：描述“可能/不可能”的边界与强约束。
 
 2 概率优先（probabilistic-first）
-
 * 核心立场：语言理解/产生本质是预测与不确定性管理；概率模型更贴近加工与使用。
 * 理论后果：
   * 解释目标转为：为什么某结构更常见、更易处理、更可预测。
@@ -690,14 +654,12 @@ Below is a compact “question → solution/argument → next question” chain 
 ### 共时—历时开关（synchronic ↔ diachronic grounding）：解释一个共时语法事实时，需不需要把它放进历史演化机制里？
 
 1 共时优先（synchronic-first）
-
 * 核心立场：先给出对当代语法系统的最简刻画；历史来源可暂时不纳入。
 * 理论后果：
   * 更像“静态系统建模”：规则、约束、派生、接口条件。
 * 优势：模型干净、可直接对齐语法判断与结构描述。
 
 2 历时嵌入（diachronic grounding）
-
 * 核心立场：许多共时结构的“形状”来自语法化（grammaticalization）、音变（sound change）、接触（contact）与传播约束。
 * 理论后果：
   * 共时分布被视为历史过程的结果；解释会包含路径依赖（path dependence）。
@@ -708,7 +670,6 @@ Below is a compact “question → solution/argument → next question” chain 
 ### 实例
 
 把四个开关合在一起，则变成一个“解释策略选择器”：
-
 1. 强UG + 离散 + 符号 + 共时，典型产物：较经典的形式主义生成路线（更强调结构边界与普遍约束）。
 2. 弱bias + 梯度 + 概率 + 历时，典型产物：使用/概率/演化路线（更强调分布、加工、传播与语法化）。
 

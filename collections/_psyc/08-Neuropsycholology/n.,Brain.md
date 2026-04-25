@@ -120,7 +120,6 @@ Another live debate concerns developmental rigidity versus flexibility. Critical
 There are also species-comparison questions. Human postnatal neuronal migration in frontal and temporal regions, prolonged myelination, glial evolution, and the detailed architecture of association networks all suggest that **human uniqueness may lie as much in developmental pacing and tissue composition as in gross anatomy**. But direct causal evidence is still limited, especially because many claims rely on inference from imaging, organoids, postmortem tissue, or comparison with a small number of nonhuman species. citeturn25search18turn23search3turn20search15turn35search15turn39search11
 
 **Accessible further reading**
-
 - **The Basics of Brain Development** — still one of the clearest overviews of neurogenesis, migration, synaptogenesis, pruning, and myelination. citeturn8search0  
 - **Imaging Structural and Functional Brain Development in Early Childhood** — a readable review of how MRI tracks gray matter, white matter, and network development in the first years of life. citeturn19search1  
 - **20 Years of the Default Mode Network** — a strong synthesis of what the DMN is, what it does, and why newer interpretations matter. citeturn8search2  
@@ -129,7 +128,6 @@ There are also species-comparison questions. Human postnatal neuronal migration 
 - **࿂entity["organization","National Institute of Neurological Disorders and Stroke","us nih institute"]** “Brain Basics: Know Your Brain” — a good anatomy refresher before reading more specialized papers. citeturn16search0  
 
 **Selected primary and near-primary sources**
-
 - Huttenlocher’s classic study of **human frontal cortex synaptic density**, showing the rise in infancy and decline toward adult levels. citeturn24search3  
 - Huttenlocher’s study of **human striate cortex**, showing especially rapid synaptogenesis between **2 and 4 months** of age. citeturn28search14  
 - The report on **extensive migration of young neurons into the infant human frontal lobe**, central to current thinking about prolonged postnatal development. citeturn23search5  

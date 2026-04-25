@@ -152,12 +152,10 @@ Narrators **produce** the narrative voice, and their personality, perspective, a
       - The narrator knows everything about all characters, events, and settings. They **can access any character’s thoughts, actions, and pasts**, and they may even offer commentary or reflections on the story. This type of voice is not limited by time or space, and their knowledge is all-encompassing. 
       - Characteristic: Provides a broad, god-like perspective.
       - *e.g. In *War and Peace* by Leo Tolstoy, the narrator has access to the thoughts, feelings, and fates of numerous characters across vast time periods and locations.
-
     2. **Third-Person Limited (Restricted Knowledge)**:
       - The narrator’s knowledge is confined to one particular character (usually the protagonist) or a small group of characters. They **only know what the chosen character(s) know and may not have access to the inner thoughts of others or broader events beyond that character’s perspective**.
       - Characteristic: Balances intimacy with some level of objectivity.
       - e.g. In *The Great Gatsby* by F. Scott Fitzgerald, Nick Carraway is the narrator, and his knowledge of other characters is limited to his observations and interactions with them.
-
     3. **Third-Person Objective (Neutral)**:
       - The narrator **presents events and dialogue WITHOUT revealing any character's internal thoughts or emotions**. This type of narrator is more detached and objective, focusing solely on what can be seen or heard, much like a camera recording events.
       - Characteristic: Creates a detached, observational tone.
@@ -341,7 +339,6 @@ Purpose: Deepens the emotional impact of the narrative.
 ### Style of Narrative Voice
 
 Style reflects the narrator’s personality and the way they use language
-
  - Diction (Word Choice): Formal, informal, poetic, sarcastic, etc.
   - Syntax (Sentence Structure): Short, fragmented sentences may suggest urgency, while long, flowing sentences create a reflective tone.
   - Imagery and Figurative Language: Vivid, descriptive language can evoke specific emotions.
@@ -493,7 +490,6 @@ In addition to the 31 narrative functions, Propp identified 7 character types (o
 
 ### Application of Propp’s Theory:
 - **Folktales**: Propp’s analysis is particularly useful for analyzing Russian folktales, but his theory can be applied to other fairy tales, myths, and even modern storytelling. His functions and archetypes help us understand how narratives are structured and what roles different characters play in advancing the plot.
-
 - **Modern Literature & Film**: The influence of Propp’s functions and character archetypes can also be found in contemporary films, TV shows, and novels. Many modern narratives, especially in the fantasy or adventure genre, follow a similar structure to Propp's model.
 
 By analyzing the 31 narrative functions and 7 character archetypes, we can gain insight into the universal elements of storytelling and how they contribute to the narrative’s progression.

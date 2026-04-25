@@ -9,13 +9,11 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 ## Core Theory and Taxonomy of Decision Models  
 
 ### Normative, Descriptive, and Prescriptive Decision Theory  
-
 - **Normative decision theory** prescribes how an idealized rational agent *should* make choices to optimize a well-defined goal (usually utility or payoff). It assumes perfect rationality and full information.  In normative models, decisions are based on maximizing **expected utility** or minimizing expected loss. Normative models often derive from game theory and operations research.  For example, the **Expected Utility Theory** of von Neumann and Morgenstern establishes axioms (completeness, transitivity, independence, etc.) under which a rational agent’s preferences can be represented by a utility function and choices made by maximizing its expectation【22†L61-L64】【20†L9-L16】.  
 - **Descriptive decision theory** explains how people **actually** make decisions, including cognitive biases and heuristics. It is grounded in psychology and behavioral economics. Descriptive models (e.g. Prospect Theory, bounded rationality, behavioral game theory) document deviations from normative rationality. For instance, **Prospect Theory** (Kahneman & Tversky, 1979) describes how people evaluate gains and losses asymmetrically, using a value function over gains/losses and a probability-weighting function, violating expected-utility axioms【26†L163-L170】.  
 - **Prescriptive decision theory** bridges the two: it focuses on how to help real decision-makers improve outcomes. Prescriptive models often adapt normative methods to practical contexts (e.g. decision analysis tools, MCDA, decision support systems).  The Cambridge text notes: *“Prescriptive models provide mathematical solutions to decisions that can be put in quantifiable form.”*【18†L55-L61】. These models incorporate both rational criteria and realistic constraints (e.g. limited information).
 
 ### Expected Utility Theory (Normative)  
-
 - **Definition**: *Expected Utility Theory* (EUT) holds that a rational decision-maker assigns a utility $U(x)$ to each outcome $x$ and chooses the action with maximal **expected utility**. Formally, if action $a$ yields outcome $x$ with probability $p(x|a)$, the EU is 
   $$ U(a) = \sum_x p(x|a)\, U(x)\,. $$
 - **Key Equations**: The *von Neumann–Morgenstern* theorem shows that under certain axioms (completeness, transitivity, continuity, independence), preferences satisfy EU maximization【20†L9-L16】【22†L61-L64】. In choices under **risk** (known probabilities), the EU is $\sum_i p_i U(x_i)$. Under **uncertainty** (unknown probabilities), **Savage’s Subjective Expected Utility** theory uses subjective probabilities.  
@@ -25,7 +23,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Daniel Bernoulli’s 1738 solution of the St. Petersburg paradox (log utility) and, especially, von Neumann & Morgenstern (1944) “Theory of Games” with EU axioms【40†L418-L427】; Savage (1954) for subjective EU.
 
 ### Bayesian Decision Theory  
-
 - **Definition**: In Bayesian decision theory, uncertainty about states of the world is captured by a **probability distribution** (prior beliefs), updated by data. The decision-maker chooses the action $a$ that maximizes expected utility under the *posterior* distribution. One can equivalently minimize the **Bayes risk** (expected loss). Formally, if $\theta$ indexes states, action $a$, and $L(a,\theta)$ is loss, the *Bayes expected loss* is 
   $$ R(a) = \int L(a,\theta)\, \Pr(\theta|D)\,d\theta, $$
   where $\Pr(\theta|D)$ is the posterior (by Bayes’ rule). The optimal action minimizes $R(a)$.  
@@ -36,7 +33,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Abraham Wald (1939) on decision functions; Howard Raiffa & Schlaifer (1960s) for applied Bayesian decision analysis; J. V. Neumann and Savage combined EU with Bayesian updating.
 
 ### Prospect Theory (Descriptive)  
-
 - **Definition**: *Prospect Theory* (Kahneman & Tversky, 1979) is a descriptive model of choices under risk. It assumes agents evaluate gains and losses relative to a reference point (often status quo), with an S-shaped value function $v(\cdot)$ that is concave for gains and convex for losses, and steeper for losses (loss aversion). Probabilities are transformed by a weighting function $\pi(p)$ that tends to overweight small probabilities and underweight moderate to large ones【26†L163-L170】.  
 - **Key Equations**: For a lottery with outcomes $x_i$ and probabilities $p_i$, *Prospect Value* is 
   $$ V = \sum_i \pi(p_i)\,v(x_i), $$
@@ -47,7 +43,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Kahneman & Tversky (1979, *Econometrica*) [original formulation]; Tversky & Kahneman (1992) cumulative version.
 
 ### Bounded Rationality  
-
 - **Definition**: *Bounded rationality* (Herbert Simon, 1955) recognizes cognitive and informational limitations. Agents use simplified decision procedures (heuristics) and “satisfice” rather than optimize【28†L154-L162】. Formally, it abandons the perfect rationality assumption: decision makers seek satisfactory (not optimal) solutions given limits in time, information, and computation【28†L154-L162】.  
 - **Key Idea**: Agents use rules-of-thumb or “fast and frugal” heuristics (e.g. satisficing, elimination-by-aspects).  
 - **Assumptions**: Reality is too complex for full optimization. Preferences may be incomplete or lexicographic.  
@@ -56,7 +51,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Simon (1955, *Behavioral Model of Rational Choice*)【28†L188-L196】; Gigerenzer et al. (1999, *Heuristics and Biases*).
 
 ### Reinforcement Learning (Sequential Decisions)  
-
 - **Definition**: *Reinforcement Learning* (RL) is an area of machine learning and control theory focused on how agents can learn optimal actions through trial-and-error interactions with an environment【36†L380-L388】. An RL agent learns a *policy* $\pi(s,a)$ that selects actions $a$ in states $s$ to maximize cumulative reward. It is typically formalized using MDPs.  
 - **Key Equations**: The core Bellman optimality equation for the state-value function $V^*(s)$ under discount factor $\gamma$ is 
   $$ V^*(s) = \max_a \Big[ R(s,a) + \gamma \sum_{s'} P(s'|s,a) V^*(s') \Big]. $$
@@ -67,7 +61,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Sutton and Barto (1998/2018, *Reinforcement Learning: An Introduction*); Watkins (1989 Q-learning).
 
 ### Game Theory  
-
 - **Definition**: *Game theory* models strategic interactions among multiple decision-makers (players). A **game** specifies players, possible strategies, and payoffs for each strategy profile. Game theory analyzes equilibrium outcomes (e.g. Nash equilibrium) where no player can unilaterally improve payoff【40†L407-L415】.  
 - **Key Equations**: In a two-player game with strategies $i,j$, payoffs $u^A_{ij},u^B_{ij}$, a *Nash equilibrium* $(i^*,j^*)$ satisfies
   $$ u^A_{i^* j^*} \ge u^A_{i\, j^*}\ \ \forall i,\quad
@@ -79,7 +72,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: von Neumann & Morgenstern (1944) game theory; John Nash (1950) equilibrium theorem【40†L418-L427】; extensive research in 1950s (Shapley, Kuhn).
 
 ### Multi-Criteria Decision Analysis (MCDA)  
-
 - **Definition**: MCDA addresses decisions involving *multiple objectives* or criteria. There is no single optimal solution without aggregating preferences. MCDA methods (e.g. Weighted Sum, Analytic Hierarchy Process, Outranking) help decision-makers find satisfactory trade-offs. The goal is often to identify *efficient (Pareto-optimal)* solutions【42†L188-L197】.  
 - **Key Equations**: A simple form is *Multi-Attribute Utility Theory* where overall utility is a weighted sum: $U(a)=\sum_{k} w_k u_k(a)$ over criteria $k$. Generally one searches for nondominated points: a solution $x$ is efficient if no other solution is better in all criteria【42†L198-L207】.  
 - **Assumptions**: Criteria are known and possibly conflicting; weights or preference information can be elicited. Often assumes additive aggregation (though not always).  
@@ -88,7 +80,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Keeney & Raiffa (1976, *Decisions with Multiple Objectives*); Saaty (1980, *Analytic Hierarchy Process*); Triantaphyllou (2000, surveys)【42†L233-L242】【42†L248-L257】.
 
 ### Stochastic Control  
-
 - **Definition**: *Stochastic control* is a branch of control theory dealing with decision-making in dynamic systems under uncertainty【51†L126-L134】. The controller chooses inputs over time to optimize a cost (or reward) criterion (often expected cumulative cost) when the system evolves stochastically.  
 - **Key Equations**: In continuous/discrete time, one writes a **Hamilton–Jacobi–Bellman (HJB)** equation or uses dynamic programming. A classical example is the *Linear-Quadratic-Gaussian* (LQG) control: linear dynamics, quadratic cost, Gaussian noise, which admits closed-form Riccati solutions【51†L126-L134】.  
 - **Assumptions**: System and noise models are known (or partially known). Usually Markovian dynamics. Often assumes quadratic costs for analytic tractability.  
@@ -97,7 +88,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Bellman (1957) on dynamic programming; Merton (1971) on continuous-time control; textbook by Bertsekas (1976) and others.
 
 ### Markov Decision Processes (MDPs)  
-
 - **Definition**: An MDP is a discrete-time stochastic model for sequential decision-making. It is defined by states $S$, actions $A$, transition probabilities $P(s'|s,a)$, and rewards $R(s,a)$【44†L159-L167】. At each time $t$, the agent in state $s_t$ chooses action $a_t$, receives reward $r_t$, and the state transitions to $s_{t+1}$ according to $P$. The objective is to maximize expected cumulative reward (often discounted). MDPs assume *full observability* of the state.  
 - **Key Equations**: Bellman optimality equation for value $V^*(s)$ (see Reinforcement Learning above). Policy iteration and value iteration are standard solution methods.  
 - **Assumptions**: Markov property (future independent of past given current state). Known transition model (for planning) or unknown (for RL). Stationarity of dynamics in most formulations.  
@@ -106,7 +96,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Bellman (1957); Howard (1960s) policy iteration; Puterman (1994) *MDP book*.
 
 ### Partially Observable MDPs (POMDPs)  
-
 - **Definition**: A POMDP generalizes an MDP to **partial observability**【47†L124-L132】. The agent does not see the true state but receives observations probabilistically related to the state. Formally, a POMDP adds an observation space and emission probabilities $O(o|s)$ on top of an MDP. The agent maintains a belief (probability distribution) over states.  
 - **Key Equations**: Belief update via Bayes’ rule: $b'(s') \propto O(o|s') \sum_s P(s'|s,a)\,b(s)$.  One then solves a *belief MDP*: value functions are defined over beliefs. The optimal policy maximizes expected reward over belief trajectories.  
 - **Assumptions**: Similar to MDP but observation model exists. Often assumes discrete states/observations. Computationally heavy.  
@@ -115,7 +104,6 @@ Decision models provide formal frameworks to analyze and guide decision-making u
 - **Seminal References**: Åström (1965) on Markov decision processes with imperfect information【47†L124-L132】; Kaelbling, Littman & Cassandra (1998) on POMDP planning.
 
 ### Agent-Based Models (ABMs)  
-
 - **Definition**: An *agent-based model* is a computational simulation of autonomous “agents” (individual entities) whose actions and interactions produce complex system behavior【49†L191-L199】. ABMs typically specify each agent’s decision rules (which may be heuristic or rule-based) and let them interact in an environment. The collective dynamics can show emergence of patterns (self-organization) not obvious from individual rules.  
 - **Key Features**: No single equation; rather a simulation architecture. Agents can have bounded rationality, adapt, learn, reproduce, etc. Macro outcomes (e.g. market prices, social norms, traffic flows) emerge from micro-level agent behavior【49†L205-L213】.  
 - **Assumptions**: Heterogeneous agents with defined behaviors. Sometimes spatial or network structure for interactions.  
@@ -225,7 +213,6 @@ These examples illustrate strategic concepts (Nash, subgame, mixed strategies). 
 
 #### AI Game Agents and Reinforcement Learning  
 AI has achieved superhuman performance in many games. DeepMind’s *AlphaGo* combined deep neural nets with Monte Carlo Tree Search and self-play RL to master Go【36†L479-L483】. Similarly, Deep Q-Networks (DQN) learned Atari games. Multi-agent RL (self-play) yields agents that learn strategies (e.g. OpenAI Five for Dota).  
-
 - *AlphaGo Example*:  
   - **Model Setup**: The game of Go is a deterministic perfect-information game. State = board configuration. Actions = placing a stone. Reward = +1 for win, -1 for loss at terminal.  
   - **Decision Variables**: Move selection each turn.  
@@ -274,7 +261,6 @@ timeline
 ```  
 
 ## Open Problems, Ethical Issues, and Challenges  
-
 - **Model Validity and Uncertainty**: All models rely on assumptions (e.g. known distributions, rationality). Real systems may violate these. Quantifying model uncertainty and robustness (robust MDPs, ambiguity aversion) remains an active area.  
 - **Computational Scalability**: Many decision models (MDPs, POMDPs, game equilibria) suffer the “curse of dimensionality”. Approximation methods (function approximation in RL, sampling) help but may not guarantee optimality.  
 - **Human Factors and Ethics**: Applying AI-based decision models raises issues of bias, transparency, and accountability. For example, algorithmic pricing can inadvertently lead to unfair prices (price discrimination). In military use, autonomous decision systems must address laws of armed conflict and command responsibility.  
@@ -282,7 +268,6 @@ timeline
 - **Data and Implementation**: Many theoretical models assume rich data (e.g. transition probabilities for MDPs) which may be missing. Data-driven approaches must carefully handle noise and privacy.
 
 **Common Pitfalls and Misconceptions:**  
-
 - Conflating *normative* (should) with *descriptive* (is) reasoning. Normative models do not predict actual human choices unless humans are *assumed* rational.  
 - Ignoring the **difference between risk and uncertainty** (known vs unknown probabilities). Expected utility applies to the former; subjective probabilities are used for the latter.  
 - Assuming a unique “best” solution in multi-criteria or multi-agent problems. Often only *sets* of efficient or equilibrium outcomes exist.  
@@ -372,41 +357,30 @@ Below is a comparative summary table of key decision models:
 
 ## Political and Military Decision-Making  
 Decision models inform many political/military contexts:
-
 - **Crisis Bargaining and Deterrence:** Game theory is classic here.  For example, the Cuban Missile Crisis has been analyzed as a sequential game of chicken or ultimatum, showing how incomplete information and commitment shape outcomes.  Rational deterrence theory simplifies a nuclear deterrence condition as   
   $$(\text{Prob}_{\text{deterrer}}\times \text{Cost to attacker}) > (\text{Prob}_{\text{attacker}}\times \text{Benefit to attacker}),$$  
   i.e. the expected cost to an attacker must outweigh its expected benefit【36†L302-L308】.  This reduces to a game‐theoretic inequality: $Cost\times P(\text{costs}) > Benefit\times P(\text{benefits})$【36†L302-L308】.  Models of escalation (brinkmanship) and crisis stability often use stochastic game models.  
-
 - **Intelligence Analysis:** Analysts use Bayesian updating to revise threat assessments as new evidence arrives.  Formal models like Bayesian networks or probabilistic inference combine multiple uncertain sources.  Red‐teaming and wargaming often encode possible enemy actions as decision trees or game trees to evaluate own policies.  
-
 - **Command-and-Control (C2) and Wargaming:** Military planning uses decision support tools and simulations.  Models range from operational research (e.g. optimizing troop allocations with integer programming) to agent-based simulations.  Wargaming itself is a structured decision exercise: an explicit game between opponents simulating battlefield decisions.  Game‐theoretic training (e.g. RAND’s work) shows how strategic games can illuminate conflict dynamics【41†L79-L84】.  
-
 - **Coalition Decisions:** Forming alliances can be modeled as cooperative games.  Power indices (e.g. Shapley–Shubik) or bargaining solutions (e.g. Nash bargaining) explain payoff divisions.  In UN voting or NATO decisions, countries’ strategies and commitments are often analyzed with multi-player game theory.  
 
 *Case Study:* During NATO’s Cold War strategy, game models of “limited nuclear war” were used to assess escalating strategies. Commanders also used expected utility (via decision trees) to weigh outcomes of nuclear versus conventional responses under uncertainty.  While classified documents abound, one public example is modeling of U.S.–Soviet nuclear brinkmanship as iterative games in academic literature.
 
 ## Economic and Corporate Decision-Making  
 - **Corporate Investment and Finance:** Capital budgeting uses expected net present value (NPV) analysis: an investment’s expected cash flows (often uncertain) are discounted and compared.  Real options analysis treats investment timing as a decision under uncertainty, solved via stochastic dynamic programming or binomial trees (a form of decision tree).  Portfolio choice is a classical expected utility (mean-variance) problem: maximize utility over random returns.  
-
 - **Pricing and Competition:** Oligopoly models use game theory (Bertrand, Cournot models) to predict price or quantity competition.  Price auctions and mechanism design are specific game‐theoretic applications.  In retail, dynamic pricing can be formulated as an MDP (state: inventory level, price; transitions: stochastic demand).  Revenue management algorithms for airlines, hotels solve such MDPs or use RL.  
-
 - **Supply Chain and Operations:** Inventory control is typically an MDP (or stochastic dynamic program): decisions are reorder quantities, with random demand causing transitions.  The classic *newsvendor problem* (single-period inventory) finds optimal order $Q^*$ such that $P(\text{demand}\le Q^*) = \frac{\text{overage cost}}{\text{overage + underage cost}}$.  More complex multi-period supply problems use dynamic programming or reinforcement learning (Q-learning to minimize shortages and holding costs).  
-
 - **Monetary and Fiscal Policy:** Macroeconomic policy can be framed as decision models.  Central banks often use reduced-form *policy rules* (e.g. the Taylor rule) to set interest rates:  
   $$i_t = r^* + \pi_t + 0.5(\pi_t - \pi^*) + 0.5(y_t - y^*),$$  
   relating rate *i* to inflation *π* and output gap *y*【50†L5-L8】.  More formally, policymakers solve intertemporal optimization (a normative model) subject to a macroeconometric or DSGE model of the economy.  Fiscal policy allocation can be approached via MCDA, weighing objectives (inflation, employment, debt).  
-
 - **Regulatory and Mechanism Design:** Regulators use game-theoretic models of firms’ incentives.  For instance, setting optimal tariffs or pollution taxes involves a principal-agent problem: the government (principal) designs rules knowing firms (agents) will respond strategically.  Auction design (selling spectrum, carbon permits) uses game theory to ensure truthful bidding (e.g. Vickrey auctions).  
 
 *Case Study:* A firm deciding on a new product launch might build a decision tree: branch at first with “Invest” or “Don’t Invest”; under “Invest”, chance nodes with high/low demand probabilities; terminal nodes with profit estimates.  By calculating expected values, the firm chooses if the *expected NPV* justifies investment.  Alternatively, a flexible capacity investment can be valued by real-options MDP: invest now or wait, learning demand each period.  
 
 ## Games and Game Design  
 - **Strategic Game Mechanics:** Video game designers use decision models to balance gameplay.  For example, assigning damage values or resource costs can be guided by modeling players’ expected utilities.  Balance testing often involves simulating many play-outs (Monte Carlo simulation) or solving simplified game-theoretic models to ensure no dominant strategy.  In board games (like Civilization), outcome probabilities can be analyzed via Markov chains or MDPs.  
-
 - **AI Agents:** Modern games employ AI using decision theory.  *Multi-agent reinforcement learning* is used to train computer opponents.  For instance, **AlphaGo** and **AlphaZero** learned Go and Chess from self-play with RL, using MDPs for game-state transitions and reward = game outcome【45†L83-L92】.  Open-world game NPCs might use decision trees or finite state machines combined with utility functions for behavior selection.  
-
 - **Balancing and Monetization:** In free-to-play games, companies choose in-app purchase pricing or item rarity to maximize revenue.  A model of player decision (prospect theory with loss aversion) can predict response to pricing.  Auction mechanics (in-game markets) use mechanism design to ensure desirable equilibria.  
-
 - **Player Decision Models:** Understanding how players make choices helps design engaging games.  Game analytics may fit *logit* or *drift-diffusion* models to observed choices.  For example, modeling a player’s decision time and accuracy can use **drift-diffusion processes** (a stochastic model) to infer subjective utilities.  
 
 *Example:* In designing a turn-based strategy game, designers might use a small MDP to model a typical combat. States = (health levels of units, resources left), actions = (attack, defend, retreat), rewards = damage inflicted/minimized. Using dynamic programming or RL, one can tune unit stats so that no single strategy (always attack) dominates.  
@@ -468,7 +442,6 @@ timeline
 *(Sources: original papers and textbooks.)*  
 
 # Common Mistakes and Misconceptions  
-
 - **Mixing normative and descriptive models:** Normative models (EUT, game theory) assume ideal rationality; real behavior often follows descriptive models (prospect theory, heuristics). Confusing the two can mislead (e.g. expecting risk-neutral behavior in humans).  
 - **Overconfidence in parameters:** Many models require numerical probabilities or utilities. In practice, these are estimates or subjective. Decision quality depends critically on their accuracy. Using a wrong probability can invert decisions.  
 - **Ignoring risk preferences:** Assuming *utility=money* implies risk neutrality. In many decisions (e.g. safety, healthcare), people are risk averse. Failing to model risk attitude (via a utility function or decision weights) is a common oversight.  
@@ -477,7 +450,6 @@ timeline
 - **Data vs complexity tradeoff:** More complex models (deep RL, large game trees) can model reality better but require vast data/computation. Overfitting a model to limited data leads to poor decisions. Simpler approximate models often generalize better.  
 
 # Further Reading  
-
 - **Classic Texts:** von Neumann & Morgenstern *Theory of Games and Economic Behavior* (1944) for EUT and cooperative games; Savage *Foundations of Statistics* (1954) for Bayesian decision.  
 - **Behavioral:** Kahneman & Tversky, “Prospect Theory” (1979) and Camerer *Behavioral Game Theory* (2003).  
 - **Game Theory:** Osborne *An Introduction to Game Theory* (2004).  

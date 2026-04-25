@@ -112,7 +112,6 @@ The central conclusion is simple. **Serious literature does not merely suffer fr
 For **critics**, the most useful rule is to treat LLMs as **second-order instruments**: use them to retrieve, compare, map, gloss, collate, and audit, but not to certify interpretation. For **writers**, the most useful rule is to treat them as **productive antagonists**: let them expose cliché, dropped arcs, implied bias, or uncontrolled exposition, but do not let them choose the final sentence. A disciplined practice would do the following: keep a source bundle beside every substantial use of the model; mark every claim as verified, inferred, or speculative; run at least one counter-prompt against the first output; preserve a version trail for major revisions; and refuse any generated passage that solves an artistic problem by erasing the work’s singular pressure. citeturn12search0turn13search23turn12search11turn12search1turn12search6
 
 **Practical recommendations.**
-
 - **For critics:** build citation-rich corpora first; use models to surface asymmetries, not to close debate.  
 - **For critics:** separate archive, inference, and invention in every notebook or annotation layer.  
 - **For writers:** use LLMs for pre-publication audits of diction, pacing, and perspective, not for core imaginative substitution.  

@@ -32,9 +32,7 @@ This move is conceptually coherent in Schopenhauerian terms: libido resembles a 
 #### 3. Equivalence and Entropy as intra-psychic laws
 
 Once libido is generalized as *psychische Energie*, Jung can state two “laws” that function as metapsychological first principles:
-
 * **Principle of Equivalence (Äquivalenzprinzip):** Psychic energy is not annihilated; it is redistributed. If an activity, interest, or value loses its cathexis, that energy appears elsewhere—symptomatically, fantasmatically, creatively, or destructively. This principle explains why repression or renunciation does not simply “remove” motivation; it displaces it. The psyche therefore exhibits conservation-like behavior: blocked channels force rerouting, and what is excluded returns in another register.
-
 * **Principle of Entropy (Entropieprinzip):** Energy tends to equalize across the system; extreme one-sided investments provoke compensatory redistribution. Where the ego concentrates libido into a narrow attitude, the system tends toward balance by amplifying neglected tendencies. This does not mean a banal “moderation”; it means that psychic extremes generate their own counterforces. Entropy here is not a moral command but a dynamical tendency.
 
 Because these principles render the association findings intelligible, Jung can now treat psychic life as a self-regulating energetic field. And because self-regulation implies systematic counter-movements, Jung is led to ask not only what caused a symptom, but what function it serves within the economy of the whole.
@@ -152,9 +150,7 @@ In this sense, Jung’s architecture is a synthesis of the subject and the unive
 #### 3. 等值与熵：心理内部的准法则
 
 一旦力比多被一般化为*psychische Energie*，荣格就可以提出两条在元心理学层面构成“第一原理”的准法则：
-
 * **等值原则（Äquivalenzprinzip，Equivalence）**：心理能量不会凭空消失；它会被重新分配。若某活动、兴趣或价值丧失了贯注（investment），这份能量会在别处出现——以症状、幻想、创造或破坏形式表现。该原则解释为何压抑或放弃不会简单“清除”动机，而会产生置换：被堵塞的通道迫使能量改道，排除之物在另一表征层面回归。
-
 * **熵原则（Entropieprinzip，Entropy）**：能量在系统内部趋向均衡；极端单向的投资会引发补偿性的再分配。自我若把力比多集中于狭窄态度，系统就会通过放大被忽略的倾向来恢复平衡。这并非道德上的“中庸”，而是动力学上的趋势：心理极端会生成其对立面。
 
 正因为这些原则能把联想实验的事实整合为可理解的机制，荣格才能把心理生活视为一个自我调节的能量场。又因为自我调节意味着系统性“逆向运动”，荣格必然走向一个新问题：症状不仅有原因，而且有功能——它在整体经济中“做了什么”。

@@ -55,28 +55,22 @@ A simple example
 This example already shows several core HTML ideas: document metadata in `head`, visible content in `body`, semantic sectioning with `header`, `nav`, `main`, and `section`, and native form controls.
 
 Core concepts to understand first
-
 1. Elements and tags
 
 An HTML element is usually written with a start tag and an end tag, such as `<p>...</p>`. Some elements, like `img` or `meta`, are void elements and do not have closing tags.
-
 2. Attributes
 
 Attributes provide extra information. Examples include `href` for links, `src` for images, `alt` for alternative text, and `class` or `id` for styling and scripting hooks.
-
 3. Document structure
 
 A valid HTML page normally includes:
-
 * `<!doctype html>` to tell the browser to use standards mode
 * `html` as the root element
 * `head` for metadata
 * `body` for visible content
-
 4. Semantics
 
 Semantic HTML means using the right element for the right purpose. For example:
-
 * `h1` to `h6` for headings
 * `button` for clickable actions
 * `a` for navigation to another resource
@@ -147,7 +141,6 @@ The modern platform includes custom elements, shadow DOM, and element internals.
 Common technologies around HTML
 
 These are the technologies most often learned and used together with HTML:
-
 * CSS, Sass, Tailwind CSS
 * JavaScript, TypeScript
 * DOM APIs, Fetch API, Web Storage
@@ -163,19 +156,16 @@ These are the technologies most often learned and used together with HTML:
 * Backend rendering environments such as Node.js, Deno, Bun, PHP, Python frameworks, Java frameworks, Ruby on Rails, and others
 
 Common technology stacks
-
 1. Basic front-end stack
 
 HTML + CSS + JavaScript
 
 This is the foundational stack. It is enough for static websites, small interactive pages, and learning the platform correctly.
-
 2. Modern front-end stack
 
 HTML + CSS + JavaScript/TypeScript + build tool
 
 A typical example is:
-
 * HTML
 * CSS or Tailwind CSS
 * TypeScript
@@ -183,13 +173,11 @@ A typical example is:
 * npm or pnpm
 
 This is common for modern single-page or component-based applications.
-
 3. React ecosystem stack
 
 HTML + CSS + JavaScript/TypeScript + React + Next.js
 
 Typical tools:
-
 * HTML and JSX
 * CSS Modules, Tailwind CSS, or styled systems
 * TypeScript
@@ -198,50 +186,42 @@ Typical tools:
 * Node.js
 
 This is a common production stack for dashboards, SaaS apps, and content sites with server rendering.
-
 4. Vue ecosystem stack
 
 HTML + CSS + JavaScript/TypeScript + Vue + Nuxt
 
 Used for both small and large apps, especially where a structured but approachable framework is preferred.
-
 5. Angular stack
 
 HTML templates + CSS/SCSS + TypeScript + Angular
 
 Angular is more opinionated and often used in enterprise settings.
-
 6. Static site / content stack
 
 HTML + CSS + Markdown + static site generator
 
 Typical tools:
-
 * Astro
 * Eleventy
 * Hugo
 
 This stack is common for blogs, documentation sites, landing pages, and performance-focused sites.
-
 7. Traditional server-rendered stack
 
 HTML templates rendered on the server + backend framework + database
 
 Examples:
-
 * PHP + Laravel + Blade
 * Python + Django + templates
 * Ruby on Rails + ERB
 * Java + Spring + template engine
 
 This remains important because many business systems are still rendered on the server, and HTML is the final output.
-
 8. Full-stack JavaScript stack
 
 HTML + CSS + TypeScript + React/Vue/Svelte + Node.js + database
 
 Often paired with:
-
 * Express, NestJS, or framework backends
 * PostgreSQL or MongoDB
 * API layers such as REST or GraphQL
@@ -295,31 +275,24 @@ Living standard era
 Today HTML is maintained as a living standard by WHATWG. This means the platform evolves continuously, not only through rare version-number milestones. ([HTML Living Standard][8])
 
 Technology development trends
-
 1. Stronger emphasis on semantic correctness and accessibility
 
 This is not a niche concern anymore. It is a mainstream engineering requirement. MDN learning materials continue to center semantic HTML and accessibility as foundational practice. ([MDN Web Docs][5])
-
 2. More reliance on the native web platform
 
 There is a visible trend away from unnecessary abstraction when the platform already provides a good solution. Native dialogs, better forms, declarative markup patterns, and platform features that are now broadly supported all encourage simpler architectures. Baseline is part of this trend because it gives teams more confidence in native features that have become interoperable. ([web.dev][9])
-
 3. Interoperability as a first-class goal
 
 Interop 2025 and 2026 show that browser vendors are coordinating on feature support and developer pain points. This reduces the historical cost of building directly on platform standards. ([web.dev][7])
-
 4. Component models closer to web standards
 
 Web Components, custom elements, shadow DOM, and element internals are becoming more practical. Even when teams use React or Vue, the general industry direction is toward better alignment with platform-level components rather than complete isolation from them. The HTML standard’s support for form-associated custom elements is a good example. ([HTML Living Standard][4])
-
 5. Continued coexistence of SSR, SSG, and client interactivity
 
 The field is not moving in only one direction. Static generation, server-side rendering, partial hydration, and islands architecture are all active patterns. HTML remains central because all of them ultimately produce or enhance HTML documents.
-
 6. Performance-conscious HTML delivery
 
 Modern development increasingly values smaller bundles, faster first paint, less JavaScript, and better content-first delivery. This generally benefits approaches that treat HTML as the primary delivery format rather than as an afterthought. The State of HTML survey’s performance pain-point section reflects this pressure. ([State of HTML 2025][6])
-
 7. Standards are ongoing, not finished
 
 The HTML standard is still updated. That matters conceptually: HTML should be treated as a living platform embedded in a broader evolving web standard ecosystem. ([HTML Living Standard][8])
@@ -327,7 +300,6 @@ The HTML standard is still updated. That matters conceptually: HTML should be tr
 How HTML should be learned
 
 A good learning order is:
-
 * HTML document structure
 * Text, lists, links, images
 * Semantic sectioning
@@ -344,7 +316,6 @@ A practical principle
 Learn HTML as a content and meaning system first, not just as syntax. The central question is not “Which tag can make this look right?” but “What is this content, structurally and semantically?” Once that is correct, CSS and JavaScript become easier and more reliable.
 
 Common mistakes and easily confused points
-
 * Using `div` for everything instead of semantic elements like `nav`, `main`, `article`, or `button`
 * Using a link (`a`) where a button is needed, or a button where a link is needed
 * Thinking HTML is only for appearance rather than structure and meaning
@@ -368,7 +339,6 @@ Once this principle is understood, many “recommended vs discouraged” choices
 ### **1. The central design model of HTML5**
 
 **Analysis**: HTML5 assumes that a web document is not only seen by a person in one browser on one screen. It may also be consumed by:
-
 * search engines
 * screen readers
 * browsers with different default styles
@@ -377,13 +347,11 @@ Once this principle is understood, many “recommended vs discouraged” choices
 * future software not yet written
 
 Because of this, HTML5 prefers markup that answers questions like:
-
 * What is this content?
 * What role does this part play?
 * How are these parts related?
 
 It does **not** want HTML to answer questions like:
-
 * Should this text be green?
 * Should this image sit 5 pixels from the edge?
 * Should this text be bold because I want emphasis, or just because I want thick letters?
@@ -391,7 +359,6 @@ It does **not** want HTML to answer questions like:
 Those presentation questions belong mostly to **CSS**. Behavioral questions belong mostly to **JavaScript**.
 
 **Conclusion**: HTML5 is built around **separation of concerns**:
-
 * **HTML** = structure and meaning
 * **CSS** = presentation
 * **JavaScript** = behavior
@@ -443,7 +410,6 @@ This style made sense in a much earlier web, when CSS was weak or inconsistently
 ```
 
 **Why the second is better**:
-
 * HTML now says: “this is the main heading”
 * CSS says: “center it and make it green”
 * meaning and presentation are no longer fused
@@ -455,7 +421,6 @@ This style made sense in a much earlier web, when CSS was weak or inconsistently
 **Definition**: A **semantic element** is an element whose name communicates its role in the document.
 
 Examples include:
-
 * `<header>`
 * `<nav>`
 * `<main>`
@@ -498,14 +463,12 @@ HTML5 does not ban `<div>`, but it encourages replacing generic containers with 
 ```
 
 **Analysis**: The better version gives structure to the content:
-
 * this whole thing is an **article**
 * its title is a **heading**
 * its date is a **time**
 * the date is in the **footer** of the article
 
 This improves:
-
 * accessibility
 * machine readability
 * maintainability
@@ -520,7 +483,6 @@ This improves:
 **Background**: HTML5 assumes the web should work for more than sighted mouse users. This is not a secondary concern. It is one of the architectural assumptions of the platform.
 
 That is why HTML5 strongly favors:
-
 * correct headings
 * labels for forms
 * alt text for images
@@ -540,7 +502,6 @@ That is why HTML5 strongly favors:
 ```
 
 **Why the second is better**:
-
 * it is keyboard-friendly by default
 * screen readers recognize it as a button
 * browsers know how to interact with it
@@ -575,7 +536,6 @@ Or, if the image is decorative:
 ### **5. Why HTML5 discourages obsolete attributes**
 
 Attributes such as:
-
 * `align`
 * `bgcolor`
 * `hspace`
@@ -590,7 +550,6 @@ are discouraged or obsolete in modern HTML practice.
 These attributes are mostly remnants of an earlier web where layout and style were done in HTML because CSS was not mature enough.
 
 HTML5 moved the platform toward a cleaner model:
-
 * structural meaning in HTML
 * visual control in CSS
 
@@ -653,7 +612,6 @@ The second version can be made to look similar, but it does not communicate hier
 ```
 
 **Why this matters**:
-
 * screen readers navigate by headings
 * search tools infer importance from headings
 * styling can still be customized later with CSS
@@ -684,7 +642,6 @@ So this is perfectly good:
 Forms are a strong example of HTML5’s design logic. A form is not just a set of boxes. It is a structured interaction between user and system.
 
 That is why HTML5 encourages:
-
 * `<label>`
 * semantic input types such as `email`, `url`, `date`
 * `<fieldset>` and `<legend>` when grouping related controls
@@ -705,7 +662,6 @@ That is why HTML5 encourages:
 ```
 
 The better version has:
-
 * an explicit label
 * an input type with semantic meaning
 * a named field that can be submitted properly
@@ -752,13 +708,11 @@ HTML5’s preference here follows the same principle: **describe intent, not onl
 HTML5 does not reject `<div>` or `<span>`. They are still necessary. But it treats them as **generic containers of last resort**.
 
 #### **Use `<div>` and `<span>` when**
-
 * there is no suitable semantic element
 * you need a styling or scripting hook
 * the role is purely structural and not semantically distinct
 
 #### **Do not overuse them when**
-
 * a semantic element exists
 * you are masking real document structure
 
@@ -787,7 +741,6 @@ HTML5 does not reject `<div>` or `<span>`. They are still necessary. But it trea
 HTML5 often encourages forms of markup that help software interpret content, even when the user sees almost no difference.
 
 Examples include:
-
 * `datetime` on `<time>`
 * `alt` on images
 * `lang` on documents or sections
@@ -841,7 +794,6 @@ This is an important point. Many discouraged patterns are not forbidden because 
 So HTML5 often tolerates bad legacy markup, but does not recommend it.
 
 This means:
-
 * **working** is not the same as **good**
 * browser support is not the same as semantic quality
 * backward compatibility should not be mistaken for modern best practice
@@ -1049,7 +1001,6 @@ This is a very effective test.
 Visual design still matters greatly. But HTML5 assumes that visual styling should be layered on top of semantic structure, not baked into the structure itself.
 
 That is why HTML5 tends to recommend:
-
 * semantic elements
 * native controls
 * proper headings
@@ -1058,7 +1009,6 @@ That is why HTML5 tends to recommend:
 * metadata and accessibility support
 
 And it tends to discourage:
-
 * obsolete presentational attributes
 * layout tables
 * fake controls
@@ -1070,7 +1020,6 @@ And it tends to discourage:
 ### **Final summary**
 
 **HTML5 recommends** what improves:
-
 * semantic clarity
 * accessibility
 * maintainability
@@ -1079,7 +1028,6 @@ And it tends to discourage:
 * multi-device and multi-tool compatibility
 
 **HTML5 discourages** what confuses:
-
 * structure with style
 * meaning with appearance
 * native semantics with custom imitation

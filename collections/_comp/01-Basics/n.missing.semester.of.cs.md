@@ -97,7 +97,6 @@ Mandatory arguments to long options are mandatory for short options too.
 -rw-r--r--  1 user group  4096 Sep 26 14:32 example.txt
 drwxr-xr-x  2 john users  4096 Sep 26 14:32 myfolder
 ```
-
 1. **File type and permissions (`-rw-r--r--`)**:
    - The first character indicates the file type:
      - `-` for a regular file
@@ -112,22 +111,16 @@ drwxr-xr-x  2 john users  4096 Sep 26 14:32 myfolder
      - `rwx` means read, write, execute separately. `-` means not permitted.
 
 > Permissions for directory is different. `r`: list contents `w`: create, rename, or delete files `x`: enter and search the directory.
-
 1. **Number of links (`1`)**:
    This represents the number of hard links to the file or directory. For directories, this count also includes subdirectories.
-
 2. **Owner (`user`)**:
    This is the username of the file's owner.
-
 3. **Group (`group`)**:
    This is the name of the group that owns the file.
-
 4. **File size (`4096`)**:
    This shows the size of the file in bytes. If it's a directory, the size represents the space taken by its structure (not its contents).
-
 5. **Modification date and time (`Sep 26 14:32`)**:
    This is the last modification date and time of the file.
-
 6. **Filename (`example.txt`)**:
    The name of the file or directory.
 

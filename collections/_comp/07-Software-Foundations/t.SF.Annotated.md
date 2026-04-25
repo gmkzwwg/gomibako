@@ -676,7 +676,6 @@ Inductive color : Type :=
 Let's look at this in a little more detail.
 
 An Inductive definition does two things:
-
 * It defines a set of new constructors. E.g., red, primary, true, false, monday, etc. are constructors.
 * It groups them into a new named type, like bool, rgb, or color.
 
@@ -797,7 +796,6 @@ Inductive nat : Type :=
 With this definition, 0 is represented by O, 1 by S O, 2 by S (S O), and so on.
 
 Informally, the clauses of the definition can be read:
-
 * O is a natural number (remember this is the letter "O," not the numeral "0").
 * S can be put in front of a natural number to yield another one -> - i.e., if n is a natural number, then S n is too.
 
@@ -1880,11 +1878,8 @@ If you accidentally deleted an exercise or changed its name, then make BasicsTes
 If the type is not ok, it means you proved the wrong thing: most likely, you accidentally modified the theorem statement while you were proving it. The autograder won't give you any points in this case, so make sure to correct the theorem.
 
 The assumptions are any unproved theorems which your solution relies upon. "Closed under the global context" is a fancy way of saying "none": you have solved the exercise. (Hooray!) On the other hand, a list of axioms means you haven't fully solved the exercise. (But see below regarding "Allowed Axioms.") If the exercise name itself is in the list, that means you haven't solved it; probably you have Admitted it.
-
 * Third, you will see the maximum number of points in standard and advanced versions of the assignment. That number is based on the number of stars in the non-optional exercises. (In the present file, there are no advanced exercises.)
-
 * Fourth, you will see a list of "Allowed Axioms". These are unproven theorems that your solution is permitted to depend upon, aside from the fundamental axioms of Coq's logic. You'll probably see something about functional_extensionality for this chapter; we'll cover what that means in a later chapter.
-
 * Finally, you will see a summary of whether you have solved each exercise. Note that summary does not include the critical information of whether the type is ok (that is, whether you accidentally changed the theorem statement): you have to look above for that information.
 
 Exercises that are manually graded will also show up in the output. But since they have to be graded by a human, the test script won't be able to tell you much about them.
@@ -1910,7 +1905,6 @@ First create a file named _CoqProject containing the following line (if you obta
 This maps the current directory (".", which contains Basics.v, Induction.v, etc.) to the prefix (or "logical directory") "LF". Proof General and CoqIDE read _CoqProject automatically, so they know to where to look for the file Basics.vo corresponding to the library LF.Basics.
 
 Once _CoqProject is thus created, there are various ways to build Basics.vo:
-
 * In Proof General or CoqIDE, the compilation should happen automatically when you submit the Require line above to PG.
 * For VSCode users, open the terminal pane at the bottom and then use the command line instructions below. (If you downloaded the project setup .tgz file, just doing `make` should build all the code.)
 * If you want to compile from the command line, generate a Makefile using the coq_makefile utility, which comes installed with Coq (if you obtained the whole volume as a single archive, a Makefile should already exist and you can skip this step):
@@ -1939,7 +1933,6 @@ Under the hood, make uses the Coq compiler, coqc. You can also run coqc directly
 ```
 
 But make also calculates dependencies between source files to compile them in the right order, so make should generally be preferred over explicit coqc.
-
 * As a last (but not terrible) resort, you can simply compile each file manually as you go. For example, before starting work on the present chapter, you would need to run the following command:
 
 ```coq
@@ -4865,7 +4858,6 @@ The next tactic, induction n says to Coq: We are going to show the goal by induc
 * P n = "if double n = double m, then n = m"
 
 holds, by showing
-
 * P O
 (i.e., "if double O = double m then O = m") and
 * P n → P (S n)
@@ -4875,7 +4867,6 @@ If we look closely at the second statement, it is saying something rather strang
 * "if double n = double m then n = m"
 
 then we can prove
-
 * "if double (S n) = double m then S n = m".
 To see why this is strange, let's think of a particular m -> - say, 5. The statement is then saying that, if we know
 * Q = "if double n = 10 then n = 5"
@@ -7600,7 +7591,6 @@ Inductive R : nat → nat → nat → Prop :=
   | c5 m n o (H : R m n o ) : R n m o
 .
 ```
-
 * Which of the following propositions are provable?
   * R 1 1 2
   * R 2 2 6
@@ -7652,7 +7642,6 @@ but it is not a subsequence of any of the lists
       [1;3]
       [5;6;2;1;7;3;8].
 ```
-
 * Define an inductive proposition subseq on list nat that captures what it means to be a subsequence. (Hint: You'll need three cases.)
 * Prove subseq_refl that subsequence is reflexive, that is, any list is a subsequence of itself.
 * Prove subseq_app that for any lists l1, l2, and l3, if l1 is a subsequence of l2, then l1 is also a subsequence of l2 ++ l3.
@@ -8484,7 +8473,6 @@ may seem obvious, but will not work very well.)
 ```coq
        ∀ l, pal (l ++ rev l).
 ```
-
 * Prove (pal_rev that)
 
 ```coq
@@ -10087,7 +10075,6 @@ In general, the automatically generated induction principle for inductive type t
 ```coq
       "P holds of c"
 ```
-
 * If c takes arguments x1:a1 ... xn:an, that case is:
 
 ```coq
@@ -10507,22 +10494,17 @@ Template:
 Proof: By induction on n.
 
 <one case for each constructor c of S...>
-
   * Suppose n = c a1 ... ak, where <...and here we state the IH for each of the a's that has type S, if any>. We must show <...and here we restate P(c a1 ... ak)>.
 <go on and prove P(n) to finish the case...>
-
   * <other cases similarly...> ☐
 
 Example:
-
 * Theorem: For all sets X, lists l : list X, and numbers n, if length l = n then index (S n) l = None.
 
 Proof: By induction on l.
-
   * Suppose l = []. We must show, for all numbers n, that, if length [] = n, then index (S n) [] = None.
 
 This follows immediately from the definition of index.
-
   * Suppose l = x :: l' for some x and l', where length l' = n' implies index (S n') l' = None, for any number n'. We must show, for all n, that, if length (x::l') = n then index (S n) (x::l') = None.
 
 ```coq
@@ -10538,7 +10520,6 @@ But this follows directly from the induction hypothesis, picking n' to be length
 Since inductively defined proof objects are often called "derivation trees," this form of proof is also known as induction on derivations.
 
 Template:
-
 * Theorem: <Proposition of the form "Q → P," where Q is some inductively defined proposition (more generally, "For all x y z, Q x y z → P x y z")>
   Proof: By induction on a derivation of Q. <Or, more generally, "Suppose we are given x, y, and z. We show that Q x y z implies P x y z, by induction on a derivation of Q x y z"...>
   <one case for each constructor c of Q...>
@@ -10547,7 +10528,6 @@ Template:
   <go on and prove P to finish the case...>
   * <other cases similarly...> ☐
 Example
-
 * Theorem: The ≤ relation is transitive -> - i.e., for all numbers n, m, and o, if n ≤ m and m ≤ o, then n ≤ o.
   Proof: By induction on a derivation of m ≤ o.
   * Suppose the final rule used to show m ≤ o is le_n. Then m = o and we must show that n ≤ m, which is immediate by hypothesis.
@@ -14311,7 +14291,6 @@ Qed.
 So far, we've been doing all our proofs using just a small handful of Coq's tactics and completely ignoring its powerful facilities for constructing parts of proofs automatically. Getting used to them will take some work -> - Coq's automation is a power tool -> - but it will allow us to scale up our efforts to more complex definitions and more interesting properties without becoming overwhelmed by boring, repetitive, low-level details.
 
 In this chapter, we'll learn about
-
 * tacticals, which allow tactics to be combined;
 * new tactics that make dealing with hypothesis names less fussy and more maintainable;
 * automatic solvers that can prove limited classes of theorems without any human assistance;
@@ -15840,7 +15819,6 @@ We've covered quite a bit of ground so far. Here's a quick review...
         -------------------> -   ~   ----------------------------
         software engineering       mechanical/civil engineering
 ```
-
   * inductively defined sets and relations
   * inductive proofs
   * proof objects

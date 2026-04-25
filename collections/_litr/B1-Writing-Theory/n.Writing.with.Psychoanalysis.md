@@ -165,33 +165,21 @@ The fourth caution is **cultural and historical humility**. Lacanian theory emer
 ## Short annotated bibliography
 
 **Primary Lacan texts and authoritative English editions**
-
 - **entity["book","Écrits","psychoanalytic essays 1966"]**. The Norton edition translated by **Bruce Fink** remains the standard English gateway and is the central source for “The Mirror Stage,” “Function and Field of Speech and Language,” and “Subversion of the Subject.” It is the best starting point for misrecognition, the speaking subject, and desire. citeturn4search0turn32view2turn32view4
-
 - **The Seminar, Book XI: The Four Fundamental Concepts of Psychoanalysis**. The Norton edition translated by **Alan Sheridan** is indispensable for the unconscious, repetition, transference, and drive. It is also the most teachable seminar for writers trying to think structure rather than theme. citeturn4search1turn31view0
-
 - **The Seminar, Book VII: The Ethics of Psychoanalysis**. The Norton edition translated by **Dennis Porter** is crucial for later Lacan’s treatment of the Real, das Ding, and desire’s ethical impasses. It is especially useful for writers interested in excess, taboo, sublimation, and fatal attraction. citeturn15search0turn31view0turn33view1
-
 - **The Seminar, Book XVII: The Other Side of Psychoanalysis**. The Norton edition translated by **Russell Grigg** is the key source for the **four discourses**, and the Duke volume *Jacques Lacan and the Other Side of Psychoanalysis* is an important companion for literary and cultural applications. Use this when writing institutions, classrooms, clinics, or ideological speech. citeturn4search2turn15search9turn32view0
-
 - **The Seminar, Book III: The Psychoses**. The English translation by **Russell Grigg** is central for Lacan’s account of psychosis, metaphor, and foreclosed signification. It matters for writers working on breakdown, delusion, or language unraveling, though it is less immediately portable than XI or XVII. citeturn17search1turn17search15
 
 **Contemporary secondary and bridge texts**
-
 - **entity["people","Joan Copjec","literary theorist"], *Read My Desire***. Still a major Anglophone intervention in Lacanian literary and cultural criticism; it stages Lacan against historicist habits of reading and remains valuable for critics writing about subjectivity, fantasy, and ideology. citeturn36search12turn36search16
-
 - **entity["people","Todd McGowan","film and theory scholar"], *The Cambridge Introduction to Jacques Lacan***. A recent, systematic English introduction that is especially useful for writers and critics needing a clear map of Lacan’s development rather than isolated keywords. citeturn36search7turn36search15
-
 - **entity["people","Arka Chattopadhyay","literary scholar"], *Beckett, Lacan and the Mathematical Writing of the Real***. A strong example of contemporary criticism using Lacan not just as theme but as a formal reading tool. Helpful for writers interested in experiment, abstraction, counting, emptiness, and the logic of formal disruption. citeturn37view1
-
 - **Adrian Johnston, “Jacques Lacan” in the Stanford Encyclopedia of Philosophy**. Not a substitute for the seminars, but a highly reliable reference for the Imaginary, Symbolic, Real, mirror stage, fantasy, and object a. It is especially useful when a writer needs conceptual precision quickly. citeturn31view0turn33view0turn33view1
 
 **Creative and critical examples of Lacan in literary practice**
-
 - **Elkin, *Scaffolding***. Valuable because the writer herself explicitly links the novel’s genesis to Lacan’s mirror stage and to the structure of lack and desire. This is one of the strongest contemporary cases of direct writerly uptake. citeturn6view0turn34view0
-
 - **Milan, *Analyzed by Lacan***. Important for showing how Lacanian analysis can become memoir and drama rather than simply criticism. Useful for writers working at the border of testimony, scene, and theory. citeturn39search0turn5view6
-
 - **Finlay, *The Jacques Lacan Foundation***. A good reminder that Lacan in fiction can be comic, satirical, class-conscious, and anti-reverential while still conceptually serious. Useful for writers who want theory to appear as social performance, not only as inward depth. citeturn42view0
 
 ## Open questions and limitations

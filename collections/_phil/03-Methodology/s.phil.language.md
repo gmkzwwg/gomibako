@@ -7,7 +7,6 @@ subclass: Methodology
 ## Continental Philosophy: Language, Style, and Core Concepts
 
 ### Core Concepts and Vocabulary
-
 - **Dasein (German, “being-there”)** – Heidegger’s term for human existence. Literally _Da_ “there” + _Sein_ “being”, Dasein names the mode of being unique to humans (Da-sein).
 > **Dasein（德语，“此在”）** – 海德格尔（Heidegger）用于描述人类生存的术语。字面直译为 *Da*（此/那里）+ *Sein*（在/存在）。“此在”指涉了人类特有的存在方式（Da-sein/在之中的那个人）。
 - **Intentionality** – (from Husserl) consciousness is always _about_ something: thoughts are directed toward objects. The _intentional content_ (noema) is how an object appears to consciousness.
@@ -48,7 +47,6 @@ subclass: Methodology
 > **Power/Knowledge（权力/知识）** – （福柯）这一见解认为权力关系与知识生产是不可分割的；何为“真理”是由权力结构塑造的。
 
 ### Key Distinctions
-
 - **Being vs Being (Sein vs. seienden)** – Heidegger stresses that _Being_ (Sein) is not just another being; it is the **ground** for beings. This _ontological difference_ (between beings and the Being of beings) is Heidegger’s central concern.
 > * **Being vs. Seiendes (Sein vs. Seiendes / 存在与存在者)** —— 海德格尔强调，**存在**（*Sein*）并非仅仅是另一种存在者；它是存在者的**根据**（ground）。这种“存在论差异”（即存在者与存在者的存在之间的区别）是海德格尔关注的核心问题。
 - **Essence vs Existence** – The distinction reversed by existentialists: traditionally an entity’s essence (nature) was thought prior to its existence; existentialists insist existence comes first.
@@ -63,7 +61,6 @@ subclass: Methodology
 > * **Immanence vs. Transcendence (内在性与超越性)** —— 许多欧陆思想家强调内在性（如黑格尔的精神内在干历史之中，斯宾诺莎的实体等），但他们也谈论某种超越性的“回响”（如德里达的“没有救世主主义的救世主性”，海德格尔的“本质/本现” *Wesen*）。
 
 ### Rhetorical and Argumentative Techniques
-
 - **Dialectical Method** – Continual interplay of opposites (thesis/antithesis), with each negating yet preserving the other (Aufhebung). Questions are probed by pushing them into contradiction and then seeing what emerges.
 > **Dialectical Method (辩证法)** —— 对立面（正/反）持续的相互作用，每一方都在否定另一方的同时也保留了对方（扬弃 *Aufhebung*）。通过将问题推向矛盾点并观察随后产生的结果来深入探究。
 - **Genealogical Critique** – Tracing a concept’s history to uncover its contingent origins. Rather than seeking an origin, genealogy shows how “truths” change over time and serve power, revealing multiple, conflicting origins.
@@ -78,7 +75,6 @@ subclass: Methodology
 > **Absence of strict formal proof (缺乏严格的形式证明)** —— 诉诸形式通常采取思想实验、现象学描述或文学典故，而非形式逻辑。其写作旨在激发洞见（insight）而非推导定理。
 
 ### Stylistic and Structural Features
-
 - **Abstract, Dense Syntax** – Sentences are often long and abstract, with layers of subordination, clauses, and nominalizations. Authors may write in the passive or deploy indefinite “one finds that…”, or use constructions like “Dasein is…” or “it is said that…” to generalize.
 > **抽象且稠密的句法 (Abstract, Dense Syntax)** —— 句子通常冗长且抽象，带有层层递进的从句、插入语和名词化表达。作者可能使用被动语态，或部署不定代词如“人们发现……”（one finds that…），或使用类似“此在是……”或“据说……”（it is said that…）的结构来进行概括。
 - **Paradox and Negative Definitions** – Continental authors define by what something is _not_ or by paradox. For example, Hegel defines new concepts as both preserving and negating old ones. Derrida often inverts claims (“there is no X except by way of Y”).
@@ -93,7 +89,6 @@ subclass: Methodology
 > **引用经典文本 (Citation of Canonical Texts)** —— 频繁影射经典作者（黑格尔、尼采、胡塞尔、海德格尔等），且往往不作解释。短语可能以引文形式出现，或作为对经典名句的变奏（例如转述亚里士多德、柏拉图或圣经短语）。
 
 ### Figurative Language and Neologisms
-
 - **Heidegger’s Wordplay** – Heidegger loves German etymology: he hyphenates compounds (e.g. _Da-sein_), coins forms (e.g. _Da-sein_ vs _Da-seyn_), and revives old spellings (“Seyn” or “Beyng” for _Sein_). He marks out roots: e.g. _Ge-stell_ (enframing) is _Gestell_ split to suggest _Gestell – stellen_. Translators note his use of hyphens and archaic forms (e.g. _seyn_, _istet_, _Ereignis_ spelled with capital).
 > **海德格尔式的文字游戏 (Heidegger’s Wordplay)** —— 海德格尔钟情于德语词源学：他使用连字符连接复合词（如 *Da-sein*），创造新形式（如 *Da-sein* 对比 *Da-seyn*），并复活古拼法（用 *Seyn* 或 *Beyng* 代替 *Sein*）。他标出词根：例如将“集置”（*Ge-stell*）拆分，以暗示 *Gestell* 与 *stellen*（放置）的关系。译者通常会注明他对连字符和古体形式（如 *seyn*、*istet*、大写的 *Ereignis*）的使用。
 - **Derrida’s Neologisms** – Derrida deliberately alters spellings to signal meaning-shifts. _Différance_ (with an ‘a’) conflates différer “to differ” and différer “to defer”. _Pharmakon_ (Greek) plays on “cure” vs “poison.” He coins terms like “archi-writing” (_archi-écriture_) to challenge _arche_ (origin).
@@ -104,7 +99,6 @@ subclass: Methodology
 > **拉丁语与希腊语术语 (Latin and Greek Terms)** —— 许多希腊语或拉丁语借词未经翻译便直接出现（如 *aletheia*、*Gestell*、*Dasein*、*intentio*、*ontologia*）。当某个词带有独特的共鸣时，作者常在不同语言间自由切换。
 
 ### Typical Phrases and Constructions
-
 - **“Immer schon” / “always already”** – A leitmotif: something is _“always already”_ the case, implying it precedes any determination. (E.g. “Being is _immer schon_ there before Dasein grasps it.”)
 > **“Immer schon” / “Always already” （总是已经）** – 一个主导动机：某事“总是已经”如此，暗示它先于任何规定性。（例如：“在‘此在’把握‘存在’之前，存在‘总是已经’在那里了。”）
 - **“What is at stake…”** – Philosophers frame importance by “what is at stake is…” or “in the last analysis, X boils down to…”
@@ -125,7 +119,6 @@ subclass: Methodology
 > **诉诸权威 (References to Authorities)** – “亚里士多德称……”、“正如胡塞尔所注意到的……”，通常不加翻译（如直接引用拉丁语或古希腊语）。
 
 ### Reading and Writing Practice
-
 - **Engage the Original Terms**: Whenever encountering a German, French, or Latin term (e.g. _Dasein_, _différance_, _transcendental_, _Ereignis_), note its meaning and resist the urge to replace it with a simple English gloss. Continental authors often leave such terms untranslated for effect.
 > **切近原词 (Engage the Original Terms)**：每当遇到德语、法语或拉丁语术语（如 *Dasein*、*différance*、*transcendental*、*Ereignis*）时，记录其含义，并抵制将其简单替换为英语释义的冲动。欧陆作者常为了效果而保留这些词不翻译。
 - **Break Long Sentences into Clauses**: Continental sentences often pack many ideas. Identify the main clause and then add subordinate clauses. Pay attention to negatives or qualifiers (“not only…but also,” “even if,” etc.).
@@ -164,10 +157,8 @@ We present these notes in a high-density, logically ordered format. Each section
 Analytic writing strives for a **formally clear, minimalist style**. Arguments are often broken into explicit premises and conclusions, and sentences are crafted to avoid ambiguity. Some guidelines:
 
 >分析性写作追求一种**形式清晰、极简的风格**。论证通常被拆解为明确的前提与结论，句子的构建旨在消除歧义。一些准则如下：
-
 - **Keep sentences concise and unambiguous:** Prefer short, declarative sentences or clearly structured complex sentences. Avoid unnecessary qualifiers or digressions that obscure the main point. _Example:_ Instead of “The nature of freedom, which is a concept subject to various interpretations, is arguably a matter of some debate,” write “Freedom is a contested concept.”
 > **保持句子简洁且无歧义**：优选简短的陈述句或结构清晰的复合句。避免使用不必要的限定词或会遮蔽主旨的离题话。*示例*：不要写“自由的本质作为一个受多种解释影响的概念，可以说是存在一些争议的问题”，而应写成“**自由是一个具有争议的概念。**”
-
 - **One idea at a time:** Each sentence (or tight group of sentences) should convey a single step of an argument or exposition. This syntactic simplicity makes the logical structure transparent.
 > **一次只表达一个观点**：每个句子（或紧密结合的句组）应传达论证或阐述中的单一步骤。这种句法上的简洁性能使逻辑结构变得透明。
 - **Explicit structure and signposting:** Use straightforward phrases to **announce your game plan**. For instance: “First, I will define X. Second, I examine Y. Finally, I argue that Z.” This helps the reader follow the argument’s progression. In academic philosophy, authors often literally enumerate points (“First…”, “Second…”, “Finally…”) to ensure clarity.
@@ -189,7 +180,6 @@ Analytic writing strives for a **formally clear, minimalist style**. Arguments a
 Analytic philosophy has a core technical vocabulary. Here are some essential terms you’ll encounter frequently, along with concise definitions:
 
 > 分析哲学拥有一套核心技术词汇。以下是你经常会遇到的基本术语及其简洁定义：
-
 - **Argument:** A set of statements with premises offered in support of a conclusion. Philosophical writing is built from arguments. _Example:_ “Descartes argues that **\[Premise\]** the mind can exist without the body; therefore, **\[Conclusion\]** the mind is distinct from the body.” An **argument** in philosophy isn’t a quarrel, but a logical structure consisting of claims and support.
 > **论证 (Argument)**：一套命题，其中前提被用来支持一个结论。哲学写作由论证构建而成。*示例*：笛卡尔论证道：**[前提]** 心灵可以不依赖身体而存在；因此，**[结论]** 心灵与身体是截然不同的。在哲学中，“论证”不是争吵，而是一个由主张和支持理由构成的逻辑结构。
 - **Premise & Conclusion:** A **premise** is a statement that provides reason or evidence, and a **conclusion** is the statement that the premises are meant to support. In a well-crafted argument, the connection is often signaled by phrases like “since…” (before a premise) or “therefore…” (before the conclusion). _Example:_ “**Premise:** All humans are mortal. **Premise:** Socrates is human. **Conclusion:** Therefore, Socrates is mortal.”
@@ -224,12 +214,10 @@ _(These terms represent the core vocabulary you'll repeatedly encounter. By lear
 Analytic philosophers frequently employ a handful of classic argument forms and reasoning strategies. Understanding these will help you both follow and formulate philosophical arguments:
 
 > 分析哲学家经常采用几种经典的论证形式和推理策略。理解这些内容将有助于你追踪并构建哲学论证：
-
 - **Modus Ponens (Affirming the Antecedent):** If P then Q; P is true; therefore Q is true. This form is ubiquitous. _Example:_ “**If** a being is omniscient, then it knows all truths. **God is omniscient. Therefore, God knows all truths.**” The inference is formally valid (modus ponens).
 > **肯定前件 (Modus Ponens):** 如果 P 则 Q；P 为真；因此 Q 为真。这种形式无处不在。*示例*：“**如果**一个存在者是全知的，那么它知道所有真理。**上帝是全知的。因此，上帝知道所有真理。**”该推论在形式上是有效的。
 - **Modus Tollens (Denying the Consequent):** If P then Q; Q is false; therefore P is false. _Example:_ “**If** the mind were purely physical, it couldn’t have non-physical properties. **But** the mind _does_ have non-physical properties (suppose we argue qualia are non-physical). **Therefore,** the mind is not purely physical.” This is a common move: assume an implication, then show the consequent fails, so the antecedent must fail.
 > **否定后件 (Modus Tollens):** 如果 P 则 Q；Q 为假；因此 P 为假。*示例*：“**如果**心灵纯粹是物理的，它就不可能拥有非物理属性。**但**心灵*确实*拥有非物理属性（假设我们论证‘感质’是非物理的）。**因此**，心灵不纯粹是物理的。”这是一个常用手法：先假设一个蕴含关系，然后展示其后果失效，从而得出前件必定失效的结论。
-
 - **Reductio ad Absurdum (Reduction to Absurdity):** A powerful argumentative move where you **assume the negation** of what you want to prove, then show that this assumption leads to a **contradiction or absurd result**. Concluding that the assumption must be false, you indirectly establish your original claim. In essence, _if denying X leads to nonsense, X must be true_.
 > **归谬法 (Reductio ad Absurdum):** 一种强有力的论证手法。你先**假设**你想要证明命题的**否定面**为真，然后展示这一假设会导致**矛盾或荒谬的结果**。由于假设导致了谬误，你便间接地确立了原始主张。本质上，*如果否定 X 会导致胡言乱语，那么 X 必定为真*。
   - _Example:_ To prove that there are no round squares, one might say: **Assume (for reductio)** that a round square exists. **Then** it has a shape that is both wholly round and wholly square at the same time – a logical impossibility. **Thus,** the assumption is untenable, so **no round square can exist**.
@@ -238,14 +226,12 @@ Analytic philosophers frequently employ a handful of classic argument forms and 
     Reductio arguments often employ phrases like “Suppose, for the sake of argument, that _not-X_; then …; but that’s a contradiction/absurd; hence X.” It “seeks to establish a contention by deriving an absurdity from its denial”.
   > *哲学示例*：在伦理学中，可以**通过归谬法论证**：“假设不存在客观的道德真理（假设道德相对主义为真）。那么说‘纳粹大屠杀在道德上是错误的’就不会是客观真实的——这是一个荒谬的后果。因此，该设想是错误的；某些道德真理必须是客观的。”  
   > 归谬论证通常使用诸如“为了论证起见，假设‘非 X’；那么……；但这产生了矛盾/荒谬；因此 X 成立”等短语。它“旨在通过从否定项中推导出荒谬性来确立一个论点”。
-
 - **Dilemma:** An argument that forces a choice between **two (or a few) options**, each of which has some consequence. A dilemma often has the form: “Either A or B. If A, then X. If B, then X. Therefore, X is inevitable.” In a **philosophical dilemma**, neither option may be appealing (hence the phrase “horns of a dilemma”).
 > **两难困境 (Dilemma):** 强制在**两个（或少数几个）选项**中做出选择的论证，每个选项都有某种后果。形式通常为：“要么 A 要么 B。如果 A，则 X。如果 B，则 X。因此，X 是不可避免的。”在**哲学两难**中，两个选项往往都不讨喜（故有短语“陷入两难困境的两个犄角”）。
   - _Example (moral dilemma):_ “Either lie to save your friend (Option A), or tell the truth and betray your friend (Option B). Lying violates your moral rule against falsehood (Consequence X), while betraying your friend violates loyalty (Consequence X). **Either way,** you violate a moral principle.” Here, the person is caught on the horns of a dilemma: both choices lead to a problematic outcome.
   > *示例（道德两难）*：“要么为了救朋友而撒谎（选项 A），要么说实话而背叛朋友（选项 B）。撒谎违反了反对虚假的道德准则（后果 X），而背叛朋友则违反了忠诚准则（后果 X）。**无论哪种方式**，你都违反了一项道德原则。”
   - Philosophers often try to “escape the horns” of a dilemma by challenging the either/or choice (showing a third alternative) or denying that the consequences are truly unacceptable. Recognizing when an author is setting up a dilemma (“We have two possibilities, and neither is satisfactory…”) will help you follow their strategy.
   > 哲学家经常尝试通过挑战“非此即彼”的选择（展示第三种替代方案）或否认后果确实不可接受来“逃离两难的犄角”。识别作者何时在设置两难境地（“我们有两种可能性，但两者都不令人满意……”）将有助于你理解其策略。
-
 - **Thought Experiment:** A **hypothetical scenario** devised to test intuitions or illustrate a concept. Thought experiments are often prefaced by “Imagine that…” or “Suppose…”. They allow philosophers to **explore consequences in imagination** when real experiments are impossible, unethical, or unfeasible.
 > **思想实验 (Thought Experiment):** 为测试直觉或阐明概念而设计的**假设性情景**。思想实验通常以“想象一下……”或“假设……”开头。当现实实验不可能、不道德或不可行时，它们允许哲学家**在想象中探索后果**。
   - _Example:_ Descartes’ **Evil Demon** thought experiment: _Imagine an all-powerful demon bent on deceiving you about everything. Could you know anything for certain?_ This scenario tests the limits of skepticism.
@@ -254,7 +240,6 @@ Analytic philosophers frequently employ a handful of classic argument forms and 
   > 伦理学中，朱迪丝·汤姆森的**小提琴家**思想实验让你想象醒来时发现自己被接在一位成名的昏迷小提琴家身上，以阐明关于身体自主权的观点。
   - In ethics, Judith Thomson’s **Violinist** thought experiment asks you to imagine waking up plugged into a famous unconscious violinist to illustrate a point about bodily autonomy (an analogy for abortion ethics). Thought experiments like these help clarify our intuitions and the implications of theories. When reading, if a paragraph starts with “Suppose…” or “Imagine…”, a thought experiment is underway. Pay attention to what principle the author is testing or demonstrating with it.
   > 思想实验有助于澄清我们的直觉和理论的影响。阅读时，如果一段话以“假设……”或“想象……”开头，说明思想实验正在进行。请关注作者正通过它测试或演示什么原则。
-
 - **Analogy:** While analytic philosophers generally avoid flowery metaphor, they _do_ use analogies for argument. **Arguments by analogy** claim that because two situations are similar in relevant ways, what holds for one should hold for the other.  
   _Example:_ Paley’s **watchmaker analogy** compares the complexity of living organisms to a watch; since a watch’s complexity implies a designer, by analogy, so do organisms. In evaluating analogies, philosophers ask: are the two cases truly parallel in the relevant features?
 > **类比 (Analogy):** 虽然分析哲学家通常避免华丽的隐喻，但他们*确实*使用类比进行论证。**类比论证**主张：因为两个情况在相关方面相似，所以适用于其中一个的情况也应适用于另一个。*示例*：帕利的**钟表匠类比**将生物体的复杂性与钟表进行对比；既然钟表的复杂性暗示了一位设计者，那么通过类比，生物体也是如此。在评估类比时，哲学家会问：这两个案例在相关特征上真的平行吗？
@@ -274,7 +259,6 @@ Understanding these forms helps in two ways: when **reading**, you can identify 
 Analytic philosophers are careful with meanings and reference. There are classic **distinctions** you should know, as they occur often to avoid confusion:
 
 > 分析哲学家对词义与指称极其谨慎。为了避免混淆，有几种经典的**区分（distinctions）**是你必须掌握的，因为它们在文本中频繁出现：
-
 - **Use vs. Mention:** The _use–mention distinction_ is fundamental. **Using** a word is employing it to refer to the thing in the world; **mentioning** a word means referring to the word _itself_ (typically by putting it in quotes or italics).
   - _Example:_
     1.  **Use:** _Cheese is derived from milk._ – Here we use “cheese” to talk about the dairy product (cheese itself).
@@ -285,7 +269,6 @@ Analytic philosophers are careful with meanings and reference. There are classic
 > 1. **使用**：*奶酪（Cheese）源自牛奶。* ——此处我们使用“奶酪”来谈论乳制品（奶酪本身）。  
 > 2. **提及**：*“Cheese”一词源自古英语词汇 ċēse。* ——此处我们提及“Cheese”这个单词，而非食物。  
 > 哲学家经常强调这一区分以避免混乱。例如，“**猫**有四个字母”是错的（猫这种动物没有字母），而“**‘猫’**有四个字母”是对的（此处我们在提及“猫”这个词）。在文本中，你会看到引号或斜体来标示“提及”。不尊重这一区分会导致谬论或**范畴错误（category mistakes）**。务必自问：我是在谈论事物，还是在谈论关于该事物的单词/概念？
-
 - **De re vs. De dicto** (Latin: “of the thing” vs “of the saying”): This distinction comes up in contexts of belief, desire, and modality, to differentiate **what** a statement is about.
   - A **de dicto** statement is about a _description or proposition_ (“what is said”), whereas **de re** is about a _particular thing_ (“the thing itself”).
   - _Example (belief context):_ Lois Lane believes that “Superman can fly.” This can be read de dicto or de re:
@@ -332,7 +315,6 @@ _Being precise about these distinctions prevents many misunderstandings. For exa
 ### 5\. Logical Connectors and Idiomatic Phrases
 
 Analytic philosophy employs a repertoire of **connective phrases** to organize arguments and guide readers. Mastering these phrases will improve both comprehension and writing flow. Below are categories of common logical connectors and phrases, with examples:
-
 - **Introducing assumptions or hypothetical scenarios:**
   - “**Suppose (that)…**” (e.g., “Suppose that free will is an illusion…” – used to set up a scenario or assumption to explore.)
   - “**Assume for the sake of argument that…**” (e.g., “Assume, for the sake of argument, that the soul exists…” – a temporary assumption to see where it leads.)
@@ -343,7 +325,6 @@ Analytic philosophy employs a repertoire of **connective phrases** to organize a
 > “**Assume for the sake of argument that…**” （**为了论证起见，假定……**）：（例如：“为了论证起见，假定灵魂是存在的……”——这是一种临时性的假设，旨在观察其逻辑走向。）  
 > “**Let us grant…**” 或 “**Granted, …**” （**即便承认/准予……**）：（例如：“即便承认前提是真的，我们仍需审查其结论。”——通常用于暂时性地让步于某个观点。）  
 > “**Imagine…**” 或 “**Consider a case in which…**” （**想象……/考虑一种……的情况**）：（用于引入思想实验或案例：“想象一个时间旅行成为可能的世界……”）。
-
 - **Drawing inferences or stating a conclusion:**
   - “**Therefore, …**” (e.g., “The mind cannot be identical to the brain. Therefore, dualism must be true.”)
   - “**Thus, …**” (e.g., “He has a right to liberty; thus, interfering with his choices is prima facie wrong.”)
@@ -454,7 +435,6 @@ When writing, using these phrases will make your arguments easier to follow. Ins
 Beyond logic and vocabulary, analytic philosophy has a distinctive style and tone. Adopting these conventions will make your writing sound at home in philosophical discourse:
 
 > 除了逻辑和词汇，分析哲学还拥有一套独特的风格与语调。采纳这些惯例将使你的写作在哲学话语体系中显得地道：
-
 - **Avoid Metaphorical or Figurative Language:** Analytic philosophers generally prefer literal clarity to poetic flourish. Metaphors are used sparingly and usually only to clarify an abstract point, not to obfuscate. In fact, students are often advised to _“avoid metaphor and analogy”_ in formal arguments – or use them only with clear explanatory purpose. For example, rather than saying “Justice is the lifeblood of society,” one would more directly say “Justice is essential for a well-functioning society.” The aim is to prevent the reader from having to interpret figurative language when precision is needed. (Of course, famous philosophers do occasionally use metaphors – Wittgenstein’s “beetle in a box” or Plato’s cave – but these are carefully introduced thought experiments, not flowery embellishments.)
 > **避免隐喻或比喻性语言 (Avoid Metaphorical or Figurative Language)**：分析哲学家通常偏好字面上的清晰度，而非诗意的辞藻。隐喻被极少使用，且通常仅用于澄清某个抽象观点，而非为了故弄玄虚。事实上，学生常被建议在正式论证中“**避免隐喻和类比**”——或者仅在具有明确解释目的时才使用它们。*示例*：与其说“正义是社会的命脉”，不如更直接地表述为“正义对于功能良好的社会至关重要”。其目的是防止读者在需要精确性的地方不得不去解读比喻。（当然，著名哲学家偶尔也会使用隐喻——如维特根斯坦的“盒子里的甲虫”或柏拉图的“洞穴”——但这些都是经过谨慎引入的思想实验，而非华丽的修饰。）
 - **Hedging and Precision:** It’s rare to see overconfident, absolute claims in good philosophical writing. Instead, philosophers **hedge** their claims to be precise and not overstate. Common hedging words/phrases include: “**it seems plausible that…**”, “**arguably, …**”, “**it is likely that…**”, “**perhaps…**”, “**in general…**”, “**to some extent…**”, “**one might say…**”, “**we have reason to believe…**”. For example: rather than “This _proves_ that mind and body are distinct,” a cautious philosopher might write “This **suggests** that mind and body are distinct,” unless it truly is a watertight proof. Hedging shows humility and precision – acknowledging exceptions, uncertainty, or that an argument provides evidence but not indisputable proof. Use hedging to avoid making claims stronger than your evidence warrants. Readers will trust a carefully phrased “_It seems, then, that under these assumptions, X is true_” more than a bombastic “_X is definitely true_” when X is debatable.
