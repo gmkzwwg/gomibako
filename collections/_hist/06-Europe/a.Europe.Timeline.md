@@ -44,6 +44,8 @@ Timeline:
   * **Post Cold War Europe**
     * Integration, expansion of the **European Union**, post-socialist transformation, migration debates, financial crises, war on Europe’s margins, and renewed geopolitical insecurity define the present age.
 
+**Europe History Timeline**
+
 Timeline:
 * c. 1,000,000–850,000 BCE
   * **The first known human settlement of Europe**
