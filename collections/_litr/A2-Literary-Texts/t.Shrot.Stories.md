@@ -7,7 +7,6 @@ subclass: Literary-Texts
 
 ## The Immortal, Jorge-Luis Borges
 
-
 ### **PREFACE**
 
 *Solomon saith: There is no new thing upon the earth. So that as Plato had an imagination, that all knowledge was but remembrance; so Solomon giveth his sentence, that all novelty is but oblivion.*  
@@ -61,12 +60,6 @@ As I recall, my travails began in a garden in hundred-gated Thebes, in the time 
 > * privation [praɪˈveɪʃən]；匮乏；缺失；也可指艰苦生活中的剥夺状态
 > * vagrant [ˈveɪɡrənt]；漂泊的；流浪的；此处形容沙漠路线无定、方向不明
 
-**战争挫败与永生追求之间的关系**
-
-*这一段的叙述表面上是罗马军官鲁福寻找永生之城的起点，但真正推动他的并不是对智慧或神圣真理的追求，而是一种失败后的补偿心理。他参加了埃及战争，却“毫无荣耀”；他身处帝国胜利的边缘，却几乎没有亲眼见到“战神马尔斯”的面容。这里的“匮乏”不是物质匮乏，而是英雄身份的匮乏。他没有在战争中获得足以证明自己的功绩，于是把寻找永生之城当成另一种更宏大的战役。博尔赫斯将“军事荣誉”与“永生追求”连在一起，暗示人类对永恒的欲望往往并不高贵，它可能只是从世俗失败中转移出来的欲望。鲁福不是因为真正理解永生而出发，而是因为不能忍受自己只是普通人；这也预示了后文的反讽：他最终获得永生，却发现永生并不带来荣耀，反而摧毁个体意义。*
-
----
-
 My travails, I have said, began in a garden in Thebes. All that night I did not sleep, for there was a combat in my heart. I rose at last a little before dawn. My slaves were sleeping; the moon was the color of the infinite sand. A bloody rider was approaching from the east, weak with exhaustion. A few steps from me, he dismounted and in a faint, insatiable voice asked me, in Latin, the name of the river whose waters laved the city's walls. I told him it was the Egypt, fed by the rains. *"It is another river that I seek,"* he replied morosely, *"the secret river that purifies men of death."* Dark blood was welling from his breast. He told me that the country of his birth was a mountain that lay beyond the Ganges; it was rumored on that mountain, he told me, that if one traveled westward, to the end of the world, one would come to the river whose waters give immortality. He added that on the far shore of that river lay the City of the Immortals, a city rich in bulwarks and amphitheaters and temples. He died before dawn, but I resolved to go in quest of that city and its river. When interrogated by the torturer, some of the Mauritanian prisoners confirmed the traveler's tale: One of them recalled the Elysian plain, far at the ends of the earth, where men's lives are everlasting; another, the peaks from which the Pactolus flows, upon which men live for a hundred years. In Rome, I spoke with philosophers who felt that to draw out the span of a man's life was to draw out the agony of his dying and multiply the number of his deaths. I am not certain whether I ever believed in the City of the Immortals; I think the task of finding it was enough for me. Flavius, the Getulian proconsul, entrusted two hundred soldiers to me for the venture; I also recruited a number of mercenaries who claimed they knew the roads, and who were the first to desert.
 
 > 我已经说过，我的苦难始于底比斯的一座花园。那一整夜我都无法入睡，因为我的内心正在交战。黎明前不久，我终于起身。我的奴隶们仍在沉睡；月亮呈现出无边沙砾的颜色。一个浑身是血的骑手正从东方靠近，他因极度疲惫而虚弱不堪。离我几步远时，他下了马，用拉丁语，以微弱而贪切的声音问我：洗濯这座城市城墙的那条河叫什么名字。我告诉他，那是埃及河，由雨水滋养。他阴郁地回答：“我寻找的是另一条河，那条秘密的河，能洗净人身上的死亡。”乌黑的血正从他的胸口涌出。他告诉我，他出生的地方是一座位于恒河之外的山；他说，那座山上流传着一个传闻：如果一个人向西行进，直到世界尽头，便会来到那条赋予人永生之水的河。他又说，在那条河的彼岸，坐落着永生者之城；那是一座拥有众多堡垒、阶梯剧场和神庙的城市。他在黎明前死去，但我决心去寻找那座城市和那条河。当一些毛里塔尼亚俘虏受到拷问者审讯时，他们证实了这个旅人的故事：其中一人想起了极远地尽头的极乐平原，那里人的生命永不终结；另一人则想起帕克托洛斯河发源的群峰，那里的人能活上一百年。在罗马，我曾同一些哲学家交谈；他们认为，延长人的寿命，就是延长其临死的痛苦，并使他的死亡次数成倍增加。我并不确定自己是否真正相信过永生者之城；我想，对我来说，寻找它这一任务本身就已经足够。盖图利亚总督弗拉维乌斯把两百名士兵交给我，供我远征；我还招募了一些雇佣兵，他们声称自己熟悉道路，而他们也是最先逃跑的人。
@@ -85,9 +78,9 @@ My travails, I have said, began in a garden in Thebes. All that night I did not 
 > * proconsul [prəʊˈkɒnsəl]；总督；罗马共和国和帝国时期治理行省的高级官员
 > * mercenaries [ˈmɜːsənəriz]；雇佣兵；为报酬而非国家或信念作战的人
 
-**古典地理并不是背景，而是文本的迷宫**
+**战争挫败与永生追求之间的关系**
 
-*这一段密集出现底比斯、红海、恒河、极乐平原、帕克托洛斯河、阿尔西诺厄、穴居人、加拉曼特人、奥吉拉人、塔耳塔罗斯等古典地名和民族名。它们并不只是营造异域气氛，而是在模仿古代地理志、史书和史诗的写法。读者仿佛进入一份由普林尼、荷马、罗马军事记录和神话传说拼接而成的文献。这样写有两个效果：第一，它让小说看起来像真实古籍的转录；第二，它使叙述者的记忆本身变成一个由书本知识构成的迷宫。鲁福以为自己在穿越现实沙漠，其实读者看到的是一个由古典文本铺成的沙漠。所谓“寻找永生者之城”，从一开始就是在寻找一个文学、神话和记忆共同制造出来的地方。*
+*这一段的叙述表面上是罗马军官鲁福寻找永生之城的起点，但真正推动他的并不是对智慧或神圣真理的追求，而是一种失败后的补偿心理。他参加了埃及战争，却“毫无荣耀”；他身处帝国胜利的边缘，却几乎没有亲眼见到“战神马尔斯”的面容。这里的“匮乏”不是物质匮乏，而是英雄身份的匮乏。他没有在战争中获得足以证明自己的功绩，于是把寻找永生之城当成另一种更宏大的战役。博尔赫斯将“军事荣誉”与“永生追求”连在一起，暗示人类对永恒的欲望往往并不高贵，它可能只是从世俗失败中转移出来的欲望。鲁福不是因为真正理解永生而出发，而是因为不能忍受自己只是普通人；这也预示了后文的反讽：他最终获得永生，却发现永生并不带来荣耀，反而摧毁个体意义。*
 
 ---
 
@@ -104,9 +97,9 @@ Subsequent events have so distorted the memory of our first days that now they a
 > * Augiles [ˈɔːdʒɪliːz]；奥吉拉人；古典文献中记载的北非民族
 > * Tartarus [ˈtɑːtərəs]；塔耳塔罗斯；希腊神话中的深渊或冥府极深处
 
-**沙漠、迷宫与死亡恐惧**
+**古典地理并不是背景，而是文本的迷宫**
 
-*这一段最重要的空间意象有两个：沙漠和迷宫。沙漠是无方向的空间，迷宫则是方向过多的空间；一个让人因为缺少路径而迷失，一个让人因为路径过多而无法抵达中心。鲁福在沙漠中失水、受伤、失散，最后梦见一座中心有井的迷宫：水明明近在眼前，却因路径错综复杂而无法到达。这是博尔赫斯式困境的典型形式：真理、救赎或永生并非完全不可见，问题在于人无法穿过通向它的结构。这里的井既是生命之水，也是永生之河的预演；但它被放在迷宫中心，说明永生从一开始就不是单纯的恩赐，而是一个会把人困住的结构。鲁福害怕死亡，所以寻找永生；但博尔赫斯让他在寻找永生之前，先体验一种被无限路径折磨的“提前死亡”。*
+*这一段密集出现底比斯、红海、恒河、极乐平原、帕克托洛斯河、阿尔西诺厄、穴居人、加拉曼特人、奥吉拉人、塔耳塔罗斯等古典地名和民族名。它们并不只是营造异域气氛，而是在模仿古代地理志、史书和史诗的写法。读者仿佛进入一份由普林尼、荷马、罗马军事记录和神话传说拼接而成的文献。这样写有两个效果：第一，它让小说看起来像真实古籍的转录；第二，它使叙述者的记忆本身变成一个由书本知识构成的迷宫。鲁福以为自己在穿越现实沙漠，其实读者看到的是一个由古典文本铺成的沙漠。所谓“寻找永生者之城”，从一开始就是在寻找一个文学、神话和记忆共同制造出来的地方。*
 
 ---
 
@@ -136,6 +129,10 @@ We ranged the width and breadth of other deserts—deserts of black sand, where 
 > * bewildering [bɪˈwɪldərɪŋ]；令人迷乱的；令人困惑的
 > * entangled [ɪnˈtæŋɡəld]；纠缠的；错综复杂的
 
+**沙漠、迷宫与死亡恐惧**
+
+*这一段最重要的空间意象有两个：沙漠和迷宫。沙漠是无方向的空间，迷宫则是方向过多的空间；一个让人因为缺少路径而迷失，一个让人因为路径过多而无法抵达中心。鲁福在沙漠中失水、受伤、失散，最后梦见一座中心有井的迷宫：水明明近在眼前，却因路径错综复杂而无法到达。这是博尔赫斯式困境的典型形式：真理、救赎或永生并非完全不可见，问题在于人无法穿过通向它的结构。这里的井既是生命之水，也是永生之河的预演；但它被放在迷宫中心，说明永生从一开始就不是单纯的恩赐，而是一个会把人困住的结构。鲁福害怕死亡，所以寻找永生；但博尔赫斯让他在寻找永生之前，先体验一种被无限路径折磨的“提前死亡”。*
+
 **语言与无语言的对立**
 
 *这一段已经埋下后文“永生者沉默”的关键线索。穴居人“没有任何语言交流”，而鲁福的叙述却充满拉丁语、神话名词、古典地理和军事术语。也就是说，文本一边展示极端语言化的世界，一边展示无语言的存在状态。这个对立很重要：凡人依靠语言保存记忆、组织历史、追求荣耀；永生者则因为拥有无限时间，反而逐渐放弃语言、历史和行动。鲁福此时还站在语言、荣耀和帝国秩序的一边，所以他无法理解沉默的穴居人。后文当他发现穴居人与永生者的关系时，这种对立会被反转：沉默不是原始落后，而可能是永生之后对世界失去兴趣的结果。*
@@ -161,12 +158,6 @@ When I disentangled myself at last from that nightmare, I found that my hands we
 > * infest [ɪnˈfest]；大量出没；侵扰；常带贬义
 > * grottoes [ˈɡrɒtəʊz]；洞窟；岩洞
 
-**死亡边缘的身体经验与永生欲望**
-
-*这一段把鲁福从“寻找永生”的抽象愿望，推入极端具体的身体痛苦之中。他不再是军官、征服者或追求荣耀的人，而是一个被捆绑、受伤、口渴、舔水、乞讨蛇肉的肉体。博尔赫斯在这里故意降低人物身份：罗马护民官的尊严被彻底剥去，只剩下动物性的求生本能。正因为如此，永生之城在对岸闪耀时，带有强烈反讽意味。它看似是超越死亡的目标，但鲁福抵达它的前提，却是先经历一种近乎去人化的生存状态。永生不是从高贵的哲学沉思开始，而是从口渴、血污、谵妄和蛇肉开始。博尔赫斯借此提示：人追求永恒时，往往不能摆脱身体；相反，身体的脆弱正是永生欲望最深的来源。*
-
----
-
 Urgent thirst lent me temerity. I estimated that I was some thirty paces from the sand; I closed my eyes and threw myself down the mountain, my hands bound behind my back. I plunged my bloodied face into the dark water and lapped at it like an animal. Before I lost myself in sleep and delirium once more, I inexplicably repeated a few words of Greek: *Those from Zeleia, wealthy Trojans, who drink the water of dark Aisepos...*
 
 > 急迫的口渴给了我鲁莽的勇气。我估计自己离沙地大约三十步；于是闭上眼睛，双手被绑在背后，从山上滚落下去。我把血污的脸扎进黑水里，像动物一样舔饮。在我再次坠入睡眠和谵妄之前，我莫名其妙地重复了几句希腊语：那些来自泽勒亚的富有的特洛伊人，饮着幽暗的埃塞波斯河水……
@@ -190,6 +181,10 @@ I cannot say how many days and nights passed over me. In pain, unable to return 
 > * plead [pliːd]；恳求；申辩
 > * severed [ˈsevəd]；割断；切断
 > * abominated [əˈbɒmɪneɪtɪd]；令人憎恶的；被厌弃的；来自 abominate，强烈厌恶
+
+**死亡边缘的身体经验与永生欲望**
+
+*这一段把鲁福从“寻找永生”的抽象愿望，推入极端具体的身体痛苦之中。他不再是军官、征服者或追求荣耀的人，而是一个被捆绑、受伤、口渴、舔水、乞讨蛇肉的肉体。博尔赫斯在这里故意降低人物身份：罗马护民官的尊严被彻底剥去，只剩下动物性的求生本能。正因为如此，永生之城在对岸闪耀时，带有强烈反讽意味。它看似是超越死亡的目标，但鲁福抵达它的前提，却是先经历一种近乎去人化的生存状态。永生不是从高贵的哲学沉思开始，而是从口渴、血污、谵妄和蛇肉开始。博尔赫斯借此提示：人追求永恒时，往往不能摆脱身体；相反，身体的脆弱正是永生欲望最深的来源。*
 
 **穴居人与永生者之城的并置**
 
@@ -267,12 +262,6 @@ At the end of one corridor, a not unforeseen wall blocked my path and a distant 
 > * granite [ˈɡrænɪt]；花岗岩
 > * marble [ˈmɑːbəl]；大理石
 
-**地下迷宫与明亮城市的反转**
-
-*这一段最重要的反转在于：真正令人恐惧的不是黑暗地下迷宫，而是明亮的永生者之城。一般叙事中，黑暗、地下、潮湿、迷路象征恐惧；光明、城市、广场、建筑则象征抵达与救赎。但博尔赫斯故意颠倒这个结构。地下迷宫虽然可怕，至少还有某种“迷宫的目的”：它就是为了让人迷失。可是永生者之城更可怕，因为它没有目的。无目的的建筑比有目的的迷宫更令人恐惧。这里的恐怖不是来自危险，而是来自理性无法解释的结构：楼梯不合人体尺度，门通向空井，窗户无法抵达，走廊通向虚无。它不是“复杂的秩序”，而是“复杂的无意义”。这正对应永生本身：有限生命中的痛苦至少还被死亡框定，永生则取消终点，使存在变成无限延长的无目的结构。*
-
----
-
 I emerged into a kind of small plaza—a courtyard might better describe it. It was surrounded by a single building, of irregular angles and varying heights. It was to this heterogeneous building that the many cupolas and columns belonged. More than any other feature of that incredible monument, I was arrested by the great antiquity of its construction. I felt that it had existed before humankind, before the world itself.
 
 > 我来到一个类似小广场的地方；也许称它为庭院更合适。它四周被一座单一建筑包围，那建筑角度不规则，高低也不一致。那些众多的圆顶和柱子，正属于这座混杂的建筑。在这座不可思议的纪念性建筑中，最使我震住的，不是任何别的特征，而是它建造年代的极端古老。我觉得它在人类之前就已存在，甚至在世界本身之前就已存在。
@@ -297,12 +286,6 @@ Its patent antiquity (though somehow terrible to the eyes) seemed to accord with
 > * reproof [rɪˈpruːf]；责备；责难
 > * remorse [rɪˈmɔːs]；悔恨；自责
 
-**永生者之城是反人类建筑**
-
-*这座城市的建筑不断违背人的身体尺度和行动逻辑。楼梯踏级高低不一，使行走异常疲惫；倒置楼梯不能使用；高窗无法抵达；门后不是通路，而是狭小房间或空洞竖井。建筑通常服务于人的居住、移动、观看和聚集，但这里的建筑拒绝服务于人。它像是由拥有无限时间、却已经失去人类需要的存在建成的。鲁福最初以为它是神造的，随后改口说神已死，最后判断神是疯的；这三步其实表现了理性解释的崩溃。面对永生者之城，人类只能先把它神圣化，再把它废墟化，最后把它归入疯狂。博尔赫斯借这座城说明：永生并不是人性的完成，而可能是人性尺度的彻底失效。*
-
----
-
 The impression of great antiquity was joined by others: the impression of endlessness, the sensation of oppressiveness and horror, the sensation of complex irrationality. I had made my way through a dark maze, but it was the bright City of the Immortals that terrified and repelled me. A maze is a house built purposely to confuse men; its architecture, prodigal in symmetries, is made to serve that purpose. In the palace that I imperfectly explored, the architecture had no purpose. There were corridors that led nowhere, unreachably high windows, grandly dramatic doors that opened onto monklike cells or empty shafts, incredible upside-down staircases with upside-down treads and balustrades. Other staircases, clinging airily to the side of a monumental wall, petered out after two or three landings, in the high gloom of the cupolas, arriving nowhere. I cannot say whether these are literal examples I have given; I do know that for many years they plagued my troubled dreams; I can no longer know whether any given feature is a faithful transcription of reality or one of the shapes unleashed by my nights. *This City*, I thought, *is so horrific that its mere existence, the mere fact of its having endured — even in the middle of a secret desert pollutes the past and the future and somehow compromises the stars. So long as this City endures, no one in the world can ever be happy or courageous*. I do not want to describe it; a chaos of heterogeneous words, the body of a tiger or a bull pullulating with teeth, organs, and heads monstrously yoked together yet hating each other—those might, perhaps, be approximate images.
 
 > 极端古老的印象之外，又叠加了其他印象：无尽感、压迫感与恐怖感，以及复杂到不合理性的感觉。我曾穿过一座黑暗的迷宫，但使我恐惧并厌恶的，却是这座明亮的永生者之城。迷宫是一座故意用来迷惑人的房屋；它的建筑虽然极尽对称之能事，却服务于这个目的。而在我并未完全探索的这座宫殿中，建筑没有目的。那里有通向虚无的走廊，有高到无法抵达的窗户，有宏伟而戏剧化的大门，门后却是修士般狭小的房间或空洞的竖井；还有难以置信的倒置楼梯，踏级和栏杆也都上下颠倒。另一些楼梯轻盈地附着在一面纪念碑般的墙上，在圆顶高处的幽暗中走过两三段平台后便逐渐消失，通向无处。我无法说出自己给出的这些例子是否完全真实；我只知道，多年来它们一直纠缠着我不安的梦。我已经无法判断其中任何一个特征究竟是对现实的忠实转录，还是我的夜晚释放出来的某种形状。我想：“这座城如此可怖，仅仅是它的存在，仅仅是它延续至今这一事实——哪怕它位于秘密沙漠的中央——也污染了过去和未来，并且以某种方式危及群星。只要这座城仍然存在，世界上就不会有任何人能够幸福或勇敢。”我不愿描述它；一团异质词语的混沌，或者一具老虎或公牛的身体，布满牙齿、器官和头颅，被怪诞地连缀在一起，却彼此憎恨——这些也许勉强可以作为近似的图像。
@@ -322,6 +305,14 @@ The impression of great antiquity was joined by others: the impression of endles
 > * pullulating [ˈpʌljʊleɪtɪŋ]；大量滋生；密集生长；常带令人不适的繁殖感
 > * monstrously [ˈmɒnstrəsli]；怪异地；畸形地
 > * yoked [jəʊkt]；被轭套在一起；被强行连接在一起
+
+**地下迷宫与明亮城市的反转**
+
+*这一段最重要的反转在于：真正令人恐惧的不是黑暗地下迷宫，而是明亮的永生者之城。一般叙事中，黑暗、地下、潮湿、迷路象征恐惧；光明、城市、广场、建筑则象征抵达与救赎。但博尔赫斯故意颠倒这个结构。地下迷宫虽然可怕，至少还有某种“迷宫的目的”：它就是为了让人迷失。可是永生者之城更可怕，因为它没有目的。无目的的建筑比有目的的迷宫更令人恐惧。这里的恐怖不是来自危险，而是来自理性无法解释的结构：楼梯不合人体尺度，门通向空井，窗户无法抵达，走廊通向虚无。它不是“复杂的秩序”，而是“复杂的无意义”。这正对应永生本身：有限生命中的痛苦至少还被死亡框定，永生则取消终点，使存在变成无限延长的无目的结构。*
+
+**永生者之城是反人类建筑**
+
+*这座城市的建筑不断违背人的身体尺度和行动逻辑。楼梯踏级高低不一，使行走异常疲惫；倒置楼梯不能使用；高窗无法抵达；门后不是通路，而是狭小房间或空洞竖井。建筑通常服务于人的居住、移动、观看和聚集，但这里的建筑拒绝服务于人。它像是由拥有无限时间、却已经失去人类需要的存在建成的。鲁福最初以为它是神造的，随后改口说神已死，最后判断神是疯的；这三步其实表现了理性解释的崩溃。面对永生者之城，人类只能先把它神圣化，再把它废墟化，最后把它归入疯狂。博尔赫斯借这座城说明：永生并不是人性的完成，而可能是人性尺度的彻底失效。*
 
 **记忆的不可靠开始成为主题**
 
@@ -355,12 +346,6 @@ Those who have read the story of my travails attentively will recall that a man 
 > * blur [blɜː]；模糊；变得不清楚
 > * barbaric [bɑːˈbærɪk]；野蛮的；未开化的
 
-**阿尔戈斯的命名把《永生》转向《奥德赛》的重写**
-
-*这一段的核心转折，是鲁福给穴居人取名为阿尔戈斯。阿尔戈斯在《奥德赛》中是奥德修斯的老狗，它认出主人后死去。博尔赫斯让鲁福把这个名字给一个沉默、低伏、像狗一样跟随他的人，起初似乎只是出于怜悯和联想；但当穴居人说出“阿尔戈斯，尤利西斯的狗”时，文本突然暴露出深层结构：这个穴居人不是无知野人，而是荷马本人。也就是说，鲁福不是在教一个原始人认识语言，而是在无意中唤醒西方文学源头的残余记忆。这一反转使整个故事变成另一种《奥德赛》：不是英雄从战场归乡，而是一个人穿过沙漠、迷宫和永生，回到文学记忆的源头。*
-
----
-
 Nor did any one of the shapes resemble any other—a fact that ruled out (or made quite remote) the possibility that they were symbols. The man would draw them, look at them, and correct them. Then suddenly, as though his game irritated him, he would rub them out with his palm and forearm. He looked up at me, though he seemed not to recognize me. Still, so great was the relief I felt (or so great, so dreadful had my loneliness been) that I actually thought that this primitive Troglodyte looking up at me from the floor of a cave had been waiting for me. The sun warmed the plain; as we began our return to the village, under the first stars of evening, the sand burned our feet. The Troglodyte walked ahead of me; that night I resolved to teach him to recognize, perhaps even to repeat, a few words. Dogs and horses, I reflected, are able to do the first; many birds, like the Caesars' nightingale, can do the second. However scant a man's understanding, it will always be greater than that of unreasoning beasts.
 
 > 而且那些形状彼此没有任何一个相似；这一事实排除了，或者至少极大削弱了，它们是符号的可能性。那人画出它们，看着它们，又加以修正。随后，仿佛这个游戏惹恼了他，他会突然用手掌和前臂把它们擦掉。他抬头看我，虽然他似乎并不认得我。然而，我感到的宽慰如此巨大，或者说我的孤独曾如此巨大、如此可怕，以至于我竟然以为，这个从洞穴地面上仰望我的原始穴居人一直在等我。太阳温暖着平原；当我们在傍晚最初的星光下返回村落时，沙子灼烧着我们的脚。穴居人走在我前面；那一夜，我决心教他识别几个词，也许甚至教他重复几个词。我想，狗和马能做到前者；许多鸟，比如恺撒的夜莺，能做到后者。一个人的理解力无论多么贫乏，也总会高于没有理性的兽类。
@@ -369,12 +354,6 @@ Nor did any one of the shapes resemble any other—a fact that ruled out (or mad
 > * primitive [ˈprɪmɪtɪv]；原始的；早期的；也可带有“未开化”的贬义
 > * scant [skænt]；不足的；贫乏的
 > * unreasoning [ʌnˈriːzənɪŋ]；无理性的；不能推理的
-
-**语言教育的失败，其实是文明优越感的失败**
-
-*鲁福以为自己代表语言、理性和文明，所以他试图把词语“烙印”到阿尔戈斯身上。他把阿尔戈斯与狗、马、鸟比较，并认为任何人的理解力都必然高于无理性的动物。这种想法暴露出罗马军官的等级意识：会说话的人高于不会说话的人，文明人高于野蛮人，教师高于被教者。但教学不断失败，说明问题不在于阿尔戈斯低等，而在于鲁福的解释框架错误。阿尔戈斯不是没有语言，而是已经在漫长时间中远离语言；他不是尚未进入文明，而是从文明、文学和记忆的顶点退回沉默。博尔赫斯在这里颠倒启蒙式叙事：所谓“野蛮人”不是文明之前的人，而可能是文明之后的人。*
-
----
 
 The Troglodyte's lowly birth and condition recalled to my memory the image of Argos, the moribund old dog of the *Odyssey*, so I gave him the name Argos, and tried to teach it to him. Time and time again, I failed. No means I employed, no severity, no obstinacy of mine availed. Motionless, his eyes dead, he seemed not even to perceive the sounds which I was attempting to imprint upon him. Though but a few paces from me, he seemed immensely distant. Lying in the sand like a small, battered sphinx carved from lava, he allowed the heavens to circle in the sky above him from the first dusky light of morning to the last dusky light of night. It seemed simply impossible that he had not grasped my intention. I recalled that it is generally believed among the Ethiopians that monkeys deliberately do not speak, so that they will not be forced to work; I attributed Argos' silence to distrust or fear. From that vivid picture I passed on to others, even more extravagant. I reflected that Argos and I lived our lives in separate universes; I reflected that our perceptions were identical but that Argos combined them differently than I, constructed from them different objects; I reflected that perhaps for him there were no objects, but rather a constant, dizzying play of swift impressions. I imagined a world without memory, without time; I toyed with the possibility of a language that had no nouns, a language of impersonal verbs or indeclinable adjectives. In these reflections many days went by, and with the days, years. Until one morning, something very much like joy occurred—the sky rained slow, strong rain.
 
@@ -391,6 +370,14 @@ The Troglodyte's lowly birth and condition recalled to my memory the image of Ar
 > * dizzying [ˈdɪziɪŋ]；令人眩晕的
 > * impersonal verbs [ɪmˈpɜːsənəl vɜːbz]；无人称动词；不以具体人称主体为中心的动词结构
 > * indeclinable adjectives [ˌɪndɪˈklaɪnəbəl ˈædʒɪktɪvz]；不变格形容词；在有格变化语言中不随性、数、格改变形式的形容词
+
+**阿尔戈斯的命名把《永生》转向《奥德赛》的重写**
+
+*这一段的核心转折，是鲁福给穴居人取名为阿尔戈斯。阿尔戈斯在《奥德赛》中是奥德修斯的老狗，它认出主人后死去。博尔赫斯让鲁福把这个名字给一个沉默、低伏、像狗一样跟随他的人，起初似乎只是出于怜悯和联想；但当穴居人说出“阿尔戈斯，尤利西斯的狗”时，文本突然暴露出深层结构：这个穴居人不是无知野人，而是荷马本人。也就是说，鲁福不是在教一个原始人认识语言，而是在无意中唤醒西方文学源头的残余记忆。这一反转使整个故事变成另一种《奥德赛》：不是英雄从战场归乡，而是一个人穿过沙漠、迷宫和永生，回到文学记忆的源头。*
+
+**语言教育的失败，其实是文明优越感的失败**
+
+*鲁福以为自己代表语言、理性和文明，所以他试图把词语“烙印”到阿尔戈斯身上。他把阿尔戈斯与狗、马、鸟比较，并认为任何人的理解力都必然高于无理性的动物。这种想法暴露出罗马军官的等级意识：会说话的人高于不会说话的人，文明人高于野蛮人，教师高于被教者。但教学不断失败，说明问题不在于阿尔戈斯低等，而在于鲁福的解释框架错误。阿尔戈斯不是没有语言，而是已经在漫长时间中远离语言；他不是尚未进入文明，而是从文明、文学和记忆的顶点退回沉默。博尔赫斯在这里颠倒启蒙式叙事：所谓“野蛮人”不是文明之前的人，而可能是文明之后的人。*
 
 **没有名词的语言与没有时间的世界**
 
@@ -442,12 +429,6 @@ That day, all was revealed to me. The Troglodytes were the Immortals; the stream
 > * carapace [ˈkærəpeɪs]；甲壳；硬壳；此处比喻城市成为一种空壳
 > * self-absorption [ˌself əbˈzɔːpʃən]；自我沉浸；全神贯注于自身内在世界
 
-**永生者之城作为“反城市”**
-
-*这一段解释了上一节中那座荒谬城市的来源：它不是永生者文明的巅峰，而是永生者放弃文明前最后制造的象征。正常城市服务于人的居住、秩序、交流和政治生活；永生者之城却是“城市”的戏仿和反命题。它有城市的形式，却没有城市的功能；有建筑，却没有目的；有辉煌外观，却不再服务任何人类生活。永生者建造它，是为了标记他们与人类世界的断裂。城市因此成为一副“甲壳”：它曾包裹思想，却已被思想遗弃。永生者最终选择洞穴，并不是退化为野蛮人，而是抛弃了外部文明的全部象征，只保留纯粹思辨。博尔赫斯在这里把文明进步的想象推到极端：当时间无限充足时，建筑、政治、劳动和荣耀都失去意义，最后留下的不是更宏伟的人类城市，而是对城市本身的否定。*
-
----
-
 These things were explained to me by Homer as one might explain things to a child. He also told me of his own old age and of that late journey he had made—driven, like Ulysses, by the intention to arrive at the nation of men that know not what the sea is, that eat not salted meat, that know not what an oar might be. He lived for a century in the City of the Immortals, and when it was destroyed it was he who counseled that this other one be built. We should not be surprised by that—it is rumored that after singing of the war of Ilion, he sang of the war between the frogs and rats. He was like a god who created first the Cosmos, and then Chaos.
 
 > 这些事情是荷马向我解释的，如同一个人向孩子解释事情。他还告诉我他的暮年，以及他晚年那次旅行：他像尤利西斯一样，被一种意图驱使，想抵达一个不知海为何物、不吃盐腌食物、也不知道船桨是什么的民族那里。他曾在永生者之城中生活了一个世纪；当那座城被毁时，正是他建议建造另一座城市。我们不应对此感到惊讶——传说他在歌唱伊利昂战争之后，又歌唱过青蛙与老鼠之间的战争。他像一位神，先创造了宇宙，随后又创造了混沌。
@@ -458,6 +439,10 @@ These things were explained to me by Homer as one might explain things to a chil
 > * Ilion [ˈɪliən]；伊利昂；特洛伊的别名
 > * Cosmos [ˈkɒzmɒs]；宇宙；有序整体；希腊语 kosmos 原有“秩序”之意
 > * Chaos [ˈkeɪɒs]；混沌；无序状态；在希腊神话中也指世界生成前的原初状态
+
+**永生者之城作为“反城市”**
+
+*这一段解释了上一节中那座荒谬城市的来源：它不是永生者文明的巅峰，而是永生者放弃文明前最后制造的象征。正常城市服务于人的居住、秩序、交流和政治生活；永生者之城却是“城市”的戏仿和反命题。它有城市的形式，却没有城市的功能；有建筑，却没有目的；有辉煌外观，却不再服务任何人类生活。永生者建造它，是为了标记他们与人类世界的断裂。城市因此成为一副“甲壳”：它曾包裹思想，却已被思想遗弃。永生者最终选择洞穴，并不是退化为野蛮人，而是抛弃了外部文明的全部象征，只保留纯粹思辨。博尔赫斯在这里把文明进步的想象推到极端：当时间无限充足时，建筑、政治、劳动和荣耀都失去意义，最后留下的不是更宏伟的人类城市，而是对城市本身的否定。*
 
 **荷马从宇宙创造者变成混沌制造者**
 
@@ -624,7 +609,6 @@ I disembarked; there came to my mind other mornings, long in the past, when I ha
 > * infects [ɪnˈfekts]；感染；使沾染
 > * fantast [ˈfæntæst]；幻想家；沉溺幻想之人；较少见词
 
-
 *The story I have told seems unreal because the experiences of two different men are intermingled in it.* In the first chapter, the horseman wishes to know the name of the river that runs beside the walls of Thebes; Flaminius Rufus, who had bestowed upon the city the epithet "hundred-gated," tells him that the river is the "Egypt"; neither of those statements belongs to *him*, but rather to Homer, who in the *Iliad* expressly mentions "Thebes Hekatompylos" and who in the *Odyssey*, through the mouths of Proteus and Ulysses, invariably calls the Nile the "Egypt." In the second chapter, when the Roman drinks the immortal water he speaks a few words in Greek. Those words are also Homeric; they may be found at the end of the famous catalog of the ships. Later, in the dizzying palace, he speaks of "a reproof that was almost remorse"; those words, too, belong to Homer, who had foreseen such a horror. Such anomalies disturbed me; others, of an aesthetic nature, allowed me to discover the truth. The clues of this latter type may be found in the last chapter, which says that I fought at Stamford Bridge, that in Bulaq I transcribed the voyages of Sindbad the Sailor, and that in Aberdeen I subscribed to Pope's English *Iliad*.
 
 > **我所讲述的故事显得不真实，是因为两个不同的人的经历在其中混杂在一起。** 第一章中，骑手想知道流经底比斯城墙旁边的河叫什么名字；弗拉米尼乌斯·鲁福先前给那座城加上“百门”的修饰语，又告诉他那条河是“埃及河”。这两种说法都不属于他，而属于荷马：荷马在《伊利亚特》中明确提到“百门之城底比斯”，又在《奥德赛》中借普罗透斯和尤利西斯之口，始终把尼罗河称为“埃及河”。第二章中，那个罗马人饮下永生之水时，说了几句希腊语。那些话同样属于荷马；它们可以在著名的船舶目录结尾处找到。后来，在令人眩晕的宫殿中，他说到“一种几乎是悔恨的责备”；那些话也属于荷马，荷马已经预见了这种恐怖。这些异常使我不安；另一些属于审美性质的异常，则让我发现了真相。后一类线索可以在最后一章中找到：那里说，我曾在斯坦福桥作战，在布拉克誊写过水手辛巴达的航行故事，在阿伯丁订购过蒲柏英译《伊利亚特》。
@@ -656,12 +640,6 @@ The text says, *inter alia*: "In Bikanir I have taught astrology, as I have in B
 > * Giambattista Vico [dʒamˈbattista ˈviːkoʊ]；詹巴蒂斯塔·维柯；意大利哲学家，提出关于民族、神话和诗性智慧的重要思想
 > * symbolic character；象征性人物；不是单一历史个体，而是某一传统或集体精神的象征
 
-**结尾把“经历”改写为“文本”**
-
-*这一段是全篇的关键收束：叙述者重新阅读自己的手稿，发现问题不在于事件是否真实，而在于叙述中混入了别人的词语。小说到这里从“永生经历”转向“文本来源”问题。鲁福的冒险也许是真的，荷马的存在也许是真的，卡塔菲勒斯的死亡也许是真的；但这些真实已经无法以纯粹个人记忆保存下来。漫长时间摧毁了图像，只留下句子、典故、引用和错误归属。所谓“我曾经是荷马”，不一定指灵魂转移，而是指一个永生者在时间中逐渐被荷马的语言占据。个体经验最后变成文学传统的一部分。*
-
----
-
 As the end approaches, there are no longer any images from memory— there are only words. It is not strange that time may have confused those that once portrayed me with those that were symbols of the fate of *the person that accompanied me for so many centuries*. I have been Homer; soon, like Ulysses, I shall be Nobody; soon, I shall be all men—I shall be dead.
 
 > 随着终点临近，记忆中已经不再有图像，只剩下词语。时间把那些曾经描绘我的词语，与那些象征陪伴我数个世纪之人的命运的词语混淆起来，这并不奇怪。我曾经是荷马；不久以后，我将像尤利西斯一样，成为“无人”；不久以后，我将成为所有人——我将死去。
@@ -674,6 +652,10 @@ As the end approaches, there are no longer any images from memory— there are o
 **记忆的终点不是图像，而是词语**
 
 *卡塔菲勒斯说，临近死亡时，记忆中没有图像，只剩词语。这句话把小说的永生主题与文学主题合在一起。普通人以为不朽意味着记住更多、保存更多，但博尔赫斯给出的结果相反：活得越久，具体画面越消散，留下的只是可重复、可引用、可错置的词语。图像属于个人经验，词语则可以脱离个人，在不同文本、时代和作者之间流动。于是永生者最后并不拥有完整自我，只拥有残缺的文学碎片。时间没有赐给他真理，只施舍给他“从别处取来的词语”。*
+
+**结尾把“经历”改写为“文本”**
+
+*这一段是全篇的关键收束：叙述者重新阅读自己的手稿，发现问题不在于事件是否真实，而在于叙述中混入了别人的词语。小说到这里从“永生经历”转向“文本来源”问题。鲁福的冒险也许是真的，荷马的存在也许是真的，卡塔菲勒斯的死亡也许是真的；但这些真实已经无法以纯粹个人记忆保存下来。漫长时间摧毁了图像，只留下句子、典故、引用和错误归属。所谓“我曾经是荷马”，不一定指灵魂转移，而是指一个永生者在时间中逐渐被荷马的语言占据。个体经验最后变成文学传统的一部分。*
 
 ---
 
