@@ -1,6 +1,6 @@
 ---
 title: Classical Physics
-categories: Prime
+categories: Atlas
 subclass: Basics
 ---
 

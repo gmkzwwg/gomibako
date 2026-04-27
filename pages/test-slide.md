@@ -5,7 +5,7 @@ context_menu: false
 author: 垃圾残渣
 show_date: true
 ---
-
+{{page.toc}}
 # Jekyll Tree Slides v1.2 使用说明（中文）
 
 ## 概述

@@ -10,9 +10,9 @@
 
   let overlay = null;
   let imgEl = null;
-  let btnZoomIn = null;
-  let btnZoomOut = null;
-  let btnClose = null;
+  let buttonZoomIn = null;
+  let buttonZoomOut = null;
+  let buttonClose = null;
 
   let isOpen = false;
   let currentSource = '';
@@ -104,7 +104,7 @@
         z-index: 2;
       }
 
-      .iv-btn {
+      .iv-button {
         width: 42px;
         height: 42px;
         border: 0;
@@ -118,15 +118,15 @@
         -webkit-backdrop-filter: blur(6px);
       }
 
-      .iv-btn:hover {
+      .iv-button:hover {
         background: rgba(255, 255, 255, 0.22);
       }
 
-      .iv-btn:active {
+      .iv-button:active {
         transform: scale(0.96);
       }
 
-      .iv-btn:focus-visible {
+      .iv-button:focus-visible {
         outline: 2px solid rgba(255,255,255,0.7);
         outline-offset: 2px;
       }
@@ -149,7 +149,7 @@
       }
 
       @media (max-width: 640px) {
-        .iv-btn {
+        .iv-button {
           width: 44px;
           height: 44px;
           font-size: 24px;
@@ -183,31 +183,31 @@
     const toolbar = document.createElement('div');
     toolbar.className = 'iv-toolbar';
 
-    btnZoomOut = document.createElement('button');
-    btnZoomOut.className = 'iv-btn';
-    btnZoomOut.type = 'button';
-    btnZoomOut.setAttribute('aria-label', '缩小');
-    btnZoomOut.textContent = '−';
+    buttonZoomOut = document.createElement('button');
+    buttonZoomOut.className = 'iv-button';
+    buttonZoomOut.type = 'button';
+    buttonZoomOut.setAttribute('aria-label', '缩小');
+    buttonZoomOut.textContent = '−';
 
-    btnZoomIn = document.createElement('button');
-    btnZoomIn.className = 'iv-btn';
-    btnZoomIn.type = 'button';
-    btnZoomIn.setAttribute('aria-label', '放大');
-    btnZoomIn.textContent = '+';
+    buttonZoomIn = document.createElement('button');
+    buttonZoomIn.className = 'iv-button';
+    buttonZoomIn.type = 'button';
+    buttonZoomIn.setAttribute('aria-label', '放大');
+    buttonZoomIn.textContent = '+';
 
-    btnClose = document.createElement('button');
-    btnClose.className = 'iv-btn';
-    btnClose.type = 'button';
-    btnClose.setAttribute('aria-label', '关闭');
-    btnClose.textContent = '×';
+    buttonClose = document.createElement('button');
+    buttonClose.className = 'iv-button';
+    buttonClose.type = 'button';
+    buttonClose.setAttribute('aria-label', '关闭');
+    buttonClose.textContent = '×';
 
     const hint = document.createElement('div');
     hint.className = 'iv-hint';
     hint.textContent = '滚轮缩放，拖动平移，双击或双指缩放';
 
-    toolbar.appendChild(btnZoomOut);
-    toolbar.appendChild(btnZoomIn);
-    toolbar.appendChild(btnClose);
+    toolbar.appendChild(buttonZoomOut);
+    toolbar.appendChild(buttonZoomIn);
+    toolbar.appendChild(buttonClose);
 
     stage.appendChild(imgEl);
     overlay.appendChild(stage);
@@ -215,9 +215,9 @@
     overlay.appendChild(hint);
     document.body.appendChild(overlay);
 
-    btnZoomIn.addEventListener('click', () => zoomBy(CONFIG.zoomStep));
-    btnZoomOut.addEventListener('click', () => zoomBy(-CONFIG.zoomStep));
-    btnClose.addEventListener('click', closeViewer);
+    buttonZoomIn.addEventListener('click', () => zoomBy(CONFIG.zoomStep));
+    buttonZoomOut.addEventListener('click', () => zoomBy(-CONFIG.zoomStep));
+    buttonClose.addEventListener('click', closeViewer);
 
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) closeViewer();

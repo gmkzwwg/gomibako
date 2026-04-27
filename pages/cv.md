@@ -1,12 +1,11 @@
 ---
-layout: slide-language
+layout: slide-multilingual
 title_selector: h1
 title: Curriculum Vitae
 post_list: false
 toc: false
-home_btn: true
-btn_text: false
-footer: false
+home_button: true
+show_footer: false
 permalink: /cv
 ---
 

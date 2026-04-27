@@ -8,9 +8,8 @@ subclass: TODO
 post_list: date
 toc: false
 toc_depth: 6
-home_btn: true
-btn_text: true
-footer: true
+home_button: true
+show_footer: true
 permalink: /todos
 ---
 
@@ -69,8 +68,8 @@ permalink: /todos
                     {% endfor %}
 
                 {% else %}
-                    {% if site.collection_order %}
-                        {% for col_in_order in site.collection_order %}
+                    {% if site.ui.archive.collection_order %}
+                        {% for col_in_order in site.ui.archive.collection_order %}
                             {% for collection in site.collections %}
                                 {% if collection.label == col_in_order %}
                                     <h5 class="h_collection_label">

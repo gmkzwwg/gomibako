@@ -1,5 +1,5 @@
 <div>
-  {%- assign ordered_names = page.collections_to_show | default: site.collection_order -%}
+  {%- assign ordered_names = page.collections_to_show | default: site.ui.archive.collection_order -%}
 
   {%- if ordered_names -%}
     {%- for col_in_order in ordered_names -%}

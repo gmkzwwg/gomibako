@@ -2,6 +2,7 @@
   'use strict';
 
   const CONFIG = {
+    mode: 'tree',
     targetSelectors: [
       '#main-content',
       '.post-content',
@@ -14,6 +15,7 @@
     ],
     widgetPosition: { right: 20, bottom: 20 },
     widgetSize: { width: 260, mapHeight: 120 },
+    mapMajorGap: 34,
     opacityIdle: 0.2,
     opacityHover: 0.7,
     mobileBreakpoint: 768,
@@ -21,7 +23,14 @@
     bodyPadding: { top: 0, right: 48, bottom: 0, left: 48 },
     animationMs: 260,
     titleScale: 1.8,
+    indexPage: {
+      enabled: true,
+      position: 'last',
+      menuTitle: 'Index',
+      headingText: "Here's Index & Thanks!"
+    },
     labels: {
+      index: '≣',
       prevMajor: '<<',
       prevSlide: '<',
       nextSlide: '>',
@@ -33,11 +42,11 @@
     config: deepClone(CONFIG),
     target: null,
     data: null,
-    currentMajor: 0,
-    currentSlide: 0,
+    currentGlobal: 0,
     dom: {},
     drag: null,
-    originalHTML: ''
+    originalHTML: '',
+    customIndexPosition: false
   };
 
   function deepClone(obj) {
@@ -71,6 +80,19 @@
     const bottom = Number(obj.bottom || 0);
     const left = Number(obj.left || 0);
     return top + 'px ' + right + 'px ' + bottom + 'px ' + left + 'px';
+  }
+
+  function getEffectiveIndexPageConfig() {
+    const indexPage = merge(deepClone(CONFIG.indexPage), state.config.indexPage || {});
+    if (state.config.mode === 'wiki') {
+      indexPage.enabled = indexPage.enabled !== false;
+      if (!state.customIndexPosition) indexPage.position = 'first';
+    }
+    if (indexPage.position === 'none') indexPage.enabled = false;
+    if (indexPage.position !== 'first' && indexPage.position !== 'last') {
+      indexPage.position = 'last';
+    }
+    return indexPage;
   }
 
   function injectStyle() {
@@ -164,6 +186,25 @@
         width: 100%;
         height: ${state.config.widgetSize.mapHeight}px;
         border-bottom: 1px solid currentColor;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: currentColor rgba(127, 127, 127, 0.08);
+      }
+      .jsd-tree-map::-webkit-scrollbar {
+        width: 4.5px;
+        height: 4.5px;
+      }
+      .jsd-tree-map::-webkit-scrollbar-thumb {
+        background-color: currentColor;
+        border-radius: 999px;
+      }
+      .jsd-tree-map::-webkit-scrollbar-track {
+        background-color: rgba(127, 127, 127, 0.08);
+        border-radius: 999px;
+      }
+      .jsd-tree-map::-webkit-scrollbar-corner {
+        background: transparent;
       }
       .jsd-tree-buttons {
         display: grid;
@@ -171,7 +212,10 @@
         gap: 4px;
         padding: 6px;
       }
-      .jsd-tree-btn {
+      .jsd-tree-buttons.has-index {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+      .jsd-tree-button {
         appearance: none;
         -webkit-appearance: none;
         border: 1px solid currentColor;
@@ -182,9 +226,56 @@
         cursor: pointer;
         font: inherit;
       }
-      .jsd-tree-btn:focus-visible {
+      .jsd-tree-button:focus-visible,
+      .jsd-tree-index-button:focus-visible {
         outline: 1px solid currentColor;
-        outline-offset: 1px;
+        outline-offset: 2px;
+      }
+      .jsd-tree-index {
+        box-sizing: border-box;
+        width: min(100%, 860px);
+        margin: 0 auto;
+        display: grid;
+        gap: 1.1em;
+      }
+      .jsd-tree-index-major {
+        display: grid;
+        gap: 0.45em;
+      }
+      .jsd-tree-index-major-button,
+      .jsd-tree-index-sub-button {
+        appearance: none;
+        -webkit-appearance: none;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+        text-align: left;
+        padding: 0;
+      }
+      .jsd-tree-index-major-button {
+        font-weight: 700;
+        font-size: 1.05em;
+        line-height: 1.35;
+      }
+      .jsd-tree-index-sublist {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+        gap: 0.35em 0.9em;
+        padding-left: 1.25em;
+        align-items: start;
+      }
+      .jsd-tree-index-sub-button {
+        line-height: 1.35;
+        opacity: 0.88;
+        overflow-wrap: anywhere;
+      }
+      .jsd-tree-index-major-button:hover,
+      .jsd-tree-index-sub-button:hover {
+        opacity: 0.68;
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
       }
     `;
     document.head.appendChild(style);
@@ -240,10 +331,7 @@
         return;
       }
 
-      if (!currentMajor || !currentMajor.seenFirstH2 || !currentSub) {
-        return;
-      }
-
+      if (!currentMajor || !currentMajor.seenFirstH2 || !currentSub) return;
       currentSub.nodes.push(node.cloneNode(true));
     });
 
@@ -256,11 +344,40 @@
       };
     });
 
+    const contentSlides = [];
+    validMajors.forEach(function (major, majorIndex) {
+      major.subs.forEach(function (sub, subIndex) {
+        contentSlides.push({
+          type: 'content',
+          majorIndex: majorIndex,
+          subIndex: subIndex,
+          majorTitle: major.title,
+          heading: sub.title,
+          nodes: sub.nodes
+        });
+      });
+    });
+
+    const indexPage = getEffectiveIndexPageConfig();
+    const slides = contentSlides.slice();
+    if (indexPage.enabled && validMajors.length) {
+      const indexSlide = {
+        type: 'index',
+        majorIndex: null,
+        subIndex: null,
+        majorTitle: indexPage.menuTitle || 'Index',
+        heading: typeof indexPage.headingText === 'string' ? indexPage.headingText : '',
+        nodes: []
+      };
+      if (indexPage.position === 'first') slides.unshift(indexSlide);
+      else slides.push(indexSlide);
+    }
+
     return {
       majors: validMajors,
-      totalSlides: validMajors.reduce(function (sum, major) {
-        return sum + major.subs.length;
-      }, 0)
+      contentSlides: contentSlides,
+      slides: slides,
+      totalSlides: slides.length
     };
   }
 
@@ -269,27 +386,87 @@
     return names[Math.floor(Math.random() * names.length)];
   }
 
-  function getCurrentMajor() {
-    return state.data.majors[state.currentMajor];
-  }
-
   function getSlideCountInMajor(majorIndex) {
     const major = state.data.majors[majorIndex];
     return major ? major.subs.length : 0;
   }
 
-  function getCurrentSlideData() {
-    const major = getCurrentMajor();
-    const slideCountInMajor = getSlideCountInMajor(state.currentMajor);
-    const sub = major.subs[state.currentSlide];
-    return {
-      heading: sub ? sub.title : '',
-      nodes: sub ? sub.nodes : [],
-      slideType: 'sub',
-      majorTitle: major.title,
-      slideIndexInMajor: state.currentSlide + 1,
-      slideCountInMajor: slideCountInMajor
-    };
+  function getCurrentSlide() {
+    return state.data.slides[state.currentGlobal];
+  }
+
+  function normalizeGlobalIndex(globalIndex) {
+    const total = state.data.totalSlides;
+    if (!total) return 0;
+    let normalized = globalIndex % total;
+    if (normalized < 0) normalized += total;
+    return normalized;
+  }
+
+  function setByGlobalIndex(globalIndex) {
+    state.currentGlobal = normalizeGlobalIndex(globalIndex);
+  }
+
+  function getContentGlobalIndex(majorIndex, subIndex) {
+    for (let i = 0; i < state.data.slides.length; i += 1) {
+      const slide = state.data.slides[i];
+      if (slide.type === 'content' && slide.majorIndex === majorIndex && slide.subIndex === subIndex) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  function getIndexGlobalIndex() {
+    if (!state.data || !state.data.slides) return -1;
+    for (let i = 0; i < state.data.slides.length; i += 1) {
+      if (state.data.slides[i].type === 'index') return i;
+    }
+    return -1;
+  }
+
+  function goToContent(majorIndex, subIndex) {
+    const globalIndex = getContentGlobalIndex(majorIndex, subIndex);
+    if (globalIndex < 0) return;
+    state.currentGlobal = globalIndex;
+    render();
+  }
+
+  function goToIndex() {
+    const globalIndex = getIndexGlobalIndex();
+    if (globalIndex < 0) return;
+    state.currentGlobal = globalIndex;
+    render();
+  }
+
+  function goPrevSlide() {
+    setByGlobalIndex(state.currentGlobal - 1);
+    render();
+  }
+
+  function goNextSlide() {
+    setByGlobalIndex(state.currentGlobal + 1);
+    render();
+  }
+
+  function goPrevMajor() {
+    const current = getCurrentSlide();
+    const totalMajors = state.data.majors.length;
+    if (!totalMajors) return;
+    let nextMajor = current && current.type === 'content'
+      ? (current.majorIndex - 1 + totalMajors) % totalMajors
+      : totalMajors - 1;
+    goToContent(nextMajor, 0);
+  }
+
+  function goNextMajor() {
+    const current = getCurrentSlide();
+    const totalMajors = state.data.majors.length;
+    if (!totalMajors) return;
+    let nextMajor = current && current.type === 'content'
+      ? (current.majorIndex + 1) % totalMajors
+      : 0;
+    goToContent(nextMajor, 0);
   }
 
   function makeNodeFragment(nodes) {
@@ -300,73 +477,109 @@
     return fragment;
   }
 
-  function getGlobalIndex(majorIndex, slideIndex) {
-    let count = 0;
-    for (let i = 0; i < majorIndex; i += 1) {
-      count += getSlideCountInMajor(i);
-    }
-    return count + slideIndex;
+  function clearElement(el) {
+    while (el.firstChild) el.removeChild(el.firstChild);
   }
 
-  function setByGlobalIndex(globalIndex) {
-    const total = state.data.totalSlides;
-    let normalized = globalIndex % total;
-    if (normalized < 0) normalized += total;
+  function renderIndexBody() {
+    const wrap = document.createElement('div');
+    wrap.className = 'jsd-tree-index';
 
-    let offset = 0;
-    for (let m = 0; m < state.data.majors.length; m += 1) {
-      const count = getSlideCountInMajor(m);
-      if (normalized < offset + count) {
-        state.currentMajor = m;
-        state.currentSlide = normalized - offset;
-        return;
-      }
-      offset += count;
-    }
-  }
+    state.data.majors.forEach(function (major, majorIndex) {
+      const majorBlock = document.createElement('div');
+      majorBlock.className = 'jsd-tree-index-major';
 
-  function goPrevSlide() {
-    setByGlobalIndex(getGlobalIndex(state.currentMajor, state.currentSlide) - 1);
-    render();
-  }
+      const majorbutton = document.createElement('button');
+      majorbutton.type = 'button';
+      majorbutton.className = 'jsd-tree-index-button jsd-tree-index-major-button';
+      majorbutton.textContent = major.title || 'Untitled';
+      majorbutton.addEventListener('click', function () {
+        goToContent(majorIndex, 0);
+      });
+      majorBlock.appendChild(majorbutton);
 
-  function goNextSlide() {
-    setByGlobalIndex(getGlobalIndex(state.currentMajor, state.currentSlide) + 1);
-    render();
-  }
+      const subList = document.createElement('div');
+      subList.className = 'jsd-tree-index-sublist';
+      major.subs.forEach(function (sub, subIndex) {
+        const subbutton = document.createElement('button');
+        subbutton.type = 'button';
+        subbutton.className = 'jsd-tree-index-button jsd-tree-index-sub-button';
+        subbutton.textContent = sub.title || 'Untitled';
+        subbutton.addEventListener('click', function () {
+          goToContent(majorIndex, subIndex);
+        });
+        subList.appendChild(subbutton);
+      });
+      majorBlock.appendChild(subList);
+      wrap.appendChild(majorBlock);
+    });
 
-  function goPrevMajor() {
-    const totalMajors = state.data.majors.length;
-    state.currentMajor = (state.currentMajor - 1 + totalMajors) % totalMajors;
-    state.currentSlide = 0;
-    render();
-  }
-
-  function goNextMajor() {
-    const totalMajors = state.data.majors.length;
-    state.currentMajor = (state.currentMajor + 1) % totalMajors;
-    state.currentSlide = 0;
-    render();
+    return wrap;
   }
 
   function renderMap() {
     const map = state.dom.map;
     const width = state.config.widgetSize.width;
-    const height = state.config.widgetSize.mapHeight;
+    const visibleHeight = state.config.widgetSize.mapHeight;
     const padX = 16;
     const padY = 18;
-    const rowGap = state.data.majors.length > 1
-      ? Math.max(24, (height - padY * 2) / (state.data.majors.length - 1))
-      : 0;
+    const majorGap = Math.max(20, Number(state.config.mapMajorGap || 34));
+    const contentHeight = Math.max(visibleHeight, padY * 2 + Math.max(0, state.data.majors.length - 1) * majorGap);
+    const current = getCurrentSlide();
 
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
-    svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+    svg.setAttribute('viewBox', '0 0 ' + width + ' ' + contentHeight);
     svg.setAttribute('width', '100%');
-    svg.setAttribute('height', '100%');
+    svg.setAttribute('height', String(contentHeight));
+
+    function makeNode(majorIndex, subIndex, x, y, isCurrent) {
+      const group = document.createElementNS(svgNS, 'g');
+      group.setAttribute('role', 'button');
+      group.setAttribute('tabindex', '0');
+      group.setAttribute('aria-label', (state.data.majors[majorIndex].title || 'Section') + ' - ' + (state.data.majors[majorIndex].subs[subIndex].title || 'Slide'));
+      group.style.cursor = 'pointer';
+
+      const hit = document.createElementNS(svgNS, 'circle');
+      hit.setAttribute('cx', x);
+      hit.setAttribute('cy', y);
+      hit.setAttribute('r', '10');
+      hit.setAttribute('fill', 'transparent');
+      group.appendChild(hit);
+
+      const circle = document.createElementNS(svgNS, 'circle');
+      circle.setAttribute('cx', x);
+      circle.setAttribute('cy', y);
+      circle.setAttribute('stroke', 'currentColor');
+      circle.setAttribute('vector-effect', 'non-scaling-stroke');
+
+      if (subIndex === 0) {
+        circle.setAttribute('r', isCurrent ? '6.5' : '5.2');
+        circle.setAttribute('fill', 'transparent');
+        circle.setAttribute('stroke-width', isCurrent ? '2' : '1.4');
+      } else {
+        circle.setAttribute('r', isCurrent ? '4.8' : '3.4');
+        circle.setAttribute('fill', 'currentColor');
+        circle.setAttribute('stroke-width', isCurrent ? '1.6' : '1');
+      }
+      circle.setAttribute('opacity', isCurrent ? '1' : '0.8');
+      group.appendChild(circle);
+
+      group.addEventListener('click', function () {
+        goToContent(majorIndex, subIndex);
+      });
+      group.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          goToContent(majorIndex, subIndex);
+        }
+      });
+
+      return group;
+    }
 
     state.data.majors.forEach(function (major, mIndex) {
-      const y = padY + rowGap * mIndex;
+      const y = padY + majorGap * mIndex;
       const slideCount = major.subs.length > 0 ? major.subs.length : 1;
       const usableWidth = width - padX * 2;
       const step = slideCount > 1 ? usableWidth / (slideCount - 1) : 0;
@@ -376,7 +589,7 @@
         line.setAttribute('x1', padX);
         line.setAttribute('y1', y);
         line.setAttribute('x2', padX);
-        line.setAttribute('y2', y + rowGap);
+        line.setAttribute('y2', y + majorGap);
         line.setAttribute('stroke', 'currentColor');
         line.setAttribute('stroke-width', '1');
         line.setAttribute('opacity', '0.65');
@@ -397,52 +610,58 @@
 
       for (let sIndex = 0; sIndex < slideCount; sIndex += 1) {
         const x = padX + step * sIndex;
-        const current = mIndex === state.currentMajor && sIndex === state.currentSlide;
-        const circle = document.createElementNS(svgNS, 'circle');
-        circle.setAttribute('cx', x);
-        circle.setAttribute('cy', y);
-        circle.setAttribute('stroke', 'currentColor');
-        circle.setAttribute('vector-effect', 'non-scaling-stroke');
-
-        if (sIndex === 0) {
-          circle.setAttribute('r', current ? '6.5' : '5.2');
-          circle.setAttribute('fill', 'transparent');
-          circle.setAttribute('stroke-width', current ? '2' : '1.4');
-        } else {
-          circle.setAttribute('r', current ? '4.8' : '3.4');
-          circle.setAttribute('fill', 'currentColor');
-          circle.setAttribute('stroke-width', current ? '1.6' : '1');
-        }
-        circle.setAttribute('opacity', current ? '1' : '0.8');
-        svg.appendChild(circle);
+        const isCurrent = current && current.type === 'content' && mIndex === current.majorIndex && sIndex === current.subIndex;
+        svg.appendChild(makeNode(mIndex, sIndex, x, y, isCurrent));
       }
     });
 
     map.innerHTML = '';
     map.appendChild(svg);
+
+    if (current && current.type === 'content') {
+      const targetY = padY + majorGap * current.majorIndex;
+      const maxScroll = Math.max(0, contentHeight - visibleHeight);
+      const nextTop = Math.max(0, Math.min(maxScroll, targetY - visibleHeight / 2));
+      map.scrollTop = nextTop;
+    }
   }
 
-  function renderWidgetTitle(slideData) {
-    const title = slideData.majorTitle || 'Section';
-    const countText = slideData.slideIndexInMajor + '/' + slideData.slideCountInMajor;
-    state.dom.widgetTitle.textContent = title;
-    state.dom.widgetCount.textContent = countText;
+  function renderWidgetTitle(slide) {
+    if (!slide) return;
+    if (slide.type === 'index') {
+      state.dom.widgetTitle.textContent = slide.majorTitle || 'Index';
+      state.dom.widgetCount.textContent = state.currentGlobal + 1 + '/' + state.data.totalSlides;
+      return;
+    }
+    state.dom.widgetTitle.textContent = slide.majorTitle || 'Section';
+    state.dom.widgetCount.textContent = slide.subIndex + 1 + '/' + getSlideCountInMajor(slide.majorIndex);
   }
 
   function render() {
-    if (!state.data || !state.dom.heading || !state.dom.body) return;
+    if (!state.data || !state.dom.root || !state.dom.body) return;
 
-    const slideData = getCurrentSlideData();
-    state.dom.heading.textContent = slideData.heading || '';
+    const slide = getCurrentSlide();
+    clearElement(state.dom.root);
+
+    if (slide.type !== 'index' || slide.heading) {
+      state.dom.heading.textContent = slide.heading || '';
+      state.dom.root.appendChild(state.dom.heading);
+    }
+
     state.dom.body.innerHTML = '';
-    state.dom.body.appendChild(makeNodeFragment(slideData.nodes));
+    if (slide.type === 'index') {
+      state.dom.body.appendChild(renderIndexBody());
+    } else {
+      state.dom.body.appendChild(makeNodeFragment(slide.nodes));
+    }
+    state.dom.root.appendChild(state.dom.body);
 
     const animClass = randomAnimClass();
     state.dom.body.classList.remove('jsd-slide-anim-fade', 'jsd-slide-anim-up', 'jsd-slide-anim-zoom');
     void state.dom.body.offsetWidth;
     state.dom.body.classList.add(animClass);
 
-    renderWidgetTitle(slideData);
+    renderWidgetTitle(slide);
     renderMap();
   }
 
@@ -489,10 +708,8 @@
     if (!state.drag) return;
     const dx = event.clientX - state.drag.startX;
     const dy = event.clientY - state.drag.startY;
-    const left = state.drag.left + dx;
-    const top = state.drag.top + dy;
-    state.dom.widget.style.left = left + 'px';
-    state.dom.widget.style.top = top + 'px';
+    state.dom.widget.style.left = state.drag.left + dx + 'px';
+    state.dom.widget.style.top = state.drag.top + dy + 'px';
   }
 
   function endDrag(event) {
@@ -540,34 +757,44 @@
     const buttons = document.createElement('div');
     buttons.className = 'jsd-tree-buttons';
 
-    const prevMajorBtn = document.createElement('button');
-    prevMajorBtn.type = 'button';
-    prevMajorBtn.className = 'jsd-tree-btn';
-    prevMajorBtn.textContent = state.config.labels.prevMajor;
-    prevMajorBtn.addEventListener('click', goPrevMajor);
+    const showIndexButton = getIndexGlobalIndex() >= 0;
+    if (showIndexButton) buttons.classList.add('has-index');
 
-    const prevSlideBtn = document.createElement('button');
-    prevSlideBtn.type = 'button';
-    prevSlideBtn.className = 'jsd-tree-btn';
-    prevSlideBtn.textContent = state.config.labels.prevSlide;
-    prevSlideBtn.addEventListener('click', goPrevSlide);
+    const indexbutton = document.createElement('button');
+    indexbutton.type = 'button';
+    indexbutton.className = 'jsd-tree-button';
+    indexbutton.textContent = state.config.labels.index;
+    indexbutton.addEventListener('click', goToIndex);
 
-    const nextSlideBtn = document.createElement('button');
-    nextSlideBtn.type = 'button';
-    nextSlideBtn.className = 'jsd-tree-btn';
-    nextSlideBtn.textContent = state.config.labels.nextSlide;
-    nextSlideBtn.addEventListener('click', goNextSlide);
+    const prevMajorbutton = document.createElement('button');
+    prevMajorbutton.type = 'button';
+    prevMajorbutton.className = 'jsd-tree-button';
+    prevMajorbutton.textContent = state.config.labels.prevMajor;
+    prevMajorbutton.addEventListener('click', goPrevMajor);
 
-    const nextMajorBtn = document.createElement('button');
-    nextMajorBtn.type = 'button';
-    nextMajorBtn.className = 'jsd-tree-btn';
-    nextMajorBtn.textContent = state.config.labels.nextMajor;
-    nextMajorBtn.addEventListener('click', goNextMajor);
+    const prevSlidebutton = document.createElement('button');
+    prevSlidebutton.type = 'button';
+    prevSlidebutton.className = 'jsd-tree-button';
+    prevSlidebutton.textContent = state.config.labels.prevSlide;
+    prevSlidebutton.addEventListener('click', goPrevSlide);
 
-    buttons.appendChild(prevMajorBtn);
-    buttons.appendChild(prevSlideBtn);
-    buttons.appendChild(nextSlideBtn);
-    buttons.appendChild(nextMajorBtn);
+    const nextSlidebutton = document.createElement('button');
+    nextSlidebutton.type = 'button';
+    nextSlidebutton.className = 'jsd-tree-button';
+    nextSlidebutton.textContent = state.config.labels.nextSlide;
+    nextSlidebutton.addEventListener('click', goNextSlide);
+
+    const nextMajorbutton = document.createElement('button');
+    nextMajorbutton.type = 'button';
+    nextMajorbutton.className = 'jsd-tree-button';
+    nextMajorbutton.textContent = state.config.labels.nextMajor;
+    nextMajorbutton.addEventListener('click', goNextMajor);
+
+    if (showIndexButton) buttons.appendChild(indexbutton);
+    buttons.appendChild(prevMajorbutton);
+    buttons.appendChild(prevSlidebutton);
+    buttons.appendChild(nextSlidebutton);
+    buttons.appendChild(nextMajorbutton);
 
     widget.appendChild(widgetHeader);
     widget.appendChild(map);
@@ -589,10 +816,11 @@
       widgetCount: widgetCount,
       map: map,
       buttons: buttons,
-      prevMajorBtn: prevMajorBtn,
-      prevSlideBtn: prevSlideBtn,
-      nextSlideBtn: nextSlideBtn,
-      nextMajorBtn: nextMajorBtn
+      indexbutton: indexbutton,
+      prevMajorbutton: prevMajorbutton,
+      prevSlidebutton: prevSlidebutton,
+      nextSlidebutton: nextSlidebutton,
+      nextMajorbutton: nextMajorbutton
     };
   }
 
@@ -616,6 +844,9 @@
   }
 
   function rebuild(nextConfig) {
+    if (nextConfig && nextConfig.indexPage && Object.prototype.hasOwnProperty.call(nextConfig.indexPage, 'position')) {
+      state.customIndexPosition = true;
+    }
     if (nextConfig) merge(state.config, nextConfig);
     cleanupDOM();
     restoreOriginalIfNeeded();
@@ -629,8 +860,7 @@
       return false;
     }
 
-    state.currentMajor = 0;
-    state.currentSlide = 0;
+    state.currentGlobal = 0;
 
     injectStyle();
     buildDOM(state.target);
@@ -654,11 +884,16 @@
     rebuild: rebuild,
     destroy: destroy,
     getState: function () {
+      const slide = state.data ? getCurrentSlide() : null;
       return {
-        currentMajor: state.currentMajor,
-        currentSlide: state.currentSlide,
+        mode: state.config.mode,
+        currentGlobal: state.currentGlobal,
+        currentType: slide ? slide.type : null,
+        currentMajor: slide && slide.type === 'content' ? slide.majorIndex : null,
+        currentSlide: slide && slide.type === 'content' ? slide.subIndex : null,
         totalMajors: state.data ? state.data.majors.length : 0,
-        totalSlides: state.data ? state.data.totalSlides : 0
+        totalSlides: state.data ? state.data.totalSlides : 0,
+        contentSlides: state.data ? state.data.contentSlides.length : 0
       };
     },
     getConfig: function () {

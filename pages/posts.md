@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: post-list
 toc: false
 post_list_style: category-book
 post_meta_mode: none

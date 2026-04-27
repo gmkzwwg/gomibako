@@ -1,3 +1,49 @@
+{% comment %}
+Resolve page-level switches.
+Page front matter has priority over site.ui.* defaults.
+{% endcomment %}
+
+<!-- show_title? layout_type > page fm > _config.yaml  -->
+<!-- disable when page.title is empty or "" -->
+{% assign show_title_enabled = site.ui.features.title %}
+
+{% if page.show_title != nil %}
+  {% assign show_title_enabled = page.show_title %}
+{% endif %}
+
+{% case page.layout %}
+  {% when "slide-annotation", "slide-linear", "slide-multilingual", "slide-simple", "slide-tree", "slide-wiki" %}
+    {% assign show_title_enabled = false %}
+{% endcase %}
+
+{% assign resolved_title = page.title | strip %}
+
+{% if resolved_title == "" %}
+  {% assign show_title_enabled = false %}
+{% endif %}
+
+{% if page.footer == nil %}
+{% assign footer_enabled = site.ui.features.footer %}
+{% else %}
+{% assign footer_enabled = page.footer %}
+{% endif %}
+
+{% if page.show_comments == nil %}
+{% assign comments_enabled = site.ui.features.comments %}
+{% else %}
+{% assign comments_enabled = page.show_comments %}
+{% endif %}
+
+{% if page.post_meta == nil %}
+{% if site.ui.features.post_meta == nil %}
+{% assign post_meta_enabled = true %}
+{% else %}
+{% assign post_meta_enabled = site.ui.features.post_meta %}
+{% endif %}
+{% else %}
+{% assign post_meta_enabled = page.post_meta %}
+{% endif %}
+
 <!doctype html>
 <html>
 
@@ -5,14 +51,13 @@
   {% include head.html %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/code-block-enhancement.js"></script>
   {% include matrix_letter_bomb.html %}
-  {% include title_hacker.html %}
   {% if page.anticopy == true %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/anticopy.js"></script>
   {% endif %}
   {% if page.watermark == true %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/watermark.js"></script>
   {% endif %}
-  {% if page.layout == "bilingual" %}
+  {% if page.layout == "post-bilingual" %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/bilingual.js"></script>
   {% endif %}
   <script src="{{site.url}}{{site.baseurl}}/src/assets/js/image-viewer.js""></script>
@@ -28,6 +73,19 @@
   {% endif %}
   <!-- Hacked Splash -->
   {% include hacked_splash.html %}
+  <!-- Title Hacker -->
+  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/text-glitch.js"></script>
+  <script>
+    const glitch = new TextGlitchFx({
+      selector: "h1, h2, .abstract, .post-abstract, .post-meta__text, .cli-header__label", // 指定，或者".hero-title",
+      intervalRange: [3, 6], // x~y 秒随机触发一次
+      duration: 800,
+      effects: ["scramble", "blocks", "blink", "error"],
+      maxCharChangeRatio: 0.48,
+    });
+
+    glitch.start();
+  </script>
   <!-- Timeline -->
   <script src="{{ site.url }}{{ site.baseurl }}/src/assets/js/timeline-list.js"></script>
   <script>
@@ -105,12 +163,22 @@
   <div class="container" id="ctner">
     {% include header.html %}
     <div class="div_article" id="div_atcl">
-      <div class="hook" id="top_hook"></div>
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
-        {{content}}
+        {% if show_title_enabled %}
+        <h1 class="post_title" id="{{page.title}}">{{ page.title }}</h1>
+        {% endif %}
+
+        {% if post_meta_enabled %}
+        {% include post-meta.html %}
+        {% endif %}
+
+        {{ content }}
+
+        {% if comments_enabled and site.comments.provider %}
         {% include comment.html %}
+        {% endif %}
       </article>
-      {% if page.footer != false %}
+      {% if footer_enabled %}
       {% include footer.html %}
       {% endif %}
     </div>

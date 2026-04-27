@@ -1,5 +1,9 @@
+@use "abstracts/variables"as *;
+@use "abstracts/fonts"as *;
+@use "abstracts/mixins"as *;
+@use "abstracts/animations"as *;
 // table of content
-.popup_btn {
+.popup_button {
   position: relative;
   display: inline-block;
   cursor: pointer;

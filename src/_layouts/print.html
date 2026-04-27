@@ -267,7 +267,7 @@
     .liquid-toc__h1 span {
       font-weight: 700;
       text-decoration: none;
-      color: $color-third;
+      color: $color-muted;
     }
 
     .liquid-toc__body {
@@ -297,7 +297,7 @@
     .liquid-toc__col--h2 a,
     .liquid-toc__col--h2 span {
       font-weight: 700;
-      color: $color-third;
+      color: $color-muted;
       display: inline-block;
       text-decoration: none;
     }
@@ -333,7 +333,7 @@
 
     .liquid-toc__single a {
       font-weight: 700;
-      color: $color-third;
+      color: $color-muted;
     }
 
     .liquid-toc--compact .liquid-toc__col--h3 ul {
@@ -364,8 +364,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body);"></script>
   <!-- MERMAID -->
-  {% if site.mermaid_version %}
-  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/{{site.mermaid_version}}/mermaid.min.js"></script>
+  {% if site.assets.mermaid.version %}
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/{{site.assets.mermaid.version}}/mermaid.min.js"></script>
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     mermaid.initialize({

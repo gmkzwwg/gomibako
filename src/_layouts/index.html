@@ -4,7 +4,7 @@
 <head>
   {% include head.html %}
 </head>
-<!-- 功能：
+{% comment %}
 1. 全屏覆盖显示
    * 整个界面固定铺满浏览器视口。
    * 四周保留少量边距，形成终端窗口外框效果。
@@ -48,7 +48,7 @@
     * 通过 `initMatrixRain({...})` 统一初始化。
     * 可调字体大小、颜色、白字比例、速度、拖尾长度、帧率、淡出强度、发光强度等。
     * 支持重新初始化、停止、启动、销毁、窗口尺寸变化自适应。
--->
+{% endcomment %}
 <body>
 <div id="cyber_dump_console">
   <style>
@@ -190,14 +190,14 @@
       min-width: 0;
     }
 
-    #cyber_dump_console .win_btns {
+    #cyber_dump_console .win_buttons {
       display: flex;
       align-items: center;
       gap: 5px;
       flex-shrink: 0;
     }
 
-    #cyber_dump_console .win_btn {
+    #cyber_dump_console .win_button {
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -395,10 +395,10 @@
   <div class="console_window">
     <div class="console_titlebar">
       <div class="title_left">
-        <div class="win_btns">
-          <span class="win_btn"></span>
-          <span class="win_btn"></span>
-          <span class="win_btn"></span>
+        <div class="win_buttons">
+          <span class="win_button"></span>
+          <span class="win_button"></span>
+          <span class="win_button"></span>
         </div>
         <div class="title_text">trash://self_diagnostic_console</div>
       </div>

@@ -60,7 +60,7 @@ Notes:
 {% assign meta_mode = include.meta_mode | default: page.post_meta_mode | default: site.post_list.meta_mode | default: "categories" | strip | downcase %}
 {% assign date_format = include.date_format | default: page.post_date_format | default: site.post_list.date_format | default: "%Y-%m-%d" %}
 {% assign posts = include.posts | default: site.posts %}
-{% assign empty_text = include.empty_text | default: page.post_list_empty_text | default: site.post_list.empty_text | default: "No posts yet." %}
+{% assign empty_text = include.empty_text | default: page.post_list_empty_text | default: site.ui.labels.empty | default: "No posts yet." %}
 {% assign uncategorized_label = include.uncategorized_label | default: page.post_uncategorized_label | default: site.post_list.uncategorized_label | default: "Uncategorized" %}
 
 {% assign show_excerpt_raw = include.show_excerpt | default: page.post_show_excerpt | default: site.post_list.show_excerpt | default: false %}

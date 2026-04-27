@@ -305,7 +305,7 @@
         opacity: .86;
       }
 
-      .${CONFIG.ROOT_CLASS} .cbe-btn {
+      .${CONFIG.ROOT_CLASS} .cbe-button {
         display: inline-flex;
         align-items: center;
         gap: 5px;
@@ -628,32 +628,32 @@
     title.appendChild(makeSpan('cbe-lang', languageLabel));
 
     if (CONFIG.ENABLE_COPY_BUTTON) {
-      const copyBtn = document.createElement('button');
-      copyBtn.type = 'button';
-      copyBtn.className = 'cbe-btn';
-      copyBtn.style.padding = `${CONFIG.BUTTON_PADDING_Y}px ${CONFIG.BUTTON_PADDING_X}px`;
-      copyBtn.style.borderRadius = `${CONFIG.BUTTON_RADIUS}px`;
-      copyBtn.style.color = theme.color;
-      copyBtn.style.background = mixColorWithAlpha(theme.color, CONFIG.ACTION_BG_ALPHA);
-      copyBtn.style.border = `1px solid ${mixColorWithAlpha(theme.color, CONFIG.ACTION_BORDER_ALPHA)}`;
-      copyBtn.appendChild(makeIcon(CONFIG.COPY_ICON_CLASS));
-      copyBtn.appendChild(document.createTextNode(CONFIG.COPY_LABEL));
-      copyBtn.addEventListener('click', async () => {
+      const copybutton = document.createElement('button');
+      copybutton.type = 'button';
+      copybutton.className = 'cbe-button';
+      copybutton.style.padding = `${CONFIG.BUTTON_PADDING_Y}px ${CONFIG.BUTTON_PADDING_X}px`;
+      copybutton.style.borderRadius = `${CONFIG.BUTTON_RADIUS}px`;
+      copybutton.style.color = theme.color;
+      copybutton.style.background = mixColorWithAlpha(theme.color, CONFIG.ACTION_BG_ALPHA);
+      copybutton.style.border = `1px solid ${mixColorWithAlpha(theme.color, CONFIG.ACTION_BORDER_ALPHA)}`;
+      copybutton.appendChild(makeIcon(CONFIG.COPY_ICON_CLASS));
+      copybutton.appendChild(document.createTextNode(CONFIG.COPY_LABEL));
+      copybutton.addEventListener('click', async () => {
         const ok = await copyText(codeText);
-        const textNode = copyBtn.lastChild;
+        const textNode = copybutton.lastChild;
         if (textNode && textNode.nodeType === Node.TEXT_NODE) {
           textNode.textContent = ok ? CONFIG.COPIED_LABEL : CONFIG.COPY_LABEL;
           setTimeout(() => { textNode.textContent = CONFIG.COPY_LABEL; }, 1200);
         }
       });
-      actions.appendChild(copyBtn);
+      actions.appendChild(copybutton);
     }
 
     if (CONFIG.ENABLE_RUN_BUTTON) {
       const runUrl = buildRunUrl(language, codeText);
       if (runUrl) {
         const runLink = document.createElement('a');
-        runLink.className = 'cbe-btn';
+        runLink.className = 'cbe-button';
         runLink.href = runUrl;
         runLink.target = CONFIG.RUN_TARGET;
         runLink.rel = 'noopener noreferrer';

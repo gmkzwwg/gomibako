@@ -46,30 +46,30 @@ strip_newlines | truncate: 160 %} {% else %} {% assign desc = site.description
   type="text/css"
 />
 <!-- FONTAWESOME > 4.7.0 -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/all.min.css" type="text/css"/> -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/svg-with-js.min.css" type="text/css"/> -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/regular.min.css" type="text/css"/> -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.fontawesome_version}}/css/solid.min.css" type="text/css"/> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.assets.fontawesome.version}}/css/all.min.css" type="text/css"/> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.assets.fontawesome.version}}/css/svg-with-js.min.css" type="text/css"/> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.assets.fontawesome.version}}/css/regular.min.css" type="text/css"/> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/{{site.assets.fontawesome.version}}/css/solid.min.css" type="text/css"/> -->
 <!-- MATHJAX -->
-{% if site.mathjax_version %}
+{% if site.assets.math.mathjax_version %}
 <script
   async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"
 ></script>
 {% endif %}
 <!-- KATEX -->
-{% if site.katex_version %}
+{% if site.assets.math.katex_version %}
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@{{site.katex_version}}/dist/katex.min.css"
+  href="https://cdn.jsdelivr.net/npm/katex@{{site.assets.math.katex_version}}/dist/katex.min.css"
 />
 <script
   defer
-  src="https://cdn.jsdelivr.net/npm/katex@{{site.katex_version}}/dist/katex.min.js"
+  src="https://cdn.jsdelivr.net/npm/katex@{{site.assets.math.katex_version}}/dist/katex.min.js"
 ></script>
 <script
   defer
-  src="https://cdn.jsdelivr.net/npm/katex@{{site.katex_version}}/dist/contrib/auto-render.min.js"
+  src="https://cdn.jsdelivr.net/npm/katex@{{site.assets.math.katex_version}}/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body)"
 ></script>
 <script>
@@ -96,10 +96,10 @@ strip_newlines | truncate: 160 %} {% else %} {% assign desc = site.description
 </script>
 {% endif %}
 <!-- MERMAID -->
-{% if site.mermaid_version %}
+{% if site.assets.mermaid.version %}
 <script
   async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/{{site.mermaid_version}}/mermaid.min.js"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/{{site.assets.mermaid.version}}/mermaid.min.js"
 ></script>
 <script type="module">
   import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";

@@ -1,3 +1,5 @@
+@use "abstracts/variables"as *;
+
 @mixin thin_scrollbar($thumb-color, $track-color) {
   scrollbar-width: thin;
   scrollbar-color: $thumb-color $track-color;

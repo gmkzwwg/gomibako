@@ -2,6 +2,4 @@
 Jekyll Assets: start scss files with two lines of triple dashes
 ---
 
-@charset "utf-8";
-
-@import "theme_matrix";
+@use "theme_matrix";

@@ -1,3 +1,7 @@
+@use "abstracts/variables"as *;
+@use "abstracts/fonts"as *;
+@use "abstracts/mixins"as *;
+@use "abstracts/animations"as *;
 
 .liquid-toc {
   font: inherit;
@@ -22,7 +26,7 @@
 .liquid-toc__h1 span {
   font-weight: 700;
   text-decoration: none;
-  color: $color-third;
+  color: $color-muted;
 }
 
 .liquid-toc__body {
@@ -51,7 +55,7 @@
 .liquid-toc__col--h2 a,
 .liquid-toc__col--h2 span {
   font-weight: 700;
-  color: $color-third;
+  color: $color-muted;
   display: inline-block;
   text-decoration: none;
 }
@@ -87,7 +91,7 @@
 
 .liquid-toc__single a {
   font-weight: 700;
-  color: $color-third;
+  color: $color-muted;
 }
 
 .liquid-toc--compact .liquid-toc__col--h3 ul {

@@ -1,3 +1,7 @@
+@use "abstracts/variables"as *;
+@use "abstracts/fonts"as *;
+@use "abstracts/mixins"as *;
+@use "abstracts/animations"as *;
 .post-list-shell {
   --post-accent: var(--color-primary, #4f46e5);
   --post-accent-rgb: var(--color-primary-rgb, 79, 70, 229);

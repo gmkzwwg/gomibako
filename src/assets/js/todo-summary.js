@@ -201,12 +201,12 @@
     title.className = 'todo-floating-title';
     title.textContent = 'TODO 汇总';
 
-    const closeBtn = document.createElement('button');
-    closeBtn.type = 'button';
-    closeBtn.className = 'todo-floating-close';
-    closeBtn.setAttribute('aria-label', '关闭 TODO 汇总');
-    closeBtn.textContent = '×';
-    closeBtn.addEventListener('click', function () {
+    const closebutton = document.createElement('button');
+    closebutton.type = 'button';
+    closebutton.className = 'todo-floating-close';
+    closebutton.setAttribute('aria-label', '关闭 TODO 汇总');
+    closebutton.textContent = '×';
+    closebutton.addEventListener('click', function () {
       hideFloatingPanel();
     });
 
@@ -218,7 +218,7 @@
 
     body.appendChild(list);
     header.appendChild(title);
-    header.appendChild(closeBtn);
+    header.appendChild(closebutton);
     box.appendChild(header);
     box.appendChild(body);
     document.body.appendChild(box);

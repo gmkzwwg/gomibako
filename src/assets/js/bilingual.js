@@ -112,11 +112,11 @@
   }
 
   function makeButton() {
-    var btn = d.createElement("button");
-    btn.type = "button";
-    btn.className = "bt-toggle";
-    btn.textContent = "";
-    return btn;
+    var button = d.createElement("button");
+    button.type = "button";
+    button.className = "bt-toggle";
+    button.textContent = "";
+    return button;
   }
 
   function getWrapAndTarget(el) {
@@ -136,16 +136,16 @@
     return null;
   }
 
-  function setButtonState(btn, collapsed, opts) {
-    if (!btn) return;
+  function setButtonState(button, collapsed, opts) {
+    if (!button) return;
     if (collapsed) {
-      btn.textContent = opts.collapsedText;
-      btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-label", "Expand");
+      button.textContent = opts.collapsedText;
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Expand");
     } else {
-      btn.textContent = opts.expandedText;
-      btn.setAttribute("aria-expanded", "true");
-      btn.setAttribute("aria-label", "Collapse");
+      button.textContent = opts.expandedText;
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Collapse");
     }
   }
 
@@ -163,8 +163,8 @@
       if (collapsed) wrap.classList.add("bt-collapsed");
       else wrap.classList.remove("bt-collapsed");
 
-      var btn = wrap.querySelector(":scope > .bt-toggle");
-      setButtonState(btn, collapsed, opts);
+      var button = wrap.querySelector(":scope > .bt-toggle");
+      setButtonState(button, collapsed, opts);
     }
   }
 
@@ -208,16 +208,16 @@
     var wrap = d.createElement("span");
     wrap.className = "bt-wrap bt-has-button";
 
-    var btn = makeButton();
+    var button = makeButton();
 
     // 将 wrapper 插入到 targetEl 原位置，并把 targetEl 移入 wrapper
     var parent = targetEl.parentNode;
     if (!parent) return;
     parent.insertBefore(wrap, targetEl);
-    wrap.appendChild(btn);
+    wrap.appendChild(button);
     wrap.appendChild(targetEl);
 
-    btn.addEventListener("click", function (e) {
+    button.addEventListener("click", function (e) {
       e.preventDefault();
       toggleOne(wrap, opts);
     });
@@ -226,11 +226,11 @@
     if (startCollapsed) {
       wrap.classList.add("bt-collapsed");
       targetEl.classList.add("bt-collapsed");
-      setButtonState(btn, true, opts);
+      setButtonState(button, true, opts);
     } else {
       wrap.classList.remove("bt-collapsed");
       targetEl.classList.remove("bt-collapsed");
-      setButtonState(btn, false, opts);
+      setButtonState(button, false, opts);
     }
   }
 

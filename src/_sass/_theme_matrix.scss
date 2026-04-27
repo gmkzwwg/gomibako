@@ -1,9 +1,29 @@
-@charset 'utf-8';
+@use "abstracts/variables"as *;
+@use "abstracts/fonts"as *;
+@use "abstracts/mixins"as *;
+@use "abstracts/animations"as *;
 
-@import "abstracts/fonts";
-@import "abstracts/variables";
-@import "abstracts/mixins";
-@import "abstracts/animations";
+@use "vendor/syntax"as *;
+@use "vendor/hacked_splash"as *;
+@use "vendor/copy_code"as *;
+
+@use "base/base"as *;
+@use "base/details"as *;
+@use "base/table"as *;
+
+@use "components/footer"as *;
+@use "components/collection_list"as *;
+@use "components/header"as *;
+@use "components/post_info"as *;
+@use "components/toc_chart"as *;
+@use "components/toc_list"as *;
+@use "components/comment"as *;
+@use "components/tags"as *;
+@use "components/context_menu"as *;
+@use "components/post-list"as *;
+
+@use "layouts/global"as *;
+@use "layouts/index"as *;
 
 :root {
   --color-primary: #{$green-1};
@@ -16,26 +36,5 @@
   --color-surface-rgb: #{$green-3};
 }
 
-@import "vendor/syntax";
-@import "vendor/hacked_splash";
-@import "vendor/copy_code";
 
-@import "base/base";
-@import "base/details";
-@import "base/table";
-
-@import "components/footer";
-@import "components/collection_list";
-@import "components/header";
-@import "components/post_info";
-@import "components/toc_chart";
-@import "components/toc_list";
-@import "components/comment";
-@import "components/tags";
-@import "components/context_menu";
-@import "components/post-list";
-
-@import "layouts/global";
-@import "layouts/slide";
-@import "layouts/index";
 

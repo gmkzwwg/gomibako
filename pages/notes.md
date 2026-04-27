@@ -6,9 +6,8 @@ show_date: false
 categories: false
 post_list: false
 toc: false
-home_btn: true
-btn_text: true
-footer: true
+home_button: true
+show_footer: true
 permalink: /notes
 ---
 

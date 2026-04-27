@@ -1,3 +1,8 @@
+@use "abstracts/variables"as *;
+@use "abstracts/fonts"as *;
+@use "abstracts/mixins"as *;
+@use "abstracts/animations"as *;
+
 // global base reset
 body {
   line-height: 1.70;
@@ -6,23 +11,38 @@ body {
   font-family: $font-monospace;
   cursor: $cursor-green-auto;
 }
+h1::before {
+  content: "ℱ⟮";  /* Add the desired symbol here */
+  font-size: $font-size-h1;
+  font-weight: thin;
+  text-transform: lowercase;
+  color: $color-primary;  /* Optional: Set the color of the symbol */
+}
 h1 {
   font-size: $font-size-h1;
   text-align: center;
-  font-weight: normal;
+  font-weight: auto;
+  color: $color-primary;
   text-transform: uppercase;
   margin: 1.6em 0 1.5em 0;
   cursor: $cursor-green-text;
 }
+h1::after {
+  content: "⟯";  /* Add the desired symbol here */
+  font-size: $font-size-h1;
+  font-weight: thin;
+  text-transform: lowercase;
+  color: $color-primary;  /* Optional: Set the color of the symbol */
+}
 h2::before {
   content: "[root]# ";  /* Add the desired symbol here */
   font-size: $font-size-h2;
-  font-weight: normal;
+  font-weight: auto;
   text-transform: lowercase;
   color: $color-primary;  /* Optional: Set the color of the symbol */
 }
 h2 {
-  background: $color-third;
+  background: rgba($color-muted, 0.9);
   color: $color-post-background;
   font-size: $font-size-h2;
   font-weight: bold;
@@ -34,54 +54,55 @@ h2 {
   }
 }
 h3::before {
-  content: "> ";  /* Add the desired symbol here */
+  content: "Γ⊢";  /* Add the desired symbol here */
   font-size: $font-size-h3;
-  color: $color-third;  /* Optional: Set the color of the symbol */
+  color: $color-primary;  /* Optional: Set the color of the symbol */
 }
 h3 {
-  color: $color-third;
+  color: $color-muted;
   font-size: $font-size-h3;
-  font-weight: lighter;
+  font-weight: auto;
   // text-transform: capitalize;
   margin: 1.6em 0 0.8em 0;
   // border-bottom: $border-dotted-third;
   cursor: $cursor-green-text;
 }
 h4::before {
-  content: "# ";  /* Add the desired symbol here */
+  content: "τ::";  /* Add the desired symbol here */
   font-size: $font-size-h4;
-  color: $color-third;  /* Optional: Set the color of the symbol */
+  color: $color-primary;  /* Optional: Set the color of the symbol */
 }
 h4 {
-  color: $color-third;
+  color: $color-muted;
   font-size: $font-size-h4;
-  font-weight: lighter;
+  font-weight: auto;
   margin: 1.2em 0 0.8em 0;
   cursor: $cursor-green-text;
   list-style-type: decimal;
 }
 h5::before {
-  content: "## ";  /* Add the desired symbol here */
+  content: "λx.";  /* Add the desired symbol here */
   font-size: $font-size-h5;
-  color: $color-third;  /* Optional: Set the color of the symbol */
+  color: $color-primary;  /* Optional: Set the color of the symbol */
 }
 h5 {
-  color: $color-third;
+  color: $color-muted;
   font-size: $font-size-h5;
-  font-weight: lighter;
-  margin: 1.2em 0 0.6em 0;
+  font-weight: auto;
+  margin: 1.2em 0 0.8em 0;
   cursor: $cursor-green-text;
 }
 h6::before {
-  content: "### ";  /* Add the desired symbol here */
+  font-family: Consolas, "PingFang SC", Menlo;
+  content: "⟼ ";  /* Add the desired symbol here */
   font-size: $font-size-h6;
-  color: $color-third;  /* Optional: Set the color of the symbol */
+  color: $color-primary;  /* Optional: Set the color of the symbol */
 }
 h6 {
-  color: $color-third;
+  color: $color-muted;
   font-size: $font-size-h6;
-  font-weight: lighter;
-  margin: 1.6em 0 0.6em 0;
+  font-weight: auto;
+  margin: 1.2em 0 0.8em 0;
   cursor: $cursor-green-text;
 }
 p {
@@ -97,7 +118,7 @@ strong {
 }
 hr {
   border: 0;
-  border-top: 1px dashed rgba($color-third, 0.3);
+  border-top: 1px dashed rgba($color-muted, 0.3);
   margin: 0 0 0 0;
 }
 video {
@@ -170,7 +191,7 @@ dt { // Description Term: 描述术语。代表列表中的项目名称（Key/Te
   font-weight: 700;
 }
 dd { // Description Details: 描述详情。代表对前一个术语的具体说明或数值（Value/Definition）。
-  color: $color-third;
+  color: $color-muted;
 }
 blockquote {
   background-color: $color-post-background;

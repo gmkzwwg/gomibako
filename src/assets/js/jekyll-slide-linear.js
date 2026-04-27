@@ -233,7 +233,7 @@
         align-items: stretch;
         position: relative;
       }
-      .jsd-linear-btn {
+      .jsd-linear-button {
         appearance: none;
         -webkit-appearance: none;
         border: 0;
@@ -249,14 +249,14 @@
         font-size: calc(1em * ${state.config.buttonFontScale});
         white-space: nowrap;
       }
-      .jsd-linear-controls .jsd-linear-btn:first-child {
+      .jsd-linear-controls .jsd-linear-button:first-child {
         border-left: 0;
       }
-      .jsd-linear-btn:focus-visible {
+      .jsd-linear-button:focus-visible {
         outline: 1px solid currentColor;
         outline-offset: -1px;
       }
-      .jsd-linear-btn.is-active {
+      .jsd-linear-button.is-active {
         font-weight: 700;
       }
       .jsd-linear-menu {
@@ -320,7 +320,7 @@
         display: block;
         width: 100%;
       }
-      .jsd-index-btn {
+      .jsd-index-button {
         width: 100%;
         display: block;
         text-align: left;
@@ -332,11 +332,11 @@
         font: inherit;
         cursor: pointer;
       }
-      .jsd-index-btn:focus-visible {
+      .jsd-index-button:focus-visible {
         outline: 1px solid currentColor;
         outline-offset: -1px;
       }
-      .jsd-index-btn-num {
+      .jsd-index-button-num {
         display: inline-block;
         min-width: 2.6em;
         font-weight: 700;
@@ -488,7 +488,7 @@
       state.autoplayTimer = null;
     }
     if (state.dom.toolbar) state.dom.toolbar.classList.remove('is-playing');
-    if (state.dom.autoplayBtn) state.dom.autoplayBtn.classList.remove('is-active');
+    if (state.dom.autoplaybutton) state.dom.autoplaybutton.classList.remove('is-active');
   }
 
   function startAutoplay() {
@@ -499,7 +499,7 @@
       nextSlide();
     }, seconds * 1000);
     if (state.dom.toolbar) state.dom.toolbar.classList.add('is-playing');
-    if (state.dom.autoplayBtn) state.dom.autoplayBtn.classList.add('is-active');
+    if (state.dom.autoplaybutton) state.dom.autoplaybutton.classList.add('is-active');
   }
 
   function toggleAutoplay() {
@@ -564,25 +564,25 @@
       const item = document.createElement('div');
       item.className = 'jsd-index-item';
 
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'jsd-index-btn';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'jsd-index-button';
 
       const num = document.createElement('span');
-      num.className = 'jsd-index-btn-num';
+      num.className = 'jsd-index-button-num';
       num.textContent = String(index + 1) + '.';
 
       const title = document.createElement('span');
-      title.className = 'jsd-index-btn-title';
+      title.className = 'jsd-index-button-title';
       title.textContent = getMenuItemTitle(slide, index);
 
-      btn.appendChild(num);
-      btn.appendChild(title);
-      btn.addEventListener('click', function () {
+      button.appendChild(num);
+      button.appendChild(title);
+      button.addEventListener('click', function () {
         goTo(index);
       });
 
-      item.appendChild(btn);
+      item.appendChild(button);
       list.appendChild(item);
     });
 
@@ -662,12 +662,12 @@
   }
 
   function createButton(key, text, handler) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'jsd-linear-btn jsd-linear-btn-' + key;
-    btn.textContent = text;
-    btn.addEventListener('click', handler);
-    return btn;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'jsd-linear-button jsd-linear-button-' + key;
+    button.textContent = text;
+    button.addEventListener('click', handler);
+    return button;
   }
 
   function attachDragging(toolbar, handle) {
@@ -732,11 +732,11 @@
     controls.appendChild(menu);
 
     if (state.config.controls.menu.show) {
-      const menuBtn = createButton('menu', state.config.controls.menu.label, toggleMenu);
-      controls.appendChild(menuBtn);
-      state.dom.menuBtn = menuBtn;
+      const menubutton = createButton('menu', state.config.controls.menu.label, toggleMenu);
+      controls.appendChild(menubutton);
+      state.dom.menubutton = menubutton;
     } else {
-      state.dom.menuBtn = null;
+      state.dom.menubutton = null;
     }
 
     if (state.config.controls.first.show) {
@@ -764,14 +764,14 @@
     }
 
     if (state.config.controls.autoplay.show) {
-      const autoplayBtn = createButton('autoplay', state.config.controls.autoplay.label, function () {
+      const autoplaybutton = createButton('autoplay', state.config.controls.autoplay.label, function () {
         toggleAutoplay();
         updateToolbarState();
       });
-      controls.appendChild(autoplayBtn);
-      state.dom.autoplayBtn = autoplayBtn;
+      controls.appendChild(autoplaybutton);
+      state.dom.autoplaybutton = autoplaybutton;
     } else {
-      state.dom.autoplayBtn = null;
+      state.dom.autoplaybutton = null;
     }
 
     toolbar.appendChild(drag);

@@ -8,10 +8,9 @@ subclass: Markdown 测试
 post_list: date
 toc: "chart"
 toc_depth: 6
-comment: true
-home_btn: true
-btn_text: true
-footer: true
+show_comment: true
+home_button: true
+show_footer: true
 encrypted_text: true
 context_menu: false
 permalink: /test
