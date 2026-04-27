@@ -4,6 +4,8 @@ categories: Notes
 subclass: Algebra
 ---
 
+
+
 主要参考资料：
 1. 高等代数学 谢启鸿：https://www.bilibili.com/video/BV1mJ411r7ZB
 2. 《高等代数》丘维生
