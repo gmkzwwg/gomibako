@@ -12,7 +12,7 @@ body {
   cursor: $cursor-green-auto;
 }
 h1::before {
-  content: "ℱ⟮";  /* Add the desired symbol here */
+  content: "⟦ ";  /* Add the desired symbol here */
   font-size: $font-size-h1;
   font-weight: thin;
   text-transform: lowercase;
@@ -28,7 +28,7 @@ h1 {
   cursor: $cursor-green-text;
 }
 h1::after {
-  content: "⟯";  /* Add the desired symbol here */
+  content: " ⟧";  /* Add the desired symbol here */
   font-size: $font-size-h1;
   font-weight: thin;
   text-transform: lowercase;
@@ -54,7 +54,7 @@ h2 {
   }
 }
 h3::before {
-  content: "Γ⊢";  /* Add the desired symbol here */
+  content: "ℱ⟮ ";  /* Add the desired symbol here */
   font-size: $font-size-h3;
   color: $color-primary;  /* Optional: Set the color of the symbol */
 }
@@ -67,8 +67,14 @@ h3 {
   // border-bottom: $border-dotted-third;
   cursor: $cursor-green-text;
 }
+h3::after {
+  content: " ⟯";  /* Add the desired symbol here */
+  font-size: $font-size-h3;
+  color: $color-primary;  /* Optional: Set the color of the symbol */
+}
 h4::before {
-  content: "τ::";  /* Add the desired symbol here */
+  font-family: Consolas, "PingFang SC", Menlo;
+  content: "Γ⊢ ";  /* Add the desired symbol here */
   font-size: $font-size-h4;
   color: $color-primary;  /* Optional: Set the color of the symbol */
 }
@@ -81,7 +87,8 @@ h4 {
   list-style-type: decimal;
 }
 h5::before {
-  content: "λx.";  /* Add the desired symbol here */
+  font-family: Consolas, "PingFang SC", Menlo;
+  content: "τ:: ";  /* Add the desired symbol here */
   font-size: $font-size-h5;
   color: $color-primary;  /* Optional: Set the color of the symbol */
 }
@@ -94,7 +101,7 @@ h5 {
 }
 h6::before {
   font-family: Consolas, "PingFang SC", Menlo;
-  content: "⟼ ";  /* Add the desired symbol here */
+  content: "λx. ";  /* Add the desired symbol here */
   font-size: $font-size-h6;
   color: $color-primary;  /* Optional: Set the color of the symbol */
 }

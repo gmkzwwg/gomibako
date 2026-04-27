@@ -298,7 +298,8 @@ social:                                                       # Group social pro
 # -----------------------------------------------------------------------------
 # 8. Assets and client-side libraries
 # -----------------------------------------------------------------------------
-assets:                                                       # Group asset paths and client-side library versions.
+assets:
+  version               : "2026-04-28-1"                      # Bump this value to force browsers to reload static assets.   
   strategy              : "cdn"                               # Select how frontend libraries are loaded. candidates: cdn | local
   path                  : "/assets"                           # Set the public root path for static assets.
   css                   : "/assets/css"                       # Set the public path for CSS assets.
@@ -311,10 +312,11 @@ assets:                                                       # Group asset path
 
   mermaid:                                                    # Group Mermaid diagram library settings.
     version             : "11.12.0"                           # Set the Mermaid version used by templates.
+    theme               : "dark"
 
   fontawesome:                                                # Group Font Awesome library settings.
-    version             : "6.5.2"                             # Set the Font Awesome version used by templates.
-    compatibility       : "v6"                                # Set the expected Font Awesome class syntax. candidates: v4 | v6
+    version             : "4.7.0"                             # Set the Font Awesome version used by templates.
+    compatibility       : "v4"                                # Set the expected Font Awesome class syntax. candidates: v4 | v6
 # Set the public image path alias.
 img                   : "/images"                           
 
