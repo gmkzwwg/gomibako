@@ -120,7 +120,7 @@
                                                         {% if post_subclass == clean_subclass %}
                                                             <a
                                                                 class="archive-post-link"
-                                                                href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                                                                href="{{ post.url | relative_url }}"
                                                             >
                                                                 {{ post.title }}
                                                             </a>
@@ -171,7 +171,7 @@
                                                 {% if post_subclass == clean_subclass %}
                                                     <a
                                                         class="archive-post-link"
-                                                        href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                                                        href="{{ post.url | relative_url }}"
                                                     >
                                                         {{ post.title }}
                                                     </a>

@@ -9,7 +9,7 @@ layout: default
     {% for post in collection.docs %}
         <p>
             &nbsp;&nbsp;
-            <a class="a_title" href="{{site.url}}{{site.baseurl}}{{post.url}}">{{post.title}}</a>  
+            <a class="a_title" href="{{ post.url | relative_url }}">{{post.title}}</a>  
         </p>
     {% endfor %}
 {% endfor %}

@@ -13,8 +13,6 @@ show_footer: true
 permalink: /todos
 ---
 
-<h1>List Articles with Non-empty TODO</h1>
-
 <table class="link_table">
     <tr>
         <td>
@@ -44,7 +42,7 @@ permalink: /todos
 
                                         {% if todo_is_present %}
                                             <li>
-                                                <a class="a_title" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                                                <a class="a_title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
 
                                                 {% if post.todos.first %}
                                                     <ol style="margin-left: 4ch; font-size: 0.85em; color: white;">
@@ -93,7 +91,7 @@ permalink: /todos
 
                                             {% if todo_is_present %}
                                                 <li>
-                                                    <a class="a_title" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                                                    <a class="a_title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
 
                                                     {% if post.todos.first %}
                                                         <ol style="margin-left: 4ch; font-size: 0.85em; color: white;">
@@ -139,7 +137,7 @@ permalink: /todos
 
                                     {% if todo_is_present %}
                                         <li>
-                                            <a class="a_title" href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                                            <a class="a_title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
 
                                             {% if post.todos.first %}
                                                 <ol style="margin-left: 4ch; font-size: 0.85em; color: white;">

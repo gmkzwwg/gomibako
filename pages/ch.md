@@ -34,7 +34,7 @@ tag_to_show: cheatsheet
                                             {% for tag in post.tags %}
                                                 {% if tag == page.tag_to_show %}
                                                     <li>
-                                                        <a class="a_title" href="{{site.url}}{{site.baseurl}}{{post.url}}">{{post.title}}</a>
+                                                        <a class="a_title" href="{{ post.url | relative_url }}">{{post.title}}</a>
                                                     </li>
                                                 {% endif %}
                                             {% endfor %}
@@ -63,7 +63,7 @@ tag_to_show: cheatsheet
                                                 {% for tag in post.tags %}
                                                     {% if tag == page.tag_to_show %}
                                                         <li>
-                                                            <a class="a_title" href="{{site.url}}{{site.baseurl}}{{post.url}}">{{post.title}}</a>
+                                                            <a class="a_title" href="{{ post.url | relative_url }}">{{post.title}}</a>
                                                         </li>
                                                     {% endif %}
                                                 {% endfor %}
@@ -89,7 +89,7 @@ tag_to_show: cheatsheet
                                         {% for tag in post.tags %}
                                             {% if tag == page.tag_to_show %}
                                                 <li>
-                                                    <a class="a_title" href="{{site.url}}{{site.baseurl}}{{post.url}}">{{post.title}}</a>
+                                                    <a class="a_title" href="{{ post.url | relative_url }}">{{post.title}}</a>
                                                 </li>
                                             {% endif %}
                                         {% endfor %}

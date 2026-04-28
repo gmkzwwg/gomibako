@@ -40,7 +40,7 @@
                           <div style="margin-bottom: 0.35rem;">
                             <a
                               class="a_title"
-                              href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                              href="{{ post.url | relative_url }}"
                               style="color: #00ff41; text-decoration: none;"
                             >
                               {{ post.title }}
@@ -95,7 +95,7 @@
                       <div style="margin-bottom: 0.35rem;">
                         <a
                           class="a_title"
-                          href="{{ site.url }}{{ site.baseurl }}{{ post.url }}"
+                          href="{{ post.url | relative_url }}"
                           style="color: #00ff41; text-decoration: none;"
                         >
                           {{ post.title }}

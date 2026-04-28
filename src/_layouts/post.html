@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% if page.todos != false %}
-<script src="{{site.url}}{{site.baseurl}}/src/assets/js/todo-summary.js"></script>
+<script src="{{ '/src/assets/js/todo-summary.js' | relative_url }}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     initTodoCollector('.div_article');

@@ -49,20 +49,20 @@ Page front matter has priority over site.ui.* defaults.
 
 <head>
   {% include head.html %}
-  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/code-block-enhancement.js"></script>
+  <script src="{{ '/src/assets/js/code-block-enhancement.js' | relative_url }}"></script>
   {% include matrix_letter_bomb.html %}
   {% if page.anticopy == true %}
-  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/anticopy.js"></script>
+  <script src="{{ '/src/assets/js/anticopy.js' | relative_url }}"></script>
   {% endif %}
   {% if page.watermark == true %}
-  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/watermark.js"></script>
+  <script src="{{ '/src/assets/js/watermark.js' | relative_url }}"></script>
   {% endif %}
   {% if page.layout == "post-bilingual" %}
-  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/bilingual.js"></script>
+  <script src="{{ '/src/assets/js/bilingual.js' | relative_url }}"></script>
   {% endif %}
-  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/image-viewer.js""></script>
+  <script src="{{ '/src/assets/js/image-viewer.js' | relative_url }}"></script>
   {% if page.context_menu == true %}
-  <script src=" {{site.url}}{{site.baseurl}}/src/assets/js/context-menu.js"></script>
+  <script src=" {{ '/src/assets/js/context-menu.js' | relative_url }}"></script>
   {% endif %}
 </head>
 
@@ -74,7 +74,7 @@ Page front matter has priority over site.ui.* defaults.
   <!-- Hacked Splash -->
   {% include hacked_splash.html %}
   <!-- Title Hacker -->
-  <script src="{{site.url}}{{site.baseurl}}/src/assets/js/text-glitch.js"></script>
+  <script src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
   <script>
     const glitch = new TextGlitchFx({
       selector: "h1, h2, .abstract, .post-abstract, .post-meta__text, .cli-header__label", // 指定，或者".hero-title",
@@ -87,7 +87,7 @@ Page front matter has priority over site.ui.* defaults.
     glitch.start();
   </script>
   <!-- Timeline -->
-  <script src="{{ site.url }}{{ site.baseurl }}/src/assets/js/timeline-list.js"></script>
+  <script src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       JekyllTimeline.init(".div_article", {
