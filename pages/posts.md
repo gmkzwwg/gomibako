@@ -9,7 +9,7 @@ post_group_show_tags: false
 post_group_title_tag: h4
 post_group_collapsible: true
 post_group_open: all
-context_menu: false
+show_context_menu: false
 permalink: /posts
 ---
 

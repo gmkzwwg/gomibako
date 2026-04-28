@@ -95,6 +95,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@{{ katex_version }}/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@{{ katex_version }}/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@{{ katex_version }}/dist/contrib/auto-render.min.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       if (typeof renderMathInElement !== "function") return;
@@ -117,7 +118,74 @@
         ],
         throwOnError: false
       });
+
+      // Click to toggle formula render & raw TeX, css -> _math_toggle.scss
+      enableKatexToggle();
     });
+
+    function enableKatexToggle() {
+      const mathNodes = Array.from(
+        document.querySelectorAll(".katex-display, .katex")
+      ).filter(function (node) {
+        if (node.closest(".math-toggle")) return false;
+        if (node.classList.contains("katex-display")) return true;
+        return !node.closest(".katex-display");
+      });
+
+      mathNodes.forEach(function (renderedNode) {
+        const annotation = renderedNode.querySelector(
+          'annotation[encoding="application/x-tex"]'
+        );
+
+        if (!annotation) return;
+
+        const rawFormula = annotation.textContent.trim();
+        if (!rawFormula) return;
+
+        const isDisplay = renderedNode.classList.contains("katex-display");
+        const wrapper = document.createElement(isDisplay ? "div" : "span");
+        const rawNode = document.createElement("strong");
+
+        wrapper.className = isDisplay
+          ? "math-toggle math-toggle--display"
+          : "math-toggle math-toggle--inline";
+
+        wrapper.setAttribute("role", "button");
+        wrapper.setAttribute("tabindex", "0");
+        wrapper.setAttribute("aria-pressed", "false");
+        wrapper.setAttribute("aria-label", "Toggle math source");
+
+        rawNode.className = "math-toggle__source";
+        rawNode.hidden = true;
+        rawNode.textContent = isDisplay
+          ? "$$" + rawFormula + "$$"
+          : "$" + rawFormula + "$";
+
+        renderedNode.parentNode.insertBefore(wrapper, renderedNode);
+        wrapper.appendChild(renderedNode);
+        wrapper.appendChild(rawNode);
+
+        function toggleMathState(event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const showSource = rawNode.hidden;
+
+          renderedNode.hidden = showSource;
+          rawNode.hidden = !showSource;
+          wrapper.classList.toggle("math-toggle--source", showSource);
+          wrapper.setAttribute("aria-pressed", String(showSource));
+        }
+
+        wrapper.addEventListener("click", toggleMathState);
+
+        wrapper.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            toggleMathState(event);
+          }
+        });
+      });
+    }
   </script>
 {% endif %}
 

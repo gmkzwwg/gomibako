@@ -34,6 +34,12 @@ Page front matter has priority over site.ui.* defaults.
 {% assign comments_enabled = page.show_comments %}
 {% endif %}
 
+{% if page.show_context_menu == nil %}
+{% assign context_menu_enabled = site.ui.controls.show_context_menu %}
+{% else %}
+{% assign context_menu_enabled = page.show_context_menu %}
+{% endif %}
+
 {% if page.post_meta == nil %}
 {% if site.ui.features.post_meta == nil %}
 {% assign post_meta_enabled = true %}
@@ -61,16 +67,20 @@ Page front matter has priority over site.ui.* defaults.
   <script src="{{ '/src/assets/js/bilingual.js' | relative_url }}"></script>
   {% endif %}
   <script src="{{ '/src/assets/js/image-viewer.js' | relative_url }}"></script>
-  {% if page.context_menu == true %}
+  {% if context_menu_enabled %}
   <script src=" {{ '/src/assets/js/context-menu.js' | relative_url }}"></script>
   {% endif %}
 </head>
 
 <body class=" page">
+  {% if context_menu_enabled %}
   {% include context_menu.html %}
+  {% endif %}
+
   {% if page.todos != false %}
   {% include todo_summary.html %}
   {% endif %}
+  
   <!-- Hacked Splash -->
   {% include hacked_splash.html %}
   <!-- Title Hacker -->

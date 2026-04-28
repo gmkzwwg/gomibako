@@ -126,7 +126,7 @@ ui:                                                            # Group all theme
 
   features:         
     title                 : true
-    post-meta             : true                                           # Group global feature switches controlled by the theme.
+    post_meta             : true                                           # Group global feature switches controlled by the theme.
     comments              : true                             # Enable or disable comments globally. Boolean.
     footer                : false                             # Show or hide the footer globally. Boolean.
     math                  : true                             # Enable or disable math rendering globally. Boolean.
@@ -165,10 +165,10 @@ ui:                                                            # Group all theme
 # -----------------------------------------------------------------------------
 defaults:                                                      # Define default front matter values by content scope.
   -
-    scope:                                                     # Select regular pages for these defaults.
+    scope:                                                    # Select regular pages for these defaults.
       path                : ""                                # Apply this scope to pages anywhere in the project.
     values:                                                   # Define default front matter values for regular pages.
-      layout              : "post"                              # Default page layout unless the page overrides it.
+      layout              : "post"                            # Default page layout unless the page overrides it.
       title               : null                              # Let the page define its own title when needed.
       subtitle            : null                              # Let the page define an optional subtitle when needed.
       description         : null                              # Let the page define a local description when needed.
@@ -183,18 +183,18 @@ defaults:                                                      # Define default 
       show_date           : false                             # Hide page date by default. Boolean.
       show_collections    : null                              # Use site.ui.archive.show_collections unless the page overrides it.
       show_button_labels  : null                              # Use site.ui.navigation.show_button_labels unless the page overrides it.
-      show_comments       : false                              # Use site.ui.features.comments unless the page overrides it.
+      show_comments       : false                             # Use site.ui.features.comments unless the page overrides it.
+      show_context_menu   : null                              # Use site.ui.controls.show_context_menu unless the page overrides it.
       maximize            : null                              # Use site.ui.controls.show_maximize unless the page overrides it.
       encrypted_text      : null                              # Use site.ui.features.encrypted_text unless the page overrides it.
       post_meta           : null
       
       footer              : null                              # Use site.ui.features.footer unless the page overrides it.
-      context_menu        : null                              # Use site.ui.controls.show_context_menu unless the page overrides it.
+      
       text_indent         : null                              # Use site.ui.typography.text_indent unless the page overrides it.
       toc                 : null                              # Use site.ui.toc.style unless the page overrides it. candidates: null | false | chart | compact | list
       toc_before_content  : null                              # Use site.ui.toc.before_content unless the page overrides it.
       toc_depth           : null                              # Use site.ui.toc.depth unless the page overrides it.
-
       math                : null                              # Use site.ui.features.math unless the page overrides it.
       mermaid             : null                              # Use site.ui.features.mermaid unless the page overrides it.
 

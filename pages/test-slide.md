@@ -1,7 +1,7 @@
 ---
-layout: slide-simple
+layout: slide-wiki
 permalink: /slide
-context_menu: false
+show_context_menu: false
 author: 垃圾残渣
 show_date: true
 ---

@@ -208,6 +208,7 @@
         z-index: 9999;
         border: 1px solid currentColor;
         background: inherit;
+        backdrop-filter: blur(10px); // 毛玻璃效果
         color: inherit;
         user-select: none;
       }
@@ -290,6 +291,8 @@
       }
       .jsd-linear-menu.is-open {
         display: block;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px); // 毛玻璃效果
       }
       .jsd-linear-menu-item {
         width: 100%;
