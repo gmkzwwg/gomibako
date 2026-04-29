@@ -11,7 +11,18 @@ layout: default
     bodyPadding: { top: 0, right: 48, bottom: 0, left: 48 },
     mobileBreakpoint: 600,
     animationMs: 460,
-    autoplayInterval: 4
+    autoplayInterval: 4,
+    controls: {
+      first: { show: true, label: '«' },
+      prev: { show: true, label: '‹' },
+      next: { show: true, label: '›' },
+    },
+    indexPage: {
+      enabled: true,
+      position: 'first',
+      menuTitle: 'Table of Contents',
+      headingText: " Table of Contents"
+    }
   });
 </script>
 <!-- Content -->

@@ -1,5 +1,5 @@
 ---
-layout: slide-wiki
+layout: slide-simple
 permalink: /slide
 show_context_menu: false
 author: 垃圾残渣

@@ -19,12 +19,13 @@
 @use "components/toc_chart"as *;
 @use "components/toc_list"as *;
 @use "components/comment"as *;
-@use "components/tags"as *;
+
 @use "components/context_menu"as *;
 @use "components/post-list"as *;
 
 @use "layouts/global"as *;
 @use "layouts/index"as *;
+@use "layouts/post-index"as *;
 
 :root {
   --color-primary: #{$green-1};

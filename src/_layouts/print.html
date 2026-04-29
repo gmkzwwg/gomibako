@@ -1,452 +1,171 @@
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: 'zh-CN' }}">
-
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'zh-CN' }}">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% assign resolved_title = page.title | default: site.title | strip %}
+  {% assign page_description = page.description | default: site.description | strip_html | strip_newlines | truncate: 160 %}
 
-  <style>
-    /* 1. 基础排版：模拟书页感 */
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-        Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-        "Source Han Sans SC", "Noto Sans CJK SC", "Ubuntu", sans-serif;
-      line-height: 1.6;
-      color: #000;
-      background: #fff;
-      margin: 0 auto;
-      padding: 2cm;
-    }
+  {% assign math_enabled = site.ui.features.math %}
+  {% assign mermaid_enabled = site.ui.features.mermaid %}
 
-    h1,
-    h2,
-    h3 {
-      line-height: 1.2;
-      margin-top: 1.5em;
-    }
+  {% assign katex_version = site.assets.math.katex_version | default: "0.16.9" %}
+  {% assign mermaid_version = site.assets.mermaid.version | default: "11.12.0" %}
+  {% assign mermaid_theme = site.assets.mermaid.theme | default: "dark" %}
 
-    h1 {
-      font-size: 2.1em;
-      text-align: center;
-      border-bottom: none;
-    }
-
-    .post-meta {
-      text-align: center;
-      color: #666;
-      font-size: 0.9em;
-      margin-bottom: 3em;
-    }
-
-    main {
-      /* 1. 实现两端对齐 */
-      text-align: justify;
-      /* 2. 优化中文排版：调整字符间距而非仅词间距 */
-      text-justify: inter-character;
-      /* 3. 解决西文/长单词导致的巨大空隙 (避头尾法则) */
-      word-break: break-all;
-      /* 4. 强制段落最后一行左对齐 (默认行为，显式声明以防万一) */
-      text-align-last: left;
-    }
-
-    /* 2. 图像与代码块：防止溢出 */
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 1em auto;
-    }
-
-    pre,
-    code {
-      background: #f5f5f5 !important;
-      font-family: "Courier New", monospace;
-      font-size: 0.85em;
-      white-space: pre-wrap;
-      /* 强制换行防止截断 */
-      word-wrap: break-word;
-    }
-
-    /* 3. 链接：打印时不显示下划线，直接显示 URL (可选) */
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    /* 针对特定代码块的样式深度定制 */
-    code.language-plaintext.highlighter-rouge {
-      font-family: 'Orbitron', "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC",
-        "STSong", "SimSun", "宋体", "AR PL UMing CN",
-        "Kaiti SC", "STKaiti", "KaiTi", "楷体",
-        "AR PL UKai CN", "FandolKai", sans-serif;
-      font-weight: bold;
-      color: #373737 !important;
-      background: transparent !important;
-      padding: 0 !important;
-      border: none !important;
-      font-size: 1em !important;
-      letter-spacing: 0.02em;
-    }
-
-    blockquote {
-      margin: 0;
-      padding: 0;
-      border-left: 4px solid #cccccc;
-      /* 淡灰色边框线 */
-      background-color: #f9f9f9 !important;
-      font-size: 0.92em !important;
-      /* 略小于正文 */
-      color: #313131 !important;
-      /* 深灰色，央视国际色调 */
-      line-height: 1.5;
-      /* 稍微收紧行高，增加块状感 */
-      font-style: normal;
-      /* 如果不希望强制斜体，设为 normal */
-    }
-
-    blockquote p {
-      margin: 0.5em 0;
-      text-align: justify;
-      text-align-last: left;
-    }
-
-    /* 1. 学术三线表基础配置 */
-    table {
-      width: 100% !important;
-      font-family: "Source Han Serif SC", "SimSun", serif !important;
-      border-collapse: collapse !important;
-      /* 合并边框 */
-      margin: 1.5em 0 !important;
-      /* 顶线：粗线 */
-      border-top: 1.5pt solid #000 !important;
-      /* 底线：粗线 */
-      border-bottom: 1.5pt solid #000 !important;
-      font-family: "SimSun", serif !important;
-      /* 减小字号：学术论文表格通常比正文小 1-2 号 */
-      font-size: 10pt !important;
-    }
-
-    /* 2. 栏目线：单元格头部下方细线 */
-    table thead {
-      border-bottom: 0.75pt solid #000 !important;
-      /* padding: 8px 4px !important;
-        font-weight: bold !important; */
-    }
-
-    /* 3. 去除所有竖线和内部横线 */
-    table td,
-    table th {
-      border-left: none !important;
-      border-right: none !important;
-      border-top: none !important;
-      border-bottom: none !important;
-      padding: 6px 4px !important;
-      text-align: center !important;
-      /* 学术表格数据通常居中 */
-    }
-
-    /* 4. 斑马纹消除：确保纯净背景 */
-    table tr {
-      background-color: transparent !important;
-    }
-
-    /* 5. 处理表格标题（Caption） */
-    table caption {
-      font-size: 10pt !important;
-      font-weight: bold !important;
-      margin-bottom: 0.5em !important;
-      color: #000 !important;
-    }
-
-    dl {
-      color: auto;
-    }
-
-    dfn {
-      font-style: italic;
-    }
-
-    dt {
-      font-weight: 700;
-    }
-
-    dd {
-      color: #313131;
-      font-style: italic;
-    }
-
-    @media print {
-      body {
-        /* width: 100%; */
-        padding: 0;
-        margin: 1.5cm;
-        /* 打印时回归标准纸张边距 */
-        font-size: 12pt;
-      }
-
-      h2,
-      h3 {
-        page-break-after: avoid;
-      }
-
-      blockquote {
-        padding-left: 1em;
-        background-color: #f2f2f2 !important;
-        /* 打印时背景稍微加重一点点以确保可见 */
-        border-left: 3px solid #666666;
-        /* 边框加深 */
-        color: #333333 !important;
-        /* 打印时文字颜色微调，保证对比度 */
-        page-break-inside: avoid;
-        /* 极其重要：防止引用块跨页断开 */
-      }
-
-      code.language-plaintext.highlighter-rouge {
-        color: #555555 !important;
-        -webkit-print-color-adjust: exact;
-      }
-
-      .no-print {
-        display: none;
-      }
-
-      /* 标记为 no-print 的元素不打印 */
-    }
-
-    @media screen and (min-width: 769px) {
-      body {
-        max-width: 850px;
-        padding: 2cm;
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      body {
-        width: 95%;
-        padding: 15px 10px;
-      }
-
-      blockquote {
-        margin: 1em 0;
-        padding: 0.8em 1em;
-      }
-
-      pre,
-      code {
-        word-break: break-all;
-        white-space: pre-wrap;
-      }
-
-      h1 {
-        font-size: 1.6em;
-        /* 缩小手机端标题，避免占满首屏 */
-      }
-    }
-
-    .liquid-toc {
-      font: inherit;
-      color: inherit;
-    }
-
-    .liquid-toc a,
-    .liquid-toc span,
-    .liquid-toc div,
-    .liquid-toc ul,
-    .liquid-toc li {
-      font: inherit;
-      color: inherit;
-    }
-
-    .liquid-toc__h1 {
-      text-align: center;
-      margin: 1rem 0 1rem 0;
-    }
-
-    .liquid-toc__h1 a,
-    .liquid-toc__h1 span {
-      font-weight: 700;
-      text-decoration: none;
-      color: $color-muted;
-    }
-
-    .liquid-toc__body {
-      display: grid;
-      padding: 0 0 0.5rem 0;
-      gap: 0.75rem;
-    }
-
-    .liquid-toc__row {
-      display: grid;
-      grid-template-columns: minmax(8rem, 12rem) 1fr;
-      gap: 1.25rem;
-      align-items: stretch;
-      margin: 0 0.5rem;
-      padding: 0.5rem 0.5rem;
-      border: 1px solid $color-primary;
-      background: rgba(0, 0, 0, 0.02);
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-    }
-
-    .liquid-toc__col--h2 {
-      display: flex;
-      align-items: center;
-    }
-
-    .liquid-toc__col--h2 a,
-    .liquid-toc__col--h2 span {
-      font-weight: 700;
-      color: $color-muted;
-      display: inline-block;
-      text-decoration: none;
-    }
-
-    .liquid-toc__col--h3 ul {
-      margin: 0;
-      padding-left: 1.2em;
-    }
-
-    .liquid-toc__col--h3 li+li {
-      margin-top: 0.25rem;
-    }
-
-    .liquid-toc__col--h3 a,
-    .liquid-toc__col--h3 span {
-      text-decoration: none;
-    }
-
-    .liquid-toc__row--split {
-      display: grid;
-      grid-template-columns: minmax(8rem, 12rem) 1fr;
-      gap: 1.25rem;
-      align-items: stretch;
-    }
-
-    .liquid-toc__row--single {
-      display: block;
-    }
-
-    .liquid-toc__single {
-      display: block;
-    }
-
-    .liquid-toc__single a {
-      font-weight: 700;
-      color: $color-muted;
-    }
-
-    .liquid-toc--compact .liquid-toc__col--h3 ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.75rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .liquid-toc--compact .liquid-toc__col--h3 li {
-      margin: 0;
-      white-space: nowrap;
-      flex: 0 0 auto;
-    }
-
-    .liquid-toc--compact .liquid-toc__col--h3 a,
-    .liquid-toc--compact .liquid-toc__col--h3 span {
-      display: inline-block;
-      white-space: nowrap;
-      text-decoration: none;
-    }
-  </style>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body);"></script>
-  <!-- MERMAID -->
-  {% if site.assets.mermaid.version %}
-  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/{{site.assets.mermaid.version}}/mermaid.min.js"></script>
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'dark',
-      flowchart: { htmlLabels: true }
-    });
-    // 强制触发一次扫描，针对代码块
-    await mermaid.run({
-      querySelector: '.language-mermaid',
-    });
-  </script>
+  {% if site.assets.version %}
+    {% assign asset_version_query = "?v=" | append: site.assets.version %}
+  {% else %}
+    {% assign asset_version_query = "" %}
   {% endif %}
-</head>
 
-<body>
-  <article>
-    <header>
-      <h1>{{ page.title }}</h1>
-      <div class="post-meta" align="center">
-        {{ page.date | date: "%Y-%m-%d" }}
-        {% if page.author %} • {{ page.author }}{% endif %}
-      </div>
-    </header>
-    <!-- Timeline -->
-    <script src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>
+  {% assign print_css_url = "/src/assets/css/print.css" | relative_url | append: asset_version_query %}
+  {% assign timeline_js_url = "/src/assets/js/timeline-list.js" | relative_url | append: asset_version_query %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ resolved_title | escape }}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  <meta name="referrer" content="no-referrer">
+
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="stylesheet" href="{{ print_css_url }}" type="text/css">
+
+  {% if math_enabled %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@{{ katex_version }}/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@{{ katex_version }}/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@{{ katex_version }}/dist/contrib/auto-render.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        JekyllTimeline.init("main", {
-          summaryWidth: "11%", // 左侧标题栏宽度；建议 8% - 16%
-          gap: "0.92rem", // 左侧标题到中轴线、以及中轴线到右侧内容的水平间距
-          axisWidth: "0.3rem", // 中轴所在列的宽度
-          lineWidth: "0.3rem", // 中轴竖线宽度
-          boxConnectorWidth: '1px', // 每个右侧 box 向左延伸出去的辅助线宽度
-          boxConnectorBallSize: '0.6rem', // 辅助线左端圆球的直径
-          detailRadius: "12px", // 右侧每个独立框的圆角
-          detailPadding: "0.62rem 0.78rem", // 右侧每个独立框的内边距
-          detailGroupGap: "0.48rem", // 右侧多个独立框之间的垂直间距
-          leftTitleMinHeight: "2.2rem", // 左侧标题栏的最小高度
-          summaryTopLineOffset: '0.2rem', // 左侧 summary 顶部那条极细实线距离顶部的位置
-          summaryTopLineGap: '0.36rem', // 左侧顶部实线与标题正文之间的距离
-          summaryTopLineWidth: '1px', // 左侧顶部实线宽度
-          lineColor: "rgba(120, 150, 180, 0.34)", // 中轴竖线颜色
-          fallbackTitlePrefix: "Unknown ", // 左侧标题为空时的默认前缀
-          detailColorMode: 'random', // 随机选择颜色，还是顺序
+        if (typeof renderMathInElement !== "function") return;
+
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true }
+          ],
+          ignoredTags: [
+            "script",
+            "noscript",
+            "style",
+            "textarea",
+            "pre",
+            "code",
+            "option"
+          ],
+          throwOnError: false
         });
       });
     </script>
-    <!-- toc_before_content -->
-    {% if page.toc_before_content == "list" %}
-    <div class="toc_before_content">
-      {% if page.toc_depth %}
-      {% assign toclv = page.toc_depth %}
-      {% elsif site.toc_depth %}
-      {% assign toclv = site.toc_depth %}
-      {% else %}
-      {% assign toclv = 3 %}
+  {% endif %}
+
+  {% if mermaid_enabled %}
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@{{ mermaid_version }}/dist/mermaid.esm.min.mjs";
+
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "{{ mermaid_theme }}",
+        flowchart: {
+          htmlLabels: true
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", async function () {
+        await mermaid.run({
+          querySelector: ".language-mermaid, .mermaid"
+        });
+      });
+    </script>
+  {% endif %}
+</head>
+
+<body class="print-page">
+  <article class="print-page__article">
+    <header class="print-page__header">
+      <h1 class="print-page__title">{{ resolved_title }}</h1>
+
+      {% if page.date or page.author %}
+        <div class="print-page__meta">
+          {% if page.date %}
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+              {{ page.date | date: "%Y-%m-%d" }}
+            </time>
+          {% endif %}
+
+          {% if page.date and page.author %}
+            <span class="print-page__meta-separator">•</span>
+          {% endif %}
+
+          {% if page.author %}
+            <span>{{ page.author }}</span>
+          {% endif %}
+        </div>
       {% endif %}
-      <!-- generate toc -->
-      {% include toc_list.html html=content sanitize=true class="ul_toc" id="ul_toc" h_min=2 h_max=toclv %}
-    </div>
+    </header>
+
+    {% if page.timeline != false %}
+      <script src="{{ timeline_js_url }}"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          if (typeof JekyllTimeline === "undefined") return;
+
+          JekyllTimeline.init(".print-page__content", {
+            summaryWidth: "11%",
+            gap: "0.92rem",
+            axisWidth: "0.3rem",
+            lineWidth: "0.3rem",
+            boxConnectorWidth: "1px",
+            boxConnectorBallSize: "0.6rem",
+            detailRadius: "12px",
+            detailPadding: "0.62rem 0.78rem",
+            detailGroupGap: "0.48rem",
+            leftTitleMinHeight: "2.2rem",
+            summaryTopLineOffset: "0.2rem",
+            summaryTopLineGap: "0.36rem",
+            summaryTopLineWidth: "1px",
+            lineColor: "rgba(120, 150, 180, 0.34)",
+            fallbackTitlePrefix: "Unknown ",
+            detailColorMode: "random"
+          });
+        });
+      </script>
     {% endif %}
-    {% if page.toc_before_content == "chart" %}
-    <div class="toc_before_content">
-      {% include toc_chart.html content=content %}
-    </div>
+
+    {% if page.toc_before_content %}
+      <nav class="print-page__toc" aria-label="Table of contents">
+        {% if page.toc_before_content == "list" %}
+          {% if page.toc_depth %}
+            {% assign toclv = page.toc_depth %}
+          {% elsif site.toc_depth %}
+            {% assign toclv = site.toc_depth %}
+          {% else %}
+            {% assign toclv = 3 %}
+          {% endif %}
+
+          {% include toc_list.html html=content sanitize=true class="ul_toc" id="ul_toc" h_min=2 h_max=toclv %}
+        {% endif %}
+
+        {% if page.toc_before_content == "chart" %}
+          {% include toc_chart.html content=content %}
+        {% endif %}
+
+        {% if page.toc_before_content == "compact" %}
+          {% include toc_chart.html content=content compact=true %}
+        {% endif %}
+      </nav>
     {% endif %}
-    {% if page.toc_before_content == "compact" %}
-    <div class="toc_before_content">
-      {% include toc_chart.html content=content compact=true %}
-    </div>
-    {% endif %}
-    <main>
+
+    <main class="print-page__content">
       {{ content }}
     </main>
 
-    <footer class="no-print"
-      style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8em; color: #999;">
-      <!-- <p>注意：此页面已优化用于打印。请直接使用浏览器的 Ctrl+P 进行导出。</p> -->
+    <footer class="print-page__footer no-print">
+      {% if page.print_notice %}
+        <p>{{ page.print_notice }}</p>
+      {% endif %}
     </footer>
   </article>
 </body>
-
 </html>

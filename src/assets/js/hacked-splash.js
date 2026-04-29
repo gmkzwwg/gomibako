@@ -466,13 +466,13 @@
 
     // 这里控制Flashword生成频率
     if (roll < 0.18) {
-      count = 5;
+      count = 10;
     } else if (roll < 0.45) {
-      count = 4;
+      count = 8;
     } else if (roll < 0.78) {
-      count = 3;
+      count = 6;
     } else {
-      count = 2;
+      count = 4;
     }
     for (let i = 0; i < count; i += 1) {
       createFlashWord();

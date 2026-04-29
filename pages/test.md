@@ -295,12 +295,12 @@ Footnote example[^1] and the second one[^two].
 
 Jump to the [custom anchor](#custom-id)。
 
-```md
-# Gomibako 功能总览
+
+## Gomibako 功能总览
 
 Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文章，还扩展了阅读增强、知识库导航、幻灯片展示、写作辅助和终端风格视觉系统。
 
-## 1. 文章与阅读布局
+### 1. 文章与阅读布局
 
 - `post`：普通文章模式，负责大多数笔记和文章的基础阅读体验。相关文件：`src/_layouts/post.html`。
 - `post-compact`：紧凑文章模式，适合信息密度更高、装饰更少的阅读场景。相关文件：`src/_layouts/post-compact.html`。
@@ -309,7 +309,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - `post-list`：文章列表模式，支持多种列表样式、分类分组、折叠分组和 meta 显示控制。相关文件：`src/_layouts/post-list.html`、`src/_includes/post-list.html`。
 - `print`：打印专用布局，使用更接近纸面排版的字体、表格、代码块和引用样式。相关文件：`src/_layouts/print.html`。
 
-## 2. 幻灯片系统
+### 2. 幻灯片系统
 
 - `slide-linear`：线性幻灯片，把文章内容拆成前后翻页的演示结构，带菜单、上一页、下一页、首页、末页和自动播放控制。相关文件：`src/_layouts/slide-linear.html`、`src/assets/js/jekyll-slide-linear.js`。
 - `slide-simple`：简化幻灯片，只保留基本前后翻页，适合轻量展示。相关文件：`src/_layouts/slide-simple.html`、`src/assets/js/jekyll-slide-linear.js`。
@@ -318,7 +318,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - `slide-wiki`：wiki 型幻灯片，偏向索引先行和结构化跳转，适合概念网络式内容。相关文件：`src/_layouts/slide-wiki.html`、`src/assets/js/jekyll-slide-tree.js`。
 - `slide-multilingual`：多语言幻灯片模式，用于语言材料或多版本文本展示。相关文件：`src/_layouts/slide-multilingual.html`、`src/assets/js/jekyll-slide-linear.js`。
 
-## 3. 知识库导航
+### 3. 知识库导航
 
 - 多 collection 知识库：用 `phil`、`litr`、`hist`、`psyc`、`math`、`comp`、`phys`、`misc` 等 collection 组织不同学科笔记。相关文件：`_config.yml`。
 - collection 顺序与 alias：通过 `_config.yml` 控制 collection 展示顺序和短名称，比如 `PHIL`、`MATH`、`COMP`。相关文件：`_config.yml`。
@@ -326,7 +326,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - subclass 分组：将 collection 内文章按 `subclass` 分组，适合学科内部进一步分类。相关文件：`src/_includes/collection_list.html`、`src/_includes/post_by_subclass.html`。
 - archive 拖动窗口：archive 面板可以拖动，并带有状态栏和文章数量统计。相关文件：`src/_includes/collection_list.html`、`src/_sass/components/_collection_list.scss`。
 
-## 4. 文章列表系统
+### 4. 文章列表系统
 
 - `minimal`：简洁列表，只突出标题和少量 meta。相关文件：`src/_includes/post-list/minimal.html`。
 - `card-grid`：卡片网格列表，适合更视觉化的文章入口。相关文件：`src/_includes/post-list/card-grid.html`。
@@ -337,7 +337,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - `category-book`：按分类分组的书目式列表。相关文件：`src/_includes/post-list/category-book.html`。
 - 列表统一调度：通过 `post-list.html` 接收页面 front matter 参数，控制样式、日期格式、excerpt、meta、分组折叠等。相关文件：`src/_includes/post-list.html`、`src/_sass/components/_post-list.scss`。
 
-## 5. 目录系统
+### 5. 目录系统
 
 - `toc_list`：普通树状目录，从渲染后的 heading 生成嵌套列表。相关文件：`src/_includes/toc_list.html`。
 - `toc_chart`：图表式目录，把 `h2` 和下属 `h3` 做成视觉分组，适合长笔记、课程笔记和知识地图。相关文件：`src/_includes/toc_chart.html`。
@@ -345,7 +345,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - header TOC 按钮：根据 layout 和 front matter 决定是否显示目录按钮。相关文件：`src/_includes/header.html`。
 - 正文前目录：部分 layout 支持在正文前直接插入目录。相关文件：`src/_layouts/post.html`、`src/_layouts/post-bilingual.html`、`src/_layouts/post-parallel.html`。
 
-## 6. 阅读增强
+### 6. 阅读增强
 
 - 图片查看器：点击文章图片后进入全屏查看，支持滚轮缩放、拖动、双击、双指缩放和 Esc 关闭。相关文件：`src/assets/js/image-viewer.js`。
 - 代码块增强：把普通代码块重构为统一组件，显示语言标签，提供复制按钮和可选在线运行按钮。相关文件：`src/assets/js/code-block-enhancement.js`。
@@ -356,7 +356,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - 最大化阅读：header 按钮可切换容器最大化，提升长文阅读空间。相关文件：`src/_includes/header.html`。
 - 自定义右键菜单：替换浏览器默认右键菜单，提供复制文本、回首页、回顶部、打印等操作。相关文件：`src/assets/js/context-menu.js`、`src/_includes/context_menu.html`。
 
-## 7. 写作辅助
+### 7. 写作辅助
 
 - drafts：使用 `collections/_drafts` 保存草稿，配合 Jekyll drafts 工作流。相关目录：`collections/_drafts/`。
 - TODO 高亮：自动扫描正文中的 `TODO:` 并高亮。相关文件：`src/assets/js/todo-summary.js`。
@@ -364,7 +364,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - TODO 跳转：点击汇总列表中的 TODO，可以跳到正文对应位置。相关文件：`src/assets/js/todo-summary.js`。
 - TODO 浮窗控制：浮窗可关闭、重新打开、拖动。相关文件：`src/assets/js/todo-summary.js`。
 
-## 8. 终端与 Matrix 视觉
+### 8. 终端与 Matrix 视觉
 
 - Matrix 背景雨：全站背景 canvas 动画，使用配置中的字符集生成下落效果。相关文件：`src/_includes/matrix_bg.html`。
 - Matrix 字母爆炸：页面上随机生成坠落字符，并在特定高度爆炸成粒子。相关文件：`src/assets/js/matrix-letter-bomb.js`、`src/_includes/matrix_letter_bomb.html`。
@@ -372,7 +372,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - hacked splash：页面开场视觉效果，模拟 hacked / terminal 风格启动动画。相关文件：`src/assets/js/hacked-splash.js`、`src/_includes/hacked_splash.html`。
 - 赛博终端首页：首页是一个全屏终端窗口，包含伪命令、伪日志、状态栏、菜单栏、光标、故障演出和 CRT 效果。相关文件：`src/_layouts/index.html`。
 
-## 9. 内容保护与发布控制
+### 9. 内容保护与发布控制
 
 - 加密文本：使用 SJCL 加密局部内容，页面 header 提供 token 输入后解密。相关文件：`src/assets/js/sjcl.js`、`src/_includes/header.html`。
 - anti-copy：可选禁用复制、选中、拖动图片、保存快捷键、查看源代码快捷键等。相关文件：`src/assets/js/anticopy.js`。
@@ -380,7 +380,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - 评论系统：统一支持 Disqus、Giscus、Utterances 三种 provider。相关文件：`src/_includes/comment.html`、`_config.yml`。
 - SEO 信息：生成 title、description、canonical、Open Graph、favicon 等基础元信息。相关文件：`src/_includes/head.html`。
 
-## 10. 配置化主题层
+### 10. 配置化主题层
 
 - UI 配置：集中控制 labels、导航按钮、控制按钮、背景、TOC、typography、layout、archive、features 等。相关文件：`_config.yml`。
 - collection 配置：集中定义 collection 输出、permalink、排序方式、alias。相关文件：`_config.yml`。
@@ -388,14 +388,14 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - Jekyll 构建配置：集中定义 source、destination、collections_dir、layouts_dir、includes_dir、sass_dir、markdown、kramdown、plugins 等。相关文件：`_config.yml`。
 - 页面级覆盖：多数功能允许通过 page front matter 覆盖全局配置。相关文件：`_config.yml`、`src/_layouts/default.html`。
 
-## 11. 页面元信息与页脚
+### 11. 页面元信息与页脚
 
 - post meta：显示 author、date、categories、tags、subclass、version。相关文件：`src/_includes/post-meta.html`。
 - abstract：支持页面摘要块。相关文件：`src/_includes/post-meta.html`。
 - footer：支持 email、GitHub、GitLab、LinkedIn、X / Twitter、Mastodon、ORCID、website、RSS。相关文件：`src/_includes/footer.html`。
 - copyright：从配置中读取版权年份和声明。相关文件：`src/_includes/footer.html`、`_config.yml`。
 
-## 总结
+### 总结
 
 Gomibako 的特色可以概括为三条主线：
 
@@ -404,4 +404,3 @@ Gomibako 的特色可以概括为三条主线：
 - 个人风格：Matrix、terminal、glitch、hacked splash、赛博终端首页。
 
 一句话概括：Gomibako 是一个基于 Jekyll 的个人知识库、阅读界面、幻灯片生成器、写作辅助器和赛博终端主题网站。
-```

@@ -2,6 +2,7 @@
 @use "abstracts/fonts"as *;
 @use "abstracts/mixins"as *;
 @use "abstracts/animations"as *;
+
 .archive-window[hidden] {
   display: none;
 }
