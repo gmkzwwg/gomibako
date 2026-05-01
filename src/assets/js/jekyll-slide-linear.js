@@ -56,6 +56,8 @@
     dom: {},
     drag: null,
     autoplayTimer: null,
+    resizeTimer: null,
+    menuSignature: '',
     resizeBound: false,
     keyBound: false,
     outsideClickBound: false,
@@ -208,7 +210,8 @@
         z-index: 9999;
         border: 1px solid currentColor;
         background: inherit;
-        backdrop-filter: blur(10px); // 毛玻璃效果
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
         color: inherit;
         user-select: none;
       }
@@ -226,6 +229,7 @@
         padding: 0 4px;
         border-right: 1px solid currentColor;
         cursor: move;
+        touch-action: none;
         line-height: 1;
         font-size: 1.05em;
       }
@@ -291,8 +295,9 @@
       }
       .jsd-linear-menu.is-open {
         display: block;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(10px); // 毛玻璃效果
+        background: inherit;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
       }
       .jsd-linear-menu-item {
         width: 100%;
@@ -377,11 +382,6 @@
   function getMinHeadingLevel(container) {
     const directLevels = getDirectHeadingLevels(container);
     if (directLevels.length) return Math.min.apply(Math, directLevels);
-
-    const all = Array.from(container.querySelectorAll('h1,h2,h3,h4,h5,h6')).map(function (node) {
-      return Number(node.tagName.slice(1));
-    });
-    if (all.length) return Math.min.apply(Math, all);
     return null;
   }
 
@@ -536,18 +536,36 @@
     return 'Page ' + (index + 1);
   }
 
+  function getMenuSignature() {
+    return state.slides.map(function (slide, index) {
+      return slide.key + ':' + getMenuItemTitle(slide, index);
+    }).join('|');
+  }
+
+  function updateMenuCurrent() {
+    if (!state.dom.menu) return;
+    Array.from(state.dom.menu.children).forEach(function (item) {
+      const itemIndex = Number(item.getAttribute('data-index'));
+      item.classList.toggle('is-current', itemIndex === state.currentIndex);
+    });
+  }
+
   function renderMenu() {
     if (!state.dom.menu) return;
+    const signature = getMenuSignature();
+    if (state.menuSignature === signature && state.dom.menu.children.length) {
+      updateMenuCurrent();
+      return;
+    }
+
+    state.menuSignature = signature;
     state.dom.menu.innerHTML = '';
     state.slides.forEach(function (slide, index) {
       const item = document.createElement('button');
       item.type = 'button';
       item.className = 'jsd-linear-menu-item' + (index === state.currentIndex ? ' is-current' : '');
       item.textContent = getMenuItemTitle(slide, index);
-      item.addEventListener('click', function () {
-        goTo(index);
-        closeMenu();
-      });
+      item.setAttribute('data-index', String(index));
       state.dom.menu.appendChild(item);
     });
   }
@@ -561,8 +579,11 @@
     const list = document.createElement('div');
     list.className = 'jsd-index-list';
 
+    let contentNumber = 0;
+
     state.slides.forEach(function (slide, index) {
       if (slide.type === 'index') return;
+      contentNumber += 1;
 
       const item = document.createElement('div');
       item.className = 'jsd-index-item';
@@ -573,11 +594,12 @@
 
       const num = document.createElement('span');
       num.className = 'jsd-index-button-num';
-      num.textContent = String(index + 1) + '.';
+      num.textContent = String(contentNumber) + '.';
 
       const title = document.createElement('span');
       title.className = 'jsd-index-button-title';
-      title.textContent = getMenuItemTitle(slide, index);
+      const rawTitle = (slide.menuTitle || slide.heading || '').trim();
+      title.textContent = rawTitle || 'Page ' + contentNumber;
 
       button.appendChild(num);
       button.appendChild(title);
@@ -676,43 +698,50 @@
   function attachDragging(toolbar, handle) {
     if (typeof state.dragCleanup === 'function') state.dragCleanup();
 
-    const onMouseDown = function (event) {
+    const onPointerDown = function (event) {
+      if (event.button !== undefined && event.button !== 0 && event.pointerType !== 'touch') return;
+      const rect = toolbar.getBoundingClientRect();
       state.drag = {
+        pointerId: event.pointerId,
         pointerX: event.clientX,
         pointerY: event.clientY,
-        startLeft: toolbar.offsetLeft,
-        startTop: toolbar.offsetTop
+        startLeft: rect.left,
+        startTop: rect.top
       };
       toolbar.classList.add('is-active');
-      toolbar.style.left = toolbar.offsetLeft + 'px';
-      toolbar.style.top = toolbar.offsetTop + 'px';
+      toolbar.style.left = rect.left + 'px';
+      toolbar.style.top = rect.top + 'px';
       toolbar.style.right = 'auto';
       toolbar.style.bottom = 'auto';
+      try { handle.setPointerCapture(event.pointerId); } catch (e) { /* ignore */ }
       event.preventDefault();
     };
 
-    const onMouseMove = function (event) {
-      if (!state.drag) return;
+    const onPointerMove = function (event) {
+      if (!state.drag || state.drag.pointerId !== event.pointerId) return;
       const dx = event.clientX - state.drag.pointerX;
       const dy = event.clientY - state.drag.pointerY;
       toolbar.style.left = state.drag.startLeft + dx + 'px';
       toolbar.style.top = state.drag.startTop + dy + 'px';
     };
 
-    const onMouseUp = function () {
-      if (!state.drag) return;
+    const onPointerEnd = function (event) {
+      if (!state.drag || state.drag.pointerId !== event.pointerId) return;
+      try { handle.releasePointerCapture(event.pointerId); } catch (e) { /* ignore */ }
       state.drag = null;
       toolbar.classList.remove('is-active');
     };
 
-    handle.addEventListener('mousedown', onMouseDown);
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
+    handle.addEventListener('pointerdown', onPointerDown);
+    handle.addEventListener('pointermove', onPointerMove);
+    handle.addEventListener('pointerup', onPointerEnd);
+    handle.addEventListener('pointercancel', onPointerEnd);
 
     state.dragCleanup = function () {
-      handle.removeEventListener('mousedown', onMouseDown);
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
+      handle.removeEventListener('pointerdown', onPointerDown);
+      handle.removeEventListener('pointermove', onPointerMove);
+      handle.removeEventListener('pointerup', onPointerEnd);
+      handle.removeEventListener('pointercancel', onPointerEnd);
     };
   }
 
@@ -731,6 +760,14 @@
 
     const menu = document.createElement('div');
     menu.className = 'jsd-linear-menu';
+    menu.addEventListener('click', function (event) {
+      const item = event.target && event.target.closest ? event.target.closest('.jsd-linear-menu-item') : null;
+      if (!item || !menu.contains(item)) return;
+      const index = Number(item.getAttribute('data-index'));
+      if (Number.isNaN(index)) return;
+      goTo(index);
+      closeMenu();
+    });
 
     controls.appendChild(menu);
 
@@ -784,6 +821,7 @@
     state.dom.toolbar = toolbar;
     state.dom.controls = controls;
     state.dom.menu = menu;
+    state.menuSignature = '';
 
     attachDragging(toolbar, drag);
   }
@@ -797,8 +835,12 @@
   }
 
   function onResize() {
-    injectStyle();
-    renderCurrent();
+    window.clearTimeout(state.resizeTimer);
+    state.resizeTimer = window.setTimeout(function () {
+      if (!state.slides.length || !state.dom.root) return;
+      injectStyle();
+      renderCurrent();
+    }, 120);
   }
 
   function onKeydown(event) {
@@ -827,6 +869,10 @@
     }
   }
 
+  function onOutsideClick(event) {
+    if (!state.dom.toolbar || !state.dom.toolbar.contains(event.target)) closeMenu();
+  }
+
   function bindGlobals() {
     if (!state.resizeBound) {
       window.addEventListener('resize', onResize);
@@ -837,9 +883,7 @@
       state.keyBound = true;
     }
     if (!state.outsideClickBound) {
-      document.addEventListener('click', function (event) {
-        if (!state.dom.toolbar || !state.dom.toolbar.contains(event.target)) closeMenu();
-      });
+      document.addEventListener('click', onOutsideClick);
       state.outsideClickBound = true;
     }
   }
@@ -880,15 +924,38 @@
   function destroy() {
     clearAutoplay();
     closeMenu();
+    window.clearTimeout(state.resizeTimer);
+    state.resizeTimer = null;
+
     if (typeof state.dragCleanup === 'function') state.dragCleanup();
     state.dragCleanup = null;
+
+    if (state.resizeBound) {
+      window.removeEventListener('resize', onResize);
+      state.resizeBound = false;
+    }
+    if (state.keyBound) {
+      document.removeEventListener('keydown', onKeydown);
+      state.keyBound = false;
+    }
+    if (state.outsideClickBound) {
+      document.removeEventListener('click', onOutsideClick);
+      state.outsideClickBound = false;
+    }
+
     if (state.dom.toolbar) state.dom.toolbar.remove();
+
     const style = document.getElementById('jsd-linear-style');
     if (style) style.remove();
+
     if (state.target && typeof state.originalHTML === 'string') {
       state.target.innerHTML = state.originalHTML;
     }
+
     state.dom = {};
+    state.slides = [];
+    state.currentIndex = 0;
+    state.menuSignature = '';
   }
 
   function getState() {

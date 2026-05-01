@@ -1,9 +1,8 @@
 ---
-layout: post
+layout: print
 title: The Dreamy Quixote's Ludicrous Charge
-toc: true
 show_context_menu: false
-permalink: /trash
+permalink: /catelog
 anticopy: true
 ---
 
@@ -16,7 +15,7 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 * **[C]** Quarterly adversarial self-interview — *use LLM as hostile examiner; record; compare across quarters*
 * **[C]** Blindspot ledger — *running list of "thought I understood, didn't"*
 * **[C]** Path-revision log — *every major detour, with reasoning recorded*
-* **[C]** Monthly Map Day — *one 1000-word "domain-connection memo," archived; ten years = your intellectual autobiography*
+* **[C]** Monthly Map Day — *one short "domain-connection memo," archived; your intellectual autobiography*
 
 `Without this layer, year 10 finds you in a local optimum you can't see out of.`
 
@@ -45,6 +44,8 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 * **[C]** Gödel's Incompleteness Theorems — *advanced* `formal proof + Lean walkthrough`
 * **[C]** Read originals: Gödel 1931, Turing 1936, Church 1936 — *deep reading*
 * **[S]** Tarski on truth, semantic paradoxes — *solid*
+* **[C]** Model Theory — *solid* `syntax/semantics, compactness, Löwenheim–Skolem, nonstandard models`
+* **[S]** Proof Theory — *intro→solid* `sequent calculus, cut elimination, normalization, consistency proofs`
 * **[D]** Cybernetics & Systems Theory (Wiener, Ashby, Bateson) — *intro* `1-month sprint`
 * **[D]** Information Theory (Shannon, MacKay) — *solid*
 * **[D]** Complexity Science (Mitchell, Holland) — *intro* `emergence, irreducibility, links to Luhmann later`
@@ -100,6 +101,7 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 * **[C]** Mathematical Statistics — *solid*
 * **[C]** Stochastic Processes / Martingales — *solid*
 * **[S]** Bayesian Inference & Decision Theory — *solid*
+* **[S]** Formal Epistemology — *intro→solid* `Bayesian confirmation, epistemic logic, belief revision, formal learning theory`
 * **[D]** Information Geometry — *intro*
 
 #### 2.5 PDE bridge to physics
@@ -147,6 +149,7 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 * **[C]** Williamson, *Knowledge and Its Limits* — *solid*
 * **[C]** Hacking, *The Emergence of Probability* — *solid*
 * **[S]** Goldman / virtue epistemology — *intro*
+* **[S]** Formal Epistemology — *cross-reference to Trunk 2.4* `confirmation, rational belief, epistemic logic`
 
 #### 4.4 Philosophy of mathematics — *after Trunks 1.4 + 2.2*
 
@@ -166,6 +169,7 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 * **[C]** Dennett, *Consciousness Explained* — *solid*
 * **[C]** Chalmers, *The Conscious Mind* — *solid* `the hard-problem framing`
 * **[C]** Nagel, *What Is It Like to Be a Bat?* — *deep reading*
+* **[S]** Cognitive Science Basics — *intro→solid* `attention, working memory, cognitive biases, predictive processing, computational cognition`
 * **[S]** Marr, *Vision* — *solid* `levels of analysis still load-bearing`
 * **[S]** Fodor, *The Language of Thought* — *intro→solid*
 * **[S]** Clark, *Surfing Uncertainty* / 4E cognition — *intro*
@@ -254,7 +258,7 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 
 ### CROSS — Anti-Disciplinary Canon (the real food for a generalist)
 
-`These don't fit anywhere because they fit everywhere. Re-read on a years-long cycle.`
+`These don't fit anywhere because they fit everywhere. Evergreen insights, highly rereadable.`
 
 * **[C]** Hofstadter, *Gödel, Escher, Bach* — *the single most on-target book for this entire roadmap*
 * **[C]** Penrose, *The Road to Reality* — *also listed in 5.4; appears here because it transcends physics*
@@ -312,11 +316,11 @@ Begin with these three:
 2. **Track 2: Frege's *Foundations of Arithmetic*** (the right philosophical companion to early Trunk 1)
 3. **Track 3: French (Assimil + Anki) or Calvino's *Six Memos*** (your choice — instrumental skill or writing foundation)
 
-Plus META always on (Map Day monthly, blindspot ledger, path-revision log) and a small writing project (your first 1,500-word essay can be on what you hope to learn from this entire project — that essay becomes a useful artifact later).
+Plus META always on (Map Day monthly, blindspot ledger, path-revision log) and a small writing project (your first short essay can be on what you hope to learn from this entire project — that essay becomes a useful artifact later).
 
 When Track 1 finishes a node (you finish SICP, or finish van Dalen), you choose the next Track 1 from the **immediately downstream subjects** in the roadmap. After SICP, the natural Track 1 candidates are: Theory of Computation (Sipser), Linear Algebra (Axler), or Mathematical Analysis (Tao). After van Dalen, the natural Track 2 candidates are the Russell + Wittgenstein *Tractatus* sequence, or jumping forward to early Trunk 1.2 reading.
 
-The roadmap's dependency structure is your guide. **Never start a subject without having completed its prerequisites in the roadmap.** Trunk 1.4 is meaningless without 1.3; Williamson is unreadable without Quine and Kripke; QFT is impossible without QM and functional analysis. Respect the dependencies.
+The roadmap's dependency structure is your guide. **Never start a subject without having completed its prerequisites in the roadmap.** Trunk 1.4 is meaningless without 1.3; Williamson is unreadable without Quine and Kripke; QFT is impossible without QM and functional analysis. Respect the dependencies. **Model Theory** belongs after first-order logic and before serious philosophical use of syntax/semantics distinctions. **Proof Theory** belongs after you have seen formal proof systems and before you treat type theory or proof assistants as philosophically transparent. **Formal Epistemology** belongs after probability, statistics, and Bayesian decision theory; before that, it becomes philosophy with equations rather than working formal epistemology. **Cognitive Science Basics** belongs before the heavy philosophy of mind texts whenever possible, because Dennett, Chalmers, Fodor, Clark, and Marr read differently once attention, working memory, predictive processing, and computational cognition are not merely words.
 
 ### How to Read the Subject Entries
 
@@ -336,11 +340,23 @@ These run continuously across all tracks.
 
 **LLM as adversarial interlocutor.** The right way to use an LLM is not as a textbook substitute (passive consumption) but as an interlocutor (active engagement). Read a passage, write your understanding in your own words, ask the LLM to critique your understanding ruthlessly. Read a proof, attempt to reconstruct it, ask the LLM to identify the steps you missed. Take a position on a philosophical question, ask the LLM to steelman the opposing view. **Never ask the LLM to summarize for you what you have not yet attempted to understand.** The summary feels like learning and is the opposite of it. The active engagement feels harder and is what learning is. Use LLMs everywhere but maintain this discipline absolutely.
 
+### Bridge Subjects as Calibration Points
+
+The bridge subjects are not side quests. They are calibration devices.
+
+**Model Theory** calibrates the syntax/semantics distinction. If you cannot explain compactness, Löwenheim–Skolem, and nonstandard models, you do not yet understand what it means for a formal language to have models.
+
+**Proof Theory** calibrates the notion of proof itself. If Gödel shows that formal systems have limits, proof theory shows how proofs are structured internally: rules, derivations, normalization, cut elimination, and consistency transformations.
+
+**Formal Epistemology** calibrates philosophical claims about rational belief. If you cannot translate a claim about evidence into Bayesian confirmation, belief revision, epistemic logic, or decision-theoretic terms, you should not yet trust your philosophical vocabulary about justification.
+
+**Cognitive Science Basics** calibrates philosophy of mind. If you have no working model of attention, memory, perception, predictive processing, and computational cognition, debates about consciousness risk becoming free-floating metaphysics.
+
 ### The META Layer
 
 META is the meta-layer that prevents the rest of the roadmap from going wrong. Its components are non-negotiable.
 
-**Monthly Map Day.** Once a month, take a full day. Open all your notes from the past month. Do not study anything new. Instead, write a 1,000-word memo on a connection you have noticed between subjects you have studied. Some examples: "How the Yoneda lemma reformulates Kripke's causal theory of reference"; "What Bayesian inference and Bourdieu's habitus have in common"; "Why Wittgenstein's rule-following considerations apply to large language models." File the memo dated. Over ten years you will have 120 of these. They are the spine of your eventual synthetic work.
+**Monthly Map Day.** Once a month, take a full day. Open all your notes from the past month. Do not study anything new. Instead, write a short memo on a connection you have noticed between subjects you have studied. Some examples: "How compactness changes the meaning of formal expressibility"; "Why cut elimination matters for the philosophy of proof"; "How Bayesian confirmation differs from ordinary talk about evidence"; "How predictive processing reframes the hard problem of consciousness"; "How the Yoneda lemma reformulates Kripke's causal theory of reference"; "What Bayesian inference and Bourdieu's habitus have in common"; "Why Wittgenstein's rule-following considerations apply to large language models."
 
 **Quarterly adversarial self-interview.** Once every three months, set up an LLM as a hostile examiner in a subject you have recently completed. Have it ask you the hardest possible questions on the material. Record your answers, compare against your previous quarter's interview if relevant, identify what you actually understand vs. what you only recognize. The exercise is uncomfortable; this is its purpose.
 
@@ -354,9 +370,9 @@ The META layer takes about 10% of total time. That 10% is what makes the other 9
 
 The "one finished piece per major node" rule is the operational core of Trunk 7. A node is roughly: completion of a subject, completion of a section within a trunk, completion of a CROSS book, or any milestone substantial enough to mark.
 
-A finished piece is **1,500–3,000 words, complete, revised twice, dated, filed**. It does not need to be published. It does need to be a real piece of writing — an essay with a thesis, a short story with a structure, a piece of philosophical commentary with an argument. The piece is finished when you would feel comfortable showing it to someone whose opinion you respect.
+A finished piece is short, complete, revised twice, dated, filed. It does not need to be published. It does need to be a real piece of writing — an essay with a thesis, a short story with a structure, a piece of philosophical commentary with an argument. The piece is finished when you would feel comfortable showing it to someone whose opinion you respect.
 
-The right form is the personal essay (Lopate's anthology is the model). It scales naturally to the kind of cross-disciplinary material you are working with. **Resist the temptation to attempt long-form work for at least the first two years.** No project longer than 5,000 words. Five completed short pieces before any sixth is allowed to grow longer. This rule is what protects you from the most common failure mode in literary ambition — beginning a novel before you have sentence-level competence and producing 50 pages of unrevisable mess.
+The right form is the personal essay (Lopate's anthology is the model). It scales naturally to the kind of cross-disciplinary material you are working with. **Resist long-form attempts until you have a body of completed short work behind you — perhaps a year or two of practice, perhaps more.**. Five completed short pieces before any sixth is allowed to grow longer. This rule is what protects you from the most common failure mode in literary ambition — beginning a novel before you have sentence-level competence and producing 50 pages of unrevisable mess.
 
 Over five years of disciplined practice you will have 30–60 finished pieces. That archive is your *oeuvre*. Whatever long-form work you eventually attempt will draw on it.
 
@@ -368,6 +384,8 @@ You will get stuck. Several patterns recur and have specific solutions.
 
 **Stuck on a concept within a textbook.** Stop reading. Take the concept and attempt to explain it to a hostile LLM examiner. Their critique will identify what you actually do not understand. Often the missing piece is a more elementary concept assumed by the text; spend two days on that, then return.
 
+**Stuck in a bridge subject.** Bridge subjects fail differently from ordinary subjects. In model theory, the failure is usually not understanding the difference between formal derivability and semantic satisfaction. In proof theory, the failure is usually treating proofs as finished objects rather than transformations. In formal epistemology, the failure is usually importing ordinary-language ideas of evidence into formal machinery without checking the assumptions. In cognitive science, the failure is usually reading philosophy of mind without empirical constraint. When this happens, reduce the subject to one load-bearing example: one compactness argument, one cut-elimination proof sketch, one Bayesian-confirmation calculation, one predictive-processing model.
+
 **Lost interest in a track.** If interest has flagged for more than a week, switch the track. The track structure is designed for this — you have three tracks specifically so that one can rest while the others work. But examine the lost interest in your path-revision log: is it boredom (rotate the track), is it the wrong text (switch the textbook), or is it that you are not yet ready for the material (defer)?
 
 **Overwhelmed by the scale.** The whole roadmap is overwhelming if you look at it whole. The cure is to look only at your current four tracks. The roadmap is a map; you are walking, not flying. Walking, you only ever see the next mile.
@@ -376,29 +394,12 @@ You will get stuck. Several patterns recur and have specific solutions.
 
 **Feeling like progress is invisible.** The roadmap is structured for invisible progress. Six months in, you will not feel like you "know more" — you will feel like you have many half-finished things. This is correct. Visible progress comes at the 18-month mark (when the cross-references start to thicken and you notice you are using one trunk's tools to understand another) and at the 36-month mark (when the synthesis becomes felt rather than imagined). Trust the structure.
 
+
 ### Two Cautions
 
 **Do not use this roadmap as performance.** The roadmap is a private intellectual project. The temptation to share progress publicly, build a "learning in public" identity, or treat the project as personal branding will corrupt the project itself. Map Day memos are private. Finished pieces can be shared selectively, but not as content for an audience. The audience is yourself in five and ten years.
 
 **Do not optimize the roadmap.** You will be tempted, repeatedly, to refine the roadmap rather than execute it. To find better textbooks. To add subjects you have just discovered. To rearrange the ordering. Limit roadmap revision to the META layer's path-revision log and to once-yearly major reviews. The roadmap as it stands is sufficient. Most "optimizations" are sophisticated forms of avoidance.
-
-### A Realistic Annual Picture
-
-In any given year, you will:
-
-* Complete 2–3 *solid*-tagged subjects in your primary trunks (e.g. one analysis textbook, one logic textbook, one CS textbook), or 1 *advanced* subject and 1 *solid* subject
-* Read 4–6 books from Trunk 4 (philosophy) at the cross-references appropriate to your technical work
-* Make consistent progress on language acquisition (French) if pursuing it
-* Read 10–20 books from Trunks 6 and 7 in the secondary and literary tracks
-* Read 1–2 CROSS books on long rotation
-* Produce 6–12 finished writing pieces
-* File 12 Map Day memos, 4 quarterly self-interviews, ongoing blindspot ledger entries
-
-This is a realistic pace for someone with substantial daily time available (≈ 2–4 focused hours, plus weekends). It is not a heroic pace. It is the pace at which the work actually accumulates without burnout. **Faster is not better.** Many of the subjects on this roadmap reward slowness, and the META layer requires time to function.
-
-Multiplied across five years, you will have completed the spine of the roadmap (Trunks 1, 2, 3 substantially; Trunk 4 at depth; Trunks 5, 6, 7 in working measure). Multiplied across ten years, you will have done everything on the roadmap except the most optional [D] DLC items, will have produced 60–120 finished writing pieces, will have a 60–120 Map Day archive, and will be in a position to attempt the canopy artifacts.
-
-This is not a guess. It is the realistic projection of the work this roadmap describes when executed at sustainable intensity. The point of the roadmap is to make this projection achievable rather than fantastical.
 
 ### Beginning
 
@@ -408,7 +409,7 @@ The right way to begin is also the simplest. Do not plan. Do not build a trackin
 2. Open Frege's *Foundations of Arithmetic* and read the introduction
 3. Choose your Track 3 (French Anki or Calvino's *Six Memos*) and begin
 4. Open a plain text file called `blindspot-ledger.md`
-5. Write a short essay (1,500 words) on what you hope to learn from this entire project, dated today, filed
+5. Write a short essay on what you hope to learn from this entire project, dated today, filed
 
 The whole project starts with these five actions. The five actions take half a day. After that, you do the same five actions tomorrow, and the next day, and continue in the same way for the next decade. The roadmap is the shape of where this consistent action takes you. The action itself is what matters.
 
@@ -456,13 +457,15 @@ Trunk 1 is Axis 1 made into a sequence of subjects. **It is structured so that e
 
 Trunk 1.1 (logic, set theory, computability in their first convergence) gives you the technical apparatus: predicate logic, basic set theory, and the formal definitions of computation. With these in hand, the language of Frege, the syntactic question Hilbert posed, and the framework Gödel inherited become readable.
 
-Trunk 1.2 (the Gödel pivot) is where the central result of Axis 1 is proven and absorbed. Boolos-Burgess-Jeffrey, Smullyan, and Smith give you three different routes to the same theorem; reading Gödel 1931 directly afterward shows you the original mind that produced it; reading Turing 1936 and Church 1936 shows you the same limit emerging in computational form. This trunk is the technical center of gravity of the entire roadmap. Six months of focused work here changes how you understand every later subject.
+Trunk 1.2 (the Gödel pivot) is where the central result of Axis 1 is proven and absorbed. Boolos-Burgess-Jeffrey, Smullyan, and Smith give you three different routes to the same theorem; reading Gödel 1931 directly afterward shows you the original mind that produced it; reading Turing 1936 and Church 1936 shows you the same limit emerging in computational form. **Model Theory** then prevents the pivot from collapsing into mere syntactic formalism: it forces you to understand structures, satisfaction, compactness, elementary equivalence, and nonstandard models. **Proof Theory** supplies the dual correction: it studies proofs internally, as formal objects with transformations, normal forms, and eliminations. This trunk is the technical center of gravity of the entire roadmap. Six months of focused work here changes how you understand every later subject.
 
 Trunk 1.3 (programming languages and type theory) extends the computational side. Lambda calculus is no longer a historical artifact but the foundation of a working approach to computation. Software Foundations gives you the experience of formalizing programming language semantics in a proof assistant. *Mathematics in Lean* is where you begin the lifelong practice of formalizing your mathematical reading, and this practice is the operational expression of Axis 1's central insight: **what cannot be made formal cannot be fully checked, and what can be made formal can be checked in ways that human attention cannot match**.
 
 Trunk 1.4 (category theory and the univalent convergence) is the second summit. Category theory generalizes the perspective: not just sets and functions but objects and morphisms in any structure. The Curry-Howard-Lambek correspondence shows that proofs are programs are morphisms — three apparently different domains turn out to be the same thing seen from different angles. Homotopy Type Theory then takes this further: types are spaces, identifications are paths, and the foundations of mathematics can be reformulated in a way that makes the formal-vs-intuitive distinction itself look different. **This is where Axis 1, in the 21st century, has continued to develop.** The limits Gödel found are real, but the apparatus has continued to grow new structures within those limits.
 
 Trunk 4 (philosophy spine) is the interpretive layer. Trunk 4.1 reads Frege, early Russell, and the *Tractatus* immediately after Trunk 1.1, when you have just enough technical apparatus to read them as the philosophical projects they are. Trunk 4.2 reads Tarski, Quine, Kripke, and the late Wittgenstein after the Gödel pivot, when the technical results are alive in your mind and you can see exactly what philosophical positions they make tenable or untenable. **The interleaving is essential.** Reading Kripke without the Gödel pivot is reading him as a stylish argument; reading him after is recognizing his project as part of the same century-long struggle with the formal apparatus.
+
+Formal epistemology is the late correction to purely verbal epistemology. Traditional epistemology asks what knowledge, justification, evidence, and rational belief are. Formal epistemology asks which parts of those questions can be made precise: by probability, decision theory, epistemic logic, belief revision, and learning theory. This matters because the roadmap's goal is not to admire epistemological vocabulary from a distance. It is to test which claims about knowledge survive contact with formal models of uncertainty.
 
 Together, Trunks 1 and 4 are Axis 1 made operational. By the end of these trunks — five years' work, perhaps more — you have not learned about the limits of formal expression in a survey-course sense. You have walked the axis from end to end with the original texts in hand and the technical results in your fingers.
 
@@ -474,7 +477,7 @@ The world the apparatus is applied to is not a single thing. It is the cosmos in
 
 The cosmic side of Axis 2 runs from classical mechanics through quantum field theory and into the speculative frontier of string theory, M-theory, and cosmology. Trunk 5 is structured so that each level of physical theory is approached with the appropriate mathematical apparatus already in hand: classical mechanics with calculus of variations and differential equations, electromagnetism with differential forms, special relativity with Minkowski geometry, general relativity with Riemannian geometry, quantum mechanics with functional analysis on Hilbert spaces, quantum field theory with the full machinery of group representations and gauge theory. **Physics does not appear in the roadmap as an isolated discipline.** It appears as the most spectacular application of the mathematics built up in Trunks 2 and 3, and it terminates in Trunk 5.4 (foundations of physics), where the philosophical problems return — what is the measurement problem? what does it mean for a theory to be "about" the world? — in ways that connect back to Axis 1.
 
-The human side of Axis 2 is harder to organize but equally essential. Trunk 4.6 takes up the philosophy of mind: Dennett, Chalmers, Nagel, Marr, Fodor, Andy Clark, Merleau-Ponty. The question is what cognition is, how it relates to computation, what consciousness is, what limits constrain a cognitive system from understanding itself. Trunk 6.1 (linguistics) gives the empirical complement to the philosophy of language from Axis 1. Trunk 6.2 (Lacanian psychoanalysis) approaches the human subject from the most heterodox angle — through the Freudian unconscious read structurally, after Saussure — and makes available a whole register of phenomena (desire, identification, the symbolic order) that the analytic tradition systematically underweights.
+The human side of Axis 2 is harder to organize but equally essential. Trunk 4.6 takes up the philosophy of mind, but it is now anchored by **Cognitive Science Basics** rather than floating directly into metaphysics. Dennett, Chalmers, Nagel, Marr, Fodor, Andy Clark, and Merleau-Ponty ask what cognition is, how it relates to computation, what consciousness is, and what limits constrain a cognitive system from understanding itself. The cognitive-science layer supplies empirical and computational pressure: attention, working memory, perception, predictive processing, levels of analysis, and computational cognition. Trunk 6.1 (linguistics) gives the empirical complement to the philosophy of language from Axis 1. Trunk 6.2 (Lacanian psychoanalysis) approaches the human subject from the most heterodox angle — through the Freudian unconscious read structurally, after Saussure — and makes available a whole register of phenomena (desire, identification, the symbolic order) that the analytic tradition systematically underweights.
 
 The collective side of Axis 2 runs through Trunks 6.3 (sociology), 6.4 (history), and 6.5 (media theory). Weber and Bourdieu give you the most sophisticated accounts of how social structures produce and reproduce themselves. Luhmann gives you the systems-theoretic view of society as an autopoietic network of communications. Foucault gives you the analysis of power as productive of subjects rather than merely constraining them. History gives you the empirical reservoir of cases. Media theory (McLuhan, Kittler) gives you the analysis of how the technologies of communication structure the cultures and cognitions they make possible.
 
@@ -498,13 +501,23 @@ Consider some specific crossings the roadmap makes available.
 
 **The cybernetics-Luhmann crossing.** Cybernetics (Trunk 1.2 DLC) treats systems in terms of feedback, communication, and self-organization. Luhmann (Trunk 6.3) applies precisely this framework to society, treating social subsystems as autopoietic networks of communications. The crossing is direct: a technical framework, developed mid-20th century, applied half a century later to one of the most demanding domains for theoretical analysis. Reading Luhmann after cybernetics is reading him as the inheritor of a specific intellectual lineage rather than as an isolated continental theorist.
 
-These are six examples. There are dozens more. **The roadmap is designed so that crossings of this kind happen continuously**, both at planned interleavings (the philosophy interleavings in Trunk 4 are placed precisely to maximize productive crossings with the technical work) and at unplanned ones (the Map Day practice exists exactly to surface crossings the curriculum did not anticipate).
+**The model-theory-philosophy crossing.** Model theory shows that formal languages can have unintended, nonstandard, or structurally surprising models. Compactness and Löwenheim–Skolem are not just technical theorems; they force a philosophical question about the gap between axiomatization and intended structure. This crossing matters for philosophy of mathematics, semantics, structuralism, and the limits of formal characterization.
+
+**The proof-theory-type-theory crossing.** Proof theory studies proofs as formal objects; type theory and proof assistants turn that study into a working technology. Cut elimination, normalization, and consistency proofs are not merely metatheoretic curiosities. They explain why proofs can be transformed, computed with, checked, and sometimes extracted into programs. This crossing is the technical core behind the slogan that proofs, programs, and structures are not separate domains.
+
+**The formal-epistemology-probability crossing.** Probability theory gives the mathematics of uncertainty; formal epistemology asks whether rational belief should obey that mathematics. Bayesian confirmation, decision theory, belief revision, and epistemic logic turn vague claims about evidence into testable structures. This crossing is where epistemology stops being only conceptual analysis and becomes a theory of constrained rational agents.
+
+**The cognitive-science-philosophy-of-mind crossing.** Philosophy of mind without cognitive science risks becoming unconstrained speculation; cognitive science without philosophy risks losing the question of what its models mean. Attention, memory, perception, predictive processing, and Marr's levels of analysis give empirical structure to debates about consciousness, representation, rule-following, and machine understanding. This crossing is especially important for evaluating LLMs: not merely as engineering artifacts, but as systems that force old questions about cognition into new forms.
+
+These are examples. There are dozens more. **The roadmap is designed so that crossings of this kind happen continuously**, both at planned interleavings (the philosophy interleavings in Trunk 4 are placed precisely to maximize productive crossings with the technical work) and at unplanned ones (the Map Day practice exists exactly to surface crossings the curriculum did not anticipate).
 
 ### How the Two Axes Reach the Goals
 
 The two goals stated at the outset — understanding the limits of human knowledge, and understanding the human and cosmic world — are reached through specific mechanisms internal to this architecture.
 
 The first goal is reached through Axis 1 directly and Axis 2 reflectively. Axis 1 *demonstrates* the limits of formal expression by walking you through their discovery, original-text by original-text, theorem by theorem, with formalization in Lean4 to prevent self-deception. By the time you have done Trunk 1.2 and read the late Wittgenstein, you have seen the limits in operation; you have felt them as a working mathematician feels the boundary of what they can prove and a working philosopher feels the boundary of what they can express. Axis 2 then shows you that the same limits recur — in physics (the measurement problem, the limits of effective theories), in philosophy of mind (the hard problem, the explanatory gap), in sociology (the impossibility of describing a system from outside it that one is part of). **The limits are not local to logic.** They are structural, and the roadmap shows you their structural recurrence across every domain.
+
+The inserted bridge subjects make the first goal harder to fake. **Model Theory** prevents you from equating formal language with intended meaning. **Proof Theory** prevents you from treating proof as a black box. **Formal Epistemology** prevents you from making claims about knowledge without confronting uncertainty, updating, and rational constraint. **Cognitive Science Basics** prevents you from treating "the human mind" as a purely philosophical abstraction. Together, they turn the roadmap from a grand synthesis into a more disciplined one.
 
 The second goal is reached through Axis 2 directly, applied with Axis 1's results in mind. You do not study the cosmos as if it were straightforwardly available to a neutral observer. You study it knowing that the mathematics you use to describe it is finite, incomplete, and in important ways an artifact of human cognitive history. You do not study society as if it could be neutrally surveyed from outside. You study it knowing that the categories of analysis are themselves social products, that the apparatus of statistics is itself a historically contingent technology, that the very desire to systematize is itself something to be analyzed. **Understanding the world without understanding the apparatus is a category mistake.** Axis 2 applies the apparatus while remembering what Axis 1 taught about it.
 
@@ -535,7 +548,7 @@ The roadmap is the recovery of this older possibility, made achievable by tools 
 This isn't a subject with textbooks — it's a practice. But two short books frame it well:
 
 | Subject | Best Resource | Tips |
-||||
+| :--- | :--- | :--- |
 | Self-monitoring as practice | **Peter Hollins, *The Science of Self-Learning*** (skim, not study) | Use as scaffolding for Map Day format. Don't dwell. |
 | Adversarial thinking habit | **Daniel Kahneman, *Thinking, Fast and Slow*** (selective chapters) | Read Part III (overconfidence) and Part IV (choices) only. The rest is well-trodden. |
 | Map Day template | *No book* — use Andy Matuschak's notes online (*evergreen notes*, *spaced repetition memory system*) | Free, online. Steal his note-linking philosophy, ignore the tooling religion. |
@@ -547,18 +560,18 @@ This isn't a subject with textbooks — it's a practice. But two short books fra
 #### SICP
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Abelson & Sussman, *Structure and Interpretation of Computer Programs*** (2nd ed., MIT, free online) | The book itself — non-negotiable. |
 | **MIT 6.001 video lectures** (1986, Abelson & Sussman themselves) | Watch the first 5 lectures even if you read the book. The energy is irreplaceable. |
 | **Brian Harvey's Berkeley CS61A lectures** (older versions, on YouTube) | Best supplement when stuck. |
 | *Composing Programs* (Berkeley, online) | Python-flavored SICP if Scheme genuinely blocks you — but **try Scheme first**. |
 
-**Tips:** Do exercises from Chapters 1–4. Chapter 5 (register machines) is optional unless you want to feel the SICP→compiler bridge. **The metacircular evaluator (Ch. 4) is your direct on-ramp to lambda calculus and TAPL** — don't skip it. Use Racket (`#lang sicp`) as the implementation.
+**Tips:** Do exercises from Chapters 1–4. Chapter 5 (register machines) is optional unless you want to feel the SICP→compiler bridge. **The metacircular evaluator (Ch. 4) is your direct on-ramp to lambda calculus and TAPL** — don't skip it. Racket with `#lang sicp` is a clean implementation choice.
 
 #### Linear Algebra (first pass)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Sheldon Axler, *Linear Algebra Done Right*** (4th ed., free online) | Determinant-last approach. The right book for someone who'll later see categorical LA. |
 | **3Blue1Brown, *Essence of Linear Algebra* (YouTube)** | Watch *before* Axler. Builds geometric intuition Axler assumes. |
 | **Gilbert Strang's MIT 18.06 lectures** | If Axler ever feels too austere, Strang re-grounds you. |
@@ -568,17 +581,17 @@ This isn't a subject with textbooks — it's a practice. But two short books fra
 #### Mathematical Analysis I–II
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Terence Tao, *Analysis I & II*** | Best for self-learners. Builds ℝ from Peano. |
 | **Walter Rudin, *Principles of Mathematical Analysis*** ("Baby Rudin") | The classical alternative; terser, more elegant, less hand-holding. |
 | **Stephen Abbott, *Understanding Analysis*** | Gentlest of the three. Use only if Tao feels heavy. |
 
-**Tips:** **Pick one and finish it** — bouncing between analysis books is the #1 time-waster. Tao is the safest self-study choice. Do at least 60% of exercises; analysis is unlearnable by reading. When you hit metric spaces, **slow down by 3×** — most downstream confusion (functional analysis, manifolds) is a metric-space fluency issue.
+**Tips:** **Pick one and finish it** — bouncing between analysis books is the #1 time-waster. Tao is the safest self-study choice. Do enough exercises to make the material your own — typically the majority. Skip drill exercises in areas where you're already fluent. When you hit metric spaces, **slow down by 3×** — most downstream confusion (functional analysis, manifolds) is a metric-space fluency issue.
 
 #### Discrete Mathematics & Proof
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Kenneth Rosen, *Discrete Mathematics and Its Applications*** | The standard, broad coverage. |
 | **Daniel Velleman, *How to Prove It*** | The pure proof-technique book. **Read this first** if proof writing isn't already automatic. |
 | **László Lovász, *Discrete Mathematics: Elementary and Beyond*** | Sharper, more elegant, more mathematical. Use after Rosen if you want depth. |
@@ -588,7 +601,7 @@ This isn't a subject with textbooks — it's a practice. But two short books fra
 #### Probability (first pass)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Joseph Blitzstein & Jessica Hwang, *Introduction to Probability*** | Best modern intro. Story-based, builds Bayesian intuition naturally. |
 | **Harvard Stat 110 lectures (Blitzstein, YouTube, free)** | Pair with the book. |
 | **Sheldon Ross, *A First Course in Probability*** | The classical alternative. Drier. |
@@ -598,23 +611,23 @@ This isn't a subject with textbooks — it's a practice. But two short books fra
 #### French (reading-focused)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Assimil, *French with Ease*** + **Assimil, *Using French*** | The single best self-study sequence for reading-oriented French. |
 | **Anki — French Frequency 5000 deck** | High-frequency vocab, no excuses. |
 | **Lawless French (online)** | Grammar reference. |
 | Bridge readers, in order: **Camus, *L'Étranger*** → **Saint-Exupéry, *Le Petit Prince*** → **Foucault short essays** → **Lacan *Écrits* (selected)** | Each is a real step up. |
 
-**Tips:** Aim for **B1 reading**, not speaking. Spend 20 min/day on Anki + 20 min/day on Assimil — non-negotiable daily, less optional weekly. Switch to real texts the moment you can stumble through Camus with a dictionary; immersion in real prose accelerates more than any textbook past A2.
+**Tips:** Aim for **B1 reading**, not speaking. SDaily practice — even short — is what makes language acquisition stick. Switch to real texts the moment you can stumble through Camus with a dictionary; immersion in real prose accelerates more than any textbook past A2.
 
 #### Writing as Practice
 
 | Resource | Notes |
-|||
-| **William Zinsser, *On Writing Well*** | Read once, re-read every two years. |
+| :--- | :--- |
+| **William Zinsser, *On Writing Well*** | **evergreen insights, highly rereadable**. |
 | **Verlyn Klinkenborg, *Several Short Sentences About Writing*** | The single most useful book for someone with ADHD doing serious writing. |
 | **Strunk & White, *The Elements of Style*** | Reference, not gospel. |
 
-**Tips:** The "one finished piece per major node" rule is the actual training. Klinkenborg's book teaches you that **the sentence is the unit**, not the paragraph or essay — perfect for ADHD output, since you can complete a sentence before getting bored. Build the habit at Root; don't wait until you "have something to say." You always do.
+**Tips:** Klinkenborg's book teaches you that **the sentence is the unit**, not the paragraph or essay — perfect for ADHD output, since you can complete a sentence before getting bored. Build the habit at Root; don't wait until you "have something to say." You always do.
 
 ### TRUNK 1.1 — First Convergence
 
@@ -623,7 +636,7 @@ This is where the three threads (logic, set theory, computation) first braid tog
 #### Mathematical Logic
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Dirk van Dalen, *Logic and Structure*** | Best self-study choice. Clean, modern, complete proofs of soundness/completeness without bloat. |
 | **Herbert Enderton, *A Mathematical Introduction to Logic*** | Classic alternative. More verbose; some find it friendlier. |
 | **Peter Smith, *An Introduction to Formal Logic*** + his *Logic Matters* site (free) | Smith's *Teach Yourself Logic Guide* is the best self-study map of the entire logic landscape — read it before choosing a textbook. |
@@ -634,7 +647,7 @@ This is where the three threads (logic, set theory, computation) first braid tog
 #### Naive Set Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Paul Halmos, *Naive Set Theory*** | 100 pages, perfect, sufficient. |
 | **Herbert Enderton, *Elements of Set Theory*** | If you want the axiomatic version now rather than later. |
 
@@ -643,7 +656,7 @@ This is where the three threads (logic, set theory, computation) first braid tog
 #### Theory of Computation
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Michael Sipser, *Introduction to the Theory of Computation*** | Best-written CS textbook of the last 30 years. Period. |
 | **Hopcroft, Motwani & Ullman, *Introduction to Automata Theory, Languages and Computation*** | Older, denser; consult only for specific gaps. |
 | **Sanjeev Arora & Boaz Barak, *Computational Complexity: A Modern Approach*** | Save for later (Trunk 3 advanced) — overkill here. |
@@ -653,7 +666,7 @@ This is where the three threads (logic, set theory, computation) first braid tog
 #### Philosophy: Frege, early Russell, *Tractatus*
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **van Heijenoort, ed., *From Frege to Gödel*** | Anthology of original papers. Frege 1879 (*Begriffsschrift*) selections, Russell on classes, the rest of 20th-c logic-foundations. **One book replaces five.** |
 | **Frege, *Foundations of Arithmetic*** (Austin trans.) | The single most readable Frege. Read in full. |
 | **Russell, *On Denoting*** (1905, free online) | 15-page paper. Read three times. |
@@ -665,12 +678,12 @@ This is where the three threads (logic, set theory, computation) first braid tog
 
 ### TRUNK 1.2 — The Gödel Pivot ★
 
-This is the keystone. Treat it as a **6-month dedicated phase**, not a chapter. Everything else slows down or pauses.
+This is the keystone. Treat as a sustained phase of months — not a chapter you pass through in a week. The depth required varies; don't rush it.
 
 #### Computability & Recursion Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **George Boolos, John Burgess & Richard Jeffrey, *Computability and Logic*** (BBJ) | The single best book for the entire 1.2 pivot. Covers computability + Gödel + Church + Tarski in one coherent arc. |
 | **Nigel Cutland, *Computability: An Introduction to Recursive Function Theory*** | Cleaner, more focused on recursion theory specifically. Pair with BBJ. |
 | **Robert Soare, *Turing Computability*** | Modern reformulation; advanced; for after BBJ if you want to go deeper. |
@@ -680,7 +693,7 @@ This is the keystone. Treat it as a **6-month dedicated phase**, not a chapter. 
 #### Gödel's Incompleteness Theorems
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Boolos, Burgess & Jeffrey, *Computability and Logic*** (chapters on incompleteness) | Standard rigorous proof. |
 | **Raymond Smullyan, *Gödel's Incompleteness Theorems*** | The elegant version. Smullyan's diagonal-lemma treatment is unmatched. |
 | **Peter Smith, *An Introduction to Gödel's Theorems*** (2nd ed.) | Best single-author treatment for self-learners. Smith holds your hand without being patronizing. |
@@ -689,7 +702,7 @@ This is the keystone. Treat it as a **6-month dedicated phase**, not a chapter. 
 **Tips:** Read Smith first (gentlest), then BBJ (rigorous), then Smullyan (elegant). Three passes, three different angles, same theorem. **Then** read Franzén to clear out misconceptions before you start drawing philosophical conclusions. Every famous person who's said something stupid about Gödel — Lacan included — would have benefited from Franzén.
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Gödel 1931, *On Formally Undecidable Propositions of Principia Mathematica and Related Systems I*** (in van Heijenoort) | The original. |
 | **Hofstadter, *Gödel, Escher, Bach*** (incompleteness chapters) | Best informal exposition ever written. Re-read the relevant chapters now. |
 
@@ -698,7 +711,7 @@ This is the keystone. Treat it as a **6-month dedicated phase**, not a chapter. 
 #### Turing 1936 & Church 1936
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Alan Turing, *On Computable Numbers, with an Application to the Entscheidungsproblem*** (1936) | The original. |
 | **Charles Petzold, *The Annotated Turing*** | Page-by-page commentary. Use it. |
 | **Alonzo Church, *An Unsolvable Problem of Elementary Number Theory*** (1936) | Shorter, denser. |
@@ -709,17 +722,41 @@ This is the keystone. Treat it as a **6-month dedicated phase**, not a chapter. 
 #### Tarski on Truth
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Alfred Tarski, *The Semantic Conception of Truth*** (1944, free online) | The accessible version. |
 | **Tarski, *The Concept of Truth in Formalized Languages*** (1933/1956) | The full technical version. |
 | **Scott Soames, *Understanding Truth*** | Best modern philosophical commentary. |
 
 **Tips:** Read the 1944 paper first — it's a 50-page philosophical essay, beautifully written, accessible. The 1933 paper is the technical monograph; sample it after the 1944 one. Tarski's undefinability theorem is Gödel's twin, and once you see them as twins, the territory clicks.
 
+#### Model Theory
+
+| Resource | Notes |
+| :--- | :--- |
+| **David Marker, *Model Theory: An Introduction*** | The right graduate entry. Modern, clean, and serious. |
+| **Wilfrid Hodges, *A Shorter Model Theory*** | More conceptual and broader in flavor; excellent as a second perspective. |
+| **Bruno Poizat, *A Course in Model Theory*** | More idiosyncratic, elegant, and French in style. Use after Marker if the subject catches fire. |
+| **Chang & Keisler, *Model Theory*** | Classical reference. Not the first book. |
+| **Peter Smith, *An Introduction to Formal Logic* / *Teach Yourself Logic Guide*** | Use only for orientation if the model-theoretic jump feels abrupt. |
+
+**Tips:** Enter model theory only after first-order logic and completeness are comfortable. The first payoff is **compactness**; the second is **Löwenheim–Skolem**; the third is understanding why "intended model" is a philosophical desire, not something first-order logic automatically gives you. Do enough examples: dense linear orders, algebraically closed fields, nonstandard arithmetic, elementary equivalence. If you cannot explain how a theory can have models it did not intend, you have not yet extracted the philosophical value of this node.
+
+#### Proof Theory
+
+| Resource | Notes |
+| :--- | :--- |
+| **Sara Negri & Jan von Plato, *Structural Proof Theory*** | Best entry for sequent calculus and structural rules. Clear and proof-centered. |
+| **Jean-Yves Girard, Yves Lafont & Paul Taylor, *Proofs and Types*** | Essential bridge to type theory and Curry–Howard. Short, dense, free online. |
+| **Troelstra & Schwichtenberg, *Basic Proof Theory*** | The serious reference. Use after an entry text. |
+| **Takeuti, *Proof Theory*** | Classical and difficult. Reference, not entry. |
+| **Prawitz, *Natural Deduction*** | Historically central. Use selectively if natural deduction becomes important. |
+
+**Tips:** The goal is not to become a proof theorist. The goal is to understand what a proof is when treated as a formal object. Learn natural deduction, sequent calculus, cut elimination, normalization, and consistency proofs. The conceptual center is **cut elimination**: proofs can contain detours, and proof theory studies how those detours can be removed. This connects directly to type theory, program normalization, proof assistants, and the philosophical question of whether proof is a static certificate or a dynamic process.
+
 #### Cybernetics & Systems Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Norbert Wiener, *Cybernetics: or Control and Communication in the Animal and the Machine*** | The founding text. Read selectively. |
 | **W. Ross Ashby, *An Introduction to Cybernetics*** (free online) | Most readable. Cleaner than Wiener. **The best entry point.** |
 | **Gregory Bateson, *Steps to an Ecology of Mind*** | The humanistic-philosophical extension. Essential for the cross-link to Trunks 4 and 6. |
@@ -730,7 +767,7 @@ This is the keystone. Treat it as a **6-month dedicated phase**, not a chapter. 
 #### Information Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David MacKay, *Information Theory, Inference, and Learning Algorithms*** (free online) | The single best book on this subject. Bayes, coding, ML in one volume. |
 | **Claude Shannon, *A Mathematical Theory of Communication*** (1948, free) | The original paper. Read after MacKay's first 5 chapters. |
 | **Cover & Thomas, *Elements of Information Theory*** | The standard reference. Use if MacKay leaves you wanting more rigor. |
@@ -740,7 +777,7 @@ This is the keystone. Treat it as a **6-month dedicated phase**, not a chapter. 
 #### Complexity Science
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Melanie Mitchell, *Complexity: A Guided Tour*** | The right entry point. Broad, intelligent, non-mathematical-but-rigorous-enough. |
 | **John Holland, *Hidden Order*** + *Signals and Boundaries* | Holland is the source. Slim, direct. |
 | **Stuart Kauffman, *At Home in the Universe*** | Beautiful, speculative; read after Mitchell. |
@@ -755,7 +792,7 @@ This is where SICP's metacircular evaluator finally cashes out. The trap here is
 #### Programming Languages (TAPL)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Benjamin Pierce, *Types and Programming Languages*** (TAPL) | The book. There is no substitute. |
 | **Pierce, ed., *Advanced Topics in Types and Programming Languages*** (ATTAPL) | Sequel. Save for after TAPL + Software Foundations. |
 | **Robert Harper, *Practical Foundations for Programming Languages*** (PFPL, 2nd ed., free draft online) | More mathematical than TAPL, less hand-holding. The serious alternative. |
@@ -766,7 +803,7 @@ This is where SICP's metacircular evaluator finally cashes out. The trap here is
 #### Lambda Calculus & Combinatory Logic
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Henk Barendregt, *Lambda Calculus: Its Syntax and Semantics*** | The standard reference. Encyclopedic. Reference, not read-through. |
 | **J. Roger Hindley & Jonathan Seldin, *Lambda-Calculus and Combinators: An Introduction*** | The right textbook. Read this. |
 | **Greg Michaelson, *An Introduction to Functional Programming Through Lambda Calculus*** | Gentlest entry; only if Hindley-Seldin feels too dense. |
@@ -777,7 +814,7 @@ This is where SICP's metacircular evaluator finally cashes out. The trap here is
 #### Software Foundations Vol. 1 (Rocq)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Pierce et al., *Software Foundations*, Vol. 1: *Logical Foundations*** (free online) | Yes. The whole thing. |
 | **Software Foundations Vol. 2: *Programming Language Foundations*** | Continuation. After Vol. 1, optional but valuable. |
 | **Adam Chlipala, *Certified Programming with Dependent Types*** (CPDT, free online) | More advanced; tactic-heavy; for after Vol. 1 if you want Rocq mastery. |
@@ -787,7 +824,7 @@ This is where SICP's metacircular evaluator finally cashes out. The trap here is
 #### Mathematics in Lean (Lean4 + Mathlib)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Avigad, Massot et al., *Mathematics in Lean*** (free, online, continuously updated) | The official tutorial. Do it cover-to-cover. |
 | **Theorem Proving in Lean 4** (free, online) | Companion: language-focused rather than math-focused. |
 | **The Mechanics of Proof** (Heather Macbeth, free) | Beautiful introductory text using Lean — gentlest entry. |
@@ -795,14 +832,14 @@ This is where SICP's metacircular evaluator finally cashes out. The trap here is
 | **Kevin Buzzard's Xena Project blog & lectures** | The cultural center of the Lean math community. |
 | **Lean Zulip chat** (free) | Where the community actually lives. Lurk first. |
 
-**Tips:** The right order is: *The Mechanics of Proof* → *Mathematics in Lean* → start formalizing things you've personally read in your own analysis/algebra textbooks. **Pick a small, beloved theorem and formalize it from scratch within your first 3 months of Lean** — irrationality of √2, infinitude of primes, Cantor's theorem. That experience converts Lean from "tool I'm learning" to "tool I'm thinking with." Set up VS Code with the Lean extension; do not try to use anything else.
+**Tips:** The right order is: *The Mechanics of Proof* → *Mathematics in Lean* → start formalizing things you've personally read in your own analysis/algebra textbooks. **Pick a small, beloved theorem and formalize it from scratch within your first 3 months of Lean** — irrationality of √2, infinitude of primes, Cantor's theorem. That experience converts Lean from "tool I'm learning" to "tool I'm thinking with." VS Code with the Lean extension is the most-supported environment; switching tools is rarely worth the friction..
 
 The deepest tip: **whenever you read a math textbook in Trunks 2.x going forward, keep Lean open in another window**. State the definitions in Lean as you read them. State the theorems. Try to prove them — fail, look up Mathlib's proof, learn. This habit, sustained, is the single most powerful thing on this whole roadmap.
 
 #### Denotational & Operational Semantics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Glynn Winskel, *The Formal Semantics of Programming Languages*** | Already mentioned; the right book for this section specifically. |
 | **Robert Harper, *PFPL*** (the semantics chapters) | Modern alternative. |
 | **Carl Gunter, *Semantics of Programming Languages*** | Classical, more mathematical, denotational-heavy. |
@@ -812,18 +849,18 @@ The deepest tip: **whenever you read a math textbook in Trunks 2.x going forward
 #### Program Logics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Glynn Winskel, *Formal Semantics*** (Hoare logic chapters) | Adequate intro. |
 | **Peter O'Hearn et al. — separation logic survey papers** (free online) | The modern essential. |
 | **Software Foundations Vol. 2: *Programming Language Foundations*** (Hoare chapters) | The applied path. |
 | **Software Foundations Vol. 6: *Separation Logic Foundations*** | The right way to learn separation logic. |
 
-**Tips:** Skip directly to Software Foundations Vol. 2 + 6 if you've already done Vol. 1. Hoare logic feels trivial until you try to verify a real program; then it bites. Separation logic was Anthropic-level invention — its compositional treatment of mutable state is one of the truly beautiful ideas in CS, and you should appreciate that explicitly.
+**Tips:** Skip directly to Software Foundations Vol. 2 + 6 if you've already done Vol. 1. Hoare logic feels trivial until you try to verify a real program; then it bites. Separation logic was epoch- invention — its compositional treatment of mutable state is one of the truly beautiful ideas in CS, and you should appreciate that explicitly.
 
 #### Formal Software Verification
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Xavier Leroy et al., *CompCert* papers** | The verified C compiler. The papers are the textbook. |
 | **Gerwin Klein et al., *seL4* papers** | The verified OS kernel. Same idea. |
 | **Adam Chlipala, *Formal Reasoning About Programs*** (FRAP, free online) | Gentler entry to the same world. |
@@ -833,7 +870,7 @@ The deepest tip: **whenever you read a math textbook in Trunks 2.x going forward
 #### Compilers
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Andrew Appel, *Modern Compiler Implementation in ML*** | The right book if you do this. |
 | **Aho, Lam, Sethi, Ullman, *Compilers: Principles, Techniques, and Tools*** ("Dragon Book") | Reference. Don't read through. |
 | **Bob Nystrom, *Crafting Interpreters*** (free online) | Joyful, modern, project-based. **Best for the [D] tag.** |
@@ -847,21 +884,21 @@ The second summit. Where mathematics, logic, and computation are revealed as a s
 #### Category Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Steve Awodey, *Category Theory*** (2nd ed.) | Best self-study. Logically motivated, exercises are tractable. |
 | **Emily Riehl, *Category Theory in Context*** (free online) | More mathematician-flavored alternative. Read after Awodey for breadth. |
 | **Saunders Mac Lane, *Categories for the Working Mathematician*** | The classic. Read **after** Awodey + Riehl, not before. Mac Lane assumes maturity. |
 | **Tom Leinster, *Basic Category Theory*** (free online) | Slimmer, gentler than Awodey. Good third option. |
 | **Bartosz Milewski, *Category Theory for Programmers*** (free online + YouTube) | The applied face. Read in parallel with Awodey if you're learning best with concrete examples. |
 
-**Tips:** Awodey + Milewski is the magic pair: Awodey gives you the math, Milewski makes every concept land in code. **Compute things by hand**: products in **Set**, in **Top**, in **Grp**; pullbacks; small limits and colimits explicitly. The Yoneda lemma is the moment category theory clicks; spend a week on it, no more, no less. Adjunctions are the actual deepest concept (Mac Lane's "adjoint functors arise everywhere" is correct), and you'll feel them most viscerally in the Galois connection / free-forgetful examples.
+**Tips:** Awodey + Milewski is the magic pair: Awodey gives you the math, Milewski makes every concept land in code. **Compute things by hand**: products in **Set**, in **Top**, in **Grp**; pullbacks; small limits and colimits explicitly. The Yoneda lemma deserves serious focus — don't rush it. Adjunctions are the actual deepest concept (Mac Lane's "adjoint functors arise everywhere" is correct), and you'll feel them most viscerally in the Galois connection / free-forgetful examples.
 
 #### Curry–Howard–Lambek
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Sørensen & Urzyczyn, *Lectures on the Curry–Howard Isomorphism*** | The textbook treatment. Comprehensive. |
-| **Philip Wadler, *Propositions as Types*** (paper, free online) | The 25-page essay everyone should read. **Start here.** |
+| **Philip Wadler, *Propositions as Types*** (paper, free online) | The 13-page essay everyone should read. **Start here.** |
 | **Joachim Lambek & Phil Scott, *Introduction to Higher-Order Categorical Logic*** | The full Curry–Howard–Lambek triangle, including the categorical leg. Hard but essential if you want the complete picture. |
 
 **Tips:** Wadler's *Propositions as Types* in one sitting; Sørensen-Urzyczyn over a month; Lambek-Scott as a slow read interleaved with Awodey. The triangle (proofs ↔ programs ↔ morphisms) is not a metaphor — it's literally the same structure, and seeing this changes how you think about everything from theorems to functions to natural transformations forever. **This is, philosophically, the deepest technical insight on the entire roadmap.**
@@ -869,7 +906,7 @@ The second summit. Where mathematics, logic, and computation are revealed as a s
 #### Homotopy Type Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **The HoTT Book** (Univalent Foundations Program, free online) | The reference. Written by a community in a year, and it shows in the best way. |
 | **Egbert Rijke, *Introduction to Homotopy Type Theory*** | The best textbook for self-learners; gentler ramp than the HoTT Book. |
 | **Robert Harper, *Homotopy Type Theory* lectures (CMU, on YouTube)** | Excellent video supplement. |
@@ -881,7 +918,7 @@ The second summit. Where mathematics, logic, and computation are revealed as a s
 #### Linear Algebra, Second Pass (Categorical)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Sergei Treil, *Linear Algebra Done Wrong*** (free online) | More categorical/structural than Axler. |
 | **Roman, *Advanced Linear Algebra*** | Module-theoretic and categorical perspectives. The right second-pass book. |
 | **Selected chapters of Aluffi *Chapter 0*** | Vector spaces as an example of modules over a field; revisit after first reading 2.1. |
@@ -891,8 +928,8 @@ The second summit. Where mathematics, logic, and computation are revealed as a s
 #### Lawvere & Categorical Logic
 
 | Resource | Notes |
-|||
-| **F. William Lawvere, *Adjointness in Foundations*** (1969, free online) | The 17-page paper that reframes set theory. |
+| :--- | :--- |
+| **F. William Lawvere, *Adjointness in Foundations*** (1969, free online) | The 14-page paper that reframes set theory. |
 | **F. William Lawvere & Stephen Schanuel, *Conceptual Mathematics*** | Lawvere's pedagogical book. Easier than the papers, often underestimated. |
 | **Goldblatt, *Topoi: The Categorial Analysis of Logic*** (Dover) | The right textbook for categorical logic specifically. Topoi as the unification of logic and geometry. |
 | **Saunders Mac Lane & Ieke Moerdijk, *Sheaves in Geometry and Logic*** | The serious follow-up. Save for if you fall in love. |
@@ -902,7 +939,7 @@ The second summit. Where mathematics, logic, and computation are revealed as a s
 #### Category Theory for Programmers
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Bartosz Milewski, *Category Theory for Programmers*** (free book + YouTube) | Already mentioned. Listed separately because it's also the right book for the **applied** dimension after the theoretical work. |
 | **Brent Yorgey, *The Typeclassopedia*** (online, free) | Haskell-flavored summary of practical category theory. |
 | **Eugenio Moggi, *Notions of Computation and Monads*** (1991, free online) | The original monads-for-effects paper. Read after Milewski's monad chapters. |
@@ -916,7 +953,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Abstract Algebra
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Paolo Aluffi, *Algebra: Chapter 0*** | The right book. Categorical from page one. |
 | **Serge Lang, *Algebra*** | The encyclopedic reference. Use as lookup, not as text. |
 | **Dummit & Foote, *Abstract Algebra*** | The computational alternative. More exercises, less elegant. |
@@ -928,7 +965,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Galois Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Ian Stewart, *Galois Theory*** (4th ed.) | The right self-study book. Beautiful pacing, full proofs. |
 | **Emil Artin, *Galois Theory*** (Dover) | Tiny, elegant, the original modern formulation. Read after Stewart. |
 | **Aluffi, *Chapter 0*** (Galois chapter) | Sufficient if Stewart feels like overkill. |
@@ -939,7 +976,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Commutative Algebra
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Atiyah & Macdonald, *Introduction to Commutative Algebra*** | The standard. Slim, terse, perfect. |
 | **David Eisenbud, *Commutative Algebra with a View Toward Algebraic Geometry*** | The encyclopedia. Use selectively. |
 | **Miles Reid, *Undergraduate Commutative Algebra*** | The gentlest entry. Use if Atiyah-Macdonald feels brutal. |
@@ -949,7 +986,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Algebraic Geometry
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*** (free online) | The modern self-study standard. Vakil teaches AG the way Grothendieck would have wanted. |
 | **Robin Hartshorne, *Algebraic Geometry*** (Ch. I–II) | The classic. Hard, ungenerous, essential as reference. |
 | **Karen Smith et al., *An Invitation to Algebraic Geometry*** | The gentle entry. Read first if AG is foreign. |
@@ -960,7 +997,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Algebraic Number Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Daniel Marcus, *Number Fields*** | The best self-study entry. Concrete and motivated. |
 | **Jürgen Neukirch, *Algebraic Number Theory*** | The serious modern reference. Read after Marcus. |
 | **Pierre Samuel, *Algebraic Theory of Numbers*** (Dover) | Slim, classical, beautifully structured. |
@@ -972,7 +1009,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Real Analysis / Measure Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Terence Tao, *Analysis II*** (the measure theory chapters) + **Tao, *An Introduction to Measure Theory*** | The right self-study sequence. |
 | **Walter Rudin, *Real and Complex Analysis*** ("Papa Rudin") | The standard. Beautifully terse. |
 | **Gerald Folland, *Real Analysis: Modern Techniques and Their Applications*** | The encyclopedic alternative. More accessible than Rudin, more comprehensive than Tao. |
@@ -983,7 +1020,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Complex Analysis
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Elias Stein & Rami Shakarchi, *Complex Analysis*** (Princeton Lectures II) | The right book. Beautifully written. |
 | **Lars Ahlfors, *Complex Analysis*** | The classic. Concise, more demanding. |
 | **Tristan Needham, *Visual Complex Analysis*** | Read **alongside** Stein-Shakarchi. Needham gives you intuition no other book offers. |
@@ -994,7 +1031,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Functional Analysis
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Peter Lax, *Functional Analysis*** | Modern, mathematician's choice. The right serious book. |
 | **Erwin Kreyszig, *Introductory Functional Analysis with Applications*** | The right gentle entry. |
 | **Walter Rudin, *Functional Analysis*** | The classical reference. Use after Lax. |
@@ -1005,7 +1042,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Constructive Analysis
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Errett Bishop, *Foundations of Constructive Analysis*** | The original. Read selectively. |
 | **Bishop & Bridges, *Constructive Analysis*** | Updated version of the original. |
 | **Douglas Bridges & Luminita Vita, *Techniques of Constructive Analysis*** | The modern textbook treatment. |
@@ -1016,7 +1053,7 @@ By now you've already met categories. Algebra is where the abstraction meets a t
 #### Harmonic Analysis
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Stein & Shakarchi, *Fourier Analysis*** (Princeton Lectures I) | The right entry. |
 | **Yitzhak Katznelson, *An Introduction to Harmonic Analysis*** | The standard. Slim and beautiful. |
 | **Stein, *Harmonic Analysis: Real-Variable Methods, Orthogonality, and Oscillatory Integrals*** | The serious follow-up; only if drawn in. |
@@ -1030,7 +1067,7 @@ Geometry and topology are where the categorical machinery of 1.4 meets concrete 
 #### Point-Set Topology
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **James Munkres, *Topology*** (2nd ed.) | The standard. Clear, paced, complete. |
 | **John Lee, *Introduction to Topological Manifolds*** (Part I) | Modern alternative; sets up directly for differential topology. |
 | **Stephen Willard, *General Topology*** (Dover) | The classical reference. More demanding. |
@@ -1041,7 +1078,7 @@ Geometry and topology are where the categorical machinery of 1.4 meets concrete 
 #### Differential Geometry / Manifolds
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **John Lee, *Introduction to Smooth Manifolds*** (2nd ed.) | The right self-study book. Comprehensive, careful, paced. |
 | **Loring Tu, *An Introduction to Manifolds*** | Gentler entry. Use if Lee feels heavy. |
 | **Michael Spivak, *Calculus on Manifolds*** | The slim classic. Read first to get the flavor. |
@@ -1053,7 +1090,7 @@ Geometry and topology are where the categorical machinery of 1.4 meets concrete 
 #### Algebraic Topology
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Allen Hatcher, *Algebraic Topology*** (free online) | The standard. The book that shaped a generation. |
 | **Tammo tom Dieck, *Algebraic Topology*** | Modern, categorical, more demanding. Read after Hatcher for breadth. |
 | **Glen Bredon, *Topology and Geometry*** | The unification — point-set, differential, algebraic, all in one volume. |
@@ -1064,7 +1101,7 @@ Geometry and topology are where the categorical machinery of 1.4 meets concrete 
 #### Riemannian Geometry
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **John Lee, *Introduction to Riemannian Manifolds*** (2nd ed.) | The right self-study book. Direct continuation of *Smooth Manifolds*. |
 | **Manfredo do Carmo, *Riemannian Geometry*** | Classical, beautifully written. The alternative. |
 | **Peter Petersen, *Riemannian Geometry*** | Modern, more advanced; for after Lee. |
@@ -1079,7 +1116,7 @@ This is the most underrated section of the whole roadmap for your stated goals. 
 #### Measure-theoretic Probability
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Williams, *Probability with Martingales*** | The right book. Slim, sharp, beautifully written. |
 | **Rick Durrett, *Probability: Theory and Examples*** (5th ed., free online) | Comprehensive modern textbook. |
 | **Patrick Billingsley, *Probability and Measure*** | The classical. Heavy but complete. |
@@ -1090,7 +1127,7 @@ This is the most underrated section of the whole roadmap for your stated goals. 
 #### Mathematical Statistics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **George Casella & Roger Berger, *Statistical Inference*** | The standard. Solid. |
 | **Erich Lehmann & George Casella, *Theory of Point Estimation*** | The classical reference. Use selectively. |
 | **Larry Wasserman, *All of Statistics*** | The compressed modern version. Useful for fast review. |
@@ -1101,7 +1138,7 @@ This is the most underrated section of the whole roadmap for your stated goals. 
 #### Stochastic Processes / Martingales
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Williams, *Probability with Martingales*** (already covered) | Sufficient for foundations. |
 | **Bernt Øksendal, *Stochastic Differential Equations*** | The right introduction to SDEs. Beautiful. |
 | **Daniel Stroock & S.R. Srinivasa Varadhan, *Multidimensional Diffusion Processes*** | The serious treatment. Save for if you fall in love. |
@@ -1112,7 +1149,7 @@ This is the most underrated section of the whole roadmap for your stated goals. 
 #### Bayesian Inference & Decision Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Andrew Gelman et al., *Bayesian Data Analysis*** (3rd ed.) | The standard. The right one to actually do. |
 | **Edwin Jaynes, *Probability Theory: The Logic of Science*** | The philosophical masterwork. Polemical, opinionated, essential. |
 | **David MacKay, *Information Theory, Inference, and Learning Algorithms*** | Already on your list; read the inference chapters again with full attention here. |
@@ -1121,10 +1158,22 @@ This is the most underrated section of the whole roadmap for your stated goals. 
 
 **Tips:** **Jaynes is the book to read for your goals.** It is one of the most philosophically serious mathematical books of the 20th century, and its claim — that probability theory is a normative theory of reasoning under uncertainty, full stop — is precisely the position you need to evaluate for your epistemology work. Read Jaynes alongside Hacking (Trunk 4.3); they're in conversation across decades. After Jaynes, Pearl extends the framework into causal reasoning, which is the missing piece in most philosophical accounts of inference. By the end of this section you'll have a defensible, technically grounded position on what knowledge under uncertainty *is*.
 
+#### Formal Epistemology
+
+| Resource | Notes |
+| :--- | :--- |
+| **Branden Fitelson, *Studies in Bayesian Confirmation Theory*** | Best technical entry into Bayesian confirmation if you want the confirmation-theory core. |
+| **Richard Bradley, *Decision Theory with a Human Face*** | Good bridge between decision theory, rational agency, and philosophical interpretation. |
+| **Brian Skyrms, *Choice and Chance*** | Classic bridge between probability, induction, and philosophy of science. |
+| **Kevin Kelly, *The Logic of Reliable Inquiry*** | Formal learning theory; deeper, more specialized, but directly relevant to inquiry under uncertainty. |
+| **van Benthem, *Logical Dynamics of Information and Interaction*** | For epistemic logic and information change. Advanced; use selectively. |
+
+**Tips:** Read this after Bayesian inference and decision theory, not before. The central question is: **what formal constraints should rational belief obey?** Bayesian confirmation gives one answer; epistemic logic gives another; belief revision gives another; formal learning theory gives yet another. Do not treat these as replacements for ordinary epistemology. Treat them as pressure tests. Every philosophical claim about evidence, justification, testimony, disagreement, or inquiry should be asked: can this be represented formally, and what is lost when we represent it?
+
 #### Information Geometry
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Shun-ichi Amari, *Information Geometry and Its Applications*** | The standard. Read first. |
 | **Amari & Hiroshi Nagaoka, *Methods of Information Geometry*** | The deeper treatment. After Amari's later book. |
 | **Frank Nielsen, *An Elementary Introduction to Information Geometry*** (paper, free online) | The 50-page primer. Start here. |
@@ -1138,7 +1187,7 @@ PDEs are where mathematics becomes the language of physical law. Don't approach 
 #### Ordinary Differential Equations
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Vladimir Arnold, *Ordinary Differential Equations*** | The book. Geometric, beautiful, demanding. |
 | **Morris Hirsch, Stephen Smale & Robert Devaney, *Differential Equations, Dynamical Systems, and an Introduction to Chaos*** | The right modern alternative. Pedagogically generous. |
 | **Lawrence Perko, *Differential Equations and Dynamical Systems*** | More technical; for follow-up. |
@@ -1149,7 +1198,7 @@ PDEs are where mathematics becomes the language of physical law. Don't approach 
 #### Partial Differential Equations
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Lawrence Evans, *Partial Differential Equations*** (2nd ed.) | The standard. The right serious book. |
 | **Walter Strauss, *Partial Differential Equations: An Introduction*** | The right gentle entry. |
 | **Fritz John, *Partial Differential Equations*** | Classical, slim, beautiful. |
@@ -1160,7 +1209,7 @@ PDEs are where mathematics becomes the language of physical law. Don't approach 
 #### Calculus of Variations
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **I. M. Gelfand & S. V. Fomin, *Calculus of Variations*** (Dover) | The classical. Slim, perfect, cheap. |
 | **Bruce van Brunt, *The Calculus of Variations*** | The right modern textbook. |
 | **Bernard Dacorogna, *Direct Methods in the Calculus of Variations*** | The serious modern follow-up; advanced. |
@@ -1174,7 +1223,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Algorithms & Data Structures
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Cormen, Leiserson, Rivest, Stein, *Introduction to Algorithms*** (CLRS, 4th ed.) | The standard. Use as backbone. |
 | **Jeff Erickson, *Algorithms*** (free online) | The right modern alternative — sharper, leaner, funnier than CLRS. **Many serious self-learners now prefer this.** |
 | **Sedgewick & Wayne, *Algorithms*** (4th ed.) | The implementation-flavored alternative. |
@@ -1186,7 +1235,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Computer Architecture
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Patterson & Hennessy, *Computer Organization and Design*** (RISC-V edition, 2nd) | The right textbook. The RISC-V edition is the modern choice. |
 | **Hennessy & Patterson, *Computer Architecture: A Quantitative Approach*** (6th ed.) | The advanced sequel. For after the basics. |
 | **Bryant & O'Hallaron, *Computer Systems: A Programmer's Perspective*** (CS:APP, 3rd ed.) | The bridge book — architecture *as it appears to a programmer*. **Highest leverage for your goals.** |
@@ -1198,7 +1247,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Operating Systems
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Remzi & Andrea Arpaci-Dusseau, *Operating Systems: Three Easy Pieces*** (OSTEP, free online) | **The right book.** The single best modern OS textbook. |
 | **Tanenbaum & Bos, *Modern Operating Systems*** | The classical comprehensive alternative. |
 | **Silberschatz, Galvin, Gagne, *Operating System Concepts*** | The "dinosaur book." Reference only. |
@@ -1209,7 +1258,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Computer Networks
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Kurose & Ross, *Computer Networking: A Top-Down Approach*** (8th ed.) | The right textbook. Top-down beats bottom-up for self-learners. |
 | **Tanenbaum & Wetherall, *Computer Networks*** | The classical comprehensive alternative. |
 | **W. Richard Stevens, *TCP/IP Illustrated*, Vol. 1** | The definitive practical reference. Use as deep-dive after Kurose-Ross. |
@@ -1220,7 +1269,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Databases
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Garcia-Molina, Ullman, Widom, *Database Systems: The Complete Book*** (2nd ed.) | The standard. Comprehensive. |
 | **Hellerstein & Stonebraker, *Readings in Database Systems*** ("the Red Book," free online) | The curated paper anthology. **Highest leverage.** |
 | **Martin Kleppmann, *Designing Data-Intensive Applications*** (DDIA) | **The book everyone needs.** Modern, integrative, brilliant. |
@@ -1231,7 +1280,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Distributed Systems
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Martin Kleppmann, *Designing Data-Intensive Applications*** | Same book; the distributed-systems chapters are foundational. |
 | **Maarten van Steen & Andrew Tanenbaum, *Distributed Systems*** (3rd ed., free online) | The right textbook. |
 | **MIT 6.824 lectures (YouTube)** | The best video course. |
@@ -1243,7 +1292,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Computational Complexity
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Sanjeev Arora & Boaz Barak, *Computational Complexity: A Modern Approach*** | The standard. Modern, comprehensive, well-written. |
 | **Christos Papadimitriou, *Computational Complexity*** | The classical. Read after Arora-Barak for breadth. |
 | **Sipser** (already on your list) | The intro. By now insufficient on its own. |
@@ -1254,7 +1303,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Cryptography
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Jonathan Katz & Yehuda Lindell, *Introduction to Modern Cryptography*** (3rd ed.) | **The right book.** Definition-driven, rigorous, modern. |
 | **Dan Boneh & Victor Shoup, *A Graduate Course in Applied Cryptography*** (free online) | The serious modern follow-up. Free. |
 | **Bruce Schneier, *Cryptography Engineering*** | The applied perspective. Read for engineering reality. |
@@ -1265,7 +1314,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Machine Learning
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Christopher Bishop, *Pattern Recognition and Machine Learning*** (PRML) | The classical mathematician's choice. Bayesian flavor. |
 | **Kevin Murphy, *Probabilistic Machine Learning: An Introduction* + *Advanced Topics*** | **The modern standard.** Two volumes; the new Bishop. |
 | **Trevor Hastie, Robert Tibshirani, Jerome Friedman, *The Elements of Statistical Learning*** (ESL, free online) | The statistical-learning perspective. The classical reference. |
@@ -1277,7 +1326,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Deep Learning & LLM Internals
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Ian Goodfellow, Yoshua Bengio, Aaron Courville, *Deep Learning*** (free online) | The standard intro. Now slightly dated but foundational. |
 | **Simon Prince, *Understanding Deep Learning*** (free online) | The right modern textbook. Beautiful. |
 | **Andrej Karpathy's *Zero to Hero* lectures (YouTube)** | **The single best learning resource for transformer-era ML.** Karpathy implements GPT from scratch on video. |
@@ -1289,13 +1338,13 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Mechanistic Interpretability & AI Alignment
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Anthropic's Transformer Circuits Thread** (free online) | The primary research output of the field. Read in order. |
 | **Neel Nanda, *A Comprehensive Mechanistic Interpretability Explainer & Glossary*** (free online) | The right entry point. |
 | **Neel Nanda's YouTube tutorials and ARENA curriculum** | The right hands-on training. |
 | **Stuart Russell, *Human Compatible*** | The accessible alignment overview. |
 | **Brian Christian, *The Alignment Problem*** | The journalistic intro. Read first if the field is foreign. |
-| **Hubinger et al., *Risks from Learned Optimization*** (paper) | The conceptual alignment classic. |
+| **Hubinger et al., *Risks from Learned Optimization*** (2019, paper) | The conceptual alignment. |
 | **AI Alignment Forum** (free online) | The actual research community. Read selectively. |
 
 **Tips:** Christian's book first if you want context, then Nanda's explainer, then ARENA. Mechanistic interpretability is the closest thing to *empirical philosophy of mind* that exists right now — researchers are literally taking apart trained networks to discover the algorithms they implement. This connects to Trunk 4.6 (philosophy of mind) directly: the question "what does a system know, and how?" is being answered concretely. **For your roadmap, this is one of the highest-leverage [D] topics** — it makes you the person who *understands* the LLM you're using to learn, instead of being a user of an inscrutable oracle. ARENA's hands-on curriculum is excellent.
@@ -1303,7 +1352,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Reinforcement Learning
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Richard Sutton & Andrew Barto, *Reinforcement Learning: An Introduction*** (2nd ed., free online) | **The book.** No serious alternative. |
 | **DeepMind & UCL RL course (David Silver, YouTube)** | The standard video course. |
 | **Spinning Up in Deep RL** (OpenAI, free online) | The applied modern entry. |
@@ -1313,7 +1362,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Quantum Computing
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Michael Nielsen & Isaac Chuang, *Quantum Computation and Quantum Information*** | The standard. Comprehensive. |
 | **Phillip Kaye, Raymond Laflamme, Michele Mosca, *An Introduction to Quantum Computing*** | The gentler entry. |
 | **John Preskill's Caltech lecture notes (free online)** | The serious physicist's perspective. |
@@ -1324,7 +1373,7 @@ The refresh philosophy: every subject here gets a *solid* treatment because foun
 #### Program Synthesis
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Sumit Gulwani, Oleksandr Polozov, Rishabh Singh, *Program Synthesis*** (FNT survey, free online) | The right entry point. |
 | **The Sketch project papers (Bodik, MIT)** | The classical sketching approach. |
 | **Recent neurosymbolic papers (DreamCoder etc.)** | The modern frontier — synthesis + neural networks. |
@@ -1342,7 +1391,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Frege
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Gottlob Frege, *The Foundations of Arithmetic*** (Austin trans.) | The most readable Frege. Read in full. |
 | **Gottlob Frege, *Begriffsschrift*** (in van Heijenoort) | Excerpts. The first modern formal logic. |
 | **Frege, *On Sense and Reference*** (1892) | The 30-page essay that founded modern philosophy of language. |
@@ -1356,7 +1405,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Early Russell
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Bertrand Russell, *On Denoting*** (1905, free online) | 15-page paper. Read three times. |
 | **Russell, *The Principles of Mathematics*** (1903, free online) | Selectively. The book that reformulated mathematics in logical-philosophical terms. |
 | **Russell, *Introduction to Mathematical Philosophy*** | The accessible mid-career summary. Beautifully written. |
@@ -1369,7 +1418,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Wittgenstein, *Tractatus*
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Ludwig Wittgenstein, *Tractatus Logico-Philosophicus*** (Pears & McGuinness trans.) | The standard translation. The Ogden translation is also good and more historically grounded. |
 | **G. E. M. Anscombe, *An Introduction to Wittgenstein's Tractatus*** | The companion. Read in parallel. |
 | **Michael Morris, *Wittgenstein and the Tractatus*** (Routledge) | Modern accessible commentary. |
@@ -1377,7 +1426,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 | **Marie McGinn, *Elucidating the Tractatus*** | The "resolute" reading — controversial, illuminating. |
 | **Ray Monk, *Ludwig Wittgenstein: The Duty of Genius*** | The biography. Indispensable for understanding Wittgenstein. |
 
-**Tips:** Three passes. First, read the *Tractatus* straight through in one sitting (4 hours). Don't try to understand. Let it wash over you and feel the structure — seven main propositions in a tree, like a logical organism. Second, read with Anscombe section by section over three weeks. Third, read it again straight through and notice what's changed in your reading. **The famous closing — "what we cannot speak about we must pass over in silence" — is your roadmap's central problem stated at maximum compression.** Don't read *Philosophical Investigations* yet; that's 4.2, and the gap between the two Wittgensteins is part of the lesson.
+**Tips:** Three passes. First, read the *Tractatus* straight through in one sitting — the structure is the point. Don't try to understand. Let it wash over you and feel the structure — seven main propositions in a tree, like a logical organism. Second, read with Anscombe section by section over three weeks. Third, read it again straight through and notice what's changed in your reading. **The famous closing — "what we cannot speak about we must pass over in silence" — is your roadmap's central problem stated at maximum compression.** Don't read *Philosophical Investigations* yet; that's 4.2, and the gap between the two Wittgensteins is part of the lesson.
 
 ### TRUNK 4.2 — Mid-Analytic
 
@@ -1386,7 +1435,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Tarski on Truth
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Alfred Tarski, *The Semantic Conception of Truth*** (1944, free online) | The accessible version. |
 | **Tarski, *The Concept of Truth in Formalized Languages*** (1933/1956) | The full technical version. |
 | **Scott Soames, *Understanding Truth*** | Modern philosophical commentary. |
@@ -1398,7 +1447,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Quine
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **W. V. O. Quine, *From a Logical Point of View*** | The essay collection containing *Two Dogmas of Empiricism*. Essential. |
 | **Quine, *Word and Object*** | The book. Slow and dense; read selectively. |
 | **Quine, *Ontological Relativity and Other Essays*** | The follow-up collection. |
@@ -1411,7 +1460,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Kripke
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Saul Kripke, *Naming and Necessity*** | Read in full. |
 | **Kripke, *Wittgenstein on Rules and Private Language*** | The 1982 monograph. The "Kripkenstein" interpretation. Controversial, illuminating. |
 | **Scott Soames, *Reference and Description*** | The right secondary work on Kripke's reference theory. |
@@ -1421,7 +1470,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Wittgenstein, *Philosophical Investigations*
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Ludwig Wittgenstein, *Philosophical Investigations*** (Hacker-Schulte 4th ed.) | The standard translation. |
 | **Marie McGinn, *Wittgenstein and the Philosophical Investigations*** (Routledge) | The right modern guide. |
 | **P. M. S. Hacker, *Wittgenstein: Connections and Controversies*** | The deep secondary literature. |
@@ -1437,7 +1486,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Williamson
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Timothy Williamson, *Knowledge and Its Limits*** | The book. The most influential epistemology monograph of the 21st century. |
 | **Williamson, *The Philosophy of Philosophy*** | Williamson's metaphilosophical follow-up. Essential for your project. |
 | **Williamson, *Tetralogue: I'm Right, You're Wrong*** | The popular-form version. Read first if Williamson's prose feels heavy. |
@@ -1448,7 +1497,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Hacking
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Ian Hacking, *The Emergence of Probability*** | The book. Read in full. |
 | **Hacking, *The Taming of Chance*** | The sequel; how probability transformed 19th-century social science. Read after the first. |
 | **Hacking, *An Introduction to Probability and Inductive Logic*** | The textbook. Useful as a reference. |
@@ -1459,13 +1508,24 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Goldman / Virtue Epistemology
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Alvin Goldman, *Epistemology and Cognition*** | The right entry. Reliabilism formalized. |
 | **Ernest Sosa, *A Virtue Epistemology*** | The right virtue-epistemology entry. |
 | **Linda Zagzebski, *Virtues of the Mind*** | The Aristotelian-flavored alternative. |
 | **John Greco, *Achieving Knowledge*** | The contemporary synthesis. |
 
 **Tips:** This [intro] tag is well-placed — engage with reliabilism and virtue epistemology enough to understand the contemporary alternatives to Williamson, but don't burn months here. The conceptual point is that 20th-century epistemology bifurcated into externalist (Goldman, reliabilism) and internalist (classical evidentialism) camps, with virtue epistemology emerging as a third way that relocates epistemic normativity into the agent rather than the belief. This is exactly the philosophical territory where AI alignment debates live (Trunk 3.x interpretability), and reading Sosa or Greco gives you the conceptual toolkit those debates need.
+
+#### Formal Epistemology Cross-Reference
+
+| Resource | Notes |
+| :--- | :--- |
+| **See Trunk 2.4: Formal Epistemology** | The technical version belongs there, after probability and statistics. |
+| **James Joyce, *The Foundations of Causal Decision Theory*** | Use if decision theory becomes central. |
+| **Isaac Levi, *The Fixation of Belief and Its Undoing*** | Belief revision and epistemic commitment. |
+| **Erik Olsson, *Against Coherence*** | Useful corrective against overly elegant coherence-based pictures. |
+
+**Tips:** Keep this as a cross-reference, not a duplicate track. In Trunk 4.3, the question is philosophical: what are knowledge, justification, evidence, and rational belief? In Trunk 2.4, the question is formal: what structures model belief, updating, confirmation, and inquiry? The two should irritate each other. If the formal model is too clean, bring in Hacking and Goldman. If the philosophy becomes too verbal, bring in Bayesian confirmation or belief revision.
 
 ### TRUNK 4.4 — Philosophy of Mathematics
 
@@ -1474,7 +1534,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Shapiro
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Stewart Shapiro, *Thinking About Mathematics*** | The right entry. The single best survey of philosophy of mathematics. |
 | **Shapiro, *Philosophy of Mathematics: Structure and Ontology*** | His positive structuralist proposal. Read after the survey. |
 | **Shapiro, ed., *The Oxford Handbook of Philosophy of Mathematics and Logic*** | The encyclopedia. Reference. |
@@ -1484,7 +1544,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Lakatos
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Imre Lakatos, *Proofs and Refutations*** | **The book.** Non-negotiable. |
 | **Lakatos, *Philosophical Papers Vol. 1: The Methodology of Scientific Research Programmes*** | His later work, more in 4.5 territory. |
 | **Lakatos, *Philosophical Papers Vol. 2: Mathematics, Science and Epistemology*** | The supplementary essays on math. |
@@ -1494,7 +1554,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Benacerraf
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Paul Benacerraf, *What Numbers Could Not Be*** (1965, paper) | The classic. 20 pages. |
 | **Benacerraf, *Mathematical Truth*** (1973, paper) | The other classic. The Benacerraf dilemma. |
 | **Paul Benacerraf & Hilary Putnam, eds., *Philosophy of Mathematics: Selected Readings*** | The right anthology. The standard course companion. |
@@ -1504,7 +1564,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Structuralism, Fictionalism, Neologicism
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Stewart Shapiro, *Structure and Ontology*** (already listed) | Structuralism. |
 | **Hartry Field, *Science Without Numbers*** | The fictionalist masterwork. Demanding. |
 | **Mark Colyvan, *An Introduction to the Philosophy of Mathematics*** | Modern survey, gentler than Shapiro. |
@@ -1521,7 +1581,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Godfrey-Smith
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Peter Godfrey-Smith, *Theory and Reality*** (2nd ed.) | **The single best entry.** Modern, balanced, beautifully written. |
 | **Godfrey-Smith, *Philosophy of Biology*** | Adjacent and excellent. Optional. |
 
@@ -1530,7 +1590,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Kuhn, Lakatos, Feyerabend
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Thomas Kuhn, *The Structure of Scientific Revolutions*** (50th anniversary ed., with Hacking's intro) | Read in full. |
 | **Imre Lakatos, *The Methodology of Scientific Research Programmes*** | The Lakatos-on-science book. |
 | **Paul Feyerabend, *Against Method*** | The provocateur. Read for joy. |
@@ -1542,7 +1602,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Cartwright
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Nancy Cartwright, *How the Laws of Physics Lie*** | The book. |
 | **Cartwright, *The Dappled World*** | The metaphysical follow-up. |
 | **Cartwright, *Hunting Causes and Using Them*** | Modern Cartwright on causation. |
@@ -1556,7 +1616,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Dennett
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Daniel Dennett, *Consciousness Explained*** | The book. Polemical, brilliant, controversial. |
 | **Dennett, *Darwin's Dangerous Idea*** | The metaphysical-evolutionary masterpiece. Read after *Consciousness*. |
 | **Dennett, *The Intentional Stance*** | The earlier conceptual foundation. |
@@ -1568,7 +1628,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Chalmers
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Chalmers, *The Conscious Mind*** | The book. The hard problem stated. |
 | **Chalmers, *Constructing the World*** | The mature metaphysical project. Demanding. |
 | **Chalmers, *Reality+*** | Chalmers on virtual reality and simulation. The accessible recent book. |
@@ -1579,7 +1639,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Nagel
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Thomas Nagel, *What Is It Like to Be a Bat?*** (1974, paper) | The 15-page paper. Read multiple times. |
 | **Nagel, *The View from Nowhere*** | The mature monograph on objectivity and subjectivity. |
 | **Nagel, *Mind and Cosmos*** | The provocative late book. Controversial; read for intellectual honesty more than agreement. |
@@ -1587,12 +1647,24 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 
 **Tips:** Three readings of *What Is It Like to Be a Bat?*, separated by weeks. The argument is so compressed and the prose so clear that you need to slow yourself down — the paper *appears* to be saying something obvious, but it's saying something subtly different from what most people remember. Then *The View from Nowhere*, which extends the argument into a full theory of how the subjective and objective standpoints relate. Nagel is one of the most stylistically precise philosophical writers; reading him is also a writing lesson.
 
+#### Cognitive Science Basics
+
+| Resource | Notes |
+| :--- | :--- |
+| **José Luis Bermúdez, *Cognitive Science: An Introduction to the Science of the Mind*** | Best broad entry. Philosophy-friendly but empirically grounded. |
+| **Paul Thagard, *Mind: Introduction to Cognitive Science*** | Clear, synthetic, good for the classical cognitive-science map. |
+| **Andy Clark, *Surfing Uncertainty*** | Predictive-processing bridge; already appears later, but can be sampled here. |
+| **Stanislas Dehaene, *Consciousness and the Brain*** | Useful empirical counterweight to purely philosophical consciousness debates. |
+| **Marr, *Vision*** | Keep as the deeper follow-up; his levels of analysis are still load-bearing. |
+
+**Tips:** This node should be read as calibration, not as a new empire. Learn attention, working memory, perception, representation, predictive processing, cognitive biases, and Marr's computational/algorithmic/implementational levels. The goal is to make later philosophy of mind less weightless. When Dennett talks about functional organization, when Chalmers frames the hard problem, when Fodor defends representationalism, when Clark defends predictive processing or 4E cognition, you should have at least one empirical or computational model in mind rather than only philosophical vocabulary.
+
 #### Marr
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Marr, *Vision*** | The book. Read in full. |
-| **Tomaso Poggio, *On Intelligence*** (paper, free online) | Marr's student summarizing what Marr meant. |
+| **Jeff Hawkins, *On Intelligence*** | Summarizing what Marr meant. |
 | **Shimon Ullman, *High-Level Vision*** | Continuation of Marr's research program. |
 
 **Tips:** Marr's three levels of analysis (computational, algorithmic, implementational) is one of the most influential conceptual frameworks in cognitive science. The *computational level* asks what problem the system is solving and why; the *algorithmic level* asks how it's solved; the *implementational level* asks how it's physically realized. **This trichotomy is probably the right framework for thinking about LLMs as well** — most current confusion in AI discussion is the result of running the levels together. Marr died young; *Vision* is his only complete book and it's a singular intellectual achievement.
@@ -1600,7 +1672,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Fodor
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Jerry Fodor, *The Language of Thought*** | The book. The classical computational theory of mind. |
 | **Fodor, *The Modularity of Mind*** | The shorter, more accessible companion. |
 | **Fodor, *LOT 2: The Language of Thought Revisited*** | The mature reconsideration. |
@@ -1611,7 +1683,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Andy Clark
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Andy Clark, *Surfing Uncertainty*** | The right entry. The predictive-processing view. |
 | **Clark, *Supersizing the Mind*** | The earlier extended-mind argument. |
 | **Clark, *Being There*** | The original 1990s book on embodied cognition. |
@@ -1623,7 +1695,7 @@ Philosophy in this roadmap is not a separate subject but the *interpretation lay
 #### Merleau-Ponty (selected)
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Maurice Merleau-Ponty, *Phenomenology of Perception*** (Landes trans.) | Selections. The body-perception chapters. |
 | **Merleau-Ponty, *The Visible and the Invisible*** | The unfinished late work. For the brave. |
 | **Taylor Carman, *Merleau-Ponty*** (Routledge) | The right secondary work. |
@@ -1638,7 +1710,7 @@ These are the optional deep dives. Each is excellent if it calls you, but none i
 #### Husserl
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Edmund Husserl, *Cartesian Meditations*** | The right entry. Slim, programmatic. |
 | **Husserl, *Ideas I*** | The systematic work. Demanding. |
 | **Husserl, *The Crisis of European Sciences and Transcendental Phenomenology*** | The late masterpiece. |
@@ -1649,7 +1721,7 @@ These are the optional deep dives. Each is excellent if it calls you, but none i
 #### Foucault, Derrida
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Michel Foucault, *Discipline and Punish*** | The right entry to Foucault. |
 | **Foucault, *The Order of Things*** | The structural-archaeological masterpiece. Demanding. |
 | **Foucault, *History of Sexuality*, Vol. 1: *The Will to Knowledge*** | The conceptually densest. Short. |
@@ -1663,7 +1735,7 @@ These are the optional deep dives. Each is excellent if it calls you, but none i
 #### Deleuze
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Gilles Deleuze, *Difference and Repetition*** | The major work. Read with help. |
 | **Deleuze, *The Logic of Sense*** | The companion. More accessible in style. |
 | **Deleuze & Félix Guattari, *A Thousand Plateaus*** | The wild book. Already in CROSS. |
@@ -1683,7 +1755,7 @@ Your math from Trunk 2 covers most of what you'll need. The remaining gap — Li
 #### Classical Mechanics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **John Taylor, *Classical Mechanics*** | The right entry. Pedagogically excellent. |
 | **Herbert Goldstein, Charles Poole, John Safko, *Classical Mechanics*** (3rd ed.) | The standard graduate text. Read after Taylor. |
 | **Vladimir Arnold, *Mathematical Methods of Classical Mechanics*** | The geometric-mathematical masterpiece. The right book for someone with your background. |
@@ -1695,7 +1767,7 @@ Your math from Trunk 2 covers most of what you'll need. The remaining gap — Li
 #### Lagrangian & Hamiltonian Mechanics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Cornelius Lanczos, *The Variational Principles of Mechanics*** (Dover) | The conceptual masterpiece. Read for the philosophy. |
 | **Vladimir Arnold, *Mathematical Methods of Classical Mechanics*** (already listed) | The mathematical depth. |
 | **Jorge José & Eugene Saletan, *Classical Dynamics: A Contemporary Approach*** | The modern bridge between Goldstein-level and Arnold-level. |
@@ -1706,7 +1778,7 @@ Your math from Trunk 2 covers most of what you'll need. The remaining gap — Li
 #### Electromagnetism
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Griffiths, *Introduction to Electrodynamics*** (5th ed.) | The right entry. Pedagogically excellent. |
 | **John David Jackson, *Classical Electrodynamics*** (3rd ed.) | The graduate brutalizer. Use selectively. |
 | **Anthony Zangwill, *Modern Electrodynamics*** | The modern graduate alternative. More humane than Jackson. |
@@ -1718,7 +1790,7 @@ Your math from Trunk 2 covers most of what you'll need. The remaining gap — Li
 #### Statistical Mechanics & Thermodynamics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Frederick Reif, *Fundamentals of Statistical and Thermal Physics*** | The pedagogically generous classic. |
 | **R. K. Pathria & Paul Beale, *Statistical Mechanics*** (4th ed.) | The right modern graduate text. |
 | **Mehran Kardar, *Statistical Physics of Particles*** + *Statistical Physics of Fields* | **The right serious modern path.** Two volumes; the second is exceptional. |
@@ -1730,7 +1802,7 @@ Your math from Trunk 2 covers most of what you'll need. The remaining gap — Li
 #### Continuum Mechanics / Fluids
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **G. K. Batchelor, *An Introduction to Fluid Dynamics*** | The classical. Demanding but excellent. |
 | **Landau & Lifshitz, *Fluid Mechanics*** (Vol. 6) | The Landau-Lifshitz treatment. Slim and beautiful. |
 | **Stephen Childress, *An Introduction to Theoretical Fluid Mechanics*** | The mathematical-flavored modern entry. |
@@ -1742,7 +1814,7 @@ Your math from Trunk 2 covers most of what you'll need. The remaining gap — Li
 #### Special Relativity
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Edwin Taylor & John Archibald Wheeler, *Spacetime Physics*** (2nd ed.) | The right pedagogical introduction. Conceptual-first. |
 | **Wolfgang Rindler, *Introduction to Special Relativity*** | The standard mathematical treatment. |
 | **N. M. J. Woodhouse, *Special Relativity*** | The clean modern textbook. |
@@ -1759,7 +1831,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Classical Mechanics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **John Taylor, *Classical Mechanics*** | The right intro. Modern, clear, demanding-but-accessible. |
 | **Herbert Goldstein, Charles Poole, John Safko, *Classical Mechanics*** (3rd ed.) | The standard graduate text. Read after Taylor. |
 | **David Morin, *Introduction to Classical Mechanics*** | Problem-solving heavy. Excellent companion. |
@@ -1770,7 +1842,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Lagrangian & Hamiltonian Mechanics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Vladimir Arnold, *Mathematical Methods of Classical Mechanics*** | **The book.** The geometric reformulation. Demanding, transformative. |
 | **Jorge Marsden & Tudor Ratiu, *Introduction to Mechanics and Symmetry*** | The modern follow-up. Symplectic geometry, reduction, advanced. |
 | **R. Abraham & J. Marsden, *Foundations of Mechanics*** | The encyclopedic reference. |
@@ -1781,7 +1853,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Electromagnetism
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Griffiths, *Introduction to Electrodynamics*** (4th ed.) | The right intro. |
 | **John David Jackson, *Classical Electrodynamics*** (3rd ed.) | The graduate standard. Read selectively. |
 | **Andrew Zangwill, *Modern Electrodynamics*** | The modern alternative to Jackson. More pedagogically generous. |
@@ -1792,7 +1864,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Statistical Mechanics & Thermodynamics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **R. K. Pathria & Paul Beale, *Statistical Mechanics*** (3rd ed.) | The standard. Solid, comprehensive. |
 | **Mehran Kardar, *Statistical Physics of Particles*** + ***Statistical Physics of Fields*** | The two-volume MIT graduate course. Beautifully written. **Best modern choice.** |
 | **L. D. Landau & E. M. Lifshitz, *Statistical Physics*, Vol. 5** | The classical. Demanding. |
@@ -1804,7 +1876,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Continuum Mechanics / Fluids
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **G. K. Batchelor, *An Introduction to Fluid Dynamics*** | The classical. |
 | **Pijush Kundu, Ira Cohen, David Dowling, *Fluid Mechanics*** (6th ed.) | The right textbook. |
 | **L. D. Landau & E. M. Lifshitz, *Fluid Mechanics*, Vol. 6** | The classical Landau-Lifshitz. Compact, beautiful. |
@@ -1816,7 +1888,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Special Relativity
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Edwin Taylor & John Archibald Wheeler, *Spacetime Physics*** (2nd ed.) | The right intro. The book that teaches relativity geometrically from page one. |
 | **Wolfgang Rindler, *Introduction to Special Relativity*** | The classical alternative. Physicist's perspective. |
 | **George Naber, *The Geometry of Minkowski Spacetime*** | The mathematical treatment. For after Taylor-Wheeler. |
@@ -1827,7 +1899,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Quantum Mechanics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Griffiths, *Introduction to Quantum Mechanics*** (3rd ed.) | The right intro. |
 | **J. J. Sakurai & Jim Napolitano, *Modern Quantum Mechanics*** (3rd ed.) | The graduate standard. The right second book. |
 | **Ramamurti Shankar, *Principles of Quantum Mechanics*** (2nd ed.) | The right book for self-learners with strong math. |
@@ -1840,7 +1912,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### General Relativity
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Sean Carroll, *Spacetime and Geometry*** | **The right book.** Modern, geometrically grounded, well-paced. |
 | **Robert Wald, *General Relativity*** | The serious mathematical treatment. Read after Carroll if you want depth. |
 | **Charles Misner, Kip Thorne, John Wheeler, *Gravitation*** (MTW) | The encyclopedic classic. Use selectively. |
@@ -1852,7 +1924,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Quantum Field Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Tong, *Lectures on Quantum Field Theory*** (free online) | **The right starting point.** Tong's lectures are the best free physics resource on the internet. |
 | **Anthony Zee, *Quantum Field Theory in a Nutshell*** | The right book for **conceptual orientation**. Idiosyncratic, brilliant. |
 | **Mark Srednicki, *Quantum Field Theory*** (free online) | The right comprehensive textbook. Modular. |
@@ -1867,7 +1939,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Standard Model
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Mark Thomson, *Modern Particle Physics*** | The right modern textbook. |
 | **John Donoghue, Eugene Golowich, Barry Holstein, *Dynamics of the Standard Model*** | The serious treatment. After Thomson. |
 | **Howard Georgi, *Lie Algebras in Particle Physics*** | The math foundation. Essential. |
@@ -1879,7 +1951,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### String Theory
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Joseph Polchinski, *String Theory*, Vols. 1–2** | The standard. Demanding. |
 | **Katrin Becker, Melanie Becker, John Schwarz, *String Theory and M-Theory*** | The right modern textbook. |
 | **Barton Zwiebach, *A First Course in String Theory*** | The right entry. Pedagogically generous. |
@@ -1892,7 +1964,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### M-Theory & Dualities
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Edward Witten, *String Theory Dynamics in Various Dimensions*** (1995, paper) | The founding paper of M-theory. |
 | **Becker-Becker-Schwarz, *String Theory and M-Theory*** (M-theory chapters) | Same book, M-theory sections. |
 | **Joseph Polchinski, Vol. 2 (D-brane and duality chapters)** | The standard textbook material. |
@@ -1903,7 +1975,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Cosmology
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Steven Weinberg, *Cosmology*** | The graduate standard. |
 | **Viatcheslav Mukhanov, *Physical Foundations of Cosmology*** | The right pedagogically modern textbook. |
 | **Daniel Baumann, *Cosmology*** (free online lecture notes, also published) | The right contemporary entry. |
@@ -1915,7 +1987,7 @@ The philosophy of this trunk: every section connects to mathematics you've alrea
 #### Loop Quantum Gravity
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Carlo Rovelli, *Quantum Gravity*** | The right textbook. |
 | **Carlo Rovelli & Francesca Vidotto, *Covariant Loop Quantum Gravity*** | The modern formulation. |
 | **Carlo Rovelli, *Reality Is Not What It Seems*** | The popular exposition. |
@@ -1930,7 +2002,7 @@ This is the section where physics meets the philosophical questions you actually
 #### Foundations of Quantum Mechanics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Travis Norsen, *Foundations of Quantum Mechanics*** | The right modern textbook. **Excellent for self-learners.** Pedagogically careful, philosophically serious. |
 | **David Albert, *Quantum Mechanics and Experience*** | The clearest philosophical exposition of the measurement problem. |
 | **Tim Maudlin, *Philosophy of Physics: Quantum Theory*** | The contemporary philosopher's treatment. |
@@ -1943,7 +2015,7 @@ This is the section where physics meets the philosophical questions you actually
 #### Philosophy of Physics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Tim Maudlin, *Philosophy of Physics: Space and Time*** | Companion to his quantum book. Read both. |
 | **Maudlin, *The Metaphysics Within Physics*** | Deeper philosophical. |
 | **David Wallace, *The Emergent Multiverse*** (already listed) | The Everettian masterpiece. |
@@ -1956,14 +2028,14 @@ This is the section where physics meets the philosophical questions you actually
 #### Penrose
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Roger Penrose, *The Road to Reality*** | **Read.** The single most ambitious popular-yet-technical book ever written about physics. |
 | **Penrose, *The Emperor's New Mind*** | The earlier book — Penrose's argument that consciousness is non-computable, with extensive Gödel discussion. |
 | **Penrose, *Shadows of the Mind*** | The follow-up, with his Orchestrated Objective Reduction proposal. |
 | **Penrose, *Cycles of Time*** | His conformal cyclic cosmology. Speculative, beautifully written. |
 | **Penrose, *Fashion, Faith, and Fantasy in the New Physics of the Universe*** | His critique of string theory, inflation, and quantum mechanics. |
 
-**Tips:** *The Road to Reality* is roughly 1100 pages and covers all of mathematics and physics from elementary geometry through twistor theory. **Read it as a multi-year companion** — 30 minutes a day for two years gets you through it, and the experience is unlike any other book in this whole roadmap. Penrose is one of the great heterodox thinkers in contemporary physics: he's skeptical of string theory, skeptical of inflation, skeptical of standard quantum mechanics, and has his own original proposals for everything. Whether you agree with him or not, **engaging with a major physicist's actual disagreements with the consensus is one of the most clarifying experiences in scientific learning**. *The Emperor's New Mind* in particular connects directly to Trunk 1.2 (Gödel), Trunk 4.6 (philosophy of mind), and Trunk 5.4 (quantum foundations) — Penrose argues that the Gödel theorems imply human mathematical understanding is non-computable, and this leads him to propose that consciousness involves a non-computable physical process related to quantum gravity. The argument is widely rejected; engaging with it carefully (with Franzén's *Gödel's Theorem* alongside as a corrective) is one of the most philosophically rich exercises on this entire roadmap.
+**Tips:** *The Road to Reality* is roughly 1100 pages and covers all of mathematics and physics from elementary geometry through twistor theory. **Live with this book over a long period — months to years**, and the experience is unlike any other book in this whole roadmap. Penrose is one of the great heterodox thinkers in contemporary physics: he's skeptical of string theory, skeptical of inflation, skeptical of standard quantum mechanics, and has his own original proposals for everything. Whether you agree with him or not, **engaging with a major physicist's actual disagreements with the consensus is one of the most clarifying experiences in scientific learning**. *The Emperor's New Mind* in particular connects directly to Trunk 1.2 (Gödel), Trunk 4.6 (philosophy of mind), and Trunk 5.4 (quantum foundations) — Penrose argues that the Gödel theorems imply human mathematical understanding is non-computable, and this leads him to propose that consciousness involves a non-computable physical process related to quantum gravity. The argument is widely rejected; engaging with it carefully (with Franzén's *Gödel's Theorem* alongside as a corrective) is one of the most philosophically rich exercises on this entire roadmap.
 
 ### TRUNK 6 — Secondary Humanities
 
@@ -1976,7 +2048,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Saussure
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Ferdinand de Saussure, *Course in General Linguistics*** (Harris trans.) | The right translation. Slim. |
 | **Jonathan Culler, *Saussure*** (Fontana Modern Masters) | The right secondary work. Brief and excellent. |
 | **Roland Barthes, *Elements of Semiology*** | The structuralist application. Read after Saussure. |
@@ -1986,7 +2058,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Pinker
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Steven Pinker, *The Language Instinct*** | The right popular intro. |
 | **Pinker, *Words and Rules*** | The technical follow-up on morphology. |
 | **Pinker, *The Stuff of Thought*** | Pinker on language and conceptual structure. |
@@ -1997,7 +2069,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Chomsky
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Noam Chomsky, *Syntactic Structures*** | The 1957 monograph that founded modern linguistics. Slim. |
 | **Chomsky, *Aspects of the Theory of Syntax*** | The 1965 monograph. The Standard Theory. |
 | **Chomsky, *The Minimalist Program*** | The mature program. Demanding. |
@@ -2009,7 +2081,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Cognitive Linguistics
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **George Lakoff & Mark Johnson, *Metaphors We Live By*** | The accessible founding text. |
 | **George Lakoff, *Women, Fire, and Dangerous Things*** | The mature theoretical statement. Demanding. |
 | **Ronald Langacker, *Foundations of Cognitive Grammar*, Vol. 1: *Theoretical Prerequisites*** | The serious cognitive grammar treatment. |
@@ -2025,7 +2097,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Bruce Fink
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Bruce Fink, *The Lacanian Subject*** | **The book.** The right entry to Lacan. |
 | **Fink, *A Clinical Introduction to Lacanian Psychoanalysis*** | The clinical companion. |
 | **Fink, *Lacan to the Letter: Reading Écrits Closely*** | The reader's guide to the *Écrits*. |
@@ -2036,7 +2108,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Lacan, *Écrits*
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Jacques Lacan, *Écrits: The First Complete Edition in English*** (Fink trans.) | The right edition. |
 | **Lacan, *The Mirror Stage as Formative of the I Function*** (1949 essay) | Read first. |
 | **Lacan, *The Function and Field of Speech and Language in Psychoanalysis*** (the "Rome Discourse," 1953) | The founding manifesto. |
@@ -2049,7 +2121,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Lacan's Seminars
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Jacques Lacan, *Seminar II: The Ego in Freud's Theory and in the Technique of Psychoanalysis*** | The right second-step seminar. |
 | **Lacan, *Seminar VII: The Ethics of Psychoanalysis*** | The famous one. The death drive, the Thing, sublimation. |
 | **Lacan, *Seminar XI: The Four Fundamental Concepts of Psychoanalysis*** | The right entry-level seminar. The accessible Lacan. |
@@ -2061,7 +2133,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Žižek
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Slavoj Žižek, *The Sublime Object of Ideology*** | The book that made Žižek's reputation. |
 | **Žižek, *The Parallax View*** | The mature theoretical statement. Demanding. |
 | **Žižek, *Less Than Nothing*** | The 1000-page magnum opus on Hegel and Lacan. For obsessives. |
@@ -2077,7 +2149,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Weber
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Max Weber, *The Protestant Ethic and the Spirit of Capitalism*** (Parsons trans. or the newer Kalberg) | The book. Read in full. |
 | **Weber, *Economy and Society*** (selections) | The encyclopedic theoretical work. Use selectively. |
 | **Weber, *The Vocation Lectures*** (*Politics as a Vocation* + *Science as a Vocation*) | Two lectures. Essential. |
@@ -2089,7 +2161,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Bourdieu
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Pierre Bourdieu, *Distinction: A Social Critique of the Judgement of Taste*** | The book. Read in full. |
 | **Bourdieu, *The Logic of Practice*** | The theoretical statement. |
 | **Bourdieu, *Outline of a Theory of Practice*** | The earlier theoretical work. |
@@ -2101,10 +2173,10 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Luhmann
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Niklas Luhmann, *Social Systems*** (Bednarz & Baecker trans.) | The book. Demanding. |
 | **Luhmann, *Introduction to Systems Theory*** | The lectures. The right pedagogical entry. |
-| **Luhmann, *Theory of Society*, Vols. 1–2 | The mature synthesis. |
+| **Luhmann, *Theory of Society***, Vols. 1–2 | The mature synthesis. |
 | **Hans-Georg Moeller, *Luhmann Explained*** | The right gentle secondary work. |
 | **Hans-Georg Moeller, *The Radical Luhmann*** | The provocative reading. |
 
@@ -2113,7 +2185,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Foucault
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Michel Foucault, *Discipline and Punish*** | Already on your list (Trunk 4.7). The right entry. |
 | **Foucault, *The History of Sexuality*, Vol. 1: *The Will to Knowledge*** | The conceptually densest. Short. |
 | **Foucault, *Madness and Civilization*** | The early masterwork. |
@@ -2131,7 +2203,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Big-Picture History
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Eric Hobsbawm, *The Age of Revolution* / *The Age of Capital* / *The Age of Empire* / *The Age of Extremes*** | The tetralogy. The right modern world history. |
 | **William McNeill, *The Rise of the West*** | The classical world-historical synthesis. |
 | **许倬云 (Hsu Cho-yun), *万古江河 / Rivers of the Ten Thousand Ages*** | The Chinese-civilizational synthesis. |
@@ -2143,7 +2215,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Intellectual History
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Tony Judt, *Postwar*** | The book on post-1945 Europe. Magisterial. |
 | **Tony Judt, *Reappraisals: Reflections on the Forgotten Twentieth Century*** | The essay collection. |
 | **Isaiah Berlin, *Russian Thinkers*** | The right entry to Berlin. |
@@ -2157,7 +2229,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### History of Science
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Thomas Kuhn, *The Copernican Revolution*** | Kuhn's earlier history-of-science book. More careful than *Structure*. |
 | **Steven Shapin, *The Scientific Revolution*** | The right contemporary history of the scientific revolution. |
 | **Peter Galison, *Image and Logic*** | The major history-of-physics monograph on detector and instrument cultures. |
@@ -2173,7 +2245,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### McLuhan
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Marshall McLuhan, *Understanding Media: The Extensions of Man*** | The book. |
 | **McLuhan, *The Gutenberg Galaxy*** | The earlier work on print culture. |
 | **McLuhan & Quentin Fiore, *The Medium Is the Massage*** | The visual experiment. Fast read. |
@@ -2184,7 +2256,7 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 #### Kittler
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Friedrich Kittler, *Gramophone, Film, Typewriter*** | The book. |
 | **Kittler, *Discourse Networks 1800/1900*** | The major theoretical work. |
 | **Kittler, *Optical Media*** | The lectures. The right pedagogical entry. |
@@ -2196,12 +2268,12 @@ The strategic point of this trunk: each subject is a **lens on the same phenomen
 
 This trunk doesn't follow the normal logic. It runs in parallel with everything else, never waits for prerequisites, and — uniquely — its primary deliverable is *production*, not consumption. Reading happens here only in service of writing. The texts below are chosen because they teach something specific about how to write; they are not "great books" in general but **operational manuals from working writers**.
 
-The strategic point of this trunk: ADHD makes input addiction the default failure mode, and the only reliable cure is forced output. The "one finished piece per major node" rule is the actual training. The books are scaffolding for that practice.
+The strategic point of this trunk: ADHD makes input addiction the default failure mode, and the only reliable cure is forced output. The books are scaffolding for that practice.
 
 #### Calvino
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Italo Calvino, *Six Memos for the Next Millennium*** | **Read first, read early.** The five Charles Eliot Norton lectures (he died before writing the sixth). |
 | **Calvino, *The Uses of Literature*** | The essay collection. Read after the *Memos*. |
 | **Calvino, *Why Read the Classics?*** | The other essay collection. |
@@ -2211,9 +2283,9 @@ The strategic point of this trunk: ADHD makes input addiction the default failur
 #### Strunk & White / Zinsser
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **William Strunk Jr. & E. B. White, *The Elements of Style*** | Reference, not gospel. |
-| **William Zinsser, *On Writing Well*** | Read once, re-read every two years. The single best book on non-fiction prose in English. |
+| **William Zinsser, *On Writing Well*** | **evergreen insights, highly rereadable**. The single best book on non-fiction prose in English. |
 | **Verlyn Klinkenborg, *Several Short Sentences About Writing*** | **The book for ADHD writers.** Treats the sentence as the unit of work. |
 | **Stephen King, *On Writing*** | Half memoir, half manual. Both halves valuable. |
 | **Annie Dillard, *The Writing Life*** | Short, lyrical, essential. |
@@ -2223,7 +2295,7 @@ The strategic point of this trunk: ADHD makes input addiction the default failur
 #### Models — sense-makers
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Jorge Luis Borges, *Ficciones* + *El Aleph*** | The fictions. The right starting point for anyone with intellectual interests doing literature. |
 | **W. G. Sebald, *The Rings of Saturn* + *Austerlitz*** | The right contemporary model for essayistic-fiction-philosophy hybrid prose. |
 | **Clarice Lispector, *The Passion According to G.H.* + *Água Viva*** | The right model for philosophical-mystical first-person prose. |
@@ -2236,7 +2308,7 @@ The strategic point of this trunk: ADHD makes input addiction the default failur
 #### Models — formal-constraint tradition
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Italo Calvino, *Cosmicomics*** | Mathematical-physical premises as fiction. |
 | **Calvino, *If on a winter's night a traveler*** | The recursive metafiction. |
 | **Calvino, *Invisible Cities*** | The catalogue-of-impossible-objects form. |
@@ -2253,7 +2325,7 @@ The strategic point of this trunk: ADHD makes input addiction the default failur
 #### Models — math/philosophy-saturated fiction
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **David Foster Wallace, *Infinite Jest*** | The novel. The most-cited contemporary precedent for what you're trying to be. |
 | **Wallace, *Brief Interviews with Hideous Men*** | The short fiction. |
 | **Wallace, *Consider the Lobster* + *A Supposedly Fun Thing I'll Never Do Again*** | The essay collections. |
@@ -2266,25 +2338,25 @@ The strategic point of this trunk: ADHD makes input addiction the default failur
 #### Personal essay / short fiction practice
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Phillip Lopate, ed., *The Art of the Personal Essay*** | The right anthology of the form, from Seneca to Sontag. |
 | **John D'Agata, ed., *The Lost Origins of the Essay*** | The historical-experimental anthology. |
 | **Charles D'Ambrosio, *Loitering*** | Contemporary essays. The right model for contemporary American literary essay. |
 | **Joan Didion, *The White Album* + *Slouching Towards Bethlehem*** | The classical model. |
 | **Susan Sontag, *Against Interpretation*** | The intellectual-critical essay form. |
 
-**Tips:** The Lopate anthology is essential. The personal essay is one of the most adaptable literary forms — it can carry intellectual content, autobiographical content, polemical content, and aesthetic content simultaneously, and it scales from 1,500 words to 15,000 without the form breaking. **For your operational practice (one finished piece per major node), the personal essay is probably the right default form.** Each piece should attempt one small thing: explain a concept by way of a memory, work through a problem by way of a place, examine an idea by way of a person. Don't try to write *Infinite Jest* yet. Write a 2,000-word essay about how you came to understand the diagonal lemma. Write a 3,000-word essay about a specific Lacan passage that confused you. Each piece is its own complete object and also a node in your eventual *oeuvre*.
+**Tips:** The Lopate anthology is essential. The personal essay is one of the most adaptable literary forms — it can carry intellectual content, autobiographical content, polemical content, and aesthetic content simultaneously, and it scales from short work to substantial essay without the form breaking. **For your operational practice, the personal essay is probably the right default form.** Each piece should attempt one small thing: explain a concept by way of a memory, work through a problem by way of a place, examine an idea by way of a person. Don't try to write *Infinite Jest* yet. Write a short essay about how you came to understand the diagonal lemma. Write a middle essay about a specific Lacan passage that confused you. Each piece is its own complete object and also a node in your eventual *oeuvre*.
 
 #### Long-form attempt
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **John Gardner, *The Art of Fiction*** | The right craft manual for novelists. |
 | **James Wood, *How Fiction Works*** | The right book on the technical resources of the novel. |
 | **E. M. Forster, *Aspects of the Novel*** | The classical. Slim, brilliant. |
 | **Milan Kundera, *The Art of the Novel*** | The novelist-philosopher's account. |
 
-**Tips:** Don't even open these for at least 2 years. Long-form attempts are the trap that destroys most aspiring writers — they begin with novel-length ambition before they have sentence-level competence, produce 50 pages of unrevisable mess, and conclude that they're not really writers. **The right discipline is to forbid yourself from any project longer than 5,000 words for the first 2 years**, and to require five completed short pieces before any sixth is allowed to grow longer. After 2 years of this practice, with somewhere between 15 and 30 finished pieces, the question of whether to attempt a novel becomes a real question rather than a fantasy. Then read these books.
+**Tips:** These books are most useful once you have a body of short-form work behind you. Premature engagement risks frustration. Long-form attempts are the trap that destroys most aspiring writers — they begin with novel-length ambition before they have sentence-level competence, produce 50 pages of unrevisable mess, and conclude that they're not really writers. **Resist long-form attempts until you have a body of completed short work behind you — perhaps a year or two of practice, perhaps more.**, and to require five completed short pieces before any sixth is allowed to grow longer. After 2 years of this practice, with somewhere between 15 and 30 finished pieces, the question of whether to attempt a novel becomes a real question rather than a fantasy. Then read these books.
 
 ### CROSS — Anti-Disciplinary Canon
 
@@ -2293,7 +2365,7 @@ These are the books that don't fit anywhere because they fit everywhere. They ar
 #### Hofstadter, *Gödel, Escher, Bach*
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Douglas Hofstadter, *Gödel, Escher, Bach: An Eternal Golden Braid*** | **The book.** |
 | **Hofstadter, *I Am a Strange Loop*** | The 30-years-later distillation. |
 | **Hofstadter, *Le Ton beau de Marot*** | The book on translation, language, and cognition. |
@@ -2312,7 +2384,7 @@ These are the books that don't fit anywhere because they fit everywhere. They ar
 #### Bateson
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Gregory Bateson, *Steps to an Ecology of Mind*** | The major essay collection. |
 | **Bateson, *Mind and Nature: A Necessary Unity*** | The mature systematic statement. |
 | **Mary Catherine Bateson, *With a Daughter's Eye*** | The biography by his daughter. Affecting and useful. |
@@ -2323,7 +2395,7 @@ These are the books that don't fit anywhere because they fit everywhere. They ar
 #### Borges as philosophy
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Jorge Luis Borges, *Ficciones* + *El Aleph*** | The fictions. Read here as philosophy. |
 | **Borges, *Other Inquisitions*** | The essays. Indispensable. |
 | **Borges, *Selected Non-Fictions*** (Penguin, ed. Weinberger) | The right anthology of essays in English. |
@@ -2334,7 +2406,7 @@ These are the books that don't fit anywhere because they fit everywhere. They ar
 #### Calvino
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Italo Calvino, *Cosmicomics*** | Mathematics and physics as fiction. |
 | **Calvino, *If on a winter's night a traveler*** | The recursive metafiction. |
 | **Calvino, *Invisible Cities*** | The catalogue. |
@@ -2346,7 +2418,7 @@ These are the books that don't fit anywhere because they fit everywhere. They ar
 #### Deleuze & Guattari
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Gilles Deleuze & Félix Guattari, *A Thousand Plateaus*** | The book. Use carefully. |
 | **Deleuze & Guattari, *Anti-Oedipus*** | The earlier volume. |
 | **Brian Massumi, *A User's Guide to Capitalism and Schizophrenia*** | The right reader's guide. |
@@ -2357,7 +2429,7 @@ These are the books that don't fit anywhere because they fit everywhere. They ar
 #### Wiener, *The Human Use of Human Beings*
 
 | Resource | Notes |
-|||
+| :--- | :--- |
 | **Norbert Wiener, *The Human Use of Human Beings*** | The book. |
 | **Wiener, *God and Golem, Inc.*** | The late, prophetic, unsettling little book. |
 | **Flo Conway & Jim Siegelman, *Dark Hero of the Information Age*** | The biography. |
@@ -2378,7 +2450,7 @@ There are perhaps a dozen documents in the entire history of thought that reward
 
 At some point — probably 4 or 5 years into the work — you will have something to say. The essay you should write at that moment is your version of the question this whole roadmap is organized around: **the limits of formal expression and what lies beyond them**.
 
-This essay should be long (15,000–25,000 words), should engage seriously with at least the Gödel pivot, the language-philosophical work, the philosophy of mind material, and the cybernetics-systems-theory work, and should be **a piece you would publish under your own name**. It does not need to be original in the technical-publication sense; it needs to be honest, careful, integrative, and yours. Many of the most important essays in 20th-century thought (Quine's *Two Dogmas*, Davidson's *Truth and Meaning*, Wallace's *E Unibus Pluram*) are essays of this kind — they don't introduce new technical results but rather organize a body of existing knowledge into a viewpoint that didn't previously exist as such.
+This essay should be long, should engage seriously with at least the Gödel pivot, the language-philosophical work, the philosophy of mind material, and the cybernetics-systems-theory work, and should be **a piece you would publish under your own name**. It does not need to be original in the technical-publication sense; it needs to be honest, careful, integrative, and yours. Many of the most important essays in 20th-century thought (Quine's *Two Dogmas*, Davidson's *Truth and Meaning*, Wallace's *E Unibus Pluram*) are essays of this kind — they don't introduce new technical results but rather organize a body of existing knowledge into a viewpoint that didn't previously exist as such.
 
 This essay is the canopy artifact. It should sit at the apex of the entire 5–10 year project.
 
@@ -2387,7 +2459,7 @@ This essay is the canopy artifact. It should sit at the apex of the entire 5–1
 The right second canopy artifact is a project that cannot be classified as belonging to any single trunk. Several possibilities, listed not as recommendations but as illustrations of the type:
 
 | Possibility | Description |
-|||
+| :--- | :--- |
 | **A verified small theorem-prover, with a philosophical commentary** | The technical artifact (Trunks 1.3 + 1.4) plus the philosophical analysis (Trunks 4.4 + 4.6) of what it means to verify reasoning by mechanical means. |
 | **A Lacanian reading of the incompleteness theorems** | A genuinely strange but intellectually serious project that brings Trunks 1.2 and 6.2 into direct contact, and could only be done by someone with both technical competence and Lacanian fluency. |
 | **A novella whose form is mathematical** | The Perec/Calvino tradition (Trunk 7's formal-constraint models) applied to your own material. The narrative could be structured as a category-theoretic diagram, as a probability distribution, as a proof tree. |
@@ -2398,7 +2470,7 @@ The point is not to choose one of these but to recognize that **at the convergen
 
 #### Map Day, forever
 
-The monthly Map Day from META should never stop. It is the practice that prevents fragmentation and is itself the canopy in slow motion. Each Map Day produces a 1,000-word memo on a connection you have noticed; over ten years, you will have 120 such memos. **That archive is the structural backbone of your eventual life's work**, whatever specific form that work takes. Many people produce books that have less synthetic intelligence than what you will have produced as private memos.
+The monthly Map Day from META should never stop. It is the practice that prevents fragmentation and is itself the canopy in slow motion. Each Map Day produces a short memo on a connection you have noticed; over a decade these accumulate into a substantial archive — your intellectual autobiography. **That archive is the structural backbone of your eventual life's work**, whatever specific form that work takes. Many people produce books that have less synthetic intelligence than what you will have produced as private memos.
 
 #### The unfinishable
 
@@ -2414,7 +2486,7 @@ The roadmap and its companion documents cover the core architecture. This docume
 
 These are the most common failure modes for ambitious self-directed intellectual projects. Knowing them in advance is most of the defense.
 
-**The Premature Synthesis Trap.** You will be tempted, around year 1–2, to begin writing your magnum opus — the great synthesis essay or book that ties everything together. Resist this for at least 4 years. Premature synthesis produces the kind of cross-disciplinary essay that experts in each domain politely ignore because the connections are superficial and the technical claims are wrong. The Map Day memos are the safety valve: they let you produce small synthetic artifacts continuously, which prevents the buildup of synthesis-pressure that would otherwise drive you to write something embarrassing.
+**The Premature Synthesis Trap.** You will be tempted, around year 1–2, to begin writing your magnum opus — the great synthesis essay or book that ties everything together. Resist this at first. Premature synthesis produces the kind of cross-disciplinary essay that experts in each domain politely ignore because the connections are superficial and the technical claims are wrong. The Map Day memos are the safety valve: they let you produce small synthetic artifacts continuously, which prevents the buildup of synthesis-pressure that would otherwise drive you to write something embarrassing.
 
 **The Library-Building Trap.** You will accumulate books faster than you read them. At some point your unread shelf will be 4× larger than your read shelf. This is fine if it is buying books faster than reading them; it is fatal if it is *substituting for reading them*. The diagnostic question is: when you sit down to read, do you read the books you have, or do you research which books to buy next? If the latter, stop buying for six months.
 
@@ -2430,7 +2502,7 @@ These are the most common failure modes for ambitious self-directed intellectual
 
 **The Burnout Cycle.** Many self-learners alternate between intense bursts (10 hours a day for two weeks) and complete collapse (nothing for two months). This cycle produces less total work than a steady 2–4 hours per day. The cure is **enforced consistency**: do less than you feel capable of on the good days, so that you can still do something on the bad days. The roadmap is a 5–10 year project, not a 6 month sprint.
 
-**The Comparison Spiral.** You will, occasionally, encounter someone online or in person who appears to know more than you, who seems to have read everything, who can answer questions you cannot answer. This will produce a spiral of inadequacy that ends with you abandoning the roadmap to study what they have studied. **Resist this absolutely.** The roadmap is not in competition with anyone. The depth of *your* knowledge is the only relevant measure, and it is private.
+**The Comparison Spiral.** You will, occasionally, encounter someone online or in person who appears to know more than you, who seems to have read everything, who can answer questions you cannot answer. This will produce a spiral of inadequacy that ends with you abandoning the roadmap to study what they have studied. **Notice the spiral; the depth of your understanding is the only relevant measure.** The roadmap is not in competition with anyone. The depth of *your* knowledge is the only relevant measure, and it is private.
 
 ### Subject-Specific Tips That Belong Nowhere Else
 
@@ -2526,7 +2598,7 @@ A: One day is fine. Three days is a pattern to notice. A week is a signal that s
 
 **Q: How do I balance the trunks?**
 
-A: The four-track structure is the answer. Track 1 (technical primary) gets ~50% of your time. Track 2 (philosophical/humanistic) gets ~25%. Track 3 (flexible) gets ~15%. Track 4 (writing) gets ~10%. These are rough; adjust to your week's energy.
+A: The four-track structure is the answer. Most of your time will go to a primary technical focus, with consistent secondary engagement in philosophy and writing. Exact proportions don't matter. These are rough; adjust to your week's energy.
 
 **Q: When should I switch tracks?**
 
@@ -2562,7 +2634,7 @@ A: This is a legitimate choice but it is not the roadmap. The roadmap explicitly
 
 **Q: How do I handle the writing practice if I have never written seriously before?**
 
-A: Start with very short pieces (500 words). Treat the first ten as exercises rather than products. Read Klinkenborg before any other writing book; his sentence-as-unit approach is the right entry for someone with ADHD or with no formal writing training. Do not show your early pieces to anyone; the audience for the first 30 pieces is yourself in five years.
+A: Start with very short pieces. Treat the first ten as exercises rather than products. Read Klinkenborg before any other writing book; his sentence-as-unit approach is the right entry for someone with ADHD or with no formal writing training. Do not show your early pieces to anyone; the audience for the first 30 pieces is yourself in five years.
 
 **Q: How do I know when a piece is "finished"?**
 
@@ -2586,7 +2658,7 @@ Some valuable information that has no natural home elsewhere.
 
 **The most underused tool for systematic reading is a simple plain-text file called `current.md`** that you maintain at the top of your notes folder. It contains: today's date, your three current tracks, the current chapter or section in each track, the current writing project, and a single sentence about your most recent Map Day insight. Update it daily. It takes 30 seconds and dramatically reduces the disorientation that accumulates across a long project.
 
-**The most underused practice for memory consolidation is teaching.** When you finish a subject, write a 1,500-word explanation of its central result aimed at a hypothetical past version of yourself who did not yet understand it. The act of teaching converts passive understanding into active understanding more reliably than any other practice except formalization.
+**The most underused practice for memory consolidation is teaching.** When you finish a subject, write a short explanation of its central result aimed at a hypothetical past version of yourself who did not yet understand it. The act of teaching converts passive understanding into active understanding more reliably than any other practice except formalization.
 
 **The single piece of equipment most worth investing in is a high-quality second monitor.** A 27-inch monitor next to your laptop changes the practical experience of reading PDFs while working with Lean, of taking notes while watching lectures, of consulting Mathlib while writing your own proofs. This is the rare case where hardware genuinely improves intellectual work.
 

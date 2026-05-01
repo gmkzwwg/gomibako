@@ -27,3 +27,12 @@ Disallow: /
 
 User-agent: PerplexityBot
 Disallow: /
+
+User-agent: *
+Disallow: /catelog/
+Disallow: /n.AI.and.Sociology/
+Disallow: /n.Classical.Sociology/
+Disallow: /n.International.Information.Warfare/
+Disallow: /n.International.Political.Economy/
+Disallow: /n.Japanese-Style.Capitalism/
+

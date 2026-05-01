@@ -1,25 +1,31 @@
+{% if page.toc != nil %}
+{% assign resolved_toc_mode = page.toc %}
+{% else %}
+{% assign resolved_toc_mode = site.ui.toc.mode %}
+{% endif %}
+
 {% case page.layout %}
 {% when "collection" %}
 {% assign layout_name = "collection mode" %}
-{% assign show_toc_mode = page.toc | default: false %}
+{% assign show_toc_mode = resolved_toc_mode | default: false %}
 {% when "index" %}
 {% assign layout_name = "index mode" %}
-{% assign show_toc_mode = page.toc | default: false %}
+{% assign show_toc_mode = resolved_toc_mode | default: false %}
 {% when "post-bilingual" %}
 {% assign layout_name = "bilingual mode" %}
-{% assign show_toc_mode = page.toc | default: "list" %}
+{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
 {% when "post-compact" %}
 {% assign layout_name = "compact mode" %}
-{% assign show_toc_mode = page.toc | default: "list" %}
+{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
 {% when "post-parallel" %}
 {% assign layout_name = "parallel mode" %}
-{% assign show_toc_mode = page.toc | default: "list" %}
+{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
 {% when "post" %}
 {% assign layout_name = "post mode" %}
-{% assign show_toc_mode = page.toc | default: "list" %}
+{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
 {% when "post-list" %}
 {% assign layout_name = "post list mode" %}
-{% assign show_toc_mode = page.toc | default: false %}
+{% assign show_toc_mode = resolved_toc_mode | default: false %}
 {% when "slide-annotation" %}
 {% assign layout_name = "annotation mode" %}
 {% assign show_toc_mode = false %}
@@ -40,7 +46,7 @@
 {% assign show_toc_mode = false %}
 {% else %}
 {% assign layout_name = "chaos mode" %}
-{% assign show_toc_mode = page.toc | default: false %}
+{% assign show_toc_mode = false %}
 {% endcase %}
 
 {% assign mode_label = layout_name | default: false %}

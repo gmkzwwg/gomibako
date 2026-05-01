@@ -93,7 +93,7 @@ ui:                                                            # Group all theme
 
   toc:                                                         # Group default table-of-contents behavior.
     enabled               : true                              # Enable or disable table of contents globally. Boolean.
-    style                 : "chart"                           # Set the default TOC style. candidates: false | chart | compact | list
+    mode                  : "chart"                           # Set the default TOC style. candidates: false | chart | compact | list
     before_content        : false                             # Place the TOC before the main content when enabled. Boolean.
     depth                 : 4                                 # Set the maximum heading depth included in the TOC.
 

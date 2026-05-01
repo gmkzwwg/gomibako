@@ -16,6 +16,7 @@
     widgetPosition: { right: 20, bottom: 20 },
     widgetSize: { width: 260, mapHeight: 120 },
     mapMajorGap: 34,
+    wikiMaxEntriesPerRow: 3,
     opacityIdle: 0.2,
     opacityHover: 0.7,
     mobileBreakpoint: 768,
@@ -46,7 +47,8 @@
     dom: {},
     drag: null,
     originalHTML: '',
-    customIndexPosition: false
+    customIndexPosition: false,
+    resizeTimer: null
   };
 
   function deepClone(obj) {
@@ -80,6 +82,14 @@
     const bottom = Number(obj.bottom || 0);
     const left = Number(obj.left || 0);
     return top + 'px ' + right + 'px ' + bottom + 'px ' + left + 'px';
+  }
+
+  function getWikiMaxEntriesPerRow(count) {
+    const raw = Number(state.config.wikiMaxEntriesPerRow);
+    const max = Number.isFinite(raw) ? Math.floor(raw) : CONFIG.wikiMaxEntriesPerRow;
+    const safeMax = Math.max(1, max || CONFIG.wikiMaxEntriesPerRow);
+    if (!count) return safeMax;
+    return Math.max(1, Math.min(safeMax, count));
   }
 
   function getEffectiveIndexPageConfig() {
@@ -261,10 +271,16 @@
       }
       .jsd-tree-index-sublist {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+        grid-template-columns: repeat(var(--jsd-tree-wiki-entry-cols, ${getWikiMaxEntriesPerRow(0)}), minmax(0, 1fr));
         gap: 0.35em 0.9em;
         padding-left: 1.25em;
         align-items: start;
+      }
+      @media (max-width: ${state.config.mobileBreakpoint}px) {
+        .jsd-tree-index-sublist {
+          grid-template-columns: 1fr;
+          padding-left: 0;
+        }
       }
       .jsd-tree-index-sub-button {
         line-height: 1.35;
@@ -500,6 +516,7 @@
 
       const subList = document.createElement('div');
       subList.className = 'jsd-tree-index-sublist';
+      subList.style.setProperty('--jsd-tree-wiki-entry-cols', String(getWikiMaxEntriesPerRow(major.subs.length)));
       major.subs.forEach(function (sub, subIndex) {
         const subbutton = document.createElement('button');
         subbutton.type = 'button';
@@ -537,6 +554,8 @@
       const group = document.createElementNS(svgNS, 'g');
       group.setAttribute('role', 'button');
       group.setAttribute('tabindex', '0');
+      group.setAttribute('data-major-index', String(majorIndex));
+      group.setAttribute('data-sub-index', String(subIndex));
       group.setAttribute('aria-label', (state.data.majors[majorIndex].title || 'Section') + ' - ' + (state.data.majors[majorIndex].subs[subIndex].title || 'Slide'));
       group.style.cursor = 'pointer';
 
@@ -564,16 +583,6 @@
       }
       circle.setAttribute('opacity', isCurrent ? '1' : '0.8');
       group.appendChild(circle);
-
-      group.addEventListener('click', function () {
-        goToContent(majorIndex, subIndex);
-      });
-      group.addEventListener('keydown', function (event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          goToContent(majorIndex, subIndex);
-        }
-      });
 
       return group;
     }
@@ -624,6 +633,37 @@
       const nextTop = Math.max(0, Math.min(maxScroll, targetY - visibleHeight / 2));
       map.scrollTop = nextTop;
     }
+  }
+
+  function findMapNode(target) {
+    let node = target;
+    while (node && node !== state.dom.map) {
+      if (node.getAttribute && node.getAttribute('data-major-index') !== null && node.getAttribute('data-sub-index') !== null) {
+        return node;
+      }
+      node = node.parentNode;
+    }
+    return null;
+  }
+
+  function activateMapNode(node) {
+    if (!node) return;
+    const majorIndex = Number(node.getAttribute('data-major-index'));
+    const subIndex = Number(node.getAttribute('data-sub-index'));
+    if (!Number.isFinite(majorIndex) || !Number.isFinite(subIndex)) return;
+    goToContent(majorIndex, subIndex);
+  }
+
+  function onMapClick(event) {
+    activateMapNode(findMapNode(event.target));
+  }
+
+  function onMapKeyDown(event) {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const node = findMapNode(event.target);
+    if (!node) return;
+    event.preventDefault();
+    activateMapNode(node);
   }
 
   function renderWidgetTitle(slide) {
@@ -753,6 +793,8 @@
 
     const map = document.createElement('div');
     map.className = 'jsd-tree-map';
+    map.addEventListener('click', onMapClick);
+    map.addEventListener('keydown', onMapKeyDown);
 
     const buttons = document.createElement('div');
     buttons.className = 'jsd-tree-buttons';
@@ -825,6 +867,8 @@
   }
 
   function cleanupDOM() {
+    clearTimeout(state.resizeTimer);
+    state.resizeTimer = null;
     window.removeEventListener('keydown', onKeyDown);
     window.removeEventListener('pointermove', duringDrag);
     window.removeEventListener('pointerup', endDrag);
@@ -907,8 +951,12 @@
     rebuild();
     window.addEventListener('resize', function () {
       if (!state.data) return;
-      injectStyle();
-      render();
+      clearTimeout(state.resizeTimer);
+      state.resizeTimer = setTimeout(function () {
+        if (!state.data) return;
+        injectStyle();
+        render();
+      }, 120);
     });
   }
 
