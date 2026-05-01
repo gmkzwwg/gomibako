@@ -1,7 +1,7 @@
 ---
 title: Introduction to Analytic Philosophy
 categories: Notes
-subclass: Basics
+subclass: Analytic-Philosophy
 ---
 
 ## Modern Analytic Philosophy: Emergence, Themes, and Methodological Foundations
