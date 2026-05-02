@@ -161,6 +161,13 @@
         width: 100%;
         min-height: inherit;
       }
+      .jsd-slide-top-anchor {
+        display: block;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        scroll-margin-top: 0px;
+      }
       .jsd-heading {
         display: block;
         width: 100%;
@@ -575,6 +582,30 @@
     return classes[Math.floor(Math.random() * classes.length)];
   }
 
+  function ensureTopAnchor() {
+    if (!state.dom.root) return null;
+    const anchor = document.createElement('span');
+    anchor.className = 'jsd-slide-top-anchor';
+    anchor.setAttribute('aria-hidden', 'true');
+    anchor.tabIndex = -1;
+    state.dom.root.appendChild(anchor);
+    state.dom.topAnchor = anchor;
+    return anchor;
+  }
+
+  function scrollToPageTop() {
+    window.requestAnimationFrame(function () {
+      const anchor = state.dom.topAnchor || (state.dom.root ? state.dom.root.querySelector('.jsd-slide-top-anchor') : null);
+      if (!anchor) return;
+      try {
+        anchor.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'auto' });
+      } catch (e) {
+        const top = anchor.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo(0, Math.max(0, top));
+      }
+    });
+  }
+
   function renderIndexBody(body) {
     const list = document.createElement('div');
     list.className = 'jsd-index-list';
@@ -605,6 +636,7 @@
       button.appendChild(title);
       button.addEventListener('click', function () {
         goTo(index);
+        scrollToPageTop();
       });
 
       item.appendChild(button);
@@ -619,6 +651,7 @@
     if (!slide || !state.dom.root) return;
 
     state.dom.root.innerHTML = '';
+    ensureTopAnchor();
 
     const showHeading = slide.type === 'index'
       ? Boolean((slide.heading || '').trim())

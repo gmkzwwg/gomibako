@@ -1,5 +1,5 @@
 ---
-title: Mathematics - Its Roadmap and Knowledge Architecture
+title: Mathematics - A Systematic Roadmap
 categories: Atlas
 subclass: Basics
 ---

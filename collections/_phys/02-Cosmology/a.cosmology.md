@@ -1,5 +1,5 @@
 ---
-title: Cosmology - Its Roadmap and Knowledge Architecture
+title: Cosmology - A Systematic Roadmap
 categories: Atlas
 subclass: Basics
 ---

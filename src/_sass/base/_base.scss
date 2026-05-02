@@ -165,6 +165,7 @@ a:hover {
   cursor: $cursor-green-pointer;
   @include text_blink;
 }
+
 img {
   width: auto;
   max-width: 96%;

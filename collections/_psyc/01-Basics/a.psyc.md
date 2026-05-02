@@ -1,5 +1,5 @@
 ---
-title: Psychology - Its Roadmap and Knowledge Architecture
+title: Psychology - A Systematic Roadmap
 categories: Atlas
 subclass: Basics
 ---

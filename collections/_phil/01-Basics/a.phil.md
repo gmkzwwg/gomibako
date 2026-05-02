@@ -1,5 +1,5 @@
 ---
-title: Western Philosophy - Its Roadmap and Knowledge Architecture
+title: Western Philosophy - A Systematic Roadmap
 layout: post-bilingual
 categories: Atlas
 subclass: Basics

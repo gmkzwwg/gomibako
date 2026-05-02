@@ -1,5 +1,5 @@
 ---
-title: Linguistics - Its Roadmap and Knowledge Architecture
+title: Linguistics - A Systematic Roadmap
 categories: Atlas
 subclass: Linguistics
 ---

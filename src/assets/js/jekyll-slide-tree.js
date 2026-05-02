@@ -117,6 +117,13 @@
         width: 100%;
         min-height: inherit;
       }
+      .jsd-slide-top-anchor {
+        display: block;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        scroll-margin-top: 0px;
+      }
       .jsd-heading {
         display: block;
         width: 100%;
@@ -497,6 +504,30 @@
     while (el.firstChild) el.removeChild(el.firstChild);
   }
 
+  function ensureTopAnchor() {
+    if (!state.dom.root) return null;
+    const anchor = document.createElement('span');
+    anchor.className = 'jsd-slide-top-anchor';
+    anchor.setAttribute('aria-hidden', 'true');
+    anchor.tabIndex = -1;
+    state.dom.root.appendChild(anchor);
+    state.dom.topAnchor = anchor;
+    return anchor;
+  }
+
+  function scrollToPageTop() {
+    window.requestAnimationFrame(function () {
+      const anchor = state.dom.topAnchor || (state.dom.root ? state.dom.root.querySelector('.jsd-slide-top-anchor') : null);
+      if (!anchor) return;
+      try {
+        anchor.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'auto' });
+      } catch (e) {
+        const top = anchor.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo(0, Math.max(0, top));
+      }
+    });
+  }
+
   function renderIndexBody() {
     const wrap = document.createElement('div');
     wrap.className = 'jsd-tree-index';
@@ -511,6 +542,7 @@
       majorbutton.textContent = major.title || 'Untitled';
       majorbutton.addEventListener('click', function () {
         goToContent(majorIndex, 0);
+        scrollToPageTop();
       });
       majorBlock.appendChild(majorbutton);
 
@@ -524,6 +556,7 @@
         subbutton.textContent = sub.title || 'Untitled';
         subbutton.addEventListener('click', function () {
           goToContent(majorIndex, subIndex);
+          scrollToPageTop();
         });
         subList.appendChild(subbutton);
       });
@@ -682,6 +715,7 @@
 
     const slide = getCurrentSlide();
     clearElement(state.dom.root);
+    ensureTopAnchor();
 
     if (slide.type !== 'index' || slide.heading) {
       state.dom.heading.textContent = slide.heading || '';

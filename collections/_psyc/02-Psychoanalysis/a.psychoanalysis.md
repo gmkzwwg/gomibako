@@ -1,5 +1,5 @@
 ---
-title: Psychoanalysis - Its Roadmap and Knowledge Architecture
+title: Psychoanalysis - A Systematic Roadmap
 categories: Atlas
 subclass: Psychoanalysis
 ---
