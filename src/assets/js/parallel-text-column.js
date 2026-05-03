@@ -1,295 +1,237 @@
 /*!
- * parallel-text-columns.js
+ * parallel-text-columnsjs
  *
- * 功能概述
- * -----------
- * 本脚本用于把 Markdown / Jekyll 页面中的正文内容，按“正文块 + 后续 blockquote”的规则，
- * 自动重组为 1-n 栏并列显示的紧凑布局，适合原文 / 译文 / 注释对照阅读。
+ * Introduction:
+ *   Rebuilds Markdown/Jekyll content into compact parallel text rows: one body block plus
+ *   following blockquotes becomes a multi-column comparison row. Consecutive generated rows
+ *   can be separated by a compact <hr> helper line.
  *
- * 已实现规则
- * -----------
- * 1. 正文块识别规则
- *    - 默认把 p / ul / ol / dl 识别为正文块起点。
- *    - 若某个段落 p 后紧跟列表 ul / ol / dl，则这些列表并入该段落，视为同一个正文块。
- *    - 若某处只有列表，则该列表（以及连续同级列表）视为一个正文块。
+ * Usage:
+ *   1) Plug-and-play: include this file after the target content or anywhere in the page;
+ *      it auto-initializes after DOMContentLoaded.
+ *   2) Customize by editing DEFAULT_CONFIG at the top of this file.
+ *   3) Customize at runtime with window.parallelTextColumns.updateConfig({...}).
+ *   4) Optional pre-load config: window.ParallelTextColumnsConfig = {...} before this file.
  *
- * 2. blockquote 并列规则
- *    - 若正文块后没有 blockquote，则该正文块独占一列。
- *    - 若正文块后紧跟 n 个 blockquote，则“正文块 + n 个 blockquote”并列显示为 n+1 列。
- *    - 适用于例如：
- *      正文中文 + blockquote 英文 + blockquote 法文
- *      正文中文 + blockquote 英文 + blockquote 重点词汇
+ * Global API:
+ *   parallelTextColumns.init(options)
+ *   parallelTextColumns.updateConfig(options, runtimeOptions)
+ *   parallelTextColumns.enable(target?)
+ *   parallelTextColumns.disable(target?)
+ *   parallelTextColumns.toggle(target?)
+ *   parallelTextColumns.refresh(target?)
+ *   parallelTextColumns.destroy(target?)
+ *   parallelTextColumns.bindToggleButton(buttonTarget, containerTarget?)
+ *   parallelTextColumns.setFontSize(fontSize, target?)
+ *   parallelTextColumns.setVerticalAlign(verticalAlign, target?)
+ *   parallelTextColumns.setColumnRatios(columnRatios, target?)
+ *   parallelTextColumns.setCompactText(compactText, target?)
+ *   parallelTextColumns.setBlockSpacing(blockSpacing, target?)
+ *   parallelTextColumns.getConfig()
  *
- * 3. 表格跳过规则
- *    - table 不参与并列处理。
- *    - table 后连续的 blockquote 也不参与并列处理，保持原样。
- *
- * 4. 分割线规则
- *    - 各列之间显示淡色、点状（dotline）分割线。
- *    - 分割线基于整节（整行）定位，高度按该节最高列计算，
- *      不再依赖某一栏自身高度。
- *
- * 5. 紧凑排版规则
- *    - 可统一设置正文、列表、blockquote 的字体大小。
- *    - 默认统一字号为 15px。
- *    - 统一字号只作用于：
- *        p / ul / ol / dl / li / blockquote
- *      不作用于：
- *        h1-h6 标题
- *    - 可选紧凑模式：
- *      去除上述正文、列表、blockquote 的 margin / padding / border，
- *      以得到更紧凑的对照布局。
- *
- * 6. 垂直对齐规则
- *    - 各列内容默认顶部对齐。
- *    - 可选把各栏内容在本节内部上下居中显示。
- *
- * 7. 响应式规则
- *    - 宽屏下按多列并列显示。
- *    - 窄屏下自动改为单列堆叠显示。
- *    - 窄屏下列间纵向分割线会自动变成横向分隔线。
- *
- * 可直接调用的方法
- * -----------------
- * 1. 初始化
- *    parallelTextColumns.init(options)
- *    - 初始化并扫描目标容器。
- *    - 若 autoEnable = true，则初始化后自动启用并列布局。
- *
- * 2. 启用并列布局
- *    parallelTextColumns.enable(target?)
- *    - 对指定容器或默认容器启用并列布局。
- *
- * 3. 恢复正常布局
- *    parallelTextColumns.disable(target?)
- *    - 取消并列布局，恢复原始文档顺序。
- *
- * 4. 切换布局
- *    parallelTextColumns.toggle(target?)
- *    - 在并列布局与正常布局之间切换。
- *
- * 5. 重新扫描并重建
- *    parallelTextColumns.refresh(target?)
- *    - 适用于页面内容动态变更后重新构建布局。
- *
- * 6. 绑定按钮切换
- *    parallelTextColumns.bindToggleButton(buttonTarget, containerTarget?)
- *    - 将按钮点击事件绑定为布局切换。
- *
- * 7. 动态设置字号
- *    parallelTextColumns.setFontSize(fontSize, target?)
- *    - 动态修改正文 / 列表 / blockquote 的统一字号。
- *
- * 8. 动态设置垂直对齐
- *    parallelTextColumns.setVerticalAlign(verticalAlign, target?)
- *    - 动态修改各栏内容上下对齐方式。
- *
- * 9. 动态设置列宽比例
- *    parallelTextColumns.setColumnRatios(columnRatios, target?)
- *    - 动态修改不同列数情况下的默认列宽比例。
- *
- * 10. 动态设置紧凑模式
- *    parallelTextColumns.setCompactText(compactText, target?)
- *    - 动态开启或关闭紧凑排版。
- *
- * 可定制参数
- * ----------
- * 以下参数可在 parallelTextColumns.init({...}) 中传入：
- *
- * 1. selectors
- *    类型：string[]
- *    默认：['.post-content', '.page-content', '.post-body', 'article .content', '.markdown-body']
- *    作用：指定需要扫描并处理的正文容器选择器。
- *
- * 2. autoEnable
- *    类型：boolean
- *    默认：true
- *    作用：初始化后是否自动启用并列布局。
- *
- * 3. includeHeadings
- *    类型：boolean
- *    默认：false
- *    作用：是否允许标题 h1-h6 参与“正文块”识别与并列布局。
- *    注意：即使开启，也不会自动修改标题字号。
- *
- * 4. skipSelectors
- *    类型：string[]
- *    默认：['table']
- *    作用：指定需要跳过并列处理的元素选择器。
- *    例如可扩展为 ['table', '.table-wrapper']。
- *
- * 5. bodyTags
- *    类型：string[]
- *    默认：['P', 'UL', 'OL', 'DL']
- *    作用：定义哪些标签可作为正文块起点。
- *
- * 6. headingTags
- *    类型：string[]
- *    默认：['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
- *    作用：在 includeHeadings = true 时，定义哪些标题标签参与布局。
- *
- * 7. fontSize
- *    类型：string | number
- *    默认：'15px'
- *    作用：统一设置 p / ul / ol / dl / li / blockquote 的字号。
- *    示例：15, '15px', '0.95rem'
- *
- * 8. compactText
- *    类型：boolean
- *    默认：true
- *    作用：是否启用紧凑模式。
- *    开启后会去掉正文、列表、blockquote 的 margin / padding / border。
- *
- * 9. verticalAlign
- *    类型：string
- *    默认：'start'
- *    可选值：'start' | 'center' | 'end'
- *    作用：控制各栏内容在本节内部的垂直对齐方式。
- *    - start  = 顶部对齐
- *    - center = 上下居中
- *    - end    = 底部对齐
- *
- * 10. columnGap
- *     类型：string | number
- *     默认：'0.85rem'
- *     作用：控制列与列之间的距离。
- *
- * 11. dividerInset
- *     类型：string | number
- *     默认：'0.1rem'
- *     作用：控制分割线距离本节顶部和底部的内缩量。
- *     数值越大，分割线越短。
- *
- * 12. dividerThickness
- *     类型：string | number
- *     默认：'1px'
- *     作用：控制分割线粗细。
- *
- * 13. columnRatios
- *     类型：object
- *     默认：
- *     {
- *       1: [1],
- *       2: [1, 1],
- *       3: [1, 1, 1],
- *       default: [1, 1, 1]
- *     }
- *     作用：按“列数”定义各栏默认宽度比例。
- *     示例：
- *     {
- *       2: [1.3, 1],
- *       3: [1.5, 1, 1],
- *       default: [1, 1, 1]
- *     }
- *
- * 14.  blockSpacing
- * “块之间的距离”控制的是正文容器里相邻直接子块的距离，所以会统一作用于：
- * 并列后的 ptc-row；未处理的 table；标题；其他直接子元素
- *
- *
- *
- * 使用示例
- * --------
- * parallelTextColumns.init({
- *   selectors: ['.post-content'],
- *   fontSize: '15px',
- *   compactText: true,
- *   verticalAlign: 'center',
- *   columnGap: '0.85rem',
- *   dividerInset: '0.1rem',
- *   dividerThickness: '1px',
- *   columnRatios: {
- *     2: [1.3, 1],
- *     3: [1.5, 1, 1],
- *     default: [1, 1, 1]
- *   }
- * });
- *
- * 备注
- * ----
- * - 本脚本按“正文容器的直接子元素”进行扫描与重组，不递归处理更深层级容器。
- * - 若页面内容由前端异步插入，应在插入完成后调用 refresh()。
- * - 若主题样式对列表、blockquote 有额外强覆盖，可能仍需少量 CSS 微调。
+ * Notes:
+ *   - The script scans direct child elements of each configured content container.
+ *   - Tables and their immediately following blockquotes are skipped by default.
+ *   - The layout uses CSS Grid; unsupported browsers degrade to normal block flow.
+ *   - For strict CSP, pass styleNonce or set injectStyle:false and load the CSS file manually.
+ *   - For SSR/hydrated apps, load this after framework hydration or target static content only.
  */
 
-(function () {
-  "use strict";
-  var STYLE_ID = "parallel-text-columns-style";
-  var ROW_CLASS = "ptc-row";
-  var COL_CLASS = "ptc-col";
-  var DIVIDER_CLASS = "ptc-divider";
-  var SCOPE_CLASS = "ptc-scope";
-  var PROCESSED_ATTR = "data-ptc-enabled";
-  var defaultOptions = {
-    selectors: [
-      ".post-content",
-      ".page-content",
-      ".post-body",
-      "article .content",
-      ".markdown-body",
-    ],
+(function (win, doc) {
+  'use strict';
+
+  var DEFAULT_CONFIG = {
+    selectors: ['.post-content', '.page-content', '.post-body', 'article .content', '.markdown-body'],
     autoEnable: true,
+    autoRefresh: false,
+    autoRefreshDelay: 80,
     includeHeadings: false,
-    skipSelectors: ["table"],
-    bodyTags: ["P", "UL", "OL", "DL"],
-    headingTags: ["H1", "H2", "H3", "H4", "H5", "H6"],
-    fontSize: "15px",
+    skipSelectors: ['table'],
+    bodyTags: ['P', 'UL', 'OL', 'DL'],
+    headingTags: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+    fontSize: '15px',
     compactText: true,
-    verticalAlign: "start",
-    columnGap: "0.85rem",
-    blockSpacing: "0.9rem",
-    dividerInset: "0.1rem",
-    dividerThickness: "1px",
+    verticalAlign: 'start',
+    columnGap: '0.85rem',
+    mobileColumnGap: '0.45rem',
+    blockSpacing: '0.9rem',
+    dividerInset: '0.1rem',
+    dividerThickness: '1px',
+    dividerOpacity: 0.24,
+    rowRuleEnabled: true,
+    rowRuleMargin: '0.22rem 0',
+    rowRuleThickness: '1px',
+    rowRuleOpacity: 0.24,
+    responsiveBreakpointPx: 900,
+    injectStyle: true,
+    styleId: 'parallel-text-columns-style',
+    styleNonce: '',
     columnRatios: {
       1: [1],
       2: [1.7, 1],
       3: [1.7, 1, 1.3],
-      default: [1.7, 1, 1.3],
-    },
+      default: [1.7, 1, 1.3]
+    }
   };
+
+  var CLASS = {
+    scope: 'ptc-scope',
+    row: 'ptc-row',
+    col: 'ptc-col',
+    divider: 'ptc-divider',
+    rowRule: 'ptc-row-rule'
+  };
+
+  var ATTR = {
+    enabled: 'data-ptc-enabled',
+    compact: 'data-ptc-compact',
+    cols: 'data-ptc-cols',
+    ratios: 'data-ptc-ratios'
+  };
+
   var state = {
+    initialized: false,
     options: null,
     containers: [],
     resizeBound: false,
+    resizeHandler: null,
+    loadHandler: null,
     resizeObserver: null,
+    mutationObserver: null,
+    styleId: null,
+    pendingRefresh: [],
+    pendingTimer: null
   };
-  function mergeOptions(userOptions) {
-    var merged = Object.assign({}, defaultOptions, userOptions || {});
-    merged.selectors = Array.isArray(merged.selectors)
-      ? merged.selectors.slice()
-      : [merged.selectors];
-    merged.skipSelectors = Array.isArray(merged.skipSelectors)
-      ? merged.skipSelectors.slice()
-      : [merged.skipSelectors];
-    merged.bodyTags = Array.isArray(merged.bodyTags)
-      ? merged.bodyTags.slice()
-      : [merged.bodyTags];
-    merged.headingTags = Array.isArray(merged.headingTags)
-      ? merged.headingTags.slice()
-      : [merged.headingTags];
-    merged.columnRatios = normalizeRatioMap(merged.columnRatios);
-    merged.fontSize = normalizeSize(merged.fontSize || "15px");
-    merged.columnGap = normalizeSize(merged.columnGap || "0.85rem");
-    merged.blockSpacing = normalizeSize(merged.blockSpacing || "0.9rem");
-    merged.dividerInset = normalizeSize(merged.dividerInset || "0.1rem");
-    merged.dividerThickness = normalizeSize(merged.dividerThickness || "1px");
-    merged.verticalAlign = normalizeVerticalAlign(merged.verticalAlign);
-    return merged;
+
+  /* Merge objects into a new object; parameters: one or more source objects. */
+  function mergeObjects() {
+    var out = {};
+    for (var i = 0; i < arguments.length; i += 1) {
+      var src = arguments[i];
+      if (!src) continue;
+      for (var key in src) {
+        if (Object.prototype.hasOwnProperty.call(src, key)) out[key] = src[key]; // Shallow merge is intentional.
+      }
+    }
+    return out;
   }
+
+  /* Convert array-like values to arrays; parameters: value. */
+  function toArray(value) {
+    return Array.prototype.slice.call(value || []);
+  }
+
+  /* Return whether a value is a DOM element; parameters: node. */
+  function isElement(node) {
+    return !!node && node.nodeType === 1;
+  }
+
+  /* Return a safe tag name; parameters: node. */
+  function tagName(node) {
+    return isElement(node) && node.tagName ? String(node.tagName).toUpperCase() : '';
+  }
+
+  /* Check for a CSS class without requiring classList; parameters: element, className. */
+  function hasClass(el, className) {
+    if (!isElement(el)) return false;
+    return (' ' + el.className + ' ').indexOf(' ' + className + ' ') !== -1;
+  }
+
+  /* Add a CSS class without requiring classList; parameters: element, className. */
+  function addClass(el, className) {
+    if (!isElement(el) || hasClass(el, className)) return;
+    el.className = el.className ? el.className + ' ' + className : className; // Preserve existing classes.
+  }
+
+  /* Remove a CSS class without requiring classList; parameters: element, className. */
+  function removeClass(el, className) {
+    if (!isElement(el)) return;
+    el.className = (' ' + el.className + ' ').replace(' ' + className + ' ', ' ').replace(/^\s+|\s+$/g, '');
+  }
+
+  /* Match an element against a selector with vendor fallbacks; parameters: element, selector. */
+  function matchesSelector(el, selector) {
+    if (!isElement(el) || !selector) return false;
+    var fn = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    if (!fn) return false;
+    try {
+      return !!fn.call(el, selector);
+    } catch (err) {
+      return false; // Invalid selectors are ignored.
+    }
+  }
+
+  /* Query descendants safely; parameters: root, selector. */
+  function safeQueryAll(root, selector) {
+    if (!root || !selector || !root.querySelectorAll) return [];
+    try {
+      return toArray(root.querySelectorAll(selector));
+    } catch (err) {
+      return []; // Invalid selectors should not break the page.
+    }
+  }
+
+  /* Normalize a value into a string array; parameters: value, fallback. */
+  function normalizeStringArray(value, fallback) {
+    var list = Array.isArray(value) ? value.slice() : [value];
+    var out = [];
+    for (var i = 0; i < list.length; i += 1) {
+      if (typeof list[i] === 'string' && list[i].replace(/^\s+|\s+$/g, '')) out.push(list[i].replace(/^\s+|\s+$/g, ''));
+    }
+    return out.length ? out : fallback.slice();
+  }
+
+  /* Normalize tag names into uppercase strings; parameters: value, fallback. */
+  function normalizeTagList(value, fallback) {
+    var list = normalizeStringArray(value, fallback);
+    for (var i = 0; i < list.length; i += 1) list[i] = list[i].toUpperCase(); // Tag matching uses uppercase names.
+    return list;
+  }
+
+  /* Normalize CSS size values; parameters: value, fallback. */
+  function normalizeSize(value, fallback) {
+    if (typeof value === 'number' && isFinite(value)) return value + 'px';
+    if (typeof value === 'string' && value.replace(/^\s+|\s+$/g, '')) return value.replace(/^\s+|\s+$/g, '');
+    return fallback;
+  }
+
+  /* Normalize opacity into 0-1 range; parameters: value, fallback. */
+  function normalizeOpacity(value, fallback) {
+    var n = Number(value);
+    if (!isFinite(n)) return fallback;
+    if (n < 0) return 0;
+    if (n > 1) return 1;
+    return n;
+  }
+
+  /* Normalize vertical alignment; parameters: value. */
+  function normalizeVerticalAlign(value) {
+    var v = String(value || 'start').replace(/^\s+|\s+$/g, '').toLowerCase();
+    if (v === 'center' || v === 'middle') return 'center';
+    if (v === 'end' || v === 'bottom' || v === 'flex-end') return 'flex-end';
+    return 'flex-start';
+  }
+
+  /* Sanitize ratio arrays; parameters: list. */
+  function sanitizeRatios(list) {
+    var out = [];
+    if (!Array.isArray(list) || !list.length) return [1];
+    for (var i = 0; i < list.length; i += 1) {
+      var n = Number(list[i]);
+      out.push(isFinite(n) && n > 0 ? n : 1);
+    }
+    return out.length ? out : [1];
+  }
+
+  /* Normalize ratio map; parameters: input. */
   function normalizeRatioMap(input) {
     var result = {};
-    if (Array.isArray(input)) {
-      result.default = sanitizeRatios(input);
-      if (!result.default.length) result.default = [1];
-      if (!result[1]) result[1] = [1];
-      if (!result[2]) result[2] = [1, 1];
-      if (!result[3]) result[3] = [1, 1, 1];
-      return result;
-    }
-    if (input && typeof input === "object") {
-      Object.keys(input).forEach(function (key) {
-        result[key] = sanitizeRatios(input[key]);
-      });
+    var key;
+    if (Array.isArray(input)) result.default = sanitizeRatios(input);
+    else if (input && typeof input === 'object') {
+      for (key in input) {
+        if (Object.prototype.hasOwnProperty.call(input, key)) result[key] = sanitizeRatios(input[key]);
+      }
     }
     if (!result.default) result.default = [1, 1, 1];
     if (!result[1]) result[1] = [1];
@@ -297,591 +239,1848 @@
     if (!result[3]) result[3] = [1, 1, 1];
     return result;
   }
-  function sanitizeRatios(list) {
-    if (!Array.isArray(list) || !list.length) return [1];
-    return list.map(function (value) {
-      var n = Number(value);
-      return Number.isFinite(n) && n > 0 ? n : 1;
-    });
-  }
+
+  /* Resolve column ratios for a row; parameters: count, options. */
   function getRatiosForCount(count, options) {
-    var ratioMap = (options && options.columnRatios) || {};
-    var ratios =
-      ratioMap[count] ||
-      ratioMap[String(count)] ||
-      ratioMap.default ||
-      new Array(count).fill(1);
-    ratios = sanitizeRatios(ratios).slice(0, count);
-    while (ratios.length < count) {
-      ratios.push(1);
+    var map = options.columnRatios || {};
+    var ratios = sanitizeRatios(map[count] || map[String(count)] || map.default || [1]);
+    var out = ratios.slice(0, count);
+    while (out.length < count) out.push(1); // Missing ratios become equal-weight columns.
+    return out;
+  }
+
+  /* Return pre-load global config; parameters: none. */
+  function getPreloadConfig() {
+    return win.ParallelTextColumnsConfig || win.parallelTextColumnsConfig || null;
+  }
+
+  /* Normalize all configuration; parameters: input. */
+  function normalizeConfig(input) {
+    var cfg = mergeObjects(DEFAULT_CONFIG, input || {});
+    cfg.selectors = normalizeStringArray(cfg.selectors, DEFAULT_CONFIG.selectors);
+    cfg.skipSelectors = normalizeStringArray(cfg.skipSelectors, DEFAULT_CONFIG.skipSelectors);
+    cfg.bodyTags = normalizeTagList(cfg.bodyTags, DEFAULT_CONFIG.bodyTags);
+    cfg.headingTags = normalizeTagList(cfg.headingTags, DEFAULT_CONFIG.headingTags);
+    cfg.fontSize = normalizeSize(cfg.fontSize, DEFAULT_CONFIG.fontSize);
+    cfg.columnGap = normalizeSize(cfg.columnGap, DEFAULT_CONFIG.columnGap);
+    cfg.mobileColumnGap = normalizeSize(cfg.mobileColumnGap, DEFAULT_CONFIG.mobileColumnGap);
+    cfg.blockSpacing = normalizeSize(cfg.blockSpacing, DEFAULT_CONFIG.blockSpacing);
+    cfg.dividerInset = normalizeSize(cfg.dividerInset, DEFAULT_CONFIG.dividerInset);
+    cfg.dividerThickness = normalizeSize(cfg.dividerThickness, DEFAULT_CONFIG.dividerThickness);
+    cfg.rowRuleMargin = normalizeSize(cfg.rowRuleMargin, DEFAULT_CONFIG.rowRuleMargin);
+    cfg.rowRuleThickness = normalizeSize(cfg.rowRuleThickness, DEFAULT_CONFIG.rowRuleThickness);
+    cfg.dividerOpacity = normalizeOpacity(cfg.dividerOpacity, DEFAULT_CONFIG.dividerOpacity);
+    cfg.rowRuleOpacity = normalizeOpacity(cfg.rowRuleOpacity, DEFAULT_CONFIG.rowRuleOpacity);
+    cfg.responsiveBreakpointPx = Math.max(1, parseInt(cfg.responsiveBreakpointPx, 10) || DEFAULT_CONFIG.responsiveBreakpointPx);
+    cfg.autoRefreshDelay = Math.max(20, parseInt(cfg.autoRefreshDelay, 10) || DEFAULT_CONFIG.autoRefreshDelay);
+    cfg.verticalAlign = normalizeVerticalAlign(cfg.verticalAlign);
+    cfg.columnRatios = normalizeRatioMap(cfg.columnRatios);
+    cfg.autoEnable = cfg.autoEnable !== false;
+    cfg.autoRefresh = cfg.autoRefresh === true;
+    cfg.includeHeadings = cfg.includeHeadings === true;
+    cfg.compactText = cfg.compactText !== false;
+    cfg.rowRuleEnabled = cfg.rowRuleEnabled !== false;
+    cfg.injectStyle = cfg.injectStyle !== false;
+    cfg.styleId = typeof cfg.styleId === 'string' && cfg.styleId.replace(/^\s+|\s+$/g, '') ? cfg.styleId.replace(/^\s+|\s+$/g, '') : DEFAULT_CONFIG.styleId;
+    cfg.styleNonce = typeof cfg.styleNonce === 'string' ? cfg.styleNonce : '';
+    return cfg;
+  }
+
+  /* Run after DOM is parse-ready; parameters: callback. */
+  function onReady(callback) {
+    if (doc.readyState === 'loading') {
+      doc.addEventListener('DOMContentLoaded', callback, false);
+      return;
     }
-    return ratios;
+    callback();
   }
-  function normalizeSize(value) {
-    if (typeof value === "number") return value + "px";
-    if (typeof value === "string" && value.trim()) return value.trim();
-    return "15px";
+
+  /* Build injected CSS text; parameters: options. */
+  function buildCSS(options) {
+    var bp = options.responsiveBreakpointPx + 'px';
+    return [
+      '.' + CLASS.scope + ' {',
+      ' --ptc-font-size: 15px;',
+      ' --ptc-gap: 0.85rem;',
+      ' --ptc-mobile-gap: 0.45rem;',
+      ' --ptc-block-spacing: 0.9rem;',
+      ' --ptc-divider-inset: 0.1rem;',
+      ' --ptc-divider-thickness: 1px;',
+      ' --ptc-divider-opacity: 0.24;',
+      ' --ptc-row-rule-margin: 0.22rem 0;',
+      ' --ptc-row-rule-thickness: 1px;',
+      ' --ptc-row-rule-opacity: 0.24;',
+      ' --ptc-col-justify: flex-start;',
+      '}',
+      '.' + CLASS.scope + ' p, .' + CLASS.scope + ' ul, .' + CLASS.scope + ' ol, .' + CLASS.scope + ' dl, .' + CLASS.scope + ' li, .' + CLASS.scope + ' blockquote {',
+      ' font-size: var(--ptc-font-size) !important;',
+      '}',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] p, .' + CLASS.scope + '[' + ATTR.compact + '="true"] ul, .' + CLASS.scope + '[' + ATTR.compact + '="true"] ol, .' + CLASS.scope + '[' + ATTR.compact + '="true"] dl, .' + CLASS.scope + '[' + ATTR.compact + '="true"] li, .' + CLASS.scope + '[' + ATTR.compact + '="true"] blockquote {',
+      ' margin: 0 !important;',
+      ' padding: 0 !important;',
+      ' border: 0 !important;',
+      '}',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] ul, .' + CLASS.scope + '[' + ATTR.compact + '="true"] ol { list-style-position: inside; }',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] li > ul, .' + CLASS.scope + '[' + ATTR.compact + '="true"] li > ol, .' + CLASS.scope + '[' + ATTR.compact + '="true"] li > dl { margin-top: 0 !important; margin-bottom: 0 !important; }',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] blockquote > :first-child { margin-top: 0 !important; }',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] blockquote > :last-child { margin-bottom: 0 !important; }',
+      '.' + CLASS.row + ' {',
+      ' display: grid;',
+      ' gap: var(--ptc-gap);',
+      ' align-items: stretch;',
+      ' position: relative;',
+      ' margin: 0 !important;',
+      '}',
+      '.' + CLASS.col + ' {',
+      ' min-width: 0;',
+      ' position: relative;',
+      ' display: flex;',
+      ' flex-direction: column;',
+      ' justify-content: var(--ptc-col-justify);',
+      ' align-self: stretch;',
+      '}',
+      '.' + CLASS.col + ' > :first-child { margin-top: 0 !important; }',
+      '.' + CLASS.col + ' > :last-child { margin-bottom: 0 !important; }',
+      '.' + CLASS.divider + ' {',
+      ' position: absolute;',
+      ' pointer-events: none;',
+      ' opacity: var(--ptc-divider-opacity);',
+      ' background: repeating-linear-gradient(to bottom, var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px, transparent 2px 6px);',
+      '}',
+      '.' + CLASS.scope + ' > * + * { margin-top: var(--ptc-block-spacing) !important; }',
+      '.' + CLASS.rowRule + ' {',
+      ' display: block;',
+      ' height: var(--ptc-row-rule-thickness);',
+      ' padding: 0;',
+      ' border: 0;',
+      ' opacity: var(--ptc-row-rule-opacity, var(--ptc-divider-opacity));',
+      ' margin: var(--ptc-row-rule-margin) !important;',
+      ' background: repeating-linear-gradient(to right, var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px, transparent 2px 6px);',
+      '}',
+      '.' + CLASS.scope + ' > .' + CLASS.row + ' + .' + CLASS.rowRule + ' { margin: var(--ptc-row-rule-margin) !important; }',
+      '.' + CLASS.scope + ' > .' + CLASS.rowRule + ' + .' + CLASS.row + ' { margin-top: 0 !important; }',
+      '@media (max-width: ' + bp + ') {',
+      ' .' + CLASS.row + ' { grid-template-columns: 1fr !important; gap: var(--ptc-mobile-gap); }',
+      ' .' + CLASS.divider + ' { background: repeating-linear-gradient(to right, var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px, transparent 2px 6px); }',
+      '}'
+    ].join('\n');
   }
-  function normalizeVerticalAlign(value) {
-    var v = String(value || "start")
-      .trim()
-      .toLowerCase();
-    if (v === "center" || v === "middle") return "center";
-    if (v === "end" || v === "bottom") return "flex-end";
-    return "flex-start";
+
+  /* Insert or update CSS; parameters: options. */
+  function upsertStyle(options) {
+    if (state.styleId && state.styleId !== options.styleId) {
+      var stale = doc.getElementById(state.styleId);
+      if (stale && stale.parentNode) stale.parentNode.removeChild(stale); // Remove stale style when styleId changes.
+    }
+    state.styleId = options.styleId;
+    var oldStyle = doc.getElementById(options.styleId);
+    if (!options.injectStyle) {
+      if (oldStyle && oldStyle.parentNode) oldStyle.parentNode.removeChild(oldStyle); // External CSS mode.
+      return;
+    }
+    var css = buildCSS(options);
+    var style = oldStyle || doc.createElement('style');
+    style.id = options.styleId;
+    style.type = 'text/css';
+    if (options.styleNonce) style.setAttribute('nonce', options.styleNonce); // CSP-compatible style tag.
+    if (style.styleSheet) style.styleSheet.cssText = css;
+    else {
+      while (style.firstChild) style.removeChild(style.firstChild);
+      style.appendChild(doc.createTextNode(css));
+    }
+    if (!oldStyle) (doc.head || doc.getElementsByTagName('head')[0]).appendChild(style);
   }
-  function ensureStyle() {
-    if (document.getElementById(STYLE_ID)) return;
-    var style = document.createElement("style");
-    style.id = STYLE_ID;
-    style.textContent = [
-      "." + SCOPE_CLASS + " {",
-      " --ptc-font-size: 15px;",
-      " --ptc-gap: 0.85rem;",
-      " --ptc-divider-inset: 0.1rem;",
-      " --ptc-block-spacing: 0.9rem;",
-      " --ptc-divider-thickness: 1px;",
-      " --ptc-col-justify: flex-start;",
-      "}",
-      "." + SCOPE_CLASS + " p,",
-      "." + SCOPE_CLASS + " ul,",
-      "." + SCOPE_CLASS + " ol,",
-      "." + SCOPE_CLASS + " dl,",
-      "." + SCOPE_CLASS + " li,",
-      "." + SCOPE_CLASS + " blockquote {",
-      " font-size: var(--ptc-font-size) !important;",
-      "}",
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] p,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] ul,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] ol,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] dl,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] li,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] blockquote {',
-      " margin: 0 !important;",
-      " padding: 0 !important;",
-      " border: 0 !important;",
-      "}",
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] ul,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] ol {',
-      " list-style-position: inside;",
-      "}",
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] li > ul,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] li > ol,',
-      "." + SCOPE_CLASS + '[data-ptc-compact="true"] li > dl {',
-      " margin-top: 0 !important;",
-      " margin-bottom: 0 !important;",
-      "}",
-      "." +
-        SCOPE_CLASS +
-        '[data-ptc-compact="true"] blockquote > :first-child {',
-      " margin-top: 0 !important;",
-      "}",
-      "." +
-        SCOPE_CLASS +
-        '[data-ptc-compact="true"] blockquote > :last-child {',
-      " margin-bottom: 0 !important;",
-      "}",
-      "." + ROW_CLASS + " {",
-      " display: grid;",
-      " gap: var(--ptc-gap);",
-      " align-items: stretch;",
-      " position: relative;",
-      " margin: 0 !important;",
-      "}",
-      "." + COL_CLASS + " {",
-      " min-width: 0;",
-      " position: relative;",
-      " display: flex;",
-      " flex-direction: column;",
-      " justify-content: var(--ptc-col-justify);",
-      " align-self: stretch;",
-      "}",
-      "." + COL_CLASS + " > :first-child { margin-top: 0 !important; }",
-      "." + COL_CLASS + " > :last-child { margin-bottom: 0 !important; }",
-      "." + DIVIDER_CLASS + " {",
-      " position: absolute;",
-      " pointer-events: none;",
-      " opacity: 0.24;",
-      " background: repeating-linear-gradient(",
-      " to bottom,",
-      " var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px,",
-      " transparent 2px 6px",
-      " );",
-      "}",
-      "@media (max-width: 900px) {",
-      " ." + ROW_CLASS + " {",
-      " grid-template-columns: 1fr !important;",
-      " gap: 0.45rem;",
-      " }",
-      " ." + DIVIDER_CLASS + " {",
-      " background: repeating-linear-gradient(",
-      " to right,",
-      " var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px,",
-      " transparent 2px 6px",
-      " );",
-      " }",
-      "}",
-      "." + SCOPE_CLASS + " > * + * {",
-      "  margin-top: var(--ptc-block-spacing) !important;",
-      "}",
-    ].join("\n");
-    document.head.appendChild(style);
+
+  /* Apply visual CSS variables to one container; parameters: container, options. */
+  function applyContainerOptions(container, options) {
+    if (!isElement(container)) return;
+    addClass(container, CLASS.scope);
+    container.style.setProperty('--ptc-font-size', options.fontSize);
+    container.style.setProperty('--ptc-gap', options.columnGap);
+    container.style.setProperty('--ptc-mobile-gap', options.mobileColumnGap);
+    container.style.setProperty('--ptc-block-spacing', options.blockSpacing);
+    container.style.setProperty('--ptc-divider-inset', options.dividerInset);
+    container.style.setProperty('--ptc-divider-thickness', options.dividerThickness);
+    container.style.setProperty('--ptc-divider-opacity', String(options.dividerOpacity));
+    container.style.setProperty('--ptc-row-rule-margin', options.rowRuleMargin);
+    container.style.setProperty('--ptc-row-rule-thickness', options.rowRuleThickness);
+    container.style.setProperty('--ptc-row-rule-opacity', String(options.rowRuleOpacity));
+    container.style.setProperty('--ptc-col-justify', options.verticalAlign);
+    container.setAttribute(ATTR.compact, options.compactText ? 'true' : 'false');
   }
+
+  /* Remove visual markers from one container; parameters: container. */
+  function clearContainerOptions(container) {
+    if (!isElement(container)) return;
+    removeClass(container, CLASS.scope);
+    container.removeAttribute(ATTR.compact);
+    container.style.removeProperty('--ptc-font-size');
+    container.style.removeProperty('--ptc-gap');
+    container.style.removeProperty('--ptc-mobile-gap');
+    container.style.removeProperty('--ptc-block-spacing');
+    container.style.removeProperty('--ptc-divider-inset');
+    container.style.removeProperty('--ptc-divider-thickness');
+    container.style.removeProperty('--ptc-divider-opacity');
+    container.style.removeProperty('--ptc-row-rule-margin');
+    container.style.removeProperty('--ptc-row-rule-thickness');
+    container.style.removeProperty('--ptc-row-rule-opacity');
+    container.style.removeProperty('--ptc-col-justify');
+  }
+
+  /* Return containers matching configured selectors; parameters: options. */
+  function collectContainers(options) {
+    var found = [];
+    for (var i = 0; i < options.selectors.length; i += 1) {
+      var nodes = safeQueryAll(doc, options.selectors[i]);
+      for (var j = 0; j < nodes.length; j += 1) {
+        if (found.indexOf(nodes[j]) === -1) found.push(nodes[j]); // Avoid duplicate selector matches.
+      }
+    }
+    return found;
+  }
+
+  /* Normalize target input to containers; parameters: target. */
   function normalizeContainerInput(target) {
     if (!target) return state.containers.slice();
-    if (typeof target === "string")
-      return Array.from(document.querySelectorAll(target));
-    if (target instanceof Element) return [target];
+    if (typeof target === 'string') return safeQueryAll(doc, target);
+    if (isElement(target)) return [target];
     if (Array.isArray(target)) {
-      return target.filter(function (item) {
-        return item instanceof Element;
-      });
+      var out = [];
+      for (var i = 0; i < target.length; i += 1) if (isElement(target[i])) out.push(target[i]);
+      return out;
     }
     return [];
   }
-  function collectContainers(options) {
-    var selectors = options.selectors || [];
-    var seen = new Set();
-    var found = [];
-    selectors.forEach(function (selector) {
-      document.querySelectorAll(selector).forEach(function (el) {
-        if (!seen.has(el)) {
-          seen.add(el);
-          found.push(el);
-        }
-      });
-    });
-    return found;
-  }
-  function applyContainerVisualOptions(container, options) {
-    container.classList.add(SCOPE_CLASS);
-    container.style.setProperty("--ptc-font-size", options.fontSize || "15px");
-    container.style.setProperty("--ptc-gap", options.columnGap || "0.85rem");
-    container.style.setProperty('--ptc-block-spacing', options.blockSpacing || '0.9rem');
-      container.style.setProperty(
-      "--ptc-divider-inset",
-      options.dividerInset || "0.1rem",
-    );
-    container.style.setProperty(
-      "--ptc-divider-thickness",
-      options.dividerThickness || "1px",
-    );
-    container.style.setProperty(
-      "--ptc-col-justify",
-      options.verticalAlign || "flex-start",
-    );
-    container.setAttribute(
-      "data-ptc-compact",
-      options.compactText ? "true" : "false",
-    );
-  }
-  function isElement(node) {
-    return node && node.nodeType === 1;
-  }
-  function tagName(node) {
-    return isElement(node) ? node.tagName.toUpperCase() : "";
-  }
+
+  /* Return whether a node is blockquote; parameters: node. */
   function isBlockquote(node) {
-    return tagName(node) === "BLOCKQUOTE";
+    return tagName(node) === 'BLOCKQUOTE';
   }
+
+  /* Return whether a node is a list; parameters: node. */
   function isList(node) {
     var tag = tagName(node);
-    return tag === "UL" || tag === "OL" || tag === "DL";
+    return tag === 'UL' || tag === 'OL' || tag === 'DL';
   }
-  function isTableLike(node, options) {
+
+  /* Return whether a node should be skipped; parameters: node, options. */
+  function isSkippedElement(node, options) {
     if (!isElement(node)) return false;
-    if (tagName(node) === "TABLE") return true;
-    return (options.skipSelectors || []).some(function (selector) {
-      try {
-        return node.matches(selector);
-      } catch (err) {
-        return false;
-      }
-    });
-  }
-  function isBodyStarter(node, options) {
-    if (!isElement(node)) return false;
-    var tag = tagName(node);
-    if (options.bodyTags.indexOf(tag) !== -1) return true;
-    if (options.includeHeadings && options.headingTags.indexOf(tag) !== -1)
-      return true;
+    if (tagName(node) === 'TABLE') return true;
+    for (var i = 0; i < options.skipSelectors.length; i += 1) {
+      if (matchesSelector(node, options.skipSelectors[i])) return true;
+    }
     return false;
   }
+
+  /* Return whether a node can start a body block; parameters: node, options. */
+  function isBodyStarter(node, options) {
+    var tag = tagName(node);
+    if (options.bodyTags.indexOf(tag) !== -1) return true;
+    return options.includeHeadings && options.headingTags.indexOf(tag) !== -1;
+  }
+
+  /* Collect one body block from direct children; parameters: children, startIndex, options. */
   function collectBodyBlock(children, startIndex, options) {
-    var start = children[startIndex];
     var collected = [];
+    var start = children[startIndex];
     if (!isBodyStarter(start, options)) return collected;
     collected.push(start);
-    if (isList(start)) {
-      var i = startIndex + 1;
-      while (i < children.length && isList(children[i])) {
-        collected.push(children[i]);
-        i += 1;
-      }
-      return collected;
-    }
-    var j = startIndex + 1;
-    while (j < children.length && isList(children[j])) {
-      collected.push(children[j]);
-      j += 1;
+    var i = startIndex + 1;
+    while (i < children.length && isList(children[i])) {
+      collected.push(children[i]); // Paragraph/list chains are treated as one source block.
+      i += 1;
     }
     return collected;
   }
+
+  /* Create a column element and move nodes into it; parameters: nodes. */
   function createColumn(nodes) {
-    var col = document.createElement("div");
-    col.className = COL_CLASS;
-    nodes.forEach(function (node) {
-      col.appendChild(node);
-    });
+    var col = doc.createElement('div');
+    col.className = CLASS.col;
+    for (var i = 0; i < nodes.length; i += 1) col.appendChild(nodes[i]);
     return col;
   }
+
+  /* Create an internal column divider; parameters: none. */
   function createDivider() {
-    var divider = document.createElement("div");
-    divider.className = DIVIDER_CLASS;
+    var divider = doc.createElement('div');
+    divider.className = CLASS.divider;
+    divider.setAttribute('aria-hidden', 'true');
     return divider;
   }
+
+  /* Create a compact row separator; parameters: options. */
+  function createRowRule(options) {
+    var hr = doc.createElement('hr');
+    hr.className = CLASS.rowRule;
+    hr.setAttribute('aria-hidden', 'true');
+    if (!options.rowRuleEnabled) hr.style.display = 'none'; // Keeps DOM predictable when disabled.
+    return hr;
+  }
+
+  /* Create a parallel row from column groups; parameters: groups, options. */
   function createRow(groups, options) {
-    var row = document.createElement("div");
-    row.className = ROW_CLASS;
+    var row = doc.createElement('div');
     var ratios = getRatiosForCount(groups.length, options);
-    row.setAttribute("data-ptc-cols", String(groups.length));
-    row.setAttribute("data-ptc-ratios", ratios.join(","));
-    row.style.gridTemplateColumns = ratios
-      .map(function (ratio) {
-        return "minmax(0, " + ratio + "fr)";
-      })
-      .join(" ");
-    groups.forEach(function (group) {
-      row.appendChild(createColumn(group));
-    });
-    for (var i = 1; i < groups.length; i += 1) {
-      row.appendChild(createDivider());
-    }
+    var cols = [];
+    row.className = CLASS.row;
+    row.setAttribute(ATTR.cols, String(groups.length));
+    row.setAttribute(ATTR.ratios, ratios.join(','));
+    for (var i = 0; i < ratios.length; i += 1) cols.push('minmax(0, ' + ratios[i] + 'fr)');
+    row.style.gridTemplateColumns = cols.join(' '); // Inline grid columns allow per-row ratios.
+    for (var j = 0; j < groups.length; j += 1) row.appendChild(createColumn(groups[j]));
+    for (var k = 1; k < groups.length; k += 1) row.appendChild(createDivider());
     return row;
   }
+
+  /* Return direct row columns; parameters: row. */
   function getDirectColumns(row) {
-    return Array.from(row.children).filter(function (child) {
-      return isElement(child) && child.classList.contains(COL_CLASS);
-    });
+    var out = [];
+    var children = toArray(row.children);
+    for (var i = 0; i < children.length; i += 1) if (hasClass(children[i], CLASS.col)) out.push(children[i]);
+    return out;
   }
+
+  /* Return direct row dividers; parameters: row. */
   function getDirectDividers(row) {
-    return Array.from(row.children).filter(function (child) {
-      return isElement(child) && child.classList.contains(DIVIDER_CLASS);
-    });
+    var out = [];
+    var children = toArray(row.children);
+    for (var i = 0; i < children.length; i += 1) if (hasClass(children[i], CLASS.divider)) out.push(children[i]);
+    return out;
   }
+
+  /* Resolve rendered gap in px; parameters: row. */
   function getGapPx(row) {
-    var styles = window.getComputedStyle(row);
-    var columnGap = parseFloat(styles.columnGap);
-    if (Number.isFinite(columnGap)) return columnGap;
+    var styles = win.getComputedStyle ? win.getComputedStyle(row) : null;
+    if (!styles) return 0;
+    var columnGap = parseFloat(styles.columnGap || styles.gridColumnGap);
+    if (isFinite(columnGap)) return columnGap;
     var gap = parseFloat(styles.gap);
-    if (Number.isFinite(gap)) return gap;
-    return 0;
+    return isFinite(gap) ? gap : 0;
   }
+
+  /* Return whether columns are stacked by responsive CSS; parameters: columns. */
   function isStackedLayout(columns) {
     if (columns.length < 2) return false;
     return Math.round(columns[1].offsetTop) > Math.round(columns[0].offsetTop);
   }
+
+  /* Update divider geometry for one row; parameters: row. */
   function updateRowDividers(row) {
-    if (!row || !row.isConnected) return;
+    if (!isElement(row) || !(doc.documentElement || doc.body).contains(row)) return;
     var columns = getDirectColumns(row);
     var dividers = getDirectDividers(row);
     if (columns.length <= 1) {
-      dividers.forEach(function (divider) {
-        divider.style.display = "none";
-      });
+      for (var d = 0; d < dividers.length; d += 1) dividers[d].style.display = 'none';
       return;
     }
     var gapPx = getGapPx(row);
     var stacked = isStackedLayout(columns);
-    var rowStyles = getComputedStyle(row);
-    var thickness =
-      rowStyles.getPropertyValue("--ptc-divider-thickness").trim() || "1px";
-    var inset =
-      rowStyles.getPropertyValue("--ptc-divider-inset").trim() || "0.1rem";
-    dividers.forEach(function (divider, index) {
-      divider.style.display = "block";
+    var rowStyles = win.getComputedStyle ? win.getComputedStyle(row) : null;
+    var thickness = rowStyles ? rowStyles.getPropertyValue('--ptc-divider-thickness').replace(/^\s+|\s+$/g, '') : '1px';
+    var inset = rowStyles ? rowStyles.getPropertyValue('--ptc-divider-inset').replace(/^\s+|\s+$/g, '') : '0.1rem';
+    thickness = thickness || '1px';
+    inset = inset || '0.1rem';
+    for (var i = 0; i < dividers.length; i += 1) {
+      var divider = dividers[i];
+      divider.style.display = 'block';
       if (stacked) {
-        var nextCol = columns[index + 1];
-        var top = nextCol.offsetTop - gapPx / 2;
-        divider.style.left = "0";
-        divider.style.right = "0";
-        divider.style.top = top + "px";
-        divider.style.bottom = "auto";
-        divider.style.width = "auto";
+        var nextCol = columns[i + 1];
+        divider.style.left = '0';
+        divider.style.right = '0';
+        divider.style.top = (nextCol.offsetTop - gapPx / 2) + 'px';
+        divider.style.bottom = 'auto';
+        divider.style.width = 'auto';
         divider.style.height = thickness;
       } else {
-        var nextColumn = columns[index + 1];
-        var left = nextColumn.offsetLeft - gapPx / 2;
-        divider.style.left = left + "px";
-        divider.style.right = "auto";
+        var nextColumn = columns[i + 1];
+        divider.style.left = (nextColumn.offsetLeft - gapPx / 2) + 'px';
+        divider.style.right = 'auto';
         divider.style.top = inset;
         divider.style.bottom = inset;
         divider.style.width = thickness;
-        divider.style.height = "auto";
+        divider.style.height = 'auto';
       }
-    });
+    }
   }
+
+  /* Update all row dividers in a container; parameters: container. */
   function updateContainerDividers(container) {
-    if (!container) return;
-    Array.from(container.querySelectorAll("." + ROW_CLASS)).forEach(
-      function (row) {
-        updateRowDividers(row);
-      },
-    );
+    if (!isElement(container)) return;
+    var rows = safeQueryAll(container, '.' + CLASS.row);
+    for (var i = 0; i < rows.length; i += 1) updateRowDividers(rows[i]);
   }
+
+  /* Schedule divider updates after layout; parameters: container. */
+  function scheduleDividerUpdate(container) {
+    var raf = win.requestAnimationFrame || function (fn) { return win.setTimeout(fn, 16); };
+    raf(function () { updateContainerDividers(container); }); // Wait for layout to settle.
+  }
+
+  /* Observe one row for size changes; parameters: row. */
   function observeRow(row) {
-    if (!("ResizeObserver" in window)) return;
+    if (!('ResizeObserver' in win)) return;
     if (!state.resizeObserver) {
-      state.resizeObserver = new ResizeObserver(function (entries) {
-        entries.forEach(function (entry) {
-          updateRowDividers(entry.target);
-        });
+      state.resizeObserver = new win.ResizeObserver(function (entries) {
+        for (var i = 0; i < entries.length; i += 1) updateRowDividers(entries[i].target);
       });
     }
     state.resizeObserver.observe(row);
   }
+
+  /* Stop observing one row; parameters: row. */
   function unobserveRow(row) {
-    if (state.resizeObserver && row) {
-      state.resizeObserver.unobserve(row);
-    }
+    if (state.resizeObserver && row) state.resizeObserver.unobserve(row);
   }
+
+  /* Bind global layout refresh events; parameters: none. */
   function bindGlobalResize() {
     if (state.resizeBound) return;
     state.resizeBound = true;
-    window.addEventListener("resize", function () {
-      state.containers.forEach(function (container) {
-        updateContainerDividers(container);
-      });
-    });
-    window.addEventListener("load", function () {
-      state.containers.forEach(function (container) {
-        updateContainerDividers(container);
-      });
-    });
+    state.resizeHandler = function () {
+      for (var i = 0; i < state.containers.length; i += 1) scheduleDividerUpdate(state.containers[i]);
+    };
+    state.loadHandler = state.resizeHandler;
+    win.addEventListener('resize', state.resizeHandler, false);
+    win.addEventListener('load', state.loadHandler, false);
   }
+
+  /* Unbind global layout refresh events; parameters: none. */
+  function unbindGlobalResize() {
+    if (!state.resizeBound) return;
+    win.removeEventListener('resize', state.resizeHandler, false);
+    win.removeEventListener('load', state.loadHandler, false);
+    state.resizeBound = false;
+    state.resizeHandler = null;
+    state.loadHandler = null;
+  }
+
+  /* Find configured containers related to a node; parameters: node. */
+  function findContainersForNode(node) {
+    var out = [];
+    if (!isElement(node)) node = node && node.parentNode;
+    if (!isElement(node) || !state.options) return out;
+    for (var i = 0; i < state.options.selectors.length; i += 1) {
+      var selector = state.options.selectors[i];
+      var cursor = node;
+      if (matchesSelector(cursor, selector) && out.indexOf(cursor) === -1) out.push(cursor);
+      while (cursor && cursor !== doc && isElement(cursor)) {
+        if (matchesSelector(cursor, selector) && out.indexOf(cursor) === -1) out.push(cursor);
+        cursor = cursor.parentNode;
+      }
+      var descendants = safeQueryAll(node, selector);
+      for (var j = 0; j < descendants.length; j += 1) if (out.indexOf(descendants[j]) === -1) out.push(descendants[j]);
+    }
+    return out;
+  }
+
+  /* Add containers to the debounced refresh queue; parameters: containers. */
+  function queueRefresh(containers) {
+    for (var i = 0; i < containers.length; i += 1) {
+      if (state.pendingRefresh.indexOf(containers[i]) === -1) state.pendingRefresh.push(containers[i]);
+    }
+    if (state.pendingTimer) win.clearTimeout(state.pendingTimer);
+    state.pendingTimer = win.setTimeout(function () {
+      var pending = state.pendingRefresh.slice();
+      state.pendingRefresh = [];
+      state.pendingTimer = null;
+      for (var j = 0; j < pending.length; j += 1) refresh(pending[j]);
+    }, state.options.autoRefreshDelay);
+  }
+
+  /* Start dynamic-content observation; parameters: none. */
+  function startAutoRefresh() {
+    stopAutoRefresh();
+    if (!state.options || !state.options.autoRefresh || !('MutationObserver' in win) || !doc.body) return;
+    state.mutationObserver = new win.MutationObserver(function (records) {
+      var containers = [];
+      for (var i = 0; i < records.length; i += 1) {
+        var added = records[i].addedNodes || [];
+        for (var j = 0; j < added.length; j += 1) {
+          var node = added[j];
+          if (!isElement(node) || hasClass(node, CLASS.row) || hasClass(node, CLASS.rowRule)) continue; // Ignore generated nodes.
+          var related = findContainersForNode(node);
+          for (var k = 0; k < related.length; k += 1) if (containers.indexOf(related[k]) === -1) containers.push(related[k]);
+        }
+      }
+      if (containers.length) queueRefresh(containers);
+    });
+    state.mutationObserver.observe(doc.body, { childList: true, subtree: true });
+  }
+
+  /* Stop dynamic-content observation; parameters: none. */
+  function stopAutoRefresh() {
+    if (state.mutationObserver) state.mutationObserver.disconnect();
+    state.mutationObserver = null;
+    if (state.pendingTimer) win.clearTimeout(state.pendingTimer);
+    state.pendingTimer = null;
+    state.pendingRefresh = [];
+  }
+
+  /* Run DOM mutation work while observer is paused; parameters: callback. */
+  function withAutoRefreshPaused(callback) {
+    var shouldRestart = !!(state.options && state.options.autoRefresh && state.mutationObserver);
+    if (shouldRestart) stopAutoRefresh();
+    try {
+      callback();
+    } finally {
+      if (shouldRestart) startAutoRefresh();
+    }
+  }
+
+  /* Rebuild a container into parallel rows; parameters: container, options. */
   function rebuildContainer(container, options) {
-    applyContainerVisualOptions(container, options);
-    var children = Array.from(container.children);
-    var fragment = document.createDocumentFragment();
+    if (!isElement(container)) return;
+    applyContainerOptions(container, options);
+    var children = toArray(container.children);
+    var fragment = doc.createDocumentFragment();
     var i = 0;
+    var previousWasGeneratedRow = false;
     while (i < children.length) {
       var current = children[i];
       if (!isElement(current)) {
         i += 1;
         continue;
       }
-      if (current.classList.contains(ROW_CLASS)) {
+      if (hasClass(current, CLASS.rowRule)) {
+        i += 1;
+        continue; // Old generated rules are discarded on rebuild.
+      }
+      if (hasClass(current, CLASS.row)) {
+        previousWasGeneratedRow = true;
         fragment.appendChild(current);
         i += 1;
         continue;
       }
-      if (isTableLike(current, options)) {
+      if (isSkippedElement(current, options)) {
         fragment.appendChild(current);
+        previousWasGeneratedRow = false;
         i += 1;
         while (i < children.length && isBlockquote(children[i])) {
-          fragment.appendChild(children[i]);
+          fragment.appendChild(children[i]); // Preserve table-related blockquotes.
           i += 1;
         }
         continue;
       }
       if (!isBodyStarter(current, options)) {
         fragment.appendChild(current);
+        previousWasGeneratedRow = false;
         i += 1;
         continue;
       }
       var bodyNodes = collectBodyBlock(children, i, options);
-      i += bodyNodes.length;
       var groups = [bodyNodes];
+      i += bodyNodes.length;
       while (i < children.length && isBlockquote(children[i])) {
         groups.push([children[i]]);
         i += 1;
       }
+      if (previousWasGeneratedRow && options.rowRuleEnabled) fragment.appendChild(createRowRule(options)); // Compact HR between adjacent generated rows.
       fragment.appendChild(createRow(groups, options));
+      previousWasGeneratedRow = true;
     }
+    while (container.firstChild) container.removeChild(container.firstChild); // Drop whitespace and stale generated nodes.
     container.appendChild(fragment);
-    container.setAttribute(PROCESSED_ATTR, "true");
-    Array.from(container.querySelectorAll("." + ROW_CLASS)).forEach(
-      function (row) {
-        observeRow(row);
-        updateRowDividers(row);
-      },
-    );
+    container.setAttribute(ATTR.enabled, 'true');
+    var rows = safeQueryAll(container, '.' + CLASS.row);
+    for (var r = 0; r < rows.length; r += 1) observeRow(rows[r]);
+    scheduleDividerUpdate(container);
   }
+
+  /* Restore a processed container to original document order; parameters: container. */
   function restoreContainer(container) {
-    if (!container.hasAttribute(PROCESSED_ATTR)) return;
-    var nodes = Array.from(container.childNodes);
-    var fragment = document.createDocumentFragment();
-    nodes.forEach(function (node) {
-      if (isElement(node) && node.classList.contains(ROW_CLASS)) {
+    if (!isElement(container) || !container.hasAttribute(ATTR.enabled)) return;
+    var nodes = toArray(container.childNodes);
+    var fragment = doc.createDocumentFragment();
+    for (var i = 0; i < nodes.length; i += 1) {
+      var node = nodes[i];
+      if (isElement(node) && hasClass(node, CLASS.row)) {
         unobserveRow(node);
-        Array.from(node.children).forEach(function (child) {
-          if (isElement(child) && child.classList.contains(COL_CLASS)) {
-            while (child.firstChild) {
-              fragment.appendChild(child.firstChild);
-            }
+        var children = toArray(node.children);
+        for (var j = 0; j < children.length; j += 1) {
+          if (isElement(children[j]) && hasClass(children[j], CLASS.col)) {
+            while (children[j].firstChild) fragment.appendChild(children[j].firstChild); // Move original content back.
           }
-        });
-        node.remove();
+        }
+      } else if (isElement(node) && hasClass(node, CLASS.rowRule)) {
+        continue; // Generated <hr> separators are not source content.
       } else {
         fragment.appendChild(node);
       }
-    });
+    }
+    while (container.firstChild) container.removeChild(container.firstChild);
     container.appendChild(fragment);
-    container.removeAttribute(PROCESSED_ATTR);
+    container.removeAttribute(ATTR.enabled);
   }
+
+  /* Ensure API calls have initialized state; parameters: none. */
+  function ensureInitialized() {
+    if (!state.initialized) init();
+  }
+
+  /* Enable parallel layout; parameters: target optional container selector/element/list. */
   function enable(target) {
+    ensureInitialized();
     var containers = normalizeContainerInput(target);
     if (!containers.length) containers = state.containers.slice();
-    containers.forEach(function (container) {
-      if (!container) return;
-      applyContainerVisualOptions(container, state.options);
-      if (container.hasAttribute(PROCESSED_ATTR)) return;
-      rebuildContainer(container, state.options);
-    });
-  }
-  function disable(target) {
-    var containers = normalizeContainerInput(target);
-    if (!containers.length) containers = state.containers.slice();
-    containers.forEach(function (container) {
-      if (!container) return;
-      applyContainerVisualOptions(container, state.options);
-      restoreContainer(container);
-    });
-  }
-  function toggle(target) {
-    var containers = normalizeContainerInput(target);
-    if (!containers.length) containers = state.containers.slice();
-    containers.forEach(function (container) {
-      if (!container) return;
-      applyContainerVisualOptions(container, state.options);
-      if (container.hasAttribute(PROCESSED_ATTR)) {
-        restoreContainer(container);
-      } else {
-        rebuildContainer(container, state.options);
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) {
+        if (!isElement(containers[i])) continue;
+        applyContainerOptions(containers[i], state.options);
+        if (!containers[i].hasAttribute(ATTR.enabled)) rebuildContainer(containers[i], state.options);
       }
     });
+    return api;
   }
-  function init(userOptions) {
-    state.options = mergeOptions(userOptions);
-    ensureStyle();
-    bindGlobalResize();
-    state.containers = collectContainers(state.options);
-    state.containers.forEach(function (container) {
-      applyContainerVisualOptions(container, state.options);
+
+  /* Disable parallel layout and restore source order; parameters: target optional container selector/element/list. */
+  function disable(target) {
+    ensureInitialized();
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) restoreContainer(containers[i]);
     });
-    if (state.options.autoEnable) {
-      enable();
+    return api;
+  }
+
+  /* Toggle parallel layout; parameters: target optional container selector/element/list. */
+  function toggle(target) {
+    ensureInitialized();
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      if (containers[i].hasAttribute(ATTR.enabled)) disable(containers[i]);
+      else enable(containers[i]);
     }
     return api;
   }
+
+  /* Refresh and rebuild layout; parameters: target optional container selector/element/list. */
   function refresh(target) {
+    ensureInitialized();
     var containers = normalizeContainerInput(target);
     if (!containers.length) {
-      state.containers = collectContainers(state.options || mergeOptions());
+      state.containers = collectContainers(state.options);
       containers = state.containers.slice();
     }
-    containers.forEach(function (container) {
-      applyContainerVisualOptions(container, state.options);
-      if (container.hasAttribute(PROCESSED_ATTR)) {
-        restoreContainer(container);
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) {
+        if (!isElement(containers[i])) continue;
+        if (containers[i].hasAttribute(ATTR.enabled)) restoreContainer(containers[i]);
+        rebuildContainer(containers[i], state.options);
       }
-      rebuildContainer(container, state.options);
-      updateContainerDividers(container);
     });
+    return api;
   }
-  function bindToggleButton(buttonTarget, containerTarget) {
-    var buttons = normalizeContainerInput(buttonTarget);
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        toggle(containerTarget);
+
+  /* Initialize the script; parameters: userOptions optional config object. */
+  function init(userOptions) {
+    if (state.initialized) return updateConfig(userOptions || {}, { rebuild: true });
+    state.options = normalizeConfig(mergeObjects(getPreloadConfig(), userOptions || {}));
+    upsertStyle(state.options);
+    bindGlobalResize();
+    state.containers = collectContainers(state.options);
+    for (var i = 0; i < state.containers.length; i += 1) applyContainerOptions(state.containers[i], state.options);
+    state.initialized = true;
+    if (state.options.autoEnable) enable();
+    startAutoRefresh();
+    return api;
+  }
+
+  /* Update runtime configuration; parameters: options, runtimeOptions. */
+  function updateConfig(options, runtimeOptions) {
+    var controls = runtimeOptions || {};
+    var rebuild = controls.rebuild !== false;
+    var wasInitialized = state.initialized;
+    var oldContainers = state.containers.slice();
+    var enabled = [];
+    if (!wasInitialized) return init(options || {});
+    for (var i = 0; i < oldContainers.length; i += 1) if (oldContainers[i].hasAttribute(ATTR.enabled)) enabled.push(oldContainers[i]);
+    state.options = normalizeConfig(mergeObjects(state.options, options || {}));
+    upsertStyle(state.options);
+    state.containers = collectContainers(state.options);
+    for (var a = 0; a < state.containers.length; a += 1) applyContainerOptions(state.containers[a], state.options);
+    if (rebuild) {
+      withAutoRefreshPaused(function () {
+        for (var b = 0; b < enabled.length; b += 1) restoreContainer(enabled[b]);
+        var targetContainers = state.options.autoEnable ? state.containers : enabled;
+        for (var c = 0; c < targetContainers.length; c += 1) rebuildContainer(targetContainers[c], state.options);
       });
-    });
+    }
+    startAutoRefresh();
+    return api;
   }
-  function setFontSize(fontSize, target) {
-    state.options.fontSize = normalizeSize(fontSize);
+
+  /* Destroy generated layout and listeners; parameters: target optional container selector/element/list. */
+  function destroy(target) {
+    ensureInitialized();
+    var scoped = !!target;
     var containers = normalizeContainerInput(target);
     if (!containers.length) containers = state.containers.slice();
-    containers.forEach(function (container) {
-      container.classList.add(SCOPE_CLASS);
-      container.style.setProperty("--ptc-font-size", state.options.fontSize);
-      updateContainerDividers(container);
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) {
+        restoreContainer(containers[i]);
+        clearContainerOptions(containers[i]);
+      }
     });
+    if (!scoped) {
+      stopAutoRefresh();
+      unbindGlobalResize();
+      if (state.resizeObserver) state.resizeObserver.disconnect();
+      state.resizeObserver = null;
+      state.containers = [];
+      state.options = null;
+      state.initialized = false;
+    }
+    return api;
   }
+
+  /* Bind click handlers to toggles; parameters: buttonTarget, containerTarget. */
+  function bindToggleButton(buttonTarget, containerTarget) {
+    ensureInitialized();
+    var buttons = normalizeContainerInput(buttonTarget);
+    for (var i = 0; i < buttons.length; i += 1) {
+      buttons[i].addEventListener('click', function () { toggle(containerTarget); }, false);
+    }
+    return api;
+  }
+
+  /* Set body/list/blockquote font size; parameters: fontSize, target. */
+  function setFontSize(fontSize, target) {
+    ensureInitialized();
+    state.options.fontSize = normalizeSize(fontSize, state.options.fontSize);
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      addClass(containers[i], CLASS.scope);
+      containers[i].style.setProperty('--ptc-font-size', state.options.fontSize);
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
+  }
+
+  /* Set vertical column alignment; parameters: verticalAlign, target. */
   function setVerticalAlign(verticalAlign, target) {
+    ensureInitialized();
     state.options.verticalAlign = normalizeVerticalAlign(verticalAlign);
     var containers = normalizeContainerInput(target);
     if (!containers.length) containers = state.containers.slice();
-    containers.forEach(function (container) {
-      container.classList.add(SCOPE_CLASS);
-      container.style.setProperty(
-        "--ptc-col-justify",
-        state.options.verticalAlign,
-      );
-      updateContainerDividers(container);
-    });
+    for (var i = 0; i < containers.length; i += 1) {
+      addClass(containers[i], CLASS.scope);
+      containers[i].style.setProperty('--ptc-col-justify', state.options.verticalAlign);
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
   }
+
+  /* Set column ratios and rebuild enabled containers; parameters: columnRatios, target. */
   function setColumnRatios(columnRatios, target) {
+    ensureInitialized();
     state.options.columnRatios = normalizeRatioMap(columnRatios);
-    var containers = normalizeContainerInput(target);
-    if (!containers.length) containers = state.containers.slice();
-    containers.forEach(function (container) {
-      if (container.hasAttribute(PROCESSED_ATTR)) {
-        restoreContainer(container);
-        rebuildContainer(container, state.options);
-      }
-      updateContainerDividers(container);
-    });
+    refresh(target);
+    return api;
   }
+
+  /* Set compact text mode; parameters: compactText, target. */
   function setCompactText(compactText, target) {
-    state.options.compactText = !!compactText;
+    ensureInitialized();
+    state.options.compactText = compactText !== false;
     var containers = normalizeContainerInput(target);
     if (!containers.length) containers = state.containers.slice();
-    containers.forEach(function (container) {
-      container.setAttribute(
-        "data-ptc-compact",
-        state.options.compactText ? "true" : "false",
-      );
-      updateContainerDividers(container);
-    });
+    for (var i = 0; i < containers.length; i += 1) {
+      containers[i].setAttribute(ATTR.compact, state.options.compactText ? 'true' : 'false');
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
   }
+
+  /* Set direct-child block spacing; parameters: blockSpacing, target. */
+  function setBlockSpacing(blockSpacing, target) {
+    ensureInitialized();
+    state.options.blockSpacing = normalizeSize(blockSpacing, state.options.blockSpacing);
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      addClass(containers[i], CLASS.scope);
+      containers[i].style.setProperty('--ptc-block-spacing', state.options.blockSpacing);
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
+  }
+
+  /* Return a copy of the active config; parameters: none. */
+  function getConfig() {
+    ensureInitialized();
+    return mergeObjects(state.options);
+  }
+
   var api = {
     init: init,
+    updateConfig: updateConfig,
     enable: enable,
     disable: disable,
     toggle: toggle,
     refresh: refresh,
+    destroy: destroy,
     bindToggleButton: bindToggleButton,
     setFontSize: setFontSize,
     setVerticalAlign: setVerticalAlign,
     setColumnRatios: setColumnRatios,
     setCompactText: setCompactText,
     setBlockSpacing: setBlockSpacing,
-    classes: {
-      row: ROW_CLASS,
-      col: COL_CLASS,
-      divider: DIVIDER_CLASS,
-      scope: SCOPE_CLASS,
-    },
+    getConfig: getConfig,
+    classes: mergeObjects(CLASS),
+    defaults: mergeObjects(DEFAULT_CONFIG)
   };
-  window.parallelTextColumns = api;
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      if (!state.options) init();
-    });
-  } else {
-    init();
-  }
-})();
 
-function setBlockSpacing(blockSpacing, target) {
-  state.options.blockSpacing = normalizeSize(blockSpacing);
+  win.parallelTextColumns = api;
 
-  var containers = normalizeContainerInput(target);
-  if (!containers.length) containers = state.containers.slice();
-
-  containers.forEach(function (container) {
-    container.classList.add(SCOPE_CLASS);
-    container.style.setProperty('--ptc-block-spacing', state.options.blockSpacing);
-    updateContainerDividers(container);
+  onReady(function () {
+    if (!state.initialized) init(); // Plug-and-play default behavior.
   });
-}
+})(window, document);
+/*!
+ * parallel-text-columns.industrial.js
+ *
+ * Introduction:
+ *   Rebuilds Markdown/Jekyll content into compact parallel text rows: one body block plus
+ *   following blockquotes becomes a multi-column comparison row. Consecutive generated rows
+ *   can be separated by a compact <hr> helper line.
+ *
+ * Usage:
+ *   1) Plug-and-play: include this file after the target content or anywhere in the page;
+ *      it auto-initializes after DOMContentLoaded.
+ *   2) Customize by editing DEFAULT_CONFIG at the top of this file.
+ *   3) Customize at runtime with window.parallelTextColumns.updateConfig({...}).
+ *   4) Optional pre-load config: window.ParallelTextColumnsConfig = {...} before this file.
+ *
+ * Global API:
+ *   parallelTextColumns.init(options)
+ *   parallelTextColumns.updateConfig(options, runtimeOptions)
+ *   parallelTextColumns.enable(target?)
+ *   parallelTextColumns.disable(target?)
+ *   parallelTextColumns.toggle(target?)
+ *   parallelTextColumns.refresh(target?)
+ *   parallelTextColumns.destroy(target?)
+ *   parallelTextColumns.bindToggleButton(buttonTarget, containerTarget?)
+ *   parallelTextColumns.setFontSize(fontSize, target?)
+ *   parallelTextColumns.setVerticalAlign(verticalAlign, target?)
+ *   parallelTextColumns.setColumnRatios(columnRatios, target?)
+ *   parallelTextColumns.setCompactText(compactText, target?)
+ *   parallelTextColumns.setBlockSpacing(blockSpacing, target?)
+ *   parallelTextColumns.getConfig()
+ *
+ * Notes:
+ *   - The script scans direct child elements of each configured content container.
+ *   - Tables and their immediately following blockquotes are skipped by default.
+ *   - The layout uses CSS Grid; unsupported browsers degrade to normal block flow.
+ *   - For strict CSP, pass styleNonce or set injectStyle:false and load the CSS file manually.
+ *   - For SSR/hydrated apps, load this after framework hydration or target static content only.
+ */
+
+(function (win, doc) {
+  'use strict';
+
+  var DEFAULT_CONFIG = {
+    selectors: ['.post-content', '.page-content', '.post-body', 'article .content', '.markdown-body'],
+    autoEnable: true,
+    autoRefresh: false,
+    autoRefreshDelay: 80,
+    includeHeadings: false,
+    skipSelectors: ['table'],
+    bodyTags: ['P', 'UL', 'OL', 'DL'],
+    headingTags: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+    fontSize: '15px',
+    compactText: true,
+    verticalAlign: 'start',
+    columnGap: '0.85rem',
+    mobileColumnGap: '0.45rem',
+    blockSpacing: '0.9rem',
+    dividerInset: '0.1rem',
+    dividerThickness: '1px',
+    dividerOpacity: 0.24,
+    rowRuleEnabled: true,
+    rowRuleMargin: '0.22rem 0',
+    rowRuleThickness: '1px',
+    rowRuleOpacity: 0.24,
+    responsiveBreakpointPx: 900,
+    injectStyle: true,
+    styleId: 'parallel-text-columns-style',
+    styleNonce: '',
+    columnRatios: {
+      1: [1],
+      2: [1.7, 1],
+      3: [1.7, 1, 1.3],
+      default: [1.7, 1, 1.3]
+    }
+  };
+
+  var CLASS = {
+    scope: 'ptc-scope',
+    row: 'ptc-row',
+    col: 'ptc-col',
+    divider: 'ptc-divider',
+    rowRule: 'ptc-row-rule'
+  };
+
+  var ATTR = {
+    enabled: 'data-ptc-enabled',
+    compact: 'data-ptc-compact',
+    cols: 'data-ptc-cols',
+    ratios: 'data-ptc-ratios'
+  };
+
+  var state = {
+    initialized: false,
+    options: null,
+    containers: [],
+    resizeBound: false,
+    resizeHandler: null,
+    loadHandler: null,
+    resizeObserver: null,
+    mutationObserver: null,
+    styleId: null,
+    pendingRefresh: [],
+    pendingTimer: null
+  };
+
+  /* Merge objects into a new object; parameters: one or more source objects. */
+  function mergeObjects() {
+    var out = {};
+    for (var i = 0; i < arguments.length; i += 1) {
+      var src = arguments[i];
+      if (!src) continue;
+      for (var key in src) {
+        if (Object.prototype.hasOwnProperty.call(src, key)) out[key] = src[key]; // Shallow merge is intentional.
+      }
+    }
+    return out;
+  }
+
+  /* Convert array-like values to arrays; parameters: value. */
+  function toArray(value) {
+    return Array.prototype.slice.call(value || []);
+  }
+
+  /* Return whether a value is a DOM element; parameters: node. */
+  function isElement(node) {
+    return !!node && node.nodeType === 1;
+  }
+
+  /* Return a safe tag name; parameters: node. */
+  function tagName(node) {
+    return isElement(node) && node.tagName ? String(node.tagName).toUpperCase() : '';
+  }
+
+  /* Check for a CSS class without requiring classList; parameters: element, className. */
+  function hasClass(el, className) {
+    if (!isElement(el)) return false;
+    return (' ' + el.className + ' ').indexOf(' ' + className + ' ') !== -1;
+  }
+
+  /* Add a CSS class without requiring classList; parameters: element, className. */
+  function addClass(el, className) {
+    if (!isElement(el) || hasClass(el, className)) return;
+    el.className = el.className ? el.className + ' ' + className : className; // Preserve existing classes.
+  }
+
+  /* Remove a CSS class without requiring classList; parameters: element, className. */
+  function removeClass(el, className) {
+    if (!isElement(el)) return;
+    el.className = (' ' + el.className + ' ').replace(' ' + className + ' ', ' ').replace(/^\s+|\s+$/g, '');
+  }
+
+  /* Match an element against a selector with vendor fallbacks; parameters: element, selector. */
+  function matchesSelector(el, selector) {
+    if (!isElement(el) || !selector) return false;
+    var fn = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    if (!fn) return false;
+    try {
+      return !!fn.call(el, selector);
+    } catch (err) {
+      return false; // Invalid selectors are ignored.
+    }
+  }
+
+  /* Query descendants safely; parameters: root, selector. */
+  function safeQueryAll(root, selector) {
+    if (!root || !selector || !root.querySelectorAll) return [];
+    try {
+      return toArray(root.querySelectorAll(selector));
+    } catch (err) {
+      return []; // Invalid selectors should not break the page.
+    }
+  }
+
+  /* Normalize a value into a string array; parameters: value, fallback. */
+  function normalizeStringArray(value, fallback) {
+    var list = Array.isArray(value) ? value.slice() : [value];
+    var out = [];
+    for (var i = 0; i < list.length; i += 1) {
+      if (typeof list[i] === 'string' && list[i].replace(/^\s+|\s+$/g, '')) out.push(list[i].replace(/^\s+|\s+$/g, ''));
+    }
+    return out.length ? out : fallback.slice();
+  }
+
+  /* Normalize tag names into uppercase strings; parameters: value, fallback. */
+  function normalizeTagList(value, fallback) {
+    var list = normalizeStringArray(value, fallback);
+    for (var i = 0; i < list.length; i += 1) list[i] = list[i].toUpperCase(); // Tag matching uses uppercase names.
+    return list;
+  }
+
+  /* Normalize CSS size values; parameters: value, fallback. */
+  function normalizeSize(value, fallback) {
+    if (typeof value === 'number' && isFinite(value)) return value + 'px';
+    if (typeof value === 'string' && value.replace(/^\s+|\s+$/g, '')) return value.replace(/^\s+|\s+$/g, '');
+    return fallback;
+  }
+
+  /* Normalize opacity into 0-1 range; parameters: value, fallback. */
+  function normalizeOpacity(value, fallback) {
+    var n = Number(value);
+    if (!isFinite(n)) return fallback;
+    if (n < 0) return 0;
+    if (n > 1) return 1;
+    return n;
+  }
+
+  /* Normalize vertical alignment; parameters: value. */
+  function normalizeVerticalAlign(value) {
+    var v = String(value || 'start').replace(/^\s+|\s+$/g, '').toLowerCase();
+    if (v === 'center' || v === 'middle') return 'center';
+    if (v === 'end' || v === 'bottom' || v === 'flex-end') return 'flex-end';
+    return 'flex-start';
+  }
+
+  /* Sanitize ratio arrays; parameters: list. */
+  function sanitizeRatios(list) {
+    var out = [];
+    if (!Array.isArray(list) || !list.length) return [1];
+    for (var i = 0; i < list.length; i += 1) {
+      var n = Number(list[i]);
+      out.push(isFinite(n) && n > 0 ? n : 1);
+    }
+    return out.length ? out : [1];
+  }
+
+  /* Normalize ratio map; parameters: input. */
+  function normalizeRatioMap(input) {
+    var result = {};
+    var key;
+    if (Array.isArray(input)) result.default = sanitizeRatios(input);
+    else if (input && typeof input === 'object') {
+      for (key in input) {
+        if (Object.prototype.hasOwnProperty.call(input, key)) result[key] = sanitizeRatios(input[key]);
+      }
+    }
+    if (!result.default) result.default = [1, 1, 1];
+    if (!result[1]) result[1] = [1];
+    if (!result[2]) result[2] = [1, 1];
+    if (!result[3]) result[3] = [1, 1, 1];
+    return result;
+  }
+
+  /* Resolve column ratios for a row; parameters: count, options. */
+  function getRatiosForCount(count, options) {
+    var map = options.columnRatios || {};
+    var ratios = sanitizeRatios(map[count] || map[String(count)] || map.default || [1]);
+    var out = ratios.slice(0, count);
+    while (out.length < count) out.push(1); // Missing ratios become equal-weight columns.
+    return out;
+  }
+
+  /* Return pre-load global config; parameters: none. */
+  function getPreloadConfig() {
+    return win.ParallelTextColumnsConfig || win.parallelTextColumnsConfig || null;
+  }
+
+  /* Normalize all configuration; parameters: input. */
+  function normalizeConfig(input) {
+    var cfg = mergeObjects(DEFAULT_CONFIG, input || {});
+    cfg.selectors = normalizeStringArray(cfg.selectors, DEFAULT_CONFIG.selectors);
+    cfg.skipSelectors = normalizeStringArray(cfg.skipSelectors, DEFAULT_CONFIG.skipSelectors);
+    cfg.bodyTags = normalizeTagList(cfg.bodyTags, DEFAULT_CONFIG.bodyTags);
+    cfg.headingTags = normalizeTagList(cfg.headingTags, DEFAULT_CONFIG.headingTags);
+    cfg.fontSize = normalizeSize(cfg.fontSize, DEFAULT_CONFIG.fontSize);
+    cfg.columnGap = normalizeSize(cfg.columnGap, DEFAULT_CONFIG.columnGap);
+    cfg.mobileColumnGap = normalizeSize(cfg.mobileColumnGap, DEFAULT_CONFIG.mobileColumnGap);
+    cfg.blockSpacing = normalizeSize(cfg.blockSpacing, DEFAULT_CONFIG.blockSpacing);
+    cfg.dividerInset = normalizeSize(cfg.dividerInset, DEFAULT_CONFIG.dividerInset);
+    cfg.dividerThickness = normalizeSize(cfg.dividerThickness, DEFAULT_CONFIG.dividerThickness);
+    cfg.rowRuleMargin = normalizeSize(cfg.rowRuleMargin, DEFAULT_CONFIG.rowRuleMargin);
+    cfg.rowRuleThickness = normalizeSize(cfg.rowRuleThickness, DEFAULT_CONFIG.rowRuleThickness);
+    cfg.dividerOpacity = normalizeOpacity(cfg.dividerOpacity, DEFAULT_CONFIG.dividerOpacity);
+    cfg.rowRuleOpacity = normalizeOpacity(cfg.rowRuleOpacity, DEFAULT_CONFIG.rowRuleOpacity);
+    cfg.responsiveBreakpointPx = Math.max(1, parseInt(cfg.responsiveBreakpointPx, 10) || DEFAULT_CONFIG.responsiveBreakpointPx);
+    cfg.autoRefreshDelay = Math.max(20, parseInt(cfg.autoRefreshDelay, 10) || DEFAULT_CONFIG.autoRefreshDelay);
+    cfg.verticalAlign = normalizeVerticalAlign(cfg.verticalAlign);
+    cfg.columnRatios = normalizeRatioMap(cfg.columnRatios);
+    cfg.autoEnable = cfg.autoEnable !== false;
+    cfg.autoRefresh = cfg.autoRefresh === true;
+    cfg.includeHeadings = cfg.includeHeadings === true;
+    cfg.compactText = cfg.compactText !== false;
+    cfg.rowRuleEnabled = cfg.rowRuleEnabled !== false;
+    cfg.injectStyle = cfg.injectStyle !== false;
+    cfg.styleId = typeof cfg.styleId === 'string' && cfg.styleId.replace(/^\s+|\s+$/g, '') ? cfg.styleId.replace(/^\s+|\s+$/g, '') : DEFAULT_CONFIG.styleId;
+    cfg.styleNonce = typeof cfg.styleNonce === 'string' ? cfg.styleNonce : '';
+    return cfg;
+  }
+
+  /* Run after DOM is parse-ready; parameters: callback. */
+  function onReady(callback) {
+    if (doc.readyState === 'loading') {
+      doc.addEventListener('DOMContentLoaded', callback, false);
+      return;
+    }
+    callback();
+  }
+
+  /* Build injected CSS text; parameters: options. */
+  function buildCSS(options) {
+    var bp = options.responsiveBreakpointPx + 'px';
+    return [
+      '.' + CLASS.scope + ' {',
+      ' --ptc-font-size: 15px;',
+      ' --ptc-gap: 0.85rem;',
+      ' --ptc-mobile-gap: 0.45rem;',
+      ' --ptc-block-spacing: 0.9rem;',
+      ' --ptc-divider-inset: 0.1rem;',
+      ' --ptc-divider-thickness: 1px;',
+      ' --ptc-divider-opacity: 0.24;',
+      ' --ptc-row-rule-margin: 0.22rem 0;',
+      ' --ptc-row-rule-thickness: 1px;',
+      ' --ptc-row-rule-opacity: 0.24;',
+      ' --ptc-col-justify: flex-start;',
+      '}',
+      '.' + CLASS.scope + ' p, .' + CLASS.scope + ' ul, .' + CLASS.scope + ' ol, .' + CLASS.scope + ' dl, .' + CLASS.scope + ' li, .' + CLASS.scope + ' blockquote {',
+      ' font-size: var(--ptc-font-size) !important;',
+      '}',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] p, .' + CLASS.scope + '[' + ATTR.compact + '="true"] ul, .' + CLASS.scope + '[' + ATTR.compact + '="true"] ol, .' + CLASS.scope + '[' + ATTR.compact + '="true"] dl, .' + CLASS.scope + '[' + ATTR.compact + '="true"] li, .' + CLASS.scope + '[' + ATTR.compact + '="true"] blockquote {',
+      ' margin: 0 !important;',
+      ' padding: 0 !important;',
+      ' border: 0 !important;',
+      '}',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] ul, .' + CLASS.scope + '[' + ATTR.compact + '="true"] ol { list-style-position: inside; }',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] li > ul, .' + CLASS.scope + '[' + ATTR.compact + '="true"] li > ol, .' + CLASS.scope + '[' + ATTR.compact + '="true"] li > dl { margin-top: 0 !important; margin-bottom: 0 !important; }',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] blockquote > :first-child { margin-top: 0 !important; }',
+      '.' + CLASS.scope + '[' + ATTR.compact + '="true"] blockquote > :last-child { margin-bottom: 0 !important; }',
+      '.' + CLASS.row + ' {',
+      ' display: grid;',
+      ' gap: var(--ptc-gap);',
+      ' align-items: stretch;',
+      ' position: relative;',
+      ' margin: 0 !important;',
+      '}',
+      '.' + CLASS.col + ' {',
+      ' min-width: 0;',
+      ' position: relative;',
+      ' display: flex;',
+      ' flex-direction: column;',
+      ' justify-content: var(--ptc-col-justify);',
+      ' align-self: stretch;',
+      '}',
+      '.' + CLASS.col + ' > :first-child { margin-top: 0 !important; }',
+      '.' + CLASS.col + ' > :last-child { margin-bottom: 0 !important; }',
+      '.' + CLASS.divider + ' {',
+      ' position: absolute;',
+      ' pointer-events: none;',
+      ' opacity: var(--ptc-divider-opacity);',
+      ' background: repeating-linear-gradient(to bottom, var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px, transparent 2px 6px);',
+      '}',
+      '.' + CLASS.scope + ' > * + * { margin-top: var(--ptc-block-spacing) !important; }',
+      '.' + CLASS.rowRule + ' {',
+      ' display: block;',
+      ' height: var(--ptc-row-rule-thickness);',
+      ' padding: 0;',
+      ' border: 0;',
+      ' opacity: var(--ptc-row-rule-opacity, var(--ptc-divider-opacity));',
+      ' margin: var(--ptc-row-rule-margin) !important;',
+      ' background: repeating-linear-gradient(to right, var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px, transparent 2px 6px);',
+      '}',
+      '.' + CLASS.scope + ' > .' + CLASS.row + ' + .' + CLASS.rowRule + ' { margin: var(--ptc-row-rule-margin) !important; }',
+      '.' + CLASS.scope + ' > .' + CLASS.rowRule + ' + .' + CLASS.row + ' { margin-top: 0 !important; }',
+      '@media (max-width: ' + bp + ') {',
+      ' .' + CLASS.row + ' { grid-template-columns: 1fr !important; gap: var(--ptc-mobile-gap); }',
+      ' .' + CLASS.divider + ' { background: repeating-linear-gradient(to right, var(--ptc-divider-color, var(--theme-color, var(--accent-color, var(--primary-color, var(--link-color, currentColor))))) 0 2px, transparent 2px 6px); }',
+      '}'
+    ].join('\n');
+  }
+
+  /* Insert or update CSS; parameters: options. */
+  function upsertStyle(options) {
+    if (state.styleId && state.styleId !== options.styleId) {
+      var stale = doc.getElementById(state.styleId);
+      if (stale && stale.parentNode) stale.parentNode.removeChild(stale); // Remove stale style when styleId changes.
+    }
+    state.styleId = options.styleId;
+    var oldStyle = doc.getElementById(options.styleId);
+    if (!options.injectStyle) {
+      if (oldStyle && oldStyle.parentNode) oldStyle.parentNode.removeChild(oldStyle); // External CSS mode.
+      return;
+    }
+    var css = buildCSS(options);
+    var style = oldStyle || doc.createElement('style');
+    style.id = options.styleId;
+    style.type = 'text/css';
+    if (options.styleNonce) style.setAttribute('nonce', options.styleNonce); // CSP-compatible style tag.
+    if (style.styleSheet) style.styleSheet.cssText = css;
+    else {
+      while (style.firstChild) style.removeChild(style.firstChild);
+      style.appendChild(doc.createTextNode(css));
+    }
+    if (!oldStyle) (doc.head || doc.getElementsByTagName('head')[0]).appendChild(style);
+  }
+
+  /* Apply visual CSS variables to one container; parameters: container, options. */
+  function applyContainerOptions(container, options) {
+    if (!isElement(container)) return;
+    addClass(container, CLASS.scope);
+    container.style.setProperty('--ptc-font-size', options.fontSize);
+    container.style.setProperty('--ptc-gap', options.columnGap);
+    container.style.setProperty('--ptc-mobile-gap', options.mobileColumnGap);
+    container.style.setProperty('--ptc-block-spacing', options.blockSpacing);
+    container.style.setProperty('--ptc-divider-inset', options.dividerInset);
+    container.style.setProperty('--ptc-divider-thickness', options.dividerThickness);
+    container.style.setProperty('--ptc-divider-opacity', String(options.dividerOpacity));
+    container.style.setProperty('--ptc-row-rule-margin', options.rowRuleMargin);
+    container.style.setProperty('--ptc-row-rule-thickness', options.rowRuleThickness);
+    container.style.setProperty('--ptc-row-rule-opacity', String(options.rowRuleOpacity));
+    container.style.setProperty('--ptc-col-justify', options.verticalAlign);
+    container.setAttribute(ATTR.compact, options.compactText ? 'true' : 'false');
+  }
+
+  /* Remove visual markers from one container; parameters: container. */
+  function clearContainerOptions(container) {
+    if (!isElement(container)) return;
+    removeClass(container, CLASS.scope);
+    container.removeAttribute(ATTR.compact);
+    container.style.removeProperty('--ptc-font-size');
+    container.style.removeProperty('--ptc-gap');
+    container.style.removeProperty('--ptc-mobile-gap');
+    container.style.removeProperty('--ptc-block-spacing');
+    container.style.removeProperty('--ptc-divider-inset');
+    container.style.removeProperty('--ptc-divider-thickness');
+    container.style.removeProperty('--ptc-divider-opacity');
+    container.style.removeProperty('--ptc-row-rule-margin');
+    container.style.removeProperty('--ptc-row-rule-thickness');
+    container.style.removeProperty('--ptc-row-rule-opacity');
+    container.style.removeProperty('--ptc-col-justify');
+  }
+
+  /* Return containers matching configured selectors; parameters: options. */
+  function collectContainers(options) {
+    var found = [];
+    for (var i = 0; i < options.selectors.length; i += 1) {
+      var nodes = safeQueryAll(doc, options.selectors[i]);
+      for (var j = 0; j < nodes.length; j += 1) {
+        if (found.indexOf(nodes[j]) === -1) found.push(nodes[j]); // Avoid duplicate selector matches.
+      }
+    }
+    return found;
+  }
+
+  /* Normalize target input to containers; parameters: target. */
+  function normalizeContainerInput(target) {
+    if (!target) return state.containers.slice();
+    if (typeof target === 'string') return safeQueryAll(doc, target);
+    if (isElement(target)) return [target];
+    if (Array.isArray(target)) {
+      var out = [];
+      for (var i = 0; i < target.length; i += 1) if (isElement(target[i])) out.push(target[i]);
+      return out;
+    }
+    return [];
+  }
+
+  /* Return whether a node is blockquote; parameters: node. */
+  function isBlockquote(node) {
+    return tagName(node) === 'BLOCKQUOTE';
+  }
+
+  /* Return whether a node is a list; parameters: node. */
+  function isList(node) {
+    var tag = tagName(node);
+    return tag === 'UL' || tag === 'OL' || tag === 'DL';
+  }
+
+  /* Return whether a node should be skipped; parameters: node, options. */
+  function isSkippedElement(node, options) {
+    if (!isElement(node)) return false;
+    if (tagName(node) === 'TABLE') return true;
+    for (var i = 0; i < options.skipSelectors.length; i += 1) {
+      if (matchesSelector(node, options.skipSelectors[i])) return true;
+    }
+    return false;
+  }
+
+  /* Return whether a node can start a body block; parameters: node, options. */
+  function isBodyStarter(node, options) {
+    var tag = tagName(node);
+    if (options.bodyTags.indexOf(tag) !== -1) return true;
+    return options.includeHeadings && options.headingTags.indexOf(tag) !== -1;
+  }
+
+  /* Collect one body block from direct children; parameters: children, startIndex, options. */
+  function collectBodyBlock(children, startIndex, options) {
+    var collected = [];
+    var start = children[startIndex];
+    if (!isBodyStarter(start, options)) return collected;
+    collected.push(start);
+    var i = startIndex + 1;
+    while (i < children.length && isList(children[i])) {
+      collected.push(children[i]); // Paragraph/list chains are treated as one source block.
+      i += 1;
+    }
+    return collected;
+  }
+
+  /* Create a column element and move nodes into it; parameters: nodes. */
+  function createColumn(nodes) {
+    var col = doc.createElement('div');
+    col.className = CLASS.col;
+    for (var i = 0; i < nodes.length; i += 1) col.appendChild(nodes[i]);
+    return col;
+  }
+
+  /* Create an internal column divider; parameters: none. */
+  function createDivider() {
+    var divider = doc.createElement('div');
+    divider.className = CLASS.divider;
+    divider.setAttribute('aria-hidden', 'true');
+    return divider;
+  }
+
+  /* Create a compact row separator; parameters: options. */
+  function createRowRule(options) {
+    var hr = doc.createElement('hr');
+    hr.className = CLASS.rowRule;
+    hr.setAttribute('aria-hidden', 'true');
+    if (!options.rowRuleEnabled) hr.style.display = 'none'; // Keeps DOM predictable when disabled.
+    return hr;
+  }
+
+  /* Create a parallel row from column groups; parameters: groups, options. */
+  function createRow(groups, options) {
+    var row = doc.createElement('div');
+    var ratios = getRatiosForCount(groups.length, options);
+    var cols = [];
+    row.className = CLASS.row;
+    row.setAttribute(ATTR.cols, String(groups.length));
+    row.setAttribute(ATTR.ratios, ratios.join(','));
+    for (var i = 0; i < ratios.length; i += 1) cols.push('minmax(0, ' + ratios[i] + 'fr)');
+    row.style.gridTemplateColumns = cols.join(' '); // Inline grid columns allow per-row ratios.
+    for (var j = 0; j < groups.length; j += 1) row.appendChild(createColumn(groups[j]));
+    for (var k = 1; k < groups.length; k += 1) row.appendChild(createDivider());
+    return row;
+  }
+
+  /* Return direct row columns; parameters: row. */
+  function getDirectColumns(row) {
+    var out = [];
+    var children = toArray(row.children);
+    for (var i = 0; i < children.length; i += 1) if (hasClass(children[i], CLASS.col)) out.push(children[i]);
+    return out;
+  }
+
+  /* Return direct row dividers; parameters: row. */
+  function getDirectDividers(row) {
+    var out = [];
+    var children = toArray(row.children);
+    for (var i = 0; i < children.length; i += 1) if (hasClass(children[i], CLASS.divider)) out.push(children[i]);
+    return out;
+  }
+
+  /* Resolve rendered gap in px; parameters: row. */
+  function getGapPx(row) {
+    var styles = win.getComputedStyle ? win.getComputedStyle(row) : null;
+    if (!styles) return 0;
+    var columnGap = parseFloat(styles.columnGap || styles.gridColumnGap);
+    if (isFinite(columnGap)) return columnGap;
+    var gap = parseFloat(styles.gap);
+    return isFinite(gap) ? gap : 0;
+  }
+
+  /* Return whether columns are stacked by responsive CSS; parameters: columns. */
+  function isStackedLayout(columns) {
+    if (columns.length < 2) return false;
+    return Math.round(columns[1].offsetTop) > Math.round(columns[0].offsetTop);
+  }
+
+  /* Update divider geometry for one row; parameters: row. */
+  function updateRowDividers(row) {
+    if (!isElement(row) || !(doc.documentElement || doc.body).contains(row)) return;
+    var columns = getDirectColumns(row);
+    var dividers = getDirectDividers(row);
+    if (columns.length <= 1) {
+      for (var d = 0; d < dividers.length; d += 1) dividers[d].style.display = 'none';
+      return;
+    }
+    var gapPx = getGapPx(row);
+    var stacked = isStackedLayout(columns);
+    var rowStyles = win.getComputedStyle ? win.getComputedStyle(row) : null;
+    var thickness = rowStyles ? rowStyles.getPropertyValue('--ptc-divider-thickness').replace(/^\s+|\s+$/g, '') : '1px';
+    var inset = rowStyles ? rowStyles.getPropertyValue('--ptc-divider-inset').replace(/^\s+|\s+$/g, '') : '0.1rem';
+    thickness = thickness || '1px';
+    inset = inset || '0.1rem';
+    for (var i = 0; i < dividers.length; i += 1) {
+      var divider = dividers[i];
+      divider.style.display = 'block';
+      if (stacked) {
+        var nextCol = columns[i + 1];
+        divider.style.left = '0';
+        divider.style.right = '0';
+        divider.style.top = (nextCol.offsetTop - gapPx / 2) + 'px';
+        divider.style.bottom = 'auto';
+        divider.style.width = 'auto';
+        divider.style.height = thickness;
+      } else {
+        var nextColumn = columns[i + 1];
+        divider.style.left = (nextColumn.offsetLeft - gapPx / 2) + 'px';
+        divider.style.right = 'auto';
+        divider.style.top = inset;
+        divider.style.bottom = inset;
+        divider.style.width = thickness;
+        divider.style.height = 'auto';
+      }
+    }
+  }
+
+  /* Update all row dividers in a container; parameters: container. */
+  function updateContainerDividers(container) {
+    if (!isElement(container)) return;
+    var rows = safeQueryAll(container, '.' + CLASS.row);
+    for (var i = 0; i < rows.length; i += 1) updateRowDividers(rows[i]);
+  }
+
+  /* Schedule divider updates after layout; parameters: container. */
+  function scheduleDividerUpdate(container) {
+    var raf = win.requestAnimationFrame || function (fn) { return win.setTimeout(fn, 16); };
+    raf(function () { updateContainerDividers(container); }); // Wait for layout to settle.
+  }
+
+  /* Observe one row for size changes; parameters: row. */
+  function observeRow(row) {
+    if (!('ResizeObserver' in win)) return;
+    if (!state.resizeObserver) {
+      state.resizeObserver = new win.ResizeObserver(function (entries) {
+        for (var i = 0; i < entries.length; i += 1) updateRowDividers(entries[i].target);
+      });
+    }
+    state.resizeObserver.observe(row);
+  }
+
+  /* Stop observing one row; parameters: row. */
+  function unobserveRow(row) {
+    if (state.resizeObserver && row) state.resizeObserver.unobserve(row);
+  }
+
+  /* Bind global layout refresh events; parameters: none. */
+  function bindGlobalResize() {
+    if (state.resizeBound) return;
+    state.resizeBound = true;
+    state.resizeHandler = function () {
+      for (var i = 0; i < state.containers.length; i += 1) scheduleDividerUpdate(state.containers[i]);
+    };
+    state.loadHandler = state.resizeHandler;
+    win.addEventListener('resize', state.resizeHandler, false);
+    win.addEventListener('load', state.loadHandler, false);
+  }
+
+  /* Unbind global layout refresh events; parameters: none. */
+  function unbindGlobalResize() {
+    if (!state.resizeBound) return;
+    win.removeEventListener('resize', state.resizeHandler, false);
+    win.removeEventListener('load', state.loadHandler, false);
+    state.resizeBound = false;
+    state.resizeHandler = null;
+    state.loadHandler = null;
+  }
+
+  /* Find configured containers related to a node; parameters: node. */
+  function findContainersForNode(node) {
+    var out = [];
+    if (!isElement(node)) node = node && node.parentNode;
+    if (!isElement(node) || !state.options) return out;
+    for (var i = 0; i < state.options.selectors.length; i += 1) {
+      var selector = state.options.selectors[i];
+      var cursor = node;
+      if (matchesSelector(cursor, selector) && out.indexOf(cursor) === -1) out.push(cursor);
+      while (cursor && cursor !== doc && isElement(cursor)) {
+        if (matchesSelector(cursor, selector) && out.indexOf(cursor) === -1) out.push(cursor);
+        cursor = cursor.parentNode;
+      }
+      var descendants = safeQueryAll(node, selector);
+      for (var j = 0; j < descendants.length; j += 1) if (out.indexOf(descendants[j]) === -1) out.push(descendants[j]);
+    }
+    return out;
+  }
+
+  /* Add containers to the debounced refresh queue; parameters: containers. */
+  function queueRefresh(containers) {
+    for (var i = 0; i < containers.length; i += 1) {
+      if (state.pendingRefresh.indexOf(containers[i]) === -1) state.pendingRefresh.push(containers[i]);
+    }
+    if (state.pendingTimer) win.clearTimeout(state.pendingTimer);
+    state.pendingTimer = win.setTimeout(function () {
+      var pending = state.pendingRefresh.slice();
+      state.pendingRefresh = [];
+      state.pendingTimer = null;
+      for (var j = 0; j < pending.length; j += 1) refresh(pending[j]);
+    }, state.options.autoRefreshDelay);
+  }
+
+  /* Start dynamic-content observation; parameters: none. */
+  function startAutoRefresh() {
+    stopAutoRefresh();
+    if (!state.options || !state.options.autoRefresh || !('MutationObserver' in win) || !doc.body) return;
+    state.mutationObserver = new win.MutationObserver(function (records) {
+      var containers = [];
+      for (var i = 0; i < records.length; i += 1) {
+        var added = records[i].addedNodes || [];
+        for (var j = 0; j < added.length; j += 1) {
+          var node = added[j];
+          if (!isElement(node) || hasClass(node, CLASS.row) || hasClass(node, CLASS.rowRule)) continue; // Ignore generated nodes.
+          var related = findContainersForNode(node);
+          for (var k = 0; k < related.length; k += 1) if (containers.indexOf(related[k]) === -1) containers.push(related[k]);
+        }
+      }
+      if (containers.length) queueRefresh(containers);
+    });
+    state.mutationObserver.observe(doc.body, { childList: true, subtree: true });
+  }
+
+  /* Stop dynamic-content observation; parameters: none. */
+  function stopAutoRefresh() {
+    if (state.mutationObserver) state.mutationObserver.disconnect();
+    state.mutationObserver = null;
+    if (state.pendingTimer) win.clearTimeout(state.pendingTimer);
+    state.pendingTimer = null;
+    state.pendingRefresh = [];
+  }
+
+  /* Run DOM mutation work while observer is paused; parameters: callback. */
+  function withAutoRefreshPaused(callback) {
+    var shouldRestart = !!(state.options && state.options.autoRefresh && state.mutationObserver);
+    if (shouldRestart) stopAutoRefresh();
+    try {
+      callback();
+    } finally {
+      if (shouldRestart) startAutoRefresh();
+    }
+  }
+
+  /* Rebuild a container into parallel rows; parameters: container, options. */
+  function rebuildContainer(container, options) {
+    if (!isElement(container)) return;
+    applyContainerOptions(container, options);
+    var children = toArray(container.children);
+    var fragment = doc.createDocumentFragment();
+    var i = 0;
+    var previousWasGeneratedRow = false;
+    while (i < children.length) {
+      var current = children[i];
+      if (!isElement(current)) {
+        i += 1;
+        continue;
+      }
+      if (hasClass(current, CLASS.rowRule)) {
+        i += 1;
+        continue; // Old generated rules are discarded on rebuild.
+      }
+      if (hasClass(current, CLASS.row)) {
+        previousWasGeneratedRow = true;
+        fragment.appendChild(current);
+        i += 1;
+        continue;
+      }
+      if (isSkippedElement(current, options)) {
+        fragment.appendChild(current);
+        previousWasGeneratedRow = false;
+        i += 1;
+        while (i < children.length && isBlockquote(children[i])) {
+          fragment.appendChild(children[i]); // Preserve table-related blockquotes.
+          i += 1;
+        }
+        continue;
+      }
+      if (!isBodyStarter(current, options)) {
+        fragment.appendChild(current);
+        previousWasGeneratedRow = false;
+        i += 1;
+        continue;
+      }
+      var bodyNodes = collectBodyBlock(children, i, options);
+      var groups = [bodyNodes];
+      i += bodyNodes.length;
+      while (i < children.length && isBlockquote(children[i])) {
+        groups.push([children[i]]);
+        i += 1;
+      }
+      if (previousWasGeneratedRow && options.rowRuleEnabled) fragment.appendChild(createRowRule(options)); // Compact HR between adjacent generated rows.
+      fragment.appendChild(createRow(groups, options));
+      previousWasGeneratedRow = true;
+    }
+    while (container.firstChild) container.removeChild(container.firstChild); // Drop whitespace and stale generated nodes.
+    container.appendChild(fragment);
+    container.setAttribute(ATTR.enabled, 'true');
+    var rows = safeQueryAll(container, '.' + CLASS.row);
+    for (var r = 0; r < rows.length; r += 1) observeRow(rows[r]);
+    scheduleDividerUpdate(container);
+  }
+
+  /* Restore a processed container to original document order; parameters: container. */
+  function restoreContainer(container) {
+    if (!isElement(container) || !container.hasAttribute(ATTR.enabled)) return;
+    var nodes = toArray(container.childNodes);
+    var fragment = doc.createDocumentFragment();
+    for (var i = 0; i < nodes.length; i += 1) {
+      var node = nodes[i];
+      if (isElement(node) && hasClass(node, CLASS.row)) {
+        unobserveRow(node);
+        var children = toArray(node.children);
+        for (var j = 0; j < children.length; j += 1) {
+          if (isElement(children[j]) && hasClass(children[j], CLASS.col)) {
+            while (children[j].firstChild) fragment.appendChild(children[j].firstChild); // Move original content back.
+          }
+        }
+      } else if (isElement(node) && hasClass(node, CLASS.rowRule)) {
+        continue; // Generated <hr> separators are not source content.
+      } else {
+        fragment.appendChild(node);
+      }
+    }
+    while (container.firstChild) container.removeChild(container.firstChild);
+    container.appendChild(fragment);
+    container.removeAttribute(ATTR.enabled);
+  }
+
+  /* Ensure API calls have initialized state; parameters: none. */
+  function ensureInitialized() {
+    if (!state.initialized) init();
+  }
+
+  /* Enable parallel layout; parameters: target optional container selector/element/list. */
+  function enable(target) {
+    ensureInitialized();
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) {
+        if (!isElement(containers[i])) continue;
+        applyContainerOptions(containers[i], state.options);
+        if (!containers[i].hasAttribute(ATTR.enabled)) rebuildContainer(containers[i], state.options);
+      }
+    });
+    return api;
+  }
+
+  /* Disable parallel layout and restore source order; parameters: target optional container selector/element/list. */
+  function disable(target) {
+    ensureInitialized();
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) restoreContainer(containers[i]);
+    });
+    return api;
+  }
+
+  /* Toggle parallel layout; parameters: target optional container selector/element/list. */
+  function toggle(target) {
+    ensureInitialized();
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      if (containers[i].hasAttribute(ATTR.enabled)) disable(containers[i]);
+      else enable(containers[i]);
+    }
+    return api;
+  }
+
+  /* Refresh and rebuild layout; parameters: target optional container selector/element/list. */
+  function refresh(target) {
+    ensureInitialized();
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) {
+      state.containers = collectContainers(state.options);
+      containers = state.containers.slice();
+    }
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) {
+        if (!isElement(containers[i])) continue;
+        if (containers[i].hasAttribute(ATTR.enabled)) restoreContainer(containers[i]);
+        rebuildContainer(containers[i], state.options);
+      }
+    });
+    return api;
+  }
+
+  /* Initialize the script; parameters: userOptions optional config object. */
+  function init(userOptions) {
+    if (state.initialized) return updateConfig(userOptions || {}, { rebuild: true });
+    state.options = normalizeConfig(mergeObjects(getPreloadConfig(), userOptions || {}));
+    upsertStyle(state.options);
+    bindGlobalResize();
+    state.containers = collectContainers(state.options);
+    for (var i = 0; i < state.containers.length; i += 1) applyContainerOptions(state.containers[i], state.options);
+    state.initialized = true;
+    if (state.options.autoEnable) enable();
+    startAutoRefresh();
+    return api;
+  }
+
+  /* Update runtime configuration; parameters: options, runtimeOptions. */
+  function updateConfig(options, runtimeOptions) {
+    var controls = runtimeOptions || {};
+    var rebuild = controls.rebuild !== false;
+    var wasInitialized = state.initialized;
+    var oldContainers = state.containers.slice();
+    var enabled = [];
+    if (!wasInitialized) return init(options || {});
+    for (var i = 0; i < oldContainers.length; i += 1) if (oldContainers[i].hasAttribute(ATTR.enabled)) enabled.push(oldContainers[i]);
+    state.options = normalizeConfig(mergeObjects(state.options, options || {}));
+    upsertStyle(state.options);
+    state.containers = collectContainers(state.options);
+    for (var a = 0; a < state.containers.length; a += 1) applyContainerOptions(state.containers[a], state.options);
+    if (rebuild) {
+      withAutoRefreshPaused(function () {
+        for (var b = 0; b < enabled.length; b += 1) restoreContainer(enabled[b]);
+        var targetContainers = state.options.autoEnable ? state.containers : enabled;
+        for (var c = 0; c < targetContainers.length; c += 1) rebuildContainer(targetContainers[c], state.options);
+      });
+    }
+    startAutoRefresh();
+    return api;
+  }
+
+  /* Destroy generated layout and listeners; parameters: target optional container selector/element/list. */
+  function destroy(target) {
+    ensureInitialized();
+    var scoped = !!target;
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    withAutoRefreshPaused(function () {
+      for (var i = 0; i < containers.length; i += 1) {
+        restoreContainer(containers[i]);
+        clearContainerOptions(containers[i]);
+      }
+    });
+    if (!scoped) {
+      stopAutoRefresh();
+      unbindGlobalResize();
+      if (state.resizeObserver) state.resizeObserver.disconnect();
+      state.resizeObserver = null;
+      state.containers = [];
+      state.options = null;
+      state.initialized = false;
+    }
+    return api;
+  }
+
+  /* Bind click handlers to toggles; parameters: buttonTarget, containerTarget. */
+  function bindToggleButton(buttonTarget, containerTarget) {
+    ensureInitialized();
+    var buttons = normalizeContainerInput(buttonTarget);
+    for (var i = 0; i < buttons.length; i += 1) {
+      buttons[i].addEventListener('click', function () { toggle(containerTarget); }, false);
+    }
+    return api;
+  }
+
+  /* Set body/list/blockquote font size; parameters: fontSize, target. */
+  function setFontSize(fontSize, target) {
+    ensureInitialized();
+    state.options.fontSize = normalizeSize(fontSize, state.options.fontSize);
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      addClass(containers[i], CLASS.scope);
+      containers[i].style.setProperty('--ptc-font-size', state.options.fontSize);
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
+  }
+
+  /* Set vertical column alignment; parameters: verticalAlign, target. */
+  function setVerticalAlign(verticalAlign, target) {
+    ensureInitialized();
+    state.options.verticalAlign = normalizeVerticalAlign(verticalAlign);
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      addClass(containers[i], CLASS.scope);
+      containers[i].style.setProperty('--ptc-col-justify', state.options.verticalAlign);
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
+  }
+
+  /* Set column ratios and rebuild enabled containers; parameters: columnRatios, target. */
+  function setColumnRatios(columnRatios, target) {
+    ensureInitialized();
+    state.options.columnRatios = normalizeRatioMap(columnRatios);
+    refresh(target);
+    return api;
+  }
+
+  /* Set compact text mode; parameters: compactText, target. */
+  function setCompactText(compactText, target) {
+    ensureInitialized();
+    state.options.compactText = compactText !== false;
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      containers[i].setAttribute(ATTR.compact, state.options.compactText ? 'true' : 'false');
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
+  }
+
+  /* Set direct-child block spacing; parameters: blockSpacing, target. */
+  function setBlockSpacing(blockSpacing, target) {
+    ensureInitialized();
+    state.options.blockSpacing = normalizeSize(blockSpacing, state.options.blockSpacing);
+    var containers = normalizeContainerInput(target);
+    if (!containers.length) containers = state.containers.slice();
+    for (var i = 0; i < containers.length; i += 1) {
+      addClass(containers[i], CLASS.scope);
+      containers[i].style.setProperty('--ptc-block-spacing', state.options.blockSpacing);
+      scheduleDividerUpdate(containers[i]);
+    }
+    return api;
+  }
+
+  /* Return a copy of the active config; parameters: none. */
+  function getConfig() {
+    ensureInitialized();
+    return mergeObjects(state.options);
+  }
+
+  var api = {
+    init: init,
+    updateConfig: updateConfig,
+    enable: enable,
+    disable: disable,
+    toggle: toggle,
+    refresh: refresh,
+    destroy: destroy,
+    bindToggleButton: bindToggleButton,
+    setFontSize: setFontSize,
+    setVerticalAlign: setVerticalAlign,
+    setColumnRatios: setColumnRatios,
+    setCompactText: setCompactText,
+    setBlockSpacing: setBlockSpacing,
+    getConfig: getConfig,
+    classes: mergeObjects(CLASS),
+    defaults: mergeObjects(DEFAULT_CONFIG)
+  };
+
+  win.parallelTextColumns = api;
+
+  onReady(function () {
+    if (!state.initialized) init(); // Plug-and-play default behavior.
+  });
+})(window, document);

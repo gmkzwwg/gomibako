@@ -1,5 +1,5 @@
 ---
-title: Literature - A Systematic Roadmap
+title: Literature - Learning Atlas
 layout: slide-multilingual
 categories: Atlas
 subclass: Basics

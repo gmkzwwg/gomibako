@@ -5,12 +5,12 @@ categories: Sheet
 subclass: Linux
 ---
 
-# Markdown Quick Reference
+## Markdown Quick Reference Table
 
 **Compatibility note:** Markdown behavior depends on the renderer. **GFM** means *GitHub Flavored Markdown*. **kramdown** is a Markdown-superset parser used heavily in Ruby/Jekyll-style workflows; its syntax includes extra features such as definition lists, attribute lists, footnotes, abbreviations, tables, and parser extensions.
 
 | Category               | Feature                       | Syntax                                                                    | Notes                                                                                                     |                       |
-| ---------------------- | ----------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------- |
+| ---------------------- | ----------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | 
 | **Document Structure** | Heading 1–6                   | `# H1`<br>`## H2`<br>`### H3`                                             | Use one space after `#`. Prefer one `H1` per document.                                                    |                       |
 | **Document Structure** | Setext heading                | `Heading 1`<br>`=========`<br><br>`Heading 2`<br>`---------`              | Supported by kramdown and many Markdown parsers.                                                          |                       |
 | **Document Structure** | Paragraph                     | `First paragraph.`<br><br>`Second paragraph.`                             | A blank line separates paragraphs.                                                                        |                       |
@@ -53,7 +53,7 @@ subclass: Linux
 | **Code**               | Indented code block           | `code`                                                                | Four spaces or one tab. Less explicit than fences.                                                        |                       |
 | **Tables**             | Basic table                   | `\| A \| B \|`<br>`\|---\|---\|`<br>`\| 1 \| 2 \|`                        | Pipe tables are widely supported in extended Markdown.                                                    |                       |
 | **Tables**             | Alignment                     | `\| Left \| Center \| Right \|`<br>`\|:---\|:---:\|---:\|`                | `:` controls alignment.                                                                                   |                       |
-| **Tables**             | Escape pipe                   | `` `a \| b` `` or `a \| b`                                                | Escape `                                                                                                  | ` inside table cells. |
+| **Tables**             | Escape pipe                   | `` `a \| b` `` or `a \| b`                                                | Escape `\|` inside table cells. |
 | **Tables**             | Cell merging                  | Not native                                                                | Use raw HTML table if colspan/rowspan is needed.                                                          |                       |
 | **HTML**               | Inline HTML                   | `<span class="x">text</span>`                                             | Many renderers allow inline HTML. Some sanitize it.                                                       |                       |
 | **HTML**               | Block HTML                    | `<details>`<br>`<summary>More</summary>`<br>`Hidden text`<br>`</details>` | Common for collapsible sections.                                                                          |                       |
@@ -93,14 +93,14 @@ subclass: Linux
 | **Best Practice**      | Use descriptive anchors       | `{: #clear-id}`                                                           | Stable links survive heading edits.                                                                       |                       |
 | **Best Practice**      | Check renderer output         | Preview before publishing                                                 | Especially important for tables, math, Mermaid, and kramdown attributes.                                  |                       |
 
-# A Compact Guide to Building a Personal Knowledge Base
+## A Compact Guide to Building a Personal Knowledge Base
 
 {: #top .article-title}
 
 * TOC
 {:toc}
 
-## 1. Why Build a Knowledge Base?
+### 1. Why Build a Knowledge Base?
 
 A **personal knowledge base** helps you collect, connect, and review ideas. It is useful for students, researchers, programmers, and writers.
 
@@ -117,14 +117,14 @@ The basic workflow is simple:
 
 For this article, we will build a small note system using plain text, Markdown, and a few repeatable habits.
 
-## 2. Basic Formatting
+### 2. Basic Formatting
 
 Markdown supports *italic*, **bold**, ***bold italic***, `inline code`, ~~deleted text~~, and <u>underlined text through HTML</u>.
 
 You can also escape special characters:
 
 \*This is not italic.\*  
-\# This is not a heading.
+\## This is not a heading.
 
 Abbreviations can be defined in kramdown:
 
@@ -137,7 +137,7 @@ A PKB can be written in Markdown and exported to HTML.
 
 A line separates.
 
-## 3. Folder Structure
+### 3. Folder Structure
 
 A small knowledge base may look like this:
 
@@ -162,7 +162,7 @@ Example:
 touch 2026-05-03-markdown-reference.md
 ```
 
-## 4. Lists and Tasks
+### 4. Lists and Tasks
 
 Use unordered lists for concepts:
 
@@ -186,7 +186,7 @@ Use task lists for action tracking:
 * [ ] Review notes every Friday
 * [ ] Write one summary article per month
 
-## 5. Links and Images
+### 5. Links and Images
 
 Inline link:
 
@@ -210,7 +210,7 @@ Linked image:
 
 [![Markdown logo](./assets/markdown-logo.png)](https://daringfireball.net/projects/markdown/)
 
-## 6. Tables
+### 6. Tables
 
 | Note Type | Purpose | Example | Review Frequency |
 |:---|:---|:---|---:|
@@ -231,7 +231,7 @@ Markdown tables do not support merged cells directly. Use raw HTML if needed:
   </tr>
 </table>
 
-## 7. Definition Lists
+### 7. Definition Lists
 
 Knowledge base
 : A structured collection of notes, references, and ideas.
@@ -242,7 +242,7 @@ Atomic note
 Evergreen note
 : A note that improves over time through revision.
 
-## 8. Code Blocks
+### 8. Code Blocks
 
 Inline code is useful for names such as `README.md`, `git status`, or `org-mode`.
 
@@ -262,7 +262,7 @@ kramdown also supports tilde fences:
 puts "Markdown can be parsed by kramdown."
 ~~~
 
-## 9. Math
+### 9. Math
 
 A simple review model can use exponential decay:
 
@@ -281,7 +281,7 @@ $$
 I_{n+1} = I_n \times q
 $$
 
-## 10. Mermaid Diagram
+### 10. Mermaid Diagram
 
 ```mermaid
 flowchart LR
@@ -316,7 +316,7 @@ pie
     "Planning" : 10
 ```
 
-## 11. Footnotes
+### 11. Footnotes
 
 A note should cite its source when the idea comes from a book, article, lecture, or conversation.[^source]
 
@@ -328,14 +328,14 @@ A footnote can contain multiple paragraphs.[^long-note]
 
     This is the second paragraph of the same footnote.
 
-## 12. kramdown Attribute Lists
+### 12. kramdown Attribute Lists
 
 This paragraph has a custom class and ID.
 {: .warning #important-warning}
 
 You can also assign attributes to headings:
 
-### A Heading with a Stable Anchor
+#### A Heading with a Stable Anchor
 
 {: #stable-anchor .custom-heading}
 
@@ -348,7 +348,7 @@ Reusable attribute lists:
 This paragraph uses a reusable attribute list.
 {: .box-style}
 
-## 13. kramdown Parser Extensions
+### 13. kramdown Parser Extensions
 
 A comment block can be hidden from output:
 
@@ -366,7 +366,7 @@ Parser options can be changed inside a document:
 
 {::options auto_ids="true" /}
 
-## 14. Collapsible HTML Section
+### 14. Collapsible HTML Section
 
 <details>
 <summary>Click to show a short review checklist</summary>
@@ -378,7 +378,7 @@ Parser options can be changed inside a document:
 
 </details>
 
-## 15. Final Checklist
+### 15. Final Checklist
 
 Before publishing a Markdown document:
 
@@ -389,7 +389,7 @@ Before publishing a Markdown document:
 * [ ] Test links and anchors.
 * [ ] Check whether your renderer supports kramdown extensions.
 
-## Appendix: Quick Syntax Reminder
+### Appendix: Quick Syntax Reminder
 
 | Feature | Syntax |
 |:---|:---|

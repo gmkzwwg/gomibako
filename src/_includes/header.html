@@ -1,52 +1,63 @@
-{% if page.toc != nil %}
-{% assign resolved_toc_mode = page.toc %}
-{% else %}
-{% assign resolved_toc_mode = site.ui.toc.mode %}
-{% endif %}
+{% assign auto_maximize = false %}
 
 {% case page.layout %}
 {% when "collection" %}
 {% assign layout_name = "collection mode" %}
-{% assign show_toc_mode = resolved_toc_mode | default: false %}
+{% assign show_toc_mode = page.toc | default: false %}
+
 {% when "index" %}
 {% assign layout_name = "index mode" %}
-{% assign show_toc_mode = resolved_toc_mode | default: false %}
+{% assign show_toc_mode = page.toc | default: false %}
+
 {% when "post-bilingual" %}
 {% assign layout_name = "bilingual mode" %}
-{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
+{% assign show_toc_mode = page.toc | default: "list" %}
+
 {% when "post-compact" %}
 {% assign layout_name = "compact mode" %}
-{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
+{% assign show_toc_mode = page.toc | default: "list" %}
+{% assign auto_maximize = true %}
+
 {% when "post-parallel" %}
 {% assign layout_name = "parallel mode" %}
-{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
+{% assign show_toc_mode = page.toc | default: "list" %}
+{% assign auto_maximize = true %}
+
 {% when "post" %}
 {% assign layout_name = "post mode" %}
-{% assign show_toc_mode = resolved_toc_mode | default: "list" %}
+{% assign show_toc_mode = page.toc | default: "list" %}
+
 {% when "post-list" %}
 {% assign layout_name = "post list mode" %}
-{% assign show_toc_mode = resolved_toc_mode | default: false %}
+{% assign show_toc_mode = page.toc | default: false %}
+
 {% when "slide-annotation" %}
 {% assign layout_name = "annotation mode" %}
 {% assign show_toc_mode = false %}
+
 {% when "slide-linear" %}
 {% assign layout_name = "linear slide" %}
 {% assign show_toc_mode = false %}
+
 {% when "slide-multilingual" %}
 {% assign layout_name = "multilingual mode" %}
 {% assign show_toc_mode = false %}
+
 {% when "slide-simple" %}
 {% assign layout_name = "simple slide" %}
 {% assign show_toc_mode = false %}
+
 {% when "slide-tree" %}
 {% assign layout_name = "tree slide" %}
 {% assign show_toc_mode = false %}
+
 {% when "slide-wiki" %}
 {% assign layout_name = "wiki mode" %}
 {% assign show_toc_mode = false %}
+
 {% else %}
 {% assign layout_name = "chaos mode" %}
-{% assign show_toc_mode = false %}
+{% assign show_toc_mode = page.toc | default: false %}
 {% endcase %}
 
 {% assign mode_label = layout_name | default: false %}
@@ -246,112 +257,138 @@
   (() => {
     'use strict';
 
-    const actions = {
-      'decrypt': handleDecrypt,
-      'open-collections': () => window.open_collection_list?.(),
-      'toggle-bilingual': () => window.BilingualToggle?.toggleAll?.(),
-      'toggle-maximize': handleMaximize,
-      'toggle-parallel': () => window.parallelTextColumns?.toggle?.('.post-content'),
-      'toggle-toc': handleToc
-    };
+    const SHOULD_AUTO_MAXIMIZE = {{ auto_maximize | default: false | jsonify
+  }};
 
-    const get = (selector, root = document) => root.querySelector(selector);
-    const getAll = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const actions = {
+    'decrypt': handleDecrypt,
+    'open-collections': () => window.open_collection_list?.(),
+    'toggle-bilingual': () => window.BilingualToggle?.toggleAll?.(),
+    'toggle-maximize': handleMaximize,
+    'toggle-parallel': () => window.parallelTextColumns?.toggle?.('.post-content'),
+    'toggle-toc': handleToc
+  };
 
-    function setExpanded(control, value) {
-      control.setAttribute('aria-expanded', String(value));
+  const get = (selector, root = document) => root.querySelector(selector);
+  const getAll = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+  function setExpanded(control, value) {
+    control.setAttribute('aria-expanded', String(value));
+  }
+
+  function handleToc(control) {
+    const toc = get('#popup_toc');
+    if (!toc) return;
+
+    const isOpen = toc.classList.toggle('show');
+    setExpanded(control, isOpen);
+  }
+
+  function handleMaximize(control) {
+    const container = get('#ctner');
+    if (!container) return;
+
+    const isMaximized = container.classList.toggle('is-maximized');
+    const label = get('[data-maximize-label]', control);
+
+    setExpanded(control, isMaximized);
+
+    if (label) {
+      label.textContent = isMaximized ? 'Restore' : 'Maximize';
+    }
+  }
+
+  function autoMaximize() {
+    const container = get('#ctner');
+    if (!container) return;
+
+    container.classList.add('is-maximized');
+
+    const control = get('[data-action="toggle-maximize"]');
+    if (!control) return;
+
+    setExpanded(control, true);
+
+    const label = get('[data-maximize-label]', control);
+    if (label) {
+      label.textContent = 'Restore';
+    }
+  }
+
+  function decryptAll(password, className) {
+    const targets = getAll(`.${className}`);
+
+    if (!targets.length) {
+      console.info('No encrypted texts found.');
+      return false;
     }
 
-    function handleToc(control) {
-      const toc = get('#popup_toc');
-      if (!toc) return;
+    for (const target of targets) {
+      const encrypted = target.id || '';
 
-      const isOpen = toc.classList.toggle('show');
-      setExpanded(control, isOpen);
-    }
-
-    function handleMaximize(control) {
-      const container = get('#ctner');
-      if (!container) return;
-
-      const isMaximized = container.classList.toggle('is-maximized');
-      const label = get('[data-maximize-label]', control);
-
-      setExpanded(control, isMaximized);
-
-      if (label) {
-        label.textContent = isMaximized ? 'Restore' : 'Maximize';
-      }
-    }
-
-    function decryptAll(password, className) {
-      const targets = getAll(`.${className}`);
-
-      if (!targets.length) {
-        console.info('No encrypted texts found.');
+      if (encrypted.length <= 22) {
+        console.warn('Invalid encrypted payload.');
         return false;
       }
 
-      for (const target of targets) {
-        const encrypted = target.id || '';
-
-        if (encrypted.length <= 22) {
-          console.warn('Invalid encrypted payload.');
-          return false;
-        }
-
-        const payload = JSON.stringify({
-          iv: `${encrypted.slice(0, 22)}==`,
-          salt: '',
-          ct: encrypted.slice(22)
-        });
-
-        try {
-          target.textContent = window.sjcl.json.decrypt(password, payload);
-        } catch (error) {
-          window.alert('Invalid Access Token!');
-          return false;
-        }
-      }
-
-      return true;
-    }
-
-    function handleDecrypt() {
-      const input = get('#access-token');
-      const form = get('[data-token-form]');
-
-      if (!input) return;
-
-      if (decryptAll(input.value, 'encrypted')) {
-        input.value = '';
-        form?.classList.add('is-hidden');
-      }
-    }
-
-    function bindActions() {
-      getAll('[data-action]').forEach((control) => {
-        control.addEventListener('click', (event) => {
-          const action = event.currentTarget.dataset.action;
-          const handler = actions[action];
-
-          if (!handler) return;
-
-          event.preventDefault();
-          handler(event.currentTarget);
-        });
+      const payload = JSON.stringify({
+        iv: `${encrypted.slice(0, 22)}==`,
+        salt: '',
+        ct: encrypted.slice(22)
       });
 
-      const tokenInput = get('#access-token');
+      try {
+        target.textContent = window.sjcl.json.decrypt(password, payload);
+      } catch (error) {
+        window.alert('Invalid Access Token!');
+        return false;
+      }
+    }
 
-      tokenInput?.addEventListener('keydown', (event) => {
-        if (event.key !== 'Enter') return;
+    return true;
+  }
+
+  function handleDecrypt() {
+    const input = get('#access-token');
+    const form = get('[data-token-form]');
+
+    if (!input) return;
+
+    if (decryptAll(input.value, 'encrypted')) {
+      input.value = '';
+      form?.classList.add('is-hidden');
+    }
+  }
+
+  function bindActions() {
+    getAll('[data-action]').forEach((control) => {
+      control.addEventListener('click', (event) => {
+        const action = event.currentTarget.dataset.action;
+        const handler = actions[action];
+
+        if (!handler) return;
 
         event.preventDefault();
-        handleDecrypt();
+        handler(event.currentTarget);
       });
-    }
+    });
 
-    document.addEventListener('DOMContentLoaded', bindActions);
-  })();
+    const tokenInput = get('#access-token');
+
+    tokenInput?.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter') return;
+
+      event.preventDefault();
+      handleDecrypt();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    bindActions();
+
+    if (SHOULD_AUTO_MAXIMIZE) {
+      autoMaximize();
+    }
+  });
+  }) ();
 </script>

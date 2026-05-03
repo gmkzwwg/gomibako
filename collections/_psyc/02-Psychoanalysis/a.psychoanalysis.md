@@ -1,5 +1,5 @@
 ---
-title: Psychoanalysis - A Systematic Roadmap
+title: Psychoanalysis - Learning Atlas
 categories: Atlas
 subclass: Psychoanalysis
 ---

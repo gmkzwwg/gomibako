@@ -1,343 +1,949 @@
-/* bilingual.js
+/*!
+ * bilingual.js
  *
- * 更新点：
- * 1) 可在 JS 配置是否显示“单独按钮”（showButton，默认 true）。
- *    - showButton=false：目标标签彻底隐藏（display:none），不插入任何按钮。
- * 2) toggle 按钮在目标标签外（作为其外层 wrapper 的第一个子节点），点击直接展开/隐藏整个标签。
- * 3) JS 一加载（DOM ready 后）默认把所有目标标签隐藏；若 showButton=true 则留下展开按钮。
+ * Introduction:
+ *   A plug-and-play bilingual content toggler. It scans configured page elements,
+ *   collapses or hides them by default, and optionally inserts accessible toggle
+ *   buttons before each target element. The script is designed for static pages,
+ *   documentation sites, Markdown-rendered pages, and controlled dynamic content.
  *
- * 用法（head 中也可）：
- *   <script>
- *     window.BilingualToggleConfig = {
- *       selector: "blockquote",      // 目标选择器
- *       defaultCollapsed: true,      // 默认折叠（你的需求）
- *       showButton: true,            // 默认显示按钮；false 则彻底隐藏
- *       buttonIndentEm: 1.4          // 按钮占位缩进（展开时给标签补的左内边距，单位 em）
- *     };
- *   </script>
- *   <script src="/assets/bilingual.js"></script>
+ * Usage:
+ *   1. Edit DEFAULT_CONFIG below for site-wide behavior.
+ *   2. Optionally define window.BilingualToggleConfig before this file is loaded.
+ *   3. Include this file with <script src="/assets/bilingual.js" defer></script>.
+ *   4. Optional runtime updates: window.BilingualToggle.updateConfig({ showButton: true }).
  *
- * API：
- *   BilingualToggle.expandAll()
- *   BilingualToggle.collapseAll()
- *   BilingualToggle.toggleAll()
- *   BilingualToggle.toggle(el)        // el 可为目标元素或其外层 wrapper
- *   BilingualToggle.refresh()         // 动态内容再扫描
+ * Global API:
+ *   window.BilingualToggle.getConfig()
+ *   window.BilingualToggle.updateConfig(partialConfig, options)
+ *   window.BilingualToggle.refresh(root)
+ *   window.BilingualToggle.toggle(elementOrSelector)
+ *   window.BilingualToggle.expandAll(selectorOverride)
+ *   window.BilingualToggle.collapseAll(selectorOverride)
+ *   window.BilingualToggle.toggleAll(selectorOverride, expandIfMixed)
+ *   window.BilingualToggle.destroy()
+ *
+ * Notes:
+ *   - No manual initialization is required for default behavior.
+ *   - Elements can opt out with data-bt="0" or data-bt-skip="1".
+ *   - Per-element defaults can use data-bt-default="expanded" or "collapsed".
+ *   - Per-element buttons can be disabled with data-bt-button="0".
+ *   - Per-element button labels can use data-bt-label="translated paragraph".
+ *   - wrapperTagName must be valid for the target's parent structure; div is safe for blockquote.
+ *   - Strict CSP sites can use styleNonce or injectStyle:false plus an external stylesheet.
+ *   - The syntax is ES5-compatible, but modern DOM APIs such as querySelectorAll are required.
  */
 
-(function (w, d) {
+(function bilingualToggleFactory(global, doc) {
   "use strict";
 
-  var DEFAULTS = {
-    selector: "blockquote",
-    defaultCollapsed: true,
+  if (!global || !doc) return;
 
-    // 新增：是否显示外置按钮
-    showButton: false,
+  var DEFAULT_CONFIG = {
+    selector: "blockquote",                 // Target elements for bilingual content.
+    defaultCollapsed: true,                  // Initial collapsed state when no element override exists.
+    showButton: false,                       // False hides targets without inserting toggle buttons.
+    collapsedText: "▸",                     // Button text when the target is collapsed.
+    expandedText: "▾",                      // Button text when the target is expanded.
+    expandLabel: "Expand bilingual content",// Accessible label for collapsed buttons.
+    collapseLabel: "Collapse bilingual content", // Accessible label for expanded buttons.
+    buttonTitle: "",                        // Optional title attribute for toggle buttons.
+    buttonIndentEm: 1.4,                     // Left padding reserved for an absolutely positioned button.
+    wrapperTagName: "div",                  // Wrapper tag; use div for block targets such as blockquote.
+    wrapperDisplay: "block",                // Allowed values: block, inline-block, inline.
+    stripStyleWhenCollapsed: true,           // Collapse wrapper spacing when only the button remains.
+    autoRefresh: false,                      // Observe DOM changes and process new targets automatically.
+    autoRefreshDebounceMs: 100,              // Debounce interval for mutation-driven refresh.
+    injectStyle: true,                       // False disables runtime style injection for strict CSP sites.
+    styleNonce: "",                         // Optional CSP nonce copied to the injected style element.
+    styleId: "bilingual-toggle-style",      // ID used for the injected stylesheet.
+    targetIdPrefix: "bt-target-",           // Prefix for generated target IDs used by aria-controls.
+    extraWrapperClass: "",                  // Extra class names applied to generated wrappers.
+    extraButtonClass: "",                   // Extra class names applied to generated buttons.
+    extraTargetClass: ""                    // Extra class names applied to processed targets.
+  };
 
-    collapsedText: "▸",
-    expandedText: "▾",
+  var CLASS = {
+    wrap: "bt-wrap",
+    hasButton: "bt-has-button",
+    target: "bt-target",
+    toggle: "bt-toggle",
+    collapsed: "bt-collapsed",
+    hidden: "bt-fully-hidden"
+  };
 
-    // 外置按钮不占行：用绝对定位叠在目标标签左上角，并给目标标签增加左内边距避让
-    buttonIndentEm: 1.4,
-
-    // 折叠时尽量去掉常见缩进/边框（不同主题差异大）
-    stripStyleWhenCollapsed: true,
-
-    styleId: "bilingual-toggle-style"
+  var ATTR = {
+    processed: "data-bt-processed",
+    state: "data-bt-state",
+    generatedId: "data-bt-generated-id",
+    skip: "data-bt-skip",
+    enabled: "data-bt",
+    defaultState: "data-bt-default",
+    button: "data-bt-button",
+    label: "data-bt-label"
   };
 
   var state = {
     inited: false,
-    options: null
+    config: null,
+    observer: null,
+    refreshTimer: null,
+    pendingRoots: [],
+    ignoreMutations: false,
+    uid: 0
   };
 
-  function assign(a, b) {
-    var o = {};
-    var k;
-    for (k in a) o[k] = a[k];
-    if (b) for (k in b) o[k] = b[k];
-    return o;
-  }
+  /** Merge plain objects; @param {Object} base; @param {Object=} patch; @returns {Object}. */
+  function merge(base, patch) {
+    var out = {};
+    var key;
 
-  function onReady(fn) {
-    if (d.readyState === "loading") d.addEventListener("DOMContentLoaded", fn, { once: true });
-    else fn();
-  }
+    base = base || {};
+    patch = patch || {};
 
-  function injectStyle(id, cssText) {
-    if (d.getElementById(id)) return;
-    var style = d.createElement("style");
-    style.id = id;
-    style.type = "text/css";
-    style.appendChild(d.createTextNode(cssText));
-    d.head.appendChild(style);
-  }
-
-  function buildCSS(opts) {
-    var strip = opts.stripStyleWhenCollapsed ? 1 : 0;
-    var indent = Number(opts.buttonIndentEm);
-    if (!isFinite(indent) || indent < 0) indent = 1.4;
-
-    return (
-      "/* bilingual-toggle injected css */\n" +
-      ".bt-wrap{position:relative;}\n" +
-      ".bt-wrap .bt-toggle{" +
-        "appearance:none;-webkit-appearance:none;border:0;background:transparent;" +
-        "padding:0;margin:0;cursor:pointer;font:inherit;line-height:1;" +
-        "display:inline-block;" +
-      "}\n" +
-      ".bt-wrap .bt-toggle:focus{outline:2px solid currentColor;outline-offset:2px;}\n" +
-
-      /* 按钮外置：叠在目标标签左上角，不单独占一行（不额外推高内容行） */
-      ".bt-wrap.bt-has-button>.bt-toggle{" +
-        "position:absolute;left:0;top:0;" +
-      "}\n" +
-      ".bt-wrap.bt-has-button>.bt-target{" +
-        "padding-left:" + indent + "em !important;" +
-      "}\n" +
-
-      /* 折叠：隐藏整个标签，只留按钮 */
-      ".bt-target.bt-collapsed{display:none !important;}\n" +
-      ".bt-wrap.bt-collapsed>.bt-target{display:none !important;}\n" +
-
-      /* 若不显示按钮：彻底隐藏（同样用 bt-collapsed 控制） */
-      ".bt-target.bt-fully-hidden{display:none !important;}\n" +
-
-      (strip
-        ? ".bt-wrap.bt-collapsed{margin:0 !important;padding:0 !important;}\n" +
-          ".bt-wrap.bt-collapsed>.bt-toggle{position:static !important;}\n"
-        : "")
-    );
-  }
-
-  function makeButton() {
-    var button = d.createElement("button");
-    button.type = "button";
-    button.className = "bt-toggle";
-    button.textContent = "";
-    return button;
-  }
-
-  function getWrapAndTarget(el) {
-    if (!el || el.nodeType !== 1) return null;
-
-    if (el.classList.contains("bt-wrap")) {
-      var t = el.querySelector(":scope > .bt-target") || el.querySelector(".bt-target");
-      return t ? { wrap: el, target: t } : null;
+    for (key in base) {
+      if (Object.prototype.hasOwnProperty.call(base, key)) out[key] = base[key];
+    }
+    for (key in patch) {
+      if (Object.prototype.hasOwnProperty.call(patch, key)) out[key] = patch[key];
     }
 
-    if (el.classList.contains("bt-target")) {
-      var p = el.parentElement;
-      if (p && p.classList.contains("bt-wrap")) return { wrap: p, target: el };
-      return { wrap: null, target: el };
+    return out;
+  }
+
+  /** Convert a value to a finite number; @param {*} value; @param {number} fallback; @returns {number}. */
+  function toFiniteNumber(value, fallback) {
+    var num = Number(value);
+    return isFinite(num) ? num : fallback;
+  }
+
+  /** Convert a value to a boolean; @param {*} value; @param {boolean} fallback; @returns {boolean}. */
+  function toBoolean(value, fallback) {
+    if (typeof value === "boolean") return value;
+    if (value === "true") return true;
+    if (value === "false") return false;
+    return fallback;
+  }
+
+  /** Normalize a tag name for generated wrappers; @param {*} value; @returns {string}. */
+  function normalizeTagName(value) {
+    var tag = String(value || DEFAULT_CONFIG.wrapperTagName).toLowerCase();
+    return /^[a-z][a-z0-9-]*$/.test(tag) ? tag : DEFAULT_CONFIG.wrapperTagName;
+  }
+
+  /** Normalize wrapper display to safe CSS values; @param {*} value; @returns {string}. */
+  function normalizeWrapperDisplay(value) {
+    var display = String(value || DEFAULT_CONFIG.wrapperDisplay).toLowerCase();
+    if (display === "block" || display === "inline-block" || display === "inline") return display;
+    return DEFAULT_CONFIG.wrapperDisplay;
+  }
+
+  /** Normalize user configuration; @param {Object} config; @returns {Object}. */
+  function normalizeConfig(config) {
+    var normalized = merge(DEFAULT_CONFIG, config || {});
+
+    normalized.selector = String(normalized.selector || DEFAULT_CONFIG.selector);
+    normalized.defaultCollapsed = toBoolean(normalized.defaultCollapsed, DEFAULT_CONFIG.defaultCollapsed);
+    normalized.showButton = toBoolean(normalized.showButton, DEFAULT_CONFIG.showButton);
+    normalized.collapsedText = String(normalized.collapsedText);
+    normalized.expandedText = String(normalized.expandedText);
+    normalized.expandLabel = String(normalized.expandLabel || DEFAULT_CONFIG.expandLabel);
+    normalized.collapseLabel = String(normalized.collapseLabel || DEFAULT_CONFIG.collapseLabel);
+    normalized.buttonTitle = String(normalized.buttonTitle || "");
+    normalized.buttonIndentEm = Math.max(0, toFiniteNumber(normalized.buttonIndentEm, DEFAULT_CONFIG.buttonIndentEm));
+    normalized.wrapperTagName = normalizeTagName(normalized.wrapperTagName);
+    normalized.wrapperDisplay = normalizeWrapperDisplay(normalized.wrapperDisplay);
+    normalized.stripStyleWhenCollapsed = toBoolean(normalized.stripStyleWhenCollapsed, DEFAULT_CONFIG.stripStyleWhenCollapsed);
+    normalized.autoRefresh = toBoolean(normalized.autoRefresh, DEFAULT_CONFIG.autoRefresh);
+    normalized.autoRefreshDebounceMs = Math.max(0, toFiniteNumber(normalized.autoRefreshDebounceMs, DEFAULT_CONFIG.autoRefreshDebounceMs));
+    normalized.injectStyle = toBoolean(normalized.injectStyle, DEFAULT_CONFIG.injectStyle);
+    normalized.styleNonce = String(normalized.styleNonce || "");
+    normalized.styleId = String(normalized.styleId || DEFAULT_CONFIG.styleId);
+    normalized.targetIdPrefix = String(normalized.targetIdPrefix || DEFAULT_CONFIG.targetIdPrefix);
+    normalized.extraWrapperClass = String(normalized.extraWrapperClass || "");
+    normalized.extraButtonClass = String(normalized.extraButtonClass || "");
+    normalized.extraTargetClass = String(normalized.extraTargetClass || "");
+
+    return normalized;
+  }
+
+  /** Normalize update options; @param {Object=} options; @returns {Object}. */
+  function normalizeUpdateOptions(options) {
+    options = options || {};
+
+    return {
+      rebuild: options.rebuild !== false,            // Rebuild wrappers and button state by default.
+      preserveState: options.preserveState !== false // Keep current collapsed states by default.
+    };
+  }
+
+  /** Return true when the DOM tree is stable enough to scan; @returns {boolean}. */
+  function isDomReady() {
+    return doc.readyState === "interactive" || doc.readyState === "complete";
+  }
+
+  /** Run a callback when the DOM is queryable; @param {Function} callback. */
+  function onReady(callback) {
+    if (isDomReady()) {
+      callback();
+      return;
+    }
+
+    if (doc.addEventListener) {
+      doc.addEventListener("DOMContentLoaded", callback, false);
+    } else if (global.attachEvent) {
+      global.attachEvent("onload", callback); // Legacy fallback for older host pages.
+    }
+  }
+
+  /** Check whether a value is an Element; @param {*} value; @returns {boolean}. */
+  function isElement(value) {
+    return !!value && value.nodeType === 1;
+  }
+
+  /** Check whether a value can be scanned by querySelectorAll; @param {*} value; @returns {boolean}. */
+  function isScannableRoot(value) {
+    return !!value && (value.nodeType === 1 || value.nodeType === 9 || value.nodeType === 11) && !!value.querySelectorAll;
+  }
+
+  /** Check whether an element has a class; @param {Element} el; @param {string} name; @returns {boolean}. */
+  function hasClass(el, name) {
+    var className;
+
+    if (!isElement(el) || !name) return false;
+    if (el.classList) return el.classList.contains(name);
+
+    className = typeof el.className === "string" ? el.className : "";
+    return (" " + className + " ").indexOf(" " + name + " ") !== -1;
+  }
+
+  /** Add one class name; @param {Element} el; @param {string} name. */
+  function addClass(el, name) {
+    var className;
+
+    if (!isElement(el) || !name || hasClass(el, name)) return;
+    if (el.classList) {
+      el.classList.add(name);
+      return;
+    }
+
+    className = typeof el.className === "string" ? el.className : "";
+    el.className = className ? className + " " + name : name;
+  }
+
+  /** Remove one class name; @param {Element} el; @param {string} name. */
+  function removeClass(el, name) {
+    var className;
+    var pattern;
+
+    if (!isElement(el) || !name || !hasClass(el, name)) return;
+    if (el.classList) {
+      el.classList.remove(name);
+      return;
+    }
+
+    className = typeof el.className === "string" ? el.className : "";
+    pattern = new RegExp("(^|\\s+)" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(?=\\s+|$)", "g");
+    el.className = className.replace(pattern, " ").replace(/^\s+|\s+$/g, "").replace(/\s{2,}/g, " ");
+  }
+
+  /** Toggle one class name without classList.toggle(force); @param {Element} el; @param {string} name; @param {boolean} enabled. */
+  function setClass(el, name, enabled) {
+    if (enabled) addClass(el, name);
+    else removeClass(el, name);
+  }
+
+  /** Add multiple class names to an element; @param {Element} el; @param {string} names. */
+  function addClassNames(el, names) {
+    var parts;
+    var i;
+
+    if (!el || !names) return;
+
+    parts = String(names).split(/\s+/);
+    for (i = 0; i < parts.length; i++) {
+      if (parts[i]) addClass(el, parts[i]);
+    }
+  }
+
+  /** Remove multiple class names from an element; @param {Element} el; @param {string} names. */
+  function removeClassNames(el, names) {
+    var parts;
+    var i;
+
+    if (!el || !names) return;
+
+    parts = String(names).split(/\s+/);
+    for (i = 0; i < parts.length; i++) {
+      if (parts[i]) removeClass(el, parts[i]);
+    }
+  }
+
+  /** Match an element against a selector; @param {Element} el; @param {string} selector; @returns {boolean}. */
+  function matchesSelector(el, selector) {
+    var fn;
+
+    if (!isElement(el)) return false;
+
+    fn = el.matches || el.msMatchesSelector || el.webkitMatchesSelector;
+    if (!fn) return false;
+
+    try {
+      return fn.call(el, selector);
+    } catch (err) {
+      return false;
+    }
+  }
+
+  /** Query elements safely; @param {ParentNode} root; @param {string} selector; @returns {Element[]}. */
+  function queryAll(root, selector) {
+    var nodes;
+    var out = [];
+    var i;
+
+    root = root || doc;
+    if (!isScannableRoot(root)) return out;
+
+    if (isElement(root) && matchesSelector(root, selector)) out.push(root); // Include root when refresh(root) points at a target.
+
+    try {
+      nodes = root.querySelectorAll(selector);
+    } catch (err) {
+      return out;
+    }
+
+    for (i = 0; i < nodes.length; i++) out.push(nodes[i]);
+    return out;
+  }
+
+  /** Query one element safely; @param {string} selector; @returns {?Element}. */
+  function queryOne(selector) {
+    try {
+      return doc.querySelector(selector);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  /** Get a direct child by class name; @param {Element} parent; @param {string} className; @returns {?Element}. */
+  function getDirectChildByClass(parent, className) {
+    var children;
+    var i;
+
+    if (!isElement(parent)) return null;
+
+    children = parent.children;
+    for (i = 0; i < children.length; i++) {
+      if (hasClass(children[i], className)) return children[i];
     }
 
     return null;
   }
 
-  function setButtonState(button, collapsed, opts) {
-    if (!button) return;
-    if (collapsed) {
-      button.textContent = opts.collapsedText;
-      button.setAttribute("aria-expanded", "false");
-      button.setAttribute("aria-label", "Expand");
-    } else {
-      button.textContent = opts.expandedText;
-      button.setAttribute("aria-expanded", "true");
-      button.setAttribute("aria-label", "Collapse");
+  /** Resolve a wrapper/target pair from an element; @param {Element} el; @returns {?Object}. */
+  function getTargetInfo(el) {
+    var target;
+    var parent;
+
+    if (!isElement(el)) return null;
+
+    if (hasClass(el, CLASS.wrap)) {
+      target = getDirectChildByClass(el, CLASS.target);
+      return target ? { wrap: el, target: target } : null;
     }
-  }
 
-  function setCollapsedByTarget(targetEl, collapsed, opts) {
-    if (!targetEl) return;
-
-    var info = getWrapAndTarget(targetEl);
-    var wrap = info ? info.wrap : null;
-    var target = info ? info.target : targetEl;
-
-    if (collapsed) target.classList.add("bt-collapsed");
-    else target.classList.remove("bt-collapsed");
-
-    if (wrap) {
-      if (collapsed) wrap.classList.add("bt-collapsed");
-      else wrap.classList.remove("bt-collapsed");
-
-      var button = wrap.querySelector(":scope > .bt-toggle");
-      setButtonState(button, collapsed, opts);
+    if (hasClass(el, CLASS.target)) {
+      parent = el.parentElement;
+      return parent && hasClass(parent, CLASS.wrap)
+        ? { wrap: parent, target: el }
+        : { wrap: null, target: el };
     }
+
+    return null;
   }
 
-  function toggleOne(el, opts) {
-    var info = getWrapAndTarget(el);
-    if (!info) return;
-    var target = info.target;
-    var collapsed = target.classList.contains("bt-collapsed");
-    setCollapsedByTarget(target, !collapsed, opts);
+  /** Resolve an API target from an element or selector; @param {Element|string} value; @returns {?Element}. */
+  function resolveApiElement(value) {
+    if (typeof value === "string") return queryOne(value);
+    return isElement(value) ? value : null;
   }
 
-  function processOne(targetEl, opts) {
-    if (!targetEl || targetEl.nodeType !== 1) return;
-    if (targetEl.getAttribute("data-bt") === "0") return;
-    if (targetEl.getAttribute("data-bt-skip") === "1") return;
-    if (targetEl.getAttribute("data-bt-processed") === "1") return;
+  /** Get the initial config from constants and pre-load global config; @returns {Object}. */
+  function getInitialConfig() {
+    return normalizeConfig(merge(DEFAULT_CONFIG, global.BilingualToggleConfig || {}));
+  }
 
-    targetEl.setAttribute("data-bt-processed", "1");
-    targetEl.classList.add("bt-target");
+  /** Clone public config to prevent external mutation; @returns {Object}. */
+  function getConfig() {
+    return merge({}, state.config || getInitialConfig());
+  }
 
-    // 初始折叠状态：允许 data-bt-default="expanded|collapsed" 覆盖
-    var override = targetEl.getAttribute("data-bt-default");
-    var startCollapsed = opts.defaultCollapsed;
-    if (override === "expanded") startCollapsed = false;
-    if (override === "collapsed") startCollapsed = true;
+  /** Build injected CSS for the current config; @param {Object} config; @returns {string}. */
+  function buildStyleText(config) {
+    var css = "";
 
-    // showButton=false：彻底隐藏，不插按钮、不包 wrapper
-    if (!opts.showButton || targetEl.getAttribute("data-bt-button") === "0") {
-      if (startCollapsed) {
-        targetEl.classList.add("bt-fully-hidden");
-      } else {
-        targetEl.classList.remove("bt-fully-hidden");
-      }
-      // 仍允许 API 后续控制：用 bt-collapsed 来切换显示
-      if (startCollapsed) targetEl.classList.add("bt-collapsed");
-      else targetEl.classList.remove("bt-collapsed");
+    css += "/* bilingual-toggle injected css */\n";
+    css += "." + CLASS.wrap + "{position:relative;display:" + config.wrapperDisplay + ";}\n";
+    css += "." + CLASS.wrap + " ." + CLASS.toggle + "{";
+    css += "appearance:none;-webkit-appearance:none;border:0;background:transparent;";
+    css += "padding:0;margin:0;cursor:pointer;font:inherit;line-height:1;display:inline-block;";
+    css += "}\n";
+    css += "." + CLASS.wrap + " ." + CLASS.toggle + ":focus{outline:2px solid currentColor;outline-offset:2px;}\n";
+    css += "." + CLASS.wrap + "." + CLASS.hasButton + ">." + CLASS.toggle + "{position:absolute;left:0;top:0;}\n";
+    css += "." + CLASS.wrap + "." + CLASS.hasButton + ">." + CLASS.target + "{padding-left:" + config.buttonIndentEm + "em !important;}\n";
+    css += "." + CLASS.target + "." + CLASS.collapsed + "{display:none !important;}\n";
+    css += "." + CLASS.wrap + "." + CLASS.collapsed + ">." + CLASS.target + "{display:none !important;}\n";
+    css += "." + CLASS.target + "." + CLASS.hidden + "{display:none !important;}\n";
+
+    if (config.stripStyleWhenCollapsed) {
+      css += "." + CLASS.wrap + "." + CLASS.collapsed + "{margin:0 !important;padding:0 !important;}\n";
+      css += "." + CLASS.wrap + "." + CLASS.collapsed + ">." + CLASS.toggle + "{position:static !important;}\n";
+    }
+
+    return css;
+  }
+
+  /** Set CSS text on a style element; @param {HTMLStyleElement} style; @param {string} cssText. */
+  function setStyleText(style, cssText) {
+    if ("textContent" in style) style.textContent = cssText;
+    else if (style.styleSheet) style.styleSheet.cssText = cssText;
+  }
+
+  /** Insert or update the stylesheet; @param {Object} config. */
+  function upsertStyle(config) {
+    var style;
+
+    if (!doc.head) return;
+
+    if (!config.injectStyle) {
+      removeStyle(config); // External CSS mode for strict CSP sites.
       return;
     }
 
-    // showButton=true：创建 wrapper，把按钮放在标签外，并能控制整个标签的 display
-    var wrap = d.createElement("span");
-    wrap.className = "bt-wrap bt-has-button";
-
-    var button = makeButton();
-
-    // 将 wrapper 插入到 targetEl 原位置，并把 targetEl 移入 wrapper
-    var parent = targetEl.parentNode;
-    if (!parent) return;
-    parent.insertBefore(wrap, targetEl);
-    wrap.appendChild(button);
-    wrap.appendChild(targetEl);
-
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-      toggleOne(wrap, opts);
-    });
-
-    // 初始状态
-    if (startCollapsed) {
-      wrap.classList.add("bt-collapsed");
-      targetEl.classList.add("bt-collapsed");
-      setButtonState(button, true, opts);
+    style = doc.getElementById(config.styleId);
+    if (!style) {
+      style = doc.createElement("style");
+      style.id = config.styleId;
+      style.type = "text/css";
+      if (config.styleNonce) style.setAttribute("nonce", config.styleNonce); // CSP-compatible style injection.
+      doc.head.appendChild(style);
+    } else if (config.styleNonce) {
+      style.setAttribute("nonce", config.styleNonce);
     } else {
-      wrap.classList.remove("bt-collapsed");
-      targetEl.classList.remove("bt-collapsed");
-      setButtonState(button, false, opts);
+      style.removeAttribute("nonce");
+    }
+
+    setStyleText(style, buildStyleText(config)); // Replacing text keeps updateConfig deterministic.
+  }
+
+  /** Remove the injected stylesheet; @param {Object} config. */
+  function removeStyle(config) {
+    var style = config && doc.getElementById(config.styleId);
+    if (style && style.parentNode) style.parentNode.removeChild(style);
+  }
+
+  /** Generate a unique target ID; @param {Object} config; @returns {string}. */
+  function createUniqueTargetId(config) {
+    var id;
+
+    do {
+      state.uid += 1;
+      id = config.targetIdPrefix + state.uid;
+    } while (doc.getElementById(id));
+
+    return id;
+  }
+
+  /** Assign an ID for aria-controls; @param {Element} target; @param {Object} config; @returns {string}. */
+  function ensureTargetId(target, config) {
+    var id;
+
+    if (target.id) return target.id;
+
+    id = createUniqueTargetId(config);
+    target.id = id;
+    target.setAttribute(ATTR.generatedId, id); // Cleanup removes only this generated ID value.
+
+    return id;
+  }
+
+  /** Create a toggle button; @param {Element} target; @param {Object} config; @returns {HTMLButtonElement}. */
+  function createButton(target, config) {
+    var button = doc.createElement("button");
+    var targetId = ensureTargetId(target, config);
+
+    button.type = "button";
+    button.className = CLASS.toggle;
+    button.setAttribute("aria-controls", targetId);
+    addClassNames(button, config.extraButtonClass);
+
+    if (config.buttonTitle) button.title = config.buttonTitle;
+
+    return button;
+  }
+
+  /** Decide whether a target should be skipped; @param {Element} target; @returns {boolean}. */
+  function shouldSkipTarget(target) {
+    return !isElement(target) ||
+      target.getAttribute(ATTR.enabled) === "0" ||
+      target.getAttribute(ATTR.skip) === "1";
+  }
+
+  /** Resolve a target's initial collapsed state; @param {Element} target; @param {Object} config; @returns {boolean}. */
+  function resolveInitialCollapsed(target, config) {
+    var override = target.getAttribute(ATTR.defaultState);
+
+    if (override === "expanded") return false;
+    if (override === "collapsed") return true;
+
+    return !!config.defaultCollapsed;
+  }
+
+  /** Determine whether a target is collapsed; @param {Element} target; @returns {boolean}. */
+  function isTargetCollapsed(target) {
+    return !!target && (
+      hasClass(target, CLASS.collapsed) ||
+      target.getAttribute(ATTR.state) === "collapsed"
+    );
+  }
+
+  /** Build an ARIA label for a button; @param {Element} target; @param {boolean} collapsed; @param {Object} config; @returns {string}. */
+  function getButtonLabel(target, collapsed, config) {
+    var custom = target && target.getAttribute(ATTR.label);
+    if (custom) return (collapsed ? "Expand " : "Collapse ") + custom;
+    return collapsed ? config.expandLabel : config.collapseLabel;
+  }
+
+  /** Update toggle button text and ARIA state; @param {?Element} button; @param {Element} target; @param {boolean} collapsed; @param {Object} config. */
+  function setButtonState(button, target, collapsed, config) {
+    if (!button) return;
+
+    button.textContent = collapsed ? config.collapsedText : config.expandedText;
+    button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    button.setAttribute("aria-label", getButtonLabel(target, collapsed, config));
+  }
+
+  /** Set collapsed state on a processed target; @param {Element} target; @param {boolean} collapsed; @param {Object} config. */
+  function setCollapsed(target, collapsed, config) {
+    var info = getTargetInfo(target);
+    var wrap;
+    var button;
+    var hiddenWithoutButton;
+
+    if (!info) return;
+
+    wrap = info.wrap;
+    target = info.target;
+    hiddenWithoutButton = !wrap && (!config.showButton || target.getAttribute(ATTR.button) === "0"); // No visible control exists.
+
+    setClass(target, CLASS.collapsed, !!collapsed);
+    setClass(target, CLASS.hidden, !!collapsed && hiddenWithoutButton);
+    target.setAttribute(ATTR.state, collapsed ? "collapsed" : "expanded");
+
+    if (wrap) {
+      setClass(wrap, CLASS.collapsed, !!collapsed);
+      button = getDirectChildByClass(wrap, CLASS.toggle);
+      setButtonState(button, target, !!collapsed, config);
     }
   }
 
-  function scanAndProcess(opts) {
-    var nodes = d.querySelectorAll(opts.selector);
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      processOne(el, opts);
+  /** Handle a button click; @param {Event} event; @param {Object} config. */
+  function handleButtonClick(event, config) {
+    var info;
+
+    if (event && event.preventDefault) event.preventDefault();
+    info = getTargetInfo(event.currentTarget.parentElement);
+    if (!info) return;
+
+    setCollapsed(info.target, !isTargetCollapsed(info.target), config);
+  }
+
+  /** Wrap and process one target; @param {Element} target; @param {Object} config; @param {boolean=} forcedCollapsed. */
+  function processTarget(target, config, forcedCollapsed) {
+    var startCollapsed;
+    var wrap;
+    var button;
+    var parent;
+    var showButtonForTarget;
+
+    if (shouldSkipTarget(target)) return;
+    if (target.getAttribute(ATTR.processed) === "1") return;
+
+    startCollapsed = typeof forcedCollapsed === "boolean" ? forcedCollapsed : resolveInitialCollapsed(target, config);
+    showButtonForTarget = !!config.showButton && target.getAttribute(ATTR.button) !== "0";
+
+    target.setAttribute(ATTR.processed, "1");
+    addClass(target, CLASS.target);
+    addClassNames(target, config.extraTargetClass);
+
+    if (!showButtonForTarget) {
+      setCollapsed(target, startCollapsed, config); // Hides the target when collapsed and no button exists.
+      return;
     }
+
+    parent = target.parentNode;
+    if (!parent) return;
+
+    wrap = doc.createElement(config.wrapperTagName);
+    wrap.className = CLASS.wrap + " " + CLASS.hasButton;
+    addClassNames(wrap, config.extraWrapperClass);
+
+    button = createButton(target, config);
+    parent.insertBefore(wrap, target);
+    wrap.appendChild(button);
+    wrap.appendChild(target);
+
+    if (button.addEventListener) {
+      button.addEventListener("click", function onClick(event) {
+        handleButtonClick(event, state.config || config); // Uses latest runtime config after updateConfig.
+      }, false);
+    }
+
+    setCollapsed(target, startCollapsed, config);
   }
 
-  function ensureInit() {
-    if (!state.inited) init();
+  /** Scan a root and process matching targets; @param {ParentNode=} root; @param {Object} config. */
+  function scan(root, config) {
+    var targets = queryAll(root || doc, config.selector);
+    var i;
+
+    for (i = 0; i < targets.length; i++) processTarget(targets[i], config);
   }
 
+  /** Return processed targets; @param {string=} selectorOverride; @returns {Element[]}. */
   function getProcessedTargets(selectorOverride) {
-    var sel = selectorOverride || (state.options ? state.options.selector : DEFAULTS.selector);
-    var nodes = d.querySelectorAll(sel);
+    var targets = selectorOverride
+      ? queryAll(doc, selectorOverride)
+      : queryAll(doc, "." + CLASS.target + "[" + ATTR.processed + "='1']");
     var out = [];
-    for (var i = 0; i < nodes.length; i++) {
-      if (nodes[i].getAttribute("data-bt-processed") === "1") out.push(nodes[i]);
+    var i;
+
+    for (i = 0; i < targets.length; i++) {
+      if (targets[i].getAttribute(ATTR.processed) === "1") out.push(targets[i]);
     }
+
     return out;
   }
 
-  function init(userOptions) {
-    var cfg = w.BilingualToggleConfig || null;
-    state.options = assign(DEFAULTS, assign(cfg || {}, userOptions || {}));
+  /** Capture collapsed states before rebuild; @param {Element[]} targets; @returns {Object}. */
+  function captureStates(targets) {
+    var store = { map: null, list: [] };
+    var i;
 
-    if (!d.head) return;
+    if (typeof global.WeakMap === "function") store.map = new global.WeakMap();
 
-    injectStyle(state.options.styleId, buildCSS(state.options));
-    scanAndProcess(state.options);
+    for (i = 0; i < targets.length; i++) {
+      if (store.map) store.map.set(targets[i], isTargetCollapsed(targets[i]));
+      else store.list.push({ target: targets[i], collapsed: isTargetCollapsed(targets[i]) });
+    }
 
-    // 初始化时按需求默认折叠（若用户配置 defaultCollapsed=true）
+    return store;
+  }
+
+  /** Find a captured state for a target; @param {Object} store; @param {Element} target; @returns {Object}. */
+  function findCapturedState(store, target) {
+    var i;
+
+    if (!store) return { found: false, collapsed: false };
+
+    if (store.map) {
+      if (store.map.has(target)) return { found: true, collapsed: store.map.get(target) };
+      return { found: false, collapsed: false };
+    }
+
+    for (i = 0; i < store.list.length; i++) {
+      if (store.list[i].target === target) return { found: true, collapsed: store.list[i].collapsed };
+    }
+
+    return { found: false, collapsed: false };
+  }
+
+  /** Remove generated wrapper/classes from one target; @param {Element} target; @param {Object} config. */
+  function cleanupTarget(target, config) {
+    var info = getTargetInfo(target);
+    var wrap;
+    var parent;
+    var generatedId;
+
+    if (!info) return;
+
+    target = info.target;
+    wrap = info.wrap;
+
+    if (wrap && wrap.parentNode) {
+      parent = wrap.parentNode;
+      parent.insertBefore(target, wrap);
+      parent.removeChild(wrap);
+    }
+
+    removeClass(target, CLASS.target);
+    removeClass(target, CLASS.collapsed);
+    removeClass(target, CLASS.hidden);
+    removeClassNames(target, config.extraTargetClass);
+    target.removeAttribute(ATTR.processed);
+    target.removeAttribute(ATTR.state);
+
+    generatedId = target.getAttribute(ATTR.generatedId);
+    if (generatedId && target.id === generatedId) target.removeAttribute("id"); // Do not delete later business IDs.
+    target.removeAttribute(ATTR.generatedId);
+  }
+
+  /** Rebuild all processed nodes and rescan; @param {Object} options. */
+  function rebuild(options) {
+    var config = state.config;
+    var processed = getProcessedTargets();
+    var states = options.preserveState ? captureStates(processed) : null;
+    var candidates;
+    var remembered;
+    var i;
+
+    for (i = 0; i < processed.length; i++) cleanupTarget(processed[i], config);
+
+    candidates = queryAll(doc, config.selector);
+    for (i = 0; i < candidates.length; i++) {
+      remembered = findCapturedState(states, candidates[i]);
+      processTarget(candidates[i], config, remembered.found ? remembered.collapsed : undefined);
+    }
+  }
+
+  /** Queue a root for mutation-driven scanning; @param {*} root. */
+  function queuePendingRoot(root) {
+    if (!isScannableRoot(root)) return;
+    if (state.pendingRoots.indexOf(root) === -1) state.pendingRoots.push(root); // Deduplicate roots cheaply.
+  }
+
+  /** Scan pending mutation roots only; @param {Object} config. */
+  function flushPendingRefresh(config) {
+    var roots = state.pendingRoots.slice(0);
+    var i;
+
+    state.pendingRoots = [];
+    state.refreshTimer = null;
+    state.ignoreMutations = true;
+
+    if (roots.length) {
+      for (i = 0; i < roots.length; i++) refresh(roots[i]); // O(new nodes) for typical dynamic inserts.
+    } else {
+      refresh(doc); // Conservative fallback.
+    }
+
+    state.ignoreMutations = false;
+    configureObserver(config); // Reconnect after internal DOM changes are ignored.
+  }
+
+  /** Debounce refresh calls from MutationObserver; @param {Object} config; @param {Array=} roots. */
+  function scheduleRefresh(config, roots) {
+    var i;
+
+    if (roots) {
+      for (i = 0; i < roots.length; i++) queuePendingRoot(roots[i]);
+    }
+
+    if (state.refreshTimer) global.clearTimeout(state.refreshTimer);
+
+    state.refreshTimer = global.setTimeout(function onRefreshTimer() {
+      flushPendingRefresh(config);
+    }, config.autoRefreshDebounceMs);
+  }
+
+  /** Extract scannable roots from mutation records; @param {MutationRecord[]} mutations; @returns {Array}. */
+  function getMutationRoots(mutations) {
+    var roots = [];
+    var mutation;
+    var node;
+    var i;
+    var j;
+
+    for (i = 0; i < mutations.length; i++) {
+      mutation = mutations[i];
+      for (j = 0; j < mutation.addedNodes.length; j++) {
+        node = mutation.addedNodes[j];
+        if (isScannableRoot(node)) roots.push(node);
+      }
+    }
+
+    return roots;
+  }
+
+  /** Start or stop MutationObserver based on config; @param {Object} config. */
+  function configureObserver(config) {
+    if (state.observer) {
+      state.observer.disconnect();
+      state.observer = null;
+    }
+
+    if (!config.autoRefresh || !global.MutationObserver || !doc.body) return;
+
+    state.observer = new global.MutationObserver(function onMutations(mutations) {
+      var roots;
+
+      if (state.ignoreMutations) return;
+      roots = getMutationRoots(mutations);
+      if (roots.length) scheduleRefresh(config, roots);
+    });
+    state.observer.observe(doc.body, { childList: true, subtree: true });
+  }
+
+  /** Initialize the script once; @param {Object=} userConfig. */
+  function init(userConfig) {
+    if (!isDomReady()) {
+      onReady(function initWhenReady() { init(userConfig); });
+      return;
+    }
+
+    if (state.inited) {
+      if (userConfig) updateConfig(userConfig);
+      return;
+    }
+
+    state.config = normalizeConfig(merge(state.config || getInitialConfig(), userConfig || {}));
+    upsertStyle(state.config);
+    scan(doc, state.config);
+    configureObserver(state.config);
     state.inited = true;
   }
 
-  w.BilingualToggle = {
-    init: function (options) { init(options); },
+  /** Ensure the script has initialized before API work; @returns {boolean}. */
+  function ensureInit() {
+    if (!state.inited) init();
+    return state.inited;
+  }
 
-    refresh: function () {
-      ensureInit();
-      scanAndProcess(state.options);
-    },
+  /** Refresh matching targets under a root; @param {ParentNode=} root. */
+  function refresh(root) {
+    if (!ensureInit()) return;
+    scan(root || doc, state.config);
+  }
 
-    toggle: function (el) {
-      ensureInit();
-      if (!el) return;
+  /** Toggle one processed or matching target; @param {Element|string} elementOrSelector. */
+  function toggle(elementOrSelector) {
+    var el;
+    var info;
 
-      // 允许传入：目标元素 / wrapper / CSS 选择器字符串（取第一个匹配）
-      if (typeof el === "string") {
-        var found = d.querySelector(el);
-        if (!found) return;
-        el = found;
-      }
+    if (!ensureInit()) return;
 
-      // 若是目标元素但未处理，先处理（便于直接 toggle 某个 blockquote）
-      if (el.nodeType === 1 && el.matches && el.matches(state.options.selector)) {
-        if (el.getAttribute("data-bt-processed") !== "1") processOne(el, state.options);
-      }
+    el = resolveApiElement(elementOrSelector);
+    if (!el) return;
 
-      toggleOne(el, state.options);
-    },
-
-    expandAll: function (selectorOverride) {
-      ensureInit();
-      var els = getProcessedTargets(selectorOverride);
-      for (var i = 0; i < els.length; i++) {
-        els[i].classList.remove("bt-fully-hidden");
-        setCollapsedByTarget(els[i], false, state.options);
-      }
-    },
-
-    collapseAll: function (selectorOverride) {
-      ensureInit();
-      var els = getProcessedTargets(selectorOverride);
-      for (var i = 0; i < els.length; i++) {
-        // showButton=false 时也要“彻底隐藏”
-        if (!state.options.showButton) els[i].classList.add("bt-fully-hidden");
-        setCollapsedByTarget(els[i], true, state.options);
-      }
-    },
-
-    toggleAll: function (selectorOverride, expandIfMixed) {
-      ensureInit();
-      var els = getProcessedTargets(selectorOverride);
-      var anyCollapsed = false, anyExpanded = false;
-
-      for (var i = 0; i < els.length; i++) {
-        if (els[i].classList.contains("bt-collapsed")) anyCollapsed = true;
-        else anyExpanded = true;
-      }
-
-      var shouldCollapse;
-      if (anyCollapsed && anyExpanded) shouldCollapse = !(expandIfMixed === true);
-      else shouldCollapse = !anyCollapsed;
-
-      for (var j = 0; j < els.length; j++) {
-        if (shouldCollapse && !state.options.showButton) els[j].classList.add("bt-fully-hidden");
-        if (!shouldCollapse) els[j].classList.remove("bt-fully-hidden");
-        setCollapsedByTarget(els[j], shouldCollapse, state.options);
-      }
+    if (matchesSelector(el, state.config.selector) && el.getAttribute(ATTR.processed) !== "1") {
+      processTarget(el, state.config); // Allows direct toggling of a newly inserted target.
     }
+
+    info = getTargetInfo(el);
+    if (!info) return;
+
+    setCollapsed(info.target, !isTargetCollapsed(info.target), state.config);
+  }
+
+  /** Expand all processed targets; @param {string=} selectorOverride. */
+  function expandAll(selectorOverride) {
+    var targets;
+    var i;
+
+    if (!ensureInit()) return;
+
+    targets = getProcessedTargets(selectorOverride);
+    for (i = 0; i < targets.length; i++) setCollapsed(targets[i], false, state.config);
+  }
+
+  /** Collapse all processed targets; @param {string=} selectorOverride. */
+  function collapseAll(selectorOverride) {
+    var targets;
+    var i;
+
+    if (!ensureInit()) return;
+
+    targets = getProcessedTargets(selectorOverride);
+    for (i = 0; i < targets.length; i++) setCollapsed(targets[i], true, state.config);
+  }
+
+  /** Toggle all processed targets; @param {string=} selectorOverride; @param {boolean=} expandIfMixed. */
+  function toggleAll(selectorOverride, expandIfMixed) {
+    var targets;
+    var anyCollapsed = false;
+    var anyExpanded = false;
+    var shouldCollapse;
+    var i;
+
+    if (!ensureInit()) return;
+
+    targets = getProcessedTargets(selectorOverride);
+
+    for (i = 0; i < targets.length; i++) {
+      if (isTargetCollapsed(targets[i])) anyCollapsed = true;
+      else anyExpanded = true;
+    }
+
+    shouldCollapse = anyCollapsed && anyExpanded ? expandIfMixed !== true : !anyCollapsed;
+
+    for (i = 0; i < targets.length; i++) setCollapsed(targets[i], shouldCollapse, state.config);
+  }
+
+  /** Update runtime config and optionally rebuild DOM; @param {Object} partialConfig; @param {Object=} options; @returns {Object}. */
+  function updateConfig(partialConfig, options) {
+    var updateOptions = normalizeUpdateOptions(options);
+    var previousConfig = state.config || getInitialConfig();
+    var base = state.config || previousConfig;
+
+    state.config = normalizeConfig(merge(base, partialConfig || {}));
+
+    if (previousConfig.styleId !== state.config.styleId || !state.config.injectStyle) {
+      removeStyle(previousConfig); // Avoid stale style elements after styleId/injectStyle changes.
+    }
+
+    if (!isDomReady()) return getConfig();
+
+    upsertStyle(state.config);
+
+    if (!state.inited) {
+      init();
+      return getConfig();
+    }
+
+    if (updateOptions.rebuild) rebuild(updateOptions);
+    else refresh(doc);
+
+    configureObserver(state.config);
+    return getConfig();
+  }
+
+  /** Remove generated DOM/CSS and stop observers; no params. */
+  function destroy() {
+    var config = state.config || getInitialConfig();
+    var targets = getProcessedTargets();
+    var i;
+
+    if (state.refreshTimer) {
+      global.clearTimeout(state.refreshTimer);
+      state.refreshTimer = null;
+    }
+
+    state.pendingRoots = [];
+
+    if (state.observer) {
+      state.observer.disconnect();
+      state.observer = null;
+    }
+
+    for (i = 0; i < targets.length; i++) cleanupTarget(targets[i], config);
+
+    removeStyle(config);
+    state.inited = false;
+  }
+
+  global.BilingualToggle = {
+    getConfig: getConfig,
+    updateConfig: updateConfig,
+    refresh: refresh,
+    toggle: toggle,
+    expandAll: expandAll,
+    collapseAll: collapseAll,
+    toggleAll: toggleAll,
+    destroy: destroy
   };
 
-  onReady(function () { init(); });
+  onReady(function autoInit() {
+    init(); // Plug-and-play default behavior.
+  });
 
 })(window, document);
-

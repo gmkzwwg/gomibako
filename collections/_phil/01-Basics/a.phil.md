@@ -1,5 +1,5 @@
 ---
-title: Western Philosophy - A Systematic Roadmap
+title: Western Philosophy - Learning Atlas
 layout: post-bilingual
 categories: Atlas
 subclass: Basics

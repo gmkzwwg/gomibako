@@ -1,5 +1,5 @@
 ---
-title: Psychology - A Systematic Roadmap
+title: Psychology - Learning Atlas
 categories: Atlas
 subclass: Basics
 ---

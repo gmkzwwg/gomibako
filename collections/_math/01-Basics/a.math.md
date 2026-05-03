@@ -1,5 +1,5 @@
 ---
-title: Mathematics - A Systematic Roadmap
+title: Mathematics - Learning Atlas
 categories: Atlas
 subclass: Basics
 ---

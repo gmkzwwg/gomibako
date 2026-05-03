@@ -1,5 +1,5 @@
 ---
-title: Linguistics - A Systematic Roadmap
+title: Linguistics - Learning Atlas
 categories: Atlas
 subclass: Linguistics
 ---
