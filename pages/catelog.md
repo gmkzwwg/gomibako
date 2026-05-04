@@ -1,5 +1,5 @@
 ---
-layout: print
+layout: post
 title: The Dreamy Quixote's Ludicrous Charge
 show_context_menu: false
 permalink: /catelog
@@ -7,6 +7,8 @@ anticopy: true
 ---
 
 ## Roadmap
+
+*A long-term inquiry into the limits of human knowledge and the nature of humanity and the world: what can be known, where knowing fails, and how human beings stand within reality.*
 
 Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *intro / solid / advanced / research-adjacent*.
 
