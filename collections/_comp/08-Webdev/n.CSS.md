@@ -4,7 +4,7 @@ categories: Notes
 subclass: Webdev
 ---
 
-## PART 1 — Macro Analysis, Philosophy, Tool Fit, and Technical Trends
+## PART 1 — The Macro Lens
 
 ### What CSS Is — stylesheet language, structured documents, rendering
 
@@ -312,7 +312,7 @@ The professional stance is: write CSS as a **rendering contract** between docume
 
 *Common Pitfalls: Most serious CSS failures are not syntax failures; they are failures of mental model, scope control, accessibility, and long-term override strategy.*
 
-## PART 2 — Table Quick Reference Guide
+## PART 2 — Quick Reference Guide
 
 ### Environment and Version Assumptions — modern CSS, evergreen browsers, progressive enhancement
 
@@ -2916,7 +2916,7 @@ body {
 
 *Common Pitfalls: The highest-value memorized CSS patterns are not isolated declarations; they are small systems that combine cascade, layout, state, and accessibility correctly.*
 
-## PART 5 — Practical Templates, Examples, Scripts, or Patterns
+## PART 5 — Practical Templates
 
 ### Selected Mode — template-first, declarative styling, reusable CSS architecture
 

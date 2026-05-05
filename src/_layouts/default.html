@@ -1,25 +1,45 @@
 {% comment %}
 Resolve page-level switches.
 Page front matter has priority over site.ui.* defaults.
+Resolve title display.
+Priority:
+1. Site defaults define normal title and abbreviation behavior.
+2. Page front matter may override title display.
+3. Slide layouts force-disable both title and abbreviation.
+4. If abbreviation is enabled and available, it has priority over title.
+
 {% endcomment %}
 
-<!-- show_title? layout_type > page fm > _config.yaml  -->
+<!-- SHOW_TITLE? _config.yml → page front matter → layout force-disable  -->
 <!-- disable when page.title is empty or "" -->
+{% assign resolved_title = page.title | default: "" | strip %}
+{% assign resolved_abbreviation = page.abbreviation | default: "" | strip %}
+
+{% assign title_region_enabled = true %}
 {% assign show_title_enabled = site.ui.features.title %}
+{% assign show_abbreviation_enabled = false %}
 
 {% if page.show_title != nil %}
-  {% assign show_title_enabled = page.show_title %}
+{% assign title_region_enabled = page.show_title %}
+{% assign show_title_enabled = page.show_title %}
 {% endif %}
 
 {% case page.layout %}
-  {% when "slide-annotation", "slide-linear", "slide-multilingual", "slide-simple", "slide-tree", "slide-wiki" %}
-    {% assign show_title_enabled = false %}
+{% when "slide-annotation", "slide-linear", "slide-multilingual", "slide-simple", "slide-tree", "slide-wiki" %}
+{% assign title_region_enabled = false %}
+{% assign show_title_enabled = false %}
+{% when "post-bilingual" %}
+{% assign bilingual_mode_enabled = true %}
+{% when "post-parallel" %}
+{% assign parallel_mode_enabled = true %}
 {% endcase %}
 
-{% assign resolved_title = page.title | strip %}
+{% if title_region_enabled and site.ui.features.abbreviation and resolved_abbreviation != "" %}
+{% assign show_abbreviation_enabled = true %}
+{% endif %}
 
 {% if resolved_title == "" %}
-  {% assign show_title_enabled = false %}
+{% assign show_title_enabled = false %}
 {% endif %}
 
 {% if page.footer == nil %}
@@ -50,145 +70,110 @@ Page front matter has priority over site.ui.* defaults.
 {% assign post_meta_enabled = page.post_meta %}
 {% endif %}
 
+{% assign todos_enabled = false %}
+{% if site.ui.features.todos and page.todos == true %}
+{% assign todos_enabled = true %}
+{% endif %}
+
+{% if page.text_indent == nil %}
+{% assign text_indent_enabled = site.ui.typography.text_indent %}
+{% else %}
+{% assign text_indent_enabled = page.text_indent %}
+{% endif %}
+
 <!doctype html>
 <html>
 
 <head>
   {% include head.html %}
-  <script src="{{ '/src/assets/js/code-block-enhancement.js' | relative_url }}"></script>
-  {% include matrix_letter_bomb.html %}
+
+  <!-- [FUNCTION ENHANCEMENT] -->
+  <!-- ANTI-COPY -->
   {% if page.anticopy == true %}
-  <script src="{{ '/src/assets/js/anticopy.js' | relative_url }}"></script>
+  <script defer src="{{ '/src/assets/js/anticopy.js' | relative_url }}"></script>
   {% endif %}
+  <!-- WATERMARK -->
   {% if page.watermark == true %}
-  <script src="{{ '/src/assets/js/watermark.js' | relative_url }}"></script>
+  <script defer src="{{ '/src/assets/js/watermark.js' | relative_url }}"></script>
   {% endif %}
-  {% if page.layout == "post-bilingual" %}
-  <script src="{{ '/src/assets/js/bilingual.js' | relative_url }}"></script>
+  <!-- 2EM INDENT FOR CHINESE PARAGRAPH -->
+  {% if text_indent_enabled %}
+  <script defer src="{{ '/src/assets/js/chinese-text-indent.js' | relative_url }}"></script>
   {% endif %}
-  <script src="{{ '/src/assets/js/image-viewer.js' | relative_url }}"></script>
-  {% if context_menu_enabled %}
-  <script src=" {{ '/src/assets/js/context-menu.js' | relative_url }}"></script>
+  <!-- TODO SUMMARY -->
+  {% if todos_enabled %}
+  <script defer src="{{ '/src/assets/js/todo-summary.js' | relative_url }}"></script>
   {% endif %}
-  <script src=" {{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
+  <!-- IMAGE VIEWER -->
+  <script defer src="{{ '/src/assets/js/image-viewer.js' | relative_url }}"></script>
+  <!-- CODE BLOCK ENHANCEMENT -->
+  <script defer src="{{ '/src/assets/js/code-block-enhancement.js' | relative_url }}"></script>
+  <!-- TIMELINE -->
+  <script defer src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>
+
+  <!-- [LAYOUT SPECIFIC] -->
+  <!-- BILINGUAL MODE -->
+  {% if bilingual_mode_enabled %}
+  <script defer src="{{ '/src/assets/js/bilingual.js' | relative_url }}"></script>
+  {% endif %}
+  <!-- PARALLEL MODE -->
+  {% if parallel_mode_enabled %}
+  <script defer src="{{ '/src/assets/js/parallel-text.js' | relative_url }}"></script>
+  {% endif %}
+
+  <!-- [APPEARANCE] -->
+  <!-- MATRIX LETTER BOMB -->
+  <script defer src="{{ '/src/assets/js/matrix-letter-bomb.js' | relative_url }}"></script>
+  <!-- ASCII ANIME -->
+  <script defer src="{{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
+  <!-- GLITCH TITLE + META_INFO -->
+  <script defer src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
 </head>
 
 <body class=" page">
+
+  <!-- [APPEARENCE] -->
+  <!-- CONTEXT MENU -->
   {% if context_menu_enabled %}
   {% include context_menu.html %}
   {% endif %}
-
-  {% if page.todos != false %}
-  {% include todo_summary.html %}
-  {% endif %}
-  
-  <!-- Hacked Splash -->
+  <!-- HACKED SPLASH -->
   {% include hacked_splash.html %}
-  <!-- Title Hacker -->
-  <script src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
-  <script>
-    const glitch = new TextGlitchFx({
-      selector: "h1, h2, h3, h4, .abstract, .post-abstract, .post-meta__text, .cli-header__label, .cli-header__title, .cli-header__owner, .cli-header__mode",
-      intervalRange: [2, 4], // x~y 秒随机触发一次
-      duration: 800,
-      effects: ["scramble", "blocks", "blink", "error"],
-      maxCharChangeRatio: 0.48,
-    });
-
-    glitch.start();
-  </script>
-  <!-- Timeline -->
-  <script src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      JekyllTimeline.init(".div_article", {
-        summaryWidth: "11%", // 左侧标题栏宽度；建议 8% - 16%
-        gap: "0.92rem", // 左侧标题到中轴线、以及中轴线到右侧内容的水平间距
-        axisWidth: "0.3rem", // 中轴所在列的宽度
-        lineWidth: "0.3rem", // 中轴竖线宽度
-        boxConnectorWidth: '1px', // 每个右侧 box 向左延伸出去的辅助线宽度
-        boxConnectorBallSize: '0.6rem', // 辅助线左端圆球的直径
-        detailRadius: "12px", // 右侧每个独立框的圆角
-        detailPadding: "0.62rem 0.78rem", // 右侧每个独立框的内边距
-        detailGroupGap: "0.48rem", // 右侧多个独立框之间的垂直间距
-        leftTitleMinHeight: "2.2rem", // 左侧标题栏的最小高度
-        summaryTopLineOffset: '0.2rem', // 左侧 summary 顶部那条极细实线距离顶部的位置
-        summaryTopLineGap: '0.36rem', // 左侧顶部实线与标题正文之间的距离
-        summaryTopLineWidth: '1px', // 左侧顶部实线宽度
-        lineColor: "rgba(120, 150, 180, 0.34)", // 中轴竖线颜色
-        fallbackTitlePrefix: "Unknown ", // 左侧标题为空时的默认前缀
-        detailColorMode: 'random', // 随机选择颜色，还是顺序
-      });
-    });
-  </script>
-
-  <!-- 2em Indent for Chinese Paragraph -->
-  {% if page.text_indent == true %}
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const container = document.querySelector(".post-content");
-      if (!container) return;
-
-      container.querySelectorAll("p").forEach(function (p) {
-        if (
-          p.closest("li, ul, ol, table, thead, tbody, tfoot, tr, th, td, blockquote, dl, dt, dd, pre, code, summary, details")
-        ) {
-          return;
-        }
-
-        if (
-          p.querySelector(".katex-display, .MathJax_Display, mjx-container, .katex, .MathJax")
-        ) {
-          return;
-        }
-
-        const text = p.textContent.trim();
-        if (!text) {
-          return;
-        }
-
-        const chars = Array.from(text).filter(function (ch) {
-          return !/\s/.test(ch);
-        });
-
-        if (chars.length === 0) {
-          return;
-        }
-
-        const chineseCount = chars.filter(function (ch) {
-          return /[\u4E00-\u9FFF]/.test(ch);
-        }).length;
-
-        const ratio = chineseCount / chars.length;
-
-        if (!p.style.textIndent) {
-          p.style.textIndent = "2em";
-        }
-      });
-    });
-  </script>
-  {% endif %}
-  <!-- Main Content -->
+  <!-- MATRIX BACKGROUND -->
   {% include matrix_bg.html %}
+  <!-- COLLECTION LIST -->
   {% include collection_list.html %}
+
+  <!-- [MAIN CONTENT] -->
   <div class="container" id="ctner">
+    <!-- POST HEADER -->
     {% include header.html %}
     <div class="div_article" id="div_atcl">
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
-        {% if show_title_enabled %}
-        <h1 class="post_title" id="{{page.title}}">{{ page.title }}</h1>
+        <!-- PAGE TITLE -->
+        {% if show_abbreviation_enabled %}
+        <h1 class="post_abbreviation" id="{{ resolved_abbreviation | slugify }}">
+          {{ resolved_abbreviation }}
+        </h1>
+        {% elsif show_title_enabled %}
+        <h1 class="post_title" id="{{ resolved_title | slugify }}">
+          {{ resolved_title }}
+        </h1>
         {% endif %}
-
+        <!-- PAGE METADATA -->
         {% if post_meta_enabled %}
         {% include post-meta.html %}
         {% endif %}
-
+        <!-- POST CONTENT -->
+        <div class="post-content">
         {{ content }}
-
+        </div>
+        <!-- POST COMMENTS -->
         {% if comments_enabled and site.comments.provider %}
         {% include comment.html %}
         {% endif %}
       </article>
+      <!-- POST FOOTER -->
       {% if footer_enabled %}
       {% include footer.html %}
       {% endif %}

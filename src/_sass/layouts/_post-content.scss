@@ -25,7 +25,8 @@
 }
 .div_article {
   top: $header-height + 1px;
-  height: 95%;
+  height: calc(100% - $header-height - 2px);
+  // min-height: 96%;
   width: 100%;
   position: relative;
   z-index: 1;

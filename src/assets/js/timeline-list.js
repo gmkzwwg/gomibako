@@ -1,390 +1,125 @@
+/*!
+ * Introduction:
+ *   Highlights TODO fragments in article text and creates a glass-style floating TODO summary panel.
+ *
+ * Usage:
+ *   Include this file on the page. It runs automatically with DEFAULT_CONFIG.
+ *   Default behavior can be customized by editing DEFAULT_CONFIG below.
+ *   Runtime behavior can be customized with window.TodoSummary.updateConfig().
+ *
+ * Global API:
+ *   window.TodoSummary.apply(selectorOrElements, options)
+ *   window.TodoSummary.updateConfig(config)
+ *   window.TodoSummary.getConfig()
+ *   window.TodoSummary.clear(options)
+ *
+ * Notes:
+ *   This script injects its own compact CSS.
+ *   It does not preserve the old initTodoCollector() API or old todo-* class names.
+ *   It skips script, style, code, pre, textarea, existing TODO marks, and its own floating UI.
+ *   The floating panel uses a lightweight backdrop-filter with a solid fallback.
+ */
+
 (function (window, document) {
-  'use strict';
+  "use strict";
 
   if (!window || !document) return;
 
-  var STYLE_ID = 'jekyll-timeline-styles';
-  var INSTANCE_CLASS = 'jtimeline';
-  var DEFAULT_SELECTOR = '[data-timeline], .js-timeline';
+  const DEFAULT_CONFIG = {
+    selector: ".post-content", // Default content container selector.
+    autoApply: true, // Apply automatically after script loading.
+    todoPattern: /TODO:[^\n\r]*/g, // Pattern used to find TODO fragments.
+    headingSelector: "h1, h2, h3, h4, h5, h6", // Headings used for section titles.
 
-  var BASE_DEFAULTS = {
-    selector: DEFAULT_SELECTOR,
-    autoInit: true,
-    fallbackTitlePrefix: '事件 '
+    panelId: "todo-summary-panel", // Floating panel ID.
+    triggerId: "todo-summary-trigger", // Reopen trigger ID.
+    styleId: "todo-summary-style", // Injected style element ID.
+
+    markClass: "todo-mark", // Class for highlighted TODO text.
+    markActiveClass: "todo-mark--active", // Class for active jumped TODO.
+    panelClass: "todo-summary", // Class for floating panel.
+    panelDraggingClass: "todo-summary--dragging", // Class added while dragging.
+    headerClass: "todo-summary__header", // Class for panel header.
+    titleClass: "todo-summary__title", // Class for panel title.
+    closeClass: "todo-summary__close", // Class for close button.
+    bodyClass: "todo-summary__body", // Class for scrollable panel body.
+    listClass: "todo-summary__list", // Class for TODO list.
+    triggerClass: "todo-summary__trigger", // Class for reopen button.
+
+    panelTitle: "TODO 汇总", // Floating panel title.
+    triggerText: "TODOs", // Reopen trigger text.
+    closeLabel: "Close TODO summary", // Close button aria-label.
+    noSectionText: "TODO: at the beginning", // Fallback title when no section heading exists.
+    todoTextMaxLength: 15, // Maximum TODO text length in the panel.
+    sectionTitleMaxLength: 15, // Maximum section title length in the panel.
+
+    flashDuration: 1600, // Active mark duration in milliseconds.
+    scrollBehavior: "smooth", // Scroll behavior when clicking a summary item.
+    scrollBlock: "center", // Scroll target alignment.
+    enableHashUpdate: true, // Update URL hash after jumping.
+    enableDragging: true, // Enable floating panel dragging.
+    injectStyle: true, // Inject built-in CSS.
+
+    backdropBlur: "8px", // Lightweight background blur behind floating UI.
+    backdropSaturate: "1.08", // Lightweight saturation for glass effect.
+    panelBackground: "rgba(255, 255, 255, 0.58)", // Glass panel background.
+    headerBackground: "rgba(255, 255, 255, 0.34)", // Glass header background.
+    fallbackBackground: "rgba(255, 255, 255, 0.88)", // Fallback when backdrop-filter is unsupported.
+    borderColor: "rgba(255, 255, 255, 0.42)", // Floating UI border color.
+    shadow: "0 14px 36px rgba(0, 0, 0, 0.18)", // Floating UI shadow.
+    highlightBackground: "rgba(255, 236, 153, 0.82)", // Inline TODO mark background.
+    zIndex: 99999, // Floating UI z-index.
+
+    skipAncestorSelector: [
+      "script",
+      "style",
+      "noscript",
+      "textarea",
+      "input",
+      "select",
+      "button",
+      "pre",
+      "code",
+      "[data-todo-ignore]",
+      ".todo-summary",
+      ".todo-summary__trigger",
+      ".todo-mark"
+    ].join(",") // Ancestors that disable TODO scanning.
   };
 
-  var AUTO_INIT_OPTIONS = {
-    summaryWidth: '11%',
-    gap: '1rem',
-    axisWidth: '1.15rem',
-    lineWidth: '2px',
-    detailRadius: '14px',
-    detailPadding: '0.62rem 0.78rem',
-    detailGroupGap: '0.48rem',
-    leftTitleMinHeight: '2.2rem',
-    summaryTopLineOffset: '0.2rem',
-    summaryTopLineGap: '0.36rem',
-    summaryTopLineWidth: '1px',
-    boxConnectorWidth: '1px',
-    boxConnectorBallSize: '0.52rem',
-    lineColor: 'rgba(120, 150, 180, 0.34)',
-    detailColorMode: 'random', // 'sequential' | 'random'
-    palette: [
-      { name: 'lake-blue', accent: '#58b7d8', accentSoft: 'rgba(88, 183, 216, 0.12)', accentBgStrong: 'rgba(88, 183, 216, 0.16)' },
-      { name: 'royal-blue', accent: '#5a8dee', accentSoft: 'rgba(90, 141, 238, 0.11)', accentBgStrong: 'rgba(90, 141, 238, 0.15)' },
-      { name: 'ink-blue', accent: '#4f7ac8', accentSoft: 'rgba(79, 122, 200, 0.11)', accentBgStrong: 'rgba(79, 122, 200, 0.15)' },
-      { name: 'teal-cyan', accent: '#42bfb7', accentSoft: 'rgba(66, 191, 183, 0.11)', accentBgStrong: 'rgba(66, 191, 183, 0.15)' },
-      { name: 'deep-cyan', accent: '#3da7c7', accentSoft: 'rgba(61, 167, 199, 0.11)', accentBgStrong: 'rgba(61, 167, 199, 0.15)' },
-      { name: 'sea-glass', accent: '#69c3a5', accentSoft: 'rgba(105, 195, 165, 0.10)', accentBgStrong: 'rgba(105, 195, 165, 0.14)' },
-      { name: 'emerald-mist', accent: '#54b887', accentSoft: 'rgba(84, 184, 135, 0.10)', accentBgStrong: 'rgba(84, 184, 135, 0.14)' },
-      { name: 'olive-sage', accent: '#7ea66a', accentSoft: 'rgba(126, 166, 106, 0.10)', accentBgStrong: 'rgba(126, 166, 106, 0.14)' },
-      { name: 'mist-indigo', accent: '#7c9cff', accentSoft: 'rgba(124, 156, 255, 0.11)', accentBgStrong: 'rgba(124, 156, 255, 0.15)' },
-      { name: 'aurora-violet', accent: '#a283ff', accentSoft: 'rgba(162, 131, 255, 0.10)', accentBgStrong: 'rgba(162, 131, 255, 0.14)' },
-      { name: 'iris-purple', accent: '#8f7ae6', accentSoft: 'rgba(143, 122, 230, 0.10)', accentBgStrong: 'rgba(143, 122, 230, 0.14)' },
-      { name: 'orchid', accent: '#b67bd6', accentSoft: 'rgba(182, 123, 214, 0.10)', accentBgStrong: 'rgba(182, 123, 214, 0.14)' },
-      { name: 'rose-quartz', accent: '#d684a2', accentSoft: 'rgba(214, 132, 162, 0.10)', accentBgStrong: 'rgba(214, 132, 162, 0.14)' },
-      { name: 'berry-rose', accent: '#c96d8f', accentSoft: 'rgba(201, 109, 143, 0.10)', accentBgStrong: 'rgba(201, 109, 143, 0.14)' },
-      { name: 'coral-red', accent: '#d97a6c', accentSoft: 'rgba(217, 122, 108, 0.10)', accentBgStrong: 'rgba(217, 122, 108, 0.14)' },
-      { name: 'ruby-red', accent: '#c96878', accentSoft: 'rgba(201, 104, 120, 0.10)', accentBgStrong: 'rgba(201, 104, 120, 0.14)' },
-      { name: 'amber-gold', accent: '#cfa45f', accentSoft: 'rgba(207, 164, 95, 0.10)', accentBgStrong: 'rgba(207, 164, 95, 0.14)' },
-      { name: 'champagne-gold', accent: '#bda36e', accentSoft: 'rgba(189, 163, 110, 0.10)', accentBgStrong: 'rgba(189, 163, 110, 0.14)' },
-      { name: 'bronze-copper', accent: '#b88366', accentSoft: 'rgba(184, 131, 102, 0.10)', accentBgStrong: 'rgba(184, 131, 102, 0.14)' },
-      { name: 'frost-silver', accent: '#6ea9c7', accentSoft: 'rgba(110, 169, 199, 0.10)', accentBgStrong: 'rgba(110, 169, 199, 0.14)' },
-      { name: 'slate-gray', accent: '#7d90a6', accentSoft: 'rgba(125, 144, 166, 0.10)', accentBgStrong: 'rgba(125, 144, 166, 0.14)' },
-      { name: 'graphite', accent: '#8391a3', accentSoft: 'rgba(131, 145, 163, 0.10)', accentBgStrong: 'rgba(131, 145, 163, 0.14)' }
-    ]
-  };
+  let config = merge({}, DEFAULT_CONFIG); // Active runtime configuration.
+  let todoCounter = 0; // Unique TODO ID counter.
+  let panelEl = null; // Floating panel element.
+  let listEl = null; // Floating list element.
+  let triggerEl = null; // Reopen trigger element.
+  let dragOffsetX = 0; // Persistent panel transform X.
+  let dragOffsetY = 0; // Persistent panel transform Y.
 
-  function extend() {
-    var out = {};
-    for (var i = 0; i < arguments.length; i += 1) {
-      var obj = arguments[i] || {};
-      Object.keys(obj).forEach(function (key) {
-        out[key] = obj[key];
+  /* Merges objects from left to right; params: ...objects<object>. */
+  function merge() {
+    const output = {};
+
+    Array.prototype.slice.call(arguments).forEach(function (object) {
+      Object.keys(object || {}).forEach(function (key) {
+        output[key] = object[key];
       });
-    }
-    return out;
+    });
+
+    return output;
   }
 
-  function toArray(listLike) {
-    return Array.prototype.slice.call(listLike || []);
+  /* Converts array-like values into arrays; params: value<ArrayLike>. */
+  function toArray(value) {
+    return Array.prototype.slice.call(value || []);
   }
 
-  function injectStyles() {
-    if (document.getElementById(STYLE_ID)) return;
-
-    var style = document.createElement('style');
-    style.id = STYLE_ID;
-    style.textContent = [
-      '.' + INSTANCE_CLASS + ' {',
-      '  --jt-summary-width: 11%;',
-      '  --jt-gap: 1rem;',
-      '  --jt-axis-width: 1.15rem;',
-      '  --jt-line-width: 2px;',
-      '  --jt-detail-radius: 14px;',
-      '  --jt-detail-padding: 0.62rem 0.78rem;',
-      '  --jt-detail-group-gap: 0.48rem;',
-      '  --jt-left-title-min-height: 2.2rem;',
-      '  --jt-summary-top-line-offset: 0.2rem;',
-      '  --jt-summary-top-line-gap: 0.36rem;',
-      '  --jt-summary-top-line-width: 1px;',
-      '  --jt-box-connector-width: 1px;',
-      '  --jt-box-connector-ball-size: 0.52rem;',
-      '  --jt-line-color: rgba(120, 150, 180, 0.34);',
-      '  position: relative;',
-      '  display: grid;',
-      '  gap: 0.82rem;',
-      '  margin: 1.5rem 0;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '::before {',
-      "  content: '';",
-      '  position: absolute;',
-      '  top: 0.55rem;',
-      '  bottom: 0.55rem;',
-      '  left: calc(var(--jt-summary-width) + var(--jt-gap) + (var(--jt-axis-width) / 2) - (var(--jt-line-width) / 2));',
-      '  width: var(--jt-line-width);',
-      '  background: var(--jt-line-color);',
-      '  pointer-events: none;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__event {',
-      '  --jt-event-accent: #58b7d8;',
-      '  --jt-event-soft: rgba(88, 183, 216, 0.12);',
-      '  --jt-event-bg-strong: rgba(88, 183, 216, 0.16);',
-      '  position: relative;',
-      '  display: grid;',
-      '  grid-template-columns: minmax(4rem, var(--jt-summary-width)) var(--jt-axis-width) minmax(0, 1fr);',
-      '  column-gap: var(--jt-gap);',
-      '  align-items: stretch;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__summary {',
-      '  position: relative;',
-      '  min-height: var(--jt-left-title-min-height);',
-      '  height: 100%;',
-      '  display: flex;',
-      '  align-items: flex-start;',
-      '  justify-content: flex-start;',
-      '  align-self: stretch;',
-      '  text-align: left;',
-      '  font-weight: 700;',
-      '  font-size: clamp(0.92rem, 0.88rem + 0.18vw, 1.04rem);',
-      '  line-height: 1.45;',
-      '  letter-spacing: 0.01em;',
-      '  color: var(--jt-event-accent);',
-      '  padding-top: calc(var(--jt-summary-top-line-offset) + var(--jt-summary-top-line-gap));',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__summary::before {',
-      "  content: '';",
-      '  position: absolute;',
-      '  top: var(--jt-summary-top-line-offset);',
-      '  left: 0;',
-      '  right: 0;',
-      '  height: var(--jt-summary-top-line-width);',
-      '  background: var(--jt-line-color);',
-      '  opacity: 0.9;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__summary > *:first-child {',
-      '  margin-top: 0;',
-      '  margin-bottom: 0;',
-      '  width: 100%;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__summary strong {',
-      '  font-weight: 800;',
-      '  font-size: inherit;',
-      '  color: inherit;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__axis {',
-      '  position: relative;',
-      '  min-height: 100%;',
-      '  align-self: stretch;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__details {',
-      '  min-width: 0;',
-      '  display: grid;',
-      '  gap: var(--jt-detail-group-gap);',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box {',
-      '  position: relative;',
-      '  min-width: 0;',
-      '  padding: var(--jt-detail-padding);',
-      '  border: 1px solid var(--jt-event-accent);',
-      '  border-radius: var(--jt-detail-radius);',
-      '  background: linear-gradient(180deg, var(--jt-event-soft), var(--jt-event-bg-strong));',
-      '  color: var(--jt-event-accent);',
-      '  box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset;',
-      '  backdrop-filter: blur(8px);',
-      '  -webkit-backdrop-filter: blur(8px);',
-      '  overflow: visible;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box::before {',
-      "  content: '';",
-      '  position: absolute;',
-      '  top: 50%;',
-      '  left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2)));',
-      '  width: calc(var(--jt-gap) + (var(--jt-axis-width) / 2));',
-      '  height: var(--jt-box-connector-width);',
-      '  transform: translateY(-50%);',
-      '  background: var(--jt-line-color);',
-      '  opacity: 0.95;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box::after {',
-      "  content: '';",
-      '  position: absolute;',
-      '  top: 50%;',
-      '  left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2) + (var(--jt-box-connector-ball-size) / 2)));',
-      '  width: var(--jt-box-connector-ball-size);',
-      '  height: var(--jt-box-connector-ball-size);',
-      '  transform: translateY(-50%);',
-      '  border-radius: 999px;',
-      '  background: var(--jt-line-color);',
-      '  box-shadow: 0 0 0 1px rgba(255,255,255,0.04);',
-      '  opacity: 0.95;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box > :first-child {',
-      '  margin-top: 0;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box > :last-child {',
-      '  margin-bottom: 0;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-root-list {',
-      '  margin: 0;',
-      '  padding-left: 0;',
-      '  list-style: none;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-root-item {',
-      '  margin: 0;',
-      '  list-style: none;',
-      '  color: inherit;',
-      '  font-weight: 700;',
-      '  line-height: 1.62;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-root-item::marker {',
-      '  content: "";',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-root-item > ul,',
-      '.' + INSTANCE_CLASS + '__detail-root-item > ol {',
-      '  margin: 0.34rem 0 0 0;',
-      '  padding-left: 1.2rem;',
-      '  list-style-position: outside;',
-      '  font-weight: 400;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-root-item > ul > li,',
-      '.' + INSTANCE_CLASS + '__detail-root-item > ol > li {',
-      '  margin: 0.24rem 0;',
-      '  font-weight: 400;',
-      '  line-height: 1.62;',
-      '  list-style: inherit;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box p,',
-      '.' + INSTANCE_CLASS + '__detail-box span,',
-      '.' + INSTANCE_CLASS + '__detail-box strong,',
-      '.' + INSTANCE_CLASS + '__detail-box em,',
-      '.' + INSTANCE_CLASS + '__detail-box b,',
-      '.' + INSTANCE_CLASS + '__detail-box i,',
-      '.' + INSTANCE_CLASS + '__detail-box small,',
-      '.' + INSTANCE_CLASS + '__detail-box div,',
-      '.' + INSTANCE_CLASS + '__detail-box h1,',
-      '.' + INSTANCE_CLASS + '__detail-box h2,',
-      '.' + INSTANCE_CLASS + '__detail-box h3,',
-      '.' + INSTANCE_CLASS + '__detail-box h4,',
-      '.' + INSTANCE_CLASS + '__detail-box h5,',
-      '.' + INSTANCE_CLASS + '__detail-box h6 {',
-      '  color: inherit;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box a {',
-      '  color: inherit;',
-      '  text-decoration-color: currentColor;',
-      '  text-underline-offset: 0.14em;',
-      '  text-decoration-thickness: 1px;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box code {',
-      '  color: inherit;',
-      '  border: 1px solid currentColor;',
-      '  border-radius: 0.36rem;',
-      '  background: rgba(255,255,255,0.04);',
-      '  padding: 0.06rem 0.34rem;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box pre {',
-      '  color: inherit;',
-      '  border: 1px solid currentColor;',
-      '  border-radius: 0.62rem;',
-      '  background: rgba(255,255,255,0.04);',
-      '  padding: 0.72rem 0.82rem;',
-      '  overflow: auto;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box pre code {',
-      '  border: 0;',
-      '  background: transparent;',
-      '  padding: 0;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box blockquote {',
-      '  color: inherit;',
-      '  border-left: 3px solid currentColor;',
-      '  margin: 0.55rem 0;',
-      '  padding-left: 0.7rem;',
-      '  opacity: 0.95;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box table {',
-      '  width: 100%;',
-      '  border-collapse: collapse;',
-      '  color: inherit;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '__detail-box th,',
-      '.' + INSTANCE_CLASS + '__detail-box td {',
-      '  color: inherit;',
-      '  border: 1px solid color-mix(in srgb, currentColor 50%, transparent 50%);',
-      '  padding: 0.38rem 0.48rem;',
-      '}',
-      '',
-      '.' + INSTANCE_CLASS + '[data-jt-empty-details="true"] .' + INSTANCE_CLASS + '__details {',
-      '  display: none;',
-      '}',
-      '',
-      '@media (max-width: 780px) {',
-      '  .' + INSTANCE_CLASS + '::before {',
-      '    left: calc((var(--jt-axis-width) / 2) - (var(--jt-line-width) / 2));',
-      '  }',
-      '',
-      '  .' + INSTANCE_CLASS + '__event {',
-      '    grid-template-columns: var(--jt-axis-width) minmax(0, 1fr);',
-      '    row-gap: 0.34rem;',
-      '  }',
-      '',
-      '  .' + INSTANCE_CLASS + '__summary {',
-      '    grid-column: 2;',
-      '    grid-row: 1;',
-      '    min-height: auto;',
-      '  }',
-      '',
-      '  .' + INSTANCE_CLASS + '__axis {',
-      '    grid-column: 1;',
-      '    grid-row: 1 / span 2;',
-      '  }',
-      '',
-      '  .' + INSTANCE_CLASS + '__details {',
-      '    grid-column: 2;',
-      '    grid-row: 2;',
-      '  }',
-      '',
-      '  .' + INSTANCE_CLASS + '__detail-box::before {',
-      '    left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2)));',
-      '    width: calc(var(--jt-gap) + (var(--jt-axis-width) / 2));',
-      '  }',
-      '',
-      '  .' + INSTANCE_CLASS + '__detail-box::after {',
-      '    left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2) + (var(--jt-box-connector-ball-size) / 2)));',
-      '  }',
-      '}',
-      '',
-      '@supports not (color: color-mix(in srgb, white 50%, black 50%)) {',
-      '  .' + INSTANCE_CLASS + '__detail-box th,',
-      '  .' + INSTANCE_CLASS + '__detail-box td {',
-      '    border-color: currentColor;',
-      '  }',
-      '}',
-      ''
-    ].join('\n');
-
-    document.head.appendChild(style);
-  }
-
-  function isTimelineMarker(el) {
-    if (!el) return false;
-    if (el.childElementCount > 0) return false;
-    return /^timeline:\s*$/i.test((el.textContent || '').trim());
-  }
-
-  function normalizeContainers(selectorOrElements) {
+  /* Normalizes selector, element, NodeList, or array into elements; params: selectorOrElements<any>. */
+  function normalizeContainers(selectorOrElements, runtimeConfig) {
     if (!selectorOrElements) {
-      return toArray(document.querySelectorAll(DEFAULT_SELECTOR));
+      return toArray(document.querySelectorAll(runtimeConfig.selector));
     }
 
-    if (typeof selectorOrElements === 'string') {
+    if (typeof selectorOrElements === "string") {
       return toArray(document.querySelectorAll(selectorOrElements));
     }
 
@@ -399,269 +134,614 @@
     return [];
   }
 
-  function getEligibleLists(container) {
-    var results = [];
-
-    if (!container) return results;
-
-    if ((container.tagName === 'UL' || container.tagName === 'OL') && isTimelineMarker(container.previousElementSibling)) {
-      results.push({
-        marker: container.previousElementSibling,
-        list: container
-      });
-      return results;
+  /* Escapes CSS class names when possible; params: value<string>. */
+  function escapeCssClass(value) {
+    if (window.CSS && typeof window.CSS.escape === "function") {
+      return window.CSS.escape(value);
     }
 
-    var nodes = toArray(container.querySelectorAll('*'));
-    nodes.forEach(function (node) {
-      if (!isTimelineMarker(node)) return;
-      var next = node.nextElementSibling;
-      if (!next) return;
-      if (next.tagName !== 'UL' && next.tagName !== 'OL') return;
-      results.push({
-        marker: node,
-        list: next
-      });
-    });
-
-    return results;
+    return String(value).replace(/[^a-zA-Z0-9_-]/g, "\\$&"); // Minimal fallback.
   }
 
-  function getDirectChildLists(li) {
-    return toArray(li.children).filter(function (el) {
-      return el.tagName === 'UL' || el.tagName === 'OL';
-    });
-  }
+  /* Applies TODO highlighting and summary rendering; params: selectorOrElements<any>, userOptions<object>. */
+  function apply(selectorOrElements, userOptions) {
+    const runtimeConfig = merge(config, userOptions || {});
+    const containers = normalizeContainers(selectorOrElements || runtimeConfig.selector, runtimeConfig);
+    let todos = [];
 
-  function createFragmentFromNodes(nodes) {
-    var frag = document.createDocumentFragment();
-    nodes.forEach(function (node) {
-      frag.appendChild(node.cloneNode(true));
-    });
-    return frag;
-  }
+    injectStyles(runtimeConfig);
 
-  function getSummaryNodes(li) {
-    var summaryNodes = [];
-
-    toArray(li.childNodes).forEach(function (node) {
-      if (node.nodeType === 1 && (node.tagName === 'UL' || node.tagName === 'OL')) return;
-      if (node.nodeType === 3 && !node.textContent.trim()) return;
-      summaryNodes.push(node);
+    containers.forEach(function (container, containerIndex) {
+      processContainer(container, containerIndex, runtimeConfig);
+      todos = todos.concat(collectMarks(container, runtimeConfig));
     });
 
-    return summaryNodes;
-  }
+    todos = dedupeTodos(todos);
 
-  function buildSummary(li, index, options) {
-    var summary = document.createElement('div');
-    summary.className = INSTANCE_CLASS + '__summary';
-
-    var summaryNodes = getSummaryNodes(li);
-
-    if (!summaryNodes.length) {
-      var strong = document.createElement('strong');
-      strong.textContent = options.fallbackTitlePrefix + String(index + 1);
-      summary.appendChild(strong);
-      return summary;
+    if (todos.length > 0) {
+      ensurePanel(runtimeConfig);
+      renderSummary(todos, runtimeConfig);
+      showPanel();
     }
 
-    var wrapper = document.createElement('div');
-    wrapper.appendChild(createFragmentFromNodes(summaryNodes));
-
-    if (!wrapper.querySelector('strong')) {
-      var strongWrap = document.createElement('strong');
-      while (wrapper.firstChild) {
-        strongWrap.appendChild(wrapper.firstChild);
-      }
-      wrapper.appendChild(strongWrap);
-    }
-
-    summary.appendChild(wrapper);
-    return summary;
+    return todos;
   }
 
-  function buildAxis() {
-    var axis = document.createElement('div');
-    axis.className = INSTANCE_CLASS + '__axis';
-    return axis;
-  }
+  /* Processes one container by marking raw TODO text nodes; params: container<Element>, containerIndex<number>, runtimeConfig<object>. */
+  function processContainer(container, containerIndex, runtimeConfig) {
+    const textNodes = collectTodoTextNodes(container, runtimeConfig);
 
-  function buildDetails(li) {
-    var details = document.createElement('div');
-    details.className = INSTANCE_CLASS + '__details';
-
-    var childLists = getDirectChildLists(li);
-    if (!childLists.length) return details;
-
-    childLists.forEach(function (list) {
-      var childItems = toArray(list.children).filter(function (child) {
-        return child.tagName === 'LI';
-      });
-
-      if (!childItems.length) return;
-
-      childItems.forEach(function (item) {
-        var box = document.createElement('div');
-        box.className = INSTANCE_CLASS + '__detail-box';
-
-        var rootList = document.createElement('ul');
-        rootList.className = INSTANCE_CLASS + '__detail-root-list';
-
-        var clonedItem = item.cloneNode(true);
-        clonedItem.classList.add(INSTANCE_CLASS + '__detail-root-item');
-
-        rootList.appendChild(clonedItem);
-        box.appendChild(rootList);
-        details.appendChild(box);
-      });
+    textNodes.forEach(function (textNode) {
+      markTodosInTextNode(textNode, container, containerIndex, runtimeConfig);
     });
-
-    return details;
   }
 
-  function applyTimelineVars(root, options) {
-    root.style.setProperty('--jt-summary-width', options.summaryWidth);
-    root.style.setProperty('--jt-gap', options.gap);
-    root.style.setProperty('--jt-axis-width', options.axisWidth);
-    root.style.setProperty('--jt-line-width', options.lineWidth);
-    root.style.setProperty('--jt-detail-radius', options.detailRadius);
-    root.style.setProperty('--jt-detail-padding', options.detailPadding);
-    root.style.setProperty('--jt-detail-group-gap', options.detailGroupGap);
-    root.style.setProperty('--jt-left-title-min-height', options.leftTitleMinHeight);
-    root.style.setProperty('--jt-summary-top-line-offset', options.summaryTopLineOffset);
-    root.style.setProperty('--jt-summary-top-line-gap', options.summaryTopLineGap);
-    root.style.setProperty('--jt-summary-top-line-width', options.summaryTopLineWidth);
-    root.style.setProperty('--jt-box-connector-width', options.boxConnectorWidth);
-    root.style.setProperty('--jt-box-connector-ball-size', options.boxConnectorBallSize);
-    root.style.setProperty('--jt-line-color', options.lineColor);
-  }
-
-  function applyEventTheme(event, theme) {
-    event.style.setProperty('--jt-event-accent', theme.accent);
-    event.style.setProperty('--jt-event-soft', theme.accentSoft || 'rgba(88, 183, 216, 0.12)');
-    event.style.setProperty('--jt-event-bg-strong', theme.accentBgStrong || 'rgba(88, 183, 216, 0.16)');
-  }
-
-  function pickTheme(options, state) {
-    var palette = options.palette || [];
-    if (!palette.length) {
-      return {
-        theme: {
-          accent: '#58b7d8',
-          accentSoft: 'rgba(88, 183, 216, 0.12)',
-          accentBgStrong: 'rgba(88, 183, 216, 0.16)'
-        },
-        index: 0
-      };
-    }
-
-    var mode = String(options.detailColorMode || 'sequential').toLowerCase();
-    var index;
-
-    if (mode === 'random') {
-      if (palette.length === 1) {
-        index = 0;
-      } else {
-        do {
-          index = Math.floor(Math.random() * palette.length);
-        } while (index === state.lastThemeIndex);
-      }
-    } else {
-      index = state.themeCursor % palette.length;
-      state.themeCursor += 1;
-    }
-
-    state.lastThemeIndex = index;
-    return {
-      theme: palette[index],
-      index: index
-    };
-  }
-
-  function transformList(list, marker, options, state) {
-    if (!list || list.dataset.timelineProcessed === 'true') return null;
-
-    var items = toArray(list.children).filter(function (child) {
-      return child.tagName === 'LI';
-    });
-
-    if (!items.length) return null;
-
-    var timeline = document.createElement('section');
-    timeline.className = INSTANCE_CLASS;
-    timeline.dataset.timelineProcessed = 'true';
-    applyTimelineVars(timeline, options);
-
-    var hasAnyDetails = false;
-
-    items.forEach(function (li, itemIndex) {
-      var event = document.createElement('article');
-      event.className = INSTANCE_CLASS + '__event';
-
-      var summary = buildSummary(li, itemIndex, options);
-      var axis = buildAxis();
-      var details = buildDetails(li);
-      var picked = pickTheme(options, state);
-
-      applyEventTheme(event, picked.theme);
-
-      if (details.children.length) hasAnyDetails = true;
-
-      event.appendChild(summary);
-      event.appendChild(axis);
-      event.appendChild(details);
-
-      timeline.appendChild(event);
-    });
-
-    timeline.dataset.jtEmptyDetails = hasAnyDetails ? 'false' : 'true';
-
-    list.replaceWith(timeline);
-    if (marker && marker.parentNode) {
-      marker.parentNode.removeChild(marker);
-    }
-
-    return timeline;
-  }
-
-  function init(selectorOrElements, userOptions) {
-    injectStyles();
-
-    var options = extend(BASE_DEFAULTS, userOptions || {});
-    if (!options.palette || !options.palette.length) {
-      options.palette = AUTO_INIT_OPTIONS.palette.slice();
-    }
-
-    var containers = normalizeContainers(selectorOrElements || options.selector);
-    var transformed = [];
-    var state = {
-      themeCursor: 0,
-      lastThemeIndex: -1
-    };
-
-    containers.forEach(function (container) {
-      var eligible = getEligibleLists(container);
-      eligible.forEach(function (entry) {
-        var timeline = transformList(entry.list, entry.marker, options, state);
-        if (timeline) {
-          transformed.push(timeline);
+  /* Collects raw text nodes containing TODO fragments; params: container<Element>, runtimeConfig<object>. */
+  function collectTodoTextNodes(container, runtimeConfig) {
+    const textNodes = [];
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !regexHasMatch(runtimeConfig.todoPattern, node.nodeValue)) {
+          return NodeFilter.FILTER_REJECT;
         }
-      });
+
+        if (!node.parentElement) {
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        if (node.parentElement.closest(runtimeConfig.skipAncestorSelector)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        return NodeFilter.FILTER_ACCEPT;
+      }
     });
 
-    return transformed;
+    let current = walker.nextNode();
+
+    while (current) {
+      textNodes.push(current);
+      current = walker.nextNode();
+    }
+
+    return textNodes;
   }
 
-  window.JekyllTimeline = {
-    init: init,
-    defaults: BASE_DEFAULTS,
-    initOptions: AUTO_INIT_OPTIONS
+  /* Safely tests a regex and resets state; params: regex<RegExp>, text<string>. */
+  function regexHasMatch(regex, text) {
+    regex.lastIndex = 0;
+
+    const result = regex.test(text);
+
+    regex.lastIndex = 0;
+
+    return result;
+  }
+
+  /* Marks TODO fragments inside one text node; params: textNode<Text>, container<Element>, containerIndex<number>, runtimeConfig<object>. */
+  function markTodosInTextNode(textNode, container, containerIndex, runtimeConfig) {
+    const text = textNode.nodeValue;
+    const regex = new RegExp(runtimeConfig.todoPattern.source, runtimeConfig.todoPattern.flags);
+    const fragment = document.createDocumentFragment();
+    let match = regex.exec(text);
+    let lastIndex = 0;
+    let hasMatch = false;
+
+    while (match !== null) {
+      const todoText = match[0].trim();
+      const sectionTitle = getSectionTitle(textNode, container, runtimeConfig);
+      const displayTitle = sectionTitle
+        ? truncateText(sectionTitle, runtimeConfig.sectionTitleMaxLength)
+        : runtimeConfig.noSectionText;
+      const displayText = truncateText(todoText, runtimeConfig.todoTextMaxLength) + " [" + displayTitle + "]";
+      const mark = document.createElement("mark");
+
+      hasMatch = true;
+      appendText(fragment, text.slice(lastIndex, match.index));
+
+      mark.className = runtimeConfig.markClass;
+      mark.id = "todo-summary-item-" + containerIndex + "-" + (++todoCounter);
+      mark.tabIndex = -1;
+      mark.textContent = todoText;
+      mark.dataset.todoText = todoText;
+      mark.dataset.todoSectionTitle = sectionTitle || "";
+      mark.dataset.todoDisplayText = displayText;
+
+      fragment.appendChild(mark);
+
+      lastIndex = match.index + match[0].length;
+      match = regex.exec(text);
+    }
+
+    if (!hasMatch) return;
+
+    appendText(fragment, text.slice(lastIndex));
+    textNode.parentNode.replaceChild(fragment, textNode);
+  }
+
+  /* Appends a text node when non-empty; params: fragment<DocumentFragment>, text<string>. */
+  function appendText(fragment, text) {
+    if (text) {
+      fragment.appendChild(document.createTextNode(text));
+    }
+  }
+
+  /* Collects existing TODO marks; params: container<Element>, runtimeConfig<object>. */
+  function collectMarks(container, runtimeConfig) {
+    const selector = "." + escapeCssClass(runtimeConfig.markClass);
+
+    return toArray(container.querySelectorAll(selector)).map(function (mark) {
+      const sectionTitle = mark.dataset.todoSectionTitle || "";
+      const displayTitle = sectionTitle
+        ? truncateText(sectionTitle, runtimeConfig.sectionTitleMaxLength)
+        : runtimeConfig.noSectionText;
+
+      return {
+        id: mark.id,
+        text: mark.dataset.todoText || mark.textContent || "",
+        displayText: mark.dataset.todoDisplayText || truncateText(mark.textContent, runtimeConfig.todoTextMaxLength) + " [" + displayTitle + "]",
+        sectionTitle: sectionTitle,
+        displayTitle: displayTitle
+      };
+    });
+  }
+
+  /* Removes duplicate TODO records by id; params: todos<Array>. */
+  function dedupeTodos(todos) {
+    const seen = {};
+    const output = [];
+
+    todos.forEach(function (todo) {
+      if (!todo.id || seen[todo.id]) return;
+
+      seen[todo.id] = true;
+      output.push(todo);
+    });
+
+    return output;
+  }
+
+  /* Finds the nearest previous section heading; params: textNode<Text>, container<Element>, runtimeConfig<object>. */
+  function getSectionTitle(textNode, container, runtimeConfig) {
+    let element = textNode.parentElement;
+
+    while (element && element !== container) {
+      let previous = element.previousElementSibling;
+
+      while (previous) {
+        const heading = findLastHeadingInside(previous, runtimeConfig);
+
+        if (heading) return cleanText(heading.textContent);
+
+        previous = previous.previousElementSibling;
+      }
+
+      element = element.parentElement;
+    }
+
+    let previous = textNode.parentElement ? textNode.parentElement.previousElementSibling : null;
+
+    while (previous) {
+      const heading = findLastHeadingInside(previous, runtimeConfig);
+
+      if (heading) return cleanText(heading.textContent);
+
+      previous = previous.previousElementSibling;
+    }
+
+    return "";
+  }
+
+  /* Finds the last heading inside an element; params: element<Element>, runtimeConfig<object>. */
+  function findLastHeadingInside(element, runtimeConfig) {
+    if (!element || !element.querySelectorAll) return null;
+    if (element.matches(runtimeConfig.headingSelector)) return element;
+
+    const headings = element.querySelectorAll(runtimeConfig.headingSelector);
+
+    return headings.length ? headings[headings.length - 1] : null;
+  }
+
+  /* Normalizes text whitespace; params: text<string>. */
+  function cleanText(text) {
+    return String(text || "").replace(/\s+/g, " ").trim();
+  }
+
+  /* Truncates text with ellipsis; params: text<string>, maxLength<number>. */
+  function truncateText(text, maxLength) {
+    const clean = cleanText(text);
+    const limit = Number(maxLength) || 0;
+
+    if (!clean) return "";
+    if (limit <= 0 || clean.length <= limit) return clean;
+
+    return clean.slice(0, limit) + "...";
+  }
+
+  /* Ensures floating UI exists; params: runtimeConfig<object>. */
+  function ensurePanel(runtimeConfig) {
+    if (panelEl && listEl && triggerEl) return;
+
+    const panel = document.createElement("aside");
+    const header = document.createElement("div");
+    const title = document.createElement("div");
+    const close = document.createElement("button");
+    const body = document.createElement("div");
+    const list = document.createElement("ol");
+    const trigger = document.createElement("button");
+
+    panel.id = runtimeConfig.panelId;
+    panel.className = runtimeConfig.panelClass;
+    panel.setAttribute("aria-label", runtimeConfig.panelTitle);
+
+    header.className = runtimeConfig.headerClass;
+    title.className = runtimeConfig.titleClass;
+    title.textContent = runtimeConfig.panelTitle;
+
+    close.type = "button";
+    close.className = runtimeConfig.closeClass;
+    close.setAttribute("aria-label", runtimeConfig.closeLabel);
+    close.textContent = "×";
+    close.addEventListener("click", hidePanel);
+
+    body.className = runtimeConfig.bodyClass;
+    list.className = runtimeConfig.listClass;
+
+    body.appendChild(list);
+    header.appendChild(title);
+    header.appendChild(close);
+    panel.appendChild(header);
+    panel.appendChild(body);
+    document.body.appendChild(panel);
+
+    trigger.id = runtimeConfig.triggerId;
+    trigger.type = "button";
+    trigger.className = runtimeConfig.triggerClass;
+    trigger.textContent = runtimeConfig.triggerText;
+    trigger.hidden = true;
+    trigger.addEventListener("click", showPanel);
+    document.body.appendChild(trigger);
+
+    if (runtimeConfig.enableDragging) {
+      makeDraggable(panel, header, runtimeConfig);
+    }
+
+    panelEl = panel;
+    listEl = list;
+    triggerEl = trigger;
+    applyPanelTransform();
+  }
+
+  /* Hides panel and shows trigger; params: none. */
+  function hidePanel() {
+    if (panelEl) panelEl.hidden = true;
+    if (triggerEl) triggerEl.hidden = false;
+  }
+
+  /* Shows panel and hides trigger; params: none. */
+  function showPanel() {
+    if (panelEl) panelEl.hidden = false;
+    if (triggerEl) triggerEl.hidden = true;
+  }
+
+  /* Renders floating summary list; params: todos<Array>, runtimeConfig<object>. */
+  function renderSummary(todos, runtimeConfig) {
+    if (!listEl) return;
+
+    listEl.innerHTML = "";
+
+    todos.forEach(function (todo) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+
+      link.href = "#" + todo.id;
+      link.textContent = todo.displayText;
+      link.title = todo.sectionTitle
+        ? todo.text + " [" + todo.sectionTitle + "]"
+        : todo.text + " [" + runtimeConfig.noSectionText + "]";
+
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        jumpToTodo(todo.id, runtimeConfig);
+      });
+
+      item.appendChild(link);
+      listEl.appendChild(item);
+    });
+  }
+
+  /* Jumps to and flashes one TODO mark; params: todoId<string>, runtimeConfig<object>. */
+  function jumpToTodo(todoId, runtimeConfig) {
+    const target = document.getElementById(todoId);
+
+    if (!target) return;
+
+    target.scrollIntoView({
+      behavior: runtimeConfig.scrollBehavior,
+      block: runtimeConfig.scrollBlock
+    });
+
+    target.focus({ preventScroll: true });
+    flashTarget(target, runtimeConfig);
+
+    if (!runtimeConfig.enableHashUpdate) return;
+
+    if (history.pushState) {
+      history.pushState(null, "", "#" + todoId);
+    } else {
+      location.hash = todoId;
+    }
+  }
+
+  /* Temporarily activates a TODO mark; params: target<Element>, runtimeConfig<object>. */
+  function flashTarget(target, runtimeConfig) {
+    target.classList.add(runtimeConfig.markActiveClass);
+
+    window.setTimeout(function () {
+      target.classList.remove(runtimeConfig.markActiveClass);
+    }, runtimeConfig.flashDuration);
+  }
+
+  /* Makes a panel draggable via transform; params: panel<Element>, handle<Element>, runtimeConfig<object>. */
+  function makeDraggable(panel, handle, runtimeConfig) {
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let startOffsetX = 0;
+    let startOffsetY = 0;
+
+    handle.addEventListener("pointerdown", function (event) {
+      if (event.target && event.target.closest("." + escapeCssClass(runtimeConfig.closeClass))) return;
+
+      dragging = true;
+      startX = event.clientX;
+      startY = event.clientY;
+      startOffsetX = dragOffsetX;
+      startOffsetY = dragOffsetY;
+
+      panel.classList.add(runtimeConfig.panelDraggingClass);
+      handle.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    handle.addEventListener("pointermove", function (event) {
+      if (!dragging) return;
+
+      const nextX = startOffsetX + event.clientX - startX;
+      const nextY = startOffsetY + event.clientY - startY;
+      const rect = panel.getBoundingClientRect();
+      const minX = -rect.left + dragOffsetX;
+      const maxX = window.innerWidth - rect.right + dragOffsetX;
+      const minY = -rect.top + dragOffsetY;
+      const maxY = window.innerHeight - rect.bottom + dragOffsetY;
+
+      dragOffsetX = clamp(nextX, minX, maxX);
+      dragOffsetY = clamp(nextY, minY, maxY);
+
+      applyPanelTransform();
+    });
+
+    handle.addEventListener("pointerup", function (event) {
+      dragging = false;
+      panel.classList.remove(runtimeConfig.panelDraggingClass);
+
+      if (handle.hasPointerCapture(event.pointerId)) {
+        handle.releasePointerCapture(event.pointerId);
+      }
+    });
+
+    handle.addEventListener("pointercancel", function () {
+      dragging = false;
+      panel.classList.remove(runtimeConfig.panelDraggingClass);
+    });
+  }
+
+  /* Applies the current transform offset to the panel; params: none. */
+  function applyPanelTransform() {
+    if (!panelEl) return;
+
+    panelEl.style.transform = "translate3d(" + dragOffsetX + "px, " + dragOffsetY + "px, 0)";
+  }
+
+  /* Clamps a number into a valid range; params: value<number>, min<number>, max<number>. */
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), Math.max(min, max));
+  }
+
+  /* Injects or updates built-in CSS; params: runtimeConfig<object>. */
+  function injectStyles(runtimeConfig) {
+    if (!runtimeConfig.injectStyle) return;
+
+    const panelClass = escapeCssClass(runtimeConfig.panelClass);
+    const panelDraggingClass = escapeCssClass(runtimeConfig.panelDraggingClass);
+    const headerClass = escapeCssClass(runtimeConfig.headerClass);
+    const titleClass = escapeCssClass(runtimeConfig.titleClass);
+    const closeClass = escapeCssClass(runtimeConfig.closeClass);
+    const bodyClass = escapeCssClass(runtimeConfig.bodyClass);
+    const listClass = escapeCssClass(runtimeConfig.listClass);
+    const triggerClass = escapeCssClass(runtimeConfig.triggerClass);
+    const markClass = escapeCssClass(runtimeConfig.markClass);
+    const markActiveClass = escapeCssClass(runtimeConfig.markActiveClass);
+    let style = document.getElementById(runtimeConfig.styleId);
+
+    if (!style) {
+      style = document.createElement("style");
+      style.id = runtimeConfig.styleId;
+      document.head.appendChild(style);
+    }
+
+    style.textContent = [
+      "." + panelClass + " {",
+      "  position: fixed;",
+      "  right: 16px;",
+      "  bottom: 16px;",
+      "  width: 360px;",
+      "  max-width: calc(100vw - 24px);",
+      "  max-height: min(60vh, 520px);",
+      "  z-index: " + runtimeConfig.zIndex + ";",
+      "  border: 1px solid " + runtimeConfig.borderColor + ";",
+      "  background: " + runtimeConfig.panelBackground + ";",
+      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
+      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
+      "  border-radius: 0;",
+      "  box-shadow: " + runtimeConfig.shadow + ";",
+      "  overflow: hidden;",
+      "  font-size: 14px;",
+      "  color: inherit;",
+      "}",
+      "." + panelClass + "[hidden],",
+      "." + triggerClass + "[hidden] {",
+      "  display: none;",
+      "}",
+      "." + panelClass + "." + panelDraggingClass + " {",
+      "  will-change: transform;",
+      "}",
+      "." + headerClass + " {",
+      "  display: flex;",
+      "  align-items: center;",
+      "  justify-content: space-between;",
+      "  padding: 10px 12px;",
+      "  border-bottom: 1px solid " + runtimeConfig.borderColor + ";",
+      "  background: " + runtimeConfig.headerBackground + ";",
+      "  cursor: move;",
+      "  user-select: none;",
+      "  touch-action: none;",
+      "}",
+      "." + titleClass + " {",
+      "  font-weight: 700;",
+      "}",
+      "." + closeClass + " {",
+      "  border: none;",
+      "  background: transparent;",
+      "  color: inherit;",
+      "  font-size: 20px;",
+      "  line-height: 1;",
+      "  cursor: pointer;",
+      "  padding: 0 2px;",
+      "}",
+      "." + bodyClass + " {",
+      "  overflow: auto;",
+      "  max-height: calc(min(60vh, 520px) - 48px);",
+      "  padding: 10px 12px 12px;",
+      "}",
+      "." + listClass + " {",
+      "  margin: 0;",
+      "  padding-left: 20px;",
+      "}",
+      "." + listClass + " li + li {",
+      "  margin-top: 8px;",
+      "}",
+      "." + listClass + " a {",
+      "  text-decoration: underline;",
+      "  cursor: pointer;",
+      "  color: inherit;",
+      "  word-break: break-word;",
+      "}",
+      "." + triggerClass + " {",
+      "  position: fixed;",
+      "  right: 16px;",
+      "  bottom: 16px;",
+      "  z-index: " + runtimeConfig.zIndex + ";",
+      "  border: 1px solid " + runtimeConfig.borderColor + ";",
+      "  background: " + runtimeConfig.panelBackground + ";",
+      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
+      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
+      "  border-radius: 0;",
+      "  box-shadow: " + runtimeConfig.shadow + ";",
+      "  padding: 10px 14px;",
+      "  font-size: 14px;",
+      "  font-weight: 600;",
+      "  line-height: 1;",
+      "  cursor: pointer;",
+      "  color: inherit;",
+      "}",
+      "." + markClass + " {",
+      "  background: " + runtimeConfig.highlightBackground + ";",
+      "  color: inherit;",
+      "  padding: 0 3px;",
+      "  border-radius: 0;",
+      "}",
+      "." + markActiveClass + " {",
+      "  outline: 2px solid currentColor;",
+      "  transition: outline 0.2s ease;",
+      "}",
+      "@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {",
+      "  ." + panelClass + ",",
+      "  ." + triggerClass + " {",
+      "    background: " + runtimeConfig.fallbackBackground + ";",
+      "  }",
+      "}"
+    ].join("\n");
+  }
+
+  /* Updates runtime config and reapplies behavior; params: nextConfig<object>. */
+  function updateConfig(nextConfig) {
+    config = merge(config, nextConfig || {});
+
+    injectStyles(config);
+
+    if (config.autoApply) {
+      apply(config.selector);
+    }
+
+    return getConfig();
+  }
+
+  /* Returns a copy of active config; params: none. */
+  function getConfig() {
+    return merge({}, config);
+  }
+
+  /* Clears floating UI and optionally unwraps marks; params: options<object>. */
+  function clear(options) {
+    const opts = merge({ unwrapMarks: false }, options || {});
+
+    if (opts.unwrapMarks) {
+      unwrapMarks(config);
+    }
+
+    if (panelEl && panelEl.parentNode) {
+      panelEl.parentNode.removeChild(panelEl);
+    }
+
+    if (triggerEl && triggerEl.parentNode) {
+      triggerEl.parentNode.removeChild(triggerEl);
+    }
+
+    panelEl = null;
+    listEl = null;
+    triggerEl = null;
+    dragOffsetX = 0;
+    dragOffsetY = 0;
+  }
+
+  /* Replaces generated marks with plain text; params: runtimeConfig<object>. */
+  function unwrapMarks(runtimeConfig) {
+    const selector = "." + escapeCssClass(runtimeConfig.markClass);
+    const marks = toArray(document.querySelectorAll(selector));
+
+    marks.forEach(function (mark) {
+      mark.replaceWith(document.createTextNode(mark.textContent || ""));
+    });
+  }
+
+  /* Runs plug-and-play behavior when DOM is ready; params: none. */
+  function onReady() {
+    if (!config.autoApply) return;
+
+    apply(config.selector);
+  }
+
+  window.TodoSummary = {
+    apply: apply,
+    updateConfig: updateConfig,
+    getConfig: getConfig,
+    clear: clear
   };
 
-  if (BASE_DEFAULTS.autoInit) {
-    document.addEventListener('DOMContentLoaded', function () {
-      init(BASE_DEFAULTS.selector, AUTO_INIT_OPTIONS);
-    });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onReady);
+  } else {
+    onReady();
   }
 })(window, document);

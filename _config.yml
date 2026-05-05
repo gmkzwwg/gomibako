@@ -125,8 +125,9 @@ ui:                                                            # Group all theme
       - "misc"                                                 # Display the miscellaneous collection in this position.
 
   features:         
-    title                 : true
-    post_meta             : true                                           # Group global feature switches controlled by the theme.
+    title                 : true                              # Show or hide page titles globally. Boolean.
+    abbreviation          : true                              # Show page abbreviation instead of title. Boolean. 
+    post_meta             : true                              # Group global feature switches controlled by the theme.
     comments              : true                             # Enable or disable comments globally. Boolean.
     footer                : false                             # Show or hide the footer globally. Boolean.
     math                  : true                             # Enable or disable math rendering globally. Boolean.
@@ -134,6 +135,7 @@ ui:                                                            # Group all theme
     encrypted_text        : false                             # Enable or disable encrypted-text rendering globally. Boolean.
     search                : false                             # Enable or disable site search globally. Boolean.
     sitemap               : true                              # Enable or disable sitemap-related UI globally. Boolean.
+    todos                : true                              # Allow TODO summary globally; each page must still set todos: true.
 
   icons:                                                       # Group icon-system settings.
     provider              : "fontawesome"                     # Select the icon library used by the theme. candidates: fontawesome | lucide | none
@@ -158,7 +160,6 @@ ui:                                                            # Group all theme
     color_scheme          : "auto"                            # Set the preferred color scheme. candidates: auto | light | dark
     accent                : "blue"                            # Set the default accent color. candidates: blue | red | green | purple | gray
     radius                : "normal"                          # Set the default border-radius scale. candidates: none | small | normal | large
-
 
 # -----------------------------------------------------------------------------
 # 4. Page-level front matter defaults
@@ -197,6 +198,7 @@ defaults:                                                      # Define default 
       toc_depth           : null                              # Use site.ui.toc.depth unless the page overrides it.
       math                : null                              # Use site.ui.features.math unless the page overrides it.
       mermaid             : null                              # Use site.ui.features.mermaid unless the page overrides it.
+      todos               : null                              # Enable TODO summary only when explicitly set to true and site.ui.features.todos is enabled.
 
       categories          : []                                # Set an empty category list by default.
       tags                : []                                # Set an empty tag list by default.

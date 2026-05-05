@@ -31,7 +31,7 @@
    * ========================= */
 
   var CONFIG = {
-    selector: ".ascii_title",                      // default target
+    selector: ".ascii_title, .post_abbreviation",                      // default target
     allowUnicode: true,                            // support Chinese/CJK by default
 
     // charGroups: {

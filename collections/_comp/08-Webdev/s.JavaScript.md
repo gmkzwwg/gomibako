@@ -4,18 +4,7 @@ categories: Notes
 subclass: Webdev
 ---
 
-Abbreviation Glossary.
 
-E.G.
-
-```Javascript
-/*
- * Abbreviation Glossary:
- * xxbtn - xx button : xx button used to yyyyyyyyyyyyyyyyyy
- * zz_fifi - zz Fineral Fia : fefefefef
- * textToRemove - The text that will be removed from the extracted content.
- */
-```
 
 
 ## JavaScript

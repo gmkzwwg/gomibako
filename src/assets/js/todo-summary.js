@@ -1,239 +1,371 @@
-/*
-  todo_highlighter_summary.js
+/*!
+ * Introduction:
+ *   Highlights TODO fragments in article text and creates a floating TODO summary panel.
+ *
+ * Usage:
+ *   Include this file on the page. It runs automatically with DEFAULT_CONFIG.
+ *   Default behavior can be customized by editing DEFAULT_CONFIG below.
+ *   Runtime behavior can be customized with window.TodoCollector.updateConfig().
+ *
+ * Global API:
+ *   window.TodoCollector.apply(selectorOrElements, options)
+ *   window.TodoCollector.updateConfig(config)
+ *   window.TodoCollector.getConfig()
+ *   window.TodoCollector.clear()
+ *   window.initTodoCollector(selectorOrElements, options)
+ *
+ * Notes:
+ *   This script injects its own compact CSS.
+ *   It preserves the original class names for compatibility.
+ *   It skips script, style, code, pre, textarea, existing highlights, and its own floating UI.
+ *   The floating panel uses backdrop-filter to blur content behind it.
+ */
 
-  用法：
-  1. 页面加载后调用 initTodoCollector('.your-class')
-  2. 它会在匹配的容器中：
-     - 高亮所有 "TODO:" 开始的文本片段
-     - 在页面右下角插入一个可关闭的悬浮汇总窗
-     - 关闭后保留一个 "TODOs" 按钮用于重新展开
-     - 汇总列表按顺序列出，并可点击跳转
-     - 每条 TODO 后附带其所在节标题的前 8 个字；若超过 8 个字则加 ...
-     - 若未找到该节标题，则显示 "TODO: at the begining"
+(function (window, document) {
+  "use strict";
 
-  说明：
-  - 默认按文本节点扫描，避免粗暴替换整个 innerHTML。
-  - 默认将最近的 h1-h6 视为“该节标题”。
-*/
+  if (!window || !document) return;
 
-(function () {
-  let todoGlobalCounter = 0;
-  let floatingPanelCreated = false;
-  let floatingListEl = null;
-  let floatingBoxEl = null;
-  let reopenButtonEl = null;
+  const DEFAULT_CONFIG = {
+    selector: ".post_content", // Default container selector.
+    autoApply: true, // Apply automatically after the script is loaded.
+    todoPattern: /TODO:[^\n\r]*/g, // Pattern used to find TODO fragments.
+    highlightClass: "todo-highlight", // Class used for highlighted TODO text.
+    activeClass: "todo-highlight-active", // Class used when jumping to a TODO.
+    panelClass: "todo-floating-box", // Class used for the floating panel.
+    headerClass: "todo-floating-header", // Class used for the draggable panel header.
+    titleClass: "todo-floating-title", // Class used for the panel title.
+    closeClass: "todo-floating-close", // Class used for the close button.
+    bodyClass: "todo-floating-body", // Class used for the panel body.
+    listClass: "todo-floating-list", // Class used for the summary list.
+    reopenClass: "todo-reopen-button", // Class used for the reopen button.
+    styleId: "todo-collector-styles", // ID of the injected style element.
+    panelId: "todo-floating-box", // ID of the floating panel.
+    panelTitle: "TODO 汇总", // Floating panel title.
+    reopenText: "TODOs", // Reopen button text.
+    closeLabel: "关闭 TODO 汇总", // Close button accessibility label.
+    noSectionText: "TODO: at the beginning", // Fallback text when no heading is found.
+    todoTextMaxLength: 15, // Maximum TODO text length in the summary.
+    sectionTitleMaxLength: 15, // Maximum section title length in the summary.
+    flashDuration: 1600, // Active highlight duration in milliseconds.
+    scrollBehavior: "smooth", // Scroll behavior when clicking a summary link.
+    scrollBlock: "center", // Scroll alignment when jumping to a TODO.
+    enableHashUpdate: true, // Update URL hash when jumping to a TODO.
+    enableDragging: true, // Enable dragging the floating panel.
+    injectStyle: true, // Inject built-in CSS.
+    backdropBlur: "14px", // Blur strength behind the floating panel.
+    panelBackground: "rgba(255, 255, 255, 0.52)", // Glass-like panel background.
+    headerBackground: "rgba(255, 255, 255, 0.36)", // Glass-like header background.
+    borderColor: "rgba(255, 255, 255, 0.42)", // Panel border color.
+    shadow: "0 18px 48px rgba(0, 0, 0, 0.22)", // Panel shadow.
+    zIndex: 99999, // Floating UI z-index.
+    skipAncestorSelector: [
+      "script",
+      "style",
+      "noscript",
+      "textarea",
+      "input",
+      "select",
+      "button",
+      "pre",
+      "code",
+      ".todo-floating-box",
+      ".todo-highlight",
+      ".todo-reopen-button",
+      "[data-todo-ignore]"
+    ].join(","), // Ancestors that disable TODO scanning.
+    headingSelector: "h1, h2, h3, h4, h5, h6" // Heading selector for section lookup.
+  };
 
-  function initTodoCollector(targetSelector) {
-    const containers = document.querySelectorAll(targetSelector);
-    const allTodos = [];
+  let config = merge({}, DEFAULT_CONFIG); // Active runtime config.
+  let todoGlobalCounter = 0; // Unique TODO ID counter.
+  let floatingPanelCreated = false; // Floating UI creation flag.
+  let floatingListEl = null; // Summary list element.
+  let floatingBoxEl = null; // Floating panel element.
+  let reopenButtonEl = null; // Reopen button element.
+  let currentTodos = []; // Last collected TODO records.
 
-    containers.forEach((container, containerIndex) => {
-      const todos = processContainer(container, containerIndex);
-      allTodos.push(...todos);
+  /* Merges objects from left to right; params: ...objects<object>. */
+  function merge() {
+    const output = {};
+
+    Array.prototype.slice.call(arguments).forEach(function (object) {
+      Object.keys(object || {}).forEach(function (key) {
+        output[key] = object[key];
+      });
     });
 
-    if (allTodos.length > 0) {
-      ensureFloatingPanel();
-      renderFloatingSummary(allTodos);
-      injectStyles();
-    }
+    return output;
   }
 
-  function processContainer(container, containerIndex) {
-    const todos = [];
-    const walker = document.createTreeWalker(
-      container,
-      NodeFilter.SHOW_TEXT,
-      {
-        acceptNode(node) {
-          if (!node.nodeValue || !node.nodeValue.includes('TODO:')) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          if (!node.parentElement) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          if (
-            node.parentElement.closest('.todo-floating-box') ||
-            node.parentElement.closest('.todo-highlight') ||
-            node.parentElement.closest('.todo-reopen-button')
-          ) {
-            return NodeFilter.FILTER_REJECT;
-          }
-          return NodeFilter.FILTER_ACCEPT;
-        }
-      }
-    );
+  /* Converts array-like values to arrays; params: value<ArrayLike>. */
+  function toArray(value) {
+    return Array.prototype.slice.call(value || []);
+  }
 
-    const textNodes = [];
-    let current;
-    while ((current = walker.nextNode())) {
-      textNodes.push(current);
+  /* Normalizes selector, element, NodeList, or array into elements; params: selectorOrElements<any>. */
+  function normalizeContainers(selectorOrElements) {
+    if (!selectorOrElements) {
+      return toArray(document.querySelectorAll(config.selector));
     }
 
-    textNodes.forEach((textNode) => {
-      highlightTodosInTextNode(textNode, todos, container, containerIndex);
+    if (typeof selectorOrElements === "string") {
+      return toArray(document.querySelectorAll(selectorOrElements));
+    }
+
+    if (selectorOrElements instanceof Element) {
+      return [selectorOrElements];
+    }
+
+    if (selectorOrElements.length) {
+      return toArray(selectorOrElements);
+    }
+
+    return [];
+  }
+
+  /* Escapes CSS class names when possible; params: value<string>. */
+  function escapeCssClass(value) {
+    if (window.CSS && typeof window.CSS.escape === "function") {
+      return window.CSS.escape(value);
+    }
+
+    return String(value).replace(/[^a-zA-Z0-9_-]/g, "\\$&"); // Minimal fallback.
+  }
+
+  /* Applies TODO collection to matching containers; params: selectorOrElements<any>, userOptions<object>. */
+  function apply(selectorOrElements, userOptions) {
+    const runtimeConfig = merge(config, userOptions || {});
+    const containers = normalizeContainers(selectorOrElements || runtimeConfig.selector);
+    const todos = [];
+
+    injectStyles(runtimeConfig);
+
+    containers.forEach(function (container, containerIndex) {
+      const containerTodos = processContainer(container, containerIndex, runtimeConfig);
+      todos.push.apply(todos, containerTodos);
+    });
+
+    currentTodos = todos;
+
+    if (todos.length > 0) {
+      ensureFloatingPanel(runtimeConfig);
+      renderFloatingSummary(todos, runtimeConfig);
+    }
+
+    return todos;
+  }
+
+  /* Scans and processes one container; params: container<Element>, containerIndex<number>, runtimeConfig<object>. */
+  function processContainer(container, containerIndex, runtimeConfig) {
+    const todos = [];
+    const textNodes = collectTodoTextNodes(container, runtimeConfig);
+
+    textNodes.forEach(function (textNode) {
+      highlightTodosInTextNode(textNode, todos, container, containerIndex, runtimeConfig);
     });
 
     return todos;
   }
 
-  function highlightTodosInTextNode(textNode, todos, container, containerIndex) {
+  /* Collects text nodes containing TODO matches; params: container<Element>, runtimeConfig<object>. */
+  function collectTodoTextNodes(container, runtimeConfig) {
+    const textNodes = [];
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node.nodeValue || !runtimeConfig.todoPattern.test(node.nodeValue)) {
+          runtimeConfig.todoPattern.lastIndex = 0; // Reset global regex state.
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        runtimeConfig.todoPattern.lastIndex = 0; // Reset after test.
+
+        if (!node.parentElement) {
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        if (node.parentElement.closest(runtimeConfig.skipAncestorSelector)) {
+          return NodeFilter.FILTER_REJECT;
+        }
+
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    let current = walker.nextNode();
+
+    while (current) {
+      textNodes.push(current);
+      current = walker.nextNode();
+    }
+
+    return textNodes;
+  }
+
+  /* Highlights TODO matches in one text node; params: textNode<Text>, todos<Array>, container<Element>, containerIndex<number>, runtimeConfig<object>. */
+  function highlightTodosInTextNode(textNode, todos, container, containerIndex, runtimeConfig) {
     const text = textNode.nodeValue;
-    const regex = /TODO:[^\n\r]*/g;
-    let match;
-    let lastIndex = 0;
+    const regex = new RegExp(runtimeConfig.todoPattern.source, runtimeConfig.todoPattern.flags);
     const fragment = document.createDocumentFragment();
+    let match = regex.exec(text);
+    let lastIndex = 0;
     let hasMatch = false;
 
-    while ((match = regex.exec(text)) !== null) {
+    while (match !== null) {
       hasMatch = true;
 
-      const beforeText = text.slice(lastIndex, match.index);
-      if (beforeText) {
-        fragment.appendChild(document.createTextNode(beforeText));
-      }
+      appendText(fragment, text.slice(lastIndex, match.index));
 
       const todoText = match[0].trim();
-      const sectionTitle = getSectionTitle(textNode, container);
-      const hasTitle = !!sectionTitle;
-      const shortTodoText = truncateTitle(todoText, 15);
-      const displayTitle = hasTitle ? truncateTitle(sectionTitle, 15) : 'TODO: at the begining';
-      const displayText = `${shortTodoText} [${displayTitle}]`;
-      const todoId = `todo-${containerIndex}-${++todoGlobalCounter}`;
+      const sectionTitle = getSectionTitle(textNode, container, runtimeConfig);
+      const hasTitle = Boolean(sectionTitle);
+      const shortTodoText = truncateText(todoText, runtimeConfig.todoTextMaxLength);
+      const displayTitle = hasTitle
+        ? truncateText(sectionTitle, runtimeConfig.sectionTitleMaxLength)
+        : runtimeConfig.noSectionText;
+      const displayText = shortTodoText + " [" + displayTitle + "]";
+      const todoId = "todo-" + containerIndex + "-" + (++todoGlobalCounter);
+      const highlight = document.createElement("mark");
 
-      const span = document.createElement('mark');
-      span.className = 'todo-highlight';
-      span.id = todoId;
-      span.setAttribute('tabindex', '-1');
-      span.textContent = todoText;
+      highlight.className = runtimeConfig.highlightClass;
+      highlight.id = todoId;
+      highlight.setAttribute("tabindex", "-1");
+      highlight.textContent = todoText;
 
-      fragment.appendChild(span);
+      fragment.appendChild(highlight);
+
       todos.push({
         id: todoId,
         text: todoText,
-        displayText,
-        sectionTitle,
-        displayTitle
+        displayText: displayText,
+        sectionTitle: sectionTitle,
+        displayTitle: displayTitle
       });
 
       lastIndex = match.index + match[0].length;
+      match = regex.exec(text);
     }
 
-    if (!hasMatch) {
-      return;
-    }
+    if (!hasMatch) return;
 
-    const remainingText = text.slice(lastIndex);
-    if (remainingText) {
-      fragment.appendChild(document.createTextNode(remainingText));
-    }
+    appendText(fragment, text.slice(lastIndex));
 
     textNode.parentNode.replaceChild(fragment, textNode);
   }
 
-  function getSectionTitle(textNode, container) {
-    let el = textNode.parentElement;
-    while (el && el !== container) {
-      let prev = el.previousElementSibling;
-      while (prev) {
-        const heading = findLastHeadingInside(prev);
+  /* Appends a text node when text is non-empty; params: fragment<DocumentFragment>, text<string>. */
+  function appendText(fragment, text) {
+    if (text) {
+      fragment.appendChild(document.createTextNode(text));
+    }
+  }
+
+  /* Finds the nearest previous section heading; params: textNode<Text>, container<Element>, runtimeConfig<object>. */
+  function getSectionTitle(textNode, container, runtimeConfig) {
+    let element = textNode.parentElement;
+
+    while (element && element !== container) {
+      let previous = element.previousElementSibling;
+
+      while (previous) {
+        const heading = findLastHeadingInside(previous, runtimeConfig);
+
         if (heading) {
           return cleanText(heading.textContent);
         }
-        prev = prev.previousElementSibling;
+
+        previous = previous.previousElementSibling;
       }
-      el = el.parentElement;
+
+      element = element.parentElement;
     }
 
-    let prev = textNode.parentElement ? textNode.parentElement.previousElementSibling : null;
-    while (prev) {
-      const heading = findLastHeadingInside(prev);
+    let previous = textNode.parentElement ? textNode.parentElement.previousElementSibling : null;
+
+    while (previous) {
+      const heading = findLastHeadingInside(previous, runtimeConfig);
+
       if (heading) {
         return cleanText(heading.textContent);
       }
-      prev = prev.previousElementSibling;
+
+      previous = previous.previousElementSibling;
     }
 
-    return '';
+    return "";
   }
 
-  function findLastHeadingInside(element) {
-    if (!element || !element.querySelectorAll) {
-      return null;
-    }
+  /* Finds the last heading inside an element; params: element<Element>, runtimeConfig<object>. */
+  function findLastHeadingInside(element, runtimeConfig) {
+    if (!element || !element.querySelectorAll) return null;
+    if (element.matches(runtimeConfig.headingSelector)) return element;
 
-    if (isHeading(element)) {
-      return element;
-    }
+    const headings = element.querySelectorAll(runtimeConfig.headingSelector);
 
-    const headings = element.querySelectorAll('h1, h2, h3, h4, h5, h6');
     return headings.length ? headings[headings.length - 1] : null;
   }
 
-  function isHeading(element) {
-    return /^H[1-6]$/.test(element.tagName);
-  }
-
+  /* Normalizes whitespace in text; params: text<string>. */
   function cleanText(text) {
-    return (text || '').replace(/\s+/g, ' ').trim();
+    return String(text || "").replace(/\s+/g, " ").trim();
   }
 
-  function truncateTitle(text, maxLen) {
+  /* Truncates text with ellipsis; params: text<string>, maxLength<number>. */
+  function truncateText(text, maxLength) {
     const clean = cleanText(text);
-    if (!clean) return '';
-    if (clean.length <= maxLen) return clean;
-    return clean.slice(0, maxLen) + '...';
+    const limit = Number(maxLength) || 0;
+
+    if (!clean) return "";
+    if (limit <= 0 || clean.length <= limit) return clean;
+
+    return clean.slice(0, limit) + "...";
   }
 
-  function ensureFloatingPanel() {
-    if (floatingPanelCreated) {
-      return;
-    }
+  /* Ensures floating panel and reopen button exist; params: runtimeConfig<object>. */
+  function ensureFloatingPanel(runtimeConfig) {
+    if (floatingPanelCreated) return;
 
-    const box = document.createElement('div');
-    box.className = 'todo-floating-box';
-    box.id = 'todo-floating-box';
+    const box = document.createElement("div");
+    const header = document.createElement("div");
+    const title = document.createElement("div");
+    const closeButton = document.createElement("button");
+    const body = document.createElement("div");
+    const list = document.createElement("ol");
+    const reopenButton = document.createElement("button");
 
-    const header = document.createElement('div');
-    header.className = 'todo-floating-header';
+    box.className = runtimeConfig.panelClass;
+    box.id = runtimeConfig.panelId;
 
-    const title = document.createElement('div');
-    title.className = 'todo-floating-title';
-    title.textContent = 'TODO 汇总';
+    header.className = runtimeConfig.headerClass;
+    title.className = runtimeConfig.titleClass;
+    title.textContent = runtimeConfig.panelTitle;
 
-    const closebutton = document.createElement('button');
-    closebutton.type = 'button';
-    closebutton.className = 'todo-floating-close';
-    closebutton.setAttribute('aria-label', '关闭 TODO 汇总');
-    closebutton.textContent = '×';
-    closebutton.addEventListener('click', function () {
-      hideFloatingPanel();
-    });
+    closeButton.type = "button";
+    closeButton.className = runtimeConfig.closeClass;
+    closeButton.setAttribute("aria-label", runtimeConfig.closeLabel);
+    closeButton.textContent = "×";
+    closeButton.addEventListener("click", hideFloatingPanel);
 
-    const body = document.createElement('div');
-    body.className = 'todo-floating-body';
-
-    const list = document.createElement('ol');
-    list.className = 'todo-floating-list';
+    body.className = runtimeConfig.bodyClass;
+    list.className = runtimeConfig.listClass;
 
     body.appendChild(list);
     header.appendChild(title);
-    header.appendChild(closebutton);
+    header.appendChild(closeButton);
     box.appendChild(header);
     box.appendChild(body);
     document.body.appendChild(box);
 
-    const reopenButton = document.createElement('button');
-    reopenButton.type = 'button';
-    reopenButton.className = 'todo-reopen-button';
-    reopenButton.textContent = 'TODOs';
-    reopenButton.style.display = 'none';
-    reopenButton.addEventListener('click', function () {
-      showFloatingPanel();
-    });
+    reopenButton.type = "button";
+    reopenButton.className = runtimeConfig.reopenClass;
+    reopenButton.textContent = runtimeConfig.reopenText;
+    reopenButton.style.display = "none";
+    reopenButton.addEventListener("click", showFloatingPanel);
     document.body.appendChild(reopenButton);
 
-    makeDraggable(box, header);
+    if (runtimeConfig.enableDragging) {
+      makeDraggable(box, header);
+    }
 
     floatingBoxEl = box;
     floatingListEl = list;
@@ -241,52 +373,47 @@
     floatingPanelCreated = true;
   }
 
+  /* Hides the floating panel and shows the reopen button; params: none. */
   function hideFloatingPanel() {
     if (floatingBoxEl) {
-      floatingBoxEl.style.display = 'none';
+      floatingBoxEl.style.display = "none";
     }
+
     if (reopenButtonEl) {
-      reopenButtonEl.style.display = 'inline-flex';
+      reopenButtonEl.style.display = "inline-flex";
     }
   }
 
+  /* Shows the floating panel and hides the reopen button; params: none. */
   function showFloatingPanel() {
     if (floatingBoxEl) {
-      floatingBoxEl.style.display = 'block';
+      floatingBoxEl.style.display = "block";
     }
+
     if (reopenButtonEl) {
-      reopenButtonEl.style.display = 'none';
+      reopenButtonEl.style.display = "none";
     }
   }
 
-  function renderFloatingSummary(todos) {
-    if (!floatingListEl) {
-      return;
-    }
+  /* Renders the floating TODO summary; params: todos<Array>, runtimeConfig<object>. */
+  function renderFloatingSummary(todos, runtimeConfig) {
+    if (!floatingListEl) return;
 
-    floatingListEl.innerHTML = '';
+    floatingListEl.innerHTML = "";
 
-    todos.forEach((todo) => {
-      const item = document.createElement('li');
-      const link = document.createElement('a');
-      link.href = `#${todo.id}`;
+    todos.forEach(function (todo) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+
+      link.href = "#" + todo.id;
       link.textContent = todo.displayText;
-      link.title = todo.sectionTitle ? `${todo.text} [${todo.sectionTitle}]` : `${todo.text} [TODO: at the begining]`;
+      link.title = todo.sectionTitle
+        ? todo.text + " [" + todo.sectionTitle + "]"
+        : todo.text + " [" + runtimeConfig.noSectionText + "]";
 
-      link.addEventListener('click', (event) => {
+      link.addEventListener("click", function (event) {
         event.preventDefault();
-        const target = document.getElementById(todo.id);
-        if (!target) return;
-
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        target.focus({ preventScroll: true });
-        flashTarget(target);
-
-        if (history.pushState) {
-          history.pushState(null, '', `#${todo.id}`);
-        } else {
-          location.hash = todo.id;
-        }
+        jumpToTodo(todo.id, runtimeConfig);
       });
 
       item.appendChild(link);
@@ -294,13 +421,39 @@
     });
   }
 
-  function flashTarget(target) {
-    target.classList.add('todo-highlight-active');
-    setTimeout(() => {
-      target.classList.remove('todo-highlight-active');
-    }, 1600);
+  /* Scrolls to and flashes one TODO item; params: todoId<string>, runtimeConfig<object>. */
+  function jumpToTodo(todoId, runtimeConfig) {
+    const target = document.getElementById(todoId);
+
+    if (!target) return;
+
+    target.scrollIntoView({
+      behavior: runtimeConfig.scrollBehavior,
+      block: runtimeConfig.scrollBlock
+    });
+
+    target.focus({ preventScroll: true });
+    flashTarget(target, runtimeConfig);
+
+    if (!runtimeConfig.enableHashUpdate) return;
+
+    if (history.pushState) {
+      history.pushState(null, "", "#" + todoId);
+    } else {
+      location.hash = todoId;
+    }
   }
 
+  /* Temporarily highlights a target TODO item; params: target<Element>, runtimeConfig<object>. */
+  function flashTarget(target, runtimeConfig) {
+    target.classList.add(runtimeConfig.activeClass);
+
+    window.setTimeout(function () {
+      target.classList.remove(runtimeConfig.activeClass);
+    }, runtimeConfig.flashDuration);
+  }
+
+  /* Makes a floating box draggable with pointer events; params: box<Element>, handle<Element>. */
   function makeDraggable(box, handle) {
     let isDragging = false;
     let startX = 0;
@@ -308,155 +461,228 @@
     let startLeft = 0;
     let startTop = 0;
 
-    handle.addEventListener('mousedown', function (event) {
-      if (event.target && event.target.closest('.todo-floating-close')) {
-        return;
-      }
+    handle.addEventListener("pointerdown", function (event) {
+      if (event.target && event.target.closest("." + config.closeClass)) return;
+
+      const rect = box.getBoundingClientRect();
 
       isDragging = true;
-      const rect = box.getBoundingClientRect();
       startX = event.clientX;
       startY = event.clientY;
       startLeft = rect.left;
       startTop = rect.top;
 
-      box.style.left = rect.left + 'px';
-      box.style.top = rect.top + 'px';
-      box.style.right = 'auto';
-      box.style.bottom = 'auto';
+      box.style.left = rect.left + "px";
+      box.style.top = rect.top + "px";
+      box.style.right = "auto";
+      box.style.bottom = "auto";
 
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+      handle.setPointerCapture(event.pointerId);
       event.preventDefault();
     });
 
-    function onMouseMove(event) {
+    handle.addEventListener("pointermove", function (event) {
       if (!isDragging) return;
 
-      const nextLeft = startLeft + (event.clientX - startX);
-      const nextTop = startTop + (event.clientY - startY);
-      box.style.left = Math.max(0, nextLeft) + 'px';
-      box.style.top = Math.max(0, nextTop) + 'px';
-    }
+      const nextLeft = clamp(startLeft + event.clientX - startX, 0, window.innerWidth - box.offsetWidth);
+      const nextTop = clamp(startTop + event.clientY - startY, 0, window.innerHeight - box.offsetHeight);
 
-    function onMouseUp() {
+      box.style.left = nextLeft + "px";
+      box.style.top = nextTop + "px";
+    });
+
+    handle.addEventListener("pointerup", function (event) {
       isDragging = false;
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
-    }
+
+      if (handle.hasPointerCapture(event.pointerId)) {
+        handle.releasePointerCapture(event.pointerId);
+      }
+    });
+
+    handle.addEventListener("pointercancel", function () {
+      isDragging = false;
+    });
   }
 
-  function injectStyles() {
-    if (document.getElementById('todo-collector-styles')) {
-      return;
-    }
-
-    const style = document.createElement('style');
-    style.id = 'todo-collector-styles';
-    style.textContent = `
-      .todo-floating-box {
-        position: fixed;
-        right: 16px;
-        bottom: 16px;
-        width: 360px;
-        max-width: calc(100vw - 24px);
-        max-height: min(60vh, 520px);
-        z-index: 99999;
-        border: 1px solid currentColor;
-        background: #ffffff;
-        border-radius: 0;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
-        overflow: hidden;
-        font-size: 14px;
-        color: inherit;
-      }
-
-      .todo-floating-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 12px;
-        border-bottom: 1px solid currentColor;
-        background: #ffffff;
-        cursor: move;
-        user-select: none;
-      }
-
-      .todo-floating-title {
-        font-weight: 700;
-      }
-
-      .todo-floating-close {
-        border: none;
-        background: transparent;
-        color: inherit;
-        font-size: 20px;
-        line-height: 1;
-        cursor: pointer;
-        padding: 0 2px;
-      }
-
-      .todo-floating-body {
-        overflow: auto;
-        max-height: calc(min(60vh, 520px) - 48px);
-        padding: 10px 12px 12px;
-      }
-
-      .todo-floating-list {
-        margin: 0;
-        padding-left: 20px;
-      }
-
-      .todo-floating-list li + li {
-        margin-top: 8px;
-      }
-
-      .todo-floating-list a {
-        text-decoration: underline;
-        cursor: pointer;
-        color: inherit;
-        word-break: break-word;
-      }
-
-      .todo-reopen-button {
-        position: fixed;
-        right: 16px;
-        bottom: 16px;
-        z-index: 99999;
-        border: 1px solid currentColor;
-        background: #ffffff;
-        border-radius: 0;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
-        padding: 10px 14px;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1;
-        cursor: pointer;
-        color: inherit;
-      }
-
-      .todo-highlight {
-        background: #ffec99;
-        color: inherit;
-        padding: 0 3px;
-        border-radius: 0;
-      }
-
-      .todo-highlight-active {
-        outline: 2px solid currentColor;
-        transition: outline 0.2s ease;
-      }
-    `;
-
-    document.head.appendChild(style);
+  /* Clamps a number into a range; params: value<number>, min<number>, max<number>. */
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), Math.max(min, max));
   }
 
-  window.initTodoCollector = initTodoCollector;
-})();
+  /* Injects or updates built-in CSS; params: runtimeConfig<object>. */
+  function injectStyles(runtimeConfig) {
+    if (!runtimeConfig.injectStyle) return;
 
-/*
-  示例：
-  document.addEventListener('DOMContentLoaded', function () {
-    initTodoCollector('.article-body');
-  });
-*/
+    const highlightClass = escapeCssClass(runtimeConfig.highlightClass);
+    const activeClass = escapeCssClass(runtimeConfig.activeClass);
+    const panelClass = escapeCssClass(runtimeConfig.panelClass);
+    const headerClass = escapeCssClass(runtimeConfig.headerClass);
+    const titleClass = escapeCssClass(runtimeConfig.titleClass);
+    const closeClass = escapeCssClass(runtimeConfig.closeClass);
+    const bodyClass = escapeCssClass(runtimeConfig.bodyClass);
+    const listClass = escapeCssClass(runtimeConfig.listClass);
+    const reopenClass = escapeCssClass(runtimeConfig.reopenClass);
+    let style = document.getElementById(runtimeConfig.styleId);
+
+    if (!style) {
+      style = document.createElement("style");
+      style.id = runtimeConfig.styleId;
+      document.head.appendChild(style);
+    }
+
+    style.textContent = [
+      "." + panelClass + " {",
+      "  position: fixed;",
+      "  right: 16px;",
+      "  bottom: 16px;",
+      "  width: 360px;",
+      "  max-width: calc(100vw - 24px);",
+      "  max-height: min(60vh, 520px);",
+      "  z-index: " + runtimeConfig.zIndex + ";",
+      "  border: 1px solid " + runtimeConfig.borderColor + ";",
+      "  background: " + runtimeConfig.panelBackground + ";",
+      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
+      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
+      "  border-radius: 0;",
+      "  box-shadow: " + runtimeConfig.shadow + ";",
+      "  overflow: hidden;",
+      "  font-size: 14px;",
+      "  color: inherit;",
+      "}",
+      "." + headerClass + " {",
+      "  display: flex;",
+      "  align-items: center;",
+      "  justify-content: space-between;",
+      "  padding: 10px 12px;",
+      "  border-bottom: 1px solid " + runtimeConfig.borderColor + ";",
+      "  background: " + runtimeConfig.headerBackground + ";",
+      "  cursor: move;",
+      "  user-select: none;",
+      "  touch-action: none;",
+      "}",
+      "." + titleClass + " {",
+      "  font-weight: 700;",
+      "}",
+      "." + closeClass + " {",
+      "  border: none;",
+      "  background: transparent;",
+      "  color: inherit;",
+      "  font-size: 20px;",
+      "  line-height: 1;",
+      "  cursor: pointer;",
+      "  padding: 0 2px;",
+      "}",
+      "." + bodyClass + " {",
+      "  overflow: auto;",
+      "  max-height: calc(min(60vh, 520px) - 48px);",
+      "  padding: 10px 12px 12px;",
+      "}",
+      "." + listClass + " {",
+      "  margin: 0;",
+      "  padding-left: 20px;",
+      "}",
+      "." + listClass + " li + li {",
+      "  margin-top: 8px;",
+      "}",
+      "." + listClass + " a {",
+      "  text-decoration: underline;",
+      "  cursor: pointer;",
+      "  color: inherit;",
+      "  word-break: break-word;",
+      "}",
+      "." + reopenClass + " {",
+      "  position: fixed;",
+      "  right: 16px;",
+      "  bottom: 16px;",
+      "  z-index: " + runtimeConfig.zIndex + ";",
+      "  border: 1px solid " + runtimeConfig.borderColor + ";",
+      "  background: " + runtimeConfig.panelBackground + ";",
+      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
+      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
+      "  border-radius: 0;",
+      "  box-shadow: " + runtimeConfig.shadow + ";",
+      "  padding: 10px 14px;",
+      "  font-size: 14px;",
+      "  font-weight: 600;",
+      "  line-height: 1;",
+      "  cursor: pointer;",
+      "  color: inherit;",
+      "}",
+      "." + highlightClass + " {",
+      "  background: rgba(255, 236, 153, 0.82);",
+      "  color: inherit;",
+      "  padding: 0 3px;",
+      "  border-radius: 0;",
+      "}",
+      "." + activeClass + " {",
+      "  outline: 2px solid currentColor;",
+      "  transition: outline 0.2s ease;",
+      "}",
+      "@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {",
+      "  ." + panelClass + ",",
+      "  ." + reopenClass + " {",
+      "    background: rgba(255, 255, 255, 0.88);",
+      "  }",
+      "}"
+    ].join("\n");
+  }
+
+  /* Updates runtime config and reapplies collection; params: nextConfig<object>. */
+  function updateConfig(nextConfig) {
+    config = merge(config, nextConfig || {});
+
+    injectStyles(config);
+
+    if (config.autoApply) {
+      apply(config.selector);
+    }
+
+    return getConfig();
+  }
+
+  /* Returns a copy of active config; params: none. */
+  function getConfig() {
+    return merge({}, config);
+  }
+
+  /* Removes floating UI and active references; params: none. */
+  function clear() {
+    if (floatingBoxEl && floatingBoxEl.parentNode) {
+      floatingBoxEl.parentNode.removeChild(floatingBoxEl);
+    }
+
+    if (reopenButtonEl && reopenButtonEl.parentNode) {
+      reopenButtonEl.parentNode.removeChild(reopenButtonEl);
+    }
+
+    floatingPanelCreated = false;
+    floatingListEl = null;
+    floatingBoxEl = null;
+    reopenButtonEl = null;
+    currentTodos = [];
+  }
+
+  /* Runs plug-and-play behavior when DOM is ready; params: none. */
+  function onReady() {
+    if (!config.autoApply) return;
+
+    apply(config.selector);
+  }
+
+  window.TodoCollector = {
+    apply: apply,
+    updateConfig: updateConfig,
+    getConfig: getConfig,
+    clear: clear
+  };
+
+  window.initTodoCollector = function (selectorOrElements, options) {
+    return apply(selectorOrElements, options);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onReady);
+  } else {
+    onReady();
+  }
+})(window, document);

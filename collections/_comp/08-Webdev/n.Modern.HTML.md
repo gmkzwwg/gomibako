@@ -4,7 +4,7 @@ categories: Notes
 subclass: Webdev
 ---
 
-## PART 1 — Macro Analysis, Philosophy, Tool Fit, and Technical Trends — HTML5, Living Standard, evergreen browsers
+## PART 1 — The Macro Lens
 
 This part establishes the conceptual model for **HTML5** as a professional markup system: what it is, why it exists, how it interacts with browsers and adjacent technologies, and where modern HTML practice is moving. Scope follows the requested **HTML5 professional reference** brief. 
 
@@ -292,7 +292,7 @@ The most productive professional stance is:
 | Enhancement-oriented  | Keep baseline content and workflows resilient where practical                    |
 
 **Bottom line:** HTML is easy to start and hard to master because its correctness is distributed across parsing, semantics, accessibility, resource loading, security, compatibility, and maintainability. Professional HTML is not verbose markup; it is precise markup.
-## PART 2 — Table Quick Reference Guide — installment 1, document architecture, metadata, semantics, links, images
+## PART 2 — Quick Reference Guide
 
 This installment covers the first slice of the requested **HTML5 professional reference**: document structure, metadata, content categories, semantic element selection, links, and images. It follows the requested coverage-first, matrix-heavy format for **Modern HTML5 in current evergreen browsers**. 
 
@@ -2343,7 +2343,7 @@ for (const [name, value] of data.entries()) {
 | Validation priority                   | Use conformance validation, parsed-DOM inspection, accessibility-tree inspection, keyboard testing, network analysis, and structured-data validation where relevant                                                                                                                                   |
 | Professional risk areas               | Fake controls, unlabeled forms, invalid nesting, duplicate IDs, unsafe iframes, overused ARIA, poor script loading, incorrect responsive images, client-only validation, structured data mismatch                                                                                                     |
 
-## PART 3 — Fast Practical Tutorial — HTML5 workflow, validation, semantics, forms, media, mini-project
+## PART 3 — Fast Practical Tutorial
 
 This part turns the reference material into a practical workflow: create a valid HTML document, structure it semantically, add metadata, build accessible content, handle forms, load resources intentionally, inspect the result, and finish with a compact professional mini-project. Scope follows the requested **HTML5 professional reference** for modern evergreen browsers. 
 
@@ -3070,7 +3070,7 @@ Mini-project checklist:
 
 *Common Pitfalls: A mini-project like this should not be judged only by appearance; validate the markup, inspect the parsed DOM, test keyboard access, check names/roles, and verify the form payload.*
 
-## PART 4 — Best High-Frequency Items to Memorize — HTML5 fluency, semantics, forms, accessibility, loading, safety
+## PART 4 — Best High-Frequency Items to Memorize
 
 This part focuses on the HTML patterns that most directly improve daily professional fluency. The goal is not to memorize every element, but to internalize the decisions that prevent common production defects in semantics, accessibility, forms, performance, and security. 
 
@@ -3388,7 +3388,7 @@ for (const [name, value] of data.entries()) {
 
 *Common Pitfalls: Professional HTML quality is cumulative; a single missing label, duplicate ID, unsafe iframe, or bad script-loading choice can create real production defects.*
 
-## PART 5 — Practical Templates, Examples, Scripts, or Patterns — reusable HTML5 templates, production snippets, safety patterns
+## PART 5 — Practical Templates
 
 Selected mode: `template-first` — HTML is primarily declarative, structural, document-oriented markup, so reusable page templates and compact semantic patterns are the highest-value example format. 
 
@@ -4034,7 +4034,7 @@ Use this as a curated `head` block for pages that need strong metadata, CSS, scr
 | Validation     | Validate source HTML and inspect parsed DOM before release                                     |
 
 
-## APPENDIX A — Deprecated, Obsolete, and Not-Recommended HTML5 Patterns — obsolete elements, anti-patterns, replacements
+## APPENDIX A — Deprecated, Obsolete, and Not-Recommended HTML5 Patterns
 
 This appendix consolidates patterns that are deprecated, obsolete, unsafe, misleading, or usually wrong in modern HTML. Some still render because browsers preserve backward compatibility, but rendering compatibility is not professional endorsement. The goal is to replace them with semantic HTML, CSS, safe resource loading, and accessible native controls. 
 
