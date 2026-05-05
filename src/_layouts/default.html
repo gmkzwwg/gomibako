@@ -16,7 +16,7 @@ Page front matter has priority over site.ui.* defaults.
     {% assign show_title_enabled = false %}
 {% endcase %}
 
-{% assign resolved_title = page.title | strip %}
+{% assign resolved_title = page.title | default: site.title | strip %}
 
 {% if resolved_title == "" %}
   {% assign show_title_enabled = false %}
