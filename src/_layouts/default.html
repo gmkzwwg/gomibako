@@ -70,6 +70,7 @@ Page front matter has priority over site.ui.* defaults.
   {% if context_menu_enabled %}
   <script src=" {{ '/src/assets/js/context-menu.js' | relative_url }}"></script>
   {% endif %}
+  <script src=" {{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
 </head>
 
 <body class=" page">
@@ -87,8 +88,8 @@ Page front matter has priority over site.ui.* defaults.
   <script src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
   <script>
     const glitch = new TextGlitchFx({
-      selector: "h1, h2, .abstract, .post-abstract, .post-meta__text, .cli-header__label", // 指定，或者".hero-title",
-      intervalRange: [3, 6], // x~y 秒随机触发一次
+      selector: "h1, h2, h3, h4, .abstract, .post-abstract, .post-meta__text, .cli-header__label, .cli-header__title, .cli-header__owner, .cli-header__mode",
+      intervalRange: [2, 4], // x~y 秒随机触发一次
       duration: 800,
       effects: ["scramble", "blocks", "blink", "error"],
       maxCharChangeRatio: 0.48,

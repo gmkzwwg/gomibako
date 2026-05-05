@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: print
 title: The Dreamy Quixote's Ludicrous Charge
 show_context_menu: false
 permalink: /catelog
@@ -14,7 +14,7 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 
 ### META — Epistemic Control Layer (precedes everything, runs forever)
 
-`This layer exists to prevent pseudo-synthesis: the feeling that two domains connect before the connection has survived proof, example, counterexample, formalization, or disciplined reconstruction.`
+*This layer exists to prevent pseudo-synthesis: the feeling that two domains connect before the connection has survived proof, example, counterexample, formalization, or disciplined reconstruction.*
 
 * **[C]** Reconstruction Test — *for every major node, reconstruct one central argument, proof, model, or mechanism without looking; then compare against the source*
 * **[C]** Formalization Gate — *when the material is formalizable, express at least one core claim in Lean, Rocq, pseudocode, symbolic notation, or a precise definition-theorem-example format*
@@ -23,11 +23,11 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 * **[C]** Cognitive-Limit Log — *record recurring failures of attention, memory, abstraction, compression, symbol manipulation, and conceptual overreach as data about human cognition*
 * **[C]** Source-of-Knowledge Tagging — *mark important claims as proved, computed, observed, inferred, interpreted, remembered, or merely suspected*
 
-`META should stay small. It is failing if it becomes a productivity system.`
+*META should stay small. It is failing if it becomes a productivity system.*
 
 ### FOUNDATION — Common Ground & Re-Readable Canon
 
-`This layer contains the common instruments, cognitive-philosophical ground, and evergreen companion texts for the entire roadmap. It is not a trunk. Some items are read early; some are reread at fixed later thresholds.`
+*This layer contains the common instruments, cognitive-philosophical ground, and evergreen companion texts for the entire roadmap. It is not a trunk. Some items are read early; some are reread at fixed later thresholds.*
 
 #### A. Basic Instruments
 

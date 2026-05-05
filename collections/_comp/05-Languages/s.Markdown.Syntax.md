@@ -1,5 +1,5 @@
 ---
-title: Markdown - Quick Reference
+title: Markdown - Quick Reference Guide
 layout: post-compact
 categories: Sheet
 subclass: Linux

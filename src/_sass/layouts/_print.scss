@@ -4,6 +4,7 @@
   margin: 0 auto; // Center the page on screen.
   padding: 2cm; // Simulate paper margins on screen.
   font-family:
+    "Georgia",
     "Noto Serif CJK SC",
     "Source Han Serif SC",
     "Songti SC",
@@ -12,7 +13,6 @@
     "宋体",
     "Iowan Old Style",
     "Palatino Linotype",
-    "Georgia",
     serif;
   line-height: 1.68; // Keep long-form print text readable.
 
@@ -107,13 +107,13 @@
   font-family:
     "SFMono-Regular",
     "SF Mono",
+    "Liberation Mono",
     "Cascadia Code",
     "Cascadia Mono",
     "JetBrains Mono",
     "Fira Code",
     "Menlo",
     "Consolas",
-    "Liberation Mono",
     "Courier New",
     monospace;
   font-size: 0.88em !important;

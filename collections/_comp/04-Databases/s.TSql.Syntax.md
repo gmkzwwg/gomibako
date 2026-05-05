@@ -1,5 +1,5 @@
 ---
-title: T-SQL Quick Reference and Usage
+title: T-SQL Quick Reference Guide
 categories: Sheet
 subclass: Databases
 ---

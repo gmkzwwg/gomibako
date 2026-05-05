@@ -13,7 +13,7 @@ show_context_menu: false
 permalink: /posts
 ---
 
-# 瞧！那个垃圾
+<h1 class="ascii_title">瞧！那个垃圾</h1>
 
 <img src="images/sumimaro.png" alt="sumimaro" style="float: right; max-width: 180px; margin: 5px;">
 

@@ -1,12 +1,12 @@
 ---
-title: 英语语法速查表
+title: English Grammer Quick Reference (英语语法速查表)
 layout: post-compact
 categories: Sheet
 subclass: English
 toc_depth: 4
 ---
 
-# English Grammer Quick Reference
+# English Grammer Quick Reference Guide
 
 ## 重要语法索引
 
