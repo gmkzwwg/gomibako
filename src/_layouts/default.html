@@ -81,6 +81,49 @@ Priority:
 {% assign text_indent_enabled = page.text_indent %}
 {% endif %}
 
+
+{% comment %}
+Resolve table-of-contents-before-content settings.
+Page front matter has priority over site.ui.* defaults.
+Valid modes: list | chart | compact | false | nil
+{% endcomment %}
+
+<!-- page.toc_before_content > site.ui.toc.before_content > disabled -->
+<!-- page.toc_depth > site.ui.toc.depth > site.toc_depth > 3 -->
+
+{% if page.toc_before_content == nil %}
+{% assign toc_before_content_mode = site.ui.toc.before_content %}
+{% else %}
+{% assign toc_before_content_mode = page.toc_before_content %}
+{% endif %}
+
+{% if toc_before_content_mode == false %}
+{% assign toc_before_content_mode = "" %}
+{% else %}
+{% assign toc_before_content_mode = toc_before_content_mode | default: "" | strip %}
+{% endif %}
+
+{% assign toc_before_content_enabled = false %}
+
+{% case toc_before_content_mode %}
+{% when "list", "chart", "compact" %}
+{% assign toc_before_content_enabled = true %}
+{% endcase %}
+
+{% assign toc_depth_resolved = page.toc_depth %}
+
+{% if toc_depth_resolved == nil %}
+{% assign toc_depth_resolved = site.ui.toc.depth %}
+{% endif %}
+
+{% if toc_depth_resolved == nil %}
+{% assign toc_depth_resolved = site.toc_depth %}
+{% endif %}
+
+{% if toc_depth_resolved == nil or toc_depth_resolved == "" %}
+{% assign toc_depth_resolved = 3 %}
+{% endif %}
+
 <!doctype html>
 <html>
 
@@ -146,10 +189,13 @@ Priority:
 
   <!-- [MAIN CONTENT] -->
   <div class="container" id="ctner">
+
     <!-- POST HEADER -->
     {% include header.html %}
+
     <div class="div_article" id="div_atcl">
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
+
         <!-- PAGE TITLE -->
         {% if show_abbreviation_enabled %}
         <h1 class="post_abbreviation" id="{{ resolved_abbreviation | slugify }}">
@@ -160,19 +206,39 @@ Priority:
           {{ resolved_title }}
         </h1>
         {% endif %}
+
         <!-- PAGE METADATA -->
         {% if post_meta_enabled %}
         {% include post-meta.html %}
         {% endif %}
-        <!-- POST CONTENT -->
-        <div class="post-content">
-        {{ content }}
+        
+        <!-- TOC BEFORE CONTENT -->
+        {% if toc_before_content_enabled %}
+        <div class="toc_before_content">
+          {% case toc_before_content_mode %}
+          {% when "list" %}
+          {% include toc_list.html html=content sanitize=true class="ul_toc" id="ul_toc" h_min=2
+          h_max=toc_depth_resolved %}
+
+          {% when "chart" %}
+          {% include toc_chart.html content=content %}
+
+          {% when "compact" %}
+          {% include toc_chart.html content=content compact=true %}
+          {% endcase %}
         </div>
+        {% endif %}
+
+
+        <!-- POST CONTENT -->
+        {{ content }}
+
         <!-- POST COMMENTS -->
         {% if comments_enabled and site.comments.provider %}
         {% include comment.html %}
         {% endif %}
       </article>
+
       <!-- POST FOOTER -->
       {% if footer_enabled %}
       {% include footer.html %}

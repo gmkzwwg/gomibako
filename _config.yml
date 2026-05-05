@@ -95,8 +95,9 @@ ui:                                                            # Group all theme
     enabled               : true                              # Enable or disable table of contents globally. Boolean.
     mode                  : "chart"                           # Set the default TOC style. candidates: false | chart | compact | list
     before_content        : false                             # Place the TOC before the main content when enabled. Boolean.
-    depth                 : 4                                 # Set the maximum heading depth included in the TOC.
-
+    depth                 : 4                                 # Set the minimum heading depth included in the TOC.
+    before_content        : ""                                # Show a table of contents before page content. candidates: "" | list | chart | compact
+    
   typography:                                                  # Group typography and reading style settings.
     text_indent           : false                             # Enable or disable paragraph indentation by default. Boolean.
     font_scale            : "normal"                          # Set the default font scale. candidates: small | normal | large
