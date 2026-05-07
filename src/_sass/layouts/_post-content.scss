@@ -72,17 +72,7 @@
       transform: translate(2px, -2px);
     }
   }
-  table {
-    color: $color-muted;
-    margin: 10px 0 13px 0;
-  }
-  th {
-    border: $border-dotted-third;
-  }
-  td {
-    border: $border-dotted-third;
-  }
-  .encrypted {
+ .encrypted {
     color: rgba($color-warning, 0.9);
     word-break: break-all;
   }

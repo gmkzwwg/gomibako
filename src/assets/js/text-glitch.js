@@ -12,24 +12,31 @@
  *   window.TextGlitchFx.updateConfig()   Update the default auto instance config.
  *   window.TextGlitchFx.start()          Start the default auto instance.
  *   window.TextGlitchFx.stop()           Stop the default auto instance.
- *   window.TextGlitchFx.triggerNow()     Trigger one glitch immediately.
+ *   window.TextGlitchFx.triggerNow()     Trigger one glitch batch immediately.
  *   window.TextGlitchFx.getConfig()      Get the active auto instance config.
  *
  * Notes:
  *   The script injects its own compact CSS.
  *   The default auto instance respects prefers-reduced-motion.
  *   Elements with data-glitch-disabled="true" are skipped.
+ *   This version uses element-level viewport control, not character-level clipping.
  */
 
 (function (window, document) {
   "use strict";
 
   const DEFAULT_CONFIG = {
-    selector: "h1, h2, h3, h4, .abstract, .post-abstract, .post-meta__text, .cli-header__label, .cli-header__title, .cli-header__owner, .cli-header__mode", // Target text elements.
-    interval: 8, // Fixed interval in seconds when intervalRange is not used.
-    intervalRange: [2, 4], // Random trigger interval range in seconds.
-    duration: 800, // Effect duration in milliseconds.
-    effects: ["scramble", "blocks", "blink", "error"], // Enabled effect names.
+    selector:
+      "h1, h2, h3, h4, .abstract, .post-abstract, .post-meta__text, .cli-header__label, .cli-header__title, .cli-header__owner, .cli-header__mode",
+
+    interval: 8,
+    intervalRange: [3, 6],
+
+    initialDelay: 2000,
+    duration: 800,
+
+    effects: ["scramble", "blocks", "blink", "error"],
+
     errorTexts: [
       "ERROR 418",
       "FATAL: NULL",
@@ -37,59 +44,78 @@
       "SIGNAL LOST",
       "404 THOUGHTS",
       "DATA CORRUPTED"
-    ], // Temporary text values for the error effect.
-    chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*+-=?/<>[]{}█▓▒░", // Character pool for scrambling.
-    maxCharChangeRatio: 0.48, // Maximum ratio of characters changed per effect.
-    skipHidden: true, // Skip invisible elements.
-    respectReducedMotion: true, // Respect prefers-reduced-motion.
-    autoStart: true, // Start automatically after inclusion.
-    injectStyle: true, // Inject required CSS from this file.
-    styleId: "tgfx-style", // ID of the injected style element.
-    busyAttribute: "data-glitch-busy", // Attribute used to avoid overlapping effects.
-    disabledAttribute: "data-glitch-disabled", // Attribute used to disable a specific element.
-    blinkClass: "tgfx-blink" // CSS class used by blink-like effects.
+    ],
+
+    chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*+-=?/<>[]{}█▓▒░",
+
+    maxCharChangeRatio: 0.48,
+
+    batchSizeWeights: [
+      { count: 1, weight: 25 },
+      { count: 2, weight: 45 },
+      { count: 3, weight: 15 },
+      { count: 4, weight: 15 }
+    ],
+
+    skipHidden: true,
+    viewportOnly: true,
+    pauseWhenPageHidden: true,
+    respectReducedMotion: true,
+
+    autoStart: true,
+
+    injectStyle: true,
+    styleId: "tgfx-style",
+
+    busyAttribute: "data-glitch-busy",
+    disabledAttribute: "data-glitch-disabled",
+
+    blinkClass: "tgfx-blink"
   };
 
-  let autoInstance = null; // Default plug-and-play instance.
-  let autoConfig = Object.assign({}, DEFAULT_CONFIG); // Active auto instance config.
+  let autoInstance = null;
+  let autoConfig = Object.assign({}, DEFAULT_CONFIG);
 
-  /* Creates a text glitch effect instance; params: options<object>. */
   class TextGlitchFx {
     constructor(options = {}) {
-      this.options = Object.assign({}, DEFAULT_CONFIG, options); // Instance config.
-      this.timer = null; // Timer for the next scheduled effect.
-      this.running = false; // Runtime state flag.
+      this.options = Object.assign({}, DEFAULT_CONFIG, options);
 
-      this._injectStyle(); // Ensure required CSS exists.
+      this.timer = null;
+      this.running = false;
+
+      this.effectTimeouts = new Set();
+      this.effectIntervals = new Set();
+      this.activeElements = new Map();
+
+      this._injectStyle();
     }
 
-    /* Starts the instance loop; params: none. */
     start() {
       if (this.running) return;
-
       if (this._shouldRespectReducedMotion()) return;
 
       this.running = true;
-      this._scheduleNext();
+      this._scheduleNext(this.options.initialDelay);
     }
 
-    /* Stops the instance loop; params: none. */
     stop() {
       this.running = false;
 
       if (this.timer) {
         window.clearTimeout(this.timer);
+        this.timer = null;
       }
 
-      this.timer = null;
+      this._clearAllEffectTimers();
+      this._restoreActiveElements();
     }
 
-    /* Updates this instance config and restarts if needed; params: nextOptions<object>. */
     updateConfig(nextOptions = {}) {
       const wasRunning = this.running;
 
       this.stop();
-      this.options = Object.assign({}, this.options, nextOptions); // Merge new options.
+
+      this.options = Object.assign({}, this.options, nextOptions);
       this._injectStyle();
 
       if (wasRunning || this.options.autoStart) {
@@ -99,24 +125,26 @@
       return this.getConfig();
     }
 
-    /* Returns a copy of this instance config; params: none. */
     getConfig() {
       return Object.assign({}, this.options);
     }
 
-    /* Triggers one random effect immediately; params: none. */
     triggerNow() {
+      if (this._shouldSkipTrigger()) return;
+
       const elements = this._getEligibleElements();
 
       if (!elements.length) return;
 
-      const element = elements[Math.floor(Math.random() * elements.length)];
-      const effect = this._getRandomEffect();
+      const batchSize = Math.min(this._getWeightedBatchSize(), elements.length);
+      const pickedElements = this._pickRandomElements(elements, batchSize);
 
-      this._applyEffect(element, effect);
+      pickedElements.forEach((element) => {
+        const effect = this._getRandomEffect();
+        this._applyEffect(element, effect);
+      });
     }
 
-    /* Checks reduced-motion preference; params: none. */
     _shouldRespectReducedMotion() {
       return (
         this.options.respectReducedMotion &&
@@ -125,19 +153,37 @@
       );
     }
 
-    /* Schedules the next random effect; params: none. */
-    _scheduleNext() {
+    _shouldSkipTrigger() {
+      return Boolean(
+        this.options.pauseWhenPageHidden &&
+          document.visibilityState &&
+          document.visibilityState !== "visible"
+      );
+    }
+
+    _scheduleNext(customDelay) {
       if (!this.running) return;
 
-      const delay = this._getNextDelay();
+      if (this.timer) {
+        window.clearTimeout(this.timer);
+        this.timer = null;
+      }
+
+      const delay =
+        customDelay === undefined
+          ? this._getNextDelay()
+          : Math.max(0, Number(customDelay) || 0);
 
       this.timer = window.setTimeout(() => {
+        this.timer = null;
+
+        if (!this.running) return;
+
         this.triggerNow();
         this._scheduleNext();
       }, delay);
     }
 
-    /* Computes the next delay in milliseconds; params: none. */
     _getNextDelay() {
       const interval = Number(this.options.interval) || DEFAULT_CONFIG.interval;
       const intervalRange = this.options.intervalRange;
@@ -145,6 +191,8 @@
       if (
         Array.isArray(intervalRange) &&
         intervalRange.length === 2 &&
+        Number.isFinite(Number(intervalRange[0])) &&
+        Number.isFinite(Number(intervalRange[1])) &&
         Number(intervalRange[0]) <= Number(intervalRange[1])
       ) {
         const min = Math.max(0.3, Number(intervalRange[0])) * 1000;
@@ -156,30 +204,47 @@
       return Math.max(300, interval * 1000);
     }
 
-    /* Returns eligible target elements; params: none. */
     _getEligibleElements() {
-      const nodes = Array.from(document.querySelectorAll(this.options.selector));
+      let nodes = [];
+
+      try {
+        nodes = Array.from(document.querySelectorAll(this.options.selector));
+      } catch (error) {
+        return [];
+      }
 
       return nodes.filter((element) => {
         const text = (element.textContent || "").trim();
 
         if (!text) return false;
-        if (element.getAttribute(this.options.disabledAttribute) === "true") return false;
-        if (element.getAttribute(this.options.busyAttribute) === "1") return false;
-        if (this.options.skipHidden && !this._isVisible(element)) return false;
+
+        if (element.getAttribute(this.options.disabledAttribute) === "true") {
+          return false;
+        }
+
+        if (element.getAttribute(this.options.busyAttribute) === "1") {
+          return false;
+        }
+
+        if (this.options.skipHidden && !this._isVisible(element)) {
+          return false;
+        }
+
+        if (this.options.viewportOnly && !this._isInViewport(element)) {
+          return false;
+        }
 
         return true;
       });
     }
 
-    /* Checks whether an element is visible; params: element<Element>. */
     _isVisible(element) {
       const style = window.getComputedStyle(element);
 
       if (
         style.display === "none" ||
         style.visibility === "hidden" ||
-        style.opacity === "0"
+        Number(style.opacity) === 0
       ) {
         return false;
       }
@@ -189,54 +254,189 @@
       return rect.width > 0 && rect.height > 0;
     }
 
-    /* Selects one random enabled effect; params: none. */
+    _isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+
+      const viewportHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      const viewportWidth =
+        window.innerWidth || document.documentElement.clientWidth;
+
+      return (
+        rect.bottom > 0 &&
+        rect.right > 0 &&
+        rect.top < viewportHeight &&
+        rect.left < viewportWidth
+      );
+    }
+
+    _getWeightedBatchSize() {
+      const weights = Array.isArray(this.options.batchSizeWeights)
+        ? this.options.batchSizeWeights
+        : DEFAULT_CONFIG.batchSizeWeights;
+
+      const validWeights = weights.filter((item) => {
+        return (
+          item &&
+          Number.isFinite(Number(item.count)) &&
+          Number.isFinite(Number(item.weight)) &&
+          Number(item.count) > 0 &&
+          Number(item.weight) > 0
+        );
+      });
+
+      if (!validWeights.length) return 1;
+
+      const totalWeight = validWeights.reduce((sum, item) => {
+        return sum + Number(item.weight);
+      }, 0);
+
+      let roll = Math.random() * totalWeight;
+
+      for (const item of validWeights) {
+        roll -= Number(item.weight);
+
+        if (roll <= 0) {
+          return Math.max(1, Math.floor(Number(item.count)));
+        }
+      }
+
+      return 1;
+    }
+
+    _pickRandomElements(elements, count) {
+      const pool = elements.slice();
+      const picked = [];
+
+      while (pool.length && picked.length < count) {
+        const index = Math.floor(Math.random() * pool.length);
+
+        picked.push(pool[index]);
+        pool.splice(index, 1);
+      }
+
+      return picked;
+    }
+
     _getRandomEffect() {
-      const effects = Array.isArray(this.options.effects) && this.options.effects.length
-        ? this.options.effects
-        : DEFAULT_CONFIG.effects;
+      const effects =
+        Array.isArray(this.options.effects) && this.options.effects.length
+          ? this.options.effects
+          : DEFAULT_CONFIG.effects;
 
       return effects[Math.floor(Math.random() * effects.length)];
     }
 
-    /* Applies one named effect to an element; params: element<Element>, effect<string>. */
     _applyEffect(element, effect) {
+      if (this.activeElements.has(element)) return;
+
       const original = element.textContent;
-      const duration = Math.max(80, Number(this.options.duration) || DEFAULT_CONFIG.duration);
+      const duration = Math.max(
+        80,
+        Number(this.options.duration) || DEFAULT_CONFIG.duration
+      );
 
       element.setAttribute(this.options.busyAttribute, "1");
+      this.activeElements.set(element, original);
 
       switch (effect) {
         case "scramble":
           this._effectScramble(element, original, duration);
           break;
+
         case "blocks":
           this._effectBlocks(element, original, duration);
           break;
+
         case "blink":
           this._effectBlink(element, original, duration);
           break;
+
         case "error":
           this._effectError(element, original, duration);
           break;
+
         default:
           this._effectScramble(element, original, duration);
       }
     }
 
-    /* Restores an element after an effect; params: element<Element>, original<string>. */
     _cleanup(element, original) {
+      if (!element) return;
+
       element.textContent = original;
       element.classList.remove(this.options.blinkClass);
       element.removeAttribute(this.options.busyAttribute);
+
+      this.activeElements.delete(element);
     }
 
-    /* Applies the scramble effect; params: element<Element>, original<string>, duration<number>. */
+    _restoreActiveElements() {
+      Array.from(this.activeElements.entries()).forEach(([element, original]) => {
+        this._cleanup(element, original);
+      });
+
+      this.activeElements.clear();
+    }
+
+    _setEffectTimeout(callback, delay) {
+      const timerId = window.setTimeout(() => {
+        this.effectTimeouts.delete(timerId);
+        callback();
+      }, delay);
+
+      this.effectTimeouts.add(timerId);
+
+      return timerId;
+    }
+
+    _clearEffectTimeout(timerId) {
+      if (!timerId) return;
+
+      window.clearTimeout(timerId);
+      this.effectTimeouts.delete(timerId);
+    }
+
+    _setEffectInterval(callback, delay) {
+      const intervalId = window.setInterval(callback, delay);
+
+      this.effectIntervals.add(intervalId);
+
+      return intervalId;
+    }
+
+    _clearEffectInterval(intervalId) {
+      if (!intervalId) return;
+
+      window.clearInterval(intervalId);
+      this.effectIntervals.delete(intervalId);
+    }
+
+    _clearAllEffectTimers() {
+      this.effectTimeouts.forEach((timerId) => {
+        window.clearTimeout(timerId);
+      });
+
+      this.effectIntervals.forEach((intervalId) => {
+        window.clearInterval(intervalId);
+      });
+
+      this.effectTimeouts.clear();
+      this.effectIntervals.clear();
+    }
+
     _effectScramble(element, original, duration) {
       const steps = 7;
       let currentStep = 0;
       const stepTime = Math.max(24, Math.floor(duration / steps));
 
-      const timer = window.setInterval(() => {
+      const intervalId = this._setEffectInterval(() => {
+        if (!this.activeElements.has(element)) {
+          this._clearEffectInterval(intervalId);
+          return;
+        }
+
         currentStep += 1;
 
         const progress = currentStep / steps;
@@ -244,79 +444,98 @@
         element.textContent = this._scrambleText(original, progress);
 
         if (currentStep >= steps) {
-          window.clearInterval(timer);
+          this._clearEffectInterval(intervalId);
           this._cleanup(element, original);
         }
       }, stepTime);
     }
 
-    /* Applies the block replacement effect; params: element<Element>, original<string>, duration<number>. */
     _effectBlocks(element, original, duration) {
       element.textContent = this._blockText(original);
 
-      window.setTimeout(() => {
+      const switchDelay = Math.max(40, duration - 60);
+
+      this._setEffectTimeout(() => {
+        if (!this.activeElements.has(element)) return;
+
         element.textContent = this._scrambleText(original, 0.75);
 
-        window.setTimeout(() => {
+        this._setEffectTimeout(() => {
+          if (!this.activeElements.has(element)) return;
+
           this._cleanup(element, original);
         }, 60);
-      }, Math.max(120, duration - 60));
+      }, switchDelay);
     }
 
-    /* Applies the blink effect; params: element<Element>, original<string>, duration<number>. */
     _effectBlink(element, original, duration) {
       element.classList.add(this.options.blinkClass);
 
-      const firstTimer = window.setTimeout(() => {
+      const firstTimer = this._setEffectTimeout(() => {
+        if (!this.activeElements.has(element)) return;
+
         element.textContent = this._scrambleText(original, 0.55);
       }, 70);
 
-      const secondTimer = window.setTimeout(() => {
+      const secondTimer = this._setEffectTimeout(() => {
+        if (!this.activeElements.has(element)) return;
+
         element.textContent = original;
       }, 150);
 
-      const thirdTimer = window.setTimeout(() => {
+      const thirdTimer = this._setEffectTimeout(() => {
+        if (!this.activeElements.has(element)) return;
+
         element.textContent = this._blockText(original);
       }, 220);
 
-      window.setTimeout(() => {
-        window.clearTimeout(firstTimer);
-        window.clearTimeout(secondTimer);
-        window.clearTimeout(thirdTimer);
+      this._setEffectTimeout(() => {
+        this._clearEffectTimeout(firstTimer);
+        this._clearEffectTimeout(secondTimer);
+        this._clearEffectTimeout(thirdTimer);
+
+        if (!this.activeElements.has(element)) return;
+
         this._cleanup(element, original);
       }, duration);
     }
 
-    /* Applies the error-text effect; params: element<Element>, original<string>, duration<number>. */
     _effectError(element, original, duration) {
       const errorText = this._getRandomErrorText();
 
       element.textContent = errorText;
       element.classList.add(this.options.blinkClass);
 
-      window.setTimeout(() => {
+      this._setEffectTimeout(() => {
+        if (!this.activeElements.has(element)) return;
+
         element.textContent = this._scrambleText(original, 0.7);
       }, Math.max(80, duration * 0.5));
 
-      window.setTimeout(() => {
+      this._setEffectTimeout(() => {
+        if (!this.activeElements.has(element)) return;
+
         this._cleanup(element, original);
       }, duration);
     }
 
-    /* Selects one random error text; params: none. */
     _getRandomErrorText() {
-      const errorTexts = Array.isArray(this.options.errorTexts) && this.options.errorTexts.length
-        ? this.options.errorTexts
-        : DEFAULT_CONFIG.errorTexts;
+      const errorTexts =
+        Array.isArray(this.options.errorTexts) && this.options.errorTexts.length
+          ? this.options.errorTexts
+          : DEFAULT_CONFIG.errorTexts;
 
       return errorTexts[Math.floor(Math.random() * errorTexts.length)];
     }
 
-    /* Returns scrambled text; params: text<string>, progress<number>. */
     _scrambleText(text, progress = 0.5) {
       const chars = this.options.chars || DEFAULT_CONFIG.chars;
       const arr = String(text || "").split("");
-      const maxRatio = Number(this.options.maxCharChangeRatio) || DEFAULT_CONFIG.maxCharChangeRatio;
+
+      const maxRatio =
+        Number(this.options.maxCharChangeRatio) ||
+        DEFAULT_CONFIG.maxCharChangeRatio;
+
       const activeRatio = Math.max(0.08, (1 - progress) * maxRatio);
 
       return arr
@@ -332,10 +551,13 @@
         .join("");
     }
 
-    /* Returns block-masked text; params: text<string>. */
     _blockText(text) {
       const blockChars = ["█", "▓", "▒"];
-      const ratio = Math.min(0.6, Number(this.options.maxCharChangeRatio) + 0.08);
+
+      const ratio = Math.min(
+        0.6,
+        Number(this.options.maxCharChangeRatio) + 0.08
+      );
 
       return String(text || "")
         .split("")
@@ -351,7 +573,6 @@
         .join("");
     }
 
-    /* Injects the compact CSS needed by the effect; params: none. */
     _injectStyle() {
       if (!this.options.injectStyle) return;
       if (document.getElementById(this.options.styleId)) return;
@@ -379,7 +600,6 @@
     }
   }
 
-  /* Creates the default auto instance; params: none. */
   function createAutoInstance() {
     if (autoInstance) return autoInstance;
 
@@ -388,7 +608,6 @@
     return autoInstance;
   }
 
-  /* Starts the default auto instance; params: none. */
   function start() {
     const instance = createAutoInstance();
 
@@ -397,21 +616,18 @@
     return instance;
   }
 
-  /* Stops the default auto instance; params: none. */
   function stop() {
     if (!autoInstance) return;
 
     autoInstance.stop();
   }
 
-  /* Triggers one effect on the default auto instance; params: none. */
   function triggerNow() {
     const instance = createAutoInstance();
 
     instance.triggerNow();
   }
 
-  /* Updates default auto instance config; params: nextConfig<object>. */
   function updateConfig(nextConfig = {}) {
     autoConfig = Object.assign({}, autoConfig, nextConfig);
 
@@ -424,12 +640,10 @@
     return getConfig();
   }
 
-  /* Returns the default auto instance config; params: none. */
   function getConfig() {
     return Object.assign({}, autoConfig);
   }
 
-  /* Runs the plug-and-play default behavior; params: none. */
   function onReady() {
     if (!autoConfig.autoStart) return;
 
@@ -444,7 +658,7 @@
   window.TextGlitchFx.getConfig = getConfig;
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", onReady);
+    document.addEventListener("DOMContentLoaded", onReady, { once: true });
   } else {
     onReady();
   }
