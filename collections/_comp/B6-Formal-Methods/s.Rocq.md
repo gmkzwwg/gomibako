@@ -924,25 +924,6 @@ Definition id_prop_term : forall A : Prop, A -> A :=
 
 **Common Pitfalls:** A proof of `A -> A` is not a symbolic derivation floating outside the language. It is a term of function type. This is the first mental-model shift required for Rocq.
 
-### Summary of PART 2, Part 1 — what has been established
-
-This first half of PART 2 established the minimum syntax and semantic vocabulary needed to read simple Rocq files:
-
-| Topic               | Core takeaway                                                                             |
-| ------------------- | ----------------------------------------------------------------------------------------- |
-| Three syntax layers | Rocq files mix Gallina terms, vernacular commands, and tactics                            |
-| Commands            | Top-level commands build or query a checked environment                                   |
-| Names               | Naming conventions are proof-engineering tools                                            |
-| Queries             | `Check`, `Print`, `Search`, `Locate`, and `Compute` are essential reading tools           |
-| Sorts               | `Prop`, `Set`, and `Type` distinguish logical and computational roles                     |
-| Data                | Common data is mostly inductive and notation-mediated                                     |
-| Binding             | Definitions, parameters, variables, and hypotheses shape the environment                  |
-| Functions           | `A -> B` is non-dependent function space; `forall x : A, B x` is dependent function space |
-| Implicit arguments  | Surface syntax may hide inferred parameters                                               |
-| Declarations        | `Definition`, `Example`, `Lemma`, and `Theorem` introduce checked objects                 |
-| Transparency        | `Qed` and `Defined` affect unfolding and computation                                      |
-| Proof skeleton      | A proof script constructs a proof term checked by the kernel                              |
-
 ### Equality — definitional equality, propositional equality, rewriting
 
 Rocq has two equality ideas that must not be confused. **Definitional equality** is equality by computation, unfolding, and conversion. **Propositional equality** is an explicit proposition, written with `=`, that may require a proof.
@@ -2455,26 +2436,6 @@ Qed.
 **Failure-first explanation:** The tempting mental model is “state the exact thing needed now.” The surprising behavior is that the exact thing may be too weak to prove or reuse. The correct explanation is that induction hypotheses are generated from the theorem statement. The professional rule of thumb is: state the theorem at the level of generality needed by the induction principle and future reuse.
 
 **Common Pitfalls:** Quantifier order is not cosmetic. In dependent or inductive proofs, introducing variables too early can freeze them and weaken the induction hypothesis.
-
-### Interim Summary — PART 3, Part 1
-
-This first half of PART 3 covered core modeling tasks:
-
-| Modeling task                | Main Rocq construct                                   | Central lesson                                                         |
-| ---------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------- |
-| Structured data              | `Inductive`, `Record`                                 | Representation determines induction principles                         |
-| Computation vs specification | `bool` vs `Prop`                                      | Use bridge lemmas between tests and propositions                       |
-| Optional values              | `option`                                              | Totalize partiality without error detail                               |
-| Alternatives/errors          | sums and custom results                               | Use meaningful constructors for public APIs                            |
-| Finite states                | enums, functions, relations                           | Function for deterministic computation; relation for proof flexibility |
-| Collections                  | lists, vectors, maps, sets, trees                     | Choose based on invariants and proof shape                             |
-| Syntax and semantics         | inductive ASTs, evaluators, relations                 | PL theory fits Rocq’s inductive style                                  |
-| Domain invariants            | predicates, validators, dependent records             | Stronger types give stronger guarantees and more obligations           |
-| Input constraints            | preconditions, validators, subtypes, results          | Match representation to API purpose                                    |
-| Decidable equality           | boolean tests and decision procedures                 | Computation and proof need bridge theorems                             |
-| Lists and trees              | recursive data and structural proofs                  | Helper lemmas are central                                              |
-| Function vs relation         | executable computation vs evidence-rich specification | Both may be needed with equivalence theorem                            |
-| Theorem statements           | quantified propositions as interfaces                 | Good statements create useful induction hypotheses                     |
 
 ### Task: Use Dependent Types Without Overusing Them — value-indexed types, invariants, proof obligations
 
@@ -4400,26 +4361,4341 @@ Qed.
 
 **Common Pitfalls:** Avoid relying on Rocq’s auto-generated names in serious proofs. Name important hypotheses and induction hypotheses explicitly.
 
-### Interim Summary — PART 4, Part 1
 
-This first half of PART 4 covered the core behavior-construction mechanisms:
+### Task: Recognize When a Proof Needs a Helper Lemma — proof decomposition, reuse, stability
 
-| Task pattern              | Main construct                             | Central lesson                                  |
-| ------------------------- | ------------------------------------------ | ----------------------------------------------- |
-| Define pure functions     | `Definition`, `fun`                        | Functions are typed terms                       |
-| Design signatures         | plain, option, result, dependent, relation | Signature determines proof obligations          |
-| Branch by value           | `if`, `match`                              | Branch on computable data, not arbitrary `Prop` |
-| Branch by structure       | pattern matching                           | Constructors determine cases                    |
-| Iterate/transform         | `Fixpoint`                                 | Recursion must be structurally justified        |
-| Compose functions         | higher-order functions                     | Prefer pointwise theorems when useful           |
-| Specify behavior          | soundness/completeness/refinement          | Correctness depends on theorem statement        |
-| Case analysis             | `destruct`                                 | Use for non-recursive branching                 |
-| Recursive proof           | `induction`                                | Use when recursive hypotheses are needed        |
-| Preserve branch equations | `destruct ... eqn:`                        | Keep link between test and branch               |
-| Simplify computation      | `simpl`, `cbn`, `unfold`                   | Computation differs from rewriting              |
-| Rewrite equality          | `rewrite`                                  | Propositional equality transforms goals         |
-| Compose theorems          | `apply`, `exact`                           | Theorem application is proof-term composition   |
-| Logical construction      | `split`, `left`, `right`, `exists`         | Construct evidence explicitly                   |
-| Contradiction             | `False`, `discriminate`, `inversion`       | Constructor impossibility is proof-relevant     |
-| Proof style               | proof terms versus tactics                 | Choose readability and maintainability          |
+**Core keywords:** helper lemma, proof decomposition, theorem strengthening, reuse, maintainability.
 
+A helper lemma is not merely a convenience. In Rocq, it is often the correct abstraction boundary for a proof. If a theorem fails because the induction hypothesis is too weak, the rewrite target is hidden, or the goal contains an accumulator/context, the right move is usually to state a stronger or more general lemma.
+
+| Symptom                                    | Likely cause                  | Helper lemma pattern           | Example                   |
+| ------------------------------------------ | ----------------------------- | ------------------------------ | ------------------------- |
+| Induction hypothesis does not match goal   | The theorem is too specific   | Generalize over extra variable | accumulator correctness   |
+| Rewriting repeatedly by same fact          | Missing named rewrite lemma   | State equation as lemma        | append identity           |
+| Proof depends on internal definition shape | Behavior not abstracted       | State public behavior theorem  | function correctness      |
+| Automation solves goal opaquely            | Repeated proof pattern hidden | Name the routine fact          | arithmetic/list invariant |
+| Direct proof becomes long and nested       | Multiple concepts mixed       | Split into semantic lemmas     | evaluator soundness       |
+
+Classic example: accumulator reverse.
+
+```coq id="jxewe5"
+From Stdlib Require Import List.
+Import ListNotations.
+
+Fixpoint rev_acc {A : Type} (xs acc : list A) : list A :=
+  match xs with
+  | [] => acc
+  | x :: xs' => rev_acc xs' (x :: acc)
+  end.
+```
+
+The tempting theorem is:
+
+```coq id="n01uvf"
+Theorem rev_acc_nil_goal :
+  forall (A : Type) (xs : list A),
+    rev_acc xs [] = rev xs.
+```
+
+This theorem is true, but it is not the easiest induction target. The stronger helper is:
+
+```coq id="zjskjz"
+Theorem rev_acc_correct :
+  forall (A : Type) (xs acc : list A),
+    rev_acc xs acc = rev xs ++ acc.
+Proof.
+  intros A xs.
+  induction xs as [| x xs IHxs].
+  - intros acc.
+    reflexivity.
+  - intros acc.
+    simpl.
+    rewrite IHxs.
+    rewrite app_assoc.
+    reflexivity.
+Qed.
+```
+
+Then the original theorem follows:
+
+```coq id="ly7vph"
+Theorem rev_acc_nil :
+  forall (A : Type) (xs : list A),
+    rev_acc xs [] = rev xs.
+Proof.
+  intros A xs.
+  rewrite rev_acc_correct.
+  rewrite app_nil_r.
+  reflexivity.
+Qed.
+```
+
+**Anchor explanation:**
+
+| Anchor item                  | Explanation                                                              |
+| ---------------------------- | ------------------------------------------------------------------------ |
+| Mathematical statement       | Accumulator reverse equals ordinary reverse followed by the accumulator  |
+| Relevant induction principle | Induction on `xs`, the structurally consumed list                        |
+| Key lemma needed             | `app_assoc`, and later `app_nil_r`                                       |
+| Proof strategy               | Prove stronger theorem over arbitrary accumulator                        |
+| Common beginner mistake      | Prove only the `[]` accumulator case and get a weak induction hypothesis |
+| Practical lesson             | Strengthen theorem statements to match recursive structure               |
+
+**Failure-first explanation:** The tempting mental model is “a helper lemma is extra work.” The surprising behavior is that without it, the main theorem may become almost impossible. The correct explanation is that the helper lemma exposes the invariant preserved by recursion. The professional rule of thumb is: when a proof resists induction, look for the stronger invariant.
+
+**Common Pitfalls:** Do not hide key invariants inside a one-off proof script. If the invariant explains why the function is correct, name it as a lemma.
+
+### Task: Generalize Before Induction — quantifier order, `generalize dependent`, weak induction hypotheses
+
+**Core keywords:** generalization, quantifier order, induction hypothesis, `generalize dependent`, theorem shape.
+
+Induction hypotheses are generated from the goal at the moment induction is invoked. If variables have already been introduced and fixed, the induction hypothesis may be too specific.
+
+A simplified pattern:
+
+```coq id="fmx6vq"
+Theorem plus_n_m_0_style :
+  forall n m : nat,
+    n = m -> n + 0 = m.
+Proof.
+  intros n m H.
+  rewrite H.
+  induction m as [| m IHm].
+  - reflexivity.
+  - simpl. rewrite IHm. reflexivity.
+Qed.
+```
+
+This works, but more complex dependent proofs often fail when too many variables are introduced before induction. The general pattern is:
+
+| Situation                            | Risk                                 | Better tactic pattern                         |
+| ------------------------------------ | ------------------------------------ | --------------------------------------------- |
+| Variable depends on induction target | Introduced variable becomes fixed    | Delay `intros` or use `generalize dependent`  |
+| Equality relates two variables       | Induction loses relation shape       | Preserve equality with `generalize dependent` |
+| Accumulator changes recursively      | IH only for fixed accumulator        | Quantify over arbitrary accumulator           |
+| Indexed type depends on value        | Case split loses index information   | Use dependent induction/inversion carefully   |
+| Function recurses on first argument  | Induction on second argument useless | Induct on recursive argument                  |
+
+Illustrative theorem:
+
+```coq id="uorsij"
+Theorem app_assoc_general :
+  forall (A : Type) (xs ys zs : list A),
+    (xs ++ ys) ++ zs = xs ++ (ys ++ zs).
+Proof.
+  intros A xs.
+  induction xs as [| x xs IHxs].
+  - intros ys zs. reflexivity.
+  - intros ys zs.
+    simpl.
+    rewrite IHxs.
+    reflexivity.
+Qed.
+```
+
+Notice that `ys` and `zs` are introduced after induction on `xs`. In this simple theorem, introducing all variables first also works. In harder theorems, delaying introductions preserves generality.
+
+**Failure-first explanation:** The tempting mental model is “always start with `intros` for everything.” The surprising behavior is that induction hypotheses can become too weak. The correct explanation is that `intros` fixes variables in the context, while induction generalizes only what remains in the goal. The professional rule of thumb is: introduce only what is needed before induction; leave variables general when the induction hypothesis must range over them.
+
+**Common Pitfalls:** `generalize dependent` is not magic. It repairs a theorem/proof-state shape by moving a variable back into the goal before induction. If the underlying theorem is too weak, no tactic can fully compensate.
+
+### Task: Choose the Right Induction Object — data induction versus evidence induction
+
+**Core keywords:** induction target, structural induction, derivation induction, evidence induction, relations.
+
+In Rocq, the right induction target is often not the most visible variable. It is the object whose constructors explain the proof.
+
+| Proof goal                             | Best induction target                                              | Why                             | Common mistake                    |
+| -------------------------------------- | ------------------------------------------------------------------ | ------------------------------- | --------------------------------- |
+| Property of recursive function on list | The list argument consumed by function                             | Matches computation             | Inducting on another list         |
+| Property of tree traversal             | The tree                                                           | Gives IHs for subtrees          | Trying arithmetic first           |
+| Soundness of big-step relation         | Evaluation derivation                                              | Follows semantic rule structure | Inducting on expression alone     |
+| Preservation theorem                   | Typing derivation or evaluation derivation, depending on statement | Follows rule premises           | Choosing syntax induction blindly |
+| Inversion of evidence                  | Evidence object                                                    | Cases are proof constructors    | Destructing raw data instead      |
+| Decidability over finite type          | The finite values                                                  | Exhaustive cases                | Overusing induction               |
+
+Example relation:
+
+```coq id="l8rhmh"
+Inductive leq : nat -> nat -> Prop :=
+| Leq0 : forall n, leq 0 n
+| LeqSS : forall n m, leq n m -> leq (S n) (S m).
+```
+
+A proof by evidence induction:
+
+```coq id="0hgltb"
+Theorem leq_refl :
+  forall n : nat, leq n n.
+Proof.
+  induction n as [| n IHn].
+  - apply Leq0.
+  - apply LeqSS. exact IHn.
+Qed.
+```
+
+A theorem using derivation induction:
+
+```coq id="l7hwhd"
+Theorem leq_zero_left :
+  forall n m : nat, leq n m -> n = 0 -> leq 0 m.
+Proof.
+  intros n m H Hn.
+  rewrite Hn.
+  apply Leq0.
+Qed.
+```
+
+For more semantic relations, induction on the derivation is often central:
+
+```coq id="3mesz8"
+Theorem leq_trans :
+  forall a b c : nat, leq a b -> leq b c -> leq a c.
+Proof.
+  intros a b c Hab Hbc.
+  generalize dependent a.
+  induction Hbc as [| b c Hbc IHbc].
+  - intros a Hab.
+    inversion Hab.
+    apply Leq0.
+  - intros a Hab.
+    inversion Hab as [| a' b' Hab']; subst.
+    + apply Leq0.
+    + apply LeqSS. apply IHbc. exact Hab'.
+Qed.
+```
+
+This example is intentionally more complex: it shows that relational proofs often need careful generalization and inversion.
+
+**Design meaning:** Induction is not a generic ritual. It is an invocation of a specific induction principle derived from an inductive definition. The selected object determines the hypotheses available.
+
+**Common Pitfalls:** For operational semantics, beginners often induct on syntax when the proof should induct on an evaluation or typing derivation. The proof then loses rule-premise structure.
+
+### Task: Use Calculation-Style Proofs — equational reasoning, readability, rewrite order
+
+**Core keywords:** equational reasoning, rewriting, calculation style, readability, transitivity.
+
+Many Rocq proofs are chains of equalities. A calculation-style proof makes each step explicit. Rocq does not require a special syntax for this; ordinary `rewrite`, `transitivity`, and helper lemmas can express the chain.
+
+Example:
+
+```coq id="m1xjnt"
+Theorem app_nil_r_calc :
+  forall (A : Type) (xs : list A),
+    xs ++ [] = xs.
+Proof.
+  intros A xs.
+  induction xs as [| x xs IHxs].
+  - reflexivity.
+  - simpl.
+    rewrite IHxs.
+    reflexivity.
+Qed.
+```
+
+For a slightly more explicit calculation, one can use `transitivity`:
+
+```coq id="q9lteu"
+Theorem add_0_r_calc :
+  forall n : nat, n + 0 = n.
+Proof.
+  intros n.
+  induction n as [| n IHn].
+  - reflexivity.
+  - simpl.
+    transitivity (S n).
+    + rewrite IHn. reflexivity.
+    + reflexivity.
+Qed.
+```
+
+This is longer than necessary, but it illustrates the intermediate expression.
+
+| Proof style                 | Use when                          | Benefit                 | Cost                        |
+| --------------------------- | --------------------------------- | ----------------------- | --------------------------- |
+| Direct `rewrite` chain      | Steps are obvious                 | Compact                 | May hide intermediate state |
+| `transitivity`              | Important intermediate expression | Clear calculation       | More verbose                |
+| Named helper lemmas         | Reusable equation                 | Stable abstraction      | Requires lemma management   |
+| Automation rewrite database | Many routine rewrites             | Efficient normalization | Can obscure proof           |
+| `ring`/arithmetic tactics   | Algebraic normalization           | Solves algebraic goals  | May hide theorem structure  |
+
+**Professional rule of thumb:** Use calculation-style proof when the equality chain is the conceptual content. Use automation only when the algebra is routine and the theorem statement already explains the idea.
+
+**Common Pitfalls:** Long rewrite chains without intermediate comments become brittle. If a rewrite sequence expresses a reusable algebraic pattern, state it as a lemma.
+
+### Task: Control Unfolding and Abstraction — public behavior versus private definition
+
+**Core keywords:** abstraction, `unfold`, opacity, public theorem, implementation hiding.
+
+Unfolding a definition is often convenient in proofs, but it couples the proof to the implementation. Public proofs should usually rely on public behavior lemmas rather than private bodies.
+
+Example function:
+
+```coq id="wmjtoy"
+Definition empty_or_singleton {A : Type} (xs : list A) : bool :=
+  match xs with
+  | [] => true
+  | [_] => true
+  | _ => false
+  end.
+```
+
+A proof by unfolding:
+
+```coq id="9t6al7"
+Theorem empty_or_singleton_nil :
+  forall A : Type,
+    empty_or_singleton (@nil A) = true.
+Proof.
+  intros A.
+  unfold empty_or_singleton.
+  reflexivity.
+Qed.
+```
+
+This is fine for a local fact. But if many client proofs unfold `empty_or_singleton`, changing its implementation may break them. Better public API design states behavioral lemmas:
+
+```coq id="4pw0s8"
+Theorem empty_or_singleton_cons_cons :
+  forall (A : Type) (x y : A) (xs : list A),
+    empty_or_singleton (x :: y :: xs) = false.
+Proof.
+  intros A x y xs.
+  reflexivity.
+Qed.
+```
+
+| Proof approach             | Coupling               | When acceptable                                | Risk                   |
+| -------------------------- | ---------------------- | ---------------------------------------------- | ---------------------- |
+| `unfold` implementation    | High                   | Local proof, simple definition                 | Breaks if body changes |
+| Rewrite by public lemma    | Low                    | Library/client proof                           | Requires lemma design  |
+| Keep theorem opaque        | Low                    | Theorem not computationally relevant           | May block unfolding    |
+| Use transparent definition | High but computational | Certified data/function needed for computation | Conversion cost        |
+
+**Failure-first explanation:** The tempting mental model is “unfolding always makes proofs easier.” The surprising maintenance failure is that later implementation changes break many proofs. The correct explanation is that unfolding exposes private representation. The professional rule of thumb is: unfold locally; export behavior lemmas publicly.
+
+**Common Pitfalls:** If a proof imports a module and immediately unfolds its internal definitions, the abstraction boundary has effectively been broken.
+
+### Task: Design Reusable Abstractions — functions, records, modules, typeclasses
+
+**Core keywords:** abstraction mechanisms, reusable theory, functions, records, modules, typeclasses, canonical structures.
+
+Rocq provides several abstraction mechanisms. They differ in explicitness, inference behavior, and proof-engineering cost.
+
+| Abstraction mechanism | Best use                                      | Strength                                  | Cost                   | Failure mode                                                |
+| --------------------- | --------------------------------------------- | ----------------------------------------- | ---------------------- | ----------------------------------------------------------- |
+| Function              | Simple parameterized behavior                 | Direct computation                        | Limited structure      | Overusing higher-order functions for law-heavy abstractions |
+| Record                | Bundle operations/data/proofs                 | Clear structure                           | Projection boilerplate | Large records become unwieldy                               |
+| Module                | Namespace and abstraction boundary            | Large libraries and representation hiding | Verbose                | Harder interactive use                                      |
+| Functor               | Parameterized module                          | Reusable theory over implementations      | Heavy syntax           | Overengineering small theories                              |
+| Typeclass             | Inferred structures and overloaded operations | Ergonomic generic code                    | Search opacity         | Unexpected instance selection                               |
+| Canonical structure   | Library-specific inference hierarchy          | Powerful mathematical reuse               | Steep learning curve   | Debugging inference hard                                    |
+| Tactic abstraction    | Reusable proof scripts                        | Reduces repetition                        | Can hide proof intent  | Brittle automation                                          |
+
+Example record abstraction:
+
+```coq id="b2d10o"
+Record EqbSpec (A : Type) : Type := {
+  eqb_fun : A -> A -> bool;
+  eqb_sound : forall x y, eqb_fun x y = true -> x = y;
+  eqb_complete : forall x y, x = y -> eqb_fun x y = true
+}.
+```
+
+Using this record, generic code can require not just an equality function, but a certified equality function.
+
+```coq id="95pef5"
+Definition eqb_refl_from_spec
+  {A : Type} (E : EqbSpec A) : Prop :=
+  forall x : A, eqb_fun A E x x = true.
+```
+
+The exact projection syntax may be made lighter with implicit arguments, but the design point is: abstraction can bundle behavior with laws.
+
+**Design tradeoff:**
+
+| Problem solved           | Capability gained   | Cost introduced   | Programs that benefit               |
+| ------------------------ | ------------------- | ----------------- | ----------------------------------- |
+| Repeated parameters      | Bundled structure   | Projection syntax | Algebraic libraries                 |
+| Repeated law assumptions | Certified interface | Proof obligations | Verified algorithms                 |
+| Boilerplate passing      | Typeclass inference | Debugging search  | Generic notation-heavy developments |
+| Representation exposure  | Modules             | Verbosity         | Large libraries                     |
+| Repeated proof scripts   | Tactics             | Opaque behavior   | Stable repetitive proof domains     |
+
+**Common Pitfalls:** Do not jump to typeclasses for every abstraction. If a record passed explicitly is clear and sufficient, it may be more maintainable.
+
+### Task: Choose Functions versus Relations for Abstraction
+
+**Core keywords:** function abstraction, relation abstraction, semantics, nondeterminism, executability.
+
+PART 3 introduced function-versus-relation modeling. In PART 4, the behavioral question is how this affects abstraction and composition.
+
+| Choice             | Composition style          | Best theorem shape      | Benefit                      | Cost                                                  |
+| ------------------ | -------------------------- | ----------------------- | ---------------------------- | ----------------------------------------------------- |
+| Function           | `f (g x)`                  | pointwise equality      | Executable and simple        | Less expressive for partial/nondeterministic behavior |
+| Boolean function   | `p x && q x`               | soundness/completeness  | Computable predicates        | Bridge lemmas needed                                  |
+| Relation           | `exists y, R x y /\ S y z` | relational composition  | Semantic flexibility         | More evidence handling                                |
+| Inductive relation | constructors as rules      | induction on derivation | Rule-based proof             | Longer scripts                                        |
+| Certified function | function plus theorem      | correctness/refinement  | Executable verified artifact | Spec management                                       |
+
+Example relational composition:
+
+```coq id="mrtt2p"
+Definition rel_comp {A B C : Type}
+  (R : A -> B -> Prop) (S : B -> C -> Prop) : A -> C -> Prop :=
+  fun a c => exists b, R a b /\ S b c.
+```
+
+This is useful in semantics and refinement proofs. It is not directly executable, but it precisely states the existence of an intermediate state.
+
+**Professional rule of thumb:** Use functions when computation is central. Use relations when proof structure, partiality, nondeterminism, or semantic rules are central. Use both when an implementation must be proved correct relative to a flexible specification.
+
+**Common Pitfalls:** A relation can make simple executable behavior cumbersome. A function can make semantic edge cases invisible. Choose based on the proof and execution needs, not on habit.
+
+### Task: Build Public APIs Around Theorems — behavior-first interface design
+
+**Core keywords:** API design, public theorem, specification, abstraction boundary, clients.
+
+A Rocq API is not only a set of functions. It is a set of definitions plus theorems that clients are expected to use. A well-designed API exposes behavior lemmas at the right granularity.
+
+| API element         | Purpose                          | Example                          | Professional criterion              |
+| ------------------- | -------------------------------- | -------------------------------- | ----------------------------------- |
+| Definition          | Provides computation/object      | `sort`, `lookup`, `eval`         | Has clear type and intended use     |
+| Specification       | States desired behavior          | `sorted`, `Permutation`, `evalR` | Captures correctness adequately     |
+| Correctness theorem | Connects implementation and spec | `sort_correct`                   | Strong enough for clients           |
+| Rewrite lemma       | Enables local reasoning          | `lookup_update_eq`               | Stable and reusable                 |
+| Inversion lemma     | Helps analyze evidence           | `eval_value_inv`                 | Avoids repeated `inversion` clutter |
+| Automation hint     | Solves routine obligations       | hint database                    | Stable and scoped                   |
+| Opaque boundary     | Hides implementation             | module sealing/`Qed`             | Prevents proof coupling             |
+
+Example API pattern for lookup/update maps, abstractly:
+
+```coq id="s3m7ap"
+Parameter map : Type -> Type -> Type.
+Parameter lookup : forall {K V : Type}, K -> map K V -> option V.
+Parameter update : forall {K V : Type}, K -> V -> map K V -> map K V.
+
+Parameter lookup_update_eq :
+  forall (K V : Type) (k : K) (v : V) (m : map K V),
+    lookup k (update k v m) = Some v.
+```
+
+This is not a complete trustworthy map API because key equality and assumptions are missing. It is a source-reading illustration: clients should reason through public lemmas, not representation details.
+
+**Failure-first explanation:** The tempting mental model is “export the function; users can unfold it.” The professional model is “export the behavior needed by users.” The surprising maintenance failure is that client proofs break when implementation changes. The correct explanation is that unfolding couples clients to representation. The rule of thumb is: public functions need public theorems.
+
+**Common Pitfalls:** Do not name every theorem `correct`. Use names that expose the behavior: `lookup_update_eq`, `lookup_update_neq`, `map_length`, `filter_sound`.
+
+### Task: Use Automation Deliberately — `auto`, `eauto`, `lia`, domain tactics
+
+**Core keywords:** automation, proof search, `auto`, `eauto`, `lia`, opacity, maintainability.
+
+Automation is essential in large Rocq developments, but it should be bounded. The kernel still checks generated proof terms, so the primary danger is usually not unsoundness; it is loss of readability, brittleness, performance cost, and accidental dependency on hints/imports.
+
+| Automation     | Good use                                    | Bad use                               | Hidden cost                        |
+| -------------- | ------------------------------------------- | ------------------------------------- | ---------------------------------- |
+| `auto`         | Simple propositional goals and known lemmas | Central theorem reasoning             | Depends on hint database           |
+| `eauto`        | Existentially instantiated routine goals    | Large open-ended search               | Slow/unpredictable search          |
+| `lia`          | Linear arithmetic over naturals/integers    | Nonlinear algebra, structural proofs  | May hide arithmetic assumptions    |
+| `ring`         | Ring-normalizable algebra                   | Non-ring structures                   | Requires correct algebraic setting |
+| `congruence`   | Equality contradictions and congruence      | Semantic reasoning                    | Can obscure contradiction source   |
+| `firstorder`   | First-order logic fragments                 | Constructive content-sensitive proofs | May be too broad                   |
+| Custom tactics | Repeated stable patterns                    | One-off proof hacks                   | Maintenance burden                 |
+
+Example where automation is appropriate:
+
+```coq id="n4l26l"
+From Stdlib Require Import Lia.
+
+Theorem add_nonnegative :
+  forall n m : nat, 0 <= n + m.
+Proof.
+  intros n m.
+  lia.
+Qed.
+```
+
+Example where automation should not replace the proof idea:
+
+```coq id="8v64ni"
+Theorem app_assoc_explicit :
+  forall (A : Type) (xs ys zs : list A),
+    (xs ++ ys) ++ zs = xs ++ (ys ++ zs).
+Proof.
+  intros A xs ys zs.
+  induction xs as [| x xs IHxs].
+  - reflexivity.
+  - simpl. rewrite IHxs. reflexivity.
+Qed.
+```
+
+This proof is short and reveals the structure. Replacing it with a custom tactic would reduce pedagogical and review value.
+
+**Automation boundary rule:**
+
+| Proof part                        | Prefer explicit proof       | Prefer automation           |
+| --------------------------------- | --------------------------- | --------------------------- |
+| Main induction choice             | Yes                         | No                          |
+| Key invariant                     | Yes                         | No                          |
+| Routine arithmetic side condition | No                          | Yes, e.g. `lia`             |
+| Repeated constructor cleanup      | Sometimes                   | Yes if stable               |
+| Library theorem search            | Usually explicit once found | `auto` only for routine use |
+| Final trivial propositional goal  | Not necessary               | Yes                         |
+
+**Common Pitfalls:** If removing an import breaks an `auto` proof, the script depends on a hidden hint. For robust code, either name the lemma explicitly or scope the automation carefully.
+
+### Task: Create Small Custom Tactics Without Hiding the Proof
+
+**Core keywords:** custom tactics, Ltac, proof macros, repeated patterns, maintainability.
+
+Custom tactics can eliminate repetitive proof boilerplate. But they are also a source of opacity. A custom tactic should encode a stable, boring pattern, not the central mathematical idea.
+
+Simple Ltac pattern:
+
+```coq id="x4r1q7"
+Ltac crush_bool :=
+  repeat match goal with
+  | b : bool |- _ => destruct b; simpl in *
+  end; try reflexivity; try discriminate.
+```
+
+Example use:
+
+```coq id="bp5i5y"
+Theorem negb_cases_auto :
+  forall b : bool, negb (negb b) = b.
+Proof.
+  intros b.
+  crush_bool.
+Qed.
+```
+
+This tactic is acceptable for repetitive boolean case analysis in a local context, but it would be poor if it hid a central theorem’s proof strategy.
+
+| Custom tactic should                      | Custom tactic should not                  |
+| ----------------------------------------- | ----------------------------------------- |
+| Encode stable repetitive cleanup          | Hide the main induction argument          |
+| Be locally scoped when possible           | Depend on fragile generated names         |
+| Have a descriptive name                   | Be a mysterious `solve_this`              |
+| Be tested across representative goals     | Search unpredictably across huge contexts |
+| Leave understandable subgoals if it fails | Fail with no diagnostic value             |
+
+**Design meaning:** Tactic abstraction is metaprogramming over proof states. It improves productivity but creates another layer of code that must be maintained.
+
+**Common Pitfalls:** A proof script that is only `my_tactic.` may be compact but unreviewable. In serious developments, the high-level theorem should still reveal its induction target and proof structure.
+
+### Task: Avoid Fragile Proof Scripts — generated names, goal shape dependence, over-simplification
+
+**Core keywords:** brittle proofs, generated names, proof maintenance, refactoring.
+
+Proof scripts can break when definitions, imports, notation, or generated hypothesis names change. Robust scripts minimize unnecessary dependence on incidental proof-state details.
+
+| Fragile pattern                            | Why fragile                             | Better pattern                               |
+| ------------------------------------------ | --------------------------------------- | -------------------------------------------- |
+| Relying on auto-generated names `H0`, `H1` | Names change after small edits          | Use `as` patterns                            |
+| Repeated blind `simpl`                     | Definition changes alter simplification | Use named lemmas or `cbn` selectively        |
+| Broad `rewrite ... in *`                   | Changes unrelated hypotheses            | Rewrite targeted goals/hypotheses            |
+| Heavy `auto` without lemma names           | Depends on hint/import context          | Apply key lemmas explicitly                  |
+| Long proof with no helper lemmas           | No abstraction boundary                 | State intermediate facts                     |
+| `inversion` everywhere                     | Generates clutter and unstable names    | Use inversion lemmas or structured destructs |
+| Unfolding public definitions               | Breaks abstraction                      | Rewrite with public behavior lemmas          |
+
+Example of better naming:
+
+```coq id="tg3y8x"
+Theorem and_assoc :
+  forall A B C : Prop,
+    A /\ (B /\ C) -> (A /\ B) /\ C.
+Proof.
+  intros A B C H.
+  destruct H as [HA [HB HC]].
+  split.
+  - split.
+    + exact HA.
+    + exact HB.
+  - exact HC.
+Qed.
+```
+
+This is clearer than destructing into auto-generated names.
+
+**Failure-first explanation:** The tempting mental model is “a proof that compiles is done.” The professional view is stricter: a proof should survive reasonable refactoring. If a proof depends on generated names, broad simplification, or hidden automation, it may be correct but fragile.
+
+**Common Pitfalls:** The shortest proof is not always the best proof. A slightly longer proof with explicit structure is often more maintainable.
+
+### Task: Use `assert`, `pose proof`, and `specialize` for Local Proof Engineering
+
+**Core keywords:** local facts, `assert`, `pose proof`, `specialize`, intermediate claims.
+
+Sometimes a proof needs a local intermediate fact that is not worth making global. Rocq provides tactics to introduce such facts.
+
+| Tactic                   | Meaning                                   | Use when                                 | Pitfall                            |
+| ------------------------ | ----------------------------------------- | ---------------------------------------- | ---------------------------------- |
+| `assert (H : P).`        | Create subgoal to prove `P`, then use `H` | Local intermediate lemma                 | Overusing instead of global helper |
+| `pose proof H as H'`     | Add a copy/instance of theorem/hypothesis | Preserve original or instantiate theorem | Context clutter                    |
+| `specialize (H x y)`     | Instantiate a quantified hypothesis       | Use theorem at specific arguments        | Consumes/generates unexpected form |
+| `enough P as H.`         | State sufficient intermediate fact        | Goal easier from `P`                     | Can obscure direction              |
+| `have` / ssreflect style | Structured local fact                     | In ssreflect developments                | Style-specific                     |
+
+Example:
+
+```coq id="w9x145"
+Theorem local_assert_demo :
+  forall n : nat, n = n /\ n + 0 = n.
+Proof.
+  intros n.
+  assert (Hplus : n + 0 = n).
+  {
+    induction n as [| n IHn].
+    - reflexivity.
+    - simpl. rewrite IHn. reflexivity.
+  }
+  split.
+  - reflexivity.
+  - exact Hplus.
+Qed.
+```
+
+This is illustrative. In real code, `n + 0 = n` is reusable and should usually be a global lemma or imported theorem.
+
+**Professional rule of thumb:** Use `assert` for proof-local facts. Promote a fact to a named lemma if it recurs, explains a concept, or stabilizes a public proof.
+
+**Common Pitfalls:** Too many local assertions can make a proof harder to read than separate lemmas. If a local assertion has a meaningful name and general statement, it may deserve to be global.
+
+### Task: Use Existentials and Witnesses Professionally
+
+**Core keywords:** existential, witness, constructive proof, specification.
+
+Existential goals require witnesses. In verified programming, existential specifications often express “there exists an output satisfying a property” or “there exists an intermediate state.”
+
+Example:
+
+```coq id="rvf769"
+Theorem exists_append_decomposition :
+  forall (A : Type) (xs : list A),
+    exists ys : list A, xs ++ ys = xs.
+Proof.
+  intros A xs.
+  exists [].
+  rewrite app_nil_r.
+  reflexivity.
+Qed.
+```
+
+Existential in relation composition:
+
+```coq id="x3dcut"
+Definition reaches_in_two {A : Type} (step : A -> A -> Prop) (x z : A) : Prop :=
+  exists y : A, step x y /\ step y z.
+```
+
+Proofs using existentials usually destruct them:
+
+```coq id="h59dke"
+Theorem exists_use_demo :
+  forall A (P Q : A -> Prop),
+    (exists x, P x /\ Q x) -> exists x, P x.
+Proof.
+  intros A P Q H.
+  destruct H as [x [HP HQ]].
+  exists x.
+  exact HP.
+Qed.
+```
+
+| Existential pattern    | Proof construction                      | Proof use                            |
+| ---------------------- | --------------------------------------- | ------------------------------------ |
+| `exists x, P x`        | `exists witness` then prove `P witness` | `destruct H as [x HP]`               |
+| `exists x, P x /\ Q x` | provide witness and split               | destruct into witness and components |
+| relation composition   | provide intermediate state              | destruct to recover intermediate     |
+| certified output       | provide value and correctness proof     | extract value/proof components       |
+
+**Common Pitfalls:** A nonconstructive argument that “some witness must exist” is not enough in constructive Rocq unless a classical principle or decidability theorem supplies it. Usually, the proof must exhibit the witness.
+
+### Task: Structure Proofs Around Inversion Lemmas
+
+**Core keywords:** inversion lemma, evidence analysis, proof reuse, relation reasoning.
+
+When the same `inversion` pattern appears repeatedly, state an inversion lemma.
+
+Example for `Even`:
+
+```coq id="ossrqa"
+Theorem even_succ_succ_inv :
+  forall n : nat, Even (S (S n)) -> Even n.
+Proof.
+  intros n H.
+  inversion H as [| n' Hn Heq].
+  exact Hn.
+Qed.
+```
+
+The exact generated names from `inversion` may differ, so in a real proof one may refine the script carefully. The point is to avoid repeating the evidence analysis everywhere.
+
+| Repeated pattern                       | Better abstraction          | Benefit                 |
+| -------------------------------------- | --------------------------- | ----------------------- |
+| `inversion H` on typing derivation     | canonical forms lemma       | Cleaner progress proof  |
+| `inversion H` on evaluation derivation | determinism/inversion lemma | Reduces context clutter |
+| `inversion H` on equality constructors | injectivity lemma           | Stable rewriting        |
+| `destruct H as ...` repeatedly         | projection lemma            | More readable scripts   |
+
+Canonical forms example in PL theory:
+
+```coq id="3kssn5"
+(* Schematic:
+   If a closed value has type Bool, then it is either true or false.
+*)
+```
+
+Such lemmas are central in progress proofs.
+
+**Professional rule of thumb:** If a proof repeatedly uses the same `inversion` pattern, the development probably wants a named inversion/canonical-forms lemma.
+
+**Common Pitfalls:** Raw `inversion` is effective but can be noisy. Large proofs become more maintainable when inversion knowledge is named.
+
+### Task: Manage Classical Reasoning Boundaries
+
+**Core keywords:** constructive core, classical axioms, excluded middle, proof by contradiction, decidability.
+
+Rocq’s core is constructive. Classical principles can be imported, but doing so changes the assumptions of a development. The issue is not whether classical reasoning is “bad”; the issue is whether the assumption is explicit and appropriate.
+
+| Reasoning pattern                        | Constructive status                     | Rocq handling                            | Professional rule                  |
+| ---------------------------------------- | --------------------------------------- | ---------------------------------------- | ---------------------------------- |
+| Direct proof of `A -> A`                 | Constructive                            | trivial proof term                       | Always fine                        |
+| Conjunction/disjunction construction     | Constructive with evidence              | `split`, `left`, `right`                 | Provide evidence                   |
+| Existence proof by witness               | Constructive                            | `exists witness`                         | Preferred                          |
+| Proof by contradiction for arbitrary `P` | Not generally constructive              | requires classical principles in general | Track imports/axioms               |
+| Excluded middle `P \/ ~ P`               | Not derivable in core for arbitrary `P` | import/assume classical logic            | Use only when intended             |
+| Decidable equality for finite type       | Constructive                            | prove `{x=y}+{x<>y}`                     | Prefer explicit decision procedure |
+
+Constructive proof of disjunction commutativity:
+
+```coq id="nyqwt2"
+Theorem or_comm_constructive :
+  forall A B : Prop, A \/ B -> B \/ A.
+Proof.
+  intros A B H.
+  destruct H as [HA | HB].
+  - right. exact HA.
+  - left. exact HB.
+Qed.
+```
+
+Classical-looking statement:
+
+```coq id="52g0zx"
+(* forall P : Prop, P \/ ~ P *)
+```
+
+This is not available in Rocq’s constructive core without additional assumptions.
+
+**Interdisciplinary Lens: Constructive Logic**
+
+| Item                      | Explanation                                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| What it clarifies         | Rocq proofs normally construct evidence, witnesses, and choices                                      |
+| Language feature involved | `\/`, `exists`, `~`, classical imports                                                               |
+| Practical consequence     | Not every paper proof transfers directly without adjusting assumptions                               |
+| Limit of the lens         | Many Rocq developments intentionally use classical axioms; the key is explicit assumption management |
+
+**Common Pitfalls:** Importing classical logic silently can obscure the computational meaning of proofs. When a theorem depends on classical principles, make that dependency visible in the development’s foundations.
+
+### Task: Design Proofs for Certified Programming
+
+**Core keywords:** certified programming, implementation, specification, correctness theorem, extraction boundary.
+
+Certified programming in Rocq normally follows a pattern:
+
+1. define executable function;
+2. define specification;
+3. prove correctness theorem;
+4. optionally extract executable code;
+5. state what remains outside the proof boundary.
+
+Example: a simple verified boolean negation.
+
+```coq id="7zr8ti"
+Definition my_negb (b : bool) : bool :=
+  match b with
+  | true => false
+  | false => true
+  end.
+
+Definition negb_spec (f : bool -> bool) : Prop :=
+  forall b : bool, f (f b) = b.
+```
+
+Correctness theorem:
+
+```coq id="c2bloa"
+Theorem my_negb_correct :
+  negb_spec my_negb.
+Proof.
+  unfold negb_spec.
+  intros b.
+  destruct b.
+  - reflexivity.
+  - reflexivity.
+Qed.
+```
+
+| Certified programming component | Rocq artifact                     | Example                |
+| ------------------------------- | --------------------------------- | ---------------------- |
+| Implementation                  | executable definition             | `my_negb`              |
+| Specification                   | proposition over implementation   | `negb_spec my_negb`    |
+| Correctness theorem             | proof of specification            | `my_negb_correct`      |
+| Automation boundary             | simple case split                 | `destruct b`           |
+| Extraction boundary             | external runtime after extraction | not covered by theorem |
+
+More realistic examples include sorting, expression evaluators, finite maps, compiler passes, and type-checkers. The same pattern scales, but requires stronger specifications.
+
+**Common Pitfalls:** A verified implementation is only verified relative to its specification. If the specification misses stability, permutation, sortedness, failure behavior, or environment assumptions, the theorem may be too weak.
+
+### Task: Design Proofs for Sorting-Like Specifications
+
+**Core keywords:** sorting, permutation, sortedness, correctness, specification completeness.
+
+A sorting algorithm is a classic certified-programming anchor because correctness has at least two components: output is sorted, and output is a permutation of input.
+
+Schematic specification:
+
+```coq id="53db7g"
+Parameter sorted : list nat -> Prop.
+Parameter permutation : list nat -> list nat -> Prop.
+Parameter sort : list nat -> list nat.
+
+Definition sort_spec (sort : list nat -> list nat) : Prop :=
+  forall xs : list nat,
+    sorted (sort xs) /\ permutation xs (sort xs).
+```
+
+Correctness theorem shape:
+
+```coq id="b6mu9t"
+Parameter sort_correct :
+  sort_spec sort.
+```
+
+This schematic uses parameters because full sorting libraries and permutation definitions belong in later ecosystem sections. The point here is theorem design.
+
+| Specification component    | Why needed                    | If omitted                              |
+| -------------------------- | ----------------------------- | --------------------------------------- |
+| `sorted (sort xs)`         | Output has order property     | Function could return any permutation   |
+| `permutation xs (sort xs)` | Output contains same elements | Function could return `[]`              |
+| Termination/executability  | Function computes result      | Relation-only spec may not extract      |
+| Stability, if needed       | Equal-key order preserved     | Algorithm may violate intended behavior |
+| Comparison assumptions     | Order relation properties     | Sorting theorem may be invalid or weak  |
+
+**Failure-first explanation:** The tempting theorem is `sorted (sort xs)`. That is too weak: a function returning `[]` is sorted. The correct specification also says the output is a permutation of the input. The professional rule of thumb is: correctness theorems need both safety properties and preservation/completeness properties where relevant.
+
+**Common Pitfalls:** “Correctness” is not a single property. For algorithms, specify all behavior that matters to clients.
+
+### Task: Design Proofs for Evaluator Correctness
+
+**Core keywords:** evaluator, semantics, function-relation bridge, soundness, completeness.
+
+Expression evaluators demonstrate how functions and relations can be connected.
+
+```coq id="e7pazu"
+Inductive exp : Type :=
+| EVal : nat -> exp
+| EAdd : exp -> exp -> exp.
+
+Fixpoint eval_fun (e : exp) : nat :=
+  match e with
+  | EVal n => n
+  | EAdd e1 e2 => eval_fun e1 + eval_fun e2
+  end.
+
+Inductive eval_rel : exp -> nat -> Prop :=
+| EvalVal : forall n,
+    eval_rel (EVal n) n
+| EvalAdd : forall e1 e2 n1 n2,
+    eval_rel e1 n1 ->
+    eval_rel e2 n2 ->
+    eval_rel (EAdd e1 e2) (n1 + n2).
+```
+
+Soundness:
+
+```coq id="aq6ue8"
+Theorem eval_rel_sound :
+  forall e n, eval_rel e n -> eval_fun e = n.
+Proof.
+  intros e n H.
+  induction H.
+  - reflexivity.
+  - simpl.
+    rewrite IHeval_rel1.
+    rewrite IHeval_rel2.
+    reflexivity.
+Qed.
+```
+
+Completeness:
+
+```coq id="poe3s2"
+Theorem eval_rel_complete :
+  forall e, eval_rel e (eval_fun e).
+Proof.
+  intros e.
+  induction e as [n | e1 IH1 e2 IH2].
+  - apply EvalVal.
+  - simpl. apply EvalAdd.
+    + exact IH1.
+    + exact IH2.
+Qed.
+```
+
+| Theorem                            | Meaning                                | Induction target          |
+| ---------------------------------- | -------------------------------------- | ------------------------- |
+| Soundness                          | Relation result agrees with function   | evaluation derivation     |
+| Completeness                       | Function result is allowed by relation | expression syntax         |
+| Determinism                        | Relation has at most one result        | derivation plus inversion |
+| Correctness of optimized evaluator | Optimized function agrees with spec    | expression syntax         |
+
+**Common Pitfalls:** Soundness and completeness often require different induction targets. Trying to prove both with the same induction habit can produce stuck proofs.
+
+### Task: Design Public Proof Scripts for Review
+
+**Core keywords:** code review, proof review, maintainability, proof intent.
+
+A proof script should communicate the proof idea to future maintainers. In Rocq, review quality includes both correctness and proof engineering.
+
+| Review question                      | Good sign                          | Bad sign                             |
+| ------------------------------------ | ---------------------------------- | ------------------------------------ |
+| Is the theorem statement meaningful? | Captures intended property         | Weak or misleading theorem           |
+| Is the induction target visible?     | `induction xs as ...` with names   | Hidden in tactic                     |
+| Are helper lemmas named?             | Central invariant has theorem name | Long inline proof                    |
+| Is automation bounded?               | Routine leaves automated           | Main proof hidden in `auto`          |
+| Are assumptions explicit?            | Imports/axioms visible             | Classical assumptions hidden         |
+| Is abstraction preserved?            | Uses public lemmas                 | Unfolds private definitions          |
+| Are branch cases clear?              | Bullets and names                  | Auto-generated names everywhere      |
+| Does it survive refactoring?         | Minimal dependence on goal clutter | Generated-name/inversion-heavy proof |
+
+Example of reviewable proof:
+
+```coq id="kg3m1p"
+Theorem map_length_reviewable :
+  forall (A B : Type) (f : A -> B) (xs : list A),
+    length (map f xs) = length xs.
+Proof.
+  intros A B f xs.
+  induction xs as [| x xs IHxs].
+  - reflexivity.
+  - simpl.
+    rewrite IHxs.
+    reflexivity.
+Qed.
+```
+
+The proof is not merely short. It reveals the proof structure: induction on `xs`, computation, rewrite by IH.
+
+**Common Pitfalls:** A proof script can be accepted by Rocq and still be poor engineering. Professional proof scripts should be legible, stable, and appropriately abstract.
+
+### Task: Avoid Over-Abstraction and Under-Abstraction
+
+**Core keywords:** abstraction balance, helper lemmas, modules, typeclasses, overengineering.
+
+Rocq developments fail in both directions. Under-abstraction creates repetitive brittle proofs. Over-abstraction creates inference problems, excessive parameters, and unreadable APIs.
+
+| Failure mode             | Symptom                              | Cause                        | Better practice                      |
+| ------------------------ | ------------------------------------ | ---------------------------- | ------------------------------------ |
+| Under-abstracted proof   | Same 10-line proof repeated          | Missing helper lemma         | Name reusable theorem                |
+| Under-abstracted API     | Clients unfold definitions           | No public behavior lemmas    | Export specs and rewrite lemmas      |
+| Over-abstracted theorem  | Too many parameters/laws             | Premature generality         | Generalize only stable concepts      |
+| Overused typeclasses     | Inference surprises                  | Avoiding explicit parameters | Use records/modules first if clearer |
+| Overused dependent types | Simple functions require hard proofs | Invariant pushed too deep    | Use Prop-level specs if enough       |
+| Over-automated script    | Proof unreadable                     | Hiding central argument      | Expose induction and key rewrites    |
+
+**Professional rule of thumb:** Abstract over concepts that recur and have stable laws. Do not abstract over one-off proof details.
+
+**Common Pitfalls:** “Generic” is not automatically better. A theorem that is too general may be difficult to use, search, and instantiate.
+
+### Task: Build Transferable Proof Patterns
+
+**Core keywords:** proof pattern, reusable strategy, induction, rewriting, inversion, specification.
+
+Rocq expertise grows by recognizing proof patterns. The following table is a practical pattern index for PART 4.
+
+| Goal pattern                     | Typical strategy                         | Central tactic                      | Helper lemma likely?  |
+| -------------------------------- | ---------------------------------------- | ----------------------------------- | --------------------- |
+| `forall x, P x`                  | Introduce arbitrary `x`                  | `intros`                            | No                    |
+| `A -> B`                         | Assume `A`, prove `B`                    | `intros`                            | No                    |
+| `A /\ B`                         | Prove both sides                         | `split`                             | Sometimes             |
+| `A \/ B`                         | Choose side                              | `left`/`right`                      | Sometimes             |
+| `exists x, P x`                  | Provide witness                          | `exists`                            | Sometimes             |
+| Equality by computation          | Reduce and close                         | `reflexivity`                       | No                    |
+| Equality over recursive function | Induct, simplify, rewrite IH             | `induction`, `simpl`, `rewrite`     | Often                 |
+| Boolean test spec                | Destruct test or input, bridge to `Prop` | `destruct ... eqn:`                 | Yes                   |
+| Relation soundness               | Induct on derivation                     | `induction H`                       | Often                 |
+| Impossible constructor equality  | Use constructor disjointness             | `discriminate`                      | No                    |
+| Invert structured evidence       | Analyze constructors                     | `inversion`                         | Often inversion lemma |
+| Arithmetic side condition        | Delegate to solver                       | `lia`                               | No                    |
+| Accumulator correctness          | Strengthen theorem                       | induction + generalized accumulator | Yes                   |
+
+**Common Pitfalls:** Patterns are not scripts to paste blindly. They are diagnostic guides. Always read the current proof state.
+
+### Task: Understand Tactics as Proof-Term Constructors
+
+**Core keywords:** proof terms, kernel checking, tactic elaboration, Curry–Howard.
+
+Tactics construct proof terms. They do not bypass the kernel. This is the key connection between interactive proof engineering and the Calculus of Inductive Constructions.
+
+| Tactic           | Proof-term intuition                                 |
+| ---------------- | ---------------------------------------------------- |
+| `intros x`       | Build a function taking `x`                          |
+| `exact t`        | Use term `t` as the proof                            |
+| `apply H`        | Apply proof/theorem `H` to reduce goal to premises   |
+| `split`          | Build a pair of proofs for conjunction               |
+| `left` / `right` | Choose a constructor for disjunction                 |
+| `exists w`       | Build an existential package with witness `w`        |
+| `destruct x`     | Eliminate by cases on `x`                            |
+| `induction x`    | Use induction principle for `x`                      |
+| `rewrite H`      | Use equality eliminator to transport across equality |
+| `reflexivity`    | Use reflexivity after conversion                     |
+| `inversion H`    | Analyze possible constructors of evidence `H`        |
+
+**Interdisciplinary Lens: Calculus of Inductive Constructions**
+
+| Item                      | Explanation                                                                                    |
+| ------------------------- | ---------------------------------------------------------------------------------------------- |
+| What it clarifies         | Tactics construct proof terms inhabiting theorem types                                         |
+| Language feature involved | proof mode, tactic scripts, kernel checking                                                    |
+| Practical consequence     | A tactic script is acceptable only if the generated proof term type-checks                     |
+| Limit of the lens         | It explains trust and semantics, but not every practical tactic behavior or library convention |
+
+**Failure-first explanation:** The tempting mental model is “tactics are commands that convince Rocq.” The correct model is “tactics construct a proof object, and the kernel checks it.” This explains why powerful automation remains trustworthy when the generated term is kernel-checkable.
+
+**Common Pitfalls:** Do not equate tactic failure with theorem falsehood. Tactic failure means that tactic could not construct a proof from the current state.
+
+### Task: Keep Proofs Robust Under Refactoring
+
+**Core keywords:** refactoring, proof stability, opacity, imports, dependency graph.
+
+Rocq proof maintenance is a major part of professional use. Definitions change, imports change, theorem names change, and automation contexts change. Robust proofs reduce accidental coupling.
+
+| Refactoring pressure           | Fragile script breaks because   | Robust response                            |
+| ------------------------------ | ------------------------------- | ------------------------------------------ |
+| Definition body changes        | Proof unfolded private body     | Use public lemmas                          |
+| Constructor order/names change | Proof relies on generated names | Use explicit patterns and inversion lemmas |
+| Imports change                 | `auto` no longer finds lemma    | Apply key lemmas explicitly                |
+| Notation changes               | Goal displayed differently      | Use qualified names and `Locate`           |
+| Helper theorem generalized     | Rewrite no longer matches       | Use theorem shape deliberately             |
+| Automation database changes    | Proof search result changes     | Bound automation scope                     |
+| Opacity changes                | Conversion behavior changes     | Decide `Qed`/`Defined` intentionally       |
+
+**Professional rule of thumb:** A proof script should depend on stable mathematical structure, not incidental goal formatting.
+
+**Common Pitfalls:** Broad tactics such as `simpl in *`, `rewrite H in *`, and large `auto` calls are often refactoring hazards.
+
+### Abstraction and Composition Decision Table — task-indexed reference
+
+**Core keywords:** decision table, abstraction, composition, proof construction.
+
+| Task                           | Primary construct             | When to use               | Tradeoff                | Common pitfall                    |
+| ------------------------------ | ----------------------------- | ------------------------- | ----------------------- | --------------------------------- |
+| Define simple behavior         | `Definition`                  | Non-recursive computation | Simple and transparent  | Missing result type               |
+| Define recursive behavior      | `Fixpoint`                    | Structural recursion      | Totality guaranteed     | Rejected non-structural recursion |
+| Branch on computable condition | `if` over `bool`              | Executable test           | Extractable             | Confusing with `Prop`             |
+| Branch on data                 | `match`                       | Inductive cases           | Exhaustive              | Dependent match complexity        |
+| Prove by finite cases          | `destruct`                    | No recursive IH needed    | Simple case split       | Loses equations                   |
+| Prove recursive property       | `induction`                   | Recursive data/evidence   | Gets IH                 | Weak theorem statement            |
+| Preserve test result           | `destruct ... eqn:`           | Branch on expression      | Keeps equation          | Forgetting `eqn:`                 |
+| Use equality                   | `rewrite`                     | Propositional equality    | Directed transformation | Wrong direction                   |
+| Use computation                | `simpl`, `cbn`, `reflexivity` | Definitional equality     | Fast proof              | Expecting algebra                 |
+| Compose theorem implications   | `apply`, `exact`              | Backward proof            | Clear dependency chain  | Wrong theorem orientation         |
+| State local fact               | `assert`                      | One-off intermediate      | Local clarity           | Should have been global lemma     |
+| Abstract behavior              | record/module/typeclass       | Reusable operations/laws  | Scalable theory         | Overengineering                   |
+| Automate routine goals         | `auto`, `lia`, custom tactics | Stable leaf obligations   | Productivity            | Opaque proof                      |
+| Public API proof               | named behavior theorem        | Client reasoning          | Maintains abstraction   | Unfolding internals               |
+| Certified program proof        | spec + correctness theorem    | Verified implementation   | Strong guarantees       | Weak spec                         |
+
+### Common Pitfalls and Anti-Patterns in Control, Abstraction, and Proof Engineering
+
+**Core keywords:** anti-patterns, proof engineering, automation, induction, abstraction.
+
+| Item                                           | Category              | Why it fails                             | Better practice                          |
+| ---------------------------------------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
+| `intros` everything before induction           | Common pitfall        | Weakens IH in some proofs                | Delay introductions or generalize        |
+| Inducting on the wrong object                  | Common pitfall        | IH does not match computation/derivation | Induct on recursive argument or evidence |
+| Using `destruct` where induction is needed     | Common pitfall        | No recursive hypothesis                  | Use `induction`                          |
+| Destructing complex expression without `eqn:`  | Common pitfall        | Loses branch equation                    | Use `destruct ... eqn:H`                 |
+| Treating `simpl` as theorem proving            | Common pitfall        | Only computes definitions                | Use lemmas/induction/rewrite             |
+| Rewriting blindly in all hypotheses            | Anti-pattern          | Destroys useful context                  | Target rewrites                          |
+| Hiding main proof in automation                | Anti-pattern          | Unreviewable and brittle                 | Expose induction/key lemmas              |
+| Repeating proof fragments                      | Under-abstraction     | Maintenance burden                       | State helper lemma                       |
+| Creating typeclasses for one-off code          | Over-abstraction      | Inference complexity                     | Use explicit records/parameters          |
+| Unfolding private definitions in client proofs | Boundary violation    | Refactoring breaks clients               | Export behavior lemmas                   |
+| Using `Admitted` to bypass proof design        | Dangerous pattern     | Adds trust debt                          | Track and eliminate admissions           |
+| Proving weak correctness theorem               | Specification failure | Verified result meaningless              | Strengthen spec                          |
+
+### PART 4 Summary — behavior construction as proof construction
+
+PART 4 explained Rocq behavior through functions, structural recursion, pattern matching, theorem composition, and proof-state transformation. The main result is a professional mental model: **Rocq control flow and abstraction are inseparable from proof construction and proof maintenance**.
+
+| Dimension             | Expert question                                                                   |
+| --------------------- | --------------------------------------------------------------------------------- |
+| Function design       | Does the signature expose the right computation and obligations?                  |
+| Branching             | Is the branch over computable data, proposition evidence, or inductive structure? |
+| Recursion             | Is the recursive call structurally justified?                                     |
+| Induction             | Does the induction target match the recursive definition or derivation?           |
+| Equality              | Is the needed equality definitional or propositional?                             |
+| Helper lemmas         | Is there a reusable invariant or theorem hiding inside the proof?                 |
+| Automation            | Is automation solving routine leaves or hiding the central idea?                  |
+| Abstraction           | Are clients reasoning through public behavior or private representation?          |
+| Proof style           | Is the script robust, readable, and reviewable?                                   |
+| Certified programming | Does the theorem actually express the intended correctness property?              |
+
+A professional Rocq user does not merely ask, “Which tactic proves this?” The better question is: “What is the shape of the goal, what evidence must be constructed, what induction principle applies, what helper lemma captures the invariant, and how can the proof remain maintainable after definitions and libraries evolve?”
+
+## PART 5 — Modules, Errors, Effects, Resources, and Boundaries by Task Pattern, Part 1 of 2
+
+PART 5 shifts from local definitions and proofs to **boundary management**: modules, imports, public APIs, assumptions, proof failures, validation boundaries, recoverable failure representations, extraction boundaries, and trust boundaries. In Rocq, boundary design is not merely software organization. It determines what is visible, what is abstract, what is assumed, what is proved, what is computational, and what remains outside the kernel’s guarantee. This follows the requested structure for modules, errors, effects, resources, and trust boundaries. 
+
+### Boundary Orientation — environment, API, proof, trust, extraction
+
+**Core keywords:** boundary, module, assumption, error, effect, extraction, trust.
+
+In many programming languages, boundaries are mainly about namespaces, files, packages, visibility, exceptions, resource lifetimes, and external APIs. Rocq has those concerns in modified form, but adds proof-specific boundaries:
+
+| Boundary type          | Rocq form                                 | What it controls                         | Main risk                                            |
+| ---------------------- | ----------------------------------------- | ---------------------------------------- | ---------------------------------------------------- |
+| Namespace boundary     | modules, qualified names, imports         | Which names are visible                  | Ambiguous names or notation pollution                |
+| Local context boundary | sections, variables, hypotheses           | Which parameters are generalized         | Hidden assumptions in exported theorem types         |
+| API boundary           | definitions plus theorems                 | How clients reason about behavior        | Clients unfold private implementation                |
+| Proof boundary         | `Qed`, `Defined`, `Admitted`, axioms      | What is checked, transparent, or assumed | Trust debt or blocked computation                    |
+| Logic boundary         | constructive core versus imported axioms  | Which proof principles are available     | Accidental classical assumptions                     |
+| Computation boundary   | `Prop`, `Type`, extraction                | What remains computational               | Assuming proofs survive extraction as runtime checks |
+| Validation boundary    | raw data to certified data                | Which external values are trusted        | Treating unvalidated input as valid                  |
+| Tooling/build boundary | files, dependencies, packages             | What must compile/check together         | Fragile dependency graph                             |
+| Runtime boundary       | extracted code, plugins, external systems | What happens outside kernel checking     | Whole-system correctness overclaim                   |
+
+**Design principle:** In Rocq, boundaries should be designed around **what clients may use as facts**. A public function without public theorems is an incomplete API. A theorem proved under hidden assumptions is a weaker artifact than it appears. An extracted function without a stated environment model is not whole-system verified.
+
+**Common Pitfalls:** Treating a Rocq module as only a namespace misses the proof-engineering role of modules: they can hide representations, control notation, package laws, and prevent clients from depending on implementation details.
+
+### Task: Organize Files and Imports — source files, dependencies, `Require`, `Import`
+
+**Core keywords:** `.v` files, `Require`, `Import`, `From Stdlib`, dependency graph, namespace hygiene.
+
+A Rocq development is normally organized as `.v` files whose commands are processed sequentially. Imports affect available definitions, theorems, tactics, notation, and sometimes automation hints.
+
+| Task                            | Construct                        | Professional use               | Failure mode                      |
+| ------------------------------- | -------------------------------- | ------------------------------ | --------------------------------- |
+| Load a library                  | `Require`                        | Make compiled module available | Unknown module/path               |
+| Load and bring names into scope | `Require Import`                 | Convenient local development   | Namespace pollution               |
+| Specify library root            | `From Stdlib Require Import ...` | Clear standard-library origin  | Version/path mismatch             |
+| Bring notation into scope       | `Import ListNotations`           | Enable list syntax             | Notation unavailable or ambiguous |
+| Use qualified names             | `Nat.add_comm`                   | Avoid ambiguity                | Verbose                           |
+| Re-export dependency            | `Require Export`                 | Public library API             | Accidental dependency leakage     |
+
+Example:
+
+```coq
+From Stdlib Require Import List Arith Lia.
+Import ListNotations.
+```
+
+This does several things at once: it loads list definitions, arithmetic facts, linear arithmetic automation, and list notation. That affects proof scripts and source readability.
+
+A more disciplined style may use qualified names:
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+
+Check List.map.
+Check Nat.add_comm.
+```
+
+**Design tradeoff:**
+
+| Import style    | Capability gained           | Cost introduced                                | Best use                             |
+| --------------- | --------------------------- | ---------------------------------------------- | ------------------------------------ |
+| Broad imports   | Convenience                 | Harder to know where facts/notations come from | Small files, interactive exploration |
+| Qualified names | Clarity                     | Verbosity                                      | Library code and ambiguous contexts  |
+| Local imports   | Scoped convenience          | More structure                                 | Notation-heavy sections              |
+| Re-exporting    | API convenience for clients | Hidden dependency surface                      | Carefully designed library modules   |
+
+**Failure-first explanation:** The tempting mental model is “imports only add names.” The surprising behavior is that imports may also add notation, scopes, tactics, hints, and typeclass instances. The correct explanation is that imports change the elaboration and proof-search environment. The professional rule of thumb is: treat imports as part of the proof context.
+
+**Common Pitfalls:** A proof solved by `auto` may depend on hints imported indirectly. If reorganizing imports breaks proofs, the script may have hidden dependencies.
+
+### Task: Declare Module Boundaries — `Module`, qualified names, representation control
+
+**Core keywords:** `Module`, namespace, qualified names, abstraction, representation hiding.
+
+Modules group definitions and control names. They can also support abstraction by limiting how clients refer to internals.
+
+Simple module:
+
+```coq
+Module NatStack.
+
+  Definition stack : Type := list nat.
+
+  Definition empty : stack := [].
+
+  Definition push (n : nat) (s : stack) : stack :=
+    n :: s.
+
+  Definition pop (s : stack) : option (nat * stack) :=
+    match s with
+    | [] => None
+    | x :: xs => Some (x, xs)
+    end.
+
+End NatStack.
+```
+
+Using qualified names:
+
+```coq
+Check NatStack.stack.
+Check NatStack.push.
+Check NatStack.pop.
+```
+
+| Module feature    | Meaning                          | Practical consequence                |
+| ----------------- | -------------------------------- | ------------------------------------ |
+| `Module M.`       | Start namespace `M`              | Names become `M.name` outside        |
+| `End M.`          | Close module                     | Exports module contents              |
+| Qualified names   | `M.f`                            | Avoid ambiguity                      |
+| Nested modules    | modules inside modules           | Organize larger developments         |
+| Module signatures | interfaces                       | Hide or constrain implementation     |
+| Functors          | modules parameterized by modules | Reusable theory over implementations |
+
+**API theorem example:**
+
+```coq
+Module NatStackSpec.
+
+  Definition stack : Type := list nat.
+
+  Definition empty : stack := [].
+
+  Definition push (n : nat) (s : stack) : stack :=
+    n :: s.
+
+  Definition pop (s : stack) : option (nat * stack) :=
+    match s with
+    | [] => None
+    | x :: xs => Some (x, xs)
+    end.
+
+  Theorem pop_push :
+    forall n s, pop (push n s) = Some (n, s).
+  Proof.
+    intros n s.
+    reflexivity.
+  Qed.
+
+End NatStackSpec.
+```
+
+The theorem `pop_push` is part of the API. Clients should use it rather than unfolding `push` and `pop` everywhere.
+
+**Design meaning:** A Rocq module boundary should export not only operations but also the facts that clients are meant to rely on.
+
+**Common Pitfalls:** A module that exports functions but no behavior lemmas forces clients to unfold definitions. That makes later representation changes expensive.
+
+### Task: Use Sections for Shared Parameters — `Section`, `Variable`, `Context`, generalization
+
+**Core keywords:** `Section`, `Variable`, `Context`, shared assumptions, generalized parameters.
+
+Sections allow a block of definitions and theorems to share variables and hypotheses. When a section closes, Rocq generalizes over those variables in exported definitions.
+
+Example:
+
+```coq
+Section ListFacts.
+
+  Variable A : Type.
+
+  Definition singleton (x : A) : list A :=
+    [x].
+
+  Theorem singleton_length :
+    forall x : A, length (singleton x) = 1.
+  Proof.
+    intros x.
+    reflexivity.
+  Qed.
+
+End ListFacts.
+```
+
+After closing the section:
+
+```coq
+Check singleton.
+Check singleton_length.
+```
+
+The exported definitions are generalized over `A`.
+
+| Section construct     | Meaning                           | Professional use                | Risk                          |
+| --------------------- | --------------------------------- | ------------------------------- | ----------------------------- |
+| `Section S.`          | Start local context               | Share parameters                | Hidden generalized variables  |
+| `Variable A : Type.`  | Declare arbitrary local parameter | Avoid repeated quantification   | Exported type may surprise    |
+| `Hypothesis H : P.`   | Assume proposition locally        | Develop theory under assumption | Theorem depends on assumption |
+| `Context {A : Type}.` | Add implicit parameter            | Cleaner definitions             | Hidden argument confusion     |
+| `End S.`              | Close and generalize              | Produce generic theorems        | Need to inspect final type    |
+
+Example with a hypothesis:
+
+```coq
+Section OrderedOperation.
+
+  Variable A : Type.
+  Variable le : A -> A -> Prop.
+  Hypothesis le_refl : forall x : A, le x x.
+
+  Theorem le_self :
+    forall x : A, le x x.
+  Proof.
+    exact le_refl.
+  Qed.
+
+End OrderedOperation.
+```
+
+After the section closes, `le_self` depends on `A`, `le`, and `le_refl`.
+
+**Failure-first explanation:** The tempting mental model is “a section variable is like a global variable.” The surprising behavior is that after `End`, it becomes an explicit or implicit parameter of exported definitions. The correct explanation is that sections are parameterization devices. The professional rule of thumb is: always `Check` important definitions after closing a section.
+
+**Common Pitfalls:** A theorem may appear assumption-free inside a section but export with extra parameters or hypotheses. This is not a bug; it is section generalization.
+
+### Task: Control Visibility and Locality — `Local`, `Global`, notation, hints, instances
+
+**Core keywords:** locality, visibility, `Local`, `Global`, notation, hints, instances.
+
+Rocq developments often define notation, hints, instances, coercions, and local settings. Their scope must be controlled.
+
+| Declaration style    | Meaning                                  | Use when                     | Risk                                 |
+| -------------------- | ---------------------------------------- | ---------------------------- | ------------------------------------ |
+| `Local`              | Effect limited to current module/section | Avoid leaking notation/hints | Later code may not see it            |
+| `Global`             | Effect intended to persist/export        | Public library behavior      | Pollutes downstream environment      |
+| No explicit locality | Depends on command defaults/context      | Small local code             | Ambiguous intent                     |
+| Local notation       | Notation for one file/section            | Readability                  | External users cannot rely on it     |
+| Global hint          | Add to automation database               | Stable reusable fact         | `auto` becomes environment-dependent |
+| Global instance      | Typeclass instance visible               | Generic inference            | Unexpected instance resolution       |
+
+Example local scope:
+
+```coq
+Module LocalNotationDemo.
+
+  Local Notation "x ⊕ y" := (x + y) (at level 50).
+
+  Definition plus_demo (x y : nat) : nat :=
+    x ⊕ y.
+
+End LocalNotationDemo.
+```
+
+The notation is local to the module. Outside, clients should not rely on it.
+
+**Design tradeoff:**
+
+| Public effect      | Capability gained           | Cost introduced                            |
+| ------------------ | --------------------------- | ------------------------------------------ |
+| Global notation    | Domain-specific readability | Parsing/printing surprises                 |
+| Global hints       | Automation convenience      | Hidden proof dependencies                  |
+| Global instances   | Ergonomic generic code      | Search ambiguity                           |
+| Local declarations | Encapsulation               | More explicit imports/configuration needed |
+
+**Common Pitfalls:** Global hints and instances should be treated like public API commitments. They affect other proofs, sometimes far from the declaration site.
+
+### Task: Separate Public API from Implementation Details — behavior lemmas, opacity, modules
+
+**Core keywords:** public API, private implementation, behavior lemma, abstraction barrier, opacity.
+
+A Rocq API should expose stable theorems rather than forcing clients to unfold implementation definitions.
+
+Example implementation:
+
+```coq
+Module Counter.
+
+  Definition counter : Type := nat.
+
+  Definition zero : counter := 0.
+
+  Definition inc (c : counter) : counter :=
+    S c.
+
+  Definition value (c : counter) : nat :=
+    c.
+
+  Theorem value_inc :
+    forall c : counter, value (inc c) = S (value c).
+  Proof.
+    intros c.
+    reflexivity.
+  Qed.
+
+End Counter.
+```
+
+A client should reason with `Counter.value_inc`, not by unfolding `Counter.inc` and `Counter.value`.
+
+| Boundary task       | Better API element         | Reason                        |
+| ------------------- | -------------------------- | ----------------------------- |
+| Expose operation    | definition                 | Allows computation            |
+| Expose behavior     | theorem/lemma              | Allows stable reasoning       |
+| Hide representation | module signature/opacity   | Prevents proof coupling       |
+| Support rewriting   | rewrite lemmas             | Makes client proofs concise   |
+| Support inversion   | inversion/canonical lemmas | Avoids repeated `inversion`   |
+| Support automation  | scoped hints               | Keeps proof search controlled |
+
+**Failure-first explanation:** The tempting mental model is “clients can always unfold the function.” The surprising maintenance failure is that every client proof becomes representation-dependent. The correct explanation is that unfolding crosses the abstraction boundary. The professional rule of thumb is: if clients need a behavior, export a lemma for it.
+
+**Common Pitfalls:** Opaque proofs via `Qed` help abstraction, but opaque computational definitions may block reduction. Decide opacity based on whether clients need computation or only theorem-based reasoning.
+
+### Task: Handle Failure in Computation — `option`, `result`, relations, preconditions
+
+**Core keywords:** failure, `option`, `result`, precondition, relation, partiality.
+
+Rocq’s Gallina functions are total. A function that may fail conceptually should represent failure explicitly.
+
+| Failure pattern          | Rocq representation            | Use when                     | Example           | Pitfall                      |
+| ------------------------ | ------------------------------ | ---------------------------- | ----------------- | ---------------------------- |
+| Failure without detail   | `option A`                     | Only success/absence matters | lookup, safe head | Cannot explain failure       |
+| Failure with detail      | `result E A`                   | Error reason matters         | parser, checker   | More boilerplate             |
+| Invalid input impossible | precondition or dependent type | Caller can prove validity    | bounded index     | Harder API                   |
+| Semantic failure         | relation with no derivation    | Proof-first model            | typing/evaluation | Less executable              |
+| Boolean failure          | `bool` validator               | Computable accept/reject     | validation        | Needs soundness/completeness |
+
+Example safe division by natural numbers, simplified as predecessor-like failure:
+
+```coq
+Definition safe_pred (n : nat) : option nat :=
+  match n with
+  | 0 => None
+  | S k => Some k
+  end.
+```
+
+Specification:
+
+```coq
+Theorem safe_pred_some :
+  forall n k : nat,
+    safe_pred n = Some k -> n = S k.
+Proof.
+  intros n k H.
+  destruct n as [| n'].
+  - simpl in H. discriminate H.
+  - simpl in H. inversion H. reflexivity.
+Qed.
+```
+
+Custom result type:
+
+```coq
+Inductive parse_error : Type :=
+| EmptyInput
+| BadToken.
+
+Inductive result (E A : Type) : Type :=
+| Ok : A -> result E A
+| Err : E -> result E A.
+```
+
+**Design meaning:** Rocq does not use uncontrolled runtime exceptions in Gallina to represent ordinary failure. Failure must be modeled in the return type, precondition, dependent type, or relation.
+
+**Common Pitfalls:** `option` is often too weak for public boundaries. If clients need to distinguish empty input from bad syntax, use a richer result type.
+
+### Task: Handle Failure in Proof Development — type errors, tactic failures, incomplete goals
+
+**Core keywords:** proof failure, tactic failure, type error, incomplete proof, proof obligations.
+
+Rocq proof development has “errors,” but they are usually static or interactive failures rather than runtime exceptions.
+
+| Failure kind                | Symptom                        | Meaning                             | Professional response                            |
+| --------------------------- | ------------------------------ | ----------------------------------- | ------------------------------------------------ |
+| Parse failure               | command rejected syntactically | Bad grammar/notation/period         | Check command and imports                        |
+| Unknown reference           | name not found                 | Missing import/namespace            | Use `Check`, qualified names                     |
+| Type error                  | term rejected                  | Type mismatch or missing annotation | Inspect subterms                                 |
+| Tactic failure              | tactic cannot apply            | Goal shape mismatch                 | Read proof state                                 |
+| Unshelved goals             | proof incomplete               | Obligations remain                  | Inspect all goals                                |
+| Termination rejection       | `Fixpoint` refused             | Structural decrease not evident     | Redesign recursion                               |
+| Universe constraint error   | universe inconsistency         | Type hierarchy issue                | Add annotations/reduce impredicative assumptions |
+| Automation timeout/slowdown | proof search too broad         | Search space explosion              | Bound automation                                 |
+| Build failure               | file/dependency check fails    | Broken proof/import/version         | Recheck dependency graph                         |
+
+Example tactic mismatch:
+
+```coq
+Theorem failure_shape_demo :
+  forall A B : Prop, A -> B -> A.
+Proof.
+  intros A B HA HB.
+  (* split.  This would fail because the goal is A, not a conjunction. *)
+  exact HA.
+Qed.
+```
+
+**Failure-first explanation:** The tempting mental model is “the tactic failed, so the theorem is probably false.” The correct first diagnosis is goal-shape mismatch. `split` works for conjunction goals, `left`/`right` for disjunction goals, `exists` for existential goals, `rewrite` for matching equality, and `induction` for recursive structure.
+
+**Common Pitfalls:** Randomly adding `auto`, `simpl`, or `try` around a failing tactic usually produces fragile proofs. Diagnose the proof state first.
+
+### Task: Track Trust Debt — `Admitted`, `Axiom`, `Parameter`, classical imports
+
+**Core keywords:** trust debt, `Admitted`, `Axiom`, `Parameter`, assumptions, audit.
+
+Rocq’s trust story is strong only when assumptions are managed. `Admitted`, `Axiom`, and `Parameter` can be legitimate during development or in foundational interfaces, but they introduce assumptions.
+
+| Construct        | What it does                       | Trust status                          | Proper use                       | Risk                                   |
+| ---------------- | ---------------------------------- | ------------------------------------- | -------------------------------- | -------------------------------------- |
+| `Qed`            | Stores checked opaque proof        | Checked                               | Ordinary theorem                 | Body not reducible                     |
+| `Defined`        | Stores checked transparent proof   | Checked                               | Computational proof/object       | May unfold and increase reduction cost |
+| `Admitted`       | Accepts theorem without proof      | Trust debt                            | Temporary placeholder            | Development may rely on false claim    |
+| `Axiom`          | Declares proposition as assumed    | Explicit assumption                   | Foundations/classical principles | Can make logic inconsistent if bad     |
+| `Parameter`      | Declares object without body       | Abstract assumption                   | Interfaces, abstract types       | Hidden specification gap               |
+| Classical import | Adds classical principles/theorems | Depends on imported axioms/principles | Classical developments           | Constructive content changes           |
+
+Example:
+
+```coq
+Axiom excluded_middle :
+  forall P : Prop, P \/ ~ P.
+```
+
+This is a powerful assumption. It should not be introduced casually.
+
+Temporary admission:
+
+```coq
+Theorem hard_lemma :
+  forall n : nat, n = n.
+Admitted.
+```
+
+Even though the statement is true, `Admitted` means no proof was checked.
+
+**Design meaning:** Rocq checks derivability from the current environment. If the environment includes unjustified assumptions, the final theorem inherits that trust debt.
+
+**Common Pitfalls:** A file with `Admitted` can compile. Compilation is not the same as proof completeness. Serious developments track admissions and axioms explicitly.
+
+### Task: Manage Constructive and Classical Boundaries — explicit logical assumptions
+
+**Core keywords:** constructive core, classical reasoning, excluded middle, double negation, decidability.
+
+Rocq’s core logic is constructive. This affects how disjunction, existence, negation, and proof by contradiction work. Classical reasoning can be imported, but it changes the assumption boundary.
+
+| Logical pattern                       | Constructive core             | Classical version                              | Boundary issue                     |
+| ------------------------------------- | ----------------------------- | ---------------------------------------------- | ---------------------------------- |
+| Prove `exists x, P x`                 | Provide witness               | May prove indirectly with classical principles | Witness may not be computational   |
+| Prove `A \/ B`                        | Choose side                   | May use excluded middle                        | Choice may not be constructive     |
+| Prove `~~P -> P`                      | Not generally derivable       | Classical double-negation elimination          | Adds classical assumption          |
+| Prove contradiction from `P` and `~P` | Constructive                  | Same                                           | Fine                               |
+| Decide finite equality                | Constructive by case analysis | Same                                           | Prefer explicit decision procedure |
+| Arbitrary excluded middle             | Not derivable                 | Imported/axiomatized                           | Track dependency                   |
+
+Constructive negation example:
+
+```coq
+Theorem contradiction_demo :
+  forall P : Prop, P -> ~ P -> False.
+Proof.
+  intros P HP HNP.
+  apply HNP.
+  exact HP.
+Qed.
+```
+
+Constructive disjunction commutativity:
+
+```coq
+Theorem disjunction_comm_boundary :
+  forall A B : Prop, A \/ B -> B \/ A.
+Proof.
+  intros A B H.
+  destruct H as [HA | HB].
+  - right. exact HA.
+  - left. exact HB.
+Qed.
+```
+
+**Interdisciplinary Lens: Constructive Logic**
+
+| Item                      | Explanation                                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| What it clarifies         | Existence and disjunction proofs carry evidence                                                      |
+| Language feature involved | `exists`, `\/`, `~`, `False`, classical imports                                                      |
+| Practical consequence     | Proof by contradiction and excluded middle require careful assumption tracking                       |
+| Limit of the lens         | Rocq developments may intentionally use classical axioms; the issue is explicitness, not prohibition |
+
+**Common Pitfalls:** Importing classical reasoning to solve a local proof may silently remove computational content from a result intended for extraction or constructive use.
+
+### Task: Represent Recoverable and Unrecoverable Problems — computation failure versus inconsistency
+
+**Core keywords:** recoverable failure, unrecoverable contradiction, `option`, `result`, `False`, invalid state.
+
+Rocq distinguishes failure in data from contradiction in logic. These should not be modeled interchangeably.
+
+| Situation                   | Use                              | Example                  | Meaning                        |
+| --------------------------- | -------------------------------- | ------------------------ | ------------------------------ |
+| Function may fail normally  | `option` or `result`             | lookup may fail          | Recoverable computational case |
+| Input violates precondition | proof argument or dependent type | nonzero divisor required | Caller must prove validity     |
+| Logical impossibility       | `False`                          | `Some x = None -> False` | Contradictory evidence         |
+| Inconsistent assumptions    | `False` derivable globally       | bad axiom                | Development unsound            |
+| Parser rejects input        | `result parse_error ast`         | bad token                | External-data failure          |
+| Proof tactic fails          | no term constructed              | wrong goal/tactic        | Development-time issue         |
+
+Example:
+
+```coq
+Definition head_opt {A : Type} (xs : list A) : option A :=
+  match xs with
+  | [] => None
+  | x :: _ => Some x
+  end.
+```
+
+The empty-list case is not a contradiction. It is a valid computational branch.
+
+By contrast:
+
+```coq
+Theorem some_none_contradiction :
+  forall (A : Type) (x : A), Some x = None -> False.
+Proof.
+  intros A x H.
+  discriminate H.
+Qed.
+```
+
+This theorem says a certain equality of constructors is impossible.
+
+**Failure-first explanation:** The tempting mental model is “failure equals false.” The correct Rocq distinction is: computational failure is data, such as `None` or `Err`; logical impossibility is a proposition implying `False`. Confusing these leads to bad APIs and awkward proofs.
+
+**Common Pitfalls:** Do not encode ordinary parser failure as `False`. If the input can fail validation, represent that failure as data.
+
+### Task: Define Trust Boundaries for External Input — raw data, validated data, certified constructors
+
+**Core keywords:** external input, raw data, validation, smart constructor, certified boundary.
+
+Rocq can reason about external input only after the input is represented in the model. The trust boundary is the point where raw, untrusted data becomes validated internal data.
+
+| Boundary layer          | Representation                            | Example              | Required theorem              |
+| ----------------------- | ----------------------------------------- | -------------------- | ----------------------------- |
+| Raw input               | string/list/token data                    | token stream         | none yet                      |
+| Parser                  | `raw -> option ast` or `result error ast` | parse expression     | parser soundness              |
+| Validator               | `ast -> bool`                             | type checker         | soundness/completeness        |
+| Certified internal form | dependent type or proof-carrying record   | typed AST            | constructor correctness       |
+| External assumption     | parameter/axiom                           | imported environment | explicit assumption statement |
+
+Example validator pattern:
+
+```coq
+Definition nonempty {A : Type} (xs : list A) : Prop :=
+  exists x xs', xs = x :: xs'.
+
+Definition check_nonempty {A : Type} (xs : list A) : bool :=
+  match xs with
+  | [] => false
+  | _ :: _ => true
+  end.
+```
+
+Soundness:
+
+```coq
+Theorem check_nonempty_sound :
+  forall (A : Type) (xs : list A),
+    check_nonempty xs = true -> nonempty xs.
+Proof.
+  intros A xs H.
+  destruct xs as [| x xs'].
+  - simpl in H. discriminate H.
+  - exists x, xs'. reflexivity.
+Qed.
+```
+
+**Design meaning:** A validation boundary is certified only when the validator is connected to the intended proposition by theorems.
+
+**Common Pitfalls:** A parser or validator written in Rocq is not automatically correct. It needs a specification and correctness theorem.
+
+### Task: Express Side Effects — model effects rather than performing them in Gallina
+
+**Core keywords:** effects, purity, modeling, extraction, monadic style, external systems.
+
+Gallina definitions are pure. Ordinary effects such as file I/O, network access, mutable state, randomness, and system calls are not the central mode of Rocq computation. Effects can be modeled as data, represented with monadic structures, handled in extracted code, or isolated behind assumptions.
+
+| Effect need               | Rocq approach                      | Example                 | Boundary issue                       |
+| ------------------------- | ---------------------------------- | ----------------------- | ------------------------------------ |
+| Model state               | state transition relation/function | `state -> state`        | Is model faithful?                   |
+| Model I/O                 | abstract events/traces             | list of events          | External world not directly verified |
+| Model nondeterminism      | relation                           | `step : s -> s -> Prop` | Need semantic theorems               |
+| Extract effectful code    | extraction to target language      | OCaml/Haskell wrapper   | Runtime outside kernel               |
+| Assume external primitive | `Parameter`/axiom                  | external oracle         | Trust boundary                       |
+| Verify pure core          | pure function plus theorem         | parser/checker          | Effects handled at shell boundary    |
+
+Example state transition model:
+
+```coq
+Record machine_state : Type := {
+  counter_value : nat
+}.
+
+Definition tick (s : machine_state) : machine_state :=
+  {| counter_value := S (counter_value s) |}.
+```
+
+Property:
+
+```coq
+Theorem tick_increases :
+  forall s : machine_state,
+    counter_value (tick s) = S (counter_value s).
+Proof.
+  intros s.
+  reflexivity.
+Qed.
+```
+
+This models state transition as a pure function from old state to new state.
+
+**Design meaning:** Rocq usually verifies a pure model or pure core. Real effects must be represented, axiomatized, or handled outside the proof boundary.
+
+**Common Pitfalls:** Do not claim that Rocq has verified file-system behavior unless the file-system model, interface, and external assumptions are explicitly part of the development.
+
+### Task: Manage Resources — mostly proof/build/extraction boundary, not RAII-style core language
+
+**Core keywords:** resources, memory, files, I/O, build resources, extraction.
+
+Rocq’s core language does not manage resources in the style of C++ RAII, Rust ownership, or Java try-with-resources. Resource management matters in three main ways: modeled resources inside formal semantics, tooling/build resources, and extracted code interacting with target runtimes.
+
+| Resource concern            | Rocq-level handling     | Example                       | Where proof stops                    |
+| --------------------------- | ----------------------- | ----------------------------- | ------------------------------------ |
+| Abstract resource model     | inductive/state model   | heap, lock state, file table  | Model adequacy                       |
+| Pure certified algorithm    | no external resource    | sorting, evaluator            | Extraction/runtime boundary          |
+| Extracted code resource use | target language runtime | file handles in OCaml wrapper | Outside Gallina proof unless modeled |
+| Proof checking resources    | build time, memory      | large proof terms, automation | Engineering workflow                 |
+| Plugin resources            | OCaml/plugin execution  | tactics/plugins               | Trusted plugin boundary if relevant  |
+
+**Common Pitfalls:** Do not import mental models from Rust ownership or C++ RAII directly into Rocq’s Gallina core. If resource safety matters, model the resource discipline explicitly or verify a language/system that has such a discipline.
+
+### Task: Isolate Unsafe, Dynamic, or Unchecked Behavior — axioms, plugins, extraction, external code
+
+**Core keywords:** unsafe boundary, unchecked behavior, plugin, extraction, axiom, external runtime.
+
+Rocq’s trusted kernel checks terms, but not everything in a practical workflow has the same trust status.
+
+| Boundary item             | Trust status                       | Risk                                 | Professional response       |
+| ------------------------- | ---------------------------------- | ------------------------------------ | --------------------------- |
+| Kernel-checked theorem    | Highest internal confidence        | Depends on assumptions               | Inspect assumptions         |
+| Tactic-generated proof    | Kernel-checked final term          | Tactic may be buggy but term checked | Trust kernel, not tactic    |
+| `Admitted` theorem        | Assumed                            | Could be false                       | Track/eliminate             |
+| `Axiom`                   | Assumed                            | Could be inconsistent                | Minimize/audit              |
+| External plugin           | Depends on plugin/kernel interface | May affect proof construction        | Understand trust model      |
+| Extracted code            | Outside kernel after extraction    | Runtime/compiler/I/O assumptions     | State extraction boundary   |
+| Foreign code wrapper      | Unverified unless modeled          | Operational bugs                     | Keep small/audit separately |
+| Imported binary/toolchain | External trust                     | Build/runtime mismatch               | Pin versions, CI check      |
+
+**Design meaning:** Not every artifact in a Rocq project has equal evidential force. Professional developments distinguish kernel-checked content from assumptions and external infrastructure.
+
+**Common Pitfalls:** “The tactic solved it” is not the trust guarantee. “The kernel accepted the generated proof term under these assumptions” is the guarantee.
+
+### Boundary Task Decision Table — PART 5 interim reference
+
+**Core keywords:** module boundary, error boundary, trust boundary, effect boundary.
+
+| Task                        | Construct/API                    | Professional use                      | Pitfall                            |
+| --------------------------- | -------------------------------- | ------------------------------------- | ---------------------------------- |
+| Organize names              | `Module`, qualified names        | Prevent ambiguity                     | Treating modules as mere folders   |
+| Share parameters            | `Section`, `Context`, `Variable` | Avoid repetition; generic theory      | Hidden generalized assumptions     |
+| Import library facts        | `From ... Require Import ...`    | Reuse definitions/theorems            | Hidden notation/hints              |
+| Control notation/hints      | `Local`, `Global`, scopes        | Manage elaboration/proof search       | Polluting downstream context       |
+| Expose public behavior      | named theorems                   | Stable client reasoning               | Forcing clients to unfold          |
+| Represent failure           | `option`, `result`               | Total functions with failure          | Using `option` when error matters  |
+| Prove validator correctness | soundness/completeness           | Certified boundary                    | Proving one direction only         |
+| Track assumptions           | `Axiom`, `Parameter`, imports    | Foundation/interface clarity          | Hidden trust debt                  |
+| End proofs                  | `Qed`, `Defined`                 | Control opacity/transparency          | Wrong transparency choice          |
+| Model effects               | state/trace/relation             | Verify pure model of effectful system | Overclaiming external behavior     |
+| Extract code                | extraction commands/workflow     | Use certified pure core               | Claiming whole-system verification |
+| Avoid unchecked gaps        | audit admissions/axioms          | Maintain trust                        | Letting `Admitted` persist         |
+
+### Task: Specify Abstract Interfaces — module types, signatures, operations, laws
+
+**Core keywords:** module type, signature, abstract type, operation, law, representation hiding.
+
+A module signature specifies what a module must provide. In Rocq, a useful interface often includes not only operations but also laws about those operations.
+
+A simple stack interface can be sketched as:
+
+```coq
+Module Type STACK.
+
+  Parameter t : Type.
+  Parameter empty : t.
+  Parameter push : nat -> t -> t.
+  Parameter pop : t -> option (nat * t).
+
+  Axiom pop_push :
+    forall n s, pop (push n s) = Some (n, s).
+
+End STACK.
+```
+
+This says that any implementation of `STACK` must provide a type `t`, operations, and a law `pop_push`. In production-quality developments, the law should be proved by the implementing module rather than left as an unreviewed assumption.
+
+An implementation using lists:
+
+```coq
+Module ListStack <: STACK.
+
+  Definition t : Type := list nat.
+
+  Definition empty : t := [].
+
+  Definition push (n : nat) (s : t) : t :=
+    n :: s.
+
+  Definition pop (s : t) : option (nat * t) :=
+    match s with
+    | [] => None
+    | x :: xs => Some (x, xs)
+    end.
+
+  Theorem pop_push :
+    forall n s, pop (push n s) = Some (n, s).
+  Proof.
+    intros n s.
+    reflexivity.
+  Qed.
+
+End ListStack.
+```
+
+| Interface element | Role                        | Boundary effect                                 | Common pitfall                                             |
+| ----------------- | --------------------------- | ----------------------------------------------- | ---------------------------------------------------------- |
+| Abstract type     | Hide representation         | Clients cannot depend on concrete structure     | Interface too weak for needed proofs                       |
+| Operation         | Expose behavior entry point | Clients can compute/use operation               | Operation exported without laws                            |
+| Law/theorem       | Expose reasoning principle  | Clients reason without unfolding                | Stated too weakly                                          |
+| Opaque proof      | Hide proof body             | Maintains abstraction                           | May block computation if proof is computationally relevant |
+| Module ascription | Enforce interface           | Prevent accidental dependency on implementation | Can hide useful definitions too aggressively               |
+
+**Design meaning:** A Rocq interface should expose theorems as part of the API. If clients need to know how an operation behaves, that behavior should be stated as a law, not discovered by unfolding the implementation.
+
+**Common Pitfalls:** A module signature with only operations but no laws is usually under-specified. It may be adequate for computation, but weak for proof reuse.
+
+### Task: Parameterize Theory Over Implementations — functors
+
+**Core keywords:** functor, parameterized module, reusable theory, abstract implementation, law reuse.
+
+A functor is a module parameterized by another module. In Rocq, functors support reusable theory over abstract implementations.
+
+Example: define generic stack facts over any `STACK`.
+
+```coq
+Module StackFacts (S : STACK).
+
+  Theorem push_then_pop_is_some :
+    forall n s, exists s', S.pop (S.push n s) = Some (n, s').
+  Proof.
+    intros n s.
+    exists s.
+    apply S.pop_push.
+  Qed.
+
+End StackFacts.
+```
+
+Instantiating with `ListStack`:
+
+```coq
+Module ListStackFacts := StackFacts(ListStack).
+```
+
+| Functor use case                  | Benefit                                   | Cost                     | Common failure mode           |
+| --------------------------------- | ----------------------------------------- | ------------------------ | ----------------------------- |
+| Reusable algebraic theory         | Prove once for many implementations       | More module structure    | Interface lacks required laws |
+| Representation-independent proofs | Clients cannot unfold internals           | Less direct computation  | Overly abstract goals         |
+| Certified data structures         | Separate implementation from proof theory | More boilerplate         | Ascription hides needed facts |
+| Large libraries                   | Scalable namespacing                      | More complex build graph | Harder source navigation      |
+
+**Design tradeoff:** Functors are powerful when there are multiple implementations of the same abstract structure. They are overkill for one-off local code. If there is only one implementation and no reusable theory, a record or section may be clearer.
+
+**Common Pitfalls:** A functor cannot prove facts that the signature does not expose. If a proof needs associativity, identity, decidable equality, or lookup/update behavior, those must appear in the interface.
+
+### Task: Choose Between Sections, Records, Modules, and Typeclasses for Boundaries
+
+**Core keywords:** section, record, module, typeclass, canonical structure, abstraction choice.
+
+Rocq offers several ways to express reusable boundaries. They are not interchangeable.
+
+| Boundary mechanism  | Best use                             | Strength                                   | Cost                              | Professional decision rule               |
+| ------------------- | ------------------------------------ | ------------------------------------------ | --------------------------------- | ---------------------------------------- |
+| Section             | Temporary shared context             | Lightweight parameterization               | Exported parameters may be hidden | Use for local theory development         |
+| Record              | Bundle fields and laws               | Explicit and inspectable                   | Projection overhead               | Use for small/medium structures          |
+| Module signature    | Abstract interface                   | Strong namespace and representation hiding | Verbose                           | Use for large APIs/data structures       |
+| Functor             | Theory over implementation           | Reusable module-level proofs               | Heavy structure                   | Use when multiple implementations matter |
+| Typeclass           | Inferred structure                   | Ergonomic generic notation                 | Search opacity                    | Use when inference is worth the cost     |
+| Canonical structure | Library-specific inference hierarchy | Powerful mathematical reuse                | Steep learning curve              | Use when library convention demands it   |
+
+Example record-style equality interface:
+
+```coq
+Record EqbSpec (A : Type) : Type := {
+  eqb : A -> A -> bool;
+  eqb_sound : forall x y, eqb x y = true -> x = y;
+  eqb_complete : forall x y, x = y -> eqb x y = true
+}.
+```
+
+Example section-style theory:
+
+```coq
+Section EqbTheory.
+
+  Variable A : Type.
+  Variable E : EqbSpec A.
+
+  Theorem eqb_refl_from_complete :
+    forall x : A, eqb A E x x = true.
+  Proof.
+    intros x.
+    apply eqb_complete.
+    reflexivity.
+  Qed.
+
+End EqbTheory.
+```
+
+**Failure-first explanation:** The tempting mental model is “typeclasses are the professional solution for all reusable structure.” The surprising behavior is that typeclass inference can make failures harder to debug. The correct explanation is that inferred structure is a boundary with hidden search behavior. The professional rule of thumb is: start explicit; introduce inference only when repeated explicit passing becomes a real burden.
+
+**Common Pitfalls:** Overusing typeclasses can make proof failures look mysterious. Underusing abstraction can make every theorem depend on concrete implementation details.
+
+### Task: Control Proof Obligations — dependent definitions, `Program`, obligations, refinement
+
+**Core keywords:** proof obligation, dependent result, refinement, `Program`, obligation management.
+
+Some definitions generate proof obligations because their type demands evidence. This is common with dependent records, subset types, well-founded recursion, and certified functions.
+
+Example dependent result:
+
+```coq
+Definition nonzero (n : nat) : Prop :=
+  n <> 0.
+
+Definition one_nonzero : { n : nat | nonzero n }.
+Proof.
+  exists 1.
+  unfold nonzero.
+  intros H.
+  discriminate H.
+Defined.
+```
+
+The proof obligation is the second component: proof that `1 <> 0`.
+
+A more API-like example:
+
+```coq
+Definition make_nonzero (n : nat) : option { k : nat | nonzero k }.
+Proof.
+  destruct n as [| n'].
+  - exact None.
+  - refine (Some (exist _ (S n') _)).
+    unfold nonzero.
+    intros H.
+    discriminate H.
+Defined.
+```
+
+| Obligation source      | Example                        | Why obligation appears       | Boundary issue                 |                          |
+| ---------------------- | ------------------------------ | ---------------------------- | ------------------------------ | ------------------------ |
+| Subset type            | `{ x : A                       | P x }`                       | Need proof of `P x`            | Proof travels with value |
+| Dependent record       | field depends on earlier field | Later fields require proofs  | Equality/projection complexity |                          |
+| Certified function     | returns value plus spec proof  | Must prove postcondition     | More work upfront              |                          |
+| Well-founded recursion | non-structural recursion       | Must prove measure decreases | Termination boundary           |                          |
+| Module implementation  | satisfies signature law        | Must prove required theorem  | Interface compliance           |                          |
+
+**Design meaning:** Proof obligations are not bureaucratic noise. They are the point where an API’s claimed invariant must be justified.
+
+**Common Pitfalls:** A development with many generated obligations may need a simpler representation. If the proof burden overwhelms every use, the invariant may be placed too deep in the type.
+
+### Task: Use `Qed`, `Defined`, and Opacity as Boundary Tools
+
+**Core keywords:** opacity, transparency, computation, proof hiding, conversion cost.
+
+`Qed` and `Defined` are not merely two ways to end a proof. They define a boundary between proof abstraction and computation.
+
+| Ending     | Boundary meaning                 | Use when                            | Risk                             |
+| ---------- | -------------------------------- | ----------------------------------- | -------------------------------- |
+| `Qed`      | Store opaque checked proof       | Ordinary theorem                    | Cannot unfold during computation |
+| `Defined`  | Store transparent checked object | Computationally relevant proof/data | May increase conversion cost     |
+| `Admitted` | Store unproved assumption        | Temporary placeholder only          | Trust debt                       |
+| `Abort`    | Discard proof                    | Failed attempt                      | No theorem exported              |
+
+Transparent certified value:
+
+```coq
+Definition certified_zero : { n : nat | n = 0 }.
+Proof.
+  exists 0.
+  reflexivity.
+Defined.
+```
+
+Opaque theorem:
+
+```coq
+Theorem zero_eq_zero :
+  0 = 0.
+Proof.
+  reflexivity.
+Qed.
+```
+
+The first may be computationally inspected as a dependent pair. The second is a theorem whose body is normally not unfolded.
+
+| Boundary question                                | Prefer `Qed`   | Prefer `Defined` |
+| ------------------------------------------------ | -------------- | ---------------- |
+| Is the object a theorem used only for reasoning? | Yes            | Usually no       |
+| Is the proof computationally relevant?           | No             | Yes              |
+| Should clients depend on the body?               | No             | Maybe            |
+| Could unfolding cause performance problems?      | Yes, use `Qed` | Be cautious      |
+| Is this a decision procedure returning evidence? | Maybe no       | Often yes        |
+
+**Common Pitfalls:** Ending all proofs with `Defined` can create expensive and fragile computation. Ending computational witnesses with `Qed` can block expected reduction.
+
+### Task: Define Extraction Boundaries — what extraction guarantees and what it does not
+
+**Core keywords:** extraction, certified programming, OCaml, Haskell, proof erasure, runtime boundary.
+
+Extraction turns computational Rocq definitions into code in a target language such as OCaml or Haskell. The official Rocq framing treats extraction as a way to obtain executable programs from specifications, but extraction is not whole-system verification.
+
+| Extraction component                    | Inside Rocq guarantee?       | Boundary issue                          |
+| --------------------------------------- | ---------------------------- | --------------------------------------- |
+| Source function type-checks             | Yes                          | Relative to definitions and assumptions |
+| Correctness theorem proved              | Yes                          | Only the stated theorem                 |
+| Proof terms extracted as runtime checks | Usually no                   | Proofs in `Prop` are erased             |
+| Target compiler behavior                | No                           | External trust                          |
+| Target runtime behavior                 | No                           | External trust                          |
+| I/O wrapper                             | No unless modeled            | External code                           |
+| Foreign libraries                       | No unless specified/verified | External assumptions                    |
+| Performance                             | Not guaranteed by proof      | Requires profiling/target analysis      |
+
+Example schematic:
+
+```coq
+Definition verified_inc (n : nat) : nat :=
+  S n.
+
+Theorem verified_inc_correct :
+  forall n, verified_inc n = S n.
+Proof.
+  intros n.
+  reflexivity.
+Qed.
+```
+
+If `verified_inc` is extracted, the theorem supports the source-level behavior. It does not prove that every program using the extracted function handles files, memory, network, deployment, or target-language exceptions correctly.
+
+**Design tradeoff:**
+
+| Capability gained                              | Cost introduced                        | Misuse encouraged                      |                                    |
+| ---------------------------------------------- | -------------------------------------- | -------------------------------------- | ---------------------------------- |
+| Certified pure core can become executable code | Must manage target runtime assumptions | Claiming whole application is verified |                                    |
+| Proofs can be erased                           | Efficient code possible                | Expecting runtime proof checks         |                                    |
+| Extraction connects proof and implementation   | Requires careful boundary statement    | Ignoring wrapper correctness           |                                    |
+| Target-language integration                    | Practical deployment                   | External trust grows                   | Overclaiming end-to-end guarantees |
+
+**Common Pitfalls:** “Extracted from Rocq” does not mean “the deployed system is verified.” The verified boundary is the theorem over the Rocq model and extracted computational content, not every operational context.
+
+### Task: Separate Computation, Specification, and Runtime Effects
+
+**Core keywords:** computation, specification, runtime effect, pure core, wrapper boundary.
+
+A common verified-programming architecture separates:
+
+1. pure Rocq function;
+2. Rocq specification;
+3. correctness theorem;
+4. extracted pure function;
+5. external wrapper handling effects.
+
+| Layer             | Example                                   | Verification status                           |
+| ----------------- | ----------------------------------------- | --------------------------------------------- |
+| Pure model        | `parse_tokens : list token -> option ast` | Verifiable in Rocq                            |
+| Specification     | `parse_sound`                             | Verifiable in Rocq                            |
+| Extracted code    | OCaml/Haskell parser                      | Trusts extraction and target compiler/runtime |
+| Effectful wrapper | read file, tokenize, call parser          | Outside proof unless modeled                  |
+| Deployment        | CLI/server/container                      | Outside proof unless separately verified      |
+
+Schematic parser boundary:
+
+```coq
+Parameter token : Type.
+Parameter ast : Type.
+
+Parameter parse_tokens : list token -> option ast.
+Parameter well_formed : ast -> Prop.
+
+Definition parser_sound_spec : Prop :=
+  forall toks a, parse_tokens toks = Some a -> well_formed a.
+```
+
+A real development would define `token`, `ast`, `parse_tokens`, and prove `parser_sound_spec`.
+
+**Professional rule of thumb:** Keep the verified core pure and small where possible. Make the external wrapper explicit and auditable. State clearly what theorem the extracted function satisfies.
+
+**Common Pitfalls:** If tokenization happens outside Rocq but the theorem assumes already-correct tokens, the tokenizer is part of the trust boundary.
+
+### Task: Manage Compatibility Boundaries — Rocq versions, Coq-era names, Stdlib/Corelib, packages
+
+**Core keywords:** compatibility, Coq-to-Rocq migration, `Stdlib`, `Corelib`, package versions, notation drift.
+
+Rocq inherits a large Coq-era ecosystem. Version and naming boundaries matter.
+
+| Compatibility boundary         | Example                                   | Risk                   | Professional response                           |
+| ------------------------------ | ----------------------------------------- | ---------------------- | ----------------------------------------------- |
+| Coq-era import paths           | `From Coq Require Import ...` in old code | Migration friction     | Prefer current Rocq/Stdlib paths where possible |
+| Rocq 9 library split           | `Corelib`, `Stdlib`                       | Import path changes    | Know which layer is used                        |
+| Platform versus prover version | curated packages may target older prover  | Package mismatch       | Pin compatible versions                         |
+| Notation changes               | parsing/printing differences              | Proof script breakage  | Use `Locate`, scopes, qualified names           |
+| Tactic behavior changes        | automation differs by version/imports     | Fragile proofs         | Avoid over-automation                           |
+| External library conventions   | MathComp-style vs Stdlib-style            | Different proof idioms | Follow local library culture                    |
+| Build tooling                  | `dune`, `opam`, `rocq` command family     | Configuration failures | Keep project metadata explicit                  |
+
+**Design meaning:** Compatibility is a proof-maintenance boundary. A proof that depends heavily on notation, generated names, or automation may be less portable across versions and libraries.
+
+**Common Pitfalls:** Do not mix old and new import styles casually in a large development. It may work locally but complicate migration, documentation, and dependency management.
+
+### Task: Control Build and Package Boundaries — `opam`, Rocq Platform, `dune`, CI
+
+**Core keywords:** build system, package management, Rocq Platform, `opam`, `dune`, CI, dependency graph.
+
+Rocq projects are checked artifacts. Build tooling is therefore part of the proof boundary in the engineering sense: it determines which files, versions, libraries, and commands were checked.
+
+| Tooling boundary         | Role                                | Professional concern                    |
+| ------------------------ | ----------------------------------- | --------------------------------------- |
+| `opam` switch            | Package/version environment         | Reproducible dependencies               |
+| Rocq Platform            | Curated prover/library distribution | Stable setup, possible version lag      |
+| `dune`                   | Build orchestration                 | Correct file order, dependency tracking |
+| `rocq` command family    | Prover tooling interface            | Modern command usage                    |
+| CI                       | Recheck proofs automatically        | Prevent stale proofs                    |
+| Lockfiles/pins           | Freeze versions                     | Avoid accidental dependency drift       |
+| Documentation generation | Surface API/theorems                | Keep public boundary readable           |
+
+A professional Rocq project should answer:
+
+| Question                                          | Why it matters                                            |
+| ------------------------------------------------- | --------------------------------------------------------- |
+| Which Rocq version is used?                       | Proof scripts and imports may be version-sensitive        |
+| Which libraries are required?                     | Theorems, notation, tactics, and instances depend on them |
+| Are admissions allowed?                           | Determines proof completeness                             |
+| Are axioms audited?                               | Determines trust base                                     |
+| Does CI run full proof checking?                  | Prevents unnoticed breakage                               |
+| Are extracted artifacts regenerated consistently? | Avoids stale certified code                               |
+| Are generated files distinguished from source?    | Prevents build ambiguity                                  |
+
+**Common Pitfalls:** A proof that checks only in one developer’s local environment is not a stable artifact. Version pinning and CI are part of professional proof engineering.
+
+### Task: Define Compatibility Boundaries for Public Libraries
+
+**Core keywords:** public library, API stability, theorem names, notation, deprecation, migration.
+
+A Rocq library’s public API includes definitions, theorem names, notation, modules, instances, hints, and sometimes proof automation conventions.
+
+| Public artifact      | Compatibility risk             | Better practice                         |
+| -------------------- | ------------------------------ | --------------------------------------- |
+| Definition name/type | Clients depend directly        | Avoid unnecessary breaking changes      |
+| Theorem statement    | Client proofs rewrite/apply it | Preserve or provide migration lemma     |
+| Notation             | Affects parsing and printing   | Scope carefully                         |
+| Hint database        | Affects automation             | Keep scoped and documented              |
+| Typeclass instance   | Affects inference              | Avoid overlapping surprises             |
+| Module path          | Import stability               | Provide compatibility aliases if needed |
+| Transparency         | Affects conversion             | Do not change casually                  |
+| Deprecated theorem   | Legacy client use              | Mark and provide replacement            |
+
+**Design meaning:** In Rocq, changing a theorem statement can be as breaking as changing a function type. Client proofs are programs depending on theorem APIs.
+
+**Common Pitfalls:** Removing a lemma because it is “obvious” can break many clients. Obvious facts are often important rewrite and proof-search tools.
+
+### Task: Boundary-Review for Axioms and Assumptions
+
+**Core keywords:** axiom audit, assumption tracking, constructive/classical boundary, consistency risk.
+
+Axiom review is a professional necessity. Not all assumptions are equally dangerous, but all should be visible.
+
+| Assumption type           | Example               | Risk level                    | Review question                                 |
+| ------------------------- | --------------------- | ----------------------------- | ----------------------------------------------- |
+| Abstract parameter        | `Parameter A : Type`  | Low to medium                 | Is this an interface or an unfilled definition? |
+| Algebraic law hypothesis  | associativity         | Medium                        | Is it stated as part of structure?              |
+| Classical principle       | excluded middle       | Medium/high depending on goal | Is classical reasoning intended?                |
+| Functional extensionality | equality of functions | Common but assumption-bearing | Is it needed and documented?                    |
+| Proof irrelevance         | equality of proofs    | Context-dependent             | Does development rely on it?                    |
+| Untrusted domain axiom    | external fact         | High                          | Is it justified externally?                     |
+| Inconsistent axiom        | `False` or equivalent | Catastrophic                  | Does it collapse the logic?                     |
+| `Admitted` theorem        | placeholder           | High until resolved           | Is it tracked and eliminated?                   |
+
+Example of making assumptions explicit through a section:
+
+```coq
+Section ClassicalLocal.
+
+  Variable excluded_middle_local :
+    forall P : Prop, P \/ ~ P.
+
+  Theorem double_negation_elim_local :
+    forall P : Prop, ~~ P -> P.
+  Proof.
+    intros P HNNP.
+    destruct (excluded_middle_local P) as [HP | HNP].
+    - exact HP.
+    - exfalso. apply HNNP. exact HNP.
+  Qed.
+
+End ClassicalLocal.
+```
+
+This style localizes the classical assumption instead of importing it invisibly into every theorem.
+
+**Common Pitfalls:** A theorem that appears constructive may depend on section hypotheses or imported axioms. Use commands that inspect assumptions when appropriate, and review theorem types after sections close.
+
+### Task: Boundary-Review for Automation and Hints
+
+**Core keywords:** hints, automation, proof search, scoped databases, maintainability.
+
+Automation boundaries are subtle because they do not usually affect theorem statements, but they affect proof scripts.
+
+| Automation boundary           | Risk                                | Professional response                       |
+| ----------------------------- | ----------------------------------- | ------------------------------------------- |
+| Global hints                  | Proofs depend on hidden facts       | Use scoped databases                        |
+| Broad `auto`                  | Hard to know proof source           | Apply key lemmas explicitly                 |
+| `eauto` search depth          | Slow or unpredictable               | Bound depth/scope                           |
+| Rewrite hints                 | Rewrite loops or over-normalization | Scope and test carefully                    |
+| Typeclass search              | Ambiguous instances                 | Avoid overlapping instances unless intended |
+| Custom tactics                | Hidden proof strategy               | Name clearly and keep local if possible     |
+| Imported automation libraries | Proof behavior changes              | Document imports                            |
+
+Example of a safer automation style:
+
+```coq
+Hint Resolve app_nil_r : list_core.
+
+Theorem app_nil_r_auto_example :
+  forall (A : Type) (xs : list A), xs ++ [] = xs.
+Proof.
+  intros A xs.
+  induction xs as [| x xs IHxs].
+  - reflexivity.
+  - simpl.
+    rewrite IHxs.
+    reflexivity.
+Qed.
+```
+
+Even though a hint is declared, the central induction is explicit. The proof remains readable.
+
+**Common Pitfalls:** If a theorem’s proof is just `auto with some_db`, review whether the database and theorem are stable enough to justify that opacity.
+
+### Task: Boundary-Review for Extraction and Certified Programs
+
+**Core keywords:** extraction audit, certified core, wrapper, external runtime, specification adequacy.
+
+Before claiming certified programming success, inspect the boundary.
+
+| Review item        | Question                                     | Failure mode                                  |
+| ------------------ | -------------------------------------------- | --------------------------------------------- |
+| Implementation     | What function was verified?                  | Verified helper, not actual exported function |
+| Specification      | What property was proved?                    | Weak or wrong spec                            |
+| Assumptions        | Which axioms/parameters were used?           | Hidden trust dependency                       |
+| Extraction target  | OCaml/Haskell/etc.?                          | Target mismatch                               |
+| Proof erasure      | Are proofs needed at runtime?                | Runtime check expected but erased             |
+| Wrapper            | Who handles I/O/errors?                      | Unverified wrapper violates assumptions       |
+| Data encoding      | Are extracted types represented as expected? | Performance/semantic mismatch                 |
+| External libraries | Are they verified or trusted?                | Unmodeled behavior                            |
+| Deployment         | Is environment modeled?                      | End-to-end overclaim                          |
+
+**Professional rule of thumb:** State certified claims in this form:
+
+> The Rocq function `f` satisfies theorem `T` under assumptions `A`; the extracted code corresponds to the computational content of `f`; external wrapper/runtime behavior remains outside this theorem unless separately modeled.
+
+This wording prevents overclaiming.
+
+**Common Pitfalls:** A verified parser over token lists does not verify the lexer unless the lexer is also modeled and proved correct.
+
+### Task: Boundary-Review for Effects and Resources
+
+**Core keywords:** effects, resources, state model, trace model, wrapper, separation.
+
+Effects and resources should be reviewed as model boundaries.
+
+| Effect/resource | Rocq representation                          | Review question                               |
+| --------------- | -------------------------------------------- | --------------------------------------------- |
+| Mutable state   | state transition function/relation           | Does the model match intended state behavior? |
+| I/O             | event trace or external wrapper              | Is I/O inside or outside proof?               |
+| Randomness      | nondeterministic relation/distribution model | What property is proved over randomness?      |
+| Concurrency     | interleaving/trace semantics                 | Are schedules modeled?                        |
+| Memory          | heap model/separation logic/library          | What memory properties are formalized?        |
+| File handles    | abstract resource state                      | Are open/close protocols modeled?             |
+| Network         | trace/protocol model                         | Are failures/adversaries modeled?             |
+| Target runtime  | external assumption                          | Is runtime behavior part of theorem?          |
+
+**Design meaning:** Rocq can verify effectful systems only through models or verified effect systems. If the effect is outside the model, it is outside the proof guarantee.
+
+**Common Pitfalls:** A pure theorem about a function called by a server does not verify the server’s concurrency, error handling, or I/O behavior.
+
+### Task: Handle Compatibility with Classical Mathematical Libraries
+
+**Core keywords:** classical library, constructive library, assumptions, theorem reuse.
+
+Some libraries or developments assume classical principles; others preserve constructive content. Mixing them is possible, but assumption boundaries should be explicit.
+
+| Library style               | Typical behavior                 | Benefit                    | Boundary concern          |
+| --------------------------- | -------------------------------- | -------------------------- | ------------------------- |
+| Constructive core style     | Avoids arbitrary excluded middle | Computational content      | More explicit witnesses   |
+| Classical mathematics style | Uses classical principles        | Easier conventional math   | Less constructive content |
+| Boolean reflection style    | Bridges `bool` and `Prop`        | Efficient proof automation | Requires library idiom    |
+| Algebraic hierarchy style   | Structured operations/laws       | Powerful reuse             | Inference conventions     |
+| Automation-heavy style      | Solves routine goals             | Productivity               | Proof opacity             |
+
+**Professional rule of thumb:** Follow the assumptions and idioms of the library being used. Do not silently mix constructive and classical styles without knowing which theorems depend on which principles.
+
+**Common Pitfalls:** Importing a classical theorem to solve a small proof may make a downstream certified-programming theorem nonconstructive in an unintended way.
+
+### Task: Design Compatibility Boundaries for Notation and Scopes
+
+**Core keywords:** notation, scope, parsing, printing, library readability.
+
+Notation improves readability but creates compatibility and source-reading risks.
+
+| Notation boundary              | Risk                             | Professional response          |
+| ------------------------------ | -------------------------------- | ------------------------------ |
+| Same symbol in multiple scopes | Misparsed term                   | Use `Locate`, explicit scopes  |
+| Global notation                | Downstream conflicts             | Use local/scoped notation      |
+| Domain-specific notation       | Insider readability only         | Document and reserve carefully |
+| Infix precedence               | Unexpected parse tree            | Check parsed term              |
+| Imported notation              | Code works only with import      | Keep imports near use          |
+| Printing changes               | Proof scripts visually confusing | Use `Set Printing` diagnostics |
+
+Example:
+
+```coq
+Locate "+".
+Locate "::".
+```
+
+These commands reveal which notation is active and where it comes from.
+
+**Common Pitfalls:** If a proof depends on a notation-heavy expression, use `Check` or `Print` to verify the underlying term. Do not debug type theory when the problem is parsing.
+
+### Task: Boundary Design for Standard-Library Interaction
+
+**Core keywords:** Stdlib, existing lemmas, search, rewrite lemmas, local theory.
+
+Rocq’s standard library provides many definitions and facts. A development should avoid re-proving basic facts unless doing so for pedagogy.
+
+| Boundary task         | Tool/construct                   | Use                                 |
+| --------------------- | -------------------------------- | ----------------------------------- |
+| Find existing theorem | `Search`                         | Avoid duplicate lemmas              |
+| Inspect theorem       | `Check`, `About`                 | Verify assumptions and type         |
+| Locate notation       | `Locate`                         | Understand parsing                  |
+| Use qualified theorem | `Nat.add_comm`, `app_assoc`      | Avoid ambiguity                     |
+| Control imports       | `From Stdlib Require Import ...` | Keep dependencies explicit          |
+| Wrap library theorem  | local lemma                      | Provide project-specific name/shape |
+
+Example:
+
+```coq
+Search (_ ++ [] = _).
+Check app_nil_r.
+Check app_assoc.
+Search (_ + 0 = _).
+Check Nat.add_0_r.
+```
+
+**Design meaning:** The standard library is a boundary between project-specific proof and reusable theory. Good projects use library facts explicitly and wrap them when a local API needs a stable theorem shape.
+
+**Common Pitfalls:** Re-proving a standard theorem with a different name can fragment the proof library. But wrapping a theorem under a project-specific name can be useful when it expresses an API contract.
+
+### Professional Boundary Review Checklist
+
+**Core keywords:** review checklist, trust, modules, errors, extraction, assumptions.
+
+| Boundary area   | Review question                                   | Good sign                                     | Warning sign                             |
+| --------------- | ------------------------------------------------- | --------------------------------------------- | ---------------------------------------- |
+| Imports         | Are dependencies explicit and necessary?          | Minimal, clear imports                        | Broad imports used for hidden automation |
+| Modules         | Does the module expose behavior lemmas?           | Operations plus laws                          | Clients must unfold internals            |
+| Sections        | Are exported theorem types checked?               | `Check` after `End`                           | Surprise parameters/hypotheses           |
+| Locality        | Are notation/hints scoped?                        | `Local` where appropriate                     | Global pollution                         |
+| Assumptions     | Are axioms/admissions tracked?                    | Explicit assumption list                      | Hidden `Admitted`                        |
+| Classical logic | Is classical reasoning intentional?               | Localized/import documented                   | Silent global import                     |
+| Failure         | Is failure represented as data where appropriate? | `option`/`result` with specs                  | Logical `False` used for normal failure  |
+| Validators      | Are soundness/completeness proven?                | Both directions when needed                   | Validator trusted without theorem        |
+| Opacity         | Are `Qed`/`Defined` choices intentional?          | Theorems opaque, data transparent when needed | Everything `Defined`                     |
+| Extraction      | Is proof boundary stated?                         | Clear verified core and wrapper boundary      | Whole-system overclaim                   |
+| Effects         | Are effects modeled or isolated?                  | Trace/state model or explicit wrapper         | Unmodeled I/O claimed verified           |
+| Build           | Are versions pinned and checked in CI?            | Reproducible environment                      | Local-only proof success                 |
+| Automation      | Is proof search bounded?                          | Explicit key lemmas                           | Central proof hidden in `auto`           |
+| Compatibility   | Are public theorem names stable?                  | Migration lemmas when needed                  | Breaking obvious lemmas                  |
+
+### Boundary Task Decision Table — final PART 5 reference
+
+**Core keywords:** boundary task, construct, professional use, pitfall.
+
+| Boundary task                     | Primary construct/API           | Professional use            | Failure mode                   |
+| --------------------------------- | ------------------------------- | --------------------------- | ------------------------------ |
+| Hide representation               | module signature, opaque module | Abstract data structure     | Interface too weak             |
+| Reuse theory over implementations | functor                         | Generic proofs              | Missing laws in signature      |
+| Bundle operations and laws        | record/typeclass                | Algebraic structures        | Projection or inference burden |
+| Share assumptions locally         | section/context                 | Parametric development      | Hidden exported assumptions    |
+| State public behavior             | theorem/lemma                   | Stable client proof         | Weak theorem                   |
+| Represent recoverable failure     | `option`, `result`              | Total computational API     | Failure underspecified         |
+| Represent impossible state        | `False`, contradiction theorem  | Logical impossibility       | Misused for normal failure     |
+| Track trust debt                  | axiom/admission audit           | Foundation review           | Silent assumptions             |
+| Control transparency              | `Qed`, `Defined`                | Computation/proof boundary  | Wrong opacity                  |
+| Validate external input           | parser/validator + theorem      | Certified boundary          | Validator trusted informally   |
+| Model effects                     | state/trace/relation            | Verified semantics          | External effects overclaimed   |
+| Extract certified code            | extraction workflow             | Executable verified core    | Runtime/wrapper ignored        |
+| Maintain compatibility            | version pins, stable APIs       | Long-lived library          | Fragile notation/automation    |
+| Control automation                | scoped hints/custom tactics     | Proof productivity          | Opaque brittle scripts         |
+| Build reliably                    | `opam`, Platform, `dune`, CI    | Reproducible proof checking | Environment drift              |
+
+### Common Pitfalls and Anti-Patterns in Boundary Design
+
+**Core keywords:** boundary anti-patterns, trust debt, abstraction leak, extraction overclaim.
+
+| Item                                        | Category                | Why it fails                       | Better practice                          |
+| ------------------------------------------- | ----------------------- | ---------------------------------- | ---------------------------------------- |
+| Exporting functions without theorems        | API anti-pattern        | Clients must unfold implementation | Export behavior lemmas                   |
+| Using `Axiom` for convenience               | Trust anti-pattern      | May invalidate development         | Prove or isolate assumption              |
+| Leaving `Admitted` in final code            | Trust debt              | Theorem is unproved                | Track and eliminate                      |
+| Global notation for local concept           | Scope anti-pattern      | Downstream parsing conflicts       | Use local/scoped notation                |
+| Global hints everywhere                     | Automation anti-pattern | Hidden proof dependencies          | Scoped hint databases                    |
+| Claiming extracted system is fully verified | Boundary overclaim      | Runtime/wrapper unverified         | State verified core and assumptions      |
+| Treating parser failure as contradiction    | Modeling error          | Failure is normal data             | Use `option`/`result`                    |
+| Overusing dependent records at boundaries   | Over-dependent design   | Every client carries proof burden  | Use validators/specs when enough         |
+| Hiding classical assumptions                | Logic-boundary mistake  | Theorem appears constructive       | Localize/document assumptions            |
+| Changing public theorem statements casually | Compatibility break     | Client proofs depend on them       | Provide migration lemmas                 |
+| Relying on generated names in public proofs | Maintenance pitfall     | Minor changes break scripts        | Name cases/hypotheses explicitly         |
+| Broad imports in library files              | Dependency smell        | Hard to audit source of facts      | Use explicit imports and qualified names |
+
+### PART 5 Summary — boundaries as proof obligations and trust management
+
+PART 5 established that Rocq boundary design is a combination of software architecture, proof architecture, and trust management.
+
+| Boundary dimension     | Expert-level question                                                          |
+| ---------------------- | ------------------------------------------------------------------------------ |
+| Module boundary        | What operations and laws are exported?                                         |
+| Section boundary       | Which variables and hypotheses become parameters?                              |
+| Import boundary        | Which names, notation, hints, instances, and assumptions enter scope?          |
+| API boundary           | Can clients reason through public theorems instead of private bodies?          |
+| Failure boundary       | Is ordinary failure represented as data, not contradiction?                    |
+| Validation boundary    | Is raw input connected to certified internal data by theorems?                 |
+| Assumption boundary    | Which axioms, parameters, admissions, and classical principles are used?       |
+| Opacity boundary       | Should this object compute, or should its proof body remain hidden?            |
+| Effect boundary        | Is the external effect modeled, assumed, or outside the theorem?               |
+| Extraction boundary    | What exactly was verified before code entered the target runtime?              |
+| Compatibility boundary | Will imports, notation, theorem names, and automation survive version changes? |
+| Build boundary         | Can the development be rechecked reproducibly?                                 |
+
+The main professional rule is: **make every boundary explicit enough that a reviewer can tell what is proved, what is assumed, what is exported, what is hidden, what computes, and what lies outside the proof guarantee.**
+
+## PART 6 — Standard Library and Core Ecosystem Reference by Task Pattern, Part 1 of 2
+
+PART 6 is a task-oriented reference to Rocq’s standard library and core ecosystem. The goal is not to list every module, but to explain how a professional Rocq user finds definitions, imports libraries, uses notations and scopes, chooses common library abstractions, and avoids re-proving standard facts.
+
+For Rocq 9.x, library organization must be treated carefully. The Coq-era standard library was split into `Corelib` and `Stdlib`: `Corelib` is the extended prelude needed for Rocq tactics and core support, while `Stdlib` is the broader standard library package; Rocq’s documentation also emphasizes explicit loading with commands such as `From Stdlib Require Import ...`. ([Rocq][1]) The official release page for Rocq Prover `9.2.0` links separately to Reference Manual, Corelib theories, Stdlib Manual, and Stdlib Theories, which reflects this layered organization. ([Rocq][2])
+
+### Ecosystem Orientation — `Corelib`, `Stdlib`, Platform, external packages
+
+**Core keywords:** `Corelib`, `Stdlib`, Rocq Platform, external libraries, packages, plugins, `opam`.
+
+Rocq’s ecosystem has several layers. Confusing these layers causes import errors, portability problems, and proof-maintenance issues.
+
+| Layer               | Role                                            | Typical use                                                       | Professional caveat                                                 |
+| ------------------- | ----------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Rocq kernel/prover  | Checks terms and proofs                         | Core trust mechanism                                              | Not the same as library automation                                  |
+| `Corelib`           | Extended prelude and core support               | Tactics, primitive bindings, minimal core infrastructure          | Usually not where ordinary list/arithmetic library work begins      |
+| `Stdlib`            | General-purpose standard library                | `Nat`, `List`, `Bool`, arithmetic, relations, sorting, logic      | Must usually be imported explicitly                                 |
+| Rocq Platform       | Curated prover + libraries/plugins distribution | Reliable installation and coherent package set                    | May target a platform baseline rather than newest standalone prover |
+| External packages   | Community and domain libraries                  | Math, PL theory, separation logic, automation, extraction support | Version and convention compatibility matter                         |
+| Build/package tools | `opam`, `dune`, `rocq` command family           | Dependency management and checking                                | Reproducibility is part of proof engineering                        |
+
+The Rocq Platform is officially described as combining the core Rocq Prover with a coherent set of packages, plugins, and libraries, and it is based on `opam`; this makes it a practical ecosystem baseline rather than merely an installer. ([Rocq][3]) The official installation page also recommends the Platform as an easy way to install Rocq with a consistent set of packages on major operating systems. ([Rocq][4])
+
+**Common Pitfalls:** Do not assume that a theorem exists in the prelude merely because it is basic. Many definitions and theorems require explicit `Stdlib` imports. Conversely, do not import large libraries casually; imports can add notations, hint databases, tactics, and instances.
+
+### Task: Import Standard Library Modules Deliberately — `From Stdlib Require Import`
+
+**Core keywords:** imports, `Require`, `Import`, `Stdlib`, qualified names, dependency hygiene.
+
+The standard import pattern in modern Rocq code is explicit about the library root:
+
+```coq
+From Stdlib Require Import List Arith Lia.
+Import ListNotations.
+```
+
+This command loads modules from `Stdlib`, while `Import ListNotations` brings list notation such as `[]`, `::`, and `[x; y]` into scope.
+
+| Task                               | Command pattern                 | Example                            | Use when                       | Common pitfall                              |
+| ---------------------------------- | ------------------------------- | ---------------------------------- | ------------------------------ | ------------------------------------------- |
+| Load standard definitions/theorems | `From Stdlib Require Import M.` | `From Stdlib Require Import List.` | Need module contents           | Assuming names are available without import |
+| Import notation                    | `Import M.`                     | `Import ListNotations.`            | Need notation syntax           | Forgetting notation import                  |
+| Use qualified names                | `Module.name`                   | `Nat.add_comm`                     | Avoid ambiguity                | Verbose but clearer                         |
+| Locate notation source             | `Locate`                        | `Locate "::".`                     | Debug parsing/printing         | Misreading overloaded notation              |
+| Inspect theorem                    | `Check`, `About`                | `Check app_assoc.`                 | Verify statement before use    | Applying theorem with wrong orientation     |
+| Search facts                       | `Search`                        | `Search (_ ++ [] = _).`            | Avoid re-proving library facts | Searching by vague English concept          |
+
+Example:
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+
+Check map.
+Check app.
+Check app_assoc.
+Check app_nil_r.
+Search (_ ++ [] = _).
+```
+
+**Design meaning:** Imports are not passive text inclusion. They change the environment in which terms are elaborated and proofs are searched. In Rocq, import discipline is part of proof discipline.
+
+**Common Pitfalls:** A proof that works because of a broad import may fail when the file is reorganized. Prefer explicit imports, qualified names for ambiguous constants, and local imports for notation-heavy regions.
+
+### Task: Navigate Library Content — `Check`, `Print`, `Search`, `Locate`, `About`
+
+**Core keywords:** library navigation, query commands, theorem search, notation search, source reading.
+
+Professional Rocq development is interactive. Query commands are routine tools, not beginner conveniences.
+
+| Need                    | Command            | Example                | What it tells you              | Failure prevented                  |
+| ----------------------- | ------------------ | ---------------------- | ------------------------------ | ---------------------------------- |
+| Know a term’s type      | `Check`            | `Check Nat.add_comm.`  | Exact theorem/function type    | Applying wrong theorem             |
+| Inspect definition      | `Print`            | `Print nat.`           | Constructors/body/transparency | Misreading notation                |
+| Search theorem database | `Search`           | `Search (_ + 0 = _).`  | Existing lemmas by pattern     | Re-proving facts                   |
+| Locate notation         | `Locate`           | `Locate "+".`          | Notation source/scope          | Scope confusion                    |
+| Inspect metadata        | `About`            | `About app_assoc.`     | Name, type, opacity, module    | Hidden assumptions/arguments       |
+| Compute example         | `Compute` / `Eval` | `Compute map S [0;1].` | Reduction behavior             | Confusing computation with theorem |
+
+Example workflow:
+
+```coq
+From Stdlib Require Import List Arith.
+Import ListNotations.
+
+Check Nat.add_0_r.
+Check Nat.add_comm.
+Search (_ + 0 = _).
+Search (_ ++ _ = _ ++ _).
+Locate "++".
+```
+
+**Professional rule:** Before proving a basic property about `nat`, `list`, `bool`, or `option`, search the library. Rocq’s standard library already contains many routine lemmas.
+
+**Failure-first explanation:** The tempting mental model is “if I know the mathematical fact, I should prove it.” In a mature proof development, re-proving standard facts fragments the theorem base. The correct professional move is to search, inspect the exact statement, and reuse or wrap the theorem if its shape needs a project-specific name.
+
+**Common Pitfalls:** `Search` works best with theorem shapes and symbols, not prose. Search for `(_ ++ [] = _)`, not “append identity”.
+
+### Task: Use Natural Numbers and Arithmetic Libraries — `nat`, `Nat`, `Arith`, `lia`
+
+**Core keywords:** `nat`, Peano arithmetic, `Nat`, `Arith`, `lia`, linear arithmetic.
+
+Natural numbers in Rocq are mathematical Peano naturals. This is excellent for induction and proofs, but different from machine integers. Standard arithmetic theorems and tactics are essential.
+
+| Task                             | Library/tool                  | Example        | Use when                         | Pitfall                           |
+| -------------------------------- | ----------------------------- | -------------- | -------------------------------- | --------------------------------- |
+| Basic natural-number definitions | `nat`, constructors `0`, `S`  | `S (S 0)`      | Structural arithmetic            | Assuming machine integer behavior |
+| Common arithmetic lemmas         | `Nat.*`, `Arith`              | `Nat.add_comm` | Rewriting arithmetic facts       | Proving standard facts repeatedly |
+| Linear arithmetic solving        | `lia`                         | `lia.`         | Linear arithmetic over `nat`/`Z` | Expecting nonlinear algebra       |
+| Computation by reduction         | `simpl`, `cbn`, `reflexivity` | `0 + n = n`    | Definitional equalities          | Expecting all math to reduce      |
+| Inductive arithmetic proofs      | `induction n`                 | `n + 0 = n`    | Recursive variable-headed facts  | Inducting on wrong variable       |
+
+Example:
+
+```coq
+From Stdlib Require Import Arith Lia.
+
+Theorem add_zero_right_std :
+  forall n : nat, n + 0 = n.
+Proof.
+  intros n.
+  apply Nat.add_0_r.
+Qed.
+```
+
+Using `lia`:
+
+```coq
+From Stdlib Require Import Lia.
+
+Theorem arithmetic_side_condition :
+  forall n m : nat, n <= n + m.
+Proof.
+  intros n m.
+  lia.
+Qed.
+```
+
+`lia` is appropriate for linear arithmetic obligations. It is not a replacement for structural list/tree induction.
+
+| Arithmetic goal          | Good approach                    | Bad approach                                |
+| ------------------------ | -------------------------------- | ------------------------------------------- |
+| `n + 0 = n`              | Use `Nat.add_0_r` or induction   | Expect `reflexivity` to solve arbitrary `n` |
+| `n <= n + m`             | `lia`                            | Manual Peano induction unless pedagogical   |
+| `length xs >= 0`         | `lia` after simplification       | Inducting unnecessarily                     |
+| `length (xs ++ ys)`      | List induction or standard lemma | `lia` alone                                 |
+| Multiplicative/ring goal | ring-style tactics if available  | `lia` for nonlinear algebra                 |
+
+**Common Pitfalls:** `lia` solves arithmetic, not data-structure reasoning. If a goal contains `length (xs ++ ys)`, first use a list lemma such as `app_length`, then arithmetic automation may help.
+
+### Task: Use Lists and Sequence Lemmas — `List`, `ListNotations`, append, map, filter
+
+**Core keywords:** `List`, `list`, `[]`, `::`, `++`, `map`, `filter`, `length`.
+
+Lists are one of Rocq’s most important standard data structures. They are also the first major proof-engineering training ground.
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+```
+
+| Task           | Construct/API            | Typical theorem                      | Strategy                   | Common pitfall                            |
+| -------------- | ------------------------ | ------------------------------------ | -------------------------- | ----------------------------------------- |
+| Build list     | `[]`, `x :: xs`, `[x;y]` | constructor cases                    | `destruct`/`induction`     | Forgetting `ListNotations`                |
+| Append         | `xs ++ ys` / `app`       | associativity, identity              | induction on first list    | Inducting on second list                  |
+| Measure length | `length xs`              | append/map length                    | induction plus arithmetic  | Expecting `lia` to know list structure    |
+| Transform      | `map f xs`               | map composition, length              | induction on list          | Function-equality confusion               |
+| Filter         | `filter p xs`            | soundness/completeness wrt predicate | induction + boolean bridge | Confusing `A -> bool` and `A -> Prop`     |
+| Reverse        | `rev xs`                 | reverse involution                   | helper lemmas              | Trying direct proof without strengthening |
+| Membership     | `In x xs`                | membership after append/map/filter   | induction and destruct     | Ignoring proposition/boolean distinction  |
+
+Example using standard list lemmas:
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+
+Theorem append_identity_using_stdlib :
+  forall (A : Type) (xs : list A),
+    xs ++ [] = xs.
+Proof.
+  intros A xs.
+  apply app_nil_r.
+Qed.
+```
+
+Map length:
+
+```coq
+Theorem map_length_using_stdlib :
+  forall (A B : Type) (f : A -> B) (xs : list A),
+    length (map f xs) = length xs.
+Proof.
+  intros A B f xs.
+  apply map_length.
+Qed.
+```
+
+**Design meaning:** The list library embodies many recurring induction patterns. Learning its lemmas is not optional; it is a way to avoid fragile custom proofs.
+
+**Common Pitfalls:** Standard theorem names may not match a learner’s preferred names. Use `Search` by theorem shape. For example:
+
+```coq
+Search (length (map _ _) = length _).
+Search (_ ++ [] = _).
+Search ((_ ++ _) ++ _ = _ ++ (_ ++ _)).
+```
+
+### Task: Use Booleans Correctly — `bool`, boolean operations, reflection boundaries
+
+**Core keywords:** `bool`, `true`, `false`, `andb`, `orb`, `negb`, boolean equality, reflection.
+
+Booleans are computational data. They are used for executable decisions, validators, and branch conditions. They are not the same as propositions.
+
+| Task                | Boolean construct       | Prop-level counterpart            | Bridge need                              |          |                               |
+| ------------------- | ----------------------- | --------------------------------- | ---------------------------------------- | -------- | ----------------------------- |
+| Branch computation  | `if b then x else y`    | case distinction over proposition | Need decidability if proposition-driven  |          |                               |
+| Negate boolean      | `negb b`                | `~ P`                             | Need theorem relating `b = true` and `P` |          |                               |
+| Boolean conjunction | `andb b c` / `b && c`   | `P /\ Q`                          | Soundness/completeness lemmas            |          |                               |
+| Boolean disjunction | `orb b c` / `b          |                                   | c`                                       | `P \/ Q` | Soundness/completeness lemmas |
+| Equality test       | `Nat.eqb`, custom `eqb` | `x = y`                           | Equality correctness lemma               |          |                               |
+| Validator           | `A -> bool`             | `A -> Prop`                       | Specification theorem                    |          |                               |
+
+Example:
+
+```coq
+Theorem negb_involutive_std :
+  forall b : bool, negb (negb b) = b.
+Proof.
+  intros b.
+  destruct b; reflexivity.
+Qed.
+```
+
+Boolean-to-proposition bridge for a custom predicate:
+
+```coq
+Definition is_true_bool (b : bool) : Prop :=
+  b = true.
+```
+
+A more meaningful bridge usually relates a boolean function to a domain proposition:
+
+```coq
+Definition is_zero (n : nat) : bool :=
+  match n with
+  | 0 => true
+  | S _ => false
+  end.
+
+Definition IsZero (n : nat) : Prop :=
+  n = 0.
+```
+
+```coq
+Theorem is_zero_sound :
+  forall n, is_zero n = true -> IsZero n.
+Proof.
+  intros n H.
+  destruct n as [| n'].
+  - reflexivity.
+  - simpl in H. discriminate H.
+Qed.
+```
+
+**Common Pitfalls:** A boolean theorem such as `p x = true` is not syntactically the same as a proposition `P x`. Use bridge lemmas deliberately. In proof-heavy libraries, boolean reflection styles may provide more systematic bridges, but those styles require learning the local ecosystem conventions.
+
+### Task: Use Options and Partial Computation — `option`, `Some`, `None`
+
+**Core keywords:** `option`, `Some`, `None`, lookup, partiality, safe failure.
+
+`option A` is the standard lightweight representation for a computation that may not return an `A`.
+
+| Task                        | API pattern                  | Example                 | Theorem shape                    |
+| --------------------------- | ---------------------------- | ----------------------- | -------------------------------- |
+| Safe lookup                 | `K -> map -> option V`       | `lookup k m`            | `lookup_update_eq`               |
+| Safe indexing               | `nat -> list A -> option A`  | `nth_error xs n`        | success/failure characterization |
+| Parser maybe succeeds       | `tokens -> option ast`       | simple parser           | soundness for `Some ast`         |
+| Extract default             | `option A -> A` with default | `match o with ...`      | default behavior theorem         |
+| Chain optional computations | match on option              | parser/checker pipeline | success theorem by cases         |
+
+Example:
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+
+Definition head_opt {A : Type} (xs : list A) : option A :=
+  match xs with
+  | [] => None
+  | x :: _ => Some x
+  end.
+```
+
+Specification theorem:
+
+```coq
+Theorem head_opt_some :
+  forall (A : Type) (x : A) (xs : list A),
+    head_opt (x :: xs) = Some x.
+Proof.
+  intros A x xs.
+  reflexivity.
+Qed.
+```
+
+Failure theorem:
+
+```coq
+Theorem head_opt_none :
+  forall A : Type,
+    head_opt (@nil A) = None.
+Proof.
+  intros A.
+  reflexivity.
+Qed.
+```
+
+**Design tradeoff:**
+
+| Representation     | Benefit                    | Cost                        |
+| ------------------ | -------------------------- | --------------------------- |
+| `option A`         | Simple, total, extractable | No failure reason           |
+| `result E A`       | Explains failure           | More constructors and specs |
+| Precondition proof | Invalid call impossible    | Harder to call              |
+| Relation           | Flexible semantic failure  | Less directly executable    |
+
+**Common Pitfalls:** If failure reasons matter to clients, `option` is too weak. Use a custom result type and prove error-behavior theorems.
+
+### Task: Use Equality Libraries and Rewriting — equality, `rewrite`, setoid rewriting
+
+**Core keywords:** equality, `eq`, `rewrite`, `reflexivity`, `symmetry`, `transitivity`, setoid rewriting.
+
+Equality is central to Rocq proof development. Standard libraries provide many equality and rewriting tools, but the basic mental model remains definitional equality versus propositional equality.
+
+| Task                        | Tool/tactic                 | Example                             | Use when                         | Pitfall                      |
+| --------------------------- | --------------------------- | ----------------------------------- | -------------------------------- | ---------------------------- |
+| Close definitional equality | `reflexivity`               | `0 + n = n` after reduction         | Both sides convertible           | Expecting algebraic facts    |
+| Rewrite by equality         | `rewrite H`                 | use `H : x = y`                     | Propositional equality available | Wrong direction              |
+| Reverse equality            | `symmetry` / `rewrite <- H` | `y = x` from `x = y`                | Goal orientation wrong           | Reversing too much           |
+| Chain equality              | `transitivity`              | intermediate term                   | Calculation proof                | Oververbose for simple goals |
+| Use congruence              | `congruence`                | constructor/equality contradictions | Routine equality reasoning       | Hiding proof idea            |
+| Generalized rewriting       | `setoid_rewrite`            | equivalence relations               | Advanced algebraic contexts      | Overcomplication             |
+
+Example:
+
+```coq
+Theorem equality_chain :
+  forall a b c : nat,
+    a = b -> b = c -> a = c.
+Proof.
+  intros a b c Hab Hbc.
+  rewrite Hab.
+  exact Hbc.
+Qed.
+```
+
+Alternative:
+
+```coq
+Theorem equality_chain_trans :
+  forall a b c : nat,
+    a = b -> b = c -> a = c.
+Proof.
+  intros a b c Hab Hbc.
+  transitivity b.
+  - exact Hab.
+  - exact Hbc.
+Qed.
+```
+
+**Common Pitfalls:** Rewriting is typed replacement, not textual substitution. If `rewrite H` fails, inspect whether the goal contains the correct side of `H`, whether implicit arguments match, and whether a conversion/simplification step is needed first.
+
+### Task: Use Propositional Logic Library Patterns — conjunction, disjunction, existence, negation
+
+**Core keywords:** `Prop`, `/\`, `\/`, `exists`, `False`, `True`, negation.
+
+Although much elementary logic can be proved directly, standard libraries and automation can help. Still, the central proof patterns should remain explicit early in a development.
+
+| Logic form      | Constructor/proof tactic         | Destructor/use tactic   | Common theorem              |               |
+| --------------- | -------------------------------- | ----------------------- | --------------------------- | ------------- |
+| `A /\ B`        | `split`                          | `destruct H as [HA HB]` | commutativity/associativity |               |
+| `A \/ B`        | `left` / `right`                 | `destruct H as [HA      | HB]`                        | commutativity |
+| `exists x, P x` | `exists w`                       | `destruct H as [x HP]`  | witness extraction          |               |
+| `A -> B`        | `intros HA`                      | `apply H`               | implication composition     |               |
+| `~ A`           | `intros HA; ... False`           | apply to proof of `A`   | contradiction               |               |
+| `False`         | impossible to construct normally | `destruct H`            | explosion principle         |               |
+| `True`          | `constructor` / `trivial`        | rarely informative      | trivial obligation          |               |
+
+Example:
+
+```coq
+Theorem exists_and_project :
+  forall (A : Type) (P Q : A -> Prop),
+    (exists x, P x /\ Q x) -> exists x, P x.
+Proof.
+  intros A P Q H.
+  destruct H as [x [HP HQ]].
+  exists x.
+  exact HP.
+Qed.
+```
+
+**Design meaning:** These patterns are library-independent core proof skills. Automation can solve many such goals, but explicit scripts communicate constructive evidence flow.
+
+**Common Pitfalls:** `A \/ B` and `exists x, P x` require evidence. Do not expect classical-style indirect arguments unless classical assumptions or decidability lemmas are in scope.
+
+### Task: Use Relations and Orders — `relation`, `le`, equivalence, closure patterns
+
+**Core keywords:** relations, orders, equivalence, reflexivity, transitivity, rewriting under relations.
+
+Many Rocq libraries are relation-oriented. Relations appear in order theory, operational semantics, rewriting, program refinement, and algebraic structures.
+
+| Task            | Representation                          | Typical theorem                | Proof pattern                 |
+| --------------- | --------------------------------------- | ------------------------------ | ----------------------------- |
+| Binary relation | `A -> A -> Prop`                        | reflexive/transitive/symmetric | unfold and use hypotheses     |
+| Order           | `le`, custom `R`                        | monotonicity                   | arithmetic or induction       |
+| Equivalence     | reflexive/symmetric/transitive relation | rewriting under relation       | setoid machinery              |
+| Evaluation step | `state -> state -> Prop`                | determinism/progress           | induction/inversion           |
+| Closure         | reflexive-transitive closure            | reachability                   | induction on closure evidence |
+
+Simple relation definition:
+
+```coq
+Definition reflexive {A : Type} (R : A -> A -> Prop) : Prop :=
+  forall x : A, R x x.
+
+Definition transitive {A : Type} (R : A -> A -> Prop) : Prop :=
+  forall x y z : A, R x y -> R y z -> R x z.
+```
+
+Example theorem:
+
+```coq
+Theorem equality_reflexive :
+  forall A : Type, reflexive (@eq A).
+Proof.
+  intros A x.
+  reflexivity.
+Qed.
+```
+
+**Common Pitfalls:** Relations are not functions. A relation may have zero, one, or many outputs for a given input. This is why relations are better for nondeterministic semantics but less directly executable.
+
+### Task: Use Strings, Characters, and Text Carefully — secondary but important
+
+**Core keywords:** strings, characters, parsing, notation, extraction.
+
+Text processing is not Rocq’s central strength, but strings and characters appear in parsers, syntax formalizations, extraction boundaries, and examples.
+
+| Task                   | Typical approach                         | Use when                 | Pitfall                              |
+| ---------------------- | ---------------------------------------- | ------------------------ | ------------------------------------ |
+| Symbolic names         | strings or identifiers as inductive data | simple syntax models     | String equality proofs can distract  |
+| Parser input           | list of tokens rather than raw string    | verified parser          | Tokenizer boundary may be unverified |
+| Pretty printing        | extracted code or external tooling       | user-facing output       | Usually outside core proof           |
+| Formal language syntax | inductive tokens/AST                     | PL theory                | Avoid overusing raw strings          |
+| Error messages         | custom error inductive                   | certified checker/parser | Strings may be irrelevant to proof   |
+
+**Professional rule:** For formalized syntax and semantics, prefer inductive tokens and ASTs over raw strings when possible. Use strings at external boundaries or for lightweight examples.
+
+**Common Pitfalls:** Verifying a parser over token lists does not verify the lexer unless tokenization is also formalized and proved correct.
+
+### Task: Use Standard Library Theorems Without Losing Proof Intent
+
+**Core keywords:** theorem reuse, wrapper lemmas, proof intent, local naming.
+
+Sometimes a standard theorem has the right content but not the right name or shape for a local API. In that case, wrap it.
+
+Example wrapper:
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+
+Theorem stack_push_pop_list_behavior :
+  forall (x : nat) (xs : list nat),
+    match x :: xs with
+    | [] => None
+    | y :: ys => Some (y, ys)
+    end = Some (x, xs).
+Proof.
+  intros x xs.
+  reflexivity.
+Qed.
+```
+
+More typical wrapping:
+
+```coq
+Theorem append_empty_right :
+  forall (A : Type) (xs : list A),
+    xs ++ [] = xs.
+Proof.
+  intros A xs.
+  apply app_nil_r.
+Qed.
+```
+
+| Reuse strategy                  | When to use                     | Benefit                  | Cost                         |
+| ------------------------------- | ------------------------------- | ------------------------ | ---------------------------- |
+| Directly apply standard theorem | Statement matches goal          | Minimal code             | Name may be library-specific |
+| Rewrite with standard theorem   | Goal contains matching subterm  | Efficient proof          | Need correct direction       |
+| Wrap theorem locally            | API wants project-specific name | Stable client vocabulary | Extra theorem names          |
+| Reprove theorem                 | Pedagogy or custom variant      | Learning/control         | Duplicates library           |
+| Add hint                        | Routine use in automation       | Short proofs             | Hidden dependency            |
+
+**Common Pitfalls:** Wrapping is good when it clarifies API behavior. Reproving standard facts under many names is usually bad library hygiene.
+
+### Task: Understand Standard Library Versus External Library Style
+
+**Core keywords:** Stdlib, MathComp-style libraries, automation libraries, convention differences.
+
+Rocq’s `Stdlib` is not the only important library ecosystem. External libraries may use different naming conventions, proof styles, algebraic hierarchies, notations, and automation patterns. The official documentation notes that many other libraries are provided by the Rocq user community and that many are packaged in Nix or `opam`. ([Rocq][5])
+
+| Ecosystem style           | Common traits                                                 | Benefit                            | Cost                                            |
+| ------------------------- | ------------------------------------------------------------- | ---------------------------------- | ----------------------------------------------- |
+| `Stdlib`-oriented         | Direct tactics, standard names, broad general-purpose modules | Good baseline, widely recognizable | Some naming/theory organization can feel uneven |
+| Boolean reflection style  | Boolean computation tightly linked to propositions            | Powerful decidable reasoning       | Requires learning reflection idioms             |
+| Algebraic hierarchy style | Structured laws and inference                                 | Reusable mathematics               | Steep abstraction curve                         |
+| Automation-heavy style    | Solvers and custom tactics                                    | Fast routine proof                 | Opaque dependencies                             |
+| PL-theory style           | Inductive syntax/relations, preservation/progress             | Clear semantic proofs              | Large proof scripts                             |
+| Separation-logic style    | Resource assertions, tactics, invariants                      | Systems verification               | Specialized logic and tooling                   |
+
+**Professional rule:** Follow the local library’s proof culture. Mixing styles casually can create awkward statements and proof scripts.
+
+**Common Pitfalls:** A theorem written in a `Stdlib` style may be inconvenient in a MathComp-style development, and vice versa. The issue is not correctness but ecosystem compatibility.
+
+### Task: Use Documentation and Online Library Browsing
+
+**Core keywords:** documentation, Reference Manual, Stdlib Manual, theory browser, package docs.
+
+The official Rocq documentation portal links to the Rocq Reference Manual, Corelib theories, Stdlib manual, Stdlib theories, and Platform package documentation. ([Rocq][6]) The release page for `9.2.0` similarly links to the manual and theory documentation for the current prover release. ([Rocq][2])
+
+| Documentation source | Use for                                            | Professional habit                     |
+| -------------------- | -------------------------------------------------- | -------------------------------------- |
+| Reference Manual     | Language, tactics, commands, libraries, extraction | Check semantics and command behavior   |
+| Corelib theories     | Core definitions and support                       | Inspect minimal infrastructure         |
+| Stdlib Manual        | Standard library modules and concepts              | Learn available APIs                   |
+| Stdlib Theories      | Exact theorem names and statements                 | Search/browse reusable lemmas          |
+| Platform docs        | Curated package ecosystem                          | Understand installed libraries/plugins |
+| Package docs         | External library-specific conventions              | Follow local style                     |
+
+**Common Pitfalls:** Tutorials often use older Coq-era names. When reading older material, translate names and imports carefully into current Rocq/`Stdlib` conventions where appropriate.
+
+### Interim Standard-Library Decision Table — PART 6, Part 1
+
+**Core keywords:** decision table, library task, module, theorem reuse.
+
+| Task                  | First place to look         | Common construct/tool                 | Decision rule                              | Pitfall                                 |
+| --------------------- | --------------------------- | ------------------------------------- | ------------------------------------------ | --------------------------------------- |
+| Arithmetic over `nat` | `Nat`, `Arith`, `Lia`       | `Nat.add_comm`, `lia`                 | Use lemmas/automation for arithmetic facts | Expecting `lia` to solve list structure |
+| List processing       | `List`, `ListNotations`     | `++`, `map`, `filter`, `length`       | Search before proving                      | Inducting on wrong list                 |
+| Boolean decisions     | `Bool`, boolean functions   | `negb`, `andb`, `orb`, `eqb`          | Use booleans for computation               | Confusing with `Prop`                   |
+| Optional failure      | `option` definitions/lemmas | `Some`, `None`, match                 | Use for failure without explanation        | Losing error information                |
+| Equality reasoning    | equality tactics/lemmas     | `rewrite`, `symmetry`, `transitivity` | Distinguish computation from proposition   | Wrong rewrite direction                 |
+| Logic reasoning       | core propositions/tactics   | `/\`, `\/`, `exists`, `False`         | Construct evidence explicitly              | Assuming classical principles           |
+| Relations/orders      | relation modules/patterns   | `A -> A -> Prop`                      | Use for semantics/orders/refinement        | Treating relation as function           |
+| Library navigation    | query commands              | `Check`, `Search`, `Locate`, `Print`  | Inspect before proving                     | Guessing theorem names                  |
+| Notation debugging    | scopes/location tools       | `Locate`, `Open Scope`                | Check underlying constants                 | Misreading overloaded symbols           |
+| External libraries    | package docs/Platform/opam  | library-specific imports              | Follow local conventions                   | Mixing proof cultures                   |
+
+### Common Pitfalls in Standard Library Use
+
+**Core keywords:** library pitfalls, imports, notation, theorem reuse, automation.
+
+| Pitfall                          | Why it happens                                  | Better practice                    |
+| -------------------------------- | ----------------------------------------------- | ---------------------------------- |
+| Re-proving standard facts        | The theorem name is unknown                     | Use `Search` by shape              |
+| Importing too broadly            | Convenience during interactive work             | Narrow imports in library files    |
+| Forgetting notation imports      | Definitions loaded but syntax unavailable       | Import notation modules explicitly |
+| Misreading notation              | Same symbol in different scopes                 | Use `Locate` and `Check`           |
+| Using `lia` for structural goals | Arithmetic solver cannot inspect recursive data | Rewrite structural lemmas first    |
+| Treating `bool` as `Prop`        | Computation/specification confusion             | Prove bridge lemmas                |
+| Overusing qualified names        | Clarity becomes verbosity                       | Use local imports where safe       |
+| Underusing qualified names       | Ambiguity and wrong theorem use                 | Qualify when names conflict        |
+| Depending on hidden hints        | `auto` proof relies on imports                  | Name key lemmas explicitly         |
+| Mixing library styles            | Different conventions collide                   | Follow the dominant library style  |
+
+### Task: Use Proof Automation Libraries and Tactics Deliberately — `auto`, `eauto`, `lia`, `ring`, `congruence`, domain tactics
+
+**Core keywords:** automation, decision procedures, proof search, arithmetic solvers, maintainability.
+
+Rocq’s ecosystem includes both elementary tactics and more powerful automatic solvers. The Reference Manual frames proof mode, automatic solvers, programmable tactics, and tactic languages as central parts of Rocq practice; it also emphasizes that the kernel performs final proof verification even when proofs are tactic-generated. ([Rocq][1])
+
+| Task                                     | Typical tactic/tool                       | Best use                                             | Hidden cost                             | Common misuse                     |
+| ---------------------------------------- | ----------------------------------------- | ---------------------------------------------------- | --------------------------------------- | --------------------------------- |
+| Solve trivial propositional goals        | `auto`                                    | Routine implications, assumptions, constructors      | Depends on hint database                | Hiding central proof idea         |
+| Search with existential variables        | `eauto`                                   | Routine goals needing instantiation                  | Search can become slow or unpredictable | Using it without bounding search  |
+| Linear arithmetic over naturals/integers | `lia`                                     | Goals over `nat`, `Z`, linear equations/inequalities | Does not solve structural data facts    | Expecting it to prove list lemmas |
+| Algebraic ring normalization             | `ring`                                    | Polynomial equalities over ring-like structures      | Requires suitable algebraic setting     | Using it for non-ring reasoning   |
+| Equality contradictions                  | `congruence`, `discriminate`, `inversion` | Constructor/equality contradictions                  | Can obscure contradiction source        | Applying blindly                  |
+| Propositional tautologies                | `tauto`, related tactics                  | Pure propositional logic                             | May hide constructive structure         | Using when witness choice matters |
+| Domain-specific proof automation         | library-specific tactics                  | Repeated domain proof patterns                       | Library convention dependency           | Mixing styles casually            |
+| Custom proof scripts                     | `Ltac`, `Ltac2`, plugins                  | Reusable local proof patterns                        | Another code layer to maintain          | One-line opaque proofs            |
+
+Example: arithmetic side condition.
+
+```coq
+From Stdlib Require Import Lia.
+
+Theorem le_plus_right :
+  forall n m : nat, n <= n + m.
+Proof.
+  intros n m.
+  lia.
+Qed.
+```
+
+Example: structural proof where automation alone is not the core.
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+
+Theorem app_nil_r_explicit :
+  forall (A : Type) (xs : list A), xs ++ [] = xs.
+Proof.
+  intros A xs.
+  induction xs as [| x xs IHxs].
+  - reflexivity.
+  - simpl. rewrite IHxs. reflexivity.
+Qed.
+```
+
+Here `lia` is irrelevant because the proof is not primarily arithmetic. The proof follows the recursive structure of `++`.
+
+**Design tradeoff:**
+
+| Automation strategy    | Capability gained                  | Cost introduced                  | Professional rule                        |
+| ---------------------- | ---------------------------------- | -------------------------------- | ---------------------------------------- |
+| Explicit tactic proof  | Clear proof structure              | More lines                       | Use for central arguments                |
+| Local automation       | Shorter routine leaves             | Slight opacity                   | Use after exposing induction/invariant   |
+| Global hint automation | Scales repeated proofs             | Hidden dependencies              | Scope and document hints                 |
+| Heavy solver use       | High productivity in target domain | Less explanatory proof scripts   | Use for stable, well-understood subgoals |
+| Custom tactics         | Eliminates repetition              | Maintenance and debugging burden | Encode boring patterns, not main ideas   |
+
+**Common Pitfalls:** A proof that is just `auto.` may be correct but unreviewable. If the theorem is conceptually important, expose the induction target, witness, rewrite lemma, or invariant explicitly.
+
+### Task: Use Rewriting Ecosystems — rewrite lemmas, hint databases, normalization
+
+**Core keywords:** rewriting, rewrite databases, normalization, `rewrite`, `autorewrite`, public behavior lemmas.
+
+Rewriting is a standard-library and ecosystem practice, not merely a tactic. Large developments often organize public behavior through rewrite lemmas and sometimes rewrite databases.
+
+| Task                     | Tool/pattern          | Use when                   | Pitfall                              |
+| ------------------------ | --------------------- | -------------------------- | ------------------------------------ |
+| Rewrite one fact         | `rewrite H`           | Local equality proof       | Wrong direction                      |
+| Rewrite standard theorem | `rewrite app_nil_r`   | Known library behavior     | Theorem shape mismatch               |
+| Repeat rewrite           | `repeat rewrite ...`  | Several occurrences        | Proof can become brittle             |
+| Use database             | `autorewrite with db` | Stable normalization set   | Rewrite loops or hidden dependencies |
+| Rewrite in hypothesis    | `rewrite H in H2`     | Transform local assumption | Destroying useful old form           |
+| Avoid unfolding          | rewrite public lemma  | Preserve abstraction       | Requires lemma design                |
+
+Example:
+
+```coq
+From Stdlib Require Import List.
+Import ListNotations.
+
+Theorem normalize_append_example :
+  forall (A : Type) (xs ys : list A),
+    (xs ++ []) ++ ys = xs ++ ys.
+Proof.
+  intros A xs ys.
+  rewrite app_nil_r.
+  reflexivity.
+Qed.
+```
+
+A project-specific rewrite lemma can express public behavior:
+
+```coq
+Theorem append_empty_right_public :
+  forall (A : Type) (xs : list A), xs ++ [] = xs.
+Proof.
+  intros A xs.
+  apply app_nil_r.
+Qed.
+```
+
+**Professional rule:** A rewrite database should contain facts that are safe to apply repeatedly and move terms toward a normal form. Avoid adding symmetric or bidirectional facts that can loop.
+
+**Common Pitfalls:** Rewriting by implementation details leaks abstraction. Prefer rewriting by public theorems such as `lookup_update_eq`, `map_length`, or `eval_sound`.
+
+### Task: Use Programmable Tactics Carefully — `Ltac`, `Ltac2`, plugins, metaprogramming
+
+**Core keywords:** `Ltac`, `Ltac2`, custom tactics, metaprogramming, proof automation.
+
+Rocq supports tactic languages and programmable proof automation; the current Reference Manual explicitly distinguishes proof mode, automatic solvers, programmable tactics, and new tactic languages as core parts of practical Rocq use. ([Rocq][1])
+
+| Automation layer              | Role                               | Good use                                  | Risk                                 |
+| ----------------------------- | ---------------------------------- | ----------------------------------------- | ------------------------------------ |
+| Built-in tactics              | Basic proof construction           | `intros`, `apply`, `rewrite`, `induction` | Misuse by goal-shape mismatch        |
+| Decision tactics              | Domain solvers                     | `lia`, `ring`, `congruence`               | Hides routine but relevant reasoning |
+| `Ltac`                        | Script proof-state patterns        | Local repeated proof idioms               | Fragile name/goal dependence         |
+| `Ltac2`                       | More structured tactic programming | Larger tactic abstractions                | Requires separate learning           |
+| OCaml plugins                 | Extend Rocq with compiled tooling  | Domain-specific automation                | Trust/tooling boundary               |
+| External automation libraries | Powerful proof search              | Large domains                             | Version and convention dependency    |
+
+Small tactic example:
+
+```coq
+Ltac break_bool :=
+  repeat match goal with
+  | b : bool |- _ => destruct b; simpl in *
+  end; try reflexivity; try discriminate.
+```
+
+Use:
+
+```coq
+Theorem negb_involutive_by_tactic :
+  forall b : bool, negb (negb b) = b.
+Proof.
+  intros b.
+  break_bool.
+Qed.
+```
+
+**Design meaning:** A tactic is a program over proof states. It should be maintained like code. A tactic that works today because of generated names, current goal order, or accidental imports may fail after minor refactoring.
+
+**Common Pitfalls:** Do not create a custom tactic for a proof pattern used once. Do not hide the main induction or semantic argument inside an unnamed proof-search procedure.
+
+### Task: Build Rocq Projects — `rocq` command family, `_CoqProject`, `dune`, `rocq dep`
+
+**Core keywords:** build system, `rocq compile`, `rocq repl`, `_CoqProject`, `dune`, dependency graph, logical paths.
+
+Rocq project building is part of professional proof engineering. The Reference Manual’s project-building documentation covers configuration, installing Rocq packages with `opam`, setting up projects, `_CoqProject`, logical paths and load paths, project building with Rocq makefile, Dune, and dependency computation with `rocq dep`. ([Rocq][2])
+
+| Task                         | Tool/workflow                     | Purpose                          | Professional concern                        |
+| ---------------------------- | --------------------------------- | -------------------------------- | ------------------------------------------- |
+| Interactive exploration      | `rocq repl` or editor integration | Develop and inspect proof states | Not enough for reproducible builds          |
+| Batch checking               | `rocq compile` or build system    | Compile/check `.v` files         | Must match CI environment                   |
+| Dependency computation       | `rocq dep`                        | Determine module dependencies    | Necessary for correct build order           |
+| Legacy/simple project config | `_CoqProject`                     | Logical paths and options        | Must be maintained carefully                |
+| Larger project build         | `dune`                            | Build orchestration              | Requires correct stanza/project setup       |
+| Package environment          | `opam` switch                     | Versioned dependencies           | Pin versions                                |
+| Curated setup                | Rocq Platform                     | Stable package collection        | May lag standalone prover                   |
+| CI proof checking            | full project build                | Regression detection             | Should reject admissions if policy requires |
+
+A source file that works interactively is not necessarily a reproducible project. Reproducibility depends on paths, imports, package versions, build flags, and dependency order.
+
+**Common Pitfalls:** Manually checking files in an editor can hide dependency-order problems. Professional projects should be buildable from a clean environment.
+
+### Task: Use `dune` for Larger Developments — theories, plugins, package boundaries
+
+**Core keywords:** `dune`, Rocq build language, theories, plugins, public libraries.
+
+Dune documents a Rocq project as a `dune-project` containing Rocq theories and plugins, and it treats a Rocq plugin as an OCaml library that Rocq can dynamically load; such plugins need to be public libraries in Dune’s sense because they are located using `ocamlfind`. ([Dune][3])
+
+| Dune-related task    | Why it matters                                | Practical consequence             |
+| -------------------- | --------------------------------------------- | --------------------------------- |
+| Define a Rocq theory | Organize `.v` files under a logical namespace | Stable imports                    |
+| Build many files     | Dune handles dependency graph                 | Avoid manual order errors         |
+| Integrate plugins    | Plugins are OCaml libraries loaded by Rocq    | Adds toolchain/trust boundary     |
+| Package project      | Metadata and public names matter              | Downstream users can depend on it |
+| CI integration       | Dune command can recheck full development     | Reproducible proof checking       |
+
+**Design tradeoff:**
+
+| Build approach                 | Benefit                               | Cost                                  |
+| ------------------------------ | ------------------------------------- | ------------------------------------- |
+| Manual file checking           | Simple for tiny examples              | Not reproducible at scale             |
+| `_CoqProject` / makefile style | Traditional and direct                | Can become harder to maintain         |
+| Dune                           | Integrated OCaml/Rocq build ecosystem | Requires learning Dune configuration  |
+| Platform scripts/installers    | Consistent package set                | Less flexible than custom opam switch |
+
+**Common Pitfalls:** A plugin is not just another `.v` library. It crosses into compiled OCaml tooling and therefore has a different maintenance and trust profile.
+
+### Task: Manage Packages and Versions — `opam`, Rocq Platform, pins, switches
+
+**Core keywords:** `opam`, switches, Rocq Platform, package versions, compatibility.
+
+Rocq package management is usually tied to `opam`; the official Platform page says the Platform is based on the OCaml package manager `opam` and provides scripts/installers for reliable, consistent installation across major operating systems. ([Rocq][4]) The Rocq Platform packages page also distinguishes package levels and identifies “full level” packages as stable, well-maintained, and suitable as a basis for users’ own developments. ([Rocq][4])
+
+| Package task             | Tool/pattern               | Use when                        | Risk                         |
+| ------------------------ | -------------------------- | ------------------------------- | ---------------------------- |
+| Isolate environment      | `opam switch`              | Different Rocq/library versions | Switch drift                 |
+| Install curated set      | Rocq Platform              | Stable general setup            | May not use newest prover    |
+| Install specific package | `opam install ...`         | Project dependency              | Version incompatibility      |
+| Pin version              | `opam pin` / lock strategy | Reproducible project            | Stale dependencies           |
+| Upgrade project          | controlled switch update   | Migration to newer Rocq         | Proof breakage               |
+| Parallel versions        | separate switches          | Maintain old/new developments   | Confusing active environment |
+
+**Professional rule:** Record the exact prover version, platform/package baseline, and external library versions. A proof development is a checked artifact only relative to the environment in which it was checked.
+
+**Common Pitfalls:** “It works on my machine” is especially weak for Rocq. A small version change can alter notations, theorem names, tactic behavior, or library paths.
+
+### Task: Use Editor and LSP Workflows — interactive proof states, source navigation, feedback
+
+**Core keywords:** editor integration, proof state, LSP, source navigation, interactive proving.
+
+Rocq is an interactive theorem prover, so editor integration is more central than in many ordinary programming languages. The official documentation classifies command-line and graphical tools as part of practical Rocq use. ([Rocq][5])
+
+| Workflow need        | Tooling category                          | Why it matters                  |
+| -------------------- | ----------------------------------------- | ------------------------------- |
+| Step through proof   | editor proof interface / REPL             | Inspect goals after each tactic |
+| Navigate definitions | source browser, editor jump-to-definition | Understand imported theorems    |
+| Inspect goals        | proof-state panel                         | Choose tactics by goal shape    |
+| Query terms          | `Check`, `Search`, `Locate` interactively | Avoid guessing                  |
+| Build entire project | CLI/build system                          | Ensure file-level correctness   |
+| Diagnose imports     | load-path/build tooling                   | Resolve unknown modules         |
+| Maintain large files | LSP/editor diagnostics                    | Faster feedback                 |
+
+**Professional rule:** Use interactive tools for proof development, but use batch builds or CI for validation. Interactive success in one buffer is not a substitute for full project checking.
+
+**Common Pitfalls:** Proof scripts written only through trial-and-error in an editor often become brittle. After making a proof work, simplify it so that the structure is reviewable.
+
+### Task: Generate and Maintain Documentation — `rocqdoc`-style output, comments, API theorems
+
+**Core keywords:** documentation, theorem API, comments, generated docs, library surface.
+
+Documentation in Rocq is not only prose. The theorem names, module structure, notation choices, and exported lemmas are part of documentation. The official docs portal separates manuals, theory documentation, and package documentation, reflecting the importance of exact theorem/API browsing. ([Rocq][6])
+
+| Documentation artifact | What it communicates                  | Good practice                                        |
+| ---------------------- | ------------------------------------- | ---------------------------------------------------- |
+| Module names           | Conceptual organization               | Keep namespaces meaningful                           |
+| Definition names       | API role                              | Avoid cryptic local abbreviations for public objects |
+| Theorem names          | Reusable behavior                     | Name by behavior, not proof method                   |
+| Comments               | Proof intent and boundary assumptions | Explain non-obvious invariants                       |
+| Generated docs         | Public theory surface                 | Keep exported API clean                              |
+| Examples               | Canonical usage                       | Avoid examples that depend on private internals      |
+| Assumption notes       | Trust boundary                        | Document axioms/admissions/classical imports         |
+
+Example naming contrast:
+
+| Weak name    | Better name               | Reason                       |
+| ------------ | ------------------------- | ---------------------------- |
+| `lemma1`     | `lookup_update_eq`        | States behavior              |
+| `correct`    | `sort_sorted_permutation` | Names correctness components |
+| `helper`     | `rev_acc_correct`         | Reveals invariant            |
+| `H1_theorem` | `filter_sound`            | Searchable and meaningful    |
+
+**Common Pitfalls:** A library whose theorem names are not searchable becomes hard to use even if all proofs are correct.
+
+### Task: Test, Check, and Audit Proof Developments — examples, computations, theorem checks, CI
+
+**Core keywords:** examples, `Compute`, theorem checking, CI, admissions audit.
+
+Rocq proofs are stronger than tests, but examples and computations remain useful during development. They help explore definitions, catch bad specifications, and guide theorem statements.
+
+| Development check     | Tool/pattern             | Purpose                          | Limitation                         |
+| --------------------- | ------------------------ | -------------------------------- | ---------------------------------- |
+| Compute example       | `Compute`, `Eval`        | Understand reduction behavior    | Not a theorem                      |
+| Small example theorem | `Example`                | Check intended behavior formally | Specific case only                 |
+| General theorem       | `Theorem`, `Lemma`       | Universal property               | Depends on statement adequacy      |
+| Search existing facts | `Search`                 | Avoid duplicate proof            | Requires good theorem pattern      |
+| Admission audit       | search for `Admitted`    | Track trust debt                 | Needs policy                       |
+| Axiom audit           | inspect assumptions      | Track foundation                 | Requires review                    |
+| Full build            | CLI/Dune/CI              | Recheck all files                | Environment-dependent              |
+| Extraction smoke test | generated code build/run | Catch integration issues         | Does not prove wrapper correctness |
+
+Example:
+
+```coq
+Definition triple (n : nat) : nat := n + n + n.
+
+Example triple_2_example :
+  triple 2 = 6.
+Proof.
+  reflexivity.
+Qed.
+
+Theorem triple_zero :
+  triple 0 = 0.
+Proof.
+  reflexivity.
+Qed.
+```
+
+These examples are useful, but a real specification would state a general property if one is needed.
+
+**Common Pitfalls:** Examples can reveal specification mistakes but cannot replace universal correctness theorems. Conversely, a theorem can be formally proved but still be the wrong theorem.
+
+### Task: Use Extraction Ecosystem — extraction commands, OCaml/Haskell/Scheme targets, certified core
+
+**Core keywords:** extraction, OCaml, Haskell, Scheme, certified programs, proof erasure.
+
+The Rocq extraction documentation says extraction commands are used to build certified and relatively efficient functional programs from Rocq functions or proofs of specifications, and it lists OCaml, Haskell, and Scheme as available output languages. ([Rocq][7])
+
+| Extraction task             | Rocq-side artifact                      | Target-side concern      | Boundary                           |
+| --------------------------- | --------------------------------------- | ------------------------ | ---------------------------------- |
+| Extract pure function       | `Definition` / `Fixpoint`               | Target code generation   | Extraction correctness assumptions |
+| Extract certified algorithm | function + correctness theorem          | Runtime integration      | Theorem covers source model        |
+| Erase proofs                | `Prop` content usually not runtime data | No runtime proof checks  | Proofs not dynamic validators      |
+| Integrate with I/O          | wrapper in target language              | External effects         | Outside theorem unless modeled     |
+| Use target libraries        | extracted calls/mappings                | Library behavior trusted | External assumption                |
+| Optimize extracted code     | extraction mappings/target tuning       | Performance              | Must not overclaim proof           |
+
+Schematic extraction-oriented pattern:
+
+```coq
+Definition verified_double (n : nat) : nat :=
+  n + n.
+
+Theorem verified_double_spec :
+  forall n, verified_double n = n + n.
+Proof.
+  intros n.
+  reflexivity.
+Qed.
+```
+
+A correctness claim should be phrased carefully: the Rocq function satisfies `verified_double_spec`; extracted code corresponds to the computational content under extraction assumptions; external target-runtime behavior is a separate boundary.
+
+**Common Pitfalls:** Extraction does not verify the whole deployed system. It does not automatically verify file I/O, networking, foreign libraries, compiler bugs, operating-system behavior, or wrappers.
+
+### Task: Use External Libraries by Proof Culture — MathComp-style, PL-theory libraries, separation logic, automation packages
+
+**Core keywords:** external libraries, proof culture, conventions, compatibility.
+
+External Rocq libraries often come with their own proof idioms. The official Reference Manual notes that many libraries come from the user community and are distributed through mechanisms such as `opam` or Nix. ([Rocq][1])
+
+| Library culture               | What it emphasizes                           | Practical consequence         | Failure mode                                    |
+| ----------------------------- | -------------------------------------------- | ----------------------------- | ----------------------------------------------- |
+| Stdlib-style                  | Direct definitions, standard tactics         | Good baseline                 | May be less uniform than specialized ecosystems |
+| Boolean reflection            | Computable predicates and reflection lemmas  | Efficient decidable reasoning | Requires learning reflection idioms             |
+| Algebraic hierarchy           | Structures, laws, inference                  | Powerful reusable math        | Steep hierarchy learning                        |
+| PL theory                     | Syntax, relations, preservation/progress     | Natural for metatheory        | Large proof scripts                             |
+| Separation logic              | Resources, invariants, weakest preconditions | Systems verification          | Specialized logic burden                        |
+| Automation packages           | Proof search and solvers                     | Productivity                  | Opaque proof dependencies                       |
+| Extraction-oriented libraries | Certified executable artifacts               | Verified programming          | Runtime boundary remains                        |
+
+**Professional rule:** Do not mix ecosystem styles accidentally. A boolean-reflection library, a `Stdlib` direct-proposition proof, and a typeclass-heavy algebraic hierarchy may all be correct but interact awkwardly.
+
+**Common Pitfalls:** Copying a theorem style from one ecosystem into another can make proof search, rewriting, and notation harder than necessary.
+
+### Task: Debug Library and Ecosystem Problems — imports, notation, scopes, versions, hidden arguments
+
+**Core keywords:** debugging, imports, notation, scopes, implicit arguments, versions.
+
+Many Rocq “semantic” problems are actually ecosystem or tooling problems.
+
+| Symptom                     | Likely cause                      | Diagnostic tool         | Response                   |
+| --------------------------- | --------------------------------- | ----------------------- | -------------------------- |
+| Name not found              | Missing import or wrong namespace | `Check`, qualified name | Add precise import         |
+| Notation not parsed         | Scope/notation not imported       | `Locate`                | Import/open scope          |
+| Wrong theorem applied       | Ambiguous name or wrong module    | `About`, qualified name | Use qualified theorem      |
+| `Search` finds nothing      | Bad theorem shape                 | Try symbols/patterns    | Search by exact operators  |
+| `auto` stopped working      | Hint/import changed               | Inspect imports         | Apply lemma explicitly     |
+| Proof changed after import  | Notation/instances/hints changed  | Minimize imports        | Scope imports locally      |
+| Type inferred unexpectedly  | implicit arguments/coercions      | `@`, printing controls  | Add annotations            |
+| Project builds locally only | version/path issue                | clean build, CI         | Pin environment            |
+| Plugin unavailable          | package/build issue               | package list/build logs | Install compatible package |
+
+**Common Pitfalls:** Before changing a proof, check whether the environment changed. Imports, scopes, and versions often explain surprising failures.
+
+### Task: Profile and Optimize Proof Developments — checking time, automation cost, imports
+
+**Core keywords:** proof performance, checking time, automation cost, reduction, imports, opacity.
+
+Rocq performance is often proof-checking and build performance, not ordinary runtime performance. A proof may be mathematically correct but expensive to check.
+
+| Cost source                  | Why it costs                 | Detection cue                   | Response                               |
+| ---------------------------- | ---------------------------- | ------------------------------- | -------------------------------------- |
+| Large proof terms            | Kernel must check them       | Slow `Qed`/build                | Use abstraction/lemmas                 |
+| Excessive transparency       | Conversion unfolds too much  | Slow simplification/conversion  | Use `Qed` for theorem proofs           |
+| Broad automation             | Search space explosion       | `auto`/`eauto` slow             | Bound search, name lemmas              |
+| Heavy imports                | More environment content     | Slow load/check                 | Import narrowly                        |
+| Rewrite loops                | Repeated normalization       | Nontermination/slow proof       | Orient rewrite rules                   |
+| Large dependent terms        | Complex elaboration/equality | Slow type checking              | Simplify representation                |
+| Native/vm computation misuse | Large reductions             | Slow or memory-heavy evaluation | Use computation strategy intentionally |
+| Plugin tactics               | External tactic overhead     | Solver slowdowns                | Isolate and benchmark                  |
+
+**Professional rule:** Optimize proof maintainability first, then checking performance where it matters. A shorter script can be slower if it relies on heavy search or huge generated terms.
+
+**Common Pitfalls:** Replacing a clear induction proof with a powerful automation tactic may reduce line count but increase checking time and opacity.
+
+### Task: Choose Libraries and Tools by Project Need — decision rules
+
+**Core keywords:** library selection, tool choice, project constraints, proof culture.
+
+Library and tool choice should be driven by proof needs, ecosystem compatibility, and maintenance constraints.
+
+| Project need                    | Prefer                                         | Why                                  | Caveat                          |
+| ------------------------------- | ---------------------------------------------- | ------------------------------------ | ------------------------------- |
+| Basic arithmetic/list proofs    | `Stdlib`, `Lia`, `List`                        | Standard and widely understood       | Learn theorem names             |
+| Dense algebraic mathematics     | Math-oriented hierarchy libraries              | Reusable structure                   | Must follow library idioms      |
+| Programming-language metatheory | Inductive relations, PL libraries if available | Natural semantics proofs             | Large theorem infrastructure    |
+| Verified executable algorithm   | Pure functions + specs + extraction            | Clear certified-programming pipeline | State extraction boundary       |
+| Systems/resource verification   | Separation-logic ecosystem                     | Models resources/effects             | Specialized learning curve      |
+| Large reusable project          | Dune + opam + CI                               | Reproducible checking                | Tooling setup overhead          |
+| Teaching/learning               | Minimal `Stdlib` imports                       | Exposes proof structure              | Less automation                 |
+| Production proof maintenance    | Scoped automation + stable lemmas              | Robustness                           | Requires engineering discipline |
+
+**Common Pitfalls:** Choosing the most powerful library too early can obscure the basics. Choosing only the standard library for a domain with mature specialized libraries can waste effort.
+
+### Ecosystem Cost Model — proof-time, build-time, extraction-time, runtime
+
+**Core keywords:** cost model, proof checking, automation, extraction, build, runtime.
+
+| Operation or pattern      | Usual cost                             | Hidden cost                           | How to detect it         | When it matters                 | When not to optimize prematurely |
+| ------------------------- | -------------------------------------- | ------------------------------------- | ------------------------ | ------------------------------- | -------------------------------- |
+| Importing large libraries | Load/check environment                 | Notations, hints, instances           | Slow file startup        | Large projects                  | Tiny tutorial files              |
+| `auto`/`eauto`            | Proof search                           | Search explosion                      | Slow tactic step         | Repeated automation             | Small trivial goals              |
+| `lia`                     | Arithmetic proof search                | Large arithmetic contexts             | Slow arithmetic goals    | Many arithmetic side conditions | Simple one-off proof             |
+| Rewriting with databases  | Normalization                          | Rewrite loops                         | Tactic hangs/slows       | Normalization-heavy libraries   | Few manual rewrites              |
+| Transparent proofs        | Conversion can unfold bodies           | Large proof terms used in computation | Slow `simpl`/`cbn`       | Dependent computation           | Ordinary opaque theorems         |
+| `Defined` everywhere      | More unfolding                         | Performance and abstraction loss      | Slow conversion          | Computational witnesses         | Standard propositions            |
+| Large dependent records   | Elaborator/equality burden             | Proof-field equality issues           | Complex goals            | Invariant-heavy APIs            | Simple validation                |
+| Extraction                | Code generation and target integration | Runtime/compiler assumptions          | Target build/test        | Certified programs              | Pure proof-only developments     |
+| Dune/opam setup           | Tooling overhead                       | Version pinning                       | Build configuration time | Long-lived projects             | One-file exploration             |
+| Plugins                   | External compiled tooling              | Trust/build compatibility             | Plugin errors/build logs | Specialized automation          | Basic proofs                     |
+
+**Design meaning:** Rocq’s cost model is dominated by proof checking, elaboration, reduction, automation, library loading, and build orchestration. Ordinary heap/runtime costs matter mainly after extraction or inside modeled systems.
+
+**Common Pitfalls:** Do not optimize extracted code before knowing whether the proof development itself is maintainable and checkable. Conversely, do not ignore extracted performance if the certified function will actually run at scale.
+
+### Ecosystem Workflow Table — from exploration to reusable library
+
+**Core keywords:** workflow, exploration, library, CI, documentation.
+
+| Stage                   | Main tools                                | Goal                             | Professional checkpoint                     |
+| ----------------------- | ----------------------------------------- | -------------------------------- | ------------------------------------------- |
+| Exploration             | editor/REPL, `Check`, `Compute`, `Search` | Understand definitions and goals | Avoid committing trial-and-error clutter    |
+| Prototype proof         | direct tactics, simple imports            | Prove theorem once               | Identify induction target and helper lemmas |
+| Stabilization           | named lemmas, scoped imports              | Make proof maintainable          | Remove fragile generated-name dependencies  |
+| API design              | modules, records, public theorems         | Expose stable behavior           | Clients should not unfold internals         |
+| Automation tuning       | scoped hints/custom tactics               | Reduce repetition                | Keep main proof ideas explicit              |
+| Build integration       | Dune/`_CoqProject`, opam                  | Reproducible checking            | Clean build from fresh environment          |
+| Documentation           | theorem names, comments, generated docs   | Usable library surface           | Public names reflect behavior               |
+| CI/audit                | full check, admission/axiom policy        | Trust and regression control     | Fail on unexpected admissions               |
+| Extraction, if relevant | extraction commands, target build         | Executable certified core        | State wrapper/runtime boundary              |
+
+### Standard Library and Ecosystem Decision Table — final PART 6 reference
+
+**Core keywords:** decision table, ecosystem task, tool choice.
+
+| Task                   | First choice                              | When to escalate                           | Common pitfall                             |
+| ---------------------- | ----------------------------------------- | ------------------------------------------ | ------------------------------------------ |
+| Basic list proof       | `List`, `ListNotations`, `Search`         | Specialized sequence libraries if needed   | Re-proving basics                          |
+| Basic arithmetic proof | `Nat`, `Arith`, `Lia`                     | Algebra tactics for ring-like goals        | Using `lia` for nonlinear/structural facts |
+| Equality contradiction | `discriminate`, `inversion`, `congruence` | Inversion lemmas for repeated cases        | Context clutter                            |
+| Boolean specification  | bool function + soundness/completeness    | Reflection framework                       | Treating bool as Prop                      |
+| Relation semantics     | inductive relations                       | PL libraries/frameworks                    | Forcing into total function                |
+| Algebraic abstraction  | record/module first                       | typeclasses/canonical structures for scale | Premature typeclass use                    |
+| Repeated routine proof | local tactic or scoped hint               | domain automation                          | Hiding central proof                       |
+| Project build          | Dune or documented Rocq build workflow    | package publishing                         | Local-only proof checking                  |
+| Package setup          | opam switch or Platform                   | custom pins for advanced needs             | Version drift                              |
+| Documentation          | official manuals + generated API docs     | package-specific docs                      | Relying on outdated tutorials              |
+| Extraction             | pure core + correctness theorem           | target integration tooling                 | Whole-system overclaim                     |
+| Plugin use             | stable package/plugin                     | custom plugin                              | Treating plugin as ordinary theorem        |
+
+### Common Pitfalls and Anti-Patterns in Ecosystem Use
+
+**Core keywords:** ecosystem pitfalls, automation, build, documentation, extraction.
+
+| Item                                       | Category                      | Why it fails                     | Better practice                                      |
+| ------------------------------------------ | ----------------------------- | -------------------------------- | ---------------------------------------------------- |
+| Re-proving standard lemmas                 | Library misuse                | Duplicates theorem base          | Use `Search`, wrap if needed                         |
+| Broad imports everywhere                   | Dependency smell              | Hidden notation/hint effects     | Import narrowly or locally                           |
+| Trusting `auto` without knowing source     | Automation anti-pattern       | Hidden proof dependency          | Name key lemmas                                      |
+| Depending on old Coq-era paths blindly     | Compatibility issue           | Migration/version mismatch       | Use current Rocq/`Stdlib` conventions where possible |
+| Ignoring Platform/prover mismatch          | Version issue                 | Package incompatibility          | Record exact baseline                                |
+| Treating editor success as project success | Workflow issue                | Full build may fail              | Use batch build/CI                                   |
+| Using `Defined` for all proofs             | Performance/abstraction issue | Excessive unfolding              | Use `Qed` for ordinary theorems                      |
+| Extracting without boundary statement      | Verification overclaim        | Runtime/wrapper unverified       | State verified core and assumptions                  |
+| Writing custom tactics too early           | Overengineering               | Hides proof idea                 | First write explicit proof                           |
+| Mixing library styles casually             | Ecosystem mismatch            | Awkward statements/proofs        | Follow local convention                              |
+| Ignoring documentation                     | Source-reading problem        | Wrong theorem/import assumptions | Use manual and theory docs                           |
+
+### PART 6 Summary — ecosystem fluency as proof-engineering competence
+
+PART 6 established that Rocq ecosystem fluency is not merely knowing module names. It is the ability to navigate definitions and theorems, control imports and notation, select appropriate tactics, use libraries without hiding proof intent, build reproducible projects, manage packages, document public theorem APIs, and state extraction boundaries precisely.
+
+| Ecosystem dimension | Expert question                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| Library layer       | Is this from `Corelib`, `Stdlib`, Platform, or an external package?                   |
+| Import discipline   | What names, notations, hints, and instances entered scope?                            |
+| Theorem reuse       | Has the standard library already proved this?                                         |
+| Automation          | Is this proof search routine, scoped, and maintainable?                               |
+| Build workflow      | Can the full development be checked from a clean environment?                         |
+| Package management  | Are versions pinned and compatible?                                                   |
+| Documentation       | Can users find and understand the public theorem API?                                 |
+| Extraction          | What source-level theorem supports the extracted code?                                |
+| Plugin/tool use     | What extra trust and compatibility boundary is introduced?                            |
+| Performance         | Is the bottleneck proof checking, automation, reduction, build, or extracted runtime? |
+
+The professional rule is: **use the ecosystem to reduce proof burden, but never let the ecosystem hide the theorem statement, the assumptions, the induction idea, the abstraction boundary, or the verified/external boundary.**
+
+## PART 7 — Semantics, Runtime, Memory, Concurrency, and Implementation Model
+
+PART 7 explains what Rocq programs, definitions, and proofs *mean*, and what actually happens when they are checked, reduced, built, or extracted. The central distinction is this: Rocq is not primarily a runtime for applications. It is a proof assistant whose core work is elaborating terms, checking types, constructing proof terms, reducing definitions, validating recursion, managing universes, and exporting computational content when extraction is used. The official Reference Manual describes Rocq as an interactive theorem prover that lets users formalize mathematical concepts and generate machine-checked proofs; this is the correct starting point for its “runtime” model. ([Rocq][1])
+
+### Semantic Orientation — source text, elaboration, proof terms, kernel, extraction
+
+**Core keywords:** syntax, elaboration, kernel, proof term, reduction, extraction, target runtime.
+
+Rocq has several semantic layers. A `.v` file is not simply “executed” like a Python script or compiled like a C file. Commands are processed, names are added to the environment, terms are elaborated, proof obligations are generated, tactics construct proof terms, and the kernel checks that final terms have the required types.
+
+| Layer                | What happens                                                     | Rocq examples                                           | Main correctness question                                   |
+| -------------------- | ---------------------------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
+| Surface syntax       | User writes commands, terms, tactics, notation                   | `Definition`, `Theorem`, `Proof`, `rewrite`, `[]`, `++` | Does the text parse?                                        |
+| Elaboration          | Rocq resolves implicit arguments, notation, coercions, universes | `Some 3` elaborates with hidden type argument           | Is there a well-typed internal term?                        |
+| Global environment   | Checked definitions/theorems are stored                          | `Nat.add_comm`, local lemmas, modules                   | What names, assumptions, hints, and opacity settings exist? |
+| Proof construction   | Tactics transform goals and build proof terms                    | `intros`, `apply`, `induction`, `lia`                   | Can a proof term be constructed?                            |
+| Kernel checking      | The trusted checker verifies terms                               | `Qed`, `Defined`                                        | Does the proof term inhabit the theorem type?               |
+| Reduction/conversion | Terms compute for definitional equality                          | `simpl`, `cbn`, `Compute`, `reflexivity`                | Are two terms convertible?                                  |
+| Build checking       | Files are checked in dependency order                            | `rocq compile`, Dune, CI                                | Does the whole development recheck?                         |
+| Extraction           | Computational content is emitted into target language            | OCaml, Haskell, Scheme extraction                       | What source-level theorem supports the extracted code?      |
+| Target runtime       | Extracted code runs under external runtime/compiler              | OCaml/Haskell program                                   | What lies outside Rocq’s proof boundary?                    |
+
+**Design meaning:** Rocq’s semantic center is *checking*, not ordinary runtime execution. A successful Rocq development is one whose definitions, theorem statements, assumptions, and proof terms are accepted by the kernel under a specific environment.
+
+**Common Pitfalls:** Do not collapse “Rocq accepted the proof,” “the extracted program runs,” and “the deployed system is correct.” These are different claims with different trust boundaries.
+
+### Syntax versus Semantics — notation, implicit arguments, coercions, elaborated terms
+
+**Core keywords:** notation, implicit arguments, coercions, elaboration, source-reading.
+
+Rocq surface syntax often hides semantic detail. Notation, implicit arguments, coercions, scopes, and typeclass/canonical-structure inference can make the source term shorter than the elaborated term.
+
+| Surface feature               | What it hides                           | Example                        | Diagnostic tool            |
+| ----------------------------- | --------------------------------------- | ------------------------------ | -------------------------- |
+| Notation                      | Underlying constant and scope           | `xs ++ ys`                     | `Locate "++".`             |
+| Implicit argument             | Omitted parameter inferred from context | `Some 3`                       | `Check @Some.`             |
+| Coercion                      | Inserted conversion                     | structure-to-carrier coercions | printing commands, `Check` |
+| Scope                         | Meaning of overloaded symbol            | `+`, `*`, list notation        | `Open Scope`, `Locate`     |
+| Section generalization        | Hidden exported parameters              | section variables              | `Check` after `End`        |
+| Typeclass/canonical inference | Inferred structure/laws                 | algebraic operations           | inspect instances/printing |
+
+Example:
+
+```coq
+Check Some.
+Check @Some.
+Check (None : option nat).
+```
+
+The visible term `Some 3` is not the whole semantic story. Rocq infers the hidden type argument `nat`.
+
+**Failure-first explanation:** The tempting mental model is “Rocq checks exactly the text I see.” The surprising behavior is that hidden arguments and notation can make the checked term richer than the source. The correct explanation is elaboration: Rocq translates surface syntax into a more explicit internal term before kernel checking.
+
+**Professional rule of thumb:** When confused, use `Check`, `Print`, `About`, `Locate`, `@`, type annotations, and printing controls before changing the proof.
+
+### Core Type-Theoretic Semantics — CIC, propositions as types, proofs as terms
+
+**Core keywords:** Calculus of Inductive Constructions, propositions as types, proofs as terms, dependent products, kernel.
+
+Rocq’s core logic is based on the Calculus of Inductive Constructions. The practical interpretation is:
+
+| Rocq object              | Type-theoretic meaning                                | Practical consequence            |
+| ------------------------ | ----------------------------------------------------- | -------------------------------- |
+| Data type                | Type inhabited by data terms                          | `nat`, `bool`, `list nat`        |
+| Proposition              | Type whose inhabitants are proofs                     | `forall n, n + 0 = n`            |
+| Theorem                  | Named proposition requiring an inhabitant             | `Theorem add_0_r : ...`          |
+| Proof                    | Term inhabiting theorem type                          | tactic script builds this term   |
+| Implication              | Function from proof of premise to proof of conclusion | `A -> B`                         |
+| Universal quantification | Dependent function type                               | `forall x : A, P x`              |
+| Existential              | Pair-like evidence: witness plus proof                | `exists x, P x`                  |
+| Inductive predicate      | Structured evidence type in `Prop`                    | `Even n`, evaluation derivations |
+| Kernel                   | Checker of typing and conversion                      | final trust point                |
+
+Example:
+
+```coq
+Theorem id_prop : forall A : Prop, A -> A.
+Proof.
+  intros A HA.
+  exact HA.
+Qed.
+```
+
+The proof term is essentially:
+
+```coq
+fun (A : Prop) (HA : A) => HA
+```
+
+This is not metaphorical. The theorem type is inhabited by a function that takes a proposition `A`, takes evidence `HA : A`, and returns that evidence.
+
+**Interdisciplinary Lens: Calculus of Inductive Constructions**
+
+| Item                      | Explanation                                                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| What it clarifies         | Why definitions, propositions, proofs, and programs live in one typed framework                                                |
+| Language feature involved | `forall`, `fun`, `Inductive`, `Fixpoint`, `Theorem`, proof terms                                                               |
+| Practical consequence     | Tactics construct proof terms; the kernel checks those terms                                                                   |
+| Limit of the lens         | CIC explains the core, but practical Rocq also depends on libraries, tactics, notation, modules, extraction, and build tooling |
+
+**Common Pitfalls:** Do not treat proof scripts as magical commands that convince Rocq. They construct terms whose types are checked.
+
+### Sorts and Universes — `Prop`, `Set`, `SProp`, `Type`, hierarchy
+
+**Core keywords:** sorts, universes, `Prop`, `Set`, `SProp`, `Type`, universe levels.
+
+The types of types in Rocq are called sorts. The Rocq documentation describes an infinite well-founded typing hierarchy of sorts with base sorts including `SProp`, `Prop`, and `Set`; `Type` is universe-polymorphic rather than a single flat universe. ([Rocq][2])
+
+| Sort       | Practical role            | Typical object                             | Caveat                                                    |
+| ---------- | ------------------------- | ------------------------------------------ | --------------------------------------------------------- |
+| `Prop`     | Logical propositions      | theorem statements, predicates             | Proofs are usually non-computational after extraction     |
+| `Set`      | Small computational types | traditional data universe                  | Less central in many modern user explanations than `Type` |
+| `SProp`    | Strict propositions       | specialized proof-irrelevance-oriented use | Advanced; not needed for most beginners                   |
+| `Type`     | General universe of types | `nat`, `list nat`, records, structures     | Actually universe-leveled                                 |
+| `Type@{u}` | Explicit universe level   | advanced polymorphic developments          | Usually hidden unless universe issues arise               |
+
+Example:
+
+```coq
+Check Prop.
+Check Set.
+Check Type.
+Check nat.
+Check forall A : Type, A -> A.
+```
+
+Universe levels prevent paradoxes that would arise from a naïve “type of all types.” In ordinary code, Rocq often hides these levels. In advanced generic libraries, mathematical hierarchies, category-theoretic abstractions, or universe-polymorphic developments, universes become visible.
+
+| Situation                   | Universe relevance                        |
+| --------------------------- | ----------------------------------------- |
+| Basic list/nat proofs       | Usually hidden                            |
+| Generic records over `Type` | Sometimes relevant                        |
+| Large algebraic hierarchies | Often relevant                            |
+| Category-like abstractions  | Often relevant                            |
+| `Type : Type` expectation   | Dangerous and rejected in normal settings |
+| Debugging universe errors   | Requires explicit universe inspection     |
+
+**Failure-first explanation:** The tempting mental model is “`Type` is just one type of all types.” The surprising behavior is universe constraints and errors in generic developments. The correct explanation is that Rocq uses a hierarchy to preserve consistency.
+
+**Common Pitfalls:** Do not add universe annotations prematurely. First understand the ordinary type error. Use explicit universe tools only when the problem is genuinely universe-related.
+
+### Kernel Checking — the trusted core and what it verifies
+
+**Core keywords:** kernel, trusted checker, proof term, assumptions, conversion, type checking.
+
+The kernel checks whether a term has a type. For theorem proving, this means checking whether a proof term inhabits the theorem statement. For definitions, it checks typing, universes, recursion constraints, and conversion where needed.
+
+| Kernel checks                    | Example                          | What it does not check                        |
+| -------------------------------- | -------------------------------- | --------------------------------------------- |
+| Term well-typedness              | `S 0 : nat`                      | Whether the model is useful                   |
+| Proof term inhabits theorem      | proof of `forall n, n = n`       | Whether theorem is the right theorem          |
+| Definitional equality/conversion | `0 + n` reduces to `n`           | Arbitrary mathematical equality without proof |
+| Inductive well-formedness        | positivity and constructor types | Whether data model is convenient              |
+| Recursive definition validity    | structural/guarded recursion     | Efficiency of algorithm                       |
+| Universe consistency             | no invalid universe cycle        | Human interpretation of abstraction           |
+| Use of assumptions               | theorem depends on environment   | External truth of axioms                      |
+
+The trusted-kernel model is why tactics can be powerful without becoming the primary trust base. A tactic may be complex, but if it generates a proof term that the kernel checks, the accepted theorem rests on kernel checking rather than on blind trust in the tactic.
+
+**Common Pitfalls:** A theorem accepted under `Axiom`, `Parameter`, or `Admitted` dependencies is checked relative to those assumptions. Kernel checking does not make unjustified assumptions true.
+
+### Conversion and Definitional Equality — reduction, normal forms, convertibility
+
+**Core keywords:** conversion, definitional equality, normal form, alpha, beta, delta, iota, zeta, eta.
+
+Rocq has conversion rules that determine whether two terms are equal by definition in CIC, also called convertible. The documentation describes conversion as using reduction and expansion rules, converting terms to normal forms, and checking syntactic equality up to alpha-conversion of bound names. ([Rocq][3])
+
+| Conversion rule     | Intuition                                 | Rocq-style example                  | Practical effect                 |                                    |
+| ------------------- | ----------------------------------------- | ----------------------------------- | -------------------------------- | ---------------------------------- |
+| Alpha-conversion    | Bound variable names do not matter        | `fun x => x` and `fun y => y`       | Names of binders irrelevant      |                                    |
+| Beta-reduction      | Function application computes             | `(fun x => S x) 0` reduces to `S 0` | Function calls reduce            |                                    |
+| Delta-reduction     | Transparent constants unfold              | `double 0` unfolds if transparent   | Definitions may compute          |                                    |
+| Iota-reduction      | Pattern match on constructor reduces      | `match true with true => 1          | false => 0 end`                  | Constructor-headed matches compute |
+| Zeta-reduction      | `let` binding unfolds                     | `let x := 1 in x + 1`               | Local definitions reduce         |                                    |
+| Eta-like principles | Extensional expansion in limited settings | depends on supported form           | Advanced; not ordinary rewriting |                                    |
+
+Example:
+
+```coq
+Definition double (n : nat) : nat := n + n.
+
+Compute double 2.
+```
+
+A theorem closed by conversion:
+
+```coq
+Theorem beta_delta_iota_example :
+  double 0 = 0.
+Proof.
+  reflexivity.
+Qed.
+```
+
+Here `reflexivity` succeeds because the two sides are convertible after unfolding and reducing.
+
+**Failure-first explanation:** The tempting mental model is “if two expressions are mathematically equal, Rocq should treat them as the same.” The surprising behavior is that `0 + n = n` may close by computation, while `n + 0 = n` needs induction or a lemma. The correct explanation is that definitional equality follows computation rules, not all mathematical truths.
+
+**Common Pitfalls:** If `reflexivity` fails, the equality may still be true propositionally. Use induction, rewriting, or library lemmas.
+
+### Propositional Equality versus Definitional Equality — `rewrite` versus reduction
+
+**Core keywords:** `=`, `eq`, propositional equality, definitional equality, `rewrite`, `reflexivity`.
+
+Definitional equality is implicit and checked by conversion. Propositional equality is explicit and written with `=`.
+
+| Equality kind                | Written?                              | Evidence needed?                   | Main tool                          | Example                |
+| ---------------------------- | ------------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------- |
+| Definitional equality        | Usually not written as a proof object | No separate theorem if convertible | `reflexivity`, `simpl`, conversion | `0 + n` reduces to `n` |
+| Propositional equality       | Written `x = y`                       | Yes, proof term required           | `rewrite`, equality lemmas         | `n + 0 = n`            |
+| Equality theorem             | Named proof                           | Yes                                | `apply`, `rewrite`                 | `Nat.add_0_r`          |
+| Transport in dependent types | Equality changes types                | Yes                                | `rewrite`, dependent elimination   | indexed vectors        |
+
+Example:
+
+```coq
+Theorem add_zero_right :
+  forall n : nat, n + 0 = n.
+Proof.
+  intros n.
+  induction n as [| n IHn].
+  - reflexivity.
+  - simpl. rewrite IHn. reflexivity.
+Qed.
+```
+
+This theorem is not solved by computation alone because addition recurses over its first argument.
+
+**Professional rule:** Before choosing a tactic, classify the equality. If it is definitional, reduction and `reflexivity` may solve it. If it is propositional, use a theorem, induction, or rewriting.
+
+**Common Pitfalls:** Overusing `simpl` when a lemma is needed wastes time and can make goals worse.
+
+### Reduction Strategies — `simpl`, `cbn`, `cbv`, `lazy`, `vm_compute`, `native_compute`
+
+**Core keywords:** reduction strategy, evaluation, computation, proof-time performance.
+
+Rocq provides different reduction strategies. The Reference Manual distinguishes ordinary evaluation commands, tactics applying conversion rules, and fast reduction tactics such as `vm_compute` and `native_compute`. ([Rocq][4])
+
+| Strategy/tool     | Informal role                                | Good use                        | Risk                              |
+| ----------------- | -------------------------------------------- | ------------------------------- | --------------------------------- |
+| `simpl`           | Simplify obvious reducible expressions       | Small proof steps               | May reduce too little or too much |
+| `cbn`             | Controlled call-by-name-style simplification | More predictable simplification | Still definition-shape dependent  |
+| `cbv`             | Call-by-value-style full reduction           | Compute closed terms            | Can unfold too aggressively       |
+| `lazy`            | Lazy reduction                               | Avoid unnecessary computation   | May be harder to predict          |
+| `Compute`         | Interactive evaluation                       | Explore definitions             | Not a theorem                     |
+| `Eval ... in ...` | Explicit evaluation strategy                 | Diagnose reduction              | Strategy choice matters           |
+| `vm_compute`      | Fast virtual-machine computation             | Large closed computations       | Proof readability may suffer      |
+| `native_compute`  | Native-code computation when available       | Very large computations         | Toolchain/environment sensitivity |
+
+Example:
+
+```coq
+Definition square (n : nat) : nat := n * n.
+
+Compute square 5.
+Eval cbn in square 5.
+Eval cbv in square 5.
+```
+
+In proof scripts:
+
+```coq
+Theorem square_0 :
+  square 0 = 0.
+Proof.
+  unfold square.
+  simpl.
+  reflexivity.
+Qed.
+```
+
+**Design tradeoff:**
+
+| Choice                    | Capability gained                          | Cost introduced               |
+| ------------------------- | ------------------------------------------ | ----------------------------- |
+| Small-step simplification | Readable proof states                      | More manual work              |
+| Aggressive reduction      | Faster closure for computation-heavy goals | Huge or unreadable goals      |
+| VM/native computation     | Performance on large computations          | Less transparent proof intent |
+| Public rewrite lemmas     | Stable abstraction                         | More theorem maintenance      |
+
+**Common Pitfalls:** `Compute` demonstrates reduction; it does not create a reusable theorem. If a computed fact matters later, state and prove a lemma or rely on conversion where appropriate.
+
+### Opacity and Transparency — `Qed`, `Defined`, unfolding, proof-checking cost
+
+**Core keywords:** opacity, transparency, `Qed`, `Defined`, conversion, proof body.
+
+Opacity affects whether a body can be unfolded during reduction. This has semantic and performance consequences.
+
+| Form                     | Transparency behavior     | Best use                                    | Risk                         |
+| ------------------------ | ------------------------- | ------------------------------------------- | ---------------------------- |
+| `Qed`                    | Opaque proof body         | Ordinary theorem proofs                     | Cannot unfold proof body     |
+| `Defined`                | Transparent body          | Computationally relevant definitions/proofs | May increase conversion cost |
+| Transparent `Definition` | Unfoldable constant       | Computation and definitional equality       | Clients may depend on body   |
+| Opaque theorem           | Abstract fact             | Stable reasoning by lemma                   | Not computational            |
+| `Admitted`               | Assumed, no checked proof | Temporary placeholder only                  | Trust debt                   |
+
+Example transparent dependent object:
+
+```coq
+Definition certified_zero : { n : nat | n = 0 }.
+Proof.
+  exists 0.
+  reflexivity.
+Defined.
+```
+
+Example opaque theorem:
+
+```coq
+Theorem zero_eq_zero :
+  0 = 0.
+Proof.
+  reflexivity.
+Qed.
+```
+
+**Failure-first explanation:** The tempting mental model is “`Qed` and `Defined` both just finish proofs.” The surprising behavior is that later computation may unfold one but not the other. The correct explanation is that `Defined` keeps the body transparent, while `Qed` seals it.
+
+**Professional rule:** Use `Qed` for ordinary propositions. Use `Defined` for definitions or proofs whose computational content must remain available.
+
+**Common Pitfalls:** Making too much transparent can slow conversion and expose implementation details. Making computational objects opaque can block expected reduction.
+
+### Inductive Types and Eliminators — constructors, induction principles, pattern matching
+
+**Core keywords:** `Inductive`, constructors, eliminators, induction principles, positivity, pattern matching.
+
+The Rocq documentation describes `Inductive` as defining types by cases over the form of inhabitants, including recursive constructor arguments, and notes that Rocq generates induction principles such as `_rect`, `_ind`, `_rec`, and `_sind` when possible. It also states that constructor types must satisfy a positivity condition to ensure soundness. ([Rocq][5])
+
+| Inductive feature    | Semantic role                                 | Practical consequence                       |
+| -------------------- | --------------------------------------------- | ------------------------------------------- |
+| Constructors         | Legal ways to build inhabitants               | Case analysis follows constructors          |
+| Pattern matching     | Eliminates an inductive value                 | Computation by constructor cases            |
+| Induction principle  | Recursion/proof principle generated from type | `induction` invokes it                      |
+| Positivity condition | Prevents unsound definitions                  | Some recursive type shapes rejected         |
+| Indexed inductive    | Type indices refine cases                     | Dependent pattern matching/equality issues  |
+| Inductive predicate  | Evidence constructors in `Prop`               | Proofs can induct on evidence               |
+| Recursive argument   | Supports structural recursion/induction       | Recursive functions/proofs follow structure |
+
+Example:
+
+```coq
+Inductive bit : Type :=
+| B0
+| B1.
+```
+
+Generated reasoning is simple: to prove a property about all bits, prove it for `B0` and `B1`.
+
+```coq
+Theorem bit_cases :
+  forall b : bit, b = B0 \/ b = B1.
+Proof.
+  intros b.
+  destruct b.
+  - left. reflexivity.
+  - right. reflexivity.
+Qed.
+```
+
+Recursive example:
+
+```coq
+Inductive natlist : Type :=
+| NNil
+| NCons : nat -> natlist -> natlist.
+```
+
+The recursive constructor `NCons` gives rise to an induction hypothesis for the tail.
+
+**Common Pitfalls:** An inductive definition is not only a data declaration. It determines future proof structure. Poor inductive design creates poor induction principles.
+
+### Recursion and Termination — `Fixpoint`, guard condition, structural recursion
+
+**Core keywords:** `Fixpoint`, `fix`, structural recursion, termination, guard condition, consistency.
+
+Rocq functions over recursive inductive data are usually defined with `Fixpoint` or the underlying `fix` expression. The documentation states that functions on inductive types generally must be defined recursively using `fix` or the `Fixpoint` command. ([Rocq][5])
+
+| Recursion feature      | Meaning                                            | Example                          | Pitfall                                   |
+| ---------------------- | -------------------------------------------------- | -------------------------------- | ----------------------------------------- |
+| Structural recursion   | Recursive call on smaller subterm                  | tail of list, predecessor of nat | Human-obvious termination may be rejected |
+| Guard condition        | Rocq checks recursive calls are guarded/decreasing | `Fixpoint` validation            | Complex dependent recursion hard          |
+| Totality               | Accepted functions terminate in core logic         | consistency protection           | No arbitrary general recursion            |
+| Well-founded recursion | Recursion justified by measure/relation            | advanced algorithms              | More proof obligations                    |
+| Accumulator recursion  | Structurally recursive but invariant changes       | `rev_acc`                        | Need generalized theorem                  |
+| Mutual recursion       | Several functions/types together                   | syntax families                  | More complex principles                   |
+
+Example accepted recursion:
+
+```coq
+Fixpoint sum_list (xs : list nat) : nat :=
+  match xs with
+  | [] => 0
+  | x :: xs' => x + sum_list xs'
+  end.
+```
+
+Example theorem aligned with recursion:
+
+```coq
+Theorem sum_list_app :
+  forall xs ys : list nat,
+    sum_list (xs ++ ys) = sum_list xs + sum_list ys.
+Proof.
+  intros xs ys.
+  induction xs as [| x xs IHxs].
+  - simpl. reflexivity.
+  - simpl. rewrite IHxs. lia.
+Qed.
+```
+
+**Design meaning:** Termination checking is part of logical soundness. If arbitrary nonterminating recursive definitions were allowed, the logic could collapse.
+
+**Failure-first explanation:** The tempting mental model is “Rocq should accept every algorithm I know terminates.” The surprising behavior is rejection of non-obviously-structural recursion. The correct explanation is that Rocq needs a syntactic or proof-supported termination argument.
+
+**Common Pitfalls:** Do not fight the guard checker with convoluted definitions. First try changing the data structure, recursion argument, or helper function. Use well-founded recursion only when structurally recursive definitions are genuinely inadequate.
+
+### Coinduction and Corecursion — infinite structures, guarded productivity
+
+**Core keywords:** `CoInductive`, `cofix`, streams, productivity, guardedness.
+
+Rocq also supports coinductive types and corecursive definitions. Inductive types describe finite well-founded construction; coinductive types can describe potentially infinite objects such as streams. The same documentation contrasts inductive types such as natural numbers, lists, and well-founded trees with `CoInductive` types such as streams whose constructors can be infinitely nested. ([Rocq][5])
+
+| Concept              | Inductive            | Coinductive                     |
+| -------------------- | -------------------- | ------------------------------- |
+| Structure            | Finite/well-founded  | Potentially infinite/productive |
+| Definition           | `Inductive`          | `CoInductive`                   |
+| Recursive term       | `fix` / `Fixpoint`   | `cofix`                         |
+| Main proof principle | induction            | coinduction                     |
+| Safety condition     | termination          | productivity/guardedness        |
+| Example              | lists, trees, syntax | streams, infinite behaviors     |
+
+**Common Pitfalls:** Coinduction is not just “recursion that may not terminate.” It has its own productivity discipline. For most theorem-proving and certified-programming beginners, inductive reasoning is much more central than coinduction.
+
+### Binding, Scope, and Substitution Semantics — variables, context, sections, hypotheses
+
+**Core keywords:** binding, context, scope, substitution, section variables, hypotheses.
+
+A Rocq term is checked in a context. The context contains local variables and hypotheses. Top-level definitions are checked in the global environment. Sections create local contexts that are generalized when closed.
+
+| Binding form     | Semantic role                    | Example             | Boundary effect                   |
+| ---------------- | -------------------------------- | ------------------- | --------------------------------- |
+| Function binder  | Introduces term variable         | `fun x => ...`      | Local to body                     |
+| Universal binder | Introduces arbitrary value/proof | `forall x : A, P x` | Proof by `intros`                 |
+| Let binder       | Local definition                 | `let x := t in u`   | Reduces by zeta                   |
+| Section variable | Shared local parameter           | `Variable A : Type` | Generalized after `End`           |
+| Hypothesis       | Local proof assumption           | `Hypothesis H : P`  | Exported theorem may depend on it |
+| Module namespace | Qualified binding                | `M.f`               | Name boundary                     |
+| Implicit binder  | Hidden parameter                 | `{A : Type}`        | Source-reading complexity         |
+
+Example:
+
+```coq
+Section S.
+  Variable A : Type.
+  Variable x : A.
+
+  Definition const_x (y : A) : A := x.
+End S.
+
+Check const_x.
+```
+
+After `End S`, `const_x` is generalized over `A` and `x`.
+
+**Common Pitfalls:** A theorem proved inside a section may export with more parameters than expected. Always inspect exported types.
+
+### Evaluation Order and Call Strategy — pure terms, reduction, proof-time computation
+
+**Core keywords:** evaluation, call strategy, purity, reduction, normalization.
+
+Rocq’s core term language is pure. There is no hidden mutation or I/O in Gallina definitions. Evaluation is reduction of terms, and different tactics/commands choose different strategies.
+
+| Ordinary-language concept | Rocq analogue                                   | Important difference                            |
+| ------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| Function call             | Beta-reduction/application                      | Pure and total in accepted core                 |
+| Loop                      | Structural recursion                            | Must satisfy termination discipline             |
+| Branch                    | Pattern matching / boolean `if`                 | Condition for `if` is `bool`                    |
+| Runtime exception         | Usually explicit data such as `option`/`result` | No ordinary exception mechanism in Gallina core |
+| Mutable state             | State-passing model or relation                 | No implicit mutation                            |
+| Side effect               | Modeled/extracted/assumed                       | Not core Gallina behavior                       |
+| Lazy/eager evaluation     | Reduction strategies                            | Chosen for proof/checking, not app runtime      |
+| Runtime execution         | Extraction target runtime                       | Outside kernel guarantee                        |
+
+**Design meaning:** The semantics of a Rocq definition is closer to a pure total functional term than to an effectful procedure. Runtime execution becomes relevant after extraction, inside plugins, or in the implementation of the prover itself.
+
+**Common Pitfalls:** Do not infer target-language performance from `Compute` alone. `Compute` is proof-environment reduction, not a full performance model for extracted OCaml/Haskell code.
+
+### Pattern Matching Semantics — eliminators, dependent matches, branch refinement
+
+**Core keywords:** `match`, eliminator, branch refinement, dependent pattern matching, equality.
+
+Pattern matching eliminates an inductive value. In non-dependent cases, this resembles ML/Haskell pattern matching. In dependent cases, each branch can refine type information, which may create equality obligations.
+
+Example simple match:
+
+```coq
+Definition pred_opt (n : nat) : option nat :=
+  match n with
+  | 0 => None
+  | S k => Some k
+  end.
+```
+
+Dependent-style issue:
+
+```coq
+Inductive vec (A : Type) : nat -> Type :=
+| vnil : vec A 0
+| vcons : forall n : nat, A -> vec A n -> vec A (S n).
+```
+
+Pattern matching on `vec A n` can refine what `n` must be in each branch. The `vnil` branch corresponds to `n = 0`; the `vcons` branch corresponds to `n = S k` for some `k`. This is powerful but can make proof goals contain dependent equalities.
+
+| Match kind              | Complexity    | Example                  | Typical issue                                |
+| ----------------------- | ------------- | ------------------------ | -------------------------------------------- |
+| Boolean match           | Low           | `if b then ... else ...` | `Prop` versus `bool` confusion               |
+| Nat/list match          | Low to medium | recursive functions      | right recursion argument                     |
+| Indexed inductive match | High          | vectors, typed syntax    | equality/index transport                     |
+| Match on proof evidence | Medium/high   | inductive predicates     | elimination restrictions and proof relevance |
+| Nested match            | Medium        | parser/checker functions | preserve branch equations in proofs          |
+
+**Common Pitfalls:** When destructing a complex expression in a proof, use `destruct ... eqn:H` if the branch equation will matter.
+
+### Exceptions and Error Semantics — explicit failure, not hidden exception flow
+
+**Core keywords:** errors, `option`, `result`, `False`, proof failure, development failure.
+
+Gallina-level failure is usually represented explicitly. There is no ordinary exception mechanism as the default semantic model for pure definitions.
+
+| Failure kind                  | Rocq representation                  | Example                  | Meaning                       |
+| ----------------------------- | ------------------------------------ | ------------------------ | ----------------------------- |
+| Computation may fail          | `option A`                           | `head_opt xs`            | recoverable absence           |
+| Computation fails with reason | `result E A`                         | parser result            | recoverable explained failure |
+| Invalid input impossible      | proof precondition or dependent type | nonzero divisor          | caller must supply evidence   |
+| Logical contradiction         | `False`                              | `Some x = None -> False` | impossible evidence           |
+| Proof tactic fails            | no proof-state transformation        | `rewrite` mismatch       | development-time failure      |
+| Type checking fails           | rejected term                        | wrong argument type      | static rejection              |
+| Assumed gap                   | `Admitted`                           | unproved theorem         | trust debt                    |
+
+Example:
+
+```coq
+Definition safe_head {A : Type} (xs : list A) : option A :=
+  match xs with
+  | [] => None
+  | x :: _ => Some x
+  end.
+```
+
+The empty case is not an exception or contradiction. It is a valid output.
+
+**Common Pitfalls:** Do not encode normal failure as `False`. Use `False` for logical impossibility, not ordinary failed lookup or parsing.
+
+### Effects and Resources — pure core, modeled effects, external wrappers
+
+**Core keywords:** effects, resources, state, traces, extraction boundary, external systems.
+
+Rocq’s core definitions are pure. Effects such as I/O, mutation, randomness, concurrency, and resource management must be modeled, extracted into an external setting, or assumed through an interface.
+
+| Effect/resource        | Rocq-level strategy                  | Example               | Boundary                              |
+| ---------------------- | ------------------------------------ | --------------------- | ------------------------------------- |
+| Mutable state          | state-passing function or relation   | `state -> state`      | model adequacy                        |
+| I/O                    | traces or external wrapper           | list of events        | wrapper not verified unless modeled   |
+| Randomness             | nondeterministic/probabilistic model | relation/distribution | property depends on model             |
+| Heap/resource          | separation logic or state model      | heap assertions       | specialized library                   |
+| File/network           | abstract protocol model              | messages/events       | operational environment outside proof |
+| Target runtime effects | extracted wrapper                    | OCaml/Haskell I/O     | external trust                        |
+
+Example pure state transition:
+
+```coq
+Record state : Type := {
+  count : nat
+}.
+
+Definition tick (s : state) : state :=
+  {| count := S (count s) |}.
+
+Theorem tick_spec :
+  forall s, count (tick s) = S (count s).
+Proof.
+  intros s.
+  reflexivity.
+Qed.
+```
+
+**Design meaning:** Rocq verifies the model you write. If a resource protocol or external effect matters, it must be included in the model or identified as an assumption.
+
+**Common Pitfalls:** A theorem about a pure core function does not verify the I/O wrapper, operating system, network behavior, or deployment environment.
+
+### Memory Model — Gallina values, proof terms, prover implementation, extracted runtime
+
+**Core keywords:** memory, allocation, proof term size, extraction, OCaml/Haskell runtime.
+
+Rocq does not expose a C-like or Rust-like memory model for Gallina terms. For the user, memory concerns appear at several distinct layers:
+
+| Layer                        | Memory/cost issue                          | Example                   | Who manages it?             |
+| ---------------------------- | ------------------------------------------ | ------------------------- | --------------------------- |
+| Gallina semantic model       | Pure terms and inductive values            | lists, trees, proof terms | logical model               |
+| Kernel/prover implementation | Internal representation and checking       | large terms, universes    | Rocq implementation/runtime |
+| Proof development            | Proof term size and reduction cost         | huge automation output    | proof engineer              |
+| Build system                 | compiled `.vo` artifacts, dependency graph | large project builds      | tooling                     |
+| Extraction target            | target-language allocation/GC              | OCaml/Haskell lists       | target runtime              |
+| External wrapper             | I/O buffers, resources                     | file/network handling     | external program            |
+
+| Operation/pattern              | Rocq-level cost           | Hidden cost                       | Professional response                    |
+| ------------------------------ | ------------------------- | --------------------------------- | ---------------------------------------- |
+| Large inductive data in proofs | Reduction/checking time   | Massive normal forms              | Avoid unnecessary computation            |
+| Large proof terms              | Kernel checking time      | Slow `Qed`/build                  | Use helper lemmas and opacity            |
+| Transparent definitions        | Conversion unfolds bodies | Slow simplification               | Use `Qed` for theorem proofs             |
+| Automation-generated proofs    | Potentially huge terms    | Hard to debug/check               | Bound automation                         |
+| Large imports                  | Environment load cost     | More hints/instances              | Import narrowly                          |
+| Extracted lists/nats           | Target runtime allocation | Peano naturals may be inefficient | Use extraction mappings when appropriate |
+| Dependent records              | Elaborator/equality cost  | Proof-field complexity            | Use only for central invariants          |
+
+**Common Pitfalls:** Do not reason about Gallina `nat` as a machine integer. Do not assume extracted Peano naturals are appropriate for high-performance numeric computation without considering extraction mappings and target-language representation.
+
+### Concurrency and Parallelism — not core Gallina, but modelable
+
+**Core keywords:** concurrency, parallelism, interleaving, traces, build parallelism, extraction.
+
+Rocq’s core Gallina language does not provide a Go/Rust/Java-style concurrency runtime. Concurrency enters Rocq in three main ways:
+
+| Context                        | Meaning                                 | Rocq approach                                 |
+| ------------------------------ | --------------------------------------- | --------------------------------------------- |
+| Formalizing concurrent systems | Model threads, schedules, traces, locks | inductive relations, traces, invariants       |
+| Verifying concurrent programs  | Use specialized logics/libraries        | separation logic, rely/guarantee-style models |
+| Extracted code concurrency     | Target-language concurrency             | outside core proof unless modeled             |
+| Prover/build parallelism       | Tooling-level performance               | not Gallina semantics                         |
+| Tactic/plugin execution        | Implementation behavior                 | external/tooling concern                      |
+
+Example concurrency model sketch:
+
+```coq
+Inductive event : Type :=
+| Read
+| Write.
+
+Definition trace := list event.
+
+Definition no_write (tr : trace) : Prop :=
+  forall e, In e tr -> e <> Write.
+```
+
+This models traces as data. It does not run concurrent code. To verify real concurrent behavior, the model must represent scheduling, shared state, interference, and resource ownership.
+
+**Common Pitfalls:** Proving a property of a sequential model does not verify a concurrent implementation. The schedule/interleaving model must be explicit.
+
+### Extraction Semantics — certified source, erased proofs, target runtime
+
+**Core keywords:** extraction, OCaml, Haskell, Scheme, proof erasure, target runtime.
+
+The Rocq extraction manual describes extraction commands as used to build certified and relatively efficient functional programs from Rocq functions or proofs of specifications, and it lists OCaml, Haskell, and Scheme as output languages. ([Rocq][6])
+
+| Extraction question     | Rocq-side answer                                      | Boundary caveat                                |
+| ----------------------- | ----------------------------------------------------- | ---------------------------------------------- |
+| What is extracted?      | Computational content of definitions/proofs           | `Prop` proofs are generally not runtime checks |
+| Which languages?        | OCaml, Haskell, Scheme according to extraction docs   | Target support and maturity vary               |
+| What is certified?      | The source-level theorem about Rocq definitions       | Only the stated theorem                        |
+| What is not certified?  | Target compiler/runtime, wrappers, external libraries | Must be trusted or separately verified         |
+| What about performance? | Not guaranteed by theorem                             | Requires target-level profiling                |
+| What about I/O?         | Usually wrapper/external code                         | Model it or state boundary                     |
+
+Example verified core:
+
+```coq
+Definition verified_filter_nonempty {A : Type} (xs : list A) : bool :=
+  match xs with
+  | [] => false
+  | _ :: _ => true
+  end.
+
+Theorem verified_filter_nonempty_sound :
+  forall (A : Type) (xs : list A),
+    verified_filter_nonempty xs = true ->
+    exists x xs', xs = x :: xs'.
+Proof.
+  intros A xs H.
+  destruct xs as [| x xs'].
+  - simpl in H. discriminate H.
+  - exists x, xs'. reflexivity.
+Qed.
+```
+
+If the function is extracted, the theorem supports a source-level property of the function. It does not verify the entire application that calls the extracted function.
+
+**Common Pitfalls:** Extraction is not a magic bridge from theorem to full deployment. State the verified core, assumptions, target runtime, and wrapper boundary.
+
+### Proof Checking versus Program Execution — different cost models
+
+**Core keywords:** proof checking, execution, build time, runtime, conversion.
+
+Rocq has several distinct notions of “running”:
+
+| Activity              | What runs/checks?          | Cost model                                      |
+| --------------------- | -------------------------- | ----------------------------------------------- |
+| `Compute t`           | Reduces a Rocq term        | Reduction strategy and term size                |
+| `simpl`/`cbn`         | Reduces inside proof state | Local conversion complexity                     |
+| `Qed`                 | Kernel checks proof term   | Proof term size, universes, conversion          |
+| `rocq compile file.v` | Checks full file           | imports, proofs, dependencies                   |
+| Dune/CI build         | Checks project             | dependency graph, parallelism, package versions |
+| Extraction            | Generates target code      | extraction pipeline                             |
+| Target execution      | Runs extracted code        | target language/runtime/compiler                |
+
+**Cost model table:**
+
+| Operation or pattern         | Usual cost               | Hidden cost                     | How to detect it             | When it matters             | When not to optimize prematurely |
+| ---------------------------- | ------------------------ | ------------------------------- | ---------------------------- | --------------------------- | -------------------------------- |
+| `reflexivity` on large terms | Conversion               | Huge normal forms               | slow tactic                  | generated computations      | small examples                   |
+| `simpl` everywhere           | Reduction                | Goal expansion                  | unreadable/slow proof states | large recursive definitions | tiny proofs                      |
+| `rewrite` chains             | Matching and replacement | Wrong orientation/repeated work | proof slowdown               | large goals                 | small equalities                 |
+| `auto`/`eauto`               | Search                   | hint explosion                  | tactic delay                 | large contexts              | trivial leaf goals               |
+| `lia`                        | Arithmetic solving       | large arithmetic contexts       | solver delay                 | many numeric goals          | simple arithmetic                |
+| `Qed` after automation       | Kernel proof checking    | huge generated proof term       | slow close/build             | large proof scripts         | small proofs                     |
+| Transparent proof body       | Conversion unfolds it    | long reduction paths            | slow `cbn`/conversion        | dependent computation       | ordinary theorems                |
+| Dependent pattern matching   | Elaboration/equality     | transports and casts            | complex goals                | indexed data                | simple data                      |
+| Large library imports        | environment loading      | hints/instances/scopes          | slow file startup            | big projects                | one-off exploration              |
+| Extraction                   | target code generation   | external runtime assumptions    | target build issues          | certified programs          | proof-only theory                |
+
+**Professional rule:** Optimize proof structure before optimizing tactics. The biggest wins often come from better lemmas, opacity decisions, smaller imports, and bounded automation.
+
+### Universe and Conversion Failures — diagnosis, not panic
+
+**Core keywords:** universe error, conversion failure, implicit arguments, dependent type, diagnostics.
+
+Advanced Rocq failures often look mysterious because they involve hidden arguments, universes, coercions, or dependent equality.
+
+| Symptom                                     | Possible cause                         | Diagnostic move                      |
+| ------------------------------------------- | -------------------------------------- | ------------------------------------ |
+| Type mismatch despite similar printed terms | Hidden arguments/scopes differ         | Use `Check`, `Set Printing All`      |
+| Rewrite fails                               | No matching subterm or wrong direction | Inspect goal exactly                 |
+| Universe inconsistency                      | Type-level abstraction too strong      | Print universes, reduce polymorphism |
+| `reflexivity` fails                         | Terms not convertible                  | Try `cbn`, inspect definitions       |
+| Dependent match fails                       | Branch types do not align              | Add return clause or helper lemma    |
+| `Fixpoint` rejected                         | Guard condition not satisfied          | Reorganize recursion                 |
+| `simpl` unfolds too much                    | Transparent constants exposed          | Use `cbn` or keep definitions opaque |
+| Automation slow                             | Search space too large                 | Bound hints/depth                    |
+
+**Common Pitfalls:** Do not assume every advanced error is a universe problem. Most are still ordinary type, notation, implicit-argument, or theorem-shape problems.
+
+### Soundness Boundaries — kernel, axioms, plugins, extraction, implementation
+
+**Core keywords:** soundness, trust boundary, kernel, axioms, plugins, extraction.
+
+Rocq’s high confidence depends on knowing which components are trusted.
+
+| Component                 | Trust role                                   | Risk                                          |
+| ------------------------- | -------------------------------------------- | --------------------------------------------- |
+| Kernel                    | Checks final terms                           | Central trusted base                          |
+| Conversion checker        | Determines definitional equality             | Part of kernel trust                          |
+| Guard/positivity checkers | Protect consistency for recursion/inductives | Part of soundness-critical machinery          |
+| Tactics                   | Generate proof terms                         | Final terms checked, but tactic may be opaque |
+| Automation solvers        | Generate proofs                              | Kernel still checks generated proof           |
+| `Axiom`/`Parameter`       | User assumptions                             | Can invalidate claims if false/inconsistent   |
+| `Admitted`                | Unchecked theorem placeholder                | Trust debt                                    |
+| Plugins                   | External compiled extensions                 | Trust depends on plugin behavior/interface    |
+| Extraction                | Produces target code                         | Target runtime/compiler outside kernel        |
+| Build tooling             | Rechecks files                               | Environment/reproducibility concern           |
+
+**Failure-first explanation:** The tempting mental model is “Rocq proves everything automatically once code compiles.” The correct model is “Rocq checks derivations from the current environment.” If the environment contains axioms, admissions, or unmodeled external behavior, those remain part of the claim.
+
+**Common Pitfalls:** A theorem with hidden assumptions can look stronger than it is. Audit assumptions for serious results.
+
+### Runtime Comparison with Adjacent Languages — what transfers and what does not
+
+**Core keywords:** runtime comparison, Haskell, OCaml, Lean, Agda, Rust, Python.
+
+| Source-language mental model | What transfers to Rocq                                 | What changes                                   | Better Rocq model                             |
+| ---------------------------- | ------------------------------------------------------ | ---------------------------------------------- | --------------------------------------------- |
+| Haskell pure functions       | Algebraic data, recursion, higher-order functions      | Rocq enforces totality and proof checking      | Pure total terms plus proofs                  |
+| OCaml modules                | Namespaces, abstraction, extraction target familiarity | Rocq modules carry theorem APIs                | Modules export laws, not just functions       |
+| Lean theorem proving         | Proof states, tactics, dependent types                 | Syntax/elaboration/library differ              | Transfer concepts, not scripts                |
+| Agda dependent programming   | Indexed data and total functions                       | Rocq tactic culture is stronger                | Combine terms and tactics                     |
+| Rust safety types            | Invalid states unrepresentable                         | Rocq uses explicit proof evidence              | Balance dependent invariants and proof burden |
+| Python runtime scripting     | Interactive exploration                                | No dynamic runtime execution model for Gallina | Query/check/reduce, not script side effects   |
+| Java/C# exceptions           | Error handling discipline                              | Failure is explicit data or logic              | Use `option`, `result`, relations             |
+
+**Common Pitfalls:** Do not import target-language runtime assumptions into Rocq. Extracted OCaml/Haskell behavior is not the same as Gallina reduction.
+
+### Language-Specific Cost Model — Rocq proof and computation costs
+
+**Core keywords:** cost model, allocation, sharing, proof term, conversion, extraction, build time.
+
+Rocq’s cost model is language-specific. The most important costs are not ordinary object allocation or thread scheduling, but proof checking, reduction, elaboration, automation, imports, universe constraints, and extraction boundaries.
+
+| Operation or pattern      | Usual cost                | Hidden cost                        | How to detect it         | When it matters             | When not to optimize prematurely |
+| ------------------------- | ------------------------- | ---------------------------------- | ------------------------ | --------------------------- | -------------------------------- |
+| Large proof term          | Kernel checking time      | Slow `Qed` and build               | command delay            | large libraries             | small local proof                |
+| Heavy `auto`/`eauto`      | Search                    | exponential-like search spaces     | tactic hangs/slows       | large contexts              | trivial proposition              |
+| `lia` on huge context     | Solver time               | many irrelevant hypotheses         | slow arithmetic proof    | arithmetic-heavy proof      | simple goal                      |
+| Repeated `simpl`          | Reduction                 | expands definitions                | huge goals               | complex functions           | short proof                      |
+| Transparent definitions   | Conversion unfolds them   | proof-checking slowdown            | slow `reflexivity`/`cbn` | large computation           | ordinary theorem                 |
+| `Defined` proof objects   | More unfolding potential  | abstraction loss                   | conversion surprises     | computational witnesses     | noncomputational proofs          |
+| Dependent records         | Elaboration/equality cost | proof-field equality               | difficult goals          | invariant-heavy APIs        | simple validation                |
+| Vectors/indexed types     | Index arithmetic          | transport obligations              | equality subgoals        | fixed-size correctness      | ordinary sequence code           |
+| Large imports             | Environment size          | hints/scopes/instances             | slow file load           | large project               | small tutorial                   |
+| Rewrite databases         | Normalization             | rewrite loops                      | slow/hanging tactic      | normalization-heavy library | few manual rewrites              |
+| Extraction of Peano `nat` | Target runtime allocation | inefficient numeric representation | target profiling         | performance-critical code   | proof-only artifact              |
+| Build dependency graph    | Rechecking files          | broad invalidation                 | CI/build times           | large projects              | one-file examples                |
+| Plugins/native compute    | External/toolchain cost   | compatibility/trust boundary       | build/runtime issues     | specialized automation      | basic proofs                     |
+
+**Professional rule:** First optimize theorem shape and proof structure. Then optimize automation, opacity, imports, and reduction. Only after extraction should target-language runtime performance dominate.
+
+### Failure-First Semantics Index — central surprises
+
+**Core keywords:** failure-first learning, semantic surprises, diagnostics.
+
+| Tempting wrong model                         | Surprising behavior                                         | Correct semantic explanation                          | Professional rule                  |
+| -------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------- |
+| Rocq runs programs like an app runtime       | Definitions reduce, proofs check, extraction runs elsewhere | Rocq is primarily a checker/reducer/proof environment | Separate proof-time and runtime    |
+| The visible source is the full term          | Hidden arguments/scopes/coercions matter                    | Elaboration creates explicit internal terms           | Use `Check`, `@`, printing tools   |
+| All true equalities reduce                   | `n + 0 = n` needs induction                                 | Definitional equality is computation, not all math    | Classify equality first            |
+| `simpl` proves math                          | It only reduces definitions                                 | Propositional facts need lemmas                       | Use rewrite/induction              |
+| `Qed` and `Defined` are equivalent           | Transparency differs                                        | `Defined` leaves body unfoldable                      | Choose opacity intentionally       |
+| Any terminating algorithm should be accepted | Some are rejected                                           | Rocq needs structural/proof-supported termination     | Design recursion for guard checker |
+| `Prop` is boolean                            | Cannot branch on arbitrary proposition                      | `Prop` is proof-bearing; `bool` is data               | Use bridge lemmas                  |
+| Extraction verifies deployment               | Only source-level core is certified                         | Runtime/wrapper outside theorem                       | State extraction boundary          |
+| Automation is the trusted proof              | Kernel checks generated term                                | Tactic is construction mechanism                      | Trust kernel, audit assumptions    |
+| Type-correct means semantically adequate     | Wrong spec can be proved                                    | Rocq checks formal derivability                       | Review theorem statements          |
