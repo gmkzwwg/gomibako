@@ -1324,7 +1324,7 @@ Create two files:
 | `index.html` | Provides semantic document structure                                     |
 | `styles.css` | Provides layout, typography, color, interaction, and responsive behavior |
 
-```html id="pgk5w8"
+```html
 <!-- index.html -->
 <!doctype html>
 <html lang="en">
@@ -1343,7 +1343,7 @@ Create two files:
 </html>
 ```
 
-```css id="eihv2r"
+```css
 /* styles.css */
 *,
 *::before,
@@ -1366,7 +1366,7 @@ body {
 
 Open `index.html` directly in a browser or serve it with a small local server:
 
-```bash id="gqjrb2"
+```bash
 python3 -m http.server 8000
 ```
 
@@ -1378,7 +1378,7 @@ Then visit `http://localhost:8000`.
 
 Start with a minimal professional baseline. The goal is not to erase all browser defaults; the goal is to make sizing predictable, establish typography, and create a readable page shell.
 
-```css id="dxo7wb"
+```css
 /* styles.css */
 
 /* [style] Predictable sizing across normal elements and pseudo-elements. */
@@ -1447,7 +1447,7 @@ The first debugging workflow is simple: inspect the element, check matched rules
 
 Useful temporary debugging CSS:
 
-```css id="jid34e"
+```css
 /* Fragment: add this temporarily to inspect layout boundaries. */
 .debug-layout * {
   outline: 1px solid color-mix(in oklch, red, transparent 40%);
@@ -1456,7 +1456,7 @@ Useful temporary debugging CSS:
 
 Then add the class to the root element while debugging:
 
-```html id="w27g6d"
+```html
 <body class="debug-layout">
   ...
 </body>
@@ -1484,7 +1484,7 @@ A reliable CSS workflow starts from the document and moves toward presentation. 
 
 A practical file skeleton:
 
-```css id="tqt0p5"
+```css
 @layer reset, tokens, base, layout, components, utilities;
 
 /* 1. Reset */
@@ -1578,7 +1578,7 @@ A useful token hierarchy:
 | State token     | `--button-bg-hover` | Interactive variant                |
 | Runtime token   | `--progress`        | Value passed by JS or inline style |
 
-```css id="zjag02"
+```css
 @layer tokens {
   :root {
     --blue-600: oklch(58% 0.18 255);
@@ -1617,7 +1617,7 @@ A useful token hierarchy:
 
 HTML context:
 
-```html id="u1yzkt"
+```html
 <main class="page" data-theme="warm">
   <button class="button">Save changes</button>
 </main>
@@ -1629,7 +1629,7 @@ HTML context:
 
 A `stack` is one of the most useful layout primitives. It creates vertical spacing between children without assigning margins to every component.
 
-```css id="v6e7fz"
+```css
 @layer layout {
   .stack {
     display: flex;
@@ -1641,7 +1641,7 @@ A `stack` is one of the most useful layout primitives. It creates vertical spaci
 
 HTML context:
 
-```html id="wvlpbe"
+```html
 <section class="stack" style="--stack-gap: 1.5rem">
   <h2>Account settings</h2>
   <p>Manage profile, security, and notification preferences.</p>
@@ -1665,7 +1665,7 @@ When to use it:
 
 A `cluster` lays out items in a row that can wrap. It is useful for tags, toolbar actions, metadata, and button groups.
 
-```css id="rm129x"
+```css
 @layer layout {
   .cluster {
     display: flex;
@@ -1678,7 +1678,7 @@ A `cluster` lays out items in a row that can wrap. It is useful for tags, toolba
 
 HTML context:
 
-```html id="dpv6v3"
+```html
 <div class="cluster" aria-label="Article tags">
   <a class="tag" href="/tags/css">CSS</a>
   <a class="tag" href="/tags/layout">Layout</a>
@@ -1686,7 +1686,7 @@ HTML context:
 </div>
 ```
 
-```css id="f5s46o"
+```css
 @layer components {
   .tag {
     border: 1px solid color-mix(in oklch, currentColor, transparent 70%);
@@ -1708,7 +1708,7 @@ HTML context:
 
 A button component should style default, hover, focus, active, and disabled states. It should preserve keyboard focus and avoid motion that violates user preferences.
 
-```css id="mqxcvm"
+```css
 @layer components {
   .button {
     display: inline-flex;
@@ -1770,7 +1770,7 @@ A button component should style default, hover, focus, active, and disabled stat
 
 HTML context:
 
-```html id="mf47kv"
+```html
 <button class="button" type="button">Save changes</button>
 <a class="button" href="/billing">Manage billing</a>
 ```
@@ -1783,7 +1783,7 @@ Use a real `<button>` for actions and an `<a>` for navigation. Styling an anchor
 
 Container queries allow a component to adapt to its parent container instead of the viewport. This makes cards reusable in sidebars, grids, modals, and full-width layouts.
 
-```html id="a50sfc"
+```html
 <article class="product-card">
   <img class="product-card__image" src="product.jpg" alt="Black ergonomic office chair">
   <div class="product-card__body stack">
@@ -1794,7 +1794,7 @@ Container queries allow a component to adapt to its parent container instead of 
 </article>
 ```
 
-```css id="v0z8kk"
+```css
 @layer components {
   .product-card {
     container-type: inline-size;
@@ -1846,7 +1846,7 @@ This component adapts when its own available inline size crosses `34rem`. It doe
 
 A responsive card grid should rely on intrinsic sizing rather than many breakpoints.
 
-```html id="ksy9c7"
+```html
 <section class="section stack">
   <div class="section__header">
     <h2>Featured products</h2>
@@ -1861,7 +1861,7 @@ A responsive card grid should rely on intrinsic sizing rather than many breakpoi
 </section>
 ```
 
-```css id="d9oky4"
+```css
 @layer layout {
   .card-grid {
     display: grid;
@@ -1887,7 +1887,7 @@ Why this works:
 
 CSS should style form states, but semantic HTML and accessible text must carry the actual meaning.
 
-```html id="uncdvp"
+```html
 <form class="form stack" action="/subscribe" method="post">
   <div class="field">
     <label class="field__label" for="email">Email address</label>
@@ -1907,7 +1907,7 @@ CSS should style form states, but semantic HTML and accessible text must carry t
 </form>
 ```
 
-```css id="crcdyn"
+```css
 @layer components {
   .field {
     display: grid;
@@ -1967,7 +1967,7 @@ CSS conditional logic is declarative. Instead of `if` statements, CSS uses condi
 | Attribute selector       | Does this element have this attribute/value?           |
 | Custom property fallback | Is this value available?                               |
 
-```css id="pcd7tx"
+```css
 /* [portability] Fallback first. */
 .alert {
   border-inline-start: 4px solid currentColor;
@@ -2000,14 +2000,14 @@ CSS conditional logic is declarative. Instead of `if` statements, CSS uses condi
 
 Professional CSS separates reusable component rules from narrow utility rules. A component should own its internal styling; utilities should make small, predictable adjustments.
 
-```html id="o76x61"
+```html
 <article class="callout callout--success stack">
   <h2 class="callout__title">Payment received</h2>
   <p class="u-muted">The invoice was marked as paid.</p>
 </article>
 ```
 
-```css id="lysb97"
+```css
 @layer components {
   .callout {
     --callout-accent: var(--color-accent);
@@ -2055,7 +2055,7 @@ Good composition:
 
 CSS error handling is mostly silent. Invalid declarations are dropped. Unsupported selectors, properties, or values may be ignored. Therefore, write fallbacks first, then enhanced rules.
 
-```css id="b0bcaf"
+```css
 .dialog {
   /* [safety] Basic fallback layout works everywhere. */
   max-inline-size: 36rem;
@@ -2115,7 +2115,7 @@ CSS debugging improves when symptoms are mapped to likely causes.
 
 Useful debug snippets:
 
-```css id="silsh9"
+```css
 /* Fragment: identify overflow sources. */
 .debug-overflow * {
   outline: 1px solid red;
@@ -2142,7 +2142,7 @@ This mini-project builds a responsive pricing section. It demonstrates semantic 
 
 Complete `index.html`:
 
-```html id="ks3q7d"
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -2210,7 +2210,7 @@ Complete `index.html`:
 
 Complete `styles.css`:
 
-```css id="vqv4vo"
+```css
 @layer reset, tokens, base, layout, components, utilities;
 
 /* [style] Reset only the predictable minimum. */
@@ -2517,7 +2517,7 @@ For professional CSS fluency, memorize the items that prevent the largest number
 
 Canonical cascade memory pattern:
 
-```css id="yw2m6i"
+```css
 @layer reset, base, components, utilities;
 
 @layer base {
@@ -2558,7 +2558,7 @@ Canonical cascade memory pattern:
 | `:has()`               | Parent/relational selector          | Parent styling based on child state | `.field:has(input:invalid) { ... }`                | Parent can look inside | Overusing for deeply coupled structures    |
 | `::before` / `::after` | Generated pseudo-elements           | Decorative icons, ornaments         | `.tag::before { content: "#"; }`                   | Generated decoration   | Putting essential content in CSS           |
 
-```css id="urxl93"
+```css
 .field:has(input:focus-visible) {
   border-color: var(--focus-ring);
 }
@@ -2585,7 +2585,7 @@ Canonical cascade memory pattern:
 | `object-fit`             | Image/video fit inside box        | Cropped thumbnails                 | `img { object-fit: cover; }`                         | Image fit mode            | Forgetting to set box size/aspect ratio                 |
 | `margin-inline: auto`    | Center block or absorb space      | Center containers, push flex item  | `.page { margin-inline: auto; }`                     | Auto absorbs free space   | Expecting vertical centering                            |
 
-```css id="d92qw0"
+```css
 .media {
   display: flex;
   gap: 1rem;
@@ -2621,7 +2621,7 @@ Canonical cascade memory pattern:
 | `position: sticky`      | Flow element that sticks after threshold                       | Sticky header/sidebar      | `.toc { position: sticky; inset-block-start: 1rem; }`        | Relative until stuck     | Wrong scroll ancestor or missing inset          |
 | `isolation: isolate`    | Create local stacking context                                  | Component z-index boundary | `.card { isolation: isolate; }`                              | Local z-index world      | Expecting it to fix all layering issues         |
 
-```css id="c2p7wg"
+```css
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
@@ -2648,7 +2648,7 @@ Canonical cascade memory pattern:
 | `prefers-reduced-motion` | User motion preference            | Motion reduction                         | `@media (prefers-reduced-motion: reduce) { ... }` | Motion safety               | Only reducing some animations                      |
 | `forced-colors`          | High contrast/forced color mode   | Accessibility resilience                 | `@media (forced-colors: active) { ... }`          | System colors               | Relying on decorative color alone                  |
 
-```css id="p9a29q"
+```css
 .card {
   container-type: inline-size;
   padding: clamp(1rem, 4cqi, 2rem);
@@ -2677,7 +2677,7 @@ Canonical cascade memory pattern:
 | `font: inherit`           | Inherit font shorthand     | Form controls/buttons     | `button { font: inherit; }`             | Controls match text     | Shorthand resets font subproperties                 |
 | `font-weight` ranges      | Variable/font weights      | Typography hierarchy      | `font-weight: 650;`                     | Variable-capable weight | Font may not support exact weight                   |
 
-```css id="wqylqf"
+```css
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.5;
@@ -2704,7 +2704,7 @@ body {
 | Theme scope             | Override tokens in subtree        | Local themes                    | `[data-theme="dark"] { ... }`                       | Scope the theme            | Partial token override creates mismatched UI   |
 | Alpha color             | Transparent color                 | Overlays, borders               | `rgb(0 0 0 / .25)`                                  | Slash alpha                | Low contrast after blending                    |
 
-```css id="dty37y"
+```css
 :root {
   color-scheme: light dark;
 
@@ -2731,7 +2731,7 @@ body {
 | `pointer-events: none`   | Ignore pointer events                     | Decorative overlays      | `.icon { pointer-events: none; }`                  | Click passes through   | Making interactive elements unreachable           |
 | `display: none`          | Remove from layout and accessibility tree | Truly hidden content     | `[hidden] { display: none; }`                      | Gone                   | Using it for content that should remain announced |
 
-```css id="zxgxfg"
+```css
 :focus-visible {
   outline: 3px solid Highlight;
   outline-offset: 3px;
@@ -2764,7 +2764,7 @@ body {
 | `filter`              | Visual filter effects          | Blur/brightness effects    | `filter: blur(8px);`                       | Pixel effect          | Expensive on large areas                                   |
 | `box-shadow`          | Shadow effect                  | Elevation                  | `box-shadow: 0 1rem 2rem ...;`             | Surface depth         | Large blurred shadows can be costly                        |
 
-```css id="wvq8wc"
+```css
 .card {
   transition:
     transform 140ms ease,
@@ -2802,7 +2802,7 @@ body {
 | CSS coverage       | Detect unused CSS             | Bundle cleanup              | DevTools Coverage                      | Find dead CSS       | Removing dynamic classes incorrectly  |
 | Reduced test cases | Isolate bug                   | Browser quirks/cascade bugs | Minimal HTML/CSS reproduction          | Shrink the problem  | Debugging inside full app noise       |
 
-```css id="d6cv5p"
+```css
 /* Fragment: temporary layout debug utility. */
 .debug-layout * {
   outline: 1px solid color-mix(in oklch, red, transparent 40%);
@@ -2829,7 +2829,7 @@ body {
 | Overrides layer    | Explicit last resort                | CMS or integration patches      | `@layer overrides { ... }`      | Contained escape hatch | Permanent dumping ground       |
 | Specificity budget | Keep selectors low                  | Large codebases                 | Prefer classes and `:where()`   | Light selectors        | Deep nesting and IDs           |
 
-```css id="ijy770"
+```css
 @layer reset, tokens, base, layout, components, utilities, overrides;
 
 @layer layout {
@@ -2865,7 +2865,7 @@ body {
 | Motion reduction | `@media (prefers-reduced-motion: reduce) { ... }`                                 | Accessibility          | Incomplete override              |
 | Theme base       | `:root { color-scheme: light dark; --color-bg: Canvas; --color-fg: CanvasText; }` | Adaptive colors        | Assuming it handles full theme   |
 
-```css id="u1vzeb"
+```css
 @layer layout {
   .page {
     max-inline-size: 72rem;

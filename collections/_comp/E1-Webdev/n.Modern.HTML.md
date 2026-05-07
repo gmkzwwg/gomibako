@@ -1357,7 +1357,7 @@ MDN’s `img` reference states that `alt` provides text replacement for images a
 
 The HTML Standard describes `iframe` as representing its *content navigable*, with `src` specifying the URL to contain in that nested context; the same section defines `srcdoc`, navigation behavior, `sandbox`, `allow`, and related security-sensitive attributes. 
 
-```html id="w7ex1h"
+```html
 <figure>
   <svg
     role="img"
@@ -1398,7 +1398,7 @@ The HTML Standard describes `iframe` as representing its *content navigable*, wi
 | `playsinline`        | `video`                     | Avoid forced fullscreen on mobile                     | Important for inline mobile video                               |
 | `loop`               | `audio`, `video`            | Repeat playback                                       | Avoid for disruptive media                                      |
 
-```html id="8s8qhq"
+```html
 <figure>
   <video
     controls
@@ -1457,7 +1457,7 @@ The HTML Standard describes `iframe` as representing its *content navigable*, wi
 | `allowfullscreen`  | Legacy/convenience fullscreen permission              | `allowfullscreen`                                  | Prefer understanding `allow` and policy behavior   |
 | `credentialless`   | Load iframe in credentialless context where supported | `credentialless`                                   | Newer, specialized privacy/isolation behavior      |
 
-```html id="4p7n6f"
+```html
 <iframe
   title="Product onboarding video"
   src="https://video.example.com/embed/onboarding"
@@ -1506,7 +1506,7 @@ The HTML Standard states that `sandbox`, when specified, enables extra restricti
 | Payment/auth provider             | Minimal tokens required by provider; test redirect/popup flow                   |
 | Internal admin tool               | Avoid iframe unless isolation is useful; review same-origin risks               |
 
-```html id="hjna83"
+```html
 <iframe
   title="User-generated HTML preview"
   src="/preview/sandboxed/123"
@@ -1517,7 +1517,7 @@ The HTML Standard states that `sandbox`, when specified, enables extra restricti
 ></iframe>
 ```
 
-```html id="aq2bvl"
+```html
 <iframe
   title="Trusted payment provider"
   src="https://payments.example/checkout/session_abc"
@@ -1548,7 +1548,7 @@ The HTML Standard states that `sandbox`, when specified, enables extra restricti
 | Picture-in-picture | `allow="picture-in-picture"`                   | Video players                 | Browser behavior varies                       |
 | Autoplay           | `allow="autoplay"`                             | Muted/controlled media        | Avoid surprising playback                     |
 
-```html id="pn63rh"
+```html
 <iframe
   title="Embedded support chat"
   src="https://support.example.com/chat"
@@ -1575,7 +1575,7 @@ The HTML Standard states that `sandbox`, when specified, enables extra restricti
 | Declarative placeholder  | HTML structure before JS enhancement | Components, list items            | Do not hide essential content only in templates |
 | Server-rendered fallback | Visible fallback outside template    | Progressive enhancement           | Keep baseline content usable                    |
 
-```html id="a9f5mx"
+```html
 <template id="notification-template">
   <article class="notification" data-notification>
     <h2 data-title></h2>
@@ -1616,7 +1616,7 @@ The HTML Standard states that `sandbox`, when specified, enables extra restricti
 | Attributes          | Declarative configuration         | `<user-card user-id="42">`   | Attribute/property reflection needs JS         |
 | `data-*`            | Private hooks/config              | `data-user-id="42"`          | Not a public component API by default          |
 
-```html id="77ji0q"
+```html
 <user-card user-id="42">
   <span slot="name">Ada Lovelace</span>
   <span slot="role">Research Engineer</span>
@@ -1653,7 +1653,7 @@ MDN states that scripts are not render-blocking by default; a classic `script` w
 | `<script type="application/ld+json">`                | Data block, not JS execution                   | Not executed as JS                                            | Structured data                      | Must contain valid JSON-LD                     |
 | Inline script                                        | Immediate inline execution depending placement | Position-dependent                                            | Small bootstrap/config               | CSP and XSS risk                               |
 
-```html id="8q9t7o"
+```html
 <head>
   <link rel="stylesheet" href="/assets/app.css">
 
@@ -1706,7 +1706,7 @@ MDN states that scripts are not render-blocking by default; a classic `script` w
 | Multiple ordered classic scripts          | Multiple `defer` scripts in order                   | Preserves execution order after parse             |
 | Hydration bootstrapping                   | Module script plus server-rendered HTML             | Keeps semantic baseline                           |
 
-```html id="h6ckgi"
+```html
 <!-- Ordered classic scripts. -->
 <script src="/assets/vendor.js" defer></script>
 <script src="/assets/app.js" defer></script>
@@ -1738,7 +1738,7 @@ Web.dev describes resource hints as mechanisms that inform browsers how to load 
 | `manifest`      | Web app manifest                      | `<link rel="manifest" href="/site.webmanifest">`                | PWA install metadata                            |
 | `alternate`     | Alternate representation              | RSS, translated versions                                        | Use correct `type`, `hreflang` as needed        |
 
-```html id="52oc0p"
+```html
 <head>
   <link rel="preconnect" href="https://cdn.example.com" crossorigin>
   <link rel="dns-prefetch" href="//analytics.example.com">
@@ -1784,7 +1784,7 @@ Web.dev describes resource hints as mechanisms that inform browsers how to load 
 | Audio                     | `audio`                          |
 | Worker                    | `worker`                         |
 
-```html id="x61r7m"
+```html
 <!-- Critical hero image discovered late by CSS or JS. -->
 <link
   rel="preload"
@@ -1817,7 +1817,7 @@ Web.dev describes resource hints as mechanisms that inform browsers how to load 
 | `target` on forms/links | Unexpected browsing context behavior      | Use intentionally; combine with rel/referrer controls    |
 | `srcdoc`                | Inline HTML injection                     | Escape/sanitize; sandbox if untrusted                    |
 
-```html id="fx65i3"
+```html
 <a
   href="https://external.example.com/report"
   target="_blank"
@@ -1827,7 +1827,7 @@ Web.dev describes resource hints as mechanisms that inform browsers how to load 
 </a>
 ```
 
-```html id="rxn35g"
+```html
 <iframe
   title="Sanitized user preview"
   src="/sandbox/previews/preview-123"
@@ -3357,7 +3357,7 @@ This part focuses on the HTML patterns that most directly improve daily professi
 | `FormData` inspection | Debug form payload           | Form bugs                           | `new FormData(form)`                  | “What will submit?”            | Missing `name` values.                        |
 | Duplicate ID scan     | Prevent broken relationships | Templates, generated markup         | Validator/DevTools                    | “IDs must be unique.”          | Cloned components with fixed IDs.             |
 
-```js id="m1asjk"
+```js
 // Minimal form payload inspection during debugging.
 const form = document.querySelector("form");
 const data = new FormData(form);
@@ -4053,7 +4053,7 @@ This appendix consolidates patterns that are deprecated, obsolete, unsafe, misle
 | `<strike>`                                                  | `del` for deletion, CSS for visual strike-through  | `strike` is obsolete                             |
 | `<tt>`                                                      | `code`, `kbd`, `samp`, or CSS depending on meaning | `tt` is obsolete teletype styling                |
 
-```html id="0rp755"
+```html
 <!-- Avoid -->
 <center>
   <font color="red">Important update</font>
@@ -4065,7 +4065,7 @@ This appendix consolidates patterns that are deprecated, obsolete, unsafe, misle
 
 The CSS can then express presentation:
 
-```css id="2to8t1"
+```css
 .notice {
   text-align: center;
 }
@@ -4092,7 +4092,7 @@ The CSS can then express presentation:
 | `&nbsp;` chains for indentation              | CSS spacing                             | Non-semantic and fragile            |
 | Inline `style` everywhere                    | External or component CSS               | Hard to cache, audit, and refactor  |
 
-```html id="tghfgr"
+```html
 <!-- Avoid -->
 <table>
   <tr>
@@ -4129,7 +4129,7 @@ The CSS can then express presentation:
 | Disabled link using CSS only                 | Use button with `disabled`, or remove link target | CSS alone does not disable navigation               |
 | Custom checkbox from `div`                   | `<input type="checkbox">` + `label`               | Native state and form submission                    |
 
-```html id="axwogw"
+```html
 <!-- Avoid -->
 <a href="#" onclick="openDialog()">Open settings</a>
 
@@ -4141,7 +4141,7 @@ The CSS can then express presentation:
 
 If a control is inside a form and should not submit the form:
 
-```html id="mb40q0"
+```html
 <button type="button">Preview</button>
 ```
 
@@ -4162,7 +4162,7 @@ If a control is inside a form and should not submit the form:
 | Download link without file context        | Include file type/size when useful         | Improves user expectation               |
 | `javascript:` URLs                        | Real links/buttons + external JS           | Security and maintainability risk       |
 
-```html id="cgq0qs"
+```html
 <!-- Avoid -->
 <a href="https://external.example.com" target="_blank">click here</a>
 
@@ -4195,7 +4195,7 @@ If a control is inside a form and should not submit the form:
 | `autocomplete="off"` everywhere           | Use correct autocomplete tokens               | Password managers/autofill help users             |
 | Reset button by default                   | Usually omit reset button                     | Prevents accidental data loss                     |
 
-```html id="a8y376"
+```html
 <!-- Avoid -->
 <input placeholder="Email">
 
@@ -4212,7 +4212,7 @@ If a control is inside a form and should not submit the form:
 
 Numeric-looking identifier:
 
-```html id="qoq2pm"
+```html
 <label for="postal-code">Postal code</label>
 <input
   id="postal-code"
@@ -4240,7 +4240,7 @@ Numeric-looking identifier:
 | Empty cells for spacing                            | CSS spacing                             | Empty data cells imply missing data       |
 | Responsive table by hiding columns without context | Provide alternative summaries or labels | Can remove necessary relationships        |
 
-```html id="5r0bax"
+```html
 <!-- Avoid -->
 <table>
   <tr>
@@ -4290,7 +4290,7 @@ Numeric-looking identifier:
 | Autoplay audio/video                        | User-initiated playback                               | Avoids disruption and blocked playback |
 | Custom media controls without accessibility | Native `controls` or fully accessible custom controls | Native controls are robust             |
 
-```html id="nid50g"
+```html
 <!-- Avoid -->
 <img src="/chart.png" alt="image">
 
@@ -4303,7 +4303,7 @@ Numeric-looking identifier:
 >
 ```
 
-```html id="liw29p"
+```html
 <video controls preload="metadata" width="1280" height="720">
   <source src="/demo.webm" type="video/webm">
   <source src="/demo.mp4" type="video/mp4">
@@ -4336,7 +4336,7 @@ Numeric-looking identifier:
 | Dynamic update without announcement        | Use appropriate live region              | Important state changes may be missed      |
 | Modal `div` without focus management       | Native `dialog` or robust modal pattern  | Focus containment/restoration required     |
 
-```html id="ejnvvy"
+```html
 <!-- Avoid -->
 <div role="button" tabindex="0" onclick="closePanel()">X</div>
 
@@ -4365,7 +4365,7 @@ Numeric-looking identifier:
 | Pre-hydration scripts depending on missing DOM | Use `defer`, modules, or place after relevant markup       | Prevents null selector bugs               |
 | No error reporting for cross-origin scripts    | Use `crossorigin` and server CORS where appropriate        | Better debugging                          |
 
-```html id="ts9ygb"
+```html
 <!-- Avoid: dependency race -->
 <script src="/vendor.js" async></script>
 <script src="/app.js" async></script>
@@ -4395,7 +4395,7 @@ Numeric-looking identifier:
 | Preloading unused route assets                 | Lazy load or prefetch only likely next route | Avoids wasted network                            |
 | Treating hints as guarantees                   | Measure in DevTools/performance tools        | Browser may ignore or reprioritize               |
 
-```html id="r39cz3"
+```html
 <!-- Avoid: vague and possibly ineffective -->
 <link rel="preload" href="/assets/font.woff2">
 
@@ -4426,7 +4426,7 @@ Numeric-looking identifier:
 | Lazy-loading critical iframe                                      | Load normally if immediately needed                 | Avoids delayed visible content         |
 | Same-origin untrusted iframe with scripts and same-origin allowed | Avoid `allow-scripts allow-same-origin` combination | Weakens isolation                      |
 
-```html id="7su8j8"
+```html
 <!-- Avoid -->
 <iframe src="https://third-party.example/widget"></iframe>
 
@@ -4461,7 +4461,7 @@ Numeric-looking identifier:
 | `noindex` accidentally deployed       | Review robots directives           | Can remove pages from search          |
 | Wrong `hreflang` alternates           | Reciprocal, accurate language URLs | International SEO correctness         |
 
-```html id="7rqu7i"
+```html
 <!-- Avoid -->
 <title>Home</title>
 <link rel="canonical" href="http://localhost:3000/page">
@@ -4488,7 +4488,7 @@ Numeric-looking identifier:
 | Postal code as `number`                               | Text input with appropriate autocomplete/inputmode | Postal codes may contain letters/leading zeros |
 | Localized visible date without machine value          | Use `time datetime`                                | Machine-readable date remains stable           |
 
-```html id="fpzxaw"
+```html
 <p>
   The term <span lang="fr">raison d’être</span> appears in this English paragraph.
 </p>
@@ -4514,7 +4514,7 @@ Numeric-looking identifier:
 | Shadow DOM component with poor labels             | Expose accessible names intentionally             | Encapsulation can hide relationships                     |
 | Form-like custom element without form association | Use native controls or implement form association | Native forms will not submit values automatically        |
 
-```html id="ziqdh9"
+```html
 <!-- Avoid if cloned repeatedly with fixed IDs -->
 <template id="field-template">
   <label for="email">Email</label>

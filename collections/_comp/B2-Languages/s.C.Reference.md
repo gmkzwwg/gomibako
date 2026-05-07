@@ -963,7 +963,7 @@ C code is organized into **statements**. A statement may perform computation, co
 
 Example:
 
-```c id="6tkj4e"
+```c
 int parse_record(const char *s)
 {
     int status = -1;
@@ -986,7 +986,7 @@ The inner block creates a narrower scope for `local_state`. In C, narrowing scop
 
 Null statement trap:
 
-```c id="yb4v80"
+```c
 if (ready);
 {
     run_task();
@@ -1017,7 +1017,7 @@ C uses several scopes. Scope determines **where a name can be used**. Scope is n
 
 Example:
 
-```c id="2lipfw"
+```c
 int file_scope_object = 1;
 
 void f(int parameter)
@@ -1054,7 +1054,7 @@ Failure-driven explanation:
 
 Example of block-scope static:
 
-```c id="udq9pk"
+```c
 int next_id(void)
 {
     static int id = 0;
@@ -1088,7 +1088,7 @@ Selection statements choose among control paths. In C, the condition expression 
 
 `if` example:
 
-```c id="38wd1o"
+```c
 if (count == 0) {
     return 0;
 } else {
@@ -1098,7 +1098,7 @@ if (count == 0) {
 
 `switch` example:
 
-```c id="i69xp9"
+```c
 enum parser_state {
     STATE_START,
     STATE_BODY,
@@ -1127,7 +1127,7 @@ int handle_state(enum parser_state st)
 
 Fallthrough can be intentional, but it must be explicit in style and review.
 
-```c id="y2wsm2"
+```c
 switch (ch) {
 case ' ':
 case '\t':
@@ -1143,7 +1143,7 @@ This fallthrough is idiomatic: several cases share one body.
 
 Risky fallthrough:
 
-```c id="ag0p95"
+```c
 switch (mode) {
 case MODE_READ:
     open_for_read();
@@ -1188,7 +1188,7 @@ C has three loop forms. The language does not provide high-level iterators, gene
 
 Counted loop:
 
-```c id="3rc2m3"
+```c
 for (size_t i = 0; i < n; i++) {
     total += a[i];
 }
@@ -1196,7 +1196,7 @@ for (size_t i = 0; i < n; i++) {
 
 Pointer loop:
 
-```c id="gr4m07"
+```c
 for (const unsigned char *p = buf; p != end; p++) {
     checksum += *p;
 }
@@ -1204,7 +1204,7 @@ for (const unsigned char *p = buf; p != end; p++) {
 
 Search loop:
 
-```c id="sq390x"
+```c
 size_t find_byte(const unsigned char *buf, size_t n, unsigned char target)
 {
     for (size_t i = 0; i < n; i++) {
@@ -1219,7 +1219,7 @@ size_t find_byte(const unsigned char *buf, size_t n, unsigned char target)
 
 A `for` statement does not require all clauses:
 
-```c id="y2rv0u"
+```c
 for (;;) {
     if (should_stop()) {
         break;
@@ -1242,7 +1242,7 @@ Common Pitfalls:
 
 Unsigned countdown example:
 
-```c id="i43zyi"
+```c
 /* Risky: i is unsigned; i >= 0 is always true */
 for (size_t i = n - 1; i >= 0; i--) {
     use(i);
@@ -1251,7 +1251,7 @@ for (size_t i = n - 1; i >= 0; i--) {
 
 Safer idiom:
 
-```c id="q8sx07"
+```c
 for (size_t i = n; i > 0; i--) {
     use(i - 1);
 }
@@ -1280,7 +1280,7 @@ C has explicit jump statements. Used carefully, they make error handling and cle
 
 Return examples:
 
-```c id="2azyas"
+```c
 int is_empty(const struct buffer *buf)
 {
     if (buf == NULL) {
@@ -1293,7 +1293,7 @@ int is_empty(const struct buffer *buf)
 
 Cleanup with `goto`:
 
-```c id="1vpc2j"
+```c
 int build_resource(void)
 {
     char *a = NULL;
@@ -1354,7 +1354,7 @@ Functions are C’s primary behavior abstraction. A **function declaration** tel
 
 Function declaration and definition:
 
-```c id="n99bd9"
+```c
 int add(int a, int b);
 
 int add(int a, int b)
@@ -1365,7 +1365,7 @@ int add(int a, int b)
 
 No-argument function:
 
-```c id="wgyadp"
+```c
 int get_status(void);
 ```
 
@@ -1373,7 +1373,7 @@ This is the correct prototype for a function that takes no arguments. In older C
 
 `void` return:
 
-```c id="hf9vpr"
+```c
 void buffer_clear(struct buffer *buf)
 {
     buf->len = 0;
@@ -1382,7 +1382,7 @@ void buffer_clear(struct buffer *buf)
 
 Function parameters are passed by value:
 
-```c id="u2roeh"
+```c
 void set_to_zero(int x)
 {
     x = 0;
@@ -1395,7 +1395,7 @@ set_to_zero(n);
 
 To mutate caller-owned storage, pass a pointer:
 
-```c id="pqz7yo"
+```c
 void set_to_zero(int *p)
 {
     if (p != NULL) {
@@ -1436,14 +1436,14 @@ In hosted C environments, `main` has special status as the program entry point. 
 
 Examples:
 
-```c id="hjg4mp"
+```c
 int main(void)
 {
     return 0;
 }
 ```
 
-```c id="tg27k6"
+```c
 int main(int argc, char *argv[])
 {
     for (int i = 0; i < argc; i++) {
@@ -1479,7 +1479,7 @@ Pointers are central enough to appear in Part 2, though their full semantics bel
 
 Example:
 
-```c id="knqst7"
+```c
 int x = 10;
 int *p = &x;
 
@@ -1489,7 +1489,7 @@ int *p = &x;
 
 Null check example:
 
-```c id="tbq2qv"
+```c
 int read_value(const int *p, int *out)
 {
     if (p == NULL || out == NULL) {
@@ -1503,7 +1503,7 @@ int read_value(const int *p, int *out)
 
 Pointer-to-pointer example:
 
-```c id="1noo8y"
+```c
 void reset_pointer(int **pp)
 {
     if (pp != NULL) {
@@ -1538,7 +1538,7 @@ Arrays are contiguous sequences of elements. In many expressions, an array expre
 
 Example:
 
-```c id="zcsigv"
+```c
 int a[3] = {10, 20, 30};
 
 for (size_t i = 0; i < 3; i++) {
@@ -1548,14 +1548,14 @@ for (size_t i = 0; i < 3; i++) {
 
 Array size with `sizeof`:
 
-```c id="5ncvj7"
+```c
 int a[] = {10, 20, 30};
 size_t count = sizeof a / sizeof a[0];
 ```
 
 This works only where `a` is still an actual array expression, not after it has adjusted to a pointer parameter.
 
-```c id="5j1g66"
+```c
 void bad_count(int a[])
 {
     size_t wrong = sizeof a / sizeof a[0]; /* sizeof pointer / sizeof int */
@@ -1564,7 +1564,7 @@ void bad_count(int a[])
 
 Better function signature:
 
-```c id="ocbcxr"
+```c
 void process_ints(const int *a, size_t n)
 {
     for (size_t i = 0; i < n; i++) {
@@ -1606,7 +1606,7 @@ C’s main user-defined data forms are `struct`, `union`, and `enum`. Their full
 
 `struct` example:
 
-```c id="3aj4id"
+```c
 struct point {
     int x;
     int y;
@@ -1618,7 +1618,7 @@ p.x = 30;
 
 `union` example:
 
-```c id="jzzmns"
+```c
 union number {
     int i;
     double d;
@@ -1630,7 +1630,7 @@ n.i = 42;
 
 `enum` example:
 
-```c id="b3i8qh"
+```c
 enum result_code {
     RESULT_OK = 0,
     RESULT_IO_ERROR = -1,
@@ -1640,7 +1640,7 @@ enum result_code {
 
 Typedef pattern:
 
-```c id="nv8q3u"
+```c
 typedef struct buffer {
     unsigned char *data;
     size_t len;
@@ -1652,7 +1652,7 @@ This creates both the tag name `struct buffer` and typedef name `Buffer`. Whethe
 
 Designated initializers:
 
-```c id="25wbvp"
+```c
 struct point p = {
     .x = 10,
     .y = 20
@@ -1685,7 +1685,7 @@ Common Pitfalls:
 
 Example:
 
-```c id="uo4z2v"
+```c
 typedef struct buffer Buffer;
 
 struct buffer {
@@ -1697,7 +1697,7 @@ struct buffer {
 
 Function pointer typedef:
 
-```c id="7wccrd"
+```c
 typedef int (*compare_fn)(const void *a, const void *b);
 
 void sort_items(void *base, size_t n, size_t size, compare_fn cmp);
@@ -1705,7 +1705,7 @@ void sort_items(void *base, size_t n, size_t size, compare_fn cmp);
 
 `typedef` does not create a distinct type:
 
-```c id="4b4l5l"
+```c
 typedef int user_id;
 typedef int order_id;
 
@@ -1750,7 +1750,7 @@ The preprocessor is a separate textual transformation system. It is part of C tr
 
 Header guard:
 
-```c id="dqssgt"
+```c
 #ifndef BUFFER_H
 #define BUFFER_H
 
@@ -1766,7 +1766,7 @@ void buffer_destroy(Buffer *buf);
 
 Macro side-effect trap:
 
-```c id="1h98l8"
+```c
 #define SQUARE(x) ((x) * (x))
 
 int i = 3;
@@ -1775,7 +1775,7 @@ int y = SQUARE(i++); /* i++ may be evaluated twice */
 
 Prefer function when possible:
 
-```c id="4l9jaw"
+```c
 static inline int square_int(int x)
 {
     return x * x;
@@ -1807,7 +1807,7 @@ C has no special error syntax like `try`/`catch`, `throw`, `?`, or `Result<T, E>
 
 Example:
 
-```c id="sxqsli"
+```c
 int parse_u32(const char *s, uint32_t *out)
 {
     if (s == NULL || out == NULL) {
@@ -1856,7 +1856,7 @@ C distinguishes value comparison, pointer comparison, and object identity. There
 
 String comparison trap:
 
-```c id="52yjd7"
+```c
 const char *a = "abc";
 const char *b = "abc";
 
@@ -1867,7 +1867,7 @@ if (a == b) {
 
 Correct content comparison:
 
-```c id="9q1oyt"
+```c
 if (strcmp(a, b) == 0) {
     /* same string content */
 }
@@ -1875,7 +1875,7 @@ if (strcmp(a, b) == 0) {
 
 Struct comparison:
 
-```c id="uib3t1"
+```c
 struct point {
     int x;
     int y;
@@ -1922,14 +1922,14 @@ A cast explicitly converts an expression to a specified type. In C, casts are po
 
 Example:
 
-```c id="c4x7mu"
+```c
 int n = 3;
 double x = (double)n / 2.0;
 ```
 
 Risky cast:
 
-```c id="jainkg"
+```c
 const char *s = "abc";
 char *p = (char *)s;
 /* p[0] = 'x'; */ /* undefined behavior if attempted */
@@ -1963,7 +1963,7 @@ Part 6 will cover the standard library by task. At the syntax level, a reader sh
 
 Example:
 
-```c id="hp6b6x"
+```c
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -3259,7 +3259,7 @@ Professional C therefore treats validation as a **boundary task**.
 
 Example: validating an integer before converting to enum.
 
-```c id="lfbrrh"
+```c
 #include <stdbool.h>
 
 enum compression_mode {
@@ -3289,7 +3289,7 @@ bool compression_mode_from_int(int raw, enum compression_mode *out)
 
 Example: validating size arithmetic before allocation.
 
-```c id="uq8891"
+```c
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -3356,7 +3356,7 @@ C performs many implicit conversions. These conversions are useful for machine-o
 
 Integer promotion example:
 
-```c id="mtf2rl"
+```c
 unsigned char a = 250;
 unsigned char b = 10;
 
@@ -3366,7 +3366,7 @@ int sum = a + b;
 
 Signed/unsigned comparison trap:
 
-```c id="hhdfvh"
+```c
 int i = -1;
 size_t n = 10;
 
@@ -3377,7 +3377,7 @@ if (i < n) {
 
 Better:
 
-```c id="bqf6vb"
+```c
 if (i >= 0 && (size_t)i < n) {
     /* safe index use */
 }
@@ -3385,7 +3385,7 @@ if (i >= 0 && (size_t)i < n) {
 
 Narrowing check:
 
-```c id="1pt0s3"
+```c
 #include <limits.h>
 
 int int_from_size(size_t n, int *out)
@@ -3450,7 +3450,7 @@ Unknown data is data whose shape, length, range, encoding, or trustworthiness is
 
 Explicit binary parsing example:
 
-```c id="q1696r"
+```c
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -3481,7 +3481,7 @@ This avoids assuming host endian, struct padding, or alignment.
 
 Unsafe style:
 
-```c id="w2umj7"
+```c
 struct header {
     uint16_t type;
     uint16_t len;
@@ -3531,7 +3531,7 @@ C lacks full parametric generics. Generic programming is therefore achieved thro
 
 `void *` generic callback pattern:
 
-```c id="41dzfi"
+```c
 typedef int (*compare_fn)(const void *a, const void *b);
 
 int compare_ints(const void *a, const void *b)
@@ -3547,7 +3547,7 @@ The function assumes that `a` and `b` point to valid `int` objects. The type sys
 
 Macro generic pattern:
 
-```c id="u9oaq2"
+```c
 #define ARRAY_COUNT(a) (sizeof(a) / sizeof((a)[0]))
 ```
 
@@ -3555,7 +3555,7 @@ This works only for actual arrays in scope, not pointers. A professional macro s
 
 `_Generic` example:
 
-```c id="tqhr3o"
+```c
 #define abs_value(x) _Generic((x), \
     int: abs_int,                 \
     long: abs_long,               \
@@ -3614,7 +3614,7 @@ In C, a function signature expresses only part of the behavioral contract. The r
 
 API contract examples:
 
-```c id="0e4w75"
+```c
 /*
  * Borrowing API:
  * - buf must not be NULL.
@@ -3625,7 +3625,7 @@ API contract examples:
 int buffer_append(struct buffer *buf, const unsigned char *data, size_t n);
 ```
 
-```c id="bjbu2u"
+```c
 /*
  * Ownership-returning API:
  * - On success, stores allocated pointer in *out.
@@ -3685,7 +3685,7 @@ A **type safety boundary** is a point where ordinary static type checking no lon
 
 Example: isolating a type-erased callback.
 
-```c id="ugwnkt"
+```c
 typedef void (*item_visit_fn)(void *item, void *userdata);
 
 void int_array_visit(int *items, size_t n,
@@ -3736,7 +3736,7 @@ C has no ownership type system, but ownership is central to correct data modelin
 
 Example: owned struct field.
 
-```c id="zbzi0p"
+```c
 struct line {
     char *text; /* owned, must be freed by line_destroy */
 };
@@ -3744,7 +3744,7 @@ struct line {
 
 Constructor/destructor pattern:
 
-```c id="572xji"
+```c
 #include <stdlib.h>
 #include <string.h>
 
@@ -3825,7 +3825,7 @@ C mutability is not a single property. An object may be modifiable through one a
 
 Examples:
 
-```c id="0kk4u2"
+```c
 void inspect_buffer(const struct buffer *buf);
 void mutate_buffer(struct buffer *buf);
 ```
@@ -3834,7 +3834,7 @@ This distinction helps users know whether a function intends to mutate through t
 
 Const-correct accessor:
 
-```c id="hufmr9"
+```c
 const unsigned char *buffer_data(const struct buffer *buf);
 ```
 
@@ -3865,7 +3865,7 @@ C is often used as an ABI boundary. But ISO C source types and platform ABI layo
 
 Versioned public struct pattern:
 
-```c id="hfo39a"
+```c
 #include <stddef.h>
 #include <stdint.h>
 
@@ -3878,7 +3878,7 @@ struct api_options {
 
 Caller initializes:
 
-```c id="1titss"
+```c
 struct api_options opts = {
     .struct_size = sizeof opts,
     .flags = 0,
@@ -3890,7 +3890,7 @@ The callee can check `struct_size` to determine which fields are present when th
 
 Opaque handle pattern:
 
-```c id="pr8x2r"
+```c
 /* public header */
 typedef struct database Database;
 
@@ -3900,7 +3900,7 @@ void database_close(Database *db);
 
 This is often better than exposing:
 
-```c id="u8b5c2"
+```c
 struct database {
     int fd;
     char *path;
@@ -3935,7 +3935,7 @@ Although detailed error handling belongs to PART 5, error data itself is a model
 
 Error enum example:
 
-```c id="udm643"
+```c
 enum parse_error {
     PARSE_OK = 0,
     PARSE_ERR_EMPTY,
@@ -3948,7 +3948,7 @@ enum parse_error parse_port(const char *s, unsigned short *out);
 
 Result struct example:
 
-```c id="ty6aca"
+```c
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -3994,7 +3994,7 @@ C data modeling must account for concurrency when objects may be accessed by mul
 
 Atomic flag example:
 
-```c id="e9cnx6"
+```c
 #include <stdatomic.h>
 #include <stdbool.h>
 
@@ -4003,7 +4003,7 @@ atomic_bool stop_requested = false;
 
 Protected invariant example:
 
-```c id="vl9s5e"
+```c
 struct queue {
     /* lock type is platform/library-specific, not ISO C */
     void *lock;
@@ -8572,7 +8572,7 @@ while (!feof(fp)) {
 
 Text line reading:
 
-```c id="p6_fgets"
+```c
 char line[1024];
 
 while (fgets(line, sizeof line, fp) != NULL) {
@@ -9951,7 +9951,7 @@ Observable behavior includes, broadly, volatile accesses and interactions with f
 
 Example:
 
-```c id="p7_as_if"
+```c
 int f(int x)
 {
     int y = x * 2;
@@ -10672,14 +10672,14 @@ For all defined executions, this may be optimized as true. `x == INT_MAX` would 
 
 Example: bounds.
 
-```c id="p7_oob"
+```c
 int a[4] = {0};
 a[4] = 1; /* UB: one past is not an element */
 ```
 
 Example: use-after-free.
 
-```c id="p7_uaf"
+```c
 int *p = malloc(sizeof *p);
 free(p);
 *p = 1; /* UB */
@@ -10943,7 +10943,7 @@ double x = 0.1 + 0.2;
 
 NaN behavior:
 
-```c id="p7_nan"
+```c
 #include <math.h>
 
 int is_self_equal(double x)
@@ -12159,7 +12159,7 @@ Common Pitfalls:
 
 Passing pointer and length as separate parameters is common. For APIs with many sequence values, a span-like struct reduces mismatches.
 
-```c id="p8_slice"
+```c
 struct byte_view {
     const unsigned char *data;
     size_t len;
@@ -12915,7 +12915,7 @@ C assignment performs member-wise copy. Whether that is correct depends on the o
 
 Deep clone:
 
-```c id="p8_clone"
+```c
 int owned_bytes_clone(struct owned_bytes *dst,
                       const struct owned_bytes *src)
 {
@@ -13332,7 +13332,7 @@ Common Pitfalls:
 
 Bitmasks are common for options and flags. Use unsigned types and clear naming.
 
-```c id="p8_flags"
+```c
 enum open_flags {
     OPEN_READ  = 1u << 0,
     OPEN_WRITE = 1u << 1,
@@ -13621,7 +13621,7 @@ struct int_node {
 
 List owner:
 
-```c id="p8_slist"
+```c
 struct int_list {
     struct int_node *head;
 };

@@ -5289,7 +5289,7 @@ TypeScript’s practical safety depends heavily on project configuration. The sa
 
 A typical application-oriented configuration looks like this:
 
-```ts id="jdm6b5"
+```ts
 // tsconfig.json
 {
   "compilerOptions": {
@@ -5311,7 +5311,7 @@ A typical application-oriented configuration looks like this:
 
 For a bundler-driven frontend application:
 
-```ts id="xk5et5"
+```ts
 // tsconfig.json
 {
   "compilerOptions": {
@@ -5333,7 +5333,7 @@ For a bundler-driven frontend application:
 
 For a Node.js ESM project:
 
-```ts id="gf6d78"
+```ts
 // tsconfig.json
 {
   "compilerOptions": {
@@ -5398,7 +5398,7 @@ Some strict options have especially large practical effects.
 
 Example of `noUncheckedIndexedAccess`:
 
-```ts id="fg1kic"
+```ts
 const usersById: Record<string, { email: string }> = {};
 
 const user = usersById["missing"];
@@ -5413,7 +5413,7 @@ if (user) {
 
 Example of `exactOptionalPropertyTypes`:
 
-```ts id="c0qaf3"
+```ts
 type Options = {
   timeoutMs?: number;
 };
@@ -5427,7 +5427,7 @@ const b: Options = { timeoutMs: 1000 };
 
 If explicit `undefined` is part of the intended model:
 
-```ts id="hy6gbl"
+```ts
 type Options = {
   timeoutMs?: number | undefined;
 };
@@ -5447,7 +5447,7 @@ type Options = {
 
 Example:
 
-```ts id="8wlymg"
+```ts
 const values = [3, 1, 2];
 
 const sorted = values.toSorted();
@@ -5471,7 +5471,7 @@ TypeScript checks module syntax and resolves imports according to compiler optio
 
 ESM import/export:
 
-```ts id="wcxx0t"
+```ts
 // user.ts
 export type User = {
   id: string;
@@ -5486,7 +5486,7 @@ export function createUser(email: string): User {
 }
 ```
 
-```ts id="ki9eab"
+```ts
 // main.ts
 import { createUser, type User } from "./user";
 
@@ -5509,7 +5509,7 @@ CommonJS interop depends on compiler settings, Node behavior, package shape, and
 
 Use type-only imports for declarations used only at compile time.
 
-```ts id="r1ksb9"
+```ts
 import type { User } from "./models/user";
 
 export type { User };
@@ -5517,7 +5517,7 @@ export type { User };
 
 Mixed import:
 
-```ts id="z3to9s"
+```ts
 import { createUser, type User } from "./models/user";
 
 const user: User = createUser("a@example.com");
@@ -5534,7 +5534,7 @@ const user: User = createUser("a@example.com");
 
 Class caution:
 
-```ts id="n5pz9w"
+```ts
 import type { User } from "./user";
 
 // const user = new User("u1"); // Error: type-only import cannot be used as value
@@ -5542,7 +5542,7 @@ import type { User } from "./user";
 
 If the class constructor is needed:
 
-```ts id="dvq49n"
+```ts
 import { User } from "./user";
 
 const user = new User("u1");
@@ -5554,7 +5554,7 @@ const user = new User("u1");
 
 TypeScript path aliases are configured through `baseUrl` and `paths`.
 
-```ts id="n040a9"
+```ts
 // tsconfig.json
 {
   "compilerOptions": {
@@ -5569,7 +5569,7 @@ TypeScript path aliases are configured through `baseUrl` and `paths`.
 
 Usage:
 
-```ts id="x0ki8w"
+```ts
 import { createUser } from "@domain/user";
 ```
 
@@ -5597,7 +5597,7 @@ Common safer alternatives:
 
 In Node ESM-style projects, import specifiers may need file extensions in emitted JavaScript.
 
-```ts id="jivazf"
+```ts
 // source TypeScript in NodeNext projects may often use:
 import { createUser } from "./user.js";
 ```
@@ -5629,7 +5629,7 @@ TypeScript knows about global names through configured libraries and declaration
 
 Browser example:
 
-```ts id="ob2u35"
+```ts
 const element = document.querySelector("#app");
 
 if (element instanceof HTMLElement) {
@@ -5639,7 +5639,7 @@ if (element instanceof HTMLElement) {
 
 Node example:
 
-```ts id="p4wrqu"
+```ts
 const databaseUrl = process.env.DATABASE_URL;
 
 if (!databaseUrl) {
@@ -5649,14 +5649,14 @@ if (!databaseUrl) {
 
 Custom global declaration:
 
-```ts id="pr1mm2"
+```ts
 // globals.d.ts
 declare const __BUILD_VERSION__: string;
 ```
 
 Usage:
 
-```ts id="g0yr30"
+```ts
 console.log(__BUILD_VERSION__);
 ```
 
@@ -5707,7 +5707,7 @@ Data crossing a trust boundary should usually begin as `unknown`.
 
 Unsafe external data pattern:
 
-```ts id="w2hwqi"
+```ts
 type User = {
   id: string;
   email: string;
@@ -5721,7 +5721,7 @@ async function loadUser(url: string): Promise<User> {
 
 Safer boundary:
 
-```ts id="p52jxu"
+```ts
 type User = {
   id: string;
   email: string;
@@ -5767,7 +5767,7 @@ TypeScript does not include runtime validation. Use one of these strategies.
 
 Manual assertion function:
 
-```ts id="o79uzc"
+```ts
 function assertUser(value: unknown): asserts value is User {
   if (!isUser(value)) {
     throw new Error("Expected User");
@@ -5782,7 +5782,7 @@ data.email;
 
 Parser style:
 
-```ts id="am2468"
+```ts
 type Parser<T> = {
   parse(value: unknown): T;
 };
@@ -5794,7 +5794,7 @@ function parseJsonWith<T>(raw: string, parser: Parser<T>): T {
 
 **Common pitfall:** A type annotation on a parser result is not the same as a parser.
 
-```ts id="pv6f4d"
+```ts
 const data: User = JSON.parse(raw);
 ```
 
@@ -5817,7 +5817,7 @@ TypeScript supports incremental migration. Avoid all-at-once rewrites unless the
 
 Incremental migration configuration:
 
-```ts id="j4f4y9"
+```ts
 // tsconfig.json
 {
   "compilerOptions": {
@@ -5832,7 +5832,7 @@ Incremental migration configuration:
 
 JSDoc example:
 
-```ts id="vtt67r"
+```ts
 // user.js
 
 /**
@@ -5855,7 +5855,7 @@ export function createUser(email) {
 
 Declaration file for legacy JS:
 
-```ts id="t99r14"
+```ts
 // legacy-formatter.d.ts
 declare module "legacy-formatter" {
   export function formatCurrency(value: number, currency: string): string;
@@ -5891,7 +5891,7 @@ Declaration files describe runtime JavaScript to the TypeScript compiler.
 
 Module declaration:
 
-```ts id="mzz5dc"
+```ts
 // types/legacy-lib.d.ts
 declare module "legacy-lib" {
   export type LegacyUser = {
@@ -5905,7 +5905,7 @@ declare module "legacy-lib" {
 
 Global augmentation:
 
-```ts id="x5wlu2"
+```ts
 // globals.d.ts
 declare global {
   interface Window {
@@ -5920,7 +5920,7 @@ export {};
 
 Usage:
 
-```ts id="l6tgsy"
+```ts
 window.analytics.track("signup", {
   plan: "pro",
 });
@@ -5945,7 +5945,7 @@ For libraries, TypeScript configuration must support consumers.
 
 Library-ish config:
 
-```ts id="ekg6uj"
+```ts
 // tsconfig.json
 {
   "compilerOptions": {
@@ -5966,7 +5966,7 @@ Library-ish config:
 
 Public API example:
 
-```ts id="polv14"
+```ts
 // src/index.ts
 export type {
   CreateUserInput,
@@ -5985,56 +5985,56 @@ export {
 
 Install TypeScript as a development dependency:
 
-```ts id="jdckx8"
+```ts
 // shell
 npm install --save-dev typescript
 ```
 
 Initialize a config:
 
-```ts id="l5bvy3"
+```ts
 // shell
 npx tsc --init
 ```
 
 Compile the project:
 
-```ts id="kvbumj"
+```ts
 // shell
 npx tsc
 ```
 
 Type-check without emitting, if `noEmit` is not already configured:
 
-```ts id="a9qkxi"
+```ts
 // shell
 npx tsc --noEmit
 ```
 
 Watch mode:
 
-```ts id="ot6fl7"
+```ts
 // shell
 npx tsc --watch
 ```
 
 Compile a specific project config:
 
-```ts id="dfjuzw"
+```ts
 // shell
 npx tsc --project tsconfig.build.json
 ```
 
 Short form:
 
-```ts id="hj21jd"
+```ts
 // shell
 npx tsc -p tsconfig.build.json
 ```
 
 Common package scripts:
 
-```ts id="npkcu2"
+```ts
 // package.json
 {
   "scripts": {
@@ -6047,14 +6047,14 @@ Common package scripts:
 
 **Important warning:** If files are passed directly to the compiler, project config behavior may differ from compiling the project.
 
-```ts id="m0xch3"
+```ts
 // shell
 npx tsc src/index.ts
 ```
 
 This direct-file style can bypass or alter expected project-level behavior. Prefer project compilation:
 
-```ts id="qfbv8z"
+```ts
 // shell
 npx tsc -p tsconfig.json
 ```
@@ -6088,7 +6088,7 @@ TypeScript can type-check and emit JavaScript, but many modern stacks use faster
 
 Example requiring explicit type-only export:
 
-```ts id="phskxt"
+```ts
 type User = {
   id: string;
 };
@@ -6102,7 +6102,7 @@ export type { User };
 
 `verbatimModuleSyntax` makes import/export behavior more explicit by preserving module syntax more directly and requiring developers to distinguish type imports from value imports.
 
-```ts id="kfpjzx"
+```ts
 import { createUser, type User } from "./user";
 
 const user: User = createUser("a@example.com");
@@ -6110,7 +6110,7 @@ const user: User = createUser("a@example.com");
 
 Type-only import:
 
-```ts id="xbltqj"
+```ts
 import type { User } from "./user";
 ```
 
@@ -6150,7 +6150,7 @@ Large codebases often split TypeScript into multiple projects.
 
 Example root config:
 
-```ts id="i0718e"
+```ts
 // tsconfig.json
 {
   "files": [],
@@ -6164,7 +6164,7 @@ Example root config:
 
 Package config:
 
-```ts id="a0eqoc"
+```ts
 // packages/domain/tsconfig.json
 {
   "compilerOptions": {
@@ -6180,7 +6180,7 @@ Package config:
 
 Build:
 
-```ts id="v6n5ja"
+```ts
 // shell
 npx tsc -b
 ```
@@ -6219,13 +6219,13 @@ Frameworks often add TypeScript behavior through generated types, plugins, route
 
 Vite-style environment declaration example:
 
-```ts id="v6ephq"
+```ts
 /// <reference types="vite/client" />
 ```
 
 Custom asset declaration:
 
-```ts id="g4e5fb"
+```ts
 declare module "*.svg" {
   const src: string;
   export default src;
@@ -6337,7 +6337,7 @@ A `type` or `interface` cannot be used as a runtime value.
 
 Incorrect:
 
-```ts id="yis1pt"
+```ts
 interface User {
   id: string;
 }
@@ -6349,7 +6349,7 @@ interface User {
 
 Correct with a runtime guard:
 
-```ts id="m321q8"
+```ts
 interface User {
   id: string;
 }
@@ -6370,7 +6370,7 @@ if (isUser(value)) {
 
 Correct with a class when runtime identity matters:
 
-```ts id="g3kcmn"
+```ts
 class User {
   constructor(public readonly id: string) {}
 }
@@ -6397,7 +6397,7 @@ A type assertion does not convert data.
 
 Incorrect:
 
-```ts id="sxkbc4"
+```ts
 type User = {
   id: string;
 };
@@ -6411,7 +6411,7 @@ If `raw` is `{ "id": 123 }`, the assertion does not convert `123` to a string. T
 
 Better:
 
-```ts id="cf4v8m"
+```ts
 type User = {
   id: string;
 };
@@ -6446,7 +6446,7 @@ const user = parseUser(JSON.parse(raw));
 
 `any` disables type checking for a value and allows unsound operations.
 
-```ts id="b0biv3"
+```ts
 function handle(value: any) {
   value.missing.deep.property();
   value();
@@ -6458,7 +6458,7 @@ All of these can type-check, even if they fail at runtime.
 
 Prefer `unknown` for untrusted data:
 
-```ts id="4qbsu0"
+```ts
 function handle(value: unknown) {
   if (typeof value === "function") {
     value();
@@ -6481,7 +6481,7 @@ function handle(value: unknown) {
 
 Acceptable localized use:
 
-```ts id="rt9h5n"
+```ts
 function withLogging<F extends (...args: any[]) => any>(fn: F) {
   return (...args: Parameters<F>): ReturnType<F> => {
     console.log("calling");
@@ -6500,7 +6500,7 @@ Here `any` is used in a generic constraint to describe arbitrary callable shapes
 
 Incorrect:
 
-```ts id="5yzvk6"
+```ts
 function parse(value: unknown) {
   // return value.id; // Error
 }
@@ -6508,7 +6508,7 @@ function parse(value: unknown) {
 
 Correct:
 
-```ts id="qvmswo"
+```ts
 function parse(value: unknown) {
   if (
     typeof value === "object" &&
@@ -6541,7 +6541,7 @@ Generated API types, handwritten DTOs, and OpenAPI/GraphQL types describe expect
 
 Unsafe:
 
-```ts id="mab7ks"
+```ts
 type ApiUser = {
   id: string;
   email: string;
@@ -6555,7 +6555,7 @@ async function getUser(): Promise<ApiUser> {
 
 Safer:
 
-```ts id="mqkqza"
+```ts
 async function getUser(): Promise<ApiUser> {
   const response = await fetch("/api/user");
   const data: unknown = await response.json();
@@ -6583,7 +6583,7 @@ async function getUser(): Promise<ApiUser> {
 
 Both can describe object shapes:
 
-```ts id="onf48w"
+```ts
 type UserType = {
   id: string;
 };
@@ -6608,7 +6608,7 @@ Their differences matter most in API design and type-level computation.
 
 Declaration merging:
 
-```ts id="w9y67v"
+```ts
 interface AppConfig {
   apiUrl: string;
 }
@@ -6631,7 +6631,7 @@ This is not possible with `type`.
 
 TypeScript is structurally typed. Names do not create nominal identity.
 
-```ts id="6ewjjz"
+```ts
 type UserId = string;
 type OrderId = string;
 
@@ -6646,7 +6646,7 @@ getUser(orderId); // Allowed
 
 If distinct identity matters, use a brand:
 
-```ts id="u8mryu"
+```ts
 type Brand<T, Name extends string> = T & {
   readonly __brand: Name;
 };
@@ -6680,7 +6680,7 @@ function makeUserId(value: string): UserId {
 
 Fresh object literals receive excess property checks.
 
-```ts id="fq213d"
+```ts
 type UserInput = {
   email: string;
   role: "admin" | "member";
@@ -6699,7 +6699,7 @@ createUser({
 
 Intermediate variables behave structurally:
 
-```ts id="c6usqa"
+```ts
 const input = {
   email: "a@example.com",
   role: "member",
@@ -6713,7 +6713,7 @@ This may still fail if `role` widened to `string`. The failure is not necessaril
 
 Better:
 
-```ts id="fgoeu5"
+```ts
 const input = {
   email: "a@example.com",
   role: "member",
@@ -6737,7 +6737,7 @@ createUser(input);
 
 These two types express different models:
 
-```ts id="j55s9o"
+```ts
 type A = {
   timeoutMs?: number;
 };
@@ -6756,7 +6756,7 @@ type B = {
 
 Defaulting:
 
-```ts id="d1hy2z"
+```ts
 function connect(options: { timeoutMs?: number }) {
   const timeoutMs = options.timeoutMs ?? 5000;
   return timeoutMs;
@@ -6771,7 +6771,7 @@ The non-null assertion operator `!` removes `null` and `undefined` from the comp
 
 Unsafe:
 
-```ts id="mq4lg7"
+```ts
 const root = document.querySelector("#root")!;
 
 root.textContent = "Loaded";
@@ -6779,7 +6779,7 @@ root.textContent = "Loaded";
 
 Safer:
 
-```ts id="7uooif"
+```ts
 const root = document.querySelector("#root");
 
 if (!root) {
@@ -6799,7 +6799,7 @@ root.textContent = "Loaded";
 
 Non-null assertion may be acceptable when there is a strong invariant:
 
-```ts id="odjmzj"
+```ts
 const cached = cache.get(key);
 
 if (cached === undefined) {
@@ -6815,7 +6815,7 @@ In many cases, an explicit invariant check is better than `!` because it fails w
 
 TypeScript has several ways to model finite values.
 
-```ts id="hk52g4"
+```ts
 enum StatusEnum {
   Draft = "draft",
   Sent = "sent",
@@ -6844,7 +6844,7 @@ type StatusFromObject =
 
 Practical modern pattern:
 
-```ts id="djz0w6"
+```ts
 const statuses = ["draft", "sent", "paid"] as const;
 
 type Status = (typeof statuses)[number];
@@ -6856,7 +6856,7 @@ function isStatus(value: string): value is Status {
 
 Object constant pattern:
 
-```ts id="smt6sv"
+```ts
 const Status = {
   Draft: "draft",
   Sent: "sent",
@@ -6872,13 +6872,13 @@ type Status = (typeof Status)[keyof typeof Status];
 
 `Record<string, T>` means any string key maps to `T`.
 
-```ts id="s1a46p"
+```ts
 type UsersById = Record<string, User>;
 ```
 
 This can be too optimistic:
 
-```ts id="jd6nml"
+```ts
 const usersById: UsersById = {};
 
 const user = usersById["missing"];
@@ -6888,7 +6888,7 @@ The runtime value is `undefined`. With `noUncheckedIndexedAccess`, TypeScript re
 
 Safer explicit absence:
 
-```ts id="2ih2ku"
+```ts
 type UsersById = Record<string, User | undefined>;
 
 const user = usersById["missing"];
@@ -6900,7 +6900,7 @@ if (user) {
 
 Finite keys:
 
-```ts id="6lfbfc"
+```ts
 type Locale = "en" | "fr" | "ja";
 
 const labels: Record<Locale, string> = {
@@ -6926,7 +6926,7 @@ Overloads are useful when different input forms produce different output types.
 
 Appropriate overload:
 
-```ts id="jbp80n"
+```ts
 function select(selector: string): Element | null;
 function select(selector: string, all: true): NodeListOf<Element>;
 function select(selector: string, all?: true) {
@@ -6938,7 +6938,7 @@ function select(selector: string, all?: true) {
 
 Unnecessary overload:
 
-```ts id="4yyrq5"
+```ts
 function normalize(value: string): string[];
 function normalize(value: string[]): string[];
 function normalize(value: string | string[]) {
@@ -6948,7 +6948,7 @@ function normalize(value: string | string[]) {
 
 Better:
 
-```ts id="f4juoq"
+```ts
 function normalize(value: string | string[]): string[] {
   return Array.isArray(value) ? value : [value];
 }
@@ -6970,7 +6970,7 @@ Powerful type-level programming can make APIs hard to read.
 
 Overengineered:
 
-```ts id="o4ky5f"
+```ts
 type DeepMagic<T> = T extends object
   ? {
       [K in keyof T as K extends string
@@ -6982,7 +6982,7 @@ type DeepMagic<T> = T extends object
 
 Sometimes explicit is better:
 
-```ts id="xbr0bc"
+```ts
 type UserGetters = {
   getId(): string;
   getEmail(): string;
@@ -7003,7 +7003,7 @@ type UserGetters = {
 
 An import can type-check but fail at runtime.
 
-```ts id="6c3sso"
+```ts
 import { createUser } from "@domain/user";
 ```
 
@@ -7019,7 +7019,7 @@ This works only if every relevant layer understands `@domain/user`.
 
 Runtime extension issue in Node ESM:
 
-```ts id="ifdsb1"
+```ts
 // Source file may need to reference emitted JS extension:
 import { createUser } from "./user.js";
 ```
@@ -7037,7 +7037,7 @@ import { createUser } from "./user.js";
 
 TypeScript catches many errors, but runtime failures can still occur.
 
-```ts id="mxpai2"
+```ts
 type Config = {
   port: number;
 };
@@ -7060,7 +7060,7 @@ Possible runtime failures include:
 
 Safer startup boundary:
 
-```ts id="w4a8u7"
+```ts
 type Config = {
   port: number;
 };
@@ -7108,7 +7108,7 @@ Frameworks and bundlers often add behavior that is not TypeScript itself.
 
 Example asset declaration:
 
-```ts id="n7vdw1"
+```ts
 declare module "*.svg" {
   const src: string;
   export default src;
@@ -7140,7 +7140,7 @@ TypeScript is deliberately not fully sound. It chooses JavaScript compatibility 
 
 If `any` is unavoidable, contain it inside a small adapter.
 
-```ts id="w8iqx5"
+```ts
 type LegacyUser = {
   id: string;
   email: string;
@@ -7181,7 +7181,7 @@ async function getLegacyUser(id: string): Promise<LegacyUser> {
 
 Unsafe assertion spread:
 
-```ts id="13tmir"
+```ts
 const user = JSON.parse(raw) as User;
 const team = JSON.parse(rawTeam) as Team;
 const invoice = JSON.parse(rawInvoice) as Invoice;
@@ -7189,7 +7189,7 @@ const invoice = JSON.parse(rawInvoice) as Invoice;
 
 Better containment:
 
-```ts id="iibn0r"
+```ts
 function unsafeJsonParse(raw: string): unknown {
   return JSON.parse(raw);
 }
@@ -7217,7 +7217,7 @@ function parseUserJson(raw: string): User {
 
 Static assertion:
 
-```ts id="hug1o9"
+```ts
 const value = "123" as unknown as number;
 ```
 
@@ -7225,13 +7225,13 @@ This does not convert the string to a number.
 
 Runtime conversion:
 
-```ts id="j3gsv4"
+```ts
 const value = Number("123");
 ```
 
 Runtime conversion plus validation:
 
-```ts id="f0p3my"
+```ts
 function parsePositiveInteger(value: string): number {
   const number = Number(value);
 
@@ -7260,7 +7260,7 @@ Multiple booleans often permit invalid states.
 
 Poor model:
 
-```ts id="dbgl9o"
+```ts
 type UploadState = {
   isIdle: boolean;
   isUploading: boolean;
@@ -7272,7 +7272,7 @@ type UploadState = {
 
 This allows contradictions:
 
-```ts id="435zqc"
+```ts
 const impossible: UploadState = {
   isIdle: true,
   isUploading: true,
@@ -7283,7 +7283,7 @@ const impossible: UploadState = {
 
 Better:
 
-```ts id="dygqzh"
+```ts
 type UploadState =
   | { status: "idle" }
   | { status: "uploading"; progress: number }
@@ -7302,7 +7302,7 @@ type UploadState =
 
 Poor async model:
 
-```ts id="mmoxxw"
+```ts
 type UserState = {
   loading: boolean;
   user: User | null;
@@ -7314,7 +7314,7 @@ This permits ambiguous combinations such as `loading: true` with both `user` and
 
 Better:
 
-```ts id="f2gm6s"
+```ts
 type UserState =
   | { status: "idle" }
   | { status: "loading" }
@@ -7328,7 +7328,7 @@ type UserState =
 
 TypeScript widens mutable variables.
 
-```ts id="zsu9x4"
+```ts
 let status = "draft";
 // string
 
@@ -7338,7 +7338,7 @@ const fixedStatus = "draft";
 
 Object properties may widen:
 
-```ts id="on5wj5"
+```ts
 const invoice = {
   status: "draft",
 };
@@ -7348,7 +7348,7 @@ const invoice = {
 
 Preserve literal:
 
-```ts id="83j393"
+```ts
 const invoice = {
   status: "draft",
 } as const;
@@ -7358,7 +7358,7 @@ const invoice = {
 
 Or check shape while preserving inference:
 
-```ts id="by8ip4"
+```ts
 type Invoice = {
   status: "draft" | "sent" | "paid";
 };
@@ -7381,7 +7381,7 @@ const invoice = {
 
 `satisfies` checks compatibility but does not make the variable’s type exactly the target type.
 
-```ts id="rkdhe9"
+```ts
 type Config = {
   mode: "dev" | "prod";
   retries: number;
@@ -7400,7 +7400,7 @@ This is usually a benefit.
 
 But if a broad variable type is desired, use annotation:
 
-```ts id="50eia4"
+```ts
 const config: Config = {
   mode: "prod",
   retries: 3,
@@ -7423,7 +7423,7 @@ config.mode;
 
 `readonly`, `Readonly<T>`, and `as const` are mostly compile-time and often shallow in practical use.
 
-```ts id="zubdfm"
+```ts
 type Config = {
   database: {
     url: string;
@@ -7441,7 +7441,7 @@ config.database.url = "postgres://prod"; // Allowed
 
 Deep runtime immutability requires runtime mechanisms or deep type utilities.
 
-```ts id="frbmch"
+```ts
 const frozen = Object.freeze({
   mode: "prod",
 });
@@ -7461,7 +7461,7 @@ const frozen = Object.freeze({
 
 Arrays are common sources of unsound assumptions.
 
-```ts id="ahh60k"
+```ts
 const values = [1, 2, 3];
 
 const value = values[10];
@@ -7471,7 +7471,7 @@ At runtime, `value` is `undefined`. Without `noUncheckedIndexedAccess`, TypeScri
 
 Safer:
 
-```ts id="tgecfz"
+```ts
 const value = values[10];
 
 if (value !== undefined) {
@@ -7481,7 +7481,7 @@ if (value !== undefined) {
 
 Tuples model known positions:
 
-```ts id="hayb9f"
+```ts
 type Point = [x: number, y: number];
 
 const point: Point = [10, 20];
@@ -7502,7 +7502,7 @@ const y = point[1];
 
 Function parameter types can create assignability surprises.
 
-```ts id="sirfz4"
+```ts
 type Animal = {
   name: string;
 };
@@ -7524,13 +7524,13 @@ const handleDog: Handler<Dog> = (dog) => {
 
 A handler that can handle any `Animal` can handle a `Dog`.
 
-```ts id="whp16m"
+```ts
 const dogHandler: Handler<Dog> = handleAnimal;
 ```
 
 But a handler that requires a `Dog` cannot safely handle any `Animal`.
 
-```ts id="ga0clx"
+```ts
 // const animalHandler: Handler<Animal> = handleDog;
 ```
 
@@ -7547,7 +7547,7 @@ But a handler that requires a `Dog` cannot safely handle any `Animal`.
 
 Declaration files describe runtime JavaScript. They do not prove implementation correctness.
 
-```ts id="l7ew3t"
+```ts
 // legacy-lib.d.ts
 declare module "legacy-lib" {
   export function getUser(id: string): Promise<{
@@ -7585,7 +7585,7 @@ If a global name is missing, the problem is often configuration.
 
 Example:
 
-```ts id="hfvj7i"
+```ts
 // globals.d.ts
 declare const __APP_VERSION__: string;
 ```
@@ -7598,7 +7598,7 @@ declare const __APP_VERSION__: string;
 
 Use for stable known fields.
 
-```ts id="p7yd1b"
+```ts
 type User = {
   id: string;
   email: string;
@@ -7615,7 +7615,7 @@ type User = {
 
 Use for allowed values.
 
-```ts id="onwvuo"
+```ts
 type Role = "admin" | "editor" | "viewer";
 ```
 
@@ -7628,7 +7628,7 @@ type Role = "admin" | "editor" | "viewer";
 
 Use for one of several shapes.
 
-```ts id="b3ovm9"
+```ts
 type Result<T> =
   | { ok: true; value: T }
   | { ok: false; error: Error };
@@ -7643,7 +7643,7 @@ type Result<T> =
 
 Use to derive types from runtime constants.
 
-```ts id="se2gvq"
+```ts
 const statuses = ["draft", "sent", "paid"] as const;
 
 type Status = (typeof statuses)[number];
@@ -7658,7 +7658,7 @@ type Status = (typeof statuses)[number];
 
 Use to connect object keys and values.
 
-```ts id="pzhxe2"
+```ts
 function get<T, K extends keyof T>(object: T, key: K): T[K] {
   return object[key];
 }
@@ -7673,7 +7673,7 @@ function get<T, K extends keyof T>(object: T, key: K): T[K] {
 
 Use when a structure is reused with different inner data.
 
-```ts id="av6dph"
+```ts
 type ApiResponse<T> = {
   data: T;
   requestId: string;
@@ -7689,7 +7689,7 @@ type ApiResponse<T> = {
 
 Use when a generic needs certain capabilities.
 
-```ts id="g8o8kg"
+```ts
 function getId<T extends { id: string }>(value: T): string {
   return value.id;
 }
@@ -7704,7 +7704,7 @@ function getId<T extends { id: string }>(value: T): string {
 
 Use standard utility types for shallow transformations.
 
-```ts id="a88vmz"
+```ts
 type User = {
   id: string;
   email: string;
@@ -7729,7 +7729,7 @@ type UsersById = Record<string, User | undefined>;
 
 Use for external data.
 
-```ts id="sou2kp"
+```ts
 function isUser(value: unknown): value is User {
   return (
     typeof value === "object" &&
@@ -7751,7 +7751,7 @@ function isUser(value: unknown): value is User {
 
 Use for configuration objects and lookup tables.
 
-```ts id="lrnece"
+```ts
 type Route = {
   method: "GET" | "POST";
   path: string;

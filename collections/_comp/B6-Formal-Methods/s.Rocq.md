@@ -1,6 +1,7 @@
 ---
 title: Rocq - Quick Reference
 abbreviation: Rocq
+layout: post
 categories: Sheet
 date: 2026-05-08
 subclass: Formal Methods
@@ -1648,7 +1649,7 @@ The most fundamental Rocq data-definition mechanism is `Inductive`. It defines a
 
 Simple finite data:
 
-```coq id="yh6i8r"
+```coq
 Inductive color : Type :=
 | Red
 | Green
@@ -1657,7 +1658,7 @@ Inductive color : Type :=
 
 Using it:
 
-```coq id="wpq42k"
+```coq
 Definition is_warm (c : color) : bool :=
   match c with
   | Red => true
@@ -1668,7 +1669,7 @@ Definition is_warm (c : color) : bool :=
 
 Record example:
 
-```coq id="k5v47u"
+```coq
 Record point : Type := {
   px : nat;
   py : nat
@@ -1680,7 +1681,7 @@ Definition origin : point :=
 
 Recursive tree:
 
-```coq id="ojazkl"
+```coq
 Inductive tree (A : Type) : Type :=
 | Leaf : tree A
 | Node : tree A -> A -> tree A -> tree A.
@@ -1688,7 +1689,7 @@ Inductive tree (A : Type) : Type :=
 
 A size function:
 
-```coq id="h95fjw"
+```coq
 Fixpoint size {A : Type} (t : tree A) : nat :=
   match t with
   | Leaf _ => 0
@@ -1717,7 +1718,7 @@ A central Rocq modeling decision is whether to represent a claim as a computable
 
 Boolean test:
 
-```coq id="u9fkr1"
+```coq
 Definition is_zero (n : nat) : bool :=
   match n with
   | 0 => true
@@ -1727,14 +1728,14 @@ Definition is_zero (n : nat) : bool :=
 
 Propositional specification:
 
-```coq id="nkhyc0"
+```coq
 Definition IsZero (n : nat) : Prop :=
   n = 0.
 ```
 
 Bridge theorem:
 
-```coq id="lxd50a"
+```coq
 Theorem is_zero_correct :
   forall n : nat, is_zero n = true -> IsZero n.
 Proof.
@@ -1747,7 +1748,7 @@ Qed.
 
 A converse theorem is also useful:
 
-```coq id="ef5v35"
+```coq
 Theorem is_zero_complete :
   forall n : nat, IsZero n -> is_zero n = true.
 Proof.
@@ -1790,7 +1791,7 @@ Use `option A` when a computation may fail to produce an `A` but the failure car
 
 Example:
 
-```coq id="xqai96"
+```coq
 Fixpoint nth_opt {A : Type} (n : nat) (xs : list A) : option A :=
   match n, xs with
   | 0, x :: _ => Some x
@@ -1801,7 +1802,7 @@ Fixpoint nth_opt {A : Type} (n : nat) (xs : list A) : option A :=
 
 Using it:
 
-```coq id="pj5wwd"
+```coq
 Definition nth_or_default {A : Type} (default : A) (n : nat) (xs : list A) : A :=
   match nth_opt n xs with
   | Some x => x
@@ -1811,7 +1812,7 @@ Definition nth_or_default {A : Type} (default : A) (n : nat) (xs : list A) : A :
 
 Specification examples:
 
-```coq id="abgrvx"
+```coq
 Definition nth_success {A : Type} (n : nat) (xs : list A) (x : A) : Prop :=
   nth_opt n xs = Some x.
 
@@ -1836,7 +1837,7 @@ Rocq’s standard sum type `A + B` represents a value of either `A` or `B`. For 
 
 Custom result type:
 
-```coq id="7yxf7g"
+```coq
 Inductive result (E A : Type) : Type :=
 | Ok : A -> result E A
 | Err : E -> result E A.
@@ -1844,7 +1845,7 @@ Inductive result (E A : Type) : Type :=
 
 Example:
 
-```coq id="s2u0ly"
+```coq
 Inductive lookup_error : Type :=
 | EmptyList
 | IndexTooLarge.
@@ -1883,7 +1884,7 @@ Finite state machines can be modeled computationally with functions or logically
 
 Example finite state:
 
-```coq id="g99r42"
+```coq
 Inductive light : Type :=
 | RedLight
 | YellowLight
@@ -1899,7 +1900,7 @@ Definition next_light (s : light) : light :=
 
 A simple theorem:
 
-```coq id="pqwop3"
+```coq
 Theorem next_light_not_stuck :
   forall s : light, exists s' : light, next_light s = s'.
 Proof.
@@ -1911,7 +1912,7 @@ Qed.
 
 Relational version:
 
-```coq id="jza665"
+```coq
 Inductive light_step : light -> light -> Prop :=
 | StepRed : light_step RedLight GreenLight
 | StepGreen : light_step GreenLight YellowLight
@@ -1920,7 +1921,7 @@ Inductive light_step : light -> light -> Prop :=
 
 A determinism property:
 
-```coq id="j0zpsy"
+```coq
 Definition deterministic {A : Type} (R : A -> A -> Prop) : Prop :=
   forall x y z, R x y -> R x z -> y = z.
 ```
@@ -1944,7 +1945,7 @@ Collections in Rocq are not only data containers. They come with induction princ
 
 List examples:
 
-```coq id="39c1nf"
+```coq
 From Stdlib Require Import List.
 Import ListNotations.
 
@@ -1959,7 +1960,7 @@ Fixpoint sum_list (xs : list nat) : nat :=
 
 Classic theorem anchor: length of append.
 
-```coq id="07xdit"
+```coq
 Theorem app_length_anchor :
   forall (A : Type) (xs ys : list A),
     length (xs ++ ys) = length xs + length ys.
@@ -2000,7 +2001,7 @@ Rocq is especially strong for programming-language theory because syntax trees a
 
 Simple expression language:
 
-```coq id="rxntkp"
+```coq
 Inductive expr : Type :=
 | EConst : nat -> expr
 | EPlus : expr -> expr -> expr.
@@ -2008,7 +2009,7 @@ Inductive expr : Type :=
 
 Evaluator:
 
-```coq id="58c9h1"
+```coq
 Fixpoint eval (e : expr) : nat :=
   match e with
   | EConst n => n
@@ -2018,7 +2019,7 @@ Fixpoint eval (e : expr) : nat :=
 
 A simple theorem anchor:
 
-```coq id="zk07ez"
+```coq
 Theorem eval_plus_const :
   forall n m : nat,
     eval (EPlus (EConst n) (EConst m)) = n + m.
@@ -2030,7 +2031,7 @@ Qed.
 
 For richer languages, semantics often becomes relational:
 
-```coq id="s9zxbb"
+```coq
 Inductive eval_rel : expr -> nat -> Prop :=
 | EvalConst : forall n,
     eval_rel (EConst n) n
@@ -2065,14 +2066,14 @@ A professional Rocq model should distinguish raw external data from validated in
 
 Example predicate:
 
-```coq id="ek4fio"
+```coq
 Definition nonzero (n : nat) : Prop :=
   n <> 0.
 ```
 
 Dependent record:
 
-```coq id="kx8ya5"
+```coq
 Record positive_nat : Type := {
   pos_value : nat;
   pos_proof : pos_value <> 0
@@ -2081,7 +2082,7 @@ Record positive_nat : Type := {
 
 Smart constructor idea:
 
-```coq id="p4ilz2"
+```coq
 Definition make_positive (n : nat) : option positive_nat :=
   match n with
   | 0 => None
@@ -2113,7 +2114,7 @@ Input constraints can be represented in several ways depending on whether the co
 
 Example: predecessor with failure.
 
-```coq id="lp0lca"
+```coq
 Definition pred_opt (n : nat) : option nat :=
   match n with
   | 0 => None
@@ -2123,7 +2124,7 @@ Definition pred_opt (n : nat) : option nat :=
 
 Precondition version:
 
-```coq id="9c41ef"
+```coq
 Definition pred_with_proof (n : nat) (H : n <> 0) : nat :=
   match n with
   | 0 => match H eq_refl with end
@@ -2150,7 +2151,7 @@ Many proofs require deciding equality. For simple finite inductive types, equali
 
 Example finite type:
 
-```coq id="rvjzv5"
+```coq
 Inductive bit : Type :=
 | B0
 | B1.
@@ -2158,7 +2159,7 @@ Inductive bit : Type :=
 
 Boolean equality:
 
-```coq id="pl71tp"
+```coq
 Definition bit_eqb (x y : bit) : bool :=
   match x, y with
   | B0, B0 => true
@@ -2169,7 +2170,7 @@ Definition bit_eqb (x y : bit) : bool :=
 
 Correctness theorem:
 
-```coq id="jlslvn"
+```coq
 Theorem bit_eqb_true :
   forall x y : bit, bit_eqb x y = true -> x = y.
 Proof.
@@ -2184,7 +2185,7 @@ Qed.
 
 Completeness theorem:
 
-```coq id="7dpu09"
+```coq
 Theorem bit_eqb_refl :
   forall x : bit, bit_eqb x x = true.
 Proof.
@@ -2197,7 +2198,7 @@ Qed.
 
 Decision procedure as data/evidence:
 
-```coq id="t88xqr"
+```coq
 Theorem bit_eq_dec :
   forall x y : bit, {x = y} + {x <> y}.
 Proof.
@@ -2237,7 +2238,7 @@ Lists are the first serious proof-engineering training ground. They combine stru
 
 Append identity theorem:
 
-```coq id="2itlif"
+```coq
 Theorem app_nil_r_anchor :
   forall (A : Type) (xs : list A),
     xs ++ [] = xs.
@@ -2253,7 +2254,7 @@ Qed.
 
 Append associativity:
 
-```coq id="b2l7tc"
+```coq
 Theorem app_assoc_anchor :
   forall (A : Type) (xs ys zs : list A),
     (xs ++ ys) ++ zs = xs ++ (ys ++ zs).
@@ -2269,7 +2270,7 @@ Qed.
 
 Map length:
 
-```coq id="4opz2n"
+```coq
 Theorem map_length_anchor :
   forall (A B : Type) (f : A -> B) (xs : list A),
     length (map f xs) = length xs.
@@ -2300,7 +2301,7 @@ Trees teach that every inductive type has its own proof shape. List habits trans
 
 Example binary tree:
 
-```coq id="e52efa"
+```coq
 Inductive btree (A : Type) : Type :=
 | Empty : btree A
 | Branch : btree A -> A -> btree A -> btree A.
@@ -2308,7 +2309,7 @@ Inductive btree (A : Type) : Type :=
 
 Size and mirror:
 
-```coq id="yqd6th"
+```coq
 Fixpoint bsize {A : Type} (t : btree A) : nat :=
   match t with
   | Empty _ => 0
@@ -2324,7 +2325,7 @@ Fixpoint mirror {A : Type} (t : btree A) : btree A :=
 
 Mirror preserves size:
 
-```coq id="tq5dxd"
+```coq
 Theorem mirror_size :
   forall (A : Type) (t : btree A),
     bsize (mirror t) = bsize t.
@@ -2371,14 +2372,14 @@ Many Rocq models can be represented either as functions or relations. This choic
 
 Function model:
 
-```coq id="h8vpye"
+```coq
 Definition bool_and (b c : bool) : bool :=
   if b then c else false.
 ```
 
 Relational model:
 
-```coq id="bbunhk"
+```coq
 Inductive and_rel : bool -> bool -> bool -> Prop :=
 | AndTrueTrue : and_rel true true true
 | AndTrueFalse : and_rel true false false
@@ -2404,7 +2405,7 @@ A theorem statement is not merely a claim. It is an interface between definition
 
 Weak theorem shape:
 
-```coq id="t8bpvp"
+```coq
 (* Often too specific for later use. *)
 Theorem specific_example : [1; 2] ++ [] = [1; 2].
 Proof.
@@ -2414,7 +2415,7 @@ Qed.
 
 Reusable theorem shape:
 
-```coq id="rpm6uk"
+```coq
 Theorem app_nil_r_general :
   forall (A : Type) (xs : list A),
     xs ++ [] = xs.
@@ -3414,7 +3415,7 @@ A pure function in Rocq is a term with a function type. It has no hidden mutatio
 
 Examples:
 
-```coq id="qbrbfx"
+```coq
 Definition inc (n : nat) : nat :=
   S n.
 
@@ -3428,7 +3429,7 @@ Definition apply_twice {A : Type} (f : A -> A) (x : A) : A :=
 
 A theorem about `apply_twice`:
 
-```coq id="uv83xx"
+```coq
 Theorem apply_twice_id :
   forall (A : Type) (x : A),
     apply_twice (fun y => y) x = x.
@@ -3468,7 +3469,7 @@ In Rocq, a function signature is also a proof-engineering interface. It determin
 
 Example: two signatures for predecessor.
 
-```coq id="vwev5f"
+```coq
 Definition pred_opt (n : nat) : option nat :=
   match n with
   | 0 => None
@@ -3478,7 +3479,7 @@ Definition pred_opt (n : nat) : option nat :=
 
 Precondition style:
 
-```coq id="mmke49"
+```coq
 Definition pred_pre (n : nat) (H : n <> 0) : nat :=
   match n with
   | 0 => match H eq_refl with end
@@ -3500,14 +3501,14 @@ Use `if` for booleans. Use `match` for general inductive values. Branching on `P
 
 Boolean branch:
 
-```coq id="7yiw0b"
+```coq
 Definition max_zero_test (n : nat) : bool :=
   if Nat.eqb n 0 then true else false.
 ```
 
 Option branch:
 
-```coq id="put51a"
+```coq
 Definition option_default {A : Type} (default : A) (o : option A) : A :=
   match o with
   | Some x => x
@@ -3517,7 +3518,7 @@ Definition option_default {A : Type} (default : A) (o : option A) : A :=
 
 Nested pattern matching:
 
-```coq id="3k69wv"
+```coq
 Definition add_options (x y : option nat) : option nat :=
   match x, y with
   | Some n, Some m => Some (n + m)
@@ -3544,7 +3545,7 @@ Pattern matching consumes inductive data. It is exhaustive because every constru
 
 Natural number example:
 
-```coq id="smphrx"
+```coq
 Definition is_successor (n : nat) : bool :=
   match n with
   | 0 => false
@@ -3554,7 +3555,7 @@ Definition is_successor (n : nat) : bool :=
 
 List example:
 
-```coq id="jrg8zi"
+```coq
 From Stdlib Require Import List.
 Import ListNotations.
 
@@ -3567,7 +3568,7 @@ Definition second_or_zero (xs : list nat) : nat :=
 
 Tree example:
 
-```coq id="gpxs6f"
+```coq
 Inductive tree (A : Type) : Type :=
 | Leaf : tree A
 | Node : tree A -> A -> tree A -> tree A.
@@ -3598,7 +3599,7 @@ Rocq’s ordinary recursive functions must be accepted as terminating. Most basi
 
 Example: map over lists.
 
-```coq id="y0v1ma"
+```coq
 Fixpoint my_map {A B : Type} (f : A -> B) (xs : list A) : list B :=
   match xs with
   | [] => []
@@ -3608,7 +3609,7 @@ Fixpoint my_map {A B : Type} (f : A -> B) (xs : list A) : list B :=
 
 Example: filter with boolean predicate.
 
-```coq id="nujt8r"
+```coq
 Fixpoint my_filter {A : Type} (p : A -> bool) (xs : list A) : list A :=
   match xs with
   | [] => []
@@ -3620,7 +3621,7 @@ Fixpoint my_filter {A : Type} (p : A -> bool) (xs : list A) : list A :=
 
 Tree traversal:
 
-```coq id="9w81qo"
+```coq
 Fixpoint inorder {A : Type} (t : tree A) : list A :=
   match t with
   | Leaf _ => []
@@ -3648,14 +3649,14 @@ Rocq functions are first-class terms. They can be passed as arguments, returned,
 
 Function composition:
 
-```coq id="gzr81n"
+```coq
 Definition comp {A B C : Type} (f : B -> C) (g : A -> B) : A -> C :=
   fun x => f (g x).
 ```
 
 Map composition theorem:
 
-```coq id="jp5exh"
+```coq
 Theorem my_map_comp :
   forall (A B C : Type) (f : B -> C) (g : A -> B) (xs : list A),
     my_map f (my_map g xs) = my_map (fun x => f (g x)) xs.
@@ -3681,7 +3682,7 @@ Qed.
 
 Example pointwise statement instead of function equality:
 
-```coq id="bbdagh"
+```coq
 Theorem comp_id_pointwise :
   forall (A : Type) (f : A -> A) (x : A),
     comp (fun y => y) f x = f x.
@@ -3710,7 +3711,7 @@ A function’s correctness can be specified in multiple styles. The best style d
 
 Example: soundness/completeness of a boolean predicate.
 
-```coq id="3cmzew"
+```coq
 Definition is_empty {A : Type} (xs : list A) : bool :=
   match xs with
   | [] => true
@@ -3723,7 +3724,7 @@ Definition EmptyList {A : Type} (xs : list A) : Prop :=
 
 Soundness:
 
-```coq id="9d6a5y"
+```coq
 Theorem is_empty_sound :
   forall (A : Type) (xs : list A),
     is_empty xs = true -> EmptyList xs.
@@ -3737,7 +3738,7 @@ Qed.
 
 Completeness:
 
-```coq id="r8u46z"
+```coq
 Theorem is_empty_complete :
   forall (A : Type) (xs : list A),
     EmptyList xs -> is_empty xs = true.
@@ -3760,7 +3761,7 @@ Qed.
 
 Boolean case analysis:
 
-```coq id="2alvzp"
+```coq
 Theorem negb_involutive :
   forall b : bool, negb (negb b) = b.
 Proof.
@@ -3773,7 +3774,7 @@ Qed.
 
 Option case analysis:
 
-```coq id="jhiim0"
+```coq
 Theorem option_default_some :
   forall (A : Type) (default x : A),
     option_default default (Some x) = x.
@@ -3785,7 +3786,7 @@ Qed.
 
 General option proof:
 
-```coq id="eg4u97"
+```coq
 Theorem option_default_id :
   forall (A : Type) (default : A) (o : option A),
     o = Some (option_default default o) \/ o = None.
@@ -3816,7 +3817,7 @@ Use `induction` when proving a property over recursively defined data or evidenc
 
 Natural number anchor:
 
-```coq id="fwtkuv"
+```coq
 Theorem add_0_r :
   forall n : nat, n + 0 = n.
 Proof.
@@ -3831,7 +3832,7 @@ Qed.
 
 List anchor:
 
-```coq id="03ziky"
+```coq
 Theorem my_map_length :
   forall (A B : Type) (f : A -> B) (xs : list A),
     length (my_map f xs) = length xs.
@@ -3847,7 +3848,7 @@ Qed.
 
 Tree anchor:
 
-```coq id="1fz8hj"
+```coq
 Theorem inorder_length_nonnegative :
   forall (A : Type) (t : tree A),
     0 <= length (inorder t).
@@ -3888,7 +3889,7 @@ When destructing a complex expression, Rocq may lose the connection between the 
 
 Example:
 
-```coq id="oirw0p"
+```coq
 Theorem eqb_zero_cases :
   forall n : nat,
     Nat.eqb n 0 = true \/ Nat.eqb n 0 = false.
@@ -3911,7 +3912,7 @@ The `eqn:Heq` records the equation for the branch.
 
 Example with lookup:
 
-```coq id="qizuzb"
+```coq
 Theorem nth_opt_case :
   forall (A : Type) (n : nat) (xs : list A),
     (exists x, nth_opt n xs = Some x) \/ nth_opt n xs = None.
@@ -3944,7 +3945,7 @@ Computation tactics reduce definitions. They do not use arbitrary mathematical f
 
 Example:
 
-```coq id="fr30g8"
+```coq
 Definition double (n : nat) : nat := n + n.
 
 Theorem double_zero :
@@ -3958,7 +3959,7 @@ Qed.
 
 Often `reflexivity` alone may suffice because it performs conversion:
 
-```coq id="6z83ua"
+```coq
 Theorem double_zero_short :
   double 0 = 0.
 Proof.
@@ -3987,7 +3988,7 @@ Use `rewrite` when the desired transformation follows from an equality proof, no
 
 Example:
 
-```coq id="8o9sye"
+```coq
 Theorem rewrite_add :
   forall a b c : nat,
     a = b -> a + c = b + c.
@@ -4000,7 +4001,7 @@ Qed.
 
 Reverse direction:
 
-```coq id="w51026"
+```coq
 Theorem rewrite_add_reverse :
   forall a b c : nat,
     b = a -> a + c = b + c.
@@ -4013,7 +4014,7 @@ Qed.
 
 Rewriting in hypotheses:
 
-```coq id="h6p0mw"
+```coq
 Theorem rewrite_in_hyp :
   forall a b c : nat,
     a = b -> a = c -> b = c.
@@ -4050,7 +4051,7 @@ Most structural proofs combine computation and rewriting. The typical pattern is
 
 Example: append identity.
 
-```coq id="jxigfs"
+```coq
 Theorem app_nil_r_p4 :
   forall (A : Type) (xs : list A),
     xs ++ [] = xs.
@@ -4085,7 +4086,7 @@ This proof has the standard shape:
 
 Example:
 
-```coq id="4ey4n6"
+```coq
 Theorem apply_chain :
   forall A B C : Prop,
     (A -> B) -> (B -> C) -> A -> C.
@@ -4107,7 +4108,7 @@ Proof-state interpretation:
 
 Direct term:
 
-```coq id="4yvl6t"
+```coq
 Definition apply_chain_term :
   forall A B C : Prop, (A -> B) -> (B -> C) -> A -> C :=
   fun A B C HAB HBC HA => HBC (HAB HA).
@@ -4141,7 +4142,7 @@ Logical connectives guide tactic choice.
 
 Example conjunction:
 
-```coq id="wlpw8t"
+```coq
 Theorem and_comm_p4 :
   forall A B : Prop, A /\ B -> B /\ A.
 Proof.
@@ -4155,7 +4156,7 @@ Qed.
 
 Example disjunction:
 
-```coq id="3073a1"
+```coq
 Theorem or_comm_p4 :
   forall A B : Prop, A \/ B -> B \/ A.
 Proof.
@@ -4168,7 +4169,7 @@ Qed.
 
 Example existential:
 
-```coq id="8ui0uw"
+```coq
 Theorem exists_zero :
   exists n : nat, n + 0 = n.
 Proof.
@@ -4189,7 +4190,7 @@ Negation `~ A` is defined as `A -> False`. To prove a negation, assume the propo
 
 Example:
 
-```coq id="un9iu7"
+```coq
 Theorem true_not_false :
   true <> false.
 Proof.
@@ -4201,7 +4202,7 @@ Qed.
 
 Equivalent shorter proof:
 
-```coq id="4g7i1q"
+```coq
 Theorem zero_not_succ :
   forall n : nat, 0 <> S n.
 Proof.
@@ -4212,7 +4213,7 @@ Qed.
 
 Using contradiction from impossible option equality:
 
-```coq id="ogkr9h"
+```coq
 Theorem some_not_none :
   forall (A : Type) (x : A), Some x <> None.
 Proof.
@@ -4239,7 +4240,7 @@ Qed.
 
 Example with `Even`:
 
-```coq id="yr9l93"
+```coq
 Inductive Even : nat -> Prop :=
 | Even0 : Even 0
 | EvenSS : forall n : nat, Even n -> Even (S (S n)).
@@ -4247,7 +4248,7 @@ Inductive Even : nat -> Prop :=
 
 Proving `Even 1 -> False`:
 
-```coq id="ts2erc"
+```coq
 Theorem not_even_1 :
   Even 1 -> False.
 Proof.
@@ -4260,7 +4261,7 @@ Rocq sees that there is no constructor of `Even` that can produce evidence for `
 
 Example with option injectivity:
 
-```coq id="k66hbx"
+```coq
 Theorem some_injective :
   forall (A : Type) (x y : A),
     Some x = Some y -> x = y.
@@ -4290,14 +4291,14 @@ Some proofs are clearer as direct terms; others are clearer as tactic scripts.
 
 Direct proof term:
 
-```coq id="s168l1"
+```coq
 Definition id_proof : forall A : Prop, A -> A :=
   fun A HA => HA.
 ```
 
 Tactic proof:
 
-```coq id="y7wer9"
+```coq
 Theorem id_proof_tactic :
   forall A : Prop, A -> A.
 Proof.
@@ -4323,7 +4324,7 @@ Qed.
 
 Bullets organize subgoals and prevent accidental proof drift.
 
-```coq id="i2tgs9"
+```coq
 Theorem bool_cases :
   forall b : bool, b = true \/ b = false.
 Proof.
@@ -4336,7 +4337,7 @@ Qed.
 
 Nested bullets:
 
-```coq id="1fle35"
+```coq
 Theorem option_bool_cases :
   forall o : option bool,
     o = None \/ exists b, o = Some b.
@@ -4378,7 +4379,7 @@ A helper lemma is not merely a convenience. In Rocq, it is often the correct abs
 
 Classic example: accumulator reverse.
 
-```coq id="jxewe5"
+```coq
 From Stdlib Require Import List.
 Import ListNotations.
 
@@ -4391,7 +4392,7 @@ Fixpoint rev_acc {A : Type} (xs acc : list A) : list A :=
 
 The tempting theorem is:
 
-```coq id="n01uvf"
+```coq
 Theorem rev_acc_nil_goal :
   forall (A : Type) (xs : list A),
     rev_acc xs [] = rev xs.
@@ -4399,7 +4400,7 @@ Theorem rev_acc_nil_goal :
 
 This theorem is true, but it is not the easiest induction target. The stronger helper is:
 
-```coq id="zjskjz"
+```coq
 Theorem rev_acc_correct :
   forall (A : Type) (xs acc : list A),
     rev_acc xs acc = rev xs ++ acc.
@@ -4418,7 +4419,7 @@ Qed.
 
 Then the original theorem follows:
 
-```coq id="ly7vph"
+```coq
 Theorem rev_acc_nil :
   forall (A : Type) (xs : list A),
     rev_acc xs [] = rev xs.
@@ -4453,7 +4454,7 @@ Induction hypotheses are generated from the goal at the moment induction is invo
 
 A simplified pattern:
 
-```coq id="fmx6vq"
+```coq
 Theorem plus_n_m_0_style :
   forall n m : nat,
     n = m -> n + 0 = m.
@@ -4478,7 +4479,7 @@ This works, but more complex dependent proofs often fail when too many variables
 
 Illustrative theorem:
 
-```coq id="uorsij"
+```coq
 Theorem app_assoc_general :
   forall (A : Type) (xs ys zs : list A),
     (xs ++ ys) ++ zs = xs ++ (ys ++ zs).
@@ -4516,7 +4517,7 @@ In Rocq, the right induction target is often not the most visible variable. It i
 
 Example relation:
 
-```coq id="l8rhmh"
+```coq
 Inductive leq : nat -> nat -> Prop :=
 | Leq0 : forall n, leq 0 n
 | LeqSS : forall n m, leq n m -> leq (S n) (S m).
@@ -4524,7 +4525,7 @@ Inductive leq : nat -> nat -> Prop :=
 
 A proof by evidence induction:
 
-```coq id="0hgltb"
+```coq
 Theorem leq_refl :
   forall n : nat, leq n n.
 Proof.
@@ -4536,7 +4537,7 @@ Qed.
 
 A theorem using derivation induction:
 
-```coq id="l7hwhd"
+```coq
 Theorem leq_zero_left :
   forall n m : nat, leq n m -> n = 0 -> leq 0 m.
 Proof.
@@ -4548,7 +4549,7 @@ Qed.
 
 For more semantic relations, induction on the derivation is often central:
 
-```coq id="3mesz8"
+```coq
 Theorem leq_trans :
   forall a b c : nat, leq a b -> leq b c -> leq a c.
 Proof.
@@ -4579,7 +4580,7 @@ Many Rocq proofs are chains of equalities. A calculation-style proof makes each 
 
 Example:
 
-```coq id="m1xjnt"
+```coq
 Theorem app_nil_r_calc :
   forall (A : Type) (xs : list A),
     xs ++ [] = xs.
@@ -4595,7 +4596,7 @@ Qed.
 
 For a slightly more explicit calculation, one can use `transitivity`:
 
-```coq id="q9lteu"
+```coq
 Theorem add_0_r_calc :
   forall n : nat, n + 0 = n.
 Proof.
@@ -4631,7 +4632,7 @@ Unfolding a definition is often convenient in proofs, but it couples the proof t
 
 Example function:
 
-```coq id="wmjtoy"
+```coq
 Definition empty_or_singleton {A : Type} (xs : list A) : bool :=
   match xs with
   | [] => true
@@ -4642,7 +4643,7 @@ Definition empty_or_singleton {A : Type} (xs : list A) : bool :=
 
 A proof by unfolding:
 
-```coq id="9t6al7"
+```coq
 Theorem empty_or_singleton_nil :
   forall A : Type,
     empty_or_singleton (@nil A) = true.
@@ -4655,7 +4656,7 @@ Qed.
 
 This is fine for a local fact. But if many client proofs unfold `empty_or_singleton`, changing its implementation may break them. Better public API design states behavioral lemmas:
 
-```coq id="4pw0s8"
+```coq
 Theorem empty_or_singleton_cons_cons :
   forall (A : Type) (x y : A) (xs : list A),
     empty_or_singleton (x :: y :: xs) = false.
@@ -4694,7 +4695,7 @@ Rocq provides several abstraction mechanisms. They differ in explicitness, infer
 
 Example record abstraction:
 
-```coq id="b2d10o"
+```coq
 Record EqbSpec (A : Type) : Type := {
   eqb_fun : A -> A -> bool;
   eqb_sound : forall x y, eqb_fun x y = true -> x = y;
@@ -4704,7 +4705,7 @@ Record EqbSpec (A : Type) : Type := {
 
 Using this record, generic code can require not just an equality function, but a certified equality function.
 
-```coq id="95pef5"
+```coq
 Definition eqb_refl_from_spec
   {A : Type} (E : EqbSpec A) : Prop :=
   forall x : A, eqb_fun A E x x = true.
@@ -4740,7 +4741,7 @@ PART 3 introduced function-versus-relation modeling. In PART 4, the behavioral q
 
 Example relational composition:
 
-```coq id="mrtt2p"
+```coq
 Definition rel_comp {A B C : Type}
   (R : A -> B -> Prop) (S : B -> C -> Prop) : A -> C -> Prop :=
   fun a c => exists b, R a b /\ S b c.
@@ -4770,7 +4771,7 @@ A Rocq API is not only a set of functions. It is a set of definitions plus theor
 
 Example API pattern for lookup/update maps, abstractly:
 
-```coq id="s3m7ap"
+```coq
 Parameter map : Type -> Type -> Type.
 Parameter lookup : forall {K V : Type}, K -> map K V -> option V.
 Parameter update : forall {K V : Type}, K -> V -> map K V -> map K V.
@@ -4804,7 +4805,7 @@ Automation is essential in large Rocq developments, but it should be bounded. Th
 
 Example where automation is appropriate:
 
-```coq id="n4l26l"
+```coq
 From Stdlib Require Import Lia.
 
 Theorem add_nonnegative :
@@ -4817,7 +4818,7 @@ Qed.
 
 Example where automation should not replace the proof idea:
 
-```coq id="8v64ni"
+```coq
 Theorem app_assoc_explicit :
   forall (A : Type) (xs ys zs : list A),
     (xs ++ ys) ++ zs = xs ++ (ys ++ zs).
@@ -4852,7 +4853,7 @@ Custom tactics can eliminate repetitive proof boilerplate. But they are also a s
 
 Simple Ltac pattern:
 
-```coq id="x4r1q7"
+```coq
 Ltac crush_bool :=
   repeat match goal with
   | b : bool |- _ => destruct b; simpl in *
@@ -4861,7 +4862,7 @@ Ltac crush_bool :=
 
 Example use:
 
-```coq id="bp5i5y"
+```coq
 Theorem negb_cases_auto :
   forall b : bool, negb (negb b) = b.
 Proof.
@@ -4902,7 +4903,7 @@ Proof scripts can break when definitions, imports, notation, or generated hypoth
 
 Example of better naming:
 
-```coq id="tg3y8x"
+```coq
 Theorem and_assoc :
   forall A B C : Prop,
     A /\ (B /\ C) -> (A /\ B) /\ C.
@@ -4939,7 +4940,7 @@ Sometimes a proof needs a local intermediate fact that is not worth making globa
 
 Example:
 
-```coq id="w9x145"
+```coq
 Theorem local_assert_demo :
   forall n : nat, n = n /\ n + 0 = n.
 Proof.
@@ -4970,7 +4971,7 @@ Existential goals require witnesses. In verified programming, existential specif
 
 Example:
 
-```coq id="rvf769"
+```coq
 Theorem exists_append_decomposition :
   forall (A : Type) (xs : list A),
     exists ys : list A, xs ++ ys = xs.
@@ -4984,14 +4985,14 @@ Qed.
 
 Existential in relation composition:
 
-```coq id="x3dcut"
+```coq
 Definition reaches_in_two {A : Type} (step : A -> A -> Prop) (x z : A) : Prop :=
   exists y : A, step x y /\ step y z.
 ```
 
 Proofs using existentials usually destruct them:
 
-```coq id="h59dke"
+```coq
 Theorem exists_use_demo :
   forall A (P Q : A -> Prop),
     (exists x, P x /\ Q x) -> exists x, P x.
@@ -5020,7 +5021,7 @@ When the same `inversion` pattern appears repeatedly, state an inversion lemma.
 
 Example for `Even`:
 
-```coq id="ossrqa"
+```coq
 Theorem even_succ_succ_inv :
   forall n : nat, Even (S (S n)) -> Even n.
 Proof.
@@ -5041,7 +5042,7 @@ The exact generated names from `inversion` may differ, so in a real proof one ma
 
 Canonical forms example in PL theory:
 
-```coq id="3kssn5"
+```coq
 (* Schematic:
    If a closed value has type Bool, then it is either true or false.
 *)
@@ -5070,7 +5071,7 @@ Rocq’s core is constructive. Classical principles can be imported, but doing s
 
 Constructive proof of disjunction commutativity:
 
-```coq id="nyqwt2"
+```coq
 Theorem or_comm_constructive :
   forall A B : Prop, A \/ B -> B \/ A.
 Proof.
@@ -5083,7 +5084,7 @@ Qed.
 
 Classical-looking statement:
 
-```coq id="52g0zx"
+```coq
 (* forall P : Prop, P \/ ~ P *)
 ```
 
@@ -5114,7 +5115,7 @@ Certified programming in Rocq normally follows a pattern:
 
 Example: a simple verified boolean negation.
 
-```coq id="7zr8ti"
+```coq
 Definition my_negb (b : bool) : bool :=
   match b with
   | true => false
@@ -5127,7 +5128,7 @@ Definition negb_spec (f : bool -> bool) : Prop :=
 
 Correctness theorem:
 
-```coq id="c2bloa"
+```coq
 Theorem my_negb_correct :
   negb_spec my_negb.
 Proof.
@@ -5159,7 +5160,7 @@ A sorting algorithm is a classic certified-programming anchor because correctnes
 
 Schematic specification:
 
-```coq id="53db7g"
+```coq
 Parameter sorted : list nat -> Prop.
 Parameter permutation : list nat -> list nat -> Prop.
 Parameter sort : list nat -> list nat.
@@ -5171,7 +5172,7 @@ Definition sort_spec (sort : list nat -> list nat) : Prop :=
 
 Correctness theorem shape:
 
-```coq id="b6mu9t"
+```coq
 Parameter sort_correct :
   sort_spec sort.
 ```
@@ -5196,7 +5197,7 @@ This schematic uses parameters because full sorting libraries and permutation de
 
 Expression evaluators demonstrate how functions and relations can be connected.
 
-```coq id="e7pazu"
+```coq
 Inductive exp : Type :=
 | EVal : nat -> exp
 | EAdd : exp -> exp -> exp.
@@ -5218,7 +5219,7 @@ Inductive eval_rel : exp -> nat -> Prop :=
 
 Soundness:
 
-```coq id="aq6ue8"
+```coq
 Theorem eval_rel_sound :
   forall e n, eval_rel e n -> eval_fun e = n.
 Proof.
@@ -5234,7 +5235,7 @@ Qed.
 
 Completeness:
 
-```coq id="poe3s2"
+```coq
 Theorem eval_rel_complete :
   forall e, eval_rel e (eval_fun e).
 Proof.
@@ -5275,7 +5276,7 @@ A proof script should communicate the proof idea to future maintainers. In Rocq,
 
 Example of reviewable proof:
 
-```coq id="kg3m1p"
+```coq
 Theorem map_length_reviewable :
   forall (A B : Type) (f : A -> B) (xs : list A),
     length (map f xs) = length xs.
@@ -9494,7 +9495,7 @@ Interactive tools are central because Rocq proof development depends on goal ins
 
 Example diagnostic block that should usually not remain in final library code:
 
-```coq id="u6wyd6"
+```coq
 Check app_assoc.
 Search (_ ++ [] = _).
 Compute (rev [1;2;3]).
@@ -9559,7 +9560,7 @@ Type errors often come from what the source hides. Use diagnostics before changi
 
 Example:
 
-```coq id="r3q83w"
+```coq
 Check Some.
 Check @Some.
 Check (None : option nat).
@@ -9723,7 +9724,7 @@ Examples and computations are useful, but they do not replace universal theorems
 
 Example:
 
-```coq id="b4gxol"
+```coq
 Definition double (n : nat) : nat := n + n.
 
 Example double_2 :
@@ -9762,7 +9763,7 @@ A serious Rocq artifact should make its trust base explicit.
 
 Example:
 
-```coq id="l7ffm3"
+```coq
 Print Assumptions theorem_name.
 ```
 
@@ -9831,7 +9832,7 @@ External libraries may use different names, theorem shapes, notation, and proof 
 
 Example pattern:
 
-```coq id="h3q3sp"
+```coq
 Theorem project_append_nil_r :
   forall (A : Type) (xs : list A), xs ++ [] = xs.
 Proof.
@@ -11895,7 +11896,7 @@ Missing final period.
 
 Repair:
 
-```coq id="wf4xj1"
+```coq
 Definition x : nat := 0.
 ```
 
@@ -11909,7 +11910,7 @@ May fail if list notations are not imported.
 
 Repair:
 
-```coq id="dzmj6g"
+```coq
 From Stdlib Require Import List.
 Import ListNotations.
 
@@ -11947,7 +11948,7 @@ May fail if `List` is not imported.
 
 Repair:
 
-```coq id="w1ah7v"
+```coq
 From Stdlib Require Import List.
 Import ListNotations.
 
@@ -11988,13 +11989,13 @@ May be too ambiguous.
 
 Repair:
 
-```coq id="zg8vm1"
+```coq
 Check (None : option nat).
 ```
 
 Constructor diagnostic:
 
-```coq id="l4eb1i"
+```coq
 Check Some.
 Check @Some.
 ```
@@ -12031,7 +12032,7 @@ Many tactic failures are not deep. The tactic simply does not match the current 
 
 Example:
 
-```coq id="gyqulx"
+```coq
 Theorem bad_split_example :
   forall A B : Prop, A -> B -> A.
 Proof.
@@ -12062,7 +12063,7 @@ This fails because `n + 0` does not reduce when `n` is a variable and addition r
 
 Repair by induction:
 
-```coq id="l3uqgt"
+```coq
 Theorem plus_zero_good :
   forall n : nat, n + 0 = n.
 Proof.
@@ -12077,7 +12078,7 @@ Qed.
 
 Or use a library lemma:
 
-```coq id="kjh3y7"
+```coq
 From Stdlib Require Import Arith.
 
 Theorem plus_zero_library :
@@ -12121,7 +12122,7 @@ The goal remains essentially unchanged.
 
 Repair:
 
-```coq id="d9362w"
+```coq
 Theorem simpl_not_enough :
   forall n : nat, n + 0 = n.
 Proof.
@@ -12160,7 +12161,7 @@ Qed.
 
 Example:
 
-```coq id="x8ktvw"
+```coq
 Theorem rewrite_direction :
   forall a b c : nat,
     b = a -> a + c = b + c.
@@ -12192,7 +12193,7 @@ If `H : b = a`, then `rewrite H` rewrites `b` to `a`; but the goal contains `a`,
 
 Example:
 
-```coq id="en7g1c"
+```coq
 Theorem apply_demo :
   forall A B C : Prop,
     (A -> B -> C) -> A -> B -> C.
@@ -12218,7 +12219,7 @@ Qed.
 
 Diagnostic:
 
-```coq id="np4stx"
+```coq
 Check H.
 ```
 
@@ -12250,7 +12251,7 @@ induction x.
 
 Accumulator example:
 
-```coq id="wwlt2i"
+```coq
 From Stdlib Require Import List.
 Import ListNotations.
 
@@ -12271,7 +12272,7 @@ Theorem rev_acc_nil_only :
 
 Stronger theorem:
 
-```coq id="u6n09o"
+```coq
 Theorem rev_acc_correct :
   forall (A : Type) (xs acc : list A),
     rev_acc xs acc = rev xs ++ acc.
@@ -12311,13 +12312,13 @@ destruct (Nat.eqb n 0).
 
 Better pattern:
 
-```coq id="e54evf"
+```coq
 destruct (Nat.eqb n 0) eqn:Heq.
 ```
 
 Example:
 
-```coq id="v1uznf"
+```coq
 Theorem eqb_zero_cases :
   forall n : nat,
     Nat.eqb n 0 = true \/ Nat.eqb n 0 = false.
@@ -12346,7 +12347,7 @@ Qed.
 
 Example:
 
-```coq id="uam55e"
+```coq
 Theorem some_injective :
   forall (A : Type) (x y : A),
     Some x = Some y -> x = y.
@@ -12385,7 +12386,7 @@ This is a list theorem, not merely arithmetic. Use a list lemma or induction.
 
 Repair:
 
-```coq id="jz2jyd"
+```coq
 From Stdlib Require Import List Lia.
 Import ListNotations.
 
@@ -12434,7 +12435,7 @@ Qed.
 
 Example:
 
-```coq id="xse1c0"
+```coq
 Theorem explicit_better_than_auto :
   forall A B : Prop, A -> B -> A /\ B.
 Proof.
@@ -12488,7 +12489,7 @@ forall xs, sorted (sort xs) /\ Permutation xs (sort xs)
 
 Example:
 
-```coq id="z1cudy"
+```coq
 Definition is_empty {A : Type} (xs : list A) : bool :=
   match xs with
   | [] => true
@@ -12501,7 +12502,7 @@ Definition Empty {A : Type} (xs : list A) : Prop :=
 
 Soundness:
 
-```coq id="wa3ab7"
+```coq
 Theorem is_empty_sound :
   forall (A : Type) (xs : list A),
     is_empty xs = true -> Empty xs.
@@ -12515,7 +12516,7 @@ Qed.
 
 Completeness:
 
-```coq id="q8dr47"
+```coq
 Theorem is_empty_complete :
   forall (A : Type) (xs : list A),
     Empty xs -> is_empty xs = true.
@@ -12590,7 +12591,7 @@ Qed.
 
 Example:
 
-```coq id="pd3llp"
+```coq
 Section S.
   Variable A : Type.
   Definition idA (x : A) := x.
@@ -12676,7 +12677,7 @@ Check idA.
 
 Diagnostic:
 
-```coq id="o2vuaw"
+```coq
 Print Assumptions theorem_name.
 ```
 
@@ -13550,7 +13551,7 @@ This is the same pattern seen throughout this guide.
 
 A toy version:
 
-```coq id="q5l4ae"
+```coq
 Parameter Config : Type.
 
 Parameter reducible : Config -> Prop.
@@ -13565,7 +13566,7 @@ The boolean `check_reducible C` is executable. The proposition `reducible C` is 
 
 With that bridge, a finite list of configurations can be certified by computation:
 
-```coq id="c5v8hr"
+```coq
 Parameter InU : Config -> Prop.
 
 Parameter all_configs_checked :
@@ -13602,7 +13603,7 @@ The central reflection pattern is:
 
 A simplified reflection theorem looks like:
 
-```coq id="f1q064"
+```coq
 Parameter P : Config -> Prop.
 Parameter testP : Config -> bool.
 
@@ -13613,7 +13614,7 @@ Axiom reflectP :
 
 Then the proof of `P C` can proceed by computation:
 
-```coq id="i6orhs"
+```coq
 Theorem prove_P_by_computation :
   forall C : Config,
     testP C = true -> P C.
@@ -13626,7 +13627,7 @@ Qed.
 
 In serious developments, the checker is not a toy. It may analyze finite graphs, colorings, reducibility witnesses, or discharge rules. But the logical shape is the same:
 
-```text id="ze8gxz"
+```text
 computation succeeds
 + soundness/reflection theorem
 = proposition established
@@ -13673,7 +13674,7 @@ There are two common ways to connect computation to proof in a large checked the
 
 A certificate-based skeleton:
 
-```coq id="j85v9v"
+```coq
 Parameter Config Certificate : Type.
 
 Parameter reducible : Config -> Prop.
@@ -13687,7 +13688,7 @@ Axiom verify_reducible_sound :
 
 If each configuration has a certificate:
 
-```coq id="w0xerg"
+```coq
 Parameter cert_of : Config -> Certificate.
 Parameter InU : Config -> Prop.
 
@@ -13743,7 +13744,7 @@ The `fourcolor` package is maintained as a formal library, and the package metad
 
 **Key distinction:**
 
-```text id="l0c8sq"
+```text
 Untrusted use of computation:
   "Program says all cases pass."
 
@@ -13823,7 +13824,7 @@ At a high level, the final contradiction is very short once the two big componen
 
 Pseudo-Rocq:
 
-```coq id="xx7fmh"
+```coq
 Section FinalContradiction.
 
   Parameter Map Config : Type.
@@ -13862,7 +13863,7 @@ End FinalContradiction.
 
 This is why the top-level proof of a large theorem may look deceptively short. The real work is in proving the hypotheses:
 
-```text id="43rlcu"
+```text
 unavoidable
 reducible_configs
 ```
@@ -13916,7 +13917,7 @@ A good mini-exercise is to formalize the abstract skeleton with a finite list.
 
 Pseudo-development:
 
-```coq id="ob94hz"
+```coq
 From Stdlib Require Import List Bool.
 Import ListNotations.
 
@@ -13934,7 +13935,7 @@ Definition all_checked (cs : list Config) : bool :=
 
 Then prove a theorem shape like:
 
-```coq id="27ti5m"
+```coq
 (* Schematic:
 Theorem all_checked_sound :
   forall cs C,
@@ -13959,7 +13960,7 @@ This is not the Four Color Theorem, but it is a correct local training target.
 
 Another exercise is to prove the final logical skeleton:
 
-```coq id="chb1cu"
+```coq
 Section UnavoidableReducibleToy.
 
   Variable Map Config : Type.
@@ -14054,7 +14055,7 @@ The Four Color Theorem is not an isolated example. It is a stress test for nearl
 
 The proof can be summarized as:
 
-```text id="khl0lq"
+```text
 Topological Four Color Theorem
         |
         | formal topology + finite/simple map reduction
@@ -14081,7 +14082,7 @@ Machine-checked finite combinatorial proof core
 
 Or as a logical chain:
 
-```text id="z1vfln"
+```text
 discharging theorem
   => unavoidable(U)
 
@@ -14126,7 +14127,7 @@ The Four Color Theorem proof is best understood through three slogans:
 
 In Rocq terms, the proof is an advanced demonstration of:
 
-```text id="m3eudo"
+```text
 finite computation
 + reflection/soundness
 + combinatorial representation

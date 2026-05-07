@@ -877,14 +877,14 @@ A good configuration system should make precedence explicit.
 
 Suppose a project has a global setting:
 
-```yaml id="ag52nf"
+```yaml
 features:
   comments: false ## Disable comments globally. candidates: true | false
 ```
 
 But one page wants to enable comments:
 
-```yaml id="baep84"
+```yaml
 ---
 title: "Release Notes"
 comments: true ## Enable comments for this page.
@@ -897,7 +897,7 @@ Most projects would say yes, because the local page setting is more specific tha
 
 But now suppose the layout is a print layout:
 
-```yaml id="egjqsm"
+```yaml
 ---
 title: "Release Notes"
 layout: "print"
@@ -911,13 +911,13 @@ The final value depends on the project’s declared precedence model.
 
 One possible model is:
 
-```text id="ouvu2f"
+```text
 global default → page override → layout constraint
 ```
 
 Another possible model is:
 
-```text id="dm0sdx"
+```text
 global default → layout default → page override
 ```
 
@@ -929,7 +929,7 @@ Both can be valid. The dangerous design is not choosing either one.
 
 A practical default model is:
 
-```text id="57sav3"
+```text
 built-in fallback
 → project default
 → environment override
@@ -942,7 +942,7 @@ This means values become more specific as they move right.
 
 For many projects, this is reasonable:
 
-```text id="de60v0"
+```text
 The code provides a safe fallback.
 The project config defines normal behavior.
 The environment config adapts behavior to deployment.
@@ -953,14 +953,14 @@ A runtime argument controls one execution.
 
 For example, a command-line tool may define:
 
-```yaml id="o2rc7n"
+```yaml
 logging:
   level: "info" ## Set the default logging level. candidates: debug | info | warn | error
 ```
 
 But a user can run:
 
-```bash id="nnd991"
+```bash
 my-tool run --log-level debug
 ```
 
@@ -974,14 +974,14 @@ In many projects, **local overrides** should have high priority because they rep
 
 Example:
 
-```yaml id="tw6kn5"
+```yaml
 ui:
   show_sidebar: true ## Show the sidebar globally. candidates: true | false
 ```
 
 A single page can disable it:
 
-```yaml id="s92elv"
+```yaml
 ---
 title: "Landing Page"
 show_sidebar: false ## Hide the sidebar on this page.
@@ -990,7 +990,7 @@ show_sidebar: false ## Hide the sidebar on this page.
 
 Here, local configuration communicates intent clearly:
 
-```text id="9iqmyn"
+```text
 Most pages show the sidebar.
 This page deliberately does not.
 ```
@@ -1013,7 +1013,7 @@ Some settings are not preferences. They are constraints.
 
 Examples:
 
-```text id="q3kcu2"
+```text
 Security mode
 Compliance policy
 Production-only restrictions
@@ -1024,7 +1024,7 @@ Permission boundaries
 
 For example:
 
-```yaml id="ebp7x5"
+```yaml
 security:
   allow_debug_panel: false ## Disable the debug panel in production. candidates: true | false
 ```
@@ -1035,7 +1035,7 @@ Another example is layout ownership.
 
 A page may ask to show a title:
 
-```yaml id="ic4iie"
+```yaml
 ---
 layout: "slide"
 title: "Project Overview"
@@ -1045,7 +1045,7 @@ show_title: true
 
 But the slide layout may render titles internally or use a different visual system. The layout may force:
 
-```text id="3n5d5m"
+```text
 show_title = false
 ```
 
@@ -1053,7 +1053,7 @@ This is not arbitrary. It reflects ownership. The layout owns title rendering.
 
 In such cases, the override model may be:
 
-```text id="ugix7h"
+```text
 global default → page override → layout constraint
 ```
 
@@ -1065,7 +1065,7 @@ The final layout constraint wins.
 
 A useful distinction is:
 
-```text id="54xeq7"
+```text
 Default
   A normal value used when no one says otherwise.
 
@@ -1078,14 +1078,14 @@ Constraint
 
 For example:
 
-```yaml id="fcignc"
+```yaml
 ui:
   theme: "auto" ## Set the default color scheme. candidates: auto | light | dark
 ```
 
 This is a default.
 
-```yaml id="um0eok"
+```yaml
 ---
 theme: "dark" ## Prefer dark mode for this page.
 ---
@@ -1093,7 +1093,7 @@ theme: "dark" ## Prefer dark mode for this page.
 
 This is a local preference.
 
-```yaml id="irm2y5"
+```yaml
 security:
   force_https: true ## Require HTTPS for production traffic. candidates: true | false
 ```
@@ -1112,7 +1112,7 @@ It does not.
 
 A boolean setting can have three important states:
 
-```text id="tmo5hv"
+```text
 true
   Explicitly enabled.
 
@@ -1127,14 +1127,14 @@ These are different meanings.
 
 Consider this global config:
 
-```yaml id="mq7h7p"
+```yaml
 features:
   footer: true ## Show the footer globally. candidates: true | false
 ```
 
 A page may explicitly disable the footer:
 
-```yaml id="xbtyhv"
+```yaml
 ---
 footer: false
 ---
@@ -1146,7 +1146,7 @@ But a careless fallback may accidentally replace `false` with the global default
 
 Bad logic:
 
-```js id="uordee"
+```js
 const footerEnabled = page.footer || config.features.footer;
 ```
 
@@ -1154,7 +1154,7 @@ This fails because `false || true` becomes `true`.
 
 Better logic:
 
-```js id="xj5pou"
+```js
 const footerEnabled =
   page.footer === undefined ? config.features.footer : page.footer;
 ```
@@ -1171,7 +1171,7 @@ This issue appears in many forms.
 
 A page may define:
 
-```yaml id="z4aef4"
+```yaml
 ---
 comments: false
 ---
@@ -1179,38 +1179,38 @@ comments: false
 
 This should mean:
 
-```text id="dg6suz"
+```text
 Do not show comments on this page.
 ```
 
 It should not mean:
 
-```text id="pmm5js"
+```text
 No comment preference was provided.
 ```
 
 Therefore, a clean configuration model should reserve `null` for “unspecified”:
 
-```yaml id="swqgnk"
+```yaml
 defaults:
   comments: null ## Use the global comments setting unless the page overrides it.
 ```
 
 Then the page can choose:
 
-```yaml id="v4lz58"
+```yaml
 comments: true  ## Explicitly enable comments.
 ```
 
 or:
 
-```yaml id="h1e1c7"
+```yaml
 comments: false ## Explicitly disable comments.
 ```
 
 or omit the field:
 
-```yaml id="gj1wyj"
+```yaml
 ## No local comments setting; use the fallback.
 ```
 
@@ -1224,7 +1224,7 @@ A good override algorithm should be boring.
 
 For a normal configurable feature, the algorithm might be:
 
-```text id="xno936"
+```text
 1. Start with the global default.
 2. Apply environment override if present.
 3. Apply module or layout default if present.
@@ -1234,7 +1234,7 @@ For a normal configurable feature, the algorithm might be:
 
 For a constrained feature, it might be:
 
-```text id="kbevmc"
+```text
 1. Start with the global default.
 2. Apply local override if present.
 3. Apply layout or security constraint last.
@@ -1244,7 +1244,7 @@ The important point is not that one sequence is always correct. The important po
 
 Example:
 
-```ts id="ii48rs"
+```ts
 let showTitle = config.ui.showTitle;
 
 if (page.showTitle !== undefined) {
@@ -1258,7 +1258,7 @@ if (page.layout === "slide") {
 
 This means:
 
-```text id="w4yfhx"
+```text
 global default → page override → layout constraint
 ```
 
@@ -1272,7 +1272,7 @@ Override order becomes harder when the same concept has multiple names.
 
 Bad example:
 
-```yaml id="xawhzu"
+```yaml
 comments: false
 show_comments: true
 comment_enabled: false
@@ -1280,7 +1280,7 @@ comment_enabled: false
 
 A maintainer now has to ask:
 
-```text id="wogghw"
+```text
 Are these the same setting?
 Are they used in different places?
 Which one wins?
@@ -1291,13 +1291,13 @@ This is a naming failure.
 
 A better design uses one canonical name:
 
-```yaml id="rtdif9"
+```yaml
 comments: false ## Enable or disable comments. candidates: true | false
 ```
 
 If a project must support old names during migration, make that temporary and explicit:
 
-```ts id="kr885k"
+```ts
 let commentsEnabled = config.features.comments;
 
 if (page.comments !== undefined) {
@@ -1322,20 +1322,20 @@ Environment variables often have high priority because they reflect deployment c
 
 Example:
 
-```yaml id="d7mofe"
+```yaml
 api:
   base_url: "https://api.example.com" ## Set the default backend API endpoint.
 ```
 
 A deployment may override it:
 
-```bash id="r7nd9x"
+```bash
 API_BASE_URL=https://staging-api.example.com
 ```
 
 A common precedence order is:
 
-```text id="7yc54j"
+```text
 config file → environment variable → command-line argument
 ```
 
@@ -1343,7 +1343,7 @@ This is useful because the same codebase can run in different environments.
 
 However, environment variables should not silently override every kind of setting. They are best for:
 
-```text id="g34wv4"
+```text
 secrets
 deployment endpoints
 environment names
@@ -1363,13 +1363,13 @@ Runtime arguments are useful when a value should apply only to one execution.
 
 Example:
 
-```bash id="q84suk"
+```bash
 my-tool export --format json --output ./dist/data.json
 ```
 
 The project may have defaults:
 
-```yaml id="ulby3s"
+```yaml
 export:
   format: "csv" ## Set the default export format. candidates: csv | json | parquet
   output: "./out" ## Set the default export directory.
@@ -1379,7 +1379,7 @@ The command-line argument overrides the file temporarily.
 
 This is a good pattern:
 
-```text id="b6v09i"
+```text
 Persistent config defines normal behavior.
 Runtime arguments define this run.
 ```
@@ -1394,7 +1394,7 @@ The override order should be documented near the configuration file or in the pr
 
 A short note is enough:
 
-```text id="ep2jvj"
+```text
 Configuration precedence:
 1. Built-in fallback
 2. config.yml
@@ -1405,7 +1405,7 @@ Configuration precedence:
 
 For page-like systems, it may be:
 
-```text id="pxw7qz"
+```text
 Display option precedence:
 1. Global UI defaults
 2. Page front matter
@@ -1414,7 +1414,7 @@ Display option precedence:
 
 For AI applications, it may be:
 
-```text id="m4a8u5"
+```text
 Model parameter precedence:
 1. Application defaults
 2. Environment-specific config
@@ -1435,7 +1435,7 @@ Avoid hiding override logic across many components.
 
 Bad pattern:
 
-```text id="8cp51j"
+```text
 header.ts decides showTitle.
 layout.ts also decides showTitle.
 page.ts also modifies showTitle.
@@ -1446,14 +1446,14 @@ This makes behavior difficult to trace.
 
 Better pattern:
 
-```text id="czavv6"
+```text
 One resolver computes final settings.
 Components receive resolved settings.
 ```
 
 For example:
 
-```ts id="lg87y6"
+```ts
 const resolved = resolvePageConfig({
   globalConfig,
   environmentConfig,
@@ -1464,7 +1464,7 @@ const resolved = resolvePageConfig({
 
 Then components use:
 
-```ts id="k39w99"
+```ts
 if (resolved.showTitle) {
   renderTitle();
 }
@@ -1484,7 +1484,7 @@ When adding a setting, define its override rule immediately.
 
 For each setting, ask:
 
-```text id="vb0m9l"
+```text
 1. What is the global default?
 2. Can an environment override it?
 3. Can a module, layout, or feature override it?
@@ -1503,7 +1503,7 @@ A configuration file becomes difficult to maintain when many unrelated settings 
 
 At first, a flat structure feels simple:
 
-```yaml id="8oedq7"
+```yaml
 title: "Example Docs"
 theme: "auto"
 show_sidebar: true
@@ -1521,7 +1521,7 @@ A better configuration file uses **namespaces**.
 
 A namespace is a group of related settings under a shared parent key:
 
-```yaml id="7k98sg"
+```yaml
 project:
   title: "Example Docs"       ## Set the public project title.
 
@@ -1553,7 +1553,7 @@ Flat configuration fails because it hides ownership.
 
 Consider this:
 
-```yaml id="f51njs"
+```yaml
 provider: "giscus"
 repo: "example/docs"
 mapping: "pathname"
@@ -1568,7 +1568,7 @@ A maintainer cannot know without reading the implementation.
 
 Now compare:
 
-```yaml id="tfke1u"
+```yaml
 comments:
   provider: "giscus"          ## Select the comment provider.
   giscus:
@@ -1594,7 +1594,7 @@ A common mistake is to group settings by when they were added or by where the co
 
 For example:
 
-```yaml id="xb7z17"
+```yaml
 misc:
   show_sidebar: true
   api_url: "https://api.example.com"
@@ -1606,7 +1606,7 @@ This creates a junk drawer. It may be convenient temporarily, but it gives futur
 
 A better approach is to group by responsibility:
 
-```yaml id="rbm2k9"
+```yaml
 ui:
   show_sidebar: true          ## Control the sidebar display.
   color_scheme: "auto"        ## Control the visual theme.
@@ -1620,7 +1620,7 @@ comments:
 
 Each namespace should answer:
 
-```text id="pg6n0s"
+```text
 What area of the project owns these settings?
 What kind of behavior do these settings control?
 Who is likely to edit them?
@@ -1636,7 +1636,7 @@ Different projects need different configuration structures, but many projects sh
 
 Useful namespaces include:
 
-```text id="vc225l"
+```text
 project
   Identity, title, description, language, timezone.
 
@@ -1681,7 +1681,7 @@ The goal is not to create many categories. The goal is to create the right categ
 
 A small web project might use this structure:
 
-```yaml id="wvhf2k"
+```yaml
 project:
   name: "Example Docs"        ## Set the public project name.
   language: "en"              ## Set the default content language.
@@ -1715,7 +1715,7 @@ A small AI application should not place model, retrieval, and safety settings to
 
 Flat version:
 
-```yaml id="l97izg"
+```yaml
 model: "gpt-4.1"
 temperature: 0.2
 embedding_model: "text-embedding-3-small"
@@ -1726,7 +1726,7 @@ moderation: true
 
 Better version:
 
-```yaml id="ky46nn"
+```yaml
 models:
   chat: "gpt-4.1"             ## Set the default chat model.
   embedding: "text-embedding-3-small" ## Set the default embedding model.
@@ -1753,7 +1753,7 @@ Namespaces are useful, but too much nesting creates noise.
 
 This is too deep for most projects:
 
-```yaml id="ljk8ai"
+```yaml
 application:
   frontend:
     visual:
@@ -1767,7 +1767,7 @@ A maintainer should not need to walk through six layers to find a common setting
 
 A simpler version is better:
 
-```yaml id="n40hee"
+```yaml
 ui:
   color_scheme: "auto"        ## Set the default color scheme. candidates: auto | light | dark
 ```
@@ -1778,7 +1778,7 @@ A practical rule:
 
 Two or three levels are usually enough:
 
-```text id="k1fhaf"
+```text
 ui.theme
 comments.giscus.repo
 models.chat
@@ -1795,7 +1795,7 @@ A configuration file should use consistent naming conventions.
 
 Avoid mixing styles:
 
-```yaml id="sg5eog"
+```yaml
 showSidebar: true
 show_footer: false
 comment-enabled: true
@@ -1806,7 +1806,7 @@ Choose one style and apply it consistently.
 
 Common choices:
 
-```text id="5p56ey"
+```text
 snake_case
   show_sidebar, api_url, color_scheme
 
@@ -1819,7 +1819,7 @@ kebab-case
 
 For YAML and TOML, `snake_case` is often readable:
 
-```yaml id="j8xab5"
+```yaml
 ui:
   show_sidebar: true          ## Show or hide the sidebar.
   color_scheme: "auto"        ## Set the default color scheme.
@@ -1827,7 +1827,7 @@ ui:
 
 For JavaScript or TypeScript config, `camelCase` is common:
 
-```ts id="u4ejv4"
+```ts
 export default {
   ui: {
     showSidebar: true,
@@ -1846,7 +1846,7 @@ Boolean settings need especially clear names.
 
 Poor examples:
 
-```yaml id="ou795i"
+```yaml
 footer: true
 debug: false
 compact: true
@@ -1856,7 +1856,7 @@ These may be understandable in context, but they can be ambiguous.
 
 Better examples:
 
-```yaml id="6fju4r"
+```yaml
 ui:
   show_footer: true           ## Show or hide the footer. candidates: true | false
   compact_mode: true          ## Enable or disable compact interface mode. candidates: true | false
@@ -1869,7 +1869,7 @@ A boolean key should make it obvious what `true` means.
 
 Good boolean prefixes include:
 
-```text id="4c6l3h"
+```text
 enable_
 disable_
 show_
@@ -1883,7 +1883,7 @@ But do not overdo it. `features.search: true` can also be clear if the namespace
 
 For example:
 
-```yaml id="ozs8vk"
+```yaml
 features:
   search: true                ## Enable or disable search globally. candidates: true | false
 ```
@@ -1898,7 +1898,7 @@ Provider-based systems need a clear pattern.
 
 Bad example:
 
-```yaml id="othpdj"
+```yaml
 comment_provider: "giscus"
 repo: "example/docs"
 shortname: "example"
@@ -1909,7 +1909,7 @@ This mixes settings for multiple possible providers.
 
 Better example:
 
-```yaml id="31ikx5"
+```yaml
 comments:
   provider: "giscus"          ## Select the active comment provider. candidates: disqus | giscus | utterances
 
@@ -1929,7 +1929,7 @@ This design has two advantages.
 
 First, the active provider is explicit:
 
-```yaml id="sc3okc"
+```yaml
 provider: "giscus"
 ```
 
@@ -1937,7 +1937,7 @@ Second, each provider’s settings are isolated. Disqus settings do not pollute 
 
 This pattern applies broadly:
 
-```text id="qtnpwa"
+```text
 auth.provider
 storage.provider
 email.provider
@@ -1956,7 +1956,7 @@ Avoid creating multiple names for the same concept.
 
 Bad example:
 
-```yaml id="z2iijv"
+```yaml
 comments: false
 show_comments: true
 comments_enabled: false
@@ -1968,7 +1968,7 @@ If a project must support an old name, mark it as temporary.
 
 Example:
 
-```yaml id="rtkcni"
+```yaml
 features:
   comments: false             ## Enable or disable comments globally. candidates: true | false
 
@@ -1978,7 +1978,7 @@ features:
 
 In code, resolve the old field explicitly:
 
-```ts id="glszb8"
+```ts
 let commentsEnabled = config.features.comments;
 
 if (page.comments !== undefined) {
@@ -2001,14 +2001,14 @@ Some settings are part of the public project contract. Others are internal imple
 
 Public configuration:
 
-```yaml id="ofxmkd"
+```yaml
 ui:
   theme: "auto"               ## Set the default color scheme.
 ```
 
 Internal implementation detail:
 
-```yaml id="imgfpv"
+```yaml
 ui:
   header_margin_top_px: 7
   sidebar_transition_delay_ms: 130
@@ -2018,7 +2018,7 @@ The second example may expose too much. It makes the configuration file responsi
 
 Better:
 
-```yaml id="v1sph0"
+```yaml
 ui:
   density: "compact"          ## Set the overall interface density. candidates: compact | normal | spacious
 ```
@@ -2039,7 +2039,7 @@ When settings are grouped clearly, it is easier to remove a feature.
 
 For example:
 
-```yaml id="84q1f5"
+```yaml
 comments:
   provider: "giscus"
   giscus:
@@ -2051,7 +2051,7 @@ If the project removes comments, the whole namespace can be deleted or disabled.
 
 But if comment settings are scattered:
 
-```yaml id="mvbtmx"
+```yaml
 comment_provider: "giscus"
 giscus_repo: "example/docs"
 show_comments: false
@@ -2068,7 +2068,7 @@ A well-designed namespace gives a feature a clean boundary. That boundary helps 
 
 When adding a new configuration key, ask:
 
-```text id="hy3laf"
+```text
 1. Which responsibility owns this setting?
 2. Does a namespace for that responsibility already exist?
 3. Will this key still make sense when read six months later?
@@ -2091,7 +2091,7 @@ If these categories are mixed together, the project becomes harder to deploy, ha
 
 The basic distinction is:
 
-```text id="i9j26r"
+```text
 Project configuration
   Stable, non-secret values that describe how the project normally behaves.
 
@@ -2114,7 +2114,7 @@ It is usually safe to commit to version control.
 
 Examples:
 
-```yaml id="4b9jpm"
+```yaml
 project:
   name: "Example App"          ## Set the public project name.
   language: "en"               ## Set the default language.
@@ -2132,7 +2132,7 @@ These values are part of the project’s normal behavior. They can be reviewed i
 
 Project configuration should answer:
 
-```text id="m15qvv"
+```text
 What is this project?
 What behavior is normal?
 Which features exist?
@@ -2141,7 +2141,7 @@ Which defaults should future maintainers expect?
 
 This kind of configuration belongs in a committed file, such as:
 
-```text id="3nkqlo"
+```text
 config.yml
 config.yaml
 app.config.ts
@@ -2159,7 +2159,7 @@ The exact format is less important than the fact that the values are stable and 
 
 A project commonly has several environments:
 
-```text id="85ugsq"
+```text
 development
 test
 staging
@@ -2170,7 +2170,7 @@ Each environment may need different values.
 
 For example, development may use a local API:
 
-```yaml id="n8ai69"
+```yaml
 environment:
   name: "development"          ## Identify the current environment.
 
@@ -2183,7 +2183,7 @@ logging:
 
 Production may use a public API and quieter logs:
 
-```yaml id="k9ap1h"
+```yaml
 environment:
   name: "production"           ## Identify the current environment.
 
@@ -2198,7 +2198,7 @@ These values are not necessarily secret, but they are environment-specific. They
 
 A common structure is:
 
-```text id="nmgisg"
+```text
 config/
   base.yml
   development.yml
@@ -2223,7 +2223,7 @@ The principle remains the same:
 
 Examples:
 
-```text id="p3bc5g"
+```text
 API keys
 database passwords
 OAuth client secrets
@@ -2237,7 +2237,7 @@ Secrets should usually not be committed to the repository.
 
 Bad example:
 
-```yaml id="af3gl8"
+```yaml
 database:
   url: "postgres://user:password@example.com/app"
 
@@ -2247,7 +2247,7 @@ openai:
 
 This creates several risks:
 
-```text id="h95m9t"
+```text
 The secret may leak through Git history.
 The secret may be copied into logs or screenshots.
 The secret may be visible to contributors who do not need it.
@@ -2256,7 +2256,7 @@ The secret becomes harder to rotate safely.
 
 A better project configuration describes the non-secret structure:
 
-```yaml id="p8tie7"
+```yaml
 database:
   provider: "postgres"         ## Select the database provider. candidates: postgres | mysql | sqlite
   pool_size: 10                ## Set the maximum database connection pool size.
@@ -2267,7 +2267,7 @@ models:
 
 The actual secrets come from environment variables:
 
-```env id="ih5qz6"
+```env
 DATABASE_URL=postgres://user:password@example.com/app
 OPENAI_API_KEY=sk-...
 ```
@@ -2282,7 +2282,7 @@ It is usually safe to commit the **name** of a required secret. It is not safe t
 
 For example, this is acceptable:
 
-```yaml id="8s7fft"
+```yaml
 secrets:
   required:
     - "DATABASE_URL"           ## Require the database connection URL at runtime.
@@ -2291,7 +2291,7 @@ secrets:
 
 This is not acceptable:
 
-```yaml id="utk532"
+```yaml
 secrets:
   OPENAI_API_KEY: "sk-..."
 ```
@@ -2308,7 +2308,7 @@ Environment variables are a common way to provide deployment-specific values and
 
 Example:
 
-```env id="n72gu3"
+```env
 APP_ENV=production
 API_BASE_URL=https://api.example.com
 LOG_LEVEL=warn
@@ -2317,7 +2317,7 @@ DATABASE_URL=postgres://user:password@example.com/app
 
 They work well for:
 
-```text id="imlflq"
+```text
 Secrets
 deployment endpoints
 environment names
@@ -2329,7 +2329,7 @@ They work poorly for deeply structured configuration.
 
 For example, this is hard to manage:
 
-```env id="tb3wx3"
+```env
 COMMENTS_PROVIDER=giscus
 COMMENTS_GISCUS_REPO=example/docs
 COMMENTS_GISCUS_MAPPING=pathname
@@ -2341,7 +2341,7 @@ It may work, but it becomes verbose and hard to read.
 
 A better approach is often:
 
-```yaml id="o4cmvq"
+```yaml
 comments:
   provider: "giscus"           ## Select the comment provider. candidates: disqus | giscus | utterances
   giscus:
@@ -2361,7 +2361,7 @@ The rule is:
 
 A small application may use a base config:
 
-```yaml id="d37lo9"
+```yaml
 ## config/base.yml
 project:
   name: "Example App"          ## Set the public project name.
@@ -2376,7 +2376,7 @@ api:
 
 Then production overrides only what changes:
 
-```yaml id="q83vph"
+```yaml
 ## config/production.yml
 environment:
   name: "production"           ## Identify the current environment.
@@ -2390,7 +2390,7 @@ logging:
 
 Development overrides different values:
 
-```yaml id="v5bnz1"
+```yaml
 ## config/development.yml
 environment:
   name: "development"          ## Identify the current environment.
@@ -2404,19 +2404,19 @@ logging:
 
 The final configuration is produced by merging:
 
-```text id="j6br07"
+```text
 base.yml → development.yml
 ```
 
 or:
 
-```text id="cqgg4k"
+```text
 base.yml → production.yml
 ```
 
 The exact merge rules should be documented. For example:
 
-```text id="d6v2zu"
+```text
 Environment config overrides base config.
 Missing values fall back to base config.
 Secrets are read from environment variables.
@@ -2432,7 +2432,7 @@ A project should often include a `.env.example` file.
 
 This file documents required environment variables without exposing real secrets.
 
-```env id="oc79h0"
+```env
 ## .env.example
 APP_ENV=development
 API_BASE_URL=http://localhost:3000
@@ -2443,13 +2443,13 @@ LOG_LEVEL=debug
 
 A developer copies it:
 
-```bash id="eiypyt"
+```bash
 cp .env.example .env.local
 ```
 
 Then fills in local values:
 
-```env id="zlhi5z"
+```env
 ## .env.local
 APP_ENV=development
 API_BASE_URL=http://localhost:3000
@@ -2463,7 +2463,7 @@ The `.env.local` file should usually be ignored by Git.
 
 This gives maintainers a clear contract:
 
-```text id="rh63w0"
+```text
 These variables are required.
 These values are private.
 This is how to start the project locally.
@@ -2475,7 +2475,7 @@ This is how to start the project locally.
 
 It is not enough to keep secrets out of source files. Secrets should also be kept out of:
 
-```text id="rs3erx"
+```text
 logs
 error reports
 client-side bundles
@@ -2490,7 +2490,7 @@ This matters especially when build tools inject environment variables into front
 
 For example, a frontend project may expose variables with a public prefix:
 
-```env id="cthmvp"
+```env
 PUBLIC_API_BASE_URL=https://api.example.com
 PRIVATE_API_KEY=sk-...
 ```
@@ -2513,7 +2513,7 @@ A good project should make secret rotation possible.
 
 That means:
 
-```text id="1pfo7q"
+```text
 Secrets are not hard-coded.
 Secrets are loaded from one known source.
 Secrets are not copied into many files.
@@ -2525,7 +2525,7 @@ If a secret appears in many configuration files, rotation becomes risky.
 
 A maintainable system centralizes secret access:
 
-```text id="2wv3po"
+```text
 Environment variables
 secret manager
 deployment platform secrets
@@ -2534,7 +2534,7 @@ CI/CD secret store
 
 Examples include:
 
-```text id="jmsbi6"
+```text
 GitHub Actions Secrets
 Docker secrets
 Kubernetes Secrets
@@ -2554,7 +2554,7 @@ Although separation is important, small projects do not need excessive configura
 
 This may be too much for a small project:
 
-```text id="65ydvn"
+```text
 config/
   base.yml
   local.yml
@@ -2572,7 +2572,7 @@ If the project has only one developer and one deployment target, this structure 
 
 A simpler structure may be enough:
 
-```text id="w8ahpl"
+```text
 config.yml
 .env.example
 .env.local
@@ -2592,7 +2592,7 @@ A value deserves a separate environment file when it actually differs across env
 
 When adding a configuration value, classify it first:
 
-```text id="oa1n5v"
+```text
 1. Is it stable project behavior?
    Put it in committed project configuration.
 
@@ -2624,7 +2624,7 @@ The core principle is:
 
 A maintainable project should allow a future maintainer to answer:
 
-```text id="1bbgxm"
+```text
 What is the normal behavior?
 What changes in production?
 What secrets are required?
@@ -2640,7 +2640,7 @@ A configuration file should not require constant explanation from the original a
 
 A future maintainer should be able to open the file and understand:
 
-```text id="jigzir"
+```text
 What this setting controls.
 Which values are valid.
 Whether the setting is global or local.
@@ -2660,7 +2660,7 @@ The best comment is often a clear name.
 
 Poor names:
 
-```yaml id="asx8d5"
+```yaml
 mode: true
 type: "basic"
 value: 10
@@ -2671,7 +2671,7 @@ These names force the reader to inspect the implementation.
 
 Better names:
 
-```yaml id="jv41rq"
+```yaml
 search:
   enabled: true               ## Enable or disable search. candidates: true | false
   provider: "local"           ## Select the search provider. candidates: local | algolia | elastic
@@ -2682,7 +2682,7 @@ The namespace and key names already explain most of the meaning.
 
 A good configuration key should answer:
 
-```text id="nuw3r8"
+```text
 What does this control?
 What does true mean?
 Which subsystem owns this value?
@@ -2696,14 +2696,14 @@ If a name cannot answer these questions, a comment may help, but the better solu
 
 A weak comment repeats the name:
 
-```yaml id="q20bnj"
+```yaml
 search:
   max_results: 10             ## Max results.
 ```
 
 A useful comment explains behavior:
 
-```yaml id="zgp4ms"
+```yaml
 search:
   max_results: 10             ## Set the maximum number of displayed search results.
 ```
@@ -2712,7 +2712,7 @@ The difference is small, but important. The second comment tells the reader what
 
 Comments are especially useful when:
 
-```text id="6c638p"
+```text
 A value has a limited candidate list.
 A boolean might be misread.
 A value affects production behavior.
@@ -2731,14 +2731,14 @@ When a setting has only a few valid values, list them.
 
 Example:
 
-```yaml id="d4woa3"
+```yaml
 ui:
   color_scheme: "auto"        ## Set the preferred color scheme. candidates: auto | light | dark
 ```
 
 Another example:
 
-```yaml id="fj7rlm"
+```yaml
 comments:
   provider: "giscus"          ## Select the active comment provider. candidates: false | disqus | giscus | utterances
 ```
@@ -2747,7 +2747,7 @@ This prevents guessing.
 
 Without candidates, a maintainer may wonder:
 
-```text id="spsrj0"
+```text
 Should I write "dark", "night", or "black"?
 Should disabled be false, "none", null, or "disabled"?
 Is the provider "github", "giscus", or "GitHub Discussions"?
@@ -2765,13 +2765,13 @@ They are especially helpful in YAML, TOML, and `.env.example` files where there 
 
 For maintainable configuration, `null` should usually mean:
 
-```text id="8xv3nt"
+```text
 Unspecified; use fallback.
 ```
 
 Example:
 
-```yaml id="o7h4q7"
+```yaml
 defaults:
   comments: null              ## Use the global comments setting unless this page overrides it.
   footer: null                ## Use the global footer setting unless this page overrides it.
@@ -2781,7 +2781,7 @@ This is better than leaving the meaning implicit.
 
 Avoid using `null` to mean too many things:
 
-```text id="a6fxd1"
+```text
 disabled
 unknown
 not loaded
@@ -2793,7 +2793,7 @@ If `null` means “use fallback,” then use `false` to mean explicitly disabled
 
 Example:
 
-```yaml id="jk1g4p"
+```yaml
 comments: false               ## Explicitly disable comments.
 ```
 
@@ -2807,7 +2807,7 @@ A configuration file should help readers understand where values come from.
 
 For example:
 
-```yaml id="y75a0m"
+```yaml
 features:
   comments: false             ## Enable or disable comments globally. candidates: true | false
 
@@ -2818,7 +2818,7 @@ defaults:
 
 This tells the reader:
 
-```text id="op1ln8"
+```text
 The global default is features.comments.
 A page can override it.
 null means no local override.
@@ -2828,7 +2828,7 @@ If a local config exists elsewhere, document the relationship.
 
 Example:
 
-```yaml id="lcg2ud"
+```yaml
 ## Page-level override:
 ## comments: true  -> enable comments for this page.
 ## comments: false -> disable comments for this page.
@@ -2845,13 +2845,13 @@ Projects often need to rename configuration keys.
 
 For example, a project may move from:
 
-```yaml id="u4l2d8"
+```yaml
 show_comments: true
 ```
 
 to:
 
-```yaml id="ku0eqa"
+```yaml
 comments: true
 ```
 
@@ -2859,7 +2859,7 @@ During migration, both may be supported temporarily. That compatibility should b
 
 Example:
 
-```yaml id="ds8f3y"
+```yaml
 features:
   comments: false             ## Enable or disable comments globally. candidates: true | false
 
@@ -2869,7 +2869,7 @@ features:
 
 In code, compatibility should be centralized:
 
-```ts id="vtwrzu"
+```ts
 let commentsEnabled = config.features.comments;
 
 if (page.comments !== undefined) {
@@ -2886,7 +2886,7 @@ Do not let deprecated names remain undocumented. Otherwise, future maintainers m
 
 A deprecated setting should have:
 
-```text id="e7fdzv"
+```text
 A replacement.
 A reason.
 A planned removal point, if possible.
@@ -2900,7 +2900,7 @@ Some configuration is easier to understand through examples than comments.
 
 For example, a provider configuration may have several nested fields:
 
-```yaml id="ytbflx"
+```yaml
 comments:
   provider: "giscus"          ## Select the active comment provider. candidates: false | disqus | giscus | utterances
 
@@ -2916,7 +2916,7 @@ A short example in documentation may be better than over-commenting every detail
 
 Example:
 
-```yaml id="n4aoa5"
+```yaml
 ## Minimal Giscus example:
 ## comments:
 ##   provider: "giscus"
@@ -2930,7 +2930,7 @@ Example:
 
 Examples are especially useful for:
 
-```text id="g3zs9e"
+```text
 provider setup
 authentication config
 deployment config
@@ -2947,7 +2947,7 @@ Documentation becomes less useful when it is far from the value it explains.
 
 Poor pattern:
 
-```yaml id="j1i54g"
+```yaml
 ## The provider field chooses between disqus, giscus, and utterances.
 ## The theme field controls the visual theme of the comment widget.
 ## The mapping field controls how pages are matched to comment threads.
@@ -2959,7 +2959,7 @@ comments:
 
 Better pattern:
 
-```yaml id="kj5q7i"
+```yaml
 comments:
   provider: "giscus"          ## Select the active comment provider. candidates: disqus | giscus | utterances
   theme: "preferred_color_scheme" ## Set the comment widget theme.
@@ -2980,7 +2980,7 @@ As a project grows, configuration should often be validated by a schema or typed
 
 A schema can check:
 
-```text id="ueqk1r"
+```text
 Required fields
 Allowed values
 Boolean types
@@ -2992,7 +2992,7 @@ Conflicting settings
 
 Example with TypeScript and Zod:
 
-```ts id="p5c8gn"
+```ts
 import { z } from "zod";
 
 const ConfigSchema = z.object({
@@ -3007,7 +3007,7 @@ const ConfigSchema = z.object({
 
 Example with Python and Pydantic:
 
-```python id="mfl5yd"
+```python
 from pydantic import BaseModel, Field
 from typing import Literal
 
@@ -3031,7 +3031,7 @@ A project should often include example configuration files.
 
 Examples:
 
-```text id="dxv22a"
+```text
 .env.example
 config.example.yml
 settings.example.toml
@@ -3039,7 +3039,7 @@ settings.example.toml
 
 A `.env.example` file may look like this:
 
-```env id="aanbo3"
+```env
 APP_ENV=development
 API_BASE_URL=http://localhost:3000
 DATABASE_URL=
@@ -3051,7 +3051,7 @@ This file tells a new maintainer what values are required without exposing real 
 
 A `config.example.yml` may show optional structure:
 
-```yaml id="myucw7"
+```yaml
 project:
   name: "Example App"          ## Set the public project name.
 
@@ -3070,7 +3070,7 @@ Bad comments are worse than no comments when they become false.
 
 Example:
 
-```yaml id="u7zekw"
+```yaml
 comments:
   provider: "giscus"          ## Select Disqus as the comment provider.
 ```
@@ -3079,7 +3079,7 @@ The value says `giscus`, but the comment says Disqus. This creates distrust.
 
 Stale comments usually appear after migration or refactoring. A maintenance checklist should include:
 
-```text id="zt0m94"
+```text
 When changing a config key, update its comment.
 When changing valid values, update the candidate list.
 When removing a provider, remove its example.
@@ -3094,7 +3094,7 @@ A self-documenting config file must stay synchronized with the system it describ
 
 A self-documenting configuration file should follow these rules:
 
-```text id="rxkrmj"
+```text
 1. Use clear names before adding comments.
 2. Group related settings into namespaces.
 3. Add short comments for non-obvious fields.
@@ -3783,7 +3783,7 @@ A small project does not need a large configuration system.
 
 It may only need one file:
 
-```yaml id="dojrvc"
+```yaml
 project:
   name: "Example App"          ## Set the public project name.
   language: "en"               ## Set the default language.
@@ -3798,7 +3798,7 @@ features:
 
 This is enough if:
 
-```text id="nevs3o"
+```text
 There is one deployment target.
 There are few maintainers.
 There are no complex secrets.
@@ -3820,7 +3820,7 @@ One file is fine at the beginning. It becomes a problem when unrelated responsib
 
 For example:
 
-```yaml id="k6pg6p"
+```yaml
 project:
   name: "Example App"
 
@@ -3856,7 +3856,7 @@ This may still be readable. But if each namespace grows to twenty fields, the fi
 
 At that point, splitting may help:
 
-```text id="fi28my"
+```text
 config/
   project.yml
   ui.yml
@@ -3869,7 +3869,7 @@ However, splitting should solve a real problem. Do not split only because it loo
 
 A good reason to split:
 
-```text id="h5jvz0"
+```text
 Different people own different areas.
 Different files change at different frequencies.
 Some files are environment-specific.
@@ -3879,7 +3879,7 @@ Some files are shared across projects.
 
 A bad reason to split:
 
-```text id="fi4wf9"
+```text
 The project might become large someday.
 ```
 
@@ -3893,14 +3893,14 @@ A practical way to avoid over-engineering is to think in levels.
 
 This is suitable for a small project.
 
-```text id="igj9qb"
+```text
 config.yml
 .env.example
 ```
 
 Recommended practices:
 
-```text id="n2pkn2"
+```text
 Use namespaces.
 Add short comments.
 List candidates for enum-like values.
@@ -3916,7 +3916,7 @@ This level is enough for many personal projects and small internal tools.
 
 This is useful when development, staging, and production differ.
 
-```text id="r3ki3u"
+```text
 config/
   base.yml
   development.yml
@@ -3926,7 +3926,7 @@ config/
 
 Recommended practices:
 
-```text id="kctqgy"
+```text
 Document merge order.
 Keep shared behavior in base config.
 Keep environment differences in environment files.
@@ -3942,7 +3942,7 @@ This level is common for web applications, APIs, and deployment-backed tools.
 
 This is useful when a team depends on configuration correctness.
 
-```text id="w6za5g"
+```text
 config/
   base.yml
   production.yml
@@ -3952,7 +3952,7 @@ src/config/loadConfig.ts
 
 Recommended practices:
 
-```text id="jho88q"
+```text
 Use a schema or typed model.
 Validate early.
 Reject unknown keys or reserve an extension area.
@@ -3970,7 +3970,7 @@ This is useful for large systems.
 
 Examples may include:
 
-```text id="h1j9a5"
+```text
 Feature flag platforms
 Secret managers
 Remote config services
@@ -3981,7 +3981,7 @@ Policy engines
 
 Recommended practices:
 
-```text id="avswik"
+```text
 Control who can change production config.
 Track changes.
 Support rollback.
@@ -3993,7 +3993,7 @@ Most small projects do not need this level. But large production systems often d
 
 The maturity model prevents two mistakes:
 
-```text id="vyzehg"
+```text
 Staying too informal after the project grows.
 Adding heavy systems before the project needs them.
 ```
@@ -4006,7 +4006,7 @@ A configuration file should be split when different parts have different lifecyc
 
 For example:
 
-```text id="z0xxwh"
+```text
 UI labels change when copy changes.
 Deployment settings change when infrastructure changes.
 Feature flags change during release management.
@@ -4018,7 +4018,7 @@ These values do not evolve at the same pace. If they are all in one file, every 
 
 A good split may look like:
 
-```text id="fpyjr4"
+```text
 config/
   app.yml          ## Stable project behavior.
   ui.yml           ## Interface and display settings.
@@ -4028,7 +4028,7 @@ config/
 
 But a bad split would be:
 
-```text id="t20t2m"
+```text
 config/
   part1.yml
   part2.yml
@@ -4050,7 +4050,7 @@ A common form of over-engineering is exposing every internal detail as a configu
 
 Bad example:
 
-```yaml id="s1lwi4"
+```yaml
 ui:
   button_padding_top: "6px"
   button_padding_right: "9px"
@@ -4065,7 +4065,7 @@ This creates flexibility, but it also creates maintenance cost.
 
 A better version exposes the real decision:
 
-```yaml id="fnr2zd"
+```yaml
 ui:
   density: "compact"           ## Set the interface density. candidates: compact | normal | spacious
   radius: "normal"             ## Set the border-radius scale. candidates: none | small | normal | large
@@ -4075,7 +4075,7 @@ Then implementation details can live in CSS, design tokens, or component code.
 
 The question is:
 
-```text id="lavoh2"
+```text
 Is this setting a meaningful project decision?
 ```
 
@@ -4089,7 +4089,7 @@ A configuration system is easier to maintain when it has a small number of clear
 
 For example:
 
-```text id="y7tcux"
+```text
 global defaults
 environment overrides
 local overrides
@@ -4103,7 +4103,7 @@ These concepts can explain many situations.
 
 Avoid inventing too many special cases:
 
-```text id="uyj403"
+```text
 soft default
 hard default
 page default
@@ -4118,7 +4118,7 @@ Some distinctions may be necessary, but each new concept creates cognitive cost.
 
 A useful test:
 
-```text id="88ll32"
+```text
 Can a new maintainer explain the configuration model in five minutes?
 ```
 
@@ -4132,7 +4132,7 @@ When configuration has multiple layers, the project often needs a resolver.
 
 A resolver takes raw inputs and produces final settings.
 
-```text id="b7vsmh"
+```text
 raw files + environment variables + local overrides
 → resolved configuration
 ```
@@ -4141,7 +4141,7 @@ The resolver should be boring and predictable.
 
 Good pattern:
 
-```ts id="4j73tf"
+```ts
 const resolvedConfig = resolveConfig({
   baseConfig,
   environmentConfig,
@@ -4152,7 +4152,7 @@ const resolvedConfig = resolveConfig({
 
 The resolver should make precedence visible:
 
-```ts id="0spg9z"
+```ts
 let commentsEnabled = baseConfig.features.comments;
 
 if (environmentConfig.features?.comments !== undefined) {
@@ -4184,7 +4184,7 @@ If a feature’s settings are scattered everywhere, deletion becomes dangerous.
 
 Bad pattern:
 
-```yaml id="x2jolt"
+```yaml
 search_enabled: true
 searchProvider: "local"
 local_search_index: true
@@ -4194,7 +4194,7 @@ search_max_results: 10
 
 Better pattern:
 
-```yaml id="0rvvfi"
+```yaml
 search:
   enabled: true                ## Enable or disable search. candidates: true | false
   provider: "local"            ## Select the search provider. candidates: local | algolia | elastic
@@ -4205,7 +4205,7 @@ When the project removes search, the `search` namespace gives maintainers a clea
 
 This is not only a cleanup issue. It affects project management:
 
-```text id="s46zqy"
+```text
 Feature ownership is clearer.
 Deprecation is easier.
 Migration is easier.
@@ -4223,19 +4223,19 @@ Backward compatibility is sometimes necessary.
 
 For example, a project may migrate from:
 
-```yaml id="g8wmhx"
+```yaml
 show_comments: true
 ```
 
 to:
 
-```yaml id="vefz5h"
+```yaml
 comments: true
 ```
 
 During migration, the resolver may support both:
 
-```ts id="bjxdoq"
+```ts
 let commentsEnabled = config.features.comments;
 
 if (page.comments !== undefined) {
@@ -4252,7 +4252,7 @@ This is acceptable temporarily. It becomes harmful when old names remain forever
 
 Permanent compatibility layers create three problems:
 
-```text id="dg2c7r"
+```text
 They increase the number of valid ways to do the same thing.
 They make documentation harder.
 They make final behavior harder to predict.
@@ -4260,7 +4260,7 @@ They make final behavior harder to predict.
 
 A compatibility layer should have:
 
-```text id="jwuco4"
+```text
 A clear replacement.
 A warning or comment.
 A migration path.
@@ -4269,7 +4269,7 @@ A removal plan, if possible.
 
 If the project is small, a removal plan can simply be a note:
 
-```text id="me8ghm"
+```text
 Deprecated: show_comments is supported for old pages. Use comments instead.
 ```
 
@@ -4281,7 +4281,7 @@ Not every project needs strict schema validation immediately.
 
 A practical growth path is:
 
-```text id="vd4s78"
+```text
 Stage 1:
   Comments and candidate lists.
 
@@ -4318,7 +4318,7 @@ As projects grow, configuration keys may start depending on each other.
 
 Example:
 
-```yaml id="ewkeo2"
+```yaml
 comments:
   enabled: true
   provider: "giscus"
@@ -4333,13 +4333,13 @@ This is a hidden dependency.
 
 A better design may remove the second setting and derive it from the first:
 
-```text id="ics9p3"
+```text
 Show the comments button only when comments are enabled.
 ```
 
 Or make the relationship explicit:
 
-```yaml id="sbi2zx"
+```yaml
 comments:
   enabled: true                ## Enable or disable comments. candidates: true | false
   show_entry_button: true      ## Show or hide the comment entry button when comments are enabled.
@@ -4359,7 +4359,7 @@ Before building a custom configuration system, check whether the project ecosyst
 
 Examples:
 
-```text id="dkwdec"
+```text
 Node projects often use package.json, .env, and tool config files.
 Python projects often use pyproject.toml and environment variables.
 Docker-based projects often use docker-compose.yml and .env.
@@ -4371,7 +4371,7 @@ Using conventions helps maintainers because they already know where to look.
 
 A custom system may still be justified when:
 
-```text id="smlwpj"
+```text
 The project has unusual override rules.
 Multiple tools need shared configuration.
 The team needs strong validation.
@@ -4390,7 +4390,7 @@ The principle is:
 
 When a configuration system starts to feel messy, ask:
 
-```text id="0o4gbt"
+```text
 1. Is one file still enough, or are different lifecycles mixed together?
 2. Are namespaces based on responsibility?
 3. Are environment-specific values separated from project defaults?
@@ -4418,7 +4418,7 @@ Do not create a large configuration framework because the project might need one
 
 A good configuration system should grow in visible steps:
 
-```text id="uzkfl6"
+```text
 flat file
 → namespaced file
 → environment-aware config
@@ -4434,7 +4434,7 @@ Configuration design is project-specific, but many patterns appear again and aga
 
 A documentation site, a web application, an AI tool, a mobile app, and a command-line program do not have the same architecture. They do, however, face similar configuration questions:
 
-```text id="oag7gx"
+```text
 What are the global defaults?
 What changes by environment?
 What can be overridden locally?
@@ -4454,7 +4454,7 @@ A **feature flag** controls whether a capability is enabled.
 
 Example:
 
-```yaml id="9vdebm"
+```yaml
 features:
   search: true                 ## Enable or disable search globally. candidates: true | false
   comments: false              ## Enable or disable comments globally. candidates: true | false
@@ -4465,7 +4465,7 @@ Feature flags are useful when a project needs to separate code deployment from f
 
 They are common in many project types:
 
-```text id="q834zg"
+```text
 Web app:
   Enable a new checkout page.
 
@@ -4486,14 +4486,14 @@ Feature flags should be named clearly. A boolean should make it obvious what `tr
 
 Good:
 
-```yaml id="79o7ic"
+```yaml
 features:
   offline_mode: true           ## Enable or disable offline mode. candidates: true | false
 ```
 
 Weak:
 
-```yaml id="fh5jvm"
+```yaml
 offline: true                  ## Ambiguous without context.
 ```
 
@@ -4501,7 +4501,7 @@ Feature flags should not become a junk drawer. If a feature has many settings, g
 
 Instead of:
 
-```yaml id="b13dgo"
+```yaml
 features:
   search: true
   search_provider: "local"
@@ -4510,7 +4510,7 @@ features:
 
 Use:
 
-```yaml id="tvv13x"
+```yaml
 search:
   enabled: true                ## Enable or disable search. candidates: true | false
   provider: "local"            ## Select the search provider. candidates: local | algolia | elastic
@@ -4529,7 +4529,7 @@ Many projects need to choose between interchangeable external systems.
 
 Examples:
 
-```text id="3wjxn5"
+```text
 comments provider
 authentication provider
 email provider
@@ -4544,7 +4544,7 @@ A clear provider pattern separates the active provider from provider-specific se
 
 Example:
 
-```yaml id="4ze3tv"
+```yaml
 email:
   provider: "postmark"         ## Select the email provider. candidates: smtp | postmark | sendgrid
 
@@ -4561,7 +4561,7 @@ email:
 
 This structure has several advantages:
 
-```text id="gejhhd"
+```text
 The active provider is explicit.
 Provider-specific options do not conflict.
 Inactive provider settings can remain documented.
@@ -4570,7 +4570,7 @@ Migration from one provider to another is easier.
 
 This pattern is especially useful in AI applications:
 
-```yaml id="uhm86o"
+```yaml
 models:
   provider: "openai"           ## Select the model provider. candidates: openai | anthropic | local
 
@@ -4598,7 +4598,7 @@ Most serious projects eventually need different behavior in different environmen
 
 A simple pattern is:
 
-```text id="q8c2s0"
+```text
 base config
 + environment override
 + secrets
@@ -4606,7 +4606,7 @@ base config
 
 Example:
 
-```yaml id="rut5pt"
+```yaml
 ## config/base.yml
 project:
   name: "Example App"          ## Set the public project name.
@@ -4618,7 +4618,7 @@ logging:
   level: "info"                ## Set the default logging level. candidates: debug | info | warn | error
 ```
 
-```yaml id="q6did0"
+```yaml
 ## config/production.yml
 environment:
   name: "production"           ## Identify the current environment.
@@ -4630,7 +4630,7 @@ logging:
   level: "warn"                ## Use warning-level logs in production.
 ```
 
-```yaml id="7yoeef"
+```yaml
 ## config/development.yml
 environment:
   name: "development"          ## Identify the current environment.
@@ -4644,7 +4644,7 @@ logging:
 
 The project should document the merge order:
 
-```text id="us4gaa"
+```text
 base.yml → environment.yml → environment variables → runtime arguments
 ```
 
@@ -4660,7 +4660,7 @@ A project often needs global defaults plus object-specific exceptions.
 
 Examples:
 
-```text id="ysrsnh"
+```text
 A page overrides the default layout.
 A component overrides the default display mode.
 A data job overrides the default retry count.
@@ -4670,7 +4670,7 @@ A mobile screen overrides the default orientation.
 
 Global config:
 
-```yaml id="j1lbaa"
+```yaml
 ui:
   show_title: true             ## Show or hide titles globally. candidates: true | false
   show_footer: false           ## Show or hide footers globally. candidates: true | false
@@ -4678,7 +4678,7 @@ ui:
 
 Local override:
 
-```yaml id="caol1o"
+```yaml
 ---
 title: "Landing Page"
 show_title: false              ## Hide the title on this page.
@@ -4688,7 +4688,7 @@ show_footer: true              ## Show the footer on this page.
 
 The key is to distinguish `false` from missing.
 
-```text id="x4q6vb"
+```text
 missing
   Use fallback.
 
@@ -4701,7 +4701,7 @@ true
 
 A good resolver respects this distinction:
 
-```ts id="ni4w4e"
+```ts
 let showFooter = config.ui.showFooter;
 
 if (page.showFooter !== undefined) {
@@ -4711,7 +4711,7 @@ if (page.showFooter !== undefined) {
 
 A bad resolver does not:
 
-```ts id="r153fk"
+```ts
 const showFooter = page.showFooter || config.ui.showFooter;
 ```
 
@@ -4731,7 +4731,7 @@ This is common in mobile development, but the pattern is broader.
 
 Examples:
 
-```text id="wznn6t"
+```text
 Mobile app:
   free, pro, internal, enterprise.
 
@@ -4747,7 +4747,7 @@ AI app:
 
 A simple build variant config may look like:
 
-```yaml id="bgnuj9"
+```yaml
 build:
   variant: "internal"          ## Select the build variant. candidates: public | internal | enterprise
 
@@ -4781,7 +4781,7 @@ Some configuration should be temporary. It should affect one run, not the perman
 
 For example, a CLI tool may have a default export format:
 
-```yaml id="i3xlb0"
+```yaml
 export:
   format: "csv"                ## Set the default export format. candidates: csv | json | parquet
   output_dir: "./out"          ## Set the default output directory.
@@ -4789,13 +4789,13 @@ export:
 
 A user may override it for one run:
 
-```bash id="jkgm6n"
+```bash
 tool export --format json --output-dir ./tmp
 ```
 
 This pattern is common in:
 
-```text id="x93i8c"
+```text
 CLI tools
 data processing jobs
 AI evaluation scripts
@@ -4819,7 +4819,7 @@ Some configuration is safe to expose. Some is not.
 
 Public config:
 
-```yaml id="cpc1su"
+```yaml
 project:
   name: "Example App"          ## Set the public project name.
 
@@ -4829,7 +4829,7 @@ ui:
 
 Private config:
 
-```env id="f2rxnh"
+```env
 DATABASE_URL=postgres://user:password@example.com/app
 OPENAI_API_KEY=sk-...
 JWT_SECRET=...
@@ -4841,13 +4841,13 @@ If a value is shipped to a browser, mobile device, or public static bundle, it s
 
 A safe pattern is to make public values explicit:
 
-```env id="kv0vsm"
+```env
 PUBLIC_API_BASE_URL=https://api.example.com
 ```
 
 And keep private values server-side:
 
-```env id="f1p55z"
+```env
 DATABASE_URL=postgres://user:password@example.com/app
 ```
 
@@ -4863,7 +4863,7 @@ Research, AI, and data projects often need experiment-specific settings.
 
 Example:
 
-```yaml id="fe46o7"
+```yaml
 experiment:
   name: "retrieval-v2"         ## Identify the experiment.
   seed: 42                     ## Set the random seed for reproducibility.
@@ -4881,7 +4881,7 @@ Experiment config should be designed for reproducibility.
 
 It should answer:
 
-```text id="ph0dgq"
+```text
 Which model was used?
 Which data source was used?
 Which parameters were used?
@@ -4891,7 +4891,7 @@ Which environment ran the experiment?
 
 A small experiment config may include:
 
-```yaml id="q8k6gd"
+```yaml
 experiment:
   name: "baseline-rag"         ## Identify the experiment.
   seed: 42                     ## Set the random seed.
@@ -4913,7 +4913,7 @@ Some configuration expresses policy rather than preference.
 
 Examples:
 
-```text id="h0o12z"
+```text
 Security policy
 Access policy
 Data retention policy
@@ -4926,7 +4926,7 @@ Policy settings often override local preferences.
 
 Example:
 
-```yaml id="87q4t4"
+```yaml
 security:
   require_https: true          ## Require HTTPS in production. candidates: true | false
   allow_debug_panel: false     ## Allow or block debug tools. candidates: true | false
@@ -4934,7 +4934,7 @@ security:
 
 An AI app may have:
 
-```yaml id="aaegxa"
+```yaml
 safety:
   moderation_required: true    ## Require moderation before final output. candidates: true | false
   log_sensitive_inputs: false  ## Allow or block logging sensitive inputs. candidates: true | false
@@ -4944,7 +4944,7 @@ These settings are not normal feature preferences. They may represent organizati
 
 The override order should reflect this:
 
-```text id="te6u85"
+```text
 global default → local preference → policy constraint
 ```
 
@@ -4962,7 +4962,7 @@ Some values should be derived from other values.
 
 Example:
 
-```yaml id="vq8mi4"
+```yaml
 project:
   slug: "example-app"          ## Set the project slug.
   domain: "example.com"        ## Set the production domain.
@@ -4970,14 +4970,14 @@ project:
 
 The system can derive:
 
-```text id="lo6lbj"
+```text
 canonical_url = https://example.com
 asset_url = https://example.com/assets
 ```
 
 This is better than manually configuring all of them:
 
-```yaml id="cplxxp"
+```yaml
 domain: "example.com"
 canonical_url: "https://example.com"
 asset_url: "https://example.com/assets"
@@ -4992,7 +4992,7 @@ The rule is:
 
 However, derived values should be visible during debugging. A resolved configuration printout can help:
 
-```text id="jz096t"
+```text
 Resolved canonical_url: https://example.com
 Resolved asset_url: https://example.com/assets
 ```
@@ -5005,19 +5005,19 @@ As soon as a project has multiple config layers, it should conceptually distingu
 
 Raw config:
 
-```text id="nmvk00"
+```text
 What was written in files, environment variables, or local metadata.
 ```
 
 Resolved config:
 
-```text id="sndlyi"
+```text
 The final values after defaults, overrides, constraints, and validation.
 ```
 
 Example flow:
 
-```text id="csa1px"
+```text
 load raw config
 → merge environment config
 → apply local overrides
@@ -5031,7 +5031,7 @@ This pattern prevents confusion.
 
 Instead of every component computing its own behavior, the project can centralize the logic:
 
-```ts id="zbzqj8"
+```ts
 const resolved = resolveConfig({
   projectConfig,
   environmentConfig,
@@ -5042,7 +5042,7 @@ const resolved = resolveConfig({
 
 Then the rest of the project uses:
 
-```ts id="mzq6rd"
+```ts
 resolved.comments.enabled
 resolved.ui.showTitle
 resolved.api.baseUrl
@@ -5060,7 +5060,7 @@ A project should usually include one or more example configurations.
 
 Example:
 
-```yaml id="kf6zg7"
+```yaml
 ## config.example.yml
 project:
   name: "Example App"          ## Set the public project name.
@@ -5077,7 +5077,7 @@ comments:
 
 And:
 
-```env id="krql3h"
+```env
 ## .env.example
 APP_ENV=development
 API_BASE_URL=http://localhost:3000
@@ -5097,7 +5097,7 @@ The rule is:
 
 A small project may only need:
 
-```text id="j8hqvg"
+```text
 namespaces
 comments
 candidate lists
@@ -5106,7 +5106,7 @@ candidate lists
 
 A medium project may need:
 
-```text id="ijj992"
+```text
 environment profiles
 provider patterns
 local overrides
@@ -5116,7 +5116,7 @@ resolved config
 
 A larger project may need:
 
-```text id="qomdgg"
+```text
 feature flag management
 secret manager integration
 policy configuration
@@ -5128,7 +5128,7 @@ Do not adopt every pattern at once. Use the patterns that match real project pre
 
 A useful rule:
 
-```text id="yopj5l"
+```text
 If a pattern makes the project easier to explain, consider it.
 If a pattern only makes the project look more sophisticated, avoid it.
 ```
@@ -5141,7 +5141,7 @@ When designing a configuration system, choose patterns deliberately.
 
 Ask:
 
-```text id="d0yrg2"
+```text
 1. Do we need feature flags?
 2. Do we have interchangeable providers?
 3. Do environments differ?
@@ -5171,7 +5171,7 @@ This example fits a small documentation site, personal site, or knowledge base.
 
 #### Project Configuration
 
-```yaml id="kvbc3x"
+```yaml
 ## config.yml
 
 project:
@@ -5200,7 +5200,7 @@ assets:
 
 #### Local Page Override
 
-```yaml id="lixqmc"
+```yaml
 ---
 title: "FAQ"
 show_sidebar: false            ## Hide the sidebar on this page.
@@ -5211,7 +5211,7 @@ comments: true                 ## Enable comments on this page.
 
 #### Override Rule
 
-```text id="5uf35e"
+```text
 Global UI defaults
 → page front matter
 → layout constraints, if any
@@ -5221,7 +5221,7 @@ Global UI defaults
 
 This design is clear because:
 
-```text id="jw0ysi"
+```text
 Project identity lives under project.
 Display behavior lives under ui.
 High-level capabilities live under features.
@@ -5239,7 +5239,7 @@ This example fits a small web application with one backend API, one deployment p
 
 #### Base Configuration
 
-```yaml id="sg2ujy"
+```yaml
 ## config/base.yml
 
 project:
@@ -5265,7 +5265,7 @@ logging:
 
 #### Development Environment
 
-```yaml id="31pj4i"
+```yaml
 ## config/development.yml
 
 environment:
@@ -5280,7 +5280,7 @@ logging:
 
 #### Production Environment
 
-```yaml id="6vjs2o"
+```yaml
 ## config/production.yml
 
 environment:
@@ -5298,7 +5298,7 @@ logging:
 
 #### Environment Variables
 
-```env id="ckiemh"
+```env
 ## .env.example
 
 APP_ENV=development
@@ -5308,7 +5308,7 @@ SESSION_SECRET=
 
 #### Override Rule
 
-```text id="sro36c"
+```text
 base.yml
 → environment.yml
 → environment variables
@@ -5333,7 +5333,7 @@ This example fits a small retrieval-augmented generation application, evaluation
 
 #### Project Configuration
 
-```yaml id="2zquaw"
+```yaml
 ## config.yml
 
 project:
@@ -5366,7 +5366,7 @@ safety:
 
 #### Secrets
 
-```env id="nh8thk"
+```env
 ## .env.example
 
 OPENAI_API_KEY=
@@ -5376,7 +5376,7 @@ VECTOR_DATABASE_URL=
 
 #### Request-Level Override
 
-```json id="p23gzt"
+```json
 {
   "temperature": 0.4,
   "top_k": 8
@@ -5385,7 +5385,7 @@ VECTOR_DATABASE_URL=
 
 #### Override Rule
 
-```text id="5w6l8d"
+```text
 application defaults
 → environment variables
 → experiment config
@@ -5397,7 +5397,7 @@ application defaults
 
 Even if a request tries to disable moderation:
 
-```json id="i97d99"
+```json
 {
   "moderation": false
 }
@@ -5405,7 +5405,7 @@ Even if a request tries to disable moderation:
 
 production policy may still force:
 
-```text id="mr3t9l"
+```text
 safety.moderation = true
 ```
 
@@ -5415,7 +5415,7 @@ This design separates model choice, generation behavior, retrieval behavior, and
 
 That separation matters because these settings have different meanings:
 
-```text id="i7xf7x"
+```text
 models controls providers and model names.
 generation controls output behavior.
 retrieval controls context construction.
@@ -5432,7 +5432,7 @@ This example fits a command-line export tool, file processor, static analyzer, o
 
 #### Project Configuration
 
-```toml id="45xk9t"
+```toml
 ## tool.toml
 
 [project]
@@ -5453,13 +5453,13 @@ count = 2                      ## Set the number of retry attempts.
 
 #### Runtime Override
 
-```bash id="gelp8b"
+```bash
 data-exporter export --format json --output-dir ./tmp --log-level debug
 ```
 
 #### Override Rule
 
-```text id="2q97n0"
+```text
 tool.toml
 → environment variables
 → command-line arguments
@@ -5482,7 +5482,7 @@ This example fits a mobile app with different build variants.
 
 #### Project Configuration
 
-```yaml id="ogudm5"
+```yaml
 ## app.config.yml
 
 app:
@@ -5514,7 +5514,7 @@ api:
 
 #### Secrets
 
-```env id="9dirdx"
+```env
 ## .env.example
 
 SENTRY_DSN=
@@ -5523,7 +5523,7 @@ PUSH_NOTIFICATION_KEY=
 
 #### Override Rule
 
-```text id="yotwlr"
+```text
 base app config
 → selected build variant
 → environment variables
@@ -5536,7 +5536,7 @@ The selected variant controls the app name, bundle identifier, and debug tools.
 
 This is clearer than scattering build decisions across unrelated keys:
 
-```yaml id="h40gnf"
+```yaml
 debug: true
 internal: true
 bundle: "com.example.internal"
@@ -5553,7 +5553,7 @@ This example fits a small service deployed to a cloud platform or container envi
 
 #### Deployment Configuration
 
-```yaml id="kiuaic"
+```yaml
 ## deploy.yml
 
 service:
@@ -5575,7 +5575,7 @@ logging:
 
 #### Secret References
 
-```yaml id="85dhx7"
+```yaml
 secrets:
   required:
     - "DATABASE_URL"           ## Require the database connection URL.
@@ -5584,7 +5584,7 @@ secrets:
 
 #### Override Rule
 
-```text id="5g2wwr"
+```text
 deploy.yml
 → environment-specific deployment file
 → platform secrets
@@ -5605,7 +5605,7 @@ A resolver turns raw inputs into final configuration.
 
 This example uses TypeScript-like pseudocode.
 
-```ts id="zqrflr"
+```ts
 type PageConfig = {
   showTitle?: boolean;
   showFooter?: boolean;
@@ -5654,7 +5654,7 @@ function resolvePageConfig(globalConfig: GlobalConfig, page: PageConfig) {
 
 This resolver expresses the rule:
 
-```text id="q6vvsv"
+```text
 global default
 → page override
 → layout constraint
@@ -5668,7 +5668,7 @@ It also respects explicit `false`, because it checks `!== undefined` instead of 
 
 A simple validator does not need to be complex.
 
-```ts id="pvppql"
+```ts
 function validateConfig(config: any) {
   const allowedColorSchemes = ["auto", "light", "dark"];
   const allowedCommentProviders = [false, "disqus", "giscus", "utterances"];
@@ -5701,7 +5701,7 @@ It catches invalid values near the source of the problem.
 
 The following example combines many ideas into one small configuration system.
 
-```yaml id="9qwj44"
+```yaml
 ## config.yml
 
 project:
@@ -5749,7 +5749,7 @@ secrets:
 
 #### Corresponding `.env.example`
 
-```env id="mvswlr"
+```env
 APP_ENV=development
 DATABASE_URL=
 SESSION_SECRET=
@@ -5757,7 +5757,7 @@ SESSION_SECRET=
 
 #### Local Object Override
 
-```yaml id="e1w95s"
+```yaml
 ---
 title: "Landing Page"
 show_title: false              ## Hide the title for this page.
@@ -5768,7 +5768,7 @@ comments: false                ## Explicitly disable comments for this page.
 
 #### Documented Precedence
 
-```text id="l0hco7"
+```text
 Configuration precedence:
 1. Built-in fallback
 2. config.yml
@@ -5782,7 +5782,7 @@ Configuration precedence:
 
 It is maintainable because:
 
-```text id="2zcxpt"
+```text
 Namespaces express responsibility.
 Booleans are named clearly.
 Candidates are listed for enum-like values.
@@ -5800,7 +5800,7 @@ It is not perfect for every project, but it is coherent. A future maintainer can
 
 Although the examples cover different project types, they share the same design principles:
 
-```text id="tz9c9l"
+```text
 Group by responsibility.
 Separate global defaults from local overrides.
 Separate stable project config from environment config.
@@ -5832,7 +5832,7 @@ A setting should have a clear scope.
 
 Ask:
 
-```text id="dku7vu"
+```text
 1. Is this setting global, environment-specific, feature-specific, local, runtime-only, or secret?
 2. Is the scope visible from the namespace or file location?
 3. Is this setting placed near related settings?
@@ -5842,7 +5842,7 @@ Ask:
 
 Bad example:
 
-```yaml id="cbmeps"
+```yaml
 theme: "auto"
 api_url: "https://api.example.com"
 comment_provider: "giscus"
@@ -5851,7 +5851,7 @@ debug: true
 
 Better example:
 
-```yaml id="nsu2r5"
+```yaml
 ui:
   color_scheme: "auto"         ## Set the default color scheme. candidates: auto | light | dark
 
@@ -5875,7 +5875,7 @@ A setting should have a clear precedence rule.
 
 Ask:
 
-```text id="xbjy8v"
+```text
 1. What is the default value?
 2. Can an environment override it?
 3. Can a module, layout, or feature override it?
@@ -5887,7 +5887,7 @@ Ask:
 
 Example precedence note:
 
-```text id="5pqu5t"
+```text
 Configuration precedence:
 1. Built-in fallback
 2. Project config
@@ -5899,7 +5899,7 @@ Configuration precedence:
 
 For display settings, the order may be:
 
-```text id="7q87ni"
+```text
 Global UI default
 → page override
 → layout constraint
@@ -5915,7 +5915,7 @@ Boolean values need careful handling.
 
 Ask:
 
-```text id="phog5w"
+```text
 1. Does true have a clear meaning?
 2. Does false mean explicitly disabled?
 3. Does null mean unspecified or something else?
@@ -5925,7 +5925,7 @@ Ask:
 
 Bad resolver:
 
-```ts id="9oa0pb"
+```ts
 const showFooter = page.showFooter || config.ui.showFooter;
 ```
 
@@ -5933,14 +5933,14 @@ This breaks when `page.showFooter` is explicitly `false`.
 
 Better resolver:
 
-```ts id="k5tivx"
+```ts
 const showFooter =
   page.showFooter === undefined ? config.ui.showFooter : page.showFooter;
 ```
 
 Good configuration:
 
-```yaml id="w7pr6l"
+```yaml
 defaults:
   footer: null                 ## Use the global footer setting unless locally overridden.
 
@@ -5958,7 +5958,7 @@ Namespaces should express responsibility.
 
 Ask:
 
-```text id="ehpedv"
+```text
 1. Does each namespace represent a real project responsibility?
 2. Are related settings grouped together?
 3. Is the nesting shallow enough to read?
@@ -5968,7 +5968,7 @@ Ask:
 
 Bad example:
 
-```yaml id="z1gnmz"
+```yaml
 misc:
   show_sidebar: true
   api_url: "https://api.example.com"
@@ -5978,7 +5978,7 @@ misc:
 
 Better example:
 
-```yaml id="lo7rnk"
+```yaml
 ui:
   show_sidebar: true           ## Show or hide the sidebar.
 
@@ -6003,7 +6003,7 @@ Names should be boring, stable, and specific.
 
 Ask:
 
-```text id="4it89y"
+```text
 1. Does the name explain what the setting controls?
 2. Does the name avoid unnecessary abbreviations?
 3. Is naming style consistent?
@@ -6013,7 +6013,7 @@ Ask:
 
 Bad example:
 
-```yaml id="nl3ga6"
+```yaml
 footer: true
 show_footer: false
 footer_enabled: true
@@ -6021,14 +6021,14 @@ footer_enabled: true
 
 Better example:
 
-```yaml id="dcy2e8"
+```yaml
 ui:
   show_footer: true            ## Show or hide the footer globally. candidates: true | false
 ```
 
 If old names must be supported:
 
-```text id="edk990"
+```text
 Deprecated: footer_enabled is temporarily supported. Use ui.show_footer instead.
 ```
 
@@ -6042,7 +6042,7 @@ Environment-specific values should be visible and intentional.
 
 Ask:
 
-```text id="m42b3c"
+```text
 1. Which values differ between development, test, staging, and production?
 2. Are environment differences separated from project defaults?
 3. Is the environment merge order documented?
@@ -6052,7 +6052,7 @@ Ask:
 
 Simple structure:
 
-```text id="j7e0ax"
+```text
 config/
   base.yml
   development.yml
@@ -6061,7 +6061,7 @@ config/
 
 Documented merge order:
 
-```text id="1ew4hh"
+```text
 base.yml → environment.yml → environment variables → runtime arguments
 ```
 
@@ -6075,7 +6075,7 @@ Secrets require a separate policy.
 
 Ask:
 
-```text id="sl51au"
+```text
 1. Are secret values excluded from version control?
 2. Are required secrets documented?
 3. Does the project include a .env.example or equivalent?
@@ -6086,7 +6086,7 @@ Ask:
 
 Good `.env.example`:
 
-```env id="ecrhpt"
+```env
 APP_ENV=development
 DATABASE_URL=
 SESSION_SECRET=
@@ -6095,7 +6095,7 @@ OPENAI_API_KEY=
 
 Good committed config:
 
-```yaml id="hpwmii"
+```yaml
 secrets:
   required:
     - "DATABASE_URL"           ## Require the database connection URL.
@@ -6104,7 +6104,7 @@ secrets:
 
 Bad committed config:
 
-```yaml id="xmip5c"
+```yaml
 database:
   url: "postgres://user:password@example.com/app"
 ```
@@ -6119,7 +6119,7 @@ Configuration should be self-documenting.
 
 Ask:
 
-```text id="ouhv7v"
+```text
 1. Do non-obvious fields have short comments?
 2. Are candidate values listed for enum-like settings?
 3. Are defaults explained?
@@ -6131,14 +6131,14 @@ Ask:
 
 Good example:
 
-```yaml id="xltrnd"
+```yaml
 comments:
   provider: "giscus"           ## Select the active comment provider. candidates: false | disqus | giscus | utterances
 ```
 
 Weak example:
 
-```yaml id="bnjkt1"
+```yaml
 comments:
   provider: "giscus"           ## Provider.
 ```
@@ -6153,7 +6153,7 @@ Validation prevents invalid configuration from spreading into the system.
 
 Ask:
 
-```text id="s8w5x5"
+```text
 1. Are required fields checked?
 2. Are allowed values checked?
 3. Are numeric ranges checked?
@@ -6166,7 +6166,7 @@ Ask:
 
 Good validation error:
 
-```text id="mc5coa"
+```text
 Invalid comments.provider.
 Allowed values: false, disqus, giscus, utterances.
 Received: github.
@@ -6174,7 +6174,7 @@ Received: github.
 
 Weak validation error:
 
-```text id="r3i3j7"
+```text
 Invalid config.
 ```
 
@@ -6188,7 +6188,7 @@ A configuration system should match the project’s scale.
 
 Ask:
 
-```text id="cnv40w"
+```text
 1. Is the current structure enough for the project’s actual size?
 2. Are we over-engineering for imagined future needs?
 3. Are we under-designing for real current complexity?
@@ -6200,7 +6200,7 @@ Ask:
 
 Small project:
 
-```text id="1ewqje"
+```text
 One namespaced config file
 .env.example
 short comments
@@ -6209,7 +6209,7 @@ candidate lists
 
 Growing project:
 
-```text id="t2hcwn"
+```text
 base config
 environment overrides
 validation
@@ -6218,7 +6218,7 @@ resolved config object
 
 Larger project:
 
-```text id="89zt0t"
+```text
 secret manager
 remote feature flags
 audit logs
@@ -6236,7 +6236,7 @@ A maintainable configuration system should make deletion possible.
 
 Ask:
 
-```text id="zdgkt5"
+```text
 1. Can a feature’s settings be found in one namespace?
 2. Are deprecated keys marked?
 3. Are old provider settings still needed?
@@ -6246,7 +6246,7 @@ Ask:
 
 Good structure:
 
-```yaml id="i610iz"
+```yaml
 search:
   enabled: true                ## Enable or disable search. candidates: true | false
   provider: "local"            ## Select the search provider. candidates: local | algolia
@@ -6257,7 +6257,7 @@ If search is removed, the boundary is obvious.
 
 Bad structure:
 
-```yaml id="olznb3"
+```yaml
 search_enabled: true
 show_search_box: true
 local_index: true
@@ -6274,7 +6274,7 @@ The feature boundary is harder to see.
 
 Before accepting a configuration design, ask these final questions:
 
-```text id="ck0c4k"
+```text
 Can a new maintainer find the right setting quickly?
 Can they predict the final value after overrides?
 Can they tell which values are secrets?
@@ -6299,7 +6299,7 @@ The core principle is:
 
 It should make the project’s choices visible:
 
-```text id="rizfwa"
+```text
 what exists
 what is enabled
 what is private
@@ -6410,7 +6410,7 @@ It is not only a way to pass values into code. It is a way to manage change.
 
 A project contains many decisions:
 
-```text id="ectarr"
+```text
 Which features are enabled?
 Which provider is active?
 Which environment is running?
@@ -6425,7 +6425,7 @@ If they are expressed clearly in configuration, the project becomes easier to op
 
 For example:
 
-```yaml id="jd57eh"
+```yaml
 features:
   search: true                 ## Enable or disable search globally. candidates: true | false
   comments: false              ## Enable or disable comments globally. candidates: true | false
@@ -6436,7 +6436,7 @@ comments:
 
 This small structure tells a maintainer several things immediately:
 
-```text id="s230wn"
+```text
 Search exists and is enabled.
 Comments exist but are disabled by default.
 If comments are enabled, Giscus is the selected provider.
@@ -6452,7 +6452,7 @@ A maintainable project is not one where everything is configurable. It is one wh
 
 Predictability requires clear answers to these questions:
 
-```text id="xdakdq"
+```text
 Where is the setting?
 What does it control?
 What is the default?
@@ -6477,7 +6477,7 @@ A simple configuration system is not necessarily a flat one.
 
 A flat file may look simple:
 
-```yaml id="lo3k05"
+```yaml
 theme: "auto"
 comments: false
 provider: "giscus"
@@ -6489,7 +6489,7 @@ But it forces the reader to infer ownership and relationships.
 
 A namespaced file may look slightly longer:
 
-```yaml id="xan7l0"
+```yaml
 ui:
   color_scheme: "auto"         ## Set the default color scheme.
 
@@ -6514,7 +6514,7 @@ Simplicity is the absence of unnecessary confusion.
 
 A healthy configuration system has clear boundaries.
 
-```text id="nlmlqh"
+```text
 Global defaults belong in global config.
 Environment differences belong in environment config.
 Secrets belong outside committed files.
@@ -6544,7 +6544,7 @@ A configuration file that only satisfies the machine may be technically valid bu
 
 A good configuration system supports both:
 
-```text id="50w401"
+```text
 Clear names for humans.
 Structured values for machines.
 Short comments for intent.
@@ -6569,7 +6569,7 @@ But a growing project should not remain in an informal state forever. That creat
 
 The healthy path is gradual:
 
-```text id="w4z6xk"
+```text
 single clear config file
 → namespaced config
 → environment-aware config
@@ -6595,7 +6595,7 @@ The final principle is:
 
 This means:
 
-```text id="n5idjm"
+```text
 A maintainer can find the right setting.
 A maintainer can predict the final value.
 A maintainer can see which values are private.
@@ -6622,7 +6622,7 @@ The configuration file becomes more than a list of settings. It becomes a map of
 
 A maintainable configuration system should follow these principles:
 
-```text id="f7xjyo"
+```text
 1. Treat configuration as part of project architecture.
 2. Separate settings by scope.
 3. Define override order explicitly.
