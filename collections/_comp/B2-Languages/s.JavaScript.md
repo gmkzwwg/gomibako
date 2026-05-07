@@ -1,5 +1,5 @@
 ---
-title: JavaScript - Quick Reference Guide
+title: JavaScript - Quick Reference
 categories: Notes
 subclass: Languages
 ---

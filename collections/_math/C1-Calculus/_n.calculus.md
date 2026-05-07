@@ -3,6 +3,7 @@ title: Calculus
 layout: post
 categories: Notes
 subclass: Calculus
+reference:
+  - Calculus
 ---
 
-> Main reference: [1. Calculus]

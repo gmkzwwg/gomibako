@@ -3,6 +3,7 @@ title: Homotopy Type Theory
 layout: post
 categories: Notes
 subclass: Type Theory
+reference:
+  - HoTT Book
 ---
 
-> Main reference: [1. HoTT Book]

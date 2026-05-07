@@ -3,6 +3,7 @@ title: Social Psychology
 layout: post
 categories: Notes
 subclass: Social Psychology
+reference:
+  - Social Psychology
 ---
 
-> Main reference: [1. Social Psychology]

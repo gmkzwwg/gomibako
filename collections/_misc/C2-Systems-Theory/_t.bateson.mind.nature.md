@@ -3,6 +3,8 @@ title: Bateson Mind and Nature
 layout: post
 categories: Texts
 subclass: Systems Theory
+reference:
+  - Bateson Mind and Nature
+  - Steps to an Ecology of Mind
 ---
 
-> Main reference: [1. Bateson Mind and Nature, 2. Steps to an Ecology of Mind]

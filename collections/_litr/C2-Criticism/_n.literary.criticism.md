@@ -3,6 +3,7 @@ title: Literary Criticism
 layout: post
 categories: Notes
 subclass: Criticism
+reference:
+  - Literary Criticism
 ---
 
-> Main reference: [1. Literary Criticism]

@@ -3,6 +3,8 @@ title: Quantum Field Theory
 layout: post
 categories: Notes
 subclass: QFT
+reference:
+  - Tong lecture notes
+  - Peskin & Schroeder
 ---
 
-> Main reference: [1. Tong lecture notes, 2. Peskin & Schroeder]

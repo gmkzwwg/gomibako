@@ -71,7 +71,7 @@ Priority:
 {% endif %}
 
 {% assign todos_enabled = false %}
-{% if site.ui.features.todos and page.todos == true %}
+{% if site.ui.features.todos == true and page.todos != false %}
 {% assign todos_enabled = true %}
 {% endif %}
 

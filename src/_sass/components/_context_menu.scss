@@ -26,7 +26,6 @@
   border-radius: var(--menu-radius);
   box-shadow: var(--menu-shadow);
   overflow: hidden;
-  cursor: $cursor-green-pointer;
 }
 
 .context-menu[hidden] {
@@ -43,7 +42,6 @@
   text-align: left;
   font: inherit;
   line-height: 1.35;
-  cursor: $cursor-green-pointer;
 }
 
 .context-menu__item + .context-menu__item {

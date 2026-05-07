@@ -3,6 +3,7 @@ title: Special Relativity
 layout: post
 categories: Notes
 subclass: Special Relativity
+reference:
+  - Special Relativity
 ---
 
-> Main reference: [1. Special Relativity]

@@ -3,6 +3,7 @@ title: Cognitive Linguistics
 layout: post
 categories: Notes
 subclass: Linguistics
+reference:
+  - Lakoff
 ---
 
-> Main reference: [1. Lakoff]

@@ -1,5 +1,5 @@
 ---
-title: Linux Operating - Quick Reference and Minimal Tutorial
+title: Linux Operating - Quick Reference
 layout: post
 categories: Sheet
 subclass: Operating Tools

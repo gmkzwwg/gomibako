@@ -3,6 +3,8 @@ title: McLuhan and Kittler
 layout: post
 categories: Texts
 subclass: Communication
+reference:
+  - McLuhan Understanding Media
+  - Kittler Gramophone Film Typewriter
 ---
 
-> Main reference: [1. McLuhan Understanding Media, 2. Kittler Gramophone Film Typewriter]

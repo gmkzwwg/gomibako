@@ -3,6 +3,8 @@ title: Big Picture History
 layout: post
 categories: Texts
 subclass: Readings
+reference:
+  - Hobsbawm tetralogy
+  - 许倬云
 ---
 
-> Main reference: [1. Hobsbawm tetralogy, 2. 许倬云]

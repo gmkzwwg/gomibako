@@ -1,24 +1,27 @@
 /*!
+ * todo-summary.js
+ *
  * Introduction:
- *   Highlights TODO fragments in article text and creates a floating TODO summary panel.
+ *   Highlights TODO fragments in page content and renders a TODO summary.
+ *   The summary can be rendered as a floating glass panel or injected as plain text into a target element.
  *
  * Usage:
  *   Include this file on the page. It runs automatically with DEFAULT_CONFIG.
  *   Default behavior can be customized by editing DEFAULT_CONFIG below.
- *   Runtime behavior can be customized with window.TodoCollector.updateConfig().
+ *   Runtime behavior can be customized with window.TodoSummary.updateConfig().
  *
  * Global API:
- *   window.TodoCollector.apply(selectorOrElements, options)
- *   window.TodoCollector.updateConfig(config)
- *   window.TodoCollector.getConfig()
- *   window.TodoCollector.clear()
- *   window.initTodoCollector(selectorOrElements, options)
+ *   window.TodoSummary.apply(sourceSelectorOrElements, options, outputTarget)
+ *   window.TodoSummary.updateConfig(config, runtimeOptions)
+ *   window.TodoSummary.getConfig()
+ *   window.TodoSummary.clear(options)
  *
  * Notes:
- *   This script injects its own compact CSS.
- *   It preserves the original class names for compatibility.
- *   It skips script, style, code, pre, textarea, existing highlights, and its own floating UI.
- *   The floating panel uses backdrop-filter to blur content behind it.
+ *   Mode "panel" creates a styled floating panel at the bottom-left corner.
+ *   Mode "target" injects plain text into targetSelector and preserves the target element's own styles.
+ *   The default border color is currentColor, so it follows the inherited text color.
+ *   The glass effect is lightweight by default and can be disabled with glassEnabled: false.
+ *   The script skips script, style, code, pre, textarea, inputs, existing marks, and generated UI.
  */
 
 (function (window, document) {
@@ -27,38 +30,60 @@
   if (!window || !document) return;
 
   const DEFAULT_CONFIG = {
-    selector: ".post_content", // Default container selector.
-    autoApply: true, // Apply automatically after the script is loaded.
+    selector: ".post-content", // Source content container selector.
+    autoApply: true, // Apply automatically after script loading.
     todoPattern: /TODO:[^\n\r]*/g, // Pattern used to find TODO fragments.
-    highlightClass: "todo-highlight", // Class used for highlighted TODO text.
-    activeClass: "todo-highlight-active", // Class used when jumping to a TODO.
-    panelClass: "todo-floating-box", // Class used for the floating panel.
-    headerClass: "todo-floating-header", // Class used for the draggable panel header.
-    titleClass: "todo-floating-title", // Class used for the panel title.
-    closeClass: "todo-floating-close", // Class used for the close button.
-    bodyClass: "todo-floating-body", // Class used for the panel body.
-    listClass: "todo-floating-list", // Class used for the summary list.
-    reopenClass: "todo-reopen-button", // Class used for the reopen button.
-    styleId: "todo-collector-styles", // ID of the injected style element.
-    panelId: "todo-floating-box", // ID of the floating panel.
-    panelTitle: "TODO 汇总", // Floating panel title.
-    reopenText: "TODOs", // Reopen button text.
-    closeLabel: "关闭 TODO 汇总", // Close button accessibility label.
-    noSectionText: "TODO: at the beginning", // Fallback text when no heading is found.
-    todoTextMaxLength: 15, // Maximum TODO text length in the summary.
-    sectionTitleMaxLength: 15, // Maximum section title length in the summary.
-    flashDuration: 1600, // Active highlight duration in milliseconds.
-    scrollBehavior: "smooth", // Scroll behavior when clicking a summary link.
-    scrollBlock: "center", // Scroll alignment when jumping to a TODO.
-    enableHashUpdate: true, // Update URL hash when jumping to a TODO.
-    enableDragging: true, // Enable dragging the floating panel.
+    headingSelector: "h1, h2, h3, h4, h5, h6", // Headings used for section labels.
+
+    outputMode: "panel", // Summary output mode. candidates: panel | target
+    targetSelector: "", // Target element for outputMode "target".
+    targetJoiner: "\n", // Plain-text separator used in target mode.
+    emptyText: "", // Text injected into target when no TODO exists.
+    includeSectionInTarget: true, // Include section title in target-mode text.
+    includeIndexInTarget: false, // Prefix target-mode lines with item index.
+
+    panelId: "todo-summary-panel", // Floating panel ID.
+    triggerId: "todo-summary-trigger", // Floating reopen trigger ID.
+    styleId: "todo-summary-style", // Injected style element ID.
+
+    markClass: "todo-mark", // Class for highlighted TODO text.
+    markActiveClass: "todo-mark--active", // Class for active jumped TODO.
+    panelClass: "todo-summary", // Class for floating panel.
+    panelDraggingClass: "todo-summary--dragging", // Class added while dragging.
+    headerClass: "todo-summary__header", // Class for panel header.
+    titleClass: "todo-summary__title", // Class for panel title.
+    closeClass: "todo-summary__close", // Class for close button.
+    bodyClass: "todo-summary__body", // Class for panel body.
+    listClass: "todo-summary__list", // Class for panel list.
+    triggerClass: "todo-summary__trigger", // Class for reopen button.
+
+    panelTitle: "TODO Summary", // Floating panel title.
+    triggerText: "TODOs", // Reopen trigger text.
+    closeLabel: "Close TODO summary", // Close button aria-label.
+    noSectionText: "Document Start", // Fallback section title.
+    todoTextMaxLength: 36, // Maximum TODO text length shown in the panel.
+    sectionTitleMaxLength: 28, // Maximum section title length shown in the panel.
+
+    flashDuration: 1600, // Active mark duration in milliseconds.
+    scrollBehavior: "smooth", // Scroll behavior when clicking panel item.
+    scrollBlock: "center", // Scroll alignment when clicking panel item.
+    enableHashUpdate: true, // Update URL hash after jumping.
+    enableDragging: true, // Enable panel dragging.
+    highlightEnabled: true, // Highlight TODO fragments in source content.
     injectStyle: true, // Inject built-in CSS.
-    backdropBlur: "14px", // Blur strength behind the floating panel.
-    panelBackground: "rgba(255, 255, 255, 0.52)", // Glass-like panel background.
-    headerBackground: "rgba(255, 255, 255, 0.36)", // Glass-like header background.
-    borderColor: "rgba(255, 255, 255, 0.42)", // Panel border color.
-    shadow: "0 18px 48px rgba(0, 0, 0, 0.22)", // Panel shadow.
+
+    glassEnabled: true, // Enable lightweight glass effect for panel and trigger.
+    backdropBlur: "4px", // Lightweight blur value for better performance.
+    backdropSaturate: "1.02", // Lightweight saturation value.
+    panelBackground: "rgba(8, 8, 8, 0.56)", // Panel background.
+    headerBackground: "rgba(0, 0, 0, 0.42)", // Header background.
+    fallbackBackground: "rgba(14, 14, 14, 0.72)", // Fallback background when backdrop-filter is unsupported.
+    borderColor: "currentColor", // Floating UI border color; currentColor follows text color.
+    panelTextColor: "", // Empty means use the first source container's computed color.
+    shadow: "0 12px 28px rgba(0, 0, 0, 0.16)", // Floating UI shadow.
+    highlightBackground: "rgba(255, 236, 153, 0.82)", // Inline TODO mark background.
     zIndex: 99999, // Floating UI z-index.
+
     skipAncestorSelector: [
       "script",
       "style",
@@ -69,21 +94,21 @@
       "button",
       "pre",
       "code",
-      ".todo-floating-box",
-      ".todo-highlight",
-      ".todo-reopen-button",
-      "[data-todo-ignore]"
-    ].join(","), // Ancestors that disable TODO scanning.
-    headingSelector: "h1, h2, h3, h4, h5, h6" // Heading selector for section lookup.
+      "[data-todo-ignore]",
+      ".todo-summary",
+      ".todo-summary__trigger",
+      ".todo-mark"
+    ].join(",") // Ancestors that disable TODO scanning.
   };
 
-  let config = merge({}, DEFAULT_CONFIG); // Active runtime config.
-  let todoGlobalCounter = 0; // Unique TODO ID counter.
-  let floatingPanelCreated = false; // Floating UI creation flag.
-  let floatingListEl = null; // Summary list element.
-  let floatingBoxEl = null; // Floating panel element.
-  let reopenButtonEl = null; // Reopen button element.
-  let currentTodos = []; // Last collected TODO records.
+  let config = merge({}, DEFAULT_CONFIG); // Active runtime configuration.
+  let todoCounter = 0; // Unique TODO ID counter.
+  let panelEl = null; // Floating panel element.
+  let listEl = null; // Floating list element.
+  let triggerEl = null; // Reopen trigger element.
+  let dragOffsetX = 0; // Persistent panel transform X.
+  let dragOffsetY = 0; // Persistent panel transform Y.
+  let lastTodos = []; // Last collected TODO records.
 
   /* Merges objects from left to right; params: ...objects<object>. */
   function merge() {
@@ -98,30 +123,14 @@
     return output;
   }
 
-  /* Converts array-like values to arrays; params: value<ArrayLike>. */
+  /* Converts array-like values into arrays; params: value<ArrayLike>. */
   function toArray(value) {
     return Array.prototype.slice.call(value || []);
   }
 
-  /* Normalizes selector, element, NodeList, or array into elements; params: selectorOrElements<any>. */
-  function normalizeContainers(selectorOrElements) {
-    if (!selectorOrElements) {
-      return toArray(document.querySelectorAll(config.selector));
-    }
-
-    if (typeof selectorOrElements === "string") {
-      return toArray(document.querySelectorAll(selectorOrElements));
-    }
-
-    if (selectorOrElements instanceof Element) {
-      return [selectorOrElements];
-    }
-
-    if (selectorOrElements.length) {
-      return toArray(selectorOrElements);
-    }
-
-    return [];
+  /* Checks whether a value is an Element; params: value<any>. */
+  function isElement(value) {
+    return Boolean(value && value.nodeType === 1);
   }
 
   /* Escapes CSS class names when possible; params: value<string>. */
@@ -133,52 +142,147 @@
     return String(value).replace(/[^a-zA-Z0-9_-]/g, "\\$&"); // Minimal fallback.
   }
 
-  /* Applies TODO collection to matching containers; params: selectorOrElements<any>, userOptions<object>. */
-  function apply(selectorOrElements, userOptions) {
-    const runtimeConfig = merge(config, userOptions || {});
-    const containers = normalizeContainers(selectorOrElements || runtimeConfig.selector);
-    const todos = [];
+  /* Normalizes runtime config; params: runtimeConfig<object>. */
+  function normalizeConfig(runtimeConfig) {
+    const normalized = merge(DEFAULT_CONFIG, runtimeConfig || {});
 
+    normalized.outputMode = String(normalized.outputMode || "panel").toLowerCase();
+    normalized.outputMode = normalized.outputMode === "target" ? "target" : "panel";
+    normalized.autoApply = normalized.autoApply !== false;
+    normalized.enableDragging = normalized.enableDragging !== false;
+    normalized.highlightEnabled = normalized.highlightEnabled !== false;
+    normalized.injectStyle = normalized.injectStyle !== false;
+    normalized.glassEnabled = normalized.glassEnabled !== false;
+
+    if (!(normalized.todoPattern instanceof RegExp)) {
+      normalized.todoPattern = DEFAULT_CONFIG.todoPattern;
+    }
+
+    return normalized;
+  }
+
+  /* Normalizes selector, element, NodeList, or array into elements; params: selectorOrElements<any>, runtimeConfig<object>. */
+  function normalizeElements(selectorOrElements, runtimeConfig) {
+    if (!selectorOrElements) {
+      return toArray(document.querySelectorAll(runtimeConfig.selector));
+    }
+
+    if (typeof selectorOrElements === "string") {
+      return toArray(document.querySelectorAll(selectorOrElements));
+    }
+
+    if (isElement(selectorOrElements)) {
+      return [selectorOrElements];
+    }
+
+    if (selectorOrElements.length) {
+      return toArray(selectorOrElements).filter(isElement);
+    }
+
+    return [];
+  }
+
+  /* Resolves a single output target; params: target<any>. */
+  function resolveOutputTarget(target) {
+    if (!target) return null;
+    if (typeof target === "string") return document.querySelector(target);
+    if (isElement(target)) return target;
+
+    if (target.length) {
+      return toArray(target).filter(isElement)[0] || null;
+    }
+
+    return null;
+  }
+
+  /* Creates a global regex copy for repeated scanning; params: regex<RegExp>. */
+  function createGlobalRegex(regex) {
+    let flags = regex.flags || "";
+
+    if (flags.indexOf("g") === -1) {
+      flags += "g";
+    }
+
+    return new RegExp(regex.source, flags);
+  }
+
+  /* Safely tests a regex and resets state; params: regex<RegExp>, text<string>. */
+  function regexHasMatch(regex, text) {
+    regex.lastIndex = 0;
+
+    const result = regex.test(text);
+
+    regex.lastIndex = 0;
+
+    return result;
+  }
+
+  /* Applies TODO highlighting and summary rendering; params: sourceSelectorOrElements<any>, userOptions<object>, outputTarget<any>. */
+  function apply(sourceSelectorOrElements, userOptions, outputTarget) {
+    const runtimeConfig = normalizeConfig(merge(config, userOptions || {}));
+    const containers = normalizeElements(sourceSelectorOrElements || runtimeConfig.selector, runtimeConfig);
+    const target = outputTarget || runtimeConfig.targetSelector;
+    let todos = [];
+
+    config = runtimeConfig;
     injectStyles(runtimeConfig);
 
     containers.forEach(function (container, containerIndex) {
-      const containerTodos = processContainer(container, containerIndex, runtimeConfig);
-      todos.push.apply(todos, containerTodos);
+      if (runtimeConfig.highlightEnabled) {
+        processContainer(container, containerIndex, runtimeConfig);
+      }
+
+      todos = todos.concat(collectMarks(container, runtimeConfig));
     });
 
-    currentTodos = todos;
+    todos = dedupeTodos(todos);
+    lastTodos = todos.slice();
+
+    if (runtimeConfig.outputMode === "target") {
+      renderIntoTarget(todos, target, runtimeConfig);
+      removePanelAndTrigger();
+      return todos;
+    }
 
     if (todos.length > 0) {
-      ensureFloatingPanel(runtimeConfig);
-      renderFloatingSummary(todos, runtimeConfig);
+      ensurePanel(runtimeConfig, containers[0] || null);
+      renderPanelSummary(todos, runtimeConfig);
+      showPanel();
+    } else {
+      hidePanel();
     }
 
     return todos;
   }
 
-  /* Scans and processes one container; params: container<Element>, containerIndex<number>, runtimeConfig<object>. */
+  /* Processes one container by marking raw TODO text nodes; params: container<Element>, containerIndex<number>, runtimeConfig<object>. */
   function processContainer(container, containerIndex, runtimeConfig) {
-    const todos = [];
     const textNodes = collectTodoTextNodes(container, runtimeConfig);
+    const headings = collectHeadings(container, runtimeConfig);
 
     textNodes.forEach(function (textNode) {
-      highlightTodosInTextNode(textNode, todos, container, containerIndex, runtimeConfig);
+      markTodosInTextNode(textNode, container, containerIndex, headings, runtimeConfig);
     });
-
-    return todos;
   }
 
-  /* Collects text nodes containing TODO matches; params: container<Element>, runtimeConfig<object>. */
+  /* Collects headings once per container; params: container<Element>, runtimeConfig<object>. */
+  function collectHeadings(container, runtimeConfig) {
+    if (!container || !container.querySelectorAll) return [];
+
+    return toArray(container.querySelectorAll(runtimeConfig.headingSelector));
+  }
+
+  /* Collects raw text nodes containing TODO fragments; params: container<Element>, runtimeConfig<object>. */
   function collectTodoTextNodes(container, runtimeConfig) {
     const textNodes = [];
+
+    if (!container) return textNodes;
+
     const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
-        if (!node.nodeValue || !runtimeConfig.todoPattern.test(node.nodeValue)) {
-          runtimeConfig.todoPattern.lastIndex = 0; // Reset global regex state.
+        if (!node.nodeValue || !regexHasMatch(runtimeConfig.todoPattern, node.nodeValue)) {
           return NodeFilter.FILTER_REJECT;
         }
-
-        runtimeConfig.todoPattern.lastIndex = 0; // Reset after test.
 
         if (!node.parentElement) {
           return NodeFilter.FILTER_REJECT;
@@ -202,45 +306,36 @@
     return textNodes;
   }
 
-  /* Highlights TODO matches in one text node; params: textNode<Text>, todos<Array>, container<Element>, containerIndex<number>, runtimeConfig<object>. */
-  function highlightTodosInTextNode(textNode, todos, container, containerIndex, runtimeConfig) {
+  /* Marks TODO fragments inside one text node; params: textNode<Text>, container<Element>, containerIndex<number>, headings<Array>, runtimeConfig<object>. */
+  function markTodosInTextNode(textNode, container, containerIndex, headings, runtimeConfig) {
     const text = textNode.nodeValue;
-    const regex = new RegExp(runtimeConfig.todoPattern.source, runtimeConfig.todoPattern.flags);
+    const regex = createGlobalRegex(runtimeConfig.todoPattern);
     const fragment = document.createDocumentFragment();
     let match = regex.exec(text);
     let lastIndex = 0;
     let hasMatch = false;
 
     while (match !== null) {
-      hasMatch = true;
-
-      appendText(fragment, text.slice(lastIndex, match.index));
-
       const todoText = match[0].trim();
-      const sectionTitle = getSectionTitle(textNode, container, runtimeConfig);
-      const hasTitle = Boolean(sectionTitle);
-      const shortTodoText = truncateText(todoText, runtimeConfig.todoTextMaxLength);
-      const displayTitle = hasTitle
+      const sectionTitle = getNearestHeadingTitle(textNode, headings, runtimeConfig);
+      const displayTitle = sectionTitle
         ? truncateText(sectionTitle, runtimeConfig.sectionTitleMaxLength)
         : runtimeConfig.noSectionText;
-      const displayText = shortTodoText + " [" + displayTitle + "]";
-      const todoId = "todo-" + containerIndex + "-" + (++todoGlobalCounter);
-      const highlight = document.createElement("mark");
+      const displayText = truncateText(todoText, runtimeConfig.todoTextMaxLength) + " [" + displayTitle + "]";
+      const mark = document.createElement("mark");
 
-      highlight.className = runtimeConfig.highlightClass;
-      highlight.id = todoId;
-      highlight.setAttribute("tabindex", "-1");
-      highlight.textContent = todoText;
+      hasMatch = true;
+      appendText(fragment, text.slice(lastIndex, match.index));
 
-      fragment.appendChild(highlight);
+      mark.className = runtimeConfig.markClass;
+      mark.id = "todo-summary-item-" + containerIndex + "-" + (++todoCounter);
+      mark.tabIndex = -1;
+      mark.textContent = todoText;
+      mark.dataset.todoText = todoText;
+      mark.dataset.todoSectionTitle = sectionTitle || "";
+      mark.dataset.todoDisplayText = displayText;
 
-      todos.push({
-        id: todoId,
-        text: todoText,
-        displayText: displayText,
-        sectionTitle: sectionTitle,
-        displayTitle: displayTitle
-      });
+      fragment.appendChild(mark);
 
       lastIndex = match.index + match[0].length;
       match = regex.exec(text);
@@ -249,63 +344,73 @@
     if (!hasMatch) return;
 
     appendText(fragment, text.slice(lastIndex));
-
     textNode.parentNode.replaceChild(fragment, textNode);
   }
 
-  /* Appends a text node when text is non-empty; params: fragment<DocumentFragment>, text<string>. */
+  /* Appends a text node when non-empty; params: fragment<DocumentFragment>, text<string>. */
   function appendText(fragment, text) {
     if (text) {
       fragment.appendChild(document.createTextNode(text));
     }
   }
 
-  /* Finds the nearest previous section heading; params: textNode<Text>, container<Element>, runtimeConfig<object>. */
-  function getSectionTitle(textNode, container, runtimeConfig) {
-    let element = textNode.parentElement;
+  /* Finds nearest previous heading using a cached heading list; params: textNode<Text>, headings<Array>, runtimeConfig<object>. */
+  function getNearestHeadingTitle(textNode, headings, runtimeConfig) {
+    const parent = textNode.parentElement;
 
-    while (element && element !== container) {
-      let previous = element.previousElementSibling;
+    if (!parent || !headings.length) return "";
 
-      while (previous) {
-        const heading = findLastHeadingInside(previous, runtimeConfig);
+    for (let index = headings.length - 1; index >= 0; index -= 1) {
+      const heading = headings[index];
 
-        if (heading) {
-          return cleanText(heading.textContent);
-        }
-
-        previous = previous.previousElementSibling;
-      }
-
-      element = element.parentElement;
-    }
-
-    let previous = textNode.parentElement ? textNode.parentElement.previousElementSibling : null;
-
-    while (previous) {
-      const heading = findLastHeadingInside(previous, runtimeConfig);
-
-      if (heading) {
+      if (heading === parent || heading.contains(parent)) {
         return cleanText(heading.textContent);
       }
 
-      previous = previous.previousElementSibling;
+      if (heading.compareDocumentPosition(parent) & Node.DOCUMENT_POSITION_FOLLOWING) {
+        return cleanText(heading.textContent);
+      }
     }
 
     return "";
   }
 
-  /* Finds the last heading inside an element; params: element<Element>, runtimeConfig<object>. */
-  function findLastHeadingInside(element, runtimeConfig) {
-    if (!element || !element.querySelectorAll) return null;
-    if (element.matches(runtimeConfig.headingSelector)) return element;
+  /* Collects existing TODO marks; params: container<Element>, runtimeConfig<object>. */
+  function collectMarks(container, runtimeConfig) {
+    const selector = "." + escapeCssClass(runtimeConfig.markClass);
 
-    const headings = element.querySelectorAll(runtimeConfig.headingSelector);
+    return toArray(container.querySelectorAll(selector)).map(function (mark) {
+      const sectionTitle = mark.dataset.todoSectionTitle || "";
+      const displayTitle = sectionTitle
+        ? truncateText(sectionTitle, runtimeConfig.sectionTitleMaxLength)
+        : runtimeConfig.noSectionText;
 
-    return headings.length ? headings[headings.length - 1] : null;
+      return {
+        id: mark.id,
+        text: mark.dataset.todoText || mark.textContent || "",
+        displayText: mark.dataset.todoDisplayText || truncateText(mark.textContent, runtimeConfig.todoTextMaxLength) + " [" + displayTitle + "]",
+        sectionTitle: sectionTitle,
+        displayTitle: displayTitle
+      };
+    });
   }
 
-  /* Normalizes whitespace in text; params: text<string>. */
+  /* Removes duplicate TODO records by id; params: todos<Array>. */
+  function dedupeTodos(todos) {
+    const seen = {};
+    const output = [];
+
+    todos.forEach(function (todo) {
+      if (!todo.id || seen[todo.id]) return;
+
+      seen[todo.id] = true;
+      output.push(todo);
+    });
+
+    return output;
+  }
+
+  /* Normalizes text whitespace; params: text<string>. */
   function cleanText(text) {
     return String(text || "").replace(/\s+/g, " ").trim();
   }
@@ -321,85 +426,130 @@
     return clean.slice(0, limit) + "...";
   }
 
-  /* Ensures floating panel and reopen button exist; params: runtimeConfig<object>. */
-  function ensureFloatingPanel(runtimeConfig) {
-    if (floatingPanelCreated) return;
+  /* Formats one TODO line for target mode; params: todo<object>, index<number>, runtimeConfig<object>. */
+  function formatTargetLine(todo, index, runtimeConfig) {
+    const prefix = runtimeConfig.includeIndexInTarget ? String(index + 1) + ". " : "";
+    const section = runtimeConfig.includeSectionInTarget
+      ? " [" + (todo.sectionTitle || runtimeConfig.noSectionText) + "]"
+      : "";
 
-    const box = document.createElement("div");
+    return prefix + todo.text + section;
+  }
+
+  /* Injects plain text into the target element without styling it; params: todos<Array>, target<any>, runtimeConfig<object>. */
+  function renderIntoTarget(todos, target, runtimeConfig) {
+    const targetElement = resolveOutputTarget(target);
+
+    if (!targetElement) return;
+
+    if (!todos.length) {
+      targetElement.textContent = runtimeConfig.emptyText || "";
+      return;
+    }
+
+    targetElement.textContent = todos.map(function (todo, index) {
+      return formatTargetLine(todo, index, runtimeConfig);
+    }).join(runtimeConfig.targetJoiner);
+  }
+
+  /* Ensures floating panel exists; params: runtimeConfig<object>, sourceElement<Element|null>. */
+  function ensurePanel(runtimeConfig, sourceElement) {
+    if (panelEl && listEl && triggerEl) return;
+
+    const panel = document.createElement("aside");
     const header = document.createElement("div");
     const title = document.createElement("div");
-    const closeButton = document.createElement("button");
+    const close = document.createElement("button");
     const body = document.createElement("div");
     const list = document.createElement("ol");
-    const reopenButton = document.createElement("button");
+    const trigger = document.createElement("button");
 
-    box.className = runtimeConfig.panelClass;
-    box.id = runtimeConfig.panelId;
+    panel.id = runtimeConfig.panelId;
+    panel.className = runtimeConfig.panelClass;
+    panel.setAttribute("aria-label", runtimeConfig.panelTitle);
+
+    if (runtimeConfig.panelTextColor) {
+      panel.style.color = runtimeConfig.panelTextColor;
+      trigger.style.color = runtimeConfig.panelTextColor;
+    } else if (sourceElement && window.getComputedStyle) {
+      const sourceColor = window.getComputedStyle(sourceElement).color;
+
+      panel.style.color = sourceColor;
+      trigger.style.color = sourceColor;
+    }
 
     header.className = runtimeConfig.headerClass;
     title.className = runtimeConfig.titleClass;
     title.textContent = runtimeConfig.panelTitle;
 
-    closeButton.type = "button";
-    closeButton.className = runtimeConfig.closeClass;
-    closeButton.setAttribute("aria-label", runtimeConfig.closeLabel);
-    closeButton.textContent = "×";
-    closeButton.addEventListener("click", hideFloatingPanel);
+    close.type = "button";
+    close.className = runtimeConfig.closeClass;
+    close.setAttribute("aria-label", runtimeConfig.closeLabel);
+    close.textContent = "×";
+    close.addEventListener("click", hidePanel);
 
     body.className = runtimeConfig.bodyClass;
     list.className = runtimeConfig.listClass;
 
     body.appendChild(list);
     header.appendChild(title);
-    header.appendChild(closeButton);
-    box.appendChild(header);
-    box.appendChild(body);
-    document.body.appendChild(box);
+    header.appendChild(close);
+    panel.appendChild(header);
+    panel.appendChild(body);
+    document.body.appendChild(panel);
 
-    reopenButton.type = "button";
-    reopenButton.className = runtimeConfig.reopenClass;
-    reopenButton.textContent = runtimeConfig.reopenText;
-    reopenButton.style.display = "none";
-    reopenButton.addEventListener("click", showFloatingPanel);
-    document.body.appendChild(reopenButton);
+    trigger.id = runtimeConfig.triggerId;
+    trigger.type = "button";
+    trigger.className = runtimeConfig.triggerClass;
+    trigger.textContent = runtimeConfig.triggerText;
+    trigger.hidden = true;
+    trigger.addEventListener("click", showPanel);
+    document.body.appendChild(trigger);
 
     if (runtimeConfig.enableDragging) {
-      makeDraggable(box, header);
+      makeDraggable(panel, header, runtimeConfig);
     }
 
-    floatingBoxEl = box;
-    floatingListEl = list;
-    reopenButtonEl = reopenButton;
-    floatingPanelCreated = true;
+    panelEl = panel;
+    listEl = list;
+    triggerEl = trigger;
+    applyPanelTransform();
   }
 
-  /* Hides the floating panel and shows the reopen button; params: none. */
-  function hideFloatingPanel() {
-    if (floatingBoxEl) {
-      floatingBoxEl.style.display = "none";
-    }
-
-    if (reopenButtonEl) {
-      reopenButtonEl.style.display = "inline-flex";
-    }
+  /* Hides panel and shows trigger; params: none. */
+  function hidePanel() {
+    if (panelEl) panelEl.hidden = true;
+    if (triggerEl) triggerEl.hidden = false;
   }
 
-  /* Shows the floating panel and hides the reopen button; params: none. */
-  function showFloatingPanel() {
-    if (floatingBoxEl) {
-      floatingBoxEl.style.display = "block";
-    }
-
-    if (reopenButtonEl) {
-      reopenButtonEl.style.display = "none";
-    }
+  /* Shows panel and hides trigger; params: none. */
+  function showPanel() {
+    if (panelEl) panelEl.hidden = false;
+    if (triggerEl) triggerEl.hidden = true;
   }
 
-  /* Renders the floating TODO summary; params: todos<Array>, runtimeConfig<object>. */
-  function renderFloatingSummary(todos, runtimeConfig) {
-    if (!floatingListEl) return;
+  /* Removes panel and trigger; params: none. */
+  function removePanelAndTrigger() {
+    if (panelEl && panelEl.parentNode) {
+      panelEl.parentNode.removeChild(panelEl);
+    }
 
-    floatingListEl.innerHTML = "";
+    if (triggerEl && triggerEl.parentNode) {
+      triggerEl.parentNode.removeChild(triggerEl);
+    }
+
+    panelEl = null;
+    listEl = null;
+    triggerEl = null;
+    dragOffsetX = 0;
+    dragOffsetY = 0;
+  }
+
+  /* Renders clickable floating summary list; params: todos<Array>, runtimeConfig<object>. */
+  function renderPanelSummary(todos, runtimeConfig) {
+    if (!listEl) return;
+
+    listEl.innerHTML = "";
 
     todos.forEach(function (todo) {
       const item = document.createElement("li");
@@ -417,11 +567,11 @@
       });
 
       item.appendChild(link);
-      floatingListEl.appendChild(item);
+      listEl.appendChild(item);
     });
   }
 
-  /* Scrolls to and flashes one TODO item; params: todoId<string>, runtimeConfig<object>. */
+  /* Jumps to and flashes one TODO mark; params: todoId<string>, runtimeConfig<object>. */
   function jumpToTodo(todoId, runtimeConfig) {
     const target = document.getElementById(todoId);
 
@@ -444,55 +594,69 @@
     }
   }
 
-  /* Temporarily highlights a target TODO item; params: target<Element>, runtimeConfig<object>. */
+  /* Temporarily activates a TODO mark; params: target<Element>, runtimeConfig<object>. */
   function flashTarget(target, runtimeConfig) {
-    target.classList.add(runtimeConfig.activeClass);
+    target.classList.add(runtimeConfig.markActiveClass);
 
     window.setTimeout(function () {
-      target.classList.remove(runtimeConfig.activeClass);
+      target.classList.remove(runtimeConfig.markActiveClass);
     }, runtimeConfig.flashDuration);
   }
 
-  /* Makes a floating box draggable with pointer events; params: box<Element>, handle<Element>. */
-  function makeDraggable(box, handle) {
-    let isDragging = false;
+  /* Makes a panel draggable via transform; params: panel<Element>, handle<Element>, runtimeConfig<object>. */
+  function makeDraggable(panel, handle, runtimeConfig) {
+    let dragging = false;
     let startX = 0;
     let startY = 0;
-    let startLeft = 0;
-    let startTop = 0;
+    let startOffsetX = 0;
+    let startOffsetY = 0;
+    let framePending = false;
+    let pendingX = 0;
+    let pendingY = 0;
 
     handle.addEventListener("pointerdown", function (event) {
-      if (event.target && event.target.closest("." + config.closeClass)) return;
+      if (event.target && event.target.closest("." + escapeCssClass(runtimeConfig.closeClass))) return;
 
-      const rect = box.getBoundingClientRect();
-
-      isDragging = true;
+      dragging = true;
       startX = event.clientX;
       startY = event.clientY;
-      startLeft = rect.left;
-      startTop = rect.top;
+      startOffsetX = dragOffsetX;
+      startOffsetY = dragOffsetY;
 
-      box.style.left = rect.left + "px";
-      box.style.top = rect.top + "px";
-      box.style.right = "auto";
-      box.style.bottom = "auto";
-
+      panel.classList.add(runtimeConfig.panelDraggingClass);
       handle.setPointerCapture(event.pointerId);
       event.preventDefault();
     });
 
     handle.addEventListener("pointermove", function (event) {
-      if (!isDragging) return;
+      if (!dragging) return;
 
-      const nextLeft = clamp(startLeft + event.clientX - startX, 0, window.innerWidth - box.offsetWidth);
-      const nextTop = clamp(startTop + event.clientY - startY, 0, window.innerHeight - box.offsetHeight);
+      const nextX = startOffsetX + event.clientX - startX;
+      const nextY = startOffsetY + event.clientY - startY;
+      const rect = panel.getBoundingClientRect();
+      const minX = -rect.left + dragOffsetX;
+      const maxX = window.innerWidth - rect.right + dragOffsetX;
+      const minY = -rect.top + dragOffsetY;
+      const maxY = window.innerHeight - rect.bottom + dragOffsetY;
 
-      box.style.left = nextLeft + "px";
-      box.style.top = nextTop + "px";
+      pendingX = clamp(nextX, minX, maxX);
+      pendingY = clamp(nextY, minY, maxY);
+
+      if (framePending) return;
+
+      framePending = true;
+
+      window.requestAnimationFrame(function () {
+        dragOffsetX = pendingX;
+        dragOffsetY = pendingY;
+        framePending = false;
+        applyPanelTransform();
+      });
     });
 
     handle.addEventListener("pointerup", function (event) {
-      isDragging = false;
+      dragging = false;
+      panel.classList.remove(runtimeConfig.panelDraggingClass);
 
       if (handle.hasPointerCapture(event.pointerId)) {
         handle.releasePointerCapture(event.pointerId);
@@ -500,11 +664,19 @@
     });
 
     handle.addEventListener("pointercancel", function () {
-      isDragging = false;
+      dragging = false;
+      panel.classList.remove(runtimeConfig.panelDraggingClass);
     });
   }
 
-  /* Clamps a number into a range; params: value<number>, min<number>, max<number>. */
+  /* Applies the current transform offset to the panel; params: none. */
+  function applyPanelTransform() {
+    if (!panelEl) return;
+
+    panelEl.style.transform = "translate3d(" + dragOffsetX + "px, " + dragOffsetY + "px, 0)";
+  }
+
+  /* Clamps a number into a valid range; params: value<number>, min<number>, max<number>. */
   function clamp(value, min, max) {
     return Math.min(Math.max(value, min), Math.max(min, max));
   }
@@ -513,15 +685,19 @@
   function injectStyles(runtimeConfig) {
     if (!runtimeConfig.injectStyle) return;
 
-    const highlightClass = escapeCssClass(runtimeConfig.highlightClass);
-    const activeClass = escapeCssClass(runtimeConfig.activeClass);
     const panelClass = escapeCssClass(runtimeConfig.panelClass);
+    const panelDraggingClass = escapeCssClass(runtimeConfig.panelDraggingClass);
     const headerClass = escapeCssClass(runtimeConfig.headerClass);
     const titleClass = escapeCssClass(runtimeConfig.titleClass);
     const closeClass = escapeCssClass(runtimeConfig.closeClass);
     const bodyClass = escapeCssClass(runtimeConfig.bodyClass);
     const listClass = escapeCssClass(runtimeConfig.listClass);
-    const reopenClass = escapeCssClass(runtimeConfig.reopenClass);
+    const triggerClass = escapeCssClass(runtimeConfig.triggerClass);
+    const markClass = escapeCssClass(runtimeConfig.markClass);
+    const markActiveClass = escapeCssClass(runtimeConfig.markActiveClass);
+    const glassFilter = runtimeConfig.glassEnabled
+      ? "blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ")"
+      : "none";
     let style = document.getElementById(runtimeConfig.styleId);
 
     if (!style) {
@@ -533,7 +709,7 @@
     style.textContent = [
       "." + panelClass + " {",
       "  position: fixed;",
-      "  right: 16px;",
+      "  left: 16px;",
       "  bottom: 16px;",
       "  width: 360px;",
       "  max-width: calc(100vw - 24px);",
@@ -541,13 +717,20 @@
       "  z-index: " + runtimeConfig.zIndex + ";",
       "  border: 1px solid " + runtimeConfig.borderColor + ";",
       "  background: " + runtimeConfig.panelBackground + ";",
-      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
-      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
+      "  backdrop-filter: " + glassFilter + ";",
+      "  -webkit-backdrop-filter: " + glassFilter + ";",
       "  border-radius: 0;",
       "  box-shadow: " + runtimeConfig.shadow + ";",
       "  overflow: hidden;",
       "  font-size: 14px;",
       "  color: inherit;",
+      "}",
+      "." + panelClass + "[hidden],",
+      "." + triggerClass + "[hidden] {",
+      "  display: none;",
+      "}",
+      "." + panelClass + "." + panelDraggingClass + " {",
+      "  will-change: transform;",
       "}",
       "." + headerClass + " {",
       "  display: flex;",
@@ -590,15 +773,15 @@
       "  color: inherit;",
       "  word-break: break-word;",
       "}",
-      "." + reopenClass + " {",
+      "." + triggerClass + " {",
       "  position: fixed;",
-      "  right: 16px;",
+      "  left: 16px;",
       "  bottom: 16px;",
       "  z-index: " + runtimeConfig.zIndex + ";",
       "  border: 1px solid " + runtimeConfig.borderColor + ";",
       "  background: " + runtimeConfig.panelBackground + ";",
-      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
-      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(1.18);",
+      "  backdrop-filter: " + glassFilter + ";",
+      "  -webkit-backdrop-filter: " + glassFilter + ";",
       "  border-radius: 0;",
       "  box-shadow: " + runtimeConfig.shadow + ";",
       "  padding: 10px 14px;",
@@ -608,32 +791,33 @@
       "  cursor: pointer;",
       "  color: inherit;",
       "}",
-      "." + highlightClass + " {",
-      "  background: rgba(255, 236, 153, 0.82);",
+      "." + markClass + " {",
+      "  background: " + runtimeConfig.highlightBackground + ";",
       "  color: inherit;",
       "  padding: 0 3px;",
       "  border-radius: 0;",
       "}",
-      "." + activeClass + " {",
+      "." + markActiveClass + " {",
       "  outline: 2px solid currentColor;",
       "  transition: outline 0.2s ease;",
       "}",
       "@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {",
       "  ." + panelClass + ",",
-      "  ." + reopenClass + " {",
-      "    background: rgba(255, 255, 255, 0.88);",
+      "  ." + triggerClass + " {",
+      "    background: " + runtimeConfig.fallbackBackground + ";",
       "  }",
       "}"
     ].join("\n");
   }
 
-  /* Updates runtime config and reapplies collection; params: nextConfig<object>. */
-  function updateConfig(nextConfig) {
-    config = merge(config, nextConfig || {});
+  /* Updates runtime config and optionally reapplies behavior; params: nextConfig<object>, runtimeOptions<object>. */
+  function updateConfig(nextConfig, runtimeOptions) {
+    const controls = merge({ apply: true }, runtimeOptions || {});
 
+    config = normalizeConfig(merge(config, nextConfig || {}));
     injectStyles(config);
 
-    if (config.autoApply) {
+    if (controls.apply && config.autoApply) {
       apply(config.selector);
     }
 
@@ -645,21 +829,34 @@
     return merge({}, config);
   }
 
-  /* Removes floating UI and active references; params: none. */
-  function clear() {
-    if (floatingBoxEl && floatingBoxEl.parentNode) {
-      floatingBoxEl.parentNode.removeChild(floatingBoxEl);
+  /* Clears floating UI, target content, and optionally unwraps marks; params: options<object>. */
+  function clear(options) {
+    const opts = merge({ unwrapMarks: false, clearTarget: false }, options || {});
+
+    if (opts.unwrapMarks) {
+      unwrapMarks(config);
     }
 
-    if (reopenButtonEl && reopenButtonEl.parentNode) {
-      reopenButtonEl.parentNode.removeChild(reopenButtonEl);
+    if (opts.clearTarget && config.targetSelector) {
+      const target = resolveOutputTarget(config.targetSelector);
+
+      if (target) {
+        target.textContent = "";
+      }
     }
 
-    floatingPanelCreated = false;
-    floatingListEl = null;
-    floatingBoxEl = null;
-    reopenButtonEl = null;
-    currentTodos = [];
+    removePanelAndTrigger();
+    lastTodos = [];
+  }
+
+  /* Replaces generated marks with plain text; params: runtimeConfig<object>. */
+  function unwrapMarks(runtimeConfig) {
+    const selector = "." + escapeCssClass(runtimeConfig.markClass);
+    const marks = toArray(document.querySelectorAll(selector));
+
+    marks.forEach(function (mark) {
+      mark.replaceWith(document.createTextNode(mark.textContent || ""));
+    });
   }
 
   /* Runs plug-and-play behavior when DOM is ready; params: none. */
@@ -669,19 +866,17 @@
     apply(config.selector);
   }
 
-  window.TodoCollector = {
+  config = normalizeConfig(merge(DEFAULT_CONFIG, window.TodoSummaryConfig || window.todoSummaryConfig || {}));
+
+  window.TodoSummary = {
     apply: apply,
     updateConfig: updateConfig,
     getConfig: getConfig,
     clear: clear
   };
 
-  window.initTodoCollector = function (selectorOrElements, options) {
-    return apply(selectorOrElements, options);
-  };
-
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", onReady);
+    document.addEventListener("DOMContentLoaded", onReady, { once: true });
   } else {
     onReady();
   }

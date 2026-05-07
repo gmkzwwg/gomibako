@@ -3,6 +3,9 @@ title: The Lacanian Subject
 layout: post
 categories: Texts
 subclass: Lacan
+reference:
+  - Fink The Lacanian Subject
+  - Lacan Ecrits
+  - Lacan Seminars II XI XX
 ---
 
-> Main reference: [1. Fink The Lacanian Subject, 2. Lacan Ecrits, 3. Lacan Seminars II XI XX]

@@ -3,6 +3,8 @@ title: History of Science
 layout: post
 categories: Notes
 subclass: Science History
+reference:
+  - Kuhn
+  - Galison
 ---
 
-> Main reference: [1. Kuhn, 2. Galison]

@@ -1,5 +1,5 @@
 ---
-title: C - Quick Reference Guide
+title: C - Quick Reference
 abbreviation: C
 categories: Notes
 subclass: Languages

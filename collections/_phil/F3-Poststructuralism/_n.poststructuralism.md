@@ -3,6 +3,9 @@ title: Poststructuralism
 layout: post
 categories: Notes
 subclass: Poststructuralism
+reference:
+  - Foucault
+  - Derrida
+  - Deleuze
 ---
 
-> Main reference: [1. Foucault, 2. Derrida, 3. Deleuze]

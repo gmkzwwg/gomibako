@@ -3,6 +3,8 @@ title: Writing as Practice
 layout: post
 categories: Notes
 subclass: Writing
+reference:
+  - Writing as Practice
+  - one finished piece per major node
 ---
 
-> Main reference: [1. Writing as Practice, 2. one finished piece per major node]

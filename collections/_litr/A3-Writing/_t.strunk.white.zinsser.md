@@ -3,6 +3,8 @@ title: Strunk White and Zinsser
 layout: post
 categories: Texts
 subclass: Writing
+reference:
+  - Strunk & White
+  - Zinsser
 ---
 
-> Main reference: [1. Strunk & White, 2. Zinsser]

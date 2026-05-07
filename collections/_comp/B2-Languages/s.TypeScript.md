@@ -1,5 +1,5 @@
 ---
-title: TypeScript - Quick Reference Guide
+title: TypeScript - Quick Reference
 abbreviation: TypeScript
 categories: Notes
 subclass: Languages

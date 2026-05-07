@@ -6,7 +6,7 @@ subclass: English
 toc_depth: 4
 ---
 
-# English Grammar Quick Reference Guide
+# English Grammar Quick Reference
 
 ## 重要语法索引
 

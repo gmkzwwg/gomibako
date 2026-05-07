@@ -3,6 +3,8 @@ title: Differential Geometry and Manifolds
 layout: post
 categories: Notes
 subclass: Geometry
+reference:
+  - Differential Geometry
+  - Manifolds
 ---
 
-> Main reference: [1. Differential Geometry, 2. Manifolds]

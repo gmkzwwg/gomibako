@@ -3,6 +3,10 @@ title: Philosophy of Language
 layout: post
 categories: Notes
 subclass: Language
+reference:
+  - Tarski
+  - Quine
+  - Kripke
+  - Wittgenstein
 ---
 
-> Main reference: [1. Tarski, 2. Quine, 3. Kripke, 4. Wittgenstein]

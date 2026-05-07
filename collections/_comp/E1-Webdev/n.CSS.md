@@ -1,5 +1,5 @@
 ---
-title: CSS - Quick Reference Guide
+title: CSS - Quick Reference
 categories: Notes
 subclass: Webdev
 ---
@@ -312,7 +312,7 @@ The professional stance is: write CSS as a **rendering contract** between docume
 
 *Common Pitfalls: Most serious CSS failures are not syntax failures; they are failures of mental model, scope control, accessibility, and long-term override strategy.*
 
-## PART 2 — Quick Reference Guide
+## PART 2 — Quick Reference
 
 ### Environment and Version Assumptions — modern CSS, evergreen browsers, progressive enhancement
 

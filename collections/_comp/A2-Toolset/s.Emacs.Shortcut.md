@@ -1,5 +1,5 @@
 ---
-title: Emacs - Quick Reference Guide
+title: Emacs - Quick Reference
 layout: slide-multilingual
 categories: Sheet
 subclass: Toolset
@@ -7,7 +7,7 @@ subclass: Toolset
 
 # En
 
-## Emacs - Quick Reference Guide
+## Emacs - Quick Reference
 
 English version, rebuilt as a **four-column Markdown table** based on your original Emacs quick reference. 
 

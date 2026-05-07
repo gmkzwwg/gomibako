@@ -1,319 +1,521 @@
-@use "abstracts/variables"as *;
-@use "abstracts/fonts"as *;
-@use "abstracts/mixins"as *;
-@use "abstracts/animations"as *;
+@use "abstracts/variables" as *;
+@use "abstracts/fonts" as *;
+@use "abstracts/mixins" as *;
+@use "abstracts/animations" as *;
 
-// global base reset
+/* ==========================================================================
+   Markdown Base Styles
+   --------------------------------------------------------------------------
+   Provides a site-wide baseline for Jekyll-rendered Markdown content.
+   Normalizes browser defaults, defines consistent typography, spacing,
+   media, links, code, lists, tables, forms, and interactive states.
+   ========================================================================== */
+
+/* ==========================================================================
+   Global Cursor System
+   ========================================================================== */
+// TODO: 暂时有冗余，最后再修改。
+*,
+*::before,
+*::after {
+  cursor: inherit;
+}
+
+html,
 body {
-  line-height: 1.70;
-  font-size: $font-size-primary;
-  color: $color-primary;
-  font-family: $font-monospace;
   cursor: $cursor-green-auto;
 }
-h1::before {
-  content: "⟦ ";  /* Add the desired symbol here */
-  font-size: $font-size-h1;
-  font-weight: thin;
-  text-transform: lowercase;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
-}
-h1 {
-  font-size: $font-size-h1;
-  text-align: center;
-  font-weight: auto;
-  color: $color-primary;
-  text-transform: uppercase;
-  margin: 1.6em 0 1.5em 0;
+
+:where(
+  h1, h2, h3, h4, h5, h6,
+  p, li, dt, dd, blockquote, figcaption,
+  th, td,
+  code, pre, kbd, samp,
+  label, textarea,
+  input:not([type]),
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="url"],
+  input[type="password"],
+  input[type="number"]
+) {
   cursor: $cursor-green-text;
 }
-h1::after {
-  content: " ⟧";  /* Add the desired symbol here */
-  font-size: $font-size-h1;
-  font-weight: thin;
-  text-transform: lowercase;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
+
+:where(
+  a, button, summary, select, option, span,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  input[type="checkbox"],
+  input[type="radio"],
+  [role="button"],
+  [role="link"]
+) {
+  cursor: $cursor-green-pointer;
 }
-h2::before {
-  content: "[root]# ";  /* Add the desired symbol here */
-  font-size: $font-size-h2;
-  font-weight: auto;
-  text-transform: lowercase;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
+
+/* ============================================================
+   Base Reset
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-h2 {
-  background: rgba($color-muted, 0.9);
-  color: $color-post-background;
-  font-size: $font-size-h2;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 1.6em 0 0.8em 0;
-  cursor: $cursor-green-text;
-  strong {
-    color: $color-primary;
-  }
+
+html {
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
-h3::before {
-  content: "ℱ⟮ ";  /* Add the desired symbol here */
-  font-size: $font-size-h3;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
-}
-h3 {
-  color: $color-muted;
-  font-size: $font-size-h3;
-  font-weight: auto;
-  // text-transform: capitalize;
-  margin: 1.6em 0 0.8em 0;
-  // border-bottom: $border-dotted-third;
-  cursor: $cursor-green-text;
-}
-h3::after {
-  content: " ⟯";  /* Add the desired symbol here */
-  font-size: $font-size-h3;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
-}
-h4::before {
-  font-family: Consolas, "PingFang SC", Menlo;
-  content: "Γ⊢ ";  /* Add the desired symbol here */
-  font-size: $font-size-h4;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
-}
-h4 {
-  color: $color-muted;
-  font-size: $font-size-h4;
-  font-weight: auto;
-  margin: 1.2em 0 0.8em 0;
-  cursor: $cursor-green-text;
-  list-style-type: decimal;
-}
-h5::before {
-  font-family: Consolas, "PingFang SC", Menlo;
-  content: "τ:: ";  /* Add the desired symbol here */
-  font-size: $font-size-h5;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
-}
-h5 {
-  color: $color-muted;
-  font-size: $font-size-h5;
-  font-weight: auto;
-  margin: 1.2em 0 0.8em 0;
-  cursor: $cursor-green-text;
-}
-h6::before {
-  font-family: Consolas, "PingFang SC", Menlo;
-  content: "λx. ";  /* Add the desired symbol here */
-  font-size: $font-size-h6;
-  color: $color-primary;  /* Optional: Set the color of the symbol */
-}
-h6 {
-  color: $color-muted;
-  font-size: $font-size-h6;
-  font-weight: auto;
-  margin: 1.2em 0 0.8em 0;
-  cursor: $cursor-green-text;
-}
-p {
-  margin: $global-section-margin 0px;
-  display: block;
-  cursor: $cursor-green-text;
-}
-strong {
-  font-weight: bold;
-  color: $article-bold;
-  // -webkit-text-stroke: 0.5px $color-primary;
-  // text-shadow: 0.35px 0.35px 0 $color-primary;
-}
-hr {
-  border: 0;
-  border-top: 1px dashed rgba($color-muted, 0.3);
-  margin: 0 0 0 0;
-}
-video {
+
+body {
   margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+  min-height: 100vh;
+
+  font-family: $font-monospace;
+  font-size: $font-size-primary;
+  line-height: 1.7;
+
+  color: $color-primary;
+  
 }
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-inline-size: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: $border-normal;
+  color: $color-primary;
+  background-color: rgba($color-post-background, 0.7);
+  
+}
+
 textarea {
   margin: 0;
   padding: 0;
   border: $border-thin;
-  background-color: rgba($color-post-background, 0.7);
+
   color: $color-warning;
-  font-size: 15px;
-}
-button {
-  border: $border-normal;
   background-color: rgba($color-post-background, 0.7);
-  color: $color-primary;
-  cursor: $cursor-green-pointer;
+  resize: vertical;
 }
-// links
+
 a {
-  font-size: 100%;
   color: $color-primary;
   text-decoration: none;
-  //text-decoration: underline solid $article-link;
 }
+
 a:hover {
-  font-size: 100%;
   color: $color-link-hover;
-  font-weight: auto;
   text-decoration: none;
-  cursor: $cursor-green-pointer;
+  
+
   @include text_blink;
 }
 
-img {
-  width: auto;
-  max-width: 96%;
-  height: auto;
-  max-height: auto;
-  margin: 0 auto; // image center align
-  display: block; // image center align
-  background-color: auto;
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
 }
-ol {
-  padding: 0 0 0 2em;
-  margin: $global-section-margin 0.2em 0.2em 0px;
-  display: block;
-  list-style-type: decimal;
-  cursor: $cursor-green-text;
+
+/* ============================================================
+   Markdown Content
+   ============================================================ */
+
+article {
+  overflow-wrap: break-word;
 }
-ul {
-  padding: 0 0 0 1.25em;
-  margin: $global-section-margin 0.2em 0.2em 0px;
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  color: $color-primary;
+  line-height: 1.25;
+}
+
+article h1 {
+  margin: 1.6em 0 1.5em;
+  font-size: $font-size-h1;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+article h1::before {
+  content: "⟦ ";
+  font-size: $font-size-h1;
+  font-weight: 300;
+  color: $color-primary;
+}
+
+article h1::after {
+  content: " ⟧";
+  font-size: $font-size-h1;
+  font-weight: 300;
+  color: $color-primary;
+}
+
+article h2 {
+  margin: 1.6em 0 0.8em;
+  font-size: $font-size-h2;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  color: $color-post-background;
+  background: rgba($color-muted, 0.9);
+}
+
+article h2::before {
+  content: "[root]# ";
+  font-size: $font-size-h2;
+  font-weight: 400;
+  text-transform: lowercase;
+  color: $color-primary;
+}
+
+article h2 strong {
+  color: $color-primary;
+}
+
+article h3 {
+  margin: 1.6em 0 0.8em;
+  font-size: $font-size-h3;
+  font-weight: 400;
+  color: $color-muted;
+}
+
+article h3::before {
+  content: "ℱ⟮ ";
+  font-size: $font-size-h3;
+  color: $color-primary;
+}
+
+article h3::after {
+  content: " ⟯";
+  font-size: $font-size-h3;
+  color: $color-primary;
+}
+
+article h4,
+article h5,
+article h6 {
+  margin: 1.2em 0 0.8em;
+  font-weight: 400;
+  color: $color-muted;
+}
+
+article h4 {
+  font-size: $font-size-h4;
+}
+
+article h4::before {
+  content: "Γ⊢ ";
+  font-family: Consolas, "PingFang SC", Menlo, monospace;
+  font-size: $font-size-h4;
+  color: $color-primary;
+}
+
+article h5 {
+  font-size: $font-size-h5;
+}
+
+article h5::before {
+  content: "τ:: ";
+  font-family: Consolas, "PingFang SC", Menlo, monospace;
+  font-size: $font-size-h5;
+  color: $color-primary;
+}
+
+article h6 {
+  font-size: $font-size-h6;
+}
+
+article h6::before {
+  content: "λx. ";
+  font-family: Consolas, "PingFang SC", Menlo, monospace;
+  font-size: $font-size-h6;
+  color: $color-primary;
+}
+
+article p {
+  margin: $global-section-margin 0;
+}
+
+article strong {
+  font-weight: 700;
+  color: $article-bold;
+}
+
+article em {
+  color: $article-italic;
+}
+
+article hr {
+  margin: 0;
+  border: 0;
+  border-block-start: 1px dashed rgba($color-muted, 0.3);
+}
+
+article img {
+  inline-size: auto;
+  max-inline-size: 96%;
+  block-size: auto;
+  margin-inline: auto;
+}
+
+article ol,
+article ul {
+  margin: $global-section-margin 0.2em 0.2em;
+  
+}
+
+article ol {
+  padding-inline-start: 2em;
+  list-style: decimal;
+}
+
+article ul {
+  padding-inline-start: 1.25em;
   list-style: disc;
-  cursor: $cursor-green-text;
 }
-dl { // Description List: 描述列表容器。它定义了整个列表的范围
-  color: auto;
+
+article dl {
+  margin: $global-section-margin 0;
 }
-dfn { // Definition Element: 表示术语的定义实例。通常嵌套在 <dt> 或段落中
+
+article dfn {
   font-style: italic;
 }
-dt { // Description Term: 描述术语。代表列表中的项目名称（Key/Term）
+
+article dt {
   color: $color-primary;
   font-weight: 700;
 }
-dd { // Description Details: 描述详情。代表对前一个术语的具体说明或数值（Value/Definition）。
+
+article dd {
+  margin-inline-start: 1.5em;
   color: $color-muted;
 }
-blockquote {
-  background-color: $color-post-background;
-  margin: $global-section-margin 0em 0.45em 0em;
-  font-size: $font-smaller;
-  line-height: 1.5;
-  color: $article-blockquote;
+
+article blockquote {
+  margin: $global-section-margin 0 0.45em;
   padding: 0 0.23em 0 0.5em;
   border: $border-dotted-blockquote;
-  cursor: $cursor-green-text;
-//  border-left: 2.5px solid $article-blockquote;
+
+  font-size: $font-smaller;
+  line-height: 1.5;
+
+  color: $article-blockquote;
+  background-color: $color-post-background;
 }
-// footnote mark
-sup a{
+
+article sup a {
   font-size: 105%;
   color: $article-blockquote;
   text-decoration: none;
 }
-// code highlight
-pre {
-  margin: 0.6em 0em;
-  padding: 0.3em 0.3em 0.3em 0.3em;
+
+/* ============================================================
+   Code
+   ============================================================ */
+
+article pre {
+  margin: 0.6em 0;
+  padding: 0.3em;
+  overflow-x: auto;
+  white-space: pre;
 }
 
-em {
-  color: $article-italic
-}
-
-
-code {
+article code,
+article pre,
+article kbd,
+article samp {
   font-family: $font-monospace;
-  cursor: $cursor-green-text;
 }
-article {
-  a {
-    color: $article-link;
-    padding: 0;
-  }
-  a:hover {
-    //font-weight: bold;
-    text-decoration: underline ;
-  }
+
+article code {
+  
 }
-// markdown style reset: keyword
-article .language-plaintext {
+
+/* Markdown inline code generated by Jekyll / Rouge */
+article :where(p, li, td, th, blockquote) > code.language-plaintext {
   font-size: 100%;
-  font-weight: bold;
+  font-weight: 700;
   color: $article-keyword;
-  // -webkit-text-stroke: 0.5px $color-primary; // stroke text
-  // text-shadow: -0.4px -0.4px 0 rgb(233, 255, 135), 0.4px 0.4px 0 rgb(48, 253, 59),
-    // 0.4px 0.4px 0 rgb(95, 99, 65);
 }
-// markdown style reset: checkbox
-input[type="checkbox"] {
+
+/* Article links */
+article a {
+  padding: 0;
+  color: $article-link;
+}
+
+article a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   Markdown Checkbox
+   ============================================================ */
+
+article input[type="checkbox"] {
+  appearance: none;
   position: relative;
-  width: 13px;
-  height: 13px;
-  margin: 0px 10px 0px 3px;
-  text-align: center;
+
+  inline-size: 13px;
+  block-size: 13px;
+  margin: 0 10px 0 3px;
+
   border: 1.5px solid $color-primary;
   border-radius: 1px;
-}
-
-input[type="checkbox"]::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: rgb(0, 0, 0);
-  border: 1.5px solid $color-primary;
+
+  vertical-align: middle;
 }
 
-input[type="checkbox"]:checked::before {
+article input[type="checkbox"]:checked::before {
   content: "\2714";
-  vertical-align: middle;
+  position: absolute;
+  inset: -3px 0 0 1px;
+
   color: $color-primary;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 700;
+  line-height: 1;
 }
 
-// resize table when screen is thin
+/* ============================================================
+   Markdown Table
+   No .table-wrapper required.
+   ============================================================ */
 
-@media screen and (max-width: 800px) and (min-width: 400px) {
-  thead {
-    th {
-      padding: 5px 5px;
-      font-size: $font-smaller;
-    }
+article table {
+  display: block;
+
+  inline-size: max-content;
+  min-inline-size: 70%;
+  max-inline-size: 100%;
+
+  overflow-x: auto;
+  border-spacing: 0;
+
+  line-height: 1.25;
+}
+
+article table caption {
+  margin-block-end: 0.5em;
+  text-align: left;
+  color: $color-muted;
+}
+
+article table thead {
+  border: 0;
+}
+
+article table th,
+article table td {
+  padding: 8px 10px;
+  vertical-align: middle;
+}
+
+article table th {
+  font-size: $font-size-primary;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+article table td {
+  font-size: $font-smaller;
+  overflow-wrap: anywhere;
+}
+
+article table tbody {
+  border-block-end: 0;
+}
+
+/* ============================================================
+   Details / Summary
+   ============================================================ */
+
+article details {
+  margin: $global-section-margin 0;
+}
+
+article summary {
+  
+}
+
+article details a {
+  padding: 0;
+  color: $color-primary;
+  text-decoration: none;
+}
+
+article details a:hover {
+  color: $color-link-hover;
+  text-decoration: none;
+  
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media screen and (max-width: 800px) and (min-width: 401px) {
+  article table th,
+  article table td {
+    padding: 5px;
   }
-  tbody {
-    td {  
-      padding: 4px 5px;
-      font-size: $font-tiny;
-    }
+
+  article table th {
+    font-size: $font-smaller;
+  }
+
+  article table td {
+    font-size: $font-tiny;
   }
 }
 
 @media screen and (max-width: 400px) {
   body {
-    line-height: 1.55;
     font-size: $font-smaller;
+    line-height: 1.55;
   }
-  thead {
-    th {
-      padding: 3px 1px;
-      font-size: $font-tiny;
-    }
+
+  article table th,
+  article table td {
+    padding: 3px 2px;
   }
-  tbody {
-    td {  
-      padding: 1px 1px;
-      font-size: $font-micro;
-    }
+
+  article table th {
+    font-size: $font-tiny;
+  }
+
+  article table td {
+    font-size: $font-micro;
   }
 }

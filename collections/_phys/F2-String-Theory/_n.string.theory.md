@@ -3,6 +3,8 @@ title: String Theory
 layout: post
 categories: Notes
 subclass: String Theory
+reference:
+  - Polchinski I-II
+  - Becker-Becker-Schwarz
 ---
 
-> Main reference: [1. Polchinski I-II, 2. Becker-Becker-Schwarz]

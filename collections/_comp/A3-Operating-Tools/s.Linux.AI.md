@@ -1,5 +1,5 @@
 ---
-title: Linux AI Tools - Quick Reference and Minimal Tutorial
+title: Linux AI Tools - Quick Reference
 layout: post
 categories: Sheet
 subclass: Operating Tools

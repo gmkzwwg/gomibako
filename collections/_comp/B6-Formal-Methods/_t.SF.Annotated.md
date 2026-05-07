@@ -1,9 +1,9 @@
 ---
 title: Software Foundations Personal Annotated
+abbreviation: SF Annotated
 layout: post-parallel
 categories: Texts
-abbreviation: SF Annotated
-subclass: Program Logics
+subclass: Formal Methods
 ---
 
 原书地址：https://softwarefoundations.cis.upenn.edu/  

@@ -3,6 +3,7 @@ title: Operating Systems
 layout: post
 categories: Notes
 subclass: Operating Systems
+reference:
+  - Operating Systems
 ---
 
-> Main reference: [1. Operating Systems]

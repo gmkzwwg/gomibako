@@ -3,6 +3,7 @@ title: Computer Networks
 layout: post
 categories: Notes
 subclass: Networks
+reference:
+  - Computer Networks
 ---
 
-> Main reference: [1. Computer Networks]

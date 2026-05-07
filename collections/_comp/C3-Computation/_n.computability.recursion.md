@@ -3,6 +3,8 @@ title: Computability and Recursion Theory
 layout: post
 categories: Notes
 subclass: Computation
+reference:
+  - Computability
+  - Recursion Theory
 ---
 
-> Main reference: [1. Computability, 2. Recursion Theory]

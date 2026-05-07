@@ -3,6 +3,8 @@ title: Machine Learning
 layout: post
 categories: Notes
 subclass: Machine Learning
+reference:
+  - Bishop
+  - Murphy
 ---
 
-> Main reference: [1. Bishop, 2. Murphy]

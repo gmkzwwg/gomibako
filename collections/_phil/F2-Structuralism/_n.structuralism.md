@@ -3,6 +3,7 @@ title: Structuralism
 layout: post
 categories: Notes
 subclass: Structuralism
+reference:
+  - Structuralism
 ---
 
-> Main reference: [1. Structuralism]

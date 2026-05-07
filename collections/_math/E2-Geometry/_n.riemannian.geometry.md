@@ -3,6 +3,7 @@ title: Riemannian Geometry
 layout: post
 categories: Notes
 subclass: Geometry
+reference:
+  - Riemannian Geometry
 ---
 
-> Main reference: [1. Riemannian Geometry]

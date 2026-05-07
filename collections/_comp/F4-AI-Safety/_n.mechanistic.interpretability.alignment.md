@@ -3,6 +3,8 @@ title: Mechanistic Interpretability and AI Alignment
 layout: post
 categories: Notes
 subclass: AI Safety
+reference:
+  - Mechanistic Interpretability
+  - AI Alignment
 ---
 
-> Main reference: [1. Mechanistic Interpretability, 2. AI Alignment]

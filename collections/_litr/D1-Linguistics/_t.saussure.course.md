@@ -3,6 +3,7 @@ title: Saussure Course in General Linguistics
 layout: post
 categories: Texts
 subclass: Linguistics
+reference:
+  - Saussure Course in General Linguistics
 ---
 
-> Main reference: [1. Saussure Course in General Linguistics]

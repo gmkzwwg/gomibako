@@ -3,6 +3,7 @@ title: Algebraic Topology
 layout: post
 categories: Notes
 subclass: Topology
+reference:
+  - Hatcher
 ---
 
-> Main reference: [1. Hatcher]

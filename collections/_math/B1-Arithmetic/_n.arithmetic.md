@@ -3,6 +3,7 @@ title: Arithmetic
 layout: post
 categories: Notes
 subclass: Arithmetic
+reference:
+  - Arithmetic
 ---
 
-> Main reference: [1. Arithmetic]

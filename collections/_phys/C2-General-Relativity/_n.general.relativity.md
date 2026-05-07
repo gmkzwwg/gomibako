@@ -3,6 +3,7 @@ title: General Relativity
 layout: post
 categories: Notes
 subclass: General Relativity
+reference:
+  - Carroll
 ---
 
-> Main reference: [1. Carroll]

@@ -3,6 +3,8 @@ title: Continuum Mechanics and Fluids
 layout: post
 categories: Notes
 subclass: Continuum Mechanics
+reference:
+  - Continuum Mechanics
+  - Fluids
 ---
 
-> Main reference: [1. Continuum Mechanics, 2. Fluids]

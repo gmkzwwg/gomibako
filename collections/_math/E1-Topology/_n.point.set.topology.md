@@ -3,6 +3,7 @@ title: Point-Set Topology
 layout: post
 categories: Notes
 subclass: Topology
+reference:
+  - Point-Set Topology
 ---
 
-> Main reference: [1. Point-Set Topology]

@@ -3,6 +3,7 @@ title: Aesthetics
 layout: post
 categories: Notes
 subclass: Aesthetics
+reference:
+  - Aesthetics
 ---
 
-> Main reference: [1. Aesthetics]

@@ -3,6 +3,8 @@ title: Electromagnetism
 layout: post
 categories: Notes
 subclass: Electromagnetism
+reference:
+  - Griffiths
+  - Jackson selections
 ---
 
-> Main reference: [1. Griffiths, 2. Jackson selections]

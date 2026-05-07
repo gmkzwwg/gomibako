@@ -3,6 +3,8 @@ title: Stochastic Processes and Martingales
 layout: post
 categories: Notes
 subclass: Stochastic Processes
+reference:
+  - Stochastic Processes
+  - Martingales
 ---
 
-> Main reference: [1. Stochastic Processes, 2. Martingales]

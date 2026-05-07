@@ -1,23 +1,25 @@
 /*!
+ * timeline-list.js
+ *
  * Introduction:
- *   Highlights TODO fragments in article text and creates a glass-style floating TODO summary panel.
+ *   Converts Markdown lists following a `timeline:` marker into structured timeline blocks.
  *
  * Usage:
  *   Include this file on the page. It runs automatically with DEFAULT_CONFIG.
  *   Default behavior can be customized by editing DEFAULT_CONFIG below.
- *   Runtime behavior can be customized with window.TodoSummary.updateConfig().
+ *   Runtime behavior can be customized with window.JekyllTimeline.updateConfig().
  *
  * Global API:
- *   window.TodoSummary.apply(selectorOrElements, options)
- *   window.TodoSummary.updateConfig(config)
- *   window.TodoSummary.getConfig()
- *   window.TodoSummary.clear(options)
+ *   window.JekyllTimeline.apply(selectorOrElements, options)
+ *   window.JekyllTimeline.init(selectorOrElements, options)
+ *   window.JekyllTimeline.updateConfig(config, runtimeOptions)
+ *   window.JekyllTimeline.getConfig()
  *
  * Notes:
- *   This script injects its own compact CSS.
- *   It does not preserve the old initTodoCollector() API or old todo-* class names.
- *   It skips script, style, code, pre, textarea, existing TODO marks, and its own floating UI.
- *   The floating panel uses a lightweight backdrop-filter with a solid fallback.
+ *   This script scans configured containers with TreeWalker for better performance.
+ *   It accepts plain or inline-formatted timeline markers, such as `timeline:` or `**timeline:**`.
+ *   It injects compact CSS and keeps glass blur lightweight by default.
+ *   It does not animate backdrop-filter and does not use long-lived will-change.
  */
 
 (function (window, document) {
@@ -25,79 +27,67 @@
 
   if (!window || !document) return;
 
-  const DEFAULT_CONFIG = {
+  var DEFAULT_CONFIG = {
     selector: ".post-content", // Default content container selector.
     autoApply: true, // Apply automatically after script loading.
-    todoPattern: /TODO:[^\n\r]*/g, // Pattern used to find TODO fragments.
-    headingSelector: "h1, h2, h3, h4, h5, h6", // Headings used for section titles.
+    markerPattern: /^timeline:\s*$/i, // Marker text placed immediately before a list.
+    styleId: "jekyll-timeline-styles", // Injected style element ID.
+    instanceClass: "jtimeline", // Root class for generated timelines.
+    fallbackTitlePrefix: "Unknown ", // Prefix used when an event title is empty.
 
-    panelId: "todo-summary-panel", // Floating panel ID.
-    triggerId: "todo-summary-trigger", // Reopen trigger ID.
-    styleId: "todo-summary-style", // Injected style element ID.
+    summaryWidth: "11%", // Left summary column width.
+    gap: "0.92rem", // Gap between summary, axis, and details.
+    axisWidth: "0.3rem", // Axis column width.
+    lineWidth: "0.3rem", // Main vertical line width.
+    detailRadius: "12px", // Detail box border radius.
+    detailPadding: "0.62rem 0.78rem", // Detail box padding.
+    detailGroupGap: "0.48rem", // Gap between multiple detail boxes.
+    leftTitleMinHeight: "2.2rem", // Minimum summary column height.
+    summaryTopLineOffset: "0.2rem", // Top line offset in summary column.
+    summaryTopLineGap: "0.36rem", // Gap between top line and summary text.
+    summaryTopLineWidth: "1px", // Summary top line thickness.
+    boxConnectorWidth: "1px", // Connector line thickness.
+    boxConnectorBallSize: "0.6rem", // Connector dot size.
+    lineColor: "rgba(120, 150, 180, 0.34)", // Main timeline line color.
 
-    markClass: "todo-mark", // Class for highlighted TODO text.
-    markActiveClass: "todo-mark--active", // Class for active jumped TODO.
-    panelClass: "todo-summary", // Class for floating panel.
-    panelDraggingClass: "todo-summary--dragging", // Class added while dragging.
-    headerClass: "todo-summary__header", // Class for panel header.
-    titleClass: "todo-summary__title", // Class for panel title.
-    closeClass: "todo-summary__close", // Class for close button.
-    bodyClass: "todo-summary__body", // Class for scrollable panel body.
-    listClass: "todo-summary__list", // Class for TODO list.
-    triggerClass: "todo-summary__trigger", // Class for reopen button.
+    glassEnabled: true, // Enable lightweight glass effect on detail boxes.
+    glassBlur: "4px", // Lightweight backdrop blur; keep low for performance.
+    glassSaturate: "1.02", // Lightweight saturation for glass effect.
+    glassFallbackBackground: "rgba(255, 255, 255, 0.08)", // Fallback when backdrop-filter is unsupported.
 
-    panelTitle: "TODO 汇总", // Floating panel title.
-    triggerText: "TODOs", // Reopen trigger text.
-    closeLabel: "Close TODO summary", // Close button aria-label.
-    noSectionText: "TODO: at the beginning", // Fallback title when no section heading exists.
-    todoTextMaxLength: 15, // Maximum TODO text length in the panel.
-    sectionTitleMaxLength: 15, // Maximum section title length in the panel.
-
-    flashDuration: 1600, // Active mark duration in milliseconds.
-    scrollBehavior: "smooth", // Scroll behavior when clicking a summary item.
-    scrollBlock: "center", // Scroll target alignment.
-    enableHashUpdate: true, // Update URL hash after jumping.
-    enableDragging: true, // Enable floating panel dragging.
-    injectStyle: true, // Inject built-in CSS.
-
-    backdropBlur: "8px", // Lightweight background blur behind floating UI.
-    backdropSaturate: "1.08", // Lightweight saturation for glass effect.
-    panelBackground: "rgba(255, 255, 255, 0.58)", // Glass panel background.
-    headerBackground: "rgba(255, 255, 255, 0.34)", // Glass header background.
-    fallbackBackground: "rgba(255, 255, 255, 0.88)", // Fallback when backdrop-filter is unsupported.
-    borderColor: "rgba(255, 255, 255, 0.42)", // Floating UI border color.
-    shadow: "0 14px 36px rgba(0, 0, 0, 0.18)", // Floating UI shadow.
-    highlightBackground: "rgba(255, 236, 153, 0.82)", // Inline TODO mark background.
-    zIndex: 99999, // Floating UI z-index.
-
-    skipAncestorSelector: [
-      "script",
-      "style",
-      "noscript",
-      "textarea",
-      "input",
-      "select",
-      "button",
-      "pre",
-      "code",
-      "[data-todo-ignore]",
-      ".todo-summary",
-      ".todo-summary__trigger",
-      ".todo-mark"
-    ].join(",") // Ancestors that disable TODO scanning.
+    detailColorMode: "random", // Detail color selection mode. candidates: sequential | random
+    palette: [
+      { name: "lake-blue", accent: "#58b7d8", accentSoft: "rgba(88, 183, 216, 0.10)", accentBgStrong: "rgba(88, 183, 216, 0.14)" },
+      { name: "royal-blue", accent: "#5a8dee", accentSoft: "rgba(90, 141, 238, 0.10)", accentBgStrong: "rgba(90, 141, 238, 0.14)" },
+      { name: "ink-blue", accent: "#4f7ac8", accentSoft: "rgba(79, 122, 200, 0.10)", accentBgStrong: "rgba(79, 122, 200, 0.14)" },
+      { name: "teal-cyan", accent: "#42bfb7", accentSoft: "rgba(66, 191, 183, 0.10)", accentBgStrong: "rgba(66, 191, 183, 0.14)" },
+      { name: "deep-cyan", accent: "#3da7c7", accentSoft: "rgba(61, 167, 199, 0.10)", accentBgStrong: "rgba(61, 167, 199, 0.14)" },
+      { name: "sea-glass", accent: "#69c3a5", accentSoft: "rgba(105, 195, 165, 0.09)", accentBgStrong: "rgba(105, 195, 165, 0.13)" },
+      { name: "emerald-mist", accent: "#54b887", accentSoft: "rgba(84, 184, 135, 0.09)", accentBgStrong: "rgba(84, 184, 135, 0.13)" },
+      { name: "olive-sage", accent: "#7ea66a", accentSoft: "rgba(126, 166, 106, 0.09)", accentBgStrong: "rgba(126, 166, 106, 0.13)" },
+      { name: "mist-indigo", accent: "#7c9cff", accentSoft: "rgba(124, 156, 255, 0.10)", accentBgStrong: "rgba(124, 156, 255, 0.14)" },
+      { name: "aurora-violet", accent: "#a283ff", accentSoft: "rgba(162, 131, 255, 0.09)", accentBgStrong: "rgba(162, 131, 255, 0.13)" },
+      { name: "iris-purple", accent: "#8f7ae6", accentSoft: "rgba(143, 122, 230, 0.09)", accentBgStrong: "rgba(143, 122, 230, 0.13)" },
+      { name: "orchid", accent: "#b67bd6", accentSoft: "rgba(182, 123, 214, 0.09)", accentBgStrong: "rgba(182, 123, 214, 0.13)" },
+      { name: "rose-quartz", accent: "#d684a2", accentSoft: "rgba(214, 132, 162, 0.09)", accentBgStrong: "rgba(214, 132, 162, 0.13)" },
+      { name: "berry-rose", accent: "#c96d8f", accentSoft: "rgba(201, 109, 143, 0.09)", accentBgStrong: "rgba(201, 109, 143, 0.13)" },
+      { name: "coral-red", accent: "#d97a6c", accentSoft: "rgba(217, 122, 108, 0.09)", accentBgStrong: "rgba(217, 122, 108, 0.13)" },
+      { name: "ruby-red", accent: "#c96878", accentSoft: "rgba(201, 104, 120, 0.09)", accentBgStrong: "rgba(201, 104, 120, 0.13)" },
+      { name: "amber-gold", accent: "#cfa45f", accentSoft: "rgba(207, 164, 95, 0.09)", accentBgStrong: "rgba(207, 164, 95, 0.13)" },
+      { name: "champagne-gold", accent: "#bda36e", accentSoft: "rgba(189, 163, 110, 0.09)", accentBgStrong: "rgba(189, 163, 110, 0.13)" },
+      { name: "bronze-copper", accent: "#b88366", accentSoft: "rgba(184, 131, 102, 0.09)", accentBgStrong: "rgba(184, 131, 102, 0.13)" },
+      { name: "frost-silver", accent: "#6ea9c7", accentSoft: "rgba(110, 169, 199, 0.09)", accentBgStrong: "rgba(110, 169, 199, 0.13)" },
+      { name: "slate-gray", accent: "#7d90a6", accentSoft: "rgba(125, 144, 166, 0.09)", accentBgStrong: "rgba(125, 144, 166, 0.13)" },
+      { name: "graphite", accent: "#8391a3", accentSoft: "rgba(131, 145, 163, 0.09)", accentBgStrong: "rgba(131, 145, 163, 0.13)" }
+    ] // Accent palette used by detail boxes.
   };
 
-  let config = merge({}, DEFAULT_CONFIG); // Active runtime configuration.
-  let todoCounter = 0; // Unique TODO ID counter.
-  let panelEl = null; // Floating panel element.
-  let listEl = null; // Floating list element.
-  let triggerEl = null; // Reopen trigger element.
-  let dragOffsetX = 0; // Persistent panel transform X.
-  let dragOffsetY = 0; // Persistent panel transform Y.
+  var activeConfig = merge({}, DEFAULT_CONFIG);
+  var styleSignature = "";
 
   /* Merges objects from left to right; params: ...objects<object>. */
   function merge() {
-    const output = {};
+    var output = {};
 
     Array.prototype.slice.call(arguments).forEach(function (object) {
       Object.keys(object || {}).forEach(function (key) {
@@ -113,25 +103,9 @@
     return Array.prototype.slice.call(value || []);
   }
 
-  /* Normalizes selector, element, NodeList, or array into elements; params: selectorOrElements<any>. */
-  function normalizeContainers(selectorOrElements, runtimeConfig) {
-    if (!selectorOrElements) {
-      return toArray(document.querySelectorAll(runtimeConfig.selector));
-    }
-
-    if (typeof selectorOrElements === "string") {
-      return toArray(document.querySelectorAll(selectorOrElements));
-    }
-
-    if (selectorOrElements instanceof Element) {
-      return [selectorOrElements];
-    }
-
-    if (selectorOrElements.length) {
-      return toArray(selectorOrElements);
-    }
-
-    return [];
+  /* Checks whether a value is an element; params: value<any>. */
+  function isElement(value) {
+    return Boolean(value && value.nodeType === 1);
   }
 
   /* Escapes CSS class names when possible; params: value<string>. */
@@ -143,604 +117,726 @@
     return String(value).replace(/[^a-zA-Z0-9_-]/g, "\\$&"); // Minimal fallback.
   }
 
-  /* Applies TODO highlighting and summary rendering; params: selectorOrElements<any>, userOptions<object>. */
-  function apply(selectorOrElements, userOptions) {
-    const runtimeConfig = merge(config, userOptions || {});
-    const containers = normalizeContainers(selectorOrElements || runtimeConfig.selector, runtimeConfig);
-    let todos = [];
+  /* Normalizes config values; params: nextConfig<object>. */
+  function normalizeConfig(nextConfig) {
+    var config = merge(DEFAULT_CONFIG, nextConfig || {});
 
-    injectStyles(runtimeConfig);
+    config.selector = typeof config.selector === "string" && config.selector.trim()
+      ? config.selector.trim()
+      : DEFAULT_CONFIG.selector;
 
-    containers.forEach(function (container, containerIndex) {
-      processContainer(container, containerIndex, runtimeConfig);
-      todos = todos.concat(collectMarks(container, runtimeConfig));
-    });
+    config.instanceClass = typeof config.instanceClass === "string" && config.instanceClass.trim()
+      ? config.instanceClass.trim()
+      : DEFAULT_CONFIG.instanceClass;
 
-    todos = dedupeTodos(todos);
+    config.markerPattern = config.markerPattern instanceof RegExp
+      ? config.markerPattern
+      : DEFAULT_CONFIG.markerPattern;
 
-    if (todos.length > 0) {
-      ensurePanel(runtimeConfig);
-      renderSummary(todos, runtimeConfig);
-      showPanel();
-    }
+    config.palette = Array.isArray(config.palette) && config.palette.length
+      ? config.palette
+      : DEFAULT_CONFIG.palette.slice();
 
-    return todos;
+    config.detailColorMode = String(config.detailColorMode || "random").toLowerCase();
+    config.glassEnabled = config.glassEnabled !== false;
+    config.autoApply = config.autoApply !== false;
+
+    return config;
   }
 
-  /* Processes one container by marking raw TODO text nodes; params: container<Element>, containerIndex<number>, runtimeConfig<object>. */
-  function processContainer(container, containerIndex, runtimeConfig) {
-    const textNodes = collectTodoTextNodes(container, runtimeConfig);
-
-    textNodes.forEach(function (textNode) {
-      markTodosInTextNode(textNode, container, containerIndex, runtimeConfig);
-    });
+  /* Builds a stable style signature; params: config<object>. */
+  function getStyleSignature(config) {
+    return [
+      config.instanceClass,
+      config.glassBlur,
+      config.glassSaturate,
+      config.glassFallbackBackground
+    ].join("|");
   }
 
-  /* Collects raw text nodes containing TODO fragments; params: container<Element>, runtimeConfig<object>. */
-  function collectTodoTextNodes(container, runtimeConfig) {
-    const textNodes = [];
-    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
-      acceptNode: function (node) {
-        if (!node.nodeValue || !regexHasMatch(runtimeConfig.todoPattern, node.nodeValue)) {
-          return NodeFilter.FILTER_REJECT;
-        }
-
-        if (!node.parentElement) {
-          return NodeFilter.FILTER_REJECT;
-        }
-
-        if (node.parentElement.closest(runtimeConfig.skipAncestorSelector)) {
-          return NodeFilter.FILTER_REJECT;
-        }
-
-        return NodeFilter.FILTER_ACCEPT;
-      }
-    });
-
-    let current = walker.nextNode();
-
-    while (current) {
-      textNodes.push(current);
-      current = walker.nextNode();
-    }
-
-    return textNodes;
-  }
-
-  /* Safely tests a regex and resets state; params: regex<RegExp>, text<string>. */
-  function regexHasMatch(regex, text) {
-    regex.lastIndex = 0;
-
-    const result = regex.test(text);
-
-    regex.lastIndex = 0;
-
-    return result;
-  }
-
-  /* Marks TODO fragments inside one text node; params: textNode<Text>, container<Element>, containerIndex<number>, runtimeConfig<object>. */
-  function markTodosInTextNode(textNode, container, containerIndex, runtimeConfig) {
-    const text = textNode.nodeValue;
-    const regex = new RegExp(runtimeConfig.todoPattern.source, runtimeConfig.todoPattern.flags);
-    const fragment = document.createDocumentFragment();
-    let match = regex.exec(text);
-    let lastIndex = 0;
-    let hasMatch = false;
-
-    while (match !== null) {
-      const todoText = match[0].trim();
-      const sectionTitle = getSectionTitle(textNode, container, runtimeConfig);
-      const displayTitle = sectionTitle
-        ? truncateText(sectionTitle, runtimeConfig.sectionTitleMaxLength)
-        : runtimeConfig.noSectionText;
-      const displayText = truncateText(todoText, runtimeConfig.todoTextMaxLength) + " [" + displayTitle + "]";
-      const mark = document.createElement("mark");
-
-      hasMatch = true;
-      appendText(fragment, text.slice(lastIndex, match.index));
-
-      mark.className = runtimeConfig.markClass;
-      mark.id = "todo-summary-item-" + containerIndex + "-" + (++todoCounter);
-      mark.tabIndex = -1;
-      mark.textContent = todoText;
-      mark.dataset.todoText = todoText;
-      mark.dataset.todoSectionTitle = sectionTitle || "";
-      mark.dataset.todoDisplayText = displayText;
-
-      fragment.appendChild(mark);
-
-      lastIndex = match.index + match[0].length;
-      match = regex.exec(text);
-    }
-
-    if (!hasMatch) return;
-
-    appendText(fragment, text.slice(lastIndex));
-    textNode.parentNode.replaceChild(fragment, textNode);
-  }
-
-  /* Appends a text node when non-empty; params: fragment<DocumentFragment>, text<string>. */
-  function appendText(fragment, text) {
-    if (text) {
-      fragment.appendChild(document.createTextNode(text));
-    }
-  }
-
-  /* Collects existing TODO marks; params: container<Element>, runtimeConfig<object>. */
-  function collectMarks(container, runtimeConfig) {
-    const selector = "." + escapeCssClass(runtimeConfig.markClass);
-
-    return toArray(container.querySelectorAll(selector)).map(function (mark) {
-      const sectionTitle = mark.dataset.todoSectionTitle || "";
-      const displayTitle = sectionTitle
-        ? truncateText(sectionTitle, runtimeConfig.sectionTitleMaxLength)
-        : runtimeConfig.noSectionText;
-
-      return {
-        id: mark.id,
-        text: mark.dataset.todoText || mark.textContent || "",
-        displayText: mark.dataset.todoDisplayText || truncateText(mark.textContent, runtimeConfig.todoTextMaxLength) + " [" + displayTitle + "]",
-        sectionTitle: sectionTitle,
-        displayTitle: displayTitle
-      };
-    });
-  }
-
-  /* Removes duplicate TODO records by id; params: todos<Array>. */
-  function dedupeTodos(todos) {
-    const seen = {};
-    const output = [];
-
-    todos.forEach(function (todo) {
-      if (!todo.id || seen[todo.id]) return;
-
-      seen[todo.id] = true;
-      output.push(todo);
-    });
-
-    return output;
-  }
-
-  /* Finds the nearest previous section heading; params: textNode<Text>, container<Element>, runtimeConfig<object>. */
-  function getSectionTitle(textNode, container, runtimeConfig) {
-    let element = textNode.parentElement;
-
-    while (element && element !== container) {
-      let previous = element.previousElementSibling;
-
-      while (previous) {
-        const heading = findLastHeadingInside(previous, runtimeConfig);
-
-        if (heading) return cleanText(heading.textContent);
-
-        previous = previous.previousElementSibling;
-      }
-
-      element = element.parentElement;
-    }
-
-    let previous = textNode.parentElement ? textNode.parentElement.previousElementSibling : null;
-
-    while (previous) {
-      const heading = findLastHeadingInside(previous, runtimeConfig);
-
-      if (heading) return cleanText(heading.textContent);
-
-      previous = previous.previousElementSibling;
-    }
-
-    return "";
-  }
-
-  /* Finds the last heading inside an element; params: element<Element>, runtimeConfig<object>. */
-  function findLastHeadingInside(element, runtimeConfig) {
-    if (!element || !element.querySelectorAll) return null;
-    if (element.matches(runtimeConfig.headingSelector)) return element;
-
-    const headings = element.querySelectorAll(runtimeConfig.headingSelector);
-
-    return headings.length ? headings[headings.length - 1] : null;
-  }
-
-  /* Normalizes text whitespace; params: text<string>. */
-  function cleanText(text) {
-    return String(text || "").replace(/\s+/g, " ").trim();
-  }
-
-  /* Truncates text with ellipsis; params: text<string>, maxLength<number>. */
-  function truncateText(text, maxLength) {
-    const clean = cleanText(text);
-    const limit = Number(maxLength) || 0;
-
-    if (!clean) return "";
-    if (limit <= 0 || clean.length <= limit) return clean;
-
-    return clean.slice(0, limit) + "...";
-  }
-
-  /* Ensures floating UI exists; params: runtimeConfig<object>. */
-  function ensurePanel(runtimeConfig) {
-    if (panelEl && listEl && triggerEl) return;
-
-    const panel = document.createElement("aside");
-    const header = document.createElement("div");
-    const title = document.createElement("div");
-    const close = document.createElement("button");
-    const body = document.createElement("div");
-    const list = document.createElement("ol");
-    const trigger = document.createElement("button");
-
-    panel.id = runtimeConfig.panelId;
-    panel.className = runtimeConfig.panelClass;
-    panel.setAttribute("aria-label", runtimeConfig.panelTitle);
-
-    header.className = runtimeConfig.headerClass;
-    title.className = runtimeConfig.titleClass;
-    title.textContent = runtimeConfig.panelTitle;
-
-    close.type = "button";
-    close.className = runtimeConfig.closeClass;
-    close.setAttribute("aria-label", runtimeConfig.closeLabel);
-    close.textContent = "×";
-    close.addEventListener("click", hidePanel);
-
-    body.className = runtimeConfig.bodyClass;
-    list.className = runtimeConfig.listClass;
-
-    body.appendChild(list);
-    header.appendChild(title);
-    header.appendChild(close);
-    panel.appendChild(header);
-    panel.appendChild(body);
-    document.body.appendChild(panel);
-
-    trigger.id = runtimeConfig.triggerId;
-    trigger.type = "button";
-    trigger.className = runtimeConfig.triggerClass;
-    trigger.textContent = runtimeConfig.triggerText;
-    trigger.hidden = true;
-    trigger.addEventListener("click", showPanel);
-    document.body.appendChild(trigger);
-
-    if (runtimeConfig.enableDragging) {
-      makeDraggable(panel, header, runtimeConfig);
-    }
-
-    panelEl = panel;
-    listEl = list;
-    triggerEl = trigger;
-    applyPanelTransform();
-  }
-
-  /* Hides panel and shows trigger; params: none. */
-  function hidePanel() {
-    if (panelEl) panelEl.hidden = true;
-    if (triggerEl) triggerEl.hidden = false;
-  }
-
-  /* Shows panel and hides trigger; params: none. */
-  function showPanel() {
-    if (panelEl) panelEl.hidden = false;
-    if (triggerEl) triggerEl.hidden = true;
-  }
-
-  /* Renders floating summary list; params: todos<Array>, runtimeConfig<object>. */
-  function renderSummary(todos, runtimeConfig) {
-    if (!listEl) return;
-
-    listEl.innerHTML = "";
-
-    todos.forEach(function (todo) {
-      const item = document.createElement("li");
-      const link = document.createElement("a");
-
-      link.href = "#" + todo.id;
-      link.textContent = todo.displayText;
-      link.title = todo.sectionTitle
-        ? todo.text + " [" + todo.sectionTitle + "]"
-        : todo.text + " [" + runtimeConfig.noSectionText + "]";
-
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        jumpToTodo(todo.id, runtimeConfig);
-      });
-
-      item.appendChild(link);
-      listEl.appendChild(item);
-    });
-  }
-
-  /* Jumps to and flashes one TODO mark; params: todoId<string>, runtimeConfig<object>. */
-  function jumpToTodo(todoId, runtimeConfig) {
-    const target = document.getElementById(todoId);
-
-    if (!target) return;
-
-    target.scrollIntoView({
-      behavior: runtimeConfig.scrollBehavior,
-      block: runtimeConfig.scrollBlock
-    });
-
-    target.focus({ preventScroll: true });
-    flashTarget(target, runtimeConfig);
-
-    if (!runtimeConfig.enableHashUpdate) return;
-
-    if (history.pushState) {
-      history.pushState(null, "", "#" + todoId);
-    } else {
-      location.hash = todoId;
-    }
-  }
-
-  /* Temporarily activates a TODO mark; params: target<Element>, runtimeConfig<object>. */
-  function flashTarget(target, runtimeConfig) {
-    target.classList.add(runtimeConfig.markActiveClass);
-
-    window.setTimeout(function () {
-      target.classList.remove(runtimeConfig.markActiveClass);
-    }, runtimeConfig.flashDuration);
-  }
-
-  /* Makes a panel draggable via transform; params: panel<Element>, handle<Element>, runtimeConfig<object>. */
-  function makeDraggable(panel, handle, runtimeConfig) {
-    let dragging = false;
-    let startX = 0;
-    let startY = 0;
-    let startOffsetX = 0;
-    let startOffsetY = 0;
-
-    handle.addEventListener("pointerdown", function (event) {
-      if (event.target && event.target.closest("." + escapeCssClass(runtimeConfig.closeClass))) return;
-
-      dragging = true;
-      startX = event.clientX;
-      startY = event.clientY;
-      startOffsetX = dragOffsetX;
-      startOffsetY = dragOffsetY;
-
-      panel.classList.add(runtimeConfig.panelDraggingClass);
-      handle.setPointerCapture(event.pointerId);
-      event.preventDefault();
-    });
-
-    handle.addEventListener("pointermove", function (event) {
-      if (!dragging) return;
-
-      const nextX = startOffsetX + event.clientX - startX;
-      const nextY = startOffsetY + event.clientY - startY;
-      const rect = panel.getBoundingClientRect();
-      const minX = -rect.left + dragOffsetX;
-      const maxX = window.innerWidth - rect.right + dragOffsetX;
-      const minY = -rect.top + dragOffsetY;
-      const maxY = window.innerHeight - rect.bottom + dragOffsetY;
-
-      dragOffsetX = clamp(nextX, minX, maxX);
-      dragOffsetY = clamp(nextY, minY, maxY);
-
-      applyPanelTransform();
-    });
-
-    handle.addEventListener("pointerup", function (event) {
-      dragging = false;
-      panel.classList.remove(runtimeConfig.panelDraggingClass);
-
-      if (handle.hasPointerCapture(event.pointerId)) {
-        handle.releasePointerCapture(event.pointerId);
-      }
-    });
-
-    handle.addEventListener("pointercancel", function () {
-      dragging = false;
-      panel.classList.remove(runtimeConfig.panelDraggingClass);
-    });
-  }
-
-  /* Applies the current transform offset to the panel; params: none. */
-  function applyPanelTransform() {
-    if (!panelEl) return;
-
-    panelEl.style.transform = "translate3d(" + dragOffsetX + "px, " + dragOffsetY + "px, 0)";
-  }
-
-  /* Clamps a number into a valid range; params: value<number>, min<number>, max<number>. */
-  function clamp(value, min, max) {
-    return Math.min(Math.max(value, min), Math.max(min, max));
-  }
-
-  /* Injects or updates built-in CSS; params: runtimeConfig<object>. */
-  function injectStyles(runtimeConfig) {
-    if (!runtimeConfig.injectStyle) return;
-
-    const panelClass = escapeCssClass(runtimeConfig.panelClass);
-    const panelDraggingClass = escapeCssClass(runtimeConfig.panelDraggingClass);
-    const headerClass = escapeCssClass(runtimeConfig.headerClass);
-    const titleClass = escapeCssClass(runtimeConfig.titleClass);
-    const closeClass = escapeCssClass(runtimeConfig.closeClass);
-    const bodyClass = escapeCssClass(runtimeConfig.bodyClass);
-    const listClass = escapeCssClass(runtimeConfig.listClass);
-    const triggerClass = escapeCssClass(runtimeConfig.triggerClass);
-    const markClass = escapeCssClass(runtimeConfig.markClass);
-    const markActiveClass = escapeCssClass(runtimeConfig.markActiveClass);
-    let style = document.getElementById(runtimeConfig.styleId);
+  /* Injects or updates CSS; params: config<object>. */
+  function injectStyles(config) {
+    var signature = getStyleSignature(config);
+    var rootClass = escapeCssClass(config.instanceClass);
+    var style = document.getElementById(config.styleId);
+
+    if (style && signature === styleSignature) return;
 
     if (!style) {
       style = document.createElement("style");
-      style.id = runtimeConfig.styleId;
+      style.id = config.styleId;
       document.head.appendChild(style);
     }
 
+    styleSignature = signature;
+
     style.textContent = [
-      "." + panelClass + " {",
-      "  position: fixed;",
-      "  right: 16px;",
-      "  bottom: 16px;",
-      "  width: 360px;",
-      "  max-width: calc(100vw - 24px);",
-      "  max-height: min(60vh, 520px);",
-      "  z-index: " + runtimeConfig.zIndex + ";",
-      "  border: 1px solid " + runtimeConfig.borderColor + ";",
-      "  background: " + runtimeConfig.panelBackground + ";",
-      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
-      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
-      "  border-radius: 0;",
-      "  box-shadow: " + runtimeConfig.shadow + ";",
-      "  overflow: hidden;",
-      "  font-size: 14px;",
+      "." + rootClass + " {",
+      "  --jt-summary-width: 11%;",
+      "  --jt-gap: 0.92rem;",
+      "  --jt-axis-width: 0.3rem;",
+      "  --jt-line-width: 0.3rem;",
+      "  --jt-detail-radius: 12px;",
+      "  --jt-detail-padding: 0.62rem 0.78rem;",
+      "  --jt-detail-group-gap: 0.48rem;",
+      "  --jt-left-title-min-height: 2.2rem;",
+      "  --jt-summary-top-line-offset: 0.2rem;",
+      "  --jt-summary-top-line-gap: 0.36rem;",
+      "  --jt-summary-top-line-width: 1px;",
+      "  --jt-box-connector-width: 1px;",
+      "  --jt-box-connector-ball-size: 0.6rem;",
+      "  --jt-line-color: rgba(120, 150, 180, 0.34);",
+      "  --jt-glass-blur: " + config.glassBlur + ";",
+      "  --jt-glass-saturate: " + config.glassSaturate + ";",
+      "  --jt-glass-fallback-bg: " + config.glassFallbackBackground + ";",
+      "  position: relative;",
+      "  display: grid;",
+      "  gap: 0.82rem;",
+      "  margin: 1.5rem 0;",
+      "}",
+      "",
+      "." + rootClass + "::before {",
+      "  content: '';",
+      "  position: absolute;",
+      "  top: 0.55rem;",
+      "  bottom: 0.55rem;",
+      "  left: calc(var(--jt-summary-width) + var(--jt-gap) + (var(--jt-axis-width) / 2) - (var(--jt-line-width) / 2));",
+      "  width: var(--jt-line-width);",
+      "  background: var(--jt-line-color);",
+      "  pointer-events: none;",
+      "}",
+      "",
+      "." + rootClass + "__event {",
+      "  --jt-event-accent: #58b7d8;",
+      "  --jt-event-soft: rgba(88, 183, 216, 0.10);",
+      "  --jt-event-bg-strong: rgba(88, 183, 216, 0.14);",
+      "  position: relative;",
+      "  display: grid;",
+      "  grid-template-columns: minmax(4rem, var(--jt-summary-width)) var(--jt-axis-width) minmax(0, 1fr);",
+      "  column-gap: var(--jt-gap);",
+      "  align-items: stretch;",
+      "}",
+      "",
+      "." + rootClass + "__summary {",
+      "  position: relative;",
+      "  min-height: var(--jt-left-title-min-height);",
+      "  height: 100%;",
+      "  display: flex;",
+      "  align-items: flex-start;",
+      "  justify-content: flex-start;",
+      "  align-self: stretch;",
+      "  text-align: left;",
+      "  font-weight: 700;",
+      "  font-size: clamp(0.92rem, 0.88rem + 0.18vw, 1.04rem);",
+      "  line-height: 1.45;",
+      "  letter-spacing: 0.01em;",
+      "  color: var(--jt-event-accent);",
+      "  padding-top: calc(var(--jt-summary-top-line-offset) + var(--jt-summary-top-line-gap));",
+      "}",
+      "",
+      "." + rootClass + "__summary::before {",
+      "  content: '';",
+      "  position: absolute;",
+      "  top: var(--jt-summary-top-line-offset);",
+      "  left: 0;",
+      "  right: 0;",
+      "  height: var(--jt-summary-top-line-width);",
+      "  background: var(--jt-line-color);",
+      "  opacity: 0.9;",
+      "}",
+      "",
+      "." + rootClass + "__summary > *:first-child {",
+      "  margin-top: 0;",
+      "  margin-bottom: 0;",
+      "  width: 100%;",
+      "}",
+      "",
+      "." + rootClass + "__axis {",
+      "  position: relative;",
+      "  min-height: 100%;",
+      "  align-self: stretch;",
+      "}",
+      "",
+      "." + rootClass + "__details {",
+      "  min-width: 0;",
+      "  display: grid;",
+      "  gap: var(--jt-detail-group-gap);",
+      "}",
+      "",
+      "." + rootClass + "__detail-box {",
+      "  position: relative;",
+      "  min-width: 0;",
+      "  padding: var(--jt-detail-padding);",
+      "  border: 1px solid var(--jt-event-accent);",
+      "  border-radius: var(--jt-detail-radius);",
+      "  background: linear-gradient(180deg, var(--jt-event-soft), var(--jt-event-bg-strong));",
+      "  color: var(--jt-event-accent);",
+      "  box-shadow: 0 0 0 1px rgba(255,255,255,0.035) inset;",
+      "  overflow: visible;",
+      "}",
+      "",
+      "." + rootClass + "[data-jt-glass='true'] ." + rootClass + "__detail-box {",
+      "  backdrop-filter: blur(var(--jt-glass-blur)) saturate(var(--jt-glass-saturate));",
+      "  -webkit-backdrop-filter: blur(var(--jt-glass-blur)) saturate(var(--jt-glass-saturate));",
+      "}",
+      "",
+      "@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {",
+      "  ." + rootClass + "[data-jt-glass='true'] ." + rootClass + "__detail-box {",
+      "    background: var(--jt-glass-fallback-bg);",
+      "  }",
+      "}",
+      "",
+      "." + rootClass + "__detail-box::before {",
+      "  content: '';",
+      "  position: absolute;",
+      "  top: 50%;",
+      "  left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2)));",
+      "  width: calc(var(--jt-gap) + (var(--jt-axis-width) / 2));",
+      "  height: var(--jt-box-connector-width);",
+      "  transform: translateY(-50%);",
+      "  background: var(--jt-line-color);",
+      "  opacity: 0.95;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box::after {",
+      "  content: '';",
+      "  position: absolute;",
+      "  top: 50%;",
+      "  left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2) + (var(--jt-box-connector-ball-size) / 2)));",
+      "  width: var(--jt-box-connector-ball-size);",
+      "  height: var(--jt-box-connector-ball-size);",
+      "  transform: translateY(-50%);",
+      "  border-radius: 999px;",
+      "  background: var(--jt-line-color);",
+      "  box-shadow: 0 0 0 1px rgba(255,255,255,0.04);",
+      "  opacity: 0.95;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box > :first-child { margin-top: 0; }",
+      "." + rootClass + "__detail-box > :last-child { margin-bottom: 0; }",
+      "",
+      "." + rootClass + "__detail-root-list {",
+      "  margin: 0;",
+      "  padding-left: 0;",
+      "  list-style: none;",
+      "}",
+      "",
+      "." + rootClass + "__detail-root-item {",
+      "  margin: 0;",
+      "  list-style: none;",
+      "  color: inherit;",
+      "  font-weight: 700;",
+      "  line-height: 1.62;",
+      "}",
+      "",
+      "." + rootClass + "__detail-root-item::marker { content: ''; }",
+      "",
+      "." + rootClass + "__detail-root-item > ul,",
+      "." + rootClass + "__detail-root-item > ol {",
+      "  margin: 0.34rem 0 0 0;",
+      "  padding-left: 1.2rem;",
+      "  list-style-position: outside;",
+      "  font-weight: 400;",
+      "}",
+      "",
+      "." + rootClass + "__detail-root-item > ul > li,",
+      "." + rootClass + "__detail-root-item > ol > li {",
+      "  margin: 0.24rem 0;",
+      "  font-weight: 400;",
+      "  line-height: 1.62;",
+      "  list-style: inherit;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box p,",
+      "." + rootClass + "__detail-box span,",
+      "." + rootClass + "__detail-box strong,",
+      "." + rootClass + "__detail-box em,",
+      "." + rootClass + "__detail-box b,",
+      "." + rootClass + "__detail-box i,",
+      "." + rootClass + "__detail-box small,",
+      "." + rootClass + "__detail-box div,",
+      "." + rootClass + "__detail-box h1,",
+      "." + rootClass + "__detail-box h2,",
+      "." + rootClass + "__detail-box h3,",
+      "." + rootClass + "__detail-box h4,",
+      "." + rootClass + "__detail-box h5,",
+      "." + rootClass + "__detail-box h6 {",
       "  color: inherit;",
       "}",
-      "." + panelClass + "[hidden],",
-      "." + triggerClass + "[hidden] {",
+      "",
+      "." + rootClass + "__detail-box a {",
+      "  color: inherit;",
+      "  text-decoration-color: currentColor;",
+      "  text-underline-offset: 0.14em;",
+      "  text-decoration-thickness: 1px;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box code {",
+      "  color: inherit;",
+      "  border: 1px solid currentColor;",
+      "  border-radius: 0.36rem;",
+      "  background: rgba(255,255,255,0.04);",
+      "  padding: 0.06rem 0.34rem;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box pre {",
+      "  color: inherit;",
+      "  border: 1px solid currentColor;",
+      "  border-radius: 0.62rem;",
+      "  background: rgba(255,255,255,0.04);",
+      "  padding: 0.72rem 0.82rem;",
+      "  overflow: auto;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box pre code {",
+      "  border: 0;",
+      "  background: transparent;",
+      "  padding: 0;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box blockquote {",
+      "  color: inherit;",
+      "  border-left: 3px solid currentColor;",
+      "  margin: 0.55rem 0;",
+      "  padding-left: 0.7rem;",
+      "  opacity: 0.95;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box table {",
+      "  width: 100%;",
+      "  border-collapse: collapse;",
+      "  color: inherit;",
+      "}",
+      "",
+      "." + rootClass + "__detail-box th,",
+      "." + rootClass + "__detail-box td {",
+      "  color: inherit;",
+      "  border: 1px solid currentColor;",
+      "  padding: 0.38rem 0.48rem;",
+      "}",
+      "",
+      "." + rootClass + "[data-jt-empty-details='true'] ." + rootClass + "__details {",
       "  display: none;",
       "}",
-      "." + panelClass + "." + panelDraggingClass + " {",
-      "  will-change: transform;",
-      "}",
-      "." + headerClass + " {",
-      "  display: flex;",
-      "  align-items: center;",
-      "  justify-content: space-between;",
-      "  padding: 10px 12px;",
-      "  border-bottom: 1px solid " + runtimeConfig.borderColor + ";",
-      "  background: " + runtimeConfig.headerBackground + ";",
-      "  cursor: move;",
-      "  user-select: none;",
-      "  touch-action: none;",
-      "}",
-      "." + titleClass + " {",
-      "  font-weight: 700;",
-      "}",
-      "." + closeClass + " {",
-      "  border: none;",
-      "  background: transparent;",
-      "  color: inherit;",
-      "  font-size: 20px;",
-      "  line-height: 1;",
-      "  cursor: pointer;",
-      "  padding: 0 2px;",
-      "}",
-      "." + bodyClass + " {",
-      "  overflow: auto;",
-      "  max-height: calc(min(60vh, 520px) - 48px);",
-      "  padding: 10px 12px 12px;",
-      "}",
-      "." + listClass + " {",
-      "  margin: 0;",
-      "  padding-left: 20px;",
-      "}",
-      "." + listClass + " li + li {",
-      "  margin-top: 8px;",
-      "}",
-      "." + listClass + " a {",
-      "  text-decoration: underline;",
-      "  cursor: pointer;",
-      "  color: inherit;",
-      "  word-break: break-word;",
-      "}",
-      "." + triggerClass + " {",
-      "  position: fixed;",
-      "  right: 16px;",
-      "  bottom: 16px;",
-      "  z-index: " + runtimeConfig.zIndex + ";",
-      "  border: 1px solid " + runtimeConfig.borderColor + ";",
-      "  background: " + runtimeConfig.panelBackground + ";",
-      "  backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
-      "  -webkit-backdrop-filter: blur(" + runtimeConfig.backdropBlur + ") saturate(" + runtimeConfig.backdropSaturate + ");",
-      "  border-radius: 0;",
-      "  box-shadow: " + runtimeConfig.shadow + ";",
-      "  padding: 10px 14px;",
-      "  font-size: 14px;",
-      "  font-weight: 600;",
-      "  line-height: 1;",
-      "  cursor: pointer;",
-      "  color: inherit;",
-      "}",
-      "." + markClass + " {",
-      "  background: " + runtimeConfig.highlightBackground + ";",
-      "  color: inherit;",
-      "  padding: 0 3px;",
-      "  border-radius: 0;",
-      "}",
-      "." + markActiveClass + " {",
-      "  outline: 2px solid currentColor;",
-      "  transition: outline 0.2s ease;",
-      "}",
-      "@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {",
-      "  ." + panelClass + ",",
-      "  ." + triggerClass + " {",
-      "    background: " + runtimeConfig.fallbackBackground + ";",
+      "",
+      "@media (max-width: 780px) {",
+      "  ." + rootClass + "::before {",
+      "    left: calc((var(--jt-axis-width) / 2) - (var(--jt-line-width) / 2));",
+      "  }",
+      "  ." + rootClass + "__event {",
+      "    grid-template-columns: var(--jt-axis-width) minmax(0, 1fr);",
+      "    row-gap: 0.34rem;",
+      "  }",
+      "  ." + rootClass + "__summary {",
+      "    grid-column: 2;",
+      "    grid-row: 1;",
+      "    min-height: auto;",
+      "  }",
+      "  ." + rootClass + "__axis {",
+      "    grid-column: 1;",
+      "    grid-row: 1 / span 2;",
+      "  }",
+      "  ." + rootClass + "__details {",
+      "    grid-column: 2;",
+      "    grid-row: 2;",
+      "  }",
+      "  ." + rootClass + "__detail-box::before {",
+      "    left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2)));",
+      "    width: calc(var(--jt-gap) + (var(--jt-axis-width) / 2));",
+      "  }",
+      "  ." + rootClass + "__detail-box::after {",
+      "    left: calc(-1 * (var(--jt-gap) + (var(--jt-axis-width) / 2) + (var(--jt-box-connector-ball-size) / 2)));",
       "  }",
       "}"
     ].join("\n");
   }
 
-  /* Updates runtime config and reapplies behavior; params: nextConfig<object>. */
-  function updateConfig(nextConfig) {
-    config = merge(config, nextConfig || {});
+  /* Normalizes selector, element, NodeList, or array into elements; params: selectorOrElements<any>, config<object>. */
+  function normalizeContainers(selectorOrElements, config) {
+    if (!selectorOrElements) {
+      return toArray(document.querySelectorAll(config.selector));
+    }
+
+    if (typeof selectorOrElements === "string") {
+      return toArray(document.querySelectorAll(selectorOrElements));
+    }
+
+    if (isElement(selectorOrElements)) {
+      return [selectorOrElements];
+    }
+
+    if (selectorOrElements.length) {
+      return toArray(selectorOrElements).filter(isElement);
+    }
+
+    return [];
+  }
+
+  /* Checks whether an element is a timeline marker; params: element<Element>, config<object>. */
+  function isTimelineMarker(element, config) {
+    if (!element) return false;
+
+    return config.markerPattern.test((element.textContent || "").trim());
+  }
+
+  /* Collects eligible marker/list pairs with TreeWalker; params: container<Element>, config<object>. */
+  function getEligibleLists(container, config) {
+    var results = [];
+    var rootSelector = "." + escapeCssClass(config.instanceClass);
+    var walker;
+    var node;
+
+    if (!container) return results;
+
+    if (
+      (container.tagName === "UL" || container.tagName === "OL") &&
+      isTimelineMarker(container.previousElementSibling, config)
+    ) {
+      results.push({
+        marker: container.previousElementSibling,
+        list: container
+      });
+
+      return results;
+    }
+
+    walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT);
+
+    while (walker.nextNode()) {
+      node = walker.currentNode;
+
+      if (node.closest(rootSelector)) continue;
+      if (!isTimelineMarker(node, config)) continue;
+
+      var next = node.nextElementSibling;
+
+      if (!next) continue;
+      if (next.dataset.timelineProcessed === "true") continue;
+      if (next.tagName !== "UL" && next.tagName !== "OL") continue;
+
+      results.push({
+        marker: node,
+        list: next
+      });
+    }
+
+    return results;
+  }
+
+  /* Returns direct child lists of an li; params: li<Element>. */
+  function getDirectChildLists(li) {
+    return toArray(li.children).filter(function (element) {
+      return element.tagName === "UL" || element.tagName === "OL";
+    });
+  }
+
+  /* Removes IDs from cloned content to avoid duplicate IDs; params: root<Node>. */
+  function removeDuplicateIds(root) {
+    if (!root || !root.querySelectorAll) return;
+
+    if (root.removeAttribute && root.hasAttribute && root.hasAttribute("id")) {
+      root.removeAttribute("id");
+    }
+
+    toArray(root.querySelectorAll("[id]")).forEach(function (element) {
+      element.removeAttribute("id");
+    });
+  }
+
+  /* Creates a cloned fragment from nodes; params: nodes<Array>. */
+  function createFragmentFromNodes(nodes) {
+    var fragment = document.createDocumentFragment();
+
+    nodes.forEach(function (node) {
+      var cloned = node.cloneNode(true);
+
+      removeDuplicateIds(cloned);
+      fragment.appendChild(cloned);
+    });
+
+    return fragment;
+  }
+
+  /* Returns summary nodes from one root li; params: li<Element>. */
+  function getSummaryNodes(li) {
+    var summaryNodes = [];
+
+    toArray(li.childNodes).forEach(function (node) {
+      if (node.nodeType === 1 && (node.tagName === "UL" || node.tagName === "OL")) return;
+      if (node.nodeType === 3 && !node.textContent.trim()) return;
+
+      summaryNodes.push(node);
+    });
+
+    return summaryNodes;
+  }
+
+  /* Builds summary column; params: li<Element>, index<number>, config<object>. */
+  function buildSummary(li, index, config) {
+    var summary = document.createElement("div");
+    var summaryNodes = getSummaryNodes(li);
+    var wrapper;
+    var fallback;
+
+    summary.className = config.instanceClass + "__summary";
+
+    if (!summaryNodes.length) {
+      fallback = document.createElement("strong");
+      fallback.textContent = config.fallbackTitlePrefix + String(index + 1);
+      summary.appendChild(fallback);
+
+      return summary;
+    }
+
+    wrapper = document.createElement("div");
+    wrapper.appendChild(createFragmentFromNodes(summaryNodes));
+    summary.appendChild(wrapper);
+
+    return summary;
+  }
+
+  /* Builds empty axis column; params: config<object>. */
+  function buildAxis(config) {
+    var axis = document.createElement("div");
+
+    axis.className = config.instanceClass + "__axis";
+
+    return axis;
+  }
+
+  /* Builds detail boxes from nested lists; params: li<Element>, config<object>. */
+  function buildDetails(li, config) {
+    var details = document.createElement("div");
+    var childLists = getDirectChildLists(li);
+
+    details.className = config.instanceClass + "__details";
+
+    if (!childLists.length) return details;
+
+    childLists.forEach(function (list) {
+      var childItems = toArray(list.children).filter(function (child) {
+        return child.tagName === "LI";
+      });
+
+      childItems.forEach(function (item) {
+        var box = document.createElement("div");
+        var rootList = document.createElement("ul");
+        var clonedItem = item.cloneNode(true);
+
+        removeDuplicateIds(clonedItem);
+
+        box.className = config.instanceClass + "__detail-box";
+        rootList.className = config.instanceClass + "__detail-root-list";
+        clonedItem.classList.add(config.instanceClass + "__detail-root-item");
+
+        rootList.appendChild(clonedItem);
+        box.appendChild(rootList);
+        details.appendChild(box);
+      });
+    });
+
+    return details;
+  }
+
+  /* Applies root CSS variables; params: root<Element>, config<object>. */
+  function applyTimelineVars(root, config) {
+    root.style.setProperty("--jt-summary-width", config.summaryWidth);
+    root.style.setProperty("--jt-gap", config.gap);
+    root.style.setProperty("--jt-axis-width", config.axisWidth);
+    root.style.setProperty("--jt-line-width", config.lineWidth);
+    root.style.setProperty("--jt-detail-radius", config.detailRadius);
+    root.style.setProperty("--jt-detail-padding", config.detailPadding);
+    root.style.setProperty("--jt-detail-group-gap", config.detailGroupGap);
+    root.style.setProperty("--jt-left-title-min-height", config.leftTitleMinHeight);
+    root.style.setProperty("--jt-summary-top-line-offset", config.summaryTopLineOffset);
+    root.style.setProperty("--jt-summary-top-line-gap", config.summaryTopLineGap);
+    root.style.setProperty("--jt-summary-top-line-width", config.summaryTopLineWidth);
+    root.style.setProperty("--jt-box-connector-width", config.boxConnectorWidth);
+    root.style.setProperty("--jt-box-connector-ball-size", config.boxConnectorBallSize);
+    root.style.setProperty("--jt-line-color", config.lineColor);
+    root.style.setProperty("--jt-glass-blur", config.glassBlur);
+    root.style.setProperty("--jt-glass-saturate", config.glassSaturate);
+    root.style.setProperty("--jt-glass-fallback-bg", config.glassFallbackBackground);
+    root.dataset.jtGlass = config.glassEnabled ? "true" : "false";
+  }
+
+  /* Applies one event theme; params: event<Element>, theme<object>. */
+  function applyEventTheme(event, theme) {
+    event.style.setProperty("--jt-event-accent", theme.accent);
+    event.style.setProperty("--jt-event-soft", theme.accentSoft || "rgba(88, 183, 216, 0.10)");
+    event.style.setProperty("--jt-event-bg-strong", theme.accentBgStrong || "rgba(88, 183, 216, 0.14)");
+  }
+
+  /* Picks theme from palette; params: config<object>, state<object>. */
+  function pickTheme(config, state) {
+    var palette = config.palette || [];
+    var mode = String(config.detailColorMode || "sequential").toLowerCase();
+    var index;
+
+    if (!palette.length) {
+      return {
+        accent: "#58b7d8",
+        accentSoft: "rgba(88, 183, 216, 0.10)",
+        accentBgStrong: "rgba(88, 183, 216, 0.14)"
+      };
+    }
+
+    if (mode === "random") {
+      if (palette.length === 1) {
+        index = 0;
+      } else {
+        do {
+          index = Math.floor(Math.random() * palette.length);
+        } while (index === state.lastThemeIndex);
+      }
+    } else {
+      index = state.themeCursor % palette.length;
+      state.themeCursor += 1;
+    }
+
+    state.lastThemeIndex = index;
+
+    return palette[index];
+  }
+
+  /* Transforms one list into a timeline; params: list<Element>, marker<Element>, config<object>, state<object>. */
+  function transformList(list, marker, config, state) {
+    var items;
+    var timeline;
+    var hasAnyDetails = false;
+
+    if (!list || list.dataset.timelineProcessed === "true") return null;
+
+    items = toArray(list.children).filter(function (child) {
+      return child.tagName === "LI";
+    });
+
+    if (!items.length) return null;
+
+    list.dataset.timelineProcessed = "true";
+
+    timeline = document.createElement("section");
+    timeline.className = config.instanceClass;
+    timeline.dataset.timelineProcessed = "true";
+
+    applyTimelineVars(timeline, config);
+
+    items.forEach(function (li, itemIndex) {
+      var event = document.createElement("article");
+      var summary = buildSummary(li, itemIndex, config);
+      var axis = buildAxis(config);
+      var details = buildDetails(li, config);
+      var theme = pickTheme(config, state);
+
+      event.className = config.instanceClass + "__event";
+
+      applyEventTheme(event, theme);
+
+      if (details.children.length) {
+        hasAnyDetails = true;
+      }
+
+      event.appendChild(summary);
+      event.appendChild(axis);
+      event.appendChild(details);
+      timeline.appendChild(event);
+    });
+
+    timeline.dataset.jtEmptyDetails = hasAnyDetails ? "false" : "true";
+
+    list.replaceWith(timeline);
+
+    if (marker && marker.parentNode) {
+      marker.parentNode.removeChild(marker);
+    }
+
+    return timeline;
+  }
+
+  /* Applies timeline conversion; params: selectorOrElements<any>, userOptions<object>. */
+  function apply(selectorOrElements, userOptions) {
+    var config = normalizeConfig(merge(activeConfig, userOptions || {}));
+    var containers;
+    var transformed = [];
+    var state = {
+      themeCursor: 0,
+      lastThemeIndex: -1
+    };
+
+    activeConfig = config;
 
     injectStyles(config);
 
-    if (config.autoApply) {
-      apply(config.selector);
+    containers = normalizeContainers(selectorOrElements || config.selector, config);
+
+    containers.forEach(function (container) {
+      var eligible = getEligibleLists(container, config);
+
+      eligible.forEach(function (entry) {
+        var timeline = transformList(entry.list, entry.marker, config, state);
+
+        if (timeline) {
+          transformed.push(timeline);
+        }
+      });
+    });
+
+    return transformed;
+  }
+
+  /* Updates existing timeline CSS variables; params: config<object>. */
+  function updateExistingTimelines(config) {
+    var selector = "." + escapeCssClass(config.instanceClass);
+    var timelines = toArray(document.querySelectorAll(selector));
+
+    timelines.forEach(function (timeline) {
+      applyTimelineVars(timeline, config);
+    });
+  }
+
+  /* Updates runtime config; params: nextConfig<object>, runtimeOptions<object>. */
+  function updateConfig(nextConfig, runtimeOptions) {
+    var controls = runtimeOptions || {};
+    var safeConfig = merge({}, nextConfig || {});
+
+    delete safeConfig.instanceClass;
+
+    activeConfig = normalizeConfig(merge(activeConfig, safeConfig));
+
+    injectStyles(activeConfig);
+    updateExistingTimelines(activeConfig);
+
+    if (controls.apply !== false && activeConfig.autoApply) {
+      apply(activeConfig.selector);
     }
 
     return getConfig();
   }
 
-  /* Returns a copy of active config; params: none. */
+  /* Returns active config copy; params: none. */
   function getConfig() {
-    return merge({}, config);
+    return merge({}, activeConfig);
   }
 
-  /* Clears floating UI and optionally unwraps marks; params: options<object>. */
-  function clear(options) {
-    const opts = merge({ unwrapMarks: false }, options || {});
-
-    if (opts.unwrapMarks) {
-      unwrapMarks(config);
-    }
-
-    if (panelEl && panelEl.parentNode) {
-      panelEl.parentNode.removeChild(panelEl);
-    }
-
-    if (triggerEl && triggerEl.parentNode) {
-      triggerEl.parentNode.removeChild(triggerEl);
-    }
-
-    panelEl = null;
-    listEl = null;
-    triggerEl = null;
-    dragOffsetX = 0;
-    dragOffsetY = 0;
-  }
-
-  /* Replaces generated marks with plain text; params: runtimeConfig<object>. */
-  function unwrapMarks(runtimeConfig) {
-    const selector = "." + escapeCssClass(runtimeConfig.markClass);
-    const marks = toArray(document.querySelectorAll(selector));
-
-    marks.forEach(function (mark) {
-      mark.replaceWith(document.createTextNode(mark.textContent || ""));
-    });
-  }
-
-  /* Runs plug-and-play behavior when DOM is ready; params: none. */
+  /* Runs automatic startup; params: none. */
   function onReady() {
-    if (!config.autoApply) return;
+    if (!activeConfig.autoApply) return;
 
-    apply(config.selector);
+    apply(activeConfig.selector);
   }
 
-  window.TodoSummary = {
+  activeConfig = normalizeConfig(DEFAULT_CONFIG);
+
+  window.JekyllTimeline = {
     apply: apply,
+    init: apply,
     updateConfig: updateConfig,
     getConfig: getConfig,
-    clear: clear
+    defaults: merge({}, DEFAULT_CONFIG)
   };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", onReady);
+    document.addEventListener("DOMContentLoaded", onReady, { once: true });
   } else {
     onReady();
   }

@@ -15,12 +15,12 @@ permalink: /posts
 
 <h1 class="ascii_title">瞧！那个垃圾</h1>
 
-<img src="images/sumimaro.png" alt="sumimaro" style="float: right; max-width: 180px; margin: 5px;">
+<img src="images/sumimaro.png" alt="sumimaro" style="float: right; max-width: 160px; margin: 5px;">
 
-#### 我为什么这么愚蠢
+#### 为什么我这么愚蠢？
 
-#### 我为什么这么笨拙
+#### 为什么我这么笨拙？
 
-#### 我为什么如此缺少知识
+#### 为什么我如此缺少知识？
 
-#### 垃圾写的东西还是垃圾。不过，世界上也不缺一个格子间过劳死的垃圾。
+#### 为什么我写得这么垃圾。不过，世界上也不缺在狗屁工作上内卷内耗的垃圾。

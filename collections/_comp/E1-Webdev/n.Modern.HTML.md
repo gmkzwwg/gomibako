@@ -1,5 +1,5 @@
 ---
-title: Modern HTML - Quick Reference Guide
+title: Modern HTML - Quick Reference
 categories: Notes
 subclass: Webdev
 ---
@@ -292,7 +292,7 @@ The most productive professional stance is:
 | Enhancement-oriented  | Keep baseline content and workflows resilient where practical                    |
 
 **Bottom line:** HTML is easy to start and hard to master because its correctness is distributed across parsing, semantics, accessibility, resource loading, security, compatibility, and maintainability. Professional HTML is not verbose markup; it is precise markup.
-## PART 2 — Quick Reference Guide
+## PART 2 — Quick Reference
 
 This installment covers the first slice of the requested **HTML5 professional reference**: document structure, metadata, content categories, semantic element selection, links, and images. It follows the requested coverage-first, matrix-heavy format for **Modern HTML5 in current evergreen browsers**. 
 

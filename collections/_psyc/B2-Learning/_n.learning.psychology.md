@@ -3,6 +3,7 @@ title: Learning Psychology
 layout: post
 categories: Notes
 subclass: Learning
+reference:
+  - Learning
 ---
 
-> Main reference: [1. Learning]

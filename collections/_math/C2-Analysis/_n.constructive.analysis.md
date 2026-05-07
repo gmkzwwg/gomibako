@@ -3,6 +3,7 @@ title: Constructive Analysis
 layout: post
 categories: Notes
 subclass: Analysis
+reference:
+  - Bishop
 ---
 
-> Main reference: [1. Bishop]

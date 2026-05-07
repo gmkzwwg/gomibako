@@ -1,5 +1,5 @@
 ---
-title: Linux Tools Developing - Quick Reference and Minimal Tutorial
+title: Linux Tools Developing - Quick Reference
 layout: post
 categories: Sheet
 subclass: Operating Tools
