@@ -6660,3 +6660,2773 @@ The professional Lean rule for PART 5 is:
 
 A maintainable Lean project does not merely compile. It has clear imports, searchable names, stable public theorem contracts, controlled automation, explicit failure models, isolated effects, audited assumptions, and theorem statements shaped for downstream use.
 
+## PART 6 — Standard Library and Core Ecosystem Reference by Task Pattern
+
+### Purpose and Scope — Lean’s library ecosystem is part of the language
+
+PART 6 explains Lean 4’s standard library and core ecosystem by **task pattern**. For Lean 4, this cannot be a generic tour of files, paths, dates, networking, and command-line APIs. Lean’s practical ecosystem is centered on `Init`, `Std`, `Mathlib`, `Lake`, theorem search, tactic infrastructure, project configuration, editor feedback, and library hierarchy.
+
+This follows the uploaded tutorial specification’s requirement that Lean 4 be explained as a library-centered proof environment whose mastery depends on imports, theorem search, namespaces, rewriting with existing lemmas, structures, typeclasses, and avoiding reproving standard results .
+
+Lean’s official reference describes Lean as an interactive theorem prover based on dependent type theory, designed for both mathematics and software verification, with a small kernel that checks proof terms. This matters for PART 6 because the “library” is not merely a collection of runtime APIs; it is a large environment of definitions, theorems, instances, tactics, notation, and automation that the elaborator and kernel interact with. ([Lean Language][1])
+
+`Mathlib` is especially central. Its repository describes it as the user-maintained Lean theorem-prover library containing mathematics, programming infrastructure, and tactics. ([GitHub][2]) `Lake` is the standard Lean build tool responsible for configuring builds, building Lean code, fetching/building dependencies, integrating with Reservoir, and running workflows such as tests and linters. ([Lean Language][3])
+
+### Ecosystem Map — what counts as “standard” in Lean practice
+
+| Layer                 | Main components                                                       | Role                                                       | Practical consequence                                                      |
+| --------------------- | --------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Core language         | parser, elaborator, kernel, compiler                                  | Defines and checks Lean terms                              | Proof correctness depends on elaborated terms being accepted by the kernel |
+| `Init`                | foundational Lean definitions                                         | Core types, basic classes, primitive infrastructure        | Available at the base of Lean developments                                 |
+| `Std`                 | standard library beyond core foundations                              | Data structures, utilities, programming infrastructure     | Useful for executable Lean and reusable programming components             |
+| `Mathlib`             | mathematical library, tactics, infrastructure                         | Algebra, order, topology, analysis, data, proof automation | Serious formal mathematics usually happens here                            |
+| Tactic ecosystem      | `simp`, `rw`, `ring`, `omega`, `linarith`, `aesop`, `norm_num`, etc.  | Proof automation by problem fragment                       | Tactic choice is part of proof engineering                                 |
+| Build/project system  | `Lake`, `lean-toolchain`, dependency manifest                         | Reproducible project environment                           | Code must be read relative to its pinned toolchain                         |
+| Editor tooling        | VS Code extension / language server workflow                          | Goal state, diagnostics, hover, completion                 | Interactive feedback is part of Lean practice                              |
+| Documentation/search  | generated Mathlib docs, source search, `#check`, theorem search tools | Find definitions and lemmas                                | Library literacy is central to productivity                                |
+| Community conventions | naming, theorem style, simp discipline, hierarchy design              | Maintains large formal ecosystem                           | Idiomatic Lean is partly ecosystem convention                              |
+
+**Design meaning:** in Lean, the ecosystem is not external decoration. It shapes what terms elaborate, what notation means, what instances are found, what proofs can be automated, and which theorem statements are reusable.
+
+### Task: Choose the Right Library Layer — `Init`, `Std`, `Mathlib`, or local code
+
+| Task                            | Prefer                                    | Why                                                | Common mistake                                      |
+| ------------------------------- | ----------------------------------------- | -------------------------------------------------- | --------------------------------------------------- |
+| Minimal language/theory example | Core Lean / `Init`                        | Avoids unnecessary imports                         | Accidentally depending on Mathlib features          |
+| General programming utility     | `Std` where available                     | Standard reusable data/tools                       | Reimplementing common data structures               |
+| Serious mathematics             | `Mathlib`                                 | Existing definitions, theorems, hierarchy, tactics | Building parallel mathematical universe             |
+| Project-specific concept        | Local namespace/module                    | Domain-specific abstraction                        | Making it too local when Mathlib already has it     |
+| Pedagogical reconstruction      | Local definitions plus bridge lemmas      | Mirrors textbook or concept formation              | Treating local model as final ecosystem abstraction |
+| Executable application          | Core + `Std` + selected external packages | Runtime and data-structure support                 | Pulling in heavy math imports unnecessarily         |
+| Proof automation                | Mathlib tactics/imports                   | Solves standard proof fragments                    | Using tactics without matching goal fragment        |
+
+A minimal proof can use core Lean:
+
+```lean id="v8ppgn"
+example (P : Prop) : P → P := by
+  intro h
+  exact h
+```
+
+A typical Mathlib mathematical proof imports broader infrastructure:
+
+```lean id="c7t5uw"
+import Mathlib
+
+example {R : Type} [CommRing R] (a b : R) :
+    (a + b) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2 := by
+  ring
+```
+
+The second example depends on algebraic hierarchy and tactics that are not merely surface syntax. The import controls whether the names, classes, notation, and tactic are available.
+
+**Professional rule:** use the smallest library layer that supports the concept without damaging readability or reuse. In teaching, `import Mathlib` is acceptable for breadth. In stable library code, targeted imports and clear dependencies matter more.
+
+**Common Pitfalls**
+
+| Pitfall                                        | Explanation                                      | Better habit                                    |
+| ---------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- |
+| Treating `Mathlib` as optional for mathematics | Most serious Lean mathematics relies on it       | Learn Mathlib search and hierarchy early        |
+| Reimplementing standard structures             | Existing lemmas and tactics will not apply       | Search before defining                          |
+| Using `import Mathlib` to hide uncertainty     | It masks dependency structure                    | Explore broadly, then refine imports            |
+| Avoiding Mathlib for purity                    | You lose the actual formal mathematics ecosystem | Use core Lean only when minimalism is the point |
+
+### Task: Manage Projects and Dependencies — `Lake`, `lean-toolchain`, package layout
+
+Lean project work is normally organized through `Lake` and a pinned toolchain. `Lake` is the standard Lean build tool and package manager, and official documentation lists build configuration, dependency fetching/building, Reservoir integration, and development workflows among its responsibilities. ([Lean Language][3])
+
+| Project task                 | Tool/file                                     | Purpose                                            |
+| ---------------------------- | --------------------------------------------- | -------------------------------------------------- |
+| Pin Lean version             | `lean-toolchain`                              | Makes project version explicit                     |
+| Configure package            | `lakefile.lean` or Lake configuration         | Defines package, dependencies, targets             |
+| Record dependencies          | `lake-manifest.json`                          | Captures resolved dependency versions              |
+| Build project                | `lake build`                                  | Elaborates/checks/compiles project targets         |
+| Fetch dependencies           | Lake update/get mechanisms                    | Makes dependencies available                       |
+| Add Mathlib project template | Lake project templates where available        | Initialize standard Lean/Mathlib project structure |
+| Run executable               | Lake target / `lean --run` depending on setup | Execute Lean program                               |
+| Run workflow                 | Lake scripts, linters, tests when configured  | Project automation                                 |
+
+A Lean project should be read as a versioned artifact, not a collection of free-floating `.lean` files. This matters for uploaded code directories: a directory containing Lean source can be useful for reading and extracting theorem anchors, but building it requires the project root metadata.
+
+**Canonical project-reading questions:**
+
+| Question                                                                  | Why it matters                                  |
+| ------------------------------------------------------------------------- | ----------------------------------------------- |
+| What Lean version is pinned?                                              | Elaborator, syntax, library behavior may differ |
+| Is Mathlib a dependency?                                                  | Determines available mathematics and tactics    |
+| What module imports this file?                                            | A file may depend on local project declarations |
+| Is this file meant as library, executable, exercise, or generated source? | Style and assumptions differ                    |
+| Are there `sorry`s?                                                       | Proof completeness differs                      |
+| Are imports broad or targeted?                                            | Affects maintainability and build cost          |
+| Are theorem statements local or Mathlib-facing?                           | Determines reuse strategy                       |
+
+**Common Pitfalls**
+
+| Pitfall                                   | Explanation                              | Better habit                              |
+| ----------------------------------------- | ---------------------------------------- | ----------------------------------------- |
+| Running a file outside its Lake project   | Module imports may fail                  | Work from the project root                |
+| Ignoring `lean-toolchain`                 | Global Lean version may mismatch         | Use project-pinned toolchain              |
+| Treating build failure as theorem failure | It may be dependency/configuration issue | Separate project errors from proof errors |
+| Copying snippets without imports          | Tactics/notation/classes may be missing  | Copy required imports and assumptions     |
+
+### Task: Import Modules Intentionally — availability, dependency cost, and proof behavior
+
+Imports affect the environment. They may bring declarations, notation, instances, attributes, tactics, and simp lemmas.
+
+| Import pattern       | Example                                            | Strength                       | Cost                                   |
+| -------------------- | -------------------------------------------------- | ------------------------------ | -------------------------------------- |
+| Full Mathlib         | `import Mathlib`                                   | Everything common is available | Heavy and dependency-obscuring         |
+| Tactic-focused       | `import Mathlib.Tactic` or relevant tactic modules | Access proof automation        | May not import all mathematical theory |
+| Domain-focused       | algebra/order/topology/analysis modules            | Clear conceptual dependency    | Requires module knowledge              |
+| Local project import | `import MyProject.Basic`                           | Reuse local definitions        | Depends on project module graph        |
+| Core-only            | no Mathlib import                                  | Minimal examples               | Many tactics/theorems unavailable      |
+
+Example:
+
+```lean id="3q9bxk"
+import Mathlib
+
+#check Nat.add_zero
+#check List.length_append
+```
+
+The import is not a passive include. It changes what theorem names and tactics Lean can find.
+
+**Professional import strategy:**
+
+| Development stage           | Import strategy                                    |
+| --------------------------- | -------------------------------------------------- |
+| Exploration                 | Broad imports are acceptable                       |
+| Tutorial writing            | Broad imports avoid irrelevant setup friction      |
+| Library-quality file        | Prefer targeted imports                            |
+| Performance-sensitive build | Minimize unnecessary imports                       |
+| Debugging missing names     | Search defining module                             |
+| Refactoring                 | Replace broad imports with specific ones gradually |
+
+**Common Pitfalls**
+
+| Pitfall                                       | Explanation                                               | Better habit                              |
+| --------------------------------------------- | --------------------------------------------------------- | ----------------------------------------- |
+| Thinking import only adds names               | It also affects notation, instances, simp lemmas, tactics | Treat import as environment change        |
+| Fighting missing theorem that is not imported | The theorem may exist elsewhere                           | Search docs/source                        |
+| Depending on accidental imports               | Another import may re-export what you need today          | Import the conceptual dependency directly |
+| Over-optimizing imports during early learning | Slows conceptual progress                                 | Use broad imports first, refine later     |
+
+### Task: Find Theorems — `#check`, theorem shape, search tools, and source reading
+
+The most important Lean ecosystem skill is finding existing facts. Since the Mathlib repository explicitly includes mathematics, programming infrastructure, and tactics, theorem search is a normal part of Lean programming, not an optional convenience. ([GitHub][2])
+
+| Search task                    | Tool/habit                      | What it gives                   |
+| ------------------------------ | ------------------------------- | ------------------------------- |
+| Inspect known name             | `#check name`                   | Type/statement                  |
+| Expose implicit arguments      | `#check @name`                  | Full parameter structure        |
+| Inspect definition/theorem     | `#print name`                   | Declaration details             |
+| Search docs by name            | generated Mathlib documentation | Namespaces and statements       |
+| Search by symbol               | docs/source grep                | Candidate lemmas                |
+| Ask for exact proof suggestion | `exact?` where available        | Candidate term closing goal     |
+| Ask for apply suggestion       | `apply?` where available        | Candidate theorem reducing goal |
+| Inspect current goal           | editor goal view                | Expected proposition/type       |
+| Search source nearby           | namespace/source file           | Related lemmas                  |
+| Use theorem statement pattern  | identify conclusion shape       | Better query terms              |
+
+Examples:
+
+```lean id="a2x9i5"
+#check Nat.add_zero
+#check @Nat.add_zero
+#check List.length_append
+```
+
+A practical theorem-search workflow:
+
+| Step                                            | Question                                                                               |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Identify main symbol                            | Is the theorem about `Nat.add`, `List.length`, membership, map, group inverse, limits? |
+| Identify conclusion shape                       | Equality, implication, iff, membership, inequality, existence?                         |
+| Identify namespace                              | `Nat`, `List`, `Set`, algebraic structure, topology namespace?                         |
+| Inspect theorem names nearby                    | Similar theorem families often share prefixes                                          |
+| Check implicit assumptions                      | Is a typeclass or decidability assumption needed?                                      |
+| Try exact/apply suggestions                     | Use suggestions as search, not as blind proof                                          |
+| Refactor theorem statement if mismatch persists | Maybe the goal is not library-shaped                                                   |
+
+Example of theorem-shape alignment:
+
+```lean id="vrgs27"
+example {α : Type} (xs ys : List α) :
+    (xs ++ ys).length = xs.length + ys.length := by
+  simpa using List.length_append xs ys
+```
+
+If the goal is shaped differently, `simpa using` can bridge routine simplification:
+
+```lean id="q5ra6r"
+example {α : Type} (xs ys : List α) :
+    List.length (xs ++ ys) = xs.length + ys.length := by
+  simpa using List.length_append xs ys
+```
+
+**Common Pitfalls**
+
+| Pitfall                                  | Explanation                                          | Better habit                                                       |
+| ---------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
+| Searching only by English concept        | The theorem name may use symbolic/library vocabulary | Search by main constant and conclusion shape                       |
+| Reproving facts because search is hard   | Creates local duplicates                             | Spend time learning namespace conventions                          |
+| Using suggested proof blindly            | May be brittle or unreadable                         | Use suggestions to discover theorem names                          |
+| Ignoring implicit assumptions in theorem | Application fails mysteriously                       | Inspect `#check @theorem`                                          |
+| Searching too long for a tiny local fact | Time tradeoff matters                                | Prove local helper if simpler, but avoid duplicating central facts |
+
+### Task: Read Theorem Statements — variables, typeclasses, conclusion, and hidden structure
+
+Mathlib theorem statements can be dense. Reading them requires a disciplined parse.
+
+Example:
+
+```lean id="282mn5"
+#check List.length_append
+```
+
+A typical theorem statement contains:
+
+| Component                | What to identify                                       |
+| ------------------------ | ------------------------------------------------------ |
+| Universe/type parameters | `{α : Type u}`                                         |
+| Typeclass assumptions    | `[Group G]`, `[LinearOrder α]`, `[TopologicalSpace X]` |
+| Explicit variables       | `(xs ys : List α)`                                     |
+| Hypotheses               | `(h : P)`                                              |
+| Target relation          | equality, iff, order, membership, existence            |
+| Implicit arguments       | hidden with braces or inferable                        |
+| Namespace                | where theorem belongs conceptually                     |
+| Rewrite orientation      | left-to-right usefulness                               |
+| Simp status              | whether simplifier uses it automatically               |
+
+Example algebraic theorem use:
+
+```lean id="0kh82e"
+example {G : Type} [Group G] (a : G) : a * 1 = a := by
+  simp
+```
+
+The theorem statement implicitly depends on group laws supplied by `[Group G]`. A reader should not interpret `*` and `1` as primitive syntax; they are notation resolved through typeclass infrastructure.
+
+**Reading checklist:**
+
+| Question                                                          | Why it matters                         |
+| ----------------------------------------------------------------- | -------------------------------------- |
+| What type is being generalized over?                              | Determines applicability               |
+| Which structures are required?                                    | Explains notation and available lemmas |
+| Which arguments are implicit?                                     | Explains application behavior          |
+| Is the theorem computational, logical, algebraic, or topological? | Determines likely proof/tactic use     |
+| Does the conclusion rewrite in the desired direction?             | Determines `rw` usefulness             |
+| Is the theorem already a simp lemma?                              | Determines whether `simp` may use it   |
+| Is the theorem too general or too specific for current goal?      | Guides statement refactoring           |
+
+**Common Pitfalls**
+
+| Pitfall                                     | Explanation                                   | Better habit                                 |
+| ------------------------------------------- | --------------------------------------------- | -------------------------------------------- |
+| Reading `[Group G]` as optional annotation  | It is required structure                      | Treat typeclass assumptions as real premises |
+| Ignoring hidden arguments                   | The theorem may need inferred types/instances | Use `#check @name`                           |
+| Misreading theorem orientation              | `lhs = rhs` matters for rewriting             | Choose `rw [← theorem]` when needed          |
+| Treating a theorem name as self-explanatory | Names are compressed                          | Read the full statement                      |
+
+### Task: Use Namespaces and Documentation — source navigation as ecosystem skill
+
+Generated documentation and source navigation are central to Lean work. Mathlib documentation exposes imports, declarations, and source links; the Mathlib docs page shows the library as a large module hierarchy rather than a flat API list. ([leanprover-community.github.io][4])
+
+| Navigation need                | Tool/habit                                           | Example                                  |
+| ------------------------------ | ---------------------------------------------------- | ---------------------------------------- |
+| Find declarations by namespace | docs search / source tree                            | `List`, `Set`, `Nat`, algebra namespaces |
+| Inspect theorem source         | doc source links                                     | See imports and proof style              |
+| Discover related lemmas        | same namespace/file                                  | `length_append`, `map_append`, etc.      |
+| Understand notation            | hover / `#check` / source                            | See underlying declaration               |
+| Find tactic docs               | tactic modules/docs / `#help tactic` where available | Tactic behavior and syntax               |
+| Read examples                  | source files and tests                               | Pattern of idiomatic usage               |
+
+**Professional source-reading pattern:**
+
+| Source region            | What to look for                  |
+| ------------------------ | --------------------------------- |
+| Imports                  | What environment the file expects |
+| Namespace                | Conceptual location               |
+| Definitions              | Data and specification objects    |
+| Simp lemmas              | Normal forms                      |
+| Theorems near definition | Intended API                      |
+| Instances                | Typeclass integration             |
+| Attributes               | Automation behavior               |
+| Examples/tests           | Expected usage                    |
+| `private` helpers        | Implementation proof structure    |
+
+**Common Pitfalls**
+
+| Pitfall                                           | Explanation                                    | Better habit                             |
+| ------------------------------------------------- | ---------------------------------------------- | ---------------------------------------- |
+| Reading docs as flat API                          | Lean libraries are namespace/module structured | Navigate by concept and namespace        |
+| Ignoring source proofs                            | Proof style reveals intended use               | Read nearby proofs for patterns          |
+| Copying theorem without imports                   | The doc theorem may require module context     | Import defining module or broader domain |
+| Searching theorem names without knowing namespace | Names are often namespace-relative             | Identify main symbol first               |
+
+### Task: Use Core Data Structures — lists, arrays, options, exceptions, strings
+
+Lean’s practical programming ecosystem includes standard data types and utilities. For theorem proving, their proof support matters as much as their runtime behavior.
+
+| Task                       | Common construct | Use                                       | Proof consequence                            |
+| -------------------------- | ---------------- | ----------------------------------------- | -------------------------------------------- |
+| Recursive sequence         | `List α`         | symbolic data, proofs, simple collections | strong induction and many lemmas             |
+| Efficient indexed sequence | `Array α`        | executable algorithms                     | proof may need array-specific lemmas         |
+| Optional result            | `Option α`       | partial computation                       | pattern matching or monadic composition      |
+| Recoverable error          | `Except ε α`     | validation/parsing                        | explicit success/failure cases               |
+| Text                       | `String`         | executable text handling                  | theorem support less central than math types |
+| Character                  | `Char`           | low-level text                            | programming-oriented                         |
+| Pair/product               | `α × β`          | lightweight bundling                      | projections `.1`, `.2`                       |
+| Subtype                    | `{x : α // P x}` | invariant-carrying data                   | proof obligations and coercions              |
+| Finite index               | `Fin n`          | safe bounded indexing                     | bound proofs                                 |
+
+Example with `Option`:
+
+```lean id="lntbsn"
+def safeHead {α : Type} : List α → Option α
+  | [] => none
+  | x :: _ => some x
+```
+
+Example with `Except`:
+
+```lean id="3hqn00"
+def requireNonempty {α : Type} : List α → Except String {xs : List α // xs ≠ []}
+  | [] => .error "empty list"
+  | x :: xs => .ok ⟨x :: xs, by simp⟩
+```
+
+Example with array indexing by `Fin`:
+
+```lean id="radqgg"
+def getArray {α : Type} (xs : Array α) (i : Fin xs.size) : α :=
+  xs[i]
+```
+
+**Design meaning:** standard data structures are not interchangeable. `List` is proof-friendly and inductive. `Array` is execution-friendly. `Option` and `Except` make failure explicit. `Fin` moves bounds into types.
+
+**Common Pitfalls**
+
+| Pitfall                                                | Explanation               | Better habit                        |
+| ------------------------------------------------------ | ------------------------- | ----------------------------------- |
+| Using `Array` where induction over sequence is central | Proofs may be less direct | Use `List` unless execution matters |
+| Using `List` where efficient random access matters     | Runtime cost may be poor  | Use `Array` for algorithmic code    |
+| Using `Option` when failure reason matters             | `none` loses diagnostics  | Use `Except`                        |
+| Returning raw value after validation                   | Invariant proof lost      | Return subtype/structure            |
+
+### Task: Use Collections for Mathematics — `Set`, `Finset`, lists, functions
+
+Mathematical collection reasoning differs from executable collection programming.
+
+| Mathematical task    | Construct   | Meaning                                                | Common proof method                  |
+| -------------------- | ----------- | ------------------------------------------------------ | ------------------------------------ |
+| Arbitrary set        | `Set α`     | predicate `α → Prop`                                   | membership unfolding, extensionality |
+| Finite set           | `Finset α`  | finite collection without duplicates/order abstraction | membership lemmas, finite reasoning  |
+| Ordered sequence     | `List α`    | order and duplicates matter                            | induction, list lemmas               |
+| Indexed family       | `ι → α`     | function from index type                               | pointwise reasoning                  |
+| Sequence             | `Nat → α`   | function over natural numbers                          | quantifiers over indices             |
+| Bounded index family | `Fin n → α` | finite indexed family                                  | finite/domain reasoning              |
+| Predicate            | `α → Prop`  | property/classification                                | logic and rewriting                  |
+
+Set example:
+
+```lean id="7klid4"
+example {α : Type} (s t : Set α)
+    (h : ∀ x, x ∈ s ↔ x ∈ t) : s = t := by
+  ext x
+  exact h x
+```
+
+Finset example:
+
+```lean id="3tvc6n"
+example : (2 : Nat) ∈ ({1, 2, 3} : Finset Nat) := by
+  simp
+```
+
+List example:
+
+```lean id="4f2pqi"
+example {α : Type} (xs ys : List α) :
+    (xs ++ ys).length = xs.length + ys.length := by
+  simp
+```
+
+Function-family example:
+
+```lean id="at1cfk"
+def IsConstant {α : Type} (u : Nat → α) : Prop :=
+  ∀ m n, u m = u n
+```
+
+**Design tradeoff:** `Set α` is excellent for mathematical membership and extensionality, but it is not an executable finite container. `Finset α` supports finite set reasoning but carries decidability/finiteness constraints. `List α` supports recursion and order-sensitive reasoning. Functions model families and sequences naturally.
+
+**Common Pitfalls**
+
+| Pitfall                                         | Explanation                                     | Better habit                                  |
+| ----------------------------------------------- | ----------------------------------------------- | --------------------------------------------- |
+| Expecting `Set α` to enumerate elements         | It is predicate-like                            | Use `Finset` or `List` for finite enumeration |
+| Using `List` for set reasoning                  | Duplicates/order create unnecessary obligations | Use `Set`/`Finset` when appropriate           |
+| Using `Finset` without decidability assumptions | Some operations need decidable equality         | Add `[DecidableEq α]` where required          |
+| Confusing sequence with list                    | A sequence in analysis is often `Nat → α`       | Use functions for infinite indexed families   |
+
+### Task: Use Algebraic Hierarchy — semigroups, monoids, groups, rings
+
+Mathlib’s algebraic hierarchy is one of the main reasons to use the ecosystem instead of local ad hoc structures.
+
+| Mathematical need          | Typical assumption            | Gives access to                    | Tactics/lemmas                           |
+| -------------------------- | ----------------------------- | ---------------------------------- | ---------------------------------------- |
+| Associative multiplication | `[Semigroup M]`               | `*`, associativity                 | associativity lemmas                     |
+| Identity element           | `[Monoid M]`                  | `1`, identity laws                 | `simp`                                   |
+| Inverses                   | `[Group G]`                   | `⁻¹`, cancellation/inverse laws    | `simp`, group lemmas                     |
+| Additive identity          | `[AddMonoid M]`               | `+`, `0`, additive laws            | `simp`                                   |
+| Semiring                   | `[Semiring R]`                | `+`, `*`, `0`, `1`, distributivity | `ring` where applicable                  |
+| Ring                       | `[Ring R]`                    | subtraction, negation              | `ring`, algebra lemmas                   |
+| Commutative ring           | `[CommRing R]`                | commutative multiplication         | stronger `ring` normalization            |
+| Ordered algebra            | ordered ring/semiring classes | inequalities plus algebra          | `linarith`, `nlinarith` where applicable |
+
+Examples:
+
+```lean id="ci0qyg"
+example {M : Type} [Monoid M] (a : M) : a * 1 = a := by
+  simp
+```
+
+```lean id="vllz85"
+example {G : Type} [Group G] (a : G) : a * a⁻¹ = 1 := by
+  simp
+```
+
+```lean id="3zqp6m"
+example {R : Type} [CommRing R] (a b : R) :
+    (a + b) * (a - b) = a ^ 2 - b ^ 2 := by
+  ring
+```
+
+**Professional rule:** state the weakest algebraic structure that supplies the operations and laws needed. If the proof only uses monoid laws, do not require a group. If it needs commutativity, state that.
+
+**Common Pitfalls**
+
+| Pitfall                                  | Explanation                               | Better habit                        |
+| ---------------------------------------- | ----------------------------------------- | ----------------------------------- |
+| Defining custom algebraic structures     | Existing lemmas and notation do not apply | Use Mathlib hierarchy               |
+| Requiring stronger structure than needed | The theorem applies less generally        | Use weakest adequate class          |
+| Forgetting typeclass assumptions         | Notation and lemmas unavailable           | Add `[Monoid M]`, `[Group G]`, etc. |
+| Expecting `ring` to solve non-ring goals | Tactic has a domain                       | Match tactic to algebraic fragment  |
+
+### Task: Use Order and Inequality Infrastructure — preorders, linear orders, arithmetic tactics
+
+Order reasoning appears in arithmetic, analysis, algorithms, and set inclusion.
+
+| Task                                                | Library structure/tactic     | Use                               |
+| --------------------------------------------------- | ---------------------------- | --------------------------------- |
+| Abstract transitivity                               | `[Preorder α]`, order lemmas | General order reasoning           |
+| Total comparison                                    | `[LinearOrder α]`            | Case splits by order              |
+| Natural/integer linear arithmetic                   | `omega`                      | Presburger arithmetic-style goals |
+| Linear arithmetic over ordered algebraic structures | `linarith`                   | Linear inequalities/equalities    |
+| Some nonlinear arithmetic                           | `nlinarith`                  | Polynomial-like inequalities      |
+| Numeric normalization                               | `norm_num`                   | Concrete numerals                 |
+| Monotonicity                                        | monotone lemmas / order APIs | Functions preserving order        |
+| Set inclusion                                       | `s ⊆ t`                      | Predicate implication             |
+
+Examples:
+
+```lean id="eyz73u"
+example {α : Type} [Preorder α] (a b c : α)
+    (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c :=
+  le_trans hab hbc
+```
+
+```lean id="hthxpx"
+example (a b : Int) (h : a ≤ b) : a + 5 ≤ b + 5 := by
+  omega
+```
+
+```lean id="1tvy8s"
+example (a b c : Int) (h₁ : a ≤ b) (h₂ : b ≤ c) : a ≤ c := by
+  omega
+```
+
+**Design meaning:** order reasoning depends on the domain. `Nat`, `Int`, ordered rings, abstract preorders, and topological/order structures have different lemma ecosystems.
+
+**Common Pitfalls**
+
+| Pitfall                                        | Explanation                            | Better habit                                                  |
+| ---------------------------------------------- | -------------------------------------- | ------------------------------------------------------------- |
+| Using arithmetic tactics on abstract orders    | No arithmetic structure exists         | Use order lemmas                                              |
+| Using `ring` for inequalities                  | `ring` proves equalities               | Use order/arithmetic tactics                                  |
+| Forgetting `Nat` subtraction behavior          | Truncated subtraction changes goals    | Use `Int` or appropriate lemmas when signed reasoning matters |
+| Assuming total order when only preorder exists | Case splits may require stronger class | Add `[LinearOrder α]` only if needed                          |
+
+### Task: Use Rewriting and Simplification Ecosystem — simp lemmas, normal forms, and local control
+
+`rw` and `simp` are central ecosystem mechanisms. The library supplies many rewrite and simplification lemmas; imports and attributes determine what is available.
+
+| Task                              | Tool                | Use                                               |
+| --------------------------------- | ------------------- | ------------------------------------------------- |
+| Rewrite by known equality         | `rw [lemma]`        | Directed transformation                           |
+| Reverse rewrite                   | `rw [← lemma]`      | Opposite direction                                |
+| Normalize routine facts           | `simp`              | Identities, projections, membership, simple logic |
+| Add local definition/lemma        | `simp [f, h]`       | Controlled unfolding/use                          |
+| Simplify hypothesis               | `simp at h`         | Clean context                                     |
+| Use theorem modulo simplification | `simpa using h`     | Convert theorem shape                             |
+| Control simp set                  | `simp only [...]`   | Debug/predict simplification                      |
+| Register normal form              | `@[simp] lemma ...` | Ecosystem-wide normalization                      |
+
+Example:
+
+```lean id="ckrxdc"
+example (n : Nat) : n + 0 = n := by
+  simp
+```
+
+```lean id="qn39vy"
+example (a b : Nat) (h : a = b) : a + 1 = b + 1 := by
+  rw [h]
+```
+
+```lean id="767lgl"
+def eraseZero (n : Nat) : Nat :=
+  n + 0
+
+example (n : Nat) : eraseZero n = n := by
+  simp [eraseZero]
+```
+
+**Simp lemma design:**
+
+| Good simp lemma                                 | Bad simp lemma                          |
+| ----------------------------------------------- | --------------------------------------- |
+| Removes neutral element                         | Adds neutral element                    |
+| Unfolds stable wrapper to canonical form        | Expands large implementation detail     |
+| Simplifies projection                           | Rewrites back and forth                 |
+| Converts membership in set-builder to predicate | Introduces noncanonical equivalent form |
+| Reduces concrete match on constructor           | Expands abstract API                    |
+
+**Common Pitfalls**
+
+| Pitfall                                 | Explanation                       | Better habit                               |
+| --------------------------------------- | --------------------------------- | ------------------------------------------ |
+| Treating `simp` as general intelligence | It follows rewrite rules          | Know the normal form                       |
+| Adding global `[simp]` too freely       | Affects all future proofs         | Use local `simp [lemma]` first             |
+| Hiding central proof step in `simp`     | Reader loses mathematical idea    | Use `rw` or `calc` for central step        |
+| Import-dependent simp behavior          | Different imports change simp set | Use explicit simp lemmas for robust proofs |
+
+### Task: Use Tactic Ecosystem by Problem Type — proof automation as specialized tooling
+
+Lean tactics are problem-specific tools. Mathlib includes tactics as part of its ecosystem; Mathlib’s repository explicitly says it includes tactics in addition to mathematics and programming infrastructure. ([GitHub][2])
+
+| Problem type                      | Tactic family                           | Typical use                             | Caveat                               |
+| --------------------------------- | --------------------------------------- | --------------------------------------- | ------------------------------------ |
+| Definitional equality             | `rfl`                                   | Both sides reduce to same term          | Does not use theorem rewriting       |
+| Routine simplification            | `simp`, `simpa`                         | Normal forms                            | Can hide proof source                |
+| Equality rewriting                | `rw`, `nth_rewrite` where available     | Directed transformations                | Direction matters                    |
+| Algebraic identities              | `ring`                                  | Polynomial equalities                   | Needs algebraic structure            |
+| Numeric goals                     | `norm_num`                              | Concrete numerals                       | Not symbolic proof                   |
+| Natural/integer linear arithmetic | `omega`                                 | Presburger-like arithmetic              | Not arbitrary nonlinear reasoning    |
+| Linear inequalities               | `linarith`                              | Linear arithmetic from hypotheses       | Domain and linearity constraints     |
+| Nonlinear arithmetic fragments    | `nlinarith`                             | Some polynomial inequalities            | Not complete for all nonlinear math  |
+| Constructor/search goals          | `aesop`                                 | Routine logical/structural search       | Can be opaque/slow                   |
+| Extensionality                    | `ext`, `funext`                         | Functions, sets, structures             | Requires extensionality lemmas       |
+| Contradictions                    | `contradiction`, `exfalso`, `by_contra` | Inconsistent context or classical proof | Classical boundary for some patterns |
+| Decidable computation             | `native_decide`, `decide`               | Computable propositions                 | May be expensive or too concrete     |
+
+Examples:
+
+```lean id="7c63uy"
+example : (2 : Nat) + 3 = 5 := by
+  norm_num
+```
+
+```lean id="dpordw"
+example {R : Type} [CommRing R] (x y : R) :
+    (x + y)^2 = x^2 + 2*x*y + y^2 := by
+  ring
+```
+
+```lean id="528r47"
+example (a b : Int) (h : a ≤ b) : a + 1 ≤ b + 1 := by
+  omega
+```
+
+```lean id="4kbnw1"
+example {α : Type} (s t : Set α)
+    (h : ∀ x, x ∈ s ↔ x ∈ t) : s = t := by
+  ext x
+  exact h x
+```
+
+**Professional rule:** choose tactics by the fragment of mathematics, not by force. `ring` is not better than `rw`; it solves a different kind of goal. `aesop` is not better than `constructor`; it hides structure that may be worth showing.
+
+**Common Pitfalls**
+
+| Pitfall                                          | Explanation                           | Better habit                         |
+| ------------------------------------------------ | ------------------------------------- | ------------------------------------ |
+| Trying tactics randomly                          | Wastes time and creates opaque proofs | Classify goal first                  |
+| Using powerful search for simple structure       | Proof becomes less readable           | Use constructors/cases explicitly    |
+| Using arithmetic tactic outside its domain       | Fails mysteriously                    | Know tactic fragment                 |
+| Depending on automation for theorem architecture | Proof breaks under small changes      | Add helper lemmas and explicit steps |
+
+### Task: Use Logic and Proof Infrastructure — propositions, quantifiers, decidability
+
+Lean’s logical library includes the basic infrastructure for propositions, quantifiers, equality, decidability, and classical reasoning. In practice, the user sees this through tactics, theorem names, and local assumptions.
+
+| Logical task                | Construct/tool                            | Example                   |
+| --------------------------- | ----------------------------------------- | ------------------------- |
+| Prove implication           | `intro`, function term                    | `P → Q`                   |
+| Use implication             | function application, `apply`             | `hPq hP`                  |
+| Prove conjunction           | `constructor`, `And.intro`                | `P ∧ Q`                   |
+| Use conjunction             | `.left`, `.right`, `cases`                | `h.left`                  |
+| Prove disjunction           | `left`, `right`                           | `P ∨ Q`                   |
+| Use disjunction             | `cases`                                   | split alternatives        |
+| Prove negation              | `intro h; exact ... : False`              | `¬ P`                     |
+| Use contradiction           | `False.elim`, `contradiction`             | derive any target         |
+| Prove equivalence           | `constructor`                             | `P ↔ Q`                   |
+| Use equivalence             | `.mp`, `.mpr`, rewriting in some contexts | forward/backward          |
+| Split decidable proposition | `by_cases h : P`                          | cases with `h` and `¬ P`  |
+| Use classical logic         | `classical`, `Classical.em`, `by_contra`  | nonconstructive reasoning |
+
+Example:
+
+```lean id="haj6ry"
+example (P Q : Prop) : P ∧ Q → Q ∧ P := by
+  intro h
+  constructor
+  · exact h.right
+  · exact h.left
+```
+
+Example with equivalence:
+
+```lean id="tarnj4"
+example (P Q : Prop) (h : P ↔ Q) : P → Q := by
+  intro hp
+  exact h.mp hp
+```
+
+Example with decidability:
+
+```lean id="1du3yp"
+example (n : Nat) : n = 0 ∨ n ≠ 0 := by
+  by_cases h : n = 0
+  · exact Or.inl h
+  · exact Or.inr h
+```
+
+**Common Pitfalls**
+
+| Pitfall                                           | Explanation                                           | Better habit                                       |
+| ------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------- |
+| Treating proposition case split as Boolean branch | It depends on decidability/classical reasoning        | Use `by_cases` and note assumptions                |
+| Forgetting `¬ P` is `P → False`                   | Negation is a function to contradiction               | Introduce proof of `P` and derive `False`          |
+| Using classical logic without marking it          | Hides assumptions                                     | Use local `classical`                              |
+| Confusing `↔` and `=`                             | Equivalence and equality support different operations | Use `.mp`, `.mpr`, or extensionality appropriately |
+
+### Task: Use Equality and Extensionality Infrastructure — functions, sets, structures
+
+Equality is central, but many mathematical objects are proved equal by extensionality.
+
+| Equality task         | Tool                                      | Typical theorem shape |
+| --------------------- | ----------------------------------------- | --------------------- |
+| Definitional equality | `rfl`                                     | both sides reduce     |
+| Rewrite by equality   | `rw`, `simp`                              | `a = b`               |
+| Chain equality        | `calc`, `.trans`                          | `a = b`, `b = c`      |
+| Reverse equality      | `.symm`, `rw [← h]`                       | `b = a`               |
+| Function equality     | `funext`                                  | `∀ x, f x = g x`      |
+| Set equality          | `ext x`                                   | `∀ x, x ∈ s ↔ x ∈ t`  |
+| Structure equality    | `ext` where extensionality theorem exists | fieldwise equality    |
+| Logical equivalence   | `constructor`, `.mp`, `.mpr`              | `P ↔ Q`               |
+
+Example function extensionality:
+
+```lean id="xyn8dm"
+example {α β : Type} (f g : α → β)
+    (h : ∀ x, f x = g x) : f = g := by
+  funext x
+  exact h x
+```
+
+Example set extensionality:
+
+```lean id="dhqp2k"
+example {α : Type} (s t : Set α)
+    (h : ∀ x, x ∈ s ↔ x ∈ t) : s = t := by
+  ext x
+  exact h x
+```
+
+**Design meaning:** extensionality theorems are part of the library ecosystem. They let Lean replace equality of complex objects with equality or equivalence of observable components.
+
+**Common Pitfalls**
+
+| Pitfall                                                | Explanation                        | Better habit                            |
+| ------------------------------------------------------ | ---------------------------------- | --------------------------------------- |
+| Trying `rfl` for extensional equality                  | Terms may not reduce identically   | Use `funext`, `ext`, or theorem         |
+| Using equality where equivalence is intended           | `P ↔ Q` may be the right target    | Choose correct relation                 |
+| Forgetting membership equivalence for set equality     | Sets are extensional               | Use `ext x`; prove iff                  |
+| Rewriting under functions without congruence awareness | Not all transformations are direct | Use `congrArg`, `rw`, or extensionality |
+
+### Task: Use Numeric Towers and Coercions — `Nat`, `Int`, rational/real structures
+
+Numeric reasoning in Lean is heavily shaped by types and coercions. A numeral is interpreted by expected type, and mixed numeric expressions may require coercion lemmas.
+
+| Numeric type/structure      | Use                               | Main caveat                               |
+| --------------------------- | --------------------------------- | ----------------------------------------- |
+| `Nat`                       | counting, induction, finite sizes | subtraction truncates                     |
+| `Int`                       | signed integer arithmetic         | coercions from `Nat` need care            |
+| rationals/reals via Mathlib | analysis/algebra                  | coercions and algebraic hierarchy         |
+| abstract semiring/ring      | generic algebra                   | requires typeclass assumptions            |
+| ordered ring/field          | inequalities and algebra          | tactic applicability depends on structure |
+| `Fin n`                     | bounded natural index             | coercion to `Nat` and bound proofs        |
+
+Examples:
+
+```lean id="h02s3v"
+example (n : Nat) : n + 0 = n := by
+  simp
+```
+
+```lean id="pv2gzn"
+example (a b : Int) (h : a ≤ b) : a + 2 ≤ b + 2 := by
+  omega
+```
+
+```lean id="jyun1w"
+example {R : Type} [CommRing R] (a b : R) :
+    (a + b) * (a - b) = a^2 - b^2 := by
+  ring
+```
+
+**Professional rule:** choose numeric type by meaning, not convenience. Use `Nat` for structural induction and counts. Use `Int` when negative values are meaningful. Use abstract algebraic structures when the theorem is really algebraic.
+
+**Common Pitfalls**
+
+| Pitfall                                                               | Explanation                       | Better habit                                     |
+| --------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------ |
+| Using `Nat` for signed arithmetic                                     | Subtraction behaves differently   | Use `Int`                                        |
+| Forgetting coercion boundaries                                        | Goals contain casts               | Add type annotations and use coercion lemmas     |
+| Stating concrete numeric theorem when algebraic generality is natural | Reduces reuse                     | Generalize to ring/monoid where appropriate      |
+| Using abstract algebra when computation over `Nat` is needed          | Adds unnecessary typeclass burden | Keep concrete when recursion/computation matters |
+
+### Task: Use Analysis and Topology Libraries — limits, continuity, filters, inequalities
+
+Lean’s analysis ecosystem is not built as a direct transcription of every textbook definition. `Mathlib` often represents analysis through general abstractions such as filters, topological spaces, metric spaces, normed groups, order structures, and algebraic hierarchies.
+
+This matters especially when using a textbook corpus such as Tao’s *Analysis I* companion. A textbook may introduce sequences and limits in an elementary order. Mathlib may express related facts through more general abstractions.
+
+| Analysis task             | Common Mathlib-style abstraction                     | Practical consequence                            |
+| ------------------------- | ---------------------------------------------------- | ------------------------------------------------ |
+| Sequence                  | `Nat → α`                                            | A sequence is a function from indices            |
+| Limit of sequence         | often filter/topology-based formulations             | More general than elementary epsilon definitions |
+| Continuity                | topological or metric-space continuity               | Works across many spaces                         |
+| Inequality estimates      | ordered algebraic structures, norms, absolute values | Requires correct order/algebra assumptions       |
+| Finite sums               | finite index sets, big operators                     | Uses algebraic hierarchy                         |
+| Set images/preimages      | functions and set operations                         | Extensionality and membership rewriting          |
+| Measurability/integration | measure-theoretic structures                         | Advanced library hierarchy                       |
+| Real-number reasoning     | ordered fields, metric/normed structures             | Coercions and tactic choice matter               |
+
+A simple sequence definition:
+
+```lean id="fb7zww"
+def Sequence (α : Type) :=
+  Nat → α
+```
+
+Pointwise equality of sequences:
+
+```lean id="1gdbxs"
+example {α : Type} (u v : Sequence α)
+    (h : ∀ n, u n = v n) : u = v := by
+  funext n
+  exact h n
+```
+
+A set preimage example:
+
+```lean id="kt5ox1"
+example {α β : Type} (f : α → β) (s : Set β) (x : α) :
+    x ∈ f ⁻¹' s ↔ f x ∈ s := by
+  rfl
+```
+
+**Design meaning:** advanced mathematical libraries trade elementary concreteness for abstraction and reuse. This is powerful but creates a learning cost: theorem statements may mention structures that are not present in the original textbook sentence.
+
+**Common Pitfalls**
+
+| Pitfall                                                               | Explanation                                | Better habit                                         |
+| --------------------------------------------------------------------- | ------------------------------------------ | ---------------------------------------------------- |
+| Rebuilding analysis definitions locally without bridge lemmas         | Later Mathlib results do not apply         | Connect textbook definitions to library abstractions |
+| Treating filter/topology abstractions as unnecessary complexity       | They enable general theorems across spaces | Learn the abstraction when it appears repeatedly     |
+| Using concrete real-number facts where ordered-field generality works | Less reusable theorem                      | Generalize when library lemmas are abstract          |
+| Ignoring coercions in real/integer/natural-number statements          | Goals become cast-heavy                    | State domains carefully and use coercion lemmas      |
+
+### Task: Use Set, Function, and Relation APIs — membership, image, preimage, equivalence
+
+Set and function reasoning is ubiquitous in formalized mathematics. Lean’s notation is close to ordinary mathematics, but the underlying model is precise.
+
+| Task                 | Construct                        | Typical proof method                        |
+| -------------------- | -------------------------------- | ------------------------------------------- |
+| Membership           | `x ∈ s`                          | unfold, `simp`, hypothesis application      |
+| Subset               | `s ⊆ t`                          | introduce `x`, prove membership implication |
+| Set equality         | `s = t`                          | `ext x`, prove iff                          |
+| Image                | `f '' s`                         | existential witness reasoning               |
+| Preimage             | `f ⁻¹' t`                        | usually unfolds to `f x ∈ t`                |
+| Function composition | `f ∘ g`                          | unfold `Function.comp`, pointwise reasoning |
+| Relation             | `α → α → Prop`                   | relation-specific lemmas                    |
+| Equivalence relation | `Setoid`, equivalence structures | quotient or relation reasoning              |
+
+Subset example:
+
+```lean id="7ep7fh"
+example {α : Type} (s t : Set α) :
+    s ⊆ t ↔ ∀ x, x ∈ s → x ∈ t := by
+  rfl
+```
+
+Set equality example:
+
+```lean id="phlwtn"
+example {α : Type} (s t : Set α)
+    (h₁ : s ⊆ t) (h₂ : t ⊆ s) : s = t := by
+  ext x
+  constructor
+  · intro hx
+    exact h₁ hx
+  · intro hx
+    exact h₂ hx
+```
+
+Image membership shape:
+
+```lean id="sxejdn"
+example {α β : Type} (f : α → β) (s : Set α) (y : β) :
+    y ∈ f '' s ↔ ∃ x, x ∈ s ∧ f x = y := by
+  rfl
+```
+
+**Common Pitfalls**
+
+| Pitfall                                        | Explanation                                 | Better habit                           |
+| ---------------------------------------------- | ------------------------------------------- | -------------------------------------- |
+| Trying to prove set equality directly          | Sets are extensional                        | Use `ext x`                            |
+| Forgetting subset is implication of membership | `s ⊆ t` means every member of `s` is in `t` | Introduce element and membership proof |
+| Misreading image membership                    | Image membership is existential             | Provide witness and proof              |
+| Treating preimage as computational lookup      | Preimage is predicate transformation        | Unfold membership                      |
+
+### Task: Use Finite Sums and Big Operators — algebraic structure plus finite indexing
+
+Finite sums and products in Mathlib are usually expressed through big-operator infrastructure over finite index types or `Finset`s. They are central in algebra, combinatorics, analysis, and probability-like reasoning.
+
+| Task                    | Typical construct              | Required ideas                        |
+| ----------------------- | ------------------------------ | ------------------------------------- |
+| Sum over finite set     | big operator over `Finset`     | finite index, additive structure      |
+| Product over finite set | product operator               | multiplicative structure              |
+| Sum over range          | finite range of naturals       | `Finset.range`-style indexing         |
+| Reindexing              | equivalence/injection lemmas   | function and finite set reasoning     |
+| Split sum               | union/filter/partition lemmas  | disjointness or membership conditions |
+| Evaluate concrete sum   | simplification/numeric tactics | finite computation                    |
+
+Illustrative shape:
+
+```lean id="ab6lwh"
+-- Shape only; concrete notation depends on imports and open scopes.
+-- ∑ i in Finset.range n, f i
+```
+
+For a tutorial, big operators should not be introduced as magic notation. They combine:
+
+| Component                         | Role                                        |
+| --------------------------------- | ------------------------------------------- |
+| finite index set                  | determines where summation ranges           |
+| function being summed             | maps index to term                          |
+| additive/multiplicative structure | supplies `0`, `+`, `1`, `*`                 |
+| lemmas about ranges/filtering     | transform the index set                     |
+| algebraic tactics                 | solve resulting arithmetic when appropriate |
+
+**Common Pitfalls**
+
+| Pitfall                                    | Explanation                                           | Better habit                  |
+| ------------------------------------------ | ----------------------------------------------------- | ----------------------------- |
+| Treating big operators as primitive syntax | They are library notation over structures             | Inspect notation and imports  |
+| Forgetting required algebraic structure    | Sums/products need additive/multiplicative operations | State typeclass assumptions   |
+| Reindexing informally                      | Lean needs exact bijection/inclusion conditions       | Use library reindexing lemmas |
+| Expanding finite sums manually too often   | Loses library support                                 | Search big-operator lemmas    |
+
+### Task: Use Decidability and Computable Predicates — bridge `Bool`, `Decidable`, and `Prop`
+
+Lean distinguishes propositions from Booleans, but many propositions are decidable. Decidability is the bridge that allows proposition-level claims to be used in computation.
+
+| Need                       | Construct                      | Example                |
+| -------------------------- | ------------------------------ | ---------------------- |
+| Computable truth value     | `Bool`                         | `n == 0`               |
+| Proposition                | `Prop`                         | `n = 0`                |
+| Decidable proposition      | `Decidable P`                  | equality over `Nat`    |
+| Branch on proposition      | `if h : P then ... else ...`   | requires decision      |
+| Filter by proposition      | `List.filter`, `Finset.filter` | requires decidability  |
+| Boolean/proposition bridge | theorem `test x = true ↔ P x`  | correctness of checker |
+| Classical decision         | `classical`                    | arbitrary `P : Prop`   |
+
+Example:
+
+```lean id="82qp8o"
+def isZeroBool (n : Nat) : Bool :=
+  n == 0
+
+def IsZero (n : Nat) : Prop :=
+  n = 0
+
+theorem isZeroBool_correct (n : Nat) :
+    isZeroBool n = true ↔ IsZero n := by
+  unfold isZeroBool IsZero
+  simp
+```
+
+Filtering with a decidable proposition:
+
+```lean id="31cqzm"
+def keepZeros (xs : List Nat) : List Nat :=
+  xs.filter (fun n => n = 0)
+```
+
+The predicate `fun n => n = 0` is a proposition, but equality on `Nat` is decidable, so it can be used computationally.
+
+**Common Pitfalls**
+
+| Pitfall                                               | Explanation                               | Better habit                      |
+| ----------------------------------------------------- | ----------------------------------------- | --------------------------------- |
+| Treating `Bool` and `Prop` as interchangeable         | They have different roles                 | Prove bridge lemmas               |
+| Adding `classical` when concrete decidability exists  | Unnecessary nonconstructive boundary      | Use available decidable instances |
+| Writing Boolean checkers without correctness theorems | Computation not connected to spec         | State `checker = true ↔ Spec`     |
+| Expecting arbitrary propositions to compute           | Need `Decidable P` or classical reasoning | Make decision boundary explicit   |
+
+### Task: Use Deriving and Generated Instances — `Repr`, `DecidableEq`, and basic integration
+
+Lean can generate common instances for user-defined types.
+
+```lean id="9sdnnx"
+inductive Color where
+  | red
+  | green
+  | blue
+deriving Repr, DecidableEq
+```
+
+| Derived instance                          | Purpose                              | Use                                    |
+| ----------------------------------------- | ------------------------------------ | -------------------------------------- |
+| `Repr`                                    | representation for display/debugging | `#eval`, diagnostics                   |
+| `DecidableEq`                             | decidable equality                   | comparisons, filters, finite reasoning |
+| `Inhabited` where applicable              | default value                        | generic programming                    |
+| Other deriving mechanisms where available | typeclass integration                | depends on structure/type              |
+
+Example:
+
+```lean id="dxppc0"
+#eval reprStr Color.red
+```
+
+Decidable equality:
+
+```lean id="lmgudc"
+def isRed (c : Color) : Bool :=
+  c == Color.red
+```
+
+**Design meaning:** deriving integrates custom types into the ecosystem. It allows equality tests, representation, and sometimes other generic operations without hand-written boilerplate.
+
+**Common Pitfalls**
+
+| Pitfall                                        | Explanation                                     | Better habit                                   |
+| ---------------------------------------------- | ----------------------------------------------- | ---------------------------------------------- |
+| Forgetting `deriving DecidableEq`              | Equality tests/filtering may fail               | Derive when equality is structurally decidable |
+| Treating `Repr` as semantic serialization      | It is for representation/debugging              | Use proper encoding/decoding for data formats  |
+| Deriving instances blindly                     | Some instances may not match intended semantics | Check generated behavior                       |
+| Depending on printed representation for proofs | Output is not theorem                           | Prove properties directly                      |
+
+### Task: Use Testing, Examples, and Evaluation — `example`, `#eval`, theorem checks
+
+Lean has several lightweight validation mechanisms. They serve different purposes.
+
+| Mechanism                               | Layer               | Use                           | Limitation                     |
+| --------------------------------------- | ------------------- | ----------------------------- | ------------------------------ |
+| `#eval`                                 | execution           | compute result                | not a proof of general theorem |
+| `#reduce`                               | reduction           | inspect normal form           | may be too low-level           |
+| `example`                               | proof/type checking | check local theorem           | unnamed, not reusable          |
+| named theorem                           | proof library       | reusable fact                 | needs good statement/name      |
+| `#check`                                | inspection          | inspect type                  | does not prove new fact        |
+| `#synth`                                | typeclass search    | inspect instance availability | only checks synthesis          |
+| project tests via Lake where configured | workflow            | regression checking           | depends on project setup       |
+
+Example:
+
+```lean id="q266uj"
+#eval 2 + 3
+
+example : 2 + 3 = 5 := by
+  norm_num
+```
+
+The first computes. The second proves a proposition.
+
+Example as local test:
+
+```lean id="i24b0t"
+def double (n : Nat) : Nat :=
+  n + n
+
+example : double 3 = 6 := by
+  norm_num [double]
+```
+
+General theorem:
+
+```lean id="2l15o2"
+theorem double_zero : double 0 = 0 := by
+  rfl
+```
+
+**Professional rule:** examples are useful as regression checks and documentation, but general theorems are the real proof artifacts.
+
+**Common Pitfalls**
+
+| Pitfall                                      | Explanation               | Better habit                              |
+| -------------------------------------------- | ------------------------- | ----------------------------------------- |
+| Treating `#eval` as proof                    | It checks one computation | Prove theorem for all inputs              |
+| Leaving useful fact as anonymous `example`   | Cannot reuse by name      | Promote to theorem/lemma                  |
+| Using tests instead of specification theorem | Tests are finite evidence | State formal contract                     |
+| Overusing `#reduce` for high-level reasoning | Output may be unreadable  | Use theorem statements and simplification |
+
+### Task: Use Documentation and Comments — docstrings, theorem names, examples
+
+Lean documentation should combine prose, names, examples, and theorem statements.
+
+| Documentation object   | Best use                                   | Pitfall                              |
+| ---------------------- | ------------------------------------------ | ------------------------------------ |
+| Docstring `/-- ... -/` | Public explanation of definitions/theorems | Drifts from formal statement         |
+| Line comment `--`      | Local proof note                           | Not part of formal reasoning         |
+| Theorem name           | Search and API documentation               | Vague names harm discoverability     |
+| Examples               | Usage demonstration                        | Not reusable unless named            |
+| Namespace placement    | Conceptual grouping                        | Bad grouping hides theorem           |
+| Simp lemma names       | Normalization documentation                | Unclear rewrite direction            |
+| Correctness theorem    | Formal documentation of behavior           | Missing bridge between code and spec |
+
+Example:
+
+```lean id="qih3f4"
+/-- `IsConstant u` means every two entries of the sequence `u` are equal. -/
+def IsConstant {α : Type} (u : Nat → α) : Prop :=
+  ∀ m n, u m = u n
+```
+
+A good docstring explains intention but does not replace a precise theorem statement.
+
+**Common Pitfalls**
+
+| Pitfall                                              | Explanation                             | Better habit                    |
+| ---------------------------------------------------- | --------------------------------------- | ------------------------------- |
+| Writing comments instead of hypotheses               | Lean cannot use comments                | Encode assumptions formally     |
+| Documenting a theorem more clearly than it is stated | Users still rely on formal statement    | Improve theorem statement       |
+| Naming helper lemmas vaguely                         | Search fails                            | Use content-based names         |
+| Leaving examples disconnected from API               | Readers cannot see intended theorem use | Place examples near definitions |
+
+### Task: Use Programming Ecosystem Areas — IO, files, CLI, serialization, networking
+
+Lean can be used as a programming language, but these areas are secondary for a theorem-proving-centered tutorial unless the goal is executable tools, metaprogramming, or verified programs.
+
+| Programming task          | Lean ecosystem area                                     | Tutorial depth                       |
+| ------------------------- | ------------------------------------------------------- | ------------------------------------ |
+| Console output            | `IO.println`, `main`                                    | concise                              |
+| Reading input             | `IO.getLine`, file APIs where used                      | concise                              |
+| Files and paths           | `IO` and library APIs                                   | concise unless building tools        |
+| CLI tools                 | Lake executables, argument parsing libraries where used | concise                              |
+| Serialization             | external/core libraries depending on project            | mention when relevant                |
+| Logging/observability     | project-specific libraries or IO patterns               | mention when relevant                |
+| Networking                | external ecosystem, not core mathematical Lean          | mention only when relevant           |
+| Subprocess/OS interaction | `IO`/system APIs                                        | mention only when relevant           |
+| Configuration             | Lake/project conventions                                | substantial for projects             |
+| Metaprogramming tools     | Lean meta APIs                                          | substantial only in advanced section |
+
+Simple executable:
+
+```lean id="e0qepy"
+def main : IO Unit := do
+  IO.println "Hello from Lean"
+```
+
+Pure core plus effectful shell:
+
+```lean id="bnx762"
+def computeMessage (name : String) : String :=
+  s!"Hello, {name}"
+
+def main2 : IO Unit := do
+  IO.println (computeMessage "Lean")
+```
+
+**Professional rule:** if writing Lean as an executable program, keep theorem-relevant logic pure and put `IO` at the boundary. If writing Lean as formal mathematics, do not let generic application-programming concerns dominate the tutorial.
+
+**Common Pitfalls**
+
+| Pitfall                                                 | Explanation                                           | Better habit                                      |
+| ------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------- |
+| Treating Lean like Python for general scripting         | Lean’s main ecosystem strength is proof/formalization | Use Lean scripting when it supports Lean projects |
+| Embedding pure logic in `IO`                            | Harder to reason about                                | Extract pure core                                 |
+| Ignoring runtime errors in `IO`                         | External world can fail                               | Model or handle failure                           |
+| Overemphasizing networking/CLI in a Lean proof tutorial | Misplaces tutorial focus                              | Keep programming APIs secondary                   |
+
+### Task: Use Metaprogramming and Tactic Ecosystem — advanced extension layer
+
+Lean 4’s metaprogramming is a major ecosystem feature. It powers custom syntax, elaborators, tactics, commands, and automation. But it should be treated as an advanced extension layer.
+
+| Metaprogramming area         | Purpose                             | When to study                                   |
+| ---------------------------- | ----------------------------------- | ----------------------------------------------- |
+| Syntax macros                | Surface syntax transformation       | after ordinary syntax is comfortable            |
+| Elaborators                  | Give meaning to syntax              | advanced                                        |
+| Tactic programming           | Custom proof automation             | after tactic use and proof terms are understood |
+| Commands                     | New top-level commands              | advanced tooling                                |
+| MetaM/TacticM                | Internal monads for metaprogramming | advanced                                        |
+| Reflection/source inspection | Analyze expressions/declarations    | advanced                                        |
+| Domain-specific automation   | Specialized proof search            | after repeated proof patterns are identified    |
+
+A beginner or intermediate Lean user should first master:
+
+| Before metaprogramming | Why                                                  |
+| ---------------------- | ---------------------------------------------------- |
+| ordinary definitions   | know what terms are generated                        |
+| theorem statements     | know what goals mean                                 |
+| basic tactics          | understand proof state                               |
+| `simp`/`rw`            | understand normalization and rewriting               |
+| typeclasses            | understand inferred structure                        |
+| Mathlib search         | avoid writing automation for existing infrastructure |
+
+**Common Pitfalls**
+
+| Pitfall                                          | Explanation                                                            | Better habit                         |
+| ------------------------------------------------ | ---------------------------------------------------------------------- | ------------------------------------ |
+| Writing tactics before understanding proof terms | Automation hides conceptual gaps                                       | Master ordinary proofs first         |
+| Using macros to patch bad API design             | Syntax sugar cannot fix bad theorem shapes                             | Improve definitions/theorems         |
+| Creating domain automation too early             | Pattern may not be stable                                              | Extract helper lemmas first          |
+| Treating metaprogramming as trusted magic        | Generated terms are checked, but tool behavior affects maintainability | Keep extensions small and documented |
+
+### Task: Use Source Corpora as Learning Infrastructure — Tao Analysis and real code reading
+
+A real Lean source corpus is part of the ecosystem because it shows how definitions, theorem statements, imports, local style, `sorry`, and library usage interact.
+
+The Tao Analysis companion is valuable as a real formalization corpus because it presents textbook-style analysis in Lean, with definitions, theorems, exercises, and proof gaps. It is especially useful for observing the boundary between pedagogical formalization and Mathlib-native abstraction.
+
+| Corpus use           | What to extract                                              | What not to assume                         |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------ |
+| Theorem anchors      | statement shapes for arithmetic, sets, sequences, limits     | every proof is maximally idiomatic         |
+| Proof workflow       | uses of `simp`, `rw`, `linarith`, `ring`, `omega`, induction | tactics are always best possible           |
+| Exercise gaps        | `sorry` positions as proof obligations                       | `sorry` is completed proof                 |
+| Textbook translation | how natural language becomes formal statements               | textbook order equals library architecture |
+| Mathlib transition   | where standard abstractions enter                            | local definitions should replace Mathlib   |
+| Style comparison     | faithful exposition vs library style                         | one style fits all goals                   |
+
+**Professional rule:** use real corpora to learn theorem statement design and proof architecture, but compare them against Mathlib conventions before generalizing style.
+
+**Common Pitfalls**
+
+| Pitfall                                                       | Explanation                          | Better habit                                      |
+| ------------------------------------------------------------- | ------------------------------------ | ------------------------------------------------- |
+| Reading only toy examples                                     | Misses real formalization complexity | Study real source files                           |
+| Reading real source without environment context               | Imports/toolchain matter             | Check project metadata                            |
+| Treating `sorry`-heavy source as complete                     | It contains admitted gaps            | Distinguish exercise corpus from verified library |
+| Copying textbook-style definitions into Mathlib-style project | Abstraction mismatch                 | Build bridge lemmas or use existing definitions   |
+
+### Task: Decide Built-in Tool versus Ecosystem Alternative — practical decision rules
+
+| Need                       | Built-in/core approach    | Ecosystem/Mathlib approach         | Decision rule                                   |
+| -------------------------- | ------------------------- | ---------------------------------- | ----------------------------------------------- |
+| Basic logic proof          | core tactics/constructors | Mathlib tactics if convenient      | Keep simple proofs explicit                     |
+| Algebraic identity         | manual rewrites           | `ring`                             | Use `ring` for polynomial identities            |
+| Linear arithmetic          | manual lemmas             | `omega`/`linarith`                 | Use tactic if goal is in fragment               |
+| List theorem               | induction                 | existing `List` lemmas             | Search first; induct if theorem is custom       |
+| Set equality               | manual function equality  | `ext`/set extensionality           | Use extensionality                              |
+| Domain-specific syntax     | ordinary definitions      | notation/macro                     | Add syntax only after abstraction stabilizes    |
+| Runtime data structure     | core list/array           | `Std` structures where appropriate | Use standard structure if it matches task       |
+| Large mathematical concept | local definition          | Mathlib abstraction                | Prefer Mathlib unless teaching reconstruction   |
+| Build management           | manual compiler calls     | Lake                               | Use Lake for projects                           |
+| Proof search               | manual proof              | `exact?`, `apply?`, `aesop`        | Use suggestions/search as aids, not substitutes |
+
+### Library Area × Role × Maturity × Common Misuse
+
+| Library/ecosystem area      | Role                                          | Maturity in Lean practice       | Common misuse                                    |
+| --------------------------- | --------------------------------------------- | ------------------------------- | ------------------------------------------------ |
+| Core Lean / `Init`          | foundational types, logic, classes            | central                         | expecting full Mathlib features without imports  |
+| `Std`                       | programming infrastructure and data utilities | important                       | reimplementing common tools                      |
+| `Mathlib` algebra           | algebraic hierarchy and lemmas                | central                         | custom algebra structures                        |
+| `Mathlib` order             | order classes and reasoning                   | central                         | using arithmetic tactics on abstract order goals |
+| `Mathlib` data/list/set     | collection and predicate reasoning            | central                         | confusing `Set`, `Finset`, `List`, `Array`       |
+| `Mathlib` topology/analysis | advanced mathematical abstractions            | central for analysis            | rebuilding elementary versions without bridges   |
+| Tactic modules              | proof automation                              | central                         | tactic guessing without goal classification      |
+| Lake                        | build and dependency management               | standard project infrastructure | ignoring toolchain pin                           |
+| Editor/language server      | interactive proof state and diagnostics       | central                         | treating Lean as batch-only compiler             |
+| Documentation/source search | theorem discovery                             | central                         | reproving existing facts                         |
+| Metaprogramming APIs        | extension and automation                      | advanced                        | premature custom tactics                         |
+| `IO` programming            | executable interaction                        | useful but secondary for math   | mixing effectful shell with proof core           |
+
+### Standard/Ecosystem Task Reference Table
+
+| Task                    | Primary tool/module area              | Canonical use                   | Caveat                             |
+| ----------------------- | ------------------------------------- | ------------------------------- | ---------------------------------- |
+| Inspect a theorem       | `#check`, docs                        | `#check Nat.add_zero`           | Expose implicits with `@`          |
+| Find a theorem          | docs/source/search/suggestions        | search by main symbol and shape | Search vocabulary matters          |
+| Reuse theorem           | `exact`, `apply`, `rw`, `simpa using` | adapt theorem to goal           | Watch implicit assumptions         |
+| Simplify goal           | `simp`                                | normalize routine facts         | Avoid hiding central argument      |
+| Prove algebra           | `ring`                                | polynomial identities           | Needs algebraic structure          |
+| Prove arithmetic        | `omega`, `linarith`, `nlinarith`      | linear/arithmetic fragments     | Tactic scopes differ               |
+| Prove set equality      | `ext`                                 | membership iff                  | Need elementwise proof             |
+| Prove function equality | `funext`                              | pointwise equality              | Not always definitional            |
+| Manage project          | Lake                                  | build/package/dependencies      | Respect `lean-toolchain`           |
+| Use Mathlib             | imports + namespaces                  | reuse hierarchy                 | Avoid local duplicate structures   |
+| Write executable shell  | `IO`                                  | `main : IO Unit`                | Keep pure core separate            |
+| Validate input          | `Except`, subtypes                    | parse/refine                    | Add correctness theorem if needed  |
+| Study real code         | source corpus                         | theorem anchors/proof style     | Check project context and `sorry`s |
+
+### Cost Model for Library and Ecosystem Use — hidden costs beyond runtime
+
+Lean’s ecosystem costs include proof-checking and build-time costs, not only execution.
+
+| Operation or pattern        | Usual cost              | Hidden cost                                       | How to detect it              | When it matters                  | When not to optimize prematurely |
+| --------------------------- | ----------------------- | ------------------------------------------------- | ----------------------------- | -------------------------------- | -------------------------------- |
+| Broad import `Mathlib`      | convenience             | larger environment/build time                     | build timing/import graph     | large projects, CI               | early exploration/tutorials      |
+| Heavy `simp`                | fast for routine goals  | can be slow or unpredictable with large simp sets | slow proof, heartbeat issues  | large files, repeated proofs     | simple local goals               |
+| Global `[simp]` lemma       | automatic normalization | affects all downstream proofs                     | changed simp behavior         | library code                     | local scratch proofs             |
+| `aesop`/search tactics      | less manual proof       | search explosion/opacity                          | timeouts, unreadable proof    | repeated automation-heavy proofs | one-off boilerplate              |
+| Typeclass-heavy abstraction | reusable theorems       | instance search complexity                        | missing/slow instance errors  | algebraic hierarchy/library code | concrete examples                |
+| Targeted imports            | cleaner dependencies    | time spent locating modules                       | import errors                 | stable project files             | early learning                   |
+| Custom definitions          | pedagogical control     | loss of Mathlib lemmas                            | proof duplication             | scalable formalization           | textbook reconstruction          |
+| Local helper lemmas         | proof clarity           | extra declarations                                | namespace/search clutter      | repeated proof ideas             | one-off trivial facts            |
+| Array-based algorithms      | runtime performance     | proof complexity                                  | hard correctness proof        | executable algorithms            | theorem-first symbolic proofs    |
+| Metaprogramming             | automation power        | high complexity/maintenance                       | hard-to-debug generated goals | mature repeated patterns         | beginner/intermediate proof work |
+
+### PART 6 Summary — ecosystem fluency as Lean fluency
+
+PART 6 established that Lean 4’s standard library and ecosystem are not peripheral. Lean practice depends on the interaction of language, library, tactics, build system, editor, and theorem search.
+
+The core distinctions are:
+
+| Distinction                                          | Practical meaning                                                                                |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Core Lean vs `Std` vs `Mathlib`                      | Different layers support foundational syntax, programming infrastructure, and formal mathematics |
+| Import availability vs language capability           | Missing names or tactics often mean missing imports                                              |
+| Library theorem vs local proof                       | Search and reuse usually beat reproving standard facts                                           |
+| Theorem name vs theorem shape                        | Names help discovery, but the statement determines applicability                                 |
+| `simp` ecosystem vs manual rewriting                 | Simplification depends on registered normal forms                                                |
+| Algebra/order/analysis hierarchy vs local structures | Mathlib abstractions enable reusable theorem statements                                          |
+| `Set` vs `Finset` vs `List` vs `Array`               | Mathematical and computational collections have different meanings                               |
+| `Bool` vs `Prop` vs `Decidable`                      | Computation, proposition, and decidability must be bridged                                       |
+| Project source vs project environment                | A `.lean` file is checked relative to toolchain, Lake config, imports, and dependencies          |
+| Toy example vs real corpus                           | Real source shows theorem architecture, proof gaps, and library interaction                      |
+| Executable programming vs formal proof               | `IO` and runtime APIs are useful, but theorem-friendly pure cores matter                         |
+
+The professional Lean rule for PART 6 is:
+
+**Before proving, search. Before defining, check the library. Before importing broadly in stable code, understand the dependency. Before trusting automation, classify the goal. Before copying real source, understand its project context and design purpose.**
+
+Lean ecosystem mastery is therefore a compound skill: reading theorem statements, navigating namespaces, using `#check`, understanding typeclass assumptions, choosing tactics by problem fragment, managing imports through Lake, and knowing when a local definition is pedagogical versus when a Mathlib abstraction should be reused.
+
+## PART 7 — Semantics, Runtime, Memory, Concurrency, and Implementation Model
+
+### Purpose and Scope — from surface Lean to checked terms and executable code
+
+PART 7 explains how Lean 4 programs and proofs acquire meaning, how source code moves through parsing, elaboration, kernel checking, compilation, and execution, and why proof scripts behave the way they do. This follows the uploaded specification’s requirement that the guide distinguish language semantics, implementation behavior, compiler behavior, runtime behavior, standard-library behavior, and tooling behavior rather than collapsing them into one vague “Lean behavior” category .
+
+Lean has several semantic layers:
+
+| Layer                           | What exists there                                                      | Main question                                    |
+| ------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------ |
+| Surface syntax                  | commands, terms, tactics, notation, attributes                         | What did the user write?                         |
+| Elaboration                     | inferred arguments, metavariables, resolved notation, typeclass search | What core term is this source intended to mean?  |
+| Kernel checking                 | fully elaborated terms                                                 | Does this term inhabit this type?                |
+| Reduction/definitional equality | computation inside the type theory                                     | Do these terms reduce to the same expression?    |
+| Tactic execution                | programs that transform goals and construct terms                      | Can automation build a proof term?               |
+| Compilation                     | executable definitions                                                 | How does Lean turn code into runnable artifacts? |
+| Runtime execution               | values, closures, data structures, effects                             | What happens when executable code runs?          |
+| Project/build system            | modules, imports, dependency graph                                     | What environment is this file checked in?        |
+
+The central semantic rule is:
+
+**Lean source is not checked directly as printed text. It is elaborated into core terms, and those core terms are checked by the kernel.**
+
+This is why Lean can support rich syntax, typeclass inference, tactics, notation, coercions, and automation while maintaining a small trusted proof-checking core.
+
+### Syntax versus Semantics — what the source says, what Lean checks
+
+Lean source code is surface language. It may contain notation, implicit arguments, tactics, overloaded symbols, local instances, custom syntax, and attributes. The checked object is more explicit.
+
+| Surface feature | Semantic expansion or resolution                                  |
+| --------------- | ----------------------------------------------------------------- |
+| `n + 0`         | overloaded addition resolved by type and instances                |
+| `a * 1 = a`     | multiplication, identity, and equality over an inferred structure |
+| `{α : Type}`    | implicit type argument                                            |
+| `[Group G]`     | typeclass argument resolved by instance search                    |
+| `by simp`       | tactic script generating a proof term                             |
+| `∀ n, P n`      | dependent function type                                           |
+| `P → Q`         | function type from proof of `P` to proof of `Q`                   |
+| `x ∈ s`         | membership notation resolved by typeclass/definition              |
+| `f ⁻¹' t`       | preimage notation over functions and sets                         |
+| `⟨x, h⟩`        | constructor syntax                                                |
+| `rfl`           | reflexivity proof using definitional equality                     |
+
+Example:
+
+```lean
+example {G : Type} [Group G] (a : G) : a * 1 = a := by
+  simp
+```
+
+The printed source is compact. Semantically, the theorem depends on:
+
+| Component   | Hidden or explicit role                           |
+| ----------- | ------------------------------------------------- |
+| `G : Type`  | carrier type                                      |
+| `[Group G]` | operations and group laws                         |
+| `a : G`     | element                                           |
+| `*`         | multiplication from algebraic structure           |
+| `1`         | identity element from monoid/group structure      |
+| `=`         | equality at type `G`                              |
+| `simp`      | simplifier using registered group identity lemmas |
+
+**Failure-first explanation:** the tempting model is that Lean executes the proof script text. The correct model is that tactics elaborate into proof terms, and the kernel checks the resulting term. A tactic can be complicated; the final proof obligation remains simple in principle: construct a term of the theorem’s type.
+
+**Common Pitfalls**
+
+| Pitfall                                       | Explanation                                       | Better habit                             |
+| --------------------------------------------- | ------------------------------------------------- | ---------------------------------------- |
+| Reading notation as primitive language        | Many symbols are overloaded library notation      | Use `#check` on subexpressions           |
+| Treating tactics as trusted proof commands    | Tactics must produce kernel-checkable proof terms | Think “proof-term generator”             |
+| Ignoring implicit arguments                   | The source omits real semantic parameters         | Inspect with `#check @name`              |
+| Treating elaboration errors as runtime errors | Elaboration happens before execution              | Diagnose expected type and local context |
+
+### Elaboration Model — expected types, metavariables, implicit arguments, coercions
+
+Elaboration is the process that turns user-facing Lean syntax into fully specified core terms. It solves missing information using expected types, local context, typeclass search, coercions, and unification.
+
+| Elaboration task               | Example            | What Lean tries to infer                           |
+| ------------------------------ | ------------------ | -------------------------------------------------- |
+| Infer literal type             | `3`                | `Nat`, `Int`, or another numeral type from context |
+| Infer implicit type            | `List.length xs`   | element type of `xs`                               |
+| Resolve notation               | `a + b`            | which addition operation applies                   |
+| Insert implicit arguments      | `Nat.add_zero n`   | hidden parameters if any                           |
+| Resolve typeclass              | `[Monoid M]`       | available instance for `M`                         |
+| Insert coercion                | subtype to carrier | canonical conversion                               |
+| Solve holes                    | `_`                | term from context or expected type                 |
+| Elaborate tactic block         | `by ...`           | proof term matching target                         |
+| Resolve overloaded theorem use | `simp`, `rw`       | applicable lemmas and expressions                  |
+
+Example with expected type:
+
+```lean
+def threeNat : Nat :=
+  3
+
+def threeInt : Int :=
+  3
+```
+
+The same literal `3` is elaborated differently because the expected type differs.
+
+Example exposing implicit arguments:
+
+```lean
+#check Nat.add_zero
+#check @Nat.add_zero
+```
+
+The `@` form is a diagnostic tool. It asks Lean to expose implicit arguments that are normally hidden.
+
+**Metavariables and holes.** A placeholder `_` or an incomplete tactic proof creates a metavariable: a term Lean must synthesize. If it cannot, elaboration fails.
+
+```lean
+example (P : Prop) (h : P) : P :=
+  _
+```
+
+Lean may fill this hole with `h` if the context and target are simple enough. In more complex situations, `_` produces unsolved goals.
+
+**Failure-first explanation:** the wrong model is “Lean should know what I mean.” The correct model is “Lean elaborates by solving precise constraints.” If the constraints do not determine a unique term, or if no term satisfies them, elaboration fails.
+
+**Common Pitfalls**
+
+| Pitfall                            | Explanation                                   | Better habit                            |
+| ---------------------------------- | --------------------------------------------- | --------------------------------------- |
+| Omitting too much type information | Elaborator lacks constraints                  | Add type ascriptions                    |
+| Relying on coercions invisibly     | Later goals become cast-heavy                 | Insert explicit types at boundaries     |
+| Ignoring expected type             | Most errors are target-shape errors           | Read the goal and expected type first   |
+| Treating `_` as magic              | It only works when constraints are sufficient | Use holes diagnostically, not as design |
+
+### Kernel Checking — small trusted core, proof terms, theorem validity
+
+After elaboration, Lean’s kernel checks core terms. This is the central trust boundary.
+
+| Object               | Kernel question                                                            |
+| -------------------- | -------------------------------------------------------------------------- |
+| Definition           | Does the body have the declared type?                                      |
+| Theorem              | Does the proof term inhabit the proposition?                               |
+| Inductive type       | Is the declaration valid according to positivity and universe constraints? |
+| Recursive definition | Is termination/productivity accepted by the system?                        |
+| Instance             | Do the provided fields satisfy the class type?                             |
+| Tactic proof         | Does the generated proof term check?                                       |
+
+Example:
+
+```lean
+theorem id_prop (P : Prop) : P → P :=
+  fun h => h
+```
+
+The theorem is valid because the body `fun h => h` has type `P → P`.
+
+Tactic version:
+
+```lean
+theorem id_prop_tactic (P : Prop) : P → P := by
+  intro h
+  exact h
+```
+
+The tactic script is not the object ultimately trusted as a proof. It elaborates into a proof term that the kernel checks.
+
+**Trust distinction:**
+
+| Mechanism                  | Trusted as proof?                        | Explanation                       |
+| -------------------------- | ---------------------------------------- | --------------------------------- |
+| Kernel-checked theorem     | yes                                      | Proof term checked                |
+| Tactic that produces proof | indirectly                               | Output proof term is checked      |
+| `sorry`                    | no completed proof                       | Placeholder is admitted           |
+| `axiom`                    | assumed                                  | Extends environment without proof |
+| `unsafe` runtime code      | outside ordinary proof guarantees        | Implementation/trust boundary     |
+| Imported theorem           | trusted relative to imported environment | Assumes imported proof checked    |
+
+**Common Pitfalls**
+
+| Pitfall                                                   | Explanation                            | Better habit                                  |
+| --------------------------------------------------------- | -------------------------------------- | --------------------------------------------- |
+| Saying “tactic proved it” without checking generated term | Tactics are proof-term generators      | Trust kernel acceptance, not tactic authority |
+| Treating `sorry` as a theorem proof                       | It admits the term                     | Audit `sorry`s                                |
+| Using axioms as convenience                               | Can destroy consistency                | Use only explicit foundational assumptions    |
+| Assuming kernel acceptance implies readability            | Correctness and maintainability differ | Review proof structure separately             |
+
+### Definitional Equality — computation inside the type theory
+
+Definitional equality means that two terms are equal because they reduce to the same core expression. It is checked by computation and conversion, not by applying an explicit equality theorem.
+
+Example:
+
+```lean
+example (n : Nat) : 0 + n = n := by
+  rfl
+```
+
+Depending on the definition of addition, `0 + n` reduces to `n`, so `rfl` closes the goal.
+
+Contrast:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  exact Nat.add_zero n
+```
+
+This equality generally requires a theorem such as `Nat.add_zero`.
+
+| Equality kind          | How it is established               | Typical tool                             |
+| ---------------------- | ----------------------------------- | ---------------------------------------- |
+| Definitional equality  | terms reduce to the same expression | `rfl`, reduction                         |
+| Propositional equality | explicit proof of equality          | `rw`, theorem, `simp`, `.trans`, `.symm` |
+| Extensional equality   | equality by same behavior/fields    | `funext`, `ext`                          |
+| Logical equivalence    | two propositions imply each other   | `constructor`, `.mp`, `.mpr`             |
+
+**Reduction sources:**
+
+| Source                               | Example                                                       |
+| ------------------------------------ | ------------------------------------------------------------- |
+| Function unfolding                   | unfolding transparent definitions                             |
+| Pattern matching                     | reducing match on known constructor                           |
+| Recursive computation                | reducing structurally recursive definitions                   |
+| Let reduction                        | replacing local definition                                    |
+| Projection reduction                 | field of constructed structure                                |
+| Beta reduction                       | applying lambda to argument                                   |
+| Eta-like principles where applicable | function/structure extensional behavior, depending on context |
+
+Example beta reduction:
+
+```lean
+example : (fun n : Nat => n + 1) 2 = 3 := by
+  rfl
+```
+
+Example projection reduction:
+
+```lean
+structure Point where
+  x : Nat
+  y : Nat
+
+example (a b : Nat) : ({ x := a, y := b } : Point).x = a := by
+  rfl
+```
+
+**Failure-first explanation:** the wrong model is that `rfl` proves any “obvious” equality. The correct model is that `rfl` proves equalities where both sides are definitionally equal after reduction. Many mathematically obvious facts are not definitional.
+
+**Common Pitfalls**
+
+| Pitfall                                                  | Explanation                                    | Better habit                            |
+| -------------------------------------------------------- | ---------------------------------------------- | --------------------------------------- |
+| Trying `rfl` for theorem-based facts                     | The terms do not reduce to the same expression | Use `rw`, `simp`, or theorem            |
+| Unfolding too much                                       | Goals become low-level                         | Use controlled `simp [definition]`      |
+| Assuming similar-looking equalities reduce symmetrically | Recursion orientation matters                  | Test with `rfl` and inspect definitions |
+| Confusing definitional equality with rewriting           | `rw` uses equality proof; conversion does not  | Choose tool by equality kind            |
+
+### Propositional Equality and Rewriting — equality proofs as transformations
+
+When equality is not definitional, Lean needs a proof term of an equality proposition.
+
+```lean
+example (a b : Nat) (h : a = b) : a + 1 = b + 1 := by
+  rw [h]
+```
+
+`rw [h]` uses the proof `h : a = b` to replace `a` with `b`.
+
+| Operation      | Meaning                                             |
+| -------------- | --------------------------------------------------- |
+| `h.symm`       | reverse equality                                    |
+| `h₁.trans h₂`  | compose equalities                                  |
+| `rw [h]`       | rewrite goal using equality                         |
+| `rw [← h]`     | rewrite in reverse direction                        |
+| `rw [h] at h₂` | rewrite hypothesis                                  |
+| `simp [h]`     | simplify using equality plus simp set               |
+| `congrArg f h` | if `a = b`, then `f a = f b`                        |
+| `congr`        | prove equality by congruence in structured contexts |
+
+Examples:
+
+```lean
+example (a b : Nat) (h : a = b) : b = a := by
+  exact h.symm
+```
+
+```lean
+example (a b c : Nat) (h₁ : a = b) (h₂ : b = c) : a = c := by
+  exact h₁.trans h₂
+```
+
+```lean
+example (a b : Nat) (h : a = b) : Nat.succ a = Nat.succ b := by
+  exact congrArg Nat.succ h
+```
+
+**Design meaning:** equality proofs are values that can be transported through contexts. Rewriting is a user-facing tactic for equality elimination.
+
+**Common Pitfalls**
+
+| Pitfall                                         | Explanation                        | Better habit                               |
+| ----------------------------------------------- | ---------------------------------- | ------------------------------------------ |
+| Rewriting in the wrong direction                | Goal becomes harder                | Use `rw [← h]` intentionally               |
+| Rewriting everywhere                            | Useful hypotheses may be destroyed | Rewrite only target or specific hypothesis |
+| Using equality where equivalence is intended    | `↔` is not the same as `=`         | Use `.mp`, `.mpr`, or extensionality       |
+| Expecting equality of functions to be automatic | Often needs pointwise proof        | Use `funext`                               |
+
+### Evaluation Strategy — reduction, transparency, and proof computation
+
+Lean evaluates terms in several contexts: definitional equality checking, `#eval`, `#reduce`, simplification, tactic execution, and compiled runtime execution. These are related but not identical.
+
+| Context               | What happens                                  | Purpose                          |
+| --------------------- | --------------------------------------------- | -------------------------------- |
+| Definitional equality | computes enough to compare terms              | type checking/proof checking     |
+| `#reduce`             | shows reduced expression                      | inspect definitional computation |
+| `#eval`               | executes expression                           | run program/computation          |
+| `simp`                | rewrites by simp lemmas plus some computation | proof normalization              |
+| `rfl`                 | checks definitional equality                  | close equality goals             |
+| compiled execution    | runs generated executable code                | programming/runtime              |
+| tactic execution      | runs proof-search/meta code                   | construct proof terms            |
+
+Example:
+
+```lean
+def addOne (n : Nat) : Nat :=
+  n + 1
+
+#eval addOne 2
+#reduce addOne 2
+
+example : addOne 2 = 3 := by
+  rfl
+```
+
+`#eval` and `#reduce` both may show `3` here, but they belong to different workflows. `#reduce` is about reduction in Lean’s term language; `#eval` is about executing code.
+
+**Transparency and unfolding.** Some definitions unfold readily; others may be opaque or reducibility-controlled. This affects whether `rfl`, `simp`, or unfolding succeeds.
+
+| Definition style         | Effect                                                    |
+| ------------------------ | --------------------------------------------------------- |
+| transparent `def`        | can unfold during reduction where allowed                 |
+| `abbrev`                 | intended as lightweight transparent abbreviation          |
+| `opaque`                 | hides implementation from reduction                       |
+| theorem                  | proof object, not generally computational data            |
+| noncomputable definition | valid mathematically but not executable in ordinary sense |
+
+**Common Pitfalls**
+
+| Pitfall                                            | Explanation                 | Better habit                                |
+| -------------------------------------------------- | --------------------------- | ------------------------------------------- |
+| Assuming `#eval` proves theorem                    | It runs one computation     | Prove general theorem                       |
+| Assuming `#reduce` is normal programming execution | It is reduction inspection  | Use it to understand definitional behavior  |
+| Making definitions opaque too early                | Blocks proof by computation | Use opacity only for abstraction boundaries |
+| Depending on accidental unfolding                  | Refactors break proofs      | Expose theorem contracts                    |
+
+### Function Semantics — functions as terms, implication as function type
+
+Functions are core Lean terms. Implication is function type at the proposition level.
+
+| Syntax                  | Semantic meaning                           |
+| ----------------------- | ------------------------------------------ |
+| `α → β`                 | function from `α` to `β`                   |
+| `P → Q`                 | function from proof of `P` to proof of `Q` |
+| `∀ x : α, β x`          | dependent function type                    |
+| `fun x => t`            | lambda abstraction                         |
+| `f x`                   | function application                       |
+| theorem with parameters | function returning proof                   |
+
+Example:
+
+```lean
+example (P Q : Prop) : P → Q → P := by
+  intro hP hQ
+  exact hP
+```
+
+Term version:
+
+```lean
+example (P Q : Prop) : P → Q → P :=
+  fun hP hQ => hP
+```
+
+Dependent example:
+
+```lean
+example : ∀ n : Nat, n = n :=
+  fun n => rfl
+```
+
+**Call strategy at the semantic level.** Lean functions are pure terms. Application substitutes arguments into function bodies at the level of reduction. For executable code, compiled runtime behavior has its own performance model, but the logical meaning remains term application.
+
+**Common Pitfalls**
+
+| Pitfall                                               | Explanation                                 | Better habit                                     |
+| ----------------------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
+| Reading implication as control flow                   | `P → Q` is function type over proofs        | Treat proofs as arguments                        |
+| Expecting theorem parameters to be global variables   | A theorem is a function over its parameters | Apply theorem to arguments                       |
+| Misreading curried arguments                          | `A → B → C` means `A → (B → C)`             | Read arrows right-associatively                  |
+| Treating proof arguments as irrelevant to theorem use | They are required terms                     | Provide hypotheses explicitly or through context |
+
+### Binding and Scope Semantics — local context, shadowing, sections
+
+Lean elaborates expressions relative to a local context. The context contains variables, hypotheses, local instances, local definitions, namespaces, and attributes.
+
+| Scope mechanism      | Semantic effect                             |
+| -------------------- | ------------------------------------------- |
+| binder `(x : α)`     | introduces local variable                   |
+| hypothesis `(h : P)` | introduces local proof                      |
+| `let x := t`         | introduces local definition                 |
+| `section` variables  | generalized into declarations that use them |
+| `namespace`          | prefixes declarations                       |
+| `open`               | changes name resolution                     |
+| local instance       | affects typeclass search                    |
+| local attribute      | affects automation in scope                 |
+| shadowing            | new binding hides old name                  |
+
+Example shadowing:
+
+```lean
+def shadow : Nat :=
+  let x := 1
+  let x := x + 1
+  x
+```
+
+This does not mutate `x`; it introduces a new `x`.
+
+Section example:
+
+```lean
+section
+
+variable {α : Type}
+variable (xs : List α)
+
+example : xs.length = xs.length := by
+  rfl
+
+end
+```
+
+Lean generalizes the section variables used in the declaration.
+
+**Common Pitfalls**
+
+| Pitfall                      | Explanation                         | Better habit                          |
+| ---------------------------- | ----------------------------------- | ------------------------------------- |
+| Thinking `let` mutates       | It binds a name                     | Read shadowing as new binding         |
+| Forgetting section variables | Declarations get hidden parameters  | Use `#check` after declaration        |
+| Overusing `open`             | Names lose origin                   | Prefer local opens or qualified names |
+| Local instance surprises     | Typeclass behavior changes by scope | Keep local instances visible          |
+
+### Pattern Matching Semantics — constructor elimination and dependent refinement
+
+Pattern matching eliminates values by constructor. In dependent contexts, pattern matching can refine types and goals.
+
+Example:
+
+```lean
+def pred? : Nat → Option Nat
+  | 0 => none
+  | n + 1 => some n
+```
+
+The function is defined by cases on the constructors of `Nat`.
+
+For proofs:
+
+```lean
+example (P Q : Prop) (h : P ∨ Q) : Q ∨ P := by
+  cases h with
+  | inl hP =>
+      right
+      exact hP
+  | inr hQ =>
+      left
+      exact hQ
+```
+
+The proof `h : P ∨ Q` has two constructor possibilities, so `cases` creates two branches.
+
+| Pattern matching target | Branches correspond to      |
+| ----------------------- | --------------------------- |
+| `Bool`                  | `true`, `false`             |
+| `Nat`                   | `zero`, `succ n`            |
+| `List α`                | `nil`, `cons x xs`          |
+| `P ∨ Q`                 | proof of `P`, proof of `Q`  |
+| `∃ x, P x`              | witness and proof           |
+| custom inductive        | declared constructors       |
+| inductive relation      | inference-rule constructors |
+
+**Dependent refinement.** If a goal depends on the matched value, each branch may have a more specific target. This is powerful but can produce complex goals.
+
+**Common Pitfalls**
+
+| Pitfall                                                | Explanation                                  | Better habit                                 |
+| ------------------------------------------------------ | -------------------------------------------- | -------------------------------------------- |
+| Treating pattern matching as ordinary branch only      | It also refines types/goals                  | Inspect goals after cases                    |
+| Losing information in dependent matches                | Needed equalities may vanish or change shape | Use equation names or more careful induction |
+| Using pattern matching where library eliminators exist | May create low-level proof                   | Use cases/induction or existing lemmas       |
+| Not covering all constructors                          | Definition incomplete                        | Let Lean show missing cases                  |
+
+### Induction Semantics — eliminators, motives, and generalization
+
+Every inductive type generates principles for eliminating and proving properties about its values. `induction` is a tactic interface to those principles.
+
+Natural number induction:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  induction n with
+  | zero =>
+      rfl
+  | succ n ih =>
+      simp [ih]
+```
+
+List induction:
+
+```lean
+example {α : Type} (xs : List α) : xs ++ [] = xs := by
+  induction xs with
+  | nil =>
+      rfl
+  | cons x xs ih =>
+      simp [ih]
+```
+
+The semantic object behind induction is an eliminator. The tactic generates a motive, base cases, step cases, and induction hypotheses.
+
+| Induction component  | Meaning                                        |
+| -------------------- | ---------------------------------------------- |
+| target property      | motive                                         |
+| base case            | proof for initial constructor                  |
+| step case            | proof for recursive constructor                |
+| induction hypothesis | assumption for recursive subobject             |
+| generalized variable | variable kept arbitrary so IH is strong enough |
+| dependent motive     | property whose type depends on value           |
+
+**Generalization problem.**
+
+For accumulator functions, a theorem may need to be generalized:
+
+```lean
+def sumAux : List Nat → Nat → Nat
+  | [], acc => acc
+  | x :: xs, acc => sumAux xs (acc + x)
+```
+
+A theorem only about `sumAux xs 0` may be too weak. The proof often needs:
+
+```lean
+theorem sumAux_correct (xs : List Nat) (acc : Nat) :
+    sumAux xs acc = acc + sumAux xs 0 := by
+  -- shape only; actual theorem may need a separate simple sum specification
+  sorry
+```
+
+The exact theorem may differ, but the principle is stable: recursive calls change `acc`, so the induction hypothesis must quantify over arbitrary `acc`.
+
+**Failure-first explanation:** the wrong model is that induction automatically gives “the useful smaller theorem.” The correct model is that induction gives the theorem you asked for, specialized to recursive subterms. If the statement is too specific, the induction hypothesis is too weak.
+
+**Common Pitfalls**
+
+| Pitfall                              | Explanation                              | Better habit                                   |
+| ------------------------------------ | ---------------------------------------- | ---------------------------------------------- |
+| Introducing variables too early      | IH becomes specialized                   | Generalize variables before induction          |
+| Inducting on wrong object            | IH does not match recursion              | Induct on the structure driving the definition |
+| Ignoring motive                      | Dependent goals require correct property | Read generated goals carefully                 |
+| Expecting induction to solve algebra | It only supplies IH                      | Use rewrites, simp, helper lemmas              |
+
+### Recursion and Termination — structural recursion, well-founded recursion, executable definitions
+
+Lean requires recursive definitions to be well-founded. The easiest case is structural recursion: each recursive call is made on a syntactically smaller part of the input.
+
+Structural recursion:
+
+```lean
+def length' {α : Type} : List α → Nat
+  | [] => 0
+  | _ :: xs => length' xs + 1
+```
+
+Recursive calls are on `xs`, a subcomponent of `_ :: xs`.
+
+Non-structural recursion may require a termination argument. For advanced algorithms, this can become a modeling problem.
+
+| Recursion style           | Termination evidence                              | Best use                                   | Cost                            |
+| ------------------------- | ------------------------------------------------- | ------------------------------------------ | ------------------------------- |
+| Structural recursion      | immediate subterm                                 | lists, trees, syntax                       | easiest to prove about          |
+| Mutual recursion          | structural across multiple definitions            | mutually defined syntax/eval               | more complex                    |
+| Well-founded recursion    | measure decreases                                 | algorithms not structurally recursive      | termination proof required      |
+| Partial/runtime recursion | not acceptable as total definition unless modeled | executable systems with failure/divergence | must use appropriate mechanisms |
+| Loop in monadic code      | elaborated programming construct                  | efficient algorithms                       | proof may need invariant        |
+
+**Design meaning:** termination is part of Lean’s logic. Allowing arbitrary nonterminating definitions would break consistency if such definitions could inhabit arbitrary types.
+
+**Common Pitfalls**
+
+| Pitfall                                                 | Explanation                                 | Better habit                                         |
+| ------------------------------------------------------- | ------------------------------------------- | ---------------------------------------------------- |
+| Writing algorithm first without termination shape       | Lean rejects recursion                      | Design measure or use structural recursion           |
+| Using accumulator optimization too early                | Correctness theorem harder                  | Define simple spec first                             |
+| Treating termination proof as bureaucratic              | It protects logical consistency             | Make decreasing argument explicit                    |
+| Confusing executable loop with proof-friendly recursion | Runtime convenience may not match induction | Separate efficient implementation from specification |
+
+### Tactic Execution Semantics — tactics construct proof terms
+
+A tactic is a program that manipulates goals and local context to construct a proof term. Tactics are not kernel primitives in the sense of being trusted proof rules; their output must check.
+
+| Tactic action | Semantic effect                                    |
+| ------------- | -------------------------------------------------- |
+| `intro h`     | construct function/proof by abstraction            |
+| `exact t`     | provide term for current goal                      |
+| `apply f`     | use `f` and generate goals for its arguments       |
+| `constructor` | apply constructor for target type                  |
+| `cases h`     | eliminate an inductive value/proof                 |
+| `induction n` | apply induction principle                          |
+| `rw [h]`      | rewrite by equality proof                          |
+| `simp`        | run simplifier to produce proof of normalized goal |
+| `ring`        | synthesize proof of algebraic identity             |
+| `omega`       | synthesize arithmetic proof in supported fragment  |
+
+Example:
+
+```lean
+example (P Q : Prop) : P ∧ Q → Q ∧ P := by
+  intro h
+  constructor
+  · exact h.right
+  · exact h.left
+```
+
+This proof script constructs a function from a proof of `P ∧ Q` to a proof of `Q ∧ P`. The tactic structure corresponds to the proof term structure.
+
+**Automation opacity.**
+
+```lean
+example (P Q : Prop) : P ∧ Q → Q ∧ P := by
+  aesop
+```
+
+This may construct a proof term, but the visible script no longer explains the proof. Kernel correctness remains; human readability decreases.
+
+**Common Pitfalls**
+
+| Pitfall                                    | Explanation                               | Better habit                             |
+| ------------------------------------------ | ----------------------------------------- | ---------------------------------------- |
+| Treating tactic success as proof quality   | Kernel checks correctness, not exposition | Refactor central proofs                  |
+| Using automation outside intended fragment | Tactic fails or becomes slow              | Classify goal first                      |
+| Not reading proof state                    | Tactics are goal transformations          | Inspect goals after each structural step |
+| Depending on brittle search behavior       | Library/import changes may break proof    | Use explicit lemmas for stable arguments |
+
+### Simplifier Semantics — normal forms, rewrite rules, and proof-producing normalization
+
+The simplifier is a proof-producing normalization engine. It uses registered simp lemmas, local hypotheses, definitional unfolding where allowed, and built-in procedures to transform expressions.
+
+| Simplifier input          | Simplifier role                              |
+| ------------------------- | -------------------------------------------- |
+| default simp set          | standard normalization rules                 |
+| local facts               | equalities/propositions available in context |
+| `[simp]` lemmas           | registered rewrite rules                     |
+| definitions in `simp [f]` | local unfolding or additional rules          |
+| constructor equations     | reduce pattern matches                       |
+| projection rules          | simplify structure fields                    |
+| logical simplifications   | simplify `True`, `False`, conjunctions, etc. |
+
+Example:
+
+```lean
+def eraseRightZero (n : Nat) : Nat :=
+  n + 0
+
+example (n : Nat) : eraseRightZero n = n := by
+  simp [eraseRightZero]
+```
+
+Here `simp [eraseRightZero]` unfolds the definition and normalizes `n + 0`.
+
+**Simp rule orientation.** A good simp lemma rewrites toward a canonical, smaller, or more normal expression.
+
+Good:
+
+```lean
+@[simp]
+theorem eraseRightZero_eq (n : Nat) : eraseRightZero n = n := by
+  simp [eraseRightZero]
+```
+
+Bad as a global simp shape:
+
+```lean
+-- Bad global simp direction:
+-- theorem expand_zero (n : Nat) : n = n + 0 := ...
+```
+
+This expands terms rather than normalizing them.
+
+**Common Pitfalls**
+
+| Pitfall                                  | Explanation              | Better habit                              |
+| ---------------------------------------- | ------------------------ | ----------------------------------------- |
+| Assuming `simp` searches all mathematics | It uses configured rules | Add specific lemmas or use theorem search |
+| Adding symmetric lemmas to simp          | Can loop or destabilize  | Orient toward normal form                 |
+| Using `simp at *` destructively          | Changes context broadly  | Simplify specific hypotheses              |
+| Letting `simp` hide central proof        | Readability suffers      | Use explicit rewrite or `calc`            |
+
+### Typeclass Inference Semantics — instance search, canonical structure, hidden arguments
+
+Typeclass inference resolves arguments in square brackets, such as `[Group G]` or `[DecidableEq α]`.
+
+| Typeclass role       | Example                | What instance supplies         |
+| -------------------- | ---------------------- | ------------------------------ |
+| algebraic operations | `[Monoid M]`           | `*`, `1`, laws                 |
+| equality decision    | `[DecidableEq α]`      | computable equality            |
+| order structure      | `[Preorder α]`         | `≤`, transitivity, reflexivity |
+| display/debugging    | `[Repr α]`             | representation                 |
+| default value        | `[Inhabited α]`        | `default`                      |
+| topology/analysis    | `[TopologicalSpace X]` | topological structure          |
+
+Example:
+
+```lean
+example {M : Type} [Monoid M] (a : M) : a * 1 = a := by
+  simp
+```
+
+Lean resolves the meaning of `*`, `1`, and applicable simplification lemmas using the `Monoid M` instance.
+
+Instance synthesis example:
+
+```lean
+#synth Inhabited Nat
+```
+
+**Instance search is not magic.** It searches an environment of declared instances according to rules. If the required instance is not available, too ambiguous, or noncanonical, elaboration fails or becomes confusing.
+
+**Common Pitfalls**
+
+| Pitfall                                | Explanation                              | Better habit                                    |
+| -------------------------------------- | ---------------------------------------- | ----------------------------------------------- |
+| Treating `[C α]` as optional           | It is a real argument resolved by search | Add required instance assumptions               |
+| Defining noncanonical global instances | Search may choose surprising structure   | Use explicit arguments for noncanonical choices |
+| Requiring stronger class than needed   | Reduces theorem applicability            | Use weakest adequate class                      |
+| Ignoring instance failure messages     | They reveal missing structure            | Read target class and type carefully            |
+
+### Coercion Semantics — inserted conversions and hidden structure
+
+Coercions are inserted when Lean knows a canonical way to treat a term of one type as a term of another.
+
+Subtype example:
+
+```lean
+def posOne : {n : Nat // n > 0} :=
+  ⟨1, by decide⟩
+
+def asNat : Nat :=
+  posOne
+```
+
+Lean coerces the subtype value to its underlying `Nat`.
+
+| Coercion kind         | Example                                 | Caveat                                 |
+| --------------------- | --------------------------------------- | -------------------------------------- |
+| subtype to carrier    | `{x // P x}` to `α`                     | proof field remains in original object |
+| numeric coercion      | `Nat` to `Int` or other numeric domains | goals may contain casts                |
+| structure to function | bundled maps                            | application hides projection           |
+| class-based coercions | set-like/function-like objects          | notation may obscure conversion        |
+
+**Semantic cost:** coercions improve surface readability but can make goals more complex. Numeric coercions especially can introduce cast expressions that require specialized lemmas.
+
+**Common Pitfalls**
+
+| Pitfall                                                   | Explanation                             | Better habit                                |
+| --------------------------------------------------------- | --------------------------------------- | ------------------------------------------- |
+| Forgetting source type after coercion                     | Proof fields may be needed              | Keep original object in context             |
+| Expecting all numeric coercions to simplify automatically | Cast lemmas may be required             | Use explicit type annotations               |
+| Misreading function-like structures                       | Application may be coercion to function | Use `#check`                                |
+| Creating too many custom coercions                        | Source becomes ambiguous                | Prefer explicit projection unless canonical |
+
+### Module and Import Semantics — environments, declarations, and build graph
+
+A Lean file is checked in an environment built from imported modules. Imports are semantic dependencies, not textual copy-paste.
+
+| Import effect              | Example consequence              |
+| -------------------------- | -------------------------------- |
+| Adds declarations          | theorem names become available   |
+| Adds notation              | symbols parse/elaborate          |
+| Adds instances             | typeclass search changes         |
+| Adds simp lemmas           | simplification changes           |
+| Adds tactics               | tactic commands become available |
+| Adds attributes            | automation behavior changes      |
+| Increases build dependency | project checking cost changes    |
+
+This explains why a snippet may fail outside its original project. It may rely on imported notation, local namespaces, project definitions, or Mathlib modules.
+
+**Common Pitfalls**
+
+| Pitfall                                       | Explanation                             | Better habit                     |
+| --------------------------------------------- | --------------------------------------- | -------------------------------- |
+| Copying code without imports                  | Names/tactics unavailable               | Copy import context              |
+| Assuming file can compile alone               | It may depend on project modules        | Work through Lake project        |
+| Importing too broadly in stable files         | Hides dependencies and costs build time | Refine imports after exploration |
+| Ignoring changed imports after version update | Simp/theorem availability may change    | Diagnose import boundary first   |
+
+### Runtime Model — executable Lean, pure definitions, `IO`, and compiled code
+
+Lean is both a theorem prover and a programming language. Some definitions are executable, and Lean can compile programs. But executable runtime behavior is distinct from proof checking.
+
+| Runtime object           | Meaning                                                                                                 |
+| ------------------------ | ------------------------------------------------------------------------------------------------------- |
+| pure function            | deterministic computation inside Lean                                                                   |
+| inductive value          | runtime data representation                                                                             |
+| closure/function         | executable function value                                                                               |
+| `IO α`                   | effectful computation producing `α`                                                                     |
+| `Option α`               | optional value                                                                                          |
+| `Except ε α`             | success or error value                                                                                  |
+| array/list/string        | standard executable data                                                                                |
+| proof term               | generally erased/irrelevant for runtime computation in many contexts, but semantically present in logic |
+| noncomputable definition | mathematically valid but not executable in ordinary way                                                 |
+
+Example pure function:
+
+```lean
+def double (n : Nat) : Nat :=
+  n + n
+
+#eval double 5
+```
+
+Example effectful program:
+
+```lean
+def main : IO Unit := do
+  IO.println "Lean"
+```
+
+Example pure core plus effectful shell:
+
+```lean
+def message (name : String) : String :=
+  s!"Hello, {name}"
+
+def main2 : IO Unit := do
+  IO.println (message "Lean")
+```
+
+**Professional rule:** keep theorem-relevant logic pure when possible. Put `IO` at the boundary.
+
+**Common Pitfalls**
+
+| Pitfall                                      | Explanation                       | Better habit                             |
+| -------------------------------------------- | --------------------------------- | ---------------------------------------- |
+| Treating proof checking as runtime execution | They are different phases         | Distinguish `theorem` from `#eval`       |
+| Embedding pure logic inside `IO`             | Harder to prove about             | Extract pure functions                   |
+| Expecting noncomputable definitions to run   | They may rely on classical choice | Use computable definitions for execution |
+| Treating runtime output as proof             | Output is data/effect             | Prove theorem about pure core            |
+
+### Memory and Value Model — inductive data, sharing, allocation, and proof irrelevance
+
+Lean’s logical semantics abstracts away from low-level memory. The runtime implementation, however, must allocate and manage values. A professional Lean user should distinguish semantic equality from runtime representation.
+
+| Concept            | Logical/semantic view    | Runtime/cost view                                                                  |
+| ------------------ | ------------------------ | ---------------------------------------------------------------------------------- |
+| `Nat`              | inductive natural number | optimized/runtime representation may differ by implementation                      |
+| `List α`           | inductive sequence       | cons cells, linear traversal behavior                                              |
+| `Array α`          | indexed sequence         | more efficient random access/update patterns                                       |
+| function           | term/closure             | closure allocation may matter                                                      |
+| structure          | fields/projections       | runtime record-like representation                                                 |
+| proof              | term inhabiting `Prop`   | often computationally irrelevant/erased for execution                              |
+| subtype            | value plus proof         | proof component usually irrelevant computationally, but affects elaboration/proofs |
+| recursive function | definitional computation | stack/heap/runtime cost depends on compilation                                     |
+
+**Cost model distinction:**
+
+| Cost type           | Example                                                       |
+| ------------------- | ------------------------------------------------------------- |
+| Runtime cost        | list traversal, array access, string operations               |
+| Allocation cost     | constructing lists, closures, arrays, intermediate structures |
+| Elaboration cost    | resolving implicit arguments, typeclass search                |
+| Proof-checking cost | large proof terms, heavy reductions                           |
+| Simplification cost | large simp sets, repeated normalization                       |
+| Build cost          | imports, module graph, Mathlib dependency                     |
+| Automation cost     | search tactics, arithmetic tactics                            |
+
+**Common Pitfalls**
+
+| Pitfall                                                        | Explanation                                       | Better habit                                          |
+| -------------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------- |
+| Optimizing runtime representation in theorem-first code        | Proof complexity may dominate                     | Choose proof-friendly model first                     |
+| Ignoring runtime cost in executable Lean                       | Lists/strings/arrays have real costs              | Choose data structure by execution profile            |
+| Assuming subtype proof field is runtime burden in all contexts | Proof irrelevance/erasure may reduce runtime cost | Worry more about proof/elaboration burden             |
+| Treating logical equality as pointer identity                  | Lean equality is typed proposition                | Use semantic equality, not runtime identity intuition |
+
+### Collection Cost Semantics — lists, arrays, sets, finsets, functions
+
+| Operation or pattern | Usual cost intuition             | Hidden cost                        | When it matters                              |
+| -------------------- | -------------------------------- | ---------------------------------- | -------------------------------------------- |
+| `List` traversal     | linear                           | recursive proof obligations        | large executable data or repeated traversals |
+| `List.append`        | linear in left list              | reassociation proof complexity     | symbolic sequence proofs                     |
+| `List.map`           | linear                           | theorem rewriting over map         | transformations with proof reuse             |
+| `Array` indexing     | efficient with valid index       | bound proof / `Fin` management     | executable algorithms                        |
+| `Array` update       | efficient relative to list       | proof lemmas may be less direct    | performance-sensitive code                   |
+| `Set α` membership   | proposition application          | not executable enumeration         | mathematical set reasoning                   |
+| `Finset` operations  | finite computation/set reasoning | decidability and finite lemmas     | combinatorics, finite sums                   |
+| function `α → β`     | total mapping                    | extensionality needed for equality | sequences, families, maps                    |
+| subtype `{x // P x}` | carries invariant                | coercions/proof transport          | API boundaries                               |
+
+**Professional rule:** proof-friendly and runtime-friendly are not always the same. `List` is often easier for induction; `Array` may be better for execution. `Set` is mathematically elegant; `Finset` is finite and more computational; `List` preserves order and duplicates.
+
+**Common Pitfalls**
+
+| Pitfall                                                     | Explanation                   | Better habit                        |
+| ----------------------------------------------------------- | ----------------------------- | ----------------------------------- |
+| Using `Set` for executable finite collection                | It is predicate-like          | Use `Finset`, `List`, or `Array`    |
+| Using `Array` for inductive theorem development prematurely | Proofs may be harder          | Start with `List` or abstract spec  |
+| Using `List` for random access algorithms                   | Cost may be poor              | Use `Array` where execution matters |
+| Ignoring finite/decidable requirements                      | `Finset` operations need them | State `[DecidableEq α]` etc.        |
+
+### Error and Effect Semantics — `Option`, `Except`, `IO`, contradiction, and noncomputability
+
+Lean separates failure and effect forms.
+
+| Form            | Semantic layer                | Meaning                            |
+| --------------- | ----------------------------- | ---------------------------------- |
+| `Option α`      | pure data                     | possible absence                   |
+| `Except ε α`    | pure data                     | recoverable error with reason      |
+| `False`         | proposition                   | logical contradiction              |
+| `¬ P`           | proposition                   | `P → False`                        |
+| `panic!`        | runtime                       | crash/abort executable computation |
+| `IO α`          | effectful runtime computation | external interaction               |
+| `noncomputable` | definition marker             | no executable content expected     |
+| `sorry`         | proof admission               | unfinished/admitted term           |
+| `axiom`         | assumption                    | extends logical environment        |
+
+Example:
+
+```lean
+def safeHead {α : Type} : List α → Option α
+  | [] => none
+  | x :: _ => some x
+```
+
+```lean
+def requirePositive (n : Nat) : Except String {m : Nat // m > 0} :=
+  if h : n > 0 then .ok ⟨n, h⟩ else .error "not positive"
+```
+
+Logical contradiction:
+
+```lean
+example (P : Prop) (hP : P) (hNotP : ¬ P) : False := by
+  exact hNotP hP
+```
+
+**Common Pitfalls**
+
+| Pitfall                                  | Explanation                | Better habit                                            |
+| ---------------------------------------- | -------------------------- | ------------------------------------------------------- |
+| Confusing `False` and `false`            | proposition vs Boolean     | Use `#check`                                            |
+| Using `panic!` for logical impossibility | Runtime crash is not proof | Use contradiction proof or impossible pattern           |
+| Using `Option` when diagnostics matter   | Failure reason lost        | Use `Except`                                            |
+| Treating `noncomputable` as an error     | It is a semantic marker    | Use when classical/noncomputable definition is intended |
+
+### Concurrency and Parallelism — secondary but real execution concerns
+
+Concurrency is not central to Lean’s theorem-proving mental model in the same way as elaboration, kernel checking, typeclasses, and Mathlib. It matters for executable Lean programs, build systems, tooling, and some metaprogramming contexts.
+
+| Concept                     | Meaning in Lean context                               |
+| --------------------------- | ----------------------------------------------------- |
+| Concurrency                 | managing multiple tasks/effects                       |
+| Parallelism                 | executing work simultaneously                         |
+| Build parallelism           | checking/building independent modules where supported |
+| `IO` concurrency            | runtime programming concern                           |
+| Metaprogramming concurrency | advanced tool/tactic implementation issue             |
+| Proof-level concurrency     | not a logical connective; proofs remain terms         |
+
+The important distinction is that concurrency is mostly a runtime/tooling concern, not a basic proof semantics concern. A theorem does not become concurrent because the build system checks files in parallel.
+
+**Common Pitfalls**
+
+| Pitfall                                                   | Explanation                                      | Better habit                             |
+| --------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------- |
+| Importing ordinary async mental models into proof scripts | Proof construction is not event-loop programming | Treat tactics as proof-term construction |
+| Confusing build parallelism with logical independence     | Build scheduling does not change theorem meaning | Understand import graph                  |
+| Putting effectful concurrent behavior in core definitions | Hard to reason about                             | Separate pure core and `IO` boundary     |
+| Overemphasizing concurrency in Lean learning              | It is secondary to proof/model/library semantics | Learn it when writing executable tools   |
+
+### Compilation and Execution — theorem checking versus running programs
+
+Lean compilation and proof checking are related in one environment but serve different goals.
+
+| Activity                  | Main object          | Success means                          |
+| ------------------------- | -------------------- | -------------------------------------- |
+| Elaborating theorem       | proof script/term    | full proof term constructed            |
+| Kernel checking theorem   | elaborated term      | proof term has theorem type            |
+| Compiling executable code | definitions/programs | runnable artifact generated            |
+| Running `#eval`           | expression           | value computed                         |
+| Building project          | modules/import graph | declarations checked and targets built |
+| Running tests/examples    | examples/executables | expected checks or outputs succeed     |
+
+A file full of theorems can be “built” because declarations are checked, even if it has no executable `main`. A file with executable code can run, but runtime success does not prove general correctness unless the relevant theorems are stated and proved.
+
+**Common Pitfalls**
+
+| Pitfall                                              | Explanation                                           | Better habit                                                                 |
+| ---------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Saying Lean “runs” a proof                           | It elaborates and checks proof terms                  | Reserve runtime language for executable code                                 |
+| Treating `#eval` as verification                     | It checks one computation                             | Prove theorem                                                                |
+| Confusing compiler error with proof error            | Build pipeline has many phases                        | Identify parser/elaborator/kernel/runtime layer                              |
+| Assuming executable efficiency from theorem elegance | Proof-friendly definitions may not be runtime-optimal | Separate specification and optimized implementation with correctness theorem |
+
+### Performance Model — proof checking, elaboration, simplification, build, runtime
+
+Lean performance has several distinct dimensions.
+
+| Operation or pattern       | Usual cost              | Hidden cost                               | Detection                        | Optimization principle                                    |
+| -------------------------- | ----------------------- | ----------------------------------------- | -------------------------------- | --------------------------------------------------------- |
+| Large imports              | build/environment cost  | many declarations, instances, simp lemmas | slow build/check                 | target imports in stable files                            |
+| Heavy implicit inference   | elaboration cost        | metavariable/typeclass search             | slow elaboration, unclear errors | add annotations                                           |
+| Deep typeclass hierarchy   | instance search cost    | backtracking/ambiguity                    | missing/slow instance synthesis  | use appropriate assumptions, avoid noncanonical instances |
+| Large `simp` calls         | simplification cost     | many rewrite rules                        | heartbeat/time issues            | restrict simp set                                         |
+| Search tactics             | proof search cost       | branching search space                    | slow or brittle proof            | provide lemmas/structure                                  |
+| Huge proof terms           | kernel checking cost    | term size                                 | slow checking                    | refactor proof                                            |
+| Repeated unfolding         | reduction cost          | low-level expansion                       | slow simplification/reduction    | expose theorem lemmas                                     |
+| List-heavy executable code | runtime linear cost     | allocation/traversal                      | profiling/benchmarking           | use arrays/efficient structures when needed               |
+| Array-heavy proof code     | proof complexity        | bound/index lemmas                        | proof difficulty                 | use abstract spec or list model first                     |
+| Metaprogramming            | elaboration/search cost | generated terms                           | difficult diagnostics            | keep automation scoped                                    |
+
+**Failure-first explanation:** the wrong model is that performance means only runtime speed. In Lean, slow elaboration, slow simplification, slow typeclass search, slow imports, and large proof terms may matter more than execution speed in a mathematics-heavy project.
+
+**Common Pitfalls**
+
+| Pitfall                                          | Explanation                     | Better habit                        |
+| ------------------------------------------------ | ------------------------------- | ----------------------------------- |
+| Raising heartbeats first                         | Masks proof search issue        | Reduce search or add explicit steps |
+| Using `simp` with too many definitions           | Expands irrelevant terms        | Use `simp only` or targeted simp    |
+| Adding global instances casually                 | Slows/confuses typeclass search | Keep instances canonical            |
+| Optimizing runtime before proof model stabilizes | May complicate verification     | Separate spec and implementation    |
+
+### Semantic Debugging Workflow — classify the failure layer
+
+When Lean fails, first classify the layer.
+
+| Symptom                            | Likely layer                                  | Diagnostic move                         |
+| ---------------------------------- | --------------------------------------------- | --------------------------------------- |
+| unexpected token                   | parser/syntax                                 | check command and notation              |
+| unknown constant/name              | imports/namespace                             | check imports, qualified name           |
+| failed to synthesize instance      | typeclass inference                           | inspect required class/type             |
+| type mismatch                      | elaboration                                   | read expected and actual type           |
+| unsolved goals                     | proof construction                            | inspect proof state                     |
+| `rfl` fails                        | definitional equality                         | use theorem/rewrite/simp                |
+| `rw` fails                         | rewrite matching                              | inspect expression shape and direction  |
+| `simp` does not close              | simplifier lacks rule or goal not normalizing | add lemma or use explicit proof         |
+| tactic times out                   | automation/search                             | restrict search or provide helper lemma |
+| theorem compiles but is unreadable | proof engineering                             | refactor                                |
+| executable crashes/fails           | runtime                                       | debug `IO`/data handling                |
+| build fails after update           | ecosystem compatibility                       | inspect toolchain/import/API changes    |
+
+**Professional debugging rule:** do not change the theorem randomly until the failure layer is identified. A missing import is not a mathematical problem. A weak induction hypothesis is not a tactic problem. A missing instance is not a runtime problem. A failed `rfl` is not evidence that the theorem is false.
+
+### Failure-First Patterns — common semantic traps
+
+| Tempting wrong model               | Surprising behavior                  | Correct semantic explanation                  | Professional rule                     | Boundary                               |
+| ---------------------------------- | ------------------------------------ | --------------------------------------------- | ------------------------------------- | -------------------------------------- |
+| `rfl` proves obvious equality      | `n + 0 = n` may not close by `rfl`   | Not definitionally equal in that direction    | Use theorem or `simp`                 | definitional vs propositional equality |
+| `simp` proves anything simple      | `simp` fails on central theorem      | Simplifier only knows registered normal forms | Add lemma or explicit proof           | simplification boundary                |
+| Tactics are proof commands         | Tactic script is opaque but accepted | Tactic generated checked proof term           | Refactor for readability              | tactic/kernel boundary                 |
+| Typeclasses are automatic          | Missing instance error appears       | Required structure not in context             | Add/import/provide instance           | typeclass boundary                     |
+| `Bool` is proposition              | Boolean checker cannot prove theorem | Need bridge to `Prop`                         | Prove correctness iff                 | computation/spec boundary              |
+| `Set` is finite container          | Cannot enumerate arbitrary set       | `Set α` is predicate-like                     | Use `Finset`/`List` for finite data   | math/computation boundary              |
+| Runtime success proves correctness | `#eval` returns expected result      | Only one computation checked                  | Prove general theorem                 | testing/proof boundary                 |
+| `sorry` is TODO comment            | Theorem becomes usable               | `sorry` admits proof term                     | Audit proof debt                      | trust boundary                         |
+| Import only adds names             | `simp` behavior changes              | Imports add lemmas/instances/attributes       | Treat imports as semantic environment | ecosystem boundary                     |
+| More abstraction is always better  | Typeclass errors dominate            | Abstraction adds obligations                  | Use weakest adequate abstraction      | modeling boundary                      |
+
+### Implementation Detail versus Language-Level Semantics — what not to overclaim
+
+Lean users should distinguish semantic guarantees from implementation details.
+
+| Statement type                    | Example                            | How to treat                               |
+| --------------------------------- | ---------------------------------- | ------------------------------------------ |
+| Language/type-theoretic semantics | theorem is type; proof is term     | central and stable conceptually            |
+| Kernel behavior                   | proof terms are checked            | trusted core principle                     |
+| Elaborator behavior               | implicit arguments inferred        | practical implementation/language behavior |
+| Tactic behavior                   | `simp` uses simp lemmas            | tool behavior, version/import sensitive    |
+| Runtime representation            | how arrays/lists/closures allocate | implementation/performance detail          |
+| Compiler optimization             | generated code efficiency          | implementation/version dependent           |
+| Mathlib convention                | theorem naming, hierarchy design   | ecosystem convention                       |
+| Project behavior                  | Lake config/import graph           | project-specific                           |
+| Source corpus style               | textbook-faithful formalization    | design goal, not universal idiom           |
+
+**Professional rule:** do not present implementation-specific behavior as the mathematical semantics of Lean unless the distinction is explicit. It is safe to say that `List` is inductively structured and proof by induction follows its constructors. It is more delicate to make claims about low-level memory layout or compiler optimization without checking implementation details.
+
+### PART 7 Summary — Lean meaning is layered
+
+PART 7 established that Lean 4 semantics is layered:
+
+| Layer                  | Core lesson                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------- |
+| Surface syntax         | What the user writes is compact and often implicit                                 |
+| Elaboration            | Lean resolves expected types, implicits, coercions, notation, and instances        |
+| Kernel checking        | Correctness rests on checking elaborated terms                                     |
+| Definitional equality  | Some equalities hold by computation                                                |
+| Propositional equality | Other equalities require explicit proof and rewriting                              |
+| Tactic execution       | Tactics construct proof terms; they are not magical trusted commands               |
+| Simplification         | `simp` is proof-producing normalization by configured rules                        |
+| Typeclass inference    | Reusable structure is searched, not globally obvious                               |
+| Runtime execution      | Executable Lean code runs separately from proof checking                           |
+| Effects                | `IO`, `Option`, `Except`, contradiction, and noncomputability are different layers |
+| Memory/cost            | Lean has runtime costs and proof-engineering costs                                 |
+| Build/project model    | Files are checked relative to imports, toolchain, and dependencies                 |
+
+The central professional rule is:
+
+**When Lean behaves unexpectedly, first identify the semantic layer: syntax, elaboration, instance search, definitional equality, proof construction, simplification, kernel checking, runtime execution, or project environment.**
+
+A mature Lean user does not respond to every failure by trying another tactic. They ask:
+
+| Diagnostic question                             | Why it matters                            |
+| ----------------------------------------------- | ----------------------------------------- |
+| Is the goal stated in the right form?           | The theorem may be badly shaped           |
+| Is the required instance available?             | Typeclass inference may be blocked        |
+| Is this equality definitional or propositional? | Determines `rfl` vs `rw`/`simp`           |
+| Is the simplifier missing a rule?               | May require local lemma                   |
+| Is induction hypothesis strong enough?          | May require generalization                |
+| Is a coercion or implicit argument hidden?      | May require annotation                    |
+| Is the theorem already in Mathlib?              | Avoid reproving                           |
+| Is this a runtime issue or proof issue?         | Choose correct debugging method           |
+| Is this a project/import/version issue?         | Environment may be wrong                  |
+| Is accepted proof still readable?               | Kernel correctness is not maintainability |
+
+## PART 8 — Historical Evolution, Paradigm Shifts, and Current Trends
+
+### Purpose and Scope — problem-driven history, not chronology as decoration
+
+PART 8 explains Lean 4 historically, but not as a detached timeline. The goal is to understand why Lean 4 has its current shape: dependent type theory, proof terms, tactics, elaboration, a small kernel, typeclass-driven mathematics, metaprogramming, `Lake`, `Mathlib`, and language-server-centered workflow.
+
+Lean 4 did not emerge as a conventional general-purpose programming language that later acquired theorem proving. Nor is it only a proof assistant with incidental programming features. The current system reflects a convergence of several pressures:
+
+| Historical pressure                       | Lean 4 response                                      | Lasting consequence                                        |
+| ----------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------- |
+| Formal proofs need a trusted core         | Small kernel checks elaborated terms                 | Tactics and automation must produce checkable proof terms  |
+| Mathematics needs reusable abstraction    | Structures, classes, instances, hierarchy            | Typeclass-driven Mathlib style                             |
+| Proof development needs interaction       | Editor goal states and elaborator feedback           | Lean is used interactively, not only batch-compiled        |
+| Large libraries need maintainability      | Namespaces, imports, theorem naming, simp discipline | Library literacy becomes part of language literacy         |
+| Users need extensibility                  | Lean 4 metaprogramming and tactic infrastructure     | Automation can be built inside Lean                        |
+| Projects need reproducibility             | `Lake`, `lean-toolchain`, dependency management      | Lean code is project-environment-sensitive                 |
+| Formalization must connect to computation | Same language for code and proofs                    | Definitions can compute and be reasoned about              |
+| AI and automation need formal targets     | Machine-checkable theorem proving                    | Lean becomes a natural target for AI-assisted proof search |
+
+Lean 4 reached its first official stable release as `v4.0.0` on September 8, 2023, moving from nightly-only use to regular stable releases. ([Lean Community][1]) Official Lean documentation describes Lean 4 development as beginning in 2018 and culminating in the 4.0 release, and release notes remain important because Lean continues to evolve actively. ([Lean Language][2])
+
+### Era: From Formal Logic to Interactive Theorem Proving — trusted proof objects
+
+The deep historical background of Lean lies in formal logic, type theory, and proof assistants. The relevant shift is from informal proof persuasion to machine-checkable proof objects.
+
+| Earlier problem                                | Constraint                            | Design response in systems like Lean               |
+| ---------------------------------------------- | ------------------------------------- | -------------------------------------------------- |
+| Informal mathematical proof can omit steps     | Human readers tolerate compression    | Formal systems require explicit proof terms        |
+| Large proof systems can become untrustworthy   | Too many trusted procedures are risky | Small kernel checks proof objects                  |
+| Proofs are too verbose if fully explicit       | Direct proof terms are hard to write  | Tactics and elaboration help construct terms       |
+| Mathematical notation is compact but ambiguous | Machines need exact terms             | Elaborator resolves notation, implicits, and types |
+| Reusable mathematics requires abstraction      | Reproving everything is impossible    | Libraries, namespaces, typeclasses, theorem search |
+
+Lean inherits the proof-assistant idea that correctness should ultimately reduce to checking a relatively small kernel-level object. Tactics, automation, and user syntax are important, but they are not the trusted proof rules in the same way. They must elaborate to terms the kernel accepts.
+
+**Design consequence:** this explains why `by simp` and a long term proof are semantically similar after elaboration: both must produce a proof term. It also explains why Lean users care about `sorry`, `axiom`, and `unsafe` as trust boundaries.
+
+**Common misunderstanding prevented:** Lean is not “a program that believes tactics.” It is a system in which tactics attempt to generate terms, and the kernel checks those terms.
+
+### Era: Dependent Type Theory as a Practical Language — propositions as types, values in types
+
+The next historical pressure is expressiveness. Ordinary static type systems can prevent many programming errors, but they cannot naturally express arbitrary mathematical propositions as types. Dependent type theory makes mathematical specification part of the type language.
+
+| Problem                                 | Dependent-type response                             | Lean consequence                      |
+| --------------------------------------- | --------------------------------------------------- | ------------------------------------- |
+| Need to state theorems about all values | Universal quantification as dependent function type | `∀ n : Nat, n + 0 = n`                |
+| Need proof to be checkable              | Proof as term                                       | theorem body inhabits proposition     |
+| Need types indexed by values            | Types may mention terms                             | `Fin n`, subtypes, indexed inductives |
+| Need data with invariants               | Pair value with proof                               | `{x : α // P x}`                      |
+| Need exact equality reasoning           | Equality is a proposition                           | `rw`, `rfl`, `congrArg`               |
+| Need reusable structures with laws      | Structures/classes contain operations and proofs    | algebraic hierarchy                   |
+
+Example:
+
+```lean
+theorem id_prop (P : Prop) : P → P :=
+  fun h => h
+```
+
+Historically, this is not merely “functional programming.” It reflects the Curry–Howard correspondence: implication corresponds to function type; proof corresponds to program-like term.
+
+**Design tradeoff:** dependent types make Lean extremely expressive, but they also make elaboration, error messages, and theorem statement design more demanding. A mainstream static language can often infer enough from ordinary values. Lean must infer types, propositions, implicit arguments, universe levels, coercions, and typeclass instances.
+
+### Era: From Direct Proof Terms to Tactic-Supported Proof Engineering — interaction and automation
+
+Fully explicit proof terms are often too verbose. Tactic languages arose because users need to construct proofs interactively.
+
+| Problem                                  | Tactic response                                     | Cost                                |
+| ---------------------------------------- | --------------------------------------------------- | ----------------------------------- |
+| Direct proof terms are long              | Tactics build terms step by step                    | Scripts may become opaque           |
+| Users need to see current obligation     | Goal state shows target and context                 | Workflow depends on editor feedback |
+| Routine reasoning is repetitive          | `simp`, `rw`, arithmetic tactics automate fragments | Automation has boundaries           |
+| Induction/cases are structurally complex | Tactics generate cases and hypotheses               | Bad generalization still fails      |
+| Large proofs need readability            | `have`, `suffices`, helper lemmas structure scripts | Requires proof-engineering judgment |
+
+Example:
+
+```lean
+example (P Q : Prop) : P ∧ Q → Q ∧ P := by
+  intro h
+  constructor
+  · exact h.right
+  · exact h.left
+```
+
+This style exists because the user benefits from seeing the proof state after each step. But historically, tactic convenience also creates a recurring danger: proof scripts can become incantations rather than explanations.
+
+**Paradigm shift:** from “write the final proof term” to “interactively construct a proof term while inspecting goals.”
+
+**Lasting consequence:** Lean pedagogy must teach proof-state interpretation, not only tactic names.
+
+### Era: Library-Centered Formal Mathematics — from isolated proofs to Mathlib
+
+A proof assistant becomes practically powerful only when proofs accumulate into a reusable library. `Mathlib` is the central example for Lean. Its repository describes it as the user-maintained Lean theorem-prover library containing mathematics, programming infrastructure, and tactics. ([GitHub][3])
+
+| Library pressure                      | Mathlib-style response           | Lasting consequence                              |
+| ------------------------------------- | -------------------------------- | ------------------------------------------------ |
+| Standard facts should not be reproved | Large shared theorem library     | Search before proving                            |
+| Mathematics uses many structures      | Typeclass hierarchy              | Theorem statements become abstract               |
+| Notation should work generically      | Instances and coercions          | Errors may involve hidden structure              |
+| Proofs need automation                | Tactic ecosystem and attributes  | `simp` discipline matters                        |
+| Library must be searchable            | Naming and namespace conventions | Names are part of API design                     |
+| Formalization must scale              | General theorems over structures | Concrete textbook definitions need bridge lemmas |
+
+Example:
+
+```lean
+example {G : Type} [Group G] (a : G) : a * 1 = a := by
+  simp
+```
+
+This small proof depends on a large historical achievement: the existence of a reusable algebraic hierarchy with appropriate notation, laws, and simplification lemmas.
+
+**Design tradeoff:** library abstraction increases theorem reuse but raises the entry cost. A theorem that is obvious over `Nat` may be better stated over `[AddMonoid M]`; however, that also introduces typeclass assumptions and abstract notation.
+
+### Era: Lean 4 and the Turn Toward Extensible Infrastructure — metaprogramming, Lake, modern tooling
+
+Lean 4 represents a major infrastructure shift. It is not merely a new syntax version. It emphasizes extensibility, metaprogramming, a modern build system, and integration between proof and programming. An April 2026 presentation by Lean’s creator describes Lean as both a programming language and a proof assistant, using the same language for code and proofs, with a small trusted kernel and extensibility through Lean itself. ([Leonardo de Moura][4])
+
+| Shift                        | Lean 4 response                     | Consequence                               |
+| ---------------------------- | ----------------------------------- | ----------------------------------------- |
+| Need better extensibility    | Metaprogramming framework           | Users can write tactics, commands, syntax |
+| Need project reproducibility | `Lake`, toolchain files             | Lean code is project-configured           |
+| Need programming capability  | Lean as executable language         | Pure code, `IO`, and proofs coexist       |
+| Need editor integration      | Language server workflow            | Proof state becomes central UI            |
+| Need scalable automation     | Tactics and elaborator improvements | Proof engineering becomes tool-assisted   |
+| Need active development      | Regular releases and release notes  | Users must manage version changes         |
+
+The Lean Focused Research Organization describes its mission as improving scalability, usability, documentation, and proof automation, while making formal verification more accessible across mathematics, software/hardware verification, and AI-assisted theorem proving. ([Lean Language][5]) This institutional context matters: Lean 4 is an actively developed ecosystem, not a static formal language frozen in one specification.
+
+**Design consequence:** Lean users must learn not only syntax, but also project configuration, version pinning, release notes, and the division between stable conceptual foundations and evolving ecosystem behavior.
+
+### Paradigm Shift: From Informal Mathematics to Formalized Mathematics
+
+Lean changes the activity of doing mathematics. It does not replace mathematical thought, but it changes the representation of mathematical thought.
+
+| Informal mathematics                | Lean formalization                             |
+| ----------------------------------- | ---------------------------------------------- |
+| “Let $n$ be arbitrary”              | `intro n` or theorem parameter `(n : Nat)`     |
+| “Clearly”                           | proof term, `simp`, or named lemma             |
+| “By induction”                      | `induction n with ...` plus cases              |
+| “Without loss of generality”        | symmetry theorem, case split, or general lemma |
+| “By algebra”                        | `ring`, `linarith`, explicit lemmas            |
+| “There exists”                      | witness plus proof                             |
+| “These functions are equal”         | `funext` and pointwise equality                |
+| “These sets are equal”              | `ext x` and membership equivalence             |
+| “This structure has the usual laws” | structure/class fields and instances           |
+
+**Capability gained:** hidden gaps become explicit.
+**Cost introduced:** formalization requires exact domains, quantifiers, coercions, hypotheses, and proof terms.
+
+This is why textbook companions such as Tao’s *Analysis I* formalization are historically important. Tao describes the project as translating many definitions, theorems, and exercises of *Analysis I* into Lean, with `sorry` positions providing an alternate way to do exercises by filling proof gaps. ([What's new][6]) The project demonstrates the current paradigm shift from informal textbook proof to machine-checkable companion formalization.
+
+### Paradigm Shift: From Syntax Learning to Library Literacy
+
+In many programming languages, a learner can separate “language syntax” from “library knowledge.” In Lean, that separation is much weaker.
+
+| Syntax-only knowledge  | Why insufficient in Lean                                  |
+| ---------------------- | --------------------------------------------------------- |
+| Knowing `rw`           | Need to know which equality theorem to rewrite with       |
+| Knowing `simp`         | Need to know normal forms and simp lemmas                 |
+| Knowing `induction`    | Need theorem statement generality and recursive structure |
+| Knowing `Group` syntax | Need Mathlib algebraic hierarchy                          |
+| Knowing `Set` notation | Need membership/extensionality lemmas                     |
+| Knowing `∃`            | Need witness construction and library existential lemmas  |
+| Knowing `ring`         | Need algebraic typeclass assumptions                      |
+| Knowing `import`       | Need module and dependency structure                      |
+
+**Paradigm shift:** from “learn constructs, then program” to “learn constructs and the library environment together.”
+
+This is a defining feature of Lean. A beginner asks “which tactic proves this?” A more mature user asks “which theorem already states this, under what abstraction, and how should my goal be shaped to use it?”
+
+### Paradigm Shift: From Concrete Examples to Typeclass-Driven Generality
+
+Lean’s mathematics ecosystem often pushes the user from concrete examples toward reusable abstraction.
+
+Concrete:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  simp
+```
+
+Abstract:
+
+```lean
+example {M : Type} [AddMonoid M] (x : M) : x + 0 = x := by
+  simp
+```
+
+| Concrete style                                     | Typeclass-general style                   |
+| -------------------------------------------------- | ----------------------------------------- |
+| Easier to read initially                           | More reusable                             |
+| Fewer hidden assumptions                           | More instance inference                   |
+| Often closer to textbook exercises                 | Closer to Mathlib hierarchy               |
+| Good for learning recursion or concrete arithmetic | Good for library-level theorem statements |
+| May duplicate facts                                | Reuses generic lemmas                     |
+
+**Design tradeoff:** abstraction increases reuse but also increases the burden of reading theorem statements and diagnosing instance failures. The professional skill is not “always generalize,” but “generalize to the weakest structure that expresses the proof.”
+
+### Paradigm Shift: From Manual Proof to Automation-Bounded Proof
+
+Automation is increasingly central, but Lean does not eliminate proof design.
+
+| Manual style                      | Automation-supported style           | Risk                                    |
+| --------------------------------- | ------------------------------------ | --------------------------------------- |
+| Explicit constructor/cases proofs | `aesop` for routine structural goals | Opaque search                           |
+| Manual arithmetic lemmas          | `omega`, `linarith`, `nlinarith`     | Wrong tactic fragment                   |
+| Manual polynomial algebra         | `ring`                               | Only solves algebraic identity fragment |
+| Manual simplification             | `simp`                               | Hidden normal forms                     |
+| Manual theorem search             | `exact?`, `apply?`, search tools     | Suggested proof may be brittle          |
+| Manual proof terms                | tactic scripts                       | Proof script may hide term structure    |
+
+**Mature trend:** automation is best when it matches a known mathematical fragment.
+**Overhyped trend:** automation as replacement for theorem statement design.
+**Practical caveat:** a bad theorem statement remains bad even if a tactic occasionally proves it.
+
+### Paradigm Shift: From Isolated Formal Systems to AI-Assisted Formalization
+
+AI-assisted theorem proving and proof search are now an active trend around Lean. Lean is attractive here because its proof objects are machine-checkable, and failures are precise. Lean FRO explicitly includes AI-assisted theorem proving in its mission scope. ([Lean Language][5]) Current talks and research activity in 2026 continue to frame Lean as a platform for language models in theorem proving and proof improvement. ([三菱電機研究所][7])
+
+| AI-assisted capability        | What changes                         | What does not change                      |
+| ----------------------------- | ------------------------------------ | ----------------------------------------- |
+| Suggest proof terms/tactics   | Speeds local proof search            | Kernel must still check                   |
+| Search existing theorem names | Helps library navigation             | User must understand applicability        |
+| Fill routine proof gaps       | Reduces repetitive work              | Statement design still matters            |
+| Generate examples             | Helps exploration                    | Examples are not theory                   |
+| Shorten/refactor proofs       | Improves maintainability if reviewed | Human judgment still needed               |
+| Formalize informal text       | Assists translation                  | Ambiguity and domain modeling remain hard |
+
+**Important boundary:** AI can generate Lean code, but Lean acceptance is the formal correctness filter. However, accepted code can still be unreadable, over-specific, brittle, or badly abstracted. The code-review questions from earlier parts remain necessary.
+
+### Historical Development Table — era, pressure, response, consequence
+
+| Era / problem cluster        | Dominant pressure                                | Lean/Lean 4 response                    | What changed                       | Limitation remaining                            | Modern practice still reflects           |
+| ---------------------------- | ------------------------------------------------ | --------------------------------------- | ---------------------------------- | ----------------------------------------------- | ---------------------------------------- |
+| Formal logic and type theory | Proofs need checkable foundations                | propositions-as-types, proofs-as-terms  | Proof becomes term construction    | Full explicit proof terms are verbose           | Theorem statements are types             |
+| Interactive theorem proving  | Users need to construct proofs practically       | tactic mode, goal state, elaboration    | Proofs become interactive          | Tactic scripts can be opaque                    | Proof-state reading is essential         |
+| Library scaling              | Mathematics needs reuse                          | Mathlib, hierarchy, namespaces          | Theorems accumulate into ecosystem | Library search is hard                          | Search before proving                    |
+| Dependent typed programming  | Specs and programs should coexist                | same language for code and proofs       | Computation can support proof      | Definitions must terminate/compute well         | Definition design affects proof          |
+| Lean 4 infrastructure        | Extensibility and tooling need modernization     | metaprogramming, Lake, compiler/tooling | Lean becomes more programmable     | More ecosystem complexity                       | Version pinning and tooling matter       |
+| Formal textbook companions   | Mathematics education and formalization converge | projects like Tao Analysis companion    | Textbooks can become proof corpora | Faithful exposition may not be Mathlib-native   | Compare textbook style and library style |
+| AI-assisted formalization    | Proof search and translation need acceleration   | Lean as checkable target                | Generated proofs can be checked    | Maintainability and modeling remain human tasks | AI is assistant, not proof authority     |
+
+### Current Mature Trends — stable enough to rely on
+
+| Trend                               | Status | Driving pressure                          | What changes in practice                     | Caveat                              |
+| ----------------------------------- | ------ | ----------------------------------------- | -------------------------------------------- | ----------------------------------- |
+| Mathlib-centered formal mathematics | Mature | Need shared reusable theorem library      | Users search and reuse existing abstractions | Library literacy is demanding       |
+| Typeclass-driven hierarchy          | Mature | Need generic algebra/order/topology       | Theorems stated over structures              | Instance errors can be hard         |
+| Editor-based interactive proving    | Mature | Proof construction needs feedback         | Goal state guides workflow                   | Users may tactic-guess              |
+| `simp` as normalizer                | Mature | Routine rewriting must be automated       | Proofs rely on normal forms                  | Bad simp lemmas destabilize         |
+| Lake/toolchain project workflow     | Mature | Reproducibility and dependency management | Projects are version-pinned                  | Updates require care                |
+| Tactic-supported arithmetic/algebra | Mature | Routine algebra should not be manual      | `ring`, `omega`, `linarith`, etc.            | Tactics are fragment-specific       |
+| Source-reading as learning method   | Mature | Libraries are too large to memorize       | Users learn by reading source/docs           | Source style varies by project goal |
+
+These trends are safe to build into the tutorial as core practice.
+
+### Current Emerging Trends — important but still developing
+
+| Trend                                                     | Status               | Driving pressure                                           | What changes in practice                       | Caveat                                                |
+| --------------------------------------------------------- | -------------------- | ---------------------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------- |
+| AI-assisted proof search                                  | Emerging/active      | Proof search is expensive and formal checking is available | Users may get theorem/tactic suggestions       | Generated proofs need review                          |
+| Formal textbook companions                                | Emerging-to-mature   | Education and formalization converge                       | Textbooks can become interactive proof corpora | Pedagogical formalization differs from library design |
+| Larger-scale formalized analysis and advanced mathematics | Active               | Mathlib coverage expands                                   | More advanced domains become formalizable      | Abstraction barrier rises                             |
+| Metaprogramming-heavy domain automation                   | Active but advanced  | Repeated domain proof patterns                             | Custom tactics/commands appear                 | Premature automation can harm clarity                 |
+| Better documentation/search tooling                       | Active               | Library scale creates search bottleneck                    | Search becomes part of workflow                | Tools cannot replace theorem-shape understanding      |
+| Proof engineering as software engineering                 | Increasingly visible | Large developments need maintainability                    | Code review includes proof style               | Social conventions still evolving                     |
+
+The Lean release stream and release notes show ongoing active development, including feature additions, fixes, documentation improvements, performance changes, and refactoring across recent versions. ([Lean Language][8]) Therefore “current Lean practice” should always be treated as version-sensitive.
+
+### Speculative or Overhyped Trends — useful but easy to misread
+
+| Trend                                        | What is attractive            | Why overhyped if misunderstood               | Sober interpretation                                  |
+| -------------------------------------------- | ----------------------------- | -------------------------------------------- | ----------------------------------------------------- |
+| AI will solve formalization                  | Proof suggestions can be fast | Statement design and abstraction remain hard | AI is proof-search aid plus code-generation assistant |
+| Automation eliminates proof knowledge        | Tactics can close many goals  | Wrong theorem shape still fails              | Automation works best with expert-guided goals        |
+| Every textbook can become Lean quickly       | Formal companions are visible | Formalization cost is high                   | Good textbooks still need careful translation         |
+| Lean replaces informal mathematics           | Checked proofs are rigorous   | Human mathematical insight remains necessary | Lean augments and verifies reasoning                  |
+| Metaprogramming solves repetitive proof pain | Custom tactics are powerful   | Premature tactics hide bad modeling          | Write automation after patterns stabilize             |
+| `simp` is enough for basic proofs            | It solves many routine goals  | It can hide or fail on central reasoning     | Learn rewrite direction and normal forms              |
+| Typeclasses make abstraction automatic       | Inference is powerful         | Instance design is hard                      | Use typeclasses deliberately                          |
+
+### Declining or Legacy Tendencies — habits to avoid importing uncritically
+
+| Declining / problematic habit                         | Why it is less appropriate in modern Lean 4 practice | Better practice                                   |
+| ----------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------- |
+| Reproving standard facts locally                      | Mathlib likely already has them                      | Search first                                      |
+| Treating Lean as a batch proof checker only           | Editor goal state is central                         | Use interactive workflow                          |
+| Writing theorem statements only for immediate proof   | Poor reuse                                           | Shape statements for downstream use               |
+| Using broad custom structures for standard math       | Loses hierarchy                                      | Use Mathlib abstractions                          |
+| Leaving automation-heavy scripts unrefactored         | Hard to maintain                                     | Expose proof structure                            |
+| Treating textbook definitions as final APIs           | May not align with library                           | Add bridge lemmas or use Mathlib definitions      |
+| Ignoring release notes/toolchain pins                 | Lean evolves                                         | Pin and update deliberately                       |
+| Thinking tactic names transfer directly from Coq/Rocq | Systems differ                                       | Learn Lean-specific elaboration and Mathlib style |
+
+### Historical Comparison with Adjacent Systems — what changed in Lean’s niche
+
+| Adjacent system/language | Historical connection                                      | Lean-specific direction                                                       |
+| ------------------------ | ---------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Coq/Rocq                 | Dependent type theory and interactive proving              | Lean emphasizes its own elaborator, Mathlib ecosystem, Lean 4 metaprogramming |
+| Agda                     | Dependent typed programming and pattern matching           | Lean is more tactic- and Mathlib-centered for mainstream formal mathematics   |
+| Isabelle/HOL             | Large formal libraries and automation culture              | Lean uses dependent type theory and typeclass-heavy Mathlib style             |
+| Haskell                  | Functional programming and typeclasses                     | Lean typeclasses include proof-relevant mathematical laws                     |
+| OCaml/F#                 | Functional implementation influence and syntax familiarity | Lean proof layer dominates language identity                                  |
+| Rust                     | Static guarantees and safety culture                       | Lean centers proof obligations, not ownership/lifetimes                       |
+| TypeScript               | Tooling and inference as productivity layer                | Lean types are formal propositions/specifications, not erased approximations  |
+| Informal mathematics     | Theorems, definitions, proof patterns                      | Lean requires exact formalization and checked proof terms                     |
+
+The point of comparison is not to rank systems. It is to prevent wrong transfer. Lean’s historical niche is the combination of dependent type theory, interactive proof engineering, large mathematical library, and extensible metaprogramming.
+
+### Tao Analysis Companion in Historical Context — formal textbook companions as a new genre
+
+Tao’s Lean companion to *Analysis I* is historically meaningful because it belongs to a newer genre: formal companions to mathematical texts. Tao describes it as a translation of definitions, theorems, and exercises into Lean, including `sorry` holes that can be filled as an alternate way to do exercises. ([What's new][6]) The project repository identifies it as a Lean companion to *Analysis I* and links the announcement, documentation, and contributor notes. ([GitHub][3])
+
+| Historical significance                                                                | Tutorial consequence                                 |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Formalizes textbook-level mathematical development                                     | Use as real theorem-anchor corpus                    |
+| Contains exercise-style proof holes                                                    | Shows proof obligations explicitly                   |
+| Bridges informal prose and Lean declarations                                           | Useful for theorem statement design                  |
+| Exposes construction of natural numbers, integers, rationals, reals, sequences, limits | Useful for Lean-specific modeling examples           |
+| May prioritize faithfulness over maximal idiomaticity                                  | Must compare with Mathlib-native style               |
+| Demonstrates formalization as pedagogy                                                 | Useful for source reading, not just proof completion |
+
+This genre is different from a mature library module. A library module optimizes reuse and abstraction. A textbook companion may optimize conceptual sequence and correspondence to the source text. A good tutorial should teach readers to recognize this distinction.
+
+### Historical Lessons for Lean 4 Users — practical consequences
+
+| Historical lesson                                                                        | Practical consequence                                             |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Lean is a proof assistant with a programming language, not merely a programming language | Do not center the tutorial on ordinary application APIs           |
+| Lean’s trusted core matters                                                              | Distinguish theorem, `sorry`, axiom, unsafe code                  |
+| Elaboration emerged to make dependent types usable                                       | Learn implicit arguments, expected types, and instance search     |
+| Tactics emerged to make proof terms manageable                                           | Learn goal states, not just tactic names                          |
+| Mathlib emerged to make formalization scalable                                           | Search before proving and align with hierarchy                    |
+| Lean 4 infrastructure evolved for extensibility                                          | Learn metaprogramming later, not first                            |
+| Formal textbook projects show new pedagogy                                               | Use them as corpora with caveats                                  |
+| AI-assisted proof is rising                                                              | Use suggestions critically, with kernel checking and human review |
+| Lean evolves actively                                                                    | Pin versions and read release notes                               |
+
+### PART 8 Summary — Lean 4 as a historically layered system
+
+Lean 4’s present form is historically layered. Its identity comes from several converging traditions:
+
+| Historical layer            | What it contributes                                           |
+| --------------------------- | ------------------------------------------------------------- |
+| Formal logic                | precise propositions and proof validity                       |
+| Dependent type theory       | propositions-as-types and values inside types                 |
+| Functional programming      | inductive data, recursion, pattern matching, pure definitions |
+| Interactive theorem proving | tactics, goals, proof state                                   |
+| Library-scale mathematics   | Mathlib, hierarchy, theorem search                            |
+| Software engineering        | modules, build tools, dependency management, API stability    |
+| Metaprogramming             | tactics, syntax extensions, elaborators                       |
+| Modern tooling              | editor integration, language server, diagnostics              |
+| AI-assisted formalization   | generated proof search under kernel checking                  |
+| Formal textbook companions  | source corpora connecting prose mathematics to Lean           |
+
+The main historical lesson is:
+
+**Lean 4 is not only a formal calculus and not only a programming language. It is a living proof-engineering ecosystem built around dependent type theory, interactive elaboration, reusable mathematical libraries, and extensible automation.**
+
+This explains why earlier parts of the guide emphasized:
+
+| Earlier topic               | Historical reason                                     |
+| --------------------------- | ----------------------------------------------------- |
+| theorem statements as types | dependent type theory and proof terms                 |
+| proof-state interpretation  | interactive theorem proving                           |
+| `rw` and `simp`             | automation for routine equality reasoning             |
+| typeclasses and structures  | scalable mathematical hierarchy                       |
+| Mathlib workflow            | library-centered formalization                        |
+| Lake and toolchain pinning  | modern project reproducibility                        |
+| trust boundaries            | kernel-checked proof architecture                     |
+| Tao Analysis corpus         | rise of formal textbook companions                    |
+| AI-assisted proof caveats   | automation remains subordinate to checking and design |
+
