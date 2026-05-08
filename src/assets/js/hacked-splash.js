@@ -5,7 +5,7 @@
  *   Renders two independent effects: an ASCII face splash and floating alert words.
  *
  * Usage:
- *   Include this file on the page. It runs automatically with DEFAULT_CONFIG.
+ *   Include this file on the page. It creates its own DOM layers and runs automatically.
  *   Default behavior can be customized by editing DEFAULT_CONFIG below.
  *   Runtime behavior can be customized before loading with window.HackedSplashConfig.
  *   Runtime behavior can be customized after loading with window.HackedSplash.updateConfig().
@@ -20,8 +20,8 @@
  *   window.HackedSplash.getConfig()
  *
  * Notes:
- *   Face nodes: #hacked-face-layer and #hacked-splash-canvas.
- *   Flash node: #hacked-flash-layer.
+ *   No _include wrapper is required; required layers are created when absent.
+ *   Existing #hacked-face-layer, #hacked-splash-canvas, and #hacked-flash-layer nodes are reused.
  *   The face and flash effects have separate timers and separate parameters.
  *   The face layer fades as a whole, including the black mask/background.
  *   Flash word count is controlled by flash.count or viewport-based density.
@@ -203,6 +203,8 @@
     autoStart: true, // Start both enabled effects automatically.
     injectStyle: true, // Inject required compact CSS.
     styleId: "hacked-splash-style", // Injected style element ID.
+    createLayers: true, // Create required DOM layers when missing.
+    layerParent: "body", // Parent for generated layers; use "body" or a selector string.
     respectReducedMotion: true, // Disable animation when prefers-reduced-motion is active.
     removeLayersOnFinish: true, // Remove effect layers after each effect finishes.
     dprMax: 2, // Maximum canvas DPR.
@@ -452,7 +454,7 @@
     });
   }
 
-  /* Injects CSS for both modules; params: none. */
+  /* Injects CSS for generated/reused layers; params: none. */
   function injectStyle() {
     if (!config.injectStyle) return;
 
@@ -466,15 +468,33 @@
 
     style.textContent = [
       "#" + config.face.layerId + " {",
+      "  position: fixed;",
+      "  inset: 0;",
+      "  z-index: 999998;",
+      "  overflow: hidden;",
+      "  pointer-events: none;",
       "  opacity: 1;",
       "  background: #000;",
+      "}",
+      "#" + config.face.canvasId + " {",
+      "  position: absolute;",
+      "  inset: 0;",
+      "  width: 100%;",
+      "  height: 100%;",
+      "  display: block;",
+      "}",
+      "#" + config.flash.layerId + " {",
+      "  position: fixed;",
+      "  inset: 0;",
+      "  z-index: 999999;",
+      "  overflow: hidden;",
+      "  pointer-events: none;",
       "}",
       "#" + config.face.layerId + ".is-leaving {",
       "  pointer-events: none;",
       "  animation: hackedSplashFaceLeave var(--hacked-face-fade, 520ms) ease forwards;",
       "}",
-      "#" + config.face.layerId + ".is-leaving #" + config.face.canvasId + ",",
-      "#" + config.face.layerId + ".is-leaving .hacked-splash__mask {",
+      "#" + config.face.layerId + ".is-leaving #" + config.face.canvasId + " {",
       "  animation: hackedSplashFaceLeave var(--hacked-face-fade, 520ms) ease forwards;",
       "}",
       ".hacked-splash__flash {",
@@ -482,13 +502,21 @@
       "  left: var(--x);",
       "  top: var(--y);",
       "  transform: translate(-50%, -50%) rotate(var(--r)) scale(var(--settle));",
+      "  transform-origin: center center;",
       "  font-family: " + config.flash.fontFamily + ";",
       "  font-size: var(--size);",
-      "  font-weight: 800;",
+      "  font-weight: 900;",
       "  line-height: 1;",
+      "  letter-spacing: 0.08em;",
+      "  text-transform: uppercase;",
       "  white-space: nowrap;",
+      "  padding: 0.1em 0.4em;",
+      "  border: 1px solid currentColor;",
+      "  background: rgba(0, 0, 0, 0.22);",
       "  color: var(--color);",
+      "  mix-blend-mode: screen;",
       "  text-shadow: 0 0 0.4em var(--glow), 0 0 1.2em var(--glow);",
+      "  box-shadow: 0 0 0.5em var(--glow), inset 0 0 0.5em rgba(255,255,255,0.04);",
       "  pointer-events: none;",
       "  user-select: none;",
       "  will-change: opacity, transform, filter;",
@@ -513,18 +541,64 @@
     ].join("\n");
   }
 
-  /* Resolves face DOM nodes; params: none. */
+  /* Resolves parent for generated layers; params: none. */
+  function resolveLayerParent() {
+    const parent = config.layerParent;
+
+    if (parent && parent.nodeType === 1) return parent;
+    if (typeof parent === "string" && parent !== "body") {
+      return document.querySelector(parent) || document.body || document.documentElement;
+    }
+
+    return document.body || document.documentElement;
+  }
+
+  /* Returns an existing element or creates it; params: tagName<string>, id<string>, parent<Element>. */
+  function ensureElementById(tagName, id, parent) {
+    let element = document.getElementById(id);
+
+    if (element) return element;
+    if (!config.createLayers || !parent) return null;
+
+    element = document.createElement(tagName);
+    element.id = id;
+    element.setAttribute("aria-hidden", "true");
+    parent.appendChild(element);
+
+    return element;
+  }
+
+  /* Resolves or creates face DOM nodes; params: none. */
   function resolveFaceElements() {
-    state.faceLayer = document.getElementById(config.face.layerId);
+    const parent = resolveLayerParent();
+
+    state.faceLayer = ensureElementById("div", config.face.layerId, parent);
+
+    if (!state.faceLayer) return false;
+
+    state.faceLayer.setAttribute("aria-hidden", "true");
     state.canvas = document.getElementById(config.face.canvasId);
-    state.ctx = state.canvas ? state.canvas.getContext("2d") : null;
+
+    if (!state.canvas && config.createLayers) {
+      state.canvas = document.createElement("canvas");
+      state.canvas.id = config.face.canvasId;
+      state.faceLayer.appendChild(state.canvas);
+    }
+
+    state.ctx = state.canvas && state.canvas.getContext ? state.canvas.getContext("2d") : null;
 
     return Boolean(state.faceLayer && state.canvas && state.ctx);
   }
 
-  /* Resolves flash DOM node; params: none. */
+  /* Resolves or creates flash DOM node; params: none. */
   function resolveFlashElements() {
-    state.flashLayer = document.getElementById(config.flash.layerId);
+    const parent = resolveLayerParent();
+
+    state.flashLayer = ensureElementById("div", config.flash.layerId, parent);
+
+    if (state.flashLayer) {
+      state.flashLayer.setAttribute("aria-hidden", "true");
+    }
 
     return Boolean(state.flashLayer);
   }

@@ -124,6 +124,12 @@ Valid modes: list | chart | compact | false | nil
 {% assign toc_depth_resolved = 3 %}
 {% endif %}
 
+
+{% if site.ui.background.enabled and site.ui.background.type == "matrix" %}
+{% assign show_matrix_bg = true %}
+{% assign matrix_bg_text = site.ui.background.matrix_text | default: "01" %}
+{% endif %}
+
 <!doctype html>
 <html>
 
@@ -171,6 +177,17 @@ Valid modes: list | chart | compact | false | nil
   <script defer src="{{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
   <!-- GLITCH TITLE + META_INFO -->
   <script defer src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
+  <!-- HACKED SPLASH -->
+  <script defer src="{{ '/src/assets/js/hacked-splash.js' | relative_url }}"></script>
+  <!-- MATRIX BACKGROUND -->
+  {% if show_matrix_bg %}
+  <script defer src="{{ '/src/assets/js/matrix-letter-fall.js' | relative_url }}"></script>
+  <script defer>
+    window.MatrixBackground.updateConfig({
+      text: "{{ matrix_bg_text }}"
+    });
+  </script>
+  {% endif %}
 </head>
 
 <body class=" page">
@@ -180,8 +197,6 @@ Valid modes: list | chart | compact | false | nil
   {% if context_menu_enabled %}
   {% include context_menu.html %}
   {% endif %}
-  <!-- HACKED SPLASH -->
-  {% include hacked_splash.html %}
   <!-- MATRIX BACKGROUND -->
   {% include matrix_bg.html %}
   <!-- COLLECTION LIST -->

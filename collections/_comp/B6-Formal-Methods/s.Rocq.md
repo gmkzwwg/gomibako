@@ -1,7 +1,7 @@
 ---
 title: Rocq - Quick Reference
 abbreviation: Rocq
-layout: post
+layout: print
 categories: Sheet
 date: 2026-05-08
 subclass: Formal Methods
