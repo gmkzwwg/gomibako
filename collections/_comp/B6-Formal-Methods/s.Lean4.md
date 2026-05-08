@@ -749,7 +749,7 @@ Lean uses binders to introduce variables, parameters, hypotheses, and typeclass 
 | --------------- | -------------------------------------------------- | ---------------------- | -------------------------------------------------- |
 | `(x : α)`       | Explicit argument                                  | `(n : Nat)`            | User supplies or Lean displays the argument        |
 | `{x : α}`       | Implicit argument                                  | `{α : Type}`           | Lean infers from context                           |
-| `{{x : α}}`     | Strict implicit argument                           | Less common            | Inferred only when later explicit arguments appear |
+| `\{\{x : α\}\}`     | Strict implicit argument                           | Less common            | Inferred only when later explicit arguments appear |
 | `[C α]`         | Typeclass argument                                 | `[Group G]`            | Resolved by instance search                        |
 | `(h : P)`       | Explicit proof/hypothesis argument                 | `(h : n = m)`          | Assumption available in theorem or function body   |
 | `∀ x : α, P x`  | Universal quantification / dependent function type | `∀ n : Nat, n + 0 = n` | Theorem over arbitrary values                      |
@@ -4638,3 +4638,2025 @@ example (P Q : Prop) : P ∧ Q → Q ∧ P := by
 | Writing tactic scripts for one-line proof terms | Noise obscures simplicity                          | Use direct terms where clear           |
 | Treating tactic proof as less formal            | It elaborates to proof terms                       | Judge by readability and robustness    |
 | Treating term proof as inherently superior      | Some proofs are structurally clearer interactively | Use the form matching proof complexity |
+### Task: Use Automation by Problem Shape — `ring`, `omega`, `linarith`, `aesop`, and bounded trust
+
+Automation is essential in Lean, but automation should be chosen by the mathematical fragment of the goal.
+
+| Tactic                                     | Problem shape                     | Typical domain                        | Good use                                          | Common misuse                           |
+| ------------------------------------------ | --------------------------------- | ------------------------------------- | ------------------------------------------------- | --------------------------------------- |
+| `simp`                                     | Normalization by rewrite rules    | general                               | identities, projections, membership, simple logic | hiding central proof idea               |
+| `ring`                                     | Polynomial identities             | semirings/rings/commutative rings     | algebraic equalities                              | inequalities or non-polynomial goals    |
+| `omega`                                    | Presburger arithmetic             | natural/integer linear arithmetic     | linear arithmetic over `Nat`/`Int`                | nonlinear algebra                       |
+| `linarith`                                 | Linear arithmetic from hypotheses | ordered rings/linear arithmetic       | inequalities and linear contradictions            | nonlinear facts                         |
+| `nlinarith`                                | Some nonlinear arithmetic         | ordered semirings/rings               | polynomial inequalities in limited forms          | arbitrary nonlinear reasoning           |
+| `norm_num`                                 | Numeric normalization             | numerals                              | concrete arithmetic                               | symbolic algebra                        |
+| `aesop`                                    | Rule-based proof search           | logic, constructors, registered rules | routine structural goals                          | opaque large proof search               |
+| `tauto`-like logic tactics where available | propositional tautologies         | logic                                 | propositional closure                             | goals involving data/structures         |
+| `native_decide`                            | Decide proposition by computation | decidable finite/computable claims    | finite computation proofs                         | expensive or noncomputable propositions |
+
+Examples:
+
+```lean
+example {R : Type} [CommRing R] (a b : R) :
+    (a + b) * (a - b) = a ^ 2 - b ^ 2 := by
+  ring
+```
+
+```lean
+example (a b : Int) (h : a ≤ b) : a + 3 ≤ b + 3 := by
+  omega
+```
+
+```lean
+example (a b : Int) (h₁ : a ≤ b) (h₂ : b ≤ a) : a = b := by
+  omega
+```
+
+A routine logical/constructor example:
+
+```lean
+example (P Q R : Prop) (h₁ : P → Q) (h₂ : Q → R) (hP : P) : R := by
+  aesop
+```
+
+This proof is accepted, but it is not necessarily better than the explicit proof:
+
+```lean
+example (P Q R : Prop) (h₁ : P → Q) (h₂ : Q → R) (hP : P) : R := by
+  exact h₂ (h₁ hP)
+```
+
+**Professional rule:** use automation when the goal belongs to a recognizable routine fragment. Do not use automation to avoid understanding the theorem statement.
+
+| Goal type                            | Better first move                               |
+| ------------------------------------ | ----------------------------------------------- |
+| Routine simplification               | `simp`                                          |
+| Algebraic polynomial equality        | `ring`                                          |
+| Linear arithmetic over `Nat`/`Int`   | `omega`                                         |
+| Linear arithmetic over ordered rings | `linarith`                                      |
+| Constructor/logical search           | explicit constructors first; `aesop` if routine |
+| Central mathematical transformation  | named lemma, `rw`, `calc`, or helper lemma      |
+| Unknown library theorem              | theorem search, not blind automation            |
+
+**Failure-first explanation:** the tempting model is “try stronger automation until something works.” The correct Lean model is “classify the goal, then choose the automation whose completeness or heuristic behavior matches that fragment.” Stronger automation can produce slower, less readable, and more brittle proofs.
+
+**Common Pitfalls**
+
+| Pitfall                                                  | Explanation                                       | Better habit                                          |
+| -------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------- |
+| Using `aesop` to hide simple proof structure             | Future readers cannot see why the theorem is true | Use explicit proof for central logic                  |
+| Using `ring` for inequalities                            | `ring` proves algebraic equalities                | Use `linarith`, `nlinarith`, `omega`, or order lemmas |
+| Using `simp` until the proof works accidentally          | The simplifier may rely on fragile local facts    | Inspect what simplification should normalize          |
+| Increasing heartbeats instead of diagnosing proof search | Performance problem remains                       | Reduce search space or add explicit lemmas            |
+| Letting automation choose theorem architecture           | Proof may compile but be unmaintainable           | Use helper lemmas and explicit structure              |
+
+### Task: Structure Proofs with Helper Lemmas — readability, reuse, and theorem-shape alignment
+
+When a proof becomes long, the issue is often not tactic knowledge but proof architecture. Helper lemmas should isolate mathematical ideas from local proof mechanics.
+
+| Situation                                           | Better design                         | Reason                  |
+| --------------------------------------------------- | ------------------------------------- | ----------------------- |
+| Same subproof appears multiple times                | Extract reusable lemma                | Avoid duplication       |
+| Main theorem has many local rewrites                | Prove normalization lemma             | Make proof readable     |
+| Automation needs many local facts                   | State intermediate theorem explicitly | Stabilize proof search  |
+| Theorem statement is hard to apply                  | Add bridge lemma with better shape    | Improve reuse           |
+| A proof contains a central mathematical observation | Name it                               | Preserve explanation    |
+| A helper is only local bookkeeping                  | Keep it as `have`                     | Avoid namespace clutter |
+
+Example: local helper via `have`.
+
+```lean
+example (a b c d : Nat)
+    (h₁ : a = b) (h₂ : b = c) (h₃ : c = d) : a = d := by
+  have h_ac : a = c := h₁.trans h₂
+  exact h_ac.trans h₃
+```
+
+Example: reusable helper lemma.
+
+```lean
+lemma eq_of_chain3 {α : Type} {a b c d : α}
+    (h₁ : a = b) (h₂ : b = c) (h₃ : c = d) : a = d :=
+  h₁.trans (h₂.trans h₃)
+```
+
+Using it:
+
+```lean
+example (a b c d : Nat)
+    (h₁ : a = b) (h₂ : b = c) (h₃ : c = d) : a = d :=
+  eq_of_chain3 h₁ h₂ h₃
+```
+
+But not every helper deserves to be public. A lemma like `eq_of_chain3` is usually too generic to define in real Mathlib-oriented code because equality transitivity already exists. A better helper lemma normally captures domain-specific meaning.
+
+Example of meaningful helper:
+
+```lean
+def PreservesZero (f : Nat → Nat) : Prop :=
+  f 0 = 0
+
+lemma compose_preserves_zero
+    (f g : Nat → Nat)
+    (hf : PreservesZero f)
+    (hg : PreservesZero g) :
+    PreservesZero (f ∘ g) := by
+  unfold PreservesZero
+  simp [Function.comp, hf, hg]
+```
+
+**Design meaning:** helper lemmas are part of the public or local vocabulary of a proof development. Their names, generality, and conclusion shape affect theorem search and later rewriting.
+
+**Common Pitfalls**
+
+| Pitfall                               | Explanation                       | Better habit                               |
+| ------------------------------------- | --------------------------------- | ------------------------------------------ |
+| Extracting tactic artifacts as lemmas | Lemma has no mathematical meaning | Extract conceptual facts                   |
+| Making helper lemma too concrete      | It cannot be reused               | Generalize over types/classes when natural |
+| Making helper lemma too abstract      | It becomes hard to apply          | Generalize only to the level actually used |
+| Naming helper after proof method      | Not searchable by content         | Name after mathematical relation           |
+| Forgetting simp/rewrite orientation   | Later use becomes awkward         | Shape conclusion for intended use          |
+
+### Task: Compose Proofs by Existing Theorems — search, apply, rewrite, specialize
+
+Lean proof composition often means finding the theorem whose statement already matches the goal. A theorem can be used by exact application, partial application, rewriting, simplification, or specialization.
+
+| Use pattern               | Syntax                      | Meaning                            |
+| ------------------------- | --------------------------- | ---------------------------------- |
+| Direct use                | `exact theoremName args`    | The theorem proves the goal        |
+| Backward use              | `apply theoremName`         | Reduce goal to theorem premises    |
+| Rewrite use               | `rw [theoremName]`          | Use equality theorem as rewrite    |
+| Simplification use        | `simp [theoremName]`        | Add theorem to simplifier locally  |
+| Specialization            | `have h := theoremName x y` | Instantiate theorem with arguments |
+| Forward reasoning         | `have h2 := h1 hArg`        | Apply implication/hypothesis       |
+| Convert by simplification | `simpa using h`             | Use theorem after normalization    |
+
+Example specialization:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  exact Nat.add_zero n
+```
+
+Example `simpa using`:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  simpa using Nat.add_zero n
+```
+
+Example theorem as rewrite:
+
+```lean
+example (a b c : Nat) : (a + b) + c = a + (b + c) := by
+  rw [Nat.add_assoc]
+```
+
+Example forward composition:
+
+```lean
+example (P Q R : Prop) (hpq : P → Q) (hqr : Q → R) (hp : P) : R := by
+  have hq := hpq hp
+  exact hqr hq
+```
+
+**Professional rule:** before writing a proof from scratch, identify whether the goal is already a theorem instance. In Lean, theorem reuse is not optional polish; it is the main way large formalizations remain tractable.
+
+**Common Pitfalls**
+
+| Pitfall                                         | Explanation                                        | Better habit                                                  |
+| ----------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------- |
+| Reproving standard lemmas                       | Wastes effort and creates incompatible local facts | Search Mathlib first                                          |
+| Applying theorem without knowing argument order | Elaborator errors become confusing                 | Inspect with `#check` and `#check @name`                      |
+| Using `rw` with theorem not shaped as equality  | `rw` needs equality or rewrite-capable relation    | Use theorem-specific tactics or transform statement           |
+| Using `simpa` as a black box                    | It hides shape conversion                          | Use it for routine final normalization, not central reasoning |
+
+### Task: Compose Behavior with Typeclasses — overloaded operations and inferred laws
+
+Many Lean functions and theorems are abstract over operations and laws supplied by typeclasses. Composition at this level means writing behavior once for all types with the required structure.
+
+Example over a monoid:
+
+```lean
+def multiplyByOne {M : Type} [Monoid M] (x : M) : M :=
+  x * 1
+
+example {M : Type} [Monoid M] (x : M) : multiplyByOne x = x := by
+  simp [multiplyByOne]
+```
+
+Example over an additive monoid:
+
+```lean
+def addZero {M : Type} [AddMonoid M] (x : M) : M :=
+  x + 0
+
+example {M : Type} [AddMonoid M] (x : M) : addZero x = x := by
+  simp [addZero]
+```
+
+Example using order:
+
+```lean
+example {α : Type} [Preorder α] (a b c : α)
+    (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c :=
+  le_trans hab hbc
+```
+
+| Abstraction level     | Example assumption                | What it gives                      | Use when                               |
+| --------------------- | --------------------------------- | ---------------------------------- | -------------------------------------- |
+| Operation only        | `[Mul M]`                         | notation `*`                       | No laws needed                         |
+| Semigroup             | `[Semigroup M]`                   | associativity                      | Reassociation is needed                |
+| Monoid                | `[Monoid M]`                      | identity laws                      | `1` and identity simplification needed |
+| Group                 | `[Group G]`                       | inverses                           | cancellation/inverse reasoning needed  |
+| Additive monoid       | `[AddMonoid M]`                   | `+`, `0`, additive laws            | additive identity reasoning            |
+| Ring/commutative ring | `[Ring R]`, `[CommRing R]`        | algebraic laws                     | polynomial/algebraic proofs            |
+| Preorder/order        | `[Preorder α]`, `[LinearOrder α]` | `≤`, `<`, transitivity, order laws | inequality reasoning                   |
+
+**Design meaning:** typeclass abstraction separates *what operations and laws are required* from *which concrete type supplies them*. This makes theorems reusable, but also moves information into instance search.
+
+**Common Pitfalls**
+
+| Pitfall                                             | Explanation                               | Better habit                           |
+| --------------------------------------------------- | ----------------------------------------- | -------------------------------------- |
+| Requiring `[Group G]` when `[Monoid G]` suffices    | Theorem becomes less general              | Use weakest structure with needed laws |
+| Requiring only `[Mul M]` when using associativity   | Operation alone gives no laws             | Add `[Semigroup M]` or stronger        |
+| Not seeing where notation comes from                | `*`, `1`, `≤` depend on instances         | Inspect assumptions and expected type  |
+| Creating local instances that surprise later proofs | Instance search becomes context-dependent | Keep instances canonical and visible   |
+
+### Task: Compose with Structures — data fields, law fields, and projections
+
+Structures compose behavior by packaging related fields. A structure may contain data, operations, and proofs.
+
+Example:
+
+```lean
+structure Endomap where
+  f : Nat → Nat
+  preserves_zero : f 0 = 0
+
+def Endomap.comp (g h : Endomap) : Endomap where
+  f := g.f ∘ h.f
+  preserves_zero := by
+    simp [Function.comp, g.preserves_zero, h.preserves_zero]
+```
+
+Using it:
+
+```lean
+example (g h : Endomap) : (g.comp h).f 0 = 0 :=
+  (g.comp h).preserves_zero
+```
+
+This is a small example of bundled behavior: the function and its law travel together.
+
+| Structure pattern      | Use                        | Strength                          | Cost                                 |
+| ---------------------- | -------------------------- | --------------------------------- | ------------------------------------ |
+| Data record            | plain fields               | easy construction/projection      | no invariants                        |
+| Data plus invariant    | proof fields               | valid object by construction      | proof burden                         |
+| Operation plus law     | bundled function/proof     | behavior and correctness together | may duplicate typeclass abstractions |
+| Hierarchical structure | extends existing structure | reuse common fields               | requires understanding hierarchy     |
+| Typeclass structure    | searchable bundled laws    | notation and theorem reuse        | instance search complexity           |
+
+**Common Pitfalls**
+
+| Pitfall                                   | Explanation                                     | Better habit                                |
+| ----------------------------------------- | ----------------------------------------------- | ------------------------------------------- |
+| Bundling when typeclass style is expected | Library theorems may not apply                  | Use Mathlib hierarchy for standard algebra  |
+| Keeping law fields opaque                 | Later simplification cannot use them well       | Provide projection lemmas or simp facts     |
+| Exposing implementation fields too early  | API becomes hard to change                      | Expose stable theorems and operations       |
+| Using structures to mimic OOP inheritance | Lean structures are not method-dispatch classes | Think bundled fields, projections, and laws |
+
+### Task: Use Higher-Order Functions — `map`, `fold`, predicates, and proof reuse
+
+Higher-order functions are central in both Lean programming and mathematics. They reduce explicit recursion and connect to existing library lemmas.
+
+| Task                               | Higher-order construct            | Example                       |
+| ---------------------------------- | --------------------------------- | ----------------------------- |
+| Transform each element             | `List.map`                        | `xs.map f`                    |
+| Keep elements satisfying predicate | `List.filter`                     | `xs.filter p`                 |
+| Aggregate values                   | `foldl`, `foldr`                  | sum/product-like computations |
+| Test all/any                       | Boolean or proposition-level APIs | depends on collection         |
+| Compose predicates                 | `fun x => P x ∧ Q x`              | set/filter conditions         |
+| Pointwise transform functions      | composition                       | `g ∘ f`                       |
+
+Example:
+
+```lean
+def incrementAll (xs : List Nat) : List Nat :=
+  xs.map (fun n => n + 1)
+```
+
+Proof using existing map-length lemma through simplification:
+
+```lean
+example (xs : List Nat) : (incrementAll xs).length = xs.length := by
+  simp [incrementAll]
+```
+
+Filter example:
+
+```lean
+def keepZeros (xs : List Nat) : List Nat :=
+  xs.filter (fun n => n = 0)
+```
+
+Because `filter` over propositions requires decidability, Lean relies on instances deciding equality over `Nat`.
+
+**Design tradeoff:** higher-order library functions make code concise and theorem reuse easier. Custom recursion may be clearer for specialized induction or unusual behavior.
+
+**Common Pitfalls**
+
+| Pitfall                                                  | Explanation                               | Better habit                                    |
+| -------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------- |
+| Rewriting standard list operations manually              | Lose library theorem support              | Use `map`, `filter`, append, folds when natural |
+| Using `fold` without understanding accumulator invariant | Proofs become difficult                   | State and prove fold invariant                  |
+| Hiding complex lambdas inside `map` or `filter`          | Goals become hard to read                 | Name predicate/function when reused             |
+| Expecting `simp` to know custom higher-order behavior    | It knows registered lemmas and unfoldings | Add local simp lemmas or helper theorem         |
+
+### Task: Design Recursive Functions for Proof — termination, equations, and induction compatibility
+
+Lean accepts recursive definitions only when it can justify termination, usually structurally or by a provided well-founded argument. More importantly, the recursion pattern affects later proof difficulty.
+
+| Recursive design choice                    | Proof consequence                                   |
+| ------------------------------------------ | --------------------------------------------------- |
+| Structural recursion on one argument       | Standard induction usually works                    |
+| Recursion follows data constructors        | `simp` can often unfold equations                   |
+| Recursion hidden behind helper accumulator | Need accumulator invariant                          |
+| Nested recursion                           | Proof may require stronger helper lemmas            |
+| Well-founded recursion                     | Termination proof and theorem proofs more complex   |
+| Imperative loop                            | Execution convenient, proof may need loop invariant |
+| Library combinator                         | Existing lemmas can replace manual induction        |
+
+Example accumulator function:
+
+```lean
+def sumAux : List Nat → Nat → Nat
+  | [], acc => acc
+  | x :: xs, acc => sumAux xs (acc + x)
+
+def sumFast (xs : List Nat) : Nat :=
+  sumAux xs 0
+```
+
+A correctness theorem usually needs a stronger helper:
+
+```lean
+def sumSimple : List Nat → Nat
+  | [] => 0
+  | x :: xs => x + sumSimple xs
+
+theorem sumAux_correct (xs : List Nat) (acc : Nat) :
+    sumAux xs acc = acc + sumSimple xs := by
+  induction xs generalizing acc with
+  | nil =>
+      simp [sumAux, sumSimple]
+  | cons x xs ih =>
+      simp [sumAux, sumSimple, ih, Nat.add_assoc, Nat.add_left_comm, Nat.add_comm]
+```
+
+Then:
+
+```lean
+theorem sumFast_correct (xs : List Nat) :
+    sumFast xs = sumSimple xs := by
+  simp [sumFast, sumAux_correct]
+```
+
+The key phrase is `generalizing acc`. Without generalizing the accumulator, the induction hypothesis is too weak.
+
+**Failure-first explanation:** accumulator-based functions execute naturally, but their correctness proof usually requires a generalized theorem over arbitrary accumulator values. If the theorem is stated only for `acc = 0`, the induction hypothesis cannot handle the recursive call with `acc + x`.
+
+**Common Pitfalls**
+
+| Pitfall                                                       | Explanation                            | Better habit                                              |
+| ------------------------------------------------------------- | -------------------------------------- | --------------------------------------------------------- |
+| Proving only final wrapper directly                           | Induction hypothesis too weak          | Prove generalized helper theorem                          |
+| Ignoring accumulator invariant                                | Recursive call changes accumulator     | State invariant explicitly                                |
+| Using complex recursion before simple spec exists             | No stable reference behavior           | Define simple specification first                         |
+| Fighting termination checker instead of redesigning recursion | Definition may be structurally unclear | Prefer structural recursion or clear well-founded measure |
+
+### Task: Express Public APIs — functions, theorem contracts, and abstraction boundaries
+
+A Lean API should expose both computational operations and theorem contracts when the behavior matters.
+
+| API component          | Example                                    | Role                             |
+| ---------------------- | ------------------------------------------ | -------------------------------- |
+| Main definition        | `normalize : Expr → Expr`                  | Operation                        |
+| Specification          | `eval : Expr → Value`                      | Meaning                          |
+| Correctness theorem    | `eval (normalize e) = eval e`              | Contract                         |
+| Simplification lemmas  | `@[simp]` equations                        | Routine proof support            |
+| Extensionality theorem | pointwise equality principle               | Equality reasoning               |
+| Bridge theorem         | Boolean/proposition equivalence            | Computation-proof connection     |
+| Namespace organization | `Expr.normalize`                           | Discoverability                  |
+| Typeclass instances    | `DecidableEq`, `Repr`, algebraic instances | Integration with tooling/library |
+
+Example API shape:
+
+```lean
+namespace Expr
+
+inductive Expr where
+  | const : Nat → Expr
+  | add : Expr → Expr → Expr
+deriving Repr, DecidableEq
+
+def eval : Expr → Nat
+  | .const n => n
+  | .add e₁ e₂ => eval e₁ + eval e₂
+
+def normalize : Expr → Expr
+  | .add e (.const 0) => normalize e
+  | .add e₁ e₂ => .add (normalize e₁) (normalize e₂)
+  | .const n => .const n
+
+theorem normalize_correct (e : Expr) :
+    eval (normalize e) = eval e := by
+  induction e with
+  | const n =>
+      rfl
+  | add e₁ e₂ ih₁ ih₂ =>
+      cases e₂ with
+      | const n =>
+          cases n <;> simp [normalize, eval, ih₁]
+      | add a b =>
+          simp [normalize, eval, ih₁, ih₂]
+
+end Expr
+```
+
+**Professional rule:** if an operation will be reused, its correctness theorem should be part of the conceptual API, not an afterthought.
+
+**Common Pitfalls**
+
+| Pitfall                                                  | Explanation                                   | Better habit                                               |
+| -------------------------------------------------------- | --------------------------------------------- | ---------------------------------------------------------- |
+| Exporting operation without specification                | Users know how it computes, not what it means | Add correctness theorem                                    |
+| Exporting theorem with implementation-specific statement | Refactors break downstream code               | State behavioral contract                                  |
+| Naming theorem poorly                                    | Search becomes difficult                      | Use operation name plus property, e.g. `normalize_correct` |
+| Exposing too many internal helper lemmas                 | API becomes noisy                             | Keep internal details private unless reusable              |
+
+### Task: Avoid Over-Abstraction and Under-Abstraction — proof maintainability
+
+Lean makes abstraction powerful, but not free. Over-abstraction and under-abstraction both harm proof development.
+
+| Failure mode                | Symptom                          | Cause                                 | Correction                                  |
+| --------------------------- | -------------------------------- | ------------------------------------- | ------------------------------------------- |
+| Under-abstraction           | Repeated similar proofs          | Theorem too concrete                  | Generalize over type or structure           |
+| Over-abstraction            | Typeclass errors dominate        | Assumptions too general or too many   | Use concrete theorem first, then generalize |
+| Over-bundling               | Many projection rewrites         | Structure carries too much            | Split data, predicates, and laws            |
+| Under-bundling              | Same invariant passed everywhere | Proof arguments repeated              | Use subtype/structure at boundary           |
+| Automation over-abstraction | `simp`/`aesop` slow or opaque    | Too many global rules                 | Localize automation                         |
+| Definition over-engineering | Hard to compute and prove        | Designed for hypothetical reuse       | Start from actual theorem needs             |
+| Local ad hoc modeling       | Mathlib lemmas unavailable       | Custom abstraction duplicates library | Align with existing hierarchy               |
+
+Example under-abstraction:
+
+```lean
+example (a : Nat) : a + 0 = a := by
+  simp
+```
+
+If the same proof is needed for all additive monoids:
+
+```lean
+example {M : Type} [AddMonoid M] (a : M) : a + 0 = a := by
+  simp
+```
+
+Example over-abstraction:
+
+```lean
+-- Requiring a full group when only monoid identity is needed
+example {G : Type} [Group G] (a : G) : a * 1 = a := by
+  simp
+```
+
+Better:
+
+```lean
+example {M : Type} [Monoid M] (a : M) : a * 1 = a := by
+  simp
+```
+
+**Design meaning:** abstraction should match the laws actually used. Lean’s typeclass hierarchy makes this visible: if the proof only uses identity, do not require inverse. If it uses associativity, do not require a ring. If it uses commutativity, state it.
+
+**Common Pitfalls**
+
+| Pitfall                                              | Explanation                         | Better habit                      |
+| ---------------------------------------------------- | ----------------------------------- | --------------------------------- |
+| Abstracting because it feels elegant                 | Proof and instance burden increases | Abstract when reuse is real       |
+| Staying concrete because it is easier now            | Later proofs duplicate work         | Generalize stable recurring facts |
+| Using strongest familiar class                       | Reduces theorem applicability       | Use weakest adequate class        |
+| Creating custom abstraction before searching Mathlib | Duplicates ecosystem concepts       | Search first, define second       |
+
+### Task: Compose Classical and Constructive Reasoning — explicit logical boundary
+
+Some proof strategies require classical reasoning. Lean supports this, but the boundary should be explicit.
+
+Constructive proof:
+
+```lean
+example (P : Prop) : P → ¬¬P := by
+  intro hP
+  intro hNotP
+  exact hNotP hP
+```
+
+Classical proof:
+
+```lean
+example (P : Prop) : ¬¬P → P := by
+  classical
+  intro hnnP
+  by_contra hP
+  exact hnnP hP
+```
+
+Case split on arbitrary proposition:
+
+```lean
+example (P : Prop) : P ∨ ¬ P := by
+  classical
+  exact Classical.em P
+```
+
+| Reasoning pattern                                  | Constructive status           | Lean signal                         |
+| -------------------------------------------------- | ----------------------------- | ----------------------------------- |
+| Direct implication                                 | constructive                  | no `classical` needed               |
+| Conjunction/disjunction introduction/elimination   | constructive                  | ordinary constructors/cases         |
+| Proof by contradiction to arbitrary `P`            | classical in general          | `classical`, `by_contra`            |
+| Excluded middle                                    | classical                     | `Classical.em`                      |
+| Choosing witness from existence                    | often noncomputable/classical | `Classical.choice`, `noncomputable` |
+| Decidable equality over concrete finite/data types | constructive/computable       | instances such as `DecidableEq`     |
+
+**Common Pitfalls**
+
+| Pitfall                                                         | Explanation                                                           | Better habit                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------- |
+| Adding `classical` by habit                                     | Hides logical assumptions                                             | Use locally and intentionally                   |
+| Confusing proof by contradiction with contradiction elimination | From `False`, anything follows constructively; `¬¬P → P` is classical | Distinguish the two                             |
+| Expecting classical existence to compute                        | Choice may be noncomputable                                           | Use explicit algorithm when computation matters |
+| Making library theorem unnecessarily classical                  | Reduces computational content                                         | Keep constructive when easy                     |
+
+### Task: Use Monadic Composition — `Option`, `Except`, `IO`, tactic/metaprogramming contexts
+
+Lean’s `do` notation composes monadic actions. This belongs mainly to programming, parsing, `IO`, and metaprogramming, but it also matters for executable helpers.
+
+| Monad-like context                    | Meaning                             | Typical use                    |
+| ------------------------------------- | ----------------------------------- | ------------------------------ |
+| `Option`                              | computation may fail without reason | partial lookup                 |
+| `Except ε`                            | computation may fail with error     | parsing/validation             |
+| `IO`                                  | external effects                    | command-line programs, file IO |
+| `StateM σ` or state patterns          | state threading                     | algorithms                     |
+| `MetaM`, `TacticM`, elaborator monads | metaprogramming                     | tactics and commands           |
+| `Id`                                  | pure computation using `do` syntax  | imperative-style pure code     |
+
+Example with `Option`:
+
+```lean
+def halfIfEven (n : Nat) : Option Nat :=
+  if h : n % 2 = 0 then
+    some (n / 2)
+  else
+    none
+```
+
+Example with `Except`:
+
+```lean
+def requireNonzero (n : Nat) : Except String {m : Nat // m ≠ 0} :=
+  if h : n ≠ 0 then
+    .ok ⟨n, h⟩
+  else
+    .error "zero is not allowed"
+```
+
+Example with `IO`:
+
+```lean
+def main : IO Unit := do
+  IO.println "Lean"
+```
+
+**Design meaning:** effects are represented in types. A function returning `Except String α` advertises possible failure. A function returning `IO α` advertises interaction with the external world. A pure theorem should not depend on arbitrary runtime effects.
+
+**Common Pitfalls**
+
+| Pitfall                                           | Explanation                                                  | Better habit                            |
+| ------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------- |
+| Treating `←` as assignment                        | It binds result of monadic action                            | Read it as monadic bind                 |
+| Returning `Option` when diagnostics matter        | Failure reason lost                                          | Use `Except`                            |
+| Using `IO` for logic that should be pure          | Harder to prove and reuse                                    | Separate pure core from effectful shell |
+| Confusing tactic monads with ordinary computation | Metaprogramming contexts manipulate syntax/expressions/goals | Learn ordinary proofs first             |
+
+### Task: Use Metaprogramming Abstraction Carefully — macros, elaborators, tactics
+
+Lean 4’s metaprogramming system is one of its distinctive strengths, but it belongs after ordinary terms, theorem statements, and proof tactics are understood.
+
+| Extension mechanism   | Purpose                                    | Typical user level    | Risk                                        |
+| --------------------- | ------------------------------------------ | --------------------- | ------------------------------------------- |
+| Notation              | Surface syntax for existing concepts       | intermediate          | Can obscure meaning                         |
+| Macro                 | Syntax-to-syntax transformation            | advanced              | Expands before elaboration; may hide errors |
+| Elaboration extension | Custom meaning for syntax                  | advanced              | Harder to debug                             |
+| Tactic script         | Goal transformation using existing tactics | ordinary/intermediate | Can become opaque                           |
+| Custom tactic         | Programmatic proof search/construction     | advanced              | Complex and potentially brittle             |
+| Command elaborator    | New top-level commands                     | advanced              | Changes source language behavior            |
+
+A user may write ordinary Lean for a long time without writing custom tactics. This is not a weakness. Most Lean productivity first comes from theorem statement design, library search, rewriting, simplification, induction, and proof architecture.
+
+**Design meaning:** metaprogramming lets Lean users extend Lean itself. This is powerful for domain-specific automation and syntax, but it can also hide basic proof obligations behind tools that only the author understands.
+
+**Common Pitfalls**
+
+| Pitfall                                                 | Explanation                                                                           | Better habit                              |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------- |
+| Writing custom tactics before understanding proof terms | Automation hides conceptual gaps                                                      | Master ordinary proof construction first  |
+| Creating notation for unstable concepts                 | Later refactors become confusing                                                      | Add notation after abstractions stabilize |
+| Using macros to avoid theorem design                    | Syntax sugar cannot fix bad statements                                                | Improve definitions and theorem shapes    |
+| Treating metaprogram output as trusted                  | Generated terms still need kernel checking, but tool behavior affects maintainability | Keep extensions small and documented      |
+
+### Task: Choose Between Functions, Structures, Classes, and Theorems — abstraction mechanism decision table
+
+| Need                                           | Prefer                              | Reason                               | Avoid                                |
+| ---------------------------------------------- | ----------------------------------- | ------------------------------------ | ------------------------------------ |
+| Compute a value                                | `def`                               | Direct executable/reducible behavior | Encoding computation only as theorem |
+| State property                                 | `def P : α → Prop` or theorem       | Proof-level reasoning                | Boolean-only spec                    |
+| Prove reusable fact                            | `lemma` / `theorem`                 | Named proof object                   | Anonymous repeated proof             |
+| Package related fields                         | `structure`                         | Named projections                    | Tuple if fields have meaning         |
+| Package reusable operations/laws for inference | `class` + `instance`                | Typeclass search and notation        | Custom records for standard algebra  |
+| Model finite alternatives                      | `inductive`                         | Exhaustive constructors              | Numeric/string tags                  |
+| Model syntax/derivations                       | `inductive`                         | Generated induction principles       | Opaque predicates                    |
+| Express behavior equivalence                   | theorem                             | Formal contract                      | Comment or test only                 |
+| Hide implementation                            | private definition + public theorem | Stable API                           | Exposing internal recursion          |
+| Automate routine proof                         | tactic/attribute                    | Reduce proof noise                   | Global brittle automation            |
+
+**Professional rule:** choose the abstraction mechanism by the intended mode of reuse. If users will compute, expose a function. If users will reason, expose theorems. If users will carry data and laws, expose structures or classes. If users will pattern match or induct, expose inductives. If users will simplify, expose well-oriented simp lemmas.
+
+### Task: API Design for Theorem-Proving Libraries — public statement shape
+
+A theorem-proving API is judged by statement shape, names, namespace placement, and reuse.
+
+| API choice          | Good pattern                                              | Bad pattern                              |
+| ------------------- | --------------------------------------------------------- | ---------------------------------------- |
+| Theorem name        | `map_length`, `normalize_correct`, `mem_filter`           | `helper1`, `proof_aux`, `lemma_new`      |
+| Argument order      | type/structure parameters, values, hypotheses, conclusion | dependent arguments before dependencies  |
+| Simp theorem        | canonical reduction direction                             | symmetric or expanding rewrite           |
+| Correctness theorem | relates implementation to specification                   | only tests examples                      |
+| Namespace           | close to definition                                       | global unqualified clutter               |
+| Generality          | weakest adequate assumptions                              | strongest familiar assumptions           |
+| Hypotheses          | separate when frequently used separately                  | giant conjunctions requiring projections |
+| Exposed internals   | only stable facts                                         | accidental recursion details             |
+
+Example:
+
+```lean
+namespace NormalizeDemo
+
+inductive Expr where
+  | const : Nat
+  | add : Expr → Expr → Expr
+
+def eval : Expr → Nat
+  | .const n => n
+  | .add e₁ e₂ => eval e₁ + eval e₂
+
+def normalize : Expr → Expr
+  | .add e (.const 0) => normalize e
+  | .add e₁ e₂ => .add (normalize e₁) (normalize e₂)
+  | .const n => .const n
+
+theorem eval_normalize (e : Expr) :
+    eval (normalize e) = eval e := by
+  induction e with
+  | const n =>
+      rfl
+  | add e₁ e₂ ih₁ ih₂ =>
+      cases e₂ with
+      | const n =>
+          cases n <;> simp [normalize, eval, ih₁]
+      | add a b =>
+          simp [normalize, eval, ih₁, ih₂]
+
+end NormalizeDemo
+```
+
+The theorem name `eval_normalize` says what is preserved: evaluation. A name like `normalize_correct` is also common, but more precise names improve search and readability when many correctness notions exist.
+
+**Common Pitfalls**
+
+| Pitfall                                     | Explanation                                      | Better habit                                        |
+| ------------------------------------------- | ------------------------------------------------ | --------------------------------------------------- |
+| Public theorem states implementation detail | Refactor breaks users                            | State semantic property                             |
+| Missing bridge theorem                      | Computation and proof worlds remain disconnected | Provide Boolean/Prop or implementation/spec theorem |
+| Stronger assumptions than proof needs       | The theorem applies less often                   | Generalize to weakest useful structure              |
+| Ambiguous theorem names                     | Search and maintenance suffer                    | Follow namespace and content-based naming           |
+
+### Task: Refactor Proofs — from working script to maintainable proof
+
+A Lean proof often begins as an exploratory script. Professional work requires refactoring.
+
+| Exploratory pattern                   | Refactored pattern                   | Why                            |
+| ------------------------------------- | ------------------------------------ | ------------------------------ |
+| Long tactic sequence                  | helper lemmas + shorter main proof   | Reveals mathematical structure |
+| Repeated `simp [many, names]`         | local simp lemma or theorem          | Stabilizes simplification      |
+| Repeated case splits                  | lemma by cases                       | Avoids branch duplication      |
+| Magic `aesop`                         | explicit proof or bounded automation | Improves readability           |
+| Giant theorem                         | smaller theorem chain                | Better reuse                   |
+| Many local unnamed facts              | semantic `have` names                | Easier proof review            |
+| Proof depends on accidental unfolding | expose theorem about definition      | More robust to refactor        |
+
+Before:
+
+```lean
+example (P Q R : Prop) (h₁ : P → Q) (h₂ : Q → R) (hP : P) : R := by
+  aesop
+```
+
+After, if this step is central:
+
+```lean
+lemma implication_chain (P Q R : Prop) :
+    (P → Q) → (Q → R) → P → R := by
+  intro hPQ hQR hP
+  exact hQR (hPQ hP)
+```
+
+Using it:
+
+```lean
+example (P Q R : Prop) (h₁ : P → Q) (h₂ : Q → R) (hP : P) : R :=
+  implication_chain P Q R h₁ h₂ hP
+```
+
+For such a simple fact, this named lemma may be unnecessary in real code; the example demonstrates the refactoring principle. Extract only facts that improve clarity or reuse.
+
+**Common Pitfalls**
+
+| Pitfall                                      | Explanation                          | Better habit                              |
+| -------------------------------------------- | ------------------------------------ | ----------------------------------------- |
+| Leaving exploratory proof unchanged          | It may compile but remain unreadable | Refactor after success                    |
+| Over-refactoring trivial facts               | Namespace clutter                    | Extract only meaningful or repeated facts |
+| Replacing clear proof with opaque automation | Maintainers lose proof idea          | Keep central argument visible             |
+| Treating proof length as main metric         | Short proofs can be worse            | Optimize for robustness and clarity       |
+
+### Classic Theorem Anchors for Control and Abstraction — what each teaches
+
+| Anchor                                      | Concept taught                    | Lean mechanism exercised               | Why it is a good handle                           | Common misunderstanding prevented            |
+| ------------------------------------------- | --------------------------------- | -------------------------------------- | ------------------------------------------------- | -------------------------------------------- |
+| `P → P`                                     | Proof as function                 | `intro`, `exact`, term proof           | Minimal propositions-as-types example             | Tactics are not magic commands               |
+| `P ∧ Q → Q ∧ P`                             | Construct/deconstruct conjunction | `constructor`, projections, cases      | Shows proof object structure                      | Conjunction is not a Boolean pair            |
+| `P ∨ Q → Q ∨ P`                             | Case analysis                     | `cases`, `left`, `right`               | Shows elimination of alternatives                 | Disjunction proof must be split              |
+| `¬¬P → P`                                   | Classical boundary                | `classical`, `by_contra`               | Shows constructive/classical difference           | All classical logic is automatic             |
+| `n + 0 = n`                                 | Induction and simplification      | `induction`, `simp`, library theorem   | Similar to `0 + n = n` but proof behavior differs | All equalities reduce by `rfl`               |
+| `xs ++ [] = xs`                             | List induction                    | `induction`, `simp`                    | Recursive data proof                              | Lists are not arrays                         |
+| `(xs ++ ys).length = xs.length + ys.length` | Function behavior over structure  | library lemma/simp                     | Shows theorem reuse over recursive functions      | Need to reprove every list fact              |
+| `map` length preservation                   | Higher-order function reasoning   | `List.map`, `simp`                     | Shows library combinator benefits                 | Custom recursion always better               |
+| Monoid identity                             | Typeclass laws                    | `[Monoid M]`, `simp`                   | Shows generic theorem reuse                       | `*` and `1` are primitive                    |
+| Group inverse identity                      | Algebraic abstraction             | `[Group G]`, `simp`                    | Shows laws from instances                         | Concrete group needed                        |
+| Ring polynomial identity                    | Domain automation                 | `ring`                                 | Shows tactic matched to algebraic fragment        | Automation is interchangeable                |
+| Function extensionality                     | Equality of behavior              | `funext`                               | Shows pointwise reasoning                         | Function equality is always reflexive        |
+| Expression simplifier correctness           | Program transformation proof      | inductive syntax, recursion, induction | Bridges programming and proof                     | Executable transformation is self-justifying |
+
+These anchors should recur throughout the guide. Each one connects a Lean mechanism to a mathematical or programming task.
+
+### Control and Abstraction Decision Table — task-indexed reference
+
+| Task                          | First construct to consider    | Secondary construct               | Avoid by default                    |
+| ----------------------------- | ------------------------------ | --------------------------------- | ----------------------------------- |
+| Prove implication             | `intro`, direct term           | `apply` if using theorem backward | `aesop` for central step            |
+| Prove conjunction             | `constructor`                  | `exact And.intro ...`             | Blind automation                    |
+| Use conjunction hypothesis    | `.left`, `.right`, `cases`     | pattern matching                  | Destructing too early               |
+| Prove disjunction             | `left` / `right`               | theorem producing side            | Trying to prove both sides          |
+| Use disjunction hypothesis    | `cases`                        | classical reasoning if needed     | Treating as Boolean                 |
+| Prove universal theorem       | `intro`                        | term function                     | Runtime loop intuition              |
+| Prove existential theorem     | `use witness`                  | constructor syntax                | Delaying witness unnecessarily      |
+| Prove equality by computation | `rfl`                          | `simp`                            | Overcomplicated rewriting           |
+| Prove equality by known fact  | `rw`, `exact theorem`          | `calc`, `simpa using`             | Uncontrolled `simp`                 |
+| Prove recursive property      | `induction`                    | helper lemma                      | `cases` when IH needed              |
+| Prove routine simplification  | `simp`                         | `simp [defs]`                     | manual rewrite chains               |
+| Prove algebraic identity      | `ring`                         | `simp` + ring lemmas              | `omega`                             |
+| Prove linear arithmetic       | `omega` / `linarith`           | order lemmas                      | `ring`                              |
+| Design reusable theorem       | generalize over typeclasses    | concrete theorem first            | strongest familiar class            |
+| Design executable behavior    | `def` + recursion/combinators  | `do` for algorithmic code         | proof-only encoding                 |
+| Design verified behavior      | function + correctness theorem | spec + implementation bridge      | tests/comments only                 |
+| Express API contract          | named theorem                  | simp/bridge lemmas                | relying on implementation unfolding |
+
+### Automation Boundary Table — when to trust, expose, or refactor
+
+| Automation use                      | Acceptable when                        | Refactor when                                | Preferred refactor                            |
+| ----------------------------------- | -------------------------------------- | -------------------------------------------- | --------------------------------------------- |
+| `simp` closes goal                  | Goal is routine normal form            | It hides central theorem step                | `rw`, `calc`, or helper lemma                 |
+| `ring` closes goal                  | Polynomial identity is the whole task  | Algebraic transformation has conceptual role | `calc` plus `ring` for substeps               |
+| `omega` closes goal                 | Linear arithmetic is routine           | Inequality reasoning is the main theorem     | Name intermediate inequalities                |
+| `linarith` closes contradiction     | Linear contradiction is local          | Important estimate is hidden                 | State estimate lemma                          |
+| `aesop` closes structural goal      | Goal is boilerplate constructors/cases | Reader needs proof structure                 | Explicit constructors/cases                   |
+| `native_decide` closes finite claim | Computation is intended proof          | The result should be theorem-general         | Prove general theorem                         |
+| Large search tactic succeeds slowly | Rare local convenience                 | Build time or readability suffers            | Add lemmas, reduce search, use explicit proof |
+
+### PART 4 Summary — behavior as typed construction and proof composition
+
+PART 4 established that Lean behavior is broader than ordinary control flow. Lean has executable functions, recursive definitions, pattern matching, monadic code, and higher-order programming. It also has proof behavior: tactics transform goals, construct proof terms, split cases, apply induction principles, rewrite by equality, simplify by normal forms, and compose named theorems.
+
+The core distinctions are:
+
+| Distinction                                                       | Practical meaning                                                                |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Function definition vs theorem statement                          | A function computes; a theorem specifies and proves behavior                     |
+| Runtime branch vs proof case split                                | `if`/`match` compute; `cases`/`by_cases` transform proof states                  |
+| Case analysis vs induction                                        | `cases` splits alternatives; `induction` supplies recursive hypotheses           |
+| Term proof vs tactic proof                                        | Both build proof terms; they expose different levels of structure                |
+| `rw` vs `simp`                                                    | `rw` performs directed equality rewriting; `simp` normalizes by configured rules |
+| `calc` vs automation                                              | `calc` explains a chain; automation solves routine fragments                     |
+| Concrete function vs typeclass-generic theorem                    | Concrete code is direct; generic theorem reuses hierarchy                        |
+| Executable checker vs correctness theorem                         | Computation needs a specification bridge                                         |
+| Helper lemma vs local `have`                                      | Reusable facts deserve names; one-off facts can stay local                       |
+| Ordinary programming abstraction vs proof-engineering abstraction | A good definition must compute and support proofs                                |
+
+The professional Lean rule for PART 4 is:
+
+**Choose proof and behavior constructs by the shape of the goal, the structure of the data, the theorem’s intended reuse, and the library abstractions already available.**
+
+A mature Lean proof is not a random sequence of tactics. It is a typed construction whose parts should be inspectable: introductions correspond to functions, constructors correspond to structured goals, cases correspond to inductive alternatives, induction corresponds to recursive structure, rewriting corresponds to equality transport, simplification corresponds to normalization, and automation corresponds to bounded domain-specific proof search.
+
+## PART 5 — Modules, Errors, Effects, Resources, and Boundaries by Task Pattern
+
+### Purpose and Scope — organization, failure, effects, trust, and public interfaces
+
+PART 5 covers Lean 4’s **boundary-management layer**: modules, imports, namespaces, visibility, public APIs, failure modeling, effect separation, trusted assumptions, runtime resources, and compatibility constraints. This follows the tutorial specification’s requirement that Lean 4 treat modules, errors, effects, resources, trust boundaries, unsafe or unchecked behavior, and library-centered workflow as central practical topics rather than secondary syntax details .
+
+In Lean, boundaries appear at several levels.
+
+| Boundary type        | Lean mechanism                                            | What it separates                                                              |
+| -------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| File/module boundary | `import`, module names, Lake project structure            | Available declarations, tactics, notation, instances                           |
+| Namespace boundary   | `namespace`, qualified names, `open`                      | Name management and discoverability                                            |
+| Section boundary     | `section`, `variable`, local attributes                   | Local context and scoped assumptions                                           |
+| API boundary         | public definitions, private helpers, theorem statements   | Stable user-facing concepts from implementation details                        |
+| Proof boundary       | theorem statement, hypotheses, helper lemmas              | What is assumed, proved, or reusable                                           |
+| Failure boundary     | `Option`, `Except`, proof obligations, runtime panic      | Recoverable absence, recoverable error, logical contradiction, runtime failure |
+| Effect boundary      | pure definitions, monads, `IO`, metaprogramming monads    | Pure computation from external effects                                         |
+| Trust boundary       | kernel, `axiom`, `sorry`, `unsafe`, imported declarations | Checked proof from admitted or trusted assumptions                             |
+| Automation boundary  | `simp`, attributes, tactic search                         | Controlled reasoning from opaque search                                        |
+| Ecosystem boundary   | `Lake`, `lean-toolchain`, imports, Mathlib version        | Project-local reproducibility from global environment                          |
+
+The central Lean-specific principle is:
+
+**A Lean boundary should expose the mathematical or computational contract, not accidental proof mechanics.**
+
+This differs from ordinary programming. In Lean, a public API is not only a set of functions. It is also a set of theorem statements, simp lemmas, typeclass instances, namespace conventions, and import dependencies.
+
+### Boundary Decision Overview — task to mechanism mapping
+
+| Boundary task                        | Primary Lean construct                             | Professional use                                                     | Common pitfall                                      |
+| ------------------------------------ | -------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------- |
+| Make external declarations available | `import`                                           | Bring definitions, theorems, notation, tactics, instances into scope | Importing broadly without knowing dependency cost   |
+| Group names                          | `namespace`                                        | Organize definitions and theorem names                               | Opening too many namespaces globally                |
+| Share local assumptions              | `section` + `variable`                             | Avoid repeated binders in a controlled region                        | Forgetting hidden declaration parameters            |
+| Hide implementation details          | `private`, local definitions, namespace discipline | Keep API stable                                                      | Hiding useful theorem contracts                     |
+| Expose public behavior               | named theorems, specification lemmas               | Let users reason without unfolding internals                         | Exposing only executable definitions                |
+| Model optional result                | `Option α`                                         | Computation may not return a value                                   | Using `none` when failure reason matters            |
+| Model recoverable failure            | `Except ε α`                                       | Parsing, validation, error messages                                  | Using runtime panic or `sorry`                      |
+| Model logical contradiction          | `False`, `¬ P`, contradiction lemmas               | Proof-level impossibility                                            | Confusing `False` with `false`                      |
+| Use classical assumptions            | `classical`, `noncomputable`, choice               | Nonconstructive mathematics                                          | Adding classical reasoning silently                 |
+| Mark unfinished proof                | `sorry`                                            | Development placeholder or exercise                                  | Treating it as proved code                          |
+| Introduce assumption                 | `axiom`, `constant`                                | Foundational or external assumption                                  | Using as shortcut                                   |
+| Use external effects                 | `IO`, monads                                       | File, terminal, environment, external interaction                    | Mixing effectful code with proof core               |
+| Isolate unsafe behavior              | `unsafe`, trusted extension                        | Advanced runtime/metaprogramming boundary                            | Letting unsafe leak into theorem-level trust        |
+| Configure automation                 | attributes, local simp sets                        | Stable proof automation                                              | Global attributes that destabilize unrelated proofs |
+| Pin project environment              | `lean-toolchain`, `lakefile.lean`, Lake            | Reproducible project                                                 | Assuming global Lean/Mathlib version                |
+
+### Task: Declare Module Boundaries — imports, environments, and dependency control
+
+Lean files are not isolated scripts. Each file is elaborated in an environment built from its imports. An import provides declarations, notation, typeclass instances, attributes, tactics, and simp lemmas.
+
+```lean id="4wk5yz"
+import Mathlib
+
+#check Nat.add_zero
+#check List.length_append
+```
+
+In a project, narrower imports are often preferable once the development stabilizes, but broad imports are normal for exploration and tutorials.
+
+| Import strategy             | Strength                               | Cost                                             | Best use                               |
+| --------------------------- | -------------------------------------- | ------------------------------------------------ | -------------------------------------- |
+| `import Mathlib`            | Maximum availability                   | Heavy environment; may hide dependency structure | Tutorials, experiments, broad examples |
+| Targeted Mathlib import     | Clearer dependency and faster checking | Requires module knowledge                        | Mature project/library files           |
+| Import local project module | Reuse project declarations             | Creates project dependency graph                 | Multi-file developments                |
+| No Mathlib import           | Shows core Lean behavior               | Lacks most mathematical infrastructure           | Minimal type-theory or syntax examples |
+
+Example local module pattern:
+
+```lean id="p1tqj3"
+-- In MyProject/Basic.lean
+namespace MyProject
+
+def double (n : Nat) : Nat :=
+  n + n
+
+theorem double_zero : double 0 = 0 := by
+  rfl
+
+end MyProject
+```
+
+```lean id="ldbc34"
+-- In another file
+-- import MyProject.Basic
+
+#check MyProject.double
+#check MyProject.double_zero
+```
+
+**Design meaning:** imports shape what the elaborator can infer. Missing imports can appear as missing names, missing notation, missing tactics, missing simp lemmas, or missing typeclass instances.
+
+**Failure-first explanation:** the tempting mental model is “Lean does not know this theorem, so I must prove it.” The correct model is “the theorem may exist, but the current environment may not import it, or its name/statement shape may differ.”
+
+**Common Pitfalls**
+
+| Pitfall                                                                | Explanation                                    | Better habit                                                        |
+| ---------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------- |
+| Using `import Mathlib` everywhere permanently                          | Convenient but may bloat build dependencies    | Use broad import for exploration, targeted imports for stable files |
+| Mistaking missing import for missing feature                           | Name/tactic/notation may simply be unavailable | Search docs and inspect imports                                     |
+| Creating circular dependencies                                         | Lean modules must form an acyclic import graph | Organize definitions from foundational to dependent                 |
+| Importing a file only for one theorem without checking narrower module | Adds unnecessary dependency                    | Locate theorem’s defining module when project scale matters         |
+
+### Task: Organize Names — namespaces, qualified names, and searchability
+
+Namespaces are part of Lean’s proof-engineering architecture. Theorem names need to be searchable, predictable, and close to the concepts they describe.
+
+```lean id="qtv43f"
+namespace Sequence
+
+def IsConstant {α : Type} (u : Nat → α) : Prop :=
+  ∀ m n, u m = u n
+
+theorem IsConstant.refl {α : Type} (a : α) :
+    IsConstant (fun _ : Nat => a) := by
+  intro m n
+  rfl
+
+end Sequence
+```
+
+The full theorem name is:
+
+```lean id="3kedkp"
+#check Sequence.IsConstant.refl
+```
+
+| Naming construct | Use                              | Risk                              |
+| ---------------- | -------------------------------- | --------------------------------- |
+| `namespace`      | Groups related declarations      | Deep nesting can become verbose   |
+| Qualified name   | Shows origin                     | Can be long                       |
+| `open Namespace` | Enables short names              | May create ambiguity              |
+| `open scoped`    | Opens notation scope             | Notation source may become hidden |
+| theorem prefix   | Indicates concept and property   | Bad prefix hurts search           |
+| dot notation     | Associated names and projections | Can obscure full declaration name |
+
+**Professional theorem naming pattern:** theorem names should usually communicate the main symbol and property. Examples:
+
+| Good name style      | Meaning                                                   |
+| -------------------- | --------------------------------------------------------- |
+| `List.length_append` | length of append                                          |
+| `map_comp`           | map respects composition                                  |
+| `eval_normalize`     | evaluation after normalization                            |
+| `mem_filter`         | membership in filtered collection                         |
+| `isZeroBool_correct` | Boolean checker matches proposition                       |
+| `IsConstant.comp`    | constant sequence preserved by composition-like operation |
+
+**Common Pitfalls**
+
+| Pitfall                                                  | Explanation                             | Better habit                           |
+| -------------------------------------------------------- | --------------------------------------- | -------------------------------------- |
+| Names like `lemma1`, `aux2`, `main_helper` in public API | Not searchable by mathematical content  | Use content-based names                |
+| Opening namespaces globally                              | Reader cannot see origin of short names | Prefer qualified names or local `open` |
+| Creating theorem names detached from definitions         | Search by namespace becomes harder      | Place facts near the concept namespace |
+| Reusing common short names in broad scope                | Ambiguity and shadowing                 | Use namespace qualification            |
+
+### Task: Use Sections and Variables — local context without hidden confusion
+
+Sections are useful for managing repeated variables and hypotheses, but they can hide parameters if used carelessly.
+
+```lean id="4lh3yk"
+section
+
+variable {α : Type}
+variable (xs ys : List α)
+
+theorem length_append_in_section :
+    (xs ++ ys).length = xs.length + ys.length := by
+  simp
+
+end
+```
+
+After the section closes, Lean has generalized over the used variables:
+
+```lean id="379z2j"
+#check length_append_in_section
+```
+
+Sections are also useful for local attributes and local classical reasoning.
+
+```lean id="v5ampw"
+section
+
+variable (P : Prop)
+
+example : P ∨ ¬ P := by
+  classical
+  exact Classical.em P
+
+end
+```
+
+| Section mechanism                 | Meaning                                   | Best use                              |
+| --------------------------------- | ----------------------------------------- | ------------------------------------- |
+| `section ... end`                 | Local scope                               | Group related variables/options       |
+| `variable`                        | Declare local parameters                  | Avoid repeated theorem binders        |
+| `include` / `omit` where relevant | Control section variables in declarations | Fine-grained context management       |
+| `local attribute`                 | Scoped automation behavior                | Avoid global simp pollution           |
+| local `open`                      | Scoped namespace opening                  | Avoid global ambiguity                |
+| local `classical`                 | Scoped classical reasoning                | Make nonconstructive boundary visible |
+
+**Failure-first explanation:** the tempting model is that variables declared in a section are “ambient context” but not part of declarations. The correct model is that Lean inserts used section variables as parameters of the declarations that depend on them.
+
+**Common Pitfalls**
+
+| Pitfall                                               | Explanation                                     | Better habit                                                 |
+| ----------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| Forgetting implicit section variables in theorem type | Later applications show unexpected arguments    | Use `#check theoremName`                                     |
+| Large sections with many variables                    | Declarations silently depend on large context   | Keep sections small                                          |
+| Global section assumptions                            | Hard to know which theorem depends on what      | Prefer explicit theorem parameters for important assumptions |
+| Local attributes too far from use                     | Automation behavior becomes hard to reconstruct | Keep scoped attributes near affected proofs                  |
+
+### Task: Control Visibility — public, private, local, implementation detail
+
+Lean declarations can be public, private, or local in effect. The design question is what future users should depend on.
+
+| Visibility pattern              | Lean mechanism                     | Use                             | Pitfall                            |
+| ------------------------------- | ---------------------------------- | ------------------------------- | ---------------------------------- |
+| Public declaration              | ordinary `def`, `theorem`, `lemma` | Stable API or reusable fact     | Exposes accidental internals       |
+| Private helper                  | `private` declaration              | File-local implementation proof | Hides potentially reusable theorem |
+| Local fact                      | `have` inside proof                | One proof only                  | Repeated if needed elsewhere       |
+| Local definition                | `let`                              | One term/proof only             | Not searchable                     |
+| Namespace-contained public name | `namespace`                        | Public but organized            | Poor names still hurt              |
+| Opaque abstraction              | `opaque` or theorem-based API      | Hide computation details        | Blocks definitional simplification |
+
+Example:
+
+```lean id="g7kaq0"
+namespace Normalize
+
+inductive Expr where
+  | const : Nat
+  | add : Expr → Expr → Expr
+
+def eval : Expr → Nat
+  | .const n => n
+  | .add e₁ e₂ => eval e₁ + eval e₂
+
+private def normalizeAux : Expr → Expr
+  | .add e (.const 0) => normalizeAux e
+  | .add e₁ e₂ => .add (normalizeAux e₁) (normalizeAux e₂)
+  | .const n => .const n
+
+def normalize : Expr → Expr :=
+  normalizeAux
+
+theorem eval_normalize (e : Expr) :
+    eval (normalize e) = eval e := by
+  unfold normalize
+  induction e with
+  | const n =>
+      rfl
+  | add e₁ e₂ ih₁ ih₂ =>
+      cases e₂ with
+      | const n =>
+          cases n <;> simp [normalizeAux, eval, ih₁]
+      | add a b =>
+          simp [normalizeAux, eval, ih₁, ih₂]
+
+end Normalize
+```
+
+Here `normalize` and `eval_normalize` are public-facing. `normalizeAux` is implementation detail.
+
+**Professional rule:** expose theorem contracts, not proof mechanics. Users should not need to unfold private recursive helpers if a public correctness theorem states the behavior.
+
+**Common Pitfalls**
+
+| Pitfall                                   | Explanation                                 | Better habit                                |
+| ----------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| Making every helper public                | Namespace becomes noisy                     | Keep proof-only details private             |
+| Hiding central bridge lemmas              | Users cannot connect implementation to spec | Expose stable correctness theorems          |
+| Depending on private implementation shape | Refactors break proofs                      | Use public theorem contracts                |
+| Using `opaque` too early                  | It blocks computation-based proofs          | Hide only when abstraction boundary matters |
+
+### Task: Separate Public API from Implementation Details — theorem contracts over unfolding
+
+In Lean, a public API should include theorems that let users reason without unfolding definitions manually.
+
+| API layer           | Example                                                | Role                |
+| ------------------- | ------------------------------------------------------ | ------------------- |
+| Definition          | `normalize : Expr → Expr`                              | Operation           |
+| Specification       | `eval : Expr → Nat`                                    | Meaning             |
+| Correctness theorem | `eval (normalize e) = eval e`                          | Behavioral contract |
+| Simp theorem        | `@[simp] theorem eval_normalize ...` where appropriate | Routine rewriting   |
+| Private helper      | `normalizeAux`                                         | Implementation      |
+| Public bridge       | Boolean/Prop or implementation/spec equivalence        | Boundary theorem    |
+
+Example API:
+
+```lean id="tye7ha"
+namespace APIShape
+
+def IsZero (n : Nat) : Prop :=
+  n = 0
+
+def checkZero (n : Nat) : Bool :=
+  n == 0
+
+theorem checkZero_correct (n : Nat) :
+    checkZero n = true ↔ IsZero n := by
+  unfold checkZero IsZero
+  simp
+
+end APIShape
+```
+
+A user should rely on `checkZero_correct`, not on the internal implementation of `checkZero`.
+
+**Design meaning:** unfolding a definition is sometimes necessary, but a mature API should provide stable lemmas that express intended behavior. This allows implementation refactoring without breaking user proofs.
+
+**Failure-first explanation:** the tempting model is “if users need to prove something, they can unfold my definition.” The correct Lean-library model is “users should reason through named theorem contracts, because unfolding exposes accidental representation choices.”
+
+**Common Pitfalls**
+
+| Pitfall                                        | Explanation                           | Better habit                             |
+| ---------------------------------------------- | ------------------------------------- | ---------------------------------------- |
+| No correctness theorem for executable function | Users must unfold or reprove behavior | Provide semantic theorem                 |
+| Overexposing implementation equations          | Refactors become breaking changes     | Expose stable properties                 |
+| Marking all API lemmas `[simp]`                | Simplifier becomes too aggressive     | Mark only canonical simplification facts |
+| Omitting namespace prefix from theorem names   | Searchability suffers                 | Place theorem under concept namespace    |
+
+### Task: Handle Failure as Data — `Option`, `Except`, and explicit partiality
+
+Lean functions are total. If a computation may fail, the type should say so.
+
+| Failure need                  | Construct                   | Example result                | Meaning                                 |
+| ----------------------------- | --------------------------- | ----------------------------- | --------------------------------------- |
+| May be absent                 | `Option α`                  | `some x`, `none`              | No reason attached                      |
+| May fail with error           | `Except ε α`                | `.ok x`, `.error e`           | Reason attached                         |
+| Failure impossible with proof | subtype/precondition        | `{x // P x}` or `(h : P) → α` | Caller or constructor supplies evidence |
+| Failure is contradiction      | `False`, `¬ P`              | proof-level impossibility     | Logical, not runtime                    |
+| Failure is external effect    | `IO` plus error conventions | file/terminal/environment     | Runtime boundary                        |
+| Failure is unfinished proof   | `sorry`                     | admitted term                 | Development placeholder, not data       |
+
+Example `Option`:
+
+```lean id="e2mfhw"
+def safePred : Nat → Option Nat
+  | 0 => none
+  | n + 1 => some n
+```
+
+Example `Except`:
+
+```lean id="cph7xr"
+def requirePositive (n : Nat) : Except String {m : Nat // m > 0} :=
+  if h : n > 0 then
+    .ok ⟨n, h⟩
+  else
+    .error "expected positive natural number"
+```
+
+Example with precondition:
+
+```lean id="s921zy"
+def predWithProof (n : Nat) (h : n > 0) : Nat :=
+  n - 1
+```
+
+**Decision rule:**
+
+| Use                | When                                                                              |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `Option`           | Failure is expected and no diagnostic is needed                                   |
+| `Except`           | Failure reason matters                                                            |
+| proof precondition | Caller is already in proof context and can provide evidence                       |
+| subtype input      | Invalid input should be unrepresentable at API boundary                           |
+| runtime panic      | Only for executable code where crash is acceptable and not part of proof contract |
+| `sorry`            | Only unfinished proof or exercise                                                 |
+
+**Common Pitfalls**
+
+| Pitfall                                          | Explanation                               | Better habit                      |
+| ------------------------------------------------ | ----------------------------------------- | --------------------------------- |
+| Returning default value for invalid case         | Hides partiality                          | Use `Option` or `Except`          |
+| Using `Option` when error information matters    | Debuggability suffers                     | Use `Except`                      |
+| Using proof preconditions for raw external input | External data lacks proof until validated | Validate first, then refine       |
+| Treating `sorry` as failure handling             | It admits a proof, not a runtime error    | Use explicit data or finish proof |
+
+### Task: Distinguish Logical Contradiction from Runtime Failure — `False`, `false`, `panic!`
+
+Lean distinguishes several meanings that informal language calls “failure.”
+
+| Construct        | Layer             | Meaning                               |
+| ---------------- | ----------------- | ------------------------------------- |
+| `False`          | `Prop`            | Uninhabited proposition               |
+| `false`          | `Bool`            | Boolean value                         |
+| `¬ P`            | `Prop`            | `P → False`                           |
+| `Option.none`    | data              | Missing computational result          |
+| `Except.error e` | data              | Recoverable computational error       |
+| `panic!`         | runtime           | Crash or abort executable computation |
+| `sorry`          | proof development | Admitted placeholder                  |
+
+Logical contradiction:
+
+```lean id="ram9s9"
+example (P : Prop) (hP : P) (hNotP : ¬ P) : False := by
+  exact hNotP hP
+```
+
+From contradiction, any proposition follows:
+
+```lean id="8xg2s5"
+example (P Q : Prop) (hP : P) (hNotP : ¬ P) : Q := by
+  exact False.elim (hNotP hP)
+```
+
+Boolean false is different:
+
+```lean id="941856"
+#check false
+#check False
+```
+
+`false : Bool`, while `False : Prop`.
+
+**Failure-first explanation:** the tempting model is that `False`, `false`, `none`, `.error`, and `panic!` are variants of one error concept. The correct model is layered: logical impossibility, Boolean data, missing value, recoverable error, runtime crash, and proof admission are different.
+
+**Common Pitfalls**
+
+| Pitfall                                        | Explanation                                    | Better habit                                          |
+| ---------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------- |
+| Confusing `False` and `false`                  | One is proposition, one is Boolean             | Use `#check` when unsure                              |
+| Using `panic!` in proof-oriented definitions   | Runtime crash is not a proof                   | Model partiality with types                           |
+| Treating contradiction as runtime exception    | `False.elim` is logical elimination            | Keep proof and execution layers distinct              |
+| Using `.error` where contradiction is intended | Computation failure and impossible case differ | Use proof of impossibility when logically unreachable |
+
+### Task: Handle External Input — parse, validate, refine, prove if necessary
+
+External input is untrusted. Lean code that consumes strings, files, generated data, or external APIs should model the boundary explicitly.
+
+| Stage        | Representation                   | Purpose                        |
+| ------------ | -------------------------------- | ------------------------------ |
+| Raw input    | `String`, bytes, external format | Untrusted data                 |
+| Parse        | `String → Except ε RawParsed`    | Recover syntax/data            |
+| Validate     | `RawParsed → Except ε Refined`   | Check domain constraints       |
+| Refine       | subtype/structure with proof     | Carry invariant                |
+| Specify      | `Prop` predicate                 | State intended validity        |
+| Prove bridge | theorem                          | Connect parser/checker to spec |
+
+Example:
+
+```lean id="wdxjlk"
+def validateNonzero (n : Nat) : Except String {m : Nat // m ≠ 0} :=
+  if h : n ≠ 0 then
+    .ok ⟨n, h⟩
+  else
+    .error "zero is not allowed"
+```
+
+A proof-facing theorem may state:
+
+```lean id="0xvzgm"
+theorem validateNonzero_sound (n : Nat) (m : {k : Nat // k ≠ 0}) :
+    validateNonzero n = .ok m → m.val ≠ 0 := by
+  intro h
+  exact m.property
+```
+
+This theorem is trivial because the subtype carries the proof. That is a sign that the boundary representation is doing useful work.
+
+**Design meaning:** validation should move data from an untrusted representation into a refined representation. Once the refined representation is constructed, later functions can rely on the invariant.
+
+**Common Pitfalls**
+
+| Pitfall                             | Explanation                 | Better habit                                        |
+| ----------------------------------- | --------------------------- | --------------------------------------------------- |
+| Trusting raw input                  | External data has no proof  | Parse and validate explicitly                       |
+| Validating but returning plain data | Invariant proof is lost     | Return subtype or proof-carrying structure          |
+| Encoding all validation as `Bool`   | Proof connection is missing | Add correctness theorem or return refined data      |
+| Using `IO` throughout core logic    | Proofs become harder        | Separate pure validation from effectful input layer |
+
+### Task: Separate Pure Core from Effectful Shell — `IO`, pure functions, and theorem-friendly design
+
+Lean can run effectful programs, but theorem proving is usually easier when the core logic is pure.
+
+| Layer                 | Construct                               | Role                                                   |
+| --------------------- | --------------------------------------- | ------------------------------------------------------ |
+| Pure core             | `def`, recursive functions, structures  | Computation that can be tested and proved              |
+| Specification         | predicates/theorems                     | Formal meaning                                         |
+| Validation            | `Option`, `Except`, subtypes            | Boundary refinement                                    |
+| Effectful shell       | `IO`                                    | Reads files, prints output, interacts with environment |
+| Metaprogramming shell | `MetaM`, `TacticM`, command elaborators | Manipulates Lean syntax/goals/environment              |
+
+Example:
+
+```lean id="b4mwyh"
+def formatGreeting (name : String) : String :=
+  s!"Hello, {name}"
+
+def main : IO Unit := do
+  IO.println (formatGreeting "Lean")
+```
+
+The pure function `formatGreeting` can be tested or reasoned about without `IO`. The `main` function handles effects.
+
+A validation design:
+
+```lean id="uxdb8h"
+def coreCheck (n : Nat) : Except String {m : Nat // m > 0} :=
+  if h : n > 0 then .ok ⟨n, h⟩ else .error "not positive"
+
+def reportCheck (n : Nat) : IO Unit := do
+  match coreCheck n with
+  | .ok m => IO.println s!"positive: {m.val}"
+  | .error e => IO.println s!"error: {e}"
+```
+
+**Professional rule:** keep pure, theorem-relevant logic outside `IO`. Let `IO` orchestrate external interaction, not define the mathematical core.
+
+**Common Pitfalls**
+
+| Pitfall                                                         | Explanation                           | Better habit                            |
+| --------------------------------------------------------------- | ------------------------------------- | --------------------------------------- |
+| Placing core algorithm inside `main`                            | Hard to reuse and prove               | Extract pure function                   |
+| Using `IO` for validation logic                                 | Effects obscure specification         | Return `Except` from pure validation    |
+| Mixing printing with computation                                | Tests/proofs become awkward           | Compute first, display later            |
+| Treating `IO` program behavior as theorem without specification | Runtime execution is not formal proof | State and prove contracts for pure core |
+
+### Task: Manage Resources — files, handles, lifetime, and proof irrelevance limits
+
+Lean’s proof language is pure, but Lean programs can use resources through `IO`: files, streams, terminal input, environment variables, and external processes where available through libraries.
+
+| Resource task       | Lean layer                    | Boundary issue                         |
+| ------------------- | ----------------------------- | -------------------------------------- |
+| Read/write file     | `IO` APIs                     | Runtime failure, permissions, encoding |
+| Print/log           | `IO.println` and related APIs | External output, not proof             |
+| Manage handle       | `IO` resource patterns        | Lifetime and cleanup                   |
+| Parse file contents | pure parser after `IO` read   | Separate effect from validation        |
+| Use generated data  | import or parse boundary      | Trust and reproducibility              |
+| Interact with OS    | `IO`/system libraries         | Platform dependence                    |
+
+Even when a resource interaction is in Lean, it does not automatically become a mathematical theorem. To reason formally, isolate the pure part.
+
+Example shape:
+
+```lean id="3k5mf5"
+def countChars (s : String) : Nat :=
+  s.length
+
+def printCharCount (s : String) : IO Unit := do
+  IO.println s!"characters: {countChars s}"
+```
+
+A theorem about `countChars` can be stated separately, but a theorem about actual terminal output belongs to a much more complex semantics of `IO`, not routine Lean mathematics.
+
+**Common Pitfalls**
+
+| Pitfall                                                                       | Explanation                             | Better habit                              |
+| ----------------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------- |
+| Treating resource code as proof-friendly by default                           | `IO` behavior depends on external world | Keep proof-relevant logic pure            |
+| Not modeling file parse failure                                               | Files may be malformed                  | Use `Except` or structured parser results |
+| Ignoring platform/environment assumptions                                     | OS behavior differs                     | Keep effectful layer thin and documented  |
+| Proving properties only of idealized strings while forgetting parser boundary | External data may not meet assumptions  | Validate before using pure theorem        |
+
+### Task: Represent Classical, Noncomputable, and Constructive Boundaries
+
+Lean supports classical mathematics, but classical and noncomputable reasoning should be visible.
+
+| Boundary                  | Lean marker         | Meaning                                                            |
+| ------------------------- | ------------------- | ------------------------------------------------------------------ |
+| Local classical reasoning | `classical`         | Enables classical instances/principles locally                     |
+| Noncomputable definition  | `noncomputable def` | Definition may rely on noncomputable choice or classical existence |
+| Excluded middle           | `Classical.em P`    | `P ∨ ¬ P` for arbitrary proposition                                |
+| Proof by contradiction    | `by_contra`         | Classical in general for arbitrary target                          |
+| Choice                    | `Classical.choice`  | Select witness from existence proof                                |
+
+Constructive theorem:
+
+```lean id="9ljtho"
+example (P : Prop) : P → ¬¬P := by
+  intro hP hNotP
+  exact hNotP hP
+```
+
+Classical theorem:
+
+```lean id="x4r65u"
+example (P : Prop) : ¬¬P → P := by
+  classical
+  intro h
+  by_contra hp
+  exact h hp
+```
+
+Noncomputable example shape:
+
+```lean id="d93s1z"
+noncomputable def chooseNat (h : ∃ n : Nat, n > 0) : Nat :=
+  Classical.choose h
+```
+
+**Design meaning:** classical proofs are valid in classical mathematics, but they may not contain computational content. A noncomputable definition may be mathematically meaningful but not executable in the ordinary sense.
+
+**Common Pitfalls**
+
+| Pitfall                                                                         | Explanation                                       | Better habit                                        |
+| ------------------------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
+| Adding `classical` at top of file unnecessarily                                 | Hides nonconstructive dependency                  | Use locally when needed                             |
+| Expecting `Classical.choose` definitions to run computationally                 | Choice is noncomputable                           | Use explicit algorithms for executable witnesses    |
+| Confusing decidable concrete propositions with arbitrary classical propositions | Concrete equality may be decidable constructively | Use decidability where available                    |
+| Not marking noncomputable definitions                                           | Lean will require it                              | Treat `noncomputable` as a semantic boundary marker |
+
+### Task: Manage Trusted Assumptions — kernel, axioms, `sorry`, and imported facts
+
+Lean’s trust architecture is central to its identity. The kernel checks elaborated proof terms, but some mechanisms extend or bypass ordinary proof construction.
+
+| Mechanism                 | Trust status                               | Use                                              |
+| ------------------------- | ------------------------------------------ | ------------------------------------------------ |
+| Kernel-checked theorem    | Trusted relative to kernel and imports     | Normal completed proof                           |
+| Imported theorem          | Trusted if imported environment is trusted | Library reuse                                    |
+| `sorry`                   | Admitted placeholder                       | Development, exercises, incomplete formalization |
+| `axiom`                   | Assumed constant                           | Foundational assumption or external postulate    |
+| `constant`                | Declared without definition                | Similar assumption-like role depending on use    |
+| `unsafe`                  | Outside ordinary safety guarantees         | Advanced runtime/metaprogramming                 |
+| Classical axioms/choice   | Accepted logical principles                | Classical mathematics                            |
+| Native/runtime primitives | Trusted implementation boundary            | Execution/metaprogramming support                |
+
+Example `sorry`:
+
+```lean id="qod3n6"
+theorem proof_debt (n : Nat) : n + 0 = n := by
+  sorry
+```
+
+Example axiom:
+
+```lean id="p3ucvz"
+axiom imaginary_fact : ∀ n : Nat, n = 0
+```
+
+This axiom is obviously false in standard arithmetic and would make the environment inconsistent with ordinary arithmetic reasoning. It illustrates why axioms are dangerous.
+
+**Professional rule:** use `sorry` as a visible proof hole, not as a proof. Use `axiom` only when explicitly modeling a foundational assumption or trusted external fact. A completed verified development should audit admitted assumptions.
+
+**Common Pitfalls**
+
+| Pitfall                                                         | Explanation                                                   | Better habit                      |
+| --------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------- |
+| Treating imported theorem and local axiom as equally justified  | Imported theorems have checked proofs; axioms are assumptions | Prefer library theorem over axiom |
+| Leaving `sorry` in completed code                               | It admits propositions                                        | Track and eliminate proof debt    |
+| Using axioms to bypass hard proof                               | Can destroy consistency                                       | Rework theorem or search library  |
+| Forgetting that a theorem depending on `sorry` inherits the gap | Downstream proofs are conditional on admitted fact            | Audit dependency chain            |
+
+### Task: Control Automation Boundaries — attributes, local simp, and search scope
+
+Automation affects proof boundaries. A local attribute can make a proof work in one scope and fail elsewhere. A global attribute can change many unrelated proofs.
+
+| Automation boundary   | Mechanism                              | Use                            | Risk                            |
+| --------------------- | -------------------------------------- | ------------------------------ | ------------------------------- |
+| Local simp lemma      | `simp [lemma]`                         | One proof                      | Verbose but controlled          |
+| Scoped simp attribute | `local attribute [simp] lemma`         | Several nearby proofs          | Hidden local behavior           |
+| Global simp attribute | `@[simp] theorem ...`                  | Canonical normalization        | Global proof instability if bad |
+| Search rules          | `@[aesop]`, tactic-specific attributes | Automation support             | Search blowup                   |
+| Options               | `set_option`                           | Diagnostics/performance tuning | Masking deeper proof problems   |
+| Importing tactics     | imports                                | Availability of automation     | Dependency bloat                |
+
+Example local simplification:
+
+```lean id="1jtcs8"
+def eraseZeroRight (n : Nat) : Nat :=
+  n + 0
+
+example (n : Nat) : eraseZeroRight n = n := by
+  simp [eraseZeroRight]
+```
+
+Example global simp lemma shape:
+
+```lean id="8n22rr"
+@[simp]
+theorem eraseZeroRight_eq (n : Nat) : eraseZeroRight n = n := by
+  simp [eraseZeroRight]
+```
+
+This may be appropriate if `eraseZeroRight` is a stable definition and the theorem is the canonical normal form.
+
+**Design meaning:** automation boundaries are API boundaries. A `[simp]` theorem becomes part of the behavior of future proofs. It should be stable, canonical, and unlikely to create loops or surprising rewrites.
+
+**Common Pitfalls**
+
+| Pitfall                                              | Explanation                                | Better habit                                |
+| ---------------------------------------------------- | ------------------------------------------ | ------------------------------------------- |
+| Marking theorem `[simp]` because it solved one proof | It affects all future simp calls           | Use local `simp [lemma]` first              |
+| Making commutativity a simp rule                     | Can destabilize normal forms               | Use explicitly or through algebraic tactics |
+| Using broad `simp at *` in fragile contexts          | It changes hypotheses and target globally  | Simplify specific facts                     |
+| Raising heartbeats instead of controlling search     | May slow project and hide bad proof design | Add helper lemmas or restrict automation    |
+### Task: Define Compatibility Boundaries — version pinning, imports, theorem names, and project stability
+
+Lean projects are sensitive to toolchain, library, and import versions. A theorem that compiles under one Lean/Mathlib version may fail after an update because theorem names changed, simp behavior changed, imports moved, or elaboration became stricter.
+
+| Compatibility boundary          | Mechanism                             | What it protects                                    |
+| ------------------------------- | ------------------------------------- | --------------------------------------------------- |
+| Lean version                    | `lean-toolchain`                      | Compiler, elaborator, kernel, syntax behavior       |
+| Dependency graph                | `lakefile.lean`, `lake-manifest.json` | Package versions and dependency resolution          |
+| Import boundaries               | `import` declarations                 | Available definitions, notation, instances, tactics |
+| Public theorem names            | namespace and naming conventions      | Downstream search and reuse                         |
+| Public theorem statement shapes | stable API theorems                   | Downstream proof compatibility                      |
+| Simp behavior                   | `[simp]` lemmas and imports           | Proof normalization stability                       |
+| Automation behavior             | tactic versions and rule sets         | Search and proof robustness                         |
+
+A professional Lean file should be read relative to its project. This is especially important for source corpora such as Tao’s Analysis companion, where definitions, imports, and proof holes are part of a specific formalization project rather than isolated snippets.
+
+**Compatibility rule:** if a proof relies on theorem names, simplifier behavior, or automation, it is library-version-sensitive. If it relies only on a small definitional equality, it is often more stable, but may be less abstract.
+
+| Pattern                                     | Stability profile                                  |
+| ------------------------------------------- | -------------------------------------------------- |
+| `rfl` over local transparent definitions    | Usually stable unless definition changes           |
+| `simp` using many imported lemmas           | Sensitive to simp set and imports                  |
+| `rw [specific_theorem]`                     | Sensitive to theorem name and statement            |
+| `ring`, `omega`, `linarith`                 | Sensitive to tactic availability and goal encoding |
+| Public theorem contract                     | Stable if intentionally maintained                 |
+| Proof depending on private helper unfolding | Fragile under refactor                             |
+| Broad `import Mathlib`                      | Convenient but hides exact dependencies            |
+
+**Common Pitfalls**
+
+| Pitfall                                                   | Explanation                                                   | Better habit                                     |
+| --------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------ |
+| Updating Lean/Mathlib without reading errors structurally | Many failures are theorem-name, import, or simp-shape changes | Classify failures by boundary                    |
+| Depending on private or accidental theorem shapes         | Refactors break downstream proofs                             | Use public stable lemmas                         |
+| Assuming tutorial snippets compile under every version    | Lean evolves actively                                         | Pin environment for serious work                 |
+| Treating automation failures as mathematical failures     | Tactic behavior may have changed                              | Replace with explicit proof or update tactic use |
+
+### Task: Isolate Dynamic or Unchecked Behavior — unsafe code, native code, and trusted extensions
+
+Lean’s ordinary proof environment is kernel-checked, but Lean also supports advanced mechanisms that belong outside routine theorem-proving assumptions.
+
+| Boundary                   | Meaning                                 | Appropriate use                                      | Risk                                      |
+| -------------------------- | --------------------------------------- | ---------------------------------------------------- | ----------------------------------------- |
+| `unsafe` definitions       | Code outside ordinary safety guarantees | Low-level runtime or performance-sensitive internals | Can undermine guarantees if misused       |
+| Native/runtime primitives  | Trusted implementation layer            | Core system functionality                            | Depends on implementation correctness     |
+| External tools             | Generated code/data or scripts          | Build support, automation                            | Must validate outputs                     |
+| Metaprogramming extensions | Tactics, commands, elaborators          | Domain automation                                    | Can hide complexity or produce poor terms |
+| Axioms/constants           | Assumed facts                           | Explicit foundational/external assumptions           | Can introduce inconsistency               |
+| `sorry`                    | Admitted placeholder                    | Exercises, incomplete proofs                         | Proof debt                                |
+
+The right pattern is isolation. Unsafe or trusted mechanisms should not leak into ordinary theorem statements without clear contracts.
+
+Example conceptual boundary:
+
+```lean
+-- Ordinary theorem-facing API
+def safeSpec (n : Nat) : Prop :=
+  n = n
+
+theorem safeSpec_true (n : Nat) : safeSpec n := by
+  rfl
+```
+
+If an implementation uses unsafe or external mechanisms, expose a theorem-facing contract only when the connection is justified. Do not let the existence of an implementation substitute for a proof.
+
+**Common Pitfalls**
+
+| Pitfall                                                     | Explanation                                                           | Better habit                                        |
+| ----------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------- |
+| Treating generated or unsafe results as checked mathematics | They may not be kernel-proved                                         | Prove or validate the boundary                      |
+| Hiding unsafe behavior behind innocent names                | Users cannot audit trust assumptions                                  | Mark and document trust boundaries                  |
+| Using `unsafe` to bypass modeling difficulty                | It solves implementation pressure, not proof obligation               | Redesign model or state assumption explicitly       |
+| Confusing tactic-generated proof with unchecked proof       | Tactic output is checked, but tactic behavior affects maintainability | Trust kernel checking, still review proof structure |
+
+### Task: Manage Typeclass Instance Boundaries — where inference should and should not act
+
+Typeclass instances are a boundary between explicit structure and inferred structure. They are essential to Lean mathematics, but uncontrolled instances can make code difficult to understand.
+
+| Instance boundary task      | Mechanism                                        | Good use                           | Failure mode                        |
+| --------------------------- | ------------------------------------------------ | ---------------------------------- | ----------------------------------- |
+| Require structure           | `[Group G]`, `[LinearOrder α]`                   | Theorem needs laws/notation        | Missing instance                    |
+| Provide canonical structure | `instance : C α where ...`                       | A type naturally has the structure | Conflicting or incoherent instances |
+| Use local instance          | `let _ : C α := ...` or scoped instance patterns | Temporary proof context            | Hidden behavior                     |
+| Synthesize instance         | `inferInstance`, `#synth`                        | Debug or construct evidence        | Fails if search cannot resolve      |
+| Avoid instance search       | explicit structure argument                      | When ambiguity is harmful          | More verbose code                   |
+
+Example:
+
+```lean
+class HasNorm (α : Type) where
+  norm : α → Nat
+
+instance : HasNorm Nat where
+  norm n := n
+
+def normTwice {α : Type} [HasNorm α] (x : α) : Nat :=
+  HasNorm.norm x + HasNorm.norm x
+```
+
+The function `normTwice` does not receive the norm function explicitly. It requires Lean to find a `HasNorm α` instance.
+
+**Professional rule:** use typeclasses for canonical, reusable, structure-like information. Avoid using them for arbitrary local configuration unless the implicitness is worth the debugging cost.
+
+| Use typeclass when                       | Prefer explicit argument when                    |
+| ---------------------------------------- | ------------------------------------------------ |
+| The structure is canonical for the type  | Several different structures could apply         |
+| Notation should work generically         | Local choice should be visible                   |
+| Many theorems reuse the same abstraction | One function needs one parameter                 |
+| Mathlib hierarchy already uses the class | Custom domain-specific configuration is unstable |
+
+**Common Pitfalls**
+
+| Pitfall                                    | Explanation                                     | Better habit                                 |
+| ------------------------------------------ | ----------------------------------------------- | -------------------------------------------- |
+| Defining noncanonical instances            | Instance search may choose surprising structure | Pass explicit arguments instead              |
+| Hiding important assumptions in instances  | Theorem statement looks weaker than it is       | Make noncanonical assumptions explicit       |
+| Creating overlapping/conflicting instances | Search becomes ambiguous or incoherent          | Keep instances canonical and scoped          |
+| Ignoring missing instance errors           | The goal may be structurally under-specified    | Add correct typeclass assumptions or imports |
+
+### Task: Manage Coercion Boundaries — readable conversions, subtypes, and numeric towers
+
+Coercions let Lean insert conversions between types where appropriate. This is useful but can obscure what the term really is.
+
+| Coercion boundary     | Example                                      | Issue                                                          |
+| --------------------- | -------------------------------------------- | -------------------------------------------------------------- |
+| Subtype to carrier    | `{n : Nat // n > 0}` to `Nat`                | Proof field disappears from visible term but remains available |
+| Numeric tower         | `Nat`, `Int`, rational, real-like structures | Coercion lemmas may be needed                                  |
+| Structure to function | bundled maps/homomorphisms                   | Function application hides projection                          |
+| Set-like coercions    | structures with membership                   | Notation depends on instances                                  |
+| Class-based notation  | `+`, `*`, `≤`, `∈`                           | Meaning depends on expected type and instances                 |
+
+Subtype example:
+
+```lean
+def positiveThree : {n : Nat // n > 0} :=
+  ⟨3, by decide⟩
+
+def useAsNat : Nat :=
+  positiveThree
+```
+
+Lean can coerce `positiveThree` to its underlying `Nat`.
+
+But the proof field is still accessed through the subtype value:
+
+```lean
+example : positiveThree.val > 0 :=
+  positiveThree.property
+```
+
+**Boundary rule:** coercions improve readability when the intended conversion is canonical. They harm readability when several conversions are possible or when proof obligations depend on the distinction between source and target type.
+
+**Common Pitfalls**
+
+| Pitfall                                                   | Explanation                          | Better habit                                               |
+| --------------------------------------------------------- | ------------------------------------ | ---------------------------------------------------------- |
+| Forgetting a coerced value has a richer source type       | Useful proof fields may be ignored   | Keep original subtype value when proof is needed           |
+| Expecting numeric coercions to solve all arithmetic goals | Coercion lemmas may be required      | Use type annotations and relevant library lemmas           |
+| Misreading notation over coerced structures               | Surface expression hides projections | Use `#check` on subexpressions                             |
+| Creating unnecessary coercions in custom APIs             | Source becomes hard to read          | Prefer explicit projections unless conversion is canonical |
+
+### Task: Manage Rewriting Boundaries — local rewrite, global simplification, and theorem contracts
+
+Rewriting is a boundary between theorem statements and transformed goals. A rewrite lemma can become part of an API if users depend on it.
+
+| Rewrite boundary       | Mechanism      | Scope                     | Risk                          |
+| ---------------------- | -------------- | ------------------------- | ----------------------------- |
+| One-time rewrite       | `rw [h]`       | One proof step            | Wrong direction               |
+| Local simp addition    | `simp [h]`     | One simplification call   | Hides local transformation    |
+| Hypothesis rewrite     | `rw [h] at h₂` | One local fact            | Destroys useful shape         |
+| Rewrite everywhere     | `rw [h] at *`  | Full local context        | Too broad                     |
+| Global simp lemma      | `@[simp]`      | All future simplification | Global instability            |
+| Public rewrite theorem | named lemma    | API-level transformation  | Bad orientation affects users |
+
+Example:
+
+```lean
+def eraseRightZero (n : Nat) : Nat :=
+  n + 0
+
+theorem eraseRightZero_eq (n : Nat) :
+    eraseRightZero n = n := by
+  simp [eraseRightZero]
+```
+
+If this theorem is stable and canonical, it may be reasonable to use it in simplification. If the definition is internal, keep the theorem private or avoid making it a global simp lemma.
+
+**Professional rule:** before marking a lemma `[simp]`, ask whether its right-hand side is a canonical normal form. Before exposing a rewrite theorem, ask whether downstream users should depend on that representation.
+
+**Common Pitfalls**
+
+| Pitfall                                | Explanation                            | Better habit                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| Exposing implementation rewrite lemmas | Users rely on internal representation  | Expose semantic theorem instead        |
+| Using `rw at *` casually               | It changes every hypothesis and target | Rewrite only where needed              |
+| Marking bidirectional facts as simp    | Simplifier needs direction             | Use one canonical direction            |
+| Depending on simp side effects         | Future import changes may break proof  | Use explicit rewrite for central facts |
+
+### Task: Manage Theorem Statement Boundaries — assumptions, conclusions, and reusable shapes
+
+A theorem statement defines a proof boundary. It determines what may be assumed, what must be proved, and how the theorem can be reused.
+
+| Boundary choice          | Example             | Consequence                                  |
+| ------------------------ | ------------------- | -------------------------------------------- |
+| Separate hypotheses      | `(hP : P) (hQ : Q)` | Easy direct use                              |
+| Bundled conjunction      | `(h : P ∧ Q)`       | Semantically grouped, but projections needed |
+| Implication conclusion   | `P → Q`             | The theorem can be applied as function       |
+| Universal quantification | `∀ x, P x`          | The theorem works for arbitrary values       |
+| Existential conclusion   | `∃ x, P x`          | Provides witness at proof level              |
+| Subtype result           | `{x // P x}`        | Provides witness plus proof as data          |
+| Equality conclusion      | `lhs = rhs`         | Supports rewriting                           |
+| Equivalence conclusion   | `P ↔ Q`             | Supports logical conversion                  |
+| Typeclass assumption     | `[C α]`             | Reuses structure through inference           |
+
+Example: theorem usable for rewriting.
+
+```lean
+lemma double_zero : 2 * 0 = 0 := by
+  norm_num
+```
+
+Example: theorem usable as logical bridge.
+
+```lean
+def IsZero (n : Nat) : Prop :=
+  n = 0
+
+def checkZero (n : Nat) : Bool :=
+  n == 0
+
+lemma checkZero_true_iff (n : Nat) :
+    checkZero n = true ↔ IsZero n := by
+  unfold checkZero IsZero
+  simp
+```
+
+The first theorem rewrites an equality. The second theorem converts a Boolean result into a proposition-level statement.
+
+**Failure-first explanation:** the wrong model is “the theorem is true, so its statement is good.” A theorem can be true but poorly shaped: hard to rewrite, hard to search, too specific, too abstract, or misaligned with Mathlib.
+
+**Common Pitfalls**
+
+| Pitfall                                  | Explanation                           | Better habit                                          |
+| ---------------------------------------- | ------------------------------------- | ----------------------------------------------------- |
+| Conclusion not shaped for downstream use | Later proofs need awkward conversions | State theorem in intended rewrite/use form            |
+| Missing typeclass assumptions            | Notation or lemmas unavailable        | Add required structure explicitly                     |
+| Excessive assumptions                    | Theorem applies too narrowly          | Use weakest adequate assumptions                      |
+| Bundling unrelated assumptions           | Proof scripts become projection-heavy | Keep assumptions separate unless conceptually grouped |
+
+### Task: Manage Project Boundaries — Lake, package layout, and reproducibility
+
+Lean projects are usually managed through Lake. The exact files vary by project, but the professional boundary is consistent: the project configuration, toolchain pin, and dependency manifest define the environment in which files are checked.
+
+| Project element       | Role                                         |
+| --------------------- | -------------------------------------------- |
+| `lean-toolchain`      | Pins Lean version                            |
+| `lakefile.lean`       | Defines package, dependencies, targets       |
+| `lake-manifest.json`  | Records resolved dependencies                |
+| Source directories    | Contain module hierarchy                     |
+| Main import file      | Aggregates project modules where appropriate |
+| Build artifacts/cache | Speed checking and compilation               |
+| Mathlib dependency    | Supplies mathematical ecosystem              |
+
+A theorem source file without its project files may be readable but not directly buildable. This matters for uploaded source directories. If only a subdirectory of Lean files is available, it can still be valuable for analysis, theorem-anchor extraction, and proof-style study, but it may lack the metadata needed to compile as a project.
+
+**Professional rule:** distinguish **source reading** from **project verification**. Reading a `.lean` file can teach theorem shape and proof style. Verifying it requires the correct Lean version, imports, dependencies, and project configuration.
+
+**Common Pitfalls**
+
+| Pitfall                                                  | Explanation                                      | Better habit                     |
+| -------------------------------------------------------- | ------------------------------------------------ | -------------------------------- |
+| Assuming a folder of `.lean` files is a complete project | It may lack `lakefile.lean` and `lean-toolchain` | Check project root metadata      |
+| Using global Lean version                                | May mismatch project dependencies                | Use pinned toolchain             |
+| Editing generated or vendored files accidentally         | Build behavior becomes confusing                 | Understand project layout        |
+| Ignoring import graph                                    | Local changes may affect downstream files        | Build and check dependency order |
+
+### Task: Manage Library Boundaries — Mathlib, local definitions, and textbook formalization
+
+Lean formalization often sits between local definitions and Mathlib abstractions. This is especially visible in textbook formalizations.
+
+| Situation                            | Better boundary strategy                       |
+| ------------------------------------ | ---------------------------------------------- |
+| Teaching foundational construction   | Local definitions may be appropriate           |
+| Building reusable formal mathematics | Prefer Mathlib abstractions                    |
+| Mirroring textbook order             | Use local definitions but expose bridge lemmas |
+| Proving standard facts               | Search Mathlib first                           |
+| Extending existing hierarchy         | Use existing classes/structures                |
+| Comparing definitions                | State equivalence/isomorphism/bridge theorem   |
+| Avoiding dependency bloat            | Use targeted imports once stable               |
+
+In a textbook companion, local definitions may deliberately reproduce a book’s development. In a library-oriented project, the same definitions might be replaced by Mathlib’s canonical versions. The boundary should be explicit.
+
+| Local textbook definition          | Mathlib-facing bridge                           |
+| ---------------------------------- | ----------------------------------------------- |
+| custom natural number construction | equivalence with `Nat` or transfer theorem      |
+| custom set operation               | theorem relating to `Set` operations            |
+| custom rational construction       | embedding/equivalence to standard rationals     |
+| sequence definition                | alignment with function spaces and topology     |
+| limit definition                   | equivalence to Mathlib limit/filter formulation |
+| elementary algebra lemma           | generalized theorem over algebraic hierarchy    |
+
+**Common Pitfalls**
+
+| Pitfall                                                                | Explanation                         | Better habit                                     |
+| ---------------------------------------------------------------------- | ----------------------------------- | ------------------------------------------------ |
+| Treating textbook-faithful definitions as final ecosystem abstractions | They may not align with Mathlib     | Provide bridge and transition strategy           |
+| Replacing pedagogical definitions too early                            | Reader loses connection to textbook | Use local models when teaching concept formation |
+| Reproving Mathlib facts under local names                              | Search and reuse suffer             | Reuse or explicitly bridge                       |
+| Ignoring theorem-shape mismatch                                        | Correct facts become hard to apply  | State conversion lemmas                          |
+
+### Task: Manage Documentation Boundaries — comments, docstrings, theorem names, and proof readability
+
+Documentation in Lean includes more than comments. Names, theorem statements, and proof structure are documentation.
+
+| Documentation form     | Role                     | Risk                            |
+| ---------------------- | ------------------------ | ------------------------------- |
+| Docstring `/-- ... -/` | Public explanation       | Can become inaccurate           |
+| Comment `-- ...`       | Local note               | Not searchable as theorem       |
+| Theorem name           | Search handle            | Poor names hide useful facts    |
+| Statement shape        | Formal contract          | Too cryptic or too specific     |
+| Proof structure        | Executable explanation   | Opaque automation hides idea    |
+| Namespace placement    | Semantic grouping        | Bad placement hurts discovery   |
+| Attributes             | Automation documentation | Hidden behavior if undocumented |
+
+Example:
+
+```lean
+/-- A sequence is constant if all of its entries are equal. -/
+def IsConstant {α : Type} (u : Nat → α) : Prop :=
+  ∀ m n, u m = u n
+```
+
+Good documentation should not compensate for a bad theorem statement. The formal statement itself should be clear enough that the docstring explains intention, not hidden assumptions.
+
+**Common Pitfalls**
+
+| Pitfall                                              | Explanation                                | Better habit                                  |
+| ---------------------------------------------------- | ------------------------------------------ | --------------------------------------------- |
+| Using comments to state facts Lean does not know     | Comments do not help proofs                | Encode facts as hypotheses or lemmas          |
+| Writing docstrings that drift from theorem statement | Misleads readers                           | Update docs with statement changes            |
+| Overusing opaque automation in documented theorem    | Proof does not explain the documented idea | Use explicit proof where conceptually central |
+| Naming theorem too vaguely                           | Search fails                               | Use content-based theorem names               |
+
+### Task: Manage Proof Debt — `sorry`, exercises, partial formalization, and auditability
+
+Proof debt is normal during development, especially in large formalization projects, but it must remain visible and auditable.
+
+| Proof-debt form        | Meaning                 | Appropriate use                           |
+| ---------------------- | ----------------------- | ----------------------------------------- |
+| `sorry` in theorem     | Missing proof           | Exercise, unfinished development          |
+| `sorry` in definition  | Missing term            | Sketching or placeholder                  |
+| `axiom`                | Assumed fact            | Explicit foundational/external assumption |
+| Weak theorem           | Easier fact than needed | Temporary progress                        |
+| Over-specific theorem  | Works locally only      | Prototype before generalization           |
+| Automation-heavy proof | Accepted but unclear    | Temporary proof before refactor           |
+
+Example:
+
+```lean
+theorem exercise_gap (n : Nat) : n + 0 = n := by
+  sorry
+```
+
+In a teaching corpus, this is useful: it marks exactly what the learner should prove. In a verified artifact, it is unacceptable unless the artifact is explicitly partial.
+
+**Proof debt audit questions:**
+
+| Question                                                 | Why it matters                         |
+| -------------------------------------------------------- | -------------------------------------- |
+| How many `sorry`s remain?                                | Measures admitted proof gaps           |
+| Are `sorry`s in central theorems or peripheral examples? | Central gaps weaken the project more   |
+| Do downstream theorems depend on them?                   | Admitted facts propagate               |
+| Are axioms documented?                                   | Assumptions define trust base          |
+| Are weak/temporary theorems named as such?               | Prevents accidental public API         |
+| Is automation masking unfinished conceptual work?        | Accepted proof may still need refactor |
+
+**Common Pitfalls**
+
+| Pitfall                                             | Explanation                            | Better habit                            |
+| --------------------------------------------------- | -------------------------------------- | --------------------------------------- |
+| Treating `sorry` as equivalent to TODO comment      | It changes logical trust state         | Track it as admitted proof              |
+| Leaving `sorry` in API theorem                      | Downstream users rely on unproved fact | Keep gaps local or finish proof         |
+| Using axioms to remove `sorry`                      | Worse: hides proof debt as assumption  | Use explicit `sorry` during development |
+| Not distinguishing exercise holes from project gaps | Reader cannot tell intent              | Document exercise-oriented holes        |
+
+### Task: Manage Interoperability Boundaries — generated code, external mathematics, and imported authority
+
+Lean developments may interact with external mathematics, generated files, informal proofs, papers, textbooks, or software outputs. These are not automatically formal proofs.
+
+| External source         | Lean boundary treatment                                              |
+| ----------------------- | -------------------------------------------------------------------- |
+| Textbook theorem        | Formalize as theorem statement and proof                             |
+| Paper proof             | Translate into Lean proof or cite informally outside formal artifact |
+| Generated theorem/proof | Kernel must check generated proof term                               |
+| External computation    | Verify result or prove checker correctness                           |
+| Imported Lean library   | Trust according to project dependency and kernel checking            |
+| Human comment           | Documentation only                                                   |
+| Runtime program output  | Data, not proof, unless verified by theorem                          |
+
+For a theorem-proving environment, the key distinction is whether the claim has become a Lean theorem with a checked proof term.
+
+**Common Pitfalls**
+
+| Pitfall                                                | Explanation                                | Better habit                                  |
+| ------------------------------------------------------ | ------------------------------------------ | --------------------------------------------- |
+| Treating textbook authority as formal proof            | Lean still needs a proof term              | Formalize theorem and proof                   |
+| Treating external computation as proof                 | Computation may be wrong or misinterpreted | Verify checker or validate output             |
+| Assuming generated Lean is trustworthy before checking | Generator may be buggy                     | Let kernel check generated proof              |
+| Encoding informal assumptions in comments              | Lean cannot use them                       | Add hypotheses, axioms, or formal definitions |
+
+### Task: Boundary Design for Tao-Style Textbook Formalization — faithful source versus library integration
+
+A Lean companion to a textbook has a special boundary problem: it must preserve the book’s conceptual sequence while also living in Lean’s formal ecosystem.
+
+| Boundary                  | Textbook-faithful side        | Lean/Mathlib side                 | Good tutorial treatment             |
+| ------------------------- | ----------------------------- | --------------------------------- | ----------------------------------- |
+| Definition order          | Follow exposition             | Use existing abstractions         | Explain why local definitions exist |
+| Proof granularity         | Mirror human proof            | Use library lemmas/tactics        | Compare proof styles                |
+| Exercises                 | Leave `sorry` holes           | Completed theorem library         | Mark as exercises/proof debt        |
+| Notation                  | Match textbook where possible | Use established notation          | Avoid conflicting notation          |
+| Foundational construction | Build objects stepwise        | Reuse `Nat`, `Int`, `Rat`, `Real` | Bridge local and standard objects   |
+| Analysis concepts         | Sequential definitions        | topology/filter abstractions      | Show conceptual translation         |
+
+A tutorial should not flatten this distinction. A faithful formalization can be excellent for learning how informal mathematics becomes formal. A library-native development can be better for scalable reuse. Both are valid, but they optimize different goals.
+
+**Common Pitfalls**
+
+| Pitfall                                                                 | Explanation                   | Better habit                         |
+| ----------------------------------------------------------------------- | ----------------------------- | ------------------------------------ |
+| Calling faithful textbook formalization “non-idiomatic” without context | It may optimize pedagogy      | State the design goal                |
+| Treating local definitions as replacements for Mathlib                  | They may not scale            | Provide bridge and comparison        |
+| Using advanced Mathlib abstraction too early                            | Obscures textbook reasoning   | Introduce after concrete anchor      |
+| Ignoring `sorry` holes as learning signals                              | They reveal proof obligations | Use them to identify theorem anchors |
+
+### Error, Effect, Resource, and Trust Boundary Table
+
+| Boundary category       | Construct/API               | Guarantee                           | Cost                            | Failure mode                       |
+| ----------------------- | --------------------------- | ----------------------------------- | ------------------------------- | ---------------------------------- |
+| Optional value          | `Option α`                  | Absence explicit                    | No reason attached              | `none` loses diagnostics           |
+| Recoverable error       | `Except ε α`                | Error reason explicit               | Caller must handle both cases   | Error type too vague               |
+| Logical contradiction   | `False`, `¬ P`              | Proof-level impossibility           | Requires contradiction proof    | Confused with Boolean false        |
+| Pure computation        | `def` without effects       | Reasonable theorem target           | Must satisfy termination        | Definition hard to prove about     |
+| External effects        | `IO`                        | Effects tracked in type             | Harder to reason about formally | Core logic trapped in `IO`         |
+| Classical reasoning     | `classical`, choice         | Supports classical math             | May be noncomputable            | Hidden assumptions                 |
+| Noncomputability        | `noncomputable`             | Allows nonconstructive definitions  | No ordinary computation         | Expected executable behavior fails |
+| Proof admission         | `sorry`                     | File can continue                   | Trust gap                       | Mistaken for completed proof       |
+| Assumed fact            | `axiom`                     | Adds proposition/constant           | Extends trust base              | Inconsistency if false             |
+| Unsafe/runtime boundary | `unsafe`, native mechanisms | Advanced implementation flexibility | Outside ordinary guarantee      | Leaks into trusted code            |
+| Automation              | tactics, attributes         | Reduces proof work                  | Opaque/brittle proofs           | Search failure or instability      |
+| Project dependency      | Lake/toolchain/imports      | Reproducible environment            | Version maintenance             | Breakage under update              |
+
+### Module and API Boundary Table
+
+| Boundary task              | Lean mechanism               | Professional rule                       | Common anti-pattern                    |
+| -------------------------- | ---------------------------- | --------------------------------------- | -------------------------------------- |
+| Group declarations         | `namespace`                  | Names should reflect concepts           | Global clutter                         |
+| Manage local context       | `section`, `variable`        | Keep sections small                     | Hidden assumptions everywhere          |
+| Import dependencies        | `import`                     | Import what the file conceptually needs | Broad imports in stable library files  |
+| Hide implementation        | `private`, local helper      | Hide accidental details                 | Hiding central bridge lemmas           |
+| Expose behavior            | named theorem                | State semantic contract                 | Users must unfold definitions          |
+| Control simplification     | `[simp]`, local simp         | Normalize canonical forms               | Global bad simp rules                  |
+| Provide structure          | `instance`                   | Instances should be canonical           | Noncanonical instance search surprises |
+| Mark nonconstructive logic | `classical`, `noncomputable` | Make boundary visible                   | Silent classical dependence            |
+| Track proof gaps           | `sorry` audit                | Treat as proof debt                     | Shipping admitted theorems as complete |
+
+### PART 5 Summary — boundaries are proof-engineering architecture
+
+PART 5 established that Lean boundary design is not merely project organization. It is part of the formal meaning and maintainability of the development.
+
+The central distinctions are:
+
+| Distinction                                | Practical meaning                                                                       |
+| ------------------------------------------ | --------------------------------------------------------------------------------------- |
+| Import boundary vs language feature        | Missing names, tactics, notation, or instances may be missing imports                   |
+| Namespace boundary vs local readability    | Qualified names preserve origin; open namespaces reduce noise but can hide meaning      |
+| Public API vs implementation detail        | Users should depend on theorem contracts, not accidental unfoldings                     |
+| `Option` vs `Except` vs proof precondition | Different ways to model partiality and failure                                          |
+| `False` vs `false` vs `.error` vs `panic!` | Logical contradiction, Boolean value, recoverable error, and runtime crash are separate |
+| Pure core vs effectful shell               | Proof-friendly logic should usually be pure                                             |
+| Constructive vs classical                  | Classical reasoning is valid but should be explicit                                     |
+| Computable vs noncomputable                | Mathematical existence may not yield executable content                                 |
+| Checked theorem vs `sorry` vs `axiom`      | Proof, admitted proof gap, and assumed fact are different trust states                  |
+| Local simp vs global simp                  | Automation scope is an API and stability boundary                                       |
+| Custom definition vs Mathlib abstraction   | Pedagogical reconstruction and scalable library reuse have different goals              |
+| Source reading vs project verification     | `.lean` files require project metadata to compile in context                            |
+
+The professional Lean rule for PART 5 is:
+
+**Every boundary should make its assumptions, effects, trust status, and intended reuse visible.**
+
+A maintainable Lean project does not merely compile. It has clear imports, searchable names, stable public theorem contracts, controlled automation, explicit failure models, isolated effects, audited assumptions, and theorem statements shaped for downstream use.
+
