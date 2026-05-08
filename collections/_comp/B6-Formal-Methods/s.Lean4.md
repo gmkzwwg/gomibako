@@ -10420,3 +10420,3048 @@ The final professional rule is:
 **Lean 4 should be learned as a formal ecosystem, not as a list of commands. Its central practice is the design of precise statements, proof-producing programs, reusable abstractions, and checked mathematical artifacts inside a versioned library environment.**
 
 A user who understands this can read Lean code structurally, write theorem statements that cooperate with Mathlib, diagnose elaboration and proof failures, control automation, separate pure logic from effects, audit trust boundaries, and maintain source that remains useful beyond the moment it first compiles.
+## Appendix A — Lean Error Message Diagnosis Table
+
+### Purpose — diagnose by semantic layer, not by tactic guessing
+
+Lean error diagnosis should begin by identifying **which layer failed**. Many Lean failures are not mathematical failures. They may be parser errors, import errors, namespace errors, elaboration failures, typeclass inference failures, coercion failures, simplifier failures, weak induction hypotheses, tactic-search failures, or project/version failures.
+
+The professional diagnostic rule is:
+
+**Do not change the theorem statement or try random tactics until the failure layer is identified.**
+
+| Failure layer         | Typical symptom                                                      | First diagnostic question                                           |
+| --------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Parser / syntax       | unexpected token, invalid command                                    | Is the syntax valid in this context?                                |
+| Import / namespace    | unknown identifier                                                   | Is the declaration imported and correctly qualified?                |
+| Elaboration           | type mismatch, unsolved metavariables                                | What is the expected type?                                          |
+| Typeclass inference   | failed to synthesize instance                                        | Which instance is Lean trying to find?                              |
+| Coercion / casting    | type mismatch involving `Nat`, `Int`, subtype, function-like objects | Is Lean inserting the intended coercion?                            |
+| Definitional equality | `rfl` fails                                                          | Do both sides reduce to the same term?                              |
+| Rewriting             | `rw` fails                                                           | Does the rewrite theorem match the target expression and direction? |
+| Simplification        | `simp` does not close or changes too much                            | Is the needed lemma in the simp set?                                |
+| Induction             | induction hypothesis unusable                                        | Was the theorem generalized enough before induction?                |
+| Automation            | tactic timeout or opaque failure                                     | Is the goal in the tactic’s supported fragment?                     |
+| Kernel / trust        | theorem accepted only with `sorry`                                   | Is there an admitted proof gap?                                     |
+| Runtime               | `#eval` or executable code fails                                     | Is this a runtime/effect issue, not a proof issue?                  |
+| Project / version     | file worked before update, now fails                                 | Did imports, theorem names, or tactic behavior change?              |
+
+### A.1 Parser and Syntax Errors
+
+Parser errors occur before Lean understands the mathematical meaning of the code. They are surface-language failures.
+
+| Symptom                               | Likely cause                                               | Diagnosis                                                  | Repair                                                          |
+| ------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- |
+| `unexpected token`                    | malformed syntax                                           | Check nearby keyword, delimiter, indentation, tactic block | Fix syntax before reasoning about proof                         |
+| `expected ...`                        | missing term, binder, command, or separator                | Look immediately before the error location                 | Add missing `:=`, `=>`, `,`, `)`, `]`, `}`, or tactic separator |
+| `invalid field notation`              | using `.field` on a term whose type has no such projection | `#check` the term before field access                      | Use correct projection or expose structure type                 |
+| `unknown tactic`                      | tactic module not imported or tactic name wrong            | Check imports and tactic availability                      | Import relevant module or use available tactic                  |
+| malformed `match` or `cases` branches | wrong constructor names or branch syntax                   | Check inductive constructors with `#check`                 | Use correct constructor namespace and branch syntax             |
+| parser rejects notation               | notation scope/import missing                              | Check whether notation is available                        | Import module or open scoped notation                           |
+
+**Example: missing branch syntax.**
+
+```lean
+def isZero : Nat → Bool
+  | 0 => true
+  | _ + 1 => false
+```
+
+This is valid pattern syntax. But malformed alternatives, missing `=>`, or constructor names outside their namespace produce parser-level errors.
+
+**Diagnostic rule:** if Lean has not parsed the command, tactics and theorem search are irrelevant. Fix syntax first.
+
+### A.2 Unknown Identifier, Import, and Namespace Errors
+
+An unknown identifier usually means Lean cannot find a declaration in the current environment. It does not mean the theorem or tactic does not exist globally.
+
+| Symptom                                    | Likely cause                                      | Diagnosis                                                  | Repair                                |
+| ------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------- |
+| `unknown constant 'foo'`                   | declaration not imported                          | Search docs/source or check imports                        | Add correct import                    |
+| `unknown identifier 'foo'`                 | namespace not open or wrong name                  | Try qualified name                                         | Use `Namespace.foo` or local `open`   |
+| theorem name worked elsewhere but not here | different import context                          | Compare file imports                                       | Import defining module directly       |
+| tactic unavailable                         | tactic module missing                             | Check whether `import Mathlib` or tactic module is present | Add tactic import                     |
+| notation unavailable                       | notation scope missing                            | `#check` equivalent explicit name if known                 | Open scoped notation or import module |
+| name ambiguous                             | multiple opened namespaces expose same short name | Inspect error and possible candidates                      | Use qualified name                    |
+
+**Example: namespace qualification.**
+
+```lean
+#check Nat.add_zero
+#check List.length_append
+```
+
+If `add_zero` or `length_append` fails as a short name, the qualified names may work.
+
+**Professional repair:** prefer qualified names when the origin matters. Avoid solving namespace problems by opening many namespaces globally.
+
+### A.3 Type Mismatch Errors
+
+A type mismatch means Lean inferred a term of one type but expected another. This is an elaboration failure.
+
+| Symptom                              | Likely cause                                | Diagnosis                                     | Repair                                                          |
+| ------------------------------------ | ------------------------------------------- | --------------------------------------------- | --------------------------------------------------------------- |
+| `type mismatch`                      | actual term type differs from expected type | Read both actual and expected types carefully | Change term, add coercion, rewrite goal, or adjust theorem      |
+| expected `P`, got `Q`                | wrong hypothesis or theorem direction       | `#check` the hypothesis/theorem               | Use `.mp`, `.mpr`, `.symm`, or reverse rewrite                  |
+| expected value type, got proposition | confused `Prop` and data                    | `#check` expression                           | Use proof where proposition expected; value where data expected |
+| expected `Bool`, got `Prop`          | proposition used as Boolean                 | Check decidability or bridge theorem          | Use `decide`, `if h : P`, or Boolean checker                    |
+| expected `Prop`, got `Bool`          | Boolean test used as theorem                | Need correctness bridge                       | Prove/use `test x = true ↔ Spec x`                              |
+| expected `Nat`, got subtype          | underlying value hidden in subtype          | Check coercion or projection                  | Use `.val`, coercion, or type ascription                        |
+| expected function, got structure     | function-like coercion missing or wrong     | `#check` structure                            | Use correct field/projection                                    |
+
+**Example: `Bool` vs `Prop`.**
+
+```lean
+def isZeroBool (n : Nat) : Bool :=
+  n == 0
+
+def IsZero (n : Nat) : Prop :=
+  n = 0
+```
+
+`isZeroBool n` and `IsZero n` are not interchangeable. A bridge theorem is needed:
+
+```lean
+theorem isZeroBool_correct (n : Nat) :
+    isZeroBool n = true ↔ IsZero n := by
+  unfold isZeroBool IsZero
+  simp
+```
+
+**Diagnostic rule:** type mismatch errors are often solved by reading the expected type, not by changing tactics.
+
+### A.4 Unsolved Metavariables and Holes
+
+Metavariables are unknown terms Lean is trying to infer. They arise from holes `_`, omitted implicit arguments, incomplete tactic scripts, or insufficient type information.
+
+| Symptom                                    | Likely cause                         | Diagnosis                 | Repair                                   |
+| ------------------------------------------ | ------------------------------------ | ------------------------- | ---------------------------------------- |
+| `unsolved goals`                           | proof script did not close all goals | Inspect goal state        | Add proof for remaining goals            |
+| `don't know how to synthesize placeholder` | `_` cannot be inferred               | Inspect expected type     | Replace `_` with explicit term           |
+| `unsolved metavariables`                   | implicit argument not determined     | Use `#check @name`        | Add explicit argument or type annotation |
+| theorem application leaves unknown type    | type parameter not inferable         | Inspect theorem signature | Supply type argument explicitly          |
+| overloaded numeral/operation unresolved    | expected type missing                | Add type ascription       | Write `(3 : Nat)` or `(3 : Int)`         |
+| tactic generated metavariable              | tactic could not solve subgoal       | Inspect resulting goals   | Prove subgoal manually                   |
+
+**Example: inferable versus non-inferable type.**
+
+```lean
+def identity {α : Type} (x : α) : α :=
+  x
+```
+
+The type `α` is inferable from `x`. But if a theorem has an implicit parameter that does not appear in later explicit arguments, Lean may not infer it.
+
+**Repair pattern:**
+
+```lean
+#check theoremName
+#check @theoremName
+```
+
+Use the `@` form to expose hidden arguments.
+
+### A.5 Typeclass Inference Errors
+
+Typeclass inference errors are extremely common in Lean. They mean Lean is trying to synthesize an instance such as `[Group G]`, `[DecidableEq α]`, `[Preorder α]`, or `[Inhabited α]`.
+
+| Symptom                                | Likely cause                             | Diagnosis                              | Repair                                                                 |
+| -------------------------------------- | ---------------------------------------- | -------------------------------------- | ---------------------------------------------------------------------- |
+| `failed to synthesize instance`        | required typeclass not available         | Read the missing class and target type | Add assumption, import, or instance                                    |
+| notation `*`, `+`, `≤`, `1`, `0` fails | operation class missing                  | Check theorem assumptions              | Add `[Mul α]`, `[Add α]`, `[LE α]`, `[One α]`, etc., or stronger class |
+| `simp` cannot use algebraic law        | laws not available                       | Check class strength                   | Use `[Monoid M]`, `[Group G]`, `[Ring R]`, etc.                        |
+| equality decision missing              | no `[DecidableEq α]`                     | Error mentions decidable equality      | Add `[DecidableEq α]` or derive it                                     |
+| `if h : P then ...` fails              | no decidability for `P`                  | Check if proposition is decidable      | Add `[Decidable P]` or use `classical`                                 |
+| `Finset` operation fails               | missing decidability/finiteness instance | Inspect required instance              | Add needed typeclass assumption                                        |
+| instance search slow                   | ambiguous or noncanonical instances      | Identify class and type                | Avoid noncanonical instances or pass explicit structure                |
+
+**Example: missing algebraic structure.**
+
+Bad theorem shape:
+
+```lean
+-- Not enough structure for `*` and `1`
+-- example {M : Type} (a : M) : a * 1 = a := by
+--   simp
+```
+
+Correct:
+
+```lean
+example {M : Type} [Monoid M] (a : M) : a * 1 = a := by
+  simp
+```
+
+**Professional rule:** do not add the strongest class blindly. Add the weakest class that supplies the operations and laws actually used.
+
+| Need                                 | Usually enough                                                  |
+| ------------------------------------ | --------------------------------------------------------------- |
+| multiplication only                  | `[Mul M]`                                                       |
+| associativity of multiplication      | `[Semigroup M]`                                                 |
+| identity `1` and multiplication laws | `[Monoid M]`                                                    |
+| inverses                             | `[Group G]`                                                     |
+| addition and zero laws               | `[AddMonoid M]`                                                 |
+| polynomial ring reasoning            | `[Semiring R]`, `[Ring R]`, `[CommRing R]` depending on theorem |
+| order transitivity                   | `[Preorder α]`                                                  |
+| total order case split               | `[LinearOrder α]`                                               |
+
+### A.6 Coercion and Cast Errors
+
+Coercion errors occur when Lean cannot move between related types automatically, or when inserted coercions create goals that no longer match expected lemmas.
+
+| Symptom                                   | Likely cause                                       | Diagnosis                        | Repair                                   |
+| ----------------------------------------- | -------------------------------------------------- | -------------------------------- | ---------------------------------------- |
+| expected `Int`, got `Nat`                 | numeric coercion missing or ambiguous              | Inspect expression types         | Add explicit coercion/type annotation    |
+| expected `Nat`, got `Fin n`               | bounded index not raw natural                      | `#check` term                    | Use coercion or `.val`                   |
+| expected carrier type, got subtype        | subtype not coerced where expected                 | Inspect expected type            | Use `.val` or type ascription            |
+| theorem does not rewrite cast expression  | theorem stated over uncast type                    | Inspect target after elaboration | Use cast lemmas or change theorem domain |
+| arithmetic goal full of casts             | mixed numeric domains                              | Check `Nat`/`Int`/real usage     | State theorem over better domain         |
+| function application fails on bundled map | missing function-like coercion or wrong projection | `#check` object                  | Use explicit field/projection            |
+
+**Example: subtype projection.**
+
+```lean
+def positiveOne : {n : Nat // n > 0} :=
+  ⟨1, by decide⟩
+
+def asNat : Nat :=
+  positiveOne
+```
+
+Lean can often coerce the subtype to `Nat`, but the proof is accessed from the original object:
+
+```lean
+example : positiveOne.val > 0 :=
+  positiveOne.property
+```
+
+**Repair principle:** when coercions obscure the goal, add explicit type ascriptions and inspect subexpressions with `#check`.
+
+### A.7 `rfl` Fails
+
+`rfl` proves equality only when both sides are definitionally equal: they reduce to the same core term.
+
+| Symptom                                         | Likely cause                                               | Diagnosis                                          | Repair                       |
+| ----------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------- | ---------------------------- |
+| `rfl` fails on obvious theorem                  | equality is propositional, not definitional                | Try reducing both sides mentally or with `#reduce` | Use theorem, `simp`, or `rw` |
+| `rfl` works for `0 + n = n` but not `n + 0 = n` | recursion unfolds on one argument                          | Check definition orientation                       | Use `Nat.add_zero` or `simp` |
+| projection equality fails                       | structure not syntactically constructed                    | Inspect term                                       | Use theorem/projection lemma |
+| function equality fails                         | functions extensionally equal but not definitionally equal | Need pointwise proof                               | Use `funext`                 |
+| set equality fails                              | sets extensionally equal but not definitionally equal      | Need membership equivalence                        | Use `ext x`                  |
+
+**Examples.**
+
+Definitional:
+
+```lean
+example (n : Nat) : 0 + n = n := by
+  rfl
+```
+
+Theorem-based:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  exact Nat.add_zero n
+```
+
+Or:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  simp
+```
+
+**Diagnostic rule:** if `rfl` fails, ask whether the equality is definitional. Do not assume the proposition is false.
+
+### A.8 `rw` Fails
+
+`rw` rewrites using equality proofs. It fails when the rewrite theorem does not match the target expression, the direction is wrong, the expression is hidden under a coercion, or the theorem is not an equality-like rule.
+
+| Symptom                          | Likely cause                                        | Diagnosis                     | Repair                                                       |
+| -------------------------------- | --------------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| `rw [h]` fails                   | left side of `h` not found in goal                  | Inspect exact goal expression | Use reverse rewrite, unfold, or rewrite different expression |
+| rewrite works in reverse only    | theorem orientation opposite                        | Check theorem statement       | Use `rw [← h]`                                               |
+| rewrite changes wrong occurrence | multiple matches                                    | Inspect target                | Use more specific rewrite or occurrence control              |
+| cannot rewrite in hypothesis     | wrong target hypothesis                             | Check hypothesis type         | Use `rw [h] at h₂`                                           |
+| theorem is `↔`, not `=`          | `rw` may not apply as expected depending on context | Check theorem type            | Use `.mp`, `.mpr`, or `simp [theorem]`                       |
+| expression contains casts        | theorem does not match casted expression            | Inspect elaborated target     | Use cast lemmas or adjust domain                             |
+| hidden definition blocks rewrite | target not unfolded                                 | Check definition              | Use `rw [definition]` or `simp [definition]`                 |
+
+**Example: direction.**
+
+```lean
+example (a b : Nat) (h : b = a) : a + 1 = b + 1 := by
+  rw [← h]
+```
+
+**Example: rewriting hypothesis.**
+
+```lean
+example (a b c : Nat) (h : a = b) (h₂ : a + c = 0) : b + c = 0 := by
+  rw [h] at h₂
+  exact h₂
+```
+
+**Professional rule:** `rw` is not search. It is directed replacement. Always inspect the rewrite theorem shape.
+
+### A.9 `simp` Fails, Over-Simplifies, or Becomes Slow
+
+`simp` is a proof-producing normalizer. It is not general mathematical intelligence.
+
+| Symptom                                   | Likely cause                           | Diagnosis                      | Repair                                        |
+| ----------------------------------------- | -------------------------------------- | ------------------------------ | --------------------------------------------- |
+| `simp` does not close goal                | needed lemma not in simp set           | Identify missing normalization | Add `simp [lemma]` or prove helper            |
+| `simp [f]` unfolds too much               | definition exposes low-level structure | Inspect resulting goal         | Use more targeted theorem                     |
+| `simp at *` destroys useful hypotheses    | broad simplification changes context   | Check changed hypotheses       | Simplify only selected hypothesis             |
+| `simp` loops or times out                 | bad simp lemma or large simp set       | Locate slow simp call          | Use `simp only [...]` or remove bad simp rule |
+| `simp` proves proof opaquely              | central step hidden                    | Review proof role              | Use `rw`, `calc`, or helper lemma             |
+| simp behavior changed after import/update | simp set changed                       | Compare imports/version        | Add explicit simp lemmas                      |
+
+**Example: local unfolding.**
+
+```lean
+def eraseZero (n : Nat) : Nat :=
+  n + 0
+
+example (n : Nat) : eraseZero n = n := by
+  simp [eraseZero]
+```
+
+**Good simp lemma orientation:**
+
+```lean
+@[simp]
+theorem eraseZero_eq (n : Nat) : eraseZero n = n := by
+  simp [eraseZero]
+```
+
+Bad global simp direction would expand `n` into `n + 0`.
+
+**Professional rule:** use `simp` for routine normalization. Use `rw` or `calc` when the transformation is mathematically central.
+
+### A.10 Induction Hypothesis Is Too Weak
+
+This is one of the most important Lean proof failures. The theorem may be true, but the induction hypothesis is not strong enough.
+
+| Symptom                                            | Likely cause                                | Diagnosis                          | Repair                               |
+| -------------------------------------------------- | ------------------------------------------- | ---------------------------------- | ------------------------------------ |
+| induction hypothesis does not match recursive call | variable fixed too early                    | Inspect IH type                    | Generalize variable before induction |
+| accumulator proof fails                            | theorem stated only for initial accumulator | Recursive call changes accumulator | Prove generalized accumulator lemma  |
+| induction over wrong object                        | IH about irrelevant structure               | Compare recursion argument         | Induct on data that drives recursion |
+| dependent goal becomes awkward                     | motive too specific                         | Inspect generated goals            | Strengthen theorem statement         |
+| `simp [ih]` does nothing                           | IH shape does not match goal                | Compare exact subterm              | Rewrite theorem or induction target  |
+
+**Accumulator pattern.**
+
+```lean
+def sumAux : List Nat → Nat → Nat
+  | [], acc => acc
+  | x :: xs, acc => sumAux xs (acc + x)
+```
+
+A proof about `sumAux xs 0` is often too weak. The useful theorem usually quantifies over arbitrary `acc`.
+
+**Repair pattern:**
+
+```lean
+theorem sumAux_correct (xs : List Nat) (acc : Nat) :
+    -- generalized statement here
+    True := by
+  induction xs generalizing acc with
+  | nil =>
+      trivial
+  | cons x xs ih =>
+      trivial
+```
+
+The specific theorem depends on the chosen specification, but the diagnostic principle is stable: **generalize changing variables before induction.**
+
+### A.11 `apply` Produces Unexpected Goals
+
+`apply` uses a theorem backward. It matches the theorem conclusion against the current goal and creates subgoals for the premises.
+
+| Symptom                                | Likely cause                                   | Diagnosis                 | Repair                                        |
+| -------------------------------------- | ---------------------------------------------- | ------------------------- | --------------------------------------------- |
+| `apply` creates too many goals         | theorem has many premises                      | `#check` theorem          | Use more specific theorem or supply arguments |
+| subgoals contain unknown metavariables | implicit parameters not inferred               | `#check @theorem`         | Provide explicit arguments                    |
+| wrong theorem applied                  | conclusion matched too generally               | Inspect generated goals   | Use direct `exact` or different theorem       |
+| typeclass goals appear                 | theorem requires structure                     | Read premises             | Add instance assumptions/imports              |
+| goal changed unexpectedly              | theorem’s conclusion matched in surprising way | Inspect theorem statement | Use `refine` or explicit application          |
+
+**Example:**
+
+```lean
+example (P Q : Prop) (h : P → Q) (hp : P) : Q := by
+  apply h
+  exact hp
+```
+
+Equivalent direct version:
+
+```lean
+example (P Q : Prop) (h : P → Q) (hp : P) : Q := by
+  exact h hp
+```
+
+**Professional rule:** if `apply` surprises you, inspect the theorem type before using it.
+
+### A.12 Extensionality Failures: Functions, Sets, Structures
+
+Some equalities are not solved by `rfl` or direct rewriting because they require extensional reasoning.
+
+| Goal                            | Symptom                                     | First move                                       |
+| ------------------------------- | ------------------------------------------- | ------------------------------------------------ |
+| `f = g` for functions           | `rfl` fails though pointwise equal          | `funext x`                                       |
+| `s = t` for sets                | direct proof awkward                        | `ext x`                                          |
+| structure equality              | fields equal but object equality not direct | `ext` if extensionality theorem exists           |
+| predicates equivalent           | equality too strong                         | prove `∀ x, P x ↔ Q x` or use set extensionality |
+| quotient/equivalence structures | equality not intended relation              | use appropriate equivalence relation             |
+
+**Function equality.**
+
+```lean
+example {α β : Type} (f g : α → β)
+    (h : ∀ x, f x = g x) : f = g := by
+  funext x
+  exact h x
+```
+
+**Set equality.**
+
+```lean
+example {α : Type} (s t : Set α)
+    (h : ∀ x, x ∈ s ↔ x ∈ t) : s = t := by
+  ext x
+  exact h x
+```
+
+**Diagnostic rule:** if two complex objects are “the same by all observations,” the proof probably needs extensionality.
+
+### A.13 Classical Reasoning and Decidability Errors
+
+Some proofs require classical reasoning or decidability. Lean does not always assume these silently.
+
+| Symptom                                | Likely cause                       | Diagnosis                 | Repair                                          |
+| -------------------------------------- | ---------------------------------- | ------------------------- | ----------------------------------------------- |
+| cannot prove `P ∨ ¬ P`                 | excluded middle is classical       | arbitrary `P : Prop`      | Use local `classical`                           |
+| `by_cases h : P` fails                 | missing decidability               | Check if `P` is decidable | Add `[Decidable P]` or `classical`              |
+| `if h : P then ... else ...` fails     | no decidability                    | Inspect `P`               | Add decidability/classical                      |
+| cannot extract witness computationally | existence proof is nonconstructive | Check use of choice       | Mark `noncomputable` or provide algorithm       |
+| proof by contradiction fails           | target not classically available   | Check constructive status | Use `by_contra` with `classical` if appropriate |
+
+**Example:**
+
+```lean
+example (P : Prop) : P ∨ ¬ P := by
+  classical
+  exact Classical.em P
+```
+
+**Professional rule:** use `classical` locally. Do not add it globally unless the whole file intentionally works classically.
+
+### A.14 Runtime and `#eval` Errors
+
+Runtime errors are not proof errors. They occur when executable code is evaluated or run.
+
+| Symptom                           | Likely cause                            | Diagnosis                                                             | Repair                                               |
+| --------------------------------- | --------------------------------------- | --------------------------------------------------------------------- | ---------------------------------------------------- |
+| `#eval` fails                     | expression not executable               | Check for `noncomputable`, proof-only object, missing `ToString/Repr` | Evaluate computable expression or add representation |
+| cannot print value                | missing `Repr` or `ToString`            | Check output requirement                                              | Derive/provide instance                              |
+| `IO` program fails                | external environment or runtime failure | Separate pure core from shell                                         | Debug `IO` layer                                     |
+| parser/validator returns `.error` | input invalid                           | Inspect input and validation logic                                    | Handle `Except` cases                                |
+| runtime panic                     | explicit panic or partial behavior      | Locate executable failure                                             | Model failure with `Option`/`Except`                 |
+
+**Example: proof vs computation.**
+
+```lean
+#eval 2 + 3
+
+example : 2 + 3 = 5 := by
+  norm_num
+```
+
+The first computes a value. The second proves a proposition.
+
+**Diagnostic rule:** `#eval` success is not theorem proof. `#eval` failure is not necessarily theorem failure.
+
+### A.15 `sorry`, `axiom`, and Trust Boundary Warnings
+
+Some Lean files compile because they contain admitted facts. This is not the same as completed proof.
+
+| Construct          | Meaning                          | Diagnosis                      | Professional treatment                              |
+| ------------------ | -------------------------------- | ------------------------------ | --------------------------------------------------- |
+| `sorry`            | admitted placeholder             | Search file for `sorry`        | Treat as proof debt                                 |
+| `axiom`            | assumed fact                     | Inspect axiom statement        | Use only explicit foundational/external assumption  |
+| `constant`         | declaration without definition   | Check usage                    | Treat as assumption-like unless justified           |
+| `unsafe`           | outside ordinary safety boundary | Search for unsafe declarations | Isolate and document                                |
+| `noncomputable`    | no executable content expected   | Check use of classical choice  | Accept for classical math, not executable algorithm |
+| global `classical` | broad classical reasoning        | Check scope                    | Prefer local if possible                            |
+
+**Example:**
+
+```lean
+theorem unfinished (n : Nat) : n + 0 = n := by
+  sorry
+```
+
+This theorem becomes usable, but the proof is not supplied.
+
+**Professional rule:** a visible `sorry` is better than an unjustified `axiom`, because at least the proof debt is obvious.
+
+### A.16 Project, Version, and Migration Failures
+
+Lean and Mathlib evolve. A proof may fail after an update even if the mathematics is unchanged.
+
+| Symptom                           | Likely cause                             | Diagnosis                 | Repair                        |
+| --------------------------------- | ---------------------------------------- | ------------------------- | ----------------------------- |
+| theorem name unknown after update | theorem renamed or moved                 | Search docs/source        | Update name/import            |
+| import fails                      | module path changed                      | Inspect new module layout | Change import                 |
+| `simp` proof no longer closes     | simp set changed                         | Inspect goal after simp   | Add explicit lemma or rewrite |
+| tactic behavior changed           | tactic implementation or imports changed | Try explicit proof        | Replace fragile automation    |
+| stricter elaboration error        | inference changed                        | Read expected type        | Add annotations               |
+| typeclass hierarchy changed       | assumptions no longer match              | Inspect required instance | Update theorem assumptions    |
+| notation no longer parses         | notation scope/import changed            | Check notation source     | Add scoped open/import        |
+| build fails globally              | toolchain mismatch                       | Check `lean-toolchain`    | Use pinned toolchain          |
+
+**Migration repair order:**
+
+1. Confirm toolchain and dependency version.
+2. Identify whether failure is import/name/tactic/elaboration/proof.
+3. Search for renamed theorem or moved module.
+4. Replace fragile automation with explicit theorem use where needed.
+5. Preserve public theorem statements unless intentionally changing API.
+
+**Professional rule:** do not weaken the theorem just to make migration easy. First diagnose the compatibility boundary.
+
+### A.17 Slow Proofs, Timeouts, and Heartbeat Failures
+
+Performance failures often indicate proof-engineering issues.
+
+| Symptom                     | Likely cause                               | Diagnosis                  | Repair                              |
+| --------------------------- | ------------------------------------------ | -------------------------- | ----------------------------------- |
+| heartbeat timeout in `simp` | large simp set or unfolding                | Isolate simp call          | Use `simp only`, fewer definitions  |
+| tactic timeout in `aesop`   | large search space                         | Check goal branching       | Add helper lemmas or explicit proof |
+| slow typeclass synthesis    | ambiguous instances                        | Identify required instance | Avoid noncanonical instances        |
+| slow elaboration            | too many implicit/metavariable constraints | Add annotations            | Make arguments explicit             |
+| slow arithmetic tactic      | large arithmetic goal                      | Isolate arithmetic part    | Prove smaller arithmetic lemma      |
+| slow build                  | broad imports or module graph              | Inspect imports            | Refine imports / reorganize         |
+| huge proof term             | automation expands too much                | Check proof structure      | Extract lemmas                      |
+
+**Bad first response:**
+
+```lean
+set_option maxHeartbeats 0
+```
+
+This can be useful for diagnosis, but it is usually not a real fix.
+
+**Professional repair:** identify the slow step and reduce search or unfolding.
+
+### A.18 General Diagnostic Workflow
+
+Use this sequence when a Lean proof fails.
+
+| Step | Action                                 | Purpose                                     |
+| ---- | -------------------------------------- | ------------------------------------------- |
+| 1    | Read the exact error message           | Identify failure layer                      |
+| 2    | Inspect current goal and local context | Understand expected target                  |
+| 3    | `#check` relevant names                | Verify theorem/hypothesis types             |
+| 4    | Use `#check @name`                     | Expose hidden arguments                     |
+| 5    | Check imports and namespaces           | Resolve unknown identifiers                 |
+| 6    | Check typeclass assumptions            | Resolve missing instances                   |
+| 7    | Distinguish equality kind              | Choose `rfl`, `rw`, `simp`, `ext`, `funext` |
+| 8    | Inspect induction hypothesis           | Diagnose weak IH                            |
+| 9    | Classify automation fragment           | Choose tactic by problem type               |
+| 10   | Extract helper lemma if proof grows    | Improve architecture                        |
+| 11   | Refactor after proof works             | Make source maintainable                    |
+| 12   | Audit trust boundaries                 | Remove unintended `sorry`/axiom             |
+
+### A.19 Compact Error Diagnosis Table
+
+| Error / symptom                 | Most likely cause                        | First diagnostic move             | Typical repair                            |
+| ------------------------------- | ---------------------------------------- | --------------------------------- | ----------------------------------------- |
+| `unknown identifier`            | missing import or namespace              | Try qualified name; check imports | Import module or qualify name             |
+| `unexpected token`              | syntax error                             | Inspect nearby syntax             | Fix delimiter/keyword/branch              |
+| `type mismatch`                 | actual type differs from expected        | Read expected/actual types        | Rewrite, annotate, or use correct term    |
+| `unsolved goals`                | proof incomplete                         | Inspect goal state                | Add proof steps                           |
+| `unsolved metavariables`        | implicit info missing                    | `#check @name`                    | Add explicit args/types                   |
+| `failed to synthesize instance` | missing typeclass                        | Read missing class/type           | Add assumption/import/instance            |
+| `rfl` fails                     | not definitional equality                | Check reduction                   | Use theorem/`rw`/`simp`                   |
+| `rw` fails                      | expression/direction mismatch            | Check theorem statement           | Use reverse rewrite/unfold/correct target |
+| `simp` fails                    | missing simp rule or wrong normal form   | Inspect target                    | Add lemma or explicit proof               |
+| `simp` too slow                 | large simp set/unfolding                 | Isolate call                      | Use `simp only` or helper theorem         |
+| induction IH unusable           | theorem too specific                     | Inspect IH                        | Generalize variables                      |
+| `apply` creates odd goals       | theorem too general or wrong             | `#check` theorem                  | Supply args or use different theorem      |
+| function equality fails         | needs extensionality                     | Check goal `f = g`                | Use `funext`                              |
+| set equality fails              | needs membership equivalence             | Check goal `s = t`                | Use `ext x`                               |
+| `if h : P` fails                | no decidability                          | Check `P`                         | Add `[Decidable P]` or `classical`        |
+| `#eval` fails                   | non-executable or missing representation | Check expression type             | Use computable expression / derive `Repr` |
+| proof accepted with `sorry`     | admitted gap                             | Search `sorry`                    | Complete proof                            |
+| build fails after update        | migration issue                          | Check version/import/name         | Update imports/theorem names              |
+| tactic timeout                  | search explosion                         | Identify tactic                   | Add structure/helper lemma                |
+| arithmetic tactic fails         | goal outside fragment                    | Inspect arithmetic domain         | Use correct tactic or lemma               |
+
+### A.20 Diagnosis Principles
+
+**Principle 1 — Expected type first.**
+Most Lean errors are solved by reading what Lean expected, not by guessing tactics.
+
+**Principle 2 — Import and namespace before theorem invention.**
+An unknown theorem may already exist but not be imported or qualified.
+
+**Principle 3 — Instance errors are theorem-statement errors until proven otherwise.**
+If notation or algebraic law needs structure, add the correct typeclass assumption.
+
+**Principle 4 — `rfl` is definitional, `rw` is propositional, `simp` is normalization.**
+Do not use them as interchangeable equality tools.
+
+**Principle 5 — Weak induction hypotheses are fixed by theorem design, not tactic force.**
+Generalize variables before induction when recursive calls change them.
+
+**Principle 6 — Automation should match the problem fragment.**
+`ring`, `omega`, `linarith`, `simp`, and `aesop` solve different kinds of goals.
+
+**Principle 7 — Runtime and proof are separate layers.**
+`#eval` computes; theorem proving checks proof terms.
+
+**Principle 8 — Compilation is not enough when trust gaps exist.**
+A file with `sorry` compiles by admitting proof obligations.
+
+**Principle 9 — Performance failures are often design failures.**
+Slow simplification, instance search, and automation often indicate bad proof structure.
+
+**Principle 10 — Migration failures are not necessarily mathematical failures.**
+Version changes often affect imports, theorem names, notation, or automation behavior.
+
+### Appendix A Summary
+
+Lean error diagnosis is a classification task. The same visible failure — “Lean will not accept this” — can mean many different things.
+
+| If the problem is... | Do not...                      | Instead...                                      |
+| -------------------- | ------------------------------ | ----------------------------------------------- |
+| syntax               | change theorem                 | fix syntax                                      |
+| missing import       | reprove theorem                | import or qualify                               |
+| type mismatch        | try random tactics             | inspect expected type                           |
+| missing instance     | add strong assumptions blindly | add weakest correct structure                   |
+| failed `rfl`         | assume theorem false           | distinguish definitional/propositional equality |
+| failed `rw`          | use more automation blindly    | check rewrite direction and target shape        |
+| failed `simp`        | mark random lemmas `[simp]`    | identify normal form                            |
+| weak induction       | force tactics                  | generalize theorem                              |
+| automation timeout   | raise heartbeats first         | reduce search space                             |
+| runtime failure      | change proof                   | debug executable layer                          |
+| migration failure    | rewrite mathematics            | update names/imports/proof robustness           |
+| trust gap            | ignore because file compiles   | audit `sorry`, `axiom`, `unsafe`                |
+
+The professional diagnostic habit is:
+
+**Read the goal, read the context, inspect the theorem type, identify the semantic layer, then repair the smallest correct boundary.**
+## Appendix B — Tao Analysis Corpus Case Studies
+
+### Purpose — use Tao’s corpus as a source-reading laboratory, not as a style authority
+
+Tao’s *Analysis I* Lean companion is best used as a **case corpus**: a real body of Lean source where textbook mathematics is translated into formal definitions, theorem statements, proof scripts, `sorry` holes, and gradual contact with `Mathlib`.
+
+The repository states that the project formalizes Tao’s *Analysis I* in Lean and aims to paraphrase the original text faithfully rather than optimize for efficiency or always use the most idiomatic Lean style. It also says textbook exercises are rendered as `sorry`s, and that the development gradually transitions from textbook-specific definitions toward Mathlib definitions for compatibility. ([GitHub][1])
+
+This means the corpus should be read under a specific rule:
+
+**Use it to study formalization pressure, theorem statement design, proof obligations, and textbook-to-Lean translation. Do not treat every local definition or proof style as universal Mathlib idiom.**
+
+### B.1 Case Corpus Reading Protocol
+
+When reading a Tao Analysis source file, do not begin by trying to prove every theorem. First classify the file.
+
+| Reading question                                                      | What to inspect                                                               | Why it matters                       |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------ |
+| Which textbook section is being formalized?                           | File header and section title                                                 | Determines mathematical context      |
+| Is this a faithful textbook definition or Mathlib-native abstraction? | Local definitions, namespaces, imports                                        | Prevents wrong style transfer        |
+| Which declarations are definitions?                                   | `def`, `abbrev`, `structure`, `instance`                                      | Shows modeling choices               |
+| Which declarations are theorem anchors?                               | `theorem`, `lemma`, `example`                                                 | Shows formalized mathematical claims |
+| Which proof obligations are left?                                     | `sorry`                                                                       | Shows exercise/proof-debt positions  |
+| Which tactics recur?                                                  | `simp`, `rw`, `omega`, `linarith`, `calc`, `grind`, `positivity`, `by_contra` | Shows proof-engineering pattern      |
+| Which facts are definitional?                                         | Theorems proved by `rfl`                                                      | Shows abbreviation/spec boundary     |
+| Which facts require classical/noncomputable reasoning?                | `open Classical`, `noncomputable`, choice-based definitions                   | Shows trust/computation boundary     |
+| Which facts bridge textbook and Mathlib?                              | Equivalences, casts, conversions, Mathlib theorem use                         | Shows transition strategy            |
+
+The source itself warns that faithful paraphrase is often chosen over more idiomatic Lean, so the first reading pass should ask: **what is this source optimizing for?** In Section 2.1, the file explicitly says it follows the original text, choosing faithful translation over golfed or more idiomatic Lean when there is a tradeoff. ([GitHub][2])
+
+### B.2 Case Study 1 — Peano Axioms and Pedagogical Natural Numbers
+
+**Source anchor:** `Analysis/Section_2_1.lean`.
+
+The Section 2.1 file is about the Peano axioms. Its header states that it translates Section 2.1 of *Analysis I* into Lean 4 and that the chapter introduces a “Chapter 2” natural-number type, abbreviated as `Nat` inside the `Chapter2` namespace. The source notes that the book treats natural numbers axiomatically, while the Lean development can use Lean’s native facilities. ([GitHub][2])
+
+**What this case teaches:**
+
+| Formalization issue                                     | Lean lesson                                                                              |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Textbook introduces natural numbers axiomatically       | Lean already has native `Nat`, but a faithful companion may reconstruct or wrap concepts |
+| Local namespace abbreviates concepts                    | Names may not mean global Mathlib names                                                  |
+| Pedagogy and library reuse diverge                      | Faithful formalization can be intentionally non-Mathlib-native                           |
+| A theorem may be easy in Mathlib but meaningful locally | Do not judge only by proof length                                                        |
+| Definitions may exist to mirror the book                | Do not prematurely replace them with library abstractions                                |
+
+**Master-system takeaway:** this is a modeling-boundary case. It teaches that a formalization can deliberately prefer **textbook fidelity** over ecosystem minimalism. In a Mathlib-facing library, one would normally use existing `Nat` facts directly. In a textbook companion, rebuilding or rephrasing natural-number material can be pedagogically correct.
+
+**How to use it in the tutorial:**
+
+```lean
+-- Schematic reading pattern, not copied source:
+namespace Chapter2
+
+-- Local natural-number development lives here.
+-- The reader must distinguish this local `Nat` context
+-- from unrestricted global Mathlib `Nat` usage.
+
+end Chapter2
+```
+
+**Diagnostic question for learners:** when a theorem in this section looks redundant with Mathlib, ask whether the source is teaching a mathematical construction, preserving the textbook order, or providing a reusable library theorem.
+
+### B.3 Case Study 2 — `sorry` as Exercise Boundary, Not Runtime Failure
+
+The repository explicitly says that portions left as exercises in the book are rendered as `sorry`s in the Lean translation, and readers are welcome to fork the repository to fill those exercises; it also says the repository does not intend to provide those solutions directly. ([GitHub][1])
+
+This gives a clean trust-boundary example.
+
+| Corpus feature                             | Correct interpretation                    | Wrong interpretation                    |
+| ------------------------------------------ | ----------------------------------------- | --------------------------------------- |
+| `theorem ... := by sorry`                  | Exercise hole / admitted proof obligation | Completed formal proof                  |
+| `example ... := by sorry`                  | Local demonstration obligation            | Verified example                        |
+| many `sorry`s in exercise-heavy section    | Pedagogical design                        | Proof failure of the whole project idea |
+| downstream theorem using a `sorry` theorem | Conditional on admitted fact              | Fully independent proof                 |
+| `sorry` in theorem anchor                  | place to practice proof completion        | harmless comment                        |
+
+**Master-system takeaway:** `sorry` is a formal placeholder, not a note. It allows Lean to continue by admitting the target. In this corpus, many `sorry`s are intentional exercise holes; in production formalization, they are proof debt.
+
+**Appendix use:** add a “proof-debt audit” table whenever a Tao case is used.
+
+| Audit item                                        | Question                                              |
+| ------------------------------------------------- | ----------------------------------------------------- |
+| Is the case theorem fully proved?                 | No `sorry` in body                                    |
+| Is `sorry` exercise-intended?                     | Check theorem comment / section role                  |
+| Does the proof depend on previous `sorry`s?       | Trace theorem dependencies if needed                  |
+| Is the theorem a central result or local example? | Central gaps matter more                              |
+| Is there a Mathlib equivalent?                    | Could compare textbook-local and Mathlib-native proof |
+
+### B.4 Case Study 3 — Sequences as Structured Objects with Junk Values
+
+**Source anchor:** `Analysis/Section_6_1.lean`.
+
+Section 6.1 works with sequences and limits. One source segment defines `Sequence.from`; the comment explains that the shifted sequence starts from a specified index and returns a “junk” value outside the intended range. The actual declaration is an abbreviation, and the nearby lemma `Sequence.from_eval` proves the expected behavior under the relevant index condition. ([GitHub][3])
+
+**What this case teaches:**
+
+| Formalization issue                                    | Lean lesson                                                                     |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| Informal sequence statements often assume “eventually” | Lean must define behavior at all inputs                                         |
+| Function must be total                                 | Out-of-domain behavior may need a junk/default value                            |
+| The intended domain is expressed by a hypothesis       | Lemma such as `from_eval` restores intended behavior under condition            |
+| Definitions and theorem contracts separate             | Definition may contain junk; theorem states valid-use behavior                  |
+| Index type matters                                     | Here integer/natural coercions and inequalities become part of the proof burden |
+
+**Schematic pattern:**
+
+```lean
+-- Schematic, not source copy:
+def shiftedSequence (a : Sequence) (m₁ : Int) : Sequence :=
+  -- total definition, including behavior outside intended range
+  ...
+
+lemma shiftedSequence_eval
+    (a : Sequence) {m₁ n : Int}
+    (hn : n ≥ m₁) :
+    shiftedSequence a m₁ n = a n := by
+  ...
+```
+
+**Why this matters:** in ordinary mathematics, one may say “consider the sequence starting at `N`” and ignore earlier terms. In Lean, a function must be total, so the formal object must define every input. The junk-value pattern is a standard formalization device: define a total object, then prove lemmas describing its intended behavior under hypotheses.
+
+**Master-system takeaway:** this is a perfect example for **API boundary design**. Users should not reason by unfolding the junk-value implementation. They should use the theorem contract.
+
+### B.5 Case Study 4 — Limit Uniqueness: Textbook Proof Structure in Tactic Form
+
+**Source anchor:** `Sequence.tendsTo_unique` in Section 6.1.
+
+The source contains a theorem named `Sequence.tendsTo_unique`, labeled as Proposition 6.1.7, proving uniqueness of limits. Its proof is explicitly commented as following the structure of the original text. The proof uses contradiction, chooses witnesses from convergence hypotheses, sets an epsilon based on `|L - L'| / 3`, specializes eventual estimates at a maximum index, and finishes with a `calc` chain plus arithmetic reasoning. ([GitHub][3])
+
+**What this case teaches:**
+
+| Proof component                 | Lean mechanism                    | Mathematical meaning                     |
+| ------------------------------- | --------------------------------- | ---------------------------------------- |
+| Assume two different limits     | `by_contra` / contradiction setup | Proof by contradiction                   |
+| Extract convergence data        | `choose`, `specialize`            | Unpack existential/universal quantifiers |
+| Define epsilon                  | `set ε := ...`                    | Name a central estimate parameter        |
+| Prove epsilon positive          | `positivity` / inequalities       | Side condition for limit definition      |
+| Choose sufficiently large index | `max N M`, `omega`                | Satisfy both eventual bounds             |
+| Chain inequalities              | `calc`                            | Textbook-style estimate                  |
+| Finish contradiction            | `linarith`                        | Arithmetic contradiction                 |
+
+**Schematic proof skeleton:**
+
+```lean
+-- Schematic proof architecture:
+theorem limit_unique
+    (a : Sequence) {L L' : ℝ}
+    (hneq : L ≠ L') :
+    ¬ (a.TendsTo L ∧ a.TendsTo L') := by
+  by_contra hboth
+  -- unpack both convergence hypotheses
+  -- choose ε = |L - L'| / 3
+  -- obtain N and M
+  -- specialize both estimates at max N M
+  -- use calc chain and arithmetic contradiction
+```
+
+**Why this is valuable:** it shows the translation of a familiar analysis proof into Lean proof-state operations. The proof is not merely “use `linarith`.” The central structure is: unpack quantifiers, choose epsilon, specialize estimates, chain inequalities.
+
+**Master-system takeaway:** this case belongs in the main tutorial whenever `calc`, `specialize`, `choose`, `by_contra`, and arithmetic tactics are introduced. It is a real example of how textbook prose becomes proof-engineering structure.
+
+### B.6 Case Study 5 — Definitional Theorems by `rfl`
+
+Section 6.1 defines convergence-related predicates such as `Convergent`, `Divergent`, boundedness, and related “definition theorems.” Several nearby declarations have theorem statements of the form “the local definition is equivalent to the proposition it abbreviates” and are proved by `rfl`. For instance, `Sequence.convergent_def` states the equivalence between `a.Convergent` and an existential limit statement, and its proof is `by rfl`; similar definition lemmas appear for divergent and bounded notions. ([GitHub][3])
+
+**What this case teaches:**
+
+| Pattern                             | Lean meaning                                |
+| ----------------------------------- | ------------------------------------------- |
+| `abbrev P := ...`                   | Lightweight definitional abbreviation       |
+| `theorem P_def : P ↔ ... := by rfl` | The two sides are definitionally the same   |
+| `rfl` proof                         | No mathematical argument beyond unfolding   |
+| Definitional theorem                | Useful API theorem even if proof is trivial |
+| Named `*_def` lemma                 | Gives users a stable rewrite/search handle  |
+
+**Schematic pattern:**
+
+```lean
+abbrev Sequence.Convergent (a : Sequence) : Prop :=
+  ∃ L, a.TendsTo L
+
+theorem Sequence.convergent_def (a : Sequence) :
+    a.Convergent ↔ ∃ L, a.TendsTo L := by
+  rfl
+```
+
+This is an important design pattern: even when a theorem is provable by `rfl`, naming it can be useful because it gives readers and later proofs a stable conceptual handle.
+
+**Master-system takeaway:** this case belongs under the `rfl` appendix and the API-design part. It shows that `rfl` is not “too trivial to matter”; it often certifies that a theorem is a definitional exposure of an abstraction.
+
+### B.7 Case Study 6 — `lim`: Noncomputable Choice and Junk Value
+
+Section 6.1 defines a limit operation `lim` for a sequence. The source comment says that the limit is given the junk value `0` if the sequence is not convergent. The declaration is `noncomputable` and uses a conditional on convergence with a chosen witness when convergence holds. Nearby theorems such as `Sequence.lim_def` and `Sequence.lim_eq` provide the behavior contract. ([GitHub][3])
+
+**What this case teaches:**
+
+| Formalization issue                                | Lean mechanism                              |
+| -------------------------------------------------- | ------------------------------------------- |
+| A limit may not exist                              | Define total function with junk value       |
+| Choosing a limit from existence proof              | Classical choice / noncomputable definition |
+| The function must return an `ℝ` for every sequence | Else branch gives `0`                       |
+| Correct use requires convergence hypothesis        | `lim_def` theorem                           |
+| Exact characterization needs iff theorem           | `lim_eq` theorem                            |
+| Computation is not the point                       | `noncomputable` marks semantic boundary     |
+
+**Schematic pattern:**
+
+```lean
+-- Schematic:
+noncomputable abbrev lim (a : Sequence) : ℝ :=
+  if h : a.Convergent then
+    choose_a_limit_from h
+  else
+    0
+
+theorem lim_def {a : Sequence} (h : a.Convergent) :
+    a.TendsTo (lim a) := by
+  ...
+
+theorem lim_eq {a : Sequence} {L : ℝ} :
+    a.TendsTo L ↔ a.Convergent ∧ lim a = L := by
+  ...
+```
+
+**Why this is a high-value case:** it compresses several core Lean ideas into one example: total functions, partial mathematical concepts, `noncomputable`, classical choice, junk values, theorem contracts, and proof API design.
+
+**Master-system takeaway:** this is the canonical Tao-case for the distinction between **mathematical existence** and **computable construction**.
+
+### B.8 Case Study 7 — Harmonic-Like Limit: Quantifiers, Estimates, and `calc`
+
+Section 6.1 includes a theorem `Sequence.lim_harmonic` showing convergence of a sequence of reciprocals to zero. The proof rewrites the goal using the limit characterization and the `tendsTo_iff` form, introduces `ε`, chooses a large integer bound using an existence lemma, and then performs inequality reasoning with `simp`, `calc`, and order/arithmetic tactics. ([GitHub][3])
+
+**What this case teaches:**
+
+| Source pattern                    | Lean skill                                         |
+| --------------------------------- | -------------------------------------------------- |
+| `rw [←lim_eq, tendsTo_iff]`       | Convert theorem into a proof-friendly target       |
+| `intro ε hε`                      | Handle epsilon definition                          |
+| choose large bound                | Use existential witness from Archimedean-type fact |
+| prove positivity side conditions  | `positivity`, `linarith`, `order`                  |
+| simplify absolute values/inverses | `simp`, rewrite lemmas                             |
+| inequality chain                  | `calc`                                             |
+| final arithmetic                  | `linarith`, order reasoning                        |
+
+**Schematic proof skeleton:**
+
+```lean
+theorem reciprocal_sequence_tends_to_zero :
+    reciprocalSequence.TendsTo 0 := by
+  rw [tendsTo_iff]
+  intro ε hε
+  -- choose N sufficiently large
+  -- prove all n ≥ N satisfy distance < ε
+  -- use calc and ordered-field facts
+```
+
+**Master-system takeaway:** this case should be used to teach why analysis proofs are hard in Lean. The mathematical idea is elementary; the formal proof must manage quantifiers, coercions, positivity, absolute values, inverses, index bounds, and inequality chains.
+
+### B.9 Case Study 8 — Standard Limits and `sorry` Clusters
+
+**Source anchor:** `Analysis/Section_6_5.lean`.
+
+Section 6.5 is about standard limits. Its header says the main constructions and results include standard limits such as sequences of the form `1/n^α`, `x^n`, and `x^(1/n)`. The file includes a theorem `Sequence.lim_of_const` whose body is `sorry`, and later standard-limit theorems such as geometric-limit and root-limit results are also left as `sorry`s. ([GitHub][4])
+
+**What this case teaches:**
+
+| Corpus pattern                             | Interpretation                                                 |
+| ------------------------------------------ | -------------------------------------------------------------- |
+| cluster of `sorry`s around standard limits | exercise/proof-heavy region                                    |
+| theorem names are already shaped           | statement design is provided                                   |
+| proof body absent                          | learner must supply proof architecture                         |
+| theorem likely has Mathlib analogues       | opportunity to compare textbook-local and Mathlib-native proof |
+| source is not optimized for idiomatic Lean | do not assume shortest possible proof                          |
+
+**How to use this case in the tutorial:**
+
+| Step | Task                                                                                  |
+| ---- | ------------------------------------------------------------------------------------- |
+| 1    | Read theorem statement only                                                           |
+| 2    | Identify mathematical theorem in textbook language                                    |
+| 3    | Identify local definitions: `Sequence`, `TendsTo`, `Divergent`, `lim`                 |
+| 4    | Search Mathlib analogue                                                               |
+| 5    | Compare local statement and Mathlib statement                                         |
+| 6    | Decide proof strategy: unfold local definitions, bridge to Mathlib, or prove directly |
+| 7    | Fill `sorry` only after understanding the framework                                   |
+
+**Master-system takeaway:** a `sorry` cluster is not a defect for this appendix. It is exactly where proof obligations become visible. This is the best material for demonstrating theorem-statement reading and proof-planning.
+
+### B.10 Case Study 9 — Sequence Powers: Instances, Evaluation Lemmas, and Simp
+
+Section 6.5 defines a power operation on sequences by providing an instance for `Pow Sequence ℕ`. The source then proves evaluation and power lemmas, including a lemma marked `[simp]` for evaluating powers under an index condition and a theorem for `a^1 = a`. It also uses extensionality, rewriting of typeclass-expanded power operations, case splits, and simplification. ([GitHub][4])
+
+**What this case teaches:**
+
+| Formalization issue                              | Lean mechanism                                   |
+| ------------------------------------------------ | ------------------------------------------------ |
+| Extend notation `a ^ k` to custom type           | `instance ... : Pow Sequence ℕ`                  |
+| Define operation with junk/out-of-range behavior | total sequence construction                      |
+| Prove evaluation theorem                         | `pow_eval` lemma                                 |
+| Register normal form                             | `[simp]`                                         |
+| Prove equality of sequences                      | extensionality                                   |
+| Analyze index condition                          | `by_cases`, `split_ifs`, inequality tactics      |
+| Avoid repeated unfolding                         | use simp lemma instead of implementation details |
+
+**Schematic pattern:**
+
+```lean
+instance : Pow Sequence Nat where
+  pow a k := ...
+
+@[simp]
+lemma Sequence.pow_eval
+    {a : Sequence} {k : Nat} {n : Int}
+    (hn : n ≥ a.m) :
+    (a ^ k) n = a n ^ k := by
+  ...
+
+lemma Sequence.pow_one (a : Sequence) :
+    a ^ 1 = a := by
+  ext n
+  ...
+```
+
+**Master-system takeaway:** this case is ideal for teaching `typeclass` and notation extension. The moment a custom type receives `Pow`, ordinary notation becomes available, but proof obligations shift to evaluation lemmas and simp-normal forms.
+
+### B.11 Case Study 10 — Subsequences: Definition-Heavy Section Reading
+
+**Source anchor:** `Analysis/Section_6_6.lean`.
+
+Section 6.6 is about subsequences. Its header again emphasizes faithful paraphrase over golfed Lean and lists the definition of a subsequence as a main construction/result of the section. ([GitHub][5])
+
+**What this case teaches:**
+
+| Source feature                         | Lean skill                                                         |
+| -------------------------------------- | ------------------------------------------------------------------ |
+| New mathematical object: subsequence   | represent as structure/function/data with monotonicity constraints |
+| Likely proof obligations about indices | inequalities, monotonicity, coercions                              |
+| Faithful textbook phrasing             | statement may be more pedagogical than idiomatic                   |
+| Existing sequence framework reused     | understand previous section’s API                                  |
+| Section-level dependency               | reading order matters                                              |
+
+**How to read such a section:**
+
+1. Locate the definition of subsequence.
+2. Identify whether it is a `structure`, predicate, or abbreviation.
+3. Find its fields/hypotheses: index map, monotonicity, extraction behavior.
+4. Find basic lemmas: evaluation, transitivity, convergence preservation, boundedness preservation.
+5. Identify whether equality of subsequences is structural or extensional.
+6. Check which theorems are proved and which are `sorry`.
+
+**Master-system takeaway:** this case is not primarily about one tactic. It is about reading a new mathematical object through its declarations and API surface.
+
+### B.12 Case Study 11 — TaoBench: Why Definitions Matter Beyond Mathlib
+
+A 2026 paper introduces TaoBench, a benchmark grounded in 150 exercises from Tao’s Lean formalization of *Analysis I*. The paper states that this formalization develops core analysis concepts from first principles rather than relying only on standard Mathlib definitions, sometimes combining from-scratch constructions with Mathlib components. It also constructs paired Mathlib formulations and reports that ATP performance drops on TaoBench relative to Mathlib-shaped equivalents, which the authors interpret as evidence that theorem-proving models do not reliably transfer across unfamiliar definitional frameworks. ([arXiv][6])
+
+**Why this belongs in the appendix:**
+
+| Observation                                                 | Master-system consequence                         |
+| ----------------------------------------------------------- | ------------------------------------------------- |
+| Same mathematics can have different definitional frameworks | Theorem proving depends on representation         |
+| Mathlib-shaped goals are easier for trained tools           | Library alignment matters                         |
+| Tao-style local definitions create transfer difficulty      | Textbook fidelity has proof-search cost           |
+| Paired formulations reveal definitional sensitivity         | Statement shape and framework are not superficial |
+| ATP performance gap confirms human experience               | Proof automation is library-context-dependent     |
+
+**Teaching takeaway:** this validates one of the guide’s central claims: **theorem proving is not just proving true facts; it is proving facts in a specific definitional ecosystem.**
+
+### B.13 Source-to-Tutorial Mapping Table
+
+| Tao corpus feature                       | Tutorial concept it should teach                     | Best appendix/main-text location     |
+| ---------------------------------------- | ---------------------------------------------------- | ------------------------------------ |
+| Section 2.1 Peano axioms                 | faithful formalization vs native library             | modeling / history / corpus appendix |
+| local `Chapter2.Nat` context             | namespace and local abstraction                      | syntax / modules                     |
+| `sorry` exercises                        | proof debt and exercise boundary                     | trust / workflow / appendix          |
+| `Sequence.from` with junk values         | total functions and API contracts                    | modeling / boundaries                |
+| `Sequence.from_eval`                     | theorem contract over implementation                 | API design                           |
+| `Sequence.tendsTo_unique`                | textbook proof to tactic proof                       | `calc`, quantifiers, contradiction   |
+| `Convergent` and `*_def` by `rfl`        | definitional equality and abbreviations              | `rfl` appendix                       |
+| `lim` as `noncomputable` with junk value | classical choice and partial mathematical operations | semantics / trust                    |
+| `Sequence.lim_harmonic`                  | epsilon proof, estimates, arithmetic tactics         | proof engineering                    |
+| Section 6.5 standard limits              | proof planning around `sorry` clusters               | case studies                         |
+| `Pow Sequence ℕ` instance                | typeclass notation extension                         | typeclasses                          |
+| `[simp]` evaluation lemmas               | normal forms and simplifier API                      | `simp` appendix                      |
+| Section 6.6 subsequences                 | new object API reading                               | source reading                       |
+| TaoBench comparison                      | definitional framework sensitivity                   | historical/current trends            |
+
+### B.14 How to Present Tao Cases Without Overloading the Reader
+
+Do not insert raw large source blocks into the main tutorial. Use a three-layer presentation.
+
+**Layer 1 — theorem statement only.**
+
+```lean
+theorem Sequence.tendsTo_unique ... : ... := by
+  ...
+```
+
+Goal: read the mathematical claim.
+
+**Layer 2 — proof skeleton.**
+
+```lean
+by_contra ...
+choose ...
+set ε := ...
+specialize ...
+calc ...
+linarith
+```
+
+Goal: identify proof architecture.
+
+**Layer 3 — source-level details.**
+
+Discuss coercions, exact lemmas, local definitions, `simp` behavior, and Mathlib bridges.
+
+Goal: show why the proof is nontrivial in actual Lean.
+
+### B.15 Case Study Template for Future Additions
+
+Use this template for every Tao source case.
+
+```text
+Case Study N — [Mathematical Topic]
+
+Source:
+- File:
+- Declaration:
+- Textbook reference:
+- Complete proof or `sorry`:
+
+Formal statement:
+- Main variables:
+- Hypotheses:
+- Target:
+- Typeclass assumptions:
+- Local definitions involved:
+
+Lean mechanisms:
+- Definitions:
+- Tactics:
+- Rewriting/simplification:
+- Induction/cases:
+- Classical/noncomputable boundary:
+- Mathlib bridge:
+
+What it teaches:
+- Modeling lesson:
+- Proof-engineering lesson:
+- Library-alignment lesson:
+- Common pitfall:
+
+Recommended tutorial use:
+- Main-text insertion point:
+- Appendix reference:
+- Whether code should be fully verified:
+```
+
+### B.16 Minimal Set of Tao Cases to Include in the Final Guide
+
+| Priority | Case                                                  | Reason                                        |
+| -------- | ----------------------------------------------------- | --------------------------------------------- |
+| 1        | Section 2.1 Peano/Nat setup                           | Shows faithful textbook formalization         |
+| 2        | `sorry` exercise policy                               | Shows proof debt and exercise boundary        |
+| 3        | `Sequence.from` / `from_eval`                         | Shows total function + intended-use theorem   |
+| 4        | `Sequence.tendsTo_unique`                             | Shows real analysis proof structure           |
+| 5        | `Convergent` / `Divergent` definition lemmas by `rfl` | Shows definitional equality                   |
+| 6        | `lim` noncomputable definition                        | Shows classical choice and junk values        |
+| 7        | `Sequence.lim_harmonic`                               | Shows epsilon proof and inequality automation |
+| 8        | Section 6.5 standard limits with `sorry`s             | Shows proof-planning exercises                |
+| 9        | `Pow Sequence ℕ` instance and `[simp]` lemmas         | Shows typeclass/notation/simp API             |
+| 10       | Section 6.6 subsequences                              | Shows new object API reading                  |
+
+### Appendix B Summary
+
+The Tao Analysis corpus is valuable because it exposes Lean formalization under real pressure:
+
+| Pressure             | Tao corpus shows                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------ |
+| Textbook fidelity    | definitions and theorem order often mirror the book                                  |
+| Formal precision     | informal assumptions become explicit hypotheses                                      |
+| Totality             | partial concepts require junk values or hypotheses                                   |
+| Proof debt           | exercises appear as `sorry`                                                          |
+| Classical reasoning  | limits and choices may become `noncomputable`                                        |
+| API contracts        | definitions need theorem lemmas for intended use                                     |
+| Proof engineering    | real proofs combine `rw`, `simp`, `calc`, `choose`, `specialize`, arithmetic tactics |
+| Library transition   | local definitions gradually meet Mathlib                                             |
+| Automation limits    | unfamiliar definitions can make proof search harder                                  |
+| Source-reading skill | theorem statements matter more than tactic memorization                              |
+
+The appendix’s core rule is:
+
+**Read Tao’s companion as a formalization laboratory: excellent for theorem-anchor extraction, proof-shape analysis, and textbook-to-Lean translation; not a universal authority on shortest or most idiomatic Mathlib style.**
+
+## Appendix C — `simp`, `rw`, `rfl`, `calc` Decision Table
+
+### Purpose — separate four different equality tools
+
+Lean users often treat `rfl`, `rw`, `simp`, and `calc` as interchangeable ways to “prove equality.” They are not interchangeable.
+
+| Tool   | Core function                                        | Best use                                                    | Bad use                                                 |
+| ------ | ---------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------- |
+| `rfl`  | Close goals by **definitional equality**             | Both sides reduce to the same term                          | Proving theorem-based or extensional equality           |
+| `rw`   | Rewrite by a selected equality theorem or hypothesis | One controlled equality transformation                      | Routine normalization or broad search                   |
+| `simp` | Normalize using a configured rewrite set             | Routine identities, projections, constructors, simple logic | Hiding central proof steps                              |
+| `calc` | Present a chain of equalities/inequalities           | Human-readable mathematical transformations                 | Trivial goals better handled by `simp` or theorem reuse |
+
+The professional rule is:
+
+**Use `rfl` for computation, `rw` for directed equality rewriting, `simp` for routine normalization, and `calc` for explanatory chains.**
+
+### C.1 Master Decision Table
+
+| Goal situation                                | First tool                                            | Reason                              | If it fails                                                     |
+| --------------------------------------------- | ----------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------- |
+| Both sides are definitionally the same        | `rfl`                                                 | No theorem needed                   | Use `#reduce` or inspect definition orientation                 |
+| Goal differs by one known equality            | `rw [h]`                                              | Controlled replacement              | Try `rw [← h]`, unfold definitions, or inspect target           |
+| Goal is routine algebraic/logical normal form | `simp`                                                | Existing simp lemmas likely know it | Add `simp [definition, lemma]` or prove helper                  |
+| Goal needs several visible transformations    | `calc`                                                | Shows intermediate expressions      | Use smaller steps, `rw`, `simp`, `ring`, or lemmas inside chain |
+| Need to prove function equality               | `funext x`, then maybe `simp`/`rw`/`calc`             | Equality is extensional             | Inspect pointwise goal                                          |
+| Need to prove set equality                    | `ext x`, then maybe `simp`/`rw`/`constructor`         | Sets are extensional                | Prove membership iff                                            |
+| A theorem almost matches goal                 | `simpa using h`                                       | Final routine normalization         | Use explicit `rw`/`simp` if central conversion matters          |
+| Simplifier changes too much                   | `simp only [...]`                                     | Restrict simp set                   | Add exactly the lemmas needed                                   |
+| Rewriting one occurrence only                 | occurrence-specific rewrite / more precise expression | Avoid changing wrong subterm        | Use local `have` or targeted rewrite                            |
+| Algebraic polynomial equality                 | `ring`                                                | Domain-specific normalizer          | Use inside `calc` if explanatory                                |
+| Linear arithmetic equality/inequality         | `omega` / `linarith`                                  | Domain-specific arithmetic          | Isolate arithmetic subgoal                                      |
+
+### C.2 `rfl` — definitional equality
+
+`rfl` proves goals where the two sides are equal by reduction. It does not search the library. It does not use arbitrary theorems. It checks whether both sides compute to the same expression.
+
+**Canonical examples:**
+
+```lean
+example : (fun n : Nat => n + 1) 2 = 3 := by
+  rfl
+```
+
+```lean
+structure Point where
+  x : Nat
+  y : Nat
+
+example (a b : Nat) : ({ x := a, y := b } : Point).x = a := by
+  rfl
+```
+
+A famous contrast:
+
+```lean
+example (n : Nat) : 0 + n = n := by
+  rfl
+```
+
+But the reverse-looking theorem usually needs a lemma:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  exact Nat.add_zero n
+```
+
+or simply:
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  simp
+```
+
+**Why this happens:** many recursive definitions reduce by pattern matching on a specific argument. If addition is reducible by recursion on the first argument, `0 + n` reduces immediately, while `n + 0` does not reduce for arbitrary `n`.
+
+| `rfl` succeeds when                | `rfl` usually fails when                           |
+| ---------------------------------- | -------------------------------------------------- |
+| both sides unfold to the same term | equality needs a theorem                           |
+| constructor projection reduces     | functions are only extensionally equal             |
+| known pattern match reduces        | set equality needs membership reasoning            |
+| lambda application beta-reduces    | arithmetic identity is not definitional            |
+| abbreviation unfolds transparently | opaque or non-unfolded definition blocks reduction |
+
+**Failure diagnosis for `rfl`:**
+
+| Symptom                                      | Meaning                                                     | Repair                                |
+| -------------------------------------------- | ----------------------------------------------------------- | ------------------------------------- |
+| `rfl` fails on “obvious” equality            | It is not definitionally obvious to Lean                    | Use `simp`, `rw`, or theorem          |
+| `rfl` works in one direction but not another | Definition unfolds asymmetrically                           | Use theorem in non-reducing direction |
+| `rfl` fails for function equality            | Functions are extensionally equal, not definitionally equal | Use `funext`                          |
+| `rfl` fails for set equality                 | Sets need extensionality                                    | Use `ext x`                           |
+| `rfl` fails after hiding implementation      | Definition may be opaque or not unfolded                    | Use public theorem contract           |
+
+**Professional use:** try `rfl` when the equality should hold by computation or projection. Do not fight `rfl`; if it fails, identify whether the equality is propositional instead.
+
+### C.3 `rw` — selected equality rewriting
+
+`rw` uses an equality proof to replace matching expressions. It is directional.
+
+```lean
+example (a b : Nat) (h : a = b) : a + 1 = b + 1 := by
+  rw [h]
+```
+
+Reverse direction:
+
+```lean
+example (a b : Nat) (h : b = a) : a + 1 = b + 1 := by
+  rw [← h]
+```
+
+Rewrite in a hypothesis:
+
+```lean
+example (a b c : Nat) (h : a = b) (h₂ : a + c = 0) : b + c = 0 := by
+  rw [h] at h₂
+  exact h₂
+```
+
+**Mental model:**
+
+| Rewrite theorem | `rw [h]` does          | `rw [← h]` does        |
+| --------------- | ---------------------- | ---------------------- |
+| `h : lhs = rhs` | replace `lhs` by `rhs` | replace `rhs` by `lhs` |
+
+**Common rewrite forms:**
+
+| Syntax                        | Meaning                                           |
+| ----------------------------- | ------------------------------------------------- |
+| `rw [h]`                      | rewrite the target using `h`                      |
+| `rw [← h]`                    | rewrite target using `h` backwards                |
+| `rw [h] at h₂`                | rewrite hypothesis `h₂`                           |
+| `rw [h] at *`                 | rewrite target and all hypotheses; use cautiously |
+| `rw [h₁, h₂]`                 | perform rewrites in sequence                      |
+| `rw [theoremName]`            | rewrite using named equality theorem              |
+| `nth_rewrite` where available | rewrite selected occurrence                       |
+| `change ...` then `rw`        | reshape target before rewrite                     |
+
+**When `rw` is the right tool:**
+
+| Situation                                      | Example                          |
+| ---------------------------------------------- | -------------------------------- |
+| A specific equality hypothesis should be used  | `h : a = b`                      |
+| A theorem rewrites one expression into another | `Nat.add_assoc`                  |
+| The proof step is conceptually important       | rewriting by definition or lemma |
+| The reader should see the transformation       | central equality step            |
+| You need to rewrite only one hypothesis        | `rw [h] at h₂`                   |
+
+**When `rw` is the wrong tool:**
+
+| Situation                                      | Better tool                                                |
+| ---------------------------------------------- | ---------------------------------------------------------- |
+| Goal is routine normal form                    | `simp`                                                     |
+| Equality holds by computation                  | `rfl`                                                      |
+| Several transformations form a textbook chain  | `calc`                                                     |
+| Goal is polynomial algebra                     | `ring`                                                     |
+| Goal is extensional equality                   | `funext` or `ext` first                                    |
+| Need equivalence of propositions, not equality | use `.mp`, `.mpr`, `constructor`, or `simp` with iff lemma |
+
+**Failure diagnosis for `rw`:**
+
+| Symptom                                 | Likely cause                      | Repair                                                           |
+| --------------------------------------- | --------------------------------- | ---------------------------------------------------------------- |
+| `rw [h]` does nothing or fails          | left side of `h` not found        | Inspect goal; try `rw [← h]`                                     |
+| rewrite makes goal worse                | wrong direction                   | Reverse direction                                                |
+| rewrite changes wrong part              | multiple matches                  | Use targeted rewrite or local lemma                              |
+| rewrite fails because expression hidden | definition not unfolded           | Use `rw [definition]`, `simp [definition]`, or expose expression |
+| theorem is `P ↔ Q`, not equality        | relation mismatch                 | Use `h.mp`, `h.mpr`, `constructor`, or `simp [h]`                |
+| casts block rewrite                     | expression contains coercions     | Add type annotations or cast lemmas                              |
+| target uses notation                    | underlying expression not obvious | `#check` subexpressions                                          |
+
+### C.4 `simp` — proof-producing normalization
+
+`simp` simplifies by using a curated set of rewrite rules called simp lemmas, plus local assumptions and optionally supplied definitions or lemmas.
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  simp
+```
+
+```lean
+def eraseZero (n : Nat) : Nat :=
+  n + 0
+
+example (n : Nat) : eraseZero n = n := by
+  simp [eraseZero]
+```
+
+Using a hypothesis:
+
+```lean
+example (n : Nat) (h : n = 0) : n + 1 = 1 := by
+  simp [h]
+```
+
+Using `simpa`:
+
+```lean
+example (n : Nat) (h : n = 0) : n + 0 = 0 := by
+  simpa [h]
+```
+
+**What `simp` is good at:**
+
+| Goal kind                              | Example                                |       |
+| -------------------------------------- | -------------------------------------- | ----- |
+| neutral element simplification         | `n + 0 = n`, `a * 1 = a`               |       |
+| constructor/projection reduction       | structure field projections            |       |
+| list/option constructor simplification | `List.length`, `Option.map`-like rules |       |
+| membership in set-builder              | `x ∈ {y                                | P y}` |
+| simple propositional simplification    | `True ∧ P`, `False ∨ P`                |       |
+| rewriting with local equalities        | `simp [h]`                             |       |
+| unfolding selected definitions         | `simp [f]`                             |       |
+| final theorem-shape conversion         | `simpa using h`                        |       |
+
+**What `simp` is not:**
+
+| Not `simp`’s role                       | Better tool                             |
+| --------------------------------------- | --------------------------------------- |
+| arbitrary theorem search                | theorem search, `exact?`, source search |
+| central mathematical explanation        | `rw`, `calc`, helper lemma              |
+| polynomial identity proving             | `ring`                                  |
+| linear arithmetic proving               | `omega`, `linarith`                     |
+| induction                               | `induction`                             |
+| choosing witnesses                      | `use`, constructors                     |
+| solving badly shaped theorem statements | redesign statement                      |
+
+**Common `simp` forms:**
+
+| Syntax                     | Meaning                                                |
+| -------------------------- | ------------------------------------------------------ |
+| `simp`                     | simplify target using default simp set                 |
+| `simp [f]`                 | simplify and unfold/use `f`                            |
+| `simp [h]`                 | simplify using local fact `h`                          |
+| `simp at h`                | simplify hypothesis `h`                                |
+| `simp at *`                | simplify all hypotheses and target; use cautiously     |
+| `simpa using h`            | simplify target and theorem `h`, then close            |
+| `simp only [...]`          | restrict simplifier to listed rules                    |
+| `simp_all` where available | simplify using all local assumptions more aggressively |
+
+**Simp lemma orientation:**
+
+Good simp lemma:
+
+```lean
+def eraseZeroRight (n : Nat) : Nat :=
+  n + 0
+
+@[simp]
+theorem eraseZeroRight_eq (n : Nat) : eraseZeroRight n = n := by
+  simp [eraseZeroRight]
+```
+
+This rewrites a wrapper to its normal form.
+
+Bad global simp direction:
+
+```lean
+-- Bad as a global simp lemma:
+-- theorem expand_zero (n : Nat) : n = n + 0 := ...
+```
+
+This expands rather than normalizes.
+
+| Good simp rule                           | Bad simp rule                            |
+| ---------------------------------------- | ---------------------------------------- |
+| removes neutral elements                 | adds neutral elements                    |
+| unfolds stable wrapper to canonical form | expands implementation detail            |
+| reduces constructor/projection           | rewrites back and forth                  |
+| simplifies set membership                | introduces complex equivalent expression |
+| decreases expression complexity          | increases expression complexity          |
+
+**Failure diagnosis for `simp`:**
+
+| Symptom                             | Likely cause                   | Repair                                   |
+| ----------------------------------- | ------------------------------ | ---------------------------------------- |
+| `simp` does not close               | needed lemma not in simp set   | `simp [neededLemma]`, `rw`, helper lemma |
+| `simp [f]` creates huge goal        | unfolding too much             | expose theorem about `f` instead         |
+| `simp at *` loses useful hypotheses | simplified context too broadly | use `simp at h` selectively              |
+| `simp` slow/timeouts                | large simp set or bad rules    | use `simp only [...]`, reduce unfolding  |
+| proof by `simp` unreadable          | central step hidden            | replace with `rw` or `calc`              |
+| behavior changes after import       | simp set changed               | use explicit lemmas                      |
+
+**Professional use:** `simp` should express “this is routine normalization.” If the step is conceptually important, prefer `rw`, `calc`, or a named lemma.
+
+### C.5 `calc` — visible chains of reasoning
+
+`calc` presents equality or relation proofs as a sequence of connected steps.
+
+```lean
+example (a b c : Nat) (h₁ : a = b) (h₂ : b = c) : a = c := by
+  calc
+    a = b := h₁
+    _ = c := h₂
+```
+
+Inequality chain:
+
+```lean
+example (a b c : Nat) (h₁ : a ≤ b) (h₂ : b ≤ c) : a ≤ c := by
+  calc
+    a ≤ b := h₁
+    _ ≤ c := h₂
+```
+
+A calculation may combine explicit lemmas and automation:
+
+```lean
+example {R : Type} [CommRing R] (a b : R) :
+    (a + b) * (a - b) = a ^ 2 - b ^ 2 := by
+  ring
+```
+
+If the algebraic step is part of a larger chain, use `ring` inside `calc`:
+
+```lean
+example {R : Type} [CommRing R] (a b c : R) :
+    ((a + b) * (a - b)) + c = (a ^ 2 - b ^ 2) + c := by
+  calc
+    ((a + b) * (a - b)) + c = (a ^ 2 - b ^ 2) + c := by
+      ring
+```
+
+**When `calc` is the right tool:**
+
+| Situation                                             | Why `calc` helps                   |
+| ----------------------------------------------------- | ---------------------------------- |
+| Textbook proof is a chain                             | Preserves mathematical explanation |
+| Intermediate expressions matter                       | Reader can inspect each step       |
+| Multiple lemmas transform the expression              | Each step cites one reason         |
+| Equality/inequality proof would be opaque with `simp` | Makes proof auditable              |
+| Need to combine rewriting, simplification, arithmetic | Each line can use different tool   |
+
+**When `calc` is too much:**
+
+| Situation                                  | Better tool            |
+| ------------------------------------------ | ---------------------- |
+| trivial definitional equality              | `rfl`                  |
+| routine simplification                     | `simp`                 |
+| single rewrite                             | `rw [h]`               |
+| theorem already exactly proves goal        | `exact theorem`        |
+| purely polynomial identity                 | `ring`                 |
+| proof is constructor/case/induction-shaped | use structural tactics |
+
+**Common `calc` pattern:**
+
+```lean
+calc
+  expression₀ = expression₁ := by
+    -- reason
+  _ = expression₂ := by
+    -- reason
+  _ = expression₃ := by
+    -- reason
+```
+
+The `_` means “the expression from the previous line.”
+
+**Failure diagnosis for `calc`:**
+
+| Symptom                           | Likely cause                  | Repair                                           |
+| --------------------------------- | ----------------------------- | ------------------------------------------------ |
+| line does not typecheck           | relation mismatch             | Check previous expression and current expression |
+| theorem direction wrong           | lemma proves reverse equality | Use `.symm` or reverse rewrite                   |
+| intermediate expression too large | hard to match                 | split into smaller steps                         |
+| arithmetic side condition fails   | missing arithmetic proof      | use `omega`, `linarith`, `nlinarith`, or lemma   |
+| chain becomes unreadable          | too many low-level steps      | extract helper lemma                             |
+| `calc` used for routine goal      | verbosity                     | replace with `simp` or theorem                   |
+
+### C.6 `simpa using` — final shape conversion
+
+`simpa using h` is one of the most useful idioms in Lean. It means: simplify the current goal and simplify the type of `h`; if they match, close the goal.
+
+```lean
+example (n : Nat) : n + 0 = n := by
+  simpa using Nat.add_zero n
+```
+
+With a hypothesis:
+
+```lean
+example (n : Nat) (h : n = 0) : n + 0 = 0 := by
+  simpa [h]
+```
+
+**Good uses of `simpa using`:**
+
+| Situation                             | Example                           |
+| ------------------------------------- | --------------------------------- |
+| theorem statement differs by notation | `List.length` vs `.length`        |
+| target has routine reducible wrapper  | local abbreviation                |
+| goal differs by simp-normal form      | neutral elements, projections     |
+| final step after main proof           | close remaining normalized target |
+
+**Bad uses:**
+
+| Situation                      | Why bad                               |
+| ------------------------------ | ------------------------------------- |
+| central transformation hidden  | reader cannot see why theorem applies |
+| large simp set needed          | fragile                               |
+| theorem mismatch is nontrivial | should use explicit `rw`/`calc`       |
+| proof becomes unsearchable     | important lemma not visible           |
+
+**Professional rule:** use `simpa using` when the difference between theorem and target is routine. Do not use it to hide the main mathematical step.
+
+### C.7 Equality Tool Flowchart
+
+```text
+Goal is equality or equivalence?
+
+1. Do both sides compute to the same term?
+   → Use rfl.
+
+2. Is there one known equality theorem/hypothesis that should transform the goal?
+   → Use rw [h] or rw [← h].
+
+3. Is the goal a routine normal form involving identities, projections, constructors, simple logic, or local equalities?
+   → Use simp or simp [needed definitions/lemmas].
+
+4. Is the proof a visible chain of equalities or inequalities?
+   → Use calc.
+
+5. Is it function equality?
+   → Use funext, then restart the decision process on the pointwise goal.
+
+6. Is it set equality?
+   → Use ext x, then prove membership iff.
+
+7. Is it algebraic polynomial equality?
+   → Use ring, possibly inside calc.
+
+8. Is it arithmetic inequality/equality over Nat/Int or ordered structures?
+   → Use omega, linarith, or nlinarith as appropriate.
+
+9. Does an existing theorem almost prove it?
+   → Use exact, apply, rw, or simpa using theorem.
+
+10. Does none of this work?
+   → Inspect definitions, theorem statement, missing imports, missing instances, and coercions.
+```
+
+### C.8 Goal Shape Examples
+
+| Goal                                        | Best first move                         | Reason                                        |
+| ------------------------------------------- | --------------------------------------- | --------------------------------------------- |
+| `0 + n = n`                                 | `rfl`                                   | definitional for natural addition orientation |
+| `n + 0 = n`                                 | `simp` or `Nat.add_zero n`              | theorem-based                                 |
+| `a + 1 = b + 1` with `h : a = b`            | `rw [h]`                                | selected rewrite                              |
+| `b + 1 = a + 1` with `h : a = b`            | `rw [← h]` or `rw [h]` depending target | direction matters                             |
+| `(xs ++ []).length = xs.length`             | `simp`                                  | list identity normalization                   |
+| `(xs ++ ys).length = xs.length + ys.length` | `simpa using List.length_append xs ys`  | existing theorem                              |
+| `f = g` with `∀ x, f x = g x`               | `funext x`                              | function extensionality                       |
+| `s = t` with membership equivalence         | `ext x`                                 | set extensionality                            |
+| polynomial identity over commutative ring   | `ring`                                  | algebraic normalizer                          |
+| chain of estimates                          | `calc`                                  | readable inequality proof                     |
+| final normalized theorem mismatch           | `simpa using h`                         | routine shape conversion                      |
+
+### C.9 The Four Tools Compared by Failure Mode
+
+| Tool          | Failure message / symptom                     | What it usually means                          | Repair                                    |
+| ------------- | --------------------------------------------- | ---------------------------------------------- | ----------------------------------------- |
+| `rfl`         | target is not reducible to reflexive equality | equality is not definitional                   | use theorem, `rw`, `simp`, extensionality |
+| `rw`          | did not find instance of pattern              | theorem side does not occur                    | inspect goal, reverse direction, unfold   |
+| `rw`          | rewrites wrong occurrence                     | multiple matches                               | target occurrence or use local lemma      |
+| `simp`        | goal remains                                  | missing simp lemma or non-routine goal         | add lemma, use `rw`, prove helper         |
+| `simp`        | slow / timeout                                | huge simp set or unfolding                     | `simp only`, reduce rules                 |
+| `calc`        | line type mismatch                            | chain expressions do not connect               | adjust intermediate expression            |
+| `calc`        | theorem direction mismatch                    | step reason proves reverse                     | use `.symm` or rewrite                    |
+| `simpa using` | failed to close                               | theorem and goal not same after simplification | inspect theorem type and target           |
+
+### C.10 When to Expose a Rewrite as a Lemma
+
+If the same rewrite or simplification appears repeatedly, consider naming it.
+
+| Repeated pattern                              | Better response                                   |
+| --------------------------------------------- | ------------------------------------------------- |
+| `simp [myDef]` everywhere                     | prove `@[simp] theorem myDef_eq ...` if canonical |
+| repeated `rw [someLongTheorem]`               | create a domain-specific lemma                    |
+| repeated unfolding of internal implementation | expose public theorem contract                    |
+| repeated bridge from Boolean to proposition   | prove `checker_correct` or `checker_true_iff`     |
+| repeated set membership unfolding             | prove membership lemma                            |
+| repeated evaluation of custom operation       | prove `[simp]` evaluation theorem                 |
+| repeated cast manipulation                    | prove cast-normalization lemma if stable          |
+
+**Example:**
+
+```lean
+def IsZero (n : Nat) : Prop :=
+  n = 0
+
+def checkZero (n : Nat) : Bool :=
+  n == 0
+
+theorem checkZero_true_iff (n : Nat) :
+    checkZero n = true ↔ IsZero n := by
+  unfold checkZero IsZero
+  simp
+```
+
+Now future proofs can use:
+
+```lean
+example (n : Nat) (h : checkZero n = true) : IsZero n := by
+  exact (checkZero_true_iff n).mp h
+```
+
+or sometimes:
+
+```lean
+example (n : Nat) : checkZero n = true ↔ n = 0 := by
+  simpa [IsZero] using checkZero_true_iff n
+```
+
+### C.11 `simp` versus API Stability
+
+Marking a theorem `[simp]` is an API decision. It changes future proof behavior.
+
+| Before marking `[simp]`, ask                       | Good answer                           |
+| -------------------------------------------------- | ------------------------------------- |
+| Is the right-hand side a canonical normal form?    | yes                                   |
+| Does it reduce complexity?                         | yes                                   |
+| Could it loop with another simp lemma?             | no                                    |
+| Is it stable under implementation refactor?        | yes                                   |
+| Should downstream users expect this normalization? | yes                                   |
+| Is it merely useful for one proof?                 | then use local `simp [lemma]` instead |
+
+**Local first pattern:**
+
+```lean
+example (n : Nat) : eraseZero n = n := by
+  simp [eraseZero]
+```
+
+Only promote to global `[simp]` if this normalization is part of the public API.
+
+### C.12 `rw` versus `simp` in Proof Readability
+
+| Proof intent                                | Better tool           | Why                            |
+| ------------------------------------------- | --------------------- | ------------------------------ |
+| “Use this exact theorem here”               | `rw [theorem]`        | Shows the theorem              |
+| “Normalize away routine clutter”            | `simp`                | Avoids low-level noise         |
+| “Transform expression through named stages” | `calc`                | Preserves reasoning            |
+| “This follows by computation”               | `rfl`                 | Minimal and exact              |
+| “This theorem nearly matches”               | `simpa using theorem` | Handles routine shape mismatch |
+
+Compare:
+
+```lean
+example (a b : Nat) : (a + b) + 0 = a + b := by
+  simp
+```
+
+This is better than manually rewriting `Nat.add_zero`.
+
+But:
+
+```lean
+example (a b c : Nat) (h : a = b) : a + c = b + c := by
+  rw [h]
+```
+
+This is better than `simp [h]` if the point is to show substitution by `h`.
+
+### C.13 `calc` with `rw` and `simp`
+
+A `calc` step can be justified by a tactic block.
+
+```lean
+example (a b c : Nat) (h : a = b) :
+    (a + c) + 0 = b + c := by
+  calc
+    (a + c) + 0 = a + c := by
+      simp
+    _ = b + c := by
+      rw [h]
+```
+
+This is often clearer than:
+
+```lean
+example (a b c : Nat) (h : a = b) :
+    (a + c) + 0 = b + c := by
+  simp [h]
+```
+
+The second proof is shorter; the first proof explains the two conceptual moves: remove trailing zero, then rewrite `a` to `b`.
+
+**Professional criterion:** use the shorter proof when both steps are routine; use `calc` when the chain itself matters.
+
+### C.14 Equality Reasoning and Extensionality
+
+Before using `rfl`, `rw`, `simp`, or `calc`, check whether the goal is actually extensional.
+
+**Function equality:**
+
+```lean
+example {α β : Type} (f g : α → β)
+    (h : ∀ x, f x = g x) : f = g := by
+  funext x
+  exact h x
+```
+
+After `funext x`, the pointwise equality goal may be solved by `rfl`, `rw`, `simp`, or `calc`.
+
+**Set equality:**
+
+```lean
+example {α : Type} (s t : Set α)
+    (h : ∀ x, x ∈ s ↔ x ∈ t) : s = t := by
+  ext x
+  exact h x
+```
+
+After `ext x`, the goal is usually a membership equivalence, often solved by `constructor`, `simp`, or known membership lemmas.
+
+| Original goal           | First step         | Then use                 |
+| ----------------------- | ------------------ | ------------------------ |
+| `f = g`                 | `funext x`         | pointwise equality tools |
+| `s = t`                 | `ext x`            | membership iff tools     |
+| structure equality      | `ext` if available | field equality tools     |
+| proposition equivalence | `constructor`      | implication proofs       |
+
+### C.15 Definitional Lemmas by `rfl`
+
+Sometimes a named theorem proved by `rfl` is good API design.
+
+```lean
+def IsEven (n : Nat) : Prop :=
+  ∃ k, n = 2 * k
+
+theorem isEven_def (n : Nat) :
+    IsEven n ↔ ∃ k, n = 2 * k := by
+  rfl
+```
+
+This theorem is mathematically trivial because `IsEven` is defined as the right side. But it gives users a searchable theorem and a stable conceptual handle.
+
+| Pattern                                               | Value                                                      |
+| ----------------------------------------------------- | ---------------------------------------------------------- |
+| `theorem concept_def : concept ↔ expansion := by rfl` | exposes definition as theorem                              |
+| `theorem wrapper_eval : wrapper x = ... := by rfl`    | exposes computation                                        |
+| `[simp] theorem projection_eval ... := by rfl`        | normalizes structure fields                                |
+| definitional theorem without `[simp]`                 | available for explicit rewriting without global automation |
+
+**Professional rule:** a theorem proved by `rfl` can still be useful. The proof is trivial; the name and statement are the API.
+
+### C.16 Practical Anti-Patterns
+
+| Anti-pattern                                                 | Why it is bad          | Better pattern                           |
+| ------------------------------------------------------------ | ---------------------- | ---------------------------------------- |
+| Trying `rfl`, then `simp`, then random tactics               | No diagnosis           | Identify equality kind                   |
+| Using `simp` to hide central rewrite                         | Poor readability       | `rw` or `calc`                           |
+| Marking every helper `[simp]`                                | Global instability     | Local `simp [lemma]`                     |
+| Using `rw at *` casually                                     | Destroys context shape | Rewrite target or specific hypothesis    |
+| Long `calc` for trivial simplification                       | Verbose noise          | `simp`                                   |
+| Using `rw` for many routine identities                       | Low-level clutter      | `simp`                                   |
+| Using `ring` where a named theorem is conceptually important | Hides algebraic idea   | `calc` with named theorem or local lemma |
+| Using `simpa using` for nontrivial mismatch                  | Hides proof obligation | Explicit conversions                     |
+| Rewriting with implementation details                        | Fragile API            | Public theorem contract                  |
+
+### C.17 Compact Decision Matrix
+
+| Question                                     | Yes                    | No                          |
+| -------------------------------------------- | ---------------------- | --------------------------- |
+| Do both sides compute to the same term?      | `rfl`                  | next question               |
+| Is there a specific equality to apply?       | `rw [h]` or `rw [← h]` | next question               |
+| Is this routine normalization?               | `simp`                 | next question               |
+| Is this a visible equality/inequality chain? | `calc`                 | next question               |
+| Is this function equality?                   | `funext`               | next question               |
+| Is this set equality?                        | `ext`                  | next question               |
+| Is this polynomial algebra?                  | `ring`                 | next question               |
+| Is this linear arithmetic?                   | `omega` / `linarith`   | next question               |
+| Does a theorem almost match?                 | `simpa using theorem`  | inspect statement/imports   |
+| Is the theorem statement badly shaped?       | redesign theorem       | search library/helper lemma |
+
+### Appendix C Summary
+
+| Tool          | Meaning                             | Best mental model                                 |
+| ------------- | ----------------------------------- | ------------------------------------------------- |
+| `rfl`         | definitional equality               | “These reduce to the same term.”                  |
+| `rw`          | directed rewrite by equality proof  | “Replace this expression using this theorem.”     |
+| `simp`        | proof-producing normalization       | “Clean up routine forms using known simp rules.”  |
+| `calc`        | explicit chain reasoning            | “Show the mathematical path step by step.”        |
+| `simpa using` | theorem reuse modulo simplification | “This theorem is the goal after routine cleanup.” |
+
+The core professional habit is:
+
+**Before choosing an equality tool, classify the equality.**
+
+| Equality class                 | Tool                             |
+| ------------------------------ | -------------------------------- |
+| computational equality         | `rfl`                            |
+| theorem-based equality         | `rw`, `exact`, `simpa using`     |
+| routine normalized equality    | `simp`                           |
+| explanatory equality chain     | `calc`                           |
+| function equality              | `funext`, then equality tools    |
+| set equality                   | `ext`, then membership tools     |
+| algebraic equality             | `ring`                           |
+| arithmetic equality/inequality | `omega`, `linarith`, `nlinarith` |
+
+A mature Lean proof does not use the shortest possible tactic by default. It uses the tool whose semantics matches the proof step.
+
+## Appendix D — Tactic Index by Goal Shape
+
+### Purpose — choose tactics from the target shape
+
+A Lean tactic should usually be chosen from the **shape of the current goal**, not from habit. The goal tells what kind of proof object is needed.
+
+The professional rule is:
+
+**Read the target proposition first. Then choose the tactic that constructs or decomposes that target.**
+
+| Goal shape                         | First tactic / construct                      | Reason                                     |
+| ---------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| `P → Q`                            | `intro h`                                     | implication is function type               |
+| `∀ x, P x`                         | `intro x`                                     | universal quantifier is dependent function |
+| `P ∧ Q`                            | `constructor`                                 | conjunction is built from two proofs       |
+| `P ∨ Q`                            | `left` or `right`                             | disjunction requires choosing one side     |
+| `P ↔ Q`                            | `constructor`                                 | equivalence requires both directions       |
+| `∃ x, P x`                         | `use witness`                                 | existential requires witness               |
+| `¬ P`                              | `intro hP`                                    | negation means `P → False`                 |
+| `False`                            | contradiction / `exact hFalse`                | impossible target                          |
+| `a = b`                            | `rfl`, `rw`, `simp`, `calc`                   | depends on equality kind                   |
+| `f = g`                            | `funext x`                                    | function equality is pointwise             |
+| `s = t` for sets                   | `ext x`                                       | set equality is membership equivalence     |
+| recursive property                 | `induction`                                   | need induction hypothesis                  |
+| hypothesis `h : P ∨ Q`             | `cases h`                                     | use disjunction by splitting               |
+| hypothesis `h : ∃ x, P x`          | `rcases h with ⟨x, hx⟩` or `cases h`          | extract witness                            |
+| hypothesis `h : P ∧ Q`             | `exact h.left`, `exact h.right`, or `cases h` | use components                             |
+| algebraic polynomial equality      | `ring`                                        | algebraic normalizer                       |
+| linear arithmetic over `Nat`/`Int` | `omega`                                       | Presburger-style arithmetic                |
+| linear ordered arithmetic          | `linarith`                                    | linear inequality reasoning                |
+| routine normal form                | `simp`                                        | simplifier normalization                   |
+
+### D.1 Implication Goals — `P → Q`
+
+If the goal is an implication, introduce the assumption.
+
+```lean id="44sowo"
+example (P Q : Prop) (h : P → Q) : P → Q := by
+  intro hP
+  exact h hP
+```
+
+Term proof equivalent:
+
+```lean id="iobz7o"
+example (P Q : Prop) (h : P → Q) : P → Q :=
+  fun hP => h hP
+```
+
+| Goal          | First move    | Result                                        |
+| ------------- | ------------- | --------------------------------------------- |
+| `P → Q`       | `intro hP`    | local context gets `hP : P`; goal becomes `Q` |
+| `P → Q → R`   | `intro hP hQ` | context gets both assumptions                 |
+| `(P ∧ Q) → R` | `intro hPQ`   | context gets conjunction proof                |
+| `¬ P`         | `intro hP`    | goal becomes `False`                          |
+
+**Common failure modes:**
+
+| Symptom                                         | Cause                             | Repair                                   |
+| ----------------------------------------------- | --------------------------------- | ---------------------------------------- |
+| After `intro`, goal still hard                  | Need to use introduced hypothesis | Apply relevant theorem/hypothesis        |
+| Too many anonymous hypotheses                   | Poor naming                       | Use semantic names: `hP`, `hpos`, `hmem` |
+| Introduced variables too early before induction | Weak induction hypothesis         | Delay introduction or use `generalizing` |
+
+### D.2 Universal Quantifier Goals — `∀ x, P x`
+
+Universal quantification is proved by introducing an arbitrary value.
+
+```lean id="pkey8h"
+example : ∀ n : Nat, n = n := by
+  intro n
+  rfl
+```
+
+Multiple quantifiers:
+
+```lean id="3ot0t3"
+example : ∀ a b : Nat, a = b → b = a := by
+  intro a b h
+  exact h.symm
+```
+
+| Goal              | First move              |
+| ----------------- | ----------------------- |
+| `∀ n : Nat, P n`  | `intro n`               |
+| `∀ x y, P x y`    | `intro x y`             |
+| `∀ x, P x → Q x`  | `intro x hP`            |
+| `∀ x, ∃ y, R x y` | `intro x`, then `use y` |
+
+**Common failure modes:**
+
+| Symptom                                         | Cause                       | Repair                                          |
+| ----------------------------------------------- | --------------------------- | ----------------------------------------------- |
+| Introduced variable prevents stronger induction | Variable fixed too early    | Generalize theorem or induct before introducing |
+| Lean cannot infer type of introduced variable   | Binder omitted or ambiguous | Add explicit type in theorem                    |
+| Goal after `intro` is existential               | Need witness                | Use `use`                                       |
+
+### D.3 Conjunction Goals — `P ∧ Q`
+
+A conjunction is built by proving both components.
+
+```lean id="1a3e0t"
+example (P Q : Prop) (hP : P) (hQ : Q) : P ∧ Q := by
+  constructor
+  · exact hP
+  · exact hQ
+```
+
+Equivalent term proof:
+
+```lean id="uwna8y"
+example (P Q : Prop) (hP : P) (hQ : Q) : P ∧ Q :=
+  And.intro hP hQ
+```
+
+| Goal            | First move               | Subgoals             |
+| --------------- | ------------------------ | -------------------- |
+| `P ∧ Q`         | `constructor`            | prove `P`, prove `Q` |
+| `P ∧ Q ∧ R`     | `constructor` repeatedly | nested conjunctions  |
+| `A = B ∧ C = D` | `constructor`            | two equality goals   |
+
+**Common failure modes:**
+
+| Symptom                         | Cause                        | Repair                                                              |
+| ------------------------------- | ---------------------------- | ------------------------------------------------------------------- |
+| Wrong order of subgoals         | Conjunction is ordered       | Prove current displayed subgoal                                     |
+| Nested conjunction awkward      | Goal associates to the right | Use repeated `constructor` or exact structured term                 |
+| Used automation hides structure | Proof less readable          | Use explicit `constructor` if conjunction is conceptually important |
+
+### D.4 Conjunction Hypotheses — `h : P ∧ Q`
+
+A conjunction hypothesis is used by projecting or destructuring.
+
+```lean id="nj94ha"
+example (P Q : Prop) (h : P ∧ Q) : Q := by
+  exact h.right
+```
+
+Swapping conjunction:
+
+```lean id="wrc9l2"
+example (P Q : Prop) (h : P ∧ Q) : Q ∧ P := by
+  constructor
+  · exact h.right
+  · exact h.left
+```
+
+Destructuring:
+
+```lean id="jr7ei7"
+example (P Q : Prop) (h : P ∧ Q) : Q ∧ P := by
+  rcases h with ⟨hP, hQ⟩
+  exact ⟨hQ, hP⟩
+```
+
+| Hypothesis              | Use                                         |
+| ----------------------- | ------------------------------------------- |
+| `h : P ∧ Q`             | `h.left`, `h.right`                         |
+| `h : P ∧ Q ∧ R`         | projections or `rcases h with ⟨hP, hQ, hR⟩` |
+| many conjunction fields | use `rcases` for clarity                    |
+
+**Common failure modes:**
+
+| Symptom                   | Cause                              | Repair                                     |
+| ------------------------- | ---------------------------------- | ------------------------------------------ |
+| Projection path confusing | Nested conjunctions                | Use `rcases`                               |
+| Destructured too early    | Original bundled fact still useful | Use projections if only one part is needed |
+| Variable names unclear    | `h1`, `h2` everywhere              | Name by content                            |
+
+### D.5 Disjunction Goals — `P ∨ Q`
+
+To prove a disjunction, choose the side that can be proved.
+
+```lean id="78f5bs"
+example (P Q : Prop) (hP : P) : P ∨ Q := by
+  left
+  exact hP
+```
+
+```lean id="6vlwvb"
+example (P Q : Prop) (hQ : Q) : P ∨ Q := by
+  right
+  exact hQ
+```
+
+| Goal                        | First move                        |
+| --------------------------- | --------------------------------- |
+| `P ∨ Q`, have proof of `P`  | `left`                            |
+| `P ∨ Q`, have proof of `Q`  | `right`                           |
+| `P ∨ ¬ P` for arbitrary `P` | `classical; exact Classical.em P` |
+| `n = 0 ∨ n ≠ 0`             | `by_cases h : n = 0`              |
+
+Example with `by_cases`:
+
+```lean id="ovr3rx"
+example (n : Nat) : n = 0 ∨ n ≠ 0 := by
+  by_cases h : n = 0
+  · left
+    exact h
+  · right
+    exact h
+```
+
+**Common failure modes:**
+
+| Symptom              | Cause                              | Repair                          |
+| -------------------- | ---------------------------------- | ------------------------------- |
+| Picked wrong side    | Chosen proposition is not provable | Backtrack and choose other side |
+| Need excluded middle | Classical reasoning needed         | Add local `classical`           |
+| Both sides seem hard | Need theorem producing disjunction | Search theorem or split cases   |
+
+### D.6 Disjunction Hypotheses — `h : P ∨ Q`
+
+A disjunction hypothesis is used by cases.
+
+```lean id="bnzxz9"
+example (P Q : Prop) (h : P ∨ Q) : Q ∨ P := by
+  cases h with
+  | inl hP =>
+      right
+      exact hP
+  | inr hQ =>
+      left
+      exact hQ
+```
+
+With `rcases`:
+
+```lean id="bhtwgu"
+example (P Q : Prop) (h : P ∨ Q) : Q ∨ P := by
+  rcases h with hP | hQ
+  · right
+    exact hP
+  · left
+    exact hQ
+```
+
+| Hypothesis           | First move                             | Branches          |                                   |
+| -------------------- | -------------------------------------- | ----------------- | --------------------------------- |
+| `h : P ∨ Q`          | `cases h` or `rcases h with hP         | hQ`               | one branch with `P`, one with `Q` |
+| `h : A ∨ B ∨ C`      | nested cases / `rcases`                | multiple branches |                                   |
+| `h : ∃ x, P x ∨ Q x` | destruct existential, then disjunction | witness first     |                                   |
+
+**Common failure modes:**
+
+| Symptom                            | Cause                                                     | Repair                   |
+| ---------------------------------- | --------------------------------------------------------- | ------------------------ |
+| Branch explosion                   | Nested disjunctions                                       | Prove helper lemma       |
+| Used `left/right` on hypothesis    | `left/right` build disjunctions; they do not consume them | Use `cases`              |
+| Case split loses useful generality | Split too early                                           | Delay cases until needed |
+
+### D.7 Equivalence Goals — `P ↔ Q`
+
+An equivalence is proved by proving both implications.
+
+```lean id="tqgq6x"
+example (P Q : Prop) : P ∧ Q ↔ Q ∧ P := by
+  constructor
+  · intro h
+    exact ⟨h.right, h.left⟩
+  · intro h
+    exact ⟨h.right, h.left⟩
+```
+
+| Goal                | First move                      | Subgoals                     |
+| ------------------- | ------------------------------- | ---------------------------- |
+| `P ↔ Q`             | `constructor`                   | prove `P → Q`, prove `Q → P` |
+| `P ↔ P`             | `rfl` or constructor            | reflexive equivalence        |
+| Boolean/spec bridge | `constructor` or simplification | two logical directions       |
+
+**Using an equivalence hypothesis:**
+
+```lean id="zfh0ew"
+example (P Q : Prop) (h : P ↔ Q) (hP : P) : Q := by
+  exact h.mp hP
+```
+
+```lean id="ryu8nu"
+example (P Q : Prop) (h : P ↔ Q) (hQ : Q) : P := by
+  exact h.mpr hQ
+```
+
+| Hypothesis  | Direction       |
+| ----------- | --------------- |
+| `h : P ↔ Q` | `h.mp : P → Q`  |
+| `h : P ↔ Q` | `h.mpr : Q → P` |
+
+**Common failure modes:**
+
+| Symptom                   | Cause                                            | Repair                              |
+| ------------------------- | ------------------------------------------------ | ----------------------------------- |
+| Treated `↔` as `=`        | logical equivalence is not ordinary equality     | Use `.mp`, `.mpr`, or `constructor` |
+| Wrong direction           | used `.mp` instead of `.mpr`                     | Reverse direction                   |
+| Trying `rw` unpredictably | rewrite through iff only in proposition contexts | Use explicit direction if unclear   |
+| Bridge theorem too weak   | only one implication proved                      | State iff if both directions needed |
+
+### D.8 Existential Goals — `∃ x, P x`
+
+An existential is proved by providing a witness.
+
+```lean id="9ewmoq"
+example : ∃ n : Nat, n + 1 = 1 := by
+  use 0
+```
+
+Multiple conditions:
+
+```lean id="a3q8vq"
+example : ∃ n : Nat, n = 0 ∧ n + 1 = 1 := by
+  use 0
+  constructor
+  · rfl
+  · rfl
+```
+
+| Goal                                     | First move                  |
+| ---------------------------------------- | --------------------------- |
+| `∃ x, P x`                               | `use witness`               |
+| `∃ x, P x ∧ Q x`                         | `use x`, then `constructor` |
+| `∃ x y, R x y`                           | `use x`, then `use y`       |
+| existential witness computed by function | `use f a`                   |
+
+**Common failure modes:**
+
+| Symptom                            | Cause                                  | Repair                           |
+| ---------------------------------- | -------------------------------------- | -------------------------------- |
+| no obvious witness                 | Need mathematical construction         | Search theorem or derive witness |
+| witness has wrong type             | Type mismatch                          | Add type annotation              |
+| after `use`, remaining goal hard   | Witness not strong enough              | Choose better witness            |
+| using `constructor` before witness | target is existential, not conjunction | Use `use` first                  |
+
+### D.9 Existential Hypotheses — `h : ∃ x, P x`
+
+An existential hypothesis is used by extracting the witness and its proof.
+
+```lean id="hpwif5"
+example (h : ∃ n : Nat, n = 0) : True := by
+  rcases h with ⟨n, hn⟩
+  trivial
+```
+
+Use witness:
+
+```lean id="zrn1zb"
+example (h : ∃ n : Nat, n = 0) : ∃ m : Nat, m + 1 = 1 := by
+  rcases h with ⟨n, hn⟩
+  use n
+  rw [hn]
+```
+
+| Hypothesis           | First move                  |
+| -------------------- | --------------------------- |
+| `h : ∃ x, P x`       | `rcases h with ⟨x, hx⟩`     |
+| `h : ∃ x, P x ∧ Q x` | `rcases h with ⟨x, hP, hQ⟩` |
+| `h : ∃ x y, R x y`   | `rcases h with ⟨x, y, hxy⟩` |
+
+**Common failure modes:**
+
+| Symptom                                               | Cause                  | Repair                                             |
+| ----------------------------------------------------- | ---------------------- | -------------------------------------------------- |
+| extracted witness unused                              | Destructured too early | Delay extraction                                   |
+| proof names unclear                                   | nested existentials    | Use semantic names                                 |
+| existential is proof-only but computation needs value | wrong representation   | Use subtype or data result if witness must compute |
+
+### D.10 Negation Goals — `¬ P`
+
+Negation is implication to `False`.
+
+```lean id="ywcd3j"
+example (P : Prop) : P → ¬¬P := by
+  intro hP
+  intro hNotP
+  exact hNotP hP
+```
+
+To prove `¬ P`, assume `P` and derive contradiction.
+
+```lean id="wv5po0"
+example : ¬ (1 = 0) := by
+  intro h
+  contradiction
+```
+
+| Goal                                       | First move                             |
+| ------------------------------------------ | -------------------------------------- |
+| `¬ P`                                      | `intro hP`                             |
+| `¬¬P → P`                                  | needs classical reasoning in general   |
+| contradiction from `hP : P`, `hNotP : ¬ P` | `exact hNotP hP`                       |
+| prove arbitrary `Q` from contradiction     | `exfalso` or `exact False.elim hFalse` |
+
+Classical double-negation elimination:
+
+```lean id="fah7e0"
+example (P : Prop) : ¬¬P → P := by
+  classical
+  intro hnnP
+  by_contra hP
+  exact hnnP hP
+```
+
+**Common failure modes:**
+
+| Symptom                                | Cause                                   | Repair                                     |
+| -------------------------------------- | --------------------------------------- | ------------------------------------------ |
+| goal becomes `False` and stuck         | need contradiction                      | use contradictory hypotheses or derive one |
+| proof by contradiction needs classical | target arbitrary `P`                    | use local `classical`                      |
+| confused `False` and `false`           | proposition vs Bool                     | check types                                |
+| `contradiction` fails                  | contradiction not syntactically visible | rewrite/simplify hypotheses first          |
+
+### D.11 `False` Goals and Contradictions
+
+If the goal is `False`, prove a contradiction.
+
+```lean id="7v9u77"
+example (P : Prop) (hP : P) (hNotP : ¬ P) : False := by
+  exact hNotP hP
+```
+
+From `False`, any proposition follows:
+
+```lean id="934il6"
+example (P Q : Prop) (hP : P) (hNotP : ¬ P) : Q := by
+  exact False.elim (hNotP hP)
+```
+
+Using `exfalso`:
+
+```lean id="wws5v7"
+example (P Q : Prop) (hP : P) (hNotP : ¬ P) : Q := by
+  exfalso
+  exact hNotP hP
+```
+
+| Situation                                       | Tool                                                          |
+| ----------------------------------------------- | ------------------------------------------------------------- |
+| target is `False`                               | prove contradiction directly                                  |
+| target is arbitrary but contradiction available | `exfalso`                                                     |
+| context has impossible equality                 | `contradiction`, `simp at h`, or no-confusion-style reasoning |
+| arithmetic contradiction                        | `omega` / `linarith`                                          |
+| contradictory inequalities                      | `linarith`, `omega`, order lemmas                             |
+
+**Common failure modes:**
+
+| Symptom                            | Cause                            | Repair                         |
+| ---------------------------------- | -------------------------------- | ------------------------------ |
+| `contradiction` fails              | contradiction not visible enough | simplify/rewrite hypotheses    |
+| arithmetic contradiction not found | needs arithmetic tactic          | use `omega` or `linarith`      |
+| impossible constructor equality    | need cases/simp                  | `cases h` or `simp at h`       |
+| target not `False`                 | need `exfalso` first             | change target to contradiction |
+
+### D.12 Equality Goals — `a = b`
+
+Equality tactics depend on equality type.
+
+| Equality kind                 | First move                             |
+| ----------------------------- | -------------------------------------- |
+| definitional equality         | `rfl`                                  |
+| equality by known hypothesis  | `rw [h]`                               |
+| equality by known theorem     | `rw [theorem]` or `exact theorem args` |
+| routine normal equality       | `simp`                                 |
+| visible equality chain        | `calc`                                 |
+| algebraic polynomial equality | `ring`                                 |
+| arithmetic equality           | `omega`, `linarith`, `norm_num`        |
+| function equality             | `funext x`                             |
+| set equality                  | `ext x`                                |
+
+Examples:
+
+```lean id="z4vq1q"
+example (n : Nat) : n + 0 = n := by
+  simp
+```
+
+```lean id="juhi77"
+example (a b : Nat) (h : a = b) : a + 1 = b + 1 := by
+  rw [h]
+```
+
+```lean id="a28de4"
+example (a b c : Nat) (h₁ : a = b) (h₂ : b = c) : a = c := by
+  calc
+    a = b := h₁
+    _ = c := h₂
+```
+
+**Common failure modes:**
+
+| Symptom                 | Cause                             | Repair                            |
+| ----------------------- | --------------------------------- | --------------------------------- |
+| `rfl` fails             | not definitional equality         | use theorem/rewrite               |
+| `rw` fails              | side not found or wrong direction | inspect theorem; reverse rewrite  |
+| `simp` fails            | missing simp lemma                | add lemma or use explicit theorem |
+| equality is extensional | direct equality proof not enough  | use `funext`/`ext`                |
+| casts appear            | mixed numeric domains             | add annotations or cast lemmas    |
+
+### D.13 Function Equality Goals — `f = g`
+
+Function equality usually requires pointwise equality.
+
+```lean id="cuxhjb"
+example {α β : Type} (f g : α → β)
+    (h : ∀ x, f x = g x) : f = g := by
+  funext x
+  exact h x
+```
+
+After `funext x`, the goal becomes pointwise:
+
+```lean id="rvx4nf"
+example : (fun n : Nat => n + 0) = (fun n : Nat => n) := by
+  funext n
+  simp
+```
+
+| Goal                              | First move            |
+| --------------------------------- | --------------------- |
+| `f = g`                           | `funext x`            |
+| `f = g` with multiple arguments   | `funext x y`          |
+| functions are definitionally same | `rfl` may work        |
+| pointwise theorem available       | `funext x; exact h x` |
+
+**Common failure modes:**
+
+| Symptom                                     | Cause                                             | Repair                                |
+| ------------------------------------------- | ------------------------------------------------- | ------------------------------------- |
+| `rfl` fails                                 | functions extensionally equal, not definitionally | use `funext`                          |
+| pointwise goal still hard                   | need equality tools                               | `simp`, `rw`, `calc`                  |
+| dependent function equality                 | more complex motive                               | use `funext` carefully, inspect goals |
+| theorem gives pointwise equality in reverse | direction mismatch                                | use `.symm`                           |
+
+### D.14 Set Equality Goals — `s = t`
+
+Set equality is usually proved by extensionality: show every element belongs to both sets equivalently.
+
+```lean id="gni5v6"
+example {α : Type} (s t : Set α)
+    (h : ∀ x, x ∈ s ↔ x ∈ t) : s = t := by
+  ext x
+  exact h x
+```
+
+Subset pair:
+
+```lean id="257y9p"
+example {α : Type} (s t : Set α)
+    (hst : s ⊆ t) (hts : t ⊆ s) : s = t := by
+  ext x
+  constructor
+  · intro hx
+    exact hst hx
+  · intro hx
+    exact hts hx
+```
+
+| Goal                                   | First move      |
+| -------------------------------------- | --------------- |
+| `s = t` for sets                       | `ext x`         |
+| after `ext x`, goal is `x ∈ s ↔ x ∈ t` | `constructor`   |
+| membership in set-builder              | `simp` or `rfl` |
+| subset goal `s ⊆ t`                    | `intro x hx`    |
+
+**Common failure modes:**
+
+| Symptom                            | Cause                                      | Repair                        |
+| ---------------------------------- | ------------------------------------------ | ----------------------------- |
+| direct equality proof hard         | set equality is extensional                | use `ext x`                   |
+| membership goal has image/preimage | need membership lemmas                     | unfold/simp/use image witness |
+| subset hypothesis not applied      | subset is function-like                    | use `hst hx`                  |
+| proving both inclusions repeatedly | theorem statement could use extensionality | use `ext` and `constructor`   |
+
+### D.15 Subset Goals — `s ⊆ t`
+
+Subset means membership implication.
+
+```lean id="m01laj"
+example {α : Type} (s t : Set α) (h : s ⊆ t) : s ⊆ t := by
+  intro x hx
+  exact h hx
+```
+
+More explicit:
+
+```lean id="zirc3d"
+example {α : Type} (s t : Set α) : s ⊆ t ↔ ∀ x, x ∈ s → x ∈ t := by
+  rfl
+```
+
+| Goal                       | First move                             |
+| -------------------------- | -------------------------------------- |
+| `s ⊆ t`                    | `intro x hx`                           |
+| `x ∈ t` after `hx : x ∈ s` | use subset hypothesis                  |
+| `s = t` from two subsets   | `ext x; constructor`                   |
+| subset of set-builder      | `intro x hx; simp at *` if appropriate |
+
+**Common failure modes:**
+
+| Symptom                       | Cause                                  | Repair                   |
+| ----------------------------- | -------------------------------------- | ------------------------ |
+| tried `constructor` on subset | subset is implication, not conjunction | `intro x hx`             |
+| subset hypothesis not used    | forgot it is function-like             | `exact h hx`             |
+| membership too complex        | set expression needs simplification    | `simp at hx ⊢` carefully |
+| extensionality needed         | goal is equality not subset            | use `ext`                |
+
+### D.16 Structure and Subtype Goals
+
+A structure or subtype goal is built by providing fields.
+
+Subtype:
+
+```lean id="hf2diu"
+def positiveOne : {n : Nat // n > 0} :=
+  ⟨1, by decide⟩
+```
+
+Structure:
+
+```lean id="so00q2"
+structure Point where
+  x : Nat
+  y : Nat
+
+def origin : Point :=
+  { x := 0, y := 0 }
+```
+
+| Goal shape          | First move                            |
+| ------------------- | ------------------------------------- |
+| `{x : α // P x}`    | `use value` or `exact ⟨value, proof⟩` |
+| structure goal      | named field syntax or `constructor`   |
+| record update       | `{ old with field := new }`           |
+| need proof field    | prove proposition after value         |
+| use subtype proof   | `x.property`                          |
+| use structure field | `obj.field`                           |
+
+**Common failure modes:**
+
+| Symptom                           | Cause                  | Repair                      |
+| --------------------------------- | ---------------------- | --------------------------- |
+| value supplied but proof missing  | subtype requires proof | provide second component    |
+| constructor creates unclear goals | many fields            | use named field syntax      |
+| coercion hides subtype proof      | coerced to carrier     | keep original subtype value |
+| structure equality hard           | need extensionality    | use `ext` if available      |
+
+### D.17 Recursive Data Goals — `Nat`, `List`, Trees, Syntax
+
+If a property follows recursive structure, use induction.
+
+Natural numbers:
+
+```lean id="wndqzd"
+example (n : Nat) : n + 0 = n := by
+  induction n with
+  | zero =>
+      rfl
+  | succ n ih =>
+      simp [ih]
+```
+
+Lists:
+
+```lean id="3d0cbb"
+example {α : Type} (xs : List α) : xs ++ [] = xs := by
+  induction xs with
+  | nil =>
+      rfl
+  | cons x xs ih =>
+      simp [ih]
+```
+
+| Goal                                  | First move                          |
+| ------------------------------------- | ----------------------------------- |
+| theorem over all `n : Nat`            | `induction n` if recursive property |
+| theorem over all `xs : List α`        | `induction xs`                      |
+| theorem over custom inductive         | `induction value`                   |
+| theorem over inductive relation proof | `induction h`                       |
+| one-step case split only              | `cases`                             |
+
+**Common failure modes:**
+
+| Symptom                            | Cause                               | Repair                            |
+| ---------------------------------- | ----------------------------------- | --------------------------------- |
+| no induction hypothesis            | used `cases` instead of `induction` | use `induction`                   |
+| IH too weak                        | variables fixed too early           | `generalizing` or restate theorem |
+| recursive call does not match IH   | induction on wrong argument         | induct on recursive structure     |
+| arithmetic remains after induction | need simplification/arithmetic      | `simp [ih]`, `omega`, lemmas      |
+
+### D.18 Case Splitting Goals and Hypotheses
+
+Use `cases` when alternatives are finite and no induction hypothesis is needed.
+
+```lean id="n07d2r"
+example (b : Bool) : b = true ∨ b = false := by
+  cases b
+  · right
+    rfl
+  · left
+    rfl
+```
+
+For natural one-step split:
+
+```lean id="m2m1v8"
+example (n : Nat) : n = 0 ∨ ∃ k, n = k + 1 := by
+  cases n with
+  | zero =>
+      left
+      rfl
+  | succ k =>
+      right
+      use k
+```
+
+| Need                                  | Tool                     |
+| ------------------------------------- | ------------------------ |
+| split `Bool`                          | `cases b`                |
+| split finite inductive                | `cases x`                |
+| split `Nat` into zero/succ without IH | `cases n`                |
+| split disjunction hypothesis          | `cases h`                |
+| split equality of constructors        | `cases h` or `simp at h` |
+| split decidable proposition           | `by_cases h : P`         |
+
+**Common failure modes:**
+
+| Symptom                 | Cause                        | Repair                                 |
+| ----------------------- | ---------------------------- | -------------------------------------- |
+| needed recursive IH     | used `cases`                 | use `induction`                        |
+| too many cases          | split too early              | delay case split                       |
+| impossible case remains | contradiction not simplified | `simp at h`, `contradiction`           |
+| dependent cases complex | motive/refinement issue      | inspect goals, use more explicit proof |
+
+### D.19 Arithmetic Goals
+
+Arithmetic tactics depend on the domain and shape.
+
+| Goal type                                   | Tool                                 |
+| ------------------------------------------- | ------------------------------------ |
+| concrete numerals                           | `norm_num`                           |
+| polynomial equality in ring-like structure  | `ring`                               |
+| linear arithmetic over `Nat`/`Int`          | `omega`                              |
+| linear arithmetic over ordered rings/fields | `linarith`                           |
+| some nonlinear inequalities                 | `nlinarith`                          |
+| order transitivity in abstract preorder     | order lemmas, not arithmetic tactics |
+
+Examples:
+
+```lean id="2fdj7v"
+example : (2 : Nat) + 3 = 5 := by
+  norm_num
+```
+
+```lean id="557sg6"
+example (a b : Int) (h : a ≤ b) : a + 1 ≤ b + 1 := by
+  omega
+```
+
+```lean id="0xm6tn"
+example {R : Type} [CommRing R] (a b : R) :
+    (a + b) * (a - b) = a ^ 2 - b ^ 2 := by
+  ring
+```
+
+**Common failure modes:**
+
+| Symptom                         | Cause                   | Repair                                       |
+| ------------------------------- | ----------------------- | -------------------------------------------- |
+| `ring` fails on inequality      | wrong tactic fragment   | use `linarith`/`nlinarith`/order lemmas      |
+| `omega` fails on nonlinear goal | unsupported arithmetic  | use `nlinarith`, algebra lemmas, or redesign |
+| arithmetic has casts            | mixed domains           | add coercion lemmas or change statement      |
+| abstract order goal             | no arithmetic structure | use `le_trans`, monotonicity, order lemmas   |
+| tactic too slow                 | large unstructured goal | isolate arithmetic subgoal                   |
+
+### D.20 Goals Involving `Option`, `Except`, and Pattern Matching
+
+Use cases or pattern matching on data constructors.
+
+```lean id="20jm5w"
+def safeHead {α : Type} : List α → Option α
+  | [] => none
+  | x :: _ => some x
+```
+
+Proof by cases:
+
+```lean id="8vtl70"
+example {α : Type} (xs : List α) :
+    safeHead xs = none ∨ ∃ x, safeHead xs = some x := by
+  cases xs with
+  | nil =>
+      left
+      rfl
+  | cons x xs =>
+      right
+      use x
+      rfl
+```
+
+| Goal / hypothesis                        | First move          |
+| ---------------------------------------- | ------------------- |
+| `o : Option α`                           | `cases o`           |
+| `e : Except ε α`                         | `cases e`           |
+| function defined by pattern matching     | `cases` on input    |
+| equation involving `some`/`none`         | `simp` or `cases`   |
+| impossible `some x = none`               | `simp at h`         |
+| success branch of `Except` carries value | destruct `.ok` case |
+
+**Common failure modes:**
+
+| Symptom                                       | Cause                    | Repair                              |
+| --------------------------------------------- | ------------------------ | ----------------------------------- |
+| impossible constructor equality remains       | not simplified           | `simp at h`                         |
+| proof ignores error case                      | incomplete cases         | handle both `.ok` and `.error`      |
+| using theorem requiring success without proof | missing branch condition | destruct result or provide equality |
+
+### D.21 Goals Involving `if`, `by_cases`, and Decidability
+
+If a definition branches on a proposition, proofs often need matching case splits.
+
+```lean id="cy3q3z"
+def classifyZero (n : Nat) : String :=
+  if n = 0 then "zero" else "nonzero"
+```
+
+Proof:
+
+```lean id="0sw0qi"
+example (n : Nat) (h : n = 0) : classifyZero n = "zero" := by
+  simp [classifyZero, h]
+```
+
+Case split:
+
+```lean id="6xf27i"
+example (n : Nat) :
+    classifyZero n = "zero" ∨ classifyZero n = "nonzero" := by
+  by_cases h : n = 0
+  · left
+    simp [classifyZero, h]
+  · right
+    simp [classifyZero, h]
+```
+
+| Situation                           | Tool                  |
+| ----------------------------------- | --------------------- |
+| proof depends on whether `P`        | `by_cases h : P`      |
+| simplify `if h : P` branch          | `simp [h]`            |
+| arbitrary proposition not decidable | `classical`           |
+| Boolean branch                      | cases on Boolean      |
+| proposition branch                  | decidability required |
+
+**Common failure modes:**
+
+| Symptom                       | Cause                      | Repair                             |
+| ----------------------------- | -------------------------- | ---------------------------------- |
+| `if` does not simplify        | branch condition not known | add/supply `h`                     |
+| `by_cases` fails              | decidability missing       | use `classical` or `[Decidable P]` |
+| branch hypothesis unused      | forgot `simp [h]`          | simplify with branch fact          |
+| Boolean/proposition confusion | `Bool` vs `Prop`           | bridge or use correct branch type  |
+
+### D.22 Goals Involving Typeclasses and Instances
+
+Tactics may fail because the theorem statement lacks required typeclass assumptions.
+
+```lean id="6vghgj"
+example {M : Type} [Monoid M] (a : M) : a * 1 = a := by
+  simp
+```
+
+| Goal / error                       | First move                             |
+| ---------------------------------- | -------------------------------------- |
+| `failed to synthesize Monoid M`    | add `[Monoid M]` or use concrete type  |
+| notation `*` fails                 | add operation class                    |
+| equality decision missing          | add `[DecidableEq α]`                  |
+| order theorem unavailable          | add `[Preorder α]` / `[LinearOrder α]` |
+| `simp` does not know algebraic law | class too weak                         |
+| instance exists but not imported   | import correct module                  |
+
+**Common failure modes:**
+
+| Symptom                                   | Cause                  | Repair                                    |
+| ----------------------------------------- | ---------------------- | ----------------------------------------- |
+| added `[Group G]` to fix monoid identity  | too strong             | use `[Monoid G]` if enough                |
+| using `[Mul M]` but needing associativity | class too weak         | use `[Semigroup M]`                       |
+| typeclass search ambiguous                | noncanonical instances | pass explicit structure or scope instance |
+| theorem over abstract type impossible     | missing assumptions    | strengthen theorem correctly              |
+
+### D.23 Goals Involving Coercions and Subtypes
+
+Subtype goals often require both value and proof.
+
+```lean id="w3obfb"
+def smallThree : {n : Nat // n < 10} :=
+  ⟨3, by decide⟩
+```
+
+Using subtype:
+
+```lean id="l5xcvu"
+example (x : {n : Nat // n < 10}) : x.val < 10 :=
+  x.property
+```
+
+| Goal / situation     | First move                             |
+| -------------------- | -------------------------------------- |
+| construct subtype    | `exact ⟨value, proof⟩`                 |
+| use underlying value | `x.val` or coercion                    |
+| use invariant        | `x.property`                           |
+| raw value plus proof | maybe construct subtype                |
+| coercion mismatch    | add explicit `.val` or type annotation |
+
+**Common failure modes:**
+
+| Symptom                                | Cause                                                     | Repair                                       |
+| -------------------------------------- | --------------------------------------------------------- | -------------------------------------------- |
+| expected `Nat`, got subtype            | projection/coercion issue                                 | use `.val`                                   |
+| proof field unavailable after coercion | original subtype hidden                                   | keep subtype variable                        |
+| equality over subtype hard             | need value equality plus proof irrelevance/extensionality | use subtype extensionality where appropriate |
+| overusing subtype locally              | proof overhead                                            | use hypothesis instead                       |
+
+### D.24 Goals Involving Lists and Standard Data
+
+List proofs usually use `simp`, induction, or existing lemmas.
+
+```lean id="csog7c"
+example {α : Type} (xs ys : List α) :
+    (xs ++ ys).length = xs.length + ys.length := by
+  simp
+```
+
+Map length:
+
+```lean id="6n3xge"
+example {α β : Type} (f : α → β) (xs : List α) :
+    (xs.map f).length = xs.length := by
+  simp
+```
+
+| Goal                            | First move                                             |
+| ------------------------------- | ------------------------------------------------------ |
+| list append length              | search/use `List.length_append` or `simp`              |
+| map length                      | `simp`                                                 |
+| property over all lists         | `induction xs`                                         |
+| head/tail option                | cases on list                                          |
+| membership in append/map/filter | use membership lemmas or `simp`                        |
+| equality of lists by structure  | induction/cases or extensional theorem where available |
+
+**Common failure modes:**
+
+| Symptom                             | Cause                      | Repair                                    |
+| ----------------------------------- | -------------------------- | ----------------------------------------- |
+| theorem over list recursion fails   | induction target wrong     | induct on list being recursed over        |
+| append associativity noise          | missing simp/rewrite lemma | use `simp [List.append_assoc]` or theorem |
+| filter proof needs decidability     | predicate not decidable    | add decidability/classical                |
+| using Array where List proof easier | data structure mismatch    | prove over List spec or use array lemmas  |
+
+### D.25 Goals Involving Sets, Images, and Preimages
+
+Set membership often simplifies to predicate logic.
+
+```lean id="0onmxk"
+example {α β : Type} (f : α → β) (s : Set β) (x : α) :
+    x ∈ f ⁻¹' s ↔ f x ∈ s := by
+  rfl
+```
+
+Image membership:
+
+```lean id="w0b9gj"
+example {α β : Type} (f : α → β) (s : Set α) (y : β) :
+    y ∈ f '' s ↔ ∃ x, x ∈ s ∧ f x = y := by
+  rfl
+```
+
+| Goal            | First move              |                 |
+| --------------- | ----------------------- | --------------- |
+| `x ∈ {y         | P y}`                   | `rfl` or `simp` |
+| `x ∈ f ⁻¹' s`   | often `rfl`             |                 |
+| `y ∈ f '' s`    | existential witness     |                 |
+| `s ⊆ t`         | `intro x hx`            |                 |
+| `s = t`         | `ext x`                 |                 |
+| image subset    | introduce image witness |                 |
+| preimage subset | unfold membership       |                 |
+
+**Common failure modes:**
+
+| Symptom                          | Cause                           | Repair                          |
+| -------------------------------- | ------------------------------- | ------------------------------- |
+| image membership not direct      | needs witness                   | destruct or provide existential |
+| preimage overcomplicated         | did not unfold                  | `rfl` or `simp`                 |
+| set equality attempted directly  | extensionality needed           | `ext x`                         |
+| subset treated as data inclusion | actually membership implication | `intro x hx`                    |
+
+### D.26 Goals Involving Classical Logic
+
+Use classical reasoning deliberately.
+
+```lean id="696zqg"
+example (P : Prop) : P ∨ ¬ P := by
+  classical
+  exact Classical.em P
+```
+
+Proof by contradiction:
+
+```lean id="p2wsv3"
+example (P : Prop) : ¬¬P → P := by
+  classical
+  intro h
+  by_contra hp
+  exact h hp
+```
+
+| Goal                                | Tool                                      |
+| ----------------------------------- | ----------------------------------------- |
+| arbitrary excluded middle           | `classical; exact Classical.em P`         |
+| `¬¬P → P`                           | `classical`, `by_contra`                  |
+| choose witness from existence       | `Classical.choose`, often `noncomputable` |
+| decidable branch over arbitrary `P` | `classical`                               |
+| constructive implication            | no classical needed                       |
+
+**Common failure modes:**
+
+| Symptom                          | Cause                           | Repair                                    |
+| -------------------------------- | ------------------------------- | ----------------------------------------- |
+| `by_cases` fails                 | no decidability                 | local `classical`                         |
+| noncomputable definition error   | uses choice/classical selection | mark `noncomputable` or provide algorithm |
+| proof uses classical globally    | hidden assumption               | localize `classical`                      |
+| trying to compute chosen witness | choice is noncomputable         | use explicit construction                 |
+
+### D.27 Goals Involving Existing Theorems
+
+Many goals should be solved by reusing a theorem, not by writing a new proof.
+
+| Situation                                        | Tool                                                     |
+| ------------------------------------------------ | -------------------------------------------------------- |
+| theorem exactly matches                          | `exact theorem args`                                     |
+| theorem almost matches                           | `simpa using theorem args`                               |
+| theorem conclusion matches goal, premises needed | `apply theorem`                                          |
+| theorem is equality                              | `rw [theorem]`                                           |
+| theorem is iff                                   | use `.mp`, `.mpr`, or `rw`/`simp` in proposition context |
+| theorem requires specialization                  | `have h := theorem arg₁ arg₂`                            |
+| theorem has hidden arguments                     | `#check @theorem`                                        |
+
+Example:
+
+```lean id="rwfo52"
+example {α : Type} (xs ys : List α) :
+    (xs ++ ys).length = xs.length + ys.length := by
+  simpa using List.length_append xs ys
+```
+
+**Common failure modes:**
+
+| Symptom                               | Cause                           | Repair                                      |
+| ------------------------------------- | ------------------------------- | ------------------------------------------- |
+| theorem application fails             | wrong argument order            | `#check theorem`                            |
+| hidden arguments unresolved           | implicit inference insufficient | `#check @theorem`, supply explicit args     |
+| theorem too general creates subgoals  | missing premises                | prove premises or use more specific theorem |
+| theorem statement close but not exact | notation/normal form mismatch   | `simpa using`                               |
+| wrong theorem direction               | conclusion reversed             | use `.symm`, `.mp`, `.mpr`                  |
+
+### D.28 Automation Selection Table
+
+| Goal fragment                 | First automation                 | Reason                                 |
+| ----------------------------- | -------------------------------- | -------------------------------------- |
+| routine simplification        | `simp`                           | rewrite normalization                  |
+| propositional boilerplate     | explicit constructors or `aesop` | structure/search                       |
+| polynomial equality           | `ring`                           | ring normal form                       |
+| concrete numerals             | `norm_num`                       | numeral normalization                  |
+| linear `Nat`/`Int` arithmetic | `omega`                          | arithmetic decision procedure fragment |
+| linear ordered arithmetic     | `linarith`                       | linear inequalities                    |
+| some nonlinear inequalities   | `nlinarith`                      | nonlinear arithmetic fragment          |
+| finite decidable proposition  | `decide` / `native_decide`       | computation                            |
+| extensional equality          | `ext`, `funext`                  | reduce to pointwise/field goals        |
+
+**Professional rule:** automation should remove routine burden. It should not hide the theorem’s central structure.
+
+### D.29 Compact Goal Shape Index
+
+| Current goal or context           | First move                         |     |
+| --------------------------------- | ---------------------------------- | --- |
+| `P → Q`                           | `intro hP`                         |     |
+| `∀ x, P x`                        | `intro x`                          |     |
+| `P ∧ Q`                           | `constructor`                      |     |
+| `h : P ∧ Q`                       | `h.left`, `h.right`, or `rcases h` |     |
+| `P ∨ Q`                           | `left` or `right`                  |     |
+| `h : P ∨ Q`                       | `cases h` or `rcases h with hP     | hQ` |
+| `P ↔ Q`                           | `constructor`                      |     |
+| `h : P ↔ Q`                       | `h.mp` or `h.mpr`                  |     |
+| `∃ x, P x`                        | `use x`                            |     |
+| `h : ∃ x, P x`                    | `rcases h with ⟨x, hx⟩`            |     |
+| `¬ P`                             | `intro hP`                         |     |
+| `False`                           | derive contradiction               |     |
+| arbitrary goal with contradiction | `exfalso`                          |     |
+| definitional equality             | `rfl`                              |     |
+| equality by known fact            | `rw [h]`                           |     |
+| routine equality                  | `simp`                             |     |
+| equality chain                    | `calc`                             |     |
+| function equality                 | `funext x`                         |     |
+| set equality                      | `ext x`                            |     |
+| subset                            | `intro x hx`                       |     |
+| recursive theorem                 | `induction`                        |     |
+| one-step split                    | `cases`                            |     |
+| proposition case split            | `by_cases h : P`                   |     |
+| algebraic identity                | `ring`                             |     |
+| concrete arithmetic               | `norm_num`                         |     |
+| linear `Nat`/`Int` arithmetic     | `omega`                            |     |
+| linear ordered arithmetic         | `linarith`                         |     |
+| theorem almost matches            | `simpa using theorem`              |     |
+| missing theorem                   | `#check`, search docs/source       |     |
+
+### D.30 Anti-Patterns by Goal Shape
+
+| Anti-pattern                                   | Why wrong                      | Better move                         |
+| ---------------------------------------------- | ------------------------------ | ----------------------------------- |
+| using `simp` before reading a conjunction goal | hides structure                | `constructor`                       |
+| using `constructor` on implication             | wrong target shape             | `intro`                             |
+| using `left/right` on disjunction hypothesis   | `left/right` build disjunction | `cases h`                           |
+| using `cases` where recursive IH is needed     | no induction hypothesis        | `induction`                         |
+| using `rfl` for theorem-based equality         | not definitional               | `rw`/`simp`/theorem                 |
+| using `rw` for routine normal forms            | too low-level                  | `simp`                              |
+| using `simp` for central equality              | hides proof idea               | `rw`/`calc`                         |
+| using `ring` for inequality                    | wrong fragment                 | `linarith`/`nlinarith`/order lemmas |
+| using `omega` for abstract order               | no arithmetic structure        | order lemmas                        |
+| adding `classical` globally                    | hides logical boundary         | local `classical`                   |
+| adding `[Group G]` for monoid identity         | too strong                     | `[Monoid G]`                        |
+| using automation to avoid theorem search       | brittle                        | search theorem by shape             |
+| leaving `by aesop` in central proof            | opaque                         | explicit proof or helper lemma      |
+
+### Appendix D Summary
+
+The tactic-selection principle is simple:
+
+**The target type tells which proof object must be constructed.**
+
+| Target shape                | Constructive meaning                             | Tactic                                       |
+| --------------------------- | ------------------------------------------------ | -------------------------------------------- |
+| implication / universal     | function construction                            | `intro`                                      |
+| conjunction / equivalence   | product of proofs / pair of implications         | `constructor`                                |
+| disjunction                 | chosen alternative                               | `left` / `right`                             |
+| existential                 | witness plus proof                               | `use`                                        |
+| negation                    | implication to `False`                           | `intro`                                      |
+| contradiction               | impossible proof                                 | `exfalso`, contradiction reasoning           |
+| equality                    | definitional/propositional/extensional reasoning | `rfl`, `rw`, `simp`, `calc`, `funext`, `ext` |
+| recursive property          | induction principle                              | `induction`                                  |
+| finite alternatives         | constructor elimination                          | `cases`                                      |
+| routine normal form         | simplifier                                       | `simp`                                       |
+| algebra/arithmetic fragment | domain automation                                | `ring`, `omega`, `linarith`, `norm_num`      |
+
+A mature Lean user does not ask first, “Which tactic might work?” The better question is:
+
+**What is the current goal asking me to construct, and which tactic corresponds to that constructor, eliminator, rewrite, induction principle, or automation fragment?**
+
+## Reference
+
+[Lean Language Reference](https://lean-lang.org/doc/reference/latest/)
+The most important official reference for Lean 4. Use it to check precise language behavior: commands, terms, elaboration, kernel checking, attributes, options, tactics, `IO`, modules, and Lake-related material. This is not a beginner tutorial; it is the authoritative place to verify what a Lean construct formally means.
+
+
+[Theorem Proving in Lean 4](https://lean-lang.org/theorem_proving_in_lean4/)
+The standard conceptual introduction to Lean as a theorem prover. It is useful for understanding `Prop`, proof terms, dependent types, equality, quantifiers, inductive types, structures, type classes, tactics, axioms, and computation. This should be treated as the theoretical foundation behind the proof-oriented parts of the guide.
+
+
+[Functional Programming in Lean](https://lean-lang.org/functional_programming_in_lean/)
+The main reference for Lean as a programming language. It explains functions, recursion, pattern matching, inductive data, type classes, monads, `IO`, and executable programs. It is useful when the guide discusses pure functions, runtime behavior, effects, and the separation between pure core logic and `IO` shells.
+
+[Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)
+The best practical entry point for Mathlib-style mathematical formalization. Use it to see how real mathematics is written in Lean: logic, sets, functions, algebraic structures, groups, rings, topology, calculus, and measure-theoretic topics. It is especially useful for learning idiomatic use of `simp`, `rw`, `ext`, `linarith`, theorem search, and Mathlib abstractions.
+
+
+[Mathlib Documentation](https://leanprover-community.github.io/mathlib4_docs/)
+The main index for Mathlib declarations. Use it to search definitions, theorems, classes, instances, namespaces, and imports. This is the primary tool for answering questions like “Does this theorem already exist?” or “What is the exact statement of this lemma?” It should be used together with `#check`, `#check @name`, and source reading.
+
+
+[Mathlib GitHub Repository](https://github.com/leanprover-community/mathlib4)
+The source repository for Mathlib. Use it to read real proofs, inspect theorem naming conventions, understand import structure, study `[simp]` lemmas, and see how large-scale Lean formalization is organized. It is more valuable than the documentation when the proof style, surrounding lemmas, or implementation details matter.
+
+[Lake Documentation](https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Lake/)
+The official reference for Lean’s build system and package manager. Use it for `lakefile.lean`, package configuration, dependencies, build targets, scripts, tests, and project workflows. This is essential for any serious Lean project because Lean files should be understood relative to their `lean-toolchain`, Lake configuration, imports, and dependencies.
+
+
+[Lean Community](https://leanprover-community.github.io/)
+A central community portal for Lean resources, documentation, learning materials, Zulip links, Mathlib information, and ecosystem guidance. Useful as a navigation hub rather than as a single technical reference.
+
+[Lean Zulip](https://leanprover.zulipchat.com/)
+The main discussion forum for Lean users and Mathlib contributors. Use it for difficult errors, theorem-search questions, Mathlib design questions, migration issues, and explanations of obscure library behavior. It is especially useful when documentation and source search do not resolve a problem.
+
+
+[Reservoir](https://reservoir.lean-lang.org/)
+Lean’s package registry. Use it to discover Lean packages and understand package dependencies beyond Mathlib. It is relevant for project-level work, external libraries, and ecosystem exploration.
+
+[Tao Analysis Lean Repository](https://github.com/teorth/analysis)
+Terence Tao’s Lean companion to *Analysis I*. Use it as a real source corpus for studying how textbook mathematics is translated into Lean declarations, definitions, theorem statements, proof scripts, and `sorry`-based exercises. It is especially useful for case studies on textbook fidelity, local definitions, sequence limits, proof obligations, and the boundary between pedagogical formalization and Mathlib-native style.
+
+[A Lean Companion to Analysis I](https://terrytao.wordpress.com/2025/05/31/a-lean-companion-to-analysis-i/)
+Useful for understanding the purpose of the Tao Analysis project. It explains the motivation and intended use of the companion. This should be cited when discussing why the corpus is pedagogical, why it contains `sorry` holes, and why it should not be treated simply as a Mathlib-style library module.
+
+
+[TaoBench: A Benchmark for Theorem Proving from Terence Tao’s Analysis I](https://arxiv.org/abs/2603.12744)
+Useful for understanding why definition choice matters in Lean. TaoBench compares theorem-proving performance on Tao-style formulations and Mathlib-style formulations, making it relevant to the guide’s claim that formalization is sensitive to definitions, theorem shape, and library context. This is more specialized than the other references, but valuable for the discussion of AI-assisted theorem proving and definitional-framework transfer.
+
+
+[Lean FRO](https://lean-lang.org/fro/)
+Useful for understanding current Lean development priorities: scalability, usability, documentation, automation, formal verification, and AI-assisted theorem proving. This is relevant for historical and trend-oriented sections, not for day-to-day proof writing.
+
+[Lean Releases](https://github.com/leanprover/lean4/releases)
+Use this when checking version-specific changes. Lean evolves actively, and theorem scripts may break after updates because of changes in elaboration, tactics, imports, notation, or library behavior. For serious projects, this should be read together with the project’s `lean-toolchain`.
+
+
+[Lean 4 GitHub Repository](https://github.com/leanprover/lean4)
+The source repository for the Lean language itself. Use it when the question concerns implementation, compiler behavior, language evolution, issues, pull requests, or low-level system details. It is not the first place to learn ordinary proof writing, but it is important for advanced users and tool developers.

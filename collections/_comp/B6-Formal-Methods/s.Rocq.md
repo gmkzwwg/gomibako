@@ -14140,3 +14140,78 @@ The final professional lesson is:
 
 > The Four Color Theorem is not a proof that “computers can replace proof.” It is a proof that computation can become part of rigorous mathematics when the computational steps are specified, checked, and connected to propositions inside a trusted proof architecture.
 
+## Reference
+
+This reference section supports a Rocq-centered professional tutorial, especially the parts on dependent type theory, proof engineering, tactic workflow, standard-library literacy, project structure, and expert-level formalization practice. 
+
+### Official Rocq documentation
+
+[Rocq Documentation Portal](https://rocq-prover.org/docs)
+The best starting point for official Rocq documentation. Use it as the main gateway to the reference manual, installation material, tutorials, platform documentation, and migration-related resources.
+
+[Rocq Reference Manual](https://rocq-prover.org/refman)
+The authoritative reference for Rocq language constructs, commands, proof engine behavior, tactics, modules, notations, libraries, and system-level features. This should be the primary source when the tutorial explains syntax, semantics, tactic behavior, or implementation-visible behavior.
+
+[Rocq 9.2.0 Release Notes](https://rocq-prover.org/releases/9.2.0)
+Useful for stating the tutorial’s version assumptions and for explaining current Rocq 9.x behavior. It is especially important because many older materials still use the Coq name and Coq 8.x-era conventions.
+
+[Rocq Core Language Reference](https://rocq.inria.fr/refman/language/core/index.html)
+The key reference for Gallina, terms, binders, definitions, assumptions, sorts, functions, products, and the core language. Use this when explaining `Prop`, `Set`, `Type`, dependent products, definitions, theorem statements, and the basic term language.
+
+### Proof engine and tactics
+
+[Ltac Reference](https://rocq.inria.fr/refman/proof-engine/ltac.html)
+The main reference for the traditional Rocq tactic language. It is essential for explaining `intros`, `apply`, `exact`, `destruct`, `induction`, `rewrite`, `simpl`, `auto`, `eauto`, tactic sequencing, tactic failure, and proof-state manipulation.
+
+[Ltac2 Reference](https://rocq-prover.org/doc/V9.2.0/refman/proof-engine/ltac2.html)
+The modern tactic metaprogramming reference. It should not dominate the beginner or intermediate sections, but it is important for advanced proof automation, custom tactics, and expert-level proof-engineering discussion.
+
+### Libraries and ecosystem
+
+[Rocq Corelib Documentation](https://rocq-prover.org/doc/v9.2/corelib/)
+The documentation for Rocq’s core library. Use it to locate basic definitions, lemmas, notations, tactics, and foundational library material. It is especially useful when teaching readers not to reprove standard facts unnecessarily.
+
+[Rocq Package Index](https://rocq-prover.org/packages)
+The main package discovery point for Rocq libraries and plugins. It is useful for ecosystem mapping, dependency selection, package documentation, and showing how real Rocq projects rely on libraries beyond the core system.
+
+[Rocq opam Layout](https://rocq-prover.org/docs/opam-layout)
+Explains the Rocq opam repository layout and the distinction between stable, development, and release-candidate package channels. This is important for professional dependency management and reproducible project setup.
+
+[Rocq Platform](https://rocq-prover.org/platform)
+The recommended bundled distribution for installing Rocq with a coherent set of tools and libraries. It is useful for readers who want a stable working environment without manually assembling every package.
+
+### Build tools and editor workflow
+
+[Dune Rocq Documentation](https://dune.readthedocs.io/en/latest/rocq.html)
+The key build-system reference for Rocq projects using Dune. It is important for explaining project layout, theories, plugins, extraction, build artifacts, dependency structure, and CI-friendly workflows.
+
+[VsRocq](https://github.com/rocq-prover/vsrocq)
+The VS Code / VSCodium extension for Rocq. It is useful for explaining interactive proof development, proof stepping, goal inspection, editor feedback, and practical proof-state navigation.
+
+[Rocq GitHub Repository](https://github.com/rocq-prover/rocq)
+The main source repository. Use it for implementation-level investigation, issues, pull requests, changelogs, and advanced source-code reading. It is not a replacement for the reference manual, but it is valuable for expert users who need to understand the system’s development and implementation constraints.
+
+### Learning and theorem-proving practice
+
+[Software Foundations](https://softwarefoundations.cis.upenn.edu/)
+A major Rocq-based textbook series covering logic, functional programming, proof techniques, programming-language theory, operational semantics, type systems, and verified programming. It is one of the best sources for theorem anchors such as natural numbers, lists, induction, evaluators, preservation, and progress.
+
+[Mathematical Components / MathComp](https://math-comp.github.io/documentation.html)
+A major Rocq/Coq mathematical library and proof methodology. It is essential for readers interested in formalized mathematics, small-scale reflection, canonical structures, algebraic hierarchy, finite structures, and disciplined proof engineering.
+
+### Important plugins and advanced libraries
+
+[Equations Plugin Documentation](https://rocq-prover.org/docs/equations-docs)
+A major plugin for dependent pattern matching, well-founded recursion, complex recursive definitions, and generated equation lemmas. It is useful when ordinary structural recursion or pattern matching becomes too restrictive.
+
+[QuickChick](https://rocq-prover.org/p/coq-quickchick/2.1.1)
+A property-based testing framework for Rocq/Coq. It is useful for testing executable definitions, finding counterexamples before proof attempts, and explaining the relationship between testing and formal verification.
+
+[Iris Project](https://iris-project.org/)
+An advanced framework for separation logic, concurrent program verification, logical relations, and program logics. It belongs in advanced references only. It is highly valuable for expert-level verification work, but it is not necessary for the main beginner-to-intermediate Rocq path.
+
+### Community and troubleshooting
+
+[Rocq Community](https://rocq-prover.org/community)
+The official entry point for community spaces such as Zulip and Discourse. It is useful for troubleshooting, migration questions, ecosystem discussions, package issues, and clarification of difficult error messages. It should be treated as a practical support channel, not as a language specification.
+

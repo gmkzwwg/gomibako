@@ -4,7 +4,6 @@ categories: Atlas
 subclass: Basics
 ---
 
-# English
 
 # The Computer Science Map
 
@@ -10742,205 +10741,208 @@ A final observation: language fluency is acquired through practice, with reading
 
 ### What it is, properly
 
-Development environment and tooling is the practical concern with the software tools that practitioners use throughout development work — text editors and IDEs, build systems, package managers, debuggers, profilers, version control systems, terminal environments, AI-augmented tools, and the various other tools that constitute the practitioner's daily working environment. The subject treats tooling fluency as a professional concern in its own right rather than as auxiliary to "real" CS work, with the recognition that the gap between practitioners with strong tooling fluency and practitioners with weak tooling fluency produces productivity differences that compound over careers.
+Development environment and tooling is the practical concern with the software tools that practitioners use throughout development work — text editors and IDEs, terminal environments, version control systems, build systems and package managers, debuggers and profilers, containerization and cloud platform tools, AI-augmented development assistants, and the various other tools that constitute the practitioner's daily working environment. The subject treats tooling fluency as a professional concern in its own right rather than as auxiliary to "real" CS work, with the recognition that the productivity gap between practitioners with strong tooling fluency and practitioners with weak tooling fluency is substantial and compounds over careers.
 
-The conventional account treats tooling either as trivial (anyone can learn an editor) or as religious choice (vim versus emacs, the various other tribal disputes). Both accounts misrepresent the substance. Tooling fluency is a learnable engineering skill with substantial productivity implications, and the choice of tools is an engineering decision rather than a matter of identity. The conceptual core is the recognition that *tools shape what work is feasible and how productive that work is*, that *tool fluency develops through deliberate practice rather than through casual exposure*, and that *investment in tooling pays dividends compounded across careers*.
+The conventional account treats tooling as either trivial (anyone can learn an editor) or as religious choice (vim versus emacs, the various other tribal disputes). Both accounts misrepresent the substance. Tooling fluency is a learnable engineering skill with substantial productivity implications, and the choice of tools is an engineering decision rather than a matter of identity. The conceptual core is the recognition that *tools shape what work is feasible and how productive that work is*, that *tool fluency develops through deliberate practice rather than through casual exposure*, and that *investment in tooling pays dividends compounded across careers*.
 
-The tooling landscape has substantially changed in the AI-augmented era. AI tools (GitHub Copilot, Cursor, Claude Code, the various others) have moved from experimental novelty to substantive component of daily practitioner work over a remarkably short period. The contemporary tooling discussion cannot be separated from AI-augmented development considerations.
+The conceptual core distinguishes several aspects.
 
-The conceptual core distinguishes several categories.
+*Editors and IDEs* covers the primary text-editing environment that practitioners spend substantial time in — Vim/Neovim, Emacs, VS Code, the JetBrains family (IntelliJ, PyCharm, GoLand, the various others), Sublime Text, Zed, Helix, and the various others. The choice between these matters less than the depth of engagement; each option has highly productive practitioners.
 
-*Editors and IDEs* covers the primary text-editing environment that practitioners spend substantial time in — Vim/Neovim, Emacs, VS Code, the JetBrains family (IntelliJ, PyCharm, GoLand, RustRover, the various others), Sublime Text, Zed, the various others. The choice between these matters substantially less than the depth of engagement with whichever is chosen, but the choice has real implications for ecosystem (which extensions and language servers are available), workflow (modal editing versus modeless, keyboard-driven versus mouse-supported), and AI integration (how each tool integrates with AI coding assistants).
+*Terminal and shell* covers the command-line environment — bash, zsh, fish, PowerShell, the various shells — with shell scripting and command-line tools producing substantial productivity for practitioners fluent in their use. The Unix philosophy of small composable tools rewards investment in fluency.
 
-*Terminal and shell* covers the command-line environment — bash, zsh, fish, the various shells, with fluency in shell scripting and command-line tools producing substantial productivity. The Unix philosophy of small composable tools rewards investment in fluency, and command-line environments remain substantive components of contemporary development despite GUI tool proliferation.
+*Version control* covers Git as the dominant tool, with deeper engagement than casual use produces. Other version control systems (Mercurial, Perforce, the various others) remain in use in specific contexts but Git has effectively standardized contemporary version control.
 
-*Version control* covers Git as the dominant tool, with substantive engagement deeper than casual use produces. Other version control systems (Mercurial, Pijul, Sapling, the various others) have technical merits but limited adoption relative to Git.
+*Build systems and package managers* covers tools for building and managing dependencies — language-specific tools (npm/yarn/pnpm/bun, pip/poetry/uv, cargo, maven/gradle, the various others) and broader build systems (make, CMake, Bazel, Buck2, the various others). The choice substantially affects build reproducibility, build speed, and developer experience.
 
-*Build systems and package managers* covers tools for building and managing dependencies. Language-specific tools (npm/yarn/pnpm/Bun for JavaScript, pip/poetry/uv for Python, cargo for Rust, maven/gradle for Java/Kotlin, go modules for Go, the various others) handle most language-specific work. Broader build systems (make, CMake, Bazel, Buck, the various others) handle multi-language and large-scale builds.
+*Debuggers and profilers* covers tools for diagnosing program behavior and performance — language-specific debuggers (gdb, lldb, pdb, the various IDE-integrated debuggers), system-level profilers (perf, the various others), specialized tools for specific performance concerns. Section 8.5 covers debugging as methodological discipline; the present section covers debugger fluency as tooling concern.
 
-*Debugger tools* covers tools for inspecting program state during execution — language-specific debuggers (gdb, lldb, pdb, delve, the various others), IDE-integrated debuggers, time-travel debuggers (rr, the various others), the various specialized debugging tools. The methodology of debugging is treated separately in Section 8.5; this section covers the tools themselves.
+*Containerization and virtualization tools* covers Docker, Podman, the various other container tools, plus virtualization tools (VMs, the various others) where relevant. Container fluency has become foundational for most contemporary development.
 
-*Profilers and performance tools* covers tools for understanding program performance — language-specific profilers (cProfile, pprof, the various others), system profilers (perf, dtrace, BPF tools, the various others), specialized tools for various performance concerns (memory profilers, cache profilers, GPU profilers).
+*Cloud platform tools* covers AWS CLI, gcloud, az, kubectl, terraform, pulumi, the various infrastructure-as-code and cloud-management tools. Cloud fluency varies substantially by role but has become broadly relevant for backend and systems practitioners.
 
-*Containerization and virtualization tools* covers Docker, Podman, and the various other container tools, plus virtualization tools where relevant. Container tools have become substantive components of development environments beyond their production deployment role.
+*AI-augmented development tools* covers GitHub Copilot, Cursor, Claude Code, Windsurf, the various AI-augmented development tools that have substantially reshaped daily development practice over the past several years. This category has emerged as a substantive new tool category that practitioners must engage with deliberately.
 
-*Cloud platform tools* covers AWS CLI, gcloud, az, kubectl, terraform, helm, and the various infrastructure-as-code and cloud-management tools. Cloud tooling fluency has become substantively important as cloud-native development has spread.
-
-*AI-augmented tools* covers the contemporary emergence of GitHub Copilot, Cursor, Claude Code, Windsurf, Aider, and the various AI-augmented development tools that have substantially reshaped daily practice. This category warrants extended treatment given how substantially it has changed development work.
-
-*Documentation and note tools* covers tools for managing documentation, references, and notes — increasingly substantial as practitioners accumulate substantial knowledge bases over careers. Obsidian, Notion, plain Markdown with various tools, Roam-like tools, and the various others provide options.
+*Documentation and reference tools* covers tools for managing documentation, references, notes, knowledge bases — increasingly relevant as practitioners accumulate substantial knowledge over careers.
 
 ### What CS subjects relate to this concern
 
 Tooling fluency relates broadly across CS subjects rather than to specific subjects:
 
-*Programming work across all subjects* substantially benefits from editor fluency, version control fluency, debugging tool fluency.
+*Programming work across all subjects* benefits from editor fluency, version control fluency, debugger fluency.
 
-*Systems work* (Sections 4.1, 4.5, 4.7) substantially uses systems-specific tooling — debuggers (gdb, lldb), system tracing tools (strace, ltrace, dtrace, BPF), profilers, the various others.
+*Systems work* (Sections 4.1, 4.5, 4.7) substantially uses systems-specific tooling — debuggers (gdb, lldb), system tracing tools (strace, dtrace, eBPF-based tools), profilers (perf, flamegraph tools), the various others.
 
-*Web development* (Section 6.1) uses substantial browser developer tools, framework-specific tooling (React DevTools, Vue DevTools, the various others), the various web-specific tools.
+*Web development* (Section 6.1) uses substantial browser developer tools (Chrome DevTools, Firefox Developer Tools), framework-specific tooling, the various web-specific tools.
 
-*Machine learning work* (Sections 5.1-5.7) uses ML-specific tooling — Jupyter notebooks, experiment tracking tools (MLflow, Weights & Biases, Neptune, the various others), GPU profiling tools (nsys, ncu, the various others), ML-specific debugging tools.
+*Machine learning work* (Sections 5.1-5.7) uses ML-specific tooling — Jupyter notebooks, experiment tracking tools (MLflow, Weights & Biases, the various others), GPU profiling tools (Nsight, the various others), model serving tools, the various others.
 
 *Cloud-native infrastructure* (Section 4.5) uses substantial infrastructure tooling — kubectl, helm, terraform, the various others.
 
-*Scientific computing* (Section 6.6) uses substantial computational notebook tools (Jupyter, R Markdown, Quarto, the various others), domain-specific scientific tools.
+*Scientific computing* (Section 6.6) uses computational notebook tools (Jupyter, R Markdown, Quarto, the various others), domain-specific scientific tools.
 
-*Security work* (Section 6.3) uses substantial security-specific tooling — penetration testing tools, vulnerability scanners, fuzzers, the various others.
-
-*Embedded systems* (Section 4.7) uses substantial embedded-specific tooling — JTAG debuggers, logic analyzers, oscilloscopes alongside software tools, cross-compilation toolchains.
+*Security work* (Section 6.3) uses substantial security-specific tooling — penetration testing tools, vulnerability scanners, fuzzing tools, the various others.
 
 ### What preparation provides practitioners
 
 Substantial tooling fluency provides practitioners with several capacities.
 
-*Editor mastery.* The practitioner has deep fluency with at least one editor or IDE, with knowledge of keyboard shortcuts, customization, language-specific features, and the various productivity affordances. This mastery substantially affects daily productivity. The depth of investment matters more than the choice of editor — practitioners with deep Vim fluency, deep Emacs fluency, or deep VS Code fluency are productive in different but comparable ways.
+*Editor mastery.* The practitioner has deep fluency with at least one editor or IDE, with knowledge of keyboard shortcuts, customization, language-specific features, the various productivity affordances. Editor mastery substantially affects daily productivity. Practitioners spending hours daily in an editor benefit enormously from deliberate development of editor fluency rather than casual use.
 
-*Command-line fluency.* The practitioner is fluent with terminal and shell, can write shell scripts effectively, uses command-line tools (grep, awk, sed, find, jq, ripgrep, fd, the various others) productively, navigates and operates on systems through command line efficiently. Command-line fluency remains substantively valuable despite GUI tool proliferation, particularly for systems work, server administration, and ad-hoc data manipulation.
+*Command-line fluency.* The practitioner is fluent with terminal and shell, can write shell scripts effectively, uses command-line tools (grep, awk, sed, find, jq, the various others) productively, navigates and operates on systems through command line efficiently. The various command-line tools provide composable productivity that GUI tools rarely match.
 
-*Version control fluency.* The practitioner is fluent with Git substantially beyond basic add/commit/push, including branching strategies, merge versus rebase tradeoffs, conflict resolution, history navigation (log filtering, blame, bisect), the various advanced operations (interactive rebase, stash, cherry-pick, reflog for recovery). Understanding Git's underlying data model (blobs, trees, commits, refs) substantially reduces confusion about Git operations.
+*Version control fluency.* The practitioner is fluent with Git substantially beyond basic add/commit/push — branching strategies, merge versus rebase, conflict resolution, history navigation (log, blame, bisect), the various advanced operations (cherry-pick, reflog, interactive rebase, submodules where relevant). The gap between basic Git use and fluent Git use is large; fluent practitioners use Git as a substantive tool rather than as a save-and-share mechanism.
 
-*Debugger tool fluency.* The practitioner can use debuggers effectively — setting breakpoints strategically, examining state, stepping through execution, using watchpoints and conditional breakpoints. This fluency complements debugging methodology covered in 8.5; the tools without methodology produce limited results, and methodology without tool fluency produces frustration.
+*Debugger and profiler fluency.* The practitioner can use debuggers effectively — setting breakpoints strategically, examining state, stepping through execution, conditional breakpoints, the various advanced features. The practitioner can use profilers to understand performance — interpreting profile output, identifying bottlenecks, choosing appropriate profiling approaches for specific performance questions.
 
-*Profiler fluency.* The practitioner can use profilers to identify performance bottlenecks rather than guessing, understands different profiler types (sampling versus instrumenting, CPU versus memory, the various others), interprets profile output usefully.
+*Container and cloud fluency.* The practitioner is fluent with Docker (or equivalent), can write Dockerfiles, can use docker-compose for local development, can deploy containers to cloud platforms or Kubernetes. The practitioner is fluent with at least one cloud platform's tooling at the level of being able to provision resources, deploy applications, and diagnose deployment issues.
 
-*Container fluency.* The practitioner is fluent with Docker or equivalent for local development, can build and debug containers, understands container fundamentals (images, layers, networking, volumes) sufficient for development use.
+*Build system and dependency management fluency.* The practitioner is fluent with the build systems and package managers for languages used, can configure builds, can manage dependencies, can diagnose build issues.
 
-*Investment appreciation.* The practitioner appreciates that investment in tooling fluency pays substantial dividends and allocates time to tooling development rather than treating tooling as fixed background. The compounding nature of tooling investment over careers is significant.
+*AI tool fluency.* The practitioner uses contemporary AI-augmented development tools effectively, with appreciation for what they do well and what they do poorly, integrating them productively into workflow rather than either avoiding them or relying on them uncritically.
 
-*AI-augmented tool fluency.* The practitioner uses contemporary AI-augmented development tools effectively, with appreciation for what they do well and what they do poorly, integrating them productively into workflow rather than either avoiding them or relying on them uncritically. This capability has become substantively important in contemporary development.
+*Appreciation for tooling investment.* The practitioner appreciates that investment in tooling fluency pays dividends and allocates time to tooling development rather than treating tooling as fixed background.
 
 ### How development should proceed
 
-Tooling fluency develops through deliberate practice rather than through casual exposure. The practitioner who invests deliberately in tooling — learning keyboard shortcuts systematically, exploring tool features beyond default usage, customizing tools to fit personal workflow — develops fluency that practitioners using tools casually do not develop.
+Tooling fluency develops through deliberate practice rather than through casual exposure. The practitioner who invests deliberately in tooling — learning keyboard shortcuts systematically, exploring tool features beyond default usage, customizing tools to fit personal workflow, reading tool documentation — develops fluency that practitioners using tools casually do not.
 
-A reasonable progression involves early commitment to at least one editor with deliberate practice. The choice between Vim/Neovim, Emacs, VS Code, the JetBrains family, or other options matters substantially less than the depth of commitment to whichever is chosen. Each option has substantial productive practitioners; the differentiator is depth of engagement rather than choice.
+A reasonable progression involves early commitment to at least one editor with deliberate practice. The choice between Vim/Neovim, Emacs, VS Code, the JetBrains family, Zed, or other options matters less than substantial commitment to whichever is chosen. Each option has productive practitioners; the substantial differentiator is depth of engagement rather than choice. For learners new to programming, VS Code is reasonable default — accessible, well-maintained, broad language support, low barrier to entry. For learners pursuing keyboard-driven workflow, Vim/Neovim or Emacs reward longer-term investment with workflow that mouse-driven editors do not provide. For learners working primarily in language ecosystems with strong IDE support (Java, Kotlin, large C++ codebases), the JetBrains family provides language-aware features that lighter editors lack.
 
-Vim/Neovim users benefit from systematic engagement with modal editing, the operator-motion grammar, registers, marks, macros, and the various productivity features that distinguish casual Vim use from fluent Vim use. *Practical Vim* by Drew Neil is unusually well-pedagogically constructed for this development. The Neovim ecosystem has developed substantially with Lua-based configuration and Language Server Protocol integration.
+Command-line fluency develops through daily use complemented by deliberate learning. Reading command-line tool documentation systematically, learning shell scripting, exploring less commonly used tools (find, xargs, jq, ripgrep, fd, fzf, the various others) — all develop fluency. The Unix philosophy of small composable tools rewards investment.
 
-Emacs users benefit from engagement with elisp customization, the various major modes, and Emacs-specific workflow features (org-mode for note-taking and task management, magit for Git, the various others). The investment in Emacs is substantial but rewards practitioners who commit deeply. The trajectory of Emacs adoption has declined relative to other editors but the existing community remains substantive.
+Git fluency develops through use complemented by deliberate engagement with deeper Git material. The Pro Git book (free) covers Git in depth. Learning Git concepts (the data structures Git uses, the various operations as compositions of these) rather than only commands produces deeper fluency. Most Git operations are compositions of a small number of fundamental operations on a small number of fundamental data structures; understanding these makes Git substantially more comprehensible than memorizing command sequences.
 
-VS Code users benefit from engagement with the extension ecosystem, keyboard customization, settings sync, and the various productivity features. VS Code's extension marketplace and steady development have made it the contemporary default for many practitioners. The contemporary frontier is increasingly AI-augmented forks (Cursor specifically) and successors (Zed, the various others).
+Debugger fluency develops through use on substantive debugging problems. Reading debugger documentation, watching experienced debuggers work, deliberate practice with debuggers — all develop fluency. Section 8.5 covers debugging methodology, which uses debuggers as one tool among several.
 
-JetBrains IDE users benefit from engagement with the deep refactoring features, the language-specific intelligence, and the various productivity features that distinguish JetBrains tools from text editors with extensions. The investment is substantial but rewards practitioners working in JetBrains' supported languages.
+Container fluency develops through use on substantive projects. Building Dockerfiles for real applications, using Docker Compose for multi-service local development, deploying containers to production environments, diagnosing container issues — all develop fluency.
 
-Command-line fluency develops through daily use complemented by deliberate learning. Reading command-line tool documentation systematically, learning shell scripting beyond casual use, exploring less commonly used tools (jq for JSON, awk for text processing, the various others) all develop fluency. The Unix philosophy rewards investment.
+Cloud platform fluency develops through substantive use of cloud platforms. Following platform-specific documentation, working through certification preparation materials (even without intent to certify), building substantive projects on cloud platforms — all develop fluency. Cloud platforms have substantial depth that rewards investment, and practitioners benefit from deep familiarity with at least one platform rather than shallow familiarity with all major platforms.
 
-Git fluency develops through use complemented by deliberate engagement with deeper Git material. *Pro Git* by Chacon and Straub (free, second edition 2014) covers Git substantially. The Git Internals chapter is unusually valuable for understanding Git as data structure rather than as collection of commands. Mary Rose Cook's *Git from the Inside Out* (free) provides accessible alternative for understanding internals. Once internals are understood, Git's command surface stops feeling arbitrary and starts feeling like operations on data structures.
+#### A note on AI-augmented development tools
 
-Container fluency develops through use for development work. Building Dockerfiles for actual projects, debugging containers, using docker-compose for multi-service development, gradually engaging with more advanced concerns (multi-stage builds, BuildKit, security considerations) develops fluency.
+The AI-augmented development tool revolution warrants extended discussion because it represents the most substantive shift in development tooling in recent decades, with implications that practitioners are still working out.
 
-Profiler fluency requires deliberate practice with actual performance problems. Reading profile output, identifying bottlenecks, validating that proposed fixes actually help — all develop the practical sense that profiler use requires.
+The tool landscape includes several substantively different categories.
 
-AI-augmented tool integration is contemporary substantive concern warranting deliberate development. Specific recommendations:
+*Code completion tools* (GitHub Copilot in its original form, Tabnine, the various others) provide inline completions as the practitioner types, suggesting next tokens, lines, or small blocks. These integrate into editors and provide productivity for routine coding.
 
-For tool selection: GitHub Copilot remains widely used as inline completion in various editors. Cursor is VS Code fork specifically optimized for AI integration with substantive workflow features (Composer for multi-file edits, agent mode for autonomous task execution). Claude Code is Anthropic's terminal-based agent for delegating development tasks; the agent paradigm differs from inline completion in workflow implications. Aider provides terminal-based AI pair programming with Git integration. Windsurf, Cline, and the various others offer alternative approaches. Practitioners benefit from trying multiple tools rather than committing to one without comparison.
+*Conversational coding assistants* (ChatGPT, Claude in browser, the various others) provide chat-based interaction where practitioners describe what they want and receive code in response. These work outside the editor and are useful for exploration, explanation, and substantive code generation.
 
-For workflow integration: AI tools work well for boilerplate generation, syntax recall, common pattern implementation, simple refactoring, test generation. AI tools work less well for novel problem-solving, debugging subtle issues, code review of substantive design decisions, work requiring substantive context that the AI cannot easily access. Practitioners should match tool use to task fit rather than applying AI tools uniformly.
+*Agentic coding tools* (Cursor, Claude Code, Windsurf, Aider, the various others) provide more substantial integration where the AI can read multiple files, make multi-file edits, run commands, observe results, and iterate. These represent the contemporary frontier and substantially change what the AI can accomplish in a single interaction.
 
-For learning preservation: AI tools can substantially shortcut learning if used uncritically. Specific practices preserve learning: read AI-generated code rather than accepting it; ask AI tools why something works rather than only what to do; turn off AI completion when learning new languages or concepts; maintain personal practice projects where AI is not used to build foundation.
+*Specialized tools* address specific use cases — code review (CodeRabbit, the various others), test generation, documentation generation, security analysis, the various others.
 
-For evaluation: AI-generated code can be subtly wrong in ways that pass surface inspection. Practitioners benefit from systematic evaluation practices — running tests, checking edge cases, reading carefully rather than skimming. The cost of accepting wrong AI output uncritically can be substantial.
+The differences between these categories are substantive. Code completion tools provide marginal productivity on routine work but cannot handle substantial tasks. Conversational assistants can produce substantial code but cannot directly modify the codebase. Agentic tools can complete substantial multi-step tasks but require more careful supervision because they can make changes the practitioner did not anticipate.
+
+Several considerations apply to using these tools effectively:
+
+*Use AI tools to amplify rather than replace understanding.* Practitioners who use AI tools without understanding what they produce develop limited fluency over time, since the AI handles tasks the practitioner would otherwise learn from. Practitioners who use AI tools as augmentation — reading and understanding AI-generated code, asking the AI to explain choices, treating AI output as starting point rather than final answer — develop fluency while gaining productivity. The discipline of reading AI-generated code critically is integral to productive use.
+
+*Recognize where AI tools are reliable and where they are not.* AI tools are typically reliable for routine code (boilerplate, standard patterns, well-known idioms), translation between languages, generating tests for existing code, explaining unfamiliar code, suggesting refactorings. AI tools are typically less reliable for novel problems requiring substantive design judgment, for code requiring subtle correctness reasoning, for security-sensitive code, for performance-critical code, for code that must integrate with poorly-documented systems. Practitioners benefit from calibrated trust — high trust where AI is reliable, lower trust where it is not.
+
+*Develop workflow integration deliberately.* The most productive AI tool use involves deliberate workflow integration — knowing when to invoke AI tools, knowing when to work without them, knowing how to provide context that enables good AI output, knowing how to verify AI output. Casual use without deliberate workflow produces casual results.
+
+*Maintain independent fluency.* Practitioners who become substantially dependent on AI tools risk becoming unable to work productively without them. Maintaining independent fluency — practicing without AI assistance periodically, understanding fundamentals deeply enough to work without AI when needed — prevents this dependency.
+
+*Recognize the rapid evolution.* The AI tool landscape is evolving substantially. Tools that are state-of-the-art now may not be in two years; tools that do not exist now will exist in two years. Practitioners benefit from maintaining awareness of the evolving landscape rather than over-investing in current tools as if they will remain stable.
+
+The current tools (as of late 2026) include several with substantial adoption. GitHub Copilot remains widely used for inline completion. Cursor has emerged as substantial editor-based agentic tool. Claude Code has emerged as substantial terminal-based agentic tool. Windsurf provides alternative agentic environment. The various tools have different strengths; practitioners benefit from engagement with at least one current tool while maintaining awareness of the broader landscape.
+
+A final consideration: the productivity claims around AI tools should be treated with appropriate skepticism. Marketing materials and enthusiastic blog posts often overstate productivity gains. Empirical studies show real but variable productivity improvements, with substantial dependence on task type and practitioner skill. Practitioners benefit from forming their own assessment based on their work rather than accepting either enthusiastic or skeptical accounts uncritically.
 
 ### Reference material
 
 #### Canonical references
 
-For Vim/Neovim, *Practical Vim* by Drew Neil (second edition, 2015) is the substantive reference. Neovim-specific resources are increasingly substantial — the Neovim documentation, the various LazyVim and similar starter configurations, the substantial Lua ecosystem.
+For Vim/Neovim, Drew Neil's *Practical Vim* (second edition, 2015) is the substantive reference. The various Neovim-specific resources are increasingly substantive — the Neovim documentation (free), the various Lua-based configuration ecosystems (LazyVim, AstroNvim, NvChad). Vim-galore (free, GitHub) provides extensive reference.
 
-For Emacs, the Emacs documentation (free) is canonical. *Mastering Emacs* by Mickey Petersen (online and book) provides substantive contemporary reference. *An Introduction to Programming in Emacs Lisp* (free) covers elisp.
+For Emacs, the Emacs documentation (free) is canonical. Mickey Petersen's *Mastering Emacs* provides substantial reference. The various Emacs distributions (Doom Emacs, Spacemacs) provide accessible starting points.
 
-For VS Code, the official documentation (free) is comprehensive. The various VS Code-specific resources cover specific topics (settings, extensions, debugging, the various others).
+For VS Code, the official documentation (free) is comprehensive. The various VS Code-specific resources extend.
 
-For JetBrains IDEs, the official documentation (free) covers each IDE. The various JetBrains-specific blogs and resources cover advanced topics.
+For JetBrains IDEs, the JetBrains documentation (free) is canonical for each IDE in the family.
 
-For Git, *Pro Git* by Chacon and Straub (free, second edition 2014) is canonical. The Git Internals chapter is unusually valuable. Mary Rose Cook's *Git from the Inside Out* (free) provides accessible internals coverage. *Learn Git Branching* (free, interactive) provides accessible visual learning.
+For Git, Pro Git by Chacon and Straub (free, second edition 2014) is the canonical reference. The Git Internals chapter is unusually valuable for deeper understanding. Mary Rose Cook's *Git from the Inside Out* (free) provides substantial conceptual understanding by walking through what Git actually does. Julia Evans's various Git zines and posts (some free, some paid) provide accessible explanations of specific Git concepts.
 
-For command-line and shell, *The Linux Command Line* by William Shotts (free) provides accessible introduction. *Classic Shell Scripting* by Robbins and Beebe covers shell scripting substantively. *The Art of Command Line* (free, GitHub) provides concise reference. The MIT Missing Semester course (free) covers command-line and developer tools comprehensively and is unusually valuable for practitioners whose formal education did not cover tooling.
+For command-line and shell, William Shotts's *The Linux Command Line* (free) provides introduction. Robbins and Beebe's *Classic Shell Scripting* covers shell scripting. *The Art of Command Line* (free, GitHub) provides concise reference.
 
-For Docker and containers, the Docker documentation (free) is canonical. *Docker Deep Dive* by Nigel Poulton provides substantive reference. *Container Security* by Liz Rice covers security considerations.
+For specific command-line tools, the various tool-specific documentation provides reference. *grep* (GNU manual), *awk* (the AWK book by Aho, Weinberger, Kernighan), *sed* (GNU manual), *find* (GNU manual), *jq* (jq manual), *ripgrep*, *fd*, *fzf* — each with documentation.
 
-For Kubernetes, *Kubernetes Up & Running* by Burns, Beda, Hightower, Strebel (third edition, 2022, mentioned in Section 4.5) is substantive reference.
+For debugging tools specifically (debuggers as tools, not debugging methodology), the GDB documentation (free), LLDB documentation (free), Python debugger documentation, and the various IDE-integrated debugger documentation provide reference.
 
-For Make and build systems, *Managing Projects with GNU Make* by Mecklenburg covers Make. CMake documentation (free) covers CMake. Bazel documentation (free) covers Bazel.
+For profilers, the perf wiki (free), the various flamegraph documentation, and language-specific profiler documentation provide reference. Brendan Gregg's *Systems Performance* (second edition, 2020) covers systems-level profiling extensively.
 
-For AI-augmented development tools, official documentation for each tool (free) is the primary reference. Practitioner blog posts and YouTube content cover practical use, with quality varying substantially. Engagement with multiple tools through actual use produces more reliable evaluation than reading reviews.
+For Docker and containers, the Docker documentation (free) is canonical. Nigel Poulton's *Docker Deep Dive* provides substantial reference. The Open Container Initiative documentation covers container standards.
 
-For cloud platform tools, the AWS, GCP, Azure documentation (free) is canonical. Platform-specific certification preparation materials cover broader cloud platform fluency.
+For Kubernetes, Burns, Beda, Hightower's *Kubernetes Up & Running* (third edition, 2022, mentioned in Section 4.5) is the standard reference.
 
-For profilers, the various language-specific profiler documentation (cProfile for Python, pprof for Go, perf for Linux, the various others) provides reference. Brendan Gregg's *Systems Performance* (second edition, 2020) covers performance analysis substantively, including profiler use.
+For Make and build systems, Robert Mecklenburg's *Managing Projects with GNU Make* covers Make. CMake documentation (free) covers CMake. Bazel documentation (free) covers Bazel. The various build system tutorials extend coverage.
+
+For AI-augmented development tools, the documentation for each tool (GitHub Copilot, Cursor, Claude Code, Windsurf, the various others) is canonical and freely available. The various practitioner blog posts and YouTube content cover practical use, with quality varying considerably. The Anthropic and OpenAI engineering blogs provide some substantive content.
+
+For cloud platforms, the AWS documentation, Google Cloud documentation, Azure documentation (all free) are canonical. The various platform-specific certification preparation materials (Solutions Architect, the various others) cover broader platform fluency. AWS Skill Builder, Google Cloud Skills Boost, Microsoft Learn provide free training.
+
+For terraform and infrastructure-as-code, the terraform documentation (free) is canonical. Yevgeniy Brikman's *Terraform: Up & Running* (third edition, 2022) provides substantial reference.
 
 #### What to skip and why
 
-Books on old versions of actively evolving tools are substantially dated. Pre-2015 Git books, pre-Neovim Vim books, pre-modern Docker books should be supplemented with current materials.
+Books on old versions of actively evolving tools are often substantially dated. A Git book from 2010 covers Git but predates substantial features and workflow evolution.
 
-Most "tips and tricks" books on tools provide limited value relative to systematic engagement with tool documentation. The exceptions are books that cover specific tools in substantive depth (Practical Vim, Pro Git).
+Most "tips and tricks" books on tools provide limited value relative to systematic engagement with tool documentation. The tips are often outdated or contextual; the underlying conceptual material in good documentation transfers better.
 
-Books on substantially obscure or declining tools may be appropriate as historical references but less relevant for contemporary practice.
+Books on obscure or declining tools may be appropriate as historical references but less relevant for contemporary practice.
 
-Books on AI tools that promise mastery of specific tools are typically dated quickly. The AI tooling landscape changes rapidly, and tool-specific guidance becomes obsolete quickly. Engagement with current documentation and current practitioner discussion is more valuable than dated tool-specific books.
+Most online tutorials on specific tools are uneven in quality. The exceptions — well-maintained official documentation, well-regarded books, community-maintained resources, recordings from substantial conferences — are valuable.
 
-Books that promise productivity transformation without substantive content (the various "productivity" books that recommend specific tools without engaging with what makes practitioners productive) provide limited value.
+Books promising AI tool mastery without substantive engagement with what the tools actually do should be approached with skepticism. The space evolves rapidly enough that books risk being outdated by the time they reach print; current documentation and practitioner blogs serve better.
 
 #### Reference table
 
 | Resource | Role | Tag |
 |---|---|---|
 | Pro Git (free, 2nd ed.) | Git canonical | Permanent canon, reference, spine |
-| Mary Rose Cook, Git from the Inside Out (free) | Git conceptual | Current canon, depth |
-| Learn Git Branching (free, interactive) | Visual Git learning | Current canon, entry |
+| Mary Rose Cook, *Git from the Inside Out* (free) | Git conceptual | Current canon, depth |
+| Julia Evans Git zines/posts | Accessible Git explanations | Current canon, entry |
 | Neil, *Practical Vim* (2nd ed.) | Vim mastery | Current canon, depth |
-| Neovim documentation (free) + LazyVim and starter configs | Neovim ecosystem | Current canon, reference, ongoing |
 | Petersen, *Mastering Emacs* | Emacs mastery | Current canon, depth |
+| Neovim documentation (free) | Neovim reference | Current canon, reference, ongoing |
 | VS Code documentation (free) | VS Code reference | Current canon, reference, ongoing |
-| JetBrains documentation (free) | JetBrains IDE reference | Current canon, reference, ongoing |
-| MIT Missing Semester (free) | Comprehensive tooling intro | Current canon, entry, spine |
+| JetBrains documentation (free) | JetBrains IDEs reference | Current canon, reference, ongoing |
 | Shotts, *The Linux Command Line* (free) | Command line introduction | Current canon, entry |
 | Robbins, Beebe, *Classic Shell Scripting* | Shell scripting | Current canon, depth |
 | The Art of Command Line (free, GitHub) | Concise command line reference | Current canon, reference |
+| Aho, Weinberger, Kernighan, *The AWK Programming Language* (2nd ed., 2024) | AWK canonical | Permanent canon, reference |
+| GDB documentation (free) | GDB reference | Permanent canon, reference |
+| LLDB documentation (free) | LLDB reference | Current canon, reference |
+| Gregg, *Systems Performance* (2nd ed.) | Systems profiling canonical | Current canon, depth, spine |
 | Docker documentation (free) | Docker canonical | Current canon, reference, ongoing |
-| Poulton, *Docker Deep Dive* | Docker depth | Current canon, depth |
-| Rice, *Container Security* | Container security | Current canon, depth |
-| Burns et al., *Kubernetes Up & Running* (3rd ed., mentioned 4.5) | Kubernetes reference | Current canon, depth |
-| Mecklenburg, *Managing Projects with GNU Make* | Make canonical | Permanent canon, reference |
+| Poulton, *Docker Deep Dive* | Docker substantial | Current canon, depth |
+| Burns, Beda, Hightower, *Kubernetes Up & Running* (3rd ed., mentioned 4.5) | Kubernetes reference | Current canon, depth |
+| Mecklenburg, *Managing Projects with GNU Make* | Make reference | Permanent canon, reference |
 | CMake documentation (free) | CMake reference | Current canon, reference |
 | Bazel documentation (free) | Bazel reference | Current canon, reference |
-| GitHub Copilot / Cursor / Claude Code / Aider documentation (free) | AI tools reference | Current canon, reference, ongoing |
+| Brikman, *Terraform: Up & Running* (3rd ed.) | Terraform reference | Current canon, depth |
+| GitHub Copilot documentation (free) | AI tool reference | Current canon, reference, ongoing |
+| Cursor documentation (free) | AI tool reference | Current canon, reference, ongoing |
+| Claude Code documentation (free) | AI tool reference | Current canon, reference, ongoing |
 | AWS / GCP / Azure documentation (free, mentioned 6.1) | Cloud platform reference | Current canon, reference, ongoing |
-| Gregg, *Systems Performance* (2nd ed.) | Performance analysis canonical | Permanent canon, depth, spine |
-| Language-specific profiler documentation | Profiler references | Current canon, reference, ongoing |
-| Old tool version books | Substantially dated | Skip alone (use current) |
-| Tips and tricks books | Limited value | Skip (in favor of systematic engagement) |
-| AI tool-specific mastery books | Dated quickly | Skip (in favor of current docs) |
-| Productivity books without substance | Limited value | Skip (in favor of skill development) |
+| Old tool version books | Substantially dated | Skip (use current) |
+| Tips and tricks books | Limited transferable value | Skip (in favor of systematic engagement) |
+| AI tool mastery books | Rapidly outdated | Skip alone (use current docs) |
+| Casual blog tutorials on tools | Often outdated | Skip (in favor of canonical sources) |
 
 ### A note on contemporary relevance
 
-The AI-augmented tool revolution has reshaped contemporary practitioner work. The trajectory in roughly 2022-2026 has been remarkable: AI coding tools moved from experimental novelty (early Copilot) to substantive component of daily work (current Copilot, Cursor, Claude Code, the various others) over a few years. The implications for tooling discussion cannot be ignored.
+The AI-augmented tool revolution is the most substantive shift in development tooling in recent decades. The implications continue to develop, and practitioners who engage thoughtfully — neither dismissing AI tools nor relying on them uncritically — develop productive workflows while maintaining substantive understanding. The reflexive responses (AI tools should be avoided to preserve learning, AI tools should replace traditional skills) are both inadequate. The substantive position requires deliberate practice with AI tools alongside maintained engagement with fundamentals.
 
-The contemporary tool comparison among AI-augmented tools is substantive. GitHub Copilot remains widely used as inline completion across editors. Cursor has emerged as substantive alternative with VS Code-based environment specifically designed for AI integration — its Composer feature for multi-file edits and agent mode for autonomous task execution have substantive practitioner adoption. Claude Code is Anthropic's terminal-based agent for delegating development tasks; the agent paradigm differs from inline completion in workflow implications. Aider provides terminal-based AI pair programming with Git integration. Windsurf, Cline, and the various others provide alternative approaches. The space evolves rapidly, and current rankings will likely shift.
+Container technology has matured substantially. Docker has become foundational for most contemporary backend and systems development, with container fluency now expected of most practitioners working in these areas. The container ecosystem has stabilized after substantial earlier turbulence, with Docker's runtime (or compatible runtimes), OCI image format, and Kubernetes as deployment target now constituting de facto standard.
 
-Important practitioner concerns specific to AI tools:
+Cloud platform tooling has matured but also continues evolving. The major platforms (AWS, GCP, Azure) provide substantially capable tooling, with similar capabilities expressed in platform-specific ways. Practitioners benefit from deep familiarity with one platform plus surface familiarity with others. The trend toward managed services continues, with implications for what tooling practitioners need (less server-level management, more managed-service configuration).
 
-Privacy and data handling considerations matter substantially. AI tools transmit code to provider servers; some have enterprise modes with stronger privacy guarantees, some allow local model use, some default to data sharing for training. Practitioners working with sensitive code (proprietary, regulated, security-critical) should engage substantively with privacy considerations rather than treating these as minor concerns.
+Editor and IDE landscape continues evolving. VS Code's dominance in general-purpose use continues. Cursor and similar AI-first editors represent recent substantive development. JetBrains family remains strong in language-specific contexts. Vim/Neovim and Emacs continue to maintain dedicated user communities. Helix represents recent attempt at modern modal editor without Vim's historical accumulation. Zed represents recent attempt at performance-focused contemporary editor.
 
-Cost and access considerations matter. AI tool subscriptions accumulate substantially across multiple tools. Many tools have free tiers with various limitations. Open-source alternatives (running local models with Ollama or similar) provide cost-free options at quality and convenience tradeoffs.
+The gap between practitioners with strong tooling fluency and practitioners without is substantial and compounds over careers. A practitioner spending hours daily in development tools accumulates substantial productivity differences from another practitioner using the same tools casually. The investment in tooling fluency early and continuously pays dividends throughout careers — it is among the higher-leverage investments practitioners can make in their own productivity.
 
-Skill atrophy risks matter substantially. Practitioners who delegate routine work to AI tools without deliberate skill maintenance may find that their underlying skills atrophy in ways that become substantive when AI tools are unavailable, when AI output is wrong, or when frontier work requires capabilities the AI does not have. Specific countermeasures: maintaining personal practice projects without AI assistance, periodically completing substantive work without AI tools, engaging deliberately with code review and reading rather than relying on AI for these.
-
-Code quality considerations matter. AI-generated code can be substantially correct on average while being subtly wrong in specific cases. The substantial existing literature on code review, on testing, on validation applies to AI-generated code as it applies to human-generated code; practitioners benefit from continuing to apply this literature rather than assuming AI output is correct.
-
-Beyond AI tools, several other tooling developments are substantively important.
-
-The Rust toolchain (cargo) has set standards for build systems and package managers that other ecosystems are following. The integration of dependency management, build, test, formatting, linting, and the various other concerns into a single tool has substantively raised expectations. Python's uv (a Rust-based pip replacement) and similar developments reflect this influence.
-
-The Language Server Protocol (LSP) has substantively standardized editor integration with language tools. The result is that editors can support diverse languages with similar quality, reducing language-specific editor lock-in. LSP has also enabled the proliferation of editors (Neovim's modern reincarnation, Zed, Helix, the various others) by lowering the cost of language support.
-
-Containers have become substantive components of development environments beyond their production deployment role. Development containers (devcontainers, in VS Code terminology) provide reproducible development environments that approach production-like setups for development.
-
-The various command-line tool replacements (ripgrep replacing grep for many uses, fd replacing find, bat replacing cat, eza replacing ls, the various others) have substantially improved command-line experience. These tools are typically faster, more featureful, and more pleasant to use than the traditional Unix tools they replace, while maintaining backward compatibility for scripts. CS practitioners benefit from awareness of these alternatives even when they retain the traditional tools for muscle memory or scripting reasons.
-
-Cloud development environments (GitHub Codespaces, Gitpod, the various others) have emerged as substantive alternative to local development for some work. The trajectory is unclear — adoption has not become universal — but the option exists for practitioners whose workflows benefit, particularly for onboarding new contributors to substantial projects.
-
-A final observation: the gap between practitioners with strong tooling fluency and practitioners without is substantial, and the gap compounds over careers. Investment in tooling fluency early and continuously pays dividends throughout careers. The investment is substantively rewarding even after substantive AI tool adoption — perhaps especially after AI tool adoption, since AI tools are most productive in the hands of practitioners with strong underlying tooling fluency.
+A practical observation specific to the contemporary moment: the rate of tooling change is high. Practitioners benefit from periodic reassessment of tooling rather than treating early-career tooling choices as permanent. The reassessment should focus on whether current tools serve current work well, not on chasing every new tool. Tools that have stabilized and matured (Git, Docker, the various core Unix tools) deserve continued investment; tools in active flux (AI development tools, the various others) deserve calibrated engagement that recognizes ongoing evolution.
 
