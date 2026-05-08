@@ -135,6 +135,30 @@ Valid modes: list | chart | compact | false | nil
 <head>
   {% include head.html %}
 
+  <!-- [APPEARANCE] -->
+  <!-- HACKED SPLASH: critical first-paint mask + plug-and-play JS -->
+  <link rel="preload" href="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}" as="script">
+  <script src="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}"></script>
+  <!-- MATRIX LETTER BOMB -->
+  <script defer src="{{ '/src/assets/js/matrix-letter-bomb.js' | relative_url }}"></script>
+  <!-- ASCII ANIME -->
+  <script defer src="{{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
+  <!-- GLITCH TITLE + META_INFO -->
+  <script defer src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
+  <!-- MATRIX BACKGROUND -->
+  {% if show_matrix_bg %}
+  <script defer src="{{ '/src/assets/js/matrix-letter-fall.js' | relative_url }}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.MatrixBackground && window.MatrixBackground.updateConfig) {
+        window.MatrixBackground.updateConfig({
+          text: {{ matrix_bg_text | jsonify }}
+      });
+    }
+  });
+  </script>
+  {% endif %}
+
   <!-- [FUNCTION ENHANCEMENT] -->
   <!-- ANTI-COPY -->
   {% if page.anticopy == true %}
@@ -169,17 +193,10 @@ Valid modes: list | chart | compact | false | nil
   <script defer src="{{ '/src/assets/js/parallel-text.js' | relative_url }}"></script>
   {% endif %}
 
-  <!-- [APPEARANCE] -->
-  <!-- MATRIX LETTER BOMB -->
-  <script defer src="{{ '/src/assets/js/matrix-letter-bomb.js' | relative_url }}"></script>
-  <!-- ASCII ANIME -->
-  <script defer src="{{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
-  <!-- GLITCH TITLE + META_INFO -->
-  <script defer src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
+
 </head>
 
 <body class=" page">
-
   <!-- [APPEARENCE] -->
   <!-- HACKED SPLASH: critical first-paint mask + plug-and-play JS -->
   <style id="hacked-splash-critical-style">
@@ -191,21 +208,16 @@ Valid modes: list | chart | compact | false | nil
       pointer-events: none;
       background: #000;
       opacity: 1;
+
+      display: grid;
+      place-items: center;
+      font: 700 16px/2 monospace;
     }
   </style>
-  <div id="hacked-face-layer" aria-hidden="true"></div>
-  <link rel="preload" href="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}" as="script">
-  <script src="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}" defer></script>
 
-  <!-- MATRIX BACKGROUND -->
-  {% if show_matrix_bg %}
-  <script src="{{ '/src/assets/js/matrix-letter-fall.js' | relative_url }}"></script>
-  <script>
-    window.MatrixBackground.updateConfig({
-      text: "{{ matrix_bg_text }}"
-    });
-  </script>
-  {% endif %}
+  <div id="hacked-face-layer" aria-hidden="true">
+    [EXEC] INJECTING PAYLOAD...<br>[AUTH] PERMISSION ACQUIRED...<br>[ROOT] SYSTEM TAKEN.
+  </div>
   <!-- CONTEXT MENU -->
   {% if context_menu_enabled %}
   {% include context_menu.html %}
