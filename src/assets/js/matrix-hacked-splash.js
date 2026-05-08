@@ -23,8 +23,8 @@
  *   No _include wrapper is required; required layers are created when absent.
  *   Existing #hacked-face-layer, #hacked-splash-canvas, and #hacked-flash-layer nodes are reused.
  *   The face and flash effects have separate timers and separate parameters.
- *   The face layer fades as a whole, including the black mask/background.
- *   Flash word count is controlled by flash.count or viewport-based density.
+ *   The face layer fades through JS timing, not CSS animation.
+ *   Flash word count is controlled by flash.count or viewport-based density. Critical cleanup never depends on CSS animation events.
  */
 
 (function (window, document) {
@@ -239,7 +239,7 @@
       enabled: true, // Enable floating alert words.
       layerId: "hacked-flash-layer", // Flash word layer.
       startDelay: 0, // Delay before flash generation starts.
-      spawnDuration: 760, // Duration of flash word generation in ms.
+      spawnDuration: 600, // Duration of flash word generation in ms.
       holdDuration: 200, // Extra hold time after generation before random decay.
       regularDecayDuration: 1000, // Random disappearance duration for normal words.
       count: null, // Fixed max word count; null means viewport-based.
@@ -254,20 +254,20 @@
       outMax: 460, // Maximum normal exit duration.
 
       finalCountMin: 1, // Minimum number of final long-glitch words.
-      finalCountMax: 2, // Maximum number of final long-glitch words.
+      finalCountMax: 3, // Maximum number of final long-glitch words.
       finalDurationMin: 2000, // Minimum final long-glitch duration.
-      finalDurationMax: 3000, // Maximum final long-glitch duration.
+      finalDurationMax: 4000, // Maximum final long-glitch duration.
       finalBlinkMin: 6, // Minimum final hide/show cycles.
       finalBlinkMax: 12, // Maximum final hide/show cycles.
       finalHideMin: 80, // Minimum hidden time per blink in ms.
       finalHideMax: 260, // Maximum hidden time per blink in ms.
       finalShowMin: 90, // Minimum visible time per blink in ms.
       finalShowMax: 320, // Maximum visible time per blink in ms.
-      finalReskinChance: 0.5, // Chance to switch to another alert style when reappearing.
+      finalReskinChance: 0.45, // Chance to switch to another alert style when reappearing.
       finalSwitchMin: 1, // Minimum number of forced style/text switches.
-      finalSwitchMax: 4, // Maximum number of forced style/text switches.
+      finalSwitchMax: 2, // Maximum number of forced style/text switches.
 
-      mobileBreakpoint: 768, // Width below which flash font shrinks.
+      mobileBreakpoint: 600, // Width below which flash font shrinks.
       mobileScale: 0.72, // Flash font scaling on mobile.
       largeChance: 0.06, // Probability of large flash words.
       mediumChance: 0.22, // Probability of medium flash words when not large.
@@ -321,6 +321,7 @@
     faceStart: 0,
     faceLastFrame: 0,
     faceRaf: 0,
+    faceFadeRaf: 0,
     flashStart: 0,
     flashTimer: 0,
     resizeTimer: 0,
@@ -486,10 +487,6 @@
       "}",
       "#" + config.face.layerId + ".is-leaving {",
       "  pointer-events: none;",
-      "  animation: hackedSplashFaceLeave var(--hacked-face-fade, 520ms) ease forwards;",
-      "}",
-      "#" + config.face.layerId + ".is-leaving #" + config.face.canvasId + " {",
-      "  animation: hackedSplashFaceLeave var(--hacked-face-fade, 520ms) ease forwards;",
       "}",
       ".hacked-splash__flash {",
       "  position: absolute;",
@@ -514,23 +511,9 @@
       "  pointer-events: none;",
       "  user-select: none;",
       "  will-change: opacity, transform, filter;",
-      "  animation: hackedSplashFlashIn var(--dur) steps(2, end) both;",
       "}",
       ".hacked-splash__flash.is-decaying {",
-      "  animation: hackedSplashFlashOut var(--outdur) ease forwards;",
-      "}",
-      "@keyframes hackedSplashFaceLeave {",
-      "  0% { opacity: 1; }",
-      "  100% { opacity: 0; }",
-      "}",
-      "@keyframes hackedSplashFlashIn {",
-      "  0% { opacity: 0; filter: contrast(2); transform: translate(-50%, -50%) rotate(var(--r)) scale(0.84); }",
-      "  55% { opacity: 1; }",
-      "  100% { opacity: 1; filter: contrast(1); transform: translate(-50%, -50%) rotate(var(--r)) scale(var(--settle)); }",
-      "}",
-      "@keyframes hackedSplashFlashOut {",
-      "  0% { opacity: 1; filter: contrast(1.3); }",
-      "  100% { opacity: 0; filter: contrast(2.2) blur(0.08em); transform: translate(-50%, -50%) rotate(var(--r)) scale(0.92); }",
+      "  opacity: 0;",
       "}"
     ].join("\n");
   }
@@ -807,21 +790,50 @@
     }
   }
 
-  /* Fades and removes the whole face module; params: none. */
+  /* Fades and removes the whole face module with JS timing; params: none. */
   function leaveFace() {
+    const layer = state.faceLayer;
+    const fadeDuration = Math.max(0, Number(config.face.fadeDuration) || 0);
+
     state.faceRunning = false;
     window.cancelAnimationFrame(state.faceRaf);
+    window.cancelAnimationFrame(state.faceFadeRaf);
 
-    if (state.faceLayer && state.faceLayer.isConnected) {
-      state.faceLayer.style.setProperty("--hacked-face-fade", config.face.fadeDuration + "ms");
-      state.faceLayer.classList.add("is-leaving");
+    if (!layer || !layer.isConnected) return;
+
+    layer.classList.add("is-leaving");
+    layer.style.setProperty("--hacked-face-fade", fadeDuration + "ms");
+
+    if (!config.removeLayersOnFinish) return;
+
+    if (fadeDuration <= 0 || !window.requestAnimationFrame || !window.performance) {
+      layer.remove();
+      return;
     }
 
-    setTrackedTimeout(function () {
-      if (config.removeLayersOnFinish && state.faceLayer && state.faceLayer.isConnected) {
-        state.faceLayer.remove();
+    const startedAt = performance.now();
+
+    const step = function (now) {
+      if (!layer.isConnected) return;
+
+      const progress = clamp((now - startedAt) / fadeDuration, 0, 1);
+
+      layer.style.opacity = String(1 - progress);
+
+      if (progress < 1) {
+        state.faceFadeRaf = window.requestAnimationFrame(step);
+      } else if (layer.isConnected) {
+        layer.remove();
       }
-    }, config.face.fadeDuration);
+    };
+
+    state.faceFadeRaf = window.requestAnimationFrame(step);
+
+    setTrackedTimeout(function () {
+      if (layer.isConnected) {
+        layer.remove(); // Failsafe when RAF is throttled or interrupted.
+      }
+    }, fadeDuration + 120);
   }
 
   /* Starts only the face module; params: nextConfig<object>. */
@@ -941,6 +953,7 @@
     span.style.setProperty("--outdur", rand(flash.outMin, flash.outMax) + "ms");
     span.style.setProperty("--color", picked.color);
     span.style.setProperty("--glow", picked.glow);
+    span.style.opacity = "1"; // JS-controlled visibility; no CSS animation dependency.
 
     state.activeFlashWords.push(span);
 
@@ -993,11 +1006,13 @@
     element.style.setProperty("--glow", picked.glow);
   }
 
-  /* Starts normal flash word disappearance; params: element<Element>. */
+  /* Removes one flash word with JS timing only; params: element<Element>. */
   function decayFlashWord(element) {
     if (!element || !element.isConnected) return;
 
     element.classList.add("is-decaying");
+    element.style.opacity = "0";
+    element.style.visibility = "hidden";
 
     const index = state.activeFlashWords.indexOf(element);
 
@@ -1190,6 +1205,7 @@
     state.flashRunning = false;
 
     window.cancelAnimationFrame(state.faceRaf);
+    window.cancelAnimationFrame(state.faceFadeRaf);
     window.clearTimeout(state.flashTimer);
     window.clearTimeout(state.resizeTimer);
     clearTrackedTimeouts();
