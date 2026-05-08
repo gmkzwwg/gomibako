@@ -21,7 +21,6 @@
  *
  * Notes:
  *   No _include wrapper is required; required layers are created when absent.
- *   Mobile-safe fallback cleanup removes the mask if canvas or RAF initialization fails.
  *   Existing #hacked-face-layer, #hacked-splash-canvas, and #hacked-flash-layer nodes are reused.
  *   The face and flash effects have separate timers and separate parameters.
  *   The face layer fades as a whole, including the black mask/background.
@@ -208,10 +207,9 @@
     layerParent: "body", // Parent for generated layers; use "body" or a selector string.
     respectReducedMotion: true, // Disable animation when prefers-reduced-motion is active.
     removeLayersOnFinish: true, // Remove effect layers after each effect finishes.
-    dprMax: 1.5, // Maximum canvas DPR; lower default avoids mobile GPU pressure.
-    maxCanvasPixels: 2600000, // Maximum backing-store pixels for mobile/tablet safety.
-    failSafeDelay: 2600, // Force face cleanup if RAF/canvas stalls.
-    debug: false, // Log recoverable mobile initialization errors.
+    dprMax: 2, // Maximum canvas DPR.
+    mobileDprMax: 1.25, // Lower DPR cap on mobile/tablet to avoid canvas allocation failure.
+    canvasPixelMax: 2500000, // Maximum internal canvas pixels before DPR is reduced.
 
     face: {
       enabled: true, // Enable ASCII face module.
@@ -221,7 +219,7 @@
       fadeDuration: 520, // Whole face module fade duration in ms.
       dissolveStartRatio: 0.42, // Ratio of duration when random disappearance begins.
       dissolveEndRatio: 0.92, // Ratio of duration when disappearance reaches full strength.
-      mobileBreakpoint: 768, // Width below which face font shrinks.
+      mobileBreakpoint: 600, // Width below which face font shrinks.
       mobileCellScale: 0.72, // Face cell scaling on mobile.
       cellMin: 12, // Minimum desktop cell size.
       cellMinMobile: 8, // Minimum mobile cell size.
@@ -234,7 +232,8 @@
       faceBaseColor: "rgba(245,255,245,", // Stable face character color prefix.
       faceNoiseColor: "rgba(110,255,150,", // Noisy face character color prefix.
       backgroundNoiseColor: "rgba(30,170,70,", // Background noise color prefix.
-      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace" // Canvas font.
+      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace", // Canvas font.
+      failSafeExtraDelay: 1000 // Force face removal if RAF/canvas stalls on mobile.
     },
 
     flash: {
@@ -323,7 +322,6 @@
     faceStart: 0,
     faceLastFrame: 0,
     faceRaf: 0,
-    faceFailSafeTimer: 0,
     flashStart: 0,
     flashTimer: 0,
     resizeTimer: 0,
@@ -440,43 +438,6 @@
     );
   }
 
-
-  /* Logs debug messages when enabled; params: message<string>, error<Error>. */
-  function debugWarn(message, error) {
-    if (!config.debug || !window.console || !window.console.warn) return;
-
-    window.console.warn("[HackedSplash] " + message, error || "");
-  }
-
-  /* Returns a timestamp with a fallback; params: none. */
-  function nowMs() {
-    return window.performance && typeof window.performance.now === "function"
-      ? window.performance.now()
-      : Date.now();
-  }
-
-  /* Pads a string on the right without requiring String.prototype.padEnd; params: value<string>, length<number>. */
-  function padRight(value, length) {
-    let output = String(value);
-
-    while (output.length < length) {
-      output += " ";
-    }
-
-    return output;
-  }
-
-  /* Removes a stuck face layer immediately; params: none. */
-  function removeFaceLayerNow() {
-    state.faceRunning = false;
-    window.cancelAnimationFrame(state.faceRaf);
-    window.clearTimeout(state.faceFailSafeTimer);
-
-    if (state.faceLayer && state.faceLayer.isConnected && config.removeLayersOnFinish) {
-      state.faceLayer.remove();
-    }
-  }
-
   /* Returns one random ASCII character; params: none. */
   function randomAscii() {
     return ASCII_PALETTE[Math.floor(Math.random() * ASCII_PALETTE.length)];
@@ -492,7 +453,7 @@
     }));
 
     return raw.map(function (line) {
-      return padRight(line, maxLen);
+      return line.padEnd(maxLen, " ");
     });
   }
 
@@ -627,11 +588,18 @@
       state.faceLayer.appendChild(state.canvas);
     }
 
-    try {
-      state.ctx = state.canvas && state.canvas.getContext ? state.canvas.getContext("2d") : null;
-    } catch (error) {
+    if (state.canvas && state.canvas.getContext) {
+      try {
+        state.ctx = state.canvas.getContext("2d", { alpha: false, desynchronized: true }); // Faster opaque canvas path when supported.
+      } catch (error) {
+        state.ctx = state.canvas.getContext("2d"); // Compatibility fallback.
+      }
+    } else {
       state.ctx = null;
-      debugWarn("Canvas context creation failed.", error);
+    }
+
+    if (!state.ctx && config.createLayers && state.faceLayer && state.faceLayer.isConnected) {
+      state.faceLayer.remove(); // Avoid a permanent black mask when canvas context creation fails.
     }
 
     return Boolean(state.faceLayer && state.canvas && state.ctx);
@@ -664,12 +632,13 @@
 
     readViewport();
 
-    const rawDpr = Math.max(1, Math.min(window.devicePixelRatio || 1, config.dprMax));
-    const pixelLimit = Math.max(1, Number(config.maxCanvasPixels) || 2600000);
-    const viewportPixels = Math.max(1, state.width * state.height);
-    const pixelSafeDpr = Math.max(1, Math.sqrt(pixelLimit / viewportPixels));
+    const viewportDpr = window.devicePixelRatio || 1;
+    const mobileCap = state.width < face.mobileBreakpoint ? config.mobileDprMax : config.dprMax;
+    const dprCap = Number.isFinite(Number(mobileCap)) ? Number(mobileCap) : config.dprMax;
+    const pixelMax = Math.max(1, Number(config.canvasPixelMax) || 2500000);
+    const areaDpr = Math.sqrt(pixelMax / Math.max(1, state.width * state.height));
 
-    state.dpr = Math.min(rawDpr, pixelSafeDpr);
+    state.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaDpr)); // Prevent oversized mobile canvas.
     state.canvas.width = Math.ceil(state.width * state.dpr);
     state.canvas.height = Math.ceil(state.height * state.dpr);
     state.canvas.style.width = state.width + "px";
@@ -824,23 +793,26 @@
   function drawFaceFrame(now) {
     if (!state.faceRunning || state.destroyed) return;
 
+    const elapsed = now - state.faceStart;
+    const deltaMs = state.faceLastFrame ? now - state.faceLastFrame : 16.67;
+
+    state.faceLastFrame = now;
+
     try {
-      const elapsed = now - state.faceStart;
-      const deltaMs = state.faceLastFrame ? now - state.faceLastFrame : 16.67;
-
-      state.faceLastFrame = now;
-
       updateFaceCells(elapsed, deltaMs);
       drawFaceGrid();
-
-      if (elapsed < config.face.duration) {
-        state.faceRaf = window.requestAnimationFrame(drawFaceFrame);
-      } else {
-        leaveFace();
-      }
     } catch (error) {
-      debugWarn("Face animation failed; removing mask.", error);
-      removeFaceLayerNow();
+      leaveFace(); // Never leave the full-screen mask stuck after a drawing error.
+      if (window.console && window.console.error) {
+        window.console.error("[HackedSplash] face draw failed", error);
+      }
+      return;
+    }
+
+    if (elapsed < config.face.duration) {
+      state.faceRaf = window.requestAnimationFrame(drawFaceFrame);
+    } else {
+      leaveFace();
     }
   }
 
@@ -848,7 +820,6 @@
   function leaveFace() {
     state.faceRunning = false;
     window.cancelAnimationFrame(state.faceRaf);
-    window.clearTimeout(state.faceFailSafeTimer);
 
     if (state.faceLayer && state.faceLayer.isConnected) {
       state.faceLayer.style.setProperty("--hacked-face-fade", config.face.fadeDuration + "ms");
@@ -867,14 +838,9 @@
     config = deepMerge(config, nextConfig || {});
 
     if (!config.face.enabled || shouldReduceMotion()) return getConfig();
+    if (!resolveFaceElements()) return getConfig();
 
     injectStyle();
-
-    if (!resolveFaceElements()) {
-      debugWarn("Face elements or canvas context unavailable; removing mask.");
-      removeFaceLayerNow();
-      return getConfig();
-    }
 
     state.destroyed = false;
     state.faceRunning = true;
@@ -882,23 +848,28 @@
 
     try {
       resizeFace();
-      state.faceStart = nowMs();
     } catch (error) {
-      debugWarn("Face canvas setup failed; removing mask.", error);
-      removeFaceLayerNow();
+      if (state.faceLayer && state.faceLayer.isConnected) {
+        state.faceLayer.remove(); // Clean up if mobile canvas sizing fails before RAF starts.
+      }
+      if (window.console && window.console.error) {
+        window.console.error("[HackedSplash] face setup failed", error);
+      }
       return getConfig();
     }
+
+    state.faceStart = performance.now();
+
+    setTrackedTimeout(function () {
+      if (state.faceRunning) {
+        leaveFace(); // Failsafe for mobile RAF throttling or canvas stalls.
+      }
+    }, config.face.duration + config.face.fadeDuration + config.face.failSafeExtraDelay);
 
     window.addEventListener("resize", scheduleResizeFace, { passive: true });
     window.addEventListener("orientationchange", scheduleResizeFace, { passive: true });
 
     state.faceRaf = window.requestAnimationFrame(drawFaceFrame);
-    state.faceFailSafeTimer = window.setTimeout(function () {
-      if (state.faceRunning && state.faceLayer && state.faceLayer.isConnected) {
-        debugWarn("Face fail-safe cleanup fired.");
-        leaveFace();
-      }
-    }, Math.max(config.failSafeDelay, config.face.duration + config.face.fadeDuration + 800));
 
     return getConfig();
   }
@@ -1007,7 +978,7 @@
   function scheduleFlashSpawn() {
     if (!state.flashRunning || state.destroyed || state.flashDecayStarted) return;
 
-    const elapsed = nowMs() - state.flashStart;
+    const elapsed = performance.now() - state.flashStart;
 
     if (elapsed <= config.flash.startDelay + config.flash.spawnDuration) {
       if (elapsed >= config.flash.startDelay) {
@@ -1195,7 +1166,7 @@
     state.flashRunning = true;
     state.flashDecayStarted = false;
     state.activeFlashWords = [];
-    state.flashStart = nowMs();
+    state.flashStart = performance.now();
 
     scheduleFlashSpawn();
 
@@ -1232,7 +1203,6 @@
     state.flashRunning = false;
 
     window.cancelAnimationFrame(state.faceRaf);
-    window.clearTimeout(state.faceFailSafeTimer);
     window.clearTimeout(state.flashTimer);
     window.clearTimeout(state.resizeTimer);
     clearTrackedTimeouts();
