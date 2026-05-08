@@ -135,16 +135,16 @@ Valid modes: list | chart | compact | false | nil
 <head>
   {% include head.html %}
 
-  <!-- [APPEARANCE] -->
+  <!-- [[APPEARANCE]] -->
   <!-- HACKED SPLASH: critical first-paint mask + plug-and-play JS -->
   <link rel="preload" href="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}" as="script">
   <script src="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}"></script>
   <!-- MATRIX LETTER BOMB -->
   <script defer src="{{ '/src/assets/js/matrix-letter-bomb.js' | relative_url }}"></script>
   <!-- ASCII ANIME -->
-  <script defer src="{{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
+  <script defer src="{{ '/src/assets/js/matrix-ascii-anime.js' | relative_url }}"></script>
   <!-- GLITCH TITLE + META_INFO -->
-  <script defer src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
+  <script defer src="{{ '/src/assets/js/matrix-text-glitch.js' | relative_url }}"></script>
   <!-- MATRIX BACKGROUND -->
   {% if show_matrix_bg %}
   <script defer src="{{ '/src/assets/js/matrix-letter-fall.js' | relative_url }}"></script>
@@ -159,7 +159,7 @@ Valid modes: list | chart | compact | false | nil
   </script>
   {% endif %}
 
-  <!-- [FUNCTION ENHANCEMENT] -->
+  <!-- [[FUNCTION ENHANCEMENT]] -->
   <!-- ANTI-COPY -->
   {% if page.anticopy == true %}
   <script defer src="{{ '/src/assets/js/anticopy.js' | relative_url }}"></script>
@@ -193,11 +193,11 @@ Valid modes: list | chart | compact | false | nil
   <script defer src="{{ '/src/assets/js/parallel-text.js' | relative_url }}"></script>
   {% endif %}
 
-
 </head>
 
 <body class=" page">
-  <!-- [APPEARENCE] -->
+
+  <!-- [[APPEARENCE]] -->
   <!-- HACKED SPLASH: critical first-paint mask + plug-and-play JS -->
   <style id="hacked-splash-critical-style">
     #hacked-face-layer {
@@ -225,7 +225,7 @@ Valid modes: list | chart | compact | false | nil
   <!-- COLLECTION LIST -->
   {% include collection_list.html %}
 
-  <!-- [MAIN CONTENT] -->
+  <!-- [[MAIN CONTENT]] -->
   <div class="container" id="ctner">
 
     <!-- POST HEADER -->

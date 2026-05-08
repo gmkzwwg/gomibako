@@ -1,5 +1,5 @@
 /*!
- * hacked-splash.js
+ * matrix-hacked-splash.js
  *
  * Introduction:
  *   Renders two independent effects: an ASCII face splash and floating alert words.
