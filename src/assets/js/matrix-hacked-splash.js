@@ -205,7 +205,6 @@
     styleId: "hacked-splash-style", // Injected style element ID.
     createLayers: true, // Create required DOM layers when missing.
     layerParent: "body", // Parent for generated layers; use "body" or a selector string.
-    respectReducedMotion: true, // Disable animation when prefers-reduced-motion is active.
     removeLayersOnFinish: true, // Remove effect layers after each effect finishes.
     dprMax: 2, // Maximum canvas DPR.
     mobileDprMax: 1.25, // Lower DPR cap on mobile/tablet to avoid canvas allocation failure.
@@ -240,7 +239,7 @@
       enabled: true, // Enable floating alert words.
       layerId: "hacked-flash-layer", // Flash word layer.
       startDelay: 0, // Delay before flash generation starts.
-      spawnDuration: 600, // Duration of flash word generation in ms.
+      spawnDuration: 760, // Duration of flash word generation in ms.
       holdDuration: 200, // Extra hold time after generation before random decay.
       regularDecayDuration: 1000, // Random disappearance duration for normal words.
       count: null, // Fixed max word count; null means viewport-based.
@@ -255,20 +254,20 @@
       outMax: 460, // Maximum normal exit duration.
 
       finalCountMin: 1, // Minimum number of final long-glitch words.
-      finalCountMax: 3, // Maximum number of final long-glitch words.
+      finalCountMax: 2, // Maximum number of final long-glitch words.
       finalDurationMin: 2000, // Minimum final long-glitch duration.
-      finalDurationMax: 4000, // Maximum final long-glitch duration.
+      finalDurationMax: 3000, // Maximum final long-glitch duration.
       finalBlinkMin: 6, // Minimum final hide/show cycles.
       finalBlinkMax: 12, // Maximum final hide/show cycles.
       finalHideMin: 80, // Minimum hidden time per blink in ms.
       finalHideMax: 260, // Maximum hidden time per blink in ms.
       finalShowMin: 90, // Minimum visible time per blink in ms.
       finalShowMax: 320, // Maximum visible time per blink in ms.
-      finalReskinChance: 0.45, // Chance to switch to another alert style when reappearing.
+      finalReskinChance: 0.5, // Chance to switch to another alert style when reappearing.
       finalSwitchMin: 1, // Minimum number of forced style/text switches.
-      finalSwitchMax: 2, // Maximum number of forced style/text switches.
+      finalSwitchMax: 4, // Maximum number of forced style/text switches.
 
-      mobileBreakpoint: 600, // Width below which flash font shrinks.
+      mobileBreakpoint: 768, // Width below which flash font shrinks.
       mobileScale: 0.72, // Flash font scaling on mobile.
       largeChance: 0.06, // Probability of large flash words.
       mediumChance: 0.22, // Probability of medium flash words when not large.
@@ -429,14 +428,6 @@
     state.timeouts = [];
   }
 
-  /* Checks reduced-motion preference; params: none. */
-  function shouldReduceMotion() {
-    return Boolean(
-      config.respectReducedMotion &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    );
-  }
 
   /* Returns one random ASCII character; params: none. */
   function randomAscii() {
@@ -837,7 +828,7 @@
   function startFace(nextConfig) {
     config = deepMerge(config, nextConfig || {});
 
-    if (!config.face.enabled || shouldReduceMotion()) return getConfig();
+    if (!config.face.enabled) return getConfig();
     if (!resolveFaceElements()) return getConfig();
 
     injectStyle();
@@ -1157,7 +1148,7 @@
   function startFlash(nextConfig) {
     config = deepMerge(config, nextConfig || {});
 
-    if (!config.flash.enabled || shouldReduceMotion()) return getConfig();
+    if (!config.flash.enabled) return getConfig();
     if (!resolveFlashElements()) return getConfig();
 
     injectStyle();
@@ -1181,10 +1172,6 @@
   function start(nextConfig) {
     config = deepMerge(config, nextConfig || {});
 
-    if (shouldReduceMotion()) {
-      destroy();
-      return getConfig();
-    }
 
     if (config.face.enabled) {
       startFace();
