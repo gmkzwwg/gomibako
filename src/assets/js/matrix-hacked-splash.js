@@ -5,7 +5,7 @@
  *   Renders two independent effects: an ASCII face splash and floating alert words.
  *
  * Usage:
- *   Include this file on the page. It creates its own DOM layers and runs automatically.
+ *   Include this file on the page. It runs automatically with DEFAULT_CONFIG.
  *   Default behavior can be customized by editing DEFAULT_CONFIG below.
  *   Runtime behavior can be customized before loading with window.HackedSplashConfig.
  *   Runtime behavior can be customized after loading with window.HackedSplash.updateConfig().
@@ -20,11 +20,10 @@
  *   window.HackedSplash.getConfig()
  *
  * Notes:
- *   No _include wrapper is required; required layers are created when absent.
- *   Existing #hacked-face-layer, #hacked-splash-canvas, and #hacked-flash-layer nodes are reused.
+ *   Nodes are auto-created when missing and reused when already present.
  *   The face and flash effects have separate timers and separate parameters.
- *   The face layer fades through JS timing, not CSS animation.
- *   Flash word count is controlled by flash.count or viewport-based density. Critical cleanup never depends on CSS animation events.
+ *   Critical animation and cleanup use JS timing, not CSS animation/transition.
+ *   Flash word count is controlled by flash.count or viewport-based density.
  */
 
 (function (window, document) {
@@ -204,10 +203,10 @@
     injectStyle: true, // Inject required compact CSS.
     styleId: "hacked-splash-style", // Injected style element ID.
     createLayers: true, // Create required DOM layers when missing.
-    layerParent: "body", // Parent for generated layers; use "body" or a selector string.
+    layerParent: "body", // Parent selector for generated layers.
     removeLayersOnFinish: true, // Remove effect layers after each effect finishes.
     dprMax: 2, // Maximum canvas DPR.
-    mobileDprMax: 1.25, // Lower DPR cap on mobile/tablet to avoid canvas allocation failure.
+    mobileDprMax: 1.25, // Mobile/tablet DPR cap for safer canvas allocation.
     canvasPixelMax: 2500000, // Maximum internal canvas pixels before DPR is reduced.
 
     face: {
@@ -215,7 +214,8 @@
       layerId: "hacked-face-layer", // Face layer containing black mask/background and canvas.
       canvasId: "hacked-splash-canvas", // Canvas for ASCII face.
       duration: 600, // Face drawing duration in ms.
-      fadeDuration: 520, // Whole face module fade duration in ms.
+      fadeDuration: 520, // Whole face module JS fade duration in ms.
+      failSafeExtraDelay: 1000, // Force cleanup if RAF/canvas stalls.
       dissolveStartRatio: 0.42, // Ratio of duration when random disappearance begins.
       dissolveEndRatio: 0.92, // Ratio of duration when disappearance reaches full strength.
       mobileBreakpoint: 600, // Width below which face font shrinks.
@@ -231,8 +231,7 @@
       faceBaseColor: "rgba(245,255,245,", // Stable face character color prefix.
       faceNoiseColor: "rgba(110,255,150,", // Noisy face character color prefix.
       backgroundNoiseColor: "rgba(30,170,70,", // Background noise color prefix.
-      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace", // Canvas font.
-      failSafeExtraDelay: 1000 // Force face removal if RAF/canvas stalls on mobile.
+      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace" // Canvas font.
     },
 
     flash: {
@@ -449,7 +448,7 @@
     });
   }
 
-  /* Injects CSS for generated/reused layers; params: none. */
+  /* Injects non-CSS-animation styles for both modules; params: none. */
   function injectStyle() {
     if (!config.injectStyle) return;
 
@@ -468,8 +467,10 @@
       "  z-index: 999998;",
       "  overflow: hidden;",
       "  pointer-events: none;",
-      "  opacity: 1;",
       "  background: #000;",
+      "  opacity: 1;",
+      "  animation: none !important;",
+      "  transition: none !important;",
       "}",
       "#" + config.face.canvasId + " {",
       "  position: absolute;",
@@ -477,15 +478,14 @@
       "  width: 100%;",
       "  height: 100%;",
       "  display: block;",
+      "  animation: none !important;",
+      "  transition: none !important;",
       "}",
       "#" + config.flash.layerId + " {",
       "  position: fixed;",
       "  inset: 0;",
       "  z-index: 999999;",
       "  overflow: hidden;",
-      "  pointer-events: none;",
-      "}",
-      "#" + config.face.layerId + ".is-leaving {",
       "  pointer-events: none;",
       "}",
       ".hacked-splash__flash {",
@@ -496,37 +496,33 @@
       "  transform-origin: center center;",
       "  font-family: " + config.flash.fontFamily + ";",
       "  font-size: var(--size);",
-      "  font-weight: 900;",
+      "  font-weight: 800;",
       "  line-height: 1;",
-      "  letter-spacing: 0.08em;",
-      "  text-transform: uppercase;",
       "  white-space: nowrap;",
-      "  padding: 0.1em 0.4em;",
-      "  border: 1px solid currentColor;",
-      "  background: rgba(0, 0, 0, 0.22);",
       "  color: var(--color);",
-      "  mix-blend-mode: screen;",
       "  text-shadow: 0 0 0.4em var(--glow), 0 0 1.2em var(--glow);",
-      "  box-shadow: 0 0 0.5em var(--glow), inset 0 0 0.5em rgba(255,255,255,0.04);",
       "  pointer-events: none;",
       "  user-select: none;",
-      "  will-change: opacity, transform, filter;",
+      "  opacity: 1;",
+      "  visibility: visible;",
+      "  animation: none !important;",
+      "  transition: none !important;",
       "}",
       ".hacked-splash__flash.is-decaying {",
       "  opacity: 0;",
+      "  visibility: hidden;",
+      "  animation: none !important;",
+      "  transition: none !important;",
       "}"
     ].join("\n");
   }
 
-  /* Resolves parent for generated layers; params: none. */
+  /* Resolves layer parent; params: none. */
   function resolveLayerParent() {
-    const parent = config.layerParent;
-
-    if (parent && parent.nodeType === 1) return parent;
-    if (typeof parent === "string" && parent !== "body") {
-      return document.querySelector(parent) || document.body || document.documentElement;
+    if (config.layerParent && config.layerParent.nodeType === 1) return config.layerParent;
+    if (typeof config.layerParent === "string") {
+      return document.querySelector(config.layerParent) || document.body || document.documentElement;
     }
-
     return document.body || document.documentElement;
   }
 
@@ -554,26 +550,29 @@
     if (!state.faceLayer) return false;
 
     state.faceLayer.setAttribute("aria-hidden", "true");
+    state.faceLayer.style.opacity = "1";
+    state.faceLayer.classList.remove("is-leaving");
     state.canvas = document.getElementById(config.face.canvasId);
 
     if (!state.canvas && config.createLayers) {
       state.canvas = document.createElement("canvas");
       state.canvas.id = config.face.canvasId;
+      state.canvas.setAttribute("aria-hidden", "true");
+      state.faceLayer.appendChild(state.canvas);
+    } else if (state.canvas && state.canvas.parentNode !== state.faceLayer) {
       state.faceLayer.appendChild(state.canvas);
     }
 
-    if (state.canvas && state.canvas.getContext) {
-      try {
-        state.ctx = state.canvas.getContext("2d", { alpha: false, desynchronized: true }); // Faster opaque canvas path when supported.
-      } catch (error) {
-        state.ctx = state.canvas.getContext("2d"); // Compatibility fallback.
-      }
-    } else {
-      state.ctx = null;
+    try {
+      state.ctx = state.canvas && state.canvas.getContext
+        ? state.canvas.getContext("2d", { alpha: false, desynchronized: true }) || state.canvas.getContext("2d")
+        : null;
+    } catch (error) {
+      state.ctx = state.canvas && state.canvas.getContext ? state.canvas.getContext("2d") : null;
     }
 
     if (!state.ctx && config.createLayers && state.faceLayer && state.faceLayer.isConnected) {
-      state.faceLayer.remove(); // Avoid a permanent black mask when canvas context creation fails.
+      state.faceLayer.remove();
     }
 
     return Boolean(state.faceLayer && state.canvas && state.ctx);
@@ -612,7 +611,7 @@
     const pixelMax = Math.max(1, Number(config.canvasPixelMax) || 2500000);
     const areaDpr = Math.sqrt(pixelMax / Math.max(1, state.width * state.height));
 
-    state.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaDpr)); // Prevent oversized mobile canvas.
+    state.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaDpr));
     state.canvas.width = Math.ceil(state.width * state.dpr);
     state.canvas.height = Math.ceil(state.height * state.dpr);
     state.canvas.style.width = state.width + "px";
@@ -776,7 +775,7 @@
       updateFaceCells(elapsed, deltaMs);
       drawFaceGrid();
     } catch (error) {
-      leaveFace(); // Never leave the full-screen mask stuck after a drawing error.
+      leaveFace();
       if (window.console && window.console.error) {
         window.console.error("[HackedSplash] face draw failed", error);
       }
@@ -802,6 +801,8 @@
     if (!layer || !layer.isConnected) return;
 
     layer.classList.add("is-leaving");
+    layer.style.animation = "none";
+    layer.style.transition = "none";
     layer.style.setProperty("--hacked-face-fade", fadeDuration + "ms");
 
     if (!config.removeLayersOnFinish) return;
@@ -817,12 +818,11 @@
       if (!layer.isConnected) return;
 
       const progress = clamp((now - startedAt) / fadeDuration, 0, 1);
-
       layer.style.opacity = String(1 - progress);
 
       if (progress < 1) {
         state.faceFadeRaf = window.requestAnimationFrame(step);
-      } else if (layer.isConnected) {
+      } else {
         layer.remove();
       }
     };
@@ -831,9 +831,9 @@
 
     setTrackedTimeout(function () {
       if (layer.isConnected) {
-        layer.remove(); // Failsafe when RAF is throttled or interrupted.
+        layer.remove();
       }
-    }, fadeDuration + 120);
+    }, fadeDuration + 160);
   }
 
   /* Starts only the face module; params: nextConfig<object>. */
@@ -841,9 +841,10 @@
     config = deepMerge(config, nextConfig || {});
 
     if (!config.face.enabled) return getConfig();
-    if (!resolveFaceElements()) return getConfig();
 
     injectStyle();
+
+    if (!resolveFaceElements()) return getConfig();
 
     state.destroyed = false;
     state.faceRunning = true;
@@ -853,7 +854,7 @@
       resizeFace();
     } catch (error) {
       if (state.faceLayer && state.faceLayer.isConnected) {
-        state.faceLayer.remove(); // Clean up if mobile canvas sizing fails before RAF starts.
+        state.faceLayer.remove();
       }
       if (window.console && window.console.error) {
         window.console.error("[HackedSplash] face setup failed", error);
@@ -865,7 +866,7 @@
 
     setTrackedTimeout(function () {
       if (state.faceRunning) {
-        leaveFace(); // Failsafe for mobile RAF throttling or canvas stalls.
+        leaveFace();
       }
     }, config.face.duration + config.face.fadeDuration + config.face.failSafeExtraDelay);
 
@@ -953,7 +954,10 @@
     span.style.setProperty("--outdur", rand(flash.outMin, flash.outMax) + "ms");
     span.style.setProperty("--color", picked.color);
     span.style.setProperty("--glow", picked.glow);
-    span.style.opacity = "1"; // JS-controlled visibility; no CSS animation dependency.
+    span.style.opacity = "1";
+    span.style.visibility = "visible";
+    span.style.animation = "none";
+    span.style.transition = "none";
 
     state.activeFlashWords.push(span);
 
@@ -1011,6 +1015,8 @@
     if (!element || !element.isConnected) return;
 
     element.classList.add("is-decaying");
+    element.style.animation = "none";
+    element.style.transition = "none";
     element.style.opacity = "0";
     element.style.visibility = "hidden";
 
@@ -1100,8 +1106,8 @@
       element.style.visibility = "visible";
       element.style.opacity = "1";
       element.style.filter = "";
-      element.style.transition = "";
-      element.style.animation = "";
+      element.style.transition = "none";
+      element.style.animation = "none";
       decayFlashWord(element);
     }, Math.max(totalDuration, elapsed) + rand(80, 180));
   }
