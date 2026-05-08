@@ -2,7 +2,7 @@
 title: TypeScript - Quick Reference
 abbreviation: TypeScript
 categories: Notes
-subclass: Languages
+subclass: Webdev
 ---
 
 ## Part 1 — Mental Model: Value Level, Type Level, Erasure, JavaScript Runtime 

@@ -1,10 +1,9 @@
 ---
 title: JavaScript - Quick Reference
+abbreviation: JavaScript
 categories: Notes
-subclass: Languages
+subclass: Webdev
 ---
-
-
 
 
 ## JavaScript
