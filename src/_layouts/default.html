@@ -124,10 +124,9 @@ Valid modes: list | chart | compact | false | nil
 {% assign toc_depth_resolved = 3 %}
 {% endif %}
 
-
 {% if site.ui.background.enabled and site.ui.background.type == "matrix" %}
 {% assign show_matrix_bg = true %}
-{% assign matrix_bg_text = site.ui.background.matrix_text | default: "01" %}
+{% assign matrix_bg_text = site.ui.background.text | default: "01" %}
 {% endif %}
 
 <!doctype html>
@@ -177,28 +176,40 @@ Valid modes: list | chart | compact | false | nil
   <script defer src="{{ '/src/assets/js/ascii-anime.js' | relative_url }}"></script>
   <!-- GLITCH TITLE + META_INFO -->
   <script defer src="{{ '/src/assets/js/text-glitch.js' | relative_url }}"></script>
-  <!-- HACKED SPLASH -->
-  <script defer src="{{ '/src/assets/js/hacked-splash.js' | relative_url }}"></script>
-  <!-- MATRIX BACKGROUND -->
-  {% if show_matrix_bg %}
-  <script defer src="{{ '/src/assets/js/matrix-letter-fall.js' | relative_url }}"></script>
-  <script defer>
-    window.MatrixBackground.updateConfig({
-      text: "{{ matrix_bg_text }}"
-    });
-  </script>
-  {% endif %}
 </head>
 
 <body class=" page">
 
   <!-- [APPEARENCE] -->
+  <!-- HACKED SPLASH: critical first-paint mask + plug-and-play JS -->
+  <style id="hacked-splash-critical-style">
+    #hacked-face-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 999998;
+      overflow: hidden;
+      pointer-events: none;
+      background: #000;
+      opacity: 1;
+    }
+  </style>
+  <div id="hacked-face-layer" aria-hidden="true"></div>
+  <link rel="preload" href="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}" as="script">
+  <script src="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}" defer></script>
+
+  <!-- MATRIX BACKGROUND -->
+  {% if show_matrix_bg %}
+  <script src="{{ '/src/assets/js/matrix-letter-fall.js' | relative_url }}"></script>
+  <script>
+    window.MatrixBackground.updateConfig({
+      text: "{{ matrix_bg_text }}"
+    });
+  </script>
+  {% endif %}
   <!-- CONTEXT MENU -->
   {% if context_menu_enabled %}
   {% include context_menu.html %}
   {% endif %}
-  <!-- MATRIX BACKGROUND -->
-  {% include matrix_bg.html %}
   <!-- COLLECTION LIST -->
   {% include collection_list.html %}
 
@@ -226,7 +237,7 @@ Valid modes: list | chart | compact | false | nil
         {% if post_meta_enabled %}
         {% include post-meta.html %}
         {% endif %}
-        
+
         <!-- TOC BEFORE CONTENT -->
         {% if toc_before_content_enabled %}
         <div class="toc_before_content">
