@@ -4,27 +4,9 @@
  * Introduction:
  *   Renders two independent effects: an ASCII face splash and floating alert words.
  *
- * Usage:
- *   Include this file on the page. It creates its own DOM layers and runs automatically.
- *   Default behavior can be customized by editing DEFAULT_CONFIG below.
- *   Runtime behavior can be customized before loading with window.HackedSplashConfig.
- *   Runtime behavior can be customized after loading with window.HackedSplash.updateConfig().
- *
- * Global API:
- *   window.HackedSplash.start(config)
- *   window.HackedSplash.startFace(config)
- *   window.HackedSplash.startFlash(config)
- *   window.HackedSplash.stop()
- *   window.HackedSplash.destroy()
- *   window.HackedSplash.updateConfig(config)
- *   window.HackedSplash.getConfig()
- *
- * Notes:
- *   No _include wrapper is required; required layers are created when absent.
- *   Existing #hacked-face-layer, #hacked-splash-canvas, and #hacked-flash-layer nodes are reused.
- *   The face and flash effects have separate timers and separate parameters.
- *   The face layer fades through JS timing, not CSS animation.
- *   Flash word count is controlled by flash.count or viewport-based density. Critical cleanup never depends on CSS animation events.
+ * This rewritten version keeps the user's latest visual configuration while
+ * consolidating lifecycle cleanup, restart safety, and color-derived glow values.
+ * Critical cleanup never depends on CSS animation/transition events.
  */
 
 (function (window, document) {
@@ -200,99 +182,102 @@
   ];
 
   const DEFAULT_CONFIG = {
-    autoStart: true, // Start both enabled effects automatically.
-    injectStyle: true, // Inject required compact CSS.
-    styleId: "hacked-splash-style", // Injected style element ID.
-    createLayers: true, // Create required DOM layers when missing.
-    layerParent: "body", // Parent for generated layers; use "body" or a selector string.
-    removeLayersOnFinish: true, // Remove effect layers after each effect finishes.
-    dprMax: 2, // Maximum canvas DPR.
-    mobileDprMax: 1.25, // Lower DPR cap on mobile/tablet to avoid canvas allocation failure.
-    canvasPixelMax: 2500000, // Maximum internal canvas pixels before DPR is reduced.
+    autoStart: true,
+    injectStyle: true,
+    styleId: "hacked-splash-style",
+    createLayers: true,
+    layerParent: "body",
+    removeLayersOnFinish: true,
+    dprMax: 2,
+    mobileDprMax: 1.25,
+    canvasPixelMax: 2500000,
 
     face: {
-      enabled: true, // Enable ASCII face module.
-      layerId: "hacked-face-layer", // Face layer containing black mask/background and canvas.
-      canvasId: "hacked-splash-canvas", // Canvas for ASCII face.
-      duration: 800, // Face drawing duration in ms.
-      fadeDuration: 500, // Whole face module fade duration in ms.
-      dissolveStartRatio: 0.42, // Ratio of duration when random disappearance begins.
-      dissolveEndRatio: 0.92, // Ratio of duration when disappearance reaches full strength.
-      mobileBreakpoint: 600, // Width below which face font shrinks.
-      mobileCellScale: 0.72, // Face cell scaling on mobile.
-      cellMin: 12, // Minimum desktop cell size.
-      cellMinMobile: 8, // Minimum mobile cell size.
-      cellMax: 25, // Maximum cell size.
-      targetGridWidth: 155, // Virtual grid width.
-      targetGridHeight: 82, // Virtual grid height.
-      minCols: 52, // Minimum grid columns.
-      minRows: 30, // Minimum grid rows.
-      backgroundColor: "#000", // Canvas background color.
-      faceBaseColor: "rgba(245,255,245,", // Stable face character color prefix.
-      faceNoiseColor: "rgba(110,255,150,", // Noisy face character color prefix.
-      backgroundNoiseColor: "rgba(30,170,70,", // Background noise color prefix.
-      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace", // Canvas font.
-      failSafeExtraDelay: 1000 // Force face removal if RAF/canvas stalls on mobile.
+      enabled: true,
+      layerId: "hacked-face-layer",
+      canvasId: "hacked-splash-canvas",
+      duration: 800,
+      fadeDuration: 400,
+      dissolveStartRatio: 0.42,
+      dissolveEndRatio: 0.92,
+      mobileBreakpoint: 800,
+      mobileCellScale: 0.7,
+      cellMin: 12,
+      cellMinMobile: 8,
+      cellMax: 25,
+      targetGridWidth: 155,
+      targetGridHeight: 82,
+      minCols: 52,
+      minRows: 30,
+      backgroundColor: "#000",
+      faceBaseColor: "rgba(245,255,245,",
+      faceNoiseColor: "rgba(110,255,150,",
+      backgroundNoiseColor: "rgba(30,170,70,",
+      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace",
+      failSafeExtraDelay: 1000
     },
 
     flash: {
-      enabled: true, // Enable floating alert words.
-      layerId: "hacked-flash-layer", // Flash word layer.
-      startDelay: 0, // Delay before flash generation starts.
-      spawnDuration: 600, // Duration of flash word generation in ms.
-      holdDuration: 200, // Extra hold time after generation before random decay.
-      regularDecayDuration: 1000, // Random disappearance duration for normal words.
-      count: null, // Fixed max word count; null means viewport-based.
-      densityDivisor: 9800, // Larger means fewer viewport-based words.
-      minCount: 32, // Minimum viewport-based count.
-      maxCount: 220, // Hard maximum count.
-      spawnIntervalMin: 28, // Minimum interval between batches.
-      spawnIntervalMax: 56, // Maximum interval between batches.
-      batchMin: 3, // Minimum words per batch.
-      batchMax: 6, // Maximum words per batch.
-      outMin: 260, // Minimum normal exit duration.
-      outMax: 460, // Maximum normal exit duration.
+      enabled: true,
+      layerId: "hacked-flash-layer",
+      startDelay: 0,
+      spawnDuration: 600,
+      holdDuration: 200,
+      regularDecayDuration: 1000,
+      count: null,
+      densityDivisor: 9800,
+      minCount: 32,
+      maxCount: 220,
+      spawnIntervalMin: 28,
+      spawnIntervalMax: 56,
+      batchMin: 3,
+      batchMax: 6,
+      outMin: 260,
+      outMax: 460,
 
-      finalCountMin: 1, // Minimum number of final long-glitch words.
-      finalCountMax: 3, // Maximum number of final long-glitch words.
-      finalDurationMin: 2000, // Minimum final long-glitch duration.
-      finalDurationMax: 3000, // Maximum final long-glitch duration.
-      finalBlinkMin: 6, // Minimum final hide/show cycles.
-      finalBlinkMax: 12, // Maximum final hide/show cycles.
-      finalHideMin: 80, // Minimum hidden time per blink in ms.
-      finalHideMax: 260, // Maximum hidden time per blink in ms.
-      finalShowMin: 90, // Minimum visible time per blink in ms.
-      finalShowMax: 320, // Maximum visible time per blink in ms.
-      finalReskinChance: 0.45, // Chance to switch to another alert style when reappearing.
-      finalSwitchMin: 1, // Minimum number of forced style/text switches.
-      finalSwitchMax: 2, // Maximum number of forced style/text switches.
+      finalCountMin: 1,
+      finalCountMax: 2,
+      finalDurationMin: 2000,
+      finalDurationMax: 3000,
+      finalBlinkMin: 6,
+      finalBlinkMax: 12,
+      finalHideMin: 80,
+      finalHideMax: 260,
+      finalShowMin: 90,
+      finalShowMax: 320,
+      finalReskinChance: 0.5,
+      finalSwitchMin: 1,
+      finalSwitchMax: 5,
 
-      mobileBreakpoint: 600, // Width below which flash font shrinks.
-      mobileScale: 0.72, // Flash font scaling on mobile.
-      largeChance: 0.06, // Probability of large flash words.
-      mediumChance: 0.22, // Probability of medium flash words when not large.
-      smallRatioMin: 0.01, // Small word viewport-width font ratio.
-      smallRatioMax: 0.03, // Small word viewport-width font ratio.
-      mediumRatioMin: 0.03, // Medium word viewport-width font ratio.
-      mediumRatioMax: 0.04, // Medium word viewport-width font ratio.
-      largeRatioMin: 0.06, // Large word viewport-width font ratio; 10% smaller than previous 0.07.
-      largeRatioMax: 0.08, // Large word viewport-width font ratio; 10% smaller than previous 0.11.
-      smallClampMin: 10, // Small word minimum px.
-      smallClampMax: 26, // Small word maximum px.
-      mediumClampMin: 20, // Medium word minimum px.
-      mediumClampMax: 52, // Medium word maximum px.
-      largeClampMin: 34, // Large word minimum px.
-      largeClampMax: 86, // Large word maximum px; about 10% smaller than previous 96.
-      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace", // Flash word font.
+      mobileBreakpoint: 800,
+      mobileScale: 0.7,
+      largeChance: 0.06,
+      mediumChance: 0.22,
+      smallRatioMin: 0.01,
+      smallRatioMax: 0.03,
+      mediumRatioMin: 0.03,
+      mediumRatioMax: 0.04,
+      largeRatioMin: 0.06,
+      largeRatioMax: 0.08,
+      smallClampMin: 14,
+      smallClampMax: 22,
+      mediumClampMin: 20,
+      mediumClampMax: 32,
+      largeClampMin: 32,
+      largeClampMax: 46,
+      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace",
+      deriveGlowFromColor: true,
+      glowAlpha: 0.98,
+      mixBlendMode: "screen",
 
       words: [
-        { text: "[ALERT] INJECTION DETECTED", color: "#00ff66", glow: "rgba(0,255,102,0.98)" },
-        { text: "[CRITICAL] CORE DUMPED", color: "#ff2a2a", glow: "rgba(255,42,42,0.98)" },
-        { text: "[WARNING] MEMORY RUPTURED", color: "#ffd84a", glow: "rgba(255,216,74,0.98)" },
-        { text: "[BREACH] CONTROL LOST", color: "#ffffff", glow: "rgba(255,255,255,0.98)" },
-        { text: "[FAULT] SESSION SEIZED", color: "#ff4d4d", glow: "rgba(255,77,77,0.98)" },
-        { text: "[SYS] ROOT PERMISSION TAKEN", color: "#00ff66", glow: "rgba(0,255,102,0.98)" }
-      ] // Floating alert word pool.
+        { text: "[ALERT] INJECTION DETECTED", color: "#0fca1c", glow: "rgba(15,202,28,0.98)" },
+        { text: "[CRITICAL] CORE DUMPED", color: "#E71D36", glow: "rgba(231,29,54,0.98)" },
+        { text: "[WARNING] MEMORY RUPTURED", color: "#f8ca00", glow: "rgba(248,202,0,0.98)" },
+        { text: "[BREACH] CONTROL LOST", color: "#d2cccc", glow: "rgba(210,204,204,0.98)" },
+        { text: "[FAULT] SESSION SEIZED", color: "#E71D36", glow: "rgba(231,29,54,0.98)" },
+        { text: "[SYS] ROOT PERMISSION TAKEN", color: "#0fca1c", glow: "rgba(15,202,28,0.98)" }
+      ]
     }
   };
 
@@ -300,37 +285,68 @@
     return String.fromCharCode(index + 33);
   });
 
-  let config = deepMerge({}, DEFAULT_CONFIG, getPreloadConfig());
+  if (window.HackedSplash && typeof window.HackedSplash.destroy === "function") {
+    try {
+      window.HackedSplash.destroy();
+    } catch (error) {
+      reportError("previous instance destroy failed", error);
+    }
+  }
+
+  let config = normalizeConfig(deepMerge({}, DEFAULT_CONFIG, getPreloadConfig()));
 
   const state = {
     destroyed: false,
-    faceRunning: false,
-    flashRunning: false,
-    faceLayer: null,
-    flashLayer: null,
-    canvas: null,
-    ctx: null,
-    dpr: 1,
     width: 0,
     height: 0,
-    cellW: 10,
-    cellH: 14,
-    cols: 0,
-    rows: 0,
-    cells: [],
-    faceStart: 0,
-    faceLastFrame: 0,
-    faceRaf: 0,
-    faceFadeRaf: 0,
-    flashStart: 0,
-    flashTimer: 0,
-    resizeTimer: 0,
-    flashDecayStarted: false,
-    activeFlashWords: [],
-    timeouts: []
+    face: {
+      running: false,
+      layer: null,
+      canvas: null,
+      ctx: null,
+      dpr: 1,
+      cellW: 10,
+      cellH: 14,
+      cols: 0,
+      rows: 0,
+      cells: [],
+      start: 0,
+      lastFrame: 0,
+      raf: 0,
+      fadeRaf: 0,
+      resizeTimer: 0,
+      hardRemoveTimer: 0,
+      timeouts: []
+    },
+    flash: {
+      running: false,
+      layer: null,
+      start: 0,
+      spawnTimer: 0,
+      decayStarted: false,
+      activeWords: [],
+      timeouts: []
+    }
   };
 
-  /* Deep-merges plain objects; params: ...objects<object>. */
+  function reportError(message, error) {
+    if (window.console && window.console.error) {
+      window.console.error("[HackedSplash] " + message, error);
+    }
+  }
+
+  function cloneValue(value) {
+    if (Array.isArray(value)) {
+      return value.map(cloneValue);
+    }
+
+    if (value && typeof value === "object") {
+      return deepMerge({}, value);
+    }
+
+    return value;
+  }
+
   function deepMerge() {
     const output = {};
 
@@ -348,10 +364,8 @@
           !Array.isArray(current)
         ) {
           output[key] = deepMerge(current, value);
-        } else if (value && typeof value === "object" && !Array.isArray(value)) {
-          output[key] = deepMerge({}, value);
         } else {
-          output[key] = value;
+          output[key] = cloneValue(value);
         }
       });
     });
@@ -359,32 +373,105 @@
     return output;
   }
 
-  /* Returns optional preload config; params: none. */
+  function normalizeConfig(nextConfig) {
+    const normalized = deepMerge({}, nextConfig || {});
+    const flash = normalized.flash || {};
+    const words = Array.isArray(flash.words) ? flash.words : [];
+    const alpha = Number.isFinite(Number(flash.glowAlpha)) ? Number(flash.glowAlpha) : 0.98;
+
+    flash.words = words.map(function (word) {
+      const normalizedWord = deepMerge({}, word || {});
+      const color = normalizedWord.color || "#ffffff";
+
+      if (flash.deriveGlowFromColor || !normalizedWord.glow) {
+        normalizedWord.glow = colorToGlow(color, alpha);
+      }
+
+      return normalizedWord;
+    });
+
+    normalized.flash = flash;
+    return normalized;
+  }
+
+  function hexToRgb(color) {
+    let value = String(color || "").trim();
+
+    if (value.charAt(0) === "#") {
+      value = value.slice(1);
+    }
+
+    if (value.length === 3) {
+      value = value.split("").map(function (char) {
+        return char + char;
+      }).join("");
+    }
+
+    if (!/^[0-9a-fA-F]{6}$/.test(value)) return null;
+
+    const number = parseInt(value, 16);
+
+    return {
+      r: (number >> 16) & 255,
+      g: (number >> 8) & 255,
+      b: number & 255
+    };
+  }
+
+  function colorToGlow(color, alpha) {
+    const rgb = hexToRgb(color);
+
+    if (!rgb) return color || "rgba(255,255,255," + alpha + ")";
+
+    return "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + "," + alpha + ")";
+  }
+
   function getPreloadConfig() {
     return window.HackedSplashConfig || window.hackedSplashConfig || {};
   }
 
-  /* Returns a random float; params: min<number>, max<number>. */
+  function now() {
+    return window.performance && typeof window.performance.now === "function"
+      ? window.performance.now()
+      : Date.now();
+  }
+
+  function requestFrame(callback) {
+    if (window.requestAnimationFrame) {
+      return window.requestAnimationFrame(callback);
+    }
+
+    return window.setTimeout(function () {
+      callback(now());
+    }, 16);
+  }
+
+  function cancelFrame(id) {
+    if (!id) return;
+
+    if (window.cancelAnimationFrame) {
+      window.cancelAnimationFrame(id);
+    } else {
+      window.clearTimeout(id);
+    }
+  }
+
   function rand(min, max) {
     return min + Math.random() * (max - min);
   }
 
-  /* Returns a random integer; params: min<number>, max<number>. */
   function randInt(min, max) {
     return Math.floor(rand(min, max + 1));
   }
 
-  /* Clamps a number into a range; params: value<number>, min<number>, max<number>. */
   function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
 
-  /* Returns a random array item; params: array<Array>. */
   function sample(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  /* Returns a shuffled array copy; params: array<Array>. */
   function shuffled(array) {
     const copy = array.slice();
 
@@ -399,43 +486,45 @@
     return copy;
   }
 
-  /* Tracks timeout for clean destroy; params: callback<Function>, delay<number>. */
-  function setTrackedTimeout(callback, delay) {
+  function setModuleTimeout(moduleState, callback, delay) {
     const id = window.setTimeout(function () {
-      removeTimeout(id);
+      removeModuleTimeout(moduleState, id);
       callback();
-    }, delay);
+    }, Math.max(0, Number(delay) || 0));
 
-    state.timeouts.push(id);
+    moduleState.timeouts.push(id);
 
     return id;
   }
 
-  /* Removes timeout id from tracking; params: id<number>. */
-  function removeTimeout(id) {
-    const index = state.timeouts.indexOf(id);
+  function removeModuleTimeout(moduleState, id) {
+    const index = moduleState.timeouts.indexOf(id);
 
     if (index !== -1) {
-      state.timeouts.splice(index, 1);
+      moduleState.timeouts.splice(index, 1);
     }
   }
 
-  /* Clears tracked timeouts; params: none. */
-  function clearTrackedTimeouts() {
-    state.timeouts.forEach(function (id) {
+  function clearModuleTimeouts(moduleState) {
+    moduleState.timeouts.forEach(function (id) {
       window.clearTimeout(id);
     });
 
-    state.timeouts = [];
+    moduleState.timeouts = [];
   }
 
+  function setFaceTimeout(callback, delay) {
+    return setModuleTimeout(state.face, callback, delay);
+  }
 
-  /* Returns one random ASCII character; params: none. */
+  function setFlashTimeout(callback, delay) {
+    return setModuleTimeout(state.flash, callback, delay);
+  }
+
   function randomAscii() {
     return ASCII_PALETTE[Math.floor(Math.random() * ASCII_PALETTE.length)];
   }
 
-  /* Picks and normalizes one face; params: none. */
   function pickFace() {
     if (!FACE_LIBRARY.length) return [""];
 
@@ -449,7 +538,27 @@
     });
   }
 
-  /* Injects CSS for generated/reused layers; params: none. */
+  function readViewport() {
+    state.width = window.innerWidth || document.documentElement.clientWidth || 1024;
+    state.height = window.innerHeight || document.documentElement.clientHeight || 768;
+  }
+
+  function hideElement(element) {
+    if (!element) return;
+
+    element.style.opacity = "0";
+    element.style.visibility = "hidden";
+    element.style.pointerEvents = "none";
+  }
+
+  function showElement(element) {
+    if (!element) return;
+
+    element.style.opacity = "1";
+    element.style.visibility = "visible";
+    element.style.pointerEvents = "none";
+  }
+
   function injectStyle() {
     if (!config.injectStyle) return;
 
@@ -469,7 +578,9 @@
       "  overflow: hidden;",
       "  pointer-events: none;",
       "  opacity: 1;",
+      "  visibility: visible;",
       "  background: #000;",
+      "  contain: layout paint style;",
       "}",
       "#" + config.face.canvasId + " {",
       "  position: absolute;",
@@ -484,6 +595,7 @@
       "  z-index: 999999;",
       "  overflow: hidden;",
       "  pointer-events: none;",
+      "  contain: layout paint style;",
       "}",
       "#" + config.face.layerId + ".is-leaving {",
       "  pointer-events: none;",
@@ -505,20 +617,21 @@
       "  border: 1px solid currentColor;",
       "  background: rgba(0, 0, 0, 0.22);",
       "  color: var(--color);",
-      "  mix-blend-mode: screen;",
+      "  mix-blend-mode: var(--blend-mode, screen);",
       "  text-shadow: 0 0 0.4em var(--glow), 0 0 1.2em var(--glow);",
       "  box-shadow: 0 0 0.5em var(--glow), inset 0 0 0.5em rgba(255,255,255,0.04);",
       "  pointer-events: none;",
       "  user-select: none;",
-      "  will-change: opacity, transform, filter;",
+      "  will-change: opacity, transform;",
+      "  contain: layout paint style;",
       "}",
       ".hacked-splash__flash.is-decaying {",
       "  opacity: 0;",
+      "  visibility: hidden;",
       "}"
     ].join("\n");
   }
 
-  /* Resolves parent for generated layers; params: none. */
   function resolveLayerParent() {
     const parent = config.layerParent;
 
@@ -530,7 +643,6 @@
     return document.body || document.documentElement;
   }
 
-  /* Returns an existing element or creates it; params: tagName<string>, id<string>, parent<Element>. */
   function ensureElementById(tagName, id, parent) {
     let element = document.getElementById(id);
 
@@ -545,116 +657,176 @@
     return element;
   }
 
-  /* Resolves or creates face DOM nodes; params: none. */
+  function clearFaceHardRemoveTimer() {
+    if (state.face.hardRemoveTimer) {
+      window.clearTimeout(state.face.hardRemoveTimer);
+      state.face.hardRemoveTimer = 0;
+    }
+  }
+
+  function clearFaceRuntimeTimers(clearHardTimer) {
+    const face = state.face;
+
+    cancelFrame(face.raf);
+    cancelFrame(face.fadeRaf);
+    window.clearTimeout(face.resizeTimer);
+    clearModuleTimeouts(face);
+
+    face.raf = 0;
+    face.fadeRaf = 0;
+    face.resizeTimer = 0;
+
+    if (clearHardTimer !== false) {
+      clearFaceHardRemoveTimer();
+    }
+  }
+
+  function cleanupFace(options) {
+    const opts = options || {};
+    const shouldRemove = opts.remove !== false;
+    const shouldClearHard = opts.clearHard !== false;
+    const face = state.face;
+    const layer = face.layer || document.getElementById(config.face.layerId);
+
+    face.running = false;
+    clearFaceRuntimeTimers(shouldClearHard);
+
+    window.removeEventListener("resize", scheduleResizeFace);
+    window.removeEventListener("orientationchange", scheduleResizeFace);
+
+    if (layer) {
+      layer.classList.remove("is-leaving");
+
+      if (shouldRemove && layer.isConnected) {
+        layer.remove();
+      } else {
+        hideElement(layer);
+      }
+    }
+
+    face.layer = null;
+    face.canvas = null;
+    face.ctx = null;
+    face.dpr = 1;
+    face.cellW = 10;
+    face.cellH = 14;
+    face.cols = 0;
+    face.rows = 0;
+    face.cells = [];
+    face.start = 0;
+    face.lastFrame = 0;
+  }
+
+  function finishFace() {
+    cleanupFace({ remove: config.removeLayersOnFinish !== false });
+  }
+
+  function scheduleFaceHardRemove(delay) {
+    clearFaceHardRemoveTimer();
+
+    state.face.hardRemoveTimer = window.setTimeout(function () {
+      finishFace();
+    }, Math.max(0, Number(delay) || 0));
+  }
+
   function resolveFaceElements() {
     const parent = resolveLayerParent();
+    const face = state.face;
 
-    state.faceLayer = ensureElementById("div", config.face.layerId, parent);
+    face.layer = ensureElementById("div", config.face.layerId, parent);
 
-    if (!state.faceLayer) return false;
+    if (!face.layer) return false;
 
-    state.faceLayer.setAttribute("aria-hidden", "true");
-    state.canvas = document.getElementById(config.face.canvasId);
+    face.layer.setAttribute("aria-hidden", "true");
+    face.layer.classList.remove("is-leaving");
+    showElement(face.layer);
 
-    if (!state.canvas && config.createLayers) {
-      state.canvas = document.createElement("canvas");
-      state.canvas.id = config.face.canvasId;
-      state.faceLayer.appendChild(state.canvas);
+    face.canvas = document.getElementById(config.face.canvasId);
+
+    if (!face.canvas && config.createLayers) {
+      face.canvas = document.createElement("canvas");
+      face.canvas.id = config.face.canvasId;
+      face.layer.appendChild(face.canvas);
+    } else if (face.canvas && face.canvas.parentNode !== face.layer) {
+      face.layer.appendChild(face.canvas);
     }
 
-    if (state.canvas && state.canvas.getContext) {
+    if (face.canvas && face.canvas.getContext) {
       try {
-        state.ctx = state.canvas.getContext("2d", { alpha: false, desynchronized: true }); // Faster opaque canvas path when supported.
+        face.ctx = face.canvas.getContext("2d", { alpha: false, desynchronized: true });
       } catch (error) {
-        state.ctx = state.canvas.getContext("2d"); // Compatibility fallback.
+        face.ctx = face.canvas.getContext("2d");
       }
     } else {
-      state.ctx = null;
+      face.ctx = null;
     }
 
-    if (!state.ctx && config.createLayers && state.faceLayer && state.faceLayer.isConnected) {
-      state.faceLayer.remove(); // Avoid a permanent black mask when canvas context creation fails.
+    if (!face.ctx) {
+      cleanupFace({ remove: true });
+      return false;
     }
 
-    return Boolean(state.faceLayer && state.canvas && state.ctx);
+    return true;
   }
 
-  /* Resolves or creates flash DOM node; params: none. */
-  function resolveFlashElements() {
-    const parent = resolveLayerParent();
-
-    state.flashLayer = ensureElementById("div", config.flash.layerId, parent);
-
-    if (state.flashLayer) {
-      state.flashLayer.setAttribute("aria-hidden", "true");
-    }
-
-    return Boolean(state.flashLayer);
-  }
-
-  /* Reads viewport size; params: none. */
-  function readViewport() {
-    state.width = window.innerWidth || document.documentElement.clientWidth || 1024;
-    state.height = window.innerHeight || document.documentElement.clientHeight || 768;
-  }
-
-  /* Rebuilds face canvas and grid; params: none. */
   function resizeFace() {
-    const face = config.face;
+    const faceConfig = config.face;
+    const face = state.face;
 
-    if (!state.canvas || !state.ctx) return;
+    if (!face.canvas || !face.ctx) return;
 
     readViewport();
 
     const viewportDpr = window.devicePixelRatio || 1;
-    const mobileCap = state.width < face.mobileBreakpoint ? config.mobileDprMax : config.dprMax;
+    const mobileCap = state.width < faceConfig.mobileBreakpoint ? config.mobileDprMax : config.dprMax;
     const dprCap = Number.isFinite(Number(mobileCap)) ? Number(mobileCap) : config.dprMax;
     const pixelMax = Math.max(1, Number(config.canvasPixelMax) || 2500000);
     const areaDpr = Math.sqrt(pixelMax / Math.max(1, state.width * state.height));
 
-    state.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaDpr)); // Prevent oversized mobile canvas.
-    state.canvas.width = Math.ceil(state.width * state.dpr);
-    state.canvas.height = Math.ceil(state.height * state.dpr);
-    state.canvas.style.width = state.width + "px";
-    state.canvas.style.height = state.height + "px";
+    face.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaDpr));
+    face.canvas.width = Math.ceil(state.width * face.dpr);
+    face.canvas.height = Math.ceil(state.height * face.dpr);
+    face.canvas.style.width = state.width + "px";
+    face.canvas.style.height = state.height + "px";
 
-    state.ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
-    state.ctx.textAlign = "left";
-    state.ctx.textBaseline = "top";
+    face.ctx.setTransform(face.dpr, 0, 0, face.dpr, 0, 0);
+    face.ctx.textAlign = "left";
+    face.ctx.textBaseline = "top";
 
-    const scale = state.width < face.mobileBreakpoint ? face.mobileCellScale : 1;
-    const minCell = state.width < face.mobileBreakpoint ? face.cellMinMobile : face.cellMin;
+    const scale = state.width < faceConfig.mobileBreakpoint ? faceConfig.mobileCellScale : 1;
+    const minCell = state.width < faceConfig.mobileBreakpoint ? faceConfig.cellMinMobile : faceConfig.cellMin;
 
-    state.cellW = clamp(Math.min(state.width / face.targetGridWidth, state.height / face.targetGridHeight) * scale, minCell, face.cellMax);
-    state.cellH = state.cellW * 1.4;
-    state.cols = Math.max(face.minCols, Math.floor(state.width / state.cellW));
-    state.rows = Math.max(face.minRows, Math.floor(state.height / state.cellH));
+    face.cellW = clamp(Math.min(state.width / faceConfig.targetGridWidth, state.height / faceConfig.targetGridHeight) * scale, minCell, faceConfig.cellMax);
+    face.cellH = face.cellW * 1.4;
+    face.cols = Math.max(faceConfig.minCols, Math.floor(state.width / face.cellW));
+    face.rows = Math.max(faceConfig.minRows, Math.floor(state.height / face.cellH));
 
     buildFaceGrid();
   }
 
-  /* Debounces face resize; params: none. */
   function scheduleResizeFace() {
-    window.clearTimeout(state.resizeTimer);
+    const face = state.face;
 
-    state.resizeTimer = window.setTimeout(function () {
+    window.clearTimeout(face.resizeTimer);
+
+    face.resizeTimer = window.setTimeout(function () {
       resizeFace();
     }, 80);
   }
 
-  /* Builds face/background cell data; params: none. */
   function buildFaceGrid() {
+    const face = state.face;
     const faceLines = pickFace();
     const faceH = faceLines.length;
     const faceW = faceLines[0] ? faceLines[0].length : 0;
-    const offsetX = Math.floor((state.cols - faceW) / 2);
-    const offsetY = Math.floor((state.rows - faceH) / 2);
+    const offsetX = Math.floor((face.cols - faceW) / 2);
+    const offsetY = Math.floor((face.rows - faceH) / 2);
 
-    state.cells = [];
+    face.cells = [];
 
-    for (let y = 0; y < state.rows; y += 1) {
-      for (let x = 0; x < state.cols; x += 1) {
-        state.cells.push({
+    for (let y = 0; y < face.rows; y += 1) {
+      for (let x = 0; x < face.cols; x += 1) {
+        face.cells.push({
           x: x,
           y: y,
           face: false,
@@ -675,9 +847,9 @@
         const px = offsetX + fx;
         const py = offsetY + fy;
 
-        if (px < 0 || py < 0 || px >= state.cols || py >= state.rows) continue;
+        if (px < 0 || py < 0 || px >= face.cols || py >= face.rows) continue;
 
-        const cell = state.cells[py * state.cols + px];
+        const cell = face.cells[py * face.cols + px];
 
         cell.face = true;
         cell.base = char;
@@ -688,18 +860,18 @@
     }
   }
 
-  /* Updates face cells with original random disappearance logic; params: elapsed<number>, deltaMs<number>. */
   function updateFaceCells(elapsed, deltaMs) {
-    const face = config.face;
-    const dissolveStart = face.duration * face.dissolveStartRatio;
-    const dissolveEnd = face.duration * face.dissolveEndRatio;
+    const faceConfig = config.face;
+    const face = state.face;
+    const dissolveStart = faceConfig.duration * faceConfig.dissolveStartRatio;
+    const dissolveEnd = faceConfig.duration * faceConfig.dissolveEndRatio;
     const dissolveProgress = elapsed <= dissolveStart
       ? 0
       : clamp((elapsed - dissolveStart) / Math.max(1, dissolveEnd - dissolveStart), 0, 1);
     const frameFactor = clamp(deltaMs / 16.67, 0.35, 2.25);
 
-    for (let index = 0; index < state.cells.length; index += 1) {
-      const cell = state.cells[index];
+    for (let index = 0; index < face.cells.length; index += 1) {
+      const cell = face.cells[index];
 
       if (cell.gone) continue;
 
@@ -730,154 +902,209 @@
     }
   }
 
-  /* Draws face canvas; params: none. */
   function drawFaceGrid() {
-    const face = config.face;
-    const ctx = state.ctx;
+    const faceConfig = config.face;
+    const face = state.face;
+    const ctx = face.ctx;
 
     if (!ctx) return;
 
     ctx.clearRect(0, 0, state.width, state.height);
-    ctx.fillStyle = face.backgroundColor;
+    ctx.fillStyle = faceConfig.backgroundColor;
     ctx.fillRect(0, 0, state.width, state.height);
-    ctx.font = "700 " + state.cellW + "px " + face.fontFamily;
+    ctx.font = "700 " + face.cellW + "px " + faceConfig.fontFamily;
 
-    for (let index = 0; index < state.cells.length; index += 1) {
-      const cell = state.cells[index];
+    for (let index = 0; index < face.cells.length; index += 1) {
+      const cell = face.cells[index];
 
       if (cell.gone) continue;
 
-      const px = cell.x * state.cellW;
-      const py = cell.y * state.cellH;
+      const px = cell.x * face.cellW;
+      const py = cell.y * face.cellH;
 
       if (cell.face) {
         const isBase = cell.char === cell.base;
         const alpha = isBase ? rand(0.88, 1) : rand(0.52, 0.82);
 
-        ctx.fillStyle = (isBase ? face.faceBaseColor : face.faceNoiseColor) + alpha + ")";
+        ctx.fillStyle = (isBase ? faceConfig.faceBaseColor : faceConfig.faceNoiseColor) + alpha + ")";
       } else {
-        ctx.fillStyle = face.backgroundNoiseColor + rand(0.05, 0.16) + ")";
+        ctx.fillStyle = faceConfig.backgroundNoiseColor + rand(0.05, 0.16) + ")";
       }
 
       ctx.fillText(cell.char, px, py);
     }
   }
 
-  /* Runs one face animation frame; params: now<number>. */
-  function drawFaceFrame(now) {
-    if (!state.faceRunning || state.destroyed) return;
+  function drawFaceFrame(frameTime) {
+    const face = state.face;
 
-    const elapsed = now - state.faceStart;
-    const deltaMs = state.faceLastFrame ? now - state.faceLastFrame : 16.67;
+    if (!face.running || state.destroyed) return;
 
-    state.faceLastFrame = now;
+    const elapsed = frameTime - face.start;
+    const deltaMs = face.lastFrame ? frameTime - face.lastFrame : 16.67;
+
+    face.lastFrame = frameTime;
 
     try {
       updateFaceCells(elapsed, deltaMs);
       drawFaceGrid();
     } catch (error) {
-      leaveFace(); // Never leave the full-screen mask stuck after a drawing error.
-      if (window.console && window.console.error) {
-        window.console.error("[HackedSplash] face draw failed", error);
-      }
+      leaveFace();
+      reportError("face draw failed", error);
       return;
     }
 
     if (elapsed < config.face.duration) {
-      state.faceRaf = window.requestAnimationFrame(drawFaceFrame);
+      face.raf = requestFrame(drawFaceFrame);
     } else {
       leaveFace();
     }
   }
 
-  /* Fades and removes the whole face module with JS timing; params: none. */
   function leaveFace() {
-    const layer = state.faceLayer;
+    const face = state.face;
+    const layer = face.layer;
     const fadeDuration = Math.max(0, Number(config.face.fadeDuration) || 0);
 
-    state.faceRunning = false;
-    window.cancelAnimationFrame(state.faceRaf);
-    window.cancelAnimationFrame(state.faceFadeRaf);
+    face.running = false;
+    cancelFrame(face.raf);
+    cancelFrame(face.fadeRaf);
+    face.raf = 0;
+    face.fadeRaf = 0;
 
-    if (!layer || !layer.isConnected) return;
+    if (!layer || !layer.isConnected) {
+      finishFace();
+      return;
+    }
 
     layer.classList.add("is-leaving");
     layer.style.setProperty("--hacked-face-fade", fadeDuration + "ms");
 
-    if (!config.removeLayersOnFinish) return;
-
-    if (fadeDuration <= 0 || !window.requestAnimationFrame || !window.performance) {
-      layer.remove();
+    if (fadeDuration <= 0) {
+      finishFace();
       return;
     }
 
-    const startedAt = performance.now();
+    const startedAt = now();
 
-    const step = function (now) {
+    const step = function (frameTime) {
       if (!layer.isConnected) return;
 
-      const progress = clamp((now - startedAt) / fadeDuration, 0, 1);
+      const progress = clamp((frameTime - startedAt) / fadeDuration, 0, 1);
 
       layer.style.opacity = String(1 - progress);
 
       if (progress < 1) {
-        state.faceFadeRaf = window.requestAnimationFrame(step);
-      } else if (layer.isConnected) {
-        layer.remove();
+        face.fadeRaf = requestFrame(step);
+      } else {
+        finishFace();
       }
     };
 
-    state.faceFadeRaf = window.requestAnimationFrame(step);
-
-    setTrackedTimeout(function () {
-      if (layer.isConnected) {
-        layer.remove(); // Failsafe when RAF is throttled or interrupted.
-      }
-    }, fadeDuration + 120);
+    face.fadeRaf = requestFrame(step);
+    scheduleFaceHardRemove(fadeDuration + 180);
   }
 
-  /* Starts only the face module; params: nextConfig<object>. */
   function startFace(nextConfig) {
-    config = deepMerge(config, nextConfig || {});
+    if (nextConfig) {
+      config = normalizeConfig(deepMerge(config, nextConfig));
+    }
+
+    cleanupFace({ remove: true });
 
     if (!config.face.enabled) return getConfig();
     if (!resolveFaceElements()) return getConfig();
 
     injectStyle();
 
+    const face = state.face;
+
     state.destroyed = false;
-    state.faceRunning = true;
-    state.faceLastFrame = 0;
+    face.running = true;
+    face.lastFrame = 0;
 
     try {
       resizeFace();
     } catch (error) {
-      if (state.faceLayer && state.faceLayer.isConnected) {
-        state.faceLayer.remove(); // Clean up if mobile canvas sizing fails before RAF starts.
-      }
-      if (window.console && window.console.error) {
-        window.console.error("[HackedSplash] face setup failed", error);
-      }
+      finishFace();
+      reportError("face setup failed", error);
       return getConfig();
     }
 
-    state.faceStart = performance.now();
+    face.start = now();
 
-    setTrackedTimeout(function () {
-      if (state.faceRunning) {
-        leaveFace(); // Failsafe for mobile RAF throttling or canvas stalls.
+    scheduleFaceHardRemove(
+      config.face.duration +
+      config.face.fadeDuration +
+      config.face.failSafeExtraDelay
+    );
+
+    setFaceTimeout(function () {
+      if (state.face.running) {
+        leaveFace();
       }
-    }, config.face.duration + config.face.fadeDuration + config.face.failSafeExtraDelay);
+    }, config.face.duration + config.face.fadeDuration + 120);
 
     window.addEventListener("resize", scheduleResizeFace, { passive: true });
     window.addEventListener("orientationchange", scheduleResizeFace, { passive: true });
 
-    state.faceRaf = window.requestAnimationFrame(drawFaceFrame);
+    face.raf = requestFrame(drawFaceFrame);
 
     return getConfig();
   }
 
-  /* Decorates alert text; params: text<string>. */
+  function resolveFlashElements() {
+    const parent = resolveLayerParent();
+    const flash = state.flash;
+
+    flash.layer = ensureElementById("div", config.flash.layerId, parent);
+
+    if (!flash.layer) return false;
+
+    flash.layer.textContent = "";
+    flash.layer.setAttribute("aria-hidden", "true");
+    showElement(flash.layer);
+
+    return true;
+  }
+
+  function clearFlashRuntimeTimers() {
+    const flash = state.flash;
+
+    window.clearTimeout(flash.spawnTimer);
+    clearModuleTimeouts(flash);
+
+    flash.spawnTimer = 0;
+  }
+
+  function cleanupFlash(options) {
+    const opts = options || {};
+    const shouldRemove = opts.remove !== false;
+    const flash = state.flash;
+    const layer = flash.layer || document.getElementById(config.flash.layerId);
+
+    flash.running = false;
+    flash.decayStarted = false;
+    clearFlashRuntimeTimers();
+
+    if (layer) {
+      if (shouldRemove && layer.isConnected) {
+        layer.remove();
+      } else {
+        layer.textContent = "";
+        hideElement(layer);
+      }
+    }
+
+    flash.layer = null;
+    flash.start = 0;
+    flash.activeWords = [];
+  }
+
+  function finishFlash() {
+    cleanupFlash({ remove: config.removeLayersOnFinish !== false });
+  }
+
   function decorateFlashText(text) {
     const variants = [
       "//// " + text + " ////",
@@ -890,77 +1117,90 @@
     return sample(variants);
   }
 
-  /* Returns max flash word count; params: none. */
   function getFlashLimit() {
-    const flash = config.flash;
-    const fixed = flash.count;
+    const flashConfig = config.flash;
+    const fixed = flashConfig.count;
 
     if (fixed !== null && fixed !== undefined && fixed !== "") {
       const value = Number(fixed);
 
       if (Number.isFinite(value) && value >= 0) {
-        return Math.floor(clamp(value, 0, flash.maxCount));
+        return Math.floor(clamp(value, 0, flashConfig.maxCount));
       }
     }
 
     readViewport();
 
-    const viewportLimit = Math.floor((state.width * state.height) / flash.densityDivisor);
+    const viewportLimit = Math.floor((state.width * state.height) / flashConfig.densityDivisor);
 
-    return Math.min(flash.maxCount, Math.max(flash.minCount, viewportLimit));
+    return Math.min(flashConfig.maxCount, Math.max(flashConfig.minCount, viewportLimit));
   }
 
-  /* Returns current flash mobile scale; params: none. */
   function getFlashScale() {
     readViewport();
 
     return state.width < config.flash.mobileBreakpoint ? config.flash.mobileScale : 1;
   }
 
-  /* Creates one flash word; params: none. */
-  function createFlashWord() {
-    const flash = config.flash;
+  function pickFlashWord() {
+    const words = Array.isArray(config.flash.words) && config.flash.words.length
+      ? config.flash.words
+      : DEFAULT_CONFIG.flash.words;
 
-    if (!state.flashLayer || !state.flashLayer.isConnected) return null;
-    if (state.flashDecayStarted) return null;
-    if (state.activeFlashWords.length >= getFlashLimit()) return null;
+    return sample(words);
+  }
+
+  function applyFlashWordStyle(element, word) {
+    const picked = word || pickFlashWord();
+    const color = picked.color || "#ffffff";
+    const glow = picked.glow || colorToGlow(color, config.flash.glowAlpha || 0.98);
+
+    element.textContent = decorateFlashText(picked.text || "[SYS] SIGNAL LOST");
+    element.style.setProperty("--color", color);
+    element.style.setProperty("--glow", glow);
+    element.style.setProperty("--blend-mode", config.flash.mixBlendMode || "screen");
+  }
+
+  function createFlashWord() {
+    const flashConfig = config.flash;
+    const flash = state.flash;
+
+    if (!flash.layer || !flash.layer.isConnected) return null;
+    if (flash.decayStarted) return null;
+    if (flash.activeWords.length >= getFlashLimit()) return null;
 
     readViewport();
 
-    const picked = sample(flash.words);
     const span = document.createElement("span");
     const scale = getFlashScale();
-    const large = Math.random() < flash.largeChance;
-    const medium = !large && Math.random() < flash.mediumChance;
+    const large = Math.random() < flashConfig.largeChance;
+    const medium = !large && Math.random() < flashConfig.mediumChance;
     let size = 0;
 
     if (large) {
-      size = clamp(state.width * rand(flash.largeRatioMin, flash.largeRatioMax) * scale, flash.largeClampMin, flash.largeClampMax);
+      size = clamp(state.width * rand(flashConfig.largeRatioMin, flashConfig.largeRatioMax) * scale, flashConfig.largeClampMin, flashConfig.largeClampMax);
     } else if (medium) {
-      size = clamp(state.width * rand(flash.mediumRatioMin, flash.mediumRatioMax) * scale, flash.mediumClampMin, flash.mediumClampMax);
+      size = clamp(state.width * rand(flashConfig.mediumRatioMin, flashConfig.mediumRatioMax) * scale, flashConfig.mediumClampMin, flashConfig.mediumClampMax);
     } else {
-      size = clamp(state.width * rand(flash.smallRatioMin, flash.smallRatioMax) * scale, flash.smallClampMin, flash.smallClampMax);
+      size = clamp(state.width * rand(flashConfig.smallRatioMin, flashConfig.smallRatioMax) * scale, flashConfig.smallClampMin, flashConfig.smallClampMax);
     }
 
     span.className = "hacked-splash__flash";
-    span.textContent = decorateFlashText(picked.text);
     span.style.setProperty("--x", rand(1, 99) + "%");
     span.style.setProperty("--y", rand(2, 98) + "%");
     span.style.setProperty("--r", rand(-20, 20) + "deg");
     span.style.setProperty("--size", size + "px");
-    span.style.setProperty("--dur", rand(90, 180) + "ms");
     span.style.setProperty("--settle", String(rand(0.55, 0.95)));
-    span.style.setProperty("--outdur", rand(flash.outMin, flash.outMax) + "ms");
-    span.style.setProperty("--color", picked.color);
-    span.style.setProperty("--glow", picked.glow);
-    span.style.opacity = "1"; // JS-controlled visibility; no CSS animation dependency.
+    span.style.setProperty("--outdur", rand(flashConfig.outMin, flashConfig.outMax) + "ms");
+    span.style.opacity = "1";
+    span.style.visibility = "visible";
 
-    state.activeFlashWords.push(span);
+    applyFlashWordStyle(span);
+    flash.activeWords.push(span);
 
     return span;
   }
 
-  /* Adds a flash word batch; params: none. */
   function addFlashBatch() {
     const fragment = document.createDocumentFragment();
     const count = randInt(config.flash.batchMin, config.flash.batchMax);
@@ -973,80 +1213,76 @@
       }
     }
 
-    if (fragment.childNodes.length && state.flashLayer && state.flashLayer.isConnected) {
-      state.flashLayer.appendChild(fragment);
+    if (fragment.childNodes.length && state.flash.layer && state.flash.layer.isConnected) {
+      state.flash.layer.appendChild(fragment);
     }
   }
 
-  /* Schedules flash word generation; params: none. */
   function scheduleFlashSpawn() {
-    if (!state.flashRunning || state.destroyed || state.flashDecayStarted) return;
+    const flash = state.flash;
 
-    const elapsed = performance.now() - state.flashStart;
+    if (!flash.running || state.destroyed || flash.decayStarted) return;
+
+    const elapsed = now() - flash.start;
 
     if (elapsed <= config.flash.startDelay + config.flash.spawnDuration) {
       if (elapsed >= config.flash.startDelay) {
         addFlashBatch();
       }
 
-      if (state.activeFlashWords.length < getFlashLimit()) {
-        state.flashTimer = window.setTimeout(scheduleFlashSpawn, rand(config.flash.spawnIntervalMin, config.flash.spawnIntervalMax));
+      if (flash.activeWords.length < getFlashLimit()) {
+        flash.spawnTimer = window.setTimeout(scheduleFlashSpawn, rand(config.flash.spawnIntervalMin, config.flash.spawnIntervalMax));
       }
     }
   }
 
-  /* Replaces one flash word style/text at same position; params: element<Element>. */
   function reskinFlashWord(element) {
     if (!element || !element.isConnected) return;
 
-    const picked = sample(config.flash.words);
-
-    element.textContent = decorateFlashText(picked.text);
-    element.style.setProperty("--color", picked.color);
-    element.style.setProperty("--glow", picked.glow);
+    applyFlashWordStyle(element);
   }
 
-  /* Removes one flash word with JS timing only; params: element<Element>. */
   function decayFlashWord(element) {
+    const flash = state.flash;
+
     if (!element || !element.isConnected) return;
 
     element.classList.add("is-decaying");
     element.style.opacity = "0";
     element.style.visibility = "hidden";
 
-    const index = state.activeFlashWords.indexOf(element);
+    const index = flash.activeWords.indexOf(element);
 
     if (index !== -1) {
-      state.activeFlashWords.splice(index, 1);
+      flash.activeWords.splice(index, 1);
     }
 
     const outDur = parseFloat(element.style.getPropertyValue("--outdur")) || config.flash.outMax;
 
-    setTrackedTimeout(function () {
+    setFlashTimeout(function () {
       if (element.isConnected) {
         element.remove();
       }
     }, outDur + 30);
   }
 
-  /* Runs final hide/show blinking with optional reskin on reappearance; params: element<Element>, duration<number>. */
   function finalGlitchThenDecay(element, duration) {
-    const flash = config.flash;
+    const flashConfig = config.flash;
 
     if (!element || !element.isConnected) return;
 
-    const totalDuration = clamp(duration, flash.finalDurationMin, flash.finalDurationMax);
-    const cycleCount = randInt(flash.finalBlinkMin, flash.finalBlinkMax);
-    const forcedSwitchCount = randInt(flash.finalSwitchMin, flash.finalSwitchMax);
+    const totalDuration = clamp(duration, flashConfig.finalDurationMin, flashConfig.finalDurationMax);
+    const cycleCount = randInt(flashConfig.finalBlinkMin, flashConfig.finalBlinkMax);
+    const forcedSwitchCount = randInt(flashConfig.finalSwitchMin, flashConfig.finalSwitchMax);
     const forcedSwitchSteps = [];
     let elapsed = 0;
 
     element.classList.remove("is-decaying");
     element.style.animation = "none";
+    element.style.transition = "none";
     element.style.opacity = "1";
     element.style.visibility = "visible";
     element.style.filter = "contrast(1.15) saturate(1.15)";
-    element.style.transition = "none";
 
     for (let index = 0; index < forcedSwitchCount; index += 1) {
       forcedSwitchSteps.push(randInt(0, Math.max(0, cycleCount - 1)));
@@ -1055,21 +1291,21 @@
     for (let cycle = 0; cycle < cycleCount; cycle += 1) {
       const remaining = Math.max(0, totalDuration - elapsed);
       const averageRemaining = remaining / Math.max(1, cycleCount - cycle);
-      const hideDuration = Math.min(rand(flash.finalHideMin, flash.finalHideMax), averageRemaining * 0.65);
-      const showDuration = Math.min(rand(flash.finalShowMin, flash.finalShowMax), averageRemaining * 0.85);
+      const hideDuration = Math.min(rand(flashConfig.finalHideMin, flashConfig.finalHideMax), averageRemaining * 0.65);
+      const showDuration = Math.min(rand(flashConfig.finalShowMin, flashConfig.finalShowMax), averageRemaining * 0.85);
       const hideAt = elapsed;
       const showAt = elapsed + hideDuration;
       const shouldForceSwitch = forcedSwitchSteps.indexOf(cycle) !== -1;
-      const shouldRandomSwitch = Math.random() < flash.finalReskinChance;
+      const shouldRandomSwitch = Math.random() < flashConfig.finalReskinChance;
 
-      setTrackedTimeout(function () {
+      setFlashTimeout(function () {
         if (!element || !element.isConnected) return;
 
         element.style.visibility = "hidden";
         element.style.opacity = "0";
       }, hideAt);
 
-      setTrackedTimeout(function () {
+      setFlashTimeout(function () {
         if (!element || !element.isConnected) return;
 
         if (shouldForceSwitch || shouldRandomSwitch) {
@@ -1094,7 +1330,7 @@
       }
     }
 
-    setTrackedTimeout(function () {
+    setFlashTimeout(function () {
       if (!element || !element.isConnected) return;
 
       element.style.visibility = "visible";
@@ -1106,32 +1342,33 @@
     }, Math.max(totalDuration, elapsed) + rand(80, 180));
   }
 
-  /* Starts random flash word decay and preserves final glitch words for the visible ending; params: none. */
   function beginFlashDecay() {
-    const flash = config.flash;
+    const flashConfig = config.flash;
+    const flash = state.flash;
 
-    if (state.flashDecayStarted) return;
+    if (flash.decayStarted) return;
 
-    state.flashDecayStarted = true;
-    window.clearTimeout(state.flashTimer);
+    flash.decayStarted = true;
+    window.clearTimeout(flash.spawnTimer);
+    flash.spawnTimer = 0;
 
-    const queue = shuffled(state.activeFlashWords);
+    const queue = shuffled(flash.activeWords);
 
     if (!queue.length) {
-      setTrackedTimeout(removeFlashLayer, flash.regularDecayDuration);
+      setFlashTimeout(finishFlash, flashConfig.regularDecayDuration);
       return;
     }
 
-    const finalCount = Math.min(queue.length, randInt(flash.finalCountMin, flash.finalCountMax));
+    const finalCount = Math.min(queue.length, randInt(flashConfig.finalCountMin, flashConfig.finalCountMax));
     const finalWords = queue.slice(-finalCount);
     const normalWords = queue.slice(0, Math.max(0, queue.length - finalCount));
-    const finalDuration = rand(flash.finalDurationMin, flash.finalDurationMax);
-    const finalStartDelay = flash.regularDecayDuration + flash.outMax + rand(180, 420);
+    const finalDuration = rand(flashConfig.finalDurationMin, flashConfig.finalDurationMax);
+    const finalStartDelay = flashConfig.regularDecayDuration + flashConfig.outMax + rand(180, 420);
 
     normalWords.forEach(function (element) {
-      const delay = Math.pow(Math.random(), 0.78) * flash.regularDecayDuration + rand(0, 90);
+      const delay = Math.pow(Math.random(), 0.78) * flashConfig.regularDecayDuration + rand(0, 90);
 
-      setTrackedTimeout(function () {
+      setFlashTimeout(function () {
         decayFlashWord(element);
       }, delay);
     });
@@ -1139,105 +1376,85 @@
     finalWords.forEach(function (element, index) {
       const stagger = index * rand(160, 360);
 
-      setTrackedTimeout(function () {
+      setFlashTimeout(function () {
         finalGlitchThenDecay(element, finalDuration + rand(-260, 260));
       }, finalStartDelay + stagger);
     });
 
-    setTrackedTimeout(
-      removeFlashLayer,
-      finalStartDelay + finalDuration + flash.outMax + 1200
+    setFlashTimeout(
+      finishFlash,
+      finalStartDelay + finalDuration + flashConfig.outMax + 1200
     );
   }
 
-  /* Removes flash layer when configured; params: none. */
-  function removeFlashLayer() {
-    state.flashRunning = false;
-
-    if (config.removeLayersOnFinish && state.flashLayer && state.flashLayer.isConnected) {
-      state.flashLayer.remove();
-    }
-  }
-
-  /* Starts only the flash module; params: nextConfig<object>. */
   function startFlash(nextConfig) {
-    config = deepMerge(config, nextConfig || {});
+    if (nextConfig) {
+      config = normalizeConfig(deepMerge(config, nextConfig));
+    }
+
+    cleanupFlash({ remove: true });
 
     if (!config.flash.enabled) return getConfig();
     if (!resolveFlashElements()) return getConfig();
 
     injectStyle();
 
+    const flash = state.flash;
+
     state.destroyed = false;
-    state.flashRunning = true;
-    state.flashDecayStarted = false;
-    state.activeFlashWords = [];
-    state.flashStart = performance.now();
+    flash.running = true;
+    flash.decayStarted = false;
+    flash.activeWords = [];
+    flash.start = now();
 
     scheduleFlashSpawn();
 
-    setTrackedTimeout(function () {
+    setFlashTimeout(function () {
       beginFlashDecay();
     }, config.flash.startDelay + config.flash.spawnDuration + config.flash.holdDuration);
 
     return getConfig();
   }
 
-  /* Starts both enabled modules; params: nextConfig<object>. */
   function start(nextConfig) {
-    config = deepMerge(config, nextConfig || {});
+    if (nextConfig) {
+      config = normalizeConfig(deepMerge(config, nextConfig));
+    }
 
+    state.destroyed = false;
 
     if (config.face.enabled) {
       startFace();
+    } else {
+      cleanupFace({ remove: true });
     }
 
     if (config.flash.enabled) {
       startFlash();
+    } else {
+      cleanupFlash({ remove: true });
     }
 
     return getConfig();
   }
 
-  /* Stops timers and animation but keeps current DOM layers; params: none. */
   function stop() {
-    state.faceRunning = false;
-    state.flashRunning = false;
-
-    window.cancelAnimationFrame(state.faceRaf);
-    window.cancelAnimationFrame(state.faceFadeRaf);
-    window.clearTimeout(state.flashTimer);
-    window.clearTimeout(state.resizeTimer);
-    clearTrackedTimeouts();
-
-    window.removeEventListener("resize", scheduleResizeFace);
-    window.removeEventListener("orientationchange", scheduleResizeFace);
+    cleanupFace({ remove: true });
+    cleanupFlash({ remove: true });
 
     return getConfig();
   }
 
-  /* Stops and removes splash layers; params: none. */
   function destroy() {
     stop();
 
     state.destroyed = true;
-    state.cells = [];
-    state.activeFlashWords = [];
-
-    if (state.faceLayer && state.faceLayer.isConnected) {
-      state.faceLayer.remove();
-    }
-
-    if (state.flashLayer && state.flashLayer.isConnected) {
-      state.flashLayer.remove();
-    }
 
     return getConfig();
   }
 
-  /* Updates runtime config; params: nextConfig<object>. */
   function updateConfig(nextConfig) {
-    config = deepMerge(config, nextConfig || {});
+    config = normalizeConfig(deepMerge(config, nextConfig || {}));
 
     if (config.injectStyle) {
       injectStyle();
@@ -1246,12 +1463,10 @@
     return getConfig();
   }
 
-  /* Returns active configuration; params: none. */
   function getConfig() {
-    return deepMerge({}, config);
+    return normalizeConfig(deepMerge({}, config));
   }
 
-  /* Runs automatic startup; params: none. */
   function onReady() {
     if (!config.autoStart) return;
 
