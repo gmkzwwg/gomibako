@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # 1. Jekyll core site identity
 # -----------------------------------------------------------------------------
-title                     : "DUSTBIN"                         # Set the official site title used by Jekyll and SEO tags.
+title                     : "JUNKYARD"                         # Set the official site title used by Jekyll and SEO tags.
 description               : "Personal rubbish of gmkzwwg"     # Set the default site description used by templates and metadata.
 
 url                       : "https://gmkz.top"                # Set the canonical site URL without a trailing slash.
