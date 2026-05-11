@@ -1,184 +1,195 @@
 /*!
- * hacked-splash.js
- *
- * Introduction:
- *   Renders two independent effects: an ASCII face splash and floating alert words.
- *
- * This rewritten version keeps the user's latest visual configuration while
- * consolidating lifecycle cleanup, restart safety, and color-derived glow values.
- * Critical cleanup never depends on CSS animation/transition events.
- */
+* hacked-splash.js
+*
+* Introduction:
+*   Renders an ASCII face splash and floating alert words.
+*   Uses conservative Android-safe timing and cleanup.
+*
+* Usage:
+*   Include this file after the optional critical first-paint layer.
+*   No manual initialization is required when autoStart is true.
+*
+* Global API:
+*   window.HackedSplash.start(config?)
+*   window.HackedSplash.stop()
+*   window.HackedSplash.destroy()
+*   window.HackedSplash.updateConfig(config)
+*   window.HackedSplash.getConfig()
+*
+* Notes:
+*   Critical cleanup never depends on CSS animation/transition events.
+*   Android animation-off or reduced-motion mode skips the effect and fades out the face layer.
+*/
 
 (function (window, document) {
   "use strict";
 
   if (!window || !document) return;
 
-  const FACE_LIBRARY = [
-    [
-      "                                                                                ",
-      "                -:-                           :-:                           -:- ",
-      "                :::                     ..    :::                           ::: ",
-      "                                    .---+=--:                                   ",
-      "                                  :-==++++=+::::.                               ",
-      "                                .=++***+++++-:...                               ",
-      "                               :=+*##+***+#*+-::                                ",
-      "                              :+*+***++==+**=-::....                            ",
-      "                              =+***+++++=+**+-::.-::                            ",
-      " :=:                         =*@@@#**++*#+++*=::-:           :=:                ",
-      " -::            .            %#@@%**#%#%%%%%@#*=:.  .        -::            .   ",
-      "                            *=*@@@@%+**+*+++*++%#-.                             ",
-      "                           +*%%@#%#**%#++++=+*+***+                             ",
-      "                          .#@######+-.         :++*+                            ",
-      "                          #@**+#=            .. .=+*-                           ",
-      "                         -#**-              .::-. -*+:                          ",
-      "                         =*:       .=:-....::   .  =+:                          ",
-      "   .            --:      :+..    -      -.    -#+   +-.        .            --: ",
-      "               .::-  -++***+-  .  -:   -#+. .=#+:   =:     ...             .::- ",
-      "                  .=**#**#+#=-:.   -++=-**=*++-     :.     :::.                 ",
-      "                 =###***+*##%=-     .++*=====:      +        .:::.              ",
-      "                :*%#**=*=-=+=**-      +*++-+      .*:         :--:              ",
-      "               .=*#*=++*+=-*-=.--:.            ::=:          .--:::             ",
-      "              :+*###+++#+**#+=+=:-:  .      -=-:            . :..:::.           ",
-      "              :=-++----+----=-+++*.       -.   :             :=  :-:.           ",
-      "             .++=+*= .-+==+%+=+**# .... -:     +-       .    .:---::::        . ",
-      " -:-.       :**=++=-  .--::-:-**#@.. ...-:    .%  . ..:..    *+*+-.::-          ",
-      "           :=*+==-=-  .-:.:-:-==++ :.::.:=:-=--#   .:...     :=---:::-.         ",
-      "          .==**+=--:   ..::-:-==++ :::::-+:==:-*  ..::=-:    .==--:::-:.        ",
-      "         =++-=+==:-.   ..--=----== :::::-*--=:-#    .:  .   .--+=-:::=-.        ",
-      "         -.=+++*=..      ::=.:=-+= -: .--*:-=::#.   .-.      :==--:::=-         ",
-      "        :=+===*#=..      ::-.:===-:==-:--*--=::#.     .. .:..:--::::  -.        ",
-      "       -::-:..:-:.       .:::%@@@@%@+: .:*--=:-#  ...-:       :-: .-=--::       ",
-      "     .=+:-==**--::        .*@@@@+*@@: . -%:.: :#.   ..         -. . .::::.      ",
-      "     ==+-*#*#%@@@%@##@@% =@@@@@+@@*%*:  -##..+@@@@#-.:    -==:-.:***+=-=-  .::- ",
-      "     -++##***#%#@**%#%=+@@@@@*%@@= .=-. .-:@+:=@%*%%=#+=%%%#+=-++++*==+-:   ::  ",
-      "     .=++*+*+--:-+**#*=@@@=.=#%-         :*= =+..#-=#:. :=++#-:..:. :::-.       ",
-      "      .-++==-:::-++=+=.-=.  :---==++*%#%%%+ -+ .#.-+        ==    ..            ",
-      "                 ..  ..    - .:..       :+     =  :         =.                  ",
-      "                                                                                ",
-      "                                                                                ",
-      "                   .                                                           .",
-      " -:-                          .:::                           -:-                ",
-      "-++=-::::::::::---::::::::::::-++=-::::::::::--:::::::::::::-++=-::::::::::--:::",
-      "#######%@####################################################%%%%%%%%%%%%%#%####",
-      "#%%%%%%%%%%%%%##################################################################",
-    ],
-    [
-      "                                 :+##########*-                                 ",
-      "                            =#%%%%%%%%%%%%%%%%%%%%%*                            ",
-      "                         *%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                         ",
-      "                      =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                       ",
-      "                   :#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+                     ",
-      "                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                    ",
-      "                -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   ",
-      "               =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                  ",
-      "              .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                 ",
-      "              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                ",
-      "             -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%=               ",
-      "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#               ",
-      "            .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%:              ",
-      "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*              ",
-      "            +%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-      "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-      "             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-      "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-      "             :%%%%%# #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*%%%:              ",
-      "              %%%%#  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -%%#               ",
-      "              :%%- .#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+ %%+               ",
-      "               :+#%%%%%%+:. :+%%%%%%%%%%%%%%%%#-.      :+%%%%#==                ",
-      "              %%%%%%%=           #%%%%%%%%%%#             .%%%%%#               ",
-      "              %%%%%*              +%%%%%%%%%                %%%%*               ",
-      "              -%%%+                %%%%%%%%#                *%%%=               ",
-      "               %%%:                %%%%%%%%#                +%%%*               ",
-      "               #%%+              =%%%%%%%%%%%*              #%%%%               ",
-      "               %%%%*         .+%%%%%%%##%%%%%%%%+        :*%%%%%#               ",
-      "              =%%%%%%*=--=*%%%%%%%%%%-.+ %%%%%%%%%%%%%%%%%%%%%%#                ",
-      "              :%%%%%%%%%%%%%%%%%%%%%# :+ =%%%%%%%%%%%%%%%%%%%%*                 ",
-      "               +%%%%%%%%%%%%%%%%%%%%  =#  #%%%%%%%%%%%%%%%%%%#                  ",
-      "                 =#%%%%%%%%%%%%%%%%#  %%  =%%%%%%%%%%%%%%%%%%*                  ",
-      "        +%*                =%%%%%%%%+:%%+-%%%%%%%%%+-+%%%%%%*       :##*%%*    ",
-      "      %%%%%-               *%%%%%%%%%%%%%%%%%%%%%%%                #%%%%%%%     ",
-      "     +%%%%%%+              %%%%%%%%%%%%%%%%%%%%%%%%:              +%%%%%%%%     ",
-      "   #%%%%%%%%%%%#-          *%%%%%%%%%%%%%%%%%%%%%%%:           :*%%%%%%%%%%%%-  ",
-      "   %%%%%%%%%%%%%%%%#=       -%%%%%%%%%%%%%%%%%#%*        :*%%%%%%%%%%%%%%%%%%#  ",
-      "   %%%%%%%%%%%%%%%%%%%%%=      *%*=%%%*#%%#=%#       =%%%%%%%%%%%%%%%%%%%%%%%=  ",
-      "   =#%%%%%%%%%%%%%%%%%%%%%%%+.                   +%%%%%%%%%%%%%#*+=:.           ",
-      "               .=*#%%%%%%%%%%%%%*.          -#%%%%%%%%%#+-                      ",
-      "                      =*%%%%%%%%%%%%#=.=#%%%%%%%%%%+.                           ",
-      "                           =#%%%%%%%%%%%%%%%%%%+.                               ",
-      "                           .*%%%%%%%%%%%%%%%%%%*-                                ",
-      "                     .+%%%%%%%%%%%%%%#%%%%%%%%%%%%%%%%#=.                       ",
-      "   .            =#%%%%%%%%%%%%%#+:       =*%%%%%%%%%%%%%%%%%%%+:          -     ",
-      ":%%%%%+   :*%%%%%%%%%%%%%%#+.                 =*%%%%%%%%%%%%%%%%%%%%%%#%%%%%#.  ",
-      "%%%%%%%%%%%%%%%%%%%%%#+                            +#%%%%%%%%%%%%%%%%%%%%%%%%*  ",
-      "=%%%%%%%%%%%%%%%#=                                      =*#%%%%%%%%%%%%%%%%%%   ",
-      "  #%%%%%%%%%%%                                                :*#%%%%%%%%%%%%=  ",
-      "  #%%%%%%%%%#                                                      =#%%%%%%%%%%=",
-      "  #%%%%%%%#.                                                          :#%%%%%%%#",
-      "   *#%%%#:                                                               :#%%%# ",
-      "                                                                                ",
-    ],
-    [
-      "             . :                                                  .             ",
-      "            :  :                                                :  .            ",
-      "           .   :                                                :  :            ",
-      "           .                                                    .   .           ",
-      "           .  .                                                 .   -           ",
-      "          :   .:                                                :   ::          ",
-      "          -    :                                                .   :=          ",
-      "          -.   :                 .           :                  .   -=          ",
-      "         .++:  :-                =:          -=                =. .-+*          ",
-      "          +-    .                *=          =+                ..  :++:         ",
-      "          ==    :=              .+-          ++:              -.  .:++          ",
-      "          +*++-  ...           =+*:    -     :++.           :...:+++*+          ",
-      "           ++===:-=-          .:.-            :.-.         .:: .-=+**.          ",
-      "           +++++++=:.-         .-             ::. .       :  .-=+=+*+           ",
-      "           :++===..:+=.          ..:... .:.::.           :.=+.:.-***:           ",
-      "            .**+***+= ==:    ...   .-.. .:-:. ...:.    . -===+*****             ",
-      "             .+***++==++= .. .....   ::.-:.   ::.::.:.:= :==+=**#*.             ",
-      "              +#****+=-.:- ---=::     ..-:    :.-=--=  : ..-*****=              ",
-      "              :+**#**#=**--==-.+.     : =-      = ::+.-**=*####*+-              ",
-      "                :*##*****=+:.... ...  = :=  ..  .   :==***####*=                ",
-      "    :    .       -*#####*##*+    :=     :.   =    -+*##+*#*##*+       :    :    ",
-      "    =.      -:----=+**###+..:+:. -     :=     =.:-+-.:*###**+:==+===:      =    ",
-      "    :=       :-=*+.:-*##*=+- .==-:  :  .=  =  =-++. =**###=-..**++-       =:    ",
-      "     +-      .=+=+::-=**+=++: .+*=:   ==+-  .=**+..=*++**+--.:*+*+:      -+:    ",
-      "     =+:        ++=+--+++= =+=+:-+: ::+=*+:-:-+==*++*:++*+==+=++  .     :++     ",
-      "     .+=         ++- :=-=+=---=+= :.  ==+-: :- +*+==:++:==- -++       . -*:     ",
-      "      .+=. .     -#+ .:-.:+=. .++-++=-*=*+-++==++ .-++:.-- .+#=     -::=+-      ",
-      "       .*+=:..---+**: ::=. =:+: .+: :.-=+--.:=+: -+-+ .---.=#*+=+++=+++*=       ",
-      "        .**++==+*+==:++=: ::   -  ==: :++- -=- -:  .=:.-+*=:*+*********:        ",
-      "          :==++*+=-.=#####+ .   ..=. =*+#*: .= :   :.*#####-==*****++-          ",
-      "            *+====.:####%%%#+        ==:++-   .   -#%%%%###*-:*+++**            ",
-      "             .-:=+ =####%%%%%#=   .-=+*###+-=    #%%%%%%####- #++:              ",
-      "                -+ =+.*#%%%%%%%#*****#= .-#*+**##%%%%%%%%*-*-=*-                ",
-      "                  :++-#%%%%%%%%%%%###*= .*####%%%%%%%%%%#+=+*..                 ",
-      "                 =+=:=-####%#%%%%%##*++=#***##%%%%%#%##%#==-+++                 ",
-      "               :-==:.--.*######%#*+***%%%#+**+*#%%%####+.-=:-==-:               ",
-      "                -=-:-:  .:-   :+++=+*%%#%%%++++++-  :=-   -=-===                ",
-      "                .**++*+=-=+*+- .+*=+#%%#%%%#++#+.:=***+=+**+*#*                 ",
-      "                   =**######**=*+***%%%*%%%%****#+*########*-                   ",
-      "                   :*#**###*+*=+=+**###=*####**=*+#*#####*#*-                   ",
-      "                      ++#%%%*-==:.==:-+*++=:++ .+*-#%%%#+-                      ",
-      "                       -*#%%#+-=..=:**+##**+.= -==*%%%%*-                       ",
-      "                        *#%%%#++- +=  ++*= .=+ +=##%%%*+                        ",
-      "                        .*###= . =++:--=-=+ *++   #%%#*                         ",
-      "                         ++*#= . *+  =.==    += :-+#*++                         ",
-      "                         +*=*==+.*-    :     =*:++**=++                         ",
-      "                        =##+**::-#%##*+#++**#%*::-***##:                        ",
-      "                           *-*+   -.=#####** -   +*=+                           ",
-      "                            =#+=-==.   = . : +-==*#*                            ",
-      "                            +*#**#*#*+++*++##*#**#+:                            ",
-      "                            -.++*##############+*=..                            ",
-      "                              =*+*############*+*+                              ",
-      "                               -*#***#***##**###.                               ",
-      "                                %#.:.+**#*-.-.#%                                ",
-      "                                .  .*******#:  .                                ",
-      "                                   -  *##* ..                                   ",
-      "                                       *=                                       ",
-      "                                                                                ",
-      "                                                                                ",
-    ],
+  const FACE_LIBRARY = [[
+    "                                                                                ",
+    "                -:-                           :-:                           -:- ",
+    "                :::                     ..    :::                           ::: ",
+    "                                    .---+=--:                                   ",
+    "                                  :-==++++=+::::.                               ",
+    "                                .=++***+++++-:...                               ",
+    "                               :=+*##+***+#*+-::                                ",
+    "                              :+*+***++==+**=-::....                            ",
+    "                              =+***+++++=+**+-::.-::                            ",
+    " :=:                         =*@@@#**++*#+++*=::-:           :=:                ",
+    " -::            .            %#@@%**#%#%%%%%@#*=:.  .        -::            .   ",
+    "                            *=*@@@@%+**+*+++*++%#-.                             ",
+    "                           +*%%@#%#**%#++++=+*+***+                             ",
+    "                          .#@######+-.         :++*+                            ",
+    "                          #@**+#=            .. .=+*-                           ",
+    "                         -#**-              .::-. -*+:                          ",
+    "                         =*:       .=:-....::   .  =+:                          ",
+    "   .            --:      :+..    -      -.    -#+   +-.        .            --: ",
+    "               .::-  -++***+-  .  -:   -#+. .=#+:   =:     ...             .::- ",
+    "                  .=**#**#+#=-:.   -++=-**=*++-     :.     :::.                 ",
+    "                 =###***+*##%=-     .++*=====:      +        .:::.              ",
+    "                :*%#**=*=-=+=**-      +*++-+      .*:         :--:              ",
+    "               .=*#*=++*+=-*-=.--:.            ::=:          .--:::             ",
+    "              :+*###+++#+**#+=+=:-:  .      -=-:            . :..:::.           ",
+    "              :=-++----+----=-+++*.       -.   :             :=  :-:.           ",
+    "             .++=+*= .-+==+%+=+**# .... -:     +-       .    .:---::::        . ",
+    " -:-.       :**=++=-  .--::-:-**#@.. ...-:    .%  . ..:..    *+*+-.::-          ",
+    "           :=*+==-=-  .-:.:-:-==++ :.::.:=:-=--#   .:...     :=---:::-.         ",
+    "          .==**+=--:   ..::-:-==++ :::::-+:==:-*  ..::=-:    .==--:::-:.        ",
+    "         =++-=+==:-.   ..--=----== :::::-*--=:-#    .:  .   .--+=-:::=-.        ",
+    "         -.=+++*=..      ::=.:=-+= -: .--*:-=::#.   .-.      :==--:::=-         ",
+    "        :=+===*#=..      ::-.:===-:==-:--*--=::#.     .. .:..:--::::  -.        ",
+    "       -::-:..:-:.       .:::%@@@@%@+: .:*--=:-#  ...-:       :-: .-=--::       ",
+    "     .=+:-==**--::        .*@@@@+*@@: . -%:.: :#.   ..         -. . .::::.      ",
+    "     ==+-*#*#%@@@%@##@@% =@@@@@+@@*%*:  -##..+@@@@#-.:    -==:-.:***+=-=-  .::- ",
+    "     -++##***#%#@**%#%=+@@@@@*%@@= .=-. .-:@+:=@%*%%=#+=%%%#+=-++++*==+-:   ::  ",
+    "     .=++*+*+--:-+**#*=@@@=.=#%-         :*= =+..#-=#:. :=++#-:..:. :::-.       ",
+    "      .-++==-:::-++=+=.-=.  :---==++*%#%%%+ -+ .#.-+        ==    ..            ",
+    "                 ..  ..    - .:..       :+     =  :         =.                  ",
+    "                                                                                ",
+    "                                                                                ",
+    "                   .                                                           .",
+    " -:-                          .:::                           -:-                ",
+    "-++=-::::::::::---::::::::::::-++=-::::::::::--:::::::::::::-++=-::::::::::--:::",
+    "#######%@####################################################%%%%%%%%%%%%%#%####",
+    "#%%%%%%%%%%%%%##################################################################",
+  ],
+  [
+    "                                 :+##########*-                                 ",
+    "                            =#%%%%%%%%%%%%%%%%%%%%%*                            ",
+    "                         *%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                         ",
+    "                      =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                       ",
+    "                   :#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+                     ",
+    "                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                    ",
+    "                -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   ",
+    "               =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                  ",
+    "              .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                 ",
+    "              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                ",
+    "             -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%=               ",
+    "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#               ",
+    "            .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%:              ",
+    "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*              ",
+    "            +%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+    "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+    "             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+    "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+    "             :%%%%%# #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*%%%:              ",
+    "              %%%%#  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -%%#               ",
+    "              :%%- .#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+ %%+               ",
+    "               :+#%%%%%%+:. :+%%%%%%%%%%%%%%%%#-.      :+%%%%#==                ",
+    "              %%%%%%%=           #%%%%%%%%%%#             .%%%%%#               ",
+    "              %%%%%*              +%%%%%%%%%                %%%%*               ",
+    "              -%%%+                %%%%%%%%#                *%%%=               ",
+    "               %%%:                %%%%%%%%#                +%%%*               ",
+    "               #%%+              =%%%%%%%%%%%*              #%%%%               ",
+    "               %%%%*         .+%%%%%%%##%%%%%%%%+        :*%%%%%#               ",
+    "              =%%%%%%*=--=*%%%%%%%%%%-.+ %%%%%%%%%%%%%%%%%%%%%%#                ",
+    "              :%%%%%%%%%%%%%%%%%%%%%# :+ =%%%%%%%%%%%%%%%%%%%%*                 ",
+    "               +%%%%%%%%%%%%%%%%%%%%  =#  #%%%%%%%%%%%%%%%%%%#                  ",
+    "                 =#%%%%%%%%%%%%%%%%#  %%  =%%%%%%%%%%%%%%%%%%*                  ",
+    "        +%*                =%%%%%%%%+:%%+-%%%%%%%%%+-+%%%%%%*       :##*%%*    ",
+    "      %%%%%-               *%%%%%%%%%%%%%%%%%%%%%%%                #%%%%%%%     ",
+    "     +%%%%%%+              %%%%%%%%%%%%%%%%%%%%%%%%:              +%%%%%%%%     ",
+    "   #%%%%%%%%%%%#-          *%%%%%%%%%%%%%%%%%%%%%%%:           :*%%%%%%%%%%%%-  ",
+    "   %%%%%%%%%%%%%%%%#=       -%%%%%%%%%%%%%%%%%#%*        :*%%%%%%%%%%%%%%%%%%#  ",
+    "   %%%%%%%%%%%%%%%%%%%%%=      *%*=%%%*#%%#=%#       =%%%%%%%%%%%%%%%%%%%%%%%=  ",
+    "   =#%%%%%%%%%%%%%%%%%%%%%%%+.                   +%%%%%%%%%%%%%#*+=:.           ",
+    "               .=*#%%%%%%%%%%%%%*.          -#%%%%%%%%%#+-                      ",
+    "                      =*%%%%%%%%%%%%#=.=#%%%%%%%%%%+.                           ",
+    "                           =#%%%%%%%%%%%%%%%%%%+.                               ",
+    "                           .*%%%%%%%%%%%%%%%%%%*-                                ",
+    "                     .+%%%%%%%%%%%%%%#%%%%%%%%%%%%%%%%#=.                       ",
+    "   .            =#%%%%%%%%%%%%%#+:       =*%%%%%%%%%%%%%%%%%%%+:          -     ",
+    ":%%%%%+   :*%%%%%%%%%%%%%%#+.                 =*%%%%%%%%%%%%%%%%%%%%%%#%%%%%#.  ",
+    "%%%%%%%%%%%%%%%%%%%%%#+                            +#%%%%%%%%%%%%%%%%%%%%%%%%*  ",
+    "=%%%%%%%%%%%%%%%#=                                      =*#%%%%%%%%%%%%%%%%%%   ",
+    "  #%%%%%%%%%%%                                                :*#%%%%%%%%%%%%=  ",
+    "  #%%%%%%%%%#                                                      =#%%%%%%%%%%=",
+    "  #%%%%%%%#.                                                          :#%%%%%%%#",
+    "   *#%%%#:                                                               :#%%%# ",
+    "                                                                                ",
+  ],
+  [
+    "             . :                                                  .             ",
+    "            :  :                                                :  .            ",
+    "           .   :                                                :  :            ",
+    "           .                                                    .   .           ",
+    "           .  .                                                 .   -           ",
+    "          :   .:                                                :   ::          ",
+    "          -    :                                                .   :=          ",
+    "          -.   :                 .           :                  .   -=          ",
+    "         .++:  :-                =:          -=                =. .-+*          ",
+    "          +-    .                *=          =+                ..  :++:         ",
+    "          ==    :=              .+-          ++:              -.  .:++          ",
+    "          +*++-  ...           =+*:    -     :++.           :...:+++*+          ",
+    "           ++===:-=-          .:.-            :.-.         .:: .-=+**.          ",
+    "           +++++++=:.-         .-             ::. .       :  .-=+=+*+           ",
+    "           :++===..:+=.          ..:... .:.::.           :.=+.:.-***:           ",
+    "            .**+***+= ==:    ...   .-.. .:-:. ...:.    . -===+*****             ",
+    "             .+***++==++= .. .....   ::.-:.   ::.::.:.:= :==+=**#*.             ",
+    "              +#****+=-.:- ---=::     ..-:    :.-=--=  : ..-*****=              ",
+    "              :+**#**#=**--==-.+.     : =-      = ::+.-**=*####*+-              ",
+    "                :*##*****=+:.... ...  = :=  ..  .   :==***####*=                ",
+    "    :    .       -*#####*##*+    :=     :.   =    -+*##+*#*##*+       :    :    ",
+    "    =.      -:----=+**###+..:+:. -     :=     =.:-+-.:*###**+:==+===:      =    ",
+    "    :=       :-=*+.:-*##*=+- .==-:  :  .=  =  =-++. =**###=-..**++-       =:    ",
+    "     +-      .=+=+::-=**+=++: .+*=:   ==+-  .=**+..=*++**+--.:*+*+:      -+:    ",
+    "     =+:        ++=+--+++= =+=+:-+: ::+=*+:-:-+==*++*:++*+==+=++  .     :++     ",
+    "     .+=         ++- :=-=+=---=+= :.  ==+-: :- +*+==:++:==- -++       . -*:     ",
+    "      .+=. .     -#+ .:-.:+=. .++-++=-*=*+-++==++ .-++:.-- .+#=     -::=+-      ",
+    "       .*+=:..---+**: ::=. =:+: .+: :.-=+--.:=+: -+-+ .---.=#*+=+++=+++*=       ",
+    "        .**++==+*+==:++=: ::   -  ==: :++- -=- -:  .=:.-+*=:*+*********:        ",
+    "          :==++*+=-.=#####+ .   ..=. =*+#*: .= :   :.*#####-==*****++-          ",
+    "            *+====.:####%%%#+        ==:++-   .   -#%%%%###*-:*+++**            ",
+    "             .-:=+ =####%%%%%#=   .-=+*###+-=    #%%%%%%####- #++:              ",
+    "                -+ =+.*#%%%%%%%#*****#= .-#*+**##%%%%%%%%*-*-=*-                ",
+    "                  :++-#%%%%%%%%%%%###*= .*####%%%%%%%%%%#+=+*..                 ",
+    "                 =+=:=-####%#%%%%%##*++=#***##%%%%%#%##%#==-+++                 ",
+    "               :-==:.--.*######%#*+***%%%#+**+*#%%%####+.-=:-==-:               ",
+    "                -=-:-:  .:-   :+++=+*%%#%%%++++++-  :=-   -=-===                ",
+    "                .**++*+=-=+*+- .+*=+#%%#%%%#++#+.:=***+=+**+*#*                 ",
+    "                   =**######**=*+***%%%*%%%%****#+*########*-                   ",
+    "                   :*#**###*+*=+=+**###=*####**=*+#*#####*#*-                   ",
+    "                      ++#%%%*-==:.==:-+*++=:++ .+*-#%%%#+-                      ",
+    "                       -*#%%#+-=..=:**+##**+.= -==*%%%%*-                       ",
+    "                        *#%%%#++- +=  ++*= .=+ +=##%%%*+                        ",
+    "                        .*###= . =++:--=-=+ *++   #%%#*                         ",
+    "                         ++*#= . *+  =.==    += :-+#*++                         ",
+    "                         +*=*==+.*-    :     =*:++**=++                         ",
+    "                        =##+**::-#%##*+#++**#%*::-***##:                        ",
+    "                           *-*+   -.=#####** -   +*=+                           ",
+    "                            =#+=-==.   = . : +-==*#*                            ",
+    "                            +*#**#*#*+++*++##*#**#+:                            ",
+    "                            -.++*##############+*=..                            ",
+    "                              =*+*############*+*+                              ",
+    "                               -*#***#***##**###.                               ",
+    "                                %#.:.+**#*-.-.#%                                ",
+    "                                .  .*******#:  .                                ",
+    "                                   -  *##* ..                                   ",
+    "                                       *=                                       ",
+    "                                                                                ",
+    "                                                                                ",
+  ]
   ];
 
   const DEFAULT_CONFIG = {
@@ -188,18 +199,32 @@
     createLayers: true,
     layerParent: "body",
     removeLayersOnFinish: true,
+
     dprMax: 2,
     mobileDprMax: 1.25,
     canvasPixelMax: 2500000,
+
+    motion: {
+      respectReducedMotion: true,
+      probeSystemAnimationOff: true,
+      probeDelay: 90,
+      probeDuration: 1000,
+      probeOffThreshold: 0.72,
+      skipFadeDuration: 420,
+      skipFadeSteps: 18
+    },
 
     face: {
       enabled: true,
       layerId: "hacked-face-layer",
       canvasId: "hacked-splash-canvas",
+
       duration: 800,
-      fadeDuration: 400,
+      fadeDuration: 420,
       dissolveStartRatio: 0.42,
       dissolveEndRatio: 0.92,
+      failSafeExtraDelay: 1200,
+
       mobileBreakpoint: 800,
       mobileCellScale: 0.7,
       cellMin: 12,
@@ -209,25 +234,28 @@
       targetGridHeight: 82,
       minCols: 52,
       minRows: 30,
+
       backgroundColor: "#000",
       faceBaseColor: "rgba(245,255,245,",
       faceNoiseColor: "rgba(110,255,150,",
       backgroundNoiseColor: "rgba(30,170,70,",
-      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace",
-      failSafeExtraDelay: 1000
+      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace"
     },
 
     flash: {
       enabled: true,
       layerId: "hacked-flash-layer",
+
       startDelay: 0,
       spawnDuration: 600,
       holdDuration: 200,
       regularDecayDuration: 1000,
+
       count: null,
       densityDivisor: 9800,
       minCount: 32,
       maxCount: 220,
+
       spawnIntervalMin: 28,
       spawnIntervalMax: 56,
       batchMin: 3,
@@ -253,18 +281,21 @@
       mobileScale: 0.7,
       largeChance: 0.06,
       mediumChance: 0.22,
+
       smallRatioMin: 0.01,
       smallRatioMax: 0.03,
       mediumRatioMin: 0.03,
       mediumRatioMax: 0.04,
       largeRatioMin: 0.06,
       largeRatioMax: 0.08,
+
       smallClampMin: 14,
       smallClampMax: 22,
       mediumClampMin: 20,
       mediumClampMax: 32,
       largeClampMin: 32,
       largeClampMax: 46,
+
       fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace",
       deriveGlowFromColor: true,
       glowAlpha: 0.98,
@@ -297,11 +328,14 @@
 
   const state = {
     destroyed: false,
+    starting: false,
+    session: 0,
     width: 0,
     height: 0,
+
     face: {
-      started: false,
       running: false,
+      started: false,
       layer: null,
       canvas: null,
       ctx: null,
@@ -314,11 +348,11 @@
       start: 0,
       lastFrame: 0,
       raf: 0,
-      fadeRaf: 0,
       resizeTimer: 0,
       hardRemoveTimer: 0,
-      timeouts: []
+      timers: []
     },
+
     flash: {
       running: false,
       layer: null,
@@ -326,7 +360,12 @@
       spawnTimer: 0,
       decayStarted: false,
       activeWords: [],
-      timeouts: []
+      timers: []
+    },
+
+    motion: {
+      probing: false,
+      skip: false
     }
   };
 
@@ -422,7 +461,9 @@
   function colorToGlow(color, alpha) {
     const rgb = hexToRgb(color);
 
-    if (!rgb) return color || "rgba(255,255,255," + alpha + ")";
+    if (!rgb) {
+      return color || "rgba(255,255,255," + alpha + ")";
+    }
 
     return "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + "," + alpha + ")";
   }
@@ -487,61 +528,47 @@
     return copy;
   }
 
-  function setModuleTimeout(moduleState, callback, delay) {
+  function setTimer(moduleState, callback, delay) {
     const id = window.setTimeout(function () {
-      removeModuleTimeout(moduleState, id);
+      removeTimer(moduleState, id);
       callback();
     }, Math.max(0, Number(delay) || 0));
 
-    moduleState.timeouts.push(id);
-
+    moduleState.timers.push(id);
     return id;
   }
 
-  function removeModuleTimeout(moduleState, id) {
-    const index = moduleState.timeouts.indexOf(id);
+  function removeTimer(moduleState, id) {
+    const index = moduleState.timers.indexOf(id);
 
     if (index !== -1) {
-      moduleState.timeouts.splice(index, 1);
+      moduleState.timers.splice(index, 1);
     }
   }
 
-  function clearModuleTimeouts(moduleState) {
-    moduleState.timeouts.forEach(function (id) {
+  function clearTimers(moduleState) {
+    moduleState.timers.forEach(function (id) {
       window.clearTimeout(id);
     });
 
-    moduleState.timeouts = [];
-  }
-
-  function setFaceTimeout(callback, delay) {
-    return setModuleTimeout(state.face, callback, delay);
-  }
-
-  function setFlashTimeout(callback, delay) {
-    return setModuleTimeout(state.flash, callback, delay);
+    moduleState.timers = [];
   }
 
   function randomAscii() {
     return ASCII_PALETTE[Math.floor(Math.random() * ASCII_PALETTE.length)];
   }
 
-  function pickFace() {
-    if (!FACE_LIBRARY.length) return [""];
-
-    const raw = sample(FACE_LIBRARY);
-    const maxLen = Math.max.apply(null, raw.map(function (line) {
-      return line.length;
-    }));
-
-    return raw.map(function (line) {
-      return line.padEnd(maxLen, " ");
-    });
-  }
-
   function readViewport() {
     state.width = window.innerWidth || document.documentElement.clientWidth || 1024;
     state.height = window.innerHeight || document.documentElement.clientHeight || 768;
+  }
+
+  function showElement(element) {
+    if (!element) return;
+
+    element.style.opacity = "1";
+    element.style.visibility = "visible";
+    element.style.pointerEvents = "none";
   }
 
   function hideElement(element) {
@@ -552,12 +579,40 @@
     element.style.pointerEvents = "none";
   }
 
-  function showElement(element) {
+  function removeOrHide(element, shouldRemove) {
     if (!element) return;
 
-    element.style.opacity = "1";
-    element.style.visibility = "visible";
-    element.style.pointerEvents = "none";
+    if (shouldRemove && element.isConnected) {
+      element.remove();
+    } else {
+      hideElement(element);
+    }
+  }
+
+  function resolveLayerParent() {
+    const parent = config.layerParent;
+
+    if (parent && parent.nodeType === 1) return parent;
+
+    if (typeof parent === "string" && parent !== "body") {
+      return document.querySelector(parent) || document.body || document.documentElement;
+    }
+
+    return document.body || document.documentElement;
+  }
+
+  function ensureElementById(tagName, id, parent) {
+    let element = document.getElementById(id);
+
+    if (element) return element;
+    if (!config.createLayers || !parent) return null;
+
+    element = document.createElement(tagName);
+    element.id = id;
+    element.setAttribute("aria-hidden", "true");
+    parent.appendChild(element);
+
+    return element;
   }
 
   function injectStyle() {
@@ -580,7 +635,7 @@
       "  pointer-events: none;",
       "  opacity: 1;",
       "  visibility: visible;",
-      "  background: #000;",
+      "  background: " + config.face.backgroundColor + ";",
       "  contain: layout paint style;",
       "}",
       "#" + config.face.canvasId + " {",
@@ -597,9 +652,6 @@
       "  overflow: hidden;",
       "  pointer-events: none;",
       "  contain: layout paint style;",
-      "}",
-      "#" + config.face.layerId + ".is-leaving {",
-      "  pointer-events: none;",
       "}",
       ".hacked-splash__flash {",
       "  position: absolute;",
@@ -621,6 +673,8 @@
       "  mix-blend-mode: var(--blend-mode, screen);",
       "  text-shadow: 0 0 0.4em var(--glow), 0 0 1.2em var(--glow);",
       "  box-shadow: 0 0 0.5em var(--glow), inset 0 0 0.5em rgba(255,255,255,0.04);",
+      "  opacity: 1;",
+      "  visibility: visible;",
       "  pointer-events: none;",
       "  user-select: none;",
       "  will-change: opacity, transform;",
@@ -633,102 +687,164 @@
     ].join("\n");
   }
 
-  function resolveLayerParent() {
-    const parent = config.layerParent;
+  function prefersReducedMotion() {
+    if (!config.motion.respectReducedMotion) return false;
+    if (!window.matchMedia) return false;
 
-    if (parent && parent.nodeType === 1) return parent;
-    if (typeof parent === "string" && parent !== "body") {
-      return document.querySelector(parent) || document.body || document.documentElement;
-    }
-
-    return document.body || document.documentElement;
-  }
-
-  function ensureElementById(tagName, id, parent) {
-    let element = document.getElementById(id);
-
-    if (element) return element;
-    if (!config.createLayers || !parent) return null;
-
-    element = document.createElement(tagName);
-    element.id = id;
-    element.setAttribute("aria-hidden", "true");
-    parent.appendChild(element);
-
-    return element;
-  }
-
-  function clearFaceHardRemoveTimer() {
-    if (state.face.hardRemoveTimer) {
-      window.clearTimeout(state.face.hardRemoveTimer);
-      state.face.hardRemoveTimer = 0;
+    try {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (error) {
+      return false;
     }
   }
 
-  function clearFaceRuntimeTimers(clearHardTimer) {
-    const face = state.face;
-
-    cancelFrame(face.raf);
-    cancelFrame(face.fadeRaf);
-    window.clearTimeout(face.resizeTimer);
-    clearModuleTimeouts(face);
-
-    face.raf = 0;
-    face.fadeRaf = 0;
-    face.resizeTimer = 0;
-
-    if (clearHardTimer !== false) {
-      clearFaceHardRemoveTimer();
+  function probeSystemAnimationOff(callback) {
+    if (!config.motion.probeSystemAnimationOff) {
+      callback(false);
+      return;
     }
+
+    if (!document.body || typeof document.createElement !== "function") {
+      callback(false);
+      return;
+    }
+
+    if (typeof Element === "undefined" || !Element.prototype.animate) {
+      callback(false);
+      return;
+    }
+
+    const probe = document.createElement("div");
+    const startedAt = now();
+    let finished = false;
+    let animation = null;
+
+    probe.style.position = "fixed";
+    probe.style.left = "-1px";
+    probe.style.top = "-1px";
+    probe.style.width = "1px";
+    probe.style.height = "1px";
+    probe.style.opacity = "0";
+    probe.style.pointerEvents = "none";
+
+    document.body.appendChild(probe);
+
+    try {
+      animation = probe.animate(
+        [
+          { opacity: 0.99 },
+          { opacity: 1 }
+        ],
+        {
+          duration: config.motion.probeDuration,
+          fill: "both"
+        }
+      );
+    } catch (error) {
+      cleanup(false);
+      return;
+    }
+
+    function cleanup(result) {
+      if (finished) return;
+
+      finished = true;
+
+      try {
+        if (animation) {
+          animation.cancel();
+        }
+      } catch (error) {
+        // Ignore probe cleanup errors.
+      }
+
+      if (probe.isConnected) {
+        probe.remove();
+      }
+
+      callback(result);
+    }
+
+    window.setTimeout(function () {
+      let ratio = 0;
+
+      try {
+        const currentTime = Number(animation.currentTime) || 0;
+        ratio = currentTime / Math.max(1, Number(config.motion.probeDuration) || 1000);
+      } catch (error) {
+        ratio = 0;
+      }
+
+      const realElapsed = now() - startedAt;
+      const tooFarAdvanced = ratio >= config.motion.probeOffThreshold && realElapsed < config.motion.probeDuration * 0.35;
+
+      cleanup(tooFarAdvanced);
+    }, Math.max(30, Number(config.motion.probeDelay) || 90));
   }
 
-  function cleanupFace(options) {
-    const opts = options || {};
-    const shouldRemove = opts.remove !== false;
-    const shouldClearHard = opts.clearHard !== false;
-    const face = state.face;
-    const layer = face.layer || document.getElementById(config.face.layerId);
+  function shouldSkipMotion(callback) {
+    if (prefersReducedMotion()) {
+      callback(true);
+      return;
+    }
 
-    face.running = false;
-    clearFaceRuntimeTimers(shouldClearHard);
+    probeSystemAnimationOff(function (isAnimationOff) {
+      callback(Boolean(isAnimationOff));
+    });
+  }
 
-    window.removeEventListener("resize", scheduleResizeFace);
-    window.removeEventListener("orientationchange", scheduleResizeFace);
+  function jsFadeOut(element, duration, steps, onFinish) {
+    if (!element) {
+      if (onFinish) onFinish();
+      return;
+    }
 
-    if (layer) {
-      layer.classList.remove("is-leaving");
+    const totalDuration = Math.max(0, Number(duration) || 0);
+    const totalSteps = Math.max(1, Math.floor(Number(steps) || 18));
+    const interval = totalDuration / totalSteps;
+    let step = 0;
 
-      if (shouldRemove && layer.isConnected) {
-        layer.remove();
+    showElement(element);
+
+    if (totalDuration <= 0) {
+      element.style.opacity = "0";
+      if (onFinish) onFinish();
+      return;
+    }
+
+    function tick() {
+      if (!element.isConnected) {
+        if (onFinish) onFinish();
+        return;
+      }
+
+      step += 1;
+
+      const progress = clamp(step / totalSteps, 0, 1);
+      element.style.opacity = String(1 - progress);
+
+      if (progress >= 1) {
+        element.style.visibility = "hidden";
+        if (onFinish) onFinish();
       } else {
-        hideElement(layer);
+        window.setTimeout(tick, interval);
       }
     }
 
-    face.layer = null;
-    face.canvas = null;
-    face.ctx = null;
-    face.dpr = 1;
-    face.cellW = 10;
-    face.cellH = 14;
-    face.cols = 0;
-    face.rows = 0;
-    face.cells = [];
-    face.start = 0;
-    face.lastFrame = 0;
-    face.started = false;
+    window.setTimeout(tick, interval);
   }
 
-  function finishFace() {
-    cleanupFace({ remove: config.removeLayersOnFinish !== false });
-  }
+  function pickFace() {
+    if (!FACE_LIBRARY.length) return [""];
 
-  function scheduleFaceHardRemove(delay) {
-    clearFaceHardRemoveTimer();
+    const raw = sample(FACE_LIBRARY);
+    const maxLen = Math.max.apply(null, raw.map(function (line) {
+      return line.length;
+    }));
 
-    state.face.hardRemoveTimer = window.setTimeout(function () {
-      finishFace();
-    }, Math.max(0, Number(delay) || 0));
+    return raw.map(function (line) {
+      return line.padEnd(maxLen, " ");
+    });
   }
 
   function resolveFaceElements() {
@@ -736,11 +852,9 @@
     const face = state.face;
 
     face.layer = ensureElementById("div", config.face.layerId, parent);
-
     if (!face.layer) return false;
 
     face.layer.setAttribute("aria-hidden", "true");
-    face.layer.classList.remove("is-leaving");
     showElement(face.layer);
 
     face.canvas = document.getElementById(config.face.canvasId);
@@ -771,6 +885,65 @@
     return true;
   }
 
+  function clearFaceHardRemoveTimer() {
+    if (state.face.hardRemoveTimer) {
+      window.clearTimeout(state.face.hardRemoveTimer);
+      state.face.hardRemoveTimer = 0;
+    }
+  }
+
+  function clearFaceRuntime() {
+    const face = state.face;
+
+    cancelFrame(face.raf);
+    window.clearTimeout(face.resizeTimer);
+    clearTimers(face);
+    clearFaceHardRemoveTimer();
+
+    face.raf = 0;
+    face.resizeTimer = 0;
+  }
+
+  function cleanupFace(options) {
+    const opts = options || {};
+    const shouldRemove = opts.remove !== false;
+    const face = state.face;
+    const layer = face.layer || document.getElementById(config.face.layerId);
+
+    face.running = false;
+    face.started = false;
+    clearFaceRuntime();
+
+    window.removeEventListener("resize", scheduleResizeFace);
+    window.removeEventListener("orientationchange", scheduleResizeFace);
+
+    removeOrHide(layer, shouldRemove);
+
+    face.layer = null;
+    face.canvas = null;
+    face.ctx = null;
+    face.dpr = 1;
+    face.cellW = 10;
+    face.cellH = 14;
+    face.cols = 0;
+    face.rows = 0;
+    face.cells = [];
+    face.start = 0;
+    face.lastFrame = 0;
+  }
+
+  function finishFace() {
+    cleanupFace({ remove: config.removeLayersOnFinish !== false });
+  }
+
+  function armFaceHardRemove(delay) {
+    clearFaceHardRemoveTimer();
+
+    state.face.hardRemoveTimer = window.setTimeout(function () {
+      finishFace();
+    }, Math.max(0, Number(delay) || 0));
+  }
+
   function resizeFace() {
     const faceConfig = config.face;
     const face = state.face;
@@ -786,6 +959,7 @@
     const areaDpr = Math.sqrt(pixelMax / Math.max(1, state.width * state.height));
 
     face.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaDpr));
+
     face.canvas.width = Math.ceil(state.width * face.dpr);
     face.canvas.height = Math.ceil(state.height * face.dpr);
     face.canvas.style.width = state.width + "px";
@@ -798,7 +972,12 @@
     const scale = state.width < faceConfig.mobileBreakpoint ? faceConfig.mobileCellScale : 1;
     const minCell = state.width < faceConfig.mobileBreakpoint ? faceConfig.cellMinMobile : faceConfig.cellMin;
 
-    face.cellW = clamp(Math.min(state.width / faceConfig.targetGridWidth, state.height / faceConfig.targetGridHeight) * scale, minCell, faceConfig.cellMax);
+    face.cellW = clamp(
+      Math.min(state.width / faceConfig.targetGridWidth, state.height / faceConfig.targetGridHeight) * scale,
+      minCell,
+      faceConfig.cellMax
+    );
+
     face.cellH = face.cellW * 1.4;
     face.cols = Math.max(faceConfig.minCols, Math.floor(state.width / face.cellW));
     face.rows = Math.max(faceConfig.minRows, Math.floor(state.height / face.cellH));
@@ -812,7 +991,15 @@
     window.clearTimeout(face.resizeTimer);
 
     face.resizeTimer = window.setTimeout(function () {
-      resizeFace();
+      if (!face.running) return;
+
+      try {
+        resizeFace();
+        drawFaceGrid();
+      } catch (error) {
+        skipFaceWithFade();
+        reportError("face resize failed", error);
+      }
     }, 80);
   }
 
@@ -867,9 +1054,11 @@
     const face = state.face;
     const dissolveStart = faceConfig.duration * faceConfig.dissolveStartRatio;
     const dissolveEnd = faceConfig.duration * faceConfig.dissolveEndRatio;
+
     const dissolveProgress = elapsed <= dissolveStart
       ? 0
       : clamp((elapsed - dissolveStart) / Math.max(1, dissolveEnd - dissolveStart), 0, 1);
+
     const frameFactor = clamp(deltaMs / 16.67, 0.35, 2.25);
 
     for (let index = 0; index < face.cells.length; index += 1) {
@@ -946,13 +1135,6 @@
       face.started = true;
       face.start = frameTime;
       face.lastFrame = frameTime;
-
-      clearFaceHardRemoveTimer();
-      scheduleFaceHardRemove(
-        config.face.duration +
-        config.face.fadeDuration +
-        config.face.failSafeExtraDelay
-      );
     }
 
     const elapsed = frameTime - face.start;
@@ -964,7 +1146,7 @@
       updateFaceCells(elapsed, deltaMs);
       drawFaceGrid();
     } catch (error) {
-      leaveFace();
+      skipFaceWithFade();
       reportError("face draw failed", error);
       return;
     }
@@ -983,98 +1165,73 @@
 
     face.running = false;
     cancelFrame(face.raf);
-    cancelFrame(face.fadeRaf);
     face.raf = 0;
-    face.fadeRaf = 0;
 
     if (!layer || !layer.isConnected) {
       finishFace();
       return;
     }
 
-    layer.classList.add("is-leaving");
-    layer.style.setProperty("--hacked-face-fade", fadeDuration + "ms");
+    jsFadeOut(layer, fadeDuration, 20, finishFace);
+  }
 
-    if (fadeDuration <= 0) {
+  function skipFaceWithFade() {
+    const face = state.face;
+    const layer = face.layer || document.getElementById(config.face.layerId);
+
+    face.running = false;
+    cancelFrame(face.raf);
+    face.raf = 0;
+    clearTimers(face);
+    clearFaceHardRemoveTimer();
+
+    if (!layer) {
       finishFace();
       return;
     }
 
-    const startedAt = now();
-
-    const step = function (frameTime) {
-      if (!layer.isConnected) return;
-
-      const progress = clamp((frameTime - startedAt) / fadeDuration, 0, 1);
-
-      layer.style.opacity = String(1 - progress);
-
-      if (progress < 1) {
-        face.fadeRaf = requestFrame(step);
-      } else {
-        finishFace();
-      }
-    };
-
-    face.fadeRaf = requestFrame(step);
-    scheduleFaceHardRemove(fadeDuration + 180);
+    jsFadeOut(
+      layer,
+      config.motion.skipFadeDuration,
+      config.motion.skipFadeSteps,
+      finishFace
+    );
   }
 
-  function startFace(nextConfig) {
-    if (nextConfig) {
-      config = normalizeConfig(deepMerge(config, nextConfig));
-    }
-
+  function startFaceOnly() {
     cleanupFace({ remove: true });
 
-    if (!config.face.enabled) return getConfig();
-    if (!resolveFaceElements()) return getConfig();
-
-    injectStyle();
+    if (!config.face.enabled) return false;
+    if (!resolveFaceElements()) return false;
 
     const face = state.face;
 
     state.destroyed = false;
     face.running = true;
-    face.lastFrame = 0;
-
-    try {
-      resizeFace();
-    } catch (error) {
-      finishFace();
-      reportError("face setup failed", error);
-      return getConfig();
-    }
-
     face.started = false;
     face.start = 0;
     face.lastFrame = 0;
 
-    /* Draw one static frame immediately, so Android Chrome does not show
-       an empty black canvas while waiting for the first rAF callback. */
     try {
+      resizeFace();
       drawFaceGrid();
     } catch (error) {
-      finishFace();
-      reportError("face first draw failed", error);
-      return getConfig();
+      skipFaceWithFade();
+      reportError("face setup failed", error);
+      return false;
     }
-
-    /* Absolute safety cleanup. This is only a hard fallback.
-       The real animation clock is anchored in the first rAF frame. */
-    scheduleFaceHardRemove(
-      config.face.duration +
-      config.face.fadeDuration +
-      config.face.failSafeExtraDelay +
-      1600
-    );
 
     window.addEventListener("resize", scheduleResizeFace, { passive: true });
     window.addEventListener("orientationchange", scheduleResizeFace, { passive: true });
 
-    face.raf = requestFrame(drawFaceFrame);
+    armFaceHardRemove(
+      config.face.duration +
+      config.face.fadeDuration +
+      config.face.failSafeExtraDelay
+    );
 
-    return getConfig();
+    face.raf = requestFrame(drawFaceFrame);
+    return true;
   }
 
   function resolveFlashElements() {
@@ -1092,11 +1249,11 @@
     return true;
   }
 
-  function clearFlashRuntimeTimers() {
+  function clearFlashRuntime() {
     const flash = state.flash;
 
     window.clearTimeout(flash.spawnTimer);
-    clearModuleTimeouts(flash);
+    clearTimers(flash);
 
     flash.spawnTimer = 0;
   }
@@ -1109,15 +1266,11 @@
 
     flash.running = false;
     flash.decayStarted = false;
-    clearFlashRuntimeTimers();
+    clearFlashRuntime();
 
     if (layer) {
-      if (shouldRemove && layer.isConnected) {
-        layer.remove();
-      } else {
-        layer.textContent = "";
-        hideElement(layer);
-      }
+      layer.textContent = "";
+      removeOrHide(layer, shouldRemove);
     }
 
     flash.layer = null;
@@ -1202,11 +1355,23 @@
     let size = 0;
 
     if (large) {
-      size = clamp(state.width * rand(flashConfig.largeRatioMin, flashConfig.largeRatioMax) * scale, flashConfig.largeClampMin, flashConfig.largeClampMax);
+      size = clamp(
+        state.width * rand(flashConfig.largeRatioMin, flashConfig.largeRatioMax) * scale,
+        flashConfig.largeClampMin,
+        flashConfig.largeClampMax
+      );
     } else if (medium) {
-      size = clamp(state.width * rand(flashConfig.mediumRatioMin, flashConfig.mediumRatioMax) * scale, flashConfig.mediumClampMin, flashConfig.mediumClampMax);
+      size = clamp(
+        state.width * rand(flashConfig.mediumRatioMin, flashConfig.mediumRatioMax) * scale,
+        flashConfig.mediumClampMin,
+        flashConfig.mediumClampMax
+      );
     } else {
-      size = clamp(state.width * rand(flashConfig.smallRatioMin, flashConfig.smallRatioMax) * scale, flashConfig.smallClampMin, flashConfig.smallClampMax);
+      size = clamp(
+        state.width * rand(flashConfig.smallRatioMin, flashConfig.smallRatioMax) * scale,
+        flashConfig.smallClampMin,
+        flashConfig.smallClampMax
+      );
     }
 
     span.className = "hacked-splash__flash";
@@ -1255,7 +1420,10 @@
       }
 
       if (flash.activeWords.length < getFlashLimit()) {
-        flash.spawnTimer = window.setTimeout(scheduleFlashSpawn, rand(config.flash.spawnIntervalMin, config.flash.spawnIntervalMax));
+        flash.spawnTimer = window.setTimeout(
+          scheduleFlashSpawn,
+          rand(config.flash.spawnIntervalMin, config.flash.spawnIntervalMax)
+        );
       }
     }
   }
@@ -1283,7 +1451,7 @@
 
     const outDur = parseFloat(element.style.getPropertyValue("--outdur")) || config.flash.outMax;
 
-    setFlashTimeout(function () {
+    setTimer(flash, function () {
       if (element.isConnected) {
         element.remove();
       }
@@ -1322,14 +1490,14 @@
       const shouldForceSwitch = forcedSwitchSteps.indexOf(cycle) !== -1;
       const shouldRandomSwitch = Math.random() < flashConfig.finalReskinChance;
 
-      setFlashTimeout(function () {
+      setTimer(state.flash, function () {
         if (!element || !element.isConnected) return;
 
         element.style.visibility = "hidden";
         element.style.opacity = "0";
       }, hideAt);
 
-      setFlashTimeout(function () {
+      setTimer(state.flash, function () {
         if (!element || !element.isConnected) return;
 
         if (shouldForceSwitch || shouldRandomSwitch) {
@@ -1354,7 +1522,7 @@
       }
     }
 
-    setFlashTimeout(function () {
+    setTimer(state.flash, function () {
       if (!element || !element.isConnected) return;
 
       element.style.visibility = "visible";
@@ -1379,7 +1547,7 @@
     const queue = shuffled(flash.activeWords);
 
     if (!queue.length) {
-      setFlashTimeout(finishFlash, flashConfig.regularDecayDuration);
+      setTimer(flash, finishFlash, flashConfig.regularDecayDuration);
       return;
     }
 
@@ -1392,7 +1560,7 @@
     normalWords.forEach(function (element) {
       const delay = Math.pow(Math.random(), 0.78) * flashConfig.regularDecayDuration + rand(0, 90);
 
-      setFlashTimeout(function () {
+      setTimer(flash, function () {
         decayFlashWord(element);
       }, delay);
     });
@@ -1400,28 +1568,23 @@
     finalWords.forEach(function (element, index) {
       const stagger = index * rand(160, 360);
 
-      setFlashTimeout(function () {
+      setTimer(flash, function () {
         finalGlitchThenDecay(element, finalDuration + rand(-260, 260));
       }, finalStartDelay + stagger);
     });
 
-    setFlashTimeout(
+    setTimer(
+      flash,
       finishFlash,
       finalStartDelay + finalDuration + flashConfig.outMax + 1200
     );
   }
 
-  function startFlash(nextConfig) {
-    if (nextConfig) {
-      config = normalizeConfig(deepMerge(config, nextConfig));
-    }
-
+  function startFlashOnly() {
     cleanupFlash({ remove: true });
 
-    if (!config.flash.enabled) return getConfig();
-    if (!resolveFlashElements()) return getConfig();
-
-    injectStyle();
+    if (!config.flash.enabled) return false;
+    if (!resolveFlashElements()) return false;
 
     const flash = state.flash;
 
@@ -1433,11 +1596,63 @@
 
     scheduleFlashSpawn();
 
-    setFlashTimeout(function () {
+    setTimer(flash, function () {
       beginFlashDecay();
     }, config.flash.startDelay + config.flash.spawnDuration + config.flash.holdDuration);
 
-    return getConfig();
+    return true;
+  }
+
+  function skipWholeSplash() {
+    cleanupFlash({ remove: true });
+
+    const parent = resolveLayerParent();
+    let layer = document.getElementById(config.face.layerId);
+
+    if (!layer && config.createLayers) {
+      layer = ensureElementById("div", config.face.layerId, parent);
+    }
+
+    if (!layer) return;
+
+    showElement(layer);
+
+    const canvas = document.getElementById(config.face.canvasId);
+
+    if (canvas && canvas.isConnected) {
+      canvas.remove();
+    }
+
+    jsFadeOut(
+      layer,
+      config.motion.skipFadeDuration,
+      config.motion.skipFadeSteps,
+      function () {
+        if (config.removeLayersOnFinish !== false && layer.isConnected) {
+          layer.remove();
+        } else {
+          hideElement(layer);
+        }
+      }
+    );
+  }
+
+  function startResolved(sessionId, skipMotion) {
+    if (state.destroyed || sessionId !== state.session) return;
+
+    state.starting = false;
+    state.motion.skip = skipMotion;
+
+    if (skipMotion) {
+      skipWholeSplash();
+      return;
+    }
+
+    const faceStarted = startFaceOnly();
+
+    if (faceStarted && config.flash.enabled) {
+      startFlashOnly();
+    }
   }
 
   function start(nextConfig) {
@@ -1445,26 +1660,59 @@
       config = normalizeConfig(deepMerge(config, nextConfig));
     }
 
+    injectStyle();
+
     state.destroyed = false;
+    state.starting = true;
+    state.session += 1;
 
-    if (config.face.enabled) {
-      startFace();
-    } else {
-      cleanupFace({ remove: true });
-    }
+    const sessionId = state.session;
 
-    if (config.flash.enabled) {
-      startFlash();
-    } else {
-      cleanupFlash({ remove: true });
-    }
+    stopRuntimeOnly();
+
+    shouldSkipMotion(function (skipMotion) {
+      startResolved(sessionId, skipMotion);
+    });
 
     return getConfig();
   }
 
-  function stop() {
+  function startFace(nextConfig) {
+    if (nextConfig) {
+      config = normalizeConfig(deepMerge(config, nextConfig));
+    }
+
+    injectStyle();
+
+    state.destroyed = false;
+    state.session += 1;
+
+    return startFaceOnly() ? getConfig() : getConfig();
+  }
+
+  function startFlash(nextConfig) {
+    if (nextConfig) {
+      config = normalizeConfig(deepMerge(config, nextConfig));
+    }
+
+    injectStyle();
+
+    state.destroyed = false;
+    state.session += 1;
+
+    return startFlashOnly() ? getConfig() : getConfig();
+  }
+
+  function stopRuntimeOnly() {
     cleanupFace({ remove: true });
     cleanupFlash({ remove: true });
+  }
+
+  function stop() {
+    state.session += 1;
+    state.starting = false;
+
+    stopRuntimeOnly();
 
     return getConfig();
   }
@@ -1486,7 +1734,7 @@
 
     return getConfig();
   }
-  
+
   function getConfig() {
     return normalizeConfig(deepMerge({}, config));
   }
