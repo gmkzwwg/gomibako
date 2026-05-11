@@ -269,8 +269,32 @@
 
 @media screen and (max-width: 720px) {
   .index-shell {
-    block-size: 62vh;
-    min-block-size: 360px;
+    block-size: calc(100svh - 7rem);
+    min-block-size: 320px;
+  }
+
+  .index-shell__title-meta,
+  .index-shell__status-right {
+    display: none;
+  }
+
+  .index-shell__titlebar,
+  .index-shell__statusbar {
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .index-shell__title-left,
+  .index-shell__status-left {
+    min-inline-size: 0;
+    inline-size: 100%;
+  }
+
+  .index-shell__title-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .index-shell__log {
@@ -279,21 +303,10 @@
     line-height: 1.5;
   }
 
-  .index-shell__statusbar {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .index-shell__titlebar {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 2px;
-  }
-
   .index-shell__menubar {
     gap: 8px;
-    padding: 4px 8px;
-    font-size: 0.86rem;
+    padding: 4px 4px;
+    font-size: 0.66rem;
   }
 }
 
