@@ -804,7 +804,6 @@ Timeline:
     * **Process**: Napoleon’s power worked through several connected mechanisms: military victory created legitimacy; centralized administration converted orders into practice; legal codification stabilized property and family relations; plebiscites simulated popular approval; censorship and police power controlled dissent; dynastic politics sought permanence; war financed and justified expansion; propaganda converted success into myth. These mechanisms made his regime effective, but also brittle.
     * **Final Significance**: Napoleon matters because he made visible a recurring problem of modern politics: the desire for order after revolution can empower executive authority; the promise of equality can coexist with hierarchy; the language of the people can justify dictatorship; law can both liberate and discipline; national glory can become imperial domination. His life is therefore not only a biography. It is a concentrated study of modern power.
 
-
 ## 中文
 
 Timeline:
