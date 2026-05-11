@@ -12291,7 +12291,7 @@ The professional rule is:
 
 If the goal is an implication, introduce the assumption.
 
-```lean id="44sowo"
+```lean
 example (P Q : Prop) (h : P → Q) : P → Q := by
   intro hP
   exact h hP
@@ -12299,7 +12299,7 @@ example (P Q : Prop) (h : P → Q) : P → Q := by
 
 Term proof equivalent:
 
-```lean id="iobz7o"
+```lean
 example (P Q : Prop) (h : P → Q) : P → Q :=
   fun hP => h hP
 ```
@@ -12323,7 +12323,7 @@ example (P Q : Prop) (h : P → Q) : P → Q :=
 
 Universal quantification is proved by introducing an arbitrary value.
 
-```lean id="pkey8h"
+```lean
 example : ∀ n : Nat, n = n := by
   intro n
   rfl
@@ -12331,7 +12331,7 @@ example : ∀ n : Nat, n = n := by
 
 Multiple quantifiers:
 
-```lean id="3ot0t3"
+```lean
 example : ∀ a b : Nat, a = b → b = a := by
   intro a b h
   exact h.symm
@@ -12356,7 +12356,7 @@ example : ∀ a b : Nat, a = b → b = a := by
 
 A conjunction is built by proving both components.
 
-```lean id="1a3e0t"
+```lean
 example (P Q : Prop) (hP : P) (hQ : Q) : P ∧ Q := by
   constructor
   · exact hP
@@ -12365,7 +12365,7 @@ example (P Q : Prop) (hP : P) (hQ : Q) : P ∧ Q := by
 
 Equivalent term proof:
 
-```lean id="uwna8y"
+```lean
 example (P Q : Prop) (hP : P) (hQ : Q) : P ∧ Q :=
   And.intro hP hQ
 ```
@@ -12388,14 +12388,14 @@ example (P Q : Prop) (hP : P) (hQ : Q) : P ∧ Q :=
 
 A conjunction hypothesis is used by projecting or destructuring.
 
-```lean id="nj94ha"
+```lean
 example (P Q : Prop) (h : P ∧ Q) : Q := by
   exact h.right
 ```
 
 Swapping conjunction:
 
-```lean id="wrc9l2"
+```lean
 example (P Q : Prop) (h : P ∧ Q) : Q ∧ P := by
   constructor
   · exact h.right
@@ -12404,7 +12404,7 @@ example (P Q : Prop) (h : P ∧ Q) : Q ∧ P := by
 
 Destructuring:
 
-```lean id="jr7ei7"
+```lean
 example (P Q : Prop) (h : P ∧ Q) : Q ∧ P := by
   rcases h with ⟨hP, hQ⟩
   exact ⟨hQ, hP⟩
@@ -12428,13 +12428,13 @@ example (P Q : Prop) (h : P ∧ Q) : Q ∧ P := by
 
 To prove a disjunction, choose the side that can be proved.
 
-```lean id="78f5bs"
+```lean
 example (P Q : Prop) (hP : P) : P ∨ Q := by
   left
   exact hP
 ```
 
-```lean id="6vlwvb"
+```lean
 example (P Q : Prop) (hQ : Q) : P ∨ Q := by
   right
   exact hQ
@@ -12449,7 +12449,7 @@ example (P Q : Prop) (hQ : Q) : P ∨ Q := by
 
 Example with `by_cases`:
 
-```lean id="ovr3rx"
+```lean
 example (n : Nat) : n = 0 ∨ n ≠ 0 := by
   by_cases h : n = 0
   · left
@@ -12470,7 +12470,7 @@ example (n : Nat) : n = 0 ∨ n ≠ 0 := by
 
 A disjunction hypothesis is used by cases.
 
-```lean id="bnzxz9"
+```lean
 example (P Q : Prop) (h : P ∨ Q) : Q ∨ P := by
   cases h with
   | inl hP =>
@@ -12483,7 +12483,7 @@ example (P Q : Prop) (h : P ∨ Q) : Q ∨ P := by
 
 With `rcases`:
 
-```lean id="bhtwgu"
+```lean
 example (P Q : Prop) (h : P ∨ Q) : Q ∨ P := by
   rcases h with hP | hQ
   · right
@@ -12510,7 +12510,7 @@ example (P Q : Prop) (h : P ∨ Q) : Q ∨ P := by
 
 An equivalence is proved by proving both implications.
 
-```lean id="tqgq6x"
+```lean
 example (P Q : Prop) : P ∧ Q ↔ Q ∧ P := by
   constructor
   · intro h
@@ -12527,12 +12527,12 @@ example (P Q : Prop) : P ∧ Q ↔ Q ∧ P := by
 
 **Using an equivalence hypothesis:**
 
-```lean id="zfh0ew"
+```lean
 example (P Q : Prop) (h : P ↔ Q) (hP : P) : Q := by
   exact h.mp hP
 ```
 
-```lean id="ryu8nu"
+```lean
 example (P Q : Prop) (h : P ↔ Q) (hQ : Q) : P := by
   exact h.mpr hQ
 ```
@@ -12555,14 +12555,14 @@ example (P Q : Prop) (h : P ↔ Q) (hQ : Q) : P := by
 
 An existential is proved by providing a witness.
 
-```lean id="9ewmoq"
+```lean
 example : ∃ n : Nat, n + 1 = 1 := by
   use 0
 ```
 
 Multiple conditions:
 
-```lean id="a3q8vq"
+```lean
 example : ∃ n : Nat, n = 0 ∧ n + 1 = 1 := by
   use 0
   constructor
@@ -12590,7 +12590,7 @@ example : ∃ n : Nat, n = 0 ∧ n + 1 = 1 := by
 
 An existential hypothesis is used by extracting the witness and its proof.
 
-```lean id="hpwif5"
+```lean
 example (h : ∃ n : Nat, n = 0) : True := by
   rcases h with ⟨n, hn⟩
   trivial
@@ -12598,7 +12598,7 @@ example (h : ∃ n : Nat, n = 0) : True := by
 
 Use witness:
 
-```lean id="zrn1zb"
+```lean
 example (h : ∃ n : Nat, n = 0) : ∃ m : Nat, m + 1 = 1 := by
   rcases h with ⟨n, hn⟩
   use n
@@ -12623,7 +12623,7 @@ example (h : ∃ n : Nat, n = 0) : ∃ m : Nat, m + 1 = 1 := by
 
 Negation is implication to `False`.
 
-```lean id="ywcd3j"
+```lean
 example (P : Prop) : P → ¬¬P := by
   intro hP
   intro hNotP
@@ -12632,7 +12632,7 @@ example (P : Prop) : P → ¬¬P := by
 
 To prove `¬ P`, assume `P` and derive contradiction.
 
-```lean id="wv5po0"
+```lean
 example : ¬ (1 = 0) := by
   intro h
   contradiction
@@ -12647,7 +12647,7 @@ example : ¬ (1 = 0) := by
 
 Classical double-negation elimination:
 
-```lean id="fah7e0"
+```lean
 example (P : Prop) : ¬¬P → P := by
   classical
   intro hnnP
@@ -12668,21 +12668,21 @@ example (P : Prop) : ¬¬P → P := by
 
 If the goal is `False`, prove a contradiction.
 
-```lean id="7v9u77"
+```lean
 example (P : Prop) (hP : P) (hNotP : ¬ P) : False := by
   exact hNotP hP
 ```
 
 From `False`, any proposition follows:
 
-```lean id="934il6"
+```lean
 example (P Q : Prop) (hP : P) (hNotP : ¬ P) : Q := by
   exact False.elim (hNotP hP)
 ```
 
 Using `exfalso`:
 
-```lean id="wws5v7"
+```lean
 example (P Q : Prop) (hP : P) (hNotP : ¬ P) : Q := by
   exfalso
   exact hNotP hP
@@ -12723,17 +12723,17 @@ Equality tactics depend on equality type.
 
 Examples:
 
-```lean id="z4vq1q"
+```lean
 example (n : Nat) : n + 0 = n := by
   simp
 ```
 
-```lean id="juhi77"
+```lean
 example (a b : Nat) (h : a = b) : a + 1 = b + 1 := by
   rw [h]
 ```
 
-```lean id="a28de4"
+```lean
 example (a b c : Nat) (h₁ : a = b) (h₂ : b = c) : a = c := by
   calc
     a = b := h₁
@@ -12754,7 +12754,7 @@ example (a b c : Nat) (h₁ : a = b) (h₂ : b = c) : a = c := by
 
 Function equality usually requires pointwise equality.
 
-```lean id="cuxhjb"
+```lean
 example {α β : Type} (f g : α → β)
     (h : ∀ x, f x = g x) : f = g := by
   funext x
@@ -12763,7 +12763,7 @@ example {α β : Type} (f g : α → β)
 
 After `funext x`, the goal becomes pointwise:
 
-```lean id="rvx4nf"
+```lean
 example : (fun n : Nat => n + 0) = (fun n : Nat => n) := by
   funext n
   simp
@@ -12789,7 +12789,7 @@ example : (fun n : Nat => n + 0) = (fun n : Nat => n) := by
 
 Set equality is usually proved by extensionality: show every element belongs to both sets equivalently.
 
-```lean id="gni5v6"
+```lean
 example {α : Type} (s t : Set α)
     (h : ∀ x, x ∈ s ↔ x ∈ t) : s = t := by
   ext x
@@ -12798,7 +12798,7 @@ example {α : Type} (s t : Set α)
 
 Subset pair:
 
-```lean id="257y9p"
+```lean
 example {α : Type} (s t : Set α)
     (hst : s ⊆ t) (hts : t ⊆ s) : s = t := by
   ext x
@@ -12829,7 +12829,7 @@ example {α : Type} (s t : Set α)
 
 Subset means membership implication.
 
-```lean id="m01laj"
+```lean
 example {α : Type} (s t : Set α) (h : s ⊆ t) : s ⊆ t := by
   intro x hx
   exact h hx
@@ -12837,7 +12837,7 @@ example {α : Type} (s t : Set α) (h : s ⊆ t) : s ⊆ t := by
 
 More explicit:
 
-```lean id="zirc3d"
+```lean
 example {α : Type} (s t : Set α) : s ⊆ t ↔ ∀ x, x ∈ s → x ∈ t := by
   rfl
 ```
@@ -12864,14 +12864,14 @@ A structure or subtype goal is built by providing fields.
 
 Subtype:
 
-```lean id="hf2diu"
+```lean
 def positiveOne : {n : Nat // n > 0} :=
   ⟨1, by decide⟩
 ```
 
 Structure:
 
-```lean id="so00q2"
+```lean
 structure Point where
   x : Nat
   y : Nat
@@ -12904,7 +12904,7 @@ If a property follows recursive structure, use induction.
 
 Natural numbers:
 
-```lean id="wndqzd"
+```lean
 example (n : Nat) : n + 0 = n := by
   induction n with
   | zero =>
@@ -12915,7 +12915,7 @@ example (n : Nat) : n + 0 = n := by
 
 Lists:
 
-```lean id="3d0cbb"
+```lean
 example {α : Type} (xs : List α) : xs ++ [] = xs := by
   induction xs with
   | nil =>
@@ -12945,7 +12945,7 @@ example {α : Type} (xs : List α) : xs ++ [] = xs := by
 
 Use `cases` when alternatives are finite and no induction hypothesis is needed.
 
-```lean id="n07d2r"
+```lean
 example (b : Bool) : b = true ∨ b = false := by
   cases b
   · right
@@ -12956,7 +12956,7 @@ example (b : Bool) : b = true ∨ b = false := by
 
 For natural one-step split:
 
-```lean id="m2m1v8"
+```lean
 example (n : Nat) : n = 0 ∨ ∃ k, n = k + 1 := by
   cases n with
   | zero =>
@@ -13000,17 +13000,17 @@ Arithmetic tactics depend on the domain and shape.
 
 Examples:
 
-```lean id="2fdj7v"
+```lean
 example : (2 : Nat) + 3 = 5 := by
   norm_num
 ```
 
-```lean id="557sg6"
+```lean
 example (a b : Int) (h : a ≤ b) : a + 1 ≤ b + 1 := by
   omega
 ```
 
-```lean id="0xm6tn"
+```lean
 example {R : Type} [CommRing R] (a b : R) :
     (a + b) * (a - b) = a ^ 2 - b ^ 2 := by
   ring
@@ -13030,7 +13030,7 @@ example {R : Type} [CommRing R] (a b : R) :
 
 Use cases or pattern matching on data constructors.
 
-```lean id="20jm5w"
+```lean
 def safeHead {α : Type} : List α → Option α
   | [] => none
   | x :: _ => some x
@@ -13038,7 +13038,7 @@ def safeHead {α : Type} : List α → Option α
 
 Proof by cases:
 
-```lean id="8vtl70"
+```lean
 example {α : Type} (xs : List α) :
     safeHead xs = none ∨ ∃ x, safeHead xs = some x := by
   cases xs with
@@ -13072,21 +13072,21 @@ example {α : Type} (xs : List α) :
 
 If a definition branches on a proposition, proofs often need matching case splits.
 
-```lean id="cy3q3z"
+```lean
 def classifyZero (n : Nat) : String :=
   if n = 0 then "zero" else "nonzero"
 ```
 
 Proof:
 
-```lean id="0sw0qi"
+```lean
 example (n : Nat) (h : n = 0) : classifyZero n = "zero" := by
   simp [classifyZero, h]
 ```
 
 Case split:
 
-```lean id="6xf27i"
+```lean
 example (n : Nat) :
     classifyZero n = "zero" ∨ classifyZero n = "nonzero" := by
   by_cases h : n = 0
@@ -13117,7 +13117,7 @@ example (n : Nat) :
 
 Tactics may fail because the theorem statement lacks required typeclass assumptions.
 
-```lean id="6vghgj"
+```lean
 example {M : Type} [Monoid M] (a : M) : a * 1 = a := by
   simp
 ```
@@ -13144,14 +13144,14 @@ example {M : Type} [Monoid M] (a : M) : a * 1 = a := by
 
 Subtype goals often require both value and proof.
 
-```lean id="w3obfb"
+```lean
 def smallThree : {n : Nat // n < 10} :=
   ⟨3, by decide⟩
 ```
 
 Using subtype:
 
-```lean id="l5xcvu"
+```lean
 example (x : {n : Nat // n < 10}) : x.val < 10 :=
   x.property
 ```
@@ -13177,7 +13177,7 @@ example (x : {n : Nat // n < 10}) : x.val < 10 :=
 
 List proofs usually use `simp`, induction, or existing lemmas.
 
-```lean id="csog7c"
+```lean
 example {α : Type} (xs ys : List α) :
     (xs ++ ys).length = xs.length + ys.length := by
   simp
@@ -13185,7 +13185,7 @@ example {α : Type} (xs ys : List α) :
 
 Map length:
 
-```lean id="6n3xge"
+```lean
 example {α β : Type} (f : α → β) (xs : List α) :
     (xs.map f).length = xs.length := by
   simp
@@ -13213,7 +13213,7 @@ example {α β : Type} (f : α → β) (xs : List α) :
 
 Set membership often simplifies to predicate logic.
 
-```lean id="0onmxk"
+```lean
 example {α β : Type} (f : α → β) (s : Set β) (x : α) :
     x ∈ f ⁻¹' s ↔ f x ∈ s := by
   rfl
@@ -13221,7 +13221,7 @@ example {α β : Type} (f : α → β) (s : Set β) (x : α) :
 
 Image membership:
 
-```lean id="w0b9gj"
+```lean
 example {α β : Type} (f : α → β) (s : Set α) (y : β) :
     y ∈ f '' s ↔ ∃ x, x ∈ s ∧ f x = y := by
   rfl
@@ -13250,7 +13250,7 @@ example {α β : Type} (f : α → β) (s : Set α) (y : β) :
 
 Use classical reasoning deliberately.
 
-```lean id="696zqg"
+```lean
 example (P : Prop) : P ∨ ¬ P := by
   classical
   exact Classical.em P
@@ -13258,7 +13258,7 @@ example (P : Prop) : P ∨ ¬ P := by
 
 Proof by contradiction:
 
-```lean id="p2wsv3"
+```lean
 example (P : Prop) : ¬¬P → P := by
   classical
   intro h
@@ -13299,7 +13299,7 @@ Many goals should be solved by reusing a theorem, not by writing a new proof.
 
 Example:
 
-```lean id="rwfo52"
+```lean
 example {α : Type} (xs ys : List α) :
     (xs ++ ys).length = xs.length + ys.length := by
   simpa using List.length_append xs ys

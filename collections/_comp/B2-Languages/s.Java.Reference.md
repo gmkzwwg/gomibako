@@ -10208,7 +10208,7 @@ This part is not a replacement for the Java Language Specification or the JVM Sp
 
 Syntax is the shape of code. Semantics is its meaning. Runtime behavior is what happens when the program executes. Implementation strategy is how a particular JVM makes that execution efficient.
 
-```java id="csz8br"
+```java
 int x = a + b;
 ```
 
@@ -10260,7 +10260,7 @@ Java expressions and statements have precise evaluation rules. Unlike C and C++,
 
 Example of evaluation order:
 
-```java id="jdol80"
+```java
 int a = 1;
 
 int result = a++ + a++;
@@ -10273,7 +10273,7 @@ This is legal, but professional code should avoid such expressions because the s
 
 Short-circuiting:
 
-```java id="gdjlar"
+```java
 if (user != null && user.isActive()) {
     send(user);
 }
@@ -10283,7 +10283,7 @@ The right side is evaluated only if the left side is true.
 
 Non-short-circuit operator:
 
-```java id="qgvc0v"
+```java
 if (user != null & user.isActive()) {
     send(user);
 }
@@ -10293,7 +10293,7 @@ Here both sides are evaluated, so `user.isActive()` can throw `NullPointerExcept
 
 Abrupt completion:
 
-```java id="zsrc2m"
+```java
 public String label(User user) {
     if (user == null) {
         throw new IllegalArgumentException("user");
@@ -10311,7 +10311,7 @@ Execution may complete normally by returning a value, or abruptly by throwing an
 
 `finally` behavior:
 
-```java id="xmeqaq"
+```java
 public void write(Path path, String text) throws IOException {
     BufferedWriter writer = Files.newBufferedWriter(path);
 
@@ -10353,7 +10353,7 @@ Do not use clever increment expressions in production logic. Do not put resource
 
 A variable is a named storage location. Its **scope** is where the name can be used. Its **lifetime** is how long the storage exists. For reference variables, the variable’s lifetime is not the same as the referenced object’s lifetime.
 
-```java id="wrdca0"
+```java
 public User load(UserId id) {
     User user = repository.findById(id)
             .orElseThrow();
@@ -10377,7 +10377,7 @@ The local variable `user` exists only during method execution. The object it ref
 
 Pass-by-value:
 
-```java id="gna2j4"
+```java
 static void replace(StringBuilder builder) {
     builder = new StringBuilder("new");
 }
@@ -10391,7 +10391,7 @@ static void mutate(StringBuilder builder) {
 
 Object reachability:
 
-```java id="ry6az8"
+```java
 List<byte[]> cache = new ArrayList<>();
 
 public void add(byte[] data) {
@@ -10403,7 +10403,7 @@ As long as `cache` remains reachable and holds the arrays, those arrays cannot b
 
 Static fields extend reachability:
 
-```java id="shwyb4"
+```java
 public final class Registry {
     private static final Map<String, Object> VALUES = new HashMap<>();
 }
@@ -10428,7 +10428,7 @@ Do not confuse variable lifetime with object lifetime. Do not use static collect
 
 Java is pass-by-value. This phrase is often misunderstood because Java values include object references.
 
-```java id="0fsyly"
+```java
 public static void main(String[] args) {
     List<String> names = new ArrayList<>();
 
@@ -10461,7 +10461,7 @@ static void replaceList(List<String> list) {
 
 Aliasing means multiple references point to the same object:
 
-```java id="p4xlf6"
+```java
 List<String> a = new ArrayList<>();
 List<String> b = a;
 
@@ -10474,7 +10474,7 @@ Aliasing is central to Java’s object model. It enables sharing and polymorphis
 
 Defensive copy:
 
-```java id="hlm2n4"
+```java
 public final class Group {
     private final List<UserId> members;
 
@@ -10531,7 +10531,7 @@ Java programmers should not write ordinary code that depends on object layout. B
 
 Primitive vs wrapper:
 
-```java id="jbshk8"
+```java
 int x = 42;
 Integer y = 42;
 ```
@@ -10540,7 +10540,7 @@ Integer y = 42;
 
 Array of primitives vs array of wrappers:
 
-```java id="xks8p5"
+```java
 int[] primitiveValues = new int[1_000_000];
 Integer[] boxedValues = new Integer[1_000_000];
 ```
@@ -10577,7 +10577,7 @@ Java source is usually compiled by `javac` into `.class` files. The JVM executes
 
 A simplified pipeline:
 
-```text id="qoghmw"
+```text
 .java source
    ↓ javac
 .class files
@@ -10643,7 +10643,7 @@ Java classes are loaded and initialized lazily in many ordinary situations. The 
 
 Static initialization:
 
-```java id="v12e78"
+```java
 public final class Settings {
     static final String MODE = loadMode();
 
@@ -10661,7 +10661,7 @@ Initialization happens when the class is actively used in specified ways, not ne
 
 Initialization failure:
 
-```java id="5d75f6"
+```java
 public final class BrokenConfig {
     static final int PORT = Integer.parseInt(System.getenv("PORT"));
 }
@@ -10671,7 +10671,7 @@ If `PORT` is absent or malformed, class initialization can fail with `ExceptionI
 
 Initialization order matters:
 
-```java id="pw1m6j"
+```java
 public class Base {
     static {
         System.out.println("Base");
@@ -10716,7 +10716,7 @@ Do not read required configuration in static initializers without a controlled f
 
 Java method calls have multiple semantic layers: overload resolution at compile time, overriding and dynamic dispatch at runtime, and possible JIT optimization at implementation time.
 
-```java id="eylfyy"
+```java
 interface Formatter {
     String format(Object value);
 }
@@ -10748,7 +10748,7 @@ The variable’s declared type is `Formatter`, but the runtime object is `JsonFo
 
 Overloading:
 
-```java id="gm6ki5"
+```java
 void print(Object value) {
     System.out.println("object");
 }
@@ -10762,7 +10762,7 @@ print("x"); // string
 
 Ambiguous or surprising overloads:
 
-```java id="j9ozic"
+```java
 void process(Integer value) {}
 void process(Long value) {}
 
@@ -10771,7 +10771,7 @@ void process(Long value) {}
 
 Overriding:
 
-```java id="u4mo7k"
+```java
 class Animal {
     String sound() {
         return "?";
@@ -10791,7 +10791,7 @@ System.out.println(animal.sound()); // woof
 
 Static method hiding:
 
-```java id="5e4sqy"
+```java
 class Base {
     static String name() {
         return "base";
@@ -10812,7 +10812,7 @@ This is why static methods should not be used for polymorphic behavior.
 
 Field hiding:
 
-```java id="sxcc2o"
+```java
 class Base {
     String label = "base";
 }
@@ -10863,7 +10863,7 @@ Checked exception analysis is part of Java compile-time semantics. The JLS inclu
 
 Basic propagation:
 
-```java id="jvci8a"
+```java
 public String read(Path path) throws IOException {
     return Files.readString(path);
 }
@@ -10871,7 +10871,7 @@ public String read(Path path) throws IOException {
 
 Wrapping with cause:
 
-```java id="gs6y2q"
+```java
 public Config load(Path path) {
     try {
         return parse(Files.readString(path));
@@ -10883,7 +10883,7 @@ public Config load(Path path) {
 
 `finally` masking danger:
 
-```java id="c4oaov"
+```java
 try {
     throw new IllegalStateException("primary");
 } finally {
@@ -10895,7 +10895,7 @@ The cleanup exception can obscure the primary exception. `try-with-resources` ha
 
 Try-with-resources:
 
-```java id="8t6ziw"
+```java
 try (BufferedReader reader = Files.newBufferedReader(path)) {
     return reader.readLine();
 }
@@ -10945,7 +10945,7 @@ Java source does not expose these areas directly, but understanding them helps e
 
 Recursion and stack:
 
-```java id="7gibf2"
+```java
 public int factorial(int n) {
     if (n <= 1) {
         return 1;
@@ -10958,7 +10958,7 @@ Each recursive call creates a new frame. Deep recursion can cause `StackOverflow
 
 Heap allocation:
 
-```java id="nj517z"
+```java
 User user = new User(id, email);
 ```
 
@@ -10966,7 +10966,7 @@ The object is allocated on the heap in Java-level reasoning, though JVM optimiza
 
 Object graph retention:
 
-```java id="rwfpfa"
+```java
 Map<UserId, User> cache = new HashMap<>();
 cache.put(user.id(), user);
 ```
@@ -11017,7 +11017,7 @@ Java uses garbage collection for heap memory. GC reclaims objects that are no lo
 
 A Java memory leak:
 
-```java id="e6oubr"
+```java
 public final class EventBus {
     private final List<Listener> listeners = new ArrayList<>();
 
@@ -11031,7 +11031,7 @@ If listeners are never removed, they remain reachable through the bus.
 
 Resource leak:
 
-```java id="ms4gz5"
+```java
 InputStream in = Files.newInputStream(path);
 // no close
 ```
@@ -11051,7 +11051,7 @@ Even if the stream object becomes unreachable later, the file descriptor should 
 
 Allocation examples:
 
-```java id="vjs6rt"
+```java
 for (int i = 0; i < 1_000_000; i++) {
     String value = "user-" + i;
     process(value);
@@ -11062,7 +11062,7 @@ This may allocate many strings. Whether it matters depends on hotness, object li
 
 Boxing allocation risk:
 
-```java id="at8kep"
+```java
 List<Integer> values = new ArrayList<>();
 
 for (int i = 0; i < 1_000_000; i++) {
@@ -11113,7 +11113,7 @@ A HotSpot-class JVM can interpret code first, profile execution, compile hot met
 
 Bad benchmark pattern:
 
-```java id="blutxb"
+```java
 long start = System.nanoTime();
 
 for (int i = 0; i < 1_000_000; i++) {
@@ -12402,7 +12402,7 @@ Java 5 was one of the most important historical upgrades. It introduced several 
 
 Generics changed Java APIs permanently:
 
-```java id="310x1q"
+```java
 List<String> names = new ArrayList<>();
 names.add("Ada");
 
@@ -12421,7 +12421,7 @@ But because generics were added for backward compatibility, Java uses erasure. T
 
 Enums replaced integer/string constants for closed categories:
 
-```java id="tctjze"
+```java
 public enum OrderStatus {
     CREATED,
     PAID,
@@ -12432,7 +12432,7 @@ public enum OrderStatus {
 
 Annotations opened the path to modern enterprise Java:
 
-```java id="pdchkn"
+```java
 @Override
 public String toString() {
     return "User";
@@ -12443,14 +12443,14 @@ Later frameworks extended annotations far beyond compiler checks: routing, valid
 
 Autoboxing made code convenient:
 
-```java id="mp8u0s"
+```java
 List<Integer> values = new ArrayList<>();
 values.add(1);
 ```
 
 But it also introduced hidden allocation, null-unboxing risk, and performance traps.
 
-```java id="591xvn"
+```java
 Integer value = null;
 // int x = value; // NullPointerException
 ```
@@ -12477,13 +12477,13 @@ Java 8 changed Java’s programming style. It did not make Java a functional lan
 
 Lambda:
 
-```java id="80hgae"
+```java
 Predicate<User> active = User::isActive;
 ```
 
 Stream:
 
-```java id="duglws"
+```java
 List<EmailAddress> emails = users.stream()
         .filter(User::isActive)
         .map(User::email)
@@ -12504,7 +12504,7 @@ This style improved many data-processing tasks. But it also created new mistakes
 
 `Optional`:
 
-```java id="4uw3hh"
+```java
 public Optional<User> findUser(UserId id) {
     return Optional.ofNullable(users.get(id));
 }
@@ -12514,7 +12514,7 @@ This is good for lookup absence. It is not a universal null-safety system.
 
 `java.time`:
 
-```java id="uhenx2"
+```java
 Instant createdAt = clock.instant();
 LocalDate birthday = LocalDate.of(1815, 12, 10);
 Duration timeout = Duration.ofSeconds(30);
@@ -12543,7 +12543,7 @@ Java 9 introduced the Java Platform Module System, usually called `JPMS`. This w
 
 Module descriptor:
 
-```java id="8tvxqz"
+```java
 module com.example.billing {
     requires java.sql;
     exports com.example.billing.api;
@@ -12552,7 +12552,7 @@ module com.example.billing {
 
 Collection factories:
 
-```java id="hg1bl1"
+```java
 List<String> names = List.of("Ada", "Grace");
 Set<Role> roles = Set.of(Role.ADMIN, Role.MEMBER);
 Map<String, Integer> scores = Map.of("Ada", 100, "Grace", 95);
@@ -12572,7 +12572,7 @@ The module system changed the meaning of access. A class may be `public`, but if
 
 `opens` matters for reflection:
 
-```java id="4amjo0"
+```java
 module com.example.app {
     opens com.example.app.model to com.fasterxml.jackson.databind;
 }
@@ -12602,7 +12602,7 @@ Modern Java has added several features to reduce ceremony without abandoning sta
 
 `var`:
 
-```java id="gpy9kx"
+```java
 var path = Path.of("data", "users.json");
 var users = repository.findActiveUsers();
 ```
@@ -12611,7 +12611,7 @@ var users = repository.findActiveUsers();
 
 Switch expression:
 
-```java id="225znx"
+```java
 String label = switch (status) {
     case ACTIVE -> "Active";
     case SUSPENDED -> "Suspended";
@@ -12621,7 +12621,7 @@ String label = switch (status) {
 
 Text block:
 
-```java id="2x4kho"
+```java
 String query = """
         SELECT id, email
         FROM users
@@ -12663,7 +12663,7 @@ Modern Java is moving toward **data-oriented programming** within a nominal, cla
 
 Example:
 
-```java id="i7bwly"
+```java
 public sealed interface PaymentEvent
         permits PaymentStarted, PaymentSucceeded, PaymentFailed {
 }
@@ -12680,7 +12680,7 @@ public record PaymentFailed(PaymentId id, String reason) implements PaymentEvent
 
 Branching:
 
-```java id="w8zw2x"
+```java
 public String describe(PaymentEvent event) {
     return switch (event) {
         case PaymentStarted started ->
@@ -12705,7 +12705,7 @@ This style is useful when the domain is naturally a closed set of variants.
 
 Data-oriented Java also reduces primitive obsession:
 
-```java id="4wxec6"
+```java
 public record UserId(String value) {
     public UserId {
         if (value == null || value.isBlank()) {
@@ -12740,7 +12740,7 @@ Java’s early concurrency model centered on threads, monitors, `synchronized`, 
 
 Virtual threads are historically important because they make direct blocking code viable for many high-concurrency I/O workloads.
 
-```java id="c3xhxr"
+```java
 try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
     Future<User> user = executor.submit(() -> userClient.load(userId));
     Future<Account> account = executor.submit(() -> accountClient.load(accountId));
@@ -12785,7 +12785,7 @@ Java’s enterprise ecosystem has evolved from heavyweight application-server mo
 
 Modern Java framework code may look simple:
 
-```java id="v2k21r"
+```java
 @Transactional
 public void cancelOrder(OrderId id) {
     Order order = orders.require(id);
@@ -12835,13 +12835,13 @@ Modern Java codebases often contain legacy APIs and styles. The goal is not to r
 
 Legacy raw collection:
 
-```java id="mk8134"
+```java
 List users = legacyApi.loadUsers();
 ```
 
 Adapter:
 
-```java id="znq5ml"
+```java
 List<User> users = new ArrayList<>();
 
 for (Object value : legacyApi.loadUsers()) {
@@ -12856,7 +12856,7 @@ return List.copyOf(users);
 
 Legacy date boundary:
 
-```java id="73ii10"
+```java
 Date legacy = legacyApi.createdAt();
 Instant createdAt = legacy.toInstant();
 ```
@@ -12946,7 +12946,7 @@ Example: record adoption.
 
 Good:
 
-```java id="lud6ts"
+```java
 public record UserId(String value) {
     public UserId {
         if (value == null || value.isBlank()) {
@@ -12958,7 +12958,7 @@ public record UserId(String value) {
 
 Risky:
 
-```java id="83h1n8"
+```java
 public record UserEntity(UserId id, String displayName, List<Order> orders) {
 }
 ```
@@ -12969,7 +12969,7 @@ Example: sealed type adoption.
 
 Good:
 
-```java id="a47pb8"
+```java
 public sealed interface ImportOutcome
         permits ImportSucceeded, ImportFailed {
 }

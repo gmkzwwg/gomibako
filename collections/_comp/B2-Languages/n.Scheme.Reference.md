@@ -1071,3 +1071,2166 @@ Now the binding `v` refers to a different vector.
 **Language-design note:** Scheme allows mutation but does not force it. This is a deliberate compromise. Functional style gives equational clarity and simpler reasoning; mutation can model state and improve some performance patterns; uncontrolled mutation introduces aliasing risk.
 
 **Common Pitfalls:** Do not use `set!` simply to imitate imperative languages. Use it when changing state is the actual model. Also distinguish mutation of a binding from mutation of the object to which a binding refers. Shared mutable objects create bugs even if no variable is reassigned.
+### Identity and equality — `eq?`, `eqv?`, `equal?`, numeric equality
+
+Equality is one of Scheme’s most important sharp edges. Scheme does not have one universal equality predicate. It has several predicates because “same” can mean different things: same object identity, same numeric value, same symbolic identity, or same recursive structure.
+
+| Predicate  | Main meaning                                                                    | Typical use                                                      | Practical risk                                           |
+| ---------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------- |
+| `eq?`      | Object identity or implementation-level sameness for some objects               | Symbols, booleans, sometimes object identity checks              | Not reliable for numbers, characters, or structural data |
+| `eqv?`     | Similar to `eq?`, but more appropriate for numbers and characters in many cases | General atomic equality where structural recursion is not needed | Numeric exactness and edge cases still matter            |
+| `equal?`   | Structural equality                                                             | Lists, trees, vectors, strings, records where supported          | May traverse large structures                            |
+| `=`        | Numeric equality                                                                | Numbers                                                          | Only for numbers                                         |
+| `string=?` | String equality                                                                 | Strings                                                          | Not for symbols                                          |
+| `char=?`   | Character equality                                                              | Characters                                                       | Not for strings                                          |
+
+Examples:
+
+```scheme
+(eq? 'a 'a)
+
+(equal? '(1 2 3) '(1 2 3))
+
+(= 10 (+ 5 5))
+
+(string=? "abc" "abc")
+```
+
+The important distinction is not merely API-level. It reflects Scheme’s data model.
+
+```scheme
+(define xs (list 1 2 3))
+(define ys (list 1 2 3))
+
+(eq? xs ys)      ; usually false: distinct list objects
+(equal? xs ys)   ; true: same recursive contents
+```
+
+For symbols, `eq?` is commonly appropriate:
+
+```scheme
+(eq? 'red 'red)
+```
+
+For lists and other compound structures, use `equal?` unless identity is specifically intended.
+
+**Failure-first explanation:**
+The tempting model is: “Equality means equal value.” The surprising behavior appears when two lists print the same but are not `eq?`. The correct explanation is that `eq?` is not structural equality; it is closer to identity or implementation-level sameness. The professional rule is: use `=` for numbers, `string=?` for strings, `char=?` for characters, `eq?` for symbolic tags when appropriate, and `equal?` for recursive structural comparison. The boundary changes when performance or object identity is deliberately part of the model.
+
+**Common Pitfalls:** Do not use `eq?` as a universal equality test. Do not compare strings with `eq?`. Do not compare numbers with `eq?` in portable code. Do not use `equal?` blindly in performance-sensitive code where structural traversal may be expensive.
+
+### Scope basics — lexical scope, shadowing, internal definitions
+
+Scheme is lexically scoped. A variable reference is resolved according to the program’s lexical structure, not according to the dynamic call stack.
+
+```scheme
+(define x 10)
+
+(define (f y)
+  (+ x y))
+```
+
+The procedure `f` refers to the top-level binding of `x` visible where `f` was defined.
+
+Local bindings can shadow outer bindings:
+
+```scheme
+(define x 10)
+
+(let ((x 99))
+  x)
+```
+
+Inside the `let`, `x` refers to the local binding, not the outer one. Outside the `let`, the outer `x` remains visible.
+
+| Scope concept       | Meaning                                            | Example                               | Practical consequence                        |
+| ------------------- | -------------------------------------------------- | ------------------------------------- | -------------------------------------------- |
+| Lexical scope       | Binding is determined by source nesting            | `lambda`, `let`                       | Closures are predictable                     |
+| Shadowing           | Inner binding hides outer binding with same name   | `(let ((x 1)) ...)`                   | Can clarify local meaning or confuse readers |
+| Free variable       | Identifier not bound inside the current expression | `x` inside `(lambda (y) (+ x y))`     | Resolved from enclosing environment          |
+| Bound variable      | Identifier introduced by binding form              | parameter `y`                         | Local to binding extent                      |
+| Internal definition | Definition inside a body                           | `(define helper ...)` inside function | Scope and ordering require care              |
+
+Internal definitions are useful for local helpers:
+
+```scheme
+(define (sum-of-squares x y)
+  (define (square z)
+    (* z z))
+  (+ (square x) (square y)))
+```
+
+This is often clearer than exposing `square` globally when it is only needed locally.
+
+**Language-design note:** Lexical scope is one of Scheme’s most important divergences from older dynamically scoped Lisp traditions. It makes closures reliable because a procedure carries the environment of its definition, not the environment of whichever caller happens to invoke it.
+
+**Common Pitfalls:** Avoid excessive shadowing of important names. Shadowing standard procedure names such as `list`, `map`, `+`, or `car` is legal in many contexts but usually confusing. Also avoid assuming that a variable reference is resolved from the caller’s local variables; lexical scope does not work that way.
+
+### Procedure application — operator position, operands, arity
+
+An ordinary Scheme procedure call is written with the operator first:
+
+```scheme
+(f a b c)
+```
+
+In an ordinary call, the operator expression is evaluated to a procedure, and the operand expressions are evaluated to argument values. Then the procedure is applied.
+
+The operator position can itself be an expression:
+
+```scheme
+((if use-addition + *) 2 3)
+```
+
+If `use-addition` is true, this applies `+`; otherwise, it applies `*`.
+
+| Call shape                | Meaning                                         | Example                    |
+| ------------------------- | ----------------------------------------------- | -------------------------- |
+| Named procedure call      | Look up procedure by name                       | `(+ 1 2)`                  |
+| Higher-order call         | Procedure comes from expression                 | `((make-adder 10) 5)`      |
+| Procedure-valued variable | Binding holds procedure                         | `(f x)`                    |
+| Anonymous immediate call  | Lambda directly applied                         | `((lambda (x) (* x x)) 5)` |
+| Variadic call             | Procedure receives variable number of arguments | `(+ 1 2 3 4)`              |
+
+Arity matters. A procedure can require a fixed number of arguments, accept a rest argument, or use implementation/library mechanisms for optional arguments.
+
+```scheme
+(define (binary-add x y)
+  (+ x y))
+
+(binary-add 1 2)
+```
+
+Calling it with the wrong number of arguments is an error.
+
+Rest arguments collect extra arguments into a list:
+
+```scheme
+(define (collect . xs)
+  xs)
+
+(collect 1 2 3)
+```
+
+Fixed-plus-rest arguments are also possible:
+
+```scheme
+(define (first-and-rest first . rest)
+  (list first rest))
+```
+
+**Common Pitfalls:** Do not assume infix operator precedence exists in ordinary Scheme code. `(+ 1 (* 2 3))` is the normal form, not `1 + 2 * 3`. Also do not assume the first element of every list is evaluated as a function; quoted lists are data, and special forms/macros have different rules.
+
+### Basic control flow — `if`, `cond`, `case`, `and`, `or`, `when`, `unless`
+
+Scheme control flow is expression-oriented. Conditional forms usually produce values, not merely statements.
+
+The primitive conditional is `if`:
+
+```scheme
+(if (> x 0)
+    'positive
+    'non-positive)
+```
+
+Only `#f` is false. Every other value counts as true.
+
+| Form     | Role                                        | Basic shape                                  | Evaluation behavior             | Common use                    |
+| -------- | ------------------------------------------- | -------------------------------------------- | ------------------------------- | ----------------------------- |
+| `if`     | Basic conditional                           | `(if test consequent alternative)`           | Evaluates test, then one branch | Binary choice                 |
+| `cond`   | Multi-branch conditional                    | `(cond (test expr ...) ... (else expr ...))` | Tests clauses in order          | Multi-case logic              |
+| `case`   | Dispatch by datum equality                  | `(case key ((a b) expr) ...)`                | Compares key to listed data     | Symbolic dispatch             |
+| `and`    | Short-circuit conjunction                   | `(and e1 e2 ...)`                            | Stops at first false value      | Guard chains                  |
+| `or`     | Short-circuit disjunction                   | `(or e1 e2 ...)`                             | Stops at first true value       | Fallback values               |
+| `when`   | Conditional body without useful alternative | `(when test body ...)`                       | Executes body if true           | Side-effecting guarded action |
+| `unless` | Negative conditional body                   | `(unless test body ...)`                     | Executes body if false          | Side-effecting negative guard |
+
+`cond` is often clearer than nested `if`:
+
+```scheme
+(cond
+  ((< x 0) 'negative)
+  ((= x 0) 'zero)
+  (else 'positive))
+```
+
+`case` is useful when comparing a value against literal alternatives:
+
+```scheme
+(case command
+  ((start run) 'running)
+  ((stop halt) 'stopped)
+  (else 'unknown))
+```
+
+`and` and `or` are not ordinary procedures because they short-circuit:
+
+```scheme
+(and (pair? xs)
+     (car xs))
+
+(or configured-value
+    default-value)
+```
+
+A normal procedure cannot implement this evaluation behavior because all arguments to an ordinary procedure call are evaluated before the call.
+
+`when` and `unless` are usually used for side effects:
+
+```scheme
+(when verbose?
+  (display "running")
+  (newline))
+```
+
+**Language-design note:** Control-flow forms exist because evaluation order and evaluation suppression are semantic issues. Functions are not enough when a construct needs to decide whether subexpressions are evaluated.
+
+**Common Pitfalls:** Do not use `when` or `unless` when a meaningful alternative value is needed. Use `if` or `cond`. Do not forget that `and` and `or` return actual operand values, not necessarily canonical `#t` or `#f`.
+
+### Sequencing — `begin`, body expressions, effect order
+
+Scheme bodies may contain multiple expressions. The expressions are evaluated in order, and the value of the last expression is the value of the body.
+
+```scheme
+(define (announce-and-add x y)
+  (display "adding")
+  (newline)
+  (+ x y))
+```
+
+Here the procedure returns the result of `(+ x y)`, not the result of `display` or `newline`.
+
+`begin` explicitly sequences expressions:
+
+```scheme
+(begin
+  (display "hello")
+  (newline)
+  42)
+```
+
+This evaluates the first two expressions for effects and returns `42`.
+
+| Sequencing form        | Meaning                                  | Use case                                         | Pitfall                                           |
+| ---------------------- | ---------------------------------------- | ------------------------------------------------ | ------------------------------------------------- |
+| Procedure body         | Sequence inside `lambda` / `define` body | Effects followed by final result                 | Forgetting only final expression is returned      |
+| `begin`                | Explicit sequence                        | Group multiple expressions where one is expected | Overusing it instead of clearer structure         |
+| `cond` clause body     | Sequence after selected test             | Multi-expression branch                          | Hiding too much work inside a branch              |
+| `when` / `unless` body | Sequence conditional on test             | Guarded effects                                  | Treating as expression with meaningful else-value |
+
+Example:
+
+```scheme
+(define (log-positive x)
+  (when (> x 0)
+    (display "positive")
+    (newline))
+  x)
+```
+
+This returns `x`; the `when` is used only for its side effect.
+
+**Common Pitfalls:** Scheme is expression-oriented, but it still supports effects. Do not confuse “expression-oriented” with “pure.” Also do not write long `begin` blocks when local procedures or clearer decomposition would express the program better.
+
+### Local control and looping — recursion, named `let`, `do`
+
+Scheme’s fundamental looping mechanism is recursion supported by proper tail calls. Named `let` is the most common readable loop form.
+
+```scheme
+(let loop ((xs '(1 2 3))
+           (acc 0))
+  (if (null? xs)
+      acc
+      (loop (cdr xs) (+ acc (car xs)))))
+```
+
+The recursive call to `loop` is in tail position. In Scheme, proper tail recursion means this kind of loop can run without growing the control stack.
+
+Some Scheme standards also include `do`, a more imperative-looking loop form:
+
+```scheme
+(do ((i 0 (+ i 1))
+     (acc 0 (+ acc i)))
+    ((= i 10) acc))
+```
+
+| Loop style              | Best use                       | Strength                         | Cost / risk                                |
+| ----------------------- | ------------------------------ | -------------------------------- | ------------------------------------------ |
+| Named `let`             | General recursive iteration    | Clear state variables, idiomatic | Requires comfort with recursion            |
+| Direct recursion        | Structural recursion over data | Matches recursive structures     | Must understand tail vs non-tail recursion |
+| `do`                    | Compact iteration with updates | Familiar to imperative readers   | Syntax is less commonly loved              |
+| Higher-order procedures | Mapping, folding, filtering    | Declarative transformation       | May hide allocation or traversal costs     |
+| Explicit mutation       | State-heavy loops              | Sometimes efficient              | More aliasing and reasoning burden         |
+
+Named `let` is often the most Scheme-like loop because it makes loop state explicit as parameters.
+
+```scheme
+(define (length* xs)
+  (let loop ((xs xs)
+             (n 0))
+    (if (null? xs)
+        n
+        (loop (cdr xs) (+ n 1)))))
+```
+
+**Failure-first explanation:**
+The tempting model imported from many languages is: “Recursion is elegant but unsafe for long loops.” In Scheme, proper tail recursion changes this. A tail-recursive loop is a normal iteration technique, not a stack-consuming trick. The correct rule is: use tail recursion or named `let` for iterative processes; use non-tail recursion when the result naturally depends on combining recursive results after return. The boundary changes when debugging, profiling, or implementation-specific stack traces are involved.
+
+**Common Pitfalls:** Do not assume every recursive procedure is tail-recursive. This is tail-recursive:
+
+```scheme
+(define (sum xs)
+  (let loop ((xs xs)
+             (acc 0))
+    (if (null? xs)
+        acc
+        (loop (cdr xs) (+ acc (car xs))))))
+```
+
+This is not tail-recursive because `+` must still run after the recursive call returns:
+
+```scheme
+(define (sum xs)
+  (if (null? xs)
+      0
+      (+ (car xs) (sum (cdr xs)))))
+```
+
+Both can be correct. They express different control and cost profiles.
+
+### Multiple values — `values`, `call-with-values`, receiving multiple results
+
+Scheme has a distinct multiple-value mechanism. Multiple values are not the same as returning a list or vector.
+
+```scheme
+(values 1 2)
+```
+
+A receiver must be prepared to accept multiple values. One explicit mechanism is `call-with-values`:
+
+```scheme
+(call-with-values
+  (lambda () (values 1 2))
+  (lambda (x y) (+ x y)))
+```
+
+This returns `3`.
+
+| Pattern                 | Example                       | Meaning                                   | When to use                                                |
+| ----------------------- | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
+| Return one value        | `42`                          | Ordinary result                           | Most procedures                                            |
+| Return multiple values  | `(values a b)`                | Several results through continuation      | Decomposition, quotient/remainder-like operations          |
+| Receive multiple values | `call-with-values`            | Consumer accepts arity of produced values | Explicit multi-result handling                             |
+| Return aggregate        | `(list a b)` or vector/record | One compound value                        | When result should be stored, passed, or inspected as data |
+
+The distinction matters. A list of two elements is one value. Two values are two values delivered to a continuation expecting two values.
+
+```scheme
+(list 1 2)      ; one value: a list
+
+(values 1 2)    ; two values
+```
+
+**Language-design note:** Multiple values connect naturally to continuation semantics. A continuation is not merely “the rest of the computation” in an informal sense; it also has expectations about how many values it receives.
+
+**Common Pitfalls:** Do not use multiple values when a durable data object is needed. Use a record, vector, pair, or list when the result should be stored as one value. Use multiple values when the result is immediately decomposed by the caller.
+
+### Delayed evaluation basics — `delay`, `force`, promises
+
+Some Scheme systems and standards provide delayed evaluation through promises.
+
+```scheme
+(define delayed
+  (delay (+ 1 2)))
+
+(force delayed)
+```
+
+`delay` creates a promise. `force` obtains the value. The exact behavior around memoization and implementation details should be checked against the target standard and implementation, but the conceptual purpose is to defer computation.
+
+| Construct | Meaning                               | Use case             | Pitfall                                |
+| --------- | ------------------------------------- | -------------------- | -------------------------------------- |
+| `delay`   | Create delayed computation            | Laziness, streams    | Confusing with quoting                 |
+| `force`   | Demand delayed value                  | Consume promise      | Forgetting effects may happen later    |
+| Promise   | Representation of delayed computation | Lazy data structures | Assuming all Scheme evaluation is lazy |
+
+Scheme is normally eager: procedure operands are evaluated before application. `delay` creates controlled laziness.
+
+**Common Pitfalls:** Do not confuse `delay` with `quote`. Quote produces data without evaluating it. Delay creates a computation that can be forced later. Also do not assume Scheme is generally lazy like Haskell.
+
+### Basic exception and error syntax — `error`, guards, implementation variation
+
+Scheme has error mechanisms, but the exact condition system and exception APIs differ across standards and implementations. At the core reading level, recognize that `error` signals an error, while more advanced handling mechanisms belong in Part 5.
+
+```scheme
+(error "invalid input")
+```
+
+Some Scheme standards or implementations provide forms such as `guard`, exception handlers, condition objects, or richer condition systems.
+
+| Mechanism          | Role                       | Portability note                                                            | Use                                  |
+| ------------------ | -------------------------- | --------------------------------------------------------------------------- | ------------------------------------ |
+| `error`            | Signal an error            | Standard availability depends on report details and implementation behavior | Invalid state or failed precondition |
+| Predicate checks   | Prevent invalid operations | Portable when using standard predicates                                     | Validate before operation            |
+| `guard` / handlers | Catch or handle exceptions | Standard- and implementation-sensitive                                      | Recoverable failure                  |
+| Condition objects  | Rich error information     | More developed in R6RS or implementation systems                            | Structured error handling            |
+
+Example of defensive checking:
+
+```scheme
+(define (safe-car xs)
+  (if (pair? xs)
+      (car xs)
+      (error "safe-car: expected a pair")))
+```
+
+**Language-design note:** Scheme does not have a single dominant error-handling culture equivalent to Rust’s `Result`, Java’s checked exceptions, or Python’s exception ecosystem. Portable code should be careful about what it assumes.
+
+**Common Pitfalls:** Do not build a large error-handling design before choosing the target standard and implementation. Also do not use `error` for ordinary expected absence when `#f`, an option-like representation, or a clear result protocol would be better.
+
+### Imports and libraries — `import`, `define-library`, implementation modules
+
+At the syntax-recognition level, imports bring bindings into scope and libraries define module boundaries.
+
+A simplified R7RS-style library shape is:
+
+```scheme
+(define-library (example math)
+  (export square)
+  (import (scheme base))
+  (begin
+    (define (square x)
+      (* x x))))
+```
+
+A program or library may import bindings:
+
+```scheme
+(import (scheme base))
+```
+
+The details vary substantially across Scheme standards and implementations.
+
+| Construct                   | Meaning                               | Layer                                           | Practical consequence         |
+| --------------------------- | ------------------------------------- | ----------------------------------------------- | ----------------------------- |
+| `import`                    | Bring library bindings into scope     | Module/library layer                            | Dependency boundary           |
+| `export`                    | Expose selected bindings              | Library declaration                             | Public API boundary           |
+| `define-library`            | Define R7RS-style library             | Standard module syntax                          | Useful for portable R7RS code |
+| Implementation module forms | Implementation-specific module system | Chez, Guile, Chicken, Racket-like systems, etc. | Powerful but less portable    |
+
+Scheme module syntax is not as universally uniform as JavaScript `import`, Python `import`, or Rust `use`. It must be treated as a portability decision.
+
+**Common Pitfalls:** Do not assume an example using one implementation’s module system is portable Scheme. Also do not put every helper into the public export list. A library boundary is an abstraction boundary.
+
+### Basic macro recognition — `define-syntax`, `syntax-rules`, macro use
+
+Macros are central to Scheme, but Part 2 only needs enough syntax to recognize them. Part 4 and Part 7 will explain macro design and expansion more deeply.
+
+A simple hygienic macro may look like this:
+
+```scheme
+(define-syntax when
+  (syntax-rules ()
+    ((_ test body ...)
+     (if test
+         (begin body ...)))))
+```
+
+This defines a syntax transformer. A use of the macro looks like:
+
+```scheme
+(when (> x 0)
+  (display x)
+  (newline))
+```
+
+The macro use is expanded before ordinary runtime evaluation. It is not a procedure call to `when`.
+
+| Macro concept   | Meaning                                | Example                                   | Crucial distinction                               |
+| --------------- | -------------------------------------- | ----------------------------------------- | ------------------------------------------------- |
+| `define-syntax` | Defines syntactic binding              | `(define-syntax name transformer)`        | Creates expansion-time transformer                |
+| `syntax-rules`  | Pattern-based hygienic macro system    | `(syntax-rules (...) ...)`                | Matches syntax patterns                           |
+| Macro use       | Form expanded before runtime           | `(when test body ...)`                    | Not ordinary function application                 |
+| Hygiene         | Binding safety property                | Introduced names avoid accidental capture | Not textual substitution                          |
+| Ellipsis `...`  | Repetition in macro patterns/templates | `body ...`                                | Macro-pattern syntax, not ordinary runtime syntax |
+
+A function cannot implement `when` with the same evaluation behavior because ordinary function arguments are evaluated before the function is called. A macro can expand into an `if` that controls whether the body is evaluated.
+
+**Failure-first explanation:**
+The tempting model is: “A macro is just a function that receives unevaluated arguments.” The surprising bug appears when one expects runtime values inside a macro transformer, or expects a function to suppress argument evaluation. The correct explanation is that macros transform syntax before runtime; functions consume values at runtime. The professional rule is: use functions for value abstraction and macros for syntactic abstraction. The boundary changes in advanced macro systems, but the expansion-time/runtime distinction remains.
+
+**Common Pitfalls:** Do not use macros merely to avoid writing higher-order functions. Do not write opaque DSLs before ordinary procedures and data structures have been considered. Do not confuse macro ellipses with runtime variadic arguments.
+
+### Procedure values versus syntax keywords — ordinary calls and special forms
+
+Scheme source often begins with an identifier after `(`, but that identifier may have different kinds of binding.
+
+```scheme
+(+ 1 2)
+(if test a b)
+(lambda (x) x)
+(when test body)
+```
+
+| First position    | Binding kind                      | Runtime procedure? | Evaluation behavior                                   |
+| ----------------- | --------------------------------- | -----------------: | ----------------------------------------------------- |
+| `+`               | Variable bound to procedure       |                Yes | Ordinary application                                  |
+| `if`              | Special syntax                    |                 No | Evaluates only selected branch                        |
+| `lambda`          | Special syntax                    |                 No | Creates procedure without evaluating body immediately |
+| `quote`           | Special syntax                    |                 No | Suppresses evaluation                                 |
+| `when`            | Macro binding if defined/imported |                 No | Expands before runtime                                |
+| User variable `f` | Depends on binding                |              Maybe | Ordinary application if value is procedure            |
+
+The key source-reading question is: **what kind of binding does the first identifier have?**
+
+A Scheme environment contains ordinary value bindings, and the syntactic environment contains syntax bindings. In a simple expression, these distinctions may feel invisible, but macros make them unavoidable.
+
+**Common Pitfalls:** Do not assume that because a form has the shape `(name ...)`, `name` is a procedure. It may be a keyword, a macro, a special form, or an ordinary procedure depending on the binding.
+
+### `apply` — calling a procedure with an argument list
+
+`apply` calls a procedure using arguments supplied partly or wholly as a list.
+
+```scheme
+(apply + '(1 2 3 4))
+```
+
+This is equivalent to applying `+` to `1`, `2`, `3`, and `4`.
+
+`apply` can also combine fixed arguments with a final list:
+
+```scheme
+(apply + 1 2 '(3 4))
+```
+
+This applies `+` to `1`, `2`, `3`, and `4`.
+
+| Pattern                    | Meaning                            | Example               |
+| -------------------------- | ---------------------------------- | --------------------- |
+| All arguments from list    | Apply procedure to list elements   | `(apply f xs)`        |
+| Some fixed, rest from list | Append fixed args before list args | `(apply f a b xs)`    |
+| Dynamic dispatch           | Procedure chosen at runtime        | `(apply proc args)`   |
+| Adapter                    | Bridge list data to procedure call | `(apply max numbers)` |
+
+`apply` is a runtime procedure. It is not macro expansion and not source evaluation. It takes an already existing procedure value and already existing argument values.
+
+**Common Pitfalls:** Do not confuse `apply` with `eval`. `apply` calls a procedure with values. `eval` evaluates an expression in an environment. If a list contains symbols that look like code, `apply` does not evaluate that list as code.
+
+```scheme
+(apply + '(1 2 3))      ; good
+
+(apply '(+ 1 2) '())    ; wrong model: first argument is not a procedure
+```
+
+### `eval` — evaluating expressions dynamically
+
+Scheme systems may provide `eval`, but its exact environment requirements and portability details are implementation-sensitive. Conceptually, `eval` evaluates an expression in an environment.
+
+A rough conceptual example:
+
+```scheme
+(eval '(+ 1 2) some-environment)
+```
+
+This is not the same as `apply`.
+
+| Mechanism       | Input                                        | Operation                          | Typical use                                     |
+| --------------- | -------------------------------------------- | ---------------------------------- | ----------------------------------------------- |
+| Ordinary call   | Procedure expression and operand expressions | Evaluate operands, apply procedure | Normal programming                              |
+| `apply`         | Procedure value and argument values          | Call procedure                     | Higher-order adapters                           |
+| `eval`          | Expression representation and environment    | Evaluate expression dynamically    | REPLs, interpreters, controlled dynamic systems |
+| Macro expansion | Syntax and syntactic environment             | Transform syntax before runtime    | New syntactic forms                             |
+
+Professional Scheme code should usually avoid `eval` unless the problem is truly dynamic evaluation, interpreter construction, plugin-like evaluation, or metaprogramming under controlled conditions.
+
+**Common Pitfalls:** Do not use `eval` to choose a function by name, to avoid passing procedures, or to simulate a dispatch table. Use ordinary data structures, procedure values, association lists, hash tables where available, or macros where syntax abstraction is truly required.
+
+### Top-level mutation and redefinition — REPL convenience versus program discipline
+
+At the REPL, it is common to define and redefine names while exploring:
+
+```scheme
+(define x 1)
+(define x 2)
+```
+
+Different implementations may handle top-level redefinition in permissive ways. This is useful for interactive development but should not be mistaken for a clean program design model.
+
+| Context                  | Redefinition behavior                       | Professional interpretation                  |
+| ------------------------ | ------------------------------------------- | -------------------------------------------- |
+| REPL                     | Often permissive                            | Exploration and experimentation              |
+| Script/top-level program | Implementation-dependent details may matter | Avoid accidental redefinition                |
+| Library/module           | Exported bindings form API boundary         | Redefinition should be controlled or avoided |
+| Macro definitions        | Expansion-time effects matter               | Redefinition can be especially confusing     |
+
+**Language-design note:** Scheme’s REPL-centered culture encourages experimentation, but serious code should be organized around stable bindings, clear modules, tests, and explicit dependencies.
+
+**Common Pitfalls:** Do not rely on interactive redefinition as a substitute for program structure. Do not design libraries that require users to mutate internal top-level variables unless that is an explicit configuration mechanism.
+
+### Primitive data predicates — recognizing value categories
+
+Scheme uses predicates heavily because the core language is dynamically typed. Predicates conventionally end in `?`.
+
+| Predicate    | Tests for     | Example            |
+| ------------ | ------------- | ------------------ |
+| `boolean?`   | Boolean value | `(boolean? #f)`    |
+| `number?`    | Number        | `(number? 10)`     |
+| `integer?`   | Integer       | `(integer? 10)`    |
+| `char?`      | Character     | `(char? #\a)`      |
+| `string?`    | String        | `(string? "x")`    |
+| `symbol?`    | Symbol        | `(symbol? 'x)`     |
+| `pair?`      | Pair          | `(pair? '(a . b))` |
+| `null?`      | Empty list    | `(null? '())`      |
+| `list?`      | Proper list   | `(list? '(1 2 3))` |
+| `vector?`    | Vector        | `(vector? #(1 2))` |
+| `procedure?` | Procedure     | `(procedure? +)`   |
+
+Predicates are central to safe dynamic programming. They let code establish runtime facts before applying operations.
+
+```scheme
+(define (first xs)
+  (if (pair? xs)
+      (car xs)
+      (error "first: expected non-empty list")))
+```
+
+**Common Pitfalls:** Do not use `pair?` when the empty list should be accepted. Do not use `list?` when an improper list is acceptable. Do not assume a predicate refines a static type, as it might in TypeScript or ML-like pattern matching; Scheme has runtime checks, not core static narrowing.
+
+### Basic constructors and selectors — `cons`, `car`, `cdr`, `list`, `vector`
+
+Scheme’s core data constructors and selectors are compact but semantically important.
+
+| Operation     | Meaning                  | Example               | Pitfall                                   |
+| ------------- | ------------------------ | --------------------- | ----------------------------------------- |
+| `cons`        | Create pair              | `(cons 'a 'b)`        | Result may not be a proper list           |
+| `car`         | First field of pair      | `(car '(a b))`        | Error on empty list                       |
+| `cdr`         | Second field of pair     | `(cdr '(a b))`        | May return non-list for dotted pairs      |
+| `list`        | Create proper list       | `(list 1 2 3)`        | Allocates linked pairs                    |
+| `vector`      | Create vector            | `(vector 1 2 3)`      | Different cost model from list            |
+| `make-vector` | Create vector of size    | `(make-vector 3 0)`   | Mutable contents where supported          |
+| `string`      | Create string from chars | `(string #\a #\b)`    | Characters, not strings                   |
+| `make-string` | Create string of length  | `(make-string 3 #\x)` | Mutability and literal distinction matter |
+
+Example:
+
+```scheme
+(define point (cons 3 4))
+
+(car point)
+(cdr point)
+```
+
+This can represent a pair, but a record would often be clearer for domain data. Part 3 will address modeling choices.
+
+**Common Pitfalls:** Do not build domain objects out of raw nested `cons` cells unless the representation is conventional, local, or deliberately symbolic. Raw pair structure is compact but often unreadable.
+
+### Mutating compound data — `set-car!`, `set-cdr!`, vector and string mutation
+
+Some Scheme systems and standards expose mutation of compound data structures. The exact availability and mutability of pairs or literals may differ across standards and implementations, so portable code must be cautious.
+
+| Mutation operation | Meaning                                     | Risk                                    |
+| ------------------ | ------------------------------------------- | --------------------------------------- |
+| `set!`             | Rebind variable to new value                | Changes binding                         |
+| `set-car!`         | Mutate first field of pair where available  | Shared list structure can be corrupted  |
+| `set-cdr!`         | Mutate second field of pair where available | Can create cycles or improper lists     |
+| `vector-set!`      | Mutate vector element                       | Aliasing through shared vector          |
+| `string-set!`      | Mutate string element where available       | Literal mutability and text assumptions |
+
+Example:
+
+```scheme
+(define xs (list 1 2 3))
+(define ys xs)
+
+(set-car! xs 99)
+
+ys
+```
+
+If mutable pairs are available and `set-car!` succeeds, `ys` observes the change because `xs` and `ys` refer to the same pair structure.
+
+**Failure-first explanation:**
+The tempting model is: “I changed `xs`, so only `xs` changed.” The surprising behavior is that `ys` also appears changed. The correct explanation is aliasing: two bindings can refer to the same mutable object. The professional rule is: use mutation only when shared identity is part of the design, and isolate it behind a clear boundary. The boundary changes when working with immutable data structures, but allocation and copying costs then become relevant.
+
+**Common Pitfalls:** Do not mutate quoted literals. Do not mutate list structure that may be shared unless sharing is intentional. Do not use pair mutation as a default update mechanism; functional reconstruction is often clearer.
+
+### Derived syntax — recognizing surface convenience over core ideas
+
+Scheme has forms that are conceptually derived from more primitive ideas. The exact standard treatment varies, but as a reader, it helps to recognize that many constructs are syntactic conveniences.
+
+| Derived form      | Core idea underneath                  | Why it exists                 |
+| ----------------- | ------------------------------------- | ----------------------------- |
+| `let`             | Lambda application-like local binding | More readable local variables |
+| `let*`            | Nested sequential bindings            | Stepwise dependency           |
+| `letrec`          | Recursive local environment           | Local recursion               |
+| `cond`            | Nested conditionals                   | Multi-way branching           |
+| `case`            | Dispatch over datums                  | Symbolic branching            |
+| `and` / `or`      | Conditional short-circuiting          | Guard and fallback patterns   |
+| `when` / `unless` | Conditional sequencing                | Side-effecting guard bodies   |
+| Named `let`       | Local recursive procedure             | Loop idiom                    |
+
+For example, simple `let` resembles applying a lambda:
+
+```scheme
+(let ((x 1)
+      (y 2))
+  (+ x y))
+```
+
+Conceptually resembles:
+
+```scheme
+((lambda (x y)
+   (+ x y))
+ 1
+ 2)
+```
+
+This equivalence is useful as intuition, though standards and macro expansion details should not be casually reduced to this explanation in every case.
+
+**Common Pitfalls:** Do not assume every derived form is merely cosmetic. Some derived forms encode important evaluation, binding, or recursion behavior. `letrec`, `and`, `or`, and macros especially require semantic care.
+
+### Reading errors from syntax — common malformed forms
+
+Many Scheme errors come from malformed forms or mistaken layer assumptions.
+
+| Mistake                           | Example                       | Why it fails                                         | Correct direction                                    |
+| --------------------------------- | ----------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| Calling a number                  | `(1 2 3)`                     | Operator position evaluates to number, not procedure | Use a procedure in operator position                 |
+| Forgetting to quote symbol data   | `(list red blue)`             | Looks up variables `red` and `blue`                  | Use `'(red blue)` or `(list 'red 'blue)`             |
+| Treating quoted call as execution | `'(+ 1 2)`                    | Produces data, does not call `+`                     | Remove quote for execution                           |
+| Using `car` on empty list         | `(car '())`                   | Empty list is not a pair                             | Check with `pair?` first                             |
+| Using `eq?` on strings            | `(eq? "a" "a")`               | Identity not structural string equality              | Use `string=?`                                       |
+| Expecting `let` sequential scope  | `(let ((x 1) (y (+ x 1))) y)` | `y` initializer does not see new `x`                 | Use `let*`                                           |
+| Using function for syntax control | `(my-if test a b)`            | Function arguments evaluate before call              | Use macro or existing conditional                    |
+| Confusing `apply` and `eval`      | `(apply '(+ 1 2) '())`        | First argument must be procedure                     | Use `eval` only for controlled expression evaluation |
+
+**Professional rule:** When a Scheme form fails, classify the failure before debugging: reader problem, malformed datum, unbound identifier, wrong binding kind, wrong arity, wrong runtime type, wrong evaluation layer, or implementation-specific unsupported feature.
+
+### Minimal syntax recognition index — core forms and meanings
+
+This index is not a complete reference. It is a high-frequency recognition map for reading Scheme source.
+
+| Form                                   | Category                     | Meaning                                  | First question to ask                         |
+| -------------------------------------- | ---------------------------- | ---------------------------------------- | --------------------------------------------- |
+| `x`                                    | Variable reference           | Look up binding                          | Where is `x` bound?                           |
+| `'x`                                   | Quoted datum                 | Produce symbol                           | Is this data or code-like data?               |
+| `` `(...) ``                           | Quasiquote                   | Construct template data                  | What is unquoted?                             |
+| `,x`                                   | Unquote                      | Insert evaluated value inside quasiquote | What expression is evaluated?                 |
+| `,@x`                                  | Splicing unquote             | Insert list elements                     | Is the value a list?                          |
+| `(define x e)`                         | Definition                   | Bind name                                | What context defines it?                      |
+| `(define (f x) body ...)`              | Procedure definition         | Bind name to procedure                   | What arity and closure context?               |
+| `(lambda formals body ...)`            | Procedure creation           | Create procedure                         | What variables are captured?                  |
+| `(if t c a)`                           | Conditional                  | Branch by test                           | Are branches evaluated selectively?           |
+| `(cond clause ...)`                    | Multi-branch conditional     | First true clause wins                   | What is the fallback?                         |
+| `(case key clause ...)`                | Datum dispatch               | Compare key to alternatives              | What equality notion applies?                 |
+| `(and e ...)`                          | Short-circuit conjunction    | First false or last value                | Are effects hidden?                           |
+| `(or e ...)`                           | Short-circuit disjunction    | First true value or false                | Is `#f` overloaded as absence?                |
+| `(let bindings body ...)`              | Parallel local binding       | Local environment                        | Are initializers independent?                 |
+| `(let* bindings body ...)`             | Sequential local binding     | Stepwise environment                     | Is dependency intended?                       |
+| `(letrec bindings body ...)`           | Recursive local binding      | Mutual recursion                         | Are initializers safe?                        |
+| `(let name bindings body ...)`         | Named let                    | Local recursive loop                     | Is recursive call in tail position?           |
+| `(set! x e)`                           | Assignment                   | Change existing binding                  | Is mutation necessary?                        |
+| `(begin e ...)`                        | Sequencing                   | Evaluate in order                        | Which expression is returned?                 |
+| `(quote datum)`                        | Quotation                    | Suppress evaluation                      | Is the datum later interpreted?               |
+| `(apply f xs)`                         | Procedure application helper | Call procedure with argument list        | Is `f` already a procedure?                   |
+| `(values e ...)`                       | Multiple values              | Return multiple results                  | Does caller expect that arity?                |
+| `(call-with-values producer consumer)` | Multiple-value receiver      | Connect producer and consumer            | Are producer and consumer arities compatible? |
+| `(define-syntax name transformer)`     | Macro definition             | Define syntax transformer                | Is this expansion-time code?                  |
+| `(syntax-rules literals rules ...)`    | Macro system                 | Pattern-based syntax transformation      | What pattern matches?                         |
+| `(import library ...)`                 | Module import                | Bring bindings into scope                | Which standard or implementation?             |
+| `(define-library name ...)`            | Library definition           | Define module/library                    | Is this R7RS or implementation-specific?      |
+
+### Source-reading workflow — how to read a Scheme form professionally
+
+A professional reading process for Scheme is deliberately layered.
+
+| Step                      | Question                                                                       | Why it matters                                  |
+| ------------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------- |
+| Identify the outer form   | Is it a literal, identifier, special form, macro use, or ordinary application? | Prevents treating all lists as calls            |
+| Check binding kind        | Is the leading identifier syntax or value?                                     | Separates macros/special forms from procedures  |
+| Determine evaluation rule | Which subforms are evaluated, and when?                                        | Explains control flow and laziness/strictness   |
+| Locate lexical bindings   | Where are identifiers introduced?                                              | Explains closures and scope                     |
+| Classify data structures  | Pair, proper list, vector, string, symbol, record?                             | Prevents wrong selectors or equality predicates |
+| Check mutation            | Are bindings or objects being changed?                                         | Exposes aliasing and state                      |
+| Check portability         | Standard, SRFI, or implementation-specific?                                    | Prevents false portability                      |
+| Check cost                | Does this allocate, traverse, or force exact arithmetic?                       | Prevents hidden performance problems            |
+
+Apply it to:
+
+```scheme
+(let loop ((xs items)
+           (acc '()))
+  (if (null? xs)
+      (reverse acc)
+      (loop (cdr xs)
+            (cons (process (car xs)) acc))))
+```
+
+The outer form is named `let`, so it introduces a local recursive loop. `xs` and `acc` are loop state. The `if` selects between termination and recursion. The recursive `loop` call is in tail position. `cons` allocates a new pair. `reverse` repairs the order because accumulating with `cons` builds the list backwards. `process` is an ordinary procedure call unless bound otherwise. The code assumes `items` is a proper list.
+
+This is the level of reading Part 2 aims to support.
+### Tail position basics — final expressions, recursive calls, proper tail recursion
+
+Tail position is not just a performance detail in Scheme. It is a semantic reading skill. A form is in **tail position** when its value will be returned directly as the value of the surrounding procedure or body, with no remaining computation afterward.
+
+In this procedure, the recursive call is in tail position:
+
+```scheme
+(define (count xs n)
+  (if (null? xs)
+      n
+      (count (cdr xs) (+ n 1))))
+```
+
+In this procedure, the recursive call is not in tail position:
+
+```scheme
+(define (count xs)
+  (if (null? xs)
+      0
+      (+ 1 (count (cdr xs)))))
+```
+
+The second version still has to add `1` after the recursive call returns. That means the caller must remember pending work.
+
+| Context                                      | Tail position? | Example                              | Why                              |
+| -------------------------------------------- | -------------: | ------------------------------------ | -------------------------------- |
+| Last expression in procedure body            |            Yes | `(define (f x) (+ x 1))`             | Procedure returns that value     |
+| Consequent/alternative of tail-position `if` |            Yes | `(if test a b)` inside tail position | Selected branch returns directly |
+| Last expression in `begin` in tail position  |            Yes | `(begin e1 e2)` where `e2` is last   | Earlier expressions are effects  |
+| Operator of a call                           |             No | `((f x) y)`                          | Result must still be applied     |
+| Operand of a call                            |             No | `(+ 1 (f x))`                        | Call to `+` remains              |
+| Test of `if`                                 |             No | `(if (p x) a b)`                     | Branch selection remains         |
+| Recursive call under constructor             |             No | `(cons x (loop xs))`                 | `cons` remains after recursion   |
+
+Tail position matters because Scheme requires **proper tail recursion**. A tail call must not consume unbounded stack merely because it is written as a call. This is why named `let` can serve as an ordinary loop.
+
+```scheme
+(define (reverse* xs)
+  (let loop ((xs xs)
+             (acc '()))
+    (if (null? xs)
+        acc
+        (loop (cdr xs)
+              (cons (car xs) acc)))))
+```
+
+The recursive call to `loop` is in tail position. The growing result is stored in `acc`, not in pending stack frames.
+
+**Common Pitfalls:** Do not classify a procedure as tail-recursive merely because the recursive call appears “near the end.” Tail position is semantic, not visual. If another procedure still has to consume the recursive result, the call is not in tail position.
+
+### Continuation recognition — `call/cc`, escape, advanced control
+
+Continuations are one of Scheme’s most distinctive features, but Part 2 only needs enough syntax and reading orientation to prevent confusion. Full semantic treatment belongs in Part 7.
+
+The canonical name is usually:
+
+```scheme
+call-with-current-continuation
+```
+
+A common abbreviation is:
+
+```scheme
+call/cc
+```
+
+A simple escape-style example:
+
+```scheme
+(call/cc
+  (lambda (exit)
+    (for-each
+      (lambda (x)
+        (if (negative? x)
+            (exit 'found-negative)
+            #f))
+      xs)
+    'all-non-negative))
+```
+
+The procedure passed to `call/cc` receives a procedure-like value representing the current continuation. Calling `exit` abandons the current path and returns to the captured continuation with the supplied value.
+
+| Item                             | Meaning                             | Source-reading cue                   | Practical caution                              |
+| -------------------------------- | ----------------------------------- | ------------------------------------ | ---------------------------------------------- |
+| `call-with-current-continuation` | Captures current continuation       | Long standard name                   | Powerful and hard to reason about              |
+| `call/cc`                        | Common abbreviation                 | Same conceptual feature              | May be implementation/import dependent         |
+| Escape continuation              | Used to leave a computation early   | Names like `exit`, `return`, `abort` | Often replaceable by clearer control structure |
+| Reentrant continuation           | Continuation invoked more than once | Advanced control behavior            | Can make state and resource behavior difficult |
+| Delimited continuation           | Captures limited dynamic extent     | Implementation/Racket-like feature   | Not portable core Scheme                       |
+
+**Language-design note:** A continuation represents “what to do with the result” of an expression. Scheme makes this concept available as a first-class control mechanism. This is theoretically elegant but practically dangerous when used casually.
+
+**Common Pitfalls:** Do not treat `call/cc` as a normal exception mechanism, a loop construct, or a replacement for clear data flow. It is a control abstraction tool. In ordinary code, `cond`, recursion, named `let`, higher-order functions, and explicit error handling are usually more readable.
+
+### Body structure — definitions before expressions, local helpers, body value
+
+Many Scheme forms contain a **body**: a sequence of definitions and expressions. Procedure bodies, `let` bodies, library bodies, and macro-generated bodies all rely on this idea.
+
+```scheme
+(define (hypotenuse x y)
+  (define (square z)
+    (* z z))
+  (sqrt (+ (square x) (square y))))
+```
+
+The local definition of `square` is available inside the body. The last expression supplies the return value.
+
+| Body component                     | Example               | Meaning                                    | Reading rule                            |
+| ---------------------------------- | --------------------- | ------------------------------------------ | --------------------------------------- |
+| Internal definition                | `(define helper ...)` | Local binding                              | Usually appears before body expressions |
+| Expression before final expression | `(display x)`         | Evaluated for effect or intermediate value | Result usually ignored                  |
+| Final expression                   | `(+ x y)`             | Body result                                | Returned value                          |
+| Macro-generated body               | Produced by expansion | May introduce definitions/expressions      | Must respect body-context rules         |
+
+A body is not merely a block in the C-family sense. It is an expression context with lexical bindings and a final value.
+
+```scheme
+(define (f x)
+  (display x)
+  (newline)
+  (+ x 1))
+```
+
+This procedure returns `(+ x 1)`, not the result of `newline`.
+
+**Common Pitfalls:** Do not place definitions and expressions in arbitrary order unless the target standard and implementation clearly allow the intended behavior. Also avoid long bodies with many local definitions when smaller helper procedures or modules would communicate structure better.
+
+### Standard keywords and derived forms — recognizing non-procedure names
+
+Scheme has syntactic keywords. These are not ordinary variables bound to procedures. A source reader must recognize at least the high-frequency ones.
+
+| Keyword / form     | Category                  | Core role                   |                      Ordinary procedure? |
+| ------------------ | ------------------------- | --------------------------- | ---------------------------------------: |
+| `quote`            | Special syntax            | Suppress evaluation         |                                       No |
+| `lambda`           | Special syntax            | Create procedure            |                                       No |
+| `if`               | Special syntax            | Conditional selection       |                                       No |
+| `set!`             | Special syntax            | Assignment to binding       |                                       No |
+| `define`           | Definition syntax         | Create binding              |                                       No |
+| `define-syntax`    | Syntax definition         | Create macro binding        |                                       No |
+| `let`              | Derived binding syntax    | Local bindings              |                                       No |
+| `let*`             | Derived binding syntax    | Sequential local bindings   |                                       No |
+| `letrec`           | Derived binding syntax    | Recursive local bindings    |                                       No |
+| `begin`            | Sequencing syntax         | Ordered body                |                                       No |
+| `cond`             | Derived conditional       | Multi-way branch            |                                       No |
+| `case`             | Derived conditional       | Datum dispatch              |                                       No |
+| `and`              | Derived conditional       | Short-circuit conjunction   |                                       No |
+| `or`               | Derived conditional       | Short-circuit disjunction   |                                       No |
+| `delay`            | Delayed evaluation syntax | Create promise              | No or syntax-level depending on standard |
+| `quasiquote`       | Datum template syntax     | Template construction       |                                       No |
+| `unquote`          | Quasiquote component      | Insert evaluated value      |                                       No |
+| `unquote-splicing` | Quasiquote component      | Splice evaluated list       |                                       No |
+| `syntax-rules`     | Macro pattern system      | Define hygienic transformer |                                       No |
+| `import`           | Library/import syntax     | Bring bindings into scope   |                                       No |
+| `define-library`   | Library syntax            | Define module/library       |                                       No |
+
+The exact set depends on standard and implementation. This table is a source-reading map, not a claim that every Scheme implementation exposes every item in exactly the same way.
+
+**Professional rule:** When reading `(name ...)`, do not ask first “what function is being called?” Ask first: **is `name` a syntactic keyword, a macro binding, or a value binding?**
+
+**Common Pitfalls:** Shadowing or redefining names that look like core procedures may be legal in some contexts, but shadowing syntactic keywords is a different matter and often constrained by the language’s syntactic environment. Do not assume value namespaces and syntax namespaces behave like Common Lisp, Racket, or JavaScript without checking the target Scheme.
+
+### Application versus special syntax — why functions cannot replace all forms
+
+A central Scheme lesson is that ordinary procedure calls evaluate their operands before the procedure is invoked. Therefore, some constructs cannot be implemented as ordinary procedures.
+
+A broken `if`-as-function intuition:
+
+```scheme
+(define (my-if test consequent alternative)
+  (if test consequent alternative))
+```
+
+This seems plausible until the arguments have effects or nontermination:
+
+```scheme
+(my-if #t
+       1
+       (/ 1 0))
+```
+
+In an ordinary procedure call, the alternative argument is evaluated before `my-if` receives it. That means the division by zero happens even though the test is true.
+
+A macro can control evaluation by expanding into real `if` syntax:
+
+```scheme
+(define-syntax my-when
+  (syntax-rules ()
+    ((_ test body ...)
+     (if test
+         (begin body ...)))))
+```
+
+| Abstraction need                      | Function works? | Macro/special syntax needed? | Reason                                   |
+| ------------------------------------- | --------------: | ---------------------------: | ---------------------------------------- |
+| Compute with already evaluated values |             Yes |                           No | Ordinary procedure application is enough |
+| Delay evaluation of selected operands |              No |                          Yes | Function arguments evaluate too early    |
+| Introduce new binding syntax          |              No |                          Yes | Binding structure is syntax-level        |
+| Define a new control form             |      Usually no |                          Yes | Control forms govern evaluation          |
+| Abstract repeated value computation   |             Yes |                           No | Higher-order procedures often suffice    |
+| Build DSL syntax                      |       Sometimes |                    Often yes | Syntax may need custom structure         |
+
+**Language-design note:** Macros are not “more powerful functions.” They solve a different problem: abstraction over syntax and evaluation rules. Good Scheme style uses procedures when value abstraction is enough and macros when syntax abstraction is necessary.
+
+**Common Pitfalls:** Do not create a macro merely to avoid passing a lambda. Conversely, do not try to force functions to express binding forms or control constructs that require syntax-level control.
+
+### Identifier conventions — predicates, mutation, conversion, constructors
+
+Scheme’s naming style carries information. These are conventions, not hard type-system rules.
+
+| Convention                      | Example                           | Meaning                                    | Professional reading cue                     |
+| ------------------------------- | --------------------------------- | ------------------------------------------ | -------------------------------------------- |
+| `?` suffix                      | `pair?`, `number?`, `zero?`       | Predicate                                  | Expected to return boolean-like result       |
+| `!` suffix                      | `set!`, `vector-set!`, `set-car!` | Mutation or dangerous update               | Look for aliasing and state change           |
+| `->` infix                      | `list->vector`, `string->symbol`  | Conversion                                 | Check allocation and failure behavior        |
+| `make-` prefix                  | `make-vector`, `make-string`      | Constructor/allocation                     | New object likely allocated                  |
+| `call-with-` prefix             | `call-with-input-file`            | Controlled resource or dynamic extent      | Procedure argument receives resource/context |
+| `with-` or `parameterize` style | implementation-dependent          | Dynamic context or scoped setup            | Check implementation semantics               |
+| `*` suffix or infix             | implementation/library convention | Variant, internal helper, or extended form | Meaning not universal                        |
+
+Examples:
+
+```scheme
+(number? x)
+
+(vector-set! v i value)
+
+(list->vector xs)
+
+(make-vector 10 0)
+```
+
+**Common Pitfalls:** Do not treat naming conventions as guarantees. A badly named user-defined procedure can violate convention. In code review, such violations matter because Scheme relies heavily on readable convention.
+
+### Empty list, false, and absence — three different ideas
+
+Scheme readers often collapse three ideas: empty collection, boolean false, and missing value. Scheme keeps them distinct unless a procedure deliberately uses `#f` as an absence marker.
+
+| Concept       | Scheme value                                |        Conditional status | Typical use                      |
+| ------------- | ------------------------------------------- | ------------------------: | -------------------------------- |
+| Boolean false | `#f`                                        |                     false | Failed predicate, explicit false |
+| Empty list    | `'()`                                       |                      true | Empty sequence/list              |
+| Missing value | Often `#f`, sometimes custom representation | depends on representation | Search failure, optional result  |
+| Empty string  | `""`                                        |                      true | Text value with no characters    |
+| Zero          | `0`                                         |                      true | Number                           |
+
+Example:
+
+```scheme
+(if '()
+    'true
+    'false)
+```
+
+This evaluates to `'true`.
+
+When a procedure uses `#f` as a failure marker, the caller must remember that all non-`#f` values count as success:
+
+```scheme
+(define result (assoc 'key alist))
+
+(if result
+    (cdr result)
+    'not-found)
+```
+
+Here the result is not necessarily `#t`; it may be a pair. The conditional treats it as true.
+
+**Common Pitfalls:** Do not use `null?` to test falsehood. Do not use boolean checks when a domain-specific absence representation would be clearer. If `#f` is a valid domain value, it cannot also safely represent absence without an additional wrapper or convention.
+
+### Association lists — syntax recognition and pair-based lookup
+
+Association lists, often called **alists**, are common in Scheme. They are lists of pairs.
+
+```scheme
+(define colors
+  '((red . "#ff0000")
+    (green . "#00ff00")
+    (blue . "#0000ff")))
+```
+
+A lookup may use procedures such as `assoc` where available:
+
+```scheme
+(assoc 'red colors)
+```
+
+The returned value is commonly either the matching pair or `#f`.
+
+| Structure        | Example                     | Meaning                          | Pitfall                       |
+| ---------------- | --------------------------- | -------------------------------- | ----------------------------- |
+| Pair             | `(red . "#ff0000")`         | Key-value pair                   | Not a two-element proper list |
+| Association list | `((red . "...") ...)`       | List of key-value pairs          | Linear lookup                 |
+| Lookup result    | `(red . "#ff0000")` or `#f` | Pair or failure                  | Must handle `#f`              |
+| Key equality     | depends on procedure        | `assq`, `assv`, `assoc` variants | Equality choice matters       |
+
+Alists are useful for small maps, symbolic environments, interpreter examples, and simple configuration-like data. They are not always appropriate for large or performance-critical maps.
+
+**Common Pitfalls:** Do not confuse `'(a . b)` with `'(a b)`. They print similarly to new readers but represent different structures. Also do not use alists as a universal substitute for records, hash tables, or modules.
+
+### Procedure composition patterns — reading `map`, `for-each`, folds
+
+Although the detailed standard-library reference belongs in Part 6, some higher-order procedures are so central that a source reader should recognize them early.
+
+| Procedure pattern                | Typical procedure                            | Meaning                            | Result orientation        |
+| -------------------------------- | -------------------------------------------- | ---------------------------------- | ------------------------- |
+| Transform each element           | `map`                                        | Apply procedure to each element    | Produces new list         |
+| Perform effects for each element | `for-each`                                   | Apply procedure for side effects   | Result not primary        |
+| Accumulate                       | `fold` variants, often SRFI/library-specific | Combine sequence into one value    | Depends on fold direction |
+| Filter                           | implementation/SRFI-specific                 | Keep elements satisfying predicate | Produces subset           |
+| Apply to dynamic argument list   | `apply`                                      | Call procedure with list of args   | Procedure result          |
+
+Example:
+
+```scheme
+(map (lambda (x) (* x x))
+     '(1 2 3))
+```
+
+This produces a new list of squared values.
+
+```scheme
+(for-each
+  (lambda (x)
+    (display x)
+    (newline))
+  '(1 2 3))
+```
+
+This is for effects.
+
+**Language-design note:** Higher-order procedures reflect Scheme’s first-class procedure model. They are not merely library conveniences; they express the idea that behavior can be passed as data.
+
+**Common Pitfalls:** Do not use `map` for side effects when `for-each` communicates intent better. Do not assume every useful sequence operation is in the small standard baseline; SRFIs and implementations matter.
+
+### Reader abbreviations — quote-family syntax as expanded forms
+
+Scheme has reader abbreviations that rewrite compact prefixes into longer forms.
+
+| Abbreviation | Long form              | Meaning                   |
+| ------------ | ---------------------- | ------------------------- |
+| `'x`         | `(quote x)`            | Quotation                 |
+| `` `x ``     | `(quasiquote x)`       | Quasiquotation            |
+| `,x`         | `(unquote x)`          | Unquote inside quasiquote |
+| `,@x`        | `(unquote-splicing x)` | Splice inside quasiquote  |
+
+Example:
+
+```scheme
+`(a ,(+ 1 2) ,@(list 4 5))
+```
+
+Conceptually corresponds to a quasiquote form with unquoted holes. It constructs structured data:
+
+```scheme
+'(a 3 4 5)
+```
+
+Nested quasiquote can become difficult:
+
+```scheme
+`(outer `(inner ,x))
+```
+
+Nested levels change which comma belongs to which quasiquote level. This is useful but easy to misread.
+
+**Common Pitfalls:** Do not use heavy nested quasiquote without need. In macros, prefer clearer macro systems and small templates. In ordinary data construction, consider explicit `list`, `cons`, and helper procedures when quasiquote becomes unreadable.
+
+### Reader datum versus macro syntax object — why “code as data” is incomplete
+
+Scheme’s Lisp heritage makes it tempting to say “code is data.” That is partly useful and partly misleading.
+
+A quoted form is runtime data:
+
+```scheme
+'(+ x 1)
+```
+
+It is a list containing the symbol `+`, the symbol `x`, and the number `1`.
+
+A macro pattern, however, is not merely a runtime list being processed during normal execution:
+
+```scheme
+(define-syntax increment
+  (syntax-rules ()
+    ((_ x)
+     (set! x (+ x 1)))))
+```
+
+This operates at expansion time. The macro receives syntactic structure governed by the macro system. In hygienic macro systems, identifiers carry binding information that ordinary runtime symbols do not carry.
+
+| Layer                     | Example                   | Carries lexical binding information? |                       Runtime value? |
+| ------------------------- | ------------------------- | -----------------------------------: | -----------------------------------: |
+| Symbol datum              | `'x`                      | No ordinary lexical binding metadata |                                  Yes |
+| List datum                | `'(+ x 1)`                | No ordinary lexical binding metadata |                                  Yes |
+| Syntax pattern            | `(_ x)` in `syntax-rules` |       Yes, through syntactic context |                       Expansion-time |
+| Runtime expression result | `(+ 1 2)`                 |                    Result value only |                                  Yes |
+| Macro-expanded form       | Generated syntax          |       Yes, according to macro system | Becomes runtime code after expansion |
+
+**Interdisciplinary Lens: Macro-system theory**
+**What it clarifies:** Macros manipulate syntax, not ordinary already-evaluated runtime values.
+**Language feature involved:** `define-syntax`, `syntax-rules`, hygiene, expansion.
+**Practical consequence:** Macros can introduce control forms and binding constructs safely when designed well.
+**Limit of the lens:** Macro theory does not replace ordinary API design; many abstractions should be procedures or data structures.
+
+**Common Pitfalls:** Do not use ordinary list procedures as the mental model for all macro behavior. That model is useful for old-style or simplified macro explanations, but hygienic macro systems are more structured.
+
+### Literal data and mutation — quoted constants, object identity, safety
+
+Quoted data can contain compound structures:
+
+```scheme
+(define xs '(1 2 3))
+```
+
+A crucial portability and safety rule is: **do not mutate literal data**. Even where an implementation permits some mutation, mutating quoted constants can produce non-portable or surprising behavior.
+
+Bad pattern:
+
+```scheme
+(define xs '(1 2 3))
+
+(set-car! xs 99)
+```
+
+Better pattern when mutation is intended:
+
+```scheme
+(define xs (list 1 2 3))
+```
+
+Even then, mutation should be deliberate and isolated.
+
+| Data source                   | Mutation expectation                               | Safer reading         |
+| ----------------------------- | -------------------------------------------------- | --------------------- |
+| Quoted literal                | Treat as immutable                                 | Constant data         |
+| Constructed with `list`       | May be mutable depending on implementation support | Fresh list allocation |
+| Constructed with `vector`     | Mutable vector in many Schemes                     | Explicit aggregate    |
+| String literal                | Do not mutate casually                             | Constant text         |
+| `make-string` / `make-vector` | Intended fresh mutable object                      | Controlled mutation   |
+
+**Common Pitfalls:** Do not infer from printed representation that two data structures are safely independent or mutable. Quoted constants and implementation optimizations can invalidate casual mutation assumptions.
+
+### Equality and literal constants — why identity assumptions fail
+
+Equality mistakes often interact with literal data.
+
+```scheme
+(eq? '(1 2) '(1 2))
+```
+
+This is not a portable structural equality test. Even if an implementation returns a particular result, that is not the right predicate for comparing list contents.
+
+Use:
+
+```scheme
+(equal? '(1 2) '(1 2))
+```
+
+For symbols, identity-like comparison is usually appropriate:
+
+```scheme
+(eq? 'ok 'ok)
+```
+
+For numbers:
+
+```scheme
+(= 100 (+ 50 50))
+```
+
+For strings:
+
+```scheme
+(string=? "ok" "ok")
+```
+
+| Data kind            | Usually appropriate equality            | Why                       |
+| -------------------- | --------------------------------------- | ------------------------- |
+| Symbols used as tags | `eq?` or `eqv?` depending on convention | Symbol identity is stable |
+| Numbers              | `=`                                     | Numeric equality          |
+| Strings              | `string=?`                              | Textual content           |
+| Characters           | `char=?`                                | Character equality        |
+| Lists/trees          | `equal?`                                | Structural comparison     |
+| Vectors              | `equal?` where supported as intended    | Structural comparison     |
+| Records/objects      | depends on representation               | May need custom predicate |
+
+**Common Pitfalls:** Do not choose equality based on how values print. Choose equality based on the semantic question: identity, numeric equality, character equality, string equality, or structural equality.
+
+### Arity, rest parameters, and argument-list shape — fixed, variadic, mixed
+
+Scheme procedures can have fixed or variable arity.
+
+Fixed arity:
+
+```scheme
+(define (distance x y)
+  (sqrt (+ (* x x) (* y y))))
+```
+
+Rest-only variadic procedure:
+
+```scheme
+(define (collect . xs)
+  xs)
+```
+
+Mixed fixed and rest:
+
+```scheme
+(define (log level . messages)
+  (display level)
+  (display ": ")
+  (for-each display messages)
+  (newline))
+```
+
+Equivalent lambda forms:
+
+```scheme
+(lambda (x y) body ...)
+
+(lambda xs body ...)
+
+(lambda (x y . rest) body ...)
+```
+
+| Formal list    | Accepts               | Example call  | Binding result                    |
+| -------------- | --------------------- | ------------- | --------------------------------- |
+| `(x y)`        | exactly two arguments | `(f 1 2)`     | `x = 1`, `y = 2`                  |
+| `xs`           | any number            | `(f 1 2 3)`   | `xs = '(1 2 3)`                   |
+| `(x . rest)`   | at least one          | `(f 1 2 3)`   | `x = 1`, `rest = '(2 3)`          |
+| `(x y . rest)` | at least two          | `(f 1 2 3 4)` | `x = 1`, `y = 2`, `rest = '(3 4)` |
+
+**Common Pitfalls:** Do not confuse rest parameters with multiple values. A rest parameter captures multiple arguments into one list. Multiple values deliver several values to a continuation. They are different mechanisms.
+
+### Evaluation order caution — operands and side effects
+
+At the source-reading level, ordinary application evaluates operator and operands before application. But the precise order in which operands are evaluated is a standard-level issue that must be checked carefully. Portable code should not depend on operand evaluation order unless the form specifies it.
+
+Problematic style:
+
+```scheme
+(f (set! x (+ x 1))
+   (set! x (* x 2)))
+```
+
+This code relies on the order of side effects among operands. That is bad Scheme style.
+
+Use explicit sequencing:
+
+```scheme
+(begin
+  (set! x (+ x 1))
+  (set! x (* x 2))
+  (f x x))
+```
+
+Or better, use local bindings when values rather than mutation are intended:
+
+```scheme
+(let* ((x1 (+ x 1))
+       (x2 (* x1 2)))
+  (f x1 x2))
+```
+
+| Form                    | Evaluation order intent                       | Portable reading                                  |
+| ----------------------- | --------------------------------------------- | ------------------------------------------------- |
+| `begin`                 | Explicit sequence                             | Use for ordered effects                           |
+| `let*`                  | Sequential binding                            | Use for dependent computations                    |
+| `and` / `or`            | Left-to-right short-circuit                   | Useful for guards                                 |
+| `if`                    | Test, then selected branch                    | Only one branch evaluated                         |
+| Ordinary procedure call | Arguments evaluated before call               | Do not rely casually on operand side-effect order |
+| `for-each`              | Used for ordered effects, details by standard | Prefer for side-effect traversal where specified  |
+
+**Common Pitfalls:** Do not hide multiple state changes inside arguments to an ordinary call. If order matters, write order explicitly. If order does not matter, avoid effects that make it appear to matter.
+
+### Primitive syntactic categories — a compact grammar intuition
+
+A full formal grammar is not needed here, but a source reader benefits from a compact syntax intuition.
+
+| Category           | Informal shape                     | Example                  |
+| ------------------ | ---------------------------------- | ------------------------ |
+| Literal expression | self-evaluating datum              | `42`, `"x"`, `#t`        |
+| Variable reference | identifier                         | `x`                      |
+| Quotation          | quote form or abbreviation         | `'x`, `(quote x)`        |
+| Conditional        | special conditional form           | `(if t a b)`             |
+| Procedure creation | lambda form                        | `(lambda (x) body ...)`  |
+| Assignment         | mutation form                      | `(set! x e)`             |
+| Definition         | binding form                       | `(define x e)`           |
+| Local binding      | `let` family                       | `(let ((x e)) body ...)` |
+| Sequencing         | `begin` or body                    | `(begin e1 e2)`          |
+| Application        | list form with operator expression | `(f a b)`                |
+| Macro use          | list form headed by syntax binding | `(when t body ...)`      |
+| Library form       | module-level form                  | `(define-library ... )`  |
+
+The hard part is not memorizing these categories. The hard part is deciding which category a form belongs to when the first identifier could be a macro, a special keyword, or a procedure binding.
+
+**Common Pitfalls:** Do not parse Scheme by visual intuition alone. Parse by binding role.
+
+### Syntax errors versus semantic errors — reader, expander, evaluator
+
+Scheme failures occur at different stages. Reading the error message well requires knowing which stage failed.
+
+| Failure layer               | Example                                      | What failed                               | Typical correction                                  |
+| --------------------------- | -------------------------------------------- | ----------------------------------------- | --------------------------------------------------- |
+| Reader error                | unbalanced parentheses                       | Text cannot become datums                 | Fix delimiters or lexical syntax                    |
+| Invalid datum               | malformed dotted list                        | Reader cannot construct intended object   | Fix external representation                         |
+| Expansion error             | bad macro use                                | Syntax transformer cannot match or expand | Fix macro syntax or imports                         |
+| Unbound identifier          | `x` has no binding                           | Environment lookup failed                 | Define/import/bind the name                         |
+| Wrong binding kind          | syntax used as value or value used as syntax | Syntactic/value layer mismatch            | Use correct abstraction                             |
+| Arity error                 | wrong number of arguments                    | Procedure application failed              | Match formal parameters                             |
+| Type error                  | `car` on non-pair                            | Runtime value category wrong              | Check predicates or representation                  |
+| Contract/precondition error | implementation/library-specific              | API expectation violated                  | Read library contract                               |
+| Portability error           | works in one Scheme only                     | Non-standard feature assumed              | Declare implementation or use SRFI/standard feature |
+
+Example:
+
+```scheme
+(car '())
+```
+
+This is not a reader error. It is a runtime error: `car` expects a pair, and the empty list is not a pair.
+
+Example:
+
+```scheme
+(+ 1
+```
+
+This is a reader error: the input is structurally incomplete.
+
+Example:
+
+```scheme
+(when #t 1)
+```
+
+This may fail if `when` has not been imported or defined in the current environment, depending on the standard and implementation context.
+
+**Professional rule:** Before fixing an error, classify the layer. Many bad fixes come from treating a runtime type problem as a syntax problem, or a missing import as a semantic problem.
+
+### Minimal portability markers — standard, SRFI, implementation
+
+A Scheme source file should be read with portability markers in mind.
+
+| Marker               | Meaning                            | Example cue                                        |
+| -------------------- | ---------------------------------- | -------------------------------------------------- |
+| R7RS library import  | Code targets R7RS library system   | `(import (scheme base))`                           |
+| R6RS library syntax  | Code targets R6RS ecosystem        | `(library ...)` style forms                        |
+| SRFI import          | Uses portable extension proposal   | `(srfi 1)`-style library names depending on system |
+| Chez-specific form   | Uses Chez extension                | Implementation documentation needed                |
+| Guile module form    | Uses Guile module system           | `(use-modules ...)`                                |
+| Chicken extension    | Uses Chicken eggs or forms         | Chicken-specific tooling                           |
+| Racket language line | Racket source, not baseline Scheme | `#lang racket`                                     |
+
+Racket files often begin with:
+
+```scheme
+#lang racket
+```
+
+That is not ordinary R7RS Scheme source. It is Racket’s language declaration mechanism.
+
+Guile code often uses forms such as:
+
+```scheme
+(use-modules ...)
+```
+
+That is Guile-specific module syntax, not the R7RS `define-library` model.
+
+**Common Pitfalls:** Do not call all parenthesized Lisp-family code “Scheme.” Racket, Common Lisp, Clojure, Emacs Lisp, Guile-specific Scheme, and R7RS Scheme may look similar but have different semantics, modules, libraries, and macro systems.
+
+### High-frequency primitive operation map — reading ordinary calls
+
+Part 2 should not become a full standard-library guide, but several ordinary calls appear so frequently that they belong in core syntax literacy.
+
+| Operation family   | Common procedures                              | Meaning                          | Pitfall                                      |
+| ------------------ | ---------------------------------------------- | -------------------------------- | -------------------------------------------- |
+| Arithmetic         | `+`, `-`, `*`, `/`                             | Numeric operations               | Exactness and arity matter                   |
+| Numeric comparison | `=`, `<`, `>`, `<=`, `>=`                      | Compare numbers                  | Not general equality                         |
+| Predicates         | `pair?`, `null?`, `number?`, `symbol?`         | Runtime category checks          | Predicate result does not create static type |
+| Pair/list          | `cons`, `car`, `cdr`, `list`                   | Construct/select linked data     | Empty list is not a pair                     |
+| List traversal     | `map`, `for-each`                              | Higher-order sequence operations | `map` for values, `for-each` for effects     |
+| Vector             | `vector`, `vector-ref`, `vector-set!`          | Indexed aggregate operations     | Mutation and bounds matter                   |
+| String             | `string`, `string-ref`, `string=?`             | Text operations                  | Characters are not strings                   |
+| Symbols            | `symbol?`, `symbol->string`, `string->symbol`  | Symbolic identifiers             | Symbol/string conversion has semantic cost   |
+| I/O                | `display`, `write`, `newline`, port procedures | Output/input                     | Human display and machine write differ       |
+| Control helpers    | `apply`, `call/cc`                             | Higher-order application/control | `apply` is not `eval`                        |
+
+Example distinction between `display` and `write`:
+
+```scheme
+(display "hello")
+(newline)
+(write "hello")
+(newline)
+```
+
+`display` is typically for human-oriented output. `write` is typically closer to external representation. Details belong in Part 6, but the distinction is important when reading code.
+
+**Common Pitfalls:** Do not assume a procedure’s name tells the whole story. `write`, `display`, exact arithmetic procedures, string operations, and vector mutation all have standard-specific and implementation-specific details worth checking.
+
+### Basic I/O syntax recognition — ports, `display`, `write`, `newline`
+
+Scheme I/O is port-centered. A port represents an input or output source/sink.
+
+Simple output:
+
+```scheme
+(display "hello")
+(newline)
+```
+
+Output to a specific port:
+
+```scheme
+(display "hello" output-port)
+```
+
+The exact APIs for opening files, closing ports, and managing resources belong in Part 5 and Part 6. At the syntax-reading level, recognize the common pattern:
+
+| Procedure shape            | Meaning                                       | Example            |
+| -------------------------- | --------------------------------------------- | ------------------ |
+| Output to current port     | Uses default current output port              | `(display x)`      |
+| Output to explicit port    | Second argument supplies port                 | `(display x port)` |
+| Machine-readable-ish write | Writes external representation where possible | `(write x)`        |
+| Human-oriented display     | Displays text more directly                   | `(display x)`      |
+| Line break                 | Writes newline                                | `(newline)`        |
+
+**Common Pitfalls:** Do not confuse printed output with returned value. `(display x)` is used for effect. Also do not assume port APIs are identical across all implementations beyond the standard subset being targeted.
+
+### Records and structured data syntax recognition — `define-record-type`
+
+Detailed data modeling belongs in Part 3, but source readers should recognize record definitions. R7RS-small includes a record mechanism through `define-record-type`.
+
+A representative shape:
+
+```scheme
+(define-record-type <point>
+  (make-point x y)
+  point?
+  (x point-x)
+  (y point-y))
+```
+
+This defines a record type, a constructor, a predicate, and accessors.
+
+| Component        | Example                                | Meaning                           |
+| ---------------- | -------------------------------------- | --------------------------------- |
+| Record type name | `<point>`                              | Name of record type descriptor    |
+| Constructor      | `(make-point x y)`                     | Procedure for constructing points |
+| Predicate        | `point?`                               | Tests whether value is a point    |
+| Field accessor   | `(x point-x)`                          | Field and accessor                |
+| Field mutator    | implementation/record syntax dependent | Allows mutation where specified   |
+
+Use:
+
+```scheme
+(define p (make-point 3 4))
+
+(point? p)
+
+(point-x p)
+```
+
+Records matter because they are often better than raw lists for domain data. A point represented as `'(3 4)` is compact but ambiguous. A record communicates intent.
+
+**Common Pitfalls:** Do not model all structured data as lists merely because lists are easy. Lists are good for sequences and symbolic expressions. Records are better for named fields and domain concepts.
+
+### Syntax as contract — what Part 2 establishes for later parts
+
+The Part 2 syntax contract is now strong enough to support the later reference parts:
+
+| Later part                               | What Part 2 prepares                                                                                |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| PART 3 — Data, Types, and Modeling       | Distinguishing symbols, lists, pairs, vectors, records, predicates, equality, absence, and mutation |
+| PART 4 — Control, Functions, Abstraction | Understanding procedure values, `lambda`, closures, tail calls, macros, `apply`, and `call/cc`      |
+| PART 5 — Modules, Errors, Resources      | Recognizing `import`, `define-library`, `error`, ports, sequencing, and boundaries                  |
+| PART 6 — Standard Library and Ecosystem  | Reading ordinary calls, SRFI-dependent procedures, I/O, collections, and implementation APIs        |
+| PART 7 — Runtime and Semantics           | Understanding evaluation, environments, tail position, mutation, allocation, and expansion layers   |
+
+The central source-reading rule remains:
+
+**A Scheme form should be read by layer: reader datum, syntactic form, macro expansion, variable binding, procedure value, runtime data, or implementation-specific behavior.**
+
+That rule is the foundation for everything that follows in the tutorial contract. 
+## PART 3 — Data, Types, and Modeling Reference by Task Pattern
+
+### Orientation — dynamic values, representation discipline, runtime predicates, invariants
+
+Part 3 is organized by **data-modeling tasks**, not by a mechanical list of Scheme data types. This follows the tutorial contract’s requirement that the guide connect practical data modeling to Scheme’s type system, data model, validation boundaries, conversion mechanisms, and common failure modes. 
+
+Scheme is dynamically typed. This means values have runtime categories, but ordinary variable bindings do not carry static type annotations. A binding such as `x` may hold a number now, a list later, or a procedure after reassignment if mutation is used. The language will check operations at runtime: `(+ 1 "x")` is not accepted as sensible arithmetic merely because Scheme is dynamic. But the core language will not statically prove that `x` is always a number.
+
+The professional implication is that Scheme data modeling relies on **representation discipline**. A program must decide how a domain concept is represented, which predicates recognize valid values, which constructors create valid values, which module boundaries hide representation details, and which equality predicates compare values correctly.
+
+| Modeling concern        | Scheme’s core support                                       | What Scheme does not automatically provide | Professional response                                           |
+| ----------------------- | ----------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------- |
+| Runtime type categories | Predicates such as `number?`, `pair?`, `symbol?`, `vector?` | Static type narrowing                      | Check predicates at boundaries and design clear representations |
+| Structured data         | Pairs, lists, vectors, strings, bytevectors, records        | Exhaustive algebraic data checking         | Use records, tags, predicates, and constructors                 |
+| Optional values         | Often `#f`, empty list, or custom representation            | Built-in `Option` type                     | Choose a convention and document it                             |
+| Finite states           | Symbols, records, or tagged data                            | Enum type in the core language             | Use symbolic tags carefully                                     |
+| Domain invariants       | Constructors and predicates                                 | Compile-time invariant enforcement         | Keep raw constructors private where possible                    |
+| Unknown external data   | Runtime validation                                          | Automatic schema checking                  | Validate at trust boundaries                                    |
+| Reusable abstractions   | Procedures and macros                                       | Static generics                            | Use higher-order procedures and representation-independent APIs |
+| Equality                | Multiple equality predicates                                | One universal equality operator            | Choose equality by semantic intent                              |
+
+The central rule for Part 3 is:
+
+**In Scheme, a data model is not just a shape of values. It is a convention plus constructors, predicates, accessors, equality rules, mutation rules, and boundary checks.**
+
+### Type-system properties — dynamic typing, strong runtime checks, no core static guarantees
+
+Before modeling data, the major type-system terms must be disambiguated.
+
+**Dynamic typing** means runtime values are checked when operations need them. It does not mean values are untyped.
+
+**Static typing** means a compiler or type checker assigns and checks types before execution. Core Scheme is not statically typed in this sense.
+
+**Strong typing** is ambiguous. In one sense, Scheme is “strong” because operations generally do not silently reinterpret arbitrary values. In another sense, Scheme is not “strong” if the phrase means extensive compile-time proof of program properties.
+
+**Type safety** is also ambiguous. Scheme prevents many invalid operations by runtime checks, but it does not statically prevent all wrong-type calls before execution. Implementation-specific FFI or unsafe features may cross into less safe territory.
+
+| Property                        | Scheme’s position                                  | Practical consequence                 | Common misunderstanding                       |
+| ------------------------------- | -------------------------------------------------- | ------------------------------------- | --------------------------------------------- |
+| Dynamic typing                  | Values are checked at runtime                      | Flexible code and late errors         | “Dynamic” does not mean “no types”            |
+| Lexical scope                   | Bindings resolved by source structure              | Closures are predictable              | Not the same as static typing                 |
+| Runtime predicates              | Values can be classified dynamically               | Enables validation and defensive code | Predicate checks are not compile-time proofs  |
+| No core parametric static types | No built-in generic type variables like ML/Haskell | Generic procedures are value-level    | Do not expect compiler-enforced element types |
+| No core ADTs                    | No built-in sum/product type system like ML/Rust   | Model variants manually               | Exhaustiveness is programmer discipline       |
+| Managed memory                  | Runtime handles allocation/deallocation            | Safer ordinary memory use             | FFI and mutation still require care           |
+| Macro hygiene                   | Syntax can preserve binding discipline             | Safer syntactic abstraction           | Hygiene does not enforce domain invariants    |
+
+Example:
+
+```scheme
+(define (square x)
+  (* x x))
+```
+
+This procedure assumes `x` is numeric. Scheme does not statically enforce that assumption. At runtime, if `x` is not accepted by `*`, an error occurs.
+
+A defensive version:
+
+```scheme
+(define (square x)
+  (if (number? x)
+      (* x x)
+      (error "square: expected a number")))
+```
+
+This turns an implicit representation assumption into an explicit boundary check.
+
+**Failure-first explanation:**
+The tempting but wrong mental model is: “Since Scheme is dynamically typed, type design is less important.” The surprising failure appears when a large codebase passes lists, symbols, `#f`, or records through generic-looking procedures and fails far from the original mistake. The correct semantic explanation is that dynamic typing moves many checks to runtime; it does not remove the need for invariants. The professional rule is: **make representation invariants explicit at constructors, predicates, and module boundaries**. The boundary changes when using typed Scheme-family systems or external contract systems, but core Scheme remains dynamically checked.
+
+### Data-modeling decision table — choosing the representation
+
+Scheme gives several primitive and derived representation tools. Choosing among them is a design decision.
+
+| Task                       | Best Scheme representation                                   | When to use                              | Design meaning                      | Common pitfall                           |
+| -------------------------- | ------------------------------------------------------------ | ---------------------------------------- | ----------------------------------- | ---------------------------------------- |
+| Sequential symbolic data   | Proper list                                                  | Recursive traversal, S-expressions       | Shape mirrors recursive structure   | Using list for random access             |
+| Pair of two related values | Pair or record                                               | Temporary pair, association entry        | Minimal compound value              | Raw `car` / `cdr` obscures meaning       |
+| Fixed indexed collection   | Vector                                                       | Indexed access, table-like data          | Position matters                    | Losing field names                       |
+| Raw bytes                  | Bytevector                                                   | Binary data, encoded I/O                 | Byte-level representation           | Confusing bytes with characters          |
+| Text                       | String                                                       | Human text, names, messages              | Character sequence                  | Confusing strings with symbols           |
+| Symbolic tag               | Symbol                                                       | Finite symbolic states                   | Identity-like symbolic marker       | Treating symbol as user text             |
+| Domain object              | Record                                                       | Named fields, constructor, predicate     | Representation has concept identity | Using lists because they are shorter     |
+| Optional result            | `#f` or tagged/record option                                 | Search failure, maybe-value              | Absence convention                  | Failing when `#f` is valid data          |
+| Variant value              | Tagged list, symbol, record variants                         | Finite alternatives                      | Manual sum type                     | No exhaustiveness checking               |
+| Environment/map            | Association list, hash table via library/SRFI/implementation | Small maps or implementation-backed maps | Key-value lookup                    | Linear lookup cost for large maps        |
+| Procedure behavior         | Closure                                                      | Behavior with captured environment       | Function plus context               | Hidden mutable state                     |
+| Syntax abstraction         | Macro                                                        | New control or binding form              | Expansion-time transformation       | Using macros for value-level abstraction |
+
+The main professional mistake is using lists for every data model. Lists are central, but they are not universal. A list is ideal when the operations are naturally recursive: take the first element, process the rest, stop at empty. A record is better when the data has named fields. A vector is better when indexed access matters. A symbol is better for a symbolic tag. A string is better for text.
+
+### Model structured data — records, lists, pairs, vectors, closures
+
+Structured data can be modeled several ways in Scheme. Each choice communicates different assumptions.
+
+A raw list representation:
+
+```scheme
+(define p '(3 4))
+
+(car p)
+(cadr p)
+```
+
+This is compact but weakly communicative. Is this a point, a range, a rational-like pair, a screen coordinate, or something else?
+
+A pair representation:
+
+```scheme
+(define p (cons 3 4))
+
+(car p)
+(cdr p)
+```
+
+This makes the two-field structure slightly more direct but still lacks field names.
+
+A record representation:
+
+```scheme
+(define-record-type <point>
+  (make-point x y)
+  point?
+  (x point-x)
+  (y point-y))
+
+(define p (make-point 3 4))
+
+(point-x p)
+(point-y p)
+```
+
+The record representation communicates the domain concept. It gives a constructor, predicate, and accessors.
+
+| Representation | Strength                            | Cost                                     | Best use                                  | Failure mode                         |
+| -------------- | ----------------------------------- | ---------------------------------------- | ----------------------------------------- | ------------------------------------ |
+| Raw list       | Lightweight, easy literal syntax    | Positional fields, weak invariants       | Symbolic data, simple temporary sequences | Misread fields, malformed length     |
+| Pair           | Minimal two-field compound          | `car` / `cdr` names are generic          | Association entries, cons structures      | Dotted/proper-list confusion         |
+| Vector         | Indexed access                      | Positional fields, less symbolic clarity | Tables, fixed-size indexed data           | Magic indices                        |
+| Record         | Named concept, predicate, accessors | More syntax, standard differences matter | Domain entities                           | Leaking constructor/accessor details |
+| Closure        | Encapsulates behavior and state     | Harder to inspect structurally           | Stateful behavior, abstract objects       | Hidden mutation and unclear equality |
+
+A better point model uses a record or an abstract constructor/accessor API:
+
+```scheme
+(define-record-type <point>
+  (make-point x y)
+  point?
+  (x point-x)
+  (y point-y))
+
+(define (point-distance-from-origin p)
+  (sqrt (+ (* (point-x p) (point-x p))
+           (* (point-y p) (point-y p)))))
+```
+
+**Design meaning:** Records are Scheme’s way to move beyond unstructured list programming. They are not the only structured-data mechanism, and their exact syntax/features vary across standards and implementations, but the modeling principle is stable: give domain data a recognizable representation.
+
+**Common Pitfalls:** Do not use `'(3 4)` as a domain object in public APIs unless the positional meaning is conventional and documented. Do not expose raw list representation if later migration to records or another structure is likely.
+
+### Model domain concepts — constructor, predicate, accessor, invariant
+
+A robust Scheme domain model usually has four pieces:
+
+| Component        | Purpose             | Example                   |
+| ---------------- | ------------------- | ------------------------- |
+| Constructor      | Builds valid values | `make-point`              |
+| Predicate        | Recognizes values   | `point?`                  |
+| Accessors        | Read fields         | `point-x`, `point-y`      |
+| Invariant checks | Reject invalid data | coordinate must be number |
+
+A record alone may not validate invariants. A validating constructor can enforce domain rules:
+
+```scheme
+(define-record-type <point>
+  (raw-make-point x y)
+  point?
+  (x point-x)
+  (y point-y))
+
+(define (make-point x y)
+  (if (and (number? x) (number? y))
+      (raw-make-point x y)
+      (error "make-point: expected numeric coordinates")))
+```
+
+The public constructor is `make-point`; the raw constructor should ideally remain private to the module or local scope. This pattern matters because Scheme’s core type system will not prevent someone from constructing invalid data if raw constructors are exposed.
+
+| Design choice             | Capability gained         | Cost introduced             | Professional rule                          |
+| ------------------------- | ------------------------- | --------------------------- | ------------------------------------------ |
+| Raw records               | Simple construction       | Invariants can be bypassed  | Fine for internal trivial data             |
+| Validating constructor    | Centralized checks        | More boilerplate            | Use for public domain objects              |
+| Predicate-only validation | Flexible checks           | Can be forgotten by callers | Good at trust boundaries, not enough alone |
+| Abstract accessors        | Representation can change | More indirection            | Use for stable APIs                        |
+| Exposed raw list/vector   | Very lightweight          | Weak maintainability        | Avoid for public domain concepts           |
+
+**Failure-first explanation:**
+The tempting model is: “A record definition gives me a safe domain type.” The bug appears when invalid records are constructed because the raw constructor accepts structurally correct but semantically invalid values. The correct explanation is that Scheme records provide structure and recognition, not necessarily full domain validation. The professional rule is: **separate raw representation from validated construction**. The boundary changes for purely internal code where all call sites are controlled.
+
+### Choose collections — list, vector, string, bytevector, alist, implementation map
+
+Scheme’s collection choice should follow the intended operations.
+
+| Task                     | Preferred collection                | Why                                 | Common mistake                                  |
+| ------------------------ | ----------------------------------- | ----------------------------------- | ----------------------------------------------- |
+| Recursive traversal      | List                                | Natural `car` / `cdr` decomposition | Using vector then manually indexing recursively |
+| Prepending elements      | List                                | `cons` is efficient                 | Appending repeatedly to end                     |
+| Random access by index   | Vector                              | Direct indexed access               | Using repeated `list-ref`                       |
+| Text processing          | String                              | Represents character sequence       | Treating string as symbol                       |
+| Binary data              | Bytevector                          | Represents bytes                    | Treating bytes as characters                    |
+| Small key-value mapping  | Alist                               | Simple, inspectable, symbolic       | Using for large maps                            |
+| Larger key-value mapping | Hash table from SRFI/implementation | Better lookup behavior              | Assuming a portable hash API without imports    |
+| Stack-like accumulation  | List                                | `cons` then maybe `reverse`         | Using mutation-heavy append loops               |
+| Fixed-field domain data  | Record                              | Named fields                        | Magic list/vector positions                     |
+
+Lists are linked structures. Prepending is natural:
+
+```scheme
+(cons x xs)
+```
+
+Appending to the end repeatedly is often inefficient because it traverses the list:
+
+```scheme
+(append xs (list x))
+```
+
+For accumulation, the idiom is often to `cons` onto the front and reverse once:
+
+```scheme
+(define (map* f xs)
+  (let loop ((xs xs)
+             (acc '()))
+    (if (null? xs)
+        (reverse acc)
+        (loop (cdr xs)
+              (cons (f (car xs)) acc)))))
+```
+
+Vectors are preferable when indexing is central:
+
+```scheme
+(define v (vector 10 20 30))
+
+(vector-ref v 1)
+```
+
+Association lists are readable and simple:
+
+```scheme
+(define env
+  '((x . 10)
+    (y . 20)))
+
+(assoc 'x env)
+```
+
+But they are linear search structures. For many keys or frequent lookup, an implementation or SRFI hash table may be better.
+
+**Common Pitfalls:** Do not choose collections by syntax convenience alone. Choose by operation: recursive traversal, indexed access, key lookup, mutation, textual processing, binary processing, or domain abstraction.
+
+### Represent optional or missing values — `#f`, empty list, tagged option
+
+Scheme often uses `#f` to represent failure or absence. This works because only `#f` is false in conditionals.
+
+Example:
+
+```scheme
+(define found (assoc 'x env))
+
+(if found
+    (cdr found)
+    'missing)
+```
+
+This is compact, but it has a limitation: `#f` cannot safely represent absence if `#f` is also a valid value.
+
+| Absence representation | Example                                  | Use when                            | Risk                           |
+| ---------------------- | ---------------------------------------- | ----------------------------------- | ------------------------------ |
+| `#f` as failure        | `(assoc key alist)` returns pair or `#f` | Non-`#f` value always means success | Fails if `#f` is valid payload |
+| Empty list             | `'()`                                    | Absence means empty sequence        | Not false in conditionals      |
+| Tagged list            | `'(none)` / `(list 'some value)`         | Need explicit option-like structure | Manual checking                |
+| Pair wrapper           | `(cons 'some value)`                     | Simple presence marker              | Ad hoc unless standardized     |
+| Record option          | `make-some`, `make-none`                 | Larger programs, clearer invariants | More code                      |
+| Multiple values        | `(values found? value)`                  | Immediate decomposition             | Not durable as data            |
+
+A tagged option model:
+
+```scheme
+(define none '(none))
+
+(define (some x)
+  (list 'some x))
+
+(define (some? x)
+  (and (pair? x)
+       (eq? (car x) 'some)))
+
+(define (none? x)
+  (eq? x none))
+```
+
+A multiple-value result:
+
+```scheme
+(define (lookup key alist)
+  (let ((result (assoc key alist)))
+    (if result
+        (values #t (cdr result))
+        (values #f #f))))
+```
+
+A caller can receive the result:
+
+```scheme
+(call-with-values
+  (lambda () (lookup 'x env))
+  (lambda (found? value)
+    (if found?
+        value
+        'missing)))
+```
+
+This separates the success flag from the payload.
+
+**Failure-first explanation:**
+The tempting model is: “Return `#f` when not found.” The bug appears when a key is present and its associated value is actually `#f`. The correct explanation is that `#f` has been overloaded as both a value and an absence marker. The professional rule is: **use `#f` for absence only when `#f` cannot be valid payload data**. The boundary changes when the API convention is already established, such as common association-list search procedures.
+
+### Model finite states — symbols, predicates, case dispatch, tagged records
+
+Finite states are often represented by symbols:
+
+```scheme
+(define status 'pending)
+```
+
+Dispatch can use `case`:
+
+```scheme
+(case status
+  ((pending) 'wait)
+  ((running) 'continue)
+  ((done) 'finish)
+  (else (error "unknown status")))
+```
+
+Symbols are convenient because they are readable, interned, and naturally used as tags. But symbols alone do not enforce that only valid states appear.
+
+| State representation  | Example                | Strength                     | Weakness                       |
+| --------------------- | ---------------------- | ---------------------------- | ------------------------------ |
+| Symbol                | `'pending`             | Simple, readable             | No automatic validity checking |
+| Symbol plus predicate | `status?`              | Validates allowed states     | Must be called                 |
+| Tagged list           | `'(state pending)`     | More structure               | Still manually checked         |
+| Record variants       | different record types | Stronger runtime recognition | More syntax                    |
+| Procedure dispatch    | closure behavior       | Encapsulates state behavior  | Harder to inspect              |
+
+A validation predicate:
+
+```scheme
+(define (status? x)
+  (or (eq? x 'pending)
+      (eq? x 'running)
+      (eq? x 'done)))
+```
+
+A checked transition:
+
+```scheme
+(define (next-status s)
+  (case s
+    ((pending) 'running)
+    ((running) 'done)
+    ((done) 'done)
+    (else (error "next-status: invalid status"))))
+```
+
+**Design meaning:** Symbolic state is idiomatic for small finite domains, but state validity is not statically enforced. The code must define what states exist and what transitions are valid.
+
+**Common Pitfalls:** Do not let arbitrary symbols leak into stateful APIs. Do not omit the `else` branch when invalid data should be rejected. Do not use strings for internal finite states unless the states are genuinely external text.
+
+### Model variants — tagged data and manual sum types
+
+Scheme does not have core algebraic data types like ML, Haskell, or Rust. Variant modeling is manual.
+
+A common pattern is a tag in the first position:
+
+```scheme
+(define (make-circle radius)
+  (list 'circle radius))
+
+(define (make-rectangle width height)
+  (list 'rectangle width height))
+```
+
+Predicates:
+
+```scheme
+(define (circle? x)
+  (and (pair? x)
+       (eq? (car x) 'circle)))
+
+(define (rectangle? x)
+  (and (pair? x)
+       (eq? (car x) 'rectangle)))
+```
+
+Dispatch:
+
+```scheme
+(define (area shape)
+  (case (car shape)
+    ((circle)
+     (let ((r (cadr shape)))
+       (* 3.141592653589793 r r)))
+    ((rectangle)
+     (let ((w (cadr shape))
+           (h (caddr shape)))
+       (* w h)))
+    (else
+     (error "area: unknown shape"))))
+```
+
+This works but is fragile because malformed lists can pass partial checks. A safer version checks shape more carefully or uses records.
+
+| Variant model                | Strength                               | Cost                                | Best use                                |
+| ---------------------------- | -------------------------------------- | ----------------------------------- | --------------------------------------- |
+| Symbol alone                 | Minimal                                | No payload                          | Simple state                            |
+| Tagged list                  | Compact and readable                   | Positional payload, weak validation | Small interpreters, symbolic data       |
+| Tagged vector                | Efficient indexed payload              | Magic indices                       | Internal performance-sensitive variants |
+| Record per variant           | Clear runtime predicates and accessors | More definitions                    | Domain APIs                             |
+| Closure/object-like dispatch | Encapsulates behavior                  | Less transparent data               | Behavior-centric models                 |
+| Macro-defined variants       | Reduces boilerplate                    | Macro complexity                    | Repeated variant modeling patterns      |
+
+Record-based variants:
+
+```scheme
+(define-record-type <circle>
+  (make-circle radius)
+  circle?
+  (radius circle-radius))
+
+(define-record-type <rectangle>
+  (make-rectangle width height)
+  rectangle?
+  (width rectangle-width)
+  (height rectangle-height))
+
+(define (area shape)
+  (cond
+    ((circle? shape)
+     (let ((r (circle-radius shape)))
+       (* 3.141592653589793 r r)))
+    ((rectangle? shape)
+     (* (rectangle-width shape)
+        (rectangle-height shape)))
+    (else
+     (error "area: unknown shape"))))
+```
+
+**Failure-first explanation:**
+The tempting model is: “A tagged list is basically an algebraic data type.” The bug appears when malformed data such as `'(circle)` or `'(rectangle 3)` reaches a function that blindly uses `cadr` or `caddr`. The correct explanation is that tagged lists encode variants by convention; the language does not enforce constructor completeness or pattern-match exhaustiveness. The professional rule is: use tagged lists for local symbolic representations and records or validated constructors for public domain variants. The boundary changes in macro-based systems that generate constructors, predicates, and matchers.
+
+### Constrain input — predicates, guards, validating constructors
+
+Because Scheme checks many things at runtime, input constraints should be explicit.
+
+A simple constrained function:
+
+```scheme
+(define (reciprocal x)
+  (cond
+    ((not (number? x))
+     (error "reciprocal: expected number"))
+    ((= x 0)
+     (error "reciprocal: zero is invalid"))
+    (else
+     (/ 1 x))))
+```
+
+A constrained constructor:
+
+```scheme
+(define-record-type <non-empty-list>
+  (raw-make-non-empty-list xs)
+  non-empty-list?
+  (xs non-empty-list-xs))
+
+(define (make-non-empty-list xs)
+  (if (and (list? xs) (pair? xs))
+      (raw-make-non-empty-list xs)
+      (error "make-non-empty-list: expected non-empty proper list")))
+```
+
+| Constraint task        | Scheme mechanism                      | Example                      | Caveat                                     |
+| ---------------------- | ------------------------------------- | ---------------------------- | ------------------------------------------ |
+| Check runtime category | Predicate                             | `number?`, `list?`           | Does not check semantic range              |
+| Check finite set       | Symbol predicate                      | `status?`                    | Must be maintained with states             |
+| Check structural shape | `pair?`, `null?`, recursive predicate | tree validation              | Can be costly                              |
+| Check numeric range    | Comparisons                           | `(<= 0 x 100)`               | Exact/inexact issues may matter            |
+| Check domain object    | Record predicate                      | `point?`                     | Constructor may still allow invalid fields |
+| Check external data    | Parser/validator                      | JSON/S-expression validation | Requires boundary design                   |
+
+A recursive structural predicate:
+
+```scheme
+(define (list-of-numbers? xs)
+  (cond
+    ((null? xs) #t)
+    ((pair? xs)
+     (and (number? (car xs))
+          (list-of-numbers? (cdr xs))))
+    (else #f)))
+```
+
+This checks that a value is a proper list and that every element is a number.
+
+**Common Pitfalls:** Do not check only the outer shape. `(pair? xs)` does not mean `xs` is a proper list. `(list? xs)` does not mean every element has the expected type. A domain predicate should check the actual invariant needed by the later code.
+
+### Validate external or unknown data — trust boundaries, parsing, normalization
+
+External data is data from files, networks, users, command-line arguments, environment variables, FFI, databases, or untrusted modules. Scheme’s dynamic typing makes validation especially important at these boundaries.
+
+A safe boundary usually has four stages:
+
+| Stage     | Purpose                            | Scheme pattern                               |
+| --------- | ---------------------------------- | -------------------------------------------- |
+| Read      | Obtain raw data                    | port/file/string/network API                 |
+| Parse     | Convert raw representation         | reader, parser, library                      |
+| Validate  | Check shape and domain constraints | predicates and recursive checks              |
+| Normalize | Convert to internal representation | records, symbols, numbers, canonical strings |
+
+For example, suppose external symbolic data is expected to represent a command:
+
+```scheme
+'(resize 800 600)
+```
+
+A validator:
+
+```scheme
+(define (resize-command? x)
+  (and (list? x)
+       (= (length x) 3)
+       (eq? (car x) 'resize)
+       (integer? (cadr x))
+       (integer? (caddr x))
+       (> (cadr x) 0)
+       (> (caddr x) 0)))
+```
+
+A normalized representation:
+
+```scheme
+(define-record-type <resize-command>
+  (make-resize-command width height)
+  resize-command?
+  (width resize-command-width)
+  (height resize-command-height))
+
+(define (parse-resize-command x)
+  (if (resize-command? x)
+      (make-resize-command (cadr x) (caddr x))
+      (error "parse-resize-command: invalid command")))
+```
+
+This separates external shape from internal representation. The external input is a list; the internal value is a record.
+
+| Boundary mistake                            | Consequence                               | Better practice                               |
+| ------------------------------------------- | ----------------------------------------- | --------------------------------------------- |
+| Trusting external list shape                | `car` / `cadr` errors                     | Check proper list and length                  |
+| Trusting numeric fields                     | arithmetic errors or invalid domain state | Check `integer?`, range, exactness if needed  |
+| Using external strings as internal states   | typo-prone comparisons                    | Normalize to symbols or records               |
+| Passing raw external data deep into program | errors far from boundary                  | Validate once near entry                      |
+| Over-validating repeatedly                  | code noise and cost                       | Validate at boundary, then preserve invariant |
+| Using `eval` on external data               | severe safety risk                        | Parse data, not code                          |
+
+**Common Pitfalls:** Do not use `eval` to process external data. Do not treat a readable S-expression as safe executable Scheme. Reading data and evaluating code are different operations with radically different safety consequences.
