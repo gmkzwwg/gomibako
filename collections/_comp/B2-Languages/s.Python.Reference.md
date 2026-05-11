@@ -21512,15 +21512,14 @@ Extract tasks from the user's note.
 
 Return only JSON with this shape:
 
-{{
+{
   "tasks": [
-    {{
-      "title": "string",
+    {      "title": "string",
       "priority": "low" | "normal" | "high",
       "due_date": "string or null"
-    }}
+    }
   ]
-}}
+}
 
 Rules:
 - Do not include prose outside JSON.
