@@ -7,6 +7,7 @@ layout: slide-multilingual
 
 ## English
 
+Timeline:
 * 12th–early 14th century
 
   * **The feudal problem of English lands in France becomes a structural cause of war**

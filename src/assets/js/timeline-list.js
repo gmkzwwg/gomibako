@@ -30,7 +30,7 @@
   var DEFAULT_CONFIG = {
     selector: ".post-content", // Default content container selector.
     autoApply: true, // Apply automatically after script loading.
-    markerPattern: /^timeline:\s*$/i, // Marker text placed immediately before a list.
+    markerPattern: /^(?:timelines?|时间线|时间轴)\s*[:：]\s*$/i, // Marker text placed immediately before a list.
     styleId: "jekyll-timeline-styles", // Injected style element ID.
     instanceClass: "jtimeline", // Root class for generated timelines.
     fallbackTitlePrefix: "Unknown ", // Prefix used when an event title is empty.
@@ -824,7 +824,15 @@
 
     apply(activeConfig.selector);
   }
+  function bindRenderedContentListener() {
+    document.addEventListener('content:rendered', function (event) {
+      var container = event.detail && event.detail.container;
 
+      if (!container || container.nodeType !== 1) return;
+
+      apply(container);
+    });
+  }
   activeConfig = normalizeConfig(DEFAULT_CONFIG);
 
   window.JekyllTimeline = {
@@ -834,6 +842,8 @@
     getConfig: getConfig,
     defaults: merge({}, DEFAULT_CONFIG)
   };
+
+  bindRenderedContentListener();
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onReady, { once: true });

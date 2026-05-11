@@ -645,7 +645,16 @@
 
     body.appendChild(list);
   }
+function notifyContentRendered(container) {
+  if (!container) return;
 
+  document.dispatchEvent(new CustomEvent('content:rendered', {
+    detail: {
+      container: container,
+      source: 'jsd-linear-slides'
+    }
+  }));
+}
   function renderCurrent() {
     const slide = state.slides[state.currentIndex];
     if (!slide || !state.dom.root) return;
@@ -680,6 +689,8 @@
     state.dom.heading = heading;
     state.dom.body = body;
     renderMenu();
+
+    notifyContentRendered(body);
   }
 
   function normalizeIndex(index) {

@@ -160,6 +160,8 @@ Valid modes: list | chart | compact | false | nil
   {% endif %}
 
   <!-- [[FUNCTION ENHANCEMENT]] -->
+  <!-- TIMELINE -->
+  <script src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>
   <!-- ANTI-COPY -->
   {% if page.anticopy == true %}
   <script defer src="{{ '/src/assets/js/anticopy.js' | relative_url }}"></script>
@@ -180,9 +182,7 @@ Valid modes: list | chart | compact | false | nil
   <script defer src="{{ '/src/assets/js/image-viewer.js' | relative_url }}"></script>
   <!-- CODE BLOCK ENHANCEMENT -->
   <script defer src="{{ '/src/assets/js/code-block-enhancement.js' | relative_url }}"></script>
-  <!-- TIMELINE -->
-  <script defer src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>
-
+ 
   <!-- [LAYOUT SPECIFIC] -->
   <!-- BILINGUAL MODE -->
   {% if bilingual_mode_enabled %}
