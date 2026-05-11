@@ -2,7 +2,7 @@
 title: The Hundred Years' War
 categories: Chron
 subclass: European History
-layout: post-multilingual
+layout: slide-multilingual
 ---
 
 ## English

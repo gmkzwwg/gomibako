@@ -2,7 +2,7 @@
 title: Napoleon Bonaparte
 categories: Chron
 subclass: European History
-layout: post-multilingual
+layout: slide-multilingual
 ---
 
 ## English

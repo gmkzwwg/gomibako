@@ -35,7 +35,6 @@
 {% endif %}
 
 {% assign main_css_url = "/src/assets/css/main.css" | relative_url | append: asset_version_query %}
-{% assign main_js_url = "/src/assets/js/main.js" | relative_url | append: asset_version_query %}
 {% assign sjcl_js_url = "/src/assets/js/sjcl.js" | relative_url | append: asset_version_query %}
 {% assign favicon_url = "/src/assets/img/rubbish.png" | relative_url | append: asset_version_query %}
 
@@ -62,8 +61,6 @@
 <link rel="shortcut icon" href="{{ favicon_url }}" type="image/x-icon">
 
 <link rel="stylesheet" href="{{ main_css_url }}" type="text/css">
-
-<script defer src="{{ main_js_url }}"></script>
 
 {% if encrypted_text_enabled %}
   <script defer src="{{ sjcl_js_url }}"></script>
