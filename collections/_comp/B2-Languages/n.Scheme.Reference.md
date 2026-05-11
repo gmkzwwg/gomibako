@@ -11,9 +11,9 @@ subclass: Languages
 
 **Density strategy:** adaptive — Scheme has a small surface syntax but a deep semantic, macro, portability, and implementation model, so the guide will be compact on ordinary syntax and deeper on evaluation, binding, macros, data representation, standards, and implementation boundaries.
 
-This tutorial targets **Scheme** as a professional Lisp-family language, using **R7RS-small** as the portable semantic baseline and **Chez Scheme** as the main practical reference implementation when an implementation must be named. The reason is not that Chez is “the only real Scheme,” but that serious Scheme explanation needs both a standard baseline and a concrete implementation anchor. The R7RS site describes the seventh revision as divided into a small language for embedding, education, and research, and a large language intended to address broader practical software-development needs. ([r7rs.org][1]) Chez Scheme is an open-source Scheme implementation with its own supporting tools and documentation, making it a reasonable implementation reference point. ([GitHub][2])
+This tutorial targets **Scheme** as a professional Lisp-family language, using **R7RS-small** as the portable semantic baseline and **Chez Scheme** as the main practical reference implementation when an implementation must be named. The reason is not that Chez is “the only real Scheme,” but that serious Scheme explanation needs both a standard baseline and a concrete implementation anchor. The R7RS site describes the seventh revision as divided into a small language for embedding, education, and research, and a large language intended to address broader practical software-development needs.  Chez Scheme is an open-source Scheme implementation with its own supporting tools and documentation, making it a reasonable implementation reference point. 
 
-The guide will also discuss **R6RS**, **R7RS-large**, **SRFIs**, and major implementations such as **Guile**, **Gambit**, **Chicken**, **MIT/GNU Scheme**, **Gauche**, and **Racket** when their differences matter. SRFI is especially important because the SRFI process exists to extend Scheme with portable, useful libraries and additions across implementations. ([Scheme Requests for Implementation][3]) Racket will be treated as an adjacent Scheme-descended language and a major language-oriented-programming reference point, not as the baseline for Scheme itself; Racket’s own site explicitly frames it as a language for making languages. ([Racket][4])
+The guide will also discuss **R6RS**, **R7RS-large**, **SRFIs**, and major implementations such as **Guile**, **Gambit**, **Chicken**, **MIT/GNU Scheme**, **Gauche**, and **Racket** when their differences matter. SRFI is especially important because the SRFI process exists to extend Scheme with portable, useful libraries and additions across implementations.  Racket will be treated as an adjacent Scheme-descended language and a major language-oriented-programming reference point, not as the baseline for Scheme itself; Racket’s own site explicitly frames it as a language for making languages. 
 
 This part follows the requested tutorial contract: Scheme must be taught as a coherent design system, not as a shallow syntax list. 
 
@@ -29,7 +29,7 @@ A concise first definition is:
 
 > Scheme is a small, lexically scoped, properly tail-recursive Lisp dialect designed to make abstraction, evaluation, and program structure unusually explicit.
 
-The R7RS report characterizes Scheme as a statically scoped and properly tail-recursive dialect of Lisp. Here, **statically scoped** means *lexically scoped*, not statically typed. Scheme is dynamically typed, but binding resolution is determined by the program’s lexical structure. ([Scheme Standards][5])
+The R7RS report characterizes Scheme as a statically scoped and properly tail-recursive dialect of Lisp. Here, **statically scoped** means *lexically scoped*, not statically typed. Scheme is dynamically typed, but binding resolution is determined by the program’s lexical structure. 
 
 ### The problem Scheme was designed to solve — abstraction with a small semantic core
 
@@ -205,7 +205,7 @@ Scheme is best understood by comparison, but comparisons often mislead if they f
 | JavaScript                 | First-class functions, closures, dynamic typing       | JavaScript has prototype objects, web ecosystem, async conventions                    | Importing JS object and callback habits directly                     | Scheme closures are central, but object and async models are implementation-specific |
 | Lisp interpreter textbooks | Shared `eval` / `apply` intuition                     | Real Scheme includes standards, libraries, macros, modules, implementation behavior   | Thinking textbook evaluators equal production Scheme                 | Use evaluator models as semantic lenses, not complete engineering models             |
 
-Racket deserves special care. Racket’s own description as a language for making languages makes it central for understanding modern language-oriented programming, but this guide will not collapse Scheme into Racket. ([Racket][4])
+Racket deserves special care. Racket’s own description as a language for making languages makes it central for understanding modern language-oriented programming, but this guide will not collapse Scheme into Racket. 
 
 ### Interdisciplinary lens map — lambda calculus, homoiconicity, macros, `eval/apply`, language-oriented programming
 
@@ -226,9 +226,9 @@ The key boundary is this: **runtime data manipulation, macro expansion, and eval
 
 Scheme’s history is not merely background. It explains why the language feels different from both Common Lisp and mainstream application languages.
 
-Scheme emerged from the Lisp tradition and preserved Lisp’s symbolic, parenthesized, expression-oriented style, but gave special importance to lexical scoping, procedures, continuations, and a small semantic core. The R7RS materials frame Scheme as part of a revision sequence dating back to the language’s long standardization history. ([r7rs.org][1])
+Scheme emerged from the Lisp tradition and preserved Lisp’s symbolic, parenthesized, expression-oriented style, but gave special importance to lexical scoping, procedures, continuations, and a small semantic core. The R7RS materials frame Scheme as part of a revision sequence dating back to the language’s long standardization history. 
 
-The Scheme ecosystem also reflects unresolved tension between minimalism and practical completeness. R7RS-small preserves a compact portable base; R7RS-large and SRFIs respond to the need for richer libraries and more practical cross-implementation facilities. ([r7rs.org][1]) Guile’s documentation, for example, notes that R7RS organizes R5RS-style definitions into modules and that many Guile users will use Guile’s own modules, while R7RS libraries are especially relevant for porting code across R7RS systems. ([GNU][6])
+The Scheme ecosystem also reflects unresolved tension between minimalism and practical completeness. R7RS-small preserves a compact portable base; R7RS-large and SRFIs respond to the need for richer libraries and more practical cross-implementation facilities.  Guile’s documentation, for example, notes that R7RS organizes R5RS-style definitions into modules and that many Guile users will use Guile’s own modules, while R7RS libraries are especially relevant for porting code across R7RS systems. 
 
 | Trend category        | Trend                                          | Status                                                 | Driving pressure                              | Caveat                                                                        |
 | --------------------- | ---------------------------------------------- | ------------------------------------------------------ | --------------------------------------------- | ----------------------------------------------------------------------------- |
@@ -7228,7 +7228,7 @@ The central rule for Part 5 is:
 
 Part 6 is a task-oriented map of Scheme’s library and ecosystem surface. It must not be read as “all Scheme implementations provide exactly the same practical library set.” The tutorial contract requires this part to distinguish standard library behavior, ecosystem convention, implementation behavior, and practical workflow boundaries. 
 
-Scheme’s library situation follows directly from its design philosophy. The language has a small portable core, a history of multiple standards, a large body of SRFIs, and implementation-specific ecosystems. R7RS defines standard libraries such as `(scheme base)` and related libraries; the R7RS report’s appendix lists standard libraries and exported identifiers. ([Scheme Standards][1]) SRFI exists specifically to help Scheme users write portable, useful code through concrete library and language-extension proposals adopted by implementations to varying degrees. ([Scheme Requests for Implementation][2]) Guile’s documentation is explicit that its R7RS libraries are especially useful for porting code across R7RS systems, while many Guile users will normally use Guile’s own modules. ([GNU][3])
+Scheme’s library situation follows directly from its design philosophy. The language has a small portable core, a history of multiple standards, a large body of SRFIs, and implementation-specific ecosystems. R7RS defines standard libraries such as `(scheme base)` and related libraries; the R7RS report’s appendix lists standard libraries and exported identifiers.  SRFI exists specifically to help Scheme users write portable, useful code through concrete library and language-extension proposals adopted by implementations to varying degrees.  Guile’s documentation is explicit that its R7RS libraries are especially useful for porting code across R7RS systems, while many Guile users will normally use Guile’s own modules. 
 
 That means Scheme library work has three layers:
 
@@ -7259,13 +7259,13 @@ The basic selection process is:
 
 The professional rule is not “avoid implementation libraries.” It is: **do not accidentally depend on implementation libraries while claiming portability.**
 
-For example, Guile code using `(ice-9 ...)` modules is legitimate Guile code, but not portable R7RS Scheme. Chez code using Chez-specific compiler or FFI APIs is legitimate Chez code, but not portable Scheme. Chez’s user guide contains implementation-specific material on interaction, libraries, debugging, optimization, command-line options, and building/distributing applications, which are exactly the kinds of areas where a concrete implementation matters. ([cisco.github.io][4])
+For example, Guile code using `(ice-9 ...)` modules is legitimate Guile code, but not portable R7RS Scheme. Chez code using Chez-specific compiler or FFI APIs is legitimate Chez code, but not portable Scheme. Chez’s user guide contains implementation-specific material on interaction, libraries, debugging, optimization, command-line options, and building/distributing applications, which are exactly the kinds of areas where a concrete implementation matters. 
 
 **Common Pitfalls:** Do not start with an implementation-specific API for a task that has a clean standard or SRFI solution if portability matters. Conversely, do not force strict portability when the project’s real goal is Guile scripting, Chez performance, Chicken deployment, or Racket language construction.
 
 ### Core standard libraries — `(scheme base)` and the portable center
 
-R7RS organizes portable bindings into standard libraries. The most central is `(scheme base)`, which contains much of the core language vocabulary: binding forms, basic predicates, pairs/lists, vectors, strings, numbers, procedures, control forms, and basic syntax. Guile’s overview of R7RS standard libraries describes `(scheme base)` as the core library, mostly corresponding to R5RS minus some bindings reorganized into libraries. ([GNU][3])
+R7RS organizes portable bindings into standard libraries. The most central is `(scheme base)`, which contains much of the core language vocabulary: binding forms, basic predicates, pairs/lists, vectors, strings, numbers, procedures, control forms, and basic syntax. Guile’s overview of R7RS standard libraries describes `(scheme base)` as the core library, mostly corresponding to R5RS minus some bindings reorganized into libraries. 
 
 | Task                    | Standard library area                                        | Typical bindings                               | Caveat                                                   |
 | ----------------------- | ------------------------------------------------------------ | ---------------------------------------------- | -------------------------------------------------------- |
@@ -7425,7 +7425,7 @@ For a tiny parser, explicit Scheme is often clearer than regex:
     (else (error "parse-on-off: expected on or off"))))
 ```
 
-For complex formats, choose a library appropriate to the implementation. Guile, for example, has extensive module support beyond R7RS, including modules for many practical tasks. ([GNU][5])
+For complex formats, choose a library appropriate to the implementation. Guile, for example, has extensive module support beyond R7RS, including modules for many practical tasks. 
 
 **Common Pitfalls:** Do not assume regex syntax and behavior are portable across Scheme implementations. Do not parse nested languages with regex if a recursive parser or data reader is more appropriate.
 
@@ -7494,7 +7494,7 @@ This treats configuration as data, not code.
 
 ### Collections and iteration utilities — lists first, richer utilities through SRFIs
 
-Scheme’s portable core gives basic list operations, but many richer collection utilities are SRFI- or implementation-provided. SRFI’s role is important here because its purpose is to propose portable additions and libraries beyond the minimal standard. ([Scheme Requests for Implementation][2])
+Scheme’s portable core gives basic list operations, but many richer collection utilities are SRFI- or implementation-provided. SRFI’s role is important here because its purpose is to propose portable additions and libraries beyond the minimal standard. 
 
 | Task                 | Core support                                       | SRFI/implementation likely needed | Professional choice            |
 | -------------------- | -------------------------------------------------- | --------------------------------- | ------------------------------ |
@@ -7659,7 +7659,7 @@ For numeric tests:
 
 ### Debugging — REPL, source reading, expansion, runtime errors
 
-Scheme debugging often combines REPL exploration, direct source reading, test cases, and implementation-specific debugging tools. Chez’s user guide includes debugging material as part of its implementation documentation, which illustrates why practical debugging depends on the chosen Scheme system. ([cisco.github.io][4])
+Scheme debugging often combines REPL exploration, direct source reading, test cases, and implementation-specific debugging tools. Chez’s user guide includes debugging material as part of its implementation documentation, which illustrates why practical debugging depends on the chosen Scheme system. 
 
 | Debugging task        | Portable technique                        | Implementation technique       |
 | --------------------- | ----------------------------------------- | ------------------------------ |
@@ -9512,9 +9512,9 @@ This macro exists because a function cannot delay the evaluation of `body ...` i
 
 ### Standards and reports — from small core to portability tension
 
-Scheme standardization has long balanced two competing goals: preserve a small elegant language, and provide enough practical functionality for real software. R7RS explicitly divides the seventh revision into a small language and a large language effort; the official R7RS site describes the small language as oriented toward embedding, education, and research, while the large language addresses practical mainstream development needs. ([r7rs.org][1])
+Scheme standardization has long balanced two competing goals: preserve a small elegant language, and provide enough practical functionality for real software. R7RS explicitly divides the seventh revision into a small language and a large language effort; the official R7RS site describes the small language as oriented toward embedding, education, and research, while the large language addresses practical mainstream development needs. 
 
-The R7RS-small standard was finalized in 2013, while the large edition has remained a work in progress according to the Scheme standards site. ([Scheme Standards][2])
+The R7RS-small standard was finalized in 2013, while the large edition has remained a work in progress according to the Scheme standards site. 
 
 | Era / standard pressure | Dominant problem                   | Scheme response                                        | Lasting consequence                                |
 | ----------------------- | ---------------------------------- | ------------------------------------------------------ | -------------------------------------------------- |
@@ -9530,7 +9530,7 @@ The current practical implication is direct: a Scheme programmer must identify w
 
 ### SRFIs — portable extension as ecosystem strategy
 
-SRFI, the Scheme Requests for Implementation process, exists to specify and discuss portable extensions and libraries for Scheme. It is one of the central mechanisms by which Scheme compensates for a small core and multiple implementations. The SRFI site describes SRFIs as concrete proposals and documentation intended to encourage portable and useful additions across Scheme implementations. ([Scheme Requests for Implementation][3])
+SRFI, the Scheme Requests for Implementation process, exists to specify and discuss portable extensions and libraries for Scheme. It is one of the central mechanisms by which Scheme compensates for a small core and multiple implementations. The SRFI site describes SRFIs as concrete proposals and documentation intended to encourage portable and useful additions across Scheme implementations. 
 
 | Problem                               | SRFI response                                     | Practical consequence                      |
 | ------------------------------------- | ------------------------------------------------- | ------------------------------------------ |
@@ -9540,7 +9540,7 @@ SRFI, the Scheme Requests for Implementation process, exists to specify and disc
 | Need for community review             | proposal process                                  | better-vetted libraries                    |
 | Uneven implementation support         | implementation support tables                     | dependency still requires checking         |
 
-SRFI support is not automatic. Documentation for Scheme resources notes that third-party libraries and implementation package systems provide SRFI implementations in different ways, such as `chez-srfi` for Chez-related systems and Chicken eggs for Chicken. ([docs.scheme.org][4])
+SRFI support is not automatic. Documentation for Scheme resources notes that third-party libraries and implementation package systems provide SRFI implementations in different ways, such as `chez-srfi` for Chez-related systems and Chicken eggs for Chicken. 
 
 **Design consequence:** SRFIs are not “the standard library,” but they are a major part of practical portable Scheme. A serious Scheme project should list the SRFIs it requires.
 
@@ -9548,7 +9548,7 @@ SRFI support is not automatic. Documentation for Scheme resources notes that thi
 
 ### Implementation diversification — Scheme as a family of platforms
 
-Scheme did not converge into one dominant professional runtime. Instead, it remained a family of implementations optimized for different contexts. The Scheme implementation index lists many implementations with different standards support and engineering orientations, including Guile, Gambit, Gauche, Gerbil, and others. ([get.scheme.org][5])
+Scheme did not converge into one dominant professional runtime. Instead, it remained a family of implementations optimized for different contexts. The Scheme implementation index lists many implementations with different standards support and engineering orientations, including Guile, Gambit, Gauche, Gerbil, and others. 
 
 | Implementation direction   | Historical pressure                     | Practical result                |
 | -------------------------- | --------------------------------------- | ------------------------------- |
@@ -9662,7 +9662,7 @@ The most important mature trend is not a new feature. It is **implementation-awa
 
 ### Emerging or continuing trends — standardization, implementation renewal, language platforms
 
-As of 2026, Scheme standardization and community activity continue, but the practical picture remains plural rather than unified. The R7RS site continues to frame the seventh revision as divided into small and large languages, and the Scheme Steering Committee process remains active for 2025–2026. ([r7rs.org][1]) The Scheme and Functional Programming Workshop also continues as an active venue; the 2026 workshop call invites work on research results, practical experience, and new insights on old ideas. ([icfp26.sigplan.org][6])
+As of 2026, Scheme standardization and community activity continue, but the practical picture remains plural rather than unified. The R7RS site continues to frame the seventh revision as divided into small and large languages, and the Scheme Steering Committee process remains active for 2025–2026.  The Scheme and Functional Programming Workshop also continues as an active venue; the 2026 workshop call invites work on research results, practical experience, and new insights on old ideas. 
 
 | Trend                                      | Status                                   | Driving pressure                       | Caveat                                       |
 | ------------------------------------------ | ---------------------------------------- | -------------------------------------- | -------------------------------------------- |
@@ -9814,7 +9814,7 @@ Professional Scheme work begins by answering a question that many mainstream lan
 
 **Which Scheme is this project actually using?**
 
-A Scheme project may target `R7RS-small`, `R6RS`, a set of SRFIs, Chez Scheme, Guile, Chicken, Gambit, Gauche, MIT/GNU Scheme, or Racket as an adjacent platform. Guile’s documentation, for example, explicitly distinguishes R7RS support from Guile’s own module ecosystem and notes that Guile users commonly use Guile modules while R7RS libraries are especially useful for portability across R7RS systems. ([GNU][1]) Chez Scheme’s documentation likewise describes Chez-specific extensions and implementation details, including the difference between Chez’s native-code compiler and Petite Chez’s interpreter. ([Cisco GitHub][2])
+A Scheme project may target `R7RS-small`, `R6RS`, a set of SRFIs, Chez Scheme, Guile, Chicken, Gambit, Gauche, MIT/GNU Scheme, or Racket as an adjacent platform. Guile’s documentation, for example, explicitly distinguishes R7RS support from Guile’s own module ecosystem and notes that Guile users commonly use Guile modules while R7RS libraries are especially useful for portability across R7RS systems.  Chez Scheme’s documentation likewise describes Chez-specific extensions and implementation details, including the difference between Chez’s native-code compiler and Petite Chez’s interpreter. 
 
 The professional rule is:
 
@@ -9874,7 +9874,7 @@ A Chez- or Guile-specific project may use different file extensions, library dec
 
 ### Package management and dependencies — SRFIs, implementation packages, Akku, eggs
 
-Scheme package workflows vary. SRFI is a specification/proposal process, not a universal package manager. Implementations and external tools fill different roles. Akku.scm, for example, describes itself as a project-based package manager for R6RS and R7RS Scheme, intended for programmers developing portable programs or libraries. ([Akku.scm][3]) Chicken has its own extension ecosystem called eggs; Chicken documentation describes official extensions as a way to add functionality, wrap foreign libraries, and even extend the language. ([CHICKEN Scheme Wiki][4])
+Scheme package workflows vary. SRFI is a specification/proposal process, not a universal package manager. Implementations and external tools fill different roles. Akku.scm, for example, describes itself as a project-based package manager for R6RS and R7RS Scheme, intended for programmers developing portable programs or libraries.  Chicken has its own extension ecosystem called eggs; Chicken documentation describes official extensions as a way to add functionality, wrap foreign libraries, and even extend the language. 
 
 | Dependency type       | Example                                              | Workflow consequence                   |
 | --------------------- | ---------------------------------------------------- | -------------------------------------- |
@@ -9921,7 +9921,7 @@ or:
 
 ### Build and execution workflow — REPL, loading, compilation, executable packaging
 
-Scheme build workflows are implementation-specific. Chez Scheme, for example, has documented compilation behavior; the Debian Chez manpage describes compiling a source file into an object file so loading can be faster than loading source. ([Debian Manpages][5])
+Scheme build workflows are implementation-specific. Chez Scheme, for example, has documented compilation behavior; the Debian Chez manpage describes compiling a source file into an object file so loading can be faster than loading source. 
 
 | Workflow                  | Use case                                           | Caveat                                |
 | ------------------------- | -------------------------------------------------- | ------------------------------------- |
@@ -10045,7 +10045,7 @@ Numeric approximate test:
 
 ### Debugging workflow — REPL, trace, predicates, expansion, reduction
 
-Scheme debugging usually combines semantic reasoning with implementation tools. Chez Scheme documentation describes tracing as a debugging mechanism that prints procedure arguments and return values, with indentation reflecting nested calls and tail-call behavior. ([scheme.com][6])
+Scheme debugging usually combines semantic reasoning with implementation tools. Chez Scheme documentation describes tracing as a debugging mechanism that prints procedure arguments and return values, with indentation reflecting nested calls and tail-call behavior. 
 
 | Debugging task                  | Technique                                                  |
 | ------------------------------- | ---------------------------------------------------------- |
@@ -10082,7 +10082,7 @@ Use:
 
 ### Profiling and performance workflow — measure the target implementation
 
-Scheme performance is implementation-specific. A high-performance native compiler, a bytecode implementation, an interpreter, and a Scheme-to-C compiler may have different cost profiles. Chez documentation distinguishes Chez’s native-code compiler from Petite Chez’s interpreter, illustrating why implementation details matter for performance reasoning. ([Cisco GitHub][2])
+Scheme performance is implementation-specific. A high-performance native compiler, a bytecode implementation, an interpreter, and a Scheme-to-C compiler may have different cost profiles. Chez documentation distinguishes Chez’s native-code compiler from Petite Chez’s interpreter, illustrating why implementation details matter for performance reasoning. 
 
 | Performance concern | What to inspect                                 |
 | ------------------- | ----------------------------------------------- |
@@ -10174,7 +10174,7 @@ Dependency review should be part of Scheme code review.
 | Is there a portable alternative? | Evaluate tradeoff                                      |
 | Is the dependency isolated?      | Adapter possible?                                      |
 
-Akku’s documentation is relevant here because it positions itself around project dependencies and portable R6RS/R7RS Scheme workflows. ([Akku.scm][3])
+Akku’s documentation is relevant here because it positions itself around project dependencies and portable R6RS/R7RS Scheme workflows. 
 
 **Common Pitfalls:** Do not add dependencies opportunistically in small helper code. Do not avoid dependencies so strongly that the project accumulates weak local reimplementations of standard SRFI functionality. Balance portability, reliability, and maintainability.
 
@@ -10193,7 +10193,7 @@ Deployment depends on implementation.
 | container/system package | OS package dependencies               |
 | Racket package           | Racket-specific platform              |
 
-Chez compilation, Chicken’s Scheme-to-C orientation, Guile’s GNU extension role, and Gambit-style deployment all imply different workflows. Chicken-related documentation describes extensions as a way to wrap foreign libraries and extend functionality, which shows how packaging and FFI can become part of deployment strategy. ([CHICKEN Scheme Wiki][4])
+Chez compilation, Chicken’s Scheme-to-C orientation, Guile’s GNU extension role, and Gambit-style deployment all imply different workflows. Chicken-related documentation describes extensions as a way to wrap foreign libraries and extend functionality, which shows how packaging and FFI can become part of deployment strategy. 
 
 **Common Pitfalls:** Do not design deployment after writing implementation-specific code everywhere. Decide early whether the project is portable source, implementation-specific application, embedded extension, or package ecosystem artifact.
 
@@ -15116,7 +15116,7 @@ This appendix is a portability reference. Its purpose is to prevent a recurring 
 
 **Do not write implementation-specific Scheme while silently claiming portable Scheme.**
 
-Scheme has a small portable core, a long tradition of SRFI-based extensions, and several strong implementation ecosystems. R7RS organizes programs around imports and libraries; a program consists of import declarations followed by expressions and definitions, and imports specify library dependencies. ([standards.scheme.org][1]) SRFI exists to help Scheme users write portable, useful code through concrete proposals and sample implementations for libraries and language additions. ([srfi.schemers.org][2]) Implementations such as Chez, Guile, Chicken, Gambit, and Gauche add their own module systems, packages, compilers, debugging tools, FFI, OS APIs, and deployment workflows. ([cisco.github.io][3])
+Scheme has a small portable core, a long tradition of SRFI-based extensions, and several strong implementation ecosystems. R7RS organizes programs around imports and libraries; a program consists of import declarations followed by expressions and definitions, and imports specify library dependencies.  SRFI exists to help Scheme users write portable, useful code through concrete proposals and sample implementations for libraries and language additions.  Implementations such as Chez, Guile, Chicken, Gambit, and Gauche add their own module systems, packages, compilers, debugging tools, FFI, OS APIs, and deployment workflows. 
 
 The central rule is:
 
@@ -15146,7 +15146,7 @@ The central rule is:
 | Implementation Scheme              | code for Chez, Guile, Chicken, Gambit, Gauche, etc.         | practical power and tooling                           | reduced portability                                       | applications, FFI, networking, deployment                  |
 | Racket                             | adjacent language platform                                  | strong macro/language/tooling ecosystem               | not baseline Scheme                                       | language-oriented programming and Racket-specific projects |
 
-R7RS itself is divided conceptually into a small language and a large language effort; the R7RS site describes the small language as aimed at embedding, education, and research, while the large language addresses practical mainstream software-development needs. ([r7rs.org][4])
+R7RS itself is divided conceptually into a small language and a large language effort; the R7RS site describes the small language as aimed at embedding, education, and research, while the large language addresses practical mainstream software-development needs. 
 
 ### Standard library boundary
 
@@ -15173,7 +15173,7 @@ R7RS itself is divided conceptually into a small language and a large language e
 
 ### R7RS library and import matrix
 
-R7RS uses import declarations and library organization. Guile’s documentation summarizes R7RS as essentially R5RS plus a module facility and a standard organization of bindings into modules; its R7RS standard-library documentation also notes that R7RS organizes R5RS definitions into modules and adds some definitions. ([gnu.org][5])
+R7RS uses import declarations and library organization. Guile’s documentation summarizes R7RS as essentially R5RS plus a module facility and a standard organization of bindings into modules; its R7RS standard-library documentation also notes that R7RS organizes R5RS definitions into modules and adds some definitions. 
 
 | Construct                                    | Layer                         | Meaning                            | Portability note                                    |
 | -------------------------------------------- | ----------------------------- | ---------------------------------- | --------------------------------------------------- |
@@ -15209,7 +15209,7 @@ Example R7RS-style use:
 
 ### SRFI boundary
 
-SRFI is not a package manager and not automatically part of every Scheme. It is a proposal and specification process. The SRFI process has been active since 1998 and is explicitly intended to help Scheme users write portable, useful code through concrete proposals and sample implementations. ([srfi.schemers.org][2])
+SRFI is not a package manager and not automatically part of every Scheme. It is a proposal and specification process. The SRFI process has been active since 1998 and is explicitly intended to help Scheme users write portable, useful code through concrete proposals and sample implementations. 
 
 | SRFI use case         | Why useful                                   | Portability question                       |
 | --------------------- | -------------------------------------------- | ------------------------------------------ |
@@ -15245,7 +15245,7 @@ SRFI is not a package manager and not automatically part of every Scheme. It is 
 | MIT/GNU Scheme            | historically important educational/research implementation                                                                           | classic Scheme learning, SICP-like context                                | not a universal modern application baseline                 |
 | Racket                    | adjacent language platform with modules and `#lang` language mechanisms                                                              | language-oriented programming, macros, teaching languages                 | Racket is not baseline Scheme                               |
 
-Chez’s user guide is explicitly about more than language basics: its table of contents includes interaction, libraries/top-level programs, shell scripts, optimization, debugging, building, distributing applications, and command-line options. ([cisco.github.io][3]) Guile’s manual states support for R5RS, R6RS, R7RS, and SRFI modules, while also documenting Guile’s own module system. ([gnu.org][6]) Chicken’s wiki describes eggs as CHICKEN-specific extension libraries stored in a centralized repository and installable mostly automatically. ([wiki.call-cc.org][7]) Gambit describes itself as a practical implementation with goals around speed, portability, and concurrency. ([gambitscheme.org][8]) Gauche describes itself as a practical R7RS Scheme implementation for scripting and real-world programming. ([practical-scheme.net][9]) Racket’s guide documents modules, packages/collections, and the `#lang` shorthand, which are Racket-platform mechanisms rather than portable Scheme constructs. ([Racket Documentation][10])
+Chez’s user guide is explicitly about more than language basics: its table of contents includes interaction, libraries/top-level programs, shell scripts, optimization, debugging, building, distributing applications, and command-line options.  Guile’s manual states support for R5RS, R6RS, R7RS, and SRFI modules, while also documenting Guile’s own module system.  Chicken’s wiki describes eggs as CHICKEN-specific extension libraries stored in a centralized repository and installable mostly automatically.  Gambit describes itself as a practical implementation with goals around speed, portability, and concurrency.  Gauche describes itself as a practical R7RS Scheme implementation for scripting and real-world programming.  Racket’s guide documents modules, packages/collections, and the `#lang` shorthand, which are Racket-platform mechanisms rather than portable Scheme constructs. 
 
 ### Feature portability matrix
 
@@ -15315,7 +15315,7 @@ Example R7RS marker:
 | Local module           | project abstraction              | Is the API stable?                               | project-specific                     |
 | FFI/native dependency  | external library                 | Which platform, ABI, ownership rules?            | foreign/platform-specific            |
 
-Chicken’s extension tooling includes commands such as `chicken-install`, `chicken-uninstall`, and `chicken-status`, and `chicken-install` functions as a package manager for downloading, compiling, and installing eggs and dependencies. ([wiki.call-cc.org][11])
+Chicken’s extension tooling includes commands such as `chicken-install`, `chicken-uninstall`, and `chicken-status`, and `chicken-install` functions as a package manager for downloading, compiling, and installing eggs and dependencies. 
 
 ### Build and execution matrix
 
@@ -15444,7 +15444,7 @@ Public wrapper:
 
 ### Racket boundary
 
-Racket is historically Scheme-descended and extremely important for macros, DSLs, and language-oriented programming, but it is not portable Scheme. Racket’s official guide documents modules, packages/collections, and `#lang` shorthand as part of the Racket module system. ([Racket Documentation][10])
+Racket is historically Scheme-descended and extremely important for macros, DSLs, and language-oriented programming, but it is not portable Scheme. Racket’s official guide documents modules, packages/collections, and `#lang` shorthand as part of the Racket module system. 
 
 | Racket feature    | Scheme relevance                    | Boundary                       |
 | ----------------- | ----------------------------------- | ------------------------------ |
@@ -20484,6 +20484,338 @@ The book later defines arithmetic operators relationally. Its preface emphasizes
 | `expo`     | exponentiation relation                          | relate base, exponent, result          |
 | `odd-*o`   | multiplication variant under oddness constraints | arithmetic search helper               |
 | `bound-*o` | bounded multiplication search                    | prevents uncontrolled search           |
+
+### Relational Arithmetic Construction Stack
+
+Relational arithmetic is built as a stack of increasingly powerful relations. The lower layers describe bits and carries; the middle layers describe addition, subtraction, ordering, and bounded search; the upper layers describe multiplication, division-like decomposition, logarithm-like decomposition, and exponentiation.
+
+The important point is not that these relations imitate ordinary arithmetic procedures. The important point is that arithmetic becomes a **relational search problem over structural numeric representations**. A query may ask for a result, a missing addend, a factor, a quotient-like component, a base, an exponent, or a partially constrained number.
+
+| Layer               | Relation / helper              | Role                                                                          | What it builds toward                             | Search risk      |
+| ------------------- | ------------------------------ | ----------------------------------------------------------------------------- | ------------------------------------------------- | ---------------- |
+| bit layer           | bit values such as `0` and `1` | represent binary digits                                                       | all numeric relations                             | low              |
+| bit logic           | `bit-xoro`                     | relates two bits to their XOR bit                                             | half-adder / full-adder                           | low              |
+| bit logic           | `bit-ando`                     | relates two bits to their AND bit                                             | half-adder / full-adder                           | low              |
+| local addition      | `half-addero`                  | relates two input bits to result bit and carry bit                            | full-adder                                        | low              |
+| local addition      | `full-addero`                  | relates carry-in, two input bits, result bit, and carry-out                   | recursive addition                                | low to moderate  |
+| number shape        | `build-num`                    | constructs the bit-list representation of a known natural number              | examples and tests                                | low              |
+| number shape        | `poso`                         | constrains a number to be positive / non-zero                                 | recursive arithmetic guards                       | low              |
+| number shape        | `>1o`                          | constrains a number to be greater than one                                    | multiplication and logarithm guards               | low              |
+| addition core       | `addero`                       | relates carry, two numbers, and result                                        | `+o`, `-o`                                        | moderate         |
+| addition core       | `gen-addero`                   | handles the general recursive addition case                                   | `addero`                                          | moderate         |
+| addition API        | `+o`                           | relates two addends and a sum                                                 | addition, subtraction-like solving, sum splitting | moderate         |
+| subtraction API     | `-o`                           | usually defined through `+o`                                                  | subtraction-like relation                         | moderate         |
+| ordering / size     | `=lo`                          | same numeric length / same order of magnitude shape                           | bounded multiplication/logarithm                  | low to moderate  |
+| ordering / size     | `<lo`, `<=lo`                  | shorter-or-equal length constraints                                           | pruning search                                    | low to moderate  |
+| ordering            | `<o`, `<=o`                    | numeric ordering constraints                                                  | arithmetic search pruning                         | moderate         |
+| multiplication core | `odd-*o`                       | multiplication helper under odd-number structure                              | `*o`                                              | moderate to high |
+| multiplication core | `bound-*o`                     | bounded multiplication helper                                                 | prevents uncontrolled factor search               | moderate         |
+| multiplication API  | `*o`                           | relates two factors and a product                                             | multiplication, factorization                     | high             |
+| division-like API   | `/o`                           | relates dividend, divisor, quotient-like part, remainder-like part            | quotient/remainder reasoning                      | high             |
+| splitting           | `splito`                       | splits a bit-list number into lower and higher parts                          | logarithm and multiplication helpers              | high             |
+| logarithm-like API  | `logo`                         | relates number, base, logarithm/exponent-like value, and remainder-like value | logarithm, base solving, exponentiation support   | high             |
+| exponentiation API  | `expo`                         | relates base, exponent, and power, often through `logo`                       | exponentiation and inverse exponent queries       | high             |
+
+**Design rule:** Arithmetic relations are layered. Do not read `*o`, `logo`, or `expo` as primitive arithmetic. They depend on a chain of structural constraints over binary numerals, carries, bounds, ordering, and recursive decomposition.
+
+#### Numeric representation layer
+
+Relational arithmetic usually represents natural numbers as structural bit lists rather than as ordinary Scheme numeric atoms. This makes arithmetic decomposable by unification.
+
+| Number idea      | Relational representation role             | Why it matters                              |
+| ---------------- | ------------------------------------------ | ------------------------------------------- |
+| zero             | empty or distinguished base representation | base case for arithmetic                    |
+| one              | first positive bit-list value              | base case for multiplication/exponentiation |
+| positive number  | non-empty bit-list                         | prevents zero-specific ambiguity            |
+| greater than one | bit-list with enough structure             | guards recursive multiplication/logarithm   |
+| low bit          | current least-significant digit            | recursive addition and multiplication       |
+| rest bits        | remaining higher-order digits              | natural recursion over number structure     |
+| carry bit        | extra bit from addition                    | adder relations                             |
+| bound / length   | approximate size constraint                | prevents uncontrolled search                |
+
+The practical shift is:
+
+| Ordinary arithmetic                   | Relational arithmetic                                       |
+| ------------------------------------- | ----------------------------------------------------------- |
+| numbers are atomic values             | numbers are structural terms                                |
+| arithmetic returns one result         | arithmetic generates satisfying substitutions               |
+| input/output direction is fixed       | any argument may be known, unknown, or partially known      |
+| subtraction is a separate operation   | subtraction can be expressed through addition               |
+| factorization is a separate algorithm | factorization is a mode of multiplication                   |
+| logarithm is a numeric function       | logarithm-like reasoning is a relation among several values |
+
+#### Bit-adder layer
+
+The lowest arithmetic layer is bit reasoning. It relates binary digits and carries.
+
+| Relation      | Informal reading                                        | Typical use                          |
+| ------------- | ------------------------------------------------------- | ------------------------------------ |
+| `bit-xoro`    | result bit is XOR of two bits                           | sum bit without carry                |
+| `bit-ando`    | result bit is AND of two bits                           | carry generation                     |
+| `half-addero` | two bits produce a result bit and carry bit             | one-column addition without carry-in |
+| `full-addero` | carry-in plus two bits produce result bit and carry-out | recursive multi-bit addition         |
+
+Schematic reading:
+
+```scheme
+(bit-xoro x y r)
+```
+
+means: `r` is the XOR-result of bit `x` and bit `y`.
+
+```scheme
+(bit-ando x y c)
+```
+
+means: `c` is the AND-result of bit `x` and bit `y`.
+
+```scheme
+(half-addero x y r c)
+```
+
+means: adding bits `x` and `y` gives result bit `r` and carry bit `c`.
+
+```scheme
+(full-addero b x y r c)
+```
+
+means: adding carry-in `b`, bit `x`, and bit `y` gives result bit `r` and carry-out `c`.
+
+**Rule:** `full-addero` is the bridge from bit logic to recursive numeric addition.
+
+#### Addition layer
+
+Addition is built by recursively relating the low bits, the carry, and the rest of the numbers.
+
+| Relation     | Informal reading                               | Main role                              |
+| ------------ | ---------------------------------------------- | -------------------------------------- |
+| `addero`     | with carry `d`, numbers `n` and `m` add to `r` | general addition engine                |
+| `gen-addero` | recursive general case of addition             | handles non-trivial bit-list structure |
+| `+o`         | numbers `n` and `m` sum to `k`                 | public addition relation               |
+| `-o`         | subtraction-like relation, often through `+o`  | solve missing difference               |
+
+Typical relation shape:
+
+```scheme
+(+o n m k)
+```
+
+can be read in several modes:
+
+| Query shape          | Meaning                                        |
+| -------------------- | ---------------------------------------------- |
+| `(+o known known q)` | compute the sum                                |
+| `(+o known q known)` | solve for missing addend                       |
+| `(+o q known known)` | solve for missing addend                       |
+| `(+o q r known)`     | generate decompositions of a known sum         |
+| `(+o q r s)`         | generate compatible triples, usually unbounded |
+
+Subtraction is usually not a fundamentally separate mechanism:
+
+```scheme
+(-o n m k)
+```
+
+can be understood as a relation equivalent to:
+
+```scheme
+(+o m k n)
+```
+
+**Rule:** In relational arithmetic, subtraction is a mode of addition.
+
+#### Ordering and bounding layer
+
+Multiplication, division-like decomposition, and logarithm-like relations need constraints that keep search productive.
+
+| Relation | Role                                                       | Why it matters                 |
+| -------- | ---------------------------------------------------------- | ------------------------------ |
+| `=lo`    | constrains two numbers to have the same length/order shape | prevents impossible size cases |
+| `<lo`    | constrains one number to have shorter length/order shape   | prunes large search spaces     |
+| `<=lo`   | non-strict length/order constraint                         | bounded recursion              |
+| `<o`     | numeric less-than relation                                 | arithmetic condition           |
+| `<=o`    | numeric less-than-or-equal relation                        | arithmetic condition           |
+| `poso`   | positive-number constraint                                 | excludes zero cases            |
+| `>1o`    | greater-than-one constraint                                | excludes zero/one edge cases   |
+
+These constraints are not merely “checks.” They are relational goals. Depending on which arguments are known, they may check, constrain, or generate.
+
+| Use                                 | Effect                               |
+| ----------------------------------- | ------------------------------------ |
+| before recursive multiplication     | avoids impossible branches           |
+| before logarithm-like decomposition | bounds exponent/base search          |
+| before splitting                    | controls structural size             |
+| inside generative queries           | prevents infinite irrelevant answers |
+| after too much generation           | may be too late to help              |
+
+**Rule:** Put size and positivity constraints early enough to make search productive.
+
+#### Multiplication layer
+
+Multiplication is substantially more search-sensitive than addition.
+
+| Relation   | Informal reading                                          | Main role                         |
+| ---------- | --------------------------------------------------------- | --------------------------------- |
+| `odd-*o`   | multiplication helper specialized to odd-number structure | recursive multiplication case     |
+| `bound-*o` | bounded multiplication helper                             | keeps factor search under control |
+| `*o`       | factors `n` and `m` multiply to product `p`               | public multiplication relation    |
+
+Typical relation shape:
+
+```scheme
+(*o n m p)
+```
+
+Modes:
+
+| Query shape          | Meaning                                    | Search risk      |
+| -------------------- | ------------------------------------------ | ---------------- |
+| `(*o known known q)` | compute product                            | low to moderate  |
+| `(*o known q known)` | solve missing factor                       | moderate         |
+| `(*o q known known)` | solve missing factor                       | moderate         |
+| `(*o q r known)`     | generate factor pairs                      | moderate to high |
+| `(*o q r s)`         | generate multiplication-compatible triples | high / unbounded |
+
+Multiplication can also behave as factorization. This is the major relational advantage over ordinary functional multiplication: the same relation can describe both forward multiplication and inverse factor search.
+
+**Rule:** `*o` is relationally powerful because it can factor, but that power creates a large search space.
+
+#### Division-like and splitting layer
+
+Division-like reasoning usually requires both multiplication and remainder-style constraints.
+
+| Relation   | Informal role                                                            | Search issue                             |
+| ---------- | ------------------------------------------------------------------------ | ---------------------------------------- |
+| `/o`       | relates dividend, divisor, quotient-like value, and remainder-like value | many modes are expensive                 |
+| `splito`   | splits a bit-list number into lower and higher parts                     | used to reduce logarithm/exponent search |
+| `bound-*o` | bounds multiplication during division/logarithm-like search              | prevents explosion                       |
+
+Schematic reading:
+
+```scheme
+(/o n m q r)
+```
+
+can be read as a quotient/remainder-style constraint among `n`, `m`, `q`, and `r`.
+
+Schematic reading:
+
+```scheme
+(splito n r l h)
+```
+
+can be read as: split number `n` around a size/position relation `r`, producing a lower part `l` and higher part `h`.
+
+**Rule:** Splitting is a search-control device as much as a numeric operation. It decomposes a structural number so higher-level arithmetic relations can reason about parts rather than blindly generate whole numbers.
+
+#### Logarithm and exponentiation layer
+
+The upper layer contains the most powerful and most search-sensitive arithmetic relations.
+
+| Relation                        | Informal reading                                                                | Relational use                                         |
+| ------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `logo`                          | relates a number, base, logarithm/exponent-like value, and remainder-like value | solve for logarithm, base, or number under constraints |
+| `expo`                          | relates base, exponent, and power                                               | exponentiation and inverse exponentiation              |
+| `repeated-mul` / similar helper | repeated multiplication under relational constraints                            | supports logarithm/exponentiation                      |
+| `splito`                        | decomposes structural numbers                                                   | supports efficient logarithm-like search               |
+
+Typical readings:
+
+```scheme
+(logo n b q r)
+```
+
+means: `n`, base `b`, quotient/exponent-like value `q`, and remainder-like value `r` satisfy the logarithm-like decomposition used by the arithmetic system.
+
+```scheme
+(expo b q n)
+```
+
+means: base `b`, exponent `q`, and result `n` satisfy exponentiation.
+
+Mode table:
+
+| Query shape                  | Meaning                                     | Search risk                                      |
+| ---------------------------- | ------------------------------------------- | ------------------------------------------------ |
+| `(expo known known q)`       | compute power                               | moderate                                         |
+| `(expo known q known)`       | solve exponent-like value                   | high                                             |
+| `(expo q known known)`       | solve base-like value                       | high                                             |
+| `(logo known known q r)`     | solve logarithm-like quotient and remainder | high                                             |
+| `(logo known q known r)`     | solve possible base                         | very high                                        |
+| `(logo q known known known)` | generate compatible number                  | high                                             |
+| mostly fresh `logo` query    | broad arithmetic generation                 | very high / usually inappropriate without bounds |
+
+**Rule:** `logo` and `expo` show relational programming’s expressive power, but they must be used with strong constraints. They are not cheap numeric functions.
+
+#### Construction dependency map
+
+The stack can be read from bottom to top:
+
+```text
+bits
+  → bit-xoro / bit-ando
+  → half-addero
+  → full-addero
+  → addero / gen-addero
+  → +o / -o
+  → ordering and bounding relations
+  → odd-*o / bound-*o
+  → *o
+  → /o / splito
+  → logo
+  → expo
+```
+
+This dependency direction is important. If a high-level arithmetic relation behaves badly, the cause is often not the high-level name itself but one of these underlying issues:
+
+| Symptom                                    | Likely cause                                              |
+| ------------------------------------------ | --------------------------------------------------------- |
+| query diverges                             | recursive arithmetic generation before enough constraints |
+| too many answers                           | missing bound or ordering constraint                      |
+| dotted or malformed numeric representation | missing numeric-shape constraint                          |
+| factorization is slow                      | `*o` search space too broad                               |
+| logarithm query is slow                    | base/exponent/remainder insufficiently constrained        |
+| all-fresh arithmetic query does not finish | relation is generating an infinite arithmetic universe    |
+| expected inverse query fails               | mode not supported productively by goal order             |
+| valid answers appear late                  | unfair or poorly ordered search                           |
+
+#### Practical arithmetic design table
+
+| Goal                             | Better relation strategy                                      |
+| -------------------------------- | ------------------------------------------------------------- |
+| compute ordinary sum             | `+o` with two known numbers                                   |
+| solve missing addend             | `+o` with sum and one addend known                            |
+| split known sum into pairs       | `+o` with result known and both addends fresh                 |
+| compute product                  | `*o` with two known factors                                   |
+| factor known product             | `*o` with product known and factors fresh, preferably bounded |
+| constrain positive number        | `poso`                                                        |
+| exclude zero and one             | `>1o`                                                         |
+| compare numeric size             | `<o`, `<=o`, or length-order relations                        |
+| prevent multiplication explosion | `bound-*o` or earlier constraints                             |
+| split structural number          | `splito`                                                      |
+| solve logarithm-like relation    | `logo` with strong known constraints                          |
+| define exponentiation relation   | `expo`, usually through logarithm-like machinery              |
+
+#### Review checklist for relational arithmetic
+
+Before using or defining a relational arithmetic query, ask:
+
+| Question                                                           | Why                                             |
+| ------------------------------------------------------------------ | ----------------------------------------------- |
+| Which arguments are known?                                         | determines search mode                          |
+| Which arguments are fresh?                                         | determines generation size                      |
+| Is the query bounded?                                              | prevents infinite search                        |
+| Are numeric-shape constraints present?                             | prevents malformed representations              |
+| Are positivity constraints needed?                                 | excludes zero edge cases                        |
+| Is `>1o` needed?                                                   | excludes trivial multiplication/logarithm cases |
+| Are ordering constraints placed early?                             | prunes search                                   |
+| Is multiplication being used as factorization?                     | search may be large                             |
+| Is `logo` being used with too many unknowns?                       | search may explode                              |
+| Would ordinary Scheme arithmetic be better after grounding values? | use `project` carefully only when appropriate   |
+| Is this query intended to be relational in multiple modes?         | test each mode separately                       |
+
+**Final rule:** Relational arithmetic is not a thin wrapper over `+`, `*`, or `expt`. It is a layered relational system. The lower layers make arithmetic structurally decomposable; the higher layers make arithmetic reversible; the search layer determines whether the query is practically usable.
+
 
 ### Numeric representation — bits as relational data
 
