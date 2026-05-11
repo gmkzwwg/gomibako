@@ -14116,3 +14116,6781 @@ The professional Scheme habit is:
 * Who else can observe this mutation?
 
 Most equality and mutation bugs disappear once these questions are made explicit.
+## APPENDIX 4 / D — Scheme Macro Design and Anti-Pattern Guide
+
+### Purpose
+
+This appendix is a decision guide for Scheme macros. Its main purpose is to prevent two opposite mistakes:
+
+**Mistake 1:** using procedures when the abstraction actually needs syntax-level control.
+
+**Mistake 2:** using macros when ordinary procedures, records, closures, or thunks would be clearer.
+
+The central rule is:
+
+**Use procedures for runtime values. Use macros for syntax, binding, and evaluation control.**
+
+A macro is not an advanced function. A function runs at runtime and receives evaluated values. A macro runs at expansion time and transforms syntax before runtime evaluation.
+
+### Core decision table
+
+| Need                                          | Procedure |   Thunk |                 Macro | Reason                                    |
+| --------------------------------------------- | --------: | ------: | --------------------: | ----------------------------------------- |
+| Reuse ordinary computation                    |       yes |      no |                    no | evaluated values are enough               |
+| Pass behavior as argument                     |       yes |   maybe |                    no | procedures are first-class                |
+| Return behavior with context                  |       yes |   maybe |                    no | closures solve this                       |
+| Delay one computation explicitly              |     maybe |     yes |                 maybe | thunk delays runtime work                 |
+| Delay multiple body expressions ergonomically |        no | verbose |                   yes | macro controls body evaluation            |
+| Introduce local binding syntax                |        no |      no |                   yes | binding is syntax-level                   |
+| Create a new control form                     |        no |   maybe |                   yes | evaluation order changes                  |
+| Generate repeated definitions                 |        no |      no |                   yes | definitions are syntax                    |
+| Build a DSL with custom syntax                |     maybe |   maybe | yes if syntax matters | macro changes source language             |
+| Dispatch by runtime command                   |       yes |      no |                    no | procedure table is clearer                |
+| Interpret external data                       |       yes |      no |                    no | use parser/interpreter, not macro         |
+| Evaluate dynamic code                         |        no |      no |         rarely `eval` | macro expansion is not runtime evaluation |
+
+### Procedure first
+
+If all arguments may be evaluated before the abstraction runs, use a procedure.
+
+```scheme
+(define (clamp x low high)
+  (cond
+    ((< x low) low)
+    ((> x high) high)
+    (else x)))
+```
+
+This does not need a macro. It consumes ordinary numeric values and returns an ordinary value.
+
+Another example:
+
+```scheme
+(define (both p q)
+  (lambda (x)
+    (and (p x) (q x))))
+```
+
+This composes predicate procedures. A macro would add unnecessary expansion complexity.
+
+| Task                 | Good procedure abstraction    |
+| -------------------- | ----------------------------- |
+| numeric operation    | `clamp`, `square`, `distance` |
+| validation predicate | `positive-integer?`           |
+| list transformation  | `map`, `filter`, `fold`       |
+| command dispatch     | symbol-to-procedure table     |
+| strategy selection   | pass procedure argument       |
+| object construction  | validating constructor        |
+| behavior factory     | closure-returning procedure   |
+
+**Rule:** If evaluated values are enough, a macro is wrong by default.
+
+### When a procedure is not enough
+
+A procedure cannot prevent its arguments from being evaluated.
+
+Bad attempt:
+
+```scheme
+(define (my-if test yes no)
+  (if test yes no))
+```
+
+Problem:
+
+```scheme
+(my-if #t
+       1
+       (/ 1 0))
+```
+
+The division is evaluated before `my-if` receives its arguments. Therefore this fails even though the test is true.
+
+A macro can control evaluation:
+
+```scheme
+(define-syntax my-if
+  (syntax-rules ()
+    ((_ test yes no)
+     (if test yes no))))
+```
+
+Now only the selected branch evaluates.
+
+| Desired behavior               | Why procedure fails                               |
+| ------------------------------ | ------------------------------------------------- |
+| conditional body evaluation    | body argument evaluates too early                 |
+| short-circuiting               | all arguments evaluate before call                |
+| new binding syntax             | procedure cannot introduce lexical binding syntax |
+| local definitions              | definitions are syntax, not runtime values        |
+| repeated source transformation | procedure receives values, not source structure   |
+| custom DSL notation            | procedure cannot change grammar shape             |
+
+**Rule:** Use a macro when the abstraction must affect which subforms evaluate, when they evaluate, or what bindings they introduce.
+
+### Thunks as the middle option
+
+A thunk is a zero-argument procedure used to delay computation.
+
+```scheme
+(define (if-thunk test yes-thunk no-thunk)
+  (if test
+      (yes-thunk)
+      (no-thunk)))
+```
+
+Use:
+
+```scheme
+(if-thunk #t
+          (lambda () 1)
+          (lambda () (/ 1 0)))
+```
+
+This works because the branches are wrapped in procedures.
+
+| Option    | Strength                     | Weakness             |
+| --------- | ---------------------------- | -------------------- |
+| procedure | simple, runtime-visible      | eager arguments      |
+| thunk     | explicit delay without macro | verbose              |
+| macro     | ergonomic syntax control     | expansion complexity |
+
+Thunk-based resource example:
+
+```scheme
+(define (with-logging thunk)
+  (display "begin")
+  (newline)
+  (let ((result (thunk)))
+    (display "end")
+    (newline)
+    result))
+```
+
+Use:
+
+```scheme
+(with-logging
+  (lambda ()
+    (+ 1 2)))
+```
+
+Macro version:
+
+```scheme
+(define-syntax with-logging
+  (syntax-rules ()
+    ((_ body ...)
+     (begin
+       (display "begin")
+       (newline)
+       (let ((result (begin body ...)))
+         (display "end")
+         (newline)
+         result)))))
+```
+
+The macro is more ergonomic, but also more complex.
+
+**Rule:** Try a thunk when explicit delayed runtime computation is acceptable. Use a macro when the syntax benefit is real.
+
+### Basic `syntax-rules` macro structure
+
+A simple macro:
+
+```scheme
+(define-syntax when*
+  (syntax-rules ()
+    ((_ test body ...)
+     (if test
+         (begin body ...)))))
+```
+
+Use:
+
+```scheme
+(when* verbose?
+  (display "running")
+  (newline))
+```
+
+Structure:
+
+| Part                         | Meaning                             |
+| ---------------------------- | ----------------------------------- |
+| `define-syntax`              | creates a syntactic binding         |
+| `when*`                      | macro name                          |
+| `syntax-rules`               | pattern-based hygienic macro system |
+| `()`                         | literal identifiers list            |
+| `(_ test body ...)`          | pattern                             |
+| `(if test (begin body ...))` | template                            |
+| `...`                        | repetition in pattern/template      |
+
+The underscore `_` conventionally marks the macro name position in the pattern.
+
+### Macro for conditional body evaluation
+
+`when`-style macro:
+
+```scheme
+(define-syntax when*
+  (syntax-rules ()
+    ((_ test body ...)
+     (if test
+         (begin body ...)))))
+```
+
+`unless`-style macro:
+
+```scheme
+(define-syntax unless*
+  (syntax-rules ()
+    ((_ test body ...)
+     (if (not test)
+         (begin body ...)))))
+```
+
+Use:
+
+```scheme
+(unless* done?
+  (display "not done")
+  (newline))
+```
+
+This macro is justified because the body must not be evaluated unless the condition permits it.
+
+| Macro                       | Evaluation contract                   |
+| --------------------------- | ------------------------------------- |
+| `test`                      | evaluated once                        |
+| `body ...`                  | evaluated only when condition permits |
+| result                      | mainly used for effects               |
+| introduced bindings         | none                                  |
+| better ordinary alternative | `if` when both branches matter        |
+
+**Common mistake:** using `when` when a meaningful else value is needed.
+
+Bad:
+
+```scheme
+(when* condition
+  value)
+```
+
+Better:
+
+```scheme
+(if condition
+    value
+    fallback)
+```
+
+**Rule:** Use `when` / `unless` style macros for conditional effects, not for value-heavy branching.
+
+### Macro for binding syntax
+
+A macro can introduce binding structure.
+
+```scheme
+(define-syntax let1
+  (syntax-rules ()
+    ((_ name value body ...)
+     (let ((name value))
+       body ...))))
+```
+
+Use:
+
+```scheme
+(let1 x 10
+  (+ x 1))
+```
+
+Conceptual expansion:
+
+```scheme
+(let ((x 10))
+  (+ x 1))
+```
+
+This macro is justified because it creates a binding form.
+
+| Binding macro concern                              | Question                     |
+| -------------------------------------------------- | ---------------------------- |
+| What names does the user supply?                   | `name`                       |
+| What names does the macro introduce?               | any helper names?            |
+| How many times does the value expression evaluate? | should usually be once       |
+| Where is the body evaluated?                       | inside the binding           |
+| Is the binding lexical?                            | yes                          |
+| Can definitions appear in body?                    | depends on expansion context |
+
+**Rule:** Macros that introduce bindings must make scope and evaluation count obvious.
+
+### Hygiene — what it solves and what it does not solve
+
+Hygienic macros preserve lexical binding discipline in ordinary cases. They help prevent accidental capture.
+
+Example:
+
+```scheme
+(define-syntax twice
+  (syntax-rules ()
+    ((_ expr)
+     (let ((x expr))
+       (+ x x)))))
+```
+
+The introduced `x` should not accidentally capture or be captured by a user’s `x` in the ordinary hygienic macro model.
+
+Use:
+
+```scheme
+(let ((x 100))
+  (twice (+ x 1)))
+```
+
+The user’s `x` and the macro’s internal `x` are kept distinct by hygiene.
+
+| Hygiene helps with           | Hygiene does not automatically solve |
+| ---------------------------- | ------------------------------------ |
+| accidental variable capture  | bad macro API design                 |
+| lexical binding preservation | repeated evaluation                  |
+| safer introduced identifiers | unclear syntax                       |
+| local helper names           | poor error messages                  |
+| binding discipline           | excessive macro use                  |
+| syntactic abstraction safety | runtime logic errors                 |
+
+**Common mistake:** assuming “hygienic” means “safe macro.”
+
+A hygienic macro can still:
+
+* evaluate an expression twice,
+* hide control flow,
+* create unreadable DSL syntax,
+* produce bad error messages,
+* introduce large expansion-time complexity,
+* be unnecessary.
+
+**Rule:** Hygiene solves capture, not design.
+
+### Evaluation count — the most common macro bug
+
+Bad macro:
+
+```scheme
+(define-syntax bad-twice
+  (syntax-rules ()
+    ((_ expr)
+     (+ expr expr))))
+```
+
+Use:
+
+```scheme
+(bad-twice
+  (begin
+    (display "effect")
+    (newline)
+    10))
+```
+
+The effect happens twice.
+
+Better macro:
+
+```scheme
+(define-syntax twice
+  (syntax-rules ()
+    ((_ expr)
+     (let ((value expr))
+       (+ value value)))))
+```
+
+Now `expr` is evaluated once.
+
+| Macro pattern                              | Risk                    |
+| ------------------------------------------ | ----------------------- |
+| repeated `expr` in template                | repeated evaluation     |
+| expression inside loop template            | repeated runtime work   |
+| expression used in both test and body      | unexpected effects      |
+| macro argument used as procedure and value | arity/type confusion    |
+| body duplicated                            | duplicated side effects |
+
+**Evaluation-count checklist:**
+
+| Question                                           | Desired answer           |
+| -------------------------------------------------- | ------------------------ |
+| How many times is each input expression evaluated? | usually once             |
+| Is any input body evaluated conditionally?         | document it              |
+| Is any input expression not evaluated?             | document it              |
+| Is evaluation order obvious?                       | should be                |
+| Are side effects duplicated?                       | avoid unless intentional |
+
+**Rule:** Every macro should have an evaluation-count contract.
+
+### Macro for short-circuiting
+
+A procedure cannot implement `and` or `or` exactly because it would receive already evaluated arguments.
+
+A simplified `and`-like macro:
+
+```scheme
+(define-syntax and2
+  (syntax-rules ()
+    ((_ a b)
+     (if a b #f))))
+```
+
+Use:
+
+```scheme
+(and2 (pair? xs)
+      (car xs))
+```
+
+The second expression is evaluated only if the first is non-`#f`.
+
+A more general `and` macro is more complex, but the core point is the same: short-circuiting is syntax-level behavior.
+
+| Form         | Why macro/special syntax is needed |
+| ------------ | ---------------------------------- |
+| `and`        | later expressions may not evaluate |
+| `or`         | later expressions may not evaluate |
+| `when`       | body may not evaluate              |
+| `unless`     | body may not evaluate              |
+| custom guard | unsafe access must be delayed      |
+
+**Rule:** Short-circuiting is not ordinary procedure behavior.
+
+### Macro for definition generation
+
+Macros can generate repeated definitions.
+
+Example concept:
+
+```scheme
+(define-syntax define-predicate-wrapper
+  (syntax-rules ()
+    ((_ name pred message)
+     (define (name x)
+       (if (pred x)
+           x
+           (error message))))))
+```
+
+Use:
+
+```scheme
+(define-predicate-wrapper require-number
+  number?
+  "expected number")
+```
+
+Expansion concept:
+
+```scheme
+(define (require-number x)
+  (if (number? x)
+      x
+      (error "expected number")))
+```
+
+This can be justified if many similar definitions are needed.
+
+| Definition macro is useful when | Avoid when                     |
+| ------------------------------- | ------------------------------ |
+| many repetitive definitions     | only one or two cases          |
+| generated names are clear       | generated names are surprising |
+| public API is regular           | users must learn opaque syntax |
+| boilerplate is error-prone      | ordinary helper function works |
+| expansion is simple             | macro hides too much logic     |
+
+**Rule:** Use definition-generating macros to remove real syntactic repetition, not to make simple code clever.
+
+### Macro for DSL syntax
+
+A DSL macro may be justified when domain notation becomes much clearer.
+
+Possible DSL use:
+
+```scheme
+(rule positive-number
+  (and (number? x)
+       (> x 0)))
+```
+
+But a procedure may be enough:
+
+```scheme
+(define positive-number?
+  (lambda (x)
+    (and (number? x)
+         (> x 0))))
+```
+
+| DSL design question                         | Why it matters                       |
+| ------------------------------------------- | ------------------------------------ |
+| Does custom syntax make the domain clearer? | otherwise use procedures             |
+| Can users predict evaluation?               | macro body rules matter              |
+| Are bindings introduced?                    | scope must be clear                  |
+| Are errors understandable?                  | DSL misuse must be diagnosable       |
+| Is syntax stable enough to export?          | macro API is public language         |
+| Can data + interpreter solve it?            | safer for external input             |
+| Is Racket more appropriate?                 | full language platform may be better |
+
+**Rule:** A DSL macro is justified only when syntax itself improves the domain model enough to pay for the new language surface.
+
+### Macro versus data interpreter
+
+Do not confuse macro DSLs with runtime data languages.
+
+Runtime data language:
+
+```scheme
+'(+ (* 2 x) 1)
+```
+
+Interpreter:
+
+```scheme
+(define (eval-expr expr env)
+  ...)
+```
+
+Macro DSL:
+
+```scheme
+(custom-form ...)
+```
+
+expanded before runtime.
+
+| Need                                     | Use                       |
+| ---------------------------------------- | ------------------------- |
+| process external/user data               | parser + interpreter      |
+| create new source syntax                 | macro                     |
+| transform compile-time source form       | macro                     |
+| dispatch runtime command                 | procedure table           |
+| evaluate trusted Scheme code dynamically | controlled `eval`, rarely |
+
+Bad pattern:
+
+```scheme
+(eval user-input env)
+```
+
+Better:
+
+```scheme
+(define command (parse-command user-input))
+(run-command command)
+```
+
+**Rule:** Use macros for source syntax, interpreters for runtime data, and procedure tables for runtime behavior.
+
+### Macro API documentation
+
+A public macro should document:
+
+| Macro contract item    | Example question                                |
+| ---------------------- | ----------------------------------------------- |
+| syntax shape           | what forms are accepted?                        |
+| evaluation count       | how many times does each expression run?        |
+| conditional evaluation | which body forms may be skipped?                |
+| binding introduction   | what names are bound?                           |
+| body context           | are definitions allowed?                        |
+| result value           | what does the form return?                      |
+| side effects           | does macro insert effects?                      |
+| portability            | `syntax-rules` only or implementation-specific? |
+| expansion intuition    | what does it roughly become?                    |
+
+Example documentation:
+
+```scheme
+;; (when* test body ...)
+;; Evaluates test once.
+;; If test is not #f, evaluates body expressions in order.
+;; Intended for conditional effects.
+;; Does not introduce user-visible bindings.
+```
+
+**Rule:** A macro is part of the user’s source language. Document it like a language feature.
+
+### Public macro versus private macro
+
+| Macro kind                 | Design standard                                      |
+| -------------------------- | ---------------------------------------------------- |
+| private local macro        | can be narrower and context-specific                 |
+| project-internal macro     | should still be documented for maintainers           |
+| public library macro       | must have stable syntax contract                     |
+| DSL macro                  | needs examples, error behavior, and evaluation rules |
+| generated-definition macro | must specify generated bindings                      |
+| control macro              | must specify evaluation behavior                     |
+
+Public macros are more expensive than public procedures because users write source code in terms of them. Changing macro syntax can break user source code even if runtime behavior remains similar.
+
+**Rule:** Export fewer macros than procedures. Public macros are language-surface commitments.
+
+### Macro anti-pattern table
+
+| Anti-pattern                                | Why it fails                     | Better choice                       |
+| ------------------------------------------- | -------------------------------- | ----------------------------------- |
+| macro for ordinary calculation              | unnecessary expansion complexity | procedure                           |
+| macro for runtime dispatch                  | syntax is not needed             | procedure table                     |
+| macro because prefix syntax feels verbose   | style discomfort is not enough   | `let*`, helper procedures           |
+| macro that duplicates input expression      | repeated effects                 | bind expression once                |
+| macro that hides mutation                   | surprising side effects          | procedure with `!` or explicit body |
+| macro that introduces unclear bindings      | scope confusion                  | document or redesign                |
+| macro DSL for small helper                  | private language overhead        | ordinary API                        |
+| macro that users must mentally expand       | unreadable abstraction           | simpler macro/procedure             |
+| macro with poor errors                      | hard debugging                   | smaller patterns                    |
+| implementation-specific macro used silently | portability break                | declare target                      |
+| macro used to parse external data           | wrong phase and unsafe model     | parser/interpreter                  |
+| macro that exports too much syntax          | API becomes unstable             | narrow macro surface                |
+
+### Repeated evaluation anti-pattern
+
+Bad:
+
+```scheme
+(define-syntax square-bad
+  (syntax-rules ()
+    ((_ x)
+     (* x x))))
+```
+
+Use:
+
+```scheme
+(square-bad
+  (begin
+    (display "computing")
+    (newline)
+    10))
+```
+
+The expression runs twice.
+
+Better:
+
+```scheme
+(define-syntax square-once
+  (syntax-rules ()
+    ((_ x)
+     (let ((value x))
+       (* value value)))))
+```
+
+**Rule:** If a macro argument appears more than once in the expansion, check whether that duplicates evaluation.
+
+### Hidden control-flow anti-pattern
+
+A macro can hide non-obvious control flow.
+
+Bad direction:
+
+```scheme
+(define-syntax mysterious
+  (syntax-rules ()
+    ((_ x body ...)
+     (if (valid? x)
+         (begin body ...)
+         (error "invalid")))))
+```
+
+This may be acceptable internally, but if public, it should be named clearly.
+
+Better name:
+
+```scheme
+(define-syntax with-valid-value
+  ...)
+```
+
+Better documentation:
+
+```scheme
+;; Evaluates body only if x satisfies valid?.
+;; Otherwise signals an error.
+```
+
+**Rule:** Macro names should reveal control behavior.
+
+### Binding surprise anti-pattern
+
+A macro that introduces user-visible names must be explicit.
+
+Example:
+
+```scheme
+(with-open-file path
+  ;; Does this bind `port`?
+  ...)
+```
+
+If it binds `port`, users need to know.
+
+Clearer syntax:
+
+```scheme
+(with-open-file (port path)
+  (read port))
+```
+
+This makes the introduced binding visible.
+
+| Bad binding design                  | Better binding design              |
+| ----------------------------------- | ---------------------------------- |
+| hidden name appears magically       | user specifies binding name        |
+| body depends on implicit variable   | binding appears in macro syntax    |
+| macro uses fixed public helper name | hygienic helper or explicit import |
+| unclear scope                       | expansion intuition documented     |
+
+**Rule:** If a macro introduces a binding the user can use, make that binding visible in the macro’s syntax.
+
+### Mutation-hiding anti-pattern
+
+Bad macro style:
+
+```scheme
+(define-syntax update
+  (syntax-rules ()
+    ((_ place value)
+     (set! place value))))
+```
+
+This hides assignment behind a vague name.
+
+Better:
+
+```scheme
+(define-syntax set-if!
+  (syntax-rules ()
+    ((_ condition place value)
+     (when condition
+       (set! place value)))))
+```
+
+Even here, the `!` signals mutation.
+
+**Rule:** Macros that mutate should be named and documented as mutating.
+
+### `eval` confusion anti-pattern
+
+Macros are expansion-time. `eval` is runtime dynamic evaluation. They are different.
+
+| Mechanism   | Layer          | Input                         | Use                       |
+| ----------- | -------------- | ----------------------------- | ------------------------- |
+| macro       | expansion time | syntax                        | transform source          |
+| procedure   | runtime        | values                        | compute                   |
+| `apply`     | runtime        | procedure + argument values   | call dynamically          |
+| `eval`      | runtime        | expression data + environment | evaluate code dynamically |
+| interpreter | runtime        | domain data                   | process data language     |
+
+Bad dispatch:
+
+```scheme
+(eval (list op x y) env)
+```
+
+Better dispatch:
+
+```scheme
+(define operations
+  (list (cons 'add +)
+        (cons 'sub -)
+        (cons 'mul *)))
+
+((cdr (assoc op operations)) x y)
+```
+
+**Rule:** Do not use macro or `eval` for ordinary runtime dispatch.
+
+### Macro portability
+
+`syntax-rules` is the safest macro system for portable Scheme-style teaching and many standard-compatible examples. More advanced macro systems are implementation- or standard-specific.
+
+| Macro level                       | Portability                                                   |
+| --------------------------------- | ------------------------------------------------------------- |
+| `syntax-rules`                    | broadly standard-oriented                                     |
+| R6RS syntax-case-style systems    | standard in R6RS context, not universal R7RS-small assumption |
+| implementation procedural macros  | implementation-specific                                       |
+| Racket macro system               | Racket-specific                                               |
+| compiler-specific expansion tools | implementation-specific                                       |
+
+**Rule:** State the macro system. Do not silently use implementation-specific macro features while claiming portable Scheme.
+
+### Macro debugging checklist
+
+When a macro fails, ask:
+
+| Question                                                 | Why                           |
+| -------------------------------------------------------- | ----------------------------- |
+| Is the failure at read time, expansion time, or runtime? | different debugging layer     |
+| Does the macro pattern match the use?                    | pattern mismatch              |
+| Are literal identifiers listed correctly?                | `syntax-rules` issue          |
+| Is an expression evaluated more than once?               | side-effect duplication       |
+| Is a binding introduced visibly?                         | scope clarity                 |
+| Is a helper identifier hygienic?                         | capture concern               |
+| Is the macro expanding into a valid body context?        | definitions/expressions rules |
+| Does the macro depend on runtime values?                 | phase confusion               |
+| Is the macro system portable?                            | implementation issue          |
+| Can the macro be replaced by a procedure?                | over-abstraction              |
+
+### Macro review checklist
+
+Before accepting a macro, ask:
+
+| Question                                  | Acceptable answer                                     |
+| ----------------------------------------- | ----------------------------------------------------- |
+| Why is a procedure insufficient?          | evaluation, binding, syntax generation, or DSL syntax |
+| Can a thunk solve this clearly?           | if yes, macro may be unnecessary                      |
+| How many times is each subform evaluated? | documented and intentional                            |
+| Which subforms are conditionally skipped? | documented                                            |
+| What bindings are introduced?             | clear in syntax or hygienic internal                  |
+| Is mutation involved?                     | visible through name/documentation                    |
+| Is the expansion concept simple?          | users can reason about it                             |
+| Is this macro public?                     | syntax contract is stable                             |
+| Does it improve readability?              | clearly yes                                           |
+| Is the macro portable?                    | target macro system declared                          |
+| Are errors understandable?                | misuse should be diagnosable                          |
+| Are examples provided?                    | public macros need examples                           |
+
+### Macro design pattern table
+
+| Pattern              | Example                          | Use when                                |
+| -------------------- | -------------------------------- | --------------------------------------- |
+| conditional body     | `when`, `unless`                 | body evaluation must be conditional     |
+| binding wrapper      | `let1`, resource forms           | macro introduces local binding          |
+| guard form           | `and-let*`-like style            | repeated guard/binding pattern          |
+| definition generator | record/validator/test generators | many repeated definitions               |
+| syntax DSL           | rule language, pattern language  | syntax improves domain clarity          |
+| test macro           | assertion with source expression | source expression must appear in report |
+| resource macro       | `with-...` style                 | ergonomic scoped body syntax            |
+| sequencing macro     | custom body semantics            | repeated pattern justifies syntax       |
+
+### Procedure versus macro examples
+
+| Goal                                | Prefer procedure              | Prefer macro                             |
+| ----------------------------------- | ----------------------------- | ---------------------------------------- |
+| square a value                      | `(define (square x) (* x x))` | no                                       |
+| assert expression with source shown | maybe                         | yes, macro can capture source expression |
+| conditional logging body            | thunk or macro                | macro if ergonomic body needed           |
+| construct record                    | procedure                     | no                                       |
+| generate many accessors             | no                            | macro may be justified                   |
+| command dispatch                    | procedure table               | no                                       |
+| define local syntax                 | no                            | macro                                    |
+| parse user input                    | procedure/parser              | no                                       |
+| create a loop form                  | maybe named `let` enough      | macro if syntax reused often             |
+
+### Assertion macro example
+
+A procedure cannot see the source expression; it only sees its value.
+
+Procedure:
+
+```scheme
+(define (assert-value value)
+  (if value
+      value
+      (error "assertion failed")))
+```
+
+Use:
+
+```scheme
+(assert-value (> x 0))
+```
+
+It cannot report the source expression ` (> x 0)` unless passed separately.
+
+Macro:
+
+```scheme
+(define-syntax assert
+  (syntax-rules ()
+    ((_ expr)
+     (if expr
+         expr
+         (error "assertion failed")))))
+```
+
+This still does not print the source expression in portable `syntax-rules`, but it controls evaluation and could be extended in more advanced macro systems.
+
+**Rule:** If source syntax itself matters, a macro may be justified.
+
+### Resource macro caution
+
+A resource macro may look like:
+
+```scheme
+(with-input-file (port path)
+  (read port))
+```
+
+This is ergonomic, but robust resource handling is subtle. It may involve implementation-specific error handling, dynamic extent, and continuation behavior.
+
+A callback procedure is often clearer and portable:
+
+```scheme
+(call-with-input-file path
+  (lambda (port)
+    (read port)))
+```
+
+| Resource abstraction          | Strength                 | Caveat                          |
+| ----------------------------- | ------------------------ | ------------------------------- |
+| procedure callback            | explicit runtime control | lambda syntax                   |
+| macro wrapper                 | ergonomic body syntax    | must preserve cleanup semantics |
+| implementation resource macro | powerful                 | portability constraints         |
+
+**Rule:** Resource macros must be designed with error and continuation behavior in mind, not just syntax convenience.
+
+### Good macro qualities
+
+| Quality                | Meaning                                                         |
+| ---------------------- | --------------------------------------------------------------- |
+| necessary              | procedure/thunk/data would not be enough or would be much worse |
+| small                  | expansion is easy to understand                                 |
+| hygienic               | avoids accidental capture                                       |
+| evaluation-transparent | users know what evaluates when                                  |
+| binding-transparent    | users know what names are introduced                            |
+| well-named             | name signals control/mutation/binding behavior                  |
+| documented             | syntax contract is explicit                                     |
+| tested                 | normal and malformed uses are checked                           |
+| portable or declared   | target macro system is clear                                    |
+| minimal public surface | exports only useful syntax                                      |
+
+### Bad macro warning signs
+
+| Warning sign                                       | Likely problem            |
+| -------------------------------------------------- | ------------------------- |
+| macro only saves a few parentheses                 | not worth it              |
+| macro hides ordinary function call                 | unnecessary               |
+| macro duplicates body                              | repeated side effects     |
+| macro introduces invisible user binding            | confusing                 |
+| macro changes evaluation order unexpectedly        | semantic hazard           |
+| macro has many unrelated modes                     | too complex               |
+| macro requires reading expansion to understand     | poor abstraction          |
+| macro mixes runtime and expansion-time assumptions | phase bug                 |
+| macro depends on implementation without note       | portability bug           |
+| macro exported too early                           | unstable language surface |
+
+### Compact final decision chart
+
+| If the task is…                | Use…                                             |
+| ------------------------------ | ------------------------------------------------ |
+| ordinary computation           | procedure                                        |
+| behavior with captured context | closure                                          |
+| delayed computation            | thunk                                            |
+| reusable data construction     | constructor procedure                            |
+| public domain object           | record + constructor                             |
+| runtime dispatch               | procedure table                                  |
+| external data language         | parser + interpreter                             |
+| conditional body syntax        | macro                                            |
+| custom binding form            | macro                                            |
+| repeated definition generation | macro if repetition is real                      |
+| source-level DSL               | macro only if syntax is worth it                 |
+| dynamic Scheme evaluation      | controlled `eval`, rarely                        |
+| resource management            | callback first, macro only if safe and justified |
+
+### Final rule
+
+A macro should answer **yes** to at least one of these questions:
+
+1. Does it control whether subforms are evaluated?
+2. Does it control when subforms are evaluated?
+3. Does it introduce bindings?
+4. Does it generate definitions?
+5. Does it abstract a repeated syntax pattern that procedures cannot express clearly?
+6. Does it create a domain syntax whose clarity outweighs its maintenance cost?
+
+If none of these are true, the construct should probably be a procedure, closure, record, thunk, or module boundary instead.
+
+**Macros are for changing the language surface. Use them only when changing the language surface is the actual solution.**
+## APPENDIX 5 / E — Scheme Portability and Implementation Matrix
+
+### Purpose
+
+This appendix is a portability reference. Its purpose is to prevent a recurring Scheme ecosystem mistake:
+
+**Do not write implementation-specific Scheme while silently claiming portable Scheme.**
+
+Scheme has a small portable core, a long tradition of SRFI-based extensions, and several strong implementation ecosystems. R7RS organizes programs around imports and libraries; a program consists of import declarations followed by expressions and definitions, and imports specify library dependencies. ([standards.scheme.org][1]) SRFI exists to help Scheme users write portable, useful code through concrete proposals and sample implementations for libraries and language additions. ([srfi.schemers.org][2]) Implementations such as Chez, Guile, Chicken, Gambit, and Gauche add their own module systems, packages, compilers, debugging tools, FFI, OS APIs, and deployment workflows. ([cisco.github.io][3])
+
+The central rule is:
+
+**Always classify a feature as standard, SRFI, implementation-specific, adjacent-platform, local-project, or foreign dependency.**
+
+### Portability layers
+
+| Layer              | Meaning                                                          | Example                                              | Review question                                          |
+| ------------------ | ---------------------------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------- |
+| Standard Scheme    | Defined by a Scheme report/library system                        | `R7RS-small`, `(scheme base)`                        | Is this binding in the target standard?                  |
+| SRFI               | Portable extension proposal adopted by some implementations      | list utilities, hash tables, streams, time libraries | Is this SRFI supported by the target implementation?     |
+| Implementation API | Facility of a specific Scheme implementation                     | Chez compiler options, Guile modules, Chicken eggs   | Is the project explicitly tied to that implementation?   |
+| Package ecosystem  | Implementation-specific or cross-implementation package workflow | Chicken eggs, Akku packages                          | Is installation/reproducibility documented?              |
+| Local project API  | Abstraction defined inside the project                           | `make-map`, `spawn-task`, `current-time-ms`          | Does it hide implementation-specific details?            |
+| Foreign dependency | C library, OS API, database, network stack                       | FFI handle, native library                           | Are ownership, ABI, and platform constraints documented? |
+| Adjacent platform  | Lisp/Scheme-descended but not baseline Scheme                    | Racket `#lang`                                       | Is this actually Racket rather than portable Scheme?     |
+
+### Standards matrix
+
+| Target                             | What it means                                               | Strength                                              | Limitation                                                | Use when                                                   |
+| ---------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
+| `R5RS`                             | Older compact Scheme standard                               | classic portability and pedagogy                      | limited modern module/library facilities                  | reading older code, SICP-style material                    |
+| `R6RS`                             | Larger standard with library and condition-system ambitions | more standardized infrastructure than earlier reports | not universally adopted as the default practical baseline | codebases explicitly targeting R6RS                        |
+| `R7RS-small`                       | Compact modern baseline with library organization           | useful portable teaching/research/embedding baseline  | small library surface                                     | portable small libraries and examples                      |
+| `R7RS-large` / large-language work | richer practical-library direction                          | attempts to address mainstream development needs      | not a single settled universal practical ecosystem        | long-term standards awareness                              |
+| SRFI-based Scheme                  | standard plus selected extension proposals                  | practical portability beyond the small core           | support varies by implementation                          | portable projects needing richer libraries                 |
+| Implementation Scheme              | code for Chez, Guile, Chicken, Gambit, Gauche, etc.         | practical power and tooling                           | reduced portability                                       | applications, FFI, networking, deployment                  |
+| Racket                             | adjacent language platform                                  | strong macro/language/tooling ecosystem               | not baseline Scheme                                       | language-oriented programming and Racket-specific projects |
+
+R7RS itself is divided conceptually into a small language and a large language effort; the R7RS site describes the small language as aimed at embedding, education, and research, while the large language addresses practical mainstream software-development needs. ([r7rs.org][4])
+
+### Standard library boundary
+
+| Task                            |             Likely standard core? |              Likely SRFI? |    Likely implementation-specific? | Portability warning                   |
+| ------------------------------- | --------------------------------: | ------------------------: | ---------------------------------: | ------------------------------------- |
+| basic syntax                    |                               yes |                        no |                                 no | syntax still depends on target report |
+| `lambda`, `define`, `if`, `let` |                               yes |                        no |                                 no | macro variants may differ             |
+| pairs and lists                 |                               yes |  yes for richer utilities |                          sometimes | rich list APIs are not all core       |
+| vectors                         |                               yes |                 sometimes |                          sometimes | extended vector operations vary       |
+| strings/chars                   |                        yes, basic | yes for richer operations | yes for Unicode/formatting details | text processing differs               |
+| records                         |                 yes in R7RS style |                 sometimes |                                yes | record systems vary                   |
+| basic ports                     |                               yes |                 sometimes |                                yes | filesystem details vary               |
+| file paths/directories          |                           limited |                 sometimes |                                yes | do not assume POSIX-like APIs         |
+| hash tables                     | not safe as small-core assumption |                       yes |                                yes | API/equality semantics vary           |
+| sets/maps/queues                |                           limited |                       yes |                                yes | dependency must be declared           |
+| regex                           |          no small-core assumption |                 sometimes |                                yes | regex syntax/API varies               |
+| JSON/YAML/TOML                  |                                no |                 sometimes |                                yes | choose package/ecosystem              |
+| networking                      |                                no |                 sometimes |                                yes | implementation boundary               |
+| concurrency                     |                no universal model |                 sometimes |                                yes | runtime-specific                      |
+| FFI                             |                no universal model |                        no |                                yes | hard safety/portability boundary      |
+| testing framework               |                no universal model |                 sometimes |                                yes | implementation/package choice         |
+| profiler/debugger               |                no universal model |                        no |                                yes | target runtime required               |
+| build/package/deploy            |                no universal model |                        no |                                yes | implementation workflow               |
+
+### R7RS library and import matrix
+
+R7RS uses import declarations and library organization. Guile’s documentation summarizes R7RS as essentially R5RS plus a module facility and a standard organization of bindings into modules; its R7RS standard-library documentation also notes that R7RS organizes R5RS definitions into modules and adds some definitions. ([gnu.org][5])
+
+| Construct                                    | Layer                         | Meaning                            | Portability note                                    |
+| -------------------------------------------- | ----------------------------- | ---------------------------------- | --------------------------------------------------- |
+| `(import ...)`                               | program/library dependency    | brings library bindings into scope | exact libraries must exist in target implementation |
+| `(define-library ...)`                       | R7RS library definition       | declares exports, imports, body    | not the same as Guile/Racket/Chicken module syntax  |
+| `(scheme base)`                              | R7RS core library             | core syntax and procedures         | small, not batteries-included                       |
+| `(scheme write)` / display-related libraries | standard-library organization | output-related bindings            | exact imports should be checked                     |
+| local project library                        | project module                | user-defined library               | load path/layout depends on implementation          |
+| implementation module                        | implementation-specific       | non-standard API                   | isolate if portability matters                      |
+
+Example R7RS-style library:
+
+```scheme
+(define-library (example geometry)
+  (export make-point point? point-x point-y)
+  (import (scheme base))
+  (begin
+    (define-record-type <point>
+      (make-point x y)
+      point?
+      (x point-x)
+      (y point-y))))
+```
+
+Example R7RS-style use:
+
+```scheme
+(import (scheme base)
+        (example geometry))
+```
+
+**Rule:** `import` is not cosmetic. It is the dependency boundary of a Scheme program.
+
+### SRFI boundary
+
+SRFI is not a package manager and not automatically part of every Scheme. It is a proposal and specification process. The SRFI process has been active since 1998 and is explicitly intended to help Scheme users write portable, useful code through concrete proposals and sample implementations. ([srfi.schemers.org][2])
+
+| SRFI use case         | Why useful                                   | Portability question                       |
+| --------------------- | -------------------------------------------- | ------------------------------------------ |
+| list utilities        | avoids reimplementing common traversal tools | does target support the SRFI?              |
+| hash tables           | portable-ish map abstraction                 | which equality/hash semantics?             |
+| streams/lazy data     | common lazy-sequence conventions             | is stream SRFI available?                  |
+| time/date utilities   | fills small-core gaps                        | implementation support varies              |
+| records/collections   | richer data modeling                         | API compatibility matters                  |
+| testing               | shared test conventions                      | package/import support varies              |
+| random data           | standardized library proposal                | implementation-specific details may remain |
+| text/string utilities | richer operations than core                  | Unicode/encoding issues remain             |
+
+| SRFI decision                   | Good practice                                     |
+| ------------------------------- | ------------------------------------------------- |
+| Need richer portable utility    | check relevant SRFI                               |
+| Add SRFI dependency             | document SRFI number/name                         |
+| Claim portability               | test implementation support                       |
+| Implementation lacks SRFI       | use sample implementation if suitable, or adapter |
+| Public API exposes SRFI objects | dependency becomes public                         |
+| Internal use only               | dependency can be hidden behind module boundary   |
+
+**Rule:** A SRFI dependency must be named and tested. SRFI existence is not the same as target availability.
+
+### Implementation matrix
+
+| Implementation / platform | Practical orientation                                                                                                                | Strong use cases                                                          | Portability warning                                         |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Chez Scheme               | mature high-performance Scheme with extensive user guide coverage for libraries, debugging, optimization, building, and distribution | compiled Scheme, performance-sensitive work, serious implementation study | Chez-specific APIs/tooling are not portable Scheme          |
+| Guile                     | GNU extension language and practical Scheme with R5RS/R6RS/R7RS support and Guile modules                                            | system scripting, GNU integration, extension language use                 | Guile modules are not R7RS libraries by default             |
+| Chicken Scheme            | Scheme implementation with CHICKEN-specific extension libraries called eggs                                                          | deployable applications, extension ecosystem, C/library wrapping          | eggs and Chicken tools are implementation-specific          |
+| Gambit                    | efficient Scheme implementation emphasizing speed, portability, and concurrency                                                      | performance, systems work, implementation research                        | implementation APIs are target-specific                     |
+| Gauche                    | practical R7RS Scheme implementation for scripting and real-world programming                                                        | scripting, practical libraries, R7RS-oriented use                         | Gauche APIs/modules beyond R7RS are implementation-specific |
+| MIT/GNU Scheme            | historically important educational/research implementation                                                                           | classic Scheme learning, SICP-like context                                | not a universal modern application baseline                 |
+| Racket                    | adjacent language platform with modules and `#lang` language mechanisms                                                              | language-oriented programming, macros, teaching languages                 | Racket is not baseline Scheme                               |
+
+Chez’s user guide is explicitly about more than language basics: its table of contents includes interaction, libraries/top-level programs, shell scripts, optimization, debugging, building, distributing applications, and command-line options. ([cisco.github.io][3]) Guile’s manual states support for R5RS, R6RS, R7RS, and SRFI modules, while also documenting Guile’s own module system. ([gnu.org][6]) Chicken’s wiki describes eggs as CHICKEN-specific extension libraries stored in a centralized repository and installable mostly automatically. ([wiki.call-cc.org][7]) Gambit describes itself as a practical implementation with goals around speed, portability, and concurrency. ([gambitscheme.org][8]) Gauche describes itself as a practical R7RS Scheme implementation for scripting and real-world programming. ([practical-scheme.net][9]) Racket’s guide documents modules, packages/collections, and the `#lang` shorthand, which are Racket-platform mechanisms rather than portable Scheme constructs. ([Racket Documentation][10])
+
+### Feature portability matrix
+
+| Feature / task               | `R7RS-small`          | SRFI route            | Chez                              | Guile                        | Chicken                                 | Gambit                      | Gauche                   | Racket                   |
+| ---------------------------- | --------------------- | --------------------- | --------------------------------- | ---------------------------- | --------------------------------------- | --------------------------- | ------------------------ | ------------------------ |
+| basic syntax                 | yes                   | no                    | yes                               | yes                          | yes                                     | yes                         | yes                      | Racket syntax layer      |
+| lexical closures             | yes                   | no                    | yes                               | yes                          | yes                                     | yes                         | yes                      | yes                      |
+| proper tail recursion        | yes                   | no                    | yes                               | yes                          | yes                                     | yes                         | yes                      | yes                      |
+| records                      | yes, R7RS form        | possible variants     | yes                               | yes                          | yes                                     | yes                         | yes                      | Racket structs           |
+| modules/libraries            | `define-library`      | no                    | Chez/R6RS-style support           | Guile modules + R7RS support | Chicken module system/R7RS mode details | implementation mode details | Gauche modules + R7RS    | Racket modules / `#lang` |
+| list utilities beyond basics | limited               | common SRFI path      | implementation/SRFI               | implementation/SRFI          | implementation/SRFI                     | implementation/SRFI         | implementation/SRFI      | Racket libraries         |
+| hash tables                  | not safe as baseline  | common SRFI path      | implementation/SRFI               | implementation/SRFI          | implementation/SRFI                     | implementation/SRFI         | implementation/SRFI      | Racket libraries         |
+| regex                        | no core               | possible SRFI/library | implementation                    | implementation               | implementation                          | implementation              | implementation           | Racket libraries         |
+| JSON                         | no core               | possible package      | package/implementation            | package/implementation       | egg/package                             | package/implementation      | package/implementation   | package/library          |
+| filesystem                   | basic file ports only | possible helpers      | implementation                    | implementation               | implementation                          | implementation              | implementation           | Racket libraries         |
+| networking                   | no                    | possible library      | implementation                    | implementation               | implementation                          | implementation              | implementation           | Racket libraries         |
+| concurrency                  | no universal model    | possible SRFI/library | implementation                    | implementation               | implementation                          | implementation              | implementation           | Racket model             |
+| FFI                          | no                    | no universal          | Chez-specific                     | Guile-specific               | Chicken-specific                        | Gambit-specific             | Gauche-specific          | Racket-specific          |
+| package manager              | no                    | no                    | implementation/community workflow | Guile ecosystem              | eggs                                    | implementation/community    | implementation/community | Racket packages          |
+| profiler/debugger            | no                    | no                    | Chez tools                        | Guile tools                  | Chicken tools                           | Gambit tools                | Gauche tools             | Racket tools             |
+| executable/deployment        | no universal          | no                    | implementation-specific           | implementation-specific      | implementation-specific                 | implementation-specific     | implementation-specific  | Racket-specific          |
+
+**Rule:** This table is a classification map, not a promise that every listed implementation supports the same API names.
+
+### Module-system comparison
+
+| System  | Typical marker                             | Meaning                                      | Portability judgment                        |
+| ------- | ------------------------------------------ | -------------------------------------------- | ------------------------------------------- |
+| R7RS    | `(define-library ...)`, `(import ...)`     | standard small-language library organization | portable only under R7RS-capable setup      |
+| R6RS    | `(library ...)`                            | R6RS library system                          | R6RS-targeted, not same as R7RS-small       |
+| Guile   | `(define-module ...)`, `(use-modules ...)` | Guile module system                          | Guile-specific                              |
+| Chez    | Chez/R6RS library and module facilities    | Chez-specific and R6RS-related workflows     | target-specific unless standard subset used |
+| Chicken | Chicken modules and eggs                   | Chicken ecosystem                            | Chicken-specific                            |
+| Gauche  | Gauche module system plus R7RS support     | practical implementation environment         | Gauche-specific outside R7RS mode           |
+| Racket  | `#lang racket`, `(module ...)`             | Racket language/module system                | adjacent platform, not portable Scheme      |
+
+Example Guile-style marker:
+
+```scheme
+(use-modules ...)
+```
+
+Example Racket marker:
+
+```racket
+#lang racket
+```
+
+Example R7RS marker:
+
+```scheme
+(import (scheme base))
+```
+
+**Rule:** Module syntax is one of the fastest ways to identify the target ecosystem.
+
+### Package and dependency matrix
+
+| Dependency source      | What it gives                    | Example workflow question                        | Portability level                    |
+| ---------------------- | -------------------------------- | ------------------------------------------------ | ------------------------------------ |
+| Standard library       | baseline bindings                | Which report/library?                            | high within target standard          |
+| SRFI                   | portable extension spec          | Is the SRFI supported by target implementations? | medium to high, depending on support |
+| Chicken eggs           | Chicken extension libraries      | Which egg and version?                           | Chicken-specific                     |
+| Guile modules/packages | Guile ecosystem facilities       | Is this a Guile project?                         | Guile-specific                       |
+| Chez libraries/tools   | Chez runtime/compiler facilities | Is this target Chez?                             | Chez-specific                        |
+| Racket packages        | Racket platform packages         | Is this Racket code?                             | Racket-specific                      |
+| Local module           | project abstraction              | Is the API stable?                               | project-specific                     |
+| FFI/native dependency  | external library                 | Which platform, ABI, ownership rules?            | foreign/platform-specific            |
+
+Chicken’s extension tooling includes commands such as `chicken-install`, `chicken-uninstall`, and `chicken-status`, and `chicken-install` functions as a package manager for downloading, compiling, and installing eggs and dependencies. ([wiki.call-cc.org][11])
+
+### Build and execution matrix
+
+| Task                   | Portable Scheme view                    | Implementation reality                         |
+| ---------------------- | --------------------------------------- | ---------------------------------------------- |
+| run simple expressions | REPL or program with imports            | REPL names and defaults vary                   |
+| load source file       | not one universal project workflow      | load path and file conventions differ          |
+| define library         | R7RS `define-library` if targeting R7RS | implementation may use its own module system   |
+| compile                | not language-universal                  | compiler options and outputs differ            |
+| optimize               | semantic code can be portable           | optimization tools are implementation-specific |
+| profile                | not standard core                       | profiler/runtime-specific                      |
+| build executable       | no universal Scheme mechanism           | implementation-specific                        |
+| install dependencies   | no universal Scheme package manager     | package ecosystem/tool-specific                |
+| deploy application     | not standardized                        | target runtime defines workflow                |
+
+**Rule:** Running a small expression and distributing an application are different levels of portability.
+
+### FFI portability matrix
+
+| FFI concern               | Portable Scheme? | Implementation-specific issue           |
+| ------------------------- | ---------------: | --------------------------------------- |
+| call C function           |               no | foreign declaration syntax              |
+| represent pointer         |               no | pointer/handle type                     |
+| convert string            | no universal API | encoding, lifetime, null-termination    |
+| pass bytevector/buffer    | no universal API | copying, pinning, mutability            |
+| callback into Scheme      | no universal API | calling convention, GC interaction      |
+| memory ownership          | no universal API | allocation/free rules                   |
+| propagate foreign error   | no universal API | errno/error object/exception mapping    |
+| thread safety             | no universal API | runtime and foreign library constraints |
+| package native dependency | no universal API | OS/ABI/build system                     |
+
+**Wrapper pattern:**
+
+```scheme
+;; ffi/private.scm
+;; Implementation-specific foreign declarations live here.
+
+(define (raw-open-resource name)
+  ...)
+
+(define (raw-close-resource handle)
+  ...)
+```
+
+Public wrapper:
+
+```scheme
+(define (call-with-resource name use)
+  ;; robust cleanup depends on target implementation
+  ...)
+```
+
+**Rule:** FFI code should not leak raw handles into general domain logic.
+
+### Concurrency portability matrix
+
+| Concurrency feature |              Portable Scheme? | Notes                           |
+| ------------------- | ----------------------------: | ------------------------------- |
+| threads             | no universal small-core model | implementation-specific         |
+| green threads       |            no universal model | implementation/runtime-specific |
+| futures/promises    |            no universal model | term varies                     |
+| channels            |            no universal model | library/runtime-specific        |
+| mutexes/locks       |            no universal model | implementation-specific         |
+| event loop          |            no universal model | framework-specific              |
+| async I/O           |            no universal model | implementation-specific         |
+| parallel execution  |            no universal model | compiler/runtime-specific       |
+| scheduler control   |            no universal model | runtime-specific                |
+
+**Adapter pattern:**
+
+```scheme
+(define (spawn-task thunk)
+  ;; implementation-specific
+  ...)
+```
+
+```scheme
+(define (make-channel)
+  ;; implementation-specific
+  ...)
+```
+
+**Rule:** Scheme concurrency explanations must name the implementation or library.
+
+### Error-handling portability matrix
+
+| Error mechanism              | Portability                                      | Use                               |
+| ---------------------------- | ------------------------------------------------ | --------------------------------- |
+| explicit predicate + `error` | broad but details vary                           | invalid precondition              |
+| tagged result                | user-defined and portable                        | recoverable failure               |
+| multiple values              | language-level                                   | immediate success flag + payload  |
+| condition objects            | standard/implementation-dependent                | structured errors                 |
+| exception handlers           | standard/implementation-dependent                | recovery                          |
+| dynamic cleanup              | available in Scheme tradition but details matter | resource cleanup/control transfer |
+| implementation debugger      | implementation-specific                          | diagnosis                         |
+
+| Failure type      | Portable strategy                                |
+| ----------------- | ------------------------------------------------ |
+| optional absence  | `#f` if unambiguous, or multiple values          |
+| parse failure     | tagged result / multiple values                  |
+| invalid API input | `error`                                          |
+| I/O failure       | implementation condition/error handling          |
+| FFI failure       | wrapper converts to project-level error protocol |
+
+**Rule:** Error protocol is part of portability. Do not expose implementation-specific condition objects accidentally in a portable API.
+
+### Syntax and macro portability matrix
+
+| Macro system                     | Portability profile      | Use                                     |
+| -------------------------------- | ------------------------ | --------------------------------------- |
+| `syntax-rules`                   | safest portable baseline | simple hygienic pattern macros          |
+| R6RS macro systems               | R6RS-targeted            | more advanced standard macro work       |
+| implementation procedural macros | implementation-specific  | advanced macro systems                  |
+| Racket macros                    | Racket-specific          | language-oriented programming on Racket |
+| macro expansion inspection tools | implementation-specific  | debugging and development               |
+
+| Macro task                    | Portable first choice                 |
+| ----------------------------- | ------------------------------------- |
+| simple conditional body macro | `syntax-rules`                        |
+| binding wrapper               | `syntax-rules` if simple              |
+| definition generation         | `syntax-rules` for regular cases      |
+| procedural syntax analysis    | implementation/R6RS/Racket-specific   |
+| full DSL language             | likely implementation/Racket-specific |
+
+**Rule:** A macro that uses only `syntax-rules` is much more portable than one using implementation-specific syntax objects and expander APIs.
+
+### Racket boundary
+
+Racket is historically Scheme-descended and extremely important for macros, DSLs, and language-oriented programming, but it is not portable Scheme. Racket’s official guide documents modules, packages/collections, and `#lang` shorthand as part of the Racket module system. ([Racket Documentation][10])
+
+| Racket feature    | Scheme relevance                    | Boundary                       |
+| ----------------- | ----------------------------------- | ------------------------------ |
+| `#lang racket`    | language declaration                | Racket-specific                |
+| modules/packages  | strong platform organization        | not R7RS `define-library`      |
+| contracts         | boundary enforcement                | Racket-specific                |
+| Typed Racket      | static typing in adjacent ecosystem | not core Scheme                |
+| macro system      | advanced syntax abstraction         | not identical to R7RS baseline |
+| language creation | shows Scheme-family ideas at scale  | Racket platform                |
+
+Racket source marker:
+
+```racket
+#lang racket
+```
+
+R7RS-style source marker:
+
+```scheme
+(import (scheme base))
+```
+
+**Rule:** Use Racket as an adjacent comparison and platform, not as evidence for portable Scheme behavior.
+
+### Portability annotation patterns
+
+Good project header:
+
+```scheme
+;; Target: R7RS-small.
+;; Dependencies: (scheme base), (scheme write), SRFI-X.
+;; Portability: intended for R7RS implementations supporting SRFI-X.
+;; Implementation-specific code: none.
+```
+
+Implementation-specific project header:
+
+```scheme
+;; Target: Guile Scheme.
+;; Uses: Guile modules for filesystem and CLI handling.
+;; Portability: not intended as R7RS-portable code.
+```
+
+Chez-specific header:
+
+```scheme
+;; Target: Chez Scheme.
+;; Uses: Chez-specific compiler/runtime facilities.
+;; Portability: domain logic may be portable; build and FFI layers are not.
+```
+
+Mixed project header:
+
+```scheme
+;; Core: R7RS-small where possible.
+;; Dependencies: SRFI list utilities.
+;; Adapters: implementation-specific filesystem and time modules.
+;; Tested on: listed implementations.
+```
+
+**Rule:** If portability matters, write the portability claim into the source or project documentation.
+
+### Adapter module pattern
+
+When a feature is implementation-specific, hide it behind a project-level API.
+
+Implementation-specific time:
+
+```scheme
+;; private/time-impl.scm
+(define (raw-current-time-ms)
+  ;; implementation-specific
+  ...)
+```
+
+Project-level API:
+
+```scheme
+;; time.scm
+(define (current-time-ms)
+  (raw-current-time-ms))
+```
+
+Domain code:
+
+```scheme
+(define started-at (current-time-ms))
+```
+
+| Non-portable feature | Adapter API example               |
+| -------------------- | --------------------------------- |
+| current time         | `current-time-ms`                 |
+| filesystem path      | `path-join`, `file-exists?*`      |
+| process execution    | `run-command`                     |
+| networking           | `open-client-connection`          |
+| concurrency          | `spawn-task`, `make-channel`      |
+| FFI resource         | `call-with-resource`              |
+| hash table           | `make-map`, `map-ref`, `map-set!` |
+| logging              | `make-logger`                     |
+
+**Rule:** Let domain logic depend on project abstractions, not raw implementation APIs.
+
+### Import review checklist
+
+Before accepting an import, ask:
+
+| Question                                                   | Why                                               |
+| ---------------------------------------------------------- | ------------------------------------------------- |
+| Is this standard, SRFI, implementation, local, or foreign? | dependency classification                         |
+| Is the target implementation known?                        | support matters                                   |
+| Is this import needed in public API or only internally?    | dependency exposure                               |
+| Does it introduce syntax/macros?                           | source language changes                           |
+| Does it introduce non-portable data types?                 | public API may become non-portable                |
+| Does it affect error objects?                              | error protocol may become implementation-specific |
+| Does it affect resource handling?                          | lifetime rules matter                             |
+| Does it have version constraints?                          | reproducibility                                   |
+| Is there a standard/SRFI alternative?                      | portability tradeoff                              |
+| Should this be hidden behind an adapter?                   | maintainability                                   |
+
+### Feature classification checklist
+
+When reading Scheme code, classify every unfamiliar feature:
+
+| Question                                      | Classification result            |
+| --------------------------------------------- | -------------------------------- |
+| Is it in the target report?                   | standard                         |
+| Is it imported from a SRFI library?           | SRFI                             |
+| Is it imported from an implementation module? | implementation-specific          |
+| Is it defined in the project?                 | local abstraction                |
+| Does it call C/OS/native library?             | foreign dependency               |
+| Does it begin with `#lang`?                   | Racket or Racket-language source |
+| Is it available only in the REPL?             | environment/default-import issue |
+| Is it a macro from a dependency?              | syntax dependency                |
+| Is it a package-managed library?              | ecosystem dependency             |
+
+### Portability failure diagnosis table
+
+| Symptom                              | Likely cause                                          | Fix                                          |
+| ------------------------------------ | ----------------------------------------------------- | -------------------------------------------- |
+| code works in REPL but not clean run | default imports / load order                          | add explicit imports and library structure   |
+| code works in one Scheme only        | implementation API used                               | declare target or add adapter                |
+| `define-library` not recognized      | implementation not in R7RS mode / wrong file workflow | use target’s R7RS setup or module system     |
+| SRFI import fails                    | unsupported or uninstalled SRFI                       | install/enable SRFI or replace               |
+| module import path fails             | implementation load path issue                        | configure load path/package                  |
+| macro works only on one system       | implementation-specific macro system                  | use `syntax-rules` or declare dependency     |
+| error handler fails portably         | condition system differs                              | use tagged results or implementation wrapper |
+| hash-table code fails                | API differs                                           | use SRFI/adapter                             |
+| FFI code fails                       | ABI/platform/implementation difference                | isolate and document FFI                     |
+| Racket code fails in Scheme          | `#lang` / Racket module system                        | treat as Racket, not Scheme                  |
+| Guile code fails elsewhere           | Guile modules used                                    | port or isolate Guile-specific code          |
+| Chicken egg unavailable elsewhere    | Chicken-specific package                              | replace or isolate dependency                |
+
+### Standard versus implementation examples
+
+Portable-ish R7RS-style:
+
+```scheme
+(import (scheme base))
+
+(define (square x)
+  (* x x))
+```
+
+SRFI-dependent:
+
+```scheme
+(import (scheme base)
+        (srfi ...)) ; exact SRFI name depends on target
+```
+
+Implementation-specific marker:
+
+```scheme
+(use-modules ...) ; Guile-style marker
+```
+
+Racket-specific marker:
+
+```racket
+#lang racket
+```
+
+Chicken package marker:
+
+```text
+egg dependency / chicken-install workflow
+```
+
+**Rule:** Source markers tell the truth faster than prose. Read imports first.
+
+### Public API portability table
+
+| Public API exposes…                                                 | Portability consequence                       |
+| ------------------------------------------------------------------- | --------------------------------------------- |
+| only numbers, strings, symbols, lists, records from target standard | easier portability                            |
+| SRFI-specific data type                                             | caller needs SRFI                             |
+| implementation-specific object                                      | caller tied to implementation                 |
+| foreign handle                                                      | caller tied to FFI and ownership protocol     |
+| Racket struct/contract                                              | caller tied to Racket                         |
+| implementation condition object                                     | caller tied to error system                   |
+| implementation thread/channel object                                | caller tied to concurrency model              |
+| macro syntax from implementation                                    | caller source becomes implementation-specific |
+
+**Rule:** Internal dependencies are easier to change than public API dependencies. Do not expose implementation-specific objects unless that is the intended contract.
+
+### Portability strategy table
+
+| Strategy                     | Description                                    | Good for                           | Cost                    |
+| ---------------------------- | ---------------------------------------------- | ---------------------------------- | ----------------------- |
+| strict standard              | use only target report libraries               | teaching, small portable libraries | limited features        |
+| standard + SRFI              | portable core with selected extensions         | practical portable code            | support must be checked |
+| implementation-first         | use one implementation’s best tools            | applications, performance, FFI     | low portability         |
+| layered adapters             | portable domain core + implementation adapters | medium/large projects              | more architecture       |
+| multi-implementation testing | test on several Schemes                        | real portability claims            | maintenance cost        |
+| Racket platform              | use Racket deliberately                        | language-oriented projects         | not baseline Scheme     |
+| foreign integration          | use FFI deliberately                           | systems/native interop             | safety/platform cost    |
+
+### Decision table by project type
+
+| Project type                    | Recommended target strategy                               |
+| ------------------------------- | --------------------------------------------------------- |
+| teaching examples               | `R7RS-small` or explicitly chosen teaching implementation |
+| small portable library          | `R7RS-small` + minimal SRFIs                              |
+| interpreter/evaluator tutorial  | portable core where possible                              |
+| GNU/system script               | Guile-specific is reasonable                              |
+| performance-focused application | Chez/Gambit/etc. chosen explicitly                        |
+| C-integrated application        | Chicken/Gambit/Chez/Guile FFI chosen explicitly           |
+| DSL/language platform           | Racket may be appropriate                                 |
+| web/network application         | choose implementation ecosystem early                     |
+| command-line tool               | implementation-specific CLI/filesystem may be acceptable  |
+| research prototype              | choose implementation for features, document assumptions  |
+| long-lived library              | minimize public implementation dependencies               |
+
+### Portability anti-pattern table
+
+| Anti-pattern                                   | Why it fails                  | Better practice              |
+| ---------------------------------------------- | ----------------------------- | ---------------------------- |
+| “This is Scheme” with no target                | meaningless portability claim | name standard/implementation |
+| using REPL defaults                            | clean execution breaks        | explicit imports             |
+| mixing module systems silently                 | load/import failures          | choose one target or isolate |
+| using SRFI without declaring it                | hidden dependency             | list SRFIs                   |
+| using implementation module in domain logic    | hard migration                | adapter module               |
+| exporting implementation objects               | public portability loss       | convert to project data      |
+| treating Racket as portable Scheme             | platform mismatch             | label Racket separately      |
+| assuming hash tables/regex/networking are core | false library assumption      | use SRFI/implementation      |
+| using FFI without wrapper                      | unsafe dependency leak        | isolate FFI                  |
+| claiming portability without testing           | unsupported claim             | run target implementations   |
+| copying examples across Schemes blindly        | module/API mismatch           | translate by layer           |
+| writing one build instruction for all Schemes  | tooling differs               | document target workflow     |
+
+### Minimal portability review form
+
+For any Scheme file or project, record:
+
+| Field                     | Example                                           |
+| ------------------------- | ------------------------------------------------- |
+| target standard           | `R7RS-small`                                      |
+| target implementation     | `Chez Scheme`, `Guile`, etc.                      |
+| SRFIs                     | `SRFI-1`, `SRFI-69`, etc.                         |
+| module system             | `define-library`, Guile modules, etc.             |
+| package manager           | none, Chicken eggs, Akku, implementation workflow |
+| implementation APIs       | filesystem/time/FFI/etc.                          |
+| public non-standard types | none / listed                                     |
+| macro system              | `syntax-rules` / implementation-specific          |
+| FFI dependencies          | none / listed                                     |
+| concurrency model         | none / implementation-specific                    |
+| tested implementations    | listed                                            |
+| portability claim         | strict / partial / none                           |
+
+### Compact final decision chart
+
+| If the feature is…                           | Treat it as…                            |
+| -------------------------------------------- | --------------------------------------- |
+| in target Scheme report                      | standard                                |
+| in a SRFI import                             | SRFI dependency                         |
+| in a Guile/Chez/Chicken/Gambit/Gauche module | implementation-specific                 |
+| in a package/egg                             | package dependency                      |
+| behind a project wrapper                     | local abstraction                       |
+| from C/OS/native library                     | foreign dependency                      |
+| under `#lang racket`                         | Racket, not baseline Scheme             |
+| only available in REPL                       | environment assumption                  |
+| used by exported API                         | public dependency                       |
+| used only internally                         | private dependency, preferably isolated |
+
+### Final rule
+
+Scheme portability is not binary. It is layered.
+
+A program may be:
+
+1. strictly `R7RS-small`,
+2. `R7RS-small` plus SRFIs,
+3. portable across a named set of implementations,
+4. mostly portable with implementation adapters,
+5. intentionally Chez-specific,
+6. intentionally Guile-specific,
+7. intentionally Chicken-specific,
+8. intentionally Racket,
+9. foreign/FFI-bound,
+10. or a local project language built on Scheme.
+
+The professional mistake is not choosing implementation-specific power. The mistake is **choosing it invisibly**.
+
+**A Scheme file should make its portability boundary visible through imports, module syntax, dependency notes, wrapper modules, and tests.**
+
+## APPENDIX 6 / F — Scheme Cost Model and Performance Review Checklist
+
+### Purpose
+
+This appendix is a performance-oriented review guide for Scheme. It is not a micro-optimization manual. Its purpose is to identify the most common hidden costs in Scheme programs before they become structural bugs.
+
+The central rule is:
+
+**First choose the representation that expresses the invariant. Then optimize only the parts whose cost matters.**
+
+Scheme performance depends heavily on implementation. Chez, Guile, Chicken, Gambit, Gauche, Racket, and other systems may have very different compilers, runtimes, garbage collectors, numeric optimizations, FFI costs, and profiling tools. Therefore this appendix focuses on portable cost patterns and code-review heuristics, not implementation-specific tuning.
+
+### Master cost table
+
+| Pattern                        | Hidden cost                         | Typical symptom                     | Better habit                                               |
+| ------------------------------ | ----------------------------------- | ----------------------------------- | ---------------------------------------------------------- |
+| repeated `append` in loop      | repeated traversal, often quadratic | list building slows dramatically    | `cons` accumulator + `reverse`                             |
+| repeated `list-ref`            | linear traversal each access        | list used like array                | use vector or one-pass traversal                           |
+| repeated `length` in recursion | full traversal each call            | accidental quadratic behavior       | carry length/count accumulator                             |
+| deep `equal?`                  | recursive structural traversal      | comparison dominates runtime        | use custom equality or identity if appropriate             |
+| large `map` result             | allocates full result list          | memory pressure                     | use `for-each`, fold, stream, or loop if result not needed |
+| `map` for effects              | unnecessary result allocation       | wasted list allocation              | use `for-each`                                             |
+| rest arguments in hot path     | allocates argument list             | many small allocations              | use fixed arity if performance matters                     |
+| closure creation in loop       | procedure/environment allocation    | allocation pressure                 | hoist closure if safe                                      |
+| exact rational arithmetic      | numerator/denominator growth        | numeric code becomes slow           | choose exactness deliberately                              |
+| string concatenation loop      | repeated allocation/copy            | slow text building                  | use ports/builders/library                                 |
+| symbol/string conversion       | allocation/interning                | parser overhead or symbol growth    | normalize once at boundary                                 |
+| alist lookup in large map      | linear lookup                       | slow repeated lookup                | hash table via SRFI/implementation                         |
+| mutable sharing                | aliasing bugs, defensive copies     | unexpected changes or copy overhead | isolate mutation                                           |
+| FFI call per small operation   | boundary overhead                   | native interop slower than expected | batch calls / wrap coarse operations                       |
+| runtime `eval`                 | parsing/evaluation/environment cost | slow and unsafe dispatch            | procedure table or interpreter                             |
+| macro-heavy code               | expansion-time complexity           | slow compile/load                   | keep macros small                                          |
+| port I/O one char at a time    | call/buffering overhead             | slow file/network processing        | buffered or chunked I/O                                    |
+| unnecessary conversion         | allocate + parse repeatedly         | repeated boundary work              | parse/convert once                                         |
+
+### Representation cost overview
+
+| Representation | Good for                    | Main cost                                 | Watch for                            |
+| -------------- | --------------------------- | ----------------------------------------- | ------------------------------------ |
+| pair           | minimal two-field structure | allocation, pointer chasing               | mutation/aliasing                    |
+| proper list    | sequential recursion        | linear access                             | `list-ref`, `length`, `append` loops |
+| vector         | indexed access              | fixed-size storage, mutation              | magic indices, bounds                |
+| string         | text                        | allocation/copy/encoding concerns         | repeated concatenation               |
+| bytevector     | binary data                 | decoding/ownership issues                 | text/byte confusion                  |
+| record         | named fields                | implementation-specific access/allocation | premature replacement with vectors   |
+| closure        | behavior + environment      | allocation and hidden state               | closure in hot loops                 |
+| alist          | small map                   | linear lookup                             | large maps                           |
+| hash table     | large/frequent lookup       | implementation/SRFI dependency            | hash/equality semantics              |
+| exact number   | exact math                  | big integer/rational growth               | numeric-heavy loops                  |
+| inexact number | approximate math            | rounding                                  | equality/tolerance                   |
+
+### List construction — avoid repeated `append`
+
+Bad pattern:
+
+```scheme
+(define (bad-map f xs)
+  (let loop ((xs xs)
+             (acc '()))
+    (if (null? xs)
+        acc
+        (loop (cdr xs)
+              (append acc (list (f (car xs))))))))
+```
+
+The problem is that `append` traverses `acc` each time. If `acc` grows, the total cost can become quadratic.
+
+Better pattern:
+
+```scheme
+(define (map* f xs)
+  (let loop ((xs xs)
+             (acc '()))
+    (if (null? xs)
+        (reverse acc)
+        (loop (cdr xs)
+              (cons (f (car xs)) acc)))))
+```
+
+Here `cons` is constant-time for each element, and `reverse` happens once.
+
+| Pattern                          | Cost shape          | Review judgment             |
+| -------------------------------- | ------------------- | --------------------------- |
+| `(cons x acc)`                   | cheap prepend       | preferred for accumulation  |
+| `(reverse acc)` once             | one final traversal | normal idiom                |
+| `(append acc (list x))` in loop  | repeated traversal  | avoid                       |
+| `(append xs ys)` once            | traverses `xs`      | acceptable when intentional |
+| nested append over growing lists | often quadratic     | rewrite                     |
+
+**Review cue:** If `append` appears inside recursion or named `let`, inspect it immediately.
+
+### Random access — list versus vector
+
+Lists are poor arrays.
+
+Bad pattern:
+
+```scheme
+(define (sum-by-index xs)
+  (let loop ((i 0)
+             (acc 0))
+    (if (= i (length xs))
+        acc
+        (loop (+ i 1)
+              (+ acc (list-ref xs i))))))
+```
+
+This repeatedly computes `length` and repeatedly traverses the list with `list-ref`.
+
+Better list traversal:
+
+```scheme
+(define (sum-list xs)
+  (let loop ((xs xs)
+             (acc 0))
+    (if (null? xs)
+        acc
+        (loop (cdr xs)
+              (+ acc (car xs))))))
+```
+
+Better indexed data representation:
+
+```scheme
+(define (sum-vector v)
+  (let loop ((i 0)
+             (acc 0))
+    (if (= i (vector-length v))
+        acc
+        (loop (+ i 1)
+              (+ acc (vector-ref v i))))))
+```
+
+| Dominant operation           | Prefer                             |
+| ---------------------------- | ---------------------------------- |
+| first/rest traversal         | list                               |
+| prepend                      | list                               |
+| recursive symbolic structure | list                               |
+| indexed lookup               | vector                             |
+| fixed slots                  | vector or record                   |
+| named fields                 | record                             |
+| large table                  | vector/hash table depending on key |
+
+**Review cue:** If code repeatedly calls `list-ref`, the representation may be wrong.
+
+### Repeated `length` — accidental traversal
+
+`length` traverses a list. Calling it repeatedly inside recursion or loops is often wasteful.
+
+Bad:
+
+```scheme
+(define (process xs)
+  (let loop ((i 0))
+    (if (= i (length xs))
+        'done
+        (loop (+ i 1)))))
+```
+
+Better, if only counting:
+
+```scheme
+(define (process xs)
+  (let loop ((xs xs)
+             (i 0))
+    (if (null? xs)
+        'done
+        (loop (cdr xs)
+              (+ i 1)))))
+```
+
+Or compute once:
+
+```scheme
+(define (process xs)
+  (let ((n (length xs)))
+    (let loop ((i 0))
+      (if (= i n)
+          'done
+          (loop (+ i 1))))))
+```
+
+| Use of `length`                          | Review                        |
+| ---------------------------------------- | ----------------------------- |
+| once before an operation                 | usually fine                  |
+| inside each recursive step               | suspicious                    |
+| to test emptiness                        | use `null?`                   |
+| to test non-empty                        | use `pair?`                   |
+| to validate exact arity of external data | acceptable, but consider cost |
+| on potentially improper list             | dangerous                     |
+
+**Rule:** Use `null?` or `pair?` for structural recursion. Use `length` only when length is genuinely needed.
+
+### `map` versus `for-each` versus fold
+
+`map` allocates a result list. That is correct when the result is needed.
+
+```scheme
+(map (lambda (x) (* x x))
+     '(1 2 3))
+```
+
+But this is wasteful:
+
+```scheme
+(map (lambda (x)
+       (display x)
+       (newline))
+     xs)
+```
+
+Use `for-each` for effects:
+
+```scheme
+(for-each
+  (lambda (x)
+    (display x)
+    (newline))
+  xs)
+```
+
+Use fold or named `let` for accumulation:
+
+```scheme
+(define (sum xs)
+  (let loop ((xs xs)
+             (acc 0))
+    (if (null? xs)
+        acc
+        (loop (cdr xs)
+              (+ acc (car xs))))))
+```
+
+| Task                                 | Prefer                                         | Why                               |
+| ------------------------------------ | ---------------------------------------------- | --------------------------------- |
+| transform each element and keep list | `map`                                          | result list is needed             |
+| perform effects                      | `for-each`                                     | no result list needed             |
+| accumulate one result                | fold / named `let`                             | explicit accumulator              |
+| early exit                           | explicit recursion                             | `map` cannot naturally stop early |
+| multiple accumulators                | named `let`                                    | clearer state                     |
+| large streaming transformation       | implementation/library stream or explicit loop | avoid full list if unnecessary    |
+
+**Review cue:** If the result of `map` is ignored, it is probably wrong.
+
+### Fold cost and direction
+
+A left fold can be tail-recursive. A right fold mirrors list structure but may not be tail-recursive in simple form.
+
+```scheme
+(define (fold-left* f init xs)
+  (let loop ((xs xs)
+             (acc init))
+    (if (null? xs)
+        acc
+        (loop (cdr xs)
+              (f acc (car xs))))))
+```
+
+```scheme
+(define (fold-right* f init xs)
+  (if (null? xs)
+      init
+      (f (car xs)
+         (fold-right* f init (cdr xs)))))
+```
+
+| Fold             | Good for                                  | Cost caution              |
+| ---------------- | ----------------------------------------- | ------------------------- |
+| left fold        | strict accumulation                       | operation order matters   |
+| right fold       | reconstructing lists, recursive structure | may consume control stack |
+| named `let`      | multiple accumulators                     | more code, clearer state  |
+| direct recursion | tree-like data                            | not always tail-recursive |
+
+Non-associative operations differ:
+
+```scheme
+(fold-left* - 0 '(1 2 3))
+(fold-right* - 0 '(1 2 3))
+```
+
+**Rule:** Fold direction is semantic, not just performance-related.
+
+### Exactness and numeric cost
+
+Scheme’s exact arithmetic can be powerful and expensive.
+
+```scheme
+(/ 1 3)
+```
+
+may produce an exact rational depending on numeric support and context.
+
+Exact arithmetic can grow:
+
+```scheme
+(* 100000000000000000000
+   100000000000000000000)
+```
+
+Exact rationals can also grow through repeated operations.
+
+| Numeric domain         | Better representation                                       |
+| ---------------------- | ----------------------------------------------------------- |
+| count                  | exact non-negative integer                                  |
+| vector index           | exact non-negative integer                                  |
+| symbolic math          | exact numbers                                               |
+| measurement            | inexact real may be acceptable                              |
+| approximate simulation | inexact numeric model                                       |
+| money                  | exact integer cents or domain-specific exact representation |
+| probability            | real number with clear exact/inexact policy                 |
+| complex plane          | complex number if domain requires                           |
+
+Bad index check:
+
+```scheme
+(number? i)
+```
+
+Better:
+
+```scheme
+(and (integer? i)
+     (exact? i)
+     (>= i 0))
+```
+
+Approximate equality:
+
+```scheme
+(define (near? x y epsilon)
+  (< (abs (- x y)) epsilon))
+```
+
+**Review cue:** In numeric-heavy code, check exactness deliberately. Exactness is a correctness feature and a cost feature.
+
+### Equality cost
+
+`equal?` can recursively traverse structures.
+
+```scheme
+(equal? huge-tree-a huge-tree-b)
+```
+
+This may be expensive.
+
+| Equality predicate | Cost profile                      | Use                       |
+| ------------------ | --------------------------------- | ------------------------- |
+| `eq?`              | usually cheap identity-like check | symbols, object identity  |
+| `eqv?`             | atomic equivalence                | atomic values             |
+| `=`                | numeric comparison                | numbers                   |
+| `string=?`         | string content traversal          | strings                   |
+| `char=?`           | cheap character comparison        | characters                |
+| `equal?`           | structural traversal              | lists, trees, nested data |
+| custom equality    | controlled cost and semantics     | records/domain objects    |
+
+Custom record equality:
+
+```scheme
+(define (point=? a b)
+  (and (point? a)
+       (point? b)
+       (= (point-x a) (point-x b))
+       (= (point-y a) (point-y b))))
+```
+
+**Review cue:** If `equal?` is used in a hot path over large data, ask whether structural equality is truly needed.
+
+### Closures and allocation
+
+Closures are essential, but closure creation can allocate.
+
+Ordinary closure factory:
+
+```scheme
+(define (make-adder n)
+  (lambda (x)
+    (+ x n)))
+```
+
+This is fine.
+
+Potentially costly pattern:
+
+```scheme
+(define (process xs)
+  (map (lambda (x)
+         (lambda (y)
+           (+ x y)))
+       xs))
+```
+
+This intentionally creates one closure per element.
+
+Closure inside loop:
+
+```scheme
+(let loop ((xs xs)
+           (acc '()))
+  (if (null? xs)
+      acc
+      (let ((f (lambda (y) (+ (car xs) y))))
+        (loop (cdr xs)
+              (cons f acc)))))
+```
+
+This may be correct, but it allocates closures.
+
+| Closure use                                   | Review               |
+| --------------------------------------------- | -------------------- |
+| factory creates configured behavior           | normal               |
+| callback passed once                          | normal               |
+| closure created per element                   | check allocation     |
+| closure captures mutable state                | check aliasing/state |
+| closure in hot inner loop                     | profile              |
+| closure hides data that should be inspectable | consider record      |
+
+**Rule:** Closures are not bad. Hidden allocation and hidden state are the review targets.
+
+### Rest arguments and variadic procedures
+
+Rest arguments create a list of extra arguments.
+
+```scheme
+(define (collect . xs)
+  xs)
+```
+
+Mixed fixed and rest:
+
+```scheme
+(define (log level . messages)
+  ...)
+```
+
+This is convenient, but in a hot path, rest-list allocation may matter.
+
+| Use rest args when                       | Avoid when                            |
+| ---------------------------------------- | ------------------------------------- |
+| API naturally accepts variable arguments | performance-sensitive fixed operation |
+| logging / formatting / construction      | inner numeric loop                    |
+| wrapper forwards arguments               | called extremely often                |
+| user convenience matters                 | arity should be strict                |
+
+Forwarding:
+
+```scheme
+(define (logged-call f . args)
+  (display "calling")
+  (newline)
+  (apply f args))
+```
+
+This allocates `args`.
+
+**Review cue:** Variadic procedures in hot paths deserve scrutiny.
+
+### Strings and repeated concatenation
+
+Repeated string construction can allocate and copy repeatedly.
+
+Bad conceptual pattern:
+
+```scheme
+(define (join-bad xs)
+  (let loop ((xs xs)
+             (acc ""))
+    (if (null? xs)
+        acc
+        (loop (cdr xs)
+              (string-append acc (car xs))))))
+```
+
+If `acc` grows each time, repeated copying may be costly.
+
+Better approaches depend on the implementation/library:
+
+| Approach                          | Use                                |
+| --------------------------------- | ---------------------------------- |
+| output to string port             | build text through port operations |
+| collect pieces then combine       | avoid repeated growing copy        |
+| implementation string builder     | if available                       |
+| write to output port directly     | no need to build full string       |
+| bytevector/string conversion once | avoid repeated boundary conversion |
+
+Portable-ish direct output:
+
+```scheme
+(define (write-pieces xs port)
+  (for-each
+    (lambda (x)
+      (display x port))
+    xs))
+```
+
+**Review cue:** Repeated `string-append` with a growing accumulator is the string analogue of repeated `append`.
+
+### Symbol/string conversion cost and risk
+
+Conversion is not free, and `string->symbol` has semantic risks.
+
+```scheme
+(symbol->string 'running)
+(string->symbol "running")
+```
+
+Good boundary parser:
+
+```scheme
+(define (parse-status s)
+  (cond
+    ((string=? s "pending") 'pending)
+    ((string=? s "running") 'running)
+    ((string=? s "done") 'done)
+    (else (error "unknown status"))))
+```
+
+Bad pattern:
+
+```scheme
+(string->symbol user-input)
+```
+
+Problems:
+
+| Problem                            | Why                                     |
+| ---------------------------------- | --------------------------------------- |
+| arbitrary symbol creation          | internal symbol space grows             |
+| external text becomes internal tag | trust-boundary confusion                |
+| repeated conversion                | allocation/interning overhead           |
+| equality model changes             | string equality becomes symbol identity |
+| validation skipped                 | invalid states accepted                 |
+
+**Rule:** Parse external strings through a whitelist and normalize once.
+
+### Alist versus hash table
+
+Alist lookup is linear.
+
+```scheme
+(assoc key alist)
+```
+
+This is fine for small maps.
+
+| Map size/use               | Prefer                                        |
+| -------------------------- | --------------------------------------------- |
+| tiny symbolic environment  | alist                                         |
+| interpreter scope chain    | alist may be natural                          |
+| config with few keys       | alist or record                               |
+| fixed keys                 | record                                        |
+| many keys                  | hash table                                    |
+| frequent lookup/update     | hash table                                    |
+| public portable library    | alist or SRFI hash table, depending on target |
+| implementation application | implementation hash table may be fine         |
+
+Repeated lookup problem:
+
+```scheme
+(define (process keys env)
+  (map (lambda (key)
+         (cdr (assoc key env)))
+       keys))
+```
+
+If `env` is large and `keys` is large, this may be costly.
+
+**Review cue:** Large alists in hot lookup paths should become hash tables or another map structure.
+
+### Records versus vectors in performance-sensitive code
+
+Records are clearer. Vectors may be tempting for performance.
+
+Record:
+
+```scheme
+(define-record-type <point>
+  (make-point x y)
+  point?
+  (x point-x)
+  (y point-y))
+```
+
+Vector:
+
+```scheme
+(define point (vector 3 4))
+(vector-ref point 0)
+(vector-ref point 1)
+```
+
+| Choice | Strength                      | Risk                                |
+| ------ | ----------------------------- | ----------------------------------- |
+| record | clarity, accessors, predicate | implementation-specific performance |
+| vector | indexed storage               | magic indices, weak domain meaning  |
+| list   | symbolic sequence             | poor random access                  |
+| pair   | minimal two-field             | generic field names                 |
+
+**Rule:** Use records first for domain data. Replace with vectors only when profiling and encapsulation justify it.
+
+Encapsulated vector representation:
+
+```scheme
+(define (make-point x y)
+  (vector x y))
+
+(define (point-x p)
+  (vector-ref p 0))
+
+(define (point-y p)
+  (vector-ref p 1))
+```
+
+This preserves an accessor API, making later representation changes possible.
+
+### Mutation and defensive copying cost
+
+Mutation can reduce allocation, but it can introduce aliasing and copying costs.
+
+| Strategy               | Cost                                | Risk                             |
+| ---------------------- | ----------------------------------- | -------------------------------- |
+| pure functional update | allocates new value                 | may allocate more                |
+| mutation in place      | fewer new objects                   | aliasing                         |
+| defensive copy         | allocation to protect caller/callee | shallow copy may be insufficient |
+| immutable sharing      | cheap and safe                      | requires immutability discipline |
+| public mutator         | flexible                            | invariant breakage               |
+
+Defensive vector copy:
+
+```scheme
+(define (copy-vector v)
+  (list->vector (vector->list v)))
+```
+
+This is simple but may be inefficient and shallow.
+
+| Copy kind                 | Cost                              |
+| ------------------------- | --------------------------------- |
+| shallow copy              | copy outer container              |
+| deep copy                 | recursively copy mutable contents |
+| no copy                   | cheap but aliases                 |
+| functional reconstruction | copy changed path                 |
+
+**Review cue:** Copying may be introduced to fix aliasing, but it can become a performance cost. Decide whether the representation should be immutable, copied, or explicitly shared.
+
+### Ports and I/O cost
+
+I/O cost often dominates computation. Port use and buffering matter.
+
+Potentially slow pattern:
+
+```scheme
+(for-each
+  (lambda (ch)
+    (display ch port))
+  chars)
+```
+
+This may perform many small writes.
+
+Better strategy depends on context:
+
+| Task                         | Better direction                              |
+| ---------------------------- | --------------------------------------------- |
+| write many small text pieces | output string port or buffered output         |
+| write line by line           | explicit port and line batching               |
+| read whole file              | implementation/library support if appropriate |
+| process large file           | streaming over port                           |
+| binary I/O                   | bytevector/chunk processing                   |
+| logging                      | explicit logger port, avoid scattered output  |
+
+**Review cue:** Repeated tiny I/O operations may dwarf Scheme-level computation costs.
+
+### FFI cost
+
+Foreign calls have boundary overhead. Data conversion also costs.
+
+| FFI cost source             | Example                     |
+| --------------------------- | --------------------------- |
+| call boundary               | Scheme → C call             |
+| argument conversion         | Scheme string to C string   |
+| result conversion           | C data to Scheme value      |
+| memory ownership            | allocation/free             |
+| callback into Scheme        | foreign runtime → Scheme    |
+| bytevector pin/copy         | buffer handling             |
+| error conversion            | C error to Scheme condition |
+| thread/runtime coordination | scheduler/GC constraints    |
+
+Bad pattern:
+
+```scheme
+;; Call C function once per element in a large Scheme loop.
+```
+
+Often better:
+
+```scheme
+;; Batch many elements per foreign call.
+```
+
+**Rule:** FFI boundaries should be coarse, wrapped, and measured.
+
+### Macro expansion cost
+
+Macros run at expansion time. Small macros are cheap enough. Large macro systems can slow compilation/loading and make debugging harder.
+
+| Macro pattern                     | Cost                                   |
+| --------------------------------- | -------------------------------------- |
+| small `syntax-rules` control form | usually negligible                     |
+| generated many definitions        | expansion size                         |
+| deep recursive macro expansion    | compile-time complexity                |
+| macro DSL                         | debugging and tooling cost             |
+| implementation procedural macro   | implementation-specific expansion cost |
+| macro that expands into huge code | code size/runtime effect               |
+
+**Review cue:** Macro-generated code should be inspected if build time, code size, or runtime behavior becomes suspicious.
+
+### `eval` cost and design risk
+
+`eval` is expensive compared with ordinary procedure application and usually a design smell.
+
+Bad dispatch:
+
+```scheme
+(eval (list op x y) env)
+```
+
+Better dispatch:
+
+```scheme
+(define operations
+  (list (cons 'add +)
+        (cons 'sub -)
+        (cons 'mul *)))
+
+(define (calculate op x y)
+  (let ((entry (assoc op operations)))
+    (if entry
+        ((cdr entry) x y)
+        (error "unknown operation"))))
+```
+
+| Use case                       | Better mechanism          |
+| ------------------------------ | ------------------------- |
+| command dispatch               | procedure table           |
+| config processing              | parse and validate data   |
+| DSL evaluation                 | explicit interpreter      |
+| syntax abstraction             | macro                     |
+| dynamic argument list          | `apply`                   |
+| real dynamic Scheme evaluation | controlled `eval`, rarely |
+
+**Rule:** If `eval` appears, require a design justification.
+
+### Garbage collection and allocation pressure
+
+Scheme has managed memory, but allocation still matters.
+
+Common allocation sources:
+
+| Source                 | Allocation                                         |
+| ---------------------- | -------------------------------------------------- |
+| `cons`                 | pair                                               |
+| `list`                 | multiple pairs                                     |
+| `map`                  | result list                                        |
+| `reverse`              | new list                                           |
+| closure creation       | procedure/environment                              |
+| rest arguments         | argument list                                      |
+| string conversion      | string                                             |
+| vector/list conversion | new container                                      |
+| record construction    | record object                                      |
+| exact arithmetic       | potentially large numeric objects                  |
+| `equal?`               | may not allocate much but traverses                |
+| macro expansion        | syntax objects/code expansion at compile/load time |
+
+Garbage collection handles unreachable memory, but heavy allocation creates pressure.
+
+| Symptom                 | Possible cause                            |
+| ----------------------- | ----------------------------------------- |
+| periodic pauses         | GC                                        |
+| memory growth           | retained references                       |
+| slow hot loop           | consing/closure allocation                |
+| high allocation profile | `map`, rest args, conversions             |
+| old data not collected  | references kept in closures/global tables |
+| cache grows forever     | unbounded mutable map                     |
+
+**Rule:** Managed memory removes manual freeing, not allocation cost.
+
+### Tail recursion and control-space cost
+
+Proper tail recursion means tail-recursive loops do not consume unbounded control space.
+
+Tail-recursive:
+
+```scheme
+(define (count xs)
+  (let loop ((xs xs)
+             (n 0))
+    (if (null? xs)
+        n
+        (loop (cdr xs)
+              (+ n 1)))))
+```
+
+Not tail-recursive:
+
+```scheme
+(define (count xs)
+  (if (null? xs)
+      0
+      (+ 1 (count (cdr xs)))))
+```
+
+| Recursive shape            | Cost concern                     |
+| -------------------------- | -------------------------------- |
+| tail recursion             | constant control space in Scheme |
+| non-tail list recursion    | stack/control growth             |
+| tree recursion             | naturally non-tail in many cases |
+| mutual recursion           | check tail position per call     |
+| recursion under `cons`     | not tail-recursive               |
+| recursion under arithmetic | not tail-recursive               |
+
+**Review cue:** For potentially long linear loops, inspect tail position.
+
+### Cost model by task
+
+| Task                     | Cost-aware first design                                              |
+| ------------------------ | -------------------------------------------------------------------- |
+| build list               | `cons` accumulator + `reverse`                                       |
+| transform list           | `map` if result needed                                               |
+| effectful traversal      | `for-each`                                                           |
+| count/sum                | named `let` accumulator                                              |
+| random access            | vector                                                               |
+| named fields             | record                                                               |
+| large map                | hash table                                                           |
+| small environment        | alist                                                                |
+| parse external text      | parse once, normalize                                                |
+| compare large structures | custom equality if possible                                          |
+| build large text         | port/builder, not repeated `string-append`                           |
+| process binary data      | bytevector chunks                                                    |
+| call native code         | coarse FFI wrapper                                                   |
+| loop with many args      | avoid rest args if hot                                               |
+| test many predicates     | avoid repeated expensive validation inside loop after boundary check |
+
+### Performance diagnosis table
+
+| Symptom                                  | Likely cause                               | What to inspect          |
+| ---------------------------------------- | ------------------------------------------ | ------------------------ |
+| list processing unexpectedly slow        | repeated `append`, `length`, or `list-ref` | recursion body           |
+| memory pressure                          | `map`, consing, closures, conversions      | allocation sites         |
+| lookup slow                              | alist too large                            | map representation       |
+| numeric code slow                        | exact rationals/bignums                    | exactness                |
+| string processing slow                   | repeated `string-append`                   | text builder strategy    |
+| FFI slower than Scheme code              | too many small foreign calls               | batching and conversion  |
+| tests slow                               | deep `equal?` on large structures          | equality predicate       |
+| macro-heavy project slow to load         | expansion/code size                        | macro expansions         |
+| output slow                              | many small writes                          | buffering                |
+| function call overhead visible           | tiny procedures in hot loop                | implementation/profiling |
+| unpredictable mutation behavior          | aliasing                                   | shared objects           |
+| recursion overflows or grows             | not tail-recursive                         | tail position            |
+| portable code slow on one implementation | implementation performance differences     | target profiler          |
+
+### Review checklist — list and collection code
+
+| Question                                                  | Why                         |
+| --------------------------------------------------------- | --------------------------- |
+| Is `append` inside a loop?                                | possible quadratic cost     |
+| Is `length` inside recursion?                             | repeated traversal          |
+| Is `list-ref` used repeatedly?                            | list used like vector       |
+| Is `map` result ignored?                                  | wasted allocation           |
+| Is `for-each` used for effects?                           | correct intent              |
+| Is an alist used for large lookup?                        | linear search               |
+| Is a vector used where record would be clearer?           | magic index risk            |
+| Is a record replaced by list/vector for unmeasured speed? | premature optimization      |
+| Is `equal?` used on large structures?                     | deep traversal              |
+| Are conversions repeated?                                 | allocation and parsing cost |
+
+### Review checklist — numeric code
+
+| Question                                            | Why                         |
+| --------------------------------------------------- | --------------------------- |
+| Are indices exact non-negative integers?            | vector/list safety          |
+| Is exactness intentional?                           | correctness and cost        |
+| Are rationals growing?                              | exact arithmetic cost       |
+| Are inexact values compared with `=`?               | approximation issue         |
+| Is complex input possible?                          | domain mismatch             |
+| Is numeric type checked too broadly with `number?`? | invalid domain values       |
+| Is performance measured on target implementation?   | numeric optimization varies |
+
+### Review checklist — abstraction cost
+
+| Question                                         | Why                          |
+| ------------------------------------------------ | ---------------------------- |
+| Are closures created per iteration?              | allocation                   |
+| Are rest args used in hot paths?                 | list allocation              |
+| Are macros generating large code?                | expansion/code size          |
+| Is `eval` used?                                  | runtime cost and design risk |
+| Is dispatch done by procedure table?             | better than eval             |
+| Are helper abstractions obscuring hot loops?     | profiling/readability        |
+| Is mutation hidden inside pure-looking function? | semantic bug                 |
+| Is public representation over-optimized?         | API damage                   |
+
+### Review checklist — boundary cost
+
+| Boundary           | Question                                        |
+| ------------------ | ----------------------------------------------- |
+| text parsing       | parsed once or repeatedly?                      |
+| symbol conversion  | validated and normalized once?                  |
+| file I/O           | buffered/chunked enough?                        |
+| FFI                | calls coarse enough?                            |
+| external data      | validation repeated inside hot loops?           |
+| implementation API | isolated behind adapter?                        |
+| resource           | closed promptly without excessive reopen/close? |
+| logging            | too many small writes?                          |
+| testing            | equality predicate too expensive?               |
+
+### Micro-optimization caution
+
+Scheme code can become unreadable if optimized prematurely.
+
+Bad optimization habit:
+
+```scheme
+;; Replacing clear records with vectors everywhere
+;; before profiling proves record access is a bottleneck.
+```
+
+Better habit:
+
+1. Write clear representation.
+2. Test invariants.
+3. Profile target implementation.
+4. Optimize local bottleneck.
+5. Preserve public API if possible.
+6. Document the performance reason.
+
+| Optimize early when                        | Wait and profile when                |
+| ------------------------------------------ | ------------------------------------ |
+| known asymptotic bug exists                | only minor constant factor suspected |
+| repeated `append` in loop                  | record access merely “might be slow” |
+| huge alist lookup obvious                  | ordinary small alist                 |
+| FFI call per element                       | coarse FFI operation                 |
+| repeated parsing/conversion                | one-time boundary parsing            |
+| recursion not tail-position over huge list | small structural recursion           |
+
+**Rule:** Fix obvious asymptotic mistakes early. Measure implementation-specific micro-costs.
+
+### Public API and optimization
+
+Do not expose a low-level representation just for speed unless that representation is truly part of the API.
+
+Bad:
+
+```scheme
+;; Public API says point is vector:
+(vector-ref p 0)
+(vector-ref p 1)
+```
+
+Better:
+
+```scheme
+(point-x p)
+(point-y p)
+```
+
+Internally, `point` can later become a record, vector, pair, or implementation-specific structure.
+
+| API choice                | Optimization consequence           |
+| ------------------------- | ---------------------------------- |
+| exported accessors        | internal representation can change |
+| exported raw vector       | callers depend on indices          |
+| exported raw list         | callers depend on positions        |
+| exported mutator          | callers depend on state model      |
+| exported constructor only | validation possible                |
+| hidden raw constructor    | invariant protected                |
+
+**Rule:** Optimize behind an abstraction boundary when possible.
+
+### Performance anti-pattern table
+
+| Anti-pattern                        | Why it is bad         | Better practice               |
+| ----------------------------------- | --------------------- | ----------------------------- |
+| repeated `append` accumulation      | quadratic traversal   | `cons` + `reverse`            |
+| list as array                       | linear access         | vector                        |
+| alist as large map                  | linear lookup         | hash table                    |
+| `map` for effects                   | allocates unused list | `for-each`                    |
+| repeated `string-append`            | repeated copy         | port/builder                  |
+| broad exact arithmetic accidentally | numeric growth        | choose exactness              |
+| `equal?` in hot path                | deep traversal        | custom predicate              |
+| closure per element accidentally    | allocation            | hoist or use direct procedure |
+| rest args in hot path               | allocates list        | fixed arity                   |
+| `eval` dispatch                     | slow and unsafe       | procedure table               |
+| FFI per scalar                      | boundary overhead     | batch                         |
+| global mutation for speed           | hidden coupling       | localized state               |
+| raw vector public API               | unreadable/fragile    | accessors                     |
+| premature low-level rewrite         | harms maintainability | profile first                 |
+
+### Compact cost decision chart
+
+| If the code does…        | Inspect for…                       |
+| ------------------------ | ---------------------------------- |
+| builds a list            | `append` versus `cons`             |
+| traverses a list         | repeated `length` / `list-ref`     |
+| transforms data          | whether full result is needed      |
+| performs effects         | `for-each` rather than `map`       |
+| does lookups             | alist size and frequency           |
+| compares values          | equality predicate and data size   |
+| processes numbers        | exactness and domain               |
+| builds strings           | repeated concatenation             |
+| converts symbols/strings | repeated conversion and validation |
+| creates closures         | allocation and captured state      |
+| uses rest args           | allocation                         |
+| mutates data             | aliasing and defensive copy        |
+| reads/writes files       | buffering and resource lifetime    |
+| calls FFI                | call granularity and conversion    |
+| uses macros              | expansion size and clarity         |
+| uses `eval`              | design justification               |
+
+### Final review form
+
+For any performance-sensitive Scheme function, record:
+
+| Field                        | Answer                                                   |
+| ---------------------------- | -------------------------------------------------------- |
+| Main data representation     | list / vector / record / alist / hash table / other      |
+| Dominant operation           | traversal / lookup / update / conversion / I/O / numeric |
+| Allocation sources           | cons / map / closure / string / rest args / records      |
+| Equality predicate           | `eq?` / `equal?` / custom / numeric / string             |
+| Mutation                     | none / local / public / hidden                           |
+| Tail recursion               | yes / no / not applicable                                |
+| External boundaries          | file / network / FFI / parser / none                     |
+| Implementation-specific APIs | listed                                                   |
+| Known asymptotic risks       | append / list-ref / length / alist                       |
+| Profiling evidence           | target implementation and result                         |
+| Optimization decision        | preserve / refactor / isolate / defer                    |
+
+### Final rule
+
+Scheme performance review should distinguish three levels:
+
+1. **Semantic cost:** wrong representation, wrong equality, wrong mutation model.
+2. **Asymptotic cost:** repeated traversal, quadratic accumulation, linear lookup in large maps.
+3. **Implementation cost:** compiler behavior, GC, numeric optimization, FFI, profiling results.
+
+The most valuable fixes usually come from the first two levels:
+
+* choose the right representation,
+* avoid repeated traversal,
+* avoid unnecessary allocation,
+* keep mutation controlled,
+* avoid dynamic evaluation,
+* normalize external data once,
+* and profile implementation-specific bottlenecks only after the program’s structure is sound.
+## APPENDIX 7 / G — *The Little Schemer* Recursion and Abstraction Pattern Index
+
+### Purpose — recursive design, list structure, higher-order abstraction, evaluator model
+
+This appendix reorganizes *The Little Schemer* notes into a systematic reference for recursive Scheme programming. It is not a chapter-by-chapter commentary. It is a pattern index: primitive laws, recursion schemas, list transformers, numeric recursion, nested-list recursion, set/relation operations, higher-order abstraction, continuation-style collectors, partial functions, fixed-point recursion, and a small evaluator model. 
+
+The central lesson is:
+
+**A Scheme function should reflect the shape of the data it consumes and the shape of the value it builds.**
+
+### The working subset — `atom?`, `lat`, S-expressions, numbers, pairs
+
+The style here uses a deliberately small Scheme subset. The purpose is not full modern Scheme programming, but recursive pattern recognition.
+
+```scheme
+(define atom?
+  (lambda (x)
+    (and (not (pair? x))
+         (not (null? x)))))
+```
+
+| Concept               | Meaning                        | Typical predicate            | Recursive question              |
+| --------------------- | ------------------------------ | ---------------------------- | ------------------------------- |
+| atom                  | non-pair, non-empty-list value | `atom?`                      | usually no structural recursion |
+| empty list            | list with no elements          | `null?`                      | base case for lists             |
+| `lat`                 | list of atoms                  | `lat?`                       | empty or atom-first-rest        |
+| S-expression          | atom or list                   | `atom?` plus list tests      | atom case or list case          |
+| natural number        | built from zero and successor  | `zero?`, `sub1`, `add1`      | zero or predecessor             |
+| pair-like structure   | two-part compound              | `first`, `second`            | recurse on components           |
+| arithmetic expression | atom or compound expression    | operator/accessor predicates | recurse on subexpressions       |
+| environment table     | list of entries                | `null?`, entry lookup        | search current entry, then rest |
+
+**Design meaning:** This subset trains structural recursion. Later professional Scheme adds records, modules, SRFIs, hash tables, exceptions, macros, and implementation-specific APIs, but the recursive discipline remains useful.
+
+### Primitive laws — safe structural access
+
+The primitive operations are used under strict structural assumptions.
+
+| Primitive | Safe input                                     | Result shape    | Design warning                                                        |
+| --------- | ---------------------------------------------- | --------------- | --------------------------------------------------------------------- |
+| `car`     | non-empty list / pair in ordinary Scheme       | first component | never call before proving non-empty structure                         |
+| `cdr`     | non-empty list / pair in ordinary Scheme       | rest component  | in the simplified book model, cdr of a non-empty list is another list |
+| `cons`    | S-expression plus list in the simplified model | new list        | build lists from front                                                |
+| `null?`   | list in the simplified model                   | boolean         | base test for list recursion                                          |
+| `eq?`     | non-numeric atoms in the simplified model      | boolean         | later generalized by `eqan?` / `equal?`-style predicates              |
+
+In full Scheme, `cons` can construct dotted pairs and `null?` can be applied more broadly than the simplified teaching laws suggest, but this appendix preserves the teaching model because it forces disciplined recursion.
+
+### Commandments as design rules — recursion, construction, abstraction
+
+The commandments can be restated as professional design rules.
+
+| Rule                                  | Practical meaning                                                             | Typical form                             |
+| ------------------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------- |
+| ask the right base question           | every recursive domain has a termination predicate                            | `null?`, `zero?`, `atom?`                |
+| build lists with `cons`               | recursive list construction prepends the current result                       | `(cons current recursive-result)`        |
+| describe the first typical element    | decide what to do with `(car lat)` before recursing                           | transform, remove, insert, count         |
+| change an argument toward termination | every recursive call must move closer to a base case                          | `(cdr lat)`, `(sub1 n)`                  |
+| test the argument that changes        | the base condition must correspond to the changing argument                   | `cdr` → `null?`, `sub1` → `zero?`        |
+| choose identity values                | base value should be neutral for the building operation                       | `0`, `1`, `'()`                          |
+| correct before simplifying            | write the structurally obvious version first                                  | simplify after correctness               |
+| recurse on same-nature subparts       | list recurses on list; expression recurses on expression                      | `(car l)` and `(cdr l)` for nested lists |
+| use helpers for representation        | avoid raw `car` / `cdr` chains in domain logic                                | `operator`, `1st-sub-exp`                |
+| abstract repeated patterns            | turn repeated recursive skeletons into functions                              | `insert-g`, `rember-f`                   |
+| collect multiple results together     | use collectors/continuations when one traversal should produce several values | `multirember&co`, `evens-only*&co`       |
+
+### Recursive schema index — choose by data shape
+
+| Data shape                | Base case                      | Recursive step                   | Result builder             | Example family                       |
+| ------------------------- | ------------------------------ | -------------------------------- | -------------------------- | ------------------------------------ |
+| `lat`                     | `(null? lat)`                  | `(cdr lat)`                      | `cons`, boolean, number    | `lat?`, `member?`, `rember`, `occur` |
+| natural number            | `(zero? n)`                    | `(sub1 n)`                       | `add1`, `sub1`, `o+`, `o*` | arithmetic                           |
+| tuple of numbers          | `(null? tup)`                  | `(cdr tup)`                      | `o+`, `cons`               | `addtup`, `tup+`                     |
+| nested S-expression list  | `(null? l)`, `(atom? (car l))` | `(car l)`, `(cdr l)`             | `cons`, `+`, `or`          | `rember*`, `occur*`, `member*`       |
+| arithmetic expression     | atom or compound               | subexpressions                   | operator dispatch          | `numbered?`, `value`                 |
+| set as `lat`              | `(null? set)`                  | `(cdr set)`                      | `member?`, `and`, `cons`   | `set?`, `subset?`, `makeset`         |
+| relation as list of pairs | `(null? rel)`                  | `(cdr rel)`                      | pair accessors             | `fun?`, `revrel`                     |
+| environment table         | `(null? table)`                | `(cdr table)`                    | fallback function          | `lookup-in-table`                    |
+| higher-order traversal    | base depends on data           | recursive call under closure     | generated function         | `rember-f`, `insert-g`               |
+| collector traversal       | base calls collector           | recursive call changes collector | continuation composition   | `multirember&co`                     |
+
+### Basic list predicates — `lat?` and `member?`
+
+`lat?` recognizes a list of atoms.
+
+```scheme
+(define lat?
+  (lambda (l)
+    (cond
+      ((null? l) #t)
+      ((atom? (car l)) (lat? (cdr l)))
+      (else #f))))
+```
+
+The recursive structure is:
+
+| Case                   | Question            | Result         |
+| ---------------------- | ------------------- | -------------- |
+| empty list             | no elements remain  | `#t`           |
+| first element atom     | check the rest      | recursive call |
+| first element not atom | list is not a `lat` | `#f`           |
+
+`member?` searches a `lat`.
+
+```scheme
+(define member?
+  (lambda (a lat)
+    (cond
+      ((null? lat) #f)
+      (else
+       (or (eq? (car lat) a)
+           (member? a (cdr lat)))))))
+```
+
+| Function  | Consumes | Builds  | Base value | Recursive idea              |
+| --------- | -------- | ------- | ---------- | --------------------------- |
+| `lat?`    | list     | boolean | `#t`       | all elements must be atoms  |
+| `member?` | list     | boolean | `#f`       | current match or rest match |
+
+**Practical rule:** Boolean list recursion often uses `and` for universal conditions and `or` for existential conditions.
+
+### Single-occurrence list transformers — `rember`, `insertR`, `insertL`, `subst`
+
+These functions stop changing the list after the first match.
+
+```scheme
+(define rember
+  (lambda (a lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) a) (cdr lat))
+      (else
+       (cons (car lat)
+             (rember a (cdr lat)))))))
+```
+
+```scheme
+(define insertR
+  (lambda (new old lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) old)
+       (cons old (cons new (cdr lat))))
+      (else
+       (cons (car lat)
+             (insertR new old (cdr lat)))))))
+```
+
+```scheme
+(define insertL
+  (lambda (new old lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) old)
+       (cons new (cons old (cdr lat))))
+      (else
+       (cons (car lat)
+             (insertL new old (cdr lat)))))))
+```
+
+```scheme
+(define subst
+  (lambda (new old lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) old)
+       (cons new (cdr lat)))
+      (else
+       (cons (car lat)
+             (subst new old (cdr lat)))))))
+```
+
+| Function  | Match behavior                          | Match result   | Non-match result  |
+| --------- | --------------------------------------- | -------------- | ----------------- |
+| `rember`  | remove first matching atom              | `(cdr lat)`    | keep current atom |
+| `insertR` | insert new atom to right of first match | `old new rest` | keep current atom |
+| `insertL` | insert new atom to left of first match  | `new old rest` | keep current atom |
+| `subst`   | replace first match                     | `new rest`     | keep current atom |
+
+**Pattern:** These functions share the same recursion skeleton. Only the match line changes.
+
+### Multi-occurrence list transformers — transform every match
+
+The `multi...` versions keep recursing after a match.
+
+```scheme
+(define multirember
+  (lambda (a lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) a)
+       (multirember a (cdr lat)))
+      (else
+       (cons (car lat)
+             (multirember a (cdr lat)))))))
+```
+
+```scheme
+(define multiinsertR
+  (lambda (new old lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) old)
+       (cons old
+             (cons new
+                   (multiinsertR new old (cdr lat)))))
+      (else
+       (cons (car lat)
+             (multiinsertR new old (cdr lat)))))))
+```
+
+```scheme
+(define multisubst
+  (lambda (new old lat)
+    (cond
+      ((null? lat) '())
+      ((eq? (car lat) old)
+       (cons new
+             (multisubst new old (cdr lat))))
+      (else
+       (cons (car lat)
+             (multisubst new old (cdr lat)))))))
+```
+
+| Single version | Multi version  | Difference                         |
+| -------------- | -------------- | ---------------------------------- |
+| `rember`       | `multirember`  | first match versus all matches     |
+| `insertR`      | `multiinsertR` | insert once versus every match     |
+| `insertL`      | `multiinsertL` | insert once versus every match     |
+| `subst`        | `multisubst`   | substitute once versus every match |
+
+**Design rule:** If the match branch returns `(cdr lat)`, the function stops structurally processing the rest. If the match branch calls recursively on `(cdr lat)`, it continues through the whole list.
+
+### Numeric recursion — numbers as recursive data
+
+The numeric chapter models arithmetic using `zero?`, `add1`, and `sub1`.
+
+```scheme
+(define add1
+  (lambda (n)
+    (+ n 1)))
+
+(define sub1
+  (lambda (n)
+    (- n 1)))
+```
+
+Addition by recursion on the second argument:
+
+```scheme
+(define o+
+  (lambda (n m)
+    (cond
+      ((zero? m) n)
+      (else
+       (add1 (o+ n (sub1 m)))))))
+```
+
+Multiplication as repeated addition:
+
+```scheme
+(define o*
+  (lambda (n m)
+    (cond
+      ((zero? m) 0)
+      (else
+       (o+ n (o* n (sub1 m)))))))
+```
+
+Exponentiation as repeated multiplication:
+
+```scheme
+(define o^
+  (lambda (n m)
+    (cond
+      ((zero? m) 1)
+      (else
+       (o* n (o^ n (sub1 m)))))))
+```
+
+| Operation | Recursive argument   | Base value                 | Recursive builder |
+| --------- | -------------------- | -------------------------- | ----------------- |
+| `o+`      | `m`                  | `n`                        | `add1`            |
+| `o-`      | `m`                  | `n`                        | `sub1`            |
+| `o*`      | `m`                  | `0`                        | `o+ n`            |
+| `o^`      | `m`                  | `1`                        | `o* n`            |
+| `o/`      | repeated subtraction | `0` when numerator smaller | `add1`            |
+
+**Design rule:** The base value must be the identity or terminating result for the operation being built: `0` for addition-like accumulation, `1` for multiplication-like accumulation, and `'()` for list construction.
+
+### Tuple recursion — numeric lists
+
+A tuple is a list of numbers. It combines list recursion with numeric operations.
+
+```scheme
+(define addtup
+  (lambda (tup)
+    (cond
+      ((null? tup) 0)
+      (else
+       (o+ (car tup)
+           (addtup (cdr tup)))))))
+```
+
+Pairwise tuple addition:
+
+```scheme
+(define tup+
+  (lambda (tup1 tup2)
+    (cond
+      ((null? tup1) tup2)
+      ((null? tup2) tup1)
+      (else
+       (cons (o+ (car tup1) (car tup2))
+             (tup+ (cdr tup1) (cdr tup2)))))))
+```
+
+| Function  | Domain         | Base case                   | Result |
+| --------- | -------------- | --------------------------- | ------ |
+| `addtup`  | tuple          | empty tuple                 | number |
+| `tup+`    | two tuples     | either empty                | tuple  |
+| `olength` | `lat`          | empty list                  | number |
+| `pick`    | number + `lat` | one-based index reaches one | atom   |
+| `rempick` | number + `lat` | one-based index reaches one | `lat`  |
+
+**Pattern:** When a function consumes both a number and a list, decide which argument moves toward termination and which base test corresponds to that movement.
+
+### Mixed atoms and numbers — `eqan?`, `no-nums`, `all-nums`, `occur`
+
+`eqan?` generalizes equality over atoms and numbers.
+
+```scheme
+(define eqan?
+  (lambda (a1 a2)
+    (cond
+      ((and (number? a1) (number? a2)) (= a1 a2))
+      ((or (number? a1) (number? a2)) #f)
+      (else (eq? a1 a2)))))
+```
+
+Filtering numbers:
+
+```scheme
+(define no-nums
+  (lambda (lat)
+    (cond
+      ((null? lat) '())
+      ((number? (car lat))
+       (no-nums (cdr lat)))
+      (else
+       (cons (car lat)
+             (no-nums (cdr lat)))))))
+```
+
+```scheme
+(define all-nums
+  (lambda (lat)
+    (cond
+      ((null? lat) '())
+      ((number? (car lat))
+       (cons (car lat)
+             (all-nums (cdr lat))))
+      (else
+       (all-nums (cdr lat))))))
+```
+
+Counting occurrences:
+
+```scheme
+(define occur
+  (lambda (a lat)
+    (cond
+      ((null? lat) 0)
+      ((eq? (car lat) a)
+       (add1 (occur a (cdr lat))))
+      (else
+       (occur a (cdr lat))))))
+```
+
+| Task                   | Base value | Match branch                     | Non-match branch       |
+| ---------------------- | ---------- | -------------------------------- | ---------------------- |
+| remove numbers         | `'()`      | skip number                      | `cons` non-number      |
+| collect numbers        | `'()`      | `cons` number                    | skip non-number        |
+| count occurrences      | `0`        | `add1` recursive count           | recursive count        |
+| compare atom-or-number | none       | `=` for numbers, `eq?` for atoms | type mismatch is false |
+
+### Nested list recursion — star functions
+
+A star function recursively descends into nested lists.
+
+```scheme
+(define rember*
+  (lambda (a l)
+    (cond
+      ((null? l) '())
+      ((atom? (car l))
+       (cond
+         ((eq? (car l) a)
+          (rember* a (cdr l)))
+         (else
+          (cons (car l)
+                (rember* a (cdr l))))))
+      (else
+       (cons (rember* a (car l))
+             (rember* a (cdr l)))))))
+```
+
+General nested-list schema:
+
+```scheme
+(define star-template
+  (lambda (l)
+    (cond
+      ((null? l) base-value)
+      ((atom? (car l))
+       atom-case)
+      (else
+       (combine (star-template (car l))
+                (star-template (cdr l)))))))
+```
+
+| Function   | Atom match behavior | Atom non-match behavior | List case                       |
+| ---------- | ------------------- | ----------------------- | ------------------------------- |
+| `rember*`  | remove atom         | keep atom               | recurse into `car` and `cdr`    |
+| `insertR*` | insert right        | keep atom               | recurse into `car` and `cdr`    |
+| `insertL*` | insert left         | keep atom               | recurse into `car` and `cdr`    |
+| `occur*`   | add one             | add zero                | add counts from `car` and `cdr` |
+| `member*`  | true if found       | search rest             | search `car` or `cdr`           |
+| `leftmost` | return first atom   | not applicable          | follow left branch              |
+
+**Design rule:** For nested lists, recur on all subparts that are of the same nature. A list’s `car` may itself be a list, so it may need recursion too.
+
+### Structural equality — `eqlist?` and `equal?`
+
+Nested structural equality asks whether two S-expressions have the same structure and atoms.
+
+```scheme
+(define equal-s?
+  (lambda (s1 s2)
+    (cond
+      ((and (atom? s1) (atom? s2))
+       (eqan? s1 s2))
+      ((or (atom? s1) (atom? s2))
+       #f)
+      (else
+       (eqlist? s1 s2)))))
+```
+
+```scheme
+(define eqlist?
+  (lambda (l1 l2)
+    (cond
+      ((and (null? l1) (null? l2)) #t)
+      ((or (null? l1) (null? l2)) #f)
+      (else
+       (and (equal-s? (car l1) (car l2))
+            (eqlist? (cdr l1) (cdr l2)))))))
+```
+
+| Case                                   | Result             |
+| -------------------------------------- | ------------------ |
+| both empty lists                       | `#t`               |
+| only one empty                         | `#f`               |
+| both first elements structurally equal | compare rest       |
+| one atom and one list                  | `#f`               |
+| both atoms                             | compare atomically |
+
+**Design rule:** Equality over recursively structured data is itself recursive over the same structure.
+
+### Arithmetic expressions — representation-specific interpreters
+
+Arithmetic expression evaluation first appears as direct structural recursion over an expression representation.
+
+Infix-like representation:
+
+```scheme
+'(1 o+ (3 o^ 4))
+```
+
+Accessors:
+
+```scheme
+(define 1st-sub-exp
+  (lambda (aexp)
+    (car aexp)))
+
+(define operator
+  (lambda (aexp)
+    (car (cdr aexp))))
+
+(define 2nd-sub-exp
+  (lambda (aexp)
+    (car (cdr (cdr aexp)))))
+```
+
+Evaluator:
+
+```scheme
+(define value
+  (lambda (nexp)
+    (cond
+      ((atom? nexp) nexp)
+      ((eq? (operator nexp) 'o+)
+       (+ (value (1st-sub-exp nexp))
+          (value (2nd-sub-exp nexp))))
+      ((eq? (operator nexp) 'o*)
+       (* (value (1st-sub-exp nexp))
+          (value (2nd-sub-exp nexp))))
+      ((eq? (operator nexp) 'o^)
+       (expt (value (1st-sub-exp nexp))
+             (value (2nd-sub-exp nexp)))))))
+```
+
+| Representation | Operator position | First subexpression | Second subexpression |
+| -------------- | ----------------- | ------------------- | -------------------- |
+| infix-like     | middle            | first               | third                |
+| prefix-like    | first             | second              | third                |
+
+**Design rule:** Use helper functions to abstract from representation. Once `operator`, `1st-sub-exp`, and `2nd-sub-exp` exist, the evaluator no longer depends directly on raw `car` / `cdr` chains.
+
+### Operator abstraction — from branch repetition to function values
+
+The arithmetic evaluator can be simplified by mapping operator symbols to functions.
+
+```scheme
+(define atom-to-function
+  (lambda (op)
+    (cond
+      ((eq? op 'o+) +)
+      ((eq? op 'o*) *)
+      ((eq? op 'o^) expt))))
+```
+
+Then:
+
+```scheme
+(define value
+  (lambda (nexp)
+    (cond
+      ((atom? nexp) nexp)
+      (else
+       ((atom-to-function (operator nexp))
+        (value (1st-sub-exp nexp))
+        (value (2nd-sub-exp nexp)))))))
+```
+
+| Earlier pattern                        | Abstracted pattern           |
+| -------------------------------------- | ---------------------------- |
+| branch on each operator                | map operator to function     |
+| repeat recursive calls in every branch | perform recursive calls once |
+| functions named in code                | functions returned as values |
+| syntax-level operator symbol           | runtime procedure value      |
+
+**Design meaning:** This is the transition from first-order branching to higher-order abstraction.
+
+### Alternative number representation — numbers as lists
+
+A natural number can be represented as a list of empty lists.
+
+```scheme
+(define sero?
+  (lambda (n)
+    (null? n)))
+
+(define edd1
+  (lambda (n)
+    (cons '() n)))
+
+(define zub1
+  (lambda (n)
+    (cdr n)))
+```
+
+Addition under this representation:
+
+```scheme
+(define .+
+  (lambda (n m)
+    (cond
+      ((sero? m) n)
+      (else
+       (edd1 (.+ n (zub1 m)))))))
+```
+
+| Abstract operation | Ordinary-number version | List-number version |
+| ------------------ | ----------------------- | ------------------- |
+| zero test          | `zero?`                 | `sero?`             |
+| successor          | `add1`                  | `edd1`              |
+| predecessor        | `sub1`                  | `zub1`              |
+| addition           | `o+`                    | `.+`                |
+
+**Design rule:** Representation can change if the operations are abstracted. This prepares the idea of data abstraction.
+
+### Sets — `set?`, `makeset`, `subset?`, `eqset?`
+
+Sets are represented as lists of atoms without duplicates.
+
+```scheme
+(define set?
+  (lambda (lat)
+    (cond
+      ((null? lat) #t)
+      ((member? (car lat) (cdr lat)) #f)
+      (else (set? (cdr lat))))))
+```
+
+Removing duplicates:
+
+```scheme
+(define makeset
+  (lambda (lat)
+    (cond
+      ((null? lat) '())
+      ((member? (car lat) (cdr lat))
+       (makeset (cdr lat)))
+      (else
+       (cons (car lat)
+             (makeset (cdr lat)))))))
+```
+
+Alternative using `multirember`:
+
+```scheme
+(define makeset
+  (lambda (lat)
+    (cond
+      ((null? lat) '())
+      (else
+       (cons (car lat)
+             (makeset
+              (multirember (car lat) (cdr lat))))))))
+```
+
+Subset:
+
+```scheme
+(define subset?
+  (lambda (set1 set2)
+    (cond
+      ((null? set1) #t)
+      (else
+       (and (member? (car set1) set2)
+            (subset? (cdr set1) set2))))))
+```
+
+Set equality:
+
+```scheme
+(define eqset?
+  (lambda (set1 set2)
+    (and (subset? set1 set2)
+         (subset? set2 set1))))
+```
+
+| Set function | Meaning                                   | Recursive idea                      |
+| ------------ | ----------------------------------------- | ----------------------------------- |
+| `set?`       | no duplicate atom                         | current not in rest and rest is set |
+| `makeset`    | remove duplicates                         | keep or skip current                |
+| `subset?`    | all elements of one set appear in another | member check plus recursion         |
+| `eqset?`     | mutual subset                             | two subset checks                   |
+
+**Design rule:** A set represented as a list needs explicit invariants. The representation does not enforce uniqueness automatically.
+
+### Set operations — intersection, union, difference
+
+Typical set operations follow the same recursive skeleton.
+
+```scheme
+(define intersect?
+  (lambda (set1 set2)
+    (cond
+      ((null? set1) #f)
+      (else
+       (or (member? (car set1) set2)
+           (intersect? (cdr set1) set2))))))
+```
+
+```scheme
+(define intersect
+  (lambda (set1 set2)
+    (cond
+      ((null? set1) '())
+      ((member? (car set1) set2)
+       (cons (car set1)
+             (intersect (cdr set1) set2)))
+      (else
+       (intersect (cdr set1) set2)))))
+```
+
+```scheme
+(define union
+  (lambda (set1 set2)
+    (cond
+      ((null? set1) set2)
+      ((member? (car set1) set2)
+       (union (cdr set1) set2))
+      (else
+       (cons (car set1)
+             (union (cdr set1) set2))))))
+```
+
+| Operation              | Keep current element when…               | Base value |
+| ---------------------- | ---------------------------------------- | ---------- |
+| intersection           | it appears in second set                 | `'()`      |
+| union                  | it does not already appear in second set | `set2`     |
+| difference             | it does not appear in second set         | `'()`      |
+| intersection predicate | any element appears in second set        | `#f`       |
+
+**Design rule:** Set operations are list functions plus a membership invariant.
+
+### Relations and functions — pairs, firsts, seconds
+
+A relation is a set of pairs. A function is a relation whose first components are unique.
+
+Pair helpers:
+
+```scheme
+(define first
+  (lambda (p)
+    (car p)))
+
+(define second
+  (lambda (p)
+    (car (cdr p))))
+
+(define build
+  (lambda (s1 s2)
+    (cons s1 (cons s2 '()))))
+```
+
+Reverse a pair:
+
+```scheme
+(define revpair
+  (lambda (p)
+    (build (second p) (first p))))
+```
+
+Reverse a relation:
+
+```scheme
+(define revrel
+  (lambda (rel)
+    (cond
+      ((null? rel) '())
+      (else
+       (cons (revpair (car rel))
+             (revrel (cdr rel)))))))
+```
+
+Function predicate:
+
+```scheme
+(define fun?
+  (lambda (rel)
+    (set? (firsts rel))))
+```
+
+| Concept           | Representation              | Predicate / operation      |
+| ----------------- | --------------------------- | -------------------------- |
+| pair              | two-element list            | `first`, `second`, `build` |
+| relation          | list of pairs               | relation operations        |
+| function          | relation with unique firsts | `fun?`                     |
+| full function     | unique seconds too          | `fullfun?`                 |
+| reversed relation | pair components swapped     | `revrel`                   |
+
+**Design rule:** Once pair helpers exist, relation code should not contain raw nested `car` / `cdr` chains.
+
+### Higher-order predicates — `eq?-c` and predicate factories
+
+A function can return a predicate.
+
+```scheme
+(define eq?-c
+  (lambda (a)
+    (lambda (x)
+      (eq? a x))))
+```
+
+Example:
+
+```scheme
+(define eq?-tuna
+  (eq?-c 'tuna))
+```
+
+Then:
+
+```scheme
+(eq?-tuna 'tuna)
+```
+
+| Pattern                                    | Meaning                  |
+| ------------------------------------------ | ------------------------ |
+| outer function receives fixed value        | configuration            |
+| inner function receives tested value       | actual predicate         |
+| returned closure remembers fixed value     | lexical capture          |
+| predicate can be passed to other functions | higher-order programming |
+
+**Design rule:** When a value stays fixed across many calls, capture it in a closure.
+
+### Higher-order list transformers — `rember-f`, `insertL-f`, `insertR-f`
+
+A transformer can be parameterized by its equality test.
+
+```scheme
+(define rember-f
+  (lambda (test?)
+    (lambda (a l)
+      (cond
+        ((null? l) '())
+        ((test? (car l) a) (cdr l))
+        (else
+         (cons (car l)
+               ((rember-f test?) a (cdr l))))))))
+```
+
+Specialization:
+
+```scheme
+(define rember-eq?
+  (rember-f eq?))
+```
+
+| Ordinary version | Higher-order version | What varies        |
+| ---------------- | -------------------- | ------------------ |
+| `rember`         | `rember-f`           | equality predicate |
+| `insertL`        | `insertL-f`          | equality predicate |
+| `insertR`        | `insertR-f`          | equality predicate |
+| `multirember`    | `multirember-f`      | equality predicate |
+
+**Design rule:** When functions differ only by one operation, pass that operation as a procedure.
+
+### General insertion abstraction — `insert-g`
+
+`insertL`, `insertR`, `subst`, and `rember` share the same traversal and differ only in what happens at a match.
+
+```scheme
+(define insert-g
+  (lambda (seq)
+    (lambda (new old l)
+      (cond
+        ((null? l) '())
+        ((eq? (car l) old)
+         (seq new old (cdr l)))
+        (else
+         (cons (car l)
+               ((insert-g seq) new old (cdr l))))))))
+```
+
+Sequence functions:
+
+```scheme
+(define seqR
+  (lambda (new old l)
+    (cons old (cons new l))))
+
+(define seqL
+  (lambda (new old l)
+    (cons new (cons old l))))
+
+(define seqS
+  (lambda (new old l)
+    (cons new l)))
+
+(define seqrem
+  (lambda (new old l)
+    l))
+```
+
+Definitions by specialization:
+
+```scheme
+(define insertR (insert-g seqR))
+(define insertL (insert-g seqL))
+(define subst   (insert-g seqS))
+```
+
+| Function                | `seq` behavior                |
+| ----------------------- | ----------------------------- |
+| `insertR`               | keep old, insert new after it |
+| `insertL`               | insert new before old         |
+| `subst`                 | replace old with new          |
+| `rember`-style behavior | discard current match         |
+
+**Design rule:** Abstract common recursion patterns only after seeing the repeated skeleton.
+
+### Continuation-style collectors — collecting more than one result
+
+A collector is a function passed along during recursion to decide what to do with accumulated results.
+
+`multirember&co` removes all matching atoms and also collects removed atoms.
+
+```scheme
+(define multirember&co
+  (lambda (a lat col)
+    (cond
+      ((null? lat)
+       (col '() '()))
+      ((eq? (car lat) a)
+       (multirember&co
+        a
+        (cdr lat)
+        (lambda (newlat seen)
+          (col newlat
+               (cons (car lat) seen)))))
+      (else
+       (multirember&co
+        a
+        (cdr lat)
+        (lambda (newlat seen)
+          (col (cons (car lat) newlat)
+               seen)))))))
+```
+
+Collector examples:
+
+```scheme
+(define a-friend
+  (lambda (newlat seen)
+    (null? seen)))
+
+(define last-friend
+  (lambda (newlat seen)
+    (length newlat)))
+```
+
+| Collector parameter | Meaning                                 |
+| ------------------- | --------------------------------------- |
+| `newlat`            | list after removing matches             |
+| `seen`              | removed matching atoms                  |
+| `col`               | final decision procedure                |
+| base case           | calls collector with empty accumulators |
+| match case          | adds current atom to `seen`             |
+| non-match case      | adds current atom to `newlat`           |
+
+**Design meaning:** The traversal does not decide the final result. The collector decides. This separates *data traversal* from *result selection*.
+
+### Multiple-result insertion — `multiinsertLR&co`
+
+`multiinsertLR&co` inserts around two different target atoms and counts both kinds of insertion.
+
+```scheme
+(define multiinsertLR&co
+  (lambda (new oldL oldR lat col)
+    (cond
+      ((null? lat)
+       (col '() 0 0))
+      ((eq? (car lat) oldL)
+       (multiinsertLR&co
+        new oldL oldR (cdr lat)
+        (lambda (newlat L R)
+          (col (cons new (cons oldL newlat))
+               (+ 1 L)
+               R))))
+      ((eq? (car lat) oldR)
+       (multiinsertLR&co
+        new oldL oldR (cdr lat)
+        (lambda (newlat L R)
+          (col (cons oldR (cons new newlat))
+               L
+               (+ 1 R)))))
+      (else
+       (multiinsertLR&co
+        new oldL oldR (cdr lat)
+        (lambda (newlat L R)
+          (col (cons (car lat) newlat)
+               L
+               R)))))))
+```
+
+| Collected value | Meaning                    |
+| --------------- | -------------------------- |
+| `newlat`        | transformed list           |
+| `L`             | number of left insertions  |
+| `R`             | number of right insertions |
+
+Selectors:
+
+```scheme
+(define col-list
+  (lambda (lat L R)
+    lat))
+
+(define col-left-count
+  (lambda (lat L R)
+    L))
+
+(define col-right-count
+  (lambda (lat L R)
+    R))
+```
+
+**Design rule:** If one traversal can compute several useful results, a collector can avoid repeating the traversal.
+
+### Nested collectors — `evens-only*&co`
+
+`evens-only*` removes odd numbers from nested lists.
+
+```scheme
+(define evens-only*
+  (lambda (l)
+    (cond
+      ((null? l) '())
+      ((atom? (car l))
+       (cond
+         ((even? (car l))
+          (cons (car l)
+                (evens-only* (cdr l))))
+         (else
+          (evens-only* (cdr l)))))
+      (else
+       (cons (evens-only* (car l))
+             (evens-only* (cdr l)))))))
+```
+
+The collector version simultaneously computes:
+
+1. the nested list of evens,
+2. the product of all evens,
+3. the sum of all odds.
+
+```scheme
+(define evens-only*&co
+  (lambda (l col)
+    (cond
+      ((null? l)
+       (col '() 1 0))
+      ((atom? (car l))
+       (cond
+         ((even? (car l))
+          (evens-only*&co
+           (cdr l)
+           (lambda (newl p s)
+             (col (cons (car l) newl)
+                  (* (car l) p)
+                  s))))
+         (else
+          (evens-only*&co
+           (cdr l)
+           (lambda (newl p s)
+             (col newl
+                  p
+                  (+ (car l) s)))))))
+      (else
+       (evens-only*&co
+        (car l)
+        (lambda (al ap as)
+          (evens-only*&co
+           (cdr l)
+           (lambda (dl dp ds)
+             (col (cons al dl)
+                  (* ap dp)
+                  (+ as ds))))))))))
+```
+
+Collector selectors:
+
+```scheme
+(define evens-friend
+  (lambda (e p s)
+    e))
+
+(define evens-product-friend
+  (lambda (e p s)
+    p))
+
+(define evens-sum-friend
+  (lambda (e p s)
+    s))
+
+(define the-last-friend
+  (lambda (e p s)
+    (cons s (cons p e))))
+```
+
+| Collector value  | Base value | Combination |
+| ---------------- | ---------- | ----------- |
+| evens list       | `'()`      | `cons`      |
+| product of evens | `1`        | `*`         |
+| sum of odds      | `0`        | `+`         |
+
+**Design rule:** Collectors generalize return values. Instead of returning one fixed result, the traversal supplies all relevant intermediate products to a final decision procedure.
+
+### Partial functions — termination is not automatic
+
+A partial function is not guaranteed to produce a value for every input.
+
+```scheme
+(define eternity
+  (lambda (x)
+    (eternity x)))
+```
+
+`eternity` never returns.
+
+`looking` uses indirect indexing and may fail to terminate depending on the structure of the list.
+
+```scheme
+(define looking
+  (lambda (a lat)
+    (keep-looking a (pick 1 lat) lat)))
+```
+
+```scheme
+(define keep-looking
+  (lambda (a sorn lat)
+    (cond
+      ((number? sorn)
+       (keep-looking a (pick sorn lat) lat))
+      (else
+       (eq? sorn a)))))
+```
+
+| Function kind               | Termination basis                 |
+| --------------------------- | --------------------------------- |
+| natural list recursion      | `(cdr lat)` moves toward `null?`  |
+| natural number recursion    | `(sub1 n)` moves toward `zero?`   |
+| nested structural recursion | subparts are structurally smaller |
+| unnatural recursion         | movement is not obviously smaller |
+| partial function            | some inputs may never terminate   |
+
+**Design rule:** A recursive call must change an argument in a way that is connected to a base test. If the change is indirect or not smaller, termination becomes a separate proof obligation.
+
+### Pair transformations — `shift`, `align`, `length*`, `weight*`, `shuffle`
+
+Pair-oriented examples show that termination can depend on a measure more subtle than “list gets shorter.”
+
+Helpers:
+
+```scheme
+(define first
+  (lambda (p)
+    (car p)))
+
+(define second
+  (lambda (p)
+    (car (cdr p))))
+
+(define build
+  (lambda (s1 s2)
+    (cons s1 (cons s2 '()))))
+```
+
+Pair predicate:
+
+```scheme
+(define a-pair?
+  (lambda (x)
+    (cond
+      ((atom? x) #f)
+      ((null? x) #f)
+      ((null? (cdr x)) #f)
+      ((null? (cdr (cdr x))) #t)
+      (else #f))))
+```
+
+Shift:
+
+```scheme
+(define shift
+  (lambda (pair)
+    (build (first (first pair))
+           (build (second (first pair))
+                  (second pair)))))
+```
+
+Align:
+
+```scheme
+(define align
+  (lambda (pora)
+    (cond
+      ((atom? pora) pora)
+      ((a-pair? (first pora))
+       (align (shift pora)))
+      (else
+       (build (first pora)
+              (align (second pora)))))))
+```
+
+Measurements:
+
+```scheme
+(define length*
+  (lambda (pora)
+    (cond
+      ((atom? pora) 1)
+      (else
+       (+ (length* (first pora))
+          (length* (second pora)))))))
+```
+
+```scheme
+(define weight*
+  (lambda (pora)
+    (cond
+      ((atom? pora) 1)
+      (else
+       (+ (* (weight* (first pora)) 2)
+          (weight* (second pora)))))))
+```
+
+| Function  | Purpose                   | Termination idea                  |
+| --------- | ------------------------- | --------------------------------- |
+| `shift`   | restructures nested pair  | not a traversal itself            |
+| `align`   | normalizes pair nesting   | guided by decreasing weight       |
+| `length*` | counts atoms              | structural recursion              |
+| `weight*` | weighted measure of shape | used to reason about progress     |
+| `shuffle` | swaps pair structure      | may not terminate for some shapes |
+
+**Design rule:** Sometimes termination requires a custom measure. “Changing an argument” is insufficient unless the change moves toward termination.
+
+### Large recursive functions — `C` and `A`
+
+The Collatz-like function and Ackermann-style function demonstrate that recursive definitions can be compact while their behavior is difficult.
+
+```scheme
+(define C
+  (lambda (n)
+    (cond
+      ((one? n) 1)
+      ((even? n) (C (/ n 2)))
+      (else
+       (C (add1 (* 3 n)))))))
+```
+
+```scheme
+(define A
+  (lambda (n m)
+    (cond
+      ((zero? n) (add1 m))
+      ((zero? m) (A (sub1 n) 1))
+      (else
+       (A (sub1 n)
+          (A n (sub1 m)))))))
+```
+
+| Function   | Lesson                                                 |
+| ---------- | ------------------------------------------------------ |
+| `C`        | simple code may have difficult termination behavior    |
+| `A`        | structurally recursive-looking code can grow very fast |
+| `eternity` | some recursive functions never terminate               |
+| `looking`  | indirect recursion may be partial                      |
+
+**Design rule:** Recursion is not automatically safe. Structural decrease and termination tests matter.
+
+### Fixed-point recursion — building recursion from higher-order functions
+
+The length examples show how recursion can be built by passing a “recursive function” as an argument.
+
+A length-maker shape:
+
+```scheme
+(lambda (length)
+  (lambda (l)
+    (cond
+      ((null? l) 0)
+      (else
+       (add1 (length (cdr l)))))))
+```
+
+The applicative-order fixed-point combinator:
+
+```scheme
+(define Y
+  (lambda (le)
+    ((lambda (f) (f f))
+     (lambda (f)
+       (le (lambda (x)
+             ((f f) x)))))))
+```
+
+Then a recursive `length` can be obtained by applying `Y` to a length-making function.
+
+| Concept                    | Meaning                                             |
+| -------------------------- | --------------------------------------------------- |
+| `eternity`                 | placeholder for non-returning recursion             |
+| length-maker               | function that receives recursive capability         |
+| fixed point                | function that satisfies recursive equation          |
+| applicative-order `Y`      | fixed-point combinator adapted for eager evaluation |
+| recursion without `define` | recursion obtained from self-application            |
+
+**Design meaning:** `define` is not the essence of recursion. Recursion can be expressed through higher-order functions and fixed points.
+
+### Environment entries — names and values
+
+An entry associates a list of names with a list of values.
+
+```scheme
+(define build
+  (lambda (s1 s2)
+    (cons s1 (cons s2 '()))))
+
+(define new-entry build)
+```
+
+Accessors:
+
+```scheme
+(define first
+  (lambda (p)
+    (car p)))
+
+(define second
+  (lambda (p)
+    (car (cdr p))))
+
+(define third
+  (lambda (l)
+    (car (cdr (cdr l)))))
+```
+
+Lookup inside one entry:
+
+```scheme
+(define lookup-in-entry
+  (lambda (name entry entry-f)
+    (lookup-in-entry-help
+     name
+     (first entry)
+     (second entry)
+     entry-f)))
+```
+
+```scheme
+(define lookup-in-entry-help
+  (lambda (name names values entry-f)
+    (cond
+      ((null? names) (entry-f name))
+      ((eq? (car names) name) (car values))
+      (else
+       (lookup-in-entry-help
+        name
+        (cdr names)
+        (cdr values)
+        entry-f)))))
+```
+
+| Component              | Meaning                       |
+| ---------------------- | ----------------------------- |
+| `names`                | formal names / identifiers    |
+| `values`               | corresponding values          |
+| `entry-f`              | fallback if name is missing   |
+| equal length invariant | every name has a value        |
+| recursive lookup       | compare first name, then rest |
+
+**Design rule:** An environment is a data structure. Lookup is recursive search over that structure.
+
+### Tables as environments — chained entries
+
+A table is a list of entries.
+
+```scheme
+(define extend-table cons)
+```
+
+Lookup through table:
+
+```scheme
+(define lookup-in-table
+  (lambda (name table table-f)
+    (cond
+      ((null? table) (table-f name))
+      (else
+       (lookup-in-entry
+        name
+        (car table)
+        (lambda (name)
+          (lookup-in-table
+           name
+           (cdr table)
+           table-f)))))))
+```
+
+| Search level   | If found                        | If not found         |
+| -------------- | ------------------------------- | -------------------- |
+| current entry  | return value                    | call entry fallback  |
+| entry fallback | search rest of table            | call table fallback  |
+| empty table    | no binding                      | call table-f         |
+| extended table | new entry shadows older entries | search current first |
+
+**Design meaning:** Lexical environments can be represented as tables. Closures later capture such tables.
+
+### Evaluator dispatch — expressions to actions
+
+The evaluator classifies expressions and dispatches to action functions.
+
+```scheme
+(define expression-to-action
+  (lambda (e)
+    (cond
+      ((atom? e) (atom-to-action e))
+      (else
+       (list-to-action e)))))
+```
+
+Atoms:
+
+```scheme
+(define atom-to-action
+  (lambda (e)
+    (cond
+      ((number? e) *const)
+      ((eq? e #t) *const)
+      ((eq? e #f) *const)
+      ((eq? e 'cons) *const)
+      ((eq? e 'car) *const)
+      ((eq? e 'cdr) *const)
+      ((eq? e 'null?) *const)
+      ((eq? e 'eq?) *const)
+      ((eq? e 'atom?) *const)
+      ((eq? e 'zero?) *const)
+      ((eq? e 'add1) *const)
+      ((eq? e 'sub1) *const)
+      ((eq? e 'number?) *const)
+      (else *identifier))))
+```
+
+Lists:
+
+```scheme
+(define list-to-action
+  (lambda (e)
+    (cond
+      ((atom? (car e))
+       (cond
+         ((eq? (car e) 'quote) *quote)
+         ((eq? (car e) 'lambda) *lambda)
+         ((eq? (car e) 'cond) *cond)
+         (else *application)))
+      (else *application))))
+```
+
+| Expression kind                   | Action         |
+| --------------------------------- | -------------- |
+| number / boolean / primitive name | `*const`       |
+| identifier                        | `*identifier`  |
+| quoted form                       | `*quote`       |
+| lambda form                       | `*lambda`      |
+| cond form                         | `*cond`        |
+| ordinary application              | `*application` |
+
+**Design rule:** Evaluation is dispatch by expression shape.
+
+### Meaning and value — evaluator core
+
+```scheme
+(define value
+  (lambda (e)
+    (meaning e '())))
+```
+
+```scheme
+(define meaning
+  (lambda (e table)
+    ((expression-to-action e) e table)))
+```
+
+| Function               | Role                                 |
+| ---------------------- | ------------------------------------ |
+| `value`                | evaluate expression in empty table   |
+| `meaning`              | evaluate expression in a given table |
+| `expression-to-action` | choose evaluator action              |
+| action functions       | implement semantic cases             |
+
+**Design meaning:** An evaluator is a recursive function over expression structure plus an environment.
+
+### Constants, identifiers, quote, lambda
+
+Constants:
+
+```scheme
+(define *const
+  (lambda (e table)
+    (cond
+      ((number? e) e)
+      ((eq? e #t) #t)
+      ((eq? e #f) #f)
+      (else
+       (build 'primitive e)))))
+```
+
+Quote:
+
+```scheme
+(define *quote
+  (lambda (e table)
+    (text-of e)))
+
+(define text-of second)
+```
+
+Identifier:
+
+```scheme
+(define *identifier
+  (lambda (e table)
+    (lookup-in-table e table initial-table)))
+```
+
+Lambda creates a non-primitive value that stores its environment.
+
+```scheme
+(define *lambda
+  (lambda (e table)
+    (build 'non-primitive
+           (cons table (cdr e)))))
+```
+
+Closure helpers:
+
+```scheme
+(define table-of first)
+(define formals-of second)
+(define body-of third)
+```
+
+| Expression | Meaning                               |
+| ---------- | ------------------------------------- |
+| constant   | itself or primitive representation    |
+| identifier | lookup in table                       |
+| quote      | literal text                          |
+| lambda     | closure: environment + formals + body |
+
+**Design rule:** A closure is data: it stores the environment where the lambda was created.
+
+### `cond` evaluation — `evcon`
+
+```scheme
+(define evcon
+  (lambda (lines table)
+    (cond
+      ((else? (question-of (car lines)))
+       (meaning (answer-of (car lines)) table))
+      ((meaning (question-of (car lines)) table)
+       (meaning (answer-of (car lines)) table))
+      (else
+       (evcon (cdr lines) table)))))
+```
+
+Helpers:
+
+```scheme
+(define else?
+  (lambda (x)
+    (cond
+      ((atom? x) (eq? x 'else))
+      (else #f))))
+
+(define question-of first)
+(define answer-of second)
+(define cond-lines-of cdr)
+
+(define *cond
+  (lambda (e table)
+    (evcon (cond-lines-of e) table)))
+```
+
+| Part             | Meaning                          |
+| ---------------- | -------------------------------- |
+| line question    | condition expression             |
+| line answer      | result expression                |
+| `else`           | default true branch              |
+| `evcon`          | searches for first true line     |
+| no matching line | outside the simplified safe path |
+
+**Design rule:** Special forms have special evaluation rules. `cond` does not evaluate every branch.
+
+### Application — evaluating arguments and applying functions
+
+Evaluate argument list:
+
+```scheme
+(define evlis
+  (lambda (args table)
+    (cond
+      ((null? args) '())
+      (else
+       (cons (meaning (car args) table)
+             (evlis (cdr args) table))))))
+```
+
+Application:
+
+```scheme
+(define *application
+  (lambda (e table)
+    (applyz
+     (meaning (function-of e) table)
+     (evlis (arguments-of e) table))))
+
+(define function-of car)
+(define arguments-of cdr)
+```
+
+| Application phase            | Meaning                             |
+| ---------------------------- | ----------------------------------- |
+| evaluate function expression | produce primitive or closure        |
+| evaluate arguments           | produce list of values              |
+| apply                        | dispatch on primitive/non-primitive |
+| return                       | result of application               |
+
+**Design rule:** Ordinary application evaluates operator and operands before applying the resulting function.
+
+### Primitive and closure application
+
+Classification:
+
+```scheme
+(define primitive?
+  (lambda (l)
+    (eq? (first l) 'primitive)))
+
+(define non-primitive?
+  (lambda (l)
+    (eq? (first l) 'non-primitive)))
+```
+
+Apply:
+
+```scheme
+(define applyz
+  (lambda (fun vals)
+    (cond
+      ((primitive? fun)
+       (apply-primitive (second fun) vals))
+      ((non-primitive? fun)
+       (apply-closure (second fun) vals)))))
+```
+
+Primitive application:
+
+```scheme
+(define apply-primitive
+  (lambda (name vals)
+    (cond
+      ((eq? name 'cons)
+       (cons (first vals) (second vals)))
+      ((eq? name 'car)
+       (car (first vals)))
+      ((eq? name 'cdr)
+       (cdr (first vals)))
+      ((eq? name 'null?)
+       (null? (first vals)))
+      ((eq? name 'eq?)
+       (eq? (first vals) (second vals)))
+      ((eq? name 'zero?)
+       (zero? (first vals)))
+      ((eq? name 'add1)
+       (+ 1 (first vals)))
+      ((eq? name 'sub1)
+       (- (first vals) 1))
+      ((eq? name 'number?)
+       (number? (first vals))))))
+```
+
+Closure application:
+
+```scheme
+(define apply-closure
+  (lambda (closure vals)
+    (meaning
+     (body-of closure)
+     (extend-table
+      (new-entry (formals-of closure) vals)
+      (table-of closure)))))
+```
+
+| Function kind   | Representation               | Apply behavior                          |
+| --------------- | ---------------------------- | --------------------------------------- |
+| primitive       | `(primitive name)`           | call built-in operation                 |
+| non-primitive   | environment + formals + body | extend captured table and evaluate body |
+| closure         | saved environment            | lexical scope                           |
+| argument values | list of evaluated operands   | bind to formals                         |
+
+**Design meaning:** Function application is environment extension plus body evaluation.
+
+### Evaluator as the endpoint of the book’s patterns
+
+The evaluator combines all earlier ideas.
+
+| Earlier pattern           | Evaluator role                           |
+| ------------------------- | ---------------------------------------- |
+| `car`, `cdr`, `cons` laws | expression and environment manipulation  |
+| list recursion            | argument evaluation, table lookup        |
+| nested recursion          | expression evaluation                    |
+| helper functions          | representation abstraction               |
+| higher-order functions    | action dispatch                          |
+| collectors/fallbacks      | lookup failure continuation              |
+| closures                  | non-primitive functions                  |
+| environments              | tables of names and values               |
+| quoted data               | literal expression content               |
+| recursion                 | evaluator calls itself on subexpressions |
+
+**Design rule:** An interpreter is not magic. It is a recursive program over syntax-shaped data plus an environment.
+
+### Pattern summary by chapter-like topic
+
+| Topic                 | Main abstraction         | Main data shape                    | Key lesson                                           |
+| --------------------- | ------------------------ | ---------------------------------- | ---------------------------------------------------- |
+| atoms and lists       | primitive access         | atoms, lists, S-expressions        | know the shape before using `car` / `cdr`            |
+| repeated recursion    | structural recursion     | `lat`                              | base case plus recursive rest                        |
+| list construction     | `cons`                   | `lat`                              | build from the current element and natural recursion |
+| numbers               | recursive arithmetic     | natural numbers                    | numbers can be treated structurally                  |
+| stars                 | nested recursion         | lists of S-expressions             | recurse into same-nature subparts                    |
+| shadows               | representation helpers   | arithmetic expressions             | abstract representation                              |
+| friends and relations | sets, relations, pairs   | lists with invariants              | list representation needs predicates                 |
+| lambda                | higher-order functions   | functions as values                | abstract common patterns                             |
+| again and again       | termination/fixed points | partial functions, pair structures | recursion requires termination reasoning             |
+| value                 | evaluator                | expressions and environments       | meaning is recursive interpretation                  |
+
+### Failure-mode table
+
+| Failure                                       | Likely cause                        | Correct pattern                                          |
+| --------------------------------------------- | ----------------------------------- | -------------------------------------------------------- |
+| `car` or `cdr` applied unsafely               | missing shape test                  | test `null?` / `atom?` first                             |
+| recursion does not terminate                  | argument not closer to base case    | change tested argument toward termination                |
+| list result reversed or malformed             | wrong `cons` placement              | describe first typical element, then cons onto recursion |
+| only first occurrence changed unintentionally | match branch returned rest          | recurse after match for all occurrences                  |
+| all occurrences changed unintentionally       | recursive match branch used         | stop at first match if needed                            |
+| nested list ignored                           | only recurred on `cdr`              | also recurse on `car` when it is a list                  |
+| too many similar functions                    | no abstraction over common skeleton | introduce higher-order helper                            |
+| equality fails for numbers                    | used `eq?`                          | use `=` or `eqan?`                                       |
+| environment lookup fails incorrectly          | fallback not threaded               | pass failure continuation                                |
+| evaluator evaluates wrong branch              | special form treated as application | dispatch by expression shape                             |
+| closure loses lexical context                 | environment not stored              | closure must carry table                                 |
+| recursion is “unnatural”                      | not recurring on subpart            | use termination measure or accept partiality             |
+
+### Practical review checklist
+
+| Question                                                                        | Why it matters                      |
+| ------------------------------------------------------------------------------- | ----------------------------------- |
+| What is the data shape: `lat`, number, nested list, pair, expression, or table? | determines recursion schema         |
+| What is the base case?                                                          | prevents nontermination             |
+| Which argument changes?                                                         | must move toward base case          |
+| Is the changed argument tested?                                                 | connects recursion to termination   |
+| What value is built: list, number, boolean, expression, environment, closure?   | determines base value               |
+| Is `cons` used to preserve current element?                                     | list construction                   |
+| Is recursion single-level or nested?                                            | `cdr` only versus `car` and `cdr`   |
+| Is equality atom-only or atom-or-number?                                        | `eq?` versus `eqan?`                |
+| Are raw `car` / `cdr` chains hiding a representation?                           | use accessors                       |
+| Are several functions sharing the same skeleton?                                | abstract with higher-order function |
+| Is the function returning one result or several?                                | collector may be useful             |
+| Is termination structurally obvious?                                            | partial-function risk               |
+| Is this expression data or executable meaning?                                  | evaluator distinction               |
+| Is an environment needed?                                                       | identifier lookup and closures      |
+
+### Compact pattern map
+
+| If the task is…               | Use this pattern                                      |
+| ----------------------------- | ----------------------------------------------------- |
+| recognize list of atoms       | `null?` / `atom? (car l)` / recurse on `cdr`          |
+| search list                   | base `#f`, match or recurse                           |
+| remove first item             | match returns rest                                    |
+| remove all items              | match recurses on rest                                |
+| build transformed list        | `cons current recursive-result`                       |
+| count matches                 | base `0`, match uses `add1`                           |
+| combine numbers               | base identity, recursive arithmetic                   |
+| traverse nested list          | test `null?`, test atom, recurse into `car` and `cdr` |
+| evaluate expression           | atom case plus compound operator case                 |
+| hide representation           | define accessors                                      |
+| represent set                 | list plus uniqueness predicate                        |
+| represent relation            | list of pairs                                         |
+| abstract equality             | pass `test?`                                          |
+| abstract insertion behavior   | pass `seq`                                            |
+| collect multiple values       | pass collector                                        |
+| reason about termination      | define decreasing measure                             |
+| define recursion without name | fixed-point combinator                                |
+| interpret Scheme-like code    | expression-to-action plus environment                 |
+
+### Final rule
+
+The durable lesson is not any single function. The durable lesson is the method:
+
+1. identify the data shape,
+2. ask the right base question,
+3. choose the argument that moves toward termination,
+4. choose the neutral base value for the result being built,
+5. handle the first typical element,
+6. recurse on the natural subpart,
+7. abstract representation with helpers,
+8. abstract repeated recursive skeletons with higher-order functions,
+9. use collectors when one traversal should produce several results,
+10. treat evaluation as recursive interpretation over expression structure and environment.
+
+This is the bridge from beginner recursion to professional Scheme reasoning: **data shape determines program shape; abstraction names repeated shape; evaluators make meaning explicit.**
+## APPENDIX 8 / H — *The Seasoned Schemer* State, Control, Locality, and Store Pattern Index
+
+### Purpose — from structural recursion to control, state, and interpretation
+
+This appendix reorganizes *The Seasoned Schemer* into the same kind of systematic reference as Appendix 7. The first book trains **structural recursion**: lists, atoms, nested lists, higher-order procedures, collectors, and a small evaluator. The second book extends that discipline into more advanced semantic territory: **accumulating history, local recursive definitions, protected helpers, abrupt control, naming intermediate values, assignment, mutation, object identity, shared structure, and store-based interpretation**. The uploaded second volume continues the chapter sequence from 11 to 20 and explicitly shifts into `letrec`, `letcc`, `set!`, and interpreter/store ideas. 
+
+The central lesson is:
+
+**A Scheme program is not only a recursive function over data. It is also a controlled process over time: it may remember, hide, escape, name, mutate, share, and store.**
+
+### Book-level concept map
+
+| Topic                         | Main mechanism                     | Problem solved                                    | New risk introduced                                 |
+| ----------------------------- | ---------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
+| history-sensitive recursion   | extra arguments                    | recursion needs to remember what came before      | argument lists become noisy                         |
+| local recursion               | `letrec`                           | recursive helpers need private names              | lexical scope must be understood                    |
+| protected helpers             | `letrec` + local names             | minor functions should not leak                   | hidden assumptions                                  |
+| abrupt return                 | `letcc` / continuation-like escape | stop unnecessary pending work                     | nonlocal control becomes subtle                     |
+| naming intermediate values    | `let`                              | avoid repeated computation and clarify dependency | naming too early can force unsafe evaluation        |
+| assignment                    | `set!`                             | a name can refer to a new value over time         | time and order now matter                           |
+| remembered results            | global/local state                 | memoization, history, counters                    | hidden state and order dependence                   |
+| mutable pairs/objects         | closure state or mutation          | object identity with changing contents            | aliasing and cycles                                 |
+| same object vs same structure | identity reasoning                 | distinguish object sameness from value sameness   | equality becomes time-sensitive                     |
+| store model                   | locations/boxes behind names       | interpreter can model assignment                  | environment no longer maps names directly to values |
+
+### Extended commandments as design rules
+
+| Rule                                                    | Practical meaning                                                          | Main construct            |
+| ------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------- |
+| Use additional arguments when recursion needs history   | pass accumulated prefix, previous atom, reversed prefix, count, or context | extra parameter           |
+| Use `letrec` to remove arguments that do not change     | constants of the recursive process should be captured lexically            | local recursive helper    |
+| Use `letrec` to hide and protect helpers                | minor recursive functions should not become public API                     | local scope               |
+| Use `letcc` to return abruptly and promptly             | escape when a result is already known                                      | continuation escape       |
+| Use `let` to name needed intermediate values            | avoid duplicated work and make dependency explicit                         | local value binding       |
+| Do not name values before their preconditions are known | `let` evaluates initializers before the body                               | shape checks before `let` |
+| Treat `set!` as time-sensitive                          | after assignment, the same name refers to a different value                | mutation                  |
+| Keep mutable state local where possible                 | global mutation makes reasoning harder                                     | `let` + `set!`            |
+| Separate object identity from object contents           | same object may have different contents later                              | identity / mutation       |
+| Interpret assignment with a store                       | names point to locations; locations contain values                         | environment + store       |
+
+### Chapter pattern map — second-volume progression
+
+| Chapter-like topic                             | Core mechanism               | Main lesson                                                  |
+| ---------------------------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| `two-in-a-row?`, `sum-of-prefixes`, `scramble` | extra arguments              | recursion may need memory of previous or prefix data         |
+| local recursive functions                      | `letrec`                     | remove invariant parameters and protect helpers              |
+| intersection and removal with escape           | `letcc`                      | abort pending computation when the answer is known           |
+| robust `leftmost`, `depth*`                    | `let`                        | name computed values, but only after safe structural tests   |
+| assignment examples                            | `set!`                       | definitions and variables can change over time               |
+| `deep`, remembered computation                 | stateful remembering         | mutation can cache or remember earlier results               |
+| mutable cons-like objects                      | local mutable representation | object identity survives content change                      |
+| shared/cyclic structures                       | mutation and sameness        | pointer identity matters once mutation exists                |
+| jewels and closures                            | encapsulated state/control   | values can be protected or stolen depending on scope/control |
+| store-based evaluator                          | locations behind variables   | assignment requires environments to map names to places      |
+
+### History-sensitive recursion — extra arguments
+
+The first new pattern is recursion that needs to remember more than the current structural subpart.
+
+A normal list recursion only knows the remaining list:
+
+```scheme
+(define member?
+  (lambda (a lat)
+    (cond
+      ((null? lat) #f)
+      (else
+       (or (eq? (car lat) a)
+           (member? a (cdr lat)))))))
+```
+
+A history-sensitive recursion also knows something about the past.
+
+```scheme
+(define two-in-a-row-b?
+  (lambda (preceding lat)
+    (cond
+      ((null? lat) #f)
+      (else
+       (or (eq? (car lat) preceding)
+           (two-in-a-row-b? (car lat) (cdr lat)))))))
+```
+
+The public wrapper supplies the initial history:
+
+```scheme
+(define two-in-a-row?
+  (lambda (lat)
+    (cond
+      ((null? lat) #f)
+      (else
+       (two-in-a-row-b? (car lat) (cdr lat))))))
+```
+
+| Function            | Extra argument         | What it remembers                      |
+| ------------------- | ---------------------- | -------------------------------------- |
+| `two-in-a-row-b?`   | `preceding`            | previous atom                          |
+| `sum-of-prefixes-b` | `sonssf`               | sum of numbers seen so far             |
+| `scramble-b`        | reversed prefix        | earlier elements for backward indexing |
+| collector functions | continuation/collector | pending result construction            |
+| lookup helpers      | failure continuation   | what to do if lookup fails             |
+
+**Design rule:** Add an argument when the recursive step needs information that is not present in the current substructure.
+
+### Prefix accumulation — `sum-of-prefixes`
+
+A prefix-sensitive function computes each output using the history of earlier input.
+
+```scheme
+(define sum-of-prefixes-b
+  (lambda (sum-so-far tup)
+    (cond
+      ((null? tup) '())
+      (else
+       (cons (+ sum-so-far (car tup))
+             (sum-of-prefixes-b
+              (+ sum-so-far (car tup))
+              (cdr tup)))))))
+```
+
+Wrapper:
+
+```scheme
+(define sum-of-prefixes
+  (lambda (tup)
+    (sum-of-prefixes-b 0 tup)))
+```
+
+Example shape:
+
+```scheme
+(sum-of-prefixes '(2 1 9 17 0))
+;; conceptual result: '(2 3 12 29 29)
+```
+
+| Component       | Meaning                                |
+| --------------- | -------------------------------------- |
+| `sum-so-far`    | accumulated sum before current element |
+| `(car tup)`     | current number                         |
+| new prefix sum  | `(+ sum-so-far (car tup))`             |
+| recursive state | updated prefix sum and rest of tuple   |
+| base result     | `'()` because a list is being built    |
+
+**Design rule:** If each output depends on everything before it, carry the relevant summary as an extra argument.
+
+### Reverse-prefix accumulation — `scramble`
+
+`scramble` uses the current element as a backward index into the prefix already seen. This requires remembering the prefix.
+
+```scheme
+(define scramble-b
+  (lambda (tup rev-pre)
+    (cond
+      ((null? tup) '())
+      (else
+       (cons (pick (car tup)
+                   (cons (car tup) rev-pre))
+             (scramble-b
+              (cdr tup)
+              (cons (car tup) rev-pre)))))))
+```
+
+Wrapper:
+
+```scheme
+(define scramble
+  (lambda (tup)
+    (scramble-b tup '())))
+```
+
+| Value                      | Role                                          |
+| -------------------------- | --------------------------------------------- |
+| `tup`                      | unprocessed suffix                            |
+| `rev-pre`                  | reversed processed prefix                     |
+| `(cons (car tup) rev-pre)` | prefix including current element              |
+| `pick`                     | retrieves indexed item from prefix            |
+| recursive call             | moves to suffix and extends remembered prefix |
+
+**Design rule:** If the current decision depends on the earlier part of the input, store a summarized or reversed version of that earlier part.
+
+### Extra-argument pattern table
+
+| Need                                  | Extra argument         | Wrapper supplies           |
+| ------------------------------------- | ---------------------- | -------------------------- |
+| compare current item to previous item | previous atom          | first atom                 |
+| build prefix sums                     | accumulated sum        | `0`                        |
+| index into earlier values             | reversed prefix        | `'()`                      |
+| count left/right insertions           | counters               | `0`, `0`                   |
+| collect removed and kept items        | collector continuation | final selector             |
+| escape on failure/success             | escape continuation    | current continuation       |
+| remember previous computation         | local variable         | initial cache              |
+| simulate environment lookup           | failure continuation   | top-level failure behavior |
+
+**Review cue:** If a recursive function receives many parameters, classify them: changing structural argument, changing history argument, invariant configuration, or escape/collector argument. Invariant configuration may belong in `letrec`.
+
+### `letrec` — local recursive helpers
+
+`letrec` gives names to local recursive procedures. It solves two problems:
+
+1. the helper can call itself;
+2. the helper can be hidden from the outside.
+
+```scheme
+(define multirember
+  (lambda (a lat)
+    (letrec
+      ((mr
+        (lambda (lat)
+          (cond
+            ((null? lat) '())
+            ((eq? (car lat) a)
+             (mr (cdr lat)))
+            (else
+             (cons (car lat)
+                   (mr (cdr lat))))))))
+      (mr lat))))
+```
+
+Here `a` does not change during recursion. It is captured from the outer procedure instead of being passed repeatedly.
+
+| Name                 | Changes during recursion? | Where it belongs        |
+| -------------------- | ------------------------: | ----------------------- |
+| `lat`                |                       yes | helper parameter        |
+| `a`                  |                        no | captured by outer scope |
+| helper name `mr`     |          recursively used | `letrec`                |
+| public function name |              external API | `define`                |
+| minor helper         |             internal only | `letrec`                |
+
+**Design rule:** If an argument does not change in recursive calls, consider capturing it with `letrec` instead of passing it repeatedly.
+
+### `letrec` for protection — local helper boundaries
+
+A helper that only makes sense inside one function should not become a public function.
+
+```scheme
+(define union
+  (lambda (set1 set2)
+    (letrec
+      ((U
+        (lambda (set)
+          (cond
+            ((null? set) set2)
+            ((member? (car set) set2)
+             (U (cdr set)))
+            (else
+             (cons (car set)
+                   (U (cdr set))))))))
+      (U set1))))
+```
+
+`set2` is constant during the recursive traversal of `set1`, so the helper captures it.
+
+| Reason to hide helper      | Example                          |
+| -------------------------- | -------------------------------- |
+| depends on outer invariant | `set2` in `union`                |
+| has unusual argument order | private membership helper        |
+| assumes prechecked data    | inner traversal after validation |
+| exists only for recursion  | `mr`, `U`, `A`                   |
+| would confuse public API   | minor helper with narrow purpose |
+
+**Design rule:** `letrec` is not merely a recursion tool. It is also an abstraction-boundary tool.
+
+### `letrec` versus `define`
+
+| Mechanism          | Scope                            | Use                                |
+| ------------------ | -------------------------------- | ---------------------------------- |
+| top-level `define` | broadly visible                  | public or module-level function    |
+| internal `define`  | local body context               | local named helper                 |
+| `letrec`           | explicit local recursive binding | private mutually recursive helpers |
+| `lambda`           | anonymous procedure              | behavior value                     |
+| `let`              | local value binding              | non-recursive intermediate names   |
+
+**Professional rule:** Use top-level `define` only for names that deserve module-level existence. Use `letrec` for recursive machinery that belongs to one function’s implementation.
+
+### `letcc` — abrupt and prompt return
+
+`letcc` captures an escape continuation under a local name. It allows a function to leave a pending computation immediately.
+
+A simple pattern:
+
+```scheme
+(define find-first
+  (lambda (pred? l)
+    (letcc return
+      (letrec
+        ((walk
+          (lambda (l)
+            (cond
+              ((null? l) #f)
+              ((pred? (car l)) (return (car l)))
+              (else (walk (cdr l)))))))
+        (walk l)))))
+```
+
+| Ordinary recursion                          | Escape recursion               |
+| ------------------------------------------- | ------------------------------ |
+| finishes after all pending calls return     | may return immediately         |
+| builds result through pending continuations | discards pending work          |
+| good for complete traversals                | good for early success/failure |
+| easier to reason about                      | control is nonlocal            |
+
+**Design rule:** Use abrupt return when the answer is already known and all remaining pending work is irrelevant.
+
+### `intersectall` — escaping on empty set
+
+`intersectall` intersects a list of sets. If any set is empty, the final result must be empty. There is no need to continue computing.
+
+Conceptual pattern:
+
+```scheme
+(define intersectall
+  (lambda (lset)
+    (letcc hop
+      (letrec
+        ((A
+          (lambda (lset)
+            (cond
+              ((null? (cdr lset)) (car lset))
+              ((null? (car lset)) (hop '()))
+              (else
+               (intersect (car lset)
+                          (A (cdr lset))))))))
+        (cond
+          ((null? lset) '())
+          (else (A lset)))))))
+```
+
+| Situation             | Result                                      |
+| --------------------- | ------------------------------------------- |
+| list of sets is empty | empty result by convention                  |
+| current set is empty  | escape with `'()`                           |
+| only one set remains  | return it                                   |
+| otherwise             | intersect current set with recursive result |
+
+**Design rule:** If a base case invalidates all pending combination work, an escape continuation can make the function clearer and faster.
+
+### `rember-beyond-first` and `rember-upto-last` — skipping pending work
+
+Two related removal functions show how escape changes the meaning of “pending cons operations.”
+
+| Function              | Behavior                                                                  |
+| --------------------- | ------------------------------------------------------------------------- |
+| `rember-beyond-first` | keep elements before first target; discard target and everything after    |
+| `rember-upto-last`    | discard everything up to and including the last target; keep what follows |
+| ordinary `rember`     | remove only first target and keep the rest                                |
+| `multirember`         | remove all targets                                                        |
+
+Conceptual `rember-beyond-first`:
+
+```scheme
+(define rember-beyond-first
+  (lambda (a lat)
+    (letrec
+      ((R
+        (lambda (lat)
+          (cond
+            ((null? lat) '())
+            ((eq? (car lat) a) '())
+            (else
+             (cons (car lat)
+                   (R (cdr lat))))))))
+      (R lat))))
+```
+
+Conceptual `rember-upto-last` uses an escape to forget pending `cons` work when a later match is found.
+
+```scheme
+(define rember-upto-last
+  (lambda (a lat)
+    (letcc skip
+      (letrec
+        ((R
+          (lambda (lat)
+            (cond
+              ((null? lat) '())
+              ((eq? (car lat) a)
+               (skip (R (cdr lat))))
+              (else
+               (cons (car lat)
+                     (R (cdr lat))))))))
+        (R lat)))))
+```
+
+| Control idea              | Meaning                                        |
+| ------------------------- | ---------------------------------------------- |
+| pending `cons` operations | remembered prefix waiting to be rebuilt        |
+| `skip` escape             | discard pending prefix                         |
+| first occurrence          | ordinary recursion enough                      |
+| last occurrence           | later match must override earlier pending work |
+
+**Design rule:** `letcc` is useful when a later discovery should invalidate earlier pending computation.
+
+### Continuation and collector comparison
+
+| Mechanism                 | Direction               | What it controls                      |
+| ------------------------- | ----------------------- | ------------------------------------- |
+| collector continuation    | forward to final result | how accumulated data is selected      |
+| escape continuation       | backward/outward        | when pending computation is abandoned |
+| ordinary recursive return | local return path       | current call returns to previous call |
+| `letrec` helper           | lexical recursion       | local recursive process               |
+| `let` binding             | local naming            | repeated values and dependency        |
+
+**Practical distinction:** A collector usually waits until traversal reaches the end. An escape continuation may jump out before traversal finishes.
+
+### `let` — naming intermediate values
+
+`let` evaluates its initializers, binds their values, and then evaluates the body.
+
+```scheme
+(let ((x expr))
+  body)
+```
+
+This is useful when an expression is needed more than once.
+
+```scheme
+(define max-depth
+  (lambda (l)
+    (cond
+      ((null? l) 1)
+      ((atom? (car l))
+       (max-depth (cdr l)))
+      (else
+       (let ((a (+ 1 (max-depth (car l))))
+             (d (max-depth (cdr l))))
+         (cond
+           ((> d a) d)
+           (else a)))))))
+```
+
+| Use `let` when                          | Avoid `let` when                              |
+| --------------------------------------- | --------------------------------------------- |
+| a computed value is used more than once | initializer may be unsafe before a shape test |
+| a name clarifies meaning                | name hides simple expression                  |
+| repeated recursion would be expensive   | computation is cheap and clearer inline       |
+| body depends on a local result          | binding would force wrong evaluation order    |
+| intermediate value has semantic role    | value does not need a name                    |
+
+**Critical rule:** `let` initializers evaluate before the body. Therefore do not name `(car l)` or `(depth* (car l))` until it is already known that such an expression is safe.
+
+### Robust `leftmost` — empty-list tolerant search
+
+A simple `leftmost` assumes a non-empty nested list with no empty sublists. A robust version must deal with empty lists and continue searching the rest.
+
+Conceptual search:
+
+```scheme
+(define leftmost
+  (lambda (l)
+    (letcc return
+      (letrec
+        ((lm
+          (lambda (l)
+            (cond
+              ((null? l) '())
+              ((atom? (car l)) (return (car l)))
+              (else
+               (begin
+                 (lm (car l))
+                 (lm (cdr l))))))))
+        (lm l)))))
+```
+
+| Case                | Meaning                                        |
+| ------------------- | ---------------------------------------------- |
+| empty list          | no atom found here                             |
+| first item atom     | return immediately                             |
+| first item list     | search it, then search rest                    |
+| escape continuation | return first found atom without pending checks |
+
+**Design rule:** For search through nested structures, an escape continuation can represent “found it” more directly than returning sentinel values through every call.
+
+### `let` and evaluation order diagnosis
+
+| Symptom                                       | Likely problem                         | Fix                                        |
+| --------------------------------------------- | -------------------------------------- | ------------------------------------------ |
+| `car` of empty list occurs after adding `let` | initializer evaluated too early        | move `let` inside shape-safe branch        |
+| repeated recursive call slows function        | value not named                        | use `let` after preconditions              |
+| code became harder to read                    | too many artificial names              | inline simple expressions                  |
+| result differs after naming expression        | evaluation order changed               | preserve original conditional structure    |
+| side effect occurs too early                  | initializer evaluated before condition | delay with `lambda`, `cond`, or move `let` |
+
+**Design rule:** `let` is not only naming. It is also evaluation ordering.
+
+### Assignment — `set!` and time
+
+`set!` changes what an existing name refers to.
+
+```scheme
+(define x 'pizza)
+
+(set! x 'gone)
+```
+
+After the assignment, references to `x` produce the new value.
+
+| Construct | Meaning                             |
+| --------- | ----------------------------------- |
+| `define`  | introduces or establishes a binding |
+| `set!`    | changes an existing binding         |
+| `let`     | introduces local bindings           |
+| `lambda`  | captures lexical bindings           |
+| mutation  | makes time and order observable     |
+
+Stateful function:
+
+```scheme
+(define last-food 'none)
+
+(define gourmand
+  (lambda (food)
+    (set! last-food food)
+    (cons food
+          (cons food '()))))
+```
+
+| Call                 | Effect                        |
+| -------------------- | ----------------------------- |
+| `(gourmand 'potato)` | `last-food` becomes `'potato` |
+| `(gourmand 'rice)`   | `last-food` becomes `'rice`   |
+| later `last-food`    | remembers last call           |
+
+**Design rule:** Once `set!` appears, a program must be reasoned about as a temporal process, not merely as expression substitution.
+
+### Local state — safer than global state
+
+Global state is easy to demonstrate but hard to control. Local state inside a closure is safer.
+
+```scheme
+(define make-gourmand
+  (lambda ()
+    (let ((last-food 'none))
+      (lambda (food)
+        (set! last-food food)
+        (cons food
+              (cons food '()))))))
+```
+
+Now each closure has its own private `last-food`.
+
+```scheme
+(define g1 (make-gourmand))
+(define g2 (make-gourmand))
+```
+
+| State location                           | Visibility                  | Risk                   |
+| ---------------------------------------- | --------------------------- | ---------------------- |
+| global variable                          | everyone can observe/change | high coupling          |
+| local `let` variable captured by closure | private to closure          | controlled opacity     |
+| record field with mutator                | visible through API         | invariant risk         |
+| mutable pair/vector                      | shared by aliases           | aliasing               |
+| store in interpreter                     | explicit semantic model     | more complex evaluator |
+
+**Design rule:** If mutation is necessary, localize it.
+
+### `deep` and remembered computation
+
+`deep` builds nested list structure.
+
+```scheme
+(define deep
+  (lambda (m)
+    (cond
+      ((zero? m) 'pizza)
+      (else
+       (cons (deep (sub1 m))
+             '())))))
+```
+
+A remembered version can store earlier inputs and results.
+
+Conceptual cache:
+
+```scheme
+(define Ns '())
+(define Rs '())
+
+(define deepM
+  (lambda (n)
+    (let ((found (lookup n Ns Rs)))
+      (cond
+        (found found)
+        (else
+         (let ((result (deep n)))
+           (set! Ns (cons n Ns))
+           (set! Rs (cons result Rs))
+           result))))))
+```
+
+| Mechanism | Meaning                                 |
+| --------- | --------------------------------------- |
+| `Ns`      | remembered inputs                       |
+| `Rs`      | remembered results                      |
+| lookup    | checks if result already known          |
+| `set!`    | updates memory                          |
+| risk      | order dependence and hidden cache state |
+
+**Design rule:** Memoization is mutation used as remembered computation. It improves repeated work but introduces hidden state.
+
+### Mutation and recursion — functional versus stateful memory
+
+| Problem              | Functional solution             | Stateful solution            |
+| -------------------- | ------------------------------- | ---------------------------- |
+| remember prefix      | extra argument                  | mutable accumulator          |
+| remember last call   | return value to caller          | `set!` local/global variable |
+| avoid repeated work  | explicit result reuse via `let` | memo table                   |
+| collect many results | collector continuation          | mutable store                |
+| count calls          | return count                    | counter variable             |
+| share object         | pass value                      | mutate shared object         |
+
+**Professional judgment:** Prefer functional memory first. Use stateful memory when the program’s meaning genuinely involves time, identity, sharing, or cache behavior.
+
+### Mutable cons-like objects — identity with changing contents
+
+A mutable cons can be represented by a closure that stores two fields.
+
+```scheme
+(define kons
+  (lambda (kar-value kdr-value)
+    (let ((a kar-value)
+          (d kdr-value))
+      (lambda (selector)
+        (cond
+          ((eq? selector 'kar) a)
+          ((eq? selector 'kdr) d)
+          ((eq? selector 'set-kdr!)
+           (lambda (x)
+             (set! d x))))))))
+```
+
+Selectors:
+
+```scheme
+(define kar
+  (lambda (c)
+    (c 'kar)))
+
+(define kdr
+  (lambda (c)
+    (c 'kdr)))
+
+(define set-kdr!
+  (lambda (c x)
+    ((c 'set-kdr!) x)))
+```
+
+| Idea          | Meaning                           |
+| ------------- | --------------------------------- |
+| `kons`        | creates object with private state |
+| `kar`         | reads first field                 |
+| `kdr`         | reads second field                |
+| `set-kdr!`    | mutates second field              |
+| closure state | fields hidden in lexical bindings |
+
+**Design rule:** Mutation can be implemented through closures. Objects are not required to be class-based.
+
+### Identity versus contents
+
+Once mutation exists, the distinction between object identity and object contents becomes central.
+
+```scheme
+(define x (kons 'a '()))
+(define y x)
+
+(set-kdr! x (kons 'b '()))
+```
+
+`x` and `y` are still the same object, but the object’s contents have changed.
+
+| Question                               | Predicate / model         |
+| -------------------------------------- | ------------------------- |
+| same object?                           | identity-style comparison |
+| same current contents?                 | structural comparison     |
+| same historical object after mutation? | identity                  |
+| same printed representation?           | weak proxy, not enough    |
+| same domain object?                    | domain equality           |
+
+**Design rule:** Mutation creates stable identity with changing state.
+
+### Shared structure and aliasing
+
+Aliasing means more than one name reaches the same mutable object.
+
+| Situation                            | Consequence                            |
+| ------------------------------------ | -------------------------------------- |
+| two names refer to same mutable cons | mutation through one affects the other |
+| list tail shared by two structures   | tail mutation affects both             |
+| closure captures mutable binding     | every call sees updated state          |
+| memo table stored globally           | all callers share cache                |
+| cyclic structure created             | ordinary recursion may not terminate   |
+
+**Review cue:** If mutation produces surprising results, draw the object graph instead of reading the code linearly.
+
+### Cycles and finite length
+
+Mutation can create cyclic structures. A list-like structure may no longer have a natural end.
+
+Conceptually:
+
+```scheme
+(define x (kons 'a '()))
+(set-kdr! x x)
+```
+
+Now following `kdr` never reaches an empty list.
+
+| Structure            | Ordinary recursion              |
+| -------------------- | ------------------------------- |
+| proper finite list   | terminates at `'()`             |
+| shared finite list   | terminates but aliases exist    |
+| cyclic list          | may not terminate               |
+| mutable acyclic list | may become cyclic later         |
+| closure object       | termination depends on protocol |
+
+A `finite-lenkth`-style function must detect whether traversal loops.
+
+| Need                         | Strategy                       |
+| ---------------------------- | ------------------------------ |
+| ordinary length              | recur to empty list            |
+| finite length under mutation | detect repeated object         |
+| cyclic structure             | stop when previously seen      |
+| shared but acyclic           | avoid false cycle detection    |
+| mutation during traversal    | difficult; requires discipline |
+
+**Design rule:** Once cyclic structure is possible, termination is no longer guaranteed by `cdr` alone.
+
+### `letcc` plus mutation — control and time together
+
+`letcc` controls where computation returns. `set!` controls what names refer to over time. Together, they can be powerful and dangerous.
+
+| Combination                         | Risk                                      |
+| ----------------------------------- | ----------------------------------------- |
+| escape before cleanup               | resource/state left inconsistent          |
+| captured continuation invoked later | old control context reentered             |
+| mutation before escape              | state changed even if computation skipped |
+| mutation after escape               | may never occur                           |
+| repeated continuation use           | effects may happen multiple times         |
+
+**Design rule:** Nonlocal control and mutation should be combined only with explicit reasoning about what effects have already happened.
+
+### Store model — why assignment changes the evaluator
+
+In the first evaluator model, an environment can map names directly to values.
+
+```text
+name → value
+```
+
+With assignment, this is insufficient. A name must refer to a location, and the location contains the current value.
+
+```text
+name → location → value
+```
+
+| Without assignment                      | With assignment                           |
+| --------------------------------------- | ----------------------------------------- |
+| environment maps name to value          | environment maps name to location         |
+| lookup returns value                    | lookup fetches location content           |
+| closure captures values/environment     | closure captures environment of locations |
+| no `set!`                               | `set!` updates location                   |
+| substitution-like reasoning often works | store/time reasoning required             |
+
+**Design rule:** Assignment requires a store.
+
+### Environment versus store
+
+| Component        | Role                                           |
+| ---------------- | ---------------------------------------------- |
+| environment      | maps identifiers to locations                  |
+| store            | maps locations to values                       |
+| lookup           | name → location → value                        |
+| assignment       | name → location, then update value at location |
+| closure          | captures environment                           |
+| allocation       | creates new location                           |
+| variable binding | associates name with fresh location            |
+| mutation         | changes location content, not binding identity |
+
+A simplified model:
+
+```scheme
+;; conceptual only
+(define lookup
+  (lambda (name env store)
+    (store-ref store (env-ref env name))))
+
+(define assign!
+  (lambda (name value env store)
+    (store-set! store (env-ref env name) value)))
+```
+
+**Design rule:** `set!` does not merely “change a variable.” It changes the contents of the storage cell reached through that variable.
+
+### Store-based evaluator pattern
+
+A store-aware evaluator must thread or mutate a store while evaluating expressions.
+
+| Expression kind     | Store-aware behavior                          |
+| ------------------- | --------------------------------------------- |
+| constant            | returns value, store unchanged                |
+| identifier          | looks up location, fetches value              |
+| quote               | returns datum, store unchanged                |
+| lambda              | creates closure with environment              |
+| application         | evaluates operator and operands, then applies |
+| binding form        | allocates locations for names                 |
+| `set!`              | updates existing location                     |
+| sequencing          | evaluates in order because effects matter     |
+| closure application | extends environment with new locations        |
+
+Conceptual evaluator shape:
+
+```scheme
+(define meaning
+  (lambda (expr env store)
+    (cond
+      ((constant? expr) ...)
+      ((identifier? expr) ...)
+      ((assignment? expr) ...)
+      ((lambda? expr) ...)
+      ((application? expr) ...))))
+```
+
+| Earlier evaluator            | Store evaluator                            |
+| ---------------------------- | ------------------------------------------ |
+| returns one value            | may return value plus updated store        |
+| environment sufficient       | environment + store needed                 |
+| order less visible           | evaluation order matters                   |
+| closures capture environment | closures capture locations via environment |
+| no assignment action         | assignment action added                    |
+
+**Design rule:** Assignment is not a small evaluator feature. It changes the semantic architecture.
+
+### Closure capture under mutation
+
+A closure captures bindings. If the binding points to a mutable location, later calls observe changes in that location.
+
+```scheme
+(define make-counter
+  (lambda ()
+    (let ((n 0))
+      (lambda ()
+        (set! n (+ n 1))
+        n))))
+```
+
+| Call        | Result |
+| ----------- | ------ |
+| first call  | `1`    |
+| second call | `2`    |
+| third call  | `3`    |
+
+Each counter has its own captured location.
+
+```scheme
+(define c1 (make-counter))
+(define c2 (make-counter))
+```
+
+`c1` and `c2` do not share `n`.
+
+**Design rule:** Closures capture lexical locations, not merely textual values, when mutation is present.
+
+### Local names, hidden state, and protection
+
+| Construct               | Protects                  |
+| ----------------------- | ------------------------- |
+| `let`                   | local values              |
+| `letrec`                | local recursive helpers   |
+| closure                 | private state             |
+| module boundary         | public API                |
+| store abstraction       | assignment implementation |
+| no exported mutator     | data invariant            |
+| local continuation name | escape path               |
+
+**Practical rule:** The more powerful the mechanism, the more important the boundary. `letrec`, `letcc`, and `set!` should usually be used inside a narrow scope.
+
+### Mechanism comparison table
+
+| Mechanism           | Layer                     | Solves                      | Risk                      |
+| ------------------- | ------------------------- | --------------------------- | ------------------------- |
+| extra argument      | recursive data processing | remembers history           | noisy signatures          |
+| `letrec`            | lexical binding           | local recursion and hiding  | hidden helper assumptions |
+| `letcc`             | control                   | abrupt return               | nonlocal reasoning        |
+| `let`               | local value naming        | avoids repeated computation | premature evaluation      |
+| `set!`              | mutation                  | remembered state            | order dependence          |
+| closure state       | lexical runtime state     | private memory              | opacity                   |
+| mutable pair/object | object identity           | shared update               | aliasing/cycles           |
+| store               | interpreter semantics     | assignment modeling         | complexity                |
+| memoization         | performance/state         | avoids recomputation        | stale/hidden cache        |
+
+### Task-pattern decision table
+
+| Task                                            | Better mechanism                            |
+| ----------------------------------------------- | ------------------------------------------- |
+| remember previous element during list traversal | extra argument                              |
+| remember prefix summary                         | extra argument                              |
+| hide recursive helper                           | `letrec`                                    |
+| capture invariant argument                      | `letrec` closure                            |
+| stop search after first success                 | `letcc` or ordinary short-circuit recursion |
+| stop entire nested traversal immediately        | `letcc`                                     |
+| avoid duplicate recursive computation           | `let`, after safety tests                   |
+| maintain counter                                | closure + `set!`                            |
+| remember previous call                          | local/global state                          |
+| implement mutable object                        | closure state or mutable record/pair        |
+| reason about assignment in evaluator            | environment + store                         |
+| model shared identity                           | mutable object graph                        |
+| prevent helper misuse                           | local scope                                 |
+| represent several return pathways               | continuation or tagged result               |
+
+### Failure-mode table
+
+| Failure                                             | Likely cause                              | Corrective pattern                         |
+| --------------------------------------------------- | ----------------------------------------- | ------------------------------------------ |
+| recursive helper has too many parameters            | invariant arguments passed repeatedly     | capture with `letrec`                      |
+| helper usable incorrectly outside function          | helper exported or top-level              | hide with `letrec`                         |
+| duplicated recursive computation                    | repeated expression not named             | use `let` after checks                     |
+| `car` error after adding `let`                      | initializer evaluated before condition    | move `let` into safe branch                |
+| recursion ignores previous context                  | missing history argument                  | add extra parameter                        |
+| search keeps working after answer known             | no escape/short-circuit                   | use `or`, `letcc`, or early return pattern |
+| pending list prefix should be discarded but is kept | ordinary recursion retains continuation   | escape continuation                        |
+| result depends on call order                        | hidden `set!` state                       | localize or remove mutation                |
+| two values change together                          | aliasing shared mutable object            | copy, isolate, or document sharing         |
+| length never terminates                             | cyclic structure                          | detect visited objects                     |
+| closure gives surprising old/new value              | captured mutable location                 | reason with store model                    |
+| evaluator assignment behaves wrong                  | environment maps names directly to values | introduce locations/store                  |
+| global cache leaks                                  | memo table grows forever                  | bound cache or avoid global state          |
+
+### `let` versus `letrec` versus `letcc` versus `set!`
+
+| Construct | Meaning                          | Typical use                 | Misuse                                  |
+| --------- | -------------------------------- | --------------------------- | --------------------------------------- |
+| `let`     | name local values                | intermediate results        | naming too early                        |
+| `letrec`  | name local recursive procedures  | private helpers             | hiding too much complexity              |
+| `letcc`   | name escape continuation         | early exit                  | nonlocal control for ordinary branching |
+| `set!`    | assign existing binding/location | stateful memory             | replacing ordinary return values        |
+| `lambda`  | create procedure/closure         | behavior and private state  | opaque data modeling                    |
+| `define`  | establish named binding          | public or module-level name | defining private helpers globally       |
+
+**Rule:** These forms solve different problems. They are not interchangeable “advanced Scheme syntax.”
+
+### Data-flow versus control-flow versus state-flow
+
+| Flow type        | Question                         | Mechanism                     |
+| ---------------- | -------------------------------- | ----------------------------- |
+| data-flow        | what value is produced?          | recursion, `cons`, arithmetic |
+| control-flow     | where does computation continue? | `cond`, `or`, `letcc`         |
+| state-flow       | what has changed over time?      | `set!`, mutable objects       |
+| environment-flow | where are names resolved?        | lexical scope, closures       |
+| store-flow       | where are values kept?           | locations/boxes               |
+| history-flow     | what has been seen so far?       | extra arguments               |
+| abstraction-flow | what names are hidden?           | `letrec`, closures, modules   |
+
+**Design rule:** Advanced Scheme bugs often come from confusing these flows.
+
+### Compact concept index
+
+| Concept              | What it means                           | Review cue                                   |
+| -------------------- | --------------------------------------- | -------------------------------------------- |
+| additional argument  | history carried through recursion       | does it change toward a purpose?             |
+| invariant argument   | parameter that never changes            | capture with `letrec`                        |
+| protected helper     | local recursive function                | should it be public?                         |
+| escape continuation  | named path out of computation           | what pending work is skipped?                |
+| pending continuation | work waiting after recursive result     | should it be preserved or discarded?         |
+| named intermediate   | local computed value                    | is it safe to compute now?                   |
+| assignment           | name/location updated                   | what observes the change?                    |
+| private state        | mutation captured in closure            | can callers inspect/reset it?                |
+| aliasing             | two paths to same object                | mutation visible through both?               |
+| cyclic structure     | object graph loops                      | can traversal terminate?                     |
+| store                | locations containing values             | does environment map to values or locations? |
+| closure with state   | procedure plus mutable lexical location | does each closure have its own state?        |
+
+### Practical review checklist
+
+| Question                                                  | Why it matters                        |
+| --------------------------------------------------------- | ------------------------------------- |
+| Does the recursive function need memory of earlier input? | may require extra argument            |
+| Which arguments change during recursion?                  | invariant ones may be captured        |
+| Is a helper function meaningful outside its parent?       | if not, hide it                       |
+| Does a computation stop as soon as the answer is known?   | escape/short-circuit opportunity      |
+| Is any pending work intentionally skipped?                | continuation reasoning                |
+| Is `let` placed after all necessary shape tests?          | prevents premature evaluation         |
+| Is an expression evaluated more than once?                | use local name if costly or effectful |
+| Does `set!` make result order-dependent?                  | state reasoning                       |
+| Is state global or local?                                 | coupling risk                         |
+| Can two names reach the same mutable object?              | aliasing                              |
+| Can mutation create a cycle?                              | termination risk                      |
+| Is equality identity-based or structure-based?            | mutation changes comparison meaning   |
+| Does an interpreter support assignment?                   | needs store model                     |
+| Do closures capture mutable locations?                    | repeated calls may change result      |
+
+### Compact final pattern chart
+
+| If the task is…                              | Use this pattern            |
+| -------------------------------------------- | --------------------------- |
+| detect adjacent equal atoms                  | previous-element argument   |
+| produce prefix sums                          | accumulated-sum argument    |
+| use previous prefix as index source          | reversed-prefix argument    |
+| remove invariant recursive parameters        | `letrec`                    |
+| keep helper private                          | `letrec`                    |
+| stop when empty set appears                  | `letcc` escape              |
+| discard prefix accumulated before last match | `letcc` escape              |
+| avoid repeated recursive calls               | `let`, after safe tests     |
+| remember last input                          | `set!` state                |
+| create independent counters                  | closure with local state    |
+| implement mutable cons                       | closure object with setters |
+| detect cyclic traversal                      | visited-object memory       |
+| model assignment in interpreter              | environment + store         |
+| explain closure mutation                     | captured location model     |
+
+### Final rule
+
+The second volume extends the first volume’s recursion method into a broader semantic method:
+
+1. If recursion needs past context, add a history argument.
+2. If an argument does not change, capture it with `letrec`.
+3. If a helper should not be used elsewhere, hide it with `letrec`.
+4. If the answer is already known, use short-circuiting or escape control.
+5. If a computed value is needed more than once, name it with `let`, but only after it is safe to compute.
+6. If a name changes over time, reason with `set!`, not substitution.
+7. If an object changes while remaining the same object, reason with identity and aliasing.
+8. If assignment enters an evaluator, replace the simple environment model with an environment-plus-store model.
+
+The durable lesson is:
+
+**Recursive structure explains how computation follows data; control explains where computation can escape; state explains how time changes meaning; the store explains how names can remain the same while their contents change.**
+## APPENDIX 9 / I — *The Reasoned Schemer* Relational Programming and miniKanren Pattern Index
+
+### Purpose — goals, logic variables, unification, search, relations, and implementation
+
+This appendix reorganizes *The Reasoned Schemer* into the same systematic form as Appendix 7 and Appendix 8. The first book develops **structural recursion**; the second develops **local recursion, state, mutation, and control**; the third develops **relational programming**: programs no longer merely compute values from inputs, but describe relations among values and allow the system to search for assignments that make those relations true.
+
+The book’s preface explicitly presents relational programming as a natural extension of functional programming, using a small Scheme extension that captures the essence of Prolog-style logic programming. It introduces two constants, `#s` and `#u`, and three core operators: equality/unification, `fresh`, and `conde`; later chapters extend these with arithmetic relations, search machinery, and implementation details. 
+
+For readability, this appendix writes the book’s equality relation as `==`, and relation names with a final `o`, such as `caro`, `cdro`, `conso`, `membero`, `appendo`, and `+o`.
+
+The central lesson is:
+
+**A relational program describes constraints among values. Any argument may be known, unknown, partially known, or shared with another unknown. The program’s job is not to return one value, but to generate substitutions that satisfy the constraints.**
+
+### From functional programming to relational programming
+
+A functional procedure usually has a directional reading:
+
+```scheme
+(define (car-of p)
+  (car p))
+```
+
+It consumes a pair and returns its `car`.
+
+A relation has a multidirectional reading:
+
+```scheme
+(caro p a)
+```
+
+This can be read as:
+
+| Known information    | Query meaning                             |
+| -------------------- | ----------------------------------------- |
+| `p` known, `a` fresh | find the `car` of `p`                     |
+| `a` known, `p` fresh | find pairs whose `car` is `a`             |
+| both known           | check whether `a` is the `car` of `p`     |
+| both fresh           | generate pairs and their first components |
+
+**Design shift:**
+Functional programming asks: *what is the output of this function?*
+Relational programming asks: *what assignments make this goal succeed?*
+
+| Functional idea                 | Relational counterpart                |
+| ------------------------------- | ------------------------------------- |
+| procedure                       | relation                              |
+| returned value                  | satisfying substitution               |
+| argument                        | logic term                            |
+| variable binding                | logic-variable association            |
+| predicate returning `#t` / `#f` | goal succeeding / failing             |
+| conditional `cond`              | relational branching `conde`          |
+| output position                 | ordinary argument that may be fresh   |
+| recursion over data             | recursive goal generation             |
+| list result                     | stream of answers                     |
+| deterministic computation       | search through possible substitutions |
+
+### Minimal relational core
+
+The early language is deliberately small.
+
+| Construct   | Role                       | Rough meaning                                       |
+| ----------- | -------------------------- | --------------------------------------------------- |
+| `#s`        | success goal               | succeeds without adding constraints                 |
+| `#u`        | failure goal               | fails                                               |
+| `==`        | unification goal           | makes two terms equal if possible                   |
+| `fresh`     | introduces logic variables | creates unknowns scoped to a goal                   |
+| `conde`     | relational branching       | tries lines of goals                                |
+| `run`       | answer interface           | returns a bounded number of reified answers         |
+| `run*`      | answer interface           | returns all obtainable answers                      |
+| reification | answer display             | turns internal variables into readable placeholders |
+
+Example:
+
+```scheme
+(run* (q)
+  (== q 'olive))
+```
+
+Conceptual answer:
+
+```scheme
+'(olive)
+```
+
+The query says: find all values of `q` such that `q` is equal to `'olive`.
+
+### Core semantic vocabulary
+
+| Term           | Meaning                                                                   | Practical cue                      |
+| -------------- | ------------------------------------------------------------------------- | ---------------------------------- |
+| goal           | something that can succeed or fail under a substitution                   | `#s`, `#u`, `==`, `fresh`, `conde` |
+| logic variable | unknown that may later be associated with a value                         | introduced by `run` or `fresh`     |
+| substitution   | mapping from logic variables to terms                                     | grows as goals succeed             |
+| unification    | making two terms equal by extending substitution                          | `==`                               |
+| reification    | converting internal unknowns into readable answer symbols                 | answer display                     |
+| stream         | zero, one, or many substitutions                                          | search result                      |
+| conjunction    | all goals in a line must succeed                                          | `fresh` body / `conde` line        |
+| disjunction    | alternative lines may succeed                                             | `conde`                            |
+| fair search    | search strategy that prevents some infinite branches from starving others | implementation-level issue         |
+| relation       | function returning a goal                                                 | conventionally ends in `o`         |
+
+### Laws and commandments
+
+The early laws govern unification, freshness, and search. The book states that if a variable is fresh, unifying it with a value succeeds and associates it with that value; it also states that unification is symmetric. The law of `conde` describes how more values are obtained by treating a successful line as if it had failed and then refreshing variables associated by that line. 
+
+| Law / commandment            | Practical meaning                                                                                        |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Law of Fresh                 | a fresh variable can be associated with a value                                                          |
+| Law of `==`                  | unification is symmetric                                                                                 |
+| Law of `conde`               | alternatives can produce more answers by backtracking                                                    |
+| First Commandment            | transform Boolean functions into goals by replacing `cond` with `conde` and `#t` / `#f` with `#s` / `#u` |
+| Second Commandment           | transform value-returning functions into relations by adding an output argument                          |
+| relational naming convention | relation names usually end in `o`                                                                        |
+| unnesting                    | expressions inside questions/answers become separate goals                                               |
+| output argument discipline   | what was once a return value becomes a normal relational argument                                        |
+| freshness discipline         | introduce unknowns explicitly with `fresh`                                                               |
+
+### Goal success and failure
+
+`#s` succeeds without adding information.
+
+```scheme
+(run* (q)
+  #s)
+```
+
+Conceptual result:
+
+```scheme
+'(_.0)
+```
+
+The answer remains a fresh unknown because the goal succeeds but does not constrain `q`.
+
+`#u` fails.
+
+```scheme
+(run* (q)
+  #u)
+```
+
+Conceptual result:
+
+```scheme
+'()
+```
+
+| Goal                              | Effect                                        |
+| --------------------------------- | --------------------------------------------- |
+| `#s`                              | contributes one successful substitution       |
+| `#u`                              | contributes no substitutions                  |
+| `(== q 'tea)`                     | succeeds if `q` can be associated with `'tea` |
+| `(fresh (x) ...)`                 | introduces fresh logic variable `x`           |
+| `(conde (line1 ...) (line2 ...))` | tries alternative goal lines                  |
+
+**Rule:** A goal does not return ordinary `#t` or `#f`. A goal contributes zero or more substitutions to the search stream.
+
+### Unification — `==`
+
+Unification is stronger than ordinary equality. It can check equality, bind variables, or connect variables.
+
+```scheme
+(run* (q)
+  (== q 'corn))
+```
+
+Answer:
+
+```scheme
+'(corn)
+```
+
+Unifying two fresh variables:
+
+```scheme
+(run* (q)
+  (fresh (x)
+    (== q x)))
+```
+
+Conceptually, `q` and `x` now co-refer. They are not independently chosen.
+
+| Query               | Meaning                                           |
+| ------------------- | ------------------------------------------------- |
+| `(== q 'corn)`      | associate `q` with `'corn`                        |
+| `(== 'corn q)`      | same relation, reversed                           |
+| `(== q x)`          | make `q` and `x` co-refer                         |
+| `(== '(a b) q)`     | associate `q` with a list                         |
+| `(== (cons x y) q)` | constrain `q` to be a pair with parts `x` and `y` |
+| `(== 'a 'b)`        | fail if constants differ                          |
+
+**Rule:** `==` describes sameness of terms, not assignment in the `set!` sense.
+
+### Fresh variables
+
+`fresh` introduces logic variables.
+
+```scheme
+(run* (q)
+  (fresh (x)
+    (== x 'tea)
+    (== q x)))
+```
+
+Answer:
+
+```scheme
+'(tea)
+```
+
+Multiple fresh variables:
+
+```scheme
+(run* (q)
+  (fresh (x y)
+    (== q (cons x y))))
+```
+
+Conceptual answer:
+
+```scheme
+'((_.0 . _.1))
+```
+
+| Variable kind          | Meaning                                          |
+| ---------------------- | ------------------------------------------------ |
+| lexical variable       | Scheme variable naming a value or relation       |
+| logic variable         | unknown inside relational search                 |
+| fresh variable         | logic variable with no association yet           |
+| reified variable       | readable placeholder in final answer             |
+| co-referring variables | variables constrained to represent the same term |
+
+**Rule:** A logic variable is fresh when it has no association. Freshness is a search-state property, not merely a lexical naming property.
+
+### Reification — making unknowns visible
+
+Internal logic variables are not printed directly. They are reified into readable names such as `_.0`, `_.1`, and so on.
+
+```scheme
+(run* (q)
+  #s)
+```
+
+Conceptual answer:
+
+```scheme
+'(_.0)
+```
+
+This means: `q` can be any value.
+
+```scheme
+(run* (q)
+  (fresh (x y)
+    (== q (cons x y))))
+```
+
+Conceptual answer:
+
+```scheme
+'((_.0 . _.1))
+```
+
+| Reified form            | Meaning                                                   |
+| ----------------------- | --------------------------------------------------------- |
+| `_.0`                   | an unconstrained logic variable                           |
+| `(olive . _.0)`         | pair whose first part is known and second part is unknown |
+| `(_.0 _.1)`             | proper list with two unknown elements                     |
+| `(_.0 . _.1)`           | pair with unknown `car` and unknown `cdr`                 |
+| repeated `_.0`          | same unknown occurs in multiple places                    |
+| different reified names | different fresh variables                                 |
+
+**Rule:** Reified variables are answer notation. They show remaining unknown structure.
+
+### `run`, `run*`, and answer bounds
+
+`run` asks for a bounded number of answers.
+
+```scheme
+(run 1 (q)
+  (conde
+    ((== q 'olive))
+    ((== q 'oil))))
+```
+
+Conceptual answer:
+
+```scheme
+'(olive)
+```
+
+`run*` asks for all obtainable answers.
+
+```scheme
+(run* (q)
+  (conde
+    ((== q 'olive))
+    ((== q 'oil))))
+```
+
+Conceptual answer:
+
+```scheme
+'(olive oil)
+```
+
+| Interface                 | Meaning                             |
+| ------------------------- | ----------------------------------- |
+| `run 1`                   | at most one answer                  |
+| `run 5`                   | at most five answers                |
+| `run*`                    | all answers reachable by the search |
+| `run` with fresh output   | generate possible values            |
+| `run` with known output   | test whether constraints succeed    |
+| `run` with partial output | complete unknown parts              |
+
+**Rule:** A relation may have many answers. The interface determines how many are requested.
+
+### `conde` — relational branching
+
+`conde` is the relational counterpart of branching, but it produces streams of answers.
+
+```scheme
+(run* (q)
+  (conde
+    ((== q 'tea))
+    ((== q 'cup))
+    (else #u)))
+```
+
+Conceptual answer:
+
+```scheme
+'(tea cup)
+```
+
+A `conde` line is a conjunction of goals. A `conde` expression is a disjunction of lines.
+
+| Structure             | Meaning                                            |
+| --------------------- | -------------------------------------------------- |
+| one line              | all goals in that line must succeed                |
+| multiple lines        | alternatives                                       |
+| failed line           | contributes no answers                             |
+| successful line       | contributes its substitutions                      |
+| more answers          | search later lines or later possibilities          |
+| variables inside line | refreshed when search backtracks into another line |
+
+**Rule:** `conde` is not simply `cond` with different spelling. It is a search-producing disjunction of goal-conjunctions.
+
+### Functional predicate to relation — First Commandment
+
+A Boolean function:
+
+```scheme
+(define list?
+  (lambda (l)
+    (cond
+      ((null? l) #t)
+      ((pair? l) (list? (cdr l)))
+      (else #f))))
+```
+
+Relational style:
+
+```scheme
+(define listo
+  (lambda (l)
+    (conde
+      ((nullo l))
+      ((fresh (a d)
+         (conso a d l)
+         (listo d))))))
+```
+
+The transformation pattern:
+
+| Functional predicate part | Relational counterpart                     |
+| ------------------------- | ------------------------------------------ |
+| Boolean result            | goal success/failure                       |
+| `cond`                    | `conde`                                    |
+| answer `#t`               | `#s` or successful goal                    |
+| answer `#f`               | `#u` or omitted failing line               |
+| recursive predicate call  | recursive relation goal                    |
+| internal destructuring    | `fresh` variables + relational destructors |
+| direct `car` / `cdr`      | `caro` / `cdro` / `conso`                  |
+
+**Rule:** A Boolean predicate becomes a relation that succeeds when the predicate would have returned true.
+
+### Value-returning function to relation — Second Commandment
+
+A value-returning function:
+
+```scheme
+(define mem
+  (lambda (x l)
+    (cond
+      ((null? l) #f)
+      ((eq? (car l) x) l)
+      (else (mem x (cdr l))))))
+```
+
+Relational form adds an output argument:
+
+```scheme
+(define memo
+  (lambda (x l out)
+    (conde
+      ((caro l x) (== l out))
+      ((fresh (d)
+         (cdro l d)
+         (memo x d out))))))
+```
+
+Transformation pattern:
+
+| Functional part          | Relational counterpart             |
+| ------------------------ | ---------------------------------- |
+| function returns value   | add `out` argument                 |
+| successful result        | constrain `out` with `==`          |
+| recursive returned value | recursive relation with same `out` |
+| failure                  | failed goal or no line             |
+| `car` / `cdr`            | relational destructors             |
+| equality test            | `==` or `eqo`-style relation       |
+
+**Rule:** A function returning a value becomes a relation with an extra argument holding that value.
+
+### Basic pair and list relations
+
+The basic structural relations make ordinary `car`, `cdr`, and `cons` usable in all directions.
+
+```scheme
+(define conso
+  (lambda (a d p)
+    (== (cons a d) p)))
+```
+
+```scheme
+(define caro
+  (lambda (p a)
+    (fresh (d)
+      (conso a d p))))
+```
+
+```scheme
+(define cdro
+  (lambda (p d)
+    (fresh (a)
+      (conso a d p))))
+```
+
+```scheme
+(define nullo
+  (lambda (x)
+    (== '() x)))
+```
+
+```scheme
+(define eqo
+  (lambda (x y)
+    (== x y)))
+```
+
+| Relation        | Reading                                             |
+| --------------- | --------------------------------------------------- |
+| `(conso a d p)` | `p` is the pair whose `car` is `a` and `cdr` is `d` |
+| `(caro p a)`    | `a` is the `car` of `p`                             |
+| `(cdro p d)`    | `d` is the `cdr` of `p`                             |
+| `(nullo x)`     | `x` is the empty list                               |
+| `(eqo x y)`     | `x` and `y` are equal as terms                      |
+| `(pairo p)`     | `p` is some pair                                    |
+
+Examples:
+
+```scheme
+(run* (q)
+  (caro '(grape raisin pear) q))
+```
+
+Answer:
+
+```scheme
+'(grape)
+```
+
+```scheme
+(run* (q)
+  (fresh (d)
+    (conso 'grape d q)))
+```
+
+Answer shape:
+
+```scheme
+'((grape . _.0))
+```
+
+**Rule:** Use relational destructors instead of ordinary selectors when any part may be unknown.
+
+### Relational constructors versus functional constructors
+
+| Functional expression | Direction         | Relational expression | Directions        |
+| --------------------- | ----------------- | --------------------- | ----------------- |
+| `(car p)`             | pair → first part | `(caro p a)`          | pair ↔ first part |
+| `(cdr p)`             | pair → rest       | `(cdro p d)`          | pair ↔ rest       |
+| `(cons a d)`          | parts → pair      | `(conso a d p)`       | parts ↔ pair      |
+| `(null? x)`           | value → Boolean   | `(nullo x)`           | value ↔ success   |
+| `(eq? x y)`           | values → Boolean  | `(eqo x y)`           | values ↔ success  |
+
+**Design rule:** A relation states a constraint among all arguments. It does not privilege one argument as “the input” and another as “the output.”
+
+### Proper-list relations — `listo`
+
+`listo` recognizes or generates proper lists.
+
+```scheme
+(define listo
+  (lambda (l)
+    (conde
+      ((nullo l))
+      ((fresh (a d)
+         (conso a d l)
+         (listo d))))))
+```
+
+| Query                   | Meaning                                             |
+| ----------------------- | --------------------------------------------------- |
+| `(listo '(a b c))`      | check that a known value is a proper list           |
+| `(listo q)`             | generate proper-list shapes                         |
+| `(listo `(a b . ,x))`   | constrain `x` so the whole structure becomes proper |
+| `(listo `(a b c . ,x))` | often forces `x` to eventually be `'()`             |
+
+**Pattern:** A proper list is either empty, or a pair whose `cdr` is a proper list.
+
+**Rule:** Relational recognizers can also become generators.
+
+### Lists of lists — `lolo`
+
+A list of lists relation:
+
+```scheme
+(define lolo
+  (lambda (l)
+    (conde
+      ((nullo l))
+      ((fresh (a d)
+         (caro l a)
+         (listo a)
+         (cdro l d)
+         (lolo d))))))
+```
+
+| Relation  | Meaning                                     |
+| --------- | ------------------------------------------- |
+| `listo`   | proper list                                 |
+| `lolo`    | proper list whose elements are proper lists |
+| `twinso`  | pair/list of two equal values               |
+| `loto`    | list of twins                               |
+| `listofo` | list whose elements satisfy a relation      |
+
+**Design rule:** A relational recognizer for a compound structure composes smaller recognizers.
+
+### Twins and list-of patterns
+
+A “twin” is a two-element structure whose elements are equal.
+
+```scheme
+(define twinso
+  (lambda (p)
+    (fresh (x)
+      (== `(,x ,x) p))))
+```
+
+A list of twins:
+
+```scheme
+(define loto
+  (lambda (l)
+    (conde
+      ((nullo l))
+      ((fresh (a d)
+         (conso a d l)
+         (twinso a)
+         (loto d))))))
+```
+
+Generic list-of relation:
+
+```scheme
+(define listofo
+  (lambda (predo l)
+    (conde
+      ((nullo l))
+      ((fresh (a d)
+         (conso a d l)
+         (predo a)
+         (listofo predo d))))))
+```
+
+| Pattern               | Meaning                                                          |
+| --------------------- | ---------------------------------------------------------------- |
+| relation as predicate | goal-producing function applied to element                       |
+| recursive list-of     | current element satisfies relation; rest also satisfies relation |
+| higher-order relation | relation receives another relation                               |
+| generation            | can generate lists satisfying a shape constraint                 |
+
+**Rule:** Higher-order functional abstraction reappears relationally: relations can be parameterized by relations.
+
+### Membership relations — `membero`
+
+A functional membership predicate checks if an atom occurs in a list. A relational membership relation can check, find, or generate members and lists.
+
+```scheme
+(define membero
+  (lambda (x l)
+    (conde
+      ((fresh (d)
+         (conso x d l)))
+      ((fresh (a d)
+         (conso a d l)
+         (membero x d))))))
+```
+
+Examples:
+
+```scheme
+(run* (q)
+  (membero q '(hummus with pita)))
+```
+
+Conceptual answer:
+
+```scheme
+'(hummus with pita)
+```
+
+```scheme
+(run 5 (l)
+  (membero 'tofu l))
+```
+
+Conceptual answer shapes include lists where `'tofu` appears somewhere:
+
+```scheme
+'((tofu . _.0)
+  (_.0 tofu . _.1)
+  (_.0 _.1 tofu . _.2)
+  ...)
+```
+
+| Query                         | Meaning                                           |
+| ----------------------------- | ------------------------------------------------- |
+| `(membero 'tofu l)`           | generate lists containing `'tofu`                 |
+| `(membero x known-list)`      | generate members of the known list                |
+| `(membero x l)`               | generate both possible members and possible lists |
+| `(membero 'tofu '(a b c))`    | fail                                              |
+| `(membero 'tofu '(a tofu c))` | succeed                                           |
+
+**Rule:** `membero` is not just a test. It is a relation among an element and a list that may generate either side.
+
+### Partial membership and proper-list termination
+
+A naive membership relation can generate improper or open-ended lists. A refined membership relation can constrain the tail when the target is found.
+
+| Version                      | Behavior                                               |
+| ---------------------------- | ------------------------------------------------------ |
+| loose `membero`              | may describe lists with arbitrary tails                |
+| proper membership            | constrains the found tail to be proper when needed     |
+| `pmembero`                   | membership with proper-list discipline                 |
+| reversed membership variants | change search order and answer order                   |
+| bounded `run`                | controls how many generated possibilities are demanded |
+
+**Design issue:**
+If a relation generates lists, it must decide whether it generates proper lists, dotted lists, or open-ended terms.
+
+**Rule:** In relational programming, list well-formedness is not automatic. Add `listo` or a proper-list variant when properness matters.
+
+### Removal relations — `rembero`
+
+A functional `rember` returns a list with one occurrence removed. A relational `rembero` relates an item, an input list, and an output list.
+
+```scheme
+(define rembero
+  (lambda (x l out)
+    (conde
+      ((nullo l) (== '() out))
+      ((fresh (d)
+         (conso x d l)
+         (== d out)))
+      ((fresh (a d res)
+         (conso a d l)
+         (conso a res out)
+         (rembero x d res))))))
+```
+
+| Query                                    | Meaning                             |
+| ---------------------------------------- | ----------------------------------- |
+| `(rembero 'peas '(a peas d peas e) out)` | compute a removal result            |
+| `(rembero x '(a b c) '(a c))`            | find what was removed               |
+| `(rembero 'tofu l '(a b))`               | generate possible original lists    |
+| `(rembero x l out)`                      | generate triples satisfying removal |
+
+**Rule:** Adding an `out` argument turns a value-returning transformer into a relation that can run backward.
+
+### Apparent directionality and search order
+
+Even when a relation is logically symmetric, the operational behavior may not be symmetric.
+
+| Logical issue                    | Operational issue                           |
+| -------------------------------- | ------------------------------------------- |
+| any argument can be unknown      | some directions may search more effectively |
+| relation states constraints      | implementation explores goals in an order   |
+| `conde` gives alternatives       | answer order depends on line order          |
+| recursion is declarative-looking | recursive placement affects divergence      |
+| `run*` asks for all answers      | may not terminate if the stream is infinite |
+| `run n` limits demand            | can observe early answer behavior           |
+
+**Rule:** Relational meaning is declarative, but execution still has search order and fairness.
+
+### `appendo` — concatenation as relation
+
+Functional `append` has a natural input/output direction. `appendo` relates three lists: prefix, suffix, and result.
+
+```scheme
+(define appendo
+  (lambda (l s out)
+    (conde
+      ((nullo l) (== s out))
+      ((fresh (a d res)
+         (conso a d l)
+         (conso a res out)
+         (appendo d s res))))))
+```
+
+Queries:
+
+```scheme
+(run* (q)
+  (appendo '(a b) '(c d) q))
+```
+
+Answer:
+
+```scheme
+'((a b c d))
+```
+
+```scheme
+(run* (q)
+  (fresh (x y)
+    (appendo x y '(a b c))
+    (== q `(,x ,y))))
+```
+
+Conceptual answers:
+
+```scheme
+'((() (a b c))
+  ((a) (b c))
+  ((a b) (c))
+  ((a b c) ()))
+```
+
+| Known           | Unknown                            | Meaning              |
+| --------------- | ---------------------------------- | -------------------- |
+| prefix + suffix | result                             | append normally      |
+| result          | prefix + suffix                    | split list           |
+| prefix + result | suffix                             | find remaining tail  |
+| suffix + result | prefix                             | find possible prefix |
+| all unknown     | generate append-compatible triples |                      |
+
+**Rule:** `appendo` is the canonical example of relational reversibility.
+
+### Relations over nested data — `unwrapo`, `flatteno`, structural generators
+
+A relation over nested data should not assume that structure is already known.
+
+| Task                              | Relational pattern                     |
+| --------------------------------- | -------------------------------------- |
+| unwrap nested singleton structure | relate nested structure to inner value |
+| flatten nested structure          | relate tree-like input to flat output  |
+| recognize nested list             | recursive structural relation          |
+| generate nested structures        | leave structure partially fresh        |
+| avoid premature selectors         | use `fresh`, `conso`, `caro`, `cdro`   |
+
+Schematic flatten relation:
+
+```scheme
+(define flatteno
+  (lambda (s out)
+    (conde
+      ((nullo s) (== '() out))
+      ((pairo s)
+       (fresh (a d fa fd)
+         (caro s a)
+         (cdro s d)
+         (flatteno a fa)
+         (flatteno d fd)
+         (appendo fa fd out)))
+      (else
+       (== `(,s) out)))))
+```
+
+This kind of relation is powerful but may create large or infinite search spaces.
+
+**Rule:** Nested relational recursion magnifies search-order problems. Add constraints early enough to guide search.
+
+### Infinite relations — `anyo`, `nevero`, `alwayso`
+
+Some relations intentionally or accidentally generate infinite streams.
+
+| Relation style      | Behavior                       |
+| ------------------- | ------------------------------ |
+| `nevero`            | never succeeds, never finishes |
+| `alwayso`           | succeeds indefinitely          |
+| `anyo`              | repeats a goal indefinitely    |
+| recursive generator | may produce infinite answers   |
+| `run n`             | observes first `n` answers     |
+| `run*`              | may never terminate            |
+
+Conceptual infinite success:
+
+```scheme
+(define anyo
+  (lambda (g)
+    (conde
+      (g)
+      ((anyo g)))))
+```
+
+Then:
+
+```scheme
+(run 5 (q)
+  (anyo (== q 'olive)))
+```
+
+can produce several repeated answers.
+
+**Rule:** Infinite search spaces are normal in relational programming. Bounded answer requests and fair search matter.
+
+### Search fairness
+
+Naive depth-first search may get trapped in an infinite branch before reaching later answers. Fair interleaving lets the system eventually explore alternatives.
+
+| Search mechanism                 | Consequence                               |
+| -------------------------------- | ----------------------------------------- |
+| depth-first concatenation        | simple but can starve later branches      |
+| fair interleaving                | more answers reachable in infinite spaces |
+| conjunction order                | affects when constraints are applied      |
+| disjunction order                | affects answer order                      |
+| recursive goal before constraint | may diverge                               |
+| constraint before recursion      | may narrow search                         |
+
+The implementation chapter explains streams of substitutions and distinguishes ordinary stream concatenation from interleaving; it also explains goal feeding/binding and fair conjunction/disjunction. 
+
+**Rule:** Declarative relations still require operational discipline: order goals so constraints arrive before unbounded generation whenever possible.
+
+### Arithmetic as relations
+
+The book later defines arithmetic operators relationally. Its preface emphasizes that `+o` can add and subtract, `*o` can multiply and factor, and logarithm/exponentiation-style relations can solve for different unknowns depending on what is known. 
+
+| Relation   | Functional reading                               | Relational readings                    |
+| ---------- | ------------------------------------------------ | -------------------------------------- |
+| `+o`       | `x + y = z`                                      | add, subtract, split sums              |
+| `-o`       | `z - x = y` or defined through `+o`              | subtraction via addition               |
+| `*o`       | `x * y = z`                                      | multiply, factor, solve missing factor |
+| `/o`       | quotient/remainder relation                      | division-like constraints              |
+| `logo`     | logarithm-like relation                          | solve number, base, or exponent        |
+| `expo`     | exponentiation relation                          | relate base, exponent, result          |
+| `odd-*o`   | multiplication variant under oddness constraints | arithmetic search helper               |
+| `bound-*o` | bounded multiplication search                    | prevents uncontrolled search           |
+
+### Numeric representation — bits as relational data
+
+Arithmetic relations use a representation that supports relational reasoning. Numbers are represented structurally, usually with bit-list forms.
+
+| Concept                   | Role                                       |
+| ------------------------- | ------------------------------------------ |
+| zero representation       | base numeric value                         |
+| positive number relation  | excludes zero                              |
+| greater-than-one relation | guides recursive arithmetic                |
+| bit list                  | structural numeric representation          |
+| full adder relation       | relates carry-in, bits, carry-out, sum bit |
+| adder relation            | recursively relates bit lists              |
+| multiplication relation   | defined through addition and decomposition |
+| bounded arithmetic        | limits infinite search                     |
+
+| Relational arithmetic issue         | Why it matters                             |
+| ----------------------------------- | ------------------------------------------ |
+| numbers can be unknown              | relation may generate possible numbers     |
+| arithmetic can run backward         | factoring/splitting possible               |
+| search space can explode            | constraints and bounds matter              |
+| bit representation is structural    | arithmetic becomes recursive data relation |
+| multiple modes exist                | relation should work in several directions |
+| not all modes are equally efficient | operational order matters                  |
+
+**Rule:** Relational arithmetic is not just arithmetic with variables. It is search over numeric representations.
+
+### Relational arithmetic mode table
+
+| Query shape                         | Meaning                         | Search risk                        |
+| ----------------------------------- | ------------------------------- | ---------------------------------- |
+| `(+o known known q)`                | ordinary addition               | low                                |
+| `(+o known q known)`                | subtraction-like solving        | moderate                           |
+| `(+o q r known)`                    | partitions of known sum         | finite if natural numbers          |
+| `(*o known known q)`                | ordinary multiplication         | low                                |
+| `(*o known q known)`                | factor solving                  | finite but search-dependent        |
+| `(*o q r known)`                    | factor pair generation          | finite but may require constraints |
+| `(*o q r s)` all fresh              | unbounded generation            | high                               |
+| `(logo n b q r)` with some unknowns | logarithm/base/exponent solving | high                               |
+
+**Rule:** A relation may be correct but operationally expensive in some modes.
+
+### `project` and thin ice
+
+`project` allows a logic variable’s value to be projected into ordinary Scheme computation after it is sufficiently known.
+
+| Mechanism                         | Meaning                            | Risk                                 |
+| --------------------------------- | ---------------------------------- | ------------------------------------ |
+| `project`                         | leave relational world temporarily | breaks pure relational reversibility |
+| arithmetic with Scheme primitives | faster for known values            | fails when values are still fresh    |
+| committed-choice forms            | prune search                       | may lose valid answers               |
+| once-style operators              | take first answer                  | changes completeness                 |
+| disequality/constraints           | restrict terms                     | implementation-dependent details     |
+
+**Rule:** Projection and committed-choice operators are “thin ice”: useful but less purely relational. Use only after the needed variables are grounded enough.
+
+### Relations versus ordinary Scheme functions
+
+| Need                                     |          Use relation |     Use ordinary function |
+| ---------------------------------------- | --------------------: | ------------------------: |
+| unknown arguments                        |                   yes |                        no |
+| search for values                        |                   yes |                        no |
+| generate structures                      |                   yes |                        no |
+| check constraints bidirectionally        |                   yes |                        no |
+| deterministic calculation on known data  |                 maybe |                       yes |
+| performance-critical grounded arithmetic |   maybe via `project` |                       yes |
+| public relational API                    |                   yes |                        no |
+| internal deterministic helper            |              maybe no |                       yes |
+| relation construction                    | relation returns goal | function helps build goal |
+
+**Rule:** Do not relationalize everything. Use relations where unknowns, search, or reversibility matter.
+
+### Relation definition checklist
+
+Before defining a relation, answer:
+
+| Question                                               | Why                                 |
+| ------------------------------------------------------ | ----------------------------------- |
+| What are the arguments?                                | all are potential inputs or outputs |
+| Which arguments may be fresh?                          | determines modes                    |
+| What are the intended modes?                           | guides search order                 |
+| Does the relation generate finite or infinite answers? | affects `run*`                      |
+| Does it require proper lists?                          | add `listo` if needed               |
+| Does it use structural destructuring?                  | use `conso`, `caro`, `cdro`         |
+| Does it call itself recursively?                       | check productive constraints        |
+| Is there a base success case?                          | prevents unnecessary recursion      |
+| Is there a failing case?                               | omit impossible lines or use `#u`   |
+| Are fresh variables scoped tightly?                    | avoids accidental sharing           |
+| Is answer order important?                             | line order matters                  |
+| Is search fair enough?                                 | may require interleaving forms      |
+
+### Relation transformation table
+
+| Functional pattern       | Relational transformation                |
+| ------------------------ | ---------------------------------------- |
+| Boolean predicate        | relation with success/failure            |
+| value-returning function | relation with output argument            |
+| selector                 | relation connecting whole and part       |
+| constructor              | relation connecting parts and whole      |
+| recursive predicate      | recursive goal                           |
+| recursive transformer    | output argument + recursive output       |
+| equality test            | `==` / `eqo`                             |
+| `cond` branch            | `conde` line                             |
+| local computed value     | `fresh` variable constrained by relation |
+| `car` / `cdr`            | `caro` / `cdro`                          |
+| `cons`                   | `conso`                                  |
+| `null?`                  | `nullo`                                  |
+| `append`                 | `appendo`                                |
+
+### Goal ordering pattern
+
+Goal order affects operational behavior.
+
+Good pattern:
+
+```scheme
+(fresh (a d)
+  (conso a d l)
+  (membero x d))
+```
+
+This first constrains `l` to be a pair, then recurses on its tail.
+
+Risky pattern:
+
+```scheme
+(fresh (a d)
+  (membero x d)
+  (conso a d l))
+```
+
+This may generate arbitrary tails before connecting them to `l`.
+
+| Goal order                  | Effect                                                      |
+| --------------------------- | ----------------------------------------------------------- |
+| structural constraint first | narrows shape early                                         |
+| equality constraint first   | often binds unknowns early                                  |
+| recursive call first        | may diverge                                                 |
+| generator before checker    | may produce many irrelevant terms                           |
+| checker before generator    | may prune search                                            |
+| `fresh` too broad           | variables can unintentionally share or remain unconstrained |
+| `fresh` too narrow          | needed sharing unavailable                                  |
+
+**Rule:** A relation’s declarative meaning may be stable, but goal order controls whether useful answers appear.
+
+### Common relation patterns
+
+| Pattern                 | Shape                                            |
+| ----------------------- | ------------------------------------------------ |
+| recognizer relation     | succeeds if value has shape                      |
+| constructor relation    | relates components and whole                     |
+| selector relation       | relates whole and component                      |
+| membership relation     | relates element and containing list              |
+| transformer relation    | relates input and output                         |
+| splitter relation       | relates parts and whole                          |
+| generator relation      | leaves one or more arguments fresh               |
+| constraint relation     | restricts possible substitutions                 |
+| arithmetic relation     | relates numeric terms                            |
+| higher-order relation   | takes another relation as argument               |
+| implementation relation | manipulates substitutions/streams under the hood |
+
+### Under the hood — implementation model
+
+The implementation explains relational programming in terms of substitutions and streams.
+
+| Implementation concept  | Meaning                                         |
+| ----------------------- | ----------------------------------------------- |
+| variable representation | internal identity for logic variables           |
+| substitution            | association list or map from variables to terms |
+| `walk`                  | follows variable associations                   |
+| `ext-s`                 | extends substitution                            |
+| unification             | recursively makes two terms compatible          |
+| occurs check            | prevents cyclic terms if included               |
+| `walk*`                 | recursively resolves variables in a term        |
+| reification             | prepares terms for answer display               |
+| stream                  | sequence of substitutions                       |
+| `mzero`                 | empty stream                                    |
+| `unit`                  | one-substitution stream                         |
+| `mplus`                 | stream merge                                    |
+| `bind`                  | feed stream elements into a goal                |
+| `call/fresh`            | introduce new logic variable                    |
+| conjunction             | bind goals in sequence                          |
+| disjunction             | merge goal streams                              |
+
+**Rule:** A goal is operationally a function from a substitution to a stream of substitutions.
+
+### Unification implementation pattern
+
+Schematic unification:
+
+```scheme
+(define unify
+  (lambda (u v s)
+    (let ((u (walk u s))
+          (v (walk v s)))
+      (cond
+        ((same-var? u v) s)
+        ((var? u) (extend u v s))
+        ((var? v) (extend v u s))
+        ((and (pair? u) (pair? v))
+         (let ((s1 (unify (car u) (car v) s)))
+           (and s1
+                (unify (cdr u) (cdr v) s1))))
+        ((equal? u v) s)
+        (else #f)))))
+```
+
+| Case                   | Meaning                   |
+| ---------------------- | ------------------------- |
+| same variable          | already equal             |
+| left variable          | associate left with right |
+| right variable         | associate right with left |
+| both pairs             | unify cars, then cdrs     |
+| same constants         | succeed                   |
+| incompatible constants | fail                      |
+
+**Rule:** Unification is recursive structural compatibility plus variable association.
+
+### Search implementation pattern
+
+| Operation          | Relational meaning                  |
+| ------------------ | ----------------------------------- |
+| `unit`             | one successful path                 |
+| `mzero`            | no successful paths                 |
+| `mplus`            | alternatives                        |
+| `bind`             | sequencing of goals                 |
+| interleaving merge | fairer alternatives                 |
+| delayed stream     | prevents immediate infinite descent |
+| `run`              | take finite prefix of stream        |
+| `run*`             | demand entire stream                |
+
+Schematic goal:
+
+```scheme
+(define succeed
+  (lambda (s)
+    (unit s)))
+
+(define fail
+  (lambda (s)
+    mzero))
+```
+
+Schematic equality goal:
+
+```scheme
+(define ==
+  (lambda (u v)
+    (lambda (s)
+      (let ((s2 (unify u v s)))
+        (if s2
+            (unit s2)
+            mzero)))))
+```
+
+**Rule:** A goal does not compute an answer directly; it transforms a substitution into possible next substitutions.
+
+### Commandment map
+
+| Commandment / law            | Mechanism                           | Practical habit                           |
+| ---------------------------- | ----------------------------------- | ----------------------------------------- |
+| Law of Fresh                 | fresh variables can be associated   | introduce unknowns with `fresh`           |
+| Law of `==`                  | unification is symmetric            | do not treat it as directional assignment |
+| Law of `conde`               | search alternatives by backtracking | expect multiple answers                   |
+| First Commandment            | Boolean → goal                      | replace truth values with success/failure |
+| Second Commandment           | value → output argument             | add `out` parameter                       |
+| relation names end in `o`    | naming discipline                   | signal goal-producing procedures          |
+| unnest questions             | convert computations into goals     | avoid hidden functional selectors         |
+| add constraints early        | operational discipline              | guide search                              |
+| use bounded run where needed | avoid infinite demand               | prefer `run n` for generators             |
+| treat projection cautiously  | extra-logical escape                | use only with grounded values             |
+
+### Relational sharp-edge index
+
+| Sharp edge                                 | What happens                                     | Review cue                               |
+| ------------------------------------------ | ------------------------------------------------ | ---------------------------------------- |
+| `run*` on infinite relation                | may not terminate                                | use `run n`                              |
+| recursive goal first                       | may diverge before constraints apply             | move constraints earlier                 |
+| missing `fresh`                            | accidental lexical capture or undefined variable | introduce unknowns explicitly            |
+| too much `fresh`                           | unrelated variables remain unconstrained         | check intended sharing                   |
+| unification mistaken for assignment        | wrong mental model                               | `==` is symmetric                        |
+| using Scheme selector on unknown           | error or wrong phase                             | use `caro` / `cdro`                      |
+| forgetting proper-list constraint          | dotted/open lists appear                         | add `listo` or proper relation           |
+| answer order surprise                      | line/goal order matters                          | inspect `conde` order                    |
+| projection too early                       | variable not grounded                            | constrain before `project`               |
+| committed choice too early                 | valid answers pruned                             | avoid thin-ice operators until justified |
+| arithmetic all fresh                       | enormous/infinite search                         | bound or ground some arguments           |
+| relationalizing trivial deterministic code | overhead and confusion                           | use ordinary function                    |
+
+### Functional-to-relational anti-pattern table
+
+| Anti-pattern                                   | Why it fails                                | Better pattern                        |
+| ---------------------------------------------- | ------------------------------------------- | ------------------------------------- |
+| use `car` on logic variable                    | unknown may not yet be a pair               | `caro`                                |
+| use `cdr` on logic variable                    | unknown may not yet be a pair               | `cdro`                                |
+| use `cons` only to build known data            | loses bidirectionality                      | `conso`                               |
+| use `eq?` as ordinary predicate                | returns Boolean, not goal                   | `==` / `eqo`                          |
+| return a value from relation                   | relations should produce goals              | add output argument                   |
+| write `cond` inside relation body              | Boolean branching, not relational branching | `conde`                               |
+| use `#t` / `#f` as answers                     | not goals                                   | `#s` / `#u`                           |
+| assume one answer                              | relation may have many                      | use `run n` / `run*`                  |
+| assume all modes efficient                     | search order differs                        | test intended modes                   |
+| hide deterministic computation inside relation | may break unknown modes                     | relationalize only needed constraints |
+
+### Relation mode table
+
+| Relation  | Forward mode      | Backward / generative mode          | Risk                                        |
+| --------- | ----------------- | ----------------------------------- | ------------------------------------------- |
+| `caro`    | pair → car        | car → possible pairs                | open tails                                  |
+| `cdro`    | pair → cdr        | cdr → possible pairs                | open heads                                  |
+| `conso`   | parts → pair      | pair → parts                        | usually stable                              |
+| `nullo`   | check empty       | force value to empty                | low                                         |
+| `listo`   | check proper list | generate proper lists               | infinite stream                             |
+| `membero` | check membership  | generate lists containing item      | infinite stream                             |
+| `rembero` | remove item       | infer removed item or original list | many possibilities                          |
+| `appendo` | append lists      | split list                          | finite for known result, infinite otherwise |
+| `+o`      | addition          | subtraction/splitting               | search size                                 |
+| `*o`      | multiplication    | factorization                       | search size                                 |
+| `logo`    | logarithm-like    | solve base/exponent/result          | high complexity                             |
+
+### Debugging relational programs
+
+| Symptom                          | Likely cause                            | Fix                                             |
+| -------------------------------- | --------------------------------------- | ----------------------------------------------- |
+| no answers                       | incompatible constraints                | simplify query and add goals one by one         |
+| too many unknown answers         | missing constraints                     | add `listo`, `nullo`, `==`, or structural goals |
+| dotted lists appear              | unconstrained tail                      | use proper-list relation                        |
+| query diverges                   | recursive generation before constraint  | reorder goals                                   |
+| `run*` never returns             | infinite answer stream                  | use `run n`                                     |
+| unexpected repeated answers      | relation has multiple derivations       | check overlapping `conde` lines                 |
+| valid answer missing             | committed choice/projection/pruning     | remove thin-ice operator                        |
+| answer order odd                 | `conde` line order or fair interleaving | inspect operational order                       |
+| variables unexpectedly same      | accidental unification                  | check repeated variable names                   |
+| variables unexpectedly different | extra `fresh` introduced                | check scope                                     |
+
+### Practical relation-design workflow
+
+| Step                      | Question                                          |
+| ------------------------- | ------------------------------------------------- |
+| state the relation        | what constraint among arguments should hold?      |
+| list intended modes       | which arguments may be known/fresh?               |
+| write base cases          | which goals succeed immediately?                  |
+| write structural cases    | how is the term decomposed relationally?          |
+| introduce fresh variables | what unknown subparts are needed?                 |
+| use relational primitives | `conso`, `caro`, `cdro`, `nullo`, `==`            |
+| recurse productively      | ensure recursion is under a structural constraint |
+| test forward mode         | known inputs to output                            |
+| test backward mode        | known output to inputs                            |
+| test generative mode      | unknowns produce sensible answers                 |
+| test bounded queries      | use `run n` for infinite spaces                   |
+| inspect answer shapes     | proper lists, dotted terms, repeated variables    |
+| adjust goal order         | improve answer production                         |
+
+### Compact pattern map
+
+| If the task is…                             | Use this pattern                    |
+| ------------------------------------------- | ----------------------------------- |
+| check whether a value is empty list         | `nullo`                             |
+| relate pair to head                         | `caro`                              |
+| relate pair to tail                         | `cdro`                              |
+| relate head/tail to pair                    | `conso`                             |
+| introduce unknowns                          | `fresh`                             |
+| express equality/constraint                 | `==`                                |
+| express alternatives                        | `conde`                             |
+| turn Boolean predicate into relation        | First Commandment                   |
+| turn value-returning function into relation | Second Commandment                  |
+| generate lists                              | `listo`                             |
+| generate lists of constrained elements      | `listofo`                           |
+| describe membership                         | `membero`                           |
+| describe removal                            | `rembero`                           |
+| describe concatenation/splitting            | `appendo`                           |
+| describe arithmetic                         | `+o`, `*o`, etc.                    |
+| avoid infinite demand                       | `run n`                             |
+| inspect implementation                      | substitutions, streams, unification |
+| use known Scheme value inside relation      | `project`, carefully                |
+
+### Final rule
+
+*The Reasoned Schemer* changes the programming question.
+
+Appendix 7 asks:
+
+**What recursive function matches this data shape?**
+
+Appendix 8 asks:
+
+**What control, state, or local binding pattern explains this computation over time?**
+
+Appendix 9 asks:
+
+**What relation among values should hold, and what substitutions make it true?**
+
+The durable method is:
+
+1. Treat a relation as a goal-producing function.
+2. Treat every argument as potentially known or unknown.
+3. Use `fresh` to introduce unknowns.
+4. Use `==` for unification, not assignment.
+5. Use `conde` for relational alternatives.
+6. Replace Boolean results with success and failure.
+7. Replace returned values with output arguments.
+8. Use relational destructors instead of ordinary selectors.
+9. Add proper-list and structural constraints when necessary.
+10. Expect multiple answers, partial answers, and infinite answer streams.
+11. Order goals to make search productive.
+12. Understand that the implementation is substitutions plus streams plus unification.
+
+The central conclusion is:
+
+**Functional programming computes values. Relational programming describes constraints. A mature Scheme reader should be able to move between the two: from function to relation, from return value to output argument, from equality test to unification, from recursion to search, and from one answer to a stream of possible worlds.**
