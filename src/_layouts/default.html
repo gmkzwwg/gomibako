@@ -203,20 +203,19 @@ Valid modes: list | chart | compact | false | nil
       position: fixed;
       inset: 0;
       z-index: 999998;
+      display: block;
       overflow: hidden;
       pointer-events: none;
       background: #000;
       opacity: 1;
-
-      display: grid;
-      place-items: center;
-      font: 700 16px/2 monospace;
+      visibility: visible;
     }
   </style>
 
-  <div id="hacked-face-layer" aria-hidden="true">
+  <div id="hacked-face-layer" aria-hidden="true"></div>
+  <!-- <div id="hacked-face-layer" aria-hidden="true">
     [EXEC] INJECTING PAYLOAD...<br>[AUTH] PERMISSION ACQUIRED...<br>[ROOT] SYSTEM TAKEN.
-  </div>
+  </div> -->
   <!-- CONTEXT MENU -->
   {% if context_menu_enabled %}
   {% include context_menu.html %}
