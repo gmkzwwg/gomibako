@@ -1,6 +1,6 @@
 ---
-layout: slide-simple
-permalink: /slide
+layout: slide-multilingual
+permalink: /test-slide
 show_context_menu: false
 author: 垃圾残渣
 show_date: true

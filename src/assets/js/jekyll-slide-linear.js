@@ -26,7 +26,7 @@
       enabled: true,
       position: 'last',
       menuTitle: 'Index',
-      headingText: "Here's Index & Thanks!"
+      headingText: "Here's Index"
     },
     animationMs: 260,
     autoplayInterval: 5,
@@ -283,7 +283,7 @@
         color: inherit;
         display: none;
         scrollbar-width: thin;
-        scrollbar-color: currentColor rgba(127, 127, 127, 0.08);
+        scrollbar-color: currentColor rgba(127, 127, 127, 0.1);
       }
       .jsd-linear-menu::-webkit-scrollbar {
         width: 4.5px;
@@ -294,7 +294,7 @@
         border-radius: 999px;
       }
       .jsd-linear-menu::-webkit-scrollbar-track {
-        background-color: rgba(127, 127, 127, 0.08);
+        background-color: rgba(127, 127, 127, 0.1);
         border-radius: 999px;
       }
       .jsd-linear-menu::-webkit-scrollbar-corner {
@@ -311,7 +311,7 @@
         display: block;
         border: 0;
         border-bottom: 1px solid currentColor;
-        background: transparent;
+        background: rgba(0, 0, 0, 1);
         color: inherit;
         padding: 8px 10px;
         text-align: left;

@@ -23,8 +23,8 @@
  * Notes:
  *   No <pre> fallback.
  *   No Android animation-scale probing.
- *   No cross-module hard cleanup.
- *   CSS transition is visual only; cleanup is timer-based.
+ *   Face and flash are independent modules.
+ *   Critical cleanup is timer-based, not animation-event-based.
  */
 
 (function (window, document) {
@@ -219,6 +219,7 @@
       zIndex: 999998,
       duration: 900,
       fadeDuration: 420,
+      fadeSteps: 18,
 
       dissolveStartRatio: 0.42,
       dissolveEndRatio: 0.92,
@@ -320,6 +321,7 @@
 
   const faceState = {
     running: false,
+    ending: false,
     layer: null,
     canvas: null,
     ctx: null,
@@ -577,14 +579,20 @@
     element.style.pointerEvents = "none";
   }
 
-  function fadeOutThenRemove(element, duration, onFinish) {
+  function fadeOutThenRemove(state, element, duration, steps, onFinish) {
     const total = Math.max(0, Number(duration) || 0);
-    const start = now();
+    const totalSteps = Math.max(1, Math.floor(Number(steps) || 18));
+    const interval = total / totalSteps;
+    let currentStep = 0;
 
     if (!element || !element.isConnected) {
       if (onFinish) onFinish();
       return;
     }
+
+    element.style.opacity = "1";
+    element.style.visibility = "visible";
+    element.style.pointerEvents = "none";
 
     if (total <= 0) {
       element.remove();
@@ -592,29 +600,38 @@
       return;
     }
 
-    function step(time) {
+    function tick() {
       if (!element.isConnected) {
         if (onFinish) onFinish();
         return;
       }
 
-      const progress = clamp((time - start) / total, 0, 1);
+      currentStep += 1;
 
+      const progress = clamp(currentStep / totalSteps, 0, 1);
       element.style.opacity = String(1 - progress);
 
-      if (progress < 1) {
-        requestFrame(step);
+      if (progress >= 1) {
+        if (element.isConnected) {
+          element.remove();
+        }
+
+        if (onFinish) onFinish();
         return;
       }
 
-      if (element.isConnected) {
+      setTimer(state, tick, interval);
+    }
+
+    setTimer(state, tick, interval);
+
+    setTimer(state, function () {
+      if (element && element.isConnected) {
         element.remove();
       }
 
       if (onFinish) onFinish();
-    }
-
-    requestFrame(step);
+    }, total + 120);
   }
 
   function injectStyle() {
@@ -683,7 +700,6 @@
       "}",
       ".hacked-splash__word.is-decaying {",
       "  opacity: 0;",
-      "  visibility: hidden;",
       "}"
     ].join("\n");
   }
@@ -753,6 +769,7 @@
       minCell,
       faceConfig.cellMax
     );
+
     face.cellH = face.cellW * 1.4;
     face.cols = Math.max(faceConfig.minCols, Math.floor(width / face.cellW));
     face.rows = Math.max(faceConfig.minRows, Math.floor(height / face.cellH));
@@ -798,6 +815,7 @@
         cell.face = true;
         cell.base = char;
         cell.char = Math.random() < 0.78 ? char : randomAscii();
+        cell.gone = false;
         cell.nextFlip = rand(0, 24);
       }
     }
@@ -874,7 +892,12 @@
   function tickFace(time) {
     const face = faceState;
 
-    if (!face.running || destroyed) return;
+    if (!face.running || face.ending || destroyed) return;
+
+    if (!face.startedAt) {
+      face.startedAt = time;
+      face.lastFrameAt = time;
+    }
 
     const elapsed = time - face.startedAt;
     const delta = face.lastFrameAt ? time - face.lastFrameAt : 16.67;
@@ -886,24 +909,32 @@
 
     if (elapsed < config.face.duration) {
       face.raf = requestFrame(tickFace);
+    } else {
+      endFace();
     }
   }
 
   function endFace() {
     const face = faceState;
 
-    if (!face.running) return;
+    if (!face.running || face.ending) return;
 
+    face.ending = true;
     face.running = false;
+
     cancelFrame(face.raf);
     face.raf = 0;
 
     window.removeEventListener("resize", handleFaceResize);
     window.removeEventListener("orientationchange", handleFaceResize);
 
-    fadeOutThenRemove(face.layer, config.face.fadeDuration, function () {
-      resetFaceState();
-    });
+    fadeOutThenRemove(
+      face,
+      face.layer,
+      config.face.fadeDuration,
+      config.face.fadeSteps,
+      resetFaceState
+    );
   }
 
   function handleFaceResize() {
@@ -925,6 +956,7 @@
     window.clearTimeout(faceState.resizeTimer);
 
     faceState.running = false;
+    faceState.ending = false;
     faceState.layer = null;
     faceState.canvas = null;
     faceState.ctx = null;
@@ -963,20 +995,21 @@
 
     destroyed = false;
     faceState.running = true;
-    faceState.startedAt = now();
+    faceState.ending = false;
+    faceState.startedAt = 0;
     faceState.lastFrameAt = 0;
 
     window.addEventListener("resize", handleFaceResize, { passive: true });
     window.addEventListener("orientationchange", handleFaceResize, { passive: true });
 
     faceState.raf = requestFrame(tickFace);
-    setTimer(faceState, endFace, config.face.duration);
 
     return getConfig();
   }
 
   function stopFace(remove) {
     const shouldRemove = remove !== false;
+    const layer = faceState.layer || document.getElementById(config.face.layerId);
 
     clearTimers(faceState);
     cancelFrame(faceState.raf);
@@ -985,7 +1018,7 @@
     window.removeEventListener("resize", handleFaceResize);
     window.removeEventListener("orientationchange", handleFaceResize);
 
-    hideOrRemove(faceState.layer || document.getElementById(config.face.layerId), shouldRemove);
+    hideOrRemove(layer, shouldRemove);
     resetFaceState();
 
     return getConfig();
