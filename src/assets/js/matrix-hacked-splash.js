@@ -300,6 +300,7 @@
     width: 0,
     height: 0,
     face: {
+      started: false,
       running: false,
       layer: null,
       canvas: null,
@@ -715,6 +716,7 @@
     face.cells = [];
     face.start = 0;
     face.lastFrame = 0;
+    face.started = false;
   }
 
   function finishFace() {
@@ -753,7 +755,7 @@
 
     if (face.canvas && face.canvas.getContext) {
       try {
-        face.ctx = face.canvas.getContext("2d", { alpha: false, desynchronized: true });
+        face.ctx = face.canvas.getContext("2d", { alpha: false });
       } catch (error) {
         face.ctx = face.canvas.getContext("2d");
       }
@@ -940,6 +942,19 @@
 
     if (!face.running || state.destroyed) return;
 
+    if (!face.started) {
+      face.started = true;
+      face.start = frameTime;
+      face.lastFrame = frameTime;
+
+      clearFaceHardRemoveTimer();
+      scheduleFaceHardRemove(
+        config.face.duration +
+        config.face.fadeDuration +
+        config.face.failSafeExtraDelay
+      );
+    }
+
     const elapsed = frameTime - face.start;
     const deltaMs = face.lastFrame ? frameTime - face.lastFrame : 16.67;
 
@@ -1031,19 +1046,28 @@
       return getConfig();
     }
 
-    face.start = now();
+    face.started = false;
+    face.start = 0;
+    face.lastFrame = 0;
 
+    /* Draw one static frame immediately, so Android Chrome does not show
+       an empty black canvas while waiting for the first rAF callback. */
+    try {
+      drawFaceGrid();
+    } catch (error) {
+      finishFace();
+      reportError("face first draw failed", error);
+      return getConfig();
+    }
+
+    /* Absolute safety cleanup. This is only a hard fallback.
+       The real animation clock is anchored in the first rAF frame. */
     scheduleFaceHardRemove(
       config.face.duration +
       config.face.fadeDuration +
-      config.face.failSafeExtraDelay
+      config.face.failSafeExtraDelay +
+      1600
     );
-
-    setFaceTimeout(function () {
-      if (state.face.running) {
-        leaveFace();
-      }
-    }, config.face.duration + config.face.fadeDuration + 120);
 
     window.addEventListener("resize", scheduleResizeFace, { passive: true });
     window.addEventListener("orientationchange", scheduleResizeFace, { passive: true });
@@ -1462,7 +1486,7 @@
 
     return getConfig();
   }
-
+  发
   function getConfig() {
     return normalizeConfig(deepMerge({}, config));
   }
