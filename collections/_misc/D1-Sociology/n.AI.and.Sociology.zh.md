@@ -2,7 +2,7 @@
 title: AI and Sociology (AI 和社会学)
 layout: slide-linear
 categories: Notes
-subclass: AI Society
+subclass: Sociology
 ---
 
 
