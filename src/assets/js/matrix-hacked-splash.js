@@ -2,14 +2,18 @@
  * hacked-splash.js
  *
  * Introduction:
- *   Renders two independent effects:
- *   1. ASCII face splash on canvas.
- *   2. Floating flash words with special final disappearance.
+ *   Two separated runtime branches:
+ *   1. PC branch: canvas ASCII face + independent flash words.
+ *   2. Mobile branch: only fade and remove the critical text layer.
  *
  * Usage:
- *   Include this script after the optional critical layer:
+ *   Keep the critical HTML text layer:
  *
- *   <div id="hacked-face-layer" aria-hidden="true"></div>
+ *   <div id="hacked-face-layer" aria-hidden="true">
+ *     [EXEC] INJECTING PAYLOAD...<br>
+ *     [AUTH] PERMISSION ACQUIRED...<br>
+ *     [ROOT] SYSTEM TAKEN.
+ *   </div>
  *
  * Global API:
  *   window.HackedSplash.start(config?)
@@ -21,10 +25,10 @@
  *   window.HackedSplash.getConfig()
  *
  * Notes:
- *   No <pre> fallback.
+ *   No <pre>.
  *   No Android animation-scale probing.
- *   No cross-module hard cleanup.
- *   CSS transition is visual only; cleanup is timer-based.
+ *   No mobile canvas/rAF path.
+ *   PC face and flash are independent.
  */
 
 (function (window, document) {
@@ -207,26 +211,30 @@
     layerParent: "body",
     removeLayersOnFinish: true,
 
-    dprMax: 2,
-    mobileDprMax: 1.25,
-    canvasPixelMax: 2500000,
+    runtime: {
+      mobileBreakpoint: 800,
+      mobileFadeDelay: 180,
+      mobileFadeDuration: 520,
+      mobileRemoveExtraDelay: 80
+    },
+
+    desktop: {
+      dprMax: 2,
+      canvasPixelMax: 2500000
+    },
 
     face: {
       enabled: true,
       layerId: "hacked-face-layer",
       canvasId: "hacked-splash-canvas",
-
       zIndex: 999998,
+
       duration: 900,
       fadeDuration: 420,
-
       dissolveStartRatio: 0.42,
       dissolveEndRatio: 0.92,
 
-      mobileBreakpoint: 800,
-      mobileCellScale: 0.7,
       cellMin: 12,
-      cellMinMobile: 8,
       cellMax: 25,
       targetGridWidth: 155,
       targetGridHeight: 82,
@@ -277,9 +285,6 @@
       finalSwitchMin: 1,
       finalSwitchMax: 5,
 
-      mobileBreakpoint: 800,
-      mobileScale: 0.7,
-
       largeChance: 0.06,
       mediumChance: 0.22,
 
@@ -317,6 +322,12 @@
   });
 
   let config = normalizeConfig(merge({}, DEFAULT_CONFIG, getPreloadConfig()));
+  let destroyed = false;
+  let currentMode = null;
+
+  const mobileState = {
+    timers: []
+  };
 
   const faceState = {
     running: false,
@@ -325,6 +336,7 @@
     ctx: null,
     raf: 0,
     timers: [],
+    resizeTimer: 0,
     startedAt: 0,
     lastFrameAt: 0,
     width: 0,
@@ -346,8 +358,6 @@
     decayStarted: false,
     activeWords: []
   };
-
-  let destroyed = false;
 
   if (window.HackedSplash && typeof window.HackedSplash.destroy === "function") {
     try {
@@ -416,6 +426,16 @@
 
   function getPreloadConfig() {
     return window.HackedSplashConfig || window.hackedSplashConfig || {};
+  }
+
+  function setConfig(nextConfig, shouldInjectStyle) {
+    config = normalizeConfig(merge(config, nextConfig || {}));
+
+    if (shouldInjectStyle) {
+      injectDesktopStyle();
+    }
+
+    return getConfig();
   }
 
   function now() {
@@ -489,12 +509,12 @@
   function shuffle(array) {
     const copy = array.slice();
 
-    for (let i = copy.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = copy[i];
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      const current = copy[index];
 
-      copy[i] = copy[j];
-      copy[j] = temp;
+      copy[index] = copy[swapIndex];
+      copy[swapIndex] = current;
     }
 
     return copy;
@@ -564,10 +584,10 @@
     return element;
   }
 
-  function hideOrRemove(element, remove) {
+  function removeOrHide(element, shouldRemove) {
     if (!element) return;
 
-    if (remove && element.isConnected) {
+    if (shouldRemove && element.isConnected) {
       element.remove();
       return;
     }
@@ -579,7 +599,7 @@
 
   function fadeOutThenRemove(element, duration, onFinish) {
     const total = Math.max(0, Number(duration) || 0);
-    const start = now();
+    const startedAt = now();
 
     if (!element || !element.isConnected) {
       if (onFinish) onFinish();
@@ -598,7 +618,7 @@
         return;
       }
 
-      const progress = clamp((time - start) / total, 0, 1);
+      const progress = clamp((time - startedAt) / total, 0, 1);
 
       element.style.opacity = String(1 - progress);
 
@@ -617,7 +637,15 @@
     requestFrame(step);
   }
 
-  function injectStyle() {
+  function isMobileRuntime() {
+    const width = window.innerWidth || document.documentElement.clientWidth || 1024;
+    const coarsePointer = window.matchMedia &&
+      window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
+    return Boolean(coarsePointer || width <= config.runtime.mobileBreakpoint);
+  }
+
+  function injectDesktopStyle() {
     if (!config.injectStyle) return;
 
     let style = document.getElementById(config.styleId);
@@ -688,6 +716,46 @@
     ].join("\n");
   }
 
+  function startMobileOnly() {
+    const layer = getOrCreateElement("div", config.face.layerId);
+    const flashLayer = document.getElementById(config.flash.layerId);
+    const fadeDelay = Math.max(0, Number(config.runtime.mobileFadeDelay) || 0);
+    const fadeDuration = Math.max(0, Number(config.runtime.mobileFadeDuration) || 0);
+    const removeExtraDelay = Math.max(0, Number(config.runtime.mobileRemoveExtraDelay) || 0);
+
+    currentMode = "mobile";
+    destroyed = false;
+
+    stopFace(true);
+    stopFlash(true);
+    clearTimers(mobileState);
+
+    if (flashLayer && flashLayer.isConnected) {
+      flashLayer.remove();
+    }
+
+    if (!layer) return getConfig();
+
+    layer.style.opacity = "1";
+    layer.style.visibility = "visible";
+    layer.style.pointerEvents = "none";
+
+    setTimer(mobileState, function () {
+      if (!layer.isConnected) return;
+
+      layer.style.transition = "opacity " + fadeDuration + "ms ease";
+      layer.style.opacity = "0";
+    }, fadeDelay);
+
+    setTimer(mobileState, function () {
+      if (layer.isConnected) {
+        layer.remove();
+      }
+    }, fadeDelay + fadeDuration + removeExtraDelay);
+
+    return getConfig();
+  }
+
   function pickFaceLines() {
     if (!FACE_LIBRARY.length) return [""];
 
@@ -728,12 +796,9 @@
     const width = window.innerWidth || document.documentElement.clientWidth || 1024;
     const height = window.innerHeight || document.documentElement.clientHeight || 768;
     const viewportDpr = window.devicePixelRatio || 1;
-    const mobileCap = width < faceConfig.mobileBreakpoint ? config.mobileDprMax : config.dprMax;
-    const pixelMax = Math.max(1, Number(config.canvasPixelMax) || 2500000);
+    const pixelMax = Math.max(1, Number(config.desktop.canvasPixelMax) || 2500000);
     const areaDpr = Math.sqrt(pixelMax / Math.max(1, width * height));
-    const dpr = Math.max(1, Math.min(viewportDpr, mobileCap, areaDpr));
-    const scale = width < faceConfig.mobileBreakpoint ? faceConfig.mobileCellScale : 1;
-    const minCell = width < faceConfig.mobileBreakpoint ? faceConfig.cellMinMobile : faceConfig.cellMin;
+    const dpr = Math.max(1, Math.min(viewportDpr, config.desktop.dprMax, areaDpr));
 
     face.width = width;
     face.height = height;
@@ -749,8 +814,8 @@
     face.ctx.textBaseline = "top";
 
     face.cellW = clamp(
-      Math.min(width / faceConfig.targetGridWidth, height / faceConfig.targetGridHeight) * scale,
-      minCell,
+      Math.min(width / faceConfig.targetGridWidth, height / faceConfig.targetGridHeight),
+      faceConfig.cellMin,
       faceConfig.cellMax
     );
     face.cellH = face.cellW * 1.4;
@@ -874,7 +939,7 @@
   function tickFace(time) {
     const face = faceState;
 
-    if (!face.running || destroyed) return;
+    if (!face.running || destroyed || currentMode !== "desktop") return;
 
     const elapsed = time - face.startedAt;
     const delta = face.lastFrameAt ? time - face.lastFrameAt : 16.67;
@@ -912,7 +977,7 @@
     window.clearTimeout(face.resizeTimer);
 
     face.resizeTimer = window.setTimeout(function () {
-      if (!face.running || !face.canvas || !face.ctx) return;
+      if (!face.running || !face.canvas || !face.ctx || currentMode !== "desktop") return;
 
       resizeFace();
       drawFace();
@@ -938,14 +1003,20 @@
 
   function startFace(nextConfig) {
     if (nextConfig) {
-      updateConfig(nextConfig);
+      setConfig(nextConfig, currentMode === "desktop");
     }
 
+    if (isMobileRuntime()) {
+      return startMobileOnly();
+    }
+
+    currentMode = "desktop";
+    destroyed = false;
+
+    injectDesktopStyle();
     stopFace(true);
 
     if (!config.face.enabled) return getConfig();
-
-    injectStyle();
 
     if (!setupFace()) {
       stopFace(true);
@@ -961,7 +1032,6 @@
       return getConfig();
     }
 
-    destroyed = false;
     faceState.running = true;
     faceState.startedAt = now();
     faceState.lastFrameAt = 0;
@@ -977,6 +1047,7 @@
 
   function stopFace(remove) {
     const shouldRemove = remove !== false;
+    const layer = faceState.layer || document.getElementById(config.face.layerId);
 
     clearTimers(faceState);
     cancelFrame(faceState.raf);
@@ -985,7 +1056,7 @@
     window.removeEventListener("resize", handleFaceResize);
     window.removeEventListener("orientationchange", handleFaceResize);
 
-    hideOrRemove(faceState.layer || document.getElementById(config.face.layerId), shouldRemove);
+    removeOrHide(layer, shouldRemove);
     resetFaceState();
 
     return getConfig();
@@ -1017,12 +1088,6 @@
     const limit = Math.floor((width * height) / config.flash.densityDivisor);
 
     return Math.min(config.flash.maxCount, Math.max(config.flash.minCount, limit));
-  }
-
-  function getFlashScale() {
-    const width = window.innerWidth || document.documentElement.clientWidth || 1024;
-
-    return width < config.flash.mobileBreakpoint ? config.flash.mobileScale : 1;
   }
 
   function pickFlashWord() {
@@ -1062,18 +1127,17 @@
     if (flash.activeWords.length >= getFlashLimit()) return null;
 
     const width = window.innerWidth || document.documentElement.clientWidth || 1024;
-    const scale = getFlashScale();
     const large = Math.random() < flashConfig.largeChance;
     const medium = !large && Math.random() < flashConfig.mediumChance;
     const element = document.createElement("span");
     let size;
 
     if (large) {
-      size = clamp(width * rand(flashConfig.largeRatioMin, flashConfig.largeRatioMax) * scale, flashConfig.largeClampMin, flashConfig.largeClampMax);
+      size = clamp(width * rand(flashConfig.largeRatioMin, flashConfig.largeRatioMax), flashConfig.largeClampMin, flashConfig.largeClampMax);
     } else if (medium) {
-      size = clamp(width * rand(flashConfig.mediumRatioMin, flashConfig.mediumRatioMax) * scale, flashConfig.mediumClampMin, flashConfig.mediumClampMax);
+      size = clamp(width * rand(flashConfig.mediumRatioMin, flashConfig.mediumRatioMax), flashConfig.mediumClampMin, flashConfig.mediumClampMax);
     } else {
-      size = clamp(width * rand(flashConfig.smallRatioMin, flashConfig.smallRatioMax) * scale, flashConfig.smallClampMin, flashConfig.smallClampMax);
+      size = clamp(width * rand(flashConfig.smallRatioMin, flashConfig.smallRatioMax), flashConfig.smallClampMin, flashConfig.smallClampMax);
     }
 
     element.className = "hacked-splash__word";
@@ -1094,7 +1158,7 @@
     const fragment = document.createDocumentFragment();
     const count = randInt(config.flash.batchMin, config.flash.batchMax);
 
-    for (let i = 0; i < count; i += 1) {
+    for (let index = 0; index < count; index += 1) {
       const word = createFlashWord();
 
       if (word) {
@@ -1110,7 +1174,7 @@
   function scheduleFlashSpawn() {
     const flash = flashState;
 
-    if (!flash.running || flash.decayStarted || destroyed) return;
+    if (!flash.running || flash.decayStarted || destroyed || currentMode !== "desktop") return;
 
     const elapsed = now() - flash.startedAt;
     const spawnEnd = config.flash.startDelay + config.flash.spawnDuration;
@@ -1169,7 +1233,7 @@
     element.style.transition = "none";
     element.style.filter = "contrast(1.15) saturate(1.15)";
 
-    for (let i = 0; i < forcedSwitches; i += 1) {
+    for (let index = 0; index < forcedSwitches; index += 1) {
       switchSteps.push(randInt(0, Math.max(0, cycles - 1)));
     }
 
@@ -1225,7 +1289,7 @@
     const flash = flashState;
     const flashConfig = config.flash;
 
-    if (!flash.running || flash.decayStarted) return;
+    if (!flash.running || flash.decayStarted || currentMode !== "desktop") return;
 
     flash.decayStarted = true;
     window.clearTimeout(flash.spawnTimer);
@@ -1287,21 +1351,26 @@
 
   function startFlash(nextConfig) {
     if (nextConfig) {
-      updateConfig(nextConfig);
+      setConfig(nextConfig, currentMode === "desktop");
     }
 
+    if (isMobileRuntime()) {
+      return startMobileOnly();
+    }
+
+    currentMode = "desktop";
+    destroyed = false;
+
+    injectDesktopStyle();
     stopFlash(true);
 
     if (!config.flash.enabled) return getConfig();
-
-    injectStyle();
 
     if (!setupFlash()) {
       stopFlash(true);
       return getConfig();
     }
 
-    destroyed = false;
     flashState.running = true;
     flashState.startedAt = now();
     flashState.decayStarted = false;
@@ -1326,20 +1395,18 @@
 
     if (layer) {
       layer.textContent = "";
-      hideOrRemove(layer, shouldRemove);
+      removeOrHide(layer, shouldRemove);
     }
 
     return getConfig();
   }
 
-  function start(nextConfig) {
-    if (nextConfig) {
-      updateConfig(nextConfig);
-    } else {
-      injectStyle();
-    }
-
+  function startDesktopOnly() {
+    currentMode = "desktop";
     destroyed = false;
+
+    clearTimers(mobileState);
+    injectDesktopStyle();
 
     if (config.face.enabled) {
       startFace();
@@ -1352,9 +1419,24 @@
     return getConfig();
   }
 
+  function start(nextConfig) {
+    if (nextConfig) {
+      setConfig(nextConfig, false);
+    }
+
+    if (isMobileRuntime()) {
+      return startMobileOnly();
+    }
+
+    return startDesktopOnly();
+  }
+
   function stop() {
+    clearTimers(mobileState);
     stopFace(true);
     stopFlash(true);
+
+    currentMode = null;
 
     return getConfig();
   }
@@ -1374,10 +1456,7 @@
   }
 
   function updateConfig(nextConfig) {
-    config = normalizeConfig(merge(config, nextConfig || {}));
-    injectStyle();
-
-    return getConfig();
+    return setConfig(nextConfig, currentMode === "desktop");
   }
 
   function getConfig() {
