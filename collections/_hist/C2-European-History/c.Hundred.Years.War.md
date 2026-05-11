@@ -964,6 +964,7 @@ Its deepest significance is this transition. The war began in the language of **
 
 ## 中文
 
+Timeline:
 * 12世纪–14世纪初
 
   * **英格兰在法国的封建领地问题成为战争的结构性原因**
