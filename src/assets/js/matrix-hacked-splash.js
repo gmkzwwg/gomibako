@@ -1,284 +1,266 @@
 /*!
-* hacked-splash.js
-*
-* Introduction:
-*   Renders an ASCII face splash and floating alert words.
-*   Uses conservative Android-safe timing and cleanup.
-*
-* Usage:
-*   Include this file after the optional critical first-paint layer.
-*   No manual initialization is required when autoStart is true.
-*
-* Global API:
-*   window.HackedSplash.start(config?)
-*   window.HackedSplash.stop()
-*   window.HackedSplash.destroy()
-*   window.HackedSplash.updateConfig(config)
-*   window.HackedSplash.getConfig()
-*
-* Notes:
-*   Critical cleanup never depends on CSS animation/transition events.
-*   Android animation-off or reduced-motion mode skips the effect and fades out the face layer.
-*/
+ * hacked-splash.js
+ *
+ * Conservative industrial rewrite.
+ *
+ * Design:
+ *   1. Keep the stable lifecycle of the old working version.
+ *   2. Never remove/recreate the first-paint face layer before startup.
+ *   3. Do not depend on animationend/transitionend for cleanup.
+ *   4. Avoid high DOM pressure from the old flash-word loop.
+ *   5. If system motion is effectively disabled, skip the full effect and fade out the face layer.
+ */
 
 (function (window, document) {
   "use strict";
 
   if (!window || !document) return;
 
-  const FACE_LIBRARY = [[
-    "                                                                                ",
-    "                -:-                           :-:                           -:- ",
-    "                :::                     ..    :::                           ::: ",
-    "                                    .---+=--:                                   ",
-    "                                  :-==++++=+::::.                               ",
-    "                                .=++***+++++-:...                               ",
-    "                               :=+*##+***+#*+-::                                ",
-    "                              :+*+***++==+**=-::....                            ",
-    "                              =+***+++++=+**+-::.-::                            ",
-    " :=:                         =*@@@#**++*#+++*=::-:           :=:                ",
-    " -::            .            %#@@%**#%#%%%%%@#*=:.  .        -::            .   ",
-    "                            *=*@@@@%+**+*+++*++%#-.                             ",
-    "                           +*%%@#%#**%#++++=+*+***+                             ",
-    "                          .#@######+-.         :++*+                            ",
-    "                          #@**+#=            .. .=+*-                           ",
-    "                         -#**-              .::-. -*+:                          ",
-    "                         =*:       .=:-....::   .  =+:                          ",
-    "   .            --:      :+..    -      -.    -#+   +-.        .            --: ",
-    "               .::-  -++***+-  .  -:   -#+. .=#+:   =:     ...             .::- ",
-    "                  .=**#**#+#=-:.   -++=-**=*++-     :.     :::.                 ",
-    "                 =###***+*##%=-     .++*=====:      +        .:::.              ",
-    "                :*%#**=*=-=+=**-      +*++-+      .*:         :--:              ",
-    "               .=*#*=++*+=-*-=.--:.            ::=:          .--:::             ",
-    "              :+*###+++#+**#+=+=:-:  .      -=-:            . :..:::.           ",
-    "              :=-++----+----=-+++*.       -.   :             :=  :-:.           ",
-    "             .++=+*= .-+==+%+=+**# .... -:     +-       .    .:---::::        . ",
-    " -:-.       :**=++=-  .--::-:-**#@.. ...-:    .%  . ..:..    *+*+-.::-          ",
-    "           :=*+==-=-  .-:.:-:-==++ :.::.:=:-=--#   .:...     :=---:::-.         ",
-    "          .==**+=--:   ..::-:-==++ :::::-+:==:-*  ..::=-:    .==--:::-:.        ",
-    "         =++-=+==:-.   ..--=----== :::::-*--=:-#    .:  .   .--+=-:::=-.        ",
-    "         -.=+++*=..      ::=.:=-+= -: .--*:-=::#.   .-.      :==--:::=-         ",
-    "        :=+===*#=..      ::-.:===-:==-:--*--=::#.     .. .:..:--::::  -.        ",
-    "       -::-:..:-:.       .:::%@@@@%@+: .:*--=:-#  ...-:       :-: .-=--::       ",
-    "     .=+:-==**--::        .*@@@@+*@@: . -%:.: :#.   ..         -. . .::::.      ",
-    "     ==+-*#*#%@@@%@##@@% =@@@@@+@@*%*:  -##..+@@@@#-.:    -==:-.:***+=-=-  .::- ",
-    "     -++##***#%#@**%#%=+@@@@@*%@@= .=-. .-:@+:=@%*%%=#+=%%%#+=-++++*==+-:   ::  ",
-    "     .=++*+*+--:-+**#*=@@@=.=#%-         :*= =+..#-=#:. :=++#-:..:. :::-.       ",
-    "      .-++==-:::-++=+=.-=.  :---==++*%#%%%+ -+ .#.-+        ==    ..            ",
-    "                 ..  ..    - .:..       :+     =  :         =.                  ",
-    "                                                                                ",
-    "                                                                                ",
-    "                   .                                                           .",
-    " -:-                          .:::                           -:-                ",
-    "-++=-::::::::::---::::::::::::-++=-::::::::::--:::::::::::::-++=-::::::::::--:::",
-    "#######%@####################################################%%%%%%%%%%%%%#%####",
-    "#%%%%%%%%%%%%%##################################################################",
-  ],
-  [
-    "                                 :+##########*-                                 ",
-    "                            =#%%%%%%%%%%%%%%%%%%%%%*                            ",
-    "                         *%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                         ",
-    "                      =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                       ",
-    "                   :#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+                     ",
-    "                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                    ",
-    "                -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   ",
-    "               =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                  ",
-    "              .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                 ",
-    "              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                ",
-    "             -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%=               ",
-    "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#               ",
-    "            .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%:              ",
-    "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*              ",
-    "            +%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-    "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-    "             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-    "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
-    "             :%%%%%# #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*%%%:              ",
-    "              %%%%#  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -%%#               ",
-    "              :%%- .#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+ %%+               ",
-    "               :+#%%%%%%+:. :+%%%%%%%%%%%%%%%%#-.      :+%%%%#==                ",
-    "              %%%%%%%=           #%%%%%%%%%%#             .%%%%%#               ",
-    "              %%%%%*              +%%%%%%%%%                %%%%*               ",
-    "              -%%%+                %%%%%%%%#                *%%%=               ",
-    "               %%%:                %%%%%%%%#                +%%%*               ",
-    "               #%%+              =%%%%%%%%%%%*              #%%%%               ",
-    "               %%%%*         .+%%%%%%%##%%%%%%%%+        :*%%%%%#               ",
-    "              =%%%%%%*=--=*%%%%%%%%%%-.+ %%%%%%%%%%%%%%%%%%%%%%#                ",
-    "              :%%%%%%%%%%%%%%%%%%%%%# :+ =%%%%%%%%%%%%%%%%%%%%*                 ",
-    "               +%%%%%%%%%%%%%%%%%%%%  =#  #%%%%%%%%%%%%%%%%%%#                  ",
-    "                 =#%%%%%%%%%%%%%%%%#  %%  =%%%%%%%%%%%%%%%%%%*                  ",
-    "        +%*                =%%%%%%%%+:%%+-%%%%%%%%%+-+%%%%%%*       :##*%%*    ",
-    "      %%%%%-               *%%%%%%%%%%%%%%%%%%%%%%%                #%%%%%%%     ",
-    "     +%%%%%%+              %%%%%%%%%%%%%%%%%%%%%%%%:              +%%%%%%%%     ",
-    "   #%%%%%%%%%%%#-          *%%%%%%%%%%%%%%%%%%%%%%%:           :*%%%%%%%%%%%%-  ",
-    "   %%%%%%%%%%%%%%%%#=       -%%%%%%%%%%%%%%%%%#%*        :*%%%%%%%%%%%%%%%%%%#  ",
-    "   %%%%%%%%%%%%%%%%%%%%%=      *%*=%%%*#%%#=%#       =%%%%%%%%%%%%%%%%%%%%%%%=  ",
-    "   =#%%%%%%%%%%%%%%%%%%%%%%%+.                   +%%%%%%%%%%%%%#*+=:.           ",
-    "               .=*#%%%%%%%%%%%%%*.          -#%%%%%%%%%#+-                      ",
-    "                      =*%%%%%%%%%%%%#=.=#%%%%%%%%%%+.                           ",
-    "                           =#%%%%%%%%%%%%%%%%%%+.                               ",
-    "                           .*%%%%%%%%%%%%%%%%%%*-                                ",
-    "                     .+%%%%%%%%%%%%%%#%%%%%%%%%%%%%%%%#=.                       ",
-    "   .            =#%%%%%%%%%%%%%#+:       =*%%%%%%%%%%%%%%%%%%%+:          -     ",
-    ":%%%%%+   :*%%%%%%%%%%%%%%#+.                 =*%%%%%%%%%%%%%%%%%%%%%%#%%%%%#.  ",
-    "%%%%%%%%%%%%%%%%%%%%%#+                            +#%%%%%%%%%%%%%%%%%%%%%%%%*  ",
-    "=%%%%%%%%%%%%%%%#=                                      =*#%%%%%%%%%%%%%%%%%%   ",
-    "  #%%%%%%%%%%%                                                :*#%%%%%%%%%%%%=  ",
-    "  #%%%%%%%%%#                                                      =#%%%%%%%%%%=",
-    "  #%%%%%%%#.                                                          :#%%%%%%%#",
-    "   *#%%%#:                                                               :#%%%# ",
-    "                                                                                ",
-  ],
-  [
-    "             . :                                                  .             ",
-    "            :  :                                                :  .            ",
-    "           .   :                                                :  :            ",
-    "           .                                                    .   .           ",
-    "           .  .                                                 .   -           ",
-    "          :   .:                                                :   ::          ",
-    "          -    :                                                .   :=          ",
-    "          -.   :                 .           :                  .   -=          ",
-    "         .++:  :-                =:          -=                =. .-+*          ",
-    "          +-    .                *=          =+                ..  :++:         ",
-    "          ==    :=              .+-          ++:              -.  .:++          ",
-    "          +*++-  ...           =+*:    -     :++.           :...:+++*+          ",
-    "           ++===:-=-          .:.-            :.-.         .:: .-=+**.          ",
-    "           +++++++=:.-         .-             ::. .       :  .-=+=+*+           ",
-    "           :++===..:+=.          ..:... .:.::.           :.=+.:.-***:           ",
-    "            .**+***+= ==:    ...   .-.. .:-:. ...:.    . -===+*****             ",
-    "             .+***++==++= .. .....   ::.-:.   ::.::.:.:= :==+=**#*.             ",
-    "              +#****+=-.:- ---=::     ..-:    :.-=--=  : ..-*****=              ",
-    "              :+**#**#=**--==-.+.     : =-      = ::+.-**=*####*+-              ",
-    "                :*##*****=+:.... ...  = :=  ..  .   :==***####*=                ",
-    "    :    .       -*#####*##*+    :=     :.   =    -+*##+*#*##*+       :    :    ",
-    "    =.      -:----=+**###+..:+:. -     :=     =.:-+-.:*###**+:==+===:      =    ",
-    "    :=       :-=*+.:-*##*=+- .==-:  :  .=  =  =-++. =**###=-..**++-       =:    ",
-    "     +-      .=+=+::-=**+=++: .+*=:   ==+-  .=**+..=*++**+--.:*+*+:      -+:    ",
-    "     =+:        ++=+--+++= =+=+:-+: ::+=*+:-:-+==*++*:++*+==+=++  .     :++     ",
-    "     .+=         ++- :=-=+=---=+= :.  ==+-: :- +*+==:++:==- -++       . -*:     ",
-    "      .+=. .     -#+ .:-.:+=. .++-++=-*=*+-++==++ .-++:.-- .+#=     -::=+-      ",
-    "       .*+=:..---+**: ::=. =:+: .+: :.-=+--.:=+: -+-+ .---.=#*+=+++=+++*=       ",
-    "        .**++==+*+==:++=: ::   -  ==: :++- -=- -:  .=:.-+*=:*+*********:        ",
-    "          :==++*+=-.=#####+ .   ..=. =*+#*: .= :   :.*#####-==*****++-          ",
-    "            *+====.:####%%%#+        ==:++-   .   -#%%%%###*-:*+++**            ",
-    "             .-:=+ =####%%%%%#=   .-=+*###+-=    #%%%%%%####- #++:              ",
-    "                -+ =+.*#%%%%%%%#*****#= .-#*+**##%%%%%%%%*-*-=*-                ",
-    "                  :++-#%%%%%%%%%%%###*= .*####%%%%%%%%%%#+=+*..                 ",
-    "                 =+=:=-####%#%%%%%##*++=#***##%%%%%#%##%#==-+++                 ",
-    "               :-==:.--.*######%#*+***%%%#+**+*#%%%####+.-=:-==-:               ",
-    "                -=-:-:  .:-   :+++=+*%%#%%%++++++-  :=-   -=-===                ",
-    "                .**++*+=-=+*+- .+*=+#%%#%%%#++#+.:=***+=+**+*#*                 ",
-    "                   =**######**=*+***%%%*%%%%****#+*########*-                   ",
-    "                   :*#**###*+*=+=+**###=*####**=*+#*#####*#*-                   ",
-    "                      ++#%%%*-==:.==:-+*++=:++ .+*-#%%%#+-                      ",
-    "                       -*#%%#+-=..=:**+##**+.= -==*%%%%*-                       ",
-    "                        *#%%%#++- +=  ++*= .=+ +=##%%%*+                        ",
-    "                        .*###= . =++:--=-=+ *++   #%%#*                         ",
-    "                         ++*#= . *+  =.==    += :-+#*++                         ",
-    "                         +*=*==+.*-    :     =*:++**=++                         ",
-    "                        =##+**::-#%##*+#++**#%*::-***##:                        ",
-    "                           *-*+   -.=#####** -   +*=+                           ",
-    "                            =#+=-==.   = . : +-==*#*                            ",
-    "                            +*#**#*#*+++*++##*#**#+:                            ",
-    "                            -.++*##############+*=..                            ",
-    "                              =*+*############*+*+                              ",
-    "                               -*#***#***##**###.                               ",
-    "                                %#.:.+**#*-.-.#%                                ",
-    "                                .  .*******#:  .                                ",
-    "                                   -  *##* ..                                   ",
-    "                                       *=                                       ",
-    "                                                                                ",
-    "                                                                                ",
-  ]
+  if (window.HackedSplash && typeof window.HackedSplash.destroy === "function") {
+    try {
+      window.HackedSplash.destroy();
+    } catch (_) {
+      // Ignore previous-instance cleanup errors.
+    }
+  }
+
+  const FACE_LIBRARY = [
+    [
+      "                                                                                ",
+      "                -:-                           :-:                           -:- ",
+      "                :::                     ..    :::                           ::: ",
+      "                                    .---+=--:                                   ",
+      "                                  :-==++++=+::::.                               ",
+      "                                .=++***+++++-:...                               ",
+      "                               :=+*##+***+#*+-::                                ",
+      "                              :+*+***++==+**=-::....                            ",
+      "                              =+***+++++=+**+-::.-::                            ",
+      " :=:                         =*@@@#**++*#+++*=::-:           :=:                ",
+      " -::            .            %#@@%**#%#%%%%%@#*=:.  .        -::            .   ",
+      "                            *=*@@@@%+**+*+++*++%#-.                             ",
+      "                           +*%%@#%#**%#++++=+*+***+                             ",
+      "                          .#@######+-.         :++*+                            ",
+      "                          #@**+#=            .. .=+*-                           ",
+      "                         -#**-              .::-. -*+:                          ",
+      "                         =*:       .=:-....::   .  =+:                          ",
+      "   .            --:      :+..    -      -.    -#+   +-.        .            --: ",
+      "               .::-  -++***+-  .  -:   -#+. .=#+:   =:     ...             .::- ",
+      "                  .=**#**#+#=-:.   -++=-**=*++-     :.     :::.                 ",
+      "                 =###***+*##%=-     .++*=====:      +        .:::.              ",
+      "                :*%#**=*=-=+=**-      +*++-+      .*:         :--:              ",
+      "               .=*#*=++*+=-*-=.--:.            ::=:          .--:::             ",
+      "              :+*###+++#+**#+=+=:-:  .      -=-:            . :..:::.           ",
+      "              :=-++----+----=-+++*.       -.   :             :=  :-:.           ",
+      "             .++=+*= .-+==+%+=+**# .... -:     +-       .    .:---::::        . ",
+      " -:-.       :**=++=-  .--::-:-**#@.. ...-:    .%  . ..:..    *+*+-.::-          ",
+      "           :=*+==-=-  .-:.:-:-==++ :.::.:=:-=--#   .:...     :=---:::-.         ",
+      "          .==**+=--:   ..::-:-==++ :::::-+:==:-*  ..::=-:    .==--:::-:.        ",
+      "         =++-=+==:-.   ..--=----== :::::-*--=:-#    .:  .   .--+=-:::=-.        ",
+      "         -.=+++*=..      ::=.:=-+= -: .--*:-=::#.   .-.      :==--:::=-         ",
+      "        :=+===*#=..      ::-.:===-:==-:--*--=::#.     .. .:..:--::::  -.        ",
+      "       -::-:..:-:.       .:::%@@@@%@+: .:*--=:-#  ...-:       :-: .-=--::       ",
+      "     .=+:-==**--::        .*@@@@+*@@: . -%:.: :#.   ..         -. . .::::.      ",
+      "     ==+-*#*#%@@@%@##@@% =@@@@@+@@*%*:  -##..+@@@@#-.:    -==:-.:***+=-=-  .::- ",
+      "     -++##***#%#@**%#%=+@@@@@*%@@= .=-. .-:@+:=@%*%%=#+=%%%#+=-++++*==+-:   ::  ",
+      "     .=++*+*+--:-+**#*=@@@=.=#%-         :*= =+..#-=#:. :=++#-:..:. :::-.       ",
+      "      .-++==-:::-++=+=.-=.  :---==++*#%%%+ -+ .#.-+        ==    ..            ",
+      "                 ..  ..    - .:..       :+     =  :         =.                  ",
+      "                                                                                ",
+      "                                                                                ",
+      "                   .                                                           .",
+      " -:-                          .:::                           -:-                ",
+      "-++=-::::::::::---::::::::::::-++=-::::::::::--:::::::::::::-++=-::::::::::--:::",
+      "#######%@####################################################%%%%%%%%%%%%%#%####",
+      "#%%%%%%%%%%%%%##################################################################",
+    ],
+    [
+      "                                 :+##########*-                                 ",
+      "                            =#%%%%%%%%%%%%%%%%%%%%%*                            ",
+      "                         *%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                         ",
+      "                      =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                       ",
+      "                   :#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+                     ",
+      "                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                    ",
+      "                -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   ",
+      "               =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                  ",
+      "              .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                 ",
+      "              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#                ",
+      "             -%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%=               ",
+      "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#               ",
+      "            .%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%:              ",
+      "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*              ",
+      "            +%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+      "            =%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+      "             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+      "             #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              ",
+      "             :%%%%%# #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*%%%:              ",
+      "              %%%%#  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -%%#               ",
+      "              :%%- .#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%+ %%+               ",
+      "               :+#%%%%%%+:. :+%%%%%%%%%%%%%%%%#-.      :+%%%%#==                ",
+      "              %%%%%%%=           #%%%%%%%%%%#             .%%%%%#               ",
+      "              %%%%%*              +%%%%%%%%%                %%%%*               ",
+      "              -%%%+                %%%%%%%%#                *%%%=               ",
+      "               %%%:                %%%%%%%%#                +%%%*               ",
+      "               #%%+              =%%%%%%%%%%%*              #%%%%               ",
+      "               %%%%*         .+%%%%%%%##%%%%%%%%+        :*%%%%%#               ",
+      "              =%%%%%%*=--=*%%%%%%%%%%-.+ %%%%%%%%%%%%%%%%%%%%%%#                ",
+      "              :%%%%%%%%%%%%%%%%%%%%%# :+ =%%%%%%%%%%%%%%%%%%%%*                 ",
+      "               +%%%%%%%%%%%%%%%%%%%%  =#  #%%%%%%%%%%%%%%%%%%#                  ",
+      "                 =#%%%%%%%%%%%%%%%%#  %%  =%%%%%%%%%%%%%%%%%%*                  ",
+      "        +%*                =%%%%%%%%+:%%+-%%%%%%%%%+-+%%%%%%*       :##*%%*    ",
+      "      %%%%%-               *%%%%%%%%%%%%%%%%%%%%%%%                #%%%%%%%     ",
+      "     +%%%%%%+              %%%%%%%%%%%%%%%%%%%%%%%%:              +%%%%%%%%     ",
+      "   #%%%%%%%%%%%#-          *%%%%%%%%%%%%%%%%%%%%%%%:           :*%%%%%%%%%%%%-  ",
+      "   %%%%%%%%%%%%%%%%#=       -%%%%%%%%%%%%%%%%%#%*        :*%%%%%%%%%%%%%%%%%%#  ",
+      "   %%%%%%%%%%%%%%%%%%%%%=      *%*=%%%*#%%#=%#       =%%%%%%%%%%%%%%%%%%%%%%%=  ",
+      "   =#%%%%%%%%%%%%%%%%%%%%%%%+.                   +%%%%%%%%%%%%%#*+=:.           ",
+      "               .=*#%%%%%%%%%%%%%*.          -#%%%%%%%%%#+-                      ",
+      "                      =*%%%%%%%%%%%%#=.=#%%%%%%%%%%+.                           ",
+      "                           =#%%%%%%%%%%%%%%%%%%+.                               ",
+      "                           .*%%%%%%%%%%%%%%%%%%*-                                ",
+      "                     .+%%%%%%%%%%%%%%#%%%%%%%%%%%%%%%%#=.                       ",
+      "   .            =#%%%%%%%%%%%%%#+:       =*%%%%%%%%%%%%%%%%%%%+:          -     ",
+      ":%%%%%+   :*%%%%%%%%%%%%%%#+.                 =*%%%%%%%%%%%%%%%%%%%%%%#%%%%%#.  ",
+      "%%%%%%%%%%%%%%%%%%%%%#+                            +#%%%%%%%%%%%%%%%%%%%%%%%%*  ",
+      "=%%%%%%%%%%%%%%%#=                                      =*#%%%%%%%%%%%%%%%%%%   ",
+      "  #%%%%%%%%%%%                                                :*#%%%%%%%%%%%%=  ",
+      "  #%%%%%%%%%#                                                      =#%%%%%%%%%%=",
+      "  #%%%%%%%#.                                                          :#%%%%%%%#",
+      "   *#%%%#:                                                               :#%%%# ",
+      "                                                                                ",
+    ],
+    [
+      "             . :                                                  .             ",
+      "            :  :                                                :  .            ",
+      "           .   :                                                :  :            ",
+      "           .                                                    .   .           ",
+      "           .  .                                                 .   -           ",
+      "          :   .:                                                :   ::          ",
+      "          -    :                                                .   :=          ",
+      "          -.   :                 .           :                  .   -=          ",
+      "         .++:  :-                =:          -=                =. .-+*          ",
+      "          +-    .                *=          =+                ..  :++:         ",
+      "          ==    :=              .+-          ++:              -.  .:++          ",
+      "          +*++-  ...           =+*:    -     :++.           :...:+++*+          ",
+      "           ++===:-=-          .:.-            :.-.         .:: .-=+**.          ",
+      "           +++++++=:.-         .-             ::. .       :  .-=+=+*+           ",
+      "           :++===..:+=.          ..:... .:.::.           :.=+.:.-***:           ",
+      "            .**+***+= ==:    ...   .-.. .:-:. ...:.    . -===+*****             ",
+      "             .+***++==++= .. .....   ::.-:.   ::.::.:.:= :==+=**#*.             ",
+      "              +#****+=-.:- ---=::     ..-:    :.-=--=  : ..-*****=              ",
+      "              :+**#**#=**--==-.+.     : =-      = ::+.-**=*####*+-              ",
+      "                :*##*****=+:.... ...  = :=  ..  .   :==***####*=                ",
+      "    :    .       -*#####*##*+    :=     :.   =    -+*##+*#*##*+       :    :    ",
+      "    =.      -:----=+**###+..:+:. -     :=     =.:-+-.:*###**+:==+===:      =    ",
+      "    :=       :-=*+.:-*##*=+- .==-:  :  .=  =  =-++. =**###=-..**++-       =:    ",
+      "     +-      .=+=+::-=**+=++: .+*=:   ==+-  .=**+..=*++**+--.:*+*+:      -+:    ",
+      "     =+:        ++=+--+++= =+=+:-+: ::+=*+:-:-+==*++*:++*+==+=++  .     :++     ",
+      "     .+=         ++- :=-=+=---=+= :.  ==+-: :- +*+==:++:==- -++       . -*:     ",
+      "      .+=. .     -#+ .:-.:+=. .++-++=-*=*+-++==++ .-++:.-- .+#=     -::=+-      ",
+      "       .*+=:..---+**: ::=. =:+: .+: :.-=+--.:=+: -+-+ .---.=#*+=+++=+++*=       ",
+      "        .**++==+*+==:++=: ::   -  ==: :++- -=- -:  .=:.-+*=:*+*********:        ",
+      "          :==++*+=-.=#####+ .   ..=. =*+#*: .= :   :.*#####-==*****++-          ",
+      "            *+====.:####%%%#+        ==:++-   .   -#%%%%###*-:*+++**            ",
+      "             .-:=+ =####%%%%%#=   .-=+*###+-=    #%%%%%%####- #++:              ",
+      "                -+ =+.*#%%%%%%%#*****#= .-#*+**##%%%%%%%%*-*-=*-                ",
+      "                  :++-#%%%%%%%%%%%###*= .*####%%%%%%%%%%#+=+*..                 ",
+      "                 =+=:=-####%#%%%%%##*++=#***##%%%%%#%##%#==-+++                 ",
+      "               :-==:.--.*######%#*+***%%%#+**+*#%%%####+.-=:-==-:               ",
+      "                -=-:-:  .:-   :+++=+*%%#%%%++++++-  :=-   -=-===                ",
+      "                .**++*+=-=+*+- .+*=+#%%#%%%#++#+.:=***+=+**+*#*                 ",
+      "                   =**######**=*+***%%%*%%%%****#+*########*-                   ",
+      "                   :*#**###*+*=+=+**###=*####**=*+#*#####*#*-                   ",
+      "                      ++#%%%*-==:.==:-+*++=:++ .+*-#%%%#+-                      ",
+      "                       -*#%%#+-=..=:**+##**+.= -==*%%%%*-                       ",
+      "                        *#%%%#++- +=  ++*= .=+ +=##%%%*+                        ",
+      "                        .*###= . =++:--=-=+ *++   #%%#*                         ",
+      "                         ++*#= . *+  =.==    += :-+#*++                         ",
+      "                         +*=*==+.*-    :     =*:++**=++                         ",
+      "                        =##+**::-#%##*+#++**#%*::-***##:                        ",
+      "                           *-*+   -.=#####** -   +*=+                           ",
+      "                            =#+=-==.   = . : +-==*#*                            ",
+      "                            +*#**#*#*+++*++##*#**#+:                            ",
+      "                            -.++*##############+*=..                            ",
+      "                              =*+*############*+*+                              ",
+      "                               -*#***#***##**###.                               ",
+      "                                %#.:.+**#*-.-.#%                                ",
+      "                                .  .*******#:  .                                ",
+      "                                   -  *##* ..                                   ",
+      "                                       *=                                       ",
+      "                                                                                ",
+      "                                                                                ",
+    ],
   ];
 
   const DEFAULT_CONFIG = {
     autoStart: true,
-    injectStyle: true,
-    styleId: "hacked-splash-style",
-    createLayers: true,
-    layerParent: "body",
+    createMissingLayers: true,
     removeLayersOnFinish: true,
+
+    layerParent: "body",
+    styleId: "hacked-splash-style",
+
+    faceLayerId: "hacked-face-layer",
+    flashLayerId: "hacked-flash-layer",
+    canvasId: "hacked-splash-canvas",
 
     dprMax: 2,
     mobileDprMax: 1.25,
-    canvasPixelMax: 2500000,
+    mobileBreakpoint: 800,
+    canvasPixelMax: 2200000,
 
     motion: {
       respectReducedMotion: true,
-      probeSystemAnimationOff: true,
-      probeDelay: 90,
+      probeAnimationOff: true,
+      probeDelay: 72,
       probeDuration: 1000,
-      probeOffThreshold: 0.72,
-      skipFadeDuration: 420,
-      skipFadeSteps: 18
+      probeOffRatio: 0.72,
+      skipFadeDuration: 360,
+      skipFadeSteps: 16,
     },
 
-    face: {
-      enabled: true,
-      layerId: "hacked-face-layer",
-      canvasId: "hacked-splash-canvas",
+    timing: {
+      faceDuration: 800,
+      dissolveStart: 340,
+      dissolveEnd: 760,
+      faceFade: 360,
+      flashSpawnDuration: 620,
+      flashHold: 180,
+      flashTail: 1200,
+      failSafeExtra: 1800,
+    },
 
-      duration: 800,
-      fadeDuration: 420,
-      dissolveStartRatio: 0.42,
-      dissolveEndRatio: 0.92,
-      failSafeExtraDelay: 1200,
-
-      mobileBreakpoint: 800,
-      mobileCellScale: 0.7,
+    grid: {
+      targetWidth: 155,
+      targetHeight: 82,
+      minCols: 52,
+      minRows: 30,
       cellMin: 12,
       cellMinMobile: 8,
       cellMax: 25,
-      targetGridWidth: 155,
-      targetGridHeight: 82,
-      minCols: 52,
-      minRows: 30,
+      mobileCellScale: 0.72,
+      backgroundSampleRate: 0.72,
+    },
 
-      backgroundColor: "#000",
-      faceBaseColor: "rgba(245,255,245,",
-      faceNoiseColor: "rgba(110,255,150,",
-      backgroundNoiseColor: "rgba(30,170,70,",
-      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace"
+    colors: {
+      background: "#000",
+      faceBase: "rgba(245,255,245,",
+      faceNoise: "rgba(110,255,150,",
+      backgroundNoise: "rgba(30,170,70,",
     },
 
     flash: {
       enabled: true,
-      layerId: "hacked-flash-layer",
-
-      startDelay: 0,
-      spawnDuration: 600,
-      holdDuration: 200,
-      regularDecayDuration: 1000,
-
-      count: null,
+      maxWordsDesktop: 130,
+      maxWordsMobile: 64,
       densityDivisor: 9800,
-      minCount: 32,
-      maxCount: 220,
-
-      spawnIntervalMin: 28,
-      spawnIntervalMax: 56,
       batchMin: 3,
       batchMax: 6,
+      spawnIntervalMin: 28,
+      spawnIntervalMax: 56,
+
       outMin: 260,
       outMax: 460,
 
-      finalCountMin: 1,
-      finalCountMax: 2,
-      finalDurationMin: 2000,
-      finalDurationMax: 3000,
-      finalBlinkMin: 6,
-      finalBlinkMax: 12,
-      finalHideMin: 80,
-      finalHideMax: 260,
-      finalShowMin: 90,
-      finalShowMax: 320,
-      finalReskinChance: 0.5,
-      finalSwitchMin: 1,
-      finalSwitchMax: 5,
-
-      mobileBreakpoint: 800,
-      mobileScale: 0.7,
       largeChance: 0.06,
       mediumChance: 0.22,
 
@@ -296,9 +278,7 @@
       largeClampMin: 32,
       largeClampMax: 46,
 
-      fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace",
-      deriveGlowFromColor: true,
-      glowAlpha: 0.98,
+      mobileScale: 0.72,
       mixBlendMode: "screen",
 
       words: [
@@ -307,92 +287,56 @@
         { text: "[WARNING] MEMORY RUPTURED", color: "#f8ca00", glow: "rgba(248,202,0,0.98)" },
         { text: "[BREACH] CONTROL LOST", color: "#d2cccc", glow: "rgba(210,204,204,0.98)" },
         { text: "[FAULT] SESSION SEIZED", color: "#E71D36", glow: "rgba(231,29,54,0.98)" },
-        { text: "[SYS] ROOT PERMISSION TAKEN", color: "#0fca1c", glow: "rgba(15,202,28,0.98)" }
-      ]
-    }
+        { text: "[SYS] ROOT PERMISSION TAKEN", color: "#0fca1c", glow: "rgba(15,202,28,0.98)" },
+      ],
+    },
   };
 
   const ASCII_PALETTE = Array.from({ length: 94 }, function (_, index) {
     return String.fromCharCode(index + 33);
   });
 
-  if (window.HackedSplash && typeof window.HackedSplash.destroy === "function") {
-    try {
-      window.HackedSplash.destroy();
-    } catch (error) {
-      reportError("previous instance destroy failed", error);
-    }
-  }
-
-  let config = normalizeConfig(deepMerge({}, DEFAULT_CONFIG, getPreloadConfig()));
+  let config = mergeConfig(DEFAULT_CONFIG, window.HackedSplashConfig || window.hackedSplashConfig || {});
 
   const state = {
     destroyed: false,
-    starting: false,
-    session: 0,
+    started: false,
+    skipMode: false,
+
+    faceLayer: null,
+    flashLayer: null,
+    canvas: null,
+    ctx: null,
+
     width: 0,
     height: 0,
+    dpr: 1,
 
-    face: {
-      running: false,
-      started: false,
-      layer: null,
-      canvas: null,
-      ctx: null,
-      dpr: 1,
-      cellW: 10,
-      cellH: 14,
-      cols: 0,
-      rows: 0,
-      cells: [],
-      start: 0,
-      lastFrame: 0,
-      raf: 0,
-      resizeTimer: 0,
-      hardRemoveTimer: 0,
-      timers: []
-    },
+    cellW: 10,
+    cellH: 14,
+    cols: 0,
+    rows: 0,
+    cells: [],
+    faceLines: null,
 
-    flash: {
-      running: false,
-      layer: null,
-      start: 0,
-      spawnTimer: 0,
-      decayStarted: false,
-      activeWords: [],
-      timers: []
-    },
+    startTime: 0,
+    rafId: 0,
 
-    motion: {
-      probing: false,
-      skip: false
-    }
+    flashDecayStarted: false,
+    activeFlashWords: [],
+
+    timers: new Set(),
+    hardCleanupTimer: 0,
+    resizeTimer: 0,
   };
 
-  function reportError(message, error) {
-    if (window.console && window.console.error) {
-      window.console.error("[HackedSplash] " + message, error);
-    }
-  }
-
-  function cloneValue(value) {
-    if (Array.isArray(value)) {
-      return value.map(cloneValue);
-    }
-
-    if (value && typeof value === "object") {
-      return deepMerge({}, value);
-    }
-
-    return value;
-  }
-
-  function deepMerge() {
+  function mergeConfig(base, patch) {
     const output = {};
+    const sourceList = [base || {}, patch || {}];
 
-    Array.prototype.slice.call(arguments).forEach(function (object) {
-      Object.keys(object || {}).forEach(function (key) {
-        const value = object[key];
+    sourceList.forEach(function (source) {
+      Object.keys(source).forEach(function (key) {
+        const value = source[key];
         const current = output[key];
 
         if (
@@ -403,9 +347,13 @@
           typeof current === "object" &&
           !Array.isArray(current)
         ) {
-          output[key] = deepMerge(current, value);
+          output[key] = mergeConfig(current, value);
+        } else if (Array.isArray(value)) {
+          output[key] = value.map(function (item) {
+            return item && typeof item === "object" ? mergeConfig({}, item) : item;
+          });
         } else {
-          output[key] = cloneValue(value);
+          output[key] = value;
         }
       });
     });
@@ -413,89 +361,34 @@
     return output;
   }
 
-  function normalizeConfig(nextConfig) {
-    const normalized = deepMerge({}, nextConfig || {});
-    const flash = normalized.flash || {};
-    const words = Array.isArray(flash.words) ? flash.words : [];
-    const alpha = Number.isFinite(Number(flash.glowAlpha)) ? Number(flash.glowAlpha) : 0.98;
+  function setManagedTimeout(callback, delay) {
+    const id = window.setTimeout(function () {
+      state.timers.delete(id);
+      callback();
+    }, Math.max(0, Number(delay) || 0));
 
-    flash.words = words.map(function (word) {
-      const normalizedWord = deepMerge({}, word || {});
-      const color = normalizedWord.color || "#ffffff";
+    state.timers.add(id);
+    return id;
+  }
 
-      if (flash.deriveGlowFromColor || !normalizedWord.glow) {
-        normalizedWord.glow = colorToGlow(color, alpha);
-      }
-
-      return normalizedWord;
+  function clearManagedTimers() {
+    state.timers.forEach(function (id) {
+      window.clearTimeout(id);
     });
-
-    normalized.flash = flash;
-    return normalized;
+    state.timers.clear();
   }
 
-  function hexToRgb(color) {
-    let value = String(color || "").trim();
-
-    if (value.charAt(0) === "#") {
-      value = value.slice(1);
+  function clearHardCleanupTimer() {
+    if (state.hardCleanupTimer) {
+      window.clearTimeout(state.hardCleanupTimer);
+      state.hardCleanupTimer = 0;
     }
-
-    if (value.length === 3) {
-      value = value.split("").map(function (char) {
-        return char + char;
-      }).join("");
-    }
-
-    if (!/^[0-9a-fA-F]{6}$/.test(value)) return null;
-
-    const number = parseInt(value, 16);
-
-    return {
-      r: (number >> 16) & 255,
-      g: (number >> 8) & 255,
-      b: number & 255
-    };
-  }
-
-  function colorToGlow(color, alpha) {
-    const rgb = hexToRgb(color);
-
-    if (!rgb) {
-      return color || "rgba(255,255,255," + alpha + ")";
-    }
-
-    return "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + "," + alpha + ")";
-  }
-
-  function getPreloadConfig() {
-    return window.HackedSplashConfig || window.hackedSplashConfig || {};
   }
 
   function now() {
     return window.performance && typeof window.performance.now === "function"
       ? window.performance.now()
       : Date.now();
-  }
-
-  function requestFrame(callback) {
-    if (window.requestAnimationFrame) {
-      return window.requestAnimationFrame(callback);
-    }
-
-    return window.setTimeout(function () {
-      callback(now());
-    }, 16);
-  }
-
-  function cancelFrame(id) {
-    if (!id) return;
-
-    if (window.cancelAnimationFrame) {
-      window.cancelAnimationFrame(id);
-    } else {
-      window.clearTimeout(id);
-    }
   }
 
   function rand(min, max) {
@@ -514,7 +407,7 @@
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  function shuffled(array) {
+  function shuffle(array) {
     const copy = array.slice();
 
     for (let index = copy.length - 1; index > 0; index -= 1) {
@@ -528,68 +421,15 @@
     return copy;
   }
 
-  function setTimer(moduleState, callback, delay) {
-    const id = window.setTimeout(function () {
-      removeTimer(moduleState, id);
-      callback();
-    }, Math.max(0, Number(delay) || 0));
-
-    moduleState.timers.push(id);
-    return id;
-  }
-
-  function removeTimer(moduleState, id) {
-    const index = moduleState.timers.indexOf(id);
-
-    if (index !== -1) {
-      moduleState.timers.splice(index, 1);
-    }
-  }
-
-  function clearTimers(moduleState) {
-    moduleState.timers.forEach(function (id) {
-      window.clearTimeout(id);
-    });
-
-    moduleState.timers = [];
-  }
-
   function randomAscii() {
     return ASCII_PALETTE[Math.floor(Math.random() * ASCII_PALETTE.length)];
   }
 
-  function readViewport() {
-    state.width = window.innerWidth || document.documentElement.clientWidth || 1024;
-    state.height = window.innerHeight || document.documentElement.clientHeight || 768;
+  function isMobileViewport() {
+    return state.width < config.mobileBreakpoint;
   }
 
-  function showElement(element) {
-    if (!element) return;
-
-    element.style.opacity = "1";
-    element.style.visibility = "visible";
-    element.style.pointerEvents = "none";
-  }
-
-  function hideElement(element) {
-    if (!element) return;
-
-    element.style.opacity = "0";
-    element.style.visibility = "hidden";
-    element.style.pointerEvents = "none";
-  }
-
-  function removeOrHide(element, shouldRemove) {
-    if (!element) return;
-
-    if (shouldRemove && element.isConnected) {
-      element.remove();
-    } else {
-      hideElement(element);
-    }
-  }
-
-  function resolveLayerParent() {
+  function getParent() {
     const parent = config.layerParent;
 
     if (parent && parent.nodeType === 1) return parent;
@@ -601,23 +441,33 @@
     return document.body || document.documentElement;
   }
 
-  function ensureElementById(tagName, id, parent) {
-    let element = document.getElementById(id);
+  function showLayer(element) {
+    if (!element) return;
 
-    if (element) return element;
-    if (!config.createLayers || !parent) return null;
+    element.style.opacity = "1";
+    element.style.visibility = "visible";
+    element.style.pointerEvents = "none";
+  }
 
-    element = document.createElement(tagName);
-    element.id = id;
-    element.setAttribute("aria-hidden", "true");
-    parent.appendChild(element);
+  function hideLayer(element) {
+    if (!element) return;
 
-    return element;
+    element.style.opacity = "0";
+    element.style.visibility = "hidden";
+    element.style.pointerEvents = "none";
+  }
+
+  function removeOrHide(element) {
+    if (!element) return;
+
+    if (config.removeLayersOnFinish !== false && element.isConnected) {
+      element.remove();
+    } else {
+      hideLayer(element);
+    }
   }
 
   function injectStyle() {
-    if (!config.injectStyle) return;
-
     let style = document.getElementById(config.styleId);
 
     if (!style) {
@@ -627,7 +477,7 @@
     }
 
     style.textContent = [
-      "#" + config.face.layerId + " {",
+      "#" + config.faceLayerId + " {",
       "  position: fixed;",
       "  inset: 0;",
       "  z-index: 999998;",
@@ -635,17 +485,17 @@
       "  pointer-events: none;",
       "  opacity: 1;",
       "  visibility: visible;",
-      "  background: " + config.face.backgroundColor + ";",
+      "  background: " + config.colors.background + ";",
       "  contain: layout paint style;",
       "}",
-      "#" + config.face.canvasId + " {",
+      "#" + config.canvasId + " {",
       "  position: absolute;",
       "  inset: 0;",
+      "  display: block;",
       "  width: 100%;",
       "  height: 100%;",
-      "  display: block;",
       "}",
-      "#" + config.flash.layerId + " {",
+      "#" + config.flashLayerId + " {",
       "  position: fixed;",
       "  inset: 0;",
       "  z-index: 999999;",
@@ -659,7 +509,7 @@
       "  top: var(--y);",
       "  transform: translate(-50%, -50%) rotate(var(--r)) scale(var(--settle));",
       "  transform-origin: center center;",
-      "  font-family: " + config.flash.fontFamily + ";",
+      "  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace;",
       "  font-size: var(--size);",
       "  font-weight: 900;",
       "  line-height: 1;",
@@ -673,124 +523,418 @@
       "  mix-blend-mode: var(--blend-mode, screen);",
       "  text-shadow: 0 0 0.4em var(--glow), 0 0 1.2em var(--glow);",
       "  box-shadow: 0 0 0.5em var(--glow), inset 0 0 0.5em rgba(255,255,255,0.04);",
-      "  opacity: 1;",
+      "  opacity: 0;",
       "  visibility: visible;",
       "  pointer-events: none;",
       "  user-select: none;",
-      "  will-change: opacity, transform;",
       "  contain: layout paint style;",
+      "  animation: hackedSplashFlashIn var(--dur) steps(2, end) both;",
       "}",
       ".hacked-splash__flash.is-decaying {",
       "  opacity: 0;",
       "  visibility: hidden;",
-      "}"
+      "  transform: translate(-50%, -50%) rotate(var(--r)) scale(0.96);",
+      "  transition: opacity var(--outdur) ease, transform var(--outdur) ease, visibility 0s linear var(--outdur);",
+      "}",
+      "@keyframes hackedSplashFlashIn {",
+      "  0% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--r)) scale(0.8); }",
+      "  45% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--r)) scale(1.04); }",
+      "  100% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--r)) scale(var(--settle)); }",
+      "}",
     ].join("\n");
   }
 
-  function prefersReducedMotion() {
-    if (!config.motion.respectReducedMotion) return false;
-    if (!window.matchMedia) return false;
+  function ensureDom() {
+    const parent = getParent();
 
-    try {
-      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    } catch (error) {
-      return false;
-    }
-  }
+    state.faceLayer = document.getElementById(config.faceLayerId);
 
-  function probeSystemAnimationOff(callback) {
-    if (!config.motion.probeSystemAnimationOff) {
-      callback(false);
-      return;
+    if (!state.faceLayer && config.createMissingLayers) {
+      state.faceLayer = document.createElement("div");
+      state.faceLayer.id = config.faceLayerId;
+      state.faceLayer.setAttribute("aria-hidden", "true");
+      parent.appendChild(state.faceLayer);
     }
 
-    if (!document.body || typeof document.createElement !== "function") {
-      callback(false);
-      return;
+    if (!state.faceLayer) return false;
+
+    state.canvas = document.getElementById(config.canvasId);
+
+    if (!state.canvas && config.createMissingLayers) {
+      state.canvas = document.createElement("canvas");
+      state.canvas.id = config.canvasId;
     }
 
-    if (typeof Element === "undefined" || !Element.prototype.animate) {
-      callback(false);
-      return;
-    }
+    if (!state.canvas) return false;
 
-    const probe = document.createElement("div");
-    const startedAt = now();
-    let finished = false;
-    let animation = null;
-
-    probe.style.position = "fixed";
-    probe.style.left = "-1px";
-    probe.style.top = "-1px";
-    probe.style.width = "1px";
-    probe.style.height = "1px";
-    probe.style.opacity = "0";
-    probe.style.pointerEvents = "none";
-
-    document.body.appendChild(probe);
-
-    try {
-      animation = probe.animate(
-        [
-          { opacity: 0.99 },
-          { opacity: 1 }
-        ],
-        {
-          duration: config.motion.probeDuration,
-          fill: "both"
-        }
-      );
-    } catch (error) {
-      cleanup(false);
-      return;
-    }
-
-    function cleanup(result) {
-      if (finished) return;
-
-      finished = true;
-
-      try {
-        if (animation) {
-          animation.cancel();
-        }
-      } catch (error) {
-        // Ignore probe cleanup errors.
+    Array.prototype.slice.call(state.faceLayer.childNodes).forEach(function (node) {
+      if (node !== state.canvas) {
+        node.remove();
       }
-
-      if (probe.isConnected) {
-        probe.remove();
-      }
-
-      callback(result);
-    }
-
-    window.setTimeout(function () {
-      let ratio = 0;
-
-      try {
-        const currentTime = Number(animation.currentTime) || 0;
-        ratio = currentTime / Math.max(1, Number(config.motion.probeDuration) || 1000);
-      } catch (error) {
-        ratio = 0;
-      }
-
-      const realElapsed = now() - startedAt;
-      const tooFarAdvanced = ratio >= config.motion.probeOffThreshold && realElapsed < config.motion.probeDuration * 0.35;
-
-      cleanup(tooFarAdvanced);
-    }, Math.max(30, Number(config.motion.probeDelay) || 90));
-  }
-
-  function shouldSkipMotion(callback) {
-    if (prefersReducedMotion()) {
-      callback(true);
-      return;
-    }
-
-    probeSystemAnimationOff(function (isAnimationOff) {
-      callback(Boolean(isAnimationOff));
     });
+
+    if (state.canvas.parentNode !== state.faceLayer) {
+      state.faceLayer.appendChild(state.canvas);
+    }
+
+    state.flashLayer = document.getElementById(config.flashLayerId);
+
+    if (!state.flashLayer && config.createMissingLayers) {
+      state.flashLayer = document.createElement("div");
+      state.flashLayer.id = config.flashLayerId;
+      state.flashLayer.setAttribute("aria-hidden", "true");
+      parent.appendChild(state.flashLayer);
+    }
+
+    if (state.flashLayer) {
+      state.flashLayer.textContent = "";
+      state.flashLayer.setAttribute("aria-hidden", "true");
+      showLayer(state.flashLayer);
+    }
+
+    showLayer(state.faceLayer);
+
+    try {
+      state.ctx = state.canvas.getContext("2d", { alpha: false });
+    } catch (_) {
+      state.ctx = state.canvas.getContext("2d");
+    }
+
+    return Boolean(state.ctx);
+  }
+
+  function readViewport() {
+    state.width = window.innerWidth || document.documentElement.clientWidth || 1024;
+    state.height = window.innerHeight || document.documentElement.clientHeight || 768;
+  }
+
+  function pickFace() {
+    const raw = sample(FACE_LIBRARY);
+    const maxLen = Math.max.apply(null, raw.map(function (line) {
+      return line.length;
+    }));
+
+    return raw.map(function (line) {
+      return line.padEnd(maxLen, " ");
+    });
+  }
+
+  function resizeCanvasAndGrid() {
+    const ctx = state.ctx;
+
+    if (!state.canvas || !ctx) return;
+
+    readViewport();
+
+    const viewportDpr = window.devicePixelRatio || 1;
+    const dprCap = isMobileViewport() ? config.mobileDprMax : config.dprMax;
+    const areaCap = Math.sqrt(config.canvasPixelMax / Math.max(1, state.width * state.height));
+
+    state.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaCap));
+
+    state.canvas.width = Math.ceil(state.width * state.dpr);
+    state.canvas.height = Math.ceil(state.height * state.dpr);
+    state.canvas.style.width = state.width + "px";
+    state.canvas.style.height = state.height + "px";
+
+    ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+
+    const scale = isMobileViewport() ? config.grid.mobileCellScale : 1;
+    const cellMin = isMobileViewport() ? config.grid.cellMinMobile : config.grid.cellMin;
+
+    state.cellW = clamp(
+      Math.min(state.width / config.grid.targetWidth, state.height / config.grid.targetHeight) * scale,
+      cellMin,
+      config.grid.cellMax
+    );
+
+    state.cellH = state.cellW * 1.4;
+    state.cols = Math.max(config.grid.minCols, Math.floor(state.width / state.cellW));
+    state.rows = Math.max(config.grid.minRows, Math.floor(state.height / state.cellH));
+
+    buildGrid();
+  }
+
+  function buildGrid() {
+    const face = state.faceLines || pickFace();
+
+    state.faceLines = face;
+    state.cells = [];
+
+    for (let y = 0; y < state.rows; y += 1) {
+      for (let x = 0; x < state.cols; x += 1) {
+        state.cells.push({
+          x: x,
+          y: y,
+          face: false,
+          bgVisible: Math.random() < config.grid.backgroundSampleRate,
+          base: " ",
+          char: randomAscii(),
+          gone: false,
+          nextFlip: rand(0, 80),
+        });
+      }
+    }
+
+    const faceH = face.length;
+    const faceW = face[0] ? face[0].length : 0;
+    const offsetX = Math.floor((state.cols - faceW) / 2);
+    const offsetY = Math.floor((state.rows - faceH) / 2);
+
+    for (let fy = 0; fy < faceH; fy += 1) {
+      for (let fx = 0; fx < faceW; fx += 1) {
+        const char = face[fy][fx];
+
+        if (char === " ") continue;
+
+        const px = offsetX + fx;
+        const py = offsetY + fy;
+
+        if (px < 0 || py < 0 || px >= state.cols || py >= state.rows) continue;
+
+        const cell = state.cells[py * state.cols + px];
+
+        cell.face = true;
+        cell.bgVisible = true;
+        cell.base = char;
+        cell.char = Math.random() < 0.78 ? char : randomAscii();
+        cell.gone = false;
+        cell.nextFlip = rand(0, 24);
+      }
+    }
+  }
+
+  function updateCells(elapsed, deltaMs) {
+    const timing = config.timing;
+    const dissolveProgress = elapsed <= timing.dissolveStart
+      ? 0
+      : clamp((elapsed - timing.dissolveStart) / Math.max(1, timing.dissolveEnd - timing.dissolveStart), 0, 1);
+
+    const frameFactor = clamp(deltaMs / 16.67, 0.35, 2.2);
+
+    for (let index = 0; index < state.cells.length; index += 1) {
+      const cell = state.cells[index];
+
+      if (cell.gone) continue;
+
+      if (elapsed >= cell.nextFlip) {
+        if (cell.face) {
+          if (elapsed < 170) {
+            cell.char = randomAscii();
+          } else {
+            cell.char = Math.random() < 0.66 ? cell.base : randomAscii();
+          }
+
+          cell.nextFlip += rand(18, 64);
+        } else if (cell.bgVisible) {
+          cell.char = randomAscii();
+          cell.nextFlip += rand(50, 150);
+        }
+      }
+
+      if (dissolveProgress > 0) {
+        const chance = cell.face
+          ? (0.0035 + dissolveProgress * 0.064) * frameFactor
+          : (0.0006 + dissolveProgress * 0.009) * frameFactor;
+
+        if (Math.random() < chance) {
+          cell.gone = true;
+        }
+      }
+    }
+  }
+
+  function drawGrid() {
+    const ctx = state.ctx;
+
+    if (!ctx) return false;
+
+    ctx.clearRect(0, 0, state.width, state.height);
+    ctx.fillStyle = config.colors.background;
+    ctx.fillRect(0, 0, state.width, state.height);
+
+    ctx.font =
+      "700 " +
+      state.cellW +
+      "px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace";
+
+    for (let index = 0; index < state.cells.length; index += 1) {
+      const cell = state.cells[index];
+
+      if (cell.gone || (!cell.face && !cell.bgVisible)) continue;
+
+      const px = cell.x * state.cellW;
+      const py = cell.y * state.cellH;
+
+      if (cell.face) {
+        const isBase = cell.char === cell.base;
+        const alpha = isBase ? rand(0.88, 1) : rand(0.52, 0.82);
+
+        ctx.fillStyle = (isBase ? config.colors.faceBase : config.colors.faceNoise) + alpha + ")";
+      } else {
+        ctx.fillStyle = config.colors.backgroundNoise + rand(0.05, 0.15) + ")";
+      }
+
+      ctx.fillText(cell.char, px, py);
+    }
+
+    return true;
+  }
+
+  function decorateFlashText(text) {
+    const variants = [
+      "//// " + text + " ////",
+      "//// " + text + " :: " + randInt(0, 9999).toString(16).toUpperCase() + " ////",
+      "//// " + text + " :: 0x" + randInt(0, 65535).toString(16).toUpperCase() + " ////",
+      "//// " + text + " :: /SYS/CORE ////",
+      "//// " + text + " :: PROC-FAIL ////",
+    ];
+
+    return sample(variants);
+  }
+
+  function getFlashLimit() {
+    const baseMax = isMobileViewport() ? config.flash.maxWordsMobile : config.flash.maxWordsDesktop;
+    const densityLimit = Math.floor((state.width * state.height) / config.flash.densityDivisor);
+
+    return Math.max(12, Math.min(baseMax, densityLimit));
+  }
+
+  function createFlashWord() {
+    if (!config.flash.enabled) return;
+    if (!state.flashLayer || !state.flashLayer.isConnected) return;
+    if (state.flashDecayStarted) return;
+    if (state.activeFlashWords.length >= getFlashLimit()) return;
+
+    const word = sample(config.flash.words);
+    const span = document.createElement("span");
+    const scale = isMobileViewport() ? config.flash.mobileScale : 1;
+    const large = Math.random() < config.flash.largeChance;
+    const medium = !large && Math.random() < config.flash.mediumChance;
+
+    let size;
+
+    if (large) {
+      size = clamp(
+        state.width * rand(config.flash.largeRatioMin, config.flash.largeRatioMax) * scale,
+        config.flash.largeClampMin,
+        config.flash.largeClampMax
+      );
+    } else if (medium) {
+      size = clamp(
+        state.width * rand(config.flash.mediumRatioMin, config.flash.mediumRatioMax) * scale,
+        config.flash.mediumClampMin,
+        config.flash.mediumClampMax
+      );
+    } else {
+      size = clamp(
+        state.width * rand(config.flash.smallRatioMin, config.flash.smallRatioMax) * scale,
+        config.flash.smallClampMin,
+        config.flash.smallClampMax
+      );
+    }
+
+    span.className = "hacked-splash__flash";
+    span.textContent = decorateFlashText(word.text || "[SYS] SIGNAL LOST");
+    span.style.setProperty("--x", rand(1, 99) + "%");
+    span.style.setProperty("--y", rand(2, 98) + "%");
+    span.style.setProperty("--r", rand(-20, 20) + "deg");
+    span.style.setProperty("--size", size + "px");
+    span.style.setProperty("--dur", rand(90, 180) + "ms");
+    span.style.setProperty("--settle", String(rand(0.55, 0.95)));
+    span.style.setProperty("--outdur", rand(config.flash.outMin, config.flash.outMax) + "ms");
+    span.style.setProperty("--color", word.color || "#fff");
+    span.style.setProperty("--glow", word.glow || "rgba(255,255,255,0.98)");
+    span.style.setProperty("--blend-mode", config.flash.mixBlendMode || "screen");
+
+    state.flashLayer.appendChild(span);
+    state.activeFlashWords.push(span);
+  }
+
+  function flashAddLoop() {
+    if (!state.started || state.destroyed) return;
+    if (!state.flashLayer || !state.flashLayer.isConnected) return;
+    if (state.flashDecayStarted) return;
+
+    const elapsed = now() - state.startTime;
+
+    if (elapsed > config.timing.flashSpawnDuration) return;
+
+    const batchCount = randInt(config.flash.batchMin, config.flash.batchMax);
+    const fragment = document.createDocumentFragment();
+
+    for (let index = 0; index < batchCount; index += 1) {
+      if (state.activeFlashWords.length >= getFlashLimit()) break;
+
+      const before = state.activeFlashWords.length;
+      createFlashWord();
+
+      if (state.activeFlashWords.length > before) {
+        fragment.appendChild(state.activeFlashWords[state.activeFlashWords.length - 1]);
+      }
+    }
+
+    if (fragment.childNodes.length && state.flashLayer && state.flashLayer.isConnected) {
+      state.flashLayer.appendChild(fragment);
+    }
+
+    setManagedTimeout(flashAddLoop, rand(config.flash.spawnIntervalMin, config.flash.spawnIntervalMax));
+  }
+
+  function decayFlashWord(element) {
+    if (!element || !element.isConnected) return;
+
+    element.classList.add("is-decaying");
+
+    const index = state.activeFlashWords.indexOf(element);
+
+    if (index !== -1) {
+      state.activeFlashWords.splice(index, 1);
+    }
+
+    const outDur = parseFloat(element.style.getPropertyValue("--outdur")) || config.flash.outMax;
+
+    setManagedTimeout(function () {
+      if (element.isConnected) {
+        element.remove();
+      }
+    }, outDur + 40);
+  }
+
+  function beginFlashDecay() {
+    if (state.flashDecayStarted) return;
+
+    state.flashDecayStarted = true;
+
+    const queue = shuffle(state.activeFlashWords.slice());
+    const total = config.timing.flashTail;
+
+    if (!queue.length) {
+      setManagedTimeout(function () {
+        if (state.flashLayer) {
+          removeOrHide(state.flashLayer);
+        }
+      }, total);
+      return;
+    }
+
+    queue.forEach(function (element, index) {
+      const progress = queue.length === 1 ? 1 : index / (queue.length - 1);
+      const eased = Math.pow(progress, 2);
+      const delay = eased * total + rand(0, 50);
+
+      setManagedTimeout(function () {
+        decayFlashWord(element);
+      }, delay);
+    });
+
+    setManagedTimeout(function () {
+      if (state.flashLayer) {
+        removeOrHide(state.flashLayer);
+      }
+    }, total + config.flash.outMax + 300);
   }
 
   function jsFadeOut(element, duration, steps, onFinish) {
@@ -800,14 +944,15 @@
     }
 
     const totalDuration = Math.max(0, Number(duration) || 0);
-    const totalSteps = Math.max(1, Math.floor(Number(steps) || 18));
+    const totalSteps = Math.max(1, Math.floor(Number(steps) || 16));
     const interval = totalDuration / totalSteps;
     let step = 0;
 
-    showElement(element);
+    showLayer(element);
 
     if (totalDuration <= 0) {
       element.style.opacity = "0";
+      element.style.visibility = "hidden";
       if (onFinish) onFinish();
       return;
     }
@@ -827,933 +972,364 @@
         element.style.visibility = "hidden";
         if (onFinish) onFinish();
       } else {
-        window.setTimeout(tick, interval);
+        setManagedTimeout(tick, interval);
       }
     }
 
-    window.setTimeout(tick, interval);
+    setManagedTimeout(tick, interval);
   }
 
-  function pickFace() {
-    if (!FACE_LIBRARY.length) return [""];
+  function leaveFaceLayer() {
+    if (!state.started) return;
 
-    const raw = sample(FACE_LIBRARY);
-    const maxLen = Math.max.apply(null, raw.map(function (line) {
-      return line.length;
-    }));
+    state.started = false;
 
-    return raw.map(function (line) {
-      return line.padEnd(maxLen, " ");
-    });
-  }
-
-  function resolveFaceElements() {
-    const parent = resolveLayerParent();
-    const face = state.face;
-
-    face.layer = ensureElementById("div", config.face.layerId, parent);
-    if (!face.layer) return false;
-
-    face.layer.setAttribute("aria-hidden", "true");
-    showElement(face.layer);
-
-    face.canvas = document.getElementById(config.face.canvasId);
-
-    if (!face.canvas && config.createLayers) {
-      face.canvas = document.createElement("canvas");
-      face.canvas.id = config.face.canvasId;
-      face.layer.appendChild(face.canvas);
-    } else if (face.canvas && face.canvas.parentNode !== face.layer) {
-      face.layer.appendChild(face.canvas);
+    if (state.rafId) {
+      window.cancelAnimationFrame(state.rafId);
+      state.rafId = 0;
     }
 
-    if (face.canvas && face.canvas.getContext) {
-      try {
-        face.ctx = face.canvas.getContext("2d", { alpha: false });
-      } catch (error) {
-        face.ctx = face.canvas.getContext("2d");
-      }
-    } else {
-      face.ctx = null;
-    }
-
-    if (!face.ctx) {
-      cleanupFace({ remove: true });
-      return false;
-    }
-
-    return true;
-  }
-
-  function clearFaceHardRemoveTimer() {
-    if (state.face.hardRemoveTimer) {
-      window.clearTimeout(state.face.hardRemoveTimer);
-      state.face.hardRemoveTimer = 0;
-    }
-  }
-
-  function clearFaceRuntime() {
-    const face = state.face;
-
-    cancelFrame(face.raf);
-    window.clearTimeout(face.resizeTimer);
-    clearTimers(face);
-    clearFaceHardRemoveTimer();
-
-    face.raf = 0;
-    face.resizeTimer = 0;
-  }
-
-  function cleanupFace(options) {
-    const opts = options || {};
-    const shouldRemove = opts.remove !== false;
-    const face = state.face;
-    const layer = face.layer || document.getElementById(config.face.layerId);
-
-    face.running = false;
-    face.started = false;
-    clearFaceRuntime();
-
-    window.removeEventListener("resize", scheduleResizeFace);
-    window.removeEventListener("orientationchange", scheduleResizeFace);
-
-    removeOrHide(layer, shouldRemove);
-
-    face.layer = null;
-    face.canvas = null;
-    face.ctx = null;
-    face.dpr = 1;
-    face.cellW = 10;
-    face.cellH = 14;
-    face.cols = 0;
-    face.rows = 0;
-    face.cells = [];
-    face.start = 0;
-    face.lastFrame = 0;
-  }
-
-  function finishFace() {
-    cleanupFace({ remove: config.removeLayersOnFinish !== false });
-  }
-
-  function armFaceHardRemove(delay) {
-    clearFaceHardRemoveTimer();
-
-    state.face.hardRemoveTimer = window.setTimeout(function () {
-      finishFace();
-    }, Math.max(0, Number(delay) || 0));
-  }
-
-  function resizeFace() {
-    const faceConfig = config.face;
-    const face = state.face;
-
-    if (!face.canvas || !face.ctx) return;
-
-    readViewport();
-
-    const viewportDpr = window.devicePixelRatio || 1;
-    const mobileCap = state.width < faceConfig.mobileBreakpoint ? config.mobileDprMax : config.dprMax;
-    const dprCap = Number.isFinite(Number(mobileCap)) ? Number(mobileCap) : config.dprMax;
-    const pixelMax = Math.max(1, Number(config.canvasPixelMax) || 2500000);
-    const areaDpr = Math.sqrt(pixelMax / Math.max(1, state.width * state.height));
-
-    face.dpr = Math.max(1, Math.min(viewportDpr, dprCap, areaDpr));
-
-    face.canvas.width = Math.ceil(state.width * face.dpr);
-    face.canvas.height = Math.ceil(state.height * face.dpr);
-    face.canvas.style.width = state.width + "px";
-    face.canvas.style.height = state.height + "px";
-
-    face.ctx.setTransform(face.dpr, 0, 0, face.dpr, 0, 0);
-    face.ctx.textAlign = "left";
-    face.ctx.textBaseline = "top";
-
-    const scale = state.width < faceConfig.mobileBreakpoint ? faceConfig.mobileCellScale : 1;
-    const minCell = state.width < faceConfig.mobileBreakpoint ? faceConfig.cellMinMobile : faceConfig.cellMin;
-
-    face.cellW = clamp(
-      Math.min(state.width / faceConfig.targetGridWidth, state.height / faceConfig.targetGridHeight) * scale,
-      minCell,
-      faceConfig.cellMax
-    );
-
-    face.cellH = face.cellW * 1.4;
-    face.cols = Math.max(faceConfig.minCols, Math.floor(state.width / face.cellW));
-    face.rows = Math.max(faceConfig.minRows, Math.floor(state.height / face.cellH));
-
-    buildFaceGrid();
-  }
-
-  function scheduleResizeFace() {
-    const face = state.face;
-
-    window.clearTimeout(face.resizeTimer);
-
-    face.resizeTimer = window.setTimeout(function () {
-      if (!face.running) return;
-
-      try {
-        resizeFace();
-        drawFaceGrid();
-      } catch (error) {
-        skipFaceWithFade();
-        reportError("face resize failed", error);
-      }
-    }, 80);
-  }
-
-  function buildFaceGrid() {
-    const face = state.face;
-    const faceLines = pickFace();
-    const faceH = faceLines.length;
-    const faceW = faceLines[0] ? faceLines[0].length : 0;
-    const offsetX = Math.floor((face.cols - faceW) / 2);
-    const offsetY = Math.floor((face.rows - faceH) / 2);
-
-    face.cells = [];
-
-    for (let y = 0; y < face.rows; y += 1) {
-      for (let x = 0; x < face.cols; x += 1) {
-        face.cells.push({
-          x: x,
-          y: y,
-          face: false,
-          base: " ",
-          char: randomAscii(),
-          gone: false,
-          nextFlip: rand(0, 80)
-        });
-      }
-    }
-
-    for (let fy = 0; fy < faceH; fy += 1) {
-      for (let fx = 0; fx < faceW; fx += 1) {
-        const char = faceLines[fy][fx];
-
-        if (char === " ") continue;
-
-        const px = offsetX + fx;
-        const py = offsetY + fy;
-
-        if (px < 0 || py < 0 || px >= face.cols || py >= face.rows) continue;
-
-        const cell = face.cells[py * face.cols + px];
-
-        cell.face = true;
-        cell.base = char;
-        cell.char = Math.random() < 0.78 ? char : randomAscii();
-        cell.gone = false;
-        cell.nextFlip = rand(0, 24);
-      }
-    }
-  }
-
-  function updateFaceCells(elapsed, deltaMs) {
-    const faceConfig = config.face;
-    const face = state.face;
-    const dissolveStart = faceConfig.duration * faceConfig.dissolveStartRatio;
-    const dissolveEnd = faceConfig.duration * faceConfig.dissolveEndRatio;
-
-    const dissolveProgress = elapsed <= dissolveStart
-      ? 0
-      : clamp((elapsed - dissolveStart) / Math.max(1, dissolveEnd - dissolveStart), 0, 1);
-
-    const frameFactor = clamp(deltaMs / 16.67, 0.35, 2.25);
-
-    for (let index = 0; index < face.cells.length; index += 1) {
-      const cell = face.cells[index];
-
-      if (cell.gone) continue;
-
-      if (elapsed >= cell.nextFlip) {
-        if (cell.face) {
-          if (elapsed < 170) {
-            cell.char = randomAscii();
-          } else {
-            cell.char = Math.random() < 0.66 ? cell.base : randomAscii();
-          }
-
-          cell.nextFlip += rand(18, 64);
-        } else {
-          cell.char = randomAscii();
-          cell.nextFlip += rand(50, 150);
-        }
+    jsFadeOut(state.faceLayer, config.timing.faceFade, 18, function () {
+      if (state.faceLayer) {
+        removeOrHide(state.faceLayer);
       }
 
-      if (dissolveProgress > 0) {
-        const chance = cell.face
-          ? (0.0035 + dissolveProgress * 0.064) * frameFactor
-          : (0.0007 + dissolveProgress * 0.011) * frameFactor;
-
-        if (Math.random() < chance) {
-          cell.gone = true;
-        }
-      }
-    }
-  }
-
-  function drawFaceGrid() {
-    const faceConfig = config.face;
-    const face = state.face;
-    const ctx = face.ctx;
-
-    if (!ctx) return;
-
-    ctx.clearRect(0, 0, state.width, state.height);
-    ctx.fillStyle = faceConfig.backgroundColor;
-    ctx.fillRect(0, 0, state.width, state.height);
-    ctx.font = "700 " + face.cellW + "px " + faceConfig.fontFamily;
-
-    for (let index = 0; index < face.cells.length; index += 1) {
-      const cell = face.cells[index];
-
-      if (cell.gone) continue;
-
-      const px = cell.x * face.cellW;
-      const py = cell.y * face.cellH;
-
-      if (cell.face) {
-        const isBase = cell.char === cell.base;
-        const alpha = isBase ? rand(0.88, 1) : rand(0.52, 0.82);
-
-        ctx.fillStyle = (isBase ? faceConfig.faceBaseColor : faceConfig.faceNoiseColor) + alpha + ")";
-      } else {
-        ctx.fillStyle = faceConfig.backgroundNoiseColor + rand(0.05, 0.16) + ")";
-      }
-
-      ctx.fillText(cell.char, px, py);
-    }
-  }
-
-  function drawFaceFrame(frameTime) {
-    const face = state.face;
-
-    if (!face.running || state.destroyed) return;
-
-    if (!face.started) {
-      face.started = true;
-      face.start = frameTime;
-      face.lastFrame = frameTime;
-    }
-
-    const elapsed = frameTime - face.start;
-    const deltaMs = face.lastFrame ? frameTime - face.lastFrame : 16.67;
-
-    face.lastFrame = frameTime;
-
-    try {
-      updateFaceCells(elapsed, deltaMs);
-      drawFaceGrid();
-    } catch (error) {
-      skipFaceWithFade();
-      reportError("face draw failed", error);
-      return;
-    }
-
-    if (elapsed < config.face.duration) {
-      face.raf = requestFrame(drawFaceFrame);
-    } else {
-      leaveFace();
-    }
-  }
-
-  function leaveFace() {
-    const face = state.face;
-    const layer = face.layer;
-    const fadeDuration = Math.max(0, Number(config.face.fadeDuration) || 0);
-
-    face.running = false;
-    cancelFrame(face.raf);
-    face.raf = 0;
-
-    if (!layer || !layer.isConnected) {
-      finishFace();
-      return;
-    }
-
-    jsFadeOut(layer, fadeDuration, 20, finishFace);
-  }
-
-  function skipFaceWithFade() {
-    const face = state.face;
-    const layer = face.layer || document.getElementById(config.face.layerId);
-
-    face.running = false;
-    cancelFrame(face.raf);
-    face.raf = 0;
-    clearTimers(face);
-    clearFaceHardRemoveTimer();
-
-    if (!layer) {
-      finishFace();
-      return;
-    }
-
-    jsFadeOut(
-      layer,
-      config.motion.skipFadeDuration,
-      config.motion.skipFadeSteps,
-      finishFace
-    );
-  }
-
-  function startFaceOnly() {
-    cleanupFace({ remove: true });
-
-    if (!config.face.enabled) return false;
-    if (!resolveFaceElements()) return false;
-
-    const face = state.face;
-
-    state.destroyed = false;
-    face.running = true;
-    face.started = false;
-    face.start = 0;
-    face.lastFrame = 0;
-
-    try {
-      resizeFace();
-      drawFaceGrid();
-    } catch (error) {
-      skipFaceWithFade();
-      reportError("face setup failed", error);
-      return false;
-    }
-
-    window.addEventListener("resize", scheduleResizeFace, { passive: true });
-    window.addEventListener("orientationchange", scheduleResizeFace, { passive: true });
-
-    armFaceHardRemove(
-      config.face.duration +
-      config.face.fadeDuration +
-      config.face.failSafeExtraDelay
-    );
-
-    face.raf = requestFrame(drawFaceFrame);
-    return true;
-  }
-
-  function resolveFlashElements() {
-    const parent = resolveLayerParent();
-    const flash = state.flash;
-
-    flash.layer = ensureElementById("div", config.flash.layerId, parent);
-
-    if (!flash.layer) return false;
-
-    flash.layer.textContent = "";
-    flash.layer.setAttribute("aria-hidden", "true");
-    showElement(flash.layer);
-
-    return true;
-  }
-
-  function clearFlashRuntime() {
-    const flash = state.flash;
-
-    window.clearTimeout(flash.spawnTimer);
-    clearTimers(flash);
-
-    flash.spawnTimer = 0;
-  }
-
-  function cleanupFlash(options) {
-    const opts = options || {};
-    const shouldRemove = opts.remove !== false;
-    const flash = state.flash;
-    const layer = flash.layer || document.getElementById(config.flash.layerId);
-
-    flash.running = false;
-    flash.decayStarted = false;
-    clearFlashRuntime();
-
-    if (layer) {
-      layer.textContent = "";
-      removeOrHide(layer, shouldRemove);
-    }
-
-    flash.layer = null;
-    flash.start = 0;
-    flash.activeWords = [];
-  }
-
-  function finishFlash() {
-    cleanupFlash({ remove: config.removeLayersOnFinish !== false });
-  }
-
-  function decorateFlashText(text) {
-    const variants = [
-      "//// " + text + " ////",
-      "//// " + text + " :: " + randInt(0, 9999).toString(16).toUpperCase() + " ////",
-      "//// " + text + " :: 0x" + randInt(0, 65535).toString(16).toUpperCase() + " ////",
-      "//// " + text + " :: /SYS/CORE ////",
-      "//// " + text + " :: PROC-FAIL ////"
-    ];
-
-    return sample(variants);
-  }
-
-  function getFlashLimit() {
-    const flashConfig = config.flash;
-    const fixed = flashConfig.count;
-
-    if (fixed !== null && fixed !== undefined && fixed !== "") {
-      const value = Number(fixed);
-
-      if (Number.isFinite(value) && value >= 0) {
-        return Math.floor(clamp(value, 0, flashConfig.maxCount));
-      }
-    }
-
-    readViewport();
-
-    const viewportLimit = Math.floor((state.width * state.height) / flashConfig.densityDivisor);
-
-    return Math.min(flashConfig.maxCount, Math.max(flashConfig.minCount, viewportLimit));
-  }
-
-  function getFlashScale() {
-    readViewport();
-
-    return state.width < config.flash.mobileBreakpoint ? config.flash.mobileScale : 1;
-  }
-
-  function pickFlashWord() {
-    const words = Array.isArray(config.flash.words) && config.flash.words.length
-      ? config.flash.words
-      : DEFAULT_CONFIG.flash.words;
-
-    return sample(words);
-  }
-
-  function applyFlashWordStyle(element, word) {
-    const picked = word || pickFlashWord();
-    const color = picked.color || "#ffffff";
-    const glow = picked.glow || colorToGlow(color, config.flash.glowAlpha || 0.98);
-
-    element.textContent = decorateFlashText(picked.text || "[SYS] SIGNAL LOST");
-    element.style.setProperty("--color", color);
-    element.style.setProperty("--glow", glow);
-    element.style.setProperty("--blend-mode", config.flash.mixBlendMode || "screen");
-  }
-
-  function createFlashWord() {
-    const flashConfig = config.flash;
-    const flash = state.flash;
-
-    if (!flash.layer || !flash.layer.isConnected) return null;
-    if (flash.decayStarted) return null;
-    if (flash.activeWords.length >= getFlashLimit()) return null;
-
-    readViewport();
-
-    const span = document.createElement("span");
-    const scale = getFlashScale();
-    const large = Math.random() < flashConfig.largeChance;
-    const medium = !large && Math.random() < flashConfig.mediumChance;
-    let size = 0;
-
-    if (large) {
-      size = clamp(
-        state.width * rand(flashConfig.largeRatioMin, flashConfig.largeRatioMax) * scale,
-        flashConfig.largeClampMin,
-        flashConfig.largeClampMax
-      );
-    } else if (medium) {
-      size = clamp(
-        state.width * rand(flashConfig.mediumRatioMin, flashConfig.mediumRatioMax) * scale,
-        flashConfig.mediumClampMin,
-        flashConfig.mediumClampMax
-      );
-    } else {
-      size = clamp(
-        state.width * rand(flashConfig.smallRatioMin, flashConfig.smallRatioMax) * scale,
-        flashConfig.smallClampMin,
-        flashConfig.smallClampMax
-      );
-    }
-
-    span.className = "hacked-splash__flash";
-    span.style.setProperty("--x", rand(1, 99) + "%");
-    span.style.setProperty("--y", rand(2, 98) + "%");
-    span.style.setProperty("--r", rand(-20, 20) + "deg");
-    span.style.setProperty("--size", size + "px");
-    span.style.setProperty("--settle", String(rand(0.55, 0.95)));
-    span.style.setProperty("--outdur", rand(flashConfig.outMin, flashConfig.outMax) + "ms");
-    span.style.opacity = "1";
-    span.style.visibility = "visible";
-
-    applyFlashWordStyle(span);
-    flash.activeWords.push(span);
-
-    return span;
-  }
-
-  function addFlashBatch() {
-    const fragment = document.createDocumentFragment();
-    const count = randInt(config.flash.batchMin, config.flash.batchMax);
-
-    for (let index = 0; index < count; index += 1) {
-      const word = createFlashWord();
-
-      if (word) {
-        fragment.appendChild(word);
-      }
-    }
-
-    if (fragment.childNodes.length && state.flash.layer && state.flash.layer.isConnected) {
-      state.flash.layer.appendChild(fragment);
-    }
-  }
-
-  function scheduleFlashSpawn() {
-    const flash = state.flash;
-
-    if (!flash.running || state.destroyed || flash.decayStarted) return;
-
-    const elapsed = now() - flash.start;
-
-    if (elapsed <= config.flash.startDelay + config.flash.spawnDuration) {
-      if (elapsed >= config.flash.startDelay) {
-        addFlashBatch();
-      }
-
-      if (flash.activeWords.length < getFlashLimit()) {
-        flash.spawnTimer = window.setTimeout(
-          scheduleFlashSpawn,
-          rand(config.flash.spawnIntervalMin, config.flash.spawnIntervalMax)
-        );
-      }
-    }
-  }
-
-  function reskinFlashWord(element) {
-    if (!element || !element.isConnected) return;
-
-    applyFlashWordStyle(element);
-  }
-
-  function decayFlashWord(element) {
-    const flash = state.flash;
-
-    if (!element || !element.isConnected) return;
-
-    element.classList.add("is-decaying");
-    element.style.opacity = "0";
-    element.style.visibility = "hidden";
-
-    const index = flash.activeWords.indexOf(element);
-
-    if (index !== -1) {
-      flash.activeWords.splice(index, 1);
-    }
-
-    const outDur = parseFloat(element.style.getPropertyValue("--outdur")) || config.flash.outMax;
-
-    setTimer(flash, function () {
-      if (element.isConnected) {
-        element.remove();
-      }
-    }, outDur + 30);
-  }
-
-  function finalGlitchThenDecay(element, duration) {
-    const flashConfig = config.flash;
-
-    if (!element || !element.isConnected) return;
-
-    const totalDuration = clamp(duration, flashConfig.finalDurationMin, flashConfig.finalDurationMax);
-    const cycleCount = randInt(flashConfig.finalBlinkMin, flashConfig.finalBlinkMax);
-    const forcedSwitchCount = randInt(flashConfig.finalSwitchMin, flashConfig.finalSwitchMax);
-    const forcedSwitchSteps = [];
-    let elapsed = 0;
-
-    element.classList.remove("is-decaying");
-    element.style.animation = "none";
-    element.style.transition = "none";
-    element.style.opacity = "1";
-    element.style.visibility = "visible";
-    element.style.filter = "contrast(1.15) saturate(1.15)";
-
-    for (let index = 0; index < forcedSwitchCount; index += 1) {
-      forcedSwitchSteps.push(randInt(0, Math.max(0, cycleCount - 1)));
-    }
-
-    for (let cycle = 0; cycle < cycleCount; cycle += 1) {
-      const remaining = Math.max(0, totalDuration - elapsed);
-      const averageRemaining = remaining / Math.max(1, cycleCount - cycle);
-      const hideDuration = Math.min(rand(flashConfig.finalHideMin, flashConfig.finalHideMax), averageRemaining * 0.65);
-      const showDuration = Math.min(rand(flashConfig.finalShowMin, flashConfig.finalShowMax), averageRemaining * 0.85);
-      const hideAt = elapsed;
-      const showAt = elapsed + hideDuration;
-      const shouldForceSwitch = forcedSwitchSteps.indexOf(cycle) !== -1;
-      const shouldRandomSwitch = Math.random() < flashConfig.finalReskinChance;
-
-      setTimer(state.flash, function () {
-        if (!element || !element.isConnected) return;
-
-        element.style.visibility = "hidden";
-        element.style.opacity = "0";
-      }, hideAt);
-
-      setTimer(state.flash, function () {
-        if (!element || !element.isConnected) return;
-
-        if (shouldForceSwitch || shouldRandomSwitch) {
-          reskinFlashWord(element);
-        }
-
-        element.style.visibility = "visible";
-        element.style.opacity = "1";
-        element.style.filter = Math.random() < 0.5
-          ? "contrast(1.35) saturate(1.35)"
-          : "contrast(1.1) saturate(1.15)";
-        element.style.transform =
-          "translate(-50%, -50%) rotate(var(--r)) scale(" +
-          rand(0.92, 1.06).toFixed(3) +
-          ")";
-      }, showAt);
-
-      elapsed += hideDuration + showDuration;
-
-      if (elapsed >= totalDuration) {
-        break;
-      }
-    }
-
-    setTimer(state.flash, function () {
-      if (!element || !element.isConnected) return;
-
-      element.style.visibility = "visible";
-      element.style.opacity = "1";
-      element.style.filter = "";
-      element.style.transition = "";
-      element.style.animation = "";
-      decayFlashWord(element);
-    }, Math.max(totalDuration, elapsed) + rand(80, 180));
-  }
-
-  function beginFlashDecay() {
-    const flashConfig = config.flash;
-    const flash = state.flash;
-
-    if (flash.decayStarted) return;
-
-    flash.decayStarted = true;
-    window.clearTimeout(flash.spawnTimer);
-    flash.spawnTimer = 0;
-
-    const queue = shuffled(flash.activeWords);
-
-    if (!queue.length) {
-      setTimer(flash, finishFlash, flashConfig.regularDecayDuration);
-      return;
-    }
-
-    const finalCount = Math.min(queue.length, randInt(flashConfig.finalCountMin, flashConfig.finalCountMax));
-    const finalWords = queue.slice(-finalCount);
-    const normalWords = queue.slice(0, Math.max(0, queue.length - finalCount));
-    const finalDuration = rand(flashConfig.finalDurationMin, flashConfig.finalDurationMax);
-    const finalStartDelay = flashConfig.regularDecayDuration + flashConfig.outMax + rand(180, 420);
-
-    normalWords.forEach(function (element) {
-      const delay = Math.pow(Math.random(), 0.78) * flashConfig.regularDecayDuration + rand(0, 90);
-
-      setTimer(flash, function () {
-        decayFlashWord(element);
-      }, delay);
-    });
-
-    finalWords.forEach(function (element, index) {
-      const stagger = index * rand(160, 360);
-
-      setTimer(flash, function () {
-        finalGlitchThenDecay(element, finalDuration + rand(-260, 260));
-      }, finalStartDelay + stagger);
-    });
-
-    setTimer(
-      flash,
-      finishFlash,
-      finalStartDelay + finalDuration + flashConfig.outMax + 1200
-    );
-  }
-
-  function startFlashOnly() {
-    cleanupFlash({ remove: true });
-
-    if (!config.flash.enabled) return false;
-    if (!resolveFlashElements()) return false;
-
-    const flash = state.flash;
-
-    state.destroyed = false;
-    flash.running = true;
-    flash.decayStarted = false;
-    flash.activeWords = [];
-    flash.start = now();
-
-    scheduleFlashSpawn();
-
-    setTimer(flash, function () {
       beginFlashDecay();
-    }, config.flash.startDelay + config.flash.spawnDuration + config.flash.holdDuration);
-
-    return true;
+    });
   }
 
-  function skipWholeSplash() {
-    cleanupFlash({ remove: true });
+  function drawFrame(frameTime) {
+    if (!state.started || state.destroyed) return;
 
-    const parent = resolveLayerParent();
-    let layer = document.getElementById(config.face.layerId);
+    const elapsed = frameTime - state.startTime;
+    const deltaMs = state.lastFrameTime ? frameTime - state.lastFrameTime : 16.67;
 
-    if (!layer && config.createLayers) {
-      layer = ensureElementById("div", config.face.layerId, parent);
+    state.lastFrameTime = frameTime;
+
+    try {
+      updateCells(elapsed, deltaMs);
+      drawGrid();
+    } catch (error) {
+      reportError("draw failed", error);
+      skipSplash();
+      return;
     }
 
-    if (!layer) return;
+    if (elapsed < config.timing.faceDuration) {
+      state.rafId = window.requestAnimationFrame(drawFrame);
+    } else {
+      leaveFaceLayer();
+    }
+  }
 
-    showElement(layer);
+  function scheduleResize() {
+    if (state.resizeTimer) {
+      window.clearTimeout(state.resizeTimer);
+    }
 
-    const canvas = document.getElementById(config.face.canvasId);
+    state.resizeTimer = window.setTimeout(function () {
+      state.resizeTimer = 0;
 
-    if (canvas && canvas.isConnected) {
-      canvas.remove();
+      if (!state.ctx || !state.canvas) return;
+
+      try {
+        resizeCanvasAndGrid();
+        drawGrid();
+      } catch (error) {
+        reportError("resize failed", error);
+        skipSplash();
+      }
+    }, 100);
+  }
+
+  function armHardCleanup() {
+    clearHardCleanupTimer();
+
+    state.hardCleanupTimer = window.setTimeout(function () {
+      forceCleanup();
+    }, config.timing.faceDuration + config.timing.faceFade + config.timing.flashTail + config.timing.failSafeExtra);
+  }
+
+  function prefersReducedMotion() {
+    if (!config.motion.respectReducedMotion) return false;
+    if (!window.matchMedia) return false;
+
+    try {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function probeAnimationOff(callback) {
+    if (!config.motion.probeAnimationOff) {
+      callback(false);
+      return;
+    }
+
+    if (!document.body || typeof Element === "undefined" || !Element.prototype.animate) {
+      callback(false);
+      return;
+    }
+
+    const probe = document.createElement("div");
+    let animation = null;
+    let done = false;
+
+    probe.style.position = "fixed";
+    probe.style.left = "-1px";
+    probe.style.top = "-1px";
+    probe.style.width = "1px";
+    probe.style.height = "1px";
+    probe.style.opacity = "0";
+    probe.style.pointerEvents = "none";
+
+    document.body.appendChild(probe);
+
+    function finish(result) {
+      if (done) return;
+
+      done = true;
+
+      try {
+        if (animation) {
+          animation.cancel();
+        }
+      } catch (_) {
+        // Ignore.
+      }
+
+      if (probe.isConnected) {
+        probe.remove();
+      }
+
+      callback(Boolean(result));
+    }
+
+    try {
+      animation = probe.animate(
+        [{ opacity: 0 }, { opacity: 1 }],
+        {
+          duration: config.motion.probeDuration,
+          fill: "both",
+        }
+      );
+    } catch (_) {
+      finish(false);
+      return;
+    }
+
+    window.setTimeout(function () {
+      let currentTime = 0;
+      let playState = "";
+
+      try {
+        currentTime = Number(animation.currentTime) || 0;
+        playState = animation.playState || "";
+      } catch (_) {
+        finish(false);
+        return;
+      }
+
+      const ratio = currentTime / Math.max(1, config.motion.probeDuration);
+      const looksDisabled = playState === "finished" || ratio >= config.motion.probeOffRatio;
+
+      finish(looksDisabled);
+    }, Math.max(30, Number(config.motion.probeDelay) || 72));
+  }
+
+  function shouldSkipMotion(callback) {
+    if (prefersReducedMotion()) {
+      callback(true);
+      return;
+    }
+
+    probeAnimationOff(callback);
+  }
+
+  function skipSplash() {
+    state.skipMode = true;
+    state.started = false;
+
+    if (state.rafId) {
+      window.cancelAnimationFrame(state.rafId);
+      state.rafId = 0;
+    }
+
+    if (state.flashLayer) {
+      state.flashLayer.textContent = "";
+      removeOrHide(state.flashLayer);
     }
 
     jsFadeOut(
-      layer,
+      state.faceLayer,
       config.motion.skipFadeDuration,
       config.motion.skipFadeSteps,
       function () {
-        if (config.removeLayersOnFinish !== false && layer.isConnected) {
-          layer.remove();
-        } else {
-          hideElement(layer);
+        if (state.faceLayer) {
+          removeOrHide(state.faceLayer);
         }
+        clearHardCleanupTimer();
       }
     );
   }
 
-  function startResolved(sessionId, skipMotion) {
-    if (state.destroyed || sessionId !== state.session) return;
+  function startNormal() {
+    if (state.destroyed) return;
 
-    state.starting = false;
-    state.motion.skip = skipMotion;
+    injectStyle();
 
-    if (skipMotion) {
-      skipWholeSplash();
+    if (!ensureDom()) {
+      forceCleanup();
       return;
     }
 
-    const faceStarted = startFaceOnly();
+    state.skipMode = false;
+    state.started = true;
+    state.flashDecayStarted = false;
+    state.activeFlashWords = [];
+    state.faceLines = pickFace();
+    state.lastFrameTime = 0;
 
-    if (faceStarted && config.flash.enabled) {
-      startFlashOnly();
+    try {
+      resizeCanvasAndGrid();
+      drawGrid();
+    } catch (error) {
+      reportError("setup failed", error);
+      skipSplash();
+      return;
+    }
+
+    state.startTime = now();
+
+    armHardCleanup();
+
+    state.rafId = window.requestAnimationFrame(drawFrame);
+
+    if (config.flash.enabled && state.flashLayer) {
+      flashAddLoop();
     }
   }
 
   function start(nextConfig) {
     if (nextConfig) {
-      config = normalizeConfig(deepMerge(config, nextConfig));
+      config = mergeConfig(config, nextConfig);
     }
-
-    injectStyle();
-
-    state.destroyed = false;
-    state.starting = true;
-    state.session += 1;
-
-    const sessionId = state.session;
 
     stopRuntimeOnly();
 
-    shouldSkipMotion(function (skipMotion) {
-      startResolved(sessionId, skipMotion);
+    state.destroyed = false;
+
+    injectStyle();
+
+    if (!ensureDom()) {
+      forceCleanup();
+      return getConfig();
+    }
+
+    shouldSkipMotion(function (skip) {
+      if (state.destroyed) return;
+
+      if (skip) {
+        skipSplash();
+      } else {
+        startNormal();
+      }
     });
 
     return getConfig();
   }
 
-  function startFace(nextConfig) {
-    if (nextConfig) {
-      config = normalizeConfig(deepMerge(config, nextConfig));
-    }
-
-    injectStyle();
-
-    state.destroyed = false;
-    state.session += 1;
-
-    return startFaceOnly() ? getConfig() : getConfig();
-  }
-
-  function startFlash(nextConfig) {
-    if (nextConfig) {
-      config = normalizeConfig(deepMerge(config, nextConfig));
-    }
-
-    injectStyle();
-
-    state.destroyed = false;
-    state.session += 1;
-
-    return startFlashOnly() ? getConfig() : getConfig();
-  }
-
   function stopRuntimeOnly() {
-    cleanupFace({ remove: true });
-    cleanupFlash({ remove: true });
+    if (state.rafId) {
+      window.cancelAnimationFrame(state.rafId);
+      state.rafId = 0;
+    }
+
+    if (state.resizeTimer) {
+      window.clearTimeout(state.resizeTimer);
+      state.resizeTimer = 0;
+    }
+
+    clearManagedTimers();
+    clearHardCleanupTimer();
+
+    state.started = false;
+    state.skipMode = false;
+    state.flashDecayStarted = false;
+    state.activeFlashWords = [];
+    state.cells = [];
+    state.faceLines = null;
+    state.startTime = 0;
+    state.lastFrameTime = 0;
+  }
+
+  function forceCleanup() {
+    stopRuntimeOnly();
+
+    if (state.faceLayer) {
+      removeOrHide(state.faceLayer);
+    }
+
+    if (state.flashLayer) {
+      state.flashLayer.textContent = "";
+      removeOrHide(state.flashLayer);
+    }
+
+    state.ctx = null;
+    state.canvas = null;
+    state.faceLayer = null;
+    state.flashLayer = null;
   }
 
   function stop() {
-    state.session += 1;
-    state.starting = false;
-
-    stopRuntimeOnly();
-
+    forceCleanup();
     return getConfig();
   }
 
   function destroy() {
-    stop();
+    forceCleanup();
 
     state.destroyed = true;
+
+    window.removeEventListener("resize", scheduleResize);
+    window.removeEventListener("orientationchange", scheduleResize);
 
     return getConfig();
   }
 
   function updateConfig(nextConfig) {
-    config = normalizeConfig(deepMerge(config, nextConfig || {}));
-
-    if (config.injectStyle) {
-      injectStyle();
-    }
-
+    config = mergeConfig(config, nextConfig || {});
+    injectStyle();
     return getConfig();
   }
 
   function getConfig() {
-    return normalizeConfig(deepMerge({}, config));
+    return mergeConfig({}, config);
   }
 
-  function onReady() {
-    if (!config.autoStart) return;
-
-    start();
+  function reportError(message, error) {
+    if (window.console && window.console.error) {
+      window.console.error("[HackedSplash] " + message, error);
+    }
   }
 
   window.HackedSplash = {
     start: start,
-    startFace: startFace,
-    startFlash: startFlash,
     stop: stop,
     destroy: destroy,
     updateConfig: updateConfig,
-    getConfig: getConfig
+    getConfig: getConfig,
   };
+
+  window.addEventListener("resize", scheduleResize, { passive: true });
+  window.addEventListener("orientationchange", scheduleResize, { passive: true });
+
+  function onReady() {
+    if (config.autoStart) {
+      start();
+    }
+  }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", onReady, { once: true });

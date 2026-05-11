@@ -1,5 +1,5 @@
 ---
-title: The Hundred Year's War
+title: The Hundred Years' War
 categories: Chron
 subclass: European History
 layout: post-multilingual
@@ -14,17 +14,23 @@ layout: post-multilingual
     * **Background**: The **Hundred Years’ War** was not a single continuous campaign, but an intermittent struggle produced by overlapping disputes over **feudal lordship**, **dynastic succession**, **territorial sovereignty**, and **commercial power**. Its deeper roots lay in the unusual position of the **king of England** as both an independent monarch and, for lands such as **Aquitaine/Guyenne**, a formal vassal of the **king of France**. This created a constitutional contradiction: one king could demand homage from another king, while the other could resist that demand without appearing to surrender royal dignity.
     * **Process**: The conflict developed from centuries of Anglo-French friction after the **Angevin** expansion placed large continental territories under rulers who also held the English crown. French kings gradually recovered much of this territory, but **Gascony** remained economically valuable and politically awkward. It exported wine, connected Atlantic commerce, and gave England a direct stake in southwestern France. The French crown, meanwhile, treated the duchy as a fief subject to royal jurisdiction, appeals, confiscation, and intervention.
     * **Significance**: The war should not be reduced to a simple national conflict between “England” and “France” in the modern sense. It began inside a medieval political order where personal lordship, inheritance law, homage, aristocratic networks, and royal courts still structured sovereignty. The later war helped *harden* more centralized royal identities, but those identities were partly a consequence rather than a starting point.
-    * **Source Responsibility**: The structure and output rules for these notes follow the attached configuration, especially the requirement for chronological first-level containers and event headings without ordinary years. 
   * **The Capetian succession crisis turns a feudal dispute into a dynastic claim**
 
     * **Background**: The direct male line of the **Capetian dynasty** weakened when the sons of **Philip IV** failed to produce surviving male heirs. The succession question became especially dangerous because **Edward III of England** was the grandson of **Philip IV** through his mother, **Isabella of France**, while **Philip VI of Valois** descended through the male line from a collateral branch. The French political elite favored the Valois claim, partly because it avoided placing the French crown under the rule of the English king.
     * **Process**: The French succession settlement rejected inheritance through the female line for the crown, though the legal reasoning later associated with the **Salic Law** was clarified and politicized over time. Edward initially accepted political realities more than he abandoned potential claims. The problem was not simply whether Edward had a theoretical dynastic argument, but whether French magnates would accept a ruler whose power base, fiscal system, and strategic interests lay across the Channel.
     * **Common Pitfall**: It is misleading to imagine the war as beginning because Edward suddenly “wanted France.” The dynastic claim became useful because it interacted with the older dispute over **Aquitaine**, the Anglo-Scottish conflict, Flemish commerce, and the French crown’s capacity to use feudal law against English continental possessions.
+* 1328
+
+  * **The death of Charles IV settles the crown on the Valois line but leaves Edward III with a usable grievance**
+
+    * **Background**: **Charles IV of France** died without a surviving son, ending the direct male Capetian line. The French succession crisis did not automatically create war, but it created a dynastic argument that could later be attached to older territorial and feudal disputes.
+    * **Process**: French political society accepted **Philip VI of Valois** as king rather than **Edward III**, whose claim came through his mother, **Isabella of France**. This outcome reflected law, precedent, political interest, and the unwillingness of French elites to accept the English king as ruler of France.
+    * **Significance**: The settlement of 1328 created the ideological weapon that Edward could later use when the conflict over **Guyenne** escalated. Without the feudal dispute over English lands in France, the succession issue might have remained dormant; without the succession issue, the feudal dispute would have been narrower.
 * 1337
 
   * **May 24, Philip VI’s confiscation of Guyenne gives the conflict its conventional starting point**
 
-    * **Background**: By convention, the war is said to begin when **Philip VI** confiscated the English-held duchy of **Guyenne**, though this act followed earlier disputes over English fiefs in France. Britannica summarizes the conventional starting point as Philip’s confiscation of Guyenne, while also noting that the deeper quarrel over English-held French fiefs extended back to the twelfth century. ([Encyclopedia Britannica][1])
+    * **Background**: By convention, the war is said to begin when **Philip VI** confiscated the English-held duchy of **Guyenne**, though this act followed earlier disputes over English fiefs in France. Britannica summarizes the conventional starting point as Philip’s confiscation of Guyenne, while also noting that the deeper quarrel over English-held French fiefs extended back to the twelfth century.
     * **Trigger**: Philip’s action was not merely symbolic. Confiscation meant that the French crown claimed the right to strip **Edward III** of his continental duchy for failures of feudal obedience. Edward could either submit to a status that made his continental power dependent on French royal judgment, or escalate the dispute into a broader war over legitimacy.
     * **Process**: The opening phase did not instantly become a grand war of conquest. It involved diplomacy, alliance-building, maritime preparation, fiscal extraction, and attempts to mobilize support in **Flanders**, **Gascony**, and among opponents of French royal policy. The French crown used legal authority and territorial pressure; the English crown answered by widening the dispute beyond feudal procedure.
     * **Significance**: This event matters because it shows how medieval law could produce war. The legal language of forfeiture and homage did not prevent violence; it gave violence an institutional form. The war began as a conflict over jurisdiction, but jurisdiction in a feudal monarchy meant taxation, courts, lordship, military obligation, and prestige.
@@ -46,7 +52,7 @@ layout: post-multilingual
   * **August 26, the Battle of Crécy demonstrates the tactical power of disciplined defensive warfare**
 
     * **Background**: Edward’s campaign in northern France placed a smaller English army under pressure from a larger French force. The French monarchy possessed more extensive manpower and aristocratic prestige, but battlefield success required coordination among cavalry, infantry, missile troops, and command structures. The English relied on a combination of dismounted men-at-arms, archers, prepared positioning, and tactical discipline.
-    * **Process**: At **Crécy**, the English took a defensive position. French attacks came in waves, with **Genoese crossbowmen** and mounted French nobles failing to break the English line. The **longbow** was important, but the victory was not caused by the bow alone. Terrain, fatigue, command disorder, piecemeal assault, and the English choice to fight defensively all mattered. Royal Armouries describes the war as a series of sieges, raids, and battles rather than one uninterrupted war, and this battle fits that pattern of mobile campaigning followed by decisive positional combat. ([Royal Armouries][2])
+    * **Process**: At **Crécy**, the English took a defensive position. French attacks came in waves, with **Genoese crossbowmen** and mounted French nobles failing to break the English line. The **longbow** was important, but the victory was not caused by the bow alone. Terrain, fatigue, command disorder, piecemeal assault, and the English choice to fight defensively all mattered. Royal Armouries describes the war as a series of sieges, raids, and battles rather than one uninterrupted war, and this battle fits that pattern of mobile campaigning followed by decisive positional combat.
     * **Result**: The French suffered heavy noble losses, while Edward gained enormous military prestige. The battle exposed the vulnerability of aristocratic cavalry when forced into frontal assaults against prepared infantry and missile formations.
     * **Common Pitfall**: Crécy should not be simplified into “longbows beat knights.” The English system worked because archers, men-at-arms, terrain, command discipline, and defensive posture functioned together. The battle was a tactical event inside a wider strategy of raiding, coercion, and political bargaining.
   * **October 17, Neville’s Cross links the French war to the Anglo-Scottish frontier**
@@ -97,43 +103,43 @@ layout: post-multilingual
 
   * **May, the Treaty of Brétigny ends the first phase of the war on terms favorable to England**
 
-    * **Background**: After Poitiers, England attempted to convert military leverage into territorial settlement. The French crown needed the return of its king and relief from military pressure. The resulting treaty marked a major setback for France. Britannica identifies the **Treaty of Brétigny** as the agreement that ended the first phase of the war after the Black Prince’s victory and John II’s capture at Poitiers. ([Encyclopedia Britannica][3])
+    * **Background**: After Poitiers, England attempted to convert military leverage into territorial settlement. The French crown needed the return of its king and relief from military pressure. The resulting treaty marked a major setback for France. Britannica identifies the **Treaty of Brétigny** as the agreement that ended the first phase of the war after the Black Prince’s victory and John II’s capture at Poitiers.
     * **Process**: The treaty granted Edward expanded territories in southwestern France and ransom arrangements for John II. In principle, it tried to separate the territorial question from the French crown claim: Edward would receive enlarged lands, while renunciations were supposed to settle competing claims. But implementation depended on complex transfers, oaths, payments, and legal formalities.
-    * **Result**: England gained an enlarged **Aquitaine** and diplomatic prestige, while France gained temporary relief. Yet the settlement contained weaknesses. The promised renunciations and transfers were difficult to complete, and many local communities and nobles had their own interests. Britannica notes that later disputes over unfulfilled clauses and Gascon appeals helped reopen conflict. ([Encyclopedia Britannica][4])
+    * **Result**: England gained an enlarged **Aquitaine** and diplomatic prestige, while France gained temporary relief. Yet the settlement contained weaknesses. The promised renunciations and transfers were difficult to complete, and many local communities and nobles had their own interests. Britannica notes that later disputes over unfulfilled clauses and Gascon appeals helped reopen conflict.
     * **Significance**: Brétigny did not solve the underlying contradiction between sovereignty and lordship. It created a temporary settlement that looked clear on parchment but remained unstable in practice. The war’s first phase ended, but the political structure that produced the war survived.
 
 * 1364
 
   * **May 16, Cocherel helps Charles V restore royal authority after the crisis of defeat**
 
-    * **Background**: After the **Treaty of Brétigny**, the French monarchy had to recover from royal captivity, fiscal disorder, aristocratic faction, and the political humiliation created by the first phase of the war. **Charles V** inherited not only a military problem but a governmental one: France needed order, revenue, and credible command before it could reverse English gains. The attached instruction requires this continuation to preserve a strict chronological three-level note structure, with chronology owned by the first-level container and explanation placed only at the third level. 
-    * **Process**: **Charles the Bad of Navarre**, a dangerous rival with claims, alliances, and territorial ambitions inside the French political world, rebelled again. The French entrusted the operation against him to **Bertrand du Guesclin**, a Breton captain whose career would become central to the French recovery. At **Cocherel**, du Guesclin defeated Charles the Bad’s forces, reducing one of the internal threats that had weakened royal authority after the disasters of Crécy and Poitiers. ([Encyclopedia Britannica][1])
+    * **Background**: After the **Treaty of Brétigny**, the French monarchy had to recover from royal captivity, fiscal disorder, aristocratic faction, and the political humiliation created by the first phase of the war. **Charles V** inherited not only a military problem but a governmental one: France needed order, revenue, and credible command before it could reverse English gains.
+    * **Process**: **Charles the Bad of Navarre**, a dangerous rival with claims, alliances, and territorial ambitions inside the French political world, rebelled again. The French entrusted the operation against him to **Bertrand du Guesclin**, a Breton captain whose career would become central to the French recovery. At **Cocherel**, du Guesclin defeated Charles the Bad’s forces, reducing one of the internal threats that had weakened royal authority after the disasters of Crécy and Poitiers.
     * **Significance**: Cocherel mattered because it marked a shift from spectacular English victories toward French political consolidation. Charles V’s strategy was not built around seeking another Crécy-style set-piece battle. It depended on restoring administrative control, containing rebels, using experienced commanders, and preparing a slower reconquest.
   * **September 29, Auray ends the Breton succession conflict but complicates the wider war**
 
     * **Background**: **Brittany** had been one of the war’s persistent side-fronts because rival claimants were supported by opposing Anglo-French interests. The duchy was not simply a passive battlefield; its ports, nobles, and local political traditions made it strategically important to both crowns.
-    * **Process**: The defeat and death of **Charles of Blois** at **Auray** ended the Breton War of Succession. By the later **Treaty of Guérande**, the Montfort line was recognized in Brittany. This ended one destabilizing conflict, but it did not make Brittany simply an obedient extension of either English or French power. ([Encyclopedia Britannica][1])
+    * **Process**: The defeat and death of **Charles of Blois** at **Auray** ended the Breton War of Succession. By the later **Treaty of Guérande**, the Montfort line was recognized in Brittany. This ended one destabilizing conflict, but it did not make Brittany simply an obedient extension of either English or French power.
     * **Significance**: The settlement shows the limited reach of royal power in the fourteenth century. Even when dynastic disputes were settled, duchies, great lords, and regional political communities retained room for maneuver. The Hundred Years’ War therefore operated through layered sovereignties rather than through clean modern state borders.
 * 1368
 
   * **June 30, Gascon appeals reopen the sovereignty problem inside Aquitaine**
 
     * **Background**: The settlement after Brétigny had enlarged English authority in southwestern France, but legal and political ambiguities remained. **Gascon nobles** could still appeal against their duke, and **Charles V** accepted such an appeal. This was not a minor procedural issue: it challenged whether the English-held duchy was genuinely independent of French royal jurisdiction.
-    * **Process**: Charles V’s acceptance of the appeal allowed France to reopen the conflict through law before full-scale war resumed. **Edward III** treated this as a breach of the settlement, because if French courts could hear appeals from Aquitaine, English sovereignty there was incomplete. Britannica notes that the renunciation clauses connected with the earlier settlement had not been fully carried out, leaving space for renewed conflict. ([Encyclopedia Britannica][1])
+    * **Process**: Charles V’s acceptance of the appeal allowed France to reopen the conflict through law before full-scale war resumed. **Edward III** treated this as a breach of the settlement, because if French courts could hear appeals from Aquitaine, English sovereignty there was incomplete. Britannica notes that the renunciation clauses connected with the earlier settlement had not been fully carried out, leaving space for renewed conflict.
     * **Significance**: The episode shows why the war could not be solved merely by granting territories. The key problem was whether territory meant *sovereign possession* or *feudal tenure under superior royal jurisdiction*. The difference was abstract in legal language but concrete in taxation, justice, allegiance, and military control.
 * 1369
 
   * **Spring–Summer, hostilities resume as England tries to defend the Brétigny settlement**
 
     * **Background**: Once the legal conflict over Aquitaine escalated, English strategy returned to raiding and pressure. England still possessed important bases and commanders, but France under Charles V had learned from earlier defeats and avoided unnecessary direct battle when the conditions favored English defensive tactics.
-    * **Process**: **John of Gaunt**, duke of Lancaster and son of Edward III, landed at **Calais** and led a *chevauchée* into French territory. Such raids were designed to damage revenue, terrorize communities, undermine royal protection, and force the French into battle. Yet the French response increasingly combined defense, attrition, diplomacy, and the gradual detachment of local lords from English allegiance. ([Encyclopedia Britannica][1])
+    * **Process**: **John of Gaunt**, duke of Lancaster and son of Edward III, landed at **Calais** and led a *chevauchée* into French territory. Such raids were designed to damage revenue, terrorize communities, undermine royal protection, and force the French into battle. Yet the French response increasingly combined defense, attrition, diplomacy, and the gradual detachment of local lords from English allegiance.
     * **Significance**: This phase reverses the earlier pattern. In the first phase, English raids often led to decisive victories or favorable treaties. Under Charles V, the French crown treated English raids as destructive but survivable, refusing to let the enemy dictate the strategic rhythm.
 * 1370
 
   * **December, Pontvallain demonstrates du Guesclin’s strategy of selective engagement**
 
     * **Background**: English captains such as **Sir Robert Knollys** advanced toward the **Île-de-France**, continuing the older method of destructive cavalry raiding. The danger for France was not only military damage but reputational collapse: if the king could not defend the core lands near Paris, obedience and taxation would suffer.
-    * **Process**: **Bertrand du Guesclin**, now central to French military recovery, avoided the large, aristocratic, frontal battle that had favored English tactics earlier in the war. Instead, he struck part of Knollys’s force at **Pontvallain**, destroying a portion of the English army rather than seeking one grand decisive encounter. ([Encyclopedia Britannica][1])
+    * **Process**: **Bertrand du Guesclin**, now central to French military recovery, avoided the large, aristocratic, frontal battle that had favored English tactics earlier in the war. Instead, he struck part of Knollys’s force at **Pontvallain**, destroying a portion of the English army rather than seeking one grand decisive encounter.
     * **Result**: The victory did not end English military power, but it damaged the prestige of English raiding and strengthened confidence in Charles V’s methodical approach.
     * **Significance**: Pontvallain reveals a major military lesson of the war: tactical adaptation mattered more than numerical strength alone. The French recovery depended on refusing the enemy’s preferred battle form, using smaller operations, and converting war from heroic confrontation into administrative and strategic patience.
 * 1372
@@ -141,7 +147,7 @@ layout: post-multilingual
   * **June, La Rochelle breaks English naval security in the southwest**
 
     * **Background**: **Aquitaine** could not be held securely without maritime connection to England. Ports, shipping, and naval escorts were therefore as important as castles and cavalry. France’s alliance with **Castile** gave Charles V access to naval strength that could contest English movement in the Atlantic.
-    * **Process**: A **Castilian** fleet allied with France defeated an English fleet off **La Rochelle**. This was a major operational blow because it disrupted reinforcement, supply, and communications between England and its southwestern possessions. Britannica identifies the Castilian victory off La Rochelle as part of the French recovery under Charles V. ([Encyclopedia Britannica][1])
+    * **Process**: A **Castilian** fleet allied with France defeated an English fleet off **La Rochelle**. This was a major operational blow because it disrupted reinforcement, supply, and communications between England and its southwestern possessions. Britannica identifies the Castilian victory off La Rochelle as part of the French recovery under Charles V.
     * **Result**: After La Rochelle, English control in the southwest became harder to maintain. The French could combine local pressure, diplomacy, bribery, and military operations against territories that had been ceded under the earlier settlement.
     * **Significance**: La Rochelle shows the international character of the war. The conflict was Anglo-French at its core, but its outcome depended on **Castile**, **Flanders**, **Scotland**, **Burgundy**, the papal schism, and maritime logistics.
 * 1373
@@ -149,7 +155,7 @@ layout: post-multilingual
   * **Summer–Winter, John of Gaunt’s great chevauchée exposes the limits of destructive raiding**
 
     * **Background**: English leaders still used the *chevauchée* as a way to recover initiative. **John of Gaunt** attempted an ambitious march from **Calais** toward **Bordeaux**, crossing large parts of France. The aim was to demonstrate English reach, weaken French authority, and sustain the war through plunder and pressure.
-    * **Process**: The campaign was physically punishing and strategically costly. French forces largely avoided the decisive battle that English commanders wanted. Instead, the French allowed distance, supply problems, weather, and attrition to erode the English army. Meanwhile, Charles V’s agents and commanders pursued a “patient reconquest” through warfare, diplomacy, and payments to local lords. ([Encyclopedia Britannica][1])
+    * **Process**: The campaign was physically punishing and strategically costly. French forces largely avoided the decisive battle that English commanders wanted. Instead, the French allowed distance, supply problems, weather, and attrition to erode the English army. Meanwhile, Charles V’s agents and commanders pursued a “patient reconquest” through warfare, diplomacy, and payments to local lords.
     * **Result**: The raid inflicted damage but failed to restore English strategic dominance. It showed that mobility without secure political conversion could become exhaustion rather than conquest.
     * **Common Pitfall**: A *chevauchée* was not just random pillage, but it was also not the same as occupation. Its success depended on whether destruction forced political results. In this phase, French refusal to fight on English terms reduced its strategic value.
 * 1375
@@ -157,22 +163,22 @@ layout: post-multilingual
   * **June, the Truce of Bruges freezes the war after French recovery**
 
     * **Background**: By the mid-1370s, France had recovered much of what had been ceded after Brétigny, while England faced financial strain and political fatigue. Neither side had achieved a final settlement, but both needed breathing space.
-    * **Process**: A truce was arranged at **Bruges**, lasting into the later 1370s. It did not settle the central disputes over sovereignty, Aquitaine, or the French crown, but it recognized the temporary exhaustion of active campaigning. Britannica notes that the truce at Bruges followed the French recovery and lasted until 1377. ([Encyclopedia Britannica][1])
+    * **Process**: A truce was arranged at **Bruges**, lasting into the later 1370s. It did not settle the central disputes over sovereignty, Aquitaine, or the French crown, but it recognized the temporary exhaustion of active campaigning. Britannica notes that the truce at Bruges followed the French recovery and lasted until 1377.
     * **Significance**: The truce marked the end of the most successful phase of Charles V’s counteroffensive. The war did not end because the causes disappeared; it paused because men, money, and political conditions made sustained campaigning difficult.
 * 1376–1377
 
   * **June–June, the deaths of the Black Prince and Edward III produce a succession transition in England**
 
     * **Background**: The English war effort had depended heavily on the prestige of **Edward III** and the military reputation of **Edward of Woodstock**, the **Black Prince**. Their generation had created the victories of Crécy, Poitiers, and the Brétigny settlement. By the late 1370s, that political-military generation was disappearing.
-    * **Process**: The Black Prince died first, leaving his young son as heir. Edward III died soon afterward, and the English crown passed to **Richard II**, still a child. Britannica gives the sequence clearly: the Black Prince died on June 8, and Edward III died on June 21, leaving the young Richard as heir. ([Encyclopedia Britannica][1])
+    * **Process**: The Black Prince died first, leaving his young son as heir. Edward III died soon afterward, and the English crown passed to **Richard II**, still a child. Britannica gives the sequence clearly: the Black Prince died on June 8, and Edward III died on June 21, leaving the young Richard as heir.
     * **Result**: England entered a period of minority government, factional management, fiscal strain, and reduced continental coherence. The war continued, but with less strategic clarity than under Edward III.
     * **Significance**: The deaths mattered because medieval war was strongly tied to dynastic reputation and personal kingship. A child king did not simply inherit policy; he inherited debts, expectations, factions, military contracts, and propaganda produced by earlier reigns.
 * 1380
 
-  * **September–July, the deaths of Charles V and du Guesclin halt the momentum of French recovery**
+  * **July–September, the deaths of du Guesclin and Charles V halt the momentum of French recovery**
 
     * **Background**: **Charles V** and **Bertrand du Guesclin** had formed the political and military partnership most responsible for reversing English gains after Brétigny. Their success was not based on one overwhelming victory, but on disciplined avoidance of English strengths, administrative repair, local negotiation, and steady reconquest.
-    * **Process**: Du Guesclin died while campaigning, and Charles V died soon afterward. Their deaths removed the king and commander most associated with the French recovery. Britannica notes that even when both died, the English had still not been completely driven out of France. ([Encyclopedia Britannica][1])
+    * **Process**: Du Guesclin died while campaigning, and Charles V died soon afterward. Their deaths removed the king and commander most associated with the French recovery. Britannica notes that even when both died, the English had still not been completely driven out of France.
     * **Result**: France retained many recovered territories, but the crown passed to **Charles VI**, who was young. The continuation of recovery now depended on regents, royal uncles, and court factions rather than on the coherent direction of Charles V.
     * **Significance**: This transition shows the fragility of medieval state-building. A successful strategy could be institutionalized only partially; dynastic minority and elite competition could quickly weaken royal capacity.
 * 1381
@@ -180,7 +186,7 @@ layout: post-multilingual
   * **May–June, the Peasants’ Revolt reveals the domestic cost of war finance in England**
 
     * **Background**: The English state had financed long war through taxation, customs, credit, and political bargaining. After the **Black Death**, labor shortages and wage regulation through the **Statute of Labourers** intensified social tension. The war’s fiscal burden interacted with class conflict, local grievances, and resentment of government officials.
-    * **Process**: A **poll tax** imposed to fund the ongoing war provoked anger among workers and artisans. The revolt began in southeastern England and **East Anglia**, with **Wat Tyler** leading rebels into London. Rebels captured the **Tower of London** and killed officials associated with the hated tax. Richard II met the rebels at **Smithfield**, where Tyler was wounded and then executed; the revolt was suppressed soon afterward, and promised concessions were withdrawn. ([Encyclopedia Britannica][1])
+    * **Process**: A **poll tax** imposed to fund the ongoing war provoked anger among workers and artisans. The revolt began in southeastern England and **East Anglia**, with **Wat Tyler** leading rebels into London. Rebels captured the **Tower of London** and killed officials associated with the hated tax. Richard II met the rebels at **Smithfield**, where Tyler was wounded and then executed; the revolt was suppressed soon afterward, and promised concessions were withdrawn.
     * **Significance**: The revolt demonstrates that the Hundred Years’ War was not only fought in France. Its fiscal machinery reached English villages, towns, labor markets, and households. War taxation helped turn foreign policy into domestic crisis.
     * **Common Pitfall**: The revolt should not be treated as a side anecdote unrelated to the war. It was connected to the costs of prolonged military commitment, even though its causes also included labor regulation, social hierarchy, local abuses, and post-plague economic change.
 * 1383–1384
@@ -188,21 +194,21 @@ layout: post-multilingual
   * **Spring–January, the Flanders question and the failed Norwich expedition show the war’s commercial geography**
 
     * **Background**: **Flanders** remained central because of its textile economy, political autonomy, and connection to English wool. Control or influence over Flemish towns mattered to both crowns. The **Great Schism** also allowed political-military action to be framed in religious language.
-    * **Process**: **Henry Despenser**, bishop of **Norwich**, led an expedition nominally connected to the conflict over the papacy, but it failed around **Dunkirk** and **Ypres**. Soon afterward, the death of **Louis of Mâle**, count of Flanders, brought Flanders into the hands of **Philip the Bold**, duke of **Burgundy** and uncle of the French king. ([Encyclopedia Britannica][1])
+    * **Process**: **Henry Despenser**, bishop of **Norwich**, led an expedition nominally connected to the conflict over the papacy, but it failed around **Dunkirk** and **Ypres**. Soon afterward, the death of **Louis of Mâle**, count of Flanders, brought Flanders into the hands of **Philip the Bold**, duke of **Burgundy** and uncle of the French king.
     * **Significance**: This development increased Burgundian importance in the wider conflict. Burgundy was not yet the later near-independent power of the fifteenth century, but its control of Flanders connected aristocratic politics, urban wealth, diplomacy, and Anglo-French rivalry.
 * 1388–1389
 
   * **November–June, peace factions negotiate the Truce of Leulinghen**
 
     * **Background**: By the late 1380s, both kingdoms were politically strained. In England, **Richard II** faced magnate pressure from the **Lords Appellant**. In France, the royal council came under the influence of the **Marmousets**, advisers associated with the administrative traditions of Charles V. Groups favoring peace gained influence on both sides.
-    * **Process**: Negotiations began at **Leulinghen** in **Picardy**, and a three-year truce was signed. The English were to evacuate some places, and Richard II was to do homage for **Aquitaine**, effectively reopening the older feudal formula that Edward III’s claims had tried to escape. Yet disputes over Aquitaine’s boundaries prevented a final peace. ([Encyclopedia Britannica][1])
+    * **Process**: Negotiations began at **Leulinghen** in **Picardy**, and a three-year truce was signed. The English were to evacuate some places, and Richard II was to do homage for **Aquitaine**, effectively reopening the older feudal formula that Edward III’s claims had tried to escape. Yet disputes over Aquitaine’s boundaries prevented a final peace.
     * **Significance**: The truce reveals the deep difficulty of ending the war. Diplomats could suspend violence, arrange homage, and discuss evacuation, but the underlying contradiction between French overlordship and English possession still resisted final settlement.
 * 1396
 
   * **March–October, Richard II’s marriage diplomacy extends the truce but fails to end the war**
 
     * **Background**: **Richard II** personally favored a more pacific policy than many English nobles and knights, who had inherited both the profits and the ideology of Edward III’s war. France, under **Charles VI**, also had reasons to seek stability, though royal illness and factional politics weakened coherent policy.
-    * **Process**: Richard II arranged a marriage by proxy with **Isabella of Valois**, daughter of Charles VI. The truce of Leulinghen was extended for a long period, and the two kings met between **Calais** and **Ardres** amid diplomatic ceremony. Britannica describes the meeting as an occasion of festivities and bargaining, though no final peace treaty resulted. ([Encyclopedia Britannica][1])
+    * **Process**: Richard II arranged a marriage by proxy with **Isabella of Valois**, daughter of Charles VI. The truce of Leulinghen was extended for a long period, and the two kings met between **Calais** and **Ardres** amid diplomatic ceremony. Britannica describes the meeting as an occasion of festivities and bargaining, though no final peace treaty resulted.
     * **Result**: The war entered a diplomatic lull. Yet the truce depended heavily on political conditions inside England and France, not on permanent resolution of territorial and dynastic claims.
     * **Significance**: The episode shows that peace was possible but structurally fragile. Nobles accustomed to war profit, English anti-French propaganda, French factionalism, and the unresolved Aquitaine problem all limited Richard’s policy.
 * 1399–1400
@@ -210,21 +216,21 @@ layout: post-multilingual
   * **June–February, Henry Bolingbroke’s seizure of the English crown reverses Richard II’s peace policy**
 
     * **Background**: Richard II’s authority had been contested by English magnates, and his peace policy was unpopular among many who valued continental war for prestige, profit, and ideological reasons. When **Henry Bolingbroke** returned from exile to claim his inheritance, broader discontent gathered around him.
-    * **Process**: Richard II was deposed and imprisoned, and Bolingbroke became **Henry IV**. Although Henry needed first to secure his own position in England, he adopted the French royal claim associated with Edward III rather than continuing Richard’s pacific direction. Britannica notes both Richard’s deposition and Henry’s reversal of his predecessor’s peace policy. ([Encyclopedia Britannica][1])
+    * **Process**: Richard II was deposed and imprisoned, and Bolingbroke became **Henry IV**. Although Henry needed first to secure his own position in England, he adopted the French royal claim associated with Edward III rather than continuing Richard’s pacific direction. Britannica notes both Richard’s deposition and Henry’s reversal of his predecessor’s peace policy.
     * **Significance**: The Lancastrian regime inherited a legitimacy problem. Reviving the French claim could serve domestic politics by connecting the new dynasty to Edward III’s martial prestige. Yet Henry IV’s rebellions at home limited his ability to wage large-scale war abroad.
 * 1405–1406
 
   * **French pressure on Aquitaine resumes but is checked by internal rivalry**
 
     * **Background**: France had opportunities to exploit Henry IV’s domestic troubles, including Welsh rebellion under **Owain Glyndŵr** and political instability in England. **Louis, duke of Orléans**, pushed a more aggressive anti-English policy and supported pressure across the Channel and in the southwest.
-    * **Process**: French forces took towns in **Saintonge** and **Périgord**, while **Bernard VII, count of Armagnac**, threatened **Bordeaux**. But French progress was limited by setbacks, including failure at **Blaye** and a Burgundian failure before **Calais**. More importantly, rivalry between **Louis of Orléans** and **John the Fearless of Burgundy** divided French strategy. ([Encyclopedia Britannica][1])
+    * **Process**: French forces took towns in **Saintonge** and **Périgord**, while **Bernard VII, count of Armagnac**, threatened **Bordeaux**. But French progress was limited by setbacks, including failure at **Blaye** and a Burgundian failure before **Calais**. More importantly, rivalry between **Louis of Orléans** and **John the Fearless of Burgundy** divided French strategy.
     * **Significance**: This phase shows that the French crown’s greatest weakness was increasingly internal. England was not necessarily strong, but French factional division prevented a coordinated final expulsion of English power.
 * 1407
 
   * **November, the assassination of Louis of Orléans turns faction into civil war**
 
     * **Background**: The illness of **Charles VI** created a power vacuum at the center of the French monarchy. Royal relatives competed to control the king, the treasury, Paris, patronage, and war policy. **Louis of Orléans** and **John the Fearless** represented rival aristocratic blocs with different strategies toward England and domestic power.
-    * **Process**: Louis of Orléans was assassinated at the instigation of John the Fearless. This murder transformed court rivalry into open political rupture. The anti-Burgundian faction later became known as the **Armagnacs**, after **Bernard VII of Armagnac**, who emerged as a leader in the movement to avenge Louis. ([Encyclopedia Britannica][1])
+    * **Process**: Louis of Orléans was assassinated at the instigation of John the Fearless. This murder transformed court rivalry into open political rupture. The anti-Burgundian faction later became known as the **Armagnacs**, after **Bernard VII of Armagnac**, who emerged as a leader in the movement to avenge Louis.
     * **Result**: France was divided between **Burgundians** and **Armagnacs**. Both sides would eventually seek English support when useful, creating the conditions for **Henry V** to intervene with devastating effect.
     * **Significance**: This is one of the decisive turning points of the war. English revival under Henry V did not occur only because of English strength; it succeeded because France was politically fractured.
 * 1411–1413
@@ -232,16 +238,16 @@ layout: post-multilingual
   * **Burgundian and Armagnac appeals to England prepare the ground for renewed invasion**
 
     * **Background**: Civil war made French politics porous. Both factions treated English military power as a tool that could be invited, bargained with, or redirected against internal enemies. This created an opening for England that would have been far harder to exploit under the more unified monarchy of Charles V.
-    * **Process**: Henry IV gave limited help to **John the Fearless** by sending a force through **Calais**. The **Armagnacs** then sought Henry’s help, offering restoration of **Aquitaine**. Henry IV died before this could become a full-scale program, and the Parisian Burgundians issued the **Ordonnance Cabochienne**, a reform movement soon annulled by opponents. ([Encyclopedia Britannica][1])
+    * **Process**: Henry IV gave limited help to **John the Fearless** by sending a force through **Calais**. The **Armagnacs** then sought Henry’s help, offering restoration of **Aquitaine**. Henry IV died before this could become a full-scale program, and the Parisian Burgundians issued the **Ordonnance Cabochienne**, a reform movement soon annulled by opponents.
     * **Significance**: These negotiations show how civil war converted the English claim from a dormant dynastic ideology into an actionable diplomatic weapon. The next English king would inherit not just a claim, but a divided France into which that claim could be inserted.
 
 * 1413
 
   * **March 21, Henry V inherits a contested crown and turns foreign war into dynastic consolidation**
 
-    * **Background**: **Henry V** inherited the **Lancastrian** kingship from **Henry IV**, whose seizure of power had left the dynasty vulnerable to accusations of usurpation. The attached format contract requires the notes to continue chronologically, with first-level items carrying the chronology and second-level headings carrying only event identity. 
-    * **Process**: Henry revived the English claim to the **French crown** not only as a foreign policy but as a domestic legitimacy strategy. A successful war in France could connect the Lancastrian regime to the martial prestige of **Edward III**, redirect aristocratic violence outward, and present the king as the restorer of royal honor. France, meanwhile, was weakened by the mental illness of **Charles VI** and by the rivalry between **Armagnacs** and **Burgundians**, making intervention unusually attractive. Britannica notes that when Henry came to the throne, the formal truce had been intended to last many years, but English domestic instability and French political crisis made renewed war possible. ([Encyclopedia Britannica][1])
-    * **Significance**: The Lancastrian phase of the war was not simply a continuation of Edward III’s earlier claim. Henry V tried to make that claim politically real by conquering territory, forcing dynastic settlement, and imagining a dual monarchy across the Channel. Britannica’s interpretation of the war’s significance emphasizes that Henry’s project aimed at a **dual monarchy** in which one ruler would govern both England and France. ([Encyclopedia Britannica][2])
+    * **Background**: **Henry V** inherited the **Lancastrian** kingship from **Henry IV**, whose seizure of power had left the dynasty vulnerable to accusations of usurpation.
+    * **Process**: Henry revived the English claim to the **French crown** not only as a foreign policy but as a domestic legitimacy strategy. A successful war in France could connect the Lancastrian regime to the martial prestige of **Edward III**, redirect aristocratic violence outward, and present the king as the restorer of royal honor. France, meanwhile, was weakened by the mental illness of **Charles VI** and by the rivalry between **Armagnacs** and **Burgundians**, making intervention unusually attractive. Britannica notes that when Henry came to the throne, the formal truce had been intended to last many years, but English domestic instability and French political crisis made renewed war possible.
+    * **Significance**: The Lancastrian phase of the war was not simply a continuation of Edward III’s earlier claim. Henry V tried to make that claim politically real by conquering territory, forcing dynastic settlement, and imagining a dual monarchy across the Channel. Britannica’s interpretation of the war’s significance emphasizes that Henry’s project aimed at a **dual monarchy** in which one ruler would govern both England and France.
 * 1414
 
   * **Negotiations with France fail as Henry converts diplomacy into preparation for invasion**
@@ -265,11 +271,11 @@ layout: post-multilingual
     * **Significance**: Harfleur reminds that medieval war was dominated by sieges, supplies, disease, and garrisons more than by spectacular battles alone. The later fame of **Agincourt** can obscure the logistical strain that made the battle so dangerous for the English.
   * **October 25, Agincourt turns a dangerous retreat into a symbolic and strategic victory**
 
-    * **Background**: Henry’s depleted army marched toward Calais while French forces gathered to block it. The French had numerical superiority, though exact figures remain disputed. Britannica describes **Agincourt** as a decisive English victory and notes that the battle repeated the pattern of earlier English successes at **Crécy** and **Poitiers**, making later conquest in Normandy and the **Treaty of Troyes** possible. ([Encyclopedia Britannica][1])
+    * **Background**: Henry’s depleted army marched toward Calais while French forces gathered to block it. The French had numerical superiority, though exact figures remain disputed. Britannica describes **Agincourt** as a decisive English victory and notes that the battle repeated the pattern of earlier English successes at **Crécy** and **Poitiers**, making later conquest in Normandy and the **Treaty of Troyes** possible.
     * **Process**: Henry positioned his army on a narrow, muddy field bounded by woods. English men-at-arms fought dismounted in the center, while archers deployed on the flanks with stakes to resist cavalry. The French advanced into restricted ground where mud, compression, armor, command disorder, and crowding reduced their advantage. Longbow fire was important, but the decisive effect came from the combined system: defensive positioning, disciplined infantry, missile pressure, terrain, and the inability of French numbers to deploy effectively.
     * **Result**: The French suffered devastating aristocratic losses. The defeat removed many nobles, shocked French political society, and gave Henry enormous prestige. The English had survived a campaign that could have ended in disaster and transformed it into a claim of divine favor, royal competence, and military legitimacy.
     * **Common Pitfall**: Agincourt should not be explained as “longbows defeated knights” in isolation. The longbow mattered, but so did mud, constricted terrain, exhausted movement, French tactical disorder, English defensive preparation, and the broader failure of French political coordination.
-    * **Source**: **Royal Armouries** emphasizes the battlefield danger even for monarchs, noting that **Henry V** himself narrowly escaped being cut down and that the death or capture of a monarch could have dramatic political consequences. ([Royal Armouries][3])
+    * **Source**: **Royal Armouries** emphasizes the battlefield danger even for monarchs, noting that **Henry V** himself narrowly escaped being cut down and that the death or capture of a monarch could have dramatic political consequences.
 * 1416
 
   * **Summer–Autumn, diplomacy and naval pressure prevent Agincourt from remaining an isolated victory**
@@ -289,7 +295,7 @@ layout: post-multilingual
   * **July 31–January 19, the siege of Rouen breaks Normandy’s greatest urban resistance**
 
     * **Background**: **Rouen** was the leading city of Normandy, economically important and symbolically central. Without Rouen, English control of Normandy would remain incomplete. With Rouen, Henry could claim not only scattered military success but the conquest of the duchy’s principal urban and administrative center.
-    * **Process**: Henry besieged the city with systematic pressure. The siege created extreme civilian hardship, including famine and the expulsion or trapping of noncombatants between lines. The city eventually surrendered after prolonged resistance. Britannica’s timeline identifies the **Siege of Rouen** as a major event running from late July to mid-January. ([Encyclopedia Britannica][4])
+    * **Process**: Henry besieged the city with systematic pressure. The siege created extreme civilian hardship, including famine and the expulsion or trapping of noncombatants between lines. The city eventually surrendered after prolonged resistance. Britannica’s timeline identifies the **Siege of Rouen** as a major event running from late July to mid-January.
     * **Result**: Rouen’s fall gave Henry the core of Normandy. It also allowed English administrators to impose oaths, manage confiscated property, and reorganize local government under Lancastrian authority.
     * **Significance**: Rouen shows the grim mechanics of conquest. Medieval sovereignty was not won only through noble battle; it was imposed through siege starvation, urban submission, garrison placement, oath-taking, fiscal management, and control of courts.
 * 1419
@@ -307,7 +313,7 @@ layout: post-multilingual
     * **Background**: After Agincourt, the conquest of Normandy, and the Burgundian break with the Dauphin, Henry was strong enough to impose a dynastic settlement. **Charles VI** remained king of France, but his mental illness and factional dependence weakened the authority of his court. **Queen Isabeau**, **Philip the Good**, and Burgundian interests helped produce a settlement excluding the Dauphin.
     * **Process**: The **Treaty of Troyes** recognized **Henry V** as heir to the French throne and arranged his marriage to **Catherine of Valois**, daughter of Charles VI. The Dauphin was effectively disinherited. The treaty imagined that after Charles VI’s death, Henry and his heirs would rule both England and France.
     * **Result**: The treaty gave Henry’s project its highest legal form. It transformed conquest into a claimed constitutional settlement and created the possibility of an Anglo-French monarchy.
-    * **Significance**: Troyes was a triumph on paper but fragile in reality. It depended on Burgundian cooperation, English military enforcement, and acceptance by French communities that did not all recognize the disinheritance of the Dauphin. Britannica’s general interpretation emphasizes that Henry’s later war aimed to establish a dual monarchy, but also that English authority could not become effective in a hostile France. ([Encyclopedia Britannica][2])
+    * **Significance**: Troyes was a triumph on paper but fragile in reality. It depended on Burgundian cooperation, English military enforcement, and acceptance by French communities that did not all recognize the disinheritance of the Dauphin. Britannica’s general interpretation emphasizes that Henry’s later war aimed to establish a dual monarchy, but also that English authority could not become effective in a hostile France.
     * **Common Pitfall**: The treaty did not make Henry peacefully “king of France.” Charles VI remained alive, the Dauphin continued resistance, and large parts of France did not accept the settlement. Troyes created a legal claim that still had to be enforced by war.
 * 1421
 
@@ -345,7 +351,7 @@ layout: post-multilingual
 
   * **October 12–May 8, the siege of Orléans becomes the military and psychological turning point**
 
-    * **Background**: **Orléans** guarded access to the **Loire** and stood as a crucial barrier between the English-held north and the Valois heartland. If the city fell, Charles VII’s position could become strategically desperate. Britannica identifies the **Siege of Orléans** as running from October to May and describes it as the military turning point of the war. ([Encyclopedia Britannica][5])
+    * **Background**: **Orléans** guarded access to the **Loire** and stood as a crucial barrier between the English-held north and the Valois heartland. If the city fell, Charles VII’s position could become strategically desperate. Britannica identifies the **Siege of Orléans** as running from October to May and describes it as the military turning point of the war.
     * **Process**: English forces attempted to isolate the city through surrounding strongpoints rather than by a complete encirclement from the start. The defenders held under pressure while Charles VII’s court remained uncertain and politically fragile. The arrival of **Joan of Arc** changed morale and initiative. She did not single-handedly command the entire war machine, but her presence helped transform a defensive struggle into an offensive effort to break the siege.
     * **Result**: French forces lifted the siege. The English lost the initiative around the Loire, and the psychological balance of the war shifted. The event did not immediately expel the English from France, but it made Valois recovery plausible.
     * **Significance**: Orléans matters because it joined strategy, morale, legitimacy, and sacred kingship. The war had become not only a contest of armies but a contest over who represented lawful France. Joan’s role gave Charles VII’s cause a new symbolic force at precisely the moment when military survival was at stake.
@@ -490,16 +496,6 @@ layout: post-multilingual
     * **Result**: The defeat destroyed the last serious English attempt to recover Gascony. Bordeaux surrendered again later in the year, and English continental rule was reduced essentially to **Calais**.
     * **Significance**: Castillon is often treated as the final battle of the Hundred Years’ War. It also symbolizes a military transition: fortified artillery positions, improved royal armies, and coordinated state resources had overtaken the conditions that once favored English defensive archery tactics.
     * **Common Pitfall**: Castillon was not just “the battle where cannon defeated the longbow.” It was a result of deeper changes: French fiscal reform, professionalized forces, siege expertise, artillery development, and England’s inability to sustain large continental commitments.
-  * **October, Bordeaux’s final surrender ends English Gascony**
-
-    * **Background**: After Talbot’s death and the defeat at Castillon, Bordeaux could not expect effective English relief. The city’s earlier return to English allegiance had been based on local interests, but military realities now favored Charles VII.
-    * **Process**: Bordeaux surrendered to the French crown. French authority was restored in the southwest, though integration required attention to local privileges, trade interests, and political management.
-    * **Result**: England lost the last major remnant of its old French territorial empire except **Calais**. The war did not end through one formal peace treaty in the way a modern war might; rather, organized English capacity to contest France collapsed.
-    * **Significance**: The surrender of Bordeaux completed the transformation of the war’s outcome. The French monarchy emerged territorially strengthened and institutionally more capable, while England entered a period of political crisis in which defeat, noble rivalry, royal weakness, and dynastic conflict contributed to the **Wars of the Roses**.
-可以。下面这段可直接替换原来的 **After 1453** 部分，仍保持原来的三层列表模式，而不是 Q&A。结构上继续遵守“第一层放时间，第二层放事件，第三层放解释”的格式契约。
-
-* 1453
-
   * **October, Bordeaux’s final surrender ends England’s effective territorial empire in France**
 
     * **Immediate Impact**: The final surrender of **Bordeaux** after the defeat at **Castillon** ended English rule in **Gascony**, the region that had tied the English crown to southwestern France for centuries. This was not merely the loss of one city. It meant the collapse of the commercial, legal, and aristocratic network through which England had maintained a continental political identity.
@@ -576,14 +572,6 @@ layout: post-multilingual
     * **Impact on France**: The French monarchy increasingly presented itself as the defender and restorer of the kingdom’s territorial integrity. The recovery of Normandy, Paris, and Gascony gave this claim practical force.
     * **Impact on England**: English identity was also affected. The loss of France pushed England toward a more insular political orientation, even though English kings continued to preserve claims and memories of continental rule.
     * **Common Pitfall**: This should not be mistaken for modern nationalism. Many people still acted according to local privilege, lordship, trade, dynasty, religion, and survival. The war strengthened territorial monarchy, but it did not create modern nation-states in a fully developed sense.
-* 1558
-
-  * **January, the loss of Calais removes the last major English foothold in France**
-
-    * **Background**: **Calais** had remained in English hands after the end of the Hundred Years’ War and served as a symbolic remnant of English continental power. It was militarily, commercially, and emotionally important because it preserved a visible link to the older Anglo-French conflict.
-    * **Immediate Impact**: When France captured Calais, England lost its final major possession on the French mainland. This ended the last territorial survival of the medieval English presence in France.
-    * **Indirect Impact**: The loss of Calais confirmed a process that had effectively begun in 1453: England’s continental monarchy had become a memory rather than a territorial reality. English foreign policy would increasingly look toward maritime power, dynastic diplomacy, and later overseas expansion rather than large-scale lordship inside France.
-    * **Historical Significance**: Although Calais fell long after the conventional end of the Hundred Years’ War, its loss completed the territorial aftermath of the conflict. The old structure in which English kings were great French landholders had finally disappeared in practice.
 * Late 15th–early 16th century
 
   * **The English claim to France survives after the loss of real territorial power**
@@ -740,7 +728,6 @@ layout: post-multilingual
     * **Indirect Consequences**: The indirect consequences include England’s later insular and maritime orientation, the intensification of domestic aristocratic conflict, France’s stronger monarchy under later kings, and the changing balance between France and Burgundy.
     * **Memory Effects**: The memory effects include the heroic image of **Henry V**, the national and religious symbolism of **Joan of Arc**, the mythic status of **Agincourt**, and the later use of the war as a story of English courage or French awakening.
     * **Historical Significance**: This distinction is essential. The Hundred Years’ War must be studied both as a medieval conflict and as a later memory tradition, but those two layers should not be confused.
-
 
 ### 1 — What Was the Hundred Years’ War?
 
@@ -1011,3 +998,4 @@ The war helped France move toward a more territorially coherent monarchy. But th
 The Hundred Years’ War began as a medieval dispute over feudal rights, dynastic succession, and territorial lordship. It ended in a world where taxation, artillery, permanent armies, royal administration, and territorial sovereignty mattered far more.
 
 Its deepest significance is this transition. The war began in the language of **homage** and **inheritance**. It ended in the language of **state capacity**, **military organization**, and **centralized monarchy**. That is why it is one of the major turning points between the medieval and early modern political worlds.
+

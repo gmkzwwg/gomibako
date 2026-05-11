@@ -2,7 +2,7 @@
 tilte: Programming Language Analysis
 layout: slide-multilingual
 categories: Notes
-subclass: Programming Languages
+subclass: Languages
 ---
 
 # English
