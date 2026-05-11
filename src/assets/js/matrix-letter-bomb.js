@@ -1,25 +1,29 @@
 /*!
+ * matrix-letter-rain.v1.js
+ *
  * Introduction:
- *   Creates a full-screen matrix-style letter rain with configurable multi-burst explosions on a canvas overlay.
+ *   Creates a full-screen matrix-style letter rain with randomized multi-burst explosions.
  *
  * Usage:
- *   Include this file on the page. It starts automatically with DEFAULT_CONFIG.
- *   Default behavior can be customized by editing DEFAULT_CONFIG below.
+ *   Include this file on the page. It starts automatically when autoStart is true.
  *   Runtime behavior can be customized with window.MatrixLetterRain.updateConfig().
  *
  * Global API:
- *   window.MatrixLetterRain.start(config)
+ *   window.MatrixLetterRain.start(config?)
+ *   window.MatrixLetterRain.startAfterSplash(config?)
+ *   window.MatrixLetterRain.pause()
  *   window.MatrixLetterRain.stop()
  *   window.MatrixLetterRain.destroy()
  *   window.MatrixLetterRain.updateConfig(config)
  *   window.MatrixLetterRain.getConfig()
  *
  * Notes:
- *   The script creates and manages its own fixed canvas.
- *   The canvas is pointer-events:none and does not block page interaction.
- *   Multi-burst explosions are scheduled inside the animation loop, not with extra timers.
- *   The script caps DPR, particles, and drops to avoid high-DPI or overlapping-animation cost spikes.
- *   The script respects prefers-reduced-motion by default.
+ *   - Multi-burst explosions are preserved.
+ *   - Random burst count, random burst pattern, random color sequence are preserved.
+ *   - stop() removes the canvas.
+ *   - pause() only pauses the animation loop.
+ *   - The canvas is created only when start() actually runs.
+ *   - No desynchronized canvas context is used.
  */
 
 (function (window, document) {
@@ -28,75 +32,135 @@
   if (!window || !document) return;
 
   const DEFAULT_CONFIG = {
-    autoStart: true, // Start automatically after script loading.
-    respectReducedMotion: true, // Disable animation when reduced motion is requested.
+    autoStart: true,
+    respectReducedMotion: true,
 
-    startDelaySeconds: 3, // Delay before the first spawn.
-    intervalSeconds: 5, // Time between new drops.
-    immediateStart: true, // Spawn immediately after delay finishes.
+    waitForSplash: true,
+    splashFaceLayerId: "hacked-face-layer",
+    splashFlashLayerId: "hacked-flash-layer",
+    splashWaitTimeoutMs: 6000,
+    splashPollMs: 80,
 
-    candidates: "ABCDEFGHIJKLMNOPQRSTUVWXYZ01", // Character pool.
-    color: null, // Backward-compatible alias; null uses greenColor.
-    greenColor: "#23ef23", // Main glyph color and first explosion color.
-    whiteColor: "#f0e8e8", // White explosion color.
-    errorColor: "#e81d1d", // Red ERROR-style explosion color.
-    yellowColor: "#f8ca00", // Yellow explosion color.
-    fontFamily: null, // Custom font family; null means inherit from page.
-    fontSize: 15, // Letter size in pixels.
+    startDelaySeconds: 3,
+    intervalSeconds: 5,
+    immediateStart: true,
 
-    zIndex: 999999, // Canvas z-index.
-    canvasClass: "matrix-letter-rain", // Canvas class name.
-    canvasId: "matrix-letter-rain-canvas", // Canvas element ID.
-    dprMax: 1.4, // Maximum device-pixel-ratio used by the canvas.
+    candidates: "ABCDEFGHIJKLMNOPQRSTUVWXYZ01",
+    color: null,
+    greenColor: "#23ef23",
+    whiteColor: "#f0e8e8",
+    errorColor: "#e81d1d",
+    yellowColor: "#f8ca00",
 
-    minSpeed: 250, // Minimum falling speed.
-    maxSpeed: 400, // Maximum falling speed.
-    speedMultiplier: 3, // Global speed multiplier.
-    maxDrops: 6, // Maximum simultaneous falling letters.
+    fontFamily: null,
+    fontSize: 15,
 
-    minExplodeLetters: 6, // Minimum letters created by first burst.
-    maxExplodeLetters: 10, // Maximum letters created by first burst.
-    minExplodeHeightRatio: 0.22, // Minimum explosion height ratio.
-    maxExplodeHeightRatio: 0.82, // Maximum explosion height ratio.
+    zIndex: 1,
+    canvasClass: "matrix-letter-rain",
+    canvasId: "matrix-letter-rain-canvas",
 
-    burstCountWeights: [0.45, 0.25, 0.15, 0.15], // Probability for 1, 2, 3, or 4 bursts.
-    multiBurstDelayMin: 0.5, // Minimum delay between repeated bursts in seconds.
-    multiBurstDelayMax: 0.5, // Maximum delay between repeated bursts in seconds.
-    multiBurstScaleStep: 0.2, // Each later burst grows by this ratio.
-    multiBurstLetterStep: 1, // Each later burst emits this many extra letters.
+    dprMax: 1.2,
 
-    minParticleLife: 0.4, // Minimum particle lifetime.
-    maxParticleLife: 0.8, // Maximum particle lifetime.
-    minParticleSpeed: 300, // Minimum particle burst speed.
-    maxParticleSpeed: 700, // Maximum particle burst speed.
-    maxParticles: 180, // Hard cap for active burst particles.
+    mobilePerformanceMode: true,
+    mobileBreakpoint: 800,
+    mobileDprMax: 1,
+    mobileMaxDrops: 3,
+    mobileMaxParticles: 80,
+    mobileGlow: false,
 
-    glow: true, // Enable glow shadow.
-    dropShadowBlur: 10, // Drop shadow blur.
-    particleShadowBlur: 8, // Particle shadow blur.
-    maxFrameDelta: 0.033, // Maximum frame delta to avoid jumps after tab restore.
-    clearAlpha: 1, // Canvas clear alpha; 1 means fully clear every frame.
-    pauseWhenHidden: true, // Stop RAF while the document is hidden.
-    resizeDebounceMs: 120 // Debounce delay for resize rebuilds.
+    minSpeed: 250,
+    maxSpeed: 400,
+    speedMultiplier: 3,
+    maxDrops: 4,
+
+    minExplodeLetters: 6,
+    maxExplodeLetters: 10,
+    minExplodeHeightRatio: 0.22,
+    maxExplodeHeightRatio: 0.82,
+
+    burstCountWeights: [0.45, 0.25, 0.15, 0.15],
+    multiBurstDelayMin: 0.5,
+    multiBurstDelayMax: 0.5,
+    multiBurstScaleStep: 0.2,
+    multiBurstLetterStep: 1,
+
+    minParticleLife: 0.4,
+    maxParticleLife: 0.8,
+    minParticleSpeed: 300,
+    maxParticleSpeed: 700,
+    maxParticles: 120,
+
+    glow: true,
+    dropShadowBlur: 10,
+    particleShadowBlur: 8,
+
+    maxFrameDelta: 0.033,
+    clearAlpha: 1,
+    pauseWhenHidden: true,
+    resizeDebounceMs: 120
   };
 
-  let activeConfig = merge({}, DEFAULT_CONFIG); // Active runtime configuration.
-  let instance = null; // Current animation instance.
+  let activeConfig = merge({}, DEFAULT_CONFIG);
+  let instance = null;
+  let waitTimer = 0;
+  let manuallyStopped = false;
 
-  /* Merges objects from left to right; params: ...objects<object>. */
   function merge() {
     const output = {};
 
-    Array.prototype.slice.call(arguments).forEach(function (object) {
-      Object.keys(object || {}).forEach(function (key) {
-        output[key] = object[key];
+    Array.prototype.slice.call(arguments).forEach(function (source) {
+      Object.keys(source || {}).forEach(function (key) {
+        output[key] = source[key];
       });
     });
 
     return output;
   }
 
-  /* Checks reduced-motion preference; params: config<object>. */
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function toFiniteNumber(value, fallback) {
+    const number = Number(value);
+
+    return Number.isFinite(number) ? number : fallback;
+  }
+
+  function isMobileViewport(config) {
+    const width = window.innerWidth || document.documentElement.clientWidth || 1024;
+    const breakpoint = Math.max(1, toFiniteNumber(config.mobileBreakpoint, 800));
+
+    return width <= breakpoint;
+  }
+
+  function getRuntimeConfig(config) {
+    const next = merge({}, DEFAULT_CONFIG, config || {});
+
+    if (next.mobilePerformanceMode && isMobileViewport(next)) {
+      next.dprMax = Math.min(
+        Math.max(1, toFiniteNumber(next.dprMax, DEFAULT_CONFIG.dprMax)),
+        Math.max(1, toFiniteNumber(next.mobileDprMax, 1))
+      );
+
+      next.maxDrops = Math.min(
+        Math.max(1, toFiniteNumber(next.maxDrops, DEFAULT_CONFIG.maxDrops)),
+        Math.max(1, toFiniteNumber(next.mobileMaxDrops, 3))
+      );
+
+      next.maxParticles = Math.min(
+        Math.max(1, toFiniteNumber(next.maxParticles, DEFAULT_CONFIG.maxParticles)),
+        Math.max(1, toFiniteNumber(next.mobileMaxParticles, 80))
+      );
+
+      next.glow = Boolean(next.mobileGlow);
+      next.dropShadowBlur = next.glow ? next.dropShadowBlur : 0;
+      next.particleShadowBlur = next.glow ? next.particleShadowBlur : 0;
+    }
+
+    return next;
+  }
+
   function shouldReduceMotion(config) {
     return Boolean(
       config.respectReducedMotion &&
@@ -105,37 +169,60 @@
     );
   }
 
-  /* Creates one matrix rain animation instance; params: options<object>. */
-  class MatrixLetterRainEffect {
-    constructor(options) {
-      this.options = merge({}, DEFAULT_CONFIG, options || {}); // Instance config.
-      this.candidates = this.normalizeCandidates(this.options.candidates); // Normalized character pool.
-      this.drops = []; // Falling letters.
-      this.particles = []; // Burst particles.
-      this.pendingBursts = []; // Delayed repeated bursts.
-      this.running = false; // Runtime state flag.
-      this.lastTime = 0; // Last animation timestamp.
-      this.rafId = 0; // Active RAF id.
-      this.spawnTimer = 0; // Timer for drop spawning.
-      this.resizeTimer = 0; // Debounced resize timer.
-      this.delayRemaining = Math.max(0, Number(this.options.startDelaySeconds) || 0); // Start delay counter.
-      this.startedSpawning = false; // Whether spawning has begun.
+  function clearWaitTimer() {
+    if (waitTimer) {
+      window.clearTimeout(waitTimer);
+      waitTimer = 0;
+    }
+  }
 
-      this.pageFontSize = this.resolvePageFontSize(); // Page fallback font size.
-      this.pageFontFamily = this.resolvePageFontFamily(); // Page fallback font family.
-      this.fontFamilyCache = this.getFontFamily(); // Cached font family for frame drawing.
+  function getParent() {
+    return document.body || document.documentElement;
+  }
+
+  class MatrixLetterRainEffect {
+    constructor(config) {
+      this.options = getRuntimeConfig(config);
+      this.candidates = this.normalizeCandidates(this.options.candidates);
+
+      this.canvas = null;
+      this.ctx = null;
+
+      this.width = 1;
+      this.height = 1;
+      this.dpr = 1;
+
+      this.drops = [];
+      this.particles = [];
+      this.pendingBursts = [];
+
+      this.running = false;
+      this.disposed = false;
+      this.rafId = 0;
+      this.lastTime = 0;
+
+      this.spawnElapsed = 0;
+      this.delayRemaining = Math.max(0, toFiniteNumber(this.options.startDelaySeconds, 0));
+      this.startedSpawning = false;
+
+      this.resizeTimer = 0;
+
+      this.pageFontSize = 16;
+      this.pageFontFamily = "monospace";
+      this.fontFamilyCache = "monospace";
 
       this.handleResize = this.handleResize.bind(this);
       this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
       this.loop = this.loop.bind(this);
 
       this.createCanvas();
+      this.resolvePageFont();
+      this.resizeNow();
+
       window.addEventListener("resize", this.handleResize, { passive: true });
       document.addEventListener("visibilitychange", this.handleVisibilityChange, { passive: true });
-      this.resizeNow();
     }
 
-    /* Normalizes candidate characters; params: candidates<string|Array>. */
     normalizeCandidates(candidates) {
       if (Array.isArray(candidates)) {
         return candidates.map(function (value) {
@@ -150,54 +237,119 @@
       return ["0", "1"];
     }
 
-    /* Returns a random candidate character; params: none. */
     randomFromCandidates() {
       return this.candidates[Math.floor(Math.random() * this.candidates.length)] || "0";
     }
 
-    /* Returns a random float in range; params: min<number>, max<number>. */
     rand(min, max) {
       return Math.random() * (max - min) + min;
     }
 
-    /* Returns a random integer in range; params: min<number>, max<number>. */
     randInt(min, max) {
       return Math.floor(this.rand(min, max + 1));
     }
 
-    /* Clamps a number into a range; params: value<number>, min<number>, max<number>. */
-    clamp(value, min, max) {
-      return Math.max(min, Math.min(max, value));
-    }
-
-    /* Returns a shuffled array copy; params: array<Array>. */
     shuffled(array) {
       const copy = array.slice();
 
       for (let index = copy.length - 1; index > 0; index -= 1) {
         const swapIndex = Math.floor(Math.random() * (index + 1));
-        const value = copy[index];
+        const current = copy[index];
 
         copy[index] = copy[swapIndex];
-        copy[swapIndex] = value;
+        copy[swapIndex] = current;
       }
 
       return copy;
     }
 
-    /* Returns the validated speed multiplier; params: none. */
+    createCanvas() {
+      const oldCanvas = document.getElementById(this.options.canvasId);
+
+      if (oldCanvas && oldCanvas.parentNode) {
+        oldCanvas.parentNode.removeChild(oldCanvas);
+      }
+
+      this.canvas = document.createElement("canvas");
+      this.canvas.id = this.options.canvasId;
+      this.canvas.setAttribute("aria-hidden", "true");
+
+      this.applyCanvasStyle();
+
+      getParent().appendChild(this.canvas);
+
+      try {
+        this.ctx = this.canvas.getContext("2d", { alpha: true }) || this.canvas.getContext("2d");
+      } catch (error) {
+        this.ctx = this.canvas.getContext("2d");
+      }
+    }
+
+    applyCanvasStyle() {
+      if (!this.canvas) return;
+
+      this.canvas.className = this.options.canvasClass || DEFAULT_CONFIG.canvasClass;
+
+      Object.assign(this.canvas.style, {
+        position: "fixed",
+        inset: "0",
+        width: "100vw",
+        height: "100vh",
+        display: "block",
+        pointerEvents: "none",
+        zIndex: String(this.options.zIndex)
+      });
+    }
+
+    resolvePageFont() {
+      const htmlStyle = window.getComputedStyle(document.documentElement);
+      const bodyStyle = document.body ? window.getComputedStyle(document.body) : null;
+
+      const htmlSize = parseFloat(htmlStyle.fontSize);
+      const bodySize = bodyStyle ? parseFloat(bodyStyle.fontSize) : NaN;
+
+      const htmlFamily = htmlStyle.fontFamily ? htmlStyle.fontFamily.trim() : "";
+      const bodyFamily = bodyStyle && bodyStyle.fontFamily ? bodyStyle.fontFamily.trim() : "";
+
+      this.pageFontSize =
+        Number.isFinite(bodySize) && bodySize > 0
+          ? bodySize
+          : Number.isFinite(htmlSize) && htmlSize > 0
+            ? htmlSize
+            : 16;
+
+      this.pageFontFamily = bodyFamily || htmlFamily || "monospace";
+      this.fontFamilyCache = this.getFontFamily();
+    }
+
+    getFontSize() {
+      const custom = Number(this.options.fontSize);
+
+      return Number.isFinite(custom) && custom > 0 ? custom : this.pageFontSize;
+    }
+
+    getFontFamily() {
+      return this.options.fontFamily || this.pageFontFamily || "monospace";
+    }
+
+    getGreenColor() {
+      return this.options.color || this.options.greenColor || "#23ef23";
+    }
+
     getSpeedMultiplier() {
       const value = Number(this.options.speedMultiplier);
 
       return Number.isFinite(value) && value > 0 ? value : 1;
     }
 
-    /* Returns the main green color with legacy color fallback; params: none. */
-    getGreenColor() {
-      return this.options.color || this.options.greenColor || "#23ef23";
+    getMaxDrops() {
+      return Math.max(1, toFiniteNumber(this.options.maxDrops, DEFAULT_CONFIG.maxDrops));
     }
 
-    /* Returns the repeated-burst color sequence; params: burstCount<number>. */
+    getMaxParticles() {
+      return Math.max(1, toFiniteNumber(this.options.maxParticles, DEFAULT_CONFIG.maxParticles));
+    }
+
     getBurstColors(burstCount) {
       const accentColors = this.shuffled([
         this.options.errorColor || "#e81d1d",
@@ -208,9 +360,11 @@
       return [this.getGreenColor()].concat(accentColors.slice(0, Math.max(0, burstCount - 1)));
     }
 
-    /* Picks 1-4 bursts from configured weights; params: none. */
     pickBurstCount() {
-      const weights = this.options.burstCountWeights || DEFAULT_CONFIG.burstCountWeights;
+      const weights = Array.isArray(this.options.burstCountWeights)
+        ? this.options.burstCountWeights
+        : DEFAULT_CONFIG.burstCountWeights;
+
       const roll = Math.random();
       let total = 0;
 
@@ -225,81 +379,10 @@
       return 4;
     }
 
-    /* Resolves the page font size; params: none. */
-    resolvePageFontSize() {
-      const bodyStyle = document.body ? window.getComputedStyle(document.body) : null;
-      const htmlStyle = window.getComputedStyle(document.documentElement);
-      const bodySize = bodyStyle ? parseFloat(bodyStyle.fontSize) : NaN;
-      const htmlSize = parseFloat(htmlStyle.fontSize);
-
-      if (Number.isFinite(bodySize) && bodySize > 0) return bodySize;
-      if (Number.isFinite(htmlSize) && htmlSize > 0) return htmlSize;
-
-      return 16;
-    }
-
-    /* Resolves the page font family; params: none. */
-    resolvePageFontFamily() {
-      const bodyStyle = document.body ? window.getComputedStyle(document.body) : null;
-      const htmlStyle = window.getComputedStyle(document.documentElement);
-      const bodyFamily = bodyStyle && bodyStyle.fontFamily ? bodyStyle.fontFamily.trim() : "";
-      const htmlFamily = htmlStyle && htmlStyle.fontFamily ? htmlStyle.fontFamily.trim() : "";
-
-      return bodyFamily || htmlFamily || "monospace";
-    }
-
-    /* Returns active font size; params: none. */
-    getFontSize() {
-      const custom = Number(this.options.fontSize);
-
-      if (Number.isFinite(custom) && custom > 0) return custom;
-
-      return this.pageFontSize;
-    }
-
-    /* Returns active font family; params: none. */
-    getFontFamily() {
-      return this.options.fontFamily || this.pageFontFamily || "monospace";
-    }
-
-    /* Creates and attaches the canvas; params: none. */
-    createCanvas() {
-      const oldCanvas = document.getElementById(this.options.canvasId);
-
-      if (oldCanvas && oldCanvas.parentNode) {
-        oldCanvas.parentNode.removeChild(oldCanvas); // Avoid duplicate canvases after restart.
-      }
-
-      this.canvas = document.createElement("canvas");
-      this.canvas.id = this.options.canvasId;
-      this.canvas.className = this.options.canvasClass;
-      this.canvas.setAttribute("aria-hidden", "true");
-
-      Object.assign(this.canvas.style, {
-        position: "fixed",
-        inset: "0",
-        width: "100vw",
-        height: "100vh",
-        pointerEvents: "none",
-        zIndex: String(this.options.zIndex)
-      });
-
-      document.documentElement.appendChild(this.canvas);
-      this.ctx = this.canvas.getContext("2d", { alpha: true, desynchronized: true }) || this.canvas.getContext("2d");
-    }
-
-    /* Handles debounced viewport and DPR changes; params: none. */
-    handleResize() {
-      window.clearTimeout(this.resizeTimer);
-
-      this.resizeTimer = window.setTimeout(() => {
-        this.resizeNow();
-      }, Math.max(0, Number(this.options.resizeDebounceMs) || 0));
-    }
-
-    /* Applies viewport and DPR changes immediately; params: none. */
     resizeNow() {
-      const dprMax = Math.max(1, Number(this.options.dprMax) || DEFAULT_CONFIG.dprMax);
+      if (!this.canvas || !this.ctx) return;
+
+      const dprMax = Math.max(1, toFiniteNumber(this.options.dprMax, DEFAULT_CONFIG.dprMax));
       const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, dprMax));
 
       this.dpr = dpr;
@@ -308,14 +391,26 @@
 
       this.canvas.width = Math.max(1, Math.floor(this.width * dpr));
       this.canvas.height = Math.max(1, Math.floor(this.height * dpr));
+
       this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      this.pageFontSize = this.resolvePageFontSize();
-      this.pageFontFamily = this.resolvePageFontFamily();
-      this.fontFamilyCache = this.getFontFamily();
+      this.resolvePageFont();
+      this.trimDrops();
+      this.trimParticles();
     }
 
-    /* Pauses or resumes RAF on visibility changes; params: none. */
+    handleResize() {
+      window.clearTimeout(this.resizeTimer);
+
+      this.resizeTimer = window.setTimeout(() => {
+        if (this.disposed) return;
+
+        this.options = getRuntimeConfig(this.options);
+        this.applyCanvasStyle();
+        this.resizeNow();
+      }, Math.max(0, toFiniteNumber(this.options.resizeDebounceMs, 120)));
+    }
+
     handleVisibilityChange() {
       if (!this.options.pauseWhenHidden) return;
 
@@ -331,10 +426,10 @@
       }
     }
 
-    /* Creates one falling drop; params: none. */
     createDrop() {
       const size = this.getFontSize();
       const speedMultiplier = this.getSpeedMultiplier();
+
       const x = this.rand(size, Math.max(size, this.width - size));
       const speed = this.rand(this.options.minSpeed, this.options.maxSpeed) * speedMultiplier;
       const explodeY = this.rand(
@@ -355,18 +450,27 @@
       };
     }
 
-    /* Adds one drop while respecting maxDrops; params: none. */
-    spawnDrop() {
-      const maxDrops = Math.max(1, Number(this.options.maxDrops) || DEFAULT_CONFIG.maxDrops);
+    trimDrops() {
+      const overflow = this.drops.length - this.getMaxDrops();
 
-      if (this.drops.length >= maxDrops) {
-        this.drops.shift(); // Drop oldest instead of allowing unbounded work.
+      if (overflow > 0) {
+        this.drops.splice(0, overflow);
       }
-
-      this.drops.push(this.createDrop());
     }
 
-    /* Creates and schedules a 1-4 stage explosion sequence; params: x<number>, y<number>, baseSize<number>. */
+    trimParticles() {
+      const overflow = this.particles.length - this.getMaxParticles();
+
+      if (overflow > 0) {
+        this.particles.splice(0, overflow);
+      }
+    }
+
+    spawnDrop() {
+      this.drops.push(this.createDrop());
+      this.trimDrops();
+    }
+
     explode(x, y, baseSize) {
       const burstCount = this.pickBurstCount();
       const colors = this.getBurstColors(burstCount);
@@ -388,7 +492,6 @@
       }
     }
 
-    /* Runs due repeated-burst events; params: deltaTime<number>. */
     updatePendingBursts(deltaTime) {
       let write = 0;
 
@@ -408,13 +511,11 @@
       this.pendingBursts.length = write;
     }
 
-    /* Creates one burst particle batch; params: x<number>, y<number>, baseSize<number>, burstIndex<number>, color<string>. */
     explodeOnce(x, y, baseSize, burstIndex, color) {
       const scale = 1 + burstIndex * this.options.multiBurstScaleStep;
       const baseCount = this.randInt(this.options.minExplodeLetters, this.options.maxExplodeLetters);
       const count = Math.max(1, baseCount + burstIndex * this.options.multiBurstLetterStep);
-      const patterns = ["ring", "cone", "burst", "cross"];
-      const pattern = patterns[this.randInt(0, patterns.length - 1)]; // New pattern for every burst.
+      const pattern = this.pickExplosionPattern();
       const baseAngle = this.rand(0, Math.PI * 2);
       const speedMultiplier = this.getSpeedMultiplier();
 
@@ -447,17 +548,12 @@
       this.trimParticles();
     }
 
-    /* Removes oldest particles when over budget; params: none. */
-    trimParticles() {
-      const maxParticles = Math.max(1, Number(this.options.maxParticles) || DEFAULT_CONFIG.maxParticles);
-      const overflow = this.particles.length - maxParticles;
+    pickExplosionPattern() {
+      const patterns = ["ring", "cone", "burst", "cross"];
 
-      if (overflow > 0) {
-        this.particles.splice(0, overflow);
-      }
+      return patterns[this.randInt(0, patterns.length - 1)];
     }
 
-    /* Returns angle and speed for one particle; params: pattern<string>, index<number>, count<number>, baseAngle<number>. */
     getParticleMotion(pattern, index, count, baseAngle) {
       if (pattern === "ring") {
         return {
@@ -488,7 +584,6 @@
       };
     }
 
-    /* Updates one falling drop; params: drop<object>, deltaTime<number>. */
     updateDrop(drop, deltaTime) {
       drop.y += drop.speed * deltaTime;
       drop.angle += drop.rotation * deltaTime * 60;
@@ -512,7 +607,6 @@
       return true;
     }
 
-    /* Updates one burst particle; params: particle<object>, deltaTime<number>. */
     updateParticle(particle, deltaTime) {
       particle.px = particle.x;
       particle.py = particle.y;
@@ -534,7 +628,27 @@
       return particle.life > 0;
     }
 
-    /* Draws one falling drop; params: drop<object>. */
+    compactUpdate(array, updater, deltaTime) {
+      let write = 0;
+
+      for (let index = 0; index < array.length; index += 1) {
+        const item = array[index];
+
+        if (updater.call(this, item, deltaTime)) {
+          array[write] = item;
+          write += 1;
+        }
+      }
+
+      array.length = write;
+    }
+
+    clear() {
+      if (!this.ctx) return;
+
+      this.ctx.clearRect(0, 0, this.width, this.height);
+    }
+
     drawDrop(drop) {
       const ctx = this.ctx;
       const color = this.getGreenColor();
@@ -556,7 +670,6 @@
       ctx.restore();
     }
 
-    /* Draws one burst particle; params: particle<object>. */
     drawParticle(particle) {
       const ctx = this.ctx;
       const dx = particle.x - particle.px;
@@ -590,38 +703,34 @@
       ctx.restore();
     }
 
-    /* Clears the canvas; params: none. */
-    clear() {
-      if (this.options.clearAlpha >= 1) {
-        this.ctx.clearRect(0, 0, this.width, this.height);
+    updateSpawning(deltaTime) {
+      if (!this.startedSpawning) {
+        this.delayRemaining -= deltaTime;
+
+        if (this.delayRemaining <= 0) {
+          this.startedSpawning = true;
+          this.spawnElapsed = 0;
+
+          if (this.options.immediateStart) {
+            this.spawnDrop();
+          }
+        }
+
         return;
       }
 
-      this.ctx.save();
-      this.ctx.globalAlpha = this.clamp(Number(this.options.clearAlpha) || 0, 0, 1);
-      this.ctx.clearRect(0, 0, this.width, this.height);
-      this.ctx.restore();
-    }
+      this.spawnElapsed += deltaTime;
 
-    /* Compact-updates an array in place; params: array<Array>, updater<Function>, deltaTime<number>. */
-    compactUpdate(array, updater, deltaTime) {
-      let write = 0;
+      const interval = Math.max(0.05, toFiniteNumber(this.options.intervalSeconds, 5));
 
-      for (let index = 0; index < array.length; index += 1) {
-        const item = array[index];
-
-        if (updater.call(this, item, deltaTime)) {
-          array[write] = item;
-          write += 1;
-        }
+      if (this.spawnElapsed >= interval) {
+        this.spawnElapsed -= interval;
+        this.spawnDrop();
       }
-
-      array.length = write;
     }
 
-    /* Runs one animation frame; params: timestamp<number>. */
     loop(timestamp) {
-      if (!this.running) return;
+      if (!this.running || this.disposed) return;
 
       if (this.options.pauseWhenHidden && document.hidden) {
         this.rafId = 0;
@@ -634,11 +743,12 @@
       }
 
       const deltaTime = Math.min(
-        this.options.maxFrameDelta,
+        toFiniteNumber(this.options.maxFrameDelta, DEFAULT_CONFIG.maxFrameDelta),
         (timestamp - this.lastTime) / 1000
       );
 
       this.lastTime = timestamp;
+
       this.clear();
       this.updateSpawning(deltaTime);
       this.updatePendingBursts(deltaTime);
@@ -656,41 +766,13 @@
       this.rafId = window.requestAnimationFrame(this.loop);
     }
 
-    /* Updates delayed and interval spawning; params: deltaTime<number>. */
-    updateSpawning(deltaTime) {
-      if (!this.startedSpawning) {
-        this.delayRemaining -= deltaTime;
-
-        if (this.delayRemaining <= 0) {
-          this.startedSpawning = true;
-          this.spawnTimer = 0;
-
-          if (this.options.immediateStart) {
-            this.spawnDrop();
-          }
-        }
-
-        return;
-      }
-
-      this.spawnTimer += deltaTime;
-
-      const interval = Math.max(0.05, Number(this.options.intervalSeconds) || 5);
-
-      if (this.spawnTimer >= interval) {
-        this.spawnTimer -= interval;
-        this.spawnDrop();
-      }
-    }
-
-    /* Starts the animation; params: none. */
     start() {
-      if (this.running) return;
+      if (this.running || this.disposed) return;
 
       this.running = true;
       this.lastTime = 0;
-      this.spawnTimer = 0;
-      this.delayRemaining = Math.max(0, Number(this.options.startDelaySeconds) || 0);
+      this.spawnElapsed = 0;
+      this.delayRemaining = Math.max(0, toFiniteNumber(this.options.startDelaySeconds, 0));
       this.startedSpawning = this.delayRemaining <= 0;
 
       if (this.startedSpawning && this.options.immediateStart) {
@@ -700,16 +782,20 @@
       this.rafId = window.requestAnimationFrame(this.loop);
     }
 
-    /* Stops the animation loop without removing canvas; params: none. */
-    stop() {
+    pause() {
       this.running = false;
-      window.cancelAnimationFrame(this.rafId);
-      this.rafId = 0;
+      this.lastTime = 0;
+
+      if (this.rafId) {
+        window.cancelAnimationFrame(this.rafId);
+        this.rafId = 0;
+      }
     }
 
-    /* Removes canvas and event listeners; params: none. */
     destroy() {
-      this.stop();
+      this.pause();
+      this.disposed = true;
+
       window.clearTimeout(this.resizeTimer);
       window.removeEventListener("resize", this.handleResize);
       document.removeEventListener("visibilitychange", this.handleVisibilityChange);
@@ -718,63 +804,72 @@
         this.canvas.parentNode.removeChild(this.canvas);
       }
 
+      this.canvas = null;
+      this.ctx = null;
       this.drops = [];
       this.particles = [];
       this.pendingBursts = [];
     }
 
-    /* Updates instance options; params: nextOptions<object>. */
-    updateConfig(nextOptions) {
-      nextOptions = nextOptions || {};
-      this.options = merge(this.options, nextOptions);
+    updateConfig(nextConfig) {
+      if (this.disposed) return this.getConfig();
 
-      if (Object.prototype.hasOwnProperty.call(nextOptions, "candidates")) {
+      nextConfig = nextConfig || {};
+      this.options = getRuntimeConfig(merge(this.options, nextConfig));
+
+      if (Object.prototype.hasOwnProperty.call(nextConfig, "candidates")) {
         this.candidates = this.normalizeCandidates(this.options.candidates);
       }
 
-      this.pageFontSize = this.resolvePageFontSize();
-      this.pageFontFamily = this.resolvePageFontFamily();
-      this.fontFamilyCache = this.getFontFamily();
-
-      if (Object.prototype.hasOwnProperty.call(nextOptions, "startDelaySeconds") && !this.startedSpawning) {
-        this.delayRemaining = Math.max(0, Number(this.options.startDelaySeconds) || 0);
+      if (Object.prototype.hasOwnProperty.call(nextConfig, "startDelaySeconds") && !this.startedSpawning) {
+        this.delayRemaining = Math.max(0, toFiniteNumber(this.options.startDelaySeconds, 0));
       }
 
+      this.applyCanvasStyle();
+      this.resolvePageFont();
+
       if (
-        Object.prototype.hasOwnProperty.call(nextOptions, "dprMax") ||
-        Object.prototype.hasOwnProperty.call(nextOptions, "fontSize") ||
-        Object.prototype.hasOwnProperty.call(nextOptions, "fontFamily")
+        Object.prototype.hasOwnProperty.call(nextConfig, "dprMax") ||
+        Object.prototype.hasOwnProperty.call(nextConfig, "mobileDprMax") ||
+        Object.prototype.hasOwnProperty.call(nextConfig, "fontSize") ||
+        Object.prototype.hasOwnProperty.call(nextConfig, "fontFamily")
       ) {
         this.resizeNow();
       }
 
+      this.trimDrops();
       this.trimParticles();
 
       return this.getConfig();
     }
 
-    /* Returns a copy of instance config; params: none. */
     getConfig() {
       return merge({}, this.options);
     }
   }
 
-  /* Creates a new instance; params: options<object>. */
-  function createInstance(options) {
+  function destroyInstance() {
     if (instance) {
       instance.destroy();
+      instance = null;
     }
+  }
 
-    instance = new MatrixLetterRainEffect(options);
+  function createInstance(config) {
+    destroyInstance();
+    instance = new MatrixLetterRainEffect(config);
 
     return instance;
   }
 
-  /* Starts the global animation instance; params: options<object>. */
-  function start(options) {
-    activeConfig = merge(activeConfig, options || {});
+  function start(config) {
+    manuallyStopped = false;
+    clearWaitTimer();
+
+    activeConfig = merge(activeConfig, config || {});
 
     if (shouldReduceMotion(activeConfig)) {
+      destroyInstance();
       return null;
     }
 
@@ -784,24 +879,26 @@
     return instance;
   }
 
-  /* Stops the global animation instance; params: none. */
+  function pause() {
+    clearWaitTimer();
+
+    if (instance) {
+      instance.pause();
+    }
+  }
+
   function stop() {
-    if (instance) {
-      instance.stop();
-    }
+    manuallyStopped = true;
+    clearWaitTimer();
+    destroyInstance();
   }
 
-  /* Destroys the global animation instance; params: none. */
   function destroy() {
-    if (instance) {
-      instance.destroy();
-      instance = null;
-    }
+    stop();
   }
 
-  /* Updates global config and active instance; params: nextConfig<object>. */
-  function updateConfig(nextConfig) {
-    activeConfig = merge(activeConfig, nextConfig || {});
+  function updateConfig(config) {
+    activeConfig = merge(activeConfig, config || {});
 
     if (instance) {
       instance.updateConfig(activeConfig);
@@ -810,20 +907,64 @@
     return getConfig();
   }
 
-  /* Returns a copy of the active global config; params: none. */
   function getConfig() {
     return merge({}, activeConfig);
   }
 
-  /* Runs plug-and-play behavior when DOM is ready; params: none. */
+  function isSplashGone() {
+    const face = document.getElementById(activeConfig.splashFaceLayerId);
+    const flash = document.getElementById(activeConfig.splashFlashLayerId);
+
+    return !face && !flash;
+  }
+
+  function startAfterSplash(config) {
+    manuallyStopped = false;
+    clearWaitTimer();
+
+    activeConfig = merge(activeConfig, config || {});
+
+    if (shouldReduceMotion(activeConfig)) {
+      destroyInstance();
+      return null;
+    }
+
+    const startedAt = Date.now();
+    const timeout = Math.max(0, toFiniteNumber(activeConfig.splashWaitTimeoutMs, 6000));
+    const poll = Math.max(16, toFiniteNumber(activeConfig.splashPollMs, 80));
+
+    function check() {
+      if (manuallyStopped) return;
+
+      if (isSplashGone() || Date.now() - startedAt >= timeout) {
+        waitTimer = 0;
+        start();
+        return;
+      }
+
+      waitTimer = window.setTimeout(check, poll);
+    }
+
+    check();
+
+    return null;
+  }
+
   function onReady() {
     if (!activeConfig.autoStart) return;
+
+    if (activeConfig.waitForSplash) {
+      startAfterSplash();
+      return;
+    }
 
     start();
   }
 
   window.MatrixLetterRain = {
     start: start,
+    startAfterSplash: startAfterSplash,
+    pause: pause,
     stop: stop,
     destroy: destroy,
     updateConfig: updateConfig,

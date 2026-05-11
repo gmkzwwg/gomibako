@@ -133,6 +133,7 @@ Valid modes: list | chart | compact | false | nil
 <html>
 
 <head>
+
   {% include head.html %}
 
   <!-- [[APPEARANCE]] -->
@@ -202,24 +203,22 @@ Valid modes: list | chart | compact | false | nil
     #hacked-face-layer {
       position: fixed;
       inset: 0;
-      z-index: 999998;
+      z-index: 99999;
+      display: block;
       overflow: hidden;
       pointer-events: none;
       background: #000;
       opacity: 1;
       visibility: visible;
-
-      display: grid;
-      place-items: center;
-      font: 700 16px/2 monospace;
     }
   </style>
 
-  <div id="hacked-face-layer" aria-hidden="true">
+  <div id="hacked-face-layer" aria-hidden="true"></div>
+  <!-- <div id="hacked-face-layer" aria-hidden="true">
     [EXEC] INJECTING PAYLOAD...<br>
     [AUTH] PERMISSION ACQUIRED...<br>
     [ROOT] SYSTEM TAKEN.
-  </div>
+  </div> -->
   <!-- CONTEXT MENU -->
   {% if context_menu_enabled %}
   {% include context_menu.html %}

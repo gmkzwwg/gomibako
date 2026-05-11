@@ -217,8 +217,8 @@
       canvasId: "hacked-splash-canvas",
 
       zIndex: 999998,
-      duration: 900,
-      fadeDuration: 420,
+      duration: 1000,
+      fadeDuration: 500,
       fadeSteps: 18,
 
       dissolveStartRatio: 0.42,
