@@ -1486,7 +1486,7 @@
 
     return getConfig();
   }
-  发
+  
   function getConfig() {
     return normalizeConfig(deepMerge({}, config));
   }
