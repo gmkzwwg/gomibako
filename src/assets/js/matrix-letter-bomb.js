@@ -22,7 +22,7 @@
  * Notes:
  *   - Multi-burst explosions are preserved.
  *   - Random burst count, random burst pattern, random color sequence are preserved.
- *   - Pac-Man chomper effect is rendered inside the same canvas; no extra DOM layer is created.
+ *   - Pac-Man chomper effect is rendered from embedded SVG data inside the same canvas; no extra DOM layer is created.
  *   - stop() removes the canvas.
  *   - pause() only pauses the animation loop.
  *   - The canvas is created only when start() actually runs.
@@ -99,7 +99,7 @@
 
     chomper: {
       enabled: true,
-      chance: 0.3,
+      chance: 0.4,
 
       debrisSymbols: ";·,.",
       debrisMin: 1,
@@ -119,16 +119,18 @@
 
       pacmanColor: "#23ef23",
       debrisColor: "#23ef23",
-      chomperFontFamily: "Arial, Helvetica, 'Noto Sans Symbols 2', 'Segoe UI Symbol', sans-serif",
       debrisFontFamily: null,
-      closedScaleRatio: 1.7,
 
-      glyphs: {
-        right: "ᗧ",
-        left: "ᗤ",
-        up: "ᗢ",
-        down: "ᗣ",
-        closed: "●"
+      pacmanVariants: ["crown", "santaHat", "tuftHair"],
+      pacmanSvg: {
+        eyeColor: "#111111",
+        mouthColor: "#000000",
+        crownColor: "#f8ca00",
+        crownStrokeColor: "#111111",
+        santaRedColor: "#e81d1d",
+        santaWhiteColor: "#f0e8e8",
+        santaStrokeColor: "#111111",
+        hairColor: "#111111"
       }
     },
 
@@ -258,6 +260,7 @@
       this.particles = [];
       this.pendingBursts = [];
       this.chompers = [];
+      this.pacmanSprites = {};
 
       this.running = false;
       this.disposed = false;
@@ -280,6 +283,7 @@
 
       this.createCanvas();
       this.resolvePageFont();
+      this.preparePacmanSprites();
       this.resizeNow();
 
       window.addEventListener("resize", this.handleResize, { passive: true });
@@ -772,6 +776,7 @@
       }
 
       this.chompers.push({
+        variant: this.pickChomperVariant(),
         x: segments[0].fromX,
         y: segments[0].fromY,
         direction: segments[0].direction,
@@ -966,6 +971,134 @@
       ctx.restore();
     }
 
+    getSvgConfig() {
+      const chomper = this.options.chomper || {};
+      return chomper.pacmanSvg || {};
+    }
+
+    pickChomperVariant() {
+      const chomper = this.options.chomper || {};
+      const variants = Array.isArray(chomper.pacmanVariants) && chomper.pacmanVariants.length
+        ? chomper.pacmanVariants
+        : ["crown", "santaHat", "tuftHair"];
+
+      return variants[this.randInt(0, variants.length - 1)] || "crown";
+    }
+
+    preparePacmanSprites() {
+      const variants = ["crown", "santaHat", "tuftHair"];
+      const states = ["open", "closed"];
+      const sprites = {};
+
+      for (let variantIndex = 0; variantIndex < variants.length; variantIndex += 1) {
+        const variant = variants[variantIndex];
+        sprites[variant] = {};
+
+        for (let stateIndex = 0; stateIndex < states.length; stateIndex += 1) {
+          const state = states[stateIndex];
+          const image = new Image();
+          const svg = this.buildPacmanSvg(variant, state);
+
+          image.decoding = "async";
+          image.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+          sprites[variant][state] = image;
+        }
+      }
+
+      this.pacmanSprites = sprites;
+    }
+
+    getPacmanSprite(variant, state) {
+      const safeVariant = this.pacmanSprites[variant] ? variant : "crown";
+      const safeState = state === "closed" ? "closed" : "open";
+
+      return this.pacmanSprites[safeVariant] && this.pacmanSprites[safeVariant][safeState];
+    }
+
+    buildPacmanSvg(variant, state) {
+      const chomper = this.options.chomper || {};
+      const svgConfig = this.getSvgConfig();
+      const bodyColor = this.escapeSvg(chomper.pacmanColor || "#23ef23");
+      const eyeColor = this.escapeSvg(svgConfig.eyeColor || "#111111");
+      const mouthPath = state === "closed"
+        ? "M58 70 L124 60 L108 66 L124 70 L108 74 L124 80 Z"
+        : "M58 70 L126 26 L107 47 L123 58 L105 70 L123 82 L107 93 L126 114 Z";
+      const accessory = this.buildPacmanAccessorySvg(variant);
+
+      return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <mask id="mouthMask">
+      <rect x="0" y="0" width="128" height="128" fill="white"/>
+      <path d="${mouthPath}" fill="black"/>
+    </mask>
+  </defs>
+  <circle cx="58" cy="70" r="42" fill="${bodyColor}" mask="url(#mouthMask)"/>
+  <circle cx="52" cy="49" r="5.5" fill="${eyeColor}"/>
+  ${accessory}
+</svg>`;
+    }
+
+    buildPacmanAccessorySvg(variant) {
+      const svgConfig = this.getSvgConfig();
+
+      if (variant === "santaHat") {
+        const red = this.escapeSvg(svgConfig.santaRedColor || "#e81d1d");
+        const white = this.escapeSvg(svgConfig.santaWhiteColor || "#f0e8e8");
+        const stroke = this.escapeSvg(svgConfig.santaStrokeColor || "#111111");
+
+        return `<path d="M29 39 C42 17 66 8 96 24 C78 27 61 35 43 47 Z" fill="${red}" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M32 40 C49 31 70 25 91 25" fill="none" stroke="${white}" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="98" cy="24" r="8" fill="${white}" stroke="${stroke}" stroke-width="1.5"/>`;
+      }
+
+      if (variant === "tuftHair") {
+        const hair = this.escapeSvg(svgConfig.hairColor || "#111111");
+
+        return `<path d="M43 33 C36 19 45 13 47 5" fill="none" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>
+  <path d="M56 30 C52 15 61 10 61 2" fill="none" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>
+  <path d="M69 32 C72 17 82 14 85 6" fill="none" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>`;
+      }
+
+      const crown = this.escapeSvg(svgConfig.crownColor || "#f8ca00");
+      const stroke = this.escapeSvg(svgConfig.crownStrokeColor || "#111111");
+
+      return `<path d="M27 34 L38 14 L49 34 L60 14 L71 34 L82 14 L93 34 L90 41 L30 41 Z" fill="${crown}" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="38" cy="31" r="2.5" fill="${stroke}"/>
+  <circle cx="60" cy="29" r="2.5" fill="${stroke}"/>
+  <circle cx="82" cy="31" r="2.5" fill="${stroke}"/>`;
+    }
+
+    escapeSvg(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    getDirectionAngle(direction) {
+      if (direction === "left") return Math.PI;
+      if (direction === "up") return -Math.PI / 2;
+      if (direction === "down") return Math.PI / 2;
+
+      return 0;
+    }
+
+    drawFallbackPacman(ctx, size, color, mouthOpen) {
+      const radius = size * 0.42;
+      const mouth = mouthOpen ? Math.PI * 0.28 : Math.PI * 0.04;
+
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, radius, mouth, Math.PI * 2 - mouth, false);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
     drawChomperDebris(chomper) {
       const ctx = this.ctx;
       const chomperConfig = this.options.chomper || {};
@@ -994,29 +1127,27 @@
     drawChomper(chomper) {
       const ctx = this.ctx;
       const chomperConfig = this.options.chomper || {};
-      const glyphs = chomperConfig.glyphs || {};
-      const color = chomperConfig.pacmanColor || "#f8ca00";
-      const direction = chomper.direction || "right";
-      const isClosed = !chomper.mouthOpen;
-      const glyph = chomper.mouthOpen
-        ? glyphs[direction] || glyphs.right || "ᗧ"
-        : glyphs.closed || "●";
-      const glyphSize = isClosed
-        ? chomper.size * toFiniteNumber(chomperConfig.closedScaleRatio, 1.18)
-        : chomper.size;
+      const color = chomperConfig.pacmanColor || "#23ef23";
+      const state = chomper.mouthOpen ? "open" : "closed";
+      const sprite = this.getPacmanSprite(chomper.variant, state);
+      const size = chomper.size;
+      const angle = this.getDirectionAngle(chomper.direction || "right");
 
       ctx.save();
-      ctx.font = "700 " + glyphSize + "px " + (chomperConfig.chomperFontFamily || this.fontFamilyCache);
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = color;
+      ctx.translate(chomper.x, chomper.y);
+      ctx.rotate(angle);
 
       if (this.options.glow) {
         ctx.shadowColor = color;
         ctx.shadowBlur = this.options.dropShadowBlur;
       }
 
-      ctx.fillText(glyph, chomper.x, chomper.y);
+      if (sprite && sprite.complete && sprite.naturalWidth > 0) {
+        ctx.drawImage(sprite, -size / 2, -size / 2, size, size);
+      } else {
+        this.drawFallbackPacman(ctx, size, color, chomper.mouthOpen);
+      }
+
       ctx.restore();
     }
 
@@ -1147,6 +1278,10 @@
 
       nextConfig = nextConfig || {};
       this.options = getRuntimeConfig(mergeNested(this.options, nextConfig));
+
+      if (Object.prototype.hasOwnProperty.call(nextConfig, "chomper")) {
+        this.preparePacmanSprites();
+      }
 
       if (Object.prototype.hasOwnProperty.call(nextConfig, "candidates")) {
         this.candidates = this.normalizeCandidates(this.options.candidates);
