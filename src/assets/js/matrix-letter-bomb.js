@@ -3,6 +3,8 @@
  *
  * Introduction:
  *   Creates a full-screen matrix-style letter rain with randomized multi-burst explosions.
+ *   A small optional Pac-Man-style chomper effect may appear after the first burst:
+ *   debris symbols are spawned on one row and eaten by a chomper entering from a screen edge.
  *
  * Usage:
  *   Include this file on the page. It starts automatically when autoStart is true.
@@ -20,6 +22,7 @@
  * Notes:
  *   - Multi-burst explosions are preserved.
  *   - Random burst count, random burst pattern, random color sequence are preserved.
+ *   - Pac-Man chomper effect is rendered inside the same canvas; no extra DOM layer is created.
  *   - stop() removes the canvas.
  *   - pause() only pauses the animation loop.
  *   - The canvas is created only when start() actually runs.
@@ -94,6 +97,41 @@
     dropShadowBlur: 10,
     particleShadowBlur: 8,
 
+    chomper: {
+      enabled: true,
+      chance: 0.3,
+
+      debrisSymbols: ";·,.",
+      debrisMin: 1,
+      debrisMax: 4,
+      debrisGapRatio: 1.05,
+      debrisSpaceMin: 1,
+      debrisSpaceMax: 2,
+      debrisSpaceWidthRatio: 0.55,
+      debrisSizeRatio: 1,
+
+      maxChompers: 3,
+      speed: 300,
+      padding: 36,
+      sizeRatio: 1.45,
+      eatRadiusRatio: 0.8,
+      biteInterval: 0.12,
+
+      pacmanColor: "#23ef23",
+      debrisColor: "#23ef23",
+      chomperFontFamily: "Arial, Helvetica, 'Noto Sans Symbols 2', 'Segoe UI Symbol', sans-serif",
+      debrisFontFamily: null,
+      closedScaleRatio: 1.7,
+
+      glyphs: {
+        right: "ᗧ",
+        left: "ᗤ",
+        up: "ᗢ",
+        down: "ᗣ",
+        closed: "●"
+      }
+    },
+
     maxFrameDelta: 0.033,
     clearAlpha: 1,
     pauseWhenHidden: true,
@@ -117,6 +155,30 @@
     return output;
   }
 
+  function mergeNested(base, override) {
+    const output = merge({}, base || {});
+
+    Object.keys(override || {}).forEach(function (key) {
+      const value = override[key];
+      const current = output[key];
+
+      if (
+        value &&
+        typeof value === "object" &&
+        !Array.isArray(value) &&
+        current &&
+        typeof current === "object" &&
+        !Array.isArray(current)
+      ) {
+        output[key] = mergeNested(current, value);
+      } else {
+        output[key] = value;
+      }
+    });
+
+    return output;
+  }
+
   function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
@@ -135,7 +197,7 @@
   }
 
   function getRuntimeConfig(config) {
-    const next = merge({}, DEFAULT_CONFIG, config || {});
+    const next = mergeNested(DEFAULT_CONFIG, config || {});
 
     if (next.mobilePerformanceMode && isMobileViewport(next)) {
       next.dprMax = Math.min(
@@ -195,6 +257,7 @@
       this.drops = [];
       this.particles = [];
       this.pendingBursts = [];
+      this.chompers = [];
 
       this.running = false;
       this.disposed = false;
@@ -350,6 +413,12 @@
       return Math.max(1, toFiniteNumber(this.options.maxParticles, DEFAULT_CONFIG.maxParticles));
     }
 
+    getMaxChompers() {
+      const chomper = this.options.chomper || {};
+
+      return Math.max(0, toFiniteNumber(chomper.maxChompers, 3));
+    }
+
     getBurstColors(burstCount) {
       const accentColors = this.shuffled([
         this.options.errorColor || "#e81d1d",
@@ -397,6 +466,7 @@
       this.resolvePageFont();
       this.trimDrops();
       this.trimParticles();
+      this.trimChompers();
     }
 
     handleResize() {
@@ -466,6 +536,14 @@
       }
     }
 
+    trimChompers() {
+      const overflow = this.chompers.length - this.getMaxChompers();
+
+      if (overflow > 0) {
+        this.chompers.splice(0, overflow);
+      }
+    }
+
     spawnDrop() {
       this.drops.push(this.createDrop());
       this.trimDrops();
@@ -518,6 +596,10 @@
       const pattern = this.pickExplosionPattern();
       const baseAngle = this.rand(0, Math.PI * 2);
       const speedMultiplier = this.getSpeedMultiplier();
+
+      if (burstIndex === 0) {
+        this.maybeSpawnChomper(x, y, baseSize);
+      }
 
       for (let index = 0; index < count; index += 1) {
         const motion = this.getParticleMotion(pattern, index, count, baseAngle);
@@ -582,6 +664,187 @@
         angle: this.rand(0, Math.PI * 2),
         speed: this.rand(this.options.minParticleSpeed, this.options.maxParticleSpeed)
       };
+    }
+
+    randomDebrisSymbol() {
+      const chomper = this.options.chomper || {};
+      const symbols = typeof chomper.debrisSymbols === "string" && chomper.debrisSymbols
+        ? Array.from(chomper.debrisSymbols)
+        : [";", "·", ",", "."];
+
+      return symbols[this.randInt(0, symbols.length - 1)] || ".";
+    }
+
+    pickChomperEntrySide() {
+      const sides = ["left", "right", "top", "bottom"];
+
+      return sides[this.randInt(0, sides.length - 1)];
+    }
+
+    createSegment(fromX, fromY, toX, toY, direction) {
+      const dx = toX - fromX;
+      const dy = toY - fromY;
+      const length = Math.sqrt(dx * dx + dy * dy) || 1;
+
+      return {
+        fromX: fromX,
+        fromY: fromY,
+        toX: toX,
+        toY: toY,
+        direction: direction,
+        length: length
+      };
+    }
+
+    maybeSpawnChomper(x, y, baseSize) {
+      const chomperConfig = this.options.chomper || {};
+
+      if (!chomperConfig.enabled) return;
+      if (Math.random() >= toFiniteNumber(chomperConfig.chance, 0.2)) return;
+
+      const maxChompers = this.getMaxChompers();
+
+      if (maxChompers <= 0) return;
+
+      if (this.chompers.length >= maxChompers) {
+        this.chompers.shift();
+      }
+
+      const debrisMin = Math.max(1, Math.floor(toFiniteNumber(chomperConfig.debrisMin, 1)));
+      const debrisMax = Math.max(debrisMin, Math.floor(toFiniteNumber(chomperConfig.debrisMax, 4)));
+      const debrisCount = this.randInt(debrisMin, debrisMax);
+
+      const padding = Math.max(12, toFiniteNumber(chomperConfig.padding, 36));
+      const base = Math.max(8, baseSize || this.getFontSize());
+      const gap = base * toFiniteNumber(chomperConfig.debrisGapRatio, 1.05);
+      const spaceMin = Math.max(0, Math.floor(toFiniteNumber(chomperConfig.debrisSpaceMin, 1)));
+      const spaceMax = Math.max(spaceMin, Math.floor(toFiniteNumber(chomperConfig.debrisSpaceMax, 2)));
+      const spaceWidth = base * toFiniteNumber(chomperConfig.debrisSpaceWidthRatio, 0.55);
+      const rowY = clamp(y, padding, this.height - padding);
+      const centerX = clamp(x, padding + gap, this.width - padding - gap);
+      const debrisOffsets = [0];
+      const debris = [];
+      let totalWidth = 0;
+
+      for (let index = 1; index < debrisCount; index += 1) {
+        const randomSpaces = this.randInt(spaceMin, spaceMax);
+        const step = gap + randomSpaces * spaceWidth;
+
+        totalWidth += step;
+        debrisOffsets.push(totalWidth);
+      }
+
+      const firstX = centerX - totalWidth / 2;
+
+      for (let index = 0; index < debrisCount; index += 1) {
+        debris.push({
+          x: clamp(firstX + debrisOffsets[index], padding, this.width - padding),
+          y: rowY,
+          char: this.randomDebrisSymbol(),
+          alive: true
+        });
+      }
+
+      const leftX = Math.min.apply(null, debris.map(function (item) {
+        return item.x;
+      }));
+      const rightX = Math.max.apply(null, debris.map(function (item) {
+        return item.x;
+      }));
+
+      const side = this.pickChomperEntrySide();
+      const sweepFromLeft = side === "left" || (side !== "right" && Math.random() < 0.5);
+      const sweepStartX = sweepFromLeft ? leftX - padding : rightX + padding;
+      const offscreenEndX = sweepFromLeft ? this.width + padding : -padding;
+      const horizontalDirection = sweepFromLeft ? "right" : "left";
+      const segments = [];
+
+      if (side === "left") {
+        segments.push(this.createSegment(-padding, rowY, this.width + padding, rowY, "right"));
+      } else if (side === "right") {
+        segments.push(this.createSegment(this.width + padding, rowY, -padding, rowY, "left"));
+      } else if (side === "top") {
+        segments.push(this.createSegment(sweepStartX, -padding, sweepStartX, rowY, "down"));
+        segments.push(this.createSegment(sweepStartX, rowY, offscreenEndX, rowY, horizontalDirection));
+      } else {
+        segments.push(this.createSegment(sweepStartX, this.height + padding, sweepStartX, rowY, "up"));
+        segments.push(this.createSegment(sweepStartX, rowY, offscreenEndX, rowY, horizontalDirection));
+      }
+
+      this.chompers.push({
+        x: segments[0].fromX,
+        y: segments[0].fromY,
+        direction: segments[0].direction,
+        size: base * toFiniteNumber(chomperConfig.sizeRatio, 1.45),
+        debrisSize: base * toFiniteNumber(chomperConfig.debrisSizeRatio, 1),
+        debris: debris,
+        segments: segments,
+        segmentIndex: 0,
+        segmentDistance: 0,
+        biteElapsed: 0,
+        mouthOpen: true
+      });
+
+      this.trimChompers();
+    }
+
+    updateChomper(chomper, deltaTime) {
+      const chomperConfig = this.options.chomper || {};
+      const speed = Math.max(20, toFiniteNumber(chomperConfig.speed, 520));
+      const biteInterval = Math.max(0.04, toFiniteNumber(chomperConfig.biteInterval, 0.12));
+      const eatRadius = chomper.size * toFiniteNumber(chomperConfig.eatRadiusRatio, 0.8);
+      const segment = chomper.segments[chomper.segmentIndex];
+
+      if (!segment) return false;
+
+      chomper.biteElapsed += deltaTime;
+
+      if (chomper.biteElapsed >= biteInterval) {
+        chomper.biteElapsed = 0;
+        chomper.mouthOpen = !chomper.mouthOpen;
+      }
+
+      chomper.segmentDistance += speed * deltaTime;
+
+      const progress = clamp(chomper.segmentDistance / segment.length, 0, 1);
+
+      chomper.x = segment.fromX + (segment.toX - segment.fromX) * progress;
+      chomper.y = segment.fromY + (segment.toY - segment.fromY) * progress;
+      chomper.direction = segment.direction;
+
+      chomper.debris.forEach(function (debris) {
+        if (!debris.alive) return;
+
+        const dx = chomper.x - debris.x;
+        const dy = chomper.y - debris.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance <= eatRadius) {
+          debris.alive = false;
+        }
+      });
+
+      if (progress >= 1) {
+        chomper.segmentIndex += 1;
+        chomper.segmentDistance = 0;
+      }
+
+      return chomper.segmentIndex < chomper.segments.length;
+    }
+
+    updateChompers(deltaTime) {
+      let write = 0;
+
+      for (let index = 0; index < this.chompers.length; index += 1) {
+        const chomper = this.chompers[index];
+
+        if (this.updateChomper(chomper, deltaTime)) {
+          this.chompers[write] = chomper;
+          write += 1;
+        }
+      }
+
+      this.chompers.length = write;
     }
 
     updateDrop(drop, deltaTime) {
@@ -703,6 +966,70 @@
       ctx.restore();
     }
 
+    drawChomperDebris(chomper) {
+      const ctx = this.ctx;
+      const chomperConfig = this.options.chomper || {};
+      const color = chomperConfig.debrisColor || "#f0e8e8";
+
+      ctx.save();
+      ctx.font = "700 " + chomper.debrisSize + "px " + (chomperConfig.debrisFontFamily || this.fontFamilyCache);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = color;
+
+      if (this.options.glow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = this.options.particleShadowBlur;
+      }
+
+      chomper.debris.forEach(function (debris) {
+        if (!debris.alive) return;
+
+        ctx.fillText(debris.char, debris.x, debris.y);
+      });
+
+      ctx.restore();
+    }
+
+    drawChomper(chomper) {
+      const ctx = this.ctx;
+      const chomperConfig = this.options.chomper || {};
+      const glyphs = chomperConfig.glyphs || {};
+      const color = chomperConfig.pacmanColor || "#f8ca00";
+      const direction = chomper.direction || "right";
+      const isClosed = !chomper.mouthOpen;
+      const glyph = chomper.mouthOpen
+        ? glyphs[direction] || glyphs.right || "ᗧ"
+        : glyphs.closed || "●";
+      const glyphSize = isClosed
+        ? chomper.size * toFiniteNumber(chomperConfig.closedScaleRatio, 1.18)
+        : chomper.size;
+
+      ctx.save();
+      ctx.font = "700 " + glyphSize + "px " + (chomperConfig.chomperFontFamily || this.fontFamilyCache);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = color;
+
+      if (this.options.glow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = this.options.dropShadowBlur;
+      }
+
+      ctx.fillText(glyph, chomper.x, chomper.y);
+      ctx.restore();
+    }
+
+    drawChompers() {
+      for (let index = 0; index < this.chompers.length; index += 1) {
+        this.drawChomperDebris(this.chompers[index]);
+      }
+
+      for (let index = 0; index < this.chompers.length; index += 1) {
+        this.drawChomper(this.chompers[index]);
+      }
+    }
+
     updateSpawning(deltaTime) {
       if (!this.startedSpawning) {
         this.delayRemaining -= deltaTime;
@@ -754,6 +1081,7 @@
       this.updatePendingBursts(deltaTime);
       this.compactUpdate(this.drops, this.updateDrop, deltaTime);
       this.compactUpdate(this.particles, this.updateParticle, deltaTime);
+      this.updateChompers(deltaTime);
 
       for (let index = 0; index < this.drops.length; index += 1) {
         this.drawDrop(this.drops[index]);
@@ -762,6 +1090,8 @@
       for (let index = 0; index < this.particles.length; index += 1) {
         this.drawParticle(this.particles[index]);
       }
+
+      this.drawChompers();
 
       this.rafId = window.requestAnimationFrame(this.loop);
     }
@@ -809,13 +1139,14 @@
       this.drops = [];
       this.particles = [];
       this.pendingBursts = [];
+      this.chompers = [];
     }
 
     updateConfig(nextConfig) {
       if (this.disposed) return this.getConfig();
 
       nextConfig = nextConfig || {};
-      this.options = getRuntimeConfig(merge(this.options, nextConfig));
+      this.options = getRuntimeConfig(mergeNested(this.options, nextConfig));
 
       if (Object.prototype.hasOwnProperty.call(nextConfig, "candidates")) {
         this.candidates = this.normalizeCandidates(this.options.candidates);
@@ -839,12 +1170,13 @@
 
       this.trimDrops();
       this.trimParticles();
+      this.trimChompers();
 
       return this.getConfig();
     }
 
     getConfig() {
-      return merge({}, this.options);
+      return mergeNested({}, this.options);
     }
   }
 
@@ -866,7 +1198,7 @@
     manuallyStopped = false;
     clearWaitTimer();
 
-    activeConfig = merge(activeConfig, config || {});
+    activeConfig = mergeNested(activeConfig, config || {});
 
     if (shouldReduceMotion(activeConfig)) {
       destroyInstance();
@@ -898,7 +1230,7 @@
   }
 
   function updateConfig(config) {
-    activeConfig = merge(activeConfig, config || {});
+    activeConfig = mergeNested(activeConfig, config || {});
 
     if (instance) {
       instance.updateConfig(activeConfig);
@@ -908,7 +1240,7 @@
   }
 
   function getConfig() {
-    return merge({}, activeConfig);
+    return mergeNested({}, activeConfig);
   }
 
   function isSplashGone() {
@@ -922,7 +1254,7 @@
     manuallyStopped = false;
     clearWaitTimer();
 
-    activeConfig = merge(activeConfig, config || {});
+    activeConfig = mergeNested(activeConfig, config || {});
 
     if (shouldReduceMotion(activeConfig)) {
       destroyInstance();

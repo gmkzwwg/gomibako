@@ -1,7 +1,7 @@
 ---
 title: Essentials of Programming Languages 
 categories: Notes
-subclass:Programming Languages
+subclass: Languages
 ---
 
 ## Chapter 1 Inductive Sets of Data
