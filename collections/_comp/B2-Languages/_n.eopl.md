@@ -244,7 +244,7 @@ list-sum : Listof(Int) → Int
 **Appendix 1**: eq?, eqv?, equal? and = in scheme
 - = : numerical equal
 - eq? : whether two parameters represent the SAME OBJECT. The result for two primitive values like 2 and "a" depends on the implementation.
-- eqv? : whether same object. #t if two paramters are identical primitive values.
+- eqv? : whether same object. #t if two parameters are identical primitive values.
 - equal? : can be used to data structures (lists, vectors) whether they have same elements.
 - **Conclusion**:
   - = for numbers;

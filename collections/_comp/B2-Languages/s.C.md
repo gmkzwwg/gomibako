@@ -4186,7 +4186,7 @@ C’s behavior model is deliberately small. The main tools are statements, funct
 The central design tradeoff is:
 
 | Feature | Capability gained | Cost introduced |
-|---|---|
+|---|---|---|
 | Small behavior model | Code generation is simple, control flow is explicit, runtime overhead is low | C does not protect against poor abstraction, forgotten errors, resource leaks, or invalid callback contracts |
 | Functions as primary abstraction | Interfaces are cheap and portable | No overloading, methods, closures, default arguments, exceptions, or native interface system |
 | Function pointers | Runtime behavior parameterization | Indirect calls, weak lifecycle/type contracts around `void *` context |
