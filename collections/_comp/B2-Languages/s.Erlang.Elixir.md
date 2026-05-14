@@ -24184,7 +24184,7 @@ init([]) ->
           type => worker,
           modules => [cache]}
     ],
-    {ok, {{one_for_one, 5, 10}, Children}}.
+    {ok, \{\{one_for_one, 5, 10}, Children\}\}.
 ```
 
 **Design meaning:** Supervision is not only “restart on crash.” It is runtime topology.
@@ -24464,7 +24464,7 @@ Worker name:
 
 ```elixir
 def via_tuple(id) do
-  {:via, Registry, {MyApp.WorkerRegistry, id}}
+  {:via, Registry, {MyApp.WorkerRegistry, id\}\}
 end
 ```
 
@@ -24566,7 +24566,7 @@ end)
 
 case Task.yield(task, 5_000) || Task.shutdown(task) do
   {:ok, result} -> {:ok, result}
-  {:exit, reason} -> {:error, {:task_failed, reason}}
+  {:exit, reason} -> {:error, {:task_failed, reason\}\}
   nil -> {:error, :timeout}
 end
 ```
@@ -24622,7 +24622,7 @@ defmodule MyApp.Cache do
   @impl true
   def init(_opts) do
     :ets.new(@table, [:named_table, :protected, read_concurrency: true])
-    {:ok, %{}}
+    {:ok, %{\}\}
   end
 end
 ```
@@ -24666,7 +24666,7 @@ defmodule MyApp.TableOwner do
   @impl true
   def init(_opts) do
     :ets.new(@table, [:named_table, :protected])
-    {:ok, %{}}
+    {:ok, %{\}\}
   end
 end
 ```
@@ -24720,7 +24720,7 @@ Connection owns socket:
 ```elixir
 def init(opts) do
   socket = Keyword.fetch!(opts, :socket)
-  {:ok, %{socket: socket, buffer: <<>>}}
+  {:ok, %{socket: socket, buffer: <<>>\}\}
 end
 ```
 
@@ -24794,18 +24794,18 @@ def init(opts) do
       packet: 4
     ])
 
-  {:ok, %{port: port}}
+  {:ok, %{port: port\}\}
 end
 ```
 
 Handle port messages:
 
 ```elixir
-def handle_info({port, {:data, data}}, %{port: port} = state) do
+def handle_info({port, {:data, data\}\}, %{port: port} = state) do
   handle_data(data, state)
 end
 
-def handle_info({port, {:exit_status, status}}, %{port: port} = state) do
+def handle_info({port, {:exit_status, status\}\}, %{port: port} = state) do
   {:stop, {:port_exit, status}, state}
 end
 ```
@@ -24963,7 +24963,7 @@ defmodule MyApp.Cleaner do
   @impl true
   def init(_opts) do
     schedule()
-    {:ok, %{}}
+    {:ok, %{\}\}
   end
 
   @impl true
@@ -25163,7 +25163,7 @@ Supervisor.start_link(children,
 Erlang:
 
 ```erlang
-{ok, {{one_for_one, 5, 10}, Children}}.
+{ok, \{\{one_for_one, 5, 10}, Children\}\}.
 ```
 
 | Restart symptom            | Interpretation        |
@@ -26917,7 +26917,7 @@ case Task.yield(task, 5_000) || Task.shutdown(task) do
     {:ok, result}
 
   {:exit, reason} ->
-    {:error, {:task_failed, reason}}
+    {:error, {:task_failed, reason\}\}
 
   nil ->
     {:error, :timeout}
@@ -27117,7 +27117,7 @@ Erlang equivalent:
 
 init([]) ->
     Children = [...],
-    {ok, {{one_for_one, 5, 10}, Children}}.
+    {ok, \{\{one_for_one, 5, 10}, Children\}\}.
 ```
 
 | Elixir          | Erlang         |
@@ -27157,7 +27157,7 @@ Common return:
 
 ```elixir
 {:ok, pid}
-{:error, {:already_started, pid}}
+{:error, {:already_started, pid\}\}
 {:error, reason}
 :ignore
 ```
@@ -27190,7 +27190,7 @@ Use `:via` tuple:
 
 ```elixir
 def via_tuple(id) do
-  {:via, Registry, {MyApp.Registry, id}}
+  {:via, Registry, {MyApp.Registry, id\}\}
 end
 
 GenServer.start_link(__MODULE__, arg, name: via_tuple(id))
