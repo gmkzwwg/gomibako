@@ -11,9 +11,9 @@ subclass: Languages
 
 This guide treats **Erlang / Elixir** as one combined learning target: a **BEAM / OTP language family**, not two separate tutorials. Erlang supplies the historical, semantic, and OTP-native foundation; Elixir supplies the modern syntax, tooling, macro system, and major contemporary ecosystem layer. This follows the supplied coverage contract for a unified Erlang / Elixir guide. 
 
-**Version and runtime assumptions:** This guide targets **Erlang/OTP 28.x** and **Elixir 1.19.x** as the current mainstream professional baseline. Erlang’s official site lists **Erlang/OTP 28.5** as a release from April 23, 2026, and Elixir’s official documentation lists **Elixir v1.19** as stable, with supported Erlang/OTP versions **26, 27, and 28**. ([Erlang.org][1])
+**Version and runtime assumptions:** This guide targets **Erlang/OTP 28.x** and **Elixir 1.19.x** as the current mainstream professional baseline. Erlang’s official site lists **Erlang/OTP 28.5** as a release from April 23, 2026, and Elixir’s official documentation lists **Elixir v1.19** as stable, with supported Erlang/OTP versions **26, 27, and 28**. 
 
-**Runtime assumption:** Both languages run on the **BEAM**, the Erlang virtual machine. Elixir’s official site describes Elixir as a dynamic, functional language that runs on the Erlang VM, which is known for low-latency, distributed, and fault-tolerant systems. ([The Elixir programming language][2])
+**Runtime assumption:** Both languages run on the **BEAM**, the Erlang virtual machine. Elixir’s official site describes Elixir as a dynamic, functional language that runs on the Erlang VM, which is known for low-latency, distributed, and fault-tolerant systems. 
 
 **Implementation assumption:** Unless stated otherwise, “Erlang” means the standard Erlang/OTP implementation, and “Elixir” means the standard Elixir compiler and toolchain targeting BEAM bytecode.
 
@@ -348,7 +348,7 @@ However, the system is not “anything goes.” Runtime values have clear types,
 | Dialyzer-style analysis      | Finds discrepancies but is not a conventional sound type checker | Useful for large systems, but not a substitute for full static typing                      |
 | Elixir type-system evolution | Recent Elixir releases continue improving type checking          | The ecosystem is moving toward more compile-time feedback, while remaining BEAM-compatible |
 
-Elixir’s recent releases have emphasized type-checking improvements; the official Elixir v1.19 release announcement describes enhanced type checking and faster compilation for large projects. ([The Elixir programming language][3])
+Elixir’s recent releases have emphasized type-checking improvements; the official Elixir v1.19 release announcement describes enhanced type checking and faster compilation for large projects. 
 
 The important professional judgment is to avoid two extremes.
 
@@ -447,7 +447,7 @@ Erlang / Elixir is mature, but not static. Some trends are stable and central; o
 | Overhyped if misunderstood | “Elixir replaces Erlang”                      | Incorrect                      | Modern syntax preference                          | Erlang/OTP remains foundational                             |
 | Overhyped if misunderstood | “Distributed Erlang solves distribution”      | Incorrect                      | Built-in clustering appeal                        | Consensus, partitions, deployment, and security remain hard |
 
-Elixir’s official development page states that Elixir 1.0 was released in September 2014 and that minor versions are released roughly every six months. That cadence helps explain why Elixir feels more rapidly evolving at the tooling and language-feature level than the deeper BEAM/OTP foundation. ([The Elixir programming language][4])
+Elixir’s official development page states that Elixir 1.0 was released in September 2014 and that minor versions are released roughly every six months. That cadence helps explain why Elixir feels more rapidly evolving at the tooling and language-feature level than the deeper BEAM/OTP foundation. 
 
 ### Strengths and Costs — the central tradeoff table
 
@@ -675,7 +675,7 @@ In Elixir, it is also part of function identity:
 ```elixir
 def find(id), do: find(id, [])
 
-def find(id, opts), do: {:ok, {id, opts}}
+def find(id, opts), do: {:ok, {id, opts\}\}
 ```
 
 The two functions are `find/1` and `find/2`.
@@ -907,7 +907,7 @@ case File.read("config.json") do
     {:ok, binary}
 
   {:error, reason} ->
-    {:error, {:config_read_failed, reason}}
+    {:error, {:config_read_failed, reason\}\}
 end
 ```
 
@@ -1405,7 +1405,7 @@ Elixir:
 
 ```elixir
 def parse_packet(<<version, type, payload::binary>>) do
-  {:ok, %{version: version, type: type, payload: payload}}
+  {:ok, %{version: version, type: type, payload: payload\}\}
 end
 
 def parse_packet(_) do
@@ -1417,7 +1417,7 @@ Erlang:
 
 ```erlang
 parse_packet(<<Version, Type, Payload/binary>>) ->
-    {ok, #{version => Version, type => Type, payload => Payload}};
+    {ok, #{version => Version, type => Type, payload => Payload\}\};
 parse_packet(_) ->
     {error, invalid_packet}.
 ```
@@ -1609,14 +1609,14 @@ find(Id) ->
     find(Id, []).
 
 find(Id, Options) ->
-    {ok, {Id, Options}}.
+    {ok, {Id, Options\}\}.
 ```
 
 Elixir has default argument syntax:
 
 ```elixir
 def find(id, opts \\ []) do
-  {:ok, {id, opts}}
+  {:ok, {id, opts\}\}
 end
 ```
 
@@ -1635,7 +1635,7 @@ Elixir multi-clause functions with defaults usually need a function head:
 def find(id, opts \\ [])
 
 def find(id, opts) when is_integer(id) do
-  {:ok, {id, opts}}
+  {:ok, {id, opts\}\}
 end
 
 def find(_, _) do
@@ -1707,7 +1707,7 @@ case file:read_file(Path) of
     {error, enoent} ->
         {error, not_found};
     {error, Reason} ->
-        {error, {read_failed, Reason}}
+        {error, {read_failed, Reason\}\}
 end.
 ```
 
@@ -1722,7 +1722,7 @@ case File.read(path) do
     {:error, :not_found}
 
   {:error, reason} ->
-    {:error, {:read_failed, reason}}
+    {:error, {:read_failed, reason\}\}
 end
 ```
 
@@ -2518,9 +2518,9 @@ catch
     error:badarg ->
         {error, badarg};
     throw:Reason ->
-        {error, {thrown, Reason}};
+        {error, {thrown, Reason\}\};
     exit:Reason ->
-        {error, {exit, Reason}}
+        {error, {exit, Reason\}\}
 after
     cleanup()
 end.
@@ -3274,7 +3274,7 @@ expected_id = 10
 
 case {:user, 11, "Ada"} do
   {:user, expected_id, name} ->
-    {:ok, {expected_id, name}}
+    {:ok, {expected_id, name\}\}
 end
 ```
 
@@ -4013,7 +4013,7 @@ Elixir separates user-facing string conversion from inspection.
 
 ```elixir
 IO.puts("hello")
-IO.inspect({:ok, %{id: 1}})
+IO.inspect({:ok, %{id: 1\}\})
 ```
 
 | Function             | Purpose                           | Output style               |
@@ -5029,7 +5029,7 @@ case fetch_user(id) do
     {:error, :user_not_found}
 
   {:error, reason} ->
-    {:error, {:fetch_failed, reason}}
+    {:error, {:fetch_failed, reason\}\}
 end
 ```
 
@@ -5276,8 +5276,8 @@ State machine example in Elixir:
 ```elixir
 def next_state(:idle, :start), do: {:ok, :running}
 def next_state(:running, :stop), do: {:ok, :stopped}
-def next_state(:running, {:fail, reason}), do: {:ok, {:failed, reason}}
-def next_state(state, event), do: {:error, {:invalid_transition, state, event}}
+def next_state(:running, {:fail, reason}), do: {:ok, {:failed, reason\}\}
+def next_state(state, event), do: {:error, {:invalid_transition, state, event\}\}
 ```
 
 Erlang equivalent:
@@ -5288,9 +5288,9 @@ next_state(idle, start) ->
 next_state(running, stop) ->
     {ok, stopped};
 next_state(running, {fail, Reason}) ->
-    {ok, {failed, Reason}};
+    {ok, {failed, Reason\}\};
 next_state(State, Event) ->
-    {error, {invalid_transition, State, Event}}.
+    {error, {invalid_transition, State, Event\}\}.
 ```
 
 | Variant shape         | Use when                | Example                                   | Pitfall                                    |
@@ -5327,7 +5327,7 @@ defmodule User do
 
   def new(%{"id" => id, "name" => name})
       when is_integer(id) and is_binary(name) and byte_size(name) > 0 do
-    {:ok, %User{id: id, name: name}}
+    {:ok, %User{id: id, name: name\}\}
   end
 
   def new(_) do
@@ -5341,7 +5341,7 @@ Erlang equivalent style:
 ```erlang
 new_user(#{<<"id">> := Id, <<"name">> := Name})
   when is_integer(Id), is_binary(Name), byte_size(Name) > 0 ->
-    {ok, #{id => Id, name => Name}};
+    {ok, #{id => Id, name => Name\}\};
 new_user(_) ->
     {error, invalid_user}.
 ```
@@ -5680,7 +5680,7 @@ Elixir `GenServer` state as map:
 
 ```elixir
 def init(_) do
-  {:ok, %{count: 0, status: :idle}}
+  {:ok, %{count: 0, status: :idle\}\}
 end
 
 def handle_call(:increment, _from, state) do
@@ -5703,7 +5703,7 @@ Erlang state as record:
 -record(state, {count = 0, status = idle}).
 
 init([]) ->
-    {ok, #state{}}.
+    {ok, #state{\}\}.
 
 handle_call(increment, _From, State = #state{count = Count}) ->
     NewState = State#state{count = Count + 1},
@@ -5924,7 +5924,7 @@ defmodule UserParams do
       when is_binary(id_text) and is_binary(name) do
     with {:ok, id} <- parse_id(id_text),
          :ok <- validate_name(name) do
-      {:ok, %{id: id, name: String.trim(name)}}
+      {:ok, %{id: id, name: String.trim(name)\}\}
     end
   end
 
@@ -5971,7 +5971,7 @@ defmodule CreateUser do
     email = String.trim(email)
 
     if name != "" and email != "" do
-      {:ok, %__MODULE__{name: name, email: email}}
+      {:ok, %__MODULE__{name: name, email: email\}\}
     else
       {:error, :invalid_create_user}
     end
@@ -5986,7 +5986,7 @@ Erlang command as map:
 ```erlang
 new_create_user(#{<<"name">> := Name, <<"email">> := Email})
   when is_binary(Name), is_binary(Email) ->
-    {ok, #{type => create_user, name => Name, email => Email}};
+    {ok, #{type => create_user, name => Name, email => Email\}\};
 new_create_user(_) ->
     {error, invalid_create_user}.
 ```
@@ -6010,13 +6010,13 @@ Events represent something that happened.
 Elixir:
 
 ```elixir
-{:user_created, %{id: id, email: email}}
+{:user_created, %{id: id, email: email\}\}
 ```
 
 Erlang:
 
 ```erlang
-{user_created, #{id => Id, email => Email}}
+{user_created, #{id => Id, email => Email\}\}
 ```
 
 More structured Elixir:
@@ -6054,13 +6054,13 @@ Error reasons deserve modeling. A generic `:error` is sometimes too weak.
 Elixir:
 
 ```elixir
-{:error, {:invalid_field, :email}}
+{:error, {:invalid_field, :email\}\}
 ```
 
 Erlang:
 
 ```erlang
-{error, {invalid_field, email}}
+{error, {invalid_field, email\}\}
 ```
 
 Validation example:
@@ -6070,7 +6070,7 @@ def validate_email(email) when is_binary(email) do
   if String.contains?(email, "@") do
     :ok
   else
-    {:error, {:invalid_field, :email}}
+    {:error, {:invalid_field, :email\}\}
   end
 end
 ```
@@ -6162,7 +6162,7 @@ Elixir ETS example:
 
 ```elixir
 table = :ets.new(:users, [:set, :public, read_concurrency: true])
-:ets.insert(table, {1, %{name: "Ada"}})
+:ets.insert(table, {1, %{name: "Ada"\}\})
 :ets.lookup(table, 1)
 ```
 
@@ -6421,7 +6421,7 @@ normalize_id(_) ->
 | Positive integer        | Guard and parse         | `{:ok, id}           | {:error, :invalid_id}`      |
 | Known atom status       | Explicit mapping        | `{:ok, :pending}     | {:error, :invalid_status}`  |
 | Non-empty string/binary | Guard + size check      | `{:ok, binary}       | {:error, :blank}`           |
-| Valid struct            | Constructor             | `{:ok, %User{}}      | {:error, reason}`           |
+| Valid struct            | Constructor             | `{:ok, %User{\}\}      | {:error, reason}`           |
 | Valid message           | Pattern + payload check | `{:ok, message}      | {:error, :invalid_message}` |
 | Valid binary packet     | Binary pattern          | `{:ok, packet, rest} | {:error, reason}`           |
 
@@ -6489,7 +6489,7 @@ defmodule Email do
     value = String.trim(value)
 
     if String.contains?(value, "@") do
-      {:ok, %__MODULE__{value: value}}
+      {:ok, %__MODULE__{value: value\}\}
     else
       {:error, :invalid_email}
     end
@@ -6736,20 +6736,20 @@ Map keys can be many term types. Key choice is a modeling decision.
 | Atom key          | Internal known field    | `%{id: 1}`                        | Unsafe if generated from external input    |
 | String/binary key | External JSON/user data | `%{"id" => 1}`                    | Less ergonomic internally                  |
 | Integer key       | Numeric identity        | `%{123 => user}`                  | Domain meaning must be clear               |
-| Tuple key         | Composite identity      | `%{{tenant_id, user_id} => user}` | Can become unreadable                      |
+| Tuple key         | Composite identity      | `%\{\{tenant_id, user_id} => user}` | Can become unreadable                      |
 | Struct key        | Rare, domain-specific   | `%{date => events}`               | Requires equality/hash semantics awareness |
 | PID/ref key       | Runtime correlation     | `%{ref => caller}`                | Runtime-only lifecycle                     |
 
 Elixir composite key:
 
 ```elixir
-sessions = %{{tenant_id, user_id} => session}
+sessions = %\{\{tenant_id, user_id} => session}
 ```
 
 Erlang:
 
 ```erlang
-Sessions = #{{TenantId, UserId} => Session}.
+Sessions = #\{\{TenantId, UserId} => Session}.
 ```
 
 **Design meaning:** Because BEAM maps allow many key types, key discipline matters. The key type should reveal whether data is external, internal, composite, runtime-only, or persistent.
@@ -6781,12 +6781,12 @@ get_in(data, ["user", "profile", "name"])
 | Update nested value | `update_in/2`               | Transform nested value |
 | Access dynamic path | `get_in(data, path)`        | Runtime path           |
 | Struct field access | `user.profile.name`         | Known fields           |
-| Manual match        | `%{profile: %{name: name}}` | Required nested shape  |
+| Manual match        | `%{profile: %{name: name\}\}` | Required nested shape  |
 
 Erlang often uses nested pattern matching or maps functions:
 
 ```erlang
-#{profile := #{name := Name}} = User.
+#{profile := #{name := Name\}\} = User.
 ```
 
 **Design meaning:** Deep nested maps are flexible but can become weakly modeled. If nested structure is stable and domain-important, structs or smaller modules may improve clarity.
@@ -6850,7 +6850,7 @@ Serialization is a boundary decision.
 Elixir:
 
 ```elixir
-binary = :erlang.term_to_binary({:ok, %{id: 1}})
+binary = :erlang.term_to_binary({:ok, %{id: 1\}\})
 term = :erlang.binary_to_term(binary)
 ```
 
@@ -7078,7 +7078,7 @@ Distributed Erlang can send terms between nodes, but distributed data remains a 
 Message example:
 
 ```elixir
-{:user_event, 1, %{id: id, type: :created}}
+{:user_event, 1, %{id: id, type: :created\}\}
 ```
 
 The `1` can be a protocol version.
@@ -7206,14 +7206,14 @@ Better use `:queue` or a domain abstraction:
 
 ```elixir
 queue = :queue.in(item, queue)
-{{:value, item}, queue} = :queue.out(queue)
+\{\{:value, item}, queue} = :queue.out(queue)
 ```
 
 Erlang:
 
 ```erlang
 Queue1 = queue:in(Item, Queue0),
-{{value, Item}, Queue2} = queue:out(Queue1).
+\{\{value, Item}, Queue2} = queue:out(Queue1).
 ```
 
 | Buffer need       | Representation                                              |
@@ -7345,7 +7345,7 @@ defmodule WorkerConfig do
         {:error, :invalid_retries}
 
       true ->
-        {:ok, %__MODULE__{timeout: timeout, retries: retries}}
+        {:ok, %__MODULE__{timeout: timeout, retries: retries\}\}
     end
   end
 end
@@ -7599,7 +7599,7 @@ def load_config(path) do
       {:error, :missing_config}
 
     {:error, reason} ->
-      {:error, {:read_failed, reason}}
+      {:error, {:read_failed, reason\}\}
   end
 end
 ```
@@ -7614,7 +7614,7 @@ load_config(Path) ->
         {error, enoent} ->
             {error, missing_config};
         {error, Reason} ->
-            {error, {read_failed, Reason}}
+            {error, {read_failed, Reason\}\}
     end.
 ```
 
@@ -8143,7 +8143,7 @@ defmodule Counter do
 
   @spec new(non_neg_integer()) :: {:ok, t()} | {:error, :invalid_counter}
   def new(value) when is_integer(value) and value >= 0 do
-    {:ok, %__MODULE__{value: value}}
+    {:ok, %__MODULE__{value: value\}\}
   end
 
   def new(_), do: {:error, :invalid_counter}
@@ -8416,14 +8416,14 @@ If errors need annotation:
 
 ```elixir
 def register_user(params) do
-  with {:parse, {:ok, attrs}} <- {:parse, UserParams.parse(params)},
-       {:build, {:ok, user}} <- {:build, User.new(attrs)},
+  with {:parse, {:ok, attrs\}\} <- {:parse, UserParams.parse(params)},
+       {:build, {:ok, user\}\} <- {:build, User.new(attrs)},
        {:insert, :ok} <- {:insert, UserRepo.insert(user)} do
     {:ok, user}
   else
-    {:parse, {:error, reason}} -> {:error, {:invalid_params, reason}}
-    {:build, {:error, reason}} -> {:error, {:invalid_user, reason}}
-    {:insert, {:error, reason}} -> {:error, {:insert_failed, reason}}
+    {:parse, {:error, reason\}\} -> {:error, {:invalid_params, reason\}\}
+    {:build, {:error, reason\}\} -> {:error, {:invalid_user, reason\}\}
+    {:insert, {:error, reason\}\} -> {:error, {:insert_failed, reason\}\}
   end
 end
 ```
@@ -9744,7 +9744,7 @@ end
 Potentially too clever:
 
 ```elixir
-def process({:ok, [%{a: {_, [x | _]}} | _]}), do: x
+def process({:ok, [%{a: {_, [x | _]\}\} | _]}), do: x
 ```
 
 | Good pattern use                 | Bad pattern use                      |
@@ -10091,7 +10091,7 @@ normalize_name(User) ->
     User.
 
 do_fetch(Id) ->
-    {error, {not_found, Id}}.
+    {error, {not_found, Id\}\}.
 ```
 
 Only `normalize/1` and `fetch/1` are public. The helper functions are not exported.
@@ -10114,7 +10114,7 @@ defmodule Accounts do
   end
 
   defp do_fetch(id) do
-    {:error, {:not_found, id}}
+    {:error, {:not_found, id\}\}
   end
 end
 ```
@@ -10355,10 +10355,10 @@ fetch_user(Id) ->
 | Expected failure             | Good representation                 |
 | ---------------------------- | ----------------------------------- |
 | Missing record               | `{:error, :not_found}`              |
-| Invalid external input       | `{:error, {:invalid_field, field}}` |
+| Invalid external input       | `{:error, {:invalid_field, field\}\}` |
 | Permission denied            | `{:error, :forbidden}`              |
 | Parse failure                | `{:error, :invalid_format}`         |
-| External service unavailable | `{:error, {:unavailable, reason}}`  |
+| External service unavailable | `{:error, {:unavailable, reason\}\}`  |
 | Timeout                      | `{:error, :timeout}`                |
 | Duplicate value              | `{:error, :already_exists}`         |
 
@@ -10635,7 +10635,7 @@ case File.read(path) do
     parse(binary)
 
   {:error, reason} ->
-    {:error, {:read_failed, reason}}
+    {:error, {:read_failed, reason\}\}
 end
 ```
 
@@ -10646,7 +10646,7 @@ case file:read_file(Path) of
     {ok, Binary} ->
         parse(Binary);
     {error, Reason} ->
-        {error, {read_failed, Reason}}
+        {error, {read_failed, Reason\}\}
 end.
 ```
 
@@ -10796,7 +10796,7 @@ GenServer.start_link(__MODULE__, state, name: __MODULE__)
 Registry name:
 
 ```elixir
-GenServer.start_link(__MODULE__, state, name: {:via, Registry, {MyApp.Registry, key}})
+GenServer.start_link(__MODULE__, state, name: {:via, Registry, {MyApp.Registry, key\}\})
 ```
 
 Erlang local name:
@@ -10976,7 +10976,7 @@ Error reasons are part of public API.
 ```elixir
 {:error, :not_found}
 {:error, :invalid_id}
-{:error, {:external_service_failed, reason}}
+{:error, {:external_service_failed, reason\}\}
 ```
 
 | Error reason type       | Compatibility level       |
@@ -10990,7 +10990,7 @@ Error reasons are part of public API.
 
 **Professional rule:** Public APIs should return stable, documented error reasons. Internal modules may use richer implementation-specific errors, but higher-level boundaries should normalize them.
 
-**Common Pitfalls:** Changing `{:error, :not_found}` to `{:error, {:not_found, id}}` can break callers. Add new API or document versioning if necessary.
+**Common Pitfalls:** Changing `{:error, :not_found}` to `{:error, {:not_found, id\}\}` can break callers. Add new API or document versioning if necessary.
 
 ### Task Pattern: Design Side-Effect Boundaries — pure core, effect shell, and process edge
 
@@ -11178,7 +11178,7 @@ def fetch_user(id) do
   end
 rescue
   e in DBConnection.ConnectionError ->
-    {:error, {:database_unavailable, e}}
+    {:error, {:database_unavailable, e\}\}
 end
 ```
 
@@ -11398,7 +11398,7 @@ init([]) ->
           type => worker,
           modules => [cache]}
     ],
-    {ok, {{one_for_one, 5, 10}, Children}}.
+    {ok, \{\{one_for_one, 5, 10}, Children\}\}.
 ```
 
 | Supervision concept | Meaning                                      | Design question                                    |
@@ -11532,7 +11532,7 @@ defmodule CacheTable do
   @impl true
   def init(_opts) do
     :ets.new(__MODULE__, [:named_table, :protected, read_concurrency: true])
-    {:ok, %{}}
+    {:ok, %{\}\}
   end
 end
 ```
@@ -11562,10 +11562,10 @@ Receiving port data:
 
 ```elixir
 receive do
-  {^port, {:data, data}} ->
+  {^port, {:data, data\}\} ->
     handle_data(data)
 
-  {^port, {:exit_status, status}} ->
+  {^port, {:exit_status, status\}\} ->
     handle_exit(status)
 end
 ```
@@ -11628,7 +11628,7 @@ Distributed Erlang lets BEAM nodes communicate, but distribution remains a syste
 Example message shape with version:
 
 ```elixir
-{:user_event, 1, %{id: id, type: :created}}
+{:user_event, 1, %{id: id, type: :created\}\}
 ```
 
 **Design meaning:** BEAM distribution provides primitives, not application-level distributed correctness. The language makes remote messaging possible; it does not solve consensus, partition tolerance, schema evolution, or security design.
@@ -11652,7 +11652,7 @@ Serialization freezes data shape. Choose format according to trust, compatibilit
 Elixir external term format:
 
 ```elixir
-binary = :erlang.term_to_binary({:ok, %{id: 1}})
+binary = :erlang.term_to_binary({:ok, %{id: 1\}\})
 term = :erlang.binary_to_term(binary)
 ```
 
@@ -11844,7 +11844,7 @@ Better:
 
 def call_from_params(%{"command" => command, "args" => args}) do
   case Map.fetch(@commands, command) do
-    {:ok, {module, function, arity}} when length(args) == arity ->
+    {:ok, {module, function, arity\}\} when length(args) == arity ->
       apply(module, function, args)
 
     _ ->
@@ -12002,7 +12002,7 @@ Part 6 is a **task-pattern reference** for the Erlang / Elixir standard library 
 
 This part keeps the same combined-language policy: shared BEAM / OTP facilities are treated as the foundation; Erlang modules are included because Elixir code often calls them directly; Elixir modules are included because they define the modern application-development workflow; framework tools are separated from core language/runtime semantics. This follows the original tutorial contract to teach Erlang / Elixir as a unified BEAM / OTP learning target rather than two unrelated tutorials. 
 
-Erlang’s official description emphasizes massively scalable soft real-time systems, high availability, and built-in runtime support for concurrency, distribution, and fault tolerance; that explains why many “library” decisions in this ecosystem are really runtime-and-OTP decisions rather than ordinary utility-module choices. ([Erlang.org][1]) Mix, by contrast, is Elixir’s project/build/test/dependency workflow tool; its official documentation describes it as handling project creation, compilation, testing, dependencies, and related tasks. ([Hexdocs][2]) Hex is the package manager for the Erlang ecosystem and is usable with Elixir’s Mix and Erlang’s Rebar3, so the package ecosystem is shared even though project workflows differ. ([Hex][3])
+Erlang’s official description emphasizes massively scalable soft real-time systems, high availability, and built-in runtime support for concurrency, distribution, and fault tolerance; that explains why many “library” decisions in this ecosystem are really runtime-and-OTP decisions rather than ordinary utility-module choices.  Mix, by contrast, is Elixir’s project/build/test/dependency workflow tool; its official documentation describes it as handling project creation, compilation, testing, dependencies, and related tasks.  Hex is the package manager for the Erlang ecosystem and is usable with Elixir’s Mix and Erlang’s Rebar3, so the package ecosystem is shared even though project workflows differ. 
 
 | Task area             | Erlang / OTP foundation                             | Elixir layer                                                                 | Ecosystem layer                             | Main boundary question                                                 |
 | --------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------- | ---------------------------------------------------------------------- |
@@ -12119,7 +12119,7 @@ end.
 
 ### Task Pattern: Manage Dependencies — Hex, version constraints, lock files, and dependency boundaries
 
-Hex is the shared package manager for the Erlang ecosystem and works with Elixir’s Mix and Erlang’s Rebar3. ([Hex][3]) In Elixir, dependency declarations usually live in `mix.exs`.
+Hex is the shared package manager for the Erlang ecosystem and works with Elixir’s Mix and Erlang’s Rebar3.  In Elixir, dependency declarations usually live in `mix.exs`.
 
 ```elixir
 defp deps do
@@ -12200,7 +12200,7 @@ Queue example from Elixir using Erlang `:queue`:
 ```elixir
 queue = :queue.new()
 queue = :queue.in(:job1, queue)
-{{:value, job}, queue} = :queue.out(queue)
+\{\{:value, job}, queue} = :queue.out(queue)
 ```
 
 ETS example:
@@ -12478,7 +12478,7 @@ Elixir example with expected failure:
 def load(path) do
   case File.read(path) do
     {:ok, binary} -> parse(binary)
-    {:error, reason} -> {:error, {:read_failed, reason}}
+    {:error, reason} -> {:error, {:read_failed, reason\}\}
   end
 end
 ```
@@ -12544,7 +12544,7 @@ Serialization is a boundary decision. The BEAM can serialize terms directly, but
 Elixir term serialization:
 
 ```elixir
-binary = :erlang.term_to_binary({:ok, %{id: 1}})
+binary = :erlang.term_to_binary({:ok, %{id: 1\}\})
 term = :erlang.binary_to_term(binary)
 ```
 
@@ -12657,7 +12657,7 @@ parse_status_test() ->
 
 ### Task Pattern: Document Code — ExDoc, EDoc, specs, generated docs, and examples
 
-Documentation is part of API design. Elixir’s documentation ecosystem commonly uses ExDoc and HexDocs; Erlang has EDoc and module/spec documentation conventions. Hex documentation hosting is a central part of the shared package ecosystem. ([Hex][3])
+Documentation is part of API design. Elixir’s documentation ecosystem commonly uses ExDoc and HexDocs; Erlang has EDoc and module/spec documentation conventions. Hex documentation hosting is a central part of the shared package ecosystem. 
 
 Elixir:
 
@@ -12861,14 +12861,14 @@ Start process with registry name:
 GenServer.start_link(
   MyWorker,
   arg,
-  name: {:via, Registry, {MyApp.Registry, worker_id}}
+  name: {:via, Registry, {MyApp.Registry, worker_id\}\}
 )
 ```
 
 Call process:
 
 ```elixir
-GenServer.call({:via, Registry, {MyApp.Registry, worker_id}}, :get)
+GenServer.call({:via, Registry, {MyApp.Registry, worker_id\}\}, :get)
 ```
 
 | Need                              | Better choice                             |
@@ -14207,3 +14207,24945 @@ end)
 **Design meaning:** Agent is convenient for simple state but weak for enforcing invariants if arbitrary callers update state with arbitrary functions.
 
 **Common Pitfalls:** If state transitions have domain rules, use a module API or `GenServer`, not arbitrary external update functions.
+### Supervisor Runtime Semantics — restart is not rollback
+
+A supervisor restarts processes. It does not automatically restore domain state, undo side effects, retry jobs correctly, or repair corrupted external systems.
+
+| Supervisor can do              | Supervisor cannot automatically do                |
+| ------------------------------ | ------------------------------------------------- |
+| Restart a crashed child        | Undo a database write                             |
+| Escalate repeated failures     | Know whether an external request was already sent |
+| Start children in order        | Recover unsaved in-memory state unless designed   |
+| Apply restart policy           | Decide business retry semantics                   |
+| Terminate children on shutdown | Deduplicate non-idempotent work                   |
+| Contain failure to subtree     | Validate domain correctness                       |
+
+Example failure scenario:
+
+```text
+worker receives job
+worker writes to external service
+worker crashes before acknowledging job
+supervisor restarts worker
+queue retries job
+external service receives duplicate request
+```
+
+This is not a supervision bug. It is a boundary-design problem.
+
+| Runtime problem              | Required design                      |
+| ---------------------------- | ------------------------------------ |
+| Duplicate side effect        | Idempotency key                      |
+| Lost in-memory state         | Persist state or reconstruct on init |
+| Poison job                   | Dead-letter or discard policy        |
+| Repeated crash loop          | Restart intensity and alerting       |
+| External service instability | Backoff/circuit breaker              |
+| Stateful child restart       | State recovery strategy              |
+
+**Design meaning:** Supervision gives process recovery, not transactional recovery. Domain correctness must be designed above process restart.
+
+**Common Pitfalls:** Do not confuse “the process restarted” with “the operation succeeded safely.”
+
+### Restart Intensity — crash loops and supervisor escalation
+
+Supervisors track restart intensity. If a child crashes too often within a configured time window, the supervisor may terminate and escalate failure upward.
+
+| Concept           | Meaning                                      |
+| ----------------- | -------------------------------------------- |
+| Restart count     | Number of restarts within time window        |
+| Restart period    | Time window for restart intensity            |
+| Escalation        | Supervisor gives up and terminates           |
+| Parent supervisor | May restart the failed supervisor            |
+| Crash loop        | Repeated failure without successful recovery |
+| Permanent failure | Restarting cannot fix underlying cause       |
+
+Elixir child supervision usually hides some lower-level syntax, but the concept remains present. Erlang supervisor specs make intensity explicit:
+
+```erlang
+{ok, \{\{one_for_one, 5, 10}, Children\}\}.
+```
+
+This says roughly: allow up to 5 restarts in 10 seconds before escalation.
+
+**Design meaning:** Restart intensity prevents infinite local restart loops from silently consuming resources forever.
+
+**Common Pitfalls:** Raising restart intensity to suppress crashes usually hides the problem. Investigate why the process crashes repeatedly.
+
+### Shutdown Semantics — graceful timeout, brutal kill, and process cleanup
+
+Shutdown is runtime behavior, not just API style. Supervisors stop children according to child specs and shutdown strategy.
+
+| Shutdown concept  | Meaning                                         |
+| ----------------- | ----------------------------------------------- |
+| Graceful shutdown | Process receives exit signal and may clean up   |
+| Shutdown timeout  | How long supervisor waits                       |
+| Brutal kill       | Immediate forced termination                    |
+| `terminate/2`     | Callback that may run under specific conditions |
+| Linked children   | Exit signals propagate                          |
+| Trap exits        | Process converts exits to messages              |
+| Resource owner    | Responsible for cleanup                         |
+
+Elixir GenServer termination callback:
+
+```elixir
+@impl true
+def terminate(reason, state) do
+  cleanup(state)
+  :ok
+end
+```
+
+Erlang:
+
+```erlang
+terminate(Reason, State) ->
+    cleanup(State),
+    ok.
+```
+
+**Design meaning:** Cleanup should not rely blindly on `terminate/2`. The exact conditions under which it runs depend on process behavior, trapping exits, callback module, and shutdown path.
+
+**Professional rule:** Prefer resource ownership patterns where process death naturally releases owned BEAM resources, but use explicit cleanup for external resources, ports, files, locks, and side effects where needed.
+
+**Common Pitfalls:** Assuming `terminate/2` always runs is unsafe. It should be treated as part of a larger shutdown design, not as a universal destructor.
+
+### Distribution Runtime Semantics — remote PIDs, node names, cookies, and failure
+
+Distributed BEAM allows processes on different nodes to communicate using similar primitives, but remote communication introduces network failure and compatibility boundaries.
+
+| Concept              | Meaning                                  |
+| -------------------- | ---------------------------------------- |
+| Node                 | Named BEAM VM instance                   |
+| Remote PID           | PID referring to process on another node |
+| Cookie               | Node-level authentication secret         |
+| Node connection      | Runtime distribution link between nodes  |
+| Netsplit             | Nodes lose communication                 |
+| Remote process death | May appear through monitors/links        |
+| Version skew         | Nodes may run different code versions    |
+| Distributed message  | Serialized term crossing node boundary   |
+
+Example conceptual message:
+
+```elixir
+send(remote_pid, {:event, 1, payload})
+```
+
+This looks like local send, but its failure modes differ.
+
+| Local assumption           | Distributed complication               |
+| -------------------------- | -------------------------------------- |
+| Receiver is on same VM     | Network may fail                       |
+| Code versions match        | Nodes may differ                       |
+| Atoms are known            | Atom compatibility and creation risk   |
+| Latency is tiny            | Network latency varies                 |
+| Failure is local           | Partitions and remote node death occur |
+| Message schema is internal | It becomes protocol compatibility      |
+
+**Design meaning:** Distributed Erlang makes remote messaging syntactically simple but not semantically simple. Treat distributed messages as versioned protocols.
+
+**Common Pitfalls:** Do not send arbitrary internal structs across nodes without versioning and compatibility discipline.
+
+### Data Copying Across Nodes — serialization boundary
+
+Local message passing has process-copying semantics. Distributed message passing adds serialization across nodes.
+
+| Data kind         | Distributed concern                                          |
+| ----------------- | ------------------------------------------------------------ |
+| Atoms             | Must exist or be created; atom safety matters                |
+| PIDs              | Meaningful across connected nodes, but process may die       |
+| Functions         | Code/module compatibility matters                            |
+| Structs           | Remote node must understand module convention if Elixir-side |
+| Records           | Remote Erlang code needs matching compile-time understanding |
+| Large binaries    | Network transfer cost                                        |
+| References        | Runtime correlation only                                     |
+| Maps/tuples/lists | Serialized as terms                                          |
+
+**Design meaning:** Local terms become wire-level protocol data when sent across nodes. Compatibility, versioning, and trust matter.
+
+**Common Pitfalls:** Treating distributed BEAM messaging as “just local messaging but farther away” causes subtle production failures.
+
+### Hot Code Loading and Code Versions — runtime upgrade awareness
+
+BEAM supports code loading with multiple versions of a module in memory under certain conditions. OTP release upgrades build on this capability, though many modern deployments use rolling restarts or container replacement instead of hot upgrades.
+
+| Concept              | Meaning                                              |
+| -------------------- | ---------------------------------------------------- |
+| Loaded module        | Module code currently available in VM                |
+| Old code             | Previous version still referenced by processes       |
+| Current code         | New version for new calls                            |
+| Purging              | Removing old code when safe                          |
+| Code change callback | OTP callback for state transformation during upgrade |
+| Release upgrade      | Structured upgrade path                              |
+| Rolling restart      | Operational alternative                              |
+
+Elixir/Erlang source code does not make hot upgrade automatic. Runtime upgrade requires release design, callback support, and state transformation.
+
+**Design meaning:** Long-running processes may hold state across code changes. If hot upgrade is used, state shape evolution must be handled explicitly.
+
+**Common Pitfalls:** Do not assume changing a struct or record state shape is safe for a long-running process during hot upgrade. State migration may be required.
+
+### Scheduler Pressure and CPU-Bound Work — BEAM is concurrent, not magic
+
+BEAM is excellent for many concurrent processes, but CPU-bound work still consumes CPU. If many processes do heavy computation, schedulers can saturate.
+
+| Work type                  | Runtime issue                                   |
+| -------------------------- | ----------------------------------------------- |
+| CPU-heavy pure computation | Scheduler saturation                            |
+| Many parallel tasks        | Run queue growth                                |
+| Large binary processing    | CPU and memory pressure                         |
+| Compression/crypto         | May use native libraries and schedulers         |
+| Numerical workloads        | BEAM may be slower than native/vectorized tools |
+| Long NIF computation       | Dangerous unless dirty scheduler used           |
+| Busy loop                  | Wastes scheduler reductions                     |
+
+Example CPU-heavy work:
+
+```elixir
+Enum.map(1..1_000_000, &expensive/1)
+```
+
+This may be fine as batch work, but not inside a latency-sensitive `GenServer` callback.
+
+**Design meaning:** BEAM concurrency protects responsiveness better than many runtimes, but it does not eliminate CPU limits.
+
+**Common Pitfalls:** Spawning one task per item for CPU-bound work can make performance worse due to scheduling overhead and CPU contention.
+
+### I/O-Bound Work — concurrency helps but external systems still bottleneck
+
+I/O-bound work often benefits from BEAM concurrency because many processes can wait independently. However, the external system may become the bottleneck.
+
+| I/O task          | Runtime concern                             |
+| ----------------- | ------------------------------------------- |
+| HTTP requests     | External service and connection pool limits |
+| Database queries  | Pool size and DB capacity                   |
+| File I/O          | Disk throughput                             |
+| Socket reads      | Backpressure and mailbox mode               |
+| External commands | OS process limits                           |
+| Queue writes      | Broker capacity                             |
+| Logging           | Logger backend throughput                   |
+
+**Design meaning:** BEAM can manage many waiting processes, but concurrency must be matched to external capacity.
+
+**Common Pitfalls:** Increasing tasks or processes can overload a database or API faster. Use pools, rate limits, backpressure, and timeouts.
+
+### Backpressure Runtime Model — mailboxes do not apply pressure by default
+
+Ordinary message sending usually does not block until the receiver processes the message. Therefore BEAM systems need explicit backpressure when load matters.
+
+| Mechanism                       | Backpressure quality                      |
+| ------------------------------- | ----------------------------------------- |
+| `send` / `!`                    | Usually none                              |
+| `GenServer.cast`                | None from receiver processing perspective |
+| `GenServer.call`                | Caller waits, so some pressure exists     |
+| Bounded queue                   | Explicit capacity                         |
+| Demand protocol                 | Receiver asks for work                    |
+| Pool                            | Limits concurrency                        |
+| Rate limiter                    | Limits send rate                          |
+| Broadway/GenStage-style systems | Demand-driven flow                        |
+| External broker                 | Depends on broker semantics               |
+
+Example overload-prone pattern:
+
+```elixir
+Enum.each(jobs, fn job ->
+  GenServer.cast(worker, {:job, job})
+end)
+```
+
+Better when confirmation matters:
+
+```elixir
+Enum.each(jobs, fn job ->
+  :ok = Worker.enqueue(worker, job)
+end)
+```
+
+where `enqueue` may use `call`, bounded queue, or explicit rejection.
+
+**Design meaning:** Backpressure is a protocol property, not a VM default.
+
+**Common Pitfalls:** A process mailbox is not a safe unbounded job queue.
+
+### Timer Runtime Costs — many timers, stale messages, and cancellation races
+
+Timers send messages later. Many systems use timers for polling, timeouts, retries, and periodic work.
+
+Elixir:
+
+```elixir
+ref = Process.send_after(self(), {:retry, job_id}, 5_000)
+```
+
+Erlang:
+
+```erlang
+Ref = erlang:send_after(5000, self(), {retry, JobId}).
+```
+
+| Timer issue           | Runtime consequence                              |
+| --------------------- | ------------------------------------------------ |
+| Timer message         | Enters mailbox                                   |
+| Cancellation race     | Message may already have been delivered          |
+| Many timers           | Runtime/timer management overhead                |
+| Periodic work         | Reschedule after handling                        |
+| Stale timer           | Old timer message may arrive after state changed |
+| Timeout after receive | Does not cancel remote work                      |
+| Timer ref             | Useful for correlation/canceling                 |
+
+Stale-safe timer message:
+
+```elixir
+ref = Process.send_after(self(), {:timeout, request_id}, 5_000)
+
+def handle_info({:timeout, request_id}, state) do
+  if pending?(state, request_id) do
+    handle_timeout(request_id, state)
+  else
+    {:noreply, state}
+  end
+end
+```
+
+**Design meaning:** Timers are protocol messages. Treat them like any other message with possible staleness and mailbox effects.
+
+**Common Pitfalls:** Canceling a timer and assuming no message will ever arrive is unsafe in race conditions.
+
+### Ports Runtime Cost — external isolation with serialization overhead
+
+Ports communicate with external OS processes. They protect the VM from native crashes better than NIFs, but add protocol cost.
+
+| Port cost                | Meaning                               |
+| ------------------------ | ------------------------------------- |
+| Serialization            | Data encoded across boundary          |
+| Copying                  | Data moves between VM and OS process  |
+| External process startup | OS-level overhead                     |
+| Protocol framing         | Must define message boundaries        |
+| Failure handling         | Exit status and port closure messages |
+| Backpressure             | External process may be slow          |
+| Supervision              | Port owner process should be managed  |
+
+**Design meaning:** Ports are appropriate when isolation matters more than the raw performance of in-VM native code.
+
+**Common Pitfalls:** A port program can still become a bottleneck. It also needs monitoring, timeout, and restart policy.
+
+### NIF Runtime Cost — fastest boundary, sharpest danger
+
+NIFs execute native code inside the VM. They can be extremely useful and extremely dangerous.
+
+| NIF property            | Runtime consequence                    |
+| ----------------------- | -------------------------------------- |
+| Runs inside VM          | Can crash entire VM                    |
+| Can block scheduler     | Harms responsiveness                   |
+| Dirty scheduler support | Helps isolate blocking/CPU native work |
+| Native memory           | Must be managed correctly              |
+| Deployment complexity   | Native binaries and OS compatibility   |
+| Upgrade complexity      | Version and ABI concerns               |
+| Debugging               | Harder than BEAM-only code             |
+
+**Design meaning:** A NIF boundary should be narrow, audited, and justified. If isolation is more important, use a port or external service.
+
+**Common Pitfalls:** Do not put long-running or blocking native code in a normal scheduler NIF.
+
+### Memory Leaks in BEAM Terms — retention, not mutation leaks
+
+In garbage-collected BEAM code, many “memory leaks” are really retention problems: something still references data.
+
+Common retention sources:
+
+| Source                    | Example                            |
+| ------------------------- | ---------------------------------- |
+| Long-lived process state  | Large map never pruned             |
+| Mailbox growth            | Messages accumulate                |
+| Sub-binary reference      | Tiny field retains huge binary     |
+| Process dictionary        | Hidden retained data               |
+| ETS table                 | Objects never deleted              |
+| Persistent term           | Global data never replaced/cleared |
+| Closure capture           | Function holds large context       |
+| Logger/telemetry metadata | Large payload retained or emitted  |
+| Registry/process table    | Processes not stopped              |
+| External resource         | Port/socket/file not closed        |
+
+**Design meaning:** To diagnose memory growth, identify which process, table, binary, or global facility owns the data.
+
+**Common Pitfalls:** Looking only at total VM memory is insufficient. Inspect process memory, binary memory, ETS, persistent terms, and mailbox sizes.
+
+### Latency in BEAM Systems — not only function speed
+
+Latency can come from many runtime layers.
+
+| Latency source           | Diagnostic direction                 |
+| ------------------------ | ------------------------------------ |
+| Slow function            | Profile function                     |
+| Busy scheduler           | Check CPU/scheduler utilization      |
+| Blocked GenServer        | Inspect current function and mailbox |
+| Long mailbox             | `message_queue_len`                  |
+| External service         | Measure client latency               |
+| Database pool saturation | Pool metrics                         |
+| GC in large process      | Process memory/GC info               |
+| Large binary retention   | Binary memory                        |
+| ETS contention           | Table access pattern                 |
+| Logger backpressure      | Logging backend metrics              |
+| NIF blocking             | Native boundary audit                |
+| Timer delay              | Scheduler/load/mailbox delay         |
+
+**Design meaning:** Latency is often a queueing problem, not merely a computation problem.
+
+**Common Pitfalls:** Optimizing a parser will not fix a `GenServer` whose mailbox has 500,000 messages.
+
+### Throughput in BEAM Systems — parallelism, partitioning, and bottlenecks
+
+Throughput improves when work is partitioned across independent processes and external bottlenecks are respected.
+
+| Throughput strategy           | Use when                              |
+| ----------------------------- | ------------------------------------- |
+| Shard state across processes  | One server is bottleneck              |
+| Use ETS for read-heavy lookup | Shared reads dominate                 |
+| Use pool for external calls   | External system has concurrency limit |
+| Use demand-driven processing  | Producers can overwhelm consumers     |
+| Batch work                    | Per-message overhead high             |
+| Avoid unnecessary copying     | Large data moves between processes    |
+| Use binary/iodata efficiently | Output construction expensive         |
+| Avoid global locks/singletons | Central process bottleneck            |
+| Use native code carefully     | CPU-heavy specialized work            |
+
+**Design meaning:** BEAM scales by many isolated processes, but any single process or external resource can become the limiting serial point.
+
+**Common Pitfalls:** A single named `GenServer` can accidentally serialize all traffic in an otherwise concurrent system.
+
+### Runtime Inspection Checklist — first questions under production trouble
+
+When a BEAM service is slow, memory-heavy, or unstable, inspect runtime shape before guessing.
+
+| Question                                 | Useful signal                    |
+| ---------------------------------------- | -------------------------------- |
+| Which process uses memory?               | `Process.info(pid, :memory)`     |
+| Which process has long mailbox?          | `message_queue_len`              |
+| Which process is currently running what? | `current_function`               |
+| Are processes crashing repeatedly?       | Supervisor logs                  |
+| Are restarts escalating?                 | Supervisor reports               |
+| Is binary memory high?                   | VM memory metrics                |
+| Are ETS tables growing?                  | ETS info                         |
+| Are schedulers saturated?                | Runtime metrics                  |
+| Are external calls slow?                 | Telemetry/logging                |
+| Are NIFs involved?                       | Dependency/runtime audit         |
+| Are tasks unbounded?                     | Process counts and external load |
+| Is logging overloaded?                   | Logger backend metrics           |
+| Are timers accumulating?                 | Process state/messages           |
+| Are distributed nodes unstable?          | Node connection logs             |
+
+**Common Pitfalls:** Do not restart the VM as the first diagnostic step if useful crash/memory/mailbox evidence will be lost, unless production recovery requires it.
+
+### Runtime Cost Decision Table
+
+| Need                               | Prefer                              | Avoid                                   |
+| ---------------------------------- | ----------------------------------- | --------------------------------------- |
+| Passive data                       | Struct/map/list                     | Process per value                       |
+| Independent state/lifecycle        | Process/GenServer                   | Global mutable state                    |
+| Read-heavy shared lookup           | ETS                                 | Single bottleneck server                |
+| Rarely changing global data        | `persistent_term`                   | Frequent writes                         |
+| Request-response                   | `GenServer.call` or ref protocol    | Blind `cast`                            |
+| Fire-and-forget with overload risk | Bounded queue/demand                | Unbounded casts                         |
+| Large binary parsing               | Bit syntax with retention awareness | Keeping sub-binaries forever            |
+| Temporary concurrent work          | Task with supervision/limits        | Raw unmonitored spawn                   |
+| CPU-heavy native work              | Dirty NIF/port/external service     | Blocking normal NIF                     |
+| External isolation                 | Port/external service               | Unsafe NIF                              |
+| Dynamic process name               | Registry                            | Dynamic atom                            |
+| Long server work                   | Offload/split/reply later           | Blocking callback                       |
+| Large process state                | Shard/ETS/database                  | One giant GenServer                     |
+| Periodic work                      | Timer message with stale handling   | Assuming timer cancellation is absolute |
+| Distributed protocol               | Versioned messages                  | Raw internal structs                    |
+
+### Runtime Anti-Pattern Index
+
+| Anti-pattern                            | Runtime failure mode              | Better design               |
+| --------------------------------------- | --------------------------------- | --------------------------- |
+| One giant GenServer                     | Mailbox bottleneck, large GC      | Shard, ETS, split ownership |
+| `cast` as queue                         | Unbounded mailbox growth          | Backpressure/demand/queue   |
+| Process per passive object              | Excess memory/process overhead    | Plain values                |
+| Raw `spawn` for important work          | Silent crash/orphan process       | Task/Supervisor             |
+| Long work in `handle_call`              | Server stalls, caller timeouts    | Offload/reply later         |
+| Dynamic atoms                           | Atom table exhaustion             | Explicit mapping/Registry   |
+| Large map sent repeatedly               | Copying/memory pressure           | Send IDs/smaller payloads   |
+| Sub-binary retained in state            | Large binary memory leak          | Copy needed small part      |
+| Public ETS writes                       | Mutable global chaos              | Owner API/protected table   |
+| Persistent term for hot updates         | Global update cost                | Process state/ETS/config    |
+| Blocking NIF                            | Scheduler/VM responsiveness loss  | Dirty NIF/port              |
+| Broad selective receive                 | Stale mailbox messages            | Protocol-specific receive   |
+| Ignored `DOWN` messages                 | Mailbox clutter/lost failure info | Handle monitors             |
+| Timer messages without refs/state check | Stale timeout behavior            | Correlate and validate      |
+| Logs with huge terms                    | Memory/I/O pressure, secrets      | Structured safe metadata    |
+
+### Part 7 Summary — runtime literacy changes code judgment
+
+Erlang / Elixir source code cannot be judged only by syntax. The same function call may be cheap or expensive depending on process state, message size, mailbox length, binary retention, scheduler pressure, or external resource behavior.
+
+The practical runtime model is:
+
+```text
+Use values for passive data.
+Use processes for independent behavior, state ownership, and failure boundaries.
+Use supervision for lifecycle and recovery.
+Use message protocols deliberately.
+Use ETS and persistent_term only when their runtime tradeoffs fit.
+Respect binary memory, mailbox growth, NIF danger, and external bottlenecks.
+```
+
+This is the layer where Erlang / Elixir becomes a systems platform rather than merely a pair of functional languages on the same VM.
+## PART 8 — Historical Evolution, Design Rationale, and Cross-Language Positioning
+
+### Part Scope — why Erlang and Elixir look the way they do
+
+Part 8 explains **why** Erlang and Elixir have their particular shape: lightweight processes, message passing, OTP behaviours, supervision, immutable data, dynamic typing, pattern matching, fault tolerance, and macro-friendly syntax.
+
+This is not a general history chapter for curiosity only. Historical context matters because many design choices in Erlang / Elixir make more sense once their original problem domain is understood: telecom systems, long-running services, concurrency, hot upgrades, distributed nodes, soft real-time responsiveness, and operational fault recovery.
+
+The guiding idea is:
+
+```text
+Erlang was designed around concurrent, fault-tolerant, long-running systems.
+Elixir was designed to bring a more modern, extensible, Ruby-influenced language surface to the same BEAM / OTP foundation.
+```
+
+| Question                   | Erlang answer                                                            | Elixir answer                                            |
+| -------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------- |
+| Why so many processes?     | Telecom systems needed many concurrent activities                        | Elixir inherits and exposes BEAM processes ergonomically |
+| Why message passing?       | Isolated processes avoid shared-state concurrency bugs                   | Same model, with Elixir syntax and libraries             |
+| Why “let it crash”?        | Fault isolation and supervision make local failure recoverable           | Same OTP philosophy, with modern wrappers                |
+| Why dynamic typing?        | Runtime flexibility, hot code, distributed systems, early design context | Retained for BEAM compatibility and expressiveness       |
+| Why pattern matching?      | Concise message/protocol/data handling                                   | Central to Elixir’s ergonomic style                      |
+| Why OTP behaviours?        | Standardize recurring server/supervisor patterns                         | Wrapped as `GenServer`, `Supervisor`, `Application`      |
+| Why Elixir macros?         | Elixir emphasizes extensible syntax and DSLs                             | Frameworks such as Phoenix/Ecto benefit from macro DSLs  |
+| Why direct Erlang interop? | Same VM and term system                                                  | Elixir builds on, rather than replaces, Erlang/OTP       |
+
+### Historical Frame — Erlang before Elixir
+
+Erlang was created in the context of building highly reliable telecom systems. The central problem was not “how to make a convenient scripting language.” The central problem was closer to:
+
+```text
+How can a system handle many concurrent activities,
+fail partially without collapsing,
+be updated and operated while running,
+and remain responsive under load?
+```
+
+This explains the unusual priority order of Erlang:
+
+| Design priority           | Consequence in the language/runtime                  |
+| ------------------------- | ---------------------------------------------------- |
+| Massive concurrency       | Lightweight BEAM processes                           |
+| Fault isolation           | Process-local heaps, message passing                 |
+| Soft real-time behavior   | Preemptive scheduling through reductions             |
+| High availability         | Supervision trees and restart strategies             |
+| Distributed operation     | Node-to-node messaging and distributed process model |
+| Runtime upgrades          | Code loading and OTP release concepts                |
+| Clear protocol handling   | Pattern matching and tagged tuples                   |
+| Operational observability | Process inspection, crash reports, supervision logs  |
+| Long-running systems      | Resource ownership and supervision architecture      |
+
+**Design meaning:** Erlang’s surface syntax is not the key innovation. The key innovation is the runtime and OTP model: isolated processes, message passing, supervision, and operational fault tolerance.
+
+**Common Pitfalls:** Judging Erlang only by syntax misses its purpose. Erlang’s syntax may look unusual or old-fashioned, but the deeper model is a practical concurrency and reliability architecture.
+
+### Why Erlang Uses Processes Rather Than Shared Mutable Threads
+
+Many mainstream languages historically used threads plus shared mutable memory. Erlang chose a different model: lightweight isolated processes communicating by messages.
+
+| Shared-memory thread model                 | Erlang process model                           |
+| ------------------------------------------ | ---------------------------------------------- |
+| Threads share memory                       | Processes are isolated                         |
+| Locks protect shared state                 | Messages transfer data                         |
+| Race conditions are common risk            | Race risk moves to protocol/order design       |
+| Failure may corrupt shared state           | Process failure is localized                   |
+| Thread creation is relatively heavy        | BEAM processes are lightweight                 |
+| Debugging often focuses on locks/deadlocks | Debugging often focuses on mailboxes/processes |
+| Recovery often exception-based             | Recovery often supervision-based               |
+
+Erlang’s process model does not remove all concurrency problems. It changes their shape.
+
+| Problem type     | Shared-memory systems           | BEAM systems                                 |
+| ---------------- | ------------------------------- | -------------------------------------------- |
+| Race conditions  | Shared mutable state races      | Message ordering/protocol races              |
+| Deadlocks        | Locks and waits                 | Waiting for messages/calls that never arrive |
+| Overload         | Thread pools/queues             | Mailbox growth, scheduler pressure           |
+| State corruption | Shared state mutation           | Process-local bad state                      |
+| Recovery         | Restart thread/service manually | Supervisor restart policies                  |
+| Debugging        | Locks, stacks, heap             | Process info, mailbox, supervision, traces   |
+
+**Design meaning:** Erlang’s model is not “concurrency without problems.” It is **concurrency with explicit ownership and message protocols**.
+
+**Common Pitfalls:** Do not assume message passing automatically gives backpressure. Ordinary sends and `cast`s can overload a receiver.
+
+### Why “Let It Crash” Does Not Mean Carelessness
+
+The phrase “let it crash” is often misunderstood. It does not mean “ignore errors.” It means that when a process reaches a state where it cannot continue safely, it may be better to terminate it and let a supervisor restart a clean instance than to continue with corrupted state.
+
+| Misreading                    | Correct meaning                                         |
+| ----------------------------- | ------------------------------------------------------- |
+| Do not handle errors          | Handle expected errors as data                          |
+| Crash on user input           | Validate user input and return errors                   |
+| Supervision solves everything | Supervision restarts processes, not domain transactions |
+| No need for tests             | Tests are still essential                               |
+| No need for logging           | Observability is critical                               |
+| Any crash is okay             | Crash boundaries must be designed                       |
+| Restart equals recovery       | State and side effects need recovery policy             |
+
+Expected failure:
+
+```elixir
+def parse_status("active"), do: {:ok, :active}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+Unexpected invariant failure:
+
+```elixir
+{:ok, config} = load_required_config()
+```
+
+If required config is missing at startup, failing fast may be correct.
+
+**Design meaning:** Erlang / Elixir separates **ordinary domain failure** from **unrecoverable local process failure**. The former should often be returned as data; the latter may crash under supervision.
+
+**Common Pitfalls:** Do not use “let it crash” to justify poor input validation. External input is expected to be bad sometimes.
+
+### Why OTP Exists — recurring patterns became standard behaviours
+
+OTP is not a separate framework in the ordinary web-framework sense. It is a set of libraries, behaviours, design principles, and runtime conventions that standardize common concurrent-system patterns.
+
+The recurring patterns include:
+
+| Recurrent system problem    | OTP answer                                      |
+| --------------------------- | ----------------------------------------------- |
+| Stateful server process     | `gen_server` / `GenServer`                      |
+| Process supervision         | `supervisor` / `Supervisor`                     |
+| Application startup         | `application` / `Application`                   |
+| Event handling              | `gen_event` historically, other modern patterns |
+| State machine               | `gen_statem`                                    |
+| Process lifecycle           | `start_link`, child specs, restart policies     |
+| Standard callback contracts | behaviours                                      |
+| Release packaging           | OTP releases                                    |
+| Runtime observability       | logs, crash reports, process info               |
+
+Before OTP abstraction, one could write raw receive loops:
+
+```erlang
+loop(State) ->
+    receive
+        {call, From, Msg} ->
+            {Reply, NewState} = handle(Msg, State),
+            From ! {reply, Reply},
+            loop(NewState)
+    end.
+```
+
+OTP turns this recurring pattern into a standardized callback module.
+
+Elixir:
+
+```elixir
+defmodule Server do
+  use GenServer
+
+  @impl true
+  def handle_call(msg, _from, state) do
+    {:reply, handle(msg, state), state}
+  end
+end
+```
+
+**Design meaning:** OTP is what makes many BEAM systems maintainable. It gives shared vocabulary and standardized process architecture.
+
+**Common Pitfalls:** Do not treat `GenServer` as mere boilerplate. It encodes a runtime protocol, failure model, and callback contract.
+
+### Why Elixir Was Created — modern syntax on the BEAM foundation
+
+Elixir was created to provide a modern language on top of the BEAM, preserving Erlang’s runtime strengths while offering different ergonomics.
+
+Elixir did not replace Erlang/OTP. It deliberately built on it.
+
+| Erlang/OTP foundation         | Elixir contribution                                 |
+| ----------------------------- | --------------------------------------------------- |
+| BEAM VM                       | Modern syntax and tooling                           |
+| Lightweight processes         | `Task`, `Agent`, `GenServer`, `Supervisor` wrappers |
+| OTP behaviours                | Elixir modules and callback annotations             |
+| Erlang terms                  | Elixir literals and conventions                     |
+| Pattern matching              | Cleaner surface syntax                              |
+| Macros less central in Erlang | Macro system central to Elixir DSLs                 |
+| Rebar/Erlang tooling          | Mix, ExUnit, Hex-oriented workflow                  |
+| Erlang libraries              | Direct `:module.function(...)` access               |
+| Fault tolerance               | Same supervision philosophy                         |
+| Distribution                  | Same runtime foundation                             |
+
+Elixir’s success depends heavily on the fact that it did not reject OTP. Instead, it made OTP more accessible to a broader programming audience.
+
+**Design meaning:** Elixir is best understood as **a BEAM language**, not as “Ruby syntax plus concurrency.” Ruby influenced some surface ergonomics, but BEAM/OTP determines the deep semantics.
+
+**Common Pitfalls:** Learning Elixir without learning Erlang/OTP creates a shallow understanding. Many production problems require reading Erlang module docs, understanding OTP return tuples, inspecting BEAM processes, and recognizing runtime behavior.
+
+### Erlang Syntax versus Elixir Syntax — old surface, same core terms
+
+Erlang and Elixir syntax look different, but they share the runtime term system.
+
+| Concept      | Erlang             | Elixir               | Runtime relationship                    |     |           |
+| ------------ | ------------------ | -------------------- | --------------------------------------- | --- | --------- |
+| Atom         | `ok`               | `:ok`                | Same atom                               |     |           |
+| Tuple        | `{ok, Value}`      | `{:ok, value}`       | Same tuple                              |     |           |
+| List         | `[H                | T]`                  | `[h                                     | t]` | Same list |
+| Binary       | `<<1, 2>>`         | `<<1, 2>>`           | Same binary                             |     |           |
+| Map          | `#{id => Id}`      | `%{id: id}`          | Same map type                           |     |           |
+| Function     | `fun(X) -> X end`  | `fn x -> x end`      | BEAM function value                     |     |           |
+| Process      | `spawn(...)`       | `spawn(...)`         | Same runtime process                    |     |           |
+| Message send | `Pid ! Msg`        | `send(pid, msg)`     | Same mailbox model                      |     |           |
+| Receive      | `receive ... end`  | `receive do ... end` | Same primitive                          |     |           |
+| Module call  | `lists:reverse(X)` | `:lists.reverse(x)`  | Same Erlang module callable from Elixir |     |           |
+
+**Design meaning:** The syntax gap is larger than the runtime gap. Once BEAM terms and OTP are understood, cross-reading becomes much easier.
+
+**Common Pitfalls:** Do not assume Elixir data structures are fundamentally separate from Erlang data structures. Many are the same BEAM terms with different literal syntax and library conventions.
+
+### Why Elixir Has Macros and DSLs
+
+Elixir’s macro system is one of its major differences from Erlang. It allows libraries and frameworks to build syntax-like constructs at compile time.
+
+Common macro-heavy areas:
+
+| Area                   | Example style                      | Why macros help                   |
+| ---------------------- | ---------------------------------- | --------------------------------- |
+| Testing                | `test "..." do ... end`            | Declarative test definitions      |
+| Web routing            | `get "/users", Controller, :index` | Compile-time route table          |
+| Database schemas       | `schema "users" do ... end`        | Declarative field metadata        |
+| Queries                | query DSLs                         | Compile-time query representation |
+| Documentation          | module attributes                  | Compile-time metadata             |
+| Behaviours/convenience | `use GenServer`                    | Inject imports/callback setup     |
+| Custom sigils          | `~r`, framework sigils             | Literal DSLs                      |
+
+Macro-backed DSL example:
+
+```elixir
+defmodule Router do
+  use SomeRouter
+
+  get "/users", UserController, :index
+end
+```
+
+This may look like ordinary code, but it is often compile-time DSL expansion.
+
+**Design meaning:** Elixir macros make domain-specific expression concise. They also create a compile-time boundary that must be understood.
+
+**Common Pitfalls:** Macros are not ordinary functions. They can import functions, define functions, set attributes, register callbacks, and generate hidden code.
+
+### Why Erlang Uses Records and Elixir Uses Structs
+
+Erlang records and Elixir structs reflect different historical and ergonomic choices.
+
+Erlang record:
+
+```erlang
+-record(user, {id, name}).
+User = #user{id = 1, name = <<"Ada">>}.
+```
+
+At runtime, this is a tuple with compile-time field access.
+
+Elixir struct:
+
+```elixir
+defmodule User do
+  defstruct [:id, :name]
+end
+
+user = %User{id: 1, name: "Ada"}
+```
+
+At runtime, this is a map with a `__struct__` key.
+
+| Feature          | Erlang record                                       | Elixir struct                         |
+| ---------------- | --------------------------------------------------- | ------------------------------------- |
+| Runtime base     | Tuple                                               | Map                                   |
+| Field names      | Compile-time only                                   | Runtime keys                          |
+| Declaration      | `-record`                                           | `defstruct`                           |
+| Cross-module use | Requires shared header                              | Module-defined struct                 |
+| Ergonomics       | Older/compact                                       | More readable in Elixir               |
+| Evolution        | Field changes require recompilation of record users | More flexible but still API-sensitive |
+| Pattern matching | `#user{id = Id}`                                    | `%User{id: id}`                       |
+
+**Design meaning:** Records fit older Erlang performance and compile-time conventions. Structs fit Elixir’s map-oriented ergonomics and protocol ecosystem.
+
+**Common Pitfalls:** Do not think of structs as classes. They are data shapes. Behavior still lives in modules and protocols.
+
+### Why Dynamic Typing Remained Central
+
+Erlang and Elixir are dynamically typed. This is not an accident. It fits the runtime’s historical emphasis on message passing, hot code, flexible terms, distributed communication, and rapid system evolution.
+
+However, dynamic typing does not mean type discipline is absent.
+
+| Type-discipline mechanism | Role                                                |
+| ------------------------- | --------------------------------------------------- |
+| Pattern matching          | Runtime shape checking                              |
+| Guards                    | Runtime type/value refinement                       |
+| Specs                     | Documentation and analysis                          |
+| Dialyzer                  | Static discrepancy detection through success typing |
+| Behaviours                | Module callback contracts                           |
+| Protocols                 | Elixir data-polymorphic contracts                   |
+| Constructors              | Runtime validation                                  |
+| Opaque types              | Representation hiding                               |
+| Tests                     | Behavioral verification                             |
+| Boundary validation       | Trust control                                       |
+
+**Design meaning:** Erlang / Elixir type discipline is **runtime-shape-centered**, not declaration-first. A good BEAM program still has clear types; they are enforced through patterns, constructors, specs, and boundaries rather than a full mandatory static type checker.
+
+**Common Pitfalls:** Dynamic typing is not permission to pass arbitrary maps everywhere. That produces weak, fragile systems.
+
+### Why Pattern Matching Is Everywhere
+
+Pattern matching is central because BEAM programs constantly handle:
+
+```text
+messages
+tagged return values
+tuples
+maps
+binary protocols
+state transitions
+callback return shapes
+external input variants
+process lifecycle messages
+```
+
+Elixir:
+
+```elixir
+case result do
+  {:ok, value} -> handle(value)
+  {:error, reason} -> handle_error(reason)
+end
+```
+
+Erlang:
+
+```erlang
+case Result of
+    {ok, Value} -> handle(Value);
+    {error, Reason} -> handle_error(Reason)
+end.
+```
+
+Pattern matching fits the ecosystem because data shape is explicit. A process message is a term. An OTP callback return is a term. A binary packet is a term. A state variant is a term.
+
+| Use case         | Pattern matching role        |
+| ---------------- | ---------------------------- |
+| Tagged results   | Separate success and failure |
+| Process messages | Identify protocol action     |
+| Binary parsing   | Validate and extract bytes   |
+| Function clauses | Dispatch by shape            |
+| State machines   | Transition by state/event    |
+| Map/struct data  | Require fields               |
+| Test assertions  | Assert expected shape        |
+| Callback returns | Enforce protocol shape       |
+
+**Design meaning:** Pattern matching is the control-flow language of BEAM data.
+
+**Common Pitfalls:** Overly deep patterns can become brittle. Match stable domain shapes, not arbitrary nested external data unless validating at a boundary.
+
+### Why “Everything Is a Term” Matters
+
+BEAM values are terms: atoms, tuples, lists, maps, binaries, PIDs, refs, functions, numbers, and so on. This uniform term model simplifies message passing, pattern matching, serialization, and interop.
+
+| Term type     | Common role              |
+| ------------- | ------------------------ |
+| Atom          | Tag/status/symbol        |
+| Tuple         | Product/variant/result   |
+| List          | Sequence                 |
+| Map           | Key-value structure      |
+| Binary        | Text/bytes/protocol data |
+| PID           | Process identity         |
+| Reference     | Runtime correlation      |
+| Function      | Callback/closure         |
+| Integer/float | Numeric data             |
+| Struct        | Elixir map convention    |
+| Record        | Erlang tuple convention  |
+
+Because messages are just terms, a protocol can be:
+
+```elixir
+{:request, self(), ref, payload}
+```
+
+or:
+
+```erlang
+{request, self(), Ref, Payload}
+```
+
+**Design meaning:** Uniform terms make concurrency and interop simple at the surface. The cost is that protocol correctness must be designed; the runtime will not statically guarantee message schemas.
+
+**Common Pitfalls:** Do not confuse “can send any term” with “should send any term.” Message protocols need discipline.
+
+### Why Elixir and Erlang Can Be Learned Together
+
+Erlang and Elixir are not merely “similar functional languages.” They are deeply connected through BEAM and OTP.
+
+| Shared foundation     | Practical consequence                |
+| --------------------- | ------------------------------------ |
+| BEAM runtime          | Same process/memory/scheduler model  |
+| OTP behaviours        | Same supervision/server architecture |
+| Term system           | Data interop is natural              |
+| Message passing       | Same concurrency semantics           |
+| Erlang libraries      | Elixir can call them directly        |
+| Erlang tools/concepts | Useful to Elixir production work     |
+| Fault tolerance model | Same supervision philosophy          |
+| Distribution model    | Same node/process foundation         |
+
+The best learning path is not:
+
+```text
+learn Erlang completely, then learn Elixir completely
+```
+
+nor:
+
+```text
+learn Elixir and ignore Erlang
+```
+
+A better path is:
+
+```text
+learn shared BEAM/OTP concepts,
+learn Elixir’s modern surface and tooling,
+learn enough Erlang to read OTP docs and call Erlang modules,
+then deepen both where project needs require.
+```
+
+**Design meaning:** Erlang provides the original runtime and OTP conceptual bedrock. Elixir provides a modern developer experience and ecosystem. Studying them together prevents shallow understanding.
+
+**Common Pitfalls:** Learning Elixir only through Phoenix/Ecto can produce framework fluency without BEAM fluency. Learning Erlang only through syntax can miss the practical ergonomics Elixir adds.
+
+### Comparison with Ruby — surface influence, deep difference
+
+Elixir’s syntax and developer ergonomics were partly influenced by Ruby, but the runtime model is fundamentally different.
+
+| Ruby-like impression       | BEAM reality                                           |
+| -------------------------- | ------------------------------------------------------ |
+| Friendly syntax            | Runs on BEAM, not Ruby VM                              |
+| Blocks/DSL feel            | Macro-backed compile-time system                       |
+| Developer ergonomics       | Functional immutable data model                        |
+| Method-call resemblance    | Module functions and protocols, not objects by default |
+| Web framework productivity | Phoenix uses BEAM processes and OTP                    |
+| Dynamic language feel      | Pattern matching and supervision shape architecture    |
+
+| Topic            | Ruby                                         | Elixir                                        |
+| ---------------- | -------------------------------------------- | --------------------------------------------- |
+| Core model       | Objects and methods                          | Modules, functions, immutable data, processes |
+| Concurrency      | Implementation-dependent threads/fibers etc. | BEAM lightweight processes                    |
+| Fault tolerance  | Framework/application-level                  | OTP supervision model                         |
+| Pattern matching | Not historically central                     | Central                                       |
+| Macros           | Not like Elixir macros                       | Compile-time AST macros                       |
+| Runtime interop  | Ruby ecosystem                               | Erlang/OTP ecosystem                          |
+
+**Design meaning:** Elixir may feel syntactically approachable to Ruby programmers, but treating Elixir as “Ruby for the BEAM” is misleading. The architecture is functional, process-oriented, and OTP-centered.
+
+**Common Pitfalls:** Do not design Elixir systems as mutable object graphs with methods. Use values, modules, processes, supervision, and message protocols.
+
+### Comparison with Go — lightweight concurrency but different communication model
+
+Go and Erlang / Elixir are often compared because both support lightweight concurrent units. But their models differ.
+
+| Topic              | Go                               | Erlang / Elixir                       |
+| ------------------ | -------------------------------- | ------------------------------------- |
+| Lightweight unit   | Goroutine                        | BEAM process                          |
+| Communication      | Channels, shared memory possible | Process mailbox, message passing      |
+| Failure            | Panic/recover, error values      | Exits, links, monitors, supervision   |
+| Shared memory      | Common and supported             | Avoided in ordinary process model     |
+| Runtime scheduling | Goroutine scheduler              | BEAM scheduler/reductions             |
+| Type system        | Static                           | Dynamic with specs/analysis           |
+| Service recovery   | Application design               | OTP supervision central               |
+| Message receiver   | Channel receives                 | Process mailbox receives all messages |
+
+**Design meaning:** Go channels are not BEAM mailboxes. In BEAM, each process has a mailbox and can selectively receive different message shapes. This increases flexibility but also requires protocol discipline.
+
+**Common Pitfalls:** Do not assume senders naturally block when receivers are slow. BEAM sends and `cast`s usually do not create automatic backpressure.
+
+### Comparison with Rust — different reliability philosophy
+
+Rust emphasizes compile-time memory safety, ownership, zero-cost abstractions, and static guarantees. Erlang / Elixir emphasizes runtime isolation, process failure containment, and supervision.
+
+| Topic              | Rust                                                 | Erlang / Elixir                       |
+| ------------------ | ---------------------------------------------------- | ------------------------------------- |
+| Type checking      | Strong static                                        | Dynamic with specs and analysis       |
+| Memory safety      | Compile-time ownership/borrowing                     | Garbage-collected process heaps       |
+| Error model        | `Result`, panic                                      | Tagged tuples, exceptions, exits      |
+| Concurrency safety | Ownership and type system                            | Process isolation and message passing |
+| Fault recovery     | Application/library design                           | OTP supervision                       |
+| Performance        | Systems-level control                                | Runtime-managed concurrency           |
+| Upgrade/runtime    | Native binary model                                  | Long-running VM model                 |
+| Best fit           | Systems programming, performance-critical components | Concurrent fault-tolerant services    |
+
+**Design meaning:** Rust prevents many bugs before runtime. Erlang / Elixir expects some failures at runtime and contains them architecturally. These are different reliability philosophies.
+
+**Common Pitfalls:** Do not expect Erlang / Elixir pattern matching to give Rust-like exhaustiveness guarantees. Tests, specs, and runtime boundaries remain necessary.
+
+### Comparison with Haskell / OCaml / F# — functional similarity, type-system difference
+
+Erlang / Elixir shares functional concepts with ML-family languages but differs sharply in type system and runtime priorities.
+
+| Topic                      | Haskell / OCaml / F#               | Erlang / Elixir                           |
+| -------------------------- | ---------------------------------- | ----------------------------------------- |
+| Functions and immutability | Central                            | Central                                   |
+| Pattern matching           | Central                            | Central                                   |
+| Algebraic data types       | Static and declared                | Atoms/tagged tuples/structs by convention |
+| Exhaustiveness             | Often compiler-assisted            | Mostly runtime/test/spec discipline       |
+| Type inference             | Strong static                      | Dynamic                                   |
+| Purity                     | Haskell pure, OCaml/F# mixed       | Effectful functional                      |
+| Concurrency                | Language/runtime-specific          | BEAM processes central                    |
+| Fault tolerance            | Not usually core language identity | OTP central                               |
+
+**Design meaning:** Erlang / Elixir is functional, but not in the same way as statically typed ML/Haskell systems. Its functional style serves concurrency, clarity, and fault isolation rather than full static proof.
+
+**Common Pitfalls:** Do not assume tagged tuples provide compiler-enforced ADTs. They are conventions enforced by runtime pattern matching and discipline.
+
+### Comparison with Java / C# — no class-centered architecture
+
+Java and C# often organize systems around classes, interfaces, objects, dependency injection, and static nominal types. Erlang / Elixir organize systems around modules, functions, data terms, behaviours, protocols, and processes.
+
+| Topic                | Java/C#                     | Erlang / Elixir                                  |
+| -------------------- | --------------------------- | ------------------------------------------------ |
+| Main unit            | Class                       | Module                                           |
+| Data + behavior      | Usually combined in objects | Usually separated: data terms + module functions |
+| Interface            | Static nominal interface    | Behaviour/protocol depending need                |
+| Mutable state        | Common in objects           | Process state or immutable values                |
+| Concurrency          | Threads/tasks/async         | BEAM processes/message passing                   |
+| Error handling       | Exceptions common           | Tagged errors, exceptions, exits                 |
+| Runtime recovery     | Framework/application-level | OTP supervision                                  |
+| Dependency injection | Common framework pattern    | Modules/functions/config/behaviours              |
+
+**Design meaning:** Structs are not classes. Processes are not objects. Modules are not classes. Trying to translate Java architecture directly produces awkward BEAM code.
+
+**Common Pitfalls:** Do not create a `GenServer` for every “object.” A process should represent runtime behavior and lifecycle, not just a data record.
+
+### Comparison with JavaScript / Node.js — event loop versus process model
+
+JavaScript/Node.js and BEAM systems both support high concurrency, but through very different runtime models.
+
+| Topic                 | Node.js                                     | Erlang / Elixir                                             |
+| --------------------- | ------------------------------------------- | ----------------------------------------------------------- |
+| Concurrency model     | Event loop, promises, async callbacks       | Many BEAM processes                                         |
+| Blocking              | Blocks event loop if CPU-bound              | Blocks current BEAM process; scheduler effects for CPU work |
+| State                 | Closures/objects/modules                    | Process state/immutable values/ETS                          |
+| Failure               | Exceptions/rejected promises/process errors | Exits, monitors, supervision                                |
+| Message model         | Events, callbacks, workers                  | Mailboxes and message terms                                 |
+| Backpressure          | Streams/framework-specific                  | Protocol/framework-specific                                 |
+| Runtime introspection | Event loop/tools                            | Process inspection, mailboxes, supervisors                  |
+
+**Design meaning:** `Task` is not a JavaScript `Promise`; a BEAM process is not a callback; a mailbox is not the Node event queue.
+
+**Common Pitfalls:** Do not assume `async`/`await` mental models transfer cleanly to `Task.await`, `GenServer.call`, or `receive`.
+
+### Comparison with Python — dynamic language similarity, runtime difference
+
+Python and Elixir/Erlang are all dynamically typed, but their runtime and architecture differ strongly.
+
+| Topic             | Python                                          | Erlang / Elixir                  |
+| ----------------- | ----------------------------------------------- | -------------------------------- |
+| Dynamic typing    | Yes                                             | Yes                              |
+| Data structures   | dict/list/object                                | maps/lists/tuples/binaries/terms |
+| Concurrency       | threads/async/multiprocessing depending use     | BEAM processes                   |
+| Fault tolerance   | Library/framework-level                         | OTP supervision                  |
+| Pattern matching  | Newer Python feature, less central historically | Central                          |
+| Runtime services  | General-purpose interpreter                     | Concurrency/fault-tolerant VM    |
+| Process isolation | OS processes or manual design                   | BEAM processes by default        |
+| Distribution      | Library/framework-level                         | Built-in distributed node model  |
+
+**Design meaning:** Dynamic typing alone does not define the language style. Erlang / Elixir dynamic typing is paired with pattern matching, process isolation, and supervision.
+
+**Common Pitfalls:** Do not treat maps like Python dict blobs everywhere. Erlang / Elixir code benefits from explicit tagged tuples, structs, specs, and validation boundaries.
+
+### Cross-Language Translation Table — choosing the BEAM equivalent
+
+| Familiar concept     | Rough BEAM equivalent                            | Important difference                       |
+| -------------------- | ------------------------------------------------ | ------------------------------------------ |
+| Class                | Module + struct/record + functions               | Data and behavior separated                |
+| Object instance      | Struct/map/record or process depending semantics | Passive data versus active process         |
+| Interface            | Behaviour or protocol                            | Module contract versus data dispatch       |
+| Exception            | Exception or process exit                        | Expected failures often tagged tuples      |
+| Enum/ADT             | Atom/tagged tuple/struct                         | No full static exhaustiveness              |
+| Future/promise       | Task or process protocol                         | Failure/link/monitor semantics differ      |
+| Actor                | BEAM process                                     | Built into runtime with OTP patterns       |
+| Thread               | BEAM process only loosely                        | Much lighter and isolated                  |
+| Channel              | Process mailbox only loosely                     | One mailbox per process, selective receive |
+| Dependency injection | Module argument, behaviour, config               | Simpler explicit patterns common           |
+| Singleton service    | Supervised named process                         | Runtime process, not class singleton       |
+| Mutable object state | Process state                                    | Serialized through mailbox/callbacks       |
+| Global cache         | ETS or supervised process                        | Needs owner/lifecycle                      |
+| Plugin               | Behaviour implementation                         | Runtime module contract                    |
+| Typeclass            | Protocol partly                                  | Runtime dispatch by data type              |
+| Macro                | Elixir macro                                     | Compile-time AST transformation            |
+
+### Historical Design Consequence — reliability is architectural, not only local
+
+Erlang / Elixir reliability does not come from one mechanism. It comes from a stack:
+
+| Layer                      | Reliability contribution              |
+| -------------------------- | ------------------------------------- |
+| Immutable values           | Reduce accidental mutation            |
+| Pattern matching           | Make shape assumptions executable     |
+| Tagged returns             | Make expected failures explicit       |
+| Process isolation          | Localize crashes and memory           |
+| Mailboxes                  | Decouple concurrent activities        |
+| Links/monitors             | Observe and propagate process failure |
+| Supervision                | Restart failed components             |
+| OTP behaviours             | Standardize process patterns          |
+| Application structure      | Define lifecycle and startup          |
+| Runtime inspection         | Diagnose live systems                 |
+| Operational logs/telemetry | Observe behavior over time            |
+
+**Design meaning:** A BEAM system is reliable when these layers align. It is not reliable merely because it uses Elixir, Erlang, OTP, or supervisors.
+
+**Common Pitfalls:** A poorly designed `GenServer` with no backpressure, unclear state, and unsafe side effects is still a poorly designed system.
+
+### Part 8 Summary — historical context as practical design guidance
+
+Erlang began from the needs of highly concurrent, fault-tolerant, long-running systems. Its deepest ideas are lightweight processes, message passing, fault isolation, supervision, and operational runtime behavior.
+
+Elixir brought modern syntax, macros, tooling, and ecosystem ergonomics to the same BEAM/OTP foundation. It did not replace Erlang’s runtime model; it made that model more accessible and extensible.
+
+The practical conclusion is:
+
+```text
+Study Erlang and Elixir together at the BEAM/OTP level.
+Use Elixir for ergonomic application development where appropriate.
+Learn enough Erlang to read OTP docs, runtime modules, and lower-level libraries.
+Evaluate code through the BEAM model: process ownership, message protocols,
+supervision, failure boundaries, memory behavior, and operational cost.
+```
+
+The main mistake to avoid is learning Elixir as only a pleasant functional language or learning Erlang as only an old syntax. The real subject is the BEAM system model.
+## PART 9 — Tooling, Debugging, Testing, Code Review, and Professional Workflow
+
+### Part Scope — from knowing the language to working in real projects
+
+Part 9 explains the professional workflow around Erlang / Elixir: how code is created, formatted, tested, debugged, analyzed, reviewed, documented, released, observed, and maintained.
+
+The previous parts built the conceptual stack:
+
+```text
+Part 2: syntax
+Part 3: data and modeling
+Part 4: behavior and abstraction
+Part 5: boundaries and failure policy
+Part 6: standard library and ecosystem
+Part 7: BEAM runtime and cost model
+Part 8: historical rationale and cross-language positioning
+```
+
+Part 9 now asks:
+
+```text
+How should Erlang / Elixir code be worked on professionally?
+```
+
+This means understanding not only language constructs, but also `Mix`, `Rebar3`, `IEx`, `erl`, formatting, static analysis, tests, process inspection, supervision diagnostics, logging, telemetry, releases, dependency hygiene, code review, and production debugging.
+
+| Workflow area      | Elixir-centered tools                           | Erlang-centered tools                                  | Main professional question                        |
+| ------------------ | ----------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------- |
+| Project workflow   | `mix`, `iex -S mix`                             | `rebar3`, `erl`, OTP apps                              | How is the code built, run, tested, and released? |
+| Formatting/style   | `mix format`, Credo ecosystem                   | project/team conventions, formatter support where used | Is code consistently readable?                    |
+| Testing            | ExUnit                                          | EUnit, Common Test                                     | Are pure logic, boundaries, and processes tested? |
+| Type/spec analysis | specs, Dialyzer ecosystem                       | `-spec`, Dialyzer                                      | Do specs match implementation?                    |
+| Debugging          | `dbg`, `IO.inspect`, IEx, Observer              | `io:format`, `dbg`/trace tools, Observer               | What is happening at runtime?                     |
+| Process inspection | `Process.info`, Observer                        | `process_info`, Observer                               | Which process owns the problem?                   |
+| Observability      | `Logger`, telemetry ecosystem                   | `logger`, tracing                                      | Can runtime behavior be diagnosed?                |
+| Releases           | `mix release`                                   | OTP releases / Rebar3 release workflow                 | Can the system run outside dev mode?              |
+| Code review        | modules, APIs, message protocols, supervision   | same                                                   | Are boundaries and failure policies correct?      |
+| Learning workflow  | read docs/source, run shells, inspect processes | same                                                   | Can source code be mapped to BEAM behavior?       |
+
+### Task Pattern: Build a Project Workflow — `mix`, `rebar3`, shell, tests, and releases
+
+A professional BEAM workflow separates several activities: editing source, compiling modules, running tests, starting an application shell, building releases, and inspecting the running system.
+
+Elixir common workflow:
+
+```bash
+mix deps.get
+mix compile
+mix test
+iex -S mix
+mix release
+```
+
+Erlang common workflow:
+
+```bash
+rebar3 compile
+rebar3 eunit
+rebar3 ct
+rebar3 shell
+rebar3 release
+```
+
+| Task                         | Elixir                | Erlang                       | Purpose                    |
+| ---------------------------- | --------------------- | ---------------------------- | -------------------------- |
+| Fetch dependencies           | `mix deps.get`        | Rebar3 dependency workflow   | Resolve external packages  |
+| Compile                      | `mix compile`         | `rebar3 compile`             | Produce BEAM code          |
+| Run unit tests               | `mix test`            | `rebar3 eunit`               | Verify small behavior      |
+| Run system/integration tests | ExUnit with app setup | Common Test                  | Verify runtime components  |
+| Start project shell          | `iex -S mix`          | `rebar3 shell`               | Explore loaded application |
+| Build release                | `mix release`         | Rebar3/OTP release           | Deployable artifact        |
+| Inspect dependencies         | `mix deps.tree`       | dependency tree commands     | Dependency hygiene         |
+| Generate docs                | ExDoc workflow        | EDoc/ExDoc depending project | API documentation          |
+
+**Design meaning:** The shell is for exploration, tests are for verification, releases are for deployment, and supervision trees are for runtime lifecycle. A project workflow should not blur these layers.
+
+**Common Pitfalls:** Code that works in `iex -S mix` may fail in a release if it assumes development-only dependencies, source-relative paths, compile-time config, or interactive shell state.
+
+### Task Pattern: Use the Shell Professionally — exploration, not architecture
+
+The shell is a live BEAM process and is extremely useful for learning and debugging.
+
+Elixir:
+
+```elixir
+iex -S mix
+```
+
+Erlang:
+
+```erlang
+rebar3 shell
+```
+
+Useful shell tasks:
+
+| Task                          | Example                                            |
+| ----------------------------- | -------------------------------------------------- |
+| Inspect current process       | `self()`                                           |
+| Spawn process                 | `spawn(fn -> ... end)` / `spawn(fun() -> ... end)` |
+| Send message                  | `send(pid, msg)` / `Pid ! Msg`                     |
+| Receive message               | `receive do ... end` / `receive ... end`           |
+| Call project module           | `MyApp.Module.function(args)`                      |
+| Inspect term                  | `IO.inspect(term)` / `io:format("~p~n", [Term])`   |
+| Inspect process               | `Process.info(pid)` / `process_info(Pid)`          |
+| Try Erlang module from Elixir | `:ets.info(table)`                                 |
+| Test pattern shape            | `case value do ... end`                            |
+
+Elixir example:
+
+```elixir
+pid =
+  spawn(fn ->
+    receive do
+      {:ping, from} -> send(from, :pong)
+    end
+  end)
+
+send(pid, {:ping, self()})
+
+receive do
+  :pong -> :ok
+end
+```
+
+**Design meaning:** The shell is ideal for understanding BEAM behavior because it is itself a process. It can send, receive, spawn, monitor, link, and inspect.
+
+**Common Pitfalls:** Do not design production behavior by copying ad hoc shell code. Shell experiments should be turned into modules, tests, and supervised runtime structures.
+
+### Task Pattern: Format and Style Code — consistency as a maintenance tool
+
+Formatting is not just aesthetics. In pattern-heavy code, consistent formatting makes clauses, guards, pipelines, and callback boundaries readable.
+
+Elixir usually uses:
+
+```bash
+mix format
+```
+
+Typical formatting targets:
+
+| Code form           | Formatting value                              |
+| ------------------- | --------------------------------------------- |
+| Function clauses    | Makes dispatch order visible                  |
+| `case` branches     | Makes variants readable                       |
+| `with` chains       | Shows success path clearly                    |
+| Pipelines           | Shows transformation stages                   |
+| Struct/map literals | Shows data shape                              |
+| Callback modules    | Separates public API from callbacks           |
+| Tests               | Makes expected shapes obvious                 |
+| Macro DSLs          | Keeps generated-code-facing syntax consistent |
+
+Example of readable clause formatting:
+
+```elixir
+def parse_status("pending"), do: {:ok, :pending}
+def parse_status("approved"), do: {:ok, :approved}
+def parse_status("rejected"), do: {:ok, :rejected}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+**Design meaning:** Formatting supports semantic reading. Erlang / Elixir code often communicates through shape alignment and clause order.
+
+**Common Pitfalls:** Do not fight the formatter for personal layout preferences unless a team has a deliberate reason. In Elixir especially, formatter-conforming code improves collaboration.
+
+### Task Pattern: Use Static and Semantic Checks — compiler warnings, specs, Dialyzer, and linting
+
+A professional workflow should treat warnings seriously.
+
+| Check type        | Elixir                         | Erlang                      | Finds                                       |
+| ----------------- | ------------------------------ | --------------------------- | ------------------------------------------- |
+| Compiler warnings | `mix compile` warnings         | compiler warnings           | unused vars, unreachable clauses, bad calls |
+| Specs             | `@spec`, `@type`, `@opaque`    | `-spec`, `-type`, `-opaque` | API contracts                               |
+| Dialyzer          | Mix-integrated ecosystem tools | `dialyzer`                  | likely type/spec discrepancies              |
+| Callback checks   | `@impl true`, behaviours       | behaviours/callbacks        | missing/wrong callbacks                     |
+| Lint/style        | Credo-like ecosystem           | project conventions/tools   | style and maintainability                   |
+| Tests             | ExUnit                         | EUnit/Common Test           | behavior                                    |
+| Runtime checks    | patterns, guards, validation   | same                        | boundary correctness                        |
+
+Elixir callback example:
+
+```elixir
+@impl true
+def handle_call(:get, _from, state) do
+  {:reply, state, state}
+end
+```
+
+Erlang spec example:
+
+```erlang
+-spec fetch_user(pos_integer()) -> {ok, user()} | {error, not_found}.
+```
+
+**Design meaning:** Erlang / Elixir does not have a mandatory static type checker like Rust or OCaml. Therefore professional confidence comes from a stack: compiler warnings, specs, analysis, tests, runtime validation, supervision, and observability.
+
+**Common Pitfalls:** Do not ignore warnings about unreachable clauses. Clause order is semantic; an unreachable clause often means the behavior is wrong.
+
+### Task Pattern: Write Tests at the Right Boundary — pure functions, parsers, processes, supervision
+
+Testing should follow the same boundary model as the code.
+
+| Code type                | What to test                           | Example assertion                           |
+| ------------------------ | -------------------------------------- | ------------------------------------------- |
+| Pure function            | Input/output shape                     | `assert normalize(x) == y`                  |
+| Parser                   | valid and invalid external input       | `assert {:error, reason} = parse(bad)`      |
+| Constructor              | invariant enforcement                  | invalid values rejected                     |
+| Public API               | stable return shapes                   | `{:ok, value}` / `{:error, reason}`         |
+| Process API              | calls/casts through public functions   | `assert Server.get(pid) == value`           |
+| OTP callback             | usually indirectly through process API | avoid direct callback testing unless needed |
+| Supervisor               | restart behavior and child lifecycle   | child restarts or does not restart          |
+| External client boundary | normalized errors                      | timeout/unavailable handling                |
+| Serialization            | version compatibility                  | old/new payload decode                      |
+| Resource owner           | cleanup and failure behavior           | owner death/table cleanup                   |
+
+Elixir process test style:
+
+```elixir
+test "stores and fetches values" do
+  {:ok, pid} = Cache.start_link([])
+
+  assert :ok = Cache.put(pid, :x, 1)
+  assert {:ok, 1} = Cache.get(pid, :x)
+end
+```
+
+Better than testing callback internals directly:
+
+```elixir
+# Usually weaker as primary public test:
+Cache.handle_call({:put, :x, 1}, self(), %{})
+```
+
+**Design meaning:** Tests should exercise public contracts. OTP callbacks are implementation details unless the callback itself is the target of a unit test.
+
+**Common Pitfalls:** Do not test only happy paths. In BEAM systems, invalid input, timeouts, process death, mailbox behavior, and restart policy are often the real risk.
+
+### Task Pattern: Test Error Shapes — stable failure contracts
+
+Error shapes are API contracts and should be tested explicitly.
+
+```elixir
+test "rejects unknown status" do
+  assert {:error, :invalid_status} = Parser.parse_status("bad")
+end
+```
+
+```elixir
+test "returns not_found for missing user" do
+  assert {:error, :not_found} = Accounts.fetch_user(-1)
+end
+```
+
+| Error behavior               | Test target                             |
+| ---------------------------- | --------------------------------------- |
+| Invalid external input       | exact error reason                      |
+| Missing lookup               | `:not_found` or `:error` as documented  |
+| Timeout                      | timeout return or exit behavior         |
+| Unauthorized                 | stable reason such as `:forbidden`      |
+| Duplicate                    | stable reason such as `:already_exists` |
+| External service unavailable | normalized error                        |
+| Internal invariant           | crash/assertion where appropriate       |
+
+**Design meaning:** A success shape without tested failure shape is only half an API.
+
+**Common Pitfalls:** Avoid tests that only assert “some error occurred” when callers depend on the specific reason.
+
+### Task Pattern: Test Concurrent Code — public APIs, timeouts, and deterministic synchronization
+
+Concurrent tests should avoid arbitrary sleeps where possible.
+
+Weak test:
+
+```elixir
+Server.do_async(pid)
+Process.sleep(100)
+assert Server.done?(pid)
+```
+
+Better if the API allows synchronization:
+
+```elixir
+Server.do_async(pid)
+assert :ok = Server.await_done(pid, 1_000)
+```
+
+Or use a message/ref pattern:
+
+```elixir
+ref = make_ref()
+Server.do_async(pid, self(), ref)
+
+assert_receive {:done, ^ref}, 1_000
+```
+
+| Concurrent testing problem | Better strategy                                        |
+| -------------------------- | ------------------------------------------------------ |
+| Race condition             | Use explicit messages/refs                             |
+| Arbitrary sleep            | Use `assert_receive`, call, monitor, or controlled API |
+| Process crash              | Monitor or trap expected exits in test                 |
+| Timeout behavior           | Test with controlled short timeout                     |
+| Async side effect          | Add observable completion signal                       |
+| Supervised child restart   | Query supervisor/registry after crash                  |
+| Mailbox contamination      | Flush or isolate test process carefully                |
+
+**Design meaning:** Concurrent tests need synchronization, not hope. BEAM makes message-based synchronization natural.
+
+**Common Pitfalls:** Tests that pass only because `Process.sleep` was long enough are fragile.
+
+### Task Pattern: Test Supervision — child death, restart, and state recovery
+
+Supervision should be tested when restart behavior is part of the design.
+
+Elixir sketch:
+
+```elixir
+test "restarts cache after crash" do
+  {:ok, sup} = MySupervisor.start_link([])
+
+  pid1 = Process.whereis(MyApp.Cache)
+  Process.exit(pid1, :kill)
+
+  eventually(fn ->
+    pid2 = Process.whereis(MyApp.Cache)
+    assert is_pid(pid2)
+    assert pid2 != pid1
+  end)
+end
+```
+
+A simple helper may poll until a condition is true:
+
+```elixir
+defp eventually(fun, attempts \\ 20)
+
+defp eventually(fun, attempts) when attempts > 0 do
+  try do
+    fun.()
+  rescue
+    _ ->
+      Process.sleep(10)
+      eventually(fun, attempts - 1)
+  end
+end
+
+defp eventually(fun, 0), do: fun.()
+```
+
+| Supervision test     | Question                                        |
+| -------------------- | ----------------------------------------------- |
+| Child restart        | Does child restart after abnormal exit?         |
+| Normal exit          | Does restart policy behave correctly?           |
+| Dynamic child start  | Does supervisor start child with expected spec? |
+| Restart intensity    | Does repeated crash escalate?                   |
+| State recovery       | Is state restored, reset, or rebuilt?           |
+| Registry integration | Is restarted child discoverable?                |
+| Shutdown             | Does child stop gracefully?                     |
+
+**Design meaning:** Supervision tests should not only check “child exists.” They should check whether the restart semantics match the domain.
+
+**Common Pitfalls:** Restarting a process does not prove operation recovery. State and side effects still need tests.
+
+### Task Pattern: Debug Values — `IO.inspect`, `dbg`, `io:format`, labels, and shape reading
+
+For local value debugging, use tools that show term shape clearly.
+
+Elixir:
+
+```elixir
+IO.inspect(value, label: "decoded")
+```
+
+Pipeline-friendly:
+
+```elixir
+params
+|> parse()
+|> IO.inspect(label: "after parse")
+|> validate()
+```
+
+Erlang:
+
+```erlang
+io:format("Decoded: ~p~n", [Decoded]).
+```
+
+| Debugging need        | Tool                              |
+| --------------------- | --------------------------------- |
+| Arbitrary Elixir term | `IO.inspect/2`                    |
+| Pipeline stage        | `IO.inspect/2`, `dbg`             |
+| Erlang term           | `io:format("~p~n", [Term])`       |
+| Human-facing output   | `IO.puts`, `io:format("~s", ...)` |
+| Large term            | inspect limits/options            |
+| Secret-bearing term   | redaction, avoid raw inspect      |
+
+**Design meaning:** Debugging values in Erlang / Elixir often means confirming exact shape: tuple tag, atom/string key, binary/list text form, struct type, PID/ref, or error reason.
+
+**Common Pitfalls:** Do not leave raw `IO.inspect` in production code. Use structured logging with safe metadata when diagnostic output is needed.
+
+### Task Pattern: Debug Processes — PID, mailbox, current function, state access
+
+When a system behaves incorrectly, identify the process involved.
+
+Elixir process inspection:
+
+```elixir
+Process.info(pid, [
+  :current_function,
+  :message_queue_len,
+  :memory,
+  :links,
+  :monitors,
+  :monitored_by,
+  :reductions
+])
+```
+
+Erlang:
+
+```erlang
+process_info(Pid, [
+    current_function,
+    message_queue_len,
+    memory,
+    links,
+    monitors,
+    monitored_by,
+    reductions
+]).
+```
+
+| Symptom             | Inspect                                                |
+| ------------------- | ------------------------------------------------------ |
+| Server timeout      | target process `message_queue_len`, `current_function` |
+| High memory         | process memory, binary memory, ETS                     |
+| Missing response    | caller mailbox, server process, monitor                |
+| Crash/restart       | supervisor reports, logs                               |
+| Slow system         | scheduler/run queue metrics, hot processes             |
+| Unexpected messages | mailbox protocol, `handle_info`                        |
+| Leaked process      | process count, supervisors, registries                 |
+| State bug           | public API, debugging callback, observer tools         |
+
+**Design meaning:** BEAM debugging is process-oriented. The first question is often not “which line is wrong?” but “which process owns the stuck state or mailbox?”
+
+**Common Pitfalls:** If `GenServer.call` times out, the caller stack trace alone is insufficient. Inspect the server process.
+
+### Task Pattern: Debug Mailboxes — queue length, selective receive, and unexpected messages
+
+Mailbox issues are common in real BEAM systems.
+
+| Mailbox symptom             | Likely cause                          |
+| --------------------------- | ------------------------------------- |
+| Growing `message_queue_len` | Receiver slower than senders          |
+| Late replies                | Server blocked or overloaded          |
+| Stale messages              | Timeout occurred before reply arrived |
+| Unexpected `handle_info`    | Plain message/timer/monitor/socket    |
+| Selective receive delay     | Many unmatched messages               |
+| Memory growth               | Messages accumulate                   |
+| Cast overload               | Fire-and-forget producers too fast    |
+
+Elixir inspection:
+
+```elixir
+Process.info(pid, :message_queue_len)
+```
+
+**Design meaning:** Mailbox length is often a better first diagnostic than CPU profiling for server responsiveness problems.
+
+**Common Pitfalls:** A catch-all `handle_info(_msg, state)` that ignores unknown messages may hide mailbox protocol bugs.
+
+### Task Pattern: Debug `GenServer.call` Timeouts
+
+A `GenServer.call` timeout can mean several different things.
+
+| Cause                      | Diagnostic                             |
+| -------------------------- | -------------------------------------- |
+| Server process dead        | Is PID/name alive?                     |
+| Server blocked in callback | Inspect `current_function`             |
+| Server mailbox huge        | Inspect `message_queue_len`            |
+| Callback work too slow     | Profile or log callback timing         |
+| Deadlock-like call cycle   | Check if server calls caller or itself |
+| External dependency slow   | Instrument external call               |
+| Wrong registered name      | Verify process lookup                  |
+| Timeout too short          | Compare expected latency               |
+| Reply-later bug            | Ensure `GenServer.reply` is called     |
+| Crash during handling      | Check crash logs/supervisor            |
+
+**Professional rule:** A call timeout is not automatically fixed by increasing timeout. First determine whether the server is alive, blocked, overloaded, or failing.
+
+**Common Pitfalls:** Calling a `GenServer` from inside itself can cause deadlock-like behavior. Avoid synchronous self-calls.
+
+### Task Pattern: Debug Supervision — crash reports, restart loops, and child specs
+
+Supervision debugging requires reading logs and child specs together.
+
+| Symptom                | Inspect                                         |
+| ---------------------- | ----------------------------------------------- |
+| Child keeps restarting | crash reason, restart intensity                 |
+| Supervisor terminates  | restart intensity exceeded or child spec issue  |
+| Child not restarted    | restart type may be `:temporary` or normal exit |
+| Child cannot start     | `start_link` return error                       |
+| Name conflict          | registered name already taken                   |
+| Dynamic child failure  | child spec/start args                           |
+| State lost on restart  | init/recovery design                            |
+| Duplicate side effect  | idempotency/retry boundary                      |
+
+**Design meaning:** Supervisor logs report runtime failure structure. They should be read as architectural evidence, not just noisy errors.
+
+**Common Pitfalls:** Repeated restarts may be worse than one visible failure if the process performs side effects during each attempt.
+
+### Task Pattern: Debug Memory — process heap, binary memory, ETS, persistent term, and retention
+
+Memory problems usually require locating the owner.
+
+| Memory owner              | Diagnostic direction                      |
+| ------------------------- | ----------------------------------------- |
+| One large process         | `Process.info(pid, :memory)`              |
+| Growing mailbox           | `message_queue_len` and message producers |
+| Large binaries            | VM binary memory metrics                  |
+| ETS table                 | `:ets.info(table)`                        |
+| Persistent term           | audit usage                               |
+| Closure capture           | inspect long-lived functions/state        |
+| Process dictionary        | `Process.info(pid, :dictionary)`          |
+| Logger backlog            | logging backend metrics                   |
+| Registry/leaked processes | process count and supervisors             |
+
+ETS info example:
+
+```elixir
+:ets.info(table)
+```
+
+Process dictionary inspection:
+
+```elixir
+Process.info(pid, :dictionary)
+```
+
+**Design meaning:** BEAM memory leaks are often retention: some process, table, mailbox, binary reference, or global store still holds data.
+
+**Common Pitfalls:** A small sub-binary stored in state may retain a huge original binary. Copy the needed small part when necessary.
+
+### Task Pattern: Debug Performance — avoid premature optimization, locate runtime shape
+
+Performance diagnosis should start with runtime shape.
+
+| First question             | Why                           |
+| -------------------------- | ----------------------------- |
+| Is one process overloaded? | Common `GenServer` bottleneck |
+| Is mailbox growing?        | Backpressure problem          |
+| Is external I/O slow?      | Not a BEAM function issue     |
+| Is CPU saturated?          | Scheduler pressure            |
+| Is memory growing?         | Retention or state growth     |
+| Is binary memory high?     | Large binary retention        |
+| Is ETS contended?          | Shared storage bottleneck     |
+| Are tasks unbounded?       | Overparallelization           |
+| Is logging expensive?      | I/O overhead                  |
+| Is a NIF blocking?         | VM responsiveness risk        |
+
+**Design meaning:** In BEAM systems, throughput and latency are often determined by queues, ownership, and external dependencies rather than local algorithmic speed alone.
+
+**Common Pitfalls:** Optimizing a pure transformation will not fix a central server processing all requests serially.
+
+### Task Pattern: Benchmark Correctly — isolate work, warm up, and measure the right thing
+
+Benchmarking should match the actual question.
+
+| Benchmark target     | Correct concern                    |
+| -------------------- | ---------------------------------- |
+| Pure function        | Function execution and allocation  |
+| Pipeline             | eager versus lazy allocations      |
+| Process call         | call latency and mailbox effects   |
+| GenServer throughput | one-process bottleneck             |
+| ETS lookup           | table access pattern               |
+| Serialization        | encode/decode cost and size        |
+| Binary parser        | binary matching and retention      |
+| External request     | network/client/pool latency        |
+| NIF                  | scheduler/native boundary behavior |
+
+Weak benchmark:
+
+```elixir
+:timer.tc(fn -> MyFunction.run(input) end)
+```
+
+This may be acceptable for a quick check, but professional benchmarking needs repeated runs, representative inputs, and isolation from external effects.
+
+**Design meaning:** Benchmark the boundary you actually care about. A microbenchmark of a parser does not measure full request latency.
+
+**Common Pitfalls:** Do not benchmark in an interactive shell and treat the result as production truth. It is useful for exploration, not final performance evidence.
+
+### Task Pattern: Log Professionally — structured metadata, levels, redaction
+
+Logging should be stable, searchable, and safe.
+
+Elixir:
+
+```elixir
+require Logger
+
+Logger.info("user created", user_id: user.id)
+Logger.warning("external service timeout", service: :billing, request_id: request_id)
+```
+
+Erlang:
+
+```erlang
+logger:info("user created", #{user_id => UserId}).
+```
+
+| Logging concern         | Rule                             |
+| ----------------------- | -------------------------------- |
+| Secret data             | Redact or avoid                  |
+| User input              | Avoid raw logging unless safe    |
+| IDs                     | Useful as metadata               |
+| Error reason            | Useful if stable/safe            |
+| Large payload           | Avoid or truncate                |
+| High-cardinality labels | Use carefully                    |
+| Log level               | Match operational severity       |
+| Repeated failures       | Avoid log floods                 |
+| Structured metadata     | Prefer over string interpolation |
+
+**Design meaning:** Logs are an external data stream. They are operational interfaces, not temporary print statements.
+
+**Common Pitfalls:** `inspect(params)` in logs can leak tokens, passwords, cookies, personal data, and large payloads.
+
+### Task Pattern: Use Telemetry and Metrics — stable events, bounded metadata, useful measurements
+
+Telemetry-style instrumentation should be treated as a contract.
+
+Typical event shape:
+
+```elixir
+event = [:my_app, :worker, :job, :stop]
+measurements = %{duration: duration}
+metadata = %{job_type: job_type, result: result}
+```
+
+| Telemetry component     | Rule                            |
+| ----------------------- | ------------------------------- |
+| Event name              | Stable atom list                |
+| Measurements            | Numeric values                  |
+| Metadata                | Bounded and safe                |
+| Dynamic values          | Avoid as event name             |
+| Secrets                 | Never include                   |
+| High-cardinality fields | Use carefully                   |
+| Duration                | Use monotonic time              |
+| Error labels            | Normalize                       |
+| Versioning              | Treat subscribers as dependents |
+
+**Design meaning:** Metrics and telemetry are how runtime behavior becomes visible. They are especially important for mailboxes, process throughput, external calls, job processing, and failure rates.
+
+**Common Pitfalls:** Do not put user IDs or arbitrary request values into metric labels if the backend treats them as high-cardinality dimensions.
+
+### Task Pattern: Use Tracing Carefully — powerful but high-risk in production
+
+Tracing can observe calls, messages, process events, and runtime behavior. It is powerful and can be expensive.
+
+| Trace target         | Use                       |
+| -------------------- | ------------------------- |
+| Function calls       | Find unexpected call path |
+| Process messages     | Debug protocol            |
+| Process exits        | Debug lifecycle           |
+| Scheduler/runtime    | Performance analysis      |
+| Garbage collection   | Memory/latency analysis   |
+| ETS operations       | Table behavior            |
+| Distributed messages | Protocol debugging        |
+
+**Design meaning:** Tracing is a runtime microscope. It can produce enormous data and affect system performance.
+
+**Common Pitfalls:** Do not enable broad tracing in production without filters, limits, and a rollback plan.
+
+### Task Pattern: Release and Runtime Configuration Workflow
+
+A release is not the same as development mode.
+
+| Development mode                         | Release mode                          |
+| ---------------------------------------- | ------------------------------------- |
+| Source tree available                    | Artifact may not include source paths |
+| `iex -S mix`                             | release command/remote shell          |
+| Dev config may be loaded                 | runtime config rules apply            |
+| Dependencies accessible in build context | packaged applications required        |
+| Quick recompilation                      | release build/deploy                  |
+| Local env assumptions                    | deployment env reality                |
+| Test database/services                   | production services                   |
+
+Release checklist:
+
+| Question                                  | Reason                    |
+| ----------------------------------------- | ------------------------- |
+| Are required OTP apps included?           | Runtime start             |
+| Is runtime config parsed correctly?       | Deployment correctness    |
+| Are secrets loaded safely?                | Security                  |
+| Are NIFs compatible with target OS?       | Native dependency risk    |
+| Are ports/external executables available? | OS integration            |
+| Are migrations handled?                   | Database compatibility    |
+| Is remote shell access planned?           | Operations                |
+| Are logs/metrics configured?              | Observability             |
+| Are node names/cookies configured?        | Distribution/remote shell |
+
+**Common Pitfalls:** A path like `"priv/data/file.txt"` may work in development but fail in release if accessed incorrectly. Use application-aware path APIs and release-safe conventions.
+
+### Task Pattern: Review Code by BEAM Semantics, Not Only Style
+
+A BEAM code review should ask runtime and boundary questions.
+
+| Review area      | Questions                                          |
+| ---------------- | -------------------------------------------------- |
+| Public API       | Are return shapes stable and documented?           |
+| Input validation | Are external maps/binaries/strings normalized?     |
+| Error policy     | Are expected failures data and invariants crashes? |
+| Process use      | Does this need a process?                          |
+| GenServer        | Can callbacks block? Is state too large?           |
+| Casts            | Is overload possible? Is confirmation needed?      |
+| Messages         | Are messages tagged and correlated?                |
+| Supervision      | Is restart policy domain-correct?                  |
+| Resources        | Who owns and cleans them?                          |
+| ETS              | Is there an owner API and schema?                  |
+| Atoms            | Any dynamic atom creation?                         |
+| Binaries         | Any large binary retention risk?                   |
+| Dependencies     | Any NIFs/macros/runtime apps introduced?           |
+| Logging          | Any secret or large data logging?                  |
+| Tests            | Are failure paths and process behavior tested?     |
+
+**Design meaning:** In Erlang / Elixir, style-only review is insufficient. Runtime ownership and failure semantics are part of correctness.
+
+**Common Pitfalls:** Approving clean-looking code that adds an unbounded `cast` path may create a production overload bug.
+
+### Task Pattern: Review `GenServer` Modules
+
+`GenServer` modules deserve special review because they often become bottlenecks or boundary leaks.
+
+| Review question                             | Problem detected            |
+| ------------------------------------------- | --------------------------- |
+| Is there a public API wrapping calls/casts? | Raw protocol leakage        |
+| Are callbacks small?                        | Callback monolith           |
+| Can any callback block long?                | Server stall                |
+| Is state size bounded?                      | Memory/GC issue             |
+| Are casts safe under load?                  | Mailbox growth              |
+| Are calls timeout-aware?                    | Caller failure              |
+| Are `handle_info` messages known?           | Unexpected mailbox messages |
+| Is restart state recovery defined?          | Lost state                  |
+| Are external side effects idempotent?       | Duplicate side effects      |
+| Are monitors handled?                       | Mailbox clutter             |
+| Are timers stale-safe?                      | Wrong timeout behavior      |
+
+**Common Pitfalls:** A `GenServer` should not be the default abstraction for all behavior. It should own state or lifecycle that genuinely benefits from process semantics.
+
+### Task Pattern: Review Macro and DSL Code
+
+Macro code has compile-time behavior and deserves stricter review.
+
+| Macro review question                  | Why                           |
+| -------------------------------------- | ----------------------------- |
+| Is a macro necessary?                  | Functions are simpler         |
+| Are arguments evaluated once?          | Avoid duplicated side effects |
+| Is hygiene handled?                    | Avoid variable capture        |
+| Are generated functions documented?    | Public API clarity            |
+| Are errors readable?                   | Developer usability           |
+| Are imports/aliases hidden?            | Source clarity                |
+| Does `use` inject callbacks?           | Module contract               |
+| Does the macro depend on caller env?   | Compile-time coupling         |
+| Are tests checking expansion behavior? | Macro correctness             |
+
+**Common Pitfalls:** Macros that save a few lines but hide ordinary runtime behavior usually reduce maintainability.
+
+### Task Pattern: Review Dependencies
+
+Dependency review is part of BEAM professionalism.
+
+| Dependency question                        | Why                          |
+| ------------------------------------------ | ---------------------------- |
+| Does it start an OTP application?          | Runtime lifecycle            |
+| Does it use NIFs?                          | VM/deployment risk           |
+| Does it define macros?                     | Compile-time coupling        |
+| Is it maintained?                          | Security and compatibility   |
+| Is its error shape stable?                 | Boundary design              |
+| Does it add telemetry/logging?             | Observability impact         |
+| Does it require config?                    | Runtime setup                |
+| Does it support target versions?           | Upgrade safety               |
+| Does it introduce transitive dependencies? | Risk surface                 |
+| Is the standard library enough?            | Avoid unnecessary dependency |
+
+**Common Pitfalls:** A small dependency that introduces a NIF or compile-time macro may be much heavier than it appears.
+
+### Task Pattern: Maintain Code Over Time — compatibility, deprecation, migration
+
+Maintenance requires keeping contracts stable while allowing internals to evolve.
+
+| Change                       | Maintenance concern       |
+| ---------------------------- | ------------------------- |
+| Public function return shape | Caller breakage           |
+| Error reason                 | Caller branch breakage    |
+| Struct field                 | Pattern/access breakage   |
+| Process message              | Protocol breakage         |
+| Event schema                 | Consumer breakage         |
+| Config option                | Deployment breakage       |
+| Supervision child ID         | Runtime management impact |
+| Dependency update            | Behavior change           |
+| Database schema              | Migration                 |
+| Serialized term              | Decoder compatibility     |
+
+Deprecation strategy:
+
+```elixir
+@doc deprecated: "Use fetch_user/1 instead."
+def get_user(id), do: fetch_user(id)
+```
+
+**Design meaning:** Compatibility is a boundary promise. Internal code can be refactored aggressively only when public contracts are preserved.
+
+**Common Pitfalls:** Changing `{:error, :not_found}` to `nil` because it is shorter is a breaking API change.
+
+### Task Pattern: Read Existing Code Systematically
+
+When entering an Erlang / Elixir project, read by layers.
+
+| Reading step           | What to inspect                                 |
+| ---------------------- | ----------------------------------------------- |
+| Project file           | dependencies, applications, version constraints |
+| Application startup    | supervision tree                                |
+| Public context modules | external API surface                            |
+| Process modules        | state ownership and message protocols           |
+| Boundary modules       | parsers, clients, repos, serializers            |
+| Data modules           | structs, records, specs, opaque types           |
+| Tests                  | intended behavior and failure shape             |
+| Config                 | runtime assumptions                             |
+| Logs/telemetry         | operational contracts                           |
+| Dependencies           | hidden runtime/macro/NIF behavior               |
+
+**Professional rule:** Start with supervision and public API, not random helper functions. In BEAM projects, runtime topology explains code organization.
+
+**Common Pitfalls:** Reading only pure functions misses the process architecture. Reading only supervision misses domain contracts. Both are needed.
+
+### Task Pattern: Learn Erlang / Elixir Effectively — integrated BEAM-first method
+
+Because Erlang and Elixir share the BEAM, the most effective learning path is integrated.
+
+| Stage | Focus                                                             |
+| ----- | ----------------------------------------------------------------- |
+| 1     | Terms: atoms, tuples, lists, maps, binaries                       |
+| 2     | Pattern matching and tagged returns                               |
+| 3     | Functions, clauses, recursion, `case`, `with`                     |
+| 4     | Processes, messages, receive, PIDs, refs                          |
+| 5     | OTP: `GenServer`, `Supervisor`, application                       |
+| 6     | Elixir tooling: Mix, ExUnit, IEx                                  |
+| 7     | Erlang interop: `:ets`, `:crypto`, `:gen_tcp`, `:timer`, `:queue` |
+| 8     | Runtime: mailboxes, scheduler, GC, binaries                       |
+| 9     | Ecosystem: Phoenix/Ecto/etc. only after BEAM basics               |
+| 10    | Production: releases, logging, metrics, tracing                   |
+
+**Design meaning:** Learning Elixir without Erlang/OTP produces shallow framework knowledge. Learning Erlang syntax without Elixir tooling misses modern ecosystem ergonomics. Learn the shared runtime first, then the language-specific surfaces.
+
+### Task Pattern: Build Practice Projects by Runtime Concept
+
+Practice projects should exercise BEAM concepts deliberately.
+
+| Project                   | Concepts trained                             |
+| ------------------------- | -------------------------------------------- |
+| Key-value cache           | `GenServer`, state, calls/casts              |
+| Supervised worker         | supervision, restart policy                  |
+| Dynamic worker registry   | `DynamicSupervisor`, `Registry`              |
+| File parser               | binary/text boundary, tagged errors          |
+| TCP echo server           | sockets, process ownership                   |
+| Job queue simulation      | backpressure, retries, mailbox behavior      |
+| ETS-backed cache          | table ownership, ETS access                  |
+| Event serializer          | versioned data, JSON/binary boundary         |
+| Rate limiter              | time, process state, ETS or GenServer        |
+| PubSub toy                | processes, subscriptions, broadcast          |
+| Process monitor dashboard | `Process.info`, runtime introspection        |
+| Mini DSL                  | macros, quote/unquote, compile-time behavior |
+
+**Common Pitfalls:** Avoid beginning with a full Phoenix app if the goal is BEAM mastery. Framework projects hide many runtime details behind macros and conventions.
+
+### Task Pattern: Professional Workflow Checklist
+
+A mature Erlang / Elixir workflow should include:
+
+| Workflow item                       | Purpose                       |
+| ----------------------------------- | ----------------------------- |
+| Formatting                          | Consistent readability        |
+| Compiler warnings treated seriously | Catch obvious semantic issues |
+| Specs for public APIs               | Contract clarity              |
+| Tests for success and failure       | Behavior verification         |
+| Process tests where relevant        | Runtime correctness           |
+| Supervision tests where relevant    | Recovery correctness          |
+| Boundary validation                 | Trust control                 |
+| Structured logging                  | Operational diagnosis         |
+| Telemetry/metrics                   | Runtime visibility            |
+| Dependency review                   | Risk management               |
+| Release testing                     | Deployment correctness        |
+| Runtime inspection familiarity      | Production debugging          |
+| Code review checklists              | Prevent BEAM-specific bugs    |
+
+### Professional Anti-Pattern Index
+
+| Anti-pattern                           | Professional failure                   |
+| -------------------------------------- | -------------------------------------- |
+| Only testing pure happy paths          | Boundary failures escape               |
+| Treating warnings as noise             | Clause/API errors persist              |
+| Raw messages across modules            | Protocol becomes unmaintainable        |
+| `GenServer` for everything             | Bottlenecks and unnecessary complexity |
+| Unbounded `cast`s                      | Mailbox overload                       |
+| `Process.sleep` in tests               | Flaky concurrency tests                |
+| No telemetry for critical paths        | Production blind spots                 |
+| Raw `inspect` logging                  | Secret leakage and log bloat           |
+| Dynamic atoms from input               | VM-level resource risk                 |
+| No release testing                     | Dev/prod mismatch                      |
+| Overusing macros                       | Debugging and onboarding difficulty    |
+| Ignoring Erlang docs                   | Shallow Elixir understanding           |
+| Adding deps without runtime review     | Hidden NIF/macro/app risks             |
+| Treating supervision as business retry | Duplicate side effects                 |
+| No error-shape tests                   | API breakage unnoticed                 |
+
+### Part 9 Summary — professional BEAM work is runtime-aware work
+
+Professional Erlang / Elixir development is not only writing correct functions. It is managing an entire runtime system:
+
+```text
+compile cleanly
+format consistently
+spec public contracts
+test success and failure
+validate boundaries
+inspect processes
+observe runtime behavior
+supervise lifecycle
+release safely
+review for process, mailbox, resource, and failure semantics
+```
+
+The distinctive professional skill is to connect source code to BEAM behavior. A function clause is not just syntax. A tagged tuple is an API contract. A `GenServer` is a single process. A `cast` is an unconfirmed message. A supervisor restart is not a transaction rollback. An ETS table is shared mutable runtime state. A macro is compile-time code generation.
+
+That connection between code, runtime, and operation is the practical core of Erlang / Elixir mastery.
+## PART 10 — Architecture Patterns, Application Design, and System Construction by Task Pattern
+
+### Part Scope — turning BEAM concepts into complete systems
+
+Part 10 connects the earlier parts into complete application architecture. The question is no longer “what does this syntax mean?” or “which module should be used?” The question is:
+
+```text
+Given a real system requirement, how should the Erlang / Elixir program be shaped?
+```
+
+A BEAM application is usually designed around five architectural decisions:
+
+| Decision             | Main question                                                              |
+| -------------------- | -------------------------------------------------------------------------- |
+| Data boundary        | What enters the system, and how is it validated?                           |
+| Process boundary     | Which components deserve independent processes?                            |
+| Supervision boundary | Which failures should be isolated, restarted, or escalated?                |
+| Storage boundary     | What is plain data, process state, ETS, database state, or external state? |
+| API boundary         | What public shape do callers depend on?                                    |
+
+The key professional rule is:
+
+```text
+Use plain values and functions until runtime behavior requires a process.
+Use a process when state ownership, concurrency, lifecycle, waiting, isolation, or supervision is needed.
+Use supervision when the process matters enough to recover or stop cleanly.
+Use explicit boundaries for external input, external services, persistence, serialization, and process messages.
+```
+
+### Architecture Layer Model — from external input to runtime behavior
+
+A typical Erlang / Elixir system has several layers, but they are not necessarily “controller / service / model” in the object-oriented sense.
+
+| Layer                  | Responsibility                                       | Common BEAM tools                                           |
+| ---------------------- | ---------------------------------------------------- | ----------------------------------------------------------- |
+| External boundary      | Receive HTTP/message/file/socket/input               | Phoenix/Plug, raw sockets, file APIs, message handlers      |
+| Parsing/validation     | Convert unknown data into trusted data               | pattern matching, guards, constructors, changesets, parsers |
+| Domain logic           | Pure or mostly pure transformation                   | modules, structs, records, tagged tuples                    |
+| Effect orchestration   | Call database, external services, processes          | clients, repos, process APIs, `with`, `case`                |
+| Process ownership      | Hold runtime state, serialize access, manage waiting | `GenServer`, raw process loops, `Agent`                     |
+| Supervision            | Start, stop, restart runtime components              | `Supervisor`, `DynamicSupervisor`, OTP supervisors          |
+| Shared runtime storage | Fast in-VM lookup or cache                           | ETS, Registry, persistent term when appropriate             |
+| Persistence            | Durable state                                        | database, event log, files, external stores                 |
+| Observability          | Runtime visibility                                   | Logger, telemetry, process inspection, metrics              |
+| Deployment             | Release and runtime configuration                    | Mix/Rebar3 releases, OTP application config                 |
+
+**Design meaning:** A BEAM architecture is clearest when each layer has a different kind of responsibility. A parser should not own a socket. A domain struct should not start a process. A `GenServer` callback should not contain all business logic. A supervisor should not decide business retry semantics.
+
+**Common Pitfalls:** Do not collapse all layers into a single `GenServer` or a single context module. BEAM makes processes easy, but architecture still needs separation of responsibilities.
+
+### Task Pattern: Design a Public Context Module
+
+In Elixir, a common application pattern is a public context module that exposes stable operations while hiding storage, validation, and process details.
+
+```elixir
+defmodule MyApp.Accounts do
+  @spec create_user(map()) :: {:ok, User.t()} | {:error, term()}
+  def create_user(params) do
+    with {:ok, command} <- CreateUser.new(params),
+         {:ok, user} <- User.new(command),
+         :ok <- UserRepo.insert(user),
+         :ok <- UserEvents.publish({:user_created, user}) do
+      {:ok, user}
+    end
+  end
+
+  @spec fetch_user(pos_integer()) :: {:ok, User.t()} | {:error, :not_found}
+  def fetch_user(id) do
+    UserRepo.fetch(id)
+  end
+end
+```
+
+Erlang equivalent style:
+
+```erlang
+-module(accounts).
+-export([create_user/1, fetch_user/1]).
+
+-spec create_user(map()) -> {ok, user()} | {error, term()}.
+create_user(Params) ->
+    case create_user_command:new(Params) of
+        {ok, Command} ->
+            create_user_from_command(Command);
+        {error, Reason} ->
+            {error, Reason}
+    end.
+
+create_user_from_command(Command) ->
+    case user:new(Command) of
+        {ok, User} ->
+            case user_repo:insert(User) of
+                ok ->
+                    user_events:publish({user_created, User}),
+                    {ok, User};
+                {error, Reason} ->
+                    {error, Reason}
+            end;
+        {error, Reason} ->
+            {error, Reason}
+    end.
+
+-spec fetch_user(pos_integer()) -> {ok, user()} | {error, not_found}.
+fetch_user(Id) ->
+    user_repo:fetch(Id).
+```
+
+| Context module should expose    | Context module should hide                |
+| ------------------------------- | ----------------------------------------- |
+| Stable domain operations        | Raw database schema details               |
+| Stable return shapes            | Raw external client errors                |
+| Public validation errors        | Internal parser structure                 |
+| Domain events where appropriate | Process message tuples                    |
+| High-level effect orchestration | ETS table internals                       |
+| Documented failure modes        | Framework-specific implementation details |
+
+**Design meaning:** A context module is an API boundary. It should express the application’s domain operations, not merely re-export lower-level functions.
+
+**Common Pitfalls:** Do not let public context modules return every raw error from lower layers. Normalize errors if callers need stable behavior.
+
+### Task Pattern: Design a Boundary Parser
+
+External input should be converted into trusted internal data before it reaches domain logic.
+
+Elixir:
+
+```elixir
+defmodule CreateUser do
+  defstruct [:name, :email]
+
+  @type t :: %__MODULE__{
+          name: String.t(),
+          email: String.t()
+        }
+
+  @spec new(map()) :: {:ok, t()} | {:error, term()}
+  def new(%{"name" => name, "email" => email})
+      when is_binary(name) and is_binary(email) do
+    name = String.trim(name)
+    email = String.trim(email)
+
+    cond do
+      name == "" ->
+        {:error, {:invalid_field, :name\}\}
+
+      not String.contains?(email, "@") ->
+        {:error, {:invalid_field, :email\}\}
+
+      true ->
+        {:ok, %__MODULE__{name: name, email: email\}\}
+    end
+  end
+
+  def new(_) do
+    {:error, :invalid_create_user}
+  end
+end
+```
+
+Erlang:
+
+```erlang
+-module(create_user).
+-export([new/1]).
+
+-spec new(map()) -> {ok, map()} | {error, term()}.
+new(#{<<"name">> := Name, <<"email">> := Email})
+  when is_binary(Name), is_binary(Email) ->
+    NormalizedName = string:trim(Name),
+    NormalizedEmail = string:trim(Email),
+    case {NormalizedName, binary:match(NormalizedEmail, <<"@">>)} of
+        {<<>>, _} ->
+            {error, {invalid_field, name\}\};
+        {_, nomatch} ->
+            {error, {invalid_field, email\}\};
+        _ ->
+            {ok, #{name => NormalizedName, email => NormalizedEmail\}\}
+    end;
+new(_) ->
+    {error, invalid_create_user}.
+```
+
+| Boundary parser rule            | Reason                              |
+| ------------------------------- | ----------------------------------- |
+| Accept raw external shape       | Keeps messiness at boundary         |
+| Validate required fields        | Prevents internal shape errors      |
+| Normalize text/numbers/statuses | Converts external representation    |
+| Use explicit atom mappings      | Avoids atom leaks                   |
+| Return tagged errors            | Caller can respond                  |
+| Construct domain command/value  | Internal code receives trusted data |
+| Avoid side effects              | Parser should remain testable       |
+
+**Design meaning:** A boundary parser is a trust transformer. It converts unknown external terms into known internal terms.
+
+**Common Pitfalls:** Do not pass raw HTTP params, JSON maps, or socket payloads deep into application logic.
+
+### Task Pattern: Design a Domain Value Module
+
+A domain value module owns construction, validation, transformation, and representation of a domain concept.
+
+Elixir:
+
+```elixir
+defmodule Email do
+  @opaque t :: %__MODULE__{value: String.t()}
+
+  defstruct [:value]
+
+  @spec new(String.t()) :: {:ok, t()} | {:error, :invalid_email}
+  def new(value) when is_binary(value) do
+    value = String.trim(value)
+
+    if String.contains?(value, "@") do
+      {:ok, %__MODULE__{value: value\}\}
+    else
+      {:error, :invalid_email}
+    end
+  end
+
+  def new(_), do: {:error, :invalid_email}
+
+  @spec to_string(t()) :: String.t()
+  def to_string(%__MODULE__{value: value}), do: value
+end
+```
+
+Erlang opaque type style:
+
+```erlang
+-module(email).
+-export([new/1, to_binary/1]).
+-opaque email() :: binary().
+-export_type([email/0]).
+
+-spec new(binary()) -> {ok, email()} | {error, invalid_email}.
+new(Value) when is_binary(Value) ->
+    Trimmed = string:trim(Value),
+    case binary:match(Trimmed, <<"@">>) of
+        nomatch -> {error, invalid_email};
+        _ -> {ok, Trimmed}
+    end;
+new(_) ->
+    {error, invalid_email}.
+
+-spec to_binary(email()) -> binary().
+to_binary(Email) ->
+    Email.
+```
+
+| Domain value module should do | It should avoid            |
+| ----------------------------- | -------------------------- |
+| Validate construction         | Database writes            |
+| Hide representation if needed | Process management         |
+| Provide conversion functions  | External API decisions     |
+| Define stable type/spec       | Framework coupling         |
+| Preserve invariants           | Logging secrets by default |
+| Keep behavior local and pure  | Reading global config      |
+
+**Design meaning:** A domain value is usually not a process. It is data plus module functions.
+
+**Common Pitfalls:** Do not start a `GenServer` to represent a simple validated value. A value module is enough.
+
+### Task Pattern: Design a Repository or Storage Boundary
+
+A storage module hides persistence details and normalizes storage errors.
+
+Elixir:
+
+```elixir
+defmodule UserRepo do
+  @spec fetch(pos_integer()) :: {:ok, User.t()} | {:error, :not_found}
+  def fetch(id) do
+    case Database.get(:users, id) do
+      nil ->
+        {:error, :not_found}
+
+      row ->
+        User.from_row(row)
+    end
+  end
+
+  @spec insert(User.t()) :: :ok | {:error, term()}
+  def insert(user) do
+    case Database.insert(:users, User.to_row(user)) do
+      :ok -> :ok
+      {:error, :duplicate} -> {:error, :already_exists}
+      {:error, reason} -> {:error, {:storage_failed, reason\}\}
+    end
+  end
+end
+```
+
+Erlang:
+
+```erlang
+-module(user_repo).
+-export([fetch/1, insert/1]).
+
+-spec fetch(pos_integer()) -> {ok, user:user()} | {error, not_found}.
+fetch(Id) ->
+    case database:get(users, Id) of
+        undefined ->
+            {error, not_found};
+        Row ->
+            user:from_row(Row)
+    end.
+
+-spec insert(user:user()) -> ok | {error, term()}.
+insert(User) ->
+    case database:insert(users, user:to_row(User)) of
+        ok ->
+            ok;
+        {error, duplicate} ->
+            {error, already_exists};
+        {error, Reason} ->
+            {error, {storage_failed, Reason\}\}
+    end.
+```
+
+| Storage boundary concern | Rule                                 |
+| ------------------------ | ------------------------------------ |
+| Missing row              | Normalize to stable error            |
+| Duplicate row            | Normalize to domain error            |
+| Database-specific errors | Avoid leaking unless public contract |
+| Row shape                | Convert to domain shape              |
+| Domain shape             | Convert to storage shape             |
+| Transactions             | Make boundary explicit               |
+| Retryability             | Mark or handle separately            |
+| Tests                    | Include failure cases                |
+
+**Design meaning:** Storage is an external boundary even if the database is local. It can fail, return missing data, or contain old schema shapes.
+
+**Common Pitfalls:** Do not let raw database rows become the main domain representation unless that is an intentional architecture decision.
+
+### Task Pattern: Design an External Service Client
+
+External service clients should normalize request construction, response parsing, error handling, and timeouts.
+
+Elixir:
+
+```elixir
+defmodule BillingClient do
+  @spec charge(map()) ::
+          {:ok, %{transaction_id: String.t()\}\}
+          | {:error, :timeout | :unavailable | :rejected | term()}
+
+  def charge(command) do
+    with {:ok, request} <- build_request(command),
+         {:ok, response} <- send_request(request),
+         {:ok, result} <- parse_response(response) do
+      {:ok, result}
+    else
+      {:error, :timeout} -> {:error, :timeout}
+      {:error, :rejected} -> {:error, :rejected}
+      {:error, reason} -> {:error, {:billing_failed, reason\}\}
+    end
+  end
+end
+```
+
+| Client boundary should define | Reason                                   |
+| ----------------------------- | ---------------------------------------- |
+| Request shape                 | Prevents scattered request construction  |
+| Timeout policy                | External calls may hang                  |
+| Response parser               | External data is untrusted               |
+| Error normalization           | Callers need stable reasons              |
+| Retry policy or no retry      | Avoid accidental duplicate effects       |
+| Idempotency keys              | Needed for non-idempotent operations     |
+| Observability                 | External latency and failure rate matter |
+
+**Design meaning:** An external client is not a thin HTTP wrapper only. It is a trust, failure, and compatibility boundary.
+
+**Common Pitfalls:** Do not expose raw HTTP client responses throughout the application. Normalize them near the client boundary.
+
+### Task Pattern: Design a Stateful Server
+
+Use a `GenServer` or Erlang `gen_server` when there is runtime state, serialized access, lifecycle, or waiting behavior.
+
+Elixir:
+
+```elixir
+defmodule RateLimiter do
+  use GenServer
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, opts, name: Keyword.get(opts, :name))
+  end
+
+  def allow?(server, key) do
+    GenServer.call(server, {:allow?, key})
+  end
+
+  @impl true
+  def init(opts) do
+    limit = Keyword.fetch!(opts, :limit)
+    {:ok, %{limit: limit, counts: %{\}\\}\}
+  end
+
+  @impl true
+  def handle_call({:allow?, key}, _from, state) do
+    count = Map.get(state.counts, key, 0)
+
+    if count < state.limit do
+      state = put_in(state.counts[key], count + 1)
+      {:reply, true, state}
+    else
+      {:reply, false, state}
+    end
+  end
+end
+```
+
+Erlang:
+
+```erlang
+-module(rate_limiter).
+-behaviour(gen_server).
+
+-export([start_link/1, allow/2]).
+-export([init/1, handle_call/3]).
+
+start_link(Opts) ->
+    gen_server:start_link(?MODULE, Opts, []).
+
+allow(Server, Key) ->
+    gen_server:call(Server, {allow, Key}).
+
+init(Opts) ->
+    Limit = maps:get(limit, Opts),
+    {ok, #{limit => Limit, counts => #{\}\\}\}.
+
+handle_call({allow, Key}, _From, State) ->
+    Limit = maps:get(limit, State),
+    Counts = maps:get(counts, State),
+    Count = maps:get(Key, Counts, 0),
+    case Count < Limit of
+        true ->
+            NewCounts = Counts#{Key => Count + 1},
+            {reply, true, State#{counts := NewCounts\}\};
+        false ->
+            {reply, false, State}
+    end.
+```
+
+| Stateful server is appropriate when | It is weak when                |
+| ----------------------------------- | ------------------------------ |
+| State has one clear owner           | State is passive data          |
+| Requests must be serialized         | High read throughput is needed |
+| Process lifecycle matters           | A plain function is enough     |
+| Timeouts/timers are involved        | Data should be durable         |
+| External resource is owned          | State is huge and read-heavy   |
+| Supervision is needed               | No concurrency exists          |
+
+**Design meaning:** A stateful server is a runtime entity. It should have public API functions, bounded state design, timeout awareness, and supervision placement.
+
+**Common Pitfalls:** Do not hide long external calls inside `handle_call` unless it is deliberate and acceptable for all callers to wait behind that call.
+
+### Task Pattern: Design an ETS-Backed Service
+
+Use ETS when shared runtime lookup matters, but wrap it in an API and define ownership.
+
+Elixir:
+
+```elixir
+defmodule UserCache do
+  use GenServer
+
+  @table __MODULE__
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+  end
+
+  def put(user) do
+    :ets.insert(@table, {user.id, user})
+    :ok
+  end
+
+  def fetch(id) do
+    case :ets.lookup(@table, id) do
+      [{^id, user}] -> {:ok, user}
+      [] -> :error
+    end
+  end
+
+  @impl true
+  def init(_opts) do
+    :ets.new(@table, [
+      :named_table,
+      :protected,
+      read_concurrency: true
+    ])
+
+    {:ok, %{\}\}
+  end
+end
+```
+
+| ETS design choice                | Question                             |
+| -------------------------------- | ------------------------------------ |
+| Named table or anonymous         | Who needs lookup access?             |
+| `private`, `protected`, `public` | Who can read/write?                  |
+| Owner process                    | What happens if owner dies?          |
+| Table schema                     | What tuple shape is stored?          |
+| Read/write path                  | Does API enforce invariants?         |
+| Cleanup                          | Is data temporary?                   |
+| Consistency                      | Are multi-step updates safe?         |
+| Supervision                      | Should owner restart recreate table? |
+
+**Design meaning:** ETS is runtime storage, not a replacement for all process state or databases. It is excellent when shared in-VM lookup is a real requirement.
+
+**Common Pitfalls:** Avoid public write access unless the table is intentionally low-level infrastructure.
+
+### Task Pattern: Design a Dynamic Worker System
+
+A dynamic worker system is useful when processes are created and stopped at runtime.
+
+Elixir architecture:
+
+```elixir
+children = [
+  {Registry, keys: :unique, name: MyApp.WorkerRegistry},
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+]
+```
+
+Starting a worker:
+
+```elixir
+def start_worker(id, arg) do
+  child_spec = {MyApp.Worker, id: id, arg: arg}
+
+  DynamicSupervisor.start_child(
+    MyApp.WorkerSupervisor,
+    child_spec
+  )
+end
+```
+
+Worker naming:
+
+```elixir
+def via_tuple(id) do
+  {:via, Registry, {MyApp.WorkerRegistry, id\}\}
+end
+```
+
+Worker start:
+
+```elixir
+def start_link(opts) do
+  id = Keyword.fetch!(opts, :id)
+  GenServer.start_link(__MODULE__, opts, name: via_tuple(id))
+end
+```
+
+| Dynamic worker decision | Design question                     |
+| ----------------------- | ----------------------------------- |
+| Worker identity         | What key names the process?         |
+| Registry                | How do callers find it?             |
+| Dynamic supervisor      | Who owns lifecycle?                 |
+| Restart policy          | Should worker restart after crash?  |
+| State recovery          | Can state be rebuilt?               |
+| Shutdown                | When does worker stop?              |
+| Capacity                | How many workers are allowed?       |
+| Backpressure            | Can start requests overload system? |
+
+**Design meaning:** Dynamic supervision is appropriate when the number of runtime components changes and each component has real process semantics.
+
+**Common Pitfalls:** Do not use dynamic workers just to represent database rows. Use dynamic workers for active runtime behavior.
+
+### Task Pattern: Design a Job Processing System
+
+A job system needs more than workers. It needs queue semantics, retry policy, idempotency, observability, and failure handling.
+
+| Component            | Responsibility                 |
+| -------------------- | ------------------------------ |
+| Job schema           | Stable payload and version     |
+| Queue                | Store pending work             |
+| Worker               | Execute one job                |
+| Retry policy         | Decide retry/backoff/discard   |
+| Idempotency          | Prevent duplicate side effects |
+| Supervision          | Keep workers alive             |
+| Concurrency limit    | Prevent overload               |
+| Dead-letter handling | Store poison jobs              |
+| Telemetry/logging    | Observe throughput/failure     |
+| External boundaries  | Normalize service errors       |
+
+Elixir conceptual worker:
+
+```elixir
+def perform(job) do
+  with {:ok, command} <- JobCommand.new(job),
+       :ok <- ensure_idempotency(command),
+       {:ok, result} <- ExternalClient.submit(command),
+       :ok <- mark_complete(job, result) do
+    :ok
+  else
+    {:error, :invalid_job} ->
+      {:discard, :invalid_job}
+
+    {:error, :timeout} ->
+      {:retry, :timeout}
+
+    {:error, reason} ->
+      {:fail, reason}
+  end
+end
+```
+
+| Failure                    | Good policy                                   |
+| -------------------------- | --------------------------------------------- |
+| Invalid payload            | discard or dead-letter                        |
+| Temporary external failure | retry with backoff                            |
+| Permanent rejection        | fail without retry                            |
+| Worker crash               | supervisor restart, job retry depending queue |
+| Duplicate job              | idempotency key                               |
+| Overload                   | concurrency limit/backpressure                |
+| Poison job                 | dead-letter after limit                       |
+
+**Design meaning:** Supervision restarts workers; it does not define job semantics. Job architecture must explicitly model retry, idempotency, and completion.
+
+**Common Pitfalls:** A crash-based retry loop can duplicate external effects unless idempotency is designed.
+
+### Task Pattern: Design a PubSub or Event Broadcast System
+
+A simple PubSub system has subscribers, topics, broadcasts, and process lifecycle concerns.
+
+| Concept            | Representation                   |
+| ------------------ | -------------------------------- |
+| Topic              | atom/string/tuple key            |
+| Subscriber         | PID                              |
+| Subscription table | map, ETS, Registry, library      |
+| Broadcast message  | tagged tuple                     |
+| Subscriber death   | monitor cleanup                  |
+| Backpressure       | usually difficult with broadcast |
+| Event shape        | versioned term if long-lived     |
+
+Simple conceptual Elixir design:
+
+```elixir
+def subscribe(topic) do
+  GenServer.call(__MODULE__, {:subscribe, topic, self()})
+end
+
+def broadcast(topic, event) do
+  GenServer.cast(__MODULE__, {:broadcast, topic, event})
+end
+```
+
+Server state:
+
+```elixir
+%{
+  subscribers_by_topic: %{
+    topic => MapSet.new([pid1, pid2])
+  },
+  monitors: %{
+    ref => {topic, pid}
+  }
+}
+```
+
+| PubSub design decision | Question                     |
+| ---------------------- | ---------------------------- |
+| Subscriber tracking    | Are subscribers monitored?   |
+| Broadcast delivery     | Sync, async, best-effort?    |
+| Slow subscriber        | Can it be overloaded?        |
+| Topic cardinality      | Can topics grow unbounded?   |
+| Event shape            | Is it stable?                |
+| Local or distributed   | Does node boundary matter?   |
+| Library or custom      | Is this production-critical? |
+
+**Design meaning:** Broadcast is easy to sketch and hard to operate at scale. Slow subscribers and unbounded topics must be considered.
+
+**Common Pitfalls:** Sending large events to many subscribers can create memory and mailbox pressure.
+
+### Task Pattern: Design a Cache
+
+A cache needs clear answers about freshness, invalidation, ownership, and failure behavior.
+
+| Cache question    | Possible answer                                     |
+| ----------------- | --------------------------------------------------- |
+| What is cached?   | domain values, external responses, computed results |
+| Where stored?     | process state, ETS, persistent term, external cache |
+| Who owns it?      | process, ETS owner, external service                |
+| Expiration?       | TTL, manual invalidation, versioned keys            |
+| Miss behavior?    | fetch, return error, stale value                    |
+| Concurrency?      | prevent stampede or allow duplicate fetches         |
+| Memory limit?     | bounded size, eviction                              |
+| Restart behavior? | warm from source or start empty                     |
+| Consistency?      | strong, eventual, best-effort                       |
+| Observability?    | hit/miss/error metrics                              |
+
+Elixir ETS cache sketch:
+
+```elixir
+def fetch(key, fetch_fun) do
+  case lookup(key) do
+    {:ok, value} ->
+      {:ok, value}
+
+    :error ->
+      with {:ok, value} <- fetch_fun.() do
+        put(key, value)
+        {:ok, value}
+      end
+  end
+end
+```
+
+**Design meaning:** A cache is not just a map. It is a consistency and lifecycle boundary.
+
+**Common Pitfalls:** A cache without invalidation policy is a bug waiting for data staleness. A cache without size policy can become a memory leak.
+
+### Task Pattern: Design a Rate Limiter
+
+A rate limiter is a stateful runtime component. It may be process-backed, ETS-backed, or external.
+
+| Design choice | Option                                     |
+| ------------- | ------------------------------------------ |
+| Scope         | per user, IP, token, route                 |
+| Storage       | GenServer state, ETS, Redis/external       |
+| Algorithm     | fixed window, sliding window, token bucket |
+| Time source   | monotonic time for elapsed intervals       |
+| Response      | allow/reject/retry-after                   |
+| Distribution  | local node or global                       |
+| Cleanup       | remove old keys                            |
+| Overload      | avoid rate limiter becoming bottleneck     |
+
+Elixir response shape:
+
+```elixir
+{:allow, remaining}
+{:deny, retry_after_ms}
+```
+
+Example API:
+
+```elixir
+def check(limiter, key) do
+  GenServer.call(limiter, {:check, key})
+end
+```
+
+**Design meaning:** Rate limiting is a runtime state problem. If distributed correctness matters, a local BEAM process is not enough by itself.
+
+**Common Pitfalls:** Using wall-clock time for elapsed intervals can cause bugs under clock changes. Prefer monotonic time for duration measurement.
+
+### Task Pattern: Design a Protocol Parser
+
+Protocol parsers should separate binary parsing, validation, and command handling.
+
+Elixir:
+
+```elixir
+def parse_packet(<<version, type, length::16, payload::binary-size(length), rest::binary>>) do
+  with {:ok, type} <- parse_type(type),
+       {:ok, payload} <- parse_payload(type, payload) do
+    {:ok, %{version: version, type: type, payload: payload}, rest}
+  end
+end
+
+def parse_packet(_) do
+  {:error, :invalid_packet}
+end
+```
+
+| Parser decision    | Rule                                        |
+| ------------------ | ------------------------------------------- |
+| Binary shape       | Use bit syntax                              |
+| Malformed input    | Return tagged error                         |
+| Unknown type       | Explicit error                              |
+| Version            | Parse and validate                          |
+| Payload length     | Avoid unsafe assumptions                    |
+| Remainder          | Return rest for streaming                   |
+| Large binaries     | Avoid retention where needed                |
+| Command conversion | Convert packet to domain command separately |
+
+**Design meaning:** A protocol parser is a trust boundary. It should not execute business logic before the packet is validated.
+
+**Common Pitfalls:** Direct match assertions on external binaries can crash the parser process on normal malformed input unless crash is the intended boundary.
+
+### Task Pattern: Design a TCP Connection Process
+
+A TCP connection process owns one socket and its protocol state.
+
+| Component          | Responsibility                        |
+| ------------------ | ------------------------------------- |
+| Listener/acceptor  | Accept incoming connections           |
+| Connection process | Own socket                            |
+| Parser             | Parse incoming bytes                  |
+| State              | Buffer, protocol state, auth/session  |
+| Backpressure       | active/passive socket mode            |
+| Supervision        | Connection lifecycle                  |
+| Shutdown           | Close socket                          |
+| Errors             | Disconnect, malformed packet, timeout |
+
+Conceptual Elixir connection state:
+
+```elixir
+%{
+  socket: socket,
+  buffer: <<>>,
+  status: :handshaking,
+  user_id: nil
+}
+```
+
+Message handling may receive socket data through `handle_info`.
+
+```elixir
+@impl true
+def handle_info({:tcp, socket, data}, %{socket: socket} = state) do
+  state = handle_data(data, state)
+  {:noreply, state}
+end
+
+@impl true
+def handle_info({:tcp_closed, socket}, %{socket: socket} = state) do
+  {:stop, :normal, state}
+end
+```
+
+**Design meaning:** Socket ownership is process ownership. The process that owns the socket receives socket messages and controls protocol state.
+
+**Common Pitfalls:** Active socket mode can flood a process mailbox if data arrives faster than processing. Protocol backpressure matters.
+
+### Task Pattern: Design an HTTP Application
+
+In Elixir, HTTP applications are commonly built through Plug/Phoenix-style layers, but the architectural principle remains general.
+
+| Layer                   | Responsibility                      |
+| ----------------------- | ----------------------------------- |
+| Router                  | Dispatch request                    |
+| Controller/handler      | Convert HTTP to application command |
+| Params parser           | Validate external input             |
+| Context/domain module   | Execute application operation       |
+| Repo/client/process API | Effects and runtime boundaries      |
+| Response encoder        | Convert result to HTTP response     |
+| Telemetry/logging       | Observe request behavior            |
+
+Controller-like flow:
+
+```elixir
+def create(conn, params) do
+  case Accounts.create_user(params) do
+    {:ok, user} ->
+      json(conn, %{id: user.id})
+
+    {:error, {:invalid_field, field\}\} ->
+      send_resp(conn, 400, "invalid #{field}")
+
+    {:error, :already_exists} ->
+      send_resp(conn, 409, "already exists")
+  end
+end
+```
+
+| HTTP boundary rule                   | Reason                 |
+| ------------------------------------ | ---------------------- |
+| Do not trust params                  | External input         |
+| Do not expose internal errors        | API stability/security |
+| Use stable status mapping            | Client compatibility   |
+| Keep domain logic outside controller | Testability            |
+| Avoid raw DB schema leakage          | Boundary discipline    |
+| Instrument latency and errors        | Operations             |
+
+**Design meaning:** HTTP handlers should translate between HTTP and application APIs. They should not become the whole application.
+
+**Common Pitfalls:** If controllers contain most business logic, testing and reuse become difficult.
+
+### Task Pattern: Design a Command Pipeline
+
+A command pipeline is useful when an operation has several explicit steps.
+
+```elixir
+def register(params) do
+  with {:ok, command} <- RegisterCommand.new(params),
+       {:ok, user} <- build_user(command),
+       :ok <- check_policy(user),
+       :ok <- persist_user(user),
+       :ok <- publish_user_created(user) do
+    {:ok, user}
+  end
+end
+```
+
+| Step                   | Function kind       |
+| ---------------------- | ------------------- |
+| `RegisterCommand.new`  | boundary validation |
+| `build_user`           | domain construction |
+| `check_policy`         | domain rule         |
+| `persist_user`         | effect boundary     |
+| `publish_user_created` | event/effect        |
+| final result           | public API contract |
+
+**Design meaning:** A pipeline should show domain flow clearly. Each function should have a stable return shape.
+
+**Common Pitfalls:** If every step has different complex error semantics, `with` may become less clear than explicit `case` or smaller orchestration functions.
+
+### Task Pattern: Design Event-Driven Architecture
+
+Events are useful when multiple components need to react to facts without tightly coupling the original operation to every side effect.
+
+| Event design question | Rule                                                                    |
+| --------------------- | ----------------------------------------------------------------------- |
+| What happened?        | Event name/type should be factual                                       |
+| What payload?         | Include stable necessary data                                           |
+| Version?              | Needed if persisted/distributed                                         |
+| Synchronous or async? | Defines failure coupling                                                |
+| Local or external?    | Defines compatibility boundary                                          |
+| Delivery guarantee?   | Best-effort, at-least-once, exactly-once-like impossible without design |
+| Subscriber failure?   | Decide retry/isolation                                                  |
+| Observability?        | Track event production/handling                                         |
+
+Event shape:
+
+```elixir
+%{
+  type: :user_created,
+  version: 1,
+  user_id: user.id,
+  occurred_at: occurred_at
+}
+```
+
+**Design meaning:** An event is not just a callback. It is a data contract about something that happened.
+
+**Common Pitfalls:** Do not put huge domain structs into long-lived events. Use stable, versioned payloads.
+
+### Task Pattern: Design a Plugin or Adapter System
+
+Use behaviours when modules implement a common contract.
+
+Elixir:
+
+```elixir
+defmodule MyApp.Storage do
+  @callback put(binary(), binary()) :: :ok | {:error, term()}
+  @callback get(binary()) :: {:ok, binary()} | {:error, :not_found | term()}
+end
+```
+
+Implementation:
+
+```elixir
+defmodule MyApp.Storage.Memory do
+  @behaviour MyApp.Storage
+
+  @impl true
+  def put(_key, _value), do: :ok
+
+  @impl true
+  def get(_key), do: {:error, :not_found}
+end
+```
+
+Caller:
+
+```elixir
+def fetch(storage_module, key) do
+  storage_module.get(key)
+end
+```
+
+| Adapter design question             | Rule                                    |
+| ----------------------------------- | --------------------------------------- |
+| What callbacks?                     | Keep minimal and cohesive               |
+| What error shapes?                  | Stable across implementations           |
+| How selected?                       | Config or explicit argument             |
+| How tested?                         | Shared contract tests                   |
+| Can implementation start processes? | Define lifecycle separately             |
+| Does callback block?                | Document or isolate                     |
+| Is state needed?                    | Module-only adapter may be insufficient |
+
+**Design meaning:** Behaviours are module-level contracts. They are ideal for adapters, plugins, storage backends, encoders, clients, and strategy modules.
+
+**Common Pitfalls:** Do not use protocols for service adapters when the variation is selected by module, not by data type.
+
+### Task Pattern: Design Data-Polymorphic Operations with Protocols
+
+Use Elixir protocols when behavior varies by data type.
+
+```elixir
+defprotocol Render do
+  def render(value)
+end
+
+defimpl Render, for: User do
+  def render(%User{name: name}), do: "User: #{name}"
+end
+
+defimpl Render, for: Admin do
+  def render(%Admin{name: name}), do: "Admin: #{name}"
+end
+```
+
+| Protocol is good when                 | Protocol is weak when                      |
+| ------------------------------------- | ------------------------------------------ |
+| Operation depends on data type        | Implementation is a service module         |
+| Many types can join later             | Only one type exists                       |
+| Dispatch by first argument is natural | Multiple values jointly determine behavior |
+| Types live in different modules       | Behavior needs runtime configuration       |
+| A generic operation is useful         | A local function clause is enough          |
+
+**Design meaning:** Protocols are extension points for data types. They should not be used merely because a function has several clauses.
+
+**Common Pitfalls:** Protocols can hide behavior across many files. Use them when extensibility justifies that indirection.
+
+### Task Pattern: Design a Macro-Based DSL
+
+A DSL should be justified by real syntax needs.
+
+Good DSL candidates:
+
+| DSL candidate                  | Why macro may help                   |
+| ------------------------------ | ------------------------------------ |
+| Test declarations              | Compile-time test registration       |
+| Routes                         | Compile-time dispatch table          |
+| Schema fields                  | Compile-time metadata                |
+| Query construction             | AST representation                   |
+| Repeated definitions           | Generate functions from declarations |
+| Domain-specific compile checks | Validate at compile time             |
+
+Bad DSL candidates:
+
+| Bad candidate                     | Better choice           |
+| --------------------------------- | ----------------------- |
+| Saving one function call          | Function                |
+| Hiding ordinary runtime branching | Function or `case`      |
+| Simple configuration              | Data structure          |
+| One-off helper                    | Function                |
+| Business logic                    | Plain modules/functions |
+
+Example DSL shape:
+
+```elixir
+defmodule Routes do
+  use MyRouter
+
+  get "/users/:id", UserController, :show
+end
+```
+
+DSL review checklist:
+
+| Question                      | Reason              |
+| ----------------------------- | ------------------- |
+| What code is generated?       | Debuggability       |
+| Are errors readable?          | User experience     |
+| Are arguments evaluated once? | Correctness         |
+| Is hygiene handled?           | Safety              |
+| Is public API documented?     | Stability           |
+| Can a function solve this?    | Avoid macro overuse |
+
+**Design meaning:** Macros create a language inside the language. That power is justified only when ordinary functions cannot express the domain cleanly.
+
+**Common Pitfalls:** A macro-heavy codebase without clear docs is hard to onboard and debug.
+
+### Task Pattern: Design for Observability from the Start
+
+A BEAM system should expose enough runtime evidence to diagnose failures.
+
+| Area           | Observable signal                        |
+| -------------- | ---------------------------------------- |
+| External calls | latency, status, timeout, error reason   |
+| Job processing | started, stopped, failed, retried        |
+| GenServer      | call latency, mailbox length if critical |
+| Cache          | hit/miss/eviction                        |
+| Queue          | depth, processing rate, failure rate     |
+| Parser         | invalid input count                      |
+| Supervision    | crash/restart reports                    |
+| Database       | query duration/errors                    |
+| HTTP           | status, duration, route                  |
+| Memory         | process/ETS/binary growth                |
+| Backpressure   | rejected/delayed work                    |
+
+Elixir logging/telemetry conceptual example:
+
+```elixir
+start = System.monotonic_time()
+
+result = ExternalClient.call(request)
+
+duration =
+  System.monotonic_time() - start
+
+:telemetry.execute(
+  [:my_app, :external_client, :call],
+  %{duration: duration},
+  %{result: result_tag(result)}
+)
+```
+
+**Design meaning:** Observability is architecture, not an afterthought. If a component can fail or overload, it should expose useful signals.
+
+**Common Pitfalls:** Metrics with unbounded labels, secret metadata, or huge payloads create operational problems.
+
+### Task Pattern: Design for Backpressure
+
+Backpressure must be explicit in BEAM systems.
+
+| Situation                     | Better design                          |
+| ----------------------------- | -------------------------------------- |
+| Producer can overwhelm worker | bounded queue or demand                |
+| Clients need confirmation     | `call` or ack protocol                 |
+| External service has limit    | pool/rate limiter                      |
+| Job processing                | queue with concurrency limit           |
+| Broadcast to many subscribers | monitor slow subscribers/drop policy   |
+| Socket input                  | passive mode or controlled active mode |
+| GenServer cast flood          | reject, batch, or demand               |
+| Task flood                    | supervised task pool/limit             |
+
+Bad:
+
+```elixir
+Enum.each(events, fn event ->
+  GenServer.cast(EventServer, {:event, event})
+end)
+```
+
+Better API shape:
+
+```elixir
+case EventServer.enqueue(event) do
+  :ok -> :ok
+  {:error, :overloaded} -> handle_overload(event)
+end
+```
+
+**Design meaning:** Mailboxes are not backpressure. A return value that says only “message sent” is not proof that work was accepted or completed.
+
+**Common Pitfalls:** `cast` is a common hidden overload path.
+
+### Task Pattern: Design for State Recovery
+
+If a process restarts, what happens to its state?
+
+| State type          | Recovery strategy                       |
+| ------------------- | --------------------------------------- |
+| Derived cache       | Rebuild or start empty                  |
+| Critical state      | Persist externally                      |
+| Session state       | Decide whether session dies or recovers |
+| In-flight job       | Queue retry or checkpoint               |
+| External connection | Reconnect                               |
+| ETS table           | Recreate table and repopulate if needed |
+| Registry entry      | Re-register on start                    |
+| Timer state         | Reschedule                              |
+| Protocol state      | Client reconnect or resume              |
+
+Example `init` recovery:
+
+```elixir
+@impl true
+def init(opts) do
+  state =
+    case load_snapshot(opts) do
+      {:ok, snapshot} -> restore(snapshot)
+      {:error, :not_found} -> fresh_state()
+    end
+
+  {:ok, state}
+end
+```
+
+**Design meaning:** Supervision restarts code. It does not automatically restore state.
+
+**Common Pitfalls:** A cache can start empty after restart; a payment processor cannot “start empty” if that loses in-flight payment state.
+
+### Task Pattern: Design for Idempotency
+
+Idempotency is essential when retries, crashes, queues, or external side effects are involved.
+
+| Operation         | Idempotency strategy         |
+| ----------------- | ---------------------------- |
+| External payment  | idempotency key              |
+| Job processing    | job ID and completion record |
+| Event publishing  | event ID                     |
+| Database insert   | unique constraint            |
+| File write        | temp file + atomic rename    |
+| API request       | request ID                   |
+| Email send        | deduplication if needed      |
+| Retryable command | command ID                   |
+
+Elixir conceptual shape:
+
+```elixir
+def submit_payment(command) do
+  idempotency_key = command.request_id
+
+  ExternalBilling.charge(command, idempotency_key: idempotency_key)
+end
+```
+
+**Design meaning:** Idempotency is a boundary property. It is not created by supervision or retry libraries automatically.
+
+**Common Pitfalls:** Retrying non-idempotent side effects can produce duplicate payments, duplicate emails, duplicate messages, or inconsistent external state.
+
+### Task Pattern: Design for Configuration and Deployment
+
+Application architecture should distinguish compile-time, startup-time, and runtime configuration.
+
+| Config type                     | Good location                  |
+| ------------------------------- | ------------------------------ |
+| Static compile-time constant    | module attribute               |
+| Deployment environment variable | runtime config parser          |
+| Process option                  | supervisor child args          |
+| External service URL            | validated startup config       |
+| Feature flag                    | runtime-owned config system    |
+| Secret                          | secret store/env, never logs   |
+| Timeout                         | explicit units                 |
+| Pool size                       | startup config                 |
+| Rate limit                      | process state or config module |
+
+Config parser:
+
+```elixir
+defmodule MyApp.RuntimeConfig do
+  def load! do
+    %{
+      billing_url: fetch!("BILLING_URL"),
+      timeout_ms: fetch_positive_integer!("BILLING_TIMEOUT_MS")
+    }
+  end
+
+  defp fetch!(name), do: System.fetch_env!(name)
+end
+```
+
+**Design meaning:** Configuration is external input. It deserves parsing, validation, defaults, and documentation.
+
+**Common Pitfalls:** Reading environment variables from deep business logic makes behavior hard to test and reason about.
+
+### Task Pattern: Design for Release Runtime
+
+A system that works in development must also work as a release.
+
+| Release concern     | Architectural rule                               |
+| ------------------- | ------------------------------------------------ |
+| File paths          | Use release-safe paths                           |
+| Runtime config      | Do not bake secrets at compile time accidentally |
+| Native dependencies | Match target OS/architecture                     |
+| External commands   | Ensure executable availability                   |
+| Supervision tree    | Start all required processes                     |
+| Database migration  | Define deployment order                          |
+| Remote shell        | Plan operational access                          |
+| Logs/metrics        | Configure production backends                    |
+| Clustering          | Configure node names/cookies                     |
+| Environment         | Validate on startup                              |
+
+**Design meaning:** Deployment is a boundary. Assumptions from local development often fail in release mode.
+
+**Common Pitfalls:** Source-relative paths and development-only dependencies frequently break in releases.
+
+### Architecture Decision Table
+
+| Requirement                  | Prefer                                    | Avoid                           |
+| ---------------------------- | ----------------------------------------- | ------------------------------- |
+| Validate external input      | parser/command constructor                | raw params in domain logic      |
+| Pure domain transformation   | plain module functions                    | process abstraction             |
+| Runtime state owner          | `GenServer` / process                     | global mutable data             |
+| Simple passive value         | struct/record/map                         | process per value               |
+| Large read-heavy cache       | ETS with owner API                        | one bottleneck server           |
+| Swappable storage/client     | behaviour                                 | protocol                        |
+| Data-type-specific rendering | protocol                                  | behaviour                       |
+| Dynamic process population   | DynamicSupervisor + Registry              | untracked spawn                 |
+| Temporary concurrent work    | Task / Task.Supervisor                    | permanent server                |
+| Critical job processing      | queue + retry/idempotency                 | supervision-only retry          |
+| External service call        | client boundary                           | raw HTTP calls everywhere       |
+| Serialization                | versioned schema                          | raw internal terms              |
+| Repeated domain event        | event module/schema                       | ad hoc maps                     |
+| Need DSL syntax              | macro                                     | macro for simple reuse          |
+| Backpressure                 | call/ack/bounded queue/demand             | unbounded cast                  |
+| State recovery               | persistent source/snapshot/rebuild policy | assuming restart restores state |
+
+### Architecture Anti-Pattern Index
+
+| Anti-pattern                         | Failure mode                  | Better architecture                          |
+| ------------------------------------ | ----------------------------- | -------------------------------------------- |
+| One giant context module             | Mixed responsibilities        | Split boundary/domain/effect/process modules |
+| One giant GenServer                  | Bottleneck and state monolith | Split processes, use ETS, pure modules       |
+| Process per database row             | Unnecessary runtime cost      | Plain data unless active lifecycle exists    |
+| Raw params everywhere                | Validation inconsistency      | Boundary parser/command                      |
+| Raw process messages everywhere      | Protocol coupling             | Public process API                           |
+| All errors leak upward               | Unstable caller contracts     | Normalize at boundaries                      |
+| `cast` for important operations      | Lost confirmation/overload    | `call`, ack, or queue                        |
+| Supervision as business retry        | Duplicate side effects        | Idempotent job design                        |
+| ETS public writes                    | Global mutable chaos          | Protected table + owner API                  |
+| Macro for ordinary helper            | Debugging complexity          | Function                                     |
+| Protocol for one struct              | Overengineering               | Function clause                              |
+| Behaviour for one callback           | Overengineering               | Function argument                            |
+| External client scattered across app | Inconsistent failure handling | Client boundary                              |
+| Persisting internal structs          | Migration pain                | Versioned external schema                    |
+| No observability                     | Production blindness          | Logs/telemetry/metrics from start            |
+
+### Integrated Example — Small User Registration System
+
+A clean user-registration architecture might look like this:
+
+```text
+HTTP Controller / CLI / Message Consumer
+        ↓
+CreateUser command parser
+        ↓
+Accounts.create_user/1 public context
+        ↓
+User domain constructor
+        ↓
+UserRepo storage boundary
+        ↓
+UserEvents event boundary
+        ↓
+Notifier / async job / PubSub subscriber
+```
+
+Possible module responsibilities:
+
+| Module                | Responsibility                           |
+| --------------------- | ---------------------------------------- |
+| `CreateUser`          | Validate raw external input              |
+| `User`                | Domain struct/value and invariants       |
+| `Accounts`            | Public application API and orchestration |
+| `UserRepo`            | Persistence boundary                     |
+| `UserEvents`          | Event publication boundary               |
+| `UserNotifier`        | External notification client             |
+| `UserWorker`          | Optional async process/job behavior      |
+| `MyApp.Application`   | Supervision tree                         |
+| `MyApp.RuntimeConfig` | Startup config parsing                   |
+
+Possible return shape:
+
+```elixir
+{:ok, user}
+{:error, {:invalid_field, :email\}\}
+{:error, :already_exists}
+{:error, {:storage_failed, reason\}\}
+{:error, {:notification_failed, reason\}\}
+```
+
+But public API may choose not to expose all internal details. For example, notification failure might be logged and retried asynchronously instead of making registration fail.
+
+**Design meaning:** Architecture is made of boundary choices. Whether notification is synchronous or asynchronous is not a syntax question; it is a product and reliability question.
+
+### Part 10 Summary — architecture is boundary placement
+
+Erlang / Elixir architecture should be designed around values, processes, supervision, and boundaries.
+
+The central rules are:
+
+```text
+Use plain modules and values for domain logic.
+Use parsers and constructors at trust boundaries.
+Use process APIs for runtime state and lifecycle.
+Use supervisors for recoverable runtime components.
+Use ETS only with ownership and schema discipline.
+Use behaviours for module adapters.
+Use protocols for data-type polymorphism.
+Use macros only for real syntax or compile-time needs.
+Use explicit backpressure, idempotency, recovery, and observability.
+```
+
+A strong BEAM architecture is not the one with the most `GenServer`s, the most macros, or the most OTP layers. It is the one where each runtime component has a clear owner, each message has a clear protocol, each public function has a clear contract, each failure has a clear policy, and each external boundary is validated and observable.
+## Appendix A — Erlang / Elixir Syntax Crosswalk
+
+### Appendix Scope — reading the same BEAM ideas through two syntactic surfaces
+
+This appendix is a syntax crosswalk for reading Erlang and Elixir side by side. It is not a complete grammar reference. Its purpose is to help a learner recognize that many Erlang and Elixir constructs are different surface forms over the same BEAM runtime ideas: atoms, tuples, lists, binaries, maps, functions, modules, processes, messages, pattern matching, OTP callbacks, and specs.
+
+The central rule is:
+
+```text
+Erlang and Elixir often look different at the source level,
+but they share BEAM terms, BEAM processes, OTP behaviours,
+message passing, and many runtime conventions.
+```
+
+| Concept      | Erlang                    | Elixir                         | Runtime relation                |     |           |
+| ------------ | ------------------------- | ------------------------------ | ------------------------------- | --- | --------- |
+| Atom         | `ok`                      | `:ok`                          | Same BEAM atom                  |     |           |
+| Tuple        | `{ok, Value}`             | `{:ok, value}`                 | Same tuple                      |     |           |
+| List         | `[H                       | T]`                            | `[h                             | t]` | Same list |
+| Binary       | `<<"abc">>`               | `"abc"` or `<<"abc">>`         | Elixir string is UTF-8 binary   |     |           |
+| Charlists    | `"abc"`                   | `~c"abc"`                      | List of codepoints              |     |           |
+| Map          | `#{id => Id}`             | `%{id: id}`                    | Same map type                   |     |           |
+| Struct       | no direct equivalent      | `%User{id: 1}`                 | Map with `__struct__` key       |     |           |
+| Record       | `#user{id = Id}`          | no direct equivalent           | Tuple abstraction in Erlang     |     |           |
+| Function     | `fun(X) -> X end`         | `fn x -> x end`                | BEAM function value             |     |           |
+| Module call  | `lists:reverse(X)`        | `:lists.reverse(x)`            | Elixir can call Erlang modules  |     |           |
+| Message send | `Pid ! Msg`               | `send(pid, msg)`               | Same mailbox model              |     |           |
+| Receive      | `receive ... end`         | `receive do ... end`           | Same receive primitive          |     |           |
+| Spec         | `-spec f(T) -> U.`        | `@spec f(t) :: u`              | Analysis/documentation contract |     |           |
+| Behaviour    | `-behaviour(gen_server).` | `use GenServer` / `@behaviour` | Callback contract               |     |           |
+
+### File, Module, and Naming Basics
+
+Erlang and Elixir both compile source modules to BEAM bytecode, but their file and naming conventions differ.
+
+| Item                | Erlang                            | Elixir                                    |
+| ------------------- | --------------------------------- | ----------------------------------------- |
+| Source file         | `my_module.erl`                   | `my_module.ex`                            |
+| Script file         | `something.escript` or shell code | `something.exs`                           |
+| Module declaration  | `-module(my_module).`             | `defmodule MyModule do ... end`           |
+| Public functions    | `-export([f/1]).`                 | `def f(arg), do: ...`                     |
+| Private functions   | not exported                      | `defp f(arg), do: ...`                    |
+| Function identity   | `module:function/arity`           | `Module.function/arity`                   |
+| Comments            | `% comment`                       | `# comment`                               |
+| Statement separator | comma/semicolon/period rules      | newline or semicolon, `do ... end` blocks |
+
+Erlang:
+
+```erlang
+-module(math_utils).
+-export([double/1]).
+
+double(X) ->
+    X * 2.
+```
+
+Elixir:
+
+```elixir
+defmodule MathUtils do
+  def double(x) do
+    x * 2
+  end
+end
+```
+
+**Important difference:** Erlang requires exported functions to be listed explicitly in `-export`. Elixir functions defined with `def` are public by default; private functions must use `defp`.
+
+### Variables — uppercase in Erlang, lowercase in Elixir
+
+Variable naming is one of the first visual differences.
+
+| Concept                 | Erlang                                | Elixir                         |
+| ----------------------- | ------------------------------------- | ------------------------------ |
+| Variable                | `Value`, `UserId`, `X`                | `value`, `user_id`, `x`        |
+| Atom                    | `ok`, `active`, `'some atom'`         | `:ok`, `:active`, :"some atom" |
+| Ignored variable        | `_`                                   | `_`                            |
+| Ignored named variable  | `_Value`                              | `_value`                       |
+| Rebinding               | no rebinding in same match scope      | rebinding allowed by new match |
+| Match existing variable | ordinary match against bound variable | use pin operator `^x`          |
+
+Erlang:
+
+```erlang
+X = 1,
+X = 1.
+```
+
+This succeeds because the second line matches the already-bound value.
+
+```erlang
+X = 1,
+X = 2.
+```
+
+This fails because `X` is already bound to `1`.
+
+Elixir:
+
+```elixir
+x = 1
+x = 2
+```
+
+This rebinds `x`.
+
+To match against an existing value in Elixir, use the pin operator:
+
+```elixir
+x = 1
+^x = 1
+```
+
+This succeeds.
+
+```elixir
+x = 1
+^x = 2
+```
+
+This fails.
+
+**Design meaning:** Erlang variables are single-assignment within a scope. Elixir allows rebinding, but pattern matching still exists. The `^` pin operator is the key to reading Elixir matches that require an already-bound value.
+
+### Atoms — same runtime value, different notation
+
+Atoms are symbolic constants.
+
+Erlang:
+
+```erlang
+ok.
+error.
+not_found.
+'atom with spaces'.
+```
+
+Elixir:
+
+```elixir
+:ok
+:error
+:not_found
+:"atom with spaces"
+```
+
+| Use                 | Erlang                                   | Elixir    |
+| ------------------- | ---------------------------------------- | --------- |
+| Success tag         | `ok`                                     | `:ok`     |
+| Error tag           | `error`                                  | `:error`  |
+| State               | `active`                                 | `:active` |
+| Boolean true        | `true`                                   | `true`    |
+| Boolean false       | `false`                                  | `false`   |
+| Nil/null-like value | often `undefined` or `nil` by convention | `nil`     |
+
+Erlang tagged return:
+
+```erlang
+{ok, Value}
+{error, Reason}
+```
+
+Elixir tagged return:
+
+```elixir
+{:ok, value}
+{:error, reason}
+```
+
+**Important runtime fact:** `ok` in Erlang and `:ok` in Elixir are the same BEAM atom.
+
+**Common Pitfall:** Do not create atoms dynamically from untrusted external input in either language. Atoms are VM-level symbols and can exhaust the atom table if created without bounds.
+
+### Numbers and Operators
+
+Most numeric syntax is close, but some operators differ.
+
+| Operation                | Erlang    | Elixir      |
+| ------------------------ | --------- | ----------- |
+| Addition                 | `A + B`   | `a + b`     |
+| Subtraction              | `A - B`   | `a - b`     |
+| Multiplication           | `A * B`   | `a * b`     |
+| Float division           | `A / B`   | `a / b`     |
+| Integer division         | `A div B` | `div(a, b)` |
+| Remainder                | `A rem B` | `rem(a, b)` |
+| Equality, loose numeric  | `A == B`  | `a == b`    |
+| Exact equality           | `A =:= B` | `a === b`   |
+| Not equal, loose numeric | `A /= B`  | `a != b`    |
+| Exact not equal          | `A =/= B` | `a !== b`   |
+| Less than                | `A < B`   | `a < b`     |
+| Greater than             | `A > B`   | `a > b`     |
+
+Erlang:
+
+```erlang
+1 == 1.0.   % true
+1 =:= 1.0.  % false
+```
+
+Elixir:
+
+```elixir
+1 == 1.0    # true
+1 === 1.0   # false
+```
+
+**Design meaning:** Both languages distinguish numeric equality that permits integer/float comparison from exact equality that distinguishes integer and float.
+
+### Tuples — identical BEAM structure
+
+Tuples use the same basic syntax.
+
+Erlang:
+
+```erlang
+{ok, Value}
+{error, Reason}
+{user, Id, Name}
+```
+
+Elixir:
+
+```elixir
+{:ok, value}
+{:error, reason}
+{:user, id, name}
+```
+
+Common tuple patterns:
+
+| Meaning        | Erlang                  | Elixir                   |
+| -------------- | ----------------------- | ------------------------ |
+| Success        | `{ok, Value}`           | `{:ok, value}`           |
+| Error          | `{error, Reason}`       | `{:error, reason}`       |
+| Tagged variant | `{connected, Socket}`   | `{:connected, socket}`   |
+| OTP reply      | `{reply, Reply, State}` | `{:reply, reply, state}` |
+| No reply       | `{noreply, State}`      | `{:noreply, state}`      |
+
+Erlang pattern:
+
+```erlang
+case Result of
+    {ok, Value} ->
+        Value;
+    {error, Reason} ->
+        Reason
+end.
+```
+
+Elixir pattern:
+
+```elixir
+case result do
+  {:ok, value} ->
+    value
+
+  {:error, reason} ->
+    reason
+end
+```
+
+**Design meaning:** Tagged tuples are one of the most important shared conventions in Erlang / Elixir.
+
+### Lists — same linked-list structure
+
+Lists are linked lists in both languages.
+
+Erlang:
+
+```erlang
+[1, 2, 3].
+[H | T] = [1, 2, 3].
+```
+
+Elixir:
+
+```elixir
+[1, 2, 3]
+[h | t] = [1, 2, 3]
+```
+
+| Operation              | Erlang      | Elixir   |             |     |
+| ---------------------- | ----------- | -------- | ----------- | --- |
+| Empty list             | `[]`        | `[]`     |             |     |
+| Cons/prepend           | `[H         | T]`      | `[h         | t]` |
+| Concatenate            | `A ++ B`    | `a ++ b` |             |     |
+| Subtract list elements | `A -- B`    | `a -- b` |             |     |
+| Head                   | pattern `[H | _]`      | pattern `[h | _]` |
+| Tail                   | pattern `[_ | T]`      | pattern `[_ | t]` |
+
+Erlang recursion:
+
+```erlang
+sum([]) ->
+    0;
+sum([H | T]) ->
+    H + sum(T).
+```
+
+Elixir recursion:
+
+```elixir
+def sum([]), do: 0
+def sum([h | t]), do: h + sum(t)
+```
+
+**Cost reminder:** Prepending is cheap. Repeated append with `++` can be expensive because the left list is copied.
+
+### Strings, Binaries, and Charlists
+
+This is one of the most important Erlang / Elixir differences.
+
+| Source syntax    | Erlang runtime type                                                        | Elixir runtime type            |
+| ---------------- | -------------------------------------------------------------------------- | ------------------------------ |
+| `"abc"`          | charlist, usually `[97, 98, 99]`                                           | UTF-8 binary, `<<97, 98, 99>>` |
+| `<<"abc">>`      | binary                                                                     | binary                         |
+| `'abc'`          | atom in Erlang if quoted atom syntax? Actually single quotes delimit atoms | charlist in Elixir             |
+| `~c"abc"`        | not Erlang syntax                                                          | charlist in Elixir             |
+| `<<97, 98, 99>>` | binary                                                                     | binary                         |
+
+Erlang:
+
+```erlang
+"abc".       % charlist
+<<"abc">>.  % binary
+```
+
+Elixir:
+
+```elixir
+"abc"        # binary string
+~c"abc"      # charlist
+'abc'        # charlist
+<<"abc">>    # binary
+```
+
+Elixir:
+
+```elixir
+byte_size("José")
+String.length("José")
+```
+
+These answer different questions: byte size versus text length.
+
+**Design meaning:** Elixir defaults to UTF-8 binary strings. Erlang string conventions vary more, and older Erlang APIs may expect charlists. Interop requires checking the expected representation.
+
+**Common Pitfall:** Do not assume Erlang `"abc"` and Elixir `"abc"` are the same runtime shape.
+
+### Binaries and Bit Syntax
+
+Binary pattern matching is shared and very powerful.
+
+Erlang:
+
+```erlang
+parse(<<Version, Type, Length:16, Payload:Length/binary, Rest/binary>>) ->
+    {ok, #{version => Version, type => Type, payload => Payload}, Rest};
+parse(_) ->
+    {error, invalid_packet}.
+```
+
+Elixir:
+
+```elixir
+def parse(<<version, type, length::16, payload::binary-size(length), rest::binary>>) do
+  {:ok, %{version: version, type: type, payload: payload}, rest}
+end
+
+def parse(_) do
+  {:error, :invalid_packet}
+end
+```
+
+| Bit syntax task      | Erlang                  | Elixir                       |
+| -------------------- | ----------------------- | ---------------------------- |
+| Raw binary           | `<<1, 2, 3>>`           | `<<1, 2, 3>>`                |
+| Match byte           | `<<Byte, Rest/binary>>` | `<<byte, rest::binary>>`     |
+| Match 16-bit integer | `<<N:16>>`              | `<<n::16>>`                  |
+| Match binary segment | `<<Part:Len/binary>>`   | `<<part::binary-size(len)>>` |
+| UTF-8 codepoint      | `<<C/utf8>>`            | `<<c::utf8>>`                |
+
+**Design meaning:** Binary syntax is one of the closest shared features between Erlang and Elixir, although segment specifier syntax differs.
+
+### Maps — same runtime type, different surface syntax
+
+Erlang:
+
+```erlang
+User = #{id => 1, name => <<"Ada">>}.
+```
+
+Elixir:
+
+```elixir
+user = %{id: 1, name: "Ada"}
+```
+
+The Elixir shorthand `%{id: 1}` means `%{:id => 1}`.
+
+| Task                          | Erlang               | Elixir                               |                                           |
+| ----------------------------- | -------------------- | ------------------------------------ | ----------------------------------------- |
+| Create map                    | `#{id => Id}`        | `%{id: id}`                          |                                           |
+| String/binary key             | `#{<<"id">> => Id}`  | `%{"id" => id}`                      |                                           |
+| Fetch required key by pattern | `#{id := Id}`        | `%{id: id}`                          |                                           |
+| Add/update key                | `Map#{key => Value}` | `Map.put(map, key, value)` or `%{map | key: value}` for existing struct/map keys |
+| Update existing key           | `Map#{key := Value}` | `%{map                               | key: value}`                              |
+| Access by function            | `maps:get(Key, Map)` | `Map.get(map, key)`                  |                                           |
+
+Erlang pattern:
+
+```erlang
+handle(#{id := Id, name := Name}) ->
+    {Id, Name}.
+```
+
+Elixir pattern:
+
+```elixir
+def handle(%{id: id, name: name}) do
+  {id, name}
+end
+```
+
+**Important difference:** In Elixir, `%{id: id}` uses atom key `:id`. It does not match a string key `"id"`.
+
+```elixir
+%{id: id} = %{id: 1}
+%{"id" => id} = %{"id" => 1}
+```
+
+**Common Pitfall:** `%{id: 1}` and `%{"id" => 1}` are different maps.
+
+### Structs versus Records
+
+Elixir structs and Erlang records are not the same feature, but they solve overlapping problems.
+
+Erlang record:
+
+```erlang
+-record(user, {id, name, email = undefined}).
+
+User = #user{id = 1, name = <<"Ada">>}.
+```
+
+Elixir struct:
+
+```elixir
+defmodule User do
+  defstruct [:id, :name, email: nil]
+end
+
+user = %User{id: 1, name: "Ada"}
+```
+
+| Feature                | Erlang Record           | Elixir Struct                         |
+| ---------------------- | ----------------------- | ------------------------------------- |
+| Declaration            | `-record(user, {...}).` | `defstruct [...]`                     |
+| Runtime representation | tuple                   | map                                   |
+| Field names at runtime | no, compile-time only   | yes, map keys                         |
+| Pattern matching       | `#user{id = Id}`        | `%User{id: id}`                       |
+| Default values         | record field defaults   | struct field defaults                 |
+| Cross-module issue     | needs shared `.hrl`     | module-defined struct                 |
+| Interop                | Elixir sees tuple       | Erlang sees map with `__struct__` key |
+
+Erlang record matching:
+
+```erlang
+get_name(#user{name = Name}) ->
+    Name.
+```
+
+Elixir struct matching:
+
+```elixir
+def get_name(%User{name: name}) do
+  name
+end
+```
+
+**Design meaning:** Records are compile-time tuple abstractions. Structs are Elixir map conventions. Neither is a class.
+
+### Function Definition
+
+Erlang functions are defined by clauses ending with a period after the final clause.
+
+```erlang
+factorial(0) ->
+    1;
+factorial(N) when N > 0 ->
+    N * factorial(N - 1).
+```
+
+Elixir functions are defined with `def`.
+
+```elixir
+def factorial(0), do: 1
+
+def factorial(n) when n > 0 do
+  n * factorial(n - 1)
+end
+```
+
+| Feature          | Erlang              | Elixir                  |
+| ---------------- | ------------------- | ----------------------- |
+| Public function  | listed in `-export` | `def`                   |
+| Private function | not exported        | `defp`                  |
+| Clause separator | semicolon `;`       | repeated `def` clauses  |
+| Function end     | period `.`          | `end` or one-line `do:` |
+| Guard            | `when`              | `when`                  |
+| Arity            | `f/1`, `f/2`        | `f/1`, `f/2`            |
+
+Erlang:
+
+```erlang
+classify(0) ->
+    zero;
+classify(N) when N > 0 ->
+    positive;
+classify(N) when N < 0 ->
+    negative.
+```
+
+Elixir:
+
+```elixir
+def classify(0), do: :zero
+def classify(n) when n > 0, do: :positive
+def classify(n) when n < 0, do: :negative
+```
+
+**Common Pitfall:** In Erlang, semicolon separates clauses of the same function; period ends the function definition. Misplacing `;` and `.` is a common beginner error.
+
+### Anonymous Functions
+
+Erlang:
+
+```erlang
+Fun = fun(X) -> X * 2 end,
+Fun(3).
+```
+
+Elixir:
+
+```elixir
+fun = fn x -> x * 2 end
+fun.(3)
+```
+
+| Task                    | Erlang                         | Elixir                      |
+| ----------------------- | ------------------------------ | --------------------------- |
+| Anonymous function      | `fun(X) -> ... end`            | `fn x -> ... end`           |
+| Call anonymous function | `Fun(Arg)`                     | `fun.(arg)`                 |
+| Multiple clauses        | `fun(0) -> zero; (N) -> N end` | `fn 0 -> :zero; n -> n end` |
+| Capture named function  | `fun module:function/arity`    | `&Module.function/arity`    |
+| Capture local function  | `fun function/arity`           | `&function/arity`           |
+| Capture shorthand       | no exact equivalent            | `&(&1 * 2)`                 |
+
+Elixir capture example:
+
+```elixir
+Enum.map([1, 2, 3], &(&1 * 2))
+Enum.map([1, 2, 3], &Integer.to_string/1)
+```
+
+Erlang equivalent:
+
+```erlang
+lists:map(fun(X) -> X * 2 end, [1, 2, 3]).
+lists:map(fun integer_to_list/1, [1, 2, 3]).
+```
+
+**Design meaning:** Anonymous functions are BEAM function values. In Elixir, calling them requires `.` as in `fun.(arg)` to distinguish function variables from named function calls.
+
+### Module Calls and Erlang Interop from Elixir
+
+Erlang module call:
+
+```erlang
+lists:reverse([1, 2, 3]).
+```
+
+Elixir call to Erlang module:
+
+```elixir
+:lists.reverse([1, 2, 3])
+```
+
+Elixir module call:
+
+```elixir
+Enum.reverse([1, 2, 3])
+```
+
+| Erlang module               | Elixir call                   |
+| --------------------------- | ----------------------------- |
+| `erlang:monotonic_time()`   | `:erlang.monotonic_time()`    |
+| `ets:lookup(Table, Key)`    | `:ets.lookup(table, key)`     |
+| `crypto:hash(sha256, Data)` | `:crypto.hash(:sha256, data)` |
+| `timer:sleep(1000)`         | `:timer.sleep(1000)`          |
+| `queue:new()`               | `:queue.new()`                |
+| `gen_tcp:connect(...)`      | `:gen_tcp.connect(...)`       |
+
+**Design meaning:** Elixir code frequently calls Erlang modules directly. This is not foreign-function interop. It is normal BEAM module calling.
+
+**Common Pitfall:** Elixir module names like `MyApp.User` are also atoms internally, but they are written in Elixir with alias syntax. Erlang module names are usually lowercase atoms and are called from Elixir with a leading `:`.
+
+### Pattern Matching
+
+Pattern matching is shared, but Elixir’s rebinding and pin operator create one important difference.
+
+Erlang:
+
+```erlang
+{ok, Value} = Result.
+```
+
+Elixir:
+
+```elixir
+{:ok, value} = result
+```
+
+Erlang list matching:
+
+```erlang
+[H | T] = List.
+```
+
+Elixir list matching:
+
+```elixir
+[h | t] = list
+```
+
+Erlang map matching:
+
+```erlang
+#{id := Id} = User.
+```
+
+Elixir map matching:
+
+```elixir
+%{id: id} = user
+```
+
+Elixir pin:
+
+```elixir
+expected = 10
+{:ok, ^expected} = {:ok, 10}
+```
+
+Equivalent Erlang effect is ordinary matching against already-bound variable:
+
+```erlang
+Expected = 10,
+{ok, Expected} = {ok, 10}.
+```
+
+**Design meaning:** Pattern matching is the shared language of data shape. In Erlang, variables do not rebind inside the same match. In Elixir, use `^` when a variable must match an existing value.
+
+### Guards
+
+Both languages use `when` guards. Guards are restricted expressions.
+
+Erlang:
+
+```erlang
+abs_value(N) when is_integer(N), N >= 0 ->
+    N;
+abs_value(N) when is_integer(N), N < 0 ->
+    -N.
+```
+
+Elixir:
+
+```elixir
+def abs_value(n) when is_integer(n) and n >= 0 do
+  n
+end
+
+def abs_value(n) when is_integer(n) and n < 0 do
+  -n
+end
+```
+
+| Guard concept      | Erlang                             | Elixir          |
+| ------------------ | ---------------------------------- | --------------- |
+| Type check integer | `is_integer(X)`                    | `is_integer(x)` |
+| Type check binary  | `is_binary(X)`                     | `is_binary(x)`  |
+| Boolean and        | `,` or `andalso` depending context | `and`           |
+| Boolean or         | `;` in guard sequences or `orelse` | `or`            |
+| Comparison         | `X > 0`                            | `x > 0`         |
+| Guard keyword      | `when`                             | `when`          |
+
+**Important:** Guards cannot call arbitrary user-defined functions.
+
+**Common Pitfall:** Validation logic that needs arbitrary functions should happen in the function body, not in guards.
+
+### Case Expressions
+
+Erlang:
+
+```erlang
+case Result of
+    {ok, Value} ->
+        Value;
+    {error, Reason} ->
+        {failed, Reason}
+end.
+```
+
+Elixir:
+
+```elixir
+case result do
+  {:ok, value} ->
+    value
+
+  {:error, reason} ->
+    {:failed, reason}
+end
+```
+
+| Feature          | Erlang                                            | Elixir                  |
+| ---------------- | ------------------------------------------------- | ----------------------- |
+| Start            | `case Expr of`                                    | `case expr do`          |
+| Branch arrow     | `->`                                              | `->`                    |
+| Branch separator | `;`                                               | newline / branch syntax |
+| End              | `end` plus period if final expression in function | `end`                   |
+
+**Design meaning:** Use `case` when a local expression result has variants. Use function clauses when the whole function is defined by input shape.
+
+### If and Cond
+
+Erlang `if` uses guard clauses.
+
+```erlang
+if
+    Score >= 90 ->
+        excellent;
+    Score >= 60 ->
+        pass;
+    true ->
+        fail
+end.
+```
+
+Elixir has `if` for simple boolean branching and `cond` for ordered conditions.
+
+```elixir
+if score >= 60 do
+  :pass
+else
+  :fail
+end
+```
+
+```elixir
+cond do
+  score >= 90 ->
+    :excellent
+
+  score >= 60 ->
+    :pass
+
+  true ->
+    :fail
+end
+```
+
+| Need                          | Erlang           | Elixir           |
+| ----------------------------- | ---------------- | ---------------- |
+| Simple condition              | `if` or `case`   | `if`             |
+| Multiple ordered conditions   | `if`             | `cond`           |
+| Pattern branching             | `case`           | `case`           |
+| Shape-based function behavior | function clauses | function clauses |
+
+**Common Pitfall:** In Elixir, only `false` and `nil` are falsy. Values like `0`, `[]`, and `""` are truthy.
+
+### Receive and Message Passing
+
+Message passing is a shared BEAM feature.
+
+Erlang send:
+
+```erlang
+Pid ! {ping, self()}.
+```
+
+Elixir send:
+
+```elixir
+send(pid, {:ping, self()})
+```
+
+Erlang receive:
+
+```erlang
+receive
+    {ping, From} ->
+        From ! pong
+after 5000 ->
+    timeout
+end.
+```
+
+Elixir receive:
+
+```elixir
+receive do
+  {:ping, from} ->
+    send(from, :pong)
+after
+  5_000 ->
+    :timeout
+end
+```
+
+Request-response pattern:
+
+Erlang:
+
+```erlang
+Ref = make_ref(),
+Pid ! {request, self(), Ref, Payload},
+receive
+    {reply, Ref, Result} ->
+        {ok, Result}
+after 5000 ->
+    {error, timeout}
+end.
+```
+
+Elixir:
+
+```elixir
+ref = make_ref()
+send(pid, {:request, self(), ref, payload})
+
+receive do
+  {:reply, ^ref, result} ->
+    {:ok, result}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+**Design meaning:** Message protocol shapes are the same idea in both languages. Elixir uses `^ref` to match the previously created reference.
+
+**Common Pitfall:** A timeout does not remove a future late reply from the mailbox.
+
+### Try, Catch, Rescue, and After
+
+Erlang and Elixir both have constructs for exception-like control flow, but the surface differs.
+
+Erlang:
+
+```erlang
+try risky() of
+    Value ->
+        {ok, Value}
+catch
+    error:Reason ->
+        {error, Reason}
+after
+    cleanup()
+end.
+```
+
+Elixir:
+
+```elixir
+try do
+  {:ok, risky()}
+rescue
+  e in RuntimeError ->
+    {:error, e}
+after
+  cleanup()
+end
+```
+
+| Failure channel     | Erlang                      | Elixir                      |
+| ------------------- | --------------------------- | --------------------------- |
+| Raise runtime error | `erlang:error(Reason)`      | `raise`                     |
+| Throw               | `throw(Term)`               | `throw(term)`               |
+| Exit                | `exit(Reason)`              | `exit(reason)`              |
+| Catch error         | `catch error:Reason -> ...` | `rescue e -> ...`           |
+| Catch throw/exit    | `catch Class:Reason -> ...` | `catch kind, reason -> ...` |
+| Cleanup             | `after`                     | `after`                     |
+
+**Design meaning:** Do not overuse exception handling for ordinary domain failure. Tagged returns are usually clearer for expected errors.
+
+### Recursion
+
+Recursion is central in Erlang and present in Elixir, although Elixir code often uses `Enum` and `Stream` for collection work.
+
+Erlang:
+
+```erlang
+sum(List) ->
+    sum(List, 0).
+
+sum([], Acc) ->
+    Acc;
+sum([H | T], Acc) ->
+    sum(T, Acc + H).
+```
+
+Elixir:
+
+```elixir
+def sum(list), do: sum(list, 0)
+
+defp sum([], acc), do: acc
+defp sum([h | t], acc), do: sum(t, acc + h)
+```
+
+| Concept        | Erlang                | Elixir                |
+| -------------- | --------------------- | --------------------- |
+| Public wrapper | exported function     | `def`                 |
+| Private helper | unexported function   | `defp`                |
+| Accumulator    | extra argument        | extra argument        |
+| Base case      | first or later clause | first or later clause |
+| Recursive case | function clause       | function clause       |
+
+**Design meaning:** Process loops and many low-level traversals are recursive. Elixir often hides ordinary collection recursion behind `Enum`, but the runtime idea remains important.
+
+### List Comprehensions and For Comprehensions
+
+Erlang list comprehension:
+
+```erlang
+[X * 2 || X <- [1, 2, 3], X > 1].
+```
+
+Elixir `for` comprehension:
+
+```elixir
+for x <- [1, 2, 3], x > 1 do
+  x * 2
+end
+```
+
+| Task                 | Erlang               | Elixir             |                   |                                         |
+| -------------------- | -------------------- | ------------------ | ----------------- | --------------------------------------- |
+| Generate list        | `[Expr               |                    | Pattern <- List]` | `for pattern <- enumerable do expr end` |
+| Filter               | `, GuardOrCondition` | `, condition`      |                   |                                         |
+| Multiple generators  | `X <- Xs, Y <- Ys`   | `x <- xs, y <- ys` |                   |                                         |
+| Binary comprehension | supported            | supported          |                   |                                         |
+| Output into map      | manual               | `into: %{}` option |                   |                                         |
+
+Elixir:
+
+```elixir
+for {key, value} <- pairs, into: %{} do
+  {key, normalize(value)}
+end
+```
+
+**Design meaning:** Comprehensions are declarative generation tools. They are not a replacement for all loops or error-handling control flow.
+
+### Pipelines
+
+Elixir has the pipe operator. Erlang does not have an equivalent built-in syntax.
+
+Elixir:
+
+```elixir
+name
+|> String.trim()
+|> String.downcase()
+```
+
+Erlang equivalent with variables:
+
+```erlang
+Trimmed = string:trim(Name),
+Lower = string:lowercase(Trimmed).
+```
+
+| Concept                   | Erlang                               | Elixir                     |                       |
+| ------------------------- | ------------------------------------ | -------------------------- | --------------------- |
+| Linear transformation     | nested calls or variables            | `                          | >` pipeline           |
+| Debug pipeline stage      | intermediate variables / `io:format` | `IO.inspect`, `dbg`, `tap` |                       |
+| Data-first function style | module-dependent                     | encouraged by `            | >`                    |
+| Lazy pipeline             | not by syntax                        | only if using `Stream`; `  | >` itself is not lazy |
+
+**Design meaning:** Elixir pipelines improve readability for linear transformations, but they do not change evaluation model or create concurrency.
+
+**Common Pitfall:** `|>` does not make `Enum` lazy. `Enum` remains eager; `Stream` is lazy.
+
+### Blocks and Expression Grouping
+
+Erlang groups expressions with commas, `begin ... end`, or function/case/receive blocks.
+
+Erlang:
+
+```erlang
+begin
+    A = 1,
+    B = 2,
+    A + B
+end.
+```
+
+Elixir uses `do ... end` blocks.
+
+```elixir
+do
+  a = 1
+  b = 2
+  a + b
+end
+```
+
+More commonly:
+
+```elixir
+def add do
+  a = 1
+  b = 2
+  a + b
+end
+```
+
+| Feature             | Erlang          | Elixir               |
+| ------------------- | --------------- | -------------------- |
+| Sequence separator  | comma `,`       | newline or semicolon |
+| Function clause end | period `.`      | `end`                |
+| Case/receive/if end | `end`           | `end`                |
+| Block expression    | `begin ... end` | `do ... end`         |
+
+**Common Pitfall:** In Erlang, punctuation is syntactically significant: comma, semicolon, and period mean different things.
+
+### Boolean Operators
+
+Erlang and Elixir both have strict and short-circuit style boolean operators, but their surface differs.
+
+| Meaning                      | Erlang               | Elixir                                       |   |   |
+| ---------------------------- | -------------------- | -------------------------------------------- | - | - |
+| Boolean and                  | `andalso`            | `and`                                        |   |   |
+| Boolean or                   | `orelse`             | `or`                                         |   |   |
+| Boolean not                  | `not`                | `not`                                        |   |   |
+| Non-strict and-like operator | `and`                | no same role in ordinary modern Elixir style |   |   |
+| Non-strict or-like operator  | `or`                 | no same role in ordinary modern Elixir style |   |   |
+| General truthy and           | no direct equivalent | `&&`                                         |   |   |
+| General truthy or            | no direct equivalent | `                                            |   | ` |
+| General not                  | no direct equivalent | `!`                                          |   |   |
+
+Elixir distinction:
+
+```elixir
+true and false
+value && fallback
+```
+
+`and` expects booleans; `&&` works with Elixir truthiness.
+
+**Common Pitfall:** Elixir truthiness differs from many languages: only `false` and `nil` are falsy.
+
+### Module Attributes and Erlang Attributes
+
+Erlang attributes start with `-`.
+
+```erlang
+-module(my_module).
+-export([f/1]).
+-define(DEFAULT_TIMEOUT, 5000).
+-record(user, {id, name}).
+-spec f(integer()) -> integer().
+```
+
+Elixir module attributes start with `@`.
+
+```elixir
+defmodule MyModule do
+  @default_timeout 5_000
+  @spec f(integer()) :: integer()
+  def f(x), do: x + 1
+end
+```
+
+| Purpose        | Erlang                  | Elixir                                    |
+| -------------- | ----------------------- | ----------------------------------------- |
+| Module name    | `-module(name).`        | `defmodule Name do`                       |
+| Export         | `-export([f/1]).`       | `def`                                     |
+| Macro constant | `-define(NAME, Value).` | module attribute often used for constants |
+| Record         | `-record(name, {...}).` | `defstruct`                               |
+| Spec           | `-spec`                 | `@spec`                                   |
+| Type           | `-type`                 | `@type`                                   |
+| Opaque type    | `-opaque`               | `@opaque`                                 |
+| Behaviour      | `-behaviour`            | `@behaviour` or `use` wrapper             |
+| Documentation  | comments/EDoc           | `@moduledoc`, `@doc`                      |
+
+**Design meaning:** Erlang attributes are part of module declarations and compilation. Elixir module attributes can be documentation, compile-time metadata, constants, or macro-consumed declarations depending context.
+
+### Macros and Preprocessor
+
+Erlang has a preprocessor. Elixir has AST macros.
+
+Erlang macro:
+
+```erlang
+-define(DEFAULT_TIMEOUT, 5000).
+
+timeout() ->
+    ?DEFAULT_TIMEOUT.
+```
+
+Elixir module attribute constant:
+
+```elixir
+defmodule Config do
+  @default_timeout 5_000
+
+  def timeout, do: @default_timeout
+end
+```
+
+Elixir macro:
+
+```elixir
+defmacro log_expr(expr) do
+  quote do
+    value = unquote(expr)
+    IO.inspect(value)
+    value
+  end
+end
+```
+
+| Feature                | Erlang                     | Elixir                                                                                    |
+| ---------------------- | -------------------------- | ----------------------------------------------------------------------------------------- |
+| Compile-time constants | `-define`                  | module attributes                                                                         |
+| Include files          | `-include`, `-include_lib` | no direct routine equivalent; `import`, `alias`, `require`, `use` have different meanings |
+| Code generation        | parse transforms, macros   | `defmacro`, `quote`, `unquote`                                                            |
+| DSLs                   | less central               | central in many frameworks                                                                |
+| Macro call             | `?MACRO`                   | looks like function-like syntax depending macro                                           |
+
+**Design meaning:** Erlang macros are often preprocessor-level tools. Elixir macros operate on AST and are central to many DSLs.
+
+**Common Pitfall:** Elixir macros are not ordinary functions. They run at compile time and generate code.
+
+### Import, Alias, Require, Include
+
+Elixir has `alias`, `import`, `require`, and `use`. Erlang has module calls, include files, and macros.
+
+| Need                | Erlang                                                          | Elixir                      |
+| ------------------- | --------------------------------------------------------------- | --------------------------- |
+| Call another module | `module:function()`                                             | `Module.function()`         |
+| Shorten module name | no direct alias syntax                                          | `alias MyApp.Long.Module`   |
+| Import functions    | `-import(module, [f/1]).` possible but less commonly emphasized | `import Module`             |
+| Use macros          | `-include` macro definitions or local macros                    | `require Module`            |
+| Invoke setup macro  | no exact routine equivalent                                     | `use Module`                |
+| Include header      | `-include("file.hrl").`                                         | no direct normal equivalent |
+
+Elixir:
+
+```elixir
+alias MyApp.Accounts.User
+import Enum
+require Logger
+use GenServer
+```
+
+**Design meaning:** `use Module` in Elixir is macro-based. It calls `Module.__using__/1` and may inject code, imports, aliases, callbacks, or module attributes.
+
+**Common Pitfall:** `use GenServer` is not just an import. It sets up behaviour-related conveniences and should be understood as macro expansion.
+
+### Specs and Types
+
+Erlang:
+
+```erlang
+-type user_id() :: pos_integer().
+-opaque user() :: #{id := user_id(), name := binary()}.
+
+-spec fetch_user(user_id()) -> {ok, user()} | {error, not_found}.
+```
+
+Elixir:
+
+```elixir
+@type user_id :: pos_integer()
+@opaque t :: %__MODULE__{id: user_id(), name: String.t()}
+
+@spec fetch_user(user_id()) :: {:ok, t()} | {:error, :not_found}
+```
+
+| Type concept  | Erlang                             | Elixir                                                 |
+| ------------- | ---------------------------------- | ------------------------------------------------------ |
+| Named type    | `-type name() :: ... .`            | `@type name :: ...`                                    |
+| Opaque type   | `-opaque name() :: ... .`          | `@opaque name :: ...`                                  |
+| Export type   | `-export_type([name/0]).`          | public by module docs/spec usage; `@typep` for private |
+| Private type  | not exported by convention/tooling | `@typep`                                               |
+| Function spec | `-spec f(T) -> U.`                 | `@spec f(t) :: u`                                      |
+| Callback      | `-callback f(T) -> U.`             | `@callback f(t) :: u`                                  |
+
+**Design meaning:** Specs help readers and tools. They do not replace runtime validation of external input.
+
+### Behaviours and Callbacks
+
+Erlang behaviour module:
+
+```erlang
+-callback put(binary(), binary()) -> ok | {error, term()}.
+```
+
+Erlang implementation:
+
+```erlang
+-behaviour(storage).
+
+put(Key, Value) ->
+    ok.
+```
+
+Elixir behaviour:
+
+```elixir
+defmodule Storage do
+  @callback put(binary(), binary()) :: :ok | {:error, term()}
+end
+```
+
+Elixir implementation:
+
+```elixir
+defmodule MemoryStorage do
+  @behaviour Storage
+
+  @impl true
+  def put(_key, _value), do: :ok
+end
+```
+
+OTP example:
+
+Erlang:
+
+```erlang
+-behaviour(gen_server).
+```
+
+Elixir:
+
+```elixir
+use GenServer
+```
+
+**Design meaning:** Behaviours are module-level callback contracts. Elixir’s `use GenServer` is a macro convenience around the OTP behaviour pattern.
+
+### GenServer / gen_server Syntax Crosswalk
+
+Erlang `gen_server` callback:
+
+```erlang
+handle_call(get, _From, State) ->
+    {reply, State, State};
+
+handle_call({put, Value}, _From, _State) ->
+    {reply, ok, Value}.
+```
+
+Elixir `GenServer` callback:
+
+```elixir
+@impl true
+def handle_call(:get, _from, state) do
+  {:reply, state, state}
+end
+
+@impl true
+def handle_call({:put, value}, _from, _state) do
+  {:reply, :ok, value}
+end
+```
+
+Public API:
+
+Erlang:
+
+```erlang
+get(Server) ->
+    gen_server:call(Server, get).
+
+put(Server, Value) ->
+    gen_server:call(Server, {put, Value}).
+```
+
+Elixir:
+
+```elixir
+def get(server) do
+  GenServer.call(server, :get)
+end
+
+def put(server, value) do
+  GenServer.call(server, {:put, value})
+end
+```
+
+| Concept        | Erlang                         | Elixir                        |
+| -------------- | ------------------------------ | ----------------------------- |
+| Behaviour      | `-behaviour(gen_server).`      | `use GenServer`               |
+| Start          | `gen_server:start_link(...)`   | `GenServer.start_link(...)`   |
+| Sync call      | `gen_server:call(Server, Msg)` | `GenServer.call(server, msg)` |
+| Async cast     | `gen_server:cast(Server, Msg)` | `GenServer.cast(server, msg)` |
+| Reply tuple    | `{reply, Reply, State}`        | `{:reply, reply, state}`      |
+| No-reply tuple | `{noreply, State}`             | `{:noreply, state}`           |
+| Stop tuple     | `{stop, Reason, State}`        | `{:stop, reason, state}`      |
+
+**Common Pitfall:** The public API should hide raw message tuples in both languages.
+
+### Supervisor Syntax Crosswalk
+
+Elixir child list:
+
+```elixir
+children = [
+  MyApp.Cache,
+  {Registry, keys: :unique, name: MyApp.Registry},
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+]
+
+Supervisor.start_link(children, strategy: :one_for_one)
+```
+
+Erlang supervisor callback style:
+
+```erlang
+init([]) ->
+    Children = [
+        #{id => cache,
+          start => {cache, start_link, []},
+          restart => permanent,
+          shutdown => 5000,
+          type => worker,
+          modules => [cache]}
+    ],
+    {ok, \{\{one_for_one, 5, 10}, Children\}\}.
+```
+
+| Concept              | Erlang                                | Elixir                                      |
+| -------------------- | ------------------------------------- | ------------------------------------------- |
+| Supervisor behaviour | `-behaviour(supervisor).`             | `use Supervisor` or `Supervisor.start_link` |
+| Strategy             | `one_for_one`                         | `:one_for_one`                              |
+| Restart type         | `permanent`, `transient`, `temporary` | `:permanent`, `:transient`, `:temporary`    |
+| Worker type          | `worker`                              | `:worker`                                   |
+| Supervisor type      | `supervisor`                          | `:supervisor`                               |
+| Child spec           | map or older tuple forms              | child spec map or module tuple shorthand    |
+
+**Design meaning:** Elixir child specs are often more ergonomic, but the OTP concepts are the same.
+
+### Application Syntax Crosswalk
+
+Erlang application callback:
+
+```erlang
+-module(my_app_app).
+-behaviour(application).
+
+-export([start/2, stop/1]).
+
+start(_Type, _Args) ->
+    my_app_sup:start_link().
+
+stop(_State) ->
+    ok.
+```
+
+Elixir application callback:
+
+```elixir
+defmodule MyApp.Application do
+  use Application
+
+  @impl true
+  def start(_type, _args) do
+    children = [
+      MyApp.Cache
+    ]
+
+    Supervisor.start_link(children, strategy: :one_for_one)
+  end
+end
+```
+
+| Concept                | Erlang                     | Elixir                |
+| ---------------------- | -------------------------- | --------------------- |
+| App callback behaviour | `-behaviour(application).` | `use Application`     |
+| Start callback         | `start(Type, Args)`        | `start(_type, _args)` |
+| Stop callback          | `stop(State)`              | `stop(_state)`        |
+| Return success         | `{ok, Pid}`                | `{:ok, pid}`          |
+| Supervision root       | app starts supervisor      | app starts supervisor |
+
+**Design meaning:** OTP application startup is a shared concept. Elixir makes the syntax more approachable but does not change the supervision principle.
+
+### Error Values, Exceptions, and Exits
+
+| Concept             | Erlang                    | Elixir                    |
+| ------------------- | ------------------------- | ------------------------- |
+| Expected error      | `{error, Reason}`         | `{:error, reason}`        |
+| Raise runtime error | `erlang:error(Reason)`    | `raise`                   |
+| Throw               | `throw(Term)`             | `throw(term)`             |
+| Exit process        | `exit(Reason)`            | `exit(reason)`            |
+| Catch/rescue        | `try ... catch`           | `try ... rescue/catch`    |
+| Let process crash   | failed match, error, exit | failed match, raise, exit |
+
+Erlang failed match:
+
+```erlang
+{ok, Value} = Result.
+```
+
+Elixir failed match:
+
+```elixir
+{:ok, value} = result
+```
+
+If `Result` / `result` is an error tuple, the process raises/crashes.
+
+**Design meaning:** Both languages use tagged tuples for expected failure and crashes/exits for failure boundaries. The syntax differs; the design principle is shared.
+
+### Common Syntax Translation Patterns
+
+| Erlang                         | Elixir                                       |
+| ------------------------------ | -------------------------------------------- |
+| `{ok, Value}`                  | `{:ok, value}`                               |
+| `{error, Reason}`              | `{:error, reason}`                           |
+| `Pid ! Msg`                    | `send(pid, msg)`                             |
+| `self()`                       | `self()`                                     |
+| `make_ref()`                   | `make_ref()`                                 |
+| `spawn(fun() -> Work end)`     | `spawn(fn -> work end)`                      |
+| `receive ... end`              | `receive do ... end`                         |
+| `fun(X) -> X end`              | `fn x -> x end`                              |
+| `lists:map(F, Xs)`             | `Enum.map(xs, f)` or `:lists.map(f, xs)`     |
+| `maps:get(Key, Map)`           | `Map.get(map, key)`                          |
+| `file:read_file(Path)`         | `File.read(path)` or `:file.read_file(path)` |
+| `ets:lookup(Tab, Key)`         | `:ets.lookup(tab, key)`                      |
+| `crypto:hash(sha256, Data)`    | `:crypto.hash(:sha256, data)`                |
+| `gen_server:call(Server, Msg)` | `GenServer.call(server, msg)`                |
+| `supervisor`                   | `Supervisor`                                 |
+| `application`                  | `Application`                                |
+
+### Reading Erlang from Elixir Knowledge
+
+When reading Erlang code as an Elixir learner:
+
+| Erlang form                 | Read it as                                 |
+| --------------------------- | ------------------------------------------ |
+| lowercase word like `ok`    | atom `:ok`                                 |
+| uppercase word like `Value` | variable                                   |
+| `{ok, Value}`               | `{:ok, value}`                             |
+| `Module:fun(Arg)`           | `Module.fun(arg)` or `:module.fun(arg)`    |
+| `Pid ! Msg`                 | `send(pid, msg)`                           |
+| `receive ... end`           | same mailbox receive idea                  |
+| `-spec`                     | `@spec`                                    |
+| `-behaviour`                | `@behaviour` / `use`                       |
+| `#record{}`                 | record, not struct                         |
+| `<<"text">>`                | binary                                     |
+| `"text"`                    | charlist in Erlang                         |
+| final `.`                   | end of form/function/module attribute      |
+| `;` between clauses         | another clause of same expression/function |
+| `,` between expressions     | sequence inside clause/block               |
+
+### Reading Elixir from Erlang Knowledge
+
+When reading Elixir code as an Erlang learner:
+
+| Elixir form             | Read it as                              |                                              |
+| ----------------------- | --------------------------------------- | -------------------------------------------- |
+| `:ok`                   | atom `ok`                               |                                              |
+| lowercase `value`       | variable                                |                                              |
+| uppercase `User`        | alias/module name                       |                                              |
+| `{:ok, value}`          | `{ok, Value}`                           |                                              |
+| `Module.function(arg)`  | module call                             |                                              |
+| `:ets.lookup(tab, key)` | Erlang `ets:lookup(Tab, Key)`           |                                              |
+| `send(pid, msg)`        | `Pid ! Msg`                             |                                              |
+| `receive do ... end`    | same receive primitive                  |                                              |
+| `%{id: id}`             | map with atom key `:id`                 |                                              |
+| `%User{}`               | Elixir struct, runtime map              |                                              |
+| `def`                   | public function                         |                                              |
+| `defp`                  | private function                        |                                              |
+| `@spec`                 | `-spec`                                 |                                              |
+| `@type`                 | `-type`                                 |                                              |
+| `use GenServer`         | macro setting up behaviour conveniences |                                              |
+| `                       | >`                                      | pipeline, ordinary function calls rearranged |
+| `^x`                    | match already-bound variable            |                                              |
+| `fn -> ... end`         | anonymous function                      |                                              |
+
+### High-Value Translation Example — Server API
+
+Erlang:
+
+```erlang
+-module(counter).
+-behaviour(gen_server).
+
+-export([start_link/0, increment/1, get/1]).
+-export([init/1, handle_cast/2, handle_call/3]).
+
+start_link() ->
+    gen_server:start_link(?MODULE, 0, []).
+
+increment(Server) ->
+    gen_server:cast(Server, increment).
+
+get(Server) ->
+    gen_server:call(Server, get).
+
+init(Count) ->
+    {ok, Count}.
+
+handle_cast(increment, Count) ->
+    {noreply, Count + 1}.
+
+handle_call(get, _From, Count) ->
+    {reply, Count, Count}.
+```
+
+Elixir:
+
+```elixir
+defmodule Counter do
+  use GenServer
+
+  def start_link do
+    GenServer.start_link(__MODULE__, 0)
+  end
+
+  def increment(server) do
+    GenServer.cast(server, :increment)
+  end
+
+  def get(server) do
+    GenServer.call(server, :get)
+  end
+
+  @impl true
+  def init(count) do
+    {:ok, count}
+  end
+
+  @impl true
+  def handle_cast(:increment, count) do
+    {:noreply, count + 1}
+  end
+
+  @impl true
+  def handle_call(:get, _from, count) do
+    {:reply, count, count}
+  end
+end
+```
+
+The syntax is different, but the architecture is the same:
+
+```text
+public API function
+    ↓
+GenServer/gen_server call or cast
+    ↓
+callback receives message
+    ↓
+callback returns OTP tuple
+    ↓
+process continues with new state
+```
+
+### High-Value Translation Example — Parser
+
+Erlang:
+
+```erlang
+parse_status(<<"pending">>) ->
+    {ok, pending};
+parse_status(<<"approved">>) ->
+    {ok, approved};
+parse_status(<<"rejected">>) ->
+    {ok, rejected};
+parse_status(_) ->
+    {error, invalid_status}.
+```
+
+Elixir:
+
+```elixir
+def parse_status("pending"), do: {:ok, :pending}
+def parse_status("approved"), do: {:ok, :approved}
+def parse_status("rejected"), do: {:ok, :rejected}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+**Design meaning:** Both versions avoid dynamic atom creation and use explicit finite mapping.
+
+### Syntax Crosswalk Checklist
+
+When translating or reading Erlang / Elixir code, check these first:
+
+| Question                                           | Why it matters                                         |
+| -------------------------------------------------- | ------------------------------------------------------ |
+| Is this atom syntax or variable syntax?            | Erlang uppercase variables, Elixir lowercase variables |
+| Is this string a binary or charlist?               | Major interop issue                                    |
+| Is this map using atom keys or string/binary keys? | Pattern matching depends on exact key                  |
+| Is this tuple a tagged return?                     | Common success/error protocol                          |
+| Is this a public API or callback?                  | Determines who calls it                                |
+| Is this a message protocol?                        | Needs tag/ref/caller discipline                        |
+| Is this a record or struct?                        | Runtime representation differs                         |
+| Is this a macro/preprocessor feature?              | Compile-time behavior                                  |
+| Is this OTP return shape exact?                    | Callback protocol depends on tuple shape               |
+| Is this ordinary error data or process crash?      | Failure policy differs                                 |
+
+### Appendix A Summary
+
+Erlang and Elixir differ most visibly in syntax, naming, strings, records/structs, macros, and tooling. They overlap deeply in BEAM terms, pattern matching, message passing, OTP callback shapes, process semantics, supervision, and runtime behavior.
+
+The most important translation rule is:
+
+```text
+Translate syntax carefully,
+but reason at the BEAM / OTP level.
+```
+
+For practical reading:
+
+```text
+Erlang atom `ok` = Elixir atom `:ok`.
+Erlang `{ok, Value}` = Elixir `{:ok, value}`.
+Erlang `Pid ! Msg` = Elixir `send(pid, msg)`.
+Erlang `gen_server` = Elixir `GenServer` wrapper over the same OTP idea.
+Erlang records and Elixir structs are not the same representation.
+Erlang strings and Elixir strings are not the same runtime shape.
+```
+
+This crosswalk should be used as a decoding layer. Once the syntax is decoded, the deeper question is always the same: what BEAM term, process, message, callback, failure boundary, or runtime behavior is being expressed?
+## Appendix B — OTP Callback Return Shapes Reference
+
+### Appendix Scope — reading OTP callbacks as runtime protocols
+
+This appendix is a reference for the most common OTP callback return shapes in Erlang and Elixir.
+
+OTP callbacks are not arbitrary functions. Each callback participates in a **runtime protocol**. The return value tells OTP what to do next: continue with new state, reply to caller, stop the process, start children, restart children, or fail startup.
+
+The central rule is:
+
+```text
+An OTP callback return value is an instruction to the OTP runtime.
+It is not merely an ordinary data result.
+```
+
+| OTP concept               | Erlang                       | Elixir                    | Main role                                                |
+| ------------------------- | ---------------------------- | ------------------------- | -------------------------------------------------------- |
+| Stateful server           | `gen_server`                 | `GenServer`               | Synchronous calls, asynchronous casts, ordinary messages |
+| Supervisor                | `supervisor`                 | `Supervisor`              | Start and restart child processes                        |
+| Application               | `application`                | `Application`             | Start and stop OTP application                           |
+| Dynamic child manager     | `supervisor` patterns        | `DynamicSupervisor`       | Start children at runtime                                |
+| Temporary concurrent work | processes / supervisors      | `Task`, `Task.Supervisor` | Run short-lived work                                     |
+| Process registry          | `global`, `pg`, ETS patterns | `Registry`                | Process discovery                                        |
+| State machine             | `gen_statem`                 | `:gen_statem` or wrappers | Explicit state-machine process                           |
+
+This appendix focuses on the callback shapes most learners encounter first: `GenServer`, `Supervisor`, `Application`, `DynamicSupervisor`, `Task`, and `Registry`-related process names.
+
+### GenServer / gen_server Overview
+
+A `GenServer` is a process behavior. It receives requests, calls callback functions, and expects exact return tuples.
+
+| Callback             | Erlang          | Elixir          | Purpose                           |
+| -------------------- | --------------- | --------------- | --------------------------------- |
+| Initialize state     | `init/1`        | `init/1`        | Set initial server state          |
+| Synchronous request  | `handle_call/3` | `handle_call/3` | Caller waits for reply            |
+| Asynchronous request | `handle_cast/2` | `handle_cast/2` | Caller does not wait              |
+| Ordinary message     | `handle_info/2` | `handle_info/2` | Timers, monitors, raw messages    |
+| Termination hook     | `terminate/2`   | `terminate/2`   | Cleanup under specific conditions |
+| Code upgrade hook    | `code_change/3` | `code_change/3` | Hot-code upgrade state conversion |
+
+Elixir skeleton:
+
+```elixir
+defmodule Counter do
+  use GenServer
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, 0, opts)
+  end
+
+  @impl true
+  def init(count) do
+    {:ok, count}
+  end
+
+  @impl true
+  def handle_call(:get, _from, count) do
+    {:reply, count, count}
+  end
+
+  @impl true
+  def handle_cast(:increment, count) do
+    {:noreply, count + 1}
+  end
+
+  @impl true
+  def handle_info(:tick, count) do
+    {:noreply, count}
+  end
+end
+```
+
+Erlang skeleton:
+
+```erlang
+-module(counter).
+-behaviour(gen_server).
+
+-export([start_link/0]).
+-export([init/1, handle_call/3, handle_cast/2, handle_info/2]).
+
+start_link() ->
+    gen_server:start_link(?MODULE, 0, []).
+
+init(Count) ->
+    {ok, Count}.
+
+handle_call(get, _From, Count) ->
+    {reply, Count, Count}.
+
+handle_cast(increment, Count) ->
+    {noreply, Count + 1}.
+
+handle_info(tick, Count) ->
+    {noreply, Count}.
+```
+
+**Design meaning:** Each callback return tuple tells OTP whether to continue, reply, stop, set timeout, hibernate, or perform another runtime action.
+
+### GenServer `init/1` Return Shapes
+
+`init/1` is called when the server process starts. It decides whether startup succeeds and what the initial state is.
+
+| Meaning                           | Erlang                              | Elixir                                |
+| --------------------------------- | ----------------------------------- | ------------------------------------- |
+| Start successfully                | `{ok, State}`                       | `{:ok, state}`                        |
+| Start successfully with timeout   | `{ok, State, Timeout}`              | `{:ok, state, timeout}`               |
+| Start successfully with hibernate | `{ok, State, hibernate}`            | `{:ok, state, :hibernate}`            |
+| Continue after init               | `{ok, State, {continue, Continue\}\}` | `{:ok, state, {:continue, continue\}\}` |
+| Ignore child startup              | `ignore`                            | `:ignore`                             |
+| Fail startup                      | `{stop, Reason}`                    | `{:stop, reason}`                     |
+
+Elixir:
+
+```elixir
+@impl true
+def init(opts) do
+  case validate_opts(opts) do
+    {:ok, state} ->
+      {:ok, state}
+
+    {:error, reason} ->
+      {:stop, reason}
+  end
+end
+```
+
+Erlang:
+
+```erlang
+init(Opts) ->
+    case validate_opts(Opts) of
+        {ok, State} ->
+            {ok, State};
+        {error, Reason} ->
+            {stop, Reason}
+    end.
+```
+
+| Return                            | Runtime effect                                                                       |
+| --------------------------------- | ------------------------------------------------------------------------------------ |
+| `{:ok, state}`                    | Server starts and continues with `state`                                             |
+| `{:ok, state, timeout}`           | Server starts and will receive timeout behavior if no message arrives before timeout |
+| `{:ok, state, {:continue, term\}\}` | Server starts, then calls `handle_continue/2`                                        |
+| `:ignore`                         | Startup is ignored; supervisor treats child according to OTP rules                   |
+| `{:stop, reason}`                 | Startup fails; process does not continue                                             |
+
+**Common Pitfall:** Do not perform long blocking setup in `init/1` if it delays supervisor startup badly. Use `handle_continue/2` when the server should finish initialization after the process has started.
+
+### GenServer `handle_call/3` Return Shapes
+
+`handle_call/3` handles synchronous requests. The caller waits until a reply is sent or a timeout occurs.
+
+Basic Elixir public API:
+
+```elixir
+def get(server) do
+  GenServer.call(server, :get)
+end
+```
+
+Elixir callback:
+
+```elixir
+@impl true
+def handle_call(:get, _from, state) do
+  {:reply, state, state}
+end
+```
+
+Erlang public API:
+
+```erlang
+get(Server) ->
+    gen_server:call(Server, get).
+```
+
+Erlang callback:
+
+```erlang
+handle_call(get, _From, State) ->
+    {reply, State, State}.
+```
+
+Core return shapes:
+
+| Meaning                         | Erlang                                           | Elixir                                              |
+| ------------------------------- | ------------------------------------------------ | --------------------------------------------------- |
+| Reply and continue              | `{reply, Reply, NewState}`                       | `{:reply, reply, new_state}`                        |
+| Reply and continue with timeout | `{reply, Reply, NewState, Timeout}`              | `{:reply, reply, new_state, timeout}`               |
+| Reply and hibernate             | `{reply, Reply, NewState, hibernate}`            | `{:reply, reply, new_state, :hibernate}`            |
+| Reply and continue later        | `{reply, Reply, NewState, {continue, Continue\}\}` | `{:reply, reply, new_state, {:continue, continue\}\}` |
+| Do not reply yet                | `{noreply, NewState}`                            | `{:noreply, new_state}`                             |
+| Do not reply yet, with timeout  | `{noreply, NewState, Timeout}`                   | `{:noreply, new_state, timeout}`                    |
+| Do not reply yet, hibernate     | `{noreply, NewState, hibernate}`                 | `{:noreply, new_state, :hibernate}`                 |
+| Stop after replying             | `{stop, Reason, Reply, NewState}`                | `{:stop, reason, reply, new_state}`                 |
+| Stop without replying directly  | `{stop, Reason, NewState}`                       | `{:stop, reason, new_state}`                        |
+
+**Most common shape:**
+
+```elixir
+{:reply, reply, new_state}
+```
+
+```erlang
+{reply, Reply, NewState}
+```
+
+**Meaning:** Send `reply` to the waiting caller and continue with `new_state`.
+
+Example:
+
+```elixir
+@impl true
+def handle_call({:put, key, value}, _from, state) do
+  new_state = Map.put(state, key, value)
+  {:reply, :ok, new_state}
+end
+```
+
+```erlang
+handle_call({put, Key, Value}, _From, State) ->
+    NewState = maps:put(Key, Value, State),
+    {reply, ok, NewState}.
+```
+
+### `handle_call/3` with Delayed Reply
+
+Sometimes a server should not block while doing slow work. It can return `{:noreply, state}` and reply later using `GenServer.reply/2`.
+
+Elixir:
+
+```elixir
+@impl true
+def handle_call(:slow_work, from, state) do
+  task =
+    Task.async(fn ->
+      do_slow_work()
+    end)
+
+  state =
+    state
+    |> put_in([:pending, task.ref], from)
+    |> put_in([:tasks, task.ref], task)
+
+  {:noreply, state}
+end
+
+@impl true
+def handle_info({ref, result}, state) do
+  {from, state} = pop_in(state, [:pending, ref])
+  GenServer.reply(from, result)
+  {:noreply, state}
+end
+```
+
+Erlang equivalent concept:
+
+```erlang
+handle_call(slow_work, From, State) ->
+    Pid = self(),
+    Ref = make_ref(),
+    spawn(fun() ->
+        Result = do_slow_work(),
+        Pid ! {slow_result, Ref, Result}
+    end),
+    NewState = State#{Ref => From},
+    {noreply, NewState}.
+
+handle_info({slow_result, Ref, Result}, State) ->
+    From = maps:get(Ref, State),
+    gen_server:reply(From, Result),
+    {noreply, maps:remove(Ref, State)}.
+```
+
+**Design meaning:** Returning `noreply` from `handle_call` means the server takes responsibility for replying later. If it never replies, the caller times out.
+
+**Common Pitfall:** A delayed-reply design must handle task failure, timeout, caller timeout, and `DOWN` messages. The sketch above shows the shape, not a complete production implementation.
+
+### GenServer `handle_cast/2` Return Shapes
+
+`handle_cast/2` handles asynchronous messages sent by `GenServer.cast/2` or `gen_server:cast/2`.
+
+The caller does not wait for a reply.
+
+Elixir public API:
+
+```elixir
+def increment(server) do
+  GenServer.cast(server, :increment)
+end
+```
+
+Elixir callback:
+
+```elixir
+@impl true
+def handle_cast(:increment, count) do
+  {:noreply, count + 1}
+end
+```
+
+Erlang public API:
+
+```erlang
+increment(Server) ->
+    gen_server:cast(Server, increment).
+```
+
+Erlang callback:
+
+```erlang
+handle_cast(increment, Count) ->
+    {noreply, Count + 1}.
+```
+
+Return shapes:
+
+| Meaning                         | Erlang                                      | Elixir                                         |
+| ------------------------------- | ------------------------------------------- | ---------------------------------------------- |
+| Continue                        | `{noreply, NewState}`                       | `{:noreply, new_state}`                        |
+| Continue with timeout           | `{noreply, NewState, Timeout}`              | `{:noreply, new_state, timeout}`               |
+| Continue and hibernate          | `{noreply, NewState, hibernate}`            | `{:noreply, new_state, :hibernate}`            |
+| Continue then `handle_continue` | `{noreply, NewState, {continue, Continue\}\}` | `{:noreply, new_state, {:continue, continue\}\}` |
+| Stop                            | `{stop, Reason, NewState}`                  | `{:stop, reason, new_state}`                   |
+
+**Design meaning:** `cast` is fire-and-forget. It is suitable only when the caller does not need confirmation.
+
+**Common Pitfall:** `GenServer.cast/2` returning `:ok` means the message was sent, not that the operation succeeded.
+
+### GenServer `handle_info/2` Return Shapes
+
+`handle_info/2` handles ordinary messages that are not `call` or `cast`.
+
+Common sources include:
+
+| Source                            | Message example                                           |
+| --------------------------------- | --------------------------------------------------------- |
+| Timer                             | `:tick`, `{:timeout, ref}`                                |
+| Monitor                           | `{:DOWN, ref, :process, pid, reason}`                     |
+| Linked process with trapped exits | `{:EXIT, pid, reason}`                                    |
+| Raw `send`                        | any custom term                                           |
+| Socket                            | `{:tcp, socket, data}`                                    |
+| Port                              | `{port, {:data, data\}\}`                                   |
+| Task result                       | `{ref, result}` and `{:DOWN, ref, :process, pid, reason}` |
+
+Elixir:
+
+```elixir
+@impl true
+def handle_info(:tick, state) do
+  schedule_tick()
+  {:noreply, refresh(state)}
+end
+```
+
+Erlang:
+
+```erlang
+handle_info(tick, State) ->
+    schedule_tick(),
+    {noreply, refresh(State)}.
+```
+
+Return shapes:
+
+| Meaning                         | Erlang                                      | Elixir                                         |
+| ------------------------------- | ------------------------------------------- | ---------------------------------------------- |
+| Continue                        | `{noreply, NewState}`                       | `{:noreply, new_state}`                        |
+| Continue with timeout           | `{noreply, NewState, Timeout}`              | `{:noreply, new_state, timeout}`               |
+| Continue and hibernate          | `{noreply, NewState, hibernate}`            | `{:noreply, new_state, :hibernate}`            |
+| Continue then `handle_continue` | `{noreply, NewState, {continue, Continue\}\}` | `{:noreply, new_state, {:continue, continue\}\}` |
+| Stop                            | `{stop, Reason, NewState}`                  | `{:stop, reason, new_state}`                   |
+
+**Common monitor example:**
+
+```elixir
+@impl true
+def handle_info({:DOWN, ref, :process, pid, reason}, state) do
+  state = handle_worker_down(ref, pid, reason, state)
+  {:noreply, state}
+end
+```
+
+```erlang
+handle_info({'DOWN', Ref, process, Pid, Reason}, State) ->
+    NewState = handle_worker_down(Ref, Pid, Reason, State),
+    {noreply, NewState}.
+```
+
+**Design meaning:** `handle_info/2` is where the ordinary BEAM mailbox becomes visible inside an OTP server.
+
+**Common Pitfall:** Do not silently ignore all unknown messages with a catch-all unless that is deliberate. Unexpected messages often reveal protocol bugs.
+
+### GenServer `handle_continue/2`
+
+`handle_continue/2` is useful when a server should start quickly and then perform additional work immediately after initialization or after another callback.
+
+Elixir:
+
+```elixir
+@impl true
+def init(opts) do
+  {:ok, initial_state(opts), {:continue, :load_data\}\}
+end
+
+@impl true
+def handle_continue(:load_data, state) do
+  {:noreply, load_data(state)}
+end
+```
+
+Erlang:
+
+```erlang
+init(Opts) ->
+    {ok, initial_state(Opts), {continue, load_data\}\}.
+
+handle_continue(load_data, State) ->
+    {noreply, load_data(State)}.
+```
+
+Return shapes are like `handle_cast/2` or `handle_info/2`:
+
+| Meaning               | Erlang                                      | Elixir                                         |
+| --------------------- | ------------------------------------------- | ---------------------------------------------- |
+| Continue              | `{noreply, NewState}`                       | `{:noreply, new_state}`                        |
+| Continue with timeout | `{noreply, NewState, Timeout}`              | `{:noreply, new_state, timeout}`               |
+| Hibernate             | `{noreply, NewState, hibernate}`            | `{:noreply, new_state, :hibernate}`            |
+| Continue again        | `{noreply, NewState, {continue, Continue\}\}` | `{:noreply, new_state, {:continue, continue\}\}` |
+| Stop                  | `{stop, Reason, NewState}`                  | `{:stop, reason, new_state}`                   |
+
+**Design meaning:** `handle_continue/2` is a clean way to separate process startup from post-start work.
+
+**Common Pitfall:** Do not use `handle_continue/2` as a hidden place for large unobservable work. It still runs inside the server process and can block the server while executing.
+
+### GenServer Timeout Return Shapes
+
+Several callbacks can return a timeout value.
+
+Elixir:
+
+```elixir
+{:noreply, state, 5_000}
+```
+
+Erlang:
+
+```erlang
+{noreply, State, 5000}
+```
+
+If no message arrives within that time, a timeout message is delivered to the callback flow. In `gen_server`, this commonly appears as a `timeout` event.
+
+Elixir:
+
+```elixir
+@impl true
+def handle_info(:timeout, state) do
+  {:noreply, state}
+end
+```
+
+However, callback timeout behavior should be checked carefully for the exact OTP behavior and callback type. In modern Elixir code, explicit timer messages are often clearer:
+
+```elixir
+Process.send_after(self(), :tick, 5_000)
+```
+
+**Design meaning:** Callback timeouts are part of server scheduling and mailbox behavior. Explicit timers are often easier to reason about when recurring or correlated timeout events are needed.
+
+**Common Pitfall:** Timeout behavior can be canceled by ordinary incoming messages before the timeout fires. For periodic work, explicit `send_after` is often more predictable.
+
+### GenServer Hibernate Return Shapes
+
+Hibernate asks the runtime to reduce the process memory footprint when the process is expected to be idle.
+
+Examples:
+
+```elixir
+{:noreply, state, :hibernate}
+{:reply, reply, state, :hibernate}
+```
+
+```erlang
+{noreply, State, hibernate}
+{reply, Reply, State, hibernate}
+```
+
+| Use hibernate when                       | Avoid hibernate when                |
+| ---------------------------------------- | ----------------------------------- |
+| Process is mostly idle                   | Process receives frequent messages  |
+| Large temporary memory should be reduced | Latency matters more                |
+| Many idle processes exist                | State is tiny and messages frequent |
+
+**Design meaning:** Hibernate is a runtime memory/latency tradeoff. It is not an ordinary control-flow feature.
+
+**Common Pitfall:** Hibernating frequently active processes can hurt performance.
+
+### GenServer Stop Return Shapes
+
+A callback can tell the server to stop.
+
+From `handle_call/3`:
+
+```elixir
+{:stop, reason, reply, new_state}
+{:stop, reason, new_state}
+```
+
+```erlang
+{stop, Reason, Reply, NewState}
+{stop, Reason, NewState}
+```
+
+From `handle_cast/2` or `handle_info/2`:
+
+```elixir
+{:stop, reason, new_state}
+```
+
+```erlang
+{stop, Reason, NewState}
+```
+
+| Shape                                      | Runtime effect                                             |
+| ------------------------------------------ | ---------------------------------------------------------- |
+| `{:stop, reason, reply, state}`            | Reply to caller, then stop                                 |
+| `{:stop, reason, state}`                   | Stop without direct reply from that tuple                  |
+| `{:stop, :normal, state}`                  | Normal stop                                                |
+| `{:stop, :shutdown, state}`                | Intentional shutdown                                       |
+| `{:stop, reason, state}` with other reason | Abnormal stop, supervisor may restart depending child spec |
+
+Elixir:
+
+```elixir
+@impl true
+def handle_call(:close, _from, state) do
+  {:stop, :normal, :ok, state}
+end
+```
+
+Erlang:
+
+```erlang
+handle_call(close, _From, State) ->
+    {stop, normal, ok, State}.
+```
+
+**Design meaning:** Stopping from a callback is part of process lifecycle. The supervisor interprets the stop according to restart policy.
+
+**Common Pitfall:** If a permanent child stops normally, it may still be restarted depending the supervisor child spec. Restart behavior is not determined only by the callback return.
+
+### `terminate/2` Return Shape
+
+`terminate/2` is called under specific termination conditions. Its return value is ignored.
+
+Elixir:
+
+```elixir
+@impl true
+def terminate(reason, state) do
+  cleanup(reason, state)
+  :ok
+end
+```
+
+Erlang:
+
+```erlang
+terminate(Reason, State) ->
+    cleanup(Reason, State),
+    ok.
+```
+
+| Callback             | Expected return                |
+| -------------------- | ------------------------------ |
+| Elixir `terminate/2` | any term, conventionally `:ok` |
+| Erlang `terminate/2` | any term, conventionally `ok`  |
+
+**Design meaning:** `terminate/2` is for cleanup when its conditions are met. It is not a universal destructor.
+
+**Common Pitfall:** Do not rely on `terminate/2` as the only cleanup mechanism unless the process lifecycle and trapping behavior are understood.
+
+### `code_change/3` Return Shapes
+
+`code_change/3` is used for hot code upgrades.
+
+Elixir:
+
+```elixir
+@impl true
+def code_change(_old_vsn, state, _extra) do
+  {:ok, state}
+end
+```
+
+Erlang:
+
+```erlang
+code_change(_OldVsn, State, _Extra) ->
+    {ok, State}.
+```
+
+| Meaning                     | Erlang            | Elixir             |
+| --------------------------- | ----------------- | ------------------ |
+| Successful state conversion | `{ok, NewState}`  | `{:ok, new_state}` |
+| Failed conversion           | `{error, Reason}` | `{:error, reason}` |
+
+**Design meaning:** This callback exists for state transformation during code upgrade. Many projects do not use hot upgrades, but the callback is part of the OTP behavior contract.
+
+**Common Pitfall:** If a project does not use hot code upgrades, do not build architecture assumptions around this callback.
+
+### GenServer Return Shape Summary
+
+| Callback            | Most common Erlang return | Most common Elixir return |
+| ------------------- | ------------------------- | ------------------------- |
+| `init/1`            | `{ok, State}`             | `{:ok, state}`            |
+| `handle_call/3`     | `{reply, Reply, State}`   | `{:reply, reply, state}`  |
+| `handle_cast/2`     | `{noreply, State}`        | `{:noreply, state}`       |
+| `handle_info/2`     | `{noreply, State}`        | `{:noreply, state}`       |
+| `handle_continue/2` | `{noreply, State}`        | `{:noreply, state}`       |
+| `terminate/2`       | `ok`                      | `:ok`                     |
+| `code_change/3`     | `{ok, State}`             | `{:ok, state}`            |
+
+### Supervisor Return Shapes
+
+A supervisor starts children and decides how to restart them.
+
+Elixir simple supervisor:
+
+```elixir
+children = [
+  MyApp.Cache,
+  {Registry, keys: :unique, name: MyApp.Registry}
+]
+
+Supervisor.start_link(children, strategy: :one_for_one)
+```
+
+Erlang supervisor callback:
+
+```erlang
+init([]) ->
+    Children = [
+        #{id => cache,
+          start => {cache, start_link, []},
+          restart => permanent,
+          shutdown => 5000,
+          type => worker,
+          modules => [cache]}
+    ],
+    {ok, \{\{one_for_one, 5, 10}, Children\}\}.
+```
+
+Supervisor `init` return shapes:
+
+| Meaning                    | Erlang                                          | Elixir                                                    |
+| -------------------------- | ----------------------------------------------- | --------------------------------------------------------- |
+| Successful supervisor spec | `{ok, {SupFlags, ChildSpecs\}\}`                  | `Supervisor.init(children, opts)` returning internal spec |
+| Ignore startup             | `ignore`                                        | `:ignore`                                                 |
+| Fail startup               | `{error, Reason}` or bad return causing failure | `{:error, reason}` depending wrapper/context              |
+
+Elixir custom supervisor:
+
+```elixir
+defmodule MyApp.Supervisor do
+  use Supervisor
+
+  @impl true
+  def init(_arg) do
+    children = [
+      MyApp.Cache
+    ]
+
+    Supervisor.init(children, strategy: :one_for_one)
+  end
+end
+```
+
+**Design meaning:** A supervisor callback returns a supervision specification, not ordinary application data.
+
+### Supervisor Strategy and Flags
+
+Erlang supervisor flags are explicit:
+
+```erlang
+#{strategy => one_for_one,
+  intensity => 5,
+  period => 10}
+```
+
+Older style:
+
+```erlang
+{one_for_one, 5, 10}
+```
+
+Elixir:
+
+```elixir
+Supervisor.init(children,
+  strategy: :one_for_one,
+  max_restarts: 5,
+  max_seconds: 10
+)
+```
+
+| Concept           | Erlang         | Elixir          | Meaning                                 |
+| ----------------- | -------------- | --------------- | --------------------------------------- |
+| Strategy          | `one_for_one`  | `:one_for_one`  | Restart failed child only               |
+| Strategy          | `one_for_all`  | `:one_for_all`  | Restart all children                    |
+| Strategy          | `rest_for_one` | `:rest_for_one` | Restart failed child and later siblings |
+| Restart intensity | `intensity`    | `max_restarts`  | Number of allowed restarts              |
+| Restart period    | `period`       | `max_seconds`   | Time window for restart intensity       |
+
+**Design meaning:** Supervisor return shapes encode failure policy.
+
+**Common Pitfall:** Restart intensity is not a performance tuning knob. It controls crash-loop escalation.
+
+### Child Spec Shapes
+
+A child spec tells a supervisor how to start, stop, and restart a child.
+
+Elixir child spec map:
+
+```elixir
+%{
+  id: MyApp.Worker,
+  start: {MyApp.Worker, :start_link, [arg]},
+  restart: :permanent,
+  shutdown: 5_000,
+  type: :worker,
+  modules: [MyApp.Worker]
+}
+```
+
+Erlang child spec map:
+
+```erlang
+#{id => worker,
+  start => {worker, start_link, [Arg]},
+  restart => permanent,
+  shutdown => 5000,
+  type => worker,
+  modules => [worker]}
+```
+
+| Child spec key | Meaning                                  |
+| -------------- | ---------------------------------------- |
+| `id`           | Unique child identifier under supervisor |
+| `start`        | Module/function/args used to start child |
+| `restart`      | Restart policy                           |
+| `shutdown`     | Shutdown timeout or strategy             |
+| `type`         | `worker` or `supervisor`                 |
+| `modules`      | Modules implemented by child             |
+
+Restart values:
+
+| Erlang      | Elixir       | Meaning                                 |
+| ----------- | ------------ | --------------------------------------- |
+| `permanent` | `:permanent` | Always restart                          |
+| `transient` | `:transient` | Restart only after abnormal termination |
+| `temporary` | `:temporary` | Never restart                           |
+
+Child type:
+
+| Erlang       | Elixir        | Meaning                     |
+| ------------ | ------------- | --------------------------- |
+| `worker`     | `:worker`     | ordinary worker process     |
+| `supervisor` | `:supervisor` | child is another supervisor |
+
+**Common Pitfall:** The child process’s exit reason and the child spec’s `restart` setting jointly determine restart behavior.
+
+### Application Callback Return Shapes
+
+An OTP application callback starts the top-level supervision tree.
+
+Erlang:
+
+```erlang
+start(_Type, _Args) ->
+    my_app_sup:start_link().
+```
+
+Elixir:
+
+```elixir
+@impl true
+def start(_type, _args) do
+  children = [
+    MyApp.Cache
+  ]
+
+  Supervisor.start_link(children, strategy: :one_for_one)
+end
+```
+
+Application `start/2` return shapes:
+
+| Meaning                  | Erlang             | Elixir              |
+| ------------------------ | ------------------ | ------------------- |
+| Start success            | `{ok, Pid}`        | `{:ok, pid}`        |
+| Start success with state | `{ok, Pid, State}` | `{:ok, pid, state}` |
+| Ignore startup           | `ignore`           | `:ignore`           |
+| Fail startup             | `{error, Reason}`  | `{:error, reason}`  |
+
+Application `stop/1`:
+
+| Callback             | Expected return                |
+| -------------------- | ------------------------------ |
+| Erlang `stop(State)` | any term, conventionally `ok`  |
+| Elixir `stop(state)` | any term, conventionally `:ok` |
+
+Elixir:
+
+```elixir
+@impl true
+def stop(_state) do
+  :ok
+end
+```
+
+Erlang:
+
+```erlang
+stop(_State) ->
+    ok.
+```
+
+**Design meaning:** Application startup usually succeeds by starting a root supervisor. If required configuration is invalid, startup should fail early.
+
+**Common Pitfall:** Do not start long-lived important processes outside the application supervision tree.
+
+### DynamicSupervisor Return Shapes
+
+Elixir `DynamicSupervisor` starts children at runtime.
+
+Start child:
+
+```elixir
+DynamicSupervisor.start_child(MyApp.WorkerSupervisor, {MyApp.Worker, arg})
+```
+
+Common return shapes:
+
+| Meaning                       | Elixir                              |
+| ----------------------------- | ----------------------------------- |
+| Child started                 | `{:ok, pid}`                        |
+| Child started with extra info | `{:ok, pid, info}`                  |
+| Child already exists          | `{:error, {:already_started, pid\}\}` |
+| Start failed                  | `{:error, reason}`                  |
+| Child spec ignored            | `:ignore`                           |
+
+Erlang dynamic supervision uses the same OTP supervisor concepts, though the API surface differs by OTP version and style.
+
+| Concept              | Meaning                          |
+| -------------------- | -------------------------------- |
+| Dynamic child spec   | Runtime child startup definition |
+| `start_child` result | Whether child started            |
+| `terminate_child`    | Stop dynamic child               |
+| `delete_child`       | Remove child spec where relevant |
+| Dynamic supervisor   | Owns runtime child population    |
+
+Elixir example:
+
+```elixir
+case DynamicSupervisor.start_child(MyApp.WorkerSupervisor, {MyApp.Worker, arg}) do
+  {:ok, pid} ->
+    {:ok, pid}
+
+  {:error, {:already_started, pid\}\} ->
+    {:ok, pid}
+
+  {:error, reason} ->
+    {:error, reason}
+end
+```
+
+**Design meaning:** Dynamic child start results are part of runtime lifecycle management. They are not just construction returns.
+
+**Common Pitfall:** Starting a dynamic child does not automatically register it under a convenient name. Use `Registry` or another lookup mechanism if callers need discovery.
+
+### Task Return Shapes
+
+Elixir `Task` wraps temporary concurrent work.
+
+```elixir
+task = Task.async(fn -> do_work() end)
+Task.await(task, 5_000)
+```
+
+`Task.await/2` returns the task result or exits on timeout/failure. It does not return `{:ok, value}` by default.
+
+Example:
+
+```elixir
+task = Task.async(fn -> 1 + 1 end)
+Task.await(task)
+```
+
+returns:
+
+```elixir
+2
+```
+
+`Task.yield/2` is more explicit:
+
+| Meaning               | Elixir `Task.yield/2` result |
+| --------------------- | ---------------------------- |
+| Task completed        | `{:ok, result}`              |
+| Task exited           | `{:exit, reason}`            |
+| Timeout/no result yet | `nil`                        |
+
+Common controlled pattern:
+
+```elixir
+case Task.yield(task, 5_000) || Task.shutdown(task) do
+  {:ok, result} ->
+    {:ok, result}
+
+  {:exit, reason} ->
+    {:error, {:task_failed, reason\}\}
+
+  nil ->
+    {:error, :timeout}
+end
+```
+
+`Task.Supervisor.async_nolink/2` creates a task that is not linked to the caller in the same way as plain `Task.async`.
+
+| Tool                          | Return shape / behavior                                       |
+| ----------------------------- | ------------------------------------------------------------- |
+| `Task.async`                  | returns `%Task{}`                                             |
+| `Task.await`                  | returns task result or exits                                  |
+| `Task.yield`                  | `{:ok, result}` / `{:exit, reason}` / `nil`                   |
+| `Task.shutdown`               | tries to stop task, may return result/exit/nil depending case |
+| `Task.Supervisor.start_child` | `{:ok, pid}` / `{:error, reason}`                             |
+
+**Design meaning:** `Task` is not a promise with only success/failure values. It is a process abstraction with links, exits, monitors, and timeout behavior.
+
+**Common Pitfall:** Do not start unbounded tasks without concurrency limits. The VM may handle many processes, but external services and schedulers still have limits.
+
+### Registry and `:via` Tuple Shapes
+
+Elixir `Registry` is often used for dynamic process names.
+
+Start registry:
+
+```elixir
+{Registry, keys: :unique, name: MyApp.Registry}
+```
+
+Name a process:
+
+```elixir
+{:via, Registry, {MyApp.Registry, key\}\}
+```
+
+Use with GenServer:
+
+```elixir
+GenServer.start_link(MyWorker, arg,
+  name: {:via, Registry, {MyApp.Registry, key\}\}
+)
+```
+
+Call by registry name:
+
+```elixir
+GenServer.call({:via, Registry, {MyApp.Registry, key\}\}, :get)
+```
+
+Lookup:
+
+```elixir
+Registry.lookup(MyApp.Registry, key)
+```
+
+Common lookup return:
+
+| Meaning             | Elixir           |
+| ------------------- | ---------------- |
+| No process found    | `[]`             |
+| One or more entries | `[{pid, value}]` |
+
+Example:
+
+```elixir
+case Registry.lookup(MyApp.Registry, key) do
+  [{pid, _value}] ->
+    {:ok, pid}
+
+  [] ->
+    {:error, :not_found}
+end
+```
+
+**Design meaning:** `Registry` return shapes are lookup shapes. They do not imply that the process will remain alive after lookup unless you monitor or call it with proper error handling.
+
+**Common Pitfall:** A registry is not durable storage. It tracks live process names.
+
+### Common OTP Start Function Return Shapes
+
+Most supervised processes expose `start_link`.
+
+Common return values:
+
+| Meaning         | Erlang                            | Elixir                              |
+| --------------- | --------------------------------- | ----------------------------------- |
+| Started         | `{ok, Pid}`                       | `{:ok, pid}`                        |
+| Already started | `{error, {already_started, Pid\}\}` | `{:error, {:already_started, pid\}\}` |
+| Ignored         | `ignore`                          | `:ignore`                           |
+| Failed          | `{error, Reason}`                 | `{:error, reason}`                  |
+
+Elixir:
+
+```elixir
+case MyServer.start_link([]) do
+  {:ok, pid} ->
+    {:ok, pid}
+
+  {:error, {:already_started, pid\}\} ->
+    {:ok, pid}
+
+  {:error, reason} ->
+    {:error, reason}
+end
+```
+
+Erlang:
+
+```erlang
+case my_server:start_link([]) of
+    {ok, Pid} ->
+        {ok, Pid};
+    {error, {already_started, Pid\}\} ->
+        {ok, Pid};
+    {error, Reason} ->
+        {error, Reason}
+end.
+```
+
+**Design meaning:** Start return shapes are lifecycle contracts. They tell supervisors and callers whether a runtime process exists.
+
+### OTP Callback Return Shape Decision Table
+
+| Situation                  | Erlang return                            | Elixir return                              | Meaning                        |
+| -------------------------- | ---------------------------------------- | ------------------------------------------ | ------------------------------ |
+| Server initialized         | `{ok, State}`                            | `{:ok, state}`                             | Start process with state       |
+| Server init fails          | `{stop, Reason}`                         | `{:stop, reason}`                          | Startup failure                |
+| Reply to sync call         | `{reply, Reply, State}`                  | `{:reply, reply, state}`                   | Send reply and continue        |
+| Async message handled      | `{noreply, State}`                       | `{:noreply, state}`                        | Continue without reply         |
+| Stop after call with reply | `{stop, Reason, Reply, State}`           | `{:stop, reason, reply, state}`            | Reply, then stop               |
+| Stop after cast/info       | `{stop, Reason, State}`                  | `{:stop, reason, state}`                   | Stop server                    |
+| Continue later             | `{noreply, State, {continue, Continue\}\}` | `{:noreply, state, {:continue, continue\}\}` | Invoke `handle_continue`       |
+| Hibernate                  | `{noreply, State, hibernate}`            | `{:noreply, state, :hibernate}`            | Reduce memory while idle       |
+| Supervisor initialized     | `{ok, {SupFlags, Children\}\}`             | `Supervisor.init(children, opts)`          | Define supervision             |
+| Application started        | `{ok, Pid}`                              | `{:ok, pid}`                               | App root process started       |
+| Dynamic child started      | `{ok, Pid}`                              | `{:ok, pid}`                               | Runtime child started          |
+| Task yielded result        | N/A in same Elixir wrapper form          | `{:ok, result}`                            | Task completed through `yield` |
+
+### Callback Return Shapes versus Public API Return Shapes
+
+Do not confuse OTP callback tuples with public domain API tuples.
+
+OTP callback return:
+
+```elixir
+{:reply, reply, new_state}
+```
+
+Public API return:
+
+```elixir
+{:ok, value}
+{:error, reason}
+```
+
+These are different protocols.
+
+Example:
+
+```elixir
+def fetch(server, key) do
+  GenServer.call(server, {:fetch, key})
+end
+
+@impl true
+def handle_call({:fetch, key}, _from, state) do
+  reply =
+    case Map.fetch(state, key) do
+      {:ok, value} -> {:ok, value}
+      :error -> {:error, :not_found}
+    end
+
+  {:reply, reply, state}
+end
+```
+
+Here:
+
+```elixir
+{:ok, value}
+```
+
+is the domain reply sent to the caller.
+
+```elixir
+{:reply, reply, state}
+```
+
+is the OTP callback instruction.
+
+**Design meaning:** OTP callback returns tell OTP what to do. Public API returns tell application callers what happened.
+
+**Common Pitfall:** Mixing these layers leads to malformed callbacks, such as returning `{:ok, value}` directly from `handle_call/3`.
+
+### Common Wrong Return Shapes
+
+| Wrong shape                                                     | Why wrong                               | Correct shape                                               |
+| --------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------- |
+| `{:ok, value}` from `handle_call/3`                             | OTP expects call instruction            | `{:reply, {:ok, value}, state}`                             |
+| `{:reply, reply}`                                               | Missing state                           | `{:reply, reply, state}`                                    |
+| `{:noreply}`                                                    | Missing state                           | `{:noreply, state}`                                         |
+| `{:stop, reason}` from `handle_call/3`                          | Missing state/reply depending intent    | `{:stop, reason, reply, state}` or `{:stop, reason, state}` |
+| `{:ok, state}` from `handle_cast/2`                             | `handle_cast` expects `noreply` or stop | `{:noreply, state}`                                         |
+| `:ok` from `init/1`                                             | Missing state                           | `{:ok, state}`                                              |
+| `{:reply, reply, state}` from `handle_cast/2`                   | Cast caller is not waiting              | `{:noreply, state}`                                         |
+| Returning a child list directly from custom supervisor `init/1` | Needs supervisor spec                   | `Supervisor.init(children, opts)`                           |
+
+### Callback Shape Reading Exercises
+
+**Example 1:**
+
+```elixir
+def handle_call(:get, _from, state) do
+  {:reply, state.value, state}
+end
+```
+
+Reading:
+
+| Element              | Meaning                             |
+| -------------------- | ----------------------------------- |
+| `:get`               | incoming synchronous request        |
+| `state.value`        | reply to caller                     |
+| `state`              | next server state                   |
+| `{:reply, ..., ...}` | OTP instruction: reply and continue |
+
+**Example 2:**
+
+```elixir
+def handle_cast({:put, key, value}, state) do
+  {:noreply, Map.put(state, key, value)}
+end
+```
+
+Reading:
+
+| Element                      | Meaning                          |
+| ---------------------------- | -------------------------------- |
+| `{:put, key, value}`         | asynchronous command             |
+| `Map.put(state, key, value)` | new server state                 |
+| `{:noreply, ...}`            | OTP instruction: no caller reply |
+
+**Example 3:**
+
+```elixir
+def init(opts) do
+  {:ok, %{opts: opts}, {:continue, :load\}\}
+end
+```
+
+Reading:
+
+| Element              | Meaning                                         |
+| -------------------- | ----------------------------------------------- |
+| `%{opts: opts}`      | initial state                                   |
+| `{:continue, :load}` | ask OTP to call `handle_continue(:load, state)` |
+| `{:ok, ..., ...}`    | successful startup                              |
+
+### Practical Callback Checklist
+
+When writing an OTP callback, check:
+
+| Question                                           | Why                                                          |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| Which callback is this?                            | Each callback has different legal returns                    |
+| Is a caller waiting?                               | Only `handle_call` has a waiting caller                      |
+| Does the callback need to reply?                   | Use `{:reply, reply, state}` or delayed reply                |
+| Does the state change?                             | Return the new state explicitly                              |
+| Should the process stop?                           | Use `{:stop, reason, ...}`                                   |
+| Is post-start work needed?                         | Use `handle_continue`                                        |
+| Is a timeout needed?                               | Prefer explicit timers unless callback timeout semantics fit |
+| Is hibernate appropriate?                          | Only for mostly idle processes                               |
+| Is the public API return distinct from OTP return? | Avoid protocol confusion                                     |
+| Will the supervisor restart this process?          | Depends on exit reason and child spec                        |
+
+### Appendix B Summary
+
+OTP callback return values are precise runtime instructions.
+
+The most important callback shapes are:
+
+```elixir
+{:ok, state}
+{:reply, reply, state}
+{:noreply, state}
+{:stop, reason, state}
+{:stop, reason, reply, state}
+```
+
+and the Erlang equivalents:
+
+```erlang
+{ok, State}
+{reply, Reply, State}
+{noreply, State}
+{stop, Reason, State}
+{stop, Reason, Reply, State}
+```
+
+The central distinction is:
+
+```text
+Application/domain functions return application data.
+OTP callbacks return runtime instructions.
+```
+
+For example:
+
+```elixir
+{:ok, user}
+```
+
+means a domain operation succeeded.
+
+```elixir
+{:reply, {:ok, user}, state}
+```
+
+means a `GenServer` replies to a caller with `{:ok, user}` and continues with `state`.
+
+Once this distinction is clear, OTP code becomes much easier to read. Callback return tuples stop looking like arbitrary tuple conventions and start looking like a small control language for BEAM process behavior.
+## Appendix C — BEAM Term and Data Structure Cost Cheat Sheet
+
+### Appendix Scope — practical runtime cost, not theoretical purity
+
+This appendix summarizes the runtime cost model of common BEAM terms and storage mechanisms. It is designed as a practical reference for Erlang / Elixir programmers who need to decide whether a representation is appropriate for a given task.
+
+The central rule is:
+
+```text
+BEAM terms are immutable and process-oriented.
+Cost depends on term shape, process ownership, copying, mailbox behavior,
+binary retention, garbage collection, and shared runtime storage.
+```
+
+| Thing              | Good for                                | Main risk                          |
+| ------------------ | --------------------------------------- | ---------------------------------- |
+| Atom               | finite symbolic tags                    | dynamic atom creation              |
+| Tuple              | fixed-size grouped data, tagged returns | unreadable large positional tuples |
+| List               | sequential traversal, recursion         | repeated append, random access     |
+| Map                | key-value data, structs, dictionaries   | huge centralized process state     |
+| Struct             | named Elixir domain data                | treating it as class/object        |
+| Record             | compact Erlang structured data          | header coupling, tuple opacity     |
+| Binary             | bytes, UTF-8 strings, protocols         | large binary retention             |
+| PID                | process identity                        | using as durable domain ID         |
+| Reference          | runtime correlation                     | treating as persistent ID          |
+| Function / closure | callbacks, higher-order behavior        | captured environment retention     |
+| Process            | concurrency, isolation, state ownership | process-per-passive-object overuse |
+| Mailbox            | asynchronous communication              | unbounded growth                   |
+| ETS                | shared runtime lookup table             | global mutable state               |
+| `persistent_term`  | rare-write, fast-read global data       | expensive updates                  |
+| NIF                | native performance                      | VM crash/blocking risk             |
+| Port               | external process isolation              | serialization/protocol overhead    |
+
+### BEAM Term Model — everything sent and matched is a term
+
+Most Erlang / Elixir values are BEAM terms: atoms, tuples, lists, maps, binaries, PIDs, references, functions, numbers, and so on.
+
+| Term      | Erlang example    | Elixir example        | Runtime role                     |     |                 |
+| --------- | ----------------- | --------------------- | -------------------------------- | --- | --------------- |
+| Atom      | `ok`              | `:ok`                 | symbolic tag                     |     |                 |
+| Tuple     | `{ok, Value}`     | `{:ok, value}`        | fixed grouped data               |     |                 |
+| List      | `[H               | T]`                   | `[h                              | t]` | linked sequence |
+| Map       | `#{id => Id}`     | `%{id: id}`           | key-value data                   |     |                 |
+| Binary    | `<<"abc">>`       | `"abc"` / `<<"abc">>` | byte sequence                    |     |                 |
+| PID       | `self()`          | `self()`              | process identity                 |     |                 |
+| Reference | `make_ref()`      | `make_ref()`          | unique runtime token             |     |                 |
+| Function  | `fun(X) -> X end` | `fn x -> x end`       | executable value                 |     |                 |
+| Integer   | `123`             | `123`                 | arbitrary-size integer semantics |     |                 |
+| Float     | `1.5`             | `1.5`                 | floating-point number            |     |                 |
+
+**Design meaning:** BEAM data is uniform enough to be pattern-matched, sent between processes, stored in ETS, logged, serialized, and inspected. That flexibility is powerful, but it also means shape discipline must come from conventions, constructors, specs, and boundaries.
+
+**Common Pitfall:** “Any term can be sent” does not mean every term is a good message. Large maps, huge binaries, closures with captured context, and unversioned internal structs can create runtime or compatibility problems.
+
+### Atoms — excellent finite tags, dangerous unbounded input
+
+Atoms are VM-wide symbolic constants.
+
+Erlang:
+
+```erlang
+{ok, Value}.
+{error, not_found}.
+```
+
+Elixir:
+
+```elixir
+{:ok, value}
+{:error, :not_found}
+```
+
+| Use case                             | Good? | Reason                   |
+| ------------------------------------ | ----- | ------------------------ |
+| `:ok`, `:error` tags                 | Yes   | finite, conventional     |
+| domain state like `:active`          | Yes   | finite symbolic state    |
+| OTP callback tags                    | Yes   | fixed protocol           |
+| module names                         | Yes   | code-defined             |
+| dynamic user input                   | No    | atom table risk          |
+| arbitrary JSON keys                  | No    | unbounded external input |
+| dynamic process names                | No    | use `Registry`           |
+| parsed enum through explicit mapping | Yes   | finite conversion        |
+
+Safe mapping:
+
+```elixir
+def parse_status("pending"), do: {:ok, :pending}
+def parse_status("approved"), do: {:ok, :approved}
+def parse_status("rejected"), do: {:ok, :rejected}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+Unsafe mapping:
+
+```elixir
+String.to_atom(user_input)
+```
+
+Erlang equivalent safe mapping:
+
+```erlang
+parse_status(<<"pending">>) ->
+    {ok, pending};
+parse_status(<<"approved">>) ->
+    {ok, approved};
+parse_status(<<"rejected">>) ->
+    {ok, rejected};
+parse_status(_) ->
+    {error, invalid_status}.
+```
+
+**Cost model:** Atoms are very cheap to compare and excellent as tags. The danger is not normal atom use; the danger is creating unbounded new atoms from external data.
+
+**Common Pitfall:** `String.to_existing_atom/1` is safer than `String.to_atom/1`, but it is still usually inferior to explicit mapping for external data because failure behavior and allowed values are less obvious.
+
+### Tuples — fixed-size positional data
+
+Tuples are fixed-size containers.
+
+Erlang:
+
+```erlang
+{ok, Value}
+{user, Id, Name}
+```
+
+Elixir:
+
+```elixir
+{:ok, value}
+{:user, id, name}
+```
+
+| Tuple use                     | Good?        | Reason                            |
+| ----------------------------- | ------------ | --------------------------------- |
+| `{:ok, value}`                | Excellent    | standard tagged result            |
+| `{:error, reason}`            | Excellent    | standard error result             |
+| OTP callback return           | Excellent    | fixed protocol shape              |
+| small coordinate/pair         | Good         | compact and clear if conventional |
+| tagged variant                | Good         | pattern matching friendly         |
+| large positional record       | Weak         | unreadable and fragile            |
+| frequently size-changing data | Bad          | tuple size is fixed               |
+| public data with many fields  | Usually weak | use map/struct/record             |
+
+Good:
+
+```elixir
+{:reply, reply, new_state}
+```
+
+Weak:
+
+```elixir
+{:user, 1, "Ada", "ada@example.com", true, 10, nil, :admin}
+```
+
+Better:
+
+```elixir
+%User{
+  id: 1,
+  name: "Ada",
+  email: "ada@example.com",
+  active: true,
+  role: :admin
+}
+```
+
+**Cost model:** Tuples are compact and direct for fixed-size data. Updating a tuple creates a new tuple value. Positional access is efficient but can become semantically unclear.
+
+**Common Pitfall:** A large tuple with no tag or field names is hard to maintain. If field meaning matters, use a struct, map, record, or opaque API.
+
+### Lists — linked sequences, cheap prepend, costly repeated append
+
+Lists are linked lists.
+
+Erlang:
+
+```erlang
+[H | T] = [1, 2, 3].
+```
+
+Elixir:
+
+```elixir
+[h | t] = [1, 2, 3]
+```
+
+| Operation         | Cost intuition   | Note                              |      |
+| ----------------- | ---------------- | --------------------------------- | ---- |
+| prepend           | cheap            | `[x                               | xs]` |
+| head/tail match   | cheap            | natural recursion                 |      |
+| append `xs ++ ys` | copies left list | avoid repeated append             |      |
+| length            | traversal        | not stored                        |      |
+| map/filter/reduce | traversal        | standard                          |      |
+| membership        | traversal        | use set/map for repeated lookup   |      |
+| random access     | traversal        | weak fit                          |      |
+| reverse           | traversal        | common after prepend accumulation |      |
+
+Good accumulation:
+
+```elixir
+def collect(items), do: collect(items, [])
+
+defp collect([], acc), do: Enum.reverse(acc)
+defp collect([h | t], acc), do: collect(t, [transform(h) | acc])
+```
+
+Bad repeated append:
+
+```elixir
+acc ++ [transform(item)]
+```
+
+Erlang equivalent:
+
+```erlang
+collect(Items) ->
+    lists:reverse(collect(Items, [])).
+
+collect([], Acc) ->
+    Acc;
+collect([H | T], Acc) ->
+    collect(T, [transform(H) | Acc]).
+```
+
+**Cost model:** Lists are excellent for sequential processing and recursion. They are poor as queues if implemented through repeated append, and poor as sets if membership is checked repeatedly.
+
+**Common Pitfall:** Calling `length(List)` inside every recursive step can turn a linear process into a much more expensive one.
+
+### Maps — flexible key-value terms
+
+Maps are general key-value structures.
+
+Erlang:
+
+```erlang
+User = #{id => 1, name => <<"Ada">>}.
+```
+
+Elixir:
+
+```elixir
+user = %{id: 1, name: "Ada"}
+```
+
+| Map use                       | Good?                     | Reason                            |
+| ----------------------------- | ------------------------- | --------------------------------- |
+| small domain shape            | Good                      | pattern matching on required keys |
+| decoded JSON                  | Good as raw boundary data | must validate                     |
+| dictionary lookup             | Good                      | better than keyword list          |
+| struct runtime base           | Yes in Elixir             | struct is a map convention        |
+| huge centralized server state | Maybe weak                | bottleneck and GC risk            |
+| ordered sequence              | Bad                       | maps are not sequence model       |
+| option list                   | Often not ideal in Elixir | keyword list convention is common |
+| external string-key data      | Good at boundary          | convert/normalize internally      |
+
+Elixir required-key match:
+
+```elixir
+%{id: id, name: name} = user
+```
+
+Erlang required-key match:
+
+```erlang
+#{id := Id, name := Name} = User.
+```
+
+**Cost model:** Maps are the ordinary key-value structure for runtime data. They are far better than keyword lists/proplists for repeated lookup, but a very large map inside one process can become a memory and GC hotspot.
+
+**Common Pitfall:** `%{id: 1}` and `%{"id" => 1}` are different. Atom keys and string keys do not match.
+
+### Structs — Elixir named map shapes
+
+An Elixir struct is a map with a `__struct__` key and compile-time conveniences.
+
+```elixir
+defmodule User do
+  defstruct [:id, :name, active: true]
+end
+
+user = %User{id: 1, name: "Ada"}
+```
+
+| Struct use            | Good?                 | Reason                                |
+| --------------------- | --------------------- | ------------------------------------- |
+| domain entity/value   | Good                  | named shape                           |
+| validated value       | Good with constructor | preserves invariants by convention    |
+| protocol dispatch     | Good                  | protocols can dispatch by struct type |
+| external raw params   | Weak                  | raw input should be parsed first      |
+| mutable object        | Bad                   | structs are immutable data            |
+| process identity      | Bad                   | use PID/Registry if runtime process   |
+| hiding representation | Use `@opaque` + API   | fields otherwise easy to access       |
+
+Constructor pattern:
+
+```elixir
+defmodule Email do
+  @opaque t :: %__MODULE__{value: String.t()}
+  defstruct [:value]
+
+  def new(value) when is_binary(value) do
+    value = String.trim(value)
+
+    if String.contains?(value, "@") do
+      {:ok, %__MODULE__{value: value\}\}
+    else
+      {:error, :invalid_email}
+    end
+  end
+
+  def new(_), do: {:error, :invalid_email}
+end
+```
+
+**Cost model:** Structs have map-like runtime behavior. They improve readability and domain modeling, but they are not classes and do not encapsulate fields at runtime by themselves.
+
+**Common Pitfall:** A struct without a constructor may give a named shape but not domain validity. `%Email{value: "not-email"}` can still be constructed unless API discipline and opacity are used.
+
+### Records — Erlang compile-time tuple abstractions
+
+Erlang records are compile-time conveniences over tuples.
+
+```erlang
+-record(user, {id, name, active = true}).
+
+User = #user{id = 1, name = <<"Ada">>}.
+```
+
+| Record use                            | Good?                    | Reason                                       |
+| ------------------------------------- | ------------------------ | -------------------------------------------- |
+| Erlang internal structured data       | Good                     | compact, conventional                        |
+| performance-sensitive fixed structure | Good                     | tuple representation                         |
+| public cross-module data              | Risky                    | header coupling                              |
+| data evolving often                   | Risky                    | recompilation/field coupling                 |
+| Elixir interop                        | Weak                     | Elixir sees tuple unless record helpers used |
+| opaque internal representation        | Good with API discipline | callers should not depend on tuple layout    |
+
+Erlang record access:
+
+```erlang
+get_name(#user{name = Name}) ->
+    Name.
+```
+
+**Cost model:** Records are tuples at runtime. They are compact and efficient, but field names do not exist at runtime.
+
+**Common Pitfall:** Sharing `.hrl` record definitions across many modules creates compile-time coupling. Changing a record shape can require recompiling dependent modules and carefully managing compatibility.
+
+### Binaries — bytes, strings, protocols, and retention
+
+Binaries represent byte sequences. Elixir strings are UTF-8 binaries.
+
+Elixir:
+
+```elixir
+"abc"
+<<97, 98, 99>>
+```
+
+Erlang:
+
+```erlang
+<<"abc">>.
+```
+
+| Binary use                           | Good?      | Reason                        |
+| ------------------------------------ | ---------- | ----------------------------- |
+| UTF-8 text in Elixir                 | Good       | Elixir string convention      |
+| network packet                       | Good       | byte-level pattern matching   |
+| file content                         | Good       | file APIs often return binary |
+| cryptographic data                   | Good       | bytes                         |
+| repeated concatenation               | Maybe weak | use iodata where possible     |
+| long-lived tiny slice of huge binary | Risky      | sub-binary retention          |
+| arbitrary text length counting       | Needs care | byte size ≠ text length       |
+
+Binary pattern matching:
+
+```elixir
+def parse(<<version, type, length::16, payload::binary-size(length), rest::binary>>) do
+  {:ok, %{version: version, type: type, payload: payload}, rest}
+end
+```
+
+Erlang:
+
+```erlang
+parse(<<Version, Type, Length:16, Payload:Length/binary, Rest/binary>>) ->
+    {ok, #{version => Version, type => Type, payload => Payload}, Rest}.
+```
+
+**Cost model:** Large binaries may be reference-counted and shared between processes. This is efficient for message passing, but sub-binaries can keep the original large binary alive.
+
+Sub-binary retention risk:
+
+```elixir
+<<small_field::binary-size(10), _rest::binary>> = huge_binary
+state = %{field: small_field}
+```
+
+If `small_field` references `huge_binary`, storing it in long-lived state may retain the large original binary.
+
+Copy if a small slice must live long-term:
+
+```elixir
+field = :binary.copy(small_field)
+```
+
+**Common Pitfall:** Large binary memory problems often come from retention, not obvious copying.
+
+### Iodata — efficient output composition
+
+`iodata` is a nested structure of binaries and byte lists that can be written efficiently without building one large binary first.
+
+Elixir:
+
+```elixir
+iodata = ["Hello, ", name, "\n"]
+IO.iodata_to_binary(iodata)
+```
+
+Erlang:
+
+```erlang
+Iodata = [<<"Hello, ">>, Name, <<"\n">>],
+iolist_to_binary(Iodata).
+```
+
+| Use iodata when                        | Avoid when                                   |
+| -------------------------------------- | -------------------------------------------- |
+| building output chunks                 | final API requires a flat binary immediately |
+| writing to socket/file                 | data is not output-like                      |
+| avoiding repeated binary concatenation | structure becomes too complex                |
+| combining known binary/text chunks     | semantic text processing needed              |
+
+**Cost model:** Iodata can avoid repeated allocation from binary concatenation. It is especially useful for response bodies, protocol output, and file/socket writes.
+
+Bad repeated binary append:
+
+```elixir
+body = body <> chunk
+```
+
+Often better:
+
+```elixir
+chunks = [chunks, chunk]
+```
+
+then flatten at the boundary if needed.
+
+**Common Pitfall:** Iodata is not a general-purpose domain data model. It is primarily an efficient output representation.
+
+### PIDs — runtime process identity
+
+A PID identifies a live or formerly live BEAM process.
+
+Elixir:
+
+```elixir
+pid = self()
+send(pid, :hello)
+```
+
+Erlang:
+
+```erlang
+Pid = self(),
+Pid ! hello.
+```
+
+| PID use                         | Good?         | Reason                           |
+| ------------------------------- | ------------- | -------------------------------- |
+| sending messages                | Yes           | process addressing               |
+| monitoring process              | Yes           | runtime lifecycle                |
+| linking process                 | Yes with care | failure relation                 |
+| temporary request ownership     | Yes           | reply target                     |
+| durable domain ID               | No            | process may die/restart          |
+| database key                    | No            | not stable across runtime        |
+| user/session identity by itself | Usually no    | use domain ID + registry/process |
+
+**Cost model:** PIDs are small runtime handles. They are efficient to pass, but they are runtime-local identity objects, not durable business identifiers.
+
+**Common Pitfall:** A restarted process has a new PID. Do not treat PID equality as domain identity.
+
+### References — runtime correlation tokens
+
+References are unique runtime tokens, usually created with `make_ref()`.
+
+Elixir:
+
+```elixir
+ref = make_ref()
+send(pid, {:request, self(), ref, payload})
+```
+
+Erlang:
+
+```erlang
+Ref = make_ref(),
+Pid ! {request, self(), Ref, Payload}.
+```
+
+| Reference use                | Good?     | Reason                       |
+| ---------------------------- | --------- | ---------------------------- |
+| request-response correlation | Excellent | avoids wrong reply matching  |
+| monitor reference            | Excellent | identifies `DOWN` message    |
+| timer correlation            | Good      | stale timeout handling       |
+| durable ID                   | No        | runtime-only                 |
+| external API ID              | No        | use generated stable ID      |
+| database key                 | No        | not designed for persistence |
+
+Elixir receive:
+
+```elixir
+receive do
+  {:reply, ^ref, result} -> {:ok, result}
+after
+  5_000 -> {:error, :timeout}
+end
+```
+
+Erlang:
+
+```erlang
+receive
+    {reply, Ref, Result} -> {ok, Result}
+after 5000 ->
+    {error, timeout}
+end.
+```
+
+**Cost model:** References are cheap and extremely useful for mailbox protocols.
+
+**Common Pitfall:** A reference prevents matching the wrong response, but it does not cancel late replies after timeout. Late messages can still arrive.
+
+### Functions and Closures — behavior as data, with captured environment
+
+Functions are values. Anonymous functions may capture surrounding values.
+
+Elixir:
+
+```elixir
+prefix = "user"
+
+format =
+  fn id ->
+    "#{prefix}:#{id}"
+  end
+```
+
+Erlang:
+
+```erlang
+Prefix = <<"user">>,
+Format = fun(Id) ->
+    <<Prefix/binary, ":", (integer_to_binary(Id))/binary>>
+end.
+```
+
+| Function use                           | Good?         | Reason                          |
+| -------------------------------------- | ------------- | ------------------------------- |
+| callback                               | Good          | local behavior parameter        |
+| mapper/filter predicate                | Good          | common functional style         |
+| deferred task work                     | Good          | clear execution boundary        |
+| behavior strategy with many callbacks  | Maybe weak    | use behaviour module            |
+| long-lived closure capturing huge data | Risky         | memory retention                |
+| sending closure across processes       | Use carefully | captured data may travel/retain |
+| hidden dependency container            | Weak          | pass explicit data              |
+
+Risky capture:
+
+```elixir
+large_context = build_large_context()
+
+fun =
+  fn item ->
+    process(item, large_context)
+  end
+```
+
+Better if only a small value is needed:
+
+```elixir
+config_id = large_context.config_id
+
+fun =
+  fn item ->
+    process(item, config_id)
+  end
+```
+
+**Cost model:** A closure includes its captured environment. If that environment contains large data, the function can retain it.
+
+**Common Pitfall:** Storing a closure in long-lived process state can accidentally keep large old data alive.
+
+### Processes — cheap runtime actors, not passive data containers
+
+BEAM processes are lightweight runtime entities.
+
+Elixir:
+
+```elixir
+pid = spawn(fn -> loop(%{}) end)
+```
+
+Erlang:
+
+```erlang
+Pid = spawn(fun() -> loop(#{}) end).
+```
+
+| Process use               | Good?       | Reason                  |
+| ------------------------- | ----------- | ----------------------- |
+| independent connection    | Good        | lifecycle and mailbox   |
+| stateful server           | Good        | serialized state owner  |
+| supervised worker         | Good        | failure boundary        |
+| temporary concurrent task | Good        | independent execution   |
+| external resource owner   | Good        | cleanup/lifecycle       |
+| passive domain object     | Usually bad | plain data is enough    |
+| mutable variable wrapper  | Usually bad | `Agent`/process overuse |
+| huge global database      | Usually bad | bottleneck and GC       |
+
+**Cost model:** Processes are cheap relative to OS threads, but not free. Each process has memory, scheduler metadata, mailbox, links/monitors, and GC behavior.
+
+**Common Pitfall:** “Processes are cheap” means “you can use many for real concurrency and isolation.” It does not mean “use a process for every noun.”
+
+### Mailboxes — asynchronous queues with no automatic backpressure
+
+Every process has a mailbox.
+
+Elixir:
+
+```elixir
+send(pid, {:event, payload})
+```
+
+Erlang:
+
+```erlang
+Pid ! {event, Payload}.
+```
+
+| Mailbox property     | Cost / risk                                    |
+| -------------------- | ---------------------------------------------- |
+| async send           | sender does not wait for processing            |
+| per-process queue    | one overloaded process can accumulate messages |
+| selective receive    | unmatched messages remain                      |
+| message copying      | most terms copied to receiver                  |
+| large binary sharing | efficient but retention risk                   |
+| no default capacity  | memory can grow                                |
+| `cast` uses mailbox  | fire-and-forget can overload                   |
+
+Inspect mailbox length:
+
+```elixir
+Process.info(pid, :message_queue_len)
+```
+
+Erlang:
+
+```erlang
+process_info(Pid, message_queue_len).
+```
+
+**Cost model:** A mailbox is a queue. Queue growth increases memory use and can increase latency. Selective receive can scan past unmatched messages.
+
+**Common Pitfall:** Do not treat a mailbox as an unlimited job queue. Use backpressure, bounded queues, demand, pools, or explicit overload responses where necessary.
+
+### Message Passing — isolation through copying
+
+When sending messages between processes, most data is copied from sender to receiver, preserving process isolation. Large binaries are a major exception because they may be reference-counted and shared.
+
+| Sent value             | Cost intuition                |
+| ---------------------- | ----------------------------- |
+| atom/integer/ref/PID   | cheap                         |
+| small tuple/list/map   | usually fine                  |
+| huge nested map        | potentially expensive         |
+| large binary           | often shared by reference     |
+| closure                | includes captured environment |
+| struct                 | map-like term                 |
+| many repeated messages | mailbox/GC pressure           |
+
+Bad pattern:
+
+```elixir
+Enum.each(large_users, fn user ->
+  GenServer.cast(server, {:user, user})
+end)
+```
+
+Potentially better:
+
+```elixir
+Enum.each(user_ids, fn id ->
+  GenServer.cast(server, {:user_id, id})
+end)
+```
+
+assuming the server can fetch or access needed data appropriately.
+
+**Cost model:** Message passing avoids shared mutable memory but has copying and mailbox costs.
+
+**Common Pitfall:** Sending a huge state map back and forth between processes often destroys the benefit of process isolation.
+
+### ETS — shared mutable runtime tables
+
+ETS is Erlang Term Storage, accessible from both Erlang and Elixir.
+
+Elixir:
+
+```elixir
+table = :ets.new(:cache, [:set, :protected])
+:ets.insert(table, {:count, 1})
+:ets.lookup(table, :count)
+```
+
+Erlang:
+
+```erlang
+Table = ets:new(cache, [set, protected]),
+ets:insert(Table, {count, 1}),
+ets:lookup(Table, count).
+```
+
+| ETS feature     | Meaning                                      |
+| --------------- | -------------------------------------------- |
+| shared          | multiple processes can access                |
+| mutable         | operations change table contents             |
+| owner process   | table lifecycle tied to owner                |
+| access mode     | `private`, `protected`, `public`             |
+| table type      | `set`, `ordered_set`, `bag`, `duplicate_bag` |
+| named table     | global name on node                          |
+| anonymous table | table identifier                             |
+| non-durable     | lost when VM/table dies                      |
+
+| Use ETS when                      | Avoid ETS when                        |
+| --------------------------------- | ------------------------------------- |
+| read-heavy shared lookup          | data must be durable                  |
+| cache/index/registry-like table   | domain consistency needs transactions |
+| many readers                      | simple process state is enough        |
+| avoiding one GenServer bottleneck | ownership would be unclear            |
+| runtime table is acceptable       | data schema is undefined              |
+
+**Cost model:** ETS avoids routing every read through a single process, but introduces shared mutable state. It can be much better for read-heavy lookup but weaker for enforcing domain invariants.
+
+**Common Pitfall:** `:public` ETS tables allow any process to write. Prefer `:protected` or an owner API unless public writes are intentional.
+
+### `persistent_term` — very fast global reads, expensive updates
+
+`persistent_term` stores global VM terms optimized for rare writes and frequent reads.
+
+Elixir:
+
+```elixir
+:persistent_term.put({MyApp, :config}, config)
+:persistent_term.get({MyApp, :config})
+```
+
+Erlang:
+
+```erlang
+persistent_term:put({my_app, config}, Config),
+persistent_term:get({my_app, config}).
+```
+
+| Good use                                    | Bad use                  |
+| ------------------------------------------- | ------------------------ |
+| static config after startup                 | per-request state        |
+| rarely changing lookup table                | counters                 |
+| global constants                            | hot updates              |
+| read-heavy routing/reference data           | session data             |
+| feature data changed only at deploy/startup | frequently mutated cache |
+
+**Cost model:** Reads are very fast. Updates can be globally expensive. This is a specialized tool, not a general global variable mechanism.
+
+**Common Pitfall:** Do not use `persistent_term` for values that change frequently.
+
+### Process Dictionary — hidden process-local mutable storage
+
+Each process has a process dictionary.
+
+Elixir:
+
+```elixir
+Process.put(:request_id, request_id)
+Process.get(:request_id)
+```
+
+Erlang:
+
+```erlang
+put(request_id, RequestId),
+get(request_id).
+```
+
+| Use case                   | Fit                        |
+| -------------------------- | -------------------------- |
+| logging metadata           | acceptable with discipline |
+| tracing context            | acceptable with discipline |
+| framework internals        | common                     |
+| ordinary domain state      | weak                       |
+| hidden function input      | weak                       |
+| cache of large data        | risky                      |
+| long-lived process storage | risky                      |
+
+**Cost model:** The process dictionary is process-local, but it is mutable and invisible in function signatures. It can retain memory and hide dependencies.
+
+**Common Pitfall:** If a function’s behavior depends on process dictionary values, the function’s inputs are no longer visible from its arguments.
+
+### Keyword Lists and Proplists — option lists, not dictionaries
+
+Elixir keyword lists are lists of two-element tuples with atom keys.
+
+```elixir
+opts = [timeout: 5_000, retries: 3]
+Keyword.get(opts, :timeout)
+```
+
+Erlang proplists are similar in spirit.
+
+```erlang
+Opts = [{timeout, 5000}, {retries, 3}],
+proplists:get_value(timeout, Opts).
+```
+
+| Use                    | Good? | Reason                          |
+| ---------------------- | ----- | ------------------------------- |
+| function options       | Good  | conventional                    |
+| DSL declarations       | Good  | order and duplicates can matter |
+| small config list      | Fine  | readability                     |
+| large dictionary       | Bad   | linear lookup                   |
+| repeated random access | Bad   | use map                         |
+| unique-key storage     | Weak  | duplicates possible             |
+
+**Cost model:** Keyword lists/proplists are lists. Lookup is linear, and duplicate keys can exist.
+
+**Common Pitfall:** Do not use keyword lists as general maps.
+
+### MapSet, sets, ordsets, and map-as-set
+
+Sets represent membership.
+
+Elixir:
+
+```elixir
+set = MapSet.new([:read, :write])
+MapSet.member?(set, :read)
+```
+
+Erlang map-as-set:
+
+```erlang
+Set = #{read => true, write => true},
+maps:is_key(read, Set).
+```
+
+| Set representation | Use when                        |
+| ------------------ | ------------------------------- |
+| list               | tiny set, order matters         |
+| `MapSet`           | ordinary Elixir set             |
+| map-as-set         | simple Erlang/Elixir membership |
+| Erlang `sets`      | Erlang set abstraction          |
+| Erlang `ordsets`   | ordered-list set convention     |
+| ETS                | large/shared mutable set        |
+
+**Cost model:** Repeated membership checks over lists are linear. Use set-like structures when membership is central.
+
+**Common Pitfall:** A list with manual duplicate checks is often a hidden set. Use a set representation if set semantics matter.
+
+### Queue — FIFO without repeated list append
+
+Use `:queue` / `queue` for FIFO queue operations.
+
+Elixir:
+
+```elixir
+queue = :queue.new()
+queue = :queue.in(:job1, queue)
+\{\{:value, job}, queue} = :queue.out(queue)
+```
+
+Erlang:
+
+```erlang
+Queue0 = queue:new(),
+Queue1 = queue:in(job1, Queue0),
+\{\{value, Job}, Queue2} = queue:out(Queue1).
+```
+
+| Need                      | Good representation                |
+| ------------------------- | ---------------------------------- |
+| LIFO stack                | list                               |
+| FIFO queue                | `:queue` / `queue`                 |
+| priority queue            | specialized structure/library      |
+| shared queue with workers | process/ETS/library/external queue |
+| persistent job queue      | database/broker/job library        |
+
+**Cost model:** Lists are not efficient FIFO queues if implemented through repeated append. `queue` gives more appropriate operations.
+
+**Common Pitfall:** A process mailbox is not a general-purpose application queue with bounded capacity and retry semantics.
+
+### Numbers — integers, floats, and exactness
+
+Erlang and Elixir support integers and floats.
+
+| Concept          | Erlang      | Elixir      |
+| ---------------- | ----------- | ----------- |
+| Integer          | `123`       | `123`       |
+| Float            | `1.5`       | `1.5`       |
+| Loose equality   | `1 == 1.0`  | `1 == 1.0`  |
+| Exact equality   | `1 =:= 1.0` | `1 === 1.0` |
+| Integer division | `A div B`   | `div(a, b)` |
+| Remainder        | `A rem B`   | `rem(a, b)` |
+
+**Cost model:** Ordinary numeric operations are straightforward, but exactness and representation matter. Use appropriate libraries for decimal money or precision-sensitive domain arithmetic.
+
+**Common Pitfall:** Do not use floats for money-like values without understanding rounding and precision requirements.
+
+### Regex and Compiled Patterns
+
+Elixir:
+
+```elixir
+regex = ~r/^\d+$/
+Regex.match?(regex, "123")
+```
+
+Erlang:
+
+```erlang
+{ok, Pattern} = re:compile(<<"^\\d+$">>),
+re:run(<<"123">>, Pattern).
+```
+
+| Use regex when          | Avoid regex when        |
+| ----------------------- | ----------------------- |
+| lexical text pattern    | nested grammar          |
+| simple validation shape | semantic validation     |
+| extraction from text    | binary protocol parsing |
+| search/replace          | complex parser state    |
+
+**Cost model:** Compiling regex repeatedly can be wasteful. Literal regex in Elixir is compiled in a convenient way for normal use. For hot paths, avoid repeated dynamic compilation.
+
+**Common Pitfall:** Regex can validate surface text shape but not deeper domain correctness.
+
+### Modules and Functions — calls are cheap, abstraction is usually fine
+
+Named module functions are the ordinary unit of behavior.
+
+Elixir:
+
+```elixir
+User.normalize(user)
+```
+
+Erlang:
+
+```erlang
+user:normalize(User).
+```
+
+| Abstraction          | Runtime concern                              |
+| -------------------- | -------------------------------------------- |
+| small named function | usually fine                                 |
+| private helper       | usually fine                                 |
+| module boundary      | API design concern                           |
+| behaviour callback   | dynamic module call/callback contract        |
+| protocol dispatch    | dispatch overhead and indirection            |
+| macro                | compile-time complexity, not runtime call    |
+| process call         | much more expensive than local function call |
+
+**Cost model:** Ordinary function calls are not the expensive part of most BEAM applications. Crossing process boundaries, external I/O, serialization, large data copying, and bottleneck servers are usually more significant.
+
+**Common Pitfall:** Do not replace plain functions with GenServers for “organization.” A local function call and a process call have very different semantics and costs.
+
+### Process Calls — local function call versus `GenServer.call`
+
+Compare:
+
+```elixir
+User.normalize(user)
+```
+
+with:
+
+```elixir
+GenServer.call(server, {:normalize, user})
+```
+
+| Aspect          | Local function         | `GenServer.call`                          |
+| --------------- | ---------------------- | ----------------------------------------- |
+| Execution       | same process           | server process                            |
+| State ownership | caller/local data      | server state                              |
+| Communication   | direct call            | mailbox message                           |
+| Failure         | ordinary exception     | caller may exit on timeout/server failure |
+| Cost            | low                    | message passing + scheduling + waiting    |
+| Concurrency     | none by itself         | serialized through server                 |
+| Use when        | pure/ordinary behavior | runtime state/lifecycle boundary          |
+
+**Cost model:** A `GenServer.call` is not just a function call. It sends a message, waits for a reply, and depends on server availability and mailbox state.
+
+**Common Pitfall:** Do not route pure calculations through a GenServer unless there is a real state/lifecycle reason.
+
+### `cast` Cost — cheap for caller, not free for system
+
+`GenServer.cast/2` returns quickly to the caller.
+
+```elixir
+GenServer.cast(server, {:event, event})
+```
+
+Erlang:
+
+```erlang
+gen_server:cast(Server, {event, Event}).
+```
+
+| Property                 | Meaning                        |
+| ------------------------ | ------------------------------ |
+| caller does not wait     | low caller latency             |
+| no confirmation          | caller does not know success   |
+| message enters mailbox   | receiver still must process it |
+| overload possible        | mailbox can grow               |
+| no built-in backpressure | producers can outpace consumer |
+| order by sender          | still protocol-dependent       |
+
+**Cost model:** `cast` shifts waiting away from the caller, but it does not eliminate work. It can hide overload.
+
+**Common Pitfall:** Do not use `cast` for important writes where the caller needs to know acceptance or success.
+
+### ETS versus GenServer State
+
+| Need                                 | GenServer state    | ETS                      |
+| ------------------------------------ | ------------------ | ------------------------ |
+| enforce serialized state transitions | Good               | weaker by default        |
+| simple small state                   | Good               | overkill                 |
+| many concurrent reads                | bottleneck risk    | good                     |
+| shared lookup                        | bottleneck risk    | good                     |
+| complex domain invariants            | Good               | wrap carefully           |
+| public mutable table                 | not applicable     | risky                    |
+| ownership/lifecycle                  | process owns state | owner process owns table |
+| durability                           | no                 | no                       |
+
+**Decision rule:** Use GenServer state for controlled state transitions and lifecycle. Use ETS for shared runtime lookup when process serialization becomes a bottleneck or access pattern requires shared reads.
+
+**Common Pitfall:** Replacing a GenServer with ETS can remove a bottleneck and also remove invariant enforcement. Wrap ETS with an API when correctness matters.
+
+### Binaries versus Iodata versus Strings
+
+| Need                    | Prefer                                            |
+| ----------------------- | ------------------------------------------------- |
+| human text in Elixir    | UTF-8 binary string                               |
+| Erlang older text API   | charlist or chardata as required                  |
+| protocol bytes          | binary                                            |
+| efficient output chunks | iodata                                            |
+| final flattened payload | binary                                            |
+| byte length             | `byte_size`                                       |
+| text length             | `String.length` in Elixir, Unicode-aware handling |
+| byte slicing            | binary functions/patterns                         |
+| semantic parsing        | parser, not only byte slicing                     |
+
+**Common Pitfall:** `byte_size("é")` and `String.length("é")` answer different questions.
+
+### Cost Decision Table
+
+| Task                        | Prefer                 | Avoid                         |
+| --------------------------- | ---------------------- | ----------------------------- |
+| finite status               | atom                   | dynamic atom from input       |
+| expected success/failure    | tagged tuple           | exceptions for ordinary flow  |
+| fixed small protocol result | tuple                  | large positional tuple        |
+| sequential traversal        | list                   | map with numeric keys         |
+| FIFO queue                  | `:queue` / `queue`     | repeated `list ++ [item]`     |
+| key-value lookup            | map                    | keyword list for large data   |
+| domain data in Elixir       | struct + constructor   | raw maps everywhere           |
+| domain data in Erlang       | record/map/opaque type | huge untagged tuple           |
+| text in Elixir              | binary string          | charlist unless API requires  |
+| output construction         | iodata                 | repeated binary concatenation |
+| binary protocol parsing     | bit syntax             | regex/string splitting        |
+| request correlation         | reference              | no correlation token          |
+| live process identity       | PID                    | domain ID confusion           |
+| dynamic process name        | Registry               | dynamic atom                  |
+| shared read cache           | ETS                    | single GenServer bottleneck   |
+| rare global read data       | `persistent_term`      | frequent updates              |
+| temporary concurrent work   | Task                   | raw unmonitored spawn         |
+| pure transformation         | function               | process call                  |
+| native isolation            | port                   | unsafe blocking NIF           |
+
+### Runtime Smell Table
+
+| Smell                               | Likely issue            | Better direction       |
+| ----------------------------------- | ----------------------- | ---------------------- |
+| `String.to_atom(params["type"])`    | atom leak               | explicit mapping       |
+| `acc ++ [x]` in loop                | repeated list copying   | prepend + reverse      |
+| `Enum.map(...); result ignored`     | side-effect misuse      | `Enum.each`            |
+| one huge GenServer state map        | bottleneck/GC           | split, ETS, shard      |
+| many `cast`s from producers         | mailbox overload        | backpressure/ack       |
+| raw messages in many modules        | protocol leakage        | public process API     |
+| small sub-binary stored forever     | binary retention        | copy needed field      |
+| closure stored in state             | captured data retention | explicit small data    |
+| public ETS writes                   | global mutable state    | protected table + API  |
+| `persistent_term.put` frequently    | global update cost      | ETS/process state      |
+| PID stored in database              | runtime identity misuse | stable domain ID       |
+| regex parsing binary protocol       | wrong abstraction       | bit syntax             |
+| `Process.sleep` for synchronization | race-prone              | messages/refs/monitors |
+| dynamic `apply` from input          | capability leak         | whitelist/behaviour    |
+
+### Appendix C Summary
+
+The BEAM cost model is best understood through five principles:
+
+```text
+Use atoms for finite symbols, not unbounded external input.
+Use lists for sequential traversal, not random access or FIFO append queues.
+Use maps and structs for named data, but watch large centralized state.
+Use processes for runtime behavior and ownership, not passive records.
+Use ETS, binaries, persistent_term, NIFs, and ports only with their runtime tradeoffs understood.
+```
+
+The practical professional question is not “which structure is fastest in isolation?” It is:
+
+```text
+Who owns this data?
+How often is it read or updated?
+Will it cross process boundaries?
+Can it grow without bound?
+Does it come from external input?
+Does it need to survive process restart?
+Could it retain memory accidentally?
+Does it need backpressure, versioning, or supervision?
+```
+
+Once those questions are answered, Erlang / Elixir data structure choices become much clearer.
+## Appendix D — Error, Exception, Exit, and Supervision Decision Matrix
+
+### Appendix Scope — choosing the correct failure channel
+
+This appendix explains how to choose between four different failure mechanisms:
+
+```text
+error as data
+exception as local exceptional failure
+exit as process lifecycle signal
+supervision as architectural recovery
+```
+
+Erlang / Elixir systems do not have a single universal “error handling” mechanism. They have several failure channels, each with a different meaning.
+
+| Failure channel           | Erlang                 | Elixir             | Meaning                         |
+| ------------------------- | ---------------------- | ------------------ | ------------------------------- |
+| Tagged error value        | `{error, Reason}`      | `{:error, reason}` | Expected failure as data        |
+| Simple failure value      | `error`                | `:error`           | Expected failure without detail |
+| Exception / runtime error | `erlang:error(Reason)` | `raise`            | Exceptional local failure       |
+| Throw                     | `throw(Term)`          | `throw(term)`      | Non-local control flow, rare    |
+| Exit                      | `exit(Reason)`         | `exit(reason)`     | Process termination signal      |
+| Failed match              | badmatch error         | `MatchError`       | Assertion/invariant failure     |
+| Supervisor restart        | OTP supervisor         | OTP supervisor     | Runtime recovery boundary       |
+
+The central rule is:
+
+```text
+Expected failures should usually be values.
+Unexpected local impossibilities may crash.
+Process failure should be contained by supervision.
+Supervision restarts processes; it does not decide business correctness.
+```
+
+### Core Distinction — expected failure versus unexpected failure
+
+The first decision is whether the failure is **expected** in normal operation.
+
+| Situation                                        |                  Expected? | Recommended channel                                       |
+| ------------------------------------------------ | -------------------------: | --------------------------------------------------------- |
+| User submits invalid form input                  |                        Yes | tagged error                                              |
+| Requested record does not exist                  |                        Yes | tagged error or `:error`                                  |
+| External service times out                       |                        Yes | tagged error, retry policy, or boundary-specific response |
+| Required startup config missing                  |                 Usually no | fail startup / raise / crash                              |
+| Internal invariant is broken                     |                         No | crash                                                     |
+| Pattern assumed by validated internal data fails |                         No | crash                                                     |
+| Worker process cannot continue safely            |                         No | exit/crash under supervisor                               |
+| Poison job payload                               | Expected at queue boundary | discard / dead-letter / tagged result                     |
+| Database temporarily unavailable                 |  Expected external failure | tagged error, retry, or fail startup depending boundary   |
+
+Expected failure example in Elixir:
+
+```elixir
+def parse_status("pending"), do: {:ok, :pending}
+def parse_status("approved"), do: {:ok, :approved}
+def parse_status("rejected"), do: {:ok, :rejected}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+Erlang:
+
+```erlang
+parse_status(<<"pending">>) ->
+    {ok, pending};
+parse_status(<<"approved">>) ->
+    {ok, approved};
+parse_status(<<"rejected">>) ->
+    {ok, rejected};
+parse_status(_) ->
+    {error, invalid_status}.
+```
+
+Unexpected invariant example:
+
+```elixir
+{:ok, config} = load_required_config()
+```
+
+```erlang
+{ok, Config} = load_required_config().
+```
+
+If this fails during application startup, crashing may be correct because the application cannot start safely.
+
+**Design meaning:** External input should usually be validated and rejected as data. Internal impossibilities may crash because they indicate a bug or corrupted local state.
+
+**Common Pitfall:** Do not use “let it crash” as an excuse to crash on ordinary user input.
+
+### Error as Data — tagged tuples
+
+Tagged tuples are the standard way to represent expected success and failure.
+
+Elixir:
+
+```elixir
+{:ok, value}
+{:error, reason}
+```
+
+Erlang:
+
+```erlang
+{ok, Value}
+{error, Reason}
+```
+
+| Use tagged errors when          | Reason                         |
+| ------------------------------- | ------------------------------ |
+| Caller can recover              | caller needs branch            |
+| Failure is normal               | not exceptional                |
+| Failure reason matters          | caller/log/UI/retry can use it |
+| Input is external               | invalid input is expected      |
+| Operation is fallible by nature | file, network, database, parse |
+| API should be composable        | pattern matching works well    |
+
+Elixir example:
+
+```elixir
+def fetch_user(id) do
+  case Repo.get(User, id) do
+    nil -> {:error, :not_found}
+    user -> {:ok, user}
+  end
+end
+```
+
+Erlang:
+
+```erlang
+fetch_user(Id) ->
+    case repo:get_user(Id) of
+        undefined ->
+            {error, not_found};
+        User ->
+            {ok, User}
+    end.
+```
+
+**Good error reasons:**
+
+| Error reason               |        Good? | Comment                |
+| -------------------------- | -----------: | ---------------------- |
+| `:not_found`               |          Yes | stable and branchable  |
+| `:invalid_status`          |          Yes | stable parser error    |
+| `{:invalid_field, :email}` |          Yes | structured and useful  |
+| `{:timeout, service}`      |          Yes | useful if documented   |
+| `:error`                   |    Sometimes | too weak for many APIs |
+| `"something went wrong"`   | Usually weak | hard to branch         |
+| raw database exception     | Usually weak | leaks implementation   |
+| raw HTTP response          | Usually weak | leaks client boundary  |
+
+**Common Pitfall:** Returning only `false` or `nil` loses failure information. Use `{:error, reason}` when the caller needs to know why.
+
+### Simple `:error` / `error`
+
+Some APIs use a simple failure tag when no reason is needed.
+
+Elixir:
+
+```elixir
+Map.fetch(map, key)
+# {:ok, value} | :error
+```
+
+Erlang-style:
+
+```erlang
+maps:find(Key, Map).
+%% {ok, Value} | error
+```
+
+| Use simple `:error` when          | Prefer `{:error, reason}` when    |
+| --------------------------------- | --------------------------------- |
+| only one failure mode exists      | multiple failure modes exist      |
+| caller only needs success/failure | caller needs to display/log/retry |
+| lookup miss is obvious            | failure source may be ambiguous   |
+| API is small and local            | public API needs stable reasons   |
+
+Example:
+
+```elixir
+def lookup(cache, key) do
+  case :ets.lookup(cache, key) do
+    [{^key, value}] -> {:ok, value}
+    [] -> :error
+  end
+end
+```
+
+**Design meaning:** `:error` is acceptable for simple lookup-style APIs. It is often too weak for boundary APIs.
+
+**Common Pitfall:** Do not collapse all external service failures into `:error` if timeout, rejection, invalid response, and unavailable service need different handling.
+
+### Exceptions — raise for exceptional local failure
+
+Exceptions are appropriate when the failure should not be treated as ordinary branchable data at the current layer.
+
+Elixir:
+
+```elixir
+raise ArgumentError, "invalid required config"
+```
+
+Erlang:
+
+```erlang
+erlang:error(invalid_required_config).
+```
+
+| Raise / error when                    | Return tagged error when            |
+| ------------------------------------- | ----------------------------------- |
+| caller cannot reasonably recover here | caller can recover                  |
+| invariant is violated                 | input may be invalid normally       |
+| startup cannot continue               | request can return validation error |
+| bang API is requested                 | non-bang API is normal path         |
+| bug should be visible                 | failure is domain outcome           |
+| supervisor should restart process     | caller should branch                |
+
+Elixir bang API pattern:
+
+```elixir
+def fetch_user!(id) do
+  case fetch_user(id) do
+    {:ok, user} -> user
+    {:error, reason} -> raise "could not fetch user: #{inspect(reason)}"
+  end
+end
+```
+
+Non-bang API:
+
+```elixir
+def fetch_user(id) do
+  ...
+end
+```
+
+**Design meaning:** Bang functions conventionally convert expected error data into fail-fast behavior for callers that want assertion semantics.
+
+**Common Pitfall:** Providing only a raising API for ordinary user-facing failures makes code harder to compose.
+
+### Bang Functions — deliberate conversion from error data to exception
+
+In Elixir, `!` conventionally means “raise on failure.”
+
+| Non-bang               | Bang                   |                          |
+| ---------------------- | ---------------------- | ------------------------ |
+| `File.read(path)`      | `File.read!(path)`     |                          |
+| returns `{:ok, binary} | {:error, reason}`      | returns binary or raises |
+| caller branches        | caller asserts success |                          |
+
+Custom example:
+
+```elixir
+def parse_config(binary) do
+  case Jason.decode(binary) do
+    {:ok, data} -> validate_config(data)
+    {:error, reason} -> {:error, {:invalid_json, reason\}\}
+  end
+end
+
+def parse_config!(binary) do
+  case parse_config(binary) do
+    {:ok, config} -> config
+    {:error, reason} -> raise ArgumentError, "invalid config: #{inspect(reason)}"
+  end
+end
+```
+
+| Good bang use                      | Bad bang use               |
+| ---------------------------------- | -------------------------- |
+| required startup config            | ordinary form validation   |
+| tests where failure should be loud | expected missing record    |
+| internal invariant                 | external API unreliability |
+| script-like fail-fast code         | public library normal path |
+
+**Design meaning:** Bang APIs are boundary choices. They say: “At this call site, failure is exceptional.”
+
+**Common Pitfall:** Do not use bang APIs deep inside request handling unless local crash is intended.
+
+### Failed Pattern Match — assertion through pattern matching
+
+A direct pattern match can act as an assertion.
+
+Elixir:
+
+```elixir
+{:ok, user} = Accounts.fetch_user(id)
+```
+
+Erlang:
+
+```erlang
+{ok, User} = accounts:fetch_user(Id).
+```
+
+If the function returns an error, the process crashes.
+
+| Direct match is good when             | Direct match is bad when               |
+| ------------------------------------- | -------------------------------------- |
+| previous validation guarantees shape  | shape is external/untrusted            |
+| failure is a bug                      | failure is ordinary domain result      |
+| process should crash under supervisor | caller should return user-facing error |
+| startup invariant must hold           | request path can recover               |
+| test should fail loudly               | production API should branch           |
+
+Boundary-safe version:
+
+```elixir
+case Accounts.fetch_user(id) do
+  {:ok, user} ->
+    {:ok, user}
+
+  {:error, :not_found} ->
+    {:error, :not_found}
+end
+```
+
+**Design meaning:** Pattern matching is not only destructuring; it can be a runtime assertion. Use it intentionally.
+
+**Common Pitfall:** Directly matching on external input or I/O results can turn expected failures into crashes.
+
+### Throw — rare non-local control flow
+
+Both Erlang and Elixir have `throw`, but it is uncommon in ordinary application code.
+
+Elixir:
+
+```elixir
+throw({:halt, reason})
+```
+
+Erlang:
+
+```erlang
+throw({halt, Reason}).
+```
+
+Catching:
+
+```elixir
+try do
+  risky()
+catch
+  {:halt, reason} -> {:error, reason}
+end
+```
+
+Erlang:
+
+```erlang
+try risky() of
+    Value ->
+        {ok, Value}
+catch
+    throw:{halt, Reason} ->
+        {error, Reason}
+end.
+```
+
+| Use throw when                             | Prefer another tool when             |
+| ------------------------------------------ | ------------------------------------ |
+| implementing low-level control abstraction | ordinary error handling              |
+| escaping deeply nested traversal           | simple `case` works                  |
+| library specifically documents throw       | public API result needed             |
+| internal non-local control is clearer      | exception or tagged error is clearer |
+
+**Design meaning:** `throw` is a control-flow mechanism, not the normal error system.
+
+**Common Pitfall:** Using `throw` where `{:error, reason}` would work makes code harder to read and compose.
+
+### Exit — process lifecycle signal
+
+An exit terminates a process or sends a termination signal.
+
+Elixir:
+
+```elixir
+exit(:normal)
+exit(:shutdown)
+exit(:some_reason)
+```
+
+Erlang:
+
+```erlang
+exit(normal).
+exit(shutdown).
+exit(some_reason).
+```
+
+| Exit reason              | Typical meaning                   |
+| ------------------------ | --------------------------------- |
+| `:normal` / `normal`     | normal termination                |
+| `:shutdown` / `shutdown` | intentional shutdown              |
+| `{:shutdown, term}`      | shutdown with detail              |
+| other reason             | abnormal termination              |
+| `:kill` / `kill`         | untrappable kill signal semantics |
+| exception reason         | process crashed due to error      |
+
+Exit is not just an exception. It participates in process links, monitors, supervisors, and runtime lifecycle.
+
+**Design meaning:** Exits are process-level events. They matter for supervision and linked processes.
+
+**Common Pitfall:** Do not use `exit` as a normal function return mechanism. It terminates the process.
+
+### Links — shared fate
+
+A link creates a bidirectional failure relationship between two processes.
+
+Elixir:
+
+```elixir
+pid = spawn_link(fn -> work() end)
+```
+
+Erlang:
+
+```erlang
+Pid = spawn_link(fun() -> work() end).
+```
+
+| Link property                        | Meaning                                 |
+| ------------------------------------ | --------------------------------------- |
+| bidirectional                        | failure can propagate both ways         |
+| abnormal exit propagates             | linked process may exit too             |
+| supervisor-child relation uses links | supervisor sees child failure           |
+| can be trapped                       | process can convert exits into messages |
+| strong coupling                      | processes share fate                    |
+
+| Use links when                 | Use monitors when                    |
+| ------------------------------ | ------------------------------------ |
+| processes should fail together | observer should not die with target  |
+| supervisor owns child          | caller only needs death notification |
+| failure should propagate       | failure should be data message       |
+| lifecycle is coupled           | lifecycle is independent             |
+
+**Design meaning:** Links are for shared failure. They are stronger than “watch this process.”
+
+**Common Pitfall:** Linking to a process from an ordinary request handler can crash the caller if the linked process dies abnormally.
+
+### Monitors — one-way failure observation
+
+A monitor lets one process observe another process’s death without sharing fate.
+
+Elixir:
+
+```elixir
+ref = Process.monitor(pid)
+
+receive do
+  {:DOWN, ^ref, :process, ^pid, reason} ->
+    {:down, reason}
+end
+```
+
+Erlang:
+
+```erlang
+Ref = erlang:monitor(process, Pid),
+receive
+    {'DOWN', Ref, process, Pid, Reason} ->
+        {down, Reason}
+end.
+```
+
+| Monitor property    | Meaning                                    |
+| ------------------- | ------------------------------------------ |
+| one-way             | monitor target does not monitor caller     |
+| no shared fate      | monitor process does not die automatically |
+| `DOWN` message      | delivered to monitoring process            |
+| ref correlation     | identifies which monitor fired             |
+| must handle message | otherwise mailbox clutter                  |
+
+| Use monitor when                    | Avoid when                      |
+| ----------------------------------- | ------------------------------- |
+| caller needs to know if worker dies | processes should share fate     |
+| waiting for temporary process       | supervision is the better owner |
+| tracking dynamic processes          | no handler for `DOWN` exists    |
+| async work result/failure           | failure should crash caller     |
+
+**Design meaning:** Monitors are the safe default for observing independent processes.
+
+**Common Pitfall:** Creating monitors without handling `DOWN` messages creates mailbox noise and lost failure information.
+
+### Trapping Exits — converting exit signals into messages
+
+A process can trap exits so that linked process exits become messages.
+
+Elixir:
+
+```elixir
+Process.flag(:trap_exit, true)
+```
+
+Erlang:
+
+```erlang
+process_flag(trap_exit, true).
+```
+
+Then linked exits may arrive as messages:
+
+```elixir
+receive do
+  {:EXIT, pid, reason} ->
+    handle_exit(pid, reason)
+end
+```
+
+Erlang:
+
+```erlang
+receive
+    {'EXIT', Pid, Reason} ->
+        handle_exit(Pid, Reason)
+end.
+```
+
+| Use trap exits when                       | Avoid when                          |
+| ----------------------------------------- | ----------------------------------- |
+| building lifecycle manager                | ordinary worker process             |
+| controlled shutdown cleanup needed        | simple crash propagation is desired |
+| implementing supervisor-like behavior     | using OTP supervisor already        |
+| port/external process owner needs cleanup | no clear exit-message handling      |
+
+**Design meaning:** Trapping exits changes failure semantics. It should be rare in ordinary application code because OTP supervisors already handle most lifecycle needs.
+
+**Common Pitfall:** A process that traps exits but mishandles them can fail to terminate when it should.
+
+### Supervision — architectural recovery, not local error handling
+
+A supervisor restarts child processes according to a declared policy.
+
+| Supervisor can do         | Supervisor cannot automatically do    |
+| ------------------------- | ------------------------------------- |
+| restart crashed process   | undo database writes                  |
+| escalate repeated crashes | know business retry semantics         |
+| start children in order   | restore unsaved state unless designed |
+| stop children on shutdown | deduplicate external side effects     |
+| apply restart policy      | validate user input                   |
+| isolate subtrees          | fix poisoned messages                 |
+
+Example failure:
+
+```text
+worker receives job
+worker sends external payment request
+worker crashes before marking job complete
+supervisor restarts worker
+job is retried
+payment may be duplicated unless idempotency exists
+```
+
+**Design meaning:** Supervision provides process recovery. Business recovery requires domain design: idempotency, persistence, retries, dead letters, compensation, and observability.
+
+**Common Pitfall:** “It is supervised” does not mean “it is safe to retry.”
+
+### Restart Types and Error Meaning
+
+Supervisors interpret child exits through restart policy.
+
+| Restart type | Erlang      | Elixir       | Meaning                     |
+| ------------ | ----------- | ------------ | --------------------------- |
+| permanent    | `permanent` | `:permanent` | always restart              |
+| transient    | `transient` | `:transient` | restart only abnormal exits |
+| temporary    | `temporary` | `:temporary` | never restart               |
+
+| Process role                    | Likely restart type    |
+| ------------------------------- | ---------------------- |
+| cache server                    | permanent              |
+| registry                        | permanent              |
+| long-running connection manager | permanent              |
+| one-off job worker              | transient or temporary |
+| supervised task                 | often temporary        |
+| dynamic session                 | depends on semantics   |
+
+**Design meaning:** The same exit reason can lead to different outcomes depending on child spec. Failure handling is a combination of process exit reason and supervisor restart policy.
+
+**Common Pitfall:** Marking a normal finite worker as permanent may restart it after successful completion.
+
+### Decision Matrix — what should this failure become?
+
+| Scenario                                        | Recommended response                           | Reason                           |
+| ----------------------------------------------- | ---------------------------------------------- | -------------------------------- |
+| User input missing required field               | `{:error, {:invalid_field, field\}\}`            | expected boundary failure        |
+| JSON syntax invalid                             | `{:error, :invalid_json}` or structured reason | expected external input failure  |
+| Unknown enum/status                             | `{:error, :invalid_status}`                    | expected parse failure           |
+| Record not found                                | `{:error, :not_found}` or `:error`             | expected lookup miss             |
+| Duplicate record                                | `{:error, :already_exists}`                    | expected storage/domain failure  |
+| Permission denied                               | `{:error, :forbidden}`                         | expected policy failure          |
+| External HTTP timeout                           | `{:error, :timeout}`                           | expected external failure        |
+| External service returns malformed response     | `{:error, :invalid_response}`                  | boundary failure                 |
+| Required application config missing at boot     | raise / crash startup                          | cannot run safely                |
+| Optional config missing                         | default or tagged error                        | recoverable                      |
+| Internal impossible branch reached              | crash                                          | bug/invariant break              |
+| Process state corrupted                         | crash and restart if supervised                | local process unsafe             |
+| Temporary worker fails job                      | retry/discard/dead-letter policy               | job semantics                    |
+| Long-running server child crashes               | supervisor restart                             | runtime recovery                 |
+| Linked child dies and parent must know          | trap exit or supervisor                        | lifecycle management             |
+| Independent worker dies and caller needs notice | monitor                                        | one-way observation              |
+| Late async reply after timeout                  | ignore by ref/state check                      | stale message                    |
+| Queue poison message                            | dead-letter/discard                            | avoid infinite crash loop        |
+| NIF crashes VM risk                             | avoid or isolate via port                      | process supervision insufficient |
+
+### Boundary Matrix — same failure, different policy
+
+The same low-level failure can have different correct handling depending on where it occurs.
+
+#### Missing file
+
+| Context                   | Policy                          |
+| ------------------------- | ------------------------------- |
+| optional user upload      | tagged error                    |
+| required startup config   | crash/fail startup              |
+| migration script input    | raise with clear message        |
+| background job attachment | retry/fail job depending source |
+| test fixture              | bang/read! acceptable           |
+
+#### Database unavailable
+
+| Context                  | Policy                                     |
+| ------------------------ | ------------------------------------------ |
+| HTTP request             | return service unavailable or tagged error |
+| startup migration        | fail startup                               |
+| background job           | retry with backoff                         |
+| health check             | report unhealthy                           |
+| optional analytics write | drop/log depending requirement             |
+
+#### Invalid data
+
+| Context                          | Policy                                            |
+| -------------------------------- | ------------------------------------------------- |
+| external params                  | tagged validation error                           |
+| decoded event from old version   | versioned migration or error                      |
+| internal domain value impossible | crash                                             |
+| job payload poison               | discard/dead-letter                               |
+| database row violates invariant  | normalize error or crash depending trust boundary |
+
+**Design meaning:** Error policy belongs at the boundary with enough context to decide.
+
+**Common Pitfall:** Low-level modules should usually return meaningful errors rather than decide final user-facing behavior.
+
+### Error Normalization — convert implementation failures into stable API failures
+
+External libraries, databases, and HTTP clients may expose unstable or overly detailed errors. Boundary modules should normalize them.
+
+Elixir:
+
+```elixir
+def fetch_user(id) do
+  case Repo.get(UserSchema, id) do
+    nil ->
+      {:error, :not_found}
+
+    schema ->
+      User.from_schema(schema)
+  end
+rescue
+  e in DBConnection.ConnectionError ->
+    {:error, {:database_unavailable, e.reason\}\}
+end
+```
+
+Better public boundary may hide implementation detail:
+
+```elixir
+def fetch_user(id) do
+  case UserRepo.fetch(id) do
+    {:ok, user} ->
+      {:ok, user}
+
+    {:error, :not_found} ->
+      {:error, :not_found}
+
+    {:error, {:database_unavailable, _reason\}\} ->
+      {:error, :temporarily_unavailable}
+  end
+end
+```
+
+| Raw failure                   | Stable boundary error                |
+| ----------------------------- | ------------------------------------ |
+| database connection exception | `{:error, :temporarily_unavailable}` |
+| HTTP client timeout exception | `{:error, :timeout}`                 |
+| JSON library parse struct     | `{:error, :invalid_json}`            |
+| unique constraint error       | `{:error, :already_exists}`          |
+| unknown remote status         | `{:error, :invalid_response}`        |
+
+**Design meaning:** Public error reasons are compatibility contracts. Internal error structures can change; public ones should be stable.
+
+**Common Pitfall:** Returning raw exceptions from public APIs couples callers to implementation libraries.
+
+### Layered Failure Handling
+
+A good system usually has multiple failure layers.
+
+```text
+External input boundary
+    ↓
+parser / validator
+    ↓
+domain constructor
+    ↓
+effect boundary
+    ↓
+process boundary
+    ↓
+supervision boundary
+    ↓
+observability / alerting
+```
+
+| Layer               | Failure handling                   |
+| ------------------- | ---------------------------------- |
+| external input      | tagged validation errors           |
+| domain construction | tagged errors or invariant crashes |
+| repository/client   | normalize external failures        |
+| public context API  | stable application errors          |
+| process callback    | reply, stop, or continue           |
+| supervisor          | restart or escalate                |
+| telemetry/logging   | expose failure evidence            |
+
+Example:
+
+```elixir
+def register(params) do
+  with {:ok, command} <- CreateUser.new(params),
+       {:ok, user} <- User.new(command),
+       :ok <- UserRepo.insert(user) do
+    {:ok, user}
+  else
+    {:error, {:invalid_field, _} = reason} ->
+      {:error, reason}
+
+    {:error, :already_exists} ->
+      {:error, :already_exists}
+
+    {:error, {:storage_failed, reason\}\} ->
+      Logger.warning("storage failed", reason: inspect(reason))
+      {:error, :temporarily_unavailable}
+  end
+end
+```
+
+**Design meaning:** The same `{:error, reason}` may be transformed at higher boundaries. This is normal.
+
+**Common Pitfall:** Do not leak every low-level error directly to the outermost caller.
+
+### Error Handling in `GenServer` Callbacks
+
+A `GenServer` callback must return OTP instructions, not just domain errors.
+
+Wrong:
+
+```elixir
+def handle_call({:fetch, key}, _from, state) do
+  {:error, :not_found}
+end
+```
+
+Correct:
+
+```elixir
+def handle_call({:fetch, key}, _from, state) do
+  reply =
+    case Map.fetch(state, key) do
+      {:ok, value} -> {:ok, value}
+      :error -> {:error, :not_found}
+    end
+
+  {:reply, reply, state}
+end
+```
+
+Erlang:
+
+```erlang
+handle_call({fetch, Key}, _From, State) ->
+    Reply =
+        case maps:find(Key, State) of
+            {ok, Value} -> {ok, Value};
+            error -> {error, not_found}
+        end,
+    {reply, Reply, State}.
+```
+
+| Layer                  | Return                   |                   |
+| ---------------------- | ------------------------ | ----------------- |
+| domain lookup          | `{:ok, value}            | {:error, reason}` |
+| `handle_call` callback | `{:reply, reply, state}` |                   |
+| caller sees            | `reply`                  |                   |
+
+**Design meaning:** OTP callback return and application reply are different protocols.
+
+**Common Pitfall:** Returning `{:error, reason}` directly from a callback usually means the callback shape is wrong.
+
+### Error Handling in Tasks
+
+A task is a process. It can return a result, raise, or exit.
+
+```elixir
+task = Task.async(fn -> do_work() end)
+```
+
+`Task.await(task)` returns the task result or exits if the task failed or timed out.
+
+Controlled pattern:
+
+```elixir
+case Task.yield(task, 5_000) || Task.shutdown(task) do
+  {:ok, result} ->
+    {:ok, result}
+
+  {:exit, reason} ->
+    {:error, {:task_failed, reason\}\}
+
+  nil ->
+    {:error, :timeout}
+end
+```
+
+| Task outcome        | Handling                              |
+| ------------------- | ------------------------------------- |
+| returns value       | `{:ok, value}` through `yield`        |
+| raises              | `{:exit, reason}` through `yield`     |
+| timeout             | `nil`, then maybe shutdown            |
+| linked task failure | may affect caller depending task type |
+| supervised task     | lifecycle under supervisor            |
+
+**Design meaning:** `Task` failure semantics are process semantics. They are not identical to promise rejection.
+
+**Common Pitfall:** Starting tasks without awaiting, monitoring, or supervising them can lose failure information.
+
+### Error Handling in Job Systems
+
+Job systems require business-level failure policy.
+
+| Job result           | Meaning                                            |
+| -------------------- | -------------------------------------------------- |
+| `:ok`                | job completed                                      |
+| `{:retry, reason}`   | retryable failure                                  |
+| `{:discard, reason}` | do not retry                                       |
+| `{:fail, reason}`    | terminal failure                                   |
+| crash                | worker/process failure; queue policy decides retry |
+
+Example:
+
+```elixir
+def perform(job) do
+  with {:ok, command} <- JobCommand.new(job),
+       :ok <- ensure_idempotency(command),
+       {:ok, result} <- ExternalClient.submit(command),
+       :ok <- mark_complete(job, result) do
+    :ok
+  else
+    {:error, :invalid_job} ->
+      {:discard, :invalid_job}
+
+    {:error, :timeout} ->
+      {:retry, :timeout}
+
+    {:error, reason} ->
+      {:fail, reason}
+  end
+end
+```
+
+**Design meaning:** Job failure is not the same as process failure. Supervision restarts workers; job policy decides retry/discard/fail.
+
+**Common Pitfall:** Crashing on invalid job payload can cause infinite retry loops unless the queue treats that crash as terminal.
+
+### Error Handling in External Service Clients
+
+External service clients should distinguish timeout, rejection, unavailability, invalid response, and unexpected failure.
+
+```elixir
+def charge(command) do
+  with {:ok, request} <- build_request(command),
+       {:ok, response} <- send_request(request),
+       {:ok, result} <- parse_response(response) do
+    {:ok, result}
+  else
+    {:error, :timeout} ->
+      {:error, :timeout}
+
+    {:error, :rejected} ->
+      {:error, :rejected}
+
+    {:error, :invalid_response} ->
+      {:error, :invalid_response}
+
+    {:error, reason} ->
+      {:error, {:billing_failed, reason\}\}
+  end
+end
+```
+
+| Failure            |                Retry? | Notes                            |
+| ------------------ | --------------------: | -------------------------------- |
+| timeout            |                 maybe | idempotency needed               |
+| unavailable        |                 maybe | backoff/circuit breaker          |
+| rejected           |            usually no | domain/service decision          |
+| invalid response   |   usually no or alert | integration bug or version issue |
+| auth error         | no until config fixed | operational issue                |
+| rate limited       |                 later | respect retry-after              |
+| connection refused |                 maybe | service state                    |
+
+**Design meaning:** External clients are failure-normalization boundaries.
+
+**Common Pitfall:** Retrying non-idempotent external operations can duplicate effects.
+
+### Timeout Handling
+
+Timeouts are expected failures in distributed and concurrent systems.
+
+| Timeout context          | Possible policy                                 |
+| ------------------------ | ----------------------------------------------- |
+| `GenServer.call` timeout | inspect server; return error at caller boundary |
+| external HTTP timeout    | retry/backoff or user-facing unavailable        |
+| task timeout             | shutdown or continue monitoring                 |
+| receive timeout          | return `{:error, :timeout}`                     |
+| job timeout              | retry or fail job                               |
+| startup timeout          | fail child start or application start           |
+| socket idle timeout      | close connection                                |
+
+Elixir receive timeout:
+
+```elixir
+receive do
+  {:reply, ^ref, result} ->
+    {:ok, result}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+**Design meaning:** Timeout means no answer arrived within a boundary’s patience. It does not prove the remote work stopped.
+
+**Common Pitfall:** After a timeout, late replies can still arrive. Protocols should use refs and tolerate stale messages.
+
+### Crash Boundaries — when crashing is correct
+
+Crashing can be correct when local state is unsafe or an invariant fails.
+
+| Crash is reasonable when           | Reason                                           |
+| ---------------------------------- | ------------------------------------------------ |
+| required config missing at startup | cannot run correctly                             |
+| internal pattern impossible        | bug                                              |
+| process state corrupted            | continuing is unsafe                             |
+| dependency missing at boot         | application cannot start                         |
+| worker cannot recover local state  | supervisor boundary                              |
+| code assumption violated           | visible failure is better than silent corruption |
+
+Example:
+
+```elixir
+def init(opts) do
+  {:ok, config} = Config.validate(opts)
+  {:ok, config}
+end
+```
+
+If config is invalid, server startup fails. A supervisor/application can decide what this means.
+
+**Design meaning:** A crash should be local, observable, and bounded by supervision or startup failure.
+
+**Common Pitfall:** Crashing is not a substitute for returning validation errors to users.
+
+### Recovery Boundaries — what restarts can and cannot fix
+
+| Failure                               |        Restart helps? | Additional design needed |
+| ------------------------------------- | --------------------: | ------------------------ |
+| transient worker bug with clean state |                 maybe | logging/alerting         |
+| corrupted in-memory process state     | yes if state rebuilds | init recovery            |
+| lost unsaved state                    |                    no | persistence/snapshot     |
+| external side effect duplicated       |                    no | idempotency              |
+| poison message                        |                    no | discard/dead-letter      |
+| dependency unavailable                |             maybe not | backoff/circuit breaker  |
+| bad code deployment                   |                    no | rollback/fix             |
+| invalid config                        |                    no | fail fast/fix config     |
+
+**Design meaning:** Restart is one recovery tool. It is not persistence, validation, retry policy, or transaction management.
+
+### Practical Decision Tree
+
+Use this decision tree when deciding failure handling:
+
+```text
+1. Is the value from external input or external system?
+   → Validate and return tagged error for expected failure.
+
+2. Can the caller reasonably recover or choose a response?
+   → Return tagged error.
+
+3. Is this a required startup condition?
+   → Raise/crash/fail startup.
+
+4. Is this an internal invariant that should be impossible?
+   → Crash.
+
+5. Is this a process that cannot continue safely?
+   → Exit/crash under supervisor.
+
+6. Is the process death important to another process?
+   → Link if shared fate; monitor if observation only.
+
+7. Is the failure in a job or external side effect?
+   → Define retry/discard/idempotency policy.
+
+8. Is the failure repeated?
+   → Use restart intensity, alerting, and root-cause analysis.
+```
+
+### Failure Channel Cheat Sheet
+
+| Need                          | Use                                      |
+| ----------------------------- | ---------------------------------------- |
+| ordinary parse failure        | `{:error, :invalid_format}`              |
+| missing lookup                | `:error` or `{:error, :not_found}`       |
+| validation with field         | `{:error, {:invalid_field, field\}\}`      |
+| recoverable external failure  | `{:error, :timeout}` / normalized reason |
+| fail-fast variant             | bang function / raise                    |
+| impossible internal state     | failed match / raise / crash             |
+| terminate current process     | `exit(reason)`                           |
+| observe another process death | monitor                                  |
+| share failure fate            | link                                     |
+| recover long-running child    | supervisor                               |
+| retry job                     | explicit job retry policy                |
+| discard poison input          | discard/dead-letter                      |
+| cleanup local resource        | `try ... after`                          |
+| cleanup process resource      | owner process / shutdown design          |
+
+### Anti-Pattern Table
+
+| Anti-pattern                                             | Why it is wrong          | Better practice                     |
+| -------------------------------------------------------- | ------------------------ | ----------------------------------- |
+| crashing on invalid user input                           | expected failure         | tagged validation error             |
+| returning strings for all errors                         | hard to branch           | stable atom/tuple reasons           |
+| rescuing everything                                      | hides bugs               | rescue specific exceptions          |
+| using exceptions for normal lookup miss                  | poor composition         | `{:error, :not_found}` or `:error`  |
+| returning `{:error, reason}` directly from `handle_call` | wrong OTP callback shape | `{:reply, {:error, reason}, state}` |
+| using `throw` for ordinary errors                        | obscure control flow     | tagged tuples                       |
+| linking when only observation is needed                  | failure propagates       | monitor                             |
+| monitoring but ignoring `DOWN`                           | mailbox clutter          | handle `DOWN`                       |
+| assuming supervisor rollback                             | false recovery model     | idempotency/persistence             |
+| retrying non-idempotent operation                        | duplicate side effects   | idempotency keys                    |
+| swallowing crash reports                                 | lost diagnosis           | log/telemetry/alert                 |
+| treating all timeouts as same                            | wrong policy             | boundary-specific timeout handling  |
+| exposing raw database errors                             | API instability          | normalize errors                    |
+| using `cast` for must-succeed command                    | no confirmation          | call/ack/queue                      |
+
+### Appendix D Summary
+
+Erlang / Elixir failure handling is not one mechanism. It is a layered system:
+
+```text
+Tagged tuples represent expected failure.
+Exceptions represent exceptional local failure.
+Exits represent process lifecycle failure.
+Links and monitors connect process failures.
+Supervisors recover runtime components.
+Domain policies handle retries, idempotency, and business correctness.
+```
+
+The most important distinction is:
+
+```text
+Return errors when the caller can decide.
+Crash when the local process cannot safely continue.
+Supervise when the process matters enough to recover.
+Design domain recovery explicitly when side effects, jobs, or persistence are involved.
+```
+
+A professional BEAM system is not one that never crashes. It is one where crashes are **localized**, expected failures are **data**, process failures are **observable**, restarts are **meaningful**, and external side effects are protected by explicit domain policy.
+## Appendix E — Process Message Protocol Design Patterns
+
+### Appendix Scope — messages as explicit runtime protocols
+
+This appendix explains how to design process messages in Erlang / Elixir. A BEAM message is just a term, but a useful system treats messages as a **protocol**.
+
+The central rule is:
+
+```text
+A process message is an API.
+It needs a tag, payload shape, sender/reply information when needed,
+correlation references when needed, timeout behavior, and failure policy.
+```
+
+| Message pattern       | Typical shape                         | Use                                       |
+| --------------------- | ------------------------------------- | ----------------------------------------- |
+| Fire-and-forget event | `{:event, payload}`                   | sender does not need response             |
+| Command               | `{:command, payload}`                 | receiver should perform action            |
+| Request-response      | `{:request, from, ref, payload}`      | sender expects reply                      |
+| Reply                 | `{:reply, ref, result}`               | response to correlated request            |
+| Timeout               | `{:timeout, ref}`                     | scheduled timeout event                   |
+| Monitor death         | `{:DOWN, ref, :process, pid, reason}` | observed process died                     |
+| Linked exit           | `{:EXIT, pid, reason}`                | linked process exited when trapping exits |
+| Worker job            | `{:work, job_id, payload}`            | worker command                            |
+| PubSub event          | `{:event, topic, payload}`            | broadcast/subscription                    |
+| Versioned message     | `{:event, version, payload}`          | compatibility across versions             |
+| Control message       | `:stop`, `:flush`, `:reload`          | lifecycle or administrative command       |
+
+### Message Protocol Basics — tag first, payload after
+
+A message should normally be tagged. The tag tells the receiver what kind of message it is.
+
+Elixir:
+
+```elixir
+send(pid, {:user_created, user_id})
+```
+
+Erlang:
+
+```erlang
+Pid ! {user_created, UserId}.
+```
+
+Receiver in Elixir:
+
+```elixir
+receive do
+  {:user_created, user_id} ->
+    handle_user_created(user_id)
+end
+```
+
+Receiver in Erlang:
+
+```erlang
+receive
+    {user_created, UserId} ->
+        handle_user_created(UserId)
+end.
+```
+
+| Message part | Purpose                                      |
+| ------------ | -------------------------------------------- |
+| tag          | identifies message kind                      |
+| sender PID   | allows reply                                 |
+| reference    | correlates request/reply                     |
+| payload      | carries data                                 |
+| version      | supports compatibility                       |
+| metadata     | optional context such as timestamp or source |
+| timeout/ref  | handles delayed or stale events              |
+
+**Design meaning:** A tag makes messages readable and prevents unrelated messages from being confused with each other.
+
+**Common Pitfall:** Sending untagged messages like `pid ! value` works technically, but it becomes ambiguous as the process evolves.
+
+### Fire-and-Forget Event
+
+A fire-and-forget event is a message where the sender does not need confirmation.
+
+Elixir:
+
+```elixir
+send(pid, {:event, {:user_created, user_id\}\})
+```
+
+Erlang:
+
+```erlang
+Pid ! {event, {user_created, UserId\}\}.
+```
+
+Receiver:
+
+```elixir
+receive do
+  {:event, {:user_created, user_id\}\} ->
+    handle_user_created(user_id)
+end
+```
+
+| Use when                     | Avoid when                    |
+| ---------------------------- | ----------------------------- |
+| event is best-effort         | sender must know success      |
+| loss or delay is acceptable  | operation is important write  |
+| receiver is not overloaded   | backpressure is needed        |
+| event can be processed later | sender needs immediate result |
+| duplicate handling is clear  | side effect is non-idempotent |
+
+**Design meaning:** Fire-and-forget reduces sender coupling, but it also removes feedback.
+
+**Common Pitfall:** Fire-and-forget is not confirmation. The sender only knows that it sent a message, not that the receiver processed it.
+
+### Command Message
+
+A command asks a process to do something. It may or may not have a reply.
+
+Elixir:
+
+```elixir
+send(worker, {:command, :refresh})
+send(worker, {:command, {:put, key, value\}\})
+```
+
+Erlang:
+
+```erlang
+Worker ! {command, refresh},
+Worker ! {command, {put, Key, Value\}\}.
+```
+
+Receiver:
+
+```elixir
+receive do
+  {:command, :refresh} ->
+    refresh()
+
+  {:command, {:put, key, value\}\} ->
+    put(key, value)
+end
+```
+
+| Command style                    | Meaning                  |
+| -------------------------------- | ------------------------ |
+| `{:command, :refresh}`           | simple operation         |
+| `{:command, {:put, key, value\}\}` | operation with arguments |
+| `{:put, key, value}`             | direct tag-as-command    |
+| `{:command, from, ref, payload}` | command with reply       |
+| `{:command, version, payload}`   | versioned command        |
+
+**Design meaning:** A command expresses intent. If the sender cares whether the command was accepted or completed, use a request-response or acknowledgement protocol instead of blind command sending.
+
+**Common Pitfall:** An asynchronous command that changes important state usually needs at least acceptance feedback or a queue/backpressure strategy.
+
+### Request-Response Protocol
+
+The standard low-level request-response pattern includes:
+
+```text
+request tag
+caller PID
+unique reference
+payload
+```
+
+Elixir:
+
+```elixir
+ref = make_ref()
+send(server, {:request, self(), ref, {:fetch, key\}\})
+
+receive do
+  {:reply, ^ref, result} ->
+    {:ok, result}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+Erlang:
+
+```erlang
+Ref = make_ref(),
+Server ! {request, self(), Ref, {fetch, Key\}\},
+
+receive
+    {reply, Ref, Result} ->
+        {ok, Result}
+after 5000 ->
+    {error, timeout}
+end.
+```
+
+Server in Elixir:
+
+```elixir
+receive do
+  {:request, from, ref, {:fetch, key\}\} ->
+    result = fetch(key)
+    send(from, {:reply, ref, result})
+end
+```
+
+Server in Erlang:
+
+```erlang
+receive
+    {request, From, Ref, {fetch, Key\}\} ->
+        Result = fetch(Key),
+        From ! {reply, Ref, Result}
+end.
+```
+
+| Component  | Why needed                                |
+| ---------- | ----------------------------------------- |
+| `:request` | distinguishes request from other messages |
+| `from`     | tells receiver where to reply             |
+| `ref`      | correlates reply to specific request      |
+| payload    | describes operation                       |
+| timeout    | prevents caller waiting forever           |
+
+**Design meaning:** The reference prevents old, late, or unrelated replies from being mistaken for the current response.
+
+**Common Pitfall:** A timeout does not cancel the remote work. A late reply may still arrive later and remain in the caller’s mailbox.
+
+### Reply Message
+
+A reply should include the same reference as the request.
+
+Elixir:
+
+```elixir
+send(from, {:reply, ref, {:ok, value\}\})
+```
+
+Erlang:
+
+```erlang
+From ! {reply, Ref, {ok, Value\}\}.
+```
+
+Caller:
+
+```elixir
+receive do
+  {:reply, ^ref, {:ok, value\}\} ->
+    {:ok, value}
+
+  {:reply, ^ref, {:error, reason\}\} ->
+    {:error, reason}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+| Reply shape                          | Meaning                          |
+| ------------------------------------ | -------------------------------- |
+| `{:reply, ref, {:ok, value\}\}`        | successful operation             |
+| `{:reply, ref, {:error, reason\}\}`    | expected failure                 |
+| `{:reply, ref, :ok}`                 | successful command with no value |
+| `{:reply, ref, {:accepted, id\}\}`     | accepted for async processing    |
+| `{:reply, ref, {:rejected, reason\}\}` | rejected before processing       |
+
+**Design meaning:** The reply payload is an application-level result; the outer reply tuple is the message protocol.
+
+**Common Pitfall:** Do not omit `ref` in reply protocols where multiple requests can be in flight.
+
+### Acknowledgement Protocol
+
+An acknowledgement says that a message was accepted, not necessarily completed.
+
+Elixir:
+
+```elixir
+ref = make_ref()
+send(server, {:enqueue, self(), ref, job})
+
+receive do
+  {:ack, ^ref, :accepted} ->
+    :ok
+
+  {:ack, ^ref, {:rejected, reason\}\} ->
+    {:error, reason}
+after
+  1_000 ->
+    {:error, :timeout}
+end
+```
+
+Erlang:
+
+```erlang
+Ref = make_ref(),
+Server ! {enqueue, self(), Ref, Job},
+
+receive
+    {ack, Ref, accepted} ->
+        ok;
+    {ack, Ref, {rejected, Reason\}\} ->
+        {error, Reason}
+after 1000 ->
+    {error, timeout}
+end.
+```
+
+| Ack result                 | Meaning                          |
+| -------------------------- | -------------------------------- |
+| `:accepted`                | receiver accepted work           |
+| `{:rejected, :overloaded}` | receiver refused due to capacity |
+| `{:rejected, :invalid}`    | payload invalid                  |
+| `{:queued, job_id}`        | work stored for later            |
+| `{:duplicate, job_id}`     | idempotency detected duplicate   |
+
+**Design meaning:** Acknowledgement is a backpressure and admission-control tool. It is different from completion.
+
+**Common Pitfall:** Do not call an acknowledgement “success” if the actual work is only queued.
+
+### Completion Protocol
+
+A completion message reports the final outcome of asynchronous work.
+
+Elixir:
+
+```elixir
+send(client, {:job_completed, job_id, {:ok, result\}\})
+send(client, {:job_completed, job_id, {:error, reason\}\})
+```
+
+Erlang:
+
+```erlang
+Client ! {job_completed, JobId, {ok, Result\}\},
+Client ! {job_completed, JobId, {error, Reason\}\}.
+```
+
+| Completion shape                             | Meaning                          |
+| -------------------------------------------- | -------------------------------- |
+| `{:job_completed, job_id, {:ok, result\}\}`    | job finished successfully        |
+| `{:job_completed, job_id, {:error, reason\}\}` | job finished with domain failure |
+| `{:job_failed, job_id, reason}`              | terminal failure                 |
+| `{:job_retried, job_id, reason}`             | not complete; retry scheduled    |
+| `{:job_discarded, job_id, reason}`           | poison or invalid job discarded  |
+
+**Design meaning:** Completion protocols are necessary when the caller should not block but still needs final status.
+
+**Common Pitfall:** Mixing acknowledgement and completion in one vague message causes caller confusion. `:accepted` and `:completed` are different states.
+
+### Timeout Message Pattern
+
+Timers send messages. A timeout message should usually include a reference or request ID.
+
+Elixir:
+
+```elixir
+ref = make_ref()
+Process.send_after(self(), {:timeout, ref}, 5_000)
+```
+
+Erlang:
+
+```erlang
+Ref = make_ref(),
+erlang:send_after(5000, self(), {timeout, Ref}).
+```
+
+Handler:
+
+```elixir
+def handle_info({:timeout, ref}, state) do
+  if pending?(state, ref) do
+    handle_timeout(ref, state)
+  else
+    {:noreply, state}
+  end
+end
+```
+
+Erlang:
+
+```erlang
+handle_info({timeout, Ref}, State) ->
+    case pending(Ref, State) of
+        true ->
+            handle_timeout(Ref, State);
+        false ->
+            {noreply, State}
+    end.
+```
+
+| Timeout message part | Purpose                                       |
+| -------------------- | --------------------------------------------- |
+| `:timeout` tag       | distinguishes timer from other messages       |
+| `ref` or request ID  | identifies which operation timed out          |
+| state check          | ignores stale timeout                         |
+| cancellation         | optional optimization, not absolute guarantee |
+
+**Design meaning:** Timer messages can be stale. Always check whether the timed operation is still pending.
+
+**Common Pitfall:** Canceling a timer does not always mean no timeout message can arrive, because the message may already be in the mailbox.
+
+### Monitor Message Pattern
+
+Monitoring a process produces a `DOWN` message.
+
+Elixir:
+
+```elixir
+ref = Process.monitor(pid)
+```
+
+Message:
+
+```elixir
+{:DOWN, ref, :process, pid, reason}
+```
+
+Erlang:
+
+```erlang
+Ref = erlang:monitor(process, Pid).
+```
+
+Message:
+
+```erlang
+{'DOWN', Ref, process, Pid, Reason}
+```
+
+Handler in Elixir:
+
+```elixir
+def handle_info({:DOWN, ref, :process, pid, reason}, state) do
+  state = handle_down(ref, pid, reason, state)
+  {:noreply, state}
+end
+```
+
+Handler in Erlang:
+
+```erlang
+handle_info({'DOWN', Ref, process, Pid, Reason}, State) ->
+    NewState = handle_down(Ref, Pid, Reason, State),
+    {noreply, NewState}.
+```
+
+| Field                  | Meaning               |
+| ---------------------- | --------------------- |
+| `:DOWN` / `'DOWN'`     | monitor message tag   |
+| `ref`                  | monitor reference     |
+| `:process` / `process` | monitored object type |
+| `pid`                  | monitored process     |
+| `reason`               | exit reason           |
+
+**Design meaning:** Monitor messages are system protocol messages. If a process creates monitors, it must handle `DOWN`.
+
+**Common Pitfall:** Ignoring `DOWN` messages creates mailbox clutter and loses failure information.
+
+### Link and Exit Message Pattern
+
+If a process traps exits, linked process exits become messages.
+
+Elixir:
+
+```elixir
+Process.flag(:trap_exit, true)
+```
+
+Exit message:
+
+```elixir
+{:EXIT, pid, reason}
+```
+
+Erlang:
+
+```erlang
+process_flag(trap_exit, true).
+```
+
+Exit message:
+
+```erlang
+{'EXIT', Pid, Reason}
+```
+
+Handler:
+
+```elixir
+receive do
+  {:EXIT, pid, reason} ->
+    handle_exit(pid, reason)
+end
+```
+
+| Use trapped exits when            | Prefer supervisor/monitor when    |
+| --------------------------------- | --------------------------------- |
+| implementing lifecycle manager    | ordinary worker lifecycle         |
+| managing ports/external resources | only death notification needed    |
+| controlled shutdown required      | failure should propagate normally |
+| building lower-level abstractions | OTP supervisor already fits       |
+
+**Design meaning:** Trapping exits changes process failure behavior. It should be used deliberately.
+
+**Common Pitfall:** A process that traps exits but does not terminate when it should can become a zombie-like lifecycle problem.
+
+### Worker Job Message Pattern
+
+A worker job message should identify the job and carry validated or validate-able payload.
+
+Elixir:
+
+```elixir
+send(worker, {:work, job_id, payload})
+```
+
+Erlang:
+
+```erlang
+Worker ! {work, JobId, Payload}.
+```
+
+Worker handler:
+
+```elixir
+receive do
+  {:work, job_id, payload} ->
+    case perform(payload) do
+      :ok ->
+        send(manager, {:job_done, job_id})
+
+      {:error, reason} ->
+        send(manager, {:job_failed, job_id, reason})
+    end
+end
+```
+
+| Job message field | Purpose                             |
+| ----------------- | ----------------------------------- |
+| `:work`           | identifies job command              |
+| `job_id`          | correlation, idempotency, reporting |
+| `payload`         | work data                           |
+| sender/manager    | optional if worker must report      |
+| attempt number    | useful for retry                    |
+| version           | useful for persisted jobs           |
+
+More explicit shape:
+
+```elixir
+{:work, %{id: job_id, attempt: attempt, version: 1, payload: payload\}\}
+```
+
+Erlang:
+
+```erlang
+{work, #{id => JobId, attempt => Attempt, version => 1, payload => Payload\}\}
+```
+
+**Design meaning:** A job message is usually part of a larger job lifecycle: accepted, started, completed, failed, retried, discarded.
+
+**Common Pitfall:** A job message with no ID is difficult to retry, deduplicate, monitor, or report.
+
+### PubSub Message Pattern
+
+A PubSub event usually includes topic and payload.
+
+Elixir:
+
+```elixir
+send(subscriber, {:event, topic, payload})
+```
+
+Erlang:
+
+```erlang
+Subscriber ! {event, Topic, Payload}.
+```
+
+Versioned event:
+
+```elixir
+{:event, topic, 1, payload}
+```
+
+Erlang:
+
+```erlang
+{event, Topic, 1, Payload}
+```
+
+| Field    | Purpose                          |
+| -------- | -------------------------------- |
+| `:event` | distinguishes broadcast event    |
+| topic    | subscription key                 |
+| version  | event schema version             |
+| payload  | event data                       |
+| metadata | optional source/time/correlation |
+
+Example:
+
+```elixir
+{:event, :user_created, 1, %{user_id: user_id\}\}
+```
+
+**Design meaning:** PubSub messages are often semi-public within an application. Treat their shape as a compatibility contract.
+
+**Common Pitfall:** Broadcasting huge payloads to many subscribers can create mailbox and memory pressure.
+
+### Versioned Message Pattern
+
+Versioned messages are important when messages cross module, node, deployment, or persistence boundaries.
+
+Elixir:
+
+```elixir
+{:user_event, 1, %{type: :created, user_id: user_id\}\}
+```
+
+Erlang:
+
+```erlang
+{user_event, 1, #{type => created, user_id => UserId\}\}.
+```
+
+Receiver:
+
+```elixir
+def handle_message({:user_event, 1, payload}) do
+  handle_user_event_v1(payload)
+end
+
+def handle_message({:user_event, version, _payload}) do
+  {:error, {:unsupported_version, version\}\}
+end
+```
+
+| Use versioning when                          | Reason            |
+| -------------------------------------------- | ----------------- |
+| distributed nodes may run different versions | rolling upgrades  |
+| messages are persisted                       | old data remains  |
+| external consumers exist                     | compatibility     |
+| multiple services interact                   | protocol boundary |
+| event payload evolves                        | schema migration  |
+
+**Design meaning:** A message that crosses a long-lived boundary is no longer “internal.” It is a protocol.
+
+**Common Pitfall:** Sending raw internal structs across nodes or services creates brittle version coupling.
+
+### Control Message Pattern
+
+Control messages manage lifecycle or operational behavior.
+
+Elixir:
+
+```elixir
+send(pid, :stop)
+send(pid, :reload)
+send(pid, {:set_mode, :draining})
+```
+
+Erlang:
+
+```erlang
+Pid ! stop,
+Pid ! reload,
+Pid ! {set_mode, draining}.
+```
+
+| Control message          | Meaning                 |
+| ------------------------ | ----------------------- |
+| `:stop`                  | request graceful stop   |
+| `:reload`                | reload config/state     |
+| `{:set_mode, :draining}` | change operational mode |
+| `:flush`                 | clear internal buffer   |
+| `:snapshot`              | persist state           |
+| `:tick`                  | periodic work           |
+
+**Design meaning:** Control messages should be explicit and usually wrapped by public API functions.
+
+Wrapper:
+
+```elixir
+def stop(pid) do
+  send(pid, :stop)
+end
+```
+
+Better for confirmation:
+
+```elixir
+def stop(pid) do
+  GenServer.call(pid, :stop)
+end
+```
+
+**Common Pitfall:** A raw `:stop` message from anywhere can become a capability leak if any process can terminate important workers.
+
+### GenServer Message Wrapping
+
+In ordinary Elixir application code, raw messages should often be hidden behind public API functions.
+
+Bad public usage:
+
+```elixir
+GenServer.call(cache, {:put, key, value})
+```
+
+Better:
+
+```elixir
+Cache.put(cache, key, value)
+```
+
+Implementation:
+
+```elixir
+def put(cache, key, value) do
+  GenServer.call(cache, {:put, key, value})
+end
+```
+
+Erlang equivalent:
+
+```erlang
+put(Cache, Key, Value) ->
+    gen_server:call(Cache, {put, Key, Value}).
+```
+
+| Why wrap message protocols?    | Benefit                 |
+| ------------------------------ | ----------------------- |
+| raw tuple can change           | callers unaffected      |
+| validation can be added        | safer API               |
+| timeout can be controlled      | better failure behavior |
+| naming documents intent        | readability             |
+| telemetry/logging can be added | observability           |
+| implementation can change      | not tied to GenServer   |
+
+**Design meaning:** Message tuples are internal protocol unless deliberately documented as public protocol.
+
+**Common Pitfall:** If many modules construct the same raw message tuple, the protocol has leaked.
+
+### Selective Receive Pattern
+
+Selective receive waits for messages matching a pattern while leaving others in the mailbox.
+
+Elixir:
+
+```elixir
+receive do
+  {:reply, ^ref, result} ->
+    {:ok, result}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+Erlang:
+
+```erlang
+receive
+    {reply, Ref, Result} ->
+        {ok, Result}
+after 5000 ->
+    {error, timeout}
+end.
+```
+
+| Selective receive risk            | Explanation                            |
+| --------------------------------- | -------------------------------------- |
+| unmatched messages remain         | mailbox can accumulate                 |
+| late replies remain               | timeout does not clear future response |
+| broad catch-all consumes messages | can break other protocol               |
+| no ref                            | wrong response may match               |
+| long mailbox                      | matching may become slower             |
+
+Safer pattern:
+
+```elixir
+ref = make_ref()
+send(server, {:request, self(), ref, payload})
+
+receive do
+  {:reply, ^ref, result} ->
+    {:ok, result}
+
+  {:DOWN, monitor_ref, :process, _pid, reason} ->
+    {:error, {:server_down, monitor_ref, reason\}\}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+**Design meaning:** Selective receive is powerful but low-level. Prefer OTP abstractions unless a custom protocol is necessary.
+
+**Common Pitfall:** A catch-all receive like `_ -> :ok` can accidentally consume messages another part of the process expects.
+
+### Message Ordering
+
+Local BEAM message ordering has useful but limited guarantees. Messages from the same sender to the same receiver are normally received in send order, but full system ordering is more complex.
+
+| Case                            | Practical rule                                                        |
+| ------------------------------- | --------------------------------------------------------------------- |
+| same sender → same receiver     | order is preserved in ordinary local messaging                        |
+| multiple senders → one receiver | interleaving depends on scheduling                                    |
+| one sender → multiple receivers | no single receiver order                                              |
+| distributed nodes               | network/distribution complications                                    |
+| selective receive               | matching order can appear different because unmatched messages remain |
+| timeout/retry                   | duplicate or late messages possible                                   |
+
+Example:
+
+```elixir
+send(pid, {:step, 1})
+send(pid, {:step, 2})
+```
+
+The receiver should see these from the same sender in order, but if other processes also send messages, interleaving can occur.
+
+**Design meaning:** Design protocols that tolerate interleaving unless strict sequencing is explicitly enforced.
+
+**Common Pitfall:** Do not assume global ordering across multiple producers.
+
+### Message Payload Design
+
+A payload should be as small and stable as possible while still carrying necessary information.
+
+| Payload choice   | Good when                      | Risk                               |
+| ---------------- | ------------------------------ | ---------------------------------- |
+| ID only          | receiver can fetch/lookup data | extra lookup                       |
+| small map        | readable and evolvable         | map shape must be validated        |
+| tagged tuple     | compact and pattern-friendly   | positional fragility               |
+| struct           | internal same-version code     | version coupling across boundaries |
+| binary           | protocol payload               | needs parser                       |
+| huge map         | rarely ideal                   | copying/memory pressure            |
+| closure/function | local callback                 | captured environment retention     |
+| PID/ref          | runtime coordination           | not durable                        |
+
+Example:
+
+```elixir
+{:process_user, user_id}
+```
+
+may be better than:
+
+```elixir
+{:process_user, huge_user_snapshot}
+```
+
+if the receiver can fetch or reconstruct what it needs.
+
+**Design meaning:** Message payloads cross process boundaries and may be copied or retained. Design them as boundary data.
+
+**Common Pitfall:** Sending entire domain objects through many processes can create copying, compatibility, and stale-data problems.
+
+### Message Validation
+
+If the sender is not fully trusted, validate message payloads.
+
+Elixir:
+
+```elixir
+def handle_info({:external_event, payload}, state) do
+  case EventParser.new(payload) do
+    {:ok, event} ->
+      handle_event(event, state)
+
+    {:error, reason} ->
+      handle_bad_event(reason, state)
+  end
+end
+```
+
+Erlang:
+
+```erlang
+handle_info({external_event, Payload}, State) ->
+    case event_parser:new(Payload) of
+        {ok, Event} ->
+            handle_event(Event, State);
+        {error, Reason} ->
+            handle_bad_event(Reason, State)
+    end.
+```
+
+| Sender                       | Validation need                |
+| ---------------------------- | ------------------------------ |
+| same module internal process | lower, but still pattern-match |
+| public process API           | validate in wrapper or handler |
+| external node                | high                           |
+| socket/port/external process | high                           |
+| deserialized message         | high                           |
+| test helper                  | depends                        |
+| unknown process              | high                           |
+
+**Design meaning:** Process messages can be external input. Treat them as trust boundaries when appropriate.
+
+**Common Pitfall:** Any process with a PID can send a message. Do not assume a raw mailbox message came from the intended sender unless the protocol authenticates or restricts access.
+
+### Capability and Access Control in Message Protocols
+
+A PID can be a capability: whoever has it can send messages to the process.
+
+| Design choice           | Security/control implication                |
+| ----------------------- | ------------------------------------------- |
+| expose raw PID widely   | many processes can send messages            |
+| expose wrapper API only | easier to validate                          |
+| use registered name     | globally discoverable on node               |
+| use Registry key        | discoverable if registry and key known      |
+| require ref/token       | filters protocol but not full security      |
+| check sender            | possible if sender PID included and trusted |
+| isolate process         | reduce who knows PID                        |
+
+Example command with sender:
+
+```elixir
+send(server, {:admin_command, self(), ref, command})
+```
+
+Server can check whether `from` is allowed, but this only works if identity and authorization model are meaningful.
+
+**Design meaning:** Message protocols are not automatically secure. Within one BEAM node, process access is usually based on knowing PID/name and following protocol conventions.
+
+**Common Pitfall:** A public registered process name is easy to send messages to from any code on the node.
+
+### Backpressure Message Pattern
+
+Backpressure means the receiver can reject, delay, or request work instead of being flooded.
+
+Bad:
+
+```elixir
+Enum.each(jobs, fn job ->
+  GenServer.cast(worker, {:work, job})
+end)
+```
+
+Better admission-control shape:
+
+```elixir
+def enqueue(worker, job) do
+  GenServer.call(worker, {:enqueue, job}, 5_000)
+end
+```
+
+Callback:
+
+```elixir
+def handle_call({:enqueue, job}, _from, state) do
+  if queue_full?(state) do
+    {:reply, {:error, :overloaded}, state}
+  else
+    {:reply, :ok, enqueue_job(state, job)}
+  end
+end
+```
+
+Low-level message equivalent:
+
+```elixir
+ref = make_ref()
+send(worker, {:enqueue, self(), ref, job})
+
+receive do
+  {:ack, ^ref, :ok} ->
+    :ok
+
+  {:ack, ^ref, {:error, :overloaded\}\} ->
+    {:error, :overloaded}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+| Backpressure approach | Use                     |
+| --------------------- | ----------------------- |
+| synchronous `call`    | caller waits            |
+| ack/reject protocol   | explicit acceptance     |
+| bounded queue         | capacity control        |
+| demand protocol       | consumer asks producer  |
+| pool                  | concurrency limit       |
+| rate limiter          | producer speed limit    |
+| drop policy           | best-effort events      |
+| external broker       | durable queue semantics |
+
+**Design meaning:** Mailboxes do not provide application-level backpressure by default.
+
+**Common Pitfall:** A `cast`-based API can look fast in tests and fail under production load.
+
+### Duplicate Message Handling
+
+Distributed systems, retries, crashes, and timeouts can produce duplicate messages.
+
+| Cause                            | Example                         |
+| -------------------------------- | ------------------------------- |
+| caller retries after timeout     | original request later succeeds |
+| worker crashes after side effect | job retried                     |
+| network reconnect                | event resent                    |
+| PubSub re-delivery               | subscriber receives duplicate   |
+| manual retry                     | same command sent twice         |
+| supervisor restart               | startup action repeated         |
+
+Idempotent command shape:
+
+```elixir
+{:charge_card, request_id, payment_payload}
+```
+
+The `request_id` allows deduplication.
+
+Job completion with ID:
+
+```elixir
+{:job_done, job_id}
+```
+
+**Design meaning:** If duplicate effects are dangerous, messages need stable IDs and idempotency policy.
+
+**Common Pitfall:** A retry protocol without idempotency can duplicate payments, emails, external requests, or database writes.
+
+### Stale Message Handling
+
+A message can arrive after it is no longer relevant.
+
+Common stale messages:
+
+| Message        | Why stale                      |
+| -------------- | ------------------------------ |
+| timeout        | operation already completed    |
+| reply          | caller already timed out       |
+| monitor `DOWN` | state already removed          |
+| socket data    | connection state changed       |
+| retry          | job already completed          |
+| scheduled tick | process entered different mode |
+
+Stale-safe handler:
+
+```elixir
+def handle_info({:timeout, ref}, state) do
+  case Map.fetch(state.pending, ref) do
+    {:ok, pending} ->
+      handle_timeout(ref, pending, state)
+
+    :error ->
+      {:noreply, state}
+  end
+end
+```
+
+**Design meaning:** Time and concurrency make stale messages normal. Handlers should be state-aware.
+
+**Common Pitfall:** Treating every timeout message as current can cancel or fail the wrong operation.
+
+### Poison Message Handling
+
+A poison message is a message that repeatedly causes failure.
+
+| Poison source                | Policy                     |
+| ---------------------------- | -------------------------- |
+| malformed external packet    | close connection or reject |
+| invalid job payload          | discard/dead-letter        |
+| unknown version              | reject/log                 |
+| bad command                  | reply error                |
+| internal impossible message  | crash may be acceptable    |
+| repeated crash-causing event | isolate and alert          |
+
+Handler example:
+
+```elixir
+def handle_info({:work, job_id, payload}, state) do
+  case JobCommand.new(payload) do
+    {:ok, command} ->
+      perform(command, state)
+
+    {:error, reason} ->
+      report_discard(job_id, reason)
+      {:noreply, state}
+  end
+end
+```
+
+**Design meaning:** Poison messages should not create infinite crash loops unless the supervisor/queue has a deliberate dead-letter policy.
+
+**Common Pitfall:** Letting a worker crash repeatedly on the same invalid message can consume restart budget and hide the actual bad payload.
+
+### Message Shape: Tuple versus Map
+
+Both tuples and maps can be used for messages.
+
+Tuple:
+
+```elixir
+{:user_created, user_id, occurred_at}
+```
+
+Map payload:
+
+```elixir
+{:user_created, %{user_id: user_id, occurred_at: occurred_at\}\}
+```
+
+Versioned map payload:
+
+```elixir
+{:user_created, 1, %{user_id: user_id, occurred_at: occurred_at\}\}
+```
+
+| Shape          | Advantage                      | Weakness               |
+| -------------- | ------------------------------ | ---------------------- |
+| tuple fields   | compact, pattern-friendly      | positional fragility   |
+| map payload    | named fields, easier evolution | slightly more verbose  |
+| struct payload | clear internal type            | version coupling       |
+| binary payload | compact protocol               | parser required        |
+| keyword list   | good for options               | weak for protocol data |
+
+**Professional rule:** Use tuples for small fixed protocol shapes; use maps when payload has several named fields or may evolve.
+
+**Common Pitfall:** Long positional tuples become unreadable and brittle.
+
+### Message Protocol with `GenServer.call`
+
+`GenServer.call` implements a request-response protocol for you. Internally, it handles caller, reference, reply, and timeout behavior.
+
+Elixir:
+
+```elixir
+GenServer.call(server, {:fetch, key}, 5_000)
+```
+
+Erlang:
+
+```erlang
+gen_server:call(Server, {fetch, Key}, 5000).
+```
+
+Callback:
+
+```elixir
+def handle_call({:fetch, key}, _from, state) do
+  reply = fetch_from_state(state, key)
+  {:reply, reply, state}
+end
+```
+
+| `GenServer.call` gives        | Still your responsibility    |
+| ----------------------------- | ---------------------------- |
+| request-response mechanics    | choosing payload shape       |
+| waiting caller                | callback duration            |
+| timeout behavior              | stable reply shape           |
+| reply delivery                | overload/backpressure design |
+| monitor-like failure behavior | avoiding server bottleneck   |
+
+**Design meaning:** `GenServer.call` is preferred for ordinary synchronous server APIs. Hand-roll request-response only when OTP behavior does not fit.
+
+**Common Pitfall:** `GenServer.call` creates some backpressure by blocking caller, but it can still overload a server if too many callers queue up.
+
+### Message Protocol with `GenServer.cast`
+
+`GenServer.cast` sends an asynchronous message into the server’s mailbox.
+
+Elixir:
+
+```elixir
+GenServer.cast(server, {:refresh, id})
+```
+
+Erlang:
+
+```erlang
+gen_server:cast(Server, {refresh, Id}).
+```
+
+Callback:
+
+```elixir
+def handle_cast({:refresh, id}, state) do
+  {:noreply, refresh(id, state)}
+end
+```
+
+| `cast` gives             | It does not give        |
+| ------------------------ | ----------------------- |
+| asynchronous send        | processing confirmation |
+| caller does not block    | success/failure result  |
+| simple command path      | backpressure            |
+| lower caller latency     | overload protection     |
+| server callback dispatch | durable queue           |
+
+**Design meaning:** Use `cast` only when loss of immediate feedback is acceptable.
+
+**Common Pitfall:** `cast` is not “faster call.” It is a different protocol with weaker guarantees.
+
+### Message Protocol with Raw `send`
+
+Raw `send` is appropriate for low-level protocols, timers, monitor messages, sockets, ports, or custom processes.
+
+Elixir:
+
+```elixir
+send(pid, {:custom, payload})
+```
+
+Erlang:
+
+```erlang
+Pid ! {custom, Payload}.
+```
+
+| Use raw `send` when                                | Prefer OTP call/cast when |
+| -------------------------------------------------- | ------------------------- |
+| custom receive loop                                | ordinary server           |
+| timer/monitor/socket/port integration              | standard stateful server  |
+| educational low-level process                      | public application API    |
+| message protocol is intentionally public           | stable API needed         |
+| multiple message types outside GenServer call/cast | GenServer fits            |
+
+**Design meaning:** Raw `send` is powerful but exposes the mailbox directly. It should be used with protocol discipline.
+
+**Common Pitfall:** Raw messages from many modules can make process behavior impossible to audit.
+
+### Message Protocol Documentation Template
+
+For any nontrivial message protocol, document the message shapes.
+
+Example:
+
+```text
+Protocol: Worker
+
+Messages accepted by worker:
+
+1. {:work, job_id, payload}
+   Meaning: start processing a job.
+   job_id: stable ID used for deduplication and completion.
+   payload: validated job payload or raw payload to be parsed by worker.
+
+2. {:cancel, job_id}
+   Meaning: cancel pending job if not started.
+
+3. {:timeout, ref}
+   Meaning: internal timer event. Ignored if ref is stale.
+
+Messages sent by worker:
+
+1. {:job_done, job_id}
+2. {:job_failed, job_id, reason}
+3. {:job_discarded, job_id, reason}
+```
+
+**Design meaning:** Message protocols are APIs. APIs need documentation if more than one module or process depends on them.
+
+**Common Pitfall:** If the only documentation of a message protocol is scattered pattern matches, maintenance becomes difficult.
+
+### Message Protocol Testing
+
+Test process protocols through public APIs when possible.
+
+Elixir example:
+
+```elixir
+test "worker replies with job completion" do
+  ref = make_ref()
+  send(worker, {:work, self(), ref, %{id: 1\}\})
+
+  assert_receive {:job_done, ^ref, 1}, 1_000
+end
+```
+
+For `GenServer` public API:
+
+```elixir
+test "cache fetches stored value" do
+  {:ok, pid} = Cache.start_link([])
+
+  assert :ok = Cache.put(pid, :x, 1)
+  assert {:ok, 1} = Cache.fetch(pid, :x)
+end
+```
+
+| Test target       | Good test                                 |
+| ----------------- | ----------------------------------------- |
+| request-response  | assert correlated reply                   |
+| timeout           | assert timeout result                     |
+| stale timeout     | send stale timeout and assert ignored     |
+| monitor           | kill monitored process and assert cleanup |
+| overload          | assert rejection when queue full          |
+| unknown message   | assert logged/ignored/handled             |
+| poison message    | assert discard/dead-letter                |
+| duplicate message | assert idempotent behavior                |
+
+**Design meaning:** Protocol tests should cover concurrency-relevant cases: timeouts, stale messages, duplicate messages, process death, and overload.
+
+**Common Pitfall:** Testing only one happy-path message does not validate the protocol.
+
+### Protocol Anti-Pattern Table
+
+| Anti-pattern                                   | Failure mode                | Better pattern               |
+| ---------------------------------------------- | --------------------------- | ---------------------------- |
+| untagged messages                              | ambiguity                   | tagged tuple                 |
+| no reply reference                             | wrong/late reply match      | include `ref`                |
+| `cast` for must-succeed command                | no confirmation             | `call` or ack                |
+| mailbox as job queue                           | unbounded growth            | bounded queue/backpressure   |
+| raw tuples everywhere                          | protocol leakage            | public API wrapper           |
+| no timeout                                     | caller waits forever        | receive/call timeout         |
+| ignoring late replies                          | mailbox clutter             | ref-aware cleanup            |
+| no monitor handling                            | lost failure info           | handle `DOWN`                |
+| catch-all receive                              | consumes unrelated messages | specific patterns            |
+| huge payload messages                          | copying/memory pressure     | send ID/smaller payload      |
+| struct across nodes                            | version coupling            | versioned map/tuple          |
+| no job ID                                      | cannot dedupe/report        | include stable ID            |
+| no poison policy                               | restart loop                | discard/dead-letter          |
+| dynamic atom tags from input                   | atom table risk             | explicit mapping             |
+| public registered process accepts raw commands | capability leak             | API/authorization/validation |
+
+### Protocol Decision Table
+
+| Need                        | Message shape / tool                 |
+| --------------------------- | ------------------------------------ |
+| simple best-effort event    | `{:event, payload}`                  |
+| must get immediate result   | `GenServer.call` or request-response |
+| must know accepted/rejected | ack protocol                         |
+| final async result later    | completion protocol                  |
+| correlate response          | include `ref`                        |
+| observe process death       | monitor and handle `DOWN`            |
+| share process fate          | link or supervised child             |
+| schedule future work        | timer message with ref               |
+| avoid stale timeout         | state check by ref/request ID        |
+| prevent overload            | `call`, bounded queue, demand, pool  |
+| dynamic process lookup      | `Registry` / `:via` tuple            |
+| cross-version boundary      | include version                      |
+| long-lived event            | versioned map payload                |
+| external/untrusted message  | parser/validator                     |
+| broadcast                   | PubSub event with topic              |
+| job processing              | job ID + attempt + payload           |
+
+### Appendix E Summary
+
+BEAM messages are flexible because they are ordinary terms. That flexibility requires protocol discipline.
+
+The practical rules are:
+
+```text
+Tag messages.
+Use references for request-response.
+Use sender PID only when replies are needed.
+Use acknowledgement when acceptance matters.
+Use completion messages when async work must report final result.
+Use monitors for process death.
+Use timer refs or request IDs for stale timeout handling.
+Use versioning across long-lived or distributed boundaries.
+Do not treat mailboxes as unlimited queues.
+Wrap raw message tuples in public APIs.
+```
+
+The most important low-level request-response shape is:
+
+```elixir
+{:request, from, ref, payload}
+{:reply, ref, result}
+```
+
+and in Erlang:
+
+```erlang
+{request, From, Ref, Payload}
+{reply, Ref, Result}
+```
+
+The most important professional distinction is:
+
+```text
+Sending a message is not the same as completing work.
+Accepting a message is not the same as completing work.
+Timing out is not the same as canceling remote work.
+Restarting a process is not the same as recovering a protocol.
+```
+
+A well-designed message protocol makes these states explicit.
+## Appendix F — Supervision Tree Design Cookbook
+
+### Appendix Scope — designing runtime recovery structures
+
+This appendix explains how to design supervision trees for Erlang / Elixir systems. It is not only a syntax reference. The main question is:
+
+```text
+Given a group of runtime components, how should they be started, stopped, restarted, isolated, and discovered?
+```
+
+A supervision tree is a runtime architecture. It defines process lifecycle, restart scope, dependency order, and failure containment.
+
+The central rule is:
+
+```text
+A supervisor restarts processes.
+It does not restore unsaved state, undo side effects, validate input,
+deduplicate jobs, or decide business retry policy.
+```
+
+| Design question                             | Supervision concern                           |
+| ------------------------------------------- | --------------------------------------------- |
+| Which processes start with the application? | root supervisor children                      |
+| Which processes start dynamically?          | dynamic supervisor                            |
+| Which processes depend on each other?       | child order and restart strategy              |
+| Which failures should be isolated?          | subtree boundaries                            |
+| Which failures should escalate?             | restart intensity                             |
+| Which state must survive restart?           | persistence or rebuild logic                  |
+| Which process names must be discoverable?   | `Registry`, registered names, `:via` tuples   |
+| Which resources need owners?                | socket, port, ETS, connection, worker process |
+| Which children are temporary?               | `:temporary` / `temporary`                    |
+| Which workers may finish normally?          | `:transient` / `transient`                    |
+
+### Basic Supervision Vocabulary
+
+| Concept            | Meaning                                                  |
+| ------------------ | -------------------------------------------------------- |
+| Supervisor         | Process that starts, monitors, and restarts children     |
+| Child              | Process started under a supervisor                       |
+| Worker             | Ordinary child process                                   |
+| Supervisor child   | Child that is itself another supervisor                  |
+| Root supervisor    | Top-level supervisor started by application              |
+| Supervision tree   | Nested supervisors and workers                           |
+| Child spec         | Data describing how to start/restart/stop a child        |
+| Restart strategy   | Which siblings restart when one child dies               |
+| Restart type       | Whether a child restarts after normal/abnormal exit      |
+| Restart intensity  | How many restarts are allowed before supervisor gives up |
+| Shutdown timeout   | How long child has to terminate gracefully               |
+| Dynamic supervisor | Supervisor whose children are started at runtime         |
+
+Elixir root application example:
+
+```elixir
+defmodule MyApp.Application do
+  use Application
+
+  @impl true
+  def start(_type, _args) do
+    children = [
+      MyApp.Cache,
+      {Registry, keys: :unique, name: MyApp.Registry},
+      {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+    ]
+
+    Supervisor.start_link(children,
+      strategy: :one_for_one,
+      name: MyApp.Supervisor
+    )
+  end
+end
+```
+
+Erlang supervisor example:
+
+```erlang
+init([]) ->
+    Children = [
+        #{id => cache,
+          start => {cache, start_link, []},
+          restart => permanent,
+          shutdown => 5000,
+          type => worker,
+          modules => [cache]}
+    ],
+    {ok, {{one_for_one, 5, 10}, Children}}.
+```
+
+**Design meaning:** Supervision is not only “restart on crash.” It is runtime topology.
+
+### Restart Strategy Cookbook
+
+A restart strategy defines what happens to siblings when one child fails.
+
+| Strategy           | Erlang               | Elixir                                            | Use when                                               |
+| ------------------ | -------------------- | ------------------------------------------------- | ------------------------------------------------------ |
+| One-for-one        | `one_for_one`        | `:one_for_one`                                    | children are independent                               |
+| One-for-all        | `one_for_all`        | `:one_for_all`                                    | children are tightly coupled and must restart together |
+| Rest-for-one       | `rest_for_one`       | `:rest_for_one`                                   | later children depend on earlier children              |
+| Simple-one-for-one | older Erlang pattern | usually replaced by `DynamicSupervisor` in Elixir | many similar dynamic children                          |
+
+### `one_for_one` — independent children
+
+Use `one_for_one` when child processes do not depend on each other’s runtime state.
+
+Elixir:
+
+```elixir
+children = [
+  MyApp.Cache,
+  MyApp.MetricsReporter,
+  MyApp.SessionCleaner
+]
+
+Supervisor.start_link(children, strategy: :one_for_one)
+```
+
+If `MyApp.Cache` crashes, only `MyApp.Cache` restarts.
+
+| Good fit                        | Poor fit                                   |
+| ------------------------------- | ------------------------------------------ |
+| independent background services | tightly coupled pipeline stages            |
+| cache + metrics + cleaner       | children with shared in-memory dependency  |
+| separate clients                | later child depends on earlier child state |
+| independent workers             | all children must reset together           |
+
+**Common Pitfall:** `one_for_one` is the default mental model, but it is not always correct. If child B depends on child A’s state, restarting only B or only A may create inconsistent runtime state.
+
+### `one_for_all` — tightly coupled children
+
+Use `one_for_all` when all children should be restarted if any one of them fails.
+
+Example scenario:
+
+```text
+Connection process
+Protocol state process
+Buffer manager
+```
+
+If one fails, all should restart because their states are mutually dependent.
+
+Elixir:
+
+```elixir
+Supervisor.start_link(children, strategy: :one_for_all)
+```
+
+| Good fit                                 | Poor fit                          |
+| ---------------------------------------- | --------------------------------- |
+| tightly coupled stateful components      | mostly independent services       |
+| small subsystem that must reset together | large application root supervisor |
+| components sharing volatile state        | unrelated infrastructure          |
+| protocol stack with shared assumptions   | high-traffic independent workers  |
+
+**Design meaning:** `one_for_all` deliberately expands the failure scope.
+
+**Common Pitfall:** Using `one_for_all` at a large root level can turn a small child failure into a full application subsystem restart.
+
+### `rest_for_one` — dependency order matters
+
+Use `rest_for_one` when later children depend on earlier children. If a child fails, it and all children started after it are restarted.
+
+Example:
+
+```text
+1. Registry
+2. DynamicSupervisor using Registry names
+3. Worker manager depending on both
+```
+
+If `Registry` dies, the later children should restart. If `Worker manager` dies, the earlier registry does not need to restart.
+
+Elixir:
+
+```elixir
+children = [
+  {Registry, keys: :unique, name: MyApp.Registry},
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor},
+  MyApp.WorkerManager
+]
+
+Supervisor.start_link(children, strategy: :rest_for_one)
+```
+
+| Good fit                                 | Poor fit                      |
+| ---------------------------------------- | ----------------------------- |
+| ordered runtime dependencies             | no dependency order           |
+| registry before workers                  | unrelated services            |
+| connection before protocol user          | all children mutually coupled |
+| shared resource before dependent process | dynamic independent children  |
+
+**Design meaning:** Start order becomes dependency order.
+
+**Common Pitfall:** `rest_for_one` is only useful if child order actually encodes dependency. Random ordering makes restart behavior confusing.
+
+### Restart Type Cookbook
+
+Restart type defines whether a child restarts after termination.
+
+| Restart type          | Erlang      | Elixir       | Behavior                                                   |
+| --------------------- | ----------- | ------------ | ---------------------------------------------------------- |
+| Always restart        | `permanent` | `:permanent` | restarts after normal or abnormal termination              |
+| Restart abnormal only | `transient` | `:transient` | restarts after abnormal termination, not normal completion |
+| Never restart         | `temporary` | `:temporary` | never restarts                                             |
+
+| Process role                            | Recommended restart type     |
+| --------------------------------------- | ---------------------------- |
+| root infrastructure server              | `:permanent`                 |
+| registry                                | `:permanent`                 |
+| cache owner                             | `:permanent`                 |
+| database pool                           | `:permanent`                 |
+| connection listener                     | `:permanent`                 |
+| one-off job worker                      | `:transient` or `:temporary` |
+| task child                              | usually `:temporary`         |
+| session process                         | depends on semantics         |
+| import process that may finish normally | `:transient`                 |
+| fire-and-forget background task         | `:temporary`                 |
+
+Elixir child spec:
+
+```elixir
+%{
+  id: MyApp.ImportWorker,
+  start: {MyApp.ImportWorker, :start_link, [arg]},
+  restart: :transient,
+  shutdown: 5_000,
+  type: :worker
+}
+```
+
+**Design meaning:** Restart type expresses whether process death is normal or abnormal for that role.
+
+**Common Pitfall:** Marking a finite worker `:permanent` causes it to restart after successful completion.
+
+### Child Spec Cookbook
+
+A child spec is the supervisor’s instruction manual for a child process.
+
+Elixir:
+
+```elixir
+%{
+  id: MyApp.Worker,
+  start: {MyApp.Worker, :start_link, [arg]},
+  restart: :permanent,
+  shutdown: 5_000,
+  type: :worker,
+  modules: [MyApp.Worker]
+}
+```
+
+Erlang:
+
+```erlang
+#{id => worker,
+  start => {worker, start_link, [Arg]},
+  restart => permanent,
+  shutdown => 5000,
+  type => worker,
+  modules => [worker]}
+```
+
+| Field      | Meaning                                              |
+| ---------- | ---------------------------------------------------- |
+| `id`       | unique child identity under supervisor               |
+| `start`    | `{module, function, args}` used to start child       |
+| `restart`  | restart policy                                       |
+| `shutdown` | graceful shutdown timeout or strategy                |
+| `type`     | `:worker` / `worker` or `:supervisor` / `supervisor` |
+| `modules`  | callback modules implemented by child                |
+
+**Professional rule:** Child IDs should be stable and meaningful. Dynamic children need unique IDs only where the supervisor requires them; dynamic identity often belongs in `Registry` rather than child ID alone.
+
+### Root Supervisor Pattern — application-level runtime structure
+
+Use a root supervisor to start the permanent infrastructure of an OTP application.
+
+Typical Elixir structure:
+
+```elixir
+defmodule MyApp.Application do
+  use Application
+
+  @impl true
+  def start(_type, _args) do
+    children = [
+      MyApp.Telemetry,
+      MyApp.Repo,
+      {Registry, keys: :unique, name: MyApp.Registry},
+      {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor},
+      MyApp.Cache
+    ]
+
+    Supervisor.start_link(children,
+      strategy: :one_for_one,
+      name: MyApp.Supervisor
+    )
+  end
+end
+```
+
+| Root supervisor should include | Usually avoid                      |
+| ------------------------------ | ---------------------------------- |
+| permanent infrastructure       | one-off jobs                       |
+| registries                     | request-specific processes         |
+| database pools                 | passive domain data                |
+| caches                         | temporary tasks without supervisor |
+| listeners                      | ad hoc raw `spawn`                 |
+| dynamic supervisors            | business logic functions           |
+| telemetry/reporters            | user input validation modules      |
+
+**Design meaning:** Root supervisor defines application lifecycle. If it matters to the running application, it should usually be under the supervision tree.
+
+**Common Pitfall:** Starting important processes manually from random modules creates orphan processes that are not restarted or shut down cleanly.
+
+### Static Services Pattern
+
+Use static supervised children for services that should exist for the entire application lifecycle.
+
+Examples:
+
+| Static service     | Why static                  |
+| ------------------ | --------------------------- |
+| cache process      | always available            |
+| registry           | needed for lookup           |
+| telemetry reporter | application-wide            |
+| database repo/pool | infrastructure              |
+| PubSub system      | application-wide            |
+| socket listener    | accepts connections         |
+| cleanup scheduler  | periodic background service |
+
+Elixir:
+
+```elixir
+children = [
+  MyApp.Cache,
+  MyApp.SessionCleaner,
+  MyApp.MetricsReporter
+]
+
+Supervisor.start_link(children, strategy: :one_for_one)
+```
+
+**Design meaning:** Static children are part of the app’s fixed runtime skeleton.
+
+**Common Pitfall:** Do not put request-specific or job-specific workers into the static root child list. Use dynamic supervision.
+
+### Dynamic Worker Pattern — `DynamicSupervisor` + `Registry`
+
+Use this pattern when workers are created and stopped at runtime.
+
+Root children:
+
+```elixir
+children = [
+  {Registry, keys: :unique, name: MyApp.WorkerRegistry},
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+]
+```
+
+Worker name:
+
+```elixir
+def via_tuple(id) do
+  {:via, Registry, {MyApp.WorkerRegistry, id}}
+end
+```
+
+Worker start:
+
+```elixir
+def start_link(opts) do
+  id = Keyword.fetch!(opts, :id)
+  GenServer.start_link(__MODULE__, opts, name: via_tuple(id))
+end
+```
+
+Manager API:
+
+```elixir
+def start_worker(id, arg) do
+  child_spec = {MyApp.Worker, id: id, arg: arg}
+  DynamicSupervisor.start_child(MyApp.WorkerSupervisor, child_spec)
+end
+```
+
+| Use dynamic workers when           | Avoid dynamic workers when             |
+| ---------------------------------- | -------------------------------------- |
+| runtime population changes         | data is passive                        |
+| each worker owns state/lifecycle   | only simple calculation needed         |
+| each worker may fail independently | all work can run in one process safely |
+| process identity matters           | no process discovery needed            |
+| workers need supervision           | one-off pure function call             |
+
+**Design meaning:** Dynamic supervision is for active runtime components, not for every row, user, or object.
+
+**Common Pitfall:** A dynamic worker per passive database row usually wastes memory and process overhead.
+
+### Session Process Pattern
+
+A session process represents an active user/device/game/socket/session lifecycle.
+
+```text
+RootSupervisor
+  ├── Registry
+  └── SessionSupervisor
+        ├── Session(user-1)
+        ├── Session(user-2)
+        └── Session(user-3)
+```
+
+Session child spec:
+
+```elixir
+%{
+  id: {MyApp.Session, session_id},
+  start: {MyApp.Session, :start_link, [[id: session_id]]},
+  restart: :transient,
+  shutdown: 5_000,
+  type: :worker
+}
+```
+
+| Session decision     | Question                             |
+| -------------------- | ------------------------------------ |
+| Restart after crash? | Should session recover or terminate? |
+| State persistence?   | Is state reconstructable?            |
+| Registry key?        | session ID, user ID, device ID?      |
+| Shutdown?            | logout, timeout, disconnect          |
+| Timeout?             | idle session cleanup                 |
+| Duplicate session?   | reject, replace, or allow multiple?  |
+| Distribution?        | local node only or cluster-wide?     |
+
+**Design meaning:** A session process is appropriate when the session is active runtime behavior, not merely a record.
+
+**Common Pitfall:** Restarting a crashed session may be wrong if the external client has disconnected and state is no longer valid.
+
+### Task Supervisor Pattern
+
+Use `Task.Supervisor` for temporary concurrent work that should still be supervised.
+
+Root:
+
+```elixir
+children = [
+  {Task.Supervisor, name: MyApp.TaskSupervisor}
+]
+```
+
+Start task:
+
+```elixir
+Task.Supervisor.async_nolink(MyApp.TaskSupervisor, fn ->
+  do_work()
+end)
+```
+
+Controlled result:
+
+```elixir
+task = Task.Supervisor.async_nolink(MyApp.TaskSupervisor, fn ->
+  do_work()
+end)
+
+case Task.yield(task, 5_000) || Task.shutdown(task) do
+  {:ok, result} -> {:ok, result}
+  {:exit, reason} -> {:error, {:task_failed, reason}}
+  nil -> {:error, :timeout}
+end
+```
+
+| Use Task Supervisor when       | Prefer GenServer/DynamicSupervisor when |
+| ------------------------------ | --------------------------------------- |
+| work is temporary              | worker has long-lived state             |
+| result may be awaited          | process has ongoing protocol            |
+| failure should be isolated     | process must be named/discovered        |
+| many tasks need supervision    | worker lifecycle is complex             |
+| no persistent process identity | child should restart after crash        |
+
+**Design meaning:** Tasks are good for concurrent work. They are not stateful services.
+
+**Common Pitfall:** Starting unbounded tasks can overload schedulers, databases, HTTP services, or rate-limited APIs.
+
+### Cache Service Pattern
+
+A cache can be supervised as a process, ETS owner, or both.
+
+Simple GenServer cache:
+
+```elixir
+children = [
+  MyApp.Cache
+]
+```
+
+ETS-owner cache:
+
+```elixir
+defmodule MyApp.Cache do
+  use GenServer
+
+  @table __MODULE__
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+  end
+
+  def lookup(key) do
+    case :ets.lookup(@table, key) do
+      [{^key, value}] -> {:ok, value}
+      [] -> :error
+    end
+  end
+
+  def put(key, value) do
+    :ets.insert(@table, {key, value})
+    :ok
+  end
+
+  @impl true
+  def init(_opts) do
+    :ets.new(@table, [:named_table, :protected, read_concurrency: true])
+    {:ok, %{}}
+  end
+end
+```
+
+| Cache design                | Supervision implication            |
+| --------------------------- | ---------------------------------- |
+| process state cache         | restart loses state unless rebuilt |
+| ETS table owned by process  | owner restart recreates table      |
+| persistent cache            | external store needed              |
+| read-heavy cache            | ETS often better                   |
+| write-heavy invariant cache | GenServer may be better            |
+| startup warm cache          | use `handle_continue`              |
+| optional cache              | misses should fetch source         |
+
+**Design meaning:** A supervised cache restarts, but its contents may not survive restart unless explicitly persisted or rebuilt.
+
+**Common Pitfall:** Do not assume cache restart is transparent if callers depend on warm cache state.
+
+### ETS Owner Pattern
+
+Use a supervised process to own an ETS table lifecycle.
+
+```text
+Supervisor
+  └── TableOwner
+        └── ETS table
+```
+
+Elixir:
+
+```elixir
+defmodule MyApp.TableOwner do
+  use GenServer
+
+  @table __MODULE__
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+  end
+
+  @impl true
+  def init(_opts) do
+    :ets.new(@table, [:named_table, :protected])
+    {:ok, %{}}
+  end
+end
+```
+
+| ETS owner responsibility  | Reason              |
+| ------------------------- | ------------------- |
+| create table              | lifecycle           |
+| choose access mode        | safety              |
+| document schema           | correctness         |
+| rebuild after restart     | recovery            |
+| expose API or allow reads | boundary            |
+| clean up on termination   | resource discipline |
+
+**Design meaning:** ETS table ownership should be explicit. The owner process is part of the supervision tree because the table lifecycle matters.
+
+**Common Pitfall:** If the ETS owner dies, the table may disappear. All code using the table must tolerate that or be restarted with the owner.
+
+### TCP Server Pattern
+
+A TCP system often has a listener/acceptor and one process per connection.
+
+```text
+RootSupervisor
+  ├── Listener
+  └── ConnectionSupervisor
+        ├── Connection(socket-1)
+        ├── Connection(socket-2)
+        └── Connection(socket-3)
+```
+
+Elixir root:
+
+```elixir
+children = [
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.ConnectionSupervisor},
+  MyApp.Listener
+]
+```
+
+Listener starts connection child when accepting socket:
+
+```elixir
+DynamicSupervisor.start_child(
+  MyApp.ConnectionSupervisor,
+  {MyApp.Connection, socket: socket}
+)
+```
+
+Connection owns socket:
+
+```elixir
+def init(opts) do
+  socket = Keyword.fetch!(opts, :socket)
+  {:ok, %{socket: socket, buffer: <<>>}}
+end
+```
+
+| TCP component      | Supervision decision                  |
+| ------------------ | ------------------------------------- |
+| listener           | permanent                             |
+| acceptor pool      | permanent or supervised group         |
+| connection process | usually temporary/transient           |
+| socket owner       | connection process                    |
+| parser             | pure module or connection-owned state |
+| connection crash   | close socket, maybe no restart        |
+| listener crash     | restart                               |
+| overload           | limit acceptors/connections           |
+
+**Design meaning:** Connection processes often should not restart after normal disconnect. A crashed connection may simply close.
+
+**Common Pitfall:** Marking connection children `:permanent` can restart connections after disconnect even though the socket is gone.
+
+### External Client Pool Pattern
+
+External resources often need supervised clients or pools.
+
+```text
+RootSupervisor
+  ├── DatabaseRepo / Pool
+  ├── HTTPClientPool
+  └── BillingClientSupervisor
+```
+
+| Client type              | Supervision concern         |
+| ------------------------ | --------------------------- |
+| database pool            | permanent infrastructure    |
+| HTTP connection pool     | permanent infrastructure    |
+| external command port    | supervised owner            |
+| long-lived socket client | reconnect policy            |
+| API rate limiter         | stateful supervised process |
+| circuit breaker          | supervised state owner      |
+
+Example:
+
+```elixir
+children = [
+  MyApp.Repo,
+  {Finch, name: MyApp.Finch},
+  MyApp.BillingRateLimiter
+]
+```
+
+**Design meaning:** External service integration is not only a function call. It may involve pools, sockets, retries, metrics, and supervised resources.
+
+**Common Pitfall:** Restarting a client process does not mean the external service has recovered. Use backoff and circuit-breaking where needed.
+
+### Port Owner Pattern
+
+A port communicates with an external OS process. It needs an owner.
+
+```text
+Supervisor
+  └── PortOwner
+        └── external OS process
+```
+
+Elixir conceptual:
+
+```elixir
+def init(opts) do
+  port =
+    Port.open({:spawn_executable, Keyword.fetch!(opts, :path)}, [
+      :binary,
+      args: Keyword.get(opts, :args, []),
+      packet: 4
+    ])
+
+  {:ok, %{port: port}}
+end
+```
+
+Handle port messages:
+
+```elixir
+def handle_info({port, {:data, data}}, %{port: port} = state) do
+  handle_data(data, state)
+end
+
+def handle_info({port, {:exit_status, status}}, %{port: port} = state) do
+  {:stop, {:port_exit, status}, state}
+end
+```
+
+| Port decision       | Question                            |
+| ------------------- | ----------------------------------- |
+| Restart port owner? | Should external process restart?    |
+| Protocol framing?   | How are messages delimited?         |
+| Crash handling?     | What does exit status mean?         |
+| Shutdown?           | How to close/kill external process? |
+| Backpressure?       | What if port is slow?               |
+| Security?           | Are path/args trusted?              |
+
+**Design meaning:** Ports isolate the BEAM from native crashes better than NIFs, but require process supervision and protocol design.
+
+**Common Pitfall:** A restarted port owner may start a new OS process and lose in-flight protocol state.
+
+### Job Processing Pattern
+
+A job processing system needs supervision plus queue semantics.
+
+```text
+RootSupervisor
+  ├── JobQueue
+  ├── JobSupervisor
+  └── JobProducer / Scheduler
+```
+
+Possible architecture:
+
+| Component           | Role                           |
+| ------------------- | ------------------------------ |
+| queue               | stores pending jobs            |
+| producer            | pulls jobs from storage/broker |
+| worker supervisor   | supervises worker processes    |
+| worker              | performs one job or job loop   |
+| retry policy        | decides retry/backoff          |
+| dead-letter handler | handles poison jobs            |
+| telemetry           | observes throughput/failure    |
+
+Worker child spec may be `:temporary` if each worker handles one job and exits.
+
+```elixir
+%{
+  id: {MyApp.JobWorker, job.id},
+  start: {MyApp.JobWorker, :start_link, [job]},
+  restart: :temporary,
+  shutdown: 30_000,
+  type: :worker
+}
+```
+
+| Job failure            | Supervision is enough? | Additional policy   |
+| ---------------------- | ---------------------: | ------------------- |
+| worker process crashes |                 partly | retry/dead-letter   |
+| invalid job payload    |                     no | discard/dead-letter |
+| external timeout       |                     no | retry/backoff       |
+| duplicate side effect  |                     no | idempotency         |
+| queue unavailable      |                     no | backoff/alert       |
+| repeated job failure   |                     no | max attempts        |
+
+**Design meaning:** Supervision keeps worker infrastructure alive. Job correctness belongs to job policy.
+
+**Common Pitfall:** Restarting a worker is not the same as retrying a job safely.
+
+### PubSub Pattern
+
+A PubSub system may use a library, registry, ETS, or custom process.
+
+Simple local architecture:
+
+```text
+RootSupervisor
+  ├── PubSubServer
+  └── Subscriber processes
+```
+
+Better for larger systems:
+
+```text
+RootSupervisor
+  ├── Registry / PubSub library
+  └── Topic/Subscription management
+```
+
+| PubSub concern      | Supervision design                 |
+| ------------------- | ---------------------------------- |
+| subscriber death    | monitor and remove                 |
+| PubSub server crash | restart and rebuild subscriptions? |
+| subscription state  | process state or ETS               |
+| broadcast overload  | backpressure/drop policy           |
+| distributed PubSub  | cluster-aware library              |
+| event shape         | versioned if public                |
+
+**Design meaning:** PubSub supervision must address subscription recovery. If all subscription state is in a single process and it crashes, subscriptions may be lost unless rebuilt.
+
+**Common Pitfall:** A simple PubSub process can become a central bottleneck or lose all state on restart.
+
+### Rate Limiter Pattern
+
+A rate limiter is often a supervised stateful component.
+
+Options:
+
+| Storage         | Supervision implication                  |
+| --------------- | ---------------------------------------- |
+| GenServer state | simple, serialized, possible bottleneck  |
+| ETS             | shared reads/writes, owner needed        |
+| external store  | distributed, external failure handling   |
+| per-key process | only if keys are active runtime entities |
+
+Example:
+
+```text
+RootSupervisor
+  └── RateLimiter
+```
+
+or:
+
+```text
+RootSupervisor
+  ├── RateLimiterTableOwner
+  └── RateLimiterCleaner
+```
+
+| Decision              | Question                                    |
+| --------------------- | ------------------------------------------- |
+| local or distributed? | one node or cluster-wide?                   |
+| algorithm             | fixed window, sliding window, token bucket? |
+| cleanup               | remove old keys?                            |
+| restart               | lose counters or rebuild?                   |
+| overload              | can limiter itself bottleneck?              |
+
+**Design meaning:** A supervised local rate limiter may lose state on restart. That may be acceptable or unacceptable depending on domain.
+
+**Common Pitfall:** Distributed rate limits cannot be enforced correctly by isolated local supervisors alone.
+
+### Periodic Worker Pattern
+
+A periodic worker performs scheduled recurring work.
+
+Elixir:
+
+```elixir
+defmodule MyApp.Cleaner do
+  use GenServer
+
+  @interval 60_000
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+  end
+
+  @impl true
+  def init(_opts) do
+    schedule()
+    {:ok, %{}}
+  end
+
+  @impl true
+  def handle_info(:tick, state) do
+    run_cleanup()
+    schedule()
+    {:noreply, state}
+  end
+
+  defp schedule do
+    Process.send_after(self(), :tick, @interval)
+  end
+end
+```
+
+Supervise as permanent:
+
+```elixir
+children = [
+  MyApp.Cleaner
+]
+```
+
+| Periodic worker concern | Design rule                                      |
+| ----------------------- | ------------------------------------------------ |
+| crash during work       | supervisor restarts worker                       |
+| duplicate work          | use idempotency if needed                        |
+| long work               | consider Task or separate worker                 |
+| interval drift          | schedule before/after depending desired behavior |
+| overlap                 | prevent concurrent runs                          |
+| external failure        | retry/backoff                                    |
+| shutdown                | handle in-flight work                            |
+
+**Design meaning:** Periodic work is process behavior. It belongs under supervision if it matters.
+
+**Common Pitfall:** Running long work directly inside the periodic GenServer blocks it from handling other messages.
+
+### Pipeline Supervision Pattern
+
+A processing pipeline may have multiple stages.
+
+```text
+RootSupervisor
+  └── PipelineSupervisor
+        ├── Source
+        ├── Parser
+        ├── Processor
+        └── Sink
+```
+
+Strategy choice:
+
+| Dependency                            | Strategy                   |
+| ------------------------------------- | -------------------------- |
+| stages independent and reconnectable  | `one_for_one`              |
+| all stages share volatile state       | `one_for_all`              |
+| later stages depend on earlier stages | `rest_for_one`             |
+| dynamic workers per stage             | nested dynamic supervisors |
+
+**Design meaning:** Supervision strategy should reflect dataflow dependency.
+
+**Common Pitfall:** If a downstream sink fails and upstream keeps producing unbounded data, supervision alone will not save the system. Backpressure is required.
+
+### Nested Supervisor Pattern
+
+Use nested supervisors to isolate failure domains.
+
+```text
+RootSupervisor
+  ├── WebSupervisor
+  │     ├── Endpoint
+  │     └── PubSub
+  ├── WorkerSupervisor
+  │     ├── Queue
+  │     └── DynamicWorkerSupervisor
+  └── InfrastructureSupervisor
+        ├── Repo
+        └── Cache
+```
+
+| Subtree              | Failure boundary      |
+| -------------------- | --------------------- |
+| web                  | web request handling  |
+| workers              | background processing |
+| infrastructure       | shared services       |
+| external integration | clients/pools         |
+| connection handling  | sockets/sessions      |
+
+**Design meaning:** Nested supervisors prevent a small subsystem failure from automatically becoming a whole-application failure unless escalation is appropriate.
+
+**Common Pitfall:** A flat root supervisor with many unrelated children makes restart relationships harder to reason about.
+
+### Registry Placement Pattern
+
+A registry must start before processes that register with it.
+
+Good with `rest_for_one`:
+
+```elixir
+children = [
+  {Registry, keys: :unique, name: MyApp.Registry},
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+]
+
+Supervisor.start_link(children, strategy: :rest_for_one)
+```
+
+| Registry concern        | Design rule                                          |
+| ----------------------- | ---------------------------------------------------- |
+| used by dynamic workers | start registry before dynamic supervisor             |
+| registry crash          | registered workers may need restart                  |
+| unique keys             | one process per key                                  |
+| duplicate keys          | use duplicate registry                               |
+| distributed registry    | local Registry is not enough                         |
+| process discovery       | Registry is live-process lookup, not durable storage |
+
+**Design meaning:** Registry and registered workers often form a dependency group. If registry dies, workers may need to restart or re-register.
+
+**Common Pitfall:** Starting workers before the registry causes registration failures.
+
+### State Recovery Pattern
+
+Every supervised process with meaningful state needs a recovery answer.
+
+| State type              | Recovery strategy                |
+| ----------------------- | -------------------------------- |
+| cache                   | start empty or warm from source  |
+| registry entries        | re-register on worker restart    |
+| session                 | reconnect, terminate, or restore |
+| job in progress         | queue retry/checkpoint           |
+| ETS table               | recreate and repopulate          |
+| external connection     | reconnect                        |
+| file/port resource      | reopen                           |
+| critical business state | persist before acknowledgment    |
+
+Example:
+
+```elixir
+@impl true
+def init(opts) do
+  state =
+    case load_snapshot(opts) do
+      {:ok, snapshot} -> restore(snapshot)
+      {:error, :not_found} -> fresh_state()
+    end
+
+  {:ok, state}
+end
+```
+
+**Design meaning:** A restart gives a new process. It does not give old state unless the new process reconstructs it.
+
+**Common Pitfall:** Storing critical state only in a process makes restart lose that state.
+
+### Shutdown Pattern
+
+Shutdown behavior should match resource and work semantics.
+
+| Child type                      | Shutdown setting                           |
+| ------------------------------- | ------------------------------------------ |
+| ordinary worker needing cleanup | timeout such as `5_000`                    |
+| worker needing longer cleanup   | larger timeout                             |
+| worker safe to kill immediately | `:brutal_kill` with care                   |
+| supervisor child                | `:infinity` sometimes used for supervisors |
+| job worker                      | enough time to finish or checkpoint        |
+| socket connection               | close gracefully                           |
+| port owner                      | close external process                     |
+
+Elixir child spec:
+
+```elixir
+%{
+  id: MyApp.Worker,
+  start: {MyApp.Worker, :start_link, []},
+  shutdown: 10_000
+}
+```
+
+**Design meaning:** Shutdown is part of lifecycle correctness. It decides whether in-flight work can finish or must be interrupted.
+
+**Common Pitfall:** Default shutdown time may be wrong for long-running cleanup or external resource closure.
+
+### Restart Intensity Pattern
+
+Restart intensity prevents infinite crash loops.
+
+Elixir:
+
+```elixir
+Supervisor.start_link(children,
+  strategy: :one_for_one,
+  max_restarts: 5,
+  max_seconds: 10
+)
+```
+
+Erlang:
+
+```erlang
+{ok, {{one_for_one, 5, 10}, Children}}.
+```
+
+| Restart symptom            | Interpretation        |
+| -------------------------- | --------------------- |
+| occasional restart         | normal fault recovery |
+| repeated restart           | crash loop            |
+| supervisor gives up        | intensity exceeded    |
+| parent restarts supervisor | escalation            |
+| repeated escalation        | systemic failure      |
+
+**Design meaning:** Escalation is a feature. It prevents broken children from restarting forever silently.
+
+**Common Pitfall:** Raising restart intensity to hide crash loops usually delays diagnosis.
+
+### Supervision and Backpressure
+
+Supervision does not provide backpressure.
+
+| Problem                    | Supervision result       | Needed additionally      |
+| -------------------------- | ------------------------ | ------------------------ |
+| worker mailbox flooded     | worker may crash/restart | bounded queue/demand     |
+| external API overloaded    | workers may fail         | rate limiting/pool       |
+| database pool exhausted    | calls timeout            | pool sizing/backpressure |
+| PubSub subscriber slow     | subscriber mailbox grows | drop policy/monitoring   |
+| producer too fast          | consumers lag            | demand protocol          |
+| job retries too aggressive | repeated failures        | backoff                  |
+
+**Design meaning:** Supervisors handle process failure. Backpressure handles overload.
+
+**Common Pitfall:** Restarting overloaded workers can make overload worse if producers keep sending.
+
+### Supervision and Idempotency
+
+If a child performs side effects, restart can duplicate them unless idempotency exists.
+
+| Side effect          | Idempotency strategy      |
+| -------------------- | ------------------------- |
+| payment              | idempotency key           |
+| email                | send log / dedupe key     |
+| database insert      | unique constraint         |
+| file write           | temp file + atomic rename |
+| event publish        | event ID                  |
+| job completion       | job state transition      |
+| external API command | request ID                |
+
+**Design meaning:** Supervision cannot infer whether repeating an operation is safe.
+
+**Common Pitfall:** A worker crash after side effect but before acknowledgment is a classic duplicate-effect bug.
+
+### Supervision Tree Design Examples
+
+#### Example 1 — Simple Application
+
+```text
+MyApp.Supervisor
+  ├── MyApp.Repo
+  ├── MyApp.Cache
+  └── MyApp.Cleaner
+```
+
+Use:
+
+```elixir
+children = [
+  MyApp.Repo,
+  MyApp.Cache,
+  MyApp.Cleaner
+]
+
+Supervisor.start_link(children, strategy: :one_for_one)
+```
+
+Good when children are independent.
+
+#### Example 2 — Dynamic Workers
+
+```text
+MyApp.Supervisor
+  ├── MyApp.WorkerRegistry
+  └── MyApp.WorkerSupervisor
+        ├── Worker(a)
+        ├── Worker(b)
+        └── Worker(c)
+```
+
+Use:
+
+```elixir
+children = [
+  {Registry, keys: :unique, name: MyApp.WorkerRegistry},
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+]
+```
+
+Good when workers are created at runtime.
+
+#### Example 3 — TCP Server
+
+```text
+MyApp.Supervisor
+  ├── MyApp.ConnectionSupervisor
+  └── MyApp.Listener
+        └── accepts socket
+              ↓
+            ConnectionSupervisor starts Connection
+```
+
+Good when each connection has independent lifecycle.
+
+#### Example 4 — Job System
+
+```text
+MyApp.Supervisor
+  ├── MyApp.JobQueue
+  ├── MyApp.JobProducer
+  └── MyApp.JobWorkerSupervisor
+        ├── JobWorker(job-1)
+        ├── JobWorker(job-2)
+        └── JobWorker(job-3)
+```
+
+Requires retry, dead-letter, idempotency, and observability beyond supervision.
+
+#### Example 5 — Ordered Dependency Group
+
+```text
+SubsystemSupervisor strategy: rest_for_one
+  ├── Registry
+  ├── DynamicSupervisor
+  └── Manager
+```
+
+If `Registry` fails, all later children restart. If `Manager` fails, registry and dynamic supervisor remain.
+
+### Supervision Tree Review Checklist
+
+| Question                                                   | Why it matters          |
+| ---------------------------------------------------------- | ----------------------- |
+| Does every important long-lived process have a supervisor? | orphan prevention       |
+| Are static and dynamic children separated?                 | lifecycle clarity       |
+| Is restart strategy aligned with dependency structure?     | failure correctness     |
+| Is restart type aligned with child role?                   | avoid unwanted restarts |
+| Is restart intensity reasonable?                           | crash-loop escalation   |
+| Is state recovery defined?                                 | restart correctness     |
+| Are external side effects idempotent?                      | duplicate prevention    |
+| Are dynamic children discoverable if needed?               | process lookup          |
+| Is `Registry` started before registered children?          | startup correctness     |
+| Are shutdown timeouts appropriate?                         | graceful termination    |
+| Are backpressure mechanisms present?                       | overload safety         |
+| Are job retries separate from process restarts?            | business correctness    |
+| Are logs/telemetry available for crashes?                  | observability           |
+| Are child specs stable and meaningful?                     | maintainability         |
+
+### Supervision Anti-Pattern Table
+
+| Anti-pattern                              | Failure mode                     | Better design                  |
+| ----------------------------------------- | -------------------------------- | ------------------------------ |
+| raw `spawn` for important process         | silent crash/orphan process      | supervisor / task supervisor   |
+| everything under one flat supervisor      | unclear failure domains          | nested supervisors             |
+| `one_for_all` at root                     | small crash restarts too much    | isolate subtrees               |
+| `one_for_one` despite dependency          | inconsistent state               | `rest_for_one` or nested group |
+| permanent one-off worker                  | restarts after normal completion | transient/temporary            |
+| temporary infrastructure process          | disappears after crash           | permanent                      |
+| no state recovery plan                    | restart loses critical state     | persist/rebuild                |
+| supervision as retry policy               | duplicate side effects           | job retry + idempotency        |
+| dynamic worker for passive data           | process overhead                 | plain data                     |
+| no registry for dynamic process lookup    | lost process discovery           | Registry/lookup table          |
+| public ETS table without owner            | mutable global chaos             | supervised owner API           |
+| blocking long work in central server      | mailbox bottleneck               | task/dynamic worker            |
+| raising restart intensity to hide crashes | delayed diagnosis                | fix root cause                 |
+| no shutdown policy                        | lost in-flight work              | explicit shutdown timeout      |
+| no telemetry/logging                      | production blindness             | supervisor reports/metrics     |
+
+### Supervision Decision Table
+
+| Requirement                             | Recommended structure                     |
+| --------------------------------------- | ----------------------------------------- |
+| always-running service                  | static supervised worker                  |
+| runtime-created workers                 | `DynamicSupervisor`                       |
+| dynamic named workers                   | `DynamicSupervisor` + `Registry`          |
+| temporary concurrent work               | `Task.Supervisor`                         |
+| read-heavy runtime table                | supervised ETS owner                      |
+| socket connections                      | listener + connection supervisor          |
+| external OS process                     | supervised port owner                     |
+| independent services                    | `one_for_one`                             |
+| ordered dependencies                    | `rest_for_one`                            |
+| tightly coupled components              | `one_for_all`                             |
+| one-off worker that may finish normally | `transient` or `temporary`                |
+| critical infrastructure                 | `permanent`                               |
+| job processing                          | queue + worker supervisor + retry policy  |
+| periodic background work                | supervised periodic worker                |
+| cluster-wide process discovery          | distributed registry/cluster-aware design |
+
+### Appendix F Summary
+
+Supervision tree design is boundary design. It defines which runtime components exist, who owns them, how failures propagate, and what gets restarted.
+
+The practical rules are:
+
+```text
+Use supervisors for important process lifecycles.
+Use static children for permanent services.
+Use DynamicSupervisor for runtime-created workers.
+Use Registry for dynamic process discovery.
+Use Task.Supervisor for temporary concurrent work.
+Use restart strategies to encode dependency structure.
+Use restart types to encode whether termination is normal.
+Use state recovery, idempotency, and backpressure separately from supervision.
+```
+
+The most important distinction is:
+
+```text
+Supervision restarts processes.
+Architecture recovers systems.
+```
+
+A strong supervision tree does not merely “keep things alive.” It makes runtime ownership, failure scope, dependency order, shutdown behavior, and recovery policy explicit.
+
+## Appendix G — Erlang Modules Every Elixir Programmer Must Know
+
+### Appendix Scope — why Elixir programmers must read Erlang modules
+
+Elixir is not isolated from Erlang. Elixir runs on the BEAM, uses OTP, and directly calls Erlang modules. Many important runtime, system, network, storage, binary, crypto, and debugging facilities are exposed primarily through Erlang modules.
+
+The central rule is:
+
+```text
+An Elixir programmer does not need to write Erlang every day,
+but must be able to read Erlang module docs and call Erlang modules from Elixir.
+```
+
+Elixir calls Erlang modules with a leading atom-style module name:
+
+```elixir
+:ets.lookup(table, key)
+:crypto.hash(:sha256, data)
+:gen_tcp.connect(~c"example.com", 80, [:binary, active: false])
+```
+
+The Erlang equivalent uses `module:function(...)`:
+
+```erlang
+ets:lookup(Table, Key).
+crypto:hash(sha256, Data).
+gen_tcp:connect("example.com", 80, [binary, {active, false}]).
+```
+
+| Erlang module                               | Main use from Elixir                            |
+| ------------------------------------------- | ----------------------------------------------- |
+| `:erlang`                                   | VM primitives, process/runtime operations       |
+| `:ets`                                      | shared in-memory runtime tables                 |
+| `:persistent_term`                          | rare-write, fast-read global data               |
+| `:crypto`                                   | hashing, random bytes, cryptographic primitives |
+| `:timer`                                    | sleep and timer helpers                         |
+| `:queue`                                    | efficient FIFO queue                            |
+| `:gen_tcp`                                  | TCP sockets                                     |
+| `:gen_udp`                                  | UDP sockets                                     |
+| `:ssl`                                      | TLS sockets                                     |
+| `:inet`                                     | network utilities                               |
+| `:file`                                     | lower-level file operations                     |
+| `:filename`                                 | path manipulation                               |
+| `:binary`                                   | byte-level binary utilities                     |
+| `:unicode`                                  | Unicode conversion                              |
+| `:re`                                       | regular expressions                             |
+| `:os`                                       | OS environment and command utilities            |
+| `:application`                              | OTP application environment/lifecycle           |
+| `:supervisor`                               | lower-level supervisor operations               |
+| `:gen_server`                               | lower-level server behavior                     |
+| `:sys`                                      | OTP process inspection/control                  |
+| `:observer` / `:observer_cli`-style tooling | runtime inspection ecosystem                    |
+
+### Calling Erlang from Elixir
+
+**Basic rule:** Erlang module names are atoms in Elixir.
+
+```elixir
+:lists.reverse([1, 2, 3])
+:maps.get(:id, %{id: 1})
+:erlang.self()
+```
+
+**Erlang syntax:**
+
+```erlang
+lists:reverse([1, 2, 3]).
+maps:get(id, #{id => 1}).
+erlang:self().
+```
+
+**Important conversion patterns:**
+
+| Erlang docs show                | Elixir call                                                 |
+| ------------------------------- | ----------------------------------------------------------- |
+| `module:function(Arg)`          | `:module.function(arg)`                                     |
+| `ok`                            | `:ok`                                                       |
+| `{ok, Value}`                   | `{:ok, value}`                                              |
+| `{error, Reason}`               | `{:error, reason}`                                          |
+| `[binary, {active, false}]`     | `[:binary, active: false]` or `[:binary, {:active, false}]` |
+| `"abc"` in many Erlang examples | often charlist; use `~c"abc"` in Elixir when needed         |
+| `<<"abc">>`                     | `<<"abc">>` or `"abc"` if UTF-8 binary text                 |
+
+**Common Pitfall:** Erlang documentation often uses charlists where Elixir programmers expect strings. In Elixir, `"abc"` is a binary; `~c"abc"` is a charlist.
+
+### `:erlang` — VM and Runtime Primitives
+
+**Purpose:** `:erlang` contains core BEAM runtime primitives. Some functions are so common that Elixir exposes wrappers, but the Erlang module remains foundational.
+
+| Task                 | Elixir wrapper            | Erlang module call               |
+| -------------------- | ------------------------- | -------------------------------- |
+| current process      | `self()`                  | `:erlang.self()`                 |
+| create reference     | `make_ref()`              | `:erlang.make_ref()`             |
+| send message         | `send(pid, msg)`          | `:erlang.send(pid, msg)`         |
+| spawn process        | `spawn(fn -> ... end)`    | `:erlang.spawn(...)`             |
+| monitor process      | `Process.monitor(pid)`    | `:erlang.monitor(:process, pid)` |
+| demonitor            | `Process.demonitor(ref)`  | `:erlang.demonitor(ref)`         |
+| monotonic time       | `System.monotonic_time()` | `:erlang.monotonic_time()`       |
+| system time          | `System.system_time()`    | `:erlang.system_time()`          |
+| process info         | `Process.info(pid)`       | `:erlang.process_info(pid)`      |
+| send delayed message | `Process.send_after(...)` | `:erlang.send_after(...)`        |
+
+Elixir:
+
+```elixir
+ref = :erlang.make_ref()
+pid = self()
+
+send(pid, {:hello, ref})
+
+receive do
+  {:hello, ^ref} -> :ok
+end
+```
+
+Erlang-style equivalent:
+
+```erlang
+Ref = erlang:make_ref(),
+Pid = self(),
+Pid ! {hello, Ref}.
+```
+
+**Use when:** Elixir wrappers are unavailable, lower-level behavior is needed, or Erlang documentation refers directly to runtime primitives.
+
+**Common Pitfall:** `:erlang.system_time/1` and `:erlang.monotonic_time/1` answer different questions. Use monotonic time for elapsed durations.
+
+### `:ets` — Erlang Term Storage
+
+**Purpose:** `:ets` provides shared mutable in-memory tables inside the BEAM VM.
+
+Elixir:
+
+```elixir
+table = :ets.new(:cache, [:set, :protected])
+:ets.insert(table, {:count, 1})
+:ets.lookup(table, :count)
+```
+
+Erlang:
+
+```erlang
+Table = ets:new(cache, [set, protected]),
+ets:insert(Table, {count, 1}),
+ets:lookup(Table, count).
+```
+
+| ETS option                | Meaning                            |
+| ------------------------- | ---------------------------------- |
+| `:set`                    | one object per key                 |
+| `:ordered_set`            | ordered keys                       |
+| `:bag`                    | multiple objects per key           |
+| `:duplicate_bag`          | duplicate objects allowed          |
+| `:private`                | only owner process can access      |
+| `:protected`              | owner writes, others read          |
+| `:public`                 | all processes can read/write       |
+| `:named_table`            | table has global atom name on node |
+| `read_concurrency: true`  | optimize for concurrent reads      |
+| `write_concurrency: true` | optimize for concurrent writes     |
+
+**Good use cases:**
+
+| Use case                      | Why ETS fits                       |
+| ----------------------------- | ---------------------------------- |
+| read-heavy cache              | avoids one GenServer bottleneck    |
+| runtime lookup table          | shared in-VM access                |
+| process registry-like index   | fast lookup                        |
+| counters/statistics with care | mutable runtime storage            |
+| session/index table           | if lifecycle and cleanup are clear |
+
+**Design warning:** ETS is shared mutable state. It should have an owner, schema, access policy, and cleanup strategy.
+
+**Common Pitfall:** `:public` tables are rarely the right default. Prefer `:protected` with an owner API unless public writes are deliberately part of the design.
+
+### `:persistent_term` — Rare-Write Global Data
+
+**Purpose:** `:persistent_term` stores global terms optimized for very fast reads and rare updates.
+
+Elixir:
+
+```elixir
+:persistent_term.put({MyApp, :config}, %{timeout: 5_000})
+:persistent_term.get({MyApp, :config})
+```
+
+Erlang:
+
+```erlang
+persistent_term:put({my_app, config}, #{timeout => 5000}),
+persistent_term:get({my_app, config}).
+```
+
+| Good use                                        | Bad use                  |
+| ----------------------------------------------- | ------------------------ |
+| global static config                            | per-request data         |
+| rarely changed lookup tables                    | counters                 |
+| routing/reference data                          | frequently updated cache |
+| compile/deploy-time constants loaded at startup | user/session data        |
+
+**Design meaning:** `:persistent_term` is not a convenient global variable store. It is a specialized read-optimized facility.
+
+**Common Pitfall:** Frequent writes to `:persistent_term` are expensive and can harm the runtime.
+
+### `:crypto` — Cryptographic Primitives
+
+**Purpose:** `:crypto` exposes cryptographic hashing, random bytes, MACs, ciphers, and related primitives.
+
+Elixir:
+
+```elixir
+hash = :crypto.hash(:sha256, "hello")
+bytes = :crypto.strong_rand_bytes(32)
+token = Base.url_encode64(bytes, padding: false)
+```
+
+Erlang:
+
+```erlang
+Hash = crypto:hash(sha256, <<"hello">>),
+Bytes = crypto:strong_rand_bytes(32).
+```
+
+| Task                      | Common function                         |
+| ------------------------- | --------------------------------------- |
+| hash bytes                | `:crypto.hash/2`                        |
+| secure random bytes       | `:crypto.strong_rand_bytes/1`           |
+| HMAC/MAC                  | `:crypto.mac/...` depending version/API |
+| encryption/decryption     | crypto APIs or higher-level libraries   |
+| key generation primitives | crypto APIs                             |
+
+**Use when:** Hashing, random token bytes, low-level crypto primitives, or library implementation work is needed.
+
+**Important caution:** For password hashing, do not use plain SHA-256 or a fast general-purpose hash. Use a dedicated password-hashing library such as Argon2, bcrypt, or PBKDF2-based tooling.
+
+**Common Pitfall:** Encoding is not encryption. `Base.encode64/1` only converts binary data into text.
+
+### `:timer` — Timer Helpers
+
+**Purpose:** `:timer` provides timer-related helpers such as sleep and repeated application helpers. Elixir code often uses `Process.sleep/1` and `Process.send_after/3`, but `:timer` still appears in Erlang and older Elixir code.
+
+Elixir:
+
+```elixir
+:timer.sleep(1_000)
+```
+
+Equivalent Elixir wrapper:
+
+```elixir
+Process.sleep(1_000)
+```
+
+Erlang:
+
+```erlang
+timer:sleep(1000).
+```
+
+| Task                        | Preferred Elixir style                                    |
+| --------------------------- | --------------------------------------------------------- |
+| sleep current process       | `Process.sleep(ms)`                                       |
+| send delayed message        | `Process.send_after(pid, msg, ms)`                        |
+| lower-level delayed message | `:erlang.send_after(ms, pid, msg)`                        |
+| cancel timer                | `Process.cancel_timer(ref)` / `:erlang.cancel_timer(ref)` |
+
+**Design meaning:** Sleeping blocks only the current BEAM process, not the whole VM. But sleeping inside a central `GenServer` callback still blocks that server process.
+
+**Common Pitfall:** Do not use sleep for test synchronization if a message, monitor, or explicit acknowledgement can be used.
+
+### `:queue` — Efficient FIFO Queue
+
+**Purpose:** `:queue` implements efficient functional queues.
+
+Elixir:
+
+```elixir
+queue = :queue.new()
+queue = :queue.in(:job1, queue)
+\{\{:value, job}, queue} = :queue.out(queue)
+```
+
+Erlang:
+
+```erlang
+Queue0 = queue:new(),
+Queue1 = queue:in(job1, Queue0),
+\{\{value, Job}, Queue2} = queue:out(Queue1).
+```
+
+| Task               | Use                      |
+| ------------------ | ------------------------ |
+| enqueue            | `:queue.in(item, queue)` |
+| dequeue            | `:queue.out(queue)`      |
+| create empty queue | `:queue.new()`           |
+| check empty        | `:queue.is_empty(queue)` |
+| convert to list    | `:queue.to_list(queue)`  |
+
+**Use when:** FIFO behavior is needed inside a process or pure data structure.
+
+**Common Pitfall:** Do not implement FIFO by repeatedly doing `list ++ [item]`; that repeatedly copies the left list.
+
+### `:gen_tcp` — TCP Sockets
+
+**Purpose:** `:gen_tcp` provides TCP networking.
+
+Elixir client example:
+
+```elixir
+{:ok, socket} =
+  :gen_tcp.connect(~c"example.com", 80, [
+    :binary,
+    active: false
+  ])
+
+:ok = :gen_tcp.send(socket, "GET / HTTP/1.0\r\n\r\n")
+{:ok, data} = :gen_tcp.recv(socket, 0, 5_000)
+:ok = :gen_tcp.close(socket)
+```
+
+Erlang:
+
+```erlang
+{ok, Socket} =
+    gen_tcp:connect("example.com", 80, [binary, {active, false}]),
+
+ok = gen_tcp:send(Socket, <<"GET / HTTP/1.0\r\n\r\n">>),
+{ok, Data} = gen_tcp:recv(Socket, 0, 5000),
+ok = gen_tcp:close(Socket).
+```
+
+| Option          | Meaning                               |
+| --------------- | ------------------------------------- |
+| `:binary`       | receive data as binaries              |
+| `active: false` | passive mode; explicit `recv`         |
+| `active: true`  | socket messages sent to owner process |
+| `active: :once` | one active message, then passive      |
+| packet options  | framing support for some protocols    |
+| timeout         | avoid waiting forever                 |
+
+**Design meaning:** A socket has an owner process. In active mode, socket data arrives as messages in that process’s mailbox.
+
+**Common Pitfall:** Active sockets can flood the owner mailbox if data arrives faster than it is processed.
+
+### `:gen_udp` — UDP Sockets
+
+**Purpose:** `:gen_udp` provides UDP networking.
+
+Elixir:
+
+```elixir
+{:ok, socket} = :gen_udp.open(0, [:binary, active: false])
+:ok = :gen_udp.send(socket, ~c"localhost", 9999, "ping")
+```
+
+Erlang:
+
+```erlang
+{ok, Socket} = gen_udp:open(0, [binary, {active, false}]),
+ok = gen_udp:send(Socket, "localhost", 9999, <<"ping">>).
+```
+
+| TCP                           | UDP                               |
+| ----------------------------- | --------------------------------- |
+| connection-oriented           | datagram-oriented                 |
+| stream                        | packet/message datagrams          |
+| reliability handled by TCP    | delivery not guaranteed           |
+| ordering guaranteed in stream | ordering not guaranteed generally |
+| connection process common     | socket owner still matters        |
+
+**Use when:** Datagram protocols, local discovery, metrics protocols, or low-level network work require UDP.
+
+**Common Pitfall:** UDP delivery, ordering, and duplication semantics are different from TCP. Protocol design must account for that.
+
+### `:ssl` — TLS Sockets
+
+**Purpose:** `:ssl` provides TLS support and is often used under HTTP clients/servers, but direct use matters for lower-level secure protocols.
+
+Elixir conceptual client:
+
+```elixir
+:ok = :ssl.start()
+
+{:ok, socket} =
+  :ssl.connect(~c"example.com", 443, [
+    :binary,
+    active: false,
+    verify: :verify_peer
+  ])
+```
+
+Erlang:
+
+```erlang
+ok = ssl:start(),
+
+{ok, Socket} =
+    ssl:connect("example.com", 443, [
+        binary,
+        {active, false},
+        {verify, verify_peer}
+    ]).
+```
+
+| Concern                  | Why it matters             |
+| ------------------------ | -------------------------- |
+| certificate verification | prevents insecure TLS      |
+| hostname verification    | prevents impersonation     |
+| CA certificates          | trust chain                |
+| active/passive mode      | mailbox behavior           |
+| TLS options              | security configuration     |
+| handshake errors         | expected external failures |
+
+**Design meaning:** TLS configuration is security-sensitive. Prefer mature HTTP/TLS libraries unless low-level control is necessary.
+
+**Common Pitfall:** Disabling verification may make development easier but defeats a core purpose of TLS.
+
+### `:inet` — Network Utilities
+
+**Purpose:** `:inet` contains network utilities, address parsing, host lookup, and socket-related helpers.
+
+Examples:
+
+```elixir
+:inet.gethostbyname(~c"example.com")
+:inet.parse_address(~c"127.0.0.1")
+```
+
+Erlang:
+
+```erlang
+inet:gethostbyname("example.com").
+inet:parse_address("127.0.0.1").
+```
+
+| Task                   | Use                                        |
+| ---------------------- | ------------------------------------------ |
+| parse IP address       | `:inet.parse_address/1`                    |
+| DNS/host lookup        | `:inet.gethostbyname/...`                  |
+| socket options         | through socket APIs and `inet` conventions |
+| network address tuples | interop with `gen_tcp`, `gen_udp`, `ssl`   |
+
+**Common Pitfall:** Elixir strings are binaries, but some `:inet` APIs may expect charlists in common usage. Use `~c"..."` where appropriate.
+
+### `:file` — Lower-Level File Operations
+
+**Purpose:** Elixir usually uses `File`, but Erlang’s `:file` appears often in OTP code and lower-level APIs.
+
+Elixir wrapper:
+
+```elixir
+File.read(path)
+File.write(path, data)
+```
+
+Erlang module from Elixir:
+
+```elixir
+:file.read_file(path)
+:file.write_file(path, data)
+```
+
+Erlang:
+
+```erlang
+file:read_file(Path).
+file:write_file(Path, Data).
+```
+
+| Task           | Elixir first choice | Erlang module            |
+| -------------- | ------------------- | ------------------------ |
+| read full file | `File.read/1`       | `:file.read_file/1`      |
+| write file     | `File.write/2`      | `:file.write_file/2`     |
+| open file      | `File.open/2,3`     | `:file.open/2`           |
+| list directory | `File.ls/1`         | `:file.list_dir/1`       |
+| file info      | `File.stat/1`       | `:file.read_file_info/1` |
+
+**Design meaning:** File operations fail for normal external reasons: missing file, permissions, invalid path, disk issues.
+
+**Common Pitfall:** Use non-bang forms for expected file failures. Use bang/direct matches only when failure should crash.
+
+### `:filename` — Path Handling
+
+**Purpose:** `:filename` handles path manipulation in Erlang. Elixir usually uses `Path`.
+
+Elixir:
+
+```elixir
+Path.join(["priv", "data", "file.txt"])
+```
+
+Erlang module from Elixir:
+
+```elixir
+:filename.join(["priv", "data", "file.txt"])
+```
+
+Erlang:
+
+```erlang
+filename:join(["priv", "data", "file.txt"]).
+```
+
+| Task          | Elixir            | Erlang                  |
+| ------------- | ----------------- | ----------------------- |
+| join paths    | `Path.join/1,2`   | `:filename.join/1,2`    |
+| basename      | `Path.basename/1` | `:filename.basename/1`  |
+| dirname       | `Path.dirname/1`  | `:filename.dirname/1`   |
+| extension     | `Path.extname/1`  | `:filename.extension/1` |
+| absolute path | `Path.expand/1`   | filename/file APIs      |
+
+**Common Pitfall:** Avoid manual string concatenation for paths. Use path APIs for portability and correctness.
+
+### `:binary` — Byte-Level Binary Utilities
+
+**Purpose:** `:binary` provides byte-level binary operations.
+
+Elixir:
+
+```elixir
+:binary.split("a,b,c", ",", [:global])
+:binary.part("abcdef", 0, 3)
+:binary.copy("abc")
+```
+
+Erlang:
+
+```erlang
+binary:split(<<"a,b,c">>, <<",">>, [global]).
+binary:part(<<"abcdef">>, 0, 3).
+binary:copy(<<"abc">>).
+```
+
+| Task            | Function                    |
+| --------------- | --------------------------- |
+| split binary    | `:binary.split/2,3`         |
+| match           | `:binary.match/2,3`         |
+| part/slice      | `:binary.part/2,3`          |
+| copy            | `:binary.copy/1,2`          |
+| replace         | `:binary.replace/...`       |
+| compile pattern | `:binary.compile_pattern/1` |
+
+**Use when:** Byte-level operations are required, especially for protocols or efficient parsing.
+
+**Design distinction:** `String` is for UTF-8 text semantics; `:binary` is for byte semantics.
+
+**Common Pitfall:** Do not use byte-level slicing when user-facing Unicode text semantics are required.
+
+### `:unicode` — Unicode Conversion
+
+**Purpose:** `:unicode` converts between Unicode representations, binaries, charlists, and encodings.
+
+Elixir:
+
+```elixir
+:unicode.characters_to_binary(~c"hello")
+:unicode.characters_to_list("hello")
+```
+
+Erlang:
+
+```erlang
+unicode:characters_to_binary("hello").
+unicode:characters_to_list(<<"hello">>).
+```
+
+| Task                     | Use                               |
+| ------------------------ | --------------------------------- |
+| charlist to binary       | `:unicode.characters_to_binary/1` |
+| binary to charlist       | `:unicode.characters_to_list/1`   |
+| encoding conversion      | `:unicode.characters_to_binary/3` |
+| interop with Erlang APIs | convert explicitly                |
+
+**Use when:** Interoperating between Elixir binary strings and Erlang charlist/chardata expectations.
+
+**Common Pitfall:** Do not assume all binaries are valid UTF-8. Some binaries are arbitrary bytes.
+
+### `:re` — Regular Expressions
+
+**Purpose:** `:re` is Erlang’s regex module. Elixir’s `Regex` wraps common regex usage, but `:re` is useful when reading Erlang docs/code or needing lower-level options.
+
+Elixir `Regex`:
+
+```elixir
+Regex.match?(~r/^\d+$/, "123")
+Regex.run(~r/^user:(\d+)$/, "user:42")
+```
+
+Erlang module from Elixir:
+
+```elixir
+:re.run("user:42", "^user:(\\d+)$", [{:capture, :all_but_first, :binary}])
+```
+
+Erlang:
+
+```erlang
+re:run(<<"user:42">>, <<"^user:(\\d+)$">>,
+       [{capture, all_but_first, binary}]).
+```
+
+| Task          | Elixir            | Erlang                        |
+| ------------- | ----------------- | ----------------------------- |
+| match boolean | `Regex.match?/2`  | `:re.run/2` result inspection |
+| capture       | `Regex.run/2,3`   | `:re.run/3`                   |
+| replace       | `Regex.replace/3` | `:re.replace/...`             |
+| split         | `Regex.split/2,3` | `:re.split/...`               |
+| compile       | `Regex.compile/1` | `:re.compile/1`               |
+
+**Common Pitfall:** Regex is for text patterns. For binary protocols, prefer bit syntax.
+
+### `:os` — Operating System Interaction
+
+**Purpose:** `:os` provides OS environment and command utilities. Elixir usually uses `System`.
+
+Elixir:
+
+```elixir
+System.get_env("HOME")
+System.cmd("echo", ["hello"])
+```
+
+Erlang module:
+
+```elixir
+:os.getenv(~c"HOME")
+:os.cmd(~c"echo hello")
+```
+
+Erlang:
+
+```erlang
+os:getenv("HOME").
+os:cmd("echo hello").
+```
+
+| Task                        | Elixir preferred                  | Erlang module  |
+| --------------------------- | --------------------------------- | -------------- |
+| environment variable        | `System.get_env/1`                | `:os.getenv/1` |
+| run command                 | `System.cmd/3`                    | `:os.cmd/1`    |
+| OS type                     | `:os.type()`                      | `os:type()`    |
+| timestamp-like OS utilities | use runtime/system APIs carefully | `os` functions |
+
+**Design warning:** OS commands are external boundaries. Validate executable paths and arguments.
+
+**Common Pitfall:** Avoid shell-command string construction with untrusted input. Prefer `System.cmd(command, args)` over shell strings when possible.
+
+### `:application` — OTP Application Environment and Lifecycle
+
+**Purpose:** `:application` manages OTP application environment, startup, stopping, and loaded application metadata.
+
+Elixir wrappers:
+
+```elixir
+Application.get_env(:my_app, :timeout)
+Application.fetch_env!(:my_app, :timeout)
+```
+
+Erlang module from Elixir:
+
+```elixir
+:application.get_env(:my_app, :timeout)
+:application.ensure_all_started(:ssl)
+```
+
+Erlang:
+
+```erlang
+application:get_env(my_app, timeout).
+application:ensure_all_started(ssl).
+```
+
+| Task               | Elixir wrapper                     | Erlang module                       |
+| ------------------ | ---------------------------------- | ----------------------------------- |
+| get app env        | `Application.get_env/3`            | `:application.get_env/...`          |
+| fetch required env | `Application.fetch_env!/2`         | lower-level pattern                 |
+| ensure app started | `Application.ensure_all_started/1` | `:application.ensure_all_started/1` |
+| start app          | `Application.start/1`              | `:application.start/1`              |
+| stop app           | `Application.stop/1`               | `:application.stop/1`               |
+
+**Design meaning:** Application env is global configuration for OTP applications. Use carefully and parse/validate config near startup.
+
+**Common Pitfall:** Scattering app-env reads throughout domain logic creates hidden dependencies and makes tests harder.
+
+### `:supervisor` — Lower-Level Supervisor API
+
+**Purpose:** Elixir’s `Supervisor` wraps OTP supervisor behavior. Sometimes Erlang APIs or docs refer to `:supervisor` directly.
+
+Elixir:
+
+```elixir
+Supervisor.which_children(MyApp.Supervisor)
+Supervisor.count_children(MyApp.Supervisor)
+```
+
+Erlang module from Elixir:
+
+```elixir
+:supervisor.which_children(MyApp.Supervisor)
+:supervisor.count_children(MyApp.Supervisor)
+```
+
+Erlang:
+
+```erlang
+supervisor:which_children(Sup).
+supervisor:count_children(Sup).
+```
+
+| Task                                   | Use                               |
+| -------------------------------------- | --------------------------------- |
+| list children                          | `:supervisor.which_children/1`    |
+| count children                         | `:supervisor.count_children/1`    |
+| start dynamic child in lower-level API | `:supervisor.start_child/...`     |
+| terminate child                        | `:supervisor.terminate_child/...` |
+| inspect supervision                    | useful for debugging              |
+
+**Common Pitfall:** Do not manipulate supervisor children manually unless the supervisor design supports it. For Elixir dynamic children, prefer `DynamicSupervisor`.
+
+### `:gen_server` — Lower-Level Server API
+
+**Purpose:** Elixir `GenServer` is a wrapper around OTP `gen_server`. Direct use is less common in Elixir code, but reading Erlang libraries requires understanding it.
+
+Elixir wrapper:
+
+```elixir
+GenServer.call(server, :get)
+GenServer.cast(server, :refresh)
+```
+
+Erlang module from Elixir:
+
+```elixir
+:gen_server.call(server, :get)
+:gen_server.cast(server, :refresh)
+```
+
+Erlang:
+
+```erlang
+gen_server:call(Server, get).
+gen_server:cast(Server, refresh).
+```
+
+| Task              | Elixir                     | Erlang                       |
+| ----------------- | -------------------------- | ---------------------------- |
+| synchronous call  | `GenServer.call/2,3`       | `:gen_server.call/...`       |
+| asynchronous cast | `GenServer.cast/2`         | `:gen_server.cast/2`         |
+| reply later       | `GenServer.reply/2`        | `:gen_server.reply/2`        |
+| start server      | `GenServer.start_link/...` | `:gen_server.start_link/...` |
+
+**Design meaning:** When Erlang docs mention `gen_server`, Elixir programmers should mentally map it to `GenServer`.
+
+**Common Pitfall:** OTP callback return shapes are the same idea across both. `{:reply, reply, state}` in Elixir corresponds to `{reply, Reply, State}` in Erlang.
+
+### `:sys` — OTP Process Inspection and Control
+
+**Purpose:** `:sys` provides standardized introspection and control for OTP processes such as `GenServer`.
+
+Examples from Elixir:
+
+```elixir
+:sys.get_state(pid)
+:sys.get_status(pid)
+:sys.trace(pid, true)
+:sys.statistics(pid, true)
+```
+
+Erlang:
+
+```erlang
+sys:get_state(Pid).
+sys:get_status(Pid).
+sys:trace(Pid, true).
+sys:statistics(Pid, true).
+```
+
+| Task                     | Function               |
+| ------------------------ | ---------------------- |
+| get OTP process state    | `:sys.get_state/1`     |
+| replace state            | `:sys.replace_state/2` |
+| get status               | `:sys.get_status/1`    |
+| trace messages/callbacks | `:sys.trace/2`         |
+| suspend process          | `:sys.suspend/1`       |
+| resume process           | `:sys.resume/1`        |
+| collect statistics       | `:sys.statistics/2`    |
+
+**Use when:** Debugging OTP processes, inspecting state, or understanding runtime behavior.
+
+**Design warning:** `:sys.get_state/1` is a debugging/control tool, not a normal application API.
+
+**Common Pitfall:** Do not build ordinary business logic by reaching into another process’s state with `:sys.get_state/1`. Use the process’s public API.
+
+### `:observer` and Runtime Inspection Tools
+
+**Purpose:** Observer is a graphical Erlang/OTP tool for inspecting running systems. Elixir developers often use it indirectly or through tooling.
+
+From an Elixir shell:
+
+```elixir
+:observer.start()
+```
+
+Potential prerequisites depend on environment and GUI availability.
+
+| Inspection area    | What it helps diagnose              |
+| ------------------ | ----------------------------------- |
+| processes          | memory, reductions, mailbox lengths |
+| applications       | running OTP applications            |
+| supervision trees  | runtime topology                    |
+| ETS tables         | table size and ownership            |
+| memory             | process/binary/ETS memory           |
+| scheduler behavior | runtime load                        |
+| ports              | external OS resources               |
+
+**Design meaning:** BEAM systems are inspectable at runtime. Observer-style tools make process architecture visible.
+
+**Common Pitfall:** GUI Observer may not be available in headless production environments. Learn command-line/process-info alternatives too.
+
+### Other Erlang Modules Worth Recognizing
+
+These are not always first-tier for beginners, but Elixir programmers will encounter them.
+
+| Module        | Use                                                                  |
+| ------------- | -------------------------------------------------------------------- |
+| `:maps`       | map utilities                                                        |
+| `:lists`      | list utilities                                                       |
+| `:ordsets`    | ordered-list sets                                                    |
+| `:sets`       | set abstraction                                                      |
+| `:gb_sets`    | general balanced-tree sets                                           |
+| `:gb_trees`   | balanced-tree key-value structure                                    |
+| `:digraph`    | directed graph data structure                                        |
+| `:calendar`   | date/time conversion utilities                                       |
+| `:math`       | math functions                                                       |
+| `:zlib`       | compression                                                          |
+| `:public_key` | certificates, public-key crypto                                      |
+| `:inets`      | Erlang internet services, including older HTTP client                |
+| `:httpc`      | HTTP client under `inets`                                            |
+| `:logger`     | Erlang/OTP logging                                                   |
+| `:telemetry`  | not Erlang/OTP core in the same way, but central in Elixir ecosystem |
+
+### `:lists` and `:maps` — Still Useful
+
+Elixir usually uses `Enum`, `List`, and `Map`, but Erlang modules remain useful.
+
+Elixir:
+
+```elixir
+:lists.reverse([1, 2, 3])
+:maps.get(:id, %{id: 1})
+```
+
+Erlang:
+
+```erlang
+lists:reverse([1, 2, 3]).
+maps:get(id, #{id => 1}).
+```
+
+| Task      | Elixir common    | Erlang module      |
+| --------- | ---------------- | ------------------ |
+| list map  | `Enum.map/2`     | `:lists.map/2`     |
+| list fold | `Enum.reduce/3`  | `:lists.foldl/3`   |
+| reverse   | `Enum.reverse/1` | `:lists.reverse/1` |
+| map get   | `Map.get/3`      | `:maps.get/...`    |
+| map keys  | `Map.keys/1`     | `:maps.keys/1`     |
+| map merge | `Map.merge/2`    | `:maps.merge/2`    |
+
+**Design meaning:** Prefer Elixir modules in idiomatic Elixir unless an Erlang function is more direct, already required by documentation, or has no Elixir equivalent.
+
+### `:calendar` — Calendar Utilities
+
+**Purpose:** Erlang’s `:calendar` module appears in older code and date/time conversion logic. Elixir has `Date`, `Time`, `DateTime`, and `NaiveDateTime`.
+
+Elixir:
+
+```elixir
+Date.utc_today()
+DateTime.utc_now()
+```
+
+Erlang module:
+
+```elixir
+:calendar.universal_time()
+:calendar.local_time()
+```
+
+Erlang:
+
+```erlang
+calendar:universal_time().
+calendar:local_time().
+```
+
+**Design distinction:** Use Elixir’s date/time structs for modern Elixir domain code. Use `:calendar` when interoperating with Erlang APIs or older tuple-based time formats.
+
+**Common Pitfall:** Calendar time is not monotonic time. Do not measure elapsed durations with wall-clock calendar time.
+
+### `:logger` — Erlang Logging
+
+**Purpose:** Elixir uses `Logger`, but Erlang/OTP logging may appear in Erlang libraries, reports, and lower-level tools.
+
+Elixir:
+
+```elixir
+require Logger
+Logger.info("started", service: :worker)
+```
+
+Erlang-style from Elixir:
+
+```elixir
+:logger.info("started")
+```
+
+Erlang:
+
+```erlang
+logger:info("started").
+logger:warning("timeout: ~p", [Reason]).
+```
+
+| Use                               | Elixir common                                         |
+| --------------------------------- | ----------------------------------------------------- |
+| application logging               | `Logger`                                              |
+| interacting with Erlang libraries | understand `:logger` output                           |
+| OTP reports                       | often through Erlang logger                           |
+| production config                 | both Elixir Logger and OTP logger concepts may matter |
+
+**Common Pitfall:** Logs are external data. Avoid raw secrets, huge payloads, and high-cardinality metadata.
+
+### `:zlib` — Compression
+
+**Purpose:** `:zlib` provides compression/decompression.
+
+Elixir:
+
+```elixir
+compressed = :zlib.compress(data)
+decompressed = :zlib.uncompress(compressed)
+```
+
+Erlang:
+
+```erlang
+Compressed = zlib:compress(Data),
+Decompressed = zlib:uncompress(Compressed).
+```
+
+| Use when                    | Caution             |
+| --------------------------- | ------------------- |
+| compressing binary payloads | CPU cost            |
+| reading compressed formats  | decompression bombs |
+| network/file compression    | memory usage        |
+| protocol implementation     | validate sizes      |
+
+**Common Pitfall:** Decompressing untrusted data can create huge memory expansion. Apply size limits at boundaries.
+
+### `:public_key` — Certificates and Public-Key Operations
+
+**Purpose:** `:public_key` is used for certificates, keys, and public-key crypto internals. Many developers encounter it indirectly through TLS, JWT, SSH, or certificate handling libraries.
+
+| Task                        | Use                   |
+| --------------------------- | --------------------- |
+| parse certificates          | `:public_key` APIs    |
+| inspect public/private keys | key decoding APIs     |
+| verify signatures           | public-key operations |
+| TLS trust infrastructure    | often used indirectly |
+
+**Design warning:** Public-key cryptography is security-sensitive. Prefer mature libraries or documented recipes unless implementing infrastructure-level code.
+
+**Common Pitfall:** Key format, encoding, algorithm, and verification details matter. Do not improvise security protocols.
+
+### `:inets` and `:httpc` — Older HTTP Client Stack
+
+**Purpose:** Erlang/OTP includes `:inets` and `:httpc`, but many Elixir applications prefer modern HTTP client libraries.
+
+Elixir:
+
+```elixir
+:inets.start()
+:ssl.start()
+
+:httpc.request(:get, {'https://example.com', []}, [], [])
+```
+
+Erlang:
+
+```erlang
+inets:start(),
+ssl:start(),
+httpc:request(get, {"https://example.com", []}, [], []).
+```
+
+| Use `:httpc` when                | Prefer modern Elixir HTTP client when |
+| -------------------------------- | ------------------------------------- |
+| minimal OTP-only environment     | application needs ergonomic API       |
+| reading Erlang code              | pooling/telemetry features matter     |
+| quick low-level test             | production HTTP behavior matters      |
+| no external dependencies desired | richer error handling desired         |
+
+**Common Pitfall:** HTTP client choice affects pooling, TLS config, timeouts, telemetry, and error shape. Do not treat it as a trivial dependency.
+
+### Module Selection Table
+
+| Task                      | First Elixir choice                   | Erlang module to know |
+| ------------------------- | ------------------------------------- | --------------------- |
+| process/runtime primitive | `Process`, `System`, kernel functions | `:erlang`             |
+| shared runtime table      | direct Erlang call                    | `:ets`                |
+| rare-write global data    | direct Erlang call                    | `:persistent_term`    |
+| secure random bytes       | direct Erlang call                    | `:crypto`             |
+| sleep                     | `Process.sleep`                       | `:timer`              |
+| delayed message           | `Process.send_after`                  | `:erlang.send_after`  |
+| FIFO queue                | direct Erlang call                    | `:queue`              |
+| TCP                       | direct Erlang call or library         | `:gen_tcp`            |
+| TLS                       | library or direct call                | `:ssl`                |
+| IP/host utilities         | direct call                           | `:inet`               |
+| files                     | `File`                                | `:file`               |
+| paths                     | `Path`                                | `:filename`           |
+| byte operations           | bit syntax / `String` / direct call   | `:binary`             |
+| Unicode conversion        | `String` / direct call                | `:unicode`            |
+| regex                     | `Regex`                               | `:re`                 |
+| OS env/cmd                | `System`                              | `:os`                 |
+| app env/lifecycle         | `Application`                         | `:application`        |
+| supervisor inspection     | `Supervisor`                          | `:supervisor`         |
+| GenServer lower-level API | `GenServer`                           | `:gen_server`         |
+| OTP process debugging     | no full high-level replacement        | `:sys`                |
+| runtime GUI inspection    | shell call                            | `:observer`           |
+
+### Elixir Calling Syntax Cheat Sheet
+
+| Erlang docs                            | Elixir call                              |
+| -------------------------------------- | ---------------------------------------- |
+| `ets:new(cache, [set, protected])`     | `:ets.new(:cache, [:set, :protected])`   |
+| `ets:lookup(Tab, Key)`                 | `:ets.lookup(tab, key)`                  |
+| `crypto:hash(sha256, Data)`            | `:crypto.hash(:sha256, data)`            |
+| `queue:new()`                          | `:queue.new()`                           |
+| `gen_tcp:connect(Host, Port, Opts)`    | `:gen_tcp.connect(host, port, opts)`     |
+| `ssl:connect(Host, Port, Opts)`        | `:ssl.connect(host, port, opts)`         |
+| `file:read_file(Path)`                 | `:file.read_file(path)`                  |
+| `filename:join(Parts)`                 | `:filename.join(parts)`                  |
+| `binary:split(Bin, Pattern, [global])` | `:binary.split(bin, pattern, [:global])` |
+| `unicode:characters_to_binary(Text)`   | `:unicode.characters_to_binary(text)`    |
+| `re:run(Text, Pattern, Opts)`          | `:re.run(text, pattern, opts)`           |
+| `application:get_env(App, Key)`        | `:application.get_env(app, key)`         |
+| `sys:get_state(Pid)`                   | `:sys.get_state(pid)`                    |
+
+### Practical Reading Example — Erlang Docs to Elixir Code
+
+Suppose Erlang docs show:
+
+```erlang
+ets:new(cache, [named_table, set, protected, {read_concurrency, true}]).
+```
+
+Elixir version:
+
+```elixir
+:ets.new(:cache, [
+  :named_table,
+  :set,
+  :protected,
+  read_concurrency: true
+])
+```
+
+Suppose Erlang docs show:
+
+```erlang
+gen_tcp:connect("example.com", 80, [binary, {active, false}]).
+```
+
+Elixir version:
+
+```elixir
+:gen_tcp.connect(~c"example.com", 80, [
+  :binary,
+  active: false
+])
+```
+
+Suppose Erlang docs show:
+
+```erlang
+sys:get_state(Pid).
+```
+
+Elixir version:
+
+```elixir
+:sys.get_state(pid)
+```
+
+### Common Interop Pitfalls
+
+| Pitfall                              | Example                                        | Fix                                   |
+| ------------------------------------ | ---------------------------------------------- | ------------------------------------- |
+| charlist vs binary host              | `"example.com"` passed where charlist expected | use `~c"example.com"`                 |
+| atom syntax confusion                | Erlang `ok`, Elixir `:ok`                      | translate atoms carefully             |
+| option tuple syntax                  | `{active, false}`                              | `active: false` or `{:active, false}` |
+| return tuple mismatch                | `{ok, Value}`                                  | `{:ok, value}`                        |
+| process message casing               | `'DOWN'` in Erlang                             | `:DOWN` in Elixir                     |
+| binary/text confusion                | using `String` on arbitrary bytes              | use `:binary` / bit syntax            |
+| direct state inspection in app logic | `:sys.get_state(pid)`                          | use public API                        |
+| ETS table lifecycle ignored          | table disappears with owner                    | supervise owner                       |
+| dynamic atoms                        | converting external strings                    | explicit mapping                      |
+| OS command string                    | shell injection risk                           | `System.cmd(command, args)`           |
+
+### Professional Rule — Prefer Elixir Wrappers, Know Erlang Foundations
+
+In idiomatic Elixir, prefer Elixir modules when they clearly cover the task:
+
+| Prefer Elixir when    | Example                              |
+| --------------------- | ------------------------------------ |
+| collection processing | `Enum`, `Stream`                     |
+| text semantics        | `String`                             |
+| file/path ergonomics  | `File`, `Path`                       |
+| process wrappers      | `Process`, `GenServer`, `Supervisor` |
+| logging               | `Logger`                             |
+| project workflow      | `Mix`                                |
+| testing               | `ExUnit`                             |
+
+Use Erlang modules directly when:
+
+| Use Erlang directly when                     | Example                                     |
+| -------------------------------------------- | ------------------------------------------- |
+| no Elixir wrapper exists                     | `:ets`, `:crypto`, `:queue`                 |
+| wrapper would obscure low-level behavior     | `:gen_tcp`, `:ssl`                          |
+| reading Erlang/OTP docs                      | `:sys`, `:supervisor`                       |
+| performance/runtime feature is Erlang-native | `:persistent_term`, `:binary`               |
+| interop with Erlang library required         | direct module calls                         |
+| debugging OTP runtime                        | `:sys`, `:observer`, `:erlang.process_info` |
+
+### Appendix G Summary
+
+Elixir is a BEAM language, not a separate runtime. Serious Elixir work requires familiarity with Erlang modules, especially:
+
+```text
+:erlang
+:ets
+:persistent_term
+:crypto
+:queue
+:gen_tcp
+:ssl
+:file
+:binary
+:unicode
+:re
+:application
+:supervisor
+:gen_server
+:sys
+```
+
+The practical rule is:
+
+```text
+Use Elixir’s ergonomic modules when they fit.
+Use Erlang modules directly when they expose the real OTP/BEAM facility.
+Read Erlang documentation as part of Elixir proficiency.
+```
+
+The deeper point is not memorizing module names. The deeper point is recognizing which layer a task belongs to:
+
+```text
+text → String or :unicode
+bytes → bit syntax or :binary
+runtime process → Process or :erlang
+shared table → :ets
+TCP/TLS → :gen_tcp / :ssl
+OTP debugging → :sys
+application lifecycle → Application / :application
+supervision → Supervisor / :supervisor
+```
+
+A fluent Elixir programmer should be able to cross that boundary without hesitation.
+
+## Appendix H — Elixir Modules Every Erlang Programmer Should Recognize
+
+### Appendix Scope — reading modern Elixir projects from an Erlang / OTP base
+
+This appendix introduces the Elixir modules and tools that an Erlang programmer should recognize when reading Elixir projects. The goal is not to replace Erlang/OTP knowledge, but to map Elixir’s ergonomic layer onto familiar BEAM concepts.
+
+The central rule is:
+
+```text
+Elixir does not replace Erlang/OTP.
+It wraps, extends, and reorganizes many BEAM/OTP ideas with modern syntax,
+standard tooling, macros, protocols, and a strong project workflow.
+```
+
+| Elixir module/tool  | Main role                     | Erlang/OTP relation                                           |
+| ------------------- | ----------------------------- | ------------------------------------------------------------- |
+| `Enum`              | eager collection operations   | similar role to `lists`, but works over many enumerable types |
+| `Stream`            | lazy enumerable pipelines     | delayed enumeration abstraction                               |
+| `String`            | UTF-8 text operations         | binary Unicode text layer                                     |
+| `Regex`             | regular expressions           | wrapper over regex functionality                              |
+| `File`              | file operations               | ergonomic layer over file APIs                                |
+| `Path`              | path manipulation             | similar role to `filename`                                    |
+| `Map`               | map utilities                 | similar role to `maps`                                        |
+| `MapSet`            | set abstraction               | set over maps                                                 |
+| `Keyword`           | option lists                  | similar to proplists, but atom-keyed convention               |
+| `Task`              | temporary concurrent work     | process abstraction                                           |
+| `Agent`             | simple state process          | lightweight state server                                      |
+| `GenServer`         | server behavior wrapper       | wrapper over `gen_server`                                     |
+| `Supervisor`        | supervision wrapper           | wrapper over `supervisor`                                     |
+| `DynamicSupervisor` | runtime child supervision     | modern dynamic supervision                                    |
+| `Registry`          | dynamic process names         | local process registry                                        |
+| `Application`       | OTP application callback      | wrapper over `application` behavior                           |
+| `Logger`            | logging                       | Elixir logging layer over OTP logging infrastructure          |
+| `ExUnit`            | testing                       | standard Elixir test framework                                |
+| `Mix`               | project/build/dependency tool | Elixir project workflow                                       |
+
+### `Enum` — eager enumerable operations
+
+`Enum` is the standard Elixir module for eager collection processing. It is broader than Erlang’s `lists` because it works on any type implementing the `Enumerable` protocol, including lists, maps, ranges, `MapSet`s, and streams when consumed.
+
+Elixir:
+
+```elixir
+Enum.map([1, 2, 3], fn n -> n * 2 end)
+Enum.filter(users, fn user -> user.active end)
+Enum.reduce(numbers, 0, fn n, acc -> n + acc end)
+```
+
+Erlang equivalent style for lists:
+
+```erlang
+lists:map(fun(N) -> N * 2 end, [1, 2, 3]).
+lists:filter(fun(User) -> user_active(User) end, Users).
+lists:foldl(fun(N, Acc) -> N + Acc end, 0, Numbers).
+```
+
+| Task                  | Elixir          | Erlang-like equivalent |
+| --------------------- | --------------- | ---------------------- |
+| transform             | `Enum.map/2`    | `lists:map/2`          |
+| filter                | `Enum.filter/2` | `lists:filter/2`       |
+| fold/reduce           | `Enum.reduce/3` | `lists:foldl/3`        |
+| side-effect iteration | `Enum.each/2`   | `lists:foreach/2`      |
+| check any             | `Enum.any?/2`   | `lists:any/2`          |
+| check all             | `Enum.all?/2`   | `lists:all/2`          |
+| sort                  | `Enum.sort/1,2` | `lists:sort/1,2`       |
+
+**Design meaning:** `Enum` is eager. It computes intermediate results immediately.
+
+**Common Pitfall:** A long pipeline of `Enum.map`, `Enum.filter`, and `Enum.reject` may allocate intermediate collections. Use `Stream`, `reduce`, or a single traversal if allocation matters.
+
+### `Stream` — lazy enumerable transformations
+
+`Stream` builds lazy transformations. The work does not happen until the stream is consumed.
+
+Elixir:
+
+```elixir
+stream =
+  users
+  |> Stream.map(&normalize_user/1)
+  |> Stream.filter(&active?/1)
+
+Enum.take(stream, 10)
+```
+
+| `Stream` is good when         | `Enum` is better when        |
+| ----------------------------- | ---------------------------- |
+| input is large                | collection is small          |
+| early termination matters     | all results are needed       |
+| intermediate lists are costly | readability matters more     |
+| file/network-like lazy data   | full materialization is fine |
+| infinite sequence is useful   | no laziness is needed        |
+
+Example of delayed execution:
+
+```elixir
+stream =
+  Stream.map([1, 2, 3], fn n ->
+    IO.inspect(n)
+    n * 2
+  end)
+
+# Nothing has run yet.
+
+Enum.to_list(stream)
+```
+
+**Design meaning:** `Stream` changes evaluation timing. This matters for side effects, errors, resource usage, and debugging.
+
+**Common Pitfall:** Do not put important side effects in a stream unless delayed execution is intentional.
+
+### `String` — UTF-8 text operations
+
+Elixir strings are UTF-8 binaries. `String` works at the text level, not merely byte level.
+
+Elixir:
+
+```elixir
+String.trim("  José  ")
+String.downcase("HELLO")
+String.length("José")
+byte_size("José")
+```
+
+Erlang programmers should notice the distinction:
+
+| Source            | Erlang              | Elixir        |
+| ----------------- | ------------------- | ------------- |
+| `"abc"`           | charlist convention | UTF-8 binary  |
+| `<<"abc">>`       | binary              | binary        |
+| `~c"abc"`         | not Erlang syntax   | charlist      |
+| `String.length/1` | Elixir text length  | not byte size |
+| `byte_size/1`     | byte count          | byte count    |
+
+| Need                        | Elixir module/tool      |
+| --------------------------- | ----------------------- |
+| user-facing text operations | `String`                |
+| regex text matching         | `Regex`                 |
+| raw byte operations         | bit syntax or `:binary` |
+| Unicode conversion          | `String` or `:unicode`  |
+| efficient output chunks     | iodata                  |
+
+**Design meaning:** `String` assumes valid UTF-8 text. Arbitrary binary protocol payloads should be handled with bit syntax or `:binary`.
+
+**Common Pitfall:** Do not use `String.slice/2` or `String.length/1` when the data is arbitrary bytes.
+
+### `Regex` — regular expressions
+
+`Regex` is Elixir’s regular expression interface.
+
+```elixir
+Regex.match?(~r/^\d+$/, "123")
+Regex.run(~r/^user:(\d+)$/, "user:42")
+Regex.named_captures(~r/^user:(?<id>\d+)$/, "user:42")
+```
+
+Erlang comparison:
+
+```erlang
+re:run(<<"user:42">>, <<"^user:(\\d+)$">>,
+       [{capture, all_but_first, binary}]).
+```
+
+| Task          | Elixir            | Erlang                 |
+| ------------- | ----------------- | ---------------------- |
+| regex literal | `~r/.../`         | no same literal syntax |
+| match         | `Regex.match?/2`  | `re:run/2`             |
+| capture       | `Regex.run/2,3`   | `re:run/3`             |
+| replace       | `Regex.replace/3` | `re:replace/...`       |
+| split         | `Regex.split/2,3` | `re:split/...`         |
+
+**Design meaning:** Regex is useful for text patterns. Use parsers or binary pattern matching for structured protocols.
+
+**Common Pitfall:** Regex validates shape, not domain meaning.
+
+### `File` — file operations
+
+`File` is Elixir’s ergonomic file API.
+
+```elixir
+File.read(path)
+File.read!(path)
+File.write(path, data)
+File.stream!(path)
+File.ls(path)
+```
+
+Erlang equivalent layer:
+
+```erlang
+file:read_file(Path).
+file:write_file(Path, Data).
+file:list_dir(Path).
+```
+
+| Task           | Elixir           | Erlang                       |
+| -------------- | ---------------- | ---------------------------- |
+| read file      | `File.read/1`    | `file:read_file/1`           |
+| read or raise  | `File.read!/1`   | direct match or custom error |
+| write file     | `File.write/2`   | `file:write_file/2`          |
+| stream file    | `File.stream!/1` | lower-level file handling    |
+| list directory | `File.ls/1`      | `file:list_dir/1`            |
+| file info      | `File.stat/1`    | `file:read_file_info/1`      |
+
+**Design meaning:** Non-bang file APIs return tagged results. Bang APIs raise on failure.
+
+**Common Pitfall:** Do not use bang file operations on expected user-facing file failures unless crashing is the intended boundary.
+
+### `Path` — path manipulation
+
+`Path` is the Elixir path utility module.
+
+```elixir
+Path.join(["priv", "data", "file.txt"])
+Path.basename(path)
+Path.dirname(path)
+Path.extname(path)
+Path.expand(path)
+```
+
+Erlang equivalent:
+
+```erlang
+filename:join(["priv", "data", "file.txt"]).
+filename:basename(Path).
+filename:dirname(Path).
+```
+
+| Task      | Elixir            | Erlang                 |
+| --------- | ----------------- | ---------------------- |
+| join      | `Path.join/1,2`   | `filename:join/1,2`    |
+| basename  | `Path.basename/1` | `filename:basename/1`  |
+| dirname   | `Path.dirname/1`  | `filename:dirname/1`   |
+| extension | `Path.extname/1`  | `filename:extension/1` |
+| expand    | `Path.expand/1`   | path/file APIs         |
+
+**Design meaning:** Use path APIs instead of manual string concatenation.
+
+**Common Pitfall:** Source-relative paths may fail in releases. Use application-aware paths for deployed assets.
+
+### `Map` — map utility module
+
+`Map` is Elixir’s primary map utility module.
+
+```elixir
+Map.get(user, :id)
+Map.fetch(user, :id)
+Map.put(user, :name, "Ada")
+Map.update(user, :count, 1, fn n -> n + 1 end)
+Map.take(user, [:id, :name])
+```
+
+Erlang equivalent:
+
+```erlang
+maps:get(id, User).
+maps:find(id, User).
+maps:put(name, <<"Ada">>, User).
+maps:take(id, User).
+```
+
+| Task               | Elixir         | Erlang          |
+| ------------------ | -------------- | --------------- |
+| get with default   | `Map.get/3`    | `maps:get/3`    |
+| fetch required key | `Map.fetch/2`  | `maps:find/2`   |
+| put                | `Map.put/3`    | `maps:put/3`    |
+| delete             | `Map.delete/2` | `maps:remove/2` |
+| keys               | `Map.keys/1`   | `maps:keys/1`   |
+| values             | `Map.values/1` | `maps:values/1` |
+| merge              | `Map.merge/2`  | `maps:merge/2`  |
+
+**Design meaning:** Maps are good general key-value structures. Use structs when the data has a named domain shape.
+
+**Common Pitfall:** Atom-key maps and string-key maps are different. `%{id: 1}` does not match `%{"id" => 1}`.
+
+### `MapSet` — set abstraction
+
+`MapSet` is the standard Elixir set type.
+
+```elixir
+set = MapSet.new([:read, :write])
+MapSet.member?(set, :read)
+MapSet.put(set, :admin)
+MapSet.delete(set, :write)
+```
+
+Erlang alternatives include `sets`, `ordsets`, `gb_sets`, or maps-as-sets.
+
+```erlang
+Set = sets:from_list([read, write]),
+sets:is_element(read, Set).
+```
+
+| Need                  | Elixir                     | Erlang    |
+| --------------------- | -------------------------- | --------- |
+| ordinary set          | `MapSet`                   | `sets`    |
+| ordered-list set      | list/MapSet depending need | `ordsets` |
+| tree-like set         | no common direct default   | `gb_sets` |
+| simple membership map | map keys                   | map keys  |
+
+**Design meaning:** Use a set abstraction when membership is the concept. Do not manually maintain list uniqueness unless order and list semantics matter.
+
+**Common Pitfall:** Repeated `Enum.member?/2` over lists can become costly for set-like workloads.
+
+### `Keyword` — option lists
+
+A keyword list is a list of two-element tuples whose keys are atoms.
+
+```elixir
+opts = [timeout: 5_000, retries: 3]
+
+Keyword.get(opts, :timeout)
+Keyword.put(opts, :timeout, 10_000)
+```
+
+Runtime shape:
+
+```elixir
+[{:timeout, 5_000}, {:retries, 3}]
+```
+
+Erlang proplist comparison:
+
+```erlang
+Opts = [{timeout, 5000}, {retries, 3}],
+proplists:get_value(timeout, Opts).
+```
+
+| Use keyword lists for     | Avoid using them for            |
+| ------------------------- | ------------------------------- |
+| function options          | large dictionaries              |
+| DSL declarations          | repeated random lookup          |
+| ordered options           | unique-key storage requirements |
+| duplicate-key conventions | general data modeling           |
+
+**Design meaning:** Keyword lists are lists. They preserve order and allow duplicate keys.
+
+**Common Pitfall:** Lookup is linear. Use maps for general key-value data.
+
+### `Task` — temporary concurrent work
+
+`Task` runs work in another process and provides result-handling helpers.
+
+```elixir
+task = Task.async(fn -> expensive_work() end)
+Task.await(task, 5_000)
+```
+
+Controlled result pattern:
+
+```elixir
+case Task.yield(task, 5_000) || Task.shutdown(task) do
+  {:ok, result} ->
+    {:ok, result}
+
+  {:exit, reason} ->
+    {:error, {:task_failed, reason}}
+
+  nil ->
+    {:error, :timeout}
+end
+```
+
+Erlang equivalent would usually involve `spawn`, monitors, references, and receive patterns.
+
+```erlang
+Parent = self(),
+Ref = make_ref(),
+Pid = spawn(fun() ->
+    Parent ! {Ref, do_work()}
+end),
+receive
+    {Ref, Result} -> {ok, Result}
+after 5000 ->
+    {error, timeout}
+end.
+```
+
+| Use `Task` when                          | Prefer another abstraction when |
+| ---------------------------------------- | ------------------------------- |
+| work is temporary                        | process owns long-lived state   |
+| caller needs result                      | worker has protocol             |
+| concurrency is useful                    | pure local call is enough       |
+| failure should be isolated or supervised | stateful server needed          |
+| task count is bounded                    | unbounded work source exists    |
+
+**Design meaning:** A task is a BEAM process. It has failure, timeout, link/monitor, and scheduling semantics.
+
+**Common Pitfall:** `Task.async` links failure semantics to the caller. For supervised isolated tasks, use `Task.Supervisor`.
+
+### `Task.Supervisor` — supervised temporary work
+
+`Task.Supervisor` supervises tasks.
+
+Root child:
+
+```elixir
+children = [
+  {Task.Supervisor, name: MyApp.TaskSupervisor}
+]
+```
+
+Start supervised task:
+
+```elixir
+Task.Supervisor.async_nolink(MyApp.TaskSupervisor, fn ->
+  do_work()
+end)
+```
+
+| Tool                           | Use                                             |
+| ------------------------------ | ----------------------------------------------- |
+| `Task.async`                   | caller-owned temporary work                     |
+| `Task.Supervisor.async`        | supervised task with link behavior              |
+| `Task.Supervisor.async_nolink` | supervised task without linking caller directly |
+| `Task.Supervisor.start_child`  | fire-and-forget supervised task process         |
+
+**Design meaning:** `Task.Supervisor` is the bridge between temporary concurrent work and OTP supervision.
+
+**Common Pitfall:** Supervised does not mean unlimited. Concurrency limits still matter.
+
+### `Agent` — simple state process
+
+`Agent` is a simple abstraction over a process holding state.
+
+```elixir
+{:ok, pid} = Agent.start_link(fn -> %{} end)
+
+Agent.update(pid, fn state ->
+  Map.put(state, :x, 1)
+end)
+
+Agent.get(pid, fn state ->
+  Map.fetch(state, :x)
+end)
+```
+
+Erlang equivalent would typically be a small `gen_server`.
+
+| Use `Agent` when                         | Prefer `GenServer` when               |
+| ---------------------------------------- | ------------------------------------- |
+| state is simple                          | state transitions have domain rules   |
+| operations are trivial                   | protocol is meaningful                |
+| caller-supplied functions are acceptable | invariants must be enforced centrally |
+| quick internal state holder              | callbacks/timers/monitors needed      |
+| no rich message behavior                 | shutdown/recovery logic matters       |
+
+**Design meaning:** `Agent` is convenient, but it lets callers supply state functions. That can spread state logic across the codebase.
+
+**Common Pitfall:** If a state process enforces business rules, use `GenServer` or a dedicated API instead of arbitrary `Agent.update` calls.
+
+### `GenServer` — Elixir wrapper over `gen_server`
+
+`GenServer` is Elixir’s wrapper around the OTP `gen_server` behavior.
+
+Elixir:
+
+```elixir
+defmodule Counter do
+  use GenServer
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, 0, opts)
+  end
+
+  def increment(server) do
+    GenServer.cast(server, :increment)
+  end
+
+  def get(server) do
+    GenServer.call(server, :get)
+  end
+
+  @impl true
+  def init(count) do
+    {:ok, count}
+  end
+
+  @impl true
+  def handle_cast(:increment, count) do
+    {:noreply, count + 1}
+  end
+
+  @impl true
+  def handle_call(:get, _from, count) do
+    {:reply, count, count}
+  end
+end
+```
+
+Erlang equivalent idea:
+
+```erlang
+-behaviour(gen_server).
+
+handle_cast(increment, Count) ->
+    {noreply, Count + 1}.
+
+handle_call(get, _From, Count) ->
+    {reply, Count, Count}.
+```
+
+| Elixir                   | Erlang                                    |
+| ------------------------ | ----------------------------------------- |
+| `use GenServer`          | `-behaviour(gen_server)` plus conventions |
+| `GenServer.start_link`   | `gen_server:start_link`                   |
+| `GenServer.call`         | `gen_server:call`                         |
+| `GenServer.cast`         | `gen_server:cast`                         |
+| `GenServer.reply`        | `gen_server:reply`                        |
+| `{:reply, reply, state}` | `{reply, Reply, State}`                   |
+| `{:noreply, state}`      | `{noreply, State}`                        |
+
+**Design meaning:** A `GenServer` is one process with one mailbox. It serializes callbacks.
+
+**Common Pitfall:** Do not use `GenServer` as a module organization tool. Use it when process semantics are required.
+
+### `Supervisor` — Elixir wrapper over OTP supervision
+
+`Supervisor` starts and supervises static child processes.
+
+```elixir
+children = [
+  MyApp.Cache,
+  {Registry, keys: :unique, name: MyApp.Registry}
+]
+
+Supervisor.start_link(children,
+  strategy: :one_for_one,
+  name: MyApp.Supervisor
+)
+```
+
+Custom supervisor:
+
+```elixir
+defmodule MyApp.Supervisor do
+  use Supervisor
+
+  @impl true
+  def init(_arg) do
+    children = [
+      MyApp.Cache
+    ]
+
+    Supervisor.init(children, strategy: :one_for_one)
+  end
+end
+```
+
+Erlang equivalent:
+
+```erlang
+-behaviour(supervisor).
+
+init([]) ->
+    Children = [...],
+    {ok, {{one_for_one, 5, 10}, Children}}.
+```
+
+| Elixir          | Erlang         |
+| --------------- | -------------- |
+| `Supervisor`    | `supervisor`   |
+| `:one_for_one`  | `one_for_one`  |
+| `:one_for_all`  | `one_for_all`  |
+| `:rest_for_one` | `rest_for_one` |
+| `:permanent`    | `permanent`    |
+| `:transient`    | `transient`    |
+| `:temporary`    | `temporary`    |
+
+**Design meaning:** Elixir supervision syntax is simpler, but the restart model is OTP’s model.
+
+**Common Pitfall:** Supervision restarts processes, not business transactions.
+
+### `DynamicSupervisor` — runtime child supervision
+
+`DynamicSupervisor` manages children started at runtime.
+
+```elixir
+children = [
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+]
+```
+
+Start a child:
+
+```elixir
+DynamicSupervisor.start_child(
+  MyApp.WorkerSupervisor,
+  {MyApp.Worker, arg}
+)
+```
+
+Common return:
+
+```elixir
+{:ok, pid}
+{:error, {:already_started, pid}}
+{:error, reason}
+:ignore
+```
+
+| Use `DynamicSupervisor` when    | Use `Supervisor` when         |
+| ------------------------------- | ----------------------------- |
+| children appear dynamically     | children are known at startup |
+| worker count changes            | fixed app infrastructure      |
+| each worker needs lifecycle     | static service list           |
+| runtime identity matters        | stable top-level child        |
+| children can fail independently | fixed dependency group        |
+
+**Design meaning:** `DynamicSupervisor` replaces older dynamic child patterns in many modern Elixir applications.
+
+**Common Pitfall:** Dynamic supervision does not automatically provide process discovery. Pair with `Registry` when needed.
+
+### `Registry` — dynamic process names
+
+`Registry` provides local process lookup by key.
+
+Start registry:
+
+```elixir
+children = [
+  {Registry, keys: :unique, name: MyApp.Registry}
+]
+```
+
+Use `:via` tuple:
+
+```elixir
+def via_tuple(id) do
+  {:via, Registry, {MyApp.Registry, id}}
+end
+
+GenServer.start_link(__MODULE__, arg, name: via_tuple(id))
+```
+
+Lookup:
+
+```elixir
+Registry.lookup(MyApp.Registry, id)
+```
+
+Possible result:
+
+```elixir
+[{pid, value}]
+[]
+```
+
+| Use `Registry` for               | Avoid using it as                            |
+| -------------------------------- | -------------------------------------------- |
+| dynamic process names            | durable database                             |
+| process discovery                | general key-value store                      |
+| local process lookup             | global cluster registry without extra design |
+| unique or duplicate process keys | authorization system                         |
+| PubSub-like local registration   | permanent state                              |
+
+**Design meaning:** `Registry` is live process discovery. It is not persistent storage.
+
+**Common Pitfall:** `Registry` is local to a BEAM node unless a distributed design is added.
+
+### `Application` — OTP application callback
+
+`Application` wraps the OTP application behavior.
+
+```elixir
+defmodule MyApp.Application do
+  use Application
+
+  @impl true
+  def start(_type, _args) do
+    children = [
+      MyApp.Cache
+    ]
+
+    Supervisor.start_link(children,
+      strategy: :one_for_one,
+      name: MyApp.Supervisor
+    )
+  end
+end
+```
+
+Erlang equivalent:
+
+```erlang
+-behaviour(application).
+
+start(_Type, _Args) ->
+    my_app_sup:start_link().
+
+stop(_State) ->
+    ok.
+```
+
+| Application task              | Elixir                             |
+| ----------------------------- | ---------------------------------- |
+| read config                   | `Application.get_env/3`            |
+| fetch required config         | `Application.fetch_env!/2`         |
+| ensure dependency app started | `Application.ensure_all_started/1` |
+| define app callback           | `use Application`                  |
+| start supervision tree        | `start/2` callback                 |
+
+**Design meaning:** `Application.start/2` should usually start the root supervisor. It is the application lifecycle entry point.
+
+**Common Pitfall:** Do not do arbitrary long blocking work directly in application startup unless startup should wait and fail on that work.
+
+### `Logger` — Elixir logging
+
+`Logger` is Elixir’s logging interface.
+
+```elixir
+require Logger
+
+Logger.info("user created", user_id: user.id)
+Logger.warning("external timeout", service: :billing)
+Logger.error("worker failed", reason: inspect(reason))
+```
+
+Erlang comparison:
+
+```erlang
+logger:info("user created: ~p", [UserId]).
+```
+
+| Logger feature     | Use                               |
+| ------------------ | --------------------------------- |
+| levels             | debug/info/warning/error          |
+| metadata           | structured context                |
+| compile-time purge | reduce low-level logs in releases |
+| integration        | OTP logging backend/config        |
+| test capture       | ExUnit helpers                    |
+
+**Design meaning:** Logs are operational data. They should be safe, structured, and useful.
+
+**Common Pitfall:** Do not log raw params, tokens, passwords, cookies, or huge payloads.
+
+### `ExUnit` — Elixir testing framework
+
+`ExUnit` is the standard Elixir test framework.
+
+Basic test:
+
+```elixir
+defmodule ParserTest do
+  use ExUnit.Case
+
+  test "parses valid status" do
+    assert {:ok, :active} = Parser.parse_status("active")
+  end
+
+  test "rejects invalid status" do
+    assert {:error, :invalid_status} = Parser.parse_status("bad")
+  end
+end
+```
+
+Erlang comparison:
+
+```erlang
+parse_status_test() ->
+    ?assertEqual({ok, active}, parser:parse_status(<<"active">>)).
+```
+
+| ExUnit feature    | Use                                  |
+| ----------------- | ------------------------------------ |
+| `test`            | define test case                     |
+| `assert`          | assertion                            |
+| pattern assertion | assert shape and value               |
+| `setup`           | test setup                           |
+| `describe`        | group tests                          |
+| `assert_receive`  | message/concurrency testing          |
+| `capture_log`     | log testing                          |
+| async tests       | concurrent test execution where safe |
+
+Message test:
+
+```elixir
+send(self(), {:done, 1})
+assert_receive {:done, 1}, 1_000
+```
+
+**Design meaning:** ExUnit integrates naturally with pattern matching and BEAM message testing.
+
+**Common Pitfall:** Avoid `Process.sleep` as a test synchronization strategy when `assert_receive`, monitors, or explicit acknowledgements can be used.
+
+### `Mix` — project, build, dependency, and task tool
+
+`Mix` is Elixir’s project workflow tool.
+
+Common commands:
+
+```bash
+mix new my_app
+mix new my_app --sup
+mix deps.get
+mix compile
+mix test
+iex -S mix
+mix format
+mix release
+```
+
+| Task                            | Mix command     |
+| ------------------------------- | --------------- |
+| create project                  | `mix new`       |
+| create supervision app skeleton | `mix new --sup` |
+| fetch deps                      | `mix deps.get`  |
+| compile                         | `mix compile`   |
+| test                            | `mix test`      |
+| format                          | `mix format`    |
+| start shell with project        | `iex -S mix`    |
+| build release                   | `mix release`   |
+| inspect deps                    | `mix deps.tree` |
+| run custom tasks                | `mix task_name` |
+
+Erlang comparison:
+
+```bash
+rebar3 compile
+rebar3 eunit
+rebar3 ct
+rebar3 shell
+rebar3 release
+```
+
+**Design meaning:** Mix is not part of the BEAM runtime, but it defines the standard Elixir developer workflow.
+
+**Common Pitfall:** Code that works in `iex -S mix` may still fail in a release if it assumes dev-only paths, dependencies, or config.
+
+### `Kernel` — Elixir’s default imported core
+
+`Kernel` contains many functions and macros automatically available in Elixir modules.
+
+Examples:
+
+```elixir
+is_binary(value)
+is_integer(value)
+length(list)
+hd(list)
+tl(list)
+inspect(value)
+raise "error"
+spawn(fn -> :ok end)
+send(pid, :msg)
+```
+
+| Kernel item    | Erlang relation       |
+| -------------- | --------------------- |
+| `self()`       | `erlang:self()`       |
+| `spawn/1`      | `erlang:spawn`        |
+| `send/2`       | message send          |
+| `is_binary/1`  | guard BIF             |
+| `is_integer/1` | guard BIF             |
+| `raise`        | exception mechanism   |
+| `inspect/1`    | Elixir representation |
+| `length/1`     | list length           |
+| `hd/1`, `tl/1` | list head/tail        |
+
+**Design meaning:** Some Elixir functions that appear “global” are imported from `Kernel`.
+
+**Common Pitfall:** `Kernel.length/1` traverses a list. It is not constant-time metadata.
+
+### `Process` — process utilities
+
+`Process` wraps many process-related runtime functions.
+
+```elixir
+Process.monitor(pid)
+Process.demonitor(ref)
+Process.info(pid, :message_queue_len)
+Process.sleep(1_000)
+Process.send_after(self(), :tick, 5_000)
+Process.cancel_timer(ref)
+Process.flag(:trap_exit, true)
+```
+
+Erlang equivalents:
+
+```erlang
+erlang:monitor(process, Pid).
+erlang:demonitor(Ref).
+process_info(Pid, message_queue_len).
+timer:sleep(1000).
+erlang:send_after(5000, self(), tick).
+process_flag(trap_exit, true).
+```
+
+| Task            | Elixir                   | Erlang                  |
+| --------------- | ------------------------ | ----------------------- |
+| monitor         | `Process.monitor/1`      | `erlang:monitor/2`      |
+| inspect process | `Process.info/1,2`       | `process_info/1,2`      |
+| sleep           | `Process.sleep/1`        | `timer:sleep/1`         |
+| delayed message | `Process.send_after/3,4` | `erlang:send_after/3,4` |
+| cancel timer    | `Process.cancel_timer/1` | `erlang:cancel_timer/1` |
+| process flag    | `Process.flag/2`         | `process_flag/2`        |
+
+**Design meaning:** `Process` is the Elixir-facing module for many BEAM process operations.
+
+**Common Pitfall:** `Process.sleep` blocks the current process. If used inside a `GenServer` callback, it blocks that server.
+
+### `System` — system and time utilities
+
+`System` handles environment variables, system commands, and time functions.
+
+```elixir
+System.get_env("HOME")
+System.fetch_env!("DATABASE_URL")
+System.cmd("echo", ["hello"])
+System.monotonic_time(:millisecond)
+System.system_time(:second)
+```
+
+Erlang equivalents:
+
+```erlang
+os:getenv("HOME").
+os:cmd("echo hello").
+erlang:monotonic_time(millisecond).
+erlang:system_time(second).
+```
+
+| Task             | Elixir                      |
+| ---------------- | --------------------------- |
+| env var optional | `System.get_env/1`          |
+| env var required | `System.fetch_env!/1`       |
+| run command      | `System.cmd/3`              |
+| monotonic time   | `System.monotonic_time/0,1` |
+| system time      | `System.system_time/0,1`    |
+| halt VM          | `System.halt/1`             |
+
+**Design meaning:** Environment variables are external input. Parse and validate them near startup.
+
+**Common Pitfall:** Use monotonic time for elapsed durations, not system time.
+
+### `Date`, `Time`, `DateTime`, and `NaiveDateTime`
+
+Elixir has structured calendar/time modules.
+
+```elixir
+Date.utc_today()
+Time.utc_now()
+DateTime.utc_now()
+NaiveDateTime.utc_now()
+```
+
+| Module          | Meaning                          |
+| --------------- | -------------------------------- |
+| `Date`          | calendar date                    |
+| `Time`          | time of day                      |
+| `DateTime`      | date and time with timezone info |
+| `NaiveDateTime` | date and time without timezone   |
+| `Calendar`      | calendar behavior/concepts       |
+
+Erlang comparison:
+
+```erlang
+calendar:universal_time().
+calendar:local_time().
+```
+
+**Design meaning:** Calendar time and elapsed duration are different. Use `System.monotonic_time/1` for durations.
+
+**Common Pitfall:** `NaiveDateTime` has no timezone. Do not treat it as an absolute instant without context.
+
+### `Base` — binary-to-text encoding
+
+`Base` encodes binary data as text.
+
+```elixir
+Base.encode64(<<1, 2, 3>>)
+Base.decode64("AQID")
+Base.url_encode64(:crypto.strong_rand_bytes(32), padding: false)
+Base.encode16(<<255, 0>>)
+```
+
+| Encoding        | Use                    |
+| --------------- | ---------------------- |
+| Base64          | general binary-to-text |
+| URL-safe Base64 | tokens in URLs         |
+| Base16 / hex    | hashes/debugging       |
+| raw binary      | internal bytes         |
+
+**Design meaning:** Encoding is representation conversion. It is not encryption.
+
+**Common Pitfall:** Do not store secrets thinking Base64 protects them.
+
+### `URI` — URI parsing and construction
+
+`URI` parses and manipulates URIs.
+
+```elixir
+uri = URI.parse("https://example.com/users?id=1")
+uri.scheme
+uri.host
+uri.query
+```
+
+Build query:
+
+```elixir
+URI.encode_query(%{"q" => "elixir", "page" => "1"})
+```
+
+| Use          | Example              |
+| ------------ | -------------------- |
+| parse URL    | `URI.parse/1`        |
+| encode query | `URI.encode_query/1` |
+| decode query | `URI.decode_query/1` |
+| merge URI    | `URI.merge/2`        |
+
+**Design meaning:** URLs and query strings are external boundary data. Parse and validate before use.
+
+**Common Pitfall:** Do not concatenate user input into URLs without encoding.
+
+### `Jason` and JSON note
+
+`Jason` is not an Elixir standard module, but it is so common in Elixir projects that Erlang programmers will often see it.
+
+```elixir
+Jason.decode(binary)
+Jason.encode(map)
+```
+
+Typical boundary flow:
+
+```elixir
+with {:ok, data} <- Jason.decode(body),
+     {:ok, command} <- CreateUser.new(data) do
+  {:ok, command}
+end
+```
+
+**Design meaning:** JSON decoding produces generic data. It does not validate domain meaning.
+
+**Common Pitfall:** Do not convert arbitrary JSON keys to atoms.
+
+### `Protocol` and `defprotocol` — data-polymorphic dispatch
+
+Elixir protocols provide data-type-based polymorphism.
+
+```elixir
+defprotocol Render do
+  def render(value)
+end
+
+defimpl Render, for: User do
+  def render(%User{name: name}), do: "User: #{name}"
+end
+```
+
+Erlang does not have the same built-in protocol feature. Comparable design alternatives include behaviours, tagged data with dispatch functions, or explicit module callbacks.
+
+| Use protocols when                       | Prefer behaviours when               |
+| ---------------------------------------- | ------------------------------------ |
+| operation depends on data type           | implementation is selected as module |
+| many data types implement same operation | service adapter is needed            |
+| extension by type is natural             | runtime config selects backend       |
+| generic operation is useful              | callback set defines capability      |
+
+**Design meaning:** Protocols are for dispatch by data type, not for service abstraction.
+
+**Common Pitfall:** Do not use a protocol when a simple function clause or behaviour module is clearer.
+
+### `defstruct` and Structs
+
+Elixir structs define named map shapes.
+
+```elixir
+defmodule User do
+  defstruct [:id, :name, active: true]
+end
+
+user = %User{id: 1, name: "Ada"}
+```
+
+Erlang comparison:
+
+```erlang
+-record(user, {id, name, active = true}).
+```
+
+| Elixir struct              | Erlang record                 |
+| -------------------------- | ----------------------------- |
+| runtime map                | runtime tuple                 |
+| field names remain as keys | field names compile-time only |
+| module-defined             | header-defined                |
+| protocol dispatch possible | pattern/record syntax         |
+| flexible map-like behavior | compact tuple representation  |
+
+**Design meaning:** Structs are data, not classes. Behavior belongs in modules/protocols.
+
+**Common Pitfall:** A struct by itself does not enforce invariants. Use constructors and opaque types when validity matters.
+
+### `defmodule`, `def`, `defp`, and Module Organization
+
+Elixir modules organize functions, structs, protocols, behaviours, and macros.
+
+```elixir
+defmodule Accounts do
+  def create_user(params) do
+    ...
+  end
+
+  defp normalize(params) do
+    ...
+  end
+end
+```
+
+Erlang comparison:
+
+```erlang
+-module(accounts).
+-export([create_user/1]).
+
+create_user(Params) ->
+    ...
+
+normalize(Params) ->
+    ...
+```
+
+| Elixir      | Erlang              |
+| ----------- | ------------------- |
+| `defmodule` | `-module`           |
+| `def`       | exported function   |
+| `defp`      | unexported function |
+| `@spec`     | `-spec`             |
+| `@type`     | `-type`             |
+| `@opaque`   | `-opaque`           |
+| `@callback` | `-callback`         |
+
+**Design meaning:** Elixir makes public/private function visibility explicit at each definition.
+
+**Common Pitfall:** Do not expose helper functions as `def` merely for testing if they are not part of the public API. Test through public behavior or refactor into a dedicated internal module if needed.
+
+### `@spec`, `@type`, `@opaque`, `@callback`, and `@impl`
+
+Elixir type and callback annotations map closely to Erlang specs and behaviours.
+
+```elixir
+@type user_id :: pos_integer()
+@opaque t :: %__MODULE__{id: user_id()}
+
+@spec fetch_user(user_id()) :: {:ok, t()} | {:error, :not_found}
+def fetch_user(id), do: ...
+
+@callback put(binary(), binary()) :: :ok | {:error, term()}
+```
+
+Implementation marker:
+
+```elixir
+@impl true
+def handle_call(:get, _from, state) do
+  {:reply, state, state}
+end
+```
+
+| Elixir       | Erlang                                                   |
+| ------------ | -------------------------------------------------------- |
+| `@spec`      | `-spec`                                                  |
+| `@type`      | `-type`                                                  |
+| `@typep`     | private type convention                                  |
+| `@opaque`    | `-opaque`                                                |
+| `@callback`  | `-callback`                                              |
+| `@behaviour` | `-behaviour`                                             |
+| `@impl true` | implementation marker; no exact Erlang syntax equivalent |
+
+**Design meaning:** Specs are contracts for humans and tools. They are not runtime validation.
+
+**Common Pitfall:** Broad specs such as `term() -> term()` add little value.
+
+### `quote`, `unquote`, and `defmacro`
+
+Elixir macros are a major difference from Erlang.
+
+```elixir
+defmacro log_expr(expr) do
+  quote do
+    value = unquote(expr)
+    IO.inspect(value)
+    value
+  end
+end
+```
+
+| Macro concept | Meaning                              |
+| ------------- | ------------------------------------ |
+| `quote`       | produce AST                          |
+| `unquote`     | insert AST/value into quoted code    |
+| `defmacro`    | define compile-time code generator   |
+| `use`         | calls `__using__/1` macro            |
+| `require`     | makes macros available               |
+| hygiene       | prevents accidental variable capture |
+| `bind_quoted` | safer macro variable binding         |
+
+**Design meaning:** Elixir macros run at compile time and generate code. Many DSLs, including tests and frameworks, rely on them.
+
+**Common Pitfall:** Do not use macros for ordinary function reuse. Macros increase compile-time complexity.
+
+### `use`, `import`, `alias`, and `require`
+
+These are central to reading Elixir projects.
+
+```elixir
+alias MyApp.Accounts.User
+import Enum
+require Logger
+use GenServer
+```
+
+| Form              | Meaning                                     |
+| ----------------- | ------------------------------------------- |
+| `alias`           | shorten module name                         |
+| `import`          | bring functions/macros into local scope     |
+| `require`         | require module so macros can be used        |
+| `use`             | invoke module’s `__using__` macro           |
+| `use GenServer`   | inject GenServer-related setup/conveniences |
+| `use ExUnit.Case` | set up test case module                     |
+
+Erlang comparison:
+
+| Elixir          | Erlang rough relation                          |
+| --------------- | ---------------------------------------------- |
+| `alias`         | no direct equivalent                           |
+| `import`        | `-import`, though less emphasized              |
+| `require`       | macro availability concept                     |
+| `use`           | no direct ordinary equivalent; macro expansion |
+| include headers | Erlang `-include`, not Elixir `use`            |
+
+**Design meaning:** `use` can inject behavior, imports, aliases, attributes, callbacks, and functions. It should be read as compile-time code generation.
+
+**Common Pitfall:** Do not assume `use Something` is harmless. Check `Something.__using__/1` if behavior is unclear.
+
+### `IO` and `IO.inspect`
+
+`IO` handles input/output and inspection.
+
+```elixir
+IO.puts("hello")
+IO.inspect(value, label: "value")
+```
+
+Erlang comparison:
+
+```erlang
+io:format("hello~n").
+io:format("Value: ~p~n", [Value]).
+```
+
+| Task           | Elixir                  | Erlang                      |
+| -------------- | ----------------------- | --------------------------- |
+| print line     | `IO.puts/1`             | `io:format("~s~n", [...])`  |
+| inspect term   | `IO.inspect/2`          | `io:format("~p~n", [Term])` |
+| convert iodata | `IO.iodata_to_binary/1` | `iolist_to_binary/1`        |
+
+**Design meaning:** `IO.inspect` is excellent for debugging shape, especially in pipelines.
+
+```elixir
+value
+|> normalize()
+|> IO.inspect(label: "after normalize")
+|> validate()
+```
+
+**Common Pitfall:** Do not leave raw `IO.inspect` in production paths. Use `Logger` with safe metadata.
+
+### `dbg` — pipeline-friendly debugging
+
+Modern Elixir includes `dbg` for debugging expressions.
+
+```elixir
+user
+|> normalize()
+|> dbg()
+|> validate()
+```
+
+**Design meaning:** `dbg` helps inspect values while preserving the expression flow.
+
+**Common Pitfall:** Like `IO.inspect`, `dbg` is a development tool, not production instrumentation.
+
+### Elixir Tooling Recognition Table
+
+| Seen in code       | Meaning                               |                   |
+| ------------------ | ------------------------------------- | ----------------- |
+| `use GenServer`    | module implements GenServer behavior  |                   |
+| `use Supervisor`   | module implements Supervisor behavior |                   |
+| `use Application`  | application callback module           |                   |
+| `use ExUnit.Case`  | test module                           |                   |
+| `alias Foo.Bar`    | local shorthand for module            |                   |
+| `require Logger`   | enables Logger macros                 |                   |
+| `import Something` | brings functions/macros into scope    |                   |
+| `@impl true`       | marks callback implementation         |                   |
+| `@spec`            | function spec                         |                   |
+| `@type`            | named type                            |                   |
+| `@opaque`          | hidden representation type            |                   |
+| `defstruct`        | defines struct fields                 |                   |
+| `defprotocol`      | defines protocol                      |                   |
+| `defimpl`          | implements protocol                   |                   |
+| `defmacro`         | compile-time code generation          |                   |
+| `                  | >`                                    | pipeline operator |
+| `~r/.../`          | regex sigil                           |                   |
+| `~c"..."`          | charlist sigil                        |                   |
+| `~s"..."`          | string sigil                          |                   |
+
+### Elixir-to-Erlang Mental Mapping
+
+| Elixir concept      | Erlang mental mapping                             |
+| ------------------- | ------------------------------------------------- |
+| `Enum.map`          | `lists:map`, but over Enumerable                  |
+| `Stream`            | lazy enumerable pipeline                          |
+| `String`            | UTF-8 binary text operations                      |
+| `Map`               | `maps`                                            |
+| `Keyword`           | proplists-like option list                        |
+| `Task`              | spawned process with result helpers               |
+| `Agent`             | simple state server                               |
+| `GenServer`         | `gen_server` wrapper                              |
+| `Supervisor`        | `supervisor` wrapper                              |
+| `DynamicSupervisor` | dynamic child supervisor                          |
+| `Registry`          | local process registry                            |
+| `Application`       | OTP `application` callback                        |
+| `Logger`            | logging layer                                     |
+| `ExUnit`            | test framework                                    |
+| `Mix`               | Rebar3-like project workflow, but Elixir-specific |
+| struct              | map-based named data                              |
+| protocol            | data-type polymorphism                            |
+| macro               | compile-time AST transformation                   |
+| `use`               | macro-based setup                                 |
+
+### Common Erlang-Background Misreadings
+
+| Misreading                                             | Correction                                               |                                 |
+| ------------------------------------------------------ | -------------------------------------------------------- | ------------------------------- |
+| Elixir string is like Erlang string                    | Elixir string is UTF-8 binary                            |                                 |
+| `%User{}` is like Erlang record                        | struct is a map, record is a tuple                       |                                 |
+| `use GenServer` is only an import                      | it is macro expansion plus behavior setup                |                                 |
+| `Task` is only a function call wrapper                 | it is a process abstraction                              |                                 |
+| `Agent` is just a variable                             | it is a process holding state                            |                                 |
+| `Registry` is a database                               | it tracks live processes                                 |                                 |
+| `Enum` is lazy                                         | `Enum` is eager                                          |                                 |
+| pipe `                                                 | >` creates concurrency                                   | it only rewrites function calls |
+| `@spec` enforces runtime types                         | specs guide tools/readers, not validation                |                                 |
+| `defp` is inaccessible like unexported Erlang function | broadly similar, but Elixir visibility is per definition |                                 |
+| `Logger.info` is a normal function only                | Logger functions are macros in common usage              |                                 |
+| `with` is exception handling                           | it is pattern-matching control flow                      |                                 |
+
+### Appendix H Summary
+
+An Erlang programmer reading Elixir should recognize that Elixir adds:
+
+```text
+modern syntax
+Mix workflow
+ExUnit testing
+Enum/Stream collection style
+String-first UTF-8 text handling
+structs and protocols
+macro-powered DSLs
+ergonomic OTP wrappers
+```
+
+But the deeper runtime model remains BEAM/OTP:
+
+```text
+GenServer wraps gen_server.
+Supervisor wraps supervisor.
+Application wraps application behavior.
+Task and Agent are process abstractions.
+Registry is live process discovery.
+Elixir data is still BEAM terms.
+Elixir processes are still BEAM processes.
+```
+
+The practical rule is:
+
+```text
+Read Elixir’s surface ergonomics,
+but reason through Erlang/OTP concepts:
+terms, processes, mailboxes, callbacks, supervisors, exits, links, monitors, and runtime ownership.
+```
+
+Once this mapping is clear, Elixir code becomes much easier for an Erlang-background reader to understand.
+
+## Appendix I — Text, Binary, Unicode, Charlists, and Iodata
+
+### Appendix Scope — the most common Erlang / Elixir interop confusion
+
+This appendix explains the text and binary model shared by Erlang and Elixir, with special attention to the places where they differ.
+
+The central rule is:
+
+```text
+Erlang and Elixir share BEAM binaries and lists,
+but their string conventions are different.
+Elixir strings are UTF-8 binaries.
+Erlang string literals are traditionally charlists.
+```
+
+| Concept               | Erlang                            | Elixir                            | Runtime shape        |
+| --------------------- | --------------------------------- | --------------------------------- | -------------------- |
+| Binary                | `<<"abc">>`                       | `<<"abc">>` or `"abc"`            | byte sequence        |
+| Elixir string         | not Erlang syntax as such         | `"abc"`                           | UTF-8 binary         |
+| Erlang string literal | `"abc"`                           | `~c"abc"` or `'abc'`              | charlist             |
+| Charlist              | `"abc"`                           | `~c"abc"`                         | list of codepoints   |
+| Byte list             | `[97, 98, 99]`                    | `[97, 98, 99]`                    | list of integers     |
+| Iodata                | nested list/binary data           | nested list/binary data           | output-friendly data |
+| Chardata              | Unicode-oriented char/binary data | Unicode-oriented char/binary data | text-oriented iodata |
+| Byte size             | `byte_size(Bin)`                  | `byte_size(bin)`                  | byte count           |
+| Text length           | Unicode-aware APIs                | `String.length(str)`              | grapheme/text length |
+
+### Binary — byte sequence
+
+A binary is a sequence of bytes or bits.
+
+Erlang:
+
+```erlang
+Bin = <<"abc">>.
+```
+
+Elixir:
+
+```elixir
+bin = <<"abc">>
+```
+
+Elixir string literal:
+
+```elixir
+str = "abc"
+```
+
+In Elixir, this is also a binary:
+
+```elixir
+is_binary("abc")
+# true
+```
+
+| Binary use                 | Good for           |
+| -------------------------- | ------------------ |
+| UTF-8 strings in Elixir    | ordinary text      |
+| protocol packets           | byte-level parsing |
+| file contents              | raw data           |
+| network payloads           | socket data        |
+| cryptographic input/output | bytes              |
+| compressed data            | bytes              |
+| serialized data            | bytes              |
+
+**Design meaning:** A binary is not necessarily text. It may be UTF-8 text, compressed bytes, encrypted bytes, an image, a packet, or arbitrary data.
+
+**Common Pitfall:** Do not call `String` functions on arbitrary binaries unless they are valid UTF-8 text.
+
+### Elixir String — UTF-8 binary
+
+In Elixir, a string is a UTF-8 binary.
+
+```elixir
+"hello"
+"José"
+"你好"
+```
+
+Check:
+
+```elixir
+is_binary("hello")
+# true
+```
+
+Important difference:
+
+```elixir
+byte_size("José")
+String.length("José")
+```
+
+These answer different questions.
+
+| Function              | Meaning                                                |
+| --------------------- | ------------------------------------------------------ |
+| `byte_size/1`         | number of bytes                                        |
+| `String.length/1`     | number of graphemes according to Elixir text semantics |
+| `String.graphemes/1`  | split into graphemes                                   |
+| `String.codepoints/1` | split into Unicode codepoints                          |
+| `String.valid?/1`     | check UTF-8 validity                                   |
+
+Example:
+
+```elixir
+byte_size("é")
+# 2
+
+String.length("é")
+# 1
+```
+
+**Design meaning:** Text length is not byte length. This matters for slicing, validation, protocol framing, storage limits, and UI display.
+
+**Common Pitfall:** If a protocol says “10 bytes,” use byte-level functions. If a UI says “10 characters,” use text-aware functions and define what “character” means.
+
+### Erlang String Literal — charlist convention
+
+In Erlang, `"abc"` traditionally means a list of integer codepoints:
+
+```erlang
+"abc".
+%% [97,98,99]
+```
+
+Elixir equivalent:
+
+```elixir
+~c"abc"
+```
+
+or older Elixir charlist literal:
+
+```elixir
+'abc'
+```
+
+| Source             | Runtime shape |
+| ------------------ | ------------- |
+| Erlang `"abc"`     | charlist      |
+| Elixir `"abc"`     | UTF-8 binary  |
+| Elixir `~c"abc"`   | charlist      |
+| Erlang `<<"abc">>` | binary        |
+| Elixir `<<"abc">>` | binary        |
+
+**Design meaning:** This is the single most common Erlang / Elixir text interop problem.
+
+**Common Pitfall:** Passing Elixir `"example.com"` to an Erlang API that expects a charlist may fail or behave unexpectedly. Use `~c"example.com"` when a charlist is required.
+
+### Charlists — lists of codepoints
+
+A charlist is a list of Unicode codepoints.
+
+Elixir:
+
+```elixir
+charlist = ~c"abc"
+```
+
+Erlang:
+
+```erlang
+Charlist = "abc".
+```
+
+Runtime shape:
+
+```elixir
+~c"abc" == [97, 98, 99]
+# true
+```
+
+| Charlist use           | Situation                                        |
+| ---------------------- | ------------------------------------------------ |
+| older Erlang APIs      | hostnames, filenames, options in some APIs       |
+| Erlang examples        | many docs use `"..."`                            |
+| shell display          | printable integer lists may display as charlists |
+| Unicode conversion     | `:unicode.characters_to_binary/1`                |
+| compatibility boundary | converting between Elixir and Erlang conventions |
+
+Convert charlist to Elixir string/binary:
+
+```elixir
+to_string(~c"abc")
+```
+
+or:
+
+```elixir
+:unicode.characters_to_binary(~c"abc")
+```
+
+Convert binary string to charlist:
+
+```elixir
+String.to_charlist("abc")
+```
+
+or:
+
+```elixir
+:unicode.characters_to_list("abc")
+```
+
+**Design meaning:** Charlists are lists. They have list cost characteristics. They are not compact byte strings.
+
+**Common Pitfall:** A list like `[65, 66, 67]` may print as `~c"ABC"` in modern Elixir inspection. It is still a list of integers.
+
+### Byte Lists versus Charlists
+
+A byte list is a list of integers from `0` to `255`. A charlist is a list of Unicode codepoints, which may include values above `255`.
+
+```elixir
+[97, 98, 99]
+# may inspect as ~c"abc"
+
+[20320, 22909]
+# charlist for Chinese "你好"
+```
+
+| Concept      | Meaning                     |
+| ------------ | --------------------------- |
+| byte         | integer from `0` to `255`   |
+| codepoint    | Unicode scalar value        |
+| charlist     | list of codepoints          |
+| binary       | compact byte sequence       |
+| UTF-8 binary | text encoded as UTF-8 bytes |
+
+**Design meaning:** A charlist is text-oriented. A byte list is byte-oriented. Both are lists, but they should not be casually confused.
+
+**Common Pitfall:** Lists of bytes are inefficient for large binary payloads. Use binaries for raw bytes.
+
+### Binary Pattern Matching
+
+Binary pattern matching is one of the most important BEAM features for protocol work.
+
+Elixir:
+
+```elixir
+def parse(<<version, type, length::16, payload::binary-size(length), rest::binary>>) do
+  {:ok, %{version: version, type: type, payload: payload}, rest}
+end
+
+def parse(_) do
+  {:error, :invalid_packet}
+end
+```
+
+Erlang:
+
+```erlang
+parse(<<Version, Type, Length:16, Payload:Length/binary, Rest/binary>>) ->
+    {ok, #{version => Version, type => Type, payload => Payload}, Rest};
+parse(_) ->
+    {error, invalid_packet}.
+```
+
+| Segment                      | Meaning                                 |
+| ---------------------------- | --------------------------------------- |
+| `<<byte, rest::binary>>`     | match first byte and remaining binary   |
+| `<<n::16>>`                  | match 16-bit integer                    |
+| `<<part::binary-size(len)>>` | match binary segment of known byte size |
+| `<<codepoint::utf8>>`        | match UTF-8 codepoint                   |
+| `<<bits::bitstring>>`        | match bitstring remainder               |
+
+**Design meaning:** Use binary pattern matching for binary protocols, packet parsing, compact formats, and byte-level data.
+
+**Common Pitfall:** Do not use regex or `String.split` for binary protocols when byte-level structure is known.
+
+### UTF-8 Matching
+
+Elixir:
+
+```elixir
+<<"é">>
+```
+
+The character `é` occupies two bytes in UTF-8.
+
+Match by UTF-8 codepoint:
+
+```elixir
+<<codepoint::utf8>> = "é"
+```
+
+Match by bytes:
+
+```elixir
+<<byte1, byte2>> = "é"
+```
+
+| Match style           | Meaning                       |
+| --------------------- | ----------------------------- |
+| `<<x>>`               | one byte                      |
+| `<<x::utf8>>`         | one UTF-8 codepoint           |
+| `String.graphemes/1`  | grapheme-level text units     |
+| `String.codepoints/1` | Unicode codepoints as strings |
+
+**Design meaning:** Byte, codepoint, and grapheme are different units.
+
+**Common Pitfall:** User-perceived characters may consist of multiple codepoints. `String.length/1` is usually closer to user-facing text length than byte or codepoint count, but even display width is a separate issue.
+
+### `String` versus `:binary`
+
+Use `String` for valid UTF-8 text. Use `:binary` or bit syntax for bytes.
+
+| Need                            | Prefer                               |
+| ------------------------------- | ------------------------------------ |
+| trim user text                  | `String.trim/1`                      |
+| lowercase text                  | `String.downcase/1`                  |
+| split text by textual delimiter | `String.split/2`                     |
+| validate UTF-8                  | `String.valid?/1`                    |
+| byte slicing                    | `:binary.part/3` or pattern matching |
+| byte search                     | `:binary.match/2`                    |
+| protocol packet parsing         | bit syntax                           |
+| arbitrary binary data           | `:binary` / bit syntax               |
+| binary replacement              | `:binary.replace/...`                |
+
+Example:
+
+```elixir
+String.length("é")
+# text-level
+
+byte_size("é")
+# byte-level
+```
+
+Binary operations:
+
+```elixir
+:binary.part("abcdef", 0, 3)
+:binary.split("a,b,c", ",", [:global])
+```
+
+**Design meaning:** `String` is semantic text. `:binary` is byte data.
+
+**Common Pitfall:** Byte slicing can split a UTF-8 character and produce invalid text.
+
+### Iodata — efficient output data
+
+Iodata is a nested structure made of binaries and byte lists. It can be written efficiently to files, sockets, and IO devices without first flattening everything manually.
+
+Elixir:
+
+```elixir
+iodata = ["Hello, ", name, "\n"]
+```
+
+Erlang:
+
+```erlang
+Iodata = [<<"Hello, ">>, Name, <<"\n">>].
+```
+
+Flatten when needed:
+
+```elixir
+IO.iodata_to_binary(iodata)
+```
+
+Erlang:
+
+```erlang
+iolist_to_binary(Iodata).
+```
+
+| Iodata element                    | Allowed?             |
+| --------------------------------- | -------------------- |
+| binary                            | yes                  |
+| byte integer `0..255`             | yes                  |
+| nested list                       | yes                  |
+| charlist with non-byte codepoints | not arbitrary iodata |
+| map                               | no                   |
+| tuple                             | no                   |
+| struct                            | no                   |
+
+Example:
+
+```elixir
+["status=", Integer.to_string(status), "\n"]
+```
+
+This can be passed to many output functions.
+
+**Design meaning:** Iodata is for efficient output composition. It avoids repeated binary concatenation.
+
+**Common Pitfall:** Iodata is not automatically Unicode text. A list containing integers above `255` is not valid iodata.
+
+### Chardata — text-oriented iodata
+
+Chardata is similar to iodata, but Unicode-oriented. It may contain binaries and lists of Unicode codepoints.
+
+| Concept  | Allows                                     |
+| -------- | ------------------------------------------ |
+| iodata   | binaries, bytes, nested lists              |
+| chardata | binaries, Unicode codepoints, nested lists |
+
+Convert chardata to binary:
+
+```elixir
+IO.chardata_to_string(chardata)
+```
+
+or:
+
+```elixir
+:unicode.characters_to_binary(chardata)
+```
+
+Example:
+
+```elixir
+chardata = ["Hello ", [?世, ?界]]
+IO.chardata_to_string(chardata)
+```
+
+**Design meaning:** Chardata is useful when working with text that may be represented as nested Unicode lists and binaries.
+
+**Common Pitfall:** Do not send arbitrary chardata to a function expecting strict iodata bytes unless the function documents that it accepts chardata.
+
+### Binary Concatenation versus Iodata
+
+Binary concatenation:
+
+```elixir
+body = "Hello, " <> name <> "\n"
+```
+
+This is fine for small data.
+
+Repeated concatenation:
+
+```elixir
+body =
+  Enum.reduce(chunks, "", fn chunk, acc ->
+    acc <> chunk
+  end)
+```
+
+This can be inefficient because it repeatedly creates new binaries.
+
+Better output-oriented form:
+
+```elixir
+iodata =
+  Enum.map(chunks, fn chunk ->
+    [chunk, "\n"]
+  end)
+
+IO.iodata_to_binary(iodata)
+```
+
+| Situation              | Prefer                       |
+| ---------------------- | ---------------------------- |
+| small fixed string     | `<>` is fine                 |
+| many chunks            | iodata                       |
+| socket/file output     | iodata accepted by many APIs |
+| final API needs binary | flatten once                 |
+| text transformation    | `String` functions           |
+
+**Design meaning:** Iodata is a performance representation for output boundaries.
+
+**Common Pitfall:** Do not prematurely flatten iodata at every step. Flatten at the boundary when needed.
+
+### Erlang API Interop
+
+Many Erlang APIs accept or return charlists, binaries, or iodata depending on age and purpose.
+
+Elixir examples:
+
+```elixir
+:gen_tcp.connect(~c"example.com", 80, [:binary, active: false])
+```
+
+```elixir
+:file.read_file("path/to/file")
+```
+
+```elixir
+:ssl.connect(~c"example.com", 443, [:binary, active: false])
+```
+
+| Erlang API type expectation | Elixir value                                   |
+| --------------------------- | ---------------------------------------------- |
+| charlist host               | `~c"example.com"`                              |
+| binary payload              | `"hello"` or `<<"hello">>`                     |
+| iodata payload              | `["hello", "\n"]`                              |
+| path                        | often accepts charlist or binary depending API |
+| options list                | `[:binary, active: false]`                     |
+| atom option                 | `:binary`                                      |
+
+**Design meaning:** Interop requires reading the Erlang docs’ expected type, not guessing from visual syntax.
+
+**Common Pitfall:** In Erlang docs, `"example.com"` means a charlist. In Elixir, `"example.com"` means a binary.
+
+### File Paths and Text/Binary Boundaries
+
+Elixir `File` and `Path` are usually easier for Elixir code:
+
+```elixir
+Path.join(["priv", "data", "file.txt"])
+File.read(path)
+```
+
+Erlang APIs:
+
+```elixir
+:filename.join(["priv", "data", "file.txt"])
+:file.read_file(path)
+```
+
+| Boundary                 | Preferred Elixir module  |
+| ------------------------ | ------------------------ |
+| path manipulation        | `Path`                   |
+| file read/write          | `File`                   |
+| low-level Erlang interop | `:file`, `:filename`     |
+| application priv path    | app-aware path utilities |
+
+**Design meaning:** A file path is text, but it interacts with OS and release layout. Use APIs, not manual string concatenation.
+
+**Common Pitfall:** Development paths may not exist in releases. Do not assume source-tree-relative paths.
+
+### Socket Text and Binary Boundaries
+
+For sockets, use binary mode unless charlist behavior is explicitly needed.
+
+Elixir:
+
+```elixir
+{:ok, socket} =
+  :gen_tcp.connect(~c"example.com", 80, [
+    :binary,
+    active: false
+  ])
+
+:gen_tcp.send(socket, ["GET / HTTP/1.0\r\n", "\r\n"])
+```
+
+Here the outgoing data is iodata.
+
+Receive:
+
+```elixir
+{:ok, data} = :gen_tcp.recv(socket, 0, 5_000)
+```
+
+With `:binary`, `data` is a binary.
+
+| Socket option   | Meaning                          |
+| --------------- | -------------------------------- |
+| `:binary`       | receive binaries                 |
+| `:list`         | receive lists                    |
+| `active: false` | explicit receive                 |
+| `active: true`  | socket messages in mailbox       |
+| `active: :once` | one active message, then passive |
+
+**Design meaning:** Socket data is bytes first. Parse into text only after determining that the payload is text and has the right encoding.
+
+**Common Pitfall:** Active sockets can fill a process mailbox with binary messages if the process cannot keep up.
+
+### JSON Text Boundary
+
+JSON is encoded as text, usually UTF-8 binary in Elixir.
+
+Typical Elixir boundary:
+
+```elixir
+with {:ok, data} <- Jason.decode(body),
+     {:ok, command} <- CreateUser.new(data) do
+  {:ok, command}
+end
+```
+
+Important distinction:
+
+| Step          | Meaning                                  |
+| ------------- | ---------------------------------------- |
+| raw body      | binary bytes                             |
+| JSON decode   | syntax to generic maps/lists/scalars     |
+| validation    | generic data to domain command           |
+| normalization | external strings to internal atoms/types |
+| domain value  | trusted internal representation          |
+
+**Design meaning:** Decoding JSON is not validation. It only turns text into generic terms.
+
+**Common Pitfall:** Do not convert arbitrary JSON object keys to atoms.
+
+### Base Encoding — binary as text
+
+Binary data often needs a text representation.
+
+Elixir:
+
+```elixir
+bytes = :crypto.strong_rand_bytes(32)
+token = Base.url_encode64(bytes, padding: false)
+```
+
+Decode:
+
+```elixir
+Base.url_decode64(token, padding: false)
+```
+
+| Encoding        | Use                    |
+| --------------- | ---------------------- |
+| Base64          | general binary-to-text |
+| URL-safe Base64 | URL tokens             |
+| Base16 / hex    | hashes, debugging      |
+| raw binary      | internal bytes         |
+| UTF-8 string    | human text             |
+
+**Design meaning:** Encoding is representation conversion. It does not encrypt or protect data.
+
+**Common Pitfall:** Base64 text is reversible. It is not a security mechanism.
+
+### Unicode Normalization and Comparison
+
+Text that looks the same can have different Unicode representations.
+
+Example conceptually:
+
+```text
+é
+```
+
+may be represented as a single codepoint or as `e` plus a combining accent.
+
+Elixir has Unicode-aware string functions, but application-level equality may require normalization depending on domain.
+
+| Domain              | Normalization concern                    |
+| ------------------- | ---------------------------------------- |
+| usernames           | case and normalization policy            |
+| search              | accent/case folding                      |
+| filenames           | OS-dependent normalization issues        |
+| identifiers         | strict byte equality may be safer        |
+| user-facing display | graphemes and display width matter       |
+| protocol fields     | specify exact encoding and normalization |
+
+**Design meaning:** Text equality is a domain decision. Byte equality, codepoint equality, and human-perceived equality may differ.
+
+**Common Pitfall:** Lowercasing alone is not a full international text normalization strategy.
+
+### Display Width is Not String Length
+
+A string’s display width in terminals or UI may differ from its grapheme count.
+
+| Measurement     | Example use                       |
+| --------------- | --------------------------------- |
+| byte size       | storage/protocol length           |
+| codepoint count | Unicode processing                |
+| grapheme count  | rough user-facing character count |
+| display width   | terminal alignment/UI layout      |
+| binary size     | network/file payload size         |
+
+**Design meaning:** Choose the measurement according to the requirement.
+
+**Common Pitfall:** Using `String.length/1` for terminal column alignment may fail with East Asian wide characters, combining marks, or emoji.
+
+### Sub-Binary Retention
+
+A small binary slice can retain a reference to a much larger binary.
+
+```elixir
+<<field::binary-size(10), _rest::binary>> = huge_binary
+state = %{field: field}
+```
+
+If `field` is a sub-binary referencing `huge_binary`, storing it in long-lived state may keep the huge binary alive.
+
+Copy when a small extracted field must live long-term:
+
+```elixir
+field = :binary.copy(field)
+```
+
+| Situation                                 | Copy?             |
+| ----------------------------------------- | ----------------- |
+| short-lived parsing                       | usually no        |
+| immediate processing                      | usually no        |
+| storing small slice in long-lived process | often yes         |
+| storing slice in ETS/cache                | consider copying  |
+| retaining large original is acceptable    | no                |
+| high-throughput parser                    | measure carefully |
+
+**Design meaning:** Binary sharing is an optimization with a retention tradeoff.
+
+**Common Pitfall:** Memory growth from binaries often comes from references, not obvious large values in state.
+
+### Text/Binary Function Decision Table
+
+| Task                       | Use                                                |
+| -------------------------- | -------------------------------------------------- |
+| trim UTF-8 user text       | `String.trim/1`                                    |
+| downcase UTF-8 text        | `String.downcase/1`                                |
+| check UTF-8 validity       | `String.valid?/1`                                  |
+| count bytes                | `byte_size/1`                                      |
+| count graphemes            | `String.length/1`                                  |
+| split text                 | `String.split/2`                                   |
+| split bytes                | `:binary.split/2,3`                                |
+| parse packet               | bit syntax                                         |
+| build many output chunks   | iodata                                             |
+| flatten iodata             | `IO.iodata_to_binary/1`                            |
+| convert charlist to binary | `to_string/1` or `:unicode.characters_to_binary/1` |
+| convert binary to charlist | `String.to_charlist/1`                             |
+| encode binary as URL text  | `Base.url_encode64/2`                              |
+| hash binary                | `:crypto.hash/2`                                   |
+| secure random bytes        | `:crypto.strong_rand_bytes/1`                      |
+| copy sub-binary            | `:binary.copy/1`                                   |
+| read file                  | `File.read/1`                                      |
+| write iodata to file       | `File.write/2`                                     |
+
+### Erlang / Elixir Literal Cheat Sheet
+
+| Literal        | Erlang meaning                              | Elixir meaning                            |
+| -------------- | ------------------------------------------- | ----------------------------------------- |
+| `"abc"`        | charlist                                    | UTF-8 binary string                       |
+| `<<"abc">>`    | binary                                      | binary                                    |
+| `'abc'`        | atom                                        | charlist                                  |
+| `~c"abc"`      | not Erlang syntax                           | charlist                                  |
+| `~s"abc"`      | not Erlang syntax                           | string/binary                             |
+| `[97,98,99]`   | list of integers, often printable as string | list of integers, may inspect as charlist |
+| `<<97,98,99>>` | binary                                      | binary                                    |
+
+**High-risk difference:** Erlang single quotes delimit atoms; Elixir single quotes produce charlists.
+
+Erlang:
+
+```erlang
+'abc'.
+%% atom
+```
+
+Elixir:
+
+```elixir
+'abc'
+# charlist
+```
+
+Modern Elixir preference:
+
+```elixir
+~c"abc"
+```
+
+for charlists.
+
+### Interop Conversion Cheat Sheet
+
+| Need                      | Elixir                        |
+| ------------------------- | ----------------------------- |
+| binary string to charlist | `String.to_charlist(str)`     |
+| charlist to binary string | `to_string(charlist)`         |
+| chardata to binary        | `IO.chardata_to_string(data)` |
+| iodata to binary          | `IO.iodata_to_binary(data)`   |
+| binary to list of bytes   | `:binary.bin_to_list(bin)`    |
+| list of bytes to binary   | `:binary.list_to_bin(list)`   |
+| validate string           | `String.valid?(bin)`          |
+| copy binary slice         | `:binary.copy(bin)`           |
+| byte size                 | `byte_size(bin)`              |
+| bit size                  | `bit_size(bitstring)`         |
+
+Erlang equivalents:
+
+```erlang
+unicode:characters_to_binary(Text).
+unicode:characters_to_list(Text).
+iolist_to_binary(Iodata).
+binary_to_list(Bin).
+list_to_binary(List).
+byte_size(Bin).
+bit_size(Bitstring).
+```
+
+### Common Anti-Patterns
+
+| Anti-pattern                                  | Problem                  | Better                                     |
+| --------------------------------------------- | ------------------------ | ------------------------------------------ |
+| assuming Erlang `"abc"` equals Elixir `"abc"` | charlist/binary mismatch | check expected type                        |
+| using `String` on arbitrary bytes             | invalid UTF-8 risk       | `:binary` / bit syntax                     |
+| slicing text with byte offsets                | can break UTF-8          | `String` functions or define byte protocol |
+| repeated `<>` in large loop                   | repeated allocation      | iodata                                     |
+| flattening iodata too early                   | loses efficiency         | flatten at boundary                        |
+| storing sub-binary from huge binary           | memory retention         | `:binary.copy/1` if long-lived             |
+| converting JSON keys to atoms                 | atom table risk          | explicit mapping                           |
+| using charlists for large data                | list overhead            | binary                                     |
+| using regex for binary packets                | wrong abstraction        | bit syntax                                 |
+| treating Base64 as security                   | only encoding            | encryption/signing if needed               |
+| using byte length as user character limit     | wrong unit               | text-aware length policy                   |
+| using `String.length` for storage byte limit  | wrong unit               | `byte_size/1`                              |
+| logging raw binaries                          | huge/secret data leak    | redact/truncate/metadata                   |
+
+### Practical Reading Examples
+
+#### Example 1 — Erlang hostname in Elixir
+
+Erlang docs:
+
+```erlang
+gen_tcp:connect("example.com", 80, [binary, {active, false}]).
+```
+
+Elixir:
+
+```elixir
+:gen_tcp.connect(~c"example.com", 80, [:binary, active: false])
+```
+
+The host is written as a charlist because the Erlang example’s `"example.com"` is a charlist.
+
+#### Example 2 — Elixir string as binary payload
+
+```elixir
+:gen_tcp.send(socket, "hello\n")
+```
+
+This sends a binary string. That is usually appropriate for byte-oriented socket output.
+
+#### Example 3 — iodata output
+
+```elixir
+response = [
+  "HTTP/1.1 200 OK\r\n",
+  "content-length: ",
+  Integer.to_string(byte_size(body)),
+  "\r\n\r\n",
+  body
+]
+
+:gen_tcp.send(socket, response)
+```
+
+This avoids repeatedly concatenating binaries.
+
+#### Example 4 — byte protocol parsing
+
+```elixir
+case packet do
+  <<1, length::16, payload::binary-size(length)>> ->
+    {:ok, payload}
+
+  _ ->
+    {:error, :invalid_packet}
+end
+```
+
+This is byte-level, not text-level.
+
+### Appendix I Summary
+
+The key rules are:
+
+```text
+Elixir "abc" is a UTF-8 binary.
+Erlang "abc" is traditionally a charlist.
+Use <<...>> for binaries in both.
+Use ~c"abc" for charlists in Elixir.
+Use String for valid UTF-8 text.
+Use :binary and bit syntax for bytes.
+Use iodata for efficient output composition.
+Flatten iodata only at the boundary.
+Be careful with sub-binary retention.
+```
+
+The most important practical distinction is:
+
+```text
+Text is not the same as bytes.
+A string may be a binary.
+A binary may not be a string.
+A charlist is a list.
+Iodata is an output representation.
+```
+
+A professional Erlang / Elixir programmer should always ask:
+
+```text
+Is this value text, bytes, charlist, binary, iodata, or chardata?
+Which API expects which representation?
+Is the operation text-level or byte-level?
+Will this data be stored, sent, sliced, logged, or retained?
+```
+
+Most interop bugs in this area come from answering those questions implicitly instead of explicitly.
+## Appendix J — Pattern Matching and Guard Reference
+
+### Appendix Scope — pattern matching as the core control mechanism
+
+Pattern matching is not only assignment-like syntax. In Erlang / Elixir, pattern matching is a central mechanism for:
+
+```text
+binding variables
+checking data shape
+dispatching function clauses
+handling tagged tuples
+parsing lists, maps, structs, and binaries
+receiving process messages
+asserting invariants
+selecting control-flow branches
+```
+
+The central rule is:
+
+```text
+A pattern says what shape a value must have.
+If the value has that shape, variables are bound.
+If the value does not have that shape, the match fails.
+```
+
+| Pattern target    | Erlang example          | Elixir example           |     |     |
+| ----------------- | ----------------------- | ------------------------ | --- | --- |
+| Atom              | `ok`                    | `:ok`                    |     |     |
+| Tuple             | `{ok, Value}`           | `{:ok, value}`           |     |     |
+| List              | `[H                     | T]`                      | `[h | t]` |
+| Map               | `#{id := Id}`           | `%{id: id}`              |     |     |
+| Struct            | no direct equivalent    | `%User{id: id}`          |     |     |
+| Binary            | `<<A, B, Rest/binary>>` | `<<a, b, rest::binary>>` |     |     |
+| Existing variable | `X` after binding       | `^x`                     |     |     |
+| Ignored value     | `_`                     | `_`                      |     |     |
+| Guarded clause    | `when is_integer(X)`    | `when is_integer(x)`     |     |     |
+
+### Match Operator
+
+Erlang and Elixir both use match semantics, but variable rebinding differs.
+
+Erlang:
+
+```erlang
+X = 1,
+X = 1.
+```
+
+This succeeds.
+
+```erlang
+X = 1,
+X = 2.
+```
+
+This fails because `X` is already bound.
+
+Elixir:
+
+```elixir
+x = 1
+x = 2
+```
+
+This rebinds `x`.
+
+To require matching an existing Elixir variable, use the pin operator:
+
+```elixir
+x = 1
+^x = 1
+```
+
+This succeeds.
+
+```elixir
+x = 1
+^x = 2
+```
+
+This fails.
+
+| Concept                 | Erlang                           | Elixir      |
+| ----------------------- | -------------------------------- | ----------- |
+| New variable binding    | `X = Value`                      | `x = value` |
+| Match existing variable | same variable name after binding | `^x`        |
+| Rebinding               | not in the same match scope      | allowed     |
+| Ignored value           | `_`                              | `_`         |
+| Ignored named variable  | `_Value`                         | `_value`    |
+
+**Design meaning:** Erlang variables are single-assignment within a scope. Elixir allows rebinding, so the pin operator is essential when existing values must be matched.
+
+### Literal Patterns
+
+Literal patterns match exact values.
+
+Elixir:
+
+```elixir
+:ok = :ok
+1 = 1
+"abc" = "abc"
+```
+
+Erlang:
+
+```erlang
+ok = ok,
+1 = 1,
+<<"abc">> = <<"abc">>.
+```
+
+Common literal pattern use:
+
+```elixir
+case result do
+  {:ok, value} ->
+    value
+
+  {:error, :not_found} ->
+    nil
+end
+```
+
+Erlang:
+
+```erlang
+case Result of
+    {ok, Value} ->
+        Value;
+    {error, not_found} ->
+        undefined
+end.
+```
+
+| Literal       | Match behavior                        |
+| ------------- | ------------------------------------- |
+| atom          | exact atom                            |
+| integer       | exact integer                         |
+| float         | exact float under pattern equality    |
+| binary        | exact binary                          |
+| tuple literal | exact tuple shape and literal fields  |
+| list literal  | exact list shape and literal elements |
+| map literal   | required key/value patterns           |
+
+**Common Pitfall:** Matching a literal in the wrong position may make later clauses unreachable.
+
+### Tuple Patterns
+
+Tuples are fixed-size. A tuple pattern must match the exact tuple size and shape.
+
+Elixir:
+
+```elixir
+{:ok, value} = {:ok, 10}
+```
+
+Erlang:
+
+```erlang
+{ok, Value} = {ok, 10}.
+```
+
+Tagged tuple dispatch:
+
+```elixir
+def handle_result({:ok, value}) do
+  {:success, value}
+end
+
+def handle_result({:error, reason}) do
+  {:failure, reason}
+end
+```
+
+Erlang:
+
+```erlang
+handle_result({ok, Value}) ->
+    {success, Value};
+handle_result({error, Reason}) ->
+    {failure, Reason}.
+```
+
+| Pattern                  | Matches                                                   |
+| ------------------------ | --------------------------------------------------------- |
+| `{:ok, value}`           | two-element tuple whose first item is `:ok`               |
+| `{:error, reason}`       | two-element tuple whose first item is `:error`            |
+| `{:reply, reply, state}` | three-element OTP callback tuple                          |
+| `{x, y}`                 | any two-element tuple in Elixir if `x`, `y` are variables |
+| `{ok, Value}`            | Erlang tuple tagged by atom `ok`                          |
+
+**Design meaning:** Tagged tuples are the most important Erlang / Elixir pattern convention for success, failure, messages, and OTP callback results.
+
+**Common Pitfall:** `{:ok, value}` does not match `{:ok, value, extra}` because tuple size is part of the pattern.
+
+### List Patterns
+
+Lists are matched through exact list shape or head-tail decomposition.
+
+Elixir:
+
+```elixir
+[h | t] = [1, 2, 3]
+```
+
+Result:
+
+```elixir
+h == 1
+t == [2, 3]
+```
+
+Erlang:
+
+```erlang
+[H | T] = [1, 2, 3].
+```
+
+Common patterns:
+
+| Pattern  | Meaning              |                        |
+| -------- | -------------------- | ---------------------- |
+| `[]`     | empty list           |                        |
+| `[h]`    | one-element list     |                        |
+| `[h      | t]`                  | non-empty list         |
+| `[a, b]` | exactly two elements |                        |
+| `[a, b   | rest]`               | at least two elements  |
+| `[_      | t]`                  | ignore head, bind tail |
+| `[h      | _]`                  | bind head, ignore tail |
+
+Elixir recursive function:
+
+```elixir
+def sum([]), do: 0
+def sum([h | t]), do: h + sum(t)
+```
+
+Erlang:
+
+```erlang
+sum([]) ->
+    0;
+sum([H | T]) ->
+    H + sum(T).
+```
+
+**Design meaning:** List matching is natural for recursive sequential processing.
+
+**Common Pitfall:** `[h | t]` does not match an empty list. Always include an empty-list clause when needed.
+
+### Map Patterns
+
+Map patterns match required keys. They do not require the map to contain only those keys.
+
+Elixir:
+
+```elixir
+%{id: id} = %{id: 1, name: "Ada"}
+```
+
+This succeeds and binds `id = 1`.
+
+Erlang:
+
+```erlang
+#{id := Id} = #{id => 1, name => <<"Ada">>}.
+```
+
+Elixir string-key map:
+
+```elixir
+%{"id" => id} = %{"id" => 1}
+```
+
+Atom-key map:
+
+```elixir
+%{id: id} = %{id: 1}
+```
+
+These are not the same.
+
+| Pattern                 | Matches                        |
+| ----------------------- | ------------------------------ |
+| `%{id: id}`             | map with atom key `:id`        |
+| `%{"id" => id}`         | map with string key `"id"`     |
+| `%{id: 1}`              | map where `:id` is exactly `1` |
+| `%{id: id, name: name}` | map with both required keys    |
+| `%{}`                   | any map                        |
+
+Erlang:
+
+| Pattern             | Matches                           |
+| ------------------- | --------------------------------- |
+| `#{id := Id}`       | map with key `id`                 |
+| `#{<<"id">> := Id}` | map with binary key `<<"id">>`    |
+| `#{id := 1}`        | map whose `id` key is exactly `1` |
+| `#{}`               | any map                           |
+
+**Design meaning:** Map matching is excellent for validating required fields while ignoring extra fields.
+
+**Common Pitfall:** `%{}` matches any map, not only an empty map. In Elixir, an actually empty map check needs additional logic such as `map_size(map) == 0`.
+
+### Struct Patterns
+
+Elixir structs are maps with a `__struct__` key. Struct patterns match both the struct type and required fields.
+
+```elixir
+defmodule User do
+  defstruct [:id, :name]
+end
+```
+
+Pattern:
+
+```elixir
+%User{id: id} = %User{id: 1, name: "Ada"}
+```
+
+Function clause:
+
+```elixir
+def user_id(%User{id: id}) do
+  id
+end
+```
+
+| Pattern               | Meaning                          |
+| --------------------- | -------------------------------- |
+| `%User{}`             | any `User` struct                |
+| `%User{id: id}`       | `User` struct with an `id` field |
+| `%{__struct__: User}` | map-level struct check           |
+| `%{id: id}`           | any map/struct with `:id` key    |
+
+**Design meaning:** Struct patterns are stronger than map patterns because they require the struct type.
+
+**Common Pitfall:** `%{id: id}` can match a struct with an `:id` field. Use `%User{id: id}` when the specific struct type matters.
+
+### Binary Patterns
+
+Binary patterns match byte and bit-level structure.
+
+Elixir:
+
+```elixir
+<<a, b, rest::binary>> = <<1, 2, 3, 4>>
+```
+
+Erlang:
+
+```erlang
+<<A, B, Rest/binary>> = <<1, 2, 3, 4>>.
+```
+
+Common binary patterns:
+
+| Elixir pattern                  | Meaning                            |
+| ------------------------------- | ---------------------------------- |
+| `<<byte>>`                      | exactly one byte                   |
+| `<<byte, rest::binary>>`        | first byte and remaining binary    |
+| `<<n::16>>`                     | 16-bit integer                     |
+| `<<n::32>>`                     | 32-bit integer                     |
+| `<<payload::binary-size(len)>>` | binary segment with dynamic length |
+| `<<x::utf8>>`                   | one UTF-8 codepoint                |
+| `<<bits::bitstring>>`           | remaining bits                     |
+
+Erlang equivalents:
+
+| Erlang pattern           | Meaning             |
+| ------------------------ | ------------------- |
+| `<<Byte>>`               | exactly one byte    |
+| `<<Byte, Rest/binary>>`  | first byte and rest |
+| `<<N:16>>`               | 16-bit integer      |
+| `<<Payload:Len/binary>>` | binary segment      |
+| `<<X/utf8>>`             | UTF-8 codepoint     |
+| `<<Bits/bitstring>>`     | remaining bits      |
+
+Protocol parser:
+
+```elixir
+def parse(<<version, type, length::16, payload::binary-size(length), rest::binary>>) do
+  {:ok, %{version: version, type: type, payload: payload}, rest}
+end
+
+def parse(_) do
+  {:error, :invalid_packet}
+end
+```
+
+Erlang:
+
+```erlang
+parse(<<Version, Type, Length:16, Payload:Length/binary, Rest/binary>>) ->
+    {ok, #{version => Version, type => Type, payload => Payload}, Rest};
+parse(_) ->
+    {error, invalid_packet}.
+```
+
+**Design meaning:** Binary matching is the correct tool for byte protocols, compact formats, and many parsing tasks.
+
+**Common Pitfall:** Matching `<<x>>` means one byte, not one Unicode character. Use `::utf8` for codepoints and `String` functions for text-level operations.
+
+### Function Clause Patterns
+
+Function clauses are pattern matching plus dispatch.
+
+Elixir:
+
+```elixir
+def parse_status("active"), do: {:ok, :active}
+def parse_status("disabled"), do: {:ok, :disabled}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+Erlang:
+
+```erlang
+parse_status(<<"active">>) ->
+    {ok, active};
+parse_status(<<"disabled">>) ->
+    {ok, disabled};
+parse_status(_) ->
+    {error, invalid_status}.
+```
+
+Clause order matters. More specific clauses should usually come before general catch-all clauses.
+
+Bad Elixir:
+
+```elixir
+def parse_status(_), do: {:error, :invalid_status}
+def parse_status("active"), do: {:ok, :active}
+```
+
+The second clause is unreachable.
+
+| Clause type | Example                                 |               |
+| ----------- | --------------------------------------- | ------------- |
+| literal     | `def f(:ok), do: ...`                   |               |
+| tuple       | `def f({:ok, value}), do: ...`          |               |
+| list        | `def f([h                               | t]), do: ...` |
+| map         | `def f(%{id: id}), do: ...`             |               |
+| struct      | `def f(%User{id: id}), do: ...`         |               |
+| binary      | `def f(<<tag, rest::binary>>), do: ...` |               |
+| guarded     | `def f(x) when is_integer(x), do: ...`  |               |
+| catch-all   | `def f(_), do: ...`                     |               |
+
+**Design meaning:** Function clauses are a clean way to express variants at the API boundary.
+
+**Common Pitfall:** Too many overlapping clauses can make dispatch hard to reason about. Clause order is semantic.
+
+### `case` Patterns
+
+Use `case` when branching on the result of an expression.
+
+Elixir:
+
+```elixir
+case fetch_user(id) do
+  {:ok, user} ->
+    {:ok, user.name}
+
+  {:error, :not_found} ->
+    {:error, :missing_user}
+
+  {:error, reason} ->
+    {:error, reason}
+end
+```
+
+Erlang:
+
+```erlang
+case fetch_user(Id) of
+    {ok, User} ->
+        {ok, user_name(User)};
+    {error, not_found} ->
+        {error, missing_user};
+    {error, Reason} ->
+        {error, Reason}
+end.
+```
+
+| Use `case` when                    | Prefer function clauses when           |
+| ---------------------------------- | -------------------------------------- |
+| branching inside a function        | whole function varies by input shape   |
+| result comes from another function | API itself has variant clauses         |
+| local control flow is needed       | pattern is top-level function argument |
+| multiple return variants exist     | variants are the function interface    |
+
+**Common Pitfall:** A `case` without a matching clause raises at runtime. Include all expected variants or intentionally let unexpected variants crash.
+
+### `with` Patterns in Elixir
+
+Elixir’s `with` is useful for chaining pattern-matching success paths.
+
+```elixir
+def register(params) do
+  with {:ok, command} <- CreateUser.new(params),
+       {:ok, user} <- User.new(command),
+       :ok <- Repo.insert(user) do
+    {:ok, user}
+  else
+    {:error, reason} ->
+      {:error, reason}
+  end
+end
+```
+
+| Part   | Meaning                                                                   |
+| ------ | ------------------------------------------------------------------------- |
+| `<-`   | match success pattern; if it fails, jump to `else` or return failed value |
+| `=`    | ordinary match; failure raises                                            |
+| `do`   | success path                                                              |
+| `else` | failed-match handling                                                     |
+
+Important distinction:
+
+```elixir
+{:ok, value} <- result
+```
+
+means failed match exits the `with`.
+
+```elixir
+{:ok, value} = result
+```
+
+means failed match raises.
+
+**Design meaning:** `with` is good for linear success pipelines where each step returns a tagged result.
+
+**Common Pitfall:** Overusing `with` for complex branching can make errors less readable. Use `case` or smaller functions when failure handling differs substantially.
+
+### `receive` Patterns
+
+`receive` uses pattern matching over process mailbox messages.
+
+Elixir:
+
+```elixir
+receive do
+  {:reply, ^ref, result} ->
+    {:ok, result}
+
+  {:DOWN, ^monitor_ref, :process, _pid, reason} ->
+    {:error, {:down, reason\}\}
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+Erlang:
+
+```erlang
+receive
+    {reply, Ref, Result} ->
+        {ok, Result};
+    {'DOWN', MonitorRef, process, _Pid, Reason} ->
+        {error, {down, Reason\}\}
+after 5000 ->
+    {error, timeout}
+end.
+```
+
+| Pattern use | Purpose                          |
+| ----------- | -------------------------------- |
+| tag         | identify message type            |
+| pinned ref  | correlate reply                  |
+| sender PID  | identify source                  |
+| monitor ref | identify monitored process       |
+| catch-all   | sometimes for cleanup, but risky |
+| timeout     | avoid waiting forever            |
+
+**Design meaning:** `receive` is selective. It scans for matching messages and leaves unmatched messages in the mailbox.
+
+**Common Pitfall:** Broad catch-all receive clauses can consume messages intended for another protocol in the same process.
+
+### Assignment-like Match versus Assertion Match
+
+Pattern matching can bind or assert.
+
+Binding:
+
+```elixir
+{:ok, value} = {:ok, 123}
+```
+
+Assertion:
+
+```elixir
+expected = 123
+{:ok, ^expected} = {:ok, 123}
+```
+
+Erlang assertion through previously bound variable:
+
+```erlang
+Expected = 123,
+{ok, Expected} = {ok, 123}.
+```
+
+| Use assertion match when       | Use branching when        |
+| ------------------------------ | ------------------------- |
+| mismatch means bug             | mismatch is expected      |
+| test should fail               | user input may be invalid |
+| invariant should hold          | caller needs error        |
+| startup requirement must exist | runtime recovery needed   |
+
+**Common Pitfall:** Direct matches on external input turn ordinary bad input into crashes.
+
+### Underscore Patterns
+
+`_` ignores a value.
+
+Elixir:
+
+```elixir
+{:ok, _} = result
+```
+
+Erlang:
+
+```erlang
+{ok, _} = Result.
+```
+
+Named ignored variables:
+
+```elixir
+def handle_call(:get, _from, state) do
+  {:reply, state, state}
+end
+```
+
+Erlang:
+
+```erlang
+handle_call(get, _From, State) ->
+    {reply, State, State}.
+```
+
+| Pattern  | Meaning                                       |
+| -------- | --------------------------------------------- |
+| `_`      | ignore completely                             |
+| `_value` | ignore but document intended meaning          |
+| `_from`  | ignore callback argument                      |
+| `_rest`  | ignore remaining data while documenting shape |
+
+**Design meaning:** Named ignored variables improve readability without producing unused-variable warnings.
+
+**Common Pitfall:** Do not use `_` for a value that must later be checked. Bind it explicitly.
+
+### Guards — pattern refinement
+
+Guards add extra checks after a pattern matches.
+
+Elixir:
+
+```elixir
+def classify(n) when is_integer(n) and n > 0 do
+  :positive
+end
+
+def classify(0), do: :zero
+
+def classify(n) when is_integer(n) and n < 0 do
+  :negative
+end
+```
+
+Erlang:
+
+```erlang
+classify(N) when is_integer(N), N > 0 ->
+    positive;
+classify(0) ->
+    zero;
+classify(N) when is_integer(N), N < 0 ->
+    negative.
+```
+
+| Guard role                   | Example                                           |
+| ---------------------------- | ------------------------------------------------- |
+| type refinement              | `is_integer(x)`                                   |
+| size check                   | `byte_size(bin) > 0`                              |
+| numeric comparison           | `n > 0`                                           |
+| membership-like finite check | `x in [:a, :b]` in Elixir guards with limitations |
+| binary/list/map size         | `map_size(map) == 0`                              |
+| tuple size                   | `tuple_size(tuple) == 2`                          |
+
+**Design meaning:** A guard is not a general validation function. It is a restricted expression used for safe dispatch.
+
+**Common Pitfall:** Arbitrary user-defined functions cannot be called in guards.
+
+### Common Guard Functions
+
+Elixir and Erlang guards support a limited set of built-in operations.
+
+| Need             | Elixir guard      | Erlang guard      |
+| ---------------- | ----------------- | ----------------- |
+| atom check       | `is_atom(x)`      | `is_atom(X)`      |
+| binary check     | `is_binary(x)`    | `is_binary(X)`    |
+| bitstring check  | `is_bitstring(x)` | `is_bitstring(X)` |
+| boolean check    | `is_boolean(x)`   | `is_boolean(X)`   |
+| float check      | `is_float(x)`     | `is_float(X)`     |
+| function check   | `is_function(x)`  | `is_function(X)`  |
+| integer check    | `is_integer(x)`   | `is_integer(X)`   |
+| list check       | `is_list(x)`      | `is_list(X)`      |
+| map check        | `is_map(x)`       | `is_map(X)`       |
+| number check     | `is_number(x)`    | `is_number(X)`    |
+| PID check        | `is_pid(x)`       | `is_pid(X)`       |
+| reference check  | `is_reference(x)` | `is_reference(X)` |
+| tuple check      | `is_tuple(x)`     | `is_tuple(X)`     |
+| binary byte size | `byte_size(x)`    | `byte_size(X)`    |
+| bit size         | `bit_size(x)`     | `bit_size(X)`     |
+| list length      | `length(x)`       | `length(X)`       |
+| map size         | `map_size(x)`     | `map_size(X)`     |
+| tuple size       | `tuple_size(x)`   | `tuple_size(X)`   |
+
+Example:
+
+```elixir
+def non_empty_binary(value)
+    when is_binary(value) and byte_size(value) > 0 do
+  {:ok, value}
+end
+
+def non_empty_binary(_) do
+  {:error, :invalid}
+end
+```
+
+Erlang:
+
+```erlang
+non_empty_binary(Value) when is_binary(Value), byte_size(Value) > 0 ->
+    {ok, Value};
+non_empty_binary(_) ->
+    {error, invalid}.
+```
+
+### Elixir Guard Operators
+
+| Operation      | Guard example                  |
+| -------------- | ------------------------------ |
+| and            | `when is_integer(x) and x > 0` |
+| or             | `when x == :a or x == :b`      |
+| not            | `when not is_nil(x)`           |
+| comparison     | `when x > 0`                   |
+| arithmetic     | `when x + y > 10`              |
+| exact equality | `when x === 1`                 |
+| loose equality | `when x == 1`                  |
+| membership     | `when x in [:a, :b]`           |
+
+Example:
+
+```elixir
+def allowed?(role) when role in [:admin, :editor], do: true
+def allowed?(_), do: false
+```
+
+**Common Pitfall:** Elixir `in` in guards is limited to guard-compatible right-hand forms, commonly lists/ranges known in the guard expression.
+
+### Erlang Guard Separators
+
+Erlang guard syntax has important punctuation rules.
+
+```erlang
+f(X) when is_integer(X), X > 0 ->
+    positive;
+f(X) when is_integer(X), X < 0 ->
+    negative.
+```
+
+In a guard sequence:
+
+| Erlang syntax | Rough meaning              |
+| ------------- | -------------------------- |
+| comma `,`     | guard conjunction          |
+| semicolon `;` | alternative guard sequence |
+| `andalso`     | short-circuit boolean and  |
+| `orelse`      | short-circuit boolean or   |
+
+Example:
+
+```erlang
+allowed(Role) when Role =:= admin; Role =:= editor ->
+    true;
+allowed(_) ->
+    false.
+```
+
+**Design meaning:** Erlang guard punctuation is not ordinary expression punctuation. Read it carefully.
+
+**Common Pitfall:** Confusing `,`, `;`, and `.` in Erlang function clauses and guards is a common syntax error source.
+
+### Guards versus Validation Functions
+
+Bad guard attempt in Elixir:
+
+```elixir
+def create_email(value) when valid_email?(value) do
+  {:ok, value}
+end
+```
+
+This is not allowed because `valid_email?/1` is an arbitrary user-defined function.
+
+Better:
+
+```elixir
+def create_email(value) when is_binary(value) do
+  value = String.trim(value)
+
+  if String.contains?(value, "@") do
+    {:ok, value}
+  else
+    {:error, :invalid_email}
+  end
+end
+
+def create_email(_) do
+  {:error, :invalid_email}
+end
+```
+
+| Use guard for         | Use function body for                  |
+| --------------------- | -------------------------------------- |
+| type checks           | complex validation                     |
+| simple numeric bounds | regex/string validation                |
+| size checks           | database lookup                        |
+| shape refinement      | external service calls                 |
+| safe dispatch         | domain policy with arbitrary functions |
+
+**Design meaning:** Guards are dispatch filters, not full validators.
+
+**Common Pitfall:** Trying to force domain validation into guards makes code awkward and often impossible.
+
+### Clause Ordering
+
+Pattern clauses are checked in order.
+
+Elixir:
+
+```elixir
+def f(:ok), do: :success
+def f(_), do: :fallback
+```
+
+Good.
+
+Bad:
+
+```elixir
+def f(_), do: :fallback
+def f(:ok), do: :success
+```
+
+The second clause is unreachable.
+
+Erlang:
+
+```erlang
+f(ok) ->
+    success;
+f(_) ->
+    fallback.
+```
+
+| Ordering principle                           | Explanation               |                  |
+| -------------------------------------------- | ------------------------- | ---------------- |
+| specific before general                      | avoid unreachable clauses |                  |
+| literal before catch-all                     | preserve special cases    |                  |
+| guarded before unguarded general             | allow refinement          |                  |
+| empty list before `[h                        | t]` if both needed        | handle base case |
+| struct before map if type matters            | `%{}` can match structs   |                  |
+| binary special headers before general binary | parse protocol variants   |                  |
+
+**Design meaning:** Pattern matching is ordered dispatch. Order is part of program meaning.
+
+**Common Pitfall:** A broad map pattern like `%{}` or list pattern like `_` too early can swallow later clauses.
+
+### Catch-All Patterns
+
+Catch-all patterns are useful but dangerous.
+
+Elixir:
+
+```elixir
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+Erlang:
+
+```erlang
+parse_status(_) ->
+    {error, invalid_status}.
+```
+
+| Good catch-all use       | Bad catch-all use                 |
+| ------------------------ | --------------------------------- |
+| boundary parser fallback | hiding unexpected internal states |
+| final function clause    | swallowing protocol bugs silently |
+| test helper fallback     | ignoring important messages       |
+| normalized public error  | catching exceptions broadly       |
+
+Receive catch-all risk:
+
+```elixir
+receive do
+  _ ->
+    :ok
+end
+```
+
+This may consume an important message.
+
+**Design meaning:** Catch-all clauses define what happens to all remaining cases. They should be intentional.
+
+**Common Pitfall:** Catch-all `handle_info(_msg, state)` can hide unexpected process messages that should be logged or treated as bugs.
+
+### Pattern Matching in Tests
+
+Pattern matching is excellent for tests.
+
+Elixir:
+
+```elixir
+assert {:ok, user} = Accounts.create_user(params)
+assert user.email == "ada@example.com"
+```
+
+Expected error:
+
+```elixir
+assert {:error, {:invalid_field, :email\}\} = Accounts.create_user(bad_params)
+```
+
+Message tests:
+
+```elixir
+assert_receive {:job_done, ^job_id}, 1_000
+```
+
+**Design meaning:** Pattern assertions test both shape and important values.
+
+**Common Pitfall:** Overly broad assertions such as `assert {:error, _} = result` may miss important error-shape regressions.
+
+### Pattern Matching in Public APIs
+
+Good public API shape:
+
+```elixir
+def fetch_user(id) do
+  case Repo.get(User, id) do
+    nil -> {:error, :not_found}
+    user -> {:ok, user}
+  end
+end
+```
+
+Caller:
+
+```elixir
+case Accounts.fetch_user(id) do
+  {:ok, user} ->
+    render_user(user)
+
+  {:error, :not_found} ->
+    render_404()
+end
+```
+
+Erlang:
+
+```erlang
+case accounts:fetch_user(Id) of
+    {ok, User} ->
+        render_user(User);
+    {error, not_found} ->
+        render_404()
+end.
+```
+
+**Design meaning:** Public APIs should return stable shapes that callers can match.
+
+**Common Pitfall:** Changing `{:error, :not_found}` to `nil` is a breaking API change for pattern-matching callers.
+
+### Pattern Matching in Process Protocols
+
+Message patterns should usually include a tag and, where necessary, a reference.
+
+Elixir:
+
+```elixir
+ref = make_ref()
+send(server, {:request, self(), ref, {:fetch, key\}\})
+
+receive do
+  {:reply, ^ref, result} ->
+    result
+after
+  5_000 ->
+    {:error, :timeout}
+end
+```
+
+Erlang:
+
+```erlang
+Ref = make_ref(),
+Server ! {request, self(), Ref, {fetch, Key\}\},
+
+receive
+    {reply, Ref, Result} ->
+        Result
+after 5000 ->
+    {error, timeout}
+end.
+```
+
+**Design meaning:** Pattern matching over messages is a protocol parser for the mailbox.
+
+**Common Pitfall:** If the reply does not include a ref, multiple outstanding requests can receive the wrong reply.
+
+### Matching Existing Values in Elixir with Pin
+
+The pin operator is essential for message refs, IDs, and expected values.
+
+```elixir
+ref = make_ref()
+
+receive do
+  {:reply, ^ref, result} ->
+    {:ok, result}
+end
+```
+
+Without pin:
+
+```elixir
+receive do
+  {:reply, ref, result} ->
+    {:ok, result}
+end
+```
+
+This binds a new `ref` variable in the pattern and may match any reply.
+
+| Use pin for                          | Example                    |
+| ------------------------------------ | -------------------------- |
+| refs                                 | `^ref`                     |
+| expected IDs                         | `^user_id`                 |
+| expected PID                         | `^pid`                     |
+| expected tag/value                   | `^expected`                |
+| map key variable in pattern contexts | depending expression shape |
+
+**Common Pitfall:** Forgetting `^ref` in Elixir receive patterns is a common protocol bug.
+
+### Map Key Matching with Variables
+
+Elixir map patterns distinguish literal atom-key syntax from dynamic key syntax.
+
+Atom-key shorthand:
+
+```elixir
+%{id: value} = map
+```
+
+matches key `:id`.
+
+Dynamic key matching:
+
+```elixir
+key = :id
+%{^key => value} = %{id: 1}
+```
+
+Erlang dynamic key matching:
+
+```erlang
+Key = id,
+#{Key := Value} = #{id => 1}.
+```
+
+| Need                 | Elixir             |
+| -------------------- | ------------------ |
+| literal atom key     | `%{id: value}`     |
+| string key           | `%{"id" => value}` |
+| dynamic existing key | `%{^key => value}` |
+| match any map        | `%{}`              |
+
+**Common Pitfall:** `%{key: value}` matches literal atom key `:key`, not the value of a variable named `key`.
+
+### Matching and Updating Are Different
+
+Pattern matching checks/extracts. Updating creates new data.
+
+Elixir match:
+
+```elixir
+%{id: id} = user
+```
+
+Elixir update existing key:
+
+```elixir
+%{user | name: "Ada"}
+```
+
+Elixir put key:
+
+```elixir
+Map.put(user, :name, "Ada")
+```
+
+Erlang match:
+
+```erlang
+#{id := Id} = User.
+```
+
+Erlang update existing key:
+
+```erlang
+User#{name := <<"Ada">>}.
+```
+
+Erlang put/add key:
+
+```erlang
+User#{name => <<"Ada">>}.
+```
+
+**Design meaning:** Matching does not mutate. Updates return new values.
+
+**Common Pitfall:** In Elixir, `%{map | key: value}` requires the key to already exist. Use `Map.put/3` to add or replace.
+
+### Pattern Matching and Immutability
+
+A match binds names to immutable values. It does not mutate the value.
+
+```elixir
+user = %{id: 1, name: "Ada"}
+%{name: name} = user
+```
+
+`user` is unchanged.
+
+Updating:
+
+```elixir
+new_user = %{user | name: "Grace"}
+```
+
+`user` is still unchanged.
+
+Erlang:
+
+```erlang
+User = #{id => 1, name => <<"Ada">>},
+#{name := Name} = User,
+NewUser = User#{name := <<"Grace">>}.
+```
+
+**Design meaning:** Pattern matching extracts and asserts. It does not modify.
+
+**Common Pitfall:** Thinking of pattern matching as assignment can obscure the fact that it also checks shape.
+
+### Advanced Binary Pattern Notes
+
+Binary segment sizes can depend on previously matched values.
+
+Elixir:
+
+```elixir
+<<length, payload::binary-size(length), rest::binary>> = packet
+```
+
+Erlang:
+
+```erlang
+<<Length, Payload:Length/binary, Rest/binary>> = Packet.
+```
+
+Integer endianness and signedness can be specified.
+
+Elixir:
+
+```elixir
+<<n::unsigned-big-32>> = binary
+<<n::signed-little-16>> = binary
+```
+
+Erlang:
+
+```erlang
+<<N:32/unsigned-big>> = Binary.
+<<N:16/signed-little>> = Binary.
+```
+
+| Binary concern  | Rule                       |
+| --------------- | -------------------------- |
+| size unit       | specify bits/bytes clearly |
+| endianness      | define protocol endianness |
+| signedness      | specify when relevant      |
+| UTF-8           | use `::utf8` / `/utf8`     |
+| remainder       | bind `rest::binary`        |
+| malformed input | add fallback clause        |
+
+**Common Pitfall:** A binary pattern that assumes enough bytes will fail if the input is incomplete. For streaming protocols, return `{:more, state}` or buffer data.
+
+### Pattern Matching and Specs
+
+Specs document expected shapes, but pattern matching enforces shape at runtime.
+
+Elixir:
+
+```elixir
+@spec handle_result({:ok, term()} | {:error, term()}) :: term()
+def handle_result({:ok, value}), do: value
+def handle_result({:error, reason}), do: reason
+```
+
+Erlang:
+
+```erlang
+-spec handle_result({ok, term()} | {error, term()}) -> term().
+handle_result({ok, Value}) ->
+    Value;
+handle_result({error, Reason}) ->
+    Reason.
+```
+
+**Design meaning:** Specs and patterns should agree. Specs help readers and tools; patterns determine runtime behavior.
+
+**Common Pitfall:** A stale spec can claim a clause handles a shape that no longer exists.
+
+### Pattern Matching Decision Table
+
+| Need                             | Use                                |
+| -------------------------------- | ---------------------------------- |
+| branch on return tuple           | `case` or function clauses         |
+| validate simple input shape      | pattern + guard                    |
+| validate complex input           | parser function body               |
+| parse binary packet              | binary pattern matching            |
+| read process messages            | `receive` / `handle_info` patterns |
+| handle sync GenServer request    | `handle_call` pattern              |
+| handle async GenServer command   | `handle_cast` pattern              |
+| assert test result               | pattern in `assert`                |
+| require existing value in Elixir | pin operator `^`                   |
+| ignore irrelevant value          | `_` or named `_value`              |
+| distinguish struct type          | `%Module{}`                        |
+| require map keys                 | `%{key: value}`                    |
+| match dynamic map key in Elixir  | `%{^key => value}`                 |
+| refine type/size                 | guard                              |
+| handle all remaining cases       | catch-all clause                   |
+
+### Common Pattern Anti-Patterns
+
+| Anti-pattern                                                | Problem                     | Better                                 |
+| ----------------------------------------------------------- | --------------------------- | -------------------------------------- |
+| catch-all clause first                                      | later clauses unreachable   | specific before general                |
+| missing pin in Elixir receive                               | wrong reply may match       | `^ref`                                 |
+| matching raw external input too aggressively                | crashes on normal bad input | return tagged errors                   |
+| broad `%{}` clause too early                                | swallows all maps           | specific map/struct first              |
+| using guards for complex validation                         | not allowed/unclear         | validate in body                       |
+| huge tuple patterns                                         | brittle positional data     | map/struct                             |
+| deep matching on external JSON everywhere                   | tight coupling to raw input | boundary parser                        |
+| catch-all `handle_info` silently ignores messages           | hides protocol bugs         | log or handle known messages           |
+| direct match on file/network result in request path         | expected failure crashes    | `case` / tagged return                 |
+| using pattern match to add map key                          | misunderstanding            | use update/put                         |
+| using `_` for meaningful value                              | loses check/documentation   | bind or named ignore                   |
+| relying on `String` character assumptions in binary pattern | byte/text confusion         | use `String` or `::utf8` appropriately |
+
+### Pattern Matching Review Checklist
+
+When reviewing pattern-heavy code, ask:
+
+| Question                                        | Why                            |
+| ----------------------------------------------- | ------------------------------ |
+| Are specific clauses before general clauses?    | avoid unreachable logic        |
+| Are expected failures returned as data?         | avoid inappropriate crashes    |
+| Are external inputs parsed at boundaries?       | avoid raw shape leakage        |
+| Are refs pinned in Elixir receive patterns?     | avoid wrong reply              |
+| Are map keys atom or string keys intentionally? | avoid mismatch                 |
+| Are struct patterns used when type matters?     | avoid matching arbitrary maps  |
+| Are guards simple and valid?                    | avoid guard limitations        |
+| Are binary patterns safe for partial input?     | avoid crash on incomplete data |
+| Are catch-all clauses intentional?              | avoid hiding bugs              |
+| Do specs match actual pattern shapes?           | avoid stale contracts          |
+| Are messages tagged and documented?             | protocol clarity               |
+
+### Appendix J Summary
+
+Pattern matching is one of the main control mechanisms in Erlang / Elixir. It is used for data extraction, validation, dispatch, process messages, binary parsing, and invariant checks.
+
+The practical rules are:
+
+```text
+Use patterns to express expected shape.
+Use guards to refine simple type/value conditions.
+Use function clauses for top-level variants.
+Use case for local branching.
+Use receive for mailbox protocols.
+Use binary patterns for byte protocols.
+Use the Elixir pin operator when matching existing values.
+Put specific clauses before general clauses.
+Treat catch-all clauses as design decisions.
+```
+
+The deepest distinction is:
+
+```text
+A match is both binding and checking.
+If mismatch is expected, branch and return an error.
+If mismatch is impossible by invariant, letting it fail may be correct.
+```
+
+Pattern matching is therefore not just syntax. It is a compact way to encode the shape of a BEAM system: data variants, message protocols, domain constructors, callback contracts, and failure boundaries.
+## Appendix K — Macro, DSL, and Compile-Time Behavior in Elixir
+
+### Appendix Scope — macros as compile-time code generation
+
+Elixir macros are one of the biggest differences between Elixir and Erlang. Erlang has a preprocessor and parse-transform mechanisms, but Elixir makes macro-based metaprogramming a central part of the language and ecosystem.
+
+The central rule is:
+
+```text
+A macro is not a function.
+A function receives runtime values.
+A macro receives syntax, transforms syntax, and returns syntax to be compiled.
+```
+
+| Concept           | Meaning                                                |
+| ----------------- | ------------------------------------------------------ |
+| `quote`           | turns Elixir code into AST data                        |
+| `unquote`         | injects a value or AST into quoted code                |
+| `defmacro`        | defines a compile-time code generator                  |
+| `require`         | makes macros from a module available                   |
+| `use`             | calls another module’s `__using__/1` macro             |
+| `__using__/1`     | macro hook invoked by `use Module`                     |
+| hygiene           | rules that prevent accidental variable capture         |
+| `bind_quoted`     | safer way to bind values into generated code           |
+| DSL               | domain-specific syntax built through macros/functions  |
+| module attributes | compile-time metadata, constants, docs, or macro input |
+| sigils            | literal syntax extensions such as `~r`, `~s`, `~c`     |
+
+### Runtime Function versus Compile-Time Macro
+
+A function receives evaluated values.
+
+```elixir
+defmodule MathUtils do
+  def double(x) do
+    x * 2
+  end
+end
+```
+
+Call:
+
+```elixir
+MathUtils.double(10)
+```
+
+The function receives the value `10`.
+
+A macro receives the caller’s syntax before ordinary evaluation.
+
+```elixir
+defmodule DebugMacro do
+  defmacro show(expr) do
+    IO.inspect(expr, label: "AST received by macro")
+    expr
+  end
+end
+```
+
+Call:
+
+```elixir
+require DebugMacro
+DebugMacro.show(1 + 2)
+```
+
+The macro receives the syntax tree for `1 + 2`, not the already computed value `3`.
+
+| Feature                  | Function         | Macro                               |
+| ------------------------ | ---------------- | ----------------------------------- |
+| Runs                     | runtime          | compile time                        |
+| Receives                 | evaluated values | AST / quoted syntax                 |
+| Returns                  | runtime value    | AST to be compiled                  |
+| Called after evaluation? | yes              | before normal evaluation            |
+| Can generate code?       | no, not directly | yes                                 |
+| Needs `require`?         | no               | yes when called from another module |
+| Easier to reason about?  | usually yes      | usually no                          |
+| Preferred default?       | yes              | no                                  |
+
+**Design meaning:** Use functions by default. Use macros only when syntax, compile-time registration, compile-time validation, or code generation is genuinely needed.
+
+**Common Pitfall:** A macro that merely saves a function call usually makes code less maintainable.
+
+### AST — code as data
+
+Elixir code can be represented as AST data.
+
+```elixir
+quote do
+  1 + 2
+end
+```
+
+returns a structure roughly like:
+
+```elixir
+{:+, [context: Elixir, imports: [{1, Kernel}, {2, Kernel}]], [1, 2]}
+```
+
+The exact metadata can vary, but the important idea is:
+
+```text
+Elixir code can be represented as Elixir data.
+Macros transform that data.
+```
+
+Simple quoted expression:
+
+```elixir
+ast =
+  quote do
+    x + 1
+  end
+```
+
+The result is data, not executed code.
+
+| Source form                 | AST idea                   |
+| --------------------------- | -------------------------- |
+| `1`                         | literal                    |
+| `:ok`                       | atom literal               |
+| `x`                         | variable AST               |
+| `x + 1`                     | function/operator call AST |
+| `foo(a, b)`                 | call AST                   |
+| `do ... end`                | block AST                  |
+| module/function definitions | AST that compiler consumes |
+
+**Design meaning:** Macros operate on syntax trees. Understanding AST is required for serious macro work.
+
+**Common Pitfall:** AST is not always intuitive. Operators, aliases, blocks, and calls have specific quoted shapes.
+
+### `quote` — producing AST
+
+`quote` captures code as data.
+
+```elixir
+quoted =
+  quote do
+    IO.puts("hello")
+  end
+```
+
+This does not print `"hello"` immediately. It returns AST representing that code.
+
+A macro returns quoted code:
+
+```elixir
+defmodule MyMacro do
+  defmacro say_hello do
+    quote do
+      IO.puts("hello")
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule Demo do
+  require MyMacro
+
+  def run do
+    MyMacro.say_hello()
+  end
+end
+```
+
+At compile time, `MyMacro.say_hello()` expands into:
+
+```elixir
+IO.puts("hello")
+```
+
+**Design meaning:** `quote` is the basic tool for writing generated code.
+
+**Common Pitfall:** Code inside `quote` is not executed when quoted. It becomes AST.
+
+### `unquote` — injecting into quoted code
+
+`unquote` inserts an outside value or AST into quoted code.
+
+```elixir
+defmodule ConstantMacro do
+  defmacro constant(value) do
+    quote do
+      unquote(value)
+    end
+  end
+end
+```
+
+Example:
+
+```elixir
+require ConstantMacro
+ConstantMacro.constant(10)
+```
+
+This expands to `10`.
+
+More useful example:
+
+```elixir
+defmodule FieldMacro do
+  defmacro getter(field) do
+    quote do
+      def unquote(field)(map) do
+        Map.fetch!(map, unquote(field))
+      end
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule UserAccessors do
+  require FieldMacro
+
+  FieldMacro.getter(:id)
+  FieldMacro.getter(:name)
+end
+```
+
+This generates functions similar to:
+
+```elixir
+def id(map), do: Map.fetch!(map, :id)
+def name(map), do: Map.fetch!(map, :name)
+```
+
+| Tool               | Role                                                       |
+| ------------------ | ---------------------------------------------------------- |
+| `quote`            | build syntax                                               |
+| `unquote`          | insert external data/syntax into syntax                    |
+| `unquote_splicing` | insert a list of AST nodes into a surrounding list/context |
+| `Macro.escape`     | safely inject data structures as literals                  |
+
+**Common Pitfall:** `unquote` does not mean runtime interpolation. It is compile-time AST insertion.
+
+### `defmacro` — defining a macro
+
+A macro is defined with `defmacro`.
+
+```elixir
+defmodule AssertMacro do
+  defmacro assert_ok(expr) do
+    quote do
+      case unquote(expr) do
+        {:ok, value} ->
+          value
+
+        {:error, reason} ->
+          raise "expected {:ok, value}, got {:error, #{inspect(reason)\}\}"
+      end
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule Demo do
+  require AssertMacro
+
+  def run(result) do
+    AssertMacro.assert_ok(result)
+  end
+end
+```
+
+This macro generates runtime code that pattern matches the result.
+
+**Important distinction:**
+
+```elixir
+AssertMacro.assert_ok(result)
+```
+
+does not call a runtime function named `assert_ok`. It expands into code at compile time.
+
+| Macro phase             | What happens                  |
+| ----------------------- | ----------------------------- |
+| caller module compiles  | macro is expanded             |
+| macro receives AST      | not ordinary evaluated values |
+| macro returns AST       | compiler inserts it           |
+| generated code compiles | normal runtime code exists    |
+| program runs            | generated code executes       |
+
+**Common Pitfall:** Debugging macros requires separating “macro expansion time” from “generated code runtime.”
+
+### `require` — making macros available
+
+To call a macro from another module, the macro module must be required.
+
+```elixir
+defmodule MyLogger do
+  defmacro log(expr) do
+    quote do
+      IO.inspect(unquote(expr))
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule Demo do
+  require MyLogger
+
+  def run(x) do
+    MyLogger.log(x + 1)
+  end
+end
+```
+
+Without `require MyLogger`, macro usage fails.
+
+| Form             | Meaning                                  |
+| ---------------- | ---------------------------------------- |
+| `require Module` | compile module and make macros available |
+| `import Module`  | bring functions/macros into local scope  |
+| `alias Module`   | shorten module name                      |
+| `use Module`     | call `Module.__using__/1` macro          |
+
+**Design meaning:** `require` is about compile-time macro availability.
+
+**Common Pitfall:** `alias` does not import or require macros by itself.
+
+### `import` — bringing macro/function names into scope
+
+`import` can bring functions and macros into local scope.
+
+```elixir
+defmodule Demo do
+  import AssertMacro
+
+  def run(result) do
+    assert_ok(result)
+  end
+end
+```
+
+This may be concise, but it can hide where names come from.
+
+| Use import when         | Avoid import when                 |
+| ----------------------- | --------------------------------- |
+| DSL readability matters | origin of function matters        |
+| test modules            | many helpers conflict             |
+| small controlled scope  | public module API clarity matters |
+| common operators/macros | imported names are ambiguous      |
+
+**Design meaning:** `import` is convenient but can reduce explicitness.
+
+**Common Pitfall:** Over-importing makes code hard to search and read.
+
+### `use` and `__using__/1`
+
+`use Module` is macro-based. It calls `Module.__using__/1`.
+
+Example:
+
+```elixir
+defmodule MyDSL do
+  defmacro __using__(_opts) do
+    quote do
+      import MyDSL
+      Module.register_attribute(__MODULE__, :routes, accumulate: true)
+    end
+  end
+
+  defmacro route(method, path, action) do
+    quote do
+      @routes {unquote(method), unquote(path), unquote(action)}
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule Router do
+  use MyDSL
+
+  route :get, "/users", :index
+  route :post, "/users", :create
+end
+```
+
+`use MyDSL` expands code into the caller module. It can import functions/macros, register module attributes, define functions, set behaviours, or inject aliases.
+
+| `use` can do             | Example                |
+| ------------------------ | ---------------------- |
+| import functions/macros  | `use ExUnit.Case`      |
+| set behaviour            | `use GenServer`        |
+| define default callbacks | framework modules      |
+| register attributes      | DSLs                   |
+| inject functions         | route/schema/test DSLs |
+| configure caller module  | `use Module, opts`     |
+
+**Design meaning:** `use` is not passive. It is compile-time code injection.
+
+**Common Pitfall:** When `use SomeModule` makes code mysterious, inspect `SomeModule.__using__/1`.
+
+### `use GenServer` as macro-backed setup
+
+`use GenServer` is not merely an import. It sets up conveniences for implementing the `GenServer` behaviour.
+
+```elixir
+defmodule Counter do
+  use GenServer
+
+  @impl true
+  def init(state) do
+    {:ok, state}
+  end
+end
+```
+
+Conceptually, it helps the module behave like a GenServer callback module. It may define defaults and metadata expected by Elixir’s behaviour tooling.
+
+Erlang equivalent idea:
+
+```erlang
+-behaviour(gen_server).
+```
+
+But Elixir’s `use` is macro-based.
+
+| Erlang                    | Elixir                   |
+| ------------------------- | ------------------------ |
+| `-behaviour(gen_server).` | `use GenServer`          |
+| explicit exports          | `def` callback functions |
+| callback module           | callback module          |
+| OTP return tuples         | same conceptual protocol |
+
+**Design meaning:** `use GenServer` makes an Elixir module participate in OTP’s `gen_server` callback contract.
+
+**Common Pitfall:** `use GenServer` does not start a process. It only shapes the module. Starting still requires `GenServer.start_link`.
+
+### Module Attributes as Compile-Time Data
+
+Module attributes begin with `@`.
+
+```elixir
+defmodule Config do
+  @timeout 5_000
+
+  def timeout do
+    @timeout
+  end
+end
+```
+
+Module attributes can serve several roles.
+
+| Role                       | Example                                            |
+| -------------------------- | -------------------------------------------------- |
+| documentation              | `@moduledoc`, `@doc`                               |
+| specs/types                | `@spec`, `@type`, `@opaque`                        |
+| constants                  | `@timeout 5_000`                                   |
+| behaviour metadata         | `@behaviour`, `@impl`                              |
+| accumulated DSL data       | `Module.register_attribute(..., accumulate: true)` |
+| compile-time configuration | macro-generated code input                         |
+
+Accumulating attribute:
+
+```elixir
+defmodule RouteDSL do
+  defmacro __using__(_opts) do
+    quote do
+      Module.register_attribute(__MODULE__, :routes, accumulate: true)
+      import RouteDSL
+      @before_compile RouteDSL
+    end
+  end
+
+  defmacro get(path, action) do
+    quote do
+      @routes {:get, unquote(path), unquote(action)}
+    end
+  end
+
+  defmacro __before_compile__(env) do
+    routes = Module.get_attribute(env.module, :routes)
+
+    quote do
+      def __routes__ do
+        unquote(Macro.escape(routes))
+      end
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule Router do
+  use RouteDSL
+
+  get "/users", :index
+  get "/users/:id", :show
+end
+```
+
+**Design meaning:** Module attributes are often compile-time data structures used by macros and DSLs.
+
+**Common Pitfall:** A module attribute is not a mutable runtime variable. It is evaluated at compile time.
+
+### `@before_compile` — generating code at the end of a module
+
+`@before_compile` lets a module generate code after the caller module has collected declarations.
+
+DSL example pattern:
+
+```elixir
+defmodule MiniSchema do
+  defmacro __using__(_opts) do
+    quote do
+      Module.register_attribute(__MODULE__, :fields, accumulate: true)
+      import MiniSchema
+      @before_compile MiniSchema
+    end
+  end
+
+  defmacro field(name, type) do
+    quote do
+      @fields {unquote(name), unquote(type)}
+    end
+  end
+
+  defmacro __before_compile__(env) do
+    fields = Module.get_attribute(env.module, :fields)
+
+    quote do
+      def __fields__ do
+        unquote(Macro.escape(fields))
+      end
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule UserSchema do
+  use MiniSchema
+
+  field :id, :integer
+  field :name, :string
+end
+```
+
+Generated function:
+
+```elixir
+UserSchema.__fields__()
+```
+
+**Design meaning:** `@before_compile` is common in DSLs that collect declarations and generate functions from them.
+
+**Common Pitfall:** Code generated by `@before_compile` may not be obvious from the caller module unless the DSL is documented clearly.
+
+### `Macro.escape` — injecting data safely
+
+When injecting ordinary Elixir data into quoted code, use `Macro.escape/1` when needed.
+
+Example:
+
+```elixir
+routes = [
+  {:get, "/users", :index},
+  {:post, "/users", :create}
+]
+
+quote do
+  def routes do
+    unquote(Macro.escape(routes))
+  end
+end
+```
+
+Without escaping, some data structures may be interpreted as AST instead of literal data.
+
+| Data                      | Escape needed?                                              |
+| ------------------------- | ----------------------------------------------------------- |
+| atoms, integers, binaries | often no                                                    |
+| lists of simple literals  | sometimes works, but escape is safer for generated literals |
+| tuples                    | may be interpreted as AST                                   |
+| maps                      | escape for injection                                        |
+| structs                   | escape for injection                                        |
+| PIDs/refs/functions       | often not appropriate to inject as compile-time literals    |
+
+**Design meaning:** `Macro.escape/1` tells Elixir, “treat this value as literal data inside generated code.”
+
+**Common Pitfall:** Forgetting `Macro.escape` can create confusing macro expansion errors.
+
+### Hygiene — avoiding accidental variable capture
+
+Elixir macros are hygienic by default: variables inside quoted code are protected from accidentally colliding with caller variables.
+
+Example:
+
+```elixir
+defmacro twice(expr) do
+  quote do
+    value = unquote(expr)
+    {value, value}
+  end
+end
+```
+
+The `value` variable generated by the macro should not accidentally overwrite a `value` variable in the caller’s context.
+
+However, deliberate variable injection and context manipulation are possible.
+
+| Hygiene problem     | Meaning                                       |
+| ------------------- | --------------------------------------------- |
+| variable capture    | macro variable collides with caller variable  |
+| accidental import   | macro brings names unexpectedly               |
+| hidden alias/import | caller code changes due to macro              |
+| repeated evaluation | macro evaluates expression more than intended |
+
+**Design meaning:** Hygiene reduces macro hazards but does not eliminate all macro design risks.
+
+**Common Pitfall:** Assuming macros are automatically safe because of hygiene. Evaluation count, generated names, imports, aliases, and side effects still matter.
+
+### `bind_quoted` — safer variable binding in macros
+
+`bind_quoted` is often safer than repeated `unquote`.
+
+Risky macro:
+
+```elixir
+defmacro duplicate(expr) do
+  quote do
+    [unquote(expr), unquote(expr)]
+  end
+end
+```
+
+If `expr` has side effects, it may be evaluated twice at runtime.
+
+Safer:
+
+```elixir
+defmacro duplicate(expr) do
+  quote bind_quoted: [expr: expr] do
+    [expr, expr]
+  end
+end
+```
+
+Now `expr` is evaluated once and bound in generated code.
+
+Example call:
+
+```elixir
+duplicate(IO.inspect(:run))
+```
+
+The safer version avoids repeated evaluation.
+
+| Pattern                   | Risk                                |
+| ------------------------- | ----------------------------------- |
+| repeated `unquote(expr)`  | repeated runtime evaluation         |
+| `bind_quoted`             | evaluates once and binds            |
+| manual temporary variable | possible but more error-prone       |
+| complex generated code    | prefer `bind_quoted` where possible |
+
+**Design meaning:** `bind_quoted` helps control evaluation and improves macro safety.
+
+**Common Pitfall:** Repeated `unquote` is one of the most common macro bugs.
+
+### `unquote_splicing`
+
+`unquote_splicing` inserts multiple AST elements into a list-like context.
+
+Example generating several function clauses:
+
+```elixir
+defmodule StatusMacro do
+  defmacro define_statuses(statuses) do
+    clauses =
+      for status <- statuses do
+        quote do
+          def valid_status?(unquote(status)), do: true
+        end
+      end
+
+    quote do
+      unquote_splicing(clauses)
+      def valid_status?(_), do: false
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule Status do
+  require StatusMacro
+
+  StatusMacro.define_statuses([:pending, :approved, :rejected])
+end
+```
+
+Generated conceptually:
+
+```elixir
+def valid_status?(:pending), do: true
+def valid_status?(:approved), do: true
+def valid_status?(:rejected), do: true
+def valid_status?(_), do: false
+```
+
+**Design meaning:** `unquote_splicing` is useful for generating multiple definitions, clauses, or list elements.
+
+**Common Pitfall:** Generated clauses still obey normal clause order. Place catch-all clauses after specific clauses.
+
+### Sigils — literal DSLs
+
+Elixir sigils provide special literal syntax.
+
+Common sigils:
+
+| Sigil     | Meaning        |
+| --------- | -------------- |
+| `~r/.../` | regex          |
+| `~s/.../` | string         |
+| `~S/.../` | raw string     |
+| `~c/.../` | charlist       |
+| `~C/.../` | raw charlist   |
+| `~w/.../` | word list      |
+| `~W/.../` | raw word list  |
+| `~D[...]` | date           |
+| `~T[...]` | time           |
+| `~N[...]` | naive datetime |
+| `~U[...]` | UTC datetime   |
+
+Examples:
+
+```elixir
+~r/^\d+$/
+~c"abc"
+~w(red green blue)a
+~D[2026-05-14]
+```
+
+Custom sigils can be defined:
+
+```elixir
+defmodule MySigils do
+  def sigil_u(string, _modifiers) do
+    String.upcase(string)
+  end
+end
+```
+
+Usage after import:
+
+```elixir
+import MySigils
+~u"hello"
+```
+
+**Design meaning:** Sigils are macro-powered literal DSLs.
+
+**Common Pitfall:** Custom sigils should be rare and well-justified. They create new syntax readers must learn.
+
+### DSLs — domain-specific syntax
+
+A DSL is syntax or structured declarations designed for a specific domain.
+
+Common Elixir DSL examples include:
+
+| Domain               | DSL style                            |
+| -------------------- | ------------------------------------ |
+| tests                | `test "..." do ... end`              |
+| routes               | `get "/users", Controller, :index`   |
+| schemas              | `schema "users" do ... end`          |
+| queries              | composable query syntax              |
+| configuration        | declarative module attributes/macros |
+| protocols            | `defprotocol`, `defimpl`             |
+| supervision children | child spec shorthand                 |
+
+Simple route DSL:
+
+```elixir
+defmodule MiniRouter do
+  defmacro __using__(_opts) do
+    quote do
+      Module.register_attribute(__MODULE__, :routes, accumulate: true)
+      import MiniRouter
+      @before_compile MiniRouter
+    end
+  end
+
+  defmacro get(path, action) do
+    quote do
+      @routes {:get, unquote(path), unquote(action)}
+    end
+  end
+
+  defmacro post(path, action) do
+    quote do
+      @routes {:post, unquote(path), unquote(action)}
+    end
+  end
+
+  defmacro __before_compile__(env) do
+    routes = Module.get_attribute(env.module, :routes)
+
+    quote do
+      def __routes__ do
+        unquote(Macro.escape(routes))
+      end
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule Router do
+  use MiniRouter
+
+  get "/users", :index
+  post "/users", :create
+end
+```
+
+**Design meaning:** A DSL should make a domain clearer, not merely shorter.
+
+**Common Pitfall:** DSLs can hide ordinary code flow. Provide introspection functions such as `__routes__/0` or generated documentation where possible.
+
+### When a Macro Is Justified
+
+Use a macro when a function cannot express the requirement cleanly.
+
+| Requirement                                  | Macro justified? | Reason                               |
+| -------------------------------------------- | ---------------: | ------------------------------------ |
+| define functions dynamically at compile time |              yes | functions are syntax                 |
+| register declarations in module attributes   |              yes | compile-time collection              |
+| create test cases from declarations          |              yes | compile-time test generation         |
+| build a route/schema DSL                     |        often yes | declarative compile-time metadata    |
+| inspect caller code syntax                   |              yes | functions receive values, not syntax |
+| avoid evaluating an expression unless needed |        sometimes | control evaluation                   |
+| wrap repetitive runtime code                 |       usually no | use functions                        |
+| shorten a function call                      |               no | use functions/imports                |
+| hide normal branching                        |               no | use `case`, functions                |
+| replace simple configuration map             |               no | use data                             |
+
+**Design rule:**
+
+```text
+Use macros for syntax.
+Use functions for behavior.
+Use data for configuration.
+```
+
+**Common Pitfall:** Macro overuse creates code that looks simple to write but is hard to debug, search, test, and reason about.
+
+### Macro Expansion
+
+Macro expansion turns macro calls into ordinary code.
+
+Elixir can inspect expansion with tools such as `Macro.expand/2`.
+
+Example:
+
+```elixir
+ast =
+  quote do
+    unless x do
+      :no
+    end
+  end
+```
+
+Expanding macros can reveal that `unless` is macro-based control flow.
+
+Conceptual idea:
+
+```elixir
+unless condition do
+  body
+end
+```
+
+expands into conditional logic similar to:
+
+```elixir
+if !condition do
+  body
+end
+```
+
+**Design meaning:** Many Elixir constructs that look built in are macros. This includes parts of testing, logging, control-flow helpers, and framework DSLs.
+
+**Common Pitfall:** Macro-expanded code may differ from what the surface syntax suggests. Inspect expansion when behavior is unclear.
+
+### `Logger` as Macro Example
+
+Elixir’s `Logger` functions are commonly used through macros.
+
+```elixir
+require Logger
+
+Logger.debug("expensive #{inspect(build_debug_data())}")
+```
+
+Because logging macros can interact with compile-time configuration, they may avoid some work depending on log level and purge settings. However, interpolation may still evaluate in ways that matter depending usage; lazy message construction patterns are safer for expensive debug data.
+
+Safer pattern:
+
+```elixir
+Logger.debug(fn ->
+  "expensive #{inspect(build_debug_data())}"
+end)
+```
+
+| Logging concern      | Rule                                 |
+| -------------------- | ------------------------------------ |
+| compile-time purge   | macros help                          |
+| expensive debug data | use lazy functions where appropriate |
+| secrets              | never log raw secrets                |
+| large payloads       | truncate or summarize                |
+| metadata             | use stable bounded values            |
+
+**Design meaning:** Macros are not only for fancy DSLs. They are also used for compile-time behavior and instrumentation.
+
+**Common Pitfall:** Assuming a macro call behaves exactly like an ordinary function call can lead to wrong performance or evaluation assumptions.
+
+### `ExUnit` as DSL Example
+
+Elixir tests are macro-heavy.
+
+```elixir
+defmodule ParserTest do
+  use ExUnit.Case
+
+  test "parses valid status" do
+    assert {:ok, :active} = Parser.parse_status("active")
+  end
+end
+```
+
+Here:
+
+| Form                    | Macro/compile-time role                    |
+| ----------------------- | ------------------------------------------ |
+| `use ExUnit.Case`       | sets up test module                        |
+| `test "..." do ... end` | registers a test                           |
+| `assert`                | macro that captures expression details     |
+| pattern inside `assert` | runtime assertion with good failure output |
+
+`assert` is a macro because it needs access to the expression syntax to produce useful error messages.
+
+**Design meaning:** Testing DSLs are a strong macro use case because they collect declarations and improve failure reporting.
+
+**Common Pitfall:** Test macros can look like ordinary functions, but they often register compile-time metadata.
+
+### `defprotocol` and `defimpl`
+
+Protocols are macro-backed language constructs for data-type polymorphism.
+
+```elixir
+defprotocol Render do
+  def render(value)
+end
+
+defimpl Render, for: User do
+  def render(%User{name: name}) do
+    "User: #{name}"
+  end
+end
+```
+
+| Construct               | Role                                   |
+| ----------------------- | -------------------------------------- |
+| `defprotocol`           | defines protocol module and callbacks  |
+| `defimpl`               | defines implementation for a data type |
+| dispatch                | selected by runtime data type          |
+| compile-time generation | protocol machinery is generated        |
+
+**Design meaning:** Protocols are not merely function maps. They generate dispatch structure and implementation modules.
+
+**Common Pitfall:** Protocols are not service adapters. Use behaviours when implementation varies by module rather than by data type.
+
+### Macro-generated Functions
+
+Macros commonly generate functions.
+
+Example:
+
+```elixir
+defmodule GetterDSL do
+  defmacro defgetter(name) do
+    quote do
+      def unquote(name)(map) do
+        Map.fetch!(map, unquote(name))
+      end
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule UserGetters do
+  require GetterDSL
+
+  GetterDSL.defgetter(:id)
+  GetterDSL.defgetter(:email)
+end
+```
+
+Generated functions:
+
+```elixir
+UserGetters.id(%{id: 1})
+UserGetters.email(%{email: "a@example.com"})
+```
+
+**Design meaning:** Generated functions are real functions after compilation. They should be documented and tested like any other public API.
+
+**Common Pitfall:** Macro-generated public functions can surprise readers if the generating macro is not obvious.
+
+### Compile-Time versus Runtime Configuration
+
+Macros run at compile time, so values read during macro expansion become compile-time values.
+
+Example risk:
+
+```elixir
+defmacro from_env(name) do
+  value = System.get_env(name)
+
+  quote do
+    unquote(value)
+  end
+end
+```
+
+This reads the environment variable while compiling, not while running.
+
+| Config kind                       | Appropriate handling                               |
+| --------------------------------- | -------------------------------------------------- |
+| compile-time feature              | macro/module attribute may be fine                 |
+| deployment secret                 | runtime config, not macro                          |
+| environment variable              | parse at startup/runtime unless truly compile-time |
+| generated code from static schema | compile-time DSL may fit                           |
+| frequently changing config        | runtime process/config module                      |
+| release-specific config           | runtime config mechanism                           |
+
+**Design meaning:** Macro code runs when compiling. In releases, compile-time values may be baked into artifacts.
+
+**Common Pitfall:** Reading environment variables inside macros can accidentally freeze deployment-specific values at build time.
+
+### Macro Debugging Tools
+
+Useful tools/concepts:
+
+| Tool                       | Use                            |
+| -------------------------- | ------------------------------ |
+| `quote`                    | inspect AST shape              |
+| `Macro.to_string/1`        | render AST as code-like string |
+| `Macro.expand/2`           | expand macros in context       |
+| `IO.inspect` inside macro  | debug compile-time AST         |
+| compiler warnings          | detect generated code issues   |
+| generated helper functions | expose collected DSL metadata  |
+| tests for generated API    | verify macro output behavior   |
+
+Example:
+
+```elixir
+ast =
+  quote do
+    x + 1
+  end
+
+Macro.to_string(ast)
+```
+
+**Design meaning:** Macro debugging often means examining generated code, not only runtime values.
+
+**Common Pitfall:** `IO.inspect` inside a macro prints at compile time, not when the program later runs.
+
+### Macro Testing
+
+Macro tests should usually test the generated behavior, not only the macro expansion.
+
+Behavior test:
+
+```elixir
+defmodule StatusTest do
+  use ExUnit.Case
+
+  test "generated status predicates work" do
+    assert Status.valid_status?(:pending)
+    refute Status.valid_status?(:unknown)
+  end
+end
+```
+
+Expansion test may be useful for libraries:
+
+```elixir
+test "macro expands to expected shape" do
+  ast =
+    quote do
+      StatusMacro.define_statuses([:pending])
+    end
+
+  expanded = Macro.expand(ast, __ENV__)
+  assert Macro.to_string(expanded) =~ "valid_status?"
+end
+```
+
+| Test style               | Use                     |
+| ------------------------ | ----------------------- |
+| generated behavior       | most application tests  |
+| expansion shape          | macro library internals |
+| compile-time error tests | DSL validation          |
+| documentation examples   | DSL usability           |
+
+**Design meaning:** Macro users care about generated behavior and diagnostics.
+
+**Common Pitfall:** Testing only expansion strings can be brittle because AST formatting may change.
+
+### Macro Error Messages
+
+A macro should fail with clear compile-time errors when DSL usage is invalid.
+
+Example:
+
+```elixir
+defmacro field(name, type) when is_atom(name) and is_atom(type) do
+  quote do
+    @fields {unquote(name), unquote(type)}
+  end
+end
+
+defmacro field(name, type) do
+  raise ArgumentError,
+        "field/2 expects atom name and atom type, got: #{inspect(name)}, #{inspect(type)}"
+end
+```
+
+| Good macro error                    | Bad macro error               |
+| ----------------------------------- | ----------------------------- |
+| names the DSL construct             | cryptic pattern-match failure |
+| explains expected syntax            | compiler crash deep in macro  |
+| reports bad argument                | malformed generated AST       |
+| fails at compile time               | hidden runtime failure        |
+| points to caller line when possible | reports macro internals only  |
+
+**Design meaning:** DSLs need developer ergonomics. Compile-time errors are part of the API.
+
+**Common Pitfall:** A macro that generates invalid code without clear errors is hostile to users.
+
+### Macro API Design
+
+Macro APIs should be minimal and explicit.
+
+Good DSL:
+
+```elixir
+schema "users" do
+  field :id, :integer
+  field :email, :string
+end
+```
+
+Weak DSL:
+
+```elixir
+magic :users, [:id, :email], true, false, :x
+```
+
+| Macro API principle                        | Reason                  |
+| ------------------------------------------ | ----------------------- |
+| declarations should read clearly           | DSL readability         |
+| generated behavior should be inspectable   | debugging               |
+| options should be explicit                 | maintainability         |
+| compile-time errors should be clear        | usability               |
+| runtime behavior should be documented      | correctness             |
+| ordinary functions should remain functions | avoid over-macroization |
+
+**Design meaning:** Macro DSLs should reveal domain structure, not hide it.
+
+**Common Pitfall:** A DSL that is shorter but less explicit is usually worse.
+
+### `defoverridable` and Injected Defaults
+
+Macros can inject default functions and allow the caller to override them.
+
+Example:
+
+```elixir
+defmodule BehaviourWithDefaults do
+  defmacro __using__(_opts) do
+    quote do
+      def timeout do
+        5_000
+      end
+
+      defoverridable timeout: 0
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule ClientA do
+  use BehaviourWithDefaults
+end
+
+defmodule ClientB do
+  use BehaviourWithDefaults
+
+  def timeout do
+    10_000
+  end
+end
+```
+
+| Tool               | Meaning                       |
+| ------------------ | ----------------------------- |
+| injected function  | default implementation        |
+| `defoverridable`   | caller may override           |
+| behaviour callback | formal contract               |
+| `@impl true`       | marks callback implementation |
+
+**Design meaning:** This pattern is common in frameworks. It supplies defaults without forcing every module to define every function.
+
+**Common Pitfall:** Injected defaults can hide behavior. Documentation should make defaults explicit.
+
+### Macros and Behaviours
+
+A module can define a behaviour and a `__using__` macro to make implementation easier.
+
+```elixir
+defmodule StorageBehaviour do
+  @callback get(binary()) :: {:ok, binary()} | {:error, :not_found}
+
+  defmacro __using__(_opts) do
+    quote do
+      @behaviour StorageBehaviour
+
+      def get(_key) do
+        {:error, :not_found}
+      end
+
+      defoverridable get: 1
+    end
+  end
+end
+```
+
+Usage:
+
+```elixir
+defmodule MemoryStorage do
+  use StorageBehaviour
+
+  @impl true
+  def get(key) do
+    ...
+  end
+end
+```
+
+| Piece            | Role                      |
+| ---------------- | ------------------------- |
+| `@callback`      | contract                  |
+| `@behaviour`     | module promises callbacks |
+| `__using__`      | convenience setup         |
+| `defoverridable` | default can be replaced   |
+| `@impl true`     | implementation marker     |
+
+**Design meaning:** A behaviour defines a contract; a macro can make that contract easier to implement.
+
+**Common Pitfall:** Do not define only a `use` macro when a formal behaviour contract is needed.
+
+### Erlang Preprocessor versus Elixir Macros
+
+Erlang has preprocessor macros:
+
+```erlang
+-define(TIMEOUT, 5000).
+
+timeout() ->
+    ?TIMEOUT.
+```
+
+Elixir often uses module attributes for constants:
+
+```elixir
+defmodule Config do
+  @timeout 5_000
+
+  def timeout do
+    @timeout
+  end
+end
+```
+
+Elixir macros are AST transformations:
+
+```elixir
+defmacro my_macro(expr) do
+  quote do
+    unquote(expr)
+  end
+end
+```
+
+| Feature                     | Erlang preprocessor        | Elixir macros                        |
+| --------------------------- | -------------------------- | ------------------------------------ |
+| constants                   | `-define`                  | module attributes / macros           |
+| textual/code substitution   | yes                        | AST transformation                   |
+| include headers             | `-include`                 | not equivalent to `use`              |
+| DSL construction            | possible but less central  | central                              |
+| syntax-aware transformation | limited/preprocessor-level | AST-level                            |
+| parse transforms            | powerful but advanced      | macros are standard language feature |
+
+**Design meaning:** Elixir macros are more integrated and syntax-aware than simple textual substitution.
+
+**Common Pitfall:** Do not mentally model Elixir macros as only Erlang `-define`.
+
+### Macro Expansion and Compilation Order
+
+Macros must be compiled before they are used.
+
+Usually:
+
+```elixir
+defmodule MyMacro do
+  defmacro hello do
+    quote do
+      :hello
+    end
+  end
+end
+
+defmodule Demo do
+  require MyMacro
+  MyMacro.hello()
+end
+```
+
+Compilation order matters in multi-file projects too. Mix normally handles dependencies through module references, but circular compile-time dependencies can cause problems.
+
+| Problem                   | Cause                                      |
+| ------------------------- | ------------------------------------------ |
+| macro module unavailable  | not compiled/required                      |
+| cyclic compile dependency | modules require each other at compile time |
+| stale compile-time data   | macro reads data at compile time           |
+| unexpected recompilation  | compile-time dependency too broad          |
+
+**Design meaning:** Macros create compile-time dependencies. These are stronger than ordinary runtime calls.
+
+**Common Pitfall:** Excessive macros can increase recompilation and create compile-order issues.
+
+### Macro Security and Trust
+
+Macros execute during compilation. A dependency macro can run arbitrary code at compile time.
+
+| Risk                     | Meaning                            |
+| ------------------------ | ---------------------------------- |
+| compile-time file access | macro can read files               |
+| environment access       | macro can read env vars            |
+| code generation          | macro can inject behavior          |
+| dependency trust         | third-party macros are powerful    |
+| build reproducibility    | compile-time side effects can vary |
+
+**Design meaning:** Macro dependencies require trust. This is especially relevant for build pipelines and supply-chain review.
+
+**Common Pitfall:** Treating macro dependencies as “just syntax helpers” understates their power.
+
+### Macro Performance Considerations
+
+Macros can improve runtime performance by generating specialized code, but they can also increase compile-time and code size.
+
+| Macro effect                | Possible result             |
+| --------------------------- | --------------------------- |
+| generate many functions     | larger BEAM code            |
+| inline specialized branches | faster runtime, larger code |
+| compile-time validation     | earlier errors              |
+| repeated generated code     | code bloat                  |
+| complex expansion           | slower compilation          |
+| broad compile dependencies  | more recompilation          |
+
+**Design meaning:** Macro-generated code is still code. It affects compilation, code size, debugging, and runtime.
+
+**Common Pitfall:** Generating thousands of clauses/functions without measuring compile-time and runtime consequences can make builds slow and code hard to inspect.
+
+### Macro Use in Common Elixir Ecosystem
+
+Elixir frameworks use macros extensively.
+
+| Ecosystem area                   | Macro role                    |
+| -------------------------------- | ----------------------------- |
+| ExUnit                           | define tests and assertions   |
+| Phoenix Router                   | compile route declarations    |
+| Phoenix Controller/View patterns | inject conveniences           |
+| Ecto Schema                      | declare schema fields         |
+| Ecto Query                       | build query AST               |
+| NimbleParsec-like parsers        | generate parser functions     |
+| Logger                           | compile-time logging behavior |
+| Protocols                        | generate dispatch modules     |
+| Supervision child specs          | module-based conventions      |
+
+**Design meaning:** Macro literacy is necessary for reading Elixir framework code. It is not necessary to write custom macros for every project.
+
+**Common Pitfall:** Learning only the DSL surface without understanding that it expands into ordinary modules/functions can make debugging difficult.
+
+### Macro versus Behaviour versus Protocol versus Function
+
+| Need                                         | Prefer                    |
+| -------------------------------------------- | ------------------------- |
+| ordinary reusable behavior                   | function                  |
+| runtime strategy selected by module          | behaviour                 |
+| dispatch by data type                        | protocol                  |
+| compile-time syntax/declarations             | macro                     |
+| collect declarations in module               | macro + module attributes |
+| generate functions from static declarations  | macro                     |
+| configure runtime behavior                   | data/config/function      |
+| hide implementation behind callback contract | behaviour                 |
+| extend operation to many structs             | protocol                  |
+| one-off helper                               | function                  |
+
+Example distinction:
+
+| Problem                       | Good abstraction        |
+| ----------------------------- | ----------------------- |
+| parse a string                | function                |
+| choose storage backend        | behaviour               |
+| render many data types        | protocol                |
+| define routes at compile time | macro DSL               |
+| declare schema fields         | macro DSL               |
+| pass a custom predicate       | function argument       |
+| run concurrent work           | Task/process, not macro |
+
+**Design meaning:** Elixir offers several abstraction tools. Macros are only one of them.
+
+**Common Pitfall:** Using macros where behaviours or functions are more appropriate creates unnecessary compile-time coupling.
+
+### Macro Review Checklist
+
+When reviewing a macro or DSL, ask:
+
+| Question                                         | Why                        |
+| ------------------------------------------------ | -------------------------- |
+| Is a macro necessary?                            | functions are simpler      |
+| What code is generated?                          | debugging                  |
+| Are arguments evaluated once?                    | correctness                |
+| Is `bind_quoted` appropriate?                    | avoid repeated evaluation  |
+| Is `Macro.escape` needed?                        | inject literal data safely |
+| Are generated names hygienic?                    | avoid capture              |
+| Are imports/aliases explicit?                    | avoid hidden scope changes |
+| Are compile-time errors clear?                   | usability                  |
+| Is runtime behavior documented?                  | maintainability            |
+| Does it read environment/config at compile time? | deployment risk            |
+| Does it create broad compile dependencies?       | build cost                 |
+| Are generated functions tested?                  | correctness                |
+| Is there introspection?                          | debugging DSL declarations |
+| Can a function/protocol/behaviour solve this?    | avoid overengineering      |
+
+### Macro Anti-Pattern Table
+
+| Anti-pattern                            | Problem                   | Better                           |
+| --------------------------------------- | ------------------------- | -------------------------------- |
+| macro to save parentheses               | unnecessary complexity    | function                         |
+| macro for ordinary branching            | hidden control flow       | `case`, `cond`, functions        |
+| repeated `unquote(expr)`                | repeated evaluation       | `bind_quoted`                    |
+| generated code with unclear errors      | poor developer experience | explicit compile-time errors     |
+| reading env vars inside macro           | compile-time config leak  | runtime config                   |
+| huge generated code                     | code bloat                | data-driven runtime logic        |
+| hidden imports from `use`               | unclear names             | document or avoid                |
+| no way to inspect DSL output            | debugging difficulty      | generated introspection function |
+| macro-generated public API undocumented | surprising functions      | docs/tests                       |
+| custom sigil for minor convenience      | new syntax burden         | ordinary function                |
+| protocol used as macro substitute       | wrong abstraction         | choose protocol/macro by need    |
+| behaviour hidden inside `use` only      | unclear contract          | define `@callback`               |
+| compile-time side effects               | non-reproducible builds   | pure macro expansion             |
+
+### Macro Decision Table
+
+| Requirement                               | Macro?                                |
+| ----------------------------------------- | ------------------------------------- |
+| Add two numbers                           | No                                    |
+| Log a runtime value                       | Usually function/macro already exists |
+| Inspect expression syntax                 | Yes                                   |
+| Define a route DSL                        | Often yes                             |
+| Define schema fields                      | Often yes                             |
+| Generate many similar functions           | Maybe                                 |
+| Avoid repeated boilerplate callbacks      | Maybe, with behaviour                 |
+| Validate DSL declarations at compile time | Yes                                   |
+| Read a config file at runtime             | No                                    |
+| Read env var for deployment secret        | No                                    |
+| Dispatch by struct type                   | Protocol                              |
+| Select implementation backend             | Behaviour                             |
+| Wrap external service call                | Function/module                       |
+| Start a process                           | Function/supervisor, not macro        |
+| Define tests                              | Macro DSL is appropriate              |
+
+### Practical Reading Guide for Macro-Heavy Code
+
+When encountering macro-heavy Elixir code, read it in this order:
+
+| Step | Question                                               |
+| ---- | ------------------------------------------------------ |
+| 1    | Which module is being `use`d?                          |
+| 2    | What does its `__using__/1` macro inject?              |
+| 3    | Which functions/macros are imported?                   |
+| 4    | Which module attributes are registered or accumulated? |
+| 5    | Is `@before_compile` used?                             |
+| 6    | Which functions are generated?                         |
+| 7    | What runtime API exists after compilation?             |
+| 8    | What compile-time data is collected?                   |
+| 9    | Are there generated docs/specs?                        |
+| 10   | Can macro expansion be inspected?                      |
+
+**Design meaning:** Macro-heavy source has two layers: the surface DSL and the generated runtime code.
+
+**Common Pitfall:** Reading only the surface DSL may miss the actual runtime functions and callbacks.
+
+### Appendix K Summary
+
+Elixir macros are compile-time code generators. They are powerful because they can inspect syntax, collect declarations, generate functions, build DSLs, and validate code before runtime.
+
+The core rules are:
+
+```text
+Functions receive runtime values.
+Macros receive syntax and return syntax.
+quote builds AST.
+unquote inserts into AST.
+use calls __using__/1.
+Module attributes can store compile-time DSL data.
+bind_quoted helps avoid repeated evaluation.
+Macro.escape safely injects literal data.
+```
+
+The practical design rule is:
+
+```text
+Use functions for ordinary behavior.
+Use behaviours for module contracts.
+Use protocols for data-type polymorphism.
+Use macros for syntax and compile-time code generation.
+```
+
+The main risk is not that macros are bad. The risk is that macros move behavior out of ordinary runtime flow. A good macro makes a domain clearer, generates predictable code, provides good errors, and remains inspectable. A bad macro hides control flow, creates compile-time coupling, surprises callers, and makes debugging harder.
+## Appendix L — Records, Structs, Maps, and Opaque Types
+
+### Appendix Scope — data modeling across Erlang and Elixir
+
+This appendix explains how Erlang and Elixir model structured data with records, structs, maps, tagged tuples, and opaque types.
+
+The central rule is:
+
+```text
+Erlang records and Elixir structs are not the same runtime representation.
+Erlang records are tuples with compile-time field syntax.
+Elixir structs are maps with a __struct__ key.
+Maps are flexible key-value data.
+Opaque types hide representation through API discipline and type specs.
+```
+
+| Data form    | Erlang                    | Elixir                     | Runtime representation    | Main use                        |
+| ------------ | ------------------------- | -------------------------- | ------------------------- | ------------------------------- |
+| Tagged tuple | `{user, Id, Name}`        | `{:user, id, name}`        | tuple                     | small fixed variants            |
+| Record       | `#user{id = Id}`          | no direct equivalent       | tuple                     | Erlang structured internal data |
+| Map          | `#{id => Id}`             | `%{id: id}`                | map                       | flexible key-value data         |
+| Struct       | no direct equivalent      | `%User{id: id}`            | map                       | Elixir named domain data        |
+| Opaque type  | `-opaque user() :: ...`   | `@opaque t :: ...`         | any chosen representation | representation hiding           |
+| Constructor  | `new(...) -> {ok, Value}` | `new(...) -> {:ok, value}` | API pattern               | validation boundary             |
+
+### Tagged Tuples — small fixed variants
+
+Tagged tuples are common in both Erlang and Elixir.
+
+Erlang:
+
+```erlang
+{ok, Value}.
+{error, Reason}.
+{user, Id, Name}.
+```
+
+Elixir:
+
+```elixir
+{:ok, value}
+{:error, reason}
+{:user, id, name}
+```
+
+| Use tagged tuples when        | Avoid when                      |
+| ----------------------------- | ------------------------------- |
+| representing success/failure  | many named fields are needed    |
+| small fixed variants          | field order is unclear          |
+| OTP callback shapes           | data evolves frequently         |
+| message protocols             | payload is large and field-rich |
+| compact internal alternatives | caller needs named access       |
+
+Good:
+
+```elixir
+{:ok, user}
+{:error, :not_found}
+{:reply, reply, state}
+```
+
+Weak:
+
+```elixir
+{:user, 1, "Ada", "ada@example.com", true, :admin, 10, nil}
+```
+
+Better:
+
+```elixir
+%User{
+  id: 1,
+  name: "Ada",
+  email: "ada@example.com",
+  active: true,
+  role: :admin
+}
+```
+
+**Design meaning:** Tagged tuples are excellent for variants and protocol shapes. They are weaker for large record-like data.
+
+**Common Pitfall:** Large positional tuples become hard to maintain because field meaning depends on order.
+
+### Erlang Records — compile-time tuple abstraction
+
+An Erlang record gives field syntax for a tuple.
+
+```erlang
+-record(user, {
+    id,
+    name,
+    email = undefined,
+    active = true
+}).
+```
+
+Create record:
+
+```erlang
+User = #user{id = 1, name = <<"Ada">>, email = <<"ada@example.com">>}.
+```
+
+Access field:
+
+```erlang
+Name = User#user.name.
+```
+
+Pattern match:
+
+```erlang
+get_id(#user{id = Id}) ->
+    Id.
+```
+
+Update:
+
+```erlang
+Updated = User#user{active = false}.
+```
+
+At runtime, a record is a tuple. Conceptually, the above record is represented like:
+
+```erlang
+{user, 1, <<"Ada">>, <<"ada@example.com">>, true}
+```
+
+The exact tuple layout is determined by the record definition.
+
+| Record property        | Meaning                                                  |
+| ---------------------- | -------------------------------------------------------- |
+| field names            | compile-time only                                        |
+| runtime representation | tuple                                                    |
+| first element          | record name atom                                         |
+| access/update syntax   | expanded by compiler                                     |
+| declaration            | usually in module or `.hrl` header                       |
+| cross-module sharing   | often through header include                             |
+| evolution              | field changes require recompilation of dependent modules |
+
+**Design meaning:** Records are efficient and familiar in Erlang, but their field names do not exist at runtime.
+
+**Common Pitfall:** Elixir code interacting with Erlang records usually sees tuples unless special record helpers are used.
+
+### Erlang Record Header Coupling
+
+Records are often placed in `.hrl` files when shared.
+
+```erlang
+%% user.hrl
+-record(user, {
+    id,
+    name,
+    email = undefined
+}).
+```
+
+Use in a module:
+
+```erlang
+-include("user.hrl").
+
+get_email(#user{email = Email}) ->
+    Email.
+```
+
+| Benefit                     | Cost                                       |
+| --------------------------- | ------------------------------------------ |
+| shared field syntax         | compile-time coupling                      |
+| compact representation      | field changes affect all including modules |
+| clear Erlang style          | versioning is delicate                     |
+| efficient pattern matching  | hidden runtime tuple shape                 |
+| familiar OTP-era convention | less flexible across boundaries            |
+
+**Design meaning:** Shared records create a compile-time contract. Changing a record is not just changing local data shape.
+
+**Common Pitfall:** Records are poor long-lived external data formats. Use versioned maps, binaries, JSON, protobuf, or explicit serialization formats when data crosses durable/distributed boundaries.
+
+### Elixir Structs — named map shapes
+
+An Elixir struct is a named map.
+
+```elixir
+defmodule User do
+  defstruct [
+    :id,
+    :name,
+    email: nil,
+    active: true
+  ]
+end
+```
+
+Create struct:
+
+```elixir
+user = %User{id: 1, name: "Ada", email: "ada@example.com"}
+```
+
+Pattern match:
+
+```elixir
+def get_id(%User{id: id}) do
+  id
+end
+```
+
+Update existing field:
+
+```elixir
+updated = %User{user | active: false}
+```
+
+Runtime shape is a map with `__struct__`:
+
+```elixir
+%{
+  __struct__: User,
+  id: 1,
+  name: "Ada",
+  email: "ada@example.com",
+  active: true
+}
+```
+
+| Struct property        | Meaning               |                |
+| ---------------------- | --------------------- | -------------- |
+| runtime representation | map                   |                |
+| type marker            | `__struct__` key      |                |
+| field names            | atom keys             |                |
+| declaration            | `defstruct`           |                |
+| pattern matching       | `%User{field: value}` |                |
+| update syntax          | `%User{struct         | field: value}` |
+| protocol dispatch      | by struct type        |                |
+| default values         | set in `defstruct`    |                |
+
+**Design meaning:** Structs give named domain shape in Elixir. They are not classes.
+
+**Common Pitfall:** A struct does not automatically enforce invariants. `%User{id: nil}` may be constructible unless code uses constructors and opaque API discipline.
+
+### Structs Are Not Classes
+
+A struct holds data. Behavior belongs in modules, protocols, or functions.
+
+```elixir
+defmodule User do
+  defstruct [:id, :name, active: true]
+
+  def active?(%User{active: active}) do
+    active
+  end
+end
+```
+
+Usage:
+
+```elixir
+User.active?(user)
+```
+
+This is not object-method dispatch. It is a module function receiving a struct.
+
+| Object-oriented idea                  | Elixir equivalent                  |
+| ------------------------------------- | ---------------------------------- |
+| class                                 | module + struct, but not identical |
+| instance fields                       | struct fields                      |
+| instance method                       | module function taking struct      |
+| interface                             | behaviour or protocol              |
+| inheritance                           | not struct inheritance             |
+| polymorphism by data type             | protocol                           |
+| polymorphism by implementation module | behaviour                          |
+
+**Design meaning:** Elixir separates data and behavior more explicitly than class-centered languages.
+
+**Common Pitfall:** Do not design a process or struct as if it were a mutable object with methods.
+
+### Plain Maps — flexible key-value data
+
+Maps exist in both Erlang and Elixir.
+
+Erlang:
+
+```erlang
+User = #{id => 1, name => <<"Ada">>, active => true}.
+```
+
+Elixir:
+
+```elixir
+user = %{id: 1, name: "Ada", active: true}
+```
+
+Pattern match required keys:
+
+```elixir
+%{id: id, name: name} = user
+```
+
+Erlang:
+
+```erlang
+#{id := Id, name := Name} = User.
+```
+
+| Use maps when            | Prefer struct/record/opaque type when  |
+| ------------------------ | -------------------------------------- |
+| data is flexible         | data has stable domain identity        |
+| raw decoded JSON         | invariants matter                      |
+| optional keys are common | field set is known                     |
+| internal dictionary      | API should expose named type           |
+| key-value lookup matters | callers should not depend on raw shape |
+| boundary parsing stage   | domain representation is needed        |
+
+**Design meaning:** Maps are flexible. That flexibility is useful at boundaries but can become weakness in domain code if every function accepts arbitrary maps.
+
+**Common Pitfall:** “Maps everywhere” often leads to weak contracts, string/atom key confusion, and runtime key errors.
+
+### Atom-Key Maps versus String-Key Maps
+
+Elixir shorthand `%{id: 1}` means `%{:id => 1}`.
+
+```elixir
+%{id: 1}
+%{:id => 1}
+```
+
+String-key map:
+
+```elixir
+%{"id" => 1}
+```
+
+These do not match each other.
+
+```elixir
+%{id: id} = %{id: 1}
+%{"id" => id} = %{"id" => 1}
+```
+
+The following fails:
+
+```elixir
+%{id: id} = %{"id" => 1}
+```
+
+| Source                      | Common key type        |
+| --------------------------- | ---------------------- |
+| JSON decoded data           | string keys by default |
+| internal Elixir domain maps | atom keys              |
+| structs                     | atom keys              |
+| Erlang maps                 | any term as key        |
+| external input              | should be normalized   |
+
+Boundary normalization:
+
+```elixir
+def new(%{"id" => id, "name" => name}) do
+  {:ok, %{id: id, name: name\}\}
+end
+
+def new(_) do
+  {:error, :invalid_user}
+end
+```
+
+**Design meaning:** External input should be converted into an internal key convention at the boundary.
+
+**Common Pitfall:** Do not convert arbitrary external strings to atoms. Use explicit mapping.
+
+### Map Update Semantics
+
+Elixir:
+
+```elixir
+Map.put(map, :name, "Ada")
+%{map | name: "Ada"}
+```
+
+The difference is important.
+
+| Operation                  | Behavior                           |                                    |
+| -------------------------- | ---------------------------------- | ---------------------------------- |
+| `Map.put(map, key, value)` | adds or replaces                   |                                    |
+| `%{map                     | key: value}`                       | updates existing key only          |
+| `%Struct{struct            | field: value}`                     | updates existing struct field only |
+| `Map.update/4`             | update with default                |                                    |
+| `Map.fetch/2`              | returns `{:ok, value}` or `:error` |                                    |
+| `Map.fetch!/2`             | returns value or raises            |                                    |
+
+Erlang:
+
+```erlang
+Map#{name => <<"Ada">>}.  %% add or replace
+Map#{name := <<"Ada">>}.  %% update existing key
+```
+
+| Erlang operation     | Behavior                 |
+| -------------------- | ------------------------ |
+| `Map#{Key => Value}` | add or replace           |
+| `Map#{Key := Value}` | update existing key only |
+
+**Design meaning:** Use update-existing syntax when missing keys would indicate a bug.
+
+**Common Pitfall:** In Elixir, `%{map | key: value}` fails if `:key` does not exist.
+
+### Struct Update Semantics
+
+Given:
+
+```elixir
+defmodule User do
+  defstruct [:id, :name, active: true]
+end
+```
+
+Update:
+
+```elixir
+%User{user | active: false}
+```
+
+This preserves the struct type.
+
+But this:
+
+```elixir
+Map.put(user, :unknown, 123)
+```
+
+can produce a map with an extra key, depending the operation. It may still display as a struct only when the map conforms to struct expectations, but adding arbitrary keys to struct maps breaks the intended field contract.
+
+Prefer struct update syntax for declared fields:
+
+```elixir
+%User{user | name: "Grace"}
+```
+
+| Task                       | Prefer                  |                |
+| -------------------------- | ----------------------- | -------------- |
+| update known struct field  | `%User{user             | field: value}` |
+| convert struct to map      | `Map.from_struct(user)` |                |
+| construct validated struct | `User.new(...)`         |                |
+| change raw map             | `Map.put/3`             |                |
+| enforce domain invariant   | constructor/update API  |                |
+
+**Design meaning:** Struct syntax communicates “this is a known data shape.”
+
+**Common Pitfall:** Treating structs as arbitrary maps undermines the purpose of using a struct.
+
+### Constructor Functions — validation boundary
+
+A constructor function validates and creates domain data.
+
+Elixir:
+
+```elixir
+defmodule User do
+  @opaque t :: %__MODULE__{
+            id: pos_integer(),
+            name: String.t(),
+            email: String.t() | nil,
+            active: boolean()
+          }
+
+  defstruct [:id, :name, email: nil, active: true]
+
+  @spec new(map()) :: {:ok, t()} | {:error, term()}
+  def new(%{id: id, name: name} = attrs)
+      when is_integer(id) and id > 0 and is_binary(name) do
+    name = String.trim(name)
+
+    cond do
+      name == "" ->
+        {:error, {:invalid_field, :name\}\}
+
+      true ->
+        {:ok,
+         %__MODULE__{
+           id: id,
+           name: name,
+           email: Map.get(attrs, :email),
+           active: Map.get(attrs, :active, true)
+         \}\}
+    end
+  end
+
+  def new(_) do
+    {:error, :invalid_user}
+  end
+end
+```
+
+Erlang opaque constructor:
+
+```erlang
+-module(user).
+-export([new/1, id/1, name/1]).
+-export_type([user/0]).
+
+-opaque user() :: #{
+    id := pos_integer(),
+    name := binary(),
+    email := binary() | undefined,
+    active := boolean()
+}.
+
+-spec new(map()) -> {ok, user()} | {error, term()}.
+new(#{id := Id, name := Name} = Attrs)
+  when is_integer(Id), Id > 0, is_binary(Name) ->
+    Trimmed = string:trim(Name),
+    case Trimmed of
+        <<>> ->
+            {error, {invalid_field, name\}\};
+        _ ->
+            {ok, #{
+                id => Id,
+                name => Trimmed,
+                email => maps:get(email, Attrs, undefined),
+                active => maps:get(active, Attrs, true)
+            \}\}
+    end;
+new(_) ->
+    {error, invalid_user}.
+
+-spec id(user()) -> pos_integer().
+id(#{id := Id}) ->
+    Id.
+
+-spec name(user()) -> binary().
+name(#{name := Name}) ->
+    Name.
+```
+
+| Constructor responsibility    | Reason                                |
+| ----------------------------- | ------------------------------------- |
+| validate required fields      | prevent bad domain values             |
+| normalize data                | trim, case-fold, convert              |
+| reject invalid state          | preserve invariants                   |
+| return tagged result          | caller handles expected invalid input |
+| hide representation if opaque | future-proof implementation           |
+| avoid side effects            | keep construction testable            |
+
+**Design meaning:** A struct or map defines shape; a constructor defines validity.
+
+**Common Pitfall:** Exposing `%User{}` freely may allow invalid values unless callers follow constructor discipline.
+
+### Opaque Types — hiding representation
+
+Opaque types let a module say: “Callers should treat this as an abstract type.”
+
+Elixir:
+
+```elixir
+defmodule Email do
+  @opaque t :: %__MODULE__{value: String.t()}
+
+  defstruct [:value]
+
+  @spec new(String.t()) :: {:ok, t()} | {:error, :invalid_email}
+  def new(value) when is_binary(value) do
+    value = String.trim(value)
+
+    if String.contains?(value, "@") do
+      {:ok, %__MODULE__{value: value\}\}
+    else
+      {:error, :invalid_email}
+    end
+  end
+
+  def new(_), do: {:error, :invalid_email}
+
+  @spec to_string(t()) :: String.t()
+  def to_string(%__MODULE__{value: value}) do
+    value
+  end
+end
+```
+
+Erlang:
+
+```erlang
+-module(email).
+-export([new/1, to_binary/1]).
+-export_type([email/0]).
+
+-opaque email() :: binary().
+
+-spec new(binary()) -> {ok, email()} | {error, invalid_email}.
+new(Value) when is_binary(Value) ->
+    Trimmed = string:trim(Value),
+    case binary:match(Trimmed, <<"@">>) of
+        nomatch -> {error, invalid_email};
+        _ -> {ok, Trimmed}
+    end;
+new(_) ->
+    {error, invalid_email}.
+
+-spec to_binary(email()) -> binary().
+to_binary(Email) ->
+    Email.
+```
+
+| Opaque type property   | Meaning                                |
+| ---------------------- | -------------------------------------- |
+| representation hidden  | callers should not depend on internals |
+| constructor required   | module controls validity               |
+| accessor functions     | module exposes safe operations         |
+| Dialyzer can warn      | external construction may be flagged   |
+| runtime still flexible | not hard encapsulation                 |
+| documentation contract | API discipline matters                 |
+
+**Design meaning:** Opaque types are about API boundaries and tool-assisted discipline, not runtime privacy.
+
+**Common Pitfall:** `@opaque` does not make struct fields physically inaccessible at runtime. It signals a contract to callers and tools.
+
+### `@type`, `@typep`, and `@opaque`
+
+Elixir:
+
+```elixir
+@type id :: pos_integer()
+@typep raw_attrs :: map()
+@opaque t :: %__MODULE__{id: id()}
+```
+
+Erlang:
+
+```erlang
+-type id() :: pos_integer().
+-opaque user() :: #{id := id()}.
+```
+
+| Type annotation | Meaning                                         |
+| --------------- | ----------------------------------------------- |
+| `@type`         | public named type                               |
+| `@typep`        | private named type                              |
+| `@opaque`       | public abstract type with hidden representation |
+| `-type`         | Erlang named type                               |
+| `-opaque`       | Erlang opaque type                              |
+| `-export_type`  | Erlang exports type for other modules           |
+
+When to use:
+
+| Need                       | Use         |
+| -------------------------- | ----------- |
+| document public data shape | `@type`     |
+| helper internal type       | `@typep`    |
+| hide representation        | `@opaque`   |
+| define module contract     | `@callback` |
+| annotate functions         | `@spec`     |
+
+**Design meaning:** Types describe contracts. They do not validate external input at runtime.
+
+**Common Pitfall:** A detailed type spec does not replace a constructor or parser.
+
+### Records versus Structs
+
+| Feature                | Erlang Record                         | Elixir Struct                                    |              |
+| ---------------------- | ------------------------------------- | ------------------------------------------------ | ------------ |
+| Runtime base           | tuple                                 | map                                              |              |
+| Field names at runtime | no                                    | yes, as keys                                     |              |
+| Declaration            | `-record`                             | `defstruct`                                      |              |
+| Defaults               | record field defaults                 | struct field defaults                            |              |
+| Pattern matching       | `#user{id = Id}`                      | `%User{id: id}`                                  |              |
+| Update                 | `User#user{name = Name}`              | `%User{user                                      | name: name}` |
+| Cross-module sharing   | `.hrl` include                        | module name                                      |              |
+| Evolution              | field changes affect tuple layout     | map fields more flexible but still API-sensitive |              |
+| Interop                | Elixir sees tuple                     | Erlang sees map with `__struct__`                |              |
+| Protocol dispatch      | no Elixir protocol dispatch by record | yes                                              |              |
+| Common use             | Erlang internal data                  | Elixir domain data                               |              |
+
+**Design meaning:** Records and structs are both named data shapes, but they are not interchangeable.
+
+**Common Pitfall:** Do not serialize Erlang records or Elixir structs directly as long-lived external protocols unless versioning and compatibility are carefully handled.
+
+### Maps versus Structs
+
+| Question                       | Prefer map       | Prefer struct         |
+| ------------------------------ | ---------------- | --------------------- |
+| Is data raw external input?    | yes              | no                    |
+| Is the set of fields stable?   | maybe            | yes                   |
+| Does domain identity matter?   | maybe            | yes                   |
+| Are invariants important?      | with constructor | yes, with constructor |
+| Do protocols dispatch by type? | no               | yes                   |
+| Are arbitrary keys expected?   | yes              | no                    |
+| Is this internal dictionary?   | yes              | no                    |
+| Should callers know the type?  | no               | yes                   |
+
+Raw input:
+
+```elixir
+%{"name" => "Ada", "email" => "ada@example.com"}
+```
+
+Validated internal struct:
+
+```elixir
+%User{name: "Ada", email: "ada@example.com"}
+```
+
+**Design meaning:** Maps are flexible. Structs are declarative domain shapes.
+
+**Common Pitfall:** Using plain maps for everything makes APIs less explicit and weakens pattern matching.
+
+### Maps versus Keyword Lists
+
+Elixir keyword lists:
+
+```elixir
+[timeout: 5_000, retries: 3]
+```
+
+Runtime:
+
+```elixir
+[{:timeout, 5_000}, {:retries, 3}]
+```
+
+| Use keyword list when            | Use map when             |
+| -------------------------------- | ------------------------ |
+| options to a function            | general key-value data   |
+| order matters                    | lookup matters           |
+| duplicate keys are meaningful    | unique keys are expected |
+| DSL options                      | data modeling            |
+| small configuration at call site | larger structured data   |
+
+Example:
+
+```elixir
+GenServer.call(server, :get, 5_000)
+```
+
+Options example:
+
+```elixir
+Supervisor.start_link(children, strategy: :one_for_one, name: MyApp.Supervisor)
+```
+
+Domain data should usually not be a keyword list:
+
+```elixir
+# Weak as domain entity:
+[name: "Ada", email: "ada@example.com"]
+
+# Better:
+%User{name: "Ada", email: "ada@example.com"}
+```
+
+**Common Pitfall:** Keyword list lookup is linear and duplicate keys are possible.
+
+### Tagged Tuples versus Structs
+
+| Need                     | Prefer tagged tuple     | Prefer struct             |
+| ------------------------ | ----------------------- | ------------------------- |
+| success/failure          | yes                     | no                        |
+| small variant            | yes                     | maybe                     |
+| OTP callback             | yes                     | no                        |
+| process message envelope | yes                     | payload may be struct/map |
+| domain entity            | no                      | yes                       |
+| many named fields        | no                      | yes                       |
+| protocol result          | yes                     | maybe payload             |
+| evolvable payload        | tuple tag + map payload | struct if internal        |
+
+Example message:
+
+```elixir
+{:user_created, %{user_id: user.id, occurred_at: occurred_at\}\}
+```
+
+or:
+
+```elixir
+{:user_created, %UserCreated{user_id: user.id, occurred_at: occurred_at\}\}
+```
+
+**Design meaning:** Tagged tuple is often the envelope; map/struct is often the payload.
+
+**Common Pitfall:** Putting too many fields directly into a tuple message makes protocol evolution harder.
+
+### Opaque Types versus Structs
+
+A struct gives named fields. An opaque type hides representation.
+
+```elixir
+defmodule UserId do
+  @opaque t :: %__MODULE__{value: pos_integer()}
+
+  defstruct [:value]
+
+  def new(value) when is_integer(value) and value > 0 do
+    {:ok, %__MODULE__{value: value\}\}
+  end
+
+  def new(_), do: {:error, :invalid_user_id}
+
+  def to_integer(%__MODULE__{value: value}), do: value
+end
+```
+
+| Design choice        | Meaning                                  |
+| -------------------- | ---------------------------------------- |
+| public struct fields | callers can pattern match/access fields  |
+| opaque struct        | callers should use API                   |
+| plain type alias     | representation is public                 |
+| constructor          | controls validity                        |
+| accessor             | controlled exposure                      |
+| updater              | controlled mutation-style transformation |
+
+**Design meaning:** Opaque types are valuable when invalid construction would be dangerous or representation may change.
+
+**Common Pitfall:** Making every struct opaque may create excessive ceremony. Use opacity where representation hiding matters.
+
+### Accessor and Updater Functions
+
+Accessor functions protect representation.
+
+```elixir
+defmodule Email do
+  @opaque t :: %__MODULE__{value: String.t()}
+  defstruct [:value]
+
+  def to_string(%__MODULE__{value: value}), do: value
+end
+```
+
+Updater functions preserve invariants.
+
+```elixir
+defmodule User do
+  @opaque t :: %__MODULE__{
+            id: pos_integer(),
+            name: String.t(),
+            active: boolean()
+          }
+
+  defstruct [:id, :name, active: true]
+
+  def rename(%__MODULE__{} = user, name) when is_binary(name) do
+    name = String.trim(name)
+
+    if name == "" do
+      {:error, {:invalid_field, :name\}\}
+    else
+      {:ok, %__MODULE__{user | name: name\}\}
+    end
+  end
+end
+```
+
+| Function kind | Role                                    |
+| ------------- | --------------------------------------- |
+| constructor   | create valid value                      |
+| accessor      | expose representation safely            |
+| updater       | transform while preserving invariants   |
+| predicate     | query domain property                   |
+| converter     | convert to/from boundary representation |
+| serializer    | produce external format                 |
+| parser        | accept external format                  |
+
+**Design meaning:** If data has invariants, direct field mutation-style updates should be replaced by controlled functions.
+
+**Common Pitfall:** Exposing raw fields and then trying to enforce invariants elsewhere leads to inconsistent values.
+
+### Boundary Conversion
+
+External shape should be converted to internal shape.
+
+JSON-like input:
+
+```elixir
+%{"id" => 1, "name" => "Ada", "email" => "ada@example.com"}
+```
+
+Boundary parser:
+
+```elixir
+defmodule CreateUser do
+  defstruct [:id, :name, :email]
+
+  def new(%{"id" => id, "name" => name, "email" => email}) do
+    with true <- is_integer(id) and id > 0,
+         true <- is_binary(name),
+         true <- is_binary(email) do
+      {:ok, %__MODULE__{id: id, name: String.trim(name), email: String.trim(email)\}\}
+    else
+      _ -> {:error, :invalid_create_user}
+    end
+  end
+
+  def new(_) do
+    {:error, :invalid_create_user}
+  end
+end
+```
+
+Then domain construction:
+
+```elixir
+with {:ok, command} <- CreateUser.new(params),
+     {:ok, user} <- User.new(command) do
+  {:ok, user}
+end
+```
+
+| Boundary shape       | Internal shape                       |
+| -------------------- | ------------------------------------ |
+| string-key map       | atom-key command/struct              |
+| raw enum string      | finite atom through explicit mapping |
+| arbitrary number     | validated domain number              |
+| optional field       | explicit default                     |
+| nested external map  | nested validated value               |
+| unknown extra fields | ignored or rejected intentionally    |
+
+**Design meaning:** Boundary conversion prevents raw external shape from spreading through the application.
+
+**Common Pitfall:** Passing decoded JSON maps deep into domain logic causes string-key/atom-key confusion and weak validation.
+
+### Serialization and External Formats
+
+Do not assume internal structs or records are good external formats.
+
+Weak:
+
+```elixir
+:erlang.term_to_binary(%User{id: 1, name: "Ada"})
+```
+
+This may be acceptable for internal short-lived BEAM-only data, but it is weak as a long-term external contract.
+
+Better external schema:
+
+```elixir
+def to_external(%User{id: id, name: name, email: email}) do
+  %{
+    "version" => 1,
+    "id" => id,
+    "name" => name,
+    "email" => email
+  }
+end
+```
+
+Parser:
+
+```elixir
+def from_external(%{"version" => 1, "id" => id, "name" => name, "email" => email}) do
+  User.new(%{id: id, name: name, email: email})
+end
+
+def from_external(%{"version" => version}) do
+  {:error, {:unsupported_version, version\}\}
+end
+```
+
+| Internal representation         | External representation          |
+| ------------------------------- | -------------------------------- |
+| optimized for code              | optimized for compatibility      |
+| can change freely if private    | must be versioned if long-lived  |
+| may include structs/records     | should use stable schema         |
+| may contain PIDs/refs/functions | should avoid runtime-only values |
+| may be atom-keyed               | often string-keyed for JSON      |
+| may be opaque                   | must expose intended fields      |
+
+**Design meaning:** External formats are compatibility contracts. Internal representations are implementation details.
+
+**Common Pitfall:** Persisting raw structs or records couples storage to code shape.
+
+### Structs and Protocols
+
+Elixir protocols can dispatch by struct type.
+
+```elixir
+defprotocol Render do
+  def render(value)
+end
+
+defimpl Render, for: User do
+  def render(%User{name: name}) do
+    "User: #{name}"
+  end
+end
+```
+
+| Protocol works well when                 | Use behaviour instead when         |
+| ---------------------------------------- | ---------------------------------- |
+| operation varies by data type            | implementation varies by module    |
+| many structs implement same operation    | service backend varies             |
+| generic function over values             | callback contract over modules     |
+| rendering/encoding/normalization by type | storage adapter/client abstraction |
+
+**Design meaning:** Structs pair naturally with protocols when behavior depends on data type.
+
+**Common Pitfall:** Do not use a protocol merely to avoid writing a function clause.
+
+### Records and Elixir Interop
+
+Elixir can work with Erlang records using `Record` utilities, but direct interop still requires care.
+
+Erlang record:
+
+```erlang
+-record(user, {id, name}).
+```
+
+Runtime tuple:
+
+```erlang
+{user, Id, Name}
+```
+
+Elixir can match the tuple directly:
+
+```elixir
+{:user, id, name} = erlang_record_value
+```
+
+Elixir also has `Record` helpers for importing record definitions in some cases, but this is an interop tool, not the same as an Elixir struct.
+
+| Interop choice                 | When                        |
+| ------------------------------ | --------------------------- |
+| direct tuple match             | simple known record layout  |
+| `Record` helper                | working with Erlang headers |
+| convert to Elixir struct       | Elixir domain layer         |
+| keep as opaque external value  | avoid depending on layout   |
+| call Erlang accessor functions | preferred if available      |
+
+**Design meaning:** When Erlang records cross into Elixir, decide whether to keep them as Erlang data or convert them into Elixir domain structs.
+
+**Common Pitfall:** Depending on record tuple layout across module boundaries is brittle unless the record contract is stable.
+
+### Domain Value Object Pattern
+
+Use a small opaque type for constrained domain values.
+
+Example: `UserId`.
+
+```elixir
+defmodule UserId do
+  @opaque t :: %__MODULE__{value: pos_integer()}
+
+  defstruct [:value]
+
+  @spec new(term()) :: {:ok, t()} | {:error, :invalid_user_id}
+  def new(value) when is_integer(value) and value > 0 do
+    {:ok, %__MODULE__{value: value\}\}
+  end
+
+  def new(_), do: {:error, :invalid_user_id}
+
+  @spec to_integer(t()) :: pos_integer()
+  def to_integer(%__MODULE__{value: value}), do: value
+end
+```
+
+| Benefit                            | Cost                             |
+| ---------------------------------- | -------------------------------- |
+| prevents invalid IDs by convention | more code                        |
+| makes domain types explicit        | conversion functions needed      |
+| supports specs                     | may feel verbose                 |
+| representation can change          | callers must use API             |
+| improves boundary clarity          | excessive use can overcomplicate |
+
+**Design meaning:** Use value objects where invalid primitive values are common or costly.
+
+**Common Pitfall:** Wrapping every primitive in an opaque struct can make code noisy. Apply where domain correctness benefits.
+
+### Entity Struct Pattern
+
+Use a struct for domain entities with multiple fields.
+
+```elixir
+defmodule User do
+  @opaque t :: %__MODULE__{
+            id: UserId.t(),
+            name: String.t(),
+            email: Email.t(),
+            active: boolean()
+          }
+
+  defstruct [:id, :name, :email, active: true]
+
+  def new(%{id: id, name: name, email: email}) do
+    with {:ok, id} <- UserId.new(id),
+         {:ok, email} <- Email.new(email),
+         {:ok, name} <- validate_name(name) do
+      {:ok, %__MODULE__{id: id, name: name, email: email\}\}
+    end
+  end
+
+  defp validate_name(name) when is_binary(name) do
+    name = String.trim(name)
+
+    if name == "" do
+      {:error, {:invalid_field, :name\}\}
+    else
+      {:ok, name}
+    end
+  end
+
+  defp validate_name(_), do: {:error, {:invalid_field, :name\}\}
+end
+```
+
+| Entity module should contain | Avoid                       |
+| ---------------------------- | --------------------------- |
+| construction                 | database calls if avoidable |
+| invariant checks             | HTTP params directly        |
+| pure transformations         | external service calls      |
+| accessor/update functions    | process lifecycle           |
+| conversion to storage format | unrelated orchestration     |
+
+**Design meaning:** A domain entity is still data. It does not need to be a process.
+
+**Common Pitfall:** Do not create a `GenServer` for every entity unless the entity has active runtime behavior.
+
+### Command Struct Pattern
+
+Use command structs for validated external input before domain creation.
+
+```elixir
+defmodule CreateUser do
+  @opaque t :: %__MODULE__{
+            name: String.t(),
+            email: String.t()
+          }
+
+  defstruct [:name, :email]
+
+  def new(%{"name" => name, "email" => email})
+      when is_binary(name) and is_binary(email) do
+    name = String.trim(name)
+    email = String.trim(email)
+
+    cond do
+      name == "" ->
+        {:error, {:invalid_field, :name\}\}
+
+      not String.contains?(email, "@") ->
+        {:error, {:invalid_field, :email\}\}
+
+      true ->
+        {:ok, %__MODULE__{name: name, email: email\}\}
+    end
+  end
+
+  def new(_) do
+    {:error, :invalid_create_user}
+  end
+end
+```
+
+Then:
+
+```elixir
+def create_user(params) do
+  with {:ok, command} <- CreateUser.new(params),
+       {:ok, user} <- User.from_command(command) do
+    UserRepo.insert(user)
+  end
+end
+```
+
+| Command struct                    | Domain entity                  |
+| --------------------------------- | ------------------------------ |
+| input intent                      | business object                |
+| often short-lived                 | may be persisted               |
+| external shape parser             | internal domain shape          |
+| validation boundary               | invariant holder               |
+| may contain raw normalized values | may contain opaque value types |
+
+**Design meaning:** Commands separate “what the caller asked for” from “what the domain stores.”
+
+**Common Pitfall:** Passing raw params straight into entity constructors may mix boundary parsing and domain logic too tightly.
+
+### Storage Row Conversion Pattern
+
+Storage rows should be converted to domain values.
+
+```elixir
+defmodule User do
+  def from_row(%{id: id, name: name, email: email, active: active}) do
+    with {:ok, id} <- UserId.new(id),
+         {:ok, email} <- Email.new(email) do
+      {:ok, %__MODULE__{id: id, name: name, email: email, active: active\}\}
+    end
+  end
+
+  def to_row(%__MODULE__{} = user) do
+    %{
+      id: UserId.to_integer(user.id),
+      name: user.name,
+      email: Email.to_string(user.email),
+      active: user.active
+    }
+  end
+end
+```
+
+| Conversion direction | Purpose                    |
+| -------------------- | -------------------------- |
+| `from_row`           | database/storage to domain |
+| `to_row`             | domain to database/storage |
+| `from_external`      | external API to domain     |
+| `to_external`        | domain to external API     |
+| `from_event`         | event payload to domain    |
+| `to_event`           | domain to event payload    |
+
+**Design meaning:** Storage schema and domain representation can differ. Conversion functions define the boundary.
+
+**Common Pitfall:** Letting database row maps become the domain type can make domain logic depend on storage layout.
+
+### Process State Shape
+
+A `GenServer` state can be a map, struct, record, or opaque value.
+
+Elixir struct state:
+
+```elixir
+defmodule CacheServer.State do
+  defstruct table: nil, size: 0, mode: :active
+end
+```
+
+Use in server:
+
+```elixir
+def init(opts) do
+  {:ok, %CacheServer.State{table: Keyword.fetch!(opts, :table)\}\}
+end
+```
+
+Update:
+
+```elixir
+%CacheServer.State{state | size: state.size + 1}
+```
+
+| State shape                  | Good when                   |
+| ---------------------------- | --------------------------- |
+| plain map                    | small flexible server state |
+| state struct                 | stable server state fields  |
+| opaque state module          | complex invariants          |
+| ETS + small state            | shared lookup plus metadata |
+| record in Erlang             | compact known state         |
+| tuple                        | very small fixed state      |
+| multiple fields in large map | may need struct for clarity |
+
+**Design meaning:** Server state is internal, but it still benefits from explicit shape if it grows.
+
+**Common Pitfall:** A huge anonymous state map with many unrelated fields becomes hard to maintain. Use a state struct or split processes/modules.
+
+### Public versus Private Data Shape
+
+Data shape can be public or private.
+
+Public shape:
+
+```elixir
+@type t :: %User{id: pos_integer(), name: String.t()}
+```
+
+This tells callers the fields are part of the contract.
+
+Opaque shape:
+
+```elixir
+@opaque t :: %User{id: pos_integer(), name: String.t()}
+```
+
+This tells callers not to depend on fields directly.
+
+| Public shape                 | Opaque shape                  |
+| ---------------------------- | ----------------------------- |
+| easier to use                | better encapsulation          |
+| callers pattern match fields | callers use functions         |
+| harder to change             | easier to change              |
+| good for simple data         | good for invariant-heavy data |
+| less boilerplate             | more API functions            |
+
+**Design meaning:** Decide deliberately whether callers are allowed to depend on fields.
+
+**Common Pitfall:** Marking a type public and then changing its fields later is a breaking API change.
+
+### Data Shape Evolution
+
+Data evolves. Choose representation with change in mind.
+
+| Change                 | Tuple                             | Record                           | Map                  | Struct                | Opaque type          |
+| ---------------------- | --------------------------------- | -------------------------------- | -------------------- | --------------------- | -------------------- |
+| add field              | breaking unless convention allows | requires record update/recompile | easy if optional     | possible with default | hidden if API stable |
+| rename field           | breaking                          | breaking                         | breaking for callers | breaking for callers  | hidden if API stable |
+| change representation  | breaking                          | breaking                         | breaking if public   | breaking if public    | safer                |
+| add optional data      | awkward                           | manageable                       | natural              | natural with default  | hidden               |
+| external compatibility | weak                              | weak                             | good if versioned    | weak unless converted | good with converters |
+
+**Design meaning:** Use opaque APIs and versioned external payloads when evolution matters.
+
+**Common Pitfall:** Internal convenience today can become compatibility burden tomorrow.
+
+### Decision Table — choosing representation
+
+| Requirement                        | Prefer                        |
+| ---------------------------------- | ----------------------------- |
+| expected success/failure           | tagged tuple                  |
+| OTP callback return                | tagged tuple                  |
+| small variant                      | tagged tuple                  |
+| large named domain data in Elixir  | struct                        |
+| Erlang internal structured data    | record or map                 |
+| flexible raw external input        | map                           |
+| internal dictionary                | map                           |
+| function options in Elixir         | keyword list                  |
+| hide representation                | opaque type                   |
+| constrained primitive              | opaque value object           |
+| process state with many fields     | state struct/map              |
+| high-performance fixed Erlang data | record                        |
+| cross-language stable payload      | versioned map/binary schema   |
+| JSON input/output                  | string-key map at boundary    |
+| protocol envelope                  | tagged tuple                  |
+| protocol payload with fields       | map/struct depending boundary |
+| data-type polymorphism             | struct + protocol             |
+| module implementation polymorphism | behaviour                     |
+
+### Anti-Pattern Table
+
+| Anti-pattern                           | Problem                 | Better                        |
+| -------------------------------------- | ----------------------- | ----------------------------- |
+| maps everywhere                        | weak contracts          | structs/constructors          |
+| structs with no constructors           | invalid values possible | `new/1` or smart constructors |
+| exposing opaque internals              | breaks abstraction      | accessors                     |
+| records as long-term storage           | tuple layout coupling   | versioned external schema     |
+| huge positional tuples                 | unreadable              | map/struct                    |
+| dynamic atoms from map keys            | atom table risk         | explicit mapping              |
+| raw JSON maps in domain logic          | string-key coupling     | boundary parser               |
+| database rows as domain entities       | storage coupling        | conversion functions          |
+| GenServer per passive entity           | process overhead        | struct/domain value           |
+| public ETS rows without schema         | mutable chaos           | documented schema + owner API |
+| field update bypasses invariants       | invalid state           | updater functions             |
+| `%{}` pattern as empty-map check       | matches all maps        | `map_size(map) == 0`          |
+| protocol for one simple struct         | overengineering         | function clause               |
+| opaque type for trivial throwaway data | ceremony                | public struct/map             |
+
+### Data Modeling Review Checklist
+
+When reviewing Erlang / Elixir data models, ask:
+
+| Question                                        | Why                                    |
+| ----------------------------------------------- | -------------------------------------- |
+| Is this data external, internal, or persistent? | representation choice differs          |
+| Are keys atom or string keys?                   | pattern matching depends on exact keys |
+| Does this data have invariants?                 | constructor needed                     |
+| Should callers access fields directly?          | public versus opaque                   |
+| Will this representation evolve?                | opacity/versioning                     |
+| Is this a variant or an entity?                 | tuple versus struct/map                |
+| Is this passive data or active runtime state?   | struct versus process                  |
+| Is the data crossing nodes or services?         | versioned schema                       |
+| Is a record shared through headers?             | compile-time coupling                  |
+| Are storage rows separated from domain values?  | boundary clarity                       |
+| Are invalid values representable?               | invariant risk                         |
+| Are updates preserving validity?                | updater functions                      |
+| Are specs aligned with runtime shape?           | tool/readability correctness           |
+
+### Appendix L Summary
+
+Erlang and Elixir provide several ways to represent structured data. They are not interchangeable.
+
+The core rules are:
+
+```text
+Use tagged tuples for small variants, success/failure, messages, and OTP callback shapes.
+Use Erlang records for Erlang internal fixed structured data when tuple representation is acceptable.
+Use Elixir structs for named domain data.
+Use maps for flexible key-value data and external/raw boundaries.
+Use constructors to turn raw data into valid domain data.
+Use opaque types when representation should be hidden.
+Use converters at storage, JSON, event, and external API boundaries.
+```
+
+The most important distinction is:
+
+```text
+Shape is not validity.
+A map, struct, or record can have the right shape and still be invalid.
+Validity belongs in constructors, parsers, update functions, and boundary checks.
+```
+
+A professional BEAM data model makes these choices explicit: what is raw, what is trusted, what is public, what is opaque, what is stable, what is internal, what is persisted, and what may change.
+## Appendix M — Specs, Types, Dialyzer, and Success Typing
+
+### Appendix Scope — contracts for humans and tools, not runtime enforcement
+
+This appendix explains Erlang / Elixir type specifications, named types, opaque types, behaviours, callbacks, and Dialyzer.
+
+The central rule is:
+
+```text
+Specs describe expected shapes and contracts.
+Specs do not validate external input at runtime.
+Dialyzer finds many inconsistencies, but it is not a full static type checker.
+```
+
+| Concept               | Erlang                       | Elixir                            | Role                          |
+| --------------------- | ---------------------------- | --------------------------------- | ----------------------------- |
+| Function spec         | `-spec f(T) -> U.`           | `@spec f(t) :: u`                 | documents function contract   |
+| Public type           | `-type t() :: ... .`         | `@type t :: ...`                  | named reusable type           |
+| Private type          | not exported                 | `@typep t :: ...`                 | internal type alias           |
+| Opaque type           | `-opaque t() :: ... .`       | `@opaque t :: ...`                | hides representation          |
+| Export type           | `-export_type([t/0]).`       | public by default unless `@typep` | makes type usable             |
+| Callback              | `-callback f(T) -> U.`       | `@callback f(t) :: u`             | behaviour contract            |
+| Behaviour marker      | `-behaviour(mod).`           | `@behaviour Mod` / `use Mod`      | implementation promise        |
+| Implementation marker | no exact standard equivalent | `@impl true`                      | marks callback implementation |
+| Analysis tool         | Dialyzer                     | Dialyzer                          | discrepancy analysis          |
+
+### Specs are not runtime checks
+
+A spec says what a function is intended to accept and return.
+
+Elixir:
+
+```elixir
+@spec add(integer(), integer()) :: integer()
+def add(a, b) do
+  a + b
+end
+```
+
+Erlang:
+
+```erlang
+-spec add(integer(), integer()) -> integer().
+add(A, B) ->
+    A + B.
+```
+
+But the spec does not automatically prevent runtime misuse.
+
+```elixir
+add("a", "b")
+```
+
+This still reaches the function at runtime unless guards, pattern matching, or explicit validation prevent it.
+
+| Mechanism              |                    Runtime? | Purpose                                   |
+| ---------------------- | --------------------------: | ----------------------------------------- |
+| `@spec` / `-spec`      |                          No | contract for tools/readers                |
+| `@type` / `-type`      |                          No | named type expression                     |
+| `@opaque` / `-opaque`  | No hard runtime enforcement | representation contract for tools/readers |
+| pattern matching       |                         Yes | shape check                               |
+| guards                 |                         Yes | restricted runtime check                  |
+| constructor validation |                         Yes | domain validity                           |
+| Dialyzer               |               Analysis-time | finds type inconsistencies                |
+
+**Design meaning:** Type specs and runtime validation are complementary. Specs help document and analyze; parsers and constructors protect runtime boundaries.
+
+**Common Pitfall:** Writing a spec for a parser does not make external input safe. The parser must still check the input.
+
+### Basic Function Specs
+
+Elixir:
+
+```elixir
+@spec fetch_user(pos_integer()) :: {:ok, User.t()} | {:error, :not_found}
+def fetch_user(id) do
+  ...
+end
+```
+
+Erlang:
+
+```erlang
+-spec fetch_user(pos_integer()) -> {ok, user:user()} | {error, not_found}.
+fetch_user(Id) ->
+    ...
+```
+
+| Part              | Meaning                        |                             |
+| ----------------- | ------------------------------ | --------------------------- |
+| `@spec` / `-spec` | declares function contract     |                             |
+| function name     | function being specified       |                             |
+| argument types    | expected input types           |                             |
+| return type       | possible return shape          |                             |
+| union `           | `                              | one of several alternatives |
+| remote type       | type defined in another module |                             |
+| arity             | part of function identity      |                             |
+
+Common return spec patterns:
+
+Elixir:
+
+```elixir
+@spec parse(binary()) :: {:ok, term()} | {:error, term()}
+@spec lookup(map(), term()) :: {:ok, term()} | :error
+@spec save(User.t()) :: :ok | {:error, term()}
+@spec start_link(keyword()) :: GenServer.on_start()
+```
+
+Erlang:
+
+```erlang
+-spec parse(binary()) -> {ok, term()} | {error, term()}.
+-spec lookup(map(), term()) -> {ok, term()} | error.
+-spec save(user:user()) -> ok | {error, term()}.
+-spec start_link(list()) -> {ok, pid()} | {error, term()}.
+```
+
+**Design meaning:** Specs should describe the public contract that callers can rely on.
+
+**Common Pitfall:** A spec that omits an actual return case is worse than no spec because it misleads readers and tools.
+
+### Common Built-in Types
+
+| Meaning                   | Erlang / Elixir type                           |                  |                                            |
+| ------------------------- | ---------------------------------------------- | ---------------- | ------------------------------------------ |
+| any term                  | `term()`                                       |                  |                                            |
+| no value returns normally | `no_return()`                                  |                  |                                            |
+| atom                      | `atom()`                                       |                  |                                            |
+| specific atom             | `:ok` in Elixir specs, `ok` in Erlang specs    |                  |                                            |
+| boolean                   | `boolean()`                                    |                  |                                            |
+| integer                   | `integer()`                                    |                  |                                            |
+| positive integer          | `pos_integer()`                                |                  |                                            |
+| non-negative integer      | `non_neg_integer()`                            |                  |                                            |
+| float                     | `float()`                                      |                  |                                            |
+| number                    | `number()`                                     |                  |                                            |
+| binary                    | `binary()`                                     |                  |                                            |
+| bitstring                 | `bitstring()`                                  |                  |                                            |
+| list                      | `list()`                                       |                  |                                            |
+| proper list of type       | `[t()]` in Elixir, `[T]` in Erlang type syntax |                  |                                            |
+| tuple                     | `tuple()`                                      |                  |                                            |
+| map                       | `map()`                                        |                  |                                            |
+| function                  | `function()`                                   |                  |                                            |
+| PID                       | `pid()`                                        |                  |                                            |
+| reference                 | `reference()`                                  |                  |                                            |
+| port                      | `port()`                                       |                  |                                            |
+| module                    | `module()`                                     |                  |                                            |
+| maybe value               | `t()                                           | nil`in Elixir,`T | undefined` or similar convention in Erlang |
+
+Elixir examples:
+
+```elixir
+@spec name(User.t()) :: String.t()
+@spec enabled?(map()) :: boolean()
+@spec decode(binary()) :: {:ok, map()} | {:error, term()}
+```
+
+Erlang examples:
+
+```erlang
+-spec name(user:user()) -> binary().
+-spec enabled(map()) -> boolean().
+-spec decode(binary()) -> {ok, map()} | {error, term()}.
+```
+
+**Design meaning:** Prefer precise types when they communicate useful constraints. Avoid pretending to be precise when the actual contract is broader.
+
+**Common Pitfall:** `term()` is sometimes necessary, but overusing it makes specs nearly meaningless.
+
+### Literal Types and Tagged Tuples
+
+Specs can describe exact atoms and tuple variants.
+
+Elixir:
+
+```elixir
+@spec parse_status(binary()) ::
+        {:ok, :pending | :approved | :rejected}
+        | {:error, :invalid_status}
+```
+
+Erlang:
+
+```erlang
+-spec parse_status(binary()) ->
+    {ok, pending | approved | rejected}
+    | {error, invalid_status}.
+```
+
+Implementation:
+
+```elixir
+def parse_status("pending"), do: {:ok, :pending}
+def parse_status("approved"), do: {:ok, :approved}
+def parse_status("rejected"), do: {:ok, :rejected}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+Erlang:
+
+```erlang
+parse_status(<<"pending">>) ->
+    {ok, pending};
+parse_status(<<"approved">>) ->
+    {ok, approved};
+parse_status(<<"rejected">>) ->
+    {ok, rejected};
+parse_status(_) ->
+    {error, invalid_status}.
+```
+
+| Type form                | Meaning            |                                |
+| ------------------------ | ------------------ | ------------------------------ |
+| `:ok` / `ok`             | exact atom         |                                |
+| `:pending                | :approved`         | finite set of atom values      |
+| `{:ok, t}`               | success tuple      |                                |
+| `{:error, reason}`       | error tuple        |                                |
+| `:ok                     | {:error, reason}`  | success without value or error |
+| `{:reply, reply, state}` | OTP callback shape |                                |
+
+**Design meaning:** Tagged tuple specs are highly valuable because they document exact control-flow variants.
+
+**Common Pitfall:** `{:error, term()}` is easy but often too broad for public APIs. Prefer stable known reasons where possible.
+
+### Named Types
+
+Named types reduce repetition and clarify domain meaning.
+
+Elixir:
+
+```elixir
+defmodule User do
+  @type id :: pos_integer()
+
+  @type t :: %__MODULE__{
+          id: id(),
+          name: String.t(),
+          email: String.t() | nil,
+          active: boolean()
+        }
+
+  defstruct [:id, :name, :email, active: true]
+end
+```
+
+Erlang:
+
+```erlang
+-module(user).
+-export_type([id/0, user/0]).
+
+-type id() :: pos_integer().
+-type user() :: #{
+    id := id(),
+    name := binary(),
+    email := binary() | undefined,
+    active := boolean()
+}.
+```
+
+| Named type   | Use                                      |
+| ------------ | ---------------------------------------- |
+| `User.id()`  | distinguishes user ID from any integer   |
+| `User.t()`   | standard type name for main module value |
+| `Email.t()`  | domain value type                        |
+| `Result.t()` | reusable result shape                    |
+| `state()`    | internal process state                   |
+| `reason()`   | known error reasons                      |
+| `payload()`  | message/event payload                    |
+
+**Design meaning:** Named types are part of a module’s API. They make signatures easier to read and change.
+
+**Common Pitfall:** A type alias does not create a new runtime type. `User.id()` may still be just an integer at runtime unless wrapped in a value type.
+
+### Public, Private, and Opaque Types
+
+Elixir:
+
+```elixir
+@type public_pair :: {term(), term()}
+@typep internal_state :: %{count: non_neg_integer()}
+@opaque token :: %__MODULE__{value: binary()}
+```
+
+Erlang:
+
+```erlang
+-type public_pair() :: {term(), term()}.
+-opaque token() :: binary().
+-export_type([public_pair/0, token/0]).
+```
+
+| Type kind              | Meaning                                   |
+| ---------------------- | ----------------------------------------- |
+| public type            | callers may refer to it                   |
+| private type           | internal helper type                      |
+| opaque type            | callers may know name, not representation |
+| exported Erlang type   | available to other modules                |
+| unexported Erlang type | internal to module                        |
+
+**Design meaning:** Public types expose representation. Opaque types expose a name but hide structure.
+
+**Common Pitfall:** Making every internal helper type public creates unnecessary API surface.
+
+### Opaque Types and Constructors
+
+Opaque types are strongest when paired with constructors and accessors.
+
+Elixir:
+
+```elixir
+defmodule Email do
+  @opaque t :: %__MODULE__{value: String.t()}
+
+  defstruct [:value]
+
+  @spec new(term()) :: {:ok, t()} | {:error, :invalid_email}
+  def new(value) when is_binary(value) do
+    value = String.trim(value)
+
+    if String.contains?(value, "@") do
+      {:ok, %__MODULE__{value: value\}\}
+    else
+      {:error, :invalid_email}
+    end
+  end
+
+  def new(_), do: {:error, :invalid_email}
+
+  @spec to_string(t()) :: String.t()
+  def to_string(%__MODULE__{value: value}), do: value
+end
+```
+
+Erlang:
+
+```erlang
+-module(email).
+-export([new/1, to_binary/1]).
+-export_type([email/0]).
+
+-opaque email() :: binary().
+
+-spec new(term()) -> {ok, email()} | {error, invalid_email}.
+new(Value) when is_binary(Value) ->
+    Trimmed = string:trim(Value),
+    case binary:match(Trimmed, <<"@">>) of
+        nomatch -> {error, invalid_email};
+        _ -> {ok, Trimmed}
+    end;
+new(_) ->
+    {error, invalid_email}.
+
+-spec to_binary(email()) -> binary().
+to_binary(Email) ->
+    Email.
+```
+
+| Function                      | Role                            |
+| ----------------------------- | ------------------------------- |
+| `new/1`                       | validates and constructs        |
+| `to_string/1` / `to_binary/1` | exposes representation safely   |
+| predicates                    | query value                     |
+| update functions              | preserve invariants             |
+| parser functions              | accept external representation  |
+| serializer functions          | produce external representation |
+
+**Design meaning:** Opaque types are a design signal: callers should use the module’s API rather than destructuring internals.
+
+**Common Pitfall:** Opacity is not runtime privacy. Elixir code can still pattern match a struct if it chooses; opacity is enforced by tools and discipline, not by the VM as hard access control.
+
+### Struct Type Specs
+
+Elixir struct type:
+
+```elixir
+defmodule User do
+  @type t :: %__MODULE__{
+          id: pos_integer(),
+          name: String.t(),
+          email: String.t() | nil
+        }
+
+  defstruct [:id, :name, :email]
+end
+```
+
+Opaque struct type:
+
+```elixir
+@opaque t :: %__MODULE__{
+          id: pos_integer(),
+          name: String.t(),
+          email: String.t() | nil
+        }
+```
+
+| Public struct type             | Opaque struct type                    |
+| ------------------------------ | ------------------------------------- |
+| callers may depend on fields   | callers should not depend on fields   |
+| easier direct pattern matching | representation can change more easily |
+| good for simple data           | good for invariant-heavy values       |
+| less API ceremony              | needs accessors/updaters              |
+| field changes are breaking     | field changes may remain internal     |
+
+**Design meaning:** Decide whether struct fields are part of the public API.
+
+**Common Pitfall:** Marking a struct public and later expecting callers not to access fields is inconsistent.
+
+### Map Type Specs
+
+Map specs can be broad or precise.
+
+Elixir:
+
+```elixir
+@type user_map :: %{
+        required(:id) => pos_integer(),
+        required(:name) => String.t(),
+        optional(:email) => String.t()
+      }
+```
+
+Erlang:
+
+```erlang
+-type user_map() :: #{
+    id := pos_integer(),
+    name := binary(),
+    email => binary()
+}.
+```
+
+| Map key type      | Elixir syntax                                                                           |
+| ----------------- | --------------------------------------------------------------------------------------- |
+| required atom key | `required(:id) => pos_integer()`                                                        |
+| optional atom key | `optional(:email) => String.t()`                                                        |
+| string key        | `required(String.t()) => term()` or literal string-style types where supported by tools |
+| any atom key      | `optional(atom()) => term()`                                                            |
+| any key           | `%{optional(term()) => term()}`                                                         |
+
+Erlang:
+
+| Map key type | Erlang syntax         |
+| ------------ | --------------------- |
+| required key | `key := Type`         |
+| optional key | `key => Type`         |
+| any key      | `#{term() => term()}` |
+
+**Design meaning:** Precise map specs are useful at internal boundaries, but raw external data may legitimately be broad until parsed.
+
+**Common Pitfall:** `%{}` in Elixir types and `%{}` in patterns can be confused. A pattern `%{}` matches any map; a type `%{}` can be too broad depending usage.
+
+### List, Nonempty List, and Improper List Types
+
+Elixir:
+
+```elixir
+@spec sum([integer()]) :: integer()
+@spec first([term(), ...]) :: term()
+```
+
+Common type forms:
+
+| Type                       | Meaning                             |
+| -------------------------- | ----------------------------------- |
+| `[integer()]`              | list of integers                    |
+| `list(integer())`          | list of integers                    |
+| `nonempty_list(integer())` | nonempty list                       |
+| `maybe_improper_list()`    | list that may not end in `[]`       |
+| `charlist()`               | list of Unicode codepoints          |
+| `iodata()`                 | nested binary/byte list output data |
+
+Erlang examples:
+
+```erlang
+-spec sum([integer()]) -> integer().
+-spec first(nonempty_list(term())) -> term().
+```
+
+**Design meaning:** Lists have shape. A nonempty list is a stronger contract than a list.
+
+**Common Pitfall:** A function that calls `hd(list)` should not claim it accepts any list unless it handles the empty list.
+
+### Function Types
+
+Elixir:
+
+```elixir
+@spec map_values([a], (a -> b)) :: [b] when a: term(), b: term()
+def map_values(values, fun) do
+  Enum.map(values, fun)
+end
+```
+
+Simpler:
+
+```elixir
+@spec apply_twice(term(), (term() -> term())) :: term()
+```
+
+Erlang:
+
+```erlang
+-spec apply_twice(term(), fun((term()) -> term())) -> term().
+```
+
+| Function type              | Meaning                                   |
+| -------------------------- | ----------------------------------------- |
+| `(integer() -> integer())` | one-argument function                     |
+| `(a -> b)`                 | generic one-argument function             |
+| `function()`               | any function                              |
+| `fun((T) -> U)`            | Erlang function type syntax               |
+| `arity`                    | function identity includes argument count |
+
+**Design meaning:** Function types are useful for higher-order APIs, callbacks, and injected behavior.
+
+**Common Pitfall:** `function()` is broad. If the API calls the function with one argument and expects a result shape, specify that.
+
+### Polymorphic Specs
+
+Elixir supports type variables in specs.
+
+```elixir
+@spec identity(value) :: value when value: term()
+def identity(value), do: value
+```
+
+Map-like generic example:
+
+```elixir
+@spec ok(value) :: {:ok, value} when value: term()
+def ok(value), do: {:ok, value}
+```
+
+Erlang:
+
+```erlang
+-spec identity(T) -> T.
+identity(Value) ->
+    Value.
+
+-spec ok(T) -> {ok, T}.
+ok(Value) ->
+    {ok, Value}.
+```
+
+| Spec             | Meaning                                             |
+| ---------------- | --------------------------------------------------- |
+| `T -> T`         | same type in and out                                |
+| `{:ok, value}`   | result contains same type as input                  |
+| generic list map | input element type differs from output element type |
+| generic wrapper  | preserves contained type                            |
+
+**Design meaning:** Polymorphic specs communicate relationships between inputs and outputs.
+
+**Common Pitfall:** Using `term()` everywhere loses these relationships.
+
+### Callback Specs and Behaviours
+
+A behaviour defines callbacks that implementation modules must provide.
+
+Elixir:
+
+```elixir
+defmodule Storage do
+  @callback put(binary(), binary()) :: :ok | {:error, term()}
+  @callback get(binary()) :: {:ok, binary()} | {:error, :not_found | term()}
+end
+```
+
+Implementation:
+
+```elixir
+defmodule MemoryStorage do
+  @behaviour Storage
+
+  @impl true
+  def put(_key, _value), do: :ok
+
+  @impl true
+  def get(_key), do: {:error, :not_found}
+end
+```
+
+Erlang:
+
+```erlang
+-module(storage).
+
+-callback put(binary(), binary()) -> ok | {error, term()}.
+-callback get(binary()) -> {ok, binary()} | {error, not_found | term()}.
+```
+
+Implementation:
+
+```erlang
+-module(memory_storage).
+-behaviour(storage).
+
+-export([put/2, get/1]).
+
+put(_Key, _Value) ->
+    ok.
+
+get(_Key) ->
+    {error, not_found}.
+```
+
+| Behaviour element | Role                                      |
+| ----------------- | ----------------------------------------- |
+| callback spec     | required function shape                   |
+| optional callback | callback that implementation may omit     |
+| behaviour marker  | module declares implementation            |
+| `@impl true`      | marks implementation and catches mismatch |
+| shared tests      | verify behaviour semantics beyond specs   |
+
+**Design meaning:** Behaviours are module-level contracts. Specs define callback shapes, but tests and documentation define semantics.
+
+**Common Pitfall:** A behaviour spec can say `{:error, term()}`, but callers may still need stable error reasons. Document the actual contract.
+
+### Optional Callbacks
+
+Elixir:
+
+```elixir
+defmodule Plugin do
+  @callback init(keyword()) :: {:ok, term()} | {:error, term()}
+  @callback stop(term()) :: :ok
+
+  @optional_callbacks stop: 1
+end
+```
+
+Erlang:
+
+```erlang
+-callback init(list()) -> {ok, term()} | {error, term()}.
+-callback stop(term()) -> ok.
+
+-optional_callbacks([stop/1]).
+```
+
+| Use optional callbacks when         | Avoid when                               |
+| ----------------------------------- | ---------------------------------------- |
+| default behavior is meaningful      | callback is essential                    |
+| only some implementations need hook | caller cannot proceed without it         |
+| framework extension point           | contract becomes vague                   |
+| backwards compatibility needed      | implementation differences are too large |
+
+**Design meaning:** Optional callbacks reduce boilerplate but increase conditional behavior.
+
+**Common Pitfall:** Too many optional callbacks can make a behaviour weak and unpredictable.
+
+### `@impl true`
+
+Elixir’s `@impl true` marks that the following function implements a callback.
+
+```elixir
+@impl true
+def handle_call(:get, _from, state) do
+  {:reply, state, state}
+end
+```
+
+Benefits:
+
+| Benefit                              | Explanation           |
+| ------------------------------------ | --------------------- |
+| catches wrong callback name/arity    | compiler warning/help |
+| documents callback implementation    | readability           |
+| discourages accidental public helper | clarifies role        |
+| pairs with behaviour                 | better tooling        |
+
+Use with named behaviour if multiple behaviours are present:
+
+```elixir
+@impl GenServer
+def init(opts) do
+  {:ok, opts}
+end
+```
+
+**Design meaning:** `@impl` improves callback correctness and readability.
+
+**Common Pitfall:** Omitting `@impl` can allow callback-looking functions to drift silently if names or arities are wrong.
+
+### Dialyzer — discrepancy analyzer
+
+Dialyzer is the main static analysis tool for Erlang / Elixir type specs.
+
+Its name comes from “DIscrepancy AnaLYZer.” It tries to find code that cannot work according to success typing and inferred types.
+
+| Dialyzer can find          | Dialyzer may not find    |
+| -------------------------- | ------------------------ |
+| impossible pattern matches | all bad inputs           |
+| wrong return shapes        | all missing cases        |
+| callback spec mismatches   | all semantic bugs        |
+| opaque type violations     | all representation leaks |
+| some unreachable code      | all dead code            |
+| spec/code inconsistency    | all runtime exceptions   |
+| wrong function call types  | all type mistakes        |
+| no-local-return warnings   | all causes clearly       |
+
+**Key point:**
+
+```text
+Dialyzer is not a full static type checker.
+It generally tries to avoid false positives and reports discrepancies it believes are real.
+```
+
+**Design meaning:** Dialyzer is most useful when specs are accurate and APIs have stable shapes.
+
+**Common Pitfall:** Treating Dialyzer silence as proof of correctness. Silence means it found no reportable discrepancy, not that the program is fully type-safe.
+
+### Success Typing
+
+Dialyzer is based on success typing.
+
+A success type describes values for which a function can succeed according to analysis.
+
+Example:
+
+```elixir
+def add_one(x) do
+  x + 1
+end
+```
+
+Dialyzer can infer that `x` must be numeric-like for the function to succeed.
+
+If a spec says:
+
+```elixir
+@spec add_one(binary()) :: integer()
+def add_one(x) do
+  x + 1
+end
+```
+
+Dialyzer may report inconsistency because adding `1` to a binary cannot succeed.
+
+| Traditional static type checker             | Dialyzer success typing         |
+| ------------------------------------------- | ------------------------------- |
+| rejects programs before runtime             | analyzes BEAM/Erlang-style code |
+| often requires complete type discipline     | works with dynamic code         |
+| may produce more false positives            | aims to avoid false positives   |
+| proves type correctness within system       | finds definite discrepancies    |
+| type errors block compile in many languages | warnings/analysis reports       |
+
+**Design meaning:** Dialyzer is excellent for finding many real bugs, but it is not a substitute for tests, runtime validation, or design discipline.
+
+**Common Pitfall:** Fighting Dialyzer by broadening specs to `term()` hides useful warnings.
+
+### PLT and Project Analysis
+
+Dialyzer uses a PLT, a Persistent Lookup Table, to store type information about libraries and dependencies.
+
+In Elixir projects, Dialyzer is commonly used through tooling such as Dialyxir.
+
+Typical workflow conceptually:
+
+```bash
+mix dialyzer
+```
+
+Common project concerns:
+
+| Concern             | Meaning                                   |
+| ------------------- | ----------------------------------------- |
+| PLT build time      | first run can be slow                     |
+| dependency changes  | PLT may need update                       |
+| generated code      | macros can affect analysis                |
+| broad specs         | reduce warning quality                    |
+| missing specs       | Dialyzer can infer, but public specs help |
+| opaque types        | improve boundary checking                 |
+| warnings as CI gate | useful once stable                        |
+
+**Design meaning:** Dialyzer is best treated as a regular quality gate, not an occasional afterthought.
+
+**Common Pitfall:** Introducing Dialyzer late into a large project with broad or stale specs can produce noisy cleanup work.
+
+### Common Dialyzer Warning Types
+
+| Warning idea                         | Meaning                                             |
+| ------------------------------------ | --------------------------------------------------- |
+| no local return                      | function appears never to return normally           |
+| pattern can never match              | branch impossible                                   |
+| function call will not succeed       | arguments incompatible with expected success type   |
+| invalid type spec                    | spec does not match implementation                  |
+| opaque type violation                | external code depends on hidden representation      |
+| contract differs from success typing | spec and inferred type disagree                     |
+| callback type mismatch               | behaviour implementation violates callback contract |
+| unmatched return                     | caller ignores or misuses return shape              |
+
+Example impossible match:
+
+```elixir
+@spec f(:ok) :: integer()
+def f(:ok), do: 1
+
+def g do
+  case f(:ok) do
+    {:ok, value} -> value
+    n -> n
+  end
+end
+```
+
+The `{:ok, value}` branch is impossible because `f/1` returns an integer.
+
+**Design meaning:** Many Dialyzer warnings point to mismatched mental models about return shapes.
+
+**Common Pitfall:** Do not blindly suppress warnings. First check whether the code or spec is wrong.
+
+### Specs versus Inferred Types
+
+The implementation may imply a narrower type than the spec.
+
+```elixir
+@spec classify(integer()) :: :positive | :zero | :negative
+def classify(n) when n > 0, do: :positive
+def classify(0), do: :zero
+def classify(n) when n < 0, do: :negative
+```
+
+This spec is reasonable.
+
+But:
+
+```elixir
+@spec classify(term()) :: :positive | :zero | :negative
+def classify(n) when n > 0, do: :positive
+def classify(0), do: :zero
+def classify(n) when n < 0, do: :negative
+```
+
+This is too broad unless non-numeric terms are handled.
+
+Better:
+
+```elixir
+@spec classify(integer()) :: :positive | :zero | :negative
+```
+
+or add fallback:
+
+```elixir
+@spec classify(term()) ::
+        :positive | :zero | :negative | {:error, :not_integer}
+
+def classify(n) when is_integer(n) and n > 0, do: :positive
+def classify(0), do: :zero
+def classify(n) when is_integer(n) and n < 0, do: :negative
+def classify(_), do: {:error, :not_integer}
+```
+
+**Design meaning:** Specs should match actual accepted inputs and outputs, not hoped-for usage.
+
+**Common Pitfall:** A broad input spec plus narrow function clauses creates mismatch between contract and implementation.
+
+### Spec Precision
+
+Specs should be precise enough to help, but not so precise that they lie or become fragile.
+
+Weak:
+
+```elixir
+@spec fetch(term()) :: term()
+```
+
+Better:
+
+```elixir
+@spec fetch(pos_integer()) :: {:ok, User.t()} | {:error, :not_found}
+```
+
+Too narrow if implementation can return more:
+
+```elixir
+@spec fetch(pos_integer()) :: {:ok, User.t()}
+```
+
+if the function can return `{:error, :not_found}`.
+
+| Spec quality           | Example                            | Assessment            |      |
+| ---------------------- | ---------------------------------- | --------------------- | ---- |
+| too broad              | `term() -> term()`                 | little value          |      |
+| accurate and stable    | `id() -> {:ok, t()}                | {:error, :not_found}` | good |
+| too narrow             | omits error return                 | misleading            |      |
+| implementation-coupled | exposes internal raw error structs | fragile               |      |
+| domain-specific        | `Email.t()`                        | strong                |      |
+| stale                  | no longer matches code             | harmful               |      |
+
+**Design meaning:** Good specs are API contracts, not decorative comments.
+
+**Common Pitfall:** Specs copied from older code can become stale after return shapes evolve.
+
+### Return Shape Specs
+
+Tagged result types are often worth naming.
+
+Elixir:
+
+```elixir
+@type result(value, reason) :: {:ok, value} | {:error, reason}
+
+@type create_error ::
+        :already_exists
+        | {:invalid_field, :name | :email}
+        | :temporarily_unavailable
+
+@spec create_user(map()) :: result(User.t(), create_error())
+```
+
+Erlang:
+
+```erlang
+-type result(Value, Reason) :: {ok, Value} | {error, Reason}.
+
+-type create_error() ::
+    already_exists
+    | {invalid_field, name | email}
+    | temporarily_unavailable.
+
+-spec create_user(map()) -> result(user:user(), create_error()).
+```
+
+| Benefit                    | Explanation               |
+| -------------------------- | ------------------------- |
+| reusable result convention | less repetition           |
+| stable error reason set    | better public contract    |
+| clearer caller handling    | pattern matching guided   |
+| easier docs                | type names explain domain |
+| Dialyzer assistance        | catches impossible cases  |
+
+**Design meaning:** Error types are part of the public API.
+
+**Common Pitfall:** Public APIs that return `{:error, term()}` make it hard for callers to know what to handle.
+
+### Error Reason Types
+
+Define error reasons explicitly when possible.
+
+Elixir:
+
+```elixir
+@type validation_error ::
+        {:invalid_field, :name}
+        | {:invalid_field, :email}
+        | :missing_required_field
+
+@spec validate(map()) :: :ok | {:error, validation_error()}
+```
+
+Erlang:
+
+```erlang
+-type validation_error() ::
+    {invalid_field, name}
+    | {invalid_field, email}
+    | missing_required_field.
+
+-spec validate(map()) -> ok | {error, validation_error()}.
+```
+
+| Error shape                       | Good use                            |
+| --------------------------------- | ----------------------------------- |
+| `:not_found`                      | lookup miss                         |
+| `:already_exists`                 | uniqueness conflict                 |
+| `{:invalid_field, field}`         | validation                          |
+| `{:timeout, service}`             | external timeout                    |
+| `{:unsupported_version, version}` | versioned payload                   |
+| `{:storage_failed, reason}`       | internal boundary, maybe not public |
+| `term()`                          | only when truly open-ended          |
+
+**Design meaning:** Stable error types make APIs safer and easier to use.
+
+**Common Pitfall:** Throwing raw external library errors into public specs makes callers depend on implementation details.
+
+### State Types for GenServer
+
+Typing server state improves callback readability.
+
+Elixir:
+
+```elixir
+defmodule Counter do
+  use GenServer
+
+  @type state :: %{count: non_neg_integer()}
+
+  @impl true
+  @spec init(non_neg_integer()) :: {:ok, state()}
+  def init(count) do
+    {:ok, %{count: count\}\}
+  end
+
+  @impl true
+  @spec handle_call(:get, GenServer.from(), state()) ::
+          {:reply, non_neg_integer(), state()}
+  def handle_call(:get, _from, state) do
+    {:reply, state.count, state}
+  end
+end
+```
+
+In practice, many projects do not spec every OTP callback manually because behaviours already define callback types, but defining `state()` is often useful.
+
+Erlang:
+
+```erlang
+-type state() :: #{count := non_neg_integer()}.
+
+-spec init(non_neg_integer()) -> {ok, state()}.
+init(Count) ->
+    {ok, #{count => Count\}\}.
+```
+
+| Type          | Use                               |
+| ------------- | --------------------------------- |
+| `state()`     | internal server state             |
+| `request()`   | accepted call/cast/message shapes |
+| `reply()`     | public reply type                 |
+| `event()`     | `handle_info` event               |
+| `timer_ref()` | timer tracking                    |
+| `pending()`   | pending request map               |
+
+**Design meaning:** State types document process internals without exposing them publicly.
+
+**Common Pitfall:** Do not make internal GenServer state a public type unless callers are supposed to know it.
+
+### Message Protocol Types
+
+Types can document message protocols.
+
+Elixir:
+
+```elixir
+@type request ::
+        {:fetch, key :: term()}
+        | {:put, key :: term(), value :: term()}
+
+@type reply ::
+        {:ok, term()}
+        | {:error, :not_found}
+
+@type info_message ::
+        {:timeout, reference()}
+        | {:DOWN, reference(), :process, pid(), term()}
+```
+
+Erlang:
+
+```erlang
+-type request() ::
+    {fetch, term()}
+    | {put, term(), term()}.
+
+-type reply() ::
+    {ok, term()}
+    | {error, not_found}.
+
+-type info_message() ::
+    {timeout, reference()}
+    | {'DOWN', reference(), process, pid(), term()}.
+```
+
+**Design meaning:** Message protocols are APIs. Types make them visible.
+
+**Common Pitfall:** If raw message shapes are scattered without types, protocol changes become risky.
+
+### Remote Types
+
+A remote type refers to a type in another module.
+
+Elixir:
+
+```elixir
+@spec send_email(Email.t(), String.t()) :: :ok | {:error, term()}
+```
+
+Erlang:
+
+```erlang
+-spec send_email(email:email(), binary()) -> ok | {error, term()}.
+```
+
+Common Elixir convention:
+
+| Type                   | Meaning                   |
+| ---------------------- | ------------------------- |
+| `User.t()`             | main user type            |
+| `Email.t()`            | email value type          |
+| `URI.t()`              | URI struct type           |
+| `DateTime.t()`         | DateTime struct type      |
+| `GenServer.server()`   | server reference type     |
+| `GenServer.on_start()` | common start return shape |
+
+**Design meaning:** Remote types improve modularity and clarify ownership.
+
+**Common Pitfall:** Avoid referencing another module’s private or internal types indirectly through public specs.
+
+### Type Aliases for OTP Start Returns
+
+Elixir often uses OTP/Elixir-provided types.
+
+```elixir
+@spec start_link(keyword()) :: GenServer.on_start()
+def start_link(opts) do
+  GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+end
+```
+
+Common start return shape:
+
+```elixir
+{:ok, pid()}
+| {:error, {:already_started, pid()\}\}
+| {:error, term()}
+| :ignore
+```
+
+Erlang equivalent specs often spell this out or use available types from OTP modules.
+
+**Design meaning:** Reusing standard types prevents inconsistent hand-written start specs.
+
+**Common Pitfall:** A start function spec that omits `:ignore` or `{:error, {:already_started, pid\}\}` may be incomplete depending actual behavior.
+
+### Specs and Pattern Matching
+
+Specs and patterns should agree.
+
+Elixir:
+
+```elixir
+@spec handle_result({:ok, integer()} | {:error, term()}) :: integer()
+def handle_result({:ok, value}), do: value
+def handle_result({:error, _reason}), do: 0
+```
+
+Good: patterns cover the spec.
+
+Bad:
+
+```elixir
+@spec handle_result({:ok, integer()} | {:error, term()}) :: integer()
+def handle_result({:ok, value}), do: value
+```
+
+This omits the `{:error, term()}` case.
+
+**Design meaning:** Specs declare variants; patterns must handle them or deliberately crash.
+
+**Common Pitfall:** Adding a new error variant to a spec without updating callers causes incomplete handling.
+
+### Specs and Guards
+
+A guard may narrow actual accepted input. Specs should reflect this.
+
+```elixir
+@spec abs_int(integer()) :: non_neg_integer()
+def abs_int(n) when is_integer(n) and n >= 0, do: n
+def abs_int(n) when is_integer(n), do: -n
+```
+
+Wrong broad spec:
+
+```elixir
+@spec abs_int(term()) :: non_neg_integer()
+```
+
+unless non-integer terms are handled.
+
+**Design meaning:** The accepted type is not what the caller wishes; it is what the function actually handles.
+
+**Common Pitfall:** Guarded clauses often expose overbroad specs.
+
+### Specs and Exceptions
+
+If a function raises on invalid input, the spec normally describes successful return, not every possible exception.
+
+```elixir
+@spec fetch_user!(pos_integer()) :: User.t()
+def fetch_user!(id) do
+  case fetch_user(id) do
+    {:ok, user} -> user
+    {:error, reason} -> raise "could not fetch user: #{inspect(reason)}"
+  end
+end
+```
+
+Non-bang version:
+
+```elixir
+@spec fetch_user(pos_integer()) :: {:ok, User.t()} | {:error, :not_found}
+```
+
+| Function style         | Spec style                           |
+| ---------------------- | ------------------------------------ |
+| returns tagged errors  | include error tuples                 |
+| raises on failure      | specify successful return            |
+| never returns normally | `no_return()`                        |
+| exits process          | may be `no_return()` if always exits |
+
+Example:
+
+```elixir
+@spec fail!(term()) :: no_return()
+def fail!(reason), do: raise inspect(reason)
+```
+
+**Design meaning:** Specs usually describe normal return values. Exceptions and exits are failure channels outside the ordinary return type.
+
+**Common Pitfall:** Do not spec a bang function as returning `{:ok, value} | {:error, reason}` if it actually returns `value` or raises.
+
+### `no_return()`
+
+Use `no_return()` for functions that do not return normally.
+
+Elixir:
+
+```elixir
+@spec crash!(term()) :: no_return()
+def crash!(reason) do
+  raise RuntimeError, message: inspect(reason)
+end
+```
+
+Erlang:
+
+```erlang
+-spec crash(term()) -> no_return().
+crash(Reason) ->
+    erlang:error(Reason).
+```
+
+| Function                               | Possible spec                              |
+| -------------------------------------- | ------------------------------------------ |
+| always raises                          | `no_return()`                              |
+| always exits                           | `no_return()`                              |
+| infinite receive loop                  | often `no_return()` if truly never returns |
+| server loop                            | maybe `no_return()` in raw loop style      |
+| function that may raise but can return | normal return type                         |
+
+**Common Pitfall:** Do not use `no_return()` for functions that usually return but might raise.
+
+### Specs for Raw Process Loops
+
+Raw recursive process loops often never return.
+
+Elixir:
+
+```elixir
+@spec loop(map()) :: no_return()
+def loop(state) do
+  receive do
+    {:put, key, value} ->
+      loop(Map.put(state, key, value))
+
+    {:get, from, ref, key} ->
+      send(from, {:reply, ref, Map.fetch(state, key)})
+      loop(state)
+  end
+end
+```
+
+Erlang:
+
+```erlang
+-spec loop(map()) -> no_return().
+loop(State) ->
+    receive
+        {put, Key, Value} ->
+            loop(maps:put(Key, Value, State));
+        {get, From, Ref, Key} ->
+            From ! {reply, Ref, maps:find(Key, State)},
+            loop(State)
+    end.
+```
+
+**Design meaning:** For OTP callbacks, the callback returns OTP tuples. For raw loops, the function may recurse forever and never return.
+
+**Common Pitfall:** Do not confuse a raw loop’s `no_return()` with a GenServer callback, which must return an OTP instruction tuple.
+
+### Dialyzer and Opaque Types
+
+Opaque types help Dialyzer detect representation violations.
+
+Elixir:
+
+```elixir
+defmodule UserId do
+  @opaque t :: %__MODULE__{value: pos_integer()}
+  defstruct [:value]
+
+  def new(value) when is_integer(value) and value > 0 do
+    {:ok, %__MODULE__{value: value\}\}
+  end
+
+  def to_integer(%__MODULE__{value: value}), do: value
+end
+```
+
+External code should not do:
+
+```elixir
+%UserId{value: -1}
+```
+
+or rely on:
+
+```elixir
+user_id.value
+```
+
+It should use:
+
+```elixir
+{:ok, user_id} = UserId.new(1)
+UserId.to_integer(user_id)
+```
+
+**Design meaning:** Opaque types make representation violations visible to analysis and readers.
+
+**Common Pitfall:** Opaque types are only useful if external modules respect them and if analysis is run.
+
+### Dialyzer and Dynamic Code
+
+Elixir is dynamic and macro-heavy. Dialyzer handles much, but not all, dynamic behavior.
+
+Harder cases:
+
+| Case                                    | Why harder                                                    |
+| --------------------------------------- | ------------------------------------------------------------- |
+| dynamic `apply`                         | target function unknown                                       |
+| macros generating complex code          | analysis sees generated code, but source intent may be hidden |
+| broad maps                              | key/value precision may be limited                            |
+| `term()` specs                          | too broad                                                     |
+| protocols                               | dispatch can be indirect                                      |
+| behaviours with broad callbacks         | weak contracts                                                |
+| external libraries without useful specs | less information                                              |
+| complex guards                          | inference may be conservative                                 |
+
+**Design meaning:** Static analysis quality depends on code shape and spec quality.
+
+**Common Pitfall:** Heavy dynamic dispatch can reduce Dialyzer’s usefulness.
+
+### Spec Granularity
+
+Not every private helper needs a spec, but public API functions usually benefit from specs.
+
+| Function kind             | Spec recommendation                      |
+| ------------------------- | ---------------------------------------- |
+| public library API        | strong yes                               |
+| public context/domain API | yes                                      |
+| behaviour callback        | yes via behaviour or explicit if helpful |
+| constructor/parser        | yes                                      |
+| external client boundary  | yes                                      |
+| complex private helper    | often yes                                |
+| trivial private helper    | optional                                 |
+| test helper               | optional                                 |
+| generated DSL function    | document/spec if public                  |
+
+**Design meaning:** Specs are communication. Put them where they reduce ambiguity.
+
+**Common Pitfall:** Adding noisy specs to every tiny private function can reduce readability if the specs add no information.
+
+### Specs for Boundary Parsers
+
+Boundary parser specs should show raw input and validated output.
+
+Elixir:
+
+```elixir
+defmodule CreateUser do
+  @type t :: %__MODULE__{
+          name: String.t(),
+          email: String.t()
+        }
+
+  @type error ::
+          :invalid_create_user
+          | {:invalid_field, :name | :email}
+
+  @spec new(term()) :: {:ok, t()} | {:error, error()}
+end
+```
+
+Implementation accepts `term()` because external input may be anything, then validates.
+
+```elixir
+def new(%{"name" => name, "email" => email})
+    when is_binary(name) and is_binary(email) do
+  ...
+end
+
+def new(_), do: {:error, :invalid_create_user}
+```
+
+**Design meaning:** For boundary parsers, broad input specs may be correct because the parser’s job is to reject invalid terms.
+
+**Common Pitfall:** Specifying `map()` as input when the parser safely handles any term may be less accurate than `term()`.
+
+### Specs for Internal Domain Functions
+
+Internal domain functions should have narrower input specs because they should receive trusted data.
+
+```elixir
+@spec activate(User.t()) :: User.t()
+def activate(%User{} = user) do
+  %User{user | active: true}
+end
+```
+
+If the function is only meant for valid `User.t()`, do not spec it as accepting `term()`.
+
+| Boundary parser           | Domain function               |
+| ------------------------- | ----------------------------- |
+| input often `term()`      | input should be narrow        |
+| returns validation errors | assumes trusted values        |
+| handles malformed shape   | may crash on impossible shape |
+| external-facing           | internal invariant-facing     |
+
+**Design meaning:** Specs communicate trust level.
+
+**Common Pitfall:** Overly defensive domain specs can blur the boundary between raw input and trusted internal data.
+
+### Specs for External Clients
+
+External clients should specify normalized error shapes.
+
+```elixir
+@type charge_error ::
+        :timeout
+        | :unavailable
+        | :rejected
+        | :invalid_response
+        | {:billing_failed, term()}
+
+@spec charge(PaymentCommand.t()) ::
+        {:ok, %{transaction_id: String.t()\}\}
+        | {:error, charge_error()}
+```
+
+**Design meaning:** External service failure modes are part of the client boundary.
+
+**Common Pitfall:** Returning raw HTTP client exceptions or status structs as public error types leaks implementation details.
+
+### Specs for Storage Boundaries
+
+Repository/storage modules should clarify missing data and storage failure.
+
+```elixir
+@type fetch_error :: :not_found | {:storage_failed, term()}
+
+@spec fetch(User.id()) :: {:ok, User.t()} | {:error, fetch_error()}
+@spec insert(User.t()) :: :ok | {:error, :already_exists | {:storage_failed, term()\}\}
+```
+
+Erlang:
+
+```erlang
+-type fetch_error() :: not_found | {storage_failed, term()}.
+
+-spec fetch(user:id()) -> {ok, user:user()} | {error, fetch_error()}.
+-spec insert(user:user()) -> ok | {error, already_exists | {storage_failed, term()\}\}.
+```
+
+**Design meaning:** Storage functions are fallible even if their inputs are valid.
+
+**Common Pitfall:** Treating `not_found` and database failure as the same error loses important operational meaning.
+
+### Specs for Events and Messages
+
+Events should have explicit types if they are reused.
+
+Elixir:
+
+```elixir
+@type user_event ::
+        {:user_created, %{user_id: User.id(), occurred_at: DateTime.t()\}\}
+        | {:user_deleted, %{user_id: User.id(), occurred_at: DateTime.t()\}\}
+
+@spec publish(user_event()) :: :ok | {:error, term()}
+```
+
+Versioned event:
+
+```elixir
+@type user_event_v1 ::
+        {:user_event, 1,
+         %{
+           type: :created | :deleted,
+           user_id: User.id(),
+           occurred_at: DateTime.t()
+         \}\}
+```
+
+**Design meaning:** Event types are contracts, especially if events are persisted or consumed by multiple modules.
+
+**Common Pitfall:** Raw ad hoc event maps without types or constructors become difficult to evolve.
+
+### Specs and Documentation
+
+Specs do not replace docs. They answer different questions.
+
+| Specs answer    | Docs answer                     |
+| --------------- | ------------------------------- |
+| accepted shape  | what the function means         |
+| return variants | when each variant occurs        |
+| named types     | semantic purpose of types       |
+| callback shape  | implementation responsibilities |
+| error variants  | operational meaning             |
+| opacity         | how to construct/use values     |
+
+Example:
+
+```elixir
+@doc """
+Creates a user from validated attributes.
+
+Returns `{:error, {:invalid_field, field\}\}` when a required field is malformed.
+Returns `{:error, :already_exists}` when the email is already registered.
+"""
+@spec create_user(CreateUser.t()) ::
+        {:ok, User.t()} | {:error, create_error()}
+```
+
+**Design meaning:** Specs give shape. Documentation gives semantics.
+
+**Common Pitfall:** A type `{:error, :invalid}` is not self-explanatory unless docs explain what “invalid” means.
+
+### Specs and Tests
+
+Tests should reinforce specs by covering major return variants.
+
+Spec:
+
+```elixir
+@spec parse_status(binary()) ::
+        {:ok, :pending | :approved | :rejected}
+        | {:error, :invalid_status}
+```
+
+Tests:
+
+```elixir
+test "parses known statuses" do
+  assert {:ok, :pending} = Parser.parse_status("pending")
+  assert {:ok, :approved} = Parser.parse_status("approved")
+  assert {:ok, :rejected} = Parser.parse_status("rejected")
+end
+
+test "rejects unknown status" do
+  assert {:error, :invalid_status} = Parser.parse_status("unknown")
+end
+```
+
+| Spec                     | Test                            |
+| ------------------------ | ------------------------------- |
+| says possible variants   | proves expected variants behave |
+| says broad contract      | covers edge cases               |
+| says error reasons       | asserts exact errors            |
+| says opaque construction | tests constructor/accessor      |
+| says callback behavior   | shared behaviour tests          |
+
+**Design meaning:** Specs and tests complement each other. Specs are not executable enough to replace tests.
+
+**Common Pitfall:** If tests assert a return shape not in the spec, either the test or spec is wrong.
+
+### Behaviour Contract Tests
+
+A behaviour spec gives shape, but shared tests can enforce semantics.
+
+Behaviour:
+
+```elixir
+defmodule Storage do
+  @callback put(binary(), binary()) :: :ok | {:error, term()}
+  @callback get(binary()) :: {:ok, binary()} | {:error, :not_found | term()}
+end
+```
+
+Shared test helper concept:
+
+```elixir
+defmodule StorageContract do
+  defmacro __using__(storage: storage) do
+    quote bind_quoted: [storage: storage] do
+      test "stores and retrieves values" do
+        key = "k"
+        value = "v"
+
+        assert :ok = storage.put(key, value)
+        assert {:ok, ^value} = storage.get(key)
+      end
+
+      test "returns not_found for missing keys" do
+        assert {:error, :not_found} = storage.get("missing")
+      end
+    end
+  end
+end
+```
+
+**Design meaning:** Behaviour specs define callback shapes; contract tests define expected semantics.
+
+**Common Pitfall:** Two modules can satisfy the same callback types but behave incompatibly unless semantics are tested.
+
+### Types and Runtime Constructors
+
+A type can describe valid shape, but a constructor creates valid values.
+
+Type:
+
+```elixir
+@type percent :: 0..100
+```
+
+Function:
+
+```elixir
+@spec new_percent(term()) :: {:ok, percent()} | {:error, :invalid_percent}
+def new_percent(value) when is_integer(value) and value in 0..100 do
+  {:ok, value}
+end
+
+def new_percent(_), do: {:error, :invalid_percent}
+```
+
+**Design meaning:** The type `0..100` is useful, but input still needs runtime validation.
+
+**Common Pitfall:** Assuming `@type percent :: 0..100` prevents callers from passing `200`.
+
+### Type Ranges and Literals
+
+Elixir:
+
+```elixir
+@type percent :: 0..100
+@type http_status :: 100..599
+@type role :: :admin | :editor | :viewer
+```
+
+Erlang:
+
+```erlang
+-type percent() :: 0..100.
+-type http_status() :: 100..599.
+-type role() :: admin | editor | viewer.
+```
+
+| Use                    | Type                        |
+| ---------------------- | --------------------------- |
+| bounded integer        | range                       |
+| finite atom enum       | atom union                  |
+| exact protocol version | literal integer such as `1` |
+| exact status           | literal atom                |
+| shape variant          | tagged tuple union          |
+
+**Design meaning:** Literal and range types can make domain constraints clear.
+
+**Common Pitfall:** Ranges in specs do not replace runtime checks for external values.
+
+### Types for Binaries, Strings, Charlists, and Iodata
+
+Elixir:
+
+```elixir
+@spec write_body(iodata()) :: :ok | {:error, term()}
+@spec parse_packet(binary()) :: {:ok, term()} | {:error, :invalid_packet}
+@spec display_name(String.t()) :: String.t()
+@spec to_legacy_name(String.t()) :: charlist()
+```
+
+| Type          | Meaning                        |
+| ------------- | ------------------------------ |
+| `String.t()`  | UTF-8 binary string            |
+| `binary()`    | arbitrary bytes                |
+| `bitstring()` | arbitrary bitstring            |
+| `charlist()`  | list of codepoints             |
+| `iodata()`    | nested binary/byte output data |
+| `chardata()`  | Unicode-oriented text data     |
+
+**Design meaning:** Text and byte types should be precise because Erlang/Elixir interop depends on representation.
+
+**Common Pitfall:** Specifying `String.t()` for arbitrary binary packets is wrong. Use `binary()`.
+
+### Specs for Macros
+
+Macros can have specs, but macro typing is less central for ordinary application code. A macro receives AST and returns AST.
+
+Conceptually:
+
+```elixir
+@spec my_macro(Macro.t()) :: Macro.t()
+defmacro my_macro(expr) do
+  ...
+end
+```
+
+In practice, many projects do not heavily spec macros unless writing macro libraries.
+
+| Macro-related type | Meaning                  |
+| ------------------ | ------------------------ |
+| `Macro.t()`        | AST type                 |
+| quoted expression  | syntax tree              |
+| generated code     | AST returned to compiler |
+| macro options      | often keyword list       |
+
+**Design meaning:** Macro APIs need documentation and tests more than ordinary value-level specs alone.
+
+**Common Pitfall:** A macro may accept syntax forms that are difficult to describe precisely with a simple spec.
+
+### When Specs Hurt
+
+Specs can become harmful when they are inaccurate, overly broad, or misleading.
+
+| Bad spec pattern                                          | Problem                        |
+| --------------------------------------------------------- | ------------------------------ |
+| `term() -> term()` everywhere                             | adds noise without information |
+| omits error returns                                       | callers misled                 |
+| says input is `map()` but function handles any term       | boundary contract unclear      |
+| says input is `term()` but function crashes on most terms | too broad                      |
+| exposes raw internal representation                       | locks implementation           |
+| public type for private state                             | unnecessary coupling           |
+| stale copied spec                                         | worse than absent spec         |
+| uses `String.t()` for binary packet                       | text/byte confusion            |
+| broad callback errors                                     | weak behaviour contract        |
+
+**Design meaning:** A spec is a promise. Bad promises are damaging.
+
+**Common Pitfall:** Do not add specs mechanically. Add them to clarify contracts.
+
+### Spec Review Checklist
+
+When reviewing specs, ask:
+
+| Question                                        | Why                    |
+| ----------------------------------------------- | ---------------------- |
+| Does the spec match actual clauses?             | avoid mismatch         |
+| Does it include all return variants?            | caller correctness     |
+| Are error reasons stable and useful?            | API contract           |
+| Is input type too broad or too narrow?          | boundary clarity       |
+| Are raw external inputs typed realistically?    | parser design          |
+| Are internal domain functions narrow?           | invariant clarity      |
+| Should this type be public, private, or opaque? | API design             |
+| Are structs public or opaque intentionally?     | representation control |
+| Are map keys precise?                           | atom/string key bugs   |
+| Are text/binary types correct?                  | interop correctness    |
+| Are callbacks documented beyond shape?          | behaviour semantics    |
+| Are Dialyzer warnings addressed honestly?       | analysis value         |
+| Are specs duplicated unnecessarily?             | maintainability        |
+| Are tests covering spec variants?               | runtime confidence     |
+
+### Dialyzer Workflow Checklist
+
+| Step                                 | Purpose                            |
+| ------------------------------------ | ---------------------------------- |
+| add specs to public APIs             | create contracts                   |
+| add named error types                | clarify return variants            |
+| add opaque types where useful        | enforce representation boundary    |
+| run Dialyzer locally                 | catch issues early                 |
+| inspect warnings carefully           | distinguish spec bug from code bug |
+| avoid broadening to silence warnings | keep value                         |
+| add CI only after baseline is clean  | avoid noisy failures               |
+| update specs with code changes       | prevent staleness                  |
+| add contract tests for behaviours    | semantics beyond types             |
+| review macro-generated APIs          | ensure analyzable contracts        |
+
+**Design meaning:** Dialyzer works best as part of a stable engineering loop.
+
+**Common Pitfall:** Suppressing warnings without understanding them turns Dialyzer into ceremony.
+
+### Decision Table — what type feature to use
+
+| Need                          | Use                                 |
+| ----------------------------- | ----------------------------------- |
+| document public function      | `@spec` / `-spec`                   |
+| name reusable type            | `@type` / `-type`                   |
+| hide representation           | `@opaque` / `-opaque`               |
+| internal helper type          | `@typep` or unexported type         |
+| define callback contract      | `@callback` / `-callback`           |
+| mark callback implementation  | `@impl true`                        |
+| describe success/error result | tagged tuple union                  |
+| describe finite enum          | atom union                          |
+| describe bounded integer      | range                               |
+| describe raw external input   | often `term()`                      |
+| describe trusted domain input | domain type                         |
+| describe arbitrary bytes      | `binary()`                          |
+| describe UTF-8 text           | `String.t()`                        |
+| describe output chunks        | `iodata()`                          |
+| analyze project               | Dialyzer                            |
+| enforce runtime validity      | pattern/guard/constructor, not spec |
+
+### Anti-Pattern Table
+
+| Anti-pattern                                  | Problem                 | Better                  |
+| --------------------------------------------- | ----------------------- | ----------------------- |
+| specs as runtime validation                   | false safety            | validate input          |
+| `term()` everywhere                           | no useful contract      | precise types           |
+| no error reason type                          | unclear callers         | named error union       |
+| raw library errors in public spec             | implementation coupling | normalized errors       |
+| public type for process state                 | exposes internals       | `@typep`                |
+| public struct when representation should hide | breaking changes        | `@opaque`               |
+| opaque type with no constructor               | unusable abstraction    | `new/1`                 |
+| constructor without spec                      | unclear boundary        | spec constructor result |
+| spec says `String.t()` for arbitrary bytes    | wrong semantics         | `binary()`              |
+| broad callback specs                          | weak behaviour          | precise callback return |
+| ignoring `@impl`                              | callback drift          | mark implementations    |
+| silencing Dialyzer by widening specs          | hides bugs              | fix code/spec           |
+| not testing behaviour semantics               | type-only contract      | shared contract tests   |
+| stale specs after refactor                    | misleading              | update with code        |
+
+### Appendix M Summary
+
+Specs, types, behaviours, opaque types, and Dialyzer are contract tools. They make Erlang / Elixir code easier to understand, analyze, and maintain.
+
+The core rules are:
+
+```text
+Specs describe contracts; they do not enforce runtime validity.
+Types name shapes; they do not create new runtime values.
+Opaque types hide representation by convention and tool support.
+Behaviours define module callback contracts.
+@impl marks callback implementations.
+Dialyzer finds discrepancies through success typing, but it is not a full static type checker.
+```
+
+The most important practical distinction is:
+
+```text
+Use specs to tell readers and tools what should happen.
+Use pattern matching, guards, constructors, and parsers to control what actually happens at runtime.
+```
+
+A strong BEAM codebase usually has precise public specs, named domain types, explicit error reason types, opaque types for representation-sensitive values, behaviour contracts for adapters, and regular Dialyzer analysis. The goal is not to turn Erlang or Elixir into a fully statically typed language. The goal is to make dynamic BEAM programs more explicit, analyzable, and harder to misuse.
+## Appendix N — Testing Cookbook
+
+### Appendix Scope — testing BEAM behavior, not only pure functions
+
+This appendix explains how to test Erlang / Elixir code at several levels: pure functions, parsers, constructors, process APIs, `GenServer`s, supervisors, tasks, messages, timeouts, external clients, ETS-backed modules, and concurrent behavior.
+
+The central rule is:
+
+```text
+Test the public contract first.
+Test process behavior through public APIs when possible.
+Test low-level messages only when the message protocol itself is the public contract.
+```
+
+| Test target         | Main concern                              |
+| ------------------- | ----------------------------------------- |
+| Pure function       | input/output correctness                  |
+| Parser              | valid/invalid external shapes             |
+| Constructor         | invariant preservation                    |
+| Tagged result API   | exact success/error shapes                |
+| GenServer           | public process API and state transitions  |
+| Raw process         | message protocol                          |
+| Supervisor          | child start/restart behavior              |
+| Task                | result, timeout, failure                  |
+| Registry            | process discovery and cleanup             |
+| ETS-backed module   | table lifecycle and isolation             |
+| External client     | normalized errors and boundary behavior   |
+| Job worker          | retry/discard/idempotency                 |
+| PubSub              | subscription, broadcast, subscriber death |
+| Time-dependent code | controlled timers, no arbitrary sleeps    |
+| Concurrency         | messages, refs, monitors, bounded waiting |
+
+### Testing Vocabulary
+
+| Term               | Meaning                                                               |
+| ------------------ | --------------------------------------------------------------------- |
+| Unit test          | tests one function/module behavior in isolation                       |
+| Integration test   | tests several modules or process boundaries together                  |
+| Contract test      | verifies a behaviour/API implementation satisfies shared expectations |
+| Property test      | checks invariants over generated inputs                               |
+| Regression test    | preserves a fix for a known bug                                       |
+| Boundary test      | tests external input/output conversion                                |
+| Process test       | tests message, state, lifecycle, timeout, or restart behavior         |
+| Deterministic test | avoids timing and scheduling assumptions                              |
+| Flaky test         | sometimes passes and sometimes fails due to uncontrolled timing/state |
+
+In Elixir, the standard test framework is `ExUnit`.
+
+```elixir
+defmodule ParserTest do
+  use ExUnit.Case
+
+  test "parses a valid status" do
+    assert {:ok, :active} = Parser.parse_status("active")
+  end
+end
+```
+
+Erlang projects commonly use `eunit` or Common Test, but the testing principles are the same: test public contracts, isolate boundaries, avoid arbitrary sleeps, and make concurrency observable.
+
+### Testing Pure Functions
+
+Pure functions are the easiest to test because the same input should produce the same output without side effects.
+
+Elixir:
+
+```elixir
+defmodule Slug do
+  def make(text) when is_binary(text) do
+    text
+    |> String.trim()
+    |> String.downcase()
+    |> String.replace(~r/[^a-z0-9]+/, "-")
+    |> String.trim("-")
+  end
+end
+```
+
+Test:
+
+```elixir
+defmodule SlugTest do
+  use ExUnit.Case
+
+  test "normalizes text into slug" do
+    assert Slug.make(" Hello, World! ") == "hello-world"
+  end
+
+  test "collapses non-alphanumeric groups" do
+    assert Slug.make("A---B___C") == "a-b-c"
+  end
+end
+```
+
+| Pure function test should cover | Example                                       |
+| ------------------------------- | --------------------------------------------- |
+| ordinary valid input            | `"Hello"`                                     |
+| edge input                      | empty string, one item, zero                  |
+| boundary value                  | minimum/maximum accepted number               |
+| invalid shape if handled        | non-binary input if function accepts `term()` |
+| normalization                   | trimming, casing, conversion                  |
+| idempotency if expected         | applying twice gives same result              |
+
+**Design meaning:** Pure function tests should be direct and small.
+
+**Common Pitfall:** Do not start processes or use mocks when a simple input/output assertion is enough.
+
+### Testing Tagged Result APIs
+
+Many Erlang / Elixir APIs return tagged tuples.
+
+Elixir function:
+
+```elixir
+def parse_status("pending"), do: {:ok, :pending}
+def parse_status("approved"), do: {:ok, :approved}
+def parse_status("rejected"), do: {:ok, :rejected}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+Tests:
+
+```elixir
+test "parses known statuses" do
+  assert {:ok, :pending} = Parser.parse_status("pending")
+  assert {:ok, :approved} = Parser.parse_status("approved")
+  assert {:ok, :rejected} = Parser.parse_status("rejected")
+end
+
+test "rejects unknown status" do
+  assert {:error, :invalid_status} = Parser.parse_status("unknown")
+end
+```
+
+| Assertion style                      | Meaning                      |
+| ------------------------------------ | ---------------------------- |
+| `assert {:ok, value} = result`       | checks shape and binds value |
+| `assert {:error, :reason} = result`  | checks exact error           |
+| `assert result == {:ok, value}`      | checks full equality         |
+| `assert match?({:ok, _}, result)`    | checks only shape            |
+| `refute match?({:error, _}, result)` | weaker negative assertion    |
+
+**Design meaning:** Pattern assertions are excellent because they test protocol shape.
+
+**Common Pitfall:** `assert {:error, _} = result` may be too broad for public APIs where exact error reasons matter.
+
+### Testing Parsers and Boundary Converters
+
+Parsers receive raw external input and return validated internal data.
+
+Example:
+
+```elixir
+defmodule CreateUser do
+  defstruct [:name, :email]
+
+  def new(%{"name" => name, "email" => email})
+      when is_binary(name) and is_binary(email) do
+    name = String.trim(name)
+    email = String.trim(email)
+
+    cond do
+      name == "" ->
+        {:error, {:invalid_field, :name\}\}
+
+      not String.contains?(email, "@") ->
+        {:error, {:invalid_field, :email\}\}
+
+      true ->
+        {:ok, %__MODULE__{name: name, email: email\}\}
+    end
+  end
+
+  def new(_) do
+    {:error, :invalid_create_user}
+  end
+end
+```
+
+Tests:
+
+```elixir
+defmodule CreateUserTest do
+  use ExUnit.Case
+
+  test "creates command from valid external params" do
+    params = %{"name" => " Ada ", "email" => " ada@example.com "}
+
+    assert {:ok, command} = CreateUser.new(params)
+    assert command.name == "Ada"
+    assert command.email == "ada@example.com"
+  end
+
+  test "rejects missing fields" do
+    assert {:error, :invalid_create_user} = CreateUser.new(%{"name" => "Ada"})
+  end
+
+  test "rejects blank name" do
+    params = %{"name" => " ", "email" => "ada@example.com"}
+
+    assert {:error, {:invalid_field, :name\}\} = CreateUser.new(params)
+  end
+
+  test "rejects invalid email" do
+    params = %{"name" => "Ada", "email" => "not-email"}
+
+    assert {:error, {:invalid_field, :email\}\} = CreateUser.new(params)
+  end
+
+  test "rejects non-map input" do
+    assert {:error, :invalid_create_user} = CreateUser.new(nil)
+    assert {:error, :invalid_create_user} = CreateUser.new("bad")
+  end
+end
+```
+
+| Parser test should cover | Reason                        |
+| ------------------------ | ----------------------------- |
+| valid external shape     | success path                  |
+| missing required field   | boundary failure              |
+| wrong key type           | string-key/atom-key confusion |
+| wrong value type         | robust input handling         |
+| normalization            | trimming/casing/conversion    |
+| unknown extra field      | explicit ignore/reject policy |
+| invalid enum             | explicit finite mapping       |
+| non-map input            | parser safety                 |
+
+**Design meaning:** Boundary tests should prove that raw external data is not allowed to leak unvalidated into the domain.
+
+**Common Pitfall:** Only testing valid input makes parser tests too weak.
+
+### Testing Constructors and Invariants
+
+A constructor should prevent invalid domain values.
+
+```elixir
+defmodule Email do
+  @opaque t :: %__MODULE__{value: String.t()}
+  defstruct [:value]
+
+  def new(value) when is_binary(value) do
+    value = String.trim(value)
+
+    if String.contains?(value, "@") do
+      {:ok, %__MODULE__{value: value\}\}
+    else
+      {:error, :invalid_email}
+    end
+  end
+
+  def new(_), do: {:error, :invalid_email}
+
+  def to_string(%__MODULE__{value: value}), do: value
+end
+```
+
+Tests:
+
+```elixir
+defmodule EmailTest do
+  use ExUnit.Case
+
+  test "constructs valid email" do
+    assert {:ok, email} = Email.new(" ada@example.com ")
+    assert Email.to_string(email) == "ada@example.com"
+  end
+
+  test "rejects invalid email" do
+    assert {:error, :invalid_email} = Email.new("not-email")
+  end
+
+  test "rejects non-binary input" do
+    assert {:error, :invalid_email} = Email.new(nil)
+  end
+end
+```
+
+| Constructor invariant        | Test                          |
+| ---------------------------- | ----------------------------- |
+| value must be non-empty      | blank input rejected          |
+| value must match finite enum | unknown enum rejected         |
+| integer must be positive     | zero/negative rejected        |
+| ID must be stable shape      | bad ID rejected               |
+| email must be normalized     | spaces trimmed                |
+| state transition valid       | invalid transition rejected   |
+| opaque value accessor works  | internal value exposed safely |
+
+**Design meaning:** Constructor tests verify domain validity, not just structural creation.
+
+**Common Pitfall:** Testing only that a struct is created does not test its invariants.
+
+### Testing Public API Before Internals
+
+A module should usually be tested through its public API.
+
+Good:
+
+```elixir
+assert {:ok, user} = Accounts.create_user(params)
+assert user.email == "ada@example.com"
+```
+
+Weak:
+
+```elixir
+assert Accounts.__normalize_params__(params) == expected
+```
+
+unless `__normalize_params__/1` is intentionally public.
+
+| Test through public API when          | Test internals when                      |
+| ------------------------------------- | ---------------------------------------- |
+| behavior can be observed from outside | internal function is deliberately public |
+| refactoring should not break tests    | algorithm has complex edge cases         |
+| module contract matters               | helper is extracted into its own module  |
+| private shape may change              | generated code needs direct inspection   |
+
+**Design meaning:** Tests should protect behavior, not freeze accidental implementation.
+
+**Common Pitfall:** Exposing private helpers as public only to test them often creates unnecessary API surface.
+
+### Testing GenServer Public APIs
+
+A `GenServer` should usually expose public wrapper functions. Tests should call those wrappers.
+
+Example server:
+
+```elixir
+defmodule Counter do
+  use GenServer
+
+  def start_link(opts \\ []) do
+    initial = Keyword.get(opts, :initial, 0)
+    GenServer.start_link(__MODULE__, initial, Keyword.take(opts, [:name]))
+  end
+
+  def increment(server) do
+    GenServer.cast(server, :increment)
+  end
+
+  def get(server) do
+    GenServer.call(server, :get)
+  end
+
+  @impl true
+  def init(count), do: {:ok, count}
+
+  @impl true
+  def handle_cast(:increment, count), do: {:noreply, count + 1}
+
+  @impl true
+  def handle_call(:get, _from, count), do: {:reply, count, count}
+end
+```
+
+Tests:
+
+```elixir
+defmodule CounterTest do
+  use ExUnit.Case
+
+  test "starts with initial count" do
+    {:ok, pid} = Counter.start_link(initial: 10)
+
+    assert Counter.get(pid) == 10
+  end
+
+  test "increments count" do
+    {:ok, pid} = Counter.start_link(initial: 0)
+
+    Counter.increment(pid)
+
+    assert eventually(fn ->
+      Counter.get(pid) == 1
+    end)
+  end
+
+  defp eventually(fun, attempts \\ 20)
+
+  defp eventually(fun, attempts) when attempts > 0 do
+    if fun.() do
+      true
+    else
+      Process.sleep(10)
+      eventually(fun, attempts - 1)
+    end
+  end
+
+  defp eventually(_fun, 0), do: flunk("condition did not become true")
+end
+```
+
+For `cast`, the test may need synchronization because `cast` is asynchronous. A cleaner approach is to expose a synchronous API or test through a call that observes state.
+
+Alternative:
+
+```elixir
+test "increments count" do
+  {:ok, pid} = Counter.start_link(initial: 0)
+
+  Counter.increment(pid)
+
+  assert Counter.get(pid) == 1
+end
+```
+
+This often works because `GenServer.call` after a `cast` from the same process will generally be ordered after that cast to the same receiver, but more complex concurrent scenarios may require explicit acknowledgement.
+
+| GenServer test should cover | Example                                       |
+| --------------------------- | --------------------------------------------- |
+| startup                     | initial state                                 |
+| public `call` API           | fetch result                                  |
+| public `cast` API           | state eventually changes                      |
+| invalid request             | returns stable error or crashes intentionally |
+| timeout behavior            | caller receives timeout/error if designed     |
+| termination                 | process stops as expected                     |
+| restart under supervisor    | state recovery policy                         |
+
+**Design meaning:** A GenServer is a process API. Test what callers observe.
+
+**Common Pitfall:** Calling `handle_call/3` directly in tests bypasses the actual process, mailbox, timeout, and callback runtime. It is sometimes useful for pure callback logic, but it is not a process behavior test.
+
+### Testing `GenServer.call` Replies
+
+For synchronous calls, tests are straightforward.
+
+```elixir
+test "fetch returns not_found for missing key" do
+  {:ok, pid} = Cache.start_link([])
+
+  assert {:error, :not_found} = Cache.fetch(pid, :missing)
+end
+```
+
+| Good assertion                | Why                       |
+| ----------------------------- | ------------------------- |
+| exact success tuple           | verifies public contract  |
+| exact error tuple             | verifies caller handling  |
+| timeout option where relevant | avoids hanging tests      |
+| process alive check if needed | verifies lifecycle        |
+| state not exposed             | preserves API abstraction |
+
+**Common Pitfall:** Do not use default long call timeouts in tests when failure should be fast and clear. Pass shorter timeouts in test-specific APIs if needed.
+
+### Testing Asynchronous Messages Without Arbitrary Sleep
+
+Arbitrary sleeps make tests slow and flaky. Prefer message acknowledgements.
+
+Instead of:
+
+```elixir
+Worker.do_async(pid, job)
+Process.sleep(100)
+assert Worker.done?(pid, job.id)
+```
+
+Design an acknowledgement or observe completion:
+
+```elixir
+ref = make_ref()
+Worker.do_async(pid, job, notify: {self(), ref})
+
+assert_receive {:job_done, ^ref, job_id}, 1_000
+assert job_id == job.id
+```
+
+Example worker API:
+
+```elixir
+def do_async(worker, job, opts \\ []) do
+  GenServer.cast(worker, {:do_async, job, opts})
+end
+```
+
+Callback:
+
+```elixir
+def handle_cast({:do_async, job, opts}, state) do
+  result = perform(job)
+
+  case Keyword.get(opts, :notify) do
+    {pid, ref} -> send(pid, {:job_done, ref, job.id, result})
+    nil -> :ok
+  end
+
+  {:noreply, state}
+end
+```
+
+Test:
+
+```elixir
+test "notifies when job completes" do
+  {:ok, pid} = Worker.start_link([])
+  ref = make_ref()
+
+  Worker.do_async(pid, %{id: 1}, notify: {self(), ref})
+
+  assert_receive {:job_done, ^ref, 1, :ok}, 1_000
+end
+```
+
+**Design meaning:** Make async work observable through a protocol.
+
+**Common Pitfall:** `Process.sleep` does not prove that the async operation completed; it only waits and hopes.
+
+### Testing Raw Message Protocols
+
+If a raw process message protocol is part of the public contract, test the exact message shape.
+
+Process protocol:
+
+```elixir
+defmodule RawCache do
+  def start_link do
+    pid = spawn_link(fn -> loop(%{}) end)
+    {:ok, pid}
+  end
+
+  defp loop(state) do
+    receive do
+      {:put, key, value} ->
+        loop(Map.put(state, key, value))
+
+      {:get, from, ref, key} ->
+        send(from, {:reply, ref, Map.fetch(state, key)})
+        loop(state)
+    end
+  end
+end
+```
+
+Test:
+
+```elixir
+test "replies with correlated ref" do
+  {:ok, pid} = RawCache.start_link()
+  ref = make_ref()
+
+  send(pid, {:put, :x, 1})
+  send(pid, {:get, self(), ref, :x})
+
+  assert_receive {:reply, ^ref, {:ok, 1\}\}, 1_000
+end
+```
+
+Test missing key:
+
+```elixir
+test "replies error for missing key" do
+  {:ok, pid} = RawCache.start_link()
+  ref = make_ref()
+
+  send(pid, {:get, self(), ref, :missing})
+
+  assert_receive {:reply, ^ref, :error}, 1_000
+end
+```
+
+| Raw protocol test should check | Reason                 |
+| ------------------------------ | ---------------------- |
+| tag shape                      | protocol compatibility |
+| reference correlation          | avoids wrong replies   |
+| timeout behavior               | caller safety          |
+| unknown message handling       | robustness             |
+| process death                  | lifecycle              |
+| stale messages                 | race safety            |
+| duplicate messages             | idempotency if needed  |
+
+**Common Pitfall:** Forgetting the pinned ref in `assert_receive` can make the test accept the wrong message.
+
+### Testing `assert_receive` and `refute_receive`
+
+Elixir has message assertions.
+
+```elixir
+assert_receive {:done, 1}, 1_000
+refute_receive {:error, _}, 100
+```
+
+Use pinning for dynamic values:
+
+```elixir
+ref = make_ref()
+send(self(), {:reply, ref, :ok})
+
+assert_receive {:reply, ^ref, :ok}, 1_000
+```
+
+| Assertion                         | Meaning                                     |
+| --------------------------------- | ------------------------------------------- |
+| `assert_receive pattern, timeout` | expects matching message                    |
+| `refute_receive pattern, timeout` | expects no matching message                 |
+| `assert_received pattern`         | checks already received mailbox only        |
+| `refute_received pattern`         | checks no already received matching message |
+| pinned variable                   | exact expected value                        |
+
+**Design meaning:** Message assertions are better than sleeps because they synchronize on the actual event.
+
+**Common Pitfall:** `refute_receive` with a long timeout slows tests. Keep negative waiting short and meaningful.
+
+### Testing Timeouts
+
+Timeouts should be tested with short, controlled timeout values.
+
+Example API:
+
+```elixir
+def fetch(server, key, timeout \\ 5_000) do
+  GenServer.call(server, {:fetch, key}, timeout)
+end
+```
+
+Test:
+
+```elixir
+test "fetch times out when server is blocked" do
+  {:ok, pid} = SlowServer.start_link([])
+
+  SlowServer.block(pid)
+
+  assert catch_exit(SlowServer.fetch(pid, :x, 20))
+end
+```
+
+Better API may normalize timeout:
+
+```elixir
+def safe_fetch(server, key, timeout \\ 5_000) do
+  try do
+    {:ok, GenServer.call(server, {:fetch, key}, timeout)}
+  catch
+    :exit, {:timeout, _} ->
+      {:error, :timeout}
+  end
+end
+```
+
+Test:
+
+```elixir
+assert {:error, :timeout} = SlowServer.safe_fetch(pid, :x, 20)
+```
+
+| Timeout test rule             | Reason               |
+| ----------------------------- | -------------------- |
+| use short test timeout        | fast feedback        |
+| avoid real long waits         | test speed           |
+| assert exact normalized error | stable contract      |
+| account for late replies      | mailbox hygiene      |
+| use refs for custom protocols | stale message safety |
+
+**Common Pitfall:** Testing a five-second timeout with an actual five-second wait creates slow test suites.
+
+### Testing Timers
+
+Timer-driven code should be designed so tests can control interval.
+
+Server:
+
+```elixir
+defmodule Ticker do
+  use GenServer
+
+  def start_link(opts) do
+    interval = Keyword.get(opts, :interval, 60_000)
+    notify = Keyword.get(opts, :notify)
+    GenServer.start_link(__MODULE__, %{interval: interval, notify: notify})
+  end
+
+  @impl true
+  def init(state) do
+    schedule(state.interval)
+    {:ok, state}
+  end
+
+  @impl true
+  def handle_info(:tick, state) do
+    if state.notify, do: send(state.notify, :tick_seen)
+    schedule(state.interval)
+    {:noreply, state}
+  end
+
+  defp schedule(interval) do
+    Process.send_after(self(), :tick, interval)
+  end
+end
+```
+
+Test:
+
+```elixir
+test "ticks at configured interval" do
+  {:ok, _pid} = Ticker.start_link(interval: 10, notify: self())
+
+  assert_receive :tick_seen, 100
+end
+```
+
+| Timer test strategy            | Benefit                         |
+| ------------------------------ | ------------------------------- |
+| inject short interval          | fast tests                      |
+| inject notifier                | observable behavior             |
+| send timer message directly    | tests handler deterministically |
+| use refs in timer messages     | stale timer safety              |
+| separate pure scheduling logic | easier tests                    |
+
+Direct handler-style process test:
+
+```elixir
+send(pid, :tick)
+assert_receive :tick_seen, 100
+```
+
+**Design meaning:** Time-dependent code should allow test-time configuration.
+
+**Common Pitfall:** Hard-coded long intervals make timer tests impractical or flaky.
+
+### Testing `handle_info` Messages
+
+When testing `handle_info`, prefer public observability. If the message is an internal timer, sending it directly may be acceptable when it is a documented internal test seam.
+
+Example:
+
+```elixir
+send(pid, :refresh)
+assert eventually(fn -> Cache.ready?(pid) end)
+```
+
+Better if API exists:
+
+```elixir
+Cache.force_refresh(pid)
+assert {:ok, value} = Cache.fetch(pid, key)
+```
+
+| Message source     | Test approach                       |
+| ------------------ | ----------------------------------- |
+| public raw message | send exact message                  |
+| timer message      | inject interval or send message     |
+| monitor `DOWN`     | kill monitored process              |
+| task result        | use a controlled task function      |
+| socket message     | use socket pair/helper              |
+| unknown message    | send and assert log/ignore behavior |
+
+**Common Pitfall:** Directly testing private `handle_info/2` function logic can miss process behavior and mailbox ordering.
+
+### Testing Supervisor Startup
+
+A supervisor should start its expected children.
+
+```elixir
+defmodule MyApp.SupervisorTest do
+  use ExUnit.Case
+
+  test "starts children" do
+    {:ok, sup} = MyApp.Supervisor.start_link([])
+
+    children = Supervisor.which_children(sup)
+
+    assert Enum.any?(children, fn {id, _pid, _type, _modules} ->
+             id == MyApp.Cache
+           end)
+  end
+end
+```
+
+For many application supervisors, this may be covered by integration/application tests rather than direct unit tests.
+
+| Supervisor startup test should check | When useful             |
+| ------------------------------------ | ----------------------- |
+| child exists                         | custom supervisor logic |
+| child order dependency               | `rest_for_one` setups   |
+| child options                        | dynamic configuration   |
+| invalid config fails startup         | required config         |
+| registry before workers              | dependency correctness  |
+
+**Common Pitfall:** Over-testing exact child list can make tests brittle if supervision structure changes but external behavior remains correct.
+
+### Testing Supervisor Restart
+
+Restart behavior can be tested by killing a child and observing replacement.
+
+```elixir
+test "restarts permanent child" do
+  {:ok, sup} = MySupervisor.start_link([])
+
+  [{MyWorker, pid, :worker, _modules}] =
+    Supervisor.which_children(sup)
+
+  Process.exit(pid, :kill)
+
+  assert eventually(fn ->
+    [{MyWorker, new_pid, :worker, _modules}] =
+      Supervisor.which_children(sup)
+
+    is_pid(new_pid) and new_pid != pid and Process.alive?(new_pid)
+  end)
+end
+```
+
+Helper:
+
+```elixir
+defp eventually(fun, attempts \\ 20)
+
+defp eventually(fun, attempts) when attempts > 0 do
+  if fun.() do
+    true
+  else
+    Process.sleep(10)
+    eventually(fun, attempts - 1)
+  end
+end
+
+defp eventually(_fun, 0), do: flunk("condition did not become true")
+```
+
+| Restart test should check                         | Reason               |
+| ------------------------------------------------- | -------------------- |
+| new PID differs                                   | actual restart       |
+| child alive                                       | recovery             |
+| dependent children restarted if strategy requires | strategy correctness |
+| transient child not restarted after normal exit   | restart type         |
+| temporary child never restarted                   | restart type         |
+| state recovery                                    | restart semantics    |
+
+**Design meaning:** Restart tests are valuable for custom supervision trees and critical lifecycle assumptions.
+
+**Common Pitfall:** Killing linked processes in tests can crash the test process if links are not isolated. Start supervised components carefully or trap exits where appropriate.
+
+### Testing `DynamicSupervisor`
+
+Dynamic children are started at runtime.
+
+```elixir
+test "starts dynamic worker" do
+  {:ok, sup} = DynamicSupervisor.start_link(strategy: :one_for_one)
+
+  assert {:ok, pid} =
+           DynamicSupervisor.start_child(sup, {MyWorker, id: :a})
+
+  assert Process.alive?(pid)
+end
+```
+
+With registry:
+
+```elixir
+test "starts worker registered by key" do
+  start_supervised!({Registry, keys: :unique, name: TestRegistry})
+  start_supervised!({DynamicSupervisor, strategy: :one_for_one, name: TestWorkerSup})
+
+  assert {:ok, pid} = WorkerManager.start_worker(:a)
+
+  assert [{^pid, _value}] = Registry.lookup(TestRegistry, :a)
+end
+```
+
+| Dynamic supervisor test should cover |
+| ------------------------------------ |
+| child starts                         |
+| duplicate child behavior             |
+| child terminates                     |
+| registry lookup works                |
+| child restart policy                 |
+| invalid child spec error             |
+| cleanup after death                  |
+
+**Common Pitfall:** Global names in tests can conflict between async tests. Use unique names or disable async for shared named resources.
+
+### Testing Registry
+
+Registry tests should avoid shared global names where possible.
+
+```elixir
+setup do
+  registry = Module.concat(__MODULE__, "Registry#{System.unique_integer([:positive])}")
+  {:ok, _} = Registry.start_link(keys: :unique, name: registry)
+  %{registry: registry}
+end
+```
+
+Test:
+
+```elixir
+test "registers worker by key", %{registry: registry} do
+  key = :worker_a
+
+  {:ok, pid} =
+    GenServer.start_link(MyWorker, [],
+      name: {:via, Registry, {registry, key\}\}
+    )
+
+  assert [{^pid, nil}] = Registry.lookup(registry, key)
+end
+```
+
+| Registry test concern       | Reason                   |
+| --------------------------- | ------------------------ |
+| unique test registry name   | avoids conflicts         |
+| lookup after start          | registration works       |
+| duplicate key failure       | unique semantics         |
+| cleanup after process death | live registry behavior   |
+| duplicate registry mode     | PubSub-like registration |
+| `:via` tuple                | API correctness          |
+
+**Common Pitfall:** Registry tracks live processes. It is not durable storage; tests should expect entries to disappear when processes die.
+
+### Testing ETS-Backed Modules
+
+ETS tests must isolate table names and ownership.
+
+Bad:
+
+```elixir
+:ets.new(:cache, [:named_table])
+```
+
+This can conflict across tests.
+
+Better: use unique table identifiers or start a supervised owner per test.
+
+```elixir
+setup do
+  table = :ets.new(:cache, [:set, :protected])
+  %{table: table}
+end
+```
+
+Example module with table argument:
+
+```elixir
+defmodule CacheTable do
+  def put(table, key, value) do
+    :ets.insert(table, {key, value})
+    :ok
+  end
+
+  def fetch(table, key) do
+    case :ets.lookup(table, key) do
+      [{^key, value}] -> {:ok, value}
+      [] -> {:error, :not_found}
+    end
+  end
+end
+```
+
+Tests:
+
+```elixir
+test "stores and fetches values", %{table: table} do
+  assert :ok = CacheTable.put(table, :x, 1)
+  assert {:ok, 1} = CacheTable.fetch(table, :x)
+end
+
+test "returns not_found for missing key", %{table: table} do
+  assert {:error, :not_found} = CacheTable.fetch(table, :missing)
+end
+```
+
+| ETS test concern | Rule                         |
+| ---------------- | ---------------------------- |
+| named table      | use unique names or avoid    |
+| owner process    | keep owner alive during test |
+| async tests      | avoid shared table names     |
+| cleanup          | delete table or owner exits  |
+| public writes    | assert access policy         |
+| table state      | start fresh per test         |
+
+**Common Pitfall:** Shared named ETS tables cause test pollution and async conflicts.
+
+### Testing External Clients
+
+External clients should normalize external failures.
+
+Define a behaviour:
+
+```elixir
+defmodule BillingClient do
+  @callback charge(map()) ::
+              {:ok, %{transaction_id: String.t()\}\}
+              | {:error, :timeout | :rejected | :invalid_response | :unavailable}
+end
+```
+
+Use an implementation module as dependency:
+
+```elixir
+defmodule Checkout do
+  def charge(command, billing_client) do
+    case billing_client.charge(command) do
+      {:ok, result} ->
+        {:ok, result}
+
+      {:error, :timeout} ->
+        {:error, :temporarily_unavailable}
+
+      {:error, :rejected} ->
+        {:error, :payment_rejected}
+
+      {:error, reason} ->
+        {:error, {:billing_failed, reason\}\}
+    end
+  end
+end
+```
+
+Test with a stub module:
+
+```elixir
+defmodule TimeoutBillingClient do
+  def charge(_command), do: {:error, :timeout}
+end
+
+defmodule RejectedBillingClient do
+  def charge(_command), do: {:error, :rejected}
+end
+```
+
+Tests:
+
+```elixir
+test "normalizes timeout" do
+  assert {:error, :temporarily_unavailable} =
+           Checkout.charge(%{}, TimeoutBillingClient)
+end
+
+test "normalizes rejection" do
+  assert {:error, :payment_rejected} =
+           Checkout.charge(%{}, RejectedBillingClient)
+end
+```
+
+| External client test should cover |
+| --------------------------------- |
+| success response                  |
+| timeout                           |
+| unavailable service               |
+| rejected request                  |
+| invalid response                  |
+| malformed data                    |
+| retry policy if present           |
+| normalized public errors          |
+| no raw library error leakage      |
+
+**Design meaning:** Tests should verify the boundary contract, not the external service itself.
+
+**Common Pitfall:** Tests that hit real external services are slow, flaky, and hard to reproduce. Reserve them for explicit integration suites.
+
+### Testing Behaviour Implementations with Contract Tests
+
+A behaviour can have multiple implementations. Shared contract tests ensure consistent semantics.
+
+Behaviour:
+
+```elixir
+defmodule Storage do
+  @callback put(binary(), binary()) :: :ok | {:error, term()}
+  @callback get(binary()) :: {:ok, binary()} | {:error, :not_found | term()}
+end
+```
+
+Contract test macro:
+
+```elixir
+defmodule StorageContract do
+  defmacro __using__(storage: storage) do
+    quote bind_quoted: [storage: storage] do
+      test "stores and retrieves values" do
+        key = "key"
+        value = "value"
+
+        assert :ok = storage.put(key, value)
+        assert {:ok, ^value} = storage.get(key)
+      end
+
+      test "returns not_found for missing key" do
+        assert {:error, :not_found} = storage.get("missing")
+      end
+    end
+  end
+end
+```
+
+Use for implementation:
+
+```elixir
+defmodule MemoryStorageTest do
+  use ExUnit.Case
+  use StorageContract, storage: MemoryStorage
+end
+```
+
+| Contract test verifies  | Spec alone cannot verify  |
+| ----------------------- | ------------------------- |
+| semantic consistency    | exact behavior            |
+| exact error reasons     | runtime choices           |
+| lifecycle expectations  | state handling            |
+| edge cases              | implementation discipline |
+| shared API expectations | compatibility             |
+
+**Common Pitfall:** A module can satisfy callback shapes but violate expected semantics.
+
+### Testing Mocks, Stubs, and Fakes
+
+| Test double              | Meaning                                  |
+| ------------------------ | ---------------------------------------- |
+| Stub                     | simple predefined response               |
+| Fake                     | working lightweight implementation       |
+| Mock                     | verifies expected calls/interactions     |
+| Spy                      | records interactions for later assertion |
+| Behaviour implementation | module satisfying callback contract      |
+| Test process             | receives messages from code under test   |
+
+Prefer behaviour-based stubs/fakes when possible.
+
+Stub:
+
+```elixir
+defmodule SuccessMailer do
+  def send_email(_email), do: :ok
+end
+```
+
+Fake:
+
+```elixir
+defmodule MemoryStorage do
+  def start_link do
+    Agent.start_link(fn -> %{} end)
+  end
+
+  def put(agent, key, value) do
+    Agent.update(agent, &Map.put(&1, key, value))
+  end
+
+  def get(agent, key) do
+    Agent.get(agent, &Map.fetch(&1, key))
+  end
+end
+```
+
+Spy through current process:
+
+```elixir
+defmodule SpyMailer do
+  def send_email(email) do
+    send(Process.get(:test_pid), {:email_sent, email})
+    :ok
+  end
+end
+```
+
+**Design meaning:** Test doubles should preserve the relevant contract and avoid over-coupling to implementation details.
+
+**Common Pitfall:** Mocks that assert too many internal calls make refactoring hard.
+
+### Testing Logs
+
+Use log capture when log behavior is part of the contract or to suppress expected noise.
+
+```elixir
+import ExUnit.CaptureLog
+
+test "logs invalid message" do
+  log =
+    capture_log(fn ->
+      send(pid, {:unknown, :message})
+      assert_receive :processed_unknown, 1_000
+    end)
+
+  assert log =~ "unknown message"
+end
+```
+
+| Log testing is useful when               | Avoid when                      |
+| ---------------------------------------- | ------------------------------- |
+| warning is part of operational contract  | exact wording is incidental     |
+| expected crash logs should be suppressed | behavior can be tested directly |
+| security redaction must be verified      | logs are implementation detail  |
+| important telemetry fallback             | test would be brittle           |
+
+**Design meaning:** Logs are operational output. Test them selectively.
+
+**Common Pitfall:** Asserting exact log strings can be brittle. Prefer key phrase or metadata behavior when possible.
+
+### Testing Telemetry and Instrumentation
+
+If code emits telemetry events, attach a test handler.
+
+Conceptual example:
+
+```elixir
+handler_id = "test-handler-#{System.unique_integer([:positive])}"
+test_pid = self()
+
+:telemetry.attach(
+  handler_id,
+  [:my_app, :worker, :stop],
+  fn event, measurements, metadata, _config ->
+    send(test_pid, {:telemetry, event, measurements, metadata})
+  end,
+  nil
+)
+
+on_exit(fn ->
+  :telemetry.detach(handler_id)
+end)
+```
+
+Test:
+
+```elixir
+Worker.run(:ok)
+
+assert_receive {:telemetry, [:my_app, :worker, :stop], measurements, metadata}, 1_000
+assert measurements.duration >= 0
+assert metadata.result == :ok
+```
+
+| Telemetry test should check | Reason                          |
+| --------------------------- | ------------------------------- |
+| event name                  | stable instrumentation contract |
+| required measurements       | metrics correctness             |
+| required metadata           | observability                   |
+| detach handler              | avoid test pollution            |
+| no secrets                  | safety                          |
+| error path events           | operational debugging           |
+
+**Common Pitfall:** Forgetting to detach telemetry handlers can pollute later tests.
+
+### Testing Error Handling
+
+Error handling tests should assert exact error shapes.
+
+```elixir
+test "returns not_found when user does not exist" do
+  assert {:error, :not_found} = Accounts.fetch_user(-1)
+end
+
+test "returns invalid field for bad email" do
+  assert {:error, {:invalid_field, :email\}\} =
+           Accounts.create_user(%{"email" => "bad"})
+end
+```
+
+For raising functions:
+
+```elixir
+test "fetch_user! raises when missing" do
+  assert_raise RuntimeError, fn ->
+    Accounts.fetch_user!(-1)
+  end
+end
+```
+
+For process exits:
+
+```elixir
+test "call exits on timeout" do
+  assert catch_exit(GenServer.call(pid, :slow, 10))
+end
+```
+
+| Failure type     | Test with                                 |
+| ---------------- | ----------------------------------------- |
+| tagged error     | pattern assertion                         |
+| exception        | `assert_raise`                            |
+| exit             | `catch_exit`                              |
+| thrown value     | `catch_throw`                             |
+| logged error     | `capture_log` if needed                   |
+| supervised crash | observe restart                           |
+| task failure     | `Task.yield` / `catch_exit` depending API |
+
+**Common Pitfall:** Testing only the happy path leaves the failure contract unspecified.
+
+### Testing Crash and Restart Semantics
+
+Some crashes are intentional. Test the boundary.
+
+Example: invalid startup config should fail.
+
+```elixir
+test "fails startup with invalid config" do
+  assert {:error, _reason} = MyServer.start_link(config: :bad)
+end
+```
+
+If it raises:
+
+```elixir
+test "raises on missing required config" do
+  assert_raise ArgumentError, fn ->
+    MyConfig.fetch_required!(:missing)
+  end
+end
+```
+
+Restart test:
+
+```elixir
+test "recovers after worker crash" do
+  {:ok, sup} = MySupervisor.start_link([])
+
+  pid = find_child_pid(sup, MyWorker)
+  Process.exit(pid, :kill)
+
+  assert eventually(fn ->
+    new_pid = find_child_pid(sup, MyWorker)
+    new_pid != pid and Process.alive?(new_pid)
+  end)
+end
+```
+
+**Design meaning:** Crashes should be local, observable, and bounded. Tests should reflect the intended boundary.
+
+**Common Pitfall:** Catching all exceptions in tests can hide the fact that a process should crash and restart.
+
+### Testing Tasks
+
+Tasks can return, timeout, raise, or exit.
+
+```elixir
+test "task returns result" do
+  task = Task.async(fn -> 1 + 1 end)
+
+  assert Task.await(task, 1_000) == 2
+end
+```
+
+Failure:
+
+```elixir
+test "task failure exits awaiter" do
+  task = Task.async(fn -> raise "boom" end)
+
+  assert catch_exit(Task.await(task, 1_000))
+end
+```
+
+Controlled yield:
+
+```elixir
+test "yield returns result" do
+  task = Task.async(fn -> :ok end)
+
+  assert {:ok, :ok} = Task.yield(task, 1_000)
+end
+```
+
+Timeout:
+
+```elixir
+test "yield returns nil on timeout" do
+  task = Task.async(fn ->
+    Process.sleep(100)
+    :done
+  end)
+
+  assert nil == Task.yield(task, 10)
+  Task.shutdown(task, :brutal_kill)
+end
+```
+
+| Task behavior       | Test                                   |
+| ------------------- | -------------------------------------- |
+| success             | `Task.await` or `Task.yield`           |
+| timeout             | short `yield`                          |
+| failure             | `catch_exit` or `yield` result         |
+| cleanup             | `Task.shutdown`                        |
+| supervised task     | start under `Task.Supervisor`          |
+| bounded concurrency | assert max concurrent work if designed |
+
+**Common Pitfall:** Leaving timed-out tasks running after a test can affect later tests. Shut them down.
+
+### Testing Concurrency Limits
+
+If a module claims bounded concurrency, test that claim.
+
+Instrument with messages:
+
+```elixir
+defmodule ProbeWorker do
+  def run(test_pid, ref) do
+    send(test_pid, {:started, ref, self()})
+
+    receive do
+      :continue -> :ok
+    end
+
+    send(test_pid, {:finished, ref, self()})
+    :ok
+  end
+end
+```
+
+Test idea:
+
+```elixir
+test "runs at most two tasks concurrently" do
+  ref = make_ref()
+
+  {:ok, limiter} = Limiter.start_link(max_concurrency: 2)
+
+  for _ <- 1..5 do
+    Limiter.async(limiter, fn -> ProbeWorker.run(self(), ref) end)
+  end
+
+  assert_receive {:started, ^ref, pid1}, 1_000
+  assert_receive {:started, ^ref, pid2}, 1_000
+  refute_receive {:started, ^ref, _pid3}, 50
+
+  send(pid1, :continue)
+  assert_receive {:finished, ^ref, ^pid1}, 1_000
+  assert_receive {:started, ^ref, _pid3}, 1_000
+
+  send(pid2, :continue)
+end
+```
+
+**Design meaning:** Concurrency tests should use explicit blocking and release messages, not timing guesses.
+
+**Common Pitfall:** Testing concurrency by hoping tasks overlap is flaky. Control the synchronization points.
+
+### Testing Race Conditions
+
+Race-prone code should be tested by forcing interleavings.
+
+Example technique:
+
+| Technique                          | Use                                |
+| ---------------------------------- | ---------------------------------- |
+| test process as coordinator        | controls when workers continue     |
+| explicit messages                  | blocks/releases execution          |
+| barriers                           | wait until all workers reach point |
+| monitors                           | observe process death              |
+| refs                               | correlate events                   |
+| repeated property/concurrency test | increases confidence but not proof |
+
+Simple barrier:
+
+```elixir
+def barrier(test_pid, ref) do
+  send(test_pid, {:at_barrier, ref, self()})
+
+  receive do
+    {:continue, ^ref} -> :ok
+  end
+end
+```
+
+**Design meaning:** Deterministic concurrency tests create the interleaving that matters.
+
+**Common Pitfall:** Running the same test 1,000 times may expose a race but does not make the test deterministic.
+
+### Testing State Recovery After Restart
+
+If a process should rebuild state after restart, test that.
+
+```elixir
+test "cache restarts empty" do
+  {:ok, sup} = CacheSupervisor.start_link([])
+
+  pid = find_child_pid(sup, Cache)
+  Cache.put(pid, :x, 1)
+  assert {:ok, 1} = Cache.fetch(pid, :x)
+
+  Process.exit(pid, :kill)
+
+  assert eventually(fn ->
+    new_pid = find_child_pid(sup, Cache)
+    new_pid != pid and Cache.fetch(new_pid, :x) == {:error, :not_found}
+  end)
+end
+```
+
+If cache should rebuild:
+
+```elixir
+assert {:ok, 1} = Cache.fetch(new_pid, :x)
+```
+
+depending policy.
+
+| Recovery policy             | Test expectation          |
+| --------------------------- | ------------------------- |
+| restart empty               | old data missing          |
+| rebuild from source         | data restored             |
+| restore snapshot            | snapshot data restored    |
+| resume job                  | job retried or continued  |
+| terminate session           | session gone              |
+| reconnect external resource | connection re-established |
+
+**Common Pitfall:** “Process restarted” is not enough. Test what happened to meaningful state.
+
+### Testing Job Workers
+
+A job worker should be tested for success, retryable failure, discard, and idempotency.
+
+Example:
+
+```elixir
+defmodule JobWorker do
+  def perform(%{type: :valid}) do
+    :ok
+  end
+
+  def perform(%{type: :timeout}) do
+    {:retry, :timeout}
+  end
+
+  def perform(%{type: :invalid}) do
+    {:discard, :invalid_job}
+  end
+end
+```
+
+Tests:
+
+```elixir
+test "completes valid job" do
+  assert :ok = JobWorker.perform(%{type: :valid})
+end
+
+test "retries timeout" do
+  assert {:retry, :timeout} = JobWorker.perform(%{type: :timeout})
+end
+
+test "discards invalid job" do
+  assert {:discard, :invalid_job} = JobWorker.perform(%{type: :invalid})
+end
+```
+
+| Job test should cover | Reason                  |
+| --------------------- | ----------------------- |
+| success               | normal completion       |
+| retryable error       | retry policy            |
+| terminal failure      | no infinite retry       |
+| invalid payload       | poison message handling |
+| idempotency key       | duplicate safety        |
+| external side effect  | no duplicate effect     |
+| max attempts          | eventual discard/fail   |
+| crash behavior        | queue/supervisor policy |
+
+**Common Pitfall:** Testing only worker crash/restart misses job-level correctness.
+
+### Testing Idempotency
+
+If retries may duplicate work, test idempotency.
+
+```elixir
+test "does not charge same request twice" do
+  request_id = "req-1"
+  command = %{request_id: request_id, amount: 100}
+
+  assert {:ok, tx1} = Billing.charge(command)
+  assert {:ok, tx2} = Billing.charge(command)
+
+  assert tx1.id == tx2.id
+  assert Billing.charge_count(request_id) == 1
+end
+```
+
+| Idempotency test should check       |
+| ----------------------------------- |
+| same request ID returns same result |
+| side effect happens once            |
+| different request IDs can proceed   |
+| failed attempt policy is clear      |
+| in-flight duplicate policy is clear |
+| retry after timeout is safe         |
+
+**Common Pitfall:** Idempotency cannot be tested only by return values if the side effect can occur twice. Test the side-effect record or observable count.
+
+### Testing PubSub
+
+PubSub tests should cover subscription, broadcast, and cleanup.
+
+```elixir
+test "subscriber receives event" do
+  {:ok, pubsub} = PubSub.start_link([])
+
+  PubSub.subscribe(pubsub, :users, self())
+  PubSub.broadcast(pubsub, :users, {:user_created, 1})
+
+  assert_receive {:event, :users, {:user_created, 1\}\}, 1_000
+end
+```
+
+Subscriber death cleanup:
+
+```elixir
+test "removes dead subscribers" do
+  {:ok, pubsub} = PubSub.start_link([])
+
+  pid =
+    spawn(fn ->
+      receive do
+        :stop -> :ok
+      end
+    end)
+
+  PubSub.subscribe(pubsub, :users, pid)
+  send(pid, :stop)
+
+  assert eventually(fn ->
+    PubSub.subscriber_count(pubsub, :users) == 0
+  end)
+end
+```
+
+| PubSub test should cover      |
+| ----------------------------- |
+| subscribe                     |
+| unsubscribe                   |
+| broadcast                     |
+| multiple subscribers          |
+| topic isolation               |
+| subscriber death              |
+| duplicate subscription policy |
+| slow subscriber policy        |
+| event shape                   |
+
+**Common Pitfall:** Broadcast tests can pass while leaking dead subscribers. Test cleanup if the PubSub tracks PIDs.
+
+### Testing File and OS Boundaries
+
+Use temporary directories/files.
+
+```elixir
+setup do
+  dir = Path.join(System.tmp_dir!(), "my_test_#{System.unique_integer([:positive])}")
+  File.mkdir_p!(dir)
+
+  on_exit(fn -> File.rm_rf!(dir) end)
+
+  %{dir: dir}
+end
+```
+
+Test:
+
+```elixir
+test "writes file", %{dir: dir} do
+  path = Path.join(dir, "out.txt")
+
+  assert :ok = Writer.write(path, "hello")
+  assert {:ok, "hello"} = File.read(path)
+end
+```
+
+| File test rule                | Reason            |
+| ----------------------------- | ----------------- |
+| use temp paths                | isolation         |
+| clean up with `on_exit`       | no pollution      |
+| avoid source tree writes      | reproducibility   |
+| test missing file             | error path        |
+| test permissions if relevant  | boundary behavior |
+| avoid OS-specific assumptions | portability       |
+
+**Common Pitfall:** Tests that depend on current working directory can fail under releases, CI, or different runners.
+
+### Testing Binary Parsers
+
+Binary parsers need success and malformed-input tests.
+
+Parser:
+
+```elixir
+def parse(<<version, length::16, payload::binary-size(length), rest::binary>>) do
+  {:ok, %{version: version, payload: payload}, rest}
+end
+
+def parse(_), do: {:error, :invalid_packet}
+```
+
+Tests:
+
+```elixir
+test "parses valid packet" do
+  packet = <<1, 0, 3, "abc", "rest">>
+
+  assert {:ok, %{version: 1, payload: "abc"}, "rest"} = Parser.parse(packet)
+end
+
+test "rejects incomplete packet" do
+  assert {:error, :invalid_packet} = Parser.parse(<<1, 0, 10, "abc">>)
+end
+
+test "rejects non-binary input" do
+  assert {:error, :invalid_packet} = Parser.parse(:bad)
+end
+```
+
+| Binary parser test should cover |
+| ------------------------------- |
+| exact valid packet              |
+| extra trailing bytes            |
+| incomplete packet               |
+| invalid length                  |
+| unsupported version             |
+| empty payload                   |
+| non-binary input                |
+| UTF-8 versus arbitrary bytes    |
+| large payload policy            |
+
+**Common Pitfall:** Testing only text-like binary input misses arbitrary byte cases.
+
+### Testing Unicode/Text Behavior
+
+Text functions should test byte length versus text length where relevant.
+
+```elixir
+test "limits by graphemes, not bytes" do
+  assert Validator.valid_name?("é")
+end
+
+test "rejects names over limit" do
+  assert {:error, :too_long} = Validator.validate_name(String.duplicate("a", 101))
+end
+```
+
+If byte limit matters:
+
+```elixir
+test "limits payload by bytes" do
+  assert byte_size("é") == 2
+  assert {:error, :too_large} = Payload.validate("é", max_bytes: 1)
+end
+```
+
+| Text test concern    | Reason               |
+| -------------------- | -------------------- |
+| UTF-8 input          | real user text       |
+| invalid UTF-8 binary | boundary safety      |
+| byte limit           | storage/protocol     |
+| grapheme limit       | user-facing length   |
+| normalization        | search/identity      |
+| casing               | locale/domain policy |
+| charlist interop     | Erlang API boundary  |
+
+**Common Pitfall:** A string that looks short may exceed byte limits.
+
+### Testing Property-Like Invariants
+
+Property testing can verify invariants over many inputs. Even without a property-testing library, write invariant-focused tests.
+
+Example invariant:
+
+```elixir
+test "slug is idempotent" do
+  inputs = ["Hello World", "hello-world", " A---B ", "123 x"]
+
+  for input <- inputs do
+    slug = Slug.make(input)
+    assert Slug.make(slug) == slug
+  end
+end
+```
+
+Potential properties:
+
+| Function           | Invariant                        |
+| ------------------ | -------------------------------- |
+| normalize          | applying twice equals once       |
+| encode/decode      | decode(encode(x)) equals x       |
+| parser/serializer  | parse(serialize(x)) equals x     |
+| sort               | output sorted and same elements  |
+| set insert         | member after insert              |
+| queue in/out       | FIFO order                       |
+| idempotent command | duplicate same ID has one effect |
+
+**Design meaning:** Invariants often catch cases example tests miss.
+
+**Common Pitfall:** Example tests can be too narrow for parsers, serializers, and normalizers.
+
+### Testing Serialization Round Trips
+
+Serializer/parser pairs should round-trip.
+
+```elixir
+test "event round trips through external format" do
+  event = %UserCreated{user_id: 1, occurred_at: DateTime.utc_now()}
+
+  external = UserCreated.to_external(event)
+
+  assert {:ok, parsed} = UserCreated.from_external(external)
+  assert parsed.user_id == event.user_id
+end
+```
+
+Also test unsupported versions:
+
+```elixir
+test "rejects unsupported version" do
+  external = %{"version" => 999}
+
+  assert {:error, {:unsupported_version, 999\}\} =
+           UserCreated.from_external(external)
+end
+```
+
+| Serialization test should cover |
+| ------------------------------- |
+| round trip                      |
+| unsupported version             |
+| missing field                   |
+| unknown extra field             |
+| invalid field type              |
+| backwards compatibility         |
+| stable external keys            |
+| no runtime-only values          |
+
+**Common Pitfall:** Serializing raw structs directly can make compatibility tests fragile.
+
+### Testing Release/Startup Configuration
+
+Configuration parsers should be tested as pure functions where possible.
+
+```elixir
+defmodule ConfigParser do
+  def parse(env) do
+    with {:ok, url} <- fetch(env, "DATABASE_URL"),
+         {:ok, timeout} <- parse_timeout(Map.get(env, "TIMEOUT", "5000")) do
+      {:ok, %{database_url: url, timeout: timeout\}\}
+    end
+  end
+
+  defp fetch(env, key) do
+    case Map.fetch(env, key) do
+      {:ok, value} -> {:ok, value}
+      :error -> {:error, {:missing_env, key\}\}
+    end
+  end
+
+  defp parse_timeout(value) do
+    case Integer.parse(value) do
+      {n, ""} when n > 0 -> {:ok, n}
+      _ -> {:error, {:invalid_env, "TIMEOUT"\}\}
+    end
+  end
+end
+```
+
+Tests:
+
+```elixir
+test "parses valid env" do
+  env = %{"DATABASE_URL" => "postgres://example", "TIMEOUT" => "1000"}
+
+  assert {:ok, %{timeout: 1000\}\} = ConfigParser.parse(env)
+end
+
+test "rejects missing required env" do
+  assert {:error, {:missing_env, "DATABASE_URL"\}\} = ConfigParser.parse(%{})
+end
+
+test "rejects invalid timeout" do
+  env = %{"DATABASE_URL" => "postgres://example", "TIMEOUT" => "bad"}
+
+  assert {:error, {:invalid_env, "TIMEOUT"\}\} = ConfigParser.parse(env)
+end
+```
+
+**Design meaning:** Keep config parsing testable without mutating actual OS environment when possible.
+
+**Common Pitfall:** Tests that rely on real environment variables are order-dependent and fragile.
+
+### Testing Application Startup
+
+Application startup tests are heavier. Use them for critical integration.
+
+```elixir
+test "application starts required supervisor" do
+  {:ok, _apps} = Application.ensure_all_started(:my_app)
+
+  assert Process.whereis(MyApp.Supervisor)
+end
+```
+
+For application config failure, prefer testing config parser directly, then a smaller startup integration test.
+
+| Startup test should check            |
+| ------------------------------------ |
+| required children started            |
+| invalid config fails                 |
+| dependency app started               |
+| registry available                   |
+| no orphan processes                  |
+| release-specific paths if applicable |
+
+**Common Pitfall:** Starting/stopping the full application in many tests can create global state conflicts and slow suites.
+
+### Async Tests and Shared State
+
+`use ExUnit.Case, async: true` allows concurrent tests. It is safe only when tests do not share mutable global state.
+
+Safe for async:
+
+| Usually safe                      |
+| --------------------------------- |
+| pure functions                    |
+| unique process names              |
+| isolated ETS tables               |
+| temporary files with unique paths |
+| local stubs                       |
+| no shared app env mutation        |
+
+Unsafe for async:
+
+| Usually unsafe                               |
+| -------------------------------------------- |
+| global registered process names              |
+| named ETS tables reused                      |
+| `Application.put_env` shared keys            |
+| real database without sandbox/isolation      |
+| real external services                       |
+| shared filesystem paths                      |
+| global telemetry handlers without unique IDs |
+
+**Design meaning:** Async tests require isolation.
+
+**Common Pitfall:** A test can pass alone and fail in the full suite because it shares global state.
+
+### Testing with Unique Names
+
+Use unique names to avoid conflicts.
+
+```elixir
+def unique_name(prefix) do
+  Module.concat(__MODULE__, "#{prefix}#{System.unique_integer([:positive])}")
+end
+```
+
+Example:
+
+```elixir
+setup do
+  registry = unique_name("Registry")
+
+  {:ok, _} = Registry.start_link(keys: :unique, name: registry)
+
+  %{registry: registry}
+end
+```
+
+For process names:
+
+```elixir
+name = unique_name("Server")
+{:ok, pid} = MyServer.start_link(name: name)
+```
+
+**Design meaning:** Unique names make async tests safer.
+
+**Common Pitfall:** Hard-coded names like `MyApp.Cache` in tests prevent multiple isolated instances.
+
+### Testing Application Environment
+
+Mutating application environment must be cleaned up.
+
+```elixir
+setup do
+  old = Application.get_env(:my_app, :timeout)
+
+  on_exit(fn ->
+    if old == nil do
+      Application.delete_env(:my_app, :timeout)
+    else
+      Application.put_env(:my_app, :timeout, old)
+    end
+  end)
+
+  :ok
+end
+```
+
+Test:
+
+```elixir
+test "uses configured timeout" do
+  Application.put_env(:my_app, :timeout, 10)
+
+  assert MyConfig.timeout() == 10
+end
+```
+
+Better: pass config explicitly to pure parser functions where possible.
+
+| App env test rule                | Reason                   |
+| -------------------------------- | ------------------------ |
+| restore old value                | prevent pollution        |
+| avoid async if shared            | global mutable state     |
+| prefer explicit config arguments | easier tests             |
+| test config parser separately    | avoids global dependency |
+
+**Common Pitfall:** `Application.put_env` affects the whole VM.
+
+### Testing Database Code
+
+General principles:
+
+| Concern                 | Strategy                                  |
+| ----------------------- | ----------------------------------------- |
+| isolation               | transaction sandbox, unique data, cleanup |
+| constraints             | test unique/foreign-key errors            |
+| not found               | exact error                               |
+| migrations/schema       | integration tests                         |
+| repository boundary     | normalized errors                         |
+| domain conversion       | row-to-domain tests                       |
+| external DB unavailable | boundary/fake test if possible            |
+
+Repository test shape:
+
+```elixir
+test "returns not_found for missing user" do
+  assert {:error, :not_found} = UserRepo.fetch(-1)
+end
+```
+
+Insert conflict:
+
+```elixir
+test "returns already_exists for duplicate email" do
+  user = user_fixture(email: "ada@example.com")
+
+  assert {:error, :already_exists} =
+           UserRepo.insert(%User{user | id: 2})
+end
+```
+
+**Design meaning:** Database tests are integration tests. Keep them focused on persistence behavior and boundary normalization.
+
+**Common Pitfall:** Letting tests depend on pre-existing database state creates non-reproducible failures.
+
+### Testing NIFs and Ports
+
+Native boundaries need extra care.
+
+| Boundary        | Test concern                                              |
+| --------------- | --------------------------------------------------------- |
+| NIF             | bad input, error returns, no VM crash, scheduler blocking |
+| Dirty NIF       | long-running behavior                                     |
+| Port            | protocol framing, external process exit                   |
+| OS process      | path, args, stderr/stdout, exit status                    |
+| binary protocol | malformed packets                                         |
+| cleanup         | external process terminated                               |
+
+Port owner test:
+
+```elixir
+test "reports port exit" do
+  {:ok, pid} = PortOwner.start_link(command: "false", notify: self())
+
+  assert_receive {:port_exit, ^pid, status}, 1_000
+  assert status != 0
+end
+```
+
+**Design meaning:** Native/external boundaries should turn dangerous failures into controlled process-level or tagged failures where possible.
+
+**Common Pitfall:** A crashing NIF can crash the VM; ordinary supervisor restart cannot recover from VM termination.
+
+### Testing Security-Sensitive Boundaries
+
+Security-sensitive code needs negative tests.
+
+| Boundary           | Tests                                             |
+| ------------------ | ------------------------------------------------- |
+| token parsing      | invalid signature, expired token, malformed token |
+| password hashing   | verifies correct/incorrect password               |
+| file path handling | path traversal rejected                           |
+| command execution  | arguments not shell-concatenated                  |
+| deserialization    | rejects unsafe formats                            |
+| atom conversion    | external atoms not created dynamically            |
+| logging            | secrets redacted                                  |
+| authorization      | denied cases covered                              |
+
+Example atom safety test:
+
+```elixir
+test "rejects unknown status without creating atom" do
+  assert {:error, :invalid_status} = Parser.parse_status("some_untrusted_input")
+end
+```
+
+**Design meaning:** Security tests should cover what must not happen.
+
+**Common Pitfall:** Testing only authorized/success paths misses the actual security boundary.
+
+### Testing Unknown Messages
+
+Processes should have a policy for unknown messages.
+
+Example:
+
+```elixir
+@impl true
+def handle_info(msg, state) do
+  Logger.warning("unknown message: #{inspect(msg)}")
+  {:noreply, state}
+end
+```
+
+Test:
+
+```elixir
+import ExUnit.CaptureLog
+
+test "logs and ignores unknown messages" do
+  {:ok, pid} = MyServer.start_link([])
+
+  log =
+    capture_log(fn ->
+      send(pid, {:unknown, :message})
+      assert MyServer.ping(pid) == :pong
+    end)
+
+  assert log =~ "unknown message"
+end
+```
+
+| Unknown message policy | Test                   |
+| ---------------------- | ---------------------- |
+| ignore silently        | server still works     |
+| log warning            | captured log           |
+| stop process           | process exits/restarts |
+| reply error            | sender receives error  |
+| dead-letter            | message recorded       |
+
+**Common Pitfall:** Silent catch-all `handle_info` can hide protocol bugs. If silence is intentional, document it.
+
+### Testing Mailbox Hygiene
+
+A function that uses `receive` should not leave predictable garbage messages.
+
+Example late reply issue:
+
+```elixir
+def request(server, payload, timeout) do
+  ref = make_ref()
+  send(server, {:request, self(), ref, payload})
+
+  receive do
+    {:reply, ^ref, result} -> {:ok, result}
+  after
+    timeout -> {:error, :timeout}
+  end
+end
+```
+
+If late replies can arrive, a test can expose mailbox pollution:
+
+```elixir
+test "late replies are correlated and do not affect later request" do
+  # Design-specific test:
+  # 1. force first request to timeout
+  # 2. perform second request with a new ref
+  # 3. assert second receives correct reply
+  # 4. optionally flush mailbox and assert no relevant stale messages remain
+end
+```
+
+Flush helper for tests:
+
+```elixir
+defp flush_messages(acc \\ []) do
+  receive do
+    msg -> flush_messages([msg | acc])
+  after
+    0 -> Enum.reverse(acc)
+  end
+end
+```
+
+**Design meaning:** Mailbox protocols should use refs and tolerate late/stale messages.
+
+**Common Pitfall:** A test process mailbox can contain messages from earlier tests if processes are not cleaned up. Keep spawned processes supervised and stopped.
+
+### Test Cleanup with `on_exit`
+
+Use `on_exit` for cleanup.
+
+```elixir
+setup do
+  pid = start_some_process()
+
+  on_exit(fn ->
+    if Process.alive?(pid), do: Process.exit(pid, :kill)
+  end)
+
+  %{pid: pid}
+end
+```
+
+For files:
+
+```elixir
+on_exit(fn -> File.rm_rf!(dir) end)
+```
+
+For telemetry:
+
+```elixir
+on_exit(fn -> :telemetry.detach(handler_id) end)
+```
+
+| Resource              | Cleanup                      |
+| --------------------- | ---------------------------- |
+| spawned process       | stop/kill                    |
+| ETS table             | delete or owner exits        |
+| temp file/dir         | remove                       |
+| app env               | restore                      |
+| telemetry handler     | detach                       |
+| external port/process | close/kill                   |
+| database rows         | transaction rollback/cleanup |
+
+**Common Pitfall:** Tests that leave processes alive can cause later tests to receive unexpected messages or conflict on names.
+
+### Testing with `start_supervised`
+
+Elixir’s test framework can start supervised processes tied to the test lifecycle.
+
+```elixir
+test "uses supervised server" do
+  pid = start_supervised!({MyServer, name: nil})
+
+  assert MyServer.ping(pid) == :pong
+end
+```
+
+With registry:
+
+```elixir
+setup do
+  registry = unique_name("Registry")
+  start_supervised!({Registry, keys: :unique, name: registry})
+  %{registry: registry}
+end
+```
+
+| Benefit                | Explanation                |
+| ---------------------- | -------------------------- |
+| automatic cleanup      | process stopped after test |
+| supervision semantics  | closer to runtime          |
+| fewer orphan processes | test isolation             |
+| simpler setup          | less manual cleanup        |
+
+**Common Pitfall:** Starting globally named children with `start_supervised!` can still conflict if tests run async.
+
+### Test Organization
+
+A professional test suite is organized by contract.
+
+Suggested structure:
+
+```text
+test/
+  my_app/
+    parser_test.exs
+    user_test.exs
+    user_repo_test.exs
+    cache_server_test.exs
+    worker_test.exs
+    supervisor_test.exs
+    billing_client_test.exs
+    support/
+      contract_tests/
+      fakes/
+      fixtures/
+```
+
+| Test group        | Focus                           |
+| ----------------- | ------------------------------- |
+| parser tests      | raw input conversion            |
+| domain tests      | invariants and pure behavior    |
+| repository tests  | persistence boundary            |
+| process tests     | runtime API                     |
+| supervisor tests  | lifecycle/restart               |
+| client tests      | external boundary normalization |
+| contract tests    | behaviour implementations       |
+| integration tests | several components together     |
+| support modules   | fakes, fixtures, helpers        |
+
+**Common Pitfall:** Mixing every kind of test in one large file makes failure diagnosis harder.
+
+### Test Data Builders
+
+Use builders to create valid data with overrides.
+
+```elixir
+defmodule UserFactory do
+  def params(overrides \\ %{}) do
+    Map.merge(
+      %{
+        "name" => "Ada",
+        "email" => "ada@example.com"
+      },
+      overrides
+    )
+  end
+end
+```
+
+Use:
+
+```elixir
+params = UserFactory.params(%{"email" => "bad"})
+assert {:error, {:invalid_field, :email\}\} = CreateUser.new(params)
+```
+
+| Builder benefit         | Reason                       |
+| ----------------------- | ---------------------------- |
+| avoids duplication      | easier tests                 |
+| valid defaults          | tests focus on changed field |
+| explicit overrides      | readable                     |
+| central update          | schema changes easier        |
+| avoids fragile fixtures | less file coupling           |
+
+**Common Pitfall:** Builders that hide too much can make tests unclear. Keep important test data visible.
+
+### Testing Anti-Patterns
+
+| Anti-pattern                        | Problem               | Better                          |
+| ----------------------------------- | --------------------- | ------------------------------- |
+| `Process.sleep` for synchronization | flaky/slow            | `assert_receive`, ack, monitor  |
+| testing private functions directly  | brittle               | test public behavior            |
+| exact internal state assertions     | blocks refactoring    | assert observable result        |
+| hard-coded global process names     | async conflicts       | unique names                    |
+| shared ETS named table              | test pollution        | unique/owner per test           |
+| real external service in unit test  | flaky/slow            | behaviour stub/fake             |
+| broad error assertion               | weak contract         | exact error reason              |
+| swallowing logs/crashes             | hides issues          | assert or capture intentionally |
+| no cleanup of spawned processes     | test leakage          | `start_supervised`, `on_exit`   |
+| default long timeouts               | slow failures         | short test timeout              |
+| random data without seed/control    | non-reproducible      | deterministic seed              |
+| over-mocking internals              | brittle               | contract/fake                   |
+| only happy path tests               | weak failure contract | error/edge tests                |
+| testing implementation order        | brittle               | public result                   |
+| ignoring async safety               | intermittent failure  | isolate or disable async        |
+
+### Testing Decision Table
+
+| Need                       | Testing technique                         |
+| -------------------------- | ----------------------------------------- |
+| pure transformation        | direct input/output                       |
+| parse external input       | valid and invalid boundary tests          |
+| preserve domain invariant  | constructor tests                         |
+| branch on tagged result    | pattern assertions                        |
+| raise on bang function     | `assert_raise`                            |
+| exit on process failure    | `catch_exit`                              |
+| receive message            | `assert_receive`                          |
+| assert no message          | short `refute_receive`                    |
+| async completion           | ack/completion message                    |
+| timer behavior             | injected interval or direct timer message |
+| GenServer state transition | public API                                |
+| supervisor restart         | kill child and observe new PID            |
+| dynamic worker             | start child and lookup/monitor            |
+| Registry lookup            | unique registry per test                  |
+| ETS module                 | fresh table per test                      |
+| external client            | behaviour stub/fake                       |
+| behaviour implementation   | shared contract tests                     |
+| logs                       | `capture_log`                             |
+| telemetry                  | attach handler and assert event           |
+| concurrency limit          | explicit barrier/probe                    |
+| idempotency                | duplicate command and side-effect count   |
+
+### Appendix N Summary
+
+Testing Erlang / Elixir code requires testing both ordinary data behavior and BEAM runtime behavior.
+
+The practical rules are:
+
+```text
+Test pure functions with direct input/output assertions.
+Test parsers with valid and invalid external shapes.
+Test constructors for invariants.
+Test public APIs before internals.
+Test GenServers through public wrapper functions.
+Use assert_receive and refs for message protocols.
+Avoid arbitrary Process.sleep for synchronization.
+Use supervisors and unique names for test isolation.
+Test restart behavior only where lifecycle matters.
+Test external boundaries with behaviours, stubs, fakes, and contract tests.
+Test exact error shapes, not only broad failure.
+Clean up processes, ETS tables, telemetry handlers, files, and app env changes.
+```
+
+The most important distinction is:
+
+```text
+A BEAM test may need to verify a value, a message, a process, a timeout,
+a restart, a registry entry, a table, or an external boundary.
+These are different contracts and need different test techniques.
+```
+
+A strong Erlang / Elixir test suite is not merely a collection of example inputs. It documents and protects the system’s runtime contracts: data shapes, domain invariants, process protocols, supervision behavior, failure channels, concurrency limits, and external boundary normalization.
+## Appendix O — Debugging, Observability, and Runtime Inspection Cookbook
+
+### Appendix Scope — debugging live BEAM systems
+
+This appendix explains how to inspect, debug, and observe Erlang / Elixir systems. BEAM applications are not only debugged by reading logs or stepping through code. They can be inspected as live systems made of processes, mailboxes, supervision trees, ETS tables, ports, tasks, sockets, and application state.
+
+The central rule is:
+
+```text
+A BEAM system is observable at runtime because processes, supervisors,
+mailboxes, reductions, memory, ETS tables, and applications are runtime objects.
+```
+
+| Area                          | Main tool or idea                                             |
+| ----------------------------- | ------------------------------------------------------------- |
+| Process identity              | PID, registered name, `Registry`, `Process.whereis`           |
+| Process state                 | `:sys.get_state/1`, public API, debug-only inspection         |
+| Mailbox pressure              | `Process.info(pid, :message_queue_len)`                       |
+| Process memory                | `Process.info(pid, :memory)`                                  |
+| Process reductions            | `Process.info(pid, :reductions)`                              |
+| Supervision tree              | `Supervisor.which_children/1`, Observer                       |
+| ETS tables                    | `:ets.info/1`, `:ets.tab2list/1`                              |
+| Application state             | `Application.started_applications/0`, `Application.get_env/3` |
+| Logs                          | `Logger`, OTP logger                                          |
+| Metrics/events                | `:telemetry`                                                  |
+| Crashes                       | crash reports, supervisor reports                             |
+| Runtime shell                 | `iex -S mix`, remote IEx, Erlang shell                        |
+| GUI inspection                | `:observer.start()`                                           |
+| Low-level OTP process control | `:sys`                                                        |
+| Tracing                       | `:dbg`, Erlang tracing, telemetry, library tools              |
+
+### Debugging Mindset — find the failing boundary
+
+Most BEAM bugs are easier to diagnose if the failure boundary is identified first.
+
+| Symptom                       | Likely boundary                                             |
+| ----------------------------- | ----------------------------------------------------------- |
+| wrong return value            | function/domain logic                                       |
+| unexpected `{:error, reason}` | parser/client/repository boundary                           |
+| `GenServer.call` timeout      | server blocked, crashed, overloaded, or wrong name          |
+| mailbox growing               | receiver too slow or producer too fast                      |
+| process repeatedly restarting | crash loop under supervisor                                 |
+| memory increasing             | process state, binary retention, ETS growth, mailbox growth |
+| missing process               | supervisor failed, wrong name, dynamic child not started    |
+| duplicate side effect         | retry/idempotency boundary                                  |
+| stale result                  | async protocol or cache invalidation                        |
+| unhandled message             | process protocol mismatch                                   |
+| no logs                       | logging level/config or code path not reached               |
+| test flaky                    | race, timing assumption, shared global state                |
+
+**Design meaning:** Debugging starts by asking which contract failed: data contract, process protocol, supervision contract, storage contract, external boundary, or operational limit.
+
+**Common Pitfall:** Treating every failure as a local code bug can hide runtime causes such as mailbox overload, blocked servers, or restart loops.
+
+### Basic Runtime Questions
+
+When a BEAM system behaves incorrectly, ask:
+
+| Question                          | Tool                                     |
+| --------------------------------- | ---------------------------------------- |
+| Is the process alive?             | `Process.alive?/1`                       |
+| What PID/name is being called?    | `Process.whereis/1`, `Registry.lookup/2` |
+| Is the process mailbox growing?   | `Process.info(pid, :message_queue_len)`  |
+| Is the process using much memory? | `Process.info(pid, :memory)`             |
+| Is it doing work?                 | reductions, logs, telemetry              |
+| Is it stuck in a call?            | stack/current function                   |
+| Is a supervisor restarting it?    | supervisor reports, child PID changes    |
+| Is the child registered?          | registry lookup                          |
+| Is ETS table growing?             | `:ets.info/1`                            |
+| Is binary memory growing?         | Observer / VM memory info                |
+| Is external dependency slow?      | telemetry/log timings                    |
+| Is configuration correct?         | `Application.get_env/3`, runtime config  |
+
+Elixir examples:
+
+```elixir
+pid = Process.whereis(MyApp.Cache)
+Process.alive?(pid)
+Process.info(pid, :message_queue_len)
+Process.info(pid, :memory)
+Process.info(pid, :current_function)
+Process.info(pid, :reductions)
+```
+
+Erlang equivalents:
+
+```erlang
+Pid = whereis(my_cache),
+is_process_alive(Pid),
+process_info(Pid, message_queue_len),
+process_info(Pid, memory),
+process_info(Pid, current_function),
+process_info(Pid, reductions).
+```
+
+**Design meaning:** Inspect the runtime object before guessing.
+
+**Common Pitfall:** A `GenServer.call` timeout does not necessarily mean the server crashed. It may be alive but blocked or overloaded.
+
+### Inspecting a Process
+
+Elixir:
+
+```elixir
+pid = Process.whereis(MyApp.Worker)
+
+Process.info(pid)
+Process.info(pid, :message_queue_len)
+Process.info(pid, :memory)
+Process.info(pid, :current_function)
+Process.info(pid, :links)
+Process.info(pid, :monitors)
+Process.info(pid, :monitored_by)
+Process.info(pid, :dictionary)
+```
+
+Erlang:
+
+```erlang
+process_info(Pid).
+process_info(Pid, message_queue_len).
+process_info(Pid, memory).
+process_info(Pid, current_function).
+process_info(Pid, links).
+process_info(Pid, monitors).
+process_info(Pid, monitored_by).
+process_info(Pid, dictionary).
+```
+
+| Field                | Meaning                           |
+| -------------------- | --------------------------------- |
+| `:message_queue_len` | number of messages waiting        |
+| `:memory`            | process memory usage              |
+| `:heap_size`         | heap size                         |
+| `:stack_size`        | stack size                        |
+| `:current_function`  | current function being executed   |
+| `:initial_call`      | initial function                  |
+| `:links`             | linked processes/ports            |
+| `:monitors`          | things this process monitors      |
+| `:monitored_by`      | processes monitoring this process |
+| `:reductions`        | scheduler work counter            |
+| `:status`            | process status                    |
+| `:dictionary`        | process dictionary contents       |
+
+**Design meaning:** `Process.info/2` gives low-level evidence. It is often the fastest way to distinguish “dead,” “idle,” “busy,” “blocked,” and “overloaded.”
+
+**Common Pitfall:** Process memory does not include all off-heap binary memory in an intuitive way. Binary retention may require broader VM memory inspection.
+
+### Inspecting OTP Process State with `:sys`
+
+`GenServer`, `Supervisor`, and other OTP processes support standardized `:sys` inspection.
+
+Elixir:
+
+```elixir
+:sys.get_state(pid)
+:sys.get_status(pid)
+:sys.trace(pid, true)
+:sys.statistics(pid, true)
+```
+
+Erlang:
+
+```erlang
+sys:get_state(Pid).
+sys:get_status(Pid).
+sys:trace(Pid, true).
+sys:statistics(Pid, true).
+```
+
+| Function               | Use                                        |
+| ---------------------- | ------------------------------------------ |
+| `:sys.get_state/1`     | inspect OTP process state                  |
+| `:sys.replace_state/2` | replace state, usually debugging only      |
+| `:sys.get_status/1`    | detailed OTP status                        |
+| `:sys.trace/2`         | trace received/sent events for OTP process |
+| `:sys.statistics/2`    | enable/disable statistics                  |
+| `:sys.suspend/1`       | suspend process                            |
+| `:sys.resume/1`        | resume process                             |
+
+Example:
+
+```elixir
+pid = Process.whereis(MyApp.Cache)
+state = :sys.get_state(pid)
+```
+
+**Design meaning:** `:sys.get_state/1` is a debugging and operational tool, not an ordinary business API.
+
+**Common Pitfall:** Building application logic around `:sys.get_state/1` breaks process encapsulation. Use public APIs for normal code.
+
+### `:sys.trace/2` for OTP Message Flow
+
+Tracing an OTP process can reveal call/cast/info activity.
+
+```elixir
+:sys.trace(pid, true)
+```
+
+Then interact with the process:
+
+```elixir
+MyServer.get(pid)
+MyServer.refresh(pid)
+```
+
+Disable:
+
+```elixir
+:sys.trace(pid, false)
+```
+
+| Useful for                       | Not ideal for                   |
+| -------------------------------- | ------------------------------- |
+| understanding callback flow      | high-volume production tracing  |
+| debugging a single local process | long-running global observation |
+| verifying call/cast arrival      | replacing telemetry             |
+| educational inspection           | sensitive payloads              |
+
+**Design meaning:** `:sys.trace/2` can show whether the process receives the messages expected.
+
+**Common Pitfall:** Tracing high-volume processes can produce huge output and expose sensitive data.
+
+### Inspecting Supervision Trees
+
+Elixir:
+
+```elixir
+Supervisor.which_children(MyApp.Supervisor)
+Supervisor.count_children(MyApp.Supervisor)
+```
+
+Erlang:
+
+```erlang
+supervisor:which_children(Sup).
+supervisor:count_children(Sup).
+```
+
+Example output shape:
+
+```elixir
+[
+  {MyApp.Cache, #PID<0.123.0>, :worker, [MyApp.Cache]},
+  {MyApp.WorkerSupervisor, #PID<0.124.0>, :supervisor, [DynamicSupervisor]}
+]
+```
+
+| Tuple field | Meaning                                          |
+| ----------- | ------------------------------------------------ |
+| child ID    | supervisor child identifier                      |
+| PID         | child process PID, or `:undefined` in some cases |
+| type        | `:worker` or `:supervisor`                       |
+| modules     | callback modules                                 |
+
+Dynamic supervisor:
+
+```elixir
+DynamicSupervisor.which_children(MyApp.WorkerSupervisor)
+DynamicSupervisor.count_children(MyApp.WorkerSupervisor)
+```
+
+**Design meaning:** Supervision inspection answers whether the runtime topology matches the intended architecture.
+
+**Common Pitfall:** A child process may restart with a new PID. Do not treat a PID observed earlier as stable identity.
+
+### Detecting Restart Loops
+
+Symptoms of restart loops include repeated crash logs, changing child PIDs, and supervisor shutdown due to restart intensity.
+
+Inspection pattern:
+
+```elixir
+children_before = Supervisor.which_children(MyApp.Supervisor)
+Process.sleep(100)
+children_after = Supervisor.which_children(MyApp.Supervisor)
+```
+
+If the same child ID has changing PIDs, it may be restarting.
+
+Better evidence comes from logs:
+
+```text
+GenServer MyApp.Worker terminating
+Supervisor MyApp.Supervisor had child MyApp.Worker started with ...
+```
+
+| Evidence                    | Meaning                    |
+| --------------------------- | -------------------------- |
+| repeated crash reports      | child repeatedly failing   |
+| new PID under same child ID | restart happened           |
+| supervisor gives up         | restart intensity exceeded |
+| parent supervisor restarts  | escalation                 |
+| application stops           | root supervision failure   |
+
+**Design meaning:** A restart loop is usually not fixed by increasing restart intensity. It needs root-cause diagnosis.
+
+**Common Pitfall:** A supervised crash is not automatically “handled.” If the same bug repeats, supervision turns the bug into a loop.
+
+### Registered Names and Process Discovery
+
+Elixir:
+
+```elixir
+Process.whereis(MyApp.Cache)
+```
+
+Erlang:
+
+```erlang
+whereis(my_cache).
+```
+
+Registry lookup:
+
+```elixir
+Registry.lookup(MyApp.Registry, key)
+```
+
+Via tuple:
+
+```elixir
+{:via, Registry, {MyApp.Registry, key\}\}
+```
+
+| Discovery tool           | Use                                         |
+| ------------------------ | ------------------------------------------- |
+| local registered name    | one process under known atom/module name    |
+| `Registry` unique key    | dynamic named process                       |
+| `Registry` duplicate key | subscriptions/PubSub-like lookup            |
+| PID passed directly      | short-lived local reference                 |
+| distributed registry     | cluster-aware lookup, library/design needed |
+
+Debugging lookup:
+
+```elixir
+case Registry.lookup(MyApp.Registry, key) do
+  [{pid, value}] ->
+    {:ok, pid, value}
+
+  [] ->
+    {:error, :not_registered}
+end
+```
+
+**Design meaning:** Before debugging a process, verify that the name resolves to the expected live process.
+
+**Common Pitfall:** A PID from a registry lookup can become stale immediately after lookup if the process dies. Monitor when lifecycle matters.
+
+### Inspecting Mailbox Pressure
+
+Mailbox growth is a major BEAM runtime symptom.
+
+```elixir
+Process.info(pid, :message_queue_len)
+```
+
+Possible result:
+
+```elixir
+{:message_queue_len, 12_345}
+```
+
+|            Mailbox length | Interpretation           |
+| ------------------------: | ------------------------ |
+|                       `0` | no queued messages       |
+|          small and stable | usually normal           |
+|          growing steadily | receiver cannot keep up  |
+|                      huge | latency and memory risk  |
+|    fluctuating under load | may be normal if bounded |
+| high after producer stops | receiver blocked or slow |
+
+Possible causes:
+
+| Cause                     | Evidence                                   |
+| ------------------------- | ------------------------------------------ |
+| too many `cast`s          | producers fire-and-forget                  |
+| slow callback             | current function stuck                     |
+| blocking I/O in GenServer | stack/current function shows external call |
+| large messages            | memory and queue growth                    |
+| unexpected messages       | state/protocol mismatch                    |
+| selective receive issue   | raw process not matching messages          |
+| slow external service     | telemetry/log timing                       |
+
+**Design meaning:** Mailbox length is a queue-depth metric. It is one of the first things to inspect during latency issues.
+
+**Common Pitfall:** `cast` can hide overload because callers do not wait for the server to process messages.
+
+### Inspecting Current Function and Stack
+
+Elixir:
+
+```elixir
+Process.info(pid, :current_function)
+Process.info(pid, :current_stacktrace)
+```
+
+Erlang:
+
+```erlang
+process_info(Pid, current_function).
+process_info(Pid, current_stacktrace).
+```
+
+| Field                 | Use                                 |
+| --------------------- | ----------------------------------- |
+| `:current_function`   | rough current execution location    |
+| `:current_stacktrace` | call stack if available             |
+| `:status`             | running, waiting, runnable, etc.    |
+| `:reductions`         | whether process has been doing work |
+
+Example:
+
+```elixir
+{:current_function, {MyApp.Client, :request, 2\}\}
+```
+
+This may suggest the server is blocked in an external client call.
+
+**Design meaning:** If a process is alive but not replying, current function and stack can identify what it is doing.
+
+**Common Pitfall:** A snapshot is only a moment. For intermittent issues, repeated samples or telemetry may be needed.
+
+### Inspecting ETS Tables
+
+ETS inspection:
+
+```elixir
+:ets.all()
+:ets.info(table)
+:ets.info(table, :size)
+:ets.info(table, :memory)
+:ets.info(table, :owner)
+:ets.info(table, :protection)
+:ets.info(table, :type)
+```
+
+Named table:
+
+```elixir
+:ets.info(MyApp.CacheTable)
+```
+
+Dump table cautiously:
+
+```elixir
+:ets.tab2list(table)
+```
+
+| ETS info       | Meaning                                          |
+| -------------- | ------------------------------------------------ |
+| `:size`        | number of objects                                |
+| `:memory`      | memory words used                                |
+| `:owner`       | owner process                                    |
+| `:protection`  | `:private`, `:protected`, `:public`              |
+| `:type`        | `:set`, `:ordered_set`, `:bag`, `:duplicate_bag` |
+| `:name`        | table name                                       |
+| `:named_table` | whether named                                    |
+
+**Design meaning:** ETS tables are runtime state. They can leak memory or become hidden mutable global state if unmanaged.
+
+**Common Pitfall:** `:ets.tab2list/1` on a huge table can allocate a huge list and worsen the problem. Use it cautiously.
+
+### ETS Debugging Questions
+
+| Question                        | Tool                            |
+| ------------------------------- | ------------------------------- |
+| Is table present?               | `:ets.info(table)`              |
+| Who owns it?                    | `:ets.info(table, :owner)`      |
+| How large is it?                | `:ets.info(table, :size)`       |
+| Is memory growing?              | `:ets.info(table, :memory)`     |
+| Is it public?                   | `:ets.info(table, :protection)` |
+| Is cleanup running?             | owner process state/logs        |
+| Are keys bounded?               | sample keys carefully           |
+| Does owner restart recreate it? | kill/restart owner in test      |
+
+**Design meaning:** ETS debug work often reveals lifecycle bugs: missing cleanup, wrong owner, or unbounded keys.
+
+**Common Pitfall:** A named ETS table can hide coupling. Any process that knows the name may read or write depending protection.
+
+### Inspecting VM Memory
+
+Elixir/Erlang:
+
+```elixir
+:erlang.memory()
+:erlang.memory(:total)
+:erlang.memory(:processes)
+:erlang.memory(:binary)
+:erlang.memory(:ets)
+```
+
+Example result:
+
+```elixir
+%{
+  total: 123456789,
+  processes: 4567890,
+  processes_used: 3456789,
+  system: 118888899,
+  atom: 123456,
+  binary: 9876543,
+  ets: 2222222
+}
+```
+
+| Memory category | Meaning                |
+| --------------- | ---------------------- |
+| `:total`        | total allocated memory |
+| `:processes`    | process memory         |
+| `:binary`       | binary memory          |
+| `:ets`          | ETS memory             |
+| `:atom`         | atom table memory      |
+| `:system`       | VM/system memory       |
+
+**Design meaning:** VM memory categories help identify whether growth comes from processes, binaries, ETS, or system structures.
+
+**Common Pitfall:** Large binary memory may come from small sub-binaries retained in long-lived process state.
+
+### Binary Memory Retention Debugging
+
+Symptoms:
+
+| Symptom                                | Possible cause                  |
+| -------------------------------------- | ------------------------------- |
+| `:erlang.memory(:binary)` grows        | large binaries retained         |
+| process state looks small              | sub-binary holds large original |
+| cache stores small slices              | slice retention                 |
+| parser stores fields from large packet | sub-binary retention            |
+| ETS stores binary slices               | large original retained         |
+
+Fix pattern:
+
+```elixir
+field = :binary.copy(field)
+```
+
+Use when a small slice is stored long-term.
+
+Example risky code:
+
+```elixir
+<<field::binary-size(10), _rest::binary>> = huge_binary
+state = %{field: field}
+```
+
+Safer for long-lived state:
+
+```elixir
+field = :binary.copy(field)
+state = %{field: field}
+```
+
+**Design meaning:** Binary sharing is useful but can retain more memory than expected.
+
+**Common Pitfall:** Copying every binary slice blindly can harm performance. Copy when retention is likely and measure if the path is hot.
+
+### Inspecting Application State
+
+Application list:
+
+```elixir
+Application.started_applications()
+```
+
+Erlang:
+
+```erlang
+application:which_applications().
+```
+
+Application environment:
+
+```elixir
+Application.get_env(:my_app, :timeout)
+Application.fetch_env(:my_app, :timeout)
+Application.fetch_env!(:my_app, :timeout)
+```
+
+Erlang:
+
+```erlang
+application:get_env(my_app, timeout).
+```
+
+Loaded applications:
+
+```elixir
+Application.loaded_applications()
+```
+
+**Design meaning:** Configuration bugs often appear as runtime behavior bugs. Verify actual runtime config, not source config.
+
+**Common Pitfall:** Compile-time config and runtime config can differ. Reading environment at compile time can freeze wrong values into a release.
+
+### Logging with `Logger`
+
+Elixir:
+
+```elixir
+require Logger
+
+Logger.debug("cache miss", key: inspect(key))
+Logger.info("worker started", worker_id: worker_id)
+Logger.warning("external timeout", service: :billing)
+Logger.error("job failed", job_id: job_id, reason: inspect(reason))
+```
+
+| Log level | Use                                |
+| --------- | ---------------------------------- |
+| `debug`   | development-level detail           |
+| `info`    | normal significant events          |
+| `warning` | recoverable abnormal condition     |
+| `error`   | failed operation needing attention |
+
+Good log:
+
+```elixir
+Logger.warning("billing timeout", service: :billing, request_id: request_id)
+```
+
+Weak log:
+
+```elixir
+Logger.warning("something went wrong")
+```
+
+**Design meaning:** Logs should give enough context to diagnose without exposing secrets or dumping huge data.
+
+**Common Pitfall:** Logging raw request params can leak passwords, tokens, cookies, personal data, or huge payloads.
+
+### Log Metadata
+
+Logger metadata attaches structured context.
+
+```elixir
+Logger.metadata(request_id: request_id, user_id: user_id)
+Logger.info("request started")
+```
+
+Per-message metadata:
+
+```elixir
+Logger.info("job completed", job_id: job_id, duration_ms: duration)
+```
+
+| Metadata                     |   Good? | Note                                       |
+| ---------------------------- | ------: | ------------------------------------------ |
+| request ID                   |     yes | correlation                                |
+| job ID                       |     yes | debugging jobs                             |
+| user ID                      |   often | avoid sensitive detail where inappropriate |
+| service name                 |     yes | external boundary                          |
+| duration                     |     yes | performance                                |
+| raw token                    |      no | secret                                     |
+| full params                  |   risky | sensitive/large                            |
+| huge payload                 |      no | log overload                               |
+| high-cardinality random data | careful | observability cost                         |
+
+**Design meaning:** Metadata turns logs from narrative text into searchable operational evidence.
+
+**Common Pitfall:** High-cardinality or sensitive metadata can create cost and privacy issues.
+
+### Lazy Logging for Expensive Messages
+
+Avoid expensive debug message construction when debug logs may be disabled.
+
+```elixir
+Logger.debug(fn ->
+  "expensive data: #{inspect(build_debug_data())}"
+end)
+```
+
+| Use lazy logging when             | Reason                 |
+| --------------------------------- | ---------------------- |
+| building message is expensive     | avoid unnecessary work |
+| inspecting large data             | avoid cost if disabled |
+| debug-only details                | log level may filter   |
+| function call has no side effects | safe lazy construction |
+
+**Design meaning:** Logging should not materially change performance in normal paths.
+
+**Common Pitfall:** Do not put important side effects inside lazy log functions. They may not run.
+
+### Crash Reports
+
+A process crash usually produces a report with:
+
+| Field           | Meaning                                          |
+| --------------- | ------------------------------------------------ |
+| process         | crashed PID/name                                 |
+| exception/error | reason                                           |
+| stacktrace      | where it failed                                  |
+| last message    | for OTP processes, often shown                   |
+| state           | sometimes included depending report and settings |
+| ancestors       | supervisor lineage                               |
+| neighbours      | related processes in some reports                |
+
+Common crash causes:
+
+| Crash                    | Meaning                       |
+| ------------------------ | ----------------------------- |
+| `MatchError` / badmatch  | pattern did not match         |
+| `FunctionClauseError`    | no function clause matched    |
+| `CaseClauseError`        | no case clause matched        |
+| `KeyError`               | missing map/struct key access |
+| timeout exit             | `GenServer.call` timeout      |
+| `ArgumentError`          | invalid argument              |
+| `UndefinedFunctionError` | missing function/module/arity |
+| `RuntimeError`           | explicit raise                |
+
+**Design meaning:** Crash reports are data. Read the exception, stacktrace, last message, and process state together.
+
+**Common Pitfall:** Only reading the top exception line may miss the actual bad input in the last message or state.
+
+### Debugging `FunctionClauseError`
+
+Example:
+
+```elixir
+def parse_status("active"), do: {:ok, :active}
+def parse_status("disabled"), do: {:ok, :disabled}
+```
+
+Calling:
+
+```elixir
+parse_status("unknown")
+```
+
+causes `FunctionClauseError`.
+
+Diagnosis:
+
+| Question                      | Meaning                              |
+| ----------------------------- | ------------------------------------ |
+| Was input external?           | add fallback and return tagged error |
+| Was input internal invariant? | crash may be acceptable              |
+| Is spec too broad?            | update spec or clauses               |
+| Is key/string format wrong?   | boundary normalization issue         |
+| Is binary/charlist mismatch?  | Erlang/Elixir interop issue          |
+
+Safer boundary parser:
+
+```elixir
+def parse_status("active"), do: {:ok, :active}
+def parse_status("disabled"), do: {:ok, :disabled}
+def parse_status(_), do: {:error, :invalid_status}
+```
+
+**Common Pitfall:** Adding catch-all clauses everywhere can hide bugs. Add them at boundaries where invalid input is expected.
+
+### Debugging `GenServer.call` Timeout
+
+Symptom:
+
+```text
+** (exit) exited in: GenServer.call(server, request, 5000)
+    ** (EXIT) time out
+```
+
+Checklist:
+
+| Check                                      | Tool                                    |
+| ------------------------------------------ | --------------------------------------- |
+| Is PID/name correct?                       | `Process.whereis`, `Registry.lookup`    |
+| Is process alive?                          | `Process.alive?`                        |
+| Is mailbox huge?                           | `Process.info(pid, :message_queue_len)` |
+| Is process blocked?                        | `Process.info(pid, :current_function)`  |
+| Is callback doing slow work?               | stack/logs/telemetry                    |
+| Is server overloaded by casts?             | mailbox growth                          |
+| Did server crash and restart?              | logs/supervisor                         |
+| Is request sent to wrong node?             | name/distribution                       |
+| Is timeout too low for expected operation? | API design                              |
+| Should operation be async?                 | task/work queue design                  |
+
+Possible fixes:
+
+| Cause                            | Fix                              |
+| -------------------------------- | -------------------------------- |
+| slow external call inside server | move to task/worker, reply later |
+| huge mailbox from casts          | backpressure/ack/bounded queue   |
+| CPU-heavy callback               | move work out or shard           |
+| wrong name                       | fix registration/discovery       |
+| crash loop                       | fix crash root cause             |
+| expected long work               | async completion protocol        |
+| server as bottleneck             | split/shard/ETS for reads        |
+
+**Design meaning:** A call timeout is a symptom of process availability, not just a timeout value problem.
+
+**Common Pitfall:** Increasing `GenServer.call` timeout may hide the real issue: blocked server, mailbox overload, or wrong process design.
+
+### Debugging `cast` Loss of Feedback
+
+`GenServer.cast` returns `:ok` even though the server may not process the message successfully.
+
+```elixir
+GenServer.cast(server, {:do_work, job})
+```
+
+Debug questions:
+
+| Question                          | Reason                 |
+| --------------------------------- | ---------------------- |
+| Did the message reach the server? | trace or add telemetry |
+| Is the server alive?              | process inspection     |
+| Is mailbox growing?               | overload               |
+| Did callback crash?               | logs/supervisor        |
+| Does caller need success/failure? | use call/ack           |
+| Is operation idempotent?          | retries may duplicate  |
+| Is there backpressure?            | cast has none          |
+
+Alternative with acknowledgement:
+
+```elixir
+def enqueue(server, job) do
+  GenServer.call(server, {:enqueue, job}, 5_000)
+end
+```
+
+**Design meaning:** `cast` is appropriate only when the caller does not need confirmation.
+
+**Common Pitfall:** Treating `cast` as a faster `call` creates invisible failures.
+
+### Debugging Unknown Messages
+
+A `handle_info/2` catch-all can log unexpected messages.
+
+```elixir
+@impl true
+def handle_info(msg, state) do
+  Logger.warning("unknown message", message: inspect(msg))
+  {:noreply, state}
+end
+```
+
+Common unknown messages:
+
+| Message                               | Likely source                |
+| ------------------------------------- | ---------------------------- |
+| `{:DOWN, ref, :process, pid, reason}` | monitor not handled          |
+| `{ref, result}`                       | task result not handled      |
+| `{:EXIT, pid, reason}`                | trapping exits               |
+| `:timeout`                            | callback timeout             |
+| `{:timeout, ref}`                     | explicit timer               |
+| `{:tcp, socket, data}`                | active socket                |
+| `{port, {:data, data\}\}`               | port data                    |
+| arbitrary tuple                       | raw sender/protocol mismatch |
+
+**Design meaning:** Unknown messages often reveal a missing runtime protocol handler.
+
+**Common Pitfall:** Silently ignoring unknown messages can hide task failures, monitor events, or socket data.
+
+### Debugging Tasks
+
+Task symptoms:
+
+| Symptom                         | Cause                                |
+| ------------------------------- | ------------------------------------ |
+| caller exits on `Task.await`    | task raised/exited or timeout        |
+| no result                       | task still running or lost reference |
+| `DOWN` message appears          | task monitored                       |
+| `{ref, result}` message appears | task result not awaited/handled      |
+| too many tasks                  | unbounded concurrency                |
+| external service overloaded     | task fan-out too large               |
+
+Controlled pattern:
+
+```elixir
+case Task.yield(task, 5_000) || Task.shutdown(task) do
+  {:ok, result} ->
+    {:ok, result}
+
+  {:exit, reason} ->
+    {:error, {:task_failed, reason\}\}
+
+  nil ->
+    {:error, :timeout}
+end
+```
+
+**Design meaning:** A task is a process. Debug it like a process: result, exit, timeout, monitor, and cleanup.
+
+**Common Pitfall:** Starting tasks without awaiting, monitoring, or supervising them loses failure information.
+
+### Debugging Supervisor Child Specs
+
+Child spec problems often appear at startup.
+
+Common symptoms:
+
+| Symptom                            | Possible cause                  |
+| ---------------------------------- | ------------------------------- |
+| child fails to start               | wrong args/config               |
+| duplicate child ID                 | repeated child spec ID          |
+| duplicate process name             | already started under same name |
+| child restarts after normal finish | `:permanent` for finite worker  |
+| child not restarted after crash    | `:temporary`                    |
+| dependent child fails              | wrong start order               |
+| registry missing                   | registry starts after worker    |
+
+Inspect child spec behavior:
+
+```elixir
+Supervisor.which_children(sup)
+Supervisor.count_children(sup)
+```
+
+Dynamic supervisor start result:
+
+```elixir
+DynamicSupervisor.start_child(MySup, child_spec)
+```
+
+Possible result:
+
+```elixir
+{:ok, pid}
+{:error, {:already_started, pid\}\}
+{:error, reason}
+:ignore
+```
+
+**Design meaning:** Child specs are operational contracts. Debug startup by reading child ID, start MFA, restart type, shutdown, and name.
+
+**Common Pitfall:** Duplicate process names are not the same as duplicate child IDs. Both can fail differently.
+
+### Debugging Registry Problems
+
+Symptoms:
+
+| Symptom                         | Possible cause                                 |
+| ------------------------------- | ---------------------------------------------- |
+| `Registry.lookup` returns `[]`  | process not started, wrong key, wrong registry |
+| duplicate registration error    | key already registered in unique registry      |
+| process not found after restart | worker did not re-register                     |
+| registry crashed                | registered workers may need restart            |
+| lookup PID dead                 | stale PID after lookup                         |
+| tests conflict                  | shared registry name                           |
+
+Inspection:
+
+```elixir
+Registry.lookup(MyApp.Registry, key)
+Process.whereis(MyApp.Registry)
+```
+
+Start order issue:
+
+```elixir
+children = [
+  {Registry, keys: :unique, name: MyApp.Registry},
+  {DynamicSupervisor, strategy: :one_for_one, name: MyApp.WorkerSupervisor}
+]
+```
+
+**Design meaning:** Registry is live process discovery. If the process dies, the entry disappears.
+
+**Common Pitfall:** Registry is not durable storage and not automatically distributed across nodes.
+
+### Debugging `Application.get_env` Problems
+
+Symptoms:
+
+| Symptom                         | Possible cause                       |
+| ------------------------------- | ------------------------------------ |
+| config is `nil`                 | key missing or app name wrong        |
+| dev works, release fails        | compile-time/runtime config mismatch |
+| test pollution                  | `Application.put_env` not restored   |
+| stale value                     | read at compile time                 |
+| wrong type                      | env var not parsed                   |
+| process started with old config | config read only at startup          |
+
+Inspection:
+
+```elixir
+Application.get_env(:my_app, :key)
+Application.fetch_env(:my_app, :key)
+Application.started_applications()
+```
+
+Safer startup parsing:
+
+```elixir
+case MyApp.Config.parse(System.get_env()) do
+  {:ok, config} -> start_supervision(config)
+  {:error, reason} -> {:error, reason}
+end
+```
+
+**Design meaning:** Configuration should be parsed, validated, and made explicit near startup.
+
+**Common Pitfall:** Reading environment variables inside module attributes or macros can freeze values at compile time.
+
+### Runtime Shell Debugging
+
+Development shell:
+
+```bash
+iex -S mix
+```
+
+Inside IEx:
+
+```elixir
+Process.whereis(MyApp.Supervisor)
+Supervisor.which_children(MyApp.Supervisor)
+:sys.get_state(Process.whereis(MyApp.Cache))
+```
+
+Useful IEx helpers:
+
+| Helper              | Use                             |
+| ------------------- | ------------------------------- |
+| `h Module.function` | documentation                   |
+| `i value`           | inspect type/protocol info      |
+| `recompile()`       | recompile project in IEx        |
+| `flush()`           | print current process mailbox   |
+| `pid("0.123.0")`    | create PID from string in shell |
+| `v()`               | previous result                 |
+
+Example:
+
+```elixir
+h GenServer.call
+i self()
+flush()
+```
+
+**Design meaning:** IEx is a live runtime inspection tool, not only a REPL.
+
+**Common Pitfall:** Debugging commands in a production remote shell can mutate state. Prefer read-only inspection unless an intervention is intentional.
+
+### Remote IEx and Production Caution
+
+Remote shell can inspect a running release, but it is powerful.
+
+Possible activities:
+
+| Safe-ish                   | Risky                   |
+| -------------------------- | ----------------------- |
+| inspect process info       | replace state           |
+| check supervisor children  | kill processes          |
+| view config                | mutate app env          |
+| inspect ETS info           | dump huge tables        |
+| check memory               | run expensive queries   |
+| attach temporary telemetry | leave handlers attached |
+| read logs/metrics          | log secrets             |
+
+**Design rule:**
+
+```text
+In production, prefer observation over mutation.
+If mutation is necessary, write down exactly what will be changed and how to reverse it.
+```
+
+**Common Pitfall:** Running `:ets.tab2list/1` or `:sys.get_state/1` on huge state can make an incident worse.
+
+### Observer
+
+Start Observer:
+
+```elixir
+:observer.start()
+```
+
+Observer can inspect:
+
+| Area                  | Use                         |
+| --------------------- | --------------------------- |
+| applications          | running OTP applications    |
+| supervision trees     | runtime structure           |
+| processes             | memory, reductions, mailbox |
+| ETS tables            | size, owner, memory         |
+| ports                 | external resources          |
+| memory                | VM memory categories        |
+| scheduler utilization | runtime load                |
+
+**Design meaning:** Observer is a high-level visual inspection tool for local or reachable nodes.
+
+**Common Pitfall:** Observer requires GUI support and may not be suitable for headless production. Also avoid attaching heavy inspection to overloaded systems.
+
+### `:observer` Alternatives
+
+When GUI Observer is unavailable, use shell-level tools:
+
+```elixir
+:erlang.memory()
+Process.list()
+Enum.count(Process.list())
+Process.info(pid)
+Supervisor.which_children(sup)
+:ets.all()
+:ets.info(table)
+```
+
+Process list sampling:
+
+```elixir
+Process.list()
+|> Enum.map(fn pid ->
+  {pid, Process.info(pid, :memory), Process.info(pid, :message_queue_len)}
+end)
+|> Enum.take(10)
+```
+
+Sort by memory:
+
+```elixir
+Process.list()
+|> Enum.map(fn pid ->
+  memory =
+    case Process.info(pid, :memory) do
+      {:memory, m} -> m
+      nil -> 0
+    end
+
+  {pid, memory}
+end)
+|> Enum.sort_by(fn {_pid, memory} -> -memory end)
+|> Enum.take(10)
+```
+
+**Design meaning:** Most Observer information is available through runtime APIs.
+
+**Common Pitfall:** Iterating over every process repeatedly in a large production node can be expensive. Sample carefully.
+
+### Telemetry
+
+Telemetry is event-based instrumentation. It is widely used in Elixir libraries.
+
+Attach handler:
+
+```elixir
+:telemetry.attach(
+  "my-handler",
+  [:my_app, :worker, :stop],
+  fn event, measurements, metadata, _config ->
+    IO.inspect({event, measurements, metadata})
+  end,
+  nil
+)
+```
+
+Emit event:
+
+```elixir
+:telemetry.execute(
+  [:my_app, :worker, :stop],
+  %{duration: duration},
+  %{job_id: job_id, result: :ok}
+)
+```
+
+Detach:
+
+```elixir
+:telemetry.detach("my-handler")
+```
+
+| Telemetry part   | Meaning                      |
+| ---------------- | ---------------------------- |
+| event name       | list of atoms                |
+| measurements     | numeric values               |
+| metadata         | contextual values            |
+| handler ID       | unique attachment identifier |
+| handler function | receives event data          |
+
+**Design meaning:** Telemetry is better than ad hoc logs for metrics and structured instrumentation.
+
+**Common Pitfall:** Telemetry handlers run in the emitting process. Slow handlers can slow application code.
+
+### Telemetry Event Design
+
+Good event:
+
+```elixir
+:telemetry.execute(
+  [:my_app, :billing, :request, :stop],
+  %{duration: duration},
+  %{result: :ok, service: :billing}
+)
+```
+
+Weak event:
+
+```elixir
+:telemetry.execute([:done], %{}, %{data: huge_payload})
+```
+
+| Event design rule              | Reason                      |
+| ------------------------------ | --------------------------- |
+| use stable event names         | consumers depend on them    |
+| measurements should be numeric | metrics aggregation         |
+| metadata should be bounded     | avoid cardinality explosion |
+| avoid secrets                  | safety                      |
+| include result/status          | success/failure rates       |
+| include duration               | latency                     |
+| avoid huge payloads            | performance                 |
+
+**Common Pitfall:** High-cardinality metadata such as raw URLs, user emails, or random tokens can overload metrics systems.
+
+### Measuring Duration
+
+Use monotonic time for durations.
+
+```elixir
+start = System.monotonic_time()
+
+result = do_work()
+
+duration = System.monotonic_time() - start
+
+:telemetry.execute(
+  [:my_app, :work, :stop],
+  %{duration: duration},
+  %{result: result_tag(result)}
+)
+```
+
+Convert if needed:
+
+```elixir
+System.convert_time_unit(duration, :native, :millisecond)
+```
+
+**Design meaning:** System time can move due to clock adjustments. Monotonic time is for elapsed durations.
+
+**Common Pitfall:** Do not measure durations with `DateTime.utc_now/0`.
+
+### Debugging Slow Operations
+
+Instrument the boundary:
+
+```elixir
+def timed(event, metadata, fun) do
+  start = System.monotonic_time()
+
+  try do
+    result = fun.()
+    duration = System.monotonic_time() - start
+    :telemetry.execute(event, %{duration: duration}, Map.put(metadata, :result, :ok))
+    result
+  rescue
+    exception ->
+      duration = System.monotonic_time() - start
+
+      :telemetry.execute(
+        event,
+        %{duration: duration},
+        Map.merge(metadata, %{result: :error, exception: exception.__struct__})
+      )
+
+      reraise exception, __STACKTRACE__
+  end
+end
+```
+
+Usage:
+
+```elixir
+timed([:my_app, :billing, :request], %{service: :billing}, fn ->
+  BillingClient.charge(command)
+end)
+```
+
+| Slow area      | Instrument                      |
+| -------------- | ------------------------------- |
+| database query | query duration                  |
+| external HTTP  | request duration/result         |
+| GenServer call | call latency                    |
+| job worker     | job duration/result             |
+| cache          | hit/miss/duration               |
+| parser         | input size/duration if relevant |
+| queue          | enqueue/dequeue/wait time       |
+
+**Design meaning:** Slow operations should be measured at boundaries, not guessed from user symptoms.
+
+**Common Pitfall:** Instrumenting only success paths hides failure latency.
+
+### Tracing with `:dbg`
+
+Erlang’s `:dbg` can trace function calls and messages. It is powerful and risky.
+
+Simple local function tracing concept:
+
+```elixir
+:dbg.tracer()
+:dbg.p(:all, :c)
+:dbg.tpl(MyModule, :my_function, :x)
+```
+
+Stop:
+
+```elixir
+:dbg.stop_clear()
+```
+
+| Use tracing when           | Avoid when                  |
+| -------------------------- | --------------------------- |
+| targeted local debugging   | broad production tracing    |
+| short time window          | high-volume functions       |
+| low traffic process        | sensitive payloads          |
+| no better telemetry exists | stable observability needed |
+
+**Design meaning:** Low-level tracing is a diagnostic scalpel, not continuous observability.
+
+**Common Pitfall:** Broad tracing can produce enormous output and affect system performance.
+
+### Debugging Message Protocols
+
+For custom process protocols, inspect the envelope.
+
+Expected request:
+
+```elixir
+{:request, from, ref, payload}
+```
+
+Expected reply:
+
+```elixir
+{:reply, ref, result}
+```
+
+Debug checklist:
+
+| Check                               | Why                          |
+| ----------------------------------- | ---------------------------- |
+| message has tag                     | avoids ambiguity             |
+| sender PID included if reply needed | receiver can respond         |
+| ref included                        | correlation                  |
+| reply includes same ref             | caller matches correctly     |
+| timeout exists                      | caller does not wait forever |
+| stale replies handled               | mailbox hygiene              |
+| monitor handled                     | process death                |
+| unknown messages logged             | protocol bugs visible        |
+
+IEx mailbox helper:
+
+```elixir
+flush()
+```
+
+Custom flush:
+
+```elixir
+def flush_messages(acc \\ []) do
+  receive do
+    msg -> flush_messages([msg | acc])
+  after
+    0 -> Enum.reverse(acc)
+  end
+end
+```
+
+**Design meaning:** A mailbox is a protocol input stream. Debug it as a protocol.
+
+**Common Pitfall:** Forgetting `^ref` in Elixir receive patterns can make code match the wrong reply.
+
+### Debugging Selective Receive
+
+Selective receive can leave unmatched messages in the mailbox.
+
+Problem:
+
+```elixir
+receive do
+  {:reply, ^ref, result} ->
+    result
+end
+```
+
+If many unrelated messages arrive first, they remain queued. If the expected reply never arrives, the process may accumulate messages.
+
+Inspect:
+
+```elixir
+Process.info(self(), :message_queue_len)
+flush()
+```
+
+| Symptom                         | Cause                       |
+| ------------------------------- | --------------------------- |
+| mailbox grows in caller process | unmatched messages          |
+| late replies appear later       | timeout did not cancel work |
+| wrong reply handled             | missing ref pin             |
+| unexpected `DOWN` messages      | monitors not consumed       |
+
+**Design meaning:** Selective receive is low-level and should be used with careful protocols.
+
+**Common Pitfall:** A catch-all receive used for cleanup can consume messages that another part of the process expected.
+
+### Debugging Tests
+
+Flaky BEAM tests usually come from timing, shared global state, or leaked processes.
+
+| Symptom                      | Likely cause                        |
+| ---------------------------- | ----------------------------------- |
+| passes alone, fails in suite | shared global state                 |
+| intermittent timeout         | race or arbitrary sleep             |
+| unexpected message           | leaked process or mailbox pollution |
+| already started              | shared registered name              |
+| ETS table exists             | named table conflict                |
+| app env wrong                | not restored                        |
+| telemetry event duplicated   | handler not detached                |
+| database data conflict       | poor isolation                      |
+
+Fixes:
+
+| Problem           | Fix                            |
+| ----------------- | ------------------------------ |
+| arbitrary sleep   | `assert_receive`, ack protocol |
+| shared names      | unique names                   |
+| leaked processes  | `start_supervised!`, `on_exit` |
+| app env mutation  | restore on exit                |
+| ETS pollution     | unique table/owner per test    |
+| telemetry leakage | unique handler ID + detach     |
+| global config     | disable async or isolate       |
+
+**Design meaning:** Test failures often expose real runtime coupling.
+
+**Common Pitfall:** Increasing test timeouts may hide races instead of fixing them.
+
+### Debugging ETS Test Failures
+
+Common failures:
+
+| Failure                    | Cause                       |
+| -------------------------- | --------------------------- |
+| `:badarg` on table access  | table missing or owner died |
+| named table already exists | test conflict               |
+| stale data                 | table shared across tests   |
+| permission error           | wrong protection mode       |
+| empty lookup unexpectedly  | table recreated/restarted   |
+| owner PID dead             | supervised owner crashed    |
+
+Inspection:
+
+```elixir
+:ets.info(table)
+:ets.info(table, :owner)
+:ets.info(table, :size)
+```
+
+**Design meaning:** ETS table lifecycle belongs to its owner process. Debug owner lifecycle and table access together.
+
+**Common Pitfall:** Anonymous ETS table identifiers become invalid when the owner dies.
+
+### Debugging External Service Boundaries
+
+External calls should be wrapped with logs and telemetry at the client boundary.
+
+Checklist:
+
+| Check                       | Reason                    |
+| --------------------------- | ------------------------- |
+| timeout configured?         | avoid hanging             |
+| response status logged?     | diagnose remote rejection |
+| duration measured?          | latency                   |
+| error normalized?           | stable caller contract    |
+| retry policy visible?       | duplicate/latency issues  |
+| idempotency key present?    | safe retry                |
+| circuit breaker/rate limit? | overload control          |
+| payload redacted?           | safety                    |
+
+Example:
+
+```elixir
+Logger.warning("billing request failed",
+  service: :billing,
+  reason: inspect(reason),
+  request_id: request_id
+)
+```
+
+**Design meaning:** External failures are normal. Observability should distinguish timeout, rejection, invalid response, auth failure, rate limit, and unavailability.
+
+**Common Pitfall:** Logging only `{:error, reason}` without service, request ID, or duration is often insufficient.
+
+### Debugging Job Systems
+
+Job debugging questions:
+
+| Question                     | Evidence                |
+| ---------------------------- | ----------------------- |
+| Was job enqueued?            | queue record/log        |
+| Was job started?             | job start telemetry     |
+| Did worker crash?            | crash report            |
+| Was job retried?             | retry count             |
+| Was it discarded?            | dead-letter/discard log |
+| Did side effect happen?      | idempotency record      |
+| Was duplicate suppressed?    | idempotency key result  |
+| Is queue backed up?          | queue depth             |
+| Are workers overloaded?      | concurrency metrics     |
+| Is external dependency slow? | client telemetry        |
+
+Job telemetry example:
+
+```elixir
+:telemetry.execute(
+  [:my_app, :job, :stop],
+  %{duration: duration},
+  %{job_id: job.id, result: :ok, attempt: job.attempt}
+)
+```
+
+**Design meaning:** A job system needs observability at enqueue, start, finish, retry, discard, and failure boundaries.
+
+**Common Pitfall:** Supervisor restart logs are not enough to understand job-level correctness.
+
+### Debugging Releases
+
+Release-specific problems often differ from development.
+
+| Symptom                 | Possible cause                   |
+| ----------------------- | -------------------------------- |
+| file not found          | source-relative path not present |
+| config missing          | runtime env not set              |
+| module unavailable      | dependency not included          |
+| shell behavior differs  | Mix not available in release     |
+| application not started | supervision/application config   |
+| asset missing           | release packaging                |
+| node name/cookie issue  | distribution config              |
+| cannot remote shell     | release command/node config      |
+
+Debug questions:
+
+| Question                         | Tool                                 |
+| -------------------------------- | ------------------------------------ |
+| Which apps are started?          | `Application.started_applications()` |
+| What config is loaded?           | `Application.get_env/3`              |
+| Does file path exist?            | `File.exists?/1`                     |
+| Is process alive?                | `Process.whereis/1`                  |
+| Is release using runtime config? | deployment config                    |
+| Is module loaded?                | `Code.ensure_loaded?/1`              |
+
+**Design meaning:** Release debugging often reveals assumptions made in development about paths, Mix, environment, or startup order.
+
+**Common Pitfall:** Do not rely on `Mix` or source tree paths inside a release runtime.
+
+### Debugging Distributed Erlang
+
+Distributed systems add node boundaries.
+
+Basic checks:
+
+```elixir
+Node.self()
+Node.list()
+Node.ping(:other@host)
+```
+
+Erlang:
+
+```erlang
+node().
+nodes().
+net_adm:ping('other@host').
+```
+
+| Issue                          | Possible cause       |
+| ------------------------------ | -------------------- |
+| nodes not connected            | name/cookie/network  |
+| remote process not found       | local registry only  |
+| messages lost after disconnect | distribution failure |
+| global name conflict           | naming design        |
+| inconsistent state             | partition/reconnect  |
+| different code versions        | rolling deployment   |
+
+**Design meaning:** Local `Registry` is local. Cluster-wide discovery and consistency need explicit design.
+
+**Common Pitfall:** Assuming local process registry or ETS state is automatically cluster-wide.
+
+### Debugging Ports and External OS Processes
+
+Port messages:
+
+```elixir
+{port, {:data, data\}\}
+{port, {:exit_status, status\}\}
+```
+
+Inspection:
+
+```elixir
+Process.info(pid, :links)
+```
+
+Port owner should log:
+
+| Event                   | Why               |
+| ----------------------- | ----------------- |
+| port started            | command/path/args |
+| data parse failure      | protocol issue    |
+| external exit status    | process failure   |
+| timeout                 | hung process      |
+| shutdown                | cleanup           |
+| stderr line if captured | diagnosis         |
+
+**Design meaning:** A port has two failure domains: BEAM owner process and external OS process.
+
+**Common Pitfall:** Restarting the port owner starts a new external process but does not recover in-flight protocol state.
+
+### Debugging NIF Problems
+
+NIFs are dangerous because a bad NIF can crash or block the VM.
+
+Symptoms:
+
+| Symptom                 | Possible NIF issue |
+| ----------------------- | ------------------ |
+| VM crash                | native crash       |
+| scheduler stalls        | long-running NIF   |
+| high latency everywhere | blocking scheduler |
+| memory corruption       | native bug         |
+| bad input crash         | missing validation |
+| inconsistent result     | native state bug   |
+
+Mitigations:
+
+| Strategy                       | Reason                              |
+| ------------------------------ | ----------------------------------- |
+| dirty schedulers for long work | avoid blocking normal schedulers    |
+| validate inputs in wrapper     | safer boundary                      |
+| prefer ports for risky code    | OS process isolation                |
+| keep NIF small                 | reduce risk                         |
+| test malformed input           | safety                              |
+| monitor VM-level crash reports | NIF failures may bypass supervision |
+
+**Design meaning:** Supervisors cannot recover from a VM crash caused by a NIF.
+
+**Common Pitfall:** Treating NIF failure like ordinary process failure understates the risk.
+
+### Debugging Performance Hotspots
+
+Common BEAM performance hotspots:
+
+| Hotspot                             | Evidence                    |
+| ----------------------------------- | --------------------------- |
+| single GenServer bottleneck         | high mailbox, call timeouts |
+| unbounded `cast` producers          | growing mailbox             |
+| large message copying               | memory and latency          |
+| repeated list append                | CPU/memory                  |
+| huge map in process state           | GC/memory                   |
+| ETS table growth                    | ETS memory/size             |
+| binary retention                    | binary memory               |
+| unbounded tasks                     | scheduler/external pressure |
+| excessive logging                   | I/O and CPU                 |
+| expensive telemetry handler         | slowed emitters             |
+| synchronous external call in server | blocked callback            |
+
+**Design meaning:** Performance debugging should identify the bottleneck resource: mailbox, scheduler, memory, ETS, binary heap, external service, or I/O.
+
+**Common Pitfall:** Optimizing pure function calls while ignoring process bottlenecks rarely fixes BEAM application latency.
+
+### Common Debugging Commands Cheat Sheet
+
+| Need                 | Elixir command                           |
+| -------------------- | ---------------------------------------- |
+| current process      | `self()`                                 |
+| all processes        | `Process.list()`                         |
+| process alive?       | `Process.alive?(pid)`                    |
+| registered process   | `Process.whereis(Name)`                  |
+| process info         | `Process.info(pid)`                      |
+| mailbox length       | `Process.info(pid, :message_queue_len)`  |
+| process memory       | `Process.info(pid, :memory)`             |
+| current function     | `Process.info(pid, :current_function)`   |
+| stacktrace           | `Process.info(pid, :current_stacktrace)` |
+| OTP state            | `:sys.get_state(pid)`                    |
+| OTP status           | `:sys.get_status(pid)`                   |
+| supervisor children  | `Supervisor.which_children(sup)`         |
+| supervisor count     | `Supervisor.count_children(sup)`         |
+| dynamic children     | `DynamicSupervisor.which_children(sup)`  |
+| registry lookup      | `Registry.lookup(registry, key)`         |
+| ETS info             | `:ets.info(table)`                       |
+| ETS size             | `:ets.info(table, :size)`                |
+| VM memory            | `:erlang.memory()`                       |
+| apps                 | `Application.started_applications()`     |
+| config               | `Application.get_env(:app, :key)`        |
+| observer             | `:observer.start()`                      |
+| mailbox flush in IEx | `flush()`                                |
+
+### Debugging Anti-Pattern Table
+
+| Anti-pattern                                 | Problem                         | Better                            |
+| -------------------------------------------- | ------------------------------- | --------------------------------- |
+| increasing timeout blindly                   | hides blocked server            | inspect mailbox/current function  |
+| using `cast` for important operation         | no feedback                     | call/ack protocol                 |
+| dumping huge ETS table                       | worsens memory                  | inspect size/sample carefully     |
+| using `:sys.get_state` in business logic     | breaks encapsulation            | public API                        |
+| logging raw params                           | secrets/PII/volume              | redacted structured metadata      |
+| tracing `:all` in production                 | massive overhead                | targeted short tracing            |
+| ignoring crash reports                       | loses root cause                | inspect reason/last message/state |
+| catch-all `handle_info` silently ignores     | hides protocol bugs             | log known unknowns                |
+| treating restart as recovery                 | state/side effects may be wrong | recovery/idempotency policy       |
+| using system time for duration               | clock changes                   | monotonic time                    |
+| leaving telemetry handlers attached in tests | cross-test pollution            | detach on exit                    |
+| using sleeps to debug races                  | non-deterministic               | explicit refs/messages            |
+| assuming registry is durable                 | live-process only               | persistent state elsewhere        |
+| assuming local registry is distributed       | local only                      | cluster-aware design              |
+
+### Debugging Decision Table
+
+| Symptom                    | First checks                                                |
+| -------------------------- | ----------------------------------------------------------- |
+| `GenServer.call` timeout   | process alive, mailbox length, current function, crash logs |
+| high latency               | telemetry duration, mailbox length, external calls          |
+| memory growth              | `:erlang.memory`, process memory, ETS size, binary memory   |
+| process missing            | supervisor children, registered name, registry lookup       |
+| unexpected restart         | crash report, supervisor report, child spec                 |
+| duplicate external effect  | retry path, idempotency key, job logs                       |
+| stale timeout              | timer refs, pending state check                             |
+| unknown message            | log message, identify source, add handler                   |
+| flaky test                 | shared names, sleeps, leaked processes, app env             |
+| ETS data missing           | owner alive, table recreated, table name conflict           |
+| config wrong               | runtime env, compile-time config, app env                   |
+| release file missing       | path assumptions, priv directory, packaging                 |
+| task failure               | `Task.yield`, monitor/exit reason, supervision              |
+| external API failures      | timeout, status, normalized error, duration                 |
+| distributed lookup failure | node connection, local/global registry distinction          |
+
+### Appendix O Summary
+
+Debugging Erlang / Elixir systems means inspecting live runtime structures, not only reading code.
+
+The practical rules are:
+
+```text
+Check whether the process exists before debugging its logic.
+Inspect mailbox length before increasing timeouts.
+Inspect current function or stack before assuming a crash.
+Use :sys for OTP process debugging, not normal business logic.
+Use Supervisor and Registry inspection to verify runtime topology.
+Use :ets.info before dumping ETS contents.
+Use monotonic time for durations.
+Use structured logs and telemetry for operational visibility.
+Treat crash reports as evidence: reason, stacktrace, last message, state.
+Design async protocols with refs, acknowledgements, and observable completion.
+```
+
+The most important distinction is:
+
+```text
+A BEAM bug may be a data bug, process bug, mailbox bug, supervision bug,
+state recovery bug, external boundary bug, or observability bug.
+The debugging tool must match the failure boundary.
+```
+
+A professional BEAM system is designed to be inspected: processes have names or registries, messages have tags and refs, errors have stable reasons, jobs have IDs, external calls have telemetry, logs have metadata, supervisors encode ownership, and runtime state can be observed without guessing.
+## Reference
+
+[Erlang/OTP Documentation](https://www.erlang.org/docs): The main official entry point for Erlang/OTP documentation. Use it as the stable index for OTP applications, system documentation, release notes, module manuals, and version-specific references. 
+
+[Erlang Reference Manual](https://www.erlang.org/doc/system/reference_manual.html): The official language reference for Erlang itself: syntax, expressions, pattern matching, bit syntax, records, exceptions, processes, modules, and related language constructs. It is a reference manual, not a tutorial, so it is best used to verify exact semantics. 
+
+[OTP Design Principles](https://www.erlang.org/doc/system/design_principles.html): The essential official source for OTP architecture: supervision trees, workers, supervisors, behaviours, applications, and releases. This should be the primary reference for the “why” behind `gen_server`, `supervisor`, application structure, and fault-tolerant process design. 
+
+[supervisor behaviour — Erlang/OTP](https://www.erlang.org/doc/apps/stdlib/supervisor.html): The official Erlang `supervisor` module reference. Use it for exact restart strategies, child specifications, restart intensity, shutdown semantics, and how supervisors manage workers and other supervisors. 
+
+[Efficiency Guide — Erlang/OTP](https://www.erlang.org/doc/system/efficiency_guide.html): The official guide for performance-relevant BEAM behavior. Use it for practical details on processes, messages, memory, binaries, ETS, and performance myths. It is especially useful after the basic language and OTP model are already clear. 
+
+[dialyzer — Erlang/OTP](https://www.erlang.org/doc/apps/dialyzer/dialyzer.html): The official reference for Dialyzer, Erlang/OTP’s discrepancy analyzer. Use it when studying specs, success typing, PLTs, warning categories, and the limits of static analysis in Erlang/Elixir systems. 
+
+[EUnit — Erlang/OTP](https://www.erlang.org/doc/apps/eunit/chapter.html): The official Erlang unit testing guide. Use it for lightweight Erlang unit tests, test macros, test generators, fixtures, and simple module-level test organization. 
+
+[Common Test User’s Guide — Erlang/OTP](https://www.erlang.org/doc/apps/common_test/users_guide): The official guide for larger Erlang/OTP test suites. Use it for integration testing, system testing, distributed-node testing, test groups, test specifications, and test automation beyond small unit tests. 
+
+[Elixir API Reference](https://hexdocs.pm/elixir/api-reference.html): The official API index for Elixir’s standard library. Use it to look up `Enum`, `Stream`, `String`, `Process`, `Task`, `Registry`, `GenServer`, `Supervisor`, `Macro`, `Module`, `Application`, `File`, `Path`, `Map`, `Keyword`, and related modules. 
+
+[Elixir Getting Started — Introduction](https://hexdocs.pm/elixir/introduction.html): The official Elixir starting point. Use it for core syntax, modules, data structures, pattern matching, functions, recursion, enumerables, processes, Mix, and OTP-oriented project building. 
+
+[Erlang Libraries — Elixir Getting Started](https://hexdocs.pm/elixir/erlang-libraries.html): The official Elixir guide to calling Erlang libraries directly. Use it for Erlang/Elixir interop, especially `:ets`, `:crypto`, `:queue`, `:gen_tcp`, Erlang strings/charlists, and the practical rule that Elixir programmers should often call Erlang modules directly rather than wrapping them unnecessarily. 
+
+[GenServer — Elixir](https://hexdocs.pm/elixir/GenServer.html): The official Elixir `GenServer` reference. Use it for client/server processes, `call`, `cast`, callbacks, timeouts, naming, debugging hooks, and correct process API design. 
+
+[Supervisor — Elixir](https://hexdocs.pm/elixir/Supervisor.html): The official Elixir `Supervisor` reference. Use it for supervision trees, child specs, restart strategies, shutdown behavior, and how Elixir expresses OTP supervision in application code. 
+
+[Registry — Elixir](https://hexdocs.pm/elixir/Registry.html): The official Elixir `Registry` reference. Use it for dynamic process discovery, `:via` tuples, unique and duplicate registries, local process lookup, and the distinction between live process registration and durable storage. 
+
+[Task — Elixir](https://hexdocs.pm/elixir/Task.html): The official Elixir `Task` reference. Use it for temporary concurrent work, `Task.async`, `Task.await`, `Task.yield`, task failures, and when to use `Task.Supervisor` rather than raw spawned processes. 
+
+[Typespecs reference — Elixir](https://hexdocs.pm/elixir/typespecs.html): The official Elixir reference for `@spec`, `@type`, `@typep`, `@opaque`, `@callback`, `@macrocallback`, behaviours, and type notation. Use it together with Dialyzer rather than treating specs as runtime validation. 
+
+[Protocols — Elixir](https://hexdocs.pm/elixir/protocols.html): The official explanation of Elixir protocols. Use it for data-type polymorphism, `defprotocol`, `defimpl`, and the distinction between protocols, behaviours, pattern matching, and ordinary functions. 
+
+[Mix — Elixir](https://hexdocs.pm/mix/Mix.html): The official reference for Mix, Elixir’s build and project tool. Use it for project structure, compilation, dependency management, tasks, testing workflow, and the general development workflow around Elixir projects. 
+
+[mix release — Elixir](https://hexdocs.pm/mix/Mix.Tasks.Release.html): The official reference for Elixir releases. Use it for production packaging, host/target deployment distinctions, runtime configuration, release commands, and the difference between development under Mix and deployed release operation. 
+
+[ExUnit — Elixir](https://hexdocs.pm/ex_unit/ExUnit.html): The official reference for Elixir’s standard test framework. Use it for test cases, assertions, setup, async tests, message assertions, doctests, and test-suite organization. 
+
+[Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/content): The best free long-form Erlang tutorial. Use it to build intuition for Erlang syntax, recursion, pattern matching, processes, links, monitors, OTP, supervisors, ETS, Common Test, Dialyzer, and releases. It is less formal than the official docs but much better as a learning narrative. 
+
+[Erlang in Anger](https://www.erlang-in-anger.com/): A practical operations/debugging book for Erlang systems. Use it after learning the basics, especially for production diagnosis, memory issues, tracing, crash investigation, and the mindset of operating live BEAM systems. 
+
+[The BEAM Book](https://blog.stenmans.org/theBeamBook/): A deep reference on the Erlang runtime system. Use it when the concern shifts from language/OTP usage to runtime internals: scheduling, memory allocation, processes, garbage collection, BEAM instructions, and VM-level performance reasoning. 
+
+[Programming Erlang, 2nd Edition](https://pragprog.com/titles/jaerlang2/programming-erlang-2nd-edition/): Joe Armstrong’s major Erlang book. Use it for a broad, historically grounded treatment of Erlang as a language for concurrent, distributed, fault-tolerant systems. It is still valuable for conceptual grounding even though some ecosystem tooling details have aged. 
+
+[Elixir in Action, Third Edition](https://www.manning.com/books/elixir-in-action-third-edition): A high-value book for learning Elixir as a practical server-side BEAM language. Use it for application architecture, functional core design, processes, OTP abstractions, supervision, fault tolerance, and building production-style Elixir systems. 
+
