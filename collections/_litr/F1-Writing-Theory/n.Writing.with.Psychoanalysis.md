@@ -2,6 +2,7 @@
 title: Writing with Psychoanalysis
 categories: Notes
 subclass: Writing Theory
+todos: 清理格式、校订
 ---
 
 # Contemporary Literary Practice and Interdisciplinary Psychology
