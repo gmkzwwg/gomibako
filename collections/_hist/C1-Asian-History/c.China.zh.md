@@ -3,6 +3,7 @@ title: Chinese History（中国史）
 categories: Chron
 abbreviation: Chinese History
 subclass: Asian History
+todos: 精修+原文+结尾重建
 ---
 
 ## 中国历史分期

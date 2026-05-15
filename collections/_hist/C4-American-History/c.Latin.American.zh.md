@@ -2,7 +2,7 @@
 title: Latin American History（拉美史）
 abbreviation: Latin American History
 layout: post
-categories: Notes
+categories: Chron
 subclass: American History
 todos: 精修
 ---
@@ -26,6 +26,8 @@ todos: 精修
 事实层面： 我快速抽查了几个容易过时的 2024—2026 节点，主干方向基本成立。谢因鲍姆 2024 年成为墨西哥首位女性总统，接近 60% 得票；诺沃亚 2025 年赢得厄瓜多尔完整任期；米莱政府 2026 年确有大规模公立大学经费抗议；智利 2026 年确已进入卡斯特总统时期。
 
 但近现代段落有一个写法问题： 文件里直接写“Reuters 报道”“Britannica 将其概括为”“AP 报道指出”这种新闻引用痕迹。作为临时草稿可以；作为正式笔记，建议改成两种方式之一：要么删除媒体名，改成事实叙述；要么单独做 References / Sources，不要把新闻来源名称混在正文叙事里。正文应更像历史笔记，而不是新闻摘要。
+
+![]({{site.img}}/hist/latin.america.png)
 
 ## 前哥伦布美洲的生态适应、文明形成与区域政治秩序﹝约 15000 BCE—1492 CE﹞
 

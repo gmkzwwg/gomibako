@@ -1,5 +1,5 @@
 ---
-title: World History Timeline
+title: World History
 categories: Chron
 subclass: World History
 ---
