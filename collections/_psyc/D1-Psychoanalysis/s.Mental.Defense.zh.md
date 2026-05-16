@@ -1,5 +1,5 @@
 ---
-title: Mental Defense （心理防御）
+title: Mental Defense (心理防御)
 abbreviation: Mental Defense
 categories: Notes
 subclass: Psychoanalysis

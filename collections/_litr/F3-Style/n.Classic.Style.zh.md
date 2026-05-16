@@ -1,5 +1,5 @@
 ---
-title: Classic Style （经典风格）
+title: Classic Style (经典风格)
 categories: Notes
 subclass: Style
 ---

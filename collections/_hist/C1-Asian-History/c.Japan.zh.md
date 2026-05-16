@@ -1,5 +1,5 @@
 ---
-title: Japanese History（日本史）
+title: Japanese Histor (日本史)
 layout: post
 categories: Chron
 subclass: Asian History

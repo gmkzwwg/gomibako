@@ -1,5 +1,5 @@
 ---
-title: Writing Style （写作风格）
+title: Writing Style (写作风格)
 categories: Notes
 subclass: Style
 ---

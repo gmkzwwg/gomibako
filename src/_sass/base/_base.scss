@@ -202,7 +202,7 @@ article h2 {
   text-transform: uppercase;
 
   color: $color-post-background;
-  background: rgba($color-muted, 0.9);
+  background: $color-muted;
 }
 
 article h2::before {

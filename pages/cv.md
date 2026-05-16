@@ -11,7 +11,7 @@ permalink: /cv
 
 # ENGLISH
 
-## RUBBISH WITH NO VALUE 
+## RUBBISH WITH NO VALUE (Ambitious but Rubbish)
 
 <img src="src/assets/img/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 
@@ -68,7 +68,7 @@ permalink: /cv
 
 # 中文
 
-## 毫无价值的垃圾残渣
+## 毫无价值的垃圾残渣（志向远大，水平拉胯）
 
 <img src="src/assets/img/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 
@@ -123,7 +123,7 @@ permalink: /cv
 
 # Françai
 
-## Débris d’ordures totalement sans valeur
+## Débris d’ordures totalement sans valeur (Ambitieux, mais nul)
 
 <img src="src/assets/img/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 

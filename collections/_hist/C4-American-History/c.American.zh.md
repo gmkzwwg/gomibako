@@ -1,5 +1,5 @@
 ---
-title: American History（美国史）
+title: American History (美国史)
 abbreviation: American History
 layout: post
 categories: Chron

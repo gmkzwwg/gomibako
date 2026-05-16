@@ -1,5 +1,5 @@
 ---
-title: Latin American History（拉美史）
+title: Latin American History (拉美史)
 abbreviation: Latin American History
 layout: post
 categories: Chron

@@ -1,5 +1,5 @@
 ---
-title: West Asia History （西亚史）
+title: West Asia History (西亚史)
 abbreviation: West Asia History
 categories: Chron
 subclass: Asian History
