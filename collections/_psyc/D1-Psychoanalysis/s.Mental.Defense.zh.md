@@ -1632,7 +1632,7 @@ todos: 统一术语
 
 **整合不足：** 个体容易在不同情境中变成完全不同的人，或在“我很特殊”和“我一无是处”之间切换。自我评价受外界反馈剧烈影响。
 
-**典型表现：** `（*Trial Identification*）`、`（*Conformist Identification*）`、`（*Identity Foreclosure*）`、`（*False Self*）`、`（*Substitutive Identification*）`、`去分化 / 自我-客体融合`都与自我同一性有关。
+**典型表现：** `身份试演`（*Trial Identification*）、`从众性认同`（*Conformist Identification*）、`身份封闭`（*Identity Foreclosure*）、`假性自体`（*False Self*）、`置换性认同`（*Substitutive Identification*）、`去分化 / 自我-客体融合`都与自我同一性有关。
 
 **关键结论：** 自我同一性越稳定，越能承受矛盾情绪；自我同一性越脆弱，越需要依赖分裂、、、从众或维持稳定。
 
@@ -2470,7 +2470,7 @@ todos: 统一术语
 **原则：** 防御命名应以功能为中心，而不是以行为外观为中心。
 
 **例子：** 沉默可能是：
-`（*Reticence*）`：避免暴露羞耻。
+`缄默`（*Reticence*）：避免暴露羞耻。
 `石墙化`：用沉默切断关系和惩罚对方。
 `冻结`：威胁反应导致无法说话。
 `情感隔离`：知道发生了什么，但没有情绪表达。

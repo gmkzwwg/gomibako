@@ -111,7 +111,7 @@
       debrisSizeRatio: 1,
 
       maxChompers: 3,
-      speed: 300,
+      speed: 230,
       padding: 36,
       sizeRatio: 1.45,
       eatRadiusRatio: 0.8,
