@@ -25,14 +25,14 @@
 @use "layouts/post-index"as *;
 
 :root {
-  --color-primary: #{$green-1};
-  --color-primary-rgb: #{$green-1};
+  --color-primary: #{$code-primary};
+  --color-primary-rgb: #{$code-primary};
 
-  --color-heading: #{$green-1};
-  --color-text: #{$white-1};
-  --color-muted: #{$white-1};
+  --color-heading: #{$code-primary};
+  --color-text: #{$terminal-white};
+  --color-muted: #{$terminal-white};
 
-  --color-surface-rgb: #{$green-3};
+  --color-surface-rgb: #{$global};
 }
 
 

@@ -136,7 +136,8 @@ ui:                                                            # Group all theme
     encrypted_text        : false                             # Enable or disable encrypted-text rendering globally. Boolean.
     search                : false                             # Enable or disable site search globally. Boolean.
     sitemap               : true                              # Enable or disable sitemap-related UI globally. Boolean.
-    todos                : true                              # Allow TODO summary globally; each page must still set todos: true.
+    todos                 : true                              # Allow TODO summary globally; each page must still set todos: true.
+    adhd_mode             : true                            # Enable or disable adhd read mode. Boolean.
 
   icons:                                                       # Group icon-system settings.
     provider              : "fontawesome"                     # Select the icon library used by the theme. candidates: fontawesome | lucide | none

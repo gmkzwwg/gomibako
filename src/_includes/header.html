@@ -62,7 +62,6 @@
 
 {% assign mode_label = layout_name | default: false %}
 
-
 {% assign show_button_labels = page.show_button_labels | default: site.ui.labels.show_button_labels | default: false %}
 
 {% assign show_toc_button = false %}
@@ -73,6 +72,10 @@
 {% assign show_home_button = false %}
 {% if page.show_home_button | default: site.ui.navigation.show_home_button %}
 {% assign show_home_button = true %}
+{% endif %}
+
+{% if site.ui.features.adhd_mode and page.adhd_mode != false %}
+{% assign adhd_mode_enabled = true %}
 {% endif %}
 
 <header class="cli-header" role="banner">
@@ -137,6 +140,19 @@
       </li>
       {% endif %}
 
+      {% if page.adhd_mode_enabled != false %}
+      <li class="cli-header__action cli-header__action--adhd-read-mode">
+        <button class="cli-header__button" type="button"
+          onclick="window.ADHDReadMode && window.ADHDReadMode.toggle && window.ADHDReadMode.toggle(); this.classList.toggle('is-active'); this.setAttribute('aria-pressed', this.classList.contains('is-active') ? 'true' : 'false');"
+          aria-pressed="true" aria-label="Toggle ADHD reading mode">
+          <i class="fa fa-adjust cli-header__icon" aria-hidden="true"></i>
+          {% if show_button_labels %}
+          <span class="cli-header__label">ADHD</span>
+          {% endif %}
+        </button>
+      </li>
+      {% endif %}
+
       {% if page.layout == "post-bilingual" %}
       <li class="cli-header__action">
         <button class="cli-header__button" type="button" data-action="toggle-bilingual"
@@ -155,7 +171,7 @@
       <li class="cli-header__action">
         <button class="cli-header__button" type="button" data-action="toggle-parallel"
           aria-label="Toggle parallel text view">
-          <i class="fa fa-language cli-header__icon" aria-hidden="true"></i>
+          <i class="fa fa-columns cli-header__icon" aria-hidden="true"></i>
           {% if show_button_labels %}
           <span class="cli-header__label">
             {{ site.ui.labels.parallel_mode | default: "Parallel" | escape }}
@@ -179,18 +195,17 @@
       {% endif %}
 
       {% if page.show_posts != false %}
-<li class="cli-header__action">
-  <button class="cli-header__button" type="button" data-action="open-posts"
-    aria-label="Open post list">
-    <i class="fa fa-folder cli-header__icon" aria-hidden="true"></i>
-    {% if show_button_labels %}
-    <span class="cli-header__label">
-      {{ site.ui.labels.posts | default: "Posts" | escape }}
-    </span>
-    {% endif %}
-  </button>
-</li>
-{% endif %}
+      <li class="cli-header__action">
+        <button class="cli-header__button" type="button" data-action="open-posts" aria-label="Open post list">
+          <i class="fa fa-file-text cli-header__icon" aria-hidden="true"></i>
+          {% if show_button_labels %}
+          <span class="cli-header__label">
+            {{ site.ui.labels.posts | default: "Posts" | escape }}
+          </span>
+          {% endif %}
+        </button>
+      </li>
+      {% endif %}
 
       {% if page.show_collections != false %}
       <li class="cli-header__action">

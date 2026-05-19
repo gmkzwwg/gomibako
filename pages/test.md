@@ -20,6 +20,32 @@ abstract: "This is abstract. Abstract is blank by default." # string
 ---
 
 
+<div class="fa47-test">
+  <button><i class="fa fa-terminal"></i><span>Prompt</span></button>
+  <button><i class="fa fa-key"></i><span>Token</span></button>
+  <button><i class="fa fa-lock"></i><span>Token alt</span></button>
+  <button><i class="fa fa-window-maximize"></i><span>Max</span></button>
+  <button><i class="fa fa-expand"></i><span>Max alt</span></button>
+  <button><i class="fa fa-arrows-alt"></i><span>Max alt2</span></button>
+  <button><i class="fa fa-eye"></i><span>ADHD old</span></button>
+  <button><i class="fa fa-bolt"></i><span>ADHD</span></button>
+  <button><i class="fa fa-magic"></i><span>ADHD alt</span></button>
+  <button><i class="fa fa-adjust"></i><span>ADHD alt2</span></button>
+  <button><i class="fa fa-assistive-listening-systems"></i><span>ADHD alt3</span></button>
+  <button><i class="fa fa-language"></i><span>Lang</span></button>
+  <button><i class="fa fa-columns"></i><span>Parallel</span></button>
+  <button><i class="fa fa-home"></i><span>Home</span></button>
+  <button><i class="fa fa-folder"></i><span>Posts old</span></button>
+  <button><i class="fa fa-folder-open"></i><span>Posts</span></button>
+  <button><i class="fa fa-file-text-o"></i><span>Posts alt</span></button>
+  <button><i class="fa fa-book"></i><span>Archive old</span></button>
+  <button><i class="fa fa-archive"></i><span>Archive</span></button>
+  <button><i class="fa fa-database"></i><span>Archive alt</span></button>
+  <button><i class="fa fa-list"></i><span>Index old</span></button>
+  <button><i class="fa fa-list-ul"></i><span>Index</span></button>
+  <button><i class="fa fa-bars"></i><span>Index alt</span></button>
+  <button><i class="fa fa-sitemap"></i><span>Index alt2</span></button>
+</div>
 
 # Heading 1
 

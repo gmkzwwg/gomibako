@@ -1,49 +1,50 @@
-// normal colors
-$black-1:    #000000;
-$black-2:    #181111;
-$black-3:    #011638;
-$black-4:    #2E294E;
-$red-1:      #E71D36;
-$red-2:      #f9320c;
-$green-1:    #0fca1c;
-$green-2:    #75D701;
-$green-3:    #7cfa7c;
-$brown-1:    #754F44;
-$orange-1:   #DE6449;
-$orange-2:   #FF5F2E;
-$yellow-1:   #FFC952;
-$yellow-2:   #f8ca00;
-$yellow-3:   #F9D423;
-$yellow-4:    #d0d00f;
-$blue-1:     #275ff9;
-$cyan-1:     #4ef9ff;
-$cyan-2:     #a5dff9;
-$magenta-1 : #cf46cf;
-$magenta-2:  #f349eb;
-$pink-1:     #fab1ce;
-$white-1:    #d2cccc;
-$white-2:    #FFFFF3;
-$purple-1:   #9639fa;
-$purple-2:   #A593E0;
+// syntax highlight
+$code-primary:     #0fca1c;
+$comment:          #8B929E;
+$error:            #cb2037;
+$keyword:          #4857fa;
+$type:             #C6F94A;
+$variable:         #CBD5E1;
+$number:           #38F8FF;
+$string:           #F2C572;
+$punctuation:      #27f9a8;
+$namespace:        #8a076d;
+$class:            #FF5D73;
+$built-in:         #7DD6A8;
+$global:           #9844f2;
+$code-background:  #0D0B0C;
+$error-background: #351017;
+
+// terminal colors
+$terminal-black:   #0B0D0E;
+$terminal-red:     #FF4D6D;
+$terminal-green:   #0fca1c;
+$terminal-yellow:  #FFD166;
+$terminal-blue:    #4DA3FF;
+$terminal-magenta: #D26BFF;
+$terminal-cyan:    #38F8FF;
+$terminal-white:   #E6EDF3;
+$terminal-gray:    #7D8590;
+$terminal-orange:  #FF9F43;
 
 // global variables
-$color-primary: $green-1;
-$color-secondary: $orange-1;
-$color-muted: $white-1;
+$color-primary: $terminal-green;
+$color-secondary: $error;
+$color-muted: $terminal-white;
 
-$color-warning: $red-1;
-$color-background: $black-2;
-$color-post-background: $black-1;
-$color-link-hover: $orange-1;
-$color-index-link: $red-1;
+$color-warning: $error;
+$color-background: $terminal-black;
+$color-post-background: $terminal-black;
+$color-link-hover: $terminal-orange;
+$color-index-link: $error;
 $image-background: none;
 
-$article-text: $green-1;
-$article-blockquote: $white-1;
-$article-bold:  $yellow-2;
-$article-link: $blue-1;
-$article-italic: $green-3;
-$article-keyword: $red-1;
+$article-text: $terminal-green;
+$article-blockquote: $terminal-white;
+$article-bold:  $terminal-orange;
+$article-link: $terminal-blue;
+$article-italic: $punctuation;
+$article-keyword: $error;
 
 // font size
 $font-size-h1: 24px;
@@ -78,24 +79,6 @@ $border-thin: 0.5px solid rgba($color-primary, 0.6);
 $border-dotted-normal: 1px dotted rgba($color-primary, 0.8);
 $border-dotted-muted: 0.5px dotted rgba($color-muted, 0.8);
 $border-dotted-blockquote: 0.2px dotted rgba($article-blockquote, 0.4);
-
-// syntax highlight
-$code-primary:     $color-primary;
-$comment:          $color-secondary;
-$error:            $color-warning;
-$error:            $color-warning;
-$keyword:          #66d4ff;
-$type:             #c3e919;
-$variable:         #9648fa;
-$number:           #4ef9ff;
-$string:           #ad7f7f;
-$punctuation:      #549ef3;
-$namespace:        #8a076d;
-$class:            $orange-1;
-$built-in:         #be273b;
-$global:           #52c96c;
-$code-background:  #131010;
-$error-background: #250f0f;
 
 // cursor
 $cursor-green-auto:     url(../cursor/cursor-green-auto.png), auto;

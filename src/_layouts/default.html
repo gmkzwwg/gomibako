@@ -129,6 +129,10 @@ Valid modes: list | chart | compact | false | nil
 {% assign matrix_bg_text = site.ui.background.text | default: "01" %}
 {% endif %}
 
+{% if site.ui.features.adhd_mode and page.adhd_mode != false %}
+{% assign adhd_mode_enabled = true %}
+{% endif %}
+
 <!doctype html>
 <html>
 
@@ -160,6 +164,10 @@ Valid modes: list | chart | compact | false | nil
   {% endif %}
 
   <!-- [[FUNCTION ENHANCEMENT]] -->
+  <!-- ADHD MODE -->
+  {% if adhd_mode_enabled %}
+  <script defer src="{{ '/src/assets/js/adhd-mode.js' | relative_url }}"></script>
+  {% endif %}
   <!-- TIMELINE -->
   <script src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>
   <!-- ANTI-COPY -->
