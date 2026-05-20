@@ -3,7 +3,7 @@
  *
  * Introduction:
  * A plug-and-play reading enhancer for long-form pages. It colors the first half of long English words and
- * grouped Chinese character runs, creating visual anchors without rewriting layout.
+ * punctuation-split Chinese clause segments, creating visual anchors without rewriting layout.
  *
  * Usage:
  * Include this file after the page content or before DOMContentLoaded. It runs automatically by default.
@@ -23,7 +23,8 @@
  * Notes:
  * The script avoids innerHTML string replacement. It uses TreeWalker + DocumentFragment, skips code/math/UI
  * regions, unwraps its own spans before reprocessing, and uses viewport-first batched rendering for long pages.
- * v3 keeps only color and probabilistic bold styling. Chinese marking uses grouped Han runs to reduce span count.
+ * v3 keeps only color and probabilistic bold styling. Chinese marking is clause-based: punctuation splits
+ * clauses, and each clause is marked according to its Han-character length.
  */
 (function () {
   'use strict';
@@ -82,19 +83,16 @@
 
     colorPool: [
       '#8B929E',
-      '#cb2037',
       '#4857fa',
       '#C6F94A',
       '#CBD5E1',
       '#38F8FF',
-      '#F2C572',
       '#27f9a8',
       '#8a076d',
       '#FF5D73',
       '#7DD6A8',
       '#9844f2',
       '#FF4D6D',
-      '#0fca1c',
       '#FFD166',
       '#4DA3FF',
       '#D26BFF',
@@ -118,10 +116,15 @@
 
     chinese: {
       enabled: true,
-      markMin: 2,
-      markMax: 4,
-      gapMin: 1,
-      gapMax: 4,
+      shortClauseMax: 4,
+      mediumClauseMax: 9,
+      shortClauseEvery: 2,
+      headMin: 3,
+      headMax: 5,
+      gapMin: 3,
+      gapMax: 5,
+      runMin: 3,
+      runMax: 5,
       sampleRate: 1
     },
 
@@ -133,7 +136,7 @@
 
     dynamic: {
       observe: true,
-      debounceMs: 30,
+      debounceMs: 10,
       eventNames: ['content:rendered']
     },
 
@@ -152,7 +155,7 @@
     },
 
     startup: {
-      delaySeconds: 2
+      delaySeconds: 0
     },
 
     css: {
@@ -264,10 +267,15 @@
 
     if (!cfg.chinese || typeof cfg.chinese !== 'object') cfg.chinese = {};
     cfg.chinese.enabled = cfg.chinese.enabled !== false;
-    cfg.chinese.markMin = Math.max(1, Math.floor(Number(cfg.chinese.markMin) || 1));
-    cfg.chinese.markMax = Math.max(cfg.chinese.markMin, Math.floor(Number(cfg.chinese.markMax) || cfg.chinese.markMin));
-    cfg.chinese.gapMin = Math.max(0, Math.floor(Number(cfg.chinese.gapMin) || 2));
+    cfg.chinese.shortClauseMax = Math.max(1, Math.floor(Number(cfg.chinese.shortClauseMax) || 3));
+    cfg.chinese.mediumClauseMax = Math.max(cfg.chinese.shortClauseMax + 1, Math.floor(Number(cfg.chinese.mediumClauseMax) || 10));
+    cfg.chinese.shortClauseEvery = Math.max(1, Math.floor(Number(cfg.chinese.shortClauseEvery) || 2));
+    cfg.chinese.headMin = Math.max(1, Math.floor(Number(cfg.chinese.headMin) || 3));
+    cfg.chinese.headMax = Math.max(cfg.chinese.headMin, Math.floor(Number(cfg.chinese.headMax) || cfg.chinese.headMin));
+    cfg.chinese.gapMin = Math.max(0, Math.floor(Number(cfg.chinese.gapMin) || 3));
     cfg.chinese.gapMax = Math.max(cfg.chinese.gapMin, Math.floor(Number(cfg.chinese.gapMax) || cfg.chinese.gapMin));
+    cfg.chinese.runMin = Math.max(1, Math.floor(Number(cfg.chinese.runMin) || 3));
+    cfg.chinese.runMax = Math.max(cfg.chinese.runMin, Math.floor(Number(cfg.chinese.runMax) || cfg.chinese.runMin));
     cfg.chinese.sampleRate = clampNumber(cfg.chinese.sampleRate, 0, 1, 1);
 
     if (!cfg.dynamic || typeof cfg.dynamic !== 'object') cfg.dynamic = {};
@@ -390,7 +398,7 @@
       if (matchesAny(element, state.config.excludeSelectors)) return false;
       if (hasExcludedAncestor(element.parentElement || element, null)) return false;
       try {
-        return !element.querySelector(selector); // Prefer inner blocks over wrappers.
+        return !element.querySelector(selector); // Match the older jtimeline-compatible leaf-block behavior.
       } catch (e) {
         return true;
       }
@@ -580,50 +588,108 @@
       (code >= 0xF900 && code <= 0xFAFF);
   }
 
-  /** Reads a grouped run of 1-3 consecutive Han chars by config. */
-  function readHanMarkRun(text, start, ctx) {
-    const target = randomInt(ctx, state.config.chinese.markMin, state.config.chinese.markMax);
-    let end = start;
-    let taken = 0;
+  /** Checks punctuation that splits Chinese clauses. */
+  function isChineseClausePunctuation(ch) {
+    return /[、。！？；：，,.!?;:()[\]{}"'“”‘’《》〈〉「」『』—…·\-]/.test(ch);
+  }
 
-    while (end < text.length && taken < target && isHan(text.charAt(end))) {
-      end += 1;
-      taken += 1;
+  /** Counts Han characters in text. */
+  function countHan(text) {
+    let count = 0;
+    for (let i = 0; i < text.length; i += 1) {
+      if (isHan(text.charAt(i))) count += 1;
     }
+    return count;
+  }
 
+  /** Reads a Chinese clause from a Han start until punctuation. */
+  function readChineseClause(text, start) {
+    let end = start;
+    while (end < text.length && !isChineseClausePunctuation(text.charAt(end))) {
+      end += 1;
+    }
     return { token: text.slice(start, end), end: end };
   }
 
-  /** Resets Chinese gap after one marked run. */
-  function resetChineseGap(ctx) {
-    ctx.cnGapRemaining = randomInt(ctx, state.config.chinese.gapMin, state.config.chinese.gapMax);
+  /** Returns the string index just after the nth Han char from start. */
+  function indexAfterHanCount(text, start, hanCount) {
+    let seen = 0;
+    for (let i = start; i < text.length; i += 1) {
+      if (!isHan(text.charAt(i))) continue;
+      seen += 1;
+      if (seen >= hanCount) return i + 1;
+    }
+    return text.length;
   }
 
-  /** Handles one Han position using grouped mark-run strategy. */
-  function appendChineseRun(text, index, fragment, ctx) {
-    const ch = text.charAt(index);
+  /** Appends one possibly marked Chinese clause by length rules. */
+  function appendChineseClause(fragment, clause, ctx) {
+    const cfg = state.config.chinese;
+    const hanCount = countHan(clause);
 
-    if (!state.config.chinese.enabled || !isHan(ch)) {
-      appendText(fragment, ch);
-      return { end: index + 1, changed: false };
+    if (!cfg.enabled || !hanCount) {
+      appendText(fragment, clause);
+      return false;
     }
 
-    if (ctx.cnGapRemaining > 0) {
-      appendText(fragment, ch);
-      ctx.cnGapRemaining -= 1; // Gap counts Han chars only; punctuation does not count.
-      return { end: index + 1, changed: false };
+    if (hanCount <= cfg.shortClauseMax) {
+      ctx.shortClauseIndex += 1;
+      const shouldMark = ((ctx.shortClauseIndex + ctx.shortClauseOffset) % cfg.shortClauseEvery) === 0;
+      if (shouldMark && passesSample(ctx, cfg.sampleRate)) {
+        fragment.appendChild(createMark(clause, ctx)); // Short clauses are marked as a whole, intermittently.
+        return true;
+      }
+      appendText(fragment, clause);
+      return false;
     }
 
-    const run = readHanMarkRun(text, index, ctx);
-    if (passesSample(ctx, state.config.chinese.sampleRate)) {
-      fragment.appendChild(createMark(run.token, ctx)); // One span for 1-3 Han chars.
-      resetChineseGap(ctx);
-      return { end: run.end, changed: true };
+    if (hanCount <= cfg.mediumClauseMax) {
+      const headCount = Math.min(hanCount, randomInt(ctx, cfg.headMin, cfg.headMax));
+      const headEnd = indexAfterHanCount(clause, 0, headCount);
+      const head = clause.slice(0, headEnd);
+      const rest = clause.slice(headEnd);
+
+      if (passesSample(ctx, cfg.sampleRate)) {
+        fragment.appendChild(createMark(head, ctx));
+        appendText(fragment, rest);
+        return true;
+      }
+
+      appendText(fragment, clause);
+      return false;
     }
 
-    appendText(fragment, run.token);
-    resetChineseGap(ctx);
-    return { end: run.end, changed: false };
+    let changed = false;
+    let cursor = 0;
+    let first = true;
+
+    while (cursor < clause.length) {
+      const isHeadRun = first;
+      if (first) {
+        first = false;
+      } else {
+        const gapCount = randomInt(ctx, cfg.gapMin, cfg.gapMax);
+        const gapEnd = indexAfterHanCount(clause, cursor, gapCount);
+        appendText(fragment, clause.slice(cursor, gapEnd));
+        cursor = gapEnd;
+        if (cursor >= clause.length) break;
+      }
+
+      const runCount = isHeadRun ? randomInt(ctx, cfg.headMin, cfg.headMax) : randomInt(ctx, cfg.runMin, cfg.runMax);
+      const runEnd = indexAfterHanCount(clause, cursor, runCount);
+      const run = clause.slice(cursor, runEnd);
+
+      if (run && passesSample(ctx, cfg.sampleRate)) {
+        fragment.appendChild(createMark(run, ctx));
+        changed = true;
+      } else {
+        appendText(fragment, run);
+      }
+
+      cursor = runEnd;
+    }
+
+    return changed;
   }
 
   /** Converts one text node into a marked fragment when needed. */
@@ -657,9 +723,9 @@
       }
 
       if (isHan(ch)) {
-        const result = appendChineseRun(text, i, fragment, ctx);
-        if (result.changed) changed = true;
-        i = result.end;
+        const clause = readChineseClause(text, i);
+        if (appendChineseClause(fragment, clause.token, ctx)) changed = true;
+        i = clause.end;
         continue;
       }
 
@@ -716,7 +782,8 @@
       markIndex: 0,
       nodeIndex: 0,
       rngState: hashString((element.textContent || '') + ':' + state.config.random.seed),
-      cnGapRemaining: 0
+      shortClauseIndex: 0,
+      shortClauseOffset: 0
     };
 
     let changed = false;
