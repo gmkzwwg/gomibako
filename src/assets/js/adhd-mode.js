@@ -118,22 +118,22 @@
 
     chinese: {
       enabled: true,
-      markMin: 1,
-      markMax: 3,
-      gapMin: 2,
-      gapMax: 5,
+      markMin: 2,
+      markMax: 4,
+      gapMin: 1,
+      gapMax: 4,
       sampleRate: 1
     },
 
     viewport: {
       enabled: true,
-      rootMargin: '900px 0px',
+      rootMargin: '400px 0px',
       observeOnce: true
     },
 
     dynamic: {
       observe: true,
-      debounceMs: 90,
+      debounceMs: 30,
       eventNames: ['content:rendered']
     },
 
