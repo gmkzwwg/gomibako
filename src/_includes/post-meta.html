@@ -37,8 +37,8 @@
   {% assign has_meta = true %}
 {% endif %}
 
-{% if page.version %}
-  {% assign has_version = true %}
+{% if page.status %}
+  {% assign has_status = true %}
   {% assign has_meta = true %}
 {% endif %}
 
@@ -90,10 +90,10 @@
         </li>
       {% endif %}
 
-      {% if has_version %}
-        <li class="post-meta__item post-meta__item--version">
+      {% if has_status %}
+        <li class="post-meta__item post-meta__item--status">
           <i class="fa fa-sitemap post-meta__icon" aria-hidden="true"></i>
-          <span class="post-meta__text">{{ page.version }}</span>
+          <span class="post-meta__text">{{ page.status }}</span>
         </li>
       {% endif %}
     </ul>

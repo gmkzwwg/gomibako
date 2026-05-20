@@ -4,7 +4,7 @@ abbreviation: American History
 layout: post
 categories: Chron
 subclass: American History
-todos: 精修完成
+status: 精修完成
 ---
 
 ![]({{site.img}}/hist/america.expansion.png)
