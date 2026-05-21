@@ -35,7 +35,7 @@
     splashPollMs: 80,
 
     startDelaySeconds: 3,
-    intervalSeconds: 5,
+    intervalSeconds: 8,
     immediateStart: true,
 
     candidates: "ABCDEFGHIJKLMNOPQRSTUVWXYZ01",

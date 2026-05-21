@@ -57,7 +57,7 @@
 
     cjkEffect: {
       enabled: true,
-      intervalMs: 4500,
+      intervalMs: 5000,
       preColorMs: 2000,
       jumpMs: 1200,
       shiverMs: 1000,
