@@ -59,7 +59,7 @@
       shortMax: 5,
       mediumMax: 10,
       longMax: 18,
-      minSectionChars: 3,
+      minSectionChars: 2,
       overlongMin: 4,
       overlongMax: 8,
       sectionEvery: 2,
