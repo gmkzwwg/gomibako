@@ -1,5 +1,11 @@
-
-
+---
+title: Chinese Thoughts (中国思想史)
+abbreviation: Chinese Thougts
+layout: post
+categories: Notes
+subclass: Asia History
+status: 精修完成
+---
 
 ## 中国思想如何成为东亚政治—伦理—知识结构
 
