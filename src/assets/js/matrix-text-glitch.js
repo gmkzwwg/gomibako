@@ -30,7 +30,7 @@
       "h1, h2, h3, h4, .abstract, .post-abstract, .post-meta__text, .cli-header__label, .cli-header__title, .cli-header__owner, .cli-header__mode",
 
     interval: 8,
-    intervalRange: [3, 6],
+    intervalRange: [6, 10],
 
     initialDelay: 2000,
     duration: 800,

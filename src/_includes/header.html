@@ -142,9 +142,24 @@
 
       {% if page.adhd_mode_enabled != false %}
       <li class="cli-header__action cli-header__action--adhd-read-mode">
-        <button class="cli-header__button" type="button"
-          onclick="window.ADHDReadMode && window.ADHDReadMode.toggle && window.ADHDReadMode.toggle(); this.classList.toggle('is-active'); this.setAttribute('aria-pressed', this.classList.contains('is-active') ? 'true' : 'false');"
-          aria-pressed="true" aria-label="Toggle ADHD reading mode">
+        <button
+          class="cli-header__button is-active"
+          type="button"
+          onclick="
+            const active = this.classList.toggle('is-active');
+            this.setAttribute('aria-pressed', active ? 'true' : 'false');
+
+            if (window.ADHDReadMode && window.ADHDReadMode.toggle) {
+              window.ADHDReadMode.toggle(active);
+            }
+
+            if (window.MatrixLetterRain && window.MatrixLetterRain.toggle) {
+              window.MatrixLetterRain.toggle(active);
+            }
+          "
+          aria-pressed="true"
+          aria-label="Toggle ADHD reading mode"
+        >
           <i class="fa fa-adjust cli-header__icon" aria-hidden="true"></i>
           {% if show_button_labels %}
           <span class="cli-header__label">ADHD</span>

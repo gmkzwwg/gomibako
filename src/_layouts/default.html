@@ -143,8 +143,7 @@ Valid modes: list | chart | compact | false | nil
   <!-- [[APPEARANCE]] -->
   <!-- HACKED SPLASH: critical first-paint mask + plug-and-play JS -->
   <script src="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}"></script>
-  <!-- MATRIX LETTER BOMB -->
-  <script defer src="{{ '/src/assets/js/matrix-letter-bomb.js' | relative_url }}"></script>
+  
   <!-- ASCII ANIME -->
   <script defer src="{{ '/src/assets/js/matrix-ascii-anime.js' | relative_url }}"></script>
   <!-- GLITCH TITLE + META_INFO -->
@@ -166,7 +165,10 @@ Valid modes: list | chart | compact | false | nil
   <!-- [[FUNCTION ENHANCEMENT]] -->
   <!-- ADHD MODE -->
   {% if adhd_mode_enabled %}
+  <!-- ADHD TEXT ANIME -->
   <script defer src="{{ '/src/assets/js/adhd-mode.js' | relative_url }}"></script>
+  <!-- MATRIX LETTER BOMB -->
+  <script defer src="{{ '/src/assets/js/matrix-letter-bomb.js' | relative_url }}"></script>
   {% endif %}
   <!-- TIMELINE -->
   <script src="{{ '/src/assets/js/timeline-list.js' | relative_url }}"></script>

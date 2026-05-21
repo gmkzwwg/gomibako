@@ -1,34 +1,24 @@
 /*!
- * matrix-letter-rain.v1.js
+ * matrix-letter-rain.v2-lite.js
  *
  * Introduction:
- *   Creates a full-screen matrix-style letter rain with randomized multi-burst explosions.
- *   A small optional Pac-Man-style chomper effect may appear after the first burst:
- *   debris symbols are spawned on one row and eaten by a chomper entering from a screen edge.
+ *   Full-screen matrix-style letter rain with falling glyphs, fixed-delay multi-burst explosions,
+ *   and an optional Pac-Man-style chomper that eats debris after the first burst.
  *
  * Usage:
  *   Include this file on the page. It starts automatically when autoStart is true.
- *   Runtime behavior can be customized with window.MatrixLetterRain.updateConfig().
+ *   Use window.MatrixLetterRain.toggle(active) to sync it with a UI button.
  *
  * Global API:
  *   window.MatrixLetterRain.start(config?)
- *   window.MatrixLetterRain.startAfterSplash(config?)
- *   window.MatrixLetterRain.pause()
- *   window.MatrixLetterRain.stop()
- *   window.MatrixLetterRain.destroy()
+ *   window.MatrixLetterRain.toggle(force?, config?)
  *   window.MatrixLetterRain.updateConfig(config)
  *   window.MatrixLetterRain.getConfig()
  *
  * Notes:
- *   - Multi-burst explosions are preserved.
- *   - Random burst count, random burst pattern, random color sequence are preserved.
- *   - Pac-Man chomper effect is rendered from embedded SVG data inside the same canvas; no extra DOM layer is created.
- *   - stop() removes the canvas.
- *   - pause() only pauses the animation loop.
- *   - The canvas is created only when start() actually runs.
- *   - No desynchronized canvas context is used.
+ *   Public API is intentionally small. toggle(false) removes the canvas. start()/toggle(true) are idempotent.
+ *   multiBurstScaleStep is removed. Burst delay is fixed with multiBurstDelaySeconds.
  */
-
 (function (window, document) {
   "use strict";
 
@@ -57,11 +47,9 @@
 
     fontFamily: null,
     fontSize: 15,
-
     zIndex: 1,
     canvasClass: "matrix-letter-rain",
     canvasId: "matrix-letter-rain-canvas",
-
     dprMax: 1.2,
 
     mobilePerformanceMode: true,
@@ -82,9 +70,7 @@
     maxExplodeHeightRatio: 0.82,
 
     burstCountWeights: [0.45, 0.25, 0.15, 0.15],
-    multiBurstDelayMin: 0.5,
-    multiBurstDelayMax: 0.5,
-    multiBurstScaleStep: 0.2,
+    multiBurstDelaySeconds: 0.5,
     multiBurstLetterStep: 1,
 
     minParticleLife: 0.4,
@@ -100,7 +86,6 @@
     chomper: {
       enabled: true,
       chance: 0.4,
-
       debrisSymbols: ";·,.",
       debrisMin: 1,
       debrisMax: 4,
@@ -109,18 +94,15 @@
       debrisSpaceMax: 2,
       debrisSpaceWidthRatio: 0.55,
       debrisSizeRatio: 1,
-
       maxChompers: 3,
       speed: 230,
       padding: 36,
       sizeRatio: 1.45,
       eatRadiusRatio: 0.8,
       biteInterval: 0.12,
-
       pacmanColor: "#23ef23",
       debrisColor: "#23ef23",
       debrisFontFamily: null,
-
       pacmanVariants: ["crown", "santaHat", "tuftHair"],
       pacmanSvg: {
         eyeColor: "#111111",
@@ -135,123 +117,76 @@
     },
 
     maxFrameDelta: 0.033,
-    clearAlpha: 1,
     pauseWhenHidden: true,
     resizeDebounceMs: 120
   };
 
-  let activeConfig = merge({}, DEFAULT_CONFIG);
+  let activeConfig = mergeNested({}, DEFAULT_CONFIG);
   let instance = null;
   let waitTimer = 0;
   let manuallyStopped = false;
 
-  function merge() {
-    const output = {};
-
-    Array.prototype.slice.call(arguments).forEach(function (source) {
-      Object.keys(source || {}).forEach(function (key) {
-        output[key] = source[key];
-      });
-    });
-
-    return output;
-  }
-
   function mergeNested(base, override) {
-    const output = merge({}, base || {});
-
+    const output = Object.assign({}, base || {});
     Object.keys(override || {}).forEach(function (key) {
       const value = override[key];
       const current = output[key];
-
-      if (
-        value &&
-        typeof value === "object" &&
-        !Array.isArray(value) &&
-        current &&
-        typeof current === "object" &&
-        !Array.isArray(current)
-      ) {
-        output[key] = mergeNested(current, value);
-      } else {
-        output[key] = value;
-      }
+      if (isPlainObject(value) && isPlainObject(current)) output[key] = mergeNested(current, value);
+      else output[key] = value;
     });
-
     return output;
+  }
+
+  function isPlainObject(value) {
+    return value && typeof value === "object" && !Array.isArray(value);
+  }
+
+  function toNumber(value, fallback) {
+    const number = Number(value);
+    return Number.isFinite(number) ? number : fallback;
   }
 
   function clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
 
-  function toFiniteNumber(value, fallback) {
-    const number = Number(value);
-
-    return Number.isFinite(number) ? number : fallback;
-  }
-
   function isMobileViewport(config) {
     const width = window.innerWidth || document.documentElement.clientWidth || 1024;
-    const breakpoint = Math.max(1, toFiniteNumber(config.mobileBreakpoint, 800));
-
-    return width <= breakpoint;
+    return width <= Math.max(1, toNumber(config.mobileBreakpoint, 800));
   }
 
-  function getRuntimeConfig(config) {
+  function runtimeConfig(config) {
     const next = mergeNested(DEFAULT_CONFIG, config || {});
-
     if (next.mobilePerformanceMode && isMobileViewport(next)) {
-      next.dprMax = Math.min(
-        Math.max(1, toFiniteNumber(next.dprMax, DEFAULT_CONFIG.dprMax)),
-        Math.max(1, toFiniteNumber(next.mobileDprMax, 1))
-      );
-
-      next.maxDrops = Math.min(
-        Math.max(1, toFiniteNumber(next.maxDrops, DEFAULT_CONFIG.maxDrops)),
-        Math.max(1, toFiniteNumber(next.mobileMaxDrops, 3))
-      );
-
-      next.maxParticles = Math.min(
-        Math.max(1, toFiniteNumber(next.maxParticles, DEFAULT_CONFIG.maxParticles)),
-        Math.max(1, toFiniteNumber(next.mobileMaxParticles, 80))
-      );
-
+      next.dprMax = Math.min(Math.max(1, toNumber(next.dprMax, 1.2)), Math.max(1, toNumber(next.mobileDprMax, 1)));
+      next.maxDrops = Math.min(Math.max(1, toNumber(next.maxDrops, 4)), Math.max(1, toNumber(next.mobileMaxDrops, 3)));
+      next.maxParticles = Math.min(Math.max(1, toNumber(next.maxParticles, 120)), Math.max(1, toNumber(next.mobileMaxParticles, 80)));
       next.glow = Boolean(next.mobileGlow);
       next.dropShadowBlur = next.glow ? next.dropShadowBlur : 0;
       next.particleShadowBlur = next.glow ? next.particleShadowBlur : 0;
     }
-
     return next;
   }
 
   function shouldReduceMotion(config) {
-    return Boolean(
-      config.respectReducedMotion &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    );
+    return Boolean(config.respectReducedMotion && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }
 
   function clearWaitTimer() {
-    if (waitTimer) {
-      window.clearTimeout(waitTimer);
-      waitTimer = 0;
-    }
+    if (waitTimer) window.clearTimeout(waitTimer);
+    waitTimer = 0;
   }
 
-  function getParent() {
+  function parentNode() {
     return document.body || document.documentElement;
   }
 
   class MatrixLetterRainEffect {
     constructor(config) {
-      this.options = getRuntimeConfig(config);
+      this.options = runtimeConfig(config);
       this.candidates = this.normalizeCandidates(this.options.candidates);
-
       this.canvas = null;
       this.ctx = null;
-
       this.width = 1;
       this.height = 1;
       this.dpr = 1;
@@ -266,11 +201,9 @@
       this.disposed = false;
       this.rafId = 0;
       this.lastTime = 0;
-
       this.spawnElapsed = 0;
-      this.delayRemaining = Math.max(0, toFiniteNumber(this.options.startDelaySeconds, 0));
+      this.delayRemaining = Math.max(0, toNumber(this.options.startDelaySeconds, 0));
       this.startedSpawning = false;
-
       this.resizeTimer = 0;
 
       this.pageFontSize = 16;
@@ -283,29 +216,16 @@
 
       this.createCanvas();
       this.resolvePageFont();
-      this.preparePacmanSprites();
+      if (this.options.chomper && this.options.chomper.enabled) this.preparePacmanSprites();
       this.resizeNow();
-
       window.addEventListener("resize", this.handleResize, { passive: true });
       document.addEventListener("visibilitychange", this.handleVisibilityChange, { passive: true });
     }
 
     normalizeCandidates(candidates) {
-      if (Array.isArray(candidates)) {
-        return candidates.map(function (value) {
-          return String(value);
-        }).filter(Boolean);
-      }
-
-      if (typeof candidates === "string") {
-        return Array.from(candidates).filter(Boolean);
-      }
-
+      if (Array.isArray(candidates)) return candidates.map(String).filter(Boolean);
+      if (typeof candidates === "string") return Array.from(candidates).filter(Boolean);
       return ["0", "1"];
-    }
-
-    randomFromCandidates() {
-      return this.candidates[Math.floor(Math.random() * this.candidates.length)] || "0";
     }
 
     rand(min, max) {
@@ -316,47 +236,29 @@
       return Math.floor(this.rand(min, max + 1));
     }
 
-    shuffled(array) {
-      const copy = array.slice();
+    pick(list) {
+      return list[this.randInt(0, list.length - 1)];
+    }
 
-      for (let index = copy.length - 1; index > 0; index -= 1) {
-        const swapIndex = Math.floor(Math.random() * (index + 1));
-        const current = copy[index];
-
-        copy[index] = copy[swapIndex];
-        copy[swapIndex] = current;
+    shuffled(list) {
+      const copy = list.slice();
+      for (let i = copy.length - 1; i > 0; i -= 1) {
+        const j = this.randInt(0, i);
+        const value = copy[i];
+        copy[i] = copy[j];
+        copy[j] = value;
       }
-
       return copy;
     }
 
     createCanvas() {
-      const oldCanvas = document.getElementById(this.options.canvasId);
-
-      if (oldCanvas && oldCanvas.parentNode) {
-        oldCanvas.parentNode.removeChild(oldCanvas);
-      }
+      const old = document.getElementById(this.options.canvasId);
+      if (old && old.parentNode) old.parentNode.removeChild(old);
 
       this.canvas = document.createElement("canvas");
       this.canvas.id = this.options.canvasId;
-      this.canvas.setAttribute("aria-hidden", "true");
-
-      this.applyCanvasStyle();
-
-      getParent().appendChild(this.canvas);
-
-      try {
-        this.ctx = this.canvas.getContext("2d", { alpha: true }) || this.canvas.getContext("2d");
-      } catch (error) {
-        this.ctx = this.canvas.getContext("2d");
-      }
-    }
-
-    applyCanvasStyle() {
-      if (!this.canvas) return;
-
       this.canvas.className = this.options.canvasClass || DEFAULT_CONFIG.canvasClass;
-
+      this.canvas.setAttribute("aria-hidden", "true");
       Object.assign(this.canvas.style, {
         position: "fixed",
         inset: "0",
@@ -366,260 +268,184 @@
         pointerEvents: "none",
         zIndex: String(this.options.zIndex)
       });
+      parentNode().appendChild(this.canvas);
+
+      try {
+        this.ctx = this.canvas.getContext("2d", { alpha: true }) || this.canvas.getContext("2d");
+      } catch (error) {
+        this.ctx = this.canvas.getContext("2d");
+      }
     }
 
     resolvePageFont() {
-      const htmlStyle = window.getComputedStyle(document.documentElement);
-      const bodyStyle = document.body ? window.getComputedStyle(document.body) : null;
-
-      const htmlSize = parseFloat(htmlStyle.fontSize);
-      const bodySize = bodyStyle ? parseFloat(bodyStyle.fontSize) : NaN;
-
-      const htmlFamily = htmlStyle.fontFamily ? htmlStyle.fontFamily.trim() : "";
-      const bodyFamily = bodyStyle && bodyStyle.fontFamily ? bodyStyle.fontFamily.trim() : "";
-
-      this.pageFontSize =
-        Number.isFinite(bodySize) && bodySize > 0
-          ? bodySize
-          : Number.isFinite(htmlSize) && htmlSize > 0
-            ? htmlSize
-            : 16;
-
-      this.pageFontFamily = bodyFamily || htmlFamily || "monospace";
-      this.fontFamilyCache = this.getFontFamily();
-    }
-
-    getFontSize() {
-      const custom = Number(this.options.fontSize);
-
-      return Number.isFinite(custom) && custom > 0 ? custom : this.pageFontSize;
-    }
-
-    getFontFamily() {
-      return this.options.fontFamily || this.pageFontFamily || "monospace";
-    }
-
-    getGreenColor() {
-      return this.options.color || this.options.greenColor || "#23ef23";
-    }
-
-    getSpeedMultiplier() {
-      const value = Number(this.options.speedMultiplier);
-
-      return Number.isFinite(value) && value > 0 ? value : 1;
-    }
-
-    getMaxDrops() {
-      return Math.max(1, toFiniteNumber(this.options.maxDrops, DEFAULT_CONFIG.maxDrops));
-    }
-
-    getMaxParticles() {
-      return Math.max(1, toFiniteNumber(this.options.maxParticles, DEFAULT_CONFIG.maxParticles));
-    }
-
-    getMaxChompers() {
-      const chomper = this.options.chomper || {};
-
-      return Math.max(0, toFiniteNumber(chomper.maxChompers, 3));
-    }
-
-    getBurstColors(burstCount) {
-      const accentColors = this.shuffled([
-        this.options.errorColor || "#e81d1d",
-        this.options.yellowColor || "#f8ca00",
-        this.options.whiteColor || "#f0e8e8"
-      ]);
-
-      return [this.getGreenColor()].concat(accentColors.slice(0, Math.max(0, burstCount - 1)));
-    }
-
-    pickBurstCount() {
-      const weights = Array.isArray(this.options.burstCountWeights)
-        ? this.options.burstCountWeights
-        : DEFAULT_CONFIG.burstCountWeights;
-
-      const roll = Math.random();
-      let total = 0;
-
-      for (let index = 0; index < 4; index += 1) {
-        total += Number(weights[index]) || 0;
-
-        if (roll < total) {
-          return index + 1;
-        }
-      }
-
-      return 4;
+      const html = window.getComputedStyle(document.documentElement);
+      const body = document.body ? window.getComputedStyle(document.body) : null;
+      const htmlSize = parseFloat(html.fontSize);
+      const bodySize = body ? parseFloat(body.fontSize) : NaN;
+      this.pageFontSize = Number.isFinite(bodySize) && bodySize > 0 ? bodySize : Number.isFinite(htmlSize) && htmlSize > 0 ? htmlSize : 16;
+      this.pageFontFamily = body && body.fontFamily ? body.fontFamily : html.fontFamily || "monospace";
+      this.fontFamilyCache = this.options.fontFamily || this.pageFontFamily || "monospace";
     }
 
     resizeNow() {
       if (!this.canvas || !this.ctx) return;
-
-      const dprMax = Math.max(1, toFiniteNumber(this.options.dprMax, DEFAULT_CONFIG.dprMax));
-      const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, dprMax));
-
+      const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, Math.max(1, toNumber(this.options.dprMax, 1.2))));
       this.dpr = dpr;
       this.width = window.innerWidth || document.documentElement.clientWidth || 1;
       this.height = window.innerHeight || document.documentElement.clientHeight || 1;
-
       this.canvas.width = Math.max(1, Math.floor(this.width * dpr));
       this.canvas.height = Math.max(1, Math.floor(this.height * dpr));
-
       this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
       this.resolvePageFont();
-      this.trimDrops();
-      this.trimParticles();
-      this.trimChompers();
+      this.trimAll();
     }
 
     handleResize() {
       window.clearTimeout(this.resizeTimer);
-
       this.resizeTimer = window.setTimeout(() => {
         if (this.disposed) return;
-
-        this.options = getRuntimeConfig(this.options);
-        this.applyCanvasStyle();
+        this.options = runtimeConfig(this.options);
         this.resizeNow();
-      }, Math.max(0, toFiniteNumber(this.options.resizeDebounceMs, 120)));
+      }, Math.max(0, toNumber(this.options.resizeDebounceMs, 120)));
     }
 
     handleVisibilityChange() {
       if (!this.options.pauseWhenHidden) return;
-
       if (document.hidden) {
-        window.cancelAnimationFrame(this.rafId);
+        if (this.rafId) window.cancelAnimationFrame(this.rafId);
         this.rafId = 0;
         this.lastTime = 0;
         return;
       }
+      if (this.running && !this.rafId) this.rafId = window.requestAnimationFrame(this.loop);
+    }
 
-      if (this.running && !this.rafId) {
-        this.rafId = window.requestAnimationFrame(this.loop);
-      }
+    fontSize() {
+      const size = Number(this.options.fontSize);
+      return Number.isFinite(size) && size > 0 ? size : this.pageFontSize;
+    }
+
+    green() {
+      return this.options.color || this.options.greenColor || "#23ef23";
+    }
+
+    speedMultiplier() {
+      return Math.max(0.01, toNumber(this.options.speedMultiplier, 1));
+    }
+
+    maxDrops() {
+      return Math.max(1, toNumber(this.options.maxDrops, 4));
+    }
+
+    maxParticles() {
+      return Math.max(1, toNumber(this.options.maxParticles, 120));
+    }
+
+    maxChompers() {
+      return Math.max(0, toNumber((this.options.chomper || {}).maxChompers, 3));
+    }
+
+    trimAll() {
+      this.trim(this.drops, this.maxDrops());
+      this.trim(this.particles, this.maxParticles());
+      this.trim(this.chompers, this.maxChompers());
+    }
+
+    trim(list, max) {
+      const overflow = list.length - max;
+      if (overflow > 0) list.splice(0, overflow);
+    }
+
+    randomChar() {
+      return this.candidates[Math.floor(Math.random() * this.candidates.length)] || "0";
     }
 
     createDrop() {
-      const size = this.getFontSize();
-      const speedMultiplier = this.getSpeedMultiplier();
-
-      const x = this.rand(size, Math.max(size, this.width - size));
-      const speed = this.rand(this.options.minSpeed, this.options.maxSpeed) * speedMultiplier;
-      const explodeY = this.rand(
-        this.height * this.options.minExplodeHeightRatio,
-        this.height * this.options.maxExplodeHeightRatio
-      );
-
+      const size = this.fontSize();
       return {
-        x: x,
+        x: this.rand(size, Math.max(size, this.width - size)),
         y: -size,
         size: size,
-        speed: speed,
-        char: this.randomFromCandidates(),
+        speed: this.rand(this.options.minSpeed, this.options.maxSpeed) * this.speedMultiplier(),
+        char: this.randomChar(),
         changeIn: this.rand(0.04, 0.12),
-        rotation: this.rand(-0.08, 0.08),
         angle: this.rand(-0.1, 0.1),
-        explodeY: explodeY
+        rotation: this.rand(-0.08, 0.08),
+        explodeY: this.rand(this.height * this.options.minExplodeHeightRatio, this.height * this.options.maxExplodeHeightRatio)
       };
-    }
-
-    trimDrops() {
-      const overflow = this.drops.length - this.getMaxDrops();
-
-      if (overflow > 0) {
-        this.drops.splice(0, overflow);
-      }
-    }
-
-    trimParticles() {
-      const overflow = this.particles.length - this.getMaxParticles();
-
-      if (overflow > 0) {
-        this.particles.splice(0, overflow);
-      }
-    }
-
-    trimChompers() {
-      const overflow = this.chompers.length - this.getMaxChompers();
-
-      if (overflow > 0) {
-        this.chompers.splice(0, overflow);
-      }
     }
 
     spawnDrop() {
       this.drops.push(this.createDrop());
-      this.trimDrops();
+      this.trim(this.drops, this.maxDrops());
+    }
+
+    burstCount() {
+      const weights = Array.isArray(this.options.burstCountWeights) ? this.options.burstCountWeights : DEFAULT_CONFIG.burstCountWeights;
+      const roll = Math.random();
+      let total = 0;
+      for (let i = 0; i < 4; i += 1) {
+        total += Number(weights[i]) || 0;
+        if (roll < total) return i + 1;
+      }
+      return 4;
+    }
+
+    burstColors(count) {
+      const colors = this.shuffled([this.options.errorColor, this.options.yellowColor, this.options.whiteColor]);
+      return [this.green()].concat(colors.slice(0, Math.max(0, count - 1)));
     }
 
     explode(x, y, baseSize) {
-      const burstCount = this.pickBurstCount();
-      const colors = this.getBurstColors(burstCount);
-      let delay = 0;
+      const count = this.burstCount();
+      const colors = this.burstColors(count);
+      const fixedDelay = Math.max(0, toNumber(this.options.multiBurstDelaySeconds, 0.5));
 
-      for (let burstIndex = 0; burstIndex < burstCount; burstIndex += 1) {
-        if (burstIndex > 0) {
-          delay += this.rand(this.options.multiBurstDelayMin, this.options.multiBurstDelayMax);
-        }
-
+      for (let i = 0; i < count; i += 1) {
         this.pendingBursts.push({
           x: x,
           y: y,
           baseSize: baseSize,
-          burstIndex: burstIndex,
-          color: colors[burstIndex],
-          delay: delay
+          burstIndex: i,
+          color: colors[i],
+          delay: i * fixedDelay
         });
       }
     }
 
-    updatePendingBursts(deltaTime) {
+    updatePendingBursts(dt) {
       let write = 0;
-
-      for (let index = 0; index < this.pendingBursts.length; index += 1) {
-        const burst = this.pendingBursts[index];
-
-        burst.delay -= deltaTime;
-
-        if (burst.delay <= 0) {
-          this.explodeOnce(burst.x, burst.y, burst.baseSize, burst.burstIndex, burst.color);
-        } else {
-          this.pendingBursts[write] = burst;
-          write += 1;
-        }
+      for (let i = 0; i < this.pendingBursts.length; i += 1) {
+        const burst = this.pendingBursts[i];
+        burst.delay -= dt;
+        if (burst.delay <= 0) this.explodeOnce(burst);
+        else this.pendingBursts[write++] = burst;
       }
-
       this.pendingBursts.length = write;
     }
 
-    explodeOnce(x, y, baseSize, burstIndex, color) {
-      const scale = 1 + burstIndex * this.options.multiBurstScaleStep;
+    explodeOnce(burst) {
       const baseCount = this.randInt(this.options.minExplodeLetters, this.options.maxExplodeLetters);
-      const count = Math.max(1, baseCount + burstIndex * this.options.multiBurstLetterStep);
-      const pattern = this.pickExplosionPattern();
+      const count = Math.max(1, baseCount + burst.burstIndex * this.options.multiBurstLetterStep);
+      const pattern = this.pick(["ring", "cone", "burst", "cross"]);
       const baseAngle = this.rand(0, Math.PI * 2);
-      const speedMultiplier = this.getSpeedMultiplier();
 
-      if (burstIndex === 0) {
-        this.maybeSpawnChomper(x, y, baseSize);
-      }
+      if (burst.burstIndex === 0) this.maybeSpawnChomper(burst.x, burst.y, burst.baseSize);
 
-      for (let index = 0; index < count; index += 1) {
-        const motion = this.getParticleMotion(pattern, index, count, baseAngle);
+      for (let i = 0; i < count; i += 1) {
+        const motion = this.particleMotion(pattern, i, count, baseAngle);
         const life = this.rand(this.options.minParticleLife, this.options.maxParticleLife);
-        const speed = motion.speed * speedMultiplier * scale;
-
+        const speed = motion.speed * this.speedMultiplier();
         this.particles.push({
-          x: x,
-          y: y,
-          px: x,
-          py: y,
+          x: burst.x,
+          y: burst.y,
+          px: burst.x,
+          py: burst.y,
           vx: Math.cos(motion.angle) * speed,
           vy: Math.sin(motion.angle) * speed,
-          size: baseSize * scale,
-          color: color,
-          char: this.randomFromCandidates(),
+          size: burst.baseSize,
+          color: burst.color,
+          char: this.randomChar(),
           alpha: 1,
           life: life,
           maxLife: life,
@@ -627,161 +453,79 @@
           spin: this.rand(-7, 7),
           rotation: this.rand(0, Math.PI * 2),
           changeIn: this.rand(0.03, 0.1),
-          streak: this.rand(10, 26) * scale
+          streak: this.rand(10, 26)
         });
       }
-
-      this.trimParticles();
+      this.trim(this.particles, this.maxParticles());
     }
 
-    pickExplosionPattern() {
-      const patterns = ["ring", "cone", "burst", "cross"];
-
-      return patterns[this.randInt(0, patterns.length - 1)];
-    }
-
-    getParticleMotion(pattern, index, count, baseAngle) {
-      if (pattern === "ring") {
-        return {
-          angle: baseAngle + (Math.PI * 2 * index) / count + this.rand(-0.18, 0.18),
-          speed: this.rand(380, 760)
-        };
-      }
-
-      if (pattern === "cone") {
-        return {
-          angle: baseAngle + this.rand(-0.45, 0.45),
-          speed: this.rand(420, 860)
-        };
-      }
-
+    particleMotion(pattern, index, count, baseAngle) {
+      if (pattern === "ring") return { angle: baseAngle + (Math.PI * 2 * index) / count + this.rand(-0.18, 0.18), speed: this.rand(380, 760) };
+      if (pattern === "cone") return { angle: baseAngle + this.rand(-0.45, 0.45), speed: this.rand(420, 860) };
       if (pattern === "cross") {
-        const baseSet = [0, Math.PI / 2, Math.PI, Math.PI * 1.5];
-
-        return {
-          angle: baseSet[index % 4] + this.rand(-0.22, 0.22),
-          speed: this.rand(450, 800)
-        };
+        const set = [0, Math.PI / 2, Math.PI, Math.PI * 1.5];
+        return { angle: set[index % 4] + this.rand(-0.22, 0.22), speed: this.rand(450, 800) };
       }
-
-      return {
-        angle: this.rand(0, Math.PI * 2),
-        speed: this.rand(this.options.minParticleSpeed, this.options.maxParticleSpeed)
-      };
+      return { angle: this.rand(0, Math.PI * 2), speed: this.rand(this.options.minParticleSpeed, this.options.maxParticleSpeed) };
     }
 
-    randomDebrisSymbol() {
-      const chomper = this.options.chomper || {};
-      const symbols = typeof chomper.debrisSymbols === "string" && chomper.debrisSymbols
-        ? Array.from(chomper.debrisSymbols)
-        : [";", "·", ",", "."];
-
-      return symbols[this.randInt(0, symbols.length - 1)] || ".";
-    }
-
-    pickChomperEntrySide() {
-      const sides = ["left", "right", "top", "bottom"];
-
-      return sides[this.randInt(0, sides.length - 1)];
-    }
-
-    createSegment(fromX, fromY, toX, toY, direction) {
-      const dx = toX - fromX;
-      const dy = toY - fromY;
-      const length = Math.sqrt(dx * dx + dy * dy) || 1;
-
-      return {
-        fromX: fromX,
-        fromY: fromY,
-        toX: toX,
-        toY: toY,
-        direction: direction,
-        length: length
-      };
+    debrisSymbol() {
+      const symbols = Array.from((this.options.chomper || {}).debrisSymbols || ";·,.");
+      return this.pick(symbols) || ".";
     }
 
     maybeSpawnChomper(x, y, baseSize) {
-      const chomperConfig = this.options.chomper || {};
+      const cfg = this.options.chomper || {};
+      if (!cfg.enabled || Math.random() >= toNumber(cfg.chance, 0.4) || this.maxChompers() <= 0) return;
+      if (this.chompers.length >= this.maxChompers()) this.chompers.shift();
 
-      if (!chomperConfig.enabled) return;
-      if (Math.random() >= toFiniteNumber(chomperConfig.chance, 0.2)) return;
-
-      const maxChompers = this.getMaxChompers();
-
-      if (maxChompers <= 0) return;
-
-      if (this.chompers.length >= maxChompers) {
-        this.chompers.shift();
-      }
-
-      const debrisMin = Math.max(1, Math.floor(toFiniteNumber(chomperConfig.debrisMin, 1)));
-      const debrisMax = Math.max(debrisMin, Math.floor(toFiniteNumber(chomperConfig.debrisMax, 4)));
-      const debrisCount = this.randInt(debrisMin, debrisMax);
-
-      const padding = Math.max(12, toFiniteNumber(chomperConfig.padding, 36));
-      const base = Math.max(8, baseSize || this.getFontSize());
-      const gap = base * toFiniteNumber(chomperConfig.debrisGapRatio, 1.05);
-      const spaceMin = Math.max(0, Math.floor(toFiniteNumber(chomperConfig.debrisSpaceMin, 1)));
-      const spaceMax = Math.max(spaceMin, Math.floor(toFiniteNumber(chomperConfig.debrisSpaceMax, 2)));
-      const spaceWidth = base * toFiniteNumber(chomperConfig.debrisSpaceWidthRatio, 0.55);
+      const base = Math.max(8, baseSize || this.fontSize());
+      const padding = Math.max(12, toNumber(cfg.padding, 36));
+      const debrisCount = this.randInt(Math.max(1, toNumber(cfg.debrisMin, 1)), Math.max(1, toNumber(cfg.debrisMax, 4)));
       const rowY = clamp(y, padding, this.height - padding);
-      const centerX = clamp(x, padding + gap, this.width - padding - gap);
-      const debrisOffsets = [0];
+      const centerX = clamp(x, padding, this.width - padding);
       const debris = [];
-      let totalWidth = 0;
+      const gap = base * toNumber(cfg.debrisGapRatio, 1.05);
+      const spaceW = base * toNumber(cfg.debrisSpaceWidthRatio, 0.55);
+      let total = 0;
+      const offsets = [0];
 
-      for (let index = 1; index < debrisCount; index += 1) {
-        const randomSpaces = this.randInt(spaceMin, spaceMax);
-        const step = gap + randomSpaces * spaceWidth;
-
-        totalWidth += step;
-        debrisOffsets.push(totalWidth);
+      for (let i = 1; i < debrisCount; i += 1) {
+        total += gap + this.randInt(toNumber(cfg.debrisSpaceMin, 1), toNumber(cfg.debrisSpaceMax, 2)) * spaceW;
+        offsets.push(total);
       }
 
-      const firstX = centerX - totalWidth / 2;
-
-      for (let index = 0; index < debrisCount; index += 1) {
-        debris.push({
-          x: clamp(firstX + debrisOffsets[index], padding, this.width - padding),
-          y: rowY,
-          char: this.randomDebrisSymbol(),
-          alive: true
-        });
+      const firstX = centerX - total / 2;
+      for (let i = 0; i < debrisCount; i += 1) {
+        debris.push({ x: clamp(firstX + offsets[i], padding, this.width - padding), y: rowY, char: this.debrisSymbol(), alive: true });
       }
 
-      const leftX = Math.min.apply(null, debris.map(function (item) {
-        return item.x;
-      }));
-      const rightX = Math.max.apply(null, debris.map(function (item) {
-        return item.x;
-      }));
-
-      const side = this.pickChomperEntrySide();
+      const side = this.pick(["left", "right", "top", "bottom"]);
+      const leftX = Math.min.apply(null, debris.map(d => d.x));
+      const rightX = Math.max.apply(null, debris.map(d => d.x));
       const sweepFromLeft = side === "left" || (side !== "right" && Math.random() < 0.5);
-      const sweepStartX = sweepFromLeft ? leftX - padding : rightX + padding;
-      const offscreenEndX = sweepFromLeft ? this.width + padding : -padding;
-      const horizontalDirection = sweepFromLeft ? "right" : "left";
+      const sweepX = sweepFromLeft ? leftX - padding : rightX + padding;
+      const endX = sweepFromLeft ? this.width + padding : -padding;
+      const dir = sweepFromLeft ? "right" : "left";
       const segments = [];
 
-      if (side === "left") {
-        segments.push(this.createSegment(-padding, rowY, this.width + padding, rowY, "right"));
-      } else if (side === "right") {
-        segments.push(this.createSegment(this.width + padding, rowY, -padding, rowY, "left"));
-      } else if (side === "top") {
-        segments.push(this.createSegment(sweepStartX, -padding, sweepStartX, rowY, "down"));
-        segments.push(this.createSegment(sweepStartX, rowY, offscreenEndX, rowY, horizontalDirection));
+      if (side === "left") segments.push(this.segment(-padding, rowY, this.width + padding, rowY, "right"));
+      else if (side === "right") segments.push(this.segment(this.width + padding, rowY, -padding, rowY, "left"));
+      else if (side === "top") {
+        segments.push(this.segment(sweepX, -padding, sweepX, rowY, "down"));
+        segments.push(this.segment(sweepX, rowY, endX, rowY, dir));
       } else {
-        segments.push(this.createSegment(sweepStartX, this.height + padding, sweepStartX, rowY, "up"));
-        segments.push(this.createSegment(sweepStartX, rowY, offscreenEndX, rowY, horizontalDirection));
+        segments.push(this.segment(sweepX, this.height + padding, sweepX, rowY, "up"));
+        segments.push(this.segment(sweepX, rowY, endX, rowY, dir));
       }
 
       this.chompers.push({
-        variant: this.pickChomperVariant(),
+        variant: this.pick(Array.isArray(cfg.pacmanVariants) && cfg.pacmanVariants.length ? cfg.pacmanVariants : ["crown", "santaHat", "tuftHair"]),
         x: segments[0].fromX,
         y: segments[0].fromY,
         direction: segments[0].direction,
-        size: base * toFiniteNumber(chomperConfig.sizeRatio, 1.45),
-        debrisSize: base * toFiniteNumber(chomperConfig.debrisSizeRatio, 1),
+        size: base * toNumber(cfg.sizeRatio, 1.45),
+        debrisSize: base * toNumber(cfg.debrisSizeRatio, 1),
         debris: debris,
         segments: segments,
         segmentIndex: 0,
@@ -789,138 +533,94 @@
         biteElapsed: 0,
         mouthOpen: true
       });
-
-      this.trimChompers();
     }
 
-    updateChomper(chomper, deltaTime) {
-      const chomperConfig = this.options.chomper || {};
-      const speed = Math.max(20, toFiniteNumber(chomperConfig.speed, 520));
-      const biteInterval = Math.max(0.04, toFiniteNumber(chomperConfig.biteInterval, 0.12));
-      const eatRadius = chomper.size * toFiniteNumber(chomperConfig.eatRadiusRatio, 0.8);
-      const segment = chomper.segments[chomper.segmentIndex];
+    segment(fromX, fromY, toX, toY, direction) {
+      const dx = toX - fromX;
+      const dy = toY - fromY;
+      return { fromX, fromY, toX, toY, direction, length: Math.sqrt(dx * dx + dy * dy) || 1 };
+    }
 
+    updateChomper(chomper, dt) {
+      const cfg = this.options.chomper || {};
+      const segment = chomper.segments[chomper.segmentIndex];
       if (!segment) return false;
 
-      chomper.biteElapsed += deltaTime;
-
-      if (chomper.biteElapsed >= biteInterval) {
+      chomper.biteElapsed += dt;
+      if (chomper.biteElapsed >= Math.max(0.04, toNumber(cfg.biteInterval, 0.12))) {
         chomper.biteElapsed = 0;
         chomper.mouthOpen = !chomper.mouthOpen;
       }
 
-      chomper.segmentDistance += speed * deltaTime;
-
-      const progress = clamp(chomper.segmentDistance / segment.length, 0, 1);
-
-      chomper.x = segment.fromX + (segment.toX - segment.fromX) * progress;
-      chomper.y = segment.fromY + (segment.toY - segment.fromY) * progress;
+      chomper.segmentDistance += Math.max(20, toNumber(cfg.speed, 230)) * dt;
+      const p = clamp(chomper.segmentDistance / segment.length, 0, 1);
+      chomper.x = segment.fromX + (segment.toX - segment.fromX) * p;
+      chomper.y = segment.fromY + (segment.toY - segment.fromY) * p;
       chomper.direction = segment.direction;
 
-      chomper.debris.forEach(function (debris) {
-        if (!debris.alive) return;
-
-        const dx = chomper.x - debris.x;
-        const dy = chomper.y - debris.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance <= eatRadius) {
-          debris.alive = false;
-        }
+      const eatRadius = chomper.size * toNumber(cfg.eatRadiusRatio, 0.8);
+      chomper.debris.forEach(function (d) {
+        if (!d.alive) return;
+        const dx = chomper.x - d.x;
+        const dy = chomper.y - d.y;
+        if (Math.sqrt(dx * dx + dy * dy) <= eatRadius) d.alive = false;
       });
 
-      if (progress >= 1) {
+      if (p >= 1) {
         chomper.segmentIndex += 1;
         chomper.segmentDistance = 0;
       }
-
       return chomper.segmentIndex < chomper.segments.length;
     }
 
-    updateChompers(deltaTime) {
-      let write = 0;
-
-      for (let index = 0; index < this.chompers.length; index += 1) {
-        const chomper = this.chompers[index];
-
-        if (this.updateChomper(chomper, deltaTime)) {
-          this.chompers[write] = chomper;
-          write += 1;
-        }
-      }
-
-      this.chompers.length = write;
-    }
-
-    updateDrop(drop, deltaTime) {
-      drop.y += drop.speed * deltaTime;
-      drop.angle += drop.rotation * deltaTime * 60;
-      drop.changeIn -= deltaTime;
-
+    updateDrop(drop, dt) {
+      drop.y += drop.speed * dt;
+      drop.angle += drop.rotation * dt * 60;
+      drop.changeIn -= dt;
       if (drop.changeIn <= 0) {
-        drop.char = this.randomFromCandidates();
+        drop.char = this.randomChar();
         drop.changeIn = this.rand(0.04, 0.12);
       }
-
-      if (drop.y >= drop.explodeY) {
-        this.explode(drop.x, drop.y, drop.size);
+      if (drop.y >= drop.explodeY || drop.y >= this.height - drop.size * 0.5) {
+        this.explode(drop.x, Math.min(drop.y, this.height - drop.size * 0.5), drop.size);
         return false;
       }
-
-      if (drop.y >= this.height - drop.size * 0.5) {
-        this.explode(drop.x, this.height - drop.size * 0.5, drop.size);
-        return false;
-      }
-
       return true;
     }
 
-    updateParticle(particle, deltaTime) {
+    updateParticle(particle, dt) {
       particle.px = particle.x;
       particle.py = particle.y;
-
-      particle.x += particle.vx * deltaTime;
-      particle.y += particle.vy * deltaTime;
-      particle.vx *= Math.pow(particle.drag, deltaTime * 60);
-      particle.vy *= Math.pow(particle.drag, deltaTime * 60);
-      particle.rotation += particle.spin * deltaTime * 0.05;
-      particle.life -= deltaTime;
+      particle.x += particle.vx * dt;
+      particle.y += particle.vy * dt;
+      particle.vx *= Math.pow(particle.drag, dt * 60);
+      particle.vy *= Math.pow(particle.drag, dt * 60);
+      particle.rotation += particle.spin * dt * 0.05;
+      particle.life -= dt;
       particle.alpha = Math.max(0, particle.life / particle.maxLife);
-      particle.changeIn -= deltaTime;
-
+      particle.changeIn -= dt;
       if (particle.changeIn <= 0) {
-        particle.char = this.randomFromCandidates();
+        particle.char = this.randomChar();
         particle.changeIn = this.rand(0.03, 0.1);
       }
-
       return particle.life > 0;
     }
 
-    compactUpdate(array, updater, deltaTime) {
+    compact(list, updater, dt) {
       let write = 0;
-
-      for (let index = 0; index < array.length; index += 1) {
-        const item = array[index];
-
-        if (updater.call(this, item, deltaTime)) {
-          array[write] = item;
-          write += 1;
-        }
+      for (let i = 0; i < list.length; i += 1) {
+        if (updater.call(this, list[i], dt)) list[write++] = list[i];
       }
-
-      array.length = write;
+      list.length = write;
     }
 
     clear() {
-      if (!this.ctx) return;
-
-      this.ctx.clearRect(0, 0, this.width, this.height);
+      if (this.ctx) this.ctx.clearRect(0, 0, this.width, this.height);
     }
 
     drawDrop(drop) {
+      const color = this.green();
       const ctx = this.ctx;
-      const color = this.getGreenColor();
-
       ctx.save();
       ctx.translate(drop.x, drop.y);
       ctx.rotate(drop.angle);
@@ -928,61 +628,63 @@
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillStyle = color;
-
       if (this.options.glow) {
         ctx.shadowColor = color;
         ctx.shadowBlur = this.options.dropShadowBlur;
       }
-
       ctx.fillText(drop.char, 0, 0);
       ctx.restore();
     }
 
-    drawParticle(particle) {
+    drawParticle(p) {
       const ctx = this.ctx;
-      const dx = particle.x - particle.px;
-      const dy = particle.y - particle.py;
-      const length = Math.sqrt(dx * dx + dy * dy) || 1;
-      const tailX = particle.x - (dx / length) * particle.streak;
-      const tailY = particle.y - (dy / length) * particle.streak;
-
+      const dx = p.x - p.px;
+      const dy = p.y - p.py;
+      const len = Math.sqrt(dx * dx + dy * dy) || 1;
       ctx.save();
-      ctx.globalAlpha = particle.alpha;
-      ctx.strokeStyle = particle.color;
-      ctx.lineWidth = Math.max(1, particle.size * 0.08);
-
+      ctx.globalAlpha = p.alpha;
+      ctx.strokeStyle = p.color;
+      ctx.lineWidth = Math.max(1, p.size * 0.08);
       if (this.options.glow) {
-        ctx.shadowColor = particle.color;
+        ctx.shadowColor = p.color;
         ctx.shadowBlur = this.options.particleShadowBlur;
       }
-
       ctx.beginPath();
-      ctx.moveTo(tailX, tailY);
-      ctx.lineTo(particle.x, particle.y);
+      ctx.moveTo(p.x - (dx / len) * p.streak, p.y - (dy / len) * p.streak);
+      ctx.lineTo(p.x, p.y);
       ctx.stroke();
-
-      ctx.translate(particle.x, particle.y);
-      ctx.rotate(particle.rotation);
-      ctx.font = "700 " + particle.size + "px " + this.fontFamilyCache;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rotation);
+      ctx.font = "700 " + p.size + "px " + this.fontFamilyCache;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillStyle = particle.color;
-      ctx.fillText(particle.char, 0, 0);
+      ctx.fillStyle = p.color;
+      ctx.fillText(p.char, 0, 0);
       ctx.restore();
     }
 
-    getSvgConfig() {
-      const chomper = this.options.chomper || {};
-      return chomper.pacmanSvg || {};
+    drawChompers() {
+      for (let i = 0; i < this.chompers.length; i += 1) this.drawChomperDebris(this.chompers[i]);
+      for (let i = 0; i < this.chompers.length; i += 1) this.drawChomper(this.chompers[i]);
     }
 
-    pickChomperVariant() {
-      const chomper = this.options.chomper || {};
-      const variants = Array.isArray(chomper.pacmanVariants) && chomper.pacmanVariants.length
-        ? chomper.pacmanVariants
-        : ["crown", "santaHat", "tuftHair"];
-
-      return variants[this.randInt(0, variants.length - 1)] || "crown";
+    drawChomperDebris(chomper) {
+      const cfg = this.options.chomper || {};
+      const color = cfg.debrisColor || "#23ef23";
+      const ctx = this.ctx;
+      ctx.save();
+      ctx.font = "700 " + chomper.debrisSize + "px " + (cfg.debrisFontFamily || this.fontFamilyCache);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = color;
+      if (this.options.glow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = this.options.particleShadowBlur;
+      }
+      chomper.debris.forEach(function (d) {
+        if (d.alive) ctx.fillText(d.char, d.x, d.y);
+      });
+      ctx.restore();
     }
 
     preparePacmanSprites() {
@@ -990,37 +692,33 @@
       const states = ["open", "closed"];
       const sprites = {};
 
-      for (let variantIndex = 0; variantIndex < variants.length; variantIndex += 1) {
-        const variant = variants[variantIndex];
+      for (let i = 0; i < variants.length; i += 1) {
+        const variant = variants[i];
         sprites[variant] = {};
-
-        for (let stateIndex = 0; stateIndex < states.length; stateIndex += 1) {
-          const state = states[stateIndex];
+        for (let j = 0; j < states.length; j += 1) {
+          const mouthState = states[j];
           const image = new Image();
-          const svg = this.buildPacmanSvg(variant, state);
-
           image.decoding = "async";
-          image.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
-          sprites[variant][state] = image;
+          image.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(this.buildPacmanSvg(variant, mouthState));
+          sprites[variant][mouthState] = image;
         }
       }
 
       this.pacmanSprites = sprites;
     }
 
-    getPacmanSprite(variant, state) {
+    getPacmanSprite(variant, mouthState) {
       const safeVariant = this.pacmanSprites[variant] ? variant : "crown";
-      const safeState = state === "closed" ? "closed" : "open";
-
+      const safeState = mouthState === "closed" ? "closed" : "open";
       return this.pacmanSprites[safeVariant] && this.pacmanSprites[safeVariant][safeState];
     }
 
-    buildPacmanSvg(variant, state) {
-      const chomper = this.options.chomper || {};
-      const svgConfig = this.getSvgConfig();
-      const bodyColor = this.escapeSvg(chomper.pacmanColor || "#23ef23");
-      const eyeColor = this.escapeSvg(svgConfig.eyeColor || "#111111");
-      const mouthPath = state === "closed"
+    buildPacmanSvg(variant, mouthState) {
+      const cfg = this.options.chomper || {};
+      const svg = cfg.pacmanSvg || {};
+      const bodyColor = this.escapeSvg(cfg.pacmanColor || "#23ef23");
+      const eyeColor = this.escapeSvg(svg.eyeColor || "#111111");
+      const mouthPath = mouthState === "closed"
         ? "M58 70 L124 60 L108 66 L124 70 L108 74 L124 80 Z"
         : "M58 70 L126 26 L107 47 L123 58 L105 70 L123 82 L107 93 L126 114 Z";
       const accessory = this.buildPacmanAccessorySvg(variant);
@@ -1040,29 +738,27 @@
     }
 
     buildPacmanAccessorySvg(variant) {
-      const svgConfig = this.getSvgConfig();
+      const cfg = this.options.chomper || {};
+      const svg = cfg.pacmanSvg || {};
 
       if (variant === "santaHat") {
-        const red = this.escapeSvg(svgConfig.santaRedColor || "#e81d1d");
-        const white = this.escapeSvg(svgConfig.santaWhiteColor || "#f0e8e8");
-        const stroke = this.escapeSvg(svgConfig.santaStrokeColor || "#111111");
-
+        const red = this.escapeSvg(svg.santaRedColor || "#e81d1d");
+        const white = this.escapeSvg(svg.santaWhiteColor || "#f0e8e8");
+        const stroke = this.escapeSvg(svg.santaStrokeColor || "#111111");
         return `<path d="M29 39 C42 17 66 8 96 24 C78 27 61 35 43 47 Z" fill="${red}" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>
   <path d="M32 40 C49 31 70 25 91 25" fill="none" stroke="${white}" stroke-width="9" stroke-linecap="round"/>
   <circle cx="98" cy="24" r="8" fill="${white}" stroke="${stroke}" stroke-width="1.5"/>`;
       }
 
       if (variant === "tuftHair") {
-        const hair = this.escapeSvg(svgConfig.hairColor || "#111111");
-
+        const hair = this.escapeSvg(svg.hairColor || "#111111");
         return `<path d="M43 33 C36 19 45 13 47 5" fill="none" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>
   <path d="M56 30 C52 15 61 10 61 2" fill="none" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>
   <path d="M69 32 C72 17 82 14 85 6" fill="none" stroke="${hair}" stroke-width="5" stroke-linecap="round"/>`;
       }
 
-      const crown = this.escapeSvg(svgConfig.crownColor || "#f8ca00");
-      const stroke = this.escapeSvg(svgConfig.crownStrokeColor || "#111111");
-
+      const crown = this.escapeSvg(svg.crownColor || "#f8ca00");
+      const stroke = this.escapeSvg(svg.crownStrokeColor || "#111111");
       return `<path d="M27 34 L38 14 L49 34 L60 14 L71 34 L82 14 L93 34 L90 41 L30 41 Z" fill="${crown}" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>
   <circle cx="38" cy="31" r="2.5" fill="${stroke}"/>
   <circle cx="60" cy="29" r="2.5" fill="${stroke}"/>
@@ -1077,66 +773,18 @@
         .replace(/>/g, "&gt;");
     }
 
-    getDirectionAngle(direction) {
-      if (direction === "left") return Math.PI;
-      if (direction === "up") return -Math.PI / 2;
-      if (direction === "down") return Math.PI / 2;
-
-      return 0;
-    }
-
-    drawFallbackPacman(ctx, size, color, mouthOpen) {
-      const radius = size * 0.42;
-      const mouth = mouthOpen ? Math.PI * 0.28 : Math.PI * 0.04;
-
-      ctx.save();
-      ctx.fillStyle = color;
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.arc(0, 0, radius, mouth, Math.PI * 2 - mouth, false);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
-    }
-
-    drawChomperDebris(chomper) {
-      const ctx = this.ctx;
-      const chomperConfig = this.options.chomper || {};
-      const color = chomperConfig.debrisColor || "#f0e8e8";
-
-      ctx.save();
-      ctx.font = "700 " + chomper.debrisSize + "px " + (chomperConfig.debrisFontFamily || this.fontFamilyCache);
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = color;
-
-      if (this.options.glow) {
-        ctx.shadowColor = color;
-        ctx.shadowBlur = this.options.particleShadowBlur;
-      }
-
-      chomper.debris.forEach(function (debris) {
-        if (!debris.alive) return;
-
-        ctx.fillText(debris.char, debris.x, debris.y);
-      });
-
-      ctx.restore();
-    }
-
     drawChomper(chomper) {
+      const cfg = this.options.chomper || {};
       const ctx = this.ctx;
-      const chomperConfig = this.options.chomper || {};
-      const color = chomperConfig.pacmanColor || "#23ef23";
-      const state = chomper.mouthOpen ? "open" : "closed";
-      const sprite = this.getPacmanSprite(chomper.variant, state);
+      const color = cfg.pacmanColor || "#23ef23";
+      const angle = this.directionAngle(chomper.direction);
+      const mouthState = chomper.mouthOpen ? "open" : "closed";
+      const sprite = this.getPacmanSprite(chomper.variant, mouthState);
       const size = chomper.size;
-      const angle = this.getDirectionAngle(chomper.direction || "right");
 
       ctx.save();
       ctx.translate(chomper.x, chomper.y);
       ctx.rotate(angle);
-
       if (this.options.glow) {
         ctx.shadowColor = color;
         ctx.shadowBlur = this.options.dropShadowBlur;
@@ -1145,42 +793,44 @@
       if (sprite && sprite.complete && sprite.naturalWidth > 0) {
         ctx.drawImage(sprite, -size / 2, -size / 2, size, size);
       } else {
-        this.drawFallbackPacman(ctx, size, color, chomper.mouthOpen);
+        this.drawFallbackChomper(chomper, color);
       }
 
       ctx.restore();
     }
 
-    drawChompers() {
-      for (let index = 0; index < this.chompers.length; index += 1) {
-        this.drawChomperDebris(this.chompers[index]);
-      }
-
-      for (let index = 0; index < this.chompers.length; index += 1) {
-        this.drawChomper(this.chompers[index]);
-      }
+    drawFallbackChomper(chomper, color) {
+      const ctx = this.ctx;
+      const radius = chomper.size * 0.42;
+      const mouth = chomper.mouthOpen ? Math.PI * 0.28 : Math.PI * 0.04;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, radius, mouth, Math.PI * 2 - mouth, false);
+      ctx.closePath();
+      ctx.fill();
+      this.drawChomperEye(radius);
     }
 
-    updateSpawning(deltaTime) {
-      if (!this.startedSpawning) {
-        this.delayRemaining -= deltaTime;
+    directionAngle(direction) {
+      if (direction === "left") return Math.PI;
+      if (direction === "up") return -Math.PI / 2;
+      if (direction === "down") return Math.PI / 2;
+      return 0;
+    }
 
+    updateSpawning(dt) {
+      if (!this.startedSpawning) {
+        this.delayRemaining -= dt;
         if (this.delayRemaining <= 0) {
           this.startedSpawning = true;
           this.spawnElapsed = 0;
-
-          if (this.options.immediateStart) {
-            this.spawnDrop();
-          }
+          if (this.options.immediateStart) this.spawnDrop();
         }
-
         return;
       }
-
-      this.spawnElapsed += deltaTime;
-
-      const interval = Math.max(0.05, toFiniteNumber(this.options.intervalSeconds, 5));
-
+      this.spawnElapsed += dt;
+      const interval = Math.max(0.05, toNumber(this.options.intervalSeconds, 5));
       if (this.spawnElapsed >= interval) {
         this.spawnElapsed -= interval;
         this.spawnDrop();
@@ -1189,82 +839,47 @@
 
     loop(timestamp) {
       if (!this.running || this.disposed) return;
-
       if (this.options.pauseWhenHidden && document.hidden) {
         this.rafId = 0;
         this.lastTime = 0;
         return;
       }
-
-      if (!this.lastTime) {
-        this.lastTime = timestamp;
-      }
-
-      const deltaTime = Math.min(
-        toFiniteNumber(this.options.maxFrameDelta, DEFAULT_CONFIG.maxFrameDelta),
-        (timestamp - this.lastTime) / 1000
-      );
-
+      if (!this.lastTime) this.lastTime = timestamp;
+      const dt = Math.min(toNumber(this.options.maxFrameDelta, 0.033), (timestamp - this.lastTime) / 1000);
       this.lastTime = timestamp;
 
       this.clear();
-      this.updateSpawning(deltaTime);
-      this.updatePendingBursts(deltaTime);
-      this.compactUpdate(this.drops, this.updateDrop, deltaTime);
-      this.compactUpdate(this.particles, this.updateParticle, deltaTime);
-      this.updateChompers(deltaTime);
+      this.updateSpawning(dt);
+      this.updatePendingBursts(dt);
+      this.compact(this.drops, this.updateDrop, dt);
+      this.compact(this.particles, this.updateParticle, dt);
+      this.compact(this.chompers, this.updateChomper, dt);
 
-      for (let index = 0; index < this.drops.length; index += 1) {
-        this.drawDrop(this.drops[index]);
-      }
-
-      for (let index = 0; index < this.particles.length; index += 1) {
-        this.drawParticle(this.particles[index]);
-      }
-
+      for (let i = 0; i < this.drops.length; i += 1) this.drawDrop(this.drops[i]);
+      for (let i = 0; i < this.particles.length; i += 1) this.drawParticle(this.particles[i]);
       this.drawChompers();
-
       this.rafId = window.requestAnimationFrame(this.loop);
     }
 
     start() {
       if (this.running || this.disposed) return;
-
       this.running = true;
       this.lastTime = 0;
       this.spawnElapsed = 0;
-      this.delayRemaining = Math.max(0, toFiniteNumber(this.options.startDelaySeconds, 0));
+      this.delayRemaining = Math.max(0, toNumber(this.options.startDelaySeconds, 0));
       this.startedSpawning = this.delayRemaining <= 0;
-
-      if (this.startedSpawning && this.options.immediateStart) {
-        this.spawnDrop();
-      }
-
+      if (this.startedSpawning && this.options.immediateStart) this.spawnDrop();
       this.rafId = window.requestAnimationFrame(this.loop);
     }
 
-    pause() {
-      this.running = false;
-      this.lastTime = 0;
-
-      if (this.rafId) {
-        window.cancelAnimationFrame(this.rafId);
-        this.rafId = 0;
-      }
-    }
-
     destroy() {
-      this.pause();
+      this.running = false;
       this.disposed = true;
-
+      if (this.rafId) window.cancelAnimationFrame(this.rafId);
       window.clearTimeout(this.resizeTimer);
       window.removeEventListener("resize", this.handleResize);
       document.removeEventListener("visibilitychange", this.handleVisibilityChange);
-
-      if (this.canvas && this.canvas.parentNode) {
-        this.canvas.parentNode.removeChild(this.canvas);
-      }
-
+      if (this.canvas && this.canvas.parentNode) this.canvas.parentNode.removeChild(this.canvas);
       this.canvas = null;
       this.ctx = null;
       this.drops = [];
@@ -1275,38 +890,13 @@
 
     updateConfig(nextConfig) {
       if (this.disposed) return this.getConfig();
-
-      nextConfig = nextConfig || {};
-      this.options = getRuntimeConfig(mergeNested(this.options, nextConfig));
-
-      if (Object.prototype.hasOwnProperty.call(nextConfig, "chomper")) {
+      this.options = runtimeConfig(mergeNested(this.options, nextConfig || {}));
+      if (Object.prototype.hasOwnProperty.call(nextConfig || {}, "candidates")) this.candidates = this.normalizeCandidates(this.options.candidates);
+      if (Object.prototype.hasOwnProperty.call(nextConfig || {}, "chomper") && this.options.chomper && this.options.chomper.enabled) {
         this.preparePacmanSprites();
       }
-
-      if (Object.prototype.hasOwnProperty.call(nextConfig, "candidates")) {
-        this.candidates = this.normalizeCandidates(this.options.candidates);
-      }
-
-      if (Object.prototype.hasOwnProperty.call(nextConfig, "startDelaySeconds") && !this.startedSpawning) {
-        this.delayRemaining = Math.max(0, toFiniteNumber(this.options.startDelaySeconds, 0));
-      }
-
-      this.applyCanvasStyle();
-      this.resolvePageFont();
-
-      if (
-        Object.prototype.hasOwnProperty.call(nextConfig, "dprMax") ||
-        Object.prototype.hasOwnProperty.call(nextConfig, "mobileDprMax") ||
-        Object.prototype.hasOwnProperty.call(nextConfig, "fontSize") ||
-        Object.prototype.hasOwnProperty.call(nextConfig, "fontFamily")
-      ) {
-        this.resizeNow();
-      }
-
-      this.trimDrops();
-      this.trimParticles();
-      this.trimChompers();
-
+      this.resizeNow();
+      this.trimAll();
       return this.getConfig();
     }
 
@@ -1315,62 +905,82 @@
     }
   }
 
+  function active() {
+    return Boolean(instance || waitTimer);
+  }
+
   function destroyInstance() {
-    if (instance) {
-      instance.destroy();
-      instance = null;
-    }
+    if (instance) instance.destroy();
+    instance = null;
   }
 
-  function createInstance(config) {
-    destroyInstance();
-    instance = new MatrixLetterRainEffect(config);
-
-    return instance;
-  }
-
-  function start(config) {
+  function startNow(config) {
+    if (instance) return instance;
     manuallyStopped = false;
     clearWaitTimer();
-
     activeConfig = mergeNested(activeConfig, config || {});
-
     if (shouldReduceMotion(activeConfig)) {
       destroyInstance();
       return null;
     }
-
-    createInstance(activeConfig);
+    instance = new MatrixLetterRainEffect(activeConfig);
     instance.start();
-
     return instance;
   }
 
-  function pause() {
-    clearWaitTimer();
-
-    if (instance) {
-      instance.pause();
-    }
+  function splashGone() {
+    return !document.getElementById(activeConfig.splashFaceLayerId) && !document.getElementById(activeConfig.splashFlashLayerId);
   }
 
-  function stop() {
+  function waitThenStart(config) {
+    if (active()) return instance;
+    manuallyStopped = false;
+    clearWaitTimer();
+    activeConfig = mergeNested(activeConfig, config || {});
+    if (shouldReduceMotion(activeConfig)) return null;
+
+    const startedAt = Date.now();
+    const timeout = Math.max(0, toNumber(activeConfig.splashWaitTimeoutMs, 6000));
+    const poll = Math.max(16, toNumber(activeConfig.splashPollMs, 80));
+
+    function check() {
+      if (manuallyStopped) return;
+      if (splashGone() || Date.now() - startedAt >= timeout) {
+        waitTimer = 0;
+        startNow();
+        return;
+      }
+      waitTimer = window.setTimeout(check, poll);
+    }
+
+    check();
+    return null;
+  }
+
+  function start(config) {
+    if (active()) return instance;
+    activeConfig = mergeNested(activeConfig, config || {});
+    return activeConfig.waitForSplash ? waitThenStart() : startNow();
+  }
+
+  function stopNow() {
     manuallyStopped = true;
     clearWaitTimer();
     destroyInstance();
+    return null;
   }
 
-  function destroy() {
-    stop();
+  function toggle(force, config) {
+    if (config && typeof config === "object") activeConfig = mergeNested(activeConfig, config);
+    const shouldStart = typeof force === "boolean" ? force : !active();
+    if (shouldStart && active()) return instance;
+    if (!shouldStart && !active()) return null;
+    return shouldStart ? start() : stopNow();
   }
 
   function updateConfig(config) {
     activeConfig = mergeNested(activeConfig, config || {});
-
-    if (instance) {
-      instance.updateConfig(activeConfig);
-    }
-
+    if (instance) instance.updateConfig(activeConfig);
     return getConfig();
   }
 
@@ -1378,69 +988,17 @@
     return mergeNested({}, activeConfig);
   }
 
-  function isSplashGone() {
-    const face = document.getElementById(activeConfig.splashFaceLayerId);
-    const flash = document.getElementById(activeConfig.splashFlashLayerId);
-
-    return !face && !flash;
-  }
-
-  function startAfterSplash(config) {
-    manuallyStopped = false;
-    clearWaitTimer();
-
-    activeConfig = mergeNested(activeConfig, config || {});
-
-    if (shouldReduceMotion(activeConfig)) {
-      destroyInstance();
-      return null;
-    }
-
-    const startedAt = Date.now();
-    const timeout = Math.max(0, toFiniteNumber(activeConfig.splashWaitTimeoutMs, 6000));
-    const poll = Math.max(16, toFiniteNumber(activeConfig.splashPollMs, 80));
-
-    function check() {
-      if (manuallyStopped) return;
-
-      if (isSplashGone() || Date.now() - startedAt >= timeout) {
-        waitTimer = 0;
-        start();
-        return;
-      }
-
-      waitTimer = window.setTimeout(check, poll);
-    }
-
-    check();
-
-    return null;
-  }
-
-  function onReady() {
-    if (!activeConfig.autoStart) return;
-
-    if (activeConfig.waitForSplash) {
-      startAfterSplash();
-      return;
-    }
-
-    start();
-  }
-
   window.MatrixLetterRain = {
     start: start,
-    startAfterSplash: startAfterSplash,
-    pause: pause,
-    stop: stop,
-    destroy: destroy,
+    toggle: toggle,
     updateConfig: updateConfig,
     getConfig: getConfig
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", onReady, { once: true });
-  } else {
-    onReady();
+  function boot() {
+    if (activeConfig.autoStart) start();
   }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
+  else boot();
 })(window, document);

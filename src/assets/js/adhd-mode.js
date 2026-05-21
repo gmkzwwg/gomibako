@@ -1,144 +1,122 @@
 /*!
- * ADHD Read Mode v4
+ * ADHD Read Mode v4-lite
  *
  * Introduction:
- * A plug-and-play reading enhancer for long-form pages. It creates visual reading anchors for two writing modes:
- * wordMode for alphabetic / word-based scripts, and glyphMode for CJK-style independent-character scripts.
+ * A compact plug-and-play ADHD reading helper for long-form pages.
+ * It keeps the mature English word-anchor behavior and adds a lightweight CJK character animation effect.
  *
  * Usage:
- * Include this file after the page content or before DOMContentLoaded. It runs automatically by default.
- * Customize by editing CONFIG below, or call updateConfig({ ... }) / ADHDReadMode.updateConfig({ ... }) later.
+ * Include this file after page content or before DOMContentLoaded. It runs automatically when enabled is true.
+ * Customize by editing CONFIG below, or call ADHDReadMode.updateConfig({ ... }) later.
  *
  * Global API:
- * window.ADHDReadMode.enable()        - Enable and process the current page.
- * window.ADHDReadMode.disable()       - Disable and remove generated marks.
- * window.ADHDReadMode.toggle()        - Toggle between enabled and disabled states.
- * window.ADHDReadMode.rebuild()       - Re-scan current DOM without changing config.
- * window.ADHDReadMode.destroy()       - Remove marks, observers, style, timers, and public event listeners.
- * window.ADHDReadMode.updateConfig()  - Merge new config, clean old marks, and reprocess immediately.
+ * window.ADHDReadMode.toggle(force?)  - Toggle enabled/disabled state. Optional boolean force is supported.
+ * window.ADHDReadMode.updateConfig()  - Merge config, clean old output, and rebuild.
  * window.ADHDReadMode.getConfig()     - Return a cloned runtime config.
- * window.ADHDReadMode.getState()      - Return lightweight runtime state.
  * window.updateConfig()               - Convenience alias for ADHDReadMode.updateConfig().
  *
  * Notes:
- * The script avoids innerHTML string replacement. It uses TreeWalker + DocumentFragment, skips code/math/UI
- * regions, unwraps its own spans before reprocessing, and uses viewport-first batched rendering for long pages.
- * v4 removes old Chinese run/gap logic. CJK glyphMode splits by punctuation, numbers, word tokens, and protected
- * inline elements such as code/strong/em, then colors alternating structural sections.
+ * English word anchors persist until disabled/rebuilt. CJK effects temporarily wrap exactly one visible CJK
+ * character, pre-color it, play one balanced random animation, and restore it to normal text.
  */
 (function () {
-  'use strict';
+  "use strict";
 
   const CONFIG = {
     enabled: true,
-    rootSelectors: ['.post-content'],
-    contentSelectors: ['p', 'li', 'td', 'th', 'blockquote', 'dd', 'dt', 'figcaption'],
+
+    rootSelectors: [".post-content"],
+    contentSelectors: ["p", "li", "td", "th", "blockquote", "dd", "dt", "figcaption"],
     excludeSelectors: [
-      'pre', 'code', 'strong', 'em', 'kbd', 'samp', 'script', 'style', 'textarea', 'input', 'select', 'option',
-      'button', 'svg', 'canvas', 'math', 'mjx-container', '.math', '.MathJax', '.katex', '.katex-display',
-      '.mermaid', '.highlight', '.rouge-code', '.rouge-table', '.lineno', '.no-adhd', '.adhd-ignore',
-      '.jsd-linear-toolbar', '.jsd-tree-widget', '[data-adhd-rm="1"]'
+      "pre", "code", "strong", "em", "kbd", "samp", "script", "style", "textarea", "input", "select", "option",
+      "button", "svg", "canvas", "math", "mjx-container", ".math", ".MathJax", ".katex", ".katex-display",
+      ".mermaid", ".highlight", ".rouge-code", ".rouge-table", ".lineno", ".no-adhd", ".adhd-ignore",
+      ".jsd-linear-toolbar", ".jsd-tree-widget", "[data-adhd-rm='1']", ".adhd-cjk-live", ".adhd-fx-snowflake"
     ],
+
     colorPool: [
-      '#8B929E', '#4857fa', '#C6F94A', '#CBD5E1', '#38F8FF', '#27f9a8', '#8a076d', '#FF5D73', '#7DD6A8',
-      '#9844f2', '#FF4D6D', '#FFD166', '#4DA3FF', '#D26BFF', '#E6EDF3', '#7D8590', '#FF9F43'
+      "#8B929E", "#4857fa", "#C6F94A", "#CBD5E1", "#38F8FF", "#27f9a8", "#8a076d", "#FF5D73", "#7DD6A8",
+      "#9844f2", "#FF4D6D", "#FFD166", "#4DA3FF", "#D26BFF", "#E6EDF3", "#7D8590", "#FF9F43"
     ],
+
     style: {
       color: true,
       fontWeight: false,
       fontWeightProbability: 0.2,
-      fontWeightValue: '700'
+      fontWeightValue: "700"
     },
+
     wordMode: {
       enabled: true,
-      minLength: 5,
-      sampleRate: 1
+      minLength: 4,
+      sampleRate: 1,
+      batchSize: 8,
+      batchDelayMs: 16,
+      maxTextLengthPerElement: 180000
     },
-    glyphMode: {
+
+    cjkEffect: {
       enabled: true,
-      shortMax: 5,
-      mediumMax: 10,
-      longMax: 18,
-      minSectionChars: 2,
-      overlongMin: 4,
-      overlongMax: 8,
-      sectionEvery: 2,
-      protectedSelectors: ['code', 'strong', 'em'],
-      sampleRate: 1
+      intervalMs: 4500,
+      preColorMs: 2000,
+      jumpMs: 1200,
+      shiverMs: 1000,
+      growMs: 1200,
+      snowflakeMin: 3,
+      snowflakeMax: 6,
+      maxVisibleBlocks: 80,
+      maxTextNodesPerTick: 180
     },
-    viewport: {
-      enabled: true,
-      rootMargin: '400px 0px',
-      observeOnce: true
-    },
+
     dynamic: {
-      observe: true,
-      debounceMs: 10,
-      eventNames: ['content:rendered']
+      eventNames: ["content:rendered"]
     },
+
     random: {
-      mode: 'stable',
-      seed: 'adhd-read-mode-v4'
+      mode: "stable",
+      seed: "adhd-read-mode-v4-lite"
     },
-    performance: {
-      minTextLength: 2,
-      maxTextLengthPerElement: 180000,
-      batchSize: 6,
-      batchBudgetMs: 8,
-      idleTimeoutMs: 500,
-      maxQueueSize: 4000
-    },
-    startup: {
-      delaySeconds: 2
-    },
+
     css: {
-      styleId: 'adhd-read-mode-style',
-      markClass: 'adhd-rm-mark',
-      processedAttr: 'data-adhd-rm-signature'
+      styleId: "adhd-read-mode-style",
+      wordClass: "adhd-word-mark",
+      wordAttr: "data-adhd-word-signature"
     },
-    globalApiName: 'updateConfig'
+
+    globalApiName: "updateConfig",
+    zIndex: 2147483000
   };
 
-  const MARK_ATTR = 'data-adhd-rm';
-  const MARK_SELECTOR = '[data-adhd-rm="1"]';
-  const GLYPH_PUNCTUATION = '、。！？；：，,.!?;:()[]{}"“”‘’《》〈〉「」『』—…·/|+*=<>~`@#$%^&_-';
+  const MARK_ATTR = "data-adhd-rm";
 
   const state = {
-    config: deepClone(CONFIG),
+    config: clone(CONFIG),
     enabled: Boolean(CONFIG.enabled),
-    destroyed: false,
-    applying: false,
-    hasBooted: false,
-    configVersion: 1,
     roots: [],
-    mutationObserver: null,
-    viewportObserver: null,
-    observedSet: new WeakSet(),
-    queue: [],
-    queueSet: new WeakSet(),
-    queueTimer: null,
-    queueTimerType: '',
-    scanTimer: null,
-    bootTimer: null,
+    wordQueue: [],
+    wordTimer: 0,
+    cjkTimer: 0,
+    activeChars: new Set(),
+    activeFx: new Set(),
+    effectBag: [],
     eventCleanups: [],
-    lastScanAt: 0,
-    lastQueueAt: 0,
-    processedElements: 0,
-    processedTextNodes: 0
+    rngState: 2463534242,
+    configVersion: 1,
+    applying: false
   };
 
-  /** Deep-clones plain config objects. */
-  function deepClone(obj) {
+  /** Clones plain config objects. */
+  function clone(obj) {
     return JSON.parse(JSON.stringify(obj));
   }
 
   /** Deep-merges source into target; arrays are replaced. */
   function merge(target, source) {
-    if (!source || typeof source !== 'object') return target;
+    if (!source || typeof source !== "object") return target;
     Object.keys(source).forEach(function (key) {
       const value = source[key];
-      if (value && typeof value === 'object' && !Array.isArray(value)) {
-        if (!target[key] || typeof target[key] !== 'object' || Array.isArray(target[key])) target[key] = {};
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        if (!target[key] || typeof target[key] !== "object" || Array.isArray(target[key])) target[key] = {};
         merge(target[key], value);
       } else {
         target[key] = value;
@@ -147,18 +125,55 @@
     return target;
   }
 
-  /** Returns a safe array from a selector config value. */
+  /** Normalizes arrays. */
   function asArray(value) {
     if (Array.isArray(value)) return value.filter(Boolean);
-    if (typeof value === 'string' && value.trim()) return [value.trim()];
+    if (typeof value === "string" && value.trim()) return [value.trim()];
     return [];
   }
 
-  /** Clamps a numeric value. */
-  function clampNumber(value, min, max, fallback) {
+  /** Clamps a number. */
+  function clamp(value, min, max, fallback) {
     const number = Number(value);
     if (!Number.isFinite(number)) return fallback;
     return Math.max(min, Math.min(max, number));
+  }
+
+  /** Normalizes runtime config. */
+  function normalizeConfig() {
+    const cfg = state.config;
+    cfg.rootSelectors = asArray(cfg.rootSelectors);
+    cfg.contentSelectors = asArray(cfg.contentSelectors);
+    cfg.excludeSelectors = asArray(cfg.excludeSelectors);
+    cfg.colorPool = normalizeColorPool(cfg.colorPool);
+
+    cfg.style = cfg.style || {};
+    cfg.style.color = cfg.style.color !== false;
+    cfg.style.fontWeightProbability = clamp(cfg.style.fontWeightProbability, 0, 1, 0.2);
+    cfg.style.fontWeightValue = cfg.style.fontWeightValue || "700";
+
+    cfg.wordMode = cfg.wordMode || {};
+    cfg.wordMode.enabled = cfg.wordMode.enabled !== false;
+    cfg.wordMode.minLength = Math.max(0, Math.floor(Number(cfg.wordMode.minLength) || 0));
+    cfg.wordMode.sampleRate = clamp(cfg.wordMode.sampleRate, 0, 1, 1);
+    cfg.wordMode.batchSize = Math.max(1, Math.floor(Number(cfg.wordMode.batchSize) || 8));
+    cfg.wordMode.batchDelayMs = Math.max(0, Math.floor(Number(cfg.wordMode.batchDelayMs) || 16));
+    cfg.wordMode.maxTextLengthPerElement = Math.max(1000, Math.floor(Number(cfg.wordMode.maxTextLengthPerElement) || 180000));
+
+    cfg.cjkEffect = cfg.cjkEffect || {};
+    cfg.cjkEffect.enabled = cfg.cjkEffect.enabled !== false;
+    cfg.cjkEffect.intervalMs = Math.max(600, Math.floor(Number(cfg.cjkEffect.intervalMs) || 3000));
+    cfg.cjkEffect.preColorMs = Math.max(0, Math.floor(Number(cfg.cjkEffect.preColorMs) || 2000));
+    cfg.cjkEffect.jumpMs = Math.max(300, Math.floor(Number(cfg.cjkEffect.jumpMs) || 1450));
+    cfg.cjkEffect.shiverMs = Math.max(300, Math.floor(Number(cfg.cjkEffect.shiverMs) || 1700));
+    cfg.cjkEffect.growMs = Math.max(300, Math.floor(Number(cfg.cjkEffect.growMs) || 1500));
+    cfg.cjkEffect.snowflakeMin = Math.max(0, Math.floor(Number(cfg.cjkEffect.snowflakeMin) || 3));
+    cfg.cjkEffect.snowflakeMax = Math.max(cfg.cjkEffect.snowflakeMin, Math.floor(Number(cfg.cjkEffect.snowflakeMax) || 6));
+    cfg.cjkEffect.maxVisibleBlocks = Math.max(1, Math.floor(Number(cfg.cjkEffect.maxVisibleBlocks) || 80));
+    cfg.cjkEffect.maxTextNodesPerTick = Math.max(1, Math.floor(Number(cfg.cjkEffect.maxTextNodesPerTick) || 180));
+
+    cfg.dynamic = cfg.dynamic || {};
+    cfg.dynamic.eventNames = asArray(cfg.dynamic.eventNames);
   }
 
   /** Keeps valid-looking hex colors and removes duplicates. */
@@ -166,7 +181,7 @@
     const seen = Object.create(null);
     const list = asArray(pool).filter(function (color) {
       const value = String(color).trim();
-      const ok = value.charAt(0) === '#' && (value.length === 4 || value.length === 7 || value.length === 9);
+      const ok = value.charAt(0) === "#" && (value.length === 4 || value.length === 7 || value.length === 9);
       const key = value.toLowerCase();
       if (!ok || seen[key]) return false;
       seen[key] = true;
@@ -175,63 +190,7 @@
     return list.length ? list : CONFIG.colorPool.slice();
   }
 
-  /** Normalizes config once before rebuild or update. */
-  function normalizeConfig() {
-    const cfg = state.config;
-
-    cfg.rootSelectors = asArray(cfg.rootSelectors);
-    cfg.contentSelectors = asArray(cfg.contentSelectors);
-    cfg.excludeSelectors = asArray(cfg.excludeSelectors);
-    cfg.colorPool = normalizeColorPool(cfg.colorPool);
-
-    if (!cfg.style || typeof cfg.style !== 'object') cfg.style = {};
-    cfg.style.color = cfg.style.color !== false;
-    cfg.style.fontWeightProbability = clampNumber(cfg.style.fontWeightProbability, 0, 1, 0.2);
-    cfg.style.fontWeightValue = cfg.style.fontWeightValue || '700';
-
-    if (!cfg.wordMode || typeof cfg.wordMode !== 'object') cfg.wordMode = {};
-    cfg.wordMode.enabled = cfg.wordMode.enabled !== false;
-    cfg.wordMode.minLength = Math.max(0, Math.floor(Number(cfg.wordMode.minLength) || 0));
-    cfg.wordMode.sampleRate = clampNumber(cfg.wordMode.sampleRate, 0, 1, 1);
-
-    if (!cfg.glyphMode || typeof cfg.glyphMode !== 'object') cfg.glyphMode = {};
-    cfg.glyphMode.enabled = cfg.glyphMode.enabled !== false;
-    cfg.glyphMode.shortMax = Math.max(1, Math.floor(Number(cfg.glyphMode.shortMax) || 5));
-    cfg.glyphMode.mediumMax = Math.max(cfg.glyphMode.shortMax + 1, Math.floor(Number(cfg.glyphMode.mediumMax) || 10));
-    cfg.glyphMode.longMax = Math.max(cfg.glyphMode.mediumMax + 1, Math.floor(Number(cfg.glyphMode.longMax) || 18));
-    cfg.glyphMode.minSectionChars = Math.max(1, Math.floor(Number(cfg.glyphMode.minSectionChars) || 3));
-    cfg.glyphMode.overlongMin = Math.max(cfg.glyphMode.minSectionChars, Math.floor(Number(cfg.glyphMode.overlongMin) || 4));
-    cfg.glyphMode.overlongMax = Math.max(cfg.glyphMode.overlongMin, Math.floor(Number(cfg.glyphMode.overlongMax) || 8));
-    cfg.glyphMode.sectionEvery = Math.max(1, Math.floor(Number(cfg.glyphMode.sectionEvery) || 2));
-    cfg.glyphMode.protectedSelectors = asArray(cfg.glyphMode.protectedSelectors || ['code', 'strong', 'em']);
-    cfg.glyphMode.sampleRate = clampNumber(cfg.glyphMode.sampleRate, 0, 1, 1);
-
-    if (!cfg.dynamic || typeof cfg.dynamic !== 'object') cfg.dynamic = {};
-    cfg.dynamic.debounceMs = Math.max(0, Math.floor(Number(cfg.dynamic.debounceMs) || 0));
-    cfg.dynamic.eventNames = asArray(cfg.dynamic.eventNames);
-
-    if (!cfg.performance || typeof cfg.performance !== 'object') cfg.performance = {};
-    cfg.performance.minTextLength = Math.max(0, Math.floor(Number(cfg.performance.minTextLength) || 0));
-    cfg.performance.maxTextLengthPerElement = Math.max(1000, Math.floor(Number(cfg.performance.maxTextLengthPerElement) || 180000));
-    cfg.performance.batchSize = Math.max(1, Math.floor(Number(cfg.performance.batchSize) || 6));
-    cfg.performance.batchBudgetMs = Math.max(1, Math.floor(Number(cfg.performance.batchBudgetMs) || 8));
-    cfg.performance.idleTimeoutMs = Math.max(100, Math.floor(Number(cfg.performance.idleTimeoutMs) || 500));
-    cfg.performance.maxQueueSize = Math.max(100, Math.floor(Number(cfg.performance.maxQueueSize) || 4000));
-
-    if (!cfg.viewport || typeof cfg.viewport !== 'object') cfg.viewport = {};
-    cfg.viewport.enabled = cfg.viewport.enabled !== false;
-    cfg.viewport.rootMargin = cfg.viewport.rootMargin || '400px 0px';
-
-    if (!cfg.startup || typeof cfg.startup !== 'object') cfg.startup = {};
-    cfg.startup.delaySeconds = Math.max(0, Number(cfg.startup.delaySeconds) || 0);
-  }
-
-  /** Joins selector arrays. */
-  function selectorList(selectors) {
-    return asArray(selectors).join(',');
-  }
-
-  /** Returns true if an element matches at least one selector. */
+  /** Returns true if an element matches any selector. */
   function matchesAny(element, selectors) {
     if (!element || element.nodeType !== 1) return false;
     const list = asArray(selectors);
@@ -239,48 +198,13 @@
       try {
         if (element.matches(list[i])) return true;
       } catch (e) {
-        /* Ignore invalid user selectors. */
+        /* Ignore invalid selectors. */
       }
     }
     return false;
   }
 
-  /** Returns a timestamp with performance fallback. */
-  function nowMs() {
-    return window.performance && typeof window.performance.now === 'function' ? window.performance.now() : Date.now();
-  }
-
-  /** Refreshes and caches configured root elements. */
-  function refreshRoots() {
-    const roots = [];
-    state.config.rootSelectors.forEach(function (selector) {
-      try {
-        document.querySelectorAll(selector).forEach(function (node) {
-          if (roots.indexOf(node) < 0) roots.push(node);
-        });
-      } catch (e) {
-        /* Ignore invalid user selectors. */
-      }
-    });
-    state.roots = roots;
-    return roots;
-  }
-
-  /** Returns cached roots, refreshing only when empty or detached. */
-  function getRoots() {
-    if (!state.roots.length || state.roots.some(function (root) { return !root.isConnected; })) return refreshRoots();
-    return state.roots;
-  }
-
-  /** Returns true if element is inside configured roots. */
-  function isInsideRoots(element, roots) {
-    if (!element || !roots || !roots.length) return false;
-    return roots.some(function (root) {
-      return root === element || root.contains(element);
-    });
-  }
-
-  /** Returns true if node has an excluded ancestor before boundary. */
+  /** Returns true if a node has an excluded ancestor before boundary. */
   function hasExcludedAncestor(node, boundary) {
     let element = node && node.nodeType === 1 ? node : node.parentElement;
     while (element) {
@@ -291,98 +215,45 @@
     return false;
   }
 
-  /** Collects eligible leaf-like content elements under a scope. */
-  function collectContentElements(scope, roots) {
-    const currentRoots = roots || getRoots();
-    const base = scope && scope.nodeType === 1 ? scope : document;
-    const selector = selectorList(state.config.contentSelectors);
-    if (!selector || !currentRoots.length) return [];
-
-    const raw = [];
-    const seen = new Set();
-
-    function add(element) {
-      if (!element || seen.has(element)) return;
-      seen.add(element);
-      raw.push(element);
-    }
-
-    if (base.nodeType === 1 && matchesAny(base, state.config.contentSelectors)) add(base);
-
+  /** Suppresses self-triggered cleanup side effects. */
+  function withMutationPaused(fn) {
+    state.applying = true;
     try {
-      base.querySelectorAll(selector).forEach(add);
-    } catch (e) {
-      return [];
-    }
-
-    return raw.filter(function (element) {
-      if (!isInsideRoots(element, currentRoots)) return false;
-      if (matchesAny(element, state.config.excludeSelectors)) return false;
-      if (hasExcludedAncestor(element.parentElement || element, null)) return false;
-      try {
-        return !element.querySelector(selector);
-      } catch (e) {
-        return true;
-      }
-    });
-  }
-
-  /** Removes generated marks and processed signatures inside a scope. */
-  function unwrapMarks(scope) {
-    if (!scope || scope.nodeType !== 1) return;
-
-    const parents = new Set();
-    const marks = Array.from(scope.querySelectorAll(MARK_SELECTOR));
-    marks.forEach(function (mark) {
-      const parent = mark.parentNode;
-      if (!parent) return;
-      parents.add(parent);
-      while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
-      parent.removeChild(mark);
-    });
-    parents.forEach(function (parent) {
-      parent.normalize();
-    });
-
-    const attr = state.config.css.processedAttr || CONFIG.css.processedAttr;
-    if (scope.hasAttribute && scope.hasAttribute(attr)) scope.removeAttribute(attr);
-    try {
-      scope.querySelectorAll('[' + attr + ']').forEach(function (node) {
-        node.removeAttribute(attr);
-      });
-    } catch (e) {
-      /* Ignore invalid attr edge cases. */
+      fn();
+    } finally {
+      window.setTimeout(function () {
+        state.applying = false;
+      }, 0);
     }
   }
 
-  /** Cleans all configured roots. */
-  function cleanAll() {
-    const roots = getRoots();
-    withMutationPaused(function () {
-      roots.forEach(unwrapMarks);
-    });
-  }
-
-  /** Injects minimal CSS for generated marks. */
+  /** Injects CSS. */
   function injectStyle() {
-    const id = state.config.css.styleId || CONFIG.css.styleId;
-    const old = document.getElementById(id);
-    if (old) old.remove();
-
-    const style = document.createElement('style');
-    style.id = id;
-    style.textContent = '.' + (state.config.css.markClass || CONFIG.css.markClass) + '{text-decoration:none;}';
+    if (document.getElementById(state.config.css.styleId)) return;
+    const style = document.createElement("style");
+    style.id = state.config.css.styleId;
+    style.textContent = [
+      ".adhd-word-mark{text-decoration:none;}",
+      ".adhd-cjk-live{display:inline-block;will-change:color,transform,opacity;transition:color var(--adhd-precolor-ms) ease;transform-origin:center center;}",
+      ".adhd-cjk-jump{animation:adhd-cjk-jump var(--adhd-effect-ms) cubic-bezier(.22,.75,.25,1) forwards;transform-origin:center bottom;}",
+      "@keyframes adhd-cjk-jump{0%{transform:translate3d(0,0,0) scale(1,1)}16%{transform:translate3d(0,.08em,0) scale(1.12,.78)}28%{transform:translate3d(0,0,0) scale(.9,1.16)}54%{transform:translate3d(0,-1.25em,0) scale(1,1)}76%{transform:translate3d(0,-.38em,0) scale(1,1)}90%{transform:translate3d(0,.04em,0) scale(1.06,.9)}100%{transform:translate3d(0,0,0) scale(1,1)}}",
+      ".adhd-cjk-shiver{animation:adhd-cjk-shiver var(--adhd-effect-ms) linear forwards;}",
+      "@keyframes adhd-cjk-shiver{0%{transform:translate3d(0,0,0)}8.33%{transform:translate3d(-.28em,0,0)}16.66%{transform:translate3d(.28em,0,0)}25%{transform:translate3d(-.23em,0,0)}33.33%{transform:translate3d(.23em,0,0)}41.66%{transform:translate3d(-.18em,0,0)}50%{transform:translate3d(.18em,0,0)}58.33%{transform:translate3d(-.13em,0,0)}66.66%{transform:translate3d(.13em,0,0)}75%{transform:translate3d(-.08em,0,0)}83.33%{transform:translate3d(.08em,0,0)}91.66%{transform:translate3d(-.03em,0,0)}100%{transform:translate3d(0,0,0)}}",
+      ".adhd-cjk-grow{animation:adhd-cjk-grow var(--adhd-effect-ms) linear forwards;transform-origin:center center;}",
+      "@keyframes adhd-cjk-grow{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(2.45)}}",
+      ".adhd-fx-snowflake{position:fixed;pointer-events:none;will-change:transform,opacity;z-index:" + state.config.zIndex + ";animation:adhd-fx-snowflake 1200ms ease-out forwards;color:#E6EDF3;text-shadow:0 0 .35em currentColor;}",
+      "@keyframes adhd-fx-snowflake{0%{opacity:1;transform:translate3d(0,0,0) scale(.85)}100%{opacity:0;transform:translate3d(var(--adhd-snow-x),var(--adhd-snow-y),0) scale(1.18)}}"
+    ].join("");
     document.head.appendChild(style);
   }
 
   /** Removes injected CSS. */
   function removeStyle() {
-    const id = state.config.css.styleId || CONFIG.css.styleId;
-    const style = document.getElementById(id);
+    const style = document.getElementById(state.config.css.styleId);
     if (style) style.remove();
   }
 
-  /** Returns a deterministic unsigned hash. */
+  /** Returns a deterministic hash. */
   function hashString(str) {
     let hash = 2166136261;
     for (let i = 0; i < str.length; i += 1) {
@@ -392,7 +263,7 @@
     return hash >>> 0;
   }
 
-  /** Returns a deterministic pseudo-random number in [0, 1). */
+  /** Deterministic random for wordMode. */
   function nextRandomUnit(ctx) {
     let x = ctx.rngState || 2463534242;
     x ^= x << 13;
@@ -402,55 +273,47 @@
     return (ctx.rngState % 1000000) / 1000000;
   }
 
-  /** Returns an integer in [min, max]. */
-  function randomInt(ctx, min, max) {
-    return min + Math.floor(nextRandomUnit(ctx) * (max - min + 1));
+  /** Runtime random for effects. */
+  function randomUnit() {
+    let x = state.rngState || 2463534242;
+    x ^= x << 13;
+    x ^= x >>> 17;
+    x ^= x << 5;
+    state.rngState = x >>> 0;
+    return (state.rngState % 1000000) / 1000000;
   }
 
-  /** Returns true when a candidate mark passes sampling. */
-  function passesSample(ctx, rate) {
-    if (rate >= 1) return true;
-    if (rate <= 0) return false;
-    return nextRandomUnit(ctx) < rate;
+  /** Runtime integer random. */
+  function randomInt(min, max) {
+    return min + Math.floor(randomUnit() * (max - min + 1));
   }
 
-  /** Picks a mark color. */
-  function pickColor(text, ctx) {
-    const pool = state.config.colorPool;
-    if (!pool.length) return '';
-    if (state.config.random.mode === 'random') return pool[Math.floor(nextRandomUnit(ctx) * pool.length) % pool.length];
-    const raw = state.config.random.seed + ':' + state.configVersion + ':' + ctx.markIndex + ':' + ctx.nodeIndex + ':' + text;
-    return pool[hashString(raw) % pool.length];
+  /** Picks one item. */
+  function pickOne(list) {
+    if (!list.length) return null;
+    return list[Math.floor(randomUnit() * list.length) % list.length];
   }
 
-  /** Creates a generated mark span with color/bold styling only. */
-  function createMark(text, ctx) {
-    const span = document.createElement('span');
-    const style = state.config.style;
-
-    span.className = state.config.css.markClass || CONFIG.css.markClass;
-    span.setAttribute(MARK_ATTR, '1');
-    span.textContent = text;
-
-    if (style.color !== false) span.style.color = pickColor(text, ctx);
-
-    if (style.fontWeight === true) {
-      if (nextRandomUnit(ctx) < style.fontWeightProbability) span.style.fontWeight = String(style.fontWeightValue || '700');
-    } else if (style.fontWeight !== null && style.fontWeight !== undefined && style.fontWeight !== false) {
-      span.style.fontWeight = String(style.fontWeight);
+  /** Shuffles a small array. */
+  function shuffled(list) {
+    const copy = list.slice();
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(randomUnit() * (i + 1));
+      const value = copy[i];
+      copy[i] = copy[j];
+      copy[j] = value;
     }
-
-    ctx.markIndex += 1;
-    return span;
+    return copy;
   }
 
-  /** Appends a text node if text is non-empty. */
-  function appendText(fragment, text) {
-    if (text) fragment.appendChild(document.createTextNode(text));
+  /** Returns next balanced CJK effect id: 0 jump, 1 shiver, 2 grow. */
+  function nextEffectId() {
+    if (!state.effectBag.length) state.effectBag = shuffled([0, 1, 2]);
+    return state.effectBag.pop();
   }
 
   /** Checks common CJK glyph ranges. */
-  function isCjkGlyph(ch) {
+  function isCjk(ch) {
     const code = ch.charCodeAt(0);
     return (code >= 0x3400 && code <= 0x4DBF) ||
       (code >= 0x4E00 && code <= 0x9FFF) ||
@@ -459,20 +322,9 @@
       (code >= 0xAC00 && code <= 0xD7AF);
   }
 
-  /** Checks digits used as glyph-mode boundaries. */
-  function isDigit(ch) {
-    const code = ch.charCodeAt(0);
-    return code >= 48 && code <= 57;
-  }
-
-  /** Checks punctuation used as glyph-mode boundaries. */
-  function isGlyphPunctuation(ch) {
-    return GLYPH_PUNCTUATION.indexOf(ch) !== -1;
-  }
-
-  /** Checks word letters for wordMode; excludes CJK glyphs. */
+  /** Checks word letters; excludes CJK. */
   function isWordLetter(ch) {
-    if (isCjkGlyph(ch)) return false;
+    if (isCjk(ch)) return false;
     const code = ch.charCodeAt(0);
     return (code >= 65 && code <= 90) ||
       (code >= 97 && code <= 122) ||
@@ -482,12 +334,12 @@
       (code >= 0x0600 && code <= 0x06FF);
   }
 
-  /** Checks connector chars allowed inside wordMode tokens. */
+  /** Checks connector chars inside word tokens. */
   function isWordConnector(ch) {
-    return ch === '-' || ch === '’' || ch === '_' || ch === String.fromCharCode(39);
+    return ch === "-" || ch === "_" || ch === "’" || ch === String.fromCharCode(39);
   }
 
-  /** Reads one wordMode token. */
+  /** Reads one word token. */
   function readWordToken(text, start) {
     if (!isWordLetter(text.charAt(start))) return null;
     let i = start + 1;
@@ -506,7 +358,7 @@
     return { token: text.slice(start, i), end: i };
   }
 
-  /** Counts word letters in a token. */
+  /** Counts word letters. */
   function countWordLetters(token) {
     let count = 0;
     for (let i = 0; i < token.length; i += 1) {
@@ -515,188 +367,66 @@
     return count;
   }
 
-  /** Splits a token after a given number of letters. */
+  /** Splits a token after letterLimit letters. */
   function splitAfterLetters(token, letterLimit) {
     let count = 0;
     for (let i = 0; i < token.length; i += 1) {
       if (isWordLetter(token.charAt(i))) count += 1;
       if (count >= letterLimit) return [token.slice(0, i + 1), token.slice(i + 1)];
     }
-    return [token, ''];
+    return [token, ""];
   }
 
-  /** Appends one wordMode token. */
-  function appendWordToken(fragment, token, ctx) {
-    const cfg = state.config.wordMode;
-    const letterCount = countWordLetters(token);
-    if (!cfg.enabled || letterCount <= cfg.minLength || !passesSample(ctx, cfg.sampleRate)) {
-      appendText(fragment, token);
-      return false;
+  /** Returns true when a word candidate passes sampling. */
+  function passesWordSample(ctx) {
+    const rate = state.config.wordMode.sampleRate;
+    if (rate >= 1) return true;
+    if (rate <= 0) return false;
+    return nextRandomUnit(ctx) < rate;
+  }
+
+  /** Picks a stable word color. */
+  function pickStableColor(text, ctx) {
+    const pool = state.config.colorPool;
+    if (!pool.length) return "";
+    if (state.config.random.mode === "random") return pool[Math.floor(nextRandomUnit(ctx) * pool.length) % pool.length];
+    const raw = state.config.random.seed + ":" + state.configVersion + ":" + ctx.markIndex + ":" + ctx.nodeIndex + ":" + text;
+    return pool[hashString(raw) % pool.length];
+  }
+
+  /** Picks a runtime effect color. */
+  function pickRuntimeColor() {
+    return state.config.colorPool[randomInt(0, state.config.colorPool.length - 1)] || "#38F8FF";
+  }
+
+  /** Creates a word mark. */
+  function createWordMark(text, ctx) {
+    const span = document.createElement("span");
+    const style = state.config.style;
+    span.className = state.config.css.wordClass;
+    span.setAttribute(MARK_ATTR, "1");
+    span.textContent = text;
+
+    if (style.color !== false) span.style.color = pickStableColor(text, ctx);
+    if (style.fontWeight === true && nextRandomUnit(ctx) < style.fontWeightProbability) {
+      span.style.fontWeight = String(style.fontWeightValue || "700");
+    } else if (style.fontWeight !== null && style.fontWeight !== undefined && style.fontWeight !== false && style.fontWeight !== true) {
+      span.style.fontWeight = String(style.fontWeight);
     }
 
-    const prefixLen = Math.floor(letterCount / 2);
-    const parts = splitAfterLetters(token, prefixLen);
-    fragment.appendChild(createMark(parts[0], ctx));
-    appendText(fragment, parts[1]);
-    return true;
+    ctx.markIndex += 1;
+    return span;
   }
 
-  /** Counts CJK glyphs in text. */
-  function countCjkGlyphs(text) {
-    let count = 0;
-    for (let i = 0; i < text.length; i += 1) {
-      if (isCjkGlyph(text.charAt(i))) count += 1;
-    }
-    return count;
+  /** Appends text if non-empty. */
+  function appendText(fragment, text) {
+    if (text) fragment.appendChild(document.createTextNode(text));
   }
 
-  /** Returns string index after n CJK glyphs from start. */
-  function indexAfterCjkCount(text, start, count) {
-    let seen = 0;
-    for (let i = start; i < text.length; i += 1) {
-      if (!isCjkGlyph(text.charAt(i))) continue;
-      seen += 1;
-      if (seen >= count) return i + 1;
-    }
-    return text.length;
-  }
-
-  /** Slices a CJK segment into sections by requested part count. */
-  function splitCjkByParts(text, parts, minChars, ctx) {
-    const total = countCjkGlyphs(text);
-    const safeParts = Math.max(1, Math.min(parts, Math.floor(total / minChars) || 1));
-    const sections = [];
-    let cursor = 0;
-    let remaining = total;
-
-    for (let i = 0; i < safeParts; i += 1) {
-      const leftParts = safeParts - i;
-      let size;
-      if (leftParts === 1) {
-        size = remaining;
-      } else {
-        const base = Math.floor(remaining / leftParts);
-        const min = Math.max(minChars, base - 1);
-        const max = Math.min(remaining - minChars * (leftParts - 1), base + 1);
-        size = randomInt(ctx, min, Math.max(min, max));
-      }
-      const end = indexAfterCjkCount(text, cursor, size);
-      sections.push(text.slice(cursor, end));
-      cursor = end;
-      remaining -= size;
-    }
-
-    if (cursor < text.length) sections[sections.length - 1] += text.slice(cursor);
-    return sections.filter(Boolean);
-  }
-
-  /** Slices 19+ CJK segment into 4-8 glyph sections, minimum 3 when possible. */
-  function splitCjkOverlong(text, ctx) {
-    const cfg = state.config.glyphMode;
-    const sections = [];
-    let cursor = 0;
-    let remaining = countCjkGlyphs(text);
-
-    while (cursor < text.length && remaining > 0) {
-      let size;
-      if (remaining <= cfg.overlongMax) {
-        size = remaining;
-      } else {
-        const maxSize = Math.min(cfg.overlongMax, remaining - cfg.minSectionChars);
-        size = randomInt(ctx, cfg.overlongMin, Math.max(cfg.overlongMin, maxSize));
-      }
-      const end = indexAfterCjkCount(text, cursor, size);
-      sections.push(text.slice(cursor, end));
-      cursor = end;
-      remaining -= size;
-    }
-
-    if (cursor < text.length) sections[sections.length - 1] += text.slice(cursor);
-    return sections.filter(Boolean);
-  }
-
-  /** Splits one CJK segment into structural sections. */
-  function splitCjkSegment(text, ctx) {
-    const cfg = state.config.glyphMode;
-    const total = countCjkGlyphs(text);
-    if (total <= cfg.shortMax) return [text];
-    if (total <= cfg.mediumMax) return splitCjkByParts(text, 2, cfg.minSectionChars, ctx);
-    if (total <= cfg.longMax) return splitCjkByParts(text, 3, cfg.minSectionChars, ctx);
-    return splitCjkOverlong(text, ctx);
-  }
-
-  /** Appends CJK sections with alternating color and protected-boundary suppression. */
-  function appendCjkSegment(fragment, text, ctx, options) {
-    const cfg = state.config.glyphMode;
-    const sections = splitCjkSegment(text, ctx);
-    let changed = false;
-
-    sections.forEach(function (section, index) {
-      const blockedByProtected = (options.afterProtected && index === 0) ||
-        (options.beforeProtected && index === sections.length - 1);
-      const sectionNumber = ctx.glyphSectionIndex;
-      const shouldMark = !blockedByProtected &&
-        sectionNumber % cfg.sectionEvery === 0 &&
-        passesSample(ctx, cfg.sampleRate);
-
-      ctx.glyphSectionIndex += 1;
-
-      if (shouldMark) {
-        fragment.appendChild(createMark(section, ctx));
-        changed = true;
-      } else {
-        appendText(fragment, section);
-      }
-    });
-
-    return changed;
-  }
-
-  /** Reads consecutive CJK glyphs until punctuation, digit, word token, or non-CJK. */
-  function readCjkSegment(text, start) {
-    let end = start;
-    while (end < text.length) {
-      const ch = text.charAt(end);
-      if (!isCjkGlyph(ch) || isGlyphPunctuation(ch) || isDigit(ch) || isWordLetter(ch)) break;
-      end += 1;
-    }
-    return { token: text.slice(start, end), end: end };
-  }
-
-  /** Finds the previous significant sibling before a text node. */
-  function previousSignificantNode(node) {
-    let prev = node ? node.previousSibling : null;
-    while (prev && prev.nodeType === 3 && !prev.nodeValue.trim()) prev = prev.previousSibling;
-    return prev;
-  }
-
-  /** Finds the next significant sibling after a text node. */
-  function nextSignificantNode(node) {
-    let next = node ? node.nextSibling : null;
-    while (next && next.nodeType === 3 && !next.nodeValue.trim()) next = next.nextSibling;
-    return next;
-  }
-
-  /** Checks whether a significant node is inside or is a protected inline element. */
-  function isProtectedNode(node) {
-    if (!node) return false;
-    const element = node.nodeType === 1 ? node : node.parentElement;
-    if (!element) return false;
-    return matchesAny(element, state.config.glyphMode.protectedSelectors);
-  }
-
-  /** Builds text-node context around code/strong/em boundaries. */
-  function getTextNodeOptions(textNode, boundary) {
-    return {
-      afterProtected: isProtectedNode(previousSignificantNode(textNode)),
-      beforeProtected: isProtectedNode(nextSignificantNode(textNode))
-    };
-  }
-
-  /** Converts one text node into a marked fragment when needed. */
-  function transformTextNode(textNode, ctx, options) {
-    const text = textNode.nodeValue || '';
-    if (text.length < state.config.performance.minTextLength || !text.trim()) return null;
+  /** Transforms one text node for wordMode. */
+  function transformWordTextNode(textNode, ctx) {
+    const text = textNode.nodeValue || "";
+    if (!text.trim()) return null;
 
     const fragment = document.createDocumentFragment();
     let changed = false;
@@ -704,21 +434,20 @@
 
     while (i < text.length) {
       const ch = text.charAt(i);
-
-      if (state.config.glyphMode.enabled && isCjkGlyph(ch)) {
-        const segment = readCjkSegment(text, i);
-        if (segment.token && appendCjkSegment(fragment, segment.token, ctx, options || {})) changed = true;
-        i = segment.end;
-        continue;
-      }
-
       if (state.config.wordMode.enabled && isWordLetter(ch)) {
         const word = readWordToken(text, i);
-        if (word && appendWordToken(fragment, word.token, ctx)) changed = true;
+        const letterCount = countWordLetters(word.token);
+        if (letterCount > state.config.wordMode.minLength && passesWordSample(ctx)) {
+          const parts = splitAfterLetters(word.token, Math.floor(letterCount / 2));
+          fragment.appendChild(createWordMark(parts[0], ctx));
+          appendText(fragment, parts[1]);
+          changed = true;
+        } else {
+          appendText(fragment, word.token);
+        }
         i = word.end;
         continue;
       }
-
       appendText(fragment, ch);
       i += 1;
     }
@@ -726,18 +455,64 @@
     return changed ? fragment : null;
   }
 
+  /** Gets current root elements. */
+  function getRoots() {
+    const roots = [];
+    state.config.rootSelectors.forEach(function (selector) {
+      try {
+        document.querySelectorAll(selector).forEach(function (root) {
+          if (roots.indexOf(root) < 0) roots.push(root);
+        });
+      } catch (e) {
+        /* Ignore invalid selectors. */
+      }
+    });
+    state.roots = roots;
+    return roots;
+  }
+
+  /** Collects leaf-like content elements. */
+  function collectContentElements() {
+    const roots = getRoots();
+    const selector = state.config.contentSelectors.join(",");
+    const elements = [];
+    const seen = new Set();
+
+    function add(element) {
+      if (!element || seen.has(element)) return;
+      if (matchesAny(element, state.config.excludeSelectors)) return;
+      if (hasExcludedAncestor(element.parentElement || element, null)) return;
+      try {
+        if (element.querySelector(selector)) return;
+      } catch (e) {
+        /* Keep element. */
+      }
+      seen.add(element);
+      elements.push(element);
+    }
+
+    roots.forEach(function (root) {
+      if (matchesAny(root, state.config.contentSelectors)) add(root);
+      try {
+        root.querySelectorAll(selector).forEach(add);
+      } catch (e) {
+        /* Ignore invalid selectors. */
+      }
+    });
+
+    return elements;
+  }
+
   /** Collects eligible text nodes inside one element. */
   function collectTextNodes(element) {
     const nodes = [];
-    const filter = {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
         if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
         if (hasExcludedAncestor(node, element)) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
-    };
-
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, filter);
+    });
     let node = walker.nextNode();
     while (node) {
       nodes.push(node);
@@ -746,241 +521,299 @@
     return nodes;
   }
 
-  /** Builds a skip-safe element signature. */
+  /** Builds a word processing signature. */
   function getElementSignature(element) {
-    return String(state.configVersion) + ':' + String(hashString(element.textContent || ''));
+    return String(state.configVersion) + ":" + String(hashString(element.textContent || ""));
   }
 
-  /** Processes one eligible element. */
-  function processElement(element) {
-    if (!element || element.nodeType !== 1 || !document.documentElement.contains(element)) return false;
-    if ((element.textContent || '').length > state.config.performance.maxTextLengthPerElement) return false;
+  /** Processes word anchors in one element. */
+  function processWordElement(element) {
+    if (!element || !element.isConnected) return;
+    if ((element.textContent || "").length > state.config.wordMode.maxTextLengthPerElement) return;
 
-    const attr = state.config.css.processedAttr || CONFIG.css.processedAttr;
+    const attr = state.config.css.wordAttr;
     const signature = getElementSignature(element);
-    if (element.getAttribute(attr) === signature) return false;
+    if (element.getAttribute(attr) === signature) return;
 
-    unwrapMarks(element);
+    unwrapWordMarks(element);
 
     const textNodes = collectTextNodes(element);
-    if (!textNodes.length) {
-      element.setAttribute(attr, signature);
-      return false;
-    }
-
     const ctx = {
       markIndex: 0,
       nodeIndex: 0,
-      rngState: hashString((element.textContent || '') + ':' + state.config.random.seed),
-      glyphSectionIndex: 0
+      rngState: hashString((element.textContent || "") + ":" + state.config.random.seed)
     };
 
-    let changed = false;
-    textNodes.forEach(function (textNode) {
-      ctx.nodeIndex += 1;
-      const options = getTextNodeOptions(textNode, element);
-      const fragment = transformTextNode(textNode, ctx, options);
-      if (!fragment || !textNode.parentNode) return;
-      textNode.parentNode.replaceChild(fragment, textNode);
-      state.processedTextNodes += 1;
-      changed = true;
+    withMutationPaused(function () {
+      textNodes.forEach(function (textNode) {
+        ctx.nodeIndex += 1;
+        const fragment = transformWordTextNode(textNode, ctx);
+        if (fragment && textNode.parentNode) textNode.parentNode.replaceChild(fragment, textNode);
+      });
+      element.setAttribute(attr, signature);
+    });
+  }
+
+  /** Schedules word anchor processing in small chunks. */
+  function processWordAnchors() {
+    if (!state.config.wordMode.enabled) return;
+    state.wordQueue = collectContentElements();
+    processWordBatch();
+  }
+
+  /** Processes one word anchor batch. */
+  function processWordBatch() {
+    window.clearTimeout(state.wordTimer);
+    if (!state.enabled || !state.wordQueue.length) return;
+
+    const limit = state.config.wordMode.batchSize;
+    for (let i = 0; i < limit && state.wordQueue.length; i += 1) {
+      processWordElement(state.wordQueue.shift());
+    }
+
+    if (state.wordQueue.length) {
+      state.wordTimer = window.setTimeout(processWordBatch, state.config.wordMode.batchDelayMs);
+    }
+  }
+
+  /** Unwraps generated word marks. */
+  function unwrapWordMarks(scope) {
+    if (!scope || scope.nodeType !== 1) return;
+    const parents = new Set();
+    const marks = Array.from(scope.querySelectorAll("." + state.config.css.wordClass));
+    marks.forEach(function (mark) {
+      const parent = mark.parentNode;
+      if (!parent) return;
+      parents.add(parent);
+      while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+      parent.removeChild(mark);
+    });
+    parents.forEach(function (parent) {
+      parent.normalize();
     });
 
-    element.setAttribute(attr, signature);
-    if (changed) state.processedElements += 1;
-    return changed;
-  }
-
-  /** Suppresses observer feedback while this script writes DOM. */
-  function withMutationPaused(fn) {
-    state.applying = true;
+    const attr = state.config.css.wordAttr;
+    if (scope.hasAttribute && scope.hasAttribute(attr)) scope.removeAttribute(attr);
     try {
-      fn();
-    } finally {
-      window.setTimeout(function () {
-        state.applying = false;
-      }, 0);
+      scope.querySelectorAll("[" + attr + "]").forEach(function (node) {
+        node.removeAttribute(attr);
+      });
+    } catch (e) {
+      /* Ignore attr edge cases. */
     }
   }
 
-  /** Clears queued processing timer. */
-  function clearQueueTimer() {
-    if (!state.queueTimer) return;
-    if (state.queueTimerType === 'idle' && window.cancelIdleCallback) window.cancelIdleCallback(state.queueTimer);
-    else window.clearTimeout(state.queueTimer);
-    state.queueTimer = null;
-    state.queueTimerType = '';
+  /** Cleans word anchors in all roots. */
+  function cleanWordAnchors() {
+    getRoots().forEach(unwrapWordMarks);
   }
 
-  /** Schedules one queue-processing slice. */
-  function scheduleQueue() {
-    if (!state.enabled || state.destroyed || state.queueTimer || !state.queue.length) return;
+  /** Returns whether a rect intersects the viewport. */
+  function isRectVisible(rect) {
+    return rect && rect.width > 0 && rect.height > 0 && rect.bottom >= 0 && rect.right >= 0 &&
+      rect.top <= window.innerHeight && rect.left <= window.innerWidth;
+  }
 
-    if (window.requestIdleCallback) {
-      state.queueTimerType = 'idle';
-      state.queueTimer = window.requestIdleCallback(processQueue, { timeout: state.config.performance.idleTimeoutMs });
-      return;
+  /** Collects visible blocks for CJK effects. */
+  function collectVisibleBlocks() {
+    const blocks = [];
+    const selector = state.config.contentSelectors.join(",");
+    const seen = new Set();
+
+    function add(block) {
+      if (!block || seen.has(block)) return;
+      if (matchesAny(block, state.config.excludeSelectors)) return;
+      if (hasExcludedAncestor(block.parentElement || block, null)) return;
+      if (!isRectVisible(block.getBoundingClientRect())) return;
+      seen.add(block);
+      blocks.push(block);
     }
 
-    state.queueTimerType = 'timeout';
-    state.queueTimer = window.setTimeout(function () {
-      processQueue(null);
-    }, 16);
-  }
-
-  /** Processes a bounded queue slice. */
-  function processQueue(deadline) {
-    state.queueTimer = null;
-    state.queueTimerType = '';
-    if (!state.enabled || state.destroyed) return;
-
-    const start = nowMs();
-    const budget = state.config.performance.batchBudgetMs;
-    const maxItems = state.config.performance.batchSize;
-    let count = 0;
-
-    withMutationPaused(function () {
-      while (state.queue.length && count < maxItems) {
-        const elapsed = nowMs() - start;
-        const hasIdleTime = !deadline || deadline.timeRemaining() > 2 || deadline.didTimeout;
-        if (count > 0 && (elapsed >= budget || !hasIdleTime)) break;
-
-        const element = state.queue.shift();
-        state.queueSet.delete(element);
-        processElement(element);
-        count += 1;
+    getRoots().forEach(function (root) {
+      if (matchesAny(root, state.config.contentSelectors)) add(root);
+      try {
+        root.querySelectorAll(selector).forEach(add);
+      } catch (e) {
+        /* Ignore invalid selectors. */
       }
     });
 
-    state.lastQueueAt = Date.now();
-    if (state.queue.length) scheduleQueue();
+    return blocks.slice(0, state.config.cjkEffect.maxVisibleBlocks);
   }
 
-  /** Adds elements to queue in supplied order. */
-  function enqueueElements(elements, priority) {
-    const accepted = [];
-    const list = Array.isArray(elements) ? elements : [];
+  /** Returns true if a node contains CJK. */
+  function nodeHasCjk(node) {
+    const text = node.nodeValue || "";
+    for (let i = 0; i < text.length; i += 1) {
+      if (isCjk(text.charAt(i))) return true;
+    }
+    return false;
+  }
 
-    list.forEach(function (element) {
-      if (!element || element.nodeType !== 1 || state.queueSet.has(element)) return;
-      if (state.queue.length + accepted.length >= state.config.performance.maxQueueSize) return;
-      state.queueSet.add(element);
-      accepted.push(element);
+  /** Collects visible CJK text nodes. */
+  function collectVisibleTextNodes(blocks) {
+    const nodes = [];
+    for (let i = 0; i < blocks.length && nodes.length < state.config.cjkEffect.maxTextNodesPerTick; i += 1) {
+      const block = blocks[i];
+      const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (hasExcludedAncestor(node, block)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      let node = walker.nextNode();
+      while (node && nodes.length < state.config.cjkEffect.maxTextNodesPerTick) {
+        if (nodeHasCjk(node)) nodes.push(node);
+        node = walker.nextNode();
+      }
+    }
+    return nodes;
+  }
+
+  /** Picks one CJK character index. */
+  function pickCjkIndex(text) {
+    const indexes = [];
+    for (let i = 0; i < text.length; i += 1) {
+      if (isCjk(text.charAt(i))) indexes.push(i);
+    }
+    return pickOne(indexes);
+  }
+
+  /** Wraps one original CJK character for temporary animation. */
+  function wrapCjkChar(textNode, index) {
+    if (!textNode || !textNode.parentNode) return null;
+    const text = textNode.nodeValue || "";
+    if (index < 0 || index >= text.length || !isCjk(text.charAt(index))) return null;
+
+    const parent = textNode.parentNode;
+    const before = text.slice(0, index);
+    const after = text.slice(index + 1);
+    const span = document.createElement("span");
+
+    span.className = "adhd-cjk-live";
+    span.setAttribute(MARK_ATTR, "1");
+    span.textContent = text.charAt(index);
+    span.style.setProperty("--adhd-precolor-ms", state.config.cjkEffect.preColorMs + "ms");
+
+    withMutationPaused(function () {
+      if (before) parent.insertBefore(document.createTextNode(before), textNode);
+      parent.insertBefore(span, textNode);
+      if (after) parent.insertBefore(document.createTextNode(after), textNode);
+      parent.removeChild(textNode);
     });
 
-    if (!accepted.length) return;
-    state.queue = priority ? accepted.concat(state.queue) : state.queue.concat(accepted);
-    scheduleQueue();
+    state.activeChars.add(span);
+    return span;
   }
 
-  /** Sorts elements by visual page position. Used only for viewport entries. */
-  function sortByPagePosition(elements) {
-    return elements.slice().sort(function (a, b) {
-      const ar = a.getBoundingClientRect();
-      const br = b.getBoundingClientRect();
-      const ay = ar.top + window.pageYOffset;
-      const by = br.top + window.pageYOffset;
-      if (ay !== by) return ay - by;
-      return (ar.left + window.pageXOffset) - (br.left + window.pageXOffset);
+  /** Restores an animated CJK span back to plain text. */
+  function restoreCjkChar(span) {
+    if (!span || !span.parentNode) return;
+    const parent = span.parentNode;
+    withMutationPaused(function () {
+      parent.replaceChild(document.createTextNode(span.textContent || ""), span);
+      parent.normalize();
     });
+    state.activeChars.delete(span);
   }
 
-  /** Observes or queues content elements under a scope. */
-  function enqueueScope(scope, priority) {
-    if (!state.enabled || state.destroyed) return;
+  /** Spawns snowflakes beside the selected text. */
+  function spawnSnowflakes(rect, fontSize) {
+    const count = randomInt(state.config.cjkEffect.snowflakeMin, state.config.cjkEffect.snowflakeMax);
+    const baseLeft = rect.left + rect.width;
+    const baseTop = rect.top + rect.height * 0.15;
 
-    const elements = collectContentElements(scope || document, getRoots());
-    if (!elements.length) return;
+    for (let i = 0; i < count; i += 1) {
+      const snow = document.createElement("span");
+      snow.className = "adhd-fx-snowflake";
+      snow.textContent = "❄";
+      snow.setAttribute(MARK_ATTR, "1");
+      snow.style.left = (baseLeft + randomInt(-8, 28)) + "px";
+      snow.style.top = (baseTop + randomInt(-18, 18)) + "px";
+      snow.style.fontSize = Math.max(12, fontSize * randomInt(70, 105) / 100) + "px";
+      snow.style.setProperty("--adhd-snow-x", randomInt(-24, 36) + "px");
+      snow.style.setProperty("--adhd-snow-y", randomInt(-36, 24) + "px");
+      document.body.appendChild(snow);
+      state.activeFx.add(snow);
+      snow.addEventListener("animationend", function () {
+        state.activeFx.delete(snow);
+        snow.remove();
+      }, { once: true });
+    }
+  }
 
-    if (!state.config.viewport.enabled || !window.IntersectionObserver || !state.viewportObserver) {
-      enqueueElements(elements, priority);
-      return;
+  /** Plays one balanced random CJK effect after pre-coloring. */
+  function playCjkEffect(span) {
+    if (!span || !span.parentNode) return;
+    const effect = nextEffectId();
+    const rect = span.getBoundingClientRect();
+    const style = window.getComputedStyle(span);
+    const fontSize = parseFloat(style.fontSize) || 16;
+    const ms = effect === 0 ? state.config.cjkEffect.jumpMs : effect === 1 ? state.config.cjkEffect.shiverMs : state.config.cjkEffect.growMs;
+
+    span.style.transition = "none";
+    span.style.setProperty("--adhd-effect-ms", ms + "ms");
+
+    if (effect === 0) {
+      span.classList.add("adhd-cjk-jump");
+    } else if (effect === 1) {
+      span.classList.add("adhd-cjk-shiver");
+      spawnSnowflakes(rect, fontSize);
+    } else {
+      span.classList.add("adhd-cjk-grow");
     }
 
-    elements.forEach(function (element) {
-      if (state.observedSet.has(element)) return;
-      state.observedSet.add(element);
-      state.viewportObserver.observe(element);
+    span.addEventListener("animationend", function () {
+      restoreCjkChar(span);
+    }, { once: true });
+  }
+
+  /** Performs one CJK effect tick. */
+  function tickCjkEffect() {
+    if (!state.enabled || !state.config.cjkEffect.enabled) return;
+    const nodes = collectVisibleTextNodes(collectVisibleBlocks());
+    const textNode = pickOne(nodes);
+    if (!textNode) return;
+
+    const index = pickCjkIndex(textNode.nodeValue || "");
+    if (index === null || index === undefined) return;
+
+    const span = wrapCjkChar(textNode, index);
+    if (!span) return;
+
+    window.requestAnimationFrame(function () {
+      span.style.color = pickRuntimeColor();
     });
+
+    window.setTimeout(function () {
+      playCjkEffect(span);
+    }, state.config.cjkEffect.preColorMs);
   }
 
-  /** Handles viewport intersections. */
-  function onViewportEntries(entries) {
-    const visible = [];
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      if (state.config.viewport.observeOnce && state.viewportObserver) state.viewportObserver.unobserve(entry.target);
-      visible.push(entry.target);
-    });
-
-    if (visible.length) enqueueElements(sortByPagePosition(visible), true);
+  /** Starts the CJK timer. */
+  function startCjkTimer() {
+    stopCjkTimer();
+    if (!state.config.cjkEffect.enabled) return;
+    state.cjkTimer = window.setInterval(tickCjkEffect, state.config.cjkEffect.intervalMs);
   }
 
-  /** Sets up viewport observer. */
-  function setupViewportObserver() {
-    if (state.viewportObserver) state.viewportObserver.disconnect();
-    state.viewportObserver = null;
-    state.observedSet = new WeakSet();
-
-    if (!state.config.viewport.enabled || !window.IntersectionObserver) return;
-
-    state.viewportObserver = new IntersectionObserver(onViewportEntries, {
-      root: null,
-      rootMargin: state.config.viewport.rootMargin || '400px 0px',
-      threshold: 0
-    });
+  /** Stops the CJK timer. */
+  function stopCjkTimer() {
+    if (state.cjkTimer) window.clearInterval(state.cjkTimer);
+    state.cjkTimer = 0;
   }
 
-  /** Schedules a debounced scan after dynamic DOM changes. */
-  function scheduleScan(scope) {
-    if (!state.enabled || state.destroyed || state.applying) return;
-    window.clearTimeout(state.scanTimer);
-    state.scanTimer = window.setTimeout(function () {
-      if (!getRoots().length) refreshRoots();
-      enqueueScope(scope || document, true);
-      state.lastScanAt = Date.now();
-    }, state.config.dynamic.debounceMs);
-  }
-
-  /** Handles MutationObserver records without processing immediately. */
-  function onMutations(mutations) {
-    if (state.applying || !state.enabled) return;
-
-    for (let i = 0; i < mutations.length; i += 1) {
-      const mutation = mutations[i];
-      const target = mutation.target && mutation.target.nodeType === 1 ? mutation.target : mutation.target.parentElement;
-      if (target && target.closest && target.closest(MARK_SELECTOR)) continue;
-      scheduleScan(target || document);
-      return;
-    }
-  }
-
-  /** Sets up MutationObserver on roots, or body until roots appear. */
-  function setupMutationObserver() {
-    if (state.mutationObserver) state.mutationObserver.disconnect();
-    state.mutationObserver = null;
-
-    if (!state.config.dynamic.observe || !window.MutationObserver) return;
-
-    const roots = getRoots();
-    const targets = roots.length ? roots : (document.body ? [document.body] : []);
-    if (!targets.length) return;
-
-    state.mutationObserver = new MutationObserver(onMutations);
-    targets.forEach(function (target) {
-      state.mutationObserver.observe(target, { childList: true, subtree: true, characterData: true });
-    });
-  }
-
-  /** Binds render events emitted by dynamic renderers. */
+  /** Binds lightweight custom render events. */
   function bindRenderEvents() {
     state.eventCleanups.forEach(function (cleanup) { cleanup(); });
     state.eventCleanups = [];
 
-    asArray(state.config.dynamic.eventNames).forEach(function (name) {
-      const handler = function (event) {
-        const container = event && event.detail && event.detail.container;
-        scheduleScan(container && container.nodeType === 1 ? container : document);
+    state.config.dynamic.eventNames.forEach(function (name) {
+      const handler = function () {
+        if (!state.enabled || state.applying) return;
+        cleanWordAnchors();
+        processWordAnchors();
       };
       document.addEventListener(name, handler);
       state.eventCleanups.push(function () {
@@ -989,160 +822,79 @@
     });
   }
 
-  /** Clears queue, timers, and viewport observer. */
-  function resetQueueAndViewport() {
-    clearQueueTimer();
-    window.clearTimeout(state.scanTimer);
-    state.scanTimer = null;
-    state.queue = [];
-    state.queueSet = new WeakSet();
-    state.observedSet = new WeakSet();
-    if (state.viewportObserver) state.viewportObserver.disconnect();
-    state.viewportObserver = null;
+  /** Clears active animations. */
+  function clearActiveEffects() {
+    Array.from(state.activeChars).forEach(restoreCjkChar);
+    state.activeFx.forEach(function (node) { node.remove(); });
+    state.activeFx.clear();
+    state.effectBag = [];
   }
 
-  /** Clears all runtime timers. */
-  function clearRuntimeTimers() {
-    clearQueueTimer();
-    window.clearTimeout(state.scanTimer);
-    window.clearTimeout(state.bootTimer);
-    state.scanTimer = null;
-    state.bootTimer = null;
-  }
-
-  /** Rebuilds runtime immediately; startup delay is not applied here. */
+  /** Rebuilds enabled behavior. */
   function rebuild() {
-    if (state.destroyed) return api;
-
     normalizeConfig();
-    refreshRoots();
     injectStyle();
     bindRenderEvents();
-    resetQueueAndViewport();
-    setupViewportObserver();
-    setupMutationObserver();
-    enqueueScope(document, false);
-
-    return api;
+    cleanWordAnchors();
+    processWordAnchors();
+    clearActiveEffects();
+    startCjkTimer();
   }
 
-  /** Enables and rebuilds immediately. */
-  function enable() {
-    state.enabled = true;
-    state.config.enabled = true;
-    return rebuild();
-  }
-
-  /** Disables and removes generated marks. */
+  /** Disables all behavior and restores DOM. */
   function disable() {
     state.enabled = false;
     state.config.enabled = false;
-    clearRuntimeTimers();
-    resetQueueAndViewport();
-    cleanAll();
+    window.clearTimeout(state.wordTimer);
+    stopCjkTimer();
+    clearActiveEffects();
+    cleanWordAnchors();
+    removeStyle();
+    return api;
+  }
+
+  /** Enables all behavior. */
+  function enable() {
+    state.enabled = true;
+    state.config.enabled = true;
+    rebuild();
     return api;
   }
 
   /** Toggles enabled state. */
   function toggle(force) {
-    if (typeof force === 'boolean') return force ? enable() : disable();
+    if (typeof force === "boolean") return force ? enable() : disable();
     return state.enabled ? disable() : enable();
   }
 
-  /** Updates config and rebuilds immediately. */
+  /** Updates config and rebuilds. */
   function updateConfig(nextConfig) {
-    if (nextConfig && typeof nextConfig === 'object') merge(state.config, nextConfig);
+    if (nextConfig && typeof nextConfig === "object") merge(state.config, nextConfig);
     state.configVersion += 1;
-    state.enabled = state.config.enabled !== false;
-    clearRuntimeTimers();
-    resetQueueAndViewport();
-    cleanAll();
-    return state.enabled ? rebuild() : api;
+    return state.config.enabled === false ? disable() : enable();
   }
 
-  /** Fully destroys runtime and generated marks. */
-  function destroy() {
-    state.destroyed = true;
-    clearRuntimeTimers();
-    resetQueueAndViewport();
-
-    if (state.mutationObserver) state.mutationObserver.disconnect();
-    state.mutationObserver = null;
-
-    state.eventCleanups.forEach(function (cleanup) { cleanup(); });
-    state.eventCleanups = [];
-
-    cleanAll();
-    removeStyle();
-    return null;
-  }
-
-  /** Returns cloned config. */
+  /** Returns cloned runtime config. */
   function getConfig() {
-    return deepClone(state.config);
-  }
-
-  /** Returns lightweight state. */
-  function getState() {
-    return {
-      enabled: state.enabled,
-      destroyed: state.destroyed,
-      hasBooted: state.hasBooted,
-      configVersion: state.configVersion,
-      rootCount: getRoots().length,
-      queueLength: state.queue.length,
-      viewportEnabled: Boolean(state.config.viewport.enabled && window.IntersectionObserver),
-      processedElements: state.processedElements,
-      processedTextNodes: state.processedTextNodes,
-      lastScanAt: state.lastScanAt,
-      lastQueueAt: state.lastQueueAt
-    };
+    return clone(state.config);
   }
 
   const api = {
-    enable: enable,
-    disable: disable,
     toggle: toggle,
-    rebuild: rebuild,
-    destroy: destroy,
     updateConfig: updateConfig,
-    getConfig: getConfig,
-    getState: getState
+    getConfig: getConfig
   };
 
-  /** Exposes public API. */
-  function exposeApi() {
-    window.ADHDReadMode = api;
-    if (state.config.globalApiName) window[state.config.globalApiName] = updateConfig;
-  }
-
-  /** Starts first runtime after startup delay. */
-  function startAfterInitialDelay() {
-    if (state.destroyed || !state.enabled) return;
-
-    state.hasBooted = true;
-    const delay = state.config.startup.delaySeconds;
-
-    if (delay > 0) {
-      state.bootTimer = window.setTimeout(function () {
-        state.bootTimer = null;
-        if (state.enabled && !state.destroyed) rebuild();
-      }, delay * 1000);
-      return;
-    }
-
-    rebuild();
-  }
-
-  /** Boots after DOM readiness. */
+  /** Boots the script. */
   function boot() {
     normalizeConfig();
-    exposeApi();
-    if (state.enabled) startAfterInitialDelay();
+    window.ADHDReadMode = api;
+    if (state.config.globalApiName) window[state.config.globalApiName] = updateConfig;
+    if (state.enabled) rebuild();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once: true });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot, { once: true });
   } else {
     boot();
   }
