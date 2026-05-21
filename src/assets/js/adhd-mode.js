@@ -1,9 +1,9 @@
 /*!
- * ADHD Read Mode v3
+ * ADHD Read Mode v4
  *
  * Introduction:
- * A plug-and-play reading enhancer for long-form pages. It colors the first half of long English words and
- * punctuation-split Chinese clause segments, creating visual anchors without rewriting layout.
+ * A plug-and-play reading enhancer for long-form pages. It creates visual reading anchors for two writing modes:
+ * wordMode for alphabetic / word-based scripts, and glyphMode for CJK-style independent-character scripts.
  *
  * Usage:
  * Include this file after the page content or before DOMContentLoaded. It runs automatically by default.
@@ -23,128 +23,63 @@
  * Notes:
  * The script avoids innerHTML string replacement. It uses TreeWalker + DocumentFragment, skips code/math/UI
  * regions, unwraps its own spans before reprocessing, and uses viewport-first batched rendering for long pages.
- * v3 keeps only color and probabilistic bold styling. Chinese marking is clause-based: punctuation splits
- * clauses, and each clause is marked according to its Han-character length.
+ * v4 removes old Chinese run/gap logic. CJK glyphMode splits by punctuation, numbers, word tokens, and protected
+ * inline elements such as code/strong/em, then colors alternating structural sections.
  */
 (function () {
   'use strict';
 
-  // ---------------------------------------------------------------------------
-  // 1. Config
-  // ---------------------------------------------------------------------------
-
   const CONFIG = {
     enabled: true,
-
     rootSelectors: ['.post-content'],
-    contentSelectors: [
-      'p',
-      'li',
-      'td',
-      'th',
-      'blockquote',
-      'dd',
-      'dt',
-      'figcaption'
-    ],
+    contentSelectors: ['p', 'li', 'td', 'th', 'blockquote', 'dd', 'dt', 'figcaption'],
     excludeSelectors: [
-      'pre',
-      'code',
-      'strong',
-      'em',
-      'kbd',
-      'samp',
-      'script',
-      'style',
-      'textarea',
-      'input',
-      'select',
-      'option',
-      'button',
-      'svg',
-      'canvas',
-      'math',
-      'mjx-container',
-      '.math',
-      '.MathJax',
-      '.katex',
-      '.katex-display',
-      '.mermaid',
-      '.highlight',
-      '.rouge-code',
-      '.rouge-table',
-      '.lineno',
-      '.no-adhd',
-      '.adhd-ignore',
-      '.jsd-linear-toolbar',
-      '.jsd-tree-widget',
-      '[data-adhd-rm="1"]'
+      'pre', 'code', 'strong', 'em', 'kbd', 'samp', 'script', 'style', 'textarea', 'input', 'select', 'option',
+      'button', 'svg', 'canvas', 'math', 'mjx-container', '.math', '.MathJax', '.katex', '.katex-display',
+      '.mermaid', '.highlight', '.rouge-code', '.rouge-table', '.lineno', '.no-adhd', '.adhd-ignore',
+      '.jsd-linear-toolbar', '.jsd-tree-widget', '[data-adhd-rm="1"]'
     ],
-
     colorPool: [
-      '#8B929E',
-      '#4857fa',
-      '#C6F94A',
-      '#CBD5E1',
-      '#38F8FF',
-      '#27f9a8',
-      '#8a076d',
-      '#FF5D73',
-      '#7DD6A8',
-      '#9844f2',
-      '#FF4D6D',
-      '#FFD166',
-      '#4DA3FF',
-      '#D26BFF',
-      '#E6EDF3',
-      '#7D8590',
-      '#FF9F43'
+      '#8B929E', '#4857fa', '#C6F94A', '#CBD5E1', '#38F8FF', '#27f9a8', '#8a076d', '#FF5D73', '#7DD6A8',
+      '#9844f2', '#FF4D6D', '#FFD166', '#4DA3FF', '#D26BFF', '#E6EDF3', '#7D8590', '#FF9F43'
     ],
-
     style: {
       color: true,
       fontWeight: false,
       fontWeightProbability: 0.2,
       fontWeightValue: '700'
     },
-
-    english: {
+    wordMode: {
       enabled: true,
-      minLength: 3,
+      minLength: 5,
       sampleRate: 1
     },
-
-    chinese: {
+    glyphMode: {
       enabled: true,
-      shortClauseMax: 4,
-      mediumClauseMax: 9,
-      shortClauseEvery: 2,
-      headMin: 3,
-      headMax: 5,
-      gapMin: 3,
-      gapMax: 5,
-      runMin: 3,
-      runMax: 5,
+      shortMax: 5,
+      mediumMax: 10,
+      longMax: 18,
+      minSectionChars: 3,
+      overlongMin: 4,
+      overlongMax: 8,
+      sectionEvery: 2,
+      protectedSelectors: ['code', 'strong', 'em'],
       sampleRate: 1
     },
-
     viewport: {
       enabled: true,
       rootMargin: '400px 0px',
       observeOnce: true
     },
-
     dynamic: {
       observe: true,
       debounceMs: 10,
       eventNames: ['content:rendered']
     },
-
     random: {
       mode: 'stable',
-      seed: 'adhd-read-mode-v3'
+      seed: 'adhd-read-mode-v4'
     },
-
     performance: {
       minTextLength: 2,
       maxTextLengthPerElement: 180000,
@@ -153,22 +88,20 @@
       idleTimeoutMs: 500,
       maxQueueSize: 4000
     },
-
     startup: {
-      delaySeconds: 0
+      delaySeconds: 2
     },
-
     css: {
       styleId: 'adhd-read-mode-style',
       markClass: 'adhd-rm-mark',
       processedAttr: 'data-adhd-rm-signature'
     },
-
     globalApiName: 'updateConfig'
   };
 
   const MARK_ATTR = 'data-adhd-rm';
   const MARK_SELECTOR = '[data-adhd-rm="1"]';
+  const GLYPH_PUNCTUATION = '、。！？；：，,.!?;:()[]{}"“”‘’《》〈〉「」『』—…·/|+*=<>~`@#$%^&_-';
 
   const state = {
     config: deepClone(CONFIG),
@@ -177,21 +110,17 @@
     applying: false,
     hasBooted: false,
     configVersion: 1,
-
     roots: [],
     mutationObserver: null,
     viewportObserver: null,
     observedSet: new WeakSet(),
-
     queue: [],
     queueSet: new WeakSet(),
     queueTimer: null,
     queueTimerType: '',
     scanTimer: null,
     bootTimer: null,
-
     eventCleanups: [],
-
     lastScanAt: 0,
     lastQueueAt: 0,
     processedElements: 0,
@@ -237,7 +166,7 @@
     const seen = Object.create(null);
     const list = asArray(pool).filter(function (color) {
       const value = String(color).trim();
-      const ok = /^#(?:[0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(value);
+      const ok = value.charAt(0) === '#' && (value.length === 4 || value.length === 7 || value.length === 9);
       const key = value.toLowerCase();
       if (!ok || seen[key]) return false;
       seen[key] = true;
@@ -260,23 +189,22 @@
     cfg.style.fontWeightProbability = clampNumber(cfg.style.fontWeightProbability, 0, 1, 0.2);
     cfg.style.fontWeightValue = cfg.style.fontWeightValue || '700';
 
-    if (!cfg.english || typeof cfg.english !== 'object') cfg.english = {};
-    cfg.english.enabled = cfg.english.enabled !== false;
-    cfg.english.minLength = Math.max(0, Math.floor(Number(cfg.english.minLength) || 0));
-    cfg.english.sampleRate = clampNumber(cfg.english.sampleRate, 0, 1, 1);
+    if (!cfg.wordMode || typeof cfg.wordMode !== 'object') cfg.wordMode = {};
+    cfg.wordMode.enabled = cfg.wordMode.enabled !== false;
+    cfg.wordMode.minLength = Math.max(0, Math.floor(Number(cfg.wordMode.minLength) || 0));
+    cfg.wordMode.sampleRate = clampNumber(cfg.wordMode.sampleRate, 0, 1, 1);
 
-    if (!cfg.chinese || typeof cfg.chinese !== 'object') cfg.chinese = {};
-    cfg.chinese.enabled = cfg.chinese.enabled !== false;
-    cfg.chinese.shortClauseMax = Math.max(1, Math.floor(Number(cfg.chinese.shortClauseMax) || 3));
-    cfg.chinese.mediumClauseMax = Math.max(cfg.chinese.shortClauseMax + 1, Math.floor(Number(cfg.chinese.mediumClauseMax) || 10));
-    cfg.chinese.shortClauseEvery = Math.max(1, Math.floor(Number(cfg.chinese.shortClauseEvery) || 2));
-    cfg.chinese.headMin = Math.max(1, Math.floor(Number(cfg.chinese.headMin) || 3));
-    cfg.chinese.headMax = Math.max(cfg.chinese.headMin, Math.floor(Number(cfg.chinese.headMax) || cfg.chinese.headMin));
-    cfg.chinese.gapMin = Math.max(0, Math.floor(Number(cfg.chinese.gapMin) || 3));
-    cfg.chinese.gapMax = Math.max(cfg.chinese.gapMin, Math.floor(Number(cfg.chinese.gapMax) || cfg.chinese.gapMin));
-    cfg.chinese.runMin = Math.max(1, Math.floor(Number(cfg.chinese.runMin) || 3));
-    cfg.chinese.runMax = Math.max(cfg.chinese.runMin, Math.floor(Number(cfg.chinese.runMax) || cfg.chinese.runMin));
-    cfg.chinese.sampleRate = clampNumber(cfg.chinese.sampleRate, 0, 1, 1);
+    if (!cfg.glyphMode || typeof cfg.glyphMode !== 'object') cfg.glyphMode = {};
+    cfg.glyphMode.enabled = cfg.glyphMode.enabled !== false;
+    cfg.glyphMode.shortMax = Math.max(1, Math.floor(Number(cfg.glyphMode.shortMax) || 5));
+    cfg.glyphMode.mediumMax = Math.max(cfg.glyphMode.shortMax + 1, Math.floor(Number(cfg.glyphMode.mediumMax) || 10));
+    cfg.glyphMode.longMax = Math.max(cfg.glyphMode.mediumMax + 1, Math.floor(Number(cfg.glyphMode.longMax) || 18));
+    cfg.glyphMode.minSectionChars = Math.max(1, Math.floor(Number(cfg.glyphMode.minSectionChars) || 3));
+    cfg.glyphMode.overlongMin = Math.max(cfg.glyphMode.minSectionChars, Math.floor(Number(cfg.glyphMode.overlongMin) || 4));
+    cfg.glyphMode.overlongMax = Math.max(cfg.glyphMode.overlongMin, Math.floor(Number(cfg.glyphMode.overlongMax) || 8));
+    cfg.glyphMode.sectionEvery = Math.max(1, Math.floor(Number(cfg.glyphMode.sectionEvery) || 2));
+    cfg.glyphMode.protectedSelectors = asArray(cfg.glyphMode.protectedSelectors || ['code', 'strong', 'em']);
+    cfg.glyphMode.sampleRate = clampNumber(cfg.glyphMode.sampleRate, 0, 1, 1);
 
     if (!cfg.dynamic || typeof cfg.dynamic !== 'object') cfg.dynamic = {};
     cfg.dynamic.debounceMs = Math.max(0, Math.floor(Number(cfg.dynamic.debounceMs) || 0));
@@ -292,7 +220,7 @@
 
     if (!cfg.viewport || typeof cfg.viewport !== 'object') cfg.viewport = {};
     cfg.viewport.enabled = cfg.viewport.enabled !== false;
-    cfg.viewport.rootMargin = cfg.viewport.rootMargin || '900px 0px';
+    cfg.viewport.rootMargin = cfg.viewport.rootMargin || '400px 0px';
 
     if (!cfg.startup || typeof cfg.startup !== 'object') cfg.startup = {};
     cfg.startup.delaySeconds = Math.max(0, Number(cfg.startup.delaySeconds) || 0);
@@ -319,14 +247,8 @@
 
   /** Returns a timestamp with performance fallback. */
   function nowMs() {
-    return window.performance && typeof window.performance.now === 'function'
-      ? window.performance.now()
-      : Date.now();
+    return window.performance && typeof window.performance.now === 'function' ? window.performance.now() : Date.now();
   }
-
-  // ---------------------------------------------------------------------------
-  // 2. DOM Discovery
-  // ---------------------------------------------------------------------------
 
   /** Refreshes and caches configured root elements. */
   function refreshRoots() {
@@ -398,7 +320,7 @@
       if (matchesAny(element, state.config.excludeSelectors)) return false;
       if (hasExcludedAncestor(element.parentElement || element, null)) return false;
       try {
-        return !element.querySelector(selector); // Match the older jtimeline-compatible leaf-block behavior.
+        return !element.querySelector(selector);
       } catch (e) {
         return true;
       }
@@ -419,7 +341,7 @@
       parent.removeChild(mark);
     });
     parents.forEach(function (parent) {
-      parent.normalize(); // Merge adjacent text nodes once per parent.
+      parent.normalize();
     });
 
     const attr = state.config.css.processedAttr || CONFIG.css.processedAttr;
@@ -459,10 +381,6 @@
     const style = document.getElementById(id);
     if (style) style.remove();
   }
-
-  // ---------------------------------------------------------------------------
-  // 3. Text Transform
-  // ---------------------------------------------------------------------------
 
   /** Returns a deterministic unsigned hash. */
   function hashString(str) {
@@ -505,7 +423,7 @@
     return pool[hashString(raw) % pool.length];
   }
 
-  /** Creates a generated mark span with only color/bold styling. */
+  /** Creates a generated mark span with color/bold styling only. */
   function createMark(text, ctx) {
     const span = document.createElement('span');
     const style = state.config.style;
@@ -514,12 +432,12 @@
     span.setAttribute(MARK_ATTR, '1');
     span.textContent = text;
 
-    if (style.color !== false) span.style.color = pickColor(text, ctx); // Stable visual anchor.
+    if (style.color !== false) span.style.color = pickColor(text, ctx);
 
     if (style.fontWeight === true) {
       if (nextRandomUnit(ctx) < style.fontWeightProbability) span.style.fontWeight = String(style.fontWeightValue || '700');
     } else if (style.fontWeight !== null && style.fontWeight !== undefined && style.fontWeight !== false) {
-      span.style.fontWeight = String(style.fontWeight); // Exact-value compatibility.
+      span.style.fontWeight = String(style.fontWeight);
     }
 
     ctx.markIndex += 1;
@@ -531,28 +449,55 @@
     if (text) fragment.appendChild(document.createTextNode(text));
   }
 
-  /** Checks ASCII English letters. */
-  function isAsciiLetter(ch) {
+  /** Checks common CJK glyph ranges. */
+  function isCjkGlyph(ch) {
     const code = ch.charCodeAt(0);
-    return (code >= 65 && code <= 90) || (code >= 97 && code <= 122);
+    return (code >= 0x3400 && code <= 0x4DBF) ||
+      (code >= 0x4E00 && code <= 0x9FFF) ||
+      (code >= 0xF900 && code <= 0xFAFF) ||
+      (code >= 0x3040 && code <= 0x30FF) ||
+      (code >= 0xAC00 && code <= 0xD7AF);
   }
 
-  /** Checks English token connector characters. */
-  function isEnglishConnector(ch) {
-    return ch === '-' || ch === '\'' || ch === '’';
+  /** Checks digits used as glyph-mode boundaries. */
+  function isDigit(ch) {
+    const code = ch.charCodeAt(0);
+    return code >= 48 && code <= 57;
   }
 
-  /** Reads one English-like token from text. */
-  function readEnglishToken(text, start) {
-    if (!isAsciiLetter(text.charAt(start))) return null;
+  /** Checks punctuation used as glyph-mode boundaries. */
+  function isGlyphPunctuation(ch) {
+    return GLYPH_PUNCTUATION.indexOf(ch) !== -1;
+  }
+
+  /** Checks word letters for wordMode; excludes CJK glyphs. */
+  function isWordLetter(ch) {
+    if (isCjkGlyph(ch)) return false;
+    const code = ch.charCodeAt(0);
+    return (code >= 65 && code <= 90) ||
+      (code >= 97 && code <= 122) ||
+      (code >= 0x00C0 && code <= 0x024F) ||
+      (code >= 0x0370 && code <= 0x03FF) ||
+      (code >= 0x0400 && code <= 0x052F) ||
+      (code >= 0x0600 && code <= 0x06FF);
+  }
+
+  /** Checks connector chars allowed inside wordMode tokens. */
+  function isWordConnector(ch) {
+    return ch === '-' || ch === '’' || ch === '_' || ch === String.fromCharCode(39);
+  }
+
+  /** Reads one wordMode token. */
+  function readWordToken(text, start) {
+    if (!isWordLetter(text.charAt(start))) return null;
     let i = start + 1;
     while (i < text.length) {
       const ch = text.charAt(i);
-      if (isAsciiLetter(ch)) {
+      if (isWordLetter(ch)) {
         i += 1;
         continue;
       }
-      if (isEnglishConnector(ch) && i + 1 < text.length && isAsciiLetter(text.charAt(i + 1))) {
+      if (isWordConnector(ch) && i + 1 < text.length && isWordLetter(text.charAt(i + 1))) {
         i += 1;
         continue;
       }
@@ -561,11 +506,11 @@
     return { token: text.slice(start, i), end: i };
   }
 
-  /** Counts ASCII letters in a token. */
-  function countLetters(token) {
+  /** Counts word letters in a token. */
+  function countWordLetters(token) {
     let count = 0;
     for (let i = 0; i < token.length; i += 1) {
-      if (isAsciiLetter(token.charAt(i))) count += 1;
+      if (isWordLetter(token.charAt(i))) count += 1;
     }
     return count;
   }
@@ -574,126 +519,182 @@
   function splitAfterLetters(token, letterLimit) {
     let count = 0;
     for (let i = 0; i < token.length; i += 1) {
-      if (isAsciiLetter(token.charAt(i))) count += 1;
+      if (isWordLetter(token.charAt(i))) count += 1;
       if (count >= letterLimit) return [token.slice(0, i + 1), token.slice(i + 1)];
     }
     return [token, ''];
   }
 
-  /** Checks common CJK ideographs. */
-  function isHan(ch) {
-    const code = ch.charCodeAt(0);
-    return (code >= 0x3400 && code <= 0x4DBF) ||
-      (code >= 0x4E00 && code <= 0x9FFF) ||
-      (code >= 0xF900 && code <= 0xFAFF);
+  /** Appends one wordMode token. */
+  function appendWordToken(fragment, token, ctx) {
+    const cfg = state.config.wordMode;
+    const letterCount = countWordLetters(token);
+    if (!cfg.enabled || letterCount <= cfg.minLength || !passesSample(ctx, cfg.sampleRate)) {
+      appendText(fragment, token);
+      return false;
+    }
+
+    const prefixLen = Math.floor(letterCount / 2);
+    const parts = splitAfterLetters(token, prefixLen);
+    fragment.appendChild(createMark(parts[0], ctx));
+    appendText(fragment, parts[1]);
+    return true;
   }
 
-  /** Checks punctuation that splits Chinese clauses. */
-  function isChineseClausePunctuation(ch) {
-    return /[、。！？；：，,.!?;:()[\]{}"'“”‘’《》〈〉「」『』—…·\-]/.test(ch);
-  }
-
-  /** Counts Han characters in text. */
-  function countHan(text) {
+  /** Counts CJK glyphs in text. */
+  function countCjkGlyphs(text) {
     let count = 0;
     for (let i = 0; i < text.length; i += 1) {
-      if (isHan(text.charAt(i))) count += 1;
+      if (isCjkGlyph(text.charAt(i))) count += 1;
     }
     return count;
   }
 
-  /** Reads a Chinese clause from a Han start until punctuation. */
-  function readChineseClause(text, start) {
+  /** Returns string index after n CJK glyphs from start. */
+  function indexAfterCjkCount(text, start, count) {
+    let seen = 0;
+    for (let i = start; i < text.length; i += 1) {
+      if (!isCjkGlyph(text.charAt(i))) continue;
+      seen += 1;
+      if (seen >= count) return i + 1;
+    }
+    return text.length;
+  }
+
+  /** Slices a CJK segment into sections by requested part count. */
+  function splitCjkByParts(text, parts, minChars, ctx) {
+    const total = countCjkGlyphs(text);
+    const safeParts = Math.max(1, Math.min(parts, Math.floor(total / minChars) || 1));
+    const sections = [];
+    let cursor = 0;
+    let remaining = total;
+
+    for (let i = 0; i < safeParts; i += 1) {
+      const leftParts = safeParts - i;
+      let size;
+      if (leftParts === 1) {
+        size = remaining;
+      } else {
+        const base = Math.floor(remaining / leftParts);
+        const min = Math.max(minChars, base - 1);
+        const max = Math.min(remaining - minChars * (leftParts - 1), base + 1);
+        size = randomInt(ctx, min, Math.max(min, max));
+      }
+      const end = indexAfterCjkCount(text, cursor, size);
+      sections.push(text.slice(cursor, end));
+      cursor = end;
+      remaining -= size;
+    }
+
+    if (cursor < text.length) sections[sections.length - 1] += text.slice(cursor);
+    return sections.filter(Boolean);
+  }
+
+  /** Slices 19+ CJK segment into 4-8 glyph sections, minimum 3 when possible. */
+  function splitCjkOverlong(text, ctx) {
+    const cfg = state.config.glyphMode;
+    const sections = [];
+    let cursor = 0;
+    let remaining = countCjkGlyphs(text);
+
+    while (cursor < text.length && remaining > 0) {
+      let size;
+      if (remaining <= cfg.overlongMax) {
+        size = remaining;
+      } else {
+        const maxSize = Math.min(cfg.overlongMax, remaining - cfg.minSectionChars);
+        size = randomInt(ctx, cfg.overlongMin, Math.max(cfg.overlongMin, maxSize));
+      }
+      const end = indexAfterCjkCount(text, cursor, size);
+      sections.push(text.slice(cursor, end));
+      cursor = end;
+      remaining -= size;
+    }
+
+    if (cursor < text.length) sections[sections.length - 1] += text.slice(cursor);
+    return sections.filter(Boolean);
+  }
+
+  /** Splits one CJK segment into structural sections. */
+  function splitCjkSegment(text, ctx) {
+    const cfg = state.config.glyphMode;
+    const total = countCjkGlyphs(text);
+    if (total <= cfg.shortMax) return [text];
+    if (total <= cfg.mediumMax) return splitCjkByParts(text, 2, cfg.minSectionChars, ctx);
+    if (total <= cfg.longMax) return splitCjkByParts(text, 3, cfg.minSectionChars, ctx);
+    return splitCjkOverlong(text, ctx);
+  }
+
+  /** Appends CJK sections with alternating color and protected-boundary suppression. */
+  function appendCjkSegment(fragment, text, ctx, options) {
+    const cfg = state.config.glyphMode;
+    const sections = splitCjkSegment(text, ctx);
+    let changed = false;
+
+    sections.forEach(function (section, index) {
+      const blockedByProtected = (options.afterProtected && index === 0) ||
+        (options.beforeProtected && index === sections.length - 1);
+      const sectionNumber = ctx.glyphSectionIndex;
+      const shouldMark = !blockedByProtected &&
+        sectionNumber % cfg.sectionEvery === 0 &&
+        passesSample(ctx, cfg.sampleRate);
+
+      ctx.glyphSectionIndex += 1;
+
+      if (shouldMark) {
+        fragment.appendChild(createMark(section, ctx));
+        changed = true;
+      } else {
+        appendText(fragment, section);
+      }
+    });
+
+    return changed;
+  }
+
+  /** Reads consecutive CJK glyphs until punctuation, digit, word token, or non-CJK. */
+  function readCjkSegment(text, start) {
     let end = start;
-    while (end < text.length && !isChineseClausePunctuation(text.charAt(end))) {
+    while (end < text.length) {
+      const ch = text.charAt(end);
+      if (!isCjkGlyph(ch) || isGlyphPunctuation(ch) || isDigit(ch) || isWordLetter(ch)) break;
       end += 1;
     }
     return { token: text.slice(start, end), end: end };
   }
 
-  /** Returns the string index just after the nth Han char from start. */
-  function indexAfterHanCount(text, start, hanCount) {
-    let seen = 0;
-    for (let i = start; i < text.length; i += 1) {
-      if (!isHan(text.charAt(i))) continue;
-      seen += 1;
-      if (seen >= hanCount) return i + 1;
-    }
-    return text.length;
+  /** Finds the previous significant sibling before a text node. */
+  function previousSignificantNode(node) {
+    let prev = node ? node.previousSibling : null;
+    while (prev && prev.nodeType === 3 && !prev.nodeValue.trim()) prev = prev.previousSibling;
+    return prev;
   }
 
-  /** Appends one possibly marked Chinese clause by length rules. */
-  function appendChineseClause(fragment, clause, ctx) {
-    const cfg = state.config.chinese;
-    const hanCount = countHan(clause);
+  /** Finds the next significant sibling after a text node. */
+  function nextSignificantNode(node) {
+    let next = node ? node.nextSibling : null;
+    while (next && next.nodeType === 3 && !next.nodeValue.trim()) next = next.nextSibling;
+    return next;
+  }
 
-    if (!cfg.enabled || !hanCount) {
-      appendText(fragment, clause);
-      return false;
-    }
+  /** Checks whether a significant node is inside or is a protected inline element. */
+  function isProtectedNode(node) {
+    if (!node) return false;
+    const element = node.nodeType === 1 ? node : node.parentElement;
+    if (!element) return false;
+    return matchesAny(element, state.config.glyphMode.protectedSelectors);
+  }
 
-    if (hanCount <= cfg.shortClauseMax) {
-      ctx.shortClauseIndex += 1;
-      const shouldMark = ((ctx.shortClauseIndex + ctx.shortClauseOffset) % cfg.shortClauseEvery) === 0;
-      if (shouldMark && passesSample(ctx, cfg.sampleRate)) {
-        fragment.appendChild(createMark(clause, ctx)); // Short clauses are marked as a whole, intermittently.
-        return true;
-      }
-      appendText(fragment, clause);
-      return false;
-    }
-
-    if (hanCount <= cfg.mediumClauseMax) {
-      const headCount = Math.min(hanCount, randomInt(ctx, cfg.headMin, cfg.headMax));
-      const headEnd = indexAfterHanCount(clause, 0, headCount);
-      const head = clause.slice(0, headEnd);
-      const rest = clause.slice(headEnd);
-
-      if (passesSample(ctx, cfg.sampleRate)) {
-        fragment.appendChild(createMark(head, ctx));
-        appendText(fragment, rest);
-        return true;
-      }
-
-      appendText(fragment, clause);
-      return false;
-    }
-
-    let changed = false;
-    let cursor = 0;
-    let first = true;
-
-    while (cursor < clause.length) {
-      const isHeadRun = first;
-      if (first) {
-        first = false;
-      } else {
-        const gapCount = randomInt(ctx, cfg.gapMin, cfg.gapMax);
-        const gapEnd = indexAfterHanCount(clause, cursor, gapCount);
-        appendText(fragment, clause.slice(cursor, gapEnd));
-        cursor = gapEnd;
-        if (cursor >= clause.length) break;
-      }
-
-      const runCount = isHeadRun ? randomInt(ctx, cfg.headMin, cfg.headMax) : randomInt(ctx, cfg.runMin, cfg.runMax);
-      const runEnd = indexAfterHanCount(clause, cursor, runCount);
-      const run = clause.slice(cursor, runEnd);
-
-      if (run && passesSample(ctx, cfg.sampleRate)) {
-        fragment.appendChild(createMark(run, ctx));
-        changed = true;
-      } else {
-        appendText(fragment, run);
-      }
-
-      cursor = runEnd;
-    }
-
-    return changed;
+  /** Builds text-node context around code/strong/em boundaries. */
+  function getTextNodeOptions(textNode, boundary) {
+    return {
+      afterProtected: isProtectedNode(previousSignificantNode(textNode)),
+      beforeProtected: isProtectedNode(nextSignificantNode(textNode))
+    };
   }
 
   /** Converts one text node into a marked fragment when needed. */
-  function transformTextNode(textNode, ctx) {
+  function transformTextNode(textNode, ctx, options) {
     const text = textNode.nodeValue || '';
     if (text.length < state.config.performance.minTextLength || !text.trim()) return null;
 
@@ -704,32 +705,21 @@
     while (i < text.length) {
       const ch = text.charAt(i);
 
-      if (state.config.english.enabled && isAsciiLetter(ch)) {
-        const word = readEnglishToken(text, i);
-        const letterCount = countLetters(word.token);
+      if (state.config.glyphMode.enabled && isCjkGlyph(ch)) {
+        const segment = readCjkSegment(text, i);
+        if (segment.token && appendCjkSegment(fragment, segment.token, ctx, options || {})) changed = true;
+        i = segment.end;
+        continue;
+      }
 
-        if (letterCount > state.config.english.minLength && passesSample(ctx, state.config.english.sampleRate)) {
-          const prefixLen = Math.floor(letterCount / 2); // 4/5 -> 2, 6/7 -> 3, 8/9 -> 4.
-          const pair = splitAfterLetters(word.token, prefixLen);
-          fragment.appendChild(createMark(pair[0], ctx));
-          appendText(fragment, pair[1]);
-          changed = true;
-        } else {
-          appendText(fragment, word.token);
-        }
-
+      if (state.config.wordMode.enabled && isWordLetter(ch)) {
+        const word = readWordToken(text, i);
+        if (word && appendWordToken(fragment, word.token, ctx)) changed = true;
         i = word.end;
         continue;
       }
 
-      if (isHan(ch)) {
-        const clause = readChineseClause(text, i);
-        if (appendChineseClause(fragment, clause.token, ctx)) changed = true;
-        i = clause.end;
-        continue;
-      }
-
-      appendText(fragment, ch); // Punctuation and non-Han text pass through without Chinese gap cost.
+      appendText(fragment, ch);
       i += 1;
     }
 
@@ -782,14 +772,14 @@
       markIndex: 0,
       nodeIndex: 0,
       rngState: hashString((element.textContent || '') + ':' + state.config.random.seed),
-      shortClauseIndex: 0,
-      shortClauseOffset: 0
+      glyphSectionIndex: 0
     };
 
     let changed = false;
     textNodes.forEach(function (textNode) {
       ctx.nodeIndex += 1;
-      const fragment = transformTextNode(textNode, ctx);
+      const options = getTextNodeOptions(textNode, element);
+      const fragment = transformTextNode(textNode, ctx, options);
       if (!fragment || !textNode.parentNode) return;
       textNode.parentNode.replaceChild(fragment, textNode);
       state.processedTextNodes += 1;
@@ -800,10 +790,6 @@
     if (changed) state.processedElements += 1;
     return changed;
   }
-
-  // ---------------------------------------------------------------------------
-  // 4. Scheduler
-  // ---------------------------------------------------------------------------
 
   /** Suppresses observer feedback while this script writes DOM. */
   function withMutationPaused(fn) {
@@ -857,7 +843,7 @@
       while (state.queue.length && count < maxItems) {
         const elapsed = nowMs() - start;
         const hasIdleTime = !deadline || deadline.timeRemaining() > 2 || deadline.didTimeout;
-        if (count > 0 && (elapsed >= budget || !hasIdleTime)) break; // Yield to browser.
+        if (count > 0 && (elapsed >= budget || !hasIdleTime)) break;
 
         const element = state.queue.shift();
         state.queueSet.delete(element);
@@ -877,19 +863,14 @@
 
     list.forEach(function (element) {
       if (!element || element.nodeType !== 1 || state.queueSet.has(element)) return;
-      if (state.queue.length + accepted.length >= state.config.performance.maxQueueSize) return; // Runaway guard.
+      if (state.queue.length + accepted.length >= state.config.performance.maxQueueSize) return;
       state.queueSet.add(element);
       accepted.push(element);
     });
 
     if (!accepted.length) return;
-    state.queue = priority ? accepted.concat(state.queue) : state.queue.concat(accepted); // Block prepend preserves order.
+    state.queue = priority ? accepted.concat(state.queue) : state.queue.concat(accepted);
     scheduleQueue();
-  }
-
-  /** Adds one element to queue. */
-  function enqueueElement(element, priority) {
-    enqueueElements([element], priority);
   }
 
   /** Sorts elements by visual page position. Used only for viewport entries. */
@@ -919,7 +900,7 @@
     elements.forEach(function (element) {
       if (state.observedSet.has(element)) return;
       state.observedSet.add(element);
-      state.viewportObserver.observe(element); // Processing happens after intersection.
+      state.viewportObserver.observe(element);
     });
   }
 
@@ -932,7 +913,7 @@
       visible.push(entry.target);
     });
 
-    if (visible.length) enqueueElements(sortByPagePosition(visible), true); // Top-to-bottom for visible batch.
+    if (visible.length) enqueueElements(sortByPagePosition(visible), true);
   }
 
   /** Sets up viewport observer. */
@@ -945,7 +926,7 @@
 
     state.viewportObserver = new IntersectionObserver(onViewportEntries, {
       root: null,
-      rootMargin: state.config.viewport.rootMargin || '900px 0px',
+      rootMargin: state.config.viewport.rootMargin || '400px 0px',
       threshold: 0
     });
   }
@@ -955,7 +936,7 @@
     if (!state.enabled || state.destroyed || state.applying) return;
     window.clearTimeout(state.scanTimer);
     state.scanTimer = window.setTimeout(function () {
-      if (!getRoots().length) refreshRoots(); // Low-frequency root refresh after DOM replacement.
+      if (!getRoots().length) refreshRoots();
       enqueueScope(scope || document, true);
       state.lastScanAt = Date.now();
     }, state.config.dynamic.debounceMs);
@@ -1028,10 +1009,6 @@
     state.scanTimer = null;
     state.bootTimer = null;
   }
-
-  // ---------------------------------------------------------------------------
-  // 5. Public API and Lifecycle
-  // ---------------------------------------------------------------------------
 
   /** Rebuilds runtime immediately; startup delay is not applied here. */
   function rebuild() {

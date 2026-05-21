@@ -1,15 +1,9 @@
 ---
-title: Comparative Lecture Notes on the World’s Major Language Families
+title: Comparative Lecture Notes on the World's Language Families
 categories: Notes
 abbreviation: Language Families
 subclass: Linguistics
 ---
-
-Here is Chapter 1.
-
----
-
-# Comparative Lecture Notes on the World's Language Families
 
 ## Chapter 1 · Three Axes: Genealogy, Typology, and Areality
 
