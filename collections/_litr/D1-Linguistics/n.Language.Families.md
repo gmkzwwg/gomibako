@@ -1640,3 +1640,1023 @@ thú  sà  phat-tɛ̀
 - The Chinese character system encodes morphemes rather than phonemes, which makes it relatively immune to phonological change — a text written in characters is accessible regardless of how pronunciation has evolved. But this immunity to phonological change is also an immunity to phonological information: characters provide only imprecise cues to current pronunciation. A learner of Mandarin must, in effect, learn two systems — the phonological system (tone + segment) and the orthographic system (character + meaning) — that are only loosely coupled. Does this dual acquisition burden produce a qualitatively different relationship to written and spoken language in literate Mandarin speakers compared to speakers of phonographically written languages?
 
 - Tibetan and Mandarin belong to the same genealogical family yet differ in alignment (Tibetan is ergative in some constructions), word order (Tibetan SOV, Mandarin SVO), morphological type (Tibetan agglutinative, Mandarin analytic), prosodic organization, and evidential grammar. The structural distance is comparable to the distance between English and Hindi within Indo-European. What does this suggest about the relationship between genealogical unity and typological convergence? Must a genealogically defined family eventually converge typologically, or can members of a single family diversify indefinitely while still sharing demonstrable common ancestry?
+
+## Chapter 9 · Japonic — Three Scripts, One Grammar, Uncertain Origins
+
+Japanese occupies an unusual position in the typological landscape of East Asia: it is structurally unlike its geographic neighbors in several fundamental respects — SOV against the SVO of Mandarin, agglutinative against the analytic profiles of the Mainland Southeast Asia area, with a pitch-accent system distinct from the full lexical tone of Cantonese or the stress system of Korean — yet it has borrowed so extensively from Chinese at the lexical, morphological, and orthographic levels that the resulting language is, in some respects, a product of one of the most intense cross-family contact situations documented in any language's history. The vocabulary is approximately 35–50% Sino-Japanese depending on the register; the writing system is primarily adapted from Chinese characters; and several grammatical structures reflect the imprint of centuries of engagement with Chinese literary models. Yet the grammatical core — the agglutinative suffix chain, the particle system, the verb-final clause structure, the elaborate honorific morphology — is genuinely Japanese, with no structural parallel in Chinese of any period.
+
+The family to which Japanese belongs — **Japonic** — includes not only the standard language but the Ryukyuan languages spoken in the archipelago south of Kyushu: Okinawan, Miyako, Yaeyama, Yonaguni, Amami, and others. These are not dialects of Japanese in any meaningful linguistic sense; they are distinct languages within the same family, mutually unintelligible with standard Japanese and with each other across the greater distances of the Ryukyu chain. The Ryukyuan languages were treated as Japanese dialects (*hōgen*) through much of Japanese linguistic history — partly for political reasons, as the Ryukyu Kingdom was absorbed into the Japanese state in 1879 and its languages were systematically suppressed during the 20th century — and only in recent decades have they been consistently recognized, in both international scholarship and increasingly in Japanese policy discourse, as independent languages deserving documentation and revitalization.
+
+Beyond Japonic, the genealogical situation is radically uncertain. Japanese has no demonstrated relatives outside the Japonic family. The question of whether Japanese is related to Korean — the **Japano-Koreanic hypothesis** — has been debated for over a century without resolution. The question of whether Japonic belongs to the larger **Transeurasian** grouping that would include Turkic, Mongolic, Tungusic, and Koreanic is the most consequential current version of this debate, examined in Chapter 11. For the moment, the most defensible characterization is that Japonic is genealogically isolated: its demonstrable relatives are the Ryukyuan languages, and no deeper genealogical affiliation has been established to the satisfaction of the comparative linguistics community.
+
+---
+
+### Old Japanese: The Eight-Vowel System and the Documentary Foundation
+
+The documentary record of Japanese begins with inscriptions from the 5th–6th centuries CE, but the primary corpus of Old Japanese — the language sufficiently documented for systematic linguistic analysis — dates from the 7th and 8th centuries: the Man'yōshū (万葉集, Collection of Ten Thousand Leaves, compiled c. 759 CE), the oldest extensive anthology of Japanese poetry; the Kojiki (古事記, Record of Ancient Matters, 712 CE); and the Nihon Shoki (日本書紀, Chronicles of Japan, 720 CE). These texts, written using Chinese characters as phonographic symbols in a system called **man'yōgana** (万葉仮名), provide the basis for reconstructing Old Japanese phonology and morphology.
+
+> **Man'yōgana** was the earliest system for writing Japanese in Chinese characters — predating the development of hiragana and katakana. In man'yōgana, Chinese characters were used purely for their phonological value, ignoring their meanings: the character 加 (*jiā* in Chinese, "to add") was used to represent the Japanese syllable *ka*; the character 布 (*bù*, "cloth") to represent *fu*. This system was orthographically cumbersome — a full Chinese character for each Japanese syllable, with no simplification — but it allowed Japanese phonological structure to be recorded with considerable precision, and it is this precision that enables modern reconstruction of Old Japanese phonology.
+
+The most striking difference between Old Japanese and Modern Japanese is the vowel system. Old Japanese appears to have distinguished **eight vowels** where Modern Japanese has five. Evidence for this distinction comes from the man'yōgana transcriptions: certain syllables are consistently written with one set of characters, and others with a different set, even when the syllable appears phonologically identical to a Modern Japanese speaker. The phonological reconstructions proposed by Shinkichi Hashimoto in the 1930s — distinguishing Type A and Type B syllables across four vowels (*i*, *e*, *o*, *u*) — have been refined and debated through subsequent decades, but the basic finding of a more complex Old Japanese vowel system than the modern five-vowel one is now broadly accepted. The collapse from eight to five vowels occurred during the transition from Old to Classical Japanese, between approximately the 9th and 10th centuries.
+
+The consonant system of Old Japanese included a distinction, in certain syllable positions, that has also been lost: the so-called **p-to-w shift**, through which an earlier *p* in certain positions became *w* or zero, paralleling changes in the Ryukyuan languages where the correspondence is more clearly preserved. Ryukyuan languages have been particularly valuable for Old Japanese reconstruction precisely because they preserve distinctions — including certain vowel and consonant contrasts — that the Japanese mainland languages have neutralized through change.
+
+The pitch-accent system is reconstructible for Old Japanese through two complementary sources: the phonological analysis embedded in the man'yōgana transcription conventions, and the systematic description of accent in later Heian-period treatises on poetic recitation. Old Japanese had a pitch-accent system broadly similar to Modern Japanese but with more distinctions: the Kyoto-Osaka dialect system, which preserves more accent distinctions than the Tokyo system, is generally taken to reflect a more conservative stage of the proto-Japonic accent system, while the Tokyo system represents a later simplification.
+
+---
+
+### Classical Japanese: The Heian Literary Standard
+
+Classical Japanese — the language of the Heian period (794–1185 CE) — is the literary standard that Japanese secondary and university education teaches under the designation *kogo* (古語, "ancient language"). It is the language of the Genji Monogatari (源氏物語, The Tale of Genji, c. 1008 CE), attributed to Murasaki Shikibu; the Makura no Sōshi (枕草子, The Pillow Book, c. 1002 CE), by Sei Shōnagon; the Kokinshū (古今集, Collection of Ancient and Modern Poems, 905 CE); and the broader court literature that represents one of the great concentrations of literary creativity in any language of any period.
+
+Classical Japanese is not merely "old Japanese" with archaic vocabulary — it is a grammatically distinct system, differing from Modern Japanese in verbal morphology, negation, copula forms, and the distribution of particles in ways that require explicit study:
+
+**Verbal morphology:** Classical Japanese verbs are classified into several conjugation types (*godan*, *yodan*, *kami-nidan*, *shimo-nidan*, *ka-gyō-hen*, *sa-gyō-hen*) whose inflectional forms differ from the Modern Japanese system in both shape and grammatical function. The classical system distinguishes six inflectional forms (未然形 *mizenkei*, 連用形 *ren'yōkei*, 終止形 *shūshikei*, 連体形 *rentaikei*, 已然形 *izenkei*, 命令形 *meireikei*) whose distribution is determined by what follows the verb form. The Modern Japanese system has simplified and restructured these forms considerably, but educated Japanese speakers encounter the classical paradigms in literary education and in certain formal registers.
+
+**Negation:** Classical Japanese negation uses the suffix *-zu* (and its variants *-nu*, *-de*) where Modern Japanese uses *-nai*/*-masen*. The classical negation interacts with the verb's stem in ways that differ from the modern system:
+
+```
+yoma-zu     — not reading (Classical — mizenkei stem + -zu)
+yoma-nai    — not reading (Modern — same stem + -nai)
+yoma-zari-ki — did not read (Classical — negative auxiliary + past tense marker)
+```
+
+**Copula:** The classical copula system distinguished *nari* (from *ni* + *ari*, the existential verb) and *tari* (from *to* + *ari*), where Modern Japanese uses *da* (informal) or *desu* (polite). The modern forms derive from later grammaticalization processes; their classical predecessors behave differently in the inflectional paradigm and interact differently with the evidential and modal suffixes of classical verbal morphology.
+
+**Particles:** The classical particle system includes several items with functions that differ from their modern counterparts. The classical topic particle *ha* (the ancestor of Modern *wa*) had a somewhat different semantic range; the nominative particle *ga* in classical usage often marks subordinate-clause subjects in ways that differ from its modern function; and several classical particles (*koso*, *zo*, *namu*, *ya*, *ka*) trigger specific verb-form requirements (*kakari-musubi*, 係り結び) — a grammatical phenomenon with no parallel in modern Japanese in which the final verb of a clause must appear in a specific inflectional form determined by the *kakari-joshi* (係助詞) particle earlier in the clause.
+
+The literary tradition of Classical Japanese continued as a productive model for formal prose and poetry long after the vernacular had evolved substantially beyond it — a situation parallel in some respects to the role of Literary Chinese, though the time depth and the degree of structural divergence are somewhat smaller. The *waka* (和歌) poetic tradition, constrained by formal metrics (31 morae in the 5-7-5-7-7 arrangement), maintained classical lexical and grammatical norms into the modern period, and the study of classical Japanese remains obligatory in Japanese secondary education.
+
+---
+
+### The Three-Script Writing System: Logic and History
+
+The Japanese writing system — combining kanji, hiragana, and katakana in a single text — is the most structurally complex orthographic system in current use for any major world language. Understanding its logic requires understanding the historical processes that produced it and the functional differentiation that has developed among the three components.
+
+**Man'yōgana** established the principle that Chinese characters could be used to write Japanese phonology. The system was cumbersome, as noted above, but it created the documentary foundation for Old Japanese and established the graphic forms from which the kana scripts would develop. Two distinct simplification processes operated on man'yōgana to produce the two syllabic scripts:
+
+**Hiragana** (平仮名, "ordinary/plain syllabic script") developed from the cursive (草書, *sōsho*) simplification of entire man'yōgana characters through repeated rapid writing. The hiragana character *あ* (a) derives from the cursive simplification of the character 安 (*ān*, "peaceful/safe"); *い* (i) from 以 (*yǐ*, "by means of"); *う* (u) from 宇 (*yǔ*, "house/eave"); and so on systematically through the syllable inventory. The historical derivation is not always visually obvious in the modern printed forms, but the handwritten and calligraphic traditions make the connection clearer. Hiragana developed primarily in the 9th century in aristocratic women's writing — the court ladies who produced the major Heian literary works used hiragana as their primary script, while formal male-authored texts used Chinese characters more prominently. This gendering of scripts — hiragana as "women's hand" (*onnade*), Chinese characters as the prestige male-associated form — was a social contingency, not a structural necessity, and it did not survive as an absolute distinction, though traces of the association persisted in literary style preferences for centuries.
+
+**Katakana** (片仮名, "partial/fragmented syllabic script") developed from a different process: Buddhist monks and scholars, reading Chinese Buddhist texts aloud in Japanese, extracted components or radicals of Chinese characters and used these fragments as phonographic markers for Japanese grammatical suffixes that had no representation in the Chinese text. The katakana character *ア* (a) derives from the left component of the character 阿 (*ā*); *イ* (i) from the left component of 伊 (*yī*); *ウ* (u) from the top component of 宇. Katakana thus derives not from whole characters (as hiragana does) but from portions — fragments — of characters, producing a more angular, less cursive visual form. In the modern system, katakana is used primarily for foreign loanwords (*terebi* テレビ for television, *kompyuutaa* コンピューター for computer), foreign names, onomatopoeia, scientific terminology (plant and animal names in technical writing), and occasional emphatic or stylistic functions.
+
+**Kanji** (漢字, Chinese characters) form the morphemic layer of the writing system — encoding both Sino-Japanese vocabulary (words borrowed from Chinese, now constituting a major stratum of the Japanese lexicon) and native Japanese vocabulary through *kun'yomi* readings. The same character carries (at minimum) two types of reading:
+
+- **On'yomi** (音読み, "sound reading"): the approximated Chinese pronunciation of the character at the time of borrowing, adapted to Japanese phonotactics. The character 山 (*shān* in Modern Mandarin) has the on'yomi *san* (in compounds like 富士山 *Fujisan*, Mt. Fuji; or 山岳 *sangaku*, mountainous terrain). Multiple on'yomi can exist for a single character, reflecting borrowings from different periods or different Chinese dialect sources (Kan-on readings from Tang dynasty northern Chinese, Go-on readings from earlier southern Chinese, Tōsō-on readings from later Song/Ming dynasty sources).
+
+- **Kun'yomi** (訓読み, "meaning reading"): the native Japanese word assigned to the character based on its meaning. The character 山 has the kun'yomi *yama* (mountain) — used when the character represents the native Japanese word for mountain rather than the Sino-Japanese compound. Thus 山 is read *yama* in 山道 (*yamamichi*, mountain path — a native compound) but *san* in 富士山 (*Fujisan* — a proper name with Sino-Japanese reading).
+
+A literate Japanese reader navigates these reading conventions automatically in context — selecting on'yomi or kun'yomi based on whether a word is Sino-Japanese or native Japanese, whether it is in a compound or in isolation, and whether it is a proper noun. Exceptional readings — characters whose readings are irregular or historically idiosyncratic — must be memorized individually and constitute a significant component of advanced literacy acquisition. The official **jōyō kanji** (常用漢字) list, revised in 2010, contains 2,136 characters designated for general use, with approximately 4,000–5,000 additional characters in the extended inventory used in specialized, historical, and personal-name contexts.
+
+The **mixed-script** system in practice means that a typical paragraph of contemporary Japanese contains all three scripts simultaneously, each performing a distinct function:
+
+- Kanji encode content morphemes — nouns, verb stems, adjective stems, Sino-Japanese compounds
+- Hiragana encode grammatical morphemes — verb and adjective inflectional endings, particles (*wa*, *ga*, *o*, *ni*, *de*, *to*, *mo*, *ka*), auxiliary verbs, conjunctions
+- Katakana encode foreign loanwords and emphasis
+
+A single sentence like 私はコンピューターで日本語を勉強しています (*Watashi wa konpyuutaa de nihongo o benkyou shite imasu*, "I am studying Japanese on a computer") contains kanji (私, 日本語, 勉強), hiragana (は, で, を, して, います), and katakana (コンピューター) — three scripts in one sentence, each encoding a different etymological and grammatical layer of the language. The visual parsing of this mixed script is automatic for competent readers but constitutes one of the primary acquisition challenges for learners of Japanese literacy.
+
+---
+
+### Modern Japanese Morphosyntax: The Agglutinative Core
+
+The grammatical core of Modern Japanese is organized around two primary mechanisms: the **particle system** and the **verbal suffix chain**. Both are agglutinative in the sense defined in Chapter 2 — transparent, compositional, stackable — though the verbal suffix chain includes some interactions among suffixes that introduce a degree of morphophonological complexity beyond pure concatenation.
+
+**Particles** in Japanese perform the functions that case endings perform in fusional languages and that word order performs in analytic languages. The major particles and their primary functions:
+
+- *-wa* (は): topic marker (encodes what the clause is about; interacts with given/new information structure in the ways described in Chapter 5)
+- *-ga* (が): nominative / subject marker (in focused or newly introduced subjects; marks the subject of certain grammatical structures)
+- *-o* (を): accusative / direct object marker
+- *-ni* (に): dative / indirect object / location (goal) / time point
+- *-de* (で): instrumental / location (activity site) / manner
+- *-to* (と): comitative ("with") / quotative
+- *-no* (の): genitive / nominalization
+- *-ka* (か): interrogative (sentence-final: marks yes/no question)
+- *-mo* (も): additive ("also/too"); in negative contexts, "either"
+
+The semantic distinctions among these particles — particularly among *ni*, *de*, and *o* for various locative functions — are not reducible to a simple spatial schema. *Ni* marks goals (movement toward a location), indirect objects, and time points; *de* marks the site of an activity, the instrument of an action, and the means of transportation; *o* marks not only direct objects but also the location through or along which movement occurs (歩いた *arui-ta michi-o*, "walked along the road"). These distinctions are conditioned by verb semantics in ways that cannot be predicted from the particle meanings alone, requiring exposure to specific verb-particle combinations rather than the application of compositional rules.
+
+The **verbal suffix chain** in Japanese is one of the most extensively analyzed morphological structures in formal linguistics. Verb forms are built by selecting from an ordered series of morphological slots, each encoding a specific grammatical category. A fully specified verb form might include:
+
+```
+tabe-sase-rare-nakat-ta
+eat-CAUS-PASS-NEG-PST
+'was not made to eat / did not have (someone) eat'
+```
+
+Five morphemes in a single word, each identifiable and each contributing a distinct grammatical modification: the causative (*-sase-*) creates a causative meaning from the base verb; the passive (*-rare-*) then passivizes the causative; the negation (*-nakat-*) negates the result; and the past tense (*-ta*) marks the entire predicate as past. The ordering of these morphemes is constrained: causative must precede passive; both must precede negation; all must precede tense. The system is not fully free-combinatorial — some combinations are semantically anomalous or pragmatically constrained — but the productive core generates a substantial inventory of verb forms from a finite set of suffixes.
+
+The **non-finite verb morphology** of Japanese — the system of participles, converbs, and nominalized forms used for clause embedding and subordination — is where the deepest structural complexity resides and where learners with European linguistic backgrounds encounter the most systematic challenges. Japanese does not have relative clauses introduced by a relative pronoun (*who*, *which*, *that*); instead, entire clauses appear in prenominal position, with the verb in a specific non-finite form:
+
+```
+[watashi-ga    kinou  yon-da]    hon
+[1SG-NOM      yesterday read-PST] book
+'the book that I read yesterday' (lit. "yesterday-I-read book")
+```
+
+The entire bracketed clause modifies *hon* (book) by preceding it, with the head noun appearing at the end. This head-final relative clause structure, characteristic of SOV languages generally, requires a fundamentally different parsing strategy from the head-initial relative clauses of English and the Romance languages: in Japanese, the head noun that the relative clause modifies appears after the entire clause, meaning that the reader/listener must hold the entire clause in working memory before encountering the noun that anchors its interpretation.
+
+---
+
+### The Keigo System: Social Structure as Grammar
+
+The Japanese honorific system (*keigo*, 敬語) was introduced in Chapter 5 as a paradigm case of grammaticalized social indexing. The full structural account requires distinguishing its three primary components and understanding how they interact:
+
+**Sonkeigo** (尊敬語, "respectful language") elevates the subject of the predicate — the person performing the action. When the action in question is performed by a social superior, the verb form changes to a dedicated respectful form: *iku* (go, plain) → *irassharu* (go, when the subject is a social superior); *iru* (be/exist, plain) → *irassharu*; *kuru* (come, plain) → *irassharu*. The convergence of three verbs onto a single honorific form is not confusion but productive specialization: *irassharu* is the respectful form for any action of existence or directed movement, regardless of which base verb it corresponds to in non-honorific contexts. Similarly: *iu* (say, plain) → *ossharu* (say, respectful); *taberu* (eat, plain) → *meshiagaru* (eat, respectful); *miru* (see/look, plain) → *goran-ni-naru* (see/look, respectful).
+
+**Kenjōgo** (謙譲語, "humble language") lowers the subject of the predicate — the speaker, or someone in the speaker's in-group — relative to the addressee or referent. When the speaker performs an action directed toward a social superior, the verb takes a humble form: *iku/kuru* (go/come, plain) → *mairu* (go/come, humble); *iu* (say, plain) → *mōsu* or *mōshiageru* (say, humble); *taberu* (eat, plain) → *itadaku* (eat, humble — also means "to receive gratefully," with the humility of the recipient encoded in the verb's base meaning). The humble forms index the speaker's subordinate position relative to the interlocutor by choosing verbs that encode a stance of self-lowering.
+
+**Teineigo** (丁寧語, "polite language") encodes the social relationship between speaker and addressee rather than the grammatical subject and referent. The primary mechanism is the *-masu/-desu* verb ending system: *taberu* (eat, plain) → *tabemasu* (eat, polite); *kirei da* (beautiful, plain copula) → *kirei desu* (beautiful, polite copula). The *-masu/-desu* system is layered on top of whatever sonkeigo or kenjōgo modifications have been made to the verb stem, producing forms like *irasshaimasu* (respectful verb + polite ending) or *mōshimasu* (humble verb + polite ending).
+
+The interaction of all three systems in a single utterance produces the register complexity that characterizes formal and professional Japanese:
+
+```
+Sensei-wa  ashita  irasshaimasu  ka?
+teacher-TOP  tomorrow  come.HON.POL  Q
+'Will the teacher come tomorrow?'
+(sensei = social superior; irassharu = sonkeigo for the teacher's coming; -masu = teineigo for the addressee)
+
+Watashi-wa  ashita  mairimasu.
+1SG-TOP    tomorrow  come.HUM.POL
+'I will come tomorrow.'
+(watashi = self; mairu = kenjōgo for the speaker's own action directed toward a superior; -masu = teineigo)
+```
+
+The two sentences are the same semantic event — coming tomorrow — described first from the perspective of a social superior coming and second from the perspective of the speaker going/coming. The grammar requires entirely different verb lexemes in the two cases. A speaker who uses *ikimasu* (plain-polite "go") where *mairimasu* (humble-polite "go") is expected commits a grammatical error in a socially consequential domain — not merely an infelicity but a violation of the honorific system's requirements.
+
+The diachronic development of keigo reflects the history of Japanese feudal social structure: the most elaborate distinctions in the system correspond to the social hierarchies of the Heian and subsequent periods, when the Buddhist clergy, the court aristocracy, the warrior class, and the merchant class each developed their own speech norms that were subsequently grammaticalized and stabilized into the modern system. Modern keigo persists with modifications in contemporary Japanese business, educational, and formal social contexts — its grammatical structure is a sediment of social relations that no longer exist in their original form but whose linguistic reflex remains obligatory.
+
+---
+
+### Ryukyuan: Internal Diversity and Endangered Depth
+
+The Ryukyuan languages — Okinawan (*Uchinaagruchi*), Miyako, Yaeyama, Yonaguni, Amami Ōshima, and others — constitute the other branch of the Japonic family, separate from Japanese proper. Their separation from Japanese is estimated to have occurred approximately 1,500–2,000 years ago — more recent than the Indo-European dialect splits that produced separate languages like Spanish and Portuguese, but deep enough that the Ryukyuan languages are not mutually intelligible with Japanese or, in many cases, with each other.
+
+Ryukyuan languages preserve several features of Proto-Japonic that have been innovated away in mainland Japanese varieties. The Proto-Japonic bilabial stop *p*, which became *h* in most Japanese contexts (through the intermediate *f* stage preserved in the orthographic *fu* ふ and in traditional descriptions of early modern Japanese pronunciation), is preserved as *p* in many Ryukyuan languages: Proto-Japonic *\*pana* (flower) → Modern Japanese *hana* 花, but Okinawan *hana* (through a different historical path) or *pana* in more conservative Ryukyuan varieties. The Ryukyuan evidence has been important for reconstructing Proto-Japonic phonology at precisely those points where mainland Japanese has innovated most extensively.
+
+All Ryukyuan languages are critically endangered: the shift to standard Japanese, accelerated by the traumatic experience of the Battle of Okinawa (1945) and the subsequent American administration of the Ryukyu Islands (1945–1972), produced a generation of parents who deliberately chose not to transmit Ryukyuan languages to their children in the belief that standard Japanese competence was essential for educational and economic advancement. The youngest generation of native Ryukyuan speakers is now elderly, and active revitalization efforts — now supported by the Japanese government's designation of Ryukyuan varieties as "endangered languages" rather than dialects in policy documents — face the challenge of reversing decades of suppression in a context where economic and social pressures toward standard Japanese remain overwhelming.
+
+---
+
+### Academic Controversies: Origins and Relationships
+
+The question of Japanese's genealogical origins is one of the most extensively discussed and least resolved issues in East Asian historical linguistics. Three positions can be distinguished:
+
+The **isolate position** treats Japonic as genealogically unrelated to any other language family — not because the relationship question has been definitively resolved, but because no proposed genetic affiliation has been demonstrated to the satisfaction of the mainstream comparative linguistics community. This is currently the working assumption of most specialists.
+
+The **Japano-Koreanic hypothesis** proposes a genealogical relationship between Japonic and Koreanic based on a set of proposed lexical correspondences and some morphological parallels. The most rigorous version of this hypothesis was developed by Sergei Starostin, who proposed systematic sound correspondences and a substantial list of cognates. Critics argue that the correspondences are insufficiently regular, that the cognate list is too small and too contaminated with potential borrowings, and that the morphological parallels are too general to be diagnostic. The hypothesis is neither proven nor definitively refuted; it remains the most plausible proposed external affiliation for Japonic.
+
+The **Transeurasian position** includes Japonic (along with Koreanic, Turkic, Mongolic, and Tungusic) in a proposed macro-family. As discussed in Chapter 11, this proposal has attracted both serious scholarly support and substantial criticism. For Japonic specifically, the proposed Transeurasian cognates include agricultural vocabulary (rice, millet, weaving) whose status as inherited versus borrowed is the central contested question: critics argue that these terms spread through contact networks associated with the Yayoi agricultural expansion into Japan (c. 900 BCE), not through genealogical inheritance.
+
+A separate controversy concerns the **origin of the Japanese people** and the relationship between linguistic and population history. Ancient DNA evidence from the Japanese archipelago has revealed a complex demographic picture: a pre-Yayoi population (the Jōmon people) was substantially replaced or admixed with incoming Yayoi populations who brought wet-rice agriculture from the Korean peninsula. The linguistic question — whether the Yayoi expansion brought the Japonic language with it, or whether Japonic was already present in some form — is not directly answerable from genetic evidence alone, requiring the integration of linguistic and archaeological data whose implications remain debated.
+
+---
+
+### Annotated Examples
+
+```
+(JP1) Modern Japanese — particle system and topic structure
+Sono  hon-wa,   dare-ga    kai-ta  n  desu  ka?
+that  book-TOP  who-NOM    write-PST NMLZ  COP.POL  Q
+'That book — who wrote it?'
+(book is topic -wa; who is nominative -ga in focused question; -n desu = nominalized predicate + polite copula)
+
+(JP2) Japanese — verbal suffix chain
+tabe-sase-rare-taku-nakat-ta  n  desu  ga...
+eat-CAUS-PASS-want-NEG-PST NMLZ COP.POL CONJ
+'It is that (I) did not want to be made to eat (it), but...'
+(causative + passive + desiderative + negative + past tense; ga = concessive/softening conjunction)
+
+(JP3) Japanese — prenominal relative clause (head-final)
+[kare-ga    kinou  yon-da]           hon-wa   omoshirokat-ta.
+[3SG-NOM  yesterday read-PST]      book-TOP interesting-PST
+'The book that he read yesterday was interesting.'
+(entire bracketed clause modifies hon; head noun appears after the modifying clause)
+
+(JP4) Japanese keigo — sonkeigo vs. kenjōgo
+Tanaka  sensei-wa   irasshaimasu  ka?
+Tanaka  teacher-TOP  be/come.HON.POL  Q
+'Is Professor Tanaka here/coming?'
+(irasshaimasu = sonkeigo for teacher + teineigo -masu)
+
+Watashi-wa   tadaima   mairimasu.
+1SG-TOP      presently  come/go.HUM.POL
+'I will come presently.'
+(mairu = kenjōgo for speaker's own action + teineigo -masu)
+
+(JP5) Classical Japanese — kakari-musubi
+Hana  zo  chirinu-keru.
+flower ZO fall.PERF-RENTAIKEI
+'It is the blossoms that have fallen.'
+(zo particle triggers rentaikei (連体形) form of the final verb; contrast with shūshikei (終止形) without kakari-joshi)
+
+(JP6) Okinawan (Ryukyuan) — contrast with Japanese
+Wan-nkai   yaa-ga   ichan?
+1SG-to     you-NOM  go.PST.Q
+'Did you go to (my place)?'
+(wan = 1SG, from Proto-Japonic *ware; nkai = dative/allative; yaa = 2SG, from Proto-Japonic *nare/ya; ichan = go.PST — different verb form from Japanese itta)
+```
+
+---
+
+**Thought-provoking questions**
+
+- The Japanese three-script writing system encodes three historically distinct strata of the language — native Japanese (primarily in hiragana and kun'yomi kanji), Sino-Japanese (in on'yomi kanji), and foreign loanwords (in katakana) — simultaneously in a single text. This tripartite system makes etymological information visually present to any literate reader: a katakana word is marked as foreign by its script before its meaning is parsed. Does this visual etymological transparency have cognitive and cultural consequences? Does the constant visual presence of "foreignness" markers in Japanese text shape how borrowed vocabulary is psychologically integrated into the language?
+
+- Keigo is often described by Japanese speakers themselves as burdensome — a complex social performance that requires constant social calculation in addition to normal linguistic processing. Yet the system has been maintained through dramatic social change (feudalism → democracy, wartime → peacetime economy, agricultural → industrial → digital society) without fundamental restructuring. What does this persistence suggest about the relationship between grammatical systems and the social structures that originally motivated them? When the social conditions that produced a grammatical category no longer exist, under what circumstances does the category disappear and under what circumstances does it persist?
+
+- The Ryukyuan languages preserve phonological distinctions lost in mainland Japanese — including the bilabial *p* that mainland Japanese shifted to *h* — making them invaluable for Proto-Japonic reconstruction. Yet they are all critically endangered, with the youngest generation of native speakers now elderly. What obligations does the scientific value of endangered languages for historical reconstruction create? Is the linguistic data that Ryukyuan languages preserve — data that would otherwise be unrecoverable — a reason for their documentation and revitalization, or does that framing reduce living languages and their communities to scientific resources?
+
+- The Japano-Koreanic and Transeurasian hypotheses both propose genealogical relationships for Japanese that have not been demonstrated to the community's satisfaction. Yet the typological similarity between Japanese and Korean — in morphological type, word order, honorific structure, and particle system — is so striking that many linguists find it difficult to attribute entirely to convergence. At what point does the failure to demonstrate a relationship through the standard comparative method constitute evidence *against* that relationship, rather than merely a reflection of the method's limitations for very old divergences? Is there a principled distinction between "not yet proven" and "probably not related"?
+## Chapter 10 · Koreanic — Speech Levels and the Hangul System
+
+Korean occupies a position in East Asian linguistics comparable in some ways to Japanese: a language of substantial speaker population (approximately 77 million), a complex honorific system that constitutes a major grammatical subsystem rather than a vocabulary overlay, a script tradition of both indigenous and borrowed components, and a genealogical situation that places the language in an uncertain relationship to its major neighbors. Where the comparison becomes instructive rather than merely parallel is in the specific ways Korean has solved the same communicative problems differently — in the design of its speech-level system, in the architecture of its writing system, and in the diachronic path it has taken from a pitch-accent system toward a largely tonal-neutral prosody in its prestige variety.
+
+The **Koreanic family** consists, in the most inclusive current classification, of Korean in its multiple dialect continuum and the Jeju language (제주어, *Jejueo*) — spoken on Jeju Island, the southernmost Korean territory, by a rapidly diminishing community of elderly speakers. Jeju is sufficiently divergent from the mainland Korean varieties that many linguists treat it as a separate language within the Koreanic family rather than a dialect of Korean — a distinction with political and revitalization implications that mirror the Ryukyuan situation in Japan. The rest of the Korean dialect continuum, though substantial in its internal variation (with the Gyeongsang dialects of the southeast being particularly divergent in prosody and some morphology), is treated as a dialect continuum of a single language by most classifications.
+
+---
+
+### The Diachronic Trajectory: From Pitch to Stress
+
+The documentary record of Korean extends to inscriptions and textual fragments from the Three Kingdoms period (57 BCE – 668 CE), but the first extensively documented stage is **Middle Korean** — the language of the Goryeo and early Joseon periods (roughly 10th–17th centuries CE) — which is the stage at which Hangul was invented and which provides the baseline for historical analysis of modern Korean.
+
+Middle Korean had a **pitch-accent system** in which syllables were specified as high (上), low (去), or rising (入 — a marked contour, possibly associated with specific coda consonants in earlier stages, though its phonetic realization in Middle Korean is debated). The three-way distinction is documented in the Hangul manuscripts of the 15th and 16th centuries through a system of dots (*bangjeom*, 방점) placed beside syllables in the text: one dot for high tone, two dots for rising tone, no dot for low. These manuscript markings provide direct evidence for the Middle Korean tonal system that is methodologically comparable in reliability to the fan-qie conventions of Middle Chinese phonology.
+
+The subsequent history of the pitch-accent system follows a pattern of simplification and regional differentiation. In the Seoul standard variety — the basis of modern Standard Korean — the Middle Korean tonal distinctions have been largely lost, reduced to a stress system that is not phonemically distinctive at the lexical level. The phonological contrast that distinguished Middle Korean minimal tone pairs has collapsed, leaving Seoul Korean with a prosodic system in which word-level pitch differences are conditioned by phrasal and intonational factors rather than lexical specification. This is a significant typological shift: from a system where pitch is a lexical property of individual syllables to one where pitch is primarily a phrase-level and discourse-level phenomenon.
+
+The Gyeongsang dialects of southeastern Korea have taken a strikingly different path. These dialects preserve pitch distinctions that are clearly related to the Middle Korean system, with high and low tone distinctions still functioning to distinguish lexical meaning in some environments. The Gyeongsang pitch system has attracted considerable scholarly attention because it provides — like the Kyoto-Osaka pitch accent system for Proto-Japonic — evidence for a stage of the proto-language's prosodic system that the prestige variety has innovated away.
+
+> The **prosodic trajectory** of Korean — from a three-way pitch system in Middle Korean to a largely non-tonal prosody in Seoul Korean, with conservative dialects preserving intermediate stages — is one of the clearest documented cases of the loss of lexical tone in a language with historical documentation of the earlier tonal stage. It complements the Chinese case (where tone *developed*) with a case where tone was *lost*, illustrating both directions of prosodic typological change.
+
+Before Hangul, Korean was written using Chinese characters in several phonographic adaptation systems. The **idu** (吏讀) system used Chinese characters both for their meaning and for their sound value to represent Korean grammatical morphemes not expressible in Chinese. The **hyangchal** (鄕札) system, used in the transcription of *hyangga* (鄕歌) poetry from the Silla period, was a more systematically phonographic system in which characters were selected primarily for their phonological value. The **gugyeol** (口訣) system added abbreviated Chinese character components to Chinese texts as phonographic markers for Korean grammatical suffixes — analogous in some ways to the development of Japanese katakana from Chinese character components. All three systems were cumbersome, required extensive knowledge of Chinese characters, and were accessible only to a highly educated minority.
+
+---
+
+### Hangul: Featural Design and Syllabic Organization
+
+The invention of Hangul (한글) in 1443 under the direction of King Sejong the Great (세종대왕, r. 1418–1450) is, by any measure, one of the most remarkable events in the history of writing. A royal commission — likely including the King himself as a direct participant in the scholarly work, though the precise contributions of different scholars remain debated — designed an alphabet from phonological principles, incorporating into the letter shapes themselves information about the articulation of the sounds they represent.
+
+The design of the consonant letters follows a principle of **articulatory iconicity**: the shape of each letter is a schematic representation of the configuration of the vocal tract during the articulation of the sound it represents. The five basic consonant letters (*ㄱ, ㄴ, ㅁ, ㅅ, ㅇ*) were designed as follows:
+
+- *ㄱ* (k/g): represents the shape of the back of the tongue raised toward the velum in velar stop articulation — a lateral cross-section of the tongue-body contact
+- *ㄴ* (n): represents the tongue tip touching the alveolar ridge in alveolar nasal articulation
+- *ㅁ* (m): represents the closed lips in bilabial stop/nasal articulation — a schematic square of the lip shape
+- *ㅅ* (s): represents the gap between the tongue tip and the alveolar ridge in fricative articulation — a stylized rendering of the narrow channel
+- *ㅇ* (ng/zero onset): represents the open round shape of the throat/pharynx, or alternatively the circular shape of the full open vowel
+
+Derived consonant letters are formed from the basic letters by adding strokes — a second stroke for the aspirated counterpart, a double letter for the tense (glottalized) counterpart:
+
+```
+ㄱ (k) → ㅋ (kh, aspirated) → ㄲ (kk, tense/glottalized)
+ㄷ (t) → ㅌ (th, aspirated) → ㄸ (tt, tense)
+ㅂ (p) → ㅍ (ph, aspirated) → ㅃ (pp, tense)
+ㅈ (ch) → ㅊ (chh, aspirated) → ㅉ (tch, tense)
+```
+
+This is a **featural alphabet** in the sense that phonological features — aspiration, glottalization — are encoded in the visual relationship between letters, not merely in the letters themselves. The system is not quite as rigorously featural as some descriptions suggest (the derivational relationship between basic and complex letters is not perfectly consistent across all consonants), but the principle is clearly operative and distinguishes Hangul from all historically developed alphabets as a script where phonological relationships are encoded in the graphic system itself.
+
+The vowel letters were designed on a different principle — philosophical rather than articulatory. The three basic vowel strokes (*ㆍ* a dot, *ㅡ* a horizontal stroke, *ㅣ* a vertical stroke) represent the three cosmological elements of Neo-Confucian metaphysics: heaven (the dot, round and above), earth (the horizontal stroke, flat and below), and human (the vertical stroke, upright between heaven and earth). Combined, these three elements produce the full vowel inventory:
+
+```
+ㅏ (a) — vertical + dot to the right
+ㅓ (eo) — vertical + dot to the left  
+ㅗ (o) — horizontal + dot above
+ㅜ (u) — horizontal + dot below
+ㅑ (ya) — vertical + two dots to the right
+ㅕ (yeo) — vertical + two dots to the left
+ㅛ (yo) — horizontal + two dots above
+ㅠ (yu) — horizontal + two dots below
+ㅡ (eu) — horizontal alone
+ㅣ (i) — vertical alone
+```
+
+The vowel harmony of Middle Korean — an *ayang* (bright) vs. *eueum* (dark) vowel distinction, attested in 15th-century manuscripts — is reflected in the vowel letter design: the bright vowels have their dot or stroke on the upper or right side; the dark vowels on the lower or left side. This harmony has been largely lost in modern Seoul Korean (surviving as a morphophonological constraint in some suffixation patterns and in onomatopoeia), but its presence in Middle Korean is directly visible in the 15th-century texts where Hangul was first used.
+
+A critical feature of Hangul orthography is its **syllabic block** organization. Despite being an alphabet — each letter representing a phoneme — the letters are not written linearly from left to right. Instead, they are arranged in spatial blocks, each block corresponding to a syllable. A syllable consisting of onset consonant + vowel + coda consonant is arranged with the onset and vowel in the upper portion of the block and the coda consonant beneath them:
+
+```
+한 = ㅎ (h) + ㅏ (a) + ㄴ (n) → arranged as a block for the syllable /han/
+글 = ㄱ (g) + ㅡ (eu) + ㄹ (l) → arranged as a block for the syllable /gɯl/
+```
+
+The syllabic block structure means that Hangul combines alphabetic phoneme-level encoding (each letter represents a phoneme) with syllabic visual organization (the letters are grouped into syllable-sized units). This hybrid organization gives Hangul a visual rhythm that matches Korean syllabic timing and makes word boundaries and syllable boundaries visually salient in ways that a purely linear alphabet would not achieve.
+
+Despite Hangul's elegant design and the demonstrated accessibility it confers for literacy acquisition, it was suppressed by the Korean educated elite for centuries after its creation. The Joseon dynasty's Confucian scholar-officials (*yangban*) associated literacy with Chinese character knowledge and treated Hangul as a "vernacular script" (*eonmun*, 諺文 — the characters used for this term were themselves a mild disparagement, using 諺 meaning "vulgar saying") suitable for women, commoners, and popular entertainment but not for serious intellectual or official discourse. The first Korean-language novels, written in Hangul in the 17th and 18th centuries, were often anonymous — their authors unwilling to publicly associate themselves with the vernacular script. Official use of Hangul in government documents was not established until the Gabo Reform of 1894. The script's full social rehabilitation — its association with Korean national identity rather than low social status — was achieved primarily through the Japanese colonial period (1910–1945), during which the suppression of Hangul by colonial authorities paradoxically transformed it into a symbol of Korean cultural resistance.
+
+**Hanja** — Korean readings of Chinese characters — constitute the prestige lexical layer of the Korean language in a way parallel to Sino-Japanese vocabulary in Japanese. Approximately 60–70% of Korean vocabulary by word type (though a lower proportion by token frequency in actual speech) is Sino-Korean in origin, with corresponding Chinese character representations. Hanja appear in Korean dictionaries as standard references, in formal personal names (most Korean given names have hanja representations), in specialized academic and legal writing, and in contexts where disambiguation between homophones requires the morpheme-level precision that hanja provide. Modern educated Korean does not require full hanja literacy — the standard is Korean-medium education with Hangul as the primary script — but legal, medical, classical, and academic texts may incorporate hanja, and hanja literacy remains a marker of advanced education.
+
+---
+
+### Modern Korean Morphosyntax
+
+Korean shares with Japanese the fundamental structural parameters of SOV order, postpositional syntax, agglutinative verbal morphology, and a particle-based case system — a typological convergence so thoroughgoing that it generates the Japano-Koreanic hypothesis as a natural inference even when specialists caution against over-interpreting typological similarity as genealogical evidence. The specific implementation of these shared parameters differs in ways that reveal independent grammatical development rather than direct inheritance.
+
+The Korean **case particle system** encodes grammatical roles through particles suffixed to noun phrases, comparable in function to Japanese particles but with different forms and partially different distributions:
+
+- *-이/-가* (*-i/-ga*): nominative/subject marker (allomorphs conditioned by whether the host ends in a consonant or vowel)
+- *-은/-는* (*-eun/-neun*): topic marker (parallel to Japanese *-wa*)
+- *-을/-를* (*-eul/-reul*): accusative/direct object marker
+- *-에* (*-e*): locative (static location) / time point / goal (with motion verbs)
+- *-에서* (*-eseo*): locative (activity site) / ablative (source)
+- *-에게/-한테* (*-ege/-hante*): dative / indirect object (for animates)
+- *-으로/-로* (*-euro/-ro*): instrumental / directional / means
+
+The topic/nominative distinction in Korean functions analogously to the Japanese *-wa/-ga* system, with the same information-structural consequences described in Chapter 5: *-eun/-neun* marks the topic (given, contextually established referent that the clause is about), while *-i/-ga* marks the grammatical subject in focused or newly introduced position. As in Japanese, the same noun phrase can appear with either marker with different discourse implications, and the systematic interchange between topic and nominative marking is one of the primary areas of difficulty for learners from European linguistic backgrounds.
+
+The Korean **verbal suffix chain** encodes a sequence of grammatical categories in a specific ordering, with the sentence-final ending bearing the heaviest functional load. A fully specified Korean verb form includes: verb stem + (causative) + (passive) + (aspect/modal) + (tense) + (sentence-final ending encoding speech level and sentence type):
+
+```
+meok-i-go  ship-ji  anh-ass-eo-yo
+eat-CAUS-CONN  want-NEG  NEG-PST-CONN-POL
+'(I) didn't want to feed (someone).' (lit. "cause-to-eat-wanting-not-did")
+```
+
+The sentence-final ending in Korean is morphologically complex and encodes simultaneously the **speech level** (which social register the speaker is using relative to the addressee), the **sentence type** (declarative, interrogative, imperative, propositive), and in some endings the **tense or aspect** of the predicate. This means that the speech-level selection — the choice of which register to use — is not a separate decision from the grammatical construction of the sentence-final verb form; they are a single morphological choice from a paradigmatic inventory.
+
+---
+
+### Speech Levels: The Grammaticized Hierarchy
+
+The Korean speech level system is the most grammatically elaborate politeness system in Korean and the primary domain in which social relationships are encoded in morphosyntax. The traditional analysis distinguishes six speech levels in contemporary Korean, each associated with a different suffix set for declarative, interrogative, imperative, and propositive sentence types:
+
+**Formal polite** (*haepsio-che*, 합쇼체) — the most deferential level, used in formal situations such as business presentations, news broadcasts, and interactions with significantly senior or unknown individuals:
+```
+ka-mnida    (go + DECL.FORMAL.POL — "I go")
+ka-mnikka   (go + Q.FORMAL.POL — "Do you go?")
+```
+
+**Informal polite** (*haeyo-che*, 해요체) — the most widely used polite level in everyday interactions among adults who are not intimate, including most service encounters, teacher-student interactions, and initial meetings:
+```
+ka-yo    (go + DECL.INFORMAL.POL — "I go")
+ka-yo?   (go + Q.INFORMAL.POL — with rising intonation: "Do you go?")
+```
+
+**Familiar** (*hage-che*, 하게체) — historically a middle level used by older speakers toward younger adults, now largely archaic in everyday use, surviving in formal academic writing and some literary contexts.
+
+**Intimate/plain** (*haera-che*, 해라체) — used among close friends of equal or lower status, in diary writing, and in some written narrative styles:
+```
+kan-da   (go + DECL.PLAIN — "I go")
+ka-ni?   (go + Q.PLAIN — "Do you go?")
+```
+
+**Blunt** (*hao-che*, 하오체) — a semi-formal level now largely archaic in Seoul but used in certain regional dialects and historical/literary contexts.
+
+**Banmal** (반말) — informal speech among intimates, roughly equivalent to the combined plain/intimate level, used between close friends, from adults to children, and in written informal communication:
+```
+ga      (go + minimal declarative ending)
+ga?     (go + minimal question intonation)
+```
+
+The selection among these levels is conditioned by the relative social position of speaker and addressee (age, social status, degree of intimacy, institutional context), the formality of the situation, and the desired degree of social distance or proximity. Unlike Japanese keigo, which additionally encodes the social relationship between the speaker and the *referent* (the person being talked about) through separate sonkeigo and kenjōgo verb forms, Korean's speech-level system focuses more exclusively on the speaker-addressee relationship, with referent-honorification handled through a separate but interacting set of grammatical markers.
+
+**Subject honorification** in Korean is encoded through the suffix *-si-* (*-으시-*), inserted into the verb before the tense and speech-level endings whenever the grammatical subject of the predicate is a social superior of the speaker:
+
+```
+seon-saeng-nim-i   o-si-ess-eo-yo.
+teacher-HON-NOM    come-HON-PST-DECL-POL
+'The teacher came.'
+(*-si-* marks the subject (teacher) as honorified; *-yo* marks informal polite speech level toward the addressee)
+```
+
+The *-si-* suffix is inserted even in embedded clauses when their subject is the honorified referent, producing sentences in which the honorific suffix appears at a morphologically embedded position while the speech-level ending appears at the end of the entire predicate. The interaction of *-si-* (subject honorification) and the speech-level suffix (addressee politeness) means that a single verb form simultaneously encodes two distinct social relationships — to the subject referent and to the addressee — through morphological layering.
+
+**Object honorification** and **speaker humility** operate partially through lexical replacement, as in Japanese: *meo-tta* (eat, neutral) → *deu-si-da* (eat, honorific for the referent); *ju-da* (give, neutral) → *deu-ri-da* (give, humble for speaker's action toward superior). But Korean's humility system is less elaborately grammaticalized than Japanese kenjōgo — the number of dedicated humble verb stems is smaller, and the primary mechanism for encoding speaker deference to a superior addressee is the speech-level selection rather than systematic lexical replacement.
+
+---
+
+### Jeju: The Conservative Branch
+
+Jeju (제주어) — spoken on Jeju Island by approximately 5,000–10,000 elderly native speakers — is the primary evidence for internal diversity within the Koreanic family and the primary resource for reconstructing proto-Koreanic features that have been lost in mainland Korean varieties. Its divergence from the mainland Korean dialects is sufficient that UNESCO has classified it as a "critically endangered language" separate from Korean, and it is generally recognized in contemporary scholarship as a distinct Koreanic language rather than a dialect.
+
+Jeju preserves several phonological features of Middle Korean that mainland dialects have lost. Most notably, the Middle Korean vowel *ㆍ* (*arae-a*, the "below-a" vowel, used in 15th-century manuscripts with its own distinctive letter) has been retained in Jeju as a distinct phoneme, while mainland Korean dialects merged it with other vowels during the 16th and 17th centuries. This preservation of the Middle Korean vowel system makes Jeju invaluable for historical phonological reconstruction — comparable in function to the role of archaic dialects in any language's historical study.
+
+Jeju also preserves grammatical features lost in mainland Korean, including certain verbal endings and particles that appear in Middle Korean manuscripts but have no counterpart in modern Seoul Korean. The study of Jeju is therefore not merely a matter of dialect geography but of historical linguistics: it provides a second point of comparison — alongside Middle Korean manuscripts — for reconstructing the grammatical history of the Koreanic family.
+
+---
+
+### Academic Controversies
+
+The **Japano-Koreanic hypothesis** — discussed in Chapter 9 from the Japanese side — is equally relevant here, and the Korean evidence presents both its strongest arguments and its most persistent problems. The strongest argument is the systematic grammatical parallel between Korean and Japanese: both SOV, both with postpositional particle systems functionally analogous to each other, both with agglutinative verbal suffix chains, both with elaborate honorific morphology. If these similarities reflect common genealogical origin, the proto-language would have been a remarkably stable transmitter of morphological structure across a divergence estimated at 1,500–3,000 years. If they reflect typological convergence or contact, the extent of the convergence is extraordinary and demands explanation.
+
+The difficulty of the hypothesis is the standard comparative method's requirement for systematic sound correspondences in the basic vocabulary — and this requirement has not been met to the community's satisfaction. Proposed cognate lists between Korean and Japanese have been challenged on the grounds that the sound correspondences are insufficiently regular, that the proposed cognates include too many terms that could be borrowings (particularly agricultural vocabulary and cultural terms that could have spread with contact rather than through descent), and that the morphological parallels, while striking, could reflect independent grammaticalization of shared pragmatic strategies rather than inherited morphological categories.
+
+The **Transeurasian debate** — covered in Chapter 11 — adds a further dimension: if Koreanic and Japonic are both members of the Transeurasian macro-family, their similarities could reflect either direct Japano-Koreanic relationship or independent inheritance from the Transeurasian proto-language, which would not necessarily imply closer Korean-Japanese relationship than Korean-Turkic or Japanese-Mongolian relationship. The logic of the Transeurasian hypothesis, if accepted, actually makes the Japano-Koreanic subgroup less necessary as an explanatory device.
+
+The **status of Jeju** within Korean language policy remains contentious. The South Korean government officially treats Jeju as a dialect of Korean (*bangeon*, 방언), which has administrative consequences for language education policy and revitalization funding. Most linguists who have studied Jeju agree that it is sufficiently divergent to warrant language — rather than dialect — status, but the political implications of officially recognizing a second "Korean language" within South Korea's borders have thus far outweighed the linguistic argument.
+
+---
+
+### Annotated Examples
+
+```
+(KO1) Korean — topic/nominative distinction
+Geu  chaek-eun   nae-ga   ilgeoss-eo.
+that  book-TOP   1SG-NOM  read.PST-DECL.BANMAL
+'That book, I read (it).' (chaek is topic -eun; nae is focused subject -ga)
+
+Nae-ga   geu  chaek-eul  ilgeoss-eo.
+1SG-NOM  that  book-ACC   read.PST-DECL.BANMAL
+'I read that book.' (nae is focused subject -ga; neutral declarative)
+
+(KO2) Korean — speech level contrast on the same predicate
+ka-mnida.   (go + DECL.FORMAL.POL — most deferential)
+ka-yo.      (go + DECL.INFORMAL.POL — everyday polite)
+ka-ne.      (go + DECL.FAMILIAR — somewhat archaic, toward juniors)
+ga.         (go + DECL.BANMAL — intimate/informal)
+
+(KO3) Korean — subject honorific -si-
+Abeoji-ga    o-si-eo-yo.
+father-NOM   come-HON.SUBJ-PST-DECL.POL
+'Father came.' (-si- marks father as honorified subject; -yo marks informal polite to addressee)
+
+Geu  sonsaengnim-i   chaek-eul  il-eu-si-eo-ss-da-go  ha-ss-eo-yo.
+that teacher-NOM  book-ACC  read-CONN-HON-CONN-PST-QUOT say-PST-DECL.POL
+'It was said that that teacher had read the book.' (-si- embedded in subordinate clause for teacher-subject)
+
+(KO4) Middle Korean — pitch accent documentation (manuscript convention)
+ᄀᆞᆯ (one dot = high tone) = kal (sword, high tone)
+ᄀᆞᆯ (two dots = rising tone) = kal (other meaning, rising tone)  
+ᄀᆞᆯ (no dots = low tone) = kal (yet another meaning, low tone)
+(three syllabic-shape-identical forms distinguished by pitch marking in Middle Korean manuscripts)
+
+(KO5) Jeju — conservative phonological feature
+Standard Korean: 아버지 (abeoji, father)
+Jeju: 아방 (abang, father — different form reflecting distinct historical development)
+
+Standard Korean: 하늘 (haneul, sky)
+Jeju: ᄒᆞ늘 (haneul with Middle Korean ㆍ vowel, preserved in Jeju as a distinct sound)
+```
+
+---
+
+**Thought-provoking questions**
+
+- Hangul was designed with articulatory iconicity — the shapes of consonant letters were chosen to represent the configuration of the vocal tract during articulation. This design principle makes Hangul arguably the most phonologically motivated alphabet ever created. Yet the articulatory iconicity is not immediately obvious to modern learners, who typically learn the letters as arbitrary symbols rather than articulatory schematics. Does a script's theoretical design rationality have consequences for its practical learnability — or does the advantage of iconic design require explicit instruction in the iconicity to be cognitively activated?
+
+- The Korean speech-level system obligates speakers to assess and encode the relative social position of speaker and addressee in every finite verb form. A speaker who gets the speech level wrong — using *banmal* with a stranger, or *haepsio-che* with a close friend — commits a social error that is simultaneously grammatical and interpersonal. Does the grammaticalization of social hierarchy in morphosyntax reinforce that hierarchy by making it cognitively routine — something that must be calculated in every utterance — or does the routinization of the calculation make the hierarchy less consciously attended to, and therefore perhaps less ideologically charged?
+
+- The Middle Korean pitch-accent system has been largely lost in the Seoul standard while being preserved in Gyeongsang dialects. The Seoul variety, as the basis of the prestige standard, has effectively established a prosodically conservative-less variety as the norm, while the more conservative varieties are socially peripheral. Is there a general pattern in which prosodic conservatism correlates with social peripherality — in which the varieties that preserve older phonological distinctions are consistently the ones whose speakers have less social prestige? If so, what does this suggest about the direction of phonological change and its relationship to social dynamics?
+
+- Korean and Japanese are typologically so similar — in morphological type, word order, particle system, and honorific structure — that many linguists find it difficult to believe the similarity is entirely coincidental. Yet the standard comparative method has not established genealogical relationship. At what point is typological similarity itself evidence of genealogical relationship, independent of the identification of systematic sound correspondences? Is the comparative method's requirement for regular sound correspondences an appropriate threshold for all cases, or are there situations — extremely old divergences, heavy contact — where it is too demanding a standard?
+
+## Chapter 11 · The Altaic Area — Typological Convergence, Genealogical Controversy
+
+Few regions of the world's linguistic geography present as stark a contrast between typological uniformity and genealogical uncertainty as the vast territory stretching from Turkey in the west to Japan in the east, from the Arctic tundra of Siberia in the north to the Himalayan foothills in the south. Across this territory, languages belonging to at least three independently established families — Turkic, Mongolic, and Tungusic — share a strikingly coherent structural profile: SOV order, agglutinative suffix-heavy morphology, postpositions, vowel harmony in many branches, rich non-finite clause-subordination morphology, and an absence of grammatical gender. The profile is coherent enough that a learner of Turkish has immediate structural intuitions when encountering Mongolian or Evenki for the first time, not merely because the languages are superficially similar but because the underlying organizational logic is the same.
+
+The question of what explains this uniformity is the central intellectual challenge of the field that has historically called itself "Altaic linguistics" — named after the Altai mountains of Central Asia. Three explanations are available: common genealogical origin (the three families, and possibly Koreanic and Japonic, descend from a single Proto-Altaic or Proto-Transeurasian language); prolonged areal contact in a geographically continuous zone (the shared features spread through bilingualism and borrowing among communities in sustained interaction); or typological attraction (the SOV-agglutinative-postpositional cluster is a structurally stable configuration that independent languages converge on for internal grammatical reasons). The three explanations are not mutually exclusive, and the current scholarly consensus — to the extent that one exists — is that all three factors have contributed, with the relative weight of each contested.
+
+---
+
+### Turkic: The Most Extensively Documented Branch
+
+Turkic is the best-documented and most typologically uniform of the three established families, with approximately 35–40 living languages spread across a territory that extends from Turkey and the Balkans in the west through the Caucasus, Central Asia, and Siberia to northeastern China and the Pacific coast. The family's documentation extends to the **Orkhon inscriptions** — runic texts carved into stone monuments in the Orkhon Valley of modern Mongolia in the 8th century CE, the oldest extensively documented Turkic texts — and to substantial textual records from the subsequent Uyghur, Karakhanid, Seljuk, and Ottoman periods.
+
+> The **Orkhon script** — sometimes called Old Turkic runic, Old Turkic script, or Göktürk script — is an alphabetic writing system used for Old Turkic and Old Uyghur in the 7th–10th centuries CE. Its ultimate origin is debated: most scholars derive it from a Sogdian or other Iranian script tradition, while some have argued for independent development. The script writes right to left, encodes both consonants and vowels (unlike Semitic abjads), and has approximately 38–40 letters. The Orkhon inscriptions — including the memorials of Kül Tigin (732 CE) and Bilge Khagan (735 CE) — are among the most important early Turkic literary documents, describing the political and military history of the Second Turkic Khaganate in a voice that is direct, proud, and historically detailed.
+
+The subsequent adoption of the Arabic script with the spread of Islam through Turkic-speaking populations from the 9th century onward represents the first of several major script transitions that have marked Turkic linguistic history. Arabic script was adapted with varying degrees of fidelity to Turkic phonology: Persian-mediated Arabic script, which had been adapted for Persian's vowel system, became the primary model, but Turkic's vowel harmony system created challenges for any abjad-derived notation, since the vowel distinctions that harmony requires to be tracked cannot be adequately represented without either systematic vowel notation or a reader's prior knowledge of the word's harmonic class. Different traditions resolved this problem differently — Ottoman Turkish scribal conventions developed certain conventions for disambiguation; Central Asian Uyghur traditions developed others.
+
+The most dramatic script transition in Turkic history is the **1928 Turkish script reform** under Mustafa Kemal Atatürk — the replacement of the Ottoman Arabic-based script with a newly designed Latin alphabet in a transformation that affected not merely orthographic conventions but the entire infrastructure of literacy in the Turkish Republic. The reform was implemented rapidly: a commission designed the new alphabet in the summer of 1928; the Latin alphabet became official on November 1, 1928; all government documents, schools, and newspapers were required to use the new script; and the old script was prohibited in official contexts within months. Atatürk personally traveled the country to teach the new alphabet to citizens, staging public lessons. Within a decade, the Ottoman script had become effectively illegible to most Turks — severing the population from its Ottoman literary and documentary heritage in a single generation.
+
+The Turkish Latin alphabet was designed with a phonological precision unusual for alphabetic orthographies: each Turkish phoneme corresponds to exactly one letter, and each letter corresponds to exactly one phoneme. The letter *ı* (dotless-i) represents the back unrounded high vowel /ɯ/ — a sound present in Turkish but absent from European languages and therefore requiring a dedicated symbol not found in any European Latin alphabet. The letter *ğ* (soft-g) represents a pharyngeal/velar approximant or vowel-lengthening element that varies by context. The result is a spelling system whose transparency for Turkish phonology is comparable to Finnish's — a near-perfect phoneme-to-grapheme correspondence that makes Turkish one of the easiest languages to learn to read once the letter values are known.
+
+The Soviet Union's language policy in Central Asia imposed Cyrillic scripts on the Turkic languages of Kazakhstan, Uzbekistan, Kyrgyzstan, Turkmenistan, and Azerbaijan during the 1930s and 1940s, replacing the Latin scripts that had themselves replaced Arabic scripts in the 1920s. The Soviet Cyrillic standardizations were designed to maximize the distinctiveness of each language's written form and to minimize cross-republic legibility — a deliberate political strategy of division that prevented pan-Turkic solidarity through shared literacy. After the Soviet Union's dissolution, Uzbekistan, Azerbaijan, and Turkmenistan adopted Latin alphabets in the 1990s; Kazakhstan announced a transition to Latin in 2017; Kyrgyzstan and several other former Soviet Turkic-speaking populations retain Cyrillic. The current distribution of scripts across Turkic languages — Latin in Turkey and post-Soviet states in transition, Cyrillic in Russia's Turkic-speaking republics (Tatar, Yakut/Sakha, Chuvash, Bashkir), Arabic in some Uyghur communities in China — is a cartographic record of the political history of the 20th century.
+
+---
+
+### The Turkish Grammatical System in Depth
+
+Turkish exemplifies the agglutinative type with a clarity and productivity that makes it the standard textbook reference for the morphological profile. The famous demonstration — *ev-ler-de-ki-ler-den* ("from those that are in the houses") — is not a pedagogical construction but a naturally occurring word form that illustrates the suffix-stacking principle in its most transparent form:
+
+```
+ev          — house (bare root)
+ev-ler      — houses (+ plural -ler)
+ev-ler-de   — in the houses (+ locative -de)
+ev-ler-de-ki — that are in the houses (+ relativizing suffix -ki)
+ev-ler-de-ki-ler — those that are in the houses (+ plural -ler again, for the relativized NP)
+ev-ler-de-ki-ler-den — from those that are in the houses (+ ablative -den)
+```
+
+Each suffix is discretely segmentable, each encodes exactly one grammatical category, and each applies to the output of the preceding suffix rather than to the bare root. The ordering of suffixes is constrained: plural before case (you cannot suffix the ablative before the plural), relativizer after its host NP's case, and so on. But within the ordering constraints, the productivity is remarkable: any root can take any compatible suffix sequence, and native speakers process and produce these forms without effort.
+
+**Vowel harmony** in Turkish operates along two dimensions: backness (front vowels *e, i, ö, ü* vs. back vowels *a, ı, o, u*) and roundedness (unrounded *e, i, a, ı* vs. rounded *ö, ü, o, u*). Every suffix has a vowel whose quality is determined by the vowel of the preceding syllable:
+
+```
+Suffix -de (locative):
+  ev-de    (in the house — front unrounded)
+  kız-da   (in the girl — back unrounded)  
+  göz-de   (in the eye — front rounded)
+  kol-da   (in the arm — back rounded)
+
+Suffix -ler/-lar (plural):
+  ev-ler   (houses — front)
+  kız-lar  (girls — back)
+```
+
+The harmony system applies across the entire suffix chain: if a root has back vowels, all subsequent suffixes in the chain have back vowels; if a root has front vowels, all suffixes have front vowels. Loanwords with "disharmonic" vowel sequences — foreign words that mix front and back vowels — behave variably: some are integrated and harmonized; others remain disharmonic exceptions, with suffixes selecting vowels based on the final vowel of the stem regardless of earlier syllables.
+
+The **Turkish evidential system** represents one of the most widely cited examples of grammaticalized information-source encoding in a major world language accessible to non-specialists. Turkish distinguishes two past tenses that differ not in temporal location but in the speaker's relationship to the evidence:
+
+```
+Ali geldi.        (Ali come-PST.DIRECT)
+'Ali came.' (speaker directly witnessed the arrival)
+
+Ali gelmiş.       (Ali come-PST.INDIRECT)
+'Ali (apparently/reportedly) came.' (speaker infers or was told of the arrival)
+```
+
+The direct past *-di* (with allomorphs *-tı/-dı/-ti* by vowel harmony and consonant assimilation) encodes the speaker's direct sensory witness of the event. The indirect past *-miş* (allomorphs *-mış/-miş/-muş/-müş*) encodes that the speaker did not directly witness the event but infers it from physical evidence, reports it from hearsay, or discovers it upon returning to a situation. The distinction carries pragmatic force: using *-di* for events one did not witness implies a false claim to direct evidence, while using *-miş* for events one did witness is unusual and marked.
+
+The indirect *-miş* has extended semantically beyond strict evidentiality in colloquial Turkish usage. It appears in narrative contexts (fairy tales traditionally use *-miş* throughout, encoding the "story-world" as non-directly-witnessed), in contexts of polite distancing (reporting one's own past actions as if they were not directly witnessed, as a kind of epistemic modesty), and in expressions of surprise at discovering a state of affairs. This semantic extension from pure evidentiality toward a broader range of narrative and epistemic functions is well documented in the grammaticalization literature on evidential markers.
+
+---
+
+### Mongolic: The Imperial Legacy
+
+Mongolic is a small and tightly cohesive family of approximately 12–15 languages, the most widely spoken of which is Khalkha Mongolian (the official language of the Republic of Mongolia, with approximately 3 million native speakers) and the most widely attested of which is Classical Mongolian, the literary language of the Mongol Empire and its successors. The family's geographic distribution spans Mongolia, Inner Mongolia (an autonomous region of China), Buryatia and Kalmykia (republics within the Russian Federation), and the Hazara community of Afghanistan.
+
+The **Mongol Empire** of the 13th and 14th centuries represents the most extensive territorial empire in human history at its peak, and its linguistic consequences were profound — though not in the way one might expect. Mongolian did not become the dominant language of the territories Mongol rulers controlled: the administrative languages of the Mongol-ruled states were primarily the languages of their subject populations (Persian in Iran and Central Asia, Chinese in the Yuan dynasty of China, Russian in the Golden Horde). Mongolian served as a prestige language of the ruling class and of inter-imperial communication, but language shift among the Mongol populations in settled agricultural regions was rapid. The primary linguistic legacy of the Mongol Empire is not linguistic expansion but **lexical diffusion**: Mongolian-origin words spread into Persian, Chinese, Russian, Turkish, and other languages through administrative contact, while Mongolian itself borrowed extensively from the languages of the populations it ruled.
+
+The **traditional Mongolian script** — a vertical alphabet written from top to bottom in columns running left to right — is among the most visually distinctive writing systems currently in use. Derived from the Old Uyghur alphabet (which was itself derived from Sogdian, which derived ultimately from Aramaic), the Mongolian script was adopted in the early 13th century for the documentation of the Mongol state. Its vertically oriented columns distinguish it immediately from virtually all other alphabetic scripts; the visual impression of a Mongolian text is unlike anything in the Phoenician-derived tradition.
+
+The Mongolian script has a complex relationship with the phonology of modern Mongolian. Classical Mongolian orthography — stabilized in the 13th–14th centuries — preserved features of an older phonological stage that subsequent spoken varieties have transformed substantially. Modern Khalkha Mongolian has changed considerably from the classical standard in vowel quality, consonant distribution, and prosody, while the traditional script retains the classical orthographic conventions. Reading traditional Mongolian therefore requires some knowledge of the historical relationship between orthography and current pronunciation — analogous, in a smaller way, to the relationship between English spelling and current pronunciation.
+
+Khalkha Mongolian in the Republic of Mongolia currently uses the Cyrillic alphabet, imposed during the Soviet period (1941) and retained after independence in 1990. Inner Mongolian communities in China use the traditional script for official purposes. The existence of two writing systems for the same language — Cyrillic in Mongolia, traditional script in Inner Mongolia — creates a practical barrier to literacy transfer across the political boundary, a situation with significant cultural and political implications for the Mongolian-speaking world.
+
+---
+
+### Tungusic: Contact, Endangerment, and Linguistic Documentation
+
+Tungusic is the smallest of the three established Altaic-area families — approximately 10–12 languages, all endangered to varying degrees, spoken across Siberia, northeastern China, and formerly Manchuria. Its most significant historical member is **Manchu**, the language of the Manchu people who founded the Qing dynasty (1644–1912) and ruled China for 268 years. Manchu was the official administrative language of the Qing state alongside Chinese, and an enormous body of Manchu-language documents — administrative records, literary texts, translations, legal codes — was produced during the imperial period. Despite this imperial prestige, Manchu underwent catastrophic language shift as the Manchu ruling class adopted Chinese and encouraged sinicization: by the late 19th century, Manchu had ceased to be spoken in Beijing's Manchu community, and today there are estimated to be fewer than a dozen elderly native speakers of Manchu left, with the language's survival effectively dependent on the scholarly documentation produced over the past century.
+
+**Evenki** — the most widely distributed Tungusic language geographically, spoken across a vast territory of Siberia from the Urals to the Pacific — is the most thoroughly described living Tungusic language. Like other Tungusic languages, Evenki is SOV, head-final, agglutinative, and rich in non-finite verbal morphology used for clause chaining and subordination:
+
+```
+bi   du   eme-v
+1SG  you  come.see-1SG
+'I see you.' (verb indexes both subject and object through agreement suffixes)
+
+bira-du   aya   togo   anin
+river-DAT good  fire   there.is
+'There is a good fire by the river.' (postpositional dative on bira)
+```
+
+The Tungusic languages are characterized by particularly extensive contact effects: their speakers have been in sustained contact with Mongolian-speaking, Russian-speaking, and Chinese-speaking populations for centuries, and the linguistic results include substantial lexical borrowing, phonological adaptation, and in some communities wholesale language shift. The documentation of Tungusic languages is an active area of fieldwork linguistics precisely because the window for primary linguistic data collection is closing rapidly.
+
+**Manchu script** was derived from the Mongolian traditional script through an adaptation commissioned by the Jurchen (later Manchu) leader Nurhaci in 1599. The Mongolian vertical script was modified to better fit Manchu phonology through the addition of diacritical dots and circles that distinguish letters the original Mongolian script left ambiguous. The Manchu adaptation is a clear example of deliberate script design for linguistic purposes — the same motivation that produced Hangul and the Ethiopic abugida — operating within an existing script tradition rather than creating a new one from scratch.
+
+---
+
+### The Transeurasian Hypothesis: Arguments, Evidence, and Critique
+
+The **Transeurasian hypothesis** — the proposal that Turkic, Mongolic, Tungusic, Koreanic, and Japonic descend from a common Proto-Transeurasian ancestor spoken somewhere in northeastern Eurasia in the Neolithic period — is the most significant and most contested macro-comparative proposal in current Eurasian linguistics. Its most recent and most rigorously argued version is associated primarily with Martine Robbeets, whose 2015 monograph *Diachrony of Verb Morphology* and whose 2021 *Nature* paper (co-authored with a large interdisciplinary team including linguists, archaeologists, and geneticists) represent the most sustained case for the hypothesis in the current literature.
+
+The hypothesis is not new: the classical "Altaic hypothesis" — proposing the same relationship for Turkic, Mongolic, and Tungusic alone, with Koreanic and Japonic sometimes added — was developed by scholars including Ramstedt, Poppe, and Street in the 20th century and was rejected by most specialists in the field during the 1990s and 2000s on the grounds that the proposed cognates could not withstand rigorous comparative scrutiny. Robbeets's contribution is to reframe and strengthen the proposal in several respects: by focusing on verb morphology rather than lexicon (on the grounds that grammatical morphemes are less susceptible to borrowing than vocabulary), by applying computational phylogenetic methods alongside traditional comparative reconstruction, and by integrating the linguistic argument with archaeological and genetic evidence for population movements in northeastern Eurasia.
+
+**The affirmative argument** rests on several components. First, Robbeets argues for a substantial body of reconstructible Proto-Transeurasian morphology — verbal suffixes encoding TAM categories — whose distribution across the five families is systematic and not readily explained by borrowing or coincidence. Second, the 2021 *Nature* paper proposes that the Proto-Transeurasian homeland was in the Liao River basin of northeastern China, associated with the Early Neolithic Xinglongwa culture (c. 6200–5400 BCE), and that the family spread through a wave of millet and later rice farmers expanding northward and eastward — a scenario in which the agricultural vocabulary shared across the families would be inherited, not borrowed. Third, ancient DNA evidence is cited as consistent with population movements from northeastern China into the Korean peninsula, Japan, and Siberia at times that could accommodate the proposed linguistic divergence.
+
+**The critique** is substantial and comes from multiple directions. Johann-Mattis List — one of the leading specialists in computational historical linguistics — has argued that the morphological correspondences proposed by Robbeets do not meet the standard of regularity required by the comparative method: too many of the proposed cognate sets involve forms that are morphologically complex (and therefore more susceptible to parallel grammaticalization), and the sound correspondences are not sufficiently systematic to exclude chance similarity. Stefan Georg and Alexander Vovin — specialists in individual families within the proposed grouping — have argued that the Japonic and Koreanic components of the hypothesis are the weakest: the proposed cognates between Japonic/Koreanic and the three Altaic-core families are few, irregularly corresponding, and potentially explicable as borrowings in either direction through well-documented contact networks.
+
+The **agricultural vocabulary problem** is the most debated evidentiary issue. The shared vocabulary for millet, cultivation, weaving, and animal husbandry that the 2021 paper treats as inherited cognates is, for the critics, precisely the type of vocabulary most likely to spread through contact networks associated with agricultural diffusion — the same process that spread agricultural vocabulary from the Near East into Europe without implying Proto-Indo-European-European-Farming genetic unity. The critics argue that if agricultural terms spread from Near Eastern farming communities into Neolithic Europe without genealogical inheritance, the same process could explain the shared agricultural vocabulary across Transeurasian languages without requiring Proto-Transeurasian descent.
+
+The genealogical debate is complicated by what is, in any case, a genuine fact: **the northern Eurasian typological cluster** — SOV, agglutinative, postpositional, vowel-harmonic — is one of the most coherent structural profiles in the world's languages, appearing with remarkable consistency across languages whose genealogical status relative to each other is precisely what is under debate. The profile's coherence is real regardless of whether it reflects common inheritance or convergence; and the pedagogical consequence — that structural knowledge acquired in one of these languages transfers substantially to others, regardless of genealogical relationship — holds whether the Transeurasian hypothesis is correct or not.
+
+---
+
+### What the Debate Means for Understanding These Languages
+
+The Transeurasian controversy is significant not merely as an academic dispute about distant prehistory but as a demonstration of the methodological challenges facing all macro-comparative linguistics. The standard comparative method — which requires systematic sound correspondences in basic vocabulary, morphological paradigm matches, and the exclusion of borrowing as an alternative explanation — was developed for situations where documentary evidence is available and divergence times are within a recoverable range. Applied to proposed groupings where divergence times may exceed five or six millennia, and where the populations in question were in sustained contact for most of that period, the method faces genuine limitations.
+
+The controversy also illustrates a more general point about the relationship between typological and genealogical classification. The "northern Eurasian structural profile" is a real typological attractor: SOV order, agglutinative suffix chains, postpositions, and vowel harmony cluster together for reasons related to the internal logic of grammatical organization, and languages in a geographically continuous zone are exposed both to typological pressure toward this cluster (through contact with speakers of similar profiles) and to whatever genealogical inheritance they may carry. Disentangling these two sources of similarity — especially when they point in the same direction — is genuinely hard, and intellectual honesty requires acknowledging that the current state of evidence does not permit a confident verdict.
+
+---
+
+### Annotated Examples
+
+```
+(TR1) Turkish — vowel harmony and agglutination
+gel-me-yebil-ir-siniz
+come-NEG-ABIL-AOR-2PL
+'You (PL) might not be able to come.'
+(gel = come; -me = negation, front unrounded; -yebil = ability/possibility; -ir = aorist; -siniz = 2PL agreement)
+
+(TR2) Turkish — evidential contrast
+Hasan  hasta-ymış.
+Hasan  sick-COP.INDIRECT.PST
+'Hasan was apparently sick.' (speaker did not directly witness; inferred or reported)
+
+Hasan  hasta-ydı.
+Hasan  sick-COP.DIRECT.PST
+'Hasan was sick.' (speaker directly witnessed the sickness)
+
+(TR3) Turkish — relative clause with participial
+dün  gördüğüm  adam
+yesterday see.PST.PTCP.1SG  man
+'the man that I saw yesterday'
+(participial -dığ- bears the person/number of the relative clause subject as a possessive suffix -um)
+
+(MO1) Khalkha Mongolian — SOV with postpositional case
+bi    nom-iig    unsh-san.
+1SG   book-ACC   read-PST.PTCP
+'I read the book.'
+(SOV; accusative -iig on nom; participial -san for past)
+
+bi    Ulaanbaatar-t    od-no.
+1SG   Ulaanbaatar-DAT  go-FUT
+'I will go to Ulaanbaatar.'
+(dative -t marking goal; future -no)
+
+(TU1) Evenki — agglutinative with agreement
+bi    du   eme-v
+1SG   2SG  come.to.see-1SG
+'I see/visit you.'
+(bi = 1SG; du = 2SG; verb indexes subject through -v suffix)
+
+bira-du    aya   togo   anin
+river-DAT  good  fire   exist
+'There is a good fire by the river.'
+```
+
+---
+
+**Thought-provoking questions**
+
+- The Transeurasian hypothesis is supported by an interdisciplinary team combining linguistics, archaeology, and ancient genomics — a methodological strategy that the hypothesis's advocates argue is more powerful than any single discipline alone. But the critics point out that the convergence of three types of evidence (linguistic, archaeological, genetic) onto the same conclusion only strengthens the case if each type of evidence is genuinely independent. Is the combination of linguistic, archaeological, and genetic evidence in the 2021 *Nature* paper genuinely independent convergence, or do the three analyses share certain background assumptions that make their agreement less surprising than it appears?
+
+- Atatürk's 1928 script reform severed modern Turkish literacy from Ottoman literary and documentary culture within a single generation — a deliberate cultural break that was simultaneously a political act (associating the Ottoman past with backwardness and the new Latin-alphabet Turkey with modernity) and a linguistic act (creating a more phonologically transparent orthography). The Soviet Cyrillic impositions on Central Asian Turkic languages served a different political function — division rather than modernization. Both produced the same practical outcome: populations cut off from their recent written heritage by a script change. What does the Turkish/Soviet contrast suggest about the relationship between script and political identity? Can a script reform be evaluated in purely linguistic terms (phonological transparency, literacy acquisition ease), or is the political meaning of script inseparable from its linguistic function?
+
+- Manchu — the language of a dynasty that ruled China for 268 years, produced an enormous documentary archive, and shaped Chinese political and cultural history in ways that are still debated — is now effectively extinct as a spoken language, with fewer than a dozen elderly native speakers. The language's extinction occurred through voluntary language shift in the context of social incentives favoring Chinese over Manchu, not through any deliberate suppression. What does the Manchu case suggest about the relationship between political power and language vitality? Can the prestige of a ruling class protect a language from extinction, or are there conditions under which prestige actually accelerates shift?
+
+- Vowel harmony — the requirement that all vowels within a phonological domain share a feature — appears in Turkic, Mongolic, Uralic, and some Tungusic languages without any demonstrated genealogical relationship connecting all of them. Either harmony spread areally across these families, or it developed independently multiple times, or it is an ancient inherited feature of some deeper grouping. Each of these explanations has different implications. If harmony can develop independently, it suggests that certain phonological systems are "attractors" — stable configurations that language systems converge on from multiple starting points. What would phonological attractor theory imply about the predictability of phonological typology, and is there evidence beyond harmony for the attractor concept?
+## Chapter 12 · Dravidian and the South Asian Linguistic Area
+
+The Indian subcontinent is, in linguistic terms, one of the world's most complex territories — a region where two major genealogically independent language families, Indo-Aryan (a branch of Indo-European) and Dravidian, have coexisted in intense contact for at least three millennia, producing a degree of structural convergence that makes the subcontinent one of the most extensively studied linguistic areas in typological research. The Dravidian family itself constitutes one of the world's major genealogical groups, with approximately 80 languages spoken primarily in southern India and Sri Lanka, with an important outlier — Brahui — in Balochistan, Pakistan. Understanding Dravidian requires understanding not merely its internal structure but its long relationship with Sanskrit and Indo-Aryan, which has shaped the vocabulary, morphology, and literary traditions of every major Dravidian language in ways that are simultaneously superficially apparent and structurally deep.
+
+The family's most celebrated member is **Tamil** — and Tamil's distinction is not merely demographic (approximately 75 million speakers) but historical. Tamil possesses the oldest continuously attested literary tradition of any Dravidian language, and one of the oldest continuous literary traditions of any language in the world: the Sangam corpus, collected anthologies of poetry in genres (*akam*, love poetry; *puṟam*, heroic/public poetry) that date to approximately 300 BCE–300 CE, represents not the beginning of Tamil literary culture but its first surviving concentration of documentation. The continuity between the language of Sangam poetry and Modern Tamil — separated by two millennia — is imperfect but genuine: a modern Tamil speaker with literary education can access Sangam texts with effort in a way that an English speaker cannot access Old English without specialized study. This continuity is itself a typological and sociolinguistic fact of considerable significance.
+
+---
+
+### The Dravidian Family: Branches and the Brahui Question
+
+The Dravidian family is conventionally divided into four branches based on geographic distribution and shared innovations:
+
+**South Dravidian** — the most extensively studied branch, including Tamil, Malayāḷam, Kannada, and Kodava. Tamil and Malayāḷam share a common ancestor (proto-Tamil-Malayalam) from which they began diverging approximately 1,000–1,500 years ago; despite their relatedness, they are mutually unintelligible and have developed in quite different sociocultural directions.
+
+**South-Central Dravidian (Telugu-Kuvi)** — the Telugu subgroup, including Telugu (approximately 80 million speakers, the most widely spoken Dravidian language by some counts), Gondi, Konda, Kuvi, Pengo, and Manda. Telugu diverged from the South Dravidian core early enough that its shared innovations with Tamil and Kannada are limited, though the family membership is not in dispute.
+
+**Central Dravidian** — a geographically dispersed set of languages including Kolami, Naiki, Parji, Gadaba, and others, spoken in tribal communities across central India. The Central Dravidian languages are understudied relative to their demographic and genealogical importance.
+
+**North Dravidian** — including Kurukh (Oraon), Malto, and **Brahui** — the most geographically anomalous member of the family, spoken in Balochistan, Pakistan, separated from the nearest other Dravidian languages by hundreds of miles of Indic-speaking territory.
+
+> The **Brahui question** is one of the most debated issues in Dravidian historical linguistics and in the broader question of South Asian prehistory. Brahui is demonstrably Dravidian in its core vocabulary and morphological framework, but it is spoken in Balochistan — a region associated with the Indus Valley Civilization (c. 2600–1900 BCE) and far north of the current Dravidian heartland. The most dramatic interpretation is that Brahui represents a relic of a formerly wider Dravidian distribution that was displaced southward by Indo-Aryan expansion in the 2nd millennium BCE — and that the Indus Valley Civilization was, at least partially, Dravidian-speaking. This interpretation has attracted both scholarly support and substantial skepticism; the primary uncertainty is whether Brahui has been in Balochistan since the pre-Indo-Aryan period or migrated there more recently from the south. Current consensus leans toward a relatively recent migration, but the question is not fully settled and intersects with active research in ancient genomics and Indus Valley archaeology.
+
+The **Tolkāppiyam** — the oldest surviving Tamil grammatical treatise, traditionally dated to approximately the 1st or 2nd century BCE but possibly later in its current form — represents one of the great indigenous grammatical traditions of the world, comparable in sophistication to Pāṇini's Ashtadhyayi for Sanskrit and to the Arabic grammatical tradition. The Tolkāppiyam covers not merely morphology and syntax but also phonology (with a detailed analysis of Tamil's sound system, including the retroflex series and the distribution of sounds across word positions), poetics, and the conventions of literary genre. Its existence demonstrates that Dravidian — and specifically Tamil — developed a sophisticated metalinguistic tradition independently of Sanskrit, and that the Sanskrit-Tamil contact in the classical period was between two equally self-conscious grammatical traditions rather than between a sophisticated tradition and an unanalyzed one.
+
+---
+
+### Classical Tamil: Two Millennia of Literary Continuity
+
+The Sangam corpus — named after the legendary *sangam* (academy) of Tamil scholars traditionally associated with the Pandya kingdom of Madurai — is among the most remarkable bodies of literature in any ancient language. Unlike the Vedic corpus, which is religious and ritual in orientation, or the Greek Homeric tradition, which is primarily narrative, the Sangam anthologies center on lyric poetry of exceptional formal and emotional range: love poetry organized around the five *tiṇai* (landscapes as emotional registers — the mountain, the forest, the pastoral plain, the seashore, the desert, each associated with a different phase and type of romantic relationship) and heroic poetry celebrating and elegizing the warrior culture of early Tamil kingdoms.
+
+The language of Sangam poetry is already a literary standard in the period of its documentation — formalized, metrically constrained, and based on a spoken variety that had already undergone some distance from the colloquial. This observation initiates the **Tamil diglossia** situation that has characterized Tamil sociolinguistics for its entire documented history:
+
+> **Tamil diglossia** distinguishes *sentamil* (செந்தமிழ், "pure/refined Tamil"), the literary, formal, and classical register, from *koṭuntamil* (கொடுந்தமிழ், "bent/colloquial Tamil"), the spoken vernacular and its written representations. This is not merely a register distinction: the two varieties differ grammatically — in verb morphology, in pronominal forms, in the use of certain case markers — in ways that require learners to treat them as partially separate systems. The spoken language has undergone phonological changes (collapse of some vowel distinctions, weakening of intervocalic consonants, shift in the negation system) that the formal written standard does not reflect. Tamil speakers routinely command both varieties and switch between them according to context, but the gap between them is sufficient that children acquire the colloquial as their native language and the literary register through formal education — a situation functionally comparable to Arabic diglossia, though with a somewhat smaller structural gap between the varieties.
+
+The Proto-Dravidian morphological system is reconstructible from comparative evidence across the family with moderate confidence. The key features — agglutinative suffixation, SOV order, postpositions, an extensive case system, a verb morphology organized around tense-aspect-mood distinctions realized through transparent suffixes — are shared across all major branches and attributable to the proto-language. The noun class system of Proto-Dravidian distinguished *uyartiṇai* (the "high" class, including humans and deities) from *aḵṟiṇai* (the "low" class, including non-human animates and inanimates) — a two-way animacy distinction that intersects with the gender system in complex ways and that has been retained in various forms across the family, though its reflex differs by language.
+
+The Tamil **case system** has eight cases: nominative, accusative, dative, sociative (comitative), genitive, instrumental, locative, and ablative — all realized through agglutinative suffixes that stack transparently on the noun stem:
+
+```
+maram        — tree (nominative, bare form)
+marath-ai    — tree (accusative, -ai suffix)
+marath-ukku  — to the tree (dative, -ukku suffix)
+marath-ōdu   — with the tree (sociative, -ōdu suffix)
+marath-in    — of the tree (genitive, -in suffix)
+marath-āl    — by/through the tree (instrumental, -āl suffix)
+marath-il    — in/at the tree (locative, -il suffix)
+marath-il-irundu — from the tree (ablative, locative + ablative particle)
+```
+
+The transparency of the suffix system is characteristic of Dravidian agglutination: each suffix is identifiable and each encodes a single case function, with allomorphic variation conditioned by the phonological properties of the stem (retroflex consonant assimilation, vowel-final vs. consonant-final stems triggering different suffix shapes).
+
+The **Tamil verbal system** organizes tense-aspect-mood information through a suffix chain in which the tense/aspect marker precedes person-number-gender agreement:
+
+```
+vā-kiṟ-ēn      — come-PRS-1SG — "I come"
+van-t-ēn       — come-PST-1SG — "I came"
+var-uv-ēn      — come-FUT-1SG — "I will come"
+vā-kiṟ-āy      — come-PRS-2SG — "you come"
+vā-kiṟ-ār      — come-PRS-3PL.HON — "they (honorific) come"
+vā-kiṟ-ārkāl  — come-PRS-3PL.HON.PL — extended plural honorific
+```
+
+The agreement suffix encodes person, number, and — in the third person — a gender/honorificity distinction: *-āṉ* (3SG masculine non-honorific), *-āḷ* (3SG feminine), *-atu* (3SG neuter), *-ār* (3PL honorific or 3SG highly honorific). This system reflects the animacy hierarchy of Proto-Dravidian: human referents distinguished by gender and social status; non-human referents marked with a neuter/low-class suffix regardless of natural gender.
+
+The Tamil **verbal noun** and **participial** system is the primary mechanism for clause subordination — the functional equivalent of relative clauses, complement clauses, and adverbial clauses in European languages. Clauses are nominalized or participialized and stacked before their head nouns or final predicates in the characteristic head-final manner of SOV languages:
+
+```
+[nāṉ   nēṟṟu   vaṅkiy-a]    puttakam
+[1SG   yesterday buy-PST.PTCP]  book
+'the book that I bought yesterday'
+(the participial -a creates a prenominal relative clause, head-finally)
+
+[avaṉ   varuv-atāl]   nāṉ  mākiḻcci  aṭaint-ēṉ
+[3SG    come-NMLZ-CAUSE] 1SG joy      reach-PST.1SG
+'Because he came, I was happy.'
+(the nominalized clause with causal postposition -āl preceding the main predicate)
+```
+
+---
+
+### The South Asian Linguistic Area
+
+The **South Asian linguistic area** — also described as the South Asian Sprachbund — is one of the most thoroughly documented and theoretically important cases of areal convergence in the world's languages. The subcontinent's two major genealogical families, Indo-Aryan (Indo-European) and Dravidian, have converged on a set of shared structural features that cannot plausibly be attributed to common ancestry — they are distributed across the genealogical boundary in ways that suggest diffusion from one side to the other, most likely with Dravidian as the source and Indo-Aryan as the recipient.
+
+The shared features most frequently cited as areal rather than inherited:
+
+**Retroflex consonants** — the series of alveolar/post-alveolar consonants produced with the tongue tip curled backward, found in virtually all Indo-Aryan languages and entirely absent from Iranian, Greek, Slavic, Germanic, and other IE branches. The distribution — present in Indo-Aryan but not in any other Indo-European branch — is the primary evidence that retroflexes were not inherited from Proto-Indo-European but borrowed from the Dravidian substrate. All major Dravidian languages have elaborate retroflex series: Tamil distinguishes retroflex stops, nasals, laterals, and approximants that are phonemically contrastive. The hypothesis, widely accepted though not unchallenged, is that Indo-Aryan speakers in the subcontinent acquired retroflex articulation through the influence of Dravidian-speaking substrate populations — one of the most far-reaching documented cases of phonological borrowing, affecting an entire place-of-articulation series across an entire language branch.
+
+**SOV order** — the dominant word order across both Indo-Aryan and Dravidian languages of South Asia, despite the fact that other Indo-European branches (Germanic, Romance, Slavic, Celtic) are predominantly SVO or VSO. Whether Indo-Aryan inherited SOV from a Proto-Indo-Iranian stage or adopted it through areal pressure from Dravidian is debated; the Dravidian influence hypothesis is supported by the observation that the Iranian branch of Indo-Iranian — outside the subcontinent — shows more varied word order.
+
+**Participial/converbal subordination** — the strategy of using non-finite verb forms (participles, verbal nouns) rather than finite subordinate clauses introduced by conjunctions or relative pronouns for the expression of relative clauses, complement clauses, and adverbial clauses. This strategy, shared across both Indo-Aryan and Dravidian, is not a feature of European Indo-European languages and appears to reflect subcontinent-wide convergence on a head-final, verb-final subordination strategy consistent with the SOV typology.
+
+**Quotative constructions** — the use of a dedicated quotative verb (*say/think/do*) after quoted or reported content to mark indirect or direct speech, widely distributed across South Asian languages of both families and extended to complement clauses more generally. The construction (*X said that Y*, with the *said* following rather than introducing the quoted material) is characteristic of head-final grammars and appears to have spread areally across the subcontinent.
+
+**Dative subjects** — the use of dative case marking on subjects of predicates expressing mental states, perception, and certain modal constructions, found in both Dravidian and some Indo-Aryan languages. The construction *to-me is hunger* rather than *I am hungry* reflects a structural preference for encoding psychological states as events that happen to a dative-marked experiencer rather than states predicated of a nominative subject.
+
+The significance of the South Asian Sprachbund for historical linguistics is profound: it demonstrates that the typological profile of a language family can be substantially reshaped through contact, to the point where sister-branches of the same family (Indo-Aryan and Iranian, both Indo-Iranian) develop different typological profiles based on their different contact histories. Indo-Aryan and Dravidian, despite genealogical independence, now share a structural profile that makes them typologically more similar to each other than Indo-Aryan is to its Iranian sister-branch — a result that would be inexplicable without the contact hypothesis.
+
+---
+
+### Telugu and the South-Central Branch
+
+**Telugu** — spoken by approximately 80 million people in the states of Andhra Pradesh and Telangana — is by some measures the most widely spoken Dravidian language and one of the most widely spoken languages in India. Its divergence from the South Dravidian core (Tamil, Kannada, Malayalam) is sufficient to place it in a separate South-Central subgroup, though the family membership is genealogically solid.
+
+Telugu has undergone more extensive Sanskrit contact than Tamil — the proportion of Sanskrit-derived *tatsama* vocabulary in formal Telugu is particularly high, and the Telugu grammatical and literary tradition was developed in closer interaction with Sanskrit poetic conventions than the Tamil tradition, which maintained a stronger indigenist orientation. This contact history is visible in Telugu's phonological inventory: Telugu has retained aspirated stops (borrowed from Sanskrit), which Tamil has not. Tamil's phonological system historically lacked aspiration as a phonemic distinction; Telugu, through Sanskrit contact and borrowing, acquired it. The phonological divergence between Tamil and Telugu — in aspiration, in the treatment of Sanskrit loanword phonology — reflects the different intensities of their respective Sanskrit contact situations.
+
+The **Telugu script** is visually related to Kannada script, both being Brahmi-derived abugidas with a characteristic rounded form, though Telugu and Kannada scripts are not identical and are not mutually readable by speakers of one language unfamiliar with the other. The Telugu script encodes the full phonological inventory of Telugu, including the aspirated stops absent from Tamil phonology and therefore absent from the Tamil script inventory.
+
+---
+
+### Sanskrit Contact and Its Structural Consequences
+
+The relationship between Sanskrit and the Dravidian languages is one of the most extensively documented cases of elite-language influence in linguistic history. Sanskrit — the liturgical, scholarly, and prestige language of Brahmanical Hinduism, Buddhism, and Jainism across South Asia — provided a vocabulary for intellectual, religious, and administrative domains that local Dravidian literary traditions had not independently developed, and its influence on Dravidian phonology (through loanword adaptation), morphology (through borrowed derivational affixes), and literary conventions (through the adoption of Sanskrit poetic meters and genres) was transformative.
+
+The structural consequence of Sanskrit borrowing differs across Dravidian languages. Tamil's response to Sanskrit contact has been marked — throughout its literary history and acutely in the modern period — by a tension between *Tamil purists* who advocate minimizing Sanskrit influence and drawing on Tamil's own lexical and morphological resources, and those who accept Sanskrit-derived *tatsama* vocabulary as an established component of the literary and formal language. The **Tamil purism** movement (*taṉit tamiḻ iyakkam*, "pure Tamil movement"), associated particularly with the early 20th-century scholar Maraimalai Adigal, argued for replacing Sanskrit loans in Tamil with native Tamil coinages — a program analogous in some ways to similar language-planning efforts in Hebrew, Icelandic, and Turkish. The movement achieved partial success: some Sanskrit-derived terms were replaced by Tamil coinages in official and educational registers, while others remained entrenched. The tension between Sanskritic and non-Sanskritic registers of Tamil is a sociolinguistic and political reality in Tamil Nadu today.
+
+Malayalam's response has been more accommodating: the Malayalam literary tradition developed a genre (*manipravalam*, "rubies and coral") that deliberately mixed Sanskrit and Tamil-Malayalam vocabulary and poetic conventions, and modern Malayalam has one of the highest proportions of Sanskrit vocabulary among the Dravidian languages. Kannada similarly shows heavy Sanskrit lexical influence while maintaining a distinct Dravidian grammatical core.
+
+The **Brahmi-derived scripts** of the Dravidian languages — Tamil, Telugu, Kannada, Malayalam — share a common origin but have developed distinct visual forms over fifteen centuries of independent use. The Tamil script, the oldest in continuous use among them, is notable for several features that reflect Tamil's specific phonological inventory. Tamil has no aspirated consonants (phonemically), no voiced/voiceless fricative distinction in the positions where Sanskrit has them, and a minimal obstruent inventory compared to Sanskrit or Telugu. The Tamil script consequently has no letters for aspirated stops or for the Sanskrit sibilant distinctions — letters that Telugu and Kannada scripts retain for the transcription of Sanskrit loanwords. The Tamil script's relative simplicity (fewer consonant letters than the other Dravidian scripts) is thus a phonological fact — a reflection of Tamil phonology rather than a limitation of the script.
+
+> The **Brahmi script** — attested from approximately 300 BCE in Ashoka's inscriptions — is the common ancestor of virtually all South and Southeast Asian scripts, including all four major Dravidian scripts. Each descended tradition adapted the inherited consonant inventory and vowel diacritic system to its own phonological requirements, producing scripts that are structurally homologous (all are abugidas with the same organizational principles) but visually distinct. A linguist who understands the Brahmi abugida system can identify the structural logic of any Brahmi-derived script immediately; reading the letters, however, requires learning each script's specific graphic conventions independently.
+
+---
+
+### Academic Controversies
+
+The **Dravidian homeland** question intersects with one of the most significant debates in South Asian prehistory: whether the Indus Valley Civilization (IVC) was Dravidian-speaking. The IVC's script — attested in hundreds of short inscriptions on seals — remains undeciphered despite numerous proposed readings, and its language affiliation is unknown. The Dravidian hypothesis for the IVC is the most widely discussed: it is supported by the geographic distribution of Brahui in Balochistan (potentially a relic of IVC Dravidian) and by the hypothesis that Dravidian-speaking IVC populations migrated southward under pressure from Indo-Aryan expansion in the 2nd millennium BCE. The hypothesis has been argued forcefully by Asko Parpola, whose decipherment proposals for the Indus script draw on Dravidian phonological and lexical evidence. The alternatives — that the IVC spoke an unknown language, a Munda-type language, or an early Indo-Aryan variety — each have defenders, and the undeciphered script precludes definitive resolution.
+
+The **Dravidian-Elamite hypothesis** — proposing a genealogical relationship between Dravidian and ancient Elamite (spoken in southwestern Iran, attested c. 2400–400 BCE) — has attracted periodic scholarly attention. Elamite is itself an isolate with no demonstrated relatives; its agglutinative morphological structure and some proposed lexical correspondences with Dravidian have been cited as evidence for relationship. The hypothesis is currently treated skeptically by most specialists, who regard the similarities as insufficient to establish genealogical relationship through the comparative method.
+
+---
+
+### Annotated Examples
+
+```
+(DR1) Tamil — agglutinative case and tense
+nān   nēṟṟu   avaṉ-ai   pārtt-ēṉ.
+1SG   yesterday  3SG.M-ACC  see-PST-1SG
+'I saw him yesterday.'
+(nān = 1SG nominative; avaṉai = 3SG.MASC + accusative -ai; pārttēn = see + past tense marker -tt- + 1SG -ēn)
+
+(DR2) Tamil — prenominal participial relative clause
+[nāṉ   vāṅkiy-a]      puttakam  naṉṟāka  irukkiratu.
+[1SG   buy-PST.PTCP]    book      well      be-PRS.3SG.NEUT
+'The book that I bought is good.'
+(participial -a derives prenominal relative clause; puttakam = head noun after the clause)
+
+(DR3) Tamil — dative subject construction
+eṉakku   payam  ākiṟatu.
+1SG.DAT  fear   become-PRS.3SG.NEUT
+'I am afraid.' (lit. "to-me fear-happens")
+(dative subject eṉakku for psychological state predicate; compare nominative for agentive predicates)
+
+(DR4) Classical Tamil (Sangam) — poetic language
+muṉivaṉ   tītu   nīkki-ṉāṉ
+sage      evil   remove-PST.3SG.M
+'The sage removed the evil.'
+(Classical Tamil verb ending -iṉāṉ vs. Modern Tamil -iṉāṉ/-āṉ; lexical items preserved from Sangam)
+
+(DR5) Telugu — retroflex series and agglutination (SOV)
+naanu   pustakamu   cadivaanu.
+1SG     book.ACC    read-PST.1SG
+'I read the book.'
+(naanu = 1SG; pustakamu = book + accusative -mu; cadivaanu = read + past + 1SG)
+```
+
+---
+
+**Thought-provoking questions**
+
+- The retroflexes of Indo-Aryan languages — a series of consonants produced with the tongue tip curled backward — are almost universally attributed to Dravidian substrate influence, on the grounds that no other Indo-European branch has them. But this argument from uniqueness has a potential weakness: uniqueness within Indo-European could reflect loss elsewhere rather than borrowing in South Asia. Is the substrate hypothesis for Indo-Aryan retroflexes proven, probable, or merely the most economical available explanation? What evidence would be needed to establish it with greater certainty — and is that evidence in principle obtainable?
+
+- Tamil diglossia — the coexistence of literary *sentamil* and colloquial *koṭuntamil* — has been stable for at least two millennia. Unlike Arabic diglossia, where Modern Standard Arabic has no native speakers, the Tamil literary standard is in some respects more continuous with the spoken language — a Tamil speaker can access Sangam poetry with effort, where an Egyptian Arabic speaker cannot understand Quranic Arabic without extensive formal instruction. Does this relative accessibility suggest that Tamil diglossia is a fundamentally different sociolinguistic situation from Arabic diglossia — or do they represent points on a spectrum of the same phenomenon, with the Arabic case simply representing a more extreme version of the same diglossic structure?
+
+- The South Asian Sprachbund demonstrates that Indo-Aryan and Dravidian — genealogically independent families — have converged structurally to a greater degree than Indo-Aryan and Iranian, its own sister-branch. This means that prolonged contact can override genealogical affinity in determining a language's structural profile. If this is possible, does it undermine the significance of genealogical classification for understanding a language's current structure? Should linguists weight areal affiliation more heavily than genealogical affiliation when the two point in different directions?
+
+- The Tamil purism movement of the early 20th century attempted to replace Sanskrit loanwords with Tamil coinages — a deliberate effort to reshape the lexical profile of formal Tamil. Similar movements have occurred in Hebrew (successful), Turkish (partially successful in replacing Arabic/Persian loans), and Icelandic (largely successful in resisting English influence). What determines whether a language purism movement succeeds? Is success a matter of the availability of productive word-formation resources in the indigenous language, the strength of political will behind the movement, the prestige of the source language being displaced, or some combination of these factors?
+## Chapter 13 · Austroasiatic and the Mainland Southeast Asia Convergence Zone
+
+The Austroasiatic family presents one of the sharpest demonstrations available in typology that genealogical classification and structural profile are orthogonal axes of description. Its two major branches — the Munda languages of eastern India and the Mon-Khmer languages of mainland Southeast Asia — differ so substantially in typological profile that a linguist encountering a Munda language and a Vietnamese sentence side by side would have no immediate structural grounds for assigning them to the same family. Vietnamese, an Austroasiatic language, has six lexical tones, no morphological inflection, extensive classifier system, and a syntax organized around topic-comment structure — a profile more reminiscent of Mandarin than of anything in the Munda branch. Santali, a Munda language spoken in eastern India, is SOV, agglutinative, non-tonal, and morphologically rich. The family's internal typological diversity is the product of radically different contact histories operating on a common genealogical substrate.
+
+The Austroasiatic family's current distribution — southeastern India and Bangladesh (Munda), Myanmar (Mon, some others), Cambodia (Khmer), mainland Southeast Asia (Vietnamese, various Mon-Khmer languages), northeastern India (Khasi, Munda languages) — is almost certainly not its original distribution. Substrate effects, loanword strata, and the documented displacement of Austroasiatic-speaking populations by Sinitic, Tai-Kadai, and Tibeto-Burman expansions suggest that Austroasiatic languages once covered a considerably wider territory. The presence of Austroasiatic substrate vocabulary in Sinitic languages — words in the oldest documented Chinese lexical strata that appear to be borrowings from an Austroasiatic language — and the distribution of Austroasiatic languages across discontinuous territory separated by Sino-Tibetan and Tai-Kadai populations point toward a formerly more continuous Austroasiatic-speaking zone in mainland Southeast Asia that was fragmented through historical population movements.
+
+---
+
+### Genealogical Scope and Internal Classification
+
+Austroasiatic's internal structure has been debated extensively, with the primary division between **Munda** (spoken in a geographically compact area of eastern India and Bangladesh) and **Mon-Khmer** (everything else) widely accepted as the family's major split, though some specialists propose that Mon-Khmer itself is not a genealogically valid node but simply the residual grouping after Munda is removed — analogous to the Tibeto-Burman problem in Sino-Tibetan. Within Mon-Khmer, the major subgroups include:
+
+**Khmeric** — Khmer and closely related varieties spoken in Cambodia, Thailand, and Vietnam. Khmer is the most extensively documented Mon-Khmer language, with inscriptions dating to the 7th century CE and a major literary and historical tradition associated with the Angkor civilization (9th–15th centuries CE).
+
+**Monic** — Mon, once the prestige language of significant polities in lower Myanmar and central Thailand (the Dvaravati and Thaton kingdoms), now spoken by approximately 750,000–1,000,000 people primarily in Myanmar. Mon's historical significance far exceeds its current demographic position: the Mon script is the direct ancestor of the Burmese script and the indirect ancestor of Thai, Lao, and other Brahmi-derived Southeast Asian scripts.
+
+**Vietic** — Vietnamese and its close relatives (Muong, Chứt), spoken in Vietnam. Vietnamese, with approximately 85 million speakers, is far and away the most widely spoken Austroasiatic language and the only one that has become a major national language with global diaspora communities.
+
+**Aslian** — a group of languages spoken by indigenous communities in the Malay Peninsula (peninsular Malaysia and southern Thailand), heavily studied for their unusual phonological and typological features.
+
+**Khasi-Palaungic, Munda, and others** — a collection of further subgroups whose internal arrangement and relationship to each other within Mon-Khmer remains debated in specialist literature.
+
+> **Proto-Austroasiatic** reconstruction is considerably less developed than Proto-Indo-European or even Proto-Dravidian, partly because the family's most widely spoken members (Vietnamese and Khmer) have diverged so substantially from whatever the proto-language's profile was — through areal contact in the case of Vietnamese and through internal change in the case of Khmer — that reconstructing the shared ancestor requires setting aside many of the most salient surface features of these languages and looking for deep structural and lexical correspondences beneath the areal overlay.
+
+---
+
+### The Diachronic Trajectory: Displacement and Tonogenesis
+
+The most consequential diachronic development in Austroasiatic history — particularly for understanding Vietnamese — is the process by which Vietnamese acquired its elaborate tonal system from an earlier non-tonal or minimally tonal state, through prolonged contact with Sinitic languages. This process, the tonogenesis pathway described in Chapter 4, is documented with unusual completeness in the Vietnamese case because the historical linguistic record is sufficient to identify the stages:
+
+Proto-Vietic (the ancestor of Vietnamese and Muong) had a two-register system conditioned by the voicing of onset consonants: syllables with voiced initials had a lower-pitched, sometimes breathier register; syllables with voiceless initials had a higher-pitched register. This is not yet lexical tone — it is a predictable phonetic correlate of voicing. As the voiced/voiceless distinction at syllable onsets neutralized (all initials becoming voiceless or deaspirated), speakers were left with pitch differences that were no longer conditioned by the onset consonant and had to be reanalyzed as autonomous properties of the syllable. The neutralization happened in stages, with glottal and other laryngeal features at syllable codas contributing additional distinctions, ultimately producing the six-tone system of modern Hanoi Vietnamese through a sequence of splits and mergers that historical linguists have traced in considerable detail.
+
+The six tones of **Hanoi Vietnamese** are specified not only for pitch contour but for phonation quality — a parameter that makes Vietnamese tonology more complex than Mandarin's four-contour system:
+
+```
+Tone 1 (ngang — level): high-mid, modal phonation — "ma" (ghost)
+Tone 2 (huyền — falling): low-falling, breathy/murmured phonation — "mà" (but/yet)
+Tone 3 (sắc — rising): high-rising, modal, sometimes creaky at endpoint — "má" (mother/cheek)
+Tone 4 (nặng — heavy): low, short, creaky/glottalized — "mạ" (rice seedling)
+Tone 5 (hỏi — questioning): mid-dipping-rising, sometimes breathy — "mả" (tomb)
+Tone 6 (ngã — broken): mid-rising with glottalization/creaky interruption — "mã" (horse/code)
+```
+
+The interaction of pitch contour and phonation quality — normal voicing, breathiness, or creakiness — in the Vietnamese tone system creates perceptual challenges that go beyond tracking pitch contour alone. A learner who attends only to the pitch dimension will systematically conflate tones that differ primarily in phonation (Tones 2 and 5 in particular). The phonation dimension must be treated as an integral part of the tone specification rather than as an accompaniment to the pitch contour.
+
+The consequence of Vietnamese's tonal development under Sinitic contact is that Vietnamese now sits in the MSEA linguistic area not as a peripheral member but as a near-complete structural instance of the areal profile: six lexical tones, minimal morphological inflection, numeral classifiers, serial verb constructions, topic-comment information structure, and sentence-final particles encoding discourse and epistemic functions. The Sino-Vietnamese vocabulary layer — massive borrowings from Middle Chinese that constitute approximately 60% of Vietnamese vocabulary in formal registers — adds a further structural parallel to the Sino-Japanese relationship, producing a language where the native Austroasiatic vocabulary and grammatical structure is overlaid with a deep stratum of Sinitic-origin lexicon organized in Sinitic morphological patterns.
+
+> **Sino-Vietnamese** (*Hán Việt* 漢越) vocabulary entered Vietnamese from Middle Chinese during the period of Chinese political dominance over northern Vietnam (111 BCE – 938 CE) and continued through the subsequent millennium of cultural influence. Sino-Vietnamese words follow Middle Chinese phonological patterns adapted to Vietnamese phonotactics and are organized in the same compounding patterns as their Chinese etymological sources: *quốc gia* (國家, nation-family = country), *chính phủ* (政府, politics-administration = government), *đại học* (大學, great-learning = university). The parallels with Sino-Japanese vocabulary are structural, not coincidental: both represent the same process of systematic borrowing from Middle Chinese literary vocabulary into a grammatically distinct receiving language that organized the borrowed items through the same compounding principles.
+
+**Mon's** historical trajectory represents a different kind of displacement. The Mon-speaking kingdoms of lower Myanmar (Thaton, Pegu) and central Thailand (Dvaravati) were among the first Southeast Asian polities to adopt Theravada Buddhism and the associated Pali literary culture, and the Mon script was the primary vehicle through which Buddhist texts and Brahmi-derived literacy spread across mainland Southeast Asia. The Burmese, who conquered the Mon kingdoms in the 11th century, adopted the Mon script for writing Burmese — a Tibeto-Burman language that had no prior indigenous writing tradition. Through Mon, Brahmi-derived literacy spread to the Tai and Lao peoples, producing ultimately the Thai, Lao, and related scripts. Mon is thus the genealogical ancestor of most mainland Southeast Asian writing systems despite being demographically marginal today — a language whose cultural influence vastly exceeded its political survival.
+
+---
+
+### Khmer: The Non-Tonal Anomaly of the MSEA Area
+
+**Khmer** (Cambodian) is the most demographically significant and historically best-documented Mon-Khmer language. Spoken by approximately 16 million people and the official language of Cambodia, Khmer has the deepest epigraphic record of any Southeast Asian language: inscriptions in Khmer date to the 7th century CE, and the Angkor period (9th–15th centuries) produced an extensive body of Sanskrit and Khmer inscriptions associated with the temple complexes of Angkor Wat, Angkor Thom, and related sites.
+
+Khmer's position within the MSEA linguistic area is typologically anomalous: it is the major non-tonal language of a region almost universally characterized by lexical tone. Vietnamese (Austroasiatic), Thai (Tai-Kadai), Lao (Tai-Kadai), Burmese (Sino-Tibetan), and Mandarin (Sino-Tibetan) all have tonal systems; Khmer, surrounded by tonal languages on all sides, does not. The explanation for this apparent anomaly requires understanding Khmer's phonological organization:
+
+Khmer encodes what would be tonal distinctions in neighboring languages through a **two-register system**: syllables are divided into a lower register (historically derived from voiced initials) and a higher register (historically derived from voiceless initials), with the vowel quality and pitch level of the nucleus varying predictably by register. What is distinctive about Khmer is that this register distinction never completed the tonogenesis pathway that Vietnamese followed: the onset consonant voicing distinction was preserved in Khmer (as a register distinction affecting the following vowel) rather than neutralized (which would have forced the register onto the syllable as an autonomous tone). The result is a language where register is a phonological property but is conditioned by the initial consonant's register rather than being an independent lexical property of the syllable — not quite tone, not quite the pre-tonal state, but an intermediate stage of the tonogenesis pathway that Vietnamese traversed completely.
+
+Khmer phonotactics are considerably more complex than Vietnamese's. The language permits consonant clusters in onset position — clusters that Vietnamese eliminates through the historical process of cluster simplification — and its vowel system is rich and phonologically active in ways that Vietnamese's has been simplified away from. Where Vietnamese syllable structure approaches the monosyllabic CV(C) simplicity of Sinitic languages through its historical development, Khmer maintains a more complex phonological structure that reflects its pre-contact profile more faithfully.
+
+> The **Khmer script** — the oldest surviving mainland Southeast Asian script in continuous use, with inscriptions from the 7th century CE — is a Brahmi-derived abugida that represents both the Sanskritic and indigenous Khmer phonological inventories. It is one of the most visually elaborate of the Brahmi-derived scripts, with a large inventory of consonant letters (33 base consonant forms, each in two subscript forms, plus a full vowel diacritic system), subscript consonants for the representation of clusters, and a complex system of independent vowel symbols. The script's complexity reflects Khmer phonology's complexity — particularly the consonant cluster and rich vowel system — and makes Khmer literacy acquisition considerably more demanding than Vietnamese literacy in the Roman-based Quốc ngữ.
+
+---
+
+### Vietnamese Writing Systems: Chữ Nôm and Quốc Ngữ
+
+The history of Vietnamese writing is a case study in the relationship between script, political power, cultural continuity, and literacy accessibility.
+
+**Chữ Nôm** (字喃, "southern characters") was a system of writing Vietnamese using Chinese characters or character combinations. Developed from approximately the 10th century CE — after Vietnamese independence from Tang dynasty China in 938 CE — Chữ Nôm used Chinese characters in two ways: some characters were selected for their phonological value (the character's Chinese pronunciation approximating a Vietnamese syllable); others were used for their meaning (with the Vietnamese meaning rather than the Chinese pronunciation intended); and many were complex combinations where a semantic component (an existing character indicating the general meaning domain) was combined with a phonological component (indicating the Vietnamese pronunciation) into a new compound character. The result was a system of considerable complexity — requiring knowledge of Chinese characters as a prerequisite for Chữ Nôm literacy — accessible only to the educated elite but capable of representing all levels of Vietnamese expression including poetry, historical chronicles, and literary fiction.
+
+The richest flowering of Chữ Nôm literature came in the 18th and early 19th centuries, most famously in Nguyễn Du's **Truyện Kiều** (The Tale of Kieu, completed c. 1820), a 3,254-verse narrative poem generally regarded as the masterpiece of Vietnamese literature and widely memorized by Vietnamese people to the present day. The poem was composed in Chữ Nôm — yet most modern readers encounter it in the Romanized transcription system, having never learned to read the original script.
+
+**Quốc ngữ** (國語, "national language script") — the Romanized orthography now universally used for Vietnamese — was developed in the 17th century by Jesuit missionaries, most famously Alexandre de Rhodes, who published the first Vietnamese-Portuguese-Latin dictionary using the Romanized system in 1651. The system represented Vietnamese phonology with notable precision: dedicated diacritical marks encode both tone (six marks for six tones) and vowel quality (additional marks distinguishing Vietnamese vowels without close Latin equivalents). The Quốc ngữ is, in this respect, more precisely phonological than most European Latin-based orthographies — Vietnamese speakers can in principle derive the pronunciation of any written word from its spelling, and vice versa.
+
+The transition from Chữ Nôm to Quốc ngữ as the primary written medium occurred gradually during the French colonial period and was completed in the early 20th century as the colonial administration promoted Quốc ngữ for practical and political reasons — expanding literacy (Quốc ngữ is learnable in weeks rather than the years required for Chữ Nôm) while simultaneously severing the population's direct access to the Chữ Nôm literary tradition and to classical Chinese literacy. The consequence is that the Chữ Nôm corpus — including the Truyện Kiều in its original form — is now inaccessible to the overwhelming majority of Vietnamese people without specialist training. The Romanization increased literacy dramatically; it simultaneously created a cultural discontinuity between modern Vietnamese people and their pre-20th-century textual heritage.
+
+---
+
+### Vietnamese Grammar: The Analytic Structure in Detail
+
+Vietnamese grammar exemplifies the analytic-tonal profile of the MSEA area with particular clarity. The verb is invariant — no inflection for tense, aspect, person, number, or agreement — and all grammatical distinctions are expressed through free morphemes, particles, and word order.
+
+The **aspect and tense** system uses preverbal particles:
+```
+Tôi  đọc  sách.          (read — no tense specification, habitual or present)
+Tôi  đã   đọc  sách.     (đã = past/perfective marker — I (already) read the book)
+Tôi  đang đọc  sách.     (đang = progressive — I am reading the book)
+Tôi  sẽ   đọc  sách.     (sẽ = future — I will read the book)
+Tôi  vừa  đọc  sách.     (vừa = immediate past — I just read the book)
+```
+
+The tense/aspect particles *đã*, *đang*, *sẽ*, *vừa* are invariant free morphemes positioned before the verb, encoding temporal and aspectual information that European languages would encode through verb inflection. Their behavior is not fully compositional: *đã* can encode past tense, perfective aspect, or counterfactual (in conditional contexts), depending on the tense of the main predicate and the discourse context.
+
+The **classifier system** in Vietnamese requires a numeral classifier between a numeral (or demonstrative) and a noun in quantifying expressions:
+```
+một  cuốn  sách      (one CLF:book-shaped book)
+một  tờ    báo       (one CLF:sheet newspaper)
+một  con   chó       (one CLF:animal dog)
+một  cái   bàn       (one CLF:object table — general concrete object classifier)
+```
+
+The classifier *cái* functions as a general-purpose classifier for concrete objects without more specific classifiers, while *con* is specifically for animals, *tờ* for flat objects, *cuốn* for rolled or bound objects. The system is less elaborated than Mandarin's but follows the same organizational principle of semantic classification through the numeral classifier.
+
+**Serial verb constructions** — sequences of verbs sharing a single subject with no overt conjunction or morphological linkage — are a characteristic MSEA feature found across genealogical boundaries and prominent in Vietnamese:
+```
+Anh   ấy  đi   ra   ngoài.
+3SG.M    go  exit  outside
+'He goes out.' (đi = go; ra = exit/go out — two verbs in series encoding direction)
+
+Tôi  mang  sách  đến  thư  viện.
+1SG  carry book  come library
+'I carried the book to the library.' (mang = carry; đến = arrive at/come — serial directional)
+```
+
+The second verb in these constructions encodes direction or result, modifying the trajectory or endpoint of the primary action. The construction is productive and grammatically unrestricted: any verb whose meaning is compatible with the primary action can appear in the serial position without morphological modification.
+
+---
+
+### Munda: The Other Face of Austroasiatic
+
+The Munda languages — spoken primarily in Jharkhand, West Bengal, Odisha, and neighboring states of eastern India — represent the branch of Austroasiatic most remote from the MSEA typological profile. Where Vietnamese is analytic, tonal, and SVO, the Munda languages are agglutinative, non-tonal, and SOV — a profile that reflects their different geographic situation and their contact with the Indo-Aryan and Dravidian languages of South Asia rather than with the MSEA linguistic area.
+
+**Santali**, the most widely spoken Munda language (approximately 7 million speakers), has attracted particular scholarly attention for several reasons. Its grammatical system includes a distinction between inclusive and exclusive first-person plural (*we including you* vs. *we excluding you*), a feature widely distributed across Austronesian and Amerindian languages but relatively unusual in South Asian languages. It has a complex system of dual and plural marking that differentiates between two, a few, and many participants. And it has been written since 1925 in the **Ol Chiki** script — an indigenous script invented by Pandit Raghunath Murmu specifically for Santali, designed to represent its phonological inventory with precision that the Devanagari script used for Hindi and Bengali does not achieve for Santali's specific consonants and vowels.
+
+The existence of Ol Chiki — a 20th-century deliberate script invention for an indigenous language — makes Santali a parallel case to Hangul (for Korean) and to the Cherokee syllabary (for Cherokee): a community that decided that the available writing technologies from dominant neighboring traditions were inadequate for their language, and invented an alternative. Ol Chiki's adoption has been gradual but genuine, particularly in the context of Santali cultural revitalization movements and the language's recognition as one of India's constitutionally scheduled languages.
+
+---
+
+### The MSEA Linguistic Area: Convergence in Detail
+
+The Mainland Southeast Asia linguistic area — as defined by N.J. Enfield, Paul Sidwell, and others who have worked to characterize it rigorously — is not simply a geographic region where languages happen to share features but a structured network of areal features whose distribution, density, and genealogical spread suggest active diffusion rather than coincidence. The core MSEA features cluster most densely in a central zone covering the Mekong River basin and its tributaries, with features becoming less consistent toward the geographic and genealogical margins.
+
+The specific mechanism of MSEA areal diffusion is primarily through **contact bilingualism** in trade networks, religious communities, and political administrations. Buddhist monasteries, in particular, were multilingual institutions where speakers of Khmer, Mon, Burmese, Tai, and Vietnamese varieties interacted over centuries, providing infrastructure for the diffusion of grammatical and lexical features across genealogical lines. The spread of Theravada Buddhism across mainland Southeast Asia from the 11th century CE onward — with Pali as the liturgical language and Mon as the initial vernacular vehicle — created exactly the kind of sustained multilingual contact that produces areal convergence.
+
+The non-tonal status of Khmer within the MSEA area is often explained by the hypothesis that the *register system* of Khmer serves the same discourse-functional purpose as tone in neighboring languages — distinguishing lexical items and organizing phonological contrasts within the syllable — without completing the diachronic step of removing the register property from the consonant and assigning it to the syllable. This explanation does not fully account for why Khmer alone among MSEA languages failed to complete tonogenesis; one hypothesis is that Khmer's preservation of consonant cluster phonotactics (which Vietnamese and other tonal MSEA languages largely lost) meant that Khmer maintained sufficient phonological contrast through segmental complexity that the pressure to develop tone as a compensatory mechanism was weaker.
+
+---
+
+### Annotated Examples
+
+```
+(AU1) Vietnamese — six tones
+ma (Tone 1, level)     — ghost/specter
+mà (Tone 2, falling)   — but/yet (discourse particle)
+má (Tone 3, rising)    — cheek/mother (regional)
+mạ (Tone 4, heavy)     — rice seedling
+mả (Tone 5, dipping)   — tomb/grave
+mã (Tone 6, broken)    — horse/code
+
+(AU2) Vietnamese — serial verb construction and classifiers
+Tôi  vừa  mua  được   ba   cuốn   sách   về   văn  học.
+1SG  just  buy  achieve three CLF:vol book  return literature
+'I just managed to buy three books about literature.'
+(vừa = immediate past; được = achievement/result serial verb; cuốn = classifier for bound volumes)
+
+(AU3) Vietnamese — topic-comment structure
+Quyển  sách  đó,   tôi  đọc  rồi.
+CLF:vol book  DEM  1SG  read  already
+'That book, I've already read (it).'
+(topic-initial noun phrase; rồi = completion particle at clause end)
+
+(AU4) Khmer — register system (no tone; register encoded in initial consonant)
+ដំរី (damrei) — elephant (lower register: voiced initial conditioned vowel quality)
+ទន្សាយ (tonsai) — rabbit (lower register: voiced initial)
+ក្រអូប (kraaup) — fragrant (higher register: voiceless initial)
+(vowel quality differs by register; pitch is lower in lower-register syllables but not phonemically specified)
+
+(AU5) Khmer — complex onset clusters
+ស្រ្ដី (srey) — woman (cluster /str/ in onset — impossible in Vietnamese or Mandarin)
+ខ្ញុំ (khñom) — I/me (cluster /khn/ in onset — tri-consonantal cluster)
+
+(AU6) Santali (Munda) — agglutinative SOV, inclusive/exclusive distinction
+am  orak-te  jom-ked-ae
+2SG house-LOC eat-PST-3SG
+'He ate at your house.'
+(SOV; agglutinative: jom-ked-ae = eat-PST-3SG; -te = locative suffix)
+
+ale  do  Ranchi-re  am-ge  cala-ked-a-le
+1PL.INCL TOP Ranchi-LOC 2SG-too go-PST-DECL-1PL.INCL
+'We (including you) went to Ranchi too.'
+(ale = 1PL inclusive; contrast with abo = 1PL exclusive — grammatically distinct pronouns)
+```
+
+---
+
+**Thought-provoking questions**
+
+- Vietnamese acquired six lexical tones through contact with Sinitic languages — a process of tonogenesis well documented in its historical stages. Khmer, surrounded by tonal languages in the same geographic area, did not complete this process and remains non-tonal. Both languages underwent the first stages of tonogenesis (register development from consonant voicing distinctions); only Vietnamese completed it. The standard explanation cites Vietnamese's loss of consonant clusters (reducing the phonological complexity available for contrasting syllables) as creating pressure to develop tone, while Khmer's preserved clusters maintained sufficient phonological contrast without tone. Is this explanation adequate, or are additional factors — social, demographic, intensity of Sinitic contact — necessary to explain why tonogenesis went to completion in Vietnamese but not Khmer?
+
+- The transition from Chữ Nôm to Quốc ngữ increased Vietnamese literacy dramatically — enabling a population to learn to read in weeks rather than years — but severed modern Vietnamese people from their Chữ Nôm literary heritage. Similar transitions occurred when languages shifted from complex indigenous scripts to Roman alphabets under colonial or modernizing pressures. Is the increased accessibility of alphabetic literacy worth the cultural discontinuity it creates? Who makes this calculation, and whose interests does it serve?
+
+- The Munda languages of eastern India are SOV and agglutinative — typologically similar to Dravidian and to other South Asian languages with which they are in contact. The MSEA Austroasiatic languages (Vietnamese, Khmer, Mon) have been pulled toward the analytic-tonal profile of their geographic neighbors. This means the same genealogical family has two completely different typological profiles conditioned by two different contact environments. Does this demonstrate that contact environment is a more powerful determinant of typological profile than genealogical inheritance — that "where a language is" matters more than "where a language came from" in determining how it is currently structured?
+
+- The MSEA linguistic area features — tone, classifiers, serial verbs, topic-comment structure — are shared across Tai-Kadai, Austroasiatic (Vietnamese), Sinitic, and Hmong-Mien families. The standard explanation is areal diffusion through contact. But an alternative explanation is that these features independently evolved from similar structural pressures in a geographically adjacent zone. How would one distinguish empirically between the diffusion hypothesis and the independent-development hypothesis for MSEA areal features? Is there evidence that could in principle decide between them?
