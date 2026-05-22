@@ -2660,3 +2660,947 @@ ale  do  Ranchi-re  am-ge  cala-ked-a-le
 - The Munda languages of eastern India are SOV and agglutinative — typologically similar to Dravidian and to other South Asian languages with which they are in contact. The MSEA Austroasiatic languages (Vietnamese, Khmer, Mon) have been pulled toward the analytic-tonal profile of their geographic neighbors. This means the same genealogical family has two completely different typological profiles conditioned by two different contact environments. Does this demonstrate that contact environment is a more powerful determinant of typological profile than genealogical inheritance — that "where a language is" matters more than "where a language came from" in determining how it is currently structured?
 
 - The MSEA linguistic area features — tone, classifiers, serial verbs, topic-comment structure — are shared across Tai-Kadai, Austroasiatic (Vietnamese), Sinitic, and Hmong-Mien families. The standard explanation is areal diffusion through contact. But an alternative explanation is that these features independently evolved from similar structural pressures in a geographically adjacent zone. How would one distinguish empirically between the diffusion hypothesis and the independent-development hypothesis for MSEA areal features? Is there evidence that could in principle decide between them?
+
+## Chapter 14 · Tai-Kadai and Hmong-Mien — The Tonal-Analytic Complex
+
+The two families examined in this chapter — Tai-Kadai and Hmong-Mien — are genealogically independent of each other and of the Austroasiatic and Sino-Tibetan languages that surround them. Yet both exemplify the Mainland Southeast Asia typological profile more fully than perhaps any other families in the area: predominantly analytic morphology, SVO order, elaborate lexical tone systems, numeral classifier systems, serial verb constructions, and sentence-final particles encoding pragmatic and epistemic distinctions. Understanding these families requires holding two observations simultaneously: that their structural profiles are among the most thoroughly "MSEA" in the region, and that this profile is in each case the product of independent genealogical trajectories converging on the same typological attractor through a combination of internal development and areal contact.
+
+Both families are also families with significant diaspora populations that have created unusual sociolinguistic situations. Tai-Kadai languages spread southward from their homeland in what is now southern China through a series of migrations beginning approximately a millennium ago, producing the national languages of Thailand and Laos and a large constellation of related varieties across the region. Hmong-Mien speakers, historically concentrated in the mountain communities of southern China and the highlands of Vietnam, Laos, and Thailand, were displaced in large numbers following the Vietnam War, producing diaspora communities in the United States, France, Australia, and elsewhere — communities that have confronted the challenge of maintaining heritage languages in contexts radically different from the mountain villages of highland Southeast Asia.
+
+---
+
+### Tai-Kadai: The Family and Its Scope
+
+Tai-Kadai — also termed **Kra-Dai** in a revised classification that has gained considerable scholarly traction — is a family of approximately 70–90 languages spoken across a broad arc from Hainan island and the Guangxi and Yunnan provinces of southern China through Myanmar, Thailand, Laos, and northern Vietnam. The family's largest members by speaker count are **Zhuang** (approximately 16 million speakers in Guangxi, China, and the most widely spoken Tai-Kadai language), **Thai** (approximately 37 million native speakers of Central Thai plus additional speakers of regional varieties), and **Lao** (approximately 7 million native speakers in Laos plus related varieties in northeastern Thailand).
+
+The internal subgrouping of Tai-Kadai distinguishes several branches: the **Tai** branch (including Standard Thai, Lao, Shan, Zhuang, and numerous other varieties); the **Kra** branch (spoken primarily in Guizhou and Yunnan provinces, China); the **Kam-Sui** branch (including Dong/Kam, spoken in Guizhou); and the **Hlai** branch (the languages of Hainan island). The re-designation from "Tai-Kadai" to "Kra-Dai" reflects growing evidence that the Kra branch is not a peripheral outlier but one of the deepest-branching nodes of the family — and that placing "Tai" at the beginning of the family name misrepresents the internal structure by privileging the most recently expanding branch.
+
+> The **Austro-Tai hypothesis**, proposed by Paul Benedict in the mid-20th century, proposed a genealogical relationship between Tai-Kadai and Austronesian — based primarily on lexical comparisons and the observation of shared morphological elements. The hypothesis would, if valid, represent one of the most significant macro-family proposals in Asian linguistics. It has been neither definitively confirmed nor definitively refuted: some specialists find the lexical correspondences suggestive, others attribute them to ancient contact between Tai-Kadai and Austronesian speakers in the region of southern China/Taiwan before the Austronesian expansion. The question remains open, though most current specialists treat Tai-Kadai and Austronesian as separate families while acknowledging the possibility of ancient contact.
+
+---
+
+### The Diachronic Trajectory: Tone Splits and Southward Migration
+
+The development of the modern Thai and Lao tone systems from a proto-Tai ancestor is one of the most thoroughly documented cases of tonogenesis in the linguistic record, comparable in detail to the Vietnamese case described in Chapter 13 but producing a different outcome because of the different initial consonant inventory and the different number of register categories involved.
+
+Proto-Tai had a system in which syllables fell into three register categories — conventionally labeled **A** (associated with sonorant-initial and voiceless-initial syllables), **B** (associated with a subset of consonant-initial syllables, possibly connected to pre-glottalization), and **C** (associated with voiced fricative-initial syllables). These register categories were not yet tones; they were predictable from the initial consonant. The diachronic process began when the voiced/voiceless distinction at syllable onsets neutralized. At this point, the register property could no longer be recovered from the initial consonant and had to be reanalyzed as an autonomous property of the syllable — the definitional transition from register to incipient tone.
+
+A subsequent **tone split** occurred: when the aspirated/unaspirated distinction in voiceless stops also neutralized (or in some analyses, when phonological changes created new contrasts), each of the three pre-existing registers split into two tones — a high-tone and a low-tone variant — conditioned by whether the syllable's onset had been aspirated or unaspirated, voiced or voiceless, before the neutralization. Three registers, each splitting into two, produced six tones — the number found in many Tai languages. Bangkok Thai subsequently underwent a merger that reduced six tones to five:
+
+```
+Proto-Tai three registers × two conditioners = six tones
+Bangkok Thai: five tones (one merger reduced the six to five)
+Lao (Vientiane standard): six tones
+Shan (Myanmar): six tones
+Classical Zhuang: six tones (modern varieties vary)
+```
+
+The different number of tones in Thai versus Lao — both descending from the same proto-Tai tonal system — reflects differential merger in the two branches: one pair of tones that remained distinct in Lao merged in Bangkok Thai, reducing the inventory from six to five. This differential merger occurred after the languages had diverged sufficiently that the change happened independently in the Thai branch but not the Lao branch.
+
+The southward migration of Tai-speaking populations from their homeland in southern China — traditionally associated with the Guangxi region and surrounding areas — is documented through a combination of linguistic evidence (the deepest-branching varieties remain in southern China, while the most recently expanded branches are in mainland Southeast Asia), historical records (the establishment of Thai kingdoms in the 13th century, the founding of the Sukhothai kingdom in 1238 CE), and archaeological evidence for the expansion of wet-rice agriculture and associated material culture. The migration brought Tai-Kadai speakers into contact with earlier Austroasiatic-speaking populations (Mon, Khmer) whose cultural and technological achievements — including writing systems, Buddhist institutional infrastructure, and architectural traditions — the Tai-speaking newcomers absorbed and transformed.
+
+---
+
+### The Thai Writing System: Encoding Tone in Script
+
+The **Thai script**, traditionally attributed to King Ramkhamhaeng of Sukhothai (inscription dated 1283 CE, though the dating is disputed by some scholars), was developed from the Khmer script — itself a Brahmi-derived abugida — adapted to the phonological requirements of Thai, most crucially the representation of the tonal system. The Thai script's solution to the problem of encoding tone is typologically unusual and reveals the historical relationship between the tonal system and its antecedents in consonant voicing:
+
+Thai consonant letters are divided into three **tone classes** — high class (*อักษรสูง*), mid class (*อักษรกลาง*), and low class (*อักษรต่ำ*) — that reflect the historical register distinctions from which the modern tone system developed. Each tone class uses different combinations of tonal diacritics to produce the five tones of Bangkok Thai. A syllable written with the same vowel and the same tonal diacritic will be pronounced in a different tone depending on which class its initial consonant letter belongs to:
+
+```
+High-class consonant + no diacritic = Rising tone
+Mid-class consonant + no diacritic = Mid tone
+Low-class consonant + no diacritic = Mid tone
+(with different diacritics for each class producing the other tones)
+```
+
+The three-way consonant-class distinction in the script thus encodes information about the historical register of the syllable — the pre-tonal register that determined which tone the syllable would acquire after the tone split. This makes the Thai script an inadvertent diachronic record: the consonant classes preserve the three-register system of proto-Tai even though the spoken language has moved beyond registers to a five-tone system. A linguist analyzing the Thai script without prior knowledge of the tonal history would find the three-way consonant classification puzzling until understanding that it encodes pre-tonal register distinctions that no longer exist as such in the spoken language.
+
+Pairs of consonant letters in Thai script that represent the same phoneme but belong to different tone classes — called *Thai consonant pairs* — exist specifically to enable the representation of all five tones with any given vowel. The low-class consonant *ง* (ng) and the mid-class consonant *ก* (k) represent different phonemes, but within the low-class and mid-class categories respectively, there are consonant pairs representing the same phoneme in different classes to enable tonal specification. The script is thus organized by tonal history rather than by synchronic phonemic distinctions — a system that requires considerable metalinguistic awareness to navigate but that, for a literate Thai speaker, is entirely automatic.
+
+The **Lao script** is closely related to Thai script — both derive from the same Khmer-script source — but differs in several respects: Lao script is somewhat simplified relative to Thai (fewer consonant letters, different vowel diacritic conventions), and the two scripts are partially but not fully mutually readable. A Thai-literate reader encountering Lao text can recognize the structural logic of the script immediately but cannot reliably read specific letters without study; a Lao-literate reader encountering Thai text faces the same situation. The relationship resembles, in some ways, the relationship between Serbian Cyrillic and Russian Cyrillic — clearly related systems that require explicit cross-learning for full mutual legibility.
+
+---
+
+### Thai Grammar: The Tonal-Analytic Profile in Full
+
+Bangkok Thai is the best-documented and most widely studied Tai language, and its grammatical profile epitomizes the features that characterize the Tai-Kadai contribution to the MSEA linguistic area.
+
+Thai has **five lexical tones** in the Bangkok standard:
+```
+Tone 1 (สามัญ, mid): level mid pitch — /khao/ "rice"
+Tone 2 (เอก, low): low falling — /khâo/ "to enter"
+Tone 3 (โท, falling): high falling — /khâo/ "white"
+Tone 4 (ตรี, high): high, slightly rising — /kháo/ "he/she/they"
+Tone 5 (จัตวา, rising): low-rising — /khǎo/ "news"
+```
+
+The same syllable /khao/ with five different tonal specifications produces five unrelated words — one of the most frequently cited illustrations of lexical tone in typological literature. Tone sandhi — the modification of tones in connected speech at syllable boundaries or under the influence of neighboring tones — operates in Thai as in other tonal languages, though Thai's sandhi rules are less dramatic than Mandarin's third-tone sandhi.
+
+The **pronoun system** of Thai is lexically elaborate in a way that parallels the social-register function of Japanese keigo but operates through vocabulary choice rather than verb morphology. Thai has a large inventory of first- and second-person pronouns that vary by gender of speaker, relative social status, and degree of formality:
+
+```
+ผม (phom) — 1SG, male speaker, polite
+ฉัน (chan) — 1SG, female speaker, polite; or male in casual speech
+เรา (rao) — 1SG/PL informal, or 1PL inclusive
+หนู (nu) — 1SG, female or young speaker, very polite/humble (lit. "mouse")
+ดิฉัน (dichan) — 1SG, female speaker, formal
+คุณ (khun) — 2SG, polite (also a title: "Mr./Ms.")
+เธอ (thoe) — 2SG, informal between equals
+```
+
+The selection among these pronouns encodes the speaker's gender, the social relationship between speaker and addressee, and the formality of the situation — information that Japanese keigo encodes through verb morphology but that Thai encodes through pronoun inventory selection. The sentence-final particles *ครับ* (*khrap*) for male speakers and *ค่ะ/คะ* (*kha*) for female speakers further encode the speaker's gender and a degree of politeness — an unusual case of **gendered sentence-final particles** that are grammatically obligatory in polite speech.
+
+Thai **serial verb constructions** are productive and central to the grammar:
+```
+เขา   วิ่ง   ออก   ไป   ข้างนอก
+3SG   run   exit  go   outside
+'He ran out.' (three verbs: run + exit + go — encoding manner, direction, trajectory)
+
+ฉัน   เอา   หนังสือ   ไป   ให้   เธอ
+1SG   take  book      go   give  2SG
+'I took the book to give to you.' (take + go + give — encoding action chain)
+```
+
+The serial verbs are not subordinated to each other — they form a flat sequence of predicates sharing a subject, each encoding a component of the action's manner, direction, or result. The productivity of the serial verb construction in Thai means that a large proportion of complex event descriptions require no subordination morphology at all: the verbs simply appear in sequence, and their temporal/causal relationships are inferred from their semantic content and sequential position.
+
+---
+
+### Hmong-Mien: Tone as Morphology
+
+**Hmong-Mien** (also called **Miao-Yao** in Chinese linguistic tradition) is a family of approximately 40 languages spoken primarily in the mountain communities of southern China (Guizhou, Yunnan, Hunan, Guangxi) and the highlands of Vietnam, Laos, and Thailand, with significant diaspora populations in the United States, France, Australia, and Canada following the post-1975 displacement of highland communities associated with the American military effort in Laos. The family has two primary branches: **Hmongic** (including White Hmong/Hmong Daw, Green Hmong/Hmong Njua, and many others) and **Mienic** (including Iu Mien/Yao).
+
+The genealogical relationship of Hmong-Mien to other families is not established: it has been proposed as related to Sino-Tibetan, to Tai-Kadai, and as a member of a broader macro-family, but none of these proposals has achieved the systematic correspondence evidence needed for scholarly acceptance. Hmong-Mien is most defensibly treated as an independent family whose typological profile reflects both its internal development and its sustained participation in the MSEA linguistic area through centuries of interaction with Tai, Sinitic, and Austroasiatic neighbors.
+
+**Tone** in Hmong-Mien languages is among the most phonologically complex documented anywhere. White Hmong (Hmong Daw) has eight tones; some analysis adds a ninth in certain environments. The tones are specified for pitch height, pitch contour, phonation quality, and in some cases duration — a multi-dimensional specification system that makes the tonal inventory more complex than Vietnamese's six tones or Thai's five, despite the overall analytic-monosyllabic structure of the language being comparable to its neighbors.
+
+What is particularly distinctive about Hmong-Mien tone relative to most other tonal languages is the degree to which **tone functions as morphology**. In White Hmong, tonal alternations encode derivational relationships — the causative form of a verb differs from the basic form by tone rather than by the addition of a derivational affix. Similarly, some aspect distinctions are encoded through tone alternation rather than through free particles or affixes. This **tonal morphology** makes Hmong-Mien languages a special case in typological terms: they are analytic in their segmental morphology (no inflectional affixes) but employ tone as a morphological category in ways that give the system a synthetic dimension through the prosodic rather than segmental level.
+
+The **Romanized Popular Alphabet (RPA)** — the most widely used orthography for White Hmong in diaspora communities — encodes tones through a convention that is typographically unusual: tone is marked by a **final consonant letter** that appears at the end of every syllable regardless of whether the syllable has a phonological coda consonant. The eight tone letters in RPA are *b, m, j, v, s, g, d* (high tone is unmarked). A syllable like *paj* means "flower" with Tone *j* (high falling); *pab* means "to help" with Tone *b* (high level); *pam* means "blanket" with Tone *m* (high rising). The convention is confusing to readers who interpret final consonant letters as encoding final consonants rather than tones, but it was practical for typewriters and early printing technology that lacked diacritical marks, and it has been maintained through the decades of diaspora literacy development.
+
+An alternative indigenous script — **Pahawh Hmong** (*Phaj Hauj Hmoob*) — was developed by Shong Lue Yang between 1959 and 1971 in the highland communities of Laos, where he transmitted it through community education networks before being assassinated in 1971. Pahawh Hmong encodes vowels and tones as primary symbols, with consonants represented as secondary diacritics — an inversion of the usual alphabetic convention in which consonants are primary. This distinctive design reflects Shong Lue Yang's analysis of Hmong syllable structure as organized around its vocalic-tonal nucleus. Pahawh Hmong has been maintained by community members in diaspora and is used alongside RPA in Hmong cultural and religious contexts, representing one of the most culturally significant examples of an indigenous script invention in the 20th century.
+
+---
+
+### Zhuang: The Largest Tai-Kadai Language
+
+**Zhuang** — spoken by approximately 16 million people in the Guangxi Zhuang Autonomous Region of China and neighboring provinces — is both the most widely spoken Tai-Kadai language and one of the least known outside China, despite its demographic significance. Zhuang varieties form a dialect continuum with considerable internal diversity; the Chinese government has standardized a written form of Northern Zhuang using a Latin alphabet designed in the 1950s (revised in 1982), though actual use of the standardized written form is limited and most written communication by Zhuang speakers uses Chinese characters.
+
+Before the Latin-based standardization, some Zhuang communities used a traditional writing system of Chinese character adaptations (*Sawndip*) — comparable in its organizational principle to Vietnamese Chữ Nôm and to Japanese man'yōgana. Sawndip combined Chinese characters for their phonological value, semantic value, or as phono-semantic compounds to represent Zhuang words that had no Chinese equivalent. The Sawndip tradition dates to at least the Song dynasty and continued in religious and ritual contexts into the 20th century; it is not mutually readable with standard Chinese characters without specialized training.
+
+The Zhuang case illustrates a broader phenomenon in the Tai-Kadai family: many of its members, including the largest by speaker count, have been absorbed into the administrative and educational structures of surrounding nation-states (China, Vietnam, Myanmar) in ways that have suppressed literacy development in the heritage language while maintaining the spoken language in family and community contexts. The resulting sociolinguistic situation — where a language with millions of speakers has limited formal writing infrastructure and minimal presence in formal education — is common across the Tai-Kadai world outside Thailand and Laos.
+
+---
+
+### Academic Controversies
+
+The **Kra-Dai vs. Tai-Kadai** terminological debate reflects a genuine classificatory disagreement. "Tai-Kadai" places the most recently expanding and most demographically prominent branch (Tai) at the head of the name, potentially misrepresenting the family's internal structure. Laurent Sagart's analysis suggests that the Kra branch (previously called Kadai) may be one of the deepest-branching nodes of the family, implying that re-centering the name around the internal structure rather than the most-studied branch would better reflect the genealogical reality. The renaming to "Kra-Dai" has gained ground in specialist literature but has not yet displaced "Tai-Kadai" in general usage.
+
+The **relationship between Tai-Kadai and Hmong-Mien** has been proposed as a possible genealogical grouping — some analyses suggest shared features that could reflect common ancestry rather than areal contact. The evidence is currently insufficient for a consensus; the shared MSEA typological profile makes it difficult to distinguish inherited from contact-derived features in the two families.
+
+The **Austro-Tai hypothesis** — Benedict's proposal that Tai-Kadai and Austronesian are related — is perhaps the most consequential unresolved hypothesis about these families' external relationships. If valid, it would unite two of the world's largest language families (Austronesian has approximately 1,200 languages) in a macro-grouping of extraordinary scope. The shared lexical items include basic vocabulary items and morphological elements whose distribution across the two families is difficult to explain by contact alone. The challenge is that the Austronesian expansion into island Southeast Asia and the Pacific would have separated the two branches early enough that regular correspondences may be difficult to identify through standard methods — the usual limitation of macro-comparative proposals.
+
+---
+
+### Annotated Examples
+
+```
+(TK1) Bangkok Thai — five tones in minimal quintet
+ขา  (khǎa, rising tone)   — leg
+ข่า  (khàa, low tone)     — galangal (a spice)
+ข้า  (khâa, falling tone)  — servant/slave (archaic, self-reference)
+ขา  (khaa, mid tone)     — (part of compound: to trade)
+ข๋า  (kháa, high tone)    — (rare, dialectal variant)
+
+(TK2) Thai — serial verb construction with directionals
+เขา  เดิน  เข้า  มา  ใน  ห้อง
+3SG  walk  enter come in  room
+'He walked into the room.' (walk + enter + come = manner + direction + orientation)
+
+เอา  ของ  ไป  ให้  แม่
+take thing go  give mother
+'Take the thing and give it to mother.' (take + go + give = action chain)
+
+(TK3) Thai — gendered sentence-final particles
+ผม  ไป  ตลาด  ครับ    (male speaker — khrap marks politeness + male gender)
+1SG  go  market  POL.MALE
+'I'm going to the market.' (said by a man)
+
+ฉัน  ไป  ตลาด  ค่ะ    (female speaker — kha marks politeness + female gender)
+1SG  go  market  POL.FEM
+'I'm going to the market.' (said by a woman)
+
+(HM1) White Hmong — tones and tonal morphology (RPA encoding)
+paj  (Tone j, high falling) — flower
+pab  (Tone b, high level)  — to help
+pam  (Tone m, high rising) — blanket
+pas  (Tone s, low level)   — pond/lake
+pav  (Tone v, mid rising)  — to tell/narrate
+(same consonants and vowel; tone encoded as final letter in RPA; each is a different lexical item)
+
+(HM2) White Hmong — tonal morphology (causative tone alternation)
+tuag  (die, intransitive)
+tua   (kill, causative — tone change from falling to level encodes causativity)
+noj   (eat, basic)
+no    (feed/cause to eat — tonal morphological derivation)
+
+(HM3) Hmong — analytic syntax with classifier
+kuv  yuav  ib  phau  ntawv
+1SG  buy   one CLF   book/paper
+'I will buy a book.' (kuv=1SG; yuav=future/will; ib=one; phau=classifier for bound items)
+```
+
+---
+
+**Thought-provoking questions**
+
+- The Thai script encodes the historical three-register distinction of proto-Tai through its three-class consonant system, even though the spoken language has reorganized these distinctions into a five-tone system. This means the script preserves phonological information about a stage of the language that no longer exists synchronically. Is this kind of "archaeological" information preserved in an orthographic system a resource — enabling historical reconstruction, connecting literate users to the language's history — or a cognitive burden that makes the script unnecessarily complex? Could Thai literacy benefit from an orthographic reform that encoded the synchronic five-tone system more directly?
+
+- Pahawh Hmong encodes vowels and tones as primary symbols, with consonants as secondary diacritics — an inversion of the standard alphabetic convention. Shong Lue Yang apparently arrived at this design through analysis of Hmong syllable structure, concluding that the tonal-vocalic nucleus was the primary unit and the consonant onset was secondary. Is Pahawh Hmong's design linguistically better suited to Hmong than the RPA? What criteria should determine whether a writing system is "better suited" to a language — phonological faithfulness, learner accessibility, community acceptance, or something else?
+
+- Tone in Hmong-Mien languages functions as morphology — encoding derivational relationships (causative, aspect) through tonal alternation rather than affixation. This means Hmong-Mien languages are simultaneously analytic (no segmental affixes) and morphologically productive (through tonal alternation). Does tonal morphology constitute a genuinely different type of morphological organization from both the analytic and synthetic types identified in Chapter 2, or is it simply a non-segmental instantiation of the same principles? Should the morphological typology framework be extended to accommodate tonal morphology as a distinct dimension?
+
+- The Zhuang people represent approximately 16 million speakers of the largest Tai-Kadai language — yet Zhuang languages are poorly known outside China, have limited formal writing infrastructure despite a standardized script, and receive minimal representation in education and official communication in the regions where they are spoken. By contrast, Thai and Lao — much smaller by speaker count — are the official languages of nation-states with full literary and educational infrastructure. What does the Zhuang case suggest about the relationship between a language's demographic size and its institutional vitality? Is it accurate to describe Zhuang as "endangered" given its 16 million speakers, or does the concept of endangerment need to encompass something beyond raw speaker counts?
+
+## Chapter 15 · Austronesian — Voice Systems and Pacific Dispersal
+
+The Austronesian family is, by number of languages, one of the two or three largest genealogical families in the world — Glottolog lists approximately 1,276 languages, spread across a geographic range that extends from Madagascar in the Indian Ocean to Hawaii and Easter Island (Rapa Nui) in the Pacific, covering a territory of roughly 206 degrees of longitude. This dispersal, accomplished without writing, without metal tools in most regions, and without any of the navigational technologies of early modern European seafaring, represents one of the most extraordinary feats of human migration in the archaeological record. Understanding the Austronesian family requires understanding both this dispersal and the structural diversity it produced: from the polysyllabic, morphologically elaborate languages of the Philippine highlands to the monosyllabic-tendency of some Oceanic languages, from the elaborate voice morphology of Tagalog to the analytic simplicity of Malay, from the VOS word order of Malagasy to the verb-initial orders of Hawaiian.
+
+At the core of what makes Austronesian typologically distinctive — and theoretically important — is the **Philippine-type voice system**, a morphological mechanism by which the verb encodes which semantic role of the clause is grammatically prominent, producing an alignment system that challenges standard nominative-accusative and ergative-absolutive categories and has generated sustained theoretical controversy about the nature of grammatical relations. This system, distributed across Philippine languages and related languages of Taiwan and Indonesia, is not an exotic peripheral feature but the defining structural characteristic of what may be the most tightly cohesive subgroup within the family.
+
+---
+
+### The Out of Taiwan Hypothesis and the Genealogical Structure
+
+The **Out of Taiwan hypothesis** — now the dominant account of Austronesian origins in both linguistics and genetics — proposes that the family originated in Taiwan approximately 4,000–3,500 years ago, from populations associated with the Neolithic Dapenkeng culture, and expanded southward through the Philippines and Indonesia before branching into the Pacific and westward into the Indian Ocean. The hypothesis rests on two primary lines of linguistic evidence.
+
+First, the **Formosan languages** — the indigenous languages of Taiwan, of which approximately 16 are still spoken — occupy the deepest branches of the Austronesian family tree. Robert Blust's subgrouping of Austronesian identifies nine of the ten primary nodes of the family as Formosan — meaning that nine of the ten deepest genealogical splits in Austronesian separate Formosan languages from each other or from the rest of the family. Only one primary node — **Malayo-Polynesian** — contains all the non-Formosan Austronesian languages (the languages of the Philippines, Indonesia, the Pacific, and Madagascar). This distribution — nine deep branches in Taiwan, one extremely diverse branch everywhere else — is precisely what would be expected if the family originated in Taiwan and expanded outward: the greatest diversity accumulates in the homeland, while the dispersed branch retains fewer internal divisions because the expansion pruned variation through founder effects.
+
+Second, the **Proto-Malayo-Polynesian lexicon** — the reconstructed vocabulary of the ancestor of all non-Formosan Austronesian languages — includes terms for outrigger canoes, sailing, open-ocean navigation, and island agriculture that are consistent with a maritime expansion through island Southeast Asia and into the Pacific. The reconstruction of Proto-Oceanic — the ancestor of the Oceanic branch that covers most of the Pacific — similarly includes vocabulary for long-distance sailing, fish species, and agricultural plants consistent with the Lapita cultural complex (c. 1600–500 BCE) associated archaeologically with the settlement of Melanesia and western Polynesia.
+
+> The **Lapita cultural complex**, named for a site in New Caledonia, is characterized archaeologically by a distinctive dentate-stamped pottery tradition and by the presence of domesticated pigs, dogs, and chickens alongside horticulture. Lapita sites are found across a chain from the Bismarck Archipelago through Vanuatu, New Caledonia, Fiji, Samoa, and Tonga, tracing the path of Austronesian-speaking populations moving into previously uninhabited or sparsely inhabited Pacific islands. The linguistic evidence for Austronesian expansion is remarkably consistent with the Lapita archaeological record — one of the few cases in Oceanic prehistory where linguistic and archaeological lines of evidence converge on the same trajectory.
+
+The **settlement of Madagascar** — the westernmost Austronesian territory, located approximately 400 kilometers off the east coast of Africa — is one of the most remarkable individual events in this dispersal. Genetic and linguistic evidence indicates that the ancestors of the Malagasy people came from Borneo, specifically from the region of the Ma'anyan-speaking Dayak communities of southeastern Borneo, arriving in Madagascar sometime between 400 and 800 CE. The linguistic connection is preserved in core Malagasy vocabulary and grammatical morphology that shows clear Malayo-Polynesian affinities — demonstrating that Austronesian speakers crossed the entire Indian Ocean directly from Borneo to Madagascar, a distance of approximately 6,500 kilometers, without leaving detectable Austronesian linguistic traces along the way on the South Asian or East African coastlines through which they apparently passed.
+
+---
+
+### Indonesian and Malay: The Accessible Surface and Its Hidden Depth
+
+**Indonesian** (*Bahasa Indonesia*) and **Malay** (*Bahasa Melayu*) are mutually intelligible varieties of the same language — separated primarily by national standardization processes, different contact histories with Dutch (for Indonesian) and English (for Malaysian and Brunei Malay), and some vocabulary differences reflecting different colonial and religious histories. Standard Indonesian, declared as the national language of the Indonesian Republic upon independence in 1945, was based on the Riau-Johor form of Malay rather than on Javanese (the most widely spoken indigenous language of Java) — a politically motivated choice designed to avoid privileging the demographically dominant Javanese at the expense of the hundreds of other language communities within the new nation.
+
+The choice of Malay as the basis for Indonesian was facilitated by Malay's historical role as the *lingua franca* of maritime trade across the Indonesian archipelago and the Malay peninsula for centuries before European colonization. Classical Malay — the prestige literary form associated with the Malacca Sultanate (15th century CE) and subsequent Malay kingdoms — had already developed a tradition of standardized usage and literary convention that provided a foundation for the modern national standard.
+
+Colloquial Indonesian — the everyday spoken form used in urban centers — differs substantially from Standard Indonesian in morphological elaboration, vocabulary, and discourse conventions. The systematic relationship between formal/written Indonesian and colloquial spoken Indonesian has been described by some scholars as a mild diglossia: both varieties are called "Indonesian," but their morphological profiles differ markedly, with colloquial forms omitting prefixes, using shorter word forms, and incorporating Jakarta dialect features not found in the written standard.
+
+The surface accessibility of Indonesian for learners from European backgrounds is genuine: no grammatical gender, no case morphology, no verb agreement, no obligatory tense marking, SVO order with few exceptions, and a core vocabulary that is phonologically transparent given the Romanized orthography. But Indonesian's complexity is concentrated in its **derivational morphology** — one of the most productive and systematically organized derivational systems in any well-described language:
+
+The **meN-** prefix (with allomorphs *me-, mem-, men-, meng-, meny-, me-* conditioned by the initial consonant of the base) derives active transitive verbs and marks the agent as the pragmatically prominent participant:
+
+```
+baca    (read — base)         → membaca    (to read — active)
+tulis   (write — base)        → menulis    (to write — active)
+beli    (buy — base)          → membeli    (to buy — active)
+pakai   (use/wear — base)     → memakai    (to use/wear — active)
+```
+
+The **di-** prefix derives passive verbs, marking the patient as the pragmatically prominent participant:
+```
+dibaca  (be read — passive)
+ditulis (be written — passive)
+dibeli  (be bought — passive)
+```
+
+The **-kan** suffix derives causative or benefactive transitive verbs:
+```
+bacakan   (read [something] for [someone] — benefactive)
+tuliskan  (write [something] for [someone] — benefactive)
+belikan   (buy [something] for [someone] — benefactive/causative)
+```
+
+The **-i** suffix derives verbs with a directional or intensive meaning focused on the locative or patient:
+```
+bacai     (read thoroughly/repeatedly)
+tulisi    (write on [a surface])
+```
+
+The **ber-** prefix derives intransitive or stative verbs and some reciprocal constructions:
+```
+berbicara  (to speak — ber- + bicara "speech")
+berlari    (to run — ber- + lari "run")
+berjalan   (to walk — ber- + jalan "road/walk")
+bertemu    (to meet each other — ber- + temu "meet")
+```
+
+The interaction among these affixes — particularly the active *meN-* versus passive *di-* alternation — is one of the most thoroughly analyzed dimensions of Indonesian grammar. The *meN-/di-* alternation is not simply an active/passive in the European sense: both forms are grammatically well-formed in their appropriate discourse contexts, and the choice between them reflects the speaker's assessment of which participant — agent or patient — is the discourse topic or pragmatically prominent participant at that point in the text. In formal written Indonesian, the passive *di-* form is actually more frequent than the active *meN-* form in many text types — a surprising inversion for learners from European languages who approach the passive as a marked, less common construction.
+
+**Reduplication** in Indonesian is productive at multiple levels: full reduplication (*buku-buku* "books" — plural of *buku*), partial reduplication (*lelaki* from *laki* "man" — now a separate lexical item), and reduplication with morphological affixes (*bermain-main* "to play around" — with *ber-* prefix on the reduplicated base). The plurality-encoding full reduplication is particularly notable: Indonesian has no obligatory singular/plural distinction on nouns, but reduplication provides an optional mechanism for marking plurality when relevant. The ambiguity of non-reduplicated nouns (*buku* can mean "book" or "books") is resolved by context rather than obligatory morphological specification — a characteristic feature of the analytic profile.
+
+---
+
+### Tagalog and the Philippine-Type Voice System
+
+**Tagalog** — the basis of Filipino, the national language of the Philippines — is spoken natively by approximately 28 million people and as a second language by a large additional population within the Philippines. It is the language whose grammatical system has most thoroughly challenged the received categories of syntactic theory, primarily through the **voice system** that distributes grammatical prominence across the semantic roles of the clause through systematic alternation of verb morphology.
+
+The Philippine-type voice system operates on a principle stated in Chapter 3 and developed here in detail: the verb morphology specifies which semantic role — agent, patient, beneficiary, instrument, or location — is the **pivot** argument, marked by the nominative case particle *ang* (as opposed to the genitive/oblique *ng* or the locative *sa*). The pivot argument is not simply the grammatical subject — its identification depends on the voice morphology of the verb, and the same proposition can be expressed with different pivot arguments by changing the verb's voice morphology:
+
+```
+B<um>ili  ang lalaki  ng isda  sa tindahan.
+<AV>buy   NOM man    GEN fish  LOC store
+'The man bought fish at the store.' (ACTOR VOICE — actor/agent is pivot)
+
+B<in>ili  ng lalaki  ang isda  sa tindahan.
+<PV>buy   GEN man   NOM fish  LOC store
+'The man bought the fish at the store.' (PATIENT VOICE — patient is pivot)
+
+B<in>ilh-an  ng lalaki  ng isda  ang tindahan.
+<LV>buy-LV   GEN man   GEN fish  NOM store
+'The man bought fish at the store.' (LOCATIVE VOICE — location is pivot)
+
+I-b<in>ili  ng lalaki  ang isda  sa tindahan.
+BEN-<BV>buy  GEN man   NOM fish  LOC store
+'The man bought the fish [for someone/as the benefit].' (BENEFACTIVE VOICE — benefactive is pivot)
+```
+
+In all four sentences, the same event — a man buying fish at a store — is expressed. What changes with each voice morpheme is which argument takes the nominative *ang* marker: the man (actor voice), the fish (patient voice), the store (locative voice), or a beneficiary of the buying (benefactive voice). The *ng*-marked arguments in each version are not syntactically degraded in the way passive agents typically are in European languages — they remain core arguments, accessible to relativization and other syntactic operations, simply not occupying the pivot position.
+
+The **voice morphemes** in Tagalog are:
+- *um-* (infixed before the first vowel) or *mag-*: actor voice
+- *-in* (infixed) or *i-*: patient voice
+- *-an*: locative or benefactive voice
+- *i-*: benefactive or circumstantial voice (with some overlap)
+
+These morphemes are not merely aspect markers or passives — they constitute a systematic cross-classifying system that interacts with aspect morphology to produce a large paradigmatic space of voice-aspect combinations:
+
+```
+bumibili    (AV + imperfective — is buying, actor voice)
+bumili      (AV + perfective — bought, actor voice)
+binibili    (PV + imperfective — is being bought, patient voice)
+binili      (PV + perfective — was bought, patient voice)
+```
+
+The theoretical question that Philippine-type voice systems raise for syntactic theory is whether the *ang*-marked argument constitutes a "subject" in any universal sense. It shares several properties typically associated with subjecthood: it is the argument that must be relativized into relative clauses (only the pivot can be relativized in basic Tagalog relative clause constructions), it controls some anaphoric dependencies, and it occupies the most syntactically accessible position. But it can be the agent, patient, locative, or beneficiary — any semantic role — depending on the voice morphology. If "subject" means "most accessible core argument," then Tagalog has subjects; if it means "agent of a transitive clause in the basic active construction," then Tagalog's system distributes subjecthood more flexibly than European languages allow.
+
+Lawrence Reid, Paul Schachter, Sandra Chung, and many others have debated whether the pivot is better analyzed as a topic (a discourse-prominent argument rather than a syntactic subject), whether the system is better analyzed as symmetrical-voice ergativity, or whether it represents a genuinely novel alignment type. The debate remains active, with different theoretical frameworks (Role and Reference Grammar, Lexical-Functional Grammar, Minimalism) proposing different structural analyses that capture different aspects of the system's behavior.
+
+---
+
+### Malagasy: VOS at the Edge of Austronesian
+
+**Malagasy**, spoken by approximately 25 million people in Madagascar, is the westernmost member of the Austronesian family and one of the most typologically distinctive. Its genealogical affiliation with Austronesian — and specifically with the Malayo-Polynesian branch, closely related to the Ma'anyan languages of Borneo — is established by systematic lexical correspondences and shared morphological features, including a Philippine-type voice system that Malagasy shares with its Philippine and Indonesian relatives despite 6,500 kilometers of separation.
+
+What makes Malagasy particularly notable in typological terms is its **VOS word order** — Verb-Object-Subject — one of the rarest basic word orders crosslinguistically. In Malagasy, the verb appears first, the object (or patient-type argument) second, and the subject (or agent-type argument) in the sentence-final position:
+
+```
+Namaky  boky  ny  mpianatra.
+read.PST  book  DET  student
+'The student read a book.' (Verb + Object + Subject)
+
+Nividy  vary  ny  vehivavy.
+buy.PST  rice  DET  woman
+'The woman bought rice.' (Verb + Object + Subject)
+```
+
+The VOS order has been analyzed in connection with Malagasy's voice system: the sentence-final position is the canonical position of the *ang*-equivalent in Malagasy (marked by the article *ny*), and the voice system interacts with word order in ways that parallel the Philippine languages. VOS order in Malagasy means that the voice pivot — the most grammatically prominent argument, marked by *ny* — appears sentence-finally, in the position that many theories associate with topic or discourse-given information. The VOS order and the pivot-final tendency thus appear to be structurally connected rather than coincidental.
+
+Malagasy provides important evidence for the Out of Taiwan hypothesis because its vocabulary and morphology are transparently Austronesian in ways that allow historical linguists to place it precisely within the Malayo-Polynesian subgroup and to identify its closest relative as the Ma'anyan languages of Borneo. The presence of Bantu loanwords (from contact with African populations after arrival in Madagascar) and Arabic loanwords (from the Indian Ocean trade network) in Malagasy vocabulary reflects the complex contact history of an Austronesian language transplanted to the edge of the African continent.
+
+---
+
+### Javanese: Register as Sociology
+
+**Javanese** — spoken by approximately 82 million people, primarily in Java, Indonesia — is the most widely spoken Austronesian language after Malay/Indonesian and the language with the most elaborately stratified register system in the family. The Javanese **register system** (*tingkat tutur*, speech levels) distinguishes three primary registers — **Ngoko** (informal, used among intimates and to social inferiors), **Madya** (intermediate, semi-formal), and **Krama** (formal, used to social superiors and in ceremonial contexts) — with subdivisions within Krama distinguishing **Krama Biasa** (ordinary Krama) from **Krama Inggil** (elevated Krama, used for highly respected referents) and **Krama Andhap** (humble Krama, for self-reference in highly formal contexts).
+
+The registers differ not merely in vocabulary but in systematic lexical replacement across entire semantic domains. Core vocabulary items — body parts, basic verbs, kinship terms, everyday objects — have distinct forms in Ngoko and Krama:
+
+```
+Ngoko:     omah  (house)    →  Krama: griya / dalem (very high)
+Ngoko:     mangan (eat)     →  Krama: nedha / dhahar (high Krama Inggil)
+Ngoko:     turu  (sleep)    →  Krama: tilem / sare (high Krama Inggil)
+Ngoko:     aku   (I/me)     →  Krama: kula
+Ngoko:     kowe  (you)      →  Krama: panjenengan (very formal) / sampeyan (standard)
+```
+
+The Ngoko and Krama registers are sufficiently different in vocabulary that a sentence produced entirely in Krama Inggil is not fully comprehensible to a speaker who knows only Ngoko — the experience is comparable to encountering a text in which all basic vocabulary has been replaced by synonyms from a different etymological layer. Like Japanese keigo, the Javanese register system is not merely a politeness overlay but a grammaticalized social indexing system that shapes every lexical choice in formal interaction.
+
+The Javanese register system developed in the context of the hierarchical Javanese court culture of the Mataram kingdom (16th–18th centuries CE) and its successor polities, where extreme social stratification was reflected in and reinforced by linguistic practice. The system has been maintained into the contemporary period, though its use is reported to be declining among younger urban Javanese speakers who find the full three-register system difficult to master and less relevant to the more egalitarian social contexts of modern Indonesian urban life.
+
+---
+
+### Writing Systems of the Austronesian World
+
+The Austronesian family's geographic dispersal is reflected in its orthographic diversity: some Austronesian languages have ancient indigenous script traditions; others were written only after European contact in Roman-based orthographies; and several have no established writing tradition.
+
+**Baybayin** (also called *Alibata* in some traditions) — the pre-colonial script of the Philippine islands — is a Brahmi-derived abugida that was in use across much of the Philippines at the time of Spanish contact in the 16th century. Spanish colonial administrators and missionaries initially documented and used Baybayin before promoting the Latin alphabet for religious and administrative purposes; Baybayin was gradually displaced over the 17th and 18th centuries. Modern Philippine nationalism has revived Baybayin as a cultural symbol: it appears on Philippine currency, in tattoo culture, and in artistic contexts, though it is not a primary literary or administrative script.
+
+**Javanese Hanacaraka** (also called *Carakan*) is a Brahmi-derived abugida used for Javanese, Balinese, Sundanese, and related languages, with significant literature and documentary records from the medieval Javanese kingdoms. The Hanacaraka script is taught in Javanese cultural and educational institutions and used in traditional performing arts contexts, though everyday Javanese writing uses the Latin-based Indonesian orthography.
+
+**Jawi** — an Arabic-script adaptation for Malay — was the primary writing system of the Malay world from approximately the 14th century (with the spread of Islam through the Malay sultanates) through the colonial period. Jawi remains an official script in Malaysia and Brunei alongside the Latin-based Rumi script, with Jawi used for religious, traditional, and some official purposes. The coexistence of Jawi and Rumi in Malaysia creates a mild digraphia — two scripts for the same language, differentially associated with religious and secular contexts.
+
+The **Malagasy** writing system is Latin-based, established by the London Missionary Society in the 1820s with a remarkably phonologically transparent orthography that has been maintained with minor revisions. The Malagasy Latin orthography was one of the earliest standardized Romanized scripts in the region and enabled literacy development in Malagasy that preceded European colonization's full impact.
+
+---
+
+### Academic Controversies
+
+The **Philippine-type voice system** theoretical debate, described above, is the primary active controversy directly related to Austronesian linguistics with implications for general syntactic theory. The debate intersects with broader questions about the universality of the subject/object distinction and about whether "topic" and "subject" can be clearly distinguished in languages like Tagalog where the topical pivot is defined by morphological marking rather than by a fixed semantic role.
+
+The **subgrouping of Austronesian** — particularly the question of whether Formosan languages constitute a single "Formosan" subgroup or nine or more independent primary branches of the family — affects how the Out of Taiwan hypothesis is interpreted. If the Formosan languages represent multiple independent branches, then the internal diversity within Taiwan is even greater than the Out of Taiwan scenario requires, potentially suggesting that the Austronesian homeland was in Taiwan for a very long period before the Malayo-Polynesian expansion. If some Formosan languages form a Formosan node, the picture is somewhat simpler.
+
+The **relationship between Austronesian and other families** has generated several proposals: Benedict's Austro-Tai hypothesis (relating Austronesian to Tai-Kadai) and the more recent Austro-Asiatic-Tai-Kadai-Austronesian proposals for a super-family uniting several MSEA families. None has achieved the systematic correspondence evidence required for scholarly consensus, but the proposals reflect genuine typological and lexical similarities that demand explanation.
+
+---
+
+### Annotated Examples
+
+```
+(AN1) Indonesian — meN-/di- voice alternation
+Ayah    membaca    buku    itu.
+father  AV.read    book    DEM
+'Father read that book.' (actor focus — meN- prefix, father is agent and discourse topic)
+
+Buku    itu     dibaca   (oleh) ayah.
+book    DEM     PV.read  (by)   father
+'That book was read by father.' (patient focus — di- prefix, book is discourse topic)
+
+(AN2) Indonesian — reduplication and affixation
+anak-anak   bermain-main   di   halaman
+child-RED   ber-play-RED   in   yard
+'Children are playing around in the yard.' (full reduplication for plural anak; ber-RED for casual/prolonged activity)
+
+(AN3) Tagalog — voice system paradigm
+B<um>ili    ang  lalaki   ng  isda.
+<AV>buy     NOM  man      GEN fish
+'The man bought fish.' (actor voice — lalaki is pivot)
+
+B<in>ili    ng  lalaki   ang  isda.
+<PV>buy     GEN man      NOM  fish
+'The fish was bought by the man.' (patient voice — isda is pivot)
+
+Bilh-an     ng  lalaki   ng  pera   ang  tindahan.
+buy-LV      GEN man      GEN money  NOM  store
+'The man bought (something) at the store.' (locative voice — tindahan is pivot)
+
+(AN4) Malagasy — VOS order with voice alternation
+Namaky  boky  ny  mpianatra.
+read.PST  book  DET  student
+'The student read a book.' (VOS — verb + object + subject-final)
+
+Novakina  ny  mpianatra  ny  boky.
+read.PV.PST  DET student   DET book
+'The book was read by the student.' (patient voice — boky is now pivot, sentence-final)
+
+(AN5) Javanese — register alternation
+Ngoko:    Kowe  arep  mangan  apa?
+Krama:    Panjenengan  badhe  nedha  menapa?
+(2SG  want  eat  what — both meaning "What are you going to eat?")
+(kowe → panjenengan; arep → badhe; mangan → nedha; apa → menapa — full register vocabulary replacement)
+```
+
+---
+
+**Thought-provoking questions**
+
+- The Austronesian expansion reached Madagascar from Borneo — a distance of 6,500 kilometers — without leaving detectable Austronesian linguistic traces along the African coast or South Asian coastlines along the way. Modern genetics confirms the direct connection. Does the absence of intermediate Austronesian populations along the route suggest that the migration was genuinely non-stop maritime, or that intermediate settlements were made but subsequently lost through language shift? What evidence could in principle distinguish between these scenarios?
+
+- The Tagalog voice system distributes grammatical prominence across semantic roles through verb morphology, allowing the agent, patient, beneficiary, or location to be the pivot argument. European syntactic theory, developed primarily on the basis of nominative-accusative European languages, has struggled to accommodate this system within existing categories. Does the difficulty of accommodating the Philippine voice system within standard syntactic theory suggest a limitation of the theory — that it is insufficiently general — or does it suggest that the Philippine system is a special case that can be accommodated within existing categories through appropriate analysis? What would it mean for syntactic theory to be truly crosslinguistically adequate?
+
+- Indonesian was chosen as Indonesia's national language over Javanese — the most widely spoken indigenous language — partly to avoid privileging the most demographically dominant ethnic group. This political decision produced a national language that is a native language for a relatively small percentage of the population (primarily Malay-speaking communities of Sumatra and the coast) but a highly accessible second language for everyone. Is this a model for language planning in multilingual nations generally — choosing a minority language as the national standard to prevent majoritarian dominance — or are there specific features of the Indonesian situation that made this strategy viable and that would not transfer to other contexts?
+
+- Javanese's three-register system creates a situation where speaking to a social superior requires a substantially different vocabulary from speaking to a peer or inferior — to the point where Krama Inggil forms are not fully comprehensible to someone who knows only Ngoko. This system is reported to be declining among younger urban speakers who find it difficult to master. Does the decline of the Javanese register system represent a democratization of social interaction (removing the linguistic enforcement of hierarchical relationships) or a cultural loss (eliminating a sophisticated communicative technology for managing complex social situations)? Is this question answerable, or does it require a prior political commitment about the value of hierarchical social structures?
+
+## Chapter 17 · Uralic — Agglutination Without Gender in Northern Europe
+
+The Uralic languages occupy a peculiar position in the typological landscape of Europe: a family of agglutinative, case-rich languages embedded in a continent otherwise dominated by Indo-European, sharing none of IE's grammatical gender, fusional morphology, or common genealogical heritage, yet having coexisted with their IE neighbors for millennia in a contact relationship that has shaped their vocabularies profoundly while leaving their grammatical cores largely intact. Finnish, Hungarian, and Estonian are the three Uralic languages with the most international visibility — the first two by virtue of being national languages of European states, the third by virtue of its recent high-profile role in digital society — but the family extends far beyond these three to include the Sámi languages of Scandinavia and Russia, and a cluster of smaller languages across the Volga-Ural region (Mordvin/Erzya-Moksha, Mari, Udmurt, Komi) and Siberia (Nenets, Selkup, Nganasan, and others).
+
+The family's most typologically salient contribution to comparative linguistics is the demonstration that the package of properties associated with IE languages in European typology — grammatical gender, fusional morphology, nominative-accusative alignment with limited case marking — is not a European universal but a genealogically contingent cluster. Finnish has fifteen cases and no grammatical gender; Hungarian has the morphological complexity of an agglutinative language with eighteen cases (by some analyses) and two full verb conjugation paradigms conditioned by definiteness; both languages, surrounded by Germanic, Romance, and Slavic languages with binary or ternary gender systems, have coexisted for centuries with these neighbors without acquiring grammatical gender. This absence is not a deficiency — it is a structural choice, and its consequences for the functional organization of Uralic grammar are considerable.
+
+---
+
+### Genealogical Scope and the Diachronic Trajectory
+
+The Uralic family is established with solid comparative evidence: systematic sound correspondences in core vocabulary, shared morphological paradigms reconstructible to a proto-language, and a geographically coherent distribution consistent with expansion from a homeland in the Ural mountain region of western Siberia, conventionally dated to approximately 6,000–7,000 years ago. The internal subgrouping distinguishes two primary branches with reasonable confidence: **Finno-Ugric** (Finnish, Estonian, Sámi, Mordvin, Mari, Udmurt, Komi, and the Ugric subgroup of Hungarian, Khanty, and Mansi) and **Samoyedic** (Nenets, Nganasan, Selkup, and others). Within Finno-Ugric, the **Ugric** subgroup — uniting Hungarian with the Ob-Ugric languages (Khanty and Mansi) of western Siberia — is one of the most genealogically secure nodes in the family, supported by systematic morphological correspondences not shared with the Finnic-Sámi-Permic branches.
+
+The **Magyar migration** into the Carpathian basin in 895 CE is one of the most consequential demographic events in medieval European history. A Finno-Ugric-speaking pastoral people from the western Siberian steppe, the Magyars (ancestors of modern Hungarians) had spent centuries in the steppe environment in contact with Turkic-speaking (Bulgar Turkic, Pecheneg) and Iranian-speaking populations before moving westward into what is now the Hungarian plain. This migration brought an Ugric language into the heart of central Europe, where it has remained since, surrounded on all sides by Indo-European languages (German and Austrian German to the west, Slovak to the north, Ukrainian and Romanian to the east and southeast, Serbian and Croatian to the south) while maintaining its Uralic morphological core through a millennium of intense multilingual contact.
+
+The consequences of this sustained contact are visible in Hungarian's vocabulary: the language contains substantial layers of Slavic loanwords (from pre-migration and post-settlement contact), Latin borrowings (from the Catholic Church and medieval scholarly culture), German borrowings (from centuries of Habsburg rule), and Turkish borrowings (from 150 years of Ottoman occupation, 1541–1699). These lexical layers are stratified in time and domain — Slavic vocabulary dominates in farming, household, and religious domains; Turkish in certain food and material culture terms; German in technical and institutional domains. Despite this extensive lexical borrowing, Hungarian's morphological system — the case suffixes, the vowel harmony, the definite/indefinite verbal conjugation, the postpositional syntax — remained structurally Uralic throughout. The case shows the well-documented pattern observed earlier in the Altaic discussion: lexicon is highly permeable to contact influence; morphological structure is considerably more resistant.
+
+The **development of Finnish literacy** is closely associated with the Protestant Reformation and specifically with Mikael Agricola (c. 1510–1557), who produced the first Finnish-language publications including a prayer book (1543) and a translation of the New Testament (1548). Agricola's orthographic choices established many of the conventions of the Finnish writing system, and his work created the first substantial body of Finnish written literature. The 19th-century compilation of the **Kalevala** (1835, expanded 1849) by Elias Lönnrot — a collection and literary reconstruction of Finnish oral poetry in the alliterative trochaic meter of the folk tradition — gave Finnish literature a national epic comparable in cultural function to the Iliad or the Mahabharata, and played a central role in Finnish national consciousness during the period of Russian imperial rule.
+
+---
+
+### Writing Systems
+
+All three major Uralic languages of Europe use Latin-based alphabets designed for their specific phonological systems.
+
+**Finnish** orthography is among the most phonologically transparent alphabets in use for any major language: each phoneme corresponds to exactly one letter, and each letter to exactly one phoneme, with length indicated by doubling (short *a* vs. long *aa*; single consonant *k* vs. geminate *kk*). The front vowels *ä* and *ö* require letters not found in the basic Latin alphabet, added as standard diacritical modifications. The phoneme-to-grapheme correspondence is so precise that Finnish children learn to read in a fraction of the time required for English literacy — a difference that has been extensively studied in reading research as evidence for the cognitive consequences of orthographic transparency.
+
+**Hungarian** orthography is less transparent than Finnish but follows systematic conventions: the digraphs *cs* (/tʃ/), *sz* (/s/), *zs* (/ʒ/), *ny* (/ɲ/), *gy* (/ɟ/), *ty* (/c/), and *ly* (/j/ in standard pronunciation) represent Hungarian phonemes with no Latin letter equivalent, using two-letter combinations that require learning but follow consistent rules. The system was developed primarily in the 17th and 18th centuries and has been largely stable since, despite the phonological changes in Hungarian that have created some divergences between spelling and pronunciation.
+
+**Estonian** orthography is similar to Finnish but adds the vowel *õ* for the unrounded mid-back vowel /ɤ/ absent from Finnish phonology, and differs in the representation of some consonants. Estonian's three-degree length distinction — short, long, and "overlong" for both vowels and consonants — creates a phonological system unusual among world languages, and the orthographic representation of these distinctions (short = single letter, long = double letter, overlong = also double letter but with different prosodic realization) requires contextual knowledge to fully represent.
+
+---
+
+### Finnish: The Spatial Case System
+
+Finnish has fifteen grammatical cases — a number that invariably produces expressions of dismay in learners encountering the language for the first time. The reaction is understandable but misplaced: Finnish's case system is not a collection of fifteen arbitrary morphological functions but a highly organized **spatial grammar** in which the relationships of physical space — interior, surface, vicinity — are encoded as systematically as the grammatical relations of subject and object.
+
+The cases organize into three semantic groups plus a set of grammatical and derivational cases:
+
+**Interior cases** (what is inside something):
+```
+talossa     (house-INESSIVE)    — in the house
+talosta     (house-ELATIVE)     — out of the house / from inside the house
+taloon      (house-ILLATIVE)    — into the house
+```
+
+**Surface/exterior cases** (what is on/near something):
+```
+talolla     (house-ADESSIVE)    — at/on the house / at someone's place
+talolta     (house-ABLATIVE)    — from the house (exterior) / from someone's place
+talolle     (house-ALLATIVE)    — to the house (exterior) / to someone's place
+```
+
+**General grammatical cases**:
+```
+talo        (house-NOMINATIVE)  — the house (subject)
+talon       (house-GENITIVE)    — of the house / the house (object in some contexts)
+taloa       (house-PARTITIVE)   — (some) house / partial/ongoing interaction
+taloksi     (house-TRANSLATIVE) — into a house / becoming a house
+talona      (house-ESSIVE)      — as a house / in the state/role of a house
+```
+
+**Peripheral cases**:
+```
+talotta     (house-ABESSIVE)    — without a house
+taloitta    (house-INSTRUCTIVE) — by means of houses (rare, limited contexts)
+taloineen   (house-COMITATIVE)  — with the house / together with the house
+```
+
+The organization is immediately apparent: the interior cases form a directionally opposed triplet (in / from inside / into); the surface cases form a parallel triplet (at/on / from surface / onto). The oppositions are systematic and productive: the same directional contrasts apply to all nouns, producing a consistent spatial grammar. Learning Finnish cases is not memorizing fifteen arbitrary functions but internalizing a spatial logic — once the interior/surface distinction and the static/source/goal directionality are understood, twelve of the fifteen cases follow from the system's internal logic.
+
+> The **partitive case** in Finnish is the most functionally unusual and the most discussed in the typological literature. It is used for: (1) objects of negative sentences (*en lue kirjaa* "I don't read the/a book" — partitive on *kirja*); (2) objects of ongoing actions without clear completion (*luen kirjaa* "I read/am reading the book" — partitive vs. *luin kirjan* "I read the book [completed]" — genitive/accusative); (3) mass nouns and uncountable quantities; (4) expressions of quantity. The partitive thus encodes a combination of negation, aspect (ongoing vs. completed), and mass/count — a convergence of functions that is unusual in a single case form. The aspect function of the partitive is one of the most distinctive features of Finnish grammar: Finnish encodes aspect partly through case selection on the object, producing a system where tense and aspect interact in ways that have no direct parallel in Indo-European languages.
+
+**Consonant gradation** in Finnish is a morphophonological process that alternates stops in the onset of non-final syllables based on whether the following syllable is open or closed. When a case suffix is added to a word, the syllable structure changes, and the consonant at the beginning of the stem's final syllable may "weaken" (voiceless stop becomes voiced or disappears):
+
+```
+kauppa  (shop, NOM.SG) — kaupan  (shop, GEN.SG): pp → p
+pukki   (goat, NOM.SG) — pukin   (goat, GEN.SG): kk → k
+tyttö   (girl, NOM.SG) — tytön   (girl, GEN.SG): tt → t
+leipä   (bread, NOM.SG) — leivän  (bread, GEN.SG): p → v
+```
+
+Consonant gradation interacts with case suffixation throughout the paradigm, producing alternating stem forms that must be learned as part of each noun's lexical entry. The system is systematic and productive — the rules are predictable from the phonological context — but its application requires tracking syllable structure through the entire word as suffixes are added and removed. For learners, gradation is one of the primary sources of apparent irregularity in Finnish noun paradigms: the stem of a word looks different in different cases because the consonant at the beginning of the final syllable alternates.
+
+The **negative auxiliary** in Finnish is one of the most typologically unusual features of the language relative to European norms. Finnish negation uses a dedicated negative verb (*ei*, inflected for person and number: *en, et, ei, emme, ette, eivät*) that carries the person/number agreement, while the main verb appears in a special form (the connective/stem form) without agreement:
+
+```
+luen      kirjaa    (I read the book — positive; lue- + -n 1SG ending on main verb)
+en   lue  kirjaa    (I don't read the book — en = NEG.1SG; lue = stem without ending)
+et   lue  kirjaa    (you don't read — et = NEG.2SG)
+ei   lue  kirjaa    (s/he doesn't read — ei = NEG.3SG)
+emme lue  kirjaa    (we don't read — emme = NEG.1PL)
+```
+
+The negative auxiliary is conjugated for person and number as if it were itself the main verb; the actual main verb appears without person marking. This is a reversal of the European pattern, where the main verb carries agreement and negation is expressed through an invariant particle or auxiliary without agreement. The Finnish negative verb is sometimes cited as evidence for an earlier stage in which all finite verbs carried similar agreement and the negative was simply another member of the conjugation class — a hypothesis about Proto-Uralic verbal morphology that would make the negative auxiliary an archaic feature preserved in Finnish rather than an innovation.
+
+---
+
+### Hungarian: The Ugric Isolate in Central Europe
+
+Hungarian's structural profile has been shaped by the simultaneous pressure of its Uralic genealogical inheritance and its millennium of contact with the Indo-European languages surrounding it. The result is a language that is unambiguously Uralic in its morphological architecture — agglutinative, postpositional, with vowel harmony and a rich case system — while having absorbed enough lexical, phonological, and some structural influence from its neighbors to feel distinctively itself within the Uralic family.
+
+The Hungarian case system is analyzed differently by different scholars: traditional Hungarian grammar counts approximately twenty grammatical suffixes with case-like functions, while some typological analyses distinguish a core of approximately 18 cases plus several postpositional constructions. The most widely cited count is **18 cases** for the standard analysis. The spatial cases in Hungarian follow the same interior/exterior/near organization as Finnish, but with a different realization: Hungarian distinguishes three relations (at/in/near, into/onto/to, from/off/away from) across three spatial domains (inside, on the surface, near or possessed), producing a 3×3 matrix of nine spatial cases:
+
+```
+Interior:   -ban/-ben (inessive: in)
+             -ba/-be  (illative: into)
+             -ból/-ből (elative: out of)
+
+Surface:    -n/-on/-en/-ön (superessive: on)
+            -ra/-re  (sublative: onto)
+            -ról/-ről (delative: off/from the surface)
+
+Proximity:  -nál/-nél (adessive: at/near)
+            -hoz/-hez/-höz (allative: to/toward)
+            -tól/-től (ablative: from/away from)
+```
+
+The vowel harmony system conditions the alternation between front and back suffix variants throughout: *-ban* (back) vs. *-ben* (front), *-ból* (back) vs. *-ből* (front), and so on for every suffix pair. Once the back/front membership of a noun's root vowel is known, all suffix alternations are fully predictable — the harmony system functions as a productive phonological constraint that generates suffix shapes automatically from root vowel quality.
+
+The most typologically distinctive feature of Hungarian grammar — the one with no parallel in Finnish, Estonian, or most other languages — is the **definite/indefinite verbal conjugation**: Hungarian has two complete sets of verb endings for present and past tense, with the choice between them conditioned by the definiteness of the direct object:
+
+```
+Látok     egy  házat.    (I see a house — indefinite object: indefinite conjugation)
+see.INDEF  one  house.ACC
+
+Látom     a    házat.    (I see the house — definite object: definite conjugation)
+see.DEF   the  house.ACC
+
+Olvasok   könyvet.       (I read a/some book — indefinite conjugation)
+Olvasom   a    könyvet.  (I read the book — definite conjugation)
+```
+
+The distinction between *látok* (indefinite) and *látom* (definite) is not a voice alternation or a passive construction — both are active sentences with the same agent. The verbal morphology tracks the definiteness of the direct object, requiring the speaker to simultaneously encode in the verb agreement with the subject (person and number) and the definiteness specification of the object. This produces two full conjugation paradigms that must be learned in parallel, with the choice between them conditioned by a semantic/pragmatic property of the object rather than by a purely morphological feature.
+
+The definite conjugation also applies when the object is a second-person pronoun (téged, "you (ACC)") — a further specification suggesting that the definiteness tracking is better analyzed as specificity or identifiability tracking: the definite conjugation is used when the object is identifiable from context or discourse, whether or not it bears the definite article.
+
+---
+
+### Estonian: Length, Gradation, and Post-Soviet Resilience
+
+**Estonian** — spoken by approximately 1.1 million people in Estonia, with the country having maintained its language through Soviet occupation (1940–1991) and subsequently developed one of the world's most digital-friendly linguistic environments — shares with Finnish the basic Uralic morphological profile (agglutinative case system, vowel harmony in a reduced form, consonant gradation) while differing in several structural respects that reflect its separate historical development.
+
+Estonian's most typologically unusual feature is its **three-degree length distinction**: sounds in Estonian can be short (Q1), long (Q2), or "overlong" (Q3), a three-way contrast in both vowels and consonants. The overlong quantity (Q3) is associated with a distinctive prosodic pattern — a "broken" or "staccato" quality — that distinguishes it from the merely long (Q2). This three-way quantity distinction is extremely rare crosslinguistically and makes Estonian phonology one of the most unusual in the family:
+
+```
+lina  (Q1 vowel, short)  — flax/linen
+liina (Q2 vowel, long)   — town
+liina (Q3 vowel, overlong) — of the town (genitive) — same spelling, different prosodic realization
+```
+
+Estonian has also lost the vowel harmony distinction in many words through phonological change — a departure from the Finnish and Hungarian pattern that makes Estonian morphophonology somewhat less predictable from vowel root membership. The loss of harmony is not complete: some traces survive in suffix allomorphy, but it is significantly reduced compared to Finnish.
+
+---
+
+### Academic Controversies
+
+The **Uralic-Yukaghir hypothesis** proposes a genealogical relationship between Uralic and Yukaghir — two small Siberian languages spoken in northeastern Russia. The hypothesis, associated primarily with Ante Aikio and others, is based on a set of lexical and morphological correspondences that some specialists find persuasive and others attribute to ancient contact. If valid, the relationship would slightly expand the Uralic macro-family and provide additional evidence for the proto-language's Siberian homeland.
+
+The **internal subgrouping of Finno-Ugric** — specifically the validity of the Finno-Permic grouping (Finnish, Estonian, Sámi, Mordvin, Mari, Udmurt, Komi as a node exclusive of Ugric) versus the validity of a Finno-Sámi node (Finnish and Sámi as more closely related than either is to the Permic languages) — remains debated in the specialist literature. The implications for Proto-Uralic reconstruction are significant: the branching structure determines which innovations are attributable to which proto-language stage.
+
+The **Hungarian as a pure Uralic language** question has occasionally been raised in popular discourse (particularly by proponents of Sumerian-Hungarian and other speculative connections), but is not a genuine scholarly controversy: Hungarian's Uralic membership is as well-established as any family membership in linguistics. The popular misconception reflects a general tendency to treat "strange" languages as more mysterious than the comparative evidence warrants.
+
+---
+
+### Annotated Examples
+
+```
+(UR1) Finnish — case system demonstrating spatial organization
+Kirja  on  pöydällä.     (book is table-ADESSIVE — the book is ON the table)
+Kirja  on  pöydässä.     (book is table-INESSIVE — the book is IN/INSIDE the table [unusual])
+Panen  kirjan  pöydälle. (I put book table-ALLATIVE — I put the book ONTO the table)
+Otan  kirjan  pöydältä.  (I take book table-ABLATIVE — I take the book FROM the table)
+Panen  kirjan  pöytään.  (I put book table-ILLATIVE — I put the book INTO the table)
+
+(UR2) Finnish — negative auxiliary
+Luen    kirjaa.           (read.1SG book.PART — I (am) read(ing) the book)
+En  lue  kirjaa.          (NEG.1SG read book.PART — I don't read the book)
+Et  lue  kirjaa.          (NEG.2SG read — you don't read the book)
+Emme  lue  kirjaa.        (NEG.1PL read — we don't read the book)
+
+(UR3) Finnish — partitive case and aspect
+Luin   kirjan.            (read.PST.1SG book.GEN — I read the book [completed])
+Luin   kirjaa.            (read.PST.1SG book.PART — I was reading the book [ongoing/incomplete])
+Ostan  kirjaa.            (buy.1SG book.PART — I'm buying a/some book [ongoing])
+Ostin  kirjan.            (buy.PST.1SG book.GEN/ACC — I bought the book [completed])
+
+(UR4) Hungarian — definite vs. indefinite conjugation
+Látok    egy   házat.     (see.INDEF one house.ACC — I see a house)
+Látom    a     házat.     (see.DEF  the house.ACC — I see the house)
+Olvasok  könyvet.         (read.INDEF book.ACC — I read a/some book)
+Olvasom  a     könyvet.   (read.DEF  the book.ACC — I read the book)
+
+(UR5) Hungarian — vowel harmony in case suffixes
+ház   (house — back vowel root)
+házban (house-INESSIVE — back suffix -ban)
+házból (house-ELATIVE — back suffix -ból)
+háztól (house-ABLATIVE — back suffix -tól)
+
+kert  (garden — front vowel root)
+kertben (garden-INESSIVE — front suffix -ben)
+kertből (garden-ELATIVE — front suffix -ből)
+kerttől (garden-ABLATIVE — front suffix -től)
+```
+
+---
+
+**Thought-provoking questions**
+
+- Hungarian has been in sustained contact with Indo-European languages (Germanic, Slavic, Romance) for over a millennium, absorbing enormous numbers of loanwords from each contact language while maintaining its Uralic morphological core. Finnish has been in similar contact with Germanic (Swedish, particularly) and has similarly preserved its morphological structure while borrowing extensively in the lexicon. This pattern — lexical permeability combined with morphological resistance — appears to be a general property of agglutinative languages in contact with fusional ones, or perhaps a general property of morphological systems under contact pressure. What theoretical account best explains why morphological structure is more resistant to contact-induced change than vocabulary? Is it because morphological paradigms are acquired early and deeply entrenched, because the functional load of morphological systems makes them harder to replace without systemic disruption, or because learners of the contact language can use it without mastering its morphological categories while still borrowing its vocabulary?
+
+- The Finnish partitive case encodes a combination of negation context, aspect (ongoing vs. completed action), and mass/count distinction in a single morphological form. This convergence of functions in one case is typologically unusual — most languages distribute these functions across different grammatical categories (separate aspect markers, separate negation particles, separate countability marking). Does the convergence of functions in the Finnish partitive represent an efficient encoding — packing multiple related meanings into a single form — or an overloaded category that creates ambiguity? Is there a functional relationship among the three uses of the partitive that explains why they converged on a single form?
+
+- Hungarian has two complete verbal conjugation paradigms conditioned by the definiteness of the direct object — a grammatical category that encodes a semantic/pragmatic property of the object in the morphology of the verb. This is a cross-reference system of unusual type: most cross-reference systems encode the person and number of arguments (subject agreement, object agreement), while Hungarian's encodes the definiteness of the object. Is definiteness agreement better understood as a type of nominal classification agreement (definite vs. indefinite as a binary noun class system), as a pragmatic marking system (tracking identifiability in discourse), or as something sui generis that requires its own theoretical category?
+
+- Estonian has maintained its language and has developed a digital-language infrastructure that makes it one of the most technologically integrated small languages in the world — with e-government services, machine translation, and digital content production in Estonian despite having only 1.1 million speakers. Finnish, with approximately 5 million speakers, has similarly developed robust digital infrastructure. What conditions — political, economic, technological, and social — made the maintenance and digital development of these small Uralic languages possible in ways that have not been replicated for most of the world's other small languages? Are the Finnish and Estonian cases replicable models for language maintenance, or are they historically specific cases whose success depended on unique circumstances?
+## Chapter 18 · Languages of the Americas — Polysynthesis, Ergativity, and Indigenous Complexity
+
+The linguistic diversity of the Americas is, by any measure, extraordinary. Before European contact, the two continents were home to an estimated 300–400 independent language families — more genealogically distinct lineages than exist in all of Europe, Asia, and Africa combined. This diversity is itself a fact requiring explanation: it reflects the extreme antiquity of human habitation in the Americas (the first populations arrived from Siberia at least 15,000 years ago, with some evidence suggesting earlier arrivals), the subsequent isolation of many communities in geographically varied environments, and the absence of the large-scale demographic expansions — comparable to the Bantu or Austronesian or Indo-European expansions — that swept over earlier diversity in other continents. What remained at the moment of European contact was the accumulated product of fifteen or more millennia of independent linguistic development, organized into hundreds of genealogical groups at every level of structural diversity.
+
+The European contact and its aftermath represented a demographic catastrophe whose linguistic consequences are still unfolding. Population collapse through disease, warfare, enslavement, and deliberate cultural suppression destroyed the speaker communities of hundreds of languages and severely damaged hundreds more. The deliberate destruction of indigenous writing and oral archives — most notoriously, the burning of Mayan codices by the Spanish bishop Diego de Landa in Maní in 1562, who later wrote the most important surviving account of Mayan writing — eliminated irreplaceable records of indigenous intellectual and literary traditions. The subsequent centuries of colonial and national suppression of indigenous languages in educational, religious, and administrative contexts continued the damage. The current moment — in which indigenous language revitalization is recognized as a priority by international organizations, national governments, and communities — represents a turning point whose outcome will be determined by the success or failure of revitalization efforts in individual communities against the continued pressure of dominant national languages.
+
+---
+
+### The Diversity and Its Organization
+
+The Americas contain families at every scale: tiny families of two or three languages, medium families of dozens, and — arguably — larger macro-groupings whose genealogical status ranges from well-established to highly contested. The major established families include:
+
+**Uto-Aztecan** — approximately 30 languages spread from Idaho and Montana in the north through California, the American Southwest, and Mexico to Central America, including Nahuatl (the most widely spoken), Hopi, O'odham, Yaqui, Huichol, and Tarahumara. The family's geographic spread from the Great Basin to Mesoamerica reflects ancient migrations and represents one of the best-established genealogical units in North and Central America.
+
+**Mayan** — approximately 30 languages concentrated in the Yucatan Peninsula, Guatemala, Belize, and southern Mexico, including K'iche', Yucatec, Tzotzil, Tzeltal, Kaqchikel, Mam, and others. The Mayan family has one of the deepest and most extensively documented writing traditions in the Americas.
+
+**Algic** — the family that includes Algonquian (Plains Cree, Ojibwe, Mi'kmaq, Blackfoot, Cheyenne, and others) plus the linguistically distant Yurok and Wiyot of California. Algonquian languages are among the most extensively studied indigenous American languages, particularly for their elaborate morphological systems.
+
+**Na-Dene (Athabaskan-Eyak-Tlingit)** — the family including the Athabaskan languages (Navajo, Apache, Carrier, Chipewyan, Dene, and many others across western North America), Eyak (extinct), and Tlingit. Na-Dene languages are known for their highly complex verbal morphology.
+
+**Quechuan** — the family of Quechua languages, spoken by approximately 8–10 million people across the Andean region from Ecuador through Peru and Bolivia to northwestern Argentina. The most widely spoken indigenous American language family.
+
+**Eskimo-Aleut** — covering Aleut (Unangam Tunuu) and the Eskimoan languages (Yupik and Inuit varieties across Alaska, Canada, and Greenland), introduced in the source document and referenced in earlier chapters. Its polysynthetic profile was examined in Chapter 2.
+
+**Na-Dene and the Dene-Yeniseian connection** deserve special mention: the proposal by Edward Vajda (2010) that the Athabaskan-Eyak-Tlingit family is genealogically related to the Yeniseian family of central Siberia (specifically Ket and the now-extinct Yugh and other Yeniseian languages) is the most widely accepted macro-comparative proposal for the Americas in recent decades, supported by systematic lexical and morphological correspondences. The Dene-Yeniseian connection would unite a North American family with a Siberian one in a trans-Beringian genealogical grouping.
+
+> The **Amerind hypothesis**, proposed by Joseph Greenberg in his 1987 book *Language in the Americas*, claimed that the overwhelming majority of indigenous American languages — everything except Na-Dene and Eskimo-Aleut — descend from a single proto-language, "Proto-Amerind," spoken by a single founding population. The hypothesis was rejected by virtually all specialists in indigenous American linguistics on methodological grounds: Greenberg used **mass comparison** (comparing words from multiple languages simultaneously without the systematic sound-correspondence analysis required by the comparative method) rather than the established procedures of historical linguistics, and the proposed cognates do not meet the standards for demonstrating genealogical relationship. The rejection of Amerind is not a minority opinion — it is the consensus of the field. The Americas' linguistic diversity reflects genuinely independent genealogies, not a single deep family with high internal diversity.
+
+---
+
+### Classical Nahuatl and Its Modern Descendants
+
+**Classical Nahuatl** — the language of the Mexica (Aztec) Empire, the lingua franca of the Triple Alliance that dominated central Mexico at the time of Spanish contact in 1519 — is documented with unusual completeness for an indigenous American language of its period. Within decades of the conquest, Spanish missionaries recognized the importance of documenting Nahuatl: Fray Andrés de Olmos compiled the first systematic grammar in 1547; Fray Alonso de Molina produced a major dictionary in 1555 and 1571; and Fray Bernardino de Sahagún assembled the encyclopedic *Florentine Codex* (c. 1545–1575), a twelve-volume account of Aztec culture, history, and language that remains one of the most important ethnographic and linguistic documents of the pre-Columbian world.
+
+Classical Nahuatl is a **polysynthetic, agglutinative, and incorporating** language — a combination of morphological properties that produces words of considerable internal complexity. The most immediately striking feature for speakers of European languages is the verb's capacity to incorporate what would be separate noun phrases in European languages directly into the verb complex:
+
+```
+ni-c-chihua
+1SG-3SG.OBJ-make
+'I make it.'
+
+ni-tla-chihua
+1SG-INDEF.OBJ-make
+'I make things / I do something.'
+
+ni-cal-chihua
+1SG-house-make
+'I build a house / I am a house-maker.'
+(cal = house incorporated into the verb — noun incorporation)
+```
+
+The third example shows **noun incorporation**: the object noun *calli* (house, reduced to *cal-* in the incorporated form) becomes part of the verb complex, no longer appearing as a separate noun phrase. The resulting compound verb *nicalchihua* encodes agent (1SG), action (make/build), and object (house) in a single phonological word. Noun incorporation in Nahuatl is productive — any noun can in principle be incorporated — and it produces a characteristic pattern of "terse" expression that makes Classical Nahuatl prose stylistically dense.
+
+The Nahuatl verbal agreement system tracks both subject and object through the verb prefix complex:
+
+```
+ni-   mitz-  itta
+1SG-  2SG-   see
+'I see you.'
+
+ti-   nech-  itta
+2SG-  1SG-   see
+'You see me.'
+
+ni-   c-     itta
+1SG-  3SG-   see
+'I see him/her/it.'
+```
+
+Subject prefixes (*ni-* 1SG, *ti-* 2SG, *∅-* 3SG in most constructions, *ti-* 1PL, *an-* 2PL, *∅-* 3PL) and object prefixes (*nech-* 1SG, *mitz-* 2SG, *c-/qui-* 3SG, *tech-* 1PL, *mech-* 2PL, *quin-* 3PL) co-occur in the verb, producing a cross-reference system in which the verb simultaneously tracks the person and number of both its primary arguments.
+
+Nahuatl also has an extensive **applicative** system — verb extensions that introduce additional arguments (beneficiaries, instruments, locations) into the clause through morphological derivation rather than separate noun phrases — and a **directional/compound verb** system that encodes the trajectory of an action through combinations of motion and action verb stems. The richness of these derivational systems made Classical Nahuatl an unusually expressive language for complex event description, and the Aztec poetic tradition (*nahuatlahtolcozcatl*, the "jeweled necklace of Nahuatl speech") exploited these resources through elaborate parallel constructions, semantic doublets (*difrasismo*, the pairing of two metaphorical terms to express a single abstract concept), and formal rhetoric of considerable sophistication.
+
+Modern Nahuatl — the continuum of varieties spoken by approximately 1.5 million people in Mexico today, primarily in the states of Puebla, Veracruz, Hidalgo, and Guerrero — is structurally continuous with Classical Nahuatl but has undergone phonological changes, vocabulary replacement, and in many varieties substantial borrowing from Spanish. The spoken Nahuatl of today is not Classical Nahuatl any more than modern Italian is Classical Latin, but the structural continuity is real: a student who learns Classical Nahuatl has access to significant amounts of modern spoken Nahuatl vocabulary and grammar, and conversely, a speaker of modern Nahuatl can approach Classical texts with effort.
+
+---
+
+### Mayan Hieroglyphics and the K'iche' Family
+
+The **decipherment of Mayan hieroglyphics** is one of the great intellectual achievements of 20th-century humanities — a collaborative, decades-long process that combined epigraphic analysis, linguistic reconstruction, and archaeological evidence to recover the phonological and grammatical content of a writing system that had been entirely opaque to European readers since the Spanish destruction of most of the Mayan codex tradition.
+
+The Mayan script is a **logosyllabic** system: it uses logograms (signs representing whole morphemes directly) alongside syllabic signs (signs representing consonant-vowel syllables), with the two types freely combined in the same text. A word can be written entirely logographically, entirely syllabically, or in a combination where a logogram is followed by phonetic complements (syllabic signs spelling out part of the word's pronunciation to disambiguate among possible readings of the logogram). This combinatory freedom — the same word writable in multiple ways — was one of the primary obstacles to decipherment and was not understood until the Soviet scholar Yuri Knorozov proposed the syllabic principle in 1952.
+
+> The **Mayan decipherment** proceeded in several major steps: Knorozov's 1952 demonstration that the script had a syllabic component and that at least some signs represented CV syllables; Tatiana Proskouriakoff's 1960 demonstration that the dated inscriptions on Maya stelae recorded historical events (births, accessions, deaths of rulers) rather than astronomical or calendrical abstractions — overturning the dominant interpretation and opening the texts to historical reading; the identification of specific dynasties and rulers by David Kelley, Linda Schele, Peter Mathews, and others in the 1970s and 1980s; and the systematic compilation of the syllabic and logographic inventories through the work of many scholars. The decipherment is not complete — some signs remain unread — but the majority of Classic Maya texts (3rd–10th centuries CE) can now be read with reasonable confidence.
+
+The grammatical structure of Classical Maya — as reconstructible from the inscriptions and from the colonial-era documentation of Mayan languages — shows the features characteristic of the Mayan family generally: verb-initial order (VSO or VOS), ergative-absolutive alignment, aspect-prominent TAM system, and head-marking morphology.
+
+**K'iche'** (also written Quiché) — spoken by approximately 1 million people in the highlands of Guatemala — is the most widely spoken Mayan language and the language of the *Popol Vuh*, the great K'iche' Maya mythological narrative compiled in colonial Guatemalan alphabetic script around 1554–1558 from an earlier hieroglyphic or oral source. The *Popol Vuh* is often described as the most important surviving literary document of pre-Columbian Mesoamerica — a narrative of the creation of the world, the trials of the Hero Twins, and the origins of the K'iche' people, written in a language of remarkable literary sophistication.
+
+K'iche' grammar exemplifies Mayan structural features in a well-documented form. The alignment is **ergative-absolutive**, with a morphological distinction between the A set (ergative/transitive-subject markers) and B set (absolutive/intransitive-subject and transitive-object markers):
+
+```
+in-be       (I go — B-set 1SG marks intransitive subject: absolutive)
+in-tz'et-ej  (I am seen — B-set marks patient: absolutive)
+k-in-tz'et   (you see me — A-set 2SG on verb for transitive agent; B-set 1SG for patient)
+```
+
+The K'iche' verb also encodes aspect — the perfectivity/completeness of an action — through a set of status markers that interact with tense in ways that differ from the Indo-European tense/aspect distinction. The **status marker** (*-ik* incompletive, zero completive in many constructions) specifies whether the event is in progress or presented as a bounded whole, making aspect the primary temporal-grammatical dimension rather than tense.
+
+The interaction of ergativity with **extraction** in Mayan languages has generated extensive theoretical discussion. In K'iche' and several other Mayan languages, extracting an ergative (agent) argument out of a transitive clause — for example, to make a relative clause in which the relativized noun is the agent of a transitive verb — requires special morphological treatment, typically the use of a passivizing or antipassive construction that promotes the agent to absolutive status before extraction can proceed. This **syntactic ergativity** — ergativity that operates at the level of syntactic operations rather than merely morphological case marking — is theoretically significant because it suggests that ergativity can be not merely a morphological convention but a genuine syntactic constraint on clause structure.
+
+---
+
+### Navajo: The Verb as Clause
+
+**Navajo** (*Diné bizaad*) — spoken by approximately 170,000 people on the Navajo Nation in the American Southwest, the most widely spoken indigenous language in the United States — exemplifies the Na-Dene (Athabaskan) morphological profile in its most thoroughly described form. Its verbal morphology has been described as the most complex of any well-described language, and the claim, while difficult to quantify precisely, captures something genuinely true about the scale of Navajo's morphological organization.
+
+The Navajo verb is organized around a **template** — an ordered sequence of morphological positions, each of which is either obligatorily or optionally filled, producing a word of up to ten or more morpheme positions:
+
+```
+Position (simplified schema):
+Disjunct prefixes | Conjunct prefixes | STEM
+
+Disjunct positions (outer prefix zone):
+1. Postpositional object (encliticized postposition + object)
+2. Adverbial/distributive
+3. Plural
+
+Conjunct positions (inner prefix zone):
+4. Classifier (valency-changing: ∅, l-, d-, lh-)
+5. Object agreement (person/number)
+6. Deictic subject
+7. Mode/aspect
+8. Subject agreement (person/number)
+
+STEM (final position):
+9. Verb root (varies by aspect: perfective, imperfective, future, etc.)
+```
+
+A fully expanded Navajo verb form may fill six or more of these positions simultaneously:
+
+```
+nił-ts'os-i-sh-tah
+with.2SG-together-OBJ-1SG-PROG-learn
+'I am learning (it) along with you.'
+(nił = with-2SG postpositional object; ts'os = together/mutually; i = object; sh = 1SG subject; tah = learn.IMPERFECTIVE stem)
+```
+
+The **classifier** — the valency-modifying morpheme in position 4 — is one of the most discussed features of Athabaskan morphology. Four classifiers exist: *∅* (null, default intransitive/active transitive), *l-* (causative or transitivizing), *d-* (middle voice / reflexive / passive), and *lh-* (causative of the *d-* class). The classifier interacts with the verb stem to determine the transitivity and voice properties of the predicate. Learning Navajo requires internalizing the classifier-stem combinations for each verb — the classifier is not freely selectable but is a lexically specified property of each verb's semantics.
+
+The **verb stem alternation** by mode and aspect is another major dimension of Navajo morphological complexity. Each verb has a set of distinct stems for imperfective, perfective, future, optative, and iterative modes:
+
+```
+Verb: 'to go' (single subject walking)
+Imperfective stem: -yá (he/she goes, is going)
+Perfective stem: -yá (he/she went — same form in this verb; differs in other verbs)
+Future stem: -dooleeł (he/she will go)
+
+Verb: 'to give' (handling mushy/round objects)
+Imperfective stem: -'aah (gives, is giving)
+Perfective stem: -'á (gave)
+Future stem: -'ał (will give)
+```
+
+The stem alternations must be learned as part of each verb's lexical specification rather than derived by rule — they are, in effect, a suppletive aspect system encoded in the verb root rather than in prefixes. This means that Navajo vocabulary acquisition is inseparable from morphological paradigm acquisition: learning a verb requires learning its full mode-aspect stem set, not merely a single stem form.
+
+---
+
+### Algonquian: Discourse Grammar as Morphology
+
+The Algonquian languages — including Plains Cree, Ojibwe, Mi'kmaq, Blackfoot, Cheyenne, and Menominee, among others — constitute one of the world's most extensively studied polysynthetic language families and provide the paradigm cases for two typological phenomena discussed in Chapter 5: the **direct-inverse system** and the **proximate-obviative (obviation) reference-tracking system**.
+
+**Plains Cree** (*nêhiyawêwin*), spoken by approximately 80,000 people across the Canadian prairies, encodes both systems in its verbal morphology with a completeness that makes the Cree verb one of the most information-dense grammatical structures in any well-described language.
+
+The **animacy system** divides all Cree nouns into animate and inanimate — a classification that is partially semantically motivated (humans, animals, and some supernatural entities are animate; most objects are inanimate) but that extends to many objects whose animate classification is not predictable from their physical properties (certain berries, certain trees, shoes in some dialects, kettles, but not pots — classifications that reflect cultural and historical factors more than physical animacy). Animate nouns trigger animate agreement on verbs; inanimate nouns trigger inanimate agreement. This bipartite classification interacts with the **proximate-obviative** system:
+
+When two animate third-person participants are present in discourse, one is designated as **proximate** (the foregrounded, topical, or more prominent participant) and the other as **obviative** (the backgrounded, non-topical participant). All subsequent reference to these participants must maintain their proximate/obviative status through agreement morphology on the verb — the verb agreement simultaneously encodes the subject's and object's animacy (animate vs. inanimate), person (1st, 2nd, 3rd), and in the third person, their proximate or obviative status:
+
+```
+niwâpamâw          — I see him/her (proximate)
+niwâpamâwak        — I see them (proximate plural)
+niwâpamimâw        — I see him/her (obviative)
+```
+
+The **direct-inverse** alternation further encodes the relative position of the two participants on an animacy/salience hierarchy. When the agent outranks the patient on the hierarchy (speech-act participants > proximate > obviative), the verb takes the **direct** form; when the patient outranks the agent, the verb takes the **inverse** form:
+
+```
+ni-wâpam-â-w
+1SG-see-DIR-3SG
+'I see him/her.' (1SG agent > 3SG proximate patient: direct)
+
+ni-wâpam-ikw-w
+1SG-see-INV-3SG
+'He/she sees me.' (3SG proximate agent > 1SG patient: inverse)
+```
+
+The combination of these systems means that a single Cree verb form simultaneously encodes: the identity of subject and object (through agreement), the animacy of both, the proximate/obviative status of third-person participants, and the relative hierarchy position of agent and patient (direct/inverse). The verb is, in effect, a complete discourse-management device — tracking which participants are in play, which is currently foregrounded, and who is acting on whom — in a single morphological word.
+
+The **Cree syllabics** writing system, invented by Methodist missionary James Evans in 1840, uses a set of symbols whose orientation encodes vowel quality: each basic symbol represents a CV combination, and rotating the symbol 90° or 180° changes the vowel. Cree syllabics spread rapidly through indigenous communities across the Canadian subarctic — reportedly, some communities learned the system from other community members before any missionary arrived to teach it directly — and is still used by many Plains Cree and other Cree/Ojibwe communities today alongside Latin-based orthographies.
+
+---
+
+### Quechua: Andean Evidentiality
+
+**Quechua** — the family of languages descended from the lingua franca of the Inca Empire (*Qhichwa Simi*), now spoken by approximately 8–10 million people across Ecuador, Peru, Bolivia, and neighboring countries — is the largest indigenous language family of South America by speaker count. Its structural profile differs significantly from the North American polysynthetic languages discussed above: Quechua is agglutinative and SOV but not polysynthetic in the sense of incorporating clausal arguments into the verb; it has a rich case system, extensive derivational morphology, and a grammaticalized evidential system of considerable complexity.
+
+Quechua evidentiality distinguishes three primary information sources — direct sensory evidence (*-mi*), inference from physical evidence or reasoning (*-si*), and reportative hearsay (*-si* in many varieties, or a separate morpheme in others). These evidential clitics attach to the rhematically prominent element of the clause rather than obligatorily to the verb:
+
+```
+Para-mi    (rain-DIRECT EVID) — It's raining (I see/feel it directly)
+Para-si    (rain-REPORTATIVE) — It's raining (I was told / it is said)
+Para-cha-s  (rain-PROBABLY-EVID.INFER) — It's probably raining (I infer from evidence)
+```
+
+The placement of the evidential on the focused element rather than on the verb makes Quechua evidential morphology different from Turkish's verb-final evidential suffix and from Tibetan's clause-final evidential endings: in Quechua, the evidential is a clitic that can attach to any constituent, marking that constituent as both informatively prominent and evidentially specified. The interaction of evidential choice with discourse prominence — with what is being asserted as new information — makes Quechua evidentials a simultaneously epistemic and information-structural device.
+
+---
+
+### Academic Controversies
+
+The **Mayan decipherment's history** is itself a case study in sociology of knowledge: Knorozov's 1952 proposal of the syllabic principle was initially rejected or ignored by leading Western Mayanists, partly because Knorozov was a Soviet scholar working during the height of the Cold War and his article was published in a Soviet journal, and partly because the dominant interpretation (that Mayan writing was primarily astronomical and ceremonial rather than phonographic and historical) was strongly defended by influential scholars. The subsequent vindication of the syllabic-phonographic interpretation — now the foundation of all Mayan epigraphy — serves as a reminder that the sociology of academic disciplines can delay the adoption of correct analyses for reasons unrelated to the quality of the evidence.
+
+The **Dene-Yeniseian** connection — the proposed genealogical relationship between Na-Dene and the Yeniseian family of Siberia — is the most consequential recently accepted macro-comparative proposal in American linguistics. Unlike the Amerind hypothesis, Vajda's Dene-Yeniseian proposal meets the comparative method's standards: systematic sound correspondences in basic vocabulary, morphological parallels in verbal paradigms, and plausible historical scenarios for trans-Beringian population movement. The connection's acceptance by the community of specialists was notably quick by the standards of macro-comparative linguistics — a reflection of the quality of the evidence presented.
+
+---
+
+### Annotated Examples
+
+```
+(AM1) Classical Nahuatl — noun incorporation and polysynthesis
+Ni-c-chihua.
+1SG-3SG.OBJ-make
+'I make it.'
+
+Ni-cal-chihua.
+1SG-house-make
+'I build a house.' (cal = house incorporated into verb)
+
+Ni-tlaco-chihua.
+1SG-food-make
+'I prepare food.' (tlacatl = food, incorporated)
+
+(AM2) K'iche' Maya — ergative alignment and aspect
+X-0-in-tz'et.
+COMPL-ABS.3SG-ERG.1SG-see
+'I saw him/her.' (x = completive status; 0 = absolutive 3SG; in = ergative 1SG; tz'et = see.COMPL stem)
+
+K-in-tz'et-ik.
+INCOMPL-ABS.1SG-see-INCOMPL.STATUS
+'He/she sees me.' (k = incompletive status; in = absolutive 1SG patient; no overt ergative for 3SG agent)
+
+(AM3) Navajo — verb template
+Ashkii  bił  naashnish.
+boy    with.3SG  work.1SG.IMPF
+'I work with the boy.'
+(bił = with-3SG postpositional object in disjunct zone; naa- = about/around; sh = 1SG subject; nish = work.IMPERFECTIVE stem)
+
+(AM4) Plains Cree — direct-inverse system
+Ni-wâpam-â-w.
+1SG-see-DIR-3SG
+'I see him/her.' (1SG > 3SG proximate: direct form)
+
+Ni-wâpam-ik.
+1SG-see-INV
+'He/she sees me.' (3SG proximate > 1SG: inverse form — same verb root, inverse suffix)
+
+Wâpam-ê-w   atimwa   nâpêw-a.
+see-DIR-3    dog.OBV  man-PROX
+'The man sees the dog.' (man = proximate, dog = obviative; direct form because proximate acts on obviative)
+
+(AM5) Quechua — evidential clitics
+Pacha-lla-mi   para-sha-n.
+ground-just-DIRECT  rain-PROG-3SG
+'It is raining right now.' (I directly observe it — mi evidential on focused element)
+
+Pacha-lla-si   para-sha-n.
+ground-just-REPORTATIVE  rain-PROG-3SG
+'They say it is raining.' (I was told — si reportative evidential)
+```
+
+---
+
+**Thought-provoking questions**
+
+- The Mayan decipherment was significantly delayed by the Cold War geopolitics that led Western scholars to initially dismiss Knorozov's Soviet-published proposal, and by the prestige of established scholars who defended the non-phonographic interpretation. Science is supposed to be self-correcting, but the Mayan case shows that the correction can take decades. What institutional and sociological conditions are necessary for academic communities to adopt correct but politically inconvenient or professionally threatening analyses more rapidly? Is the delay in the Mayan case exceptional, or is it a general feature of paradigm-challenging discoveries in any field?
+
+- Navajo verb morphology encodes the subject, object, transitivity, voice, aspect, mode, and in many forms additional semantic information within a single polysynthetic verb word. This architectural choice concentrates grammatical information in the verb, making the noun phrase relatively grammatically simple while making the verb extraordinarily complex. From a cognitive processing standpoint, does this concentration create an advantage — everything needed to interpret a clause is available in the verb before the listener encounters the noun phrases — or a cost — the verb must be parsed before any argument can be interpreted? What does psycholinguistic research on parsing polysynthetic languages suggest about this question?
+
+- Classical Nahuatl was used as a **lingua franca** across the Aztec Empire — a role analogous to Latin in medieval Europe or Classical Arabic in the Islamic world. Like Latin, it was subsequently documented extensively in the colonial period and has been maintained as a literary and scholarly language. But unlike Latin, which has no native-speaker community, modern Nahuatl is spoken by approximately 1.5 million people with direct community continuity. Does this difference — between a pure literary/scholarly survival (Latin) and a community survival (modern Nahuatl) — create different obligations for linguists, historians, and educators engaging with these language traditions? What would it mean to study Classical Nahuatl in a way that respects its status as both a historical literary language and the ancestor of a living community language?
+
+- The Cree syllabics writing system reportedly spread from community to community across the Canadian subarctic faster than any missionary could have personally transmitted it — the system's elegance apparently made it learnable and teachable without institutional infrastructure. Does the speed of syllabics adoption suggest that the fit between a writing system's design and the phonological structure of its target language is the primary determinant of adoption success? Or are social network effects — the spread through trusted community members rather than outsiders — more important than the system's intrinsic properties? What does the comparison between syllabics adoption and the slower adoption of Latin-based orthographies in the same communities suggest?

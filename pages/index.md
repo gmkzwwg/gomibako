@@ -1,7 +1,7 @@
 ---
 layout: index
 title: ""
-abbreviation: JUNKYARD OS
+abbreviation: JUNKYARD
 show_title: true
 post_meta: false
 footer: false

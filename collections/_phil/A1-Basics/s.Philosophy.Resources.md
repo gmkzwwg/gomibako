@@ -4,8 +4,6 @@ categories: Sheet
 subclass: Basics
 ---
 
-# Philosophy Textbook Atlas
-
 ## Table 1 · Overview, Reference Works & Philosophical Method
 
 *Scope:* Serious entry points to the discipline (distinct from popular philosophy), the major reference works, methodological texts on philosophical writing and argument, philosophy's relation to neighbouring disciplines, and the meta-question of how to read the history of philosophy. Level tags: `[Introductory]` `[Self-Study]` `[Advanced]` `[Reference]` `[Evergreen]` `[Bridge]` `[Research]` `[Anthology]`.
