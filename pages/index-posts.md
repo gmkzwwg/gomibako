@@ -1,5 +1,6 @@
 ---
 layout: index-posts
+adhd_mode: false
 toc: false
 post_list_style: category-book
 post_meta_mode: none
@@ -23,4 +24,4 @@ permalink: /posts
 
 #### 为什么我如此缺少知识？
 
-#### 为什么我写得这么垃圾。不过，世界上也不缺在狗屁工作上内卷内耗的垃圾。
+#### 此处存在的全是垃圾。不过，世界也不缺一块在狗屁工作上内卷的垃圾

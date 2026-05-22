@@ -178,8 +178,11 @@
     border-top: 0;
     border-inline: 0;
   }
-
   .cli-header {
+    &__mode,
+    &__label {
+      display: none;
+    }
     &__actions {
       max-width: 70%;
     }

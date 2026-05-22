@@ -129,6 +129,7 @@ Valid modes: list | chart | compact | false | nil
 {% assign matrix_bg_text = site.ui.background.text | default: "01" %}
 {% endif %}
 
+{% assign adhd_mode_enabled = false %}
 {% if site.ui.features.adhd_mode and page.adhd_mode != false %}
 {% assign adhd_mode_enabled = true %}
 {% endif %}

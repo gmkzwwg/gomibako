@@ -74,6 +74,7 @@
 {% assign show_home_button = true %}
 {% endif %}
 
+{% assign adhd_mode_enabled = false %}
 {% if site.ui.features.adhd_mode and page.adhd_mode != false %}
 {% assign adhd_mode_enabled = true %}
 {% endif %}
@@ -140,7 +141,7 @@
       </li>
       {% endif %}
 
-      {% if page.adhd_mode_enabled != false %}
+      {% if adhd_mode_enabled %}
       <li class="cli-header__action cli-header__action--adhd-read-mode">
         <button
           class="cli-header__button is-active"

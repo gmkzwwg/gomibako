@@ -24,10 +24,10 @@ shell_menu:
     href: https://github.com/gmkzwwg
 ---
 
-`FATAL ERROR IN LIFE:`
+`LIFE SYSTEM FAILED SUCCESSFULLY:`
 
-*This is the private junkyard of [**gmkzwwg**](https://github.com/gmkzwwg).* ADHD-friendly design: Focus Not Found.
+This is the private junkyard of [**gmkzwwg**](https://github.com/gmkzwwg). *ADHD-friendly design: Focus Not Found. Click the ADHD button in the header to turn off ADHD mode.*
 
-*Please keep your expectations low; things here may be unfinished, strange, broken, or unnecessary. It is mostly a playground for a digital trash goblin hoards amusing themselves with experiments, notes, fragments, and useless debris.*
+Please keep your expectations low; things here may be unfinished, strange, broken, or unnecessary. It is mostly a playground for a digital trash goblin hoards amusing themselves with experiments, notes, fragments, and useless debris.
 
 *Enter at your own risk.*
