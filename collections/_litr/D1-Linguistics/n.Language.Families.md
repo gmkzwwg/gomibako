@@ -3604,3 +3604,521 @@ ground-just-REPORTATIVE  rain-PROG-3SG
 - Classical Nahuatl was used as a **lingua franca** across the Aztec Empire — a role analogous to Latin in medieval Europe or Classical Arabic in the Islamic world. Like Latin, it was subsequently documented extensively in the colonial period and has been maintained as a literary and scholarly language. But unlike Latin, which has no native-speaker community, modern Nahuatl is spoken by approximately 1.5 million people with direct community continuity. Does this difference — between a pure literary/scholarly survival (Latin) and a community survival (modern Nahuatl) — create different obligations for linguists, historians, and educators engaging with these language traditions? What would it mean to study Classical Nahuatl in a way that respects its status as both a historical literary language and the ancestor of a living community language?
 
 - The Cree syllabics writing system reportedly spread from community to community across the Canadian subarctic faster than any missionary could have personally transmitted it — the system's elegance apparently made it learnable and teachable without institutional infrastructure. Does the speed of syllabics adoption suggest that the fit between a writing system's design and the phonological structure of its target language is the primary determinant of adoption success? Or are social network effects — the spread through trusted community members rather than outsiders — more important than the system's intrinsic properties? What does the comparison between syllabics adoption and the slower adoption of Latin-based orthographies in the same communities suggest?
+
+## Chapter 19 · Papuan and Australian — Diversity at the Genetic Frontier
+
+The two regions examined in this chapter share a property that distinguishes them from every other area treated in these notes: both represent the accumulated product of human language diversification over timescales that dwarf those of the Indo-European or Bantu or Austronesian expansions. Australia has been continuously inhabited for at least 50,000 years — by far the longest documented continuous human occupation of any continent — and its approximately 250–300 language varieties at the time of European contact represent fifty millennia of independent linguistic development in geographic isolation from the rest of the world. New Guinea, separated from Australia by the Torres Strait and inhabited with similar antiquity, contains an estimated 800–900 languages — approximately one-eighth of all the world's languages — in a territory roughly the size of France and Germany combined. Both regions challenge, in different ways, the assumptions about language structure and language change that the preceding chapters have drawn primarily from better-documented families.
+
+A critical terminological distinction must be established at the outset. **"Papuan" is not a language family.** It is a negative label — the residual category of "non-Austronesian languages of New Guinea and surrounding islands" — that encompasses dozens of independent language families, numerous isolates, and at least one large proposed macro-family (Trans-New Guinea) whose genealogical validity is actively contested. Using "Papuan" as a typological category — as if all these languages share structural properties by virtue of their geographic location and non-Austronesian status — is methodologically equivalent to using "non-Indo-European" as a structural label. The diversity subsumed under "Papuan" is genuine and deep; the label masks rather than describes it.
+
+---
+
+### The New Guinea Situation: Diversity Without Parallel
+
+New Guinea's linguistic density is the product of its geography, its antiquity of habitation, and the particular social organization of its communities. The island's terrain — steep mountain valleys, dense rainforest, large river systems — created conditions of relative isolation among neighboring communities, enabling linguistic differentiation to proceed for tens of thousands of years without the large-scale demographic expansions (agricultural, pastoral, or imperial) that homogenized linguistic diversity elsewhere. The result is a situation in which communities separated by a single mountain ridge may speak mutually unintelligible languages belonging to entirely different language families, with no more structural resemblance than English and Japanese.
+
+The major proposed genealogical grouping for New Guinea is **Trans-New Guinea (TNG)** — a macro-family proposed by Stephen Wurm and subsequently advocated in modified form by Malcolm Ross and others — which would unite a substantial proportion of New Guinea's non-Austronesian languages in a single genealogical unit. If valid, TNG would be the largest language family in the world outside Niger-Congo and Austronesian. The hypothesis is based on a set of proposed shared morphological features — particularly pronoun forms and some verb morphology — and a body of lexical correspondences.
+
+> The **Trans-New Guinea hypothesis** is significantly more contested than most of the genealogical proposals discussed in these notes. The primary critique is that the proposed shared features may reflect areal diffusion through the extensive contact networks of New Guinea's communities rather than common inheritance, and that the sound correspondences proposed for the shared vocabulary do not meet the comparative method's standards of regularity. The current conservative position — adopted in Glottolog and in much specialist work — distinguishes a smaller "Nuclear Trans New Guinea" core whose genealogical coherence is better supported from a larger set of languages whose TNG membership requires further demonstration. This does not mean TNG is wrong; it means the evidence currently available is insufficient for confident affirmation.
+
+New Guinea's linguistic situation is further complicated by the presence of Austronesian languages along the coastlines, introduced by the Austronesian expansion approximately 3,500 years ago. The contact between Austronesian and non-Austronesian (Papuan) communities along these coastlines has produced extensive borrowing and some mixed languages, making the boundaries between the linguistic zones both geographically and genealogically complex.
+
+---
+
+### Typological Tendencies in Papuan Languages
+
+Given the extreme genealogical diversity of Papuan languages, any typological generalizations must be offered with considerable caution. What follows describes common patterns without implying that these patterns are universal or that they are genealogically inherited rather than aerally distributed.
+
+**Clause chaining** is one of the most widely attested structural features across diverse Papuan language families. Many Papuan languages distinguish between **medial verbs** (non-final verbs in a chain of sequential events) and **final verbs** (the last verb in a clause chain, which bears the full tense-aspect-mood specification). The medial verb forms typically carry information about the relationship between clauses — whether the subjects of successive clauses are the same or different (switch-reference), whether the events are simultaneous or sequential, and other clause-linking information — while deferring the full TAM specification to the final verb:
+
+```
+Enga-type (schematic):
+mena  pe-ng-a,        kaeya  mand-oto    ya-ao
+pig   kill-SS.SEQ-3SG  garden fence-3SG  go-FINAL.PST
+'Having killed the pig, he fenced the garden and went.'
+(pe-ng-a = kill + same-subject + sequential medial; full TAM on final verb ya-ao)
+```
+
+The medial/final distinction creates a characteristic discourse structure in which long sequences of events are expressed as a single extended clause chain rather than as separate sentences — a textual organization that makes Papuan narrative difficult to parse for listeners accustomed to sentence-by-sentence discourse organization.
+
+**Head-final syntax** (SOV order, postpositions, modifier-before-noun ordering) is common across many Papuan language families, though the distribution is uneven and some families deviate significantly. The prevalence of head-final syntax in a geographically concentrated region where languages from many independent genealogical groups share the property has been interpreted as evidence for ancient areal contact rather than common descent.
+
+**Complex verbal agreement** reaches extraordinary extremes in some Papuan languages. **Yimas** — a language of the Lower Sepik region of Papua New Guinea, studied in depth by William Foley — has one of the most elaborate polypersonal agreement systems in any well-described language: the verb simultaneously indexes the person, number, and noun class of up to three arguments (subject, object, indirect object) through a complex system of prefixes and suffixes whose allomorphy is conditioned by the phonological and grammatical environment:
+
+```
+Yimas (schematic, from Foley's description)
+pu-ka-tpul
+3PL-1SG-hit
+'They hit me.'
+
+pu-ŋa-tpul
+3PL-3SG.CL4-hit
+'They hit it (Class 4 object).'
+```
+
+The noun class system in Yimas — with approximately ten classes, distinguished by semantic and grammatical properties — is not the prefix-based concord system of Bantu but a grammatical categorization that interacts with the polypersonal agreement through a complex paradigm. The resulting verb forms can be extraordinarily information-dense, encoding in a single phonological word a complete propositional structure including two or three argument identities.
+
+**Body-part tally counting systems** — in which counting is performed using body parts (fingers, joints, wrists, elbows, shoulders) as the counting medium, producing base systems of 27, 33, or other non-decimal numbers — have been documented in several New Guinea communities and represent one of the most culturally distinctive numerical systems in the world's languages. These systems are not universal in Papua New Guinea (many languages have simple decimal or quinary counting systems), but their presence in a geographically concentrated area reflects the cultural and cognitive diversity that the linguistic diversity of the island also manifests.
+
+---
+
+### Australian Languages: Non-Configurational Syntax and Ergativity
+
+Australian languages — conventionally divided between the large **Pama-Nyungan** family (covering approximately three-quarters of the continent, primarily the eastern, southern, and western regions) and the diverse **non-Pama-Nyungan** languages of the north (which include numerous independent families and are often referred to collectively as "Top End" or "Arnhem Land" languages) — present a typological profile quite different from both the MSEA and the European language profiles that dominate introductory linguistics.
+
+The most structurally distinctive feature of many Australian languages is their **non-configurational syntax** — a property in which the clause lacks the rigid hierarchical phrase structure (VP, NP internal to VP, etc.) assumed in most syntactic theories developed on the basis of English and European languages. In a configurational language like English, the verb and its object form a constituent (VP) that can be moved, pronominalized, or focused together. In a **non-configurational** language like **Warlpiri** (Pama-Nyungan, Central Australia), noun phrases associated with the same verb may appear in any position in the sentence without forming a constituent — they are related to the verb and to each other through agreement and case morphology rather than through hierarchical phrase structure:
+
+```
+Warlpiri (from Hale's analysis):
+Kurdu-ngku  ka  maliki  wawirri  panti-rni.
+child-ERG   PRS dog.ABS  kangaroo.ABS  spear-NPST
+'The child is spearing the dog/kangaroo.' (or: 'The child and the dog are spearing the kangaroo.')
+
+Maliki  ka  kurdu-ngku  panti-rni  wawirri.
+dog.ABS PRS  child-ERG   spear-NPST  kangaroo.ABS
+(same meaning, entirely different word order — the NPs are "free-floating")
+```
+
+The noun phrases *kurdu-ngku* (child, ergative), *maliki* (dog, absolutive), and *wawirri* (kangaroo, absolutive) can appear in any order relative to each other and to the verb — what determines their grammatical roles is their case morphology (*-ngku* = ergative = agent; bare form = absolutive = patient or intransitive subject), not their position. The **auxiliary** (*ka*, present tense) is the one positional fixed element: it appears in the second position of the clause (a V2-like constraint at the auxiliary level, not the main verb level), carrying subject and object agreement clitics.
+
+Non-configurationality of this degree has significant consequences for syntactic theory: it challenges the universality of the VP constituent and requires either an extension of X-bar theory to accommodate flat structures or an alternative framework (such as Lexical Mapping Theory or Role and Reference Grammar) that does not take VP constituency as a primitive.
+
+**Ergative alignment** is widespread in Australian languages, though frequently split. The most common split in Australian ergativity is conditioned by **tense/aspect**: many Pama-Nyungan languages use ergative alignment in the past tense but nominative-accusative alignment in the present and future. The split mirrors the Hindi-Urdu split ergativity but with a different triggering condition (tense rather than aspect):
+
+```
+Dyirbal (schematic):
+Ŋuma  banaga-nyu.            (man.ABS  return-NONFUTURE)
+'The man returned.' (intransitive: absolutive subject)
+
+Ŋuma-ŋgu  yabu  bura-n.       (man-ERG  mother.ABS  see-NONFUTURE)
+'The man saw the mother.' (transitive: ergative agent, absolutive patient)
+```
+
+**Dyirbal** — a Pama-Nyungan language of northeastern Queensland, studied in depth by R.M.W. Dixon — is famous beyond the specialist community for its grammatically encoded noun classification system, which divides all nouns into four classes: Class I (men, non-human animates), Class II (women, fire, dangerous things, water), Class III (edible plants and some trees), and Class IV (everything else). The grouping of women, fire, and dangerous things in Class II prompted George Lakoff to use Dyirbal as a case study in *Women, Fire, and Dangerous Things* (1987), arguing that the classifications reflect cognitive prototype effects and cultural associations rather than arbitrary grammatical assignment. Dixon's own analysis emphasizes the mythological and cultural motivations for the cross-cutting classification: fire is associated with the sun, which is female in Dyirbal mythology; "dangerous things" are associated with female-spirit entities. The system illustrates how grammatical category membership can encode culturally specific ontological associations that are invisible to structuralist analysis treating categories as arbitrary.
+
+**Dyirbal's "mother-in-law language"** (*Jalnguy*) is one of the world's best-documented **avoidance registers** — a separate lexical inventory used when speaking in the presence of certain affinal relatives (mother-in-law, daughter-in-law, cross-cousins). Jalnguy is not a separate language but uses the same grammar as everyday Dyirbal (*Guwal*) with an entirely different vocabulary — not a few substitutions but a systematic lexical replacement in which nearly every content word has a Jalnguy counterpart. The sociolinguistic constraint is categorical: in the presence of an avoidance relative, one must use Jalnguy; failure to do so is a serious social violation. Avoidance registers are documented in a number of Australian and some other languages and represent one of the most dramatic cases of socially governed lexical choice in any language community.
+
+---
+
+### The Pama-Nyungan Expansion Debate
+
+The **Pama-Nyungan family** — covering most of Australia from the Cape York Peninsula in the northeast to the southwestern tip of Western Australia — is one of the world's largest language families by geographic extent and was established as a genealogical unit through comparative work identifying systematic sound correspondences and shared morphological paradigms across its member languages. Its geographic coverage, relative structural uniformity compared to the non-Pama-Nyungan languages of the north, and the concentration of non-Pama-Nyungan diversity in the north and northwest of the continent suggest that Pama-Nyungan expanded across Australia from some ancestral homeland, displacing or absorbing earlier distinct populations.
+
+The Pama-Nyungan expansion hypothesis — associated with Nicholas Evans, Patrick McConvell, and others — proposes that this expansion was relatively recent in Australian terms (perhaps 4,000–6,000 years ago) and was associated with some adaptive innovation that gave Pama-Nyungan-speaking communities a demographic advantage over their neighbors. The nature of this innovation is debated: proposals include changes in subsistence technology, social organization, or ritual practice that increased population density or community cohesion. The hypothesis is broadly analogous to the Bantu expansion in Africa or the Austronesian expansion in the Pacific — a genealogically coherent family spreading rapidly across a territory previously occupied by more diverse linguistic populations — though the Australian evidence is more difficult to interpret given the absence of indigenous writing and the much greater time depth of the continent's overall occupation.
+
+The non-Pama-Nyungan languages of northern Australia — which include multiple families (Gunwinyguan, Yolŋu, Mirndi, Tiwi, and others) as well as several isolates — represent the residual diversity that the Pama-Nyungan expansion did not displace. The structural diversity of these northern families is considerably greater than the internal diversity of Pama-Nyungan, consistent with the hypothesis that they represent older, more deeply differentiated linguistic lineages.
+
+---
+
+### Writing Systems
+
+Neither New Guinea nor Australia developed indigenous writing systems before European contact. The first writing systems for Australian and Papuan languages were developed by missionaries from the late 19th and early 20th centuries, using Latin-based orthographies adapted to local phonological inventories. Many of these early missionary orthographies have been revised or replaced by community-preferred orthographies developed in collaboration with linguists in the post-colonial period; debates about orthographic conventions — how to represent multiple coronal places of articulation in Australian languages, how to mark tone in Papuan tonal languages — continue in many communities.
+
+The absence of indigenous writing traditions in these regions is not a reflection of cognitive limitation or cultural simplicity — it is a historical contingency. Many Australian communities maintained extraordinarily complex ritual, ecological, and narrative knowledge through oral and material traditions (sand drawings, body painting, song sequences, ceremonial objects) that served the mnemonic and communicative functions that writing serves in literate societies, without requiring a phonographic representation of language. The epistemological value of these non-writing knowledge systems is increasingly recognized in both anthropological and linguistic scholarship.
+
+**Tok Pisin** — the English-based creole that is one of Papua New Guinea's three official languages, spoken by approximately 5–6 million people as a first or second language — is worth brief mention as a linguistic phenomenon in its own right. Its development from a pidgin contact language (originating in Pacific plantation contexts in the 19th century) to a full creole with native speakers represents one of the best-documented cases of **creolization** in the linguistic record. Tok Pisin has developed a grammatical system — including tense-aspect markers, reduplication patterns, and a complex serial verb construction — that is largely independent of the English grammatical system from which its vocabulary derives, illustrating the principle that the lexical source of a creole does not determine its grammatical structure.
+
+---
+
+### Academic Controversies
+
+The **Trans-New Guinea hypothesis** is, as noted above, the most significant unresolved genealogical question in Oceanic linguistics. Its resolution matters not merely academically but for the assessment of New Guinea's linguistic prehistory: if TNG is valid, New Guinea's linguistic situation is somewhat analogous to Africa's (dominated by one large family plus residual diversity); if TNG is not valid, New Guinea has a degree of genealogical diversity with no parallel anywhere in the world.
+
+The **classification of the non-Pama-Nyungan languages** is complicated by the structural divergence between families that may in some cases reflect contact rather than independent development — the heavily multilingual north Australian communities, where individuals commonly spoke five or more languages, provided the conditions for rapid areal diffusion that could create typological similarities across genuinely independent genealogical units.
+
+The question of **Australian language prehistory** — specifically, whether Australia's linguistic diversity was once greater (before the Pama-Nyungan expansion) or roughly as diverse as at contact — is unanswerable with current evidence given the absence of written records and the limitations of the archaeological record for linguistic reconstruction. This is a genuine epistemic boundary: the deep history of Australian linguistic diversity is not merely unknown but may be in principle unknowable through current methodological resources.
+
+---
+
+### Annotated Examples
+
+```
+(AU1) Warlpiri — non-configurational syntax (free word order with case marking)
+Kurdu-ngku  ka   maliki   wangka-mi.
+child-ERG   PRS  dog.ABS  speak.to-NPST
+'The child is talking to the dog.'
+
+Maliki   ka   kurdu-ngku  wangka-mi.
+dog.ABS  PRS  child-ERG   speak.to-NPST
+(Same meaning — word order free; case morphology identifies roles)
+
+(AU2) Dyirbal — ergative-absolutive morphology
+Ŋuma-ŋgu  yabu   bura-n.
+man-ERG   mother.ABS  see-NONFUTURE
+'The man saw the mother.' (transitive: ergative agent)
+
+Yabu   banaga-nyu.
+mother.ABS  return-NONFUTURE
+'The mother returned.' (intransitive: absolutive subject — same form as patient above)
+
+(AU3) Dyirbal — noun class assignment (Class II: women, fire, dangerous things)
+Class I: ŋuma (man), yibi-ŋan (fish-type), balan (Class II demonstrative)...
+Class II: yabu (mother/woman), midin (fire), jabi (stinging tree), guda (dog — male?)
+(Fire, stinging/dangerous plants, and some animals grouped with women through mythological associations)
+
+(AU4) Enga (Trans-New Guinea area) — clause chaining with medial verbs
+mena  pae-ng-a,      yaka  leng-ae.
+pig   kill-SS.SEQ-3SG  yam   eat-FINAL.3SG
+'Having killed the pig, he ate the yam.'
+(pae-ng-a = kill + same-subject marker + sequential; full TAM on final verb only)
+
+(AU5) Yimas (Lower Sepik) — polypersonal agreement (schematic)
+pu-ka-tpul
+3PL.SUBJ-1SG.OBJ-hit
+'They hit me.' (subject 3PL + object 1SG simultaneously indexed on verb)
+
+na-mpu-tpul
+1SG.SUBJ-3PL.OBJ-hit
+'I hit them.' (subject 1SG + object 3PL — same verb root, different agreement prefix combination)
+```
+
+---
+
+**Thought-provoking questions**
+
+- New Guinea's extraordinary linguistic diversity — hundreds of independent language families in a territory the size of France — is the product of 40,000+ years of relative community isolation. Yet the communities were not truly isolated: inter-community trade, marriage exchange, and ritual contact were extensive, and most individuals were multilingual. How do we reconcile extensive contact (which elsewhere produces convergence and reduction of diversity) with the maintenance of extreme diversity in New Guinea? What conditions permit multilingualism to coexist with linguistic distinctiveness rather than driving convergence?
+
+- The Dyirbal noun classification system — grouping women, fire, and dangerous things in the same grammatical class through mythological associations — challenges the assumption that grammatical categories are either semantically transparent (nouns classified by shape, animacy, or physical properties) or entirely arbitrary. It suggests a third possibility: grammatical categories that encode culturally specific ontological associations that are intelligible from within the culture but opaque from outside it. If grammatical categories can encode culture-specific worldviews, what does this imply for the hypothesis that grammar is a universal human faculty? Can the same grammatical mechanism (noun classification) simultaneously be universal in its formal structure and culturally particular in its semantic content?
+
+- The Pama-Nyungan expansion hypothesis proposes that a single language family spread across most of Australia approximately 4,000–6,000 years ago, displacing earlier linguistic diversity. If this is correct, the diversity that European contact documented in Australia was not the original state of the continent but the residual product of an earlier expansion that had already dramatically reduced an older, deeper diversity. This would make the documented state of Australian languages not the baseline of 50,000 years of diversification but a snapshot of a post-expansion situation. How should this possibility affect how we think about the "naturalness" or "representativeness" of the linguistic situation encountered at any moment of European contact with non-European societies? Are the linguistic situations documented at contact starting points or already heavily shaped by prior historical processes?
+
+- Australia's non-writing knowledge systems — oral narrative, ceremonial song sequences, sand drawings, body painting — maintained complex ecological, historical, and cosmological knowledge across generations without phonographic representation of language. The development of writing in human societies is often described as an enabling technology that made possible the accumulation and transmission of knowledge beyond what oral tradition can sustain. Does the Australian case challenge this narrative — suggesting that non-writing knowledge systems can sustain comparably complex bodies of knowledge — or does it suggest that there are specific types of knowledge (abstract reasoning, mathematical computation, long-distance communication) that non-writing systems are structurally incapable of supporting?
+
+## Chapter 20 · Isolates and Small Families — Classification at Its Limits
+
+A language isolate is not a mystery, an anomaly, or evidence for ancient alien contact. It is a classification: a statement that no genealogical relatives of this language have been demonstrated to the satisfaction of the comparative linguistics community using the methods established for genealogical identification. The classification is provisional — contingent on current evidence and current methodology — and it carries no implication about the language's structural complexity, cultural richness, or historical depth. Basque, the most studied European isolate, is structurally more complex than most Indo-European languages spoken around it. Sumerian, the extinct isolate of ancient Mesopotamia, supported one of the world's first literate civilizations. The isolate designation says something about the limits of current comparative reconstruction, not about the language itself.
+
+The distinction between an isolate and a small family is sometimes fine. Kartvelian — the family that includes Georgian, Mingrelian, Laz, and Svan — is a small, well-defined genealogical unit with no demonstrated external relatives; it is simultaneously a family (internally) and an isolate (externally). Ainuic, once treated as a single-language isolate, is now recognized as a small family of closely related varieties. The Caucasian region alone contains three genealogically independent families — Kartvelian, Northwest Caucasian, and Northeast Caucasian (Nakh-Daghestanian) — none of which is demonstrably related to the others or to any family outside the Caucasus, making the region one of the world's greatest concentrations of genealogical isolation in a small geographic area.
+
+This chapter examines these isolates and small families not as curiosities but as typological data points of particular value: because they lack close relatives with which they share inherited features, their structural profiles must be explained on their own terms rather than through common ancestry. Their divergence from the dominant structural patterns of their geographic neighbors raises questions about typological drift, contact resistance, and the limits of areal convergence that the well-studied major families do not pose as sharply.
+
+---
+
+### Basque: The Pre-Roman European Survivor
+
+**Basque** (*Euskara*) — spoken by approximately 750,000 people in the Basque Country straddling the French-Spanish border in the western Pyrenees — is the only language west of the Caucasus that is not demonstrably descended from a proto-language also ancestral to other surviving languages of the region. It is the sole survivor of whatever linguistic diversity existed in western Europe before the Indo-European expansion, and its survival in a linguistically compact region surrounded by Romance on all sides (Spanish, French, Catalan, Gascon) after two millennia of intense contact is one of the more remarkable facts of European linguistic history.
+
+The oldest substantial evidence for Basque comes from the **Aquitanian inscriptions** — Latin-language votive inscriptions from the Roman period (1st–3rd centuries CE) in the Aquitaine region of southwestern France that contain personal names and deity names recognizably Basque in their morphological structure. The Aquitanian evidence establishes that a Basque-type language was spoken in the western Pyrenean region at least 2,000 years ago and demonstrates the antiquity of the basic morphological patterns that characterize modern Basque. It also establishes the geographic range of the pre-Roman Basque-speaking population: somewhat wider than the current Basque Country, extending into what is now Gascony in southern France.
+
+> The **Basque-Iberian hypothesis** proposes a genealogical relationship between Basque and **Iberian** — the language attested in inscriptions from the Iberian Peninsula (roughly modern Catalonia, Valencia, and southeastern Spain) from approximately the 5th century BCE to the 2nd century CE. Iberian is itself unrelated to Latin or Celtic and was the dominant language of pre-Roman eastern Iberia. The hypothesis is based on certain lexical and structural similarities between the two corpora. Most specialists treat the similarities as insufficient for establishing genealogical relationship — they may reflect areal contact in a pre-Roman western Mediterranean contact zone — and Iberian is currently treated as a separate isolate. The question is not fully closed, partly because Iberian remains only partially understood despite decades of epigraphic work.
+
+The **morphological profile** of Basque is distinctive within the European linguistic landscape in several respects. Basque is **ergative-absolutive** — the most extensively studied European ergative language and the primary reference point for European linguists encountering this alignment type. The ergative case marker *-k* attaches to the agent of transitive verbs; the absolutive (zero-marked) form is used for both intransitive subjects and transitive patients:
+
+```
+Gizon-a-k    ekarri  du   liburua.
+man-DEF-ERG  bring   AUX  book.ABS.DEF
+'The man has brought the book.' (man = ergative agent; book = absolutive patient)
+
+Gizon-a     etorri   da.
+man-DEF.ABS come     AUX
+'The man has come.' (man = absolutive intransitive subject)
+```
+
+The Basque auxiliary system — used in virtually all finite clauses — encodes the ergative/absolutive distinction through a **polypersonal agreement** system in which the auxiliary simultaneously indexes the person and number of the subject, the direct object, and the indirect object. This produces a paradigm of extraordinary complexity: the auxiliary has distinct forms for every combination of subject person/number × object person/number × indirect object person/number, producing hundreds of theoretically possible forms, of which a substantial subset is in regular use:
+
+```
+nator     — I come (intransitive: 1SG absolutive subject)
+zatoz     — you come (2SG absolutive)
+dator     — s/he comes (3SG absolutive)
+
+dakarzu   — you bring it (to me) (2SG ERG agent + 3SG absolutive patient)
+dakartzuzu — you bring them (3PL absolutive patient + 2SG ERG agent)
+diezu     — you give it to him/her (2SG ERG + 3SG absolutive patient + 3SG dative indirect object)
+```
+
+The agreement system is not merely a concord mechanism — it encodes, in a single auxiliary form, the complete argument structure of the clause, making the auxiliary in some sense as information-dense as the Swahili verb complex described in Chapter 16. For a learner from any Indo-European background, the Basque auxiliary paradigm represents perhaps the steepest immediate morphological challenge in any European language: not because the system is irregular, but because the combinatorial space it covers is larger by an order of magnitude than any IE agreement paradigm.
+
+Basque's **case system** has approximately twelve cases, most of which are historically derived from postpositions combining with the absolutive form. The local cases form a familiar interior/exterior/near organization (comparable in functional architecture to Finnish's case system, though genealogically unrelated):
+
+```
+etxe-an     (house-INESSIVE: in the house)
+etxe-tik    (house-ELATIVE: from/out of the house)
+etxe-ra     (house-ALLATIVE: to/toward the house)
+etxe-ko     (house-GENITIVE.LOCAL: of/from the house)
+```
+
+The vocabulary of Basque reflects two millennia of Latin/Romance contact: a substantial proportion of Basque core vocabulary is borrowed from Latin or Romance varieties (often at very early borrowing stages, preserving phonological forms that predate Ibero-Romance sound changes), while the basic grammatical morphology — the case suffixes, the auxiliary forms, the derivational affixes — is largely non-Indo-European. This stratification makes Basque vocabulary available to Romance-reading scholars while its grammar remains genealogically opaque.
+
+---
+
+### Kartvelian: Georgia's Script, Polypersonalism, and the Caucasian Literary Tradition
+
+**Kartvelian** — the small family consisting of Georgian, Mingrelian (with closely related Laz), and Svan — has approximately 5 million speakers, the great majority of whom speak Georgian. Despite its small size, the Kartvelian family has one of the deepest literary traditions of any non-Indo-European family in Eurasia: the **Georgian literary tradition** extends from the 5th century CE (the earliest Christian religious texts) through a continuous record of hagiographies, histories, philosophical translations, and poetry to the present day. The 12th-century epic poem *Vepkhistqaosani* (*The Knight in the Panther's Skin*) by Shota Rustaveli — a chivalric romance of approximately 1,600 stanzas, composed in a strict syllabic meter — is widely regarded as the masterpiece of Georgian literature and occupies a cultural position analogous to that of the Iliad in Greek culture or the Mahabharata in Sanskrit culture.
+
+**The Georgian alphabet** — used for Georgian and, with adaptations, for Mingrelian, Laz, and Svan — is one of the few scripts in the world with no credible external origin: its design does not derive from the Semitic, Greek, Brahmi, or Chinese traditions, and attempts to identify an external source have not achieved scholarly consensus. The script is traditionally attributed to the 5th century CE, possibly created by Mesrop Mashtots (the same scholar who created the Armenian alphabet) or by the Georgian King Vakhtang I, in the context of the Christianization of Georgia. Three historical forms of the Georgian alphabet exist:
+
+**Asomtavruli** (the oldest form, rounded majuscule letters used in early inscriptions), **Nuskhuri** (a smaller minuscule ecclesiastical form developed from Asomtavruli), and **Mkhedruli** (the secular form that has been the primary everyday script from approximately the 11th century and remains the dominant modern form). The ecclesiastical forms (Asomtavruli and Nuskhuri) are still used in the Georgian Orthodox Church in religious contexts; Mkhedruli is used for all secular purposes. Modern Georgian orthography is fully phonological — each letter corresponds to a distinct phoneme — and represents the language's distinctive consonant inventory (including a series of ejective consonants distinctive to the Caucasian region) with dedicated letters.
+
+The **Georgian verbal system** is one of the most complex in any well-documented language. The verb encodes a dense array of categories through a combination of prefixes, infixes, and suffixes organized into a structure that is neither straightforwardly agglutinative nor fusional but something of each:
+
+Georgian verbs are organized into **screeves** (roughly, tense-aspect-mood groupings) which are themselves organized into three **series**: the Present Series (present, imperfect, subjunctive present), the Aorist Series (aorist, optative), and the Perfect Series (perfect, pluperfect, third evidential). What makes this organization structurally remarkable is that each series uses a different alignment:
+
+> **Georgian split ergativity** is organized by tense-aspect series rather than by tense alone. The **Present Series** uses nominative-accusative alignment: the subject of both transitive and intransitive verbs appears in the nominative case, and the direct object appears in a different (dative or accusative) case. The **Aorist Series** uses ergative-absolutive alignment: the subject of a transitive verb appears in the ergative case, the patient and the intransitive subject in the nominative. The **Perfect Series** uses a third arrangement in which the subject appears in the dative case (dative subject construction), the verb's relationship to its arguments changes significantly, and the agreement pattern shifts again. Three different alignments within a single language's verbal system, conditioned by which temporal-aspectual series the clause belongs to — a degree of alignment complexity unparalleled in the languages examined in previous chapters.
+
+The **polypersonal agreement** system simultaneously indexes up to three arguments — subject, direct object, and indirect object — through a combination of prefixes and suffixes. The agreement morphemes interact with the screeve, the alignment series, and the verb class to produce paradigmatic complexity that exceeds even Basque's polypersonalism in sheer combinatorial density. A Georgian verb form can specify, in a single phonological word, who is doing what to whom for whom in what tense-aspect-mood, making the Georgian verb one of the most information-compact grammatical structures in documented language.
+
+---
+
+### The Northwest Caucasian Languages: Consonantism at Its Extreme
+
+The **Northwest Caucasian family** — comprising Abkhaz (spoken in Abkhazia, a disputed territory on the eastern Black Sea coast), Adyghe and Kabardian (the two main varieties of Circassian, spoken in the Caucasus and in a vast diaspora), and the extinct **Ubykh** — represents one of the most phonologically extreme language groups documented anywhere.
+
+**Ubykh** — the last native speaker of which, Tevfik Esenç, died in 1992 in Turkey — had approximately **84 consonant phonemes** and by some analyses as few as two or three vowels. The ratio of consonants to vowels in Ubykh is the most extreme known for any natural language: its consonant inventory included multiple series of stops (plain, aspirated, ejective) at multiple places of articulation (bilabial, dental, alveolar, palatal, velar, uvular, pharyngeal, and glottal), plus lateral affricates, fricatives, and approximants at several of these places. The inventory of sounds the Ubykh phonological system distinguished is larger than the total inventory most European languages recognize as linguistically relevant.
+
+The Northwest Caucasian consonant richness is not unique to Ubykh: Abkhaz has approximately 60 consonant phonemes; Kabardian approximately 50 in most analyses. The ejective consonants — consonants produced with a glottalic egressive airstream, creating a sharp, "popping" quality — are characteristic of all three Caucasian families and are produced at multiple places of articulation, creating series of ejective stops and affricates that have no parallel in European languages.
+
+The morphological profile of Northwest Caucasian languages is **polysynthetic and polypersonal**: the verb simultaneously indexes subject and object(s), carries valency-changing morphology (causative, applicative), and encodes locative information through a set of directional prefixes that specify the location and trajectory of the action in considerable detail. The result is that Northwest Caucasian verbs can encode what would require an entire English clause — subject, object, direction, aspect, and several other categories — in a single morphological word.
+
+The **Circassian diaspora** is one of the most consequential demographic consequences of 19th-century Russian imperial expansion. Following the Russian-Circassian War (1817–1864) and the subsequent mass deportation of Circassian populations from the northwestern Caucasus, approximately 600,000–1,500,000 people (estimates vary widely) were killed or deported to the Ottoman Empire. The descendants of these deportees — now numbering approximately 3–5 million in Turkey, Jordan, Syria, Israel, and elsewhere — constitute a diaspora that substantially outnumbers the Circassian population in the original homeland (approximately 700,000 in the Russian Republic of Adygea and Kabardino-Balkaria). Most diaspora Circassians have shifted to Turkish or Arabic over the generations, making Northwest Caucasian languages — despite their remarkable phonological profile — endangered both in the diaspora and, to a lesser degree, in the homeland.
+
+---
+
+### Northeast Caucasian (Nakh-Daghestanian): Noun Classes and Case Proliferation
+
+The **Northeast Caucasian family** — also called Nakh-Daghestanian — encompasses approximately 34 languages in the northeastern Caucasus, including **Chechen**, **Ingush** (the Nakh subbranch) and a large and diverse Daghestanian subbranch including **Avar**, **Lak**, **Dargwa/Dargin**, **Lezgian**, **Tabasaran**, and many others. It is genealogically independent of Northwest Caucasian and of Kartvelian — the three Caucasian families share the geographic region and certain typological features (ejectives, complex consonantism, ergativity) but have no demonstrated common ancestor.
+
+The Daghestanian languages are particularly notable for two features: extremely elaborate **noun class systems** and extreme **case proliferation**. Avar has four noun classes, distinguished by grammatical agreement on verbs and adjectives. Tsez has five classes. The classes partially correlate with sex/animacy distinctions (animate/inanimate, human/non-human) but also encode distinctions among inanimate noun categories that are culturally motivated rather than semantically transparent.
+
+**Tabasaran** — by some analyses — has more than 40 grammatical cases, making it a candidate for the language with the largest case inventory in the world by the traditional definition. Most of these cases are spatial and relational, specifying the location, source, goal, and trajectory of an action in three spatial domains (interior, surface, near/with) each subdivided by additional orientation distinctions. The spatial case system is in functional terms comparable to the Finnish case system described in Chapter 17, but extended to a degree that places it well beyond any European equivalent.
+
+---
+
+### Ainu: East Asian Isolate
+
+**Ainu** — spoken historically across Hokkaido (the northernmost main island of Japan), the Kuril Islands, and Sakhalin — is now critically endangered, with estimates of fewer than ten fluent elderly native speakers remaining in Hokkaido as of the most recent surveys, and the language having been displaced in Sakhalin and the Kurils through Soviet resettlement policies. The Japanese government officially recognized the Ainu people as indigenous in 2019 — a recognition that came over a century after the imposition of the assimilation policies that suppressed Ainu language and culture — and revitalization efforts are underway, but the demographic situation of the language is extremely precarious.
+
+Ainu's typological profile diverges significantly from its geographic neighbors. Where Japanese and Korean are agglutinative SOV languages with pitch-accent prosody and no tone, Ainu is also SOV but exhibits **polysynthetic tendencies** — particularly in its extensive **noun incorporation** and complex **applicative and causative derivational morphology** — that have no parallel in Japonic or Koreanic:
+
+```
+Ainu (schematic):
+ku-  kor  an.
+1SG= have exist
+'I have (it).' / 'I am having.'
+(ku- = 1SG subject prefix; kor = possessive verb; an = existential — verb complex)
+
+Ku-      e-    ray-  as.
+1SG.OBJ= CAUS-  die-  1SG.SUBJ
+'I kill him/her.' (causative incorporation: e- = causative; ray = die + 1SG subject)
+```
+
+Ainu's relationship to any other language family has not been established. Proposals relating it to Austronesian, to Altaic, to various Paleosiberian languages, and to Indo-European have been made and rejected. The Japanese and Ryukyuan languages, while geographically proximate, show no systematic grammatical or lexical correspondences with Ainu that would support genealogical relationship. The Ainu people's demographic and genetic distinctiveness from both the Yamato Japanese and the continental Asian populations, combined with their language's structural uniqueness, suggests a long period of independent development — possibly representing a remnant of the populations that inhabited the Japanese archipelago before the Yayoi agricultural expansion brought the ancestors of the Yamato Japanese from the Korean peninsula approximately 2,900 years ago.
+
+The **Ainu oral literary tradition** — particularly the *yukar* (heroic epic narratives) and the *kamuy yukar* (divine narratives told from the perspective of deities and animals) — is one of the most extensively documented oral traditions of any endangered language, thanks to the pioneering recording and transcription work of the Japanese scholar Bronisław Piłsudski (early 20th century) and subsequently of Kyōsuke Kindaichi and others. The *yukar* tradition employs a specialized literary register with vocabulary and syntactic constructions distinct from everyday Ainu speech, comparable in its differentiation from colloquial usage to the relationship between Homeric Greek and classical Attic.
+
+---
+
+### Sumerian, Burushaski, and Other Major Isolates
+
+Brief mention is warranted for two further major isolates not yet addressed:
+
+**Sumerian** — the language of the Sumerian civilization of ancient Mesopotamia, attested in cuneiform from approximately 3100 BCE and used as a literary and scholarly language until approximately 100 CE (as a classical dead language, long after it ceased to be spoken natively) — is an **extinct isolate**: no demonstrated genealogical relatives, and no possibility of collecting new data from native speakers. It is the oldest documented language for which we have substantial grammatical and literary material. Sumerian's morphological profile was ergative-absolutive, with a complex verb template encoding multiple argument cross-references, and a writing system that began as pictographic, developed into cuneiform (wedge-shaped marks pressed into clay with a stylus), and was subsequently adopted by Akkadian, Elamite, and other non-Sumerian languages of the ancient Near East. Its influence on the subsequent development of Semitic writing was profound: the cuneiform tradition that ultimately produced the Akkadian writing system was directly inherited from Sumerian.
+
+**Burushaski** — spoken by approximately 90,000–100,000 people in the Hunza, Nager, and Yasin valleys of northern Pakistan — is a living isolate with a particularly complex grammatical profile: four noun classes (human male, human female, animate non-human, inanimate), polypersonal agreement, a complex case system, SOV order, and an extensive system of spatial deixis. It has attracted proposals of relationship to numerous languages — Indo-European, Northeast Caucasian, the proposed Dene-Caucasian macro-family, and others — none of which has achieved acceptance through the comparative method. It remains isolated.
+
+---
+
+### Academic Controversies
+
+The most consequential macro-comparative proposal involving languages from this chapter is the **Dene-Caucasian hypothesis** — a proposed super-family that would unite Na-Dene (Athabaskan-Eyak-Tlingit), Northwest Caucasian, Sino-Tibetan, Burushaski, and the extinct Sumerian and Yeniseian languages in a single genealogical grouping. The hypothesis, associated with Sergei Starostin and John Bengtson among others, is based on a set of proposed lexical and morphological correspondences across these families. It is treated skeptically by most comparative linguists: the proposed correspondences do not meet the standards of systematic sound correspondence that the comparative method requires, and the extreme geographic dispersion and typological diversity of the proposed members raises the probability that the similarities reflect chance, areal contact, or methodological artifacts of mass comparison rather than common descent.
+
+The **Basque-Caucasian hypothesis** — proposing a genealogical relationship between Basque and the Caucasian families — has been discussed periodically since the 19th century, motivated by the typological similarities (ergative alignment, polypersonal agreement, complex morphology) that Basque shares with the Caucasian languages. Typological similarity is not genealogical evidence, as the preceding chapters have emphasized repeatedly. The hypothesis has not been supported by systematic lexical correspondences, and the typological similarities are attributable to independent grammaticalization of similar structural strategies rather than common descent.
+
+---
+
+### Annotated Examples
+
+```
+(ISO1) Basque — polypersonal auxiliary agreement
+Nik   hiri   ekarri  dizut.
+1SG.ERG  2SG.DAT bring  AUX.1SG.ERG>3SG.ABS>2SG.DAT
+'I have brought it to you.'
+(dizut = auxiliary encoding: 1SG ergative subject + 3SG absolutive patient + 2SG dative recipient — three arguments in one auxiliary form)
+
+(ISO2) Basque — ergative case
+Neska-k   mutila   ikusi  du.
+girl-ERG  boy.ABS  see    AUX.3SG.ERG>3SG.ABS
+'The girl saw the boy.' (girl = ergative transitive agent; boy = absolutive patient)
+
+Mutila   etorri  da.
+boy.ABS  come    AUX.3SG.ABS
+'The boy came.' (boy = absolutive intransitive subject — same form as patient above)
+
+(ISO3) Georgian — split ergativity across series
+Present series (nominative-accusative):
+Kac-i    cer-s    c'eril-s.
+man-NOM  write-3SG  letter-DAT
+'The man is writing a letter.' (NOM subject; DAT object — accusative alignment)
+
+Aorist series (ergative-absolutive):
+Kac-ma   c'eril-i   da-c'er-a.
+man-ERG  letter-NOM  PREV-write-3SG.AOR
+'The man wrote the letter.' (ERG agent; NOM patient — ergative alignment)
+
+Perfect series (dative subject):
+Kac-s    c'eril-i   da-u-c'er-i-a.
+man-DAT  letter-NOM  PREV-VERS-write-PERF-3SG
+'The man has written the letter.' (DAT "experiencer" subject — dative construction)
+
+(ISO4) Abkhaz (Northwest Caucasian) — polypersonal verb
+S-bəz-ʕ-w-eit'.
+1SG.OBJ-2SG.OBJ.IO-give-2SG.SUBJ-DECL
+'You gave it to me.' (subject 2SG + direct object 3SG (implicit) + indirect object 1SG — all in verb)
+
+(ISO5) Ainu — noun incorporation and causative
+Ku-    e-    ray-   as.
+1SG.S= CAUS-  die-   1SG.S
+'I kill (him/her).' (causative e- + ray "die" incorporated; 1SG subject prefix ku-)
+
+Ku-     ram-   kor-    an.
+1SG.S=  heart- have-   EXIST
+'I have a heart / I think.' (ram "heart" incorporated into kor "have")
+```
+
+---
+
+**Thought-provoking questions**
+
+- Basque survived two millennia of intense contact with Latin and Romance languages without being displaced — while Etruscan, Iberian, Gaulish, Oscan, Umbrian, and dozens of other pre-Roman European languages were all displaced by Latin within a few centuries of Roman conquest. What distinguishes Basque's survival situation from those of the languages that did not survive? Geographic isolation in the Pyrenees is the standard explanation, but it is not fully satisfying given that other similarly isolated communities lost their languages to Romance. Are there social, economic, or demographic factors specific to the Basque situation that better explain this anomalous survival?
+
+- Georgian's split ergativity uses three different alignment systems — nominative-accusative in the present series, ergative-absolutive in the aorist series, and dative-subject in the perfect series — each conditioned by which temporal-aspectual series the clause belongs to. From the perspective of a learner, this means that the "same" action described in different tenses requires completely different case morphology on the arguments. From the perspective of historical linguistics, the split reflects the grammaticalization of three historically distinct verbal constructions into a single unified paradigmatic system. Does the Georgian case suggest that alignment is not a stable language property but a dynamic parameter that languages can freely vary across their own paradigms — or does it represent an unusual historical accident unlikely to be replicated?
+
+- Ubykh's extinction in 1992, with the death of Tevfik Esenç, terminated direct access to a language with 84 consonant phonemes — the most phonologically extreme sound system documented for any natural language. Tevfik Esenç was reportedly aware that he was the last speaker and cooperated extensively with linguists to produce the most complete documentation possible before his death. What does the Ubykh case suggest about the relationship between a language's scientific value (its typological uniqueness) and the ethical obligations of the linguistics community toward endangered language communities? Does extreme typological interest in a language create any special obligation — or does it risk treating speakers as repositories of linguistic data rather than as community members whose language serves social and cultural functions that are the actual reason for its maintenance or loss?
+
+- The three indigenous Caucasian families — Kartvelian, Northwest Caucasian, and Northeast Caucasian — are genealogically independent of each other, yet they share typological features (ejective consonants, complex consonantism, ergativity, polypersonal agreement) that are rare or absent elsewhere. The standard explanation is areal diffusion — long-term contact among the three families produced typological convergence. But an alternative is that these features were common to an ancestral Caucasian population that the three families descend from separately (without a demonstrable common ancestor through the comparative method). Is there any methodological way to distinguish between "ancient areal convergence" and "ancient common inheritance that has left insufficient evidence for genealogical demonstration"? What would each scenario predict about the distribution of these features across and within the three families?
+
+## Chapter 21 · The Diachronic Perspective — How Languages Change and What Changes Them
+
+The family profiles in Part II have treated individual language families as objects of synchronic and historical analysis, each examined largely on its own terms. The present chapter pulls back to ask whether the individual cases cohere into general principles — whether the changes documented for Latin, Mandarin, Vietnamese, Turkish, Swahili, and Basque reflect the operation of the same underlying mechanisms, or whether each change is too historically particular to generalize. The answer, this chapter argues, is that a small number of mechanisms — phonological erosion, grammaticalization, contact pressure, and the conservative force of writing — operate across all documented languages, producing family-specific outcomes that are nevertheless instances of recognizable recurring patterns. Language change is not chaos; it is constrained drift through a structured typological space.
+
+What follows does not summarize the family profiles but uses them as evidence for a synthetic argument about how linguistic systems transform over time. The reader who has followed the preceding chapters will recognize the individual cases; the task here is to show what they collectively demonstrate about the logic of linguistic change.
+
+---
+
+### Sound Change as the Primary Driver
+
+The most consistently documented mechanism of linguistic change is **sound change** — systematic, regular, and exceptionless (in its core operation) alteration of the phonological properties of linguistic units. The regularity of sound change is the foundation of the comparative method: if Latin /f/ corresponds to English /f/ and German /f/ in the same set of words (*father/Vater/pater*), the correspondence is diagnostic of genealogical relationship because such regularity cannot be produced by coincidence. The regularity itself demands explanation: why do sounds change in predictable, rule-governed ways rather than randomly word-by-word?
+
+The answer lies in the articulatory and perceptual basis of sound systems. Speakers do not reproduce sounds phoneme-by-phoneme with perfect fidelity; they reproduce acoustic patterns that the perceptual system of a listener maps onto phonological categories. When the mapping shifts — when a generation of listeners categorizes a slightly shifted acoustic pattern as a different phoneme — sound change has occurred, and it has occurred simultaneously across the entire vocabulary of the language because the shift was in the perceptual category, not in a particular word. This is why sound changes are regular: they affect all instances of the phoneme in the relevant phonological context, because the change is a categorical shift in the phonological system rather than an item-by-item modification.
+
+> **Sound change** is the systematic alteration of phonological properties (place, manner, voice, pitch, length) in a language variety, operating regularly across all lexical items containing the relevant sound in the relevant environment. The **neogrammarian hypothesis** — formulated by a school of 19th-century historical linguists — stated that sound changes operate without exception: every instance of the phoneme in the specified environment undergoes the change, and apparent exceptions reflect either analogy (morphological leveling that restored an earlier form) or borrowing (words that entered the language after the change occurred). The neogrammarian hypothesis has been refined but not fundamentally overturned.
+
+The cascade consequences of sound change for morphology are among the most important dynamics in the history of any well-documented language. The case examined most extensively in these notes is the Latin-to-Romance transition, but the mechanism is general: when unstressed syllables undergo reduction, the inflectional endings that languages typically place in unstressed positions are among the first casualties. When inflectional endings erode, the morphological distinctions they encoded must either be maintained through other formal means or abandoned entirely.
+
+Latin's final *-m* — the marker of accusative singular in most declension classes — was already weakly pronounced in Vulgar Latin (Pompeian graffiti regularly omit it in word-final position), and by the early medieval period it had been lost phonologically across the Romance territory. When *-m* was lost, the nominative/accusative distinction that depended on it collapsed for most noun classes, and the case system that Latin's inflectional morphology had maintained began its rapid restructuring. The functional load that case endings had carried — identifying which noun was the agent and which the patient in a transitive clause — had to be redistributed. The solution was a chain of compensatory changes: word order rigidified (the agent-before-patient SVO order that had been merely a pragmatic default became a categorical rule), prepositions expanded their role (taking over the spatial and grammatical functions of the ablative, dative, and other cases), and definite/indefinite articles developed from demonstratives (providing a new layer of nominal specification to compensate for the lost case transparency).
+
+Each of these compensatory changes was itself a phonological and grammatical process: prepositions that were once full words fused with articles (*de le* → *du* in French, *ad illum* → *al* in Spanish), producing new synthetic forms from what had been analytic combinations — a miniature repetition of the morphological cycle at the level of the prepositional phrase. The cycle does not stop; it continues.
+
+---
+
+### Tonogenesis: One Mechanism, Multiple Outcomes
+
+The development of lexical tone from consonantal contrasts — **tonogenesis** — is one of the best-documented instances of a single phonological mechanism operating independently across multiple unrelated language families to produce superficially similar but structurally distinct outcomes. The mechanism was described in detail in Chapters 8 and 13; the synthesis here concerns what the multiple independent instances reveal about the process.
+
+Tonogenesis proceeds through a predictable pathway: voiced onset consonants lower the pitch of the following vowel (through articulatory dynamics of vocal cord vibration); voiceless onsets leave the vowel at a higher pitch. When the voiced/voiceless distinction in the onset neutralizes — both becoming voiceless, for example — the secondary pitch effect can no longer be attributed to the onset consonant and becomes an autonomous property of the syllable. The secondary property has become primary: a tone has been created.
+
+This pathway has operated independently in:
+
+- **Sinitic languages**: from Old Chinese's voiced/voiceless distinctions through Middle Chinese's four-tone emergence to Modern Mandarin's four-tone system (with one merger reducing the original set)
+- **Vietic (Vietnamese)**: from Proto-Vietic's two-register system through contact-accelerated tonal elaboration to the modern six-tone system
+- **Tai-Kadai**: the three-register Proto-Tai system splitting into six tones through voiced/voiceless conditioning, producing the modern Thai and Lao systems
+- **Athabaskan languages**: several Athabaskan languages have developed tone through a mechanism that involves the same register-conditioned pitch effects, producing tonal systems from languages that were historically non-tonal
+
+Four independent instances of the same mechanism, across four genealogically unrelated families, producing four different outcomes because the details differed: the number of registers that existed before neutralization, the timing and completeness of the neutralization, the presence or absence of additional laryngeal distinctions, and the specific mergers and splits that occurred after the initial tonal system was established. The mechanism is universal — voiced onsets lower pitch — but the outcome is historically particular.
+
+What does this convergence demonstrate? First, that **phonological universals** — general properties of the vocal tract and the perceptual system — create predictable pathways for sound change that can be traversed independently by any language whose phonological inventory places it at the relevant starting point. Second, that **typological similarity can be produced by multiple routes**: the tonal languages of East and Southeast Asia are not all tonal because they share an ancestor (many do not) or because tone diffused from a single source (some does, but not all) but because the same articulatory mechanism operated in each case on phonological systems that were structured to make tone a stable resting point.
+
+The case of Khmer — surrounded by tonal languages in the MSEA area, having undergone the first stages of tonogenesis (the register system exists), but not completing the process — illustrates what stops the mechanism: where the phonological inventory provides sufficient alternative means of contrast (Khmer's preserved consonant clusters), the pressure to complete tonal development is reduced. Tone development is not inevitable given the right starting conditions; it is one solution to a phonological contrast problem, and alternative solutions can compete with it.
+
+---
+
+### The Morphological Cycle: Universality and Directionality
+
+The **morphological cycle** — the drift from analytic through synthetic back to analytic, driven by the interaction of grammaticalization and phonological erosion — is documented so widely across unrelated language families that it must be considered a near-universal property of language change rather than a feature of any particular family or area.
+
+The Latin → Romance trajectory is the paradigm case, but the cycle is visible in comparable form across the language families of these notes:
+
+In **Sinitic**, Old Chinese had morphological material — including directional prefixes and productive derivational morphology — that eroded in the transition to Middle Chinese and Modern Mandarin's overwhelmingly analytic profile. But Modern Mandarin's aspect particles and measure words, once free lexical items, are grammaticalizing into increasingly bound, obligatory elements; the cycle's synthetic phase is being re-entered.
+
+In **Turkic**, the elaborate agglutinative suffix chains of Proto-Turkic have eroded at their edges in several languages under contact pressure: Uzbek, the most heavily contact-influenced Turkic language, has lost most of its vowel harmony and reduced some suffix distinctions that are robust in Turkish and Kazakh. The erosion of Uzbek's agglutinative profile under Iranian contact illustrates the cycle operating at a different scale and in a different direction from the Latin case.
+
+In **Niger-Congo**, Bantu's noun class prefixes — originally free words that grammaticalized into nominal prefixes — are themselves the product of a synthetic phase following an earlier analytic stage; the concord agreement that propagates class prefixes across the clause represents a subsequent elaboration of the synthetic system. The verb extensions (causative, applicative, passive) that characterize the Bantu verb complex are similarly grammaticalized free verbs that have been incorporated into the verb word, producing synthesis from earlier analyticity.
+
+> **Grammaticalization** is the process by which free lexical items acquire grammatical functions, reduce phonologically, and eventually become bound morphemes or are lost. The pathway is directional: lexical → grammatical → affix → zero (lost). Reversals are not well documented. This directional asymmetry is one of the strongest empirical generalizations in diachronic linguistics: grammar creates itself from vocabulary, not the reverse.
+
+The **directionality question** — whether the morphological cycle has a preferred direction, or whether languages are equally likely to move from synthetic to analytic as from analytic to synthetic — has been debated. The grammaticalization evidence supports a directional asymmetry: free lexical items reliably grammaticalize into bound morphemes; the reverse process (morphemes becoming free words) is rare and typically requires deliberate metalinguistic intervention (as when analytic periphrases replace synthetic forms, but the synthetic forms persist in reduced or written registers before eventually being lost). The cycle is not perfectly symmetrical; the synthetic phase is consistently produced by grammaticalization from analytic material, while the analytic phase is produced by phonological erosion of synthetic material.
+
+---
+
+### Contact-Induced Change: What Transfers and What Resists
+
+The family profiles provide extensive evidence for the selective permeability of different layers of linguistic structure to contact-induced change. The pattern that emerges from these cases is consistent enough to constitute a working principle:
+
+**Vocabulary is the most permeable layer**: every language in contact for significant duration acquires vocabulary from its neighbors. Hungarian has borrowed from Slavic, Germanic, Latin, and Turkish; Swahili has incorporated Arabic vocabulary; Japanese has absorbed Chinese, Portuguese, Dutch, English, and other vocabularies in successive waves; Modern Hebrew was rebuilt from a classical standard using extensive European calques. In no case did extensive lexical borrowing prevent the language from remaining recognizably the same language.
+
+**Phonology is moderately permeable**: the retroflexes of Indo-Aryan borrowed from Dravidian substrate; the clicks of Zulu and Xhosa borrowed from Khoisan-speaking neighbors; the ejectives and pharyngeals of Arabic influenced the phonology of Persian loanwords in that language; Vietnamese's tone system developed under Sinitic contact. These are genuine phonological changes produced by contact, but they typically require intense bilingualism over multiple generations — and they are often partial, affecting only certain phonological categories rather than the system as a whole.
+
+**Morphological core structure is the least permeable layer**: the case studies throughout these notes consistently show that agglutinative morphological cores (Hungarian, Finnish, Turkish) resist replacement even under intense contact with structurally different languages. Indo-Aryan acquired retroflex consonants and SOV order from Dravidian but not the Dravidian agglutinative suffix system. Swahili acquired massive Arabic vocabulary but not Arabic's root-and-pattern morphology. Munda languages acquired SOV order characteristic of the South Asian Sprachbund but maintained their own agglutinative morphological architecture.
+
+The resistance of morphological core structure to contact is theoretically significant. It suggests that morphological paradigms — learned early in acquisition, deeply entrenched in the processing routines of competent speakers — are more difficult to replace than vocabulary (learned item by item throughout the lifespan) or phonological categories (which can shift through normal perceptual drift without conscious awareness). The implication for understanding language family membership is that a language's morphological profile is its most genealogically stable property: when vocabulary and phonology have been extensively reshaped by contact, the morphological core may still preserve family membership signals.
+
+---
+
+### The Conservative Force of Writing
+
+Writing systems, as Chapter 4 argued, are not transparent transcriptions of speech but independent technologies that encode language at a particular historical moment and then resist change because of the social value assigned to literacy in the written standard. The consequence is that established orthographies consistently lag behind phonological change, preserving earlier stages of the language's sound system in a form that can be directly compared to the current spoken forms.
+
+The cases of orthographic conservatism examined across these notes form a coherent typology:
+
+**English** orthography — largely fixed in the Early Modern period by the printing press — preserves the pre-Great Vowel Shift vowel system. The spellings of *bite*, *time*, *house*, *out* reflect 15th-century pronunciations; the current diphthongs /aɪ/ and /aʊ/ are the products of a vowel shift that the orthography did not record. Every English speaker who writes *name*, *meet*, *time*, or *moon* is, in a sense, writing in a language that has not been spoken for five centuries.
+
+**French** orthography preserves final consonants that ceased to be pronounced in the spoken language centuries ago: the *-nt* of *parlent*, the *-s* of *vous*, the *-t* of *est* are visible in writing and audible in liaison but absent from citation forms of the words. The gap between French spelling and French speech is one of the largest in any alphabetically written European language, and it serves as a permanent record of the spoken language's phonological history.
+
+**Arabic** diglossia is the most extreme case: the standard written language (Modern Standard Arabic, based on Classical Arabic) encodes the consonantal morphology, case endings, and grammatical structure of the 7th-century classical standard, while the spoken colloquial varieties have lost case endings, simplified morphology, and diverged phonologically to the point of mutual unintelligibility across regions. The writing system maintains not a slightly earlier stage of the language but a stage separated from the spoken vernacular by over a millennium of change.
+
+**Literary Chinese** — maintained as the prestige written medium of China, Japan, Korea, and Vietnam for two millennia — preserved the grammatical structure and vocabulary of Han dynasty prose while the spoken Chinese varieties diverged from that standard in ways that made colloquial speech nearly as distant from Literary Chinese as modern Spanish is from Classical Latin. The logographic writing system's independence from phonology made this conservatism particularly extreme: characters could be read with different pronunciations in different national traditions while retaining their morphemic identity.
+
+The social mechanism that sustains orthographic conservatism is the investment of cultural prestige in the literacy of the standard form. Educated speakers of Arabic are trained in Modern Standard Arabic despite its distance from their spoken vernaculars; educated speakers of English learn to spell in a system whose opacity reflects the language of five centuries ago; educated speakers of French maintain a spelling system that preserves linguistic history visible nowhere in their everyday speech. The conservatism is not linguistically motivated — a phonologically transparent orthography would serve communicative functions equally well — but socially motivated: literacy in the historical standard is a marker of education, cultural continuity, and membership in the literate community.
+
+The corollary is that orthographic reform — like Atatürk's 1928 replacement of Ottoman Arabic script with Latin for Turkish, or the 20th-century replacement of Chữ Nôm with Quốc ngữ for Vietnamese, or the simplification of Chinese characters in the PRC — always involves a trade-off between increasing phonological transparency (and thereby accessibility of literacy) and severing the connection to the pre-reform written heritage. These are not purely linguistic decisions; they are political decisions about whose cultural heritage is preserved and whose is sacrificed for the sake of wider literacy access.
+
+---
+
+### Language Death and the Limits of Maintenance
+
+The ultimate endpoint of the diachronic process — for a language that fails to maintain a speaker community through intergenerational transmission — is **language death**: the cessation of native-speaker acquisition and the eventual loss of competent speakers. Language death is not a natural event in any biological sense; it is the outcome of social and political pressures that create conditions in which parents choose not to transmit their heritage language to their children, or in which children acquire a dominant language at the expense of the heritage language, or in which communities are physically destroyed or dispersed through conquest, displacement, or assimilation.
+
+The cases of language death and endangerment examined across these notes illustrate the variety of pathways through which languages lose their speaker communities:
+
+**Manchu** — the language of a ruling dynasty that controlled China for 268 years — demonstrates that **political power does not guarantee language maintenance**. The Qing dynasty's Manchu rulers had every institutional resource available to maintain their language: imperial administration, dedicated schools, a Manchu-language documentary tradition, and the prestige of the ruling class. None of it prevented rapid language shift, driven by the social incentives that made Chinese literacy more valuable than Manchu literacy for participation in the Qing administrative culture. By the late 19th century, the Manchu ruling class in Beijing had largely shifted to Chinese; today, fewer than a dozen fluent native speakers remain.
+
+**Ubykh** — with 84 consonant phonemes, one of the most phonologically extraordinary languages documented — was driven toward extinction by the Russian-Circassian War of the 19th century and the mass deportation of the Circassian population. The last speaker, Tevfik Esenç, died in 1992 in Turkey — a diaspora community that had maintained Ubykh for over a century after the deportation but could not sustain intergenerational transmission in the Turkish cultural environment. The language's extinction was not linguistic but demographic and political.
+
+**Ryukyuan languages** — closely related to Japanese and representing the southernmost branch of the Japonic family — were suppressed through deliberate educational policy during the Japanese imperial period (1879–1945), when the Ryukyu Kingdom was absorbed into Japan and the Ryukyuan languages were classified as dialects of Japanese and excluded from education and official use. The result was a generation of parents who internalized the social stigma attached to the languages and did not transmit them to their children. The youngest fluent native speakers of most Ryukyuan varieties are now elderly; revitalization efforts face the challenge of reversing in decades what suppression achieved over a century.
+
+**Classical Nahuatl's** transition to modern Nahuatl varieties demonstrates a different pattern: not death but transformation. The colonial period disrupted the Aztec imperial culture that had maintained Classical Nahuatl as a prestige literary language, but the Nahuatl-speaking communities of rural Mexico maintained their language across five centuries of subordination. Modern Nahuatl varieties are not Classical Nahuatl — they have undergone phonological change, structural simplification in some domains, and massive Spanish borrowing — but they represent continuous community transmission, a different outcome from the Manchu or Ubykh cases.
+
+The contrast between these trajectories suggests that language maintenance is driven less by a language's structural properties or cultural prestige than by the **social economy of the speaker community**: whether the language provides economic, social, or symbolic value that justifies the effort of intergenerational transmission in competition with the dominant language. Where the dominant language offers substantially greater access to economic opportunity and social mobility, and where the speaker community lacks the institutional infrastructure (schools, media, official recognition) to make the heritage language a vehicle for comparable access, transmission tends to decline regardless of the community's emotional attachment to the language.
+
+---
+
+### Synthesis: The Shape of Linguistic Time
+
+Drawing together the diachronic threads from across these notes, a coherent picture of linguistic change emerges. Languages do not change randomly; they drift through a structured typological space under the influence of a small number of well-understood mechanisms. Sound change is the primary motor: the physics of the vocal tract and the perceptual system create predictable pressures — reduction of unstressed syllables, conditioned pitch effects, assimilation of adjacent sounds — that operate uniformly across a language's vocabulary. The morphological consequences of sound change depend on where the affected sounds happen to be located: when they are in inflectional endings, morphological paradigms collapse and the language is pushed toward analyticity; when they are in root consonants, morphological distinctions may be redistributed into prosodic features (creating tone systems from consonantal systems). The cycle from analytic to synthetic and back is not a law but a recurring attractor — a structural pattern to which language systems are repeatedly drawn by the combined pressures of grammaticalization and erosion.
+
+Contact adds an external dimension to this internal drift: languages in contact are permeable to vocabulary from their neighbors, moderately permeable to phonological influence, and relatively resistant to morphological restructuring. The selective permeability means that genealogical identity — defined by morphological core — can survive extensive surface transformation through contact. Hungarian is Uralic because its case system and verb morphology are Uralic, despite a vocabulary that is substantially Slavic, Germanic, Latin, and Turkish.
+
+Writing freezes the language at the moment of orthographic standardization and maintains that frozen stage in tension with the continuing evolution of the spoken language. The gap between written and spoken forms — largest in Arabic, Chinese, and English, smallest in Finnish and Spanish — is a direct measure of the distance between the moment of standardization and the present phonological state. The social value invested in literacy in the standard form is what sustains this gap; without it, orthographies would update more readily to reflect phonological reality.
+
+And at the endpoint of all these processes, for some languages, is extinction — not because language death is biologically inevitable but because the social conditions that make intergenerational transmission viable were destroyed by political violence, demographic displacement, or the overwhelming dominance of a competing language in the social economy of the community. The linguistic diversity that the previous chapters have documented is not a permanent achievement; it is a product of history, and history can take it away.
+
+---
+
+**Thought-provoking questions**
+
+- The neogrammarian hypothesis — that sound changes operate without exception — was formulated as an empirical generalization, not a theoretical necessity. Yet it has proven enormously fruitful: the regularity of sound change is what makes the comparative method possible and what gives historical linguistics its predictive power. Is the regularity of sound change a property of language itself (a consequence of how phonological categories are psychologically represented), a property of the speech community (a consequence of how language is transmitted across generations), or a property of the analytical framework (a consequence of how historical linguists choose to organize their evidence)? What would it mean for each of these answers to be correct?
+
+- Writing systems freeze earlier stages of phonological development and are maintained by the social value of literacy in the standard form. This means that every time someone learns to read and write, they are learning a phonological system from a previous historical moment — acquiring, in addition to the spoken language, a partial competence in an earlier stage of the language's history. Is this "temporal layering" of literacy a burden (requiring learners to manage a phonological system that does not match what they hear) or a resource (connecting literate speakers to a larger temporal community of readers and writers)? Does the answer depend on the degree of discrepancy between the written and spoken forms?
+
+- The selective permeability of linguistic structure to contact — vocabulary most permeable, phonology moderately, morphological core least — has been documented across multiple independent contact situations in these notes. If this pattern reflects deep properties of language acquisition (morphological paradigms are acquired early and become resistant to change), it should be observable in second-language acquisition as well: adult learners of a second language should find vocabulary easiest to acquire, followed by phonology, followed by morphological restructuring. Is this what second-language acquisition research finds? And if so, what does the parallel between adult L2 acquisition and contact-induced change in communities suggest about the mechanism of language change?
+
+- Language death, in the cases examined, was typically driven by political violence, deliberate suppression, or the economic dominance of a competing language — not by any intrinsic property of the dying language. Yet linguists sometimes describe language death in naturalistic metaphors: languages "die," they become "extinct," they "lose vitality." Does this naturalistic framing obscure the political causes of language shift by making it seem like a natural process rather than a consequence of power relations? What would it mean for the linguistics community to consistently use a different vocabulary — one that emphasizes the social and political conditions of language loss rather than the biological metaphors of extinction?

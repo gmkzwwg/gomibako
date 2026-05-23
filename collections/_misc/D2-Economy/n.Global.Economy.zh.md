@@ -2,7 +2,7 @@
 title: Recent Economic Analysis (近期经济学分析)
 layout: slide-linear
 categories: Notes
-subclass: Political Economy
+subclass: Economy
 ---
 
 # Chapter 1

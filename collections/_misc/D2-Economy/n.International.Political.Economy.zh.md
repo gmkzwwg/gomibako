@@ -2,7 +2,7 @@
 title: International Political Economy (国际政治经济学)
 layout: slide-linear
 categories: Notes
-subclass: Political Economy
+subclass: Economy
 ---
 
 ## Part 1：为什么今天必须重新学习国际政治经济学？
