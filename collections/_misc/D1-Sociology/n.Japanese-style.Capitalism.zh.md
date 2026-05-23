@@ -2,7 +2,7 @@
 title: Japanese Coordinated Capitalism (日式协调资本主义)
 layout: slide-linear
 categories: Notes
-subclass: Capitalism
+subclass: Sociology
 ---
 
 ## Part 1：为什么日本战后崛起不能只用“市场效率”来解释？

@@ -2,7 +2,7 @@
 title: International Information Warfare (国际信息战)
 layout: slide-linear
 categories: Notes
-subclass: International Relations
+subclass: Politics
 ---
 
 ## Part 1：为什么国际信息战不是“媒体宣传”，而是现代帝国治理的一部分？

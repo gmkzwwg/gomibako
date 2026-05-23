@@ -2,7 +2,7 @@
 title: Modern Capitalism (现代资本主义)
 layout: slide-linear
 categories: Notes
-subclass: Capitalism
+subclass: Sociology
 ---
 
 ## Part 1：为什么资本主义不是“市场经济”，而是一套组织世界的社会关系？

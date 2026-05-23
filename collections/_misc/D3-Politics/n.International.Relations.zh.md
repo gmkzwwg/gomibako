@@ -2,7 +2,7 @@
 title: International Relations (国际关系学)
 layout: slide-linear
 categories: Notes
-subclass: International Relations
+subclass: Politics
 ---
 
 ## Part 1：为什么国际关系不是“国家之间打交道”这么简单？
