@@ -7,23 +7,23 @@ subclass: Basics
 ## Minimal Guide
 
 What LaTeX is
-  - LaTeX = a markup-based typesetting system: you write structured plain text + commands; it compiles into a high-quality PDF.
-  - Core idea: describe structure (sections, figures, references), not pixel-level layout.
+* LaTeX = a markup-based typesetting system: you write structured plain text + commands; it compiles into a high-quality PDF.
+* Core idea: describe structure (sections, figures, references), not pixel-level layout.
 
 Why use LaTeX
-  - Typography quality: consistent spacing, hyphenation, pagination, professional output.
-  - Structure-first writing: headings, cross-references, tables/figures behave predictably.
-  - Large documents: stable management of long reports, theses, books.
-  - References: citations/bibliographies scale well (BibTeX/biblatex).
-  - Collaboration/versioning: plain text works well with Git and diff tools.
-  - Reuse: templates and macros let you standardize formatting across documents.
+* Typography quality: consistent spacing, hyphenation, pagination, professional output.
+* Structure-first writing: headings, cross-references, tables/figures behave predictably.
+* Large documents: stable management of long reports, theses, books.
+* References: citations/bibliographies scale well (BibTeX/biblatex).
+* Collaboration/versioning: plain text works well with Git and diff tools.
+* Reuse: templates and macros let you standardize formatting across documents.
 
 Use LaTeX when you need:
-  - Long or structured documents (papers, theses, books, lecture notes).
-  - Many figures/tables and lots of cross-referencing.
-  - Formal bibliography management.
-  - Consistent, publication-style formatting.
-  - Collaboration where plain-text + Git is beneficial.
+* Long or structured documents (papers, theses, books, lecture notes).
+* Many figures/tables and lots of cross-referencing.
+* Formal bibliography management.
+* Consistent, publication-style formatting.
+* Collaboration where plain-text + Git is beneficial.
 
 Best-practice workflow:
   1. Start from a reputable template.(Journal/conference template (IEEE/ACM/Springer) or a clean article template.)
@@ -36,11 +36,10 @@ Best-practice workflow:
   5. Compile consistently. Stick to one engine unless you know why: pdfLaTeX (common), XeLaTeX/LuaLaTeX (better Unicode/font handling).
 
 Tips
-  - **Use labels everywhere** you’ll refer back to: Put `\label{...}` right after `\caption{...}` for figures/tables.
-  - Escape special characters: If you need literal `# % & $ _ { } \` you must escape them: `\# \% \& \$ \_ \{ \} \textbackslash`
-  - Use booktabs for tables: Avoid vertical lines; use \toprule \midrule \bottomrule.
-  - Add hyperlinks early: hyperref makes refs/cites clickable in the PDF.
-
+* **Use labels everywhere** you’ll refer back to: Put `\label{...}` right after `\caption{...}` for figures/tables.
+* Escape special characters: If you need literal `# % & $ _ { } \` you must escape them: `\# \% \& \$ \_ \{ \} \textbackslash`
+* Use booktabs for tables: Avoid vertical lines; use \toprule \midrule \bottomrule.
+* Add hyperlinks early: hyperref makes refs/cites clickable in the PDF.
 
 ## Basic Usage
 
@@ -355,40 +354,40 @@ Cite: \citet{key} \citep{key}
 
 ### Common Packages
 
-Encoding/language: 
-  * `inputenc` (legacy): Enables UTF-8 input for pdfLaTeX; use only for older pdfLaTeX workflows or legacy templates—avoid if using modern UTF-8-by-default setups or XeLaTeX/LuaLaTeX.
-  * `fontenc`: Controls font encoding in pdfLaTeX (e.g., T1) for correct hyphenation and copy/paste of accented characters; use for Western-language documents compiled with pdfLaTeX.
-  * `babel`: Language and typographic rules (hyphenation patterns, captions, date formats) primarily for pdfLaTeX (also works elsewhere); use when writing in one or multiple languages and you want correct language-specific conventions.
-  * `polyglossia`: Language management designed for XeLaTeX/LuaLaTeX as an alternative to `babel`; use when compiling with XeLaTeX/LuaLaTeX, especially for multilingual documents.
+Encoding/language:
+* `inputenc` (legacy): Enables UTF-8 input for pdfLaTeX; use only for older pdfLaTeX workflows or legacy templates—avoid if using modern UTF-8-by-default setups or XeLaTeX/LuaLaTeX.
+* `fontenc`: Controls font encoding in pdfLaTeX (e.g., T1) for correct hyphenation and copy/paste of accented characters; use for Western-language documents compiled with pdfLaTeX.
+* `babel`: Language and typographic rules (hyphenation patterns, captions, date formats) primarily for pdfLaTeX (also works elsewhere); use when writing in one or multiple languages and you want correct language-specific conventions.
+* `polyglossia`: Language management designed for XeLaTeX/LuaLaTeX as an alternative to `babel`; use when compiling with XeLaTeX/LuaLaTeX, especially for multilingual documents.
 
 Fonts:  (XeLaTeX/LuaLaTeX)
-  * `lmodern`: Provides Latin Modern fonts (a cleaner, extended Computer Modern) with good PDF output; use for a quick, high-quality default in pdfLaTeX documents.
-  * `fontspec`: Lets you select system/OpenType fonts and control font features; use when compiling with XeLaTeX/LuaLaTeX and you need modern fonts, Unicode scripts, or precise typography.
+* `lmodern`: Provides Latin Modern fonts (a cleaner, extended Computer Modern) with good PDF output; use for a quick, high-quality default in pdfLaTeX documents.
+* `fontspec`: Lets you select system/OpenType fonts and control font features; use when compiling with XeLaTeX/LuaLaTeX and you need modern fonts, Unicode scripts, or precise typography.
 
 Layout:
-  * `geometry`: Sets page size and margins with simple options; use whenever you need predictable margin control (papers, theses, submissions).
-  * `setspace`: Adjusts line spacing (single/1.5/double) cleanly; use for thesis requirements, manuscripts, or reviewer-friendly drafts.
+* `geometry`: Sets page size and margins with simple options; use whenever you need predictable margin control (papers, theses, submissions).
+* `setspace`: Adjusts line spacing (single/1.5/double) cleanly; use for thesis requirements, manuscripts, or reviewer-friendly drafts.
 
 Graphics:
-  * `graphicx`: Adds `\includegraphics` and sizing/rotation options for images; use whenever you insert figures (PNG/JPG/PDF).
+* `graphicx`: Adds `\includegraphics` and sizing/rotation options for images; use whenever you insert figures (PNG/JPG/PDF).
 
-Color: 
-  * `xcolor`: Defines and manages colors for text, tables, and drawing packages; use when you need colored text/links/tables or any custom color definitions.
+Color:
+* `xcolor`: Defines and manages colors for text, tables, and drawing packages; use when you need colored text/links/tables or any custom color definitions.
 
 Hyperlinks:
-  * `hyperref`: Creates clickable references, citations, URLs, and PDF metadata; use in almost all documents intended for digital reading, typically loaded late in the preamble.
-  * `cleveref`: A "smart" referencing tool. It detects the type of element (Table, Figure, Section) and automatically adds the prefix (e.g., instead of typing Section~`\ref{sec:intro}`, you just type `\cref{sec:intro}`).
+* `hyperref`: Creates clickable references, citations, URLs, and PDF metadata; use in almost all documents intended for digital reading, typically loaded late in the preamble.
+* `cleveref`: A "smart" referencing tool. It detects the type of element (Table, Figure, Section) and automatically adds the prefix (e.g., instead of typing Section~`\ref{sec:intro}`, you just type `\cref{sec:intro}`).
 
-Lists: 
-  * `enumitem`: Controls list spacing, indentation, and labels for `itemize/enumerate`; use when default list formatting is too spaced out or you need consistent compact lists.
+Lists:
+* `enumitem`: Controls list spacing, indentation, and labels for `itemize/enumerate`; use when default list formatting is too spaced out or you need consistent compact lists.
 
-Tables: 
-  * `booktabs`: Provides professional horizontal rules (`\toprule`, `\midrule`, `\bottomrule`) and promotes clean table design; use for publication-quality tables (avoid vertical rules).
-  * `tabularx`: Adds a table environment that auto-adjusts column widths to a target table width; use when you have text-heavy columns and want the table to fit the page neatly.
-  * `longtable`: Enables tables that span multiple pages with repeating headers; use for long datasets, catalogs, or appendices where tables cannot fit on one page.
+Tables:
+* `booktabs`: Provides professional horizontal rules (`\toprule`, `\midrule`, `\bottomrule`) and promotes clean table design; use for publication-quality tables (avoid vertical rules).
+* `tabularx`: Adds a table environment that auto-adjusts column widths to a target table width; use when you have text-heavy columns and want the table to fit the page neatly.
+* `longtable`: Enables tables that span multiple pages with repeating headers; use for long datasets, catalogs, or appendices where tables cannot fit on one page.
 
 Bibliography:
-`* `biblatex` + `biber`: Modern bibliography system with flexible styles, robust localization, and fine-grained control; use for new projects unless a venue forces BibTeX/natbib.
+`*`biblatex` + `biber`: Modern bibliography system with flexible styles, robust localization, and fine-grained control; use for new projects unless a venue forces BibTeX/natbib.
 * `natbib` + BibTeX: Classic citation interface widely supported by journal templates and legacy workflows; use when a publisher/template requires BibTeX-based compilation or provides `.bst` styles.
 `
 
@@ -447,7 +446,6 @@ Here's a quick reference for common LaTeX math symbols:
 | $$ \omega $$      | `\omega`      | $$ \Omega $$   | `\Omega`   | /'oumigə/    |
 
 **Operators**
-
 
 | Item               | Symbol                            | LaTeX                         |
 | ------------------ | --------------------------------- | ----------------------------- |
@@ -774,212 +772,211 @@ a_{11} & \cdots & a_{1n} \\
 \end{bmatrix}
 $$
 
-
-<table> 
-   <thead> 
-    <tr> 
-     <th></th> 
-     <th>名称</th> 
-     <th>含义</th> 
-     <th>举例</th> 
-     <th>读法</th> 
-     <th>范畴</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td>→</td> 
-     <td>蕴含，实质蕴含</td> 
-     <td>A → B 意味着如果 A 为真，则 B 也为真；如果 A 为假，则对 B 没有任何影响</td> 
-     <td> x = 2 → x^2 =4 为真，但 x^2 = 4 → x = 2一般为假，因为可以有x = - 2</td> 
-     <td>仅为真值表蕴含式；如果…那么</td> 
-     <td>命题逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>⇒</td> 
-     <td>严格蕴含（模态逻辑）</td> 
-     <td>A ⇒ B 表示不仅 A 蕴含 B ，而且内容相关</td> 
-     <td></td> 
-     <td>严格蕴含，内容相关；如果…那么</td> 
-     <td>模态逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>↔</td> 
-     <td>实质等价</td> 
-     <td>A ↔ B 意味着 A 为真 则B 为真，和 A 为假 则 B 为假。</td> 
-     <td> x + 5 = y + 2 ↔ x + 3 = y</td> 
-     <td>当且仅当；iff</td> 
-     <td>命题逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>⇔</td> 
-     <td>严格等价（模态逻辑）</td> 
-     <td>A ⇔ B ， A与B之间必须内容相关。</td> 
-     <td></td> 
-     <td>当且仅当；iff</td> 
-     <td>模态逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>¬</td> 
-     <td>逻辑否定</td> 
-     <td>¬A 为真，当且仅当 A 为假</td> 
-     <td>¬(¬A) ↔ A</td> 
-     <td>非</td> 
-     <td>命题逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>∧</td> 
-     <td>逻辑合取</td> 
-     <td>当A 与 B二者都为真，则陈述 A ∧ B 为真；否则为假</td> 
-     <td>n &lt; 4 ∧ n &gt;2 ⇔ n = 3（当 n 是自 然数的时候）</td> 
-     <td>与</td> 
-     <td>命题逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>∨</td> 
-     <td>逻辑析取</td> 
-     <td>当A 或 B有一个为真或二者均为真陈述，则 A ∨ B 为真；当二者都为假，则 陈述为假。</td> 
-     <td>n ≣ 4 ∨ n ≢ 2 ⇔ n ≠ 3（当 n 是 自然数的时候）。</td> 
-     <td>或</td> 
-     <td>命题逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>∀</td> 
-     <td>全称量词</td> 
-     <td>∀ x: P(x) 意味着对所有的 x 都使 P(x) 都为真。</td> 
-     <td>∀ n ∈ N（n² ≣ n）</td> 
-     <td>所有，每一个，任意</td> 
-     <td>谓词逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>∃</td> 
-     <td>存在量词</td> 
-     <td>∃ x: P(x) 意味着有至少存在一个 x 使 P(x) 为真。</td> 
-     <td>∃ n ∈ N（n 是偶数）。</td> 
-     <td>存在着，至少有一个</td> 
-     <td>谓词逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>∃!</td> 
-     <td>唯一量词</td> 
-     <td>∃! x: P(x) 意味着精确的有一个 x 使 P(x) 为真。</td> 
-     <td>∃! n ∈ N（n + 5 = 2n）</td> 
-     <td>精确的存在一个</td> 
-     <td>谓词逻辑</td> 
-    </tr> 
-    <tr> 
-     <td> Ψ</td> 
-     <td>任意目谓词</td> 
-     <td> Ψ : psi，读音“普赛”，大写 Ψ，小写 ψ</td> 
-     <td> Ψ（）是任意目谓词的元变项</td> 
-     <td> Ψ（x）代表任意目谓词构成的开语句</td> 
-     <td>谓词逻辑</td> 
-    </tr> 
-    <tr> 
-     <td> ι</td> 
-     <td>摹状词里用希腊字母 ι 代替定冠词</td> 
-     <td> ι : iota ，读音”约塔“ 或者”艾欧塔“。大写 Ι ， 小写  ι</td> 
-     <td>摹状词结构：定冠词 the+形容词+名词单数，符号化为  ιxp （x）</td> 
-     <td>q（ ιxp （x））读做：那个唯一具有性质p的个体是q</td> 
-     <td>谓词逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>∵</td> 
-     <td>因为</td> 
+<table>
+   <thead>
+    <tr>
+     <th></th>
+     <th>名称</th>
+     <th>含义</th>
+     <th>举例</th>
+     <th>读法</th>
+     <th>范畴</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>→</td>
+     <td>蕴含，实质蕴含</td>
+     <td>A → B 意味着如果 A 为真，则 B 也为真；如果 A 为假，则对 B 没有任何影响</td>
+     <td> x = 2 → x^2 =4 为真，但 x^2 = 4 → x = 2一般为假，因为可以有x = - 2</td>
+     <td>仅为真值表蕴含式；如果…那么</td>
+     <td>命题逻辑</td>
+    </tr>
+    <tr>
+     <td>⇒</td>
+     <td>严格蕴含（模态逻辑）</td>
+     <td>A ⇒ B 表示不仅 A 蕴含 B ，而且内容相关</td>
      <td></td>
-     <td></td> 
-     <td></td> 
-     <td></td> 
-    </tr> 
-    <tr> 
-     <td>∴</td> 
-     <td>所以</td> 
+     <td>严格蕴含，内容相关；如果…那么</td>
+     <td>模态逻辑</td>
+    </tr>
+    <tr>
+     <td>↔</td>
+     <td>实质等价</td>
+     <td>A ↔ B 意味着 A 为真 则B 为真，和 A 为假 则 B 为假。</td>
+     <td> x + 5 = y + 2 ↔ x + 3 = y</td>
+     <td>当且仅当；iff</td>
+     <td>命题逻辑</td>
+    </tr>
+    <tr>
+     <td>⇔</td>
+     <td>严格等价（模态逻辑）</td>
+     <td>A ⇔ B ， A与B之间必须内容相关。</td>
      <td></td>
-     <td></td> 
-     <td></td> 
-     <td></td> 
-    </tr> 
-    <tr> 
-     <td> □</td> 
-     <td>模态词</td> 
-     <td>必然</td> 
-     <td>-</td> 
-     <td>必然</td> 
-     <td>-</td> 
-    </tr> 
-    <tr> 
-     <td> ⋄</td> 
-     <td>模态词</td> 
-     <td>可能</td> 
-     <td>-</td> 
-     <td>可能</td> 
-     <td>-</td> 
-    </tr> 
-    <tr> 
-     <td>┌└┃</td> 
-     <td>推演过程流程符号</td> 
-     <td>推演过程假设域需要用的流程符号</td> 
-     <td>-</td> 
-     <td></td> 
-     <td>-</td> 
-    </tr> 
-    <tr> 
-     <td>⊕</td> 
-     <td>xor</td> 
-     <td>陈述 A ⊕ B 为真，在要么 A 要么 B 但不是二者为真的时候为真。</td> 
-     <td>(¬A) ⊕ A 总是真，A ⊕ A 总是假。</td> 
-     <td>异或</td> 
-     <td>命题逻辑，布尔代数</td> 
-    </tr> 
-    <tr> 
-     <td>/</td> 
-     <td>命题逻辑</td> 
-     <td>穿过其他算符的斜线同于在它前面放置的"¬"。</td> 
-     <td>x ≠ y ↔ ¬(x = y)</td> 
-     <td>非</td> 
-     <td>命题逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>:= 或者 ≡</td> 
-     <td>定义</td> 
-     <td>x := y 或 x ≡ y 意味着 x 被定义为 y 的另一个名字(但要注意 ≡ 也可以意味着其他东西，比如全等)。</td> 
-     <td>双曲余弦函数cosh x := (1/2)(exp x + exp (−x))</td> 
-     <td>被定义为</td> 
-     <td>所有地方</td> 
-    </tr> 
-    <tr> 
-     <td>:⇔</td> 
-     <td>定义</td> 
-     <td>P :⇔ Q 意味着 P 被定义为逻辑等价于 Q。</td> 
-     <td>A XOR B :⇔ (A ∨ B) ∧ ¬(A ∧ B)</td> 
-     <td>被定义为</td> 
-     <td>所有地方</td> 
-    </tr> 
-    <tr> 
-     <td>├</td> 
-     <td>推论</td> 
-     <td>x ├ y 意味着 y 推导自 x。</td> 
-     <td>A → B ├ ¬B → ¬A</td> 
-     <td>推论或推导</td> 
-     <td>命题逻辑, 谓词逻辑</td> 
-    </tr> 
-    <tr> 
-     <td>├</td> 
-     <td>断定符</td> 
-     <td>-</td> 
-     <td>-</td> 
-     <td>(公式在L中可证)</td> 
-     <td>-</td> 
-    </tr> 
-    <tr> 
-     <td>╞</td> 
-     <td>满足符</td> 
-     <td>-</td> 
-     <td>-</td> 
-     <td>(公式在E上有效，公式在E上可满足)</td> 
-     <td>-</td> 
-    </tr> 
-   </tbody> 
+     <td>当且仅当；iff</td>
+     <td>模态逻辑</td>
+    </tr>
+    <tr>
+     <td>¬</td>
+     <td>逻辑否定</td>
+     <td>¬A 为真，当且仅当 A 为假</td>
+     <td>¬(¬A) ↔ A</td>
+     <td>非</td>
+     <td>命题逻辑</td>
+    </tr>
+    <tr>
+     <td>∧</td>
+     <td>逻辑合取</td>
+     <td>当A 与 B二者都为真，则陈述 A ∧ B 为真；否则为假</td>
+     <td>n &lt; 4 ∧ n &gt;2 ⇔ n = 3（当 n 是自 然数的时候）</td>
+     <td>与</td>
+     <td>命题逻辑</td>
+    </tr>
+    <tr>
+     <td>∨</td>
+     <td>逻辑析取</td>
+     <td>当A 或 B有一个为真或二者均为真陈述，则 A ∨ B 为真；当二者都为假，则 陈述为假。</td>
+     <td>n ≣ 4 ∨ n ≢ 2 ⇔ n ≠ 3（当 n 是 自然数的时候）。</td>
+     <td>或</td>
+     <td>命题逻辑</td>
+    </tr>
+    <tr>
+     <td>∀</td>
+     <td>全称量词</td>
+     <td>∀ x: P(x) 意味着对所有的 x 都使 P(x) 都为真。</td>
+     <td>∀ n ∈ N（n² ≣ n）</td>
+     <td>所有，每一个，任意</td>
+     <td>谓词逻辑</td>
+    </tr>
+    <tr>
+     <td>∃</td>
+     <td>存在量词</td>
+     <td>∃ x: P(x) 意味着有至少存在一个 x 使 P(x) 为真。</td>
+     <td>∃ n ∈ N（n 是偶数）。</td>
+     <td>存在着，至少有一个</td>
+     <td>谓词逻辑</td>
+    </tr>
+    <tr>
+     <td>∃!</td>
+     <td>唯一量词</td>
+     <td>∃! x: P(x) 意味着精确的有一个 x 使 P(x) 为真。</td>
+     <td>∃! n ∈ N（n + 5 = 2n）</td>
+     <td>精确的存在一个</td>
+     <td>谓词逻辑</td>
+    </tr>
+    <tr>
+     <td> Ψ</td>
+     <td>任意目谓词</td>
+     <td> Ψ : psi，读音“普赛”，大写 Ψ，小写 ψ</td>
+     <td> Ψ（）是任意目谓词的元变项</td>
+     <td> Ψ（x）代表任意目谓词构成的开语句</td>
+     <td>谓词逻辑</td>
+    </tr>
+    <tr>
+     <td> ι</td>
+     <td>摹状词里用希腊字母 ι 代替定冠词</td>
+     <td> ι : iota ，读音”约塔“ 或者”艾欧塔“。大写 Ι ， 小写  ι</td>
+     <td>摹状词结构：定冠词 the+形容词+名词单数，符号化为  ιxp （x）</td>
+     <td>q（ ιxp （x））读做：那个唯一具有性质p的个体是q</td>
+     <td>谓词逻辑</td>
+    </tr>
+    <tr>
+     <td>∵</td>
+     <td>因为</td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    </tr>
+    <tr>
+     <td>∴</td>
+     <td>所以</td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+    </tr>
+    <tr>
+     <td> □</td>
+     <td>模态词</td>
+     <td>必然</td>
+     <td>-</td>
+     <td>必然</td>
+     <td>-</td>
+    </tr>
+    <tr>
+     <td> ⋄</td>
+     <td>模态词</td>
+     <td>可能</td>
+     <td>-</td>
+     <td>可能</td>
+     <td>-</td>
+    </tr>
+    <tr>
+     <td>┌└┃</td>
+     <td>推演过程流程符号</td>
+     <td>推演过程假设域需要用的流程符号</td>
+     <td>-</td>
+     <td></td>
+     <td>-</td>
+    </tr>
+    <tr>
+     <td>⊕</td>
+     <td>xor</td>
+     <td>陈述 A ⊕ B 为真，在要么 A 要么 B 但不是二者为真的时候为真。</td>
+     <td>(¬A) ⊕ A 总是真，A ⊕ A 总是假。</td>
+     <td>异或</td>
+     <td>命题逻辑，布尔代数</td>
+    </tr>
+    <tr>
+     <td>/</td>
+     <td>命题逻辑</td>
+     <td>穿过其他算符的斜线同于在它前面放置的"¬"。</td>
+     <td>x ≠ y ↔ ¬(x = y)</td>
+     <td>非</td>
+     <td>命题逻辑</td>
+    </tr>
+    <tr>
+     <td>:= 或者 ≡</td>
+     <td>定义</td>
+     <td>x := y 或 x ≡ y 意味着 x 被定义为 y 的另一个名字(但要注意 ≡ 也可以意味着其他东西，比如全等)。</td>
+     <td>双曲余弦函数cosh x := (1/2)(exp x + exp (−x))</td>
+     <td>被定义为</td>
+     <td>所有地方</td>
+    </tr>
+    <tr>
+     <td>:⇔</td>
+     <td>定义</td>
+     <td>P :⇔ Q 意味着 P 被定义为逻辑等价于 Q。</td>
+     <td>A XOR B :⇔ (A ∨ B) ∧ ¬(A ∧ B)</td>
+     <td>被定义为</td>
+     <td>所有地方</td>
+    </tr>
+    <tr>
+     <td>├</td>
+     <td>推论</td>
+     <td>x ├ y 意味着 y 推导自 x。</td>
+     <td>A → B ├ ¬B → ¬A</td>
+     <td>推论或推导</td>
+     <td>命题逻辑, 谓词逻辑</td>
+    </tr>
+    <tr>
+     <td>├</td>
+     <td>断定符</td>
+     <td>-</td>
+     <td>-</td>
+     <td>(公式在L中可证)</td>
+     <td>-</td>
+    </tr>
+    <tr>
+     <td>╞</td>
+     <td>满足符</td>
+     <td>-</td>
+     <td>-</td>
+     <td>(公式在E上有效，公式在E上可满足)</td>
+     <td>-</td>
+    </tr>
+   </tbody>
 </table>
 
 ### 数学符号
@@ -1079,158 +1076,158 @@ $$
 
 ### 希腊字母
 
-<table> 
-   <thead> 
-    <tr> 
-     <th colspan="2">大小写</th> 
-     <th>读音</th> 
-     <th>常见含义</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td>Α</td> 
-     <td>α</td> 
-     <td>alpha /ˈælfə/，阿尔法</td> 
-     <td>角度；系数 ； 角加速度</td> 
-    </tr> 
-    <tr> 
-     <td>Β</td> 
-     <td>β</td> 
-     <td>beta /'beitə/，贝塔</td> 
-     <td>磁通系数；角度；系数</td> 
-    </tr> 
-    <tr> 
-     <td>Γ</td> 
-     <td>γ</td> 
-     <td>gamma/'gæmə/，伽玛</td> 
-     <td>电导系数（小写） ；角度，比热容比</td> 
-    </tr> 
-    <tr> 
-     <td>Δ</td> 
-     <td>δ</td> 
-     <td>delta/'deltə/，德尔塔</td> 
-     <td>变动；密度；变化量，屈光度，一元二次方程中的判别式</td> 
-    </tr> 
-    <tr> 
-     <td>Ε</td> 
-     <td>ε,e</td> 
-     <td>epsilon /ep’silon/ ，伊普西隆</td> 
-     <td>对数之基数 ；介电常数</td> 
-    </tr> 
-    <tr> 
-     <td>Ζ</td> 
-     <td>ζ</td> 
-     <td>zeta/'zi:tə/，泽塔</td> 
-     <td>系数；方位角；阻抗；相对粘度；原子序数</td> 
-    </tr> 
-    <tr> 
-     <td>Η</td> 
-     <td>η</td> 
-     <td>eta/'i:tə/，伊塔</td> 
-     <td>磁滞系数；效率（小写）</td> 
-    </tr> 
-    <tr> 
-     <td>Θ</td> 
-     <td>θ,θ</td> 
-     <td>theta/'θi:tə/ ，西塔</td> 
-     <td>温度；相位角</td> 
-    </tr> 
-    <tr> 
-     <td>Ι</td> 
-     <td>ι</td> 
-     <td>iota/ai’oute/，约塔，艾欧塔</td> 
-     <td>微小,一点儿</td> 
-    </tr> 
-    <tr> 
-     <td>Κ</td> 
-     <td>κ</td> 
-     <td>kappa/'kæpə/ ，卡帕</td> 
-     <td>介质常数 ；绝热指数</td> 
-    </tr> 
-    <tr> 
-     <td>∧</td> 
-     <td>λ</td> 
-     <td>lambda/'læmdə/ ，兰姆达</td> 
-     <td>波长（小写）；体积 ；导热系数</td> 
-    </tr> 
-    <tr> 
-     <td>Μ</td> 
-     <td>μ</td> 
-     <td>mu/mju:/，米欧</td> 
-     <td>磁导系数；微（千分之一）；放大因数（小写） ；动摩擦系（因）数；流体动力粘度</td> 
-    </tr> 
-    <tr> 
-     <td>Ν</td> 
-     <td>ν</td> 
-     <td>nu /nju:/， 纽</td> 
-     <td>磁阻系数 ；流体运动粘度；光子频率</td> 
-    </tr> 
-    <tr> 
-     <td>Ξ</td> 
-     <td>ξ</td> 
-     <td>xi/ksi/，克西</td> 
-     <td>随机数；（小）区间内的一个未知特定值</td> 
-    </tr> 
-    <tr> 
-     <td>Ο</td> 
-     <td>ο</td> 
-     <td>omicron /oumaik’rən/ ，欧米克隆</td> 
-     <td>高阶无穷小函数</td> 
-    </tr> 
-    <tr> 
-     <td>∏</td> 
-     <td>π</td> 
-     <td>pi /pai/，派</td> 
-     <td>圆周÷直径=3.1416 ；圆周率，π(n)表示不大于n的质数个数</td> 
-    </tr> 
-    <tr> 
-     <td>Ρ</td> 
-     <td>ρ,ρ</td> 
-     <td>rho/rou/，柔</td> 
-     <td>电阻系数（小写） ；柱坐标和极坐标中的极径；密度</td> 
-    </tr> 
-    <tr> 
-     <td>∑</td> 
-     <td>σ,s</td> 
-     <td>sigma/'sigmə/ ，西格玛</td> 
-     <td>总和（大写）,表面密度；跨导（小写） ；正应力</td> 
-    </tr> 
-    <tr> 
-     <td>Τ</td> 
-     <td>τ</td> 
-     <td>tau /tau/，陶</td> 
-     <td>时间常数 ；切应力</td> 
-    </tr> 
-    <tr> 
-     <td>Υ</td> 
-     <td>υ</td> 
-     <td>upsilon/ju:p’silən/ ，玉普西隆</td> 
-     <td>位移</td> 
-    </tr> 
-    <tr> 
-     <td>Φ</td> 
-     <td>φ</td> 
-     <td>phi /fai/，弗爱</td> 
-     <td>磁通；角 ；透镜焦度；热流量</td> 
-    </tr> 
-    <tr> 
-     <td>Χ</td> 
-     <td>χ</td> 
-     <td>chi /kai/ ，凯</td> 
-     <td>统计学中有卡方(χ2)分布</td> 
-    </tr> 
-    <tr> 
-     <td>Ψ</td> 
-     <td>ψ</td> 
-     <td>psi/psai/ ，普赛</td> 
-     <td>角速；介质电通量（静电力线）；角</td> 
-    </tr> 
-    <tr> 
-     <td>Ω</td> 
-     <td>ω</td> 
-     <td>omega/'oumigə/，奥米伽</td> 
-     <td>欧姆（大写）；角速（小写）；角 ；交流电的电角度</td> 
-    </tr> 
-   </tbody> 
+<table>
+   <thead>
+    <tr>
+     <th colspan="2">大小写</th>
+     <th>读音</th>
+     <th>常见含义</th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>Α</td>
+     <td>α</td>
+     <td>alpha /ˈælfə/，阿尔法</td>
+     <td>角度；系数 ； 角加速度</td>
+    </tr>
+    <tr>
+     <td>Β</td>
+     <td>β</td>
+     <td>beta /'beitə/，贝塔</td>
+     <td>磁通系数；角度；系数</td>
+    </tr>
+    <tr>
+     <td>Γ</td>
+     <td>γ</td>
+     <td>gamma/'gæmə/，伽玛</td>
+     <td>电导系数（小写） ；角度，比热容比</td>
+    </tr>
+    <tr>
+     <td>Δ</td>
+     <td>δ</td>
+     <td>delta/'deltə/，德尔塔</td>
+     <td>变动；密度；变化量，屈光度，一元二次方程中的判别式</td>
+    </tr>
+    <tr>
+     <td>Ε</td>
+     <td>ε,e</td>
+     <td>epsilon /ep’silon/ ，伊普西隆</td>
+     <td>对数之基数 ；介电常数</td>
+    </tr>
+    <tr>
+     <td>Ζ</td>
+     <td>ζ</td>
+     <td>zeta/'zi:tə/，泽塔</td>
+     <td>系数；方位角；阻抗；相对粘度；原子序数</td>
+    </tr>
+    <tr>
+     <td>Η</td>
+     <td>η</td>
+     <td>eta/'i:tə/，伊塔</td>
+     <td>磁滞系数；效率（小写）</td>
+    </tr>
+    <tr>
+     <td>Θ</td>
+     <td>θ,θ</td>
+     <td>theta/'θi:tə/ ，西塔</td>
+     <td>温度；相位角</td>
+    </tr>
+    <tr>
+     <td>Ι</td>
+     <td>ι</td>
+     <td>iota/ai’oute/，约塔，艾欧塔</td>
+     <td>微小,一点儿</td>
+    </tr>
+    <tr>
+     <td>Κ</td>
+     <td>κ</td>
+     <td>kappa/'kæpə/ ，卡帕</td>
+     <td>介质常数 ；绝热指数</td>
+    </tr>
+    <tr>
+     <td>∧</td>
+     <td>λ</td>
+     <td>lambda/'læmdə/ ，兰姆达</td>
+     <td>波长（小写）；体积 ；导热系数</td>
+    </tr>
+    <tr>
+     <td>Μ</td>
+     <td>μ</td>
+     <td>mu/mju:/，米欧</td>
+     <td>磁导系数；微（千分之一）；放大因数（小写） ；动摩擦系（因）数；流体动力粘度</td>
+    </tr>
+    <tr>
+     <td>Ν</td>
+     <td>ν</td>
+     <td>nu /nju:/， 纽</td>
+     <td>磁阻系数 ；流体运动粘度；光子频率</td>
+    </tr>
+    <tr>
+     <td>Ξ</td>
+     <td>ξ</td>
+     <td>xi/ksi/，克西</td>
+     <td>随机数；（小）区间内的一个未知特定值</td>
+    </tr>
+    <tr>
+     <td>Ο</td>
+     <td>ο</td>
+     <td>omicron /oumaik’rən/ ，欧米克隆</td>
+     <td>高阶无穷小函数</td>
+    </tr>
+    <tr>
+     <td>∏</td>
+     <td>π</td>
+     <td>pi /pai/，派</td>
+     <td>圆周÷直径=3.1416 ；圆周率，π(n)表示不大于n的质数个数</td>
+    </tr>
+    <tr>
+     <td>Ρ</td>
+     <td>ρ,ρ</td>
+     <td>rho/rou/，柔</td>
+     <td>电阻系数（小写） ；柱坐标和极坐标中的极径；密度</td>
+    </tr>
+    <tr>
+     <td>∑</td>
+     <td>σ,s</td>
+     <td>sigma/'sigmə/ ，西格玛</td>
+     <td>总和（大写）,表面密度；跨导（小写） ；正应力</td>
+    </tr>
+    <tr>
+     <td>Τ</td>
+     <td>τ</td>
+     <td>tau /tau/，陶</td>
+     <td>时间常数 ；切应力</td>
+    </tr>
+    <tr>
+     <td>Υ</td>
+     <td>υ</td>
+     <td>upsilon/ju:p’silən/ ，玉普西隆</td>
+     <td>位移</td>
+    </tr>
+    <tr>
+     <td>Φ</td>
+     <td>φ</td>
+     <td>phi /fai/，弗爱</td>
+     <td>磁通；角 ；透镜焦度；热流量</td>
+    </tr>
+    <tr>
+     <td>Χ</td>
+     <td>χ</td>
+     <td>chi /kai/ ，凯</td>
+     <td>统计学中有卡方(χ2)分布</td>
+    </tr>
+    <tr>
+     <td>Ψ</td>
+     <td>ψ</td>
+     <td>psi/psai/ ，普赛</td>
+     <td>角速；介质电通量（静电力线）；角</td>
+    </tr>
+    <tr>
+     <td>Ω</td>
+     <td>ω</td>
+     <td>omega/'oumigə/，奥米伽</td>
+     <td>欧姆（大写）；角速（小写）；角 ；交流电的电角度</td>
+    </tr>
+   </tbody>
 </table>
