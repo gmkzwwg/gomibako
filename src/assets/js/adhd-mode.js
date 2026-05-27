@@ -3,7 +3,8 @@
  *
  * Introduction:
  * A compact plug-and-play ADHD reading helper for long-form pages.
- * It keeps the mature English word-anchor behavior and adds a lightweight CJK character animation effect.
+ * English word mode colors the first half of eligible word-based tokens.
+ * Chinese/CJK sentence mode periodically highlights one visible sentence with a color + bold transition.
  *
  * Usage:
  * Include this file after page content or before DOMContentLoaded. It runs automatically when enabled is true.
@@ -16,8 +17,9 @@
  * window.updateConfig()               - Convenience alias for ADHDReadMode.updateConfig().
  *
  * Notes:
- * English word anchors persist until disabled/rebuilt. CJK effects temporarily wrap exactly one visible CJK
- * character, pre-color it, play one balanced random animation, and restore it to normal text.
+ * English word anchors persist until disabled/rebuilt.
+ * CJK sentence highlights are lightweight: every n seconds, one visible block gets one sentence highlighted.
+ * At most maxActiveBlocks blocks are highlighted at the same time, and one block never receives duplicate highlights.
  */
 (function () {
   "use strict";
@@ -31,7 +33,7 @@
       "pre", "code", "strong", "em", "kbd", "samp", "script", "style", "textarea", "input", "select", "option",
       "button", "svg", "canvas", "math", "mjx-container", ".math", ".MathJax", ".katex", ".katex-display",
       ".mermaid", ".highlight", ".rouge-code", ".rouge-table", ".lineno", ".no-adhd", ".adhd-ignore",
-      ".jsd-linear-toolbar", ".jsd-tree-widget", "[data-adhd-rm='1']", ".adhd-cjk-live", ".adhd-fx-snowflake"
+      ".jsd-linear-toolbar", ".jsd-tree-widget", "[data-adhd-rm='1']"
     ],
 
     colorPool: [
@@ -48,24 +50,22 @@
 
     wordMode: {
       enabled: true,
-      minLength: 4,
+      minLength: 3,
       sampleRate: 1,
       batchSize: 8,
       batchDelayMs: 16,
       maxTextLengthPerElement: 180000
     },
 
-    cjkEffect: {
+    sentenceMode: {
       enabled: true,
-      intervalMs: 5000,
-      preColorMs: 2000,
-      jumpMs: 1200,
-      shiverMs: 1000,
-      growMs: 1200,
-      snowflakeMin: 3,
-      snowflakeMax: 6,
+      intervalMs: 3000,
+      maxActiveBlocks: 3,
+      fadeMs: 700,
+      minCjkChars: 2,
       maxVisibleBlocks: 80,
-      maxTextNodesPerTick: 180
+      maxTextNodesPerTick: 160,
+      delimiters: "。！？；：.!?;:"
     },
 
     dynamic: {
@@ -80,11 +80,11 @@
     css: {
       styleId: "adhd-read-mode-style",
       wordClass: "adhd-word-mark",
+      sentenceClass: "adhd-cn-sentence",
       wordAttr: "data-adhd-word-signature"
     },
 
-    globalApiName: "updateConfig",
-    zIndex: 2147483000
+    globalApiName: "updateConfig"
   };
 
   const MARK_ATTR = "data-adhd-rm";
@@ -95,10 +95,8 @@
     roots: [],
     wordQueue: [],
     wordTimer: 0,
-    cjkTimer: 0,
-    activeChars: new Set(),
-    activeFx: new Set(),
-    effectBag: [],
+    sentenceTimer: 0,
+    activeHighlights: [],
     eventCleanups: [],
     rngState: 2463534242,
     configVersion: 1,
@@ -160,17 +158,15 @@
     cfg.wordMode.batchDelayMs = Math.max(0, Math.floor(Number(cfg.wordMode.batchDelayMs) || 16));
     cfg.wordMode.maxTextLengthPerElement = Math.max(1000, Math.floor(Number(cfg.wordMode.maxTextLengthPerElement) || 180000));
 
-    cfg.cjkEffect = cfg.cjkEffect || {};
-    cfg.cjkEffect.enabled = cfg.cjkEffect.enabled !== false;
-    cfg.cjkEffect.intervalMs = Math.max(600, Math.floor(Number(cfg.cjkEffect.intervalMs) || 3000));
-    cfg.cjkEffect.preColorMs = Math.max(0, Math.floor(Number(cfg.cjkEffect.preColorMs) || 2000));
-    cfg.cjkEffect.jumpMs = Math.max(300, Math.floor(Number(cfg.cjkEffect.jumpMs) || 1450));
-    cfg.cjkEffect.shiverMs = Math.max(300, Math.floor(Number(cfg.cjkEffect.shiverMs) || 1700));
-    cfg.cjkEffect.growMs = Math.max(300, Math.floor(Number(cfg.cjkEffect.growMs) || 1500));
-    cfg.cjkEffect.snowflakeMin = Math.max(0, Math.floor(Number(cfg.cjkEffect.snowflakeMin) || 3));
-    cfg.cjkEffect.snowflakeMax = Math.max(cfg.cjkEffect.snowflakeMin, Math.floor(Number(cfg.cjkEffect.snowflakeMax) || 6));
-    cfg.cjkEffect.maxVisibleBlocks = Math.max(1, Math.floor(Number(cfg.cjkEffect.maxVisibleBlocks) || 80));
-    cfg.cjkEffect.maxTextNodesPerTick = Math.max(1, Math.floor(Number(cfg.cjkEffect.maxTextNodesPerTick) || 180));
+    cfg.sentenceMode = cfg.sentenceMode || {};
+    cfg.sentenceMode.enabled = cfg.sentenceMode.enabled !== false;
+    cfg.sentenceMode.intervalMs = Math.max(800, Math.floor(Number(cfg.sentenceMode.intervalMs) || 3000));
+    cfg.sentenceMode.maxActiveBlocks = Math.max(1, Math.floor(Number(cfg.sentenceMode.maxActiveBlocks) || 3));
+    cfg.sentenceMode.fadeMs = Math.max(0, Math.floor(Number(cfg.sentenceMode.fadeMs) || 700));
+    cfg.sentenceMode.minCjkChars = Math.max(1, Math.floor(Number(cfg.sentenceMode.minCjkChars) || 2));
+    cfg.sentenceMode.maxVisibleBlocks = Math.max(1, Math.floor(Number(cfg.sentenceMode.maxVisibleBlocks) || 80));
+    cfg.sentenceMode.maxTextNodesPerTick = Math.max(1, Math.floor(Number(cfg.sentenceMode.maxTextNodesPerTick) || 160));
+    cfg.sentenceMode.delimiters = String(cfg.sentenceMode.delimiters || "。！？；：.!?;:");
 
     cfg.dynamic = cfg.dynamic || {};
     cfg.dynamic.eventNames = asArray(cfg.dynamic.eventNames);
@@ -215,7 +211,36 @@
     return false;
   }
 
-  /** Suppresses self-triggered cleanup side effects. */
+  /** Returns true if a node is or belongs to a protected inline element. */
+  function isProtectedInlineNode(node) {
+    const element = node && node.nodeType === 1 ? node : node && node.parentElement;
+    return Boolean(element && matchesAny(element, ['em', 'strong', 'code']));
+  }
+
+  /** Returns previous non-empty sibling. */
+  function previousMeaningfulSibling(node) {
+    let prev = node ? node.previousSibling : null;
+    while (prev && prev.nodeType === 3 && !prev.nodeValue.trim()) prev = prev.previousSibling;
+    return prev;
+  }
+
+  /** Returns next non-empty sibling. */
+  function nextMeaningfulSibling(node) {
+    let next = node ? node.nextSibling : null;
+    while (next && next.nodeType === 3 && !next.nodeValue.trim()) next = next.nextSibling;
+    return next;
+  }
+
+  /** Returns true if a sentence candidate touches em/strong/code across a text-node boundary. */
+  function touchesProtectedInline(textNode, start, end) {
+    const text = textNode.nodeValue || '';
+    const beforeIsEmpty = !text.slice(0, start).trim();
+    const afterIsEmpty = !text.slice(end).trim();
+    return (beforeIsEmpty && isProtectedInlineNode(previousMeaningfulSibling(textNode))) ||
+      (afterIsEmpty && isProtectedInlineNode(nextMeaningfulSibling(textNode)));
+  }
+
+  /** Runs a DOM write while suppressing self-trigger side effects. */
   function withMutationPaused(fn) {
     state.applying = true;
     try {
@@ -234,15 +259,8 @@
     style.id = state.config.css.styleId;
     style.textContent = [
       ".adhd-word-mark{text-decoration:none;}",
-      ".adhd-cjk-live{display:inline-block;will-change:color,transform,opacity;transition:color var(--adhd-precolor-ms) ease;transform-origin:center center;}",
-      ".adhd-cjk-jump{animation:adhd-cjk-jump var(--adhd-effect-ms) cubic-bezier(.22,.75,.25,1) forwards;transform-origin:center bottom;}",
-      "@keyframes adhd-cjk-jump{0%{transform:translate3d(0,0,0) scale(1,1)}16%{transform:translate3d(0,.08em,0) scale(1.12,.78)}28%{transform:translate3d(0,0,0) scale(.9,1.16)}54%{transform:translate3d(0,-1.25em,0) scale(1,1)}76%{transform:translate3d(0,-.38em,0) scale(1,1)}90%{transform:translate3d(0,.04em,0) scale(1.06,.9)}100%{transform:translate3d(0,0,0) scale(1,1)}}",
-      ".adhd-cjk-shiver{animation:adhd-cjk-shiver var(--adhd-effect-ms) linear forwards;}",
-      "@keyframes adhd-cjk-shiver{0%{transform:translate3d(0,0,0)}8.33%{transform:translate3d(-.28em,0,0)}16.66%{transform:translate3d(.28em,0,0)}25%{transform:translate3d(-.23em,0,0)}33.33%{transform:translate3d(.23em,0,0)}41.66%{transform:translate3d(-.18em,0,0)}50%{transform:translate3d(.18em,0,0)}58.33%{transform:translate3d(-.13em,0,0)}66.66%{transform:translate3d(.13em,0,0)}75%{transform:translate3d(-.08em,0,0)}83.33%{transform:translate3d(.08em,0,0)}91.66%{transform:translate3d(-.03em,0,0)}100%{transform:translate3d(0,0,0)}}",
-      ".adhd-cjk-grow{animation:adhd-cjk-grow var(--adhd-effect-ms) linear forwards;transform-origin:center center;}",
-      "@keyframes adhd-cjk-grow{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(2.45)}}",
-      ".adhd-fx-snowflake{position:fixed;pointer-events:none;will-change:transform,opacity;z-index:" + state.config.zIndex + ";animation:adhd-fx-snowflake 1200ms ease-out forwards;color:#E6EDF3;text-shadow:0 0 .35em currentColor;}",
-      "@keyframes adhd-fx-snowflake{0%{opacity:1;transform:translate3d(0,0,0) scale(.85)}100%{opacity:0;transform:translate3d(var(--adhd-snow-x),var(--adhd-snow-y),0) scale(1.18)}}"
+      ".adhd-cn-sentence{transition:color var(--adhd-cn-fade) ease,text-shadow var(--adhd-cn-fade) ease,font-weight var(--adhd-cn-fade) ease;text-decoration:none;}",
+      ".adhd-cn-sentence.is-active{text-shadow:0 0 .28em currentColor;}"
     ].join("");
     document.head.appendChild(style);
   }
@@ -273,7 +291,7 @@
     return (ctx.rngState % 1000000) / 1000000;
   }
 
-  /** Runtime random for effects. */
+  /** Runtime random for sentence picking. */
   function randomUnit() {
     let x = state.rngState || 2463534242;
     x ^= x << 13;
@@ -292,24 +310,6 @@
   function pickOne(list) {
     if (!list.length) return null;
     return list[Math.floor(randomUnit() * list.length) % list.length];
-  }
-
-  /** Shuffles a small array. */
-  function shuffled(list) {
-    const copy = list.slice();
-    for (let i = copy.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(randomUnit() * (i + 1));
-      const value = copy[i];
-      copy[i] = copy[j];
-      copy[j] = value;
-    }
-    return copy;
-  }
-
-  /** Returns next balanced CJK effect id: 0 jump, 1 shiver, 2 grow. */
-  function nextEffectId() {
-    if (!state.effectBag.length) state.effectBag = shuffled([0, 1, 2]);
-    return state.effectBag.pop();
   }
 
   /** Checks common CJK glyph ranges. */
@@ -394,7 +394,7 @@
     return pool[hashString(raw) % pool.length];
   }
 
-  /** Picks a runtime effect color. */
+  /** Picks a runtime sentence color. */
   function pickRuntimeColor() {
     return state.config.colorPool[randomInt(0, state.config.colorPool.length - 1)] || "#38F8FF";
   }
@@ -504,7 +504,7 @@
   }
 
   /** Collects eligible text nodes inside one element. */
-  function collectTextNodes(element) {
+  function collectTextNodes(element, maxNodes) {
     const nodes = [];
     const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
@@ -514,7 +514,7 @@
       }
     });
     let node = walker.nextNode();
-    while (node) {
+    while (node && (!maxNodes || nodes.length < maxNodes)) {
       nodes.push(node);
       node = walker.nextNode();
     }
@@ -535,7 +535,7 @@
     const signature = getElementSignature(element);
     if (element.getAttribute(attr) === signature) return;
 
-    unwrapWordMarks(element);
+    unwrapMarks(element, state.config.css.wordClass);
 
     const textNodes = collectTextNodes(element);
     const ctx = {
@@ -576,11 +576,11 @@
     }
   }
 
-  /** Unwraps generated word marks. */
-  function unwrapWordMarks(scope) {
+  /** Unwraps generated marks by class name. */
+  function unwrapMarks(scope, className) {
     if (!scope || scope.nodeType !== 1) return;
     const parents = new Set();
-    const marks = Array.from(scope.querySelectorAll("." + state.config.css.wordClass));
+    const marks = Array.from(scope.querySelectorAll("." + className));
     marks.forEach(function (mark) {
       const parent = mark.parentNode;
       if (!parent) return;
@@ -593,19 +593,47 @@
     });
 
     const attr = state.config.css.wordAttr;
-    if (scope.hasAttribute && scope.hasAttribute(attr)) scope.removeAttribute(attr);
-    try {
-      scope.querySelectorAll("[" + attr + "]").forEach(function (node) {
-        node.removeAttribute(attr);
-      });
-    } catch (e) {
-      /* Ignore attr edge cases. */
+    if (className === state.config.css.wordClass) {
+      if (scope.hasAttribute && scope.hasAttribute(attr)) scope.removeAttribute(attr);
+      try {
+        scope.querySelectorAll("[" + attr + "]").forEach(function (node) {
+          node.removeAttribute(attr);
+        });
+      } catch (e) {
+        /* Ignore attr edge cases. */
+      }
     }
   }
 
   /** Cleans word anchors in all roots. */
   function cleanWordAnchors() {
-    getRoots().forEach(unwrapWordMarks);
+    getRoots().forEach(function (root) {
+      unwrapMarks(root, state.config.css.wordClass);
+    });
+  }
+
+  /** Removes one active sentence highlight. */
+  function removeSentenceHighlight(item) {
+    if (!item || !item.span || !item.span.parentNode) return;
+    const parent = item.span.parentNode;
+    withMutationPaused(function () {
+      while (item.span.firstChild) parent.insertBefore(item.span.firstChild, item.span);
+      parent.removeChild(item.span);
+      parent.normalize();
+    });
+  }
+
+  /** Clears all sentence highlights. */
+  function clearSentenceHighlights() {
+    state.activeHighlights.forEach(removeSentenceHighlight);
+    state.activeHighlights = [];
+  }
+
+  /** Returns whether a block already has a sentence highlight. */
+  function isBlockActive(block) {
+    return state.activeHighlights.some(function (item) {
+      return item.block === block && item.span && item.span.isConnected;
+    });
   }
 
   /** Returns whether a rect intersects the viewport. */
@@ -614,194 +642,130 @@
       rect.top <= window.innerHeight && rect.left <= window.innerWidth;
   }
 
-  /** Collects visible blocks for CJK effects. */
-  function collectVisibleBlocks() {
-    const blocks = [];
-    const selector = state.config.contentSelectors.join(",");
-    const seen = new Set();
-
-    function add(block) {
-      if (!block || seen.has(block)) return;
-      if (matchesAny(block, state.config.excludeSelectors)) return;
-      if (hasExcludedAncestor(block.parentElement || block, null)) return;
-      if (!isRectVisible(block.getBoundingClientRect())) return;
-      seen.add(block);
-      blocks.push(block);
-    }
-
-    getRoots().forEach(function (root) {
-      if (matchesAny(root, state.config.contentSelectors)) add(root);
-      try {
-        root.querySelectorAll(selector).forEach(add);
-      } catch (e) {
-        /* Ignore invalid selectors. */
-      }
-    });
-
-    return blocks.slice(0, state.config.cjkEffect.maxVisibleBlocks);
+  /** Collects visible blocks not currently highlighted. */
+  function collectSentenceBlocks() {
+    return collectContentElements().filter(function (block) {
+      if (isBlockActive(block)) return false;
+      return isRectVisible(block.getBoundingClientRect());
+    }).slice(0, state.config.sentenceMode.maxVisibleBlocks);
   }
 
-  /** Returns true if a node contains CJK. */
-  function nodeHasCjk(node) {
-    const text = node.nodeValue || "";
+  /** Counts CJK glyphs in a string. */
+  function countCjk(text) {
+    let count = 0;
     for (let i = 0; i < text.length; i += 1) {
-      if (isCjk(text.charAt(i))) return true;
+      if (isCjk(text.charAt(i))) count += 1;
     }
-    return false;
+    return count;
   }
 
-  /** Collects visible CJK text nodes. */
-  function collectVisibleTextNodes(blocks) {
-    const nodes = [];
-    for (let i = 0; i < blocks.length && nodes.length < state.config.cjkEffect.maxTextNodesPerTick; i += 1) {
-      const block = blocks[i];
-      const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, {
-        acceptNode: function (node) {
-          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-          if (hasExcludedAncestor(node, block)) return NodeFilter.FILTER_REJECT;
-          return NodeFilter.FILTER_ACCEPT;
-        }
-      });
-      let node = walker.nextNode();
-      while (node && nodes.length < state.config.cjkEffect.maxTextNodesPerTick) {
-        if (nodeHasCjk(node)) nodes.push(node);
-        node = walker.nextNode();
-      }
-    }
-    return nodes;
-  }
-
-  /** Picks one CJK character index. */
-  function pickCjkIndex(text) {
-    const indexes = [];
-    for (let i = 0; i < text.length; i += 1) {
-      if (isCjk(text.charAt(i))) indexes.push(i);
-    }
-    return pickOne(indexes);
-  }
-
-  /** Wraps one original CJK character for temporary animation. */
-  function wrapCjkChar(textNode, index) {
-    if (!textNode || !textNode.parentNode) return null;
+  /** Splits text-node content into sentence candidates. */
+  function sentenceCandidatesFromNode(textNode) {
     const text = textNode.nodeValue || "";
-    if (index < 0 || index >= text.length || !isCjk(text.charAt(index))) return null;
+    const delimiters = state.config.sentenceMode.delimiters;
+    const candidates = [];
+    let start = 0;
 
-    const parent = textNode.parentNode;
-    const before = text.slice(0, index);
-    const after = text.slice(index + 1);
+    for (let i = 0; i < text.length; i += 1) {
+      if (delimiters.indexOf(text.charAt(i)) === -1) continue;
+      addSentenceCandidate(candidates, textNode, start, i + 1);
+      start = i + 1;
+    }
+    addSentenceCandidate(candidates, textNode, start, text.length);
+    return candidates;
+  }
+
+  /** Adds a sentence candidate if it has enough CJK content. */
+  function addSentenceCandidate(list, textNode, start, end) {
+    const raw = (textNode.nodeValue || "").slice(start, end);
+    const leftTrim = raw.length - raw.replace(/^\s+/, "").length;
+    const rightTrim = raw.length - raw.replace(/\s+$/, "").length;
+    const realStart = start + leftTrim;
+    const realEnd = end - rightTrim;
+    if (realEnd <= realStart) return;
+
+    const text = (textNode.nodeValue || "").slice(realStart, realEnd);
+    if (countCjk(text) < state.config.sentenceMode.minCjkChars) return;
+    if (touchesProtectedInline(textNode, realStart, realEnd)) return;
+    list.push({ node: textNode, start: realStart, end: realEnd });
+  }
+
+  /** Picks one sentence from a block. */
+  function pickSentence(block) {
+    const nodes = collectTextNodes(block, state.config.sentenceMode.maxTextNodesPerTick);
+    const candidates = [];
+    nodes.forEach(function (node) {
+      sentenceCandidatesFromNode(node).forEach(function (candidate) {
+        candidates.push(candidate);
+      });
+    });
+    return pickOne(candidates);
+  }
+
+  /** Highlights one sentence by wrapping it in a transition span. */
+  function highlightSentence(candidate, block) {
+    if (!candidate || !candidate.node || !candidate.node.parentNode) return;
+    const node = candidate.node;
+    const text = node.nodeValue || "";
+    const parent = node.parentNode;
+    const before = text.slice(0, candidate.start);
+    const target = text.slice(candidate.start, candidate.end);
+    const after = text.slice(candidate.end);
     const span = document.createElement("span");
 
-    span.className = "adhd-cjk-live";
+    span.className = state.config.css.sentenceClass;
     span.setAttribute(MARK_ATTR, "1");
-    span.textContent = text.charAt(index);
-    span.style.setProperty("--adhd-precolor-ms", state.config.cjkEffect.preColorMs + "ms");
+    span.textContent = target;
+    span.style.setProperty("--adhd-cn-fade", state.config.sentenceMode.fadeMs + "ms");
 
     withMutationPaused(function () {
-      if (before) parent.insertBefore(document.createTextNode(before), textNode);
-      parent.insertBefore(span, textNode);
-      if (after) parent.insertBefore(document.createTextNode(after), textNode);
-      parent.removeChild(textNode);
+      if (before) parent.insertBefore(document.createTextNode(before), node);
+      parent.insertBefore(span, node);
+      if (after) parent.insertBefore(document.createTextNode(after), node);
+      parent.removeChild(node);
     });
 
-    state.activeChars.add(span);
-    return span;
-  }
-
-  /** Restores an animated CJK span back to plain text. */
-  function restoreCjkChar(span) {
-    if (!span || !span.parentNode) return;
-    const parent = span.parentNode;
-    withMutationPaused(function () {
-      parent.replaceChild(document.createTextNode(span.textContent || ""), span);
-      parent.normalize();
-    });
-    state.activeChars.delete(span);
-  }
-
-  /** Spawns snowflakes beside the selected text. */
-  function spawnSnowflakes(rect, fontSize) {
-    const count = randomInt(state.config.cjkEffect.snowflakeMin, state.config.cjkEffect.snowflakeMax);
-    const baseLeft = rect.left + rect.width;
-    const baseTop = rect.top + rect.height * 0.15;
-
-    for (let i = 0; i < count; i += 1) {
-      const snow = document.createElement("span");
-      snow.className = "adhd-fx-snowflake";
-      snow.textContent = "❄";
-      snow.setAttribute(MARK_ATTR, "1");
-      snow.style.left = (baseLeft + randomInt(-8, 28)) + "px";
-      snow.style.top = (baseTop + randomInt(-18, 18)) + "px";
-      snow.style.fontSize = Math.max(12, fontSize * randomInt(70, 105) / 100) + "px";
-      snow.style.setProperty("--adhd-snow-x", randomInt(-24, 36) + "px");
-      snow.style.setProperty("--adhd-snow-y", randomInt(-36, 24) + "px");
-      document.body.appendChild(snow);
-      state.activeFx.add(snow);
-      snow.addEventListener("animationend", function () {
-        state.activeFx.delete(snow);
-        snow.remove();
-      }, { once: true });
-    }
-  }
-
-  /** Plays one balanced random CJK effect after pre-coloring. */
-  function playCjkEffect(span) {
-    if (!span || !span.parentNode) return;
-    const effect = nextEffectId();
-    const rect = span.getBoundingClientRect();
-    const style = window.getComputedStyle(span);
-    const fontSize = parseFloat(style.fontSize) || 16;
-    const ms = effect === 0 ? state.config.cjkEffect.jumpMs : effect === 1 ? state.config.cjkEffect.shiverMs : state.config.cjkEffect.growMs;
-
-    span.style.transition = "none";
-    span.style.setProperty("--adhd-effect-ms", ms + "ms");
-
-    if (effect === 0) {
-      span.classList.add("adhd-cjk-jump");
-    } else if (effect === 1) {
-      span.classList.add("adhd-cjk-shiver");
-      spawnSnowflakes(rect, fontSize);
-    } else {
-      span.classList.add("adhd-cjk-grow");
-    }
-
-    span.addEventListener("animationend", function () {
-      restoreCjkChar(span);
-    }, { once: true });
-  }
-
-  /** Performs one CJK effect tick. */
-  function tickCjkEffect() {
-    if (!state.enabled || !state.config.cjkEffect.enabled) return;
-    const nodes = collectVisibleTextNodes(collectVisibleBlocks());
-    const textNode = pickOne(nodes);
-    if (!textNode) return;
-
-    const index = pickCjkIndex(textNode.nodeValue || "");
-    if (index === null || index === undefined) return;
-
-    const span = wrapCjkChar(textNode, index);
-    if (!span) return;
+    state.activeHighlights.push({ block: block, span: span });
+    trimSentenceHighlights();
 
     window.requestAnimationFrame(function () {
       span.style.color = pickRuntimeColor();
+      span.style.fontWeight = "700";
+      span.classList.add("is-active");
+    });
+  }
+
+  /** Ensures active sentence highlights do not exceed maxActiveBlocks. */
+  function trimSentenceHighlights() {
+    const max = state.config.sentenceMode.maxActiveBlocks;
+    while (state.activeHighlights.length > max) {
+      removeSentenceHighlight(state.activeHighlights.shift());
+    }
+  }
+
+  /** Runs one sentence highlight tick. */
+  function tickSentenceMode() {
+    if (!state.enabled || !state.config.sentenceMode.enabled) return;
+    state.activeHighlights = state.activeHighlights.filter(function (item) {
+      return item.span && item.span.isConnected;
     });
 
-    window.setTimeout(function () {
-      playCjkEffect(span);
-    }, state.config.cjkEffect.preColorMs);
+    const block = pickOne(collectSentenceBlocks());
+    if (!block) return;
+    highlightSentence(pickSentence(block), block);
   }
 
-  /** Starts the CJK timer. */
-  function startCjkTimer() {
-    stopCjkTimer();
-    if (!state.config.cjkEffect.enabled) return;
-    state.cjkTimer = window.setInterval(tickCjkEffect, state.config.cjkEffect.intervalMs);
+  /** Starts sentence mode timer. */
+  function startSentenceTimer() {
+    stopSentenceTimer();
+    if (!state.config.sentenceMode.enabled) return;
+    state.sentenceTimer = window.setInterval(tickSentenceMode, state.config.sentenceMode.intervalMs);
   }
 
-  /** Stops the CJK timer. */
-  function stopCjkTimer() {
-    if (state.cjkTimer) window.clearInterval(state.cjkTimer);
-    state.cjkTimer = 0;
+  /** Stops sentence mode timer. */
+  function stopSentenceTimer() {
+    if (state.sentenceTimer) window.clearInterval(state.sentenceTimer);
+    state.sentenceTimer = 0;
   }
 
   /** Binds lightweight custom render events. */
@@ -813,6 +777,7 @@
       const handler = function () {
         if (!state.enabled || state.applying) return;
         cleanWordAnchors();
+        clearSentenceHighlights();
         processWordAnchors();
       };
       document.addEventListener(name, handler);
@@ -822,23 +787,15 @@
     });
   }
 
-  /** Clears active animations. */
-  function clearActiveEffects() {
-    Array.from(state.activeChars).forEach(restoreCjkChar);
-    state.activeFx.forEach(function (node) { node.remove(); });
-    state.activeFx.clear();
-    state.effectBag = [];
-  }
-
   /** Rebuilds enabled behavior. */
   function rebuild() {
     normalizeConfig();
     injectStyle();
     bindRenderEvents();
     cleanWordAnchors();
+    clearSentenceHighlights();
     processWordAnchors();
-    clearActiveEffects();
-    startCjkTimer();
+    startSentenceTimer();
   }
 
   /** Disables all behavior and restores DOM. */
@@ -846,8 +803,8 @@
     state.enabled = false;
     state.config.enabled = false;
     window.clearTimeout(state.wordTimer);
-    stopCjkTimer();
-    clearActiveEffects();
+    stopSentenceTimer();
+    clearSentenceHighlights();
     cleanWordAnchors();
     removeStyle();
     return api;
