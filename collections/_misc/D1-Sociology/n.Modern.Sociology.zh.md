@@ -3,7 +3,6 @@ title: Modern Sociology (现代社会学)
 layout: slide-linear
 categories: Notes
 subclass: Sociology
-status: 基本完成
 ---
 
 

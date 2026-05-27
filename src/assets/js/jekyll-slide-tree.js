@@ -28,7 +28,7 @@
       enabled: true,
       position: 'last',
       menuTitle: 'Index',
-      headingText: "Here's Index & Thanks!"
+      headingText: "Here's Index"
     },
     labels: {
       index: '≣',

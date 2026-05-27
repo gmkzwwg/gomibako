@@ -327,7 +327,7 @@
       .jsd-index-list {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 0;
         width: 100%;
         box-sizing: border-box;
       }
@@ -340,7 +340,7 @@
         display: block;
         text-align: left;
         box-sizing: border-box;
-        border: 1px solid currentColor;
+        border: none;
         background: transparent;
         color: inherit;
         padding: 10px 12px;
