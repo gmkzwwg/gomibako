@@ -1,7 +1,7 @@
 ---
 title: Literature Ought To Be The Vanguard Art, The Highest Artistic Form
 categories: Notes
-subclass: Writing Theory
+subclass: Writing
 ---
 
 ## 1

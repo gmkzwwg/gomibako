@@ -1,5 +1,5 @@
 ---
-title: 写作者可操控变量的分层总结
+title: Sentences in Works of Different Forms
 categories: Sheet
 subclass: Style
 todos: 

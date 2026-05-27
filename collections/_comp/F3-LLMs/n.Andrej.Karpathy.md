@@ -1,5 +1,5 @@
 ---
-title: Andrej Karpathy Talks
+title: Summary of Andrej Karpathy
 layout: slide-linear
 categories: Notes
 subclass: LLMs

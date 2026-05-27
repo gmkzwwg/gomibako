@@ -1,7 +1,7 @@
 ---
 title: Writing with Psychoanalysis
 categories: Notes
-subclass: Writing Theory
+subclass: Writing
 todos: 清理格式、校订
 ---
 

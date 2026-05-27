@@ -1,7 +1,7 @@
 ---
 title: Expository Language (说明性语言)
 categories: Notes
-subclass: Writing Theory
+subclass: Writing
 ---
 
 # 说明性语言：体系、方法与实践

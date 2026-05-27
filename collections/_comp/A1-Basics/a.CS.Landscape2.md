@@ -17,7 +17,7 @@ subclass: Basics
 
 **目标读者**：有长期严肃学习目标的研究者和学习者，寻求对 CS 版图的真实理解，而非工具性的速成
 
----
+
 
 ## 二、最终章节结构（English）
 
@@ -104,7 +104,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
   9.8 — CS and Philosophy: Foundations, Mind, and Ethics
 ```
 
----
+
 
 ## 三、原 Chapter 7 数学内容整合计划
 
@@ -123,7 +123,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
 标题：`§X.0 — Mathematical Prerequisites: [科目名]`
 内容：需要哪些科目 → 推荐入口资源（1-2 句）→ 所需深度 → 大概投入时间。**不写数学内容本身**。
 
----
+
 
 ### 各数学科目去向
 
@@ -139,7 +139,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
 | **7.7 Category Theory** | **Ch3, §3.4**（已有，扩充） | 将 7.7 中范畴论资源（Riehl free, Awodey, Milewski free, Mac Lane）和实质性论断融入 3.4 |
 | **7.8 Mathematical Methods for AI** | 解散，融入 §5.0 + Ch5 各节的数学前提说明 | 不作为独立节；其中高价值资源（Deisenroth-Faisal-Ong free）整合到 §5.0 |
 
----
+
 
 ### §5.0 的内容结构提案
 
@@ -155,7 +155,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
 4. **Note on Optimization**："Covered in §5.1; readers who want the mathematical foundation of gradient-based methods should read that section before or alongside this one."
 5. **Calibration note**：并非每个方向都需要全部三个数学科目到同等深度——5.1 的数学前提节会指明 ML Foundations 的具体要求，5.4 会指明 RL 的额外要求，以此类推
 
----
+
 
 ## 四、Chapter 2 评估
 
@@ -169,7 +169,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
 
 2. **CS 如何认识它所知道的事**：定理与证明、实验与基准测试、案例研究与故障分析——这是真正跨所有方向的元认知知识，但目前在全文中没有位置。建议在 Chapter 2 引言中加入约 300 词的讨论，而不是单独开一节（不必提升为 §2.4，因为它不产生资源列表）。
 
----
+
 
 ## 五、新 Chapter 7：Software Engineering as a Discipline
 
@@ -193,7 +193,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
 - McConnell: *Code Complete*（从 2.1 移入，作为 7.1/7.2 参考）
 - Gamma et al.: *Design Patterns*（作为架构词汇参考）
 
----
+
 
 ## 六、新 Chapter 9：CS in the Broader Intellectual Landscape
 
@@ -217,7 +217,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
 - **9.7 CS and Biology**：生物信息学的计算内核（序列比对 = 字符串匹配）；CRISPR 的计算设计方法；计算生物学 vs 生物物理
 - **9.8 CS and Philosophy**：图灵测试的正确读法；中文房间论证的 CS 社区回应；可计算性与数学柏拉图主义；伦理学作为规范性科学 vs CS 中的伦理实践
 
----
+
 
 ## 七、从原 Chapter 7 吸收的高价值内容
 
@@ -241,7 +241,7 @@ Chapter 9 — CS in the Broader Intellectual Landscape  [NEW]
 - 章节关于自身局限性的元评论（每节的开头自我说明）
 - 格式化的"What preparation provides CS practitioners"编号列表（内容与所述科目不构成独特关系）
 
----
+
 
 ## 八、全文写作规范
 
@@ -1693,7 +1693,6 @@ For a reader without a specific direction, Chapter 2 is the right starting point
 
 A first pass through this map should produce orientation, not obligation. The goal is to know where things are.
 
----
 
 ## Chapter 2 — The Foundational Trunk
 
@@ -1793,9 +1792,6 @@ This stance is powerful but not complete. Mathematics proves; systems engineerin
 | "Learn X in N days" books | Quick syntax exposure | May help with surface orientation. | Train speed and syntax, not depth. | Skip as primary |
 | Martin, *Clean Code* | Naming and clarity advice | Contains useful advice and influenced a generation of programmers. | Prescriptive and often overgeneralized; balance with context-sensitive sources. | Use with caution |
 
-主要改动：①"It Comes Before the Theoretical Trunk"由 bullet list 改为散文；②Traps 从7条压缩到5条（删去"Depending on one textbook"和"AI bypass"——后者在2.1已出现，不重复）；③资源表更新章节引用，补入 Hammack *Book of Proof*（免费）。其余内容质量好，保留。
-
----
 
 ### 2.2 — Discrete Mathematics and the Foundations of Proof
 
@@ -2013,7 +2009,6 @@ SAT and SMT solvers have improved to the point where they handle instances of a 
 
 The engagement between logic and machine learning is newer and less settled. Neural networks are being used to generate proof steps and guide theorem provers, particularly in Lean and Isabelle, where LLM-assisted tactics have begun to close proofs that were previously out of reach. In the other direction, logical constraints are being used to specify properties of learned models, and neuro-symbolic architectures attempt to combine formal and statistical reasoning. Neither direction has yet produced fully mature methods, but the direction of travel is clear enough that a practitioner who understands both the logical and the statistical traditions is better positioned than one who knows only one side.
 
----
 
 ### 3.2 — Theory of Computation
 
@@ -2110,7 +2105,6 @@ Quantum computation has moved from a theoretical curiosity to a subject with rea
 The relationship between complexity theory and machine learning has deepened over the past decade. PAC learning theory and VC dimension provide a complexity-theoretic account of when learning is possible in principle. More recent work asks whether training neural networks is hard in a complexity-theoretic sense — it is, in general, but practical networks succeed by operating on benign input distributions where the worst case is rarely encountered. The question of whether the empirical success of large models is consistent with what complexity theory says should be difficult remains genuinely open and is one of the field's more interesting current puzzles.
 
 
----
 
 ### 3.3 — Complexity Theory at Depth
 
@@ -2229,6 +2223,107 @@ The MIP* = RE result (Ji, Natarajan, Vidick, Wright, Yuen, 2020) is the most sur
 
 The barrier theorems remain the defining structural fact about P vs NP, and the search for techniques that circumvent them is the field's long-term central effort. Geometric complexity theory — which uses representation theory and algebraic geometry to attack lower bound problems — and approaches inspired by recent progress in circuit lower bounds continue to be developed and tested against the barrier conditions. Whether any of these directions will succeed is genuinely open, which is what makes this field one of the few in mathematics where the central open problems are not just unsolved but remain genuinely mysterious about *why* they are hard.
 
+
+### 3.4 — Programming Language Theory and Formal Semantics
+
+Programming language theory is the mathematical study of what programming languages mean, how they are designed, and how their properties can be established by proof. It sits at a peculiar position in CS: programming languages are the medium in which nearly all computational work is conducted, yet the theoretical study of languages is distinct from the engineering of implementing them. The distinction matters for how the subject is approached — this section is about the mathematics of programming languages, not about building compilers or designing syntax.
+
+The conceptual core is the discipline of *giving precise mathematical meaning to programs*. This discipline traces to Church's and Curry's work on lambda calculus in the 1930s and 1940s and has produced some of the most consequential results in the field — among them the Curry-Howard correspondence, the fundamental theorems about type soundness, and the formal foundations for proof assistants. §3.1's logic provides the apparatus (inference rules, judgments, formal proofs); §3.2's computation theory provides the models; what PLT adds is the discipline of applying these to actual programming languages.
+
+#### Three Organizing Problems
+
+**What does a program mean?** A program is finite text; its execution is a potentially nonterminating process interacting with an environment. Several traditions of answering the meaning question coexist and complement each other. *Operational semantics* treats meaning as the sequence of states a program passes through, defined by inference rules governing evaluation steps. *Denotational semantics* maps programs to mathematical objects — functions, sets, domains — that constitute their meaning independently of any execution. *Axiomatic semantics* (Hoare logic and its descendants) treats meaning through logical relationships between preconditions and postconditions that the program guarantees. The mature practitioner switches between frameworks as the problem demands; precise statements about programs require commitment to which notion of meaning is in play.
+
+**When are two programs the same?** Programmers refactor, compilers optimize, and verifiers reason about programs — all of which require knowing when transformations preserve meaning. Contextual equivalence asks whether no program context can distinguish two programs; bisimulation, appropriate for concurrent and interactive processes, asks whether their observable behaviors match step by step. Choosing the right notion of equivalence is itself a substantial part of PLT, because the choice determines what transformations can be justified.
+
+**Does the language deliver what its design promises?** When a type system claims to prevent certain errors, that claim requires proof, not just intent. Soundness proofs — typically structured as progress and preservation arguments, or via logical-relations models — establish that the language's semantics actually satisfy what the type system guarantees. Modern PLT papers devote substantial space to these proofs, and the techniques (step-indexed models, logical relations, the various forms of parametricity argument) are a significant body of intellectual content in themselves.
+
+#### How PLT Sees Programming Languages
+
+Four orientations distinguish practitioners who have internalized the field from those who have learned its vocabulary without its substance.
+
+The first is treating programs as mathematical objects with precise meaning — not as behavioral black boxes defined by what an implementation happens to do. When a specification and an implementation diverge, the implementation has a bug; the specification is not revised to match. This orientation requires exactly the kind of formal apparatus PLT has developed, and acquiring it changes how one reads language documentation, evaluates language features, and reasons about correctness.
+
+The second is the recognition that programming paradigms are configurations of a small number of underlying parameters, not fundamental categories. The functional-versus-imperative distinction reduces to questions about state: does the language treat state as a value, or does it thread state through a mutable environment? Object-oriented dispatch reduces to questions about subtyping and dynamic binding. Once this is understood, new languages cease to be instances of prior categories and become configurations to analyze on their own terms. The multiplicity of languages becomes a manageable structured space.
+
+The third is the priority of types. In the PLT worldview, a type system is not an optional feature layered atop a language — it is the organizing principle of the language's design. A language without a static type system has, implicitly, a trivial type system in which all expressions have the same type (the "uni-typed" characterization, due to Harper). The contemporary movement toward static typing in previously dynamic languages — TypeScript for JavaScript, gradual typing for Python — is, on this view, the recognition of something the field has long held.
+
+The fourth is the Curry-Howard correspondence: that in suitable type systems, programs *are* proofs and types *are* propositions, not by analogy but by mathematical identity. Constructing a program of a given type is constructing a proof of the proposition the type encodes; type-checking is proof-checking. This identity has practical consequences (it underlies proof assistants like Lean and Coq) and shapes the field's character: programming and proving, in the PLT worldview, are the same activity viewed under different names.
+
+#### What the Subject Changes in a Practitioner
+
+Three capacities are difficult to acquire by other routes.
+
+The first is the ability to give precise meaning to language features. When encountering a new language or feature, the trained practitioner can formulate hypotheses about its semantics and test them analytically rather than through trial and error. The practitioner who lacks this capacity treats language features as black boxes, accumulating misconceptions whose cost compounds across years of use.
+
+The second is recognition of structural commonalities across languages. Lexical scope is the same concept in JavaScript, Scheme, and Rust; algebraic data types are the same construct in Haskell, OCaml, Swift, and TypeScript. This recognition makes learning new languages substantially faster and makes it possible to evaluate new language designs rather than just using them.
+
+The third is fluency in the lambda calculi — untyped lambda calculus, simply typed lambda calculus, System F, the calculus of constructions — as working tools rather than historical curiosities. These calculi are the actual mathematical foundations of contemporary functional languages and proof assistants. The trained practitioner reads research papers that use these calculi without difficulty and uses them as reasoning tools when surface syntax is misleading.
+
+#### Traps
+
+| Trap | Why it misleads | Better response |
+|---|---|---|
+| The notation barrier | PLT uses extensive formal notation — inference rules, judgments, semantic brackets — that is initially intimidating. Learners who allow it to discourage them abandon the subject before acquiring its substance. | Recognize that the notation is acquired through practice, not understood at first reading. Spend deliberate time with the standard notations before attempting substantive content. A few hours with TAPL's appendix on notation pays dividends. |
+| Expecting theory to directly illuminate the languages you already use | PLT is largely conducted in idealized calculi (System F, small-step lambda calculus, toy imperative languages) that don't directly cover modules, exceptions, generics, or mutable state. Learners expecting immediate practical payoff are disappointed. | The calculi are simplifications that make formal reasoning tractable. The connection to real languages is established by extending them — substantial work covered in research papers, not textbooks. Expect indirect illumination, not direct mapping. |
+| Confusing the theoretical and engineering activities | PLT and compiler implementation are different disciplines. Theoretical texts (TAPL, PFPL) don't teach how to build compilers; implementation-oriented texts don't give the mathematical foundation PLT provides. | Know which discipline you are pursuing and choose materials accordingly. The disciplines complement each other but are not substitutes. EOPL is unusually good at bridging them; most texts do not try. |
+| Treating PLT as only about typed functional languages | Most canonical texts use typed functional calculi as the central case, because the formal apparatus works most cleanly there. This can give the impression that PLT covers only this setting. | PLT has substantial content on imperative languages (separation logic, memory models), object-oriented languages (foundational OO calculi), and concurrent languages (process calculi, session types). Seek out this material after the functional foundation. |
+| Recapitulating PLT history in learning order | Learners sometimes feel obligated to work through original papers chronologically — combinatory logic first, then early lambda calculi, then modern type theory. This is legitimate scholarship but an inefficient route to competence. | Use canonical contemporary texts (TAPL, PFPL) as the primary route. They select which historical material is essential and present it more pedagogically than the historical sequence. Engage with original papers selectively when specific context matters. |
+
+#### Resources
+
+The canonical entry to PLT is Pierce's *Types and Programming Languages* (TAPL). It has held this position for over twenty years and for good reason: it develops the major typed lambda calculi systematically, with full proofs of the major results, at a level appropriate for sustained self-study. The mathematical demands are real but the pedagogy is unusually generous. For most self-learners, TAPL is the right primary text.
+
+Harper's *Practical Foundations for Programming Languages* (PFPL) covers the same core material with broader scope — substantial treatment of imperative features, concurrency, and advanced topics that TAPL only sketches — and somewhat denser writing. It is more comprehensive and more demanding. For readers willing to engage with its style, PFPL is the appropriate companion to or replacement for TAPL. Many serious practitioners read both.
+
+Winskel's *The Formal Semantics of Programming Languages* provides the semantic orientation that TAPL's type-theoretic focus partly displaces: clear treatment of both operational and denotational semantics, with the denotational approach given more space than it receives in Pierce or Harper. It remains the right text for readers who want the classical semantic foundations rather than the type-system emphasis.
+
+Friedman and Wand's *Essentials of Programming Languages* (EOPL) covers PLT material through the device of building interpreters in Scheme, making abstract concepts concrete through implementation. It is more accessible as a first encounter for readers who find formal texts too abstract initially. TAPL or PFPL should follow for serious competence.
+
+For going deeper: Pierce's edited *Advanced Topics in Types and Programming Languages* (ATTAPL) extends TAPL with more advanced material — concurrent and distributed languages, dependent types, type-safe effects. Mitchell's *Foundations for Programming Languages* is the comprehensive depth reference for semantics. For dependent types specifically — the frontier toward which modern PLT is moving — Stump's *Verified Functional Programming in Agda* and the *Homotopy Type Theory* book (free) are the right entries. The HoTT book requires preparation but represents the contemporary frontier of type-theoretic foundations.
+
+For the bridge to compiler implementation: Appel's *Compiler Implementation* (the Tiger books) treats compiler construction with real theoretical foundation; Nielson, Nielson, and Hankin's *Principles of Program Analysis* covers the formal techniques that contemporary compilers use for static analysis and optimization.
+
+For concurrent and distributed languages: Milner's *Communication and Concurrency* and *Communicating and Mobile Systems* develop CCS and the pi-calculus; Hoare's *Communicating Sequential Processes* provides the CSP foundation. These are prerequisites for session types and related contemporary work.
+
+Reynolds's *Theories of Programming Languages* is the primary heterodox text — the same core material as TAPL but from a different angle that reveals aspects of the subject that standard presentations obscure. Reynolds was among the field's most influential theorists; his presentation reflects unusually deep understanding. Hindley and Seldin's *Lambda-Calculus and Combinators* treats lambda calculus from the mathematical-logic perspective rather than the programming-language perspective — valuable for readers who want the connection to §3.1 made explicit.
+
+Wadler's papers — "Propositions as Types," "Theorems for Free!," and his various essays — are primary sources for some of the field's central ideas, freely available, and short enough to read directly. Harper's blog provides contemporary heterodox perspective on language design from a committed PLT orientation.
+
+POPL (Principles of Programming Languages) is the flagship research conference; PLDI, ICFP, OOPSLA, and ESOP cover adjacent venues. The PL Enthusiast blog by Michael Hicks covers research with accessible commentary. PLMW (Programming Languages Mentoring Workshop) lectures, freely available from conference websites, are unusually good accessible introductions to specific research topics.
+
+| Resource | Role | Tag |
+|---|---|---|
+| Pierce, *Types and Programming Languages* (TAPL) | Canonical entry | Permanent canon, entry, spine |
+| Harper, *Practical Foundations for Programming Languages* (PFPL) | Comprehensive alternative and companion | Current canon, depth |
+| Winskel, *The Formal Semantics of Programming Languages* | Semantic orientation | Permanent canon, depth |
+| Friedman & Wand, *Essentials of Programming Languages* (EOPL) | Accessible first encounter | Current canon, entry |
+| Pierce (ed.), *Advanced Topics in Types and Programming Languages* (ATTAPL) | Extension of TAPL | Permanent canon, depth |
+| *Homotopy Type Theory* book (free) | Type theory frontier | Current canon, depth, bridge to §3.5 |
+| Stump, *Verified Functional Programming in Agda* | Dependent types accessible | Current canon, depth |
+| Mitchell, *Foundations for Programming Languages* | Comprehensive semantics reference | Permanent canon, depth |
+| Appel, *Compiler Implementation* (Tiger books) | Bridge to compiler implementation | Current canon, bridge |
+| Nielson, Nielson, Hankin, *Principles of Program Analysis* | Formal program analysis | Current canon, depth |
+| Milner, *Communication and Concurrency* / *Communicating and Mobile Systems* | Process calculi | Permanent canon, depth |
+| Hoare, *Communicating Sequential Processes* | CSP foundations | Permanent canon, depth |
+| Reynolds, *Theories of Programming Languages* | Heterodox classical perspective | Heterodox, conceptual |
+| Hindley & Seldin, *Lambda-Calculus and Combinators* | Logic-oriented lambda calculus | Heterodox, depth |
+| Wadler's papers (free) | Central primary sources | Permanent canon, primary source |
+| Milner, Tofte, Harper, MacQueen, *The Definition of Standard ML* | Formal language definition | Permanent canon, primary source |
+| Harper's blog and writings | Contemporary PLT perspective | Current, ongoing |
+| POPL, PLDI, ICFP, OOPSLA proceedings | Research frontier | Current, sampling |
+| PL Enthusiast (Michael Hicks), PLMW lectures | Accessible contemporary commentary | Current, ongoing |
+| "Build a programming language" tutorials | Engineering, not theory | Skip (as substitutes; use alongside) |
+| Paradigm-war books | More rhetoric than substance | Skip |
+| Older PLT texts (pre-TAPL) | Superseded by canonical texts | Skip as primary |
+
+#### Contemporary Relevance
+
+The most significant development of the past decade is the maturation of dependent type theory into practical programming systems. Lean 4, Idris 2, and Agda have become substantially more usable, and Lean in particular has attracted serious mathematical formalization work — the Mathlib library formalizes a large body of contemporary mathematics, and mathematicians who are not primarily computer scientists are using it. The implications for PLT are twofold: the tools the field has developed are becoming applicable at real scale, and the boundary between PLT and formal methods (§3.6) is narrowing, with the same proof assistant used for both program verification and mathematical proof.
+
+PLT's influence on industrial language design has grown markedly. Rust's ownership and borrowing system embeds a linear-type-theoretic analysis of resource lifetimes that was, a generation ago, purely academic. Swift's type system, Scala 3's dependent types, TypeScript's structural subtyping, and the gradual typing systems now added to Python and Ruby all reflect programming language theoretic content that would not have appeared in industrial languages fifteen years ago. The field's influence on practice is greater than at any prior point, driven partly by the demonstrated practical success of features with theoretical foundations.
+
+WebAssembly has emerged as a formally specified compilation target with a published formal semantics — a rare instance of an industrial standard taking formal specification seriously from the start. The research on WebAssembly's type system (in particular, its use as a target for memory-safe languages and its support for capability-based security) has involved the PLT community substantially, and WebAssembly's design reflects programming language theoretic commitments in ways that earlier low-level targets did not.
 
 ### 3.3 — Type Theory and the Curry-Howard Correspondence
 

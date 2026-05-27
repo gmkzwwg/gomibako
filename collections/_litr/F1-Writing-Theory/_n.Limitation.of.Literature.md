@@ -2,7 +2,7 @@
 title: Serious Literature Under Constraint
 layout: post
 categories: Notes
-subclass: Writing Theory
+subclass: Writing
 ---
 
 # Serious Literature Under Constraint

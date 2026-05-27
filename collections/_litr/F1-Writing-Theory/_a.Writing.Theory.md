@@ -2,7 +2,7 @@
 title: Becoming a 21st-Century Avant-Garde Writer
 layout: post
 categories: Atlas
-subclass: Writing Theory
+subclass: Writing
 ---
 
 # Becoming a 21st-Century Avant-Garde Writer

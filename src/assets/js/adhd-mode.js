@@ -50,7 +50,7 @@
 
     wordMode: {
       enabled: true,
-      minLength: 3,
+      minLength: 4,
       sampleRate: 1,
       batchSize: 8,
       batchDelayMs: 16,

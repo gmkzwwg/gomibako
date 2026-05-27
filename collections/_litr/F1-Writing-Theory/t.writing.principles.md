@@ -1,7 +1,7 @@
 ---
 title: Writing Principles of Talented Writers - A Personal Collection
 categories: Texts
-subclass: Writing Theory
+subclass: Writing
 ---
 
 ## 什么是文学？ 米歇尔·福柯

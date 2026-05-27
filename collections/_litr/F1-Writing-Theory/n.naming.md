@@ -1,7 +1,7 @@
 ---
 title: The Principles of Naming
 categories: Notes
-subclass: Style
+subclass: Writing
 ---
 
 

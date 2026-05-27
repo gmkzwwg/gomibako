@@ -1,7 +1,7 @@
 ---
 title: Literary Language (文学语言)
 categories: Notes
-subclass: Writing Theory
+subclass: Writing
 ---
 
 ## 凡例与范围
