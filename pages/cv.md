@@ -13,7 +13,7 @@ permalink: /cv
 
 ## RUBBISH WITH NO VALUE (Ambitious but Rubbish)
 
-<img src="src/assets/img/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
+<img src="{{site.img}}/logos/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 
 **[SENIOR TRASH]**
 
@@ -70,7 +70,7 @@ permalink: /cv
 
 ## 毫无价值的垃圾残渣（志向远大，水平拉胯）
 
-<img src="src/assets/img/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
+<img src="{{site.img}}/logos/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 
 **[资深垃圾]**
 
@@ -125,7 +125,7 @@ permalink: /cv
 
 ## Débris d’ordures totalement sans valeur (Ambitieux, mais nul)
 
-<img src="src/assets/img/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
+<img src="{{site.img}}/logos/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 
 **[Déchet senior]**
 
