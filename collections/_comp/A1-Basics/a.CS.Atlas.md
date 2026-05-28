@@ -701,11 +701,3 @@ A useful paper-reading template:
 | What are the limitations? | Avoid overgeneralization |
 | How does it relate to prior work? | Place it in the field |
 | Can it be reproduced or stress-tested? | Evaluate reliability |
-
-## 10. Final Compression
-
-CS can be compressed into one question:
-
-**How can representations be transformed by machines, programs, and institutions while preserving useful properties under constraints?**
-
-The field begins with computation, but it expands into systems, data, learning, security, human use, and governance. A learner does not need to master every subfield at once. The first goal is to see the structure: what each area is for, what problem it answers, what it depends on, and what tradeoffs it introduces.

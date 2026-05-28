@@ -1,5 +1,5 @@
 ---
-title: TrueNAS SCALE 24.04 + NAS DIY
+title: TrueNAS SCALE 24.04 Minimal Tutorial
 categories: Notes
 subclass: Operating Tools
 ---

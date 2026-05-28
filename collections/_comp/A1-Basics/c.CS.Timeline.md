@@ -8,7 +8,7 @@ The history of **Computer Science** is not best understood as a sequence of mach
 
 The deepest movement is from pure formal possibility toward real-world reliability. Early CS asked whether a problem could be computed at all. Later CS asked whether it could be computed efficiently, expressed clearly, implemented safely, shared among users, stored persistently, communicated across networks, secured against attackers, and made usable by ordinary people. This is why CS should not be reduced to programming. Programming is one expression of a larger discipline concerned with representation, transformation, abstraction, resource control, failure, uncertainty, and trust.
 
-## 1. 1930s–1950s: The Formalization of Computation
+## 1930s–1950s: The Formalization of Computation
 
 The first foundational problem of CS was not how to build a computer. It was more abstract and more radical: **what does it mean for something to be mechanically computable?** Before modern electronic computers existed, logicians and mathematicians were already trying to understand whether reasoning itself could be formalized. They wanted to know whether there could be a fixed procedure for deciding mathematical truth, whether calculation could be described without relying on human intuition, and whether every meaningful mathematical problem could in principle be solved by symbolic manipulation.
 
@@ -20,7 +20,7 @@ Once computation had a formal model, CS could ask deeper questions. Can one form
 
 The methodological style of this period was formal modeling. One defines a model, specifies its allowed operations, and then proves what it can and cannot do. This remains one of the central methods of theoretical CS. It appears later in automata theory, programming language semantics, verification, cryptography, and complexity theory. The enduring lesson is that CS begins not with machinery, but with the formal structure of procedures.
 
-## 2. 1940s–1960s: From Formal Procedure to Physical Machine
+## 1940s–1960s: From Formal Procedure to Physical Machine
 
 Once computation had been formalized, the next problem was how to realize it physically. A formal procedure is an abstract object; a working computer is a material system built from circuits, memory, input-output devices, and control mechanisms. The core question became: **how can abstract computation be embodied in a machine that operates reliably and usefully under physical constraints?**
 
@@ -32,7 +32,7 @@ This period also made abstraction layers necessary. At the lowest level, there a
 
 The method of the field changed accordingly. CS could no longer be only formal logic, and it could not be only electrical engineering. It became a discipline located between formal abstraction and physical realization. Every real computer system has this dual character. It executes formal procedures, but it does so through hardware that has timing, memory, cost, heat, failure, and physical limits. The lasting lesson of this period is that a computer is not just a machine. It is a stack of abstractions built over physical constraints.
 
-## 3. 1950s–1970s: From Machine Control to Programming Abstraction
+## 1950s–1970s: From Machine Control to Programming Abstraction
 
 As computers became more capable, the main bottleneck shifted from machine construction to human expression. The core problem became: **how can humans describe complex computation without being overwhelmed by machine detail?** Early programming required close attention to memory locations, registers, jumps, and hardware-specific operations. This made programs difficult to write, difficult to read, and difficult to maintain.
 
@@ -44,7 +44,7 @@ A compiler became a crucial bridge between human expression and machine executio
 
 This period also showed that notation is not superficial. A programming language shapes how problems are represented, decomposed, and solved. The question “what language should we use?” is often a question about which abstractions should be natural and which errors should be difficult to express. This led toward programming language theory, formal semantics, type systems, compiler optimization, and software engineering. The lesson is that progress in CS often happens when humans acquire a better level of description for computation.
 
-## 4. 1960s–1970s: The Software Crisis and the Need for Discipline
+## 1960s–1970s: The Software Crisis and the Need for Discipline
 
 As programs grew larger, a new problem appeared. The issue was no longer simply how to express computation, but how to build large software systems reliably over time. The core question became: **how can complex programs be developed, understood, tested, modified, and maintained by groups of people?**
 
@@ -58,7 +58,7 @@ The deeper principle behind these movements was dependency control. Large system
 
 This period changed the meaning of correctness. A small program may be considered correct if it produces the right output for the intended input. A large software system must do more. It must remain understandable, testable, modifiable, portable, and robust under changing conditions. The lasting lesson is that the central enemy of software is uncontrolled complexity.
 
-## 5. 1960s–1980s: Complexity, Feasibility, and the Limits of Efficient Computation
+## 1960s–1980s: Complexity, Feasibility, and the Limits of Efficient Computation
 
 Computability theory had shown that some problems cannot be solved by any general algorithm. But among the problems that can be solved, another question became central: **which problems can be solved efficiently?** This distinction changed the field. A problem may be computable in principle but practically impossible because it requires too much time, memory, communication, or energy.
 
@@ -70,7 +70,7 @@ This made reduction one of the deepest methods in CS. A reduction is not just a 
 
 The methodological shift was from local performance measurement to structural resource reasoning. A mature algorithmic analysis asks how a method scales, what assumptions it relies on, what lower bounds are known, whether exact solution is necessary, and whether approximation, randomization, heuristics, or problem relaxation would be more appropriate. This period established one of the most important distinctions in CS: computable is not the same as feasible.
 
-## 6. 1960s–1980s: Operating Systems and the Governance of Resources
+## 1960s–1980s: Operating Systems and the Governance of Resources
 
 As computers became shared, interactive, and multi-user, the next problem concerned resource governance. A physical machine has processors, memory, storage, and devices. Many programs and users may want to use these resources at the same time. The core question became: **how can one machine safely and efficiently serve many programs while preserving isolation, fairness, and control?**
 
@@ -82,7 +82,7 @@ Operating systems also made concurrency unavoidable. Multiple processes and thre
 
 The lasting lesson of operating systems is that computation is not only execution. It is governance over scarce and privileged resources. This way of thinking later shaped virtualization, containers, cloud platforms, sandboxing, mobile operating systems, and secure execution environments. A good system is one that maintains useful abstractions over limited, shared, and failure-prone machinery.
 
-## 7. 1970s–1990s: Databases and the Problem of Persistent Truth
+## 1970s–1990s: Databases and the Problem of Persistent Truth
 
 As organizations became dependent on digital records, another problem became central: **how can data remain reliable, queryable, and consistent over time?** Programs compute, but institutions need memory. Banks, hospitals, universities, companies, and governments need systems that preserve facts, support queries, handle concurrent updates, and survive failures.
 
@@ -96,7 +96,7 @@ The methodological shift was toward declarative abstraction and consistency guar
 
 Databases showed that storage is not the same as information management. A database is not merely a place where bytes are kept. It is a system for preserving structured truth under change, concurrency, and failure. This idea later became central to search engines, analytics systems, distributed storage, data warehouses, and machine learning pipelines.
 
-## 8. 1970s–1990s: Networking and the Problem of Communication Between Machines
+## 1970s–1990s: Networking and the Problem of Communication Between Machines
 
 As computers multiplied, the next problem was communication. A single machine can rely on local control and shared hardware. A networked system cannot. Machines may be different, links may fail, messages may be delayed, packets may arrive out of order, and no single machine controls the whole environment. The core question became: **how can independent machines communicate reliably across unreliable and heterogeneous networks?**
 
@@ -110,7 +110,7 @@ Networking made failure normal. A message may be lost, duplicated, delayed, reor
 
 The lasting lesson is that once computation crosses a network, uncertainty becomes part of the system. Networking does not merely connect computers. It changes the nature of computation by forcing systems to operate without central certainty.
 
-## 9. 1980s–1990s: Human Interfaces and the Problem of Usability
+## 1980s–1990s: Human Interfaces and the Problem of Usability
 
 As computers moved from laboratories and specialized institutions into offices, homes, and schools, another problem became unavoidable: **how can computation become usable by people who are not computer specialists?** Earlier systems often required command languages, programming knowledge, or institutional training. This limited the social reach of computing.
 
@@ -122,7 +122,7 @@ This period expanded CS methodology. Some problems could not be solved only by p
 
 The deeper lesson is that an interface is not decoration. It is part of the computational system’s meaning. It determines which actions are visible, which states are understandable, which errors are recoverable, and which users can participate. As computation became more widely used, usability became a core condition of technical success.
 
-## 10. 1980s–1990s: Security and the Problem of Adversarial Computation
+## 1980s–1990s: Security and the Problem of Adversarial Computation
 
 As computers became networked, shared, and institutionally important, accidental failure was no longer the only concern. Some actors would intentionally misuse systems. The core question became: **how can computation remain trustworthy under adversarial conditions?**
 
@@ -134,7 +134,7 @@ The methodological shift was threat modeling. Instead of asking only whether a s
 
 This changed the meaning of correctness. A system that behaves correctly for honest users may still be insecure. A protocol that is mathematically elegant may fail because of implementation bugs, bad randomness, side channels, poor key management, or confused user flows. The lesson is that security is a system property, not merely an algorithmic property. A system is not robust unless it is robust against intelligent misuse.
 
-## 11. 1980s–1990s: Object-Oriented Design, Reuse, and Large Software Organization
+## 1980s–1990s: Object-Oriented Design, Reuse, and Large Software Organization
 
 As software systems grew larger and more interactive, the problem of long-term evolution became more visible. The core question became: **how can software be organized so that it can be extended, reused, and maintained without collapsing under its own dependencies?**
 
@@ -148,7 +148,7 @@ The methodological shift was toward architectural reasoning. In small programs, 
 
 The lasting lesson is that in large software, the structure of change matters as much as the structure of execution. A system is not well-designed merely because it works now. It is well-designed if it can continue to work as it grows, adapts, and is understood by new people over time.
 
-## 12. Toward the Web: From Networked Machines to Global Information Space
+## Toward the Web: From Networked Machines to Global Information Space
 
 By the end of the 1990s, the earlier layers of CS had begun to converge. Formal computation had provided models and limits. Architecture and operating systems had made machines usable as controlled resource environments. Programming languages and software engineering had given humans ways to express and organize complexity. Complexity theory had clarified feasibility. Databases had made persistent information manageable. Networks had connected machines under uncertainty. Security had introduced adversarial reasoning. HCI had made human usability a central design concern.
 
@@ -160,7 +160,7 @@ The rise of the Web changed the center of gravity of **Computer Science**. Earli
 
 The central problem was no longer only how to compute, store, or communicate. It became: **how can information be named, linked, discovered, trusted, updated, and used at global scale?** This shifted CS from the study of isolated systems toward the study of large-scale computational ecosystems. A web page, a browser, a server, a search engine, a database, a network protocol, and a user interface were no longer separate concerns. They became parts of one expanding information environment.
 
-## 12. 1990s–2000s: The Web and the Problem of Global Information Access
+## 1990s–2000s: The Web and the Problem of Global Information Access
 
 The Web’s early importance came from a small set of powerful abstractions. A resource could be named by a URL. A client could retrieve it through HTTP. A document could be structured and linked through HTML. A browser could act as a general interface for navigating this space. These abstractions were technically simple compared with many earlier systems, but their social and architectural consequences were enormous.
 
@@ -172,7 +172,7 @@ This period also changed the meaning of software. Software was no longer only so
 
 The Web showed that a computational system can scale socially when its basic abstractions are simple, stable, and composable. It also showed that openness creates new problems. Once anyone can publish, the system must handle noise, duplication, misinformation, spam, abuse, broken links, security risks, and discoverability. The Web therefore prepared the ground for the next major problem: finding useful information inside an enormous and rapidly changing information space.
 
-## 13. Late 1990s–2010s: Search and the Problem of Relevance at Scale
+## Late 1990s–2010s: Search and the Problem of Relevance at Scale
 
 As the Web grew, the central problem shifted from access to discovery. Publishing information was no longer enough. Users needed to find relevant information among billions of documents. The question became: **how can a system decide what is useful, authoritative, fresh, and relevant for a particular query?**
 
@@ -186,7 +186,7 @@ Search changed CS because it made ranking a central computational operation. Ear
 
 The deeper lesson was that at large information scale, computation often becomes inference over imperfect signals. Exact correctness remains important in the infrastructure, but the user-facing result may be probabilistic, ranked, and context-sensitive. This pushed CS further toward statistics, machine learning, experimentation, and human-centered evaluation.
 
-## 14. 2000s–2010s: Internet-Scale Systems and the Problem of Continuous Operation
+## 2000s–2010s: Internet-Scale Systems and the Problem of Continuous Operation
 
 Once web services attracted millions and then billions of users, another problem became dominant: **how can a system remain fast, reliable, secure, and maintainable under massive scale and constant change?**
 
@@ -202,7 +202,7 @@ This changed the meaning of reliability. Reliability was no longer a final prope
 
 The lesson of this period is that at internet scale, software becomes a living system. It is never simply “finished.” It is deployed, monitored, updated, defended, and reorganized over time.
 
-## 15. 2000s–2010s: Platforms and the Problem of Ecosystem Governance
+## 2000s–2010s: Platforms and the Problem of Ecosystem Governance
 
 As internet systems matured, some systems became more than applications. They became **platforms**. A platform is not only a tool used by end users. It is an environment in which other users, developers, businesses, advertisers, creators, institutions, and services act. This changed the central problem again: **how can a computational system organize and govern an ecosystem?**
 
@@ -216,7 +216,7 @@ The methodological shift was toward **architecture as governance**. In earlier s
 
 This is one reason modern CS increasingly intersects with law, economics, sociology, political theory, and ethics. Platforms are computational systems, but their effects are social. They mediate communication, commerce, labor, creativity, knowledge, and institutional authority. The lesson is that large software systems do not merely process information. They structure environments in which people act.
 
-## 16. 2010s: Mobile and Ubiquitous Computing and the Problem of Context
+## 2010s: Mobile and Ubiquitous Computing and the Problem of Context
 
 The rise of smartphones moved computation from desks into pockets, homes, streets, vehicles, and bodies. The central problem became: **how can computation adapt to the user’s context while respecting constraints of battery, privacy, attention, connectivity, and physical movement?**
 
@@ -230,7 +230,7 @@ The methodological shift was toward **context-aware design**. Designers had to a
 
 Mobile computing also intensified the social presence of computation. It entered attention, movement, memory, social relationships, health, commerce, and everyday decision-making. The lesson is that when computation becomes ubiquitous, context becomes part of the system. A system is no longer defined only by its code and data. It is also defined by when, where, how, and by whom it is used.
 
-## 17. 2010s: Deep Learning and the Problem of Learned Representation
+## 2010s: Deep Learning and the Problem of Learned Representation
 
 A major transformation of the 2010s was the success of deep learning. The central problem became: **can systems learn useful representations from data instead of relying mainly on human-designed rules and features?**
 
@@ -246,7 +246,7 @@ The methodological shift was from rule design to **data-objective-evaluation des
 
 The lesson is that learning systems do not eliminate programming. They relocate programming into representation, data, objectives, optimization, and evaluation.
 
-## 18. 2010s–2020s: Data Infrastructure and the Problem of the Data Lifecycle
+## 2010s–2020s: Data Infrastructure and the Problem of the Data Lifecycle
 
 As machine learning and analytics became central, CS had to confront a less glamorous but fundamental problem: **how can data be collected, cleaned, transformed, governed, versioned, and used reliably over time?**
 
@@ -260,7 +260,7 @@ This period also revealed that many AI failures are data failures. A model may p
 
 The lesson is that modern CS is not only algorithm-centered. It is also pipeline-centered. Trustworthy computation requires trustworthy data processes.
 
-## 19. 2020s: Foundation Models and the Problem of General-Purpose Learned Capability
+## 2020s: Foundation Models and the Problem of General-Purpose Learned Capability
 
 In the 2020s, the focus shifted from task-specific models to large, general-purpose learned systems. The central problem became: **how can broad models trained on massive data be adapted, controlled, evaluated, and integrated into real systems?**
 
@@ -276,7 +276,7 @@ Foundation models also changed programming education and software work. AI-assis
 
 The lesson is that foundation models do not make CS foundations obsolete. They make them more important, because more behavior becomes indirect, learned, probabilistic, and difficult to inspect.
 
-## 20. 2020s: AI Evaluation, Safety, and the Problem of Trustworthy Learned Behavior
+## 2020s: AI Evaluation, Safety, and the Problem of Trustworthy Learned Behavior
 
 As AI systems became more capable and more widely deployed, the next problem became: **how can learned systems be evaluated, constrained, monitored, and governed when their behavior cannot be fully specified in advance?**
 
@@ -290,7 +290,7 @@ AI safety also forces CS to confront incomplete specifications. In many domains,
 
 The lesson is that for powerful learned systems, success means more than high capability. It means controlled, evaluated, accountable behavior under realistic conditions.
 
-## 21. 2020s: Privacy, Security, and the Problem of Computation Over Sensitive Data
+## 2020s: Privacy, Security, and the Problem of Computation Over Sensitive Data
 
 As digital systems collected more data and AI systems required more data, privacy became a central problem of CS. The question became: **how can useful computation happen without creating unacceptable exposure, surveillance, or inference power?**
 
@@ -304,7 +304,7 @@ The methodological shift was toward **privacy by design**. A mature system asks 
 
 The lesson is that privacy is a system property. It depends on architecture, data flows, incentives, interfaces, law, and institutional practice. In modern CS, protecting data means protecting people from harmful inference and unequal power.
 
-## 22. 2020s: Cyber-Physical and Edge Systems and the Problem of Computation in the World
+## 2020s: Cyber-Physical and Edge Systems and the Problem of Computation in the World
 
 Computation has also moved more deeply into the physical environment. The central problem became: **how can systems sense, decide, and act safely under physical constraints?**
 
@@ -318,7 +318,7 @@ The methodological shift was toward **real-time and safety-aware design**. Desig
 
 The lesson is that when computation acts in the physical world, abstraction cannot ignore embodiment. Latency, energy, uncertainty, and safety become first-class constraints.
 
-## 23. 2020s and Beyond: Socio-Technical Computing and the Problem of Governance
+## 2020s and Beyond: Socio-Technical Computing and the Problem of Governance
 
 The most recent expansion of CS concerns governance. Computational systems now shape communication, education, labor, law, finance, medicine, culture, public administration, and political life. The central question becomes: **how should computational systems be designed and governed when they organize social reality?**
 
@@ -332,7 +332,7 @@ Socio-technical computing also changes the meaning of responsibility. A system�
 
 The lesson is that modern CS is no longer only about computation inside machines. It is also about computation inside society. This is why ethics, law, policy, and institutional analysis are not external decorations. They become part of understanding what computational systems actually do.
 
-## 24. The Long Arc: CS as Expanding Constraint Management
+## The Long Arc: CS as Expanding Constraint Management
 
 Across its history, CS has repeatedly expanded the set of constraints it must handle. The earliest question was formal possibility: what can be computed at all? Then came physical realization: how can computation run on machines? Then human expression: how can people describe computation? Then software complexity: how can large systems be maintained? Then resource feasibility: what can be done efficiently? Then shared infrastructure: how can resources, data, and networks be governed? Then global scale: how can systems serve billions of users? Then learning: how can systems acquire behavior from data? Now trust and governance: how can computational systems remain safe, accountable, and legitimate inside society?
 
