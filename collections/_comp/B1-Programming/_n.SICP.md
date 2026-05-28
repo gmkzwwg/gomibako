@@ -384,6 +384,59 @@ Textbook:
 * [SICP](https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/full-text/book/book-Z-H-4.html)
 * [Composing Programs](https://www.composingprograms.com/)
 
+
+## Notes of Textbook
+
+### Introduction: How to Read SICP
+
+SICP is not primarily a book about `Scheme`. It is a book about how computational ideas are built, organized, transformed, and made understandable. The language is deliberately small, because a small language makes the real subject harder to hide: `abstraction`, `evaluation`, `data`, `state`, `language`, and `machine`.
+
+The book treats a program as more than a sequence of instructions. A program is a way of expressing a model. It describes a process, controls its behavior, hides some details, exposes others, and gives future programs something stable to rely on. Reading SICP well means asking, again and again: what is being abstracted, what is being hidden, what interface is being exposed, and what model of computation is being assumed?
+
+The first danger in reading this book is to mistake syntax for substance. `Scheme` syntax is intentionally sparse: expressions, combinations, names, procedures, conditionals, and a few special forms. This minimal surface is not the destination. It is a controlled setting where the reader can observe how computation unfolds. The point is not to memorize parentheses, but to see how a small number of rules can generate rich program behavior.
+
+The second danger is to mistake mathematical definition for computational procedure. A mathematical definition may say what an object is; a program must say how to produce it. Chapter 1 makes this distinction explicit through square roots, recursion, iteration, growth of processes, and higher-order procedures. The question is not only whether a program computes the right answer. The question is also what kind of process it generates: linear recursion, linear iteration, tree recursion, logarithmic growth, or a general pattern abstracted into a higher-order procedure.
+
+The third danger is to read each example as an isolated trick. SICP is cumulative. Early examples become models that later chapters revise, deepen, or replace. The `substitution model` in Chapter 1 is useful because it gives a simple way to think about procedure application, but it is not the final account of evaluation. Once `assignment`, `state`, and `mutable data` enter in Chapter 3, the book must move toward the `environment model`. Later, Chapter 4 turns evaluation itself into an object of study by building interpreters. Chapter 5 pushes the same ideas down into registers, stacks, explicit control, and compilation.
+
+The structure of the book can be read through three long threads.
+
+* The abstraction thread: `expression` → `name` → `procedure` → `higher-order procedure` → `data abstraction` → `generic operation` → `object` → `language abstraction`.
+* The evaluation thread: `substitution model` → `environment model` → `lazy evaluation` & `nondeterministic evaluation` → `metacircular evaluator` → `explicit-control evaluator`.
+* The complexity thread: small expressions → compound procedures → modular systems → interpreters → compilers → machine-level execution.
+
+These threads are not separate tracks. They repeatedly cross. `Higher-order procedures` make procedures behave like data. `Data abstraction` makes representation invisible behind interfaces. `Objects` introduce time and local state. `Streams` recover some modularity by delaying evaluation. `Metalinguistic abstraction` shows that one way to control complexity is to design a new language. `Compilation` shows how high-level structure can be translated into lower-level control.
+
+A useful SICP note should therefore not be a summary of paragraphs. It should be a reading instrument. For each chapter, the notes should record the problem being solved, the model being introduced, the abstraction being created, the program behavior being traced, and the later chapters where the same idea will return. A good note does not merely answer “what does this code do?” It also asks “what does this code make easier to express?” and “what would break if the underlying model changed?”
+
+The reader should pay special attention to conceptual pairs that look similar but behave differently.
+
+* `procedure` ≠ `computational process`: a procedure is a description; a computational process is what unfolds when the description is executed.
+* `recursive procedure` ≠ `recursive process`: a procedure may call itself syntactically while still generating an iterative process.
+* `data abstraction` ≠ `data representation`: the abstraction is the interface; the representation is the hidden implementation.
+* `state` ≠ `environment`: state concerns changing values over time; environment concerns the context in which names get their meanings.
+* `interpreter` ≠ `compiler`: both process programs, but they organize execution in different ways.
+
+The book is demanding because it refuses to keep these issues separate. It asks the reader to move between levels: expression-level evaluation, procedure-level abstraction, system-level modularity, language-level design, and machine-level control. This movement is the real training. SICP teaches programming as a discipline of managing intellectual complexity: build an abstraction, test what it hides, expose a useful interface, then use that interface as a new primitive for the next level.
+
+The best way to read the book is active and procedural. Run the code, but do not stop at running it. Trace it. Rewrite it. Change a condition. Replace a representation. Compare two versions that compute the same mathematical function but generate different processes. When the book introduces a model, treat it as provisional: useful now, possibly revised later. The goal is not to finish the chapters quickly, but to acquire the habit of seeing programs as layered computational explanations.
+
+SICP begins with procedures because procedures are the first tool for turning repeated operations into named ideas. It then moves to data because larger programs need stable interfaces over changing representations. It introduces state because many systems must model time, identity, and change. It studies interpreters because languages themselves are tools for abstraction. It ends near the machine because every abstraction eventually has to be realized by a concrete process.
+
+The book’s central lesson can be stated simply: computation becomes powerful when details can be hidden without being forgotten. SICP teaches how to hide details responsibly, how to recover them when necessary, and how to build new layers of meaning on top of old ones.
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## CS61A
 
 ### Lecture 1 Welcome

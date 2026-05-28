@@ -1,5 +1,5 @@
 ---
-tilte: Programming Language Analysis
+title: Programming Language Analysis
 layout: slide-multilingual
 categories: Notes
 subclass: Languages
