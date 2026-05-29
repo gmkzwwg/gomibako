@@ -33,7 +33,7 @@
     fallbackText: "ABCDEFGHIJKLMNOPQRSTUVWXYZ01",
     fontSize: 16,
     fps: 24,
-    densityFactor: 1.5,
+    densityFactor: 1.2,
     speedFactor: 1,
     maxColumns: 180,
     columnScale: 1,

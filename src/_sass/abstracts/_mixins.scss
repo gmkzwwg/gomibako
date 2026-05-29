@@ -126,35 +126,38 @@
 
   @keyframes bullet-breath-6 {
     0% {
-      transform: scale(0.3);
-      content: "●";
+      transform: scale(0.5);
+      content: "✹";
     }
 
     16.667% {
-      transform: scale(1);
+      transform: scale(0.9);
       content: "✶";
     }
 
     33.333% {
+      transform: scale(0.9);
       content: "✱";
     }
 
     50% {
+      transform: scale(1);
       content: "✽";
     }
 
     66.667% {
+      transform: scale(0.9);
       content: "✱";
     }
 
     83.333% {
-      
+      transform: scale(0.9);
       content: "✶";
     }
 
     100% {
-      transform: scale(0.3);
-      content: "●";
+      transform: scale(0.5);
+      content: "✹";
     }
   }
 }

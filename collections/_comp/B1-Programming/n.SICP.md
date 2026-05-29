@@ -1,5 +1,5 @@
 ---
-title: Structure and Interpretation of Computer Programs Annotated
+title: SICP Annotated
 categories: Notes
 subclass: Programming
 ---

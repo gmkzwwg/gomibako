@@ -47,7 +47,7 @@ abstract: "This is abstract. Abstract is blank by default." # string
   <button><i class="fa fa-sitemap"></i><span>Index alt2</span></button>
 </div>
 
-<div class="font-test" style="font-family: BulletBreath, sans-serif !important">・ ✶ ✱ ✽ ● ◎ ◉ ⬢</div>
+<div class="font-test" style="font-family: BulletBreath, sans-serif !important">・✹✶✱✽●⬤◎◉⬢⊙</div>
 
 # Heading 1
 
