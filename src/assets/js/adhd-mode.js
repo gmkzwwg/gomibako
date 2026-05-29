@@ -65,7 +65,7 @@
       minCjkChars: 2,
       maxVisibleBlocks: 80,
       maxTextNodesPerTick: 160,
-      delimiters: "。！？；：.!?;:"
+      delimiters: "。！？.!?"
     },
 
     dynamic: {

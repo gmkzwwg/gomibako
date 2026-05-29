@@ -144,9 +144,23 @@ Valid modes: list | chart | compact | false | nil
   <!-- [[APPEARANCE]] -->
   <!-- HACKED SPLASH: critical first-paint mask + plug-and-play JS -->
   <script src="{{ '/src/assets/js/matrix-hacked-splash.js' | relative_url }}"></script>
-  
   <!-- ASCII ANIME -->
-  <script defer src="{{ '/src/assets/js/matrix-ascii-anime.js' | relative_url }}"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    var files = [
+      "{{ '/src/assets/js/matrix-ascii-anime.js' | relative_url }}",
+      "{{ '/src/assets/js/matrix-ascii-breath.js' | relative_url }}"
+    ];
+
+    var s = document.createElement("script");
+    s.src = files[Math.floor(Math.random() * files.length)];
+    s.async = false;
+
+    document.head.appendChild(s);
+  })();
+  </script>
   <!-- GLITCH TITLE + META_INFO -->
   <script defer src="{{ '/src/assets/js/matrix-text-glitch.js' | relative_url }}"></script>
   <!-- MATRIX BACKGROUND -->
