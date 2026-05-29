@@ -9620,3 +9620,1600 @@ minimal_agent:
 若这些问题没有答案，agent 只是一个会行动的聊天模型。若这些问题有答案，agent 才开始成为可部署的工作流组件。
 
 本章的结论可以概括为：**智能体工作流不是让模型完全自主，而是把模型放进一个有目标、有工具、有状态、有边界、有反馈、有评估的多步骤系统中；成熟的 agent 不以无监督自动化为目标，而以可监督、可恢复、可审计的协作为目标。**
+## Part 19：Claude Code 如何改变编程工作？
+
+### 代码代理和普通代码补全有什么区别？
+
+普通代码补全主要发生在编辑器光标附近。开发者写到某一行，模型根据当前文件、附近代码和注释补出下一段。它擅长补全函数、生成样板代码、解释局部语法、快速写测试片段。这种能力有价值，但它仍然主要是“局部生成”：模型看到的上下文有限，行动范围也通常限于当前文件或当前编辑器窗口。
+
+`代码代理`（*coding agent*）则不同。它不是只在光标后补几行代码，而是把整个代码库当作工作环境来观察、修改和验证。Claude Code 的官方定位是一个运行在终端中的 agentic coding tool，能够读取代码库、编辑文件、运行命令，并与开发工具集成。 这意味着它处理的不是“下一行代码是什么”，而是“为了完成这个开发任务，应该检查哪些文件，修改哪里，运行什么测试，怎样确认结果”。
+
+可以用一个对照理解：
+
+```text
+Code completion:
+  current file / cursor context
+    → suggest next code
+
+Coding agent:
+  repository + task + tools + tests + project rules
+    → inspect
+    → plan
+    → edit
+    → run commands
+    → observe failures
+    → revise
+    → summarize
+```
+
+差别的关键在于 `feedback loop`。补全工具通常给出建议，由开发者手动验证；代码代理可以调用工具运行测试、查看错误，再根据反馈继续修改。Claude Code 文档列举的常见用途包括从自然语言描述构建功能、调试和修复问题、理解代码库、自动化繁琐任务，并且可以直接编辑文件、运行命令、创建提交；这些特征都说明它处在“智能体工作流”而不是“单次补全”层级。
+
+这种变化会改变开发者的工作方式。过去，AI 主要帮助写局部代码；现在，AI 可以参与更完整的开发循环。但这也提高了使用要求。代码代理越能行动，越需要项目边界、测试、权限、审查和回滚机制。它能改文件，不代表应该任意改文件；能运行命令，不代表应该执行危险命令；能创建提交，不代表可以绕过代码审查。
+
+### 为什么代码代理必须理解代码库上下文？
+
+代码从来不是孤立文本。一个函数是否正确，取决于调用方、数据结构、错误处理、测试约定、依赖版本、构建系统、业务规则和团队风格。普通补全工具如果只看到当前文件，很容易生成“局部合理、整体不合适”的代码。代码代理的优势，正是能够把任务放回代码库环境中理解。
+
+Claude Code 文档强调，它可以帮助导航代码库，维护对项目结构的感知，也可以读取代码库并结合外部数据源。 这类上下文能力使它更适合处理真实工程任务。比如修复一个 bug 时，它不应只看报错行，还应检查调用链、配置、测试、历史模式和相邻实现。新增功能时，它不应凭空写一套新结构，而应遵循项目已有架构。
+
+一个代码任务的上下文通常包括：
+
+```text
+Repository context:
+  - file tree
+  - relevant source files
+  - tests
+  - package manager
+  - build scripts
+  - configuration files
+  - coding conventions
+  - error logs
+  - git diff
+  - issue or feature description
+```
+
+没有这些上下文，模型往往会生成平均化代码。平均化代码在教程中可能没问题，在生产项目中常常不合适。比如项目使用 `pnpm`，模型却写 `npm install`；项目使用 `pytest`，模型却生成 `unittest` 风格；项目已有错误处理封装，模型却直接 `throw new Error()`；项目禁止修改 public API，模型却为了修 bug 改了接口。
+
+代码代理的第一能力不是写代码，而是读取上下文。一个可靠工作流通常应先要求代理检查相关文件，再提出修改方案：
+
+```text
+Before editing:
+1. Inspect the relevant files.
+2. Identify the existing project pattern.
+3. Explain the likely cause of the issue.
+4. Propose a minimal patch.
+5. Modify only the necessary files.
+6. Run the existing tests.
+```
+
+这类过程描述会让代码代理更接近真实开发者的工作方式：先理解，再修改，再验证。代码代理如果跳过理解，直接输出补丁，风险会接近“自动化复制粘贴”。
+
+### Claude Code 如何读取文件、修改代码、运行测试和生成 PR？
+
+Claude Code 的核心价值在于它不仅能给出代码建议，还能在开发环境中行动。官方概览说明它可以编辑文件、运行命令、创建 commits，并且可以在开发者已有的终端环境中工作；GitHub Actions 相关文档还说明 Claude Code 可以集成到 GitHub 工作流，在 PR 或 issue 中通过 `@claude` 触发代码分析、创建 pull request、实现功能和修复 bug，且会遵循项目标准。
+
+一个典型代码代理流程可以抽象为：
+
+```text
+User task:
+  "Fix the CSV import crash when the file is empty."
+
+Claude Code workflow:
+  1. read issue or prompt
+  2. inspect repository
+  3. find importer-related files
+  4. inspect existing tests
+  5. propose minimal fix
+  6. edit source file
+  7. add or update test
+  8. run test command
+  9. inspect failures
+  10. revise patch
+  11. summarize changed files and test result
+```
+
+在这个流程中，`read`、`edit`、`run`、`observe` 是核心动作。与单纯聊天不同，Claude Code 可以在文件系统和命令行中形成反馈闭环。测试失败不是结束，而是新的上下文；错误日志不是用户手动转述，而是工具直接返回的观察结果。
+
+这也说明，Claude Code 的质量高度依赖项目已有测试和命令。如果项目没有测试、没有 lint、没有类型检查、没有明确构建命令，代码代理就缺少验证反馈，只能更多依赖静态判断。一个“AI 友好”的代码库，不是把所有问题交给 AI，而是提供清晰的测试、脚本和规范，让 AI 的修改可以被自动检查。
+
+可以为项目准备一段任务规则：
+
+```text
+When fixing bugs:
+- prefer the smallest patch
+- inspect tests before editing
+- add a regression test when possible
+- do not refactor unrelated code
+- run the relevant test command
+- summarize all changed files
+- state any tests that could not be run
+```
+
+这些规则不应只存在于临时聊天里。长期项目应把稳定规则放进项目说明或 Claude Code 的配置机制中，使代理每次进入代码库时都能看到同一套标准。
+
+### 什么是 `CLAUDE.md`？
+
+`CLAUDE.md` 通常可以理解为给 Claude Code 使用的项目说明文件，用来承载代码库中的长期上下文：项目结构、构建命令、测试命令、代码风格、禁止事项、常见陷阱、领域术语和协作规范。虽然具体文件名和加载规则应以当前 Claude Code 文档为准，但“在项目中放置代理可读的长期指令”是代码代理工作流中的稳定方法。Claude Code 官方设置文档说明它支持全局和项目级配置，也可通过交互式 REPL 中的 `/config` 进行配置；这类机制的目的正是让开发者把工具行为与项目工作流对齐。
+
+`CLAUDE.md` 适合放稳定、反复适用的信息，不适合放一次性任务。比如“今天帮我修复某个 bug”不应放进去；“本项目使用 pnpm”“测试命令是 `pnpm test`”“不要修改 generated 目录”“所有公共 API 修改必须先说明影响”则适合放进去。
+
+一个项目说明文件可以包含：
+
+```markdown
+# Project Guide for Claude Code
+
+## Project overview
+
+This is a TypeScript web application using React and Vite.
+
+## Common commands
+
+- Install dependencies: `pnpm install`
+- Run dev server: `pnpm dev`
+- Run tests: `pnpm test`
+- Run lint: `pnpm lint`
+- Run type check: `pnpm typecheck`
+
+## Coding rules
+
+- Prefer minimal patches.
+- Do not refactor unrelated code.
+- Follow existing component patterns.
+- Do not modify files under `src/generated/`.
+- Add tests for bug fixes when practical.
+
+## Review rules
+
+Before finishing:
+- summarize changed files
+- report commands run
+- report test failures honestly
+```
+
+这样的文件不是“提示词装饰”，而是代码库上下文工程。它减少每次对话重复说明，也让代理更稳定地遵循项目约定。代码代理越能行动，越需要这种长期规则，否则每次任务都依赖用户临时记忆，容易遗漏关键约束。
+
+### 什么是 slash commands？
+
+`slash commands` 是 Claude Code 中用于触发预定义工作流的命令形式。官方 slash commands 文档展示了自定义命令可以包含 frontmatter，例如 `allowed-tools`、`argument-hint`、`description`、`model` 等，也可以在命令正文中插入当前 git 状态、diff、分支和最近提交等上下文。
+
+它的意义在于把常用开发任务封装成可复用入口。开发中有很多任务反复出现：创建 git commit、生成 release notes、审查 PR、运行安全检查、整理 changelog、生成测试、解释错误日志。如果每次都手写长提示，效率低且标准不稳定。slash command 可以把提示词、上下文收集和工具权限合并成一个命令。
+
+例如，一个创建提交的命令可以包含：
+
+```markdown
+---
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
+description: Create a git commit
+---
+
+## Context
+
+- Current git status: !`git status`
+- Current git diff: !`git diff HEAD`
+- Current branch: !`git branch --show-current`
+- Recent commits: !`git log --oneline -10`
+
+## Task
+
+Based on the above changes, create a single coherent git commit.
+```
+
+这个命令不仅让模型知道要创建提交，还自动提供 git 上下文，并限制可用工具。这里的 `allowed-tools` 很关键：它把工作流能力和权限边界一起定义。命令不是一句“帮我 commit”，而是一段可审查、可复用的开发流程。
+
+slash commands 适合封装稳定、频繁、边界明确的动作；不适合封装含混、一次性、需要大量人工判断的复杂任务。一个好的命令应该能回答：什么时候用，输入是什么，允许哪些工具，输出是什么，哪些行为禁止。
+
+### 什么是 hooks？
+
+`hooks` 是在 Claude Code 生命周期中特定时点自动执行的用户定义命令、HTTP endpoint 或 LLM prompt。官方 hooks guide 说明，hooks 可以提供确定性控制，让某些动作总是发生，而不是依赖 LLM 自己选择是否执行；它们可用于强制项目规则、自动化重复任务，并与现有工具集成。
+
+这点非常重要。LLM 适合判断、生成和适配，但不适合承担所有确定性规则。某些事情不应“希望模型记得做”，而应由 hook 强制执行。比如编辑文件前检查格式，提交前运行 lint，修改某目录时提醒风险，任务结束时输出测试报告，使用危险命令前要求确认。
+
+可以把 hooks 理解为代码代理系统中的“硬边界”与“自动检查点”。提示词是软约束，hook 是系统事件。若某条规则必须每次执行，就应尽量用 hook、脚本、CI 或权限系统实现，而不是只写在提示词中。
+
+例如，一个项目可以设计：
+
+```yaml
+hooks:
+  after_file_edit:
+    - run: "pnpm lint --fix"
+  before_commit:
+    - run: "pnpm test"
+  on_task_complete:
+    - run: "git diff --stat"
+```
+
+这只是概念示例。具体配置格式和生命周期事件应以当前官方文档为准。官方 hooks reference 还提到，hooks 默认有超时限制、匹配 hooks 可并行运行、重复命令会自动去重，并且配置安全上会在启动时捕获快照，外部修改需要经过 `/hooks` 菜单审查才应用，以防恶意 hook 修改影响当前会话。
+
+hooks 的核心原则是：**确定性规则交给确定性机制，模型负责不确定判断。** 如果项目要求“每次改代码后都跑测试”，不应只靠模型自觉；如果项目要求“禁止改 generated 文件”，应有权限、hook 或 CI 共同守住边界。
+
+### 如何让代码代理遵循项目规范？
+
+让代码代理遵循项目规范，不能只靠一句“请遵循规范”。规范需要进入上下文、工具、检查和评估。
+
+第一，规范要被写下来。团队风格、测试命令、目录规则、架构约束、命名规则、禁止事项，应放在项目说明、配置文件或命令模板中。没有写下来的规范，模型只能根据代码库模式猜测。
+
+第二，规范要靠工具验证。格式规则可以靠 formatter，类型规则靠 type checker，测试规则靠 test runner，安全规则靠 scanner，依赖规则靠 lockfile 和 CI。模型可以遵守规则，但机器检查更可靠。
+
+第三，规范要有范围边界。比如“只修改必要文件”“不要重构无关模块”“不要修改 public API”“不要改变数据库 schema”。这些规则应在任务开始时可见，必要时还要通过确认点执行。
+
+第四，规范要进入 review。代码代理的输出应像人类 PR 一样被审查：diff 是否最小，测试是否通过，是否有隐藏副作用，是否符合团队风格，是否影响兼容性。
+
+一个项目级约束可以写成：
+
+```text
+Code modification rules:
+1. Read existing patterns before editing.
+2. Prefer minimal changes.
+3. Do not modify public APIs without explicit approval.
+4. Do not edit generated files.
+5. Add tests for bug fixes when feasible.
+6. Run relevant tests before final response.
+7. If tests cannot run, state why.
+8. Summarize changed files and remaining risks.
+```
+
+这套规则应与实际工具结合。若项目没有测试，规则中的 “run relevant tests” 就会失效；若没有 lint，风格只能靠模型猜测；若没有 CI，代码代理的错误更难被捕捉。代码代理越强，项目工程卫生越重要。
+
+### 代码代理能做什么，不能替开发者承担什么？
+
+代码代理能承担大量执行性和探索性工作：阅读陌生代码、解释模块关系、定位错误、生成补丁、写测试、修复 lint、整理 diff、生成 PR 描述、更新文档、迁移简单 API、处理重复性改动。Claude Code 文档列出的能力也集中在构建功能、调试修复、理解代码库和自动化繁琐任务上。
+
+但代码代理不能替开发者承担最终工程判断。它不知道业务优先级，不完全理解团队历史决策，也不能对生产事故、数据迁移、性能退化、安全漏洞和用户影响承担责任。它可以建议架构，但不能替团队决定长期架构；可以生成测试，但不能保证测试覆盖业务风险；可以修改代码，但不能替代代码审查；可以运行命令，但不能替组织承担部署责任。
+
+尤其要警惕三种过度委派。
+
+第一，把架构判断外包给模型。模型可以比较方案，但系统边界、组织能力、未来维护和业务风险仍由团队判断。
+
+第二，把测试责任外包给模型。模型能写测试，也可能写出只验证自己实现的测试。测试质量需要人工审查。
+
+第三，把安全审查外包给模型。模型可以发现常见漏洞，但安全依赖威胁模型、依赖扫描、权限设计、日志、审计和专门工具。Claude Code 近期也持续加入安全相关功能，但具体可用功能会随版本演进，应以当前 release notes 和官方文档为准。
+
+可以把代码代理的角色定义为：
+
+```text
+Claude Code should act as:
+  - repository reader
+  - patch drafter
+  - test runner
+  - debugging assistant
+  - refactoring helper
+  - documentation assistant
+  - PR preparation assistant
+
+Claude Code should not be treated as:
+  - final architect
+  - security authority
+  - production deployment owner
+  - legal or compliance decision maker
+  - replacement for code review
+```
+
+成熟开发者使用代码代理，不是为了退出开发过程，而是把低价值重复劳动交给代理，把高价值判断保留给人。
+
+### 如何用 Plan Mode 降低代码修改风险？
+
+Claude Code 的 common workflows 文档提到 `Plan Mode` 可用于安全代码分析：它让 Claude 先通过只读操作分析代码库、制定计划，适合探索代码库、规划复杂改动或安全审查。 这体现了一个通用原则：在不确定任务中，先分析再写入。
+
+代码修改风险主要来自过早行动。模型看到报错后直接改文件，可能修错位置；看到用户需求后直接生成大量代码，可能破坏架构；发现测试失败后继续大改，可能扩大影响。Plan Mode 的价值在于把“理解”和“写入”分开，让人有机会在代码真正改变前审查模型计划。
+
+一个适合复杂任务的流程是：
+
+```text
+Plan phase:
+  - inspect relevant files
+  - map dependencies
+  - identify risks
+  - propose minimal change
+  - ask for confirmation
+
+Edit phase:
+  - modify approved files
+  - run tests
+  - revise only if failures are related
+
+Review phase:
+  - summarize diff
+  - list commands run
+  - list unresolved risks
+```
+
+这种工作流不依赖某个特定产品名，也适用于所有代码代理。对于简单 lint 修复，可以直接编辑；对于架构改动、跨文件重构、公共 API 变化、数据库迁移、安全逻辑，应先进入 plan，再进入 edit。Plan Mode 不是形式主义，而是让人类确认点前置。
+
+### Claude Code 与 Git 工作流如何结合？
+
+代码代理的输出最终通常要进入 Git。Git 是代码变更的审计系统，Claude Code 则是生成和修改代码的行动系统。二者结合时，应尽量让代理的行动留下清楚痕迹：改了哪些文件，为什么改，测试运行结果是什么，是否有未解决风险。
+
+Claude Code 官方概览提到它可以创建 commits；GitHub Actions 文档说明它可以在 GitHub 工作流中通过 PR 或 issue 触发，并创建 pull request、实现功能和修复 bug。 这类能力使代码代理可以进入团队协作流程，但也意味着必须遵守团队 review 规则。
+
+一个安全的 Git 工作流可以是：
+
+```text
+1. Start from a clean branch.
+2. Ask Claude Code to inspect the issue.
+3. Let it propose a plan.
+4. Approve minimal edit.
+5. Run tests.
+6. Review git diff.
+7. Ask Claude Code to write PR summary.
+8. Human reviews before merge.
+```
+
+可以要求 PR 描述包含：
+
+```text
+PR summary:
+- What changed
+- Why it changed
+- Files modified
+- Tests run
+- Known limitations
+- Risk level
+```
+
+不要让代码代理把“提交成功”当作任务完成。真正完成应是：diff 可审查，测试可信，风险已说明，人类 reviewer 能理解改动。Git 工作流的价值是让 AI 修改变成可追踪、可回滚、可讨论的工程对象。
+
+### Claude Code 与 CI/CD 应如何连接？
+
+CI/CD 是代码代理的重要外部验证环境。代码代理可以运行本地测试，但本地环境未必覆盖所有平台、依赖、集成测试和部署流程。CI 可以提供更完整、更一致的检查。
+
+Claude Code 可在 CI 场景中自动化某些任务，官方概览也举例说明它可以在 CI 中运行命令，例如检测新增文本字符串并创建翻译 PR。 这种能力适合处理重复性、规则明确、可审查的开发任务。比如自动修复格式、生成 release notes、补充文档、处理简单依赖更新、翻译新增文案、创建安全审查草稿。
+
+但 CI 中使用代码代理要更谨慎。CI 环境往往接近生产流程，具有仓库权限、token、部署权限或发布权限。应限制代理可用权限，避免自动执行不可逆动作。可以让代理创建 PR，而不是直接 merge；让代理生成建议，而不是直接部署；让代理运行安全审查，而不是自动修改关键安全逻辑。
+
+一个 CI 代理策略可以是：
+
+```yaml
+ci_agent_policy:
+  allowed:
+    - read repository
+    - run tests
+    - generate report
+    - create pull request
+
+  requires_human_review:
+    - merge pull request
+    - deploy
+    - change security configuration
+    - modify infrastructure files
+
+  deny:
+    - access production secrets
+    - write to protected branches
+    - publish packages automatically
+```
+
+CI/CD 与代码代理结合的核心，不是“让 AI 自动发版”，而是把重复检查和低风险修改自动化，把高风险决定保留在 review gate 之后。
+
+### Claude Code 与 MCP 的关系是什么？
+
+Claude Code 可以通过 `MCP` 连接外部数据源和开发工具。官方概览提到，MCP 可以让 Claude Code 读取 Google Drive 中的设计文档、更新 Jira tickets，或使用自定义开发工具；文档还提到 Claude Code 可以通过 MCP 从 Google Drive、Figma、Slack 等外部数据源拉取信息。
+
+这意味着代码代理的上下文不再局限于代码库。真实开发任务往往依赖 issue、设计稿、产品文档、API 文档、团队讨论、日志系统和监控数据。MCP 的作用，是把这些外部系统以标准化方式连接给模型应用。代码代理可以先读 issue，再看设计稿，再修改代码，再更新 ticket。这个流程更接近真实软件开发。
+
+但外部连接越多，权限越重要。一个代码代理如果能读取 Slack、Jira、Figma、Google Drive 和代码库，就必须明确：哪些资料能看，哪些不能看；哪些工具能写，哪些只能读；哪些动作需要确认。MCP 扩展了上下文和工具，也扩展了风险边界。
+
+可以把 Claude Code + MCP 理解为：
+
+```text
+Repository context:
+  source files, tests, configs, git history
+
+External context via MCP:
+  tickets, design docs, API docs, logs, team notes
+
+Agent actions:
+  edit files, run commands, create commits, update workflow artifacts
+```
+
+这使代码代理更强，但也要求更严的治理。MCP 不应被理解成“随便接入所有工具”，而应被理解成“按权限、按任务、按审计连接外部上下文和能力”。
+
+### Subagents 在代码工作中解决什么问题？
+
+Claude Code 的 subagents 文档把 custom subagents 描述为特定任务的专用 AI assistants，可以通过定制系统提示、工具和独立上下文窗口处理特定工作流，并改善上下文管理。 这对代码工作很重要，因为大型开发任务常常会产生大量检索、日志和临时分析，如果全部塞进主对话，主上下文会迅速污染。
+
+Subagent 适合处理相对独立的子任务。例如：
+
+```text
+- security review subagent
+- test generation subagent
+- dependency audit subagent
+- documentation update subagent
+- migration analysis subagent
+- log investigation subagent
+```
+
+每个 subagent 可以有自己的工具权限和任务说明。比如安全审查 subagent 可以重点检查输入校验、权限绕过、敏感信息泄露；测试 subagent 可以重点生成边界测试；文档 subagent 可以只读取 diff 和 README，不需要修改源码。独立上下文能防止某个支线任务把主上下文填满。
+
+一个 subagent 的概念配置可以是：
+
+```yaml
+name: security-reviewer
+description: Review code changes for security risks.
+tools:
+  - read_file
+  - grep
+  - run_security_scanner
+instructions:
+  - Focus on authentication, authorization, injection, data leakage, and unsafe file operations.
+  - Do not modify files.
+  - Return findings with severity and evidence.
+```
+
+Subagents 不是为了制造复杂结构，而是为了分离上下文和权限。主 agent 负责任务协调，subagent 负责专门检查。它接近软件工程中的模块化思想：不同 worker 有不同职责和边界。
+
+### Skills 与 Claude Code 的关系是什么？
+
+Claude Code 的 skills 文档说明，skills 可用于扩展 Claude 的能力，创建、管理和共享技能；技能可以封装某些重复工作流、说明、脚本或资源，使 Claude 在相关任务中使用它们。 在代码工作中，skills 可以把团队反复解释的流程沉淀下来。
+
+例如，一个团队经常让 Claude Code 生成 release notes。与其每次说明格式、来源、分类规则和风格，不如做成 skill：
+
+```text
+release-notes skill:
+  - read git log
+  - group changes by feature, bug fix, breaking change
+  - ignore internal refactors unless user-facing
+  - produce Markdown release notes
+  - flag unclear commits for human review
+```
+
+另一个团队可能需要数据库迁移审查 skill：
+
+```text
+migration-review skill:
+  - inspect migration file
+  - check rollback path
+  - check data loss risk
+  - check locking or performance concerns
+  - require human review for destructive operations
+```
+
+Skills 与 slash commands、hooks、subagents 有不同位置。Slash command 更像用户主动触发的命令；hook 更像生命周期事件中的确定性自动化；subagent 更像带独立上下文和工具权限的专门 worker；skill 更像可被模型按任务加载的能力包。它们不是互相替代，而是共同构成代码代理的上下文与工作流层。
+
+### Claude Code 的安全边界应如何设计？
+
+代码代理的安全边界必须比普通聊天更严格，因为它能修改文件、运行命令、连接外部工具。官方 hooks reference 中关于 hooks 配置安全的说明也体现了这一点：Claude Code 会在启动时捕获 hooks 快照、在会话中使用该快照、检测外部修改，并要求通过 `/hooks` 菜单审查后生效，以防恶意 hook 修改影响当前会话。
+
+一个安全边界应覆盖文件、命令、网络、密钥、提交和部署。
+
+文件边界：哪些目录可以读取，哪些目录可以修改，哪些目录禁止访问。比如 `src/` 可编辑，`secrets/` 禁止读取，`generated/` 禁止修改。
+
+命令边界：哪些命令可运行，哪些需要确认，哪些禁止。比如测试和 lint 可运行，删除命令、数据库迁移、部署命令需确认或禁止。
+
+网络边界：是否允许搜索网页、访问内部服务、调用外部 API。网络访问可能泄露信息，也可能引入不可信内容。
+
+密钥边界：代理不应读取、打印或提交 secret。即使测试需要环境变量，也应通过安全方式注入。
+
+提交边界：代理可以生成 commit 或 PR，但 merge、release、deploy 通常应由人确认。
+
+可以写成：
+
+```yaml
+claude_code_safety:
+  allowed_read:
+    - src/
+    - tests/
+    - docs/
+
+  denied_read:
+    - .env
+    - secrets/
+    - private_keys/
+
+  allowed_commands:
+    - pnpm test
+    - pnpm lint
+    - pnpm typecheck
+
+  requires_confirmation:
+    - git commit
+    - git push
+    - database migration
+    - file deletion
+
+  denied_commands:
+    - deploy production
+    - print environment secrets
+    - upload repository archive
+```
+
+安全不是为了限制代理价值，而是为了让代理能长期使用。没有边界，团队很快会因为一次事故全面禁用；有边界，AI 才能进入日常开发流程。
+
+### Claude Code 使用中最常见的失败是什么？
+
+代码代理的失败通常不是“完全不会写代码”，而是更隐蔽。
+
+第一种失败是上下文误判。模型没有读取足够文件，或读取了不相关文件，导致修错位置。解决方法是要求先定位相关文件和调用链。
+
+第二种失败是过度修改。为了修一个 bug，模型重构一大片代码，增加审查成本。解决方法是明确 `minimal patch`，并在修改范围扩大时要求确认。
+
+第三种失败是测试不足。模型修改后没有运行测试，或测试失败后仍然说完成。解决方法是强制记录测试命令和结果，失败时停止或继续调试。
+
+第四种失败是风格漂移。模型引入与项目不一致的库、写法或架构。解决方法是项目规则、示例、lint、formatter 和 code review。
+
+第五种失败是忽略副作用。模型修复当前测试，却破坏其他模块、性能、安全或兼容性。解决方法是更广测试、diff 审查和人工 review。
+
+第六种失败是工具误用。模型运行错误命令、读取错误路径、在不该修改的目录写入文件。解决方法是工具权限、确认点和 hooks。
+
+可以用失败日志记录：
+
+```yaml
+failure_case:
+  task: "fix empty CSV crash"
+  failure: "modified parser API and broke downstream imports"
+  type:
+    - scope_creep
+    - insufficient_context
+  fix:
+    - require public API change confirmation
+    - add regression test
+    - update project instructions with minimal patch rule
+```
+
+代码代理越常用，越需要积累这样的失败模式。团队对 AI 的信任，不来自一次成功演示，而来自可复盘、可修正、可防止重复错误的流程。
+
+### Claude Code 如何进入个人开发学习？
+
+对个人学习者来说，Claude Code 不只是写代码工具，也可以是代码阅读和学习工具。它可以解释陌生代码库，画出模块关系，找入口文件，解释测试如何运行，指出某个函数的调用方，帮助理解错误日志。对于学习大型项目，代码代理的价值很高，因为它能把“无从下手”变成一组可探索问题。
+
+可以用这样的学习提示：
+
+```text
+I am learning this codebase.
+
+Do not modify files.
+
+First help me understand:
+1. project structure
+2. main entry points
+3. how data flows through the application
+4. how tests are organized
+5. which files I should read first
+
+Use only read-only operations.
+```
+
+这类用法应优先于直接“帮我改”。学习者如果过早让代理写代码，容易跳过理解。更好的方式是先让代理解释，再自己阅读，再让代理提问或生成练习。
+
+Claude Code 也适合帮助建立工程习惯。例如每次修改后运行测试、阅读 diff、写 PR 描述、解释失败原因。学习者可以通过代理看到成熟开发流程，而不是只得到代码答案。
+
+### Claude Code 如何进入专业开发流程？
+
+专业团队使用 Claude Code，应从低风险、高重复、可审查任务开始，而不是直接让它接管核心架构。适合早期引入的任务包括：
+
+```text
+- 修复 lint 和格式问题
+- 更新文档
+- 生成测试草稿
+- 解释遗留代码
+- 生成 PR summary
+- 处理简单 bug
+- 更新 release notes
+- 批量重命名低风险字段
+```
+
+随着团队建立规则、评测和审查流程，可以逐步扩展到更复杂任务：
+
+```text
+- 辅助重构
+- 跨文件 bug 修复
+- 依赖升级
+- 安全审查
+- CI 自动化 PR
+- issue triage
+```
+
+专业流程中，Claude Code 应与现有工程机制结合：Git branch、PR review、CI、lint、type check、unit tests、integration tests、security scanner、release process。它不应成为绕过这些机制的捷径，而应成为这些机制中的一个自动化参与者。
+
+一个团队采用路径可以是：
+
+```text
+Stage 1:
+  read-only codebase Q&A
+
+Stage 2:
+  local edits with human review
+
+Stage 3:
+  test-running bug fix workflows
+
+Stage 4:
+  PR generation for low-risk tasks
+
+Stage 5:
+  CI / GitHub Actions integration with strict permissions
+
+Stage 6:
+  specialized skills, hooks, subagents, MCP integrations
+```
+
+这种渐进路线比一次性全面自动化更稳。
+
+### Claude Code 如何改变开发者角色？
+
+Claude Code 不会让开发者只剩下“提需求”。它改变的是工作重心。开发者需要更善于定义任务、限制范围、提供上下文、检查 diff、设计测试、审查架构、控制风险。写代码本身的一部分会被代理承担，但工程判断的重要性会上升。
+
+开发者的日常可能从：
+
+```text
+手动搜索文件
+  → 手动定位 bug
+  → 手动写补丁
+  → 手动运行测试
+```
+
+变成：
+
+```text
+定义问题
+  → 要求代理定位
+  → 审查计划
+  → 批准最小修改
+  → 检查 diff 和测试
+  → 决定是否合并
+```
+
+这不是完全轻松化，而是工作形态转变。开发者需要懂得如何把模糊 issue 转成可执行任务，如何判断代理是否误解代码，如何设计防止回归的测试，如何在代理生成大量文本时保持审查能力。
+
+未来的高价值开发者，不只是“写代码快”，而是能管理 AI 参与的软件工程系统：知道哪些任务可以自动化，哪些必须人工判断；知道如何设计项目规则；知道如何让代理安全调用工具；知道如何把失败案例转成流程改进。
+
+### Claude Code 在学习路线中的位置是什么？
+
+Claude Code 是前面所有章节的综合应用。它依赖提示词描述任务，依赖上下文工程理解代码库，依赖工具调用读取文件和运行命令，依赖结构化输出报告状态，依赖 agent workflow 多步执行，依赖 evals 和测试判断结果，依赖 diligence 管理权限、审查和责任。
+
+因此，Claude Code 不应被当作孤立产品技巧来学。更合理的学习顺序是：
+
+```text
+1. 学会描述代码任务
+2. 学会让模型解释代码
+3. 学会限制修改范围
+4. 学会要求测试和 diff summary
+5. 学会写项目规则
+6. 学会使用 slash commands 封装重复任务
+7. 学会用 hooks 强制确定性检查
+8. 学会用 subagents 和 skills 管理复杂工作流
+9. 学会通过 MCP 接入外部开发资料
+10. 学会在 Git / CI / PR review 中使用代码代理
+```
+
+这一章的结论可以概括为：**Claude Code 把 LLM 从代码补全推进到代码库级智能体工作流；它的价值不只在生成代码，而在读取项目上下文、执行工具、运行测试、形成反馈循环。越是把它用于真实工程，越需要项目规则、权限边界、测试机制、Git 审查和人工责任。**
+## Part 20：Agent Skills 如何把经验封装成能力？
+
+### 什么是 `Agent Skills`？
+
+`Agent Skills` 可以理解为面向智能体的可复用能力包。它不是普通提示词模板，也不是单纯文档，而是把某类重复任务所需的说明、步骤、判断标准、工具使用方式、支持文件和输出格式封装起来，使模型在合适任务中按需调用。Claude Code 文档中，skill 通常由一个 `SKILL.md` 文件定义；当 Claude 使用该 skill 时，skill 内容会进入模型工具箱，帮助它执行相应工作。
+
+这种机制解决的是一个长期使用 LLM 时必然出现的问题：同一套说明会被反复粘贴。比如每次做 code review，都要提醒模型检查安全、性能、边界条件和测试；每次写 release notes，都要说明如何按 feature、bug fix、breaking change 分组；每次整理讲义，都要说明标题层级、术语格式、风格边界和不许编造来源。一次两次可以手写，次数多了就说明这不是临时提示词，而是一种可以沉淀的工作流。
+
+Skill 的价值在于按需加载。`CLAUDE.md` 适合放每次会话都需要的长期规则，例如构建命令、项目架构、代码风格；skill 则适合放只有特定任务才需要的流程。Claude Code 文档明确区分了这一点：`CLAUDE.md` 会在会话开始时进入上下文，而 skill 的主体内容只在被使用时加载，因此较长的流程说明不必长期占用上下文。
+
+可以把 skill 粗略理解为：
+
+```text
+Skill =
+  task-specific instructions
+  + workflow steps
+  + quality criteria
+  + optional supporting files
+  + optional tool permissions
+  + invocation rules
+```
+
+它的功能不是让模型“更聪明”这个抽象说法，而是让模型在某类任务上少猜、少重复、少偏离。它把经验从聊天记录中抽出来，变成可复用的上下文资产。
+
+### Skill 与普通提示词模板有什么区别？
+
+普通提示词模板是一段可复制的文本。它依赖用户在合适时机手动粘贴，也依赖用户记得改变量、补上下文、调整格式。Skill 则更接近项目中的能力模块：它可以有固定文件位置、名称、描述、支持文件和配置；可以由用户直接调用，也可以在相关任务中由 Claude 自动发现和使用。Claude Code 文档说明，skills 可以通过 `/skill-name` 直接调用，也可以在相关时被 Claude 自动加载。
+
+模板通常是一次性的输入。Skill 则更适合长期维护。一个好的 skill 可以被版本控制、团队共享、持续修改，也可以和项目规则、工具权限、subagent、插件系统一起工作。Claude Code 文档还说明，custom commands 已经合并进 skills；旧的 `.claude/commands/` 文件仍可工作，而 `.claude/skills/<name>/SKILL.md` 也可以创建同类命令。
+
+例如，一个普通提示词模板可能是：
+
+```text
+Please review this code for bugs, security issues, performance problems, and maintainability.
+```
+
+一个 `code-review` skill 则可以包含完整流程：
+
+```markdown
+# Code Review Skill
+
+Use this skill when reviewing a code change.
+
+## Process
+
+1. Inspect the diff.
+2. Identify the intended behavior.
+3. Check correctness.
+4. Check edge cases.
+5. Check security and permissions.
+6. Check performance only when relevant.
+7. Check test coverage.
+8. Separate blocking issues from suggestions.
+
+## Output
+
+Return:
+- Summary
+- Blocking issues
+- Non-blocking suggestions
+- Tests that should be added
+- Questions for the author
+```
+
+模板像一段请求，skill 像一个小型工作流。模板适合临时任务，skill 适合重复任务；模板依靠人记忆，skill 依靠系统组织；模板很容易漂移，skill 可以被审查和更新。
+
+### Skill 与 `CLAUDE.md` 有什么区别？
+
+`CLAUDE.md` 适合保存长期、稳定、每次会话都应看到的项目上下文。Claude Code 文档把 `CLAUDE.md` 描述为给 Claude 提供 persistent instructions 的 Markdown 文件，它可以包含构建命令、项目架构、代码标准、命名约定和常见工作流，并且会在会话开始时进入上下文。
+
+Skill 适合保存特定任务流程。Claude Code 文档建议：如果一个 `CLAUDE.md` 条目已经变成多步骤 procedure，或者只对代码库的一部分任务有用，就应考虑把它移入 skill 或路径级规则，而不是让它继续污染每个会话的上下文。
+
+可以这样区分：
+
+```text
+CLAUDE.md:
+  - every-session context
+  - project facts
+  - coding standards
+  - build commands
+  - architecture notes
+  - “always do X” rules
+
+Skill:
+  - task-specific procedure
+  - multi-step workflow
+  - checklists
+  - reusable task instructions
+  - supporting files
+  - optional invocation control
+```
+
+例如，`CLAUDE.md` 里适合写：
+
+```markdown
+## Project commands
+
+- Run tests: `pnpm test`
+- Run type check: `pnpm typecheck`
+- Do not edit `src/generated/`.
+```
+
+而 `release-notes` skill 里适合写：
+
+```markdown
+## Release notes workflow
+
+1. Read commits since the last tag.
+2. Group changes into Features, Fixes, Breaking Changes, Internal.
+3. Exclude purely mechanical refactors unless user-facing.
+4. Flag unclear commits for human review.
+5. Produce Markdown release notes.
+```
+
+前者是项目常识，后者是任务程序。把任务程序都塞进 `CLAUDE.md`，会让每次会话上下文变重；把项目常识放进 skill，又可能导致模型在非 skill 任务中看不到必要规则。二者需要分工，而不是互相替代。
+
+### Skill 与 slash command、hook、subagent 有什么区别？
+
+这几个机制都能扩展 Claude Code，但位置不同。
+
+`slash command` 是用户主动触发的命令入口。Claude Code 的 skills 文档说明，custom commands 已经合并到 skills 中；`/skill-name` 这种形式可以直接调用 skill。 如果某个任务需要用户明确启动，例如 `/release-notes`、`/code-review`、`/debug`，它更接近命令入口。
+
+`hook` 是生命周期中的确定性自动化。它适合“无论模型是否记得，都必须执行”的规则，例如编辑后运行 formatter、提交前运行测试、危险命令前拦截。Hook 不是让模型理解流程，而是让系统在特定事件上执行命令或检查。
+
+`subagent` 是带有专门系统提示、工具权限和独立上下文的专用代理。Claude Code subagents 文档说明，subagent 可以预加载 skills，也可以通过 `Skill` 工具发现并调用 project、user 和 plugin skills。 Subagent 适合安全审查、测试生成、文档更新、依赖分析等相对独立的专业任务。
+
+`skill` 则是可复用能力说明。它可以被主 agent 调用，也可以被 subagent 使用；可以通过 slash command 触发，也可以在相关时自动加载；可以包含支持文件和 invocation 控制。Claude Code 的 settings 文档还说明，Claude Code 的 plugin system 可以扩展 skills、agents、hooks 和 MCP servers，说明这些机制可以被打包和分发到用户或仓库级配置中。
+
+可以用一张关系表理解：
+
+```text
+Skill:
+  封装某类任务的方法和上下文。
+
+Slash command:
+  给 skill 或命令提供手动触发入口。
+
+Hook:
+  在生命周期事件中执行确定性规则。
+
+Subagent:
+  用独立上下文和工具权限处理专门任务。
+
+Plugin:
+  打包分发 skills、agents、hooks、MCP servers 等扩展。
+```
+
+它们之间不是替代关系，而是组合关系。一个团队可以用 skill 定义 release notes 流程，用 slash command 触发它，用 hook 在提交前运行测试，用 subagent 做安全审查，用 plugin 把这些能力分发给团队。
+
+### 什么内容适合封装成 skill？
+
+适合封装成 skill 的内容，通常具有三个特征：重复出现、步骤明确、只在特定任务中需要。若一段说明每个会话都要看，它更适合 `CLAUDE.md`；若它只在某类任务出现，而且说明逐渐变长，就适合变成 skill。
+
+常见 skill 类型包括：
+
+```text
+- code review
+- debugging
+- release notes
+- changelog generation
+- migration review
+- test generation
+- security review
+- documentation update
+- lecture-note rewriting
+- paper summarization
+- RAG answer auditing
+- API schema review
+- UI screenshot review
+```
+
+例如，一个 `debug` skill 可以规定：
+
+```markdown
+# Debug Skill
+
+Use when investigating a failing test, runtime error, or unexpected behavior.
+
+## Process
+
+1. Reproduce or inspect the error.
+2. Identify the smallest relevant scope.
+3. Read the nearest source and test files.
+4. Form one hypothesis at a time.
+5. Make the smallest change that tests the hypothesis.
+6. Run the relevant test.
+7. If the second attempt fails, stop and summarize current state.
+
+## Output
+
+- Error observed
+- Files inspected
+- Hypothesis
+- Change made
+- Test result
+- Remaining uncertainty
+```
+
+这个流程如果每次手写，很浪费；如果放进 `CLAUDE.md`，又会让所有任务都携带 debug 步骤。封装成 skill 刚好合适。
+
+写作类项目也适合 skill。例如 `lecture-note-rewrite`：
+
+```markdown
+# Lecture Note Rewrite Skill
+
+Use when transforming messy transcript material into systematic lecture notes.
+
+## Rules
+
+- Preserve key concepts, examples, and argument relations.
+- Remove repetition silently.
+- Correct obvious transcription errors silently.
+- Add background only when needed for comprehension.
+- Do not invent citations, page numbers, or source claims.
+- Use continuous Chinese explanatory prose.
+- Use `## Part n` and question-style `###` headings.
+
+## Review
+
+Before final output, check:
+- source fidelity
+- conceptual order
+- terminology consistency
+- style continuity
+- time-sensitive technical claims
+```
+
+这说明 skill 不只属于代码项目。任何长期重复的知识工作流程，都可以被技能化。
+
+### 如何设计一个好的 `SKILL.md`？
+
+一个好的 `SKILL.md` 应当简洁、可执行、边界清楚。它不应写成百科文章，也不应写成空泛原则。模型需要从 skill 中得到任务判断、执行步骤、质量标准和输出格式。
+
+一个基本结构可以是：
+
+```markdown
+# Skill Name
+
+## When to use
+
+Describe the task types that should trigger this skill.
+
+## Goal
+
+State what the skill is trying to achieve.
+
+## Inputs
+
+List what information is needed.
+
+## Process
+
+Give the step-by-step workflow.
+
+## Constraints
+
+State what not to do.
+
+## Output format
+
+Define the expected result.
+
+## Quality checks
+
+List what Claude should verify before finishing.
+```
+
+例如，一个 `api-schema-review` skill 可以写成：
+
+```markdown
+# API Schema Review
+
+## When to use
+
+Use this skill when reviewing an API schema, tool schema, or structured output contract.
+
+## Goal
+
+Check whether the schema is clear, stable, safe, and suitable for downstream automation.
+
+## Process
+
+1. Identify the purpose of the schema.
+2. Check required fields and optional fields.
+3. Check enum values.
+4. Check missing error states.
+5. Check whether the schema supports invalid input and insufficient evidence.
+6. Check whether sensitive data is minimized.
+7. Check whether downstream systems can parse the output reliably.
+
+## Output format
+
+Return:
+- Summary
+- Blocking issues
+- Suggested schema changes
+- Questions for the owner
+```
+
+Skill 不是越长越好。Claude Code memory 文档也提醒，长期指令越具体、简洁、结构清楚，越容易被遵循；含混、冲突或过长的说明会降低可靠性。 Skill 同样如此。它应写成工作说明，而不是长篇背景论文。
+
+### Skill 如何控制触发范围？
+
+Skill 如果触发过少，模型用不上；触发过多，又会污染上下文。好的 skill 应说明什么时候使用，也应说明什么时候不使用。Claude Code skills 文档提到，skills 可以由 Claude 在相关时自动加载，也可以直接通过 `/skill-name` 调用；文档还列出了控制谁调用 skill、frontmatter 和 visibility 等配置主题。
+
+触发范围可以通过 skill 描述、命名、frontmatter 和任务说明共同控制。名称要具体，描述要清楚。一个叫 `review` 的 skill 太泛；一个叫 `security-code-review` 更明确。描述也要避免过度泛化。
+
+弱描述：
+
+```markdown
+Use this skill to review things.
+```
+
+更好的描述：
+
+```markdown
+Use this skill when reviewing code changes for security risks, especially authentication, authorization, input validation, file access, secret handling, and data leakage.
+Do not use it for general style review unless security is relevant.
+```
+
+还可以加入反触发条件：
+
+```markdown
+## Do not use
+
+- Do not use for ordinary formatting changes.
+- Do not use for non-code documents.
+- Do not use when the task only asks for a high-level explanation.
+```
+
+这能减少 skill 误触发。Skill 触发是上下文工程的一部分：该加载时加载，不该加载时不加载。一个过于通用的 skill 会像过长的 `CLAUDE.md` 一样成为噪声。
+
+### Skill 如何携带支持文件？
+
+Claude Code skills 文档提到，skills 可以添加 supporting files，这使 skill 不必把所有资料都写进 `SKILL.md` 主体。 这对复杂流程很有用。一个 skill 可能需要示例、模板、schema、rubric、脚本、参考输出、测试清单。把这些全部写进主文件，会让 skill 过长；放到支持文件中，可以按需引用。
+
+例如，一个 `lecture-note-rewrite` skill 可以有：
+
+```text
+.claude/skills/lecture-note-rewrite/
+  SKILL.md
+  style-guide.md
+  terminology.md
+  examples/
+    good-section.md
+    bad-section.md
+  rubrics/
+    source-fidelity.md
+    style-check.md
+```
+
+`SKILL.md` 只写核心流程，支持文件保存风格样例和评估标准。模型在需要时读取支持文件，不必每次都把全部内容加载进上下文。
+
+代码类 skill 也可以有支持文件：
+
+```text
+.claude/skills/security-review/
+  SKILL.md
+  checklist.md
+  examples/
+    auth-bypass.md
+    path-traversal.md
+    secret-leak.md
+  output-schema.json
+```
+
+支持文件让 skill 从“提示词片段”变成“微型知识包”。但也要注意资料治理。支持文件应保持最新，避免旧规则误导模型；过时文件应标记或删除；敏感信息不应随 skill 一起共享。
+
+### Skill 如何与工具权限结合？
+
+Skill 不只是说明模型怎样思考，也可以影响工具使用。Claude Code skills 文档列出 “Pre-approve tools for a skill” 作为配置主题，说明 skill 可以与工具预批准相关联。 这很重要，因为不同 skill 的工具需求和风险不同。
+
+例如，`code-review` skill 通常只需要读取文件、查看 diff、搜索代码，不应直接修改文件。`debug` skill 可能需要读取文件、编辑文件、运行测试。`release-notes` skill 可能需要读取 git log 和 diff，但不应自动推送。`deploy` skill 如果存在，必须有严格确认和权限。
+
+可以按 skill 定义工具策略：
+
+```yaml
+skill_tool_policy:
+  code-review:
+    allow:
+      - read_file
+      - grep
+      - git_diff
+    deny:
+      - write_file
+      - git_commit
+      - deploy
+
+  debug:
+    allow:
+      - read_file
+      - edit_file
+      - run_tests
+    requires_confirmation:
+      - edit_public_api
+      - delete_file
+
+  release-notes:
+    allow:
+      - git_log
+      - git_diff
+      - read_file
+    deny:
+      - git_push
+      - publish_release
+```
+
+这体现了一个原则：不同能力应有不同权限。不能因为模型会使用 skill，就给所有 skill 同样工具。Skill 是任务边界，工具权限是行动边界。二者结合，才能让 agent 工作流可控。
+
+### Skill 与 subagent 如何配合？
+
+Subagent 可以预加载 skills。Claude Code subagents 文档说明，可以用 `skills` 字段在 subagent 启动时注入 skill 内容，使 subagent 获得领域知识；文档也说明，预加载 skills 与 subagent 在执行中发现和调用 skills 是不同概念。
+
+这种组合适合专门任务。例如，一个 `api-developer` subagent 可以预加载 `api-conventions` 和 `error-handling-patterns` skills；一个 `code-reviewer` subagent 可以预加载 `security-review` 和 `test-coverage` skills；一个 `docs-writer` subagent 可以预加载 `style-guide` 和 `release-notes` skills。
+
+概念上可以写成：
+
+```yaml
+---
+name: api-developer
+description: Implement API endpoints following team conventions
+skills:
+  - api-conventions
+  - error-handling-patterns
+tools:
+  - Read
+  - Edit
+  - Bash
+---
+
+Implement API endpoints. Follow the conventions and patterns from the preloaded skills.
+```
+
+Subagent 提供角色、上下文隔离和工具权限；skill 提供具体任务方法。两者结合后，可以把复杂 agent 系统模块化：主 agent 负责任务协调，subagent 负责专门工作，skill 提供专门流程。
+
+Subagent 还可以有持久 memory。Claude Code subagents 文档说明，subagent 的 `memory` 字段可以给它一个跨会话保存的目录，用于积累 codebase patterns、debugging insights 和 architectural decisions；文档还给出了 user、project、local 三种 scope。 这意味着某些长期专门知识可以放入 subagent memory，而通用任务程序可以放入 skill。记忆保存经验，skill 保存流程。
+
+### Skill 如何与 auto memory 区分？
+
+Auto memory 是 Claude 自己根据使用中的修正和偏好积累的笔记；skill 是人或团队主动设计的任务流程。Claude Code memory 文档说明，每个 session 都从 fresh context window 开始，跨会话知识主要通过 `CLAUDE.md` 和 auto memory 进入上下文；auto memory 保存 Claude 根据 corrections 和 preferences 发现的 build commands、debugging insights、architecture notes、code style preferences 等内容。
+
+可以这样区分：
+
+```text
+Auto memory:
+  Claude learns and records recurring facts or preferences.
+
+Skill:
+  Human designs a reusable procedure.
+
+CLAUDE.md:
+  Human writes persistent project instructions.
+
+Subagent memory:
+  Specialized agent accumulates domain-specific learnings.
+```
+
+如果 Claude 第二次犯同样错误，或者某个构建命令总要重复提醒，可以写进 `CLAUDE.md` 或让 auto memory 记住。若某个流程有明确步骤，例如“如何做安全审查”，更适合写成 skill。若某个专门 subagent 在项目中持续积累某类经验，可以放进 subagent memory。
+
+不要把 memory 当成 skill。Memory 保存事实和经验，skill 保存执行方法。比如“本项目 API 错误响应格式是 `{ error: { code, message } }`”适合 memory 或 `CLAUDE.md`；“审查 API endpoint 时应检查认证、授权、输入验证、错误响应和测试覆盖”适合 skill。
+
+### Skill 如何帮助管理上下文成本？
+
+LLM 使用中，上下文是一种有限资源。把所有项目规则、所有流程、所有例子都放入 `CLAUDE.md`，会让每次会话都带着大量无关内容。Skill 的按需加载机制解决了这个问题。Claude Code skills 文档明确指出，与 `CLAUDE.md` 不同，skill 主体只在使用时加载，因此长参考材料在需要前几乎不产生上下文成本。
+
+这使 skill 特别适合长流程和长参考材料。例如：
+
+```text
+- release notes 分类规则
+- 安全审查清单
+- 长写作风格样例
+- RAG 评估 rubric
+- API schema 审查规则
+- 多步骤部署流程
+```
+
+如果这些全部放进 `CLAUDE.md`，每次简单问答都会携带它们；如果放进 skill，只有相关任务才加载。这样既提高上下文效率，也减少无关规则干扰。
+
+上下文成本管理可以按层级设计：
+
+```text
+Always loaded:
+  short project rules in CLAUDE.md
+
+Loaded by file path:
+  directory-specific rules
+
+Loaded on task:
+  skills
+
+Loaded by specialist:
+  subagent + preloaded skills
+
+Loaded by retrieval:
+  RAG / knowledge base
+```
+
+Skill 的位置正好在“长期规则”和“外部知识库”之间。它不是事实资料库，而是任务方法库；不是每次都加载，而是在任务需要时加载。
+
+### Skill 如何封装评估标准？
+
+一个好 skill 不应只告诉模型“怎么做”，还应告诉模型“如何判断做得好不好”。这使 skill 成为 `description` 和 `discernment` 的结合体。比如 code review skill 不只列检查项目，还应规定输出分级；写作 skill 不只规定风格，还应包含 source fidelity、terminology consistency、style continuity 等检查；RAG audit skill 不只要求回答，还应检查 citation 是否支持 claim。
+
+一个 `rag-answer-audit` skill 可以写成：
+
+```markdown
+# RAG Answer Audit
+
+## Goal
+
+Evaluate whether an answer is grounded in retrieved sources.
+
+## Check
+
+1. Does every factual claim have source support?
+2. Does each citation support the exact claim?
+3. Did the answer use a source outside the retrieved context?
+4. Does the answer mark insufficient evidence?
+5. Did it confuse old and current documents?
+6. Did it merge policies for different user groups?
+
+## Output
+
+Return:
+- Verdict: pass / revise / fail
+- Unsupported claims
+- Citation mismatches
+- Missing evidence
+- Recommended revision
+```
+
+这样的 skill 能让模型执行二次审查。它把前面章节中的 eval 思想封装成可调用能力。长期看，skill 库会成为个人或团队的 AI 质量体系。
+
+### Skill 如何支持写作、研究和讲义生成？
+
+虽然 Claude Code 的 skills 主要出现在代码代理语境中，但 skill 思想同样适用于知识工作。只要一个任务重复出现、步骤可描述、质量标准可检查，就可以技能化。
+
+写作项目中，可以有：
+
+```text
+- lecture-note-rewrite
+- strict-editor-review
+- terminology-unification
+- source-fidelity-check
+- outline-refinement
+- style-drift-detection
+```
+
+研究项目中，可以有：
+
+```text
+- paper-summary
+- literature-matrix
+- source-grounded-comparison
+- citation-audit
+- methodology-extraction
+- research-gap-finder
+```
+
+学习项目中，可以有：
+
+```text
+- socratic-tutor
+- misconception-check
+- exercise-generator
+- concept-map-builder
+- bilingual-terminology-table
+```
+
+例如，一个 `source-fidelity-check` skill 可以检查讲义是否忠于材料：
+
+```markdown
+# Source Fidelity Check
+
+Use this skill when reviewing a rewritten lecture section against source material.
+
+## Check
+
+1. Does the rewrite preserve the source's main concepts?
+2. Did it remove necessary qualifications?
+3. Did it add unsupported claims?
+4. Did it change the relationship between concepts?
+5. Did it invent examples, citations, or page numbers?
+6. Are time-sensitive technical claims marked cautiously?
+
+## Output
+
+- Faithful passages
+- Possible distortions
+- Unsupported additions
+- Missing concepts
+- Required revisions
+```
+
+这类 skill 会让长文写作更稳定。它不是让模型一次写完，而是让模型在写作、审查、修订之间形成可复用流程。
+
+### Skill 如何支持代码审查和安全审查？
+
+代码审查非常适合 skill，因为它有重复流程，也需要清楚标准。普通 code review 提示词容易变成泛泛建议；skill 可以让模型按固定维度检查，并区分 blocking issue 和 suggestion。
+
+一个 `code-review` skill 可以包含：
+
+```markdown
+# Code Review
+
+## Process
+
+1. Inspect the diff.
+2. Identify user-facing behavior change.
+3. Check correctness.
+4. Check edge cases.
+5. Check tests.
+6. Check maintainability.
+7. Check performance only when relevant.
+8. Flag security risks.
+
+## Output
+
+- Summary
+- Blocking issues
+- Non-blocking suggestions
+- Missing tests
+- Questions
+```
+
+安全审查 skill 应更专门：
+
+```markdown
+# Security Review
+
+## Focus
+
+- authentication
+- authorization
+- input validation
+- path traversal
+- command injection
+- SQL injection
+- secret leakage
+- unsafe file operations
+- insecure defaults
+- sensitive data logging
+
+## Rules
+
+Do not comment on style unless it affects security.
+Cite file paths and relevant code snippets.
+Classify severity: critical, high, medium, low.
+```
+
+这类 skill 适合与 subagent 结合。主 agent 可以让 `security-reviewer` subagent 使用 security skill 审查 diff，而主 agent 继续处理功能实现。这样审查上下文不会混入主实现过程，职责更清楚。
+
+### Skill 如何支持调试？
+
+调试任务也适合 skill，因为调试最怕模型乱猜、频繁大改、修一个错引入另一个错。一个 debug skill 应强调小步假设、工具反馈和停止条件。
+
+```markdown
+# Debug Skill
+
+## Goal
+
+Find and fix the cause of a failing test, runtime error, or unexpected behavior.
+
+## Rules
+
+- Do not make broad refactors.
+- Form one hypothesis at a time.
+- Prefer reading logs and tests before editing.
+- Make the smallest change that can test the hypothesis.
+- Run the relevant test after editing.
+- If two attempts fail, stop and summarize.
+
+## Output
+
+- Symptom
+- Files inspected
+- Hypothesis
+- Change made
+- Test result
+- Remaining uncertainty
+```
+
+调试 skill 的关键，是让模型不把“看起来可能的原因”直接变成大规模修改。它把 debug 工作压成循环：
+
+```text
+observe error
+  → inspect relevant context
+  → form hypothesis
+  → minimal change
+  → run test
+  → revise or stop
+```
+
+这与智能体工作流完全一致。Skill 把这个循环固定下来，避免模型在调试中上下文漂移。
+
+### Skill 如何支持部署和发布？
+
+部署和发布是高风险任务。Skill 可以帮助整理流程，但不应绕过确认和权限。一个 deploy skill 应更多承担检查清单和准备工作，而不是自动执行不可逆发布。
+
+```markdown
+# Deployment Checklist
+
+## Use when
+
+Preparing a release or deployment.
+
+## Check
+
+1. Current branch and commit.
+2. Test status.
+3. Migration status.
+4. Environment variables.
+5. Feature flags.
+6. Rollback plan.
+7. Monitoring plan.
+8. Human approval.
+
+## Rules
+
+Do not deploy without explicit confirmation.
+Do not access production secrets.
+Do not modify production configuration unless approved.
+```
+
+这类 skill 必须与 hooks、CI 和权限系统结合。Skill 可以让模型知道部署前要检查什么；hook 和 CI 可以确定性执行测试；权限系统可以阻止未授权部署。不要把部署安全只写在 skill 里，因为 skill 仍然是模型上下文，不是硬执行边界。
+
+### Skill 如何被团队共享和版本化？
+
+Skill 一旦进入团队工作流，就应像代码一样管理。它应放在项目仓库或团队共享配置中，经过 review，记录修改原因，避免个人随意改动影响全队。Claude Code settings 文档提到 plugin system 可以在 user 和 repository levels 配置扩展，plugins 可包含 skills、agents、hooks 和 MCP servers；这说明团队可以把这些能力作为项目级或组织级资产分发。
+
+团队 skill 应包含：
+
+```text
+- clear name
+- intended use
+- owner
+- version history
+- examples
+- output format
+- risk level
+- tool permissions
+- review checklist
+```
+
+一个 skill 变更也应有测试。比如改了 code review skill，就应用几个历史 PR 测试它是否仍能发现关键问题；改了 release notes skill，就用过去 release 记录检查分类是否合理；改了 RAG audit skill，就用已知 citation mismatch 案例测试。
+
+Skill 版本化可以很简单：
+
+```yaml
+skill:
+  name: code-review
+  version: 0.4.2
+  owner: platform-team
+  last_updated: 2026-05-29
+  changes:
+    - added authorization checks
+    - separated blocking issues from suggestions
+    - removed generic style comments
+```
+
+这使 skill 从个人提示词变成团队流程资产。AI 工作流一旦影响团队质量，就不能靠个人收藏夹管理。
+
+### Skill 的常见失败是什么？
+
+Skill 失败主要有五类。
+
+第一，触发错误。Skill 不该用时被加载，导致模型用错误流程处理任务。例如普通文档润色触发了严格 code review skill。解决方法是缩小 skill 描述和触发范围。
+
+第二，触发不足。Skill 应该用时没有用，模型继续按通用方式回答。解决方法是改进名称、description、调用方式，或在项目规则中提醒相关任务使用指定 skill。
+
+第三，内容过长。Skill 写成小论文，模型抓不住流程，或上下文成本过高。解决方法是把主流程压缩，把长例子放入 supporting files。
+
+第四，规则冲突。Skill 与 `CLAUDE.md`、用户请求、subagent 指令或其他 skill 冲突，模型行为不稳定。解决方法是明确优先级，减少重复规则。
+
+第五，缺少验证。Skill 要求模型“检查安全”，但没有输出标准、严重程度、证据格式或测试样例。解决方法是把 skill 写成可评估流程，而不是价值宣言。
+
+可以建立 skill 失败日志：
+
+```yaml
+skill_failure:
+  skill: "security-review"
+  symptom: "Triggers on every code change and produces noise."
+  cause: "Description too broad; no exclusion for low-risk formatting changes."
+  fix:
+    - narrow use conditions
+    - add 'do not use for formatting-only diffs'
+    - require security-relevant evidence for each issue
+```
+
+Skill 不是写完就永久有效。它应通过真实任务不断修订。
+
+### 如何判断一个流程应该变成 skill？
+
+可以用几个问题判断。
+
+第一，这段说明是否重复出现？如果只是一次性任务，不需要 skill；如果每周都用，就值得沉淀。
+
+第二，它是否有明确步骤？如果只是一个项目事实，放 `CLAUDE.md`；如果是多步骤 procedure，适合 skill。
+
+第三，它是否只在特定任务中需要？如果每次会话都需要，放 `CLAUDE.md`；如果只在 review、debug、release、rewrite 这类任务中需要，放 skill。
+
+第四，它是否需要支持文件？如果需要模板、示例、schema、rubric，skill 比普通提示词更合适。
+
+第五，它是否会带来风险？如果涉及工具调用、写文件、部署或外部动作，skill 应同时设计权限和确认点。
+
+判断框架可以写成：
+
+```text
+Turn a procedure into a skill when:
+- it is repeated
+- it has multiple steps
+- it has stable quality criteria
+- it is task-specific
+- it would make CLAUDE.md too long
+- it benefits from examples or supporting files
+- it should be shared or versioned
+```
+
+这也是从提示词工程走向工作流工程的标志。提示词解决一次任务，skill 沉淀一类任务。
+
+### 如何建立个人 skill 库？
+
+个人 skill 库可以从最常用的三类任务开始：写作、研究、代码。不要一开始追求全面，而应从“经常重复粘贴的提示词”中抽取。
+
+一个个人库可以是：
+
+```text
+.claude/skills/
+  lecture-note-rewrite/
+    SKILL.md
+    examples/
+  strict-editor-review/
+    SKILL.md
+  paper-summary/
+    SKILL.md
+  code-review/
+    SKILL.md
+  debug/
+    SKILL.md
+  release-notes/
+    SKILL.md
+```
+
+每个 skill 应包含一两个真实案例。没有案例的 skill 容易空泛。比如写作 skill 可以保存一段好样例和一段坏样例；代码 review skill 可以保存一个典型 diff；研究 summary skill 可以保存一篇论文摘要输出格式。
+
+个人 skill 库的目标不是收集模板，而是沉淀自己的工作标准。使用一段时间后，可以复盘：哪些 skill 真正提高质量，哪些触发太频繁，哪些内容过时，哪些需要拆分。Skill 库应像笔记系统一样不断整理，而不是堆积。
+
+### 如何建立团队 skill 库？
+
+团队 skill 库要比个人库更严格。它不只是提高个人效率，还会影响团队质量、风险和协作标准。团队 skill 应由仓库管理，经过 review，并与项目测试、CI、hooks、permissions、MCP servers 协同。
+
+团队可以从这些 skill 开始：
+
+```text
+engineering:
+  - code-review
+  - debug
+  - test-generation
+  - migration-review
+  - security-review
+  - release-notes
+
+product:
+  - prd-review
+  - user-story-refinement
+  - ui-screenshot-review
+
+research:
+  - source-summary
+  - citation-audit
+  - literature-matrix
+
+support:
+  - ticket-triage
+  - draft-reply
+  - policy-grounding-check
+```
+
+每个 skill 应有 owner 和更新流程。比如安全团队维护 `security-review`，文档团队维护 `release-notes`，平台团队维护 `api-schema-review`。Skill 不是所有人随便改的 prompt；它是团队知识的一部分。
+
+团队还可以把 skill 与 plugin system 结合。Claude Code settings 文档显示，plugins 可以在用户和仓库层配置，且 managed settings 可以由组织策略控制。 这意味着大型组织可以把 approved skills、agents、hooks 和 MCP servers 打包成受控扩展，避免每个人各自维护不一致流程。
+
+### Skill 如何连接 MCP？
+
+MCP 负责把外部资源和工具连接给模型应用；skill 负责告诉模型怎样使用某类能力。二者结合后，skill 可以成为“使用某些外部工具的工作流说明”。
+
+例如，一个 Jira triage skill 可以说明：
+
+```markdown
+# Jira Triage Skill
+
+Use the Jira MCP tools to:
+1. Read issue title and description.
+2. Identify component, severity, and missing information.
+3. Search related issues.
+4. Suggest labels.
+5. Draft a concise comment asking for missing reproduction steps.
+```
+
+一个 Figma review skill 可以说明：
+
+```markdown
+# Design Implementation Review
+
+Use Figma context and repository files to:
+1. Compare component layout with design.
+2. Identify spacing, typography, and missing states.
+3. Check whether implemented components follow design tokens.
+4. Produce actionable diffs for the frontend team.
+```
+
+MCP 提供外部上下文和工具，skill 提供使用它们的程序。没有 skill，模型可能知道工具存在，却不知道团队希望怎样使用；没有 MCP，skill 可能只有方法，没有外部能力。二者结合，才形成真正可执行的 agent 工作流。
+
+### Skill 如何帮助从个人经验走向组织能力？
+
+LLM 使用初期，经验常常停留在个人层面：某人知道怎样提示模型，某人有一套写作要求，某人知道代码代理常犯什么错。这种经验有价值，但很难规模化。Skill 的意义，是把个人经验转化为团队可共享、可审查、可更新的能力。
+
+例如，一个资深工程师知道 code review 应检查权限边界、错误处理和测试覆盖。若这些经验只存在于他的脑中，新人和模型都无法稳定复用。写成 skill 后，Claude 可以在 review 任务中使用，团队成员也能看到审查标准。再结合 hooks、CI 和 evals，经验就变成流程。
+
+同样，一个学术写作者知道讲义不应空泛总结、不应编造引用、不应过度列表化。写成 skill 后，长文生成和审查就有稳定标准。这对持续写作项目特别重要。
+
+可以把经验沉淀路径写成：
+
+```text
+personal correction
+  → repeated instruction
+  → CLAUDE.md rule or skill
+  → shared team workflow
+  → eval cases
+  → automated checks / hooks
+```
+
+Skill 位于这个链条中间。它承接人类经验，又能被 agent 调用；它不是最终控制机制，但能把经验从临时对话中解放出来。
+
+### Skill 在学习路线中的位置是什么？
+
+Agent Skills 应放在提示词、上下文工程、RAG、工具调用、API、智能体工作流和 Claude Code 之后学习。原因在于 skill 本身不是孤立技巧，而是对前面能力的封装：它把任务描述写成可复用文件，把上下文按需加载，把工具权限和工作流连接起来，把评估标准放进执行过程。
+
+如果没有提示词基础，skill 会写成空泛口号；没有上下文工程，skill 会变成另一个臃肿的 `CLAUDE.md`；没有工具调用，skill 只能指导文本生成，不能进入系统行动；没有 agent workflow，skill 只是模板，不能成为多步骤能力；没有评估，skill 的效果无法判断；没有勤勉，skill 可能把错误流程规模化。
+
+本章的结论可以概括为：**Agent Skills 是把重复 AI 工作流沉淀为可发现、可复用、可按需加载能力的机制。它把提示词从一次性表达推进到长期能力管理，使个人经验和团队规范能够进入代码代理、研究助手、写作系统和组织流程。**
