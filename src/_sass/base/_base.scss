@@ -324,17 +324,18 @@ article ul > li {
   position: relative;
 }
 
-article ul > li::before {
-  content: "·";
+article .post-content ul > li::before {
+  content: "●";
   position: absolute;
   left: -1.15em;
   top: 0;
   width: 1em;
   text-align: center;
-  font-weight: 700;
+  font-family: "BulletBreath" !important;
+  font-weight: 400;
   @include ascii-bullet-breath;
 }
-·
+
 article dl {
   margin: $global-section-margin 0;
 }

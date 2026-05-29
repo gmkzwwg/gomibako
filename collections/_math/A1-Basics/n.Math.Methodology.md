@@ -1,5 +1,5 @@
 ---
-title: Methodology of Mathematics
+title: Mathematics Methodology Wiki (数学方法百科)
 layout: slide-linear
 categories: Notes
 subclass: Basics

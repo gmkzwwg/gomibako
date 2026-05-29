@@ -23,6 +23,14 @@ font-family: 'Noto Sans SC';
     unicode-range: U+9f83, U+9f85-9f8d, U+9f90-9f91, U+9f94-9f96, U+9f98, U+9f9b-9f9c, U+9f9e, U+9fa0, U+9fa2, U+9ff0-9fff, U+a001, U+a007, U+a025, U+a046-a047, U+a057, U+a072, U+a078-a079, U+a083, U+a085, U+a100, U+a118, U+a132, U+a134, U+a1f4, U+a242, U+a4a6, U+a4aa, U+a4b0-a4b1, U+a4b3, U+a9c1-a9c2, U+ac00-ac01, U+ac04, U+ac08, U+ac10-ac11, U+ac13-ac16, U+ac19, U+ac1c-ac1d, U+ac24, U+ac70-ac71, U+ac74, U+ac77-ac78, U+ac80-ac81, U+ac83, U+ac8c, U+ac90, U+ac9f-aca0, U+aca8-aca9, U+acac, U+acb0, U+acbd, U+acc1, U+acc4, U+ace0-ace1, U+ace4, U+ace8, U+acf3, U+acf5, U+acfc-acfd, U+ad00, U+ad0c, U+ad11, U+ad1c, U+ad34, U+ad50, U+ad64, U+ad6c, U+ad70, U+ad74, U+ad7f, U+ad81, U+ad8c, U+adc0, U+adc8, U+addc, U+ade0, U+adf8-adf9, U+adfc, U+ae00, U+ae08-ae09, U+ae0b, U+ae30, U+ae34, U+ae38, U+ae40, U+ae4a, U+ae4c, U+ae54, U+ae68, U+aebc, U+aed8, U+af2c-af2d;
 }
 
+@font-face {
+  font-family: "BulletBreath";
+  src: url("../fonts/bulletbreath.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  unicode-range: U+2736, U+2731, U+273D, U+25CF, U+2B22;
+}
 
 $font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
  "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", sans-serif !default;
