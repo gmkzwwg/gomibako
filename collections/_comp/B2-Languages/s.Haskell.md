@@ -10,11 +10,11 @@ subclass: Languages
 
 ### Version and Implementation Assumptions — Haskell 2010, GHC Haskell, GHCi, Cabal, Stack, GHCup, HLS
 
-This guide targets **mainstream professional Haskell**, not a purely historical or report-only subset. The baseline is **Haskell 2010 plus modern GHC Haskell**, with examples written to remain readable under ordinary GHC practice. GHC supports several language editions, including `Haskell98`, `Haskell2010`, `GHC2021`, and `GHC2024`, while also offering many individually enabled language extensions. That distinction matters: **Haskell 2010** is the stable language-report baseline; **GHC Haskell** is what most serious contemporary Haskell code actually uses. ([GHC GitLab][1])
+This guide targets **mainstream professional Haskell**, not a purely historical or report-only subset. The baseline is **Haskell 2010 plus modern GHC Haskell**, with examples written to remain readable under ordinary GHC practice. GHC supports several language editions, including `Haskell98`, `Haskell2010`, `GHC2021`, and `GHC2024`, while also offering many individually enabled language extensions. That distinction matters: **Haskell 2010** is the stable language-report baseline; **GHC Haskell** is what most serious contemporary Haskell code actually uses.
 
-The practical toolchain assumption is **GHC**, **GHCi**, **Cabal**, **Stack**, **GHCup**, and **haskell-language-server**. GHC 9.14.1 was released in December 2025, GHC 9.12.4 was released in March 2026, and the current Haskell Language Server support matrix lists full support for recent GHC versions including 9.12.4. ([Haskell][2]) Cabal should be understood as the standard Haskell build and package system; GHCup is the ordinary toolchain installer path; HLS is the editor-integration layer that makes type errors, code navigation, and refactoring tolerable in real projects. ([Cabal][3])
+The practical toolchain assumption is **GHC**, **GHCi**, **Cabal**, **Stack**, **GHCup**, and **haskell-language-server**. GHC 9.14.1 was released in December 2025, GHC 9.12.4 was released in March 2026, and the current Haskell Language Server support matrix lists full support for recent GHC versions including 9.12.4.  Cabal should be understood as the standard Haskell build and package system; GHCup is the ordinary toolchain installer path; HLS is the editor-integration layer that makes type errors, code navigation, and refactoring tolerable in real projects.
 
-This part follows the uploaded coverage contract: Haskell must be taught as a coherent design system, with particular attention to type theory, lambda calculus, category theory, denotational semantics, laziness, purity, typeclasses, effects, runtime behavior, tooling, and failure modes. 
+This part follows the uploaded coverage contract: Haskell must be taught as a coherent design system, with particular attention to type theory, lambda calculus, category theory, denotational semantics, laziness, purity, typeclasses, effects, runtime behavior, tooling, and failure modes.
 
 ### What Haskell Is — pure functional language, non-strict semantics, static typing, typeclasses, lazy evaluation
 
@@ -28,7 +28,7 @@ Haskell is a **pure, statically typed, non-strict functional programming languag
 
 **Functional** means that functions, values, algebraic data types, pattern matching, higher-order functions, and composition are the default vocabulary. Haskell can perform I/O, mutate references, use arrays, spawn threads, call C, and build servers, but its center of gravity remains value transformation under a strong type discipline.
 
-The Haskell 2010 Report frames the language as the result of many years of research on non-strict functional languages and defines both syntax and an informal abstract semantics for Haskell programs. ([Haskell][4]) In practice, Haskell is also a research-to-production bridge: it carries ideas from lambda calculus, type theory, denotational semantics, category theory, compiler design, and software engineering into ordinary library APIs and application code.
+The Haskell 2010 Report frames the language as the result of many years of research on non-strict functional languages and defines both syntax and an informal abstract semantics for Haskell programs.  In practice, Haskell is also a research-to-production bridge: it carries ideas from lambda calculus, type theory, denotational semantics, category theory, compiler design, and software engineering into ordinary library APIs and application code.
 
 ### Language Personality — design dimensions, choices, consequences
 
@@ -196,7 +196,7 @@ Haskell has a stable professional core and a moving research frontier. Confusing
 | “Haskell as a proof assistant”           | Overstated for ordinary use  | Desire for correctness guarantees                                          | Some proof-like techniques are possible                                                 | Haskell is not Agda, Idris, Lean, or Coq                                                      |
 | “Monads are the whole language”          | Overhyped beginner myth      | Monads are distinctive and widely discussed                                | They matter for sequencing and composition                                              | Haskell also depends on ADTs, laziness, typeclasses, modules, runtime, and ecosystem practice |
 
-GHC’s current documentation treats language editions and extensions as explicit compiler-controlled choices, which reflects a broader trend: modern Haskell is not simply “the Haskell 2010 report plus libraries,” but a managed relationship between the stable report, GHC language editions, and individually selected extensions. ([GHC GitLab][1]) Recent GHC releases also continue to emphasize compiler improvements and optimization work, including specialization improvements in GHC 9.14. ([Haskell][2]) Dependent-type-related work remains a visible frontier in the GHC ecosystem, but it should be treated as an advanced direction rather than the first mental model for writing ordinary Haskell programs. ([GHC Serokell][5])
+GHC’s current documentation treats language editions and extensions as explicit compiler-controlled choices, which reflects a broader trend: modern Haskell is not simply “the Haskell 2010 report plus libraries,” but a managed relationship between the stable report, GHC language editions, and individually selected extensions.  Recent GHC releases also continue to emphasize compiler improvements and optimization work, including specialization improvements in GHC 9.14.  Dependent-type-related work remains a visible frontier in the GHC ecosystem, but it should be treated as an advanced direction rather than the first mental model for writing ordinary Haskell programs.
 
 ### What Haskell Makes Easy — algebraic modeling, pure transformation, compositional APIs
 
@@ -290,7 +290,7 @@ This is why Haskell expertise cannot stop at type theory. Part 7 will treat runt
 
 ### Haskell’s Ecosystem Personality — small core, strong libraries, toolchain sensitivity
 
-Haskell’s standard library story is different from Python’s “batteries included” model. The `base` package is central, but much practical work depends on ecosystem packages. Cabal is the standard package/build system, and Hackage is the central package repository infrastructure; Stack remains important in many codebases, especially where curated resolver-based builds are preferred. ([Cabal][3])
+Haskell’s standard library story is different from Python’s “batteries included” model. The `base` package is central, but much practical work depends on ecosystem packages. Cabal is the standard package/build system, and Hackage is the central package repository infrastructure; Stack remains important in many codebases, especially where curated resolver-based builds are preferred.
 
 | Practical area                  | Common Haskell ecosystem center                | Why it matters                                                       |
 | ------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------- |
@@ -354,7 +354,7 @@ A compact summary is: **Haskell is a language for designing programs as typed me
 
 ### Orientation — syntax, semantics, declarations, expressions, layout
 
-Haskell syntax is compact, but it is not casual. A small amount of punctuation can encode function application, type annotation, pattern matching, infix binding, module import, or monadic sequencing. This part therefore treats syntax as a map from surface form to semantic meaning, not as a list of tokens. The uploaded task explicitly requires Part 2 to stay focused on core syntax and primitive semantic constructs, while leaving the full type system, ecosystem, runtime, and task-pattern design for later parts. 
+Haskell syntax is compact, but it is not casual. A small amount of punctuation can encode function application, type annotation, pattern matching, infix binding, module import, or monadic sequencing. This part therefore treats syntax as a map from surface form to semantic meaning, not as a list of tokens. The uploaded task explicitly requires Part 2 to stay focused on core syntax and primitive semantic constructs, while leaving the full type system, ecosystem, runtime, and task-pattern design for later parts.
 
 Haskell code is built mainly from **declarations** and **expressions**.
 
@@ -388,7 +388,7 @@ Haskell source code is tokenized into identifiers, operators, literals, keywords
 | Literal              | `42`, `"hi"`, `'x'`, `3.14`                | Source representation of a value     | Literals are often overloaded by typeclasses      | Numeric literal type depends on context                      |                                           |                   |
 | Line comment         | `-- comment`                               | Ignored to end of line               | Lightweight source note                           | `--` begins comment unless part of an operator token context |                                           |                   |
 | Block comment        | `{- comment -}`                            | Ignored block; can nest              | Useful for larger disabled sections               | Nested comments are allowed, unlike many languages           |                                           |                   |
-| Haddock comment      | `--                                        | `, `-- ^`, `{-                       | ... -}`                                           | Documentation comment                                        | Documentation is attached to declarations | Placement matters |
+| Haddock comment      | `--                                        | `,`-- ^`,`{-                       | ... -}`                                           | Documentation comment                                        | Documentation is attached to declarations | Placement matters |
 | Language pragma      | `{-# LANGUAGE OverloadedStrings #-}`       | Compiler extension directive         | GHC Haskell is extension-controlled               | Extensions change accepted syntax and typing behavior        |                                           |                   |
 | OPTIONS pragma       | `{-# OPTIONS_GHC -Wall #-}`                | Compiler option for the file         | File-local checking behavior                      | Project-level consistency is better than ad-hoc flags        |                                           |                   |
 
@@ -1096,7 +1096,7 @@ The following operators appear frequently enough to recognize early.
 | -------------------- | -------------------------------- | --------------------------- | ---------------------- | -------------------------------------------- | -- | - | -- | ------------------------------ |
 | `+`, `-`, `*`        | `Num a => a -> a -> a`           | Numeric operations          | `x + y`                | Numeric type may be inferred unexpectedly    |    |   |    |                                |
 | `/`                  | `Fractional a => a -> a -> a`    | Fractional division         | `x / y`                | Not integer division                         |    |   |    |                                |
-| `div`, `mod`         | `Integral a => a -> a -> a`      | Integral division/remainder | `x `div` y`            | Behavior with negatives should be understood |    |   |    |                                |
+| `div`, `mod`         | `Integral a => a -> a -> a`      | Integral division/remainder | `x`div`y`            | Behavior with negatives should be understood |    |   |    |                                |
 | `==`, `/=`           | `Eq a => a -> a -> Bool`         | Equality/inequality         | `x == y`               | Requires `Eq`                                |    |   |    |                                |
 | `<`, `<=`, `>`, `>=` | `Ord a => a -> a -> Bool`        | Ordering                    | `x < y`                | Derived ordering may be arbitrary            |    |   |    |                                |
 | `&&`                 | `Bool -> Bool -> Bool`           | Boolean and                 | `a && b`               | Operates on `Bool`, not truthy values        |    |   |    |                                |
@@ -1252,9 +1252,10 @@ firstName names =
 ```
 
 **Failure-first explanation.** The tempting but wrong mental model is that if a Haskell expression has type `Text`, it safely produces `Text`. The surprising behavior is that `undefined :: Text` typechecks. The correct explanation is that Haskell’s ordinary type system does not exclude nontermination or runtime failure from bottom-like expressions. The professional rule is: **treat `undefined`, `error`, non-exhaustive patterns, and partial functions as explicit hazards; isolate them during development and remove or wrap them at boundaries.** The boundary changes in tests, prototypes, unreachable-code markers, and internal invariants, but production APIs should not expose ordinary partiality casually.
+
 ### Function Definitions — equations, arguments, currying, application, pointful style
 
-A Haskell function definition usually consists of a type signature followed by one or more equations. Part 2 remains focused on syntax and primitive semantics rather than full abstraction design; the task-pattern treatment of functions continues in Part 4. 
+A Haskell function definition usually consists of a type signature followed by one or more equations. Part 2 remains focused on syntax and primitive semantics rather than full abstraction design; the task-pattern treatment of functions continues in Part 4.
 
 ```haskell
 add :: Int -> Int -> Int
@@ -2398,11 +2399,12 @@ The code contains no classes, inheritance, nulls, assignments, or hidden excepti
 | Extension pragma           | `{-# LANGUAGE X #-}`      | Enable GHC feature                 | Controlled language selection  | Enabling extensions blindly                           |                                |
 | Typed hole                 | `_`                       | Ask compiler for needed type       | Type-driven development        | Leaving holes or obeying type without domain judgment |                                |
 | Bottom-like expression     | `undefined`, `error`      | Typechecks but fails when demanded | Temporary or impossible states | Believing type alone ensures runtime success          |                                |
+
 ## PART 3 — Data, Types, and Modeling Reference by Task Pattern
 
 ### Orientation — values, types, constructors, invariants, representation choice
 
-Haskell data modeling begins with a different question from many mainstream languages. The first question is not “which class should own this behavior?” but **what values can exist, which states are valid, and which invalid states should become impossible to represent?** This part follows the uploaded task’s requirement to organize data and type modeling by practical task patterns rather than by a mechanical type-system list. 
+Haskell data modeling begins with a different question from many mainstream languages. The first question is not “which class should own this behavior?” but **what values can exist, which states are valid, and which invalid states should become impossible to represent?** This part follows the uploaded task’s requirement to organize data and type modeling by practical task patterns rather than by a mechanical type-system list.
 
 The basic modeling vocabulary is small but powerful: algebraic data types, records, `newtype`, type synonyms, parametric polymorphism, typeclasses, type parameters, and explicit failure types such as `Maybe` and `Either`. Advanced GHC Haskell adds GADTs, type families, promoted data kinds, phantom types, and other tools, but professional modeling usually begins with ordinary ADTs and only escalates when the invariant requires stronger machinery.
 
@@ -3282,6 +3284,7 @@ The raw type describes decoded structure. The domain type describes trusted mean
 This does not mean every program needs two full models for every input. But serious boundary-heavy code benefits from separating **decoded syntax** from **validated domain meaning**.
 
 **Failure-first explanation.** The tempting but wrong mental model is that if JSON decoding succeeds, the data is valid. The surprising bug is that syntactically valid JSON can contain empty names, negative ages, unknown status strings, invalid emails, and inconsistent combinations. The correct explanation is that decoding checks representation shape, not necessarily domain invariants. The professional rule is: **decode external data into a raw structure, validate into domain types, and keep raw values near the boundary.** The boundary changes when using schema-driven validation or smart decoders that directly construct domain values, but the distinction between shape and meaning remains.
+
 ### Convert, Parse, Narrow, or Cast Values — explicit conversion, safe parsing, no silent coercion
 
 Haskell generally avoids silent coercion. A value of type `Text` does not automatically become an `Int`; an `Int` does not automatically become a `Double`; a `UserId` newtype does not automatically become an `Int`. This is not inconvenience for its own sake. It protects the boundary between **representation** and **meaning**.
@@ -4374,11 +4377,12 @@ A strong Haskell data model usually has these traits:
 A weak model often has the opposite traits: many `Text` fields with implicit meanings, many `Bool` flags, public constructors for supposedly validated data, partial functions hidden behind confident names, and overly general signatures copied from libraries without a practical need.
 
 The practical Haskell modeling habit is to keep asking: **Can this bad state be constructed? If yes, where is it rejected? If it is rejected at runtime, is that boundary explicit in the type? If it is not rejected, is that acceptable?**
+
 ## PART 4 — Control Flow, Functions, Abstraction, and Composition by Task Pattern
 
 ### Orientation — behavior as typed transformation, composition, sequencing, abstraction
 
-Haskell control flow is not organized around mutable statements. It is organized around **expressions**, **pattern matching**, **function application**, **composition**, and **typed sequencing**. This part follows the uploaded task’s requirement to organize behavior and abstraction by practical task pattern rather than by a shallow syntax tour. 
+Haskell control flow is not organized around mutable statements. It is organized around **expressions**, **pattern matching**, **function application**, **composition**, and **typed sequencing**. This part follows the uploaded task’s requirement to organize behavior and abstraction by practical task pattern rather than by a shallow syntax tour.
 
 The practical question is usually not “which loop should be used?” but **what kind of behavior is being expressed?** Is the code branching by data shape? Transforming every element? Combining results? Sequencing effects? Building a reusable abstraction? Preserving an invariant? Haskell provides different tools for these different intentions.
 
@@ -5185,11 +5189,12 @@ Practical consequence: choosing the weakest sufficient abstraction communicates 
 Limit of the lens: categorical vocabulary does not replace reading the concrete instance. `Maybe`, `Either`, `IO`, list, and parser instances behave differently.
 
 **Failure-first explanation.** The tempting but wrong mental model is that `Monad` is the powerful abstraction, so it should be used whenever possible. The surprising cost is losing information: a monadic API implies dependency even when computations are independent. The correct explanation is that `Applicative` expresses independent combination, while `Monad` expresses dependent sequencing. The professional rule is: **prefer `Functor` for simple transformation, `Applicative` for independent combination, and `Monad` when later steps need earlier values.** The boundary changes when ergonomics or library conventions favor `do` notation, but the dependency distinction remains important.
+
 ## PART 4 — Control Flow, Functions, Abstraction, and Composition by Task Pattern
 
 ### Orientation — behavior as typed transformation, composition, sequencing, abstraction
 
-Haskell control flow is not organized around mutable statements. It is organized around **expressions**, **pattern matching**, **function application**, **composition**, and **typed sequencing**. This part follows the uploaded task’s requirement to organize behavior and abstraction by practical task pattern rather than by a shallow syntax tour. 
+Haskell control flow is not organized around mutable statements. It is organized around **expressions**, **pattern matching**, **function application**, **composition**, and **typed sequencing**. This part follows the uploaded task’s requirement to organize behavior and abstraction by practical task pattern rather than by a shallow syntax tour.
 
 The practical question is usually not “which loop should be used?” but **what kind of behavior is being expressed?** Is the code branching by data shape? Transforming every element? Combining results? Sequencing effects? Building a reusable abstraction? Preserving an invariant? Haskell provides different tools for these different intentions.
 
@@ -5996,9 +6001,10 @@ Practical consequence: choosing the weakest sufficient abstraction communicates 
 Limit of the lens: categorical vocabulary does not replace reading the concrete instance. `Maybe`, `Either`, `IO`, list, and parser instances behave differently.
 
 **Failure-first explanation.** The tempting but wrong mental model is that `Monad` is the powerful abstraction, so it should be used whenever possible. The surprising cost is losing information: a monadic API implies dependency even when computations are independent. The correct explanation is that `Applicative` expresses independent combination, while `Monad` expresses dependent sequencing. The professional rule is: **prefer `Functor` for simple transformation, `Applicative` for independent combination, and `Monad` when later steps need earlier values.** The boundary changes when ergonomics or library conventions favor `do` notation, but the dependency distinction remains important.
+
 ### Parser Combinators as Composition — sequencing, alternatives, structure-preserving parsing
 
-Parser combinators are one of Haskell’s clearest examples of abstraction turning into practical code. A parser can be treated as a value. Small parsers can be combined into larger parsers by function composition, `Applicative`, `Alternative`, and `Monad`. This is not just theory; it is a concrete style for building readable parsers. This follows the uploaded requirement to connect category-theoretic concepts only where they clarify real Haskell mechanisms and practical programming style. 
+Parser combinators are one of Haskell’s clearest examples of abstraction turning into practical code. A parser can be treated as a value. Small parsers can be combined into larger parsers by function composition, `Applicative`, `Alternative`, and `Monad`. This is not just theory; it is a concrete style for building readable parsers. This follows the uploaded requirement to connect category-theoretic concepts only where they clarify real Haskell mechanisms and practical programming style.
 
 A simplified parser type can be imagined as:
 
@@ -6731,11 +6737,12 @@ Safety here means “ability of the API to prevent misuse,” not “proof of to
 | Code feels repetitive in a stable pattern       | Abstract one level, then reassess                     |
 
 The deeper Haskell habit is to let **data shape**, **type shape**, and **effect shape** guide control flow. A well-modeled ADT invites pattern matching. A `Maybe` invites absence handling. An `Either` invites recoverable error flow. A `Functor` invites mapping. An `Applicative` invites independent combination. A `Monad` invites dependent sequencing. A `Monoid` invites aggregation. When code fights these shapes, the model is often wrong or the abstraction level is poorly chosen.
+
 ## PART 5 — Modules, Errors, Effects, Resources, and Boundaries by Task Pattern
 
 ### Orientation — boundaries, effects, trust, failure, API surface
 
-Haskell’s strongest design habits become visible at boundaries. A boundary is any place where one part of a program touches another part with different assumptions: a module boundary, package boundary, error boundary, effect boundary, resource boundary, trust boundary, concurrency boundary, or foreign-code boundary. This part follows the uploaded task’s requirement to organize modules, errors, effects, resources, and boundaries by practical task pattern rather than by syntax category. 
+Haskell’s strongest design habits become visible at boundaries. A boundary is any place where one part of a program touches another part with different assumptions: a module boundary, package boundary, error boundary, effect boundary, resource boundary, trust boundary, concurrency boundary, or foreign-code boundary. This part follows the uploaded task’s requirement to organize modules, errors, effects, resources, and boundaries by practical task pattern rather than by syntax category.
 
 In Haskell, boundaries are not merely organizational. They determine which values can be constructed, which effects are visible, which failures are recoverable, which invariants are trusted, and which unsafe assumptions are isolated.
 
@@ -7457,6 +7464,7 @@ validateUser :: RawUser -> Either UserError User
 | Avoid invalid public construction | Export type, not constructor        | Smart constructors with rich errors      | Public record update breaks invariant |
 
 This table is deliberately practical. The best Haskell boundary is not the most abstract one. It is the one that makes the important distinction visible to the caller and enforceable by the compiler or module system.
+
 ### Manage Resources — bracket, withFile, acquire/use/release, exception safety
 
 Resource management is a boundary problem. Files, sockets, database connections, locks, temporary directories, handles, and foreign pointers have lifetimes that must be controlled. Haskell’s purity does not remove this problem. It makes the resource boundary explicit through `IO` and resource-safe APIs.
@@ -7994,11 +8002,12 @@ The important maintenance question is not “can callers do what they need today
 | Public API feels convenient but too broad | Reduce exports and expose intention                                       |
 
 A mature Haskell codebase is usually recognizable by its boundaries. Constructors are hidden where invariants matter. Pure logic is not unnecessarily in `IO`. Error types reflect caller responsibility. Resources are scoped. External data is validated. Unsafe code is isolated. Modules expose concepts rather than accidents. These are not aesthetic preferences; they are the mechanisms by which Haskell’s type and module systems become practical engineering tools.
+
 ## PART 6 — Standard Library and Core Ecosystem Reference by Task Pattern
 
 ### Orientation — small core, practical ecosystem, task-first library use
 
-Haskell’s practical library story is different from languages that concentrate most everyday functionality in one large standard library. The `base` package is central, but professional Haskell usually relies on a stable constellation of core ecosystem packages: `text`, `bytestring`, `containers`, `vector`, `aeson`, `stm`, `async`, `mtl`, `transformers`, parser libraries, testing libraries, and build tools. Cabal is the standard Haskell build and package system, while Stackage provides curated package sets selected to build together and pass tests before appearing in Nightly or LTS snapshots. ([cabal.readthedocs.io][1])
+Haskell’s practical library story is different from languages that concentrate most everyday functionality in one large standard library. The `base` package is central, but professional Haskell usually relies on a stable constellation of core ecosystem packages: `text`, `bytestring`, `containers`, `vector`, `aeson`, `stm`, `async`, `mtl`, `transformers`, parser libraries, testing libraries, and build tools. Cabal is the standard Haskell build and package system, while Stackage provides curated package sets selected to build together and pass tests before appearing in Nightly or LTS snapshots.
 
 This part is organized by task. The question is not “which modules exist?” but **which library area should be chosen for a concrete programming job, what abstraction does it imply, and what mistake does it prevent or introduce?**
 
@@ -8023,7 +8032,7 @@ The guiding rule is: **choose libraries by representation and boundary.** Use `T
 
 ### Package and Tooling Baseline — Cabal, Stack, Hackage, Stackage, GHCup, HLS
 
-Haskell package workflow is not merely administrative. It shapes reproducibility, dependency solving, editor support, compiler version selection, and deployment confidence. Cabal describes package metadata and build components; a Cabal package conventionally has a `.cabal` file at the package root containing metadata and build information. ([cabal.readthedocs.io][2]) GHCup is the common installer for GHC and surrounding tools, and the official GHCup installation guide explicitly includes installing HLS during setup. ([Haskell][3]) HLS support depends on matching supported GHC versions, so editor reliability is partly a toolchain-version problem, not just an editor problem. ([Haskell Language Server][4])
+Haskell package workflow is not merely administrative. It shapes reproducibility, dependency solving, editor support, compiler version selection, and deployment confidence. Cabal describes package metadata and build components; a Cabal package conventionally has a `.cabal` file at the package root containing metadata and build information.  GHCup is the common installer for GHC and surrounding tools, and the official GHCup installation guide explicitly includes installing HLS during setup.  HLS support depends on matching supported GHC versions, so editor reliability is partly a toolchain-version problem, not just an editor problem.
 
 | Tool/source | Role                                              | Use when                                          | Caveat                                                                   |
 | ----------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -8090,7 +8099,7 @@ The language edition and dependency bounds are part of the engineering contract.
 | Folding             | `Data.Foldable`, `foldMap`, `traverse_`         | Generic aggregation/effects               | Know strictness behavior                    |                                          |
 | Traversal           | `Data.Traversable`, `traverse`, `sequenceA`     | Effectful structure processing            | Understand `Applicative`                    |                                          |
 | Monadic helpers     | `Control.Monad`                                 | `when`, `unless`, `forever`, `replicateM` | Do not use monadic style when pure suffices |                                          |
-| Applicative helpers | `Control.Applicative`                           | `<                                        | >`, `many`, `some`                          | Alternative behavior depends on instance |
+| Applicative helpers | `Control.Applicative`                           | `<                                        | >`,`many`,`some`                          | Alternative behavior depends on instance |
 | Exceptions          | `Control.Exception`                             | `try`, `bracket`, `catch`                 | Be careful with async exceptions            |                                          |
 | I/O                 | `System.IO`                                     | handles, buffering, file modes            | Lazy I/O caveats                            |                                          |
 | Environment         | `System.Environment`                            | CLI args, environment variables           | Validate raw strings                        |                                          |
@@ -8416,7 +8425,7 @@ Haskell’s standard functional utilities are not ornamentation; they are the co
 | `Functor`     | `fmap` / `<$>`     | Transform inside context                    | `userName <$> maybeUser`  |                     |
 | `Applicative` | `pure`, `<*>`      | Combine independent contextual computations | `User <$> pName <*> pAge` |                     |
 | `Monad`       | `>>=`, `do`        | Sequence dependent contextual computations  | `x <- parse; load x`      |                     |
-| `Alternative` | `<                 | >`, `empty`                                 | Choice/failure/repetition | parser alternatives |
+| `Alternative` | `<                 | >`,`empty`                                 | Choice/failure/repetition | parser alternatives |
 | `Foldable`    | `foldMap`, `foldr` | Consume structure                           | aggregate tags            |                     |
 | `Traversable` | `traverse`         | Map with effects and preserve structure     | load many users           |                     |
 | `Semigroup`   | `<>`               | Associative combination                     | combine text, sets, logs  |                     |
@@ -8470,7 +8479,7 @@ Limit of the lens: the laws and names do not replace understanding each concrete
 
 ### JSON and Data Formats — aeson, explicit boundaries, generic deriving
 
-JSON work in Haskell commonly uses `aeson`, a fast JSON library in the Haskell ecosystem; Stackage lists `aeson` as a library for working with JSON data. ([stackage.org][5]) The important design question is whether JSON representation is internal convenience or public contract.
+JSON work in Haskell commonly uses `aeson`, a fast JSON library in the Haskell ecosystem; Stackage lists `aeson` as a library for working with JSON data.  The important design question is whether JSON representation is internal convenience or public contract.
 
 Internal quick type:
 
@@ -8674,7 +8683,7 @@ Limit of the lens: property tests check sampled cases, not formal proofs, unless
 
 ### Debugging and Interactive Exploration — GHCi, typed holes, trace, warnings, HLS
 
-Haskell debugging often begins before runtime: with types, warnings, typed holes, and small REPL experiments. GHCi is useful for evaluating expressions, checking inferred types, testing small functions, and inspecting APIs. HLS adds editor-level diagnostics, navigation, and code actions; its installation documentation notes that `ghc` must be available on the path for standalone files, and GHCup is a common installation route. ([Haskell Language Server][1])
+Haskell debugging often begins before runtime: with types, warnings, typed holes, and small REPL experiments. GHCi is useful for evaluating expressions, checking inferred types, testing small functions, and inspecting APIs. HLS adds editor-level diagnostics, navigation, and code actions; its installation documentation notes that `ghc` must be available on the path for standalone files, and GHCup is a common installation route.
 
 | Debugging task        | Tool                        | Use                                        | Caveat                                         |
 | --------------------- | --------------------------- | ------------------------------------------ | ---------------------------------------------- |
@@ -8780,7 +8789,7 @@ Benchmarking usually belongs to a dedicated benchmark suite rather than ad-hoc t
 
 ### Concurrency and Async Utilities — forkIO, async, STM, MVar, structured work
 
-Haskell has strong concurrency abstractions. The `async` package provides functionality for asynchronous actions across multiple threads and is built on top of `forkIO`, improving on direct low-level thread usage. ([FP Complete][2]) STM is a major Haskell concurrency abstraction: transactional variables and composable transactions allow shared mutable state to be updated atomically; descriptions of Concurrent Haskell emphasize `TVar`, `retry`, and `orElse` as STM primitives. ([ウィキペディア][3])
+Haskell has strong concurrency abstractions. The `async` package provides functionality for asynchronous actions across multiple threads and is built on top of `forkIO`, improving on direct low-level thread usage.  STM is a major Haskell concurrency abstraction: transactional variables and composable transactions allow shared mutable state to be updated atomically; descriptions of Concurrent Haskell emphasize `TVar`, `retry`, and `orElse` as STM primitives.
 
 | Task                             | Tool                         | Use                         | Risk                                 |
 | -------------------------------- | ---------------------------- | --------------------------- | ------------------------------------ |
@@ -9165,7 +9174,7 @@ Haskell ecosystem fluency is mostly the ability to choose the right abstraction 
 
 Haskell must be understood at two levels at once. The **semantic level** explains what a program means: expressions, values, bindings, pattern matching, purity, laziness, and typed effects. The **implementation level** explains how a real Haskell program runs under GHC: thunks, closures, heap allocation, garbage collection, strictness analysis, optimization, stack, runtime system, lightweight threads, and foreign calls.
 
-These levels should not be confused. The Haskell language semantics says that pure expressions are referentially transparent and non-strict. GHC’s runtime strategy explains how that semantics is implemented efficiently enough for real programs. This part follows the uploaded requirement to distinguish language semantics, implementation behavior, runtime behavior, compiler behavior, and ecosystem convention. 
+These levels should not be confused. The Haskell language semantics says that pure expressions are referentially transparent and non-strict. GHC’s runtime strategy explains how that semantics is implemented efficiently enough for real programs. This part follows the uploaded requirement to distinguish language semantics, implementation behavior, runtime behavior, compiler behavior, and ecosystem convention.
 
 | Question                      | Semantic answer                                                | GHC/runtime answer                                      | Common confusion                                       |
 | ----------------------------- | -------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------ |
@@ -9997,9 +10006,10 @@ A complete Haskell cost model is difficult, but several high-frequency costs app
 The important principle is that Haskell’s high-level abstractions are often optimizable, but not automatically free. “Zero-cost abstraction” should not be used casually. Some abstractions optimize away; others allocate, retain, or block specialization.
 
 **Common Pitfalls.** The two opposite mistakes are both common: assuming Haskell is slow because it is high-level, and assuming Haskell is fast because GHC optimizes. Professional Haskell performance is empirical: choose good representations, write clear code, benchmark important paths, profile real workloads, then tune.
+
 ### Stack, Heap, Closures, and Thunks — operational model without pretending it is the language
 
-At the language level, Haskell programs are expressions, bindings, functions, constructors, and effects. At the implementation level, GHC must represent those things in memory and execute them. The main operational entities are **closures**, **thunks**, **stack frames**, **heap objects**, and **evaluated constructor values**. This is implementation-level reasoning, not the Haskell Report’s surface semantics, but it is essential for performance and debugging. Part 7 is required to connect earlier syntax, types, effects, and library choices to runtime behavior rather than treating them as purely abstract features. 
+At the language level, Haskell programs are expressions, bindings, functions, constructors, and effects. At the implementation level, GHC must represent those things in memory and execute them. The main operational entities are **closures**, **thunks**, **stack frames**, **heap objects**, and **evaluated constructor values**. This is implementation-level reasoning, not the Haskell Report’s surface semantics, but it is essential for performance and debugging. Part 7 is required to connect earlier syntax, types, effects, and library choices to runtime behavior rather than treating them as purely abstract features.
 
 A **closure** is a runtime object containing code plus any environment it needs. A function that captures a local variable may become a closure.
 
@@ -10591,3 +10601,1817 @@ This table should be used as a diagnostic guide, not as a list of premature opti
 | Profiling           | Can choose time, allocation, heap, or eventlog profiling based on symptom       |
 
 The runtime model completes the earlier parts rather than replacing them. Part 1 explained Haskell’s language identity. Part 2 gave source recognition. Part 3 showed data modeling. Part 4 showed composition and abstraction. Part 5 showed boundaries. Part 6 mapped libraries. Part 7 explains why all of those choices have operational consequences: a good type can still leak memory, a pure function can still allocate heavily, a lazy pipeline can either save work or retain too much, an effect boundary can still throw exceptions, and a concurrent program can still lose failures unless ownership is designed.
+
+## PART 8 — Historical Evolution, Paradigm Shifts, and Current Trends
+
+### Orientation — problem-driven history, not chronology
+
+Haskell’s history is best understood as a sequence of design responses to recurring programming-language problems: how to make lazy functional programming coherent, how to control effects without abandoning purity, how to express reusable abstraction without inheritance, how to scale a research language into a practical ecosystem, and how to let the language evolve without constantly breaking old code.
+
+This part treats history as a source of programming judgment. Haskell’s present shape is not accidental. Its syntax, typeclasses, laziness, `IO`, GHC extensions, package ecosystem, and tooling conventions all reflect earlier constraints and decisions. The uploaded task specifically requires historical evolution and trend analysis to explain why language mechanisms emerged and how modern practice still reflects those choices.
+
+| Historical problem                                 | Haskell’s response                          | Modern consequence                                                                   |
+| -------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Many lazy functional languages, no shared standard | A common non-strict functional language     | Haskell became the reference point for lazy pure functional programming              |
+| Need to express effects while preserving purity    | Monadic `IO` and explicit effect types      | Effects are visible in types and sequenced compositionally                           |
+| Need for overloading without weak typing           | Typeclasses                                 | `Eq`, `Ord`, `Show`, `Functor`, `Applicative`, `Monad`, `Monoid` shape everyday APIs |
+| Need for strong data modeling                      | Algebraic data types and pattern matching   | Domain models favor sums/products over inheritance                                   |
+| Need for practical evolution                       | GHC extensions and later language editions  | Real-world Haskell is often GHC Haskell, not only Haskell 2010                       |
+| Need for performance from high-level code          | GHC optimization and runtime system         | Performance reasoning involves Core, strictness, allocation, GC, and profiling       |
+| Need for industrial usability                      | Cabal, Stack, Hackage, Stackage, GHCup, HLS | Toolchain discipline matters as much as language theory                              |
+
+The stable mental model is: **Haskell began as a principled consolidation of lazy functional programming, then became a living GHC-centered ecosystem where language research, compiler engineering, and production practice coexist.**
+
+### Era of Lazy Functional Consolidation — common language, non-strict semantics, research unification
+
+Before Haskell, the functional-programming world had several lazy or non-strict languages and research systems. The problem was fragmentation: similar ideas existed, but no single shared language could serve as a stable common target for research, teaching, libraries, and compiler work.
+
+Haskell’s early design response was to provide a common, non-strict, purely functional language with a strong static type system. This mattered because laziness was not a minor implementation choice. It changed how programs were structured: infinite data structures, demand-driven computation, separation between producers and consumers, and equational reasoning all became central.
+
+| Pressure                                     | Design response                | What changed                                          | Limitation that remained                                       |
+| -------------------------------------------- | ------------------------------ | ----------------------------------------------------- | -------------------------------------------------------------- |
+| Fragmented lazy functional languages         | Shared Haskell language design | Researchers and programmers could target one language | Standardization remained slower than implementation innovation |
+| Need for semantic clarity                    | Pure non-strict core           | Equational reasoning became practical                 | Bottom, exceptions, and performance still complicate reasoning |
+| Need for expressive data                     | ADTs and pattern matching      | Recursive data and interpreters became natural        | Large record systems and extensibility remained challenging    |
+| Need for generic numeric/equality operations | Typeclasses                    | Overloading became statically disciplined             | Laws are not compiler-proven                                   |
+| Need for implementation progress             | Compilers such as GHC          | Research language could become executable practice    | Implementation-specific behavior became important              |
+
+The Haskell 2010 Report still presents Haskell as a standardized language with a defined syntax, expression system, declarations, typeclasses, modules, and libraries; it remains the stable report-level reference, even though modern GHC Haskell has moved far beyond it through extensions and editions.
+
+**Lasting consequence.** Haskell code still carries the imprint of this era: recursive data, pattern matching, laziness, type inference, and equational reasoning are not later add-ons. They are the language’s core personality.
+
+**Common misunderstanding.** Haskell was not designed primarily to be a scripting language, an OO application language, or a systems language. It was designed to make a certain semantic model of programming precise and usable. That is why attempts to write Haskell as if it were Python, Java, or C often feel awkward.
+
+### Era of Typeclasses — principled overloading without losing static reasoning
+
+One of Haskell’s most important innovations was typeclasses. The problem was common but difficult: programmers needed overloaded operations such as equality, ordering, numeric operators, display, parsing, mapping, combining, and sequencing. Dynamic languages solve this through runtime dispatch or duck typing. OO languages often solve it through interfaces and inheritance. Haskell solved it with statically resolved typeclass constraints.
+
+```haskell
+same :: Eq a => a -> a -> Bool
+same x y =
+  x == y
+```
+
+The type says that `same` works for any `a` that has an `Eq` instance.
+
+| Problem                    | Typeclass response              | Modern example            | Tradeoff                                  |
+| -------------------------- | ------------------------------- | ------------------------- | ----------------------------------------- |
+| Equality across many types | `Eq`                            | `(==)`                    | Laws not enforced                         |
+| Ordering across many types | `Ord`                           | `sort`, `Map` keys        | Derived order may be semantically wrong   |
+| Debug display              | `Show`                          | `show`, `print`           | Not stable serialization                  |
+| Numeric overloading        | `Num`, `Fractional`, `Integral` | `+`, `*`, literals        | Numeric defaulting and abstraction cost   |
+| Structure mapping          | `Functor`                       | `fmap`, `<$>`             | Instance must preserve structure lawfully |
+| Effect combination         | `Applicative`, `Monad`          | parsers, `IO`, `Either`   | Mythology around “monads”                 |
+| Aggregation                | `Semigroup`, `Monoid`           | `<>`, `mempty`, `foldMap` | Multiple lawful meanings may exist        |
+
+The historical shift was important because it let Haskell avoid both weak implicit coercion and inheritance-centered design. A typeclass constraint says exactly which behavior is required.
+
+```haskell
+renderAll :: Show a => [a] -> [Text]
+renderAll =
+  fmap (T.pack . show)
+```
+
+The function is generic, but not dynamically untyped. It requires `Show a`.
+
+**Interdisciplinary Lens: Type Theory**
+
+What it clarifies: typeclasses add constrained polymorphism. A function can be generic while still requiring specific statically known behavior.
+
+Language feature involved: `Eq`, `Ord`, `Show`, `Functor`, `Applicative`, `Monad`, custom typeclasses.
+
+Practical consequence: APIs can be reusable without abandoning type checking.
+
+Limit of the lens: the type system checks method availability and types, but not ordinary semantic laws such as associativity, identity, or equality coherence.
+
+**Lasting consequence.** Modern Haskell is saturated with typeclass vocabulary. Reading Haskell means reading constraints. A signature such as:
+
+```haskell
+traverse :: (Applicative f, Traversable t) => (a -> f b) -> t a -> f (t b)
+```
+
+is not incidental abstraction; it is the result of the typeclass era becoming everyday library design.
+
+### Era of Monadic IO — effects without abandoning purity
+
+Pure lazy languages faced a serious problem: real programs need input, output, mutation, exceptions, files, sockets, randomness, clocks, and interaction with external systems. Haskell’s answer was not to make all functions implicitly effectful. It represented effectful computations in types, especially through `IO`.
+
+```haskell
+main :: IO ()
+main = do
+  line <- getLine
+  putStrLn line
+```
+
+The historical importance is easy to miss because `do` notation looks familiar. The radical design choice is that ordinary functions remain pure, while effectful computations are values of type `IO a`.
+
+| Problem                           | Haskell response                                 | Practical result              | Cost                                         |
+| --------------------------------- | ------------------------------------------------ | ----------------------------- | -------------------------------------------- |
+| Need to read/write external world | `IO a`                                           | Effects are explicit in types | `IO` must be composed, not unwrapped         |
+| Need sequential effect order      | `do`, `>>=`, `>>`                                | Effect order is controlled    | Beginners mistake it for imperative mutation |
+| Need pure domain logic            | Keep pure functions outside `IO`                 | Testable core logic           | Requires boundary design                     |
+| Need recoverable failure          | `Maybe`, `Either`, transformers                  | Failure can be typed          | Multiple error styles coexist                |
+| Need larger effect systems        | `ReaderT`, `ExceptT`, `StateT`, effect libraries | Application architecture      | Abstraction complexity                       |
+
+This changed the meaning of “functional programming” in practice. Haskell could remain pure without becoming useless for real programs. Effects became explicit boundary values.
+
+**Interdisciplinary Lens: Denotational Semantics**
+
+What it clarifies: `IO a` can be understood as a description of an effectful computation producing an `a`, while pure functions remain referentially transparent.
+
+Language feature involved: `IO`, `main`, `do`, pure/effectful separation.
+
+Practical consequence: Haskell programmers can keep business logic pure and push effects to the boundary.
+
+Limit of the lens: semantic description does not specify all operational details: buffering, file handles, exceptions, scheduling, and resource cleanup remain runtime concerns.
+
+**Lasting consequence.** Modern Haskell architecture often separates pure core logic from effectful orchestration. The style is not merely aesthetic. It is a direct descendant of the historical solution to effects.
+
+### Era of Algebraic Domain Modeling — ADTs over inheritance
+
+Haskell’s data model developed around algebraic data types rather than class hierarchies. This matters because it changes how programmers think about domain structure.
+
+```haskell
+data PaymentStatus
+  = AwaitingPayment
+  | Paid ReceiptId
+  | Failed PaymentError
+  | Refunded RefundId
+```
+
+This style says that a value is one of several known alternatives, each possibly carrying its own data. Pattern matching then follows the shape.
+
+| OO-style habit             | Haskell alternative            | Historical/design reason                        |
+| -------------------------- | ------------------------------ | ----------------------------------------------- |
+| Base class with subclasses | Sum type                       | Closed alternatives can be exhaustively matched |
+| Object with fields         | Record                         | Data shape is explicit                          |
+| Method on object           | Function over data             | Behavior need not be attached to data           |
+| Interface                  | Typeclass                      | Shared behavior across types                    |
+| Mutable object update      | Immutable value transformation | Purity and equational reasoning                 |
+| Null field                 | `Maybe`                        | Absence is explicit                             |
+| Status code                | ADT constructor                | Legal states become type-level alternatives     |
+
+This ADT-first style made Haskell especially good for compilers, interpreters, parsers, protocol models, state machines, validation, and symbolic transformations.
+
+```haskell
+data Expr
+  = Lit Int
+  | Add Expr Expr
+  | Mul Expr Expr
+
+eval :: Expr -> Int
+eval expr =
+  case expr of
+    Lit n   -> n
+    Add a b -> eval a + eval b
+    Mul a b -> eval a * eval b
+```
+
+**Lasting consequence.** Haskell programmers often judge code by whether the data model honestly represents the domain. Too many `Text`, `Int`, and `Bool` fields indicate under-modeling. Too many advanced type-level encodings indicate over-modeling. The mature style is algebraic but proportionate.
+
+### Era of GHC Pragmatism — extensions, implementation leadership, language editions
+
+Haskell has a formal language-report tradition, but real-world Haskell is strongly shaped by GHC. GHC became not only the dominant compiler but also the laboratory for language extensions, optimizer work, runtime improvements, and practical tooling.
+
+Modern GHC supports language editions such as `Haskell98`, `Haskell2010`, `GHC2021`, and `GHC2024`; each edition corresponds to a set of language extensions, while many additional extensions remain individually selectable.  This is an important historical compromise: Haskell evolves through compiler-supported extensions and editions rather than through frequent new full language reports.
+
+| Pressure                   | GHC-era response                                     | Consequence                                     |
+| -------------------------- | ---------------------------------------------------- | ----------------------------------------------- |
+| Need language innovation   | Extensions                                           | Advanced features can be tested and adopted     |
+| Need stability             | Language editions and explicit extension control     | Projects can select a known language surface    |
+| Need performance           | Optimizer, Core, strictness analysis, specialization | High-level code can be efficient                |
+| Need practical compilation | Native code, runtime system, profiling               | Production use becomes possible                 |
+| Need type-system evolution | GADTs, type families, DataKinds, RankNTypes, etc.    | Haskell becomes a type-system research platform |
+| Need migration path        | Editions such as `GHC2021`/`GHC2024`                 | Common extension sets reduce boilerplate        |
+
+Example:
+
+```haskell
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE TypeFamilies #-}
+```
+
+These pragmas select features beyond Haskell 2010. In a modern project, a `.cabal` file might instead select:
+
+```cabal
+default-language: GHC2021
+```
+
+or another edition, depending on project policy.
+
+**Tradeoff.** GHC pragmatism made Haskell powerful and alive. It also made the language surface uneven. Two Haskell files can feel like different languages depending on extensions. That is why serious projects need an extension policy.
+
+**Current reference point.** GHC 9.14.1 was released in December 2025 and GHC 9.12.4 in March 2026, illustrating that GHC continues to evolve actively through compiler releases rather than through a new Haskell Report every few years.
+
+### Era of Library and Tooling Maturity — Cabal, Hackage, Stackage, Stack, GHCup, HLS
+
+A language becomes practical when build tools, package infrastructure, editor support, testing conventions, profiling tools, and deployment workflows become usable enough for sustained projects. Haskell’s ecosystem matured unevenly but substantially.
+
+| Ecosystem pressure              | Tooling response                           | What changed                                 |
+| ------------------------------- | ------------------------------------------ | -------------------------------------------- |
+| Package distribution            | Hackage                                    | Shared package repository                    |
+| Build and dependency management | Cabal                                      | Standard package/component system            |
+| Curated package compatibility   | Stackage                                   | Snapshot-based package sets                  |
+| Reproducible project builds     | Stack                                      | Resolver-centered workflow                   |
+| Toolchain installation          | GHCup                                      | Easier management of GHC/Cabal/HLS/Stack     |
+| Editor integration              | HLS                                        | Type errors, hover, navigation, code actions |
+| Testing culture                 | `tasty`, `hspec`, `QuickCheck`, `Hedgehog` | Unit and property testing became normal      |
+| Profiling                       | GHC RTS/profiler/eventlog                  | Runtime diagnosis became practical           |
+
+This changed how Haskell is learned. Earlier Haskell learning could focus almost entirely on the language. Modern Haskell learning must include toolchain discipline: compiler version, language edition, package bounds, editor support, project structure, and dependency compatibility.
+
+**Lasting consequence.** The difference between “knows Haskell syntax” and “can work in a Haskell codebase” is often tooling. A programmer must know what Cabal or Stack controls, how GHC version affects extensions, why HLS compatibility matters, and how package bounds affect builds.
+
+### Paradigm Shift: From Statement-Oriented Programming to Expression and Value Modeling
+
+Many programmers come to Haskell from statement-oriented languages. The historical shift is from “execute commands that mutate state” to “define values and transformations.”
+
+| Old mental model                          | Haskell shift                                  | Practical consequence                         |
+| ----------------------------------------- | ---------------------------------------------- | --------------------------------------------- |
+| Variables are storage cells               | Bindings name values/expressions               | No ordinary reassignment                      |
+| Loops mutate accumulators                 | Recursion, folds, traversals                   | Accumulation is explicit                      |
+| Objects own behavior                      | Functions operate on data                      | Behavior can be separated from representation |
+| Null marks absence                        | `Maybe` marks absence                          | Caller must handle missing case               |
+| Exceptions handle ordinary failure        | `Either`/validation can model expected failure | Failure appears in signatures                 |
+| Execution order follows source statements | Pure evaluation is demand-driven               | Laziness matters                              |
+| Effects can occur anywhere                | Effects appear in types                        | Boundaries are visible                        |
+
+This shift is why direct translation from JavaScript, Python, Java, or C often produces awkward Haskell. The source language’s syntax can be imitated, but the semantic model resists it.
+
+**Practical consequence.** Code improves when values and invariants are designed before control flow. If the type says the state is `Loading | Failed Error | Ready Model`, the control flow becomes pattern matching. If the type says the result is `Either ValidationError User`, the caller must handle failure. If the type says `IO User`, the caller cannot pretend it has a pure `User`.
+
+### Paradigm Shift: From Inheritance to Algebraic Composition
+
+Haskell’s answer to extensibility is not inheritance-first. It uses several mechanisms depending on the problem.
+
+| Design problem         | OO-style answer           | Haskell-style answer                              |
+| ---------------------- | ------------------------- | ------------------------------------------------- |
+| Known finite variants  | Subclasses                | ADT                                               |
+| Shared behavior        | Interface                 | Typeclass                                         |
+| Runtime dependency     | Object/service            | Record of functions or environment                |
+| Internal invariants    | Private constructor/class | Module export list and smart constructor          |
+| State transition       | Mutating object           | Pure transition function or explicit state effect |
+| Nested update          | Object mutation           | Record update, lenses/optics where useful         |
+| Polymorphic collection | Base-class list           | ADT, existential wrapper, or function record      |
+
+This is not a claim that inheritance is bad everywhere. It is a claim that Haskell’s design makes other decompositions more natural. If the variants are closed and exhaustiveness matters, an ADT is usually clearer. If behavior is open across types, a typeclass is usually clearer. If implementation varies at runtime, a record of functions may be clearer.
+
+**Common failure.** Java-style designs in Haskell often create unnecessary typeclasses and existential wrappers. The better question is not “how do I represent the class hierarchy?” but “is this a closed set of variants, an open set of behaviors, or a runtime capability?”
+
+### Paradigm Shift: From Runtime Flexibility to Static Boundary Design
+
+Dynamic languages often defer representation and validation decisions to runtime. Haskell pushes many of these decisions into types and module boundaries.
+
+| Runtime-flexible habit            | Haskell boundary design                           |
+| --------------------------------- | ------------------------------------------------- |
+| Pass dictionaries/maps everywhere | Decode into raw types, validate into domain types |
+| Use strings for status            | ADT constructors                                  |
+| Use numbers for IDs               | `newtype` IDs                                     |
+| Use booleans for workflow state   | Sum types                                         |
+| Use exceptions for invalid input  | `Either` or validation                            |
+| Trust JSON shape                  | Validate domain meaning                           |
+| Use comments for invariants       | Hidden constructors and smart constructors        |
+
+This shift does not remove runtime validation. It relocates it. External data still arrives as bytes, text, JSON, database rows, or CLI arguments. Haskell’s advantage is that after validation, the internal program can operate on stronger types.
+
+**Practical consequence.** Mature Haskell code often has clear edge-to-core flow:
+
+```text
+external representation -> raw decoded type -> validated domain type -> pure logic -> effectful boundary
+```
+
+The historical type-system lineage makes this style natural; the module system makes it enforceable.
+
+### Paradigm Shift: From Callback and Exception Flow to Typed Effect Composition
+
+In many ecosystems, asynchronous or failure-prone workflows evolve through callbacks, promises, exceptions, or framework-specific control flow. Haskell’s effect vocabulary encourages a different classification.
+
+| Workflow shape          | Haskell abstraction                 | Meaning                             |
+| ----------------------- | ----------------------------------- | ----------------------------------- |
+| Optional result         | `Maybe`                             | May not produce a value             |
+| Recoverable failure     | `Either e`                          | May fail with error                 |
+| External effect         | `IO`                                | Interacts with real world           |
+| Environment dependency  | `Reader` / `ReaderT` / explicit env | Needs configuration/capability      |
+| State transition        | `State` / explicit state            | Carries state                       |
+| Independent combination | `Applicative`                       | Steps do not depend on each other   |
+| Dependent sequencing    | `Monad`                             | Later step uses earlier result      |
+| Choice/repetition       | `Alternative`                       | Parser-like or failure alternatives |
+
+The historical effect shift is visible in ordinary code:
+
+```haskell
+parseUser :: RawUser -> Either UserError User
+
+loadUser :: UserId -> IO (Maybe User)
+
+registerUser :: RawUser -> IO (Either UserError UserId)
+```
+
+The type tells what kind of boundary exists. In callback-heavy languages, the same information may be implicit in naming, documentation, or framework conventions.
+
+**Common failure.** Some Haskell learners treat `Monad` as “the effect thing.” That is too broad. `Maybe`, `Either`, lists, parsers, `IO`, and functions can all have monadic structure, but their concrete meanings differ. The historical lesson is not “monads are magic”; it is “composition patterns can be typed.”
+
+### Paradigm Shift: From Local Execution to Toolchain-Governed Ecosystem
+
+Earlier Haskell could be learned through individual files and GHCi. Modern professional Haskell is toolchain-governed: compiler version, language edition, package bounds, build components, HLS compatibility, CI configuration, and dependency snapshots all matter.
+
+| Older/simple mode           | Modern professional mode                 |
+| --------------------------- | ---------------------------------------- |
+| Single `.hs` file           | Cabal/Stack project                      |
+| `ghc Main.hs`               | Package components and dependency solver |
+| Informal imports            | Explicit module boundaries               |
+| Whatever compiler installed | Project-selected GHC version             |
+| Manual editor setup         | HLS with version compatibility           |
+| Ad-hoc testing              | Test suites and property tests           |
+| Runtime guessing            | Profiling and benchmarking               |
+| Copying examples            | Extension and dependency policy          |
+
+This is not unique to Haskell, but Haskell’s compiler-extension ecosystem makes it especially important. If a project uses `GHC2024`, `OverloadedStrings`, `DerivingStrategies`, `TypeFamilies`, or `GADTs`, the tooling must agree with that language surface.
+
+**Practical consequence.** Learning Haskell now means learning the toolchain earlier than one might expect. Otherwise, type errors, extension errors, HLS failures, and dependency conflicts look like language problems when they are actually workflow problems.
+
+### Current Mature Trends — language editions, better tooling, typed APIs, property testing
+
+Some trends are mature enough to be treated as stable professional practice.
+
+| Mature trend                                  | Driving pressure                       | What changes in practice                           | Caveat                                                |
+| --------------------------------------------- | -------------------------------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| Language editions such as `GHC2021`/`GHC2024` | Reduce per-file extension boilerplate  | Projects select a broader default language surface | Edition choice still requires team/tool compatibility |
+| Explicit extension policy                     | Avoid uncontrolled language drift      | Extensions become architectural decisions          | Overly strict policy may hinder good solutions        |
+| HLS-centered editing                          | Make type-driven development practical | Hover, diagnostics, navigation, code actions       | HLS/GHC version compatibility matters                 |
+| `Text`/`ByteString` over large `String` use   | Representation correctness/performance | Text and bytes are distinguished early             | Legacy APIs still use `String`                        |
+| Property testing                              | Types and laws invite properties       | Test invariants and typeclass laws                 | Properties must be meaningful                         |
+| Domain types and smart constructors           | Reduce invalid states                  | Validation moves to boundaries                     | Over-modeling remains possible                        |
+| `async`/STM for concurrency                   | Safer concurrent structure             | Avoid raw unowned threads                          | Requires cancellation/resource design                 |
+| Profiling-aware performance work              | Laziness makes guessing unreliable     | Allocation/heap/eventlog profiling matter          | Profiling has learning cost                           |
+
+The official GHC documentation’s inclusion of `GHC2021` and `GHC2024` alongside `Haskell98` and `Haskell2010` shows that language-edition selection is now part of ordinary GHC practice, not a fringe topic.
+
+### Current Emerging Trends — Dependent Haskell direction, linear types, effect systems, WebAssembly/backend diversity
+
+Some trends matter but should not dominate ordinary learning.
+
+| Emerging trend                       | Driving pressure                              | What it may change                             | Caveat                                   |
+| ------------------------------------ | --------------------------------------------- | ---------------------------------------------- | ---------------------------------------- |
+| Dependent Haskell direction          | Stronger relationship between terms and types | More invariants expressible in types           | Not ordinary application baseline        |
+| Linear types                         | Track single-use resources                    | More precise resource protocols                | Specialized, not everyday default        |
+| Effect systems beyond transformers   | Improve modular effect handling               | Cleaner large-app effect architecture          | Ecosystem diversity; no universal winner |
+| Better record ergonomics             | Longstanding record pain                      | Easier field access/update                     | Extension/version choices matter         |
+| WebAssembly/backend work             | New deployment targets                        | Haskell in more runtime environments           | Backend maturity varies                  |
+| Improved specialization/optimization | Performance of high-level abstractions        | Better optimized generic code                  | Still requires benchmarking              |
+| Tooling stability work               | Lower adoption friction                       | Smoother professional experience               | Version compatibility remains real       |
+| Typed protocols and DSLs             | Safer APIs                                    | More GADTs/type-level programming in libraries | Complexity must be justified             |
+
+GHC 9.14’s release notes highlight ongoing compiler improvements, including specialization improvements, which illustrates a mature trend: Haskell performance evolution often happens through compiler optimization and representation work rather than syntax changes.
+
+**Practical learning priority.** Learn ADTs, typeclasses, laziness, `IO`, modules, and profiling before trying to master dependent-type-like programming, linear types, or advanced effect systems. The frontier matters, but it is not the entrance.
+
+### Speculative or Overhyped Trends — what not to overlearn too early
+
+Some topics are real but often exaggerated.
+
+| Overhyped claim                                 | More accurate view                                              | Practical response                                      |
+| ----------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------- |
+| “Haskell is basically a proof assistant”        | Haskell can encode many invariants, but it is not Coq/Agda/Lean | Use types well; do not confuse them with full proofs    |
+| “Monads are the whole language”                 | Monads are one composition abstraction among many               | Learn ADTs, typeclasses, laziness, modules, runtime too |
+| “Laziness makes everything elegant”             | Laziness helps modularity but complicates memory                | Learn strictness and profiling                          |
+| “Haskell is unsuitable for real software”       | It has real tooling and production use, but adoption is niche   | Evaluate by domain and team constraints                 |
+| “GHC optimizes everything”                      | GHC is powerful but not magical                                 | Benchmark/profile hot paths                             |
+| “Advanced extensions make code better”          | Extensions increase expressive power and reader burden          | Enable only when justified                              |
+| “Effect systems solve application architecture” | They help but introduce ecosystem and abstraction choices       | Start concrete, abstract when needed                    |
+| “Point-free code is more Haskell”               | It is good only when it clarifies structure                     | Prefer readable code                                    |
+
+The key is not cynicism. These ideas often point to real strengths. The problem is scale. Monads matter, dependent-type-like techniques matter, laziness matters, effect systems matter. They become harmful when treated as identity badges rather than engineering tools.
+
+### Declining or Legacy Patterns — what to recognize but avoid in new code
+
+Some Haskell patterns are historically common but should be treated carefully in new professional code.
+
+| Legacy or declining pattern        | Why it persists                             | Modern caution                                       |
+| ---------------------------------- | ------------------------------------------- | ---------------------------------------------------- |
+| Large-scale `String` use           | Historical `Prelude`, simple examples       | Prefer `Text` or `ByteString` by representation      |
+| Partial functions in ordinary code | Convenience and old tutorials               | Prefer total functions or explicit failure           |
+| `read` for input parsing           | Simple examples                             | Use `readMaybe` or parser                            |
+| Lazy I/O as default file strategy  | Elegant demos                               | Be careful with resource lifetime                    |
+| Manual open/close                  | Familiar from imperative languages          | Use `withFile`/`bracket`                             |
+| Exporting all constructors         | Convenience                                 | Hide constructors for invariant types                |
+| Giant transformer stacks           | Older abstraction style in some code        | Keep effect architecture readable                    |
+| Unstructured `String` errors       | Easy to write                               | Use domain error types when callers inspect failure  |
+| Excessive custom operators         | Cultural artifact of abstraction-heavy code | Prefer names unless operator is standard/local idiom |
+| `Debug.Trace` left in code         | Debugging convenience                       | Use logging/testing/profiling                        |
+
+These are not always forbidden. The point is to recognize their risk. A short script can use `String`. A private internal invariant may justify `error`. A quick parser can use `readMaybe`. But public, long-lived, boundary-heavy code should choose safer modern patterns.
+
+### Historical Tradeoff Table — eras, pressures, responses, lasting consequences
+
+| Era                           | Dominant problem                                | Constraint or pressure             | Language-design response                             | Lasting consequence                   |
+| ----------------------------- | ----------------------------------------------- | ---------------------------------- | ---------------------------------------------------- | ------------------------------------- |
+| Lazy functional consolidation | Fragmented research languages                   | Need shared target                 | Pure non-strict Haskell                              | Haskell as reference lazy FP language |
+| Typeclass innovation          | Need overloading with static reasoning          | Avoid dynamic weak overloading     | Typeclasses                                          | Generic lawful APIs                   |
+| Monadic IO                    | Need real effects with purity                   | Preserve referential transparency  | `IO`, `do`, monadic sequencing                       | Pure core/effectful shell style       |
+| Algebraic modeling            | Need precise domain representation              | Avoid inheritance-first design     | ADTs, pattern matching                               | Sum/product modeling culture          |
+| GHC pragmatism                | Need evolution beyond reports                   | Keep stable base while innovating  | Extensions and editions                              | GHC Haskell as practical language     |
+| Ecosystem maturation          | Need usable projects                            | Dependency/tool/version complexity | Cabal, Stack, Hackage, Stackage, GHCup, HLS          | Toolchain literacy required           |
+| Runtime maturity              | Need performance                                | High-level code must run well      | Optimizer, RTS, profiling                            | Cost model matters                    |
+| Current frontier              | Need stronger guarantees and broader deployment | Maintain usability                 | dependent direction, linear types, effects, backends | Advanced power with complexity        |
+
+### Paradigm Shift Table — old problem, new ability, cost
+
+| Paradigm shift                         | Old problem                                | New ability                                 | Cost introduced                               |
+| -------------------------------------- | ------------------------------------------ | ------------------------------------------- | --------------------------------------------- |
+| Statements to expressions              | Hidden mutation and sequencing             | More local reasoning                        | Must understand laziness and expression types |
+| Null to `Maybe`                        | Runtime null errors                        | Absence visible in type                     | Callers must handle absence                   |
+| Exceptions to typed errors             | Hidden recoverable failure                 | Failure as API contract                     | More explicit plumbing                        |
+| Inheritance to ADTs/typeclasses        | Rigid or unclear subtype models            | Closed variants and open behavior separated | Need to choose correct abstraction            |
+| Runtime checking to smart constructors | Invariants scattered                       | Validated domain values                     | Constructor visibility discipline             |
+| Eager evaluation to laziness           | Unnecessary computation and tight coupling | Infinite data, producer/consumer separation | Space leaks and demand reasoning              |
+| Ad-hoc concurrency to STM/async        | Manual thread/lock errors                  | Structured concurrency and transactions     | Ownership/cancellation still hard             |
+| Source-only thinking to profiling      | Guessing performance                       | Runtime evidence                            | Tooling complexity                            |
+| Report-only language to GHC editions   | Slow formal standard evolution             | Practical evolution                         | Extension/version policy required             |
+
+### Historical Interpretation of Haskell’s Design Personality
+
+Haskell’s design personality can be summarized as a repeated preference for **explicit semantic structure** over **implicit operational convenience**.
+
+It makes absence explicit through `Maybe`.
+
+It makes recoverable failure explicit through `Either` and domain error types.
+
+It makes effects explicit through `IO` and related abstractions.
+
+It makes alternatives explicit through ADTs.
+
+It makes shared behavior explicit through typeclasses.
+
+It makes module boundaries explicit through export lists.
+
+It makes advanced language features explicit through extensions and editions.
+
+This preference creates the distinctive Haskell tradeoff: the language often demands more upfront modeling and more conceptual precision, but repays that work with stronger local reasoning, safer refactoring, clearer invariants, and more compositional APIs.
+
+The cost is equally real. Haskell can feel indirect, abstract, toolchain-sensitive, and operationally surprising. Laziness can obscure runtime cost. Type errors can be dense. Extensions can fragment style. Ecosystem choices can be non-obvious. Performance work requires profiling literacy.
+
+### Practical Trend Judgment — stable core versus moving frontier
+
+For serious learning, distinguish the stable core from the moving frontier.
+
+| Category                | Learn early                                                            | Learn later                                               |
+| ----------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------- |
+| Stable language core    | ADTs, pattern matching, type signatures, functions, modules            | Advanced pattern extensions                               |
+| Stable abstraction core | `Functor`, `Applicative`, `Monad`, `Foldable`, `Traversable`, `Monoid` | Custom category-heavy abstractions                        |
+| Stable effect core      | `IO`, `Maybe`, `Either`, `ReaderT`, `ExceptT` basics                   | Advanced effect systems                                   |
+| Stable runtime core     | Laziness, strictness, thunks, profiling basics                         | Core/STG-level tuning                                     |
+| Stable ecosystem core   | Cabal/GHCup/HLS, `text`, `bytestring`, `containers`, `aeson`, testing  | Specialized frameworks                                    |
+| Advanced type core      | `newtype`, phantom types, GADTs basics                                 | Type families, dependent-style encodings                  |
+| Frontier                | Awareness only                                                         | Dependent Haskell direction, linear types, novel backends |
+
+A professional Haskell learner should not ignore trends, but should sequence them correctly. Advanced type-level programming and effect systems are easier to judge after ordinary Haskell semantics, modules, runtime, and ecosystem patterns are stable.
+
+### Failure Modes Caused by Historical Misreading
+
+Many Haskell learning failures come from misunderstanding where the language came from.
+
+| Misreading                                 | Resulting mistake                | Correction                       |
+| ------------------------------------------ | -------------------------------- | -------------------------------- |
+| “Haskell is mainly academic theory”        | Ignore tooling and runtime       | Learn Cabal/GHC/HLS/profiling    |
+| “Haskell is mainly monads”                 | Neglect ADTs and modeling        | Start with data and types        |
+| “Haskell is just ML with different syntax” | Forget laziness                  | Learn demand and space leaks     |
+| “Haskell is a proof assistant”             | Overuse type-level machinery     | Use types proportionately        |
+| “GHC extensions are the real language”     | Enable too many features         | Maintain extension policy        |
+| “Haskell 2010 is enough for modern code”   | Cannot read real libraries       | Learn common GHC extensions      |
+| “Pure means no runtime failures”           | Use partial functions carelessly | Understand bottom and exceptions |
+| “Types replace tests”                      | Under-test semantics             | Use property and example tests   |
+| “Optimization is automatic”                | Ignore profiling                 | Learn cost model                 |
+
+The historical correction is balanced: Haskell is theoretical and practical, stable and experimental, pure and effectful, high-level and performance-sensitive. Treating only one side as “the real Haskell” produces shallow understanding.
+
+### What Modern Haskell Practice Still Reflects
+
+Modern Haskell code still reflects its historical path in concrete ways.
+
+| Modern practice                    | Historical root                                  |
+| ---------------------------------- | ------------------------------------------------ |
+| Explicit top-level type signatures | Type inference plus human API design             |
+| ADT-heavy domain modeling          | Algebraic data type tradition                    |
+| `Maybe`/`Either` failure modeling  | Purity and explicit effects/failure              |
+| `IO` at boundaries                 | Monadic effect discipline                        |
+| Typeclass-heavy libraries          | Typeclass innovation                             |
+| Extension pragmas                  | GHC-led evolution                                |
+| Cabal/Stack project discipline     | Ecosystem maturation                             |
+| Property testing                   | Equational/law-based reasoning culture           |
+| Profiling strictness/space         | Lazy runtime model                               |
+| Qualified imports                  | Module namespace and ecosystem size              |
+| Smart constructors                 | Module boundaries plus type-driven invariants    |
+| Parser combinators                 | Higher-order functional composition              |
+| STM and `async`                    | Haskell concurrency research and runtime support |
+
+This is why Haskell cannot be learned well from syntax alone. The syntax is only the visible residue of several deeper design commitments.
+
+### Current Professional Position — niche, durable, conceptually influential
+
+Haskell is not a mass-market language in the way Python, JavaScript, Java, C#, Go, or Rust are. It remains niche in industrial adoption. But it is durable and unusually influential. Many ideas associated with modern typed functional programming—ADTs, pattern matching, typeclass-like abstractions, monadic effect composition, property testing, parser combinators, strong type-driven domain modeling—have spread far beyond Haskell.
+
+| Dimension                   | Haskell’s position                                                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Mainstream popularity       | Niche                                                                                                                    |
+| Conceptual influence        | High                                                                                                                     |
+| Compiler sophistication     | High                                                                                                                     |
+| Type-system expressiveness  | High                                                                                                                     |
+| Tooling maturity            | Improved but still more demanding than mainstream languages                                                              |
+| Ecosystem breadth           | Capable but uneven                                                                                                       |
+| Best-fit domains            | Compilers, DSLs, parsers, financial/domain logic, correctness-sensitive services, symbolic systems, some backend systems |
+| Adoption barrier            | Conceptual model, tooling, hiring/team familiarity                                                                       |
+| Long-term value for learner | Very high for understanding typed functional design                                                                      |
+
+The practical conclusion is not that every system should be written in Haskell. It is that Haskell teaches a way of thinking about programs—types, effects, invariants, composition, laziness, and semantics—that transfers widely.
+
+### Compact Historical Review Artifact
+
+| If a feature seems strange      | Historical explanation                                 | Practical reading rule                      |
+| ------------------------------- | ------------------------------------------------------ | ------------------------------------------- |
+| Laziness                        | Haskell consolidated non-strict functional programming | Ask when a value is demanded                |
+| `IO`                            | Effects needed to coexist with purity                  | Keep pure core, sequence effects explicitly |
+| Typeclasses                     | Need principled overloading                            | Read constraints as required behavior       |
+| ADTs                            | Algebraic modeling tradition                           | Model alternatives explicitly               |
+| `newtype`                       | Need cheap semantic distinction                        | Use it for domain safety                    |
+| GHC extensions                  | Implementation-led language evolution                  | Know project extension policy               |
+| `Functor`/`Applicative`/`Monad` | Composition patterns became library vocabulary         | Choose by transform/combine/sequence        |
+| `foldMap`/`Monoid`              | Algebraic aggregation                                  | Use laws and identities                     |
+| Cabal/HLS/toolchain complexity  | Ecosystem matured beyond toy files                     | Treat tooling as part of language practice  |
+| Profiling strictness            | Lazy runtime has non-obvious costs                     | Measure allocation and retention            |
+
+Haskell’s history explains its learning order. First understand values, functions, ADTs, pattern matching, type signatures, and modules. Then understand `Maybe`, `Either`, `IO`, typeclasses, laziness, and folds. Then understand libraries and tooling. Then understand strictness, profiling, and runtime. Only after that do advanced extensions, effect systems, type families, GADTs at scale, linear types, and dependent-type-like techniques become proportionate.
+
+## PART 9 — Professional Workflow, Tooling, Misconceptions, Failure Modes, and Mastery Path
+
+### Orientation — professional Haskell as language, compiler, package system, and workflow
+
+Professional Haskell is not only knowledge of syntax, typeclasses, laziness, and `IO`. It is also the ability to work inside a toolchain: select a GHC version, build with Cabal or Stack, keep HLS working, organize modules, set warnings, write tests, profile runtime behavior, manage dependencies, review type-heavy code, and decide when abstraction is helping or harming the codebase.
+
+Cabal describes itself as a system for building and packaging Haskell libraries and programs, while GHCup is the main installer path for managing Haskell tools such as GHC, Cabal, HLS, and Stack. HLS version support is tied to specific GHC versions, and Stackage snapshots curate package sets around particular GHC versions. These facts mean toolchain alignment is part of professional Haskell practice, not a secondary installation detail.
+
+| Professional dimension | Haskell-specific issue                                    | Practical consequence                             |
+| ---------------------- | --------------------------------------------------------- | ------------------------------------------------- |
+| Compiler               | GHC version and language extensions matter                | Project language surface must be controlled       |
+| Build system           | Cabal/Stack encode components and dependencies            | Build structure affects architecture              |
+| Editor tooling         | HLS must match supported GHC versions                     | Toolchain mismatch can look like language failure |
+| Package ecosystem      | Hackage is broad; Stackage is curated                     | Dependency policy affects reproducibility         |
+| Formatting/linting     | Style affects readability of dense abstractions           | Consistency matters more than clever layout       |
+| Testing                | Pure code and laws invite property tests                  | Types do not replace tests                        |
+| Debugging              | Type holes, warnings, GHCi, profiling                     | Many bugs are found before runtime                |
+| Profiling              | Laziness obscures cost                                    | Allocation and retention must be measured         |
+| Code review            | Abstraction can be too strong or too weak                 | Review types, boundaries, and laws                |
+| Deployment             | Runtime options, static/dynamic linking, system libraries | Operational details remain real                   |
+
+The professional Haskell mindset is: **choose the semantic model deliberately, choose the runtime representation deliberately, and choose the toolchain deliberately.**
+
+### Project Structure — packages, libraries, executables, tests, benchmarks
+
+A mature Haskell project is usually organized around package components. Cabal packages commonly describe libraries, executables, test suites, and benchmarks in a `.cabal` file. The Cabal user guide includes package structure, modules, build dependencies, and building as core topics, which reflects how central the package boundary is to real Haskell development.
+
+A typical shape:
+
+```text
+my-project/
+  my-project.cabal
+  cabal.project
+  src/
+    MyProject.hs
+    MyProject/
+      Domain.hs
+      Parser.hs
+      Service.hs
+      Internal/
+        ParserImpl.hs
+  app/
+    Main.hs
+  test/
+    Spec.hs
+  bench/
+    Bench.hs
+```
+
+A common architecture is to put reusable logic in the library component, then make the executable component thin.
+
+```haskell
+-- app/Main.hs
+module Main where
+
+import MyProject (runApp)
+
+main :: IO ()
+main =
+  runApp
+```
+
+The library exposes the real API:
+
+```haskell
+module MyProject
+  ( runApp
+  , Config
+  , loadConfig
+  ) where
+```
+
+| Component        | Role                            | Professional rule                                   |
+| ---------------- | ------------------------------- | --------------------------------------------------- |
+| Library          | Domain logic and reusable APIs  | Put most code here, even for applications           |
+| Executable       | Startup, CLI, runtime wiring    | Keep thin where possible                            |
+| Test suite       | Unit/property/integration tests | Test the library, not only `Main`                   |
+| Benchmark        | Performance-sensitive paths     | Benchmark realistic workloads                       |
+| Internal modules | Implementation details          | Keep non-public and unstable                        |
+| Public modules   | Stable API surface              | Use explicit export lists                           |
+| Cabal file       | Build contract                  | Keep dependencies and language settings intentional |
+| `cabal.project`  | Project-level configuration     | Pin local packages or shared settings when needed   |
+
+**Common Pitfalls.** A frequent problem is putting all logic in `Main`. This makes testing, reuse, and refactoring harder. Another is exposing internal modules because it is convenient during development. A third is treating the `.cabal` file as generated boilerplate. In Haskell, package structure is part of the architecture.
+
+### Cabal, Stack, GHCup, and HLS — roles, overlaps, version alignment
+
+The Haskell toolchain has overlapping tools. Confusion often comes from not knowing which tool controls which layer.
+
+| Tool     | Primary role                              | What it controls                             | What it does not replace           |
+| -------- | ----------------------------------------- | -------------------------------------------- | ---------------------------------- |
+| GHC      | Compiler and GHCi                         | Compilation, language features, runtime      | Package planning by itself         |
+| Cabal    | Package/build system                      | Components, dependencies, builds             | Toolchain installation             |
+| Stack    | Project build tool with snapshot workflow | Resolver-based builds, project workflow      | Cabal concepts underneath entirely |
+| GHCup    | Tool installer/manager                    | GHC, Cabal, HLS, Stack versions              | Project dependency design          |
+| HLS      | Editor language server                    | Diagnostics, hover, navigation, code actions | Compiler/package correctness       |
+| Hackage  | Package repository                        | Broad package availability                   | Compatibility guarantee            |
+| Stackage | Curated snapshots                         | Package sets tested together                 | Full Hackage coverage              |
+
+Stack’s documentation describes it as a Haskell build tool that uses GHC and includes features such as automatic GHC installation; Stack’s workflow is commonly associated with snapshot-based reproducibility.  Stackage snapshots list current Nightly and LTS package sets with associated GHC versions, showing the snapshot model explicitly.
+
+A practical decision table:
+
+| Situation                                     | Reasonable choice                                      |
+| --------------------------------------------- | ------------------------------------------------------ |
+| New learner or general Haskell work           | GHCup + Cabal + HLS                                    |
+| Project already uses Stack                    | Use Stack consistently                                 |
+| Need curated dependency set                   | Stack/Stackage or explicit Cabal freeze/project policy |
+| Publishing a library                          | Understand Cabal and Hackage conventions               |
+| Editor problems                               | Check HLS/GHC compatibility first                      |
+| Multiple projects with different GHC versions | Use GHCup and project configs deliberately             |
+
+**Failure-first explanation.** The tempting but wrong mental model is that Cabal, Stack, GHCup, and HLS are competing replacements for each other. The surprising failure is toolchain mismatch: HLS cannot work with the project’s GHC, Stack uses a resolver with another GHC, Cabal uses a different installed compiler, and error messages appear unrelated. The correct explanation is that each tool occupies a layer. The professional rule is: **identify the project’s compiler version, build tool, package plan, and HLS support as one coherent environment.**
+
+### Package Management and Dependency Policy — bounds, snapshots, reproducibility, upgrade cost
+
+Dependency management is a design problem. Haskell packages rely on version bounds, package indexes, solver behavior, and sometimes curated snapshots.
+
+| Dependency concern     | Cabal/Haskell form                         | Professional question                       |
+| ---------------------- | ------------------------------------------ | ------------------------------------------- |
+| Version compatibility  | `build-depends: text >=2.0 && <2.2`        | Which versions are actually supported?      |
+| Reproducibility        | `cabal.project.freeze`, Stack resolver     | Can the build be recreated later?           |
+| Publishing library     | PVP-style bounds and testing               | Will downstream users get solvable builds?  |
+| Application deployment | Pin or freeze dependencies                 | Can production rebuild the same code?       |
+| Upgrade                | Dependency bound widening or resolver bump | What behavior/API changed?                  |
+| Transitive dependency  | Solver-selected packages                   | Is a surprising version entering the build? |
+| Security/maintenance   | Package activity and trust                 | Is dependency still maintained?             |
+
+A simplified Cabal dependency section:
+
+```cabal
+build-depends:
+    base >=4.18 && <5,
+    text >=2.0,
+    containers >=0.6,
+    aeson >=2.2
+```
+
+For libraries, broad but correct bounds are useful. For applications, reproducibility may matter more than allowing many dependency versions.
+
+| Project kind       | Dependency strategy                                       |
+| ------------------ | --------------------------------------------------------- |
+| Library            | Accurate bounds, CI across supported versions if possible |
+| Application        | Reproducible lock/freeze/snapshot policy                  |
+| Research prototype | Simpler bounds acceptable, but document toolchain         |
+| Production service | Controlled upgrades, CI, profiling after major upgrades   |
+| Learning project   | Keep toolchain simple; avoid unnecessary dependencies     |
+
+**Common Pitfalls.** A common failure is adding dependencies for tiny helpers without considering build cost, transitive dependencies, or long-term maintenance. Another is setting bounds too loose because the current build works. A current build proves only one solution, not the whole advertised version range.
+
+### Language Extensions and Edition Policy — controlled GHC Haskell
+
+Modern Haskell code often uses GHC extensions. This is normal, but it requires policy.
+
+```haskell
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+```
+
+Project-level language edition:
+
+```cabal
+default-language: GHC2021
+```
+
+or another edition, depending on the project.
+
+| Extension category         | Examples                                                            | Use case                      | Review concern           |
+| -------------------------- | ------------------------------------------------------------------- | ----------------------------- | ------------------------ |
+| Convenience                | `OverloadedStrings`, `LambdaCase`                                   | Cleaner everyday code         | Ambiguity/readability    |
+| Deriving                   | `DeriveGeneric`, `DerivingStrategies`, `GeneralizedNewtypeDeriving` | Reduce boilerplate            | Derived semantics        |
+| Records                    | `NamedFieldPuns`, `DuplicateRecordFields`, newer record extensions  | Record ergonomics             | Field ambiguity          |
+| Type system                | `GADTs`, `DataKinds`, `TypeFamilies`, `RankNTypes`                  | Stronger invariants/libraries | Error complexity         |
+| Performance/representation | `BangPatterns`, `UnboxedTuples`, `MagicHash`                        | Low-level optimization        | Portability/readability  |
+| Metaprogramming            | `TemplateHaskell`                                                   | Code generation               | Compile-time and opacity |
+
+A sane policy is to classify extensions:
+
+| Policy category        | Meaning                                      |
+| ---------------------- | -------------------------------------------- |
+| Project-default        | Accepted everywhere, low surprise            |
+| Module-local           | Use only where needed                        |
+| Library-internal       | Hidden behind simpler public API             |
+| Avoid unless justified | Advanced or readability-heavy                |
+| Forbidden              | Conflicts with project style or safety needs |
+
+**Failure-first explanation.** The tempting but wrong mental model is that extensions are merely switches to silence compiler errors. The surprising consequence is that every extension changes the language a reader must know. The correct explanation is that extension choice is source-language design. The professional rule is: **use editions and common extensions deliberately; keep advanced extensions local and justified.**
+
+### Formatting and Style — layout consistency, import discipline, readable abstraction
+
+Haskell code can become dense. Formatting is therefore not cosmetic; it protects readability.
+
+| Style area        | Professional practice                     | Failure mode                         |
+| ----------------- | ----------------------------------------- | ------------------------------------ |
+| Layout            | Consistent indentation                    | Parse errors or misleading structure |
+| Imports           | Qualified imports for common modules      | Name collisions and unclear origins  |
+| Export lists      | Explicit public API                       | Accidental exposure                  |
+| Type signatures   | Top-level and exported signatures         | Inferred API drift                   |
+| Operator density  | Use standard operators carefully          | Unreadable symbolic code             |
+| Record formatting | One field per line for nontrivial records | Hard-to-review changes               |
+| Extension pragmas | Grouped at top or project-level           | Hidden language changes              |
+| Warnings          | Enable meaningful warnings                | Latent pattern/defaulting bugs       |
+
+Example import style:
+
+```haskell
+import Data.Text (Text)
+import qualified Data.Text as T
+import qualified Data.Map.Strict as Map
+```
+
+Example readable record:
+
+```haskell
+data User = User
+  { userId    :: UserId
+  , userName  :: Name
+  , userEmail :: Email
+  }
+  deriving stock (Eq, Show)
+```
+
+Example readable applicative parser:
+
+```haskell
+parseUser :: Parser User
+parseUser =
+  User
+    <$> parseUserId
+    <*> parseName
+    <*> parseEmail
+```
+
+**Common Pitfalls.** Over-formatting is less common than under-formatting in Haskell. The real pitfall is symbolic cleverness: long chains of `<$>`, `<*>`, `<=<`, `>=>`, `%~`, `.~`, and custom operators without named intermediate concepts. Good Haskell style preserves the semantic benefit of abstraction while remaining reviewable.
+
+### Warnings, Static Feedback, and Type-Driven Development — -Wall, holes, inferred types
+
+Professional Haskell treats compiler feedback as a design partner. Type errors, typed holes, warnings, and inferred types reveal mismatches between intended design and actual code.
+
+| Feedback source                | Use                                    | Review question                                |
+| ------------------------------ | -------------------------------------- | ---------------------------------------------- |
+| Type error                     | Mismatch in representation/composition | Is the type wrong or the design wrong?         |
+| Typed hole                     | Discover required expression type      | What domain behavior should inhabit this type? |
+| Warning                        | Suspicious but compilable code         | Should this be fixed or explicitly suppressed? |
+| Inferred type                  | Compiler’s generalization              | Is this the intended API?                      |
+| Redundant pattern warning      | Unreachable case                       | Did ordering or model go wrong?                |
+| Non-exhaustive pattern warning | Missing case                           | Should the type or match be changed?           |
+| Defaulting warning             | Ambiguous numeric/string type          | Should type be explicit?                       |
+
+Typed-hole workflow:
+
+```haskell
+renderUsers :: [User] -> Text
+renderUsers users =
+  T.intercalate ", " (map _ users)
+```
+
+The compiler can report that the hole should be roughly:
+
+```haskell
+User -> Text
+```
+
+Then the programmer chooses the domain function:
+
+```haskell
+renderUsers :: [User] -> Text
+renderUsers users =
+  T.intercalate ", " (map renderUser users)
+```
+
+**Common Pitfalls.** The compiler can say what type is needed, not what business rule is correct. A typed hole may suggest many possible expressions. Type-driven development is powerful only when paired with domain judgment.
+
+### Testing Strategy — examples, properties, laws, boundaries, effects
+
+Haskell’s testing advantage comes from pure functions, explicit effects, and law-like abstractions. A serious test suite should not only test examples. It should also test properties, typeclass laws, boundary parsing, error cases, and effectful workflows.
+
+| Test category         | Example target                           | Tool style                    | Purpose                 |
+| --------------------- | ---------------------------------------- | ----------------------------- | ----------------------- |
+| Unit/example test     | `normalizeName " Ada "`                  | HUnit/hspec/tasty             | Specific behavior       |
+| Property test         | `normalize (normalize x) == normalize x` | QuickCheck/Hedgehog           | Broad input behavior    |
+| Typeclass law test    | `fmap id == id`                          | Property tests/law helpers    | Instance coherence      |
+| Parser success test   | Valid input parses                       | Parser test                   | Accepted syntax         |
+| Parser failure test   | Invalid input rejected                   | Parser test                   | Boundary safety         |
+| Golden test           | Rendered output/file                     | Golden framework              | Stable output           |
+| Effectful test        | Service workflow                         | Capability records/test monad | Application behavior    |
+| Regression test       | Previously observed bug                  | Any framework                 | Prevent recurrence      |
+| Performance benchmark | Hot path                                 | Criterion-like benchmark      | Detect cost regressions |
+
+Example property:
+
+```haskell
+prop_normalize_idempotent :: Text -> Bool
+prop_normalize_idempotent x =
+  normalizeName (normalizeName x) == normalizeName x
+```
+
+Example boundary test idea:
+
+```haskell
+parseUser "" == Left EmptyInput
+```
+
+Example law idea for a custom `Semigroup`:
+
+```haskell
+(x <> y) <> z == x <> (y <> z)
+```
+
+**Failure-first explanation.** The tempting but wrong mental model is that Haskell’s type system makes many tests unnecessary. The surprising failures are semantic: wrong business rule, bad parser error, law-breaking instance, incorrect serialization, performance regression, and invalid boundary assumption. The correct explanation is that types eliminate many representation errors; tests check intended behavior across examples, properties, and boundaries. The professional rule is: **test pure logic heavily, test boundary failures explicitly, test laws for abstractions, and use effect injection to test workflows.**
+
+### Debugging Workflow — type errors, runtime errors, laziness, effects
+
+Debugging Haskell depends on the symptom.
+
+| Symptom                        | First tool                            | Likely cause                                     |
+| ------------------------------ | ------------------------------------- | ------------------------------------------------ |
+| Type error                     | Read expected vs actual type          | Representation mismatch                          |
+| Ambiguous type                 | Add signature or simplify constraints | Too little context                               |
+| Non-exhaustive pattern         | Enable warnings, inspect ADT cases    | Missing branch                                   |
+| Runtime exception in pure code | Search partial functions/bottom       | `error`, `undefined`, partial pattern            |
+| Unexpected `Nothing`/`Left`    | Trace typed failure path              | Boundary/validation failure                      |
+| Effect order surprise          | Inspect `IO` sequencing vs pure `let` | Pure binding not forced                          |
+| Memory growth                  | Heap profiling                        | Space leak/thunk retention                       |
+| Slow code                      | Cost-center/allocation profiling      | Allocation, wrong structure, missed optimization |
+| Concurrent hang                | Eventlog/thread dump/logging          | Deadlock, blocked STM, lost worker               |
+| HLS error                      | Check GHC/HLS/project config          | Version mismatch                                 |
+
+A good debugging sequence:
+
+| Step                   | Action                                                                       |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| Reproduce              | Make the failure deterministic if possible                                   |
+| Minimize               | Reduce to the smallest function/module                                       |
+| Classify               | Type error, semantic error, runtime error, performance error, boundary error |
+| Inspect types          | Add signatures, holes, or GHCi `:type`                                       |
+| Inspect data           | Use safe rendering/logging, not secret-leaking `Show`                        |
+| Test pure core         | Move logic out of `IO` if possible                                           |
+| Profile if performance | Do not guess                                                                 |
+| Fix representation     | Many bugs are bad types, not bad branches                                    |
+| Add regression test    | Preserve the lesson                                                          |
+
+**Common Pitfalls.** Haskell beginners often stare at complex type errors too locally. Sometimes the fix is not to satisfy the error at that point, but to change the data model or function signature upstream. Runtime bugs often come from partial functions, lazy evaluation timing, or boundary assumptions rather than from mutation.
+
+### Profiling and Benchmarking Workflow — measuring the lazy runtime
+
+Performance work should be evidence-driven.
+
+| Question                         | Tool style                  | What to inspect                              |
+| -------------------------------- | --------------------------- | -------------------------------------------- |
+| Which function uses time?        | Time/cost-center profiling  | Hot cost centers                             |
+| Where is allocation high?        | Allocation profiling        | Cons cells, intermediate structures, thunks  |
+| Why memory grows?                | Heap profiling              | Retained closures/thunks/data                |
+| Is this change faster?           | Benchmark                   | Stable comparison                            |
+| Did fusion happen?               | Core inspection             | Intermediate lists removed?                  |
+| Is typeclass abstraction costly? | Specialization/Core/profile | Dictionary overhead or missed specialization |
+| Is concurrency behaving?         | Eventlog                    | Thread scheduling, contention                |
+| Is parallelism useful?           | Benchmark/eventlog          | Actual speedup and granularity               |
+
+A profiling-driven workflow:
+
+| Step                  | Action                                                  |
+| --------------------- | ------------------------------------------------------- |
+| Identify symptom      | Slow, high memory, latency, GC, no parallel speedup     |
+| Use realistic input   | Avoid micro-example distortion                          |
+| Measure baseline      | Time/allocation/heap as appropriate                     |
+| Hypothesize           | Representation, strictness, algorithm, I/O, concurrency |
+| Change one thing      | Keep comparison meaningful                              |
+| Re-measure            | Confirm improvement                                     |
+| Simplify after tuning | Avoid leaving accidental complexity                     |
+
+**Failure-first explanation.** The tempting but wrong mental model is that performance can be reasoned from high-level code appearance. The surprising result is that a beautiful pipeline may allocate heavily, while a high-level abstraction may optimize away completely. The correct explanation is that GHC optimization, laziness, sharing, and data representation determine actual cost. The professional rule is: **profile before optimizing, and optimize representation and strictness before micro-syntax.**
+
+### Documentation and API Explanation — Haddock, examples, laws, invariants
+
+Haskell documentation should state what types do not fully state: invariants, laws, failure behavior, resource behavior, complexity, strictness assumptions, and compatibility promises.
+
+Weak documentation:
+
+```haskell
+-- | Creates a user.
+mkUser :: Text -> Int -> Maybe User
+```
+
+Better:
+
+```haskell
+-- | Construct a 'User' from a non-empty name and a non-negative age.
+--
+-- Returns 'Nothing' when the name is empty after trimming or the age is negative.
+mkUser :: Text -> Int -> Maybe User
+```
+
+For typeclasses, document laws:
+
+```haskell
+-- | Types that can be rendered as user-facing text.
+--
+-- Instances should produce stable text suitable for display, not debugging output.
+class Render a where
+  render :: a -> Text
+```
+
+For resource APIs, document lifetime:
+
+```haskell
+-- | Open a connection for the duration of the callback.
+--
+-- The connection is closed when the callback exits, including exceptional exits.
+withConnection :: Config -> (Connection -> IO a) -> IO a
+```
+
+| Documentation target           | Should explain                       |
+| ------------------------------ | ------------------------------------ |
+| Smart constructor              | Validation rule and failure meaning  |
+| Error type                     | When each case occurs                |
+| Typeclass                      | Laws and intended semantics          |
+| Module                         | Public responsibility and invariants |
+| Resource API                   | Acquisition/release behavior         |
+| Parser                         | Accepted syntax and error behavior   |
+| Serialization                  | Format compatibility and versioning  |
+| Unsafe wrapper                 | Assumptions and containment          |
+| Performance-sensitive function | Complexity/strictness when relevant  |
+
+**Common Pitfalls.** Do not document by restating the type. The type already says `Text -> Maybe User`. Documentation should explain why `Nothing` occurs, what normalization happens, whether the constructor is hidden, and what invariants callers may rely on.
+
+### Interoperability and FFI Workflow — isolate foreign assumptions
+
+FFI and interop require extra discipline because foreign code may not obey Haskell’s safety, memory, exception, purity, or concurrency assumptions.
+
+| Interop task        | Professional pattern                                |
+| ------------------- | --------------------------------------------------- |
+| Foreign import      | Keep low-level declaration in internal module       |
+| Memory ownership    | Represent with scoped API or `ForeignPtr`           |
+| Error code          | Convert to `Either`/exception at boundary           |
+| Blocking call       | Mark/import appropriately and test runtime behavior |
+| Encoding            | Convert `Text`/`ByteString` explicitly              |
+| Callback            | Document lifetime and threading assumptions         |
+| Unsafe optimization | Wrap behind safe API                                |
+| Testing             | Include boundary and failure tests                  |
+
+A safe wrapper pattern:
+
+```haskell
+module Foreign.User
+  ( parseUserForeign
+  ) where
+
+parseUserForeign :: ByteString -> IO (Either ForeignUserError User)
+```
+
+The raw `Ptr`, `CString`, and return codes stay private.
+
+**Common Pitfalls.** Do not let raw pointer APIs spread into domain code. Do not import an effectful foreign call as pure merely to make a type convenient. Do not assume GC finalizers run at the time business logic wants resource release. Use explicit lifetime control where it matters.
+
+### Versioning and Compatibility — source, API, binary, data, behavior
+
+Compatibility has several layers.
+
+| Compatibility layer  | Example                             | Risk                                    |
+| -------------------- | ----------------------------------- | --------------------------------------- |
+| Source API           | Function/type/module names          | Callers fail to compile                 |
+| Typeclass instances  | New/changed instance                | Downstream ambiguity or behavior change |
+| Data constructors    | Exported ADT constructors           | Pattern matches break                   |
+| Serialization format | JSON field/constructor names        | Clients or old data break               |
+| Runtime behavior     | Strictness/performance/error timing | Production behavior changes             |
+| Dependency bounds    | Allowed package versions            | Solver/build failures                   |
+| Compiler version     | GHC extensions/base version         | Code no longer builds                   |
+| HLS/tooling          | Editor support                      | Development friction                    |
+
+Haskell API changes are often type-visible, which is good. But not all compatibility is captured by types. Changing a `Monoid` instance, JSON encoding, strictness behavior, or error ordering may break users even if code compiles.
+
+**Common Pitfalls.** A common library mistake is changing exported constructors casually. A common application mistake is changing derived JSON structure without migration. A common tooling mistake is bumping GHC without checking HLS, dependencies, and extension changes.
+
+### Code Review Standards — what to inspect in Haskell code
+
+Haskell code review should inspect more than local correctness. The type system catches many local errors, so review energy should move toward representation, boundaries, laws, effects, and runtime costs.
+
+| Review area      | Questions                                                    |
+| ---------------- | ------------------------------------------------------------ |
+| Types            | Do signatures express domain meaning or only primitives?     |
+| ADTs             | Are invalid states representable unnecessarily?              |
+| Constructors     | Are invariant-bearing constructors hidden?                   |
+| Errors           | Is the failure mechanism appropriate?                        |
+| Effects          | Is pure logic unnecessarily in `IO`?                         |
+| Typeclasses      | Are instances lawful and necessary?                          |
+| Constraints      | Are constraints minimal and meaningful?                      |
+| Abstraction      | Is this too concrete or too abstract?                        |
+| Pattern matching | Are cases exhaustive and future-proof?                       |
+| Imports          | Are names clear and collisions avoided?                      |
+| Resources        | Is acquisition/release exception-safe?                       |
+| Concurrency      | Who owns spawned work and exceptions?                        |
+| Performance      | Are large lists, lazy folds, or repeated appends suspicious? |
+| Serialization    | Is external format stable intentionally?                     |
+| Unsafe/FFI       | Is unsafe code isolated and documented?                      |
+| Tests            | Are laws, boundaries, and failures tested?                   |
+
+A review comment should often target the model, not the syntax:
+
+Bad review: “This could be shorter with point-free style.”
+
+Better review: “This function returns `Bool`, but callers need the rejection reason. Consider `Either EligibilityError EligibleUser`.”
+
+**Common Pitfalls.** Haskell code can be locally elegant and globally poor. Dense combinator code may hide bad boundaries. A typeclass may be lawless. A pure function may be partial. A derived instance may be semantically wrong. Review must ask what the code means, not only whether it compiles.
+
+### Common Misconceptions — better mental models
+
+| Misconception                      | Why it is wrong or incomplete                                       | Better mental model                                          |
+| ---------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------ |
+| Haskell is only academic           | It has real tools and production use, but niche adoption            | It is theory-influenced practical programming                |
+| If it compiles, it is correct      | Types do not prove full behavior, termination, performance, or laws | Compilation rejects many representation errors               |
+| Types replace tests                | Types and tests catch different failures                            | Test semantics, boundaries, laws, and regressions            |
+| `IO` is impurity                   | `IO` marks effectful computation in the type                        | Keep pure logic pure and effects explicit                    |
+| Monads are side effects            | Many monads are not side effects                                    | Monad means dependent sequencing in a context                |
+| Laziness means faster              | Laziness delays work and can allocate thunks                        | Demand controls work; profiling controls performance         |
+| Haskell has no mutation            | It has explicit mutable references and arrays                       | Mutation is explicit and effect-tracked                      |
+| Typeclasses are interfaces         | Similar use, different resolution and law culture                   | Typeclasses are constrained behavior for types               |
+| `String` is fine for all text      | `String` is `[Char]`                                                | Use `Text` for real text, `ByteString` for bytes             |
+| `Show` is serialization            | `Show` is usually debugging output                                  | Use real encoders for external formats                       |
+| GHC extensions are harmless        | They change the source language                                     | Use extension policy                                         |
+| HLS errors mean code is wrong      | HLS may be version-mismatched                                       | Check toolchain compatibility                                |
+| `forkIO` is enough for concurrency | Raw threads need ownership                                          | Prefer `async`/structured patterns                           |
+| STM solves all concurrency         | STM helps shared state composition                                  | Still design contention, retry, cancellation, I/O boundaries |
+| More general type is better        | Generality has readability and inference costs                      | Generalize only useful variation                             |
+
+### Common Failure Modes — conceptual, language-design, engineering, tooling
+
+| Failure mode               | Category      | Symptom                                         | Correction                   |
+| -------------------------- | ------------- | ----------------------------------------------- | ---------------------------- |
+| Primitive obsession        | Data modeling | Many `Text`/`Int` values with comments          | `newtype`, ADT, records      |
+| Boolean blindness          | Data modeling | `Bool` result hides reason                      | Result ADT or `Either`       |
+| Constructor leak           | Boundary      | Invalid values appear despite smart constructor | Hide constructor             |
+| Partial-function crash     | Runtime       | `head`, `read`, `fromJust`, pattern failure     | Total alternatives           |
+| IO creep                   | Effect design | Pure logic has `IO` everywhere                  | Refactor pure core           |
+| Transformer overuse        | Architecture  | Constraint-heavy code for simple workflow       | Concrete type first          |
+| Typeclass overuse          | Abstraction   | One-method classes with one instance            | Plain function/record        |
+| Law-breaking instance      | Abstraction   | Generic code behaves strangely                  | Test/document laws           |
+| Lazy fold leak             | Runtime       | Memory grows during accumulation                | `foldl'`, strict accumulator |
+| Closure retention          | Runtime       | Large structure not freed                       | Narrow captured environment  |
+| Lazy I/O leak              | Resource      | Handles/memory retained                         | Strict I/O or streaming      |
+| Raw concurrency leak       | Concurrency   | Child thread lost or exception hidden           | `async`/supervision          |
+| JSON trust bug             | Boundary      | Decoded invalid domain data                     | Validate into domain types   |
+| Derived API break          | Compatibility | JSON/Show/Ord behavior changes                  | Explicit instances/contracts |
+| HLS mismatch               | Tooling       | Editor fails though build works                 | Align GHC/HLS                |
+| Dependency solver surprise | Tooling       | Build changes unexpectedly                      | Freeze/pin/check bounds      |
+| Extension drift            | Workflow      | Files require many unknown features             | Project extension policy     |
+| Profiling avoidance        | Performance   | Optimizations by folklore                       | Measure first                |
+
+### Idiom versus Anti-Pattern Table
+
+| Area           | Idiomatic pattern                              | Anti-pattern                     |
+| -------------- | ---------------------------------------------- | -------------------------------- |
+| Domain IDs     | `newtype UserId = UserId Int`                  | Reusing `Int` for every ID       |
+| Optionality    | `Maybe a` with explicit handling               | Sentinel values or `fromJust`    |
+| Domain failure | `Either DomainError a`                         | Exceptions for normal validation |
+| Pure logic     | `Raw -> Either Error Domain`                   | Validation in `IO` without need  |
+| Resources      | `withFile`, `bracket`                          | Manual open/close                |
+| Text           | `Text`                                         | Large `String` domain data       |
+| Bytes          | `ByteString`                                   | Arbitrary bytes in `Text`        |
+| Data states    | ADTs                                           | Multiple booleans/status strings |
+| Effects        | Capability records / `ReaderT` where justified | Global hidden dependencies       |
+| Concurrency    | `async`, STM, ownership                        | Fire-and-forget `forkIO`         |
+| Abstraction    | Functions first, typeclasses when stable       | Typeclass for every shared name  |
+| Parsing        | Parser/decoder plus validation                 | Partial `read`                   |
+| Testing        | Examples + properties + boundary tests         | Only happy-path examples         |
+| Performance    | Profile, then tune representation/strictness   | Add bangs everywhere             |
+| API            | Explicit export lists                          | Export everything                |
+
+### Migration and Maintenance Concerns — old code, new GHC, dependency evolution
+
+Maintaining Haskell code often means dealing with old extensions, old dependency bounds, old compiler versions, partial functions, `String`-heavy APIs, or legacy transformer stacks.
+
+| Maintenance task             | Risk                                                         | Practical approach                                 |
+| ---------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| GHC upgrade                  | Extension/base changes, warnings, dependency incompatibility | Upgrade in branch, run CI/tests, check HLS support |
+| Dependency upgrade           | API changes or behavior changes                              | Read changelogs, run tests/benchmarks              |
+| Replace `String` with `Text` | Boundary conversions                                         | Change API layer by layer                          |
+| Remove partial functions     | Behavior changes                                             | Add safe alternatives and tests                    |
+| Refactor errors              | Call-site changes                                            | Introduce domain error type gradually              |
+| Hide constructors            | Breaks direct construction                                   | Add smart constructors and migration helpers       |
+| Simplify transformer stack   | Type changes                                                 | Start at module boundaries                         |
+| Add strictness               | Behavior/performance changes                                 | Profile before and after                           |
+| Change JSON format           | External compatibility                                       | Add versioned decoder/migration                    |
+| Remove extension             | Source changes                                               | Decide if simplification is worth it               |
+
+**Common Pitfalls.** Do not combine too many migration goals in one change. A GHC upgrade plus dependency upgrade plus effect-stack refactor plus JSON change is hard to debug. Haskell’s type system helps migration, but it does not remove the need for staged changes and regression tests.
+
+### Professional Fluency Path — first principles, dimensions, constructs, tools
+
+A serious Haskell mastery path should be ordered by dependency.
+
+| Stage              | Focus                                                            | What competence looks like                            |
+| ------------------ | ---------------------------------------------------------------- | ----------------------------------------------------- |
+| Reading foundation | Syntax, layout, type signatures, pattern matching                | Can read ordinary modules without panic               |
+| Data modeling      | ADTs, records, `newtype`, `Maybe`, `Either`                      | Can make invalid states harder to represent           |
+| Functional control | `map`, `fmap`, folds, `traverse`, composition                    | Can choose the right transformation pattern           |
+| Effect boundaries  | `IO`, pure core, `Either`, resources                             | Can separate pure logic from external effects         |
+| Typeclasses        | `Eq`, `Ord`, `Show`, `Functor`, `Applicative`, `Monad`, `Monoid` | Can read constraints and respect laws                 |
+| Tooling            | Cabal/Stack/GHCup/HLS/GHCi                                       | Can build, edit, test, and resolve environment issues |
+| Testing            | Unit, property, boundary, law tests                              | Can test semantics beyond examples                    |
+| Runtime            | Laziness, strictness, profiling                                  | Can diagnose space/time issues                        |
+| Architecture       | Modules, capability records, `ReaderT`, errors                   | Can structure medium codebases                        |
+| Advanced types     | GADTs, type families, DataKinds, phantom types                   | Can use advanced tools when justified                 |
+| Expert practice    | Maintenance, performance, ecosystem, review                      | Can balance abstraction, cost, and readability        |
+
+### What to Learn Early, What to Postpone
+
+| Learn early                             | Why                             |
+| --------------------------------------- | ------------------------------- |
+| Type signatures                         | Main design language            |
+| ADTs and pattern matching               | Core data/control model         |
+| `Maybe` and `Either`                    | Basic failure boundaries        |
+| `newtype`                               | Cheap domain safety             |
+| `Text`, `Map`, `Set`, lists             | Practical representation choice |
+| `fmap`, `<$>`, `<*>`, `>>=`, `traverse` | Core library vocabulary         |
+| `IO` and pure/effect separation         | Real programs                   |
+| Cabal/GHCup/HLS basics                  | Productive workflow             |
+| Warnings and typed holes                | Compiler-guided development     |
+| Basic profiling concepts                | Laziness cost model             |
+
+| Postpone                   | Why                              |
+| -------------------------- | -------------------------------- |
+| Large effect systems       | Need effect basics first         |
+| Type families at scale     | Hard errors and abstraction cost |
+| Template Haskell           | Generated code opacity           |
+| Lens-heavy style           | Powerful but syntactically dense |
+| Core/STG reading           | Useful after profiling need      |
+| Linear types               | Specialized                      |
+| Dependent-Haskell frontier | Not ordinary baseline            |
+| Custom preludes            | Learn standard vocabulary first  |
+| Advanced FFI               | Boundary-heavy and unsafe        |
+| Unboxed primitives         | Low-level optimization only      |
+
+### Questions to Ask Before Writing Serious Haskell Code
+
+| Question                                                    | Why it matters                                      |
+| ----------------------------------------------------------- | --------------------------------------------------- |
+| What values are valid, and can invalid ones be constructed? | Determines ADTs, `newtype`, smart constructors      |
+| Which inputs are external and untrusted?                    | Determines parsing/validation boundaries            |
+| Is this failure expected or exceptional?                    | Determines `Maybe`, `Either`, validation, exception |
+| Can this function be pure?                                  | Keeps logic testable                                |
+| Which effects are truly needed?                             | Prevents `IO` creep                                 |
+| Does this abstraction have more than one real use?          | Prevents premature typeclasses                      |
+| Are typeclass instances lawful?                             | Preserves generic reasoning                         |
+| Which collection matches the operation?                     | Prevents list misuse                                |
+| Does this resource need scoped cleanup?                     | Prevents leaks                                      |
+| Who owns this concurrent task?                              | Prevents lost threads/exceptions                    |
+| Is this external format stable?                             | Prevents accidental serialization breaks            |
+| Is performance guessed or measured?                         | Prevents folklore optimization                      |
+| Does the public API expose implementation details?          | Preserves future changeability                      |
+
+### Signs of Shallow versus Deep Understanding
+
+| Shallow sign                        | Deeper sign                                                           |
+| ----------------------------------- | --------------------------------------------------------------------- |
+| Can write small recursive functions | Can choose between recursion, fold, traversal, and library combinator |
+| Knows `Maybe`                       | Knows when `Maybe` is too weak and `Either` is needed                 |
+| Knows `IO` syntax                   | Can keep pure logic out of `IO`                                       |
+| Knows `Monad` examples              | Can distinguish `Functor`, `Applicative`, and `Monad` by dependency   |
+| Uses `newtype`                      | Also controls constructor visibility                                  |
+| Derives instances                   | Reviews semantic correctness of derived instances                     |
+| Uses `Text`                         | Understands text/bytes/encoding boundaries                            |
+| Uses typeclasses                    | Understands laws, instance coherence, and abstraction cost            |
+| Writes point-free code              | Knows when named arguments are clearer                                |
+| Uses GHC extensions                 | Has an extension policy                                               |
+| Builds project once                 | Understands GHC/Cabal/HLS/dependency alignment                        |
+| Runs tests                          | Tests properties, boundaries, laws, and regressions                   |
+| Adds strictness                     | Profiles before and after                                             |
+| Uses concurrency                    | Designs ownership, cancellation, and exception handling               |
+
+### Practical Fluency Checklist
+
+| Area                   | Checklist                                                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Reading idiomatic code | Can parse layout, imports, signatures, constraints, pattern matches, `do`, and common operators                   |
+| Writing modules        | Uses explicit export lists, qualified imports, and constructor visibility deliberately                            |
+| Modeling data          | Uses ADTs, records, `newtype`, `Maybe`, `Either`, and smart constructors appropriately                            |
+| Handling errors        | Chooses among `Maybe`, `Either`, validation, exceptions, and custom result types by caller responsibility         |
+| Managing effects       | Keeps pure logic pure, uses `IO` honestly, introduces `ReaderT`/`ExceptT` only when helpful                       |
+| Managing resources     | Uses `with...`, `bracket`, or safe resource libraries rather than manual cleanup                                  |
+| Debugging              | Uses type holes, GHCi, warnings, HLS, tests, and tracing appropriately                                            |
+| Testing                | Combines example tests, property tests, boundary tests, law tests, and regression tests                           |
+| Package/build tools    | Understands Cabal/Stack/GHCup/HLS/GHC roles and project version alignment                                         |
+| Dependency management  | Maintains bounds or snapshots deliberately; avoids needless dependencies                                          |
+| Performance            | Understands laziness, thunks, strictness, allocation, profiling, and collection choice                            |
+| Safety boundaries      | Isolates unsafe/FFI, validates external data, avoids partial functions in public APIs                             |
+| Concurrency            | Uses `async`/STM with ownership and cleanup rather than unmanaged `forkIO`                                        |
+| Code review            | Reviews types, invariants, laws, effects, boundaries, and cost, not just syntax                                   |
+| Anti-pattern avoidance | Recognizes primitive obsession, boolean blindness, IO creep, typeclass overuse, lazy leaks, and constructor leaks |
+| Postponement judgment  | Knows when not to use advanced extensions, lenses, effect systems, Template Haskell, or Core inspection           |
+
+### Compact Mastery Path — from competent reader to mature Haskell programmer
+
+A compact path can be stated as follows.
+
+First, learn to read code: layout, names, type signatures, function application, pattern matching, `case`, guards, `do`, imports, and modules.
+
+Second, learn to model data: ADTs, records, `newtype`, `Maybe`, `Either`, domain error types, smart constructors, constructor hiding, and collection choice.
+
+Third, learn to compose behavior: higher-order functions, `fmap`, `<$>`, `<*>`, `>>=`, `traverse`, folds, `Semigroup`, `Monoid`, parser combinators, and readable function composition.
+
+Fourth, learn to manage boundaries: modules, effects, resources, errors, external input, JSON, files, logging, configuration, unsafe code, and FFI.
+
+Fifth, learn the runtime: laziness, thunks, WHNF/NF, strictness, space leaks, allocation, GC, profiling, concurrency, STM, and parallelism.
+
+Sixth, learn professional workflow: Cabal/Stack/GHCup/HLS, dependency bounds, formatting, warnings, tests, benchmarking, CI, versioning, code review, and migration.
+
+Seventh, learn advanced language mechanisms only when they solve real problems: GADTs, type families, DataKinds, RankNTypes, Template Haskell, lenses, advanced effect systems, and low-level representation controls.
+
+The durable skill is not memorizing every library or extension. It is the ability to ask: **What does the type say? What does the boundary allow? What does the runtime force? What does the abstraction hide? What will the next maintainer understand?**
+
+## PART 10 — Synthesis, Indexes, Decision Tables, and Long-Term Reference
+
+### Orientation — from learning guide to working reference
+
+This final part turns the guide into a working reference. The earlier parts built the model: language identity, syntax, data modeling, control flow, boundaries, ecosystem, runtime, history, and workflow. Part 10 reorganizes that material into decision tables, diagnostic indexes, anti-pattern maps, and review checklists.
+
+The goal is not to introduce many new mechanisms. It is to make Haskell knowledge operational: when reading code, designing an API, debugging a type error, handling failure, choosing a collection, profiling performance, or reviewing a module, the programmer should be able to locate the relevant question quickly.
+
+### The Whole-Language Mental Model — ten questions
+
+| Question                  | Haskell answer                                                                                       | Main tools                                            |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| What values can exist?    | Types define possible values                                                                         | ADTs, records, `newtype`, type synonyms               |
+| Which states are invalid? | Move invalidity into representation or constructor boundary                                          | Smart constructors, hidden constructors, domain types |
+| What can fail?            | Use the type to distinguish absence, recoverable failure, operational exception, and impossible case | `Maybe`, `Either`, validation, exceptions             |
+| What performs effects?    | Effects appear in types                                                                              | `IO`, `ReaderT`, `ExceptT`, capability records        |
+| What is pure?             | Pure functions transform values without external effects                                             | Ordinary functions, ADTs, `Either` validation         |
+| What is delayed?          | Non-strict evaluation delays work until demanded                                                     | Laziness, thunks, WHNF/NF                             |
+| What is shared?           | Bindings may be evaluated once and reused                                                            | Let-bindings, closures, sharing                       |
+| What is public?           | Export lists define API boundaries                                                                   | Modules, constructors, accessors                      |
+| What is generic?          | Type variables and typeclasses express reusable structure                                            | Polymorphism, constraints, typeclasses                |
+| What does it cost?        | Runtime cost depends on demand, allocation, representation, strictness, and optimization             | Profiling, strictness tools, data-structure choice    |
+
+A compact phrase is: **Haskell programs are typed meanings with explicit boundaries and demand-driven execution.**
+
+### Core Concept Index — what each concept is for
+
+| Concept           | Use it for                                        | Do not use it for                         |
+| ----------------- | ------------------------------------------------- | ----------------------------------------- |
+| `data`            | Define structured data or alternatives            | Simple aliasing                           |
+| Record            | Named product data                                | Mutable object emulation                  |
+| Sum type          | Closed alternatives                               | Open plugin-style extension               |
+| `newtype`         | Distinct domain concept with cheap representation | Multiple fields or many constructors      |
+| Type synonym      | Readability alias                                 | Type safety                               |
+| `Maybe`           | Absence without explanation                       | Rich error reporting                      |
+| `Either`          | Recoverable failure with one error                | Accumulating all independent errors       |
+| Validation type   | Accumulate independent errors                     | Dependent step-by-step parsing            |
+| Exception         | Operational or unexpected failure                 | Ordinary domain validation                |
+| `IO`              | Effectful computation                             | A container to unwrap in pure code        |
+| Function          | Pure transformation or behavior parameter         | Object method imitation by default        |
+| Typeclass         | Shared lawful behavior across types               | Arbitrary code reuse with one instance    |
+| Module            | Namespace and abstraction boundary                | Random file grouping                      |
+| Smart constructor | Validated construction                            | Cosmetic wrapper if constructor is public |
+| Pattern matching  | Branch by data shape                              | Stringly typed status handling            |
+| Guard             | Branch by ordered predicates                      | Rich ADT case analysis                    |
+| `fmap`            | Transform inside context                          | Sequencing dependent effects              |
+| `Applicative`     | Combine independent contextual values             | Dependent workflow                        |
+| `Monad`           | Sequence dependent contextual computations        | Every possible abstraction                |
+| Fold              | Consume structure                                 | Replace all readable recursion            |
+| `traverse`        | Map with effects while preserving structure       | Ignore results; use `traverse_` then      |
+| `bracket`         | Resource-safe acquire/use/release                 | Ordinary pure control flow                |
+| `async`           | Owned concurrent tasks                            | Fire-and-forget by habit                  |
+| STM               | Composable shared-state transactions              | Arbitrary `IO` inside transactions        |
+
+### Data Modeling Decision Index
+
+| Modeling problem                             | Prefer                                          | Why                                         |
+| -------------------------------------------- | ----------------------------------------------- | ------------------------------------------- |
+| Several fields belong together               | Record                                          | Names fields and creates domain concept     |
+| Value is one of several known cases          | Sum type                                        | Enables exhaustive handling                 |
+| Cases carry different data                   | Sum of products                                 | Payload belongs to the relevant case        |
+| Primitive values have different meanings     | `newtype`                                       | Prevents ID/unit/domain mixups              |
+| Type name only improves readability          | Type synonym                                    | No extra safety needed                      |
+| Construction can fail                        | Smart constructor returning `Maybe` or `Either` | Makes validation explicit                   |
+| Constructor must preserve invariant          | Hide constructor in module export list          | Prevents invalid external construction      |
+| Domain state currently uses several booleans | ADT                                             | Removes impossible combinations             |
+| External data has raw shape                  | Raw DTO plus validator                          | Separates decoded shape from domain meaning |
+| Sequence must be non-empty                   | `NonEmpty a`                                    | Removes empty case                          |
+| Keyed lookup is central                      | `Map` or `HashMap`                              | Avoids linear association-list lookup       |
+| Uniqueness matters                           | `Set` or `HashSet`                              | Encodes uniqueness                          |
+| Dense indexed data matters                   | `Vector`                                        | Better random access and memory layout      |
+| Human-readable text                          | `Text`                                          | Efficient Unicode text                      |
+| Binary/encoded data                          | `ByteString`                                    | Raw bytes, not characters                   |
+| Workflow phase should be type-checked        | Phantom type or separate newtypes               | Prevents wrong transition                   |
+| Constructor-specific result type matters     | GADT                                            | Encodes stronger invariant                  |
+
+### ADT Modeling Pattern Index
+
+| Weak model                                                 | Problem                              | Stronger model                               |              |              |
+| ---------------------------------------------------------- | ------------------------------------ | -------------------------------------------- | ------------ | ------------ |
+| `status :: Text`                                           | Misspellings and unknown states      | `data Status = Draft                         | Published    | Archived`    |
+| `isLoading :: Bool`, `hasData :: Bool`, `hasError :: Bool` | Invalid combinations                 | `data PageState = Loading                    | Failed Error | Ready Model` |
+| `userId :: Int`, `productId :: Int`                        | IDs can be mixed                     | `newtype UserId`, `newtype ProductId`        |              |              |
+| `email :: Text`                                            | Any text accepted                    | `newtype Email` plus `mkEmail`               |              |              |
+| `age :: Int`                                               | Negative or impossible ages accepted | `newtype Age` plus `mkAge`                   |              |              |
+| `[a]` plus `head`                                          | Empty list crash                     | `NonEmpty a`                                 |              |              |
+| `(Text, Text, Int)`                                        | Positional ambiguity                 | Record with named fields                     |              |              |
+| `Either Text a` everywhere                                 | Unstructured failure                 | Domain error ADT                             |              |              |
+| Public `User(..)` with invariant                           | Invalid external construction        | Export `User`, smart constructors, accessors |              |              |
+| Raw JSON record in core logic                              | Boundary leakage                     | Decode raw, validate domain                  |              |              |
+
+### Function and API Design Index
+
+| API smell                                            | Why it is weak                            | Better direction                                |
+| ---------------------------------------------------- | ----------------------------------------- | ----------------------------------------------- |
+| `Text -> Text -> Int -> IO Bool`                     | Primitive blindness and Boolean blindness | Domain types and result ADT                     |
+| `a -> IO a` when no effect occurs                    | Unnecessary `IO`                          | Pure function                                   |
+| `Either Text a` for important failure                | Caller cannot inspect structured error    | `Either DomainError a`                          |
+| `Bool` return with many failure reasons              | Reason lost                               | `Either Reason Success` or custom result        |
+| Many typeclass constraints in application code       | Over-abstracted                           | Concrete type or capability record              |
+| One-method typeclass with one instance               | Premature abstraction                     | Plain function                                  |
+| Exported constructor for validated type              | Invariant bypass                          | Hide constructor                                |
+| Large tuple return                                   | Unclear fields                            | Record                                          |
+| `String` domain API                                  | Inefficient/ambiguous text representation | `Text` or `ByteString`                          |
+| Function argument order blocks reuse                 | Awkward partial application               | Put configuration before main data where useful |
+| `IO (Maybe a)` when reason matters                   | Missing failure detail                    | `IO (Either Error a)`                           |
+| `Either e (IO a)` when operation itself is effectful | Awkward sequencing                        | Usually `IO (Either e a)` or `ExceptT e IO a`   |
+
+### Error-Handling Decision Index
+
+| Situation                                 | Best first choice                                                 | Reason                           |
+| ----------------------------------------- | ----------------------------------------------------------------- | -------------------------------- |
+| Lookup may miss                           | `Maybe a`                                                         | Absence is normal                |
+| Optional field                            | `Maybe a`                                                         | Value may not exist              |
+| Simple parse where reason irrelevant      | `Maybe a`                                                         | Only success/failure matters     |
+| Parse where reason matters                | `Either ParseError a`                                             | Caller can report cause          |
+| Validation of one dependent workflow      | `Either DomainError a`                                            | Stop on first meaningful failure |
+| Independent form validation               | Validation type accumulating errors                               | User should see all errors       |
+| File/network/database operational failure | Exceptions caught and converted at boundary, or explicit `Either` | Environment can fail             |
+| Programmer bug or impossible case         | Avoid; if unavoidable, isolate `error`                            | Not normal control flow          |
+| Public API failure                        | `Either` or custom result ADT                                     | Failure is part of contract      |
+| Internal tiny helper with obvious absence | `Maybe`                                                           | Keeps code simple                |
+| Effectful workflow with typed failure     | `IO (Either e a)` or `ExceptT e IO a`                             | Effects plus domain failure      |
+| Many sequenced failing effectful steps    | `ExceptT e IO a`                                                  | Reduces nested case handling     |
+
+### `Maybe`, `Either`, Validation, Exception — comparison table
+
+| Mechanism    | Type shape                           | Meaning                           | Strength                             | Weakness                            |                                   |
+| ------------ | ------------------------------------ | --------------------------------- | ------------------------------------ | ----------------------------------- | --------------------------------- |
+| `Maybe a`    | `Nothing                             | Just a`                           | Optional value                       | Simple and clear                    | No failure detail                 |
+| `Either e a` | `Left e                              | Right a`                          | Failure or success                   | Typed recoverable error             | Usually first error only          |
+| Validation   | `Invalid errors                      | Valid a`                          | Accumulating validation              | Reports multiple independent errors | Less suitable for dependent steps |
+| Exception    | Runtime mechanism, often in `IO`     | Operational or unexpected failure | Works across effect boundaries       | Hidden unless caught/documented     |                                   |
+| Bottom       | `undefined`, `error`, nontermination | Failure/divergence at any type    | Sometimes marks impossible/prototype | Breaks total reasoning              |                                   |
+
+### Purity and Effect Boundary Index
+
+| Function type          | Meaning                                     | Review question                                    |
+| ---------------------- | ------------------------------------------- | -------------------------------------------------- |
+| `a -> b`               | Pure transformation                         | Does it hide partiality or unsafe effects?         |
+| `a -> Maybe b`         | Pure optional result                        | Is absence enough information?                     |
+| `a -> Either e b`      | Pure recoverable failure                    | Is `e` structured enough?                          |
+| `a -> IO b`            | Effectful computation                       | Which effect, and can pure logic be separated?     |
+| `a -> IO (Either e b)` | Effectful workflow with typed failure       | Would `ExceptT` clarify sequencing?                |
+| `ReaderT env IO a`     | Needs environment plus effects              | Is `env` coherent or a global bag?                 |
+| `ExceptT e IO a`       | Effectful computation with typed failure    | Are exceptions still handled at resource boundary? |
+| `State s a`            | Pure state threading                        | Is explicit state clearer?                         |
+| `ST s a`               | Local mutation with pure external interface | Is low-level mutation justified?                   |
+| `STM a`                | Transactional shared-state operation        | Is arbitrary `IO` being kept out?                  |
+
+### `Functor`, `Applicative`, `Monad` Choice Index
+
+| Need                                  | Use                      | Type shape                     | Example                          |           |
+| ------------------------------------- | ------------------------ | ------------------------------ | -------------------------------- | --------- |
+| Transform a value inside a context    | `Functor`                | `(a -> b) -> f a -> f b`       | `userName <$> maybeUser`         |           |
+| Replace value but keep context        | `Functor` / `<$`         | `b -> f a -> f b`              | `"ok" <$ action`                 |           |
+| Combine independent contextual values | `Applicative`            | `f (a -> b) -> f a -> f b`     | `User <$> pName <*> pAge`        |           |
+| Lift pure value into context          | `Applicative`            | `a -> f a`                     | `pure user`                      |           |
+| Sequence dependent steps              | `Monad`                  | `m a -> (a -> m b) -> m b`     | `id <- parseId txt; loadUser id` |           |
+| Ignore first result but keep order    | `Monad` / `Applicative`  | `m a -> m b -> m b`            | `putStrLn "x" >> action`         |           |
+| Try alternatives                      | `Alternative`            | `f a -> f a -> f a`            | `parseA <                        | > parseB` |
+| Transform and sequence structure      | `Traversable`            | `(a -> f b) -> t a -> f (t b)` | `traverse loadUser ids`          |           |
+| Perform effects and ignore results    | `Foldable`/`Traversable` | `(a -> f b) -> t a -> f ()`    | `traverse_ print users`          |           |
+
+A compact rule: **`Functor` transforms, `Applicative` combines independent contexts, `Monad` sequences dependent contexts, `Traversable` moves effects through structures.**
+
+### Typeclass Law Index
+
+| Typeclass     | Core operations           | Expected laws or discipline                         | Practical test idea                           |                            |
+| ------------- | ------------------------- | --------------------------------------------------- | --------------------------------------------- | -------------------------- |
+| `Eq`          | `(==)`, `(/=)`            | Reflexive, symmetric, transitive; `/=` negates `==` | `x == x`                                      |                            |
+| `Ord`         | `compare`, `<`, `<=`, `>` | Consistent with `Eq`; total ordering                | `compare x y == EQ` iff `x == y`              |                            |
+| `Semigroup`   | `(<>)`                    | Associativity                                       | `(x <> y) <> z == x <> (y <> z)`              |                            |
+| `Monoid`      | `mempty`, `(<>)`          | Left/right identity plus semigroup law              | `mempty <> x == x`                            |                            |
+| `Functor`     | `fmap`                    | Identity and composition                            | `fmap id x == x`                              |                            |
+| `Applicative` | `pure`, `<*>`             | Identity, composition, homomorphism, interchange    | `pure id <*> v == v`                          |                            |
+| `Monad`       | `>>=`, `return`/`pure`    | Left identity, right identity, associativity        | `(m >>= pure) == m`                           |                            |
+| `Foldable`    | `foldMap`, `foldr`        | Consistent folding behavior                         | Compare `foldMap` against known structure     |                            |
+| `Traversable` | `traverse`                | Naturality, identity, composition                   | `traverse Identity == Identity`               |                            |
+| `Alternative` | `empty`, `<               | >`                                                  | Often monoid-like behavior, instance-specific | Parser/list behavior tests |
+
+The compiler checks method types. It does not prove these laws. Law-breaking instances are one of the easiest ways to write code that typechecks and remains semantically hostile.
+
+### Module and Export Boundary Index
+
+| Export decision           | Consequence                        | Use when                                   |
+| ------------------------- | ---------------------------------- | ------------------------------------------ |
+| Export `Type` only        | Type is abstract                   | Invariants or representation may change    |
+| Export `Type(..)`         | Constructors and fields public     | Plain transparent data                     |
+| Export selected functions | API is controlled                  | Most modules                               |
+| Export field accessors    | Read access is allowed             | Field values are safe to expose            |
+| Export smart constructor  | Construction can fail or normalize | Validated types                            |
+| Export internal helper    | Public API grows accidentally      | Almost never                               |
+| Re-export another module  | Users get convenience              | Facade modules                             |
+| Qualified import          | Names remain clear                 | `Text`, `Map`, `Set`, `ByteString` modules |
+| Open import               | Shorter code                       | Small modules with low collision risk      |
+| Internal module           | Implementation detail              | Unstable helper code                       |
+
+Review question: **If this module exports a name, is the project willing to support that name as API?**
+
+### Collection Choice Index
+
+| Need                          | Use               | Avoid                                                 |
+| ----------------------------- | ----------------- | ----------------------------------------------------- |
+| Simple recursive sequence     | `[a]`             | Vector unless indexing/density matters                |
+| Guaranteed non-empty sequence | `NonEmpty a`      | `[a]` plus `head`                                     |
+| Keyed lookup with ordering    | `Map k v`         | Association list for large data                       |
+| Hash-based keyed lookup       | `HashMap k v`     | Ordered map if order irrelevant and hash works better |
+| Unique ordered values         | `Set a`           | List plus repeated `nub`                              |
+| Dense indexed data            | `Vector a`        | List plus `!!`                                        |
+| Human text                    | `Text`            | Large `String`                                        |
+| Raw bytes                     | `ByteString`      | `Text` for arbitrary bytes                            |
+| Many appended text fragments  | Builder           | Repeated `<>` in hot path                             |
+| Streaming large data          | Streaming library | Loading full file/list                                |
+| Optional single value         | `Maybe a`         | Empty list convention                                 |
+| Finite alternatives           | ADT               | String tags                                           |
+
+### Text, Bytes, and Encoding Index
+
+| Representation    | Meaning                | Good use                                 | Bad use                     |
+| ----------------- | ---------------------- | ---------------------------------------- | --------------------------- |
+| `String`          | `[Char]`               | Small examples, legacy APIs              | Large production text       |
+| `Text`            | Unicode text           | Domain text, user-facing text            | Arbitrary binary data       |
+| Strict `Text`     | Text in memory         | Normal text processing                   | Huge streaming input        |
+| Lazy `Text`       | Chunked text           | Some large text workflows                | Casual resource assumptions |
+| `ByteString`      | Raw bytes              | Files, network, hashes, encoded payloads | Human text without decoding |
+| Lazy `ByteString` | Chunked bytes          | Large byte I/O                           | Hidden lazy I/O assumptions |
+| Builder           | Efficient construction | Large generated output                   | Tiny simple messages        |
+
+Rule: **bytes become text only through decoding; text becomes bytes only through encoding.**
+
+### Runtime and Strictness Index
+
+| Symptom                                       | Likely cause                     | First response                                 |
+| --------------------------------------------- | -------------------------------- | ---------------------------------------------- |
+| Memory grows during sum/count                 | Lazy accumulator                 | Use `foldl'` or strict accumulator             |
+| Record retains unevaluated work               | Lazy fields                      | Consider strict fields                         |
+| Exception appears later than expected         | Lazy evaluation                  | Force at boundary with `evaluate` or `deepseq` |
+| File handle retained                          | Lazy I/O                         | Strict read or streaming                       |
+| Large input retained unexpectedly             | Closure capture                  | Narrow captured environment                    |
+| Parallel code does no work                    | Result not demanded              | Force to required depth                        |
+| Evaluating constructor did not evaluate field | WHNF only                        | Use deep evaluation if needed                  |
+| Hot polymorphic code slow                     | Missed specialization            | Benchmark, specialize, concrete type           |
+| List pipeline allocates too much              | Fusion failed or wrong structure | Fold/stream/vector after profiling             |
+| Repeated text append slow                     | Reallocation                     | Builder                                        |
+| Many thunks in state                          | Lazy state fields                | Strict state/update                            |
+| GC time high                                  | High allocation or retention     | Allocation/heap profiling                      |
+
+### WHNF and NF Index
+
+| Expression                 | WHNF means                   | NF means                                                     |
+| -------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| `Just (1 + 2)`             | Outer `Just` known           | Inner value evaluated to `3`                                 |
+| `(expensiveA, expensiveB)` | Pair constructor known       | Both fields fully evaluated                                  |
+| `x : xs`                   | List is non-empty            | Head and tail fully evaluated recursively                    |
+| `[]`                       | Empty list known             | Same as WHNF                                                 |
+| `\x -> x + 1`              | Function value known         | Functions are already values in this sense                   |
+| `User name age`            | `User` constructor known     | Fields fully evaluated if their types can be fully evaluated |
+| `undefined`                | Fails                        | Fails                                                        |
+| Infinite list              | Can have WHNF for first cons | No finite NF                                                 |
+
+Rule: **pattern matching usually needs WHNF; full evaluation requires deeper forcing.**
+
+### Partiality and Bottom Hazard Index
+
+| Hazard                 | Example                                | Safer alternative                                 |
+| ---------------------- | -------------------------------------- | ------------------------------------------------- |
+| `undefined`            | Placeholder left in code               | Complete implementation or explicit typed failure |
+| `error`                | `error "impossible"`                   | Encode impossibility or isolate invariant         |
+| `head`                 | `head xs`                              | Pattern match or `NonEmpty`                       |
+| `tail`                 | `tail xs`                              | Pattern match                                     |
+| `!!`                   | `xs !! n`                              | Safe indexing or `Vector` with safe API           |
+| `read`                 | `read input`                           | `readMaybe` or parser                             |
+| `fromJust`             | `fromJust m`                           | Pattern match, `maybe`, `do` over `Maybe`         |
+| Non-exhaustive pattern | `Just x -> x` only                     | Handle all constructors                           |
+| Partial record field   | Field not present for all constructors | Avoid partial fields or use separate records      |
+| Infinite recursion     | `x = x`                                | Define productive recursion or base case          |
+| Unsafe coercion        | `unsafeCoerce`                         | Avoid or isolate behind proof/wrapper             |
+| FFI assumption         | Raw pointer use                        | Safe wrapper                                      |
+
+Review rule: **public APIs should not require callers to trust hidden partiality.**
+
+### Resource and Boundary Index
+
+| Boundary             | Risk                            | Safe pattern                            |
+| -------------------- | ------------------------------- | --------------------------------------- |
+| File handle          | Leak or lazy demand after close | `withFile`, strict/streaming processing |
+| Database connection  | Leaked connection               | `withConnection` / pool-managed scope   |
+| Network socket       | Open connection leak            | Bracketed connection handling           |
+| Temporary file       | Race or leftover file           | Temp-file library / bracket             |
+| Foreign pointer      | Use-after-free or leak          | `ForeignPtr`, explicit scoped API       |
+| Lock/shared variable | Deadlock or race                | STM, `MVar` with discipline             |
+| Child thread         | Lost exception or leak          | `async`, `withAsync`, supervision       |
+| External JSON        | Shape not meaning               | Decode raw, validate domain             |
+| CLI/env config       | Raw strings                     | Parse and validate config               |
+| Serialization        | Compatibility break             | Explicit versioned encoder/decoder      |
+| Secret values        | Accidental logging              | Redacted `Show`, secret-specific types  |
+
+### Concurrency and Parallelism Index
+
+| Need                                     | Use                               | Avoid                             |
+| ---------------------------------------- | --------------------------------- | --------------------------------- |
+| Run independent effectful tasks and wait | `async`, `withAsync`              | Raw unowned `forkIO`              |
+| Race two tasks                           | Race-style async API              | Manual thread cancellation        |
+| Many concurrent requests                 | Bounded concurrency / worker pool | Unbounded async over huge list    |
+| Shared transactional state               | STM / `TVar`                      | Shared `IORef` without atomicity  |
+| Simple handoff                           | `MVar`                            | Complex lock hierarchy            |
+| Pure speedup                             | Parallel strategies/libraries     | Assuming concurrency equals speed |
+| Cancel work                              | Structured async cancellation     | Killing threads without cleanup   |
+| Diagnose concurrency                     | Eventlog/logging                  | Guessing from source order        |
+| Avoid lost exceptions                    | Owned threads                     | Fire-and-forget                   |
+
+Rule: **concurrency needs ownership; parallelism needs demanded work and enough granularity.**
+
+### Toolchain and Workflow Index
+
+| Problem                                | Check first                                                    |
+| -------------------------------------- | -------------------------------------------------------------- |
+| Project does not build                 | Cabal/Stack config, GHC version, dependency bounds             |
+| HLS not working                        | HLS supports project GHC version; tool path; build tool cradle |
+| Package solver conflict                | Bounds, index state, freeze file, transitive dependencies      |
+| Extension not recognized               | GHC version and enabled extensions                             |
+| Code compiles in GHCi but not project  | Project language/default extensions/imports differ             |
+| Editor shows errors but build succeeds | HLS/environment mismatch                                       |
+| Build changed unexpectedly             | Dependency versions not frozen/pinned                          |
+| Upgrade broke code                     | GHC/base/dependency changelog, extension changes               |
+| Tests cannot import modules            | Library/executable component structure                         |
+| Benchmark sees different performance   | Optimization flags, input size, laziness, environment          |
+
+### Testing Index
+
+| Thing to test      | Test style                   | Example property/case                      |
+| ------------------ | ---------------------------- | ------------------------------------------ |
+| Pure function      | Unit + property              | `normalize (normalize x) == normalize x`   |
+| Smart constructor  | Boundary cases               | Empty, negative, max/min                   |
+| Parser             | Success and failure examples | Valid input parses; invalid input rejects  |
+| Encoder/decoder    | Roundtrip                    | `decode (encode x) == Right x` if intended |
+| Typeclass instance | Laws                         | `fmap id == id`                            |
+| Monoid             | Laws                         | `mempty <> x == x`                         |
+| Error rendering    | Golden/example               | Each constructor has message               |
+| Resource wrapper   | Exception path               | Release occurs on failure                  |
+| Effectful workflow | Capability-record test       | Fake store/logger                          |
+| Concurrency        | Controlled test / property   | No lost result; cancellation behavior      |
+| Regression         | Specific prior bug           | Minimal reproduction                       |
+| Performance        | Benchmark                    | Hot path remains within expected range     |
+
+Testing rule: **types narrow the state space; tests check intended semantics inside that narrowed space.**
+
+### Code Review Master Checklist
+
+| Area             | Questions                                                      |
+| ---------------- | -------------------------------------------------------------- |
+| Data model       | Are invalid states representable?                              |
+| Domain types     | Are primitives overused?                                       |
+| Constructors     | Are invariants protected by export lists?                      |
+| Error handling   | Does the failure mechanism match caller responsibility?        |
+| Effects          | Can any `IO` code be pure?                                     |
+| Resources        | Are acquire/release paths exception-safe?                      |
+| External input   | Is raw data validated before core logic?                       |
+| Typeclasses      | Are instances lawful and necessary?                            |
+| Constraints      | Are signatures too general or not general enough?              |
+| Pattern matching | Are cases exhaustive and future-proof?                         |
+| Collections      | Does representation match access pattern?                      |
+| Text/bytes       | Are encoding boundaries explicit?                              |
+| Laziness         | Could this retain thunks or large structures?                  |
+| Performance      | Has hot-path change been measured?                             |
+| Concurrency      | Who owns child tasks and exceptions?                           |
+| Serialization    | Is external format stable intentionally?                       |
+| Unsafe/FFI       | Is unsafe code isolated and documented?                        |
+| Tests            | Are examples, properties, boundaries, and regressions covered? |
+| Tooling          | Are extensions, dependencies, and GHC versions deliberate?     |
+| Readability      | Does abstraction clarify or obscure?                           |
+
+### Anti-Pattern Index
+
+| Anti-pattern                              | Name                    | Better pattern              |
+| ----------------------------------------- | ----------------------- | --------------------------- |
+| Many `Text`/`Int` domain values           | Primitive obsession     | `newtype`, ADT, records     |
+| Multiple booleans for one state           | Boolean state explosion | Sum type                    |
+| `Bool` result with hidden reason          | Boolean blindness       | Result ADT or `Either`      |
+| `fromJust`, `head`, `read` in public code | Partiality leak         | Total alternatives          |
+| Public constructor for validated type     | Constructor leak        | Hidden constructor          |
+| All logic inside `IO`                     | IO creep                | Pure core, effectful shell  |
+| Typeclass with one vague method           | Premature typeclass     | Plain function or record    |
+| Large transformer stack for small app     | Effect over-engineering | Concrete type first         |
+| Dense operator chains                     | Symbolic opacity        | Named helpers/intermediates |
+| `String` for large text                   | String misuse           | `Text`                      |
+| Bytes in `Text`                           | Encoding confusion      | `ByteString` plus decoding  |
+| List for map/set/vector job               | Collection mismatch     | Correct structure           |
+| Lazy `foldl` on large data                | Space leak              | `foldl'`                    |
+| Manual cleanup                            | Resource leak           | `bracket` / `with...`       |
+| Fire-and-forget threads                   | Lost concurrency        | `async`/supervision         |
+| Derived JSON as public API                | Serialization leak      | Explicit boundary type      |
+| `Show` as storage format                  | Debug-format abuse      | Real encoder                |
+| Scattered unsafe calls                    | Unsafe diffusion        | Internal safe wrapper       |
+| Extensions enabled blindly                | Language drift          | Extension policy            |
+
+### Troubleshooting Index by Symptom
+
+| Symptom                            | Likely cause                            | First moves                                    |
+| ---------------------------------- | --------------------------------------- | ---------------------------------------------- |
+| “Could not deduce...” type error   | Missing constraint or wrong abstraction | Inspect expected/actual types; add signature   |
+| Ambiguous type variable            | Too little context                      | Add type annotation                            |
+| Infinite type error                | Self-application or wrong type shape    | Check function arguments and type constructors |
+| Non-exhaustive pattern warning     | Missing case                            | Add case or change type                        |
+| Runtime `Prelude.head: empty list` | Partial function                        | Pattern match or `NonEmpty`                    |
+| Runtime `read: no parse`           | Partial parse                           | Use parser/`readMaybe`                         |
+| `IO a` cannot become `a`           | Effect boundary misunderstanding        | Continue computation inside `IO`               |
+| Memory leak                        | Lazy thunk/retention                    | Heap profile, strict fold/fields               |
+| Slow list processing               | Wrong structure or allocation           | Profile, consider fold/vector/stream           |
+| JSON decode ok but logic fails     | Missing validation                      | Raw type to domain type                        |
+| HLS broken                         | Version mismatch                        | Check GHC/HLS/build tool                       |
+| Concurrency hangs                  | Deadlock/retry/blocking                 | Eventlog, inspect `MVar`/STM conditions        |
+| Parallel code no faster            | Granularity/demand                      | Benchmark, force to needed depth               |
+| Constructor invariant broken       | Export leak                             | Fix module exports                             |
+| Tests hard to write                | Too much `IO` or hidden dependency      | Extract pure core/capability records           |
+
+### Haskell Learning Order Reference
+
+| Stage | Learn                                               | Avoid focusing on                  |
+| ----- | --------------------------------------------------- | ---------------------------------- |
+| 1     | Syntax, layout, type signatures, GHCi               | Advanced extensions                |
+| 2     | Functions, currying, pattern matching               | Point-free cleverness              |
+| 3     | ADTs, records, `newtype`, modules                   | Type families                      |
+| 4     | `Maybe`, `Either`, errors, smart constructors       | Exception-heavy design             |
+| 5     | `map`, `fmap`, folds, `traverse`                    | Abstract category notation first   |
+| 6     | `IO`, pure core/effect shell                        | Transformer stacks too early       |
+| 7     | `Text`, `Map`, `Set`, `Vector`, `aeson`, parsers    | Memorizing entire ecosystem        |
+| 8     | Cabal/GHCup/HLS/testing                             | Toolchain improvisation            |
+| 9     | Laziness, WHNF/NF, strictness, profiling            | Blind optimization                 |
+| 10    | Typeclasses and laws deeply                         | Lawless custom classes             |
+| 11    | `ReaderT`, `ExceptT`, capability records            | Large effect systems first         |
+| 12    | GADTs, phantom types, type families where justified | Type-level programming as identity |
+
+### Mastery Self-Assessment
+
+| Question                | Beginner answer             | Mature answer                                             |
+| ----------------------- | --------------------------- | --------------------------------------------------------- |
+| What is `Maybe` for?    | Avoid null                  | Represent ordinary absence when no reason is needed       |
+| What is `Either` for?   | Errors                      | Typed recoverable failure with inspectable reason         |
+| What is `IO`?           | Side effects                | Effectful computation value sequenced from `main`         |
+| What is laziness?       | Not evaluating until needed | Demand-driven semantics with thunk and retention costs    |
+| What is a typeclass?    | Interface                   | Law-oriented behavior constraint over types               |
+| What is `newtype`?      | Wrapper                     | Distinct static meaning with cheap runtime representation |
+| What is a module?       | File                        | Namespace and abstraction boundary                        |
+| What is `Applicative`?  | Weird operators             | Independent contextual combination                        |
+| What is `Monad`?        | Side effects                | Dependent sequencing in a context                         |
+| What is a space leak?   | Memory leak                 | Unexpected retention of thunks/closures/data              |
+| Why use `Text`?         | Faster string               | Correct representation for Unicode text                   |
+| Why use `bracket`?      | Cleanup helper              | Exception-safe resource lifetime                          |
+| Why use property tests? | Random tests                | Check laws and invariants across input space              |
+| Why hide constructors?  | Encapsulation               | Enforce invariants at module boundary                     |
+
+### Final Compression — the Haskell operating model
+
+Haskell can be compressed into a small set of working principles.
+
+**Data first.** Model the domain with ADTs, records, `newtype`, and explicit failure types before writing complex control flow.
+
+**Types as boundaries.** A type signature should say what the function needs, what it returns, what can fail, and whether effects occur.
+
+**Effects explicit.** Keep pure functions pure; let `IO` and effect abstractions appear where external interaction genuinely happens.
+
+**Invalid states removed where practical.** Use sum types, smart constructors, hidden constructors, `NonEmpty`, and domain-specific wrappers to reduce runtime checking.
+
+**Composition by shape.** Use `fmap` for transformation, `Applicative` for independent combination, `Monad` for dependent sequencing, `foldMap` for monoidal aggregation, and `traverse` for effectful traversal.
+
+**Laziness respected.** Demand controls evaluation. Thunks, sharing, WHNF/NF, strictness, and profiling are part of practical Haskell.
+
+**Modules enforce design.** Export lists, constructor visibility, internal modules, and qualified imports are not cosmetic; they are API tools.
+
+**Libraries chosen by representation.** Use `Text` for text, `ByteString` for bytes, `Map` for lookup, `Set` for uniqueness, `Vector` for indexed dense data, parsers for structure, and `aeson` for JSON boundaries.
+
+**Runtime measured.** Do not guess performance from syntax. Profile time, allocation, heap residency, and concurrency behavior.
+
+**Abstraction earned.** Typeclasses, transformers, GADTs, type families, lenses, Template Haskell, and effect systems are powerful, but they should solve real problems.
+
+**Safety is layered.** Types help, but partial functions, exceptions, unsafe code, FFI, external data, concurrency, and resource lifetime still require discipline.
+
+The practical endpoint is not writing the most abstract Haskell possible. It is writing code whose types are honest, boundaries are enforced, failures are explicit, effects are contained, runtime behavior is measurable, and future readers can understand why each abstraction exists.
+
+## Reference
+
+以下资料全部是英文资料。清单按“长期稳定、官方优先、实际写代码有用”筛选；没有放入普通博客和低价值教程。
+
+**Core language / compiler**
+
+[Haskell 2010 Language Report](https://www.haskell.org/onlinereport/haskell2010/): Haskell 的标准语言报告，适合查语法、模块、表达式、类型类、模式匹配等“报告层面”的语言定义。它不是现代 GHC 扩展手册，所以适合作为稳定基准，而不是当作现代 Haskell 的全部。
+
+[GHC User’s Guide](https://downloads.haskell.org/ghc/latest/docs/users_guide/): GHC 的官方手册，覆盖 GHCi、编译选项、警告、语言扩展、profiling、runtime system、包和调试相关内容。实际写 Haskell 时，这比单纯看 Haskell 2010 Report 更常用。
+
+[GHC Language Extensions](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/exts/control.html): 专门查 GHC 扩展、`GHC2021`、`GHC2024`、extension pragma 的入口。适合判断某段代码为什么需要 `{-# LANGUAGE ... #-}`，以及项目语言版本应该如何控制。
+
+[GHC Runtime System Options](https://ghc.gitlab.haskell.org/ghc/doc/users_guide/runtime_control.html): 查 RTS、GC、heap limit、profiling/eventlog 相关运行时选项。Part 7 讨论 runtime、memory、GC、parallelism 时应优先参考它，而不是凭经验猜。
+
+**Tooling / project workflow**
+
+[Cabal User Guide](https://cabal.readthedocs.io/): Cabal 的官方用户指南，覆盖 package structure、`.cabal` 文件、library/executable/test/benchmark component、依赖和构建流程。适合 Part 9 的项目结构、依赖管理和构建流程。
+
+[GHCup Installation and User Guide](https://www.haskell.org/ghcup/install/): GHCup 的官方安装与工具链管理入口，用来安装和管理 GHC、Cabal、HLS、Stack 等工具。适合解决“GHC / Cabal / HLS 版本不一致”的实际问题。
+
+[Haskell Language Server Documentation](https://haskell-language-server.readthedocs.io/): HLS 的官方文档，覆盖安装、GHC 版本支持、plugin、editor 配置和 troubleshooting。适合处理 VS Code / Neovim / Emacs 中 Haskell 项目能 build 但 editor 报错的问题。
+
+[Hackage](https://hackage.haskell.org/): Haskell 社区中央包仓库，查包、模块文档、版本、依赖、维护者、上传记录和 API 文档时使用。它是包文档的主入口，但不保证所有包组合天然兼容。
+
+[Stackage Snapshots](https://www.stackage.org/snapshots): Stackage 提供 curated package snapshots，适合查某个 LTS/Nightly resolver 对应的 GHC 版本和可用包集合。它对应用项目的可复现构建很有用，但覆盖的是 Hackage 的子集。
+
+[Hoogle](https://hoogle.haskell.org/): Haskell API 搜索工具，可以按函数名、类型签名、模块名搜索。读代码时遇到 `traverse :: ...`、`foldMap :: ...` 这类函数，Hoogle 往往比普通搜索更快。
+
+**Core libraries**
+
+[base](https://hackage.haskell.org/package/base): Haskell 核心库，包含 `Prelude`、`Data.Maybe`、`Data.Either`、`Data.List`、`Data.Foldable`、`Control.Exception`、`System.IO`、`Control.Concurrent` 等基础模块。它是查核心函数、类型类、异常、IO、并发原语的第一入口。
+
+[text](https://hackage.haskell.org/package/text): 高效 Unicode 文本库，实际项目中处理人类可读文本通常优先使用 `Text`，而不是 `String`。适合 Part 6 中 text/string/bytes boundary 的内容。
+
+[bytestring](https://hackage.haskell.org/package/bytestring): 高效字节串库，适合二进制数据、网络协议、文件字节、编码前后的数据。它和 `Text` 的边界非常重要：`ByteString` 是 bytes，不是 Unicode text。
+
+[containers](https://hackage.haskell.org/package/containers): `Map`、`Set` 等基础集合类型所在的核心包。凡是 keyed lookup、membership、unique collection，不应该默认用 list 解决，应优先看这个包。
+
+[vector](https://hackage.haskell.org/package/vector): 高效数组/向量库，适合 dense indexed data、numeric data、需要随机访问或紧凑存储的场景。Part 6 和 Part 7 中“list 不是 array”的讨论，应和它一起理解。
+
+[time](https://hackage.haskell.org/package/time): 日期、时间、时区、calendar、clock、format/parse 的核心包。适合处理 `Day`、`UTCTime`、`LocalTime` 等，不应把时间长期建模为普通 `Text` 或裸 `Int`。
+
+[deepseq](https://hackage.haskell.org/package/deepseq): 深度求值库，核心是 `NFData` 和 `deepseq`。适合理解 WHNF/NF、强制完整求值、控制异常出现时机、处理 space leak、lazy I/O 和 parallel evaluation。
+
+**Serialization / parsing / effects / concurrency**
+
+[aeson](https://hackage.haskell.org/package/aeson): Haskell 主流 JSON parsing / encoding 库。适合处理 JSON 边界，但要注意：JSON decode 成功不等于 domain validation 成功，公共 API 不应盲目依赖 generic deriving。
+
+[megaparsec](https://hackage.haskell.org/package/megaparsec): 现代 parser combinator 库，适合文本语法、配置文件、小语言、结构化输入和需要较好错误信息的 parser。比 `read`、regex 或手写字符串拆分更适合真正的 grammar。
+
+[transformers](https://hackage.haskell.org/package/transformers): 基础 monad transformer 包，提供 `ExceptT`、`ReaderT`、`StateT`、`MaybeT` 等 concrete transformers。适合从 `IO (Either e a)` 过渡到更可组合的 effect workflow。
+
+[mtl](https://hackage.haskell.org/package/mtl): 基于 monad transformer 的 typeclass 风格 effect abstraction。适合中大型项目或库中抽象 `MonadReader`、`MonadError`、`MonadState` 等能力，但不应在简单应用代码中过早引入。
+
+[exceptions](https://hackage.haskell.org/package/exceptions): 更抽象的 exception handling 包，提供 `Control.Monad.Catch` 等接口。适合需要在不同 monad/context 中统一处理异常的代码。
+
+[async](https://hackage.haskell.org/package/async): Haskell 中处理 asynchronous IO operations 的常用包，适合有 ownership 的并发任务、等待结果、取消和错误传播。比裸 `forkIO` 更适合大多数应用层并发。
+
+[stm](https://hackage.haskell.org/package/stm): Software Transactional Memory 库，适合 `TVar`、transactional shared state、composable concurrency。Part 7 中 STM 与 `MVar` / `IORef` 的区别，应以它为主要参考。
+
+**Testing**
+
+[QuickCheck](https://hackage.haskell.org/package/QuickCheck): property-based testing 的经典库，用随机生成的测试数据检查函数性质。特别适合测试 `Functor`、`Monoid`、parser roundtrip、normalization idempotence、smart constructor invariants 等。
+
+[tasty](https://hackage.haskell.org/package/tasty): 现代、可扩展的 test framework，适合把 unit tests、property tests、golden tests 等组织成统一 test tree。适合较正式项目。
+
+[hspec](https://hackage.haskell.org/package/hspec): BDD 风格测试框架，适合写 readable example-based tests。对于学习和中小项目，它比直接搭 `tasty` 可能更容易上手。
+
+[hedgehog](https://hackage.haskell.org/package/hedgehog): 另一套 property-testing 库，强调 integrated shrinking 和生成器组织。适合需要更可控 property generation 的项目。
+
+**History / semantics / runtime background**
+
+[A History of Haskell: Being Lazy With Class](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/history.pdf): 了解 Haskell 历史、惰性、typeclass、语言设计动机的经典论文。Part 8 的历史解释应主要参考它，而不是零散二手叙述。
+
+[Tackling the Awkward Squad](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/mark.pdf): Simon Peyton Jones 关于 monadic IO、concurrency、exceptions、foreign-language calls 的经典论文。适合理解 Haskell 为什么用 `IO`、monads、exceptions、FFI 处理现实世界交互。
+
+[Parallel and Concurrent Programming in Haskell](https://simonmar.github.io/pages/pcph.html): Simon Marlow 的并行与并发 Haskell 资料，适合系统学习 `async`、STM、parallelism、runtime behavior。Part 7 的 concurrency / parallelism 部分可用它做主要补充。
+
+[The GHC Runtime System](https://ezyang.com/jfp-ghc-rts-draft.pdf): 解释 GHC RTS、lightweight threads、capabilities、scheduler、GC 等底层模型的论文/草稿。适合已经理解普通 Haskell 后，进一步研究 GHC runtime 的实现机制。

@@ -620,17 +620,29 @@
 
       childItems.forEach(function (item) {
         var box = document.createElement("div");
-        var rootList = document.createElement("ul");
+        var rootBlock = document.createElement("div");
+        var paragraph = document.createElement("p");
         var clonedItem = item.cloneNode(true);
 
         removeDuplicateIds(clonedItem);
 
         box.className = config.instanceClass + "__detail-box";
-        rootList.className = config.instanceClass + "__detail-root-list";
-        clonedItem.classList.add(config.instanceClass + "__detail-root-item");
+        rootBlock.className = config.instanceClass + "__detail-root-list";
+        paragraph.className = config.instanceClass + "__detail-root-item";
 
-        rootList.appendChild(clonedItem);
-        box.appendChild(rootList);
+        toArray(clonedItem.childNodes).forEach(function (node) {
+          if (node.nodeType === 1 && (node.tagName === "UL" || node.tagName === "OL")) {
+            rootBlock.appendChild(node);
+          } else {
+            paragraph.appendChild(node);
+          }
+        });
+
+        if (paragraph.textContent.trim() || paragraph.children.length) {
+          rootBlock.insertBefore(paragraph, rootBlock.firstChild);
+        }
+
+        box.appendChild(rootBlock);
         details.appendChild(box);
       });
     });
