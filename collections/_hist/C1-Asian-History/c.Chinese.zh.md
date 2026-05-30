@@ -1,7 +1,8 @@
 ---
 title: Chinese History (中国史)
-categories: Chron
 abbreviation: Chinese History
+layout: slide-simple
+categories: Chron
 subclass: Asian History
 todos: 精修+原文+结尾重建
 ---

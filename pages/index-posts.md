@@ -1,6 +1,6 @@
 ---
 layout: index-posts
-adhd_mode: false
+
 toc: false
 post_list_style: category-book
 post_meta_mode: none

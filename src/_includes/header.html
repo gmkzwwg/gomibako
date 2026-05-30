@@ -74,11 +74,6 @@
 {% assign show_home_button = true %}
 {% endif %}
 
-{% assign adhd_mode_enabled = false %}
-{% if site.ui.features.adhd_mode and page.adhd_mode != false %}
-{% assign adhd_mode_enabled = true %}
-{% endif %}
-
 <header class="cli-header" role="banner">
   <nav class="cli-header__nav" aria-label="Site header">
     <div class="cli-header__prompt" aria-label="Current page mode">
@@ -136,34 +131,6 @@
           <span class="cli-header__label" data-maximize-label>
             {{ site.ui.labels.maximize | default: "Maximize" | escape }}
           </span>
-          {% endif %}
-        </button>
-      </li>
-      {% endif %}
-
-      {% if adhd_mode_enabled %}
-      <li class="cli-header__action cli-header__action--adhd-read-mode">
-        <button
-          class="cli-header__button is-active"
-          type="button"
-          onclick="
-            const active = this.classList.toggle('is-active');
-            this.setAttribute('aria-pressed', active ? 'true' : 'false');
-
-            if (window.ADHDReadMode && window.ADHDReadMode.toggle) {
-              window.ADHDReadMode.toggle(active);
-            }
-
-            if (window.MatrixLetterRain && window.MatrixLetterRain.toggle) {
-              window.MatrixLetterRain.toggle(active);
-            }
-          "
-          aria-pressed="true"
-          aria-label="Toggle ADHD reading mode"
-        >
-          <i class="fa fa-adjust cli-header__icon" aria-hidden="true"></i>
-          {% if show_button_labels %}
-          <span class="cli-header__label">ADHD</span>
           {% endif %}
         </button>
       </li>
