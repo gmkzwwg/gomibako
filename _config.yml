@@ -19,7 +19,7 @@ author:                                                       # Store default au
 # -----------------------------------------------------------------------------
 # 2. Jekyll routing and output URLs
 # -----------------------------------------------------------------------------
-permalink                 : /:collections/:title/                          # Set the default permalink pattern for posts and generated pages.
+permalink                 : /:collection/:title/                          # Set the default permalink pattern for posts and generated pages.
 # candidates:
 #   pretty
 #   date
