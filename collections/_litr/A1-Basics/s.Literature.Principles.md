@@ -1,7 +1,7 @@
 ---
 title: Principles of Serious Literature
 layout: slide-multilingual
-categories: Atlas
+categories: Sheet
 subclass: Basics
 ---
 
