@@ -4406,9 +4406,483 @@ Implementing linear regression, logistic regression, and a basic neural network 
 | Evaluating on test data more than once | Every look at test-set performance is a decision made partly on the basis of that performance, which is leakage. The reported test accuracy becomes an optimistic estimate of generalization. In competitions, this is known; in research, it has contributed substantially to results that don't replicate. | Establish evaluation protocol before training begins. Use a validation set for all development decisions. Touch the test set exactly once, at the end. |
 | Confusing benchmark performance with task performance | ImageNet accuracy and GLUE scores measure specific distributions that may or may not correspond to what a model needs to do in deployment. Models routinely achieve near-human benchmark performance while failing on distribution shifts a human would find trivial. | When a benchmark result seems important, ask: what is the test set, how was it collected, is there training contamination, and how does the model perform on inputs the benchmark designers didn't specifically collect? |
 | Treating generalization as a problem that more data always solves | More data helps, but it does not fix the wrong inductive bias, does not eliminate distribution shift, and does not guarantee that a model has learned the right function rather than a correlated proxy. | Learn to distinguish empirically between bias-dominated failure (the model is too simple to fit the training data), variance-dominated failure (the model fits training data but not test data), and distribution shift (the model fits both but fails in deployment). Each has a different remedy. |
+### 5.3 — Deep Learning
 
-  5.4 — Reinforcement Learning
-  5.5 — Large Language Models and Foundation Models
+A deep learning system is a composition of many layers of differentiable functions whose parameters are jointly trained to minimize a loss on data. The depth is the key: a single layer of a neural network can compute any function given sufficient width, but an exponentially large network may be required to do so. Multiple layers learn a hierarchy of representations — early layers detecting simple patterns, later layers composing them into increasingly abstract ones — in a way that encodes useful inductive biases for data with hierarchical structure. For images, that structure is spatial; for language, it is sequential and compositional; for molecular biology, it is geometric. Choosing the right architecture encodes the right inductive bias for the structure present in the data.
+
+The training procedure is the second defining element. Backpropagation — applying the chain rule to compute gradients through the composition of functions — makes it possible to train networks with many layers using gradient descent. This computation is automatic: given a differentiable computational graph and a loss function, automatic differentiation computes the gradient of the loss with respect to every parameter in one backward pass. The combination of expressive architectures, automatic differentiation, and large datasets has produced systems that perform at or above human level on perception, generation, and reasoning tasks that were considered intractable for decades.
+
+This section builds directly on §5.2. The statistical learning theory, optimization concepts, and evaluation discipline from §5.2 apply throughout. What this section adds is the architectural vocabulary, training techniques, and the empirical phenomena specific to deep networks — particularly the puzzles around generalization in overparameterized models, emergent capabilities at scale, and the design of architectures that encode appropriate inductive biases.
+
+*Prerequisites: Machine learning foundations (§5.2) — everything there is assumed. Linear algebra (§2.3) at the level of matrix calculus. Calculus (§2.4) for gradients and the chain rule. Probability (§2.5) for understanding loss functions and generative models.*
+
+---
+
+#### From Perceptrons to Transformers: The Empirical Development of a Discipline
+
+The story of deep learning is the story of a good idea repeatedly rediscovered, extended past its theoretical support, and eventually vindicated by hardware, data, and scale.
+
+Frank Rosenblatt's perceptron (1957) learned to classify inputs by adjusting weights in response to errors — the first machine that genuinely learned a decision rule from examples with a convergence guarantee. The optimism it inspired was cut short in 1969 when Minsky and Papert's *Perceptrons* proved that single-layer networks could not learn XOR, and — more importantly — appeared to argue that adding layers would not help. Neural network research contracted sharply. The first winter was not quite as absolute as legend has it: Paul Werbos derived backpropagation in his 1974 thesis, and Linnainmaa had computed the reverse-mode accumulation of derivatives in 1970. But the results were not connected to the right community at the right moment, and deep networks went largely unstudied for a decade.
+
+The reconnection arrived in 1986. Rumelhart, Hinton, and Williams published "Learning Representations by Back-propagating Errors" in *Nature*, demonstrating that multi-layer networks trained by backpropagation could solve problems single-layer networks could not, and could develop internal representations that captured structure in the data. The paper's influence was immediate and enormous: it reframed what neural networks were doing from "learning weights" to "learning representations," and it made multi-layer networks the central object of study.
+
+Yann LeCun took the next step by asking what representation structure a network should be designed to discover before training begins. For images, the answer was local spatial structure and translation invariance: patterns like edges and textures appear at various locations and should be detected wherever they appear. Convolutional neural networks (CNNs) — with shared weight filters applied at every spatial location — encoded this prior. LeCun's LeNet (1989) read handwritten digits at the Federal Reserve using CNNs, and the system was so reliable that it processed about 10% of all checks written in the US by the late 1990s. This was deep learning's first industrial-scale deployment, though it was not recognized as such at the time.
+
+The 1990s saw the field fragment. SVMs had cleaner theory and strong performance on many benchmarks; neural networks required difficult-to-tune training and exhibited the vanishing gradient problem in deeper architectures. Hochreiter and Schmidhuber's LSTM (1997) addressed the vanishing gradient for sequential data by introducing gates that controlled information flow across time, enabling recurrent networks to learn long-range dependencies. LeCun demonstrated CNNs continued working. But the general case of deep networks for arbitrary problems remained elusive, and the field's center of gravity moved toward kernel methods.
+
+The second wave was driven not by algorithmic innovation but by data and hardware arriving at a sufficient scale. The ImageNet dataset — 1.2 million labeled images across 1,000 categories, assembled by Fei-Fei Li and colleagues starting in 2009 — provided a benchmark of the right scale: large enough that hand-engineered features hit a ceiling, large enough that a deep network could learn to distinguish fine-grained categories. The GPU provided the computational capacity: training a deep convolutional network on ImageNet required weeks on CPUs but days on GPUs.
+
+When Krizhevsky, Sutskever, and Hinton entered AlexNet in the 2012 ImageNet competition, it achieved a top-5 error of 15.3% — against the previous record of 26.2% and other 2012 entries in the 26-30% range. The gap was large enough to be unambiguous: deep learning had qualitatively changed what was possible in computer vision. Within two years, every top ImageNet entry was a deep convolutional network. The event restructured how the AI community understood what deep learning was capable of.
+
+The years 2012–2017 were a period of rapid architectural development. Graves et al. trained LSTMs with CTC loss for speech recognition, achieving then-state-of-the-art results. Word2Vec (Mikolov et al., 2013) showed that skip-gram training on text produced word embeddings with semantic arithmetic properties — "king - man + woman ≈ queen" — demonstrating that distributed representations of language were genuinely learnable. ResNet (He et al., 2015) solved the degradation problem for very deep networks by introducing skip connections that allowed gradients to flow directly through identity mappings, enabling networks of 100+ layers. Batch normalization (Ioffe and Szegedy, 2015) made training faster and more stable by normalizing activations within each layer during training. GANs (Goodfellow et al., 2014) introduced the adversarial training framework for generative models. Variational autoencoders (Kingma and Welling, 2013) provided a probabilistic framework for representation learning and generation. Dropout regularization, deep networks for reinforcement learning (Atari, 2013), and sequence-to-sequence architectures all appeared within a few years.
+
+The transformer, introduced by Vaswani et al. in "Attention Is All You Need" (2017), changed the structure of the field. Self-attention — each position in a sequence attending to all others — allowed models to capture long-range dependencies without the sequential computation that made LSTMs hard to parallelize. The transformer was faster to train at scale, achieved better results on translation, and generalized to tasks far outside machine translation. BERT (Devlin et al., 2018) showed that pre-training a large transformer on masked language modeling and then fine-tuning on downstream tasks dramatically outperformed task-specific architectures. GPT (Radford et al., 2018) showed that autoregressive language modeling on large text corpora produced representations useful for many tasks.
+
+The discovery of scaling laws gave the current era its organizing principle. Kaplan et al.'s 2020 paper "Scaling Laws for Neural Language Models" showed that language model performance on held-out data improved as a smooth power law in compute, model size, and dataset size — without any indication of saturation. This was not merely a description of past results; it was a quantitative prediction about future results. If the power law held, larger models trained on more data with more compute would predictably perform better. The insight restructured the competitive landscape: the bottleneck shifted from algorithmic innovation to compute and data acquisition. The subsequent history — GPT-3, PaLM, Chinchilla, LLaMA, and the current generation of frontier models — is largely the story of organizations with different compute and data advantages following these scaling predictions.
+
+What emerged from scale that was not present at smaller scales has been one of the field's more surprising findings. In-context learning — the ability to solve tasks given only a few examples in the context window, without gradient updates — appears to emerge somewhere around 10–100 billion parameters and was not designed into any architecture. Chain-of-thought reasoning — where breaking a problem into explicit intermediate steps substantially improves accuracy — emerges similarly at scale. These emergent capabilities are not predicted by the behavior of smaller models in any obvious way, and their mechanism is only partially understood. They are also potentially unstable: tasks where models show emergent capability at one scale may show sudden drops when evaluation is made more rigorous.
+
+The current deep learning landscape is heterogeneous. Transformers remain dominant for sequence tasks and have been extended to vision (Vision Transformers, ViT), audio, protein structure, and multi-modal settings. State-space models (Mamba) offer efficiency advantages for long sequences. Diffusion models dominate image, video, and audio generation. Mixture-of-experts architectures scale model capacity without proportionally increasing inference cost. What unites all of these is the same core training loop: differentiable architecture, automatic differentiation, stochastic gradient descent on very large datasets.
+
+---
+
+#### Architectures, Training, and What Scale Changes
+
+#### Architecture as Inductive Bias
+
+Every deep learning architecture encodes assumptions about what structure the data has, and the mismatch or fit between architectural assumptions and data structure determines whether the network learns effectively from a given amount of data.
+
+Convolutional networks assume spatial locality and translation invariance: a filter applied at position (i,j) is the same filter applied at (i+10, j+10). This is an excellent assumption for natural images and audio spectrograms, where patterns are local and their meaning is position-invariant. It is a poor assumption for tabular data where features at positions 1 and 1001 may be highly related. The benefit is substantial: the number of parameters scales with filter size rather than input size, and the inductive bias dramatically reduces the amount of data required for learning.
+
+Recurrent networks assume sequential structure: each step depends on all previous steps through a hidden state. LSTMs and GRUs add gating to control what information persists across steps. This assumption fits language, speech, and time-series data, but recurrent architectures are inherently sequential — each step requires the previous step's output — making them difficult to parallelize.
+
+Transformers assume that any position in a sequence can be related to any other position with equal cost, and the model should learn which relationships matter through attention weights. The self-attention mechanism computes queries, keys, and values for each position; the attention weight between positions i and j is proportional to exp(qᵢ · kⱼ / √d). This all-to-all connectivity is expressive and parallelizable but expensive: attention has O(n²) complexity in sequence length. Efficient attention variants (linear attention, sparse attention, flash attention for memory efficiency) are active engineering research.
+
+Graph neural networks assume that the relevant structure is a graph with nodes and edges, and that information propagates by nodes aggregating information from their neighbors. This assumption fits molecular property prediction, social network analysis, and knowledge graph reasoning.
+
+The choice of architecture is therefore the primary mechanism for incorporating domain knowledge before training. Architecture design has moved from heuristic craft to something approaching engineering: architectural properties like receptive field size, expressivity, and inductive bias can be analyzed, and the analysis guides design.
+
+#### Training at Depth: Gradient Flow and Normalization
+
+Training a deep network requires that gradients flow usably through many layers from the loss backward. Early deep networks suffered from the vanishing gradient problem: gradients shrank exponentially with depth, making parameters in early layers update negligibly. Several solutions have become standard.
+
+Skip connections (residual connections) allow gradient to flow directly through identity mappings, bypassing the nonlinear transformation at each layer. ResNet demonstrated that with skip connections, networks of 100–1000 layers could be trained stably, dramatically extending the effective depth achievable.
+
+Normalization layers — batch normalization, layer normalization, RMS normalization — stabilize training by normalizing the distribution of activations, reducing the internal covariate shift that destabilizes deep network training. Batch normalization normalizes within a batch; layer normalization normalizes within a single example (better for variable-length sequences). Different architectures use different normalization choices for reasons that are partially empirical.
+
+Initialization matters: the variance of parameter initializations should be chosen to prevent gradients from exploding or vanishing at initialization. He initialization (for ReLU activations) and Xavier/Glorot initialization (for sigmoid and tanh) scale initial parameter variances based on layer width. Poor initialization can prevent training from succeeding even when the architecture and data would otherwise support it.
+
+The optimizer interacts with the architecture. Adam's adaptive per-parameter learning rates are particularly effective for transformers where different parameters have very different gradient magnitudes. Weight decay (L2 regularization) in the optimizer (AdamW vs. Adam with L2 loss regularization) has measurable effects on generalization due to the difference in how it interacts with the adaptive learning rates.
+
+#### What Scale Changes: Emergent Capabilities and Scaling Laws
+
+Scaling laws are empirical power-law relationships between performance and compute, model size, or data. For language models, Kaplan et al. found that cross-entropy loss on held-out text decreases as L ∝ N^{-α} where N is model size, with the exponent α around 0.07 for compute-optimal training. Hoffmann et al. (Chinchilla, 2022) showed that the Kaplan laws had an error: given a fixed compute budget, the optimal strategy is to train a smaller model on more data rather than a larger model on less data, revising the optimal model/data ratio.
+
+Scaling laws are useful as planning tools: they predict, before training, approximately how much performance improvement to expect from a given investment in compute. They also reveal that there is no threshold or qualitative transition in the smooth part of the curve — improvement continues as a power law without saturation.
+
+What scaling laws do not capture is emergent capabilities: behaviors that appear at larger scales and are not predicted by interpolating from smaller models. In-context learning, multi-step arithmetic, chain-of-thought reasoning, and the ability to follow complex instructions all appear to emerge above certain scale thresholds. These transitions are step-functions in the relationship between scale and capability — not smooth power laws — and they are incompletely understood. Wei et al.'s "Emergent Abilities of Large Language Models" (2022) documented these transitions; subsequent work has questioned whether some emergent abilities are artifacts of evaluation metrics or genuine capability transitions.
+
+The distinction matters practically. If a capability is smoothly scaling, more compute reliably helps. If a capability emerges discontinuously, small-scale experiments provide no information about whether the capability will appear at larger scale. This makes empirical research on small models partially uninformative for predicting frontier model behavior, a structural challenge for the field.
+
+---
+
+#### What Studying This Changes
+
+Deep learning changes how practitioners understand computational systems that process unstructured data.
+
+The first change is architectural intuition: the ability to match data structure to architectural assumptions. Given a new learning problem, the question is not "which architecture is best" but "what structure does this data have, and which architecture's inductive biases align with that structure?" This question has answers — spatial locality for images, sequential dependencies for language, graph structure for molecules — and the practitioner who has internalized the architectural vocabulary can engage with them.
+
+The second change is training fluency. Deep networks can fail to train in many ways — gradient explosion, mode collapse, representation collapse, training-test gap from distribution shift. These failure modes have characteristic signatures in training curves and evaluation metrics, and the practitioner who has trained many networks develops diagnostic pattern recognition: "loss is oscillating, suggests learning rate too high" or "train loss is decreasing but val loss is flat, suggests overfitting from insufficient regularization." This diagnostic capability is acquired through practice, but its foundation is understanding what each component of the training procedure is doing.
+
+The third change is the ability to read the research literature productively. Deep learning papers have a characteristic structure — problem formulation, architecture description, experimental results, ablation studies — and reading them requires the vocabulary to evaluate whether the architectural choices are motivated, whether the baselines are appropriate, whether the ablations establish causality. The practitioner who can read a new paper and assess whether it represents genuine progress or a benchmarking artifact is operating at a different level from the practitioner who takes results at face value.
+
+The fourth change is calibrated uncertainty about scale. The practitioner who has studied scaling laws and emergent capabilities knows when to trust small-scale experiments and when not to: smooth scaling behaviors are well-predicted by small experiments; emergent capabilities are not. This calibration prevents both over-reliance on small-scale results that may not hold at scale, and excessive skepticism about small-scale experiments that do predict large-scale behavior.
+
+---
+
+#### Resources
+
+**Books**
+
+Bishop and Bishop's **Deep Learning: Foundations and Concepts** (2024) is the most current foundational text, written with mathematical depth and covering contemporary architectures including transformers and diffusion models. For learners beginning serious deep learning study now, this is the right primary reference.
+
+Goodfellow, Bengio, and Courville's **Deep Learning** (2016, free at deeplearningbook.org) remains valuable for its rigorous treatment of the mathematical foundations — linear algebra, probability, numerical computation, information theory — and for the pre-transformer deep learning material it covers in depth. The transformer and scaling material is absent; treat it as a foundational complement to Bishop and Bishop rather than a primary text.
+
+Howard and Gugger's **Deep Learning for Coders with fastai and PyTorch** (2020, free with fast.ai courses) takes the opposite approach: top-down, empirical first, with working code from the first chapter. It is the right starting point for learners who want to see things working before understanding why. The fast.ai pedagogical philosophy — build, then understand — complements the mathematical approaches above.
+
+For **transformer architecture specifically**, Phuong and Hutter's "Formal Algorithms for Transformers" (arXiv, 2022, free) provides the clearest technical treatment: pseudocode for every operation, precise definitions, and coverage of the major transformer variants. Reading it alongside working code resolves most confusion about implementation details.
+
+For **generative models**, the original papers are the most efficient entry: Kingma and Welling's VAE paper (2013), Goodfellow et al.'s GAN paper (2014), Ho, Jain, and Abbeel's DDPM paper (2020), and Song et al.'s score-matching papers. Each is sufficiently self-contained for a reader with ML foundations.
+
+Roberts, Yaida, and Hanin's **The Principles of Deep Learning Theory** (Cambridge, 2022, free at deeplearningtheory.com) covers the theoretical analysis of deep networks using field-theoretic methods. It is demanding but provides the most systematic theoretical treatment available of what deep networks compute and why training succeeds.
+
+| Book | Role | Tag |
+|---|---|---|
+| Bishop & Bishop, *Deep Learning: Foundations and Concepts* (2024) | Current canonical text | Current canon, entry, spine |
+| Goodfellow, Bengio & Courville, *Deep Learning* (free) | Mathematical foundations; pre-2017 architecture | Permanent canon, entry, reference |
+| Howard & Gugger, *Deep Learning for Coders* + fast.ai (free) | Practical top-down entry | Current canon, entry, project |
+| Roberts, Yaida & Hanin, *Principles of Deep Learning Theory* (free) | Theoretical foundations | Current canon, depth |
+| Phuong & Hutter, "Formal Algorithms for Transformers" (free) | Transformer architecture precise reference | Current canon, entry, reference |
+
+**Courses**
+
+**fast.ai's Practical Deep Learning for Coders** (free at fast.ai) and its companion course on the foundations are the most effective free courses for practitioners. The top-down approach — working code first, mathematical justification as needed — is pedagogically effective for learners with programming backgrounds.
+
+**Stanford CS231n** (Convolutional Neural Networks for Visual Recognition, notes and slides free at cs231n.github.io) is the canonical course on deep learning for vision, and its treatment of backpropagation, convolutional networks, and training is among the clearest available.
+
+**Andrej Karpathy's Neural Networks: Zero to Hero** (free on YouTube) builds a language model from scratch, implementing automatic differentiation, neural network layers, and the transformer architecture step by step. This hands-on sequence produces understanding that reading alone cannot.
+
+**Stanford CS224N** (Natural Language Processing with Deep Learning, free materials) covers transformer-based NLP with mathematical depth and is the right companion for understanding the architecture from the language modeling perspective.
+
+| Course | Platform | Tag |
+|---|---|---|
+| fast.ai Practical Deep Learning (free) | fast.ai | Current canon, entry |
+| Stanford CS231n CNN for Visual Recognition (free) | cs231n.github.io | Permanent canon, entry |
+| Karpathy, Neural Networks: Zero to Hero (free) | YouTube | Current canon, entry, project |
+| Stanford CS224N NLP with Deep Learning (free) | Stanford / YouTube | Current canon, entry |
+
+**Visualizations, Tools, and Code**
+
+**Andrej Karpathy's micrograd and nanoGPT** (both free on GitHub) are the most instructive implementations in the field. micrograd (~150 lines) implements scalar autodiff; nanoGPT implements a complete GPT-2 training pipeline in ~300 lines. Working through both makes the mechanics of backpropagation and transformer training fully operational.
+
+**PyTorch** (pytorch.org) is the dominant research framework. Its dynamic computation graph and pythonic interface make it easier to debug and modify than TensorFlow. The official tutorials, particularly the one on building a neural network from scratch, are well-maintained. **JAX** (Google, free) is preferred in research contexts requiring compilation and hardware portability; understanding JAX's functional design and XLA compilation is valuable for HPC-oriented deep learning.
+
+The **Hugging Face ecosystem** (transformers, datasets, accelerate libraries, all free) is the standard infrastructure for working with pre-trained language and vision models. For any work with transformer-based models, fluency with the Hugging Face API is practically necessary.
+
+**Weights & Biases** (wandb, free tier available) provides experiment tracking, visualization of training curves, and model comparison infrastructure. Systematic experiment tracking — logging hyperparameters, metrics, and model artifacts for every run — is a prerequisite for the reproducibility that serious deep learning requires.
+
+| Resource | Platform | Tag |
+|---|---|---|
+| Karpathy micrograd + nanoGPT (free) | GitHub | Current canon, entry, project |
+| PyTorch tutorials (free) | pytorch.org | Current canon, tool, entry |
+| JAX documentation (free) | jax.readthedocs.io | Current canon, tool, depth |
+| Hugging Face ecosystem (free) | huggingface.co | Current canon, tool, entry |
+| Weights & Biases (free tier) | wandb.ai | Current canon, tool, entry |
+
+---
+
+#### Traps
+
+| Trap | Why it misleads | Better response |
+|---|---|---|
+| Framework fluency as deep learning competence | PyTorch makes it possible to train models without understanding what is happening. Practitioners who can call `model.fit()` but cannot explain what the optimizer is doing, cannot diagnose why training is failing, and cannot evaluate whether the architecture is appropriate for the problem have acquired a useful skill and missed the subject. | Implement at minimum a two-layer MLP and a small transformer from scratch in NumPy before working with frameworks. Karpathy's Zero to Hero sequence is the right structured path. Framework fluency should rest on the foundation that understanding provides, not replace it. |
+| Architecture cargo-culting | Transformers work remarkably well across many domains, and there is a widespread tendency to apply them to every new problem regardless of whether the all-to-all attention assumption matches the data structure. A transformer on tabular data with 50 features and 1,000 rows is likely to be outperformed by gradient boosting with far less effort. | Before choosing an architecture, ask what structure the data has and which architectural inductive biases fit it. For tabular data: gradient boosting. For small images: CNNs. For long sequences: recurrent or state-space models may outperform transformers. The architecture choice should be motivated, not defaulted. |
+| Conflating benchmark improvement with understanding | Deep learning has a systematic problem with benchmarks that measure surface patterns rather than the capabilities they claim. Models can achieve near-human accuracy on benchmarks while failing on trivially modified inputs that any human would handle correctly. "Model X achieves Y on benchmark Z" should prompt the question: what does benchmark Z actually measure? | Supplement quantitative benchmark results with qualitative analysis. Try inputs near the decision boundary. Try distribution-shifted inputs. Try adversarial examples. Read papers that analyze failure modes, not just those that report improvements. |
+| Treating scale as a substitute for understanding | It is tempting to believe that scaling a model on a task will eventually solve it, given the success of scaling in language modeling. But scaling is not universal: some capabilities improve smoothly with scale; others show emergent transitions that are unpredictable; others do not improve with scale at all. Compositional generalization, causal reasoning, and systematic generalization have not responded to scale as naively expected. | Understand what scaling laws predict and what they don't. Study the cases where scaling has and has not worked. The mechanistic interpretability literature is useful here: understanding what networks are actually learning, rather than what we hope they are learning, provides better predictions about when scaling will help. |
+| Underestimating data work | The dominant narrative around deep learning focuses on architectures, training procedures, and compute. In production, data quality and composition routinely determine outcomes more than any of these. Models trained on dirty data, imbalanced data, or data with label leakage produce poor results that no architectural sophistication can remedy. | Treat data engineering as primary work, not preparatory work. Spend at least as much time understanding the training data — its distribution, its potential biases, its relationship to the deployment distribution — as on the model. The data-centric AI movement articulates this priority explicitly. |
+| Skipping the theory because it "doesn't matter in practice" | The theory of deep learning — why overparameterized networks generalize, what the implicit bias of gradient descent is, what scaling laws predict — is often dismissed as irrelevant to practitioners. In practice, theoretical understanding prevents the most common systematic errors: overfitting diagnoses that don't match the double-descent picture, optimizer choices that don't match the problem, architectural choices that don't match the data structure. | Engage with the foundational theory in §5.2, the scaling law literature, and the mechanistic interpretability literature. These are not academic luxuries; they are the frameworks that make deep learning failures diagnosable and design choices motivated. |
+### 5.4 — Reinforcement Learning
+
+Reinforcement learning is the discipline of learning to act through interaction. Unlike supervised learning, which trains on labeled examples of desired input-output behavior, or unsupervised learning, which finds structure in unlabeled data, reinforcement learning involves an agent taking actions in an environment, observing the consequences, and adjusting its behavior to maximize accumulated reward over time. The agent must discover what to do not by being told but by trying things and observing results — which creates distinctive challenges that supervised learning does not encounter.
+
+Three problems characterize the discipline. The credit assignment problem: when a reward arrives, which of the many preceding actions caused it? An agent that plays chess for fifty moves and then wins must somehow determine which moves mattered. The exploration-exploitation tradeoff: should the agent take the action that has worked best so far, or try something less certain whose value is unknown? A system that only exploits current knowledge cannot discover that better strategies exist. The sample efficiency problem: learning by interaction is expensive — real robots, medical treatments, and financial decisions cannot be subjected to millions of trial-and-error episodes. Each problem has generated its own mathematical machinery and algorithmic responses.
+
+The subject has a formal mathematical foundation in Markov decision processes (MDPs) that distinguishes it from most of machine learning. This foundation connects RL to dynamic programming, optimal control, game theory, and decision theory, making it a genuinely cross-disciplinary subject. It also means that RL has rigorous theoretical results — convergence guarantees for Q-learning, policy gradient theorems, regret bounds for bandit problems — alongside the empirical phenomena that characterize contemporary deep RL.
+
+*Prerequisites: Machine learning foundations (§5.2) — probability theory, optimization, evaluation methodology. Deep learning (§5.3) for deep RL specifically. Algorithms (§2.6) — dynamic programming is the mathematical foundation of RL.*
+
+---
+
+#### From Bellman's Equations to Language Model Alignment
+
+Reinforcement learning has a cleaner intellectual lineage than most machine learning subjects, because its mathematical foundation was formalized before its computational applications were explored.
+
+Richard Bellman, at RAND Corporation in 1957, introduced dynamic programming as a method for solving sequential decision problems: rather than planning from the beginning to the end, decompose the problem by working backward from the end. The Bellman equation expresses the optimal value of a state — the maximum expected reward achievable from that state under optimal future behavior — in terms of the optimal values of successor states. This recursive structure is the mathematical core of reinforcement learning. The terminology "curse of dimensionality" was Bellman's coinage for the observation that the computational cost of dynamic programming grows exponentially with the number of state variables — the fundamental obstacle that makes exact dynamic programming intractable for most realistic problems.
+
+Arthur Samuel's checkers-playing program (1959) was the first demonstration that a machine could improve at a task by playing against itself, without being told what to do. Samuel called this "machine learning," and the program learned an evaluation function that let it beat an amateur champion by 1962. Crucially, Samuel's program was not solving a problem in Bellman's sense — it was using a cruder form of self-play to adjust its evaluation function. The formal connection between dynamic programming and learning from interaction would take decades to formalize.
+
+The formal foundation of temporal-difference learning was laid by Rich Sutton, first in his 1988 paper "Learning to Predict by the Methods of Temporal Differences." TD learning is the insight that a learner can improve its estimates not just by comparing predictions to actual outcomes, but by comparing predictions to later predictions. If you predict that a position is worth 0.7, and later predict it is worth 0.9, the earlier prediction can be updated toward 0.9 immediately — without waiting for the game to end. This bootstrapping — using estimates to improve estimates — is what makes TD learning more data-efficient than Monte Carlo methods that wait for full episode outcomes. TD learning is the algorithmic foundation of most RL methods.
+
+Chris Watkins's Q-learning (1989, thesis) made the connection to control explicit. The Q-function Q(s, a) represents the expected total future reward of taking action a in state s and then acting optimally thereafter. Watkins proved that an algorithm that updates Q-values based on observed transitions would converge to the optimal Q-function in the limit, for any finite MDP, given sufficient exploration. This was the first off-policy convergence guarantee in RL: the algorithm could learn from experience under any behavior policy, not only from experience under the current policy. Q-learning is still among the most widely taught and used RL algorithms thirty-five years after its introduction.
+
+The connection between RL and neuroscience arrived through the discovery that dopamine signals in the brain appeared to implement something like TD learning. Schultz, Dayan, and Montague (1997) showed that dopaminergic neurons fired in response to unexpected rewards — and, crucially, that once a predictor of reward was learned, the firing shifted from the time of the reward to the time of the predictor. This was precisely the TD error signal that Sutton's algorithm computed. The discovery was not merely analogical — it suggested that biological reward learning and computational RL might implement the same mathematical principle. This connection gave RL a privileged status among ML approaches in the cognitive neuroscience community and contributed to the field's prestige.
+
+The deep learning era transformed RL from a subject with elegant theory and limited application to a source of dramatic empirical results. In 2013, Mnih et al. at DeepMind trained a single system — the Deep Q-Network (DQN) — to play 49 Atari games at superhuman level, using only raw pixel inputs and the game score as reward. The same architecture, without game-specific features, learned to play all 49 games. The combination of Q-learning with deep convolutional networks demonstrated that the theoretical RL framework could be instantiated at the scale of complex perceptual input, a combination that classical RL had not achieved.
+
+AlphaGo's 2016 victory over Lee Sedol was the most publicly visible RL success, but its architecture was a hybrid: Monte Carlo Tree Search for planning, supervised learning on human games for initial policy training, and RL for self-play refinement. AlphaZero (2017) replaced the human game data with self-play from random initialization and achieved similar results, demonstrating that the combination of MCTS and RL could discover strong strategies in large game spaces without human supervision. MuZero (2019) removed the need for perfect environment rules by learning a model of the environment alongside the policy, extending the approach to settings where the dynamics are not directly given.
+
+Policy gradient methods, which optimize policy parameters directly by estimating the gradient of expected reward, emerged as a distinct and important algorithmic family. Williams's REINFORCE algorithm (1992) provided the theoretical basis. The challenge was variance: the gradient estimate was unbiased but had very high variance, making learning slow and unstable. Actor-critic methods (which estimate a value function to reduce variance in the gradient estimate) and trust region methods (Schulman et al.'s TRPO, 2015) addressed this. Proximal Policy Optimization (PPO, Schulman et al., 2017) provided a practical, stable policy gradient algorithm that became the most widely used RL algorithm in the deep RL era — a position it retains because of its reliability across diverse settings.
+
+The application of RL to language model alignment came through Reinforcement Learning from Human Feedback (RLHF). The central challenge of aligning language models to human preferences is that the desired behavior — helpfulness, harmlessness, honesty — cannot be easily specified as a formal reward function. RLHF sidesteps this by learning a reward model from human comparisons of model outputs, then using RL to fine-tune the language model against the learned reward. Christiano et al.'s 2017 paper "Deep Reinforcement Learning from Human Preferences" demonstrated the approach in simpler settings. The InstructGPT paper (Ouyang et al., 2022) showed that RLHF could substantially improve the alignment of large language models, producing models that followed instructions more reliably and were rated more helpful and less harmful by human evaluators. The technique was adopted across the industry: GPT-4, Claude, Gemini, and most deployed frontier models use RLHF or variants of it. Direct Preference Optimization (DPO, Rafailov et al., 2023) later showed that the RL step in RLHF could be replaced by a supervised objective that directly minimizes a preference-based loss, simplifying the procedure.
+
+The contemporary RL landscape is broader than the deep RL narrative suggests. Offline RL — learning policies from fixed datasets without online interaction — has become important in settings where environment interaction is expensive or unsafe. Model-based RL, which learns a model of the environment and plans using it, has seen renewed interest as a path to better sample efficiency. Multi-agent RL, where multiple agents interact in shared environments, has produced notable results in competitive games (StarCraft, Dota 2) and in cooperative settings (multi-robot coordination, traffic management). And RLHF's industrial success has brought unprecedented attention and resources to the field, simultaneously advancing capabilities and raising urgent questions about what the resulting systems are actually learning.
+
+---
+
+#### The MDP Framework, Value Functions, and Policy Learning
+
+#### Markov Decision Processes: The Formal Foundation
+
+A Markov decision process is defined by: a set of states S, a set of actions A, a transition function P(s'|s, a) giving the probability of reaching state s' from state s by taking action a, a reward function R(s, a) giving the immediate reward for taking action a in state s, and a discount factor γ ∈ [0, 1) that reduces the value of future rewards relative to immediate ones. A policy π(a|s) specifies the probability of taking action a in state s. The goal is to find the policy that maximizes expected discounted cumulative reward.
+
+The Bellman equations express optimal behavior recursively. The optimal value function V*(s) satisfies V*(s) = max_a [R(s,a) + γ Σ_{s'} P(s'|s,a) V*(s')], stating that the optimal value of a state equals the immediate reward plus the discounted optimal value of the successor state, maximized over actions. The optimal Q-function satisfies Q*(s,a) = R(s,a) + γ Σ_{s'} P(s'|s,a) max_{a'} Q*(s', a'). These equations have a unique fixed-point solution, and iterative methods (value iteration, policy iteration) compute it in finite MDPs.
+
+The Markov property — that the next state depends only on the current state and action, not on the history — is both the framework's strength and its limitation. It enables the recursive Bellman structure that makes the mathematics tractable. It excludes settings where partial observability requires maintaining history (POMDPs), settings with non-Markovian reward functions, and settings where the state space must be inferred from observations. Extensions of the MDP framework address these, at the cost of additional complexity.
+
+The discount factor γ governs the tradeoff between immediate and future rewards. At γ = 0, only immediate rewards matter; the agent acts myopically. At γ approaching 1, future rewards are nearly as valuable as immediate ones; the agent acts far-sightedly. The discount factor also determines whether the total reward sum converges, and higher γ makes the value function more sensitive to long-term consequences, which can make learning harder.
+
+#### Value-Based and Policy-Based Methods
+
+Q-learning is the canonical value-based method: maintain an estimate Q(s, a) of the optimal Q-function, update it toward bootstrapped targets when transitions are observed, and act greedily with respect to the current estimate (with ε-greedy exploration). DQN uses a deep neural network to represent Q, with two specific stabilizations: a replay buffer that stores and randomly samples past transitions (breaking the correlation in consecutive experience), and a target network that holds the bootstrap target fixed for many steps (preventing the instability of chasing a moving target).
+
+Policy gradient methods directly parameterize the policy and optimize the expected cumulative reward by gradient ascent. The policy gradient theorem (Sutton et al., 2000) gives the gradient of expected reward with respect to policy parameters: ∇J(θ) = E_{τ~π_θ}[Σ_t ∇log π_θ(a_t|s_t) A_t] where A_t is the advantage — the difference between the Q-value of the action taken and the baseline value of the state. Actor-critic methods learn both a policy (actor) and a value function (critic), using the critic to estimate advantages and reduce variance.
+
+The on-policy/off-policy distinction is fundamental. On-policy methods (SARSA, PPO) learn about the current policy from data generated by that policy. Off-policy methods (Q-learning, SAC) can learn about one policy from data generated by a different policy. Off-policy learning allows data reuse — storing experience in a replay buffer and sampling from it many times — which is crucial for sample efficiency. The theoretical stability of off-policy learning with function approximation is more fragile: the "deadly triad" of function approximation, off-policy learning, and bootstrapping can produce divergence, and several important algorithms failed in practice because of this.
+
+PPO's widespread adoption stems from its balance of simplicity, stability, and performance. It constrains each policy update to avoid large steps — measured by the ratio between the new and old policy's probabilities — which prevents the catastrophic performance degradation that unconstrained policy gradient steps can cause. The implementation is simpler than TRPO's second-order constraint while achieving comparable stability.
+
+#### Credit Assignment, Exploration, and Sample Efficiency
+
+Temporal-difference learning addresses credit assignment by decomposing the long-term problem into overlapping short-term problems. Each step produces a TD error — the difference between the bootstrapped target and the current estimate — which propagates credit backward through time. Eligibility traces generalize this by assigning credit to recent actions in proportion to how recent they were, interpolating between one-step TD (which assigns credit only to the immediately preceding action) and Monte Carlo (which assigns credit uniformly to all actions in the episode).
+
+The multi-step returns of n-step TD methods and the λ-weighted returns of TD(λ) provide additional credit assignment mechanisms. PPO and modern actor-critic methods typically use generalized advantage estimation (GAE, Schulman et al., 2016), which computes a weighted combination of n-step advantages to balance bias and variance in the gradient estimate.
+
+Exploration in deep RL is harder than in tabular settings. The ε-greedy strategy works for small state spaces where states are revisited frequently; in large state spaces, random exploration wastes too many steps on unproductive actions. Intrinsic motivation approaches give the agent a bonus reward for visiting novel states, measured by prediction error of a learned model (curiosity-driven exploration, Pathak et al., 2017) or by disagreement among an ensemble of models (or by a fixed random network prediction error, Random Network Distillation, Burda et al., 2018). These approaches have enabled exploration in hard exploration environments like Montezuma's Revenge where ε-greedy exploration fails completely.
+
+---
+
+#### What Studying This Changes
+
+Reinforcement learning changes how practitioners think about sequential decisions and about the relationship between specification and behavior.
+
+The first change is fluency with the MDP framework as a modeling language. The translation of a real problem into an MDP — defining what the state is, what the action space is, what the reward function should be, what the discount factor represents — is itself a significant analytical activity. Practitioners who have internalized the MDP framework approach decision problems by asking these questions systematically, rather than treating the problem structure as fixed by whatever framework happens to be available.
+
+The second change is the disposition to think about decisions sequentially and their consequences long-term. Supervised learning asks "what is the right output for this input?" RL asks "what policy is optimal over time?" This reframing reveals how short-term and long-term objectives can conflict, why greedy policies often fail in sequential settings, and why the credit assignment problem is genuinely hard. Practitioners who have internalized this think differently about optimization objectives in any domain where actions have downstream consequences.
+
+The third change is methodological discipline in empirical RL. Henderson et al.'s "Deep Reinforcement Learning that Matters" (2018) showed that results in deep RL papers were frequently unreproducible, with different random seeds, different hyperparameter choices, and different implementation details producing qualitatively different results. A practitioner who has studied RL knows to run experiments with multiple seeds, report variance, document implementation details, and treat published results with appropriate skepticism. This discipline is more important in RL than in most ML because RL's variance is structurally higher.
+
+The fourth change is appreciation for the reward specification problem as a fundamental challenge. Reward functions specify what the agent is asked to maximize — and agents maximize exactly what they are asked to maximize, not what was intended. The reward hacking literature documents cases where agents found unexpected solutions to the stated objective that violated the spirit of the reward. This is not a bug to be fixed; it is a structural property of optimization under misspecified objectives. Understanding this shapes how practitioners approach RLHF, goal specification in robotics, and any setting where an agent is given an objective to maximize.
+
+---
+
+#### Resources
+
+**Books**
+
+Sutton and Barto's **Reinforcement Learning: An Introduction** (2nd ed., 2018, free at incompleteideas.net) is the canonical text. Written by the field's founders, it presents RL as its designers see it — with careful mathematical development, intuition alongside formalism, and a historical perspective that clarifies where each idea came from. The second edition extends the first to include deep RL connections. Working through Sutton and Barto cover to cover, doing the exercises, is the right path for anyone who wants to understand RL rather than just use it. The freely available status removes any barrier.
+
+For the mathematical foundations and connection to optimal control, Bertsekas's **Dynamic Programming and Optimal Control** (Volumes 1 and 2, Athena Scientific) and **Reinforcement Learning and Optimal Control** (2019) provide rigorous treatment at a level above Sutton and Barto. Bertsekas's perspective is that RL and optimal control are the same subject viewed from different communities, and his books demonstrate the connections explicitly.
+
+Agarwal, Jiang, Kakade, and Sun's **Reinforcement Learning: Theory and Algorithms** (free at rltheorybook.github.io) provides contemporary theoretical RL at graduate level — PAC bounds, sample complexity, the theory of function approximation stability — for learners who want theoretical rigor.
+
+Lattimore and Szepesvári's **Bandit Algorithms** (Cambridge, 2020, free at tor-lattimore.com) covers the bandit problem — the RL special case of stateless decisions — with full mathematical rigor. Bandits are both a prerequisite for understanding exploration theory and an important application domain in their own right (clinical trials, recommendation systems, A/B testing).
+
+| Book | Role | Tag |
+|---|---|---|
+| Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed., free) | Canonical foundational text | Permanent canon, entry, spine |
+| Bertsekas, *Reinforcement Learning and Optimal Control* | Optimal control connection; mathematical depth | Current canon, depth |
+| Bertsekas, *Dynamic Programming and Optimal Control* (2 vols.) | DP foundations at depth | Permanent canon, reference |
+| Agarwal, Jiang, Kakade & Sun, *RL: Theory and Algorithms* (free) | Contemporary theory | Current canon, depth |
+| Lattimore & Szepesvári, *Bandit Algorithms* (free) | Bandit theory | Current canon, depth |
+| Puterman, *Markov Decision Processes* | MDP mathematical foundation | Permanent canon, reference |
+
+**Courses**
+
+**Berkeley CS285** (Deep Reinforcement Learning, Sergey Levine, free lecture videos on YouTube) is the standard graduate course on deep RL. The lectures cover the algorithmic and theoretical foundations with the depth that the contemporary literature requires. The assignments involve implementing standard deep RL algorithms on standard benchmarks, which is the right practical introduction.
+
+**David Silver's RL lecture series** (DeepMind/UCL, free on YouTube) covers the foundational RL material — MDPs, dynamic programming, TD learning, function approximation — with exceptional clarity and remains the best video introduction to the theoretical foundations.
+
+**Sutton's online course** at the University of Alberta (via Coursera, free to audit) provides structured pedagogy from the author of the textbook, with the textbook as companion.
+
+| Course | Platform | Tag |
+|---|---|---|
+| Berkeley CS285 Deep RL (free) | YouTube / course site | Current canon, entry, spine |
+| David Silver RL lectures (free) | YouTube | Permanent canon, entry |
+| Sutton's Alberta RL course (free to audit) | Coursera | Current canon, entry |
+
+**Visualizations, Tools, and Code**
+
+**OpenAI Spinning Up** (free at spinningup.openai.com) provides both an introduction to deep RL and clean implementations of core algorithms (VPG, TRPO, PPO, DDPG, TD3, SAC) in PyTorch. The implementations are readable and serve as the canonical reference for how these algorithms are correctly implemented. Working through Spinning Up, implementing at least one algorithm from scratch by comparison with the reference, is the right practical entry.
+
+**Gymnasium** (the maintained fork of OpenAI Gym, free at gymnasium.farama.org) provides the standard RL environment API, with classic control, Atari, MuJoCo, and other environments. Every deep RL algorithm is evaluated on Gymnasium-compatible environments; familiarity with the API is practically necessary.
+
+**Stable Baselines3** (free) provides production-quality implementations of DQN, PPO, SAC, TD3, A2C, and other standard algorithms with a consistent API. Useful for baseline comparison and for applying standard algorithms to new environments without reimplementing them.
+
+Henderson et al.'s **"Deep Reinforcement Learning that Matters"** (NeurIPS 2018, free) is required reading before any serious empirical RL work. It documents the reproducibility problems in published deep RL results and specifies the methodological discipline — multiple seeds, full hyperparameter reporting, statistical significance — that reliable empirical RL requires.
+
+| Resource | Platform | Tag |
+|---|---|---|
+| OpenAI Spinning Up (free) | spinningup.openai.com | Current canon, tool, entry |
+| Gymnasium (free) | gymnasium.farama.org | Current canon, tool, entry |
+| Stable Baselines3 (free) | stable-baselines3.readthedocs.io | Current canon, tool, reference |
+| Henderson et al., "Deep RL that Matters" (free) | NeurIPS 2018 | Current canon, primary source |
+
+---
+
+#### Traps
+
+| Trap | Why it misleads | Better response |
+|---|---|---|
+| Skipping tabular RL to go straight to deep RL | The DQN paper and the impressive Atari results make deep RL the entry point for many learners, bypassing the tabular RL that provides the conceptual foundation. The result is practitioners who can instantiate DQN but cannot explain why replay buffers are needed, cannot recognize when Q-learning will diverge, and cannot adapt when deep RL fails. | Work through Sutton and Barto's tabular chapters before deep RL. Implement Q-learning and SARSA from scratch in GridWorld-style environments. Understand the theoretical convergence results in tabular settings before accepting the empirical success of deep RL approximations as the explanation. |
+| Treating reward design as a minor implementation detail | Specifying a reward function is specifying an objective, and agents optimize exactly what they are given. Reward hacking — where the agent achieves high reward through behaviors that violate the intent of the reward — is documented in the literature and in production RL deployments. Getting the reward wrong produces an agent that succeeds at the letter while violating the spirit. | Study the reward hacking literature before designing reward functions. Treat reward specification with the same care as API specification: what behaviors does this reward incentivize that were not intended? What behaviors could a sufficiently capable agent find to exploit this reward? Read Krakovna et al.'s specification gaming examples repository. |
+| Ignoring the reproducibility problem | Published deep RL results frequently do not reproduce reliably across different random seeds, implementations, and hyperparameter configurations. Practitioners who do not account for this will mistake random variation for meaningful differences between algorithms. | Run experiments with at minimum 5-10 random seeds, report mean and standard deviation or confidence intervals, do not draw conclusions from single runs. Read Henderson et al. (2018) and treat its methodological recommendations as minimum standards, not optional. |
+| Applying RL where supervised learning is appropriate | RL is appropriate when the problem has genuine sequential structure — decisions have consequences for future state — and when environment interaction is available. Many problems that look like RL problems (recommendation, classification with uncertain feedback) are better solved with supervised learning on logged data, bandit algorithms, or offline RL. Applying online RL where interaction is expensive or dangerous adds sample inefficiency and safety risk unnecessarily. | Ask whether the problem genuinely requires online interaction and sequential decision-making. If the problem can be framed as supervised learning on historical data, do that first. If the reward signal is available immediately and actions don't affect future states, use bandit methods rather than full RL. |
+| RLHF as solved alignment | RLHF substantially improves language model behavior compared to pretraining alone, and its success has led some practitioners to treat alignment as a problem with a known engineering solution. In practice, RLHF produces models aligned to the specific preferences expressed in the training data — which may reflect annotator biases, may reward sycophantic responses, and may not generalize to novel situations or higher capability levels. | Treat RLHF as a tool with known limitations rather than a solution. Study the documented failure modes: sycophancy (models agreeing with users rather than being accurate), mode collapse (reduced response diversity), and overoptimization (Goodhart's law applied to the reward model). Read the DPO paper as an alternative approach. Understand that alignment research is ongoing and that current methods are partial solutions. |
+| Overlooking sample efficiency requirements | Online deep RL often requires millions of environment interactions to learn — orders of magnitude more than humans need for comparable tasks. Applying online RL to settings where interactions are expensive (physical robots, medical treatments, financial decisions) without accounting for sample efficiency leads to systems that are theoretically capable but practically impractical. | Before applying RL to a new domain, assess the cost of environment interaction and the sample budget available. If online interaction is limited, consider offline RL from logged data, imitation learning from demonstrations, model-based RL to reduce required samples, or hybrid approaches. Sample efficiency is a design constraint, not an implementation detail. |
+### 5.5 — Large Language Models and Foundation Models
+
+A language model is a probability distribution over sequences of tokens. Given a sequence of preceding tokens, it assigns a probability to each possible next token. This is the entire specification of the task: predict the next token. Everything else that large language models do — answering questions, writing code, reasoning through problems, translating between languages, summarizing documents — emerges from training to predict tokens well across extraordinarily diverse text. The model that predicts next tokens well on the internet's text has learned something about the world that produced that text.
+
+Foundation models are language models (and their multimodal extensions) trained at sufficient scale on sufficiently diverse data that their learned representations transfer to a wide range of downstream tasks without task-specific training from scratch. The word "foundation" points to this generality: a single pretrained model serves as the foundation for many applications through fine-tuning, prompting, or both. This is a structural change from the preceding decade of deep learning, when every task required a model trained for that task.
+
+What makes large language models a distinct section from §5.3 (Deep Learning) is scale and emergence. Deep learning provided the architectural substrate — the transformer — and the training methodology. LLMs added the data quantity (trillions of tokens), the model scale (billions to trillions of parameters), and the resulting emergent capabilities: in-context learning, chain-of-thought reasoning, code generation, instruction following, and multi-step tool use. These capabilities are not present in smaller models and were not engineered explicitly. They arose from the combination of scale and diversity of training data.
+
+*Prerequisites: Deep learning (§5.3) — transformers, self-attention, and training at scale. Machine learning foundations (§5.2) — evaluation methodology, especially the distinction between benchmark performance and capability. Reinforcement learning (§5.4) — RLHF draws on RL concepts throughout.*
+
+---
+
+#### From Word Vectors to Generalist Systems
+
+The path to large language models runs through a series of representations: from count-based statistics to learned word vectors to contextual embeddings to the transformer, each step increasing the expressive power of how language is represented.
+
+Classical NLP before 2013 used sparse, hand-crafted feature representations — bags of words, n-gram counts, parse trees. The key limitation was that these representations treated words as independent symbols: "bank" in a financial context and "bank" in a geographical context were the same feature. This was adequate for classification tasks on short texts but inadequate for tasks that required understanding meaning across contexts.
+
+Mikolov et al.'s word2vec (2013) demonstrated that a simple prediction task — predict a word from its neighbors, or predict neighbors from a word — trained on large corpora produced word embeddings with striking geometric properties: the vector for "king" minus "man" plus "woman" was close to the vector for "queen." The semantic content of words was encoded in the geometry of embedding space. Word2vec worked by compression: a neural network forced to predict context from a single low-dimensional vector had to encode the distributional semantics of words efficiently. The same year, Sutskever, Vinyals, and Le demonstrated sequence-to-sequence models for machine translation, showing that encoder-decoder networks could map variable-length input sequences to variable-length output sequences.
+
+The attention mechanism, introduced by Bahdanau, Cho, and Bengio in 2015, addressed the bottleneck in sequence-to-sequence models: compressing an entire source sequence into a single fixed-size vector lost information for long sequences. Attention allowed the decoder to selectively attend to different parts of the encoder output at each decoding step, dramatically improving machine translation on long sentences.
+
+The transformer architecture (Vaswani et al., "Attention Is All You Need," 2017) removed the recurrence entirely, replacing it with multi-head self-attention that allowed each position to attend to every other position simultaneously. The transformer had two major advantages over recurrent architectures: it could be trained in parallel (no sequential dependency), making it far more efficiently trainable on modern hardware, and its all-to-all attention allowed capturing long-range dependencies that recurrent architectures struggled with. The transformer was presented as a better machine translation model. Within a year, it had restructured the entire field of NLP and soon the rest of deep learning.
+
+BERT (Devlin et al., 2018) showed the power of large-scale pretraining with bidirectional transformers. Rather than predicting the next word autoregressively (predicting left-to-right), BERT used masked language modeling: randomly mask 15% of tokens, train the model to predict the masked tokens from the surrounding context. Pretraining on a large corpus then fine-tuning on downstream tasks dramatically outperformed previous architectures on every major NLP benchmark. BERT established the pretraining-then-fine-tuning paradigm: pretrain a large model on unlabeled data, then adapt it cheaply to specific tasks.
+
+GPT (Radford et al., 2018) explored the other direction: autoregressive pretraining, predicting each token from all preceding tokens, at larger scale than had been attempted before. GPT-2 (2019) scaled this approach to 1.5 billion parameters and showed that language models trained to predict text could generate surprisingly coherent long-form content and zero-shot transfer to downstream tasks. OpenAI briefly declined to release GPT-2's weights citing misuse concerns — a decision that attracted both criticism and attention, foreshadowing debates that would intensify as capabilities grew.
+
+GPT-3 (Brown et al., 2020) scaled further to 175 billion parameters and revealed something that had not been anticipated: in-context learning. Given a few examples of a task in the prompt — "Translate English to French: Sea otter → loutre de mer. Question → " — GPT-3 could perform the translation without any parameter updates, by pattern-matching to the examples in context. This was not programmed; it emerged from scale. Models that had been adequate at next-token prediction had become something that looked more like a general-purpose problem solver. The GPT-3 paper's impact was immediate: it launched a wave of industrial investment, research attention, and public awareness of language models that has not abated.
+
+Kaplan et al.'s "Scaling Laws for Neural Language Models" (2020) provided the organizing principle for what followed. Language model performance improved as a smooth power law in compute, model size, and data size — without visible saturation. If the power law held, investment in scale would continue to produce proportional returns. Hoffmann et al. ("Training Compute-Optimal Large Language Models," 2022 — the Chinchilla paper) refined this: the Kaplan laws had systematically underallocated data relative to compute, producing models that were overtrained in parameters and undertrained in data. Chinchilla, with 70 billion parameters and 1.4 trillion tokens (compared to Gopher's 280 billion parameters and 300 billion tokens), matched or exceeded Gopher's performance at significantly lower inference cost. The paper changed how the field allocated compute budgets and re-established that data quality and quantity mattered as much as model size.
+
+The alignment turn came with InstructGPT (Ouyang et al., 2022). A GPT-3-scale model trained to predict internet text was capable but unreliable: it would complete prompts in ways that were plausible extensions of training data but unhelpful or harmful in context. RLHF fine-tuning addressed this by training a reward model from human preferences over model outputs, then fine-tuning the language model to maximize that reward using PPO. InstructGPT rated as substantially more helpful by human evaluators despite being smaller than base GPT-3. The technique — pretraining at scale, supervised fine-tuning, reward model training from human preferences, RL fine-tuning — became the standard pipeline for deployed language models. ChatGPT used it; GPT-4 used it; Claude used it; essentially every deployed frontier model uses it or a close variant.
+
+The emergence of a competitive ecosystem in 2022-2023 brought several developments simultaneously. PaLM (Chowdhery et al., 2022) demonstrated that scaling to 540 billion parameters on high-quality data produced a model that broke through previous performance ceilings on several reasoning benchmarks. LLaMA (Touvron et al., Meta, 2023) showed that small models trained on more data were competitive with larger models at inference time — Chinchilla scaling applied to open-weight releases. LLaMA's open weights catalyzed a community of researchers who could fine-tune, probe, and modify frontier-scale models, producing dozens of derivative models within months.
+
+Direct Preference Optimization (DPO, Rafailov et al., 2023) simplified the RLHF pipeline by showing that the RL step could be replaced with a supervised objective that directly parameterized the reward as the log-ratio of policy to reference probabilities. DPO produced comparable results to RLHF with simpler training and without requiring a separate reward model or RL infrastructure.
+
+The reasoning model era began with the release of OpenAI's o1 in 2024, followed by o3, DeepSeek-R1, and analogous models from Anthropic and Google. These models spent extended computation generating internal "chains of thought" before producing a final response — a form of test-time compute scaling that traded inference time for accuracy on difficult reasoning tasks. The results on mathematical and coding benchmarks were striking: problems that stumped previous state-of-the-art models fell to reasoning models with extended thinking. The mechanism — whether this constitutes something meaningfully called reasoning or is sophisticated pattern completion — remains actively debated.
+
+The foundational infrastructure built around language models has matured into an ecosystem. The Hugging Face platform has made hundreds of open-weight models accessible through a common API. vLLM and TensorRT-LLM provide optimized inference. Parameter-efficient fine-tuning methods (LoRA, QLoRA) allow fine-tuning large models on consumer hardware. Retrieval-augmented generation (RAG) systems ground model outputs in retrieved documents. Agentic frameworks orchestrate multi-step interactions. What began as a research direction in 2017 is now the foundational infrastructure of an industry.
+
+---
+
+#### Architecture, Training, Adaptation, and Evaluation
+
+#### The Transformer and Its Scaling Properties
+
+The transformer's core operation is multi-head self-attention. Each token representation is projected to queries, keys, and values; attention weights are computed as the softmax of scaled dot-products between queries and keys; values are aggregated using these weights. Multi-head attention runs this process independently in multiple subspaces and concatenates the results. A transformer layer stacks self-attention with a position-wise feed-forward network and layer normalization.
+
+Autoregressive language models — GPT-style — apply self-attention with causal masking, ensuring each position can attend only to preceding positions. They are trained by cross-entropy loss on next-token prediction, which as discussed in §3.8 is equivalent to minimizing KL divergence between the model distribution and the data distribution. This means the model is trained to approximate the distribution of text in the training corpus, including all of its statistical regularities, factual content, and stylistic patterns.
+
+Scaling properties are not arbitrary. As models grow in parameters, their performance on held-out text improves as a power law with an exponent around 0.07 per decade of parameters (Kaplan et al.). But the effective behavior changes qualitatively at certain scales: few-shot learning (GPT-3 level), reliable instruction following (InstructGPT level), complex multi-step reasoning (reasoning model level). These transitions are not smooth — they are approximately step functions in specific capability evaluations. This creates a fundamental challenge for prediction: capabilities that are absent at small scale may appear abruptly at larger scale, and capabilities visible at large scale may not be predictable from small-scale experiments.
+
+The attention mechanism's quadratic compute and memory cost in sequence length is the primary constraint on context window length. Flash Attention (Dao et al., 2022) and its successors compute exact attention with memory proportional to sequence length rather than its square by processing attention in blocks. Extended context windows — from 2K tokens in GPT-3 to millions of tokens in current models — have been enabled by architectural modifications (rotary position embeddings, attention variants with subquadratic complexity) and engineering improvements.
+
+#### Pretraining, Fine-tuning, and Alignment
+
+Pretraining requires data at extraordinary scale. The C4, Common Crawl, and Pile datasets used for open-weight models contain hundreds of billions to trillions of tokens. Data quality matters at this scale: deduplication (near-duplicate documents dominate the web and reduce data efficiency), quality filtering (classifiers that identify high-quality text), and composition (the mix of domains — web, code, books, scientific papers — affects what the model learns) are all active engineering decisions. Models trained on code exhibit better formal reasoning capabilities than those trained on text alone, which is why all frontier models train on substantial code.
+
+Instruction fine-tuning takes a pretrained base model and trains it on (instruction, response) pairs — demonstrations of the model answering questions and following instructions helpfully. This changes the model's default behavior from "continue the text" to "respond to the instruction." The quality of instruction-following demonstrations matters: SELF-INSTRUCT (Wang et al., 2023) showed that models could generate their own instruction data by prompting larger models, enabling scaling of instruction tuning data without extensive human annotation.
+
+RLHF adds a preference signal from human comparisons. Given two model responses to the same prompt, human annotators indicate which is better. A reward model trained on these comparisons learns a scalar reward for any response. The language model is then fine-tuned using PPO to maximize this reward while staying close to the reference policy via KL penalty. The KL penalty prevents reward hacking: without it, the language model finds responses that satisfy the reward model's criteria while departing from sensible language. The tradeoff between reward maximization and KL penalty is the key hyperparameter of RLHF.
+
+Known failure modes of RLHF are well-documented: sycophancy (models that agree with users to maximize approval rather than being accurate), verbosity bias (reward models prefer longer responses), and overoptimization (Goodhart's law — as the reward model is optimized against, the model finds responses that satisfy the reward model but violate the spirit of what was rewarded). DPO's key advantage is avoiding these failure modes partially by not requiring an explicit reward model and not using RL.
+
+#### Evaluation: What Models Can and Cannot Do
+
+Evaluation of language model capabilities is genuinely hard. Models exhibit strong performance on some benchmarks while failing on seemingly similar tasks. Performance is sensitive to prompt framing. Benchmark contamination — training data containing test items — inflates benchmark scores. And the mapping from benchmark performance to deployment capability is unreliable.
+
+The standard benchmarks address different capability dimensions: MMLU tests knowledge across 57 subjects; HumanEval and MBPP test code generation; GSM8K and MATH test mathematical reasoning; BBH (Big-Bench Hard) tests challenging reasoning tasks; MT-Bench evaluates instruction following. Each benchmark has known failure modes: MMLU can be solved with surface pattern matching, HumanEval exercises relatively simple functions, GSM8K is largely solved by current frontier models.
+
+Calibration — whether model confidence correlates with accuracy — is a distinct evaluation dimension from accuracy. A model that says "I'm not sure" when it is wrong and "I'm confident" when it is right is better calibrated than one that is equally confident in correct and incorrect answers. Verbalized uncertainty is not well-calibrated in current models; calibrated token probabilities are more reliable but harder to access in deployed systems.
+
+Evaluation of deployed system behavior requires red-teaming: systematically trying to elicit harmful, incorrect, or policy-violating outputs. Red-teaming has produced a literature on failure modes — prompt injection attacks, jailbreaks, inconsistent value alignment, sycophancy — that complements benchmark evaluation. Safety evaluations include tests for dangerous capabilities (bioweapons synthesis, cyberattack assistance) that must be checked before deployment.
+
+---
+
+#### What Studying This Changes
+
+Large language models change how practitioners think about what computation can do and what it cannot be trusted to do.
+
+The first change is understanding the capability-reliability gap. Current large language models can do many things but cannot reliably guarantee correctness in high-stakes settings. The practitioner who has studied the architecture, training, and failure modes understands why: the model approximates the distribution of text in its training data, which means it produces plausible-sounding outputs that may be factually incorrect. This shapes how systems that use language models should be designed — with verification, grounding, human oversight, and graceful degradation where correctness matters.
+
+The second change is evaluation discipline. Benchmark performance is not deployment performance. The practitioner who has studied the evaluation literature knows to test models on their specific deployment inputs, to characterize failure modes rather than just average performance, to evaluate calibration alongside accuracy, and to maintain skepticism about results that appear too good. This discipline prevents the common failure mode of deploying models on the strength of benchmark results that do not transfer.
+
+The third change is architectural transparency. The practitioner who understands self-attention, the role of positional encodings, the function of the feed-forward layers, and how context window limits arise can interpret model behavior in terms of architectural constraints. Why does performance degrade on very long contexts? Why does the model fail to count precisely? Why do certain prompting patterns improve performance? These questions have architectural answers, and the practitioner who has studied the architecture can engage with them.
+
+The fourth change is the ability to make calibrated deployment decisions. Which tasks justify fine-tuning versus prompting? When is RAG the right approach versus larger context? When is a 7B open-weight model appropriate versus a frontier model? What safety mitigations are necessary for which applications? These decisions require understanding the tradeoffs — capability, cost, reliability, privacy, control — and the understanding comes from study rather than from using the APIs.
+
+---
+
+#### Resources
+
+**Books**
+
+The foundational transformer text is now primarily papers rather than books — the field moved faster than book timescales allowed. However, Jurafsky and Martin's **Speech and Language Processing** (3rd ed., free online at web.stanford.edu/~jurafsky/slp3) has been updated to cover neural language models, transformers, and large language models and remains the most complete textbook treatment. Its coverage of the classical NLP that preceded the transformer era is also valuable context.
+
+For foundational ML and deep learning preparation, Bishop and Bishop's **Deep Learning: Foundations and Concepts** (2024, §5.3 reference) and Goodfellow et al.'s **Deep Learning** (free, §5.3 reference) provide the necessary background.
+
+Bommasani et al.'s **"On the Opportunities and Risks of Foundation Models"** (Stanford CRFM, 2021, free) is a long report rather than a book but serves as the most comprehensive single document articulating what foundation models are, what they can do, and what risks they pose. It is dated in specifics but remains the most systematic framing.
+
+The primary literature is the authoritative source. The papers that matter most: Vaswani et al. 2017 (transformer), Devlin et al. 2018 (BERT), Brown et al. 2020 (GPT-3), Kaplan et al. 2020 (scaling laws), Hoffmann et al. 2022 (Chinchilla), Ouyang et al. 2022 (InstructGPT), Rafailov et al. 2023 (DPO). Each is 10–30 pages and directly readable by someone with the §5.3 prerequisites.
+
+| Book/Paper | Role | Tag |
+|---|---|---|
+| Jurafsky & Martin, *Speech and Language Processing* (3rd ed., free) | LM and transformer foundations | Current canon, entry, spine |
+| Bommasani et al., "On the Opportunities and Risks of Foundation Models" (free) | Comprehensive framing report | Current canon, entry |
+| Vaswani et al., "Attention Is All You Need" (2017, free) | Transformer primary source | Permanent canon, primary source |
+| Brown et al., GPT-3 paper (2020, free) | Few-shot learning; era-launching | Current canon, primary source |
+| Kaplan et al., scaling laws paper (2020, free) | Scaling relationships | Current canon, primary source |
+| Hoffmann et al., Chinchilla paper (2022, free) | Compute-optimal training | Current canon, primary source |
+| Ouyang et al., InstructGPT paper (2022, free) | RLHF alignment pipeline | Current canon, primary source |
+| Rafailov et al., DPO paper (2023, free) | Direct preference optimization | Current canon, primary source |
+| Phuong & Hutter, "Formal Algorithms for Transformers" (2022, free) | Precise architectural reference | Current canon, reference |
+
+**Courses**
+
+**Stanford CS336** (Language Modeling from Scratch, materials at cs336.stanford.edu) is the most technically rigorous available course on training language models, covering data engineering, architecture, training infrastructure, and evaluation. It is aimed at practitioners who want to understand how frontier models are built rather than just how to use them.
+
+**Andrej Karpathy's Neural Networks: Zero to Hero** (§5.3 reference) concludes with training a character-level GPT, building intuition for the autoregressive language model from first principles.
+
+**Hugging Face NLP Course** (free at huggingface.co/course) provides practical foundation: working with tokenizers, pretrained models, fine-tuning, and the Transformers library. This is the right practical entry for practitioners building applications.
+
+**Fast.ai's Practical Deep Learning** and companion courses include sessions on language models with practical implementation focus.
+
+| Course | Platform | Tag |
+|---|---|---|
+| Stanford CS336 Language Modeling from Scratch | cs336.stanford.edu | Current canon, depth |
+| Karpathy, Neural Networks: Zero to Hero (free) | YouTube | Current canon, entry, project |
+| Hugging Face NLP Course (free) | huggingface.co/course | Current canon, entry, tool |
+
+**Visualizations, Tools, and Code**
+
+**Karpathy's nanoGPT** (GitHub, free) implements a complete GPT training pipeline in approximately 300 lines of PyTorch. Training it on Shakespeare-scale or Wikipedia-scale text, then modifying the architecture or training procedure, is the most instructive hands-on engagement with language model training at accessible scale.
+
+The **Hugging Face ecosystem** — Transformers, Datasets, PEFT, TRL — is the standard infrastructure for working with language models. Fluency with the Transformers API (loading models, running inference, fine-tuning with PEFT/LoRA) is a practical prerequisite for most applied work. The TRL library provides implementations of RLHF and DPO training.
+
+**LM-Evaluation-Harness** (EleutherAI, free on GitHub) provides standardized evaluation of language models across dozens of benchmarks. Running a model through the harness and examining per-task performance reveals capability heterogeneity that aggregate scores obscure.
+
+**vLLM** (free) provides high-throughput inference for large language models with PagedAttention, making it practical to serve larger models efficiently. Understanding how PagedAttention manages the KV cache provides insight into inference engineering.
+
+The **OpenAI API, Anthropic API, Google AI API** provide access to frontier closed-weight models. Systematic comparison of model behavior across providers — on specific task types, failure modes, and prompting strategies — builds the calibrated understanding that API documentation does not.
+
+| Resource | Platform | Tag |
+|---|---|---|
+| Karpathy, nanoGPT (free) | GitHub | Current canon, entry, project |
+| Hugging Face Transformers / TRL (free) | huggingface.co | Current canon, tool, entry |
+| LM-Evaluation-Harness (free) | GitHub / EleutherAI | Current canon, tool, evaluation |
+| vLLM (free) | vllm.ai | Current canon, tool, inference |
+| Weights & Biases (free tier) | wandb.ai | Current canon, tool, tracking |
+
+---
+
+#### Traps
+
+| Trap | Why it misleads | Better response |
+|---|---|---|
+| Treating API access as understanding | Language models are most commonly accessed through APIs, and practitioners can develop sophisticated workflows without understanding what the model is doing. When the model fails in unexpected ways — inconsistent behavior, prompt sensitivity, hallucination on specific topics — API-level understanding provides no diagnostic capability. | Study the architecture, pretraining, and alignment pipeline before building complex applications. Karpathy's nanoGPT and the Stanford CS336 materials are the right paths to genuine understanding alongside practical API work. |
+| Confusing benchmark performance with deployment capability | Benchmark performance on MMLU, HumanEval, or similar is not the same as performance on your specific task with your specific data and user population. Models that rank highly on leaderboards may fail on domain-specific tasks, on unusual prompting patterns, or in the face of adversarial user inputs. | Evaluate models on representative samples of your actual deployment inputs before committing to them. Define the failure modes you care about and test for them specifically. Use LM-Evaluation-Harness for standardized comparison, but treat it as a starting point rather than a final answer. |
+| Treating hallucination as a fixable bug | Hallucination — plausible-sounding but incorrect output — is structural to how language models work: they are trained to produce fluent text that is statistically consistent with their training data, not to verify factual accuracy. Techniques like RAG, fine-tuning on accurate data, and self-consistency reduce hallucination frequency but do not eliminate it. | Design systems to handle hallucination architecturally: add retrieval for knowledge-grounded tasks, add verification steps where correctness matters, communicate uncertainty to users, and do not deploy in settings where undetected errors are catastrophic. Treat hallucination reduction as risk management, not defect elimination. |
+| Underestimating the importance of pretraining data | Model behavior is substantially determined by pretraining data. A model's knowledge cutoff, its factual biases, its performance on low-resource languages, and its behavior on domain-specific content are all functions of what was in the training data. Practitioners who treat the model as a fixed capability without understanding its training distribution make predictable errors: assuming capabilities the model does not have because the domain was underrepresented, or assuming properties that were characteristics of the training distribution rather than generalizable capabilities. | Develop familiarity with what major models were trained on and what their training data implies. For domain-specific applications, characterize what fraction of training data was relevant to your domain before inferring capability claims from general benchmarks. |
+| Dismissing alignment as a separate concern | Alignment — shaping model behavior through RLHF, DPO, or similar methods — is not separate from performance; it is constitutive of it. Models without alignment behave as next-token predictors trained on internet text, which is very different from what helpful, deployed models do. The difference between a base model and an instruction-tuned aligned model is enormous in practice, not in the architecture or weights alone. | Understand the alignment pipeline — SFT, reward modeling, preference fine-tuning — as engineering that shapes the model's behavior space, not as an add-on. Study the failure modes of alignment (sycophancy, reward hacking, inconsistency) as failure modes of the deployment system, requiring the same engineering attention as capability failures. |
+| Treating open-weight models as transparent | Open-weight models provide access to weights and sometimes to training details, but they are not fully transparent: training data is often undisclosed or partially disclosed, fine-tuning procedures are often proprietary, and the relationship between weights and behavior is opaque without interpretability tools. Practitioners who treat "open weights" as equivalent to "transparent" make unjustified inferences about model provenance and behavior. | Distinguish clearly between access levels: API-only access, open weights with partial training information, and genuinely open models with full training disclosure. Interpretability research (§5.6) addresses the transparency question at the mechanistic level; use it as appropriate for applications where understanding model behavior is critical. |
   5.6 — Interpretability and Mechanistic Interpretability
   5.7 — AI Safety and Alignment
 
