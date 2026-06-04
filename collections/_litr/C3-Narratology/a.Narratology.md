@@ -3,7 +3,10 @@ title: Narratology - Learning Atlas
 categories: Atlas
 subclass: Narratology
 ---
-# Story and Discourse: Narrative Is Not the Event Itself
+
+# English
+
+## Story and Discourse: Narrative Is Not the Event Itself
 
 A story never arrives as pure event. It arrives already shaped.
 
@@ -79,7 +82,7 @@ Narrative is the event as arranged into experience.
 
 The next problem follows naturally. If story and discourse together produce narrative worlds, then character is not a copy of a real person placed inside those worlds. Character is one of narrative’s most intricate effects: a formal being made from name, trait, action, voice, relation, silence, repetition, and time.
 
-# Literary Character: Why a Character Is Not a Real Person
+## Literary Character: Why a Character Is Not a Real Person
 
 A character walks into a story, and the reader almost immediately begins to treat this figure as if a person had entered the room. The character has a name, a voice, a face, a manner of pausing before speech. He desires something. She hides something. Someone remembers him, misunderstands her, loves her, fears him, waits for him to return. After a few pages, the figure begins to seem continuous. Even when absent from the scene, the character appears to go on existing somewhere behind the page.
 
@@ -161,7 +164,7 @@ A literary character is not a real person. But literature uses unreality to ask 
 
 The next essay can therefore turn to the speaking positions that make character and world available: narrator, implied author, implied reader, and the layered voices of fiction. If character is produced by narrative access, then the next question must be: who grants that access, and from where does the literary voice speak?
 
-# Voice, Narrator, and Implied Reader: Who Speaks in Literature?
+## Voice, Narrator, and Implied Reader: Who Speaks in Literature?
 
 A story never speaks from nowhere.
 
@@ -255,7 +258,7 @@ Who speaks? From where? To whom? With what authority? In whose language? Under w
 
 The next essay can move from voice to setting and world: not merely where a story happens, but how literary space, atmosphere, social world, and symbolic geography are built. If voice grants access, world gives that access a place to unfold.
 
-# Setting and World: Where Literature Gives Experience a Place
+## Setting and World: Where Literature Gives Experience a Place
 
 A story needs somewhere to happen, but literary place is never just a container. A room, road, city, island, battlefield, garden, prison, school, ship, house, forest, desert, border, or bedroom does more than receive action. It teaches the reader what kind of action is possible. It gives desire a path, fear a shape, memory a temperature, power a geography.
 
@@ -337,7 +340,7 @@ A world is successful when it teaches its own conditions of existence.
 
 The next question follows from setting into theme and symbol. If literary worlds are built from charged spaces and objects, then some elements begin to carry more than local function. A room becomes memory. A road becomes fate. A storm becomes social disorder. A mirror becomes self-division. The next essay turns to symbol, motif, and theme: how literature makes details carry worlds beyond themselves.
 
-# Symbol, Motif, and Theme: How Details Carry More Than Themselves
+## Symbol, Motif, and Theme: How Details Carry More Than Themselves
 
 A literary world is built from particulars: a room, a road, a letter, a storm, a mirror, a stain, a flower, a wound, a name. At first, each seems local. The road takes a character somewhere. The letter delivers information. The mirror reflects a face. The storm changes the weather. The wound belongs to a body. But literature rarely lets details remain merely themselves. They gather pressure. They return. They connect distant scenes. They begin to carry memory, desire, fear, history, or judgment. A thing in literature may be a thing, and also more than a thing.
 
@@ -444,7 +447,8 @@ A theme is not powerful because it is important in the abstract. It is powerful 
 Symbol, motif, and theme therefore belong to the same process: the transformation of detail into structure. A literary work teaches readers how to attend to its details, then rewards that attention by making details open into larger worlds. The smallest object may carry a history. The repeated phrase may expose a wound. The color may bind scenes into a hidden argument. The theme may emerge not as a statement but as a pressure felt everywhere.
 
 The next essay can turn to genre: tragedy, comedy, lyric, epic, novel, romance, satire, Gothic, realism, modernism, and the many forms through which literature gives expectation a shape. If symbols teach details to carry more than themselves, genre teaches whole works how to be read before their first sentence has finished.
-# Genre and Expectation: How Literature Teaches Us to Read
+
+## Genre and Expectation: How Literature Teaches Us to Read
 
 No literary work begins from zero.
 
@@ -541,7 +545,8 @@ The reader should therefore ask of any work: what genre does it invoke? What exp
 Genre is one of literature’s deepest ontological structures because it shapes what a work can be before its details fully arrive. It gives the world a grammar of expectation. It tells symbols how to behave, plots how to move, voices how to sound, characters what kinds of lives they may lead, and readers what kinds of attention to bring.
 
 Yet genre is never the last word. It is a beginning, a pressure, a memory. The life of literature lies in the encounter between inherited form and singular work. Every genre says, “This is how the world usually goes.” Every powerful literary work asks, “What if it does not?”
-# Narrative Levels and Frame Stories: Why Are There Stories Inside Stories?
+
+## Narrative Levels and Frame Stories: Why Are There Stories Inside Stories?
 
 A story can begin with someone telling a story.
 
@@ -648,7 +653,8 @@ A story inside a story is never only an addition. It is a question placed inside
 Literature keeps putting stories inside stories because human experience itself is layered. People live inside inherited myths, family anecdotes, official histories, private memories, public lies, dreams, confessions, rumors, testimonies, and unfinished tales. No one lives only in events. Human beings live in the stories that frame events and in the stories that break those frames.
 
 The next step in this narratological sequence can turn to unreliable narration: not simply when a narrator lies, but when narration itself becomes a field of error, self-protection, ideology, trauma, desire, and formal uncertainty.
-# Unreliable Narration: When the Telling Cannot Be Trusted
+
+## Unreliable Narration: When the Telling Cannot Be Trusted
 
 A narrator begins to speak, and the reader wants to believe. This desire is one of narrative’s oldest habits. A voice arrives before the world is complete; it names the room, remembers the past, introduces the dead, explains motives, arranges sequence, offers judgment. Without some initial trust, reading could not begin. Every story asks the reader to accept guidance before there is enough evidence to test it.
 
@@ -733,7 +739,8 @@ The unreliable narrator is not an exception to ordinary narration. It is an inte
 Every act of telling stands between event and listener. Every voice selects. Every memory shapes. Every justification hides. Every confession performs. Every social language carries blindness. Unreliable narration makes this condition visible by dramatizing the fracture between saying and knowing.
 
 The next step in the sequence can turn to endings, closure, and openness: how narratives conclude, why some endings feel inevitable, why others feel false, and why many modern works refuse the comfort of completion.
-# Endings, Closure, and Openness: Why Stories Must End, or Refuse to End
+
+## Endings, Closure, and Openness: Why Stories Must End, or Refuse to End
 
 A narrative begins by opening time. Something has happened, or is about to happen, or has already happened but has not yet been understood. A voice starts speaking. A road appears. A body is found. A letter arrives. A child leaves home. A stranger enters the city. From that moment, the reader is placed inside expectation. The work creates a forward pressure: toward discovery, reunion, punishment, recognition, marriage, death, return, confession, judgment, silence.
 
@@ -817,7 +824,9 @@ Literature keeps asking whether finality is possible. Human lives end, but meani
 
 A story must end because form requires boundary. A story refuses to end because experience exceeds boundary. Between these two truths, literary endings find their power.
 
-# 故事与话语：叙事不是事件本身
+# 中文
+
+## 故事与话语：叙事不是事件本身
 
 故事从不会作为纯粹事件抵达。它抵达时，已经被塑形。
 
@@ -893,7 +902,7 @@ A story must end because form requires boundary. A story refuses to end because 
 
 下一个问题自然出现。如果故事与话语共同生产叙事世界，那么人物就不是被放入这些世界中的现实人物复制品。人物是叙事最复杂的效果之一：一种形式性存在，由名字、特征、行动、声音、关系、沉默、重复和时间共同制造。
 
-# 文学人物：为什么人物不是真人
+## 文学人物：为什么人物不是真人
 
 一个人物走进故事，读者几乎立刻开始像对待真人一样对待这个形象。人物有名字，有声音，有脸，有说话前停顿的方式。他欲望某物。她隐藏某事。有人记得他、误解她、爱她、害怕他、等待他回来。几页之后，这个形象开始显得连续。即使暂时不在场景中，人物也仿佛仍在页面背后的某处继续存在。
 
@@ -975,7 +984,7 @@ A story must end because form requires boundary. A story refuses to end because 
 
 下一篇因此可以转向那些使人物和世界可被抵达的言说位置：叙述者、隐含作者、隐含读者，以及虚构中的分层声音。如果人物由叙事通道生产，那么下一个问题就必须是：谁授予这种通道？文学声音从哪里说话？
 
-# 声音、叙述者与隐含读者：文学中是谁在说话？
+## 声音、叙述者与隐含读者：文学中是谁在说话？
 
 故事从不会从无处说话。
 
@@ -1069,7 +1078,7 @@ A story must end because form requires boundary. A story refuses to end because 
 
 下一篇可以从声音转向场景与世界：不只是故事发生在哪里，而是文学空间、气氛、社会世界和象征地理如何被建造。如果声音授予通道，世界就给予这个通道一个展开之处。
 
-# 场景与世界：文学在哪里给予经验一个位置
+## 场景与世界：文学在哪里给予经验一个位置
 
 故事需要在某处发生，但文学中的地点从来不只是容器。房间、道路、城市、岛屿、战场、花园、监狱、学校、船、房子、森林、沙漠、边境、卧室，并不只是接收行动。它们会教读者：什么样的行动在这里是可能的。它们给欲望一条路径，给恐惧一种形状，给记忆一种温度，给权力一种地理。
 
@@ -1151,7 +1160,7 @@ A story must end because form requires boundary. A story refuses to end because 
 
 下一个问题从场景走向主题与象征。如果文学世界由带电的空间和物件建造，那么某些元素会开始承载超过局部功能的东西。一个房间变成记忆。一条道路变成命运。一场风暴变成社会失序。一面镜子变成自我分裂。下一篇将转向象征、母题与主题：文学如何让细节承载超出自身的世界。
 
-# 象征、母题与主题：细节如何承载超出自身的东西
+## 象征、母题与主题：细节如何承载超出自身的东西
 
 文学世界由具体事物建成：一个房间、一条道路、一封信、一场风暴、一面镜子、一处污迹、一朵花、一处伤口、一个名字。起初，每个事物似乎都是局部的。道路把人物带往某处。书信传递信息。镜子映出一张脸。风暴改变天气。伤口属于一具身体。但文学很少让细节只停留为它自身。它们会积聚压力。它们会返回。它们会连接相距遥远的场景。它们开始承载记忆、欲望、恐惧、历史或判断。文学中的一件东西可以是一件东西，同时又超出这件东西。
 
@@ -1260,7 +1269,8 @@ A story must end because form requires boundary. A story refuses to end because 
 因此，象征、母题与主题属于同一个过程：细节转化为结构。文学作品教读者如何注意自己的细节，然后通过让细节打开更大的世界来回报这种注意。最小的物件可能携带一段历史。重复短语可能暴露一处伤口。颜色可能把多个场景连接成隐藏论证。主题可能不是作为陈述出现，而是作为无处不在的压力被感到。
 
 下一篇可以转向体裁：悲剧、喜剧、抒情诗、史诗、小说、传奇、讽刺、哥特、现实主义、现代主义，以及文学给予期待以形状的多种形式。如果象征教细节承载超出自身的东西，那么体裁则在作品第一句话尚未结束之前，就已经教整部作品如何被阅读。
-# 体裁与期待：文学如何教人阅读
+
+## 体裁与期待：文学如何教人阅读
 
 没有任何文学作品从零开始。
 
@@ -1357,7 +1367,8 @@ A story must end because form requires boundary. A story refuses to end because 
 体裁是文学最深的本体论结构之一，因为在作品细节完全到来之前，它已经塑造了作品可以是什么。它给予世界一套期待语法。它告诉象征如何行动，情节如何移动，声音如何发声，人物可以过什么样的生活，读者应当带来什么样的注意力。
 
 但体裁从来不是最后的话。它是一个开端，一种压力，一种记忆。文学的生命在于继承形式与独特作品之间的相遇。每一种体裁都说：“世界通常是这样运行的。”每一部强有力的文学作品都会问：“如果并不是呢？”
-# 叙事层级与框架故事：故事里面为什么还有故事？
+
+## 叙事层级与框架故事：故事里面为什么还有故事？
 
 一个故事可以从某个人讲故事开始。
 
@@ -1464,7 +1475,8 @@ A story must end because form requires boundary. A story refuses to end because 
 文学不断把故事放进故事里，是因为人类经验本身就是分层的。人生活在继承来的神话、家庭轶事、官方历史、私人记忆、公共谎言、梦、忏悔、传闻、证词和未完成的故事之中。没有人只生活在事件中。人生活在框住事件的故事里，也生活在打破这些框架的故事里。
 
 叙事学序列的下一步可以转向不可靠叙述：不只是叙述者何时撒谎，而是叙述本身如何成为错误、自我保护、意识形态、创伤、欲望和形式不确定性的场域。
-# 不可靠叙述：当讲述本身不可信
+
+## 不可靠叙述：当讲述本身不可信
 
 叙述者开始说话，读者本能地想要相信。这是叙事最古老的习惯之一。一个声音先于完整世界而来；它命名房间，回忆过去，引入死者，解释动机，安排顺序，提供判断。如果没有某种初始信任，阅读就无法开始。每一个故事都要求读者在证据尚不足以检验它之前，先接受引导。
 
@@ -1549,7 +1561,8 @@ A story must end because form requires boundary. A story refuses to end because 
 每一次讲述都站在事件与听者之间。每个声音都会选择。每段记忆都会塑形。每种辩解都会隐藏。每次忏悔都在表演。每一种社会语言都携带盲目。不可靠叙述通过戏剧化言说与知道之间的裂缝，使这种条件变得可见。
 
 这个序列的下一步可以转向结尾、闭合与开放：叙事如何结束，为什么有些结尾让人感到不可避免，为什么另一些结尾显得虚假，以及为什么许多现代作品拒绝完成带来的安慰。
-# 结尾、闭合与开放：故事为什么必须结束，或拒绝结束
+
+## 结尾、闭合与开放：故事为什么必须结束，或拒绝结束
 
 叙事通过打开时间而开始。某件事已经发生，或者即将发生，或者早已发生但尚未被理解。一个声音开始说话。一条路出现。一具尸体被发现。一封信抵达。一个孩子离开家。一个陌生人进入城市。从那一刻起，读者就被放进期待之中。作品制造一种向前的压力：走向发现、重逢、惩罚、认出、婚姻、死亡、返回、忏悔、审判、沉默。
 
