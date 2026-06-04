@@ -49,7 +49,6 @@
       "dt",
       "dd",
       "pre",
-      "code",
       "summary",
       "details",
       ".no-text-indent",
@@ -61,8 +60,7 @@
       "mjx-container",
       ".katex",
       ".MathJax",
-      "pre",
-      "code"
+      "pre"
     ].join(",") // Descendants that disable indentation.
   };
 
