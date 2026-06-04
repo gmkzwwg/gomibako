@@ -209,49 +209,49 @@ defaults:                                                      # Define default 
 collections:                                                   # Define custom Jekyll collections.
   math:                                                        # Configure the mathematics collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "MATH"                            # Set the short display name for this collection.
 
   phil:                                                        # Configure the philosophy collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "PHIL"                            # Set the short display name for this collection.
 
   hist:                                                        # Configure the history collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "HIST"                            # Set the short display name for this collection.
 
   litr:                                                        # Configure the literature collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "LITR"                            # Set the short display name for this collection.
 
   comp:                                                        # Configure the computer science collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "COMP"                            # Set the short display name for this collection.
 
   misc:                                                        # Configure the miscellaneous collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "MISC"                            # Set the short display name for this collection.
 
   psyc:                                                        # Configure the psychology collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "PSYC"                            # Set the short display name for this collection.
 
   phys:                                                        # Configure the physics collection.
     output                : true                              # Generate public pages for documents in this collection. Boolean.
-    permalink             : /:title/              # Set the permalink pattern for this collection.
+    permalink             : /:collection/:title/              # Set the permalink pattern for this collection.
     sort_by               : "path"                            # Set the default sort field for this collection. candidates: date | title | name | order
     alias                 : "PHYS"                            # Set the short display name for this collection.
 
