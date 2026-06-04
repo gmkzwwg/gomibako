@@ -17672,39 +17672,395 @@ The story influenced feminist criticism, medical humanities, domestic Gothic, me
 
 ## 第十四编：现代主义、帝国危机与形式革命，约 1890—1945 年
 
+### Modernist Novel, c. 1899–1927
+
+| Tradition Knowledge             | Content                                                                                                                                                                                                                          |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Literary field**              | Early modernist fiction, psychological novel, frame narrative, colonial critique, memory novel, consciousness fiction, anti-realist narrative experiment.                                                                        |
+| **Historical setting**          | Late imperial Europe, colonial violence, fin-de-siècle skepticism, urban society, psychology, Bergsonian duration, the crisis of realism, and the approach or aftermath of World War I.                                          |
+| **Representative figures here** | **Joseph Conrad** and **Marcel Proust**.                                                                                                                                                                                         |
+| **Major works here**            | *Heart of Darkness* and *In Search of Lost Time*.                                                                                                                                                                                |
+| **Core transformation**         | The novel turns away from stable external realism toward mediation, memory, uncertainty, belated understanding, inner time, and the problem of narration itself.                                                                 |
+| **Core contrast**               | **Conrad** makes modernism dark, indirect, colonial, and morally ambiguous through framed oral narration. **Proust** makes modernism inward, temporal, social, and aesthetic through memory and the reconstruction of lost time. |
+| **Reading entrance**            | Read the modernist novel here as a crisis of knowledge. The question is no longer simply “what happened?” but “who remembers, who narrates, who interprets, and how can experience be recovered after it has already passed?”    |
+
+The modernist novel does not abandon realism simply by becoming obscure. It changes what reality means. In **Balzac**, society could still be mapped through money, marriage, class, and ambition. In **Flaubert**, reality had to be purified through style. In **James**, perception itself became unstable. With **Conrad** and **Proust**, the novel moves further: reality is not immediately available. It must be narrated through frames, recovered through memory, distorted by desire, or reconstructed through art.
+
+**Conrad**’s *Heart of Darkness* begins from a maritime yarn but becomes a critique of imperial knowledge. Its narrator **Marlow** tells a story about a voyage into the **Belgian Congo**, but the darkness he discovers is not simply geographical. The uploaded material emphasizes that Conrad’s breakthrough was the discovery of **Marlow** as first-person narrator, a mediating voice that allowed him to approach morally difficult material through distance, recollection, and oral performance. 
+
+**Proust**’s *In Search of Lost Time* begins from memory, sleep, childhood, and social life, but becomes one of the largest inquiries into time and art in world fiction. The material describes the whole work as a “treasure hunt” whose treasure is time and whose hiding place is the past; sensation, memory, jealousy, desire, and artistic euphoria become the substance of the novel. 
+
+*Conrad and Proust therefore open two great modernist routes. Conrad asks how one can narrate historical evil when every narrator is implicated in language, empire, and delayed perception. Proust asks how time can be lost, recovered, and transformed into art. One descends into colonial darkness; the other descends into memory. Both discover that the modern novel must become a machine for questioning its own access to truth.*
+
+#### Joseph Conrad, 1857–1924
+
+| Author Knowledge         | Content                                                                                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Birth name**           | **Józef Teodor Konrad Korzeniowski**.                                                                                                                                             |
+| **Identity**             | Polish-born English novelist, sailor, master mariner, and one of the major transitional figures between late realism and modernism.                                               |
+| **Languages**            | Polish by birth, French by education and early life, English as a later acquired language; English was not his first language and probably not even his second.                   |
+| **Major works**          | *Heart of Darkness*, *Lord Jim*, *Nostromo*, *The Secret Agent*, *Under Western Eyes*, *Victory*, “Youth,” and other sea tales and political novels.                              |
+| **Core narrator**        | **Charles Marlow**, a recurring seaman-narrator and Conrad’s major narrative discovery.                                                                                           |
+| **Core method**          | Frame narrative, delayed revelation, moral ambiguity, oral storytelling, irony, colonial and maritime settings, divided consciousness.                                            |
+| **Biographical pattern** | Polish aristocratic and nationalist background, life at sea, adult acquisition of English, transformation into English novelist.                                                  |
+| **Core problem**         | How can fiction represent moral darkness without pretending that narrator, reader, or civilization stand safely outside it?                                                       |
+| **Reading entrance**     | Read **Conrad** as a writer of mediated darkness. His stories rarely give events directly. They pass through memory, voice, hesitation, frame, rumor, and belated interpretation. |
+
+**Conrad** is an unusual English novelist because English was an acquired language. The uploaded material stresses the divided nature of his identity: Pole, sailor, and English writer; these three lives never fully merged, and that divided self helps explain the haunted ambiguity of his fiction. 
+
+His early fiction followed 19th-century models, especially **Flaubertian** irony and distanced narration. But the real discovery came when he found **Marlow**: an English seaman who tells stories to others, usually after the events have already taken place. This mattered formally because Conrad could approach action indirectly, as recollection and performance rather than transparent report. 
+
+*Conrad’s modernism begins with distance. The story is not simply there; it is told later, by a man who does not fully understand what he saw, to listeners who may not understand what they hear. Truth becomes something glimpsed through narrative fog.*
+
+##### Heart of Darkness, 1899 / 1902
+
+| Work Knowledge       | Content                                                                                                                                                           |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**            | *Heart of Darkness*.                                                                                                                                              |
+| **Literary form**    | Short novel / novella, frame narrative, colonial fiction, psychological and metaphysical journey, early modernist text.                                           |
+| **Publication**      | First published in 1899 in *Blackwood’s Magazine*; later collected in book form in 1902.                                                                          |
+| **Core figures**     | Marlow, Kurtz, the Intended, the Manager, the Russian trader, the Company’s agents, African workers and victims.                                                  |
+| **Central spaces**   | The Thames frame, the Company offices, the Congo River, the Central Station, the Inner Station.                                                                   |
+| **Historical basis** | Conrad’s 1890 Congo experience under Belgian colonial exploitation.                                                                                               |
+| **Core themes**      | Imperialism, hypocrisy, savagery, civilization, moral darkness, narration, fascination, racism, opacity, and the failure of European ideals.                      |
+| **Core problem**     | What does Marlow actually discover in the Congo: African darkness, European darkness, human darkness, or the darkness produced by imperial interpretation itself? |
+| **Reading entrance** | Do not read *Heart of Darkness* as a simple adventure into Africa. It is a story about Europe looking into its own violence and calling the result “darkness.”    |
+
+*Heart of Darkness* begins on the **Thames**, not in Africa. Marlow sits with other men on a yacht near London and begins to tell a story. This frame is essential. The Thames was once a river at the edge of Roman imperial knowledge; now it is the river of British imperial power. Before the Congo appears, Europe itself is placed inside imperial history.
+
+Marlow remembers his childhood fascination with maps. Blank spaces once seemed to promise exploration. But the blankest space on the map, when filled with rivers and names, becomes a place of darkness. The uploaded material highlights this paradox: knowledge does not simply illuminate the map; it may reveal a darker relation between exploration, naming, conquest, and ignorance. 
+
+Marlow travels to work for a European trading company in the Congo. The official language is civilization, progress, pity, science, and enlightenment. The material identifies the actual structure more bluntly: the company is looting the Congo for ivory, rubber, and raw materials through systematic brutality. 
+
+At the center of this system stands **Kurtz**. Before Marlow meets him, Kurtz is a voice, a rumor, a promise. He is supposed to be brilliant, eloquent, idealistic, the man who might redeem the enterprise. But at the Inner Station, Marlow finds that Kurtz has become mad within the logic of imperialism. He gathers ivory, dominates local people, surrounds himself with signs of violence, and reveals the truth of the colonial project not by opposing it, but by carrying it to its extreme.
+
+*The horror is that Kurtz is not an exception to empire. He is empire without its polite mask. He enters the Congo speaking of moral ideas and ends by exposing the appetite beneath them.*
+
+Marlow’s relation to Kurtz remains disturbing. A court or moral tribunal could condemn Kurtz easily. Yet Marlow remains fascinated by him and even loyal to him in some obscure sense. The uploaded material directly notes that this is something the novel can do differently from history or moral judgment: it can produce complexity where a legal or moral process would produce condemnation. 
+
+The ending deepens the ambiguity. Marlow returns to Europe and visits Kurtz’s Intended. She still believes in Kurtz’s nobility. Marlow lies to her about Kurtz’s final words, preserving a consoling illusion. This lie is not simply cowardice. It shows Marlow’s own uncertainty about whether civilization can live without protective falsehoods. The darkness has returned to Europe with him.
+
+**Artistic Features:**
+The first feature is **frame narration**. The anonymous outer narrator hands the story to Marlow, whose voice then mediates everything. The result is not direct realism but layered testimony.
+
+The second feature is **delayed revelation**. Kurtz is introduced through rumor before he appears. Africa, empire, and moral horror are gradually disclosed through fragments, pauses, and impressions.
+
+The third feature is **colonial irony**. Imperial language claims progress, but the actual world reveals greed, violence, absurd bureaucracy, and spiritual collapse.
+
+The fourth feature is **symbolic opacity**. River, fog, forest, darkness, ivory, voice, and silence are not fixed allegories. They gather meanings without becoming fully stable.
+
+**Comparative Perspective:**
+Compared with **Melville**’s *Moby-Dick*, Conrad also writes a journey into an immense, resistant environment. But Melville’s whale becomes metaphysical blankness, while Conrad’s Congo becomes the site where European imperial morality exposes itself as violence.
+
+Compared with **James**, Conrad inherits the frame narrative and the problem of interpretation. The uploaded material explicitly links Conrad’s frame narratives to experiments in storytelling also visible in **James**’s *The Turn of the Screw*. 
+
+Compared with **Kipling**’s imperial adventure world, *Heart of Darkness* is corrosive. It may begin in a magazine environment associated with exotic local color and imperial tale, but the material notes that its anti-imperial irony may have been hard for that readership to recognize. 
+
+Compared with later postcolonial fiction, *Heart of Darkness* is both ancestor and problem. It attacks imperial hypocrisy, but it also renders Africans largely through European perception. The uploaded books material notes both sides: Conrad chiefly exposes European colonizers, yet his treatment of African people has provoked the charge of racism. 
+
+**Theoretical Interface:**
+The novella is central to **postcolonial criticism**. It is one of the unavoidable texts for thinking about European imperialism, but it is also a contested text because its critique of empire is still mediated by European language and racial hierarchy.
+
+It is also central to **modernist narration**. The truth is not given by an omniscient narrator. It is performed by a speaker who remembers, hesitates, judges, conceals, and perhaps deceives himself.
+
+**Historical Position:**
+*Heart of Darkness* stands at the threshold of modernism. Its fragmented narration, moral ambiguity, colonial critique, and refusal of stable certainty prepare later modernist fiction. The material also identifies it as central to the evolution of postcolonial fiction, partly because later writers such as **Chinua Achebe** forced readers to reconsider its racial and narrative assumptions. 
+
+**Later Echoes:**
+The novella influenced modernist fiction, postcolonial literature, political allegory, war narratives, anti-imperial writing, film, and debates over whether critique can escape the structures it criticizes.
+
+*Heart of Darkness matters because it turns the imperial adventure into a narrative of contamination. Marlow goes to the Congo expecting to see a dark place; he returns having seen that European civilization carries its own darkness into the places it claims to enlighten. Conrad’s achievement is not moral purity. It is the invention of a form adequate to impurity: framed, delayed, troubled, complicit, and still unable to look away.*
+
+#### Marcel Proust, 1871–1922
+
+| Author Knowledge      | Content                                                                                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Full name**         | **Valentin Louis Georges Eugène Marcel Proust**.                                                                                                                                      |
+| **Identity**          | French novelist, essayist, critic, social observer, and one of the central writers of literary modernism.                                                                             |
+| **Major work**        | *À la recherche du temps perdu* / *In Search of Lost Time*, formerly often translated as *Remembrance of Things Past*.                                                                |
+| **Major early works** | *Pleasures and Days*, *Jean Santeuil*, critical essays, and translations / engagements with **Ruskin**.                                                                               |
+| **Writing condition** | Much of the great novel was written in a cork-lined bedroom in Paris; the source material connects this to Proust’s long struggle with asthma and need for enclosed spaces.           |
+| **Core method**       | Memory, involuntary association, social observation, long syntax, jealousy, desire, aesthetic revelation, and the transformation of life into art.                                    |
+| **Core problem**      | How can lost time be recovered, not by returning to the past, but by discovering the form through which past and present can be joined?                                               |
+| **Reading entrance**  | Read **Proust** as the novelist of time becoming art. His subject is not merely memory, but the conditions under which memory reveals a reality deeper than chronological experience. |
+
+**Proust** can be misleading if reduced to autobiography. The uploaded material stresses that his novel reworks people, places, and episodes from his life, but that knowing the real-life models only gives the raw material. Proust transforms them into a fictional world, remaking places, people, and memories through imagination. 
+
+This distinction is essential. The narrator is often called **Marcel**, but he is not simply Proust. Another uploaded lecture note states that the narrator is a character, not the author himself; the work is not a mirror of manners, not autobiography, not history, but an imaginative construction with a “Proustian crystal” between author, narrator, and world. 
+
+*Proust’s modernism lies in this transformation. Life does not become literature by being copied. It becomes literature when sensations, memories, social illusions, desire, jealousy, and time are placed into form.*
+
+##### In Search of Lost Time, 1913–1927
+
+| Work Knowledge       | Content                                                                                                                                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **French title**     | *À la recherche du temps perdu*.                                                                                                                                                                       |
+| **English titles**   | *In Search of Lost Time*; older translation title *Remembrance of Things Past*.                                                                                                                        |
+| **Literary form**    | Modernist novel-cycle, memory novel, social novel, Künstlerroman, psychological novel, philosophical fiction.                                                                                          |
+| **Publication**      | Seven parts published between 1913 and 1927.                                                                                                                                                           |
+| **Main parts**       | *Swann’s Way*, *In the Shadow of Young Girls in Flower*, *The Guermantes Way*, *Sodom and Gomorrah*, *The Prisoner*, *The Fugitive*, *Time Regained*.                                                  |
+| **Scale**            | The source material describes the work as seven parts, published in French in fifteen volumes, covering more than half a century and containing more than two hundred characters.                      |
+| **Core figures**     | Marcel / the narrator, Swann, Odette, Gilberte, Albertine, the Guermantes, Baron de Charlus, Saint-Loup, Françoise, the Verdurins.                                                                     |
+| **Core spaces**      | Combray, Paris, Balbec, salons, bedrooms, roads, churches, gardens, seaside hotels, the Guermantes world, the Verdurin circle.                                                                         |
+| **Core themes**      | Time, memory, childhood, desire, jealousy, snobbery, aristocracy, sexuality, art, perception, illness, social change, and aesthetic vocation.                                                          |
+| **Core problem**     | How can the narrator discover that the life he thought he had lost was the necessary material for the book he must write?                                                                              |
+| **Reading entrance** | Do not read *In Search of Lost Time* as a long social memoir. It is a novel about how consciousness learns to transform involuntary memory, social disappointment, love, jealousy, and aging into art. |
+
+The novel begins with sleep. The narrator drifts among rooms, times, and states of consciousness. The opening makes identity unstable: the self is bound to recollection, to rooms once slept in, to the shifting relation between present body and past spaces. The uploaded material notes that the first sentence itself plunges the reader into layers of time and the narrator’s mental world. 
+
+The memory of **Combray** becomes decisive. The famous madeleine episode is not important because a cake is charming. It matters because taste unlocks a world. Proust turns a small sensation into a recovered universe: childhood, family, town, church, rooms, gardens, walks, social names. The material notes that Proust’s real-life memory involved dry toast and a more limited recollection, but in the novel he transforms it into the madeleine and into the return of all Combray. 
+
+*The madeleine is modernist not because it is obscure, but because it changes the logic of narration. Plot no longer begins from action. It begins from sensation recovering time.*
+
+Combray also introduces the two “ways”: **Swann’s way** and the **Guermantes way**. At first they are walks in different directions. Later they become social, erotic, and historical paths. The narrator will come to know **Swann**’s love life, the Guermantes’ aristocratic power, and eventually the convergence of worlds that once seemed separate. The uploaded material explicitly presents these two walks as topographical at first, then socially and structurally central to the entire novel. 
+
+The Swann-Odette story shows love as misrecognition, projection, jealousy, and aesthetic construction. Swann does not simply love Odette as she is; he composes her through art, music, fantasy, social anxiety, and possessive suffering. Later the narrator repeats similar structures with **Gilberte** and **Albertine**. Desire in Proust is rarely clear possession. It is often a machine that produces images, suspicion, pain, and interpretation.
+
+Proust’s social world is vast but not Balzacian in the same way. The aristocracy, salons, bourgeois circles, artists, servants, Jews, homosexual subcultures, provincial and Parisian spaces all move through historical change. Yet society is not merely external structure. Social names are fantasies before they are facts. The **Guermantes** first appear as a magical name, then as disappointing people, then as part of a larger history of class transformation and aging.
+
+The final movement, *Time Regained*, clarifies the whole structure. The narrator discovers that reality is not recovered by exhaustive description alone, but by linking sensations and memories through style. The uploaded material summarizes this late revelation: reality consists in a relation between sensations and memories, and the writer must recapture this relation through art, metaphor, and timeless words. 
+
+**Artistic Features:**
+The first feature is **involuntary memory**. Memory does not return because the will commands it. It returns through sensation: taste, sound, texture, uneven paving stones, napkin, music, smell, or bodily shock.
+
+The second feature is **inner duration**. Time is not only clock-time. It is layered, folded, recovered, lost, misrecognized, and transformed by consciousness. The Nabokov material connects Proust’s ideas of duration, subliminal memory, intuition, and inner inspiration to **Bergsonian** thought, though Proust’s art is not reducible to philosophy. 
+
+The third feature is **social perception as illusion**. Names, titles, salons, and reputations generate fantasies before they yield knowledge. Proust’s society is a theatre of delayed disenchantment.
+
+The fourth feature is **art as recovery of time**. Life becomes meaningful only when the narrator discovers the form that can hold it. The novel is therefore also a novel about the birth of the novel itself.
+
+**Comparative Perspective:**
+Compared with **Balzac**, Proust also constructs a vast social world, but Balzac maps society through money, profession, and ambition, while Proust maps society through memory, desire, names, perception, and time.
+
+Compared with **Flaubert**, Proust inherits the severity of style but replaces Flaubert’s impersonal irony with long, recursive sentences that track consciousness as it qualifies itself.
+
+Compared with **Joyce**, both writers transform everyday consciousness into modernist form. Joyce condenses epic scale into a single Dublin day; Proust expands memory until one life contains a whole vanished world.
+
+Compared with **Conrad**, both are modernist because both make narration indirect. Conrad frames moral darkness through oral recollection; Proust frames lost time through involuntary memory and aesthetic discovery.
+
+**Theoretical Interface:**
+The work is central to **memory studies** and **modernist time**. Time is not simply represented; it becomes the novel’s medium and problem.
+
+It is also central to **Künstlerroman**, the novel of an artist’s formation. The narrator’s life appears wasted until he discovers that its very waste, delay, jealousy, illness, snobbery, and disappointment have become the material for art.
+
+Finally, it is central to **the distinction between author and narrator**. The uploaded material warns against identifying Proust directly with the narrator; the narrator is a character inside the work, and the book he imagines writing is itself part of the novel’s fiction. 
+
+**Historical Position:**
+*In Search of Lost Time* is one of the central works of modernist fiction and one of the largest transformations of the European novel. Its seven-part structure, long composition, posthumous completion, and vast social and psychological scale make it less a conventional novel than a lifetime architecture of memory and art.
+
+**Later Echoes:**
+Proust influenced modernist fiction, autofiction, memory writing, queer literary studies, theories of time, psychological fiction, narrative philosophy, and later writers concerned with how the past survives inside sensation.
+
+*In Search of Lost Time matters because it changes what a novel can seek. The goal is not merely to tell a life, expose a society, or resolve a plot. The goal is to discover the conditions under which life, once lost, can become form. Proust’s answer is neither nostalgia nor simple recollection. Lost time is recovered only when sensation, memory, and style meet. The past cannot be lived again, but it can be transformed into art.*
+
+**Overall Position:**
+**Conrad** and **Proust** show that modernist fiction begins by damaging confidence in direct narration. Conrad’s Marlow cannot simply report imperial truth; he circles it, frames it, darkens it, and leaves the reader inside moral uncertainty. Proust’s narrator cannot simply remember life; he must discover how memory works and why art alone can transform scattered experience into reality.
+
+*The modernist novel matters because it breaks the old trust that the world can be narrated from outside. Empire must be told by a compromised witness. Childhood must be recovered through involuntary sensation. Society must be seen through desire and illusion. The self must be distinguished from the narrator who speaks it. After Conrad and Proust, the novel becomes less a window than an apparatus: a device for testing darkness, memory, time, and the unstable truth of consciousness.*
 
 
-#### 乔伊斯
+#### James Joyce, 1882–1941
 
-##### 《都柏林人》
+| Author Knowledge      | Content                                                                                                                                                                          |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identity**          | Irish novelist, short-story writer, poet, expatriate modernist, and one of the decisive figures of 20th-century fiction.                                                         |
+| **Major works**       | *Dubliners*, *A Portrait of the Artist as a Young Man*, *Ulysses*, *Finnegans Wake*. The supplementary canon list places these four works together as Joyce’s central sequence.  |
+| **Cultural position** | Irish by obsession, European by exile, cosmopolitan by residence, and formally radical in literary method.                                                                       |
+| **Major places**      | Dublin, Trieste, Zurich, Paris. Joyce left Ireland with Nora Barnacle in 1904 and wrote much of his Irish world from outside Ireland.                                            |
+| **Core method**       | Epiphany, stream of consciousness, mythic structure, stylistic parody, linguistic experiment, city-mapping, and obsessive return to Dublin.                                      |
+| **Core problem**      | How can a writer leave nation, church, and inherited morality, yet make them the inexhaustible material of art?                                                                  |
+| **Reading entrance**  | Read **Joyce** as the writer who turns exile into precision. He leaves Dublin physically, but returns to it formally, morally, linguistically, and obsessively.                  |
 
-##### 《尤利西斯》
+**Joyce** stands after **Conrad** and **Proust** as another route into modernism. **Conrad** makes narration indirect through frame and moral darkness. **Proust** makes narrative unfold through memory and time. **Joyce** makes the city, the body, language, myth, Catholic memory, sexual life, and ordinary consciousness become the substance of form itself.
 
-#### 福特
+The source material stresses that moving from **Henry James** to **James Joyce** feels like a “quantum jump” in storytelling: Joyce is still a realist writer in *Dubliners*, but the realism is already charged with poetic sensibility, epiphany, and modernist pressure.  In *Ulysses*, that pressure becomes one of the most radical formal transformations of the modern novel.
 
-##### 《好兵》
+##### Dubliners, 1914
 
-#### 卡夫卡
+| Work Knowledge             | Content                                                                                                                                                                                                                                                                                   |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**                  | *Dubliners*.                                                                                                                                                                                                                                                                              |
+| **Literary form**          | Short-story collection, urban realism, modernist threshold text, cycle of paralysis and epiphany.                                                                                                                                                                                         |
+| **Publication**            | 1914, after long publication difficulty.                                                                                                                                                                                                                                                  |
+| **Core setting**           | Dublin: streets, schools, houses, shops, boarding houses, offices, parties, churches, and public rooms.                                                                                                                                                                                   |
+| **Representative stories** | “The Sisters,” “Araby,” “Eveline,” “Two Gallants,” “A Little Cloud,” “Counterparts,” “A Painful Case,” “Ivy Day in the Committee Room,” “The Dead.”                                                                                                                                       |
+| **Core concept**           | `Epiphany`: a moment of sudden revelation, often small, painful, and morally exposing.                                                                                                                                                                                                    |
+| **Core themes**            | Paralysis, Catholic pressure, poverty, shame, frustrated desire, colonial dependency, failed escape, ordinary disappointment, and spiritual deadness.                                                                                                                                     |
+| **Core problem**           | How can a city be represented not through monumental history, but through the repeated failure of its people to act, love, leave, speak, or awaken?                                                                                                                                       |
+| **Reading entrance**       | Do not read *Dubliners* only as realistic sketches of Dublin life. The stories are arranged like a moral anatomy of paralysis: childhood, adolescence, maturity, and public life all lead toward “The Dead,” where private marriage, national identity, and mortality dissolve into snow. |
 
-##### 《变形记》
+*Dubliners* is written in a relatively familiar realist mode, but it already pushes beyond ordinary realism. The source material says the collection presents portraits of a desolate, grimy Dublin, ordinary Dublin lives, and the entrenchment of the Catholic Church; it also notes that the stories are not technically modernistic in the full *Ulysses* sense, but they transgress normal conventions through subject matter and their attack on the city Joyce could not stop writing about.  
 
-##### 《审判》
+“Araby” gives the pattern in miniature. A boy turns desire into romance, sees the bazaar as an exotic threshold, and arrives too late into a space of dim commerce and anticlimax. The disappointment is not only sexual or childish; it is aesthetic and spiritual. *The boy discovers that the glowing image through which he organized his longing cannot survive contact with ordinary Dublin reality.*
 
-#### 伍尔夫
+“Eveline” presents escape as paralysis. Eveline has a chance to leave with Frank, but the pressure of family duty, fear, memory, and inherited obligation freezes her at the quay. The story does not need melodrama. The drama lies in the failure to move.
 
-##### 《达洛维夫人》
+“The Dead” gives the collection its large final movement. **Gabriel Conroy**, a cultivated Dublin man, attends a Christmas party, hears his wife **Gretta** remember a dead young lover, and realizes that her inner life has exceeded his possession of her. The source material describes Gabriel’s epiphany as the discovery that his wife may have loved another man more than him, and connects the snow falling over Ireland with life, love, marriage, the dead, and Gabriel’s own fear that he too may be spiritually dead. 
 
-##### 《到灯塔去》
+**Artistic Features:**
+The first feature is **epiphany without consolation**. Joyce’s epiphanies usually do not save characters. They reveal paralysis, vanity, fear, deadness, or missed life.
 
-#### 福克纳
+The second feature is **city-cycle structure**. The stories move from childhood to public life, making Dublin not just a setting but a moral organism.
 
-##### 《喧哗与骚动》
+The third feature is **ordinary speech under symbolic pressure**. Joyce’s prose is restrained, but objects, streets, names, songs, and rooms accumulate significance.
 
-##### 《我弥留之际》
+The fourth feature is **realism at the edge of modernism**. The stories still look realistic, but their real force lies in perception, symbolic arrangement, and moments of revelation.
 
-##### 《押沙龙，押沙龙！》
+**Comparative Perspective:**
+Compared with **Chekhov**, Joyce inherits the modern short story’s refusal of neat plot and moral closure. But where Chekhov often lets life remain gently unresolved, Joyce’s Dublin world feels more trapped, ecclesiastical, colonial, and morally airless.
 
-### 现代主义诗歌
+Compared with **Flaubert**, Joyce shares an intense devotion to style and hatred of cliché. But Joyce’s early realism is more local, Catholic, urban, and epiphanic.
+
+Compared with **Tagore** and **Ichiyō**, *Dubliners* belongs to the global expansion of modern short fiction: small lives, social constraint, and moments of recognition replace the older machinery of large plot.
+
+**Theoretical Interface:**
+*Dubliners* is central to **epiphany** as modernist narrative device. An epiphany is not a miracle in the old theological sense, though Joyce takes the term from Catholic vocabulary; it is a secular revelation of truth within ordinary life. 
+
+It is also central to **paralysis** as urban form. Dublin is not only poor or provincial; it is spiritually immobilized.
+
+**Historical Position:**
+*Dubliners* is Joyce’s first major prose book and prepares the later fiction. The source material notes that by the time Joyce began *Ulysses*, *Dubliners* had only recently found a publisher, which shows that Joyce’s later monument grew from a precarious early career rather than from secure fame. 
+
+**Later Echoes:**
+The collection shaped the modern short story, urban realism, epiphanic fiction, Irish modernism, and later narrative cycles about cities and failed awakening.
+
+*Dubliners matters because it makes the ordinary city morally luminous and spiritually suffocating at once. Joyce does not need heroic action. A boy at a bazaar, a girl at a quay, a man listening to his wife’s memory, snow falling across Ireland: these are enough to show a civilization unable to come fully alive.*
+
+##### Ulysses, 1922
+
+| Work Knowledge       | Content                                                                                                                                                                                                                                |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Title**            | *Ulysses*.                                                                                                                                                                                                                             |
+| **Literary form**    | Modernist novel, city epic, stream-of-consciousness novel, comic anti-epic, mythic parallel novel, stylistic laboratory.                                                                                                               |
+| **Publication**      | Published in book form in Paris in 1922 by **Sylvia Beach** at **Shakespeare and Company**; the source material notes that it appeared on Joyce’s fortieth birthday.                                                                   |
+| **Historical day**   | 16 June 1904, later known as `Bloomsday`.                                                                                                                                                                                              |
+| **Core figures**     | Leopold Bloom, Stephen Dedalus, Molly Bloom, Blazes Boylan, Buck Mulligan, Dublin itself.                                                                                                                                              |
+| **Mythic structure** | Modern Dublin is mapped against **Homer**’s *Odyssey*: Bloom / Odysseus, Stephen / Telemachus, Molly / Penelope.                                                                                                                       |
+| **Core method**      | Stream of consciousness, interior monologue, parodic styles, mythic method, bodily realism, linguistic experiment, city mapping.                                                                                                       |
+| **Core problem**     | Can one ordinary day in an ordinary city become an epic of modern consciousness?                                                                                                                                                       |
+| **Reading entrance** | Do not read *Ulysses* as a puzzle for specialists only. Its difficulty comes from a simple but radical ambition: to make one day, one city, three ordinary lives, and the full range of bodily and mental experience carry epic scale. |
+
+*Ulysses* compresses the structure of **Homer**’s *Odyssey* into one day in Dublin. **Leopold Bloom**, a Jewish advertising canvasser, leaves home in the morning, wanders the city, encounters death, food, sex, journalism, nationalism, birth, violence, memory, temptation, and humiliation, then returns home at night to **Molly Bloom**, knowing that **Blazes Boylan** has visited her during the day. The source material makes the Homeric irony clear: Homer’s Odysseus slaughters the suitors, while Bloom takes no revenge and accepts Molly’s adultery with equanimity. 
+
+Bloom is the anti-heroic hero of modernism. He is not warrior, king, saint, aristocrat, or tragic rebel. He sells advertising space, eats, defecates, worries, remembers his dead son Rudy, corresponds mildly and erotically with a typist, watches Gerty MacDowell at the beach, endures anti-Semitic hostility, and becomes a temporary father-figure to **Stephen Dedalus**. The source material describes him as an insignificant Jewish clerk in Dublin, a deliberately unheroic center of consciousness. 
+
+Stephen brings another line into the novel: young artist, intellectual, son without stable father, former protagonist of *A Portrait of the Artist as a Young Man*. Bloom and Stephen become a modern father-son pair without biological relation. Their meeting does not solve their lives, but it gives the novel its strongest human tenderness.
+
+Molly’s final monologue, the “Penelope” episode, gives the novel one of its most famous endings. The source material notes that the section is written as a continuous stream of consciousness, with only a few sentences stretching across pages.  Molly is not a faithful Penelope in the Homeric sense; she is erotic, remembering, bodily, comic, unfaithful, alive. The novel ends not with heroic closure, but with the motion of a woman’s mind drifting through memory, sex, Gibraltar, marriage, resentment, and affirmation.
+
+The publication history belongs to the work’s meaning. The source material records the role of **Harriet Shaw Weaver**, **Margaret Anderson**, **Jane Heap**, and **Sylvia Beach** in supporting, serializing, defending, and publishing the novel; it also notes censorship, confiscations, legal trouble, obscenity conviction, and the Paris publication in February 1922.  This matters because *Ulysses* did not merely represent modernity. Its publication itself became a modernist event: little magazines, women publishers, censorship, expatriate networks, and the international avant-garde all converged around it.
+
+**Artistic Features:**
+The first feature is **mythic method**. *Ulysses* does not retell *The Odyssey* simply; it uses Homeric structure to give ordinary modern life epic resonance and comic deflation at the same time.
+
+The second feature is **stream of consciousness**. Joyce enters thought as it moves through memory, sensation, language, desire, association, and bodily rhythm.
+
+The third feature is **stylistic metamorphosis**. The novel changes style repeatedly: newspaper headlines, catechism, drama, parody, sentimental prose, scholastic argument, bodily interiority, and verbal extravagance.
+
+The fourth feature is **total city realism**. Dublin is mapped through streets, pubs, newspapers, churches, shops, cemeteries, hospitals, brothels, homes, and bodily routines. Joyce’s realism includes mud, food, sex, waste, advertisements, songs, puns, and political talk.
+
+**Comparative Perspective:**
+Compared with **Homer**, Joyce replaces heroic wandering with urban circulation. The sea voyage becomes a city day; monsters become social, linguistic, sexual, and psychological encounters.
+
+Compared with **Proust**, Joyce also turns inward, but not through the long recovery of memory alone. Proust builds time through recollection; Joyce builds consciousness through simultaneity, bodily immediacy, and stylistic experiment.
+
+Compared with **Conrad**, both writers use inherited narrative forms against themselves. Conrad turns imperial adventure into moral darkness; Joyce turns epic into comic urban interiority.
+
+Compared with **Dante**, *Ulysses* also creates a total city-world. But Joyce’s Dublin is not ordered by divine judgment. It is ordered by language, wandering, bodily life, mythic pattern, and comic accident.
+
+**Theoretical Interface:**
+*Ulysses* is central to **modernist mythic structure**. Myth is not an escape from modernity; it is a frame that makes modern fragmentation legible.
+
+It is also central to **the body in modernism**. Joyce refuses to separate thought from digestion, sexuality, urination, fatigue, smell, and bodily embarrassment.
+
+Finally, it is central to **style as content**. Each episode’s method is part of what it means. The novel is not one story told in one style; it is a field of styles testing how reality changes when language changes.
+
+**Historical Position:**
+The source material calls *Ulysses* the “definitive modernist novel” and places its 1922 publication as one of the key events of modernism.  It remains one of the central works for understanding the modern novel’s break with linear realism.
+
+**Later Echoes:**
+*Ulysses* influenced **Woolf**, **Faulkner**, **Beckett**, **Borges**, postmodern fiction, stream-of-consciousness writing, city novels, encyclopedic fiction, and literary experiments in bodily language, parody, and mythic structure.
+
+*Ulysses matters because it proves that ordinary life can bear epic weight without ceasing to be ordinary. Bloom is not Odysseus because he slays enemies; he is modern Odysseus because he endures, wanders, thinks, desires, suffers, returns, and does not take revenge. Joyce’s epic is comic, bodily, Jewish-Irish, urban, obscene, tender, and linguistic. It makes one day large enough for world literature.*
+
+#### Ford Madox Ford, 1873–1939
+
+| Author Knowledge     | Content                                                                                                                                                                                       |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identity**         | English novelist, editor, critic, memoirist, and major transitional figure in British modernist fiction.                                                                                      |
+| **Major works**      | *The Good Soldier*, *Parade’s End*, critical prose, memoirs, and editorial work. The supplementary canon list includes both *Parade’s End* and *The Good Soldier* under **Ford Madox Ford**.  |
+| **Literary circle**  | Associated with **Joseph Conrad**, literary impressionism, modernist form, and the critique of straight chronological narration.                                                              |
+| **Core method**      | Unreliable narration, delayed disclosure, non-linear form, impressionistic reconstruction, moral ambiguity, and retrospective self-deception.                                                 |
+| **Core problem**     | How can a novel represent the way people actually come to know others: not in chronological order, but through fragments, impressions, revisions, revelations, and misreadings?               |
+| **Reading entrance** | Read **Ford** as a novelist of belated knowledge. His fiction does not move in a clean line because moral understanding does not move in a clean line.                                        |
+
+**Ford** is important because he gives modernist fiction a theory of form closely related to acquaintance. One does not come to know another person from birth to death in orderly sequence. One meets an impression first, then gradually revises it. The source material explicitly connects this idea to Ford and *The Good Soldier*: when character is unstable or changeable, the novel need not begin at the beginning; it can begin in the middle, move backward, move forward, and reconstruct a person through broken revelation. 
+
+This places Ford near **Conrad**, but with a different moral atmosphere. Conrad’s broken narration often leads toward imperial darkness, political violence, or metaphysical unease. Ford’s broken narration often unfolds inside marriage, adultery, social manners, English gentility, Catholic-Protestant tension, money, illness, and the self-protective lies of respectable people.
+
+##### The Good Soldier, 1915
+
+| Work Knowledge        | Content                                                                                                                                                                                                  |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Full title**        | *The Good Soldier: A Tale of Passion*.                                                                                                                                                                   |
+| **Literary form**     | Modernist novel, unreliable narrative, adultery novel, non-linear confession, psychological-moral reconstruction.                                                                                        |
+| **Publication**       | 1915.                                                                                                                                                                                                    |
+| **Core figures**      | John Dowell, Florence Dowell, Edward Ashburnham, Leonora Ashburnham, Nancy Rufford.                                                                                                                      |
+| **Narrative voice**   | John Dowell, an American narrator who tells the story retrospectively, confusedly, and unreliably.                                                                                                       |
+| **Central situation** | Two apparently respectable couples form an intimate social circle; beneath the surface lie adultery, manipulation, emotional cruelty, religious conflict, illness, and suicide.                          |
+| **Core problem**      | How much can a narrator fail to know about his own life, even while telling it?                                                                                                                          |
+| **Reading entrance**  | Do not read *The Good Soldier* as a straightforward story of adultery. Its real subject is belated interpretation: Dowell tells a story he does not fully understand, about people he misread for years. |
+
+*The Good Soldier* famously begins with the claim that this is “the saddest story.” The sadness is not only what happens to the characters. It is also the sadness of narration after knowledge has come too late. **John Dowell** looks back on years of intimacy with **Edward** and **Leonora Ashburnham**, and with his wife **Florence**, only gradually revealing that what seemed to be civilized friendship was built on deception, adultery, illness, and social performance.
+
+Dowell is not a simple liar. He is worse and more interesting: a narrator whose innocence may be stupidity, self-protection, emotional incapacity, repression, or belated shock. He gives information out of order, corrects himself, returns to earlier events, withholds without always knowing he withholds, and makes the reader perform the work of reconstruction.
+
+This non-linear structure is not decorative. It is the novel’s meaning. The source material’s account of Ford’s formal principle is directly relevant: fiction should not always go “straight forward,” because acquaintance with another person happens by impression, revision, backward and forward movement, and late discovery.  *The Good Soldier* makes this theory painful. Dowell did not know his wife, his friends, or himself; the broken chronology is the shape of that failure.
+
+**Edward Ashburnham**, the “good soldier,” is outwardly honorable, charming, English, masculine, and socially admirable. But his goodness is unstable. He is generous, weak, erotic, sentimental, irresponsible, and destructive. **Leonora** is controlled, Catholic, managerial, wounded, and morally formidable. **Florence** is manipulative and self-inventing. **Nancy** becomes the final object of Edward’s dangerous idealization.
+
+The story of passion here is not romantic liberation. It is a system of damage. Desire moves through marriage, religion, class, money, illness, secrecy, and reputation. The apparent stability of Edwardian civility becomes an arrangement of concealment. *Ford’s modernism is quiet but corrosive: the old social surface remains polished, while the narrative slowly proves that polish is a way of hiding moral ruin.*
+
+**Artistic Features:**
+The first feature is **unreliable narration**. Dowell’s account is not stable evidence. The reader must read against him, through him, and sometimes despite him.
+
+The second feature is **non-linear disclosure**. The novel moves backward and forward because understanding itself comes backward and forward. This aligns with Ford’s modernist rejection of straight chronological form. 
+
+The third feature is **impressionist structure**. Events appear first as impressions, then are reinterpreted. Social surfaces are not false in a simple sense; they are partial and misleading.
+
+The fourth feature is **moral ambiguity inside respectability**. The novel’s world is not criminal, slumlike, or overtly violent. Its violence lies in gentility, marriage, management, silence, and delayed truth.
+
+**Comparative Perspective:**
+Compared with **James**, Ford inherits the drama of perception, but makes the narrator less refined and more compromised. James often gives consciousness as subtle interpretation; Ford gives consciousness as failure to understand.
+
+Compared with **Conrad**, Ford shares delayed narration and broken chronology. But Conrad’s Marlow often circles around moral darkness as a teller who knows the difficulty of telling; Dowell often does not know the degree of his own confusion.
+
+Compared with **Flaubert**, Ford’s debt is visible in the discipline of irony and the exposure of romantic illusion. Yet Ford’s form is more fragmented and retrospective than Flaubert’s impersonal architecture.
+
+Compared with **Proust**, both writers treat knowledge as belated and revisional. Proust recovers time through memory and art; Ford recovers social truth through narrative breakdown.
+
+**Theoretical Interface:**
+*The Good Soldier* is central to **unreliable narration**. The narrator is not merely mistaken about a few facts; his whole relation to knowledge is suspect.
+
+It is also central to **modernist temporality**. The past is not presented in order because the past was never understood in order. Narrative form imitates the process of delayed recognition.
+
+Finally, it is central to **the collapse of Edwardian moral confidence**. The novel appears to belong to a world of polished manners, military honor, marriage, and Christian order. It gradually shows that these forms no longer guarantee truth.
+
+**Historical Position:**
+*The Good Soldier* belongs to the same modernist shift that includes **Conrad**, **James**, **Joyce**, **Proust**, and **Woolf**: the shift from stable character and linear plot toward consciousness, mediation, and fractured knowledge. The source material specifically names *The Good Soldier* as an example of the new form that begins in the middle and works backward and forward across the past. 
+
+**Later Echoes:**
+The novel influenced modern unreliable narration, retrospective confession, non-linear fiction, marriage-disillusion novels, and later fiction built around partial knowledge and moral reconstruction.
+
+*The Good Soldier matters because it makes ignorance narrative. Dowell tells the story because he finally knows something; he tells it badly because he still does not know enough. The result is one of modernism’s most quietly devastating forms: a civilized voice trying to assemble the ruins of a life it failed to perceive while living it.*
+
+**Extended Position within the Modernist Novel:**
+**Joyce** and **Ford** push modernism in two different but related directions. Joyce expands the novel until one day in Dublin becomes epic, comic, bodily, mythic, and linguistically inexhaustible. Ford compresses the novel into retrospective damage, where a narrator’s broken order reveals the failure of social and marital knowledge.
+
+*After Conrad and Proust, the modernist novel has already lost confidence in direct narration. Joyce radicalizes that loss into abundance: consciousness, myth, city, body, and style proliferate. Ford radicalizes it into uncertainty: the narrator cannot even arrange his own life in truthful order. Together, they show that modernism is not one technique. It is a crisis in how fiction knows: through memory, voice, myth, bodily flow, broken chronology, and the belated recognition that the life one lived may not have been understood at all.*
+
+
+
 
 #### 叶芝
 
