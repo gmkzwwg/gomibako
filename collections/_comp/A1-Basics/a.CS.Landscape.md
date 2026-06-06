@@ -7822,7 +7822,7 @@ For the philosophy of the relationship, the writings on the nature of computer s
 |---|---|---|
 | Graham, Knuth & Patashnik, *Concrete Mathematics* (2nd ed.) | The bridge text; CS mathematics | Depth |
 | Knuth, *The Art of Computer Programming* | Mathematical analysis of algorithms; the monument | Reference |
-| Knuth, *Selected Papers on Computer Science* | Reflections on the relationship from within | Primary Source |
+| Knuth, *Selected Papers on Computer Science* | Reflections on the relationship from within | Auxiliary |
 
 **The Dialogue: Proofs, Programs, and Foundations**
 
@@ -7915,9 +7915,9 @@ For entropy as the unifying concept, the information-theoretic formulation of st
 | Resource | Role | Type |
 |---|---|---|
 | Feynman, *Feynman Lectures on Computation* | The bridge text; physics of computation | Depth |
-| Landauer, "Irreversibility and Heat Generation" (1961) | Landauer's principle; primary source | Primary Source |
-| Bennett, "The Thermodynamics of Computation" (1982) | Reversible computation; Maxwell's demon resolved | Primary Source |
-| Jaynes, "Information Theory and Statistical Mechanics" (1957, free) | Entropy unification at its source | Primary Source |
+| Landauer, "Irreversibility and Heat Generation" (1961) | Landauer's principle; foundational paper | Depth |
+| Bennett, "The Thermodynamics of Computation" (1982) | Reversible computation; Maxwell's demon resolved | Depth |
+| Jaynes, "Information Theory and Statistical Mechanics" (1957, free) | Entropy unification at its source | Depth |
 
 **Quantum Information and the Deeper Connections**
 
@@ -7931,8 +7931,8 @@ Seth Lloyd's **Programming the Universe** (2006) presents, accessibly and specul
 |---|---|---|
 | Nielsen & Chuang, *Quantum Computation and Quantum Information* | The fused field, rigorously | Depth |
 | Susskind, *The Black Hole War* | Information in foundational physics, accessibly | Depth |
-| Wheeler, "Information, Physics, Quantum" (1989) | "It from bit"; primary source | Primary Source |
-| Lloyd, *Programming the Universe* | The universe as computer; speculative | Depth |
+| Wheeler, "Information, Physics, Quantum" (1989) | "It from bit"; foundational essay | Depth |
+| Lloyd, *Programming the Universe* | The universe as computer; speculative | Auxiliary |
 
 #### Traps
 
@@ -8016,7 +8016,7 @@ For an accessible synthesis, Pinker's **How the Mind Works** (1997) presents the
 |---|---|---|
 | Boden, *Mind as Machine* (2 vols.) | Comprehensive history of the relationship | Reference |
 | Fodor, *The Language of Thought* | Symbolic computational theory of mind | Depth |
-| Searle, "Minds, Brains, and Programs" (1980) | The Chinese Room; the central critique | Primary Source |
+| Searle, "Minds, Brains, and Programs" (1980) | The Chinese Room; the central critique | Depth |
 | Dreyfus, *What Computers Still Can't Do* | The embodiment-grounded critique | Depth |
 | Hofstadter, *Gödel, Escher, Bach* | Formal systems, computation, and mind | Depth |
 
@@ -8031,7 +8031,7 @@ For embodiment, Lakoff and Johnson's **Philosophy in the Flesh** (1999) and **Me
 | Resource | Role | Type |
 |---|---|---|
 | Rumelhart & McClelland, *Parallel Distributed Processing* | Connectionism's foundational text | Depth |
-| Fodor & Pylyshyn, "Connectionism and Cognitive Architecture" (1988) | The systematicity critique of connectionism | Primary Source |
+| Fodor & Pylyshyn, "Connectionism and Cognitive Architecture" (1988) | The systematicity critique of connectionism | Depth |
 | Lakoff & Johnson, *Philosophy in the Flesh* | Embodied grounding of abstract cognition | Depth |
 | Clark, *Being There* / *Supersizing the Mind* | Embodied and extended cognition | Depth |
 | Computational neuroscience reviews (current) | Artificial-biological representation comparison | Reference |
@@ -8112,7 +8112,7 @@ For the linguistics side and the Chomskyan tradition, Chomsky's later works (*As
 | Resource | Role | Type |
 |---|---|---|
 | Jurafsky & Martin, *Speech and Language Processing* (3rd ed., free) | The comprehensive bridge text | Depth |
-| Chomsky, *Syntactic Structures* (1957) | The shared foundation; primary source | Primary Source |
+| Chomsky, *Syntactic Structures* (1957) | The shared foundation of formal grammar | Depth |
 | Theory of computation texts (§3.2) | Chomsky hierarchy as computer science | Depth |
 | Pinker, *The Language Instinct* | Accessible innate-faculty view | Entry |
 
@@ -8126,7 +8126,7 @@ For the broader question of language acquisition and what the poverty-of-the-sti
 
 | Resource | Role | Type |
 |---|---|---|
-| Chomsky et al., "The False Promise of ChatGPT" (2023, free) | The linguistic tradition's skeptical position | Primary Source |
+| Chomsky et al., "The False Promise of ChatGPT" (2023, free) | The linguistic tradition's skeptical position | Reference |
 | LLM linguistic-probing literature (§5.6) | What LLMs know about linguistic structure | Reference |
 | Manning and synthetic-position work | Bridging computational linguistics and deep learning | Reference |
 | Language acquisition debate (cognitive science) | Scientific context for the confrontation | Depth |
@@ -8217,10 +8217,10 @@ Roughgarden's Stanford courses (CS364A Algorithmic Game Theory, with free lectur
 | Resource | Role | Type |
 |---|---|---|
 | Roughgarden CS364A course (free) | Structured path through the field | Entry |
-| Daskalakis et al., PPAD-completeness of Nash | Complexity of equilibria; landmark | Primary Source |
+| Daskalakis et al., PPAD-completeness of Nash | Complexity of equilibria; landmark | Depth |
 | Roughgarden, *Selfish Routing and the Price of Anarchy* | Price of anarchy, thorough | Depth |
 | Krishna, *Auction Theory* (2nd ed.) | Auction theory foundations | Depth |
-| Gale & Shapley, deferred acceptance (1962) | Matching; primary source | Primary Source |
+| Gale & Shapley, deferred acceptance (1962) | Matching; foundational paper | Depth |
 
 #### Traps
 
@@ -8312,7 +8312,7 @@ For the broader policy conversation, the work of technology policy researchers a
 |---|---|---|
 | Lessig, *Free Culture* (free) | IP, software, and the commons | Depth |
 | GDPR and major privacy regimes (primary text) | What privacy law requires | Reference |
-| AI-and-copyright litigation and policy (ongoing) | The unsettled IP frontier | Primary Source |
+| AI-and-copyright litigation and policy (ongoing) | The unsettled IP frontier | Reference |
 | Technology policy research (AI Now and others) | Ongoing analysis of the boundary | Reference |
 
 #### Traps
@@ -8401,9 +8401,9 @@ For the deepest treatments of the convergence — the information-theoretic unde
 
 | Resource | Role | Type |
 |---|---|---|
-| Jumper et al., AlphaFold papers (2021, free) | The protein-structure prediction landmark | Primary Source |
+| Jumper et al., AlphaFold papers (2021, free) | The protein-structure prediction landmark | Depth |
 | Mitchell, *An Introduction to Genetic Algorithms* | Evolutionary computation entry | Entry |
-| Adleman, DNA computing paper (1994, free) | DNA computing origin | Primary Source |
+| Adleman, DNA computing paper (1994, free) | DNA computing origin | Depth |
 | ML-in-biology literature (current) | The active frontier | Reference |
 | Rosalind platform (free) | Bioinformatics through problems | Practice |
 
@@ -8579,9 +8579,9 @@ Dennett's **Consciousness Explained** (1991) and his broader work present the mo
 
 | Resource | Role | Type |
 |---|---|---|
-| Turing, "Computing Machinery and Intelligence" (1950, free) | Machine thought; the foundational text | Primary Source |
+| Turing, "Computing Machinery and Intelligence" (1950, free) | Machine thought; the foundational text | Depth |
 | Chalmers, *The Conscious Mind* | The hard problem of consciousness | Depth |
-| Nagel, "What Is It Like to Be a Bat?" (1974, free) | The subjective character of experience | Primary Source |
+| Nagel, "What Is It Like to Be a Bat?" (1974, free) | The subjective character of experience | Depth |
 | Dennett, *Consciousness Explained* | Computational-functionalist account of mind | Depth |
 
 **Ethics: What We Ought to Do**
