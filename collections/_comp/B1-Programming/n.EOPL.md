@@ -1,7 +1,7 @@
 ---
 title: EOPL Annotated
 categories: Notes
-subclass: Languages
+subclass: Programming
 ---
 
 ## EOPL Notes
