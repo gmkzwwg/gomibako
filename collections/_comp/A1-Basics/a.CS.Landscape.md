@@ -108,11 +108,14 @@ The three books on programming practice with the most durable insight are **The 
 
 **Nand to Tetris** (Shimon Schocken and Noam Nisan, free at nand2tetris.org) is not a programming course in the conventional sense but one of the most effective ways to understand what programming is: it builds a complete computing system from logic gates up, implementing an assembler, virtual machine, compiler, and operating system. Working through it gives a grounded understanding of what a program is at every level of abstraction, from transistors to high-level code. Parts I and II are available on Coursera.
 
+**Harvard CS50x** (free on the CS50 site and edX, with an optional paid certificate) is the most polished broad introduction to computer science for beginners. It is less conceptually focused than CS 61A or SICP, but its lectures, projects, and production quality are excellent for learners who need motivation, breadth, and a first pass through C, Python, SQL, and web programming before returning to deeper conceptual work.
+
 | Course | Platform | Type |
 |---|---|---|
 | Berkeley CS 61A + *Composing Programs* (free) | Berkeley / course site | Entry |
 | MIT 6.009 *Fundamentals of Programming* (free) | MIT OCW | Entry |
 | Nand to Tetris Parts I & II (free) | nand2tetris.org / Coursera | Depth |
+| Harvard CS50x (free; optional paid certificate) | Harvard / edX / CS50 site | Auxiliary |
 
 **Practice, Tools, and Code**
 
@@ -224,6 +227,10 @@ The current canonical entry is Lehman, Leighton, and Meyer's **Mathematics for C
 
 For learners whose specific bottleneck is proof construction — who can follow definitions and theorems but cannot produce arguments themselves — Velleman's **How to Prove It** (3rd ed., 2019) is the most focused intervention available. It isolates proof technique from mathematical content, working through the logical structure of mathematical statements (what does it mean to prove an implication? a universal statement? an existential?), the major proof strategies, and the process of translating informal arguments into rigorous ones. It is narrower than MCS — it does not cover combinatorics, graph theory, or probability — but for the learner who needs to build proof skill specifically, it addresses the bottleneck directly. Reading Velleman then MCS is a reliable path for learners who find MCS's pace too fast.
 
+Oscar Levin's **Discrete Mathematics: An Open Introduction** (free online) is a gentler open textbook with many exercises, hints, and solutions. It is especially useful for readers who need more runway before MIT MCS or who want an accessible second explanation of counting, induction, relations, functions, and graph basics. It is less CS-oriented and less complete than MCS, so it should be used as auxiliary support rather than as the main spine.
+
+Richard Hammack's **Book of Proof** (free online) is a clean bridge into proof-writing. It does not replace Velleman, but its direct style, exercises, and low barrier to entry make it useful for learners who need repeated practice translating mathematical intuition into written proof.
+
 Rosen's **Discrete Mathematics and Its Applications** (8th ed.) is comprehensive and example-rich and is used in many undergraduate programs. Its weakness is that its writing is competent without being illuminating: it covers material without giving the reader a strong sense of why the material coheres or what kind of thinking it is building. It is better as a reference — to look up a specific topic or find additional worked examples — than as a primary text for self-directed learners.
 
 For **combinatorics at depth**, Graham, Knuth, and Patashnik's **Concrete Mathematics** is the canonical extension. Written specifically for algorithm analysis, it develops sums, recurrences, generating functions, and asymptotic notation with far more depth than introductory texts. The book is also genuinely entertaining — Knuth's personality is visible throughout — and can be read after MCS by any learner planning serious algorithm analysis. It is one of the few mathematics books that is both technically demanding and a pleasure to read.
@@ -236,6 +243,8 @@ Pólya's **How to Solve It** is the heterodox text that belongs alongside the te
 |---|---|---|
 | Lehman, Leighton, Meyer, *Mathematics for Computer Science* (free) | Current canonical entry | Entry |
 | Velleman, *How to Prove It* (3rd ed.) | Focused proof-technique entry | Entry |
+| Levin, *Discrete Mathematics: An Open Introduction* (free) | Gentle open discrete math entry | Auxiliary |
+| Hammack, *Book of Proof* (free) | Proof-writing bridge for beginners | Auxiliary |
 | Rosen, *Discrete Mathematics and Its Applications* | Comprehensive reference | Reference |
 | Graham, Knuth, Patashnik, *Concrete Mathematics* | Combinatorics and asymptotics at depth | Depth |
 | Diestel, *Graph Theory* (free online) | Graph theory at depth | Depth |
@@ -389,16 +398,21 @@ The **Matrix Cookbook** (Petersen and Pedersen, free, 2012) is a reference docum
 
 **fast.ai's Computational Linear Algebra** (Rachel Thomas, free) covers the subject from a numerical and machine-learning perspective, including implementations in Python. Practical complement to the more theoretical MIT courses.
 
+**Linear Algebra: Foundations to Frontiers** (LAFF, UT Austin, on edX) links linear algebra to matrix software development and algorithms for matrix computation. It is most useful after an initial exposure to vectors, matrices, and systems of equations; its strength is showing that linear algebra is not only a collection of formulas but an implementation discipline behind high-performance numerical software.
+
 | Course | Platform | Type |
 |---|---|---|
 | MIT 18.06 Linear Algebra (Strang, free) | MIT OCW / YouTube | Entry |
 | MIT 18.065 Matrix Methods (Strang, free) | MIT OCW / YouTube | Depth |
 | 3Blue1Brown, *Essence of Linear Algebra* (free) | YouTube | Practice |
 | fast.ai Computational Linear Algebra (Rachel Thomas, free) | fast.ai / YouTube | Practice |
+| LAFF, *Linear Algebra: Foundations to Frontiers* | edX / UT Austin | Practice |
 
 **Practice, Tools, and Code**
 
 **3Blue1Brown** (mentioned above) is the primary visualization resource. The videos on linear transformations, dot products, cross products, eigenvectors, and the Gram-Schmidt process are the most effective visualizations of these concepts available anywhere.
+
+**Immersive Linear Algebra** is an interactive visual book whose figures can be manipulated directly in the browser. It is not a replacement for Strang, Axler, or numerical linear algebra, but it is excellent for building geometric intuition about vectors, matrices, determinants, eigenvectors, and singular value decomposition before the formal machinery becomes dense.
 
 Implementing linear algebra from scratch in NumPy is more educational than reading about it. A productive sequence: implement matrix multiplication from loops, verify it against NumPy, time both; implement the Gram-Schmidt process; implement power iteration to find the dominant eigenvector; implement the compact SVD from scratch using the QR algorithm. These implementations are short (each under 50 lines) and the process of making them correct and numerically stable teaches more about the subject than equivalent reading time.
 
@@ -407,6 +421,7 @@ Implementing linear algebra from scratch in NumPy is more educational than readi
 
 | Resource | Platform | Type |
 |---|---|---|
+| Immersive Linear Algebra (free) | immersivemath.com | Practice |
 | NumPy / SciPy linear algebra documentation (free) | numpy.org / scipy.org | Reference |
 | Scratch implementations in NumPy | Local | Practice |
 
@@ -556,6 +571,8 @@ For **numerical methods** — the computational implementation of calculus — T
 
 **3Blue1Brown** (mentioned above) is the primary visualization resource. The episodes on derivatives, the chain rule, integrals, Taylor series, and the essence of calculus are the best geometric introductions to each concept.
 
+**Paul's Online Math Notes** (free) is a reliable procedural reference for Calculus I-III and differential equations. It is not CS-specific and not especially conceptual, but it is useful when a learner needs a clear worked example, a formula refresher, or extra practice on a technique before returning to the CS-facing material.
+
 Implementing automatic differentiation from scratch is the most important calculus-related coding project for ML practitioners. Karpathy's **micrograd** (~150 lines) implements scalar autodiff; extending it to support tensors (as in **tinygrad**) reveals how production frameworks work. After implementing autodiff, implement the backward pass of a two-layer neural network manually in NumPy, comparing with PyTorch's computed gradient to verify correctness.
 
 **SymPy** (Python) and **Wolfram Alpha** (web) compute symbolic derivatives and integrals, which is useful for checking manual calculations. More importantly, SymPy can be used to explore how the chain rule decomposes complex expressions — running it on neural network loss functions and inspecting the symbolic gradient teaches matrix calculus more concretely than reading about it.
@@ -563,6 +580,7 @@ Implementing automatic differentiation from scratch is the most important calcul
 | Resource | Platform | Type |
 |---|---|---|
 | 3Blue1Brown, *Essence of Calculus* (free) | YouTube | Practice |
+| Paul's Online Math Notes (free) | tutorial.math.lamar.edu | Reference |
 | Karpathy, micrograd (free) | GitHub | Practice |
 | SymPy (free) | Python / sympy.org | Practice |
 | Wolfram Alpha (free tier) | wolframalpha.com | Practice |
@@ -705,12 +723,18 @@ For **rigorous probability foundations**, Williams's **Probability with Martinga
 
 **MIT 18.650** (Statistics for Applications, free on MIT OCW) covers statistical inference — estimation, hypothesis testing, regression, Bayesian methods — at graduate level. Complementary to Stat 110's probability emphasis.
 
+**Berkeley Data 8** and its free text **Computational and Inferential Thinking** form a strong applied bridge from programming to statistics. The course uses Jupyter notebooks, real datasets, simulation, and inference, making it valuable for learners who need statistics to become something they can compute with rather than only something they can derive. It should not replace a probability/statistics spine, but it is one of the best applied companions.
+
+**StatQuest with Josh Starmer** (YouTube, free, with optional paid materials) provides short visual explanations of probability, statistics, and machine-learning concepts: p-values, regression, logistic regression, Bayes, random forests, PCA, and related topics. Its main value is repair and intuition, not depth; use it when a concept remains opaque after a course or textbook explanation.
+
 | Course | Platform | Type |
 |---|---|---|
 | Blitzstein, Stat 110 Probability (free) | YouTube / Harvard course site | Entry |
 | MIT 6.041 Probability (free) | MIT OCW | Entry |
 | McElreath, Statistical Rethinking lectures (free) | YouTube | Depth |
 | MIT 18.650 Statistics for Applications (free) | MIT OCW | Depth |
+| Berkeley Data 8 + *Computational and Inferential Thinking* (free) | Berkeley / Jupyter Book | Practice |
+| StatQuest with Josh Starmer (free; optional paid materials) | YouTube / statquest.org | Auxiliary |
 
 **Practice, Tools, and Code**
 
@@ -845,27 +869,50 @@ Sedgewick and Wayne's **Algorithms Parts I and II on Coursera** (free to audit) 
 
 **UC Berkeley CS 61B** (*Data Structures*, free lectures on YouTube) covers data structures and introductory algorithm analysis with strong implementation depth using Java. It complements the more analysis-heavy MIT courses by emphasizing what it actually takes to build correct and efficient data structure implementations.
 
+**Khan Academy Algorithms** (free) is a beginner-friendly visual and interactive path through basic algorithmic ideas. It is shallow compared with Sedgewick, MIT, or Roughgarden, but it can make the first encounter with asymptotic notation, sorting, graph search, and recursion less forbidding.
+
+**Brilliant's CS path** (paid subscription) is a polished interactive option for learners who benefit from short visual puzzles and immediate feedback. It should be treated as an auxiliary intuition-builder, not as a rigorous algorithms or data structures course, but its format gives readers a useful alternative to long lectures and textbooks.
+
 | Course | Platform | Type |
 |---|---|---|
 | Sedgewick & Wayne, *Algorithms* Parts I & II (free to audit) | Coursera | Entry |
 | MIT 6.006 + 6.046 (free) | MIT OCW | Entry |
 | Tim Roughgarden, *Algorithms Specialization* (free to audit) | Coursera | Entry |
 | UC Berkeley CS 61B (free) | YouTube / course site | Practice |
+| Khan Academy Algorithms (free) | Khan Academy | Auxiliary |
+| Brilliant CS path (paid subscription) | brilliant.org | Auxiliary |
 
 **Practice, Tools, and Code**
 
 **Visualgo** (visualgo.net) provides interactive step-by-step visualizations of sorting algorithms, graph traversals, dynamic programming, and data structures. Watching an algorithm execute on a chosen input — with each comparison and pointer update highlighted — builds intuitions that pseudocode and static diagrams cannot.
 
+**OpenDSA** is a free interactive system for data structures and algorithms, combining text, visualizations, and exercises. It overlaps with Visualgo in subject matter, but its integration with practice problems makes it a different learning mode rather than a duplicate.
+
+**Algorithm Visualizer** is a code-driven interactive platform that visualizes algorithms from executable examples. It is useful when learners want to connect implementation details to motion on screen, especially for sorting, graph, and data-structure procedures.
+
 **William Fiset's algorithm series on YouTube** covers graph algorithms with high-quality animations and clean walkthroughs. His treatments of BFS, DFS, Dijkstra, Bellman-Ford, Floyd-Warshall, maximum flow, and strongly connected components are among the clearest video explanations of these topics available, particularly for the graph algorithms that introductory courses often handle poorly.
 
 **Abdul Bari's algorithm lectures on YouTube** are strong on dynamic programming and greedy algorithms — developing the intuition behind each problem before presenting the algorithm, which is the right pedagogical order. The DP series in particular is worth watching for learners who find the standard textbook presentation opaque.
 
+**The Algorithms** project on GitHub provides multi-language implementations of mainstream algorithms. It is valuable because readers can compare the same algorithm across languages and see implementation idioms side by side. Quality and explanation vary by contribution, so it should be used with a course or text rather than as an authority by itself.
+
+**Runestone's Problem Solving with Algorithms and Data Structures** is a free interactive textbook available in Python and related versions. It is useful for learners who want a code-first, exercise-rich path through data structures before or alongside a more analytical course.
+
+**cp-algorithms** is a compact contest-oriented reference for algorithmic techniques, data structures, graph algorithms, string algorithms, and number theory. It is not a first course, but it is excellent after the fundamentals are in place, especially when the learner needs implementation-level details quickly.
+
+**Project Euler** turns mathematical programming into a sequence of increasingly difficult problems. It does not teach data structures systematically, but it develops the habit of combining number theory, combinatorics, search, dynamic programming, and careful implementation under constraints.
 
 | Resource | Platform | Type |
 |---|---|---|
 | Visualgo (free) | visualgo.net | Practice |
+| OpenDSA (free) | opendsa.org | Practice |
+| Algorithm Visualizer (free) | algorithm-visualizer.org / GitHub | Practice |
 | William Fiset, graph algorithm series (free) | YouTube | Auxiliary |
 | Abdul Bari, algorithm lectures (free) | YouTube | Auxiliary |
+| The Algorithms (free) | GitHub / the-algorithms.com | Practice |
+| Runestone, *Problem Solving with Algorithms and Data Structures* (free) | Runestone Academy | Practice |
+| cp-algorithms (free) | cp-algorithms.com | Reference |
+| Project Euler (free) | projecteuler.net | Auxiliary |
 
 #### Traps
 
@@ -964,6 +1011,8 @@ The standard CS-oriented entry is Huth and Ryan's **Logic in Computer Science: M
 
 For the mathematical foundations — completeness, compactness, Löwenheim-Skolem, the model theory of first-order logic — Enderton's **A Mathematical Introduction to Logic** (2nd ed., 2001) is the standard rigorous treatment. It is more demanding than Huth-Ryan and presupposes mathematical sophistication, but its proofs are careful and complete, and it is the right text for learners who want to understand why the theorems hold rather than just what they say. Van Dalen's **Logic and Structure** (5th ed., 2013) covers similar material with more attention to the connections between logic and computation and is a natural companion.
 
+**forall x: Calgary** (free, Open Logic Project) is a gentler open introduction to formal logic, with truth-functional logic, first-order logic with identity, natural deduction, soundness, and some modal logic. It is not as CS-oriented as Huth-Ryan, but it is useful for readers who need more practice translating informal reasoning into formal syntax and proof before moving to model checking, SMT, or proof assistants. Peter Smith's **Logic: A Study Guide** (free at logicmatters.net) is not itself a textbook but an unusually useful route map through logic resources; it belongs as a reference for self-learners planning a longer path.
+
 For **proof theory** specifically — natural deduction, sequent calculi, Gentzen's cut elimination theorem, the structural analysis of proofs — Troelstra and Schwichtenberg's **Basic Proof Theory** (2nd ed., 2000) is the canonical reference. It is demanding and requires fluency with first-order logic and lambda calculus, but it is the foundation for understanding type theory and proof assistants at depth. Negri and von Plato's **Structural Proof Theory** (2001) is a more accessible companion.
 
 For **modal and temporal logic**, Blackburn, de Rijke, and Venema's **Modal Logic** (2001) is the comprehensive contemporary treatment of modal logic from a computational perspective. The book develops possible-worlds semantics, correspondence theory, and the algorithmic properties of modal systems with unusual depth. Demri, Goranko, and Lange's **Temporal Logics in Computer Science** (2016) covers temporal logic specifically, including LTL, CTL, CTL*, and their model checking algorithms.
@@ -977,6 +1026,8 @@ For learners who want the philosophical and historical context alongside the tec
 | Huth & Ryan, *Logic in Computer Science* (2nd ed.) | Standard CS-oriented entry | Entry |
 | Enderton, *A Mathematical Introduction to Logic* (2nd ed.) | Mathematical foundations; completeness | Depth |
 | van Dalen, *Logic and Structure* (5th ed.) | Alternative mathematical entry | Entry |
+| *forall x: Calgary* (free) | Gentle open formal logic entry | Auxiliary |
+| Smith, *Logic: A Study Guide* (free) | Self-study route map through logic | Reference |
 | Troelstra & Schwichtenberg, *Basic Proof Theory* (2nd ed.) | Proof theory canonical reference | Reference |
 | Blackburn, de Rijke & Venema, *Modal Logic* | Modal logic comprehensive treatment | Depth |
 | Demri, Goranko & Lange, *Temporal Logics in Computer Science* | Temporal logic for CS | Depth |
@@ -1007,7 +1058,9 @@ For learners who want the philosophical and historical context alongside the tec
 
 **Practice, Tools, and Current Sources**
 
-Working with a SAT solver directly is the most effective way to develop intuition for the expressiveness-tractability tradeoff. **MiniSat** is small enough to read the source code and understand the CDCL algorithm. **Z3** (available via Python API as `z3-solver`) is the most widely used SMT solver and can be used interactively through its Python bindings — encoding problems as SMT formulas and querying Z3 for satisfiability or counterexamples takes hours to learn and produces immediate results for verification problems.
+Working with a SAT solver directly is the most effective way to develop intuition for the expressiveness-tractability tradeoff. **MiniSat** is small enough to read the source code and understand the CDCL algorithm. **Z3** (available via Python API as `z3-solver`) is the most widely used SMT solver and can be used interactively through its Python bindings — encoding problems as SMT formulas and querying Z3 for satisfiability or counterexamples takes hours to learn and produces immediate results for verification problems. **cvc5** is the other important modern SMT solver to try after Z3; comparing the same examples across solvers teaches what belongs to SMT-LIB and what belongs to a particular solver's interface. **SAT/SMT by Example** (free online) is a practical bridge from textbook decision procedures to executable solver encodings.
+
+The **TPTP World** is the standard problem library and infrastructure for automated theorem proving. It is not a beginner tutorial, but it is the right reference once a reader wants to see how first-order theorem provers are evaluated, how benchmark problems are represented, and how automated reasoning research organizes shared test cases.
 
 The **Stanford Encyclopedia of Philosophy** entries on classical logic, model theory, proof theory, modal logic, linear logic, and Gödel's incompleteness theorems are consistently high-quality and provide orienting context that textbooks often assume.
 
@@ -1016,7 +1069,10 @@ Model checking tools — **Alloy** (Jackson, MIT) for relational logic, **SPIN**
 | Resource | Platform | Type |
 |---|---|---|
 | Z3 Python API (free) | pip install z3-solver | Practice |
+| cvc5 SMT solver (free) | cvc5.github.io | Practice |
 | MiniSat source (free) | GitHub | Practice |
+| *SAT/SMT by Example* (free) | smt.st | Practice |
+| TPTP World (free) | tptp.org | Reference |
 | Alloy Analyzer + *Software Abstractions* (free) | alloytools.org | Practice |
 | Stanford Encyclopedia of Philosophy — logic entries (free) | plato.stanford.edu | Reference |
 | SPIN model checker (free) | spinroot.com | Practice |
@@ -1126,6 +1182,8 @@ The third effect is a calibrated view of the P vs. NP question. Most practitione
 
 The canonical entry is Sipser's **Introduction to the Theory of Computation** (3rd ed., 2012). No other book has matched it for clarity, pacing, and the sense of building toward results that matter. Sipser treats the halting problem and NP-completeness as the dramatic culminations of careful preparation, and the structure reflects genuine pedagogical care: the proofs are complete, the examples are well-chosen, and the exercises build the skills systematically. For self-study, Sipser is the right primary text without competition. The third edition is the current one; the second is also fine.
 
+Boaz Barak's **Introduction to Theoretical Computer Science** (free at introtcs.org) is a modern open companion that emphasizes computational phenomena, universality, code-as-data, randomness, cryptography, and complexity with supplementary code notebooks. It is not a replacement for Sipser's automata-to-computability progression, but it gives contemporary framing and computational examples that many learners find more alive than the traditional syllabus.
+
 For the foundational and logical dimension, Boolos, Burgess, and Jeffrey's **Computability and Logic** (5th ed., 2007) is the alternative entry. Where Sipser emphasizes complexity, Boolos-Burgess-Jeffrey emphasizes computability and its connections to Gödel's incompleteness theorems and modal logic. A reader who wants to understand Gödel's results as results in the theory of computation — not just as results in mathematical logic — should start here. The two books are genuinely complementary: Sipser for complexity, Boolos-Burgess-Jeffrey for foundational depth.
 
 For **complexity theory at depth**, Arora and Barak's **Computational Complexity: A Modern Approach** (2009, free draft available online) is the graduate standard. It covers the polynomial hierarchy, randomized complexity, interactive proofs and the PCP theorem, circuit complexity, derandomization, communication complexity, and the connections between complexity and cryptography with complete rigor. The PCP theorem — that any NP proof can be verified by reading a constant number of bits — is one of the deepest results in the subject, and Arora-Barak's treatment is the right place to engage with it seriously. Goldreich's **Computational Complexity: A Conceptual Perspective** (2008) covers similar material organized around conceptual commitments rather than results; reading both produces a more complete picture than either alone.
@@ -1139,6 +1197,7 @@ For the connection to logic, the automata-and-grammars treatment in Hopcroft, Mo
 | Book | Role | Type |
 |---|---|---|
 | Sipser, *Introduction to the Theory of Computation* (3rd ed.) | Canonical entry; clear and complete | Entry |
+| Barak, *Introduction to Theoretical Computer Science* (free) | Modern open companion with code notebooks | Auxiliary |
 | Boolos, Burgess & Jeffrey, *Computability and Logic* (5th ed.) | Foundationally oriented alternative entry | Entry |
 | Soare, *Turing Computability* | Classical recursion theory at depth | Depth |
 | Hopcroft, Motwani & Ullman, *Intro to Automata Theory* (3rd ed.) | Formal language theory | Reference |
@@ -1165,6 +1224,8 @@ For the connection to logic, the automata-and-grammars treatment in Hopcroft, Mo
 
 **JFLAP** (jflap.org, free) is an interactive tool for building and testing finite automata, pushdown automata, Turing machines, and grammars. Designing a Turing machine from scratch in JFLAP — configuring transitions, tracing execution on inputs, debugging — makes the formalism concrete in a way that reading descriptions cannot. Building a universal Turing machine in JFLAP, even a simple one, is one of the most instructive exercises in the subject.
 
+**Automata Tutor v3** (free online) adds an exercise-and-feedback layer for automata and formal languages, including finite automata, regular expressions, context-free grammars, pushdown automata, Turing machines, and conversions between models. It is valuable because automatic feedback makes this part of the subject practiceable at volume; it should supplement, not replace, proofs done by hand.
+
 Implementing a simulated Turing machine in a language of your choice (Python is simplest) takes about 50 lines and forces all the formal definitions to become operational. Extending the simulation to handle the halting problem — and observing that you cannot — makes the undecidability proof intuitive in a way that the abstract argument does not.
 
 **Scott Aaronson's "Who Can Name the Bigger Number?"** and **"Why Philosophers Should Care About Computational Complexity"** (both free on his website) are short essays that engage with the philosophical and mathematical significance of computability and complexity results without requiring technical preparation. Reading them alongside Sipser provides context for why the technical results matter.
@@ -1174,6 +1235,7 @@ The **Complexity Zoo** (complexityzoo.net, free) is a comprehensive reference fo
 | Resource | Platform | Type |
 |---|---|---|
 | JFLAP (free) | jflap.org | Practice |
+| Automata Tutor v3 (free) | automata-tutor.model.in.tum.de | Practice |
 | Complexity Zoo (free) | complexityzoo.net | Reference |
 | Aaronson essays (free) | scottaaronson.com | Depth |
 | Simulated Turing machine implementation | Local | Practice |
@@ -1273,7 +1335,7 @@ Goldreich's **Computational Complexity: A Conceptual Perspective** (2008) offers
 
 Avi Wigderson's **Mathematics and Computation** (2019, free at math.ias.edu/avi/book) is a monograph by one of the field's leading figures that connects complexity theory to mathematics broadly — combinatorics, algebra, geometry, analysis, probability. It is not a textbook (it has no exercises and does not develop proofs systematically) but a meditation on how complexity theory fits into the mathematical landscape. Reading it provides the intellectual context that Arora-Barak does not aim for.
 
-For specific subareas: Kushilevitz and Nisan's **Communication Complexity** (1997) for communication complexity; Jukna's **Boolean Function Complexity** (2012) for circuit lower bounds; Immerman's **Descriptive Complexity** (1999) for the connections between logic and complexity classes; Cygan et al.'s **Parameterized Algorithms** (2015, free at parameterizedcomplexity.org) for the FPT framework; Bogdanov and Trevisan's **Average-Case Complexity** (survey, free) for average-case analysis.
+For specific subareas: Kushilevitz and Nisan's **Communication Complexity** (1997) for communication complexity; Jukna's **Boolean Function Complexity** (2012) for circuit lower bounds; Immerman's **Descriptive Complexity** (1999) for the connections between logic and complexity classes; Cygan et al.'s **Parameterized Algorithms** (2015, free at parameterizedcomplexity.org) for the FPT framework; Bogdanov and Trevisan's **Average-Case Complexity** (survey, free) for average-case analysis. Ryan O'Donnell's **Analysis of Boolean Functions** (Cambridge, paid; free author PDF available) is the standard route into Fourier analysis on the Boolean cube, with applications to circuit complexity, hardness of approximation, learning theory, pseudorandomness, and social choice. It is a depth resource, not an entry point.
 
 Scott Aaronson's **Quantum Computing Since Democritus** (2013) places quantum complexity in a broader context of philosophy, mathematics, and computation. It is accessible to non-specialists and essential for understanding why quantum complexity matters beyond the technical results.
 
@@ -1284,6 +1346,7 @@ Scott Aaronson's **Quantum Computing Since Democritus** (2013) places quantum co
 | Wigderson, *Mathematics and Computation* (free) | Context and connections to mathematics | Depth |
 | Kushilevitz & Nisan, *Communication Complexity* | Communication complexity | Depth |
 | Jukna, *Boolean Function Complexity* | Circuit lower bounds | Depth |
+| O'Donnell, *Analysis of Boolean Functions* (paid; free author PDF) | Boolean Fourier analysis for TCS | Depth |
 | Immerman, *Descriptive Complexity* | Logic-complexity connections | Depth |
 | Cygan et al., *Parameterized Algorithms* (free) | FPT framework | Depth |
 | Bogdanov & Trevisan, *Average-Case Complexity* (free survey) | Average-case analysis | Depth |
@@ -1316,12 +1379,15 @@ Blogs: **Shtetl-Optimized** (Scott Aaronson), **Computational Complexity** (Lanc
 
 The **Simons Institute for the Theory of Computing** (Berkeley, simons.berkeley.edu) hosts semester-long programs on complexity-related topics and makes all talks available on YouTube. The talks are at varying levels; the tutorials and workshop introductions are particularly useful for learners approaching new subareas.
 
+**TCS+** is an online seminar in theoretical computer science with talks aimed at a broad technical audience. It is a good way to follow active research without needing to attend a local theory seminar, though it should be treated as current exposure rather than as a structured learning path.
+
 | Resource | Platform | Type |
 |---|---|---|
 | Complexity Zoo (free) | complexityzoo.net | Reference |
 | ECCC preprint server (free) | eccc.weizmann.ac.il | Reference |
 | Aaronson, Fortnow, Lipton-Regan blogs (free) | Various | Reference |
 | Simons Institute talks (free) | YouTube / simons.berkeley.edu | Reference |
+| TCS+ online seminar (free) | tcsplus.org | Reference |
 
 #### Traps
 
@@ -1424,6 +1490,8 @@ Winskel's **The Formal Semantics of Programming Languages** (MIT Press, 1993) is
 
 Friedman and Wand's **Essentials of Programming Languages** (EOPL, 3rd ed., MIT Press, 2008) approaches the material through implementation: readers build interpreters for languages of increasing complexity, and the type systems and semantic concepts are introduced in the context of working implementations. EOPL is more accessible to readers who find the formal texts too abstract initially, and it makes the connection between theory and implementation explicit. For readers who struggle with TAPL's pace, EOPL first then TAPL is a productive route.
 
+Krishnamurthi's **Programming Languages: Application and Interpretation** (PLAI, free online; optional paid print) is another implementation-first route, using interpreters and language variation to make semantic ideas concrete. It is less mathematically deep than TAPL and PFPL, but it is one of the best bridges for programmers who need to build languages before they can comfortably prove things about them.
+
 Reynolds' **Theories of Programming Languages** (Cambridge, 1998) develops the semantics of both functional and imperative languages from a categorical perspective and is the right text for readers who want the denotational and axiomatic semantics in depth, including the foundations of separation logic.
 
 For **proof assistant-based programming language theory**, Pierce et al.'s **Software Foundations** series (free at softwarefoundations.cis.upenn.edu) is essential. Volume 1 (*Logical Foundations*) teaches Coq while introducing logic and proof; Volume 2 (*Programming Language Foundations*) formalizes operational semantics, type systems, and Hoare logic in Coq. The series is the standard treatment of PLT in mechanized form and is increasingly required reading for anyone who intends to do formal verification work.
@@ -1437,6 +1505,7 @@ For **process calculi and concurrent languages**, Milner's **Communicating and M
 | Harper, *Practical Foundations for Programming Languages* (PFPL, draft free) | Broader comprehensive alternative | Depth |
 | Winskel, *The Formal Semantics of Programming Languages* | Operational and denotational semantics | Depth |
 | Friedman & Wand, *Essentials of Programming Languages* (EOPL) | Implementation-first accessible entry | Practice |
+| Krishnamurthi, *PLAI* (free; optional paid print) | Implementation-first PL concepts | Entry |
 | Reynolds, *Theories of Programming Languages* | Denotational + axiomatic at depth | Depth |
 | Pierce et al., *Software Foundations* Vols. 1–2 (free) | Mechanized PLT in Coq | Practice |
 | Milner, *Communicating and Mobile Systems* | Pi-calculus primary source | Depth |
@@ -1464,6 +1533,8 @@ Working through inference rules by hand — deriving small-step reduction sequen
 
 **PLT Redex** (Racket library, free) provides an environment for defining and testing operational semantics by running reduction rules on example programs. It is the tool Pierce designed to make TAPL's formalism executable. For every language in TAPL, implementing it in Redex and running the test cases makes the formal definitions live.
 
+Andrej Bauer and Matija Pretnar's **Programming Languages Zoo** (free) is a collection of miniature languages demonstrating parsing, interpreters, compilers, static and dynamic typing, subtyping, polymorphism, lazy evaluation, exceptions, and abstract machines. It is especially useful after a reader has learned the concepts and wants to see compact implementations side by side.
+
 **Coq / Lean 4 / Agda** — working through PLT results in a proof assistant is the highest-quality engagement with the material. The Software Foundations series in Coq is the primary structured path. Any proof-assistant formalization of type soundness (progress and preservation) produces a deep understanding of what the formal claims actually are that a pen-and-paper proof does not always provide.
 
 The **POPLmark Challenge** (poplmark.org) proposed benchmark proofs for PLT metatheory in 2005; the solutions in various proof assistants are freely available and serve as worked examples of mechanized PLT.
@@ -1471,6 +1542,7 @@ The **POPLmark Challenge** (poplmark.org) proposed benchmark proofs for PLT meta
 | Resource | Platform | Type |
 |---|---|---|
 | PLT Redex (free) | Racket / racket-lang.org | Practice |
+| Programming Languages Zoo (free) | plzoo.andrej.com | Practice |
 | Software Foundations in Coq (free) | softwarefoundations.cis.upenn.edu | Practice |
 | POPLmark challenge solutions (free) | poplmark.org | Practice |
 | Lean 4 / Mathlib PLT formalizations (free) | leanprover-community.github.io | Reference |
@@ -1576,7 +1648,7 @@ For **hands-on proof assistant engagement**, the best structured paths are:
 * **Programming Language Foundations in Agda** (Wadler, Kokke, Siek, free at plfa.inf.ed.ac.uk) — covers the same PLT content as Software Foundations but in Agda, which is more directly a dependently typed programming language. Preferred by readers who find Agda's programming style more natural.
 * **Theorem Proving in Lean 4** (de Moura, Ullrich, free at lean-lang.org) and **Mathematics in Lean** (Avigad, Massot, free at leanprover-community.github.io/mathematics_in_lean) — the primary resources for the Lean proof assistant. Lean 4 has become the most active platform for mathematical formalization.
 
-For **dependent types as a programming methodology**, Brady's **Type-Driven Development with Idris** (Manning, 2017) is the standard text. Idris is a language designed for type-driven development — the practice of using types as specifications and letting the type-checker drive the implementation. The book is accessible and practical, the right introduction to dependent types for programmers who want to use them rather than study them foundationally.
+For **dependent types as a programming methodology**, Brady's **Type-Driven Development with Idris** (Manning, 2017, paid) is the standard text. Idris is a language designed for type-driven development — the practice of using types as specifications and letting the type-checker drive the implementation. The book is accessible and practical, the right introduction to dependent types for programmers who want to use them rather than study them foundationally. Friedman and Christiansen's **The Little Typer** (MIT Press, paid) is a gentler conceptual entry to dependent types, written in the Little Schemer style. It is not rigorous enough to replace TAPL, Martin-Löf, or PLFA, but it lowers the barrier to the core intuition that types can describe programs and proofs.
 
 Nordström, Petersson, and Smith's **Programming in Martin-Löf's Type Theory** (1990, free online) is the systematic textbook presentation of Martin-Löf type theory. It is less demanding than the original lecture notes and more systematic; the right companion to the Padua notes for learners who want a structured presentation.
 
@@ -1590,7 +1662,8 @@ Nordström, Petersson, and Smith's **Programming in Martin-Löf's Type Theory** 
 | Wadler et al., *Programming Language Foundations in Agda* (free) | Mechanized PLT in Agda | Practice |
 | de Moura et al., *Theorem Proving in Lean 4* (free) | Lean 4 tutorial | Practice |
 | Avigad & Massot, *Mathematics in Lean* (free) | Mathematical formalization in Lean | Practice |
-| Brady, *Type-Driven Development with Idris* | Dependent types as programming methodology | Depth |
+| Brady, *Type-Driven Development with Idris* (paid) | Dependent types as programming methodology | Depth |
+| Friedman & Christiansen, *The Little Typer* (paid) | Gentle dependent-types intuition | Auxiliary |
 | Nordström, Petersson & Smith, *Programming in Martin-Löf's Type Theory* (free) | Systematic Martin-Löf type theory | Depth |
 | Harper, *Practical Foundations for Programming Languages* (draft free) | Broader PLT with type-theoretic grounding | Depth |
 | Chlipala, *Certified Programming with Dependent Types* (free) | Coq-based verified software development | Depth |
@@ -1745,6 +1818,10 @@ Jackson's **Software Abstractions** (MIT Press, revised ed., 2012) teaches forma
 
 Chlipala's **Certified Programming with Dependent Types** (MIT Press, 2013, free online) develops verification of substantial programs in Coq, going beyond the introductory level of Software Foundations. It is the right next step for learners who have completed Software Foundations and want to verify nontrivial systems. Bertot and Castéran's **Interactive Theorem Proving and Program Development: Coq'Art** (Springer, 2004) is the comprehensive Coq reference, appropriate as a reference throughout Coq-based work.
 
+Nipkow and Klein's **Concrete Semantics with Isabelle/HOL** (free online; paid Springer edition) teaches programming language semantics, Hoare logic, abstract interpretation, and compiler correctness through Isabelle/HOL. It is the best Isabelle-based counterpart to the Coq path provided by Software Foundations and is especially valuable for readers who want a higher-order logic proof assistant rather than a dependent type theory proof assistant.
+
+Leino's **Program Proofs** (MIT Press, paid) teaches specification and program verification through Dafny. It is more engineer-facing than Coq or Isabelle texts: the examples are executable programs with preconditions, postconditions, invariants, and SMT-assisted proofs. The limitation is that it teaches the Dafny style specifically, so it should complement rather than replace general formal methods foundations.
+
 For Hoare logic and separation logic at depth, Reynolds's **Theories of Programming Languages** (Cambridge, 1998) provides the foundational treatment. O'Hearn's various papers on separation logic — particularly the 2019 Turing Award lecture "Separation Logic" — are the best introductions to the subject from its developer.
 
 | Book | Role | Type |
@@ -1757,6 +1834,8 @@ For Hoare logic and separation logic at depth, Reynolds's **Theories of Programm
 | Jackson, *Software Abstractions* (revised ed.) | Lightweight formal methods through Alloy | Entry |
 | Chlipala, *Certified Programming with Dependent Types* (free) | Coq-based verification beyond introductory level | Entry |
 | Bertot & Castéran, *Coq'Art* | Comprehensive Coq reference | Reference |
+| Nipkow & Klein, *Concrete Semantics with Isabelle/HOL* (free; paid print) | Isabelle-based semantics and verification | Practice |
+| Leino, *Program Proofs* (paid) | Dafny-based program verification | Entry |
 
 **Courses and Lectures**
 
@@ -1789,6 +1868,10 @@ The tools are the subject. Engaging with formal methods requires hands-on work; 
 
 **Facebook's Infer** (free at fbinfer.com) demonstrates what automated static analysis at industrial scale looks like. Running Infer on an existing C or Java codebase and examining its output is more educational than any tutorial.
 
+**Dafny** (free) is the most accessible SMT-assisted verification language for learning program proofs with ordinary functional and imperative code. It gives immediate feedback on specifications, loop invariants, and proof hints without requiring the learner to manage every proof step manually. **Verus** (free) brings a similar verification ambition to Rust systems code and is worth watching for readers interested in ownership, linear reasoning, and low-level verification, though it is still a more advanced and younger ecosystem.
+
+The CACM article **How AWS Uses Formal Methods** is the best short industrial case study for TLA+ in distributed systems design. It should be read after a first TLA+ tutorial, when the learner can recognize why finding design bugs before implementation changes the economics of reliability.
+
 Hillel Wayne maintains excellent **TLA+ tutorials** (learntla.com, free) that are the most accessible introduction to TLA+ beyond Wayne's book, covering common patterns and pitfalls in writing TLA+ specifications.
 
 | Resource | Platform | Type |
@@ -1798,6 +1881,9 @@ Hillel Wayne maintains excellent **TLA+ tutorials** (learntla.com, free) that ar
 | Alloy Analyzer (free) | alloytools.org | Practice |
 | SPIN model checker (free) | spinroot.com | Practice |
 | Facebook Infer (free) | fbinfer.com | Practice |
+| Dafny (free) | dafny.org | Practice |
+| Verus (free) | verus-lang.github.io | Auxiliary |
+| AWS, *How AWS Uses Formal Methods* (free article) | CACM / AWS | Auxiliary |
 | learntla.com — TLA+ tutorials (free) | learntla.com | Entry |
 
 #### Traps
@@ -1925,11 +2011,17 @@ The **Applied Category Theory School** (ACT, held annually with accompanying rea
 
 **Emily Riehl's lectures** on category theory at various summer schools (freely available on YouTube) cover the mathematical content of her book at a level accessible to advanced undergraduates. Her treatment of the Yoneda lemma and adjunctions is particularly clear.
 
+**The Catsters** videos (free on YouTube) are an older but still useful collection of short pedagogical explanations of core category theory concepts. They are not CS-specific, but they often make definitions such as products, coproducts, adjunctions, and natural transformations easier to hear before reading them formally.
+
+The **Topos Institute** produces talks and seminars on applied category theory, including examples connected to systems, databases, probability, and scientific modeling. The material is uneven in level, but it is a good current-source stream for readers who want to see where applied category theory is being used now.
+
 | Course | Platform | Type |
 |---|---|---|
 | Milewski, Category Theory for Programmers lectures (free) | YouTube | Entry |
 | ACT School lectures (free) | YouTube / ACT site | Entry |
 | Emily Riehl lectures on category theory (free) | YouTube | Depth |
+| The Catsters category theory videos (free) | YouTube | Auxiliary |
+| Topos Institute talks (free) | YouTube / topos.institute | Reference |
 
 **Practice, Tools, and Current Sources**
 
@@ -2051,6 +2143,8 @@ For **Kolmogorov complexity and algorithmic information theory**, Li and Vitány
 
 For **error-correcting codes** specifically, Blahut's **Algebraic Codes for Data Transmission** (Cambridge, 2003) covers algebraic coding theory at depth, including Reed-Solomon, BCH, and turbo codes. Richardson and Urbanke's **Modern Coding Theory** (Cambridge, 2008) covers LDPC and turbo codes with the probabilistic methods that led to capacity-achieving codes.
 
+Moser and Chen's **A Student's Guide to Coding and Information Theory** (Cambridge, paid) is a short, accessible bridge from practical coding examples to entropy, mutual information, channel capacity, and the information transmission theorem. It is much less deep than Cover-Thomas and less ML-oriented than MacKay, but it is useful for learners who need the communication-and-coding intuition before the full mathematical treatment.
+
 | Book | Role | Type |
 |---|---|---|
 | Cover & Thomas, *Elements of Information Theory* (2nd ed.) | Canonical mathematical reference | Reference |
@@ -2058,6 +2152,7 @@ For **error-correcting codes** specifically, Blahut's **Algebraic Codes for Data
 | Li & Vitányi, *Introduction to Kolmogorov Complexity* (4th ed.) | Algorithmic information theory | Depth |
 | Richardson & Urbanke, *Modern Coding Theory* | LDPC and turbo codes | Depth |
 | Shannon, "A Mathematical Theory of Communication" (1948, free) | Founding paper; historically central | Auxiliary |
+| Moser & Chen, *A Student's Guide to Coding and Information Theory* (paid) | Gentle coding-first bridge | Auxiliary |
 
 **Courses and Lectures**
 
@@ -2079,7 +2174,7 @@ Computing entropy and mutual information for concrete distributions is the prima
 
 For **mutual information in practice**: compute I(X;Y) for two correlated Gaussian variables with known correlation ρ, observing how mutual information relates to correlation but is not the same. Compute the mutual information between features and labels in a simple dataset using kernel density estimation or histogram methods, and observe the computational difficulties — mutual information estimation is hard in high dimensions, which explains why contrastive learning methods use proxy objectives.
 
-For **compression**: implement Huffman coding from scratch for a given symbol distribution, compute the expected code length, and compare to the entropy. Then compare to arithmetic coding's performance on the same distribution. Observe that for very skewed distributions (one symbol with probability close to 1), Huffman wastes a bit per symbol that arithmetic coding avoids.
+For **compression**: implement Huffman coding from scratch for a given symbol distribution, compute the expected code length, and compare to the entropy. Then compare to arithmetic coding's performance on the same distribution. Observe that for very skewed distributions (one symbol with probability close to 1), Huffman wastes a bit per symbol that arithmetic coding avoids. Nayuki's reference implementations of Huffman coding and arithmetic coding (free, MIT-licensed) are useful for checking one's own implementation against clear multi-language code optimized for readability rather than performance tricks.
 
 For **channel coding**: implement a simple Hamming (7,4) code, introduce random bit errors at various rates, and measure the decoded error rate. Plot against the BSC channel capacity and observe where the Hamming code's error rate crosses the theoretical limits.
 
@@ -2089,6 +2184,7 @@ For **channel coding**: implement a simple Hamming (7,4) code, introduce random 
 |---|---|---|
 | Entropy and mutual information calculations | Python / SciPy | Practice |
 | Huffman coding implementation | Local | Practice |
+| Nayuki reference implementations: Huffman and arithmetic coding (free) | GitLab / nayuki.io | Practice |
 | Hamming code implementation | Local | Practice |
 | SciPy entropy and MI functions (free) | scipy.org | Practice |
 
