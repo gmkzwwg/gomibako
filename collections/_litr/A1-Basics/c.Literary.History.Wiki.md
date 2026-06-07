@@ -1,12 +1,13 @@
 ---
-title: Timeline of the History of Literature and Literary Theory
+title: Literature History Timeline
+layout: slide-wiki
 categories: Chron
 subclass: Basics
 ---
 
 ## Mythic Origins (c. 3000 BCE-400 CE)
 
-### Mesopotamian Epic Tradition, c. 3000–1000 BCE
+### Mesopotamian Epic Tradition (c. 3000–1000 BCE)
 
 | Tradition Knowledge        | Content                                                                                                                                                                                            |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21,12 +22,12 @@ Mesopotamian epic tradition begins in a world where literature, religion, kingsh
 
 This tradition is also marked by a severe view of human life. The gods are powerful, but not always morally transparent; kings are magnificent, but still mortal; cities are achievements, but also sites of oppression; human beings can seek fame, friendship, wisdom, and order, but they do not become gods. Mesopotamian literature therefore tends to be concrete, grave, and institutional. Its imagination often moves between the visible world of walls, rivers, temples, and bodies and the invisible order of divine decisions, cosmic boundaries, and death.
 
-A useful distinction should be made between **heroic epic** and **creation myth**. A heroic epic such as *Gilgamesh* asks how a human being, even one partly divine, should live within mortality. A creation myth such as *Enuma Elish* asks how the cosmos itself was ordered, which god has supreme authority, and why human beings exist at all. The former moves from kingship to friendship to death; the latter moves from primordial waters to divine conflict to cosmic architecture. Together, they show that Mesopotamian literature is not one theme but a system: human life, political order, divine hierarchy, and cosmic structure are treated as connected problems.
+A useful distinction should be made between **heroic epic** and **creation myth**. A heroic epic such as *Gilgamesh* asks how a human being, even one partly divine, should live within mortality. A creation myth such as *Enuma Elish* asks how the cosmos itself was ordered, which god has supreme autLiteratureority, and why human beings exist at all. The former moves from kingship to friendship to death; the latter moves from primordial waters to divine conflict to cosmic architecture. Together, they show that Mesopotamian literature is not one theme but a system: human life, political order, divine hierarchy, and cosmic structure are treated as connected problems.
 
 **Literary Knowledge and Developmental Lines:**
 Mesopotamian literature gives world literature several durable narrative patterns: the king who must be educated by loss; the friend whose death awakens mortality; the flood survivor who stands between destruction and memory; the combat between a younger god and a primordial monster; creation as the replacement of chaos by order; humanity as a laboring species placed under divine command. Later biblical, Greek, medieval, and modern works will repeatedly return to these patterns, sometimes accepting them, sometimes revising them, sometimes arguing against them.
 
-### *The Epic of Gilgamesh*, c. 2100–1200 BCE
+### *The Epic of Gilgamesh* (c. 2100–1200 BCE)
 
 | Work Knowledge         | Content                                                                                                           |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -77,7 +78,7 @@ The epic’s afterlife includes ancient Near Eastern flood traditions, biblical 
 
 **The greatness of *The Epic of Gilgamesh* lies in its refusal to flatter heroism.** Gilgamesh kills monsters, defies gods, travels beyond ordinary human limits, and still fails to become immortal. What he gains is not divine life but human wisdom. **The epic therefore begins world literature not with triumph, but with a disciplined recognition of limits.**
 
-### Babylonian Creation Myth, c. 2nd–1st Millennium BCE
+### Babylonian Creation Myth (c. 2nd–1st Millennium BCE)
 
 | Tradition Knowledge        | Content                                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -98,7 +99,7 @@ As a literary tradition, Babylonian creation myth binds together **cosmology** a
 **Literary Knowledge and Developmental Lines:**
 Creation myths often answer several questions at once: What existed before the world? How did space, time, and social order come into being? Why do humans work, worship, suffer, and obey? *Enuma Elish* answers through combat. It imagines the cosmos as something made from a defeated body and humanity as a labor force created from divine blood. This makes it fundamentally different from later creation narratives that emphasize peaceful speech, moral order, or human dignity.
 
-### *Enuma Elish*, c. 18th–12th Century BCE; best-known version attested in later Babylonian tradition
+### *Enuma Elish* (c. 18th–12th Century BCE; best-known version attested in later Babylonian tradition)
 
 | Work Knowledge           | Content                                                                                                  |
 | ------------------------ | -------------------------------------------------------------------------------------------------------- |
@@ -150,7 +151,7 @@ Its main legacy is not a single later adaptation but a comparative framework. It
 
 *Enuma Elish* **is not a comforting creation story.** It imagines order as victory, space as dismembered body, time as divine administration, and humanity as service. Its literary force lies precisely in that severity. Where *Gilgamesh* asks what a human king learns from death, *Enuma Elish* asks how the world becomes governable at all. **Together, the two works show the range of Mesopotamian imagination: one turns mortality into wisdom; the other turns violence into cosmos.**
 
-### Ancient Egyptian Funerary Literature, c. 24th Century BCE onward
+### Ancient Egyptian Funerary Literature (c. 24th Century BCE onward)
 
 | Tradition Knowledge        | Content                                                                                                                                                                                |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -176,7 +177,7 @@ Egyptian funerary literature shows how a culture can turn death into a structure
 **Source and Genre Note:**
 These texts should not be treated as neutral reports of Egyptian belief in a modern sense. They are ritual, royal, priestly, and funerary artifacts. Their survival depends on tomb contexts, inscriptions, papyri, and elite mortuary culture. Egyptian historical source notes in the scholarly record also list *Pyramid Texts*, *Coffin Texts*, and *Book of the Dead* among major sources for ancient Egyptian history, alongside tombs, burial goods, temple reliefs, inscriptions, papyri, and archaeological evidence. 
 
-### *Pyramid Texts*, c. 24th–22nd Century BCE
+### *Pyramid Texts* (c. 24th–22nd Century BCE)
 
 | Work Knowledge         | Content                                                                                                                            |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -222,7 +223,7 @@ Many motifs associated with the *Pyramid Texts* survive in later Egyptian funera
 
 *The Pyramid Texts* **show a literature before literature becomes entertainment or private expression.** Their world is not built around plot suspense, but around the terrifying need to survive death correctly. **They are poetry as passage, architecture as text, and ritual speech as a technology of immortality.**
 
-### *Book of the Dead*, c. 1550 BCE onward
+### *Book of the Dead* (c. 1550 BCE onward)
 
 | Work Knowledge         | Content                                                                                                                                                           |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -275,7 +276,7 @@ Its imagery has shaped modern popular views of Egypt more than almost any other 
 
 *The Book of the Dead* **turns death into a textual journey.** Its world is not governed by heroic conquest, but by correct passage: knowing the names, speaking the spells, balancing the heart, and entering an ordered field beyond decay. Where *Gilgamesh* returns from the search for immortality with empty hands, the Egyptian dead carry language itself as equipment. **In this tradition, literature is not merely memory after death; it is a means of moving through death.**
 
-### Hebrew Sacred Literature, c. 12th–2nd Century BCE
+### Hebrew Sacred Literature (c. 12th–2nd Century BCE)
 
 | Tradition Knowledge       | Content                                                                                                                                                                 |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -300,7 +301,7 @@ The Hebrew Bible is particularly important for four literary developments. First
 
 The Documentary Hypothesis is relevant here not because every note requires source criticism, but because it helps explain why the Torah often preserves seams, repetitions, doublets, and tensions. the sources note that Genesis and the Torah contain different source traditions woven together, and that even though the Documentary Hypothesis has been revised and criticized, the complexity of the Pentateuchal tradition remains difficult to deny. 
 
-### *Genesis* / 《创世纪》, traditional material formed over many centuries; major written and edited layers c. 10th–5th Century BCE
+### *Genesis* / 《创世纪》 (traditional material formed over many centuries; major written and edited layers c. 10th–5th Century BCE)
 
 | Work Knowledge         | Content                                                                                                                                         |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -345,7 +346,7 @@ Its stories echo through *Paradise Lost*, *Faust*, Romantic poetry, modernist my
 
 *Genesis* is not merely a book of beginnings. It is a book about beginnings that already go wrong: creation leads to prohibition, family leads to violence, blessing leads to rivalry, promise leads to delay, election leads to exile. Its greatness lies in making origin itself unstable. Human history begins under blessing, but also under fracture.
 
-### *Job* / 《约伯记》, probably composed and edited across several periods; often associated with wisdom literature
+### *Job* / 《约伯记》 (probably composed and edited across several periods; often associated with wisdom literature)
 
 | Work Knowledge          | Content                                                                                                                                  |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -388,7 +389,7 @@ Within the Hebrew Bible, *Job* is one of the strongest internal challenges to mo
 
 *The Book of Job* is powerful because it refuses comfort where comfort would be false. It allows the righteous sufferer to accuse, argue, mourn, and demand. It does not let theology escape the body in ashes. Its greatness lies in preserving a wound inside sacred literature.
 
-### *Exodus* / 《出埃及记》, traditional material formed over many centuries; major Torah layers likely edited in the first millennium BCE
+### *Exodus* / 《出埃及记》 (traditional material formed over many centuries; major Torah layers likely edited in the first millennium BCE)
 
 | Work Knowledge         | Content                                                                                                                               |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -474,7 +475,7 @@ Their influence appears in Christian hymnody, medieval devotional poetry, Reform
 
 *Psalms* matters because it turns speech itself into survival. It teaches that literature can praise, accuse, remember, curse, repent, and wait. If *Genesis* gives the world its beginning and *Exodus* gives a people its law, *Psalms* gives the soul its voices.
 
-### *Song of Songs* / 《雅歌》, likely a collection of love poems, date debated
+### *Song of Songs* / 《雅歌》, likely a collection of love poems (date debated)
 
 | Work Knowledge         | Content                                                                                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -515,7 +516,7 @@ The poem gives world literature one of its earliest and most influential sacred-
 
 *Song of Songs* is important because it refuses to treat desire as merely a problem to be solved. Inside a canon of creation, covenant, law, lament, and wisdom, it preserves the lyric immediacy of wanting and being wanted. Its theology, if one may call it that, is not argued but sung: love itself becomes a language worthy of scripture.
 
-### Early Indian Religious and Epic Tradition, c. 1500 BCE–400 CE
+### Early Indian Religious and Epic Tradition (c. 1500 BCE–400 CE)
 
 | Tradition Knowledge      | Content                                                                                                                                                            |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -535,7 +536,7 @@ Indian epic literature differs from Greek epic in scale and moral density. Greek
 **Literary Knowledge and Developmental Lines:**
 This tradition moves from sacred utterance to philosophical speculation, then into vast narrative forms. The Vedic world emphasizes sacrifice, hymn, deity, and ritual order. The Upanishadic world turns toward self-knowledge and liberation. The epics bring these questions into the world of families, kings, wars, vows, exile, marriage, and statecraft. The *Bhagavad Gita* then resolves one of the deepest tensions of the epic world: if action binds one to consequences, how can one act without spiritual ruin?
 
-### Vedas, c. 1500–500 BCE
+### Vedas (c. 1500–500 BCE)
 
 | Work Knowledge       | Content                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -569,7 +570,7 @@ The Vedic emphasis on sacrifice, sacred speech, cosmic order, and priestly autho
 
 **The Vedas matter in world literature because they show an early form of poetic language before literature becomes primarily narrative or private expression.** They are poems of fire, praise, offering, dawn, order, and divine address. **Their literary power lies in the conviction that language, when correctly formed, helps sustain the world.**
 
-### Upanishads, c. 800–300 BCE
+### Upanishads (c. 800–300 BCE)
 
 | Work Knowledge       | Content                                                                                                                  |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -605,7 +606,7 @@ Upanishadic ideas influence Vedānta, Hindu philosophy, Buddhist and Jain debate
 
 **The Upanishads matter because they move literature toward interior metaphysics.** They ask what remains when ritual, social identity, body, and ordinary knowledge are stripped away. **In them, world literature discovers one of its most durable scenes: a human being asking what the self is.**
 
-### Mahabharata, c. 400 BCE–400 CE
+### Mahabharata (c. 400 BCE–400 CE)
 
 | Work Knowledge       | Content                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------- |
@@ -642,7 +643,7 @@ The epic has been retold in Sanskrit, vernacular languages, performance traditio
 
 *The Mahabharata* **matters because it makes morality tragic without making it meaningless.** It does not abolish duty; it shows how painful duty becomes when the world is too complex for purity. **Its battlefield is therefore not only Kurukṣetra, but the human condition under conflicting obligations.**
 
-### Ramayana, c. 5th–1st Century BCE
+### Ramayana (c. 5th–1st Century BCE)
 
 | Work Knowledge         | Content                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -681,7 +682,7 @@ The story has been retold across Sanskrit, vernacular, Southeast Asian, Jain, Bu
 
 *The Ramayana* **is not merely an adventure of rescue.** It is a long meditation on ideal conduct under pressure. **Its beauty and difficulty both come from the same source: it imagines a world in which duty is sacred, but the demands of duty can wound the people who embody it.**
 
-### Bhagavad Gita, c. 2nd–1st Century BCE
+### Bhagavad Gita (c. 2nd–1st Century BCE)
 
 | Work Knowledge       | Content                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -724,7 +725,7 @@ The *Gita* influenced Indian religious practice, Vedānta, devotional traditions
 
 *The Bhagavad Gita* **matters because it turns the battlefield into a classroom of the soul.** Arjuna’s crisis is not weakness; it is moral perception pushed to the breaking point. Kṛṣṇa’s answer does not glorify violence for its own sake. **It asks whether action can be purified when it is performed as duty, without attachment, and in relation to the divine.**
 
-### Early Chinese Classical Tradition, c. 11th–3rd c. BCE
+### Early Chinese Classical Tradition (c. 11th–3rd c. BCE)
 
 | Tradition Knowledge               | Content                                                                                                                                                                                                                                       |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -744,7 +745,7 @@ This is not to say that early China lacks myth, ritual, or political violence. I
 **Literary Knowledge and Developmental Lines:**
 Early Chinese classics give world literature several durable forms: the lyric anthology as a social archive; the aphorism as ethical memory; the dialogue as moral training; the paradoxical poem as philosophical provocation; the fable as a way to loosen fixed concepts. The movement from *Book of Songs* to *Analects* to *Dao De Jing* to *Zhuangzi* is not simply poetry → philosophy. It is a gradual widening of literary method: song, saying, paradox, story.
 
-### Book of Songs, c. 11th–6th c. BCE
+### Book of Songs (c. 11th–6th c. BCE)
 
 | Work Knowledge           | Content                                                                                                                     |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -784,7 +785,7 @@ Later Chinese poetry—especially Han, Six Dynasties, Tang, and Song traditions�
 
 *The Book of Songs* **matters because it makes ordinary feeling historically durable.** In a world-literary sequence dominated by epics, gods, kings, and battles, it opens a quieter path: the poem as social memory, emotional indirection, and the patterned speech of ordinary life.
 
-### Analects, c. 5th–3rd c. BCE
+### Analects (c. 5th–3rd c. BCE)
 
 | Work Knowledge       | Content                                                                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -826,7 +827,7 @@ Its influence extends through Confucian commentary, imperial examinations, East 
 
 *The Analects* **matters because it makes moral life verbal, situational, and repeatable.** It does not give one grand plot. It gives hundreds of small ethical scenes, each asking how a person should stand in relation to others. **In this tradition, civilization is built less by heroic conquest than by disciplined speech, ritual memory, and the slow formation of character.**
 
-### Dao De Jing, c. 4th–3rd c. BCE
+### Dao De Jing (c. 4th–3rd c. BCE)
 
 | Work Knowledge       | Content                                                                                                                             |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -868,7 +869,7 @@ Its ideas influence Chinese poetry, painting, reclusion culture, Chan Buddhism, 
 
 *The Dao De Jing* **matters because it turns wisdom against force.** Where many ancient texts organize the world through command, law, sacrifice, or heroic action, this text praises the low, the soft, the empty, and the unnamed. **Its power lies in making restraint feel metaphysically deeper than domination.**
 
-### Zhuangzi, c. 4th–3rd c. BCE
+### Zhuangzi (c. 4th–3rd c. BCE)
 
 | Work Knowledge       | Content                                                                                                                              |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -914,7 +915,7 @@ Later poets, painters, hermits, philosophers, and storytellers repeatedly return
 
 *Zhuangzi* matters because it makes thought mobile. It does not ask the reader to memorize doctrine, but to undergo disorientation. The world becomes larger, stranger, and less governable by ordinary categories. In this sense, it is not only philosophy written as literature; it is literature doing philosophy by changing the reader’s sense of reality.
 
-### Mythic Patterns, prehistory-present
+### Mythic Patterns (prehistory-present)
 
 World literature inherits several large mythic patterns from early oral, ritual, epic, and sacred traditions: creation, flood, catastrophe, heroic trial, wandering, and quest. These patterns are not independent literary periods or canonical works. They are recurring narrative grammars that later works repeatedly reuse, transform, and argue with.
 
@@ -924,7 +925,7 @@ These patterns should not be treated as rigid formulas or as substitutes for act
 
 ## Greek Foundations (c. 2000-5th c. BCE)
 
-### Greek Mythology, c. 2nd millennium–5th c. BCE
+### Greek Mythology (c. 2nd millennium–5th c. BCE)
 
 | Tradition Knowledge         | Content                                                                                                                                                         |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -944,7 +945,7 @@ Greek mythology is also a bridge between divine time and human history. The **Tr
 **Literary Knowledge and Developmental Lines:**
 Greek myth provides Western literature with a vast set of reusable structures: the Olympian divine family, the rebel benefactor, the heroic quest, the cursed house, the war of beauty and honor, the self-discovering criminal, the foreign woman betrayed, the city under pollution, and the hero who becomes tragic precisely because greatness cannot protect him from limit. Greek epic monumentalizes these myths; Greek tragedy reopens them as ethical conflicts.
 
-### Olympian Pantheon, archaic–classical Greece
+### Olympian Pantheon (archaic–classical Greece)
 
 | Mythic Knowledge      | Content                                                                                                                                         |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -978,7 +979,7 @@ The Olympian system enters Roman mythology through identification with Roman god
 
 **The Olympian gods matter because they make power dramatic.** The world is not governed by impersonal law alone, nor by a single moral will, but by forces with faces, tempers, desires, and grudges. **Greek mythology’s literary richness begins from this unstable intimacy between divine power and human passion.**
 
-### Prometheus: Creation and Theft of Fire, archaic–classical Greece
+### Prometheus: Creation and Theft of Fire (archaic–classical Greece)
 
 | Mythic Knowledge      | Content                                                                                                                                |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1014,7 +1015,7 @@ Aeschylus, Shelley, Goethe, Byron, Mary Shelley, Marxist thought, modern science
 
 **Prometheus matters because he makes civilization morally unstable.** Fire is necessary, but stolen; culture is liberating, but punishable; humanity becomes stronger, but also more alone. **In him, Greek mythology discovers the double nature of progress.**
 
-### Golden Fleece, archaic–classical Greece
+### Golden Fleece (archaic–classical Greece)
 
 | Mythic Knowledge     | Content                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -1050,7 +1051,7 @@ The Argonautic pattern influences sea-voyage narratives, quest romance, adventur
 
 **The Golden Fleece matters because it exposes the danger of the quest object.** It shines like legitimacy, wealth, and heroic success. **But the myth asks what lies under that shine: betrayal, exile, dependence, and the violence that heroic narrative often tries to hide.**
 
-### Trojan War Myth, c. 12th c. BCE legendary setting; literary formation archaic–classical Greece
+### Trojan War Myth (c. 12th c. BCE legendary setting; literary formation archaic–classical Greece)
 
 | Mythic Knowledge     | Content                                                                                                                    |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -1086,7 +1087,7 @@ Virgil’s *Aeneid* transforms Trojan defeat into Roman destiny. Medieval writer
 
 **The Trojan War matters because it is both ending and beginning.** It ends the heroic age, but begins an enormous literary afterlife. Its heroes die, return, fail, murder, wander, and found new worlds. **In Greek mythology, no other war generates so much literature because no other war stands so exactly at the border between myth and history.**
 
-### Oedipus Myth, archaic–classical Greece
+### Oedipus Myth (archaic–classical Greece)
 
 | Mythic Knowledge     | Content                                                                                                                   |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -1120,7 +1121,7 @@ Sophocles, Freud, modern drama, psychoanalysis, detective fiction, and modern no
 
 **The Oedipus myth matters because it turns identity into catastrophe.** Oedipus is not ruined by ignorance alone, nor by knowledge alone, but by the passage from one to the other. **The moment he knows who he is, the world he saved becomes uninhabitable.**
 
-### Medea Myth, archaic–classical Greece
+### Medea Myth (archaic–classical Greece)
 
 | Mythic Knowledge     | Content                                                                                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1158,7 +1159,7 @@ Medea has been reimagined as witch, barbarian, victim, rebel, strategist, mother
 **Medea matters because she breaks the heroic frame from within.** The Golden Fleece myth wants Jason to be the seeker of glory. Medea reveals that glory was never his alone. **When betrayed, she becomes the terrible memory of everything the heroic story tried to forget.**
 
 
-### Homeric Epic, c. 8th c. BCE
+### Homeric Epic (c. 8th c. BCE)
 
 | Tradition Knowledge    | Content                                                                                                                                                                                                                                   |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1185,7 +1186,7 @@ Homeric characterization also differs from later psychological realism. Many cha
 
 Homeric epic also becomes the foundation against which later epic defines itself. **Virgil** opens the *Aeneid* by combining “arms” and “a man,” thereby announcing that he is writing both an *Iliad*-like war epic and an *Odyssey*-like wandering epic; but he also differs from Homer because he writes as a single literary author with hindsight, using myth to explain Rome’s later destiny. 
 
-### Iliad, c. 8th c. BCE
+### Iliad (c. 8th c. BCE)
 
 | Work Knowledge        | Content                                                                                                                         |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -1237,7 +1238,7 @@ The *Iliad* echoes in **Virgil**’s *Aeneid*, Greek tragedy, Shakespearean war 
 
 *The Iliad* **matters because it does not allow heroic glory to remain pure.** It shows courage, beauty, speech, loyalty, rage, and grief in the same field of force. Achilles becomes most human only when he recognizes the suffering of his enemy. **In that recognition, the war poem becomes a poem about mourning.**
 
-### Odyssey, c. 8th c. BCE
+### Odyssey (c. 8th c. BCE)
 
 | Work Knowledge          | Content                                                                                                                                         |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1289,7 +1290,7 @@ Its most famous modern echo is **James Joyce**’s *Ulysses*, which translates O
 
 *The Odyssey* **matters because it changes the meaning of heroism.** The hero is no longer the warrior who wins glory by dying beautifully, but the survivor who keeps enough of himself intact to return. Its deepest lesson is not that travel is exciting, but that the world offers many ways to stop being oneself: forgetting, pleasure, immortality, disguise, pride, and despair. **Odysseus becomes great because he turns through them all and still comes home.**
 
-### Hesiod, c. 700 BCE
+### Hesiod (c. 700 BCE)
 
 | Author Knowledge                   | Content                                                                                                                                                                                 |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1312,7 +1313,7 @@ The two major poems form a pair. *Theogony* builds the house of the cosmos: from
 
 His deepest contradiction is that the just order of **Zeus** is born from violence. The cosmos passes through castration, swallowing, deception, and war before it reaches stability. Yet *Works and Days* asks the farmer to trust that justice is real and that **Zeus** sees crooked judgment. This is not a weakness in **Hesiod**. It is his central tension: a world made by crime may still be governed by law. 
 
-### Theogony, c. 7th c. BCE
+### Theogony (c. 7th c. BCE)
 
 | Work Knowledge        | Content                                                                                                                         |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -1358,7 +1359,7 @@ Its influence appears in Greek tragedy, Roman mythological poetry, Renaissance m
 
 *Theogony* matters because it refuses to let order appear natural. It remembers the crimes behind the throne. Its Zeus is not simply born legitimate; he must become legitimate by defeating older powers and reorganizing the cosmos. The poem’s lasting force lies in this harsh insight: the world of justice may have a violent genealogy.
 
-### Works and Days, c. 7th c. BCE
+### Works and Days (c. 7th c. BCE)
 
 | Work Knowledge       | Content                                                                                                                                       |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1406,7 +1407,7 @@ Its themes echo in agricultural poetry, moral satire, religious instruction, lab
 
 *Works and Days* matters because it brings epic authority down to earth. It tells a farmer that the cosmos has a moral structure, but it does not pretend that life is easy. Work is hard, judges are corrupt, brothers quarrel, and humanity lives in the Iron Age. Yet the poem still asks for justice. Its greatness lies in this tension: it accepts the bitterness of ordinary life without surrendering the belief that right dealing matters.
 
-### Greek Lyric Poetry, c. 7th–5th c. BCE
+### Greek Lyric Poetry (c. 7th–5th c. BCE)
 
 | Tradition Knowledge         | Content                                                                                                                                                                                                          |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1426,7 +1427,7 @@ Greek lyric also changes the scale of literary value. Heroic poetry says that a 
 **Literary Knowledge and Developmental Lines:**
 Greek lyric produces two especially important paths. The first is **personal lyric**, where the poem seems to gather around an individual speaker’s feeling, as in **Sappho**. The second is **public choral lyric**, where poetry celebrates collective occasions, most famously in **Pindar**’s victory odes. These two paths remain fundamental for later poetry: lyric as inward voice and lyric as public ceremonial song.
 
-### Sappho, c. 630 BCE
+### Sappho (c. 630 BCE)
 
 | Author Knowledge         | Content                                                                                                                                                                             |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1465,7 +1466,7 @@ Her name becomes attached to female poetic authority, erotic lyric, the island o
 
 **Sappho matters because she makes lyric intensity world-historical.** In epic, memory belongs to heroes; in Sappho, a moment of desire can carry the weight of song. **Her surviving poems are small in quantity, but they changed the scale of literature: the body in love became worthy of the same seriousness as war.**
 
-### Pindar, 518–438 BCE
+### Pindar (518–438 BCE)
 
 | Author Knowledge         | Content                                                                                                                      |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -1507,7 +1508,7 @@ The **Pindaric ode** becomes a major form for later European poetry. Renaissance
 
 **Pindar matters because he makes praise difficult.** He does not simply flatter winners. He sets their victories beside myth, ancestry, divine favor, envy, and mortality. **His odes say that human excellence is real, but also fragile; brilliant, but brief.**
 
-### Greek Fable, archaic–classical Greece and later
+### Greek Fable (archaic–classical Greece and later)
 
 | Tradition Knowledge       | Content                                                                                                                                                              |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1527,7 +1528,7 @@ This reminder is important. “Aesop” should not be treated as a single author
 **Literary Knowledge and Developmental Lines:**
 Fable becomes a major route by which practical wisdom moves across cultures. It is close to proverb, joke, parable, beast tale, and moral anecdote. Its brevity makes it portable; its animal figures make it memorable; its social pessimism makes it durable. It is often more realistic than its talking animals suggest. The weak must understand the strong. The hungry must understand traps. The proud must understand limits.
 
-### Aesop’s Fables, c. 6th c. BCE and later
+### Aesop’s Fables (c. 6th c. BCE and later)
 
 | Work Knowledge              | Content                                                                                                                     |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -1571,7 +1572,7 @@ The fables pass into **Phaedrus**, **Babrius**, medieval beast literature, **La 
 
 ## Greek Historiography (5th c. BCE)
 
-### Greek Historiography, c. 5th c. BCE
+### Greek Historiography (c. 5th c. BCE)
 
 | Genre Knowledge            | Content                                                                                                                                                           |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1589,7 +1590,7 @@ The difference is often simplified: **Herodotus** is called the “father of his
 **Literary Knowledge and Developmental Lines:**
 Greek historiography develops from **memory** toward **analysis**. Herodotus still allows gods, oracles, dreams, marvels, ethnographic digressions, and multiple versions of events into the historical field. Thucydides largely removes the gods and supernatural explanation, focusing instead on human motives, political decision, fear, power, interest, plague, rhetoric, and war. The result is not simply “myth to reason,” but a change in narrative authority: history becomes a prose form for judging causes.
 
-### Herodotus, c. 484–425 BCE
+### Herodotus (c. 484–425 BCE)
 
 | Author Knowledge      | Content                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -1607,7 +1608,7 @@ This mixed method gives **Herodotus** his distinctive texture. He includes stori
 
 **Herodotus** is therefore not merely a collector of charming stories. He is one of the first major prose writers to make **cause** a literary problem. Empires rise because rulers desire more than they can hold; customs differ because peoples inhabit different histories and landscapes; victory and defeat are never only military events but also moral and cultural events. His history is expansive because he treats war as the visible center of a much larger world.
 
-### Histories, c. 440 BCE
+### Histories (c. 440 BCE)
 
 | Work Knowledge       | Content                                                                                                         |
 | -------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -1644,7 +1645,7 @@ Herodotus influences historiography, ethnography, travel writing, imperial histo
 
 *The Histories* **matters because it makes the past readable without making it simple.** Herodotus does not yet give the austere historical prose of Thucydides. He gives something wider: a world of peoples, stories, causes, warnings, and reversals. **His history is the memory of war enlarged into the study of human variety.**
 
-### Thucydides, c. 460–400 BCE
+### Thucydides (c. 460–400 BCE)
 
 | Author Knowledge         | Content                                                                                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1662,7 +1663,7 @@ He almost entirely removes gods, fate, marvels, and ethnographic digression from
 
 **Thucydides** is therefore both more austere and more controlling. Herodotus often shows the reader several versions; Thucydides usually gives the version he has decided to present. His authorial voice almost disappears, but this disappearance is itself a literary effect. the scholarly record puts the point sharply: Thucydides’ great triumph may be his convincing literary portrayal of the historian as an objective recorder of facts. 
 
-### History of the Peloponnesian War, late 5th c. BCE
+### History of the Peloponnesian War (late 5th c. BCE)
 
 | Work Knowledge       | Content                                                                                                                                 |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1707,7 +1708,7 @@ His influence reaches Roman historiography, Renaissance political thought, moder
 
 ## Aeschylean Tragedy (525-456 BCE)
 
-### Greek Tragedy, c. 5th c. BCE
+### Greek Tragedy (c. 5th c. BCE)
 
 | Genre Knowledge                | Content                                                                                                                                                                                      |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1725,7 +1726,7 @@ The subject matter of tragedy was usually drawn from traditional myth. The audie
 **Literary Knowledge and Developmental Lines:**
 Greek tragedy develops the Western idea that serious drama arises from **action** and **conflict**. Its protagonists are often noble or extraordinary figures, but the drama does not simply admire them. It asks what happens when greatness is trapped between incompatible obligations: father and city, husband and wife, old gods and new law, vengeance and justice, rebellion and order. Later European tragedy repeatedly returns to this Greek source: **Shakespeare** transforms tragic conflict into character and inward delay; French classicism turns tragedy toward formal order and political passion; modern drama shifts tragedy into society, family, and institutional violence.
 
-### Aeschylus, 525–456 BCE
+### Aeschylus (525–456 BCE)
 
 | Author Knowledge                | Content                                                                                                                            |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -1746,7 +1747,7 @@ The survival of his works is precarious. Ancient sources say he wrote dozens of 
 **Aeschylean Tragic Imagination:**
 The deepest problem in **Aeschylus** is not merely suffering, but the movement from archaic violence toward civic justice. His world is full of old powers: curses, blood vengeance, divine compulsion, ancestral guilt, and terrible oaths. Yet his drama also imagines law, persuasion, trial, and public institutions. In this sense, he is not only a poet of terror. He is a poet of transition.
 
-### Prometheus Bound, date uncertain
+### Prometheus Bound (date uncertain)
 
 | Work Knowledge              | Content                                                                                                                                   |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1785,7 +1786,7 @@ Prometheus becomes one of the great figures of European and global literature: r
 
 *Prometheus Bound* matters because it turns immobility into resistance. Prometheus is chained, but not silenced; punished, but not persuaded. The play asks whether power becomes legitimate simply by winning, or whether justice requires something more than domination. Its unresolved ending keeps that question open.
 
-### Oresteia, 458 BCE
+### Oresteia (458 BCE)
 
 | Work Knowledge         | Content                                                                                                                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -1832,7 +1833,7 @@ The trilogy influences Roman tragedy, Renaissance drama, modern political theory
 
 ## Sophoclean Tragedy (496-406 BCE)
 
-### Sophocles, 496–406 BCE
+### Sophocles (496–406 BCE)
 
 | Author Knowledge      | Content                                                                                                                                                      |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -1856,7 +1857,7 @@ A second key feature is the remoteness of the gods. In **Aeschylus**, gods may a
 **Sophoclean Tragic Form:**
 The typical Sophoclean play compresses myth into a crisis of recognition and refusal. The protagonist is not usually changing in a modern psychological sense; rather, the play reveals what the protagonist already is when placed under maximum pressure. A secondary figure often pleads for compromise: **Ismene** beside **Antigone**, **Chrysothemis** beside **Electra**, various messengers, prophets, sons, wives, or choruses beside more rigid central figures. These secondary figures are not simply weak. They mark the ordinary human world of survival, prudence, and adaptation. Against them, the protagonist appears magnificent and inhuman.
 
-### Oedipus the King, c. 429 BCE
+### Oedipus the King (c. 429 BCE)
 
 | Work Knowledge             | Content                                                                                                                           |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -1899,7 +1900,7 @@ Its afterlife includes **Aristotle**, **Seneca**, **Freud**, **Cocteau**, **Paso
 
 *Oedipus the King* matters because it makes knowledge unbearable. Oedipus does not become tragic by being evil; he becomes tragic because his highest capacities—intelligence, courage, responsibility, and persistence—lead him to the truth he cannot survive. Sophocles’ greatness lies in making the search for truth both morally necessary and humanly catastrophic.
 
-### Antigone, c. 441 BCE
+### Antigone (c. 441 BCE)
 
 | Work Knowledge                | Content                                                                                                                                         |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1940,7 +1941,7 @@ The play has been reinterpreted by **Hegel**, **Kierkegaard**, **Anouilh**, **Br
 
 *Antigone* matters because it makes righteousness frightening. Antigone is right about the dead, but she is not gentle; Creon is wrong about divine law, but he is not merely irrational. Sophocles forces the reader to see that tragedy can arise when each side absolutizes a real duty until no human compromise remains possible.
 
-### Electra, date uncertain
+### Electra (date uncertain)
 
 | Work Knowledge               | Content                                                                                                                          |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -1987,7 +1988,7 @@ Electra becomes a major figure in later tragedy, psychoanalysis, opera, and mode
 
 ## Euripidean Tragedy (480-406 BCE)
 
-### Euripides, c. 480–406 BCE
+### Euripides (c. 480–406 BCE)
 
 | Author Knowledge      | Content                                                                                                                                                                                          |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -2009,7 +2010,7 @@ The most distinctive Euripidean gesture is to take a myth that appears morally f
 **Euripidean Tragic Imagination:**
 Euripides repeatedly asks whether traditional myth, when looked at closely, is morally tolerable. His gods can look like personified natural forces rather than moral rulers: **Aphrodite** is sexual passion, **Dionysus** is frenzy and intoxication. the sources suggest that Euripides may not be denying divine power, but testing whether anthropomorphic gods can be morally coherent. If gods are imagined as human-like beings who also embody irresistible natural forces, then their behavior may become terrifyingly petty and destructive. 
 
-### Medea, 431 BCE
+### Medea (431 BCE)
 
 | Work Knowledge       | Content                                                                                                                                                                  |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -2052,7 +2053,7 @@ Medea becomes one of the most rewritten women in world drama: witch, foreigner, 
 
 *Medea* matters because it breaks the heroic story after the hero has won. Jason’s quest looks glorious only if Medea’s cost remains invisible. Euripides makes that cost speak, calculate, and destroy. The result is one of tragedy’s most disturbing insights: injustice can create a victim whose revenge becomes morally worse than the injury that produced it.
 
-### Hippolytus, 428 BCE
+### Hippolytus (428 BCE)
 
 | Work Knowledge              | Content                                                                                                                   |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -2093,7 +2094,7 @@ The Phaedra-Hippolytus story becomes central to Roman tragedy, French classicism
 
 *Hippolytus* matters because it makes both desire and purity dangerous. Aphrodite destroys through passion; Hippolytus contributes to disaster through contempt for passion. Euripides’ tragedy is not a defense of indulgence, but a critique of any life that imagines one force of nature can be abolished by moral pride.
 
-### Bacchae, 405 BCE
+### Bacchae (405 BCE)
 
 | Work Knowledge           | Content                                                                                                                                                   |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2134,7 +2135,7 @@ As one of Euripides’ final plays, *Bacchae* has often been read as a late medi
 
 *Bacchae* matters because it refuses both rationalist contempt and religious comfort. Pentheus is wrong to deny Dionysus, but Dionysus is not morally gentle because he is real. The play’s terror lies in this double recognition: some forces must be honored, but honoring them does not make them safe.
 
-### Trojan Women, 415 BCE
+### Trojan Women (415 BCE)
 
 | Work Knowledge          | Content                                                                                                                               |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2199,7 +2200,7 @@ The subject matter of Old Comedy is radically freer than tragedy. A tragic playw
 **Developmental Line:**
 Greek comedy is usually divided into **Old Comedy**, **Middle Comedy**, and **New Comedy**. Old Comedy, represented above all by **Aristophanes**, is politically aggressive, chorus-centered, and full of direct satire. Middle Comedy reduces the chorus and moves away from sharp personal-political attack. New Comedy, later represented by **Menander**, turns toward domestic plots, mistaken identity, love intrigue, family conflict, and social manners. This development matters because comedy gradually moves from public political ridicule toward private social plot.
 
-### Aristophanes, c. 460–386 BCE
+### Aristophanes (c. 460–386 BCE)
 
 | Author Knowledge       | Content                                                                                                                                                    |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2221,7 +2222,7 @@ the scholarly record also emphasizes his range of targets: political commentary,
 **Aristophanic Comic Imagination:**
 The most important feature of **Aristophanes** is the conversion of civic frustration into comic fantasy. Tragedy asks what happens when a serious obligation becomes unbearable. Aristophanic comedy asks what would happen if an ordinary person could bypass the entire political order and enact a mad solution immediately. The comic hero is not necessarily morally admirable. He is energetic, selfish, ingenious, obscene, and alive. His fantasy exposes what the city refuses to solve.
 
-### Acharnians, 425 BCE
+### Acharnians (425 BCE)
 
 | Work Knowledge       | Content                                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -2262,7 +2263,7 @@ Its comic logic survives in political satire, anti-war comedy, absurdist civic f
 
 *Acharnians* matters because it makes peace ridiculous and necessary at the same time. Dicaeopolis is not a saint; he is selfish, comic, and bodily. But through him **Aristophanes** shows what public politics cannot admit: an ordinary citizen may understand the cost of war more clearly than the leaders who justify it.
 
-### Birds, 414 BCE
+### Birds (414 BCE)
 
 | Work Knowledge       | Content                                                                                                               |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -2307,7 +2308,7 @@ The idea of Cloudcuckooland survives as a term for unrealizable fantasy, impract
 
 *Birds* matters because it makes escape suspect. Peisetairos and Euelpides flee the city’s troubles, but their dream of freedom becomes an even larger structure of rule. **Aristophanes** turns utopia into comedy not by making it innocent, but by showing that the wish to get above the world may also be the wish to dominate it.
 
-### Lysistrata, 411 BCE
+### Lysistrata (411 BCE)
 
 | Work Knowledge        | Content                                                                                                                               |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2350,7 +2351,7 @@ The play belongs to late fifth-century Athens, when the Peloponnesian War had be
 
 *Lysistrata* **matters because it lets comedy do what politics cannot.** The play does not abolish war through reasoned diplomacy. It humiliates war by dragging it into the bedroom, the treasury, the kitchen, the body, and the festival. **In doing so, it exposes one of Old Comedy’s deepest principles: public stupidity may be most effectively attacked through shameless laughter.**
 
-### Menander, c. 344/3–292/1 BCE
+### Menander (c. 344/3–292/1 BCE)
 
 | Author Knowledge                    | Content                                                                                                                                                                                   |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2372,7 +2373,7 @@ The rediscovery of Menander is one of the major events in modern classical schol
 **Menandrean Comic Imagination:**
 Menander’s comedy does not usually ask how to end a war, ridicule a demagogue, or rescue tragedy from decline. It asks how a household can be repaired. The comic crisis may involve a young man in love with a woman of apparently unsuitable status, a lost child, a mistaken identity, an angry father, a clever slave, or a social barrier that chance later removes. The result is not revolutionary release but reconciliation.
 
-### New Comedy, c. 325–200 BCE
+### New Comedy (c. 325–200 BCE)
 
 | Work / Form Knowledge                 | Content                                                                                                                  |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -2433,7 +2434,7 @@ The key term is `mimesis`. For **Plato**, imitation is epistemologically dangero
 **Literary Knowledge and Developmental Line:**
 This section marks a shift from literary creation to literary criticism. **Homer**, **Aeschylus**, **Sophocles**, **Euripides**, and **Aristophanes** create works; **Plato** and **Aristotle** ask what those works are, what they do, and whether they should be trusted. Later literary theory—neoclassicism, Renaissance poetics, tragedy theory, realism, mimetic theory, reader-response criticism, and debates over censorship—keeps returning to this Platonic-Aristotelian split.
 
-### Plato, c. 428/427–348/347 BCE
+### Plato (c. 428/427–348/347 BCE)
 
 | Author Knowledge            | Content                                                                                                                                        |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2454,7 +2455,7 @@ For **Plato**, poetry is dangerous for two connected reasons. First, it imitates
 **Platonic Literary Theory:**
 **Plato** does not ask whether poetry is beautiful in isolation. He asks what poetry does to a person and to a city. If literature teaches falsehood about gods, rewards emotional indulgence, and imitates unstable appearances, then poetry becomes a political problem. This is why his theory is inseparable from education, censorship, and civic order.
 
-### Republic, c. 380 BCE
+### Republic (c. 380 BCE)
 
 | Work Knowledge                     | Content                                                                                                                                 |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2493,7 +2494,7 @@ Every later defense of poetry—especially **Aristotle**’s *Poetics*, **Horace
 
 *The Republic* **matters for literary history because it turns poetry into a danger serious enough for philosophy to confront.** Plato may banish the poet, but he also proves the poet’s power. **Literature enters theory here as rival educator, rival maker of images, and rival claimant to truth.**
 
-### Aristotle, 384–322 BCE
+### Aristotle (384–322 BCE)
 
 | Author Knowledge           | Content                                                                                                                        |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -2514,7 +2515,7 @@ This fragmentary, compressed form explains why *Poetics* is both influential and
 **Aristotelian Literary Theory:**
 **Aristotle**’s great shift is from moral suspicion to formal analysis. He studies plot, action, character, diction, thought, spectacle, song, recognition, reversal, and emotional effect. He treats tragedy as an artifact with internal principles. The result is the beginning of literary criticism as a technical discipline: literature can be analyzed according to how it is made.
 
-### Poetics, c. 330s–320s BCE
+### Poetics (c. 330s–320s BCE)
 
 | Work Knowledge          | Content                                                                                                                               |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2576,7 +2577,7 @@ This means Roman comedy stands at a crucial relay point in world literary histor
 **Literary Knowledge and Developmental Line:**
 The main difference between **Plautus** and **Terence** is tonal and formal. **Plautus** is louder, looser, more musical, more farcical, more openly theatrical. He loves verbal exuberance, trickery, comic speed, and servants who dominate the action. **Terence** is smoother, more controlled, more conversational, more interested in decorum, character relation, and moral ambiguity. If Plautus shows comedy as theatrical energy, Terence shows comedy as social arrangement.
 
-### Plautus, c. 254–184 BCE
+### Plautus (c. 254–184 BCE)
 
 | Author Knowledge     | Content                                                                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2595,7 +2596,7 @@ His world is structured by shortage and appetite. Young men want women they cann
 **Plautine Comic Imagination:**
 The most important figure in **Plautus** is often not the young lover, but the clever slave. The slave invents plots, speaks boldly, lies with virtuosity, and turns social hierarchy into theatrical hierarchy. In life, he is subordinate; in comedy, he may control the stage. This is one reason Plautus becomes so important for later European comedy. The servant as comic intelligence—eventually appearing in figures such as **Molière**’s servants, commedia dell’arte tricksters, and even modern comic sidekicks—has a deep Plautine ancestry.
 
-### Aulularia / The Pot of Gold, c. 2nd c. BCE
+### Aulularia / The Pot of Gold (c. 2nd c. BCE)
 
 | Work Knowledge          | Content                                                                                                                                      |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2634,7 +2635,7 @@ The most obvious later echo is **Molière**’s *L’Avare* / *The Miser*, which
 
 *Aulularia* **matters because it makes money visible as a comic force.** Gold is supposed to be useful, but in Euclio’s hands it becomes a demon of suspicion. **The play’s central joke is severe: a man may gain treasure and lose ordinary life.**
 
-### Terence, c. 195/185–159 BCE
+### Terence (c. 195/185–159 BCE)
 
 | Author Knowledge     | Content                                                                                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2656,7 +2657,7 @@ A key Terentian feature is **contaminatio**, the practice of combining material 
 **Terentian Comic Imagination:**
 Terence’s comedy is less interested in comic eruption than in social negotiation. Fathers and sons misunderstand one another; young men desire women whose status complicates marriage; mothers-in-law and courtesans may be treated with more nuance than their stock type suggests. The result is not modern psychological realism, but a smoother and more ethically shaded form of comedy than Plautine farce.
 
-### Comedies, c. 166–160 BCE
+### Comedies (c. 166–160 BCE)
 
 | Work Knowledge       | Content                                                                                                                                               |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2717,7 +2718,7 @@ scholarly accounts on Roman historiography notes that rhetoric was a crucial inf
 **Literary Knowledge and Developmental Line:**
 Greek prose had already produced **Herodotus**, **Thucydides**, **Plato**, **Aristotle**, and the Attic orators. Roman prose inherits these models but makes them part of a different social world. The Roman aristocrat does not merely write; he argues cases, competes for office, defends clients, attacks enemies, negotiates alliances, and leaves letters that expose the private anxieties behind public authority. Roman prose therefore stands between literature and political action.
 
-### Cicero, 106–43 BCE
+### Cicero (106–43 BCE)
 
 | Author Knowledge        | Content                                                                                                                           |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -2741,7 +2742,7 @@ The same ambiguity appears in his letters about a runaway slave belonging to the
 **Ciceronian Prose Imagination:**
 Cicero’s central literary invention is not plot, but **persona**. In the speeches, he creates the voice of the advocate: indignant, witty, learned, patriotic, emotionally agile. In the philosophical works, he creates the Roman intellectual who can absorb Greek philosophy without ceasing to be Roman. In the letters, he creates—often unintentionally—the anxious self of a public man living through institutional collapse.
 
-### Orations and Prose, 1st c. BCE
+### Orations and Prose (1st c. BCE)
 
 | Work Knowledge          | Content                                                                                                                                                                    |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2808,7 +2809,7 @@ The crucial difference is historical position. Homeric epic looks back from arch
 **Literary Knowledge and Developmental Line:**
 Roman epic therefore changes the meaning of fate. In Homer, fate often concerns the death, return, glory, or survival of individuals and cities. In **Virgil**, fate is collective and historical. **Aeneas** matters not only as a man, warrior, lover, son, or father, but as the necessary instrument through which Rome will eventually exist. The epic’s grandeur and discomfort both come from this shift: the individual is subordinated to a future he will never see.
 
-### Virgil, 70–19 BCE
+### Virgil (70–19 BCE)
 
 | Author Knowledge           | Content                                                                                                                             |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -2830,7 +2831,7 @@ Virgil’s position in Augustan Rome is delicate. The *Aeneid* celebrates the my
 **Virgilian Epic Imagination:**
 Virgil is the poet of historical inevitability and human loss. He makes Rome fated, but not easy. He makes **Aeneas** dutiful, but not emotionally free. He makes empire glorious, but born through violence. This is why the *Aeneid* remains more troubling than a national monument. It is a national epic that repeatedly asks what national destiny costs.
 
-### Aeneid, c. 29–19 BCE
+### Aeneid (c. 29–19 BCE)
 
 | Work Knowledge          | Content                                                                                                                                                       |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2914,7 +2915,7 @@ The most important social institution here is **patronage**. **Maecenas**, close
 **Literary Knowledge and Developmental Line:**
 Roman poetry turns Greek forms into Latin discipline. **Virgil** transforms Homeric epic into Roman national myth; **Horace** transforms Greek lyric into Roman moderation, sociability, and poetic self-control; **Ovid** later transforms myth into dazzling narrative mobility. In this line, **Horace** is the poet of measure: measure in style, measure in pleasure, measure in ambition, measure in political speech, measure in life.
 
-### Horace, 65–8 BCE
+### Horace (65–8 BCE)
 
 | Author Knowledge          | Content                                                                                                                                                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -2936,7 +2937,7 @@ the scholarly record describe Horace’s tone as detached and urbane, sharply di
 **Horatian Poetic Imagination:**
 Horace’s deepest gift is compression under pressure. A poem may begin with wine, winter, a friend, a woman, a god, a ship, or a political occasion, but it often turns toward mortality. The famous Horatian mood is not simple pleasure-seeking. `Carpe diem` is not shallow hedonism; it is a discipline of attention under the fact of death. Enjoy today because time is not owned.
 
-### Odes, 23 BCE; Book IV, 13 BCE
+### Odes (23 BCE; Book IV, 13 BCE)
 
 | Work Knowledge         | Content                                                                                                                      |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -2979,7 +2980,7 @@ Horace shapes Renaissance lyric, neoclassical poetics, English Augustan poetry, 
 
 *The Odes* **matter because they make restraint sing.** Horace does not deny pleasure, ambition, love, or public life; he measures them. His lyric art is a discipline of proportion under mortality. **The result is poetry that seems social and light on the surface, but repeatedly returns to the same hard knowledge: time is short, and form is one way to live lucidly within that limit.**
 
-### Ars Poetica, c. 19 BCE
+### Ars Poetica (c. 19 BCE)
 
 | Work Knowledge        | Content                                                                                                                              |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -3042,7 +3043,7 @@ Roman philosophical literature is a literature of translation and transformation
 
 This matters because philosophy here is not merely concept. It is therapy. Epicureanism wants to free human beings from fear: fear of gods, fear of death, fear of punishment after death, fear produced by ignorance of nature. Lucretius therefore writes not just to explain atoms, but to cure terror.
 
-### Lucretius, c. 99–55 BCE
+### Lucretius (c. 99–55 BCE)
 
 | Author Knowledge                  | Content                                                                                                                                |
 | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3062,7 +3063,7 @@ the sources compare *Metamorphoses* with *De Rerum Natura* as two long hexameter
 **Lucretian Philosophical Imagination:**
 Lucretius’ universe contains no providential gods governing human affairs, no immortal soul, no divine punishment after death, and no cosmic moral theater. Everything is made of atoms and void. Bodies form, dissolve, recombine, and perish. This could sound bleak, but for Lucretius it is liberation. If nature is material, then superstition loses power. Death is not torment; it is the end of sensation.
 
-### De Rerum Natura / On the Nature of Things, c. 55 BCE
+### De Rerum Natura / On the Nature of Things (c. 55 BCE)
 
 | Work Knowledge          | Content                                                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -3110,7 +3111,7 @@ His poem influenced Virgil, early modern atomism, Renaissance natural philosophy
 *De Rerum Natura* **matters because it gives disenchantment grandeur.** Lucretius removes divine supervision, immortal soul, and afterlife terror, but he does not leave the world empty. He fills it with motion, matter, generation, decay, and luminous explanation. **His poem teaches that to understand nature is not to diminish wonder; it is to free wonder from fear.**
 
 
-### Ovid, 43 BCE–17/18 CE
+### Ovid (43 BCE–17/18 CE)
 
 | Author Knowledge           | Content                                                                                                                                                  |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3131,7 +3132,7 @@ The phrase Ovid later gives for his exile—`carmen et error`, “a poem and a m
 **Ovidian Poetic Imagination:**
 Ovid’s world is not founded on duty like **Virgil**’s, nor measured restraint like **Horace**’s. It is founded on instability. Desire alters perception; gods pursue mortals; victims become trees, birds, rivers, flowers, stars, stones, animals, echoes, or stories. Transformation is not only a plot device. It is a worldview: identity is temporary, bodies are vulnerable, and narrative itself is a form of metamorphosis.
 
-### Metamorphoses, c. 8 CE
+### Metamorphoses (c. 8 CE)
 
 | Work Knowledge            | Content                                                                                                                                                                               |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3181,7 +3182,7 @@ Its influence on **Chaucer** and **Shakespeare** is especially strong. the schol
 
 *Metamorphoses* matters because it makes instability beautiful and terrifying. In Ovid, no identity is safe from desire, divine whim, violence, grief, art, or time. A body may become a tree; a voice may become an echo; a wound may become a flower; a dead ruler may become a star; a poet may become a book. The poem’s deepest law is not order, but change.
 
-### Seneca, c. 4 BCE–65 CE
+### Seneca (c. 4 BCE–65 CE)
 
 | Author Knowledge        | Content                                                                                                                                                                                                                                                                                                   |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3200,7 +3201,7 @@ This contradiction is not accidental. It is the source of his literary importanc
 
 But Senecan tragedy shows what happens when that inward discipline fails. Rage grows theatrical. Revenge becomes architecture. Speech becomes excessive, glittering, violent, and self-conscious. His tragic world is not the civic theatre of **Aeschylus**, the heroic isolation of **Sophocles**, or the psychological social disturbance of **Euripides**. It is a world of rhetorical pressure and moral eruption.
 
-### Tragedies and Stoic Writings, 1st c. CE
+### Tragedies and Stoic Writings (1st c. CE)
 
 | Work Knowledge                    | Content                                                                                                                                       |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3264,7 +3265,7 @@ The Roman novels are also invaluable social documents. Even with caricature and 
 **Literary Knowledge and Developmental Line:**
 The Roman novel transforms three earlier traditions. From Greek romance, it takes adventure, travel, erotic complication, and separation. From satire, it takes social exposure, mixed style, and comic aggression. From religious and mythic narrative, especially in Apuleius, it takes transformation, allegory, and initiation. Later European fiction, especially the picaresque, will inherit much from this mixture.
 
-### Petronius, d. c. 66 CE
+### Petronius (d. c. 66 CE)
 
 | Author Knowledge           | Content                                                                                                                                                                          |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3280,7 +3281,7 @@ The Roman novel transforms three earlier traditions. From Greek romance, it take
 
 Petronius’ literary world is urbane but sordid. He knows elite culture well enough to parody it. He knows epic, philosophy, romance, rhetoric, and banquet literature, but he places them among frauds, freedmen, sexual opportunists, failed intellectuals, and vulgar display. His art depends on lowering elevated forms without losing stylistic intelligence.
 
-### Satyricon, probably 1st c. CE
+### Satyricon (probably 1st c. CE)
 
 | Work Knowledge          | Content                                                                                                                         |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -3322,7 +3323,7 @@ Because it is one of only two major surviving Roman novels, even fragmentary *Sa
 
 *Satyricon* **matters because it drags literary culture through the banquet hall, brothel, street, and theatrical self-display of Roman society.** It is not the noble birth of the novel, but one of its stranger ancient ancestors: obscene, learned, fractured, and socially sharp.
 
-### Apuleius, c. 125–after 170 CE
+### Apuleius (c. 125–after 170 CE)
 
 | Author Knowledge         | Content                                                                                                                            |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -3339,7 +3340,7 @@ Because it is one of only two major surviving Roman novels, even fragmentary *Sa
 
 the scholarly record give a useful biographical outline: Apuleius was born around 125 CE in North Africa, was educated in Carthage, Athens, and Rome, married a wealthy older widow, and was later accused by her relatives of using magic to induce the marriage. His defense speech, the *Apologia*, survives.  This trial matters because *The Golden Ass* is also obsessed with magic, curiosity, transformation, and the boundary between knowledge and danger.
 
-### The Golden Ass / Metamorphoses, probably late 2nd c. CE
+### The Golden Ass / Metamorphoses (probably late 2nd c. CE)
 
 | Work Knowledge         | Content                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -3433,7 +3434,7 @@ The four canonical Gospels are familiar enough that their literary strangeness c
 
 The Synoptic Gospels share a general narrative world: Jesus preaches the kingdom of God, heals, teaches in parables, clashes with authorities, travels toward Jerusalem, is arrested, tried, crucified, and raised. John reshapes the form: the teaching becomes more openly theological, Jesus speaks in long self-revealing discourses, and the opening begins not with genealogy or baptism but with the cosmic `Logos`.
 
-### Gospel of Matthew, c. 70–90 CE
+### Gospel of Matthew (c. 70–90 CE)
 
 | Work Knowledge                 | Content                                                                                                                 |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -3472,7 +3473,7 @@ Matthew’s genealogy, Magi, massacre of infants, Sermon on the Mount, Lord’s 
 
 *The Gospel of Matthew* **matters because it turns Jesus’ life into a scriptural event.** It does not merely say that Jesus lived and taught; it reads him as the point where law, prophecy, kingship, Israel’s memory, and future mission converge.
 
-### Gospel of Mark, c. 65–75 CE
+### Gospel of Mark (c. 65–75 CE)
 
 | Work Knowledge              | Content                                                                                                                          |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -3513,7 +3514,7 @@ Mark’s urgency, secrecy, Passion-centered structure, and abrupt ending influen
 
 *The Gospel of Mark* **matters because it makes identity inseparable from suffering.** Its Jesus is not understood by accumulation of heroic triumphs, but by the scandal of crucifixion. **The narrative runs quickly, almost breathlessly, toward the point where defeat becomes revelation.**
 
-### Gospel of Luke, c. 70–90 CE
+### Gospel of Luke (c. 70–90 CE)
 
 | Work Knowledge                 | Content                                                                                                                            |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -3554,7 +3555,7 @@ Luke’s Nativity scenes, Magnificat, Good Samaritan, Prodigal Son, Emmaus road,
 
 *The Gospel of Luke* **matters because it makes salvation expansive.** Its literary world is full of roads, meals, songs, outsiders, reversals, and recognition scenes. **Luke’s Jesus is not only teacher and miracle worker, but the center from which mercy moves outward.**
 
-### Gospel of John, c. 90–100 CE
+### Gospel of John (c. 90–100 CE)
 
 | Work Knowledge                | Content                                                                                                                              |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -3608,7 +3609,7 @@ John shapes Christian doctrine of incarnation, medieval mysticism, logos theolog
 | **Literary problem** | How does a movement centered on Jesus’ death and resurrection become a trans-Mediterranean community?                                                     |
 | **Reading entrance** | Read Acts as the expansion narrative of early Christianity: witness becomes travel, persecution becomes mission, and local memory becomes world movement. |
 
-### Acts of the Apostles, c. 80–100 CE
+### Acts of the Apostles (c. 80–100 CE)
 
 | Work Knowledge              | Content                                                                                                                                                |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -3660,7 +3661,7 @@ Acts shaped church history writing, missionary travel narrative, conversion auto
 | **Core problem**        | How can a persecuted community imagine history when evil appears politically victorious?                                                                       |
 | **Reading entrance**    | Read apocalypse as resistance literature through vision. Its strange images are not random fantasy; they encode political, theological, and symbolic judgment. |
 
-### Revelation, c. 90–100 CE
+### Revelation (c. 90–100 CE)
 
 | Work Knowledge         | Content                                                                                                                                 |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3724,7 +3725,7 @@ Early Christian soul narrative changes the center of serious literature. In Home
 **Literary Knowledge and Developmental Line:**
 This tradition has two great inheritances. From classical literature, it inherits rhetoric, dialogue, philosophical self-examination, consolation, and Platonic ascent. From Christianity, it inherits sin, grace, confession, providence, conversion, and the soul’s relation to God. Later medieval literature, especially **Dante**, will absorb both. The soul’s journey through memory and error in Augustine, and the rise and fall on Fortune’s wheel in Boethius, become two major structures of Western literary imagination.
 
-### Augustine, 354–430 CE
+### Augustine (354–430 CE)
 
 | Author Knowledge      | Content                                                                                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -3744,7 +3745,7 @@ His life also matters because he is not merely a theologian who happens to write
 **Augustinian Soul Imagination:**
 Augustine’s key invention is not “I tell my life story.” Earlier authors also wrote about themselves. His distinctive move is: **I tell my life as a drama of misdirected love before God**. The self is not autonomous. It is created, fallen, restless, divided, remembered, and judged. Autobiography becomes theology.
 
-### Confessions, c. 397–401 CE
+### Confessions (c. 397–401 CE)
 
 | Work Knowledge       | Content                                                                                                                                       |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3792,7 +3793,7 @@ the scholarly record note that Augustine’s self-narrative becomes especially i
 
 *Confessions* **matters because it makes the inner life historically serious.** Augustine does not write the self as self-celebration. **He writes the self as evidence: of sin, restlessness, grace, memory, and the strange fact that a person may be nearest to truth only after confessing how far from it he has been.**
 
-### Boethius, c. 475–525 CE
+### Boethius (c. 475–525 CE)
 
 | Author Knowledge         | Content                                                                                                                                         |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3814,7 +3815,7 @@ Boethius’ biography intensifies the work. He was a nobleman, senator, consul, 
 **Boethian Soul Imagination:**
 Boethius’ inward drama is not confession of sin but recovery of philosophical vision. He begins in grief, self-pity, and outrage. **Lady Philosophy** arrives to diagnose his sickness. The cure is not escape from prison. It is learning to see fortune, happiness, providence, and free will correctly.
 
-### The Consolation of Philosophy, c. 524 CE
+### The Consolation of Philosophy (c. 524 CE)
 
 | Work Knowledge         | Content                                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -3893,7 +3894,7 @@ Christian hagiographic tradition does not produce biography in the modern neutra
 
 The saint is therefore not only an individual. The saint is a **model**. Martyrs model courage; ascetics model renunciation; bishops model pastoral authority; virgins model bodily consecration; monks model spiritual warfare; miracle-workers model divine power continuing in history. Hagiography turns biography into pedagogy.
 
-### Saints’ Lives, c. 4th–7th c. CE
+### Saints’ Lives (c. 4th–7th c. CE)
 
 | Work / Form Knowledge  | Content                                                                                                                                      |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3934,7 +3935,7 @@ Saints’ lives influence medieval romance, conversion narrative, spiritual auto
 
 **Saints’ lives matter because they create a new kind of hero.** The saint does not need a throne, sword, or city. **The saint’s greatness appears in refusal, endurance, discipline, compassion, and the strange charisma of a life reorganized around God.**
 
-### Martyrdom Narratives, c. 2nd–4th c. CE
+### Martyrdom Narratives (c. 2nd–4th c. CE)
 
 | Work / Form Knowledge  | Content                                                                                                                                                         |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3975,7 +3976,7 @@ The pattern influences medieval saints’ lives, crusade rhetoric, Reformation m
 
 **Martyrdom narratives matter because they transform death into speech.** The martyr’s body is broken, but the story insists that the body has spoken more truly than the judge, the law, or the empire. **In Christian literature, witness begins where fear of death ends.**
 
-### Dream and Vision Narratives, c. 2nd–7th c. CE
+### Dream and Vision Narratives (c. 2nd–7th c. CE)
 
 | Work / Form Knowledge | Content                                                                                                                          |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -4035,7 +4036,7 @@ the existing outline places **Kālidāsa**’s *Shakuntala* under Indian classic
 
 A useful contrast is Greek `catharsis` and Sanskrit `rasa`. In the Aristotelian model, tragedy arouses pity and fear and brings them into tragic form. In Sanskrit aesthetics, a play organizes emotional states so that the spectator experiences a refined aesthetic savor. Love, wonder, pathos, heroism, humor, and peace are not merely psychological reactions; they become cultivated literary experience.
 
-### Kālidāsa, c. 4th–5th c. CE
+### Kālidāsa (c. 4th–5th c. CE)
 
 | Author Knowledge            | Content                                                                                                                                                                     |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4051,7 +4052,7 @@ A useful contrast is Greek `catharsis` and Sanskrit `rasa`. In the Aristotelian 
 
 His literary world is courtly but not merely artificial. The palace and the forest are both meaningful spaces. The forest is not only wilderness; it is a site of ascetic discipline, innocence, fertility, and divine-human nearness. The court is not only power; it is also law, memory, recognition, and public order. **Kālidāsa’s drama often moves between these spaces: love begins in the charged intimacy of nature, but must eventually be recognized within the social and cosmic order.**
 
-### Abhijñānaśākuntalam / The Recognition of Shakuntala, c. 4th–5th c. CE
+### Abhijñānaśākuntalam / The Recognition of Shakuntala (c. 4th–5th c. CE)
 
 | Work Knowledge              | Content                                                                                                                                           |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4138,7 +4139,7 @@ This frame changes the meaning of fable. In **Aesop**, an animal fable teaches p
 
 the scholarly record also stresses that Buddhism used popular stories to teach. Many Jātaka tales seem to have older folk origins and were “co-opted” or reframed by Buddhist tradition so that they became birth stories of the Buddha and vehicles of Buddhist ethics.  This is crucial. The Jātakas are not only religious doctrine imposed from above; they are a major example of how oral popular narrative is absorbed into religious teaching.
 
-### Jātaka Tales, c. 4th c. BCE onward
+### Jātaka Tales (c. 4th c. BCE onward)
 
 | Work Knowledge             | Content                                                                                                                                       |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4224,7 +4225,7 @@ The anonymous Old English heroic tradition does not present literature as the ac
 
 This distance matters. The poem admires the old warrior code, but also sees its limits. Loyalty is beautiful, but feud is endless. Treasure is glorious, but cannot save the dead. Kingship gives order, but every dynasty is vulnerable. **The Christian scribe does not simply condemn the heroic world; the poem mourns it. Its greatness lies in that double vision: admiration and elegy at once.**
 
-### Beowulf, c. 8th–11th c. CE
+### Beowulf (c. 8th–11th c. CE)
 
 | Work Knowledge           | Content                                                                                                                                                 |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4308,7 +4309,7 @@ The anonymous Old French epic tradition creates heroes whose identities are publ
 
 The tradition also has a sharp moral vocabulary: loyalty and treason, Christian and pagan, courage and cowardice, honor and shame. Modern reading must notice both the literary force and the ideological violence of this structure. The depiction of Muslims or “Saracens” in these poems is not ethnographically accurate; it is a Christian epic fantasy of religious enemies. **The poem tells us more about medieval Christian imagination than about Islam.**
 
-### The Song of Roland, c. late 11th c. CE
+### The Song of Roland (c. late 11th c. CE)
 
 | Work Knowledge          | Content                                                                                                                                                              |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4396,7 +4397,7 @@ The Castilian epic tradition is less dominated by sacred martyrdom than French c
 
 **The hero’s task is not simply to kill enemies.** He must make honor visible again. **In this world, honor is not an inward feeling; it is a public condition built from reputation, property, loyalty, family alliance, and recognition by the king.**
 
-### Cantar de Mio Cid / The Song of My Cid, c. 1200 CE
+### Cantar de Mio Cid / The Song of My Cid (c. 1200 CE)
 
 | Work Knowledge          | Content                                                                                                                                      |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4475,7 +4476,7 @@ The anonymous Middle High German tradition behind *Nibelungenlied* preserves a w
 
 **In this world, a quarrel between queens can kill kings.** A secret told for prestige can become a death sentence. A treasure can make loyalty poisonous. **The epic imagination is not subtle because the society it imagines leaves little room for subtle recovery once honor has been publicly broken.**
 
-### Nibelungenlied / The Song of the Nibelungs, c. 1200 CE
+### Nibelungenlied / The Song of the Nibelungs (c. 1200 CE)
 
 | Work Knowledge          | Content                                                                                                                                                                                            |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4564,7 +4565,7 @@ The anonymous Old Russian epic tradition behind *The Tale of Igor’s Campaign* 
 
 The poem itself combines Christian and older Slavic elements. The natural world is intensely animated: sun, wind, river, birds, beasts, and darkness respond to human action. This is not decorative landscape. Nature becomes a second chorus, warning, mourning, and interpreting the campaign.
 
-### The Tale of Igor’s Campaign, 1185–1187
+### The Tale of Igor’s Campaign (1185–1187)
 
 | Work Knowledge         | Content                                                                                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -4648,7 +4649,7 @@ the scholarly record stress that Arthur and **Gawain** were widely known before 
 
 The Round Table is one of the great symbolic inventions of medieval literature. It creates the image of a fellowship without obvious hierarchy among knights, even though Arthur remains king. It is an ideal of chivalric community: many individual quests, one shared center. But this ideal is unstable. The stronger individual knights become, the more the fellowship risks fragmentation.
 
-### King Arthur and the Knights of the Round Table, c. 12th c. onward
+### King Arthur and the Knights of the Round Table (c. 12th c. onward)
 
 | Work / Cycle Knowledge | Content                                                                                                                                                                                                  |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4698,7 +4699,7 @@ Arthurian material influenced medieval French and German romance, *Sir Gawain an
 
 ## Grail Romance (12th-13th c.)
 
-### Grail Legend, c. late 12th–13th c.
+### Grail Legend (c. late 12th–13th c.)
 
 | Tradition Knowledge       | Content                                                                                                                                                                                                                                                                                        |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4735,7 +4736,7 @@ The Grail influences **Wolfram von Eschenbach**’s *Parzival*, Malory’s *Le M
 
 **The Grail legend matters because it changes the question romance asks.** Earlier romance often asks: can the knight win? Grail romance asks: is the knight worthy? The shift is decisive. **Adventure becomes discernment, victory becomes healing, and the object of desire becomes sacred enough to expose the seeker.**
 
-### Tristan and Isolde Legend, c. 12th c. onward
+### Tristan and Isolde Legend (c. 12th c. onward)
 
 | Tradition Knowledge         | Content                                                                                                                                                                                   |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4778,7 +4779,7 @@ The legend shaped medieval romance, courtly love literature, Wagner’s *Tristan
 
 **The Tristan and Isolde legend matters because it makes love stronger than the institutions meant to organize it.** Marriage, lordship, kinship, and honor remain real, but the potion creates a love that refuses social proportion. **The romance’s beauty lies in its danger: love becomes so absolute that the world can no longer contain it.**
 
-### Wolfram von Eschenbach, c. 1170–c. 1220
+### Wolfram von Eschenbach (c. 1170–c. 1220)
 
 | Author Knowledge     | Content                                                                                                                                                                                                                                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -4793,7 +4794,7 @@ The legend shaped medieval romance, courtly love literature, Wagner’s *Tristan
 
 The central problem is ignorance. Parzival begins as a naïve, almost wild youth raised away from courtly society by his mother. He knows nothing of knighthood, women, social conduct, or spiritual interpretation. Yet his innocence is not simple purity. It can harm others. **Wolfram’s genius lies in showing that innocence without understanding is morally dangerous. The soul must be educated, not merely protected.**
 
-### Parzival, c. 1200–1210
+### Parzival (c. 1200–1210)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                                                 |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5022,7 +5023,7 @@ The beast-epic tradition turns animal fable into social satire. In **Aesop**, an
 
 Britannica describes Reynard as the hero of several medieval European cycles of versified animal tales that satirize contemporary human society. Reynard is sly, amoral, cowardly, and self-seeking, yet remains sympathetic because cunning becomes necessary for survival; his main opposite is usually Isengrim, the greedy and dull-witted wolf. 
 
-### Roman de Renart / Reynard the Fox, late 12th c. onward
+### Roman de Renart / Reynard the Fox (late 12th c. onward)
 
 | Work Knowledge           | Content                                                                                                                                                                                   |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5081,7 +5082,7 @@ The fabliau is one of medieval Europe’s great anti-ideal forms. Romance ideali
 
 Britannica defines the fabliau as a short metrical tale made popular in medieval France by jongleurs and characterized by vivid detail, realistic observation, comic coarseness, and cynicism. Harvard’s Chaucer page emphasizes the same broad features: brief comic verse, often scurrilous, scatological, or obscene. 
 
-### Le Vilain Mire / The Peasant Doctor, c. 13th c.
+### Le Vilain Mire / The Peasant Doctor (c. 13th c.)
 
 | Work Knowledge           | Content                                                                                                                                                 |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5140,7 +5141,7 @@ Farce develops the energies of fabliau into stage action. Where fabliau narrates
 
 The farce is not deeply interested in moral purification. Its social world is not divided into virtue and vice. Almost everyone is compromised. What matters is who can control the scene. The clever person wins until someone cleverer uses the same trick against him.
 
-### La Farce de Maître Pathelin / The Farce of Master Pathelin, c. mid-15th c.
+### La Farce de Maître Pathelin / The Farce of Master Pathelin (c. mid-15th c.)
 
 | Work Knowledge          | Content                                                                                                                                                                    |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5205,7 +5206,7 @@ Medieval Persian literature develops after a major linguistic and cultural trans
 
 **Ferdowsi**’s *Shahnameh* gives Persian national epic its enduring form. **Khayyam**’s *Rubaiyat* gives Persian quatrain poetry one of its most globally recognizable names, although the exact corpus of authentic Khayyam quatrains remains complicated by attribution and later transmission. 
 
-### Ferdowsi, c. 935–1020/1026
+### Ferdowsi (c. 935–1020/1026)
 
 | Author Knowledge        | Content                                                                                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5225,7 +5226,7 @@ Britannica describes **Ferdowsi** as the poet who gave the Persian national epic
 **Ferdowsian Epic Imagination:**
 Ferdowsi’s epic world is built from memory, but not nostalgia alone. Kings rise and fall. Heroes win glory and suffer betrayal. Justice is praised, but power often corrupts. Fate repeatedly exceeds human strength. The poem loves heroic grandeur, but it also knows that glory is temporary. This gives the *Shahnameh* its deep tragic rhythm.
 
-### Shahnameh / Book of Kings, completed 1010 CE
+### Shahnameh / Book of Kings (completed 1010 CE)
 
 | Work Knowledge       | Content                                                                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5271,7 +5272,7 @@ The poem shaped Persian, Iranian, and broader Persianate culture for centuries. 
 
 *The Shahnameh* **matters because it gives a civilization narrative memory at epic scale.** Ferdowsi does not merely preserve old stories. He gives them form, rhythm, tragedy, and moral pressure. His kings and heroes live under glory, but also under time. **The poem’s deepest voice is not only heroic praise; it is the knowledge that even the greatest name must be saved from forgetting.**
 
-### Omar Khayyam, 1048–1123/1131
+### Omar Khayyam (1048–1123/1131)
 
 | Author Knowledge          | Content                                                                                                                                                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5292,7 +5293,7 @@ The difficulty is attribution. Many quatrains circulated under Khayyam’s name,
 **Khayyamian Poetic Imagination:**
 Khayyam’s poetic voice is skeptical, lucid, and anti-grandiose. Where Ferdowsi gives dynasties and heroes, Khayyam gives a cup, a moment, a question, a grave, a turning sky. His poems often reject metaphysical certainty. They do not necessarily deny meaning; rather, they refuse easy consolation.
 
-### Rubaiyat / Quatrains, 11th–12th c.; FitzGerald adaptation 1859
+### Rubaiyat / Quatrains (11th–12th c.; FitzGerald adaptation 1859)
 
 | Work Knowledge        | Content                                                                                                                                              |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5340,7 +5341,7 @@ The *Rubaiyat* influenced Victorian poetry, fin-de-siècle melancholy, Orientali
 
 ## Persian Lyric (1207-1390)
 
-### Rumi, 1207–1273
+### Rumi (1207–1273)
 
 | Author Knowledge         | Content                                                                                                                                                                                                                                    |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5357,7 +5358,7 @@ The *Rubaiyat* influenced Victorian poetry, fin-de-siècle melancholy, Orientali
 
 His poetry often begins from ordinary images: reed flute, tavern, lover, beloved, moth, candle, sun, mirror, market, teacher, beggar, bird, sea. But these images rarely remain ordinary. The reed becomes the soul separated from its source; the lover becomes the seeker; the beloved becomes God; intoxication becomes spiritual ecstasy; music becomes the vibration of longing. **Rumi’s imagination turns the everyday into a field of metaphysical desire.**
 
-### Masnavi-yi Maʿnavi / Spiritual Couplets, c. 1258–1273
+### Masnavi-yi Maʿnavi / Spiritual Couplets (c. 1258–1273)
 
 | Work Knowledge          | Content                                                                                                                                                                                                                                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5400,7 +5401,7 @@ Rumi influenced Sufi orders, Persianate literary cultures, Ottoman and South Asi
 
 *The Masnavi* **matters because it makes spiritual instruction narratively alive.** Rumi does not simply say that the ego must be overcome or that love leads to God. **He creates a world where every story becomes a door, every image turns inward, and every longing voice returns to the question of the soul’s origin.**
 
-### Hafez, c. 1315–1390
+### Hafez (c. 1315–1390)
 
 | Author Knowledge     | Content                                                                                                                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5416,7 +5417,7 @@ Rumi influenced Sufi orders, Persianate literary cultures, Ottoman and South Asi
 
 His life is harder to reconstruct than his reputation. Iranica notes that later scholars have often mined Hafez’s own poetry for biographical facts, sometimes too aggressively, because external information is limited.  This is useful for reading him: the poems should not be flattened into direct autobiography. The speaker of a Hafez ghazal is a poetic intelligence, not a simple diary voice.
 
-### Divan, 14th c.
+### Divan (14th c.)
 
 | Work Knowledge        | Content                                                                                                                                                     |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5493,7 +5494,7 @@ The frame-tale structure is ancient and powerful. A storyteller tells a story in
 
 Britannica’s summary identifies the frame story clearly: the vengeful king Shahryar marries a new wife and executes her the next day, until the resourceful **Scheherazade / Shahrazad** interrupts the pattern by telling stories that make him postpone her death.  **The literary premise is stark: narrative is not ornament. Narrative is survival.**
 
-### One Thousand and One Nights / Arabian Nights, medieval compilation; major European reception from 18th c.
+### One Thousand and One Nights / Arabian Nights (medieval compilation; major European reception from 18th c.)
 
 | Work Knowledge               | Content                                                                                                                                                                                                                                                    |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5556,7 +5557,7 @@ Its influence extends through European Orientalism, Romanticism, children’s li
 
 Tang poetry is one of the central classical achievements of Chinese literature. Its importance is not only the number of surviving poems or the fame of individual poets. It created a shared poetic language through which later Chinese readers learned how to see moonlight, rivers, mountains, frontier passes, farewell roads, old capitals, official failure, wine, aging, and historical loss. Britannica’s overview of Tang and Five Dynasties literature identifies **Li Bai** and **Du Fu** as the two major Tang poets and also notes the later social concern of **Bai Juyi**, who admired Du Fu as a poet-historian. 
 
-### Tang Poetic Tradition, 618–907
+### Tang Poetic Tradition (618–907)
 
 | Tradition Knowledge     | Content                                                                                                                                                                                  |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5632,7 +5633,7 @@ Song ci inherits music. Unlike Tang `shi`, which is centered on line length, reg
 
 The Song period also changed literary conditions. Britannica describes Song literature as expanding spectacularly, aided by printing and public schools, and notes that literary output increased across genres.  Ci flourished in this environment because it could absorb elite craft and popular music, private feeling and public history, feminine-coded song spaces and literati self-expression.
 
-### Song Lyric Tradition, 960–1279
+### Song Lyric Tradition (960–1279)
 
 | Tradition Knowledge        | Content                                                                                                                                                      |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5728,7 +5729,7 @@ Waka is not only a written object. It is also an act of communication. A poem ma
 
 In later court culture, a person’s ability to compose an appropriate poem could define refinement. A seasonal image, a place name, a shared allusion, or an elegant turn could carry emotional meaning indirectly. **Waka often speaks most strongly by not spelling everything out. The poem gives an image, and the social relation completes it.**
 
-### Man’yōshū / Collection of Ten Thousand Leaves, c. 759
+### Man’yōshū / Collection of Ten Thousand Leaves (c. 759)
 
 | Work Knowledge           | Content                                                                                                                                                                            |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5794,7 +5795,7 @@ Heian court literature creates one of world literature’s most refined systems 
 
 **Sei Shōnagon** and **Murasaki Shikibu** stand as two very different masters of this world. Sei Shōnagon turns court life into flashes of wit, lists, scenes, judgments, and sensory fragments. Murasaki Shikibu turns the same aristocratic environment into extended psychological narrative. One writes the world as brilliant perception; the other writes it as emotional consequence.
 
-### Sei Shōnagon, c. 966–after 1017
+### Sei Shōnagon (c. 966–after 1017)
 
 | Author Knowledge         | Content                                                                                                                                                                                                               |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5812,7 +5813,7 @@ This gives her work unusual literary modernity. The self is not presented throug
 
 Her writing is also competitive. Heian court life was a world of rank and refinement; intelligence had to appear in social performance. A person revealed themselves through calligraphy, poetry, memory, clothing, speech, and tact. Sei Shōnagon’s prose preserves this world from inside, but not neutrally. She is not a passive recorder. She is a judge.
 
-### The Pillow Book / Makura no Sōshi, c. 1000
+### The Pillow Book / Makura no Sōshi (c. 1000)
 
 | Work Knowledge       | Content                                                                                                                                                                                    |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5856,7 +5857,7 @@ The work influences Japanese essay tradition, diary literature, list-writing, co
 
 **The Pillow Book matters because it gives literature a form for quickness.** Sei Shōnagon does not need a tragic plot or epic scale. She makes a sleeve, dawn, snow, gossip, a poem, a face, a voice, or an annoyance enough. **Her book preserves the Heian court as a world of perception: beautiful, cruel, exacting, and intensely alive.**
 
-### Murasaki Shikibu, c. 973/978–c. 1014/1025
+### Murasaki Shikibu (c. 973/978–c. 1014/1025)
 
 | Author Knowledge         | Content                                                                                                                                                                                                         |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -5874,7 +5875,7 @@ Her world is built from court rank, marriage politics, poetry exchange, conceale
 
 Britannica describes *The Tale of Genji* as an absorbing introduction to early Heian aristocratic culture—its entertainment, dress, daily life, and moral code—through the story of Genji, the gifted and sensitive courtier.  That is accurate but still incomplete. The work is not only a record of court life; it is a sustained study of how beauty, power, and desire injure the people who live through them.
 
-### The Tale of Genji / Genji Monogatari, c. 1008–1010
+### The Tale of Genji / Genji Monogatari (c. 1008–1010)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                    |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -5960,7 +5961,7 @@ The Heike tradition is one of the clearest examples of medieval literature as pe
 
 The tradition also reshapes history through Buddhist feeling. The Taira clan rises spectacularly, dominates court politics, offends rivals, and then collapses. That movement becomes more than political reversal. It becomes the visible law of impermanence. **The story’s sympathy for the defeated does not deny their pride or violence. It sees their downfall as the fate already hidden inside worldly splendor.**
 
-### The Tale of the Heike / Heike Monogatari, c. 13th c.
+### The Tale of the Heike / Heike Monogatari (c. 13th c.)
 
 | Work Knowledge         | Content                                                                                                                                                                    |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6024,7 +6025,7 @@ Noh theatre is one of the most concentrated dramatic forms in world literature. 
 
 This makes Noh very different from Greek tragedy or Shakespearean drama. Greek tragedy often stages conflict moving toward catastrophe. Shakespeare often builds psychological action through dialogue and plot. Noh often begins after catastrophe has already occurred. The dead return because something remains unresolved. **Noh is therefore a theatre of afterlife emotion. The decisive event is past, but the feeling has not yet ended.**
 
-### Zeami Motokiyo, 1363–1443
+### Zeami Motokiyo (1363–1443)
 
 | Author Knowledge                | Content                                                                                                                                                                                                                                                              |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6043,7 +6044,7 @@ Britannica calls Zeami the greatest playwright and theorist of Japanese Noh thea
 **Zeamian Dramatic Imagination:**
 Zeami’s central aesthetic is not realism, but concentrated revelation. The actor does not simply “express emotion” in a modern psychological sense. He disciplines body, voice, timing, mask, and gesture until something appears. That appearing is `hana`, the flower. **The flower is not the actor’s private feeling. It is the moment when technique, role, age, occasion, and audience converge into living beauty.**
 
-### Noh Theory and Noh Drama, c. 14th–15th c.
+### Noh Theory and Noh Drama (c. 14th–15th c.)
 
 | Work / Form Knowledge     | Content                                                                                                                                                                                                       |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6107,7 +6108,7 @@ Zeami and Noh influenced Japanese theatre, tea aesthetics, modern drama, W. B. Y
 
 Late medieval Italian literature is not merely a prelude to the Renaissance. It is already one of European literature’s decisive turning points. **Dante** inherits Provençal love lyric, Sicilian and Tuscan poetry, classical Latin authors, scholastic theology, biblical vision, civic factionalism, and Christian afterlife imagination. He then forces them into a new vernacular architecture. Britannica notes that Dante chose Italian rather than Latin for the *Comedy*, primarily using Tuscan, and that this decision strongly influenced the later development of Italian as a literary language. 
 
-### Dante Alighieri, 1265–1321
+### Dante Alighieri (1265–1321)
 
 | Author Knowledge      | Content                                                                                                                                                                                              |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6124,7 +6125,7 @@ Late medieval Italian literature is not merely a prelude to the Renaissance. It 
 
 Dante’s authority comes from synthesis. He is not only a lyric poet, not only a theologian, not only a political exile, not only a linguistic theorist. He writes as if every human order—love, city, language, empire, church, cosmos, sin, memory, poetry—must be placed into relation. **This is why Dante is difficult: he does not separate literature from ultimate judgment.**
 
-### Vita Nuova / The New Life, c. 1293
+### Vita Nuova / The New Life (c. 1293)
 
 | Work Knowledge       | Content                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -6165,7 +6166,7 @@ Its afterlife extends through Petrarchan love poetry, Renaissance lyric theory, 
 
 *Vita Nuova* **matters because it shows Dante before the cosmic journey, already rehearsing its deepest method.** He takes an event of private love and subjects it to memory, commentary, symbolic elevation, and promise. The book’s “new life” is not only emotional. **It is the birth of Dante’s poetic vocation.**
 
-### De vulgari eloquentia / On Vernacular Eloquence, c. 1304–1307
+### De vulgari eloquentia / On Vernacular Eloquence (c. 1304–1307)
 
 | Work Knowledge       | Content                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -6205,7 +6206,7 @@ Its afterlife belongs to debates over standard Italian, vernacular authority, po
 
 *De vulgari eloquentia* **matters because it turns language choice into literary theory.** Dante does not merely write in Italian later because it is available. He thinks through what a vernacular must become in order to carry high poetry. **The *Comedy* is the answer in practice; *De vulgari eloquentia* is the unfinished blueprint.**
 
-### Divine Comedy / Commedia, c. 1308–1321
+### Divine Comedy / Commedia (c. 1308–1321)
 
 | Work Knowledge         | Content                                                                                                                         |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -6263,7 +6264,7 @@ Its influence extends through **Petrarch**, **Boccaccio**, medieval commentary, 
 
 ## Petrarch Boccaccio (1304-1375)
 
-### Petrarch, 1304–1374
+### Petrarch (1304–1374)
 
 | Author Knowledge        | Content                                                                                                                                                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -6279,7 +6280,7 @@ Its influence extends through **Petrarch**, **Boccaccio**, medieval commentary, 
 
 His importance for literary history lies not only in the sonnet form, but in the invention of a durable lyric self. The Petrarchan speaker is not stable. He wants earthly beauty and heavenly peace; he desires Laura and condemns his desire; he seeks fame and distrusts worldly ambition; he remembers, revises, and reinterprets his own emotional history. **Dante’s Beatrice becomes a guide toward salvation; Petrarch’s Laura remains more troubling. She elevates the speaker, but she also keeps him divided.**
 
-### Canzoniere / Songbook, mostly 1330–1374
+### Canzoniere / Songbook (mostly 1330–1374)
 
 | Work Knowledge        | Content                                                                                                                                                                                            |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6321,7 +6322,7 @@ Its influence runs through Italian Petrarchism, French Pléiade poetry, English 
 
 *The Canzoniere* **matters because it makes love into a form of inward history.** Petrarch does not simply say that the beloved is beautiful. He shows how beauty wounds memory, divides the will, threatens faith, and creates poetry. **The result is one of literature’s most influential images of the lyric self: eloquent because it is unresolved.**
 
-### Boccaccio, 1313–1375
+### Boccaccio (1313–1375)
 
 | Author Knowledge        | Content                                                                                                                                                                                                           |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6337,7 +6338,7 @@ Its influence runs through Italian Petrarchism, French Pléiade poetry, English 
 
 His background matters. He was connected to mercantile and urban worlds, and the *Decameron* repeatedly shows people negotiating fortune through wit, timing, deception, desire, and social reading. **Boccaccio’s humanism is not only bookish admiration for antiquity. It is also confidence that human beings in messy social situations are worthy of narrative attention.**
 
-### Decameron, c. 1349–1353
+### Decameron (c. 1349–1353)
 
 | Work Knowledge       | Content                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6406,7 +6407,7 @@ Late medieval English literature is unusually plural. It inherits aristocratic r
 
 The two works below show two different directions. *The Canterbury Tales* is social, noisy, urban, comic, and multi-voiced. *Sir Gawain and the Green Knight* is concentrated, symbolic, courtly, seasonal, and morally testing. One builds a road full of storytellers; the other builds a single chivalric trial around a green stranger, a beheading game, a winter journey, and a girdle.
 
-### Geoffrey Chaucer, c. 1343–1400
+### Geoffrey Chaucer (c. 1343–1400)
 
 | Author Knowledge        | Content                                                                                                                                                                                                    |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6424,7 +6425,7 @@ Britannica notes that *The Canterbury Tales* contains 24 stories told by a group
 **Chaucerian Literary Imagination:**
 Chaucer’s deepest innovation is not only realism, but **voiced realism**. Characters are not merely described from outside. They speak, tell stories, argue, interrupt, retaliate, and reveal themselves through genre. The result is not one medieval worldview, but a moving social theatre.
 
-### The Canterbury Tales, c. 1387–1400
+### The Canterbury Tales (c. 1387–1400)
 
 | Work Knowledge           | Content                                                                                                                                                                              |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -6491,7 +6492,7 @@ The English alliterative chivalric tradition differs from Chaucer’s urban soci
 
 The poem’s manuscript context matters. The same manuscript preserves *Pearl*, *Cleanness*, *Patience*, and *Sir Gawain and the Green Knight*, all anonymous Middle English alliterative works. This connection has led many scholars to discuss a “Gawain-poet” or “Pearl-poet,” though the author remains unknown. 
 
-### Sir Gawain and the Green Knight, late 14th c.
+### Sir Gawain and the Green Knight (late 14th c.)
 
 | Work Knowledge           | Content                                                                                                                                           |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6546,7 +6547,7 @@ The poem influenced Arthurian studies, Tolkien’s medieval scholarship and tran
 
 ## Renaissance Aesthetics (14th-16th c.)
 
-### Renaissance Aesthetics, c. 14th–16th c.
+### Renaissance Aesthetics (c. 14th–16th c.)
 
 | Tradition Knowledge       | Content                                                                                                                                                                                                                                       |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6569,7 +6570,7 @@ The course-outline material also confirms the intended coverage of this section:
 **Literary Knowledge and Developmental Line:**
 Renaissance aesthetics may be understood through four linked movements: **humanist literature**, **vernacular or national-language writing**, **the mixture of realistic and romantic modes**, and **Renaissance drama**. These are not isolated subtopics. Humanism gives the period its classical education and moral-rhetorical ambition; vernacular writing gives literature a new linguistic base; realism and romance give narrative its expanded social and imaginative range; drama gives the Renaissance its most public form of conflict, disguise, speech, and self-fashioning.
 
-### Humanist Literature, c. 14th–16th c.
+### Humanist Literature (c. 14th–16th c.)
 
 | Concept Knowledge      | Content                                                                                                                                                                                           |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6612,7 +6613,7 @@ Humanism influences Renaissance education, civic rhetoric, philology, essay writ
 
 **Humanist literature matters because it makes literature a discipline of human formation.** It does not merely revive antiquity for ornament. It asks whether the human being can be remade through language, memory, example, irony, education, and judgment. **Its grandeur lies in this confidence; its instability lies in the fact that eloquence can form virtue, but can also decorate ambition.**
 
-### Vernacular and National-Language Writing, c. 14th–16th c.
+### Vernacular and National-Language Writing (c. 14th–16th c.)
 
 | Concept Knowledge         | Content                                                                                                                                                                                                    |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6657,7 +6658,7 @@ The vernacular turn shapes national canons, public theatre, modern fiction, essa
 
 **Vernacular writing matters because it changes who literature can sound like.** Once Italian, French, English, Spanish, and Portuguese become capable of epic, drama, essay, satire, and novelistic prose, European literature no longer belongs only to the learned Latin order. **It becomes louder, more social, more comic, more national, and more capable of representing ordinary speech alongside classical ambition.**
 
-### Realistic and Romantic Modes, c. 15th–16th c.
+### Realistic and Romantic Modes (c. 15th–16th c.)
 
 | Concept Knowledge           | Content                                                                                                                                                                                                           |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6701,7 +6702,7 @@ This hybrid mode influences the picaresque novel, the comic novel, the realist n
 
 **The Renaissance mixture of realism and romance matters because it creates a productive instability.** Literature no longer has to choose between the ideal and the actual. It can show a knight who dreams of epic glory and a road full of dust, hunger, bills, beatings, and jokes. **Out of that collision, modern narrative begins to discover its power.**
 
-### Renaissance Drama, c. 1500–1600
+### Renaissance Drama (c. 1500–1600)
 
 | Concept Knowledge          | Content                                                                                                                                                 |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6752,7 +6753,7 @@ Its influence extends through neoclassical drama, Romantic Shakespeare criticism
 
 ## Renaissance Worlds (1450-1625)
 
-### Italian Renaissance Literature, c. 1450–1600
+### Italian Renaissance Literature (c. 1450–1600)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                                 |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6770,7 +6771,7 @@ the sources place **Machiavelli**’s *The Prince* and **Ariosto**’s *Orlando 
 **Literary Knowledge and Developmental Line:**
 Italian Renaissance literature may be understood through two large tendencies. One tendency rationalizes human action: politics, conduct, education, diplomacy, and rule become objects of analysis. The other tendency multiplies imaginative worlds: chivalric legends, Carolingian materials, love, madness, enchantment, and travel become poetic systems. **Machiavelli** belongs to the first line; **Ariosto** belongs to the second. Their shared background is the same: a Renaissance world where classical learning, vernacular ambition, court culture, and historical instability converge.
 
-### Niccolò Machiavelli, 1469–1527
+### Niccolò Machiavelli (1469–1527)
 
 | Author Knowledge        | Content                                                                                                                                                                                     |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6789,7 +6790,7 @@ His originality lies in changing the object of political thought. Instead of ask
 
 In the Renaissance drama materials, **Machiavelli** also appears as a cultural shock. Sixteenth-century readers often believed his politics abandoned old theological justifications for worldly power. The “Machiavellian” ruler was imagined as someone who constantly performs roles, manipulates appearances, feigns emotion, and remakes public image according to policy.  **This reception is part of Machiavelli’s literary history. Even when misunderstood, he gave European drama and political imagination a new figure: the ruler as actor.**
 
-### The Prince / Il Principe, written 1513; published 1532
+### The Prince / Il Principe (written 1513; published 1532)
 
 | Work Knowledge          | Content                                                                                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -6837,7 +6838,7 @@ The work influenced political theory, republican thought, raison d’état, Rena
 
 **The Prince matters because it makes politics visible without consolation.** Machiavelli does not ask the reader to love power, but to stop pretending power is governed by the same rules as private morality. The result is not a beautiful book in the ornamental sense. **It is beautiful in a harsher way: a prose machine for stripping political life down to force, appearance, fortune, calculation, and fear.**
 
-### Ludovico Ariosto, 1474–1533
+### Ludovico Ariosto (1474–1533)
 
 | Author Knowledge          | Content                                                                                                                                                                        |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -6856,7 +6857,7 @@ the sources identify Ariosto as 1474–1533 and note that *Orlando Furioso* was 
 
 Ariosto’s courtly intelligence is central. He writes for a world that knows literary convention: knights are expected to wander, lovers to suffer, ladies to flee, warriors to boast, magicians to intervene, and narrators to interrupt. The pleasure lies in how knowingly the poem uses these expectations.
 
-### Orlando Furioso / The Frenzy of Orlando, 1516; revised 1521 and 1532
+### Orlando Furioso / The Frenzy of Orlando (1516; revised 1521 and 1532)
 
 | Work Knowledge          | Content                                                                                                                                                                                  |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6914,7 +6915,7 @@ The poem influenced **Cervantes**, **Shakespeare**’s Italianate literary world
 **Orlando Furioso matters because it turns chivalric romance into a universe.** Ariosto does not choose between belief and irony, adventure and critique, epic war and erotic disorder. He keeps all of them in motion. **The poem’s deepest principle is not straight progress but intelligent wandering: every story opens another path, every path can be suspended, and every heroic certainty may be overtaken by desire, chance, or narrative play.**
 
 
-### Torquato Tasso, 1544–1595
+### Torquato Tasso (1544–1595)
 
 | Author Knowledge         | Content                                                                                                                                                                                     |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -6933,7 +6934,7 @@ the sources on **Milton** are useful because they identify the problem clearly: 
 
 Tasso’s literary position is exactly inside that contradiction. He does not abandon romance; he tries to purify and order it. He does not abandon classical epic; he tries to Christianize it. He does not abandon erotic or magical enchantment; he tries to subordinate it to crusading purpose. **That effort produces the poem’s special intensity: the Christian mission needs discipline, but the imagination keeps wandering toward beauty, delay, and desire.**
 
-### Jerusalem Delivered / Gerusalemme Liberata, 1581
+### Jerusalem Delivered / Gerusalemme Liberata (1581)
 
 | Work Knowledge         | Content                                                                                                                                                      |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -6986,7 +6987,7 @@ The poem influenced **Milton**, opera, painting, European epic theory, Romantic 
 
 **Jerusalem Delivered matters because it makes Christian epic a visible struggle rather than an accomplished formula.** Tasso wants order, but the poem keeps generating beauty that resists order: Armida’s garden, Clorinda’s death, Erminia’s wandering, Rinaldo’s delay. **The result is a poem in which sacred history wins, but romance leaves the deeper wound.**
 
-### French Renaissance Literature, c. 1500–1600
+### French Renaissance Literature (c. 1500–1600)
 
 | Tradition Knowledge        | Content                                                                                                                                                                                                   |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7004,7 +7005,7 @@ The French Renaissance is also an age of conflict. Humanism meets institutional 
 **Literary Knowledge and Developmental Line:**
 French Renaissance prose develops two major paths. **Rabelais** expands prose outward into giant bodies, comic lists, satire, grotesque excess, and encyclopedic humanism. **Montaigne** later turns prose inward into essay, doubt, self-observation, and flexible judgment. One writes the giant body; the other writes the examining mind. Together, they make French prose one of Renaissance Europe’s most powerful instruments for thinking through human life.
 
-### François Rabelais, 1494–1553
+### François Rabelais (1494–1553)
 
 | Author Knowledge            | Content                                                                                                                                                                                                               |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7023,7 +7024,7 @@ His biography explains part of this mixture. He was trained in strict Franciscan
 
 Rabelais’ prose is therefore not “low” in a simple sense. It is learned lewdness. The body, jokes, lists, mock scholarship, fake etymology, medical language, legal parody, monastic satire, and giant appetite all belong to a humanist attack on dead forms of knowledge. **Rabelais writes as if the human body and human learning should both be liberated from narrow discipline. His comedy is intellectual precisely when it seems most bodily.**
 
-### Gargantua and Pantagruel, 1532–1564
+### Gargantua and Pantagruel (1532–1564)
 
 | Work Knowledge              | Content                                                                                                                                                                                       |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7083,7 +7084,7 @@ Rabelais influenced comic prose, satire, grotesque realism, Sterne, Swift, Joyce
 
 [![Portrait de Michel de Montaigne, en buste, de 3/4 dirigé à gauche : \[estampe\] | Gallica](https://tse3.mm.bing.net/th/id/OIP.AXJdOD6cR0BK_Mt7xVQh3wAAAA?r=0\&pid=Api)](https://gallica.bnf.fr/ark%3A/12148/btv1b84010182.item?utm_source=chatgpt.com)
 
-### Michel de Montaigne, 1533–1592
+### Michel de Montaigne (1533–1592)
 
 | Author Knowledge            | Content                                                                                                                                                                                                               |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7102,7 +7103,7 @@ The French word `essai` means an attempt, experiment, or test. Montaigne’s ess
 
 Montaigne’s skepticism is important, but it should not be simplified into denial of truth. scholarly accounts stresses that Montaigne is not a radical skeptic: he exposes pseudo-knowledge and human self-deception, but does not refuse truth when it becomes visible.  **His skepticism is therefore less a doctrine than a posture of intellectual modesty. He distrusts certainty because certainty too often hides vanity, habit, violence, or laziness.**
 
-### Essays / Essais, 1580–1588
+### Essays / Essais (1580–1588)
 
 | Work Knowledge            | Content                                                                                                         |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -7151,7 +7152,7 @@ Montaigne influences **Pascal**, **Bacon**, **Emerson**, **Nietzsche**, **Virgin
 
 *The Essays* **matter because they make thinking personal without making it merely private.** Montaigne writes himself, but not because he believes himself exceptional in the heroic sense. He writes himself because the human condition is easiest to catch when it is close, unstable, bodily, and unfinished. **His great discovery is that a self, honestly observed, can become a world.**
 
-### Marguerite de Navarre, 1492–1549
+### Marguerite de Navarre (1492–1549)
 
 | Author Knowledge         | Content                                                                                                                                                                                      |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7170,7 +7171,7 @@ Her literary importance rests especially on *The Heptameron*, listed in canonica
 
 Marguerite’s religious and moral seriousness distinguishes her from a purely comic storyteller. She is interested in desire, but also in conscience. She is interested in deception, but also in judgment. She is interested in erotic scandal, but also in the unequal vulnerability of women within marriage, courtship, and social reputation.
 
-### The Heptameron / L’Heptaméron, written c. 1540s; published 1558–1559
+### The Heptameron / L’Heptaméron (written c. 1540s; published 1558–1559)
 
 | Work Knowledge       | Content                                                                                                                                                                   |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7220,7 +7221,7 @@ The work is a major French Renaissance prose collection. Britannica states that 
 
 *The Heptameron* **matters because it makes storytelling accountable.** A tale is not simply consumed for pleasure; it must be discussed, judged, defended, and disputed. Marguerite de Navarre inherits Boccaccio’s frame, but she changes its center of gravity. **In her hands, the novella becomes a courtroom of love, where every story asks who has been believed, who has been harmed, and who has the authority to interpret desire.**
 
-### Spanish Renaissance Literature, c. 1499–1616
+### Spanish Renaissance Literature (c. 1499–1616)
 
 | Tradition Knowledge           | Content                                                                                                                                                                                         |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7239,7 +7240,7 @@ The main material describes sixteenth-century Spain as politically, religiously,
 **Literary Knowledge and Developmental Line:**
 The key line here is from **picaresque fiction** to **Cervantine novel**. The picaresque creates a low, realistic, first-person fiction of survival. Cervantes inherits that realism, but also writes against it. In *Don Quixote*, picaresque figures such as **Ginés de Pasamonte** appear inside a larger narrative system where chivalric romance, pastoral romance, Moorish tale, Byzantine romance, political satire, metafiction, and psychological comedy all collide. The result is not simply the “first novel” as a fixed label, but a decisive moment in the emergence of the modern novel as a form that can absorb and criticize earlier genres.
 
-### Anonymous Spanish Picaresque Tradition, c. 1550–1600
+### Anonymous Spanish Picaresque Tradition (c. 1550–1600)
 
 | Tradition Knowledge     | Content                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7257,7 +7258,7 @@ The main material says directly that the picaresque is the new fiction that prec
 
 The picaresque matters because it changes the literary value of low life. Earlier comic literature already included tricksters and servants, but the picaresque makes the low figure the narrator of his own life. This is a radical shift. **The poor boy does not merely appear as an object of satire. He becomes the consciousness through which society is exposed.**
 
-### Lazarillo de Tormes / The Life of Lazarillo de Tormes, 1554
+### Lazarillo de Tormes / The Life of Lazarillo de Tormes (1554)
 
 | Work Knowledge          | Content                                                                                                                                            |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7304,7 +7305,7 @@ The picaresque influences **Guzmán de Alfarache**, **Cervantes**, **Quevedo**, 
 
 **Lazarillo de Tormes matters because it teaches fiction to look downward.** The world is no longer organized around heroic ideal or sacred conversion, but around hunger, deception, class performance, and survival. Its realism is not neutral observation; it is social exposure. **Through a poor boy’s life, Spain’s institutions become readable from below.**
 
-### Miguel de Cervantes, 1547–1616
+### Miguel de Cervantes (1547–1616)
 
 | Author Knowledge           | Content                                                                                                                                                             |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7323,7 +7324,7 @@ The main material describes *Don Quixote* as both a realistic fiction often cons
 
 Cervantes’ biography intensifies this problem. He had actually fought, suffered, been wounded, and been imprisoned. the sources note that his youthful experiences prepared him for a writing career that began in middle age, and that the defeat of the Spanish Armada contributed to disillusionment about heroism.  *This matters because* Don Quixote **is not written by someone ignorant of heroic language. It is written by a man who knew both the attraction and the wreckage of heroism.**
 
-### Don Quixote / Don Quijote de la Mancha, Part I 1605; Part II 1615
+### Don Quixote / Don Quijote de la Mancha (Part I 1605; Part II 1615)
 
 | Work Knowledge        | Content                                                                                                                                                                    |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7385,7 +7386,7 @@ The main material calls *Don Quixote* not only the first modern novel but also, 
 
 [![«Lope de Vega». Anónimo madrileño. - Lope de Vega](https://images.openai.com/static-rsc-4/4SRy1LOiOuy6vHWEO4_NTrrMhhawjvZMCuu7Kcmr8OGtjOA3Vb4XN8oFoHzh8o_f3ybUbD1wC7QBvWlUq83XeuBzjnS2Pn6cpWWeKMPemFMGmw9tz1Zo_tJM1-YTFHqlL-1GYv7Sm8RIE9-R5sOvKIVNjtIdjCLlOZKMFT2lAQY?purpose=inline)](https://www.cervantesvirtual.com/portales/lope_de_vega/imagenes_retratos/imagen/imagenes_retratos_18_lope_de_vega_retrato_anonimo/?utm_source=chatgpt.com)
 
-### Lope de Vega, 1562–1635
+### Lope de Vega (1562–1635)
 
 | Author Knowledge              | Content                                                                                                                                                                                                    |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7407,7 +7408,7 @@ This does not mean Lope rejects all order. He insists on social diction: kings s
 
 **Lope’s dramatic intelligence lies in refusing to separate theatrical popularity from literary seriousness.** He does not write for theory first and audience second. **He writes as if audience response is part of dramatic truth.**
 
-### Fuente Ovejuna / The Sheep Well, c. 1612–1614
+### Fuente Ovejuna / The Sheep Well (c. 1612–1614)
 
 | Work Knowledge           | Content                                                                                                                                                                 |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7462,7 +7463,7 @@ The play is one of Lope’s best-known and most frequently anthologized works. t
 
 **Fuente Ovejuna matters because it makes justice plural.** The village does not wait passively for royal rescue; it becomes the agent of its own defense. Yet the play does not turn rebellion into simple anarchy. **It asks what happens when legal authority and feudal power are separated from justice, and it answers with a theatrical image that is still difficult to exhaust: under torture, every body speaks with one name.**
 
-### Portuguese Renaissance Literature, c. 1500–1580
+### Portuguese Renaissance Literature (c. 1500–1580)
 
 | Tradition Knowledge       | Content                                                                                                                                                                                                        |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7480,7 +7481,7 @@ the sources emphasize the cartographic imagination of the poem. It is described 
 
 This means Portuguese Renaissance epic is both new and old. It imitates classical epic to give Portuguese literature prestige; at the same time, it changes epic by making sailors, maps, astrolabes, portolan charts, African coasts, the Indian Ocean, and imperial routes into epic material. **The epic hero is no longer only a warrior on land. He is a navigator crossing a world whose geography is being turned into European narrative.**
 
-### Luís de Camões, c. 1524–1580
+### Luís de Camões (c. 1524–1580)
 
 | Author Knowledge       | Content                                                                                                                                                                            |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7497,7 +7498,7 @@ This means Portuguese Renaissance epic is both new and old. It imitates classica
 
 This historical distance matters. The poem sings heroic exploration, but it does so from a position of anxiety. It is not simply the confident voice of expansion at the moment of first discovery. It is a retrospective epic, written while the imperial project is already showing signs of danger. The poem is dedicated to **King Sebastian**, who would die in North Africa in 1578, leaving Portugal without a direct heir and leading to the Iberian Union under Spanish Habsburg rule in 1580. the source record explicitly notes this tragic irony: Camões praises Portuguese exploits while writing at a time when things were “going downhill.” 
 
-### The Lusiads / Os Lusíadas, 1572
+### The Lusiads / Os Lusíadas (1572)
 
 | Work Knowledge          | Content                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7558,7 +7559,7 @@ The poem shaped Portuguese national identity, imperial memory, colonial ideology
 **The Lusiads matters because it makes the ocean epic.** Camões takes ships, maps, storms, ports, guides, gods, monsters, and imperial desire, then turns them into national destiny. Yet the poem’s greatness lies in its unease as much as in its praise. Adamastor, the Old Man of Belém, and the future bloodshed revealed by Thetis all disturb the song of glory. **Portugal becomes epic by crossing the sea, but the sea answers back.**
 
 
-### Early Modern Utopia, c. 1516
+### Early Modern Utopia (c. 1516)
 
 | Movement Knowledge    | Content                                                                                                                                                                             |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7581,7 +7582,7 @@ The genre is structurally double. A utopia may sincerely desire a better world, 
 **Literary Knowledge and Developmental Lines:**
 The early modern utopia usually appears as a distant place: an island, hidden city, unknown land, or newly discovered society. This spatial distance allows the writer to criticize home indirectly. By the 19th century, especially in **Edward Bellamy**, utopia increasingly becomes temporal rather than spatial: the better society is not elsewhere, but in the future. The genre shifts from `eutopia` / good place toward `uchronia` / alternative time. This matters because the imagined society becomes less like a remote fantasy and more like a possible destination of historical development.
 
-### Thomas More, 1478–1535
+### Thomas More (1478–1535)
 
 | Author Knowledge          | Content                                                                                                                                                                                       |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7599,7 +7600,7 @@ This double identity matters. More’s *Utopia* is radical in its critique of pr
 
 More’s literary intelligence lies in ambiguity. He does not simply say: “Here is the perfect society.” He frames the description of Utopia through a conversation, gives important characters punning or allusive names, invents documents that appear to authenticate the fiction, and lets praise and satire remain entangled. This is not accidental. The genre of utopia begins in irony.
 
-### Utopia, 1516
+### Utopia (1516)
 
 | Work Knowledge           | Content                                                                                                                                      |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7650,7 +7651,7 @@ More’s influence extends through **Campanella**, **Bacon**, **Swift**, **Bella
 
 *Utopia* matters because it teaches literature to imagine society as changeable. It does not simply offer a perfect island. It creates an interpretive trap: the reader admires, doubts, compares, and judges. More’s island is “no place,” but from that no-place, Europe becomes newly visible.
 
-### English Renaissance Literature, c. 1558–1625
+### English Renaissance Literature (c. 1558–1625)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                            |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7668,7 +7669,7 @@ scholarly accounts places **Spenser**, **Marlowe**, and **Shakespeare** in the E
 **Literary Knowledge and Developmental Line:**
 The English Renaissance can be approached as the rise of two great languages: **the language of poetic elevation** and **the language of theatrical overreaching**. Spenser remakes English into an artificial, archaic, richly ornamented poetic idiom. Marlowe remakes English blank verse into a vehicle for titanic speech. One creates a field for later English poetry; the other creates a stage-language powerful enough for **Shakespeare** to inherit and transform.
 
-### Edmund Spenser, c. 1552–1599
+### Edmund Spenser (c. 1552–1599)
 
 | Author Knowledge          | Content                                                                                                                                                         |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7689,7 +7690,7 @@ Spenser’s language is equally important. the source record emphasizes that he 
 
 **This is why Spenser’s influence is larger than a single poem.** He gives later English poetry a sound, a texture, and a permission to be artificial. **His language does not merely represent an imagined world; it creates the atmosphere in which that world can exist.**
 
-### The Faerie Queene, 1590; expanded 1596
+### The Faerie Queene (1590; expanded 1596)
 
 | Work Knowledge        | Content                                                                                                                                                                            |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7742,7 +7743,7 @@ Spenser influences **Milton**, **Keats**, Romantic poetry, Victorian medievalism
 
 **The Faerie Queene matters because it turns poetry into moral world-building.** Spenser does not simply tell stories of knights. He builds a universe where language, monarchy, virtue, temptation, beauty, and national imagination are all bound together. **The poem’s difficulty lies in its richness: it teaches discipline through enchantment and asks the reader to desire what must finally be resisted.**
 
-### Christopher Marlowe, 1564–1593
+### Christopher Marlowe (1564–1593)
 
 | Author Knowledge            | Content                                                                                                                                                                         |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7762,7 +7763,7 @@ the source record connects **Tamburlaine** and **Faustus** directly. Tamburlaine
 
 **This is Marlowe’s Renaissance danger.** Human beings discover the possibility of self-fashioning, but self-fashioning can become rebellion against every limit that makes the human condition human.
 
-### Doctor Faustus, c. 1592
+### Doctor Faustus (c. 1592)
 
 | Work Knowledge       | Content                                                                                                                                                                 |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7826,7 +7827,7 @@ The play influences **Shakespeare**, later Faust traditions, **Goethe**, Romanti
 **Doctor Faustus matters because it makes Renaissance aspiration damnable and magnificent at the same time.** Faustus is wrong; the play knows he is wrong. Yet his language gives wrongness grandeur. He wants more knowledge, more power, more life, more beauty, more time. The Christian frame condemns him, but the poetry makes his desire unforgettable. **That unresolved tension is Marlowe’s achievement: moral defeat becomes theatrical splendor.**
 
 
-### University Wits, c. 1580s–1590s
+### University Wits (c. 1580s–1590s)
 
 | Tradition Knowledge         | Content                                                                                                                                                                                                                                             |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7846,7 +7847,7 @@ This combination is decisive. English drama did not become Elizabethan drama mer
 
 **The University Wits make Shakespeare historically intelligible but not explainable. the scholarly record says Shakespeare arrived in London at the right time, when drama had been prepared for a first-order genius; yet it also warns that sources and influences cannot account for Shakespeare’s achievement, any more than influences can fully explain Mozart.**
 
-### University Wits Drama, c. 1580s–1590s
+### University Wits Drama (c. 1580s–1590s)
 
 | Work / Form Knowledge    | Content                                                                                                                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7891,7 +7892,7 @@ Their influence runs through **Shakespeare**, Jacobean tragedy, revenge drama, h
 
 **University Wits drama matters because it gives English theatre its first major acceleration.** The medieval stage had moral energy; popular performance had comic vitality; classical education had formal discipline. The University Wits forced these materials together. **Out of that collision came a stage ready for Shakespeare.**
 
-### William Shakespeare, 1564–1616
+### William Shakespeare (1564–1616)
 
 | Author Knowledge        | Content                                                                                                                                                                                      |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -7961,7 +7962,7 @@ Shakespeare’s afterlife includes printed editions, school texts, global theatr
 **Shakespeare matters because he changes what literary character can be.** Before him, drama already had gods, kings, fools, lovers, villains, saints, and allegorical figures. In Shakespeare, these figures begin to speak as if each possessed a private weather system of thought. His plays do not merely show human nature; they enlarge the language through which later cultures imagine human nature. **That is why his influence is not only theatrical or literary, but cognitive: after Shakespeare, character itself becomes harder, richer, and more unstable to think about.**
 
 
-### The Merchant of Venice, c. 1596–1597
+### The Merchant of Venice (c. 1596–1597)
 
 | Work Knowledge       | Content                                                                                                                                   |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8000,7 +8001,7 @@ Shylock becomes one of Shakespeare’s most debated figures: villain, victim, ou
 
 **The Merchant of Venice matters because it shows Shakespeare’s comedy already pressing against its own limits.** The play wants harmony, marriage, mercy, and music; yet it gets there through law, exclusion, humiliation, and disguise. **Its brilliance lies in that friction.**
 
-### Twelfth Night, c. 1601
+### Twelfth Night (c. 1601)
 
 | Work Knowledge        | Content                                                                                                                                                          |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8043,7 +8044,7 @@ Viola / Cesario becomes one of the classic figures of theatrical gender disguise
 
 **Twelfth Night matters because it turns comedy into a music of mistaken desire.** It is festive, but not weightless. Shipwreck, mourning, disguise, erotic confusion, and social cruelty all pass through its songs. **The marriages resolve the plot, but Feste and Malvolio leave behind the knowledge that holiday cannot abolish time, loss, or resentment.**
 
-### As You Like It, c. 1599–1600
+### As You Like It (c. 1599–1600)
 
 | Work Knowledge       | Content                                                                                                                                                                                           |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8092,7 +8093,7 @@ Rosalind becomes one of the great roles in Shakespearean performance. The Forest
 
 **As You Like It matters because it shows Shakespeare’s comedy at its most generous.** Its plot is deliberately artificial, but its emotions are not. The forest permits an experiment: what happens when love can be performed, mocked, corrected, embodied, and finally accepted? **Rosalind’s answer is not theory, but theatre.**
 
-### Henry IV, Part I c. 1596–1597; Part II c. 1597–1598
+### Henry IV (Part I c. 1596–1597; Part II c. 1597–1598)
 
 | Work Knowledge          | Content                                                                                                                                                  |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8145,7 +8146,7 @@ Falstaff becomes one of the great comic personalities in world drama, later reap
 
 **Henry IV matters because it makes political maturity painful.** Hal becomes king by learning how to act, fight, judge, and reject. Falstaff must be rejected for the state to be ordered, but the rejection wounds the comic life of the plays. **Shakespeare’s achievement is that good government is necessary, and yet something irreplaceable is lost when play is banished from the throne.**
 
-### Henry V, c. 1599
+### Henry V (c. 1599)
 
 | Work Knowledge            | Content                                                                                                                                                    |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8187,7 +8188,7 @@ The play has often been staged in wartime or national crisis, sometimes as patri
 
 **Henry V matters because it makes national heroism theatrically visible and morally unstable.** Henry can inspire, judge, conquer, and charm, but the play never lets kingship become merely noble feeling. **To become England’s hero, he must also become the man who knows what must be cut away.**
 
-### Richard III, c. 1592–1593
+### Richard III (c. 1592–1593)
 
 | Work Knowledge         | Content                                                                                                                                                         |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8229,7 +8230,7 @@ Richard becomes the prototype of the charming theatrical villain: witty, deforme
 
 **Richard III matters because it makes evil entertaining and then punishes the audience for enjoying it.** Richard invites spectators into complicity. He makes crime witty, lucid, and theatrically pleasurable. **The play’s moral force lies in the moment when that pleasure curdles into history, ghosts, fear, and defeat.**
 
-### Romeo and Juliet, c. 1595
+### Romeo and Juliet (c. 1595)
 
 | Work Knowledge        | Content                                                                                                                                                                     |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8275,7 +8276,7 @@ Its afterlife includes romantic tragedy, ballet, opera, film, and **West Side St
 
 **Romeo and Juliet matters because it gives young love a language beautiful enough to feel like a new world, then shows that language cannot suspend history.** The lovers escape names in poetry, but they cannot escape Verona. **Their tragedy lies in the difference between what lyric speech can create and what social violence can destroy.**
 
-### Julius Caesar, c. 1599
+### Julius Caesar (c. 1599)
 
 | Work Knowledge              | Content                                                                                                                          |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -8324,7 +8325,7 @@ The play remains one of the central literary treatments of assassination, republ
 
 **Julius Caesar matters because it makes politics depend on interpretation.** Brutus thinks noble intention can purify violence; Antony knows that the corpse, the crowd, and the speech will decide what violence means. The tragedy is not merely that Caesar dies. **It is that Rome discovers too late that no political act remains in the hands of those who perform it.**
 
-### Antony and Cleopatra, c. 1606–1607
+### Antony and Cleopatra (c. 1606–1607)
 
 | Work Knowledge              | Content                                                                                                                                                                                                                                 |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8371,7 +8372,7 @@ Cleopatra becomes one of world drama’s great figures of theatrical sovereignty
 
 **Antony and Cleopatra matters because it refuses to make love small.** The lovers are foolish, magnificent, theatrical, politically disastrous, and almost mythic. Rome wins history, but Cleopatra wins the stage. **The tragedy lies in that division: Caesar inherits the world, but Shakespeare gives the greater poetry to those who lose it.**
 
-### Coriolanus, c. 1608
+### Coriolanus (c. 1608)
 
 | Work Knowledge              | Content                                                                                                                                           |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8418,7 +8419,7 @@ The play has been repeatedly used to think about fascism, anti-democratic elitis
 
 **Coriolanus matters because it shows a human being built too narrowly.** Coriolanus is almost pure martial value: courage, contempt, wounds, honor, rage. That purity makes him brilliant and monstrous. **Shakespeare’s tragedy is not that Rome fails to recognize a great man; it is that a city cannot live with a man who recognizes nothing but greatness.**
 
-### The Winter’s Tale, c. 1610–1611
+### The Winter’s Tale (c. 1610–1611)
 
 | Work Knowledge         | Content                                                                                                                                                                                   |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8463,7 +8464,7 @@ The statue scene has become one of the great images of theatrical restoration. T
 
 **The Winter’s Tale matters because it tests whether art can restore life without lying about loss.** Shakespeare does not pretend that time is harmless. Sixteen years disappear. A son dies. A family is broken. **Yet the final scene asks whether repentance, recognition, and theatrical wonder can still create a form of grace.**
 
-### The Tempest, c. 1610–1611
+### The Tempest (c. 1610–1611)
 
 | Work Knowledge         | Content                                                                                                                                 |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8512,7 +8513,7 @@ The play influenced colonial rewriting, modern theatre, fantasy, opera, poetry, 
 
 **The Tempest matters because it makes art answerable to ethics.** Prospero can make a world move according to his design, but Shakespeare does not let that be enough. The final dignity of Prospero is not that he commands spirits, but that he gives up command. **The play’s deepest movement is from magic to mercy.**
 
-### Shakespeare’s Sonnets, published 1609
+### Shakespeare’s Sonnets (published 1609)
 
 | Work Knowledge       | Content                                                                                                                                                                  |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -8563,7 +8564,7 @@ The sonnets shaped English lyric, queer readings of Renaissance poetry, theories
 
 ## Chinese Vernacular Fiction (14th-18th c.)
 
-### Chinese Ming Vernacular Fiction, c. 14th–17th c.
+### Chinese Ming Vernacular Fiction (c. 14th–17th c.)
 
 | Tradition Knowledge           | Content                                                                                                                                                                                                                                                                                                                                                                                  |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8582,7 +8583,7 @@ Earlier Chinese prestige literature had already produced the **Book of Songs**, 
 **Literary Knowledge and Developmental Line:**
 Two directions matter here. *Journey to the West* belongs to `神魔小说`—gods-and-demons fiction—but it is also pilgrimage narrative, comic epic, Buddhist-Daoist allegory, and adventure fiction. *Water Margin* belongs to outlaw and heroic fiction, but also to social protest, martial brotherhood, bandit legend, and political ambiguity. One sends a monk and his supernatural companions toward India for scriptures; the other gathers one hundred and eight outlaws at **Liangshan Marsh** against corrupt authority. Together, they show how the vernacular novel can turn popular imagination into world-scale narrative.
 
-### Wu Cheng’en, c. 1500–c. 1582
+### Wu Cheng’en (c. 1500–c. 1582)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                                                           |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8599,7 +8600,7 @@ Two directions matter here. *Journey to the West* belongs to `神魔小说`—go
 
 The author’s literary importance therefore lies in organization, transformation, and tonal control. The novel can be sacred and ridiculous at once. It can honor Buddhist scripture while making readers laugh at bureaucratic Heaven, piggish appetite, demon traps, magical weapons, and the unruly brilliance of **Sun Wukong**.
 
-### Journey to the West / Xiyouji, 16th c.
+### Journey to the West / Xiyouji (16th c.)
 
 | Work Knowledge          | Content                                                                                                                                                                                                                                      |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8652,7 +8653,7 @@ The novel shaped Chinese opera, storytelling, visual art, comics, animation, tel
 
 **Journey to the West matters because it turns spiritual discipline into comic adventure.** The novel does not ask the reader to choose between religion and entertainment. It shows that enlightenment, illusion, appetite, rebellion, bureaucracy, magic, and laughter can all belong to one literary world. **Its greatest invention is Sun Wukong: a force of chaos powerful enough to wreck Heaven, then slowly redirected into the service of a journey beyond himself.**
 
-### Shi Nai’an, traditionally 1296–1372; attribution uncertain
+### Shi Nai’an (traditionally 1296–1372; attribution uncertain)
 
 | Author Knowledge          | Content                                                                                                                                                                                                                                                  |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8669,7 +8670,7 @@ Unlike **Wu Cheng’en**, whose association with *Journey to the West* is relati
 
 The author entry should therefore avoid overconfident biography. The important literary fact is that *Water Margin* becomes one of the great Chinese narrative worlds: a world of inns, roads, corrupt officials, martial skill, sworn brotherhood, drunken violence, revenge, popular justice, and eventual incorporation into imperial power.
 
-### Water Margin / Shuihuzhuan, late Yuan–Ming formation; major Ming editions
+### Water Margin / Shuihuzhuan (late Yuan–Ming formation; major Ming editions)
 
 | Work Knowledge          | Content                                                                                                                                                                                                                                       |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8723,7 +8724,7 @@ The novel shaped Chinese opera, storytelling, martial fiction, popular theatre, 
 
 **Water Margin matters because it makes rebellion morally difficult.** The Liangshan heroes are unforgettable because they seem to carry justice where law has failed. But they are also dangerous because justice outside law easily becomes revenge, masculine excess, and blood loyalty. The novel’s greatness lies in refusing to separate these forces neatly. **Liangshan is sanctuary, brotherhood, criminal camp, alternative state, and tragic machine at once.**
 
-### Luo Guanzhong, traditionally c. 1330–c. 1400
+### Luo Guanzhong (traditionally c. 1330–c. 1400)
 
 | Author Knowledge            | Content                                                                                                                                                                                                                                                                                          |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -8742,7 +8743,7 @@ The difference between history and historical fiction is central. A chronicle re
 
 The broader Ming vernacular context is important. scholarly accounts describe the Chinese vernacular novel as a lower-status but world-changing form that brought new subject matter and new audiences into literature.  In that context, *Romance of the Three Kingdoms* does for dynastic history what *Journey to the West* does for pilgrimage and *Water Margin* does for outlaw brotherhood: it turns a massive inherited narrative world into readable, repeatable, popular fiction.
 
-### Romance of the Three Kingdoms / Sanguo yanyi, 14th c. formation; Ming editions
+### Romance of the Three Kingdoms / Sanguo yanyi (14th c. formation; Ming editions)
 
 | Work Knowledge       | Content                                                                                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8791,7 +8792,7 @@ The novel shaped Chinese opera, storytelling, political idiom, military imaginat
 
 **Romance of the Three Kingdoms matters because it turns political collapse into narrative intelligence.** It does not merely ask who wins. It asks what victory means when virtue, loyalty, ability, and historical destiny separate from one another. **Its world is tragic because the morally attractive cause does not necessarily become the historically successful one.**
 
-### Lanling Xiaoxiao Sheng, active late 16th c.; identity unknown
+### Lanling Xiaoxiao Sheng (active late 16th c.; identity unknown)
 
 | Author Knowledge                | Content                                                                                                                                                                      |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8810,7 +8811,7 @@ This is one of the major turns in Chinese fiction. *Journey to the West* moves t
 
 Chinese intellectual-history scholarship gives a strong background for this move: late Ming commodity economy, urban culture, religious activity, silver circulation, publishing, fiction, drama, and popular reading all expanded, while desire, commerce, and individual feeling placed pressure on Confucian `礼教`. It explicitly names *The Peony Pavilion* as a celebration of intense feeling and *Jin Ping Mei* as an exposure of the world of desire and money. 
 
-### Jin Ping Mei / The Plum in the Golden Vase, late 16th c.; printed 1610
+### Jin Ping Mei / The Plum in the Golden Vase (late 16th c.; printed 1610)
 
 | Work Knowledge       | Content                                                                                                                                                                                                       |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8859,7 +8860,7 @@ The novel influenced later Chinese fiction, especially the tradition of domestic
 
 **Jin Ping Mei matters because it shows that the household can be as vast as an empire.** Ximen Qing’s home contains commerce, law, ritual, gender power, servants’ speech, bodily appetite, religious hypocrisy, and social ambition. The novel’s scandal is not only sexual frankness. **Its deeper scandal is that it makes ordinary social life look morally naked.**
 
-### Ming Drama, c. 14th–17th c.
+### Ming Drama (c. 14th–17th c.)
 
 | Tradition Knowledge               | Content                                                                                                                                                                                                                        |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -8875,7 +8876,7 @@ Ming drama develops in a literary environment where print, performance, elite re
 
 This makes **Tang Xianzu** central. He does not simply write a romantic story. He turns love into a challenge to the boundaries separating dream and waking, body and soul, life and death, daughterly enclosure and personal desire. His drama stands beside the late Ming vernacular novels because it also tests Confucian order against desire and emotional vitality.
 
-### Tang Xianzu, 1550–1616
+### Tang Xianzu (1550–1616)
 
 | Author Knowledge         | Content                                                                                                                                                                       |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8892,7 +8893,7 @@ This makes **Tang Xianzu** central. He does not simply write a romantic story. H
 
 The late Ming context matters. thought-history scholarship emphasize that late Ming society brought together commercial expansion, urban culture, publishing, popular literature, Yangming-influenced subjectivity, and the conflict between `礼教` and desire. They explicitly cite *The Peony Pavilion* as a work that celebrates the extremity of `情`. 
 
-### The Peony Pavilion / Mudan ting, 1598
+### The Peony Pavilion / Mudan ting (1598)
 
 | Work Knowledge         | Content                                                                                                                                                                                                                      |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8945,7 +8946,7 @@ The play remains central to Kunqu and Chinese theatrical culture, and it has gen
 
 **The Peony Pavilion matters because it gives feeling the force of ontology.** Du Liniang’s love begins in a dream, but the play refuses to call it unreal. She dies because the waking world cannot recognize what she has experienced; she returns because the dramatic universe grants that experience truth. In Tang Xianzu’s theatre, `情` is not merely emotion. **It is the power by which life exceeds the forms meant to contain it.**
 
-### Chinese Qing Fiction, c. 17th–18th c.
+### Chinese Qing Fiction (c. 17th–18th c.)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                                             |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8963,7 +8964,7 @@ canonical surveys places these three works together under Chinese Qing fiction: 
 **Literary Knowledge and Developmental Line:**
 The sequence is useful because the three works do different things with the fictional imagination. **Pu Songling** uses classical short fiction to make the supernatural intimate. **Wu Jingzi** uses the vernacular novel to anatomize the literati world and the examination system. **Cao Xueqin** absorbs family fiction, poetry, dream, mythology, social realism, and metaphysics into a total novel. Together, they show that Chinese fiction had become capable of subtle psychological, social, and ontological work.
 
-### Cao Xueqin, c. 1715–1763
+### Cao Xueqin (c. 1715–1763)
 
 | Author Knowledge           | Content                                                                                                                                                                                                                                                                                              |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -8982,7 +8983,7 @@ The novel is not simply autobiography, and it should not be reduced to a family 
 
 **The important point is that Cao does not merely write about decline after it happens.** He makes decline the condition of narration. **The novel exists because what was loved has already begun to disappear.**
 
-### Dream of the Red Chamber / Hongloumeng, manuscript c. mid-18th c.; printed 1791–1792
+### Dream of the Red Chamber / Hongloumeng (manuscript c. mid-18th c.; printed 1791–1792)
 
 | Work Knowledge        | Content                                                                                                                                                                                                                                                   |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9043,7 +9044,7 @@ The novel shaped Chinese fiction, opera, television, film, criticism, gender stu
 
 **Dream of the Red Chamber matters because it turns private tenderness into world literature.** The novel understands that the most beautiful human forms—poetry, friendship, young women’s talent, erotic recognition, family intimacy—may exist only inside systems that will consume them. Cao’s achievement is not only to mourn that loss, but to make the mourning itself into fiction. **The dream vanishes; the book remains.**
 
-### Pu Songling, 1640–1715
+### Pu Songling (1640–1715)
 
 | Author Knowledge                      | Content                                                                                                                                                                                    |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -9062,7 +9063,7 @@ An earlier note in the user’s available materials identifies *Liaozhai zhiyi* 
 
 **Pu Songling’s world is one where ordinary reality has lost moral sufficiency.** The supernatural appears because human institutions are too narrow, corrupt, or blind to contain the truth of desire and justice.
 
-### Strange Tales from a Chinese Studio / Liaozhai zhiyi, completed c. late 17th–early 18th c.; printed later
+### Strange Tales from a Chinese Studio / Liaozhai zhiyi (completed c. late 17th–early 18th c.; printed later)
 
 | Work Knowledge       | Content                                                                                                                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9112,7 +9113,7 @@ The work influenced Chinese opera, storytelling, painting, film, television, sup
 
 **Strange Tales from a Chinese Studio matters because it makes the supernatural intimate.** Pu Songling does not use foxes and ghosts only to frighten. He uses them to ask why the human world is so often less just, less loving, and less perceptive than the world beyond it. **The strange tale becomes a moral experiment: when society fails, fiction calls in ghosts.**
 
-### Wu Jingzi, 1701–1754
+### Wu Jingzi (1701–1754)
 
 | Author Knowledge      | Content                                                                                                                                                                                             |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9129,7 +9130,7 @@ The work influenced Chinese opera, storytelling, painting, film, television, sup
 
 This makes Wu’s satire different from **Molière**’s character comedy or **Swift**’s species-level disgust. Wu is writing from inside a learned culture. He knows the dignity Confucian learning is supposed to have, and he knows the absurdity produced when that dignity is converted into status-hunger. **The satire is painful because the ideal is not dismissed. It is betrayed.**
 
-### The Scholars / Rulin waishi, c. 1750; printed 1803
+### The Scholars / Rulin waishi (c. 1750; printed 1803)
 
 | Work Knowledge          | Content                                                                                                                                                                     |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9189,7 +9190,7 @@ Chinese Qing fiction reaches three different summits through these works. **Cao 
 
 ## Classical Seventeenth (1600-1700)
 
-### Seventeenth-Century English Religious Literature, c. 1600–1700
+### Seventeenth-Century English Religious Literature (c. 1600–1700)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                              |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9207,7 +9208,7 @@ related scholarship places **Bunyan** and **Milton** together in the English can
 **Literary Knowledge and Developmental Line:**
 The key development is from **religious doctrine** to **imaginative form**. Bunyan takes Protestant salvation and turns it into a road narrative: a man leaves the City of Destruction and travels toward the Celestial City. Milton takes Genesis, epic tradition, political defeat, and theological argument, then writes a biblical epic that competes with **Homer**, **Virgil**, **Dante**, **Spenser**, and **Tasso**. The two writers share a religious world, but their literary methods differ sharply: Bunyan writes plain, lucid, vernacular allegory; Milton writes learned, syntactically immense, rhetorically elevated epic.
 
-### John Bunyan, 1628–1688
+### John Bunyan (1628–1688)
 
 | Author Knowledge       | Content                                                                                                                                                                       |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9225,7 +9226,7 @@ the sources stress that Puritans were suspicious of fiction, but Bunyan justifie
 
 **Bunyan’s importance lies in this compromise between suspicion and imagination.** Fiction is dangerous if it distracts from truth; fiction becomes useful if it makes truth visible.
 
-### The Pilgrim’s Progress, Part I 1678; Part II 1684
+### The Pilgrim’s Progress (Part I 1678; Part II 1684)
 
 | Work Knowledge          | Content                                                                                                                                                          |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9271,7 +9272,7 @@ The book influenced Protestant devotional culture, children’s literature, miss
 
 **The Pilgrim’s Progress matters because it makes salvation narratable.** Bunyan does not produce a theological system in abstract terms. He gives the soul a road, a burden, enemies, companions, bad weather, false cities, and a destination. **Its power comes from the fact that the most inward Protestant anxieties become objects one can see.**
 
-### John Milton, 1608–1674
+### John Milton (1608–1674)
 
 | Author Knowledge           | Content                                                                                                                                                                         |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9332,7 +9333,7 @@ Milton influenced eighteenth-century poetry, **Pope**’s mock epic, Romantic re
 
 **Milton matters because he makes English poetry confront the largest possible scale: God, rebellion, creation, freedom, gender, temptation, history, and the fall of humanity.** Yet his greatness is not only scale. It is the pressure created when a poet of almost uncontrollable verbal abundance submits himself to a theology of obedience. **In Milton, the struggle between magnificence and humility becomes the very sound of the poem.**
 
-### Areopagitica / On the Freedom of the Press, 1644
+### Areopagitica / On the Freedom of the Press (1644)
 
 | Work Knowledge          | Content                                                                                                                                                                                         |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9369,7 +9370,7 @@ Its influence extends through Enlightenment thought, liberal political theory, p
 
 **Areopagitica matters because it makes freedom a discipline, not merely a permission.** Milton does not say reading is safe. He says that without the risk of reading, judgment cannot mature. **The text’s lasting force lies in that austere demand: truth must be chosen by a mind strong enough to encounter error.**
 
-### Paradise Lost, 1667; revised 1674
+### Paradise Lost (1667; revised 1674)
 
 | Work Knowledge          | Content                                                                                                                                                                                                  |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9415,7 +9416,7 @@ Milton shaped **Pope**, **Blake**, **Wordsworth**, **Byron**, **Keats**, **Mary 
 
 **Paradise Lost matters because it makes the Fall intellectually and imaginatively vast.** Milton does not merely retell Genesis; he turns it into the crisis of freedom itself. **The poem’s greatness lies in its danger: its language is so powerful that rebellion becomes beautiful, yet its theology insists that beauty without obedience is ruin.**
 
-### Paradise Regained, 1671
+### Paradise Regained (1671)
 
 | Work Knowledge       | Content                                                                                                                                                                                   |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9460,7 +9461,7 @@ The poem has had a smaller readership than *Paradise Lost*, but it is essential 
 
 **Paradise Regained matters because it withdraws heroism from spectacle.** Milton asks whether the greatest victory might look undramatic: no army, no empire, no conquest, no theatrical triumph. **The Son defeats Satan by knowing what not to desire.**
 
-### Samson Agonistes, 1671
+### Samson Agonistes (1671)
 
 | Work Knowledge         | Content                                                                                                                                                                         |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9511,7 +9512,7 @@ The poem remains central to debates over Miltonic heroism, violence, gender, dis
 
 [![NPG D21407; John Donne - Portrait - National Portrait Gallery](https://tse1.mm.bing.net/th/id/OIP.Dc4aLdeeuQHJPZ32EZH78gHaLe?pid=Api)](https://www.npg.org.uk/collections/search/portrait/mw113779/John-Donne?utm_source=chatgpt.com)
 
-### Metaphysical Poetry, c. 1620–1650
+### Metaphysical Poetry (c. 1620–1650)
 
 | Tradition Knowledge    | Content                                                                                                                                                                                                                                                                                                                  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -9533,7 +9534,7 @@ The movement also changes the status of the short lyric. scholarly accounts note
 **Literary Knowledge and Developmental Line:**
 Metaphysical poetry comes after the Elizabethan lyric and beside seventeenth-century religious crisis. It inherits Renaissance learning, courtly wit, theological anxiety, and the argumentative habits of sermon, debate, and legal reasoning. It also prepares later modern poetry because it proves that poetry can be difficult, compressed, intellectual, and emotionally intense at once. This is why **Eliot** saw **Donne** as useful for modernism: difficulty was not decorative obscurity, but a way of holding thought and feeling together.
 
-### John Donne, 1572–1631
+### John Donne (1572–1631)
 
 | Author Knowledge         | Content                                                                                                                                                                                                                                                                            |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9576,7 +9577,7 @@ Donne influenced modernist difficulty, religious lyric, erotic-intellectual poet
 
 **Donne matters because he makes poetry think with the body.** Sex, death, illness, theology, astronomy, and sleep do not remain separate subjects. He drags them into one chamber of argument and makes each reveal the others. **His poems are short, but they behave like intellectual storms.**
 
-### George Herbert, 1593–1633
+### George Herbert (1593–1633)
 
 | Author Knowledge             | Content                                                                                                                                                                                                                            |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9623,7 +9624,7 @@ Herbert influenced Anglican devotional poetry, modern religious lyric, shaped po
 
 [![« Corneille peint les hommes tels qu’ils devraient être. Racine les peint tels qu’ils sont. »](https://images.openai.com/static-rsc-4/LTs7082PLkd__FXcVfg3CvUhTba2QJIkZ0Ey2Se2mC9258d8l5PCvmG7GMY8OwUqx1nZCmp9qPV8ValZHe33Pis_teIf0Ezq0WGXHz7hXGlJflIYPTVUCqE6AydyWZ8OVT5lmukTlGPxrANjTPTzSz8tvW847_Thvzo9cYZ-HZ0?purpose=inline)](https://fr.aleteia.org/2017/01/31/corneille-peint-les-hommes-tels-quils-devraient-etre-racine-les-peint-tels-quils-sont/?utm_source=chatgpt.com)
 
-### French Classical Tragedy, c. 1630–1680
+### French Classical Tragedy (c. 1630–1680)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                            |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9644,7 +9645,7 @@ The tradition reaches two different peaks. **Corneille** is commonly regarded as
 **Literary Knowledge and Developmental Line:**
 The development from **Corneille** to **Racine** may be read as a movement from **heroic choice** to **tragic desire**. Corneille’s characters often face a conflict between love and honor, private feeling and public obligation, self and glory. Racine’s characters are more inwardly trapped: they know, desire, suffer, conceal, speak, and collapse under passions they cannot govern. Corneille’s tragic world asks whether human greatness can rise above emotion; Racine’s asks whether human beings can ever escape the passions that expose their weakness.
 
-### Pierre Corneille, 1606–1684
+### Pierre Corneille (1606–1684)
 
 | Author Knowledge            | Content                                                                                                                                                      |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -9663,7 +9664,7 @@ Corneille’s protagonists are not passive victims of fate in the Greek sense. T
 
 the scholarly record also show Corneille’s later afterlife through **Beckett**, who in 1931 wrote and acted in a parody of Corneille’s *Le Cid*, titled *Le Kid*, mocking the values Corneille glorified, especially love and war.  This afterlife is useful because it clarifies what Corneille represented for later modern drama: elevated love, honor, martial glory, and rhetorical nobility—the very things modernist anti-heroic theatre often distrusts.
 
-### Le Cid / The Cid, 1637
+### Le Cid / The Cid (1637)
 
 | Work Knowledge                | Content                                                                                                                                |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9710,7 +9711,7 @@ Its afterlife includes debates on classical rules, heroic tragedy, French nation
 
 **Le Cid matters because it makes honor more powerful than happiness.** Rodrigue and Chimène love each other, but love is not sovereign in Corneille’s world. The noble self must be publicly legible, and that public legibility is purchased through sacrifice. **The play’s greatness lies in making the sacrifice feel both admirable and almost inhuman.**
 
-### Jean Racine, 1639–1699
+### Jean Racine (1639–1699)
 
 | Author Knowledge                      | Content                                                                                                                                                                     |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9730,7 +9731,7 @@ His Jansenist education matters. Jansenism, as summarized in the scholarly recor
 
 Racine’s dramatic greatness lies in the economy of the trap. He does not need Shakespearean subplots or wide social registers. A few characters, one place, a short time, and an impossible chain of desire are enough. **Racine’s stage is almost empty compared with Shakespeare’s, but inwardly it is suffocating.**
 
-### Andromaque / Andromache, 1667
+### Andromaque / Andromache (1667)
 
 | Work Knowledge                | Content                                                                                                                                 |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9779,7 +9780,7 @@ The play became central to Racine’s reputation and to the French tradition of 
 
 **Andromaque matters because it shows how little plot Racine needs.** One chain of unequal love is enough to destroy everyone. **The play’s beauty is severe: no monsters, no gods on stage, no battle spectacle, only desire moving from person to person and finding no answering place.**
 
-### Phèdre / Phaedra, 1677
+### Phèdre / Phaedra (1677)
 
 | Work Knowledge                | Content                                                                                                                                                |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -9830,7 +9831,7 @@ The play shaped later European tragedy, psychoanalytic readings of forbidden des
 
 [![Molière - French Genius, Comedic Master, Playwright | Britannica](https://tse4.mm.bing.net/th/id/OIP.CnybY9VJPpRpVwS6MRxVwAHaIP?pid=Api)](https://www.britannica.com/biography/Moliere-French-dramatist/A-French-genius?utm_source=chatgpt.com)
 
-### French Classical Comedy, c. 1650–1673
+### French Classical Comedy (c. 1650–1673)
 
 | Tradition Knowledge        | Content                                                                                                                                                                                               |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9847,7 +9848,7 @@ French classical comedy shares the neoclassical world of order, clarity, decorum
 
 The special force of **Molière** is that he turns everyday social imbalance into theatrical structure. A father becomes obsessed with controlling a girl’s marriage; a bourgeois wants to imitate nobility; a religious hypocrite enters a household; a miser values money above children; fashionable women imitate refined salon language without judgment. These are not grand tragic sins, but they can destroy family order. **Molière’s comedy shows that society is not threatened only by tyrants and murderers. It is also threatened by fools with authority.**
 
-### Molière, 1622–1673
+### Molière (1622–1673)
 
 | Author Knowledge              | Content                                                                                                                                                                                            |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9867,7 +9868,7 @@ His comic characters are often not psychologically rounded in the Shakespearean 
 
 the scholarly record makes a useful larger claim: Molière’s stage characters often do not truly learn. Harpagon remains attached to his money chest; Orgon moves from blind trust in Tartuffe to excessive distrust of religious people; Alceste in *The Misanthrope* leaves society rather than accept social compromise. If anyone learns, it is often the audience.  This gives Molière’s comedy a darker edge. His plays correct by laughter, but the correction does not always occur inside the character.
 
-### Les Précieuses ridicules / The Ridiculous Précieuses, 1659
+### Les Précieuses ridicules / The Ridiculous Précieuses (1659)
 
 | Work Knowledge          | Content                                                                                                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -9905,7 +9906,7 @@ Its satire of fashionable language anticipates later comedy about salons, litera
 
 **The Ridiculous Précieuses matters because it shows Molière discovering his modern subject: not mythic vice, but socially produced absurdity.** People do not merely have desires; they learn fashionable scripts for desire, then mistake those scripts for life.
 
-### The School for Wives / L’École des femmes, 1662
+### The School for Wives / L’École des femmes (1662)
 
 | Work Knowledge       | Content                                                                                                                                                                                              |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9944,7 +9945,7 @@ The play remains central to comedy about education, gender control, marriage mar
 
 **The School for Wives matters because it makes patriarchy look ridiculous without making it harmless.** Arnolphe is funny because his plan fails; he is disturbing because the plan itself treats another human being as a manufactured object. **Molière’s comedy laughs, but it knows exactly where the violence is.**
 
-### Tartuffe / Tartuffe, first version 1664; final version 1669
+### Tartuffe / Tartuffe (first version 1664; final version 1669)
 
 | Work Knowledge          | Content                                                                                                                                                                                                                                                        |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -9989,7 +9990,7 @@ Compared with **Racine**, Molière is not tragic, but the stakes are serious: fa
 
 **Tartuffe matters because it shows that hypocrisy is most dangerous when it captures authority.** Tartuffe alone is a fraud; Tartuffe plus Orgon becomes a social disaster. **Molière’s comedy teaches that false piety succeeds not because hypocrites are brilliant, but because institutions and families often want to believe them.**
 
-### The Miser / L’Avare, 1668
+### The Miser / L’Avare (1668)
 
 | Work Knowledge       | Content                                                                                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10033,7 +10034,7 @@ Harpagon became a lasting theatrical type: the father whose love of money turns 
 
 **The Miser matters because it makes greed ridiculous without making it minor.** Harpagon’s obsession is funny because it narrows him; it is dangerous because he controls a family. **Molière’s stage shows that money becomes comic when it is treated like a lover, and destructive when it replaces love altogether.**
 
-### The Bourgeois Gentleman / Le Bourgeois gentilhomme, 1670
+### The Bourgeois Gentleman / Le Bourgeois gentilhomme (1670)
 
 | Work Knowledge        | Content                                                                                                                                                                                                                |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10086,7 +10087,7 @@ Molière’s French classical comedy differs from both **Corneille**’s heroic 
 
 [![Nicolas Boileau | French Poet, Satirist & Critic | Britannica](https://images.openai.com/static-rsc-4/AA6R4zrStVUlWSt8bRY2M_BePxRKXawc-7-KEglf_7hAEmy6qO4idjLUHEgQ4TEx4cJn20bwbDWdNE4OspJTMQXqMxTgqWTiqQZev1OGiJ6XrBiMX82z17VU0IA0LDcPjA8yx638M7zWP65hxQAXeQ0G8VKpUPJiamsmv18VFuw?purpose=inline)](https://www.britannica.com/biography/Nicolas-Boileau?utm_source=chatgpt.com)
 
-### French Classical Literary Theory, c. 1670–1700
+### French Classical Literary Theory (c. 1670–1700)
 
 | Theory Knowledge         | Content                                                                                                                                                                                            |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10104,7 +10105,7 @@ This theory should not be reduced to “conservatism” or “mechanical rules.�
 
 **French classicism therefore turns literary judgment into a discipline of limits.** The writer is not free because he ignores form; he becomes free by mastering form so completely that order appears natural.
 
-### Nicolas Boileau, 1636–1711
+### Nicolas Boileau (1636–1711)
 
 | Author Knowledge             | Content                                                                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10123,7 +10124,7 @@ His importance is also retrospective. **Calvino**’s discussion of **Queneau** 
 
 Boileau’s theory belongs to a culture that believes literature can be judged by standards. Genius matters, but genius must not be confused with disorder. Imagination matters, but it must be governed by reason. Style matters, but style must be clear. **Boileau’s classicism is not anti-art; it is anti-excess. It fears obscurity, bombast, incoherence, mixed decorum, and undisciplined passion.**
 
-### L’Art poétique / The Art of Poetry, 1674
+### L’Art poétique / The Art of Poetry (1674)
 
 | Work Knowledge       | Content                                                                                                                                                |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -10171,7 +10172,7 @@ Boileau influenced **Dryden**, **Pope**, **Johnson**, neoclassical criticism, sc
 
 **The Art of Poetry matters because it turns literary taste into a public discipline.** Boileau does not ask the poet to confess himself or break inherited form. He asks the poet to judge, select, clarify, and obey the nature of the genre. **His classicism may feel restrictive now, but its historical force lies in making literature answer to standards larger than personal impulse.**
 
-### The Three Unities, 17th-century French classical formulation
+### The Three Unities (17th-century French classical formulation)
 
 | Theory Knowledge           | Content                                                                                                                                                                                                                                                                                         |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10229,7 +10230,7 @@ The three unities influenced neoclassical drama, eighteenth-century criticism, s
 ## Enlightenment Novel (1719-1800)
 
 
-### English Realist Novel, c. 1719–1740
+### English Realist Novel (c. 1719–1740)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                         |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10248,7 +10249,7 @@ the scholarly record stresses that the early novel was still an unstable and sus
 **Literary Knowledge and Developmental Line:**
 The early English realist novel grows from several neighboring forms: spiritual autobiography, travel writing, criminal biography, conduct literature, economic case history, and picaresque narrative. Defoe does not fully separate these forms. *Robinson Crusoe* is both shipwreck adventure and providential confession; *Moll Flanders* is both criminal autobiography and spiritual repentance narrative. This unstable mixture is exactly why Defoe matters. The modern novel is not born pure; it emerges by absorbing practical, moral, commercial, and documentary forms.
 
-### Daniel Defoe, 1660–1731
+### Daniel Defoe (1660–1731)
 
 | Author Knowledge         | Content                                                                                                                                                       |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10267,7 +10268,7 @@ This late beginning matters. Defoe did not arrive at fiction through court poetr
 
 the sources repeatedly emphasize the double structure of his novels: economic and spiritual. His characters want money, security, mobility, and independence; at the same time, their lives are interpreted through providence, repentance, sin, temptation, and redemption.  This double logic makes Defoe central to the rise of the modern novel. The modern individual appears as both economic agent and morally accountable soul.
 
-### Robinson Crusoe, 1719
+### Robinson Crusoe (1719)
 
 | Work Knowledge        | Content                                                                                                                                                                                                 |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10316,7 +10317,7 @@ The novel influenced children’s literature, survival narratives, colonial adve
 
 **Robinson Crusoe matters because it makes modern individuality look both heroic and troubling.** Crusoe survives because he works, calculates, adapts, and believes. But the same qualities that make him admirable also make him colonial, possessive, and spiritually anxious. **The island is not only a paradise of self-reliance; it is the laboratory where Protestant providence, capitalism, and empire learn to speak in the first person.**
 
-### Moll Flanders, 1722
+### Moll Flanders (1722)
 
 | Work Knowledge          | Content                                                                                                                                                     |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10366,7 +10367,7 @@ The novel influences criminal fiction, female survival narratives, picaresque fi
 **Moll Flanders matters because it gives early realism a female body under economic pressure.** Moll is not a saint, not a romantic heroine, and not merely a criminal. She is a survivor who learns the world by moving through it, paying for it, stealing from it, marrying into it, and narrating it after the fact. Defoe’s disturbing achievement is that her repentance and her success never fully separate. **The moral account and the money account remain written on the same page.**
 
 
-### Samuel Richardson, 1689–1761
+### Samuel Richardson (1689–1761)
 
 | Author Knowledge         | Content                                                                                                                                                                                                                           |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10385,7 +10386,7 @@ scholarly accounts explains the formal problem Richardson solved. A retrospectiv
 
 Richardson’s fiction repeatedly centers on young women under sexual and social pressure. The same basic structure appears in both *Pamela* and *Clarissa*: a male pursuer threatens a woman’s virtue; the woman’s resistance becomes the test of character, society, and moral order. But the outcomes differ radically. *Pamela* ends in marriage and social elevation. *Clarissa* ends in violation, spiritual withdrawal, and death. That contrast makes Richardson’s development crucial: he moves from morally rewarded virtue to tragic inwardness.
 
-### Pamela; or, Virtue Rewarded, 1740
+### Pamela; or, Virtue Rewarded (1740)
 
 | Work Knowledge               | Content                                                                                                                                                                        |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -10432,7 +10433,7 @@ The novel influenced sentimental fiction, conduct literature, domestic fiction, 
 
 **Pamela matters because it turns the household into a moral battlefield.** Its limitation is obvious: the reward for virtue is marriage to the very man who endangered it. But that limitation is also historically revealing. **The novel shows an early bourgeois world trying to imagine female moral power inside structures of class and sexual dependency that it cannot fully criticize.**
 
-### Clarissa; or, The History of a Young Lady, 1747–1748
+### Clarissa; or, The History of a Young Lady (1747–1748)
 
 | Work Knowledge       | Content                                                                                                                                             |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10485,7 +10486,7 @@ The novel influenced sentimental fiction, epistolary fiction, psychological real
 
 **Clarissa matters because it gives the early English novel tragic inwardness.** Defoe shows how a person survives the world; Richardson shows how a person may refuse to let the world define the soul. **The result is severe and sometimes almost unbearable: a novel where virtue is not rewarded by happiness, but by an inward integrity that can survive everything except the body’s life.**
 
-### Henry Fielding, 1707–1754
+### Henry Fielding (1707–1754)
 
 | Author Knowledge           | Content                                                                                                                                                                                                           |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10509,7 +10510,7 @@ Fielding’s career begins as parody of **Richardson**. *Shamela* mocks *Pamela*
 
 **Fielding’s place in the English novel is double.** One line of criticism, represented by **F. R. Leavis**, values him historically because he helps open the central English fictional tradition leading toward **Jane Austen**, though Leavis sharply limits his depth and sees *Joseph Andrews* as perhaps the work in which his gifts appear most advantageously.  Another line, represented in Bloom's discussion, sees *Tom Jones* as a “comic Odyssey,” ancestor of **Smollett**, **Dickens**, and **Joyce**’s *Ulysses*. 
 
-### Joseph Andrews, 1742
+### Joseph Andrews (1742)
 
 | Work Knowledge         | Content                                                                                                                                                          |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10553,7 +10554,7 @@ Its mixture of parody, road fiction, narratorly commentary, good nature, and com
 
 **Joseph Andrews matters because it turns parody into a new form.** Fielding begins by laughing at Pamela’s virtue, but discovers something larger: prose fiction can move through the world, laugh at hypocrisy, preserve goodness, and transform epic wandering into comic social knowledge.
 
-### Tom Jones / The History of Tom Jones, a Foundling, 1749
+### Tom Jones / The History of Tom Jones, a Foundling (1749)
 
 | Work Knowledge         | Content                                                                                                                                                       |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10601,7 +10602,7 @@ the scholarly record presents *Tom Jones* and *Clarissa* as rival works that tog
 
 **Tom Jones matters because it makes comic fiction intellectually serious without abandoning pleasure.** Fielding’s world is full of appetite, sex, movement, stupidity, hypocrisy, warmth, and good nature. It is not psychologically deep in Richardson’s way, but it is wise about how people judge, misjudge, forgive, and live together. **Its realism is not the realism of inward confession; it is the realism of the road, the table, the bedchamber, the courtroom, the rumor, and the narrator’s amused intelligence.**
 
-### Amelia, 1751
+### Amelia (1751)
 
 | Work Knowledge       | Content                                                                                                                                                                                             |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10650,7 +10651,7 @@ Its importance lies less in direct fame than in the path it suggests: the Englis
 
 [![NPG 278; Jonathan Swift - Portrait - National Portrait Gallery](https://tse1.mm.bing.net/th/id/OIP.8AX6MoTpGy7zVCxjLBXlRAHaJa?cb=thfvnextfalcon\&pid=Api)](https://www.npg.org.uk/collections/search/portrait/mw06171/Jonathan-Swift?utm_source=chatgpt.com)
 
-### English Satirical Literature, c. 1660–1730
+### English Satirical Literature (c. 1660–1730)
 
 | Tradition Knowledge    | Content                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10666,7 +10667,7 @@ English satire after the Restoration and into the early 18th century belongs to 
 
 **Swift** and **Gay** both attack the respectable surface of society by changing scale. Swift sends a traveller to tiny people, giants, floating scientists, and rational horses; Gay places thieves, prostitutes, highwaymen, lawyers, and politicians inside an opera-like form. One displaces England into impossible voyages; the other displaces London politics into the criminal underworld. **Both methods do the same satirical work: they make ordinary society strange enough to become visible.**
 
-### Jonathan Swift, 1667–1745
+### Jonathan Swift (1667–1745)
 
 | Author Knowledge                | Content                                                                                                                                                                                                                              |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -10684,7 +10685,7 @@ Swift’s satire is not loose mockery. It is precise. In *A Modest Proposal*, fo
 
 **This is the core of Swift’s method: he makes reason speak in a voice so orderly that its inhumanity becomes impossible to miss.** The problem is not irrationality alone. **The problem is reason without moral revulsion.**
 
-### Gulliver’s Travels, 1726
+### Gulliver’s Travels (1726)
 
 | Work Knowledge       | Content                                                                                                                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -10732,7 +10733,7 @@ The work influenced anti-utopian fiction, science fiction, children’s adaptati
 
 **Gulliver’s Travels matters because it makes human self-esteem unsafe.** The book begins as amusing travel fantasy, but ends in species disgust. Swift’s satire does not leave the reader comfortably superior to Gulliver, Lilliputians, projectors, or Yahoos. It asks whether civilization itself is only a costume worn over appetite, cruelty, vanity, and filth. **Few works in world literature laugh so brilliantly while making laughter feel so dangerous.**
 
-### John Gay, 1685–1732
+### John Gay (1685–1732)
 
 | Author Knowledge     | Content                                                                                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10750,7 +10751,7 @@ Britannica notes that **Gay**’s *The Beggar’s Opera* was produced at **Linco
 
 Gay’s satirical force comes from analogy. Criminals sing like opera characters; politicians behave like criminals; respectable society enjoys watching its own corruption displaced into low life. **The audience laughs at thieves, but the joke turns back: the thieves are not outside the social order. They are its simplified image.**
 
-### The Beggar’s Opera, 1728
+### The Beggar’s Opera (1728)
 
 | Work Knowledge                | Content                                                                                                                                          |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -10797,7 +10798,7 @@ Its afterlife is unusually important because it leads directly to **Brecht** and
 **The Beggar’s Opera matters because it makes corruption sing.** Gay’s criminals do not stand outside respectable society; they reveal its structure. The highwayman, the jailer, the informer, the father selling marriage, the politician taking profit, and the audience demanding a happy ending all belong to one satirical economy. **The play’s laughter is musical, but its diagnosis is severe: civilization may simply be crime with better manners.**
 
 
-### English Sentimental Literature, c. 1750–1770
+### English Sentimental Literature (c. 1750–1770)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                                                                                    |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10817,7 +10818,7 @@ But in **Sterne**, sentiment is never pure. It is tender and comic, sincere and 
 **Literary Knowledge and Developmental Line:**
 The sentimental novel does not simply replace satire with kindness. It turns feeling into a form of knowledge. Yet Sterne complicates that project. In *A Sentimental Journey*, sympathy appears through travel, encounters, and small scenes. In *Tristram Shandy*, feeling is dispersed through digression, bodily accident, family eccentricity, typographical experiment, and the movement of consciousness itself. **Sterne is therefore both a sentimental writer and an anti-systematic formal experimenter. He belongs to sensibility, but he also makes sensibility strange.**
 
-### Laurence Sterne, 1713–1768
+### Laurence Sterne (1713–1768)
 
 | Author Knowledge            | Content                                                                                                                                                           |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10835,7 +10836,7 @@ This gives Sterne’s fiction a strange double form. It is anarchic and providen
 
 Sterne also writes under bodily pressure. scholarly accounts notes his advanced tuberculosis, or consumption, and remarks that each new installment of *Tristram Shandy* was one more victory in the author’s race against death.  **This gives his comic looseness a mortal background. Digression is not only play; it is also a way of keeping the machine of life going.**
 
-### A Sentimental Journey through France and Italy, 1768
+### A Sentimental Journey through France and Italy (1768)
 
 | Work Knowledge              | Content                                                                                                                                                                         |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10883,7 +10884,7 @@ The book influenced sentimental fiction, travel writing, the literature of sympa
 
 **A Sentimental Journey matters because it makes travel inward without making it solitary.** Yorick moves through the world by being touched, embarrassed, attracted, delayed, and made uneasy by others. Sterne’s art lies in making small contacts bear moral weight. **A hand held too long, a bird in a cage, a missing key, a poor stranger, a moment of pity—these become the true geography of the journey.**
 
-### The Life and Opinions of Tristram Shandy, Gentleman, 1759–1767
+### The Life and Opinions of Tristram Shandy, Gentleman (1759–1767)
 
 | Work Knowledge        | Content                                                                                                                                                          |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10947,7 +10948,7 @@ English sentimental literature is often remembered through tears, sympathy, and 
 
 [![Horace Walpole at 300 | Celebrating Horace Walpole\`s 300th Anniversary: Collections at the Lewis Walpole Library](https://images.openai.com/static-rsc-4/FzYmVMSDskPAwx33WqgMiotTM_FmiaAyKaWvBlc9cboAJ9A6A68UnRPh77fmMNoeDryCo42DK_EvgAsXW7Pcmk9HdIdt-9talshWyOJGwbBdz1e0Z7hV7ThtCwSxi-e2D42_-dSRNX52Y6-0BB6qdpuod0R2wHogTBHSjS2rg78?purpose=inline)](https://campuspress.yale.edu/walpole300/?utm_source=chatgpt.com)
 
-### Gothic Novel, c. 1764–1820
+### Gothic Novel (c. 1764–1820)
 
 | Tradition Knowledge     | Content                                                                                                                                                                                                                                                              |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10967,7 +10968,7 @@ The term `Gothic` originally evokes medieval and pseudo-medieval architecture: p
 **Literary Knowledge and Developmental Line:**
 The Gothic begins with **Walpole**’s openly supernatural machinery: gigantic helmet, walking portrait, prophecy, haunted castle, dynastic usurpation. Then **Radcliffe** refines the form by delaying explanation: everything appears supernatural, but the ending often reveals natural causes. scholarly accounts calls this `Gothic expliqué`, the explained Gothic, and stresses that Radcliffe revived the genre by making the final natural explanation itself feel fantastic.  Later writers transform the Gothic further: **Austen** ironizes it in *Northanger Abbey*; **Mary Shelley** moves natural explanation to the beginning of *Frankenstein*, turning Gothic terror toward science fiction; **Lewis**, **Maturin**, the **Brontës**, **Poe**, **Stoker**, and **Stevenson** make it darker, psychological, demonic, or modern.
 
-### Horace Walpole, 1717–1797
+### Horace Walpole (1717–1797)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                                                |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10986,7 +10987,7 @@ Britannica states that *The Castle of Otranto* was published under a pseudonym i
 
 Walpole’s importance lies less in psychological subtlety than in generic invention. He gives later writers a usable kit: haunted architecture, persecuted heroine, tyrannical patriarch, ancestral crime, supernatural sign, hidden identity, secret passage, and atmosphere of dread. **The Gothic novel begins not by becoming deep, but by becoming spatial. Fear needs a place to happen, and Walpole gives it the castle.**
 
-### The Castle of Otranto, 1764
+### The Castle of Otranto (1764)
 
 | Work Knowledge       | Content                                                                                                                                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11033,7 +11034,7 @@ The novel shaped Gothic fiction, horror fiction, haunted-house narratives, medie
 
 **The Castle of Otranto matters because it makes fear architectural.** Walpole’s castle is not merely a picturesque ruin; it is a pressure chamber where family, sexuality, power, and the past become monstrous. **The novel’s improbability is precisely its historical importance: it shows that fiction can break realism and still create a genre.**
 
-### Ann Radcliffe, 1764–1823
+### Ann Radcliffe (1764–1823)
 
 | Author Knowledge      | Content                                                                                                                                                                                 |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11052,7 +11053,7 @@ This is the difference between **horror** and **terror** often associated with R
 
 Britannica describes *The Mysteries of Udolpho* as one of the most famous English Gothic novels and summarizes its heroine **Emily St. Aubert** as an orphan subjected to cruelty, threatened with loss of fortune, and imprisoned in castles before eventual release and union with her lover.  That formula is central to Radcliffe’s broader fiction: female vulnerability, property danger, male tyranny, architectural confinement, and eventual restoration.
 
-### Radcliffe’s Gothic Novels, 1789–1797
+### Radcliffe’s Gothic Novels (1789–1797)
 
 | Work Knowledge           | Content                                                                                                                                                                 |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11111,7 +11112,7 @@ The Gothic novel changes the eighteenth-century novel by reintroducing what real
 **The Gothic novel matters because it makes the past active.** A castle is never just old stone; it is inheritance, violence, secrecy, and desire made spatial. **The genre’s afterlife is large because modernity never stops producing its own haunted houses: families, nations, laboratories, cities, archives, and minds in which something buried keeps returning.**
 
 
-### French Enlightenment Literature, c. 1720–1760
+### French Enlightenment Literature (c. 1720–1760)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11127,7 +11128,7 @@ French Enlightenment literature does not simply “express ideas” in decorativ
 
 The central gesture is displacement. A Persian sees Paris; a young European travels through the world; a utopia appears and is then abandoned; a philosophical teacher explains suffering in a tone so absurdly confident that the explanation becomes morally obscene. **Enlightenment fiction often proceeds by moving the reader away from home so that home itself can be judged.**
 
-### Montesquieu, 1689–1755
+### Montesquieu (1689–1755)
 
 | Author Knowledge                    | Content                                                                                                                                                                                                                                                                                     |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11144,7 +11145,7 @@ The central gesture is displacement. A Persian sees Paris; a young European trav
 
 This method is not neutral anthropology. It is satire. The foreign eye makes French society ridiculous by taking its assumptions literally. **Montesquieu’s fiction teaches a critical habit: what a society calls nature may be only custom; what it calls reason may be habit with prestige.**
 
-### Persian Letters / Lettres persanes, 1721
+### Persian Letters / Lettres persanes (1721)
 
 | Work Knowledge          | Content                                                                                                                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11194,7 +11195,7 @@ The book influenced epistolary fiction, philosophical satire, comparative anthro
 
 **Persian Letters matters because it teaches the reader to estrange the normal.** France becomes strange; Persia becomes unstable; male authority becomes visible as violence; religion and monarchy become social systems rather than sacred inevitabilities. **Montesquieu’s great literary discovery is that comparison can be a form of liberation.**
 
-### Voltaire, 1694–1778
+### Voltaire (1694–1778)
 
 | Author Knowledge          | Content                                                                                                                                                                                                                                                                                       |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11214,7 +11215,7 @@ His exile in England also matters. In England he encountered religious toleratio
 
 **Voltaire’s satire is therefore cosmopolitan.** It is French in style, but it absorbs English political liberty, English fiction, travel satire, philosophical debate, and European scandal. **His Enlightenment is not abstract optimism; it is critical intelligence sharpened by exile.**
 
-### Candide; or, Optimism, 1759
+### Candide; or, Optimism (1759)
 
 | Work Knowledge           | Content                                                                                                                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11272,7 +11273,7 @@ The book influenced philosophical fiction, anti-utopian satire, black comedy, mo
 
 [![File Rousseau (painted portrait).jpg](https://tse1.mm.bing.net/th/id/OIP.wjAPfQ0dnvhIVlW_NkMClwHaKT?cb=thfc1falcon\&pid=Api)](https://commons.wikimedia.org/wiki/File%3AJean-Jacques_Rousseau_%28painted_portrait%29.jpg?utm_source=chatgpt.com)
 
-### Jean-Jacques Rousseau, 1712–1778
+### Jean-Jacques Rousseau (1712–1778)
 
 | Author Knowledge              | Content                                                                                                                                                                                                                                                                          |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11290,7 +11291,7 @@ Rousseau is often simplified as a believer in the “noble savage,” but that f
 
 **Rousseau’s literary importance lies in making sincerity a historical force.** After him, the question “What is true?” increasingly becomes inseparable from “What is authentic?” and “What has society done to the self?”
 
-### Julie, or the New Heloise / Julie, ou la nouvelle Héloïse, 1761
+### Julie, or the New Heloise / Julie, ou la nouvelle Héloïse (1761)
 
 | Work Knowledge       | Content                                                                                                                                                                              |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -11337,7 +11338,7 @@ Its influence reaches German sentimental and Romantic fiction, especially **Goet
 
 **Julie matters because it makes feeling philosophically serious.** Rousseau does not treat love as decorative plot material. He asks whether desire can become sincerity, whether sincerity can survive society, and whether domestic virtue can redeem passion without falsifying it. **The novel’s enormous eighteenth-century success shows that readers were ready for a new kind of literary authority: the authority of feeling.**
 
-### The Social Contract / Du contrat social, 1762
+### The Social Contract / Du contrat social (1762)
 
 | Work Knowledge          | Content                                                                                                                                                                                                                    |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11381,7 +11382,7 @@ Its afterlife includes the French Revolution, modern republicanism, democratic t
 
 **The Social Contract matters because it makes freedom a collective problem.** Rousseau’s deepest political question is not how an individual can escape society, but how social life can be reorganized so that obedience need not be slavery. **That question is still alive because the answer is unstable: the general will can mean democratic self-legislation, but it can also tempt politics toward forcing unity in the name of freedom.**
 
-### Denis Diderot, 1713–1784
+### Denis Diderot (1713–1784)
 
 | Author Knowledge              | Content                                                                                                                                                                                                            |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -11399,7 +11400,7 @@ the scholarly record describes Diderot as editor-in-chief of the great *Encyclop
 
 Diderot’s fiction is especially important because it anticipates modern and even postmodern narrative habits. He interrupts stories, mocks plot, talks to the reader, lets servants outthink masters, and treats storytelling as an artificial but necessary human activity. **If Rousseau makes sincerity sacred, Diderot makes instability productive.**
 
-### Jacques the Fatalist and His Master / Jacques le fataliste et son maître, written c. 1770s; published 1796
+### Jacques the Fatalist and His Master / Jacques le fataliste et son maître (written c. 1770s; published 1796)
 
 | Work Knowledge               | Content                                                                                                                                                                                              |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11454,7 +11455,7 @@ The novel anticipates modern metafiction, anti-novel forms, philosophical fictio
 
 [![Pierre Choderlos de Laclos – Store norske leksikon](https://tse3.mm.bing.net/th/id/OIP.8-KH8i3SzvoRMfWodVwyWAHaJ4?r=0\&cb=thfc1falcon\&pid=Api)](https://snl.no/Pierre_Choderlos_de_Laclos?utm_source=chatgpt.com)
 
-### French Epistolary and Psychological Novel, c. 1730–1782
+### French Epistolary and Psychological Novel (c. 1730–1782)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                       |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11473,7 +11474,7 @@ French epistolary and psychological fiction develops a different kind of realism
 **Literary Knowledge and Developmental Line:**
 This tradition can be read as a sequence: **La Fayette** makes love a problem of courtly self-command and psychological secrecy; **Prévost** makes passion a force of repeated fall, narrative self-defense, and tragic attachment; **Laclos** makes desire a calculated social technology. The French novel here becomes less a mirror of everyday society than an anatomy of motives. A confession may be sincere but unreliable; a letter may appear intimate but function as attack; a love story may be a moral tale on the surface and a study of obsession underneath.
 
-### Abbé Prévost, 1697–1763
+### Abbé Prévost (1697–1763)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                                      |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -11491,7 +11492,7 @@ His lasting literary importance depends on one work. scholarly accounts says tha
 
 **Prévost’s importance lies in the friction between moral frame and emotional force.** The preface may call the story a warning against passion, but the novel gives passion a tragic fascination that exceeds its stated moral purpose.
 
-### Manon Lescaut / Histoire du chevalier des Grieux et de Manon Lescaut, 1731
+### Manon Lescaut / Histoire du chevalier des Grieux et de Manon Lescaut (1731)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11542,7 +11543,7 @@ The novel influenced sentimental fiction, Romantic passion narratives, opera, an
 
 **Manon Lescaut matters because it makes passion morally unreadable.** Des Grieux insists on love; society sees scandal; moralists see warning; later readers see tragic intensity. The novel’s greatness lies in refusing to let any one frame control the experience. **Manon is both object of desire and unstable literary force, and des Grieux’s confession is both self-accusation and self-defense.**
 
-### Pierre Choderlos de Laclos, 1741–1803
+### Pierre Choderlos de Laclos (1741–1803)
 
 | Author Knowledge            | Content                                                                                                                                                                                                                                |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11561,7 +11562,7 @@ This military metaphor is not ornamental. It describes the novel’s structure. 
 
 **Laclos therefore makes the epistolary novel colder and more modern.** Writing no longer guarantees inward access. **It becomes a medium of power.**
 
-### Dangerous Liaisons / Les Liaisons dangereuses, 1782
+### Dangerous Liaisons / Les Liaisons dangereuses (1782)
 
 | Work Knowledge       | Content                                                                                                                                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11628,7 +11629,7 @@ The novel influenced psychological fiction, epistolary narrative, seduction plot
 
 [![Joseph Stieler, Portrait of Johann Wolfgang von Goethe (1828) | German ...](https://tse1.mm.bing.net/th/id/OIP.icaXakp4qJFwJGYd2zjxQwHaJH?cb=thfvnextfalcon\&pid=Api)](https://germanhistorydocs.org/en/from-vormaerz-to-prussian-dominance-1815-1866/johann-wolfgang-von-goethe-1828?utm_source=chatgpt.com)
 
-### German Enlightenment and Sturm und Drang, c. 1760–1785
+### German Enlightenment and Sturm und Drang (c. 1760–1785)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                           |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11646,7 +11647,7 @@ The movement’s theatrical center was rebellion. Its dramatists wanted figures 
 
 **The decisive shift is not merely “emotion instead of reason.” It is the discovery that the modern self may become too intense for the social forms available to it.** Werther cannot live inside ordinary marriage, office, and friendship; Karl Moor cannot reconcile moral indignation with law. **Both figures are produced by the same crisis: the soul demands totality, but history answers with compromise.**
 
-### Goethe and Weimar Classicism, 1749–1832
+### Goethe and Weimar Classicism (1749–1832)
 
 | Author Knowledge               | Content                                                                                                                                                                                  |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11665,7 +11666,7 @@ His later career moves toward a different ideal: formation, discipline, scientif
 
 **Goethe’s literary life can be read as a struggle with intensity.** Werther burns; Faust strives; Wilhelm Meister develops; the later Goethe seeks form. **This is why Goethe becomes more than a Sturm und Drang author: he turns emotional excess into a lifelong problem of Bildung, artistic discipline, and human development.**
 
-### The Sorrows of Young Werther / Die Leiden des jungen Werthers, 1774
+### The Sorrows of Young Werther / Die Leiden des jungen Werthers (1774)
 
 | Work Knowledge       | Content                                                                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -11723,7 +11724,7 @@ The novel influenced European Romanticism, sentimental fiction, suicide discours
 
 **Werther matters because it makes feeling both beautiful and dangerous.** Werther’s language gives suffering lyrical dignity, but Goethe’s structure shows the danger of a self that turns the world into material for its own intensity. Lotte is not enough as a person because Werther needs her as an absolute. **That is why the novel remains sharper than a sentimental tragedy: it reveals how worship can become possession, and how passion can turn suffering into an aesthetic identity.**
 
-### Schiller and Sturm und Drang, 1759–1805
+### Schiller and Sturm und Drang (1759–1805)
 
 | Author Knowledge            | Content                                                                                                                                                                               |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11742,7 +11743,7 @@ The play belongs to `Sturm und Drang` because it rejects decorum and restraint. 
 
 **Schiller’s early drama asks whether the world is so corrupt that only lawless revolt can answer it.** But once revolt leaves law behind, it must confront its own corruption. **This is the tragic trap of *The Robbers:* a rebel may begin by opposing injustice and end by creating another form of terror.**
 
-### The Robbers / Die Räuber, published 1781; performed 1782
+### The Robbers / Die Räuber (published 1781; performed 1782)
 
 | Work Knowledge                | Content                                                                                                                                        |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11806,7 +11807,7 @@ The play influenced German Romantic rebel imagery, revolutionary drama, outlaw n
 
 ## Rights Atlantic (1780-1800)
 
-### American Founding-Era Writing, c. 1750–1790
+### American Founding-Era Writing (c. 1750–1790)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                        |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11823,7 +11824,7 @@ This matters for the larger world-literary sequence. After European Enlightenmen
 
 **The founding prose tradition gives American literature one of its lasting tensions: freedom is imagined as self-making, but self-making is never purely private.** It depends on print, credit, public reputation, labor, association, law, and collective political struggle.
 
-### Benjamin Franklin, 1706–1790
+### Benjamin Franklin (1706–1790)
 
 | Author Knowledge             | Content                                                                                                                                                                                      |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11842,7 +11843,7 @@ His writing is therefore not separate from his life. Printing, reading, debating
 
 **Franklin’s literary importance lies in the way he turns life into method.** He does not present the self as mystery, wound, or romantic depth. **He presents it as something to be trained, corrected, published, and made useful.**
 
-### The Autobiography, written 1771–1790; published posthumously
+### The Autobiography (written 1771–1790; published posthumously)
 
 | Work Knowledge       | Content                                                                                                                                                                |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11892,7 +11893,7 @@ Franklin’s influence runs through American self-help, success narratives, civi
 
 **The Autobiography matters because it gives America one of its earliest scripts for freedom: not freedom as aristocratic leisure or mystical inwardness, but freedom as the capacity to make a life through discipline and public usefulness.** The difficulty is that this script is both empowering and narrowing. **It teaches energy, but it can understate dependence, luck, exclusion, and failure.**
 
-### Thomas Paine, 1737–1809
+### Thomas Paine (1737–1809)
 
 | Author Knowledge        | Content                                                                                                                                                                                         |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11910,7 +11911,7 @@ His importance lies in compression. Paine makes monarchy look irrational, heredi
 
 **Paine’s prose works by stripping away the aura of old power.** Kings, aristocrats, and empires survive partly because they look ancient, sacred, and inevitable. **Paine’s sentences make them look artificial, ridiculous, and removable.**
 
-### Revolutionary Writing, especially Common Sense and The American Crisis, 1776–1783
+### Revolutionary Writing, especially Common Sense and The American Crisis (1776–1783)
 
 | Work Knowledge        | Content                                                                                                                                                                              |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -11963,7 +11964,7 @@ Paine influenced democratic radicalism, anti-monarchical rhetoric, popular polit
 **American founding-era writing matters because it defines literature as public force.** The American literary self begins not in solitude alone, but in print, labor, argument, reputation, and revolution. Franklin makes the individual life into a project. **Paine makes political freedom into a sentence that can circulate.**
 
 
-### Early Feminist Writing, c. 1790–1800
+### Early Feminist Writing (c. 1790–1800)
 
 | Tradition Knowledge            | Content                                                                                                                                                                            |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11978,7 +11979,7 @@ Early feminist writing does not begin from private grievance alone. It grows fro
 
 scholarly accounts makes the central argument of **Mary Wollstonecraft** directly: women are not naturally or genetically inferior to men; they are made inferior by being denied education and by social circumstances that deform their capacities. It also emphasizes that *A Vindication of the Rights of Woman* matters as literature because it is rhetorically powerful and because it opens space for women to become serious authors in the literary field. 
 
-### Mary Wollstonecraft, 1759–1797
+### Mary Wollstonecraft (1759–1797)
 
 | Author Knowledge                   | Content                                                                                                                                                                                                                                                                      |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11996,7 +11997,7 @@ The key is education. The British Library summary of the work captures the centr
 
 **Wollstonecraft’s radicalism lies in reversing the cause.** Men say women are weak, frivolous, sentimental, and irrational by nature; she answers that these are the effects of social training. **The supposed proof of inferiority is actually evidence of oppression.**
 
-### A Vindication of the Rights of Woman, 1792
+### A Vindication of the Rights of Woman (1792)
 
 | Work Knowledge       | Content                                                                                                                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12044,7 +12045,7 @@ Wollstonecraft’s influence runs through nineteenth-century women’s education
 
 **The Vindication matters because it changes the question from “Are women naturally inferior?” to “What kind of society would need women to be made inferior?” Wollstonecraft’s answer is severe: a society that educates women for dependence cannot then use dependence as evidence against them.** Her feminism begins as an argument for women, but it becomes a critique of civilization’s bad faith.
 
-### Slave Narrative and Atlantic Literature, c. 1780–1800
+### Slave Narrative and Atlantic Literature (c. 1780–1800)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                    |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12059,7 +12060,7 @@ Slave narrative belongs to literature, history, law, religion, and political str
 
 scholarly accounts treats **Equiano** as one of the rare writers who helped change history: he became a leading abolitionist not merely because he had suffered, but because he could articulate suffering with unusual eloquence and literary skill. It also identifies *The Interesting Narrative* as published in 1789 and as arguably the first important slave narrative in English literature. 
 
-### Olaudah Equiano, c. 1745–1797
+### Olaudah Equiano (c. 1745–1797)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                                                                                                 |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12078,7 +12079,7 @@ The British Library describes *The Interesting Narrative* as one of the first bo
 
 **Equiano’s literary force comes from the way he joins movement and judgment.** He is carried, sold, renamed, shipped, trained, employed, baptized, cheated, threatened, and eventually freed; but in writing the story, he becomes the one who orders the movement and judges the system that moved him.
 
-### The Interesting Narrative of the Life of Olaudah Equiano, 1789
+### The Interesting Narrative of the Life of Olaudah Equiano (1789)
 
 | Work Knowledge         | Content                                                                                                                                                                                                 |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12142,7 +12143,7 @@ Equiano’s narrative shaped abolitionist print culture, Black British writing, 
 
 ## Romantic Nations (1770-1865)
 
-### German Romanticism and Weimar Classicism, c. 1786–1850
+### German Romanticism and Weimar Classicism (c. 1786–1850)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                                         |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12158,7 +12159,7 @@ German Romanticism and Weimar Classicism should not be treated as the same movem
 
 The broad literary shift is from **rebellious genius** to **reflective form**. *Werther* and *The Robbers* had shown what happens when feeling and freedom erupt against society. *Faust*, *On the Aesthetic Education of Man*, Schiller’s mature drama, and Heine’s poetry show the next problem: how such inward energy can be shaped, educated, mocked, or made historically conscious. The canon list places **Goethe**’s *Faust*, autobiographical writings, *Elective Affinities*, *Werther*, poems, *Wilhelm Meister*, *Italian Journey*, and *West-Eastern Divan* alongside **Schiller**’s dramas and aesthetic writings, then later places **Heine**’s *Complete Poems* in the post-Goethean German sequence.  
 
-### Johann Wolfgang von Goethe, 1749–1832
+### Johann Wolfgang von Goethe (1749–1832)
 
 | Author Knowledge           | Content                                                                                                                                                                                                        |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12176,7 +12177,7 @@ Goethe’s centrality is not only national. His late concept of `Weltliteratur`,
 
 **Goethe’s importance lies in his refusal to remain inside one literary function.** He is lyric poet, dramatist, novelist, critic, scientist, cultural statesman, and self-curator. **German literature after him must either continue him, react against him, or escape his shadow.**
 
-### Faust, Part One 1808; Part Two 1832
+### Faust (Part One 1808; Part Two 1832)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                              |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12236,7 +12237,7 @@ The Faust myth becomes one of modernity’s major myths: scholar, scientist, art
 
 **Faust matters because it makes striving magnificent and dangerous.** Goethe does not merely condemn desire, nor does he simply glorify it. Faust’s refusal to stop creates knowledge, poetry, erotic catastrophe, cultural synthesis, social project, and violence. **The drama remains difficult because modernity itself is Faustian: it wants more life, more knowledge, more production, more transformation, and only afterward asks what was destroyed in the process.**
 
-### Goethe’s Concept of World Literature / Weltliteratur, c. 1820s
+### Goethe’s Concept of World Literature / Weltliteratur (c. 1820s)
 
 | Concept Knowledge       | Content                                                                                                                                                                                                                                                                                                     |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12278,7 +12279,7 @@ The concept influences comparative literature, translation studies, global canon
 
 **Goethe’s world-literature idea matters because it changes the scale of reading.** A work is no longer only German, French, Chinese, Persian, English, or Greek; it becomes part of a moving system of translation, imitation, contrast, and reception. The point is not to dissolve difference into a vague humanity. **The point is to read difference in a larger field, where every literature becomes both itself and one participant in a wider conversation.**
 
-### Friedrich Schiller, 1759–1805
+### Friedrich Schiller (1759–1805)
 
 | Author Knowledge           | Content                                                                                                                                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12295,7 +12296,7 @@ Britannica notes that *Letters on the Aesthetic Education of Man* was inspired b
 
 **Schiller’s importance lies in joining theatre and philosophy.** He does not write aesthetics as decoration around literature. **He asks why art may be necessary for political life at all.**
 
-### Aesthetic Education and Drama, c. 1780s–1805
+### Aesthetic Education and Drama (c. 1780s–1805)
 
 | Concept / Work Knowledge     | Content                                                                                                                                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12344,7 +12345,7 @@ Schiller influenced German idealism, Romantic aesthetics, liberal nationalism, t
 
 **Schiller matters because he treats beauty as a political necessity.** He knows that freedom proclaimed too quickly can become violence, and that reason without formation may remain cold. His answer is not retreat into art for art’s sake. **It is more demanding: art must train human beings to inhabit freedom without destroying form, and to accept form without surrendering freedom.**
 
-### Heinrich Heine, 1797–1856
+### Heinrich Heine (1797–1856)
 
 | Author Knowledge        | Content                                                                                                                                                                                                                |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12360,7 +12361,7 @@ Schiller influenced German idealism, Romantic aesthetics, liberal nationalism, t
 
 Britannica describes *Buch der Lieder* / *The Book of Songs* as a collection published in 1827, containing Heine’s poetry up to that point, marked by bittersweet, self-ironic poems of unrequited love that use Romantic sensibilities while remaining suspicious of them.  That formulation is close to Heine’s essence: he writes Romantic lyric with post-Romantic intelligence.
 
-### Heine’s Poetry, c. 1820s–1850s
+### Heine’s Poetry (c. 1820s–1850s)
 
 | Work Knowledge             | Content                                                                                                                                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12417,7 +12418,7 @@ Heine influenced German lyric, European political poetry, musical song culture, 
 
 **German Romanticism and Weimar Classicism matter because they transform the problem of the modern self.** The self can strive without limit, as in *Faust;* it can be educated through beauty, as in Schiller; it can sing and mock its own song, as in Heine. **German literature here becomes one of the central laboratories of modernity: desire, freedom, art, nation, exile, history, and irony all become literary forces.**
 
-### English Romantic Poetry, c. 1789–1832
+### English Romantic Poetry (c. 1789–1832)
 
 | Tradition Knowledge           | Content                                                                                                                                                                                                                                                                       |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12436,7 +12437,7 @@ the scholarly record places the conventional beginning of the English Romantic p
 **Literary Knowledge and Developmental Line:**
 English Romantic poetry has several interlocking lines. **Blake** is visionary, prophetic, radical, anti-institutional, and multimedia. **Wordsworth** is meditative, autobiographical, nature-centered, and concerned with memory and ordinary life. **Coleridge** is philosophical, dreamlike, supernatural, symbolic, and psychologically unstable. Their shared revolution is not identical style, but a shared enlargement of poetic authority. Poetry no longer needs to depend primarily on classical precedent, aristocratic polish, or satirical public wit. It can emerge from a child, a beggar, a ruined abbey, a chimney sweeper, a dream of a mariner, a solitary walk, or a visionary image.
 
-### William Blake, 1757–1827
+### William Blake (1757–1827)
 
 | Author Knowledge         | Content                                                                                                                                                                                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12453,7 +12454,7 @@ English Romantic poetry has several interlocking lines. **Blake** is visionary, 
 
 His life as an engraver matters as much as his poetry. He did not simply write poems and then have them printed by others. He invented a method of making books in which text and image were etched onto plates, printed, and hand-colored. the scholarly record stresses that each copy could become a unique work of art and that Blake’s title pages give weight to him as both “author” and “printer.”  **This is why Blake should be read as a multimedia Romantic before the modern term exists. His poem is verbal, visual, material, and prophetic at once.**
 
-### Songs of Innocence and of Experience, 1789 / 1794
+### Songs of Innocence and of Experience (1789 / 1794)
 
 | Work Knowledge           | Content                                                                                                                                                                                                                 |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12503,7 +12504,7 @@ Blake influenced Romanticism, visionary poetry, political theology, modern visua
 
 **Songs of Innocence and of Experience matters because it makes lyric poetry into an instrument of spiritual diagnosis.** Blake sees that modern oppression is not only outside the mind, in factories, churches, laws, and streets. It is also inside the mind, in the chains people learn to call reality. His answer is not retreat into childhood sweetness. **It is imaginative revolution: to see the lamb, the tiger, the child, the city, and the chain in one terrifying field of vision.**
 
-### William Wordsworth, 1770–1850, and Samuel Taylor Coleridge, 1772–1834
+### William Wordsworth (1770–1850) and Samuel Taylor Coleridge (1772–1834)
 
 | Author Pair Knowledge    | Content                                                                                                                                                                                                                        |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -12523,7 +12524,7 @@ Their collaboration produced *Lyrical Ballads*, first published anonymously in 1
 
 **The collaboration works because the two poets divide Romanticism between them.** Wordsworth asks how the everyday world becomes luminous when remembered by a receptive mind. **Coleridge asks how the mind becomes haunted when imagination opens onto guilt, dream, and the supernatural.**
 
-### Lyrical Ballads, 1798; expanded editions 1800 / 1802
+### Lyrical Ballads (1798; expanded editions 1800 / 1802)
 
 | Work Knowledge           | Content                                                                                                                                                                                                                           |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12587,7 +12588,7 @@ The volume shaped Romantic lyric, Victorian nature poetry, modern theories of me
 
 **English Romantic poetry matters because it changes both the subject and the function of poetry.** The poem is no longer primarily a polished public artifact addressed to taste and reason. **It becomes an event of perception: a way of seeing how a child, a city, a lamb, a tiger, a landscape, a dream, a sailor, or a memory discloses the condition of the soul.**
 
-### Lord Byron, 1788–1824
+### Lord Byron (1788–1824)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                                                                                                                                                       |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12603,7 +12604,7 @@ The volume shaped Romantic lyric, Victorian nature poetry, modern theories of me
 
 The `Byronic hero`—proud, wounded, charismatic, guilty, rebellious, sexually charged, isolated—becomes one of the most influential character types in 19th-century literature. Yet Byron’s major late achievement, *Don Juan*, does not simply repeat this type. It laughs at it, deflates it, and places it inside a vast comic world. scholarly accounts notes that Byron began *Don Juan* in 1818, worked on it until his death, and left it unfinished; it also stresses that the poem reverses the Don Juan legend by making Juan a young innocent repeatedly pursued by women rather than the usual irresistible seducer. 
 
-### Don Juan, 1819–1824, unfinished
+### Don Juan (1819–1824, unfinished)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                 |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12653,7 +12654,7 @@ The poem influenced **Pushkin**, **Heine**, Victorian satire, modern comic long 
 
 **Don Juan matters because it saves Romantic energy from Romantic solemnity.** Byron knows the appeal of rebellion, desire, exile, and wounded selfhood, but he also knows how easily they become postures. The poem’s greatness lies in its refusal to choose between brilliance and mockery. **It makes the Romantic self charming, dangerous, ridiculous, and inexhaustibly talkative.**
 
-### Percy Bysshe Shelley, 1792–1822
+### Percy Bysshe Shelley (1792–1822)
 
 | Author Knowledge            | Content                                                                                                                                                                                                                                                                       |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12669,7 +12670,7 @@ The poem influenced **Pushkin**, **Heine**, Victorian satire, modern comic long 
 
 the scholarly record emphasize Shelley’s dividedness. In relation to *Frankenstein* and Romantic Prometheanism, Shelley appears as a poet split between head and heart; *Hymn to Intellectual Beauty* interprets an elusive beneficent power through the heart, while *Mont Blanc* gives a colder report of impersonal power behind or within nature.  This tension helps explain why Shelley’s poetry is both ecstatic and unstable. The world may be redeemable through love and imagination, but the powers he invokes are not securely human.
 
-### Shelley’s Poetry, c. 1816–1822
+### Shelley’s Poetry (c. 1816–1822)
 
 | Work Knowledge                   | Content                                                                                                                                                                                                              |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12720,7 +12721,7 @@ Shelley influenced radical poetry, political lyric, Victorian idealism, modern r
 
 **Shelley’s poetry matters because it names the desire for total transformation more purely than almost any other English poet.** Wind should become voice; song should become revolution; beauty should become moral force; love should overthrow tyranny. Yet the poems remain powerful because they also know the distance between invocation and fulfillment. **Shelley’s lyric voice keeps calling to powers that may never answer fully.**
 
-### John Keats, 1795–1821
+### John Keats (1795–1821)
 
 | Author Knowledge     | Content                                                                                                                                                                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -12736,7 +12737,7 @@ Shelley influenced radical poetry, political lyric, Victorian idealism, modern r
 
 The great odes of 1819 are the center of Keats’s achievement. Poetry Foundation’s Keats page identifies *Ode on a Grecian Urn* and *Ode to a Nightingale* among his major lyrics, and its poem pages preserve the major odes as central works in the English lyric tradition.  A modern Poetry Foundation essay on *To Autumn* describes the 1819 odes as the series that eventually secured Keats’s greatness, with *To Autumn* as a culminating realization. 
 
-### Keats’s Odes, 1819
+### Keats’s Odes (1819)
 
 | Work Knowledge        | Content                                                                                                                                                     |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12794,7 +12795,7 @@ The odes shaped Victorian aestheticism, modern lyric theory, art-poetry debates,
 
 **Together, these poets show that English Romanticism is not one mood.** It is a field of competing answers to modernity: laugh at the self, as Byron does; invoke transforming power, as Shelley does; dwell with beauty’s mortality, as Keats does. **Romantic poetry becomes large because it can contain satire, prophecy, and lyric stillness without reducing them to one doctrine.**
 
-### English Romantic Novel, c. 1790–1820
+### English Romantic Novel (c. 1790–1820)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                                                  |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12809,7 +12810,7 @@ English Romantic fiction does not look as unified as English Romantic poetry. Th
 
 **Mary Shelley** and **Jane Austen** therefore stand almost at opposite poles. *Frankenstein* asks what happens when imagination, science, ambition, and creation exceed moral responsibility. *Pride and Prejudice* and *Emma* ask how self-knowledge is formed inside ordinary social life, where marriage, money, manners, and interpretation govern destiny. One novel ends in Arctic ice and mutual destruction; the others end in marriage, but not in simple fantasy. Austen’s marriages require education of judgment, not merely romantic satisfaction.
 
-### Mary Shelley, 1797–1851
+### Mary Shelley (1797–1851)
 
 | Author Knowledge             | Content                                                                                                                                                                             |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12825,7 +12826,7 @@ English Romantic fiction does not look as unified as English Romantic poetry. Th
 
 Her distinctiveness lies in correction. Romantic poetry often glorifies the power to create, rebel, imagine, and exceed inherited limits. *Frankenstein* asks what happens after such a breakthrough. A creator produces new life, but recoils from the being he has made. The result is not liberation but abandonment, revenge, and doubled ruin. **The novel does not simply condemn knowledge. It condemns creation without responsibility.**
 
-### Frankenstein; or, The Modern Prometheus, 1818; revised 1831
+### Frankenstein; or, The Modern Prometheus (1818; revised 1831)
 
 | Work Knowledge          | Content                                                                                                                                                                                               |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12881,7 +12882,7 @@ The novel generated one of modern culture’s most powerful myths. Film adaptati
 
 **Frankenstein matters because it makes modern creation tragic.** Victor does not fail because imagination is evil. He fails because imagination without care produces a being whom the creator refuses to love. The novel’s deepest horror is not that the Creature exists. **It is that he exists without a place in the moral world that made him.**
 
-### Jane Austen, 1775–1817
+### Jane Austen (1775–1817)
 
 | Author Knowledge         | Content                                                                                                                                                                              |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -12899,7 +12900,7 @@ the scholarly record stress that Austen’s novels were not obscure failures in 
 
 Austen’s place after **Richardson** and **Fielding** is also important. From Richardson she inherits female-centered moral trial and inward attention; from Fielding she inherits comic social order and narratorly intelligence. But she compresses both traditions into a smaller and more exact form. **Austen’s genius is not scale. It is calibration.**
 
-### Pride and Prejudice, 1813
+### Pride and Prejudice (1813)
 
 | Work Knowledge        | Content                                                                                                                                                                    |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -12951,7 +12952,7 @@ The novel shaped romantic comedy, the courtship novel, realist fiction, adaptati
 
 **Pride and Prejudice matters because it makes intelligence erotic and moral.** Elizabeth and Darcy do not simply fall in love; they learn how badly they have read one another. Austen’s comedy depends on the fact that love without judgment is dangerous, but judgment without self-correction is vanity. **The happy ending is earned by improved perception.**
 
-### Emma, 1815
+### Emma (1815)
 
 | Work Knowledge        | Content                                                                                                                                                                     |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13013,7 +13014,7 @@ Finally, it is central to **Bildungsroman in miniature**. Emma’s education is 
 **The English Romantic novel matters because it shows that modern fiction can move in opposite directions at once.** It can go outward to the Arctic, the laboratory, the monster, the myth of Prometheus, and the nightmare of creation. It can also go inward into a village, a drawing room, a letter, a proposal, a joke, and a mistaken glance. **In both cases, the deepest question is recognition: whether a creator recognizes his creature, whether a woman recognizes her own prejudice, whether a privileged imagination recognizes the reality of other people.**
 
 
-### French Romanticism, c. 1820–1850
+### French Romanticism (c. 1820–1850)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                     |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13031,7 +13032,7 @@ canonical surveys places **Lamartine**, **Hugo**, **Vigny**, **Musset**, **Nerva
 
 **The movement’s inner tension is between lyric inwardness and historical vastness.** Lamartine makes the self’s grief, longing, and religious feeling into poetic music. **Hugo makes history itself speak: the cathedral, the city, the poor, the condemned, the revolutionary street, the grotesque body, and the moral law hidden beneath social ruin.**
 
-### Victor Hugo, 1802–1885
+### Victor Hugo (1802–1885)
 
 | Author Knowledge      | Content                                                                                                                                                                        |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -13050,7 +13051,7 @@ Hugo’s Romanticism is not merely private emotion. It is public, historical, ar
 
 His famous Romantic doctrine also matters for both novels. The grotesque is not the opposite of beauty; it is one of the ways modern literature tells the truth. **Quasimodo**, **Jean Valjean**, **Javert**, **Fantine**, **Gavroche**, and **Thénardier** are not classical types of beauty, but they carry the moral pressure of the modern world. **Hugo’s Romanticism insists that literature becomes more truthful when it admits deformity, social misery, and contradiction into high art.**
 
-### Notre-Dame de Paris / The Hunchback of Notre-Dame, 1831
+### Notre-Dame de Paris / The Hunchback of Notre-Dame (1831)
 
 | Work Knowledge         | Content                                                                                                                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13102,7 +13103,7 @@ The novel influenced Gothic revivalism, historical fiction, architectural preser
 
 **Notre-Dame de Paris matters because it makes a building into a moral witness.** The cathedral watches a society that can carve saints in stone but destroy living bodies. **Hugo’s Romanticism is already political here: the measure of a civilization is not only its monuments, but its treatment of those who seek shelter beneath them.**
 
-### Les Misérables, 1862
+### Les Misérables (1862)
 
 | Work Knowledge         | Content                                                                                                                                                                                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -13162,7 +13163,7 @@ The novel influenced social fiction, political theatre, musical adaptation, film
 
 **Les Misérables matters because it turns misery into an accusation.** Hugo does not merely ask readers to pity Valjean, Fantine, Cosette, Gavroche, or the students at the barricade. He asks what kind of society needs prisons, prostitutes, abandoned children, starving workers, and suicidal officers of law in order to maintain its order. **The novel’s answer is uncompromising: where law does not become mercy, civilization remains morally unfinished.**
 
-### Alphonse de Lamartine, 1790–1869
+### Alphonse de Lamartine (1790–1869)
 
 | Author Knowledge      | Content                                                                                                                                                                                                          |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13180,7 +13181,7 @@ This achievement may look quiet beside Hugo’s vastness, but it marks a major s
 
 **Lamartine’s importance lies in tone.** He makes the poem sound like a soul speaking to time, memory, nature, and God. **The subject is not public wit or classical exemplum, but the trembling interval between personal grief and spiritual hope.**
 
-### Lamartine’s Poetry, especially Méditations poétiques, 1820
+### Lamartine’s Poetry, especially Méditations poétiques (1820)
 
 | Work Knowledge          | Content                                                                                                                                                                                   |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13235,7 +13236,7 @@ Lamartine shaped French Romantic lyric, elegiac poetry, religious inwardness, an
 
 **French Romanticism matters because it changes the scale and moral range of literature.** It gives dignity to private grief and public misery, to the medieval cathedral and the modern poor, to the deformed body and the revolutionary street, to the lyric tear and the social wound. **In Lamartine, Romanticism sings loss; in Hugo, it makes history answer for the suffering it has produced.**
 
-### Rise of Russian National Literature, c. 1820–1840
+### Rise of Russian National Literature (c. 1820–1840)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                                                                                        |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -13250,7 +13251,7 @@ Russian literature before **Pushkin** had important writers, but Pushkin occupie
 
 This national status does not mean Pushkin is naïvely “folk” or anti-European. He belongs to a highly Westernized aristocratic world. Russian elite culture in his time was deeply shaped by French language, European education, Byronism, court manners, and imperial administration. His originality lies in transforming that inheritance. **Pushkin’s Russia is not pure national essence opposed to Europe; it is a hybrid literary world where European form becomes Russian through irony, rhythm, social observation, and language.**
 
-### Alexander Pushkin, 1799–1837
+### Alexander Pushkin (1799–1837)
 
 | Author Knowledge         | Content                                                                                                                                                 |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13267,7 +13268,7 @@ This national status does not mean Pushkin is naïvely “folk” or anti-Europe
 
 Pushkin’s significance for Russian literature is linguistic and formal. He writes with a flexibility that later Russian prose and poetry could inherit. He makes Russian literary speech capable of intimacy, irony, narration, lyric compression, social observation, and dramatic clarity. His greatness is not only that he writes “Russian subjects,” but that he gives Russian literature a medium in which modern experience can be represented.
 
-### Eugene Onegin, 1823–1831; published complete 1833
+### Eugene Onegin (1823–1831; published complete 1833)
 
 | Work Knowledge          | Content                                                                                                                                                                                                           |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13321,7 +13322,7 @@ The work influenced Russian realism, the verse novel, **Tchaikovsky**’s opera 
 
 **Eugene Onegin matters because it turns literary inheritance into national form.** Pushkin takes Byron, sentimental fiction, aristocratic manners, lyric poetry, social comedy, and Russian provincial life, then fuses them into a work that feels effortless only because its art is so exact. The sadness of the poem is not despair. **It is the sadness of missed possibility: people read, desire, perform, hesitate, and finally understand too late.**
 
-### American Romanticism and Transcendentalism, c. 1819–1860
+### American Romanticism and Transcendentalism (c. 1819–1860)
 
 | Tradition Knowledge               | Content                                                                                                                                                                                                                                             |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13337,7 +13338,7 @@ American literature in the early 19th century faced a problem similar to Russia�
 
 Irving’s solution is not radical democratic prophecy. His prose is polished, Anglophile, cosmopolitan, and often old-world in tone. Yet his best tales—especially *Rip Van Winkle* and *The Legend of Sleepy Hollow*—give American literature two foundational devices: the local legendary tale and the comic historical narrator. Later American literature will become more intense, philosophical, and experimental, but Irving gives it a first recognizable fictional mythology.
 
-### Washington Irving, 1783–1859
+### Washington Irving (1783–1859)
 
 | Author Knowledge       | Content                                                                                                                                                                        |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -13355,7 +13356,7 @@ His importance lies in narrative mediation. Irving does not simply tell stories;
 
 This invented authority matters because America was still inventing its own cultural memory. A young republic needed stories that felt old. Irving gives it tales that are half-history, half-folklore, half-joke—an impossible fraction, but exactly the right form for a nation still negotiating its relation to the colonial past.
 
-### Rip Van Winkle, 1819
+### Rip Van Winkle (1819)
 
 | Work Knowledge             | Content                                                                                                                                                                                             |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13417,7 +13418,7 @@ Rip becomes a national type: the passive survivor of history, the nostalgic old 
 
 **The contrast is also revealing.** Pushkin’s national literature begins in formal mastery: verse, narrator, irony, social observation, and linguistic creation. Irving’s national literature begins in mediated legend: sketch, tale, pseudo-history, sleep, and local myth. One turns the aristocratic reader into a Russian literary subject; the other turns a sleepy villager into an American myth. Both show that national literature rarely begins by rejecting foreign influence. **It begins by absorbing it so deeply that it starts to speak in a new accent.**
 
-### Ralph Waldo Emerson, 1803–1882
+### Ralph Waldo Emerson (1803–1882)
 
 | Author Knowledge        | Content                                                                                                                                                                                                                                                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -13433,7 +13434,7 @@ Rip becomes a national type: the passive survivor of history, the nostalgic old 
 
 The word `Transcendentalism` can make Emerson sound abstract and dry, but the better entrance is language. the source record explicitly warns that the term can make Emerson and Thoreau seem like holders of boring doctrines, when their real power lies in the beauty, speed, and metaphorical quickness of their prose; they are described as Yankee equivalents of the English Romantic poets.  **Emerson’s prose is not a neutral container for ideas. It is the event of thought happening with unusual compression.**
 
-### Emerson’s Essays, 1836–1860
+### Emerson’s Essays (1836–1860)
 
 | Work Knowledge            | Content                                                                                                                                                                                                                              |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -13478,7 +13479,7 @@ Emerson influences Thoreau, Whitman, Dickinson, William James, pragmatism, Ameri
 
 **Emerson’s essays matter because they create an American intellectual weather.** Later writers breathe it whether they accept or reject it. His best prose does not merely announce self-reliance; it performs it. **It asks the reader to stop receiving truth second-hand and to confront nature, society, books, and the self as if thought were still beginning.**
 
-### Henry David Thoreau, 1817–1862
+### Henry David Thoreau (1817–1862)
 
 | Author Knowledge      | Content                                                                                                                                                          |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13494,7 +13495,7 @@ Emerson influences Thoreau, Whitman, Dickinson, William James, pragmatism, Ameri
 
 Thoreau’s originality lies in scale. He takes small acts—building a cabin, planting beans, measuring a pond, listening to geese and owls, watching ice thaw—and turns them into spiritual and philosophical measurement. the source record says that Thoreau repeatedly moves “from the source record to the spiritual or metaphorical” in good Emersonian fashion.  **This is the essential Thoreauvian movement: the pond is not a symbol placed on top of nature; it is nature read deeply enough to become symbolic.**
 
-### Walden; or, Life in the Woods, 1854
+### Walden; or, Life in the Woods (1854)
 
 | Work Knowledge              | Content                                                                                                                                                                                        |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13544,7 +13545,7 @@ The book influenced environmental writing, civil disobedience, anti-consumerism,
 
 **Walden matters because it makes living itself into literary form.** Thoreau does not simply argue for simplicity; he tests it, records it, and turns it into a language of measurement. The pond becomes a mirror, a map, a riddle, and a discipline. **The book’s lasting force lies in its severe question: how much of life is being exchanged for things that do not help one live?**
 
-### Nathaniel Hawthorne, 1804–1864
+### Nathaniel Hawthorne (1804–1864)
 
 | Author Knowledge      | Content                                                                                                                                                                                                            |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -13559,7 +13560,7 @@ The book influenced environmental writing, civil disobedience, anti-consumerism,
 
 His importance in American literature is enormous. scholarly accounts calls *The Scarlet Letter* the first great American novel and presents it as the work that proved America could produce imaginative art of European quality while remaining “absolutely American,” rooted in New England.  The canon material similarly calls Hawthorne one of the deepest American novelists and treats *The Scarlet Letter* as a permanent center of American imaginative consciousness. 
 
-### The Scarlet Letter, 1850
+### The Scarlet Letter (1850)
 
 | Work Knowledge       | Content                                                                                                                                                                                       |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13614,7 +13615,7 @@ The novel shaped American psychological fiction, symbolic romance, feminist read
 
 **The Scarlet Letter matters because it makes punishment visible and then asks what visibility hides.** Hester is marked, but not morally defeated. Dimmesdale is unmarked, but inwardly consumed. Chillingworth judges, but becomes spiritually monstrous. **Hawthorne’s deepest insight is that a society obsessed with sin may fail to understand morality, because morality requires compassion as much as law.**
 
-### Edgar Allan Poe, 1809–1849
+### Edgar Allan Poe (1809–1849)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                                                                                                                                                                  |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13629,7 +13630,7 @@ The novel shaped American psychological fiction, symbolic romance, feminist read
 
 the sources emphasize three major Poe contributions. First, he is by many accounts the seminal figure in the modern short story, especially because he avoids the more meandering quality of Irving’s tales.  Second, he is credited with effectively inventing the detective story in 1841 with “The Murders in the Rue Morgue.”  Third, he is a major ancestor of literary horror and even early science-fictional forms. 
 
-### Poe’s Horror and Detective Fiction, c. 1839–1849
+### Poe’s Horror and Detective Fiction (c. 1839–1849)
 
 | Work Knowledge                     | Content                                                                                                                                                                                                                |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13690,7 +13691,7 @@ Poe’s descendants include detective fiction, Sherlock Holmes, locked-room myst
 **Together with Irving, they show how American Romanticism develops beyond imported European forms.** The new literature is not only frontier myth or national color. **It becomes a struggle over the self: the self as spirit, as experiment, as sinner, as detective, as madman, as reader of nature, and as prisoner of its own signs.**
 
 
-### American Sea Literature and Metaphysical Fiction, c. 1840–1860
+### American Sea Literature and Metaphysical Fiction (c. 1840–1860)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                                                 |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13708,7 +13709,7 @@ related scholarship describes *Moby-Dick* as a work that moves beyond the usual 
 
 **This is the special force of Melville.** The whale, the ship, the rope, the doubloon, the skeleton, the mutiny, the harpoon, the sea, and the legal language of possession all become philosophical objects. Melville does not merely set stories at sea. **He makes the sea an instrument for thinking.**
 
-### Herman Melville, 1819–1891
+### Herman Melville (1819–1891)
 
 | Author Knowledge     | Content                                                                                                                                                                                                                                                 |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13725,7 +13726,7 @@ related scholarship describes *Moby-Dick* as a work that moves beyond the usual 
 
 His relation to **Hawthorne** is especially important. Melville read Hawthorne intensely around 1850 and admired what he called Hawthorne’s dark power. the sources state that Melville’s enthusiasm for Hawthorne helped generate the extraordinary ambition of *Moby-Dick*.  In that sense, Melville is not simply an oceanic writer opposed to Hawthorne’s Puritan interiors. He takes Hawthornean darkness to sea and magnifies it into metaphysical scale.
 
-### Moby-Dick; or, The Whale, 1851
+### Moby-Dick; or, The Whale (1851)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                           |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13784,7 +13785,7 @@ The novel influenced modernist fiction, symbolic fiction, encyclopedic novels, s
 
 **Moby-Dick matters because it makes the American novel oceanic.** It refuses the smallness of ordinary plot and tries to think everything: God, evil, race, labor, democracy, capitalism, language, death, comedy, and the body of a whale. Its greatness lies not in solving the whale, but in showing why the whale cannot be solved. Ahab dies trying to strike the unknowable. **Ishmael survives by telling the story of that failure.**
 
-### Benito Cereno, 1855
+### Benito Cereno (1855)
 
 | Work Knowledge        | Content                                                                                                                                                                          |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13847,7 +13848,7 @@ The novella has become central to studies of slavery, race, maritime empire, nar
 **Together, they show why American Romanticism cannot be reduced to self-reliance and nature.** Emerson and Thoreau ask how the self might become free. **Hawthorne and Melville ask what freedom discovers when it enters darkness: sin in the heart, suspicion in the mind, unreadable evil in the universe, slavery under the surface of empire, and the limits of every human attempt to name the truth.**
 
 
-### American Slavery Literature, c. 1850–1865
+### American Slavery Literature (c. 1850–1865)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                  |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13865,7 +13866,7 @@ scholarly accounts places **Stowe** inside 19th-century sentimental reform writi
 
 **The strength and weakness of this tradition come from the same source.** It believes that sympathy can change history. That belief gave abolitionist fiction enormous energy. **But sympathy can also become paternalistic, theatrical, and racially condescending when the suffering person must be made acceptable to the reader’s moral comfort.**
 
-### Harriet Beecher Stowe, 1811–1896
+### Harriet Beecher Stowe (1811–1896)
 
 | Author Knowledge      | Content                                                                                                                                                                                                 |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13881,7 +13882,7 @@ scholarly accounts places **Stowe** inside 19th-century sentimental reform writi
 
 This explains why *Uncle Tom’s Cabin* is full of tears, mothers, children, deathbeds, religious speech, domestic rupture, and scenes of moral recognition. For Stowe, the home is not separate from politics. Since women formed a large part of the fiction-reading public, domestic reading could become a seedbed of national reform. The novel imagines the hearth as a political organ.
 
-### Uncle Tom’s Cabin, 1852
+### Uncle Tom’s Cabin (1852)
 
 | Work Knowledge          | Content                                                                                                                                                                                                                            |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13937,7 +13938,7 @@ The novel shaped abolitionist culture, stage melodrama, American racial stereoty
 
 **Uncle Tom’s Cabin matters because it shows literature acting as public pressure.** Its weaknesses are real: racial paternalism, melodramatic simplification, Christian sentimental overcoding. But its historical force is also real. Stowe made slavery enter the domestic imagination of readers who might otherwise have kept it distant. **The novel’s central lesson is that feeling can be politically powerful; its warning is that feeling can also distort what it claims to love.**
 
-### American Democratic Poetry, c. 1855–1890
+### American Democratic Poetry (c. 1855–1890)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                         |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13957,7 +13958,7 @@ Dickinson breaks poetic law in the opposite way. the source record on Dickinson�
 
 **Whitman democratizes poetry by opening the line to the crowd.** Dickinson democratizes poetry by making the smallest unit of language unstable, charged, and newly available to thought.
 
-### Walt Whitman, 1819–1892
+### Walt Whitman (1819–1892)
 
 | Author Knowledge        | Content                                                                                                                                |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -13975,7 +13976,7 @@ scholarly accounts emphasizes that the first edition of *Leaves of Grass* presen
 
 Harold Bloom's discussion adds another useful distinction: **Walt Whitman**, the protagonist of *Leaves of Grass*, is not simply **Walter Whitman Jr.**, the historical author. The poetic Whitman is a magnified, utopian figure, an invented democratic character who can merge with reader and epoch. 
 
-### Leaves of Grass, first edition 1855; expanded through 1891–1892
+### Leaves of Grass (first edition 1855; expanded through 1891–1892)
 
 | Work Knowledge             | Content                                                                                                                                                                                                      |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -14031,7 +14032,7 @@ Whitman influenced free verse, modernist poetry, Latin American poetry, queer po
 
 **Leaves of Grass matters because it makes poetry large enough to contain a democratic fantasy—and unstable enough to reveal the fantasy’s risks.** Whitman’s “I” is body, nation, reader, lover, nurse, worker, cosmos, and mask. The book’s power lies in its overreach. **It tries to sing everyone, and the attempt changes what poetry can be.**
 
-### Emily Dickinson, 1830–1886
+### Emily Dickinson (1830–1886)
 
 | Author Knowledge        | Content                                                                                                                                                                             |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14047,7 +14048,7 @@ Whitman influenced free verse, modernist poetry, Latin American poetry, queer po
 
 scholarly accounts on Dickinson’s meter emphasizes that she often uses `common meter`, the simple hymn form familiar from Protestant hymnals and ballads, but that she complicates it through dashes, unusual capitalization, pauses, rhetorical breaks, and intensified word choice.  This is the key. Dickinson does not reject tradition by abandoning form; she enters a familiar form and makes it unstable.
 
-### Dickinson’s Poetry, c. 1850s–1880s
+### Dickinson’s Poetry (c. 1850s–1880s)
 
 | Work Knowledge           | Content                                                                                                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14113,7 +14114,7 @@ Dickinson influenced modern lyric, feminist poetics, language poetry, religious 
 
 ## Realist Society (1830-1904)
 
-### French Realist Novel, c. 1830–1860
+### French Realist Novel (c. 1830–1860)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                         |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14133,7 +14134,7 @@ Flaubert is colder, more exact, more stylistically obsessive. In *Madame Bovary*
 
 **The difference is useful: Balzac makes realism expansive; Flaubert makes realism surgical.** Balzac builds a world; Flaubert polishes a sentence until the world becomes unbearable inside it.
 
-### Honoré de Balzac, 1799–1850
+### Honoré de Balzac (1799–1850)
 
 | Author Knowledge     | Content                                                                                                                                                                                    |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -14151,7 +14152,7 @@ His great formal invention is the connected fictional world. Characters reappear
 
 Balzac’s fiction is full of powerful obsessions. A father loves too much; a young man wants to rise; a miser clings to wealth; an artist is destroyed by ambition; a provincial talent is consumed by Paris. These figures can be larger than life, but the forces around them are historically precise. **Balzac’s people are often driven by primitive passions, yet the passions become modern because they are mediated by money, class, credit, law, and publicity.**
 
-### Le Père Goriot / Father Goriot, 1835
+### Le Père Goriot / Father Goriot (1835)
 
 | Work Knowledge               | Content                                                                                                                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14203,7 +14204,7 @@ The novel shaped European realism, the city novel, the social-climbing plot, rec
 
 **Father Goriot matters because it makes Paris into a school of disillusionment.** The old father believes love should bind the family; the young student learns that society is bound instead by money, appearance, and strategic desire. **Balzac’s greatness is to show both truths at once: Goriot’s love is real, but the world in which he loves has already learned to convert love into expense.**
 
-### Gustave Flaubert, 1821–1880
+### Gustave Flaubert (1821–1880)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                                              |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14221,7 +14222,7 @@ The composition history of *Madame Bovary* matters because it reveals Flaubert�
 
 **Flaubert’s paradox is that he writes against romantic illusion with a prose that still wants the density of poetry.** He does not kill lyricism. **He disciplines it until it can expose its own danger.**
 
-### Madame Bovary, 1856–1857
+### Madame Bovary (1856–1857)
 
 | Work Knowledge                | Content                                                                                                                                                                                    |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -14284,7 +14285,7 @@ The novel shaped modern realism, free indirect style, the anti-romantic novel, p
 
 **French realism matters because it makes the ordinary historically and aesthetically unavoidable.** A boarding house, a salon, a provincial pharmacy, an unpaid bill, a father’s bed, a woman’s fantasy, a student’s ambition, a pharmacist’s complacency: these become the sources of major literature. After Balzac and Flaubert, the novel no longer needs noble subjects to be serious. **Modern life itself is enough, provided the writer can see its structures and hear its language.**
 
-### French Naturalist Novel, c. 1870–1890
+### French Naturalist Novel (c. 1870–1890)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                                     |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14303,7 +14304,7 @@ the scholarly record makes the distinction directly: if **Flaubert** is classifi
 
 Zola’s work also mattered to writers outside France. The same material notes that English novelists envied the apparent freedom of French writers such as **Flaubert** and **Zola** to treat adultery, prostitution, suicide, and other subjects considered difficult or off-limits in British fiction.  This difference is important for literary history. Naturalism helped make the novel confront subjects that polite realism often softened or displaced.
 
-### Émile Zola, 1840–1902
+### Émile Zola (1840–1902)
 
 | Author Knowledge            | Content                                                                                                                                                                                                                                                                                                  |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14324,7 +14325,7 @@ Zola’s own language about early naturalism is revealing. In the preface to *Th
 
 But Zola is not merely cold. His novels are crowded, loud, theatrical, and often apocalyptic. Mines breathe like monsters. Crowds surge like elements. Desire spreads like contagion. Paris consumes bodies. Capital and labor collide with geological force. **Naturalism begins as scientific ambition, but in Zola it repeatedly becomes modern epic.**
 
-### Germinal, 1885
+### Germinal (1885)
 
 | Work Knowledge            | Content                                                                                                                                                                             |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14382,7 +14383,7 @@ The novel shaped labor fiction, strike narratives, socialist and naturalist lite
 
 **Germinal matters because it gives industrial labor tragic scale.** Zola does not merely ask readers to pity miners. He makes the mine a system that eats bodies, shapes families, produces politics, and stores anger beneath the surface. The strike may be defeated, but the earth has been seeded. **Naturalism here becomes historical prophecy from underground.**
 
-### Nana, 1880
+### Nana (1880)
 
 | Work Knowledge            | Content                                                                                                                                                                                                     |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14445,7 +14446,7 @@ The novel influenced modern prostitution narratives, theatrical and cinematic im
 
 **French naturalism matters because it refuses to let the novel remain polite.** It forces literature to look at coal dust, hunger, prostitution, disease, crowd violence, sexual commerce, and social determinism. Its scientific claims can feel reductive, but Zola’s best novels are larger than their theory. **They turn modern society into a field of forces, and then show what those forces do to flesh.**
 
-### British Victorian Novel, c. 1847–1861
+### British Victorian Novel (c. 1847–1861)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                   |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14461,7 +14462,7 @@ The Victorian novel inherits several earlier lines: **Richardson**’s inward mo
 
 **Dickens** and **Brontë** represent two different intensities. Dickens multiplies the world: fog, court documents, clerks, orphans, lawyers, houses, prisons, streets, eccentric speech, hidden kinship, comic grotesques, and institutional paralysis. Brontë narrows the field into one voice: “I suffer,” “I resist,” “I desire,” “I choose.” the scholarly record place *Jane Eyre* beside Dickens’s *David Copperfield* and *Great Expectations* as a Victorian `Bildungsroman`, a life-story portrait from childhood through trial to maturity. 
 
-### Charles Dickens, 1812–1870
+### Charles Dickens (1812–1870)
 
 | Author Knowledge       | Content                                                                                                                                                                           |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14478,7 +14479,7 @@ The Victorian novel inherits several earlier lines: **Richardson**’s inward mo
 
 His realism is not Flaubert’s impersonal exactness. Dickens is excessive, theatrical, funny, sentimental, furious, and symbolic. A fog is not only weather; it is a legal and moral condition. A house is not only a house; it is a system of care or neglect. A child is not only a child; childhood becomes the measure of civilization.
 
-### Bleak House, 1852–1853
+### Bleak House (1852–1853)
 
 | Work Knowledge          | Content                                                                                                                                                                                                                                                 |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14531,7 +14532,7 @@ The novel influenced legal fiction, urban realism, institutional critique, detec
 
 **Bleak House matters because it makes society legible through obscurity.** The fog hides, but by hiding it reveals the condition of a legal and moral world that has lost clarity. **Dickens’s genius is to make institutions atmospheric: law is fog, neglect is disease, secrecy is plot, and the suffering child is the point where the whole system becomes visible.**
 
-### Great Expectations, 1860–1861
+### Great Expectations (1860–1861)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                                                                    |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -14582,7 +14583,7 @@ The novel shaped later coming-of-age fiction, class-mobility narratives, unrelia
 
 **Great Expectations matters because it shows that upward mobility can be a spiritual injury.** Pip becomes a gentleman, but the process teaches him contempt for the people who loved him. Dickens’s mature cruelty lies in making Pip’s dream understandable. **The fantasy is false, but the wound that produces it is real.**
 
-### Charlotte Brontë, 1816–1855
+### Charlotte Brontë (1816–1855)
 
 | Author Knowledge      | Content                                                                                                                                                             |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14599,7 +14600,7 @@ the scholarly record repeatedly emphasize **Brontë**’s first-person force. *J
 
 This is exactly where Brontë differs from Austen. Austen’s intelligence is social, distributive, ironic. Brontë’s intelligence is concentrated, vehement, almost volcanic. One source says Brontë’s characters do not have the many-faceted independence of Austen’s or Tolstoy’s characters; they are seen through Jane’s forceful vision, and the novel’s power lies less in broad social observation than in the assertion “I love,” “I hate,” “I suffer.” 
 
-### Jane Eyre, 1847
+### Jane Eyre (1847)
 
 | Work Knowledge       | Content                                                                                                                                                                                                         |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14665,7 +14666,7 @@ The British Victorian novel turns private development into social diagnosis. In 
 
 *Bleak House* shows a society lost in fog; *Great Expectations* shows a self injured by class shame and false gentility; *Jane Eyre* shows a woman fighting to become the subject of her own story. Together, they define three central Victorian questions: What do institutions do to human beings? What does class shame do to the self? What must a woman refuse before love can become freedom?
 
-### Emily Brontë, 1818–1848
+### Emily Brontë (1818–1848)
 
 | Author Knowledge      | Content                                                                                                                                                                                                                                      |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14682,7 +14683,7 @@ The British Victorian novel turns private development into social diagnosis. In 
 
 the scholarly record describe the novel as one of the few Victorian works with the “shape and scope of a tragedy,” standing between **Richardson**’s *Clarissa* and **Hardy**’s later tragic novels such as *Tess of the d’Urbervilles*.  That is a useful placement. The novel is not just dark romance. It has a sacrificial structure: only after **Catherine** and **Heathcliff** are dead can the next generation begin to live.
 
-### Wuthering Heights, 1847
+### Wuthering Heights (1847)
 
 | Work Knowledge       | Content                                                                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14739,7 +14740,7 @@ The novel shaped Gothic romance, tragic love narratives, psychoanalytic readings
 
 **Wuthering Heights matters because it refuses to make passion civilized.** The novel does not ask whether Catherine and Heathcliff should marry, reform, or behave better. It asks what kind of force exists before social morality can name it. That force is magnificent, cruel, self-devouring, and finally unlivable. **Peace comes only after it has burned itself out.**
 
-### George Eliot, 1819–1880
+### George Eliot (1819–1880)
 
 | Author Knowledge            | Content                                                                                                                                                                                                                 |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14757,7 +14758,7 @@ The novel shaped Gothic romance, tragic love narratives, psychoanalytic readings
 
 Eliot’s fiction is sometimes overtly moralizing, but in her case moral reflection becomes part of the art. Bloom's discussion argues that her aesthetic secret lies in a “middle field where morals and aesthetics move in concert,” and that *Middlemarch* is perhaps the rare canonical novel whose moral wisdom does not destroy its aesthetic force. 
 
-### Middlemarch, 1871–1872
+### Middlemarch (1871–1872)
 
 | Work Knowledge         | Content                                                                                                                                                                         |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14815,7 +14816,7 @@ The novel influenced psychological realism, ethical criticism, social realism, f
 
 **Middlemarch matters because it makes moral life difficult without making it meaningless.** Eliot’s people are neither heroes nor villains in the simple sense. They are persons with partial vision, mixed motives, and damaged aspirations. **The novel’s greatness lies in making sympathy rigorous: to understand another life is not to excuse everything, but to judge with deeper knowledge.**
 
-### Thomas Hardy, 1840–1928
+### Thomas Hardy (1840–1928)
 
 | Author Knowledge             | Content                                                                                                                                                                                                                                    |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -14832,7 +14833,7 @@ The novel influenced psychological realism, ethical criticism, social realism, f
 
 This is essential for Hardy. His tragic world is not simply fate in the ancient sense. It is fate mediated through class, law, sexual double standards, education, marriage, religion, social reputation, and accident. The same lecture connects Hardy’s tragic perspective to **Aristotle**: tragedy arises from the fatal combination of character and circumstances. 
 
-### Tess of the d’Urbervilles, 1891
+### Tess of the d’Urbervilles (1891)
 
 | Work Knowledge       | Content                                                                                                                                                                                            |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14882,7 +14883,7 @@ The novel influenced feminist readings of sexual violence, rural tragedy, natura
 
 **Tess of the d’Urbervilles matters because it makes purity a protest word.** Hardy takes the term away from social judgment and gives it back to the suffering person. Tess is pure not because society says so, but because society is wrong. **Her tragedy exposes the violence of moral codes that punish the wounded and protect the powerful.**
 
-### Jude the Obscure, 1895
+### Jude the Obscure (1895)
 
 | Work Knowledge       | Content                                                                                                                                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14939,7 +14940,7 @@ The novel anticipates modernist alienation, critiques of marriage, class-exclusi
 
 Together with **Dickens** and **Charlotte Brontë**, they show the range of the Victorian novel: foggy law courts, class shame, female self-command, moorland passion, provincial moral webs, sexual double standards, blocked education, and the collapse of inherited faith. **The Victorian novel matters because it discovers that private suffering is rarely private. Desire, guilt, ambition, marriage, education, law, religion, class, and landscape all enter the soul—and the soul, in turn, reveals the age.**
 
-### Russian Realist Fiction, c. 1830–1865
+### Russian Realist Fiction (c. 1830–1865)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                        |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14957,7 +14958,7 @@ Russian realism does not begin as plain social description. Its first great forc
 
 **Russian realism therefore begins with two different pressures.** Gogol makes reality unstable by revealing its grotesque underside. Turgenev makes reality historically tense by placing old and new generations in direct conflict. **Later Dostoevsky and Tolstoy will enlarge these routes into psychological, moral, metaphysical, and historical worlds.**
 
-### Nikolai Gogol, 1809–1852
+### Nikolai Gogol (1809–1852)
 
 | Author Knowledge      | Content                                                                                                                                                 |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14973,7 +14974,7 @@ Russian realism does not begin as plain social description. Its first great forc
 
 the sources emphasize precisely this irrational basis of Gogol’s art. One source says that in *The Overcoat*, Gogol becomes great when he moves on the brink of his “private abyss,” and that the absurd in Gogol is not merely quaint or comic but borders on the tragic.  This is a useful warning. Gogol should not be flattened into either “funny writer” or “social reformer.” His comedy is metaphysical as well as social.
 
-### The Overcoat / Shinel, 1842
+### The Overcoat / Shinel (1842)
 
 | Work Knowledge       | Content                                                                                                                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15023,7 +15024,7 @@ The story shaped Russian fiction’s attention to the poor clerk, the bureaucrat
 
 **The Overcoat matters because it makes a small object carry an entire social universe.** Akaky’s tragedy is ridiculous only if the world itself is ridiculous. A coat should not be a soul, but in Gogol’s Petersburg the coat becomes the only form in which a soul can be socially recognized. **That is the nightmare.**
 
-### Dead Souls, 1842
+### Dead Souls (1842)
 
 | Work Knowledge                | Content                                                                                                                                                                                                                     |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15079,7 +15080,7 @@ The novel influenced Russian realism, satirical bureaucracy fiction, the grotesq
 
 **Dead Souls matters because it reveals a society where the living and the dead are hard to distinguish.** The dead serfs have more poetic life than many of the living landowners. Chichikov’s fraud is ridiculous, but the legal-economic order around him is already ridiculous. **Gogol’s genius is to make social corruption look like metaphysical comedy.**
 
-### Ivan Turgenev, 1818–1883
+### Ivan Turgenev (1818–1883)
 
 | Author Knowledge       | Content                                                                                                                                                                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15096,7 +15097,7 @@ The novel influenced Russian realism, satirical bureaucracy fiction, the grotesq
 
 His greatness is quieter. He does not possess Dostoevsky’s psychological violence or Tolstoy’s epic moral amplitude, but he has delicacy, balance, irony, social tact, and a remarkable ability to let historical conflict enter private life. A later source notes his “delicate and vivid paintbrush,” sense of color, light, and shade, and modulated style. 
 
-### Fathers and Sons, 1862
+### Fathers and Sons (1862)
 
 | Work Knowledge         | Content                                                                                                                                                                                         |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15159,7 +15160,7 @@ Bazarov became a cultural type: the radical intellectual, anti-romantic scientis
 **Russian realism matters because it does not merely record society.** It discovers that society has become strange. A clerk can be socially born through an overcoat; dead serfs can become tradable legal ghosts; a young radical can negate everything and still be overthrown by love and typhus. **From Gogol to Turgenev, Russian fiction learns that realism must include the absurd, the ideological, the bureaucratic, the tender, and the fatal.**
 
 
-### Fyodor Dostoevsky, 1821–1881
+### Fyodor Dostoevsky (1821–1881)
 
 | Author Knowledge               | Content                                                                                                                                                                                                                                                       |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15178,7 +15179,7 @@ His fiction is often called psychological, but that is still too mild. The mind 
 
 **Dostoevsky’s realism is therefore an anatomy of extremity.** He believes that a person may reveal more truth in murder, fever, confession, insult, or delirium than in decades of ordinary sociable behavior.
 
-### Notes from Underground, 1864
+### Notes from Underground (1864)
 
 | Work Knowledge       | Content                                                                                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15227,7 +15228,7 @@ The novella anticipates existentialist fiction, modern anti-heroes, psychologica
 
 **Notes from Underground matters because it discovers a modern sickness before modernity has fully named it.** The Underground Man is free enough to refuse every system, but not free enough to love, act, or forgive. **He proves that human beings cannot be reduced to rational calculation; he also proves that freedom without love may become a cellar.**
 
-### Crime and Punishment, 1866
+### Crime and Punishment (1866)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                               |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15282,7 +15283,7 @@ The novel influenced psychological crime fiction, existential fiction, modern de
 
 **Crime and Punishment matters because it makes murder think.** Raskolnikov kills not because he is simple, but because he is dangerously intelligent. Dostoevsky’s answer is that thought without humility becomes murderous, and punishment without resurrection remains incomplete. **The novel forces the reader to pass through blood, fever, pride, confession, and finally the possibility—never the certainty—of new life.**
 
-### The Brothers Karamazov, 1879–1880
+### The Brothers Karamazov (1879–1880)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                       |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15340,7 +15341,7 @@ The novel influenced modern theology, existentialism, psychoanalysis, parricide 
 
 **The Brothers Karamazov matters because it makes family into apocalypse.** A disgusting father is murdered, but the deeper murder concerns God, law, and moral authority. Dostoevsky’s answer is not a tidy doctrine. **It is a field of voices: Ivan’s rebellion, Dmitri’s suffering, Alyosha’s love, Smerdyakov’s resentment, children’s tears, and the terrible fact that ideas may find someone willing to act them out.**
 
-### Leo Tolstoy, 1828–1910
+### Leo Tolstoy (1828–1910)
 
 | Author Knowledge     | Content                                                                                                                                                                                                                                                                                |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15357,7 +15358,7 @@ The novel influenced modern theology, existentialism, psychoanalysis, parricide 
 
 the scholarly record emphasizes that Tolstoy’s early military experience in the Caucasus and at **Sevastopol** prepared him for the war materials of *War and Peace*: questions about killing, justification, fear, suffering, dead and wounded bodies, and the false rhetoric surrounding war.  His other great obsession is domestic life: marriage, sexuality, jealousy, childbirth, family happiness, and family catastrophe. *War and Peace* and *Anna Karenina* can therefore be read as twin investigations: one asks what history does to families; the other asks what family and desire do to the soul.
 
-### War and Peace, 1865–1869
+### War and Peace (1865–1869)
 
 | Work Knowledge         | Content                                                                                                                                                                                                           |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15415,7 +15416,7 @@ The work influenced historical fiction, epic realism, theories of history in lit
 
 **War and Peace matters because it makes life larger than history and history larger than theory.** Tolstoy does not deny that battles, leaders, and nations matter. He denies that they can be understood from above. The real movement of the world happens through thousands of bodies, homes, fears, chances, meals, deaths, and acts of endurance. **The novel’s scale is enormous because life itself is enormous.**
 
-### Anna Karenina, 1875–1877
+### Anna Karenina (1875–1877)
 
 | Work Knowledge        | Content                                                                                                                                                                                                       |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15478,7 +15479,7 @@ The novel became one of the central works of psychological and social realism. A
 
 **Russian realism reaches world scale because it refuses to remain merely realistic in a narrow sense.** In Dostoevsky, realism becomes metaphysical crisis. In Tolstoy, realism becomes total life. One asks whether freedom without God becomes murder; the other asks whether life can be lived truthfully amid history, desire, and death. **Together, they make the nineteenth-century novel capable of carrying philosophy, theology, psychology, family, nation, and bodily existence at once.**
 
-### Russian Short Fiction and Drama, c. 1880–1904
+### Russian Short Fiction and Drama (c. 1880–1904)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                                                                                    |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15498,7 +15499,7 @@ His place in theatre is equally decisive. the sources describe him as one of the
 
 **Chekhov’s world is not eventless.** It is full of events that do not look like events to people trained on melodrama: a person realizes too late that life has passed; a woman and a man discover love inside adultery; a young writer’s artistic ambition collapses; an estate is sold; an orchard is cut down; people speak of Moscow, happiness, art, work, and the future, then remain where they are.
 
-### Anton Chekhov, 1860–1904
+### Anton Chekhov (1860–1904)
 
 | Author Knowledge          | Content                                                                                                                                                                                                    |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15519,7 +15520,7 @@ His early comic sketches were written partly for money while he supported his fa
 
 the sources also warn against treating Chekhov as a didactic writer. In contrast with writers who turn a character into the vehicle of a lesson, Chekhov gives “a living human being” rather than a symbol, even when the character happens to say something that could sound socially or politically useful.  **This is one of Chekhov’s great disciplines: he refuses to improve life by falsifying people.**
 
-### Chekhov’s Short Stories, c. 1880s–1900s
+### Chekhov’s Short Stories (c. 1880s–1900s)
 
 | Work Knowledge             | Content                                                                                                                                                                                                                              |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -15576,7 +15577,7 @@ Chekhov shaped **Katherine Mansfield**, **James Joyce**, **Virginia Woolf**, **E
 
 **Chekhov’s short stories matter because they make incompletion an artistic principle.** Earlier fiction often asks what happened. Chekhov asks what it felt like to continue living after nothing decisive seemed to happen. His stories are full of people who are not tragic enough for tragedy, not comic enough for comedy, not articulate enough for confession, and not free enough for transformation. **That is why they feel modern.**
 
-### The Seagull / Chaika, 1896; Moscow Art Theatre revival 1898
+### The Seagull / Chaika (1896; Moscow Art Theatre revival 1898)
 
 | Work Knowledge       | Content                                                                                                                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -15632,7 +15633,7 @@ The play shaped **Stanislavski**’s acting method, modern ensemble drama, psych
 
 **The Seagull matters because it turns failure into dramatic form.** The failed play, failed love, failed motherhood, failed ambition, failed artistic confidence, and failed communication all exist together without one clear moral center. Chekhov does not thunder over these failures. **He lets them gather quietly until a gunshot occurs offstage and life in the next room continues.**
 
-### The Cherry Orchard / Vishnyovy sad, 1904
+### The Cherry Orchard / Vishnyovy sad (1904)
 
 | Work Knowledge       | Content                                                                                                                                                                                                   |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15701,7 +15702,7 @@ His short stories teach modern fiction how to end without ending. *The Seagull* 
 **Russian short fiction and drama matter here because the center of literature shifts from the great act to the missed act.** People do not do what they should. They do not say what they mean. They recognize too late, love badly, waste time, postpone work, or mistake memory for life. Chekhov’s art does not solve this condition. **It observes it with such exactness that modern literature had to change around him.**
 
 
-### Nordic Realist Drama, c. 1870–1890
+### Nordic Realist Drama (c. 1870–1890)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                                                           |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15719,7 +15720,7 @@ the scholarly record describes Ibsen’s achievement directly: he created modern
 
 **The innovation is therefore double.** Ibsen does not simply write “about society.” He makes society enter the room as furniture, habit, speech, money, law, and marriage. The problem is not outside the characters. **It has trained them from within.**
 
-### Henrik Ibsen, 1828–1906
+### Henrik Ibsen (1828–1906)
 
 | Author Knowledge         | Content                                                                                                                                                                                                                                                                                                                                                             |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15738,7 +15739,7 @@ This is why Ibsen differs from earlier domestic drama. He does not simply place 
 
 **Ibsen’s most dangerous question is not “Why is this individual wicked?” but “What if respectable life itself is a training system for falsehood?”**
 
-### A Doll’s House, 1879
+### A Doll’s House (1879)
 
 | Work Knowledge                      | Content                                                                                                                                                                                                                                                              |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15800,7 +15801,7 @@ The play shaped modern realist theatre, feminist drama, domestic tragedy, social
 
 **A Doll’s House matters because it makes the home politically visible.** Ibsen does not need Parliament, battlefield, factory, or court to expose social power. The home is enough. A wife’s signature, a husband’s language, a locked letterbox, and a final conversation reveal that respectability can be a form of captivity. Nora’s departure is not a solved liberation. **It is the beginning of personhood after the collapse of a role.**
 
-### The Social Problem Play, c. 1870–1900
+### The Social Problem Play (c. 1870–1900)
 
 | Concept Knowledge             | Content                                                                                                                                                                                                                           |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15850,7 +15851,7 @@ Its influence runs through **Shaw**, **Strindberg**, **Hauptmann**, **Galsworthy
 **The social problem play matters because it changes the source of tragedy.** People are not destroyed only by gods, kings, villains, or passions. They are destroyed by good manners, proper marriages, respectable lies, family duties, law, reputation, and rooms they have mistaken for homes. **Ibsen’s theatre is modern because it shows that the past can survive inside furniture, and that liberation may require walking out of the house that taught one how to live.**
 
 
-### American Realism and Local Color, c. 1865–1900
+### American Realism and Local Color (c. 1865–1900)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                                                                                                                                                      |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15870,7 +15871,7 @@ American realism and local-color writing emerge after the enormous symbolic inte
 
 **The two writers seem almost incompatible.** Twain distrusts artificiality and lets Huck’s grammar cut through respectable lies. James distrusts crude certainty and makes every perception unstable. **Yet both are realists because both ask how Americans actually see, speak, judge, deceive themselves, and become morally implicated in the worlds they enter.**
 
-### Mark Twain, 1835–1910
+### Mark Twain (1835–1910)
 
 | Author Knowledge     | Content                                                                                                                                                                                                 |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15889,7 +15890,7 @@ This doubleness matters for reading the two boyhood novels. *Tom Sawyer* is ofte
 
 **Twain’s genius lies in using boyhood against itself.** The boy’s adventure story can charm readers into the past; then Huck’s river narrative can expose what that charm has hidden—slavery, cruelty, hypocrisy, cowardice, and the moral training of a racist society.
 
-### The Adventures of Tom Sawyer, 1876
+### The Adventures of Tom Sawyer (1876)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                 |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15940,7 +15941,7 @@ The novel shaped American children’s literature, boyhood adventure, nostalgic 
 
 **Tom Sawyer matters because it creates the America that Huck Finn must escape.** Its world is charming, theatrical, sunny, and dangerous in controlled doses. But the book’s deepest afterlife lies in the boy it cannot fully contain. **Huck stands at the edge of Tom’s story, already preparing to carry American fiction into darker water.**
 
-### Adventures of Huckleberry Finn, 1884 / 1885
+### Adventures of Huckleberry Finn (1884 / 1885)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                   |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -15997,7 +15998,7 @@ The novel shaped American vernacular fiction, the road novel, the river narrativ
 
 **Huckleberry Finn matters because it makes American freedom speak in a compromised voice.** Huck is not morally pure; he is a child trained by a racist world. Yet because he travels with Jim, lies, fails, apologizes, hesitates, and finally tears up the letter, the novel dramatizes moral knowledge forming against social law. Its greatness lies in that conflict. Huck does not know how radical his choice is. **The book knows.**
 
-### Henry James, 1843–1916
+### Henry James (1843–1916)
 
 | Author Knowledge       | Content                                                                                                                                                                                                                                                                                                   |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16018,7 +16019,7 @@ James is also one of the great writers of women’s fates. The source material n
 
 **Twain’s realism asks whether a boy’s vernacular eye can see through American lies.** James’s realism asks whether refined consciousness can ever see without shaping, aestheticizing, or imprisoning what it sees.
 
-### The Portrait of a Lady, 1881
+### The Portrait of a Lady (1881)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                         |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16073,7 +16074,7 @@ The novel shaped psychological realism, modernist point of view, transatlantic f
 
 **The Portrait of a Lady matters because it makes freedom tragic without denying freedom.** Isabel is not merely victim, and not merely fool. She is intelligent enough for tragedy to have a hold on her. **James’s deepest insight is that a person may be most vulnerable at the point where she believes herself most free.**
 
-### The Turn of the Screw, 1898
+### The Turn of the Screw (1898)
 
 | Work Knowledge          | Content                                                                                                                                                                                                  |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16136,7 +16137,7 @@ The novella shaped modern ghost stories, psychological horror, unreliable narrat
 **American realism and local-color writing matter because they make America literarily audible and psychologically legible.** Twain proves that a child’s regional speech can expose a nation’s moral contradiction. James proves that the quietest act of interpretation can become a drama as dangerous as murder or haunting. **Between the Mississippi River and the European drawing room, American fiction discovers two of its strongest voices: the voice that says what respectable language hides, and the consciousness that cannot stop asking what it has seen.**
 
 
-### Stephen Crane, 1871–1900
+### Stephen Crane (1871–1900)
 
 | Author Knowledge             | Content                                                                                                                                                                             |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16152,7 +16153,7 @@ The novella shaped modern ghost stories, psychological horror, unreliable narrat
 
 This fact matters because Crane’s war is not documentary in the narrow sense. He imagines battle from inside fear. The result is not inaccurate fantasy, but a new kind of psychological realism. His soldiers rarely see the whole field; they see flashes, colors, smoke, bodies, flags, wounds, and gestures. **Crane’s realism comes from limited perception. War becomes real precisely because no one can fully see it.**
 
-### The Red Badge of Courage, 1895
+### The Red Badge of Courage (1895)
 
 | Work Knowledge         | Content                                                                                                                                                              |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16205,7 +16206,7 @@ The novel influenced modern war fiction, cinematic battle representation, psycho
 
 **The Red Badge of Courage matters because it turns courage into a problem rather than a slogan.** Henry Fleming is not a great warrior; he is a frightened young man trying to understand what his own fear means. Crane’s battlefield is modern because heroism no longer arrives as inherited certainty. **It has to be improvised inside smoke.**
 
-### Charlotte Perkins Gilman, 1860–1935
+### Charlotte Perkins Gilman (1860–1935)
 
 | Author Knowledge      | Content                                                                                                                                                                                   |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16221,7 +16222,7 @@ The novel influenced modern war fiction, cinematic battle representation, psycho
 
 The biographical background is important but should not reduce the story to a case history. Gilman herself endured a version of the `rest cure`, being told to abandon intellectual and creative work. the source record describes this treatment as one that, while supposedly promoting mental health, often worsened women’s mental illness by isolating them and forbidding activity. 
 
-### The Yellow Wallpaper, 1892
+### The Yellow Wallpaper (1892)
 
 | Work Knowledge       | Content                                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -16279,7 +16280,7 @@ With **Crane** and **Gilman**, American realism moves beyond region and manners 
 
 **Together, these writers show that late-19th-century American realism is not one style.** It can be river speech, international perception, battlefield impression, or wallpaper nightmare. **Its shared force lies in stripping away inherited illusions: heroic war, innocent boyhood, stable marriage, respectable medicine, refined perception, and national moral innocence.**
 
-### Emergence of Modern Japanese Literature, c. 1880–1900
+### Emergence of Modern Japanese Literature (c. 1880–1900)
 
 | Tradition Knowledge            | Content                                                                                                                                                                                                                                         |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16297,7 +16298,7 @@ But **Higuchi Ichiyō** is not simply a Westernized realist. the source record s
 
 **This makes Ichiyō especially important.** She stands at the border of worlds: old Japanese literary refinement and new realist pressure, women’s classical education and modern urban poverty, childhood play and adult social destiny.
 
-### Higuchi Ichiyō, 1872–1896
+### Higuchi Ichiyō (1872–1896)
 
 | Author Knowledge      | Content                                                                                                                                                                                                            |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -16315,7 +16316,7 @@ But **Higuchi Ichiyō** is not simply a Westernized realist. the source record s
 
 scholarly accounts describes her as both typical and atypical of realism: typical because she belongs to the global spread of realist fiction; atypical because her literary formation did not come primarily from Western realist models.  Her realism is therefore not borrowed realism. It is a local transformation of realist attention through Japanese narrative memory.
 
-### Takekurabe / Child’s Play / Growing Up / 《青梅竹马》, 1895–1896
+### Takekurabe / Child’s Play / Growing Up / 《青梅竹马》 (1895–1896)
 
 | Work Knowledge            | Content                                                                                                                                                                                              |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16382,7 +16383,7 @@ The move from **Crane** and **Gilman** to **Ichiyō** shows realism becoming int
 **Crane asks what war does to fear.** Gilman asks what domestic medicine does to a woman’s mind. Ichiyō asks what social destiny does to children before they become adults. **Together, they show late-19th-century realism moving toward modernism: less certainty, less closure, more interior pressure, and more attention to the ordinary spaces where life is quietly damaged.**
 
 
-### Indian and Bengali Literature, c. 1890–1930
+### Indian and Bengali Literature (c. 1890–1930)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16400,7 +16401,7 @@ In India, the situation is especially complex. scholarly accounts notes that Ind
 
 **Tagore’s importance lies in this double movement.** He is modern because he writes under colonial modernity and world-literary circulation; he is not derivative because he makes that modernity answer to Bengali language, Indian social life, spiritual humanism, and the problem of cultural synthesis.
 
-### Rabindranath Tagore, 1861–1941
+### Rabindranath Tagore (1861–1941)
 
 | Author Knowledge        | Content                                                                                                                                                                                                                                         |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16422,7 +16423,7 @@ His thought also resists narrow classification. He supported Indian anti-colonia
 
 **Tagore’s writing repeatedly asks for freedom at several levels: political freedom from colonial domination, social freedom from caste and patriarchy, spiritual freedom from mechanical life, and cultural freedom from both colonial imitation and nationalist enclosure.**
 
-### Tagore’s Poetry, especially Gitanjali and the Songs, c. 1890s–1930s
+### Tagore’s Poetry, especially Gitanjali and the Songs (c. 1890s–1930s)
 
 | Work Knowledge            | Content                                                                                                                                                                                                                           |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16472,7 +16473,7 @@ His poetry and songs remain central to Bengali culture, Indian literature, and g
 
 **Tagore’s poetry matters because it gives modern world literature a lyric of relation.** It does not ask India to become Europe, nor does it ask India to close itself against the world. **It asks whether song can become a meeting place: between person and God, nature and history, nation and humanity, suffering and joy, finitude and the infinite.**
 
-### Tagore’s Short Stories, c. 1890s–1910s
+### Tagore’s Short Stories (c. 1890s–1910s)
 
 | Work Knowledge             | Content                                                                                                                                                                                                                            |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16539,7 +16540,7 @@ His short stories influenced Indian fiction, Bengali realism, feminist readings 
 
 ## Modernist Crisis (1890-1945)
 
-### Modernist Novel, c. 1899–1927
+### Modernist Novel (c. 1899–1927)
 
 | Tradition Knowledge             | Content                                                                                                                                                                                                                          |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16559,7 +16560,7 @@ The modernist novel does not abandon realism simply by becoming obscure. It chan
 
 **Conrad and Proust therefore open two great modernist routes.** Conrad asks how one can narrate historical evil when every narrator is implicated in language, empire, and delayed perception. Proust asks how time can be lost, recovered, and transformed into art. One descends into colonial darkness; the other descends into memory. **Both discover that the modern novel must become a machine for questioning its own access to truth.**
 
-### Joseph Conrad, 1857–1924
+### Joseph Conrad (1857–1924)
 
 | Author Knowledge         | Content                                                                                                                                                                           |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16579,7 +16580,7 @@ His early fiction followed 19th-century models, especially **Flaubertian** irony
 
 **Conrad’s modernism begins with distance.** The story is not simply there; it is told later, by a man who does not fully understand what he saw, to listeners who may not understand what they hear. **Truth becomes something glimpsed through narrative fog.**
 
-### Heart of Darkness, 1899 / 1902
+### Heart of Darkness (1899 / 1902)
 
 | Work Knowledge       | Content                                                                                                                                                           |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16638,7 +16639,7 @@ The novella influenced modernist fiction, postcolonial literature, political all
 
 **Heart of Darkness matters because it turns the imperial adventure into a narrative of contamination.** Marlow goes to the Congo expecting to see a dark place; he returns having seen that European civilization carries its own darkness into the places it claims to enlighten. Conrad’s achievement is not moral purity. **It is the invention of a form adequate to impurity: framed, delayed, troubled, complicit, and still unable to look away.**
 
-### Marcel Proust, 1871–1922
+### Marcel Proust (1871–1922)
 
 | Author Knowledge      | Content                                                                                                                                                                               |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16657,7 +16658,7 @@ This distinction is essential. The narrator is often called **Marcel**, but he i
 
 **Proust’s modernism lies in this transformation.** Life does not become literature by being copied. **It becomes literature when sensations, memories, social illusions, desire, jealousy, and time are placed into form.**
 
-### In Search of Lost Time, 1913–1927
+### In Search of Lost Time (1913–1927)
 
 | Work Knowledge       | Content                                                                                                                                                                                                |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -16726,7 +16727,7 @@ Proust influenced modernist fiction, autofiction, memory writing, queer literary
 **The modernist novel matters because it breaks the old trust that the world can be narrated from outside.** Empire must be told by a compromised witness. Childhood must be recovered through involuntary sensation. Society must be seen through desire and illusion. The self must be distinguished from the narrator who speaks it. **After Conrad and Proust, the novel becomes less a window than an apparatus: a device for testing darkness, memory, time, and the unstable truth of consciousness.**
 
 
-### James Joyce, 1882–1941
+### James Joyce (1882–1941)
 
 | Author Knowledge      | Content                                                                                                                                                                          |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16742,7 +16743,7 @@ Proust influenced modernist fiction, autofiction, memory writing, queer literary
 
 The source material stresses that moving from **Henry James** to **James Joyce** feels like a “quantum jump” in storytelling: Joyce is still a realist writer in *Dubliners*, but the realism is already charged with poetic sensibility, epiphany, and modernist pressure.  In *Ulysses*, that pressure becomes one of the most radical formal transformations of the modern novel.
 
-### Dubliners, 1914
+### Dubliners (1914)
 
 | Work Knowledge             | Content                                                                                                                                                                                                                                                                                   |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16793,7 +16794,7 @@ The collection shaped the modern short story, urban realism, epiphanic fiction, 
 
 **Dubliners matters because it makes the ordinary city morally luminous and spiritually suffocating at once.** Joyce does not need heroic action. **A boy at a bazaar, a girl at a quay, a man listening to his wife’s memory, snow falling across Ireland: these are enough to show a civilization unable to come fully alive.**
 
-### Ulysses, 1922
+### Ulysses (1922)
 
 | Work Knowledge       | Content                                                                                                                                                                                                                                |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16850,7 +16851,7 @@ The source material calls *Ulysses* the “definitive modernist novel” and pla
 
 **Ulysses matters because it proves that ordinary life can bear epic weight without ceasing to be ordinary.** Bloom is not Odysseus because he slays enemies; he is modern Odysseus because he endures, wanders, thinks, desires, suffers, returns, and does not take revenge. Joyce’s epic is comic, bodily, Jewish-Irish, urban, obscene, tender, and linguistic. **It makes one day large enough for world literature.**
 
-### Ford Madox Ford, 1873–1939
+### Ford Madox Ford (1873–1939)
 
 | Author Knowledge     | Content                                                                                                                                                                                       |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16865,7 +16866,7 @@ The source material calls *Ulysses* the “definitive modernist novel” and pla
 
 This places Ford near **Conrad**, but with a different moral atmosphere. Conrad’s broken narration often leads toward imperial darkness, political violence, or metaphysical unease. Ford’s broken narration often unfolds inside marriage, adultery, social manners, English gentility, Catholic-Protestant tension, money, illness, and the self-protective lies of respectable people.
 
-### The Good Soldier, 1915
+### The Good Soldier (1915)
 
 | Work Knowledge        | Content                                                                                                                                                                                                  |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16927,7 +16928,7 @@ The novel influenced modern unreliable narration, retrospective confession, non-
 **After Conrad and Proust, the modernist novel has already lost confidence in direct narration.** Joyce radicalizes that loss into abundance: consciousness, myth, city, body, and style proliferate. Ford radicalizes it into uncertainty: the narrator cannot even arrange his own life in truthful order. Together, they show that modernism is not one technique. **It is a crisis in how fiction knows: through memory, voice, myth, bodily flow, broken chronology, and the belated recognition that the life one lived may not have been understood at all.**
 
 
-### Franz Kafka, 1883–1924
+### Franz Kafka (1883–1924)
 
 | Author Knowledge           | Content                                                                                                                                                                     |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16950,7 +16951,7 @@ His fiction frequently begins with a shock that is not explained. A man wakes as
 **Literary Knowledge and Developmental Lines:**
 Kafka is essential for the modern antihero. Earlier heroic traditions imagined the hero as warrior, voyager, seeker, founder, or rebel. Kafka’s figures are not conquerors but accused persons, failed sons, clerks, petitioners, and bodies in rooms. They inherit the quest structure, but the quest object becomes inaccessible: the law, the father’s approval, the institution’s meaning, the door that never opens, the explanation that never arrives.
 
-### The Metamorphosis, 1915
+### The Metamorphosis (1915)
 
 | Work Knowledge       | Content                                                                                                                               |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16993,7 +16994,7 @@ Its influence appears in existentialist literature, absurdist drama, body horror
 
 *The Metamorphosis* matters because it turns a family apartment into a complete modern world. Work, debt, care, shame, body, father, sister, room, and food all become parts of one system. Gregor does not die because he becomes an insect; he dies because his humanity can no longer be socially used.
 
-### The Trial, 1925
+### The Trial (1925)
 
 | Work Knowledge          | Content                                                                                                        |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -17036,7 +17037,7 @@ The word “Kafkaesque” comes largely from this world: accusation without expl
 
 *The Trial* matters because it makes guilt structural. Josef K. may or may not have committed any particular wrong; the novel’s deeper claim is that modern institutions can make accusation prior to understanding. One does not first know the law and then fail it. One discovers oneself already inside a process whose terms are withheld.
 
-### Virginia Woolf, 1882–1941
+### Virginia Woolf (1882–1941)
 
 | Author Knowledge         | Content                                                                                                                                               |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17057,7 +17058,7 @@ Her novels repeatedly hold together beauty and mortality. She writes parties, fl
 **Literary Knowledge and Developmental Lines:**
 Woolf’s modernism differs from Joyce’s encyclopedic density and Kafka’s institutional nightmare. She works by rhythm, interior movement, and perceptual delicacy. Her novels often compress external time while expanding mental time. One day, one dinner, one family gathering, one remembered kiss, one painting, one death notice: these become sites where a whole life can appear.
 
-### Mrs Dalloway, 1925
+### Mrs Dalloway (1925)
 
 | Work Knowledge             | Content                                                                                                                                             |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17096,7 +17097,7 @@ Its influence appears in Michael Cunningham’s *The Hours*, feminist modernist 
 
 *Mrs Dalloway* matters because it makes a day large enough to contain a life. Its plot is small if measured by external events, but immense if measured by consciousness. Woolf shows that modern experience does not unfold in a line; it pulses through memory, social performance, fear, desire, and sudden contact with death.
 
-### To the Lighthouse, 1927
+### To the Lighthouse (1927)
 
 | Work Knowledge       | Content                                                                                                                       |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -17137,7 +17138,7 @@ The novel influences later feminist fiction, family memory narratives, modernist
 
 *To the Lighthouse* matters because it makes time visible. It shows how a family world feels eternal while one is inside it, and how quickly it can vanish. Its answer is not nostalgia. It offers a harder consolation: perception, memory, and art cannot defeat time, but they can make its losses formally intelligible.
 
-### W. B. Yeats, 1865–1939
+### W. B. Yeats (1865–1939)
 
 | Author Knowledge       | Content                                                                                                                                                                               |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17157,7 +17158,7 @@ Yeats also becomes modern through subtraction. In “A Coat,” he describes his
 
 In the late poetry, however, Yeats does not simply become plain. He develops a symbolic system of history, especially through the idea of the **gyre**, a spiral or turning historical cycle. After his marriage to **George Hyde-Lees** in 1917 and their experiments with automatic writing, Yeats’ imagination is renewed. The late poems no longer return naively to Celtic myth; they use symbolic vision to grasp the rage and chaos of the present world. 
 
-### Yeats’s Poetry, c. 1889–1939
+### Yeats’s Poetry (c. 1889–1939)
 
 | Work Knowledge                  | Content                                                                                                                                  |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17199,7 +17200,7 @@ Yeats influences modern Irish literature, postcolonial debates about national cu
 
 **Yeats’s poetry matters because it repeatedly stages the renewal of imagination under pressure.** Ireland changes, history darkens, the body ages, myths fail, and yet the poem finds new form. **Yeats is not the poet of one style; he is the poet of self-revision as destiny.**
 
-### Ezra Pound, 1885–1972
+### Ezra Pound (1885–1972)
 
 | Author Knowledge          | Content                                                                                                                                                                        |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -17220,7 +17221,7 @@ This gives Pound’s modernism an ascetic dimension. Good poetry should be lean,
 
 Yet Pound’s later career also shows the danger of grand systems. His long poem *The Cantos* tries to gather history, economics, Confucian thought, Renaissance Italy, American politics, Chinese characters, troubadour lyric, banking theory, and personal memory into one vast structure. The ambition is immense. The result is brilliant, fragmentary, uneven, and morally compromised by Pound’s political obsessions.
 
-### Pound’s Poetry, c. 1908–1969
+### Pound’s Poetry (c. 1908–1969)
 
 | Work Knowledge                | Content                                                                                                              |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -17259,7 +17260,7 @@ Pound influences modernist poetry, objectivist poetry, translation poetics, proj
 
 **Pound’s poetry matters because it forces modern poetry to become exact, international, fragmentary, and historically ambitious.** His best work teaches poetry to cut, condense, juxtapose, and recover the past as energy. **His worst failures show what happens when poetic system, cultural authority, and political delusion become entangled.**
 
-### H.D., 1886–1961
+### H.D. (1886–1961)
 
 | Author Knowledge      | Content                                                                                                                                         |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17277,7 +17278,7 @@ scholarly accounts describe H.D.’s early poems, especially those from *Sea Gar
 
 H.D.’s Imagism is not soft. The rose, traditionally a symbol of romantic beauty, becomes harsh, clear, cut in rock, flung on sand, sparse of leaf. This transformation matters. H.D. takes inherited lyric symbols and strips them of decorative sweetness. **Her flowers are not ornaments; they are poems under pressure.**
 
-### H.D.’s Poetry, c. 1910s–1960s
+### H.D.’s Poetry (c. 1910s–1960s)
 
 | Work Knowledge                      | Content                                                                                                        |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------- |
@@ -17316,7 +17317,7 @@ H.D. influences feminist modernist recovery, lyric minimalism, classical revisio
 
 **H.D.’s poetry matters because it proves that modernist hardness need not be merely masculine, impersonal, or intellectual.** Her images are sharp because they are vulnerable. **A rose cut in rock is not the absence of feeling; it is feeling that has learned to survive by becoming exact.**
 
-### T. S. Eliot, 1888–1965
+### T. S. Eliot (1888–1965)
 
 | Author Knowledge       | Content                                                                                                                                                                     |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17334,7 +17335,7 @@ His modernism is not merely formal experimentation. It is also a crisis of histo
 
 Eliot also reshaped literary criticism. His essays on tradition, impersonality, the metaphysical poets, and poetic objectivity helped define modernist taste. His poetics favored hardness, impersonality, technical discipline, and cultural memory. In the broader modernist cluster, Eliot is often read alongside **Pound**, **Yeats**, **Stevens**, **Moore**, and **Crane**; canonical surveys material explicitly places Eliot among the major rivals or counterparts to **Wallace Stevens** in modern American poetry, and also notes that **Crane** rejected Eliot’s vision while being unable to evade Eliot’s idiom. 
 
-### The Waste Land, 1922
+### The Waste Land (1922)
 
 | Work Knowledge         | Content                                                                                                                      |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -17375,7 +17376,7 @@ The poem influences modernist and postmodern montage, apocalyptic cultural criti
 
 *The Waste Land* matters because it turns cultural breakdown into poetic architecture. Its difficulty is not accidental. The poem is difficult because the civilization it represents has become difficult to inhabit. It does not offer easy rebirth; it gathers fragments and asks whether fragments can still sustain consciousness.
 
-### William Carlos Williams, 1883–1963
+### William Carlos Williams (1883–1963)
 
 | Author Knowledge       | Content                                                                                                                         |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -17391,7 +17392,7 @@ The poem influences modernist and postmodern montage, apocalyptic cultural criti
 
 Williams’ life as a physician is central to his poetry. He saw bodies, births, illness, poverty, and domestic life at close range. This gave his modernism a different texture from the expatriate literary cosmopolitanism of Pound or Eliot. His poetry often feels close to the hand and eye: things are touched, seen, set down. scholarly accounts describes Williams’ investment in what is “naked,” primary, and modern: a way of envisioning the world in its bare terms and calling forth a primary human energy. 
 
-### Williams’s Poetry, c. 1910s–1960s
+### Williams’s Poetry (c. 1910s–1960s)
 
 | Work Knowledge                 | Content                                                                                                             |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
@@ -17432,7 +17433,7 @@ His influence appears in Charles Olson, Robert Creeley, Allen Ginsberg, Denise L
 
 **Williams’ poetry matters because it makes the ordinary object bear poetic responsibility.** A wheelbarrow, a plum, a weed, a hospital corridor, a local city: these are not minor because they are ordinary. **They are the matter from which a democratic modern poetry can be made.**
 
-### Wallace Stevens, 1879–1955
+### Wallace Stevens (1879–1955)
 
 | Author Knowledge       | Content                                                                                                               |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -17449,7 +17450,7 @@ canonical surveys material states that Stevens is clearly canonical and perhaps 
 
 Stevens’ biography is famously split. He worked in the insurance industry while writing some of the most intellectually ambitious poetry in English. This split matters less as anecdote than as structure: Stevens often writes from within ordinary modern life while imagining poetry as a supreme act of mental transformation.
 
-### Stevens’s Poetry, c. 1910s–1950s
+### Stevens’s Poetry (c. 1910s–1950s)
 
 | Work Knowledge           | Content                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17489,7 +17490,7 @@ Stevens’ influence is visible in Ashbery, Merrill, Bishop, Ammons, philosophic
 
 **Stevens’ poetry matters because it asks what imagination is for.** It does not merely decorate reality; it tests how reality becomes habitable. **In a secular modern world, poetry becomes one of the mind’s last great instruments for making order without pretending that order is final.**
 
-### Marianne Moore, 1887–1972
+### Marianne Moore (1887–1972)
 
 | Author Knowledge       | Content                                                                                                                                                            |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -17506,7 +17507,7 @@ Moore’s poetry is observational but not merely descriptive. Animals, armor, pa
 
 Her poems often incorporate quotation. This makes them feel documentary and constructed. Moore does not pretend to be the lone romantic genius pouring out feeling. She builds poems from observed facts, borrowed phrases, odd details, and syllabic structures. **Her modernism is exacting rather than explosive.**
 
-### Moore’s Poetry, c. 1910s–1960s
+### Moore’s Poetry (c. 1910s–1960s)
 
 | Work Knowledge           | Content                                                                                                  |
 | ------------------------ | -------------------------------------------------------------------------------------------------------- |
@@ -17544,7 +17545,7 @@ Moore influences Elizabeth Bishop, animal poetry, documentary lyric, syllabic ve
 
 **Moore’s poetry matters because it makes exactness a form of integrity.** Her poems do not conquer the world; they attend to it. **In modernism, where grandeur, fragmentation, and manifesto often dominate, Moore offers another rigor: humility before the strange precision of things.**
 
-### Hart Crane, 1899–1932
+### Hart Crane (1899–1932)
 
 | Author Knowledge       | Content                                                                                                                                              |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17561,7 +17562,7 @@ Crane’s central ambition was to create a modern American myth. He wanted moder
 
 This ambition is risky. Crane’s poetry often strains under its own intensity. Its syntax can feel unstable; images leap rapidly; metaphors are compressed until they become difficult to unpack. But that difficulty is part of the project. **Crane wants modern American experience to rise to epic and lyric grandeur, even though the modern materials resist such elevation.**
 
-### Crane’s Poetry, c. 1920s–1932
+### Crane’s Poetry (c. 1920s–1932)
 
 | Work Knowledge           | Content                                                                                                        |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
@@ -17602,7 +17603,7 @@ Crane influences later American poets interested in the long poem, queer lyric i
 
 **Crane’s poetry matters because it attempts an almost impossible task: to make modern America radiant.** His bridge is not merely a bridge. It is a wager that machinery, city, body, music, and history might still become song. **The wager fails at times, but the failure is part of its grandeur.**
 
-### American Modern Fiction, c. 1920s–1940s
+### American Modern Fiction (c. 1920s–1940s)
 
 | Movement Knowledge     | Content                                                                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17622,7 +17623,7 @@ the scholarly record treat *The Great Gatsby* and *The Sun Also Rises* as closel
 **Literary Knowledge and Developmental Lines:**
 American modern fiction inherits 19th-century realism but compresses and darkens it. The large social panorama remains, but it often appears through a wounded consciousness or symbolic scene. Fitzgerald refines the social novel into an American dream tragedy; Hemingway pares the story down until emotion hides beneath gesture and dialogue. Together they reshape modern prose: one through lyric-symbolic elegance, the other through disciplined omission.
 
-### F. Scott Fitzgerald, 1896–1940
+### F. Scott Fitzgerald (1896–1940)
 
 | Author Knowledge       | Content                                                                                                                                                                                                                |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17640,7 +17641,7 @@ His central subject is not simply “the rich.” It is the dream that wealth se
 
 scholarly accounts on *The Great Gatsby* emphasizes Fitzgerald’s extraordinary attention to detail and interconnection. The novel may appear easier to read than Faulkner, but it is densely constructed, full of echoes, symbolic returns, and carefully placed motifs. 
 
-### The Great Gatsby, 1925
+### The Great Gatsby (1925)
 
 | Work Knowledge          | Content                                                                                                                                                                   |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17683,7 +17684,7 @@ The novel is one of the defining works of American modern fiction. It turns the 
 
 *The Great Gatsby* matters because it makes illusion beautiful before condemning it. Gatsby’s dream is false, but not petty. Fitzgerald’s achievement is to make the reader feel both the radiance and the emptiness of that dream. The tragedy is not that Gatsby wanted too little, but that he asked a corrupt social world to bear an absolute meaning it could never hold.
 
-### Ernest Hemingway, 1899–1961
+### Ernest Hemingway (1899–1961)
 
 | Author Knowledge       | Content                                                                                                                                      |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17701,7 +17702,7 @@ The key to Hemingway is **omission**. He does not explain trauma directly if a g
 
 Another key concept is `parataxis`: placing clauses or sentences side by side without strong subordination or explicit hierarchy. The canonical reading lists material describes Hemingway’s prose as an art of evocation through parataxis, marked by the refusal of emphasis and an even tone of apparent understatement.  This means Hemingway often refuses to tell the reader which detail matters most. The reader must feel the pressure beneath the flat surface.
 
-### In Our Time, 1925
+### In Our Time (1925)
 
 | Work Knowledge       | Content                                                                                                                                                 |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17737,7 +17738,7 @@ The linked-story cycle becomes important for later American fiction. Hemingway�
 
 *In Our Time* matters because it shows how modern fiction can be made from fragments without losing unity. Hemingway does not tell the whole story of a life. He gives the broken scenes through which a life becomes legible.
 
-### The Sun Also Rises, 1926
+### The Sun Also Rises (1926)
 
 | Work Knowledge       | Content                                                                                                                                         |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17776,7 +17777,7 @@ The novel influences expatriate fiction, minimalist prose, travel writing, mascu
 
 *The Sun Also Rises* matters because it makes emptiness social. The characters do not collapse into silence; they keep moving, drinking, flirting, traveling, and joking. Their vitality is real, but it is built over damage. Hemingway’s art lies in making the damage visible without naming it too much.
 
-### The Killers, 1927
+### The Killers (1927)
 
 | Work Knowledge       | Content                                                                                                              |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -17819,7 +17820,7 @@ The story influenced film noir, crime fiction, minimalist short fiction, and cin
 *The Killers* matters because it makes initiation negative. Nick does not gain a skill, a lover, a profession, or a heroic identity. He gains knowledge of helplessness. The adult world appears not as a field of meaningful action, but as a place where death may already be decided before one enters the room.
 
 
-### John Steinbeck, 1902–1968
+### John Steinbeck (1902–1968)
 
 | Author Knowledge       | Content                                                                                                                                                                                                 |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17836,7 +17837,7 @@ Steinbeck’s reputation is divided. He was widely popular, won the Nobel Prize,
 
 The key to Steinbeck is his effort to turn social suffering into moral epic. His fiction often moves between particular characters and a larger collective condition. A family loses land; a whole people are displaced. A preacher loses orthodox faith; a collective soul emerges. A road trip becomes an American Exodus. This is why biblical language and structure matter so much for Steinbeck. His migrants are not only economic victims; they are imagined as a people wandering through a hostile land toward an uncertain promise.
 
-### The Grapes of Wrath, 1939
+### The Grapes of Wrath (1939)
 
 | Work Knowledge          | Content                                                                                                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -17877,7 +17878,7 @@ The novel influenced American protest literature, labor fiction, migrant narrati
 
 *The Grapes of Wrath* matters because it turns economic dispossession into moral drama. Its weaknesses are real: sentimentality, schematic symbolism, and sometimes simplified characterization. But its force remains substantial. Steinbeck makes hunger visible, and he makes social suffering speak in a language close to prophecy.
 
-### European Modern Fiction and Drama, c. 1900–1945
+### European Modern Fiction and Drama (c. 1900–1945)
 
 | Movement Knowledge     | Content                                                                                                                                                             |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17892,7 +17893,7 @@ European modern fiction and drama develop under the pressure of a civilization l
 
 **Thomas Mann** is central to this movement because he does not simply break with 19th-century realism. He absorbs it, ironizes it, and expands it into symbolic and intellectual fiction. His novels and novellas still care about bourgeois life, Bildung, family, art, illness, and society, but these older forms become unstable. In Mann, a vacation, a sanatorium, an erotic fixation, or a disease outbreak becomes an image of European culture itself.
 
-### Thomas Mann, 1875–1955
+### Thomas Mann (1875–1955)
 
 | Author Knowledge        | Content                                                                                                                            |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -17910,7 +17911,7 @@ scholarly accounts emphasizes that Mann’s career repeatedly works through cont
 
 Mann is especially important for the tradition of **disease literature**. Disease in his fiction is never only medical. It exposes mortality, social weakness, erotic vulnerability, spiritual decay, and cultural crisis. The same scholarly accounts places Mann in a long Western tradition of plague and disease writing, reaching back to **Sophocles**’ *Oedipus the King* and **Boccaccio**’s *Decameron*, and forward to **Camus** and later epidemic literature. 
 
-### Death in Venice, 1912
+### Death in Venice (1912)
 
 | Work Knowledge               | Content                                                                                                                                         |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17949,7 +17950,7 @@ The novella influenced modern writing about the artist, queer desire, aesthetic 
 
 *Death in Venice* matters because it shows art turning against the artist. Aschenbach’s whole life has been built on form, discipline, and distance. In Venice, distance collapses. Beauty becomes not salvation but contagion.
 
-### The Magic Mountain, 1924
+### The Magic Mountain (1924)
 
 | Work Knowledge         | Content                                                                                                                                          |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -17996,7 +17997,7 @@ The novel influences later philosophical fiction, institutional novels, disease 
 
 *The Magic Mountain* **matters because it turns illness into historical knowledge.** A young man goes up a mountain for three weeks and remains for seven years; Europe goes into self-reflection and emerges into war. Mann’s novel is not only about tuberculosis. **It is about a civilization too intelligent, too refined, and too diseased to recognize the catastrophe toward which it is drifting.**
 
-### Luigi Pirandello, 1867–1936
+### Luigi Pirandello (1867–1936)
 
 | Author Knowledge      | Content                                                                                                                                                             |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18013,7 +18014,7 @@ Pirandello’s philosophical center is the instability of the self. He began by 
 
 This is why Pirandello’s drama should not be treated as mere cleverness. His theatrical devices are philosophical instruments. If actors can fail to embody characters, if characters can seem more real than living people, if a person can be trapped inside the role others assign to them, then identity itself becomes theatrical. **Pirandello’s stage is a laboratory for the modern self: the person is not a solid essence behind the mask, but a conflict among masks, interpretations, and unfinished stories.**
 
-### Six Characters in Search of an Author, 1921
+### Six Characters in Search of an Author (1921)
 
 | Work Knowledge        | Content                                                                                                                   |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -18057,7 +18058,7 @@ Its influence can be seen in **Beckett**, **Pinter**, **Genet**, postmodern thea
 
 *Six Characters in Search of an Author* matters because it makes fiction rebel against its maker. The characters are unfinished, but not unreal. They expose a modern anxiety that extends beyond the theater: perhaps human beings too are unfinished characters, trapped inside roles, demanding an author who never arrives.
 
-### Bertolt Brecht, 1898–1956
+### Bertolt Brecht (1898–1956)
 
 | Author Knowledge       | Content                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -18077,7 +18078,7 @@ His theory of `epic theater` opposes traditional dramatic absorption. Instead of
 
 Brecht’s didacticism is therefore dramatic, not merely sermonic. He does not want the audience to nod at an idea; he wants them to see contradiction. In his strongest plays, however, the characters often exceed the lesson Brecht says they should teach. scholarly accounts notes this paradox in relation to *Mother Courage*: Brecht wanted the audience to condemn war profiteering, yet the complexity and vitality of Mother Courage made her more moving than his lesson could fully control. 
 
-### The Good Person of Szechwan, 1943
+### The Good Person of Szechwan (1943)
 
 | Work Knowledge       | Content                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18121,7 +18122,7 @@ The play influenced postwar political theater, feminist theater, documentary the
 
 *The Good Person of Szechwan* **matters because it refuses to let goodness remain a private virtue.** Shen Te is good, but the world makes goodness unaffordable. Brecht’s play therefore shifts moral judgment from the individual soul to the social system. **The unresolved ending is not a failure of plot; it is the play’s demand that the audience continue thinking after the curtain falls.**
 
-### Russian and Soviet Modern Literature, c. 1900–1960s
+### Russian and Soviet Modern Literature (c. 1900–1960s)
 
 | Movement Knowledge     | Content                                                                                                                                                                     |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18138,7 +18139,7 @@ This does not make Soviet literature merely documentary. Some of its greatest wo
 
 scholarly accounts explicitly identifies a strong Russian literary tradition in which literature speaks for those whose voices have been silenced: **Dostoevsky**, **Akhmatova**, and later **Solzhenitsyn** are presented as part of this line. It also notes that this function is not unique to Russia, but becomes especially intense in Russian and Soviet history because of political repression. 
 
-### Anna Akhmatova, 1889–1966
+### Anna Akhmatova (1889–1966)
 
 | Author Knowledge          | Content                                                                                                                                     |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18156,7 +18157,7 @@ Her later historical position is darker. In 1922 she was declared politically un
 
 This is why Akhmatova matters for world literature. She turns lyric poetry into a mode of historical witness. The lyric “I” does not disappear, but it expands. The suffering mother becomes one woman and all women; the prison line becomes one historical moment and an image of repeated human grief. **Akhmatova’s achievement is to make poetry speak under conditions designed to destroy speech.**
 
-### Requiem, 1935–1961
+### Requiem (1935–1961)
 
 | Work Knowledge         | Content                                                                                                                        |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -18200,7 +18201,7 @@ The poem influenced readings of trauma poetry, women’s witness writing, Russia
 
 *Requiem* matters because it gives form to a silence imposed by terror. The poem does not defeat the state in political terms, but it defeats erasure. It remembers the waiting women, the imprisoned sons, the executed husbands, and the crushed country. Its lyric voice becomes a memorial when no public monument can yet stand.
 
-### Mikhail Bulgakov, 1891–1940
+### Mikhail Bulgakov (1891–1940)
 
 | Author Knowledge        | Content                                                                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18218,7 +18219,7 @@ His central method is satirical inversion. In a world that denies metaphysics, t
 
 *The Master and Margarita* is listed in the core Russian section of canonical reading lists, alongside **Akhmatova**, **Mandelstam**, **Mayakovsky**, **Pasternak**, **Platonov**, and **Solzhenitsyn**, which places Bulgakov clearly within the modern Russian and Soviet canon being organized here. 
 
-### The Master and Margarita, 1928–1940; pub. 1966–67 censored
+### The Master and Margarita (1928–1940; pub. 1966–67 censored)
 
 | Work Knowledge                  | Content                                                                                                                                                                      |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18268,7 +18269,7 @@ The novel has influenced magical realism, political satire, postmodern fiction, 
 *The Master and Margarita* matters because it makes fantasy morally serious. The devil enters Moscow not to make the world irrational, but to show that official reality was already irrational. Bulgakov’s novel is comic, blasphemous, tender, theological, satirical, and romantic at once. Its deepest claim is that art and truth may be persecuted, hidden, and burned, but they are not finally extinguished.
 
 
-### Japanese Modern Literature, c. 1890s–1960s
+### Japanese Modern Literature (c. 1890s–1960s)
 
 | Movement Knowledge     | Content                                                                                                                                                                             |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18286,7 +18287,7 @@ By the early 20th century, realism and naturalism had become important in Japan,
 **Literary Knowledge and Developmental Lines:**
 Japanese modern literature often works through tension: modern psychology and older aesthetic distance; Western realism and Japanese ellipsis; urban modernity and seasonal landscape; erotic desire and emotional restraint; visible plot and hidden feeling. In Kawabata especially, ambiguity may come partly from modernist technique and partly from Japanese aesthetic inheritance. scholarly accounts explicitly frames *Snow Country* through this double question: are its ambiguities the result of modernist prose, or do they also come from a Japanese aesthetic that may elude Western readers? 
 
-### Yasunari Kawabata, 1899–1972
+### Yasunari Kawabata (1899–1972)
 
 | Author Knowledge       | Content                                                                                                                                            |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18304,7 +18305,7 @@ Kawabata’s relation to Western modernism matters. scholarly accounts notes tha
 
 His fiction often turns beauty into a problem. Beauty attracts, but it does not heal. It appears intensely, but cannot be possessed. The male spectator often fails to enter genuine mutual relation with the woman he observes. This creates one of Kawabata’s recurring tensions: the aesthetic gaze can preserve beauty, but it may also freeze or waste living feeling.
 
-### Snow Country, 1935–1947
+### Snow Country (1935–1947)
 
 | Work Knowledge          | Content                                                                                                                                           |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18351,7 +18352,7 @@ The novel influenced international perceptions of Japanese literary aesthetics a
 
 *Snow Country* matters because it makes beauty feel both exquisite and morally insufficient. Shimamura sees beautifully, but seeing beautifully is not the same as loving well. Kawabata’s snow country is therefore not a romantic refuge. It is a place where feeling appears with extraordinary clarity and still cannot be saved.
 
-### Harlem Renaissance, c. 1918–1937
+### Harlem Renaissance (c. 1918–1937)
 
 | Movement Knowledge     | Content                                                                                                                                                                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18368,7 +18369,7 @@ the scholarly record places **Jean Toomer**, **Langston Hughes**, and **Zora Nea
 
 The movement also contained internal debates. Should Black art conform to middle-class respectability in order to prove equality? Should it imitate white poetic standards? Should it elevate folk culture or distance itself from it? **Langston Hughes**’s essay “The Negro Artist and the Racial Mountain” becomes central here because it rejects the desire to write “white” and insists that Black artists should draw from the lives, speech, music, and expressive power of ordinary Black people. scholarly accounts quotes and explains this argument at length, especially Hughes’s contrast between bourgeois aspirations toward “Nordic culture” and the “low-down folks” whose joy, religion, jazz, and individuality resist American standardization. 
 
-### Langston Hughes, 1901–1967
+### Langston Hughes (1901–1967)
 
 | Author Knowledge       | Content                                                                                                                                               |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18386,7 +18387,7 @@ scholarly accounts makes Hughes’s ambition clear: like **Yeats**, Hughes wante
 
 Hughes also positions himself against respectability politics. In “The Negro Artist and the Racial Mountain,” he refuses the idea that the highest ambition of Black poetry is to approximate white poetry. He turns instead toward ordinary Black people, jazz, blues, Saturday-night pleasure, religious shout, and expressive individuality.  **This is Hughes’s literary revolution: he makes Black vernacular culture not raw material to be cleaned up, but a source of poetic authority.**
 
-### The Weary Blues, 1926
+### The Weary Blues (1926)
 
 | Work Knowledge           | Content                                                                                                      |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------ |
@@ -18434,7 +18435,7 @@ Hughes influences Black Arts poetry, spoken word, jazz poetry, blues poetry, civ
 **Langston Hughes’s poetry matters because it changes the sound of American modernism.** It refuses to climb the “racial mountain” by imitating whiteness. Instead, it listens to rivers, blues, jazz, kitchens, streets, mothers, workers, students, and deferred dreams. **Hughes makes American poetry more democratic not by lowering its art, but by expanding the voices that art can recognize.**
 
 
-### Claude McKay, 1889–1948
+### Claude McKay (1889–1948)
 
 | Author Knowledge                | Content                                                                                                                                         |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18452,7 +18453,7 @@ scholarly accounts emphasizes that McKay was born in Jamaica, published “If We
 
 This tension is the key to McKay. His poetry often does not reject European poetic inheritance. Instead, it forces that inheritance to carry Black anger, dignity, and self-defense. The sonnet, traditionally associated with love, courtship, wit, spiritual struggle, or personal inwardness, becomes in McKay’s hands a collective battle cry. **McKay’s achievement is not that he chooses a “proper” form despite radical content. It is that he makes propriety itself turn militant.**
 
-### If We Must Die, 1919
+### If We Must Die (1919)
 
 | Work Knowledge          | Content                                                                                                                    |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -18494,7 +18495,7 @@ The poem became one of the most famous poems of the Harlem Renaissance and one o
 
 *If We Must Die* matters because it transforms the condition of being hunted into the language of collective dignity. The poem does not promise rescue. It offers something more severe: if death cannot be avoided, degradation can still be refused. McKay’s sonnet turns resistance into form.
 
-### Countee Cullen, 1903–1946
+### Countee Cullen (1903–1946)
 
 | Author Knowledge                | Content                                                                                                                                                          |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18512,7 +18513,7 @@ scholarly accounts on Cullen repeatedly frames him through **double consciousnes
 
 This makes Cullen important for the overall modernist poetry sequence. Even though his traditional forms may seem less formally revolutionary than Hughes’s blues poems or Pound’s imagist experiments, Cullen’s work raises a central modernist problem: no form is innocent. A sonnet carries history. A rhyme carries expectation. A poetic inheritance can be both resource and burden.
 
-### Cullen’s Poetry, c. 1920s–1940s
+### Cullen’s Poetry (c. 1920s–1940s)
 
 | Work Knowledge           | Content                                                                                                               |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------- |
@@ -18560,7 +18561,7 @@ Cullen’s poems continue to matter for discussions of racial memory, poetic for
 
 ## Genre Futures (1800-now)
 
-### Fairy-Tale and Folklore Studies, c. 1810s–1930s
+### Fairy-Tale and Folklore Studies (c. 1810s–1930s)
 
 | Field Knowledge       | Content                                                                                                                                                                                     |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18577,7 +18578,7 @@ the scholarly record on fairy tales emphasizes precisely this persistence. Fairy
 
 This field has two especially important stages for world-literature notes. The **Brothers Grimm** represent collection, national philology, editorial transformation, and the making of folk narrative into literary canon. **Vladimir Propp** represents structural analysis: the attempt to discover what folktales do beneath their changing names, costumes, animals, kingdoms, and magical objects.
 
-### Brothers Grimm, 1785–1863 / 1786–1859
+### Brothers Grimm (1785–1863 / 1786–1859)
 
 | Author Knowledge       | Content                                                                                                                                                         |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18597,7 +18598,7 @@ The Grimms also occupy an ambiguous place between oral and literary culture. The
 
 scholarly accounts that the kinds of orally composed folktales Propp studied were “precisely the kinds of stories the Grimm brothers had purported to publish.”  The wording is important. The Grimms presented their work as a recovery of folk material, but later scholarship has had to examine how much that recovery was shaped by editorial ideology, family morality, gender expectation, class selection, and national imagination.
 
-### Grimms’ Fairy Tales, 1812–1857
+### Grimms’ Fairy Tales (1812–1857)
 
 | Work Knowledge           | Content                                                                                                                                                     |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18641,7 +18642,7 @@ The Grimms shape Disney animation, psychoanalytic theory, feminist fairy-tale re
 
 *Grimms’ Fairy Tales* matter because they turn fear into patterned survivability. They do not remove terror from childhood; they give terror a form. A child enters the forest, meets the witch, survives the oven, and comes home changed. The tale’s promise is not that the world is safe, but that danger can be imagined, named, and overcome.
 
-### Fantasy Literature, c. 1800–1900
+### Fantasy Literature (c. 1800–1900)
 
 | Movement Knowledge   | Content                                                                                                                                                                           |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18660,7 +18661,7 @@ This is why fantasy is not simply “less serious” than realism. Realism assum
 **Literary Knowledge and Developmental Lines:**
 Fantasy literature is important because it connects several traditions: the fairy tale’s magical pattern, the Gothic’s fear and uncertainty, Romanticism’s inward imagination, children’s literature’s freedom of play, and modernism / postmodernism’s interest in unstable language and self-reference. Hoffmann makes the fantastic uncanny and psychologically ambiguous; Carroll makes it logical, linguistic, comic, and recursive. Together, they prepare later fantasy not only as world-building, but as a theory of perception.
 
-### E. T. A. Hoffmann, 1776–1822
+### E. T. A. Hoffmann (1776–1822)
 
 | Author Knowledge      | Content                                                                                                                                                           |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18678,7 +18679,7 @@ His biography helps explain the range of his fiction. He was not only a writer b
 
 Music is especially important. For Hoffmann, art is not merely decoration; it opens another order of experience. Music, dreams, manuscripts, automata, and magical objects often become gateways into uncertain reality. His characters are frequently artists, students, copyists, musicians, or obsessive spectators. They do not simply encounter fantasy from outside; their own perception is already unstable.
 
-### Hoffmann’s Fantastic Fiction, c. 1809–1819
+### Hoffmann’s Fantastic Fiction (c. 1809–1819)
 
 | Work Knowledge                     | Content                                                                                                                               |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18721,7 +18722,7 @@ His influence reaches opera, ballet, Gothic fiction, uncanny fiction, children�
 
 **Hoffmann’s fantastic fiction matters because it makes fantasy modern.** The impossible no longer belongs safely to a separate fairy-tale realm. It enters the city, the room, the artwork, the eye, and the nervous system. **After Hoffmann, fantasy is not only a world elsewhere; it is the instability already inside perception.**
 
-### Lewis Carroll, 1832–1898
+### Lewis Carroll (1832–1898)
 
 | Author Knowledge      | Content                                                                                                                                                            |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -18740,7 +18741,7 @@ Carroll was not only an author. the scholarly record describes him as a mathemat
 
 The Alice books grow out of children’s literature, but they are not confined to children. the scholarly record makes a broad point about children’s literature: it can work for adults because it allows writers to say things that would be harder to say in direct adult discourse, and because it nurtures the fantastic for readers of all ages.  This is especially true of Carroll. Wonderland is a child’s adventure, but also a philosophical comedy of language.
 
-### Alice’s Adventures in Wonderland, 1865
+### Alice’s Adventures in Wonderland (1865)
 
 | Work Knowledge       | Content                                                                                                                                                     |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18790,7 +18791,7 @@ Its afterlife includes *Through the Looking-Glass*, modern fantasy, surrealist a
 
 *Alice’s Adventures in Wonderland* **matters because it makes childhood imagination intellectually serious.** The book is playful, but its play is exact. Alice falls into a world where language governs reality badly, authority becomes comic, identity changes size, and rules continue after meaning has disappeared. **Carroll’s fantasy is therefore not escape from thought; it is thought disguised as play.**
 
-### J. R. R. Tolkien, 1892–1973
+### J. R. R. Tolkien (1892–1973)
 
 | Author Knowledge      | Content                                                                                                                                                        |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18811,7 +18812,7 @@ Tolkien’s fantasy is therefore built from linguistic and historical depth. Mid
 
 His relation to Norse mythology is especially important. scholarly accounts that **Gandalf** is directly connected to the figure of **Odin the Wanderer**: both are wandering, staff-bearing, wisdom-bearing figures who move through the world in unassuming form while acting against evil. It also notes that Tolkien drew on Norse ring traditions, including the destructive power of the cursed ring and the underground, possessive figure that anticipates **Gollum**.  
 
-### The Hobbit, 1937
+### The Hobbit (1937)
 
 | Work Knowledge          | Content                                                                                                                                                 |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18855,7 +18856,7 @@ The novel shapes later children’s fantasy, quest fantasy, role-playing games, 
 
 *The Hobbit* matters because it makes heroic adventure hospitable to the small and ordinary. Bilbo does not become great by becoming a warrior in the old sense. He becomes great by learning courage, speech, pity, and restraint. In Tolkien’s fantasy, smallness is not weakness; it is the condition from which moral greatness may appear.
 
-### The Lord of the Rings, 1954–1955
+### The Lord of the Rings (1954–1955)
 
 | Work Knowledge         | Content                                                                                                                               |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18899,7 +18900,7 @@ The novel becomes the central model for modern epic fantasy: quest fellowship, d
 
 *The Lord of the Rings* **matters because it restores epic seriousness inside modern fantasy.** It does not merely give readers another world; it asks what power does to the soul, whether weakness can resist domination, and why pity may matter more than heroic strength. **Tolkien’s fantasy is escapist only if escape means escaping from the shallow surface of modernity into older and deeper moral forms.**
 
-### Scientific Adventure Fiction, c. 1860s–1900s
+### Scientific Adventure Fiction (c. 1860s–1900s)
 
 | Movement Knowledge   | Content                                                                                                                                                                      |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18914,7 +18915,7 @@ Scientific adventure fiction develops in the 19th century when science, transpor
 
 The distinction between **Verne** and **Wells** is important. the scholarly record contrasts them clearly: **Verne** tends to extol marvelous inventions and draw broad social satire, while **H. G. Wells** later offers subtler parables of political and philosophical criticism, helped by his scientific education under the influence of **T. H. Huxley**.  Verne is therefore not simply “the prophet of technology.” He is a writer of scientific enthusiasm, geographic imagination, and satirical adventure.
 
-### Jules Verne, 1828–1905
+### Jules Verne (1828–1905)
 
 | Author Knowledge      | Content                                                                                                                                                                                             |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18932,7 +18933,7 @@ His breakthrough came with *Five Weeks in a Balloon*, published by **Hetzel** in
 
 Verne’s fiction is full of what might be called the **rhetoric of science**: dates, locations, measurements, institutions, maps, instruments, classified knowledge, and technical explanation. The same lecture notes that the opening of *Five Weeks in a Balloon* immediately establishes a public scientific setting, the Royal Geographical Society in London, with applause, formal address, and external data.  This is Verne’s narrative signature: adventure begins when knowledge becomes publicly organized.
 
-### Journey to the Center of the Earth, 1864
+### Journey to the Center of the Earth (1864)
 
 | Work Knowledge                  | Content                                                                                                                                                                                             |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -18989,7 +18990,7 @@ Verne influences science fiction, adventure fiction, steampunk, submarine fictio
 
 **Verne’s novels matter because they make science adventurous before science becomes fully dystopian.** Machines open routes; routes produce wonder; wonder becomes education and satire. **His fiction believes that knowledge can move, measure, and organize the world, but its best moments also reveal the comedy, arrogance, loneliness, and danger inside that belief.**
 
-### Looking Backward / Modern Utopian Fiction, 1888
+### Looking Backward / Modern Utopian Fiction (1888)
 
 | Work Knowledge          | Content                                                                                                                                                  |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19040,7 +19041,7 @@ Bellamy influenced Progressive reform, socialist imagination, technocratic plann
 
 *Looking Backward* matters because it turns utopia into a future reform program. More asks readers to judge England from the standpoint of an imaginary island. Bellamy asks Americans to judge capitalism from the standpoint of the year 2000. The novel’s future did not arrive as written, but its central question remains active: how much injustice is caused not by bad people, but by the way society organizes work, wealth, and security?
 
-### Dystopian Literature, c. 1920s–1949
+### Dystopian Literature (c. 1920s–1949)
 
 | Movement Knowledge     | Content                                                                                                                                                            |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19063,7 +19064,7 @@ the scholarly record identifies three central tensions in these early dystopias:
 **Literary Knowledge and Developmental Lines:**
 Dystopian literature often begins from the inside. Unlike utopian works, which frequently use a visitor who observes a strange society from outside, dystopian novels often use a citizen of the system as the main point of view. The protagonist slowly discovers the horror of the world that once seemed normal. the scholarly record notes this difference directly in relation to *We*: dystopia breaks with the utopian convention of using a visitor and instead gives the reader an actual member of the society as the point-of-view character. 
 
-### Yevgeny Zamyatin, 1884–1937
+### Yevgeny Zamyatin (1884–1937)
 
 | Author Knowledge            | Content                                                                                                                                      |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19079,7 +19080,7 @@ Dystopian literature often begins from the inside. Unlike utopian works, which f
 
 scholarly accounts calls *We* “perhaps less familiar” than *Brave New World* and *Nineteen Eighty-Four* to English-speaking readers, but equally important. It notes that *We* was written in Russian in 1921, banned by the Soviet Censorship Bureau, published in English in 1924, and hugely influential on later dystopian writing, especially Huxley and Orwell. 
 
-### We, 1921
+### We (1921)
 
 | Work Knowledge       | Content                                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -19124,7 +19125,7 @@ The numbered citizen, glass city, controlled sexuality, surgical elimination of 
 
 *We* **matters because it turns utopia’s dream of order into a nightmare of transparency.** Zamyatin’s question remains severe: if a society could abolish pain, irrationality, privacy, and conflict, what else would it abolish? **His answer is clear: it would abolish the human being.**
 
-### Aldous Huxley, 1894–1963
+### Aldous Huxley (1894–1963)
 
 | Author Knowledge       | Content                                                                                                                                                  |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19139,7 +19140,7 @@ The numbered citizen, glass city, controlled sexuality, surgical elimination of 
 
 scholarly accounts quotes Huxley’s own later contrast from *Brave New World Revisited*: in *Nineteen Eighty-Four*, the lust for power is satisfied by inflicting pain; in *Brave New World*, it is satisfied by inflicting a hardly less humiliating pleasure.  That sentence captures Huxley’s distinctive place in dystopian literature. His state does not need to crush everyone visibly. It manufactures citizens who do not want freedom strongly enough to resist.
 
-### Brave New World, 1932
+### Brave New World (1932)
 
 | Work Knowledge          | Content                                                                                                                                                                     |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19188,7 +19189,7 @@ The novel is one of the three major early 20th-century dystopias, alongside *We*
 
 *Brave New World* **matters because it shows that freedom can be lost without visible chains.** A society may not need to burn books if no one wants to read them, nor torture rebels if conditioning prevents rebellion from becoming desirable. **Huxley’s nightmare is the smile of the well-adjusted citizen.**
 
-### George Orwell, 1903–1950
+### George Orwell (1903–1950)
 
 | Author Knowledge       | Content                                                                                                                                                              |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19206,7 +19207,7 @@ the scholarly record on *Animal Farm* makes a key distinction: it is too narrow 
 
 This is the center of Orwell. He remained committed to democratic socialism, but he rejected the authoritarian myth that revolution automatically sanctifies whatever is done in its name. His two great political fictions are therefore paired. *Animal Farm* shows revolution betrayed through allegorical simplification. *Nineteen Eighty-Four* shows totalitarian power developed into a complete system of language, memory, surveillance, and torture.
 
-### Animal Farm, 1945
+### Animal Farm (1945)
 
 | Work Knowledge               | Content                                                                                                                                                               |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19252,7 +19253,7 @@ The novella was politically difficult to publish during World War II because cri
 
 *Animal Farm* **matters because it shows how a revolution can be defeated from inside its own language.** The animals do not wake up one morning enslaved. They are trained, step by step, to accept each revision as necessary. **Orwell’s fable is short because its mechanism is hard: power rewrites memory, and memory rewritten becomes obedience.**
 
-### Nineteen Eighty-Four, 1949
+### Nineteen Eighty-Four (1949)
 
 | Work Knowledge        | Content                                                                                                                                                               |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19301,7 +19302,7 @@ The novel gave modern political language many enduring terms: Big Brother, Newsp
 *Nineteen Eighty-Four* **matters because it makes domination epistemological.** The Party does not only want labor, silence, or obedience. It wants to decide what is real. **Orwell’s nightmare is a world where truth has no shelter: not in records, not in language, not in love, not even finally in the mind.**
 
 
-### Ray Bradbury, 1920–2012
+### Ray Bradbury (1920–2012)
 
 | Author Knowledge       | Content                                                                                                                                                        |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19316,7 +19317,7 @@ The novel gave modern political language many enduring terms: Big Brother, Newsp
 
 His style is more lyrical than Orwell’s and less satirical-intellectual than Huxley’s. Bradbury often writes through heightened images: fire, ash, screens, childhood memory, books, autumn, Mars, carnival, machinery. He is not primarily a technological predictor. He uses speculative premises to ask what modern society does to attention, memory, and moral imagination.
 
-### Fahrenheit 451, 1953
+### Fahrenheit 451 (1953)
 
 | Work Knowledge          | Content                                                                                                                                                    |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19357,7 +19358,7 @@ The novel remains central in debates about censorship, book banning, screen cult
 
 *Fahrenheit 451* **matters because it shows that censorship can win before the censor arrives.** A society that no longer wants slow thought has already prepared the fire.
 
-### Anthony Burgess, 1917–1993
+### Anthony Burgess (1917–1993)
 
 | Author Knowledge       | Content                                                                                                                       |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -19372,7 +19373,7 @@ The novel remains central in debates about censorship, book banning, screen cult
 
 scholarly accounts stresses that Alex’s violence has to be extreme for the novel’s argument to work: the question is not how society should handle harmless deviance, but what it is permitted to do to a person capable of rape, sadism, and murder.  This is the novel’s central moral pressure.
 
-### A Clockwork Orange, 1962
+### A Clockwork Orange (1962)
 
 | Work Knowledge          | Content                                                                                                                                   |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19416,7 +19417,7 @@ The novel influences debates about behavioral psychology, punishment, rehabilita
 
 *A Clockwork Orange* **matters because it makes freedom morally uncomfortable.** Burgess does not defend Alex’s crimes. He asks whether a society may destroy the capacity to choose in order to prevent crime. The answer is not easy, because Alex is not innocent. **That is why the novel still matters.**
 
-### Margaret Atwood, 1939–
+### Margaret Atwood (1939–)
 
 | Author Knowledge            | Content                                                                                                                                            |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19432,7 +19433,7 @@ The novel influences debates about behavioral psychology, punishment, rehabilita
 
 scholarly accounts identifies several major Atwood concerns: the double edge of language control, the importance of storytelling, the unstable space between utopia and dystopia, and ecological catastrophe in later works.  This is a useful frame: Atwood’s dystopia is not merely an imagined political system. It is a struggle over who gets to tell the story of that system.
 
-### The Handmaid’s Tale, 1985
+### The Handmaid’s Tale (1985)
 
 | Work Knowledge          | Content                                                                                                              |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -19478,7 +19479,7 @@ The novel shaped feminist speculative fiction, reproductive-rights discourse, te
 
 *The Handmaid’s Tale* **matters because it shows domination entering grammar, clothing, sex, money, reading, and memory.** Gilead is terrifying not because it is unimaginable, but because its materials are recognizable: scripture, household, law, fear, fertility, and the old habit of giving power a sacred name.
 
-### Suzanne Collins, 1962–
+### Suzanne Collins (1962–)
 
 | Author Knowledge       | Content                                                                                                                                             |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19493,7 +19494,7 @@ The novel shaped feminist speculative fiction, reproductive-rights discourse, te
 
 Collins’ background in television matters. Her pacing, cliffhangers, scene construction, and sense of audience spectacle are unusually strong. scholarly accounts directly connects the page-turning quality of *The Hunger Games* to Collins’ long experience as a TV writer, and notes the use of limited first-person narration and present tense to create immediacy. 
 
-### The Hunger Games, 2008
+### The Hunger Games (2008)
 
 | Work Knowledge          | Content                                                                                                                                                               |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19543,7 +19544,7 @@ The novel shaped 21st-century YA dystopia, film franchises, discussions of reali
 *The Hunger Games* **matters because it translates dystopia into the language of media culture.** Panem does not merely kill children. It makes children’s deaths watchable, sponsorable, narratable, and fashionable. **Collins’ strongest insight is that spectacle can make cruelty feel like a game until someone inside the game learns how to break the performance.**
 
 
-### Golden Age Science Fiction, c. 1938–1960s
+### Golden Age Science Fiction (c. 1938–1960s)
 
 | Movement Knowledge     | Content                                                                                                                                                                                                                   |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19562,7 +19563,7 @@ Golden Age science fiction is often associated with confidence in science and en
 **Literary Knowledge and Developmental Lines:**
 Golden Age science fiction develops from earlier scientific adventure, especially **Jules Verne** and **H. G. Wells**, but its emphasis shifts. Verne often treats science as travel and exploration; Wells often treats science as social and philosophical warning. Golden Age writers turn science into sustained world-building: a society, future history, galactic empire, robot civilization, or technological order can become the main fictional object.
 
-### Robert A. Heinlein, 1907–1988
+### Robert A. Heinlein (1907–1988)
 
 | Author Knowledge        | Content                                                                                                                                                            |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19578,7 +19579,7 @@ Golden Age science fiction develops from earlier scientific adventure, especiall
 
 scholarly accounts notes Heinlein’s background: he graduated from the U.S. Naval Academy, was discharged because of tuberculosis, later worked as an engineer during World War II, and his fiction often reflects admiration for military meritocracy.  This background helps explain his recurring interest in command, discipline, technical systems, and the moral burden of decision.
 
-### *Stranger in a Strange Land*, 1961
+### *Stranger in a Strange Land* (1961)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -19592,7 +19593,7 @@ scholarly accounts notes Heinlein’s background: he graduated from the U.S. Nav
 
 The novel's literary importance lies in its collision between science fiction and 1960s counterculture. It made Heinlein central not only to Golden Age science fiction but also to debates about sexual freedom, communal life, religion, charisma, and the outsider as critic of society.
 
-### Isaac Asimov, 1920–1992
+### Isaac Asimov (1920–1992)
 
 | Author Knowledge        | Content                                                                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19608,7 +19609,7 @@ The novel's literary importance lies in its collision between science fiction an
 
 scholarly accounts describes Asimov as extraordinarily prolific and notes that he wrote or edited hundreds of books. It also emphasizes his scientific training, his work with Heinlein during World War II, and his later doctorate in biochemistry.  His fiction carries this explanatory temperament. He wants the reader to understand the rule, then watch it produce narrative consequences.
 
-### Robot Series, c. 1940s–1980s
+### Robot Series (c. 1940s–1980s)
 
 | Work Knowledge       | Content                                                                                                                                                                                |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19656,7 +19657,7 @@ The Three Laws became one of science fiction’s most famous conceptual inventio
 
 **Asimov’s Robot series matters because it makes ethics programmable and then shows why programmability is not enough.** The laws seem clear until they meet the world. **Every robot puzzle becomes a human puzzle: what is harm, what is obedience, and what does it mean to protect humanity?**
 
-### Arthur C. Clarke, 1917–2008
+### Arthur C. Clarke (1917–2008)
 
 | Author Knowledge          | Content                                                                                                                                                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19672,7 +19673,7 @@ The Three Laws became one of science fiction’s most famous conceptual inventio
 
 scholarly accounts notes that Clarke was trained in science, worked on pioneering radar during the Battle of Britain, later earned a first-class degree in mathematics and physics, and famously published the idea of the geosynchronous communication satellite in 1945.  This scientific background matters because Clarke’s fiction often treats technology with seriousness. But his greatest stories do not stop at technology. They use technology as a threshold into metaphysical awe.
 
-### *Childhood's End*, 1953
+### *Childhood's End* (1953)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -19685,7 +19686,7 @@ scholarly accounts notes that Clarke was trained in science, worked on pioneerin
 
 Clarke's importance lies in this enlargement of scale. Where Heinlein tests civic freedom and Asimov tests rational systems, Clarke imagines humanity under the pressure of the cosmos, where technological progress opens onto metaphysical humility.
 
-### New Wave and Social Science Fiction, c. 1960s–1990s
+### New Wave and Social Science Fiction (c. 1960s–1990s)
 
 | Movement Knowledge     | Content                                                                                                                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19704,7 +19705,7 @@ This does not mean that the earlier science-fiction tradition disappears. **Le G
 **Literary Knowledge and Developmental Lines:**
 The key change is from **technological extrapolation** to **social estrangement**. A New Wave or social-SF work often invents an alien world not to display gadgets, but to make ordinary assumptions strange. What if sex were not permanent? What if property were abolished but scarcity remained? What if language could become a weapon? What if reality were manufactured? What if species difference were added to race and gender as another axis of power? The genre’s old question—“What if?”—becomes less mechanical and more anthropological.
 
-### Ursula K. Le Guin, 1929–2018
+### Ursula K. Le Guin (1929–2018)
 
 | Author Knowledge                       | Content                                                                                                                                                  |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19723,7 +19724,7 @@ Her anthropological inheritance is decisive. Many science-fiction writers imagin
 
 Her style is also important. Bloom's discussion describes Le Guin as a major stylist whose restrained prose is especially fitted to her powers of invention, particularly in *The Left Hand of Darkness*.  This helps distinguish her from pulp SF: her worlds are strange, but her sentences are calm, precise, and ethically attentive. **Le Guin’s imagination is radical, but her prose often achieves its force through restraint.**
 
-### The Left Hand of Darkness, 1969
+### The Left Hand of Darkness (1969)
 
 | Work Knowledge          | Content                                                                                                                                                                     |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19767,7 +19768,7 @@ The novel influenced feminist SF, queer speculative fiction, anthropological wor
 
 *The Left Hand of Darkness* **matters because it turns gender into an alien landscape.** Gethen is not a simple utopia. It has politics, fear, nationalism, exile, and betrayal. **But by removing permanent gender division, Le Guin reveals how much of ordinary human thought has been built around it.**
 
-### The Dispossessed, 1974
+### The Dispossessed (1974)
 
 | Work Knowledge        | Content                                                                                                                                                                  |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19812,7 +19813,7 @@ The novel remains central in discussions of anarchism, property, academic freedo
 
 *The Dispossessed* **matters because it protects utopia from its own simplifications.** It insists that another world is possible, but also that another world will still need criticism. Le Guin’s anarchism is not a fantasy of innocence. **It is a discipline of freedom under conditions of scarcity, habit, and human imperfection.**
 
-### Philip K. Dick, 1928–1982
+### Philip K. Dick (1928–1982)
 
 | Author Knowledge             | Content                                                                                                                                                                |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19828,7 +19829,7 @@ The novel remains central in discussions of anarchism, property, academic freedo
 
 the scholarly record describes Dick as extremely prolific despite his short life: 44 novels and more than 100 short stories, many with strong cinematic potential. It points specifically to “Minority Report,” *A Scanner Darkly*, and **Do Androids Dream of Electric Sheep?** as texts that pose questions about free will, criminality, drug identity, and what it means to be human. 
 
-### **Do Androids Dream of Electric Sheep?**, 1968
+### **Do Androids Dream of Electric Sheep?** (1968)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -19841,7 +19842,7 @@ the scholarly record describes Dick as extremely prolific despite his short life
 
 Its later film afterlife through *Blade Runner* made the book one of the key sources for cyberpunk and artificial-life fiction, but the novel remains stranger and more morally unstable than a simple machine-rebellion story.
 
-### Samuel R. Delany, 1942–
+### Samuel R. Delany (1942–)
 
 | Author Knowledge             | Content                                                                                                                                                          |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19856,7 +19857,7 @@ Its later film afterlife through *Blade Runner* made the book one of the key sou
 
 scholarly accounts identifies *Babel-17* as a Nebula-winning novel in which language itself becomes a weapon. It also notes that *The Einstein Intersection* breaks down the boundary between ancient myth and a post-Holocaust future world.  This captures Delany’s range: he is both linguistic and mythic, technical and erotic, speculative and literary.
 
-### *Dhalgren*, 1975
+### *Dhalgren* (1975)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -19870,7 +19871,7 @@ scholarly accounts identifies *Babel-17* as a Nebula-winning novel in which lang
 
 The novel matters because it pushes genre fiction toward modernist and postmodernist experiment. Delany shows that speculative fiction can handle not only future technologies but also fractured subjectivity, queer desire, race, language, and the breakdown of narrative order.
 
-### Octavia E. Butler, 1947–2006
+### Octavia E. Butler (1947–2006)
 
 | Author Knowledge             | Content                                                                                                                                          |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19888,7 +19889,7 @@ scholarly accounts describes Butler as a writer whose works do not fit neatly in
 
 The same material also connects Butler to intersectionality and adds species as another axis of otherness beyond race, class, gender, and sexuality.  This is one of Butler’s major innovations. In her fiction, alien contact or genetic difference is not an escape from human politics. It intensifies the politics of embodiment.
 
-### *Kindred*, 1979
+### *Kindred* (1979)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -19901,7 +19902,7 @@ The same material also connects Butler to intersectionality and adds species as 
 
 The novel is Butler's most teachable and canonical work because it joins speculative form to American historical trauma. It also clarifies Butler's larger method: power is intimate, survival is morally compromised, and freedom cannot be imagined without facing the structures that produced the present.
 
-### Cyberpunk, c. 1980s–1990s
+### Cyberpunk (c. 1980s–1990s)
 
 | Movement Knowledge   | Content                                                                                                                                                                                       |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19919,7 +19920,7 @@ scholarly accounts connects cyberpunk to **Donna Haraway**’s cyborg thinking: 
 
 Cyberpunk’s “punk” side matters as much as its “cyber” side. Its protagonists are often not astronauts, scientists, imperial explorers, or enlightened reformers. They are damaged specialists, criminals, addicts, mercenaries, freelance hackers, and people who survive at the edge of systems they cannot control. **Cyberpunk turns the science-fiction hero into a street-level operator inside information capitalism.**
 
-### William Gibson, 1948–
+### William Gibson (1948–)
 
 | Author Knowledge      | Content                                                                                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19936,7 +19937,7 @@ scholarly accounts treats Gibson’s *Neuromancer* as the “key document” of 
 
 Gibson’s future is not utopian or purely dystopian. It is operational. People do business, steal data, modify bodies, make deals, use drugs, enter networks, and drift through systems too large to understand. **His fiction often feels less like a warning than like a diagnosis: modern life has already become cyberpunk in tendency before the machines fully arrive.**
 
-### Neuromancer, 1984
+### Neuromancer (1984)
 
 | Work Knowledge          | Content                                                                                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19980,7 +19981,7 @@ Its influence appears in *The Matrix*, cyberpunk anime, hacker fiction, virtual-
 
 *Neuromancer* **matters because it makes the future feel like a networked underworld.** The old adventure frontier has become data; the old detective city has become cyberspace; the old question of the soul has become a question of consciousness inside machines. Gibson’s world is cold, fast, artificial, and strangely prophetic because it understands that information is not neutral. **It is power.**
 
-### Detective and Mystery Fiction, c. 1840s–present
+### Detective and Mystery Fiction (c. 1840s–present)
 
 | Genre Knowledge         | Content                                                                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19998,7 +19999,7 @@ the scholarly record notes that Poe called some of these works `tales of ratioci
 
 Detective fiction also belongs to modern urban life. In small traditional communities, identity and reputation are often known; in the modern city, strangers, newspapers, apartments, streets, crowds, and documents create new forms of anonymity. Crime becomes a problem of signs. Who saw what? What trace remains? Which testimony is false? What detail has been overlooked? **The detective becomes the reader of modernity.**
 
-### Poe’s Detective Fiction, 1841–1844
+### Poe’s Detective Fiction (1841–1844)
 
 | Work Knowledge       | Content                                                                                                                 |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -20043,7 +20044,7 @@ Poe’s detective fiction leads to **Sherlock Holmes**, the golden-age puzzle my
 **Poe’s detective fiction matters because it makes reading heroic.** Dupin does not conquer by strength; he reconstructs reality from signs. In detective fiction after Poe, the world becomes legible but never simple. **Crime tears the surface; analysis stitches it back together, leaving the reader with the pleasure of order recovered from darkness.**
 
 
-### Arthur Conan Doyle, 1859–1930
+### Arthur Conan Doyle (1859–1930)
 
 | Author Knowledge      | Content                                                                                                                                                                                                              |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20061,7 +20062,7 @@ The historical setting matters. The late 19th-century reading public wanted chea
 
 Holmes also belongs to the professionalization of observation. Doyle’s medical training gives the stories their peculiar confidence in bodily signs. A sleeve, shoe, tobacco ash, accent, mud stain, hand callus, handwriting, or posture can reveal hidden life. This is not magic, although it often feels magical to **Watson** and the reader. It is disciplined inference.
 
-### Sherlock Holmes Series, 1887–1927
+### Sherlock Holmes Series (1887–1927)
 
 | Work Knowledge       | Content                                                                                                                                           |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20107,7 +20108,7 @@ Holmes shapes nearly all later detective fiction: the consulting detective, the 
 
 **The Sherlock Holmes series matters because it turns detection into a modern habit of mind.** The reader learns to distrust first appearances, attend to details, and believe that confusion may hide a pattern. **Holmes is less a policeman than a model reader of the world.**
 
-### Agatha Christie, 1890–1976
+### Agatha Christie (1890–1976)
 
 | Author Knowledge      | Content                                                                                                                                                               |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20125,7 +20126,7 @@ scholarly accounts makes a useful point: in Christie, murder becomes dominant be
 
 Christie also understands readers with unusual accuracy. She knows readers want fairness, surprise, danger, and control. The rules must be honored enough for the game to feel legitimate, but bent enough for the revelation to shock. **Her best novels produce the pleasure of being deceived fairly.**
 
-### The Murder of Roger Ackroyd, 1926
+### The Murder of Roger Ackroyd (1926)
 
 | Work Knowledge           | Content                                                                                                                                                               |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20171,7 +20172,7 @@ Her influence appears in locked-room mysteries, country-house mysteries, “cozy
 
 **Christie’s novels matter because they convert murder into design.** The corpse breaks the social world; the detective reconstructs it. **Her fiction is comforting not because death is trivial, but because death is made intelligible by form.**
 
-### Raymond Chandler, 1888–1959
+### Raymond Chandler (1888–1959)
 
 | Author Knowledge      | Content                                                                                                                                 |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20189,7 +20190,7 @@ scholarly accounts explains the historical and formal shift clearly. Hard-boiled
 
 This does not mean hard-boiled fiction abandons morality. It abandons the fantasy that reason alone can restore society. Chandler’s private eye moves through a fallen world, but tries to maintain a code. In “The Simple Art of Murder,” Chandler defends American crime writing as more realistic than the artificial British puzzle tradition and presents the private eye as an embodiment of personal ethics in a corrupt world. 
 
-### Hard-Boiled Detective Fiction, c. 1920s–1950s
+### Hard-Boiled Detective Fiction (c. 1920s–1950s)
 
 | Work Knowledge                    | Content                                                                                                                                  |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20238,7 +20239,7 @@ Hard-boiled fiction leads to film noir, neo-noir, police procedural, cyberpunk d
 
 ## Postwar Decolonization (1945-1975)
 
-### American Postwar Drama, c. 1940s–1960s
+### American Postwar Drama (c. 1940s–1960s)
 
 | Movement Knowledge     | Content                                                                                                                                                                                                         |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20256,7 +20257,7 @@ American drama reaches a new maturity in the mid-20th century because it discove
 **Literary Knowledge and Developmental Lines:**
 This drama inherits realism from **Ibsen** and **Chekhov**, but it does not remain plain realism. The stage becomes a psychological and symbolic machine. O’Neill’s fog and night are states of mind; Williams’ music, light, and jungle sounds externalize desire and fear; Miller’s broken time structure turns memory into trial. The ordinary American family is no longer a safe social unit. It becomes the place where history, economy, sex, guilt, and memory come home.
 
-### Eugene O’Neill, 1888–1953
+### Eugene O’Neill (1888–1953)
 
 | Author Knowledge           | Content                                                                                                                                        |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20274,7 +20275,7 @@ O’Neill’s central subject is often the family. But the family in O’Neill i
 
 The autobiographical dimension is also essential. *Long Day’s Journey into Night* is not simply based on family material; it is almost a dramatic reckoning with O’Neill’s own parents, brother, illness, guilt, and memory. **Its greatness lies in the fact that confession becomes form. The play does not merely expose family wounds; it stages the rhythm by which wounded people repeat, deny, accuse, remember, and return.**
 
-### Long Day’s Journey into Night, written 1941–1942; first produced 1956
+### Long Day’s Journey into Night (written 1941–1942; first produced 1956)
 
 | Work Knowledge        | Content                                                                                                                                      |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20321,7 +20322,7 @@ The play shapes later family drama, addiction drama, memory drama, confessional 
 
 *Long Day’s Journey into Night* **matters because it makes the family house into a tragic underworld.** No one leaves the room unchanged, yet no one is finally freed. The play’s compassion lies in its refusal to simplify blame. **Love remains, but love cannot undo what these people have done to one another.**
 
-### Tennessee Williams, 1911–1983
+### Tennessee Williams (1911–1983)
 
 | Author Knowledge      | Content                                                                                                                                                                                      |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20339,7 +20340,7 @@ scholarly accounts describes Williams’ tragic vision as romantic: beauty and a
 
 Williams is also a major stage experimenter. His plays may have realistic apartments and recognizable social conflicts, but sound, light, music, offstage noise, dance-like movement, and symbolic setting make them expressionist. The world on stage is not merely objective reality; it is reality as felt by a damaged consciousness.
 
-### A Streetcar Named Desire, 1947
+### A Streetcar Named Desire (1947)
 
 | Work Knowledge       | Content                                                                                                                                                                                        |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20385,7 +20386,7 @@ The play influenced American psychological drama, Southern Gothic theater, film 
 
 *A Streetcar Named Desire* **matters because it refuses a clean moral opposition between truth and illusion.** Blanche lies, but her lies are shelter. Stanley exposes, but exposure becomes violence. **Williams’ tragedy lies in the fact that reality wins, and the victory is morally ugly.**
 
-### Arthur Miller, 1915–2005
+### Arthur Miller (1915–2005)
 
 | Author Knowledge      | Content                                                                                                                                                                   |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20403,7 +20404,7 @@ scholarly accounts stresses that Miller is “wonderfully social” and “uncon
 
 Miller’s key contribution is the modern American tragedy of the common person. His famous essay “Tragedy and the Common Man” argues that tragedy is not confined to kings or nobles. A salesman, father, worker, or neighbor may be tragic if his struggle for dignity exposes a deep social contradiction. **Miller’s theater democratizes tragedy by showing that a false national dream can destroy an ordinary family with tragic force.**
 
-### Death of a Salesman, 1949
+### Death of a Salesman (1949)
 
 | Work Knowledge       | Content                                                                                                                                            |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20455,7 +20456,7 @@ The play influences American family drama, social tragedy, critiques of capitali
 *Death of a Salesman* **matters because it turns the American dream into tragic material.** Willy Loman is not destroyed only by weakness; he is destroyed by believing too faithfully in a false measure of human worth. **Miller’s play asks what happens when a society teaches people to confuse being loved with being marketable.**
 
 
-### American Postwar Fiction, c. 1945–1960s
+### American Postwar Fiction (c. 1945–1960s)
 
 | Movement Knowledge     | Content                                                                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20473,7 +20474,7 @@ The African American novel becomes central here because it forces American ficti
 **Literary Knowledge and Developmental Lines:**
 A useful line runs from **Wright** to **Ellison** to **Baldwin** and later **Morrison**. Wright gives Black experience the force of social protest and naturalist pressure. Ellison transforms the protest tradition into a modernist, symbolic, comic, and philosophical novel of identity. Baldwin turns toward voice, intimacy, religion, sexuality, and moral witness. Morrison later reworks the whole tradition through folklore, historical memory, myth, and formal recursion. Bloom’s materials repeatedly position *Invisible Man* as a major precursor for later African American fiction, especially for **Toni Morrison**. 
 
-### Richard Wright, 1908–1960
+### Richard Wright (1908–1960)
 
 | Author Knowledge          | Content                                                                                                                                                                                  |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20491,7 +20492,7 @@ Wright’s fiction and autobiography are shaped by naturalism. Human beings are 
 
 This creates the most important difficulty in reading him. What is the relation between autobiography and fiction? If some scenes are shaped, borrowed, compressed, or heightened, does that weaken truth or produce a deeper representative truth? Wright himself described truth-telling in autobiography as a struggle against the desire to alter facts, decorate feelings, or evade what one does not want to admit.  **For Wright, truth is not raw memory. It is something wrestled into narrative.**
 
-### Black Boy, 1945
+### Black Boy (1945)
 
 | Work Knowledge       | Content                                                                                                                                                                                   |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20540,7 +20541,7 @@ The book became one of the key works of African American autobiographical writin
 
 *Black Boy* **matters because it makes authorship a matter of survival.** Richard does not become a writer by escaping life into books. **He becomes a writer because the world tries to deny him speech, and speech becomes the only way to answer that denial.**
 
-### Ralph Ellison, 1914–1994
+### Ralph Ellison (1914–1994)
 
 | Author Knowledge               | Content                                                                                                                                                                                    |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -20558,7 +20559,7 @@ Bloom's discussion calls *Invisible Man* a confirmed American classic and even p
 
 The key word is **invisibility**. The narrator is invisible not because he is literally transparent, but because others see only what their needs, ideologies, fears, and fantasies project onto him. White philanthropists, Black college leaders, radicals, nationalists, women, crowds, and institutions all see him incorrectly. **Ellison’s invisibility is therefore a theory of social perception. To be unseen is not to be absent; it is to be trapped inside other people’s meanings.**
 
-### Invisible Man, 1952
+### Invisible Man (1952)
 
 | Work Knowledge       | Content                                                                                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -20608,7 +20609,7 @@ The novel influenced African American fiction, postwar modernism, political sati
 
 *Invisible Man* **matters because it makes identity a struggle against imposed visibility.** The narrator is not unseen because no one looks at him. He is unseen because everyone looks through a ready-made image. **Ellison’s achievement is to turn that social condition into one of the great narrative structures of American literature: descent, disillusionment, underground speech, and the unresolved possibility of return.**
 
-### James Baldwin, 1924–1987
+### James Baldwin (1924–1987)
 
 | Author Knowledge     | Content                                                                                                                                        |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20624,7 +20625,7 @@ The novel influenced African American fiction, postwar modernism, political sati
 
 Baldwin’s power comes from the fusion of moral analysis and musical prose. His sentences often carry the pressure of sermon, blues, confession, and accusation. He writes about race not as an abstract political category but as lived inheritance: family fear, brotherly distance, urban darkness, addiction, religion, music, and the need to hear what suffering has made audible.
 
-### “Sonny’s Blues,” 1957
+### “Sonny’s Blues” (1957)
 
 | Work Knowledge       | Content                                                                                                               |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -20667,7 +20668,7 @@ The story belongs to the postwar expansion of the American canon, when African A
 
 **The achievement of *Sonny’s Blues* is that it makes listening a moral act.** The narrator cannot solve Sonny’s suffering, and the music cannot erase it. But the blues allows suffering to be heard without being wasted. **Baldwin’s story moves from newspaper fact to musical knowledge: from reading about Sonny to hearing him.**
 
-### Flannery O’Connor, 1925–1964
+### Flannery O’Connor (1925–1964)
 
 | Author Knowledge         | Content                                                                                                                                                                    |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20684,7 +20685,7 @@ Her fiction belongs to **Southern Gothic**, but she differs from writers who use
 
 She is also a comic writer, though the comedy is severe. Her scenes can be absurd, rural, exaggerated, and almost cartoon-like, but the laughter often turns suddenly into judgment. A roadside trip becomes execution; a self-invented anti-preacher becomes the most religious figure in the book; a respectable grandmother discovers kinship with a murderer only when it is too late.
 
-### Wise Blood, 1952
+### Wise Blood (1952)
 
 | Work Knowledge       | Content                                                                                                                                    |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -20728,7 +20729,7 @@ The novel influenced later Southern Gothic, religious fiction, grotesque satire,
 
 *Wise Blood* **matters because it makes unbelief dramatic.** Hazel Motes does not calmly stop believing. He fights Christ as if Christ were still there. **O’Connor’s cruel insight is that denial may be another form of bondage.**
 
-### A Good Man Is Hard to Find, 1953 / 1955
+### A Good Man Is Hard to Find (1953 / 1955)
 
 | Work Knowledge       | Content                                                                                                                                             |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20774,7 +20775,7 @@ The story influenced Southern Gothic, religious fiction, American short fiction,
 
 *A Good Man Is Hard to Find* **matters because it destroys cheap goodness.** The grandmother’s manners, nostalgia, and class identity cannot save her. Only when facing The Misfit does she possibly see another person as kin. **O’Connor’s story is cruel because its grace, if it comes, comes through terror.**
 
-### Shirley Jackson, 1916–1965
+### Shirley Jackson (1916–1965)
 
 | Author Knowledge      | Content                                                                                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20789,7 +20790,7 @@ The story influenced Southern Gothic, religious fiction, American short fiction,
 
 Jackson is especially strong at making collective violence feel normal. She does not always need monsters. The village, family, group, or house becomes the monster. **This is her central insight: horror may not enter society from outside. It may be the form society takes when no one questions its rituals.**
 
-### The Lottery, 1948
+### The Lottery (1948)
 
 | Work Knowledge       | Content                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20836,7 +20837,7 @@ The story influenced social horror, folk horror, dystopian ritual narratives, vi
 *The Lottery* matters because it makes horror civic. No monster arrives, no madman invades, no supernatural curse descends. The villagers gather, draw slips, follow procedure, and kill one of their own. Jackson’s story remains disturbing because it shows that evil may not need passion. Habit is enough.
 
 
-### J. D. Salinger, 1919–2010
+### J. D. Salinger (1919–2010)
 
 | Author Knowledge         | Content                                                                                                                                                                                     |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20854,7 +20855,7 @@ Salinger’s characters often suffer from a particular postwar disease: too much
 
 The Glass family is central. **Seymour Glass**, absent, dead, saintly, and troubling, becomes the spiritual center around which the siblings orbit. **Buddy**, **Zooey**, **Franny**, **Bessie**, and the others live under the pressure of family brilliance and emotional inheritance. The result is not ordinary realism. It is a family mythology built from talk, memory, religion, comedy, and breakdown.
 
-### Franny and Zooey, 1961
+### Franny and Zooey (1961)
 
 | Work Knowledge                | Content                                                                                                                                                |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -20900,7 +20901,7 @@ Its influence appears in campus fiction, spiritual fiction, family dialogue fict
 
 *Franny and Zooey* **matters because it exposes the vanity hidden inside anti-vanity.** Franny is right that much of the world is false, but Salinger’s answer is not contempt. **The answer is harder: polish the shoes, answer the phone, speak to the ordinary person, and learn to see the Fat Lady as sacred.**
 
-### Jack Kerouac, 1922–1969
+### Jack Kerouac (1922–1969)
 
 | Author Knowledge      | Content                                                                                                                                                      |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -20918,7 +20919,7 @@ Kerouac’s most famous idea of form is **spontaneous prose**. He wanted writing
 
 Yet Kerouac should not be treated only as a prophet of liberation. His fiction is full of longing and loss. The road promises freedom, but it also produces fatigue. Friendship promises ecstasy, but it also creates dependency, betrayal, and loneliness. America appears vast and holy, but also commercial, fragmented, and spiritually empty. **The road is both escape route and trap.**
 
-### On the Road, 1957
+### On the Road (1957)
 
 | Work Knowledge             | Content                                                                                                                                                                                      |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20969,7 +20970,7 @@ The novel influenced road fiction, countercultural memoir, travel writing, rock 
 
 *On the Road* **matters because it makes movement into a spiritual hunger.** The car, the highway, jazz, night, and friendship become ways to resist a settled life that feels dead. **But Kerouac’s greatness lies in the shadow inside the celebration: the road gives intensity, not peace.**
 
-### Theatre of the Absurd, c. 1950s–1960s
+### Theatre of the Absurd (c. 1950s–1960s)
 
 | Movement Knowledge           | Content                                                                                                                                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20989,7 +20990,7 @@ The term is strongly associated with **Martin Esslin**, whose formulation of *th
 **Literary Knowledge and Developmental Lines:**
 Absurdist drama inherits something from tragedy, farce, clowning, religious drama, existentialism, and modernism, but it belongs fully to none of them. From tragedy it takes human exposure and mortality; from farce it takes physical comedy, repetition, hats, boots, entrances, exits, and failed routines; from religious drama it takes waiting, prayer, salvation, and judgment; from modernism it takes fragmentation and distrust of stable meaning. Its distinctive achievement is to make all these inheritances appear on a stage where nothing quite completes itself.
 
-### Samuel Beckett, 1906–1989
+### Samuel Beckett (1906–1989)
 
 | Author Knowledge       | Content                                                                                                                                                                                   |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21009,7 +21010,7 @@ Beckett’s drama is also a drama of theatrical inheritance. He is near **Kafka*
 
 **Beckett’s originality lies in making theatrical poverty become philosophical abundance.** When almost nothing happens, every gesture becomes legible: taking off a boot, changing a hat, standing, falling, forgetting, waiting, threatening to leave, failing to leave. **The diminished stage does not reduce human existence; it exposes it.**
 
-### *Waiting for Godot*, 1953
+### *Waiting for Godot* (1953)
 
 | Work Knowledge         | Content                                                                                                                          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -21056,7 +21057,7 @@ Its influence extends through absurdist drama, minimalist theatre, postwar perfo
 
 **The power of *Waiting for Godot* is that nothing happens, twice, and yet the nothing is not empty.** It is filled with habit, fear, tenderness, cruelty, memory, boredom, comic timing, metaphysical hunger, and the stubborn fact of remaining alive. Beckett’s stage does not answer the question of meaning. **It shows what human beings do while the answer fails to arrive.**
 
-### Vladimir Nabokov, 1899–1977
+### Vladimir Nabokov (1899–1977)
 
 | Author Knowledge         | Content                                                                                                                                              |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21076,7 +21077,7 @@ Nabokov’s own ideal of reading is crucial. In the Yale scholarly accounts on *
 
 Nabokov is therefore not only a stylist. He is a writer who makes style ethically and epistemologically unstable. His surfaces glitter, but they are traps. His narrators are often brilliant, but brilliance is not innocence. His structures are playful, but play can conceal violence, loss, obsession, and control.
 
-### *Lolita*, 1955
+### *Lolita* (1955)
 
 | Work Knowledge        | Content                                                                                                                                                  |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21122,7 +21123,7 @@ The novel continues to shape discussions of unreliable narration, readerly compl
 
 **The enduring difficulty of *Lolita* is that it is both a stylistic masterpiece and a narrative of exploitation.** Nabokov makes the reader experience the danger of beauty when beauty is placed in the service of possession. **The correct response is neither prudish refusal nor aesthetic surrender, but disciplined rereading: the prose must be admired and mistrusted at the same time.**
 
-### *Pale Fire*, 1962
+### *Pale Fire* (1962)
 
 | Work Knowledge        | Content                                                                                                               |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -21178,7 +21179,7 @@ Modern Arabic literature cannot be understood simply as “Arabic writing in the
 
 This is why modern Arabic fiction is not merely a change of subject matter. It is a change of form. The novel becomes a tool for representing the city, the family, generational conflict, political awakening, colonial pressure, religious authority, and secular doubt. In this context, realism becomes especially important. It allows the writer to record social transformation not as abstract ideology but as pressure felt inside households, marriages, streets, schools, cafés, and private consciousness.
 
-### Naguib Mahfouz, 1911–2006
+### Naguib Mahfouz (1911–2006)
 
 | Author Knowledge       | Content                                                                                                                                                                 |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21196,7 +21197,7 @@ Mahfouz’s importance also lies in his mastery of realism. He did not simply im
 
 His fiction is therefore both local and world-literary. It is local because its textures are intensely Cairene: family interiors, patriarchal authority, neighborhood space, religious habits, political demonstrations, cafés, and generational speech. It is world-literary because these textures become a way to think about a wider modern problem: how traditional societies experience time when Western modernity, colonial domination, nationalism, and secular ideologies enter everyday life.
 
-### *The Cairo Trilogy*, 1956–1957
+### *The Cairo Trilogy* (1956–1957)
 
 | Work Knowledge       | Content                                                                                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21256,7 +21257,7 @@ scholarly accounts on **Achebe** stresses that he was reacting against Western t
 
 Yet postcolonial literature is rarely simple reversal. It does not always say “tradition good, West bad.” Both **Achebe** and **Soyinka** are more complex. Achebe shows the richness of Igbo society, but also its violence, gender hierarchy, rigidity, and internal conflicts. Soyinka defends the depth of Yoruba cosmology and ritual, but also dramatizes what happens when ritual enters modern theatre, colonial law, and humanist doubt. The result is not propaganda but layered historical tragedy.
 
-### Chinua Achebe, 1930–2013
+### Chinua Achebe (1930–2013)
 
 | Author Knowledge        | Content                                                                                                                |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -21274,7 +21275,7 @@ scholarly accounts explains that Achebe grew up between missionary influence and
 
 Achebe’s greatness lies in restraint. He does not idealize Umuofia. He shows its titles, rituals, festivals, agricultural rhythms, masculinity, fear, cruelty, beauty, and internal coherence. Then he shows how colonial Christianity, British administration, and new law do not simply “invade” from outside; they exploit tensions already present within Igbo society.
 
-### *Things Fall Apart*, 1958
+### *Things Fall Apart* (1958)
 
 | Work Knowledge         | Content                                                                                                                      |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -21321,7 +21322,7 @@ The novel shaped postcolonial fiction, African historical novels, debates on Eng
 
 **The tragedy of *Things Fall Apart* is not that a perfect world is destroyed by Europe.** It is that a coherent but flawed world meets a colonial force that understands neither its dignity nor its fractures. Okonkwo dies because he cannot survive the new world; Nwoye survives because he can leave the old one. **Achebe’s modernity lies in holding both truths at once.**
 
-### Wole Soyinka, b. 1934
+### Wole Soyinka (b. 1934)
 
 | Author Knowledge         | Content                                                                                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21339,7 +21340,7 @@ scholarly accounts on **Soyinka** emphasizes that *Death and the King’s Horsem
 
 This makes Soyinka especially important for world-literature study. He forces comparison between African theatre and Greek theatre, between ritual and drama, between colonial law and sacred obligation, between ethical modernity and metaphysical continuity. His drama is not reducible to plot because much of its meaning lies in rhythm, chant, transition, and embodied performance.
 
-### *Death and the King’s Horseman*, 1975
+### *Death and the King’s Horseman* (1975)
 
 | Work Knowledge       | Content                                                                                                                                                  |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21403,7 +21404,7 @@ the sources place **Borges** among the founders of modern Latin American literat
 **Literary Knowledge and Developmental Lines:**
 Latin American modern literature has at least two major lines relevant here. One line is **Borgesian**: literature as library, mirror, labyrinth, translation, false scholarship, infinite regress, and metaphysical play. The other is **magical-realist / historical-mythic**: reality is not escaped but thickened by myth, rumor, miracle, collective memory, and political catastrophe. These two lines are different but related. Both distrust naïve realism. Both ask whether reality is simply given, or whether it is produced by texts, stories, names, archives, myths, and inherited memory.
 
-### Jorge Luis Borges, 1899–1986
+### Jorge Luis Borges (1899–1986)
 
 | Author Knowledge           | Content                                                                                                                                                                                                |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -21426,7 +21427,7 @@ Borges’s importance lies in his extreme literary consciousness. His works know
 
 **Borges turns belatedness into power.** He does not ask how a writer can escape the library. **He asks what happens if the library itself becomes the world.**
 
-### *Ficciones*, 1944
+### *Ficciones* (1944)
 
 | Work Knowledge          | Content                                                                                                                                                               |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21466,7 +21467,7 @@ Its influence extends through postmodern fiction, philosophical fantasy, metafic
 
 **The force of *Ficciones* lies in its serene violence against ordinary reality.** Borges does not destroy the world dramatically; he footnotes it, translates it, catalogues it, mirrors it, and then reveals that it may already have been fictional.
 
-### *Labyrinths*, 1962
+### *Labyrinths* (1962)
 
 | Work Knowledge              | Content                                                                                                                                                                 |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21500,7 +21501,7 @@ Borges’s labyrinthine model influenced postmodern fiction, hypertext theory, s
 
 *Labyrinths* **is less a container than a key.** It teaches the reader how to enter Borges’s world: expect mirrors, distrust beginnings, treat scholarship as fiction, treat fiction as thought, and understand that the shortest story may contain an infinite architecture.
 
-### Gabriel García Márquez, 1927–2014
+### Gabriel García Márquez (1927–2014)
 
 | Author Knowledge      | Content                                                                                                                                                                                       |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21519,7 +21520,7 @@ His background as a journalist matters. García Márquez’s prose often reports
 **García Márquez and Magical Realism:**
 Magical realism should be understood as a formal strategy, not decorative fantasy. It fuses realistic social detail with events that violate ordinary causality, but the narrative voice treats both registers with equal composure. In García Márquez, the marvelous is often linked to historical repetition, colonial memory, folk Catholicism, political violence, and the limits of official history.
 
-### *One Hundred Years of Solitude*, 1967
+### *One Hundred Years of Solitude* (1967)
 
 | Work Knowledge       | Content                                                                                                       |
 | -------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -21566,7 +21567,7 @@ Its influence extends through global magical realism, family sagas, postcolonial
 
 **The grandeur of *One Hundred Years of Solitude* lies in its fusion of intimacy and apocalypse.** A family’s private repetitions become the history of a town; a town’s history becomes a continent’s memory; memory becomes text; and text becomes the only form in which a vanished world can survive.
 
-### “A Very Old Man with Enormous Wings,” 1955
+### “A Very Old Man with Enormous Wings” (1955)
 
 | Work Knowledge        | Content                                                                                                                                          |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -21630,7 +21631,7 @@ scholarly accounts make this contrast clear. Barth’s *Lost in the Funhouse* is
 **Literary Knowledge and Developmental Lines:**
 American postmodern fiction inherits **Borges**’ labyrinths, **Nabokov**’s games of style and unreliable narration, **Beckett**’s exhaustion, **Joyce**’s formal ambition, and the American line from **Melville** to **Faulkner**. But it also belongs to a distinctly postwar America: systems replace nature, information replaces experience, conspiracy replaces providence, and narrative becomes both the means of survival and the trap that catches the self.
 
-### John Barth, b. 1930
+### John Barth (b. 1930)
 
 | Author Knowledge          | Content                                                                                                                                                                                   |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21652,7 +21653,7 @@ Barth’s relation to tradition is therefore double. He loves older narrative fo
 
 **Barth’s central insight is that modern consciousness cannot simply live experience; it experiences experience through language.** Desire, embarrassment, memory, sexuality, and identity arrive already shaped by formulas. **His fiction is comic because it sees the machinery; it is painful because the machinery cannot be escaped.**
 
-### *Lost in the Funhouse*, 1968
+### *Lost in the Funhouse* (1968)
 
 | Work Knowledge          | Content                                                                                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -21699,7 +21700,7 @@ Its influence can be seen in later metafiction, creative writing pedagogy, exper
 
 **The paradox of *Lost in the Funhouse* is that it makes artificiality emotionally serious.** Ambrose’s problem is not that life lacks feeling. It is that feeling arrives already entangled with performance, quotation, convention, and narration. **Barth’s funhouse is funny because it reflects everything; it is frightening because the reflections have no obvious exit.**
 
-### Thomas Pynchon, b. 1937
+### Thomas Pynchon (b. 1937)
 
 | Author Knowledge      | Content                                                                                                                                                                       |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21721,7 +21722,7 @@ Pynchon’s world is often described through **paranoia**, but paranoia in Pynch
 
 **Pynchon’s America is not simply chaotic.** It may be too connected. The problem is that the connections cannot be trusted. **Every clue may reveal an underground truth, or only the mind’s desperate need for pattern.**
 
-### *The Crying of Lot 49*, 1966
+### *The Crying of Lot 49* (1966)
 
 | Work Knowledge            | Content                                                                                                                          |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -21792,7 +21793,7 @@ This is why **Calvino** and **Pynchon** are useful as paired figures. **Calvino*
 **Literary Knowledge and Developmental Lines:**
 Postmodern fiction inherits modernism but changes its emotional temperature. **Joyce**, **Woolf**, **Kafka**, and **Proust** fractured consciousness, time, and narrative authority; postmodern fiction often treats those fractures as already historical. It does not simply represent brokenness; it builds systems out of brokenness. In **Calvino**, the system may be elegant, mathematical, architectural, or self-reflexive. In **Pynchon**, the system may be technological, military, corporate, erotic, paranoid, and apocalyptic. Both writers ask a similar question in different tones: what happens when the world becomes readable only as a network of signs?
 
-### Italo Calvino, 1923–1985
+### Italo Calvino (1923–1985)
 
 | Author Knowledge              | Content                                                                                                                                                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21812,7 +21813,7 @@ canonical summaries is especially useful for locating him. It recommends *Six Me
 
 **Calvino’s importance lies in showing that postmodern fiction need not be only paranoid, dark, or overloaded.** It can be precise, light, combinatorial, and lucid. **His fiction accepts that the world is complex, but it responds by making forms through which complexity can be touched without being simplified.**
 
-### *Invisible Cities*, 1972
+### *Invisible Cities* (1972)
 
 | Work Knowledge           | Content                                                                                                                                                 |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21857,7 +21858,7 @@ Its influence extends through experimental fiction, speculative city writing, ar
 
 **The beauty of *Invisible Cities* lies in its refusal to choose between imagination and structure.** Each city is impossible, yet each clarifies something real: how memory inhabits space, how desire builds worlds, how power wants maps, and how language turns the visible city into an invisible one.
 
-### *If on a winter’s night a traveler*, 1979
+### *If on a winter’s night a traveler* (1979)
 
 | Work Knowledge           | Content                                                                                                                                   |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21904,7 +21905,7 @@ It influences later fiction about readers, archives, publishing, textual games, 
 
 **The novel’s deepest joke is also its deepest truth: readers do not simply consume books.** They chase them, imagine them, complete them, misread them, desire them, and become partly fictional while reading. **Calvino turns that ordinary experience into architecture.**
 
-### Pynchon’s Systems Fiction, 1973
+### Pynchon’s Systems Fiction (1973)
 
 | Author Knowledge      | Content                                                                                                                                                                      |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21924,7 +21925,7 @@ the sources on *Gravity’s Rainbow* describe Pynchon as a writer of the “age 
 
 Pynchon therefore differs sharply from Calvino. Calvino uses structure to produce lucidity and speculative elegance. Pynchon uses structure to produce overload, dread, and negative sublimity. Calvino’s cities are metaphysical models; Pynchon’s rocket-world is a historical machine.
 
-### *Gravity’s Rainbow*, 1973
+### *Gravity’s Rainbow* (1973)
 
 | Work Knowledge         | Content                                                                                                                                                              |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21975,7 +21976,7 @@ Its influence extends through **Don DeLillo**, cyberpunk, systems novels, conspi
 
 **The force of *Gravity’s Rainbow* lies in its terrifying ambition.** It does not merely tell a story about war. It tries to model the world that makes the rocket possible: science, capital, sexuality, bureaucracy, fantasy, death, and system. The result is not a clean totality but a shattered one. Slothrop scatters; the book nearly scatters with him; the rocket rises. **In Pynchon, postmodern fiction becomes apocalypse written as information overload.**
 
-### Don DeLillo, b. 1936
+### Don DeLillo (b. 1936)
 
 | Author Knowledge           | Content                                                                                                                                              |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21993,7 +21994,7 @@ the source record on DeLillo describes him as “a comedian of the spirit” hau
 
 DeLillo’s characters often want something beyond the system — aura, silence, transcendence, authentic danger, bodily presence, death confronted directly. Yet they usually encounter these desires through images, institutions, or commodities. His fiction therefore repeatedly asks: in a world where even disaster arrives as spectacle, can experience still be real?
 
-### *White Noise*, 1985
+### *White Noise* (1985)
 
 | Work Knowledge       | Content                                                                                                                                           |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22036,7 +22037,7 @@ Its influence extends through novels about media saturation, ecological disaster
 
 *White Noise* **is a novel about death in a world that cannot stop talking.** The noise does not simply distract from mortality; it is the modern form through which mortality is heard. **DeLillo’s achievement is to make supermarkets, television, family chatter, toxic clouds, and death anxiety belong to the same metaphysical system.**
 
-### Georges Perec, 1936–1982
+### Georges Perec (1936–1982)
 
 | Author Knowledge      | Content                                                                                                                                                              |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22054,7 +22055,7 @@ This matters for world-literature study because Perec shows that literary freedo
 
 But Perec is not only a formalist. His work is haunted by absence. He lost both parents during the Second World War: his father died as a soldier, and his mother was deported and killed in the Holocaust. This background should not reduce the fiction to biography, but it helps explain why lists, rooms, traces, objects, and systems matter so much. To catalogue is also to resist disappearance.
 
-### *Life: A User’s Manual*, 1978
+### *Life: A User’s Manual* (1978)
 
 | Work Knowledge       | Content                                                                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22113,7 +22114,7 @@ the sources repeatedly connect **Morrison** and **Edward P. Jones** through the 
 
 This comparison matters because both writers confront slavery and its afterlives, but in different modes. **Morrison** often writes through memory, haunting, trauma, lyric repetition, and mythic intensity. **Jones** writes through a broad, cool, omniscient, archival narrative that moves across time, names, documents, rumors, and community histories.
 
-### Toni Morrison, 1931–2019
+### Toni Morrison (1931–2019)
 
 | Author Knowledge      | Content                                                                                                                                                                                   |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22131,7 +22132,7 @@ the source record on Morrison emphasizes her self-conscious artistry and her gro
 
 Morrison’s relation to the American canon is also complex. The same material places her in relation to **Ralph Ellison** and **Faulkner**, suggesting that she both inherits and contests powerful predecessors.  Her fiction therefore belongs simultaneously to African American tradition and to the larger line of American modernist and postmodernist narrative experiment.
 
-### *The Bluest Eye*, 1970
+### *The Bluest Eye* (1970)
 
 | Work Knowledge       | Content                                                                                                          |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -22176,7 +22177,7 @@ It remains central in African American literature, feminist literary study, trau
 
 **The horror of *The Bluest Eye* is that Pecola’s wish is culturally produced.** She is destroyed not only by one act of violence, but by a whole aesthetic order that teaches her to desire her own erasure. **Morrison’s first novel is therefore not merely a story of victimization; it is a study of how beauty can become a weapon.**
 
-### *Beloved*, 1987
+### *Beloved* (1987)
 
 | Work Knowledge       | Content                                                                                                                             |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -22243,7 +22244,7 @@ This double structure is also visible in **Jhumpa Lahiri**, but in a quieter reg
 **Literary Knowledge and Developmental Lines:**
 This tradition should be read through several overlapping lines: the immigrant Bildungsroman, the linked short-story cycle, the ethnic family narrative, feminist rewriting of myth, postcolonial migration, and the minority identity plot. In **Kingston**, the inherited story is often unstable because family silence and ancestral shame distort it. In **Lahiri**, displacement is often quieter: a marriage cools, a family meal fails, a name does not fit, a translator cannot fully translate. Both writers show that identity is not a possession but a narrative process.
 
-### Maxine Hong Kingston, b. 1940
+### Maxine Hong Kingston (b. 1940)
 
 | Author Knowledge      | Content                                                                                                                                                                                    |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -22261,7 +22262,7 @@ scholarly accounts describes *The Woman Warrior* as a collection of five selecti
 
 Kingston’s writing is also a literature of silence. Family stories arrive incomplete, censored, morally charged, or forbidden. The narrator must interpret gaps. Silence is not emptiness; it is a social force. It can protect the family, enforce shame, erase women, and provoke imagination. The daughter-writer’s task is therefore risky: to speak may betray the family, but not to speak may continue the erasure.
 
-### *The Woman Warrior*, 1976
+### *The Woman Warrior* (1976)
 
 | Work Knowledge             | Content                                                                                                                                  |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22308,7 +22309,7 @@ Its influence appears in Asian American memoir, feminist retellings of myth, hyb
 
 **The power of *The Woman Warrior* lies in its refusal to choose between inheritance and invention.** Kingston receives stories that wound her, stories that empower her, stories that silence women, and stories that allow women to become warriors. **Her act of writing turns that unstable inheritance into a self.**
 
-### Jhumpa Lahiri, b. 1967
+### Jhumpa Lahiri (b. 1967)
 
 | Author Knowledge       | Content                                                                                                                                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -22326,7 +22327,7 @@ scholarly accounts situates Lahiri after **Rushdie**. Rushdie works from a major
 
 The same material observes that Lahiri’s stories are often highly stageable, almost like stage sets.  This is a useful clue. Lahiri’s realism works through placement: a room, a dinner, a temporary power outage, a visit, a photograph, a rented house, a meal. Large diasporic questions are compressed into small scenes of social performance.
 
-### *Interpreter of Maladies*, 1999
+### *Interpreter of Maladies* (1999)
 
 | Work Knowledge              | Content                                                                                                                                                                      |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22392,7 +22393,7 @@ Contemporary American fiction after 1945 inherits several major national traditi
 
 The three writers here form a useful triangle. **Marilynne Robinson** writes from the quiet side of American metaphysics: family, water, transience, memory, biblical cadence, and the problem of belonging. **Cormac McCarthy** writes from the violent side: borderlands, war, blood, landscape, metaphysical evil, and the anti-myth of the frontier. **Philip Roth** writes from the social and psychological side: identity, secrecy, sexuality, Jewish American experience, race, public scandal, aging, and the impossibility of fully knowing another person.
 
-### Marilynne Robinson, born 1943
+### Marilynne Robinson (born 1943)
 
 | Author Knowledge         | Content                                                                                                                                                         |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22410,7 +22411,7 @@ scholarly accounts on *Housekeeping* explicitly links Robinson with the American
 
 Her prose is also important. **James Wood** notes that Robinson’s later *Gilead* has a kind of “holy simplicity,” while *Housekeeping* abounds in more complex, Melvillean metaphor and analogy. He places Robinson in a broad American prose tradition that can be simple and metaphysical at once. 
 
-### *Housekeeping*, 1980
+### *Housekeeping* (1980)
 
 | Work Knowledge        | Content                                                                                                                                                  |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22455,7 +22456,7 @@ Its influence appears in contemporary lyrical fiction, feminist domestic fiction
 
 **The power of *Housekeeping* is that it refuses to settle the meaning of home.** Home may shelter, but it may also trap; transience may threaten, but it may also reveal another way to live. Ruth’s final movement away from the house is not simple liberation or collapse. **It is a passage into a form of being that ordinary society can only misrecognize.**
 
-### Cormac McCarthy, 1933–2023
+### Cormac McCarthy (1933–2023)
 
 | Author Knowledge         | Content                                                                                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22473,7 +22474,7 @@ The strongest materials on McCarthy place him in a line from **Melville** and **
 
 McCarthy’s prose is equally important. **James Wood** notes that McCarthy’s prose can be fantastically baroque while still achieving lucid, exact phrases; he places McCarthy in a larger American tradition where simplicity and difficulty can coexist in the same prose inheritance. 
 
-### *Blood Meridian*, 1985
+### *Blood Meridian* (1985)
 
 | Work Knowledge           | Content                                                                                             |
 | ------------------------ | --------------------------------------------------------------------------------------------------- |
@@ -22519,7 +22520,7 @@ Its influence extends through contemporary Western revision, border fiction, apo
 
 **The terror of *Blood Meridian* is not simply that violence happens.** It is that the Judge can explain it, dance with it, and make it seem eternal. Against him, the Kid’s refusal is small, almost insufficient. **Yet in McCarthy’s world, even a small refusal matters because the alternative is to join the dance.**
 
-### Philip Roth, 1933–2018
+### Philip Roth (1933–2018)
 
 | Author Knowledge            | Content                                                                                                                                                                                         |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22537,7 +22538,7 @@ Yet Roth is not simply confessional. the source record on *The Human Stain* intr
 
 Roth’s fiction is often offensive, excessive, and difficult to defend in simple cultural terms. The same lecture acknowledges Roth’s misogyny but argues that the force of his writing lies partly in his voice, his meditation on mortality, his sense of the body’s dignity, and his profound awareness that one always gets “the other fellow’s life” wrong. 
 
-### *The Human Stain*, 2000
+### *The Human Stain* (2000)
 
 | Work Knowledge       | Content                                                                                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -22584,7 +22585,7 @@ The novel remains important for discussions of racial passing, campus politics, 
 
 **The power of *The Human Stain* lies in its refusal to stabilize identity.** Coleman is Black, white, Jewish, classical scholar, boxer, lover, liar, victim, aggressor, and secret-keeper. None of these names fully contains him. **Roth’s deepest claim is severe: another person’s life is always partly inaccessible, and the stories told about it may reveal as much about the teller as about the person told.**
 
-### Raymond Carver, 1938–1988
+### Raymond Carver (1938–1988)
 
 | Author Knowledge     | Content                                                                                                                                                |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -22600,7 +22601,7 @@ The novel remains important for discussions of racial passing, campus politics, 
 
 Carver’s earlier reputation was tied to severe compression, but *Cathedral* shows a different Carver: still plain, still concise, but more open to contact, tenderness, and transcendence. His characters usually do not receive salvation in any doctrinal sense. What they receive, when they receive anything, is a momentary enlargement of perception.
 
-### *Cathedral*, 1983
+### *Cathedral* (1983)
 
 | Work Knowledge        | Content                                                                                                                             |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -22639,7 +22640,7 @@ The story remains central in discussions of contemporary short fiction, minimali
 
 **The force of *Cathedral* lies in its modesty.** Carver does not need a grand event to change the narrator. A television program, a piece of paper, a blind man’s hand, and a closed pair of eyes are enough. **The story suggests that transcendence may arrive not by escaping ordinary life, but by finally entering another person’s experience.**
 
-### John Updike, 1932–2009
+### John Updike (1932–2009)
 
 | Author Knowledge         | Content                                                                                                                                                         |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22655,7 +22656,7 @@ The story remains central in discussions of contemporary short fiction, minimali
 
 Updike’s fiction often begins in ordinary American spaces: supermarkets, churches, suburbs, schools, houses, small towns. But these spaces are charged with desire, class tension, embarrassment, and moral choice. His prose can make the ordinary shimmer, sometimes dangerously. In “A&P,” a supermarket becomes a stage for adolescent erotic perception, class fantasy, institutional discipline, and a painful entry into adult consequence.
 
-### “A&P,” 1961
+### “A&P” (1961)
 
 | Work Knowledge       | Content                                                                                                                             |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -22718,7 +22719,7 @@ For **Salman Rushdie**, this problem is especially visible. scholarly accounts p
 **Literary Knowledge and Developmental Lines:**
 The key postcolonial move here is not rejection of the canon but aggressive reoccupation of it. Rushdie does not leave **Dickens**, **Forster**, **Sterne**, or the English novel behind. He enters their territory and makes the Indian story speak through, against, and beyond them. At the same time, he recovers non-Western narrative techniques: looping structures, digression, repetition, oral performance, magical coincidence, and excessive abundance. The result is not a neat national novel but a noisy, hybrid, self-conscious narrative machine.
 
-### Salman Rushdie, b. 1947
+### Salman Rushdie (b. 1947)
 
 | Author Knowledge          | Content                                                                                                                                                                                                    |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22738,7 +22739,7 @@ Rushdie’s career is also inseparable from censorship and danger. The controver
 
 **Rushdie’s importance lies in making postcolonial writing formally excessive.** He does not simply correct colonial history; he overwhelms inherited forms with too many stories, too many voices, too many origins, too many languages, and too much history.
 
-### *Midnight’s Children*, 1981
+### *Midnight’s Children* (1981)
 
 | Work Knowledge        | Content                                                                                                                      |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -22785,7 +22786,7 @@ Its influence extends through postcolonial fiction, Indian English literature, m
 
 **The force of *Midnight’s Children* lies in its refusal to let the nation become a clean story.** India is born at midnight, but midnight is a split hour: past and future, freedom and violence, plurality and fracture. Saleem’s broken narration is not an obstacle to history. **It is history’s proper form.**
 
-### *The Satanic Verses*, 1988
+### *The Satanic Verses* (1988)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -22814,7 +22815,7 @@ Turkish global fiction is shaped by a particularly intense historical rupture. I
 
 This historical rupture is central to **Orhan Pamuk**. His fiction repeatedly returns to Istanbul as a city of layers: Christian, Ottoman, Islamic, European, secular, nationalist, multilingual, and haunted by what modernization tries to forget. scholarly accounts explicitly says that Istanbul is the protagonist of Pamuk’s work: the city of his present life, childhood memory, and Ottoman historical imagination. 
 
-### Orhan Pamuk, b. 1952
+### Orhan Pamuk (b. 1952)
 
 | Author Knowledge      | Content                                                                                                                                                                           |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22832,7 +22833,7 @@ scholarly accounts explains that Pamuk originally wanted the conflict in *My Nam
 
 Pamuk’s visual imagination is also crucial. He once wanted to be a painter, and scholarly accounts records his statement that he considers himself a visual writer: a scene first appears to him as a picture, then is expressed in writing. He connects the art of the novel to **ekphrasis**, the verbal description of images or imagined visual objects.  This makes *My Name Is Red* especially important: it is a novel about painting that cannot show its paintings, so it must make vision happen in language.
 
-### *My Name Is Red*, 1998
+### *My Name Is Red* (1998)
 
 | Work Knowledge       | Content                                                                                                                           |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -22901,7 +22902,7 @@ A recurrent Caribbean question is whether the island is too small for literature
 **Literary Knowledge and Developmental Lines:**
 Caribbean literature moves along several linked lines: the **island lyric**, which turns sea, light, shore, and colonial ruin into poetic form; the **postcolonial novel of self-making**, which stages the search for a house, career, language, and identity; and the **migrant London novel**, which follows Caribbean subjects into the imperial metropolis and reveals that empire has also remade Britain. These forms all ask a similar question: what does it mean to belong when the language of literature was inherited from empire and the place of origin is treated as marginal by the world?
 
-### Derek Walcott, 1930–2017
+### Derek Walcott (1930–2017)
 
 | Author Knowledge      | Content                                                                                                                                                 |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22921,7 +22922,7 @@ Walcott’s poetry often begins in landscape: sea, harbor, light, fishing boats,
 
 Walcott also matters as a poet of **epic recovery**. In *Omeros*, he rewrites Homeric materials through Caribbean fishermen, island quarrels, colonial wounds, and the sea. But even outside *Omeros*, his poetry repeatedly asks whether a place denied historical monumentality can produce epic grandeur through lyric attention.
 
-### *Omeros*, 1990
+### *Omeros* (1990)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -22935,7 +22936,7 @@ Walcott also matters as a poet of **epic recovery**. In *Omeros*, he rewrites Ho
 
 The poem matters because it makes a small island carry world-historical scale without surrendering its local light, speech, labor, and pain. Walcott's achievement is to let classical inheritance and Caribbean experience illuminate and trouble each other.
 
-### V. S. Naipaul, 1932–2018
+### V. S. Naipaul (1932–2018)
 
 | Author Knowledge          | Content                                                                                                                                                                       |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22953,7 +22954,7 @@ the sources from *A Writer’s People* present Naipaul’s own account of origin
 
 He also repeatedly thinks about **ways of looking**. In *A Writer’s People*, he explains that a close “flat” view of a Trinidad street gave him his first book, but that stepping back would require another kind of writing; exploring who he and the people in the street were would require yet another. He then states that all his life he has had to think about ways of looking and how they alter the world’s configuration.  This can serve as the key to Naipaul’s whole career: his writing is a training in perception under colonial fracture.
 
-### *A House for Mr. Biswas*, 1961
+### *A House for Mr. Biswas* (1961)
 
 | Work Knowledge       | Content                                                                                                                                |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22992,7 +22993,7 @@ Its influence extends through Caribbean fiction, diasporic realism, family novel
 
 **The greatness of *A House for Mr. Biswas* lies in its scale of dignity.** The dream is not empire, wealth, or transcendence. It is a house. **Naipaul makes that modest object carry the weight of colonial dependence, family suffocation, masculine fragility, and the human need to stand somewhere as oneself.**
 
-### Sam Selvon, 1923–1994
+### Sam Selvon (1923–1994)
 
 | Author Knowledge        | Content                                                                                                                             |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -23008,7 +23009,7 @@ Its influence extends through Caribbean fiction, diasporic realism, family novel
 
 Selvon’s major formal decision is linguistic. *The Lonely Londoners* is not written in standard literary English with occasional dialect decoration. Its narrative voice is itself creolized, oral, flexible, and communal. This matters because language is not merely a marker of authenticity. It changes what London looks like. The metropolis is redescribed through migrant rhythm.
 
-### *The Lonely Londoners*, 1956
+### *The Lonely Londoners* (1956)
 
 | Work Knowledge       | Content                                                                                                                                                                  |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -23072,7 +23073,7 @@ scholarly accounts on **Nadine Gordimer** states this directly through her often
 **Literary Knowledge and Developmental Lines:**
 South African literature moves through several major lines: liberal protest fiction, anti-apartheid realism, prison and exile writing, Black Consciousness writing, Afrikaans literary dissent, postcolonial allegory, and post-apartheid memory fiction. In **Gordimer**, the central mode is often political realism under moral pressure: private relations reveal the hidden architecture of apartheid. In **Coetzee**, allegory, philosophical extremity, and narrative austerity become more prominent. In **Fugard**, theatre turns race, language, and moral complicity into staged confrontation.
 
-### Nadine Gordimer, 1923–2014
+### Nadine Gordimer (1923–2014)
 
 | Author Knowledge                  | Content                                                                                                                                                                 |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23090,7 +23091,7 @@ scholarly accounts presents Gordimer as a writer who can fuse realism with polit
 
 Gordimer’s political seriousness is also inseparable from her craft. critical commentary notes that she received the Nobel Prize in Literature in 1991, shortly after the legal dismantling of apartheid began, and that her writing was praised as being of great benefit to humanity. It also notes her mastery of the short story form and her ability to bring political intent into “the warp and woof” of narrative without heavy moralizing. 
 
-### *July's People*, 1981
+### *July's People* (1981)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -23120,7 +23121,7 @@ In Latin American literature, magical realism became one of the most internation
 
 A key principle is that magical realism does not replace realism. It intensifies it. In *One Hundred Years of Solitude*, miracles and impossible events do not remove political history; they make historical repetition, collective amnesia, and violence more visible. critical summaries describe the novel as a family-history and mythic structure in which cyclical time, repeated names, political violence, and “the everyday treatment of miracles” work together. 
 
-### Isabel Allende, b. 1942
+### Isabel Allende (b. 1942)
 
 | Author Knowledge      | Content                                                                                                                                                                            |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23136,7 +23137,7 @@ A key principle is that magical realism does not replace realism. It intensifies
 
 Her fiction is often more openly readable and emotionally direct than Borges or García Márquez. This accessibility should not be mistaken for simplicity. In *The House of the Spirits*, family narrative becomes a way to record political catastrophe, especially the passage from oligarchic landholding to revolutionary hope and military dictatorship. Magic appears, but the novel’s strongest pressure comes from history entering the home.
 
-### *The House of the Spirits*, 1982
+### *The House of the Spirits* (1982)
 
 | Work Knowledge       | Content                                                                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23201,7 +23202,7 @@ Its central inheritance is **Whitman**, but transformed by postwar crisis. Whitm
 
 scholarly accounts notes that Beat writing often claims to use natural and spontaneous language, while later experimental poets questioned that claim. This is useful because Beat poetry should not be understood as formless outpouring. Its “spontaneity” is a formal effect created through breath, repetition, catalog, and oral performance. 
 
-### Allen Ginsberg, 1926–1997
+### Allen Ginsberg (1926–1997)
 
 | Author Knowledge       | Content                                                                                                                      |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -23217,7 +23218,7 @@ scholarly accounts notes that Beat writing often claims to use natural and spont
 
 scholarly accounts on *Howl* emphasizes the strange dignity of Ginsberg’s phrase “the best minds.” These are not the best minds according to universities, corporations, or state institutions. They are the marginal, the queer, the addicted, the mad, the visionary, the expelled, the socially unusable. Ginsberg’s first act is therefore an act of revaluation: the poem gives spiritual and poetic importance to people whom respectable America has refused to honor. 
 
-### *Howl*, 1956
+### *Howl* (1956)
 
 | Work Knowledge          | Content                                                                                                                                |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23278,7 +23279,7 @@ scholarly accounts describes the New York School’s “I do this, I do that” 
 
 A major distinction in the sources is between **anti-narrative** and **non-narrative** poems. An anti-narrative poem still brushes against storytelling but mocks, interrupts, or ironizes narrative expectations. A non-narrative poem is not mainly trying to tell a story at all; it moves by arrangement, association, and relation. This distinction is especially useful for reading **O’Hara** and **Ashbery**. 
 
-### Frank O’Hara, 1926–1966
+### Frank O’Hara (1926–1966)
 
 | Author Knowledge     | Content                                                                                                                          |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -23294,7 +23295,7 @@ A major distinction in the sources is between **anti-narrative** and **non-narra
 
 His poetry is social without becoming merely sociological. Names matter. Places matter. The city matters. But what matters most is the way feeling appears inside social motion. O’Hara does not stop life to make it poetic. He lets life’s speed become the poem’s form.
 
-### *The Day Lady Died*, 1959
+### *The Day Lady Died* (1959)
 
 | Work Knowledge       | Content                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------------ |
@@ -23335,7 +23336,7 @@ Its influence appears in urban lyric, queer poetics, diary-like poetry, anti-ele
 
 **The force of *The Day Lady Died* lies in its refusal to stop the city for grief.** The day continues, and precisely because it continues, grief becomes sharper. **O’Hara’s elegy is not a monument; it is a collision between ordinary motion and irreversible loss.**
 
-### John Ashbery, 1927–2017
+### John Ashbery (1927–2017)
 
 | Author Knowledge     | Content                                                                                                                                     |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23351,7 +23352,7 @@ Its influence appears in urban lyric, queer poetics, diary-like poetry, anti-ele
 
 scholarly accounts distinguishes anti-narrative and non-narrative tendencies in New York School writing and explicitly uses Ashbery as a central example. “The Instruction Manual” is treated as anti-narrative, while “Some Trees” is treated as a strong example of non-narrative structure.  This distinction helps clarify Ashbery’s range: sometimes he uses the shape of narrative in order to frustrate it; sometimes he works outside narrative almost entirely.
 
-### “Some Trees,” 1956
+### “Some Trees” (1956)
 
 | Work Knowledge          | Content                                                                                                    |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -23389,7 +23390,7 @@ Its influence appears in associative poetry, postmodern lyric, Language poetry, 
 
 **“Some Trees” is not empty because it lacks story.** It asks the reader to experience relation before explanation. **Its meaning is not hidden behind the poem; it happens in the arrangement the poem creates.**
 
-### *Self-Portrait in a Convex Mirror*, 1975
+### *Self-Portrait in a Convex Mirror* (1975)
 
 | Work Knowledge       | Content |
 | -------------------- | ------- |
@@ -23424,7 +23425,7 @@ The poetry materials on chance-generated writing pose the essential question fro
 **Literary Knowledge and Developmental Lines:**
 Constraint writing has several major lines. The **Oulipian line** uses designed rules, mathematical forms, combinatorics, lipograms, permutations, and grids. The **Cagean line** uses chance operations, source texts, mesostics, scores, and non-intentional procedures. The **conceptual / language-material line** treats words less as transparent carriers of meaning than as systems of letters, sounds, rules, and cultural habits. **Mathews**, **Cage**, and **Bök** belong to different parts of this field: Mathews to Oulipian procedural invention, Cage to chance and writing-through, Bök to virtuoso linguistic constraint.
 
-### Harry Mathews, 1930–2017
+### Harry Mathews (1930–2017)
 
 | Author Knowledge      | Content                                                                                                                                                                           |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23478,7 +23479,7 @@ His influence appears in constraint-based fiction, conceptual writing, experimen
 
 **Mathews’ experimental writing shows that constraint is not the enemy of imagination.** It is a way of outwitting ordinary imagination. **The writer designs a system; the system produces accidents, comic turns, and discoveries; the reader learns to experience form as event.**
 
-### John Cage, 1912–1992
+### John Cage (1912–1992)
 
 | Author Knowledge                | Content                                                                                                                                       |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23538,7 +23539,7 @@ His influence appears in performance art, conceptual writing, Language poetry, p
 
 **Cage’s experimental writing does not ask the reader to admire randomness.** It asks the reader to listen after intention has been weakened. **What remains is not nothing: fragments, echoes, patterns, accidents, source-text ghosts, and the strange beauty of language no longer forced to confess.**
 
-### Christian Bök, b. 1966
+### Christian Bök (b. 1966)
 
 | Author Knowledge      | Content                                                                                                                                                             |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23554,7 +23555,7 @@ His influence appears in performance art, conceptual writing, Language poetry, p
 
 If **Mathews** shows constraint as narrative possibility and **Cage** shows procedure as non-intentional attention, **Bök** shows constraint as linguistic extremity. His best-known work, *Eunoia*, asks what happens when language is restricted to one vowel at a time. The answer is not silence, but excess. The rule generates comic density, strange music, syntactic pressure, and a new awareness of how much language depends on tiny phonetic differences.
 
-### *Eunoia*, 2001
+### *Eunoia* (2001)
 
 | Work Knowledge       | Content                                                                                                             |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -23610,7 +23611,7 @@ Contemporary American poetry is no longer defined by one dominant formal school.
 **Literary Knowledge and Developmental Lines:**
 Two major lines are important here. One is **documentary-political lyric**, where poetry absorbs social evidence, racial experience, images, public incidents, media fragments, and second-person address. Rankine is central to this line. The other is **immigrant / queer lyric narrative**, where poetic compression enters memoir-like fiction, family history, trauma, sexuality, and language inheritance. Vuong is central to that line. Both writers show that the lyric “I” or “you” is not sealed inside private emotion; it is exposed to history.
 
-### Claudia Rankine, b. 1963
+### Claudia Rankine (b. 1963)
 
 | Author Knowledge          | Content                                                                                                                                                                |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23625,7 +23626,7 @@ Two major lines are important here. One is **documentary-political lyric**, wher
 
 the sources describe *Citizen* as a hybrid form of poetry, prose, and image: a contemporary political lyric built through second-person experience writing. They also stress that its use of “you” places the reader inside scenes of microaggression and structural racial experience, and that its collage of images and cases creates an evidentiary chain rather than a loose set of impressions.  This is the key to Rankine’s method: lyric feeling must be supported by scene, evidence, rhythm, and social context.
 
-### *Citizen: An American Lyric*, 2014
+### *Citizen: An American Lyric* (2014)
 
 | Work Knowledge         | Content                                                                                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23688,7 +23689,7 @@ Globalization fiction has at least three important lines. The first is **global 
 
 A useful theoretical distinction is between **migration** and **diaspora**. Migration is movement across space; diaspora is a longer historical and cultural structure of dispersed belonging, memory, language, trauma, family network, and racialized classification across borders.  Globalization fiction often operates in this second sense: the characters are not merely mobile; they carry unfinished histories.
 
-### Haruki Murakami, b. 1949
+### Haruki Murakami (b. 1949)
 
 | Author Knowledge       | Content                                                                                                                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23706,7 +23707,7 @@ Murakami’s fiction often has two layers. One layer is ordinary and contemporar
 
 His global success also depends on readability. Murakami’s prose, especially in translation, is often transparent, cool, and rhythmically plain. This makes the strange events feel almost ordinary. Like **Kafka**, he often places a character inside a world whose rules are unclear; like **Borges**, he enjoys symbolic puzzles; like **Raymond Chandler**, he sometimes uses detective-like movement; like **Carver**, whom he translated into Japanese, he values plain surfaces and emotional restraint.
 
-### *Kafka on the Shore*, 2002
+### *Kafka on the Shore* (2002)
 
 | Work Knowledge          | Content                                                                                                                                                                     |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23754,7 +23755,7 @@ Its influence appears in global surreal fiction, contemporary coming-of-age nove
 
 **The force of *Kafka on the Shore* lies in its dreamlike globalization of myth.** A Japanese teenager with a European literary name runs from a Greek curse into a library, a forest, a ghostly love story, and a world of talking cats. **Murakami’s global fiction is not rootless because it lacks place; it is global because place itself has become crossed by translation, memory, music, and dream.**
 
-### Chimamanda Ngozi Adichie, b. 1977
+### Chimamanda Ngozi Adichie (b. 1977)
 
 | Author Knowledge      | Content                                                                                                                                                             |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23770,7 +23771,7 @@ Its influence appears in global surreal fiction, contemporary coming-of-age nove
 
 Adichie’s fiction is unusually strong at social analysis inside realist form. She writes characters who think about culture, race, gender, and class, but the novels do not become abstract essays. The analysis enters through hair salons, blogs, friendships, accents, job markets, romantic relationships, immigration status, and the daily etiquette of race. This is why *Americanah* is central to globalization fiction: it shows that race is not a universal experience carried unchanged across borders. Race is learned differently in Nigeria, America, and Britain.
 
-### *Americanah*, 2013
+### *Americanah* (2013)
 
 | Work Knowledge       | Content                                                                                                                       |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -23818,7 +23819,7 @@ Its influence appears in contemporary African diasporic fiction, migration novel
 
 **The achievement of *Americanah* lies in its clarity about migration’s hidden curriculum.** Ifemelu does not merely move to America; she learns America’s racial grammar. She does not merely return to Nigeria; she returns as someone altered by that grammar. **Adichie’s global novel is therefore a novel of translation — not only between countries, but between systems of seeing.**
 
-### Jonathan Safran Foer, b. 1977
+### Jonathan Safran Foer (b. 1977)
 
 | Author Knowledge      | Content                                                                                                                                                              |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23836,7 +23837,7 @@ scholarly accounts on *Everything Is Illuminated* emphasizes that the novel move
 
 This means Foer’s globalization is not the smooth cosmopolitanism of airports and professional mobility. It is a damaged transnational search. America, Ukraine, Jewish memory, Holocaust destruction, and post-Soviet misunderstanding all meet in a journey that is both comic and mournful.
 
-### *Everything Is Illuminated*, 2002
+### *Everything Is Illuminated* (2002)
 
 | Work Knowledge          | Content                                                                                                                                                |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -23889,7 +23890,7 @@ Its influence appears in contemporary family-archive novels, postmemory fiction,
 
 **The power of *Everything Is Illuminated* lies in the gap between wanting to know and being unable to know.** The title promises illumination, but the novel gives partial light: comic, distorted, painful, invented, and morally compromised. **Foer’s global fiction is a journey toward an origin that can be approached only through translation, fantasy, and loss.**
 
-### Ocean Vuong, b. 1988
+### Ocean Vuong (b. 1988)
 
 | Author Knowledge       | Content                                                                                                                                                                                   |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23905,7 +23906,7 @@ Its influence appears in contemporary family-archive novels, postmemory fiction,
 
 Vuong’s writing is also strongly shaped by belated inheritance. The speaker or narrator often receives history indirectly: through family silence, a mother’s body, migration, language difficulty, stories of Vietnam, American racialization, and queer self-discovery. History is not always available as orderly explanation. It comes as gesture, wound, photograph, accent, addiction, labor, or a remembered phrase.
 
-### *On Earth We’re Briefly Gorgeous*, 2019
+### *On Earth We’re Briefly Gorgeous* (2019)
 
 | Work Knowledge       | Content                                                                                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -23965,7 +23966,7 @@ Contemporary immigrant fiction differs from earlier exile literature because the
 
 scholarly accounts on **Jhumpa Lahiri** describes this shift clearly. Unlike **Rushdie**, whose relation to India remains connected to his own childhood in Bombay and to postcolonial linguistic mixture, Lahiri belongs to a second-generation immigrant condition: born in London, raised in the United States, tied to Kolkata through family visits and parental memory, yet writing in a relatively standard global English. the source record explicitly says that “diasporic” is a better term than “exile” for this later global situation. 
 
-### Contemporary Boundary Fields, late 20th-21st c.
+### Contemporary Boundary Fields (late 20th-21st c.)
 
 Contemporary nonfiction, ecological writing, climate fiction, and feminist literature are important fields, but they are better treated here as boundary conditions than as separate canonical nodes. They mark the expansion of literary value toward testimony, public truth, planetary crisis, embodiment, care, violence, labor, and the unstable line between document and art.
 
@@ -23988,7 +23989,7 @@ This field should be placed after postmodernism and contemporary global writing 
 
 this chronology places **Michael Joyce**’s *Afternoon, a Story*, hypertext fiction, platform writing, web novels, and social media writing under digital literature, after contemporary global writing and before AI-era literary questions.  This placement is coherent: digital literature is both a literary-historical category and a media-historical category. It belongs to world literature, but also to transmedial narratology. The narratology atlas material separately identifies digital narrative, game narrative, interactive fiction, and transmedia storytelling as part of `transmedial narratology`, where the key problem is which narrative concepts transfer across media and which do not. 
 
-### Michael Joyce, b. 1945
+### Michael Joyce (b. 1945)
 
 | Author Knowledge      | Content                                                                                                                                        |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -24005,7 +24006,7 @@ This chronology matters. *Afternoon* is not “web fiction” in the later sense
 
 **Joyce’s importance is not that he predicted all later internet writing.** He belongs to a more specific moment: the moment when literary theory’s dream of nonlinear text became a working electronic reading experience.
 
-### *Afternoon, a Story*, 1987 / 1990
+### *Afternoon, a Story* (1987 / 1990)
 
 | Work Knowledge          | Content                                                                                                             |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -24086,7 +24087,7 @@ Its influence appears in interactive fiction, Twine games, web-based experimenta
 
 **Hypertext fiction did not replace the novel.** Its significance is more precise: it exposed how much the traditional novel depends on linear order, and how strange narrative becomes when order is opened to navigation.
 
-### Web, Platform, and AI Writing, 2000s-present
+### Web, Platform, and AI Writing (2000s-present)
 
 Digital literature after the web includes platform fiction, web novels, social-media writing, and AI-mediated text. These forms matter because authorship, publication, reader response, serial rhythm, visibility, and textual production increasingly depend on interfaces, rankings, recommendation systems, comments, screenshots, and automated language tools.
 

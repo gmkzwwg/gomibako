@@ -7,32 +7,74 @@ subclass: History
 
 ## Preface
 
-Why should one study the history of philosophy? There are many reasons, but they fall into two groups: philosophical and historical. We may study the great dead philosophers in order to seek illumination upon themes of our own philosophical inquiry. Or we may wish to understand the people and societies of the past, and read their philosophy to grasp the conceptual climate in which they thought and acted. We may read the philosophers of other ages to help to resolve philosophical problems of abiding concern, or to enter more fully into the intellectual world of a bygone era.  
-> 为什么要学习哲学史？理由多种多样，但大致可分为两类：哲学性的与历史性的。我们可以研究那些已逝的伟大哲学家，以期从他们的思想中获得启迪，照亮自身正在探讨的哲学主题；也可以为了理解过去的人与社会，通过阅读其哲学作品来把握他们思考和行动时的概念氛围。我们既可能借助其他时代的哲学著作来解决长久萦绕的哲学难题，也可能藉此更深入地进入昔日的智识世界。
+Why should one study the history of philosophy? There are many reasons, but they fall into two groups: philosophical and historical. We may study the great dead philosophers in order to seek *illumination* upon themes of our own *philosophical inquiry*. Or we may wish to understand the people and societies of the past, and read their philosophy to grasp the *conceptual climate* in which they thought and acted. We may read the philosophers of other ages to help to resolve philosophical problems of *abiding concern*, or to enter more fully into the intellectual world of a *bygone era*.  
 
-A historian of philosophy should make clear which of these two tasks he is addressing. In this introduction I shall outline the nature of my own project, but first there are many further distinctions to be made. The word 'philosophy' means different things in different mouths. Correspondingly, 'the history of philosophy' also has many meanings. What it means depends on what the particular historian regards as being essential to philosophy. This was true of Aristotle, who was philosophy's first historian, and it was true of Hegel, who hoped he would be its last. The two of them had rather different views of the nature of philosophy.
+> 为什么要学习哲学史？理由多种多样，但大致可分为两类：哲学性的与历史性的。我们可以研究那些已逝的伟大哲学家，以期从他们的思想中获得*启迪*，照亮自身正在进行的*哲学探究*；也可以为了理解过去的人与社会，通过阅读其哲学作品来把握他们思考和行动时的*概念氛围*。我们既可能借助其他时代的哲学著作来解决*长久关切*的哲学难题，也可能藉此更深入地进入*昔日时代*的智识世界。
 
-> 哲学史学家必须明确自己要完成上述两种任务中的哪一种。在本导论中，我将概述自己的研究计划的性质；但在此之前，还需作出若干更为细致的区分。“哲学”一词在不同人口中含义各异，对应地，“哲学史”也并非单一概念，它的意义取决于具体史家认定哲学之本质为何。古往今来皆如此：这对首位哲学史书写者亚里士多德如此，对自认为应是最后一位哲学史家且抱有宏愿的黑格尔亦然。二人对哲学本性的看法截然不同。
+> - *illumination* [ɪˌluːmɪˈneɪʃn]：n. 启迪；照明；此处指思想上的理解和洞见。
+> - *philosophical inquiry*：哲学探究；围绕概念、理由和根本问题展开的思考。
+> - *conceptual climate*：概念氛围；某一时代人们思考和行动所依托的概念背景。
+> - *abiding concern*：持久关切；长期存在、反复被讨论的问题。
+> - *bygone era*：过去的时代；已经消逝的历史时期。
 
-Both of them, however, studied its history for philosophical rather than historical reasons. Moreover, they shared a particular view of philosophical progress, in which the problems that define the philosophical enterprise are seen and understood ever more clearly, and in which their answers become more and more apparent. Aristotle in the first book of his Metaphysics, and Hegel in his Lectures on the History of Philosophy saw the teachings of the earlier philosophers they recorded as halting steps in the direction of a vision they were themselves to expound.
+A historian of philosophy should make clear which of these two tasks he is *addressing*. In this introduction I shall *outline* the nature of my own project, but first there are many further *distinctions* to be made. The word 'philosophy' means different things in different mouths. Correspondingly, 'the history of philosophy' also has many meanings. What it means depends on what the particular historian regards as being *essential* to philosophy. This was true of Aristotle, who was philosophy's first historian, and it was true of Hegel, who hoped he would be its last. The two of them had rather different views of the nature of philosophy.
 
-> 然而，他们研究哲学史的动机都是哲学性的，而非单纯的历史兴趣。二人还共享一种关于哲学进展的特定观念：哲学事业所面对的问题会被日益清晰地看到并理解，相应的答案也会逐渐显现。亚里士多德在《形而上学》第一卷，黑格尔在《哲学史讲演录》中，都把他们所记录的早期哲学家的学说视为迈向自身所阐发愿景的蹒跚步伐。
+> 哲学史学家必须明确自己要*处理*上述两种任务中的哪一种。在本导论中，我将*概述*自己研究计划的性质；但在此之前，还需作出若干更为细致的*区分*。“哲学”一词在不同人口中含义各异，对应地，“哲学史”也并非单一概念，它的意义取决于具体史家认定哲学之*本质*为何。古往今来皆如此：这对首位哲学史书写者亚里士多德如此，对希望自己成为最后一位哲学史家的黑格尔亦然。二人对哲学本性的看法截然不同。
 
-Only someone with supreme self-confidence as a philosopher could write its history in such a way. The temptation for most philosopher historians is to see philosophy not as culminating in their own work, but rather as a gradual progress to whatever philosophical system is currently in fashion. But this temptation should be resisted. There is no force that guarantees philosophical progress in any particular direction.
+> - *address*：处理；面对；此处指作者要回应哪一种研究任务。
+> - *outline* [ˈaʊtlaɪn]：v. 概述；勾勒轮廓。
+> - *distinction* [dɪˈstɪŋkʃn]：n. 区分；差别。
+> - *correspondingly* [ˌkɔːrəˈspɑːndɪŋli]：adv. 相应地；对应地。
+> - *essential* [ɪˈsenʃl]：adj. 本质性的；必要的。
 
-> 唯有对自身哲学能力抱有极大自信者，才可能以这种方式撰写哲学史。大多数既是哲学家又是史家的作者更易陷入另一种诱惑：将哲学视为逐步演进到当前占主流地位的体系，而非终结于他们个人的著作。然而，这种诱惑应当被抵制；没有任何力量能保证哲学必然沿着某个特定方向取得进步。
+Both of them, however, studied its history for philosophical rather than historical reasons. Moreover, they shared a particular view of *philosophical progress*, in which the problems that define the *philosophical enterprise* are seen and understood ever more clearly, and in which their answers become more and more *apparent*. Aristotle in the first book of his *Metaphysics*, and Hegel in his *Lectures on the History of Philosophy* saw the teachings of the earlier philosophers they recorded as *halting steps* in the direction of a vision they were themselves to *expound*.
 
-Indeed, it can be called into question whether philosophy makes any progress at all. The major philosophical problems, some say, are all still being debated after centuries of discussion, and are no nearer to any definitive resolution. In the twentieth century the philosopher Ludwig Wittgenstein wrote:
+> 然而，他们研究哲学史的动机都是哲学性的，而非单纯的历史兴趣。二人还共享一种关于*哲学进步*的特定观念：界定*哲学事业*的问题会被日益清晰地看到并理解，相应的答案也会逐渐*显明*。亚里士多德在《*形而上学*》第一卷，黑格尔在《*哲学史讲演录*》中，都把他们所记录的早期哲学家的学说视为迈向自身所要*阐发*愿景的*蹒跚步伐*。
 
-> 确实，哲学是否真的取得过任何进展，这一点本身就值得质疑。有人说，主要的哲学难题在经过几个世纪的讨论后仍在争论之中，离最终的定论并未更近一步。二十世纪的哲学家路德维希·维特根斯坦写道：
+> - *philosophical progress*：哲学进步；哲学问题和答案是否能逐步推进的观念。
+> - *philosophical enterprise*：哲学事业；哲学作为一种持续探究活动的整体。
+> - *apparent* [əˈpærənt]：adj. 明显的；显而易见的。
+> - *Metaphysics*：《形而上学》；亚里士多德的重要哲学著作。
+> - *Lectures on the History of Philosophy*：《哲学史讲演录》；黑格尔关于哲学史的讲演著作。
+> - *halting steps*：蹒跚步伐；不稳但朝某方向前进的初步尝试。
+> - *expound* [ɪkˈspaʊnd]：v. 阐述；详细解释。
 
-You always hear people say that philosophy makes no progress and that the same philosophical problems which were already preoccupying the Greeks are still troubling us today. But people who say that do not understand the reason why it has to be so. The reason is that our language has remained the same and always introduces us to the same questions. ...I read 'philosophers are no nearer to the meaning of ''reality'' than Plato got'. What an extraordinary thing! How remarkable that Plato could get so far! Or that we have not been able to get any further! Was it because Plato was so clever? (MS 213/424)  
+Only someone with *supreme self-confidence* as a philosopher could write its history in such a way. The *temptation* for most philosopher historians is to see philosophy not as *culminating in* their own work, but rather as a gradual progress to whatever philosophical system is currently *in fashion*. But this temptation should be resisted. **There is no force that guarantees philosophical progress in any particular direction.**
 
-> 你常会听到人们说哲学没有进步，那些早已令希腊人困扰的哲学问题如今仍在困扰我们。但说这话的人不明白为何必得如此。原因在于我们的语言保持不变，它不断将我们引向同样的问题。……我读到一句话：“哲学家对于‘现实’一词的意义并未比柏拉图走得更远。”这真是非同寻常！令人惊叹的是，柏拉图竟能达到那样的高度！或者说，我们为何未能更进一步！难道是因为柏拉图太聪明了吗？（手稿 213/424）
+> 唯有作为哲学家具有*极大自信*的人，才可能以这种方式撰写哲学史。大多数既是哲学家又是史家的作者更容易陷入一种*诱惑*：不是把哲学看作终结于他们自己的著作，而是看作逐步走向当前*流行*的某种哲学体系。然而，这种诱惑应当被抵制。**没有任何力量能保证哲学必然沿着某个特定方向取得进步。**
 
-The difference between what we might call the Aristotelian and the Wittgensteinian attitude to progress in philosophy derives from two different views of philosophy itself. Philosophy may be viewed as a science, on the one hand, or as an art, on the other. Philosophy is, indeed, uniquely difficult to classify, and resembles both the arts and the sciences.
+> - *supreme self-confidence*：极大自信；近乎最高程度的自我确信。
+> - *temptation* [tempˈteɪʃn]：n. 诱惑；容易令人采纳但应警惕的倾向。
+> - *culminating in*：以……为顶点；最终达到……。
+> - *in fashion*：流行；正当时。
+> - *guarantee* [ˌɡærənˈtiː]：v. 保证；确保。
 
-> 我们或可称之为“亚里士多德式”和“维特根斯坦式”的两种哲学进步观差异，根源在于对哲学本身的两种不同理解：一则将哲学视为科学，二则将其看作艺术。哲学的确难以归类，既似艺术，又似科学。
+Indeed, it can be *called into question* whether philosophy makes any progress at all. The major philosophical problems, some say, are all still being debated after centuries of discussion, and are no nearer to any *definitive resolution*. In the twentieth century the philosopher Ludwig Wittgenstein wrote:
+
+> 确实，哲学是否真的取得过任何进展，这一点本身就可以被*质疑*。有人说，主要的哲学难题在经过几个世纪的讨论后仍在争论之中，离任何*最终解决*并未更近一步。二十世纪的哲学家路德维希·维特根斯坦写道：
+
+> - *call into question*：质疑；使……成为问题。
+> - *definitive resolution*：最终解决；权威而确定的解决方案。
+> - *major philosophical problems*：主要哲学问题；哲学史中反复出现的根本难题。
+
+You always hear people say that philosophy makes no progress and that the same philosophical problems which were already *preoccupying* the Greeks are still troubling us today. But people who say that do not understand the reason why it has to be so. The reason is that our language has remained the same and always introduces us to the same questions. ...I read 'philosophers are no nearer to the meaning of ''reality'' than Plato got'. What an extraordinary thing! How remarkable that Plato could get so far! Or that we have not been able to get any further! Was it because Plato was so clever? (MS 213/424)  
+
+> 你常会听到人们说哲学没有进步，那些早已*萦绕并困扰*希腊人的哲学问题如今仍在困扰我们。但说这话的人并不明白为何必然如此。原因在于我们的语言保持不变，它总是把我们引向同样的问题。……我读到一句话：“哲学家对于‘现实’一词的意义并未比柏拉图走得更远。”这真是非同寻常！令人惊叹的是，柏拉图竟能达到那样的高度！或者说，我们为何未能更进一步！难道是因为柏拉图太聪明了吗？（手稿 213/424）
+
+> - *preoccupy* [priˈɑːkjupaɪ]：v. 使全神贯注；使困扰。
+> - *reality*：现实；实在；哲学中常涉及“何为真实存在”的问题。
+> - *extraordinary* [ɪkˈstrɔːrdəneri]：adj. 非同寻常的；惊人的。
+> - MS 213/424：维特根斯坦手稿编号。
+
+The difference between what we might call the *Aristotelian* and the *Wittgensteinian* attitude to progress in philosophy derives from two different views of philosophy itself. Philosophy may be viewed as a science, on the one hand, or as an art, on the other. Philosophy is, indeed, uniquely difficult to *classify*, and resembles both the arts and the sciences.
+
+> 我们或可称之为*亚里士多德式*和*维特根斯坦式*的两种哲学进步观，其差异根源在于对哲学本身的两种不同理解：一则将哲学视为科学，二则将其看作艺术。哲学的确格外难以*归类*，既类似艺术，也类似科学。
+
+> - *Aristotelian* [ˌærɪstəˈtiːliən]：adj. 亚里士多德式的；与亚里士多德思想有关的。
+> - *Wittgensteinian*：adj. 维特根斯坦式的；与维特根斯坦思想有关的。
+> - *derive from*：源自；来自。
+> - *classify* [ˈklæsɪfaɪ]：v. 分类；归类。
+> - *resemble* [rɪˈzembl]：v. 类似；相像。
 
 On the one hand, philosophy seems to be like a science in that the philosopher is *in pursuit of* truth. Discoveries, it seems, are made in philosophy, and so the philosopher like the scientist has the excitement of belonging to an ongoing, cooperative, cumulative intellectual *venture*. If so, the philosopher must be familiar with current writing, and keep *abreast* of the state of the art. On this view, we twenty-first-century philosophers have an advantage over earlier practitioners of the discipline. We stand, no doubt, on the shoulders of other and greater philosophers, but we do stand above them. We have *superannuated* Plato and Kant.
 
@@ -77,87 +119,321 @@ Though philosophy is not a science, *throughout* its history it has had an *inti
 > - *consensus* [kənˈsensəs]：n.一致看法，共识。
 > - *emerge* [ɪˈmɜːdʒ]：v.浮现，出现；显露，知悉；恢复过来，幸存下来；形成，兴起。
 
-Philosophy, once called the queen of the sciences, and once called their handmaid, is perhaps better thought of as the womb, or the midwife, of the sciences. But in fact sciences emerge from philosophy not so much by parturition as by fission. Two examples, out of many, may serve to illustrate this.
+Philosophy, once called the queen of the sciences, and once called their *handmaid*, is perhaps better thought of as the *womb*, or the *midwife*, of the sciences. But in fact sciences emerge from philosophy not so much by *parturition* as by *fission*. Two examples, out of many, may serve to illustrate this.
 
-> 哲学曾被称作“科学之王后”，也曾被称作“科学的侍女”，但或许更适合将其视作科学的“子宫”或“助产士”。然而实际上，科学从哲学中诞生，与其说是“分娩”，不如说更像“分裂”。以下两个众多实例中的例子可以说明这一点：
+> 哲学曾被称作“科学之王后”，也曾被称作科学的*侍女*，但或许更适合将其视作科学的*子宫*或*助产士*。然而实际上，科学从哲学中出现，与其说是通过*分娩*，不如说更像通过*分裂*。众多例子中，以下两个可以说明这一点：
 
-In the seventeenth century philosophers were much exercised by the problem of which of our ideas are innate and which are acquired. This problem split into two problems, one psychological (what do we owe to heredity and what do we owe to environment?) and one epistemological (how much of our knowledge depends on experience and how much is independent of it?). The first question was handed over to psychology; the second question remained philosophical. But the second question itself split into a number of questions, one of which was 'is mathematics merely an extension of logic, or is it an independent body of truth?' This was given a precise answer by the work of logicians and mathematicians in the twentieth century. The answer was not philosophical, but mathematical. So here we had an initial, confused, philosophical question that ramified in two directions—towards psychology and towards mathematics—leaving in the middle a philosophical residue that remains to be churned over, concerning the nature of mathematical propositions.
+> - *handmaid* [ˈhændmeɪd]：n. 侍女；辅助者。
+> - *womb* [wuːm]：n. 子宫；孕育之处。
+> - *midwife* [ˈmɪdwaɪf]：n. 助产士；促成某事诞生者。
+> - *parturition* [ˌpɑːrtʃəˈrɪʃn]：n. 分娩；生产。
+> - *fission* [ˈfɪʃn]：n. 分裂；裂变。
 
-> 十七世纪时，哲学家们热衷探讨的问题是：我们的观念中哪些是先天的，哪些是后天习得的？这一问题后来分裂成两个问题：一个是心理学问题（我们有哪些是遗传所得，哪些是环境使然？），另一个是认识论问题（我们的知识中有多少依赖经验，有多少独立于经验？）。第一个问题被交由心理学处理；第二个问题则仍留在哲学领域。然而，第二个问题本身又分裂成若干问题，其中之一是“数学是否仅是逻辑的延伸，抑或是一套独立的真理体系？”在二十世纪，逻辑学家和数学家的工作对此给出了精确的答案。这个答案并非哲学性的，而是数学性的。因此，我们看到一个最初含混不清的哲学问题，向两个方向分化——一方面走向心理学，另一方面走向数学——而在中间留下了关于数学命题本质的哲学残余，仍待进一步反复推敲。
+In the seventeenth century philosophers were much *exercised by* the problem of which of our ideas are *innate* and which are *acquired*. This problem split into two problems, one psychological (what do we owe to *heredity* and what do we owe to environment?) and one *epistemological* (how much of our knowledge depends on experience and how much is independent of it?). The first question was handed over to psychology; the second question remained philosophical. But the second question itself split into a number of questions, one of which was 'is mathematics merely an extension of logic, or is it an independent body of truth?' This was given a precise answer by the work of logicians and mathematicians in the twentieth century. The answer was not philosophical, but mathematical. So here we had an initial, confused, philosophical question that *ramified* in two directions—towards psychology and towards mathematics—leaving in the middle a philosophical *residue* that remains to be *churned over*, concerning the nature of mathematical propositions.
 
-An earlier example is more complicated. A branch of philosophy given an honoured place by Aristotle is 'theology'. When we read what he says of it today, it seems to us a mixture of astronomy and philosophy of religion. Christian and Muslim Aristotelians added to it elements drawn from the teaching of their sacred books. It was when St Thomas Aquinas, in the thirteenth century, drew a sharp distinction between natural and revealed theology that the first important fission took place, removing from the philosophical agenda the appeals to revelation. It took rather longer for the astronomy and the natural theology to separate out from each other. This example shows that what may be sloughed off by philosophy need not be science but may be a humanistic discipline such as biblical studies. It shows also that the history of philosophy contains examples of fusion as well as of fission.
+> 十七世纪时，哲学家们深受一个问题*困扰*：我们的观念中哪些是*先天的*，哪些是*后天习得的*？这一问题后来分裂成两个问题：一个是心理学问题（我们有哪些是*遗传*所得，哪些是环境使然？），另一个是*认识论*问题（我们的知识中有多少依赖经验，有多少独立于经验？）。第一个问题被交由心理学处理；第二个问题则仍留在哲学领域。然而，第二个问题本身又分裂成若干问题，其中之一是“数学是否仅是逻辑的延伸，抑或是一套独立的真理体系？”在二十世纪，逻辑学家和数学家的工作对此给出了精确答案。这个答案并非哲学性的，而是数学性的。因此，我们看到一个最初含混不清的哲学问题向两个方向*分叉发展*——一方面走向心理学，另一方面走向数学——而在中间留下了关于数学命题本质的哲学*残余*，仍待进一步*反复推敲*。
 
-> 一个更早的例子则更为复杂。在亚里士多德的体系中，“神学”被视为哲学的一个重要分支。今天我们阅读亚里士多德关于神学的论述时，会觉得这是一种天文学与宗教哲学的混合体。基督教和伊斯兰教的亚里士多德学者又在其中融入了他们经典教义中的元素。直到十三世纪，圣托马斯·阿奎那明确区分“自然神学”和“启示神学”，才出现了首次重要的“分裂”，将基于启示的内容从哲学议程中剔除出去。而天文学与自然神学的分离则花费了更长时间。这个例子表明，哲学所剔除的内容并不必然成为科学，也可能转变为诸如圣经研究这样的“人文学科”。它还显示出，哲学史中不仅存在“分裂”，也存在“融合”的例子。
+> - *exercised by*：被……困扰；为……费心。
+> - *innate* [ɪˈneɪt]：adj. 先天的；天生的。
+> - *acquired* [əˈkwaɪərd]：adj. 后天获得的；习得的。
+> - *heredity* [həˈredəti]：n. 遗传。
+> - *epistemological* [ɪˌpɪstəˈmɑːlədʒɪkl]：adj. 认识论的；关于知识来源和根据的。
+> - *ramify* [ˈræmɪfaɪ]：v. 分支；分叉发展。
+> - *residue* [ˈrezɪduː]：n. 残余；剩余部分。
+> - *churn over*：反复思考；不断翻搅讨论。
 
-Philosophy resembles the arts in having a significant relation to a canon. A philosopher situates the problems to be addressed by reference to a series of classical texts. Because it has no specific subject matter, but only characteristic methods, philosophy is defined as a discipline by the activities of its great practitioners. The earliest people whom we recognize as philosophers, the pre-Socratics, were also scientists, and several of them were also religious leaders. They did not yet think of themselves as belonging to a common profession, the one with which we claim continuity. It was Plato who in his writings first used the word 'philosophy' in a sense close to our own. Those of us who call ourselves philosophers today can genuinely claim to be the heirs of Plato and Aristotle. But we are only a small subset of their heirs. What distinguishes us from their other heirs, and what entitles us to inherit their name, is that—unlike the physicists, the astronomers, the medics, the linguists, and so on—we philosophers pursue the goals of Plato and Aristotle only by the same methods as were already available to them.
+An earlier example is more complicated. A branch of philosophy given an honoured place by Aristotle is '*theology*'. When we read what he says of it today, it seems to us a mixture of astronomy and philosophy of religion. Christian and Muslim *Aristotelians* added to it elements drawn from the teaching of their sacred books. It was when St Thomas Aquinas, in the thirteenth century, drew a sharp distinction between *natural theology* and *revealed theology* that the first important fission took place, removing from the philosophical agenda the appeals to *revelation*. It took rather longer for the astronomy and the natural theology to separate out from each other. This example shows that what may be *sloughed off* by philosophy need not be science but may be a *humanistic discipline* such as biblical studies. It shows also that the history of philosophy contains examples of *fusion* as well as of fission.
 
-> 哲学与艺术相似之处在于，它与“经典”之间存在重要联系。哲学家通过参考一系列经典文本来定位自己要探讨的问题。由于哲学并无特定的研究对象，而只有特有的方法，因此哲学作为一门学科，是由其伟大实践者们的活动所定义的。我们所公认的最早哲学家——前苏格拉底哲学家们，同时也是科学家，其中有几位还是宗教领袖。他们当时尚未意识到自己隶属于某个共同的职业领域，而这一领域正是我们今日自称与之延续的那个领域。正是柏拉图在其著作中首次以接近我们今日意义的方式使用了“哲学”这一词汇。今天称自己为“哲学家”的我们，完全可以自认为是柏拉图和亚里士多德的继承者。但我们仅仅是他们众多继承者中的一小部分。区分我们与其他继承者，并使我们有资格继承“哲学家”之名的关键在于：与物理学家、天文学家、医学家、语言学家等不同，我们哲学家是以柏拉图和亚里士多德当时已可得的方法来追求他们所追求的目标的。
+> 一个更早的例子则更为复杂。在亚里士多德的体系中，*神学*被视为哲学的一个重要分支。今天我们阅读亚里士多德关于神学的论述时，会觉得它是天文学与宗教哲学的混合体。基督教和伊斯兰教的*亚里士多德主义者*又在其中加入了来自其圣书教义的元素。直到十三世纪，圣托马斯·阿奎那明确区分*自然神学*和*启示神学*，第一次重要的分裂才发生：诉诸*启示*的内容被移出哲学议程。而天文学与自然神学彼此分离，则花了更长时间。这个例子表明，被哲学*蜕除*的东西并不必然成为科学，也可能成为圣经研究这样的人文学科。它还显示出，哲学史中不仅有*分裂*，也有*融合*。
 
-If philosophy lies somewhere between the sciences and the arts, what is the answer to the question 'is there progress in philosophy?'
+> - *theology* [θiˈɑːlədʒi]：n. 神学；关于神、宗教信仰和神圣事物的系统研究。
+> - *Aristotelian*：n. 亚里士多德主义者；追随或改造亚里士多德思想的人。
+> - *natural theology*：自然神学；不依赖启示、试图通过理性和自然世界认识神的神学。
+> - *revealed theology*：启示神学；以神圣启示和经典权威为基础的神学。
+> - *revelation* [ˌrevəˈleɪʃn]：n. 启示；神向人显明真理。
+> - *slough off*：脱落；抛弃；此处指哲学把某些内容分离出去。
+> - *humanistic discipline*：人文学科；以文本、历史和文化为核心的研究领域。
+> - *fusion* [ˈfjuːʒn]：n. 融合；合并。
 
-There are those who think that the major task of philosophy is to cure us of intellectual confusion. On this, modest, view of the philosopher's role, the tasks to be addressed differ across history, since each period needs a different form of therapy. The knots into which the undisciplined mind ties itself differ from age to age, and different mental motions are necessary to untie the knots. A prevalent malady of our own age, for instance, is the temptation to think of the mind as a computer, whereas earlier ages were tempted to think of it as a telephone exchange, a pedal organ, a homunculus, or a spirit. Maladies of earlier ages may be dormant, such as the belief that the stars are living beings; or they may return, such as the belief that the stars enable one to predict human behaviour.
+Philosophy resembles the arts in having a significant relation to a *canon*. A philosopher *situates* the problems to be addressed by reference to a series of classical texts. Because it has no specific *subject matter*, but only characteristic methods, philosophy is defined as a discipline by the activities of its great practitioners. The earliest people whom we recognize as philosophers, the *pre-Socratics*, were also scientists, and several of them were also religious leaders. They did not yet think of themselves as belonging to a common profession, the one with which we claim *continuity*. It was Plato who in his writings first used the word 'philosophy' in a sense close to our own. Those of us who call ourselves philosophers today can genuinely claim to be the *heirs* of Plato and Aristotle. But we are only a small subset of their heirs. **What distinguishes us from their other heirs, and what entitles us to inherit their name, is that—unlike the physicists, the astronomers, the medics, the linguists, and so on—we philosophers pursue the goals of Plato and Aristotle only by the same methods as were already available to them.**
 
-The therapeutic view of philosophy, however, may seem to allow only for variation over time, not for genuine progress. But that is not necessarily true. A confusion of thought may be so satisfactorily cleared up by a philosopher that it no longer offers temptation to the unwary thinker. One such example will be considered at length in the first part of this history. Parmenides, the founder of the discipline of ontology (the science of being), based much of his system on a systematic confusion between different senses of the verb 'to be'. Plato, in one of his dialogues, sorted out the issues so successfully that there has never again been an excuse for mixing them up: indeed, it now takes a great effort of philosophical imagination to work out exactly what led Parmenides into confusion in the first place.
+> 哲学与艺术相似之处在于，它与*经典谱系*之间存在重要联系。哲学家通过参考一系列经典文本来*定位*自己要探讨的问题。由于哲学并无特定的*研究对象*，而只有特有的方法，因此哲学作为一门学科，是由其伟大实践者们的活动所定义的。我们所公认的最早哲学家——*前苏格拉底哲学家*——同时也是科学家，其中几位还是宗教领袖。他们当时尚未意识到自己隶属于某个共同职业，而这一职业正是我们今天自称与之保持*连续性*的领域。正是柏拉图在其著作中首次以接近今日意义的方式使用“哲学”一词。今天称自己为哲学家的人，确实可以自认为是柏拉图和亚里士多德的*继承者*。但我们只是他们众多继承者中的一小部分。**使我们区别于其他继承者，并使我们有资格继承“哲学家”之名的，是这样一点：不同于物理学家、天文学家、医学家、语言学家等，我们哲学家只用柏拉图和亚里士多德当时已经可用的方法，去追求他们曾经追求的目标。**
 
-Progress of this kind is often concealed by its very success: once a philosophical problem is resolved, no one regards it as any more a matter of philosophy. It is like treason in the epigram: 'Treason doth never prosper, what's the reason? j For if it prosper, none dare call it treason.'
+> - *canon* [ˈkænən]：n. 经典谱系；被视为权威和核心的一组文本。
+> - *situate* [ˈsɪtʃueɪt]：v. 放置于某语境中；定位。
+> - *subject matter*：研究对象；一门学科所处理的特定内容领域。
+> - *pre-Socratics*：前苏格拉底哲学家；通常指苏格拉底以前或与其同时的早期希腊思想家。
+> - *continuity* [ˌkɑːntɪˈnuːəti]：n. 连续性；延续关系。
+> - *heir* [er]：n. 继承者；继承人。
+> - *entitle* [ɪnˈtaɪtl]：v. 使有资格；赋予权利。
 
-The most visible form of philosophical progress is progress in philosophical analysis. Philosophy does not progress by making regular additions to a quantum of information; as has been said, what philosophy offers is not information but understanding. Contemporary philosophers, of course, know some things that the greatest philosophers of the past did not know; but the things they know are not philosophical matters but the truths that have been discovered by the sciences begotten of philosophy. But there are also some things that philosophers of the
+If philosophy lies somewhere between the sciences and the arts, what is the answer to the question **'is there progress in philosophy?'**
 
-present day understand that even the greatest philosophers of earlier generations failed to understand. For instance, philosophers clarify language by distinguishing between different senses of words; and, once a distinction has been made, future philosophers have to take account of it in their deliberations.
+> 如果哲学处在科学与艺术之间，那么对于**“哲学是否有进步？”**这个问题，我们应当怎样回答？
 
-Take, as an example, the issue of free will. At a certain point in the history of philosophy a distinction was made between two kinds of human freedom: liberty of indifference (ability to do otherwise) and liberty of spontaneity (ability to do what you want). Once this distinction has been made the question 'Do human beings enjoy freedom of the will?' has to be answered in a way that takes account of the distinction. Even someone who believes that the two kinds of liberty in fact coincide has to provide arguments to show this; he cannot simply ignore the distinction and hope to be taken seriously on the topic.
+> - *progress in philosophy*：哲学中的进步；此处讨论哲学能否像科学那样累积推进。
 
-It is unsurprising, given the relationship of philosophy to a canon, that one notable feature of philosophical progress consists in coming to terms with, and interpreting, the thoughts of the great philosophers of the past. The great works of the past do not lose their importance in philosophy—but their intellectual contributions are not static. Each age interprets and applies philosophical classics to its own problems and aspirations. This is, in recent years, most visible in the field of ethics. The ethical works of Plato and Aristotle are as influential in moral thinking today as the works of any twentieth-century moralists—this is easily verified by taking any citation index—but they are being interpreted and applied in ways quite different from the ways in which they were used in the past. These new interpretations and applications do effect a genuine advance in our understanding of Plato and Aristotle, but of course it is understanding of quite a different kind from that which is given by a new study of the chronology of Plato's early dialogues, or a stylometric comparison between Aristotle's various ethical works. The new light we receive resembles rather the enhanced appreciation of Shakespeare we may get by seeing a new and intelligent production of King Lear.
+There are those who think that the major task of philosophy is to cure us of *intellectual confusion*. On this, modest, view of the philosopher's role, the tasks to be addressed differ across history, since each period needs a different form of *therapy*. The knots into which the *undisciplined* mind ties itself differ from age to age, and different mental motions are necessary to untie the knots. A prevalent *malady* of our own age, for instance, is the temptation to think of the mind as a computer, whereas earlier ages were tempted to think of it as a telephone exchange, a pedal organ, a *homunculus*, or a spirit. Maladies of earlier ages may be dormant, such as the belief that the stars are living beings; or they may return, such as the belief that the stars enable one to predict human behaviour.
 
-The historian of philosophy, whether primarily interested in philosophy or primarily interested in history, cannot help being both a philosopher and a historian. A historian of painting does not have to be a painter, a historian of medicine does not, qua historian, practise medicine. But a historian of philosophy cannot help doing philosophy in the very writing of history. It is not just that someone who knows no philosophy will be a bad historian of philosophy; it is equally true that someone who has no idea how to cook will be a bad historian of cookery. The link between philosophy and its history is a far closer one. The historical task itself forces historians of philosophy to paraphrase their subjects' opinions, to offer reasons why past thinkers held the opinions they did, to speculate on the premises left tacit in their arguments, and to evaluate the coherence and cogency of the inferences they drew. But the supplying of reasons for philosophical conclusions, the detection of hidden premises in philosophical arguments, and the logical evaluation of philosophical inferences are themselves
+> 有些人认为，哲学的主要任务是治疗我们的*智识混乱*。按照这种较为谦抑的哲学家角色观，哲学在不同历史时期要处理的任务并不相同，因为每个时代都需要不同形式的*治疗*。未经训练的心灵会把自己打成各种结，而这些结在不同时代各不相同；要解开它们，也需要不同的心智动作。例如，我们这个时代常见的一种*病症*，是把心灵想象成计算机；而早先时代则曾倾向于把心灵想象成电话交换机、脚踏风琴、*小人*或灵魂。早期时代的病症有时会潜伏下去，比如认为星辰是活物；有时又会卷土重来，比如相信星辰能够预言人的行为。
 
-full-blooded philosophical activities. Consequently any serious history of philosophy must itself be an exercise in philosophy as well as in history.
+> - *intellectual confusion*：智识混乱；指概念、语言或推理上的混淆。
+> - *therapy*：治疗；在维特根斯坦式语境中，哲学被理解为解除思想混乱的治疗活动。
+> - *undisciplined* [ʌnˈdɪsəplɪnd]：adj. 未经训练的；缺乏约束的。
+> - *malady* [ˈmælədi]：n. 病症；弊病。
+> - *homunculus* [həˈmʌŋkjʊləs]：n. 小人；哲学和心理学中常指被设想为在心中操控认知活动的“小人”。
+> - *dormant* [ˈdɔːrmənt]：adj. 休眠的；潜伏的。
 
-On the other hand, the historian of philosophy must also have a knowledge of the historical context in which past philosophers wrote their works. When we explain historical actions, we ask for the agent's reasons; if we find a good reason, we think we have understood his action. If we conclude he did not have good reason, even in his own terms, we have to find different, more complicated explanations. What is true of action is true of taking a philosophical view. If the philosophical historian finds a good reason for a past philosopher's doctrines, his task is done. But if he concludes that the past philosopher had no good reason, he has a further and much more difficult task, of explaining the doctrine in terms of the context in which it appeared—social, perhaps, as well as intellectual.1
+The *therapeutic view* of philosophy, however, may seem to allow only for variation over time, not for genuine progress. But that is not necessarily true. A confusion of thought may be so satisfactorily cleared up by a philosopher that it no longer offers temptation to the *unwary* thinker. One such example will be considered at length in the first part of this history. Parmenides, the founder of the discipline of *ontology* (the science of being), based much of his system on a systematic confusion between different senses of the verb 'to be'. Plato, in one of his dialogues, sorted out the issues so successfully that there has never again been an excuse for mixing them up: indeed, it now takes a great effort of philosophical imagination to work out exactly what led Parmenides into confusion in the first place.
 
-History and philosophy are closely linked even in the first-hand quest for original philosophical enlightenment. In modern times this has been illustrated most brilliantly by Gottlob Frege's Grundlagen der Arithmetik. Almost half of Frege's book is devoted to discussing and refuting the views of other philosophers and mathematicians. While he is discussing the opinions of others, he ensures that some of his own insights are artfully insinuated, and this makes easier the eventual presentation of his own theory. But the main purpose of his lengthy historical polemic is to convince readers of the seriousness of the problems to which he will later offer solutions. Without this preamble, he says, we would lack the first prerequisite for learning anything: knowledge of our own ignorance.
+> 不过，这种哲学的*治疗观*似乎只允许哲学随时代变化，而不承认真正的进步。但事实未必如此。某种思想混乱可能被一位哲学家澄清得十分彻底，以至于它不再诱惑那些*不够警觉*的思考者。本书第一部分将详细讨论这样一个例子。巴门尼德是*本体论*（关于“存在”的学问）的创立者，他的体系在很大程度上建立在对动词 “to be” 不同含义的系统性混淆之上。柏拉图在一篇对话中把这些问题梳理得如此成功，以至于后人再也没有理由把它们混为一谈；事实上，如今我们反而需要极大的哲学想象力，才能准确理解巴门尼德当初究竟为何会陷入这种混乱。
 
-Most histories of philosophy, in this age of specialization, are the work of many hands, specialists in different fields and periods. In inviting me to write, singlehanded, a history of philosophy from Thales to Derrida, Oxford University Press gave expression to the belief that there is something to be gained by presenting the development of philosophy from a single viewpoint, linking ancient, medieval, early modern, and contemporary philosophy into a single narrative concerned with connected themes. The work originally appeared in four separate volumes. The first, published in 2004, covered the centuries from the beginning of philosophy up to the conversion of St Augustine in ad 387. The second, published in 2005, took the story from Augustine up to the Lateran Council of 1512. The third, published in 2006, ended with the death of Hegel in 1831. The final volume, which appeared in 2007, brought the narrative up to the final years of the second millennium. Now the whole history appears within a single binding, in four parts corresponding to the original four volumes.
+> - *therapeutic view*：治疗观；把哲学理解为解除思想或语言混乱的活动。
+> - *unwary* [ʌnˈweri]：adj. 不警觉的；容易上当的。
+> - *ontology* [ɑːnˈtɑːlədʒi]：n. 本体论；研究“存在”本身及存在方式的哲学分支。
+> - *to be*：动词“是/存在”；在古希腊哲学中，其不同语义常牵涉存在论问题。
 
-The history of philosophy presented here is designed in a way that is intended to take account of the insights I have tried to express in this introduction. It is not based on any Whiggish notion that the current state of philosophy represents the
+**Progress of this kind is often concealed by its very success**: once a philosophical problem is resolved, no one regards it as any more a matter of philosophy. It is like treason in the epigram: 'Treason doth never prosper, what's the reason? For if it prosper, none dare call it treason.'
 
-1:The magnitude of this task was well brought out by Michael Frede in the introduction to his Essays in Ancient Philosophy (Oxford: Clarendon Press, 1987).
+> **这种进步常常被它自身的成功所遮蔽**：一旦某个哲学问题得到解决，人们便不再把它看作哲学问题。它就像警句中所说的叛逆：“叛逆从不成功，原因何在？因为一旦成功，便无人敢称其为叛逆。”
 
-highest point of philosophical endeavour up to the present. On the contrary, its primary assumption is that in many respects the philosophy of the great dead philosophers has not dated, and that even today one may gain great illumination by a careful reading of the great works that we have been privileged to inherit.
+> - *concealed* [kənˈsiːld]：adj. 被隐藏的；被遮蔽的。
+> - *epigram* [ˈepɪɡræm]：n. 警句；隽语。
+> - *treason* [ˈtriːzn]：n. 叛国；背叛。
 
-The kernel of any kind of history of philosophy is exegesis: the close reading and interpretation of philosophical texts. Exegesis may be of two kinds, internal or external. In internal exegesis the interpreter tries to make the text coherent and consistent, employing the principle of charity in interpretation. In external exegesis the interpreter seeks to bring out the significance of the text by comparing it and contrasting it with other texts.
+The most visible form of philosophical progress is progress in *philosophical analysis*. Philosophy does not progress by making regular additions to a *quantum* of information; as has been said, what philosophy offers is not information but understanding. Contemporary philosophers, of course, know some things that the greatest philosophers of the past did not know; but the things they know are not philosophical matters but the truths that have been discovered by the sciences *begotten of* philosophy. But there are also some things that philosophers of the present day understand that even the greatest philosophers of earlier generations failed to understand. For instance, philosophers clarify language by distinguishing between different senses of words; and, once a distinction has been made, future philosophers have to take account of it in their deliberations.
 
-Exegesis is the common basis of the two quite different historical endeavours that I described at the beginning of this introduction. In one, which we may call historical philosophy, the aim is to reach philosophical truth, or philosophical understanding, about the matter or issue under discussion in the text. Typically, historical philosophy looks for the reasons behind, or the justification for, the statements made in the text under study. In the other endeavour, the history of ideas, the aim is not to reach the truth about the matter in hand, but to reach the understanding of a person or an age or a historical succession. Typically, the historian of ideas looks not for the reasons so much as the sources, or causes, or motives, for saying what is said in the target text.
+> 哲学进步最明显的形式，是*哲学分析*上的进步。哲学并不是通过不断给某个信息总量添加新内容而进步的；如前所说，哲学提供的不是信息，而是理解。当然，当代哲学家知道一些过去最伟大的哲学家并不知道的事情；但这些知识并非哲学事项，而是由那些*从哲学中孕育出来*的科学所发现的真理。不过，也确实有些事情是今天的哲学家能够理解、而早先最伟大的哲学家也未能理解的。例如，哲学家通过区分词语的不同含义来澄清语言；而一旦某个区分被作出，后来的哲学家在思考时就必须把它纳入考虑。
 
-Both of these disciplines base themselves on exegesis, but, of the two, the history of ideas is the one most closely bound up with the accuracy and sensitivity of the reading of the text. It is possible to be a good philosopher while being a poor exegete. At the beginning of his Philosophical Investigations Wittgenstein offers a discussion of St Augustine's theory of language. What he writes is very dubious exegesis; but this does not weaken the force of his philosophical criticism of the 'Augustinian' theory of language. But Wittgenstein did not really think of himself as engaged in historical philosophy, any more than he thought of himself as engaged in the historiography of ideas. The invocation of the great Augustine as the author of the mistaken theory is merely to indicate that the error is one that is worth attacking.
+> - *philosophical analysis*：哲学分析；通过概念区分、语言澄清和论证结构分析来推进理解。
+> - *quantum* [ˈkwɑːntəm]：n. 数量；总量；定量。
+> - *begotten of*：由……产生；由……孕育而来。
+> - *take account of*：考虑到；把……纳入判断。
+> - *deliberation* [dɪˌlɪbəˈreɪʃn]：n. 深思熟虑；审议。
 
-In different histories of philosophy, the skills of the historian and those of the philosopher are exercised in different proportions. The due proportion varies in accordance with the purpose of the work and the field of philosophy in question. The pursuit of historical understanding and the pursuit of philosophical enlightenment are both legitimate approaches to the history of philosophy, but both have their dangers. Historians who study the history of thought without being themselves involved in the philosophical problems that exercised past philosophers are likely to sin by superficiality. Philosophers who read ancient, medieval, or early modern texts without a knowledge of the historical context in which they were written are likely to sin by anachronism.
+Take, as an example, the issue of *free will*. At a certain point in the history of philosophy a distinction was made between two kinds of human freedom: *liberty of indifference* (ability to do otherwise) and *liberty of spontaneity* (ability to do what you want). Once this distinction has been made the question 'Do human beings enjoy freedom of the will?' has to be answered in a way that takes account of the distinction. **Even someone who believes that the two kinds of liberty in fact coincide has to provide arguments to show this; he cannot simply ignore the distinction and hope to be taken seriously on the topic.**
 
-Each of these errors can nullify the purpose of the enterprise. The historian who is unconcerned by the philosophical problems that troubled past writers has
+> 以*自由意志*问题为例。哲学史上某个阶段，人们区分了两种人类自由：*无差别自由*（即本可以做其他事情的能力）和*自发自由*（即做自己想做之事的能力）。一旦这个区分被提出，“人是否享有意志自由？”这一问题就必须在考虑这一区分的前提下回答。**即便有人认为这两种自由实际上是一回事，也必须提出论证来说明这一点；他不能只是无视这个区分，却还指望自己在这一议题上被认真对待。**
 
-not really understood how they themselves conducted their thinking. The philosopher who ignores the historical background of past classics will gain no fresh light on the issues that concern us today, but merely present contemporary prejudices in fancy dress.
+> - *free will*：自由意志；关于人是否能够自由选择和承担责任的哲学问题。
+> - *liberty of indifference*：无差别自由；指行动者本可以采取不同行动的能力。
+> - *liberty of spontaneity*：自发自由；指行动者能够按照自身意愿行动的能力。
+> - *coincide* [ˌkoʊɪnˈsaɪd]：v. 一致；重合。
+> - *take seriously*：认真对待。
 
-The two dangers threaten in different proportions in different areas of the history of philosophy. In the area of metaphysics it is superficiality that is most to be guarded against. To someone without a personal interest in fundamental philosophical problems the systems of the great thinkers of the past will seem only quaint lunacy. In political philosophy, anachronism is the greater danger. When we read Plato's or Aristotle's criticisms of democracy, we will not make head or tail of them unless we know something about the institutions of ancient Athens. In between metaphysics and political philosophy stand ethics and philosophy of mind: here, both dangers threaten with roughly equal force.
+It is unsurprising, given the relationship of philosophy to a *canon*, that one notable feature of philosophical progress consists in *coming to terms with*, and interpreting, the thoughts of the great philosophers of the past. The great works of the past do not lose their importance in philosophy—but their intellectual contributions are not static. Each age interprets and applies philosophical classics to its own problems and aspirations. This is, in recent years, most visible in the field of ethics. The ethical works of Plato and Aristotle are as influential in moral thinking today as the works of any twentieth-century moralists—this is easily verified by taking any citation index—but they are being interpreted and applied in ways quite different from the ways in which they were used in the past. These new interpretations and applications do effect a genuine advance in our understanding of Plato and Aristotle, but of course it is understanding of quite a different kind from that which is given by a new study of the chronology of Plato's early dialogues, or a *stylometric* comparison between Aristotle's various ethical works. The new light we receive resembles rather the enhanced appreciation of Shakespeare we may get by seeing a new and intelligent production of King Lear.
 
-In this narrative I have attempted to be both a philosophical historian and a historical philosopher. Multi-authored histories are sometimes structured chronologically and sometimes structured thematically. I have combined both approaches, offering in each part first a chronological survey, and then a thematic treatment of particular philosophical topics of abiding importance. The reader whose primary interest is historical will focus on the chronological survey, referring where necessary to the thematic sections for amplification. The reader who is more concerned with the philosophical issues will concentrate rather on the thematic sections, referring back to the chronological surveys to place particular issues in context.
+> 鉴于哲学与*经典谱系*之间的关系，哲学进步的一个显著特征在于：我们不断*理解、消化并解释*过去伟大哲学家的思想。这并不令人意外。过去的伟大作品在哲学中并不会失去重要性，但它们的智识贡献也并非静止不变。每个时代都会根据自身的问题和追求来解释并运用哲学经典。近年来，这一点在伦理学领域最为明显。柏拉图和亚里士多德的伦理学著作，对于今天道德思想的影响并不亚于任何二十世纪道德哲学家的作品——查阅任何引文索引都很容易证实这一点——但它们被解释和运用的方式，已经与过去大不相同。这些新的解释和应用确实推进了我们对柏拉图和亚里士多德的理解；当然，这种理解不同于通过重新研究柏拉图早期对话的年代顺序，或通过对亚里士多德各部伦理学著作作*文体计量*比较而获得的理解。我们由此得到的新光照，更像是观看一出新的、富有智慧的《李尔王》演出后，对莎士比亚产生的更深欣赏。
 
-I should make clear at the outset that in the case of many of my historical subjects I write of necessity as an amateur rather than as an expert. In an age when the academic study of past philosophers has expanded exponentially, no one person can read more than a fraction of the vast secondary literature that has proliferated in recent years around every one of the thinkers discussed in this volume. I have myself contributed to the scholarly discussion of several of the great philosophers of the past, in particular Plato, Aristotle, Aquinas, Descartes, Frege, and Wittgenstein, and I have published monographs on some of the subjects covered by my thematic chapters, such as the philosophy of mind and the philosophy of religion. But in compiling the bibliographies for the earlier parts I was made aware how vast was the extent of material I have not read in comparison with the amount that I am familiar with.
+> - *canon* [ˈkænən]：n. 经典谱系；被共同承认为重要和权威的文本集合。
+> - *come to terms with*：理解并接受；处理并消化。
+> - *static* [ˈstætɪk]：adj. 静止的；不变的。
+> - *citation index*：引文索引；用于检索著作或论文被引用情况的工具。
+> - *stylometric* [ˌstaɪləˈmetrɪk]：adj. 文体计量的；通过统计语言风格特征来比较文本。
+> - *King Lear*：《李尔王》；莎士比亚悲剧，此处作为经典作品不断被重新阐释的例子。
 
-Any single author who attempts to cover the entire history of philosophy is quickly made aware that in matters of detail he is at an enormous disadvantage in comparison with the scholars who have made individual philosophers their field of expertise. By compensation, a history written by a single hand may be able to emphasize features of the history of philosophy that are less obvious in the works of committees of specialists, just as an aerial photograph may bring out features of a landscape that are almost invisible to those close to the ground.
+The historian of philosophy, whether primarily interested in philosophy or primarily interested in history, cannot help being both a philosopher and a historian. A historian of painting does not have to be a painter, a historian of medicine does not, *qua* historian, practise medicine. But a historian of philosophy cannot help doing philosophy in the very writing of history. It is not just that someone who knows no philosophy will be a bad historian of philosophy; it is equally true that someone who has no idea how to cook will be a bad historian of cookery. The link between philosophy and its history is a far closer one. The historical task itself forces historians of philosophy to paraphrase their subjects' opinions, to offer reasons why past thinkers held the opinions they did, to speculate on the premises left tacit in their arguments, and to evaluate the coherence and cogency of the inferences they drew. But the supplying of reasons for philosophical conclusions, the detection of hidden premises in philosophical arguments, and the logical evaluation of philosophical inferences are themselves full-blooded philosophical activities. **Consequently any serious history of philosophy must itself be an exercise in philosophy as well as in history.**
 
-The audience I have in mind is at the level of second- or third-year undergraduate study. I realize, however, that many of those interested in the history of philosophy may themselves be enrolled in courses that are not primarily philosophical. Accordingly I have done my best not to assume a familiarity with contemporary philosophical techniques or terminology. I hope also to have written in a manner clear and light-hearted enough for the book to be enjoyed by those who read it not for curricular purposes but for their own information and entertainment.
+> 哲学史家无论主要关心哲学，还是主要关心历史，都不可避免地既是哲学家，又是历史学家。绘画史家不必是画家；医学史家*就其作为历史学家而言*，也不必行医。但哲学史家在书写历史的过程中，不可能不从事哲学。问题并不只是说，一个不懂哲学的人会成为糟糕的哲学史家；这就像一个完全不懂烹饪的人会成为糟糕的烹饪史家一样。哲学与其历史之间的联系要紧密得多。历史研究本身就迫使哲学史家转述研究对象的观点，说明过去思想家为何持有那些观点，推测其论证中未明说的前提，并评估他们所作推论的连贯性和说服力。而为哲学结论提供理由、发现哲学论证中的隐含前提、对哲学推论作逻辑评价，这些本身就是充分意义上的哲学活动。**因此，任何严肃的哲学史本身都必须既是一种历史实践，也是一种哲学实践。**
+
+> - *qua* [kweɪ]：prep. 作为；就……身份而言。
+> - *paraphrase* [ˈpærəfreɪz]：v./n. 改述；转述。
+> - *tacit* [ˈtæsɪt]：adj. 未明说的；默会的。
+> - *coherence* [koʊˈhɪrəns]：n. 连贯性；一致性。
+> - *cogency* [ˈkoʊdʒənsi]：n. 说服力；论证的有力性。
+> - *full-blooded*：充分意义上的；完全成熟的。
+
+On the other hand, the historian of philosophy must also have a knowledge of the historical context in which past philosophers wrote their works. When we explain historical actions, we ask for the agent's reasons; if we find a good reason, we think we have understood his action. If we conclude he did not have good reason, even *in his own terms*, we have to find different, more complicated explanations. What is true of action is true of taking a philosophical view. If the philosophical historian finds a good reason for a past philosopher's doctrines, his task is done. But if he concludes that the past philosopher had no good reason, he has a further and much more difficult task, of explaining the doctrine in terms of the context in which it appeared—social, perhaps, as well as intellectual.
+
+> 另一方面，哲学史家还必须了解过去哲学家写作时所处的历史语境。当我们解释历史行动时，会追问行动者的理由；如果找到一个充分理由，我们便认为自己理解了他的行动。如果我们断定他并没有充分理由，哪怕*按他自己的标准*也没有，那么就必须寻找不同而且更复杂的解释。行动如此，持有某种哲学观点亦如此。如果哲学史家能为过去某位哲学家的学说找到充分理由，他的任务就完成了。但如果他断定那位哲学家并无充分理由，他还面临一个更困难的任务：根据该学说出现的语境来解释它——这个语境也许既是社会的，也是智识的。
+
+> - *historical context*：历史语境；思想或文本产生时的社会、制度、学术和文化背景。
+> - *agent* [ˈeɪdʒənt]：n. 行动者；实施某一行动的人或主体。
+> - *in his own terms*：按他自己的标准；在其自身框架内。
+> - 注释 1：Michael Frede 在 *Essays in Ancient Philosophy* 的导言中很好地说明了这项任务的艰巨性。
+
+History and philosophy are closely linked even in the *first-hand quest* for original philosophical enlightenment. In modern times this has been illustrated most brilliantly by Gottlob Frege's *Grundlagen der Arithmetik*. Almost half of Frege's book is devoted to discussing and refuting the views of other philosophers and mathematicians. While he is discussing the opinions of others, he ensures that some of his own insights are artfully *insinuated*, and this makes easier the eventual presentation of his own theory. But the main purpose of his lengthy historical *polemic* is to convince readers of the seriousness of the problems to which he will later offer solutions. Without this *preamble*, he says, we would lack the first prerequisite for learning anything: knowledge of our own ignorance.
+
+> 即便是在第一手追求原创哲学启明的过程中，历史与哲学也紧密相连。近代最精彩地说明这一点的，是戈特洛布·弗雷格的《算术基础》。弗雷格此书几乎有一半篇幅用于讨论并反驳其他哲学家和数学家的观点。在讨论他人意见时，他巧妙地把自己的若干洞见*嵌入*其中，从而使后来正式提出自己的理论变得更容易。不过，他这番漫长的历史性*论战*，主要目的在于让读者相信：他随后要解决的问题确实十分严肃。弗雷格说，如果没有这段*导言式铺垫*，我们就会缺少学习任何东西的首要前提：知道自己的无知。
+
+> - *first-hand quest*：第一手追求；亲自进行的探求。
+> - *Grundlagen der Arithmetik*：德文书名，《算术基础》；弗雷格关于数和算术基础的重要著作。
+> - *insinuate* [ɪnˈsɪnjueɪt]：v. 巧妙插入；含蓄地引入。
+> - *polemic* [pəˈlemɪk]：n. 论战；强烈批判性的论述。
+> - *preamble* [ˈpriːæmbl]：n. 导言；序言；铺垫。
+> - *prerequisite* [ˌpriːˈrekwəzɪt]：n. 前提；先决条件。
+
+Most histories of philosophy, in this age of specialization, are the work of many hands, specialists in different fields and periods. In inviting me to write, *singlehanded*, a history of philosophy from Thales to Derrida, Oxford University Press gave expression to the belief that there is something to be gained by presenting the development of philosophy from a single viewpoint, linking ancient, medieval, early modern, and contemporary philosophy into a single narrative concerned with connected themes. The work originally appeared in four separate volumes. The first, published in 2004, covered the centuries from the beginning of philosophy up to the conversion of St Augustine in ad 387. The second, published in 2005, took the story from Augustine up to the Lateran Council of 1512. The third, published in 2006, ended with the death of Hegel in 1831. The final volume, which appeared in 2007, brought the narrative up to the final years of the second millennium. Now the whole history appears within a single binding, in four parts corresponding to the original four volumes.
+
+> 在这个专业分工的时代，大多数哲学史都出自多人之手，由不同领域和不同时期的专家共同撰写。牛津大学出版社邀请我*独自*写一部从泰勒斯到德里达的哲学史，这表达了一种信念：如果从一个统一视角呈现哲学的发展，把古代、中世纪、近代早期和当代哲学联结为一条围绕相关主题展开的叙事，我们会有所收获。本书最初以四卷本形式分别出版。第一卷出版于 2004 年，叙述从哲学开端到公元 387 年圣奥古斯丁皈依为止的几个世纪。第二卷出版于 2005 年，从奥古斯丁讲到 1512 年的拉特兰会议。第三卷出版于 2006 年，以 1831 年黑格尔去世为终点。最后一卷出版于 2007 年，把叙事推进到第二个千年的最后几年。如今，整部哲学史合为一册，分为四部分，对应原先的四卷。
+
+> - *specialization* [ˌspeʃələˈzeɪʃn]：n. 专业化；专业分工。
+> - *the work of many hands*：多人合作的成果。
+> - *singlehanded* [ˌsɪŋɡlˈhændɪd]：adv. 独自地；单独完成地。
+> - *single narrative*：单一叙事；用统一线索组织起来的叙述。
+> - *Lateran Council*：拉特兰会议；天主教历史上的重要宗教会议，此处指 1512 年召开的第五次拉特兰会议。
+> - *single binding*：合订本；装订成一册。
+
+The history of philosophy presented here is designed in a way that is intended to *take account of* the insights I have tried to express in this introduction. It is not based on any *Whiggish* notion that the current state of philosophy represents the highest point of philosophical endeavour up to the present. On the contrary, its primary assumption is that in many respects the philosophy of the great dead philosophers has not dated, and that even today one may gain great illumination by a careful reading of the great works that we have been privileged to inherit.
+
+> 本书所呈现的哲学史，其设计方式旨在*吸收并回应*我在本导论中试图表达的那些洞见。它并不建立在任何*辉格史观式*观念之上，即认为哲学的当前状态代表了迄今哲学努力的最高点。相反，本书的基本假设是：在许多方面，已逝伟大哲学家的哲学并未过时；即便在今天，细读我们有幸继承的伟大作品，仍能获得深刻启发。
+
+> - *take account of*：考虑到；吸收并回应。
+> - *Whiggish* [ˈwɪɡɪʃ]：adj. 辉格史观式的；把历史理解为朝向当下不断进步的叙事方式。
+> - *philosophical endeavour*：哲学努力；哲学探索活动。
+> - *has not dated*：并未过时。
+
+The *kernel* of any kind of history of philosophy is *exegesis*: the close reading and interpretation of philosophical texts. Exegesis may be of two kinds, internal or external. In *internal exegesis* the interpreter tries to make the text coherent and consistent, employing the *principle of charity* in interpretation. In *external exegesis* the interpreter seeks to bring out the significance of the text by comparing it and contrasting it with other texts.
+
+> 任何一种哲学史的*核心*都是*诠释*：也就是对哲学文本作细读和解释。诠释可以分为两类：内部诠释和外部诠释。在*内部诠释*中，解释者运用解释中的*宽容原则*，努力使文本显得连贯而一致；在*外部诠释*中，解释者则通过把该文本与其他文本比较和对照，揭示其意义。
+
+> - *kernel* [ˈkɜːrnl]：n. 核心；要点。
+> - *exegesis* [ˌeksɪˈdʒiːsɪs]：n. 诠释；尤指对文本的细读和解释。
+> - *internal exegesis*：内部诠释；从文本内部寻求一致性和合理性的解释方式。
+> - *external exegesis*：外部诠释；通过历史背景或其他文本来阐明意义的解释方式。
+> - *principle of charity*：宽容原则；解释他人观点时尽量将其理解为合理、一致和有力的原则。
+
+Exegesis is the common basis of the two quite different historical endeavours that I described at the beginning of this introduction. In one, which we may call *historical philosophy*, the aim is to reach philosophical truth, or philosophical understanding, about the matter or issue under discussion in the text. Typically, historical philosophy looks for the reasons behind, or the justification for, the statements made in the text under study. In the other endeavour, the *history of ideas*, the aim is not to reach the truth about the matter in hand, but to reach the understanding of a person or an age or a historical succession. Typically, the historian of ideas looks not for the reasons so much as the sources, or causes, or motives, for saying what is said in the target text.
+
+> 诠释是两种相当不同的历史研究事业的共同基础，这两种事业正是我在导论开头所描述的。一种可以称为*历史哲学*，其目标是就文本中讨论的事项或问题达到哲学真理，或获得哲学理解。通常，历史哲学寻找的是被研究文本中各种陈述背后的理由，或这些陈述的正当性。另一种事业是*观念史*，其目标并不是把握当前问题本身的真理，而是理解一个人、一个时代或一段历史承续。观念史家通常并不那么关注某句话的理由，而更关注目标文本中这些说法的来源、成因或动机。
+
+> - *historical philosophy*：历史哲学；借助历史文本来追求哲学真理或哲学理解的研究方式。
+> - *justification* [ˌdʒʌstɪfɪˈkeɪʃn]：n. 正当性；论证根据。
+> - *history of ideas*：观念史；研究观念在人物、时代和传统中的来源、变迁与作用。
+> - *historical succession*：历史承续；不同阶段或人物之间的历史连续关系。
+
+Both of these disciplines base themselves on *exegesis*, but, of the two, the history of ideas is the one most closely *bound up with* the accuracy and sensitivity of the reading of the text. It is possible to be a good philosopher while being a poor exegete. At the beginning of his *Philosophical Investigations* Wittgenstein offers a discussion of St Augustine's theory of language. What he writes is very *dubious exegesis*; but this does not weaken the force of his philosophical criticism of the 'Augustinian' theory of language. But Wittgenstein did not really think of himself as engaged in historical philosophy, any more than he thought of himself as engaged in the historiography of ideas. The invocation of the great Augustine as the author of the mistaken theory is merely to indicate that the error is one that is worth attacking.
+
+> 这两门学科都以*诠释*为基础；但二者之中，观念史与文本阅读的准确性和敏感性关系最为密切。一个人完全可能是优秀哲学家，却是糟糕的诠释者。维特根斯坦在《哲学研究》开头讨论了圣奥古斯丁的语言理论。他那里的解读作为*文本诠释*十分可疑；但这并不削弱他对“奥古斯丁式”语言理论的哲学批判力量。不过，维特根斯坦并不真正认为自己在从事历史哲学，也不认为自己在从事观念史写作。他援引伟大的奥古斯丁作为错误理论的作者，只是为了表明：这个错误值得攻击。
+
+> - *bound up with*：与……密切相关。
+> - *exegete* [ˈeksɪdʒiːt]：n. 诠释者；文本解释者。
+> - *Philosophical Investigations*：《哲学研究》；维特根斯坦后期代表作。
+> - *dubious* [ˈduːbiəs]：adj. 可疑的；不可靠的。
+> - *historiography of ideas*：观念史编纂；关于观念史如何书写的研究或实践。
+> - *invocation* [ˌɪnvəˈkeɪʃn]：n. 援引；调用。
+
+In different histories of philosophy, the skills of the historian and those of the philosopher are exercised in different proportions. The due proportion varies in accordance with the purpose of the work and the field of philosophy in question. The pursuit of historical understanding and the pursuit of philosophical enlightenment are both legitimate approaches to the history of philosophy, but both have their dangers. Historians who study the history of thought without being themselves involved in the philosophical problems that exercised past philosophers are likely to sin by *superficiality*. Philosophers who read ancient, medieval, or early modern texts without a knowledge of the historical context in which they were written are likely to sin by *anachronism*.
+
+> 在不同的哲学史中，历史学家的技能和哲学家的技能会以不同比例发挥作用。恰当比例取决于作品的目的，以及所涉及的哲学领域。追求历史理解和追求哲学启明，都是处理哲学史的正当方式，但二者都有危险。历史学家如果研究思想史，却自己并不进入曾经困扰过去哲学家的哲学问题，就容易犯*肤浅化*的错误；哲学家如果阅读古代、中世纪或近代早期文本，却不了解这些文本写作时的历史语境，就容易犯*时代错置*的错误。
+
+> - *in different proportions*：以不同比例。
+> - *legitimate* [lɪˈdʒɪtɪmət]：adj. 正当的；合理的。
+> - *superficiality* [ˌsuːpərˌfɪʃiˈæləti]：n. 肤浅；只停留在表面。
+> - *anachronism* [əˈnækrənɪzəm]：n. 时代错置；把不属于某时代的观念或背景强加给该时代。
+
+**Each of these errors can nullify the purpose of the enterprise.** The historian who is unconcerned by the philosophical problems that troubled past writers has not really understood how they themselves conducted their thinking. The philosopher who ignores the historical background of past classics will gain no fresh light on the issues that concern us today, but merely present contemporary prejudices in *fancy dress*.
+
+> **这两种错误都会使整个研究事业的目的落空。**历史学家如果不关心曾困扰过去作者的哲学问题，就并没有真正理解他们自身如何展开思考；哲学家如果忽视过去经典的历史背景，也不会为今天关切的问题获得新的光照，而只是把当代偏见穿上*古装*重新端出来。
+
+> - *nullify* [ˈnʌlɪfaɪ]：v. 使无效；抵消。
+> - *enterprise* [ˈentərpraɪz]：n. 事业；计划；研究活动。
+> - *fancy dress*：化装服；此处比喻把当代偏见伪装成古代思想。
+
+The two dangers threaten in different proportions in different areas of the history of philosophy. In the area of metaphysics it is *superficiality* that is most to be guarded against. To someone without a personal interest in fundamental philosophical problems the systems of the great thinkers of the past will seem only *quaint lunacy*. In political philosophy, *anachronism* is the greater danger. When we read Plato's or Aristotle's criticisms of democracy, we will not *make head or tail of* them unless we know something about the institutions of ancient Athens. In between metaphysics and political philosophy stand ethics and philosophy of mind: here, both dangers threaten with roughly equal force.
+
+> 这两种危险在哲学史的不同领域中比例不同。在形而上学领域，最需要防范的是*肤浅化*。对于那些自己并不关心根本哲学问题的人来说，过去伟大思想家的体系只会显得像*古怪的疯话*。而在政治哲学中，更大的危险则是*时代错置*。当我们阅读柏拉图或亚里士多德对民主制的批评时，如果不了解古代雅典的制度，就会完全*摸不着头脑*。介于形而上学与政治哲学之间的，是伦理学和心灵哲学；在这些领域，两种危险大体势均力敌。
+
+> - *metaphysics* [ˌmetəˈfɪzɪks]：n. 形而上学；研究存在、实体、因果等根本问题的哲学分支。
+> - *quaint lunacy*：古怪的疯话；作者用来形容缺乏哲学兴趣者眼中过去体系的样子。
+> - *make head or tail of*：弄懂；理出头绪。
+> - *political philosophy*：政治哲学；研究权力、制度、正义、民主等政治概念的哲学分支。
+> - *philosophy of mind*：心灵哲学；研究心灵、意识、意向性、身心关系等问题的哲学分支。
+
+In this narrative I have attempted to be both a *philosophical historian* and a *historical philosopher*. Multi-authored histories are sometimes structured chronologically and sometimes structured thematically. I have combined both approaches, offering in each part first a *chronological survey*, and then a *thematic treatment* of particular philosophical topics of *abiding importance*. The reader whose primary interest is historical will focus on the chronological survey, referring where necessary to the thematic sections for amplification. The reader who is more concerned with the philosophical issues will concentrate rather on the thematic sections, referring back to the chronological surveys to place particular issues in context.
+
+> 在这部叙事中，我试图既做一名*哲学的历史学家*，也做一名*历史的哲学家*。多人合写的哲学史有时按年代组织，有时按主题组织。我把两种方式结合起来：每一部分先提供*年代概览*，再对若干具有*持久重要性*的哲学主题作*专题处理*。主要兴趣在历史的读者，会把重点放在年代概览上，并在需要时参考专题部分以作补充；更关心哲学问题的读者，则会集中阅读专题部分，并回到年代概览中为具体问题定位语境。
+
+> - *philosophical historian*：哲学的历史学家；以哲学问题意识书写历史的人。
+> - *historical philosopher*：历史的哲学家；通过历史材料进行哲学思考的人。
+> - *chronological survey*：年代概览；按时间顺序组织的叙述。
+> - *thematic treatment*：专题处理；按问题或主题展开的讨论。
+> - *abiding importance*：持久重要性。
+> - *amplification* [ˌæmplɪfɪˈkeɪʃn]：n. 补充说明；展开阐释。
+
+I should make clear *at the outset* that in the case of many of my historical subjects I write *of necessity* as an amateur rather than as an expert. In an age when the academic study of past philosophers has expanded exponentially, no one person can read more than a fraction of the vast secondary literature that has *proliferated* in recent years around every one of the thinkers discussed in this volume. I have myself contributed to the scholarly discussion of several of the great philosophers of the past, in particular Plato, Aristotle, Aquinas, Descartes, Frege, and Wittgenstein, and I have published monographs on some of the subjects covered by my thematic chapters, such as the philosophy of mind and the philosophy of religion. But in compiling the bibliographies for the earlier parts I was made aware how vast was the extent of material I have not read in comparison with the amount that I am familiar with.
+
+> 我应当*一开始*就说明：对于本书涉及的许多历史对象，我*不得不*以业余者而非专家的身份写作。在一个过去哲学家的学术研究呈指数级扩张的时代，围绕本卷讨论的每一位思想家，近年都涌现出庞大的二手文献；没有任何一个人能读完其中超过一小部分。我本人曾参与若干过去伟大哲学家的学术讨论，尤其是柏拉图、亚里士多德、阿奎那、笛卡尔、弗雷格和维特根斯坦；我也出版过若干专题章节所涉及领域的专著，例如心灵哲学和宗教哲学。但在为较早几部分编制书目时，我清楚意识到：与我熟悉的材料相比，我未读过的材料范围何其巨大。
+
+> - *at the outset*：一开始；开端处。
+> - *of necessity*：不得不；出于必要。
+> - *amateur* [ˈæmətər]：n. 业余者；非专业人士。
+> - *secondary literature*：二手文献；关于原始文本或思想家的研究文献。
+> - *proliferate* [prəˈlɪfəreɪt]：v. 激增；迅速扩散。
+> - *monograph* [ˈmɑːnəɡræf]：n. 专著；专题研究著作。
+> - *bibliography* [ˌbɪbliˈɑːɡrəfi]：n. 书目；参考文献表。
+
+Any single author who attempts to cover the entire history of philosophy is quickly made aware that in matters of detail he is at an enormous disadvantage in comparison with the scholars who have made individual philosophers their field of expertise. *By compensation*, a history written by a single hand may be able to emphasize features of the history of philosophy that are less obvious in the works of committees of specialists, just as an aerial photograph may bring out features of a landscape that are almost invisible to those close to the ground.
+
+> 任何试图独自覆盖整部哲学史的作者，很快都会意识到：在细节问题上，与那些以个别哲学家为专门研究领域的学者相比，他处于极大的劣势。*作为补偿*，一部由单一作者写成的哲学史，也许能够突出哲学史中某些特征；这些特征在专家委员会合写的作品中不那么明显，正如一张航拍照片能够显现出那些贴近地面者几乎看不见的地貌特征。
+
+> - *in matters of detail*：在细节问题上。
+> - *at a disadvantage*：处于劣势。
+> - *field of expertise*：专业领域；专长领域。
+> - *by compensation*：作为补偿；另一方面作为弥补。
+> - *a single hand*：单一作者；一个人之手。
+
+The audience I have in mind is at the level of second- or third-year undergraduate study. I realize, however, that many of those interested in the history of philosophy may themselves be enrolled in courses that are not primarily philosophical. Accordingly I have done my best not to assume a familiarity with contemporary philosophical techniques or terminology. I hope also to have written in a manner clear and *light-hearted* enough for the book to be enjoyed by those who read it not for curricular purposes but for their own information and entertainment.
+
+> 我心目中的读者，大致处于大学二、三年级本科生的水平。不过我也意识到，许多对哲学史感兴趣的人，自己可能就读的课程并不以哲学为主。因此，我尽力不预设读者熟悉当代哲学技巧或术语。我也希望自己的写法足够清晰、足够*轻松*，使那些并非为了课程要求，而是为了增长见闻和获得阅读乐趣而读本书的人，也能享受这本书。
+
+> - *have in mind*：心中设想；以……为对象。
+> - *undergraduate* [ˌʌndərˈɡrædʒuət]：n./adj. 本科生；本科阶段的。
+> - *terminology* [ˌtɜːrmɪˈnɑːlədʒi]：n. 术语；专门用语。
+> - *light-hearted* [ˌlaɪt ˈhɑːrtɪd]：adj. 轻松的；轻快的。
+> - *curricular* [kəˈrɪkjələr]：adj. 课程的；课程安排中的。
 
 ## [INTRODUCTION TO PART ONE]
 
-Not only ancient philosophy, but philosophy's whole history, is dominated by Plato and Aristotle. No later philosopher, ancient, medieval or modern, has surpassed the genius of these two colossi.
+**Not only ancient philosophy, but philosophy's whole history, is dominated by Plato and Aristotle.** No later philosopher, ancient, medieval or modern, has surpassed the genius of these two *colossi*.
 
-It is not too much to say that Plato invented the subject of philosophy. To be sure, he was preceded by hardy speculators such as Pythagoras, impressive gurus like Heraclitus, and eccentric geniuses like Parmenides. But what these men presented were philosophical problems rather than philosophical insights. It was Plato who formulated the methods for their solution. He had to invent, from whole cloth, the basic technical concepts that have been the tools of philosophy ever since. Of course, he acknowledged an enormous debt to his teacher Socrates, in whose mouth he places many of his own original ideas. But, as Socrates himself left no writings, the man who has ever since been revered as the patron saint of philosophy is the Socrates of Plato.
+> **不仅古代哲学，整个哲学史都笼罩在柏拉图和亚里士多德的巨大影响之下。**后来的哲学家，无论古代、中世纪还是近现代，都没有超过这两位*巨擘*的天才。
 
-If Plato can be said to have invented philosophy, Aristotle can claim to be the founder of science. Like Plato, he had predecessors of great distinction, such as the evolutionist Empedocles and the atomist Democritus. But Aristotle, besides being himself a distinguished logician and biologist, was the first to identify and classify different scientific disciplines, and the first to create a research institute for empirical inquiry.
+> - *dominated by*：受……支配；被……深刻影响。
+> - *colossus* [kəˈlɑːsəs]：n. 巨人；巨擘。
 
-But if Plato and Aristotle deserve a central place in the history of ancient philosophy, scholars in recent decades have shown that there is much to be learnt from their successors in late antiquity, such as the Stoics and Epicureans during the Hellenistic period, and the Neoplatonists in the latter days of imperial Rome. The writings of the first great Christian philosopher, St Augustine of Hippo, was the channel through which Platonic ideas travelled to the Middle Ages, and the date of his conversion, which terminates the present part, provides a hinge between the ancient and the medieval world.
+It is not too much to say that Plato invented the subject of philosophy. To be sure, he was preceded by *hardy speculators* such as Pythagoras, impressive *gurus* like Heraclitus, and *eccentric* geniuses like Parmenides. But what these men presented were philosophical problems rather than philosophical insights. **It was Plato who formulated the methods for their solution.** He had to invent, *from whole cloth*, the basic technical concepts that have been the tools of philosophy ever since. Of course, he acknowledged an enormous debt to his teacher Socrates, in whose mouth he places many of his own original ideas. But, as Socrates himself left no writings, the man who has ever since been revered as the *patron saint* of philosophy is the Socrates of Plato.
 
-In accordance with the strategy outlined in the general introduction I offer in the first section of this part a conventional chronological tour from Pythagoras to Augustine, and in the second section a more detailed treatment of topics where I believe we have still much to learn from our predecessors in classical Greece and imperial Rome. The topics of these thematic sections have been chosen partly with an eye to the development of the same themes in the parts that are yet to come.
+> 说柏拉图发明了哲学这门学科，并不过分。诚然，在他之前已有毕达哥拉斯这样的*坚韧思辨者*，赫拉克利特这样令人印象深刻的*导师式人物*，以及巴门尼德这样*古怪*的天才。但这些人提出的更多是哲学问题，而不是哲学洞见。**真正为这些问题制定解决方法的人，是柏拉图。**他不得不*凭空创造*出一整套基本技术概念，而这些概念此后一直成为哲学的工具。当然，他承认自己对老师苏格拉底负有巨大思想债；他也把许多原创思想放在苏格拉底口中表达。但由于苏格拉底本人没有留下著作，自此被尊为哲学*守护圣徒*的那个人，其实是柏拉图笔下的苏格拉底。
+
+> - *hardy speculator*：坚韧的思辨者；敢于提出宏大理论猜想的人。
+> - *guru* [ˈɡʊruː]：n. 导师；精神或思想权威。
+> - *eccentric* [ɪkˈsentrɪk]：adj. 古怪的；异乎寻常的。
+> - *from whole cloth*：凭空；从无到有。
+> - *technical concept*：技术性概念；某一学科内部具有专门功能的概念工具。
+> - *patron saint*：守护圣徒；此处比喻某一事业或传统的象征性源头。
+
+If Plato can be said to have invented philosophy, Aristotle can claim to be the founder of science. Like Plato, he had predecessors of great distinction, such as the evolutionist Empedocles and the atomist Democritus. But Aristotle, besides being himself a distinguished logician and biologist, was the first to identify and classify different scientific disciplines, and the first to create a research institute for *empirical inquiry*.
+
+> 如果说柏拉图可以被称为哲学的发明者，那么亚里士多德则可以声称自己是科学的奠基者。和柏拉图一样，他也有杰出的前辈，例如进化论式思想家恩培多克勒和原子论者德谟克利特。但亚里士多德本人不仅是杰出的逻辑学家和生物学家；他还是第一位识别并分类不同科学学科的人，也是第一位为*经验研究*创建研究机构的人。
+
+> - *founder of science*：科学的奠基者；此处指亚里士多德对学科分类和经验研究制度化的开创作用。
+> - *of great distinction*：非常杰出的；卓越的。
+> - *evolutionist*：进化论式思想家；此处指恩培多克勒有关生物生成和适应的早期思想。
+> - *atomist*：原子论者；认为世界由不可分割的原子构成的思想家。
+> - *empirical inquiry*：经验研究；以观察、经验材料和事实考察为基础的探究。
+
+But if Plato and Aristotle deserve a central place in the history of ancient philosophy, scholars in recent decades have shown that there is much to be learnt from their successors in *late antiquity*, such as the Stoics and Epicureans during the *Hellenistic period*, and the Neoplatonists in the latter days of imperial Rome. The writings of the first great Christian philosopher, St Augustine of Hippo, was the channel through which Platonic ideas travelled to the Middle Ages, and the date of his conversion, which terminates the present part, provides a *hinge* between the ancient and the medieval world.
+
+> 不过，即便柏拉图和亚里士多德理应在古代哲学史中占据中心位置，近几十年的学者也已经表明：我们仍能从他们在*晚期古代*的继承者那里学到许多东西，例如*希腊化时期*的斯多亚派和伊壁鸠鲁派，以及罗马帝国后期的新柏拉图主义者。第一位伟大基督教哲学家希波的圣奥古斯丁，其著作成为柏拉图思想通往中世纪的渠道；他的皈依日期也是本部分叙事的终点，并在古代世界与中世纪世界之间形成一个*枢纽*。
+
+> - *late antiquity*：晚期古代；大致指古典古代后期至中世纪早期之间的历史阶段。
+> - *Hellenistic period*：希腊化时期；亚历山大之后希腊文化扩展并与其他文化交汇的时期。
+> - *Stoics*：斯多亚派；强调理性、自然法则和德性自足的古代哲学流派。
+> - *Epicureans*：伊壁鸠鲁派；强调快乐、无扰和原子论自然观的古代哲学流派。
+> - *Neoplatonists*：新柏拉图主义者；晚期古代发展出的柏拉图主义传统，强调“一者”等形而上学原则。
+> - *hinge* [hɪndʒ]：n. 枢纽；连接点。
+
+In accordance with the strategy outlined in the general introduction I offer in the first section of this part a conventional chronological tour from Pythagoras to Augustine, and in the second section a more detailed treatment of topics where I believe we have still much to learn from our predecessors in classical Greece and imperial Rome. The topics of these thematic sections have been chosen partly *with an eye to* the development of the same themes in the parts that are yet to come.
+
+> 按照总导言中说明的策略，我将在本部分第一节提供一条常规的年代线索，从毕达哥拉斯讲到奥古斯丁；在第二节中，则更详细地处理若干主题，因为我认为，在这些问题上，我们仍能从古典希腊和罗马帝国时期的前辈那里学到很多。这些专题章节之所以如此选择，部分也是*着眼于*同一主题在后续几部分中的发展。
+
+> - *in accordance with*：按照；依据。
+> - *chronological tour*：按年代展开的概览式叙述。
+> - *predecessor* [ˈpriːdɪsesər]：n. 前辈；先行者。
+> - *classical Greece*：古典希腊；通常指公元前五至四世纪的希腊文明高峰期。
+> - *imperial Rome*：罗马帝国时期。
+> - *with an eye to*：着眼于；考虑到。
 
 ## Beginnings: [From Pythagoras to Plato]
 
@@ -205,61 +481,239 @@ The fact is that the distinction between religion, science, and philosophy was n
 
 ## The Milesians
 
-Only two sayings are recorded of Thales of Miletus (c.625–545 bc), traditionally the founding father of Greek philosophy. They illustrate the mélange of science and religion, for one of them was 'All things are full of gods', and the other was 'Water is the first principle of everything'. Thales was a geometer, the first to discover the method of inscribing a right-angled triangle in a circle; he celebrated this discovery by sacrificing an ox to the gods (D.L. 1. 24–5). He measured the height of the pyramids by measuring their shadows at the time of day when his own shadow was as long as he was tall. He put his geometry to practical use: having proved that triangles with one equal side and two equal angles are congruent, he used this result to determine the distance of ships at sea.
+Only two sayings are recorded of *Thales of Miletus* (c.625-545 bc), traditionally the founding father of Greek philosophy. They illustrate the *mélange* of science and religion, for one of them was 'All things are full of gods', and the other was 'Water is the first principle of everything'. Thales was a *geometer*, the first to discover the method of *inscribing* a right-angled triangle in a circle; he celebrated this discovery by sacrificing an ox to the gods (D.L. 1. 24-5). He measured the height of the pyramids by measuring their shadows at the time of day when his own shadow was as long as he was tall. He put his geometry to practical use: having proved that triangles with one equal side and two equal angles are *congruent*, he used this result to determine the distance of ships at sea.
 
-Thales also had a reputation as an astronomer and a meteorologist. In addition to predicting the eclipse, he is said to have been the first to show that the year contained 365 days, and to determine the dates of the summer and winter solstices. He studied the constellations and made estimates of the sizes of the sun and moon. He turned his skill as a weather forecaster to good account: foreseeing an
+> 关于*米利都的泰勒斯*（约公元前 625-545 年），传统上被视为希腊哲学奠基者的人，流传下来的格言只有两句。它们显示出科学与宗教的*混合*：一句是“万物充满神灵”，另一句是“水是万物的第一原则”。泰勒斯是一位*几何学家*，最早发现了在圆内*内接*直角三角形的方法；他还以向诸神献祭一头牛来庆祝这一发现（D.L. 1. 24-5）。他通过测量金字塔的影子来测量其高度，所选时间正是他自己的影子与身高等长之时。他也把几何学用于实践：他证明一边相等且两角相等的三角形彼此*全等*，并用这一结果来测定海上船只的距离。
 
-unusually good olive crop, he took a lease on all the oil mills and made a fortune through his monopoly. Thus, Aristotle said, he showed that philosophers could easily be rich if they wished (Pol. 1. 11. 1259a6–18).
+> - *Thales of Miletus*：米利都的泰勒斯；通常被视为希腊哲学传统的开端人物。
+> - *mélange* [meɪˈlɑːnʒ]：n. 混合物；混杂状态。
+> - *geometer* [dʒiˈɑːmətər]：n. 几何学家。
+> - *inscribe* [ɪnˈskraɪb]：v. 内接；题写；刻写。
+> - *congruent* [ˈkɑːŋɡruənt]：adj. 全等的；一致的。
+> - D.L.：第欧根尼·拉尔修《名哲言行录》的引用缩写。
 
-If half the stories current about Thales in antiquity are true, he was a man of many parts. But tradition's portrait of him is ambiguous. On the one hand, he figures as a philosophical entrepreneur, and a political and military pundit. On the other hand, he became a byword for unworldly absent-mindedness. Plato, among others, tells the following tale:
+Thales also had a reputation as an astronomer and a *meteorologist*. In addition to predicting the eclipse, he is said to have been the first to show that the year contained 365 days, and to determine the dates of the summer and winter *solstices*. He studied the *constellations* and made estimates of the sizes of the sun and moon. He turned his skill as a weather forecaster *to good account*: foreseeing an unusually good olive crop, he took a lease on all the oil mills and made a fortune through his monopoly. Thus, Aristotle said, he showed that philosophers could easily be rich if they wished (Pol. 1. 11. 1259a6-18).
+
+> 泰勒斯还以天文学家和*气象学家*著称。除预测日食之外，据说他还是第一个说明一年有 365 天，并确定夏至和冬至日期的人。他研究*星座*，并估算太阳和月亮的大小。他还把自己预测天气的本领*派上了用场*：预见到橄榄将异常丰收后，他租下了所有榨油坊，并通过垄断赚得一笔财富。因此，亚里士多德说，他证明了哲学家如果愿意，是很容易致富的（《政治学》1.11.1259a6-18）。
+
+> - *meteorologist* [ˌmiːtiəˈrɑːlədʒɪst]：n. 气象学家。
+> - *solstice* [ˈsɑːlstɪs]：n. 至日；太阳到达南北回归线时的夏至或冬至。
+> - *constellation* [ˌkɑːnstəˈleɪʃn]：n. 星座。
+> - *turn ... to good account*：善加利用；把……变成有利条件。
+> - *monopoly* [məˈnɑːpəli]：n. 垄断；专营。
+> - Pol.：亚里士多德《政治学》的引用缩写。
+
+If half the stories current about Thales in antiquity are true, he was *a man of many parts*. But tradition's portrait of him is *ambiguous*. On the one hand, he figures as a philosophical entrepreneur, and a political and military *pundit*. On the other hand, he became a byword for unworldly *absent-mindedness*. Plato, among others, tells the following tale:
+
+> 如果古代流传的泰勒斯故事有一半属实，那么他就是一个*多才多艺*的人。但传统中对他的刻画是*暧昧而双重*的。一方面，他被描绘成哲学企业家，也是政治和军事方面的*权威评论者*；另一方面，他又成了不谙世事、*心不在焉*的代名词。柏拉图等人讲过下面这个故事：
+
+> - *a man of many parts*：多才多艺的人。
+> - *ambiguous* [æmˈbɪɡjuəs]：adj. 模棱两可的；具有双重含义的。
+> - *pundit* [ˈpʌndɪt]：n. 专家；权威评论者。
+> - *byword* [ˈbaɪwɜːrd]：n. 代名词；典型例子。
+> - *absent-mindedness*：心不在焉；精神恍惚。
 
 Thales was studying the stars and gazing into the sky, when he fell into a well, and a jolly and witty Thracian servant girl made fun of him, saying that he was crazy to know about what was up in the heavens while he could not see what was in front of him beneath his feet. (Theaetetus 174a)
 
-An unlikely story went around that he had met his death by just such a fall while stargazing.
+> 泰勒斯正在研究星辰，仰望天空时掉进了一口井里；一个快活而机智的色雷斯女仆嘲笑他说，他竟然想知道天上的事情，却看不见自己脚下眼前的东西。（《泰阿泰德》174a）
 
-Thales was reckoned as one of the Seven Sages, or wise men, of Greece, on a par with Solon, the great legislator of Athens. He is credited with a number of aphorisms. He said that before a certain age it was too soon for a man to marry; and after that age it was too late. When asked why he had no children, he said 'Because I am fond of children.'
+> - *gaze into*：凝视；注视。
+> - *Thracian* [ˈθreɪʃn]：adj. 色雷斯的；色雷斯人相关的。
+> - *make fun of*：嘲笑；取笑。
+> - *Theaetetus*：《泰阿泰德》；柏拉图关于知识问题的重要对话。
 
-Thales' remarks heralded many centuries of philosophical disdain for marriage. Anyone who makes a list of a dozen really great philosophers is likely to discover that the list consists almost entirely of bachelors. One plausible list, for instance, would include Plato, Augustine, Aquinas, Scotus, Descartes, Locke, Spinoza, Hume, Kant, Hegel, and Wittgenstein, none of whom were married. Aristotle is the grand exception that disproves the rule that marriage is incompatible with philosophy.
+An unlikely story went around that he had met his death by just such a fall while *stargazing*.
 
-Even in antiquity people found it hard to understand Thales' adoption of water as the ultimate principle of explanation. The earth, he said, rested on water like a log floating in a stream—but then, asked Aristotle, what does the water rest on? (Cael. 2. 13. 294a28–34). He went further and said that everything came from and was in some sense made out of water. Again, his reasons were obscure, and Aristotle could only conjecture that it was because all animals and plants need water to live, or because semen is moist (Metaph. A 3. 983b17–27).
+> 还有一个不太可信的传说流传开来，说他正是这样在*观星*时摔死的。
 
-It is easier to come to grips with the cosmology of Thales' junior compatriot Anaximander of Miletus (d. c.547 bc). We know rather more about his views, because he left behind a book entitled On Nature, written in prose, a medium just beginning to come into fashion. Like Thales he was credited with a number of original scientific achievements: the first map of the world, the first star chart, the first Greek sundial, and an indoor clock as well. He taught that the earth was cylindrical in shape, like a stumpy column no higher than a third of its diameter. Around the world were gigantic tyres full of fire; each tyre was punctured with a hole through which the fire could be seen from outside, and the holes were the sun and moon and stars. Blockages in the holes accounted for eclipses of the sun and phases of the moon. The celestial fire which is nowadays largely hidden was once a great ball of flame around the infant earth; when this ball exploded, the fragments grew tyres like bark around themselves.
+> - *go around*：流传；传播。
+> - *meet one's death*：丧命；遭遇死亡。
+> - *stargazing* [ˈstɑːrɡeɪzɪŋ]：n. 观星；仰望星空。
 
-Anaximander was much impressed by the way trees grow and shed their bark. He used the same analogy to explain the origin of human beings. Other animals, he observed, can look after themselves soon after birth, but humans need a long nursing. If humans had always been as they are now, the race would not have survived. In an earlier age, he conjectured, humans had spent their childhood encased in a prickly bark, so that they looked like fish and lived in water. At puberty they shed their bark, and stepped out onto dry land, into an environment in which they could take care of themselves. Because of this, Anaximander, though not otherwise a vegetarian, recommended that we abstain from eating fish, as the ancestors of the human race (KRS 133–7).
+Thales was reckoned as one of the *Seven Sages*, or wise men, of Greece, *on a par with* Solon, the great legislator of Athens. He is credited with a number of *aphorisms*. He said that before a certain age it was too soon for a man to marry; and after that age it was too late. When asked why he had no children, he said 'Because I am fond of children.'
 
-Anaximander's cosmology is more sophisticated than Thales' in several ways. First of all, he does not look for something to support the earth: it stays where it is because it is equidistant from everything else and there is no reason why it should move in any direction rather than any other (DK 12 A11; Aristotle, Cael. 2. 13. 295b10).
+> 泰勒斯被列为希腊*七贤*之一，也就是希腊的智者之一，地位*可与*雅典伟大立法者梭伦相比。他还被认为说过不少*格言*。他说，男人到某个年龄之前结婚太早；过了那个年龄又太晚。有人问他为什么没有孩子，他回答说：“因为我喜欢孩子。”
 
-Secondly, he thinks it is an error to identify the ultimate material of the universe with any of the elements we can see around us in the contemporary world, such as water or fire. The fundamental principle of things, he said, must be boundless or undefined (apeiron). Anaximander's Greek word is often rendered as 'the Infinite', but that makes it sound too grand. He may or may not have thought that his principle extended for ever in space; what we do know is that he thought it had no beginning and no end in time and that it did not belong to any particular kind or class of things. 'Everlasting stuff' is probably as close a paraphrase as we can get. Aristotle was later to refine the notion into his concept of prime matter.1
+> - *Seven Sages*：七贤；古希腊传统中七位智慧人物的合称。
+> - *on a par with*：与……相当；与……同等。
+> - *legislator* [ˈledʒɪsleɪtər]：n. 立法者。
+> - *aphorism* [ˈæfərɪzəm]：n. 格言；箴言。
+> - *be credited with*：被认为拥有；被归功于。
 
-Thirdly, Anaximander offered an account of the origin of the present world, and explained what forces had acted to bring it into existence, inquiring, as Aristotle would say, into the efficient as well as the material cause. He saw the universe as a field of competing opposites: hot and cold, wet and dry. Sometimes one of a pair of opposites is dominant, sometimes the other: they encroach upon each other and then withdraw, and their interchange is governed by a principle of reciprocity. As Anaximander put it poetically in his one surviving fragment, 'they pay penalty and render reparation to each other for their injustice under the arbitration of time' (DK 12 B1). Thus, one surmises, in winter the hot and the dry make reparation to the cold and the wet for the aggression they committed in
+Thales' remarks *heralded* many centuries of philosophical *disdain* for marriage. Anyone who makes a list of a dozen really great philosophers is likely to discover that the list consists almost entirely of bachelors. One plausible list, for instance, would include Plato, Augustine, Aquinas, Scotus, Descartes, Locke, Spinoza, Hume, Kant, Hegel, and Wittgenstein, none of whom were married. Aristotle is the grand exception that disproves the rule that marriage is incompatible with philosophy.
 
-1 See Ch. 5 below.
+> 泰勒斯这些话*预示*了此后许多世纪哲学家对婚姻的*轻视*。任何人若列出十来位真正伟大的哲学家，很可能会发现名单几乎全由单身汉组成。例如，一个说得过去的名单会包括柏拉图、奥古斯丁、阿奎那、司各脱、笛卡尔、洛克、斯宾诺莎、休谟、康德、黑格尔和维特根斯坦，他们都未结婚。亚里士多德则是那个重大的例外，足以推翻“婚姻与哲学不相容”这一规则。
 
-summer. Heat and cold were the first of the opposites to make their appearance, separating off from an original cosmic egg of the everlasting indeterminate stuff. From them developed the fire and earth which, we have seen, lay at the origin of our present cosmos.
+> - *herald* [ˈherəld]：v. 预示；宣告……即将到来。
+> - *disdain* [dɪsˈdeɪn]：n./v. 轻视；鄙弃。
+> - *bachelor* [ˈbætʃələr]：n. 单身汉。
+> - *plausible* [ˈplɔːzəbl]：adj. 说得过去的；貌似合理的。
+> - *incompatible with*：与……不相容。
 
-Anaximenes (fl. 546–525 bc), a generation younger than Anaximander, was the last of the trio of Milesian cosmologists. In several ways he is closer to Thales than to Anaximander, but it would be wrong to think that with him science is going backwards rather than forwards. Like Thales, he thought that the earth must rest on something, but he proposed air, rather than water, for its cushion. The earth itself is flat, and so are the heavenly bodies. These, instead of rotating above and below us in the course of a day, circle horizontally around us like a bonnet rotating around a head (KRS 151–6). The rising and setting of the heavenly bodies is explained, apparently, by the tilting of the flat earth. As for the ultimate principle, Anaximenes found Anaximander's boundless matter too rarefied a concept, and opted, like Thales, for a single one of the existing elements as fundamental, though again he opted for air rather than water.
+Even in antiquity people found it hard to understand Thales' adoption of water as the *ultimate principle of explanation*. The earth, he said, rested on water like a log floating in a stream—but then, asked Aristotle, what does the water rest on? (Cael. 2. 13. 294a28-34). He went further and said that everything came from and was in some sense made out of water. Again, his reasons were obscure, and Aristotle could only conjecture that it was because all animals and plants need water to live, or because *semen* is moist (Metaph. A 3. 983b17-27).
 
-In its stable state air is invisible, but when it is moved and condensed it becomes first wind and then cloud and then water, and finally water condensed becomes mud and stone. Rarefied air became fire, thus completing the gamut of the elements. In this way rarefaction and condensation can conjure everything out of the underlying air (KRS 140–1). In support of this claim Anaximenes appealed to experience, and indeed to experiment—an experiment that the reader can easily carry out for herself. Blow on your hand, first with the lips pursed, and then from an open mouth: the first time the air will feel cold, and the second time hot. This, argued Anaximenes, shows the connection between density and temperature (KRS 143).
+> 即便在古代，人们也很难理解泰勒斯为什么把水采纳为*终极解释原则*。他说，大地像溪流中的木头一样浮在水上；可是亚里士多德随即追问：那么水又依托在什么之上呢？（《论天》2.13.294a28-34）泰勒斯还进一步说，万物都来自水，并且在某种意义上由水构成。同样，他的理由并不清楚；亚里士多德只能推测，这也许是因为一切动植物都需要水才能生存，或者因为*精液*是湿的（《形而上学》A3.983b17-27）。
 
-The use of experiment, and the insight that changes of quality are linked to changes of quantity, mark Anaximenes as a scientist in embryo. Only in embryo, however: he has no means of measuring the quantities he invokes, he devises no equations to link them, and his fundamental principle retains mythical and religious properties.2 Air is divine, and generates deities out of itself (KRS 144–6); air is our soul, and holds our bodies together (KRS 160).
+> - *ultimate principle of explanation*：终极解释原则；用来解释一切事物来源和构成的最基本原则。
+> - *rest on*：依托于；以……为支撑。
+> - *in some sense*：在某种意义上。
+> - *conjecture* [kənˈdʒektʃər]：v./n. 推测；猜想。
+> - *semen* [ˈsiːmən]：n. 精液。
+> - Cael.：亚里士多德《论天》的引用缩写。
 
-The Milesians, then, are not yet real physicists, but neither are they mythmakers. They have not yet left myth behind, but they are moving away from it. They are not true philosophers either, unless by 'philosophy' one simply means infant science. They make little use of conceptual analysis and the a priori argument that has been the stock-in-trade of philosophers from Plato to the present day. They are speculators, in whose speculations elements of philosophy, science, and religion mingle in a rich and heady brew.
+It is easier to *come to grips with* the *cosmology* of Thales' junior compatriot Anaximander of Miletus (d. c.547 bc). We know rather more about his views, because he left behind a book entitled *On Nature*, written in prose, a medium just beginning to come into fashion. Like Thales he was credited with a number of original scientific achievements: the first map of the world, the first star chart, the first Greek sundial, and an indoor clock as well. He taught that the earth was cylindrical in shape, like a stumpy column no higher than a third of its diameter. Around the world were gigantic tyres full of fire; each tyre was punctured with a hole through which the fire could be seen from outside, and the holes were the sun and moon and stars. Blockages in the holes accounted for eclipses of the sun and phases of the moon. The celestial fire which is nowadays largely hidden was once a great ball of flame around the infant earth; when this ball exploded, the fragments grew tyres like bark around themselves.
 
-2 See J. Barnes, The Presocratic Philosophers, rev. edn. (London: Routledge, 1982), 46–8.
+> 米利都的阿那克西曼德是泰勒斯的年轻同乡（卒于约公元前 547 年），他的*宇宙论*更容易*把握*。我们对他的观点了解更多，因为他留下了一部题为《论自然》的书，以散文写成，而散文当时正开始流行。和泰勒斯一样，他也被认为取得了若干原创科学成就：第一幅世界地图、第一幅星图、第一座希腊日晷，以及一座室内时钟。他教导说，大地呈圆柱形，像一根矮粗的柱子，高度不超过其直径的三分之一。世界周围有巨大的、充满火的轮胎状环带；每个环带都有一个孔洞，外面可以透过孔洞看见其中的火，而这些孔洞就是太阳、月亮和星辰。孔洞被堵塞，便解释了日食和月相。如今大体隐藏起来的天火，曾经是包围幼年大地的一大团火焰；当这团火爆炸时，碎片便像树皮一样在自身周围长成轮胎状环带。
+
+> - *come to grips with*：把握；努力理解并处理。
+> - *cosmology* [kɑːzˈmɑːlədʒi]：n. 宇宙论；关于宇宙结构、来源和运行的理论。
+> - *On Nature*：《论自然》；早期希腊自然哲学作品常见题名。
+> - *prose* [proʊz]：n. 散文；非韵文写作。
+> - *sundial* [ˈsʌndaɪəl]：n. 日晷。
+> - *cylindrical* [səˈlɪndrɪkl]：adj. 圆柱形的。
+> - *celestial* [səˈlestʃəl]：adj. 天体的；天空的。
+
+Anaximander was much impressed by the way trees grow and shed their bark. He used the same analogy to explain the origin of human beings. Other animals, he observed, can look after themselves soon after birth, but humans need a long nursing. If humans had always been as they are now, the race would not have survived. In an earlier age, he *conjectured*, humans had spent their childhood encased in a prickly bark, so that they looked like fish and lived in water. At puberty they shed their bark, and stepped out onto dry land, into an environment in which they could take care of themselves. Because of this, Anaximander, though not otherwise a vegetarian, recommended that we *abstain from* eating fish, as the ancestors of the human race (KRS 133-7).
+
+> 阿那克西曼德对树木生长和脱落树皮的方式印象很深，并用同样的类比来解释人类的起源。他观察到，其他动物出生后不久就能照顾自己，但人类需要长期哺育。如果人类一直像现在这样，人类种族便不可能存活下来。他*推测*，在更早的时代，人类童年时曾包裹在多刺的树皮之中，看起来像鱼，也生活在水里。到青春期时，他们脱去树皮，踏上干地，进入能够照料自己的环境。因此，阿那克西曼德虽然并非在其他方面也是素食者，却建议我们*避免*吃鱼，因为鱼是人类的祖先（KRS 133-7）。
+
+> - *analogy* [əˈnælədʒi]：n. 类比；相似关系。
+> - *conjecture* [kənˈdʒektʃər]：v. 推测；猜想。
+> - *encased* [ɪnˈkeɪst]：adj. 被包裹的；被包住的。
+> - *prickly* [ˈprɪkli]：adj. 多刺的。
+> - *puberty* [ˈpjuːbərti]：n. 青春期。
+> - *abstain from*：戒绝；避免做某事。
+> - KRS：Kirk, Raven, Schofield, *The Presocratic Philosophers* 的引用缩写。
+
+Anaximander's cosmology is more sophisticated than Thales' in several ways. First of all, he does not look for something to support the earth: **it stays where it is because it is equidistant from everything else and there is no reason why it should move in any direction rather than any other** (DK 12 A11; Aristotle, Cael. 2. 13. 295b10).
+
+> 阿那克西曼德的宇宙论在若干方面比泰勒斯更为精致。首先，他并不寻找某个东西来支撑大地：**大地之所以停留在原处，是因为它与其他一切东西等距，因此没有理由朝某个方向而不是另一个方向运动**（DK 12 A11；亚里士多德《论天》2.13.295b10）。
+
+> - *sophisticated* [səˈfɪstɪkeɪtɪd]：adj. 精致的；复杂成熟的。
+> - *equidistant* [ˌiːkwɪˈdɪstənt]：adj. 等距的。
+> - *rather than*：而不是。
+> - DK：Diels-Kranz《前苏格拉底哲学家残篇》的引用缩写。
+
+Secondly, he thinks it is an error to identify the ultimate material of the universe with any of the elements we can see around us in the contemporary world, such as water or fire. The fundamental principle of things, he said, must be *boundless* or undefined (*apeiron*). Anaximander's Greek word is often rendered as 'the Infinite', but that makes it sound too grand. He may or may not have thought that his principle extended for ever in space; what we do know is that he thought it had no beginning and no end in time and that it did not belong to any particular kind or class of things. 'Everlasting stuff' is probably as close a paraphrase as we can get. Aristotle was later to refine the notion into his concept of *prime matter*.
+
+> 其次，他认为，把宇宙的终极材料等同于我们在当代世界周围可见的任何元素，例如水或火，都是错误的。他说，事物的基本原则必须是*无边界的*或未被规定的（*apeiron*）。阿那克西曼德这个希腊词常被译为“无限者”，但这样听起来过于宏大。他也许认为、也许并不认为这一原则在空间上无限延展；我们确知的是，他认为它在时间上无始无终，并且不属于任何特定种类或类别。“永恒的东西”大概是我们所能给出的最贴近的转述。亚里士多德后来把这一观念提炼为他的*第一质料*概念。
+
+> - *boundless* [ˈbaʊndləs]：adj. 无边界的；无限的。
+> - *apeiron*：希腊语，通常指“无定者”或“无边者”；阿那克西曼德用以表示万物的基本原则。
+> - *render as*：译作；表述为。
+> - *paraphrase* [ˈpærəfreɪz]：n./v. 转述；改写。
+> - *prime matter*：第一质料；亚里士多德哲学中作为变化最终承载者的纯粹质料概念。
+> - 注释 1：参见本书下文第 5 章。
+
+Thirdly, Anaximander offered an account of the origin of the present world, and explained what forces had acted to bring it into existence, inquiring, as Aristotle would say, into the efficient as well as the material cause. He saw the universe as a field of *competing opposites*: hot and cold, wet and dry. Sometimes one of a pair of opposites is dominant, sometimes the other: they *encroach upon* each other and then withdraw, and their interchange is governed by a principle of *reciprocity*. As Anaximander put it poetically in his one surviving fragment, 'they pay penalty and render reparation to each other for their injustice under the arbitration of time' (DK 12 B1). Thus, one surmises, in winter the hot and the dry make reparation to the cold and the wet for the aggression they committed in summer. Heat and cold were the first of the opposites to make their appearance, separating off from an original cosmic egg of the everlasting *indeterminate* stuff. From them developed the fire and earth which, we have seen, lay at the origin of our present cosmos.
+
+> 第三，阿那克西曼德解释了当前世界的起源，并说明有哪些力量促成了它的出现；用亚里士多德的话说，他不仅探究质料因，也探究动力因。他把宇宙看作一个*相互竞争的对立者*场域：热与冷、湿与干。一对对立者中，有时这一方占优势，有时另一方占优势；它们彼此*侵入*，又彼此退让，其交替由一种*相互补偿*原则支配。正如阿那克西曼德在唯一留存的残篇中诗意地说：“它们在时间的裁决下，为彼此的不义向对方受罚并作出补偿”（DK 12 B1）。因此，我们可以推测，在冬季，热与干会为自己在夏季对冷与湿犯下的侵害作出补偿。热与冷是最先出现的一对对立者，它们从原初的宇宙蛋中、从永恒的*未规定之物*中分离出来。我们已经看到，火与土正是由它们发展而来，并位于我们当前宇宙的起源处。
+
+> - *efficient cause*：动力因；亚里士多德四因之一，指造成变化或运动的原因。
+> - *material cause*：质料因；亚里士多德四因之一，指事物由以构成的材料。
+> - *competing opposites*：相互竞争的对立者；如热/冷、湿/干等对立力量。
+> - *encroach upon*：侵占；侵入。
+> - *reciprocity* [ˌresɪˈprɑːsəti]：n. 相互性；互惠或相互补偿关系。
+> - *render reparation*：作出补偿；赔偿。
+> - *arbitration* [ˌɑːrbɪˈtreɪʃn]：n. 仲裁；裁决。
+> - *indeterminate* [ˌɪndɪˈtɜːrmɪnət]：adj. 未规定的；不确定的。
+
+Anaximenes (*fl.* 546-525 bc), a generation younger than Anaximander, was the last of the trio of Milesian cosmologists. In several ways he is closer to Thales than to Anaximander, but it would be wrong to think that with him science is going backwards rather than forwards. Like Thales, he thought that the earth must rest on something, but he proposed air, rather than water, for its cushion. The earth itself is flat, and so are the heavenly bodies. These, instead of rotating above and below us in the course of a day, circle horizontally around us like a bonnet rotating around a head (KRS 151-6). The rising and setting of the heavenly bodies is explained, apparently, by the tilting of the flat earth. As for the ultimate principle, Anaximenes found Anaximander's boundless matter too *rarefied* a concept, and opted, like Thales, for a single one of the existing elements as fundamental, though again he opted for air rather than water.
+
+> 阿那克西美尼（*活跃于*公元前 546-525 年）比阿那克西曼德年轻一代，是米利都三位宇宙论者中的最后一位。在若干方面，他比起阿那克西曼德更接近泰勒斯；但若因此认为科学在他这里不是前进而是倒退，那就错了。和泰勒斯一样，他认为大地必须依托于某物，但他提出的支撑物是空气，而不是水。大地本身是平的，天体也是平的。天体并不是在一天中从我们上方和下方旋转，而是像帽子绕着头旋转一样，在我们周围水平环绕（KRS 151-6）。天体的升起和落下，显然是由平坦大地的倾斜来解释的。至于终极原则，阿那克西美尼认为阿那克西曼德的无边质料概念过于*抽象稀薄*，于是像泰勒斯一样，选择现存元素中的单一元素作为基本原则；不过他选择的是空气，而不是水。
+
+> - *fl.*：floruit 的缩写，表示“活跃于某时期”。
+> - *trio* [ˈtriːoʊ]：n. 三人组；三件一组。
+> - *heavenly bodies*：天体；太阳、月亮、星辰等。
+> - *bonnet* [ˈbɑːnɪt]：n. 帽子；软帽。
+> - *ultimate principle*：终极原则；解释万物的最基本实体或根据。
+> - *rarefied* [ˈrerəfaɪd]：adj. 稀薄的；过于抽象、高远的。
+> - *opt for*：选择；决定采用。
+
+In its stable state air is invisible, but when it is moved and condensed it becomes first wind and then cloud and then water, and finally water condensed becomes mud and stone. Rarefied air became fire, thus completing the *gamut* of the elements. In this way *rarefaction* and *condensation* can conjure everything out of the underlying air (KRS 140-1). In support of this claim Anaximenes appealed to experience, and indeed to experiment—an experiment that the reader can easily carry out for herself. Blow on your hand, first with the lips pursed, and then from an open mouth: the first time the air will feel cold, and the second time hot. This, argued Anaximenes, shows the connection between density and temperature (KRS 143).
+
+> 在稳定状态下，空气是不可见的；但当空气运动并凝结时，它先变成风，再变成云，再变成水，最后水进一步凝结成泥和石头。稀薄化的空气则变成火，由此完成了元素的整个*范围*。通过这种方式，*稀薄化*和*凝结*便能从作为底层的空气中变出一切事物（KRS 140-1）。为了支持这一说法，阿那克西美尼诉诸经验，甚至诉诸实验——这个实验读者自己很容易完成。先噘起嘴向手上吹气，再张开嘴吹气：第一次会觉得空气是冷的，第二次则觉得是热的。阿那克西美尼认为，这表明密度与温度之间存在联系（KRS 143）。
+
+> - *gamut* [ˈɡæmət]：n. 全部范围；全系列。
+> - *rarefaction* [ˌrerəˈfækʃn]：n. 稀薄化；密度降低。
+> - *condensation* [ˌkɑːndenˈseɪʃn]：n. 凝结；浓缩。
+> - *conjure* [ˈkʌndʒər]：v. 变出；召唤出。
+> - *underlying* [ˌʌndərˈlaɪɪŋ]：adj. 底层的；根本的。
+> - *appeal to experience*：诉诸经验；以经验观察作为依据。
+
+The use of experiment, and the insight that changes of quality are linked to changes of quantity, mark Anaximenes as a scientist *in embryo*. Only in embryo, however: he has no means of measuring the quantities he invokes, he devises no equations to link them, and his fundamental principle retains mythical and religious properties. Air is divine, and generates deities out of itself (KRS 144-6); air is our soul, and holds our bodies together (KRS 160).
+
+> 阿那克西美尼使用实验，并且洞察到性质变化与数量变化相关，这使他已经像是一位*萌芽状态中的*科学家。不过也仅仅是萌芽状态：他没有办法测量自己所诉诸的那些量，也没有设计方程来把它们联系起来；而他的基本原则仍保留着神话和宗教属性。空气是神圣的，并从自身中产生神灵（KRS 144-6）；空气也是我们的灵魂，并把我们的身体维系在一起（KRS 160）。
+
+> - *in embryo*：处于萌芽状态；尚未充分发展。
+> - *invoke* [ɪnˈvoʊk]：v. 援引；诉诸。
+> - *devise* [dɪˈvaɪz]：v. 设计；想出。
+> - *deity* [ˈdiːəti]：n. 神；神祇。
+> - 注释 2：参见 J. Barnes, *The Presocratic Philosophers*, rev. edn. (London: Routledge, 1982), 46-8。
+
+**The Milesians, then, are not yet real physicists, but neither are they mythmakers.** They have not yet left myth behind, but they are moving away from it. They are not true philosophers either, unless by 'philosophy' one simply means *infant science*. They make little use of conceptual analysis and the *a priori argument* that has been the *stock-in-trade* of philosophers from Plato to the present day. They are *speculators*, in whose speculations elements of philosophy, science, and religion mingle in a rich and *heady brew*.
+
+> **因此，米利都学派还不是真正的物理学家，但他们也不是神话制造者。**他们尚未把神话完全抛在身后，却已经在远离神话。他们也不是真正的哲学家，除非所谓“哲学”只是指*幼年科学*。他们很少使用概念分析，也很少使用从柏拉图直到今天的哲学家一贯倚重的*先验论证*。他们是*思辨者*；在他们的思辨中，哲学、科学和宗教的元素混合成一杯丰富而*令人振奋的烈性饮料*。
+
+> - *physicist* [ˈfɪzɪsɪst]：n. 物理学家；此处指真正意义上的自然科学研究者。
+> - *mythmaker*：神话制造者；以神话叙事解释世界的人。
+> - *infant science*：幼年科学；尚未成熟的科学形态。
+> - *a priori argument*：先验论证；不依赖经验观察、主要凭概念或理性推出结论的论证。
+> - *stock-in-trade*：惯用手段；看家本领。
+> - *speculator* [ˈspekjuleɪtər]：n. 思辨者；提出理论猜想的人。
+> - *heady brew*：强烈混合物；此处比喻多种思想成分交织成令人兴奋的组合。
 
 ## The Pythagoreans
 
-In antiquity Pythagoras shared with Thales the credit for introducing philosophy into the Greek world. He was born in Samos, an island off the coast of Asia Minor, about 570 bc. At the age of 40 he emigrated to Croton on the toe of Italy. There he took a leading part in the political affairs of the city, until he was banished in a violent revolution about 510 bc. He moved to nearby Metapontum, where he died at the turn of the century. During his time at Croton he founded a semireligious community, which outlived him until it was scattered about 450 bc. He is credited with inventing the word 'philosopher': instead of claiming to be a sage or wise man (sophos) he modestly said that he was only a lover of wisdom (philosophos) (D.L. 8. 8). The details of his life are swamped in legend, but it is clear that he practised both mathematics and mysticism. In both fields his intellectual influence, acknowledged or implicit, was strong throughout antiquity, from Plato to Porphyry.
+In antiquity *Pythagoras* shared with Thales the credit for introducing philosophy into the Greek world. He was born in Samos, an island off the coast of Asia Minor, about 570 bc. At the age of 40 he *emigrated* to Croton on the toe of Italy. There he took a leading part in the political affairs of the city, until he was *banished* in a violent revolution about 510 bc. He moved to nearby Metapontum, where he died at the turn of the century. During his time at Croton he founded a *semireligious community*, which outlived him until it was scattered about 450 bc. He is credited with inventing the word 'philosopher': instead of claiming to be a sage or wise man (*sophos*) he modestly said that he was only a lover of wisdom (*philosophos*) (D.L. 8. 8). The details of his life are *swamped in legend*, but it is clear that he practised both mathematics and *mysticism*. In both fields his intellectual influence, acknowledged or implicit, was strong throughout antiquity, from Plato to Porphyry.
 
-The Pythagoreans' discovery that there was a relationship between musical intervals and numerical ratios led to the belief that the study of mathematics was the key to the understanding of the structure and order of the universe. Astronomy and harmony, they said, were sister sciences, one for the eyes and one for the ears (Plato, Rep. 530d). However, it was not until two millennia later that Galileo and his successors showed the sense in which it is true that the book of the universe is written in numbers. In the ancient world arithmetic was too entwined with number mysticism to promote scientific progress, and the genuine scientific advances of the period (such as Aristotle's zoology or Galen's medicine) were achieved without benefit of mathematics.
+> 在古代，*毕达哥拉斯*与泰勒斯共同享有“把哲学引入希腊世界”的声誉。他约生于公元前 570 年，出生地是小亚细亚沿岸的萨摩斯岛。40 岁时，他*移居*意大利靴尖处的克罗顿。在那里，他积极参与城邦政治事务，直到约公元前 510 年在一场暴力革命中被*放逐*。之后他迁往附近的梅塔蓬图姆，并在世纪之交去世。在克罗顿期间，他创立了一个*半宗教共同体*；这个共同体在他身后仍继续存在，直到约公元前 450 年才解散。据说“哲学家”一词就是他发明的：他没有自称贤者或智者（*sophos*），而是谦逊地说自己只是爱智慧者（*philosophos*）（D.L. 8.8）。他的生平细节已经*被传说淹没*，但可以确定的是，他既从事数学，也从事*神秘主义*实践。在这两个领域中，他的智识影响无论明示还是隐含，都贯穿整个古代，从柏拉图直到波菲利。
 
-Pythagoras' philosophical community at Croton was the prototype of many such institutions: it was followed by Plato's Academy, Aristotle's Lyceum, Epicurus' Garden, and many others. Some such communities were legal entities, and others less formal; some resembled a modern research institute, others were more like monasteries. Pythagoras' associates held their property in common and lived under a set of ascetic and ceremonial rules: observe silence, do not break bread, do not pick up crumbs, do not poke the fire with a sword, always put on the right shoe before the left, and so on. The Pythagoreans were not, to begin with, complete vegetarians, but they avoided certain kinds of meat, fish, and poultry. Most famously, they were forbidden to eat beans (KRS 271–2, 275–6).
+> - *Pythagoras*：毕达哥拉斯；古希腊数学家、宗教团体创立者和哲学传统中的关键人物。
+> - *emigrate* [ˈemɪɡreɪt]：v. 移居；移民到他处。
+> - *banish* [ˈbænɪʃ]：v. 放逐；驱逐。
+> - *semireligious community*：半宗教共同体；兼具哲学、生活规范和宗教仪式特征的团体。
+> - *sophos*：希腊语，意为“智者”或“贤者”。
+> - *philosophos*：希腊语，意为“爱智慧者”，即“哲学家”。
+> - *swamped in legend*：被传说淹没；史实与传奇难以分清。
+> - *mysticism* [ˈmɪstɪsɪzəm]：n. 神秘主义；追求神秘经验或超越性知识的信念与实践。
 
-The dietary rules were connected with Pythagoras' beliefs about the soul. It did not die with the body, he believed, but migrated elsewhere, perhaps into an animal body of a different kind.3 Some Pythagoreans extended this into belief in a threethousand-year cosmic cycle: a human soul after death would enter, one after the other, every kind of land, sea, or air creature, and finally return into a human
+The Pythagoreans' discovery that there was a relationship between musical intervals and numerical ratios led to the belief that the study of mathematics was the key to the understanding of the structure and order of the universe. Astronomy and *harmony*, they said, were sister sciences, one for the eyes and one for the ears (Plato, Rep. 530d). However, it was not until two millennia later that Galileo and his successors showed the sense in which it is true that the book of the universe is written in numbers. In the ancient world arithmetic was too *entwined with* number mysticism to promote scientific progress, and the genuine scientific advances of the period (such as Aristotle's zoology or Galen's medicine) were achieved *without benefit of* mathematics.
 
-3:See Ch. 7 below.
+> 毕达哥拉斯学派发现，音乐音程与数的比例之间存在关系；这一发现使他们相信，数学研究是理解宇宙结构与秩序的关键。他们说，天文学与*和声学*是姐妹科学：一门诉诸眼睛，另一门诉诸耳朵（柏拉图《理想国》530d）。不过，要到两千年以后，伽利略及其后继者才说明，在什么意义上说“宇宙之书是用数字写成的”是真的。在古代世界，算术与数字神秘主义*纠缠*得太深，难以推动科学进步；而那个时期真正的科学进展（如亚里士多德的动物学或盖伦的医学）并不是*借助*数学取得的。
 
-body for history to repeat itself (Herodotus 2. 123; KRS 285). Pythagoras himself, however, after his death was believed by his followers to have become a god. They wrote biographies of him full of wonders, crediting him with second sight and the gift of bilocation; he had a golden thigh, they said, and was the son of Apollo. More prosaically, the expression 'Ipse dixit' was coined in his honour.
+> - *Pythagoreans*：毕达哥拉斯学派；围绕毕达哥拉斯形成的哲学、数学和宗教共同体传统。
+> - *musical interval*：音乐音程；两个音高之间的距离。
+> - *numerical ratio*：数的比例；两个数量之间的比值关系。
+> - *harmony* [ˈhɑːrməni]：n. 和声学；和谐；此处指关于音程比例的音乐理论。
+> - *millennium* [mɪˈleniəm]：n. 一千年。
+> - *entwined with*：与……纠缠在一起。
+> - *without benefit of*：没有借助；未得到……帮助。
+
+Pythagoras' philosophical community at Croton was the *prototype* of many such institutions: it was followed by Plato's Academy, Aristotle's Lyceum, Epicurus' Garden, and many others. Some such communities were *legal entities*, and others less formal; some resembled a modern research institute, others were more like monasteries. Pythagoras' associates held their property in common and lived under a set of *ascetic* and ceremonial rules: observe silence, do not break bread, do not pick up crumbs, do not poke the fire with a sword, always put on the right shoe before the left, and so on. The Pythagoreans were not, to begin with, complete vegetarians, but they avoided certain kinds of meat, fish, and poultry. Most famously, they were forbidden to eat beans (KRS 271-2, 275-6).
+
+> 毕达哥拉斯在克罗顿建立的哲学共同体，是后来许多类似机构的*原型*：柏拉图的学园、亚里士多德的吕克昂、伊壁鸠鲁的花园，以及许多其他团体，都可视为其后继。有些共同体是*法律实体*，有些则不那么正式；有些类似现代研究机构，有些更像修道院。毕达哥拉斯的同伴实行财产共有，并遵守一套*禁欲性*和仪式性的规则：保持沉默，不掰面包，不捡面包屑，不用剑拨火，总是先穿右脚鞋再穿左脚鞋，等等。毕达哥拉斯学派起初并不是彻底的素食者，但他们避免食用某些肉类、鱼类和禽类。最有名的是，他们被禁止吃豆子（KRS 271-2, 275-6）。
+
+> - *prototype* [ˈproʊtətaɪp]：n. 原型；雏形。
+> - *legal entity*：法律实体；在法律上可被承认为主体的组织。
+> - *Lyceum*：吕克昂；亚里士多德在雅典创立的学园。
+> - *monastery* [ˈmɑːnəsteri]：n. 修道院。
+> - *ascetic* [əˈsetɪk]：adj. 禁欲的；苦行的。
+> - *ceremonial* [ˌserəˈmoʊniəl]：adj. 仪式性的。
+> - *poultry* [ˈpoʊltri]：n. 家禽；禽肉。
+
+The dietary rules were connected with Pythagoras' beliefs about the soul. It did not die with the body, he believed, but migrated elsewhere, perhaps into an animal body of a different kind. Some Pythagoreans extended this into belief in a three-thousand-year *cosmic cycle*: a human soul after death would enter, one after the other, every kind of land, sea, or air creature, and finally return into a human body for history to repeat itself (Herodotus 2. 123; KRS 285). Pythagoras himself, however, after his death was believed by his followers to have become a god. They wrote biographies of him full of wonders, crediting him with *second sight* and the gift of *bilocation*; he had a golden thigh, they said, and was the son of Apollo. More prosaically, the expression *Ipse dixit* was coined in his honour.
+
+> 这些饮食规则与毕达哥拉斯关于灵魂的信念有关。他认为，灵魂并不随身体死亡而死去，而是迁往别处，也许进入另一类动物的身体。一些毕达哥拉斯学派成员把这一点扩展为对三千年*宇宙循环*的信念：人的灵魂死后会依次进入各种陆地、海洋或空中生物，最后再回到人体之中，使历史重新上演（希罗多德 2.123；KRS 285）。不过，毕达哥拉斯本人死后，其追随者相信他已经成神。他们为他写下充满奇迹的传记，称他具有*预视能力*和*同时现身两地*的天赋；他们还说他有一条金色大腿，是阿波罗之子。说得更平实一点，*Ipse dixit* 这个表达就是为了纪念他而创造的。
+
+> - *dietary rules*：饮食规则；关于可食与禁食之物的规范。
+> - *cosmic cycle*：宇宙循环；宇宙或灵魂按周期重复运行的观念。
+> - *one after the other*：依次；一个接一个。
+> - *second sight*：预视能力；预知未来或看见不可见事物的能力。
+> - *bilocation* [ˌbaɪloʊˈkeɪʃn]：n. 同时现身两地；宗教传说中的神异能力。
+> - *prosaically* [proʊˈzeɪɪkli]：adv. 平实地；不浪漫地。
+> - *Ipse dixit*：拉丁语，“他本人这样说”；指不加证明、只凭权威断言的话。
+> - 注释 3：参见本书下文第 7 章。
 
 ## Xenophanes
 
@@ -285,19 +739,19 @@ Even in antiquity Heraclitus was found difficult. He was nicknamed 'the Enigmati
 
 4 See Ch. 9 below.
 
-When we reach Heraclitus after the Xuctuating speculations of the earlier Presocratics, Hegel wrote, we come at last in sight of land. He went on to add, proudly, 'There is no proposition of Heraclitus which I have not adopted in my own Logic.'5
+When we reach Heraclitus after the fluctuating speculations of the earlier Presocratics, Hegel wrote, we come at last in sight of land. He went on to add, proudly, 'There is no proposition of Heraclitus which I have not adopted in my own Logic.'5
 
 Heraclitus, like Descartes and Kant in later ages, saw himself as making a completely new start in philosophy. He thought the work of previous thinkers was worthless: Homer should have been eliminated at an early stage of any poetry competition, and Hesiod, Pythagoras, and Xenophanes were merely polymaths with no real sense (D.L. 9. 1). But, again like Descartes and Kant, Heraclitus was more influenced by his predecessors than he realized. Like Xenophanes, he was highly critical of popular religion: offering blood sacrifice to purge oneself of blood guilt was like trying to wash off mud with mud. Praying to statues was like whispering in an empty house, and phallic processions and Dionysiac rites were simply disgusting (KRS 241, 243).
 
 Again like Xenophanes, Heraclitus believed that the sun was new every day (Aristotle, Mete. 2. 2355b13–14), and, like Anaximander, he thought the sun was constrained by a cosmic principle of reparation (KRS 226). The ephemeral theory of the sun is indeed in Heraclitus expanded into a doctrine of universal flux. Everything, he said, is in motion, and nothing stays still; the world is like a flowing stream. If we step into the same river twice, we cannot put our feet twice into the same water, since the water is not the same two moments together (KRS 214). That seems true enough, but on the face of it Heraclitus went too far when he said that we cannot even step twice into the same river (Plato, Cra. 402a). Taken literally, this seems false, unless we take the criterion of identity for a river to be the body of water it contains rather than the course it flows. Taken allegorically, it is presumably a claim that everything in the world is composed of constantly changing constituents: if this is what is meant, Aristotle said, the changes must be imperceptible ones (Ph. 8. 3. 253b9 ff.). Perhaps this is what is hinted at in Heraclitus' aphorism that hidden harmony is better than manifest harmony—the harmony being the underlying rhythm of the universe in flux (KRS 207). Whatever Heraclitus meant by his dictum, it had a long history ahead of it in later Greek philosophy.
 
-A raging fire, even more than a flowing stream, is a paradigm of constant change, ever consuming, ever refuelled. Heraclitus once said that the world was an ever-living fire: sea and earth are the ashes of this perpetual bonfire. Fire is like gold: you can exchange gold for all kinds of goods, and fire can turn into any of the elements (KRS 217–19). This Wery world is the only world there is, not made by gods or men, but governed throughout by Logos. It would be absurd, he argued, to think that this glorious cosmos is just a piled-up heap of rubbish (DK 22 B124).
+A raging fire, even more than a flowing stream, is a paradigm of constant change, ever consuming, ever refuelled. Heraclitus once said that the world was an ever-living fire: sea and earth are the ashes of this perpetual bonfire. Fire is like gold: you can exchange gold for all kinds of goods, and fire can turn into any of the elements (KRS 217–19). This fiery world is the only world there is, not made by gods or men, but governed throughout by Logos. It would be absurd, he argued, to think that this glorious cosmos is just a piled-up heap of rubbish (DK 22 B124).
 
 5:Lectures on the History of Philosophy, ed. and trans. E. S. Haldane and F. H. Simpson (London: Routledge, 1968), 279.
 
 'Logos' is the everyday Greek term for a written or spoken word, but from Heraclitus onwards almost every Greek philosopher gave it one or more of several grander meanings. It is often rendered by translators as 'Reason'—whether to refer to the reasoning powers of human individuals, or to some more exalted cosmic principle of order and beauty. The term found its way into Christian theology when the author of the fourth gospel proclaimed, 'In the beginning was the Logos, and the Logos was with God, and the Logos was God' (John 1: 1).
 
-This universal Logos, Heraclitus says, is hard to grasp and most men never succeed in doing so. By comparison with someone who has woken up to the Logos, they are like sleepers curled up in their own dream-world instead of facing up to the single, universal truth (S.E., M. 7. 132). Humans fall into three classes, at various removes from the rational fire that governs the universe. A philosopher like Heraclitus is closest to the Wery Logos and receives most warmth from it; next, ordinary people when awake draw light from it when they use their own reasoning powers; finally, those who are asleep have the windows of their soul blocked up and keep contact with nature only through their breathing (S.E., M. 7. 129–30).6 Is the Logos God? Heraclitus gave a typically quibbling answer. 'The one thing that alone is truly wise is both unwilling and willing to be called by the name of Zeus.' Presumably, he meant that the Logos was divine, but was not to be identified with any of the gods of Olympus.
+This universal Logos, Heraclitus says, is hard to grasp and most men never succeed in doing so. By comparison with someone who has woken up to the Logos, they are like sleepers curled up in their own dream-world instead of facing up to the single, universal truth (S.E., M. 7. 132). Humans fall into three classes, at various removes from the rational fire that governs the universe. A philosopher like Heraclitus is closest to the fiery Logos and receives most warmth from it; next, ordinary people when awake draw light from it when they use their own reasoning powers; finally, those who are asleep have the windows of their soul blocked up and keep contact with nature only through their breathing (S.E., M. 7. 129–30).6 Is the Logos God? Heraclitus gave a typically quibbling answer. 'The one thing that alone is truly wise is both unwilling and willing to be called by the name of Zeus.' Presumably, he meant that the Logos was divine, but was not to be identified with any of the gods of Olympus.
 
 The human soul is itself fire: Heraclitus sometimes lists soul, along with earth and water, as three elements. Since water quenches fire, the best soul is a dry soul, and must be kept from moisture. It is hard to know exactly what counts as moisture in this context, but alcohol certainly does: a drunk, Heraclitus says, is a man led by a boy (KRS 229–31). But Heraclitus' use of 'wet' also seems close to the modern slang sense: brave and tough men who die in battle, for instance, have dry souls that do not suffer the death of water but go to join the cosmic fire (KRS 237).7
 
@@ -429,7 +883,7 @@ The motion that sets in train the development of the universe is, according to A
 
 In Plato's dialogue Phaedo, Socrates, in his last days in prison, is made to express his gradual disillusionment with the mechanistic explanations of natural science to be found in the early philosophers. He was pleased, he said, when he heard that Anaxagoras had explained everything by nous, or mind; but he was disappointed by the total absence of reference to value in his work. Anaxagoras was like someone who said that all Socrates' actions were performed with his intelligence, and then gave the reason why he was sitting here in prison by talking about the constitution of his body from bones and sinews, and the nature and properties of these parts, without mentioning that he judged it better to sit there in obedience to the Athenian court's sentence. Teleological explanation was more profound than mechanistic explanation. 'If anyone wants to find out the reason why each thing comes to be or perishes or exists, this is what he must find out about it: how is it best for that thing to exist, or to act or be acted upon in any way?' (Phd. 97d).
 
-Anaxagoras speaks about his Mind in ways appropriate to divinity, and this could have made him vulnerable to a charge, in the Athenian courts, of introducing strange gods. But in fact the charge of impiety seems to have been based on his scientific conjectures. The sun, he said, was a Wery lump of metal, somewhat larger than the Peloponnesus. This was taken to be incompatible with the veneration appropriate to the sun as divine. In exile in Lampsacus, Anaxagoras made his final benefaction to humanity: the invention of the school holiday. Asked by the authorities of the city how they should honour him, he said that children should be let off school in the month of his death. He had already earned the gratitude of students of science by being the first writer to include diagrams in his text.
+Anaxagoras speaks about his Mind in ways appropriate to divinity, and this could have made him vulnerable to a charge, in the Athenian courts, of introducing strange gods. But in fact the charge of impiety seems to have been based on his scientific conjectures. The sun, he said, was a fiery lump of metal, somewhat larger than the Peloponnesus. This was taken to be incompatible with the veneration appropriate to the sun as divine. In exile in Lampsacus, Anaxagoras made his final benefaction to humanity: the invention of the school holiday. Asked by the authorities of the city how they should honour him, he said that children should be let off school in the month of his death. He had already earned the gratitude of students of science by being the first writer to include diagrams in his text.
 
 ## The Atomists
 
@@ -509,7 +963,7 @@ In 404, after the war had ended, the Spartans replaced Athenian democracy with a
 
 An aspiring democrat politician, Anytus, with two associates, caused an indictment to be drawn up against Socrates in the following terms: 'Socrates has committed an offence by not recognizing the gods whom the state recognizes but introducing other new divinities. He has also committed the offence of corrupting the young. Penalty demanded: death' (D.L. 2. 40). We have no record of the trial, though two of Socrates' admirers have left us imaginative reconstructions of his speech for the defence. Whatever he actually said failed to move a sufficient number of the 500 citizen jurors. He was found guilty, albeit by a small majority, and condemned to death. After a delay in prison, due to a religious technicality, Socrates died in spring 399, accepting a poisonous cup of hemlock from the executioner.
 
-The allegation of impiety in the indictment of Socrates was not something new. In 423 the dramatist Aristophanes had produced a comedy, The Clouds, in which he introduces a character called Socrates, who runs a college of chicanery which is also an institute of bogus research. Students at this establishment not only learn to make bad arguments trump good arguments, but also study astronomy in a spirit of irreverent scepticism about traditional religion. They invoke a new pantheon of elemental deities: air, ether, clouds, and chaos (260–6). The world, they are told, is governed not by Zeus, who does not exist, but by Dinos (literally 'Vortex'), the rotation of the heavenly bodies (380–1). Much of the play is burlesque that is obviously not meant to be taken seriously: Socrates measures how many Xea-feet a Xea can leap, and explores the clouds in a ramshackle flying machine. But the allegation that astronomy was incompatible with piety, if it was a joke, was a dangerous one. After all, it was only in the previous decade that Anaxagoras had been banished for asserting that the sun was a Wery lump. At the end of the play Socrates' house is burnt down by an angry crowd of people who wish to punish him for insulting the gods and violating the privacy of the moon. To those who recalled Aristophanes' comedy, the events of 399 must have seemed a sorry case of life imitating art.
+The allegation of impiety in the indictment of Socrates was not something new. In 423 the dramatist Aristophanes had produced a comedy, The Clouds, in which he introduces a character called Socrates, who runs a college of chicanery which is also an institute of bogus research. Students at this establishment not only learn to make bad arguments trump good arguments, but also study astronomy in a spirit of irreverent scepticism about traditional religion. They invoke a new pantheon of elemental deities: air, ether, clouds, and chaos (260–6). The world, they are told, is governed not by Zeus, who does not exist, but by Dinos (literally 'Vortex'), the rotation of the heavenly bodies (380–1). Much of the play is burlesque that is obviously not meant to be taken seriously: Socrates measures how many flea-feet a flea can leap, and explores the clouds in a ramshackle flying machine. But the allegation that astronomy was incompatible with piety, if it was a joke, was a dangerous one. After all, it was only in the previous decade that Anaxagoras had been banished for asserting that the sun was a fiery lump. At the end of the play Socrates' house is burnt down by an angry crowd of people who wish to punish him for insulting the gods and violating the privacy of the moon. To those who recalled Aristophanes' comedy, the events of 399 must have seemed a sorry case of life imitating art.
 
 Some of Socrates' traits in The Clouds are attributed to him also by other, more friendly writers. There is general agreement that he was pot-bellied and snubnosed, pop-eyed and shambling in gait. He is regularly described as being shabby, wearing threadbare clothes, and liking to go barefoot. Even Aristophanes represents him as capable of great feats of endurance, and indifferent to privation: 'never numb with cold, never hungry for breakfast, a spurner of wine and gluttony' (414–17). From other sources it appears that he was a spurner of wine not in the sense of being a teetotaller, but as having an unusual ability to hold his liquor (Plato, Smp. 214a). Socrates married Xanthippe, with whom he had a son, Lamprocles; a stubborn, but perhaps ill-founded, tradition represents her as a shrew (D.L. 2. 36–7). According to some ancient writers he had two other sons by an official concubine, Myrto (D.L. 2. 26). In antiquity, however, he was best known for his attachment to the Xamboyant aristocrat Alcibiades, some twenty years his junior: an attachment which, though passionate, remained, in the terminology of a later age, platonic.
 
@@ -1023,7 +1477,7 @@ and thought that men and women should wear the same, revealing, clothing. Money 
 
 In spite of these communistic proposals, which many of his own later disciples found shocking, Zeno in his lifetime was held in honour by the Athenians, who gave him the freedom of the city. King Antigonus of Macedon invited him to become his personal philosopher, but Zeno pleaded old age and sent to court instead two of his brightest pupils.
 
-After Zeno's death his place as head of the Stoa was taken by Cleanthes (331–232), a converted boxer of a religious bent. Cleanthes wrote a hymn to Zeus, later quoted by St Paul in a sermon in Athens, which exalted the Stoic active principle in terms that were appropriate enough for Judaeo-Christian monotheism. The underlying Stoic conception of God is very different, however, from that of the biblical religions. God is not separate from the universe but is a material constituent of the cosmos. In his prose writings Cleanthes expounded in detail the way in which the divine Wery element provided the vital power for all the living beings in the world (Cicero, ND 2. 23–5).14
+After Zeno's death his place as head of the Stoa was taken by Cleanthes (331–232), a converted boxer of a religious bent. Cleanthes wrote a hymn to Zeus, later quoted by St Paul in a sermon in Athens, which exalted the Stoic active principle in terms that were appropriate enough for Judaeo-Christian monotheism. The underlying Stoic conception of God is very different, however, from that of the biblical religions. God is not separate from the universe but is a material constituent of the cosmos. In his prose writings Cleanthes expounded in detail the way in which the divine fiery element provided the vital power for all the living beings in the world (Cicero, ND 2. 23–5).14
 
 Cleanthes was succeeded as head of the school by Chrysippus of Soli, who governed it from 232 to 206. Chrysippus had been Cleanthes' pupil, but he seems to have had no great respect for his teacher. 'You tell me your theorems', he is said to have told him, 'and I'll supply them with proofs.' He spent some time as a student at the Academy, inoculating himself against scepticism. He was the most intelligent and the most industrious of the Hellenistic Stoics. His literary output was prodigious: his housekeeper reported that he wrote at a rate of 500 lines a day, and he left 705 books behind. Nothing but fragments survive. But it is clear that it was he who rounded Stoicism into a system; it used to be said, 'If there had been no Chrysippus, there had been no Stoa' (D.L. 6. 183).
 
@@ -4632,7 +5086,7 @@ simply an issue of translation: the Latin verb 'scire' and the noun 'scientia' a
 
 However, let us look for a moment at Aquinas' theory as an account of science, rather than as a general epistemology. It is important to realize that it is not intended as an account of scientific method: we are not meant to understand that the scientist starts with self-evident principles and proceeds to conclusions about the world by rolling out a priori deductions. The procedure goes in the opposite direction: the scientist starts with a phenomenon—an eclipse of the moon, say and looks for the cause of it. Finding the cause is the same thing as finding the middle term in a syllogism which will have as its conclusion the occurrence of the eclipse. The task of science is only completed when this syllogism, in turn, is traced back, through other syllogisms, to arrive at first principles. But the first principle thus arrived at forms the conclusion, not the starting point, of the scientific inquiry.5 The chain of deduction is not the vehicle, but the output, of the venture.
 
-The serious problem with Aquinas' theory is that it leaves quite unclear what is the role of experience and experiment in science. True, 'scientia' is broad enough to include mathematics and metaphysics; but it is clear from Aquinas' examples that his account is meant to cover disciplines such as astronomy and medicine. Scientia, he tells us, concerns universal and necessary truths: but how can the Xuctuating world we encounter in sense-experience provide any such truths? How can it be that—as Aquinas himself says (ST 1a 101. 1)—human beings depend on the senses for the acquisition of scientia?
+The serious problem with Aquinas' theory is that it leaves quite unclear what is the role of experience and experiment in science. True, 'scientia' is broad enough to include mathematics and metaphysics; but it is clear from Aquinas' examples that his account is meant to cover disciplines such as astronomy and medicine. Scientia, he tells us, concerns universal and necessary truths: but how can the fluctuating world we encounter in sense-experience provide any such truths? How can it be that—as Aquinas himself says (ST 1a 101. 1)—human beings depend on the senses for the acquisition of scientia?
 
 5 Aquinas clearly distinguishes the two procedures in ST 1a 79. 8, but rather confusingly he calls the deductive process 'inquiry' and the process of inquiry 'judgement'. But in his commentary on the Posterior Analytics he makes clear that that work is concerned with 'judgement'. See Eleonore Stump, Aquinas (London: Routledge, 2003), 525, to which I am much indebted.
 
@@ -5377,7 +5831,7 @@ In this, Pomponazzi is in agreement with St Thomas: but at this point he parts c
 
 By nature man's being is more sensuous than intellective, more mortal than immortal. We have more vegetative and sensory powers than intellectual powers, and many more people devote themselves to the exercise of those powers than to the cultivation of the intellect. The great majority of men are irrational rather than rational animals. More seriously, the soul can only be separable if it has an operation independent of the body. But both Aristotle and Aquinas maintain that the phantasm is essential for any exercise of thought: hence the soul needs the body, as object if not as subject. Souls can only be individuated by the matter of the bodies they inform: it will not do to say that souls, separate from their bodies, are individuated by an abiding aptitude for informing a particular body.
 
-Did Aristotle believe in immortality? In the Ethics he seems to assert that there is no happiness after death, and when he says that it is possible to wish for the impossible, the example he gives of such a wish is the wish for immortality. St Thomas asks why, if Aristotle thought there was no survival of death, he should want people to die rather than to live in evil ways. But the only immortal intelligence Aristotle seems to accept is one that precedes, as well as survives, the death of the individual human. However, Pomponazzi says, he has no desire to seek a quarrel with Aristotle: what is a Xea against an elephant? (c. 8, p. 313; c. 10, p. 334).
+Did Aristotle believe in immortality? In the Ethics he seems to assert that there is no happiness after death, and when he says that it is possible to wish for the impossible, the example he gives of such a wish is the wish for immortality. St Thomas asks why, if Aristotle thought there was no survival of death, he should want people to die rather than to live in evil ways. But the only immortal intelligence Aristotle seems to accept is one that precedes, as well as survives, the death of the individual human. However, Pomponazzi says, he has no desire to seek a quarrel with Aristotle: what is a flea against an elephant? (c. 8, p. 313; c. 10, p. 334).
 
 The Aristotelian conclusion which Pomponazzi finally accepts is this: the human soul is both intellective and sensitive, and strictly speaking it is mortal, and immortal only secundum quid. In all its operations the human intellect is the actuality of an organic body, and always depends on the body as its object. The human soul is what makes a human individual, but it is not itself a subsistent individual (c. 9, p. 321). This position 'agrees with reason and experience, it maintains nothing mythical, nothing dependent on Faith'. The intellect that, according to Aristotle, survives death is no human intellect. When we call the soul immortal it is only like calling grey 'white' when it is compared to a black background.
 
@@ -10582,17 +11036,17 @@ $$
 (-1)^{2} = 1
 $$
   
-\n
+
 $$
 0^{2} = 1
 $$
   
-\n
+
 $$
 1^{2} = 1
 $$
   
-\n
+
 $$
 2^{2} = 1
 $$

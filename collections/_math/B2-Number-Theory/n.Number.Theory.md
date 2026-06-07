@@ -6,9 +6,9 @@ subclass: Number Theory
 reference:
 ---
 
-# Number Theory — Pre-Study Orientation
+## Number Theory — Pre-Study Orientation
 
-## 1. Identity & Core Question
+### 1. Identity & Core Question
 
 Number theory is the study of the integers — and above all the *prime numbers*, the multiplicative atoms from which every integer is built — asking questions that are absurdly easy to state and frequently impossible to answer. Its defining feature is a violent mismatch between the simplicity of its questions and the depth of machinery needed to settle them: "are there infinitely many primes that are 2 apart?" is comprehensible to a child and unsolved after 2,300 years. The subject exists because the integers, despite being the most elementary mathematical object, conceal structure so deep that understanding it has repeatedly required importing the heaviest tools in all of mathematics.
 
@@ -16,9 +16,9 @@ The core questions are three. (1) How are the primes *distributed* — how many 
 
 The objects of study are the integers, the primes, and — once the field matures — the richer number systems (rings of algebraic integers, $p$-adic numbers) invented specifically to solve integer problems. They are worth studying both because they are the irreducible foundation of all counting and because the integers turn out to be a laboratory where the deepest unifying patterns in mathematics first become visible.
 
----
 
-## 2. Why It Exists — Motivation, History & Position
+
+### 2. Why It Exists — Motivation, History & Position
 
 **The logical pressure.** Number theory does not arise from a single problem but from a recurring shock: questions about integers that *cannot be answered by reasoning about integers alone*. The Greeks proved there are infinitely many primes by pure integer reasoning, but the deeper question — *how many* primes below $N$ — resisted every elementary attempt for two millennia, and its answer (the Prime Number Theorem: roughly $N/\ln N$ primes below $N$) was eventually forced through *complex analysis*, the study of functions of imaginary numbers. The pressure that creates the modern field is precisely this: the integers are not self-sufficient. To understand them you must embed them in larger continuous or algebraic structures and read their secrets off the larger structure's behavior.
 
@@ -30,9 +30,9 @@ The objects of study are the integers, the primes, and — once the field mature
 
 **Temporal asymmetry.** Sharp, and in a direction opposite to analysis. Here the *theory was pursued for centuries with no application whatsoever* — Gauss called it the queen of mathematics precisely for its uselessness, and Hardy in the 1940s boasted that number theory would never be applied to anything. The applications arrived suddenly in the 1970s with public-key cryptography. So the asymmetry is reversed: rigorous foundations long preceded any use, and the "interim" was three centuries of mathematicians studying primes purely because the problems were beautiful and hard.
 
----
 
-## 3. Foundational Assumptions & Interpretive Choices
+
+### 3. Foundational Assumptions & Interpretive Choices
 
 **Primitive concepts.** The genuinely primitive notions are: the *natural numbers* with their successor operation and the *induction principle* (imported from the foundations / Peano axioms — number theory assumes them rather than building them); *divisibility* (defined within the field: $a$ divides $b$ if $b$ is an integer multiple of $a$ — this single relation generates primes, factorization, and congruence); and the *prime* (defined from divisibility: divisible only by 1 and itself). Everything else — congruences, the structure of modular arithmetic, $L$-functions — is constructed from these. Notably, the field's *deeper* objects (ideals, $p$-adic numbers, elliptic curves) are *not* primitive; they are invented machinery, which is why the subject feels elementary at its base and forbidding at its frontier.
 
@@ -44,9 +44,9 @@ The objects of study are the integers, the primes, and — once the field mature
 
 - *Working in $\mathbb{Z}$ vs. enlarging the ring.* The crisis of §2 forces a permanent choice: stay in the integers (elementary, but many problems are intractable) or pass to rings of algebraic integers where unique factorization may fail but ideals restore order. Which theorems become available depends entirely on this: quadratic reciprocity is visible in $\mathbb{Z}$, but the general reciprocity laws *require* the enlarged setting.
 
----
 
-## 3-EXT. Philosophical & Foundational Position
+
+### 3-EXT. Philosophical & Foundational Position
 
 **A. Ontological status of the core objects.**
 
@@ -64,9 +64,9 @@ The objects of study are the integers, the primes, and — once the field mature
 
 **D. Philosophical pressure points.** First, the **Riemann Hypothesis** is philosophically loaded in a way most open problems are not: enormous amounts of published mathematics are proved *conditionally* on it, so the field has built a large edifice on a statement it cannot establish — raising the question of what status "conditional theorems" have. Second, the **independence phenomenon** (Paris–Harrington, Goodstein's theorem): there are statements purely about integers, with no infinite or set-theoretic content, that are *true* yet *unprovable* from the standard axioms of arithmetic. This is genuinely contested in its meaning — it shows that even the integers, the supposed bedrock, outrun any fixed formal system, which philosophers read variously as vindicating Platonism or as exposing the incompleteness of all formalization.
 
----
 
-## 4. Knowledge Topography — The Map
+
+### 4. Knowledge Topography — The Map
 
 **Core concepts, in logical dependency order:**
 
@@ -90,9 +90,9 @@ The objects of study are the integers, the primes, and — once the field mature
 
 **Connections outward.** *Feeds in:* complex analysis (the analytic continuation of the zeta function powers the Prime Number Theorem) and abstract algebra (Galois theory describes which numbers solve which equations). *Feeds into:* cryptography (the difficulty of factoring large integers is exactly what makes RSA secure) and harmonic analysis / representation theory (modular forms are simultaneously number-theoretic and analytic objects). The single sharpest transfer: the proof of **Fermat's Last Theorem** ran entirely through **arithmetic geometry**, showing the modularity of elliptic curves — an integer statement settled by a geometric-analytic theorem.
 
----
 
-## 5. Learning Trajectory
+
+### 5. Learning Trajectory
 
 **Prerequisites — including the quiet ones.** The *logical* prerequisites are modest at first: comfort with proof, induction, and basic set notation suffices for elementary number theory. The *maturity* prerequisites are what quietly wound you. First, **abstract algebra is not optional past the elementary stage** — students who try to learn algebraic number theory without solid group, ring, and field theory drown, because ideals, class groups, and Galois theory *are* algebra; the single most common stall is reaching for ideals without owning rings. Second, **fluency with the language of equivalence relations and quotients** — congruence is a quotient construction, and students who only "compute remainders" without seeing $\mathbb{Z}/n\mathbb{Z}$ as a *quotient object* hit a wall at the structural stage. Third, for analytic number theory, **real comfort with complex analysis** (contour integration, analytic continuation) — not assumed by most number theory courses, and the usual reason the analytic chapters feel like a foreign country.
 
@@ -104,9 +104,9 @@ The objects of study are the integers, the primes, and — once the field mature
 
 **Realistic effort.** For a serious self-learner with proof maturity: roughly **100–150 hours** to fluency in elementary number theory (congruences, reciprocity, basic Diophantine work). Genuine command — meaning real algebraic *and* analytic number theory, comfort with ideals, class groups, zeta, and the threshold of elliptic curves — is a **600–1000 hour** undertaking, gated almost entirely by the abstract-algebra and complex-analysis prerequisites rather than by number theory itself.
 
----
 
-## 6. The Outsider's QA Sheet
+
+### 6. The Outsider's QA Sheet
 
 **Q1. [DEF] Why is 1 not counted as a prime?**
 Because unique factorization — the central theorem — would break if it were. If 1 were prime, $6 = 2\times3 = 1\times2\times3 = 1\times1\times2\times3$ would have infinitely many factorizations, and "unique" would be false. Excluding 1 is not arbitrary bookkeeping; it is the price of keeping the field's foundational theorem true. The deeper framing: primes are defined by a structural role (generators of maximal ideals) that 1, a unit, simply does not play.

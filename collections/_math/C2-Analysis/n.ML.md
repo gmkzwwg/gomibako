@@ -14,7 +14,7 @@ A note on the metamathematical lens: analysis is the field where mathematicians 
 
 A note on Tao vs. Rudin: these are not interchangeable books. Tao builds analysis from first principles, starting with the construction of the natural numbers; the experience is patient, expansive, and pedagogically engineered. Rudin starts with the real numbers as given and proceeds with extreme economy; the experience is fast, crystalline, and famously austere. Most of this document applies equally to both. Where they genuinely diverge, this is noted.
 
----
+
 
 ### 1. Identity & Core Question
 
@@ -364,7 +364,7 @@ Many analytical theorems become easy once you find the right auxiliary object �
 - **Differential geometry** (Lee, do Carmo) — the natural setting for multivariable analysis on curved spaces; essential for general relativity and modern geometry.
 - **Harmonic analysis** (Stein–Shakarchi) — the study of functions via decomposition into oscillating components; deeply rewarding sequel for those who love Fourier ideas.
 
----
+
 
 ### 11. Metamathematical Synthesis
 
@@ -382,7 +382,7 @@ A few unifying reflections about **analysis as a kind of mathematics** — persp
 
 **On where analysis points.** A serious first course in analysis is the entry point to a vast landscape — measure theory, functional analysis, PDE, probability, differential geometry, harmonic analysis. Each of these takes the introductory machinery and pushes it in a different direction. The choice of direction is largely a matter of temperament: those drawn to discrete approximation and quantitative bounds gravitate to harmonic analysis and PDE; those drawn to abstract structure gravitate to functional analysis and operator theory; those drawn to applications gravitate to probability or numerical analysis. There is no wrong direction, but there is a wrong attitude: treating the introductory course as the destination rather than the gate. A reader who finishes Tao or Rudin and stops has acquired prerequisites, not a subject.
 
----
+
 
 ### Self-Audit (executed per prompt instructions)
 

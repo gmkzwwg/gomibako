@@ -7,9 +7,9 @@ reference:
   - Calculus
 ---
 
-# Calculus — Pre-Study Orientation
+## Calculus — Pre-Study Orientation
 
-## 1. Identity & Core Question
+### 1. Identity & Core Question
 
 Calculus is the mathematics of *change measured exactly* and *accumulation summed exactly*, achieved by controlling infinite processes rather than evading them. Its central trick is to extract a finite, definite answer from a question that naively requires dividing zero by zero (instantaneous rate) or adding infinitely many infinitely small pieces (total accumulation). The miracle the subject organizes itself around is that these two apparently unrelated operations are inverse to each other.
 
@@ -17,9 +17,9 @@ The core questions are three, and they collapse into one. (1) Given a quantity t
 
 The objects of study are *functions* (rules assigning outputs to inputs) and the *limit* operation applied to them. Functions are worth studying because almost every quantitative relationship in nature and economics is a function, and the limit is worth studying because it is the only known way to make "infinitely close" mean something precise rather than poetic.
 
----
 
-## 2. Why It Exists — Motivation, History & Position
+
+### 2. Why It Exists — Motivation, History & Position
 
 **The logical pressure.** Four classical problems could not be solved by algebra and geometry alone, and each demanded the *same* missing machinery: the tangent problem (the slope of a curve at a point, where the usual "rise over run" needs two points but a tangent touches only one), the area problem (the region under a curve, where the figure has no straight edges to triangulate), the velocity problem (speed at an instant, where distance-over-time needs a time interval but an instant has zero duration), and the extremum problem (where a function is largest or smallest). Each requires evaluating a ratio or a sum in a limit where the naive computation gives $0/0$ or an infinite number of terms. No finite algebraic manipulation reaches the answer; you need a controlled passage to a limit. That is the pressure that forced calculus into existence.
 
@@ -29,9 +29,9 @@ The objects of study are *functions* (rules assigning outputs to inputs) and the
 
 **Position in mathematics.** Upstream sits **real analysis**, which supplies the property calculus secretly depends on: the *completeness* of the real numbers (every bounded set of reals has a least upper bound — the real line has no gaps). This is not optional decoration; the central existence theorems (a continuous function on a closed interval attains its maximum; the Fundamental Theorem) *fail* over the rationals precisely because the rationals have gaps. Also upstream: set theory and the formal definition of *function*. Downstream lie differential equations, differential geometry, and complex analysis. Parallel sits linear algebra, which fuses with calculus to produce multivariable calculus and, later, the whole apparatus of mathematical physics.
 
----
 
-## 3. Foundational Assumptions & Interpretive Choices
+
+### 3. Foundational Assumptions & Interpretive Choices
 
 **Primitive concepts.** The genuinely primitive notions are: the *real number system* (imported from real analysis / set theory, not built within calculus — calculus *assumes* the reals exist with their completeness property); the *function* (imported, a set-theoretic object: a rule pairing each input with exactly one output); and the *limit* (defined *within* calculus, and the one concept the subject actually constructs). Everything else — continuity, derivative, integral, series convergence — is *defined* from the limit. The derivative is the limit of a difference quotient; the integral is the limit of a sum; continuity is a statement about limits. If you understand the limit precisely, you hold the master key; if you do not, every later definition is a black box.
 
@@ -43,9 +43,9 @@ The objects of study are *functions* (rules assigning outputs to inputs) and the
 
 - *Riemann vs. Lebesgue integral.* The standard introductory integral (Riemann) sums vertical strips; the research-standard integral (Lebesgue) sums by output-value level sets. At stake: which functions are integrable, and whether limits and integrals can be exchanged. The Lebesgue integral integrates badly-behaved functions the Riemann integral cannot touch and makes the convergence theorems clean — which is why all of probability theory and functional analysis uses it, while first courses use Riemann for its visual directness.
 
----
 
-## 3-EXT. Philosophical & Foundational Position
+
+### 3-EXT. Philosophical & Foundational Position
 
 **A. Ontological status of the core objects.**
 
@@ -63,9 +63,9 @@ The objects of study are *functions* (rules assigning outputs to inputs) and the
 
 **D. Philosophical pressure points.** First, the **completed infinity of the continuum**: calculus presupposes the real line as a finished, uncountable totality, and this was contested from Aristotle's distinction between potential and actual infinity through to the Cantor–Kronecker disputes; constructivists and finitists still regard the uncountable continuum as a fiction we reason about, not an object that exists. Second, the **status of non-constructive existence theorems** (IVT, EVT above): the controversy is not that they are counterintuitive — they are obvious — but that they assert a point *exists* while admitting no way to find it, which a substantial philosophical minority regards as asserting something without content.
 
----
 
-## 4. Knowledge Topography — The Map
+
+### 4. Knowledge Topography — The Map
 
 **Core concepts, in logical dependency order:**
 
@@ -90,9 +90,9 @@ The objects of study are *functions* (rules assigning outputs to inputs) and the
 
 **Connections outward.** *Feeds in:* real analysis (supplies completeness and the rigorous limit) and linear algebra (supplies the framework for the multivariable derivative as a linear map). *Feeds into:* physics, via differential equations — Newton's $F=ma$ is a second-order differential equation whose solution *is* the motion; and probability, via the Lebesgue integral — a continuous random variable's expectation is an integral. The single transfer example each way: the **Fundamental Theorem of Calculus** generalizes outward into **Stokes' theorem**, which is the engine behind Maxwell's equations of electromagnetism.
 
----
 
-## 5. Learning Trajectory
+
+### 5. Learning Trajectory
 
 **Prerequisites — including the quiet ones.** The *logical* prerequisite is fluent algebra and the function concept; without these, proofs and even computations break. The *maturity* prerequisites are the ones that quietly wound you later. First, **trigonometry as a source of functions, not triangles** — students who know trig only as triangle-solving are blindsided when sine and cosine appear as the canonical oscillating functions whose derivatives cycle. Second, **comfort with inequalities and absolute value as distance** — the entire rigorous theory is phrased in inequalities ("$|f(x)-L|$ is small"), and students fluent only in equation-solving find the limit definition alien not because it is hard but because they have never reasoned with inequalities. Third, **algebraic stamina**: many calculus errors are not calculus errors but collapsed algebra three lines deep.
 
@@ -104,9 +104,9 @@ The objects of study are *functions* (rules assigning outputs to inputs) and the
 
 **Realistic effort.** For a serious self-learner with the prerequisites: roughly **80–120 hours** to introductory computational fluency (single-variable, comfortable solving standard problems); roughly **300–500 hours** to genuine command (multivariable, series, the rigorous limit, and the ability to read why theorems are true rather than only apply them).
 
----
 
-## 6. The Outsider's QA Sheet
+
+### 6. The Outsider's QA Sheet
 
 **Q1. [DEF] Why is the derivative defined as a limit rather than just "the slope at a point"?**
 A point has no slope — slope is a property of a line through two points, and a single point gives you $0/0$. The limit is the only way to assign a slope to a single point: take the slope through the point and a neighbor, then watch what that slope approaches as the neighbor slides in. The limit *defines* the otherwise undefined object.

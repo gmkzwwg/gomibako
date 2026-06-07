@@ -5,9 +5,9 @@ categories: Notes
 subclass: Number Theory
 ---
 
-# Algebraic Number Theory — Pre-Study Orientation
+## Algebraic Number Theory — Pre-Study Orientation
 
-## 1. Identity & Core Question
+### 1. Identity & Core Question
 
 Algebraic number theory studies the ordinary integers by deliberately *leaving* them — enlarging the number system to include new algebraic quantities (roots of polynomials with integer coefficients, such as $\sqrt{-5}$ or a cube root of $2$) and then importing the order back. The central discovery that gives the field its character is that the most familiar property of the integers — that every number factors into primes in exactly one way — *fails* in these enlarged systems, and that repairing this failure requires replacing numbers with a subtler kind of object. The field is, at root, the systematic study of what happens to arithmetic when it is transplanted into richer soil, and what the new pathologies reveal about the original integers that were invisible from inside.
 
@@ -15,9 +15,9 @@ Three questions organize the subject. First: in an enlarged number system, what 
 
 The objects of study are *number fields* (finite extensions of the rational numbers — the rationals with finitely many algebraic quantities adjoined) and their *rings of integers* (the algebraic analogues of the whole numbers inside such a field). These are worth studying because they are the natural arena in which the deepest classical problems — Fermat's equation, which numbers are sums of two squares, the reciprocity laws — become structurally transparent rather than miraculous.
 
----
 
-## 2. Why It Exists — Motivation, History & Position
+
+### 2. Why It Exists — Motivation, History & Position
 
 **The logical pressure.** The field was forced into existence by Diophantine problems whose solution required *factoring inside enlarged number systems*. To study $x^2 + y^2 = n$ it is natural to factor the left side as $(x+iy)(x-iy)$, leaving the ordinary integers for the Gaussian integers (integers with $i = \sqrt{-1}$ adjoined). Fermat's equation $x^p + y^p = z^p$ similarly invites factoring the left side using a $p$-th root of unity (a complex number whose $p$-th power is $1$). The instant such factorizations are attempted, a question becomes unavoidable: do these enlarged systems obey the same factorization laws as the integers? The entire field is the disciplined answer to that question — an answer that turned out to be "no," with enormous consequences.
 
@@ -29,9 +29,9 @@ The objects of study are *number fields* (finite extensions of the rational numb
 
 **Temporal asymmetry.** The asymmetry here is internal rather than application-facing. The computational facts — specific factorizations, specific class numbers, the law of quadratic reciprocity — were known and trusted (Gauss proved reciprocity several times before 1801) long before the structural framework that *explains* them existed. For roughly half a century the subject advanced on concrete computation and Gauss's authority, with the unifying concepts (ideal, class group, the splitting law) arriving only as the accumulated phenomena demanded organization. The interim justification was the sheer reliability and beauty of the numerical patterns, which were correct even though the language to express *why* did not yet exist.
 
----
 
-## 3. Foundational Assumptions & Interpretive Choices
+
+### 3. Foundational Assumptions & Interpretive Choices
 
 **Primitive concepts.** A small number of notions are genuinely foundational. The *number field* — a finite extension of the rationals — is the ambient object; it is imported from field theory but specialized here. The *ring of integers* of a number field — the set of elements satisfying a monic polynomial with ordinary integer coefficients (the property called being an *algebraic integer*) — is defined within the field, and the choice of this particular ring rather than some other is itself a substantive decision (see below). The *ideal* is imported from commutative algebra but is the field's true protagonist. The *prime ideal* (an ideal that behaves multiplicatively like a prime) replaces the ordinary prime as the atomic object. From these, every later construction — class group, unit group, ramification, $L$-function — is built.
 
@@ -43,9 +43,9 @@ The objects of study are *number fields* (finite extensions of the rational numb
 
 - *Treating all "places" on equal footing.* A number field has *finite places* (one per prime ideal, measuring divisibility) and *infinite places* (real and complex embeddings, measuring ordinary size). Classical treatments privilege the finite primes and tack on the infinite ones as an afterthought; the modern (adelic) tradition insists every place is equal and bundles them into a single object. At stake: the cleanest statements of the central theorems (the product formula, the functional equation, class field theory) only become symmetric and inevitable when the infinite places are admitted as genuine primes rather than corrections. Pedagogically this divides classical algebraic-number-theory courses from those built toward the Langlands program.
 
----
 
-## 3-EXT. Philosophical & Foundational Position
+
+### 3-EXT. Philosophical & Foundational Position
 
 **A. Ontological status of the core objects.**
 
@@ -63,9 +63,9 @@ The objects of study are *number fields* (finite extensions of the rational numb
 
 **D. Philosophical pressure points.** First, the *status of Kummer's ideal numbers* remains a live case study in the philosophy of mathematical objects: ideals began as admitted fictions introduced to save a theory, then became the field's most real-seeming objects, raising the genuine question of whether ontological status can be conferred by theoretical success — a question on which mathematicians and philosophers do not agree. Second, the *generalized Riemann Hypothesis for number fields* (the assertion about the zeros of the field's $L$-functions) sits under a large body of *conditional* theorems: effective bounds on the class number, the running time of primality and factoring algorithms, and the size of the smallest prime with prescribed splitting all depend on it. The contested point is methodological — whether a discipline should erect a substantial conditional edifice on an unproven hypothesis, or treat such results as provisional in a way the literature's confident tone often obscures.
 
----
 
-## 4. Knowledge Topography — The Map
+
+### 4. Knowledge Topography — The Map
 
 **Core concepts, in logical dependency order:**
 
@@ -90,9 +90,9 @@ The objects of study are *number fields* (finite extensions of the rational numb
 
 **Connections outward.** *Feeds in:* Galois theory (the splitting of a prime is governed by its decomposition group inside the Galois group — without this correspondence, ramification is just data) and the geometry of numbers (Minkowski's theorem, that a symmetric convex body of large enough volume contains a lattice point, is the engine of both class group finiteness and the unit theorem). *Feeds into:* arithmetic geometry (rings of integers are one-dimensional schemes, and the analogy between number fields and function fields of curves drives much modern work) and the Langlands program (class field theory is precisely its abelian, one-dimensional case). The single sharpest outward transfer: *class field theory* reframes the centuries-old reciprocity laws as a statement about Galois groups, and that reframing — generalized from abelian to arbitrary Galois groups — *is* the Langlands conjecture.
 
----
 
-## 5. Learning Trajectory
+
+### 5. Learning Trajectory
 
 **Prerequisites — including the quiet ones.** The *logical* prerequisites are unforgiving: a solid command of ring theory (ideals, quotient rings, integral domains), field theory, and especially *Galois theory* is mandatory, not advisory — the field's central results are stated in the language of Galois groups, and arriving without fluency there means every key theorem is opaque. The *maturity* prerequisites are the ones that quietly inflict damage later. First, comfort with the idea that *the right object may not be a number* — readers anchored to concrete computation with elements stall when the entire theory shifts to ideals, because the conceptual move (from things to the sets that represent their divisibility) was never internalized. Second, fluency with *quotient structures and exact sequences* — the class group and unit group are quotients, and treating them as opaque rather than as "what remains after dividing out" blocks all structural understanding. Third, although elementary number theory is not strictly required, its *absence* removes all the motivating examples; without knowing why sums of two squares or reciprocity mattered, the machinery appears to solve problems no one posed.
 
@@ -104,9 +104,9 @@ The objects of study are *number fields* (finite extensions of the rational numb
 
 **Realistic effort estimate.** For a learner already fluent in ring, field, and Galois theory, reaching introductory fluency — comfortable with ideals, ramification, class groups, and computation in quadratic and cyclotomic fields — is on the order of **150–250 hours**. Genuine command, including local fields, the analytic class number formula, and a working grasp of class field theory (typically only its statements, since full proofs occupy a course of their own), is a **600–1200 hour** undertaking. The dominant cost is rarely algebraic number theory itself; it is the upstream Galois-theoretic and commutative-algebra fluency that the central theorems silently demand.
 
----
 
-## 6. The Outsider's QA Sheet
+
+### 6. The Outsider's QA Sheet
 
 **Q1. [DEF] Why are ideals, rather than numbers, taken as the things that factor?**
 Because in most rings of integers numbers simply do not factor uniquely — $6$ can break apart two genuinely different ways — so "unique factorization of numbers" is false and cannot be the foundation. Ideals were introduced precisely because they *do* factor uniquely into prime ideals in every ring of integers, with no exceptions. The shift from numbers to ideals is not a generalization for its own sake; it is the minimal move that restores the one law the whole subject depends on.

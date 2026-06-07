@@ -2297,6 +2297,7 @@ Drepper's **What Every Programmer Should Know About Memory** (long technical pap
 | Patterson & Hennessy, *Computer Organization and Design* (RISC-V ed.) | Hardware-oriented entry | Entry |
 | Hennessy & Patterson, *Computer Architecture: A Quantitative Approach* (6th ed.) | Graduate-level reference | Reference |
 | Drepper, *What Every Programmer Should Know About Memory* (free) | Memory hierarchy at depth | Depth |
+| Sorin, Hill & Wood, *A Primer on Memory Consistency and Cache Coherence* (paid / library) | Memory consistency and cache coherence at depth | Depth |
 
 **Courses and Lectures**
 
@@ -2326,6 +2327,9 @@ Implementing a simple pipelined processor simulator — even a five-stage RISC-V
 | Cachegrind / Valgrind (free) | valgrind.org | Practice |
 | perf (Linux, free) | Linux kernel tools | Practice |
 | Agner Fog optimization manuals (free) | agner.org | Reference |
+| uops.info instruction tables (free) | uops.info | Reference |
+| Intel 64 and IA-32 Optimization Reference Manual (free) | intel.com | Reference |
+| Chips and Cheese microarchitecture analyses (free) | chipsandcheese.com | Auxiliary |
 | RISC-V pipeline simulator project | Local | Practice |
 
 #### Traps
@@ -2432,6 +2436,7 @@ Brendan Gregg's **Systems Performance** (2nd ed., Addison-Wesley, 2020) covers p
 | Robert Love, *Linux Kernel Development* (3rd ed.) | Bridge from teaching kernel to production kernel | Depth |
 | Brendan Gregg, *Systems Performance* (2nd ed.) | Performance analysis at the systems level | Depth |
 | Stevens & Rago, *Advanced Programming in the UNIX Environment* | Unix system programming reference | Reference |
+| Kerrisk, *The Linux Programming Interface* (paid) | Linux system programming reference | Reference |
 | Tanenbaum & Bos, *Modern Operating Systems* | Comprehensive reference; broader than OSTEP | Reference |
 
 **Courses and Lectures**
@@ -2462,6 +2467,9 @@ The xv6 labs are the primary hands-on resource. Beyond them, several tools for o
 | strace (free) | Linux | Practice |
 | perf (free) | Linux kernel tools | Practice |
 | Brendan Gregg BPF scripts and bpftrace (free) | GitHub / brendangregg.com | Practice |
+| Linux Kernel Documentation (free) | docs.kernel.org | Reference |
+| man7.org Linux man-pages (free) | man7.org | Reference |
+| OSDev Wiki (free) | wiki.osdev.org | Auxiliary |
 | LWN.net (free access after delay) | lwn.net | Reference |
 
 #### Traps
@@ -2559,6 +2567,8 @@ For protocol security, **Computer Security: Art and Science** by Matt Bishop, an
 |---|---|---|
 | Kurose & Ross, *Computer Networking: A Top-Down Approach* (8th ed.) | Standard contemporary entry | Entry |
 | Peterson & Davie, *Computer Networks: A Systems Approach* (free online) | Systems-engineering perspective | Entry |
+| Bonaventure, *Computer Networking: Principles, Protocols and Practice* (free online) | Open textbook alternative | Auxiliary |
+| Grigorik, *High Performance Browser Networking* (free online) | Web networking and performance bridge | Auxiliary |
 | Stevens, *TCP/IP Illustrated, Volume 1* (2nd ed.) | Deep TCP/IP reference | Reference |
 | Saltzer, Reed & Clark, "End-to-End Arguments in System Design" (1981, free) | Foundational architectural paper | Depth |
 | Major RFCs: 791 (IP), 793 (TCP), 1034/1035 (DNS), 8446 (TLS 1.3), 9000 (QUIC) | Authoritative protocol specifications | Reference |
@@ -2576,6 +2586,8 @@ For protocol security, **Computer Security: Art and Science** by Matt Bishop, an
 | Stanford CS 144 Introduction to Computer Networking (free) | Stanford / course site | Entry |
 | Princeton COS 461 Computer Networks (free) | Princeton / course site | Entry |
 | Beej's Guide to Network Programming (free) | beej.us | Practice |
+| Beej's Guide to Network Concepts (free) | beej.us | Auxiliary |
+| Julia Evans networking, DNS, and HTTP zines (paid) | wizardzines.com | Auxiliary |
 
 **Practice, Tools, and Current Sources**
 
@@ -2596,6 +2608,7 @@ The **Cloudflare blog** and **APNIC blog** are the best ongoing technical source
 | Stanford CS 144 TCP implementation project | Course site | Practice |
 | Cloudflare blog (free) | blog.cloudflare.com | Reference |
 | APNIC blog (free) | blog.apnic.net | Reference |
+| QUIC implementation projects: quiche, ngtcp2, MsQuic (free) | GitHub | Reference |
 
 #### Traps
 
@@ -2731,9 +2744,12 @@ The **Use The Index, Luke!** website (use-the-index-luke.com, free) is the most 
 | Resource | Platform | Type |
 |---|---|---|
 | PostgreSQL EXPLAIN / EXPLAIN ANALYZE | PostgreSQL / psql | Practice |
+| PostgreSQL Internals documentation (free) | postgresql.org/docs | Reference |
 | SQLite source code and documentation (free) | sqlite.org | Reference |
 | Use The Index, Luke! (free) | use-the-index-luke.com | Reference |
 | Jepsen analyses (free) | jepsen.io | Reference |
+| CMU BusTub educational DBMS (free) | github.com/cmu-db/bustub | Practice |
+| DuckDB internals documentation and DiDi course (free) | duckdb.org | Reference |
 | CMU 15-445 programming projects (free) | CMU course site | Practice |
 
 #### Traps
@@ -2844,6 +2860,7 @@ For post-quantum cryptography, the **NIST post-quantum cryptography standards** 
 | Anderson, *Security Engineering* (3rd ed., free) | Comprehensive foundational reference | Reference |
 | Katz & Lindell, *Introduction to Modern Cryptography* (3rd ed.) | Cryptographic theory | Depth |
 | Aumasson, *Serious Cryptography* | Accessible cryptographic practice | Entry |
+| *Crypto 101* (free) | Friendly practical cryptography supplement | Auxiliary |
 | Boneh & Shoup, *A Graduate Course in Applied Cryptography* (free) | Graduate cryptographic theory | Depth |
 | OWASP Testing Guide (free) | Web application security | Reference |
 | OWASP ASVS (free) | Application security verification | Reference |
@@ -2868,6 +2885,7 @@ For post-quantum cryptography, the **NIST post-quantum cryptography standards** 
 | PortSwigger Web Security Academy (free) | portswigger.net/web-security | Practice |
 | Cryptopals (free) | cryptopals.com | Practice |
 | OWASP WebGoat / HackTheBox (free tiers) | Various | Practice |
+| pwn.college (free) | pwn.college | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -2888,6 +2906,7 @@ The **CVE database** (cve.mitre.org, free) and the **NIST National Vulnerability
 | Wireshark (free) | wireshark.org | Practice |
 | AFL++ / libFuzzer (free) | GitHub | Practice |
 | CVE / NVD databases (free) | cve.mitre.org / nvd.nist.gov | Reference |
+| Google Project Zero blog (free) | googleprojectzero.blogspot.com | Reference |
 | USENIX Security / ACM CCS / IEEE S&P proceedings (free after delay) | Current security research venues | Reference |
 
 #### Traps
@@ -3048,6 +3067,8 @@ These papers are all freely available and between 10 and 30 pages each. Reading 
 | MIT 6.5840 Raft lab | pdos.csail.mit.edu/6.5840 | Practice |
 | TLA+ with Raft specification | lamport.azurewebsites.net + GitHub | Practice |
 | Jepsen analyses (free) | jepsen.io | Reference |
+| Jepsen consistency models (free) | jepsen.io/consistency | Reference |
+| Gossip Glomers distributed systems challenges (free) | fly.io/dist-sys | Practice |
 | Kingsbury distributed systems testing talks (free) | YouTube | Depth |
 
 #### Traps
@@ -3315,9 +3336,12 @@ Building a small streaming application is the most direct learning path. The Kaf
 | Resource | Platform | Type |
 |---|---|---|
 | Kafka Quickstart (free) | kafka.apache.org | Practice |
+| Kafka Streams documentation (free) | kafka.apache.org/documentation/streams | Reference |
 | Flink Quickstart (free) | flink.apache.org | Practice |
 | Kafka consumer lag monitoring | kafka-consumer-groups.sh | Practice |
 | Flink web UI | local Flink cluster | Practice |
+| Apache Beam Playground (free) | beam.apache.org | Practice |
+| Confluent Developer Kafka and Flink tutorials (free; cloud features may be paid) | developer.confluent.io | Practice |
 
 #### Traps
 
@@ -3441,6 +3465,8 @@ Engineering blogs from organizations running cloud-native infrastructure at scal
 | Resource | Platform | Type |
 |---|---|---|
 | Kubernetes documentation (free) | kubernetes.io/docs | Reference |
+| Kubernetes official tutorials (free) | kubernetes.io/docs/tutorials | Practice |
+| Certified Kubernetes Administrator curriculum (exam paid) | cncf.io | Auxiliary |
 | *Kubernetes the Hard Way* (free) | github.com/kelseyhightower | Practice |
 | kind / minikube (free) | kind.sigs.k8s.io / minikube.sigs.k8s.io | Practice |
 | kubectl (free) | kubectl.docs.kubernetes.io | Practice |
@@ -3574,6 +3600,8 @@ The **Dapper paper** (Sigelman et al., Google Technical Report 2010, free) is th
 | Allspaw's writings on incident response (free) | adaptivecapacitylabs.com | Depth |
 | Sigelman et al., "Dapper" paper (free) | Distributed tracing architecture paper | Depth |
 | OpenTelemetry documentation (free) | opentelemetry.io | Reference |
+| AWS Builders' Library (free) | aws.amazon.com/builders-library | Reference |
+| Rob Ewaschuk, "My Philosophy on Alerting" (free) | linuxczar.net/sysadmin/philosophy-on-alerting | Auxiliary |
 | Principles of Chaos Engineering (free) | principlesofchaos.org | Reference |
 | SREcon talks (free) | USENIX YouTube | Reference |
 | sre.google (SRE books and supporting material) | sre.google | Reference |
@@ -3594,6 +3622,7 @@ The **Chaos Monkey and Chaos Mesh** open-source tools make controlled failure in
 | Public postmortems: GitHub, Stripe, Discord (free) | Various | Practice |
 | Prometheus + Grafana (free) | prometheus.io / grafana.com | Practice |
 | Jaeger / Zipkin (free) | jaegertracing.io / zipkin.io | Practice |
+| OpenTelemetry Demo (free) | opentelemetry.io/docs/demo | Practice |
 | Chaos Monkey / Chaos Mesh (free) | GitHub / chaos-mesh.org | Practice |
 
 #### Traps
@@ -3717,6 +3746,8 @@ Gropp, Lusk, and Skjellum's **Using MPI** (3rd ed., MIT Press, 2014) is the stan
 | MIT 6.172 Performance Engineering (free) | MIT OCW / YouTube | Entry |
 | Caltech CS 179 GPU Programming (free) | Caltech course site | Entry |
 | Supercomputing (SC) tutorials (free) | SC archive / YouTube | Reference |
+| LLNL HPC Tutorials (free) | hpc-tutorials.llnl.gov | Entry |
+| HPC Carpentry lessons (free) | hpc-carpentry.org | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -3734,6 +3765,7 @@ The **BLAS** (Basic Linear Algebra Subprograms) and **LAPACK** libraries are the
 | perf / Intel VTune (free) | Linux / intel.com | Practice |
 | Roofline model paper (free) | CACM 2009 | Depth |
 | BLAS / LAPACK / OpenBLAS (free) | netlib.org / github.com/xianyi/OpenBLAS | Practice |
+| OpenMP reference guides and tutorials (free) | openmp.org | Reference |
 | Top500 / HPCG benchmark (free) | top500.org / hpcg-benchmark.org | Reference |
 
 #### Traps
