@@ -11,7 +11,7 @@ permalink: /cv
 
 # ENGLISH
 
-## RUBBISH WITH NO VALUE (Ambitious but Rubbish)
+## RUBBISH WITH NO VALUE
 
 <img src="{{site.img}}/logos/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 
@@ -32,7 +32,7 @@ permalink: /cv
 - `SKILL 1`: *"Pretend to work hard."*
 - `SKILL 2`: *"Addicted to short videos."*
 - `SKILL 3`: *"Lazy and indulgent."*  
-- `SKILL 4`: *"Love to talk big but never take action."*
+- `SKILL 4`: *"Ambitious but rubbish."*
 
 
 ## EXPERIENCE  
@@ -68,7 +68,7 @@ permalink: /cv
 
 # 中文
 
-## 毫无价值的垃圾残渣（志向远大，水平拉胯）
+## 毫无价值的垃圾残渣
 
 <img src="{{site.img}}/logos/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 
@@ -123,7 +123,7 @@ permalink: /cv
 
 # Françai
 
-## Débris d’ordures totalement sans valeur (Ambitieux, mais nul)
+## Débris d’ordures totalement sans valeur
 
 <img src="{{site.img}}/logos/rubbish.png" align="right" width="95px" hspace="5" vspace="5">
 

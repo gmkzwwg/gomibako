@@ -3893,6 +3893,7 @@ Dreyfus's **What Computers Can't Do** (revised ed., 1979) makes the case that fo
 | Stanford CS221 AI (free) | Stanford / YouTube | Entry |
 | Berkeley CS188 AI (free) | Berkeley / YouTube | Entry |
 | MIT 6.034 AI (free) | MIT OCW | Entry |
+| CS50 AI with Python (free; edX verified certificate paid) | Harvard / edX | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -3908,6 +3909,9 @@ Implementing **A* search** from scratch on the 15-puzzle using Manhattan distanc
 |---|---|---|
 | Z3 Python API (free) | pip install z3-solver | Practice |
 | Fast Downward planner (free) | fast-downward.org | Practice |
+| SWI-Prolog quickstart (free) | swi-prolog.org | Practice |
+| planning.domains PDDL editor and solver (free) | planning.domains | Practice |
+| Wikidata SPARQL tutorial (free) | wikidata.org | Auxiliary |
 | Silver et al., AlphaGo and AlphaZero papers (free) | Hybrid symbolic-neural landmark papers | Depth |
 | McCarthy & Hayes, "Some Philosophical Problems" (1969, free) | Frame problem and commonsense reasoning paper | Depth |
 | AlphaGo documentary (free) | YouTube | Auxiliary |
@@ -4013,6 +4017,7 @@ The Lipton and Steinhardt paper **"Troubling Trends in Machine Learning Scholars
 | Shalev-Shwartz & Ben-David, *Understanding Machine Learning* | Statistical learning theory | Depth |
 | Mohri, Rostamizadeh & Talwalkar, *Foundations of Machine Learning* (2nd ed.) | Graduate-level learning theory | Reference |
 | Boyd & Vandenberghe, *Convex Optimization* (free) | Optimization theory standard | Reference |
+| Chip Huyen, *Designing Machine Learning Systems* (paid) | Production ML system design | Depth |
 | Lipton & Steinhardt, "Troubling Trends in ML Scholarship" (free) | Evaluation methodology and research hygiene | Auxiliary |
 
 **Courses and Lectures**
@@ -4028,6 +4033,9 @@ The Lipton and Steinhardt paper **"Troubling Trends in Machine Learning Scholars
 | Stanford CS229 Machine Learning (notes free) | cs229.stanford.edu | Entry |
 | Caltech CS156 Learning from Data (free) | YouTube | Entry |
 | fast.ai Practical Deep Learning (free) | fast.ai | Entry |
+| Google Machine Learning Crash Course (free) | developers.google.com | Entry |
+| DataTalksClub Machine Learning Zoomcamp (free) | GitHub / YouTube | Practice |
+| DeepLearning.AI Machine Learning in Production (certificate / graded work paid) | DeepLearning.AI / Coursera | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -4042,6 +4050,8 @@ Implementing linear regression, logistic regression, and a basic neural network 
 | Resource | Platform | Type |
 |---|---|---|
 | scikit-learn documentation (free) | scikit-learn.org | Practice |
+| TensorFlow Playground (free) | playground.tensorflow.org | Auxiliary |
+| Made With ML (free) | madewithml.com | Practice |
 | NumPy scratch implementations (linear regression, MLP) | Local | Practice |
 | Karpathy, micrograd (free) | GitHub | Practice |
 | Kaggle tabular competitions (free) | kaggle.com | Practice |
@@ -4163,6 +4173,7 @@ Roberts, Yaida, and Hanin's **The Principles of Deep Learning Theory** (Cambridg
 | Bishop & Bishop, *Deep Learning: Foundations and Concepts* (2024) | Current canonical text | Entry |
 | Goodfellow, Bengio & Courville, *Deep Learning* (free) | Mathematical foundations; pre-2017 architecture | Entry |
 | Howard & Gugger, *Deep Learning for Coders* + fast.ai (free) | Practical top-down entry | Practice |
+| Zhang, Lipton, Li & Smola, *Dive into Deep Learning* (free) | Interactive book with code and math | Entry |
 | Roberts, Yaida & Hanin, *Principles of Deep Learning Theory* (free) | Theoretical foundations | Depth |
 | Phuong & Hutter, "Formal Algorithms for Transformers" (free) | Transformer architecture precise reference | Reference |
 
@@ -4180,8 +4191,10 @@ Roberts, Yaida, and Hanin's **The Principles of Deep Learning Theory** (Cambridg
 |---|---|---|
 | fast.ai Practical Deep Learning (free) | fast.ai | Entry |
 | Stanford CS231n CNN for Visual Recognition (free) | cs231n.github.io | Entry |
+| MIT 6.S191 Introduction to Deep Learning (free) | MIT OCW / YouTube | Entry |
 | Karpathy, Neural Networks: Zero to Hero (free) | YouTube | Practice |
 | Stanford CS224N NLP with Deep Learning (free) | Stanford / YouTube | Entry |
+| Full Stack Deep Learning (free) | fullstackdeeplearning.com | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -4199,6 +4212,7 @@ The **Hugging Face ecosystem** (transformers, datasets, accelerate libraries, al
 | PyTorch tutorials (free) | pytorch.org | Practice |
 | JAX documentation (free) | jax.readthedocs.io | Practice |
 | Hugging Face ecosystem (free) | huggingface.co | Practice |
+| Papers With Code 2 (free) | paperswithcode2.com | Reference |
 | Weights & Biases (free tier) | wandb.ai | Practice |
 
 #### Traps
@@ -4322,6 +4336,7 @@ Lattimore and Szepesvári's **Bandit Algorithms** (Cambridge, 2020, free at tor-
 | Berkeley CS285 Deep RL (free) | YouTube / course site | Entry |
 | David Silver RL lectures (free) | YouTube | Entry |
 | Sutton's Alberta RL course (free to audit) | Coursera | Entry |
+| Hugging Face Deep RL Course (free) | huggingface.co/learn | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -4338,6 +4353,9 @@ Henderson et al.'s **"Deep Reinforcement Learning that Matters"** (NeurIPS 2018,
 | OpenAI Spinning Up (free) | spinningup.openai.com | Practice |
 | Gymnasium (free) | gymnasium.farama.org | Practice |
 | Stable Baselines3 (free) | stable-baselines3.readthedocs.io | Practice |
+| CleanRL (free) | GitHub | Practice |
+| RL Baselines3 Zoo (free) | rl-baselines3-zoo.readthedocs.io | Practice |
+| Safety Gym (free) | openai.com | Auxiliary |
 | Henderson et al., "Deep RL that Matters" (free) | Deep RL reproducibility landmark | Depth |
 
 #### Traps
@@ -4458,6 +4476,7 @@ The primary literature is the authoritative source. The papers that matter most:
 | Ouyang et al., InstructGPT paper (2022, free) | RLHF alignment pipeline | Depth |
 | Rafailov et al., DPO paper (2023, free) | Direct preference optimization | Depth |
 | Phuong & Hutter, "Formal Algorithms for Transformers" (2022, free) | Precise architectural reference | Reference |
+| Chip Huyen, *AI Engineering* (paid) | Foundation-model application engineering | Practice |
 
 **Courses and Lectures**
 
@@ -4472,7 +4491,10 @@ The primary literature is the authoritative source. The papers that matter most:
 | Course | Platform | Type |
 |---|---|---|
 | Stanford CS336 Language Modeling from Scratch | cs336.stanford.edu | Depth |
+| Berkeley LLM Agents course (free) | rdi.berkeley.edu | Depth |
 | Hugging Face NLP Course (free) | huggingface.co/course | Practice |
+| Hugging Face Agents Course (free) | huggingface.co/learn | Practice |
+| Cohere LLM University (free) | docs.cohere.com | Auxiliary |
 | Karpathy, Neural Networks: Zero to Hero (free) | YouTube | Auxiliary |
 
 **Practice, Tools, and Current Sources**
@@ -4490,8 +4512,13 @@ The **OpenAI API, Anthropic API, Google AI API** provide access to frontier clos
 | Resource | Platform | Type |
 |---|---|---|
 | Karpathy, nanoGPT (free) | GitHub | Practice |
+| OpenAI Cookbook (free; API usage may be paid) | GitHub / cookbook.openai.com | Practice |
+| Anthropic Cookbook (free; API usage may be paid) | GitHub | Practice |
+| Prompt Engineering Guide (free) | dair.ai / promptingguide.ai | Auxiliary |
 | Hugging Face Transformers / TRL (free) | huggingface.co | Practice |
 | LM-Evaluation-Harness (free) | GitHub / EleutherAI | Practice |
+| HELM (free) | crfm.stanford.edu/helm | Reference |
+| Chatbot Arena / LMSYS (free) | lmsys.org / lmarena.ai | Auxiliary |
 | vLLM (free) | vllm.ai | Practice |
 | Weights & Biases (free tier) | wandb.ai | Auxiliary |
 
@@ -4628,6 +4655,8 @@ Implementing the induction heads paper from scratch is the most instructive sing
 | TransformerLens (free) | pip install transformer-lens | Practice |
 | SAELens (free) | GitHub / pip | Practice |
 | Neuroscope (free) | neuroscope.io | Practice |
+| Neuronpedia (free) | neuronpedia.org | Practice |
+| Gemma Scope (free) | deepmind.google | Reference |
 | Anthropic Transformer Circuits Thread (free, ongoing) | transformer-circuits.pub | Reference |
 | ARENA tutorial notebooks (free) | arena.education | Practice |
 
@@ -4776,6 +4805,9 @@ The **Alignment Forum** (alignmentforum.org) and **LessWrong** AI content are th
 | METR / Apollo Research publications (free) | metr.org / apolloresearch.ai | Reference |
 | Anthropic, OpenAI, DeepMind safety research (free) | Lab research blogs | Reference |
 | UK AI Safety Institute publications (free) | aisi.gov.uk | Reference |
+| NIST AI Risk Management Framework (free) | nist.gov | Reference |
+| AI Incident Database (free) | incidentdatabase.ai | Auxiliary |
+| AIAAIC Repository (free) | aiaaic.org | Auxiliary |
 
 #### Traps
 
@@ -4899,6 +4931,7 @@ Gregory's **Game Engine Architecture** (3rd ed., 2018) is the canonical text for
 | Bridson, *Fluid Simulation for Computer Graphics* (2nd ed.) | Physics simulation | Depth |
 | Munzner, *Visualization Analysis and Design* | Information visualization | Entry |
 | Veach, PhD thesis (free) | Monte Carlo rendering foundations | Depth |
+| The Graphics Codex (free samples; paid app/full access may apply) | Compact reference for graphics mathematics, rendering, and implementation details | Reference |
 
 **Courses and Lectures**
 
@@ -4919,6 +4952,9 @@ Gregory's **Game Engine Architecture** (3rd ed., 2018) is the canonical text for
 | Cem Yuksel YouTube lectures (free) | YouTube | Practice |
 | The Book of Shaders (free) | thebookofshaders.com | Practice |
 | LearnOpenGL (free) | learnopengl.com | Practice |
+| Scratchapixel (free) | scratchapixel.com | Entry |
+| WebGPU Fundamentals (free) | webgpufundamentals.org | Practice |
+| Vulkan Tutorial / Khronos Vulkan Learn (free) | vulkan-tutorial.com / vulkan.org | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -5068,6 +5104,7 @@ For cognitive foundations, Wickens et al.'s **Engineering Psychology and Human P
 | Lupton, *Thinking with Type* (3rd ed.) | Typography for designers | Depth |
 | Wickens et al., *Engineering Psychology and Human Performance* | Cognitive science foundations | Depth |
 | Pickering, *Inclusive Components* (free) | Accessible component patterns | Entry |
+| Microsoft Inclusive Design Toolkit (free) | Inclusive design framework and design exercises | Auxiliary |
 | Tidwell, Brewer & Valencia, *Designing Interfaces* (3rd ed.) | Interaction patterns reference | Reference |
 | Brignull, *Deceptive Patterns* (free at deceptive.design) | Dark patterns documentation | Reference |
 
@@ -5086,7 +5123,8 @@ For cognitive foundations, Wickens et al.'s **Engineering Psychology and Human P
 | Stanford CS147 HCI Design (free) | Stanford course site | Entry |
 | Interaction Design Foundation courses | ixdf.org | Entry |
 | Nielsen Norman Group articles (free) | nngroup.com | Reference |
-| Google UX Design Certificate (free to audit) | Coursera | Entry |
+| Google UX Design Certificate (free to audit; certificate paid) | Coursera | Entry |
+| Baymard Institute UX research and training (free articles; subscription paid) | baymard.com | Reference |
 
 **Practice, Tools, and Current Sources**
 
@@ -5105,7 +5143,10 @@ For cognitive foundations, Wickens et al.'s **Engineering Psychology and Human P
 | Figma (free tier) | figma.com | Practice |
 | VoiceOver / NVDA / TalkBack (free) | macOS / Windows / Android | Practice |
 | axe DevTools / WAVE (free) | Browser extension | Practice |
-| WCAG 2.1 documentation (free) | w3.org | Reference |
+| Apple Human Interface Guidelines (free) | developer.apple.com/design | Reference |
+| Material Design 3 (free) | m3.material.io | Reference |
+| GOV.UK Design System (free) | design-system.service.gov.uk | Reference |
+| WCAG 2.2 documentation (free) | w3.org | Reference |
 | Nielsen's 10 Usability Heuristics (free) | nngroup.com | Reference |
 | CHI proceedings (free after delay) | dl.acm.org | Reference |
 
@@ -5240,6 +5281,8 @@ For the ML data infrastructure side, Huyen's **Designing Machine Learning System
 | MIT Missing Semester (free) | missing.csail.mit.edu | Entry |
 | dbt Learn (free) | courses.getdbt.com | Practice |
 | Kaggle Learn (free) | kaggle.com/learn | Entry |
+| DataTalksClub Data Engineering Zoomcamp (free) | DataTalksClub / GitHub / YouTube | Practice |
+| Dagster University and documentation (free) | dagster.io / docs.dagster.io | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -5259,6 +5302,11 @@ The data engineering toolkit is primarily tools rather than visualizations. The 
 |---|---|---|
 | DuckDB (free) | duckdb.org | Practice |
 | dbt Core (free) | dbt-core / docs.getdbt.com | Practice |
+| Great Expectations (free / paid cloud) | docs.greatexpectations.io | Practice |
+| Apache Arrow columnar format (free) | arrow.apache.org | Reference |
+| Apache Parquet documentation (free) | parquet.apache.org | Reference |
+| Polars user guide (free) | docs.pola.rs | Practice |
+| DataHub metadata platform (free / paid cloud) | docs.datahub.com | Reference |
 | PySpark on Databricks Community Edition (free) | databricks.com | Practice |
 | Apache Kafka / Confluent free tier | confluent.io | Practice |
 | Jupyter + pandas + matplotlib (free) | jupyter.org | Practice |
@@ -5404,6 +5452,10 @@ Physical hands-on work is irreplaceable. Building a simple mobile robot — even
 | Resource | Platform | Type |
 |---|---|---|
 | ROS 2 documentation and tutorials (free) | ros.org | Practice |
+| Drake (free) | drake.mit.edu | Practice |
+| NVIDIA Isaac Sim (free; hardware requirements; NVIDIA ecosystem) | developer.nvidia.com/isaac-sim | Practice |
+| Gazebo simulator (free) | gazebosim.org | Practice |
+| Foxglove documentation (free tier / paid platform) | docs.foxglove.dev | Practice |
 | Gymnasium + MuJoCo (free) | gymnasium.farama.org | Practice |
 | GTSAM (free) | gtsam.org | Practice |
 | Cyrill Stachniss SLAM Python notebooks (free) | GitHub | Practice |
@@ -5537,6 +5589,7 @@ For scientific machine learning, Brunton and Kutz's **Data-Driven Science and En
 | MIT 18.335 Introduction to Numerical Methods (free) | MIT / GitHub | Entry |
 | MIT 18.085/18.086 Mathematical Methods for Engineers (free) | MIT OCW | Entry |
 | Software Carpentry (free) | softwarecarpentry.org | Entry |
+| Scientific Python Lectures (free) | lectures.scientific-python.org | Entry |
 
 **Practice, Tools, and Current Sources**
 
@@ -5554,7 +5607,9 @@ The **Raissi, Perdikaris, Karniadakis papers on PINNs** (free, arXiv) are the fo
 |---|---|---|
 | NumPy / SciPy documentation (free) | numpy.org / scipy.org | Practice |
 | Julia + DifferentialEquations.jl (free) | julialang.org | Practice |
+| SciML documentation (free) | docs.sciml.ai | Reference |
 | FEniCS (free) | fenicsproject.org | Practice |
+| FEniCSx tutorial (free) | jsdokken.com/dolfinx-tutorial | Practice |
 | Raissi, Perdikaris & Karniadakis PINN papers (free) | arXiv | Depth |
 | MIT Julia computing course (18.S191, free) | computationalthinking.mit.edu | Entry |
 | Software Carpentry Python tutorials (free) | software-carpentry.org | Entry |
@@ -5700,10 +5755,14 @@ The **quantum error correction zoo** (errorcorrectionzoo.org, free) is a compreh
 | Resource | Platform | Type |
 |---|---|---|
 | Qiskit + IBM Quantum (free) | qiskit.org | Practice |
-| Qiskit Textbook (free) | quantum.ibm.com/textbook | Practice |
+| IBM Quantum Learning / legacy Qiskit Textbook archive (free) | learning.quantum.ibm.com / GitHub archive | Practice |
 | PennyLane (free) | pennylane.ai | Practice |
+| Microsoft Quantum Katas (free) | quantum.microsoft.com / GitHub | Practice |
+| PennyLane Codebook (free) | pennylane.ai/codebook | Practice |
+| Quantum Country (free) | quantum.country | Auxiliary |
 | Quirk circuit simulator (free) | algassert.com/quirk | Practice |
 | Cirq (free) | github.com/quantumlib/Cirq | Practice |
+| QuTiP (free) | qutip.org | Practice |
 | Error Correction Zoo (free) | errorcorrectionzoo.org | Reference |
 
 #### Traps
@@ -5815,6 +5874,8 @@ For frontend specifically, Dodds's **Epic React** course and **Testing JavaScrip
 | OWASP Testing Guide + ASVS (free) | Application security reference | Reference |
 | Newman, *Building Microservices* (2nd ed.) | Microservices architecture | Depth |
 | MDN Web Docs (free) | Authoritative web standards reference | Reference |
+| React Docs (free) | Modern React official learning path | Practice |
+| TypeScript Handbook (free) | TypeScript language reference | Reference |
 | Crockford, *JavaScript: The Good Parts* | JavaScript conceptual foundation | Auxiliary |
 | Beck, *Test-Driven Development* | Testing discipline foundation | Depth |
 | Haverbeke, *Eloquent JavaScript* (3rd ed., free) | JavaScript depth | Entry |
@@ -5857,6 +5918,8 @@ Reading production open-source web applications — **Discourse** (a forum platf
 | Playwright / Cypress (free) | playwright.dev / cypress.io | Practice |
 | Discourse / GitLab / Cal.com source | GitHub | Reference |
 | Chrome Lighthouse (free, built-in) | Chrome DevTools | Practice |
+| web.dev Learn Performance (free) | web.dev | Practice |
+| HTTP Archive / Web Almanac (free) | httparchive.org | Reference |
 
 #### Traps
 
@@ -5979,6 +6042,7 @@ Ford, Parsons, and Kua's **Building Evolutionary Architectures** (2nd ed., O'Rei
 | Ford, Parsons & Kua, *Building Evolutionary Architectures* (2nd ed.) | Evolutionary architecture practices | Practice |
 | Garlan & Shaw, *Software Architecture* | Historical foundational text | Depth |
 | Gamma et al., *Design Patterns* | GoF design patterns | Reference |
+| Brown & Wilson, *The Architecture of Open Source Applications* (free; paid print optional) | Real-world open-source architecture case studies | Practice |
 
 **Courses, Papers, and Current Sources**
 
@@ -5994,6 +6058,8 @@ The **ThoughtWorks Technology Radar** (thoughtworks.com/radar, free, published t
 | ThoughtWorks Technology Radar (free) | thoughtworks.com/radar | Reference |
 | Nygard, original ADR proposal (free) | cognitect.com | Reference |
 | MADR format (free) | adr.github.io | Reference |
+| AWS Well-Architected Framework (free) | docs.aws.amazon.com | Reference |
+| Azure Architecture Center / Cloud Design Patterns (free) | learn.microsoft.com | Reference |
 
 **Practice, Tools, and Current Sources**
 
@@ -6134,6 +6200,7 @@ Claessen and Hughes's **"QuickCheck: A Lightweight Tool for Random Testing of Ha
 | Dijkstra, "Notes on Structured Programming" (1972, free) | Foundational limits of testing | Depth |
 | Fowler, testing articles (free) | martinfowler.com | Reference |
 | Claessen & Hughes, QuickCheck paper (free) | Property-based testing foundation | Depth |
+| Google Testing Blog / Tech on the Toilet (free) | testing.googleblog.com | Auxiliary |
 
 **Practice, Tools, and Current Sources**
 
@@ -6153,6 +6220,8 @@ Every major programming language has standard testing frameworks. **JUnit 5** (J
 | Coverage tools: JaCoCo / Coverage.py / Istanbul (free) | Language-specific | Practice |
 | Hypothesis (Python, free) | hypothesis.works | Practice |
 | fast-check (JavaScript, free) | GitHub | Practice |
+| Playwright Test (free) | playwright.dev | Practice |
+| Pact contract testing (free) | pact.io | Practice |
 | PIT mutation testing (Java, free) | pitest.org | Practice |
 | Stryker (JS/TS mutation testing, free) | stryker-mutator.io | Practice |
 
@@ -6269,6 +6338,7 @@ Skelton and Pais's **Team Topologies: Organizing Business and Technology Teams f
 | Kim, *The Phoenix Project* | Novel-format DevOps entry | Practice |
 | Anderson, *Kanban: Successful Evolutionary Change* | Kanban methodology | Depth |
 | Reinertsen, *Principles of Product Development Flow* | Flow-based development theory | Depth |
+| Winters, Manshreck & Wright, *Software Engineering at Google* (free online; paid print) | Large-scale engineering practice | Depth |
 
 **Courses, Papers, and Current Sources**
 
@@ -6283,6 +6353,10 @@ The **Agile Manifesto** (agilemanifesto.org, free) and the associated twelve pri
 | DORA research program and State of DevOps reports (free) | dora.dev | Reference |
 | Royce 1970 "Managing the Development..." (free) | IEEE | Depth |
 | Agile Manifesto and principles (free) | agilemanifesto.org | Reference |
+| SPACE framework (free) | ACM Queue | Reference |
+| DevEx framework (free) | ACM Queue | Reference |
+| Shape Up (free online; paid print) | basecamp.com/shapeup | Auxiliary |
+| The Scrum Guide (free) | scrumguides.org | Reference |
 
 **Practice, Tools, and Current Sources**
 
@@ -6297,6 +6371,7 @@ The **Agile Manifesto** (agilemanifesto.org, free) and the associated twelve pri
 | DORA DevOps Quick Check (free) | dora.dev | Practice |
 | Value stream mapping exercise | Local | Practice |
 | Deployment frequency tracking | CI/CD system | Practice |
+| Trunk-Based Development (free) | trunkbaseddevelopment.com | Practice |
 
 #### Traps
 
@@ -6418,6 +6493,7 @@ The **Google SRE book** (free at sre.google) and the **Site Reliability Workbook
 |---|---|---|
 | State of DevOps reports (free) | dora.dev | Reference |
 | Google SRE book and workbook (free) | sre.google | Depth |
+
 **Practice, Tools, and Current Sources**
 
 **GitHub Actions** (free for public repositories) and **GitLab CI/CD** (free tier) are the most accessible platforms for implementing deployment pipelines. Working through a complete pipeline — build, unit test, integration test, docker build and push, deployment to a staging environment — provides direct experience with pipeline design that reading cannot.
@@ -6433,8 +6509,13 @@ The **Google SRE book** (free at sre.google) and the **Site Reliability Workbook
 | GitHub Actions / GitLab CI (free) | GitHub / GitLab | Practice |
 | Terraform (free tier) | terraform.io | Practice |
 | Argo CD (free) | argoproj.io | Practice |
+| Argo Rollouts (free) | argoproj.github.io | Practice |
+| OpenTelemetry documentation (free) | opentelemetry.io | Practice |
+| Backstage Software Catalog (free) | backstage.io | Practice |
+| OpenFeature (free) | openfeature.dev | Practice |
 | Flagsmith (open source) | flagsmith.com | Practice |
-| Chaos Monkey / Chaos Engineering tools | Netflix / GitHub | Practice |
+| Principles of Chaos Engineering (free) | principlesofchaos.org | Reference |
+| Chaos Mesh / LitmusChaos (free) | CNCF / project docs | Practice |
 
 #### Traps
 
@@ -6543,6 +6624,7 @@ Richardson's **Microservices Patterns: With Examples in Java** (Manning, 2018) a
 | Beck, *Test-Driven Development: By Example* | Red-green-refactor discipline | Depth |
 | McConnell, *Code Complete* (2nd ed.) | Construction quality foundations | Depth |
 | Richardson, *Microservices Patterns* | Monolith decomposition patterns | Depth |
+| Tornhill, *Software Design X-Rays* | Behavioral code analysis and hotspot-based debt management | Depth |
 
 **Courses, Papers, and Current Sources**
 
@@ -6558,6 +6640,8 @@ Spolsky's **"Things You Should Never Do, Part I"** (2000, free at joelonsoftware
 | Fowler, "Technical Debt Quadrant" (free) | martinfowler.com | Reference |
 | Fowler, "Strangler Fig Application" (free) | martinfowler.com | Reference |
 | Spolsky, "Things You Should Never Do" (free) | joelonsoftware.com | Depth |
+| Code Red code quality study (free) | arXiv | Reference |
+
 **Practice, Tools, and Current Sources**
 
 **SonarQube** (community edition free, sonarqube.org) analyzes code for specific patterns associated with technical debt: duplication, complexity, code smells, security vulnerabilities. Running SonarQube on an existing codebase and examining the debt report — which files have the most complexity, which have the most duplication — is the fastest way to see what technical debt measurement looks like in practice.
@@ -6572,6 +6656,9 @@ Performing a refactoring in an IDE — using the IDE's built-in refactoring tool
 |---|---|---|
 | SonarQube Community (free) | sonarqube.org | Practice |
 | Code Climate (free tier) | codeclimate.com | Practice |
+| CodeScene (commercial; free trial/options may vary) | codescene.io | Practice |
+| OpenRewrite (free; Moderne platform paid) | openrewrite.org / GitHub | Practice |
+| Renovate (open source; hosted options may be paid) | docs.renovatebot.com | Practice |
 | refactoring.guru (free) | refactoring.guru | Reference |
 | IDE refactoring tools (built-in) | IntelliJ / VS Code / Eclipse | Practice |
 
@@ -6689,6 +6776,7 @@ Grove's **High Output Management** (Vintage, 1983) — by Intel CEO Andy Grove �
 | Drucker, *The Effective Executive* | Knowledge worker management | Depth |
 | DeMarco & Lister, *Peopleware* (3rd ed.) | Software management human factors | Depth |
 | Skelton & Pais, *Team Topologies* | Team structure for delivery | Depth |
+| Larson, *Staff Engineer* (mostly free online; paid book) | Staff+ individual contributor leadership | Depth |
 
 **Courses, Papers, and Current Sources**
 
@@ -6703,6 +6791,8 @@ Lencioni's **The Five Dysfunctions of a Team** (2002), though in novel format an
 | Edmondson, TEDx "Psychological Safety" (free) | YouTube | Entry |
 | Google re:Work team effectiveness guide (free) | rework.withgoogle.com | Reference |
 | Rands in Repose (Michael Lopp blog, free) | randsinrepose.com | Reference |
+| LeadDev engineering leadership articles and reports (free articles; paid events/reports may apply) | leaddev.com | Reference |
+| Lara Hogan management resources (free blog; paid courses/books) | larahogan.me | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -6717,6 +6807,7 @@ Structured one-on-ones — regular, predictable individual meetings with each di
 | Manager's Readme examples (free) | GitHub search | Entry |
 | Team effectiveness discussion guides (free) | rework.withgoogle.com | Practice |
 | Structured one-on-one templates (free) | Various | Practice |
+| Manager Tools One-on-Ones (free podcast; paid training/tools may apply) | manager-tools.com | Practice |
 
 #### Traps
 
