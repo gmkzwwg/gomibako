@@ -1,0 +1,425 @@
+/*
+ * Introduction:
+ * Turns Markdown-generated language blocks into a bilingual side-by-side layout.
+ * The script detects language label headings, removes the labels, and aligns matching blocks row by row.
+ *
+ * Usage:
+ * Include this file after the article HTML, or include it in <head>; it runs automatically when the DOM is ready.
+ * Default container: .post-content. Default language heading selector: h1.
+ *
+ * Global API:
+ * BilingualMDLayout.render()
+ * BilingualMDLayout.reset()
+ * BilingualMDLayout.updateConfig(partialConfig)
+ * BilingualMDLayout.getConfig()
+ * updateConfig(partialConfig) is also exposed as a direct global shortcut.
+ *
+ * Notes:
+ * Only headings whose text matches configured language aliases are treated as language labels.
+ * Edit CONFIG below for static customization, or call updateConfig() after this script has loaded.
+ */
+
+(function () {
+  "use strict";
+
+  const CONFIG = {
+    contentSelector: ".post-content", // Main Markdown article container.
+    languageHeadingSelector: "h1", // Language block marker, usually h1 in Markdown output.
+    gap: "1.6rem", // Space between text column and center divider.
+    dividerOpacity: 0.45, // Center line opacity.
+    restoreButtonText: "双语/Bilingual", // Text used in single-language mode.
+    autoRun: true, // Plug-and-play behavior.
+
+    languages: {
+      zh: {
+        name: "中文",
+        aliases: ["中文", "汉语", "漢語", "华语", "華語", "zh", "zh-cn", "chinese", "cn", "中文版"],
+        buttonText: "阅读中文版"
+      },
+      en: {
+        name: "English",
+        aliases: ["英语", "英語", "英文", "en", "eng", "english", "english version", "英文版"],
+        buttonText: "View in English"
+      },
+      fr: {
+        name: "Français",
+        aliases: ["法语", "法語", "法文", "fr", "fra", "fre", "french", "français", "francais", "francis"],
+        buttonText: "Lire en français"
+      }
+    }
+  };
+
+  const STATE = {
+    config: deepMerge({}, CONFIG), // Runtime config, changed by updateConfig().
+    root: null, // Current processed article container.
+    originalHTML: null, // Original HTML for reset/re-render.
+    wrapper: null, // Generated bilingual layout wrapper.
+    leftLang: null, // Language key for left column.
+    rightLang: null // Language key for right column.
+  };
+
+  /** Deep-merges config objects; parameters are target object and one or more sources. */
+  function deepMerge(target, ...sources) {
+    sources.forEach((source) => {
+      if (!source || typeof source !== "object") return; // Ignore invalid config input.
+
+      Object.keys(source).forEach((key) => {
+        const value = source[key];
+
+        if (Array.isArray(value)) {
+          target[key] = value.slice(); // Copy arrays to avoid shared mutation.
+        } else if (value && typeof value === "object") {
+          target[key] = deepMerge(target[key] || {}, value); // Merge nested config.
+        } else {
+          target[key] = value; // Assign primitive values.
+        }
+      });
+    });
+
+    return target;
+  }
+
+  /** Normalizes heading text for alias matching; parameter is raw heading text. */
+  function normalizeLabel(text) {
+    return String(text || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[：:]/g, "")
+      .replace(/\s+/g, " ");
+  }
+
+  /** Returns language key if heading text is a configured language label; parameter is heading text. */
+  function getLanguageKey(text) {
+    const label = normalizeLabel(text);
+    const languages = STATE.config.languages;
+
+    return Object.keys(languages).find((key) => {
+      const aliases = languages[key].aliases || [];
+      return aliases.map(normalizeLabel).includes(label); // Exact match avoids false positives.
+    });
+  }
+
+  /** Checks whether a DOM node should be kept in a rendered section; parameter is a DOM node. */
+  function isRenderableNode(node) {
+    if (node.nodeType === Node.ELEMENT_NODE) return true; // Keep elements.
+    if (node.nodeType === Node.TEXT_NODE) return node.textContent.trim().length > 0; // Keep meaningful text.
+    return false; // Drop comments and empty nodes.
+  }
+
+  /** Finds direct child h1 language markers inside the article; parameter is the article root. */
+  function findLanguageMarkers(root) {
+    const selector = STATE.config.languageHeadingSelector;
+    const nodes = Array.from(root.childNodes);
+    const markers = [];
+
+    nodes.forEach((node, index) => {
+      if (node.nodeType !== Node.ELEMENT_NODE) return; // Only elements can match selectors.
+      if (!node.matches(selector)) return; // Only configured heading selector is valid.
+
+      const lang = getLanguageKey(node.textContent);
+      if (!lang) return; // Ignore ordinary h1 headings.
+
+      markers.push({ node, index, lang });
+    });
+
+    return markers;
+  }
+
+  /** Selects the first two language sections; parameters are article root and detected markers. */
+  function getFirstPairSections(root, markers) {
+    if (markers.length < 2) return null; // Need two language blocks.
+
+    const allNodes = Array.from(root.childNodes);
+    const leftMarker = markers[0];
+    const rightMarker = markers[1];
+    const endIndex = markers[2] ? markers[2].index : allNodes.length; // Preserve later language blocks.
+
+    return {
+      before: allNodes.slice(0, leftMarker.index).filter(isRenderableNode),
+      left: allNodes.slice(leftMarker.index + 1, rightMarker.index).filter(isRenderableNode),
+      right: allNodes.slice(rightMarker.index + 1, endIndex).filter(isRenderableNode),
+      after: allNodes.slice(endIndex).filter(isRenderableNode),
+      leftLang: leftMarker.lang,
+      rightLang: rightMarker.lang
+    };
+  }
+
+  /** Clones a list of nodes into a document fragment; parameter is an array of DOM nodes. */
+  function cloneNodes(nodes) {
+    const fragment = document.createDocumentFragment();
+
+    nodes.forEach((node) => {
+      fragment.appendChild(node.cloneNode(true)); // Clone so original HTML can be restored.
+    });
+
+    return fragment;
+  }
+
+  /** Creates a compact control button; parameters are text, className, and click handler. */
+  function createButton(text, className, onClick) {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = `bmd-button ${className}`;
+    button.textContent = text;
+    button.addEventListener("click", onClick); // Switch display mode.
+
+    return button;
+  }
+
+  /** Returns button text for a language key; parameter is language key. */
+  function getButtonText(lang) {
+    const langConfig = STATE.config.languages[lang] || {};
+    return langConfig.buttonText || langConfig.name || lang;
+  }
+
+  /** Injects layout CSS once; no parameters. */
+  function injectStyles() {
+    if (document.getElementById("bmd-layout-style")) return; // Avoid duplicate style tags.
+
+    const style = document.createElement("style");
+    style.id = "bmd-layout-style";
+    style.textContent = `
+      .bmd-wrapper {
+        --bmd-gap: ${STATE.config.gap};
+        --bmd-divider-opacity: ${STATE.config.dividerOpacity};
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+     .bmd-toolbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+        column-gap: var(--bmd-gap);
+        align-items: center;
+        margin: 0.75rem 0 1rem;
+      }
+
+      .bmd-toolbar-divider {
+        width: 1px;
+        min-height: 1em;
+      }
+
+      .bmd-button {
+        font: inherit;
+        line-height: 1.2;
+        cursor: pointer;
+        padding: 0.35em 0.75em;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        background: transparent;
+        opacity: 0.82;
+      }
+
+      .bmd-button:hover {
+        opacity: 1;
+      }
+
+      .bmd-button-left {
+        justify-self: center;
+      }
+
+      .bmd-button-right {
+        justify-self: center;
+      }
+
+      .bmd-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+        column-gap: var(--bmd-gap);
+        align-items: stretch;
+      }
+
+      .bmd-cell {
+        min-width: 0;
+      }
+
+      .bmd-cell > :first-child {
+        margin-top: 0;
+      }
+
+      .bmd-divider {
+        width: 1px;
+        min-height: 1em;
+        align-self: stretch;
+        background: currentColor;
+        opacity: var(--bmd-divider-opacity);
+      }
+
+      .bmd-mode-left .bmd-row,
+      .bmd-mode-right .bmd-row {
+        display: block;
+      }
+
+      .bmd-mode-left .bmd-cell-right,
+      .bmd-mode-left .bmd-divider,
+      .bmd-mode-left .bmd-button-right {
+        display: none;
+      }
+
+      .bmd-mode-right .bmd-cell-left,
+      .bmd-mode-right .bmd-divider,
+      .bmd-mode-right .bmd-button-left {
+        display: none;
+      }
+
+      .bmd-mode-left .bmd-button-left,
+      .bmd-mode-right .bmd-button-right {
+        justify-self: center;
+        grid-column: 1 / -1;
+      }
+    `;
+
+    document.head.appendChild(style);
+  }
+
+  /** Sets bilingual, left-only, or right-only view; parameter is mode string. */
+  function setMode(mode) {
+    if (!STATE.wrapper) return; // Nothing to update before render.
+
+    const leftButton = STATE.wrapper.querySelector(".bmd-button-left");
+    const rightButton = STATE.wrapper.querySelector(".bmd-button-right");
+
+    STATE.wrapper.classList.remove("bmd-mode-bilingual", "bmd-mode-left", "bmd-mode-right");
+    STATE.wrapper.classList.add(`bmd-mode-${mode}`);
+
+    if (mode === "bilingual") {
+      leftButton.textContent = getButtonText(STATE.leftLang); // Left button belongs to left language.
+      rightButton.textContent = getButtonText(STATE.rightLang); // Right button belongs to right language.
+      return;
+    }
+
+    const restoreText = STATE.config.restoreButtonText;
+
+    if (mode === "left") leftButton.textContent = restoreText; // Restore from left-only mode.
+    if (mode === "right") rightButton.textContent = restoreText; // Restore from right-only mode.
+  }
+
+  /** Builds aligned bilingual rows; parameters are left and right section node arrays. */
+  function createRows(leftNodes, rightNodes) {
+    const fragment = document.createDocumentFragment();
+    const max = Math.max(leftNodes.length, rightNodes.length);
+
+    for (let i = 0; i < max; i += 1) {
+      const row = document.createElement("div");
+      const leftCell = document.createElement("div");
+      const divider = document.createElement("div");
+      const rightCell = document.createElement("div");
+
+      row.className = "bmd-row";
+      leftCell.className = "bmd-cell bmd-cell-left";
+      divider.className = "bmd-divider";
+      rightCell.className = "bmd-cell bmd-cell-right";
+
+      if (leftNodes[i]) leftCell.appendChild(leftNodes[i].cloneNode(true)); // Align by top-level block index.
+      if (rightNodes[i]) rightCell.appendChild(rightNodes[i].cloneNode(true)); // Matching paragraph/title position.
+
+      row.append(leftCell, divider, rightCell);
+      fragment.appendChild(row);
+    }
+
+    return fragment;
+  }
+
+  /** Builds the whole bilingual wrapper; parameter is selected section data. */
+  function buildLayout(sections) {
+    const wrapper = document.createElement("div");
+    const toolbar = document.createElement("div");
+    const toolbarDivider = document.createElement("div");
+    const rows = document.createElement("div");
+
+    wrapper.className = "bmd-wrapper bmd-mode-bilingual";
+    toolbar.className = "bmd-toolbar";
+    toolbarDivider.className = "bmd-toolbar-divider";
+    rows.className = "bmd-rows";
+
+    const leftButton = createButton(getButtonText(sections.leftLang), "bmd-button-left", () => {
+      const isSingle = wrapper.classList.contains("bmd-mode-left");
+      setMode(isSingle ? "bilingual" : "left"); // Left button switches to left column.
+    });
+
+    const rightButton = createButton(getButtonText(sections.rightLang), "bmd-button-right", () => {
+      const isSingle = wrapper.classList.contains("bmd-mode-right");
+      setMode(isSingle ? "bilingual" : "right"); // Right button switches to right column.
+    });
+
+    toolbar.append(leftButton, toolbarDivider, rightButton); // Buttons align with text columns.
+    rows.appendChild(createRows(sections.left, sections.right));
+    wrapper.append(toolbar, rows);
+
+    return wrapper;
+  }
+  /** Renders the bilingual layout inside the configured article container; no parameters. */
+  function render() {
+    const root = document.querySelector(STATE.config.contentSelector);
+    if (!root) return false; // Container not found.
+    if (root.dataset.bmdProcessed === "true") return true; // Avoid duplicate rendering.
+
+    const markers = findLanguageMarkers(root);
+    const sections = getFirstPairSections(root, markers);
+    if (!sections) return false; // Not a bilingual article.
+
+    injectStyles();
+
+    STATE.root = root;
+    STATE.originalHTML = root.innerHTML;
+    STATE.leftLang = sections.leftLang;
+    STATE.rightLang = sections.rightLang;
+
+    const wrapper = buildLayout(sections);
+    STATE.wrapper = wrapper;
+
+    root.innerHTML = "";
+    root.appendChild(cloneNodes(sections.before)); // Preserve content before language label.
+    root.appendChild(wrapper); // Insert bilingual layout.
+    root.appendChild(cloneNodes(sections.after)); // Preserve later unrelated content.
+    root.dataset.bmdProcessed = "true";
+
+    return true;
+  }
+
+  /** Restores the original article HTML before bilingual processing; no parameters. */
+  function reset() {
+    if (!STATE.root || STATE.originalHTML === null) return false; // Nothing to restore.
+
+    STATE.root.innerHTML = STATE.originalHTML;
+    delete STATE.root.dataset.bmdProcessed;
+
+    STATE.root = null;
+    STATE.originalHTML = null;
+    STATE.wrapper = null;
+    STATE.leftLang = null;
+    STATE.rightLang = null;
+
+    return true;
+  }
+
+  /** Updates runtime config and re-renders; parameter is a partial config object. */
+  function updateConfig(partialConfig) {
+    reset(); // Revert before applying new rules.
+    STATE.config = deepMerge({}, STATE.config, partialConfig || {});
+    return render(); // Re-apply immediately.
+  }
+
+  /** Returns a copy of the active config; no parameters. */
+  function getConfig() {
+    return deepMerge({}, STATE.config);
+  }
+
+  window.BilingualMDLayout = {
+    render,
+    reset,
+    updateConfig,
+    getConfig
+  };
+
+  window.updateConfig = updateConfig; // Direct shortcut required by the file format.
+
+  if (STATE.config.autoRun) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", render, { once: true }); // Run after DOM is ready.
+    } else {
+      render(); // Run immediately if DOM is already ready.
+    }
+  }
+})();
