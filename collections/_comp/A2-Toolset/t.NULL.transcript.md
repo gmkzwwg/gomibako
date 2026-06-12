@@ -1,5 +1,5 @@
 ---
-title: MIT 6.NULL Missing Semester Transcripts
+title: 6.NULL Transcripts
 layout: print
 categories: Texts
 subclass: Toolset

@@ -698,7 +698,7 @@ Pólya's **How to Solve It** is the heterodox text that belongs alongside the te
 | Rosen, *Discrete Mathematics and Its Applications* | Comprehensive reference | Reference |
 | Graham, Knuth, Patashnik, *Concrete Mathematics* | Combinatorics and asymptotics at depth | Depth |
 | Diestel, *Graph Theory* (free online) | Graph theory at depth | Depth |
-| Mitzenmacher & Upfal, *Probability and Computing* | Probabilistic methods for algorithms | Depth |
+| Selected chapters from Mitzenmacher & Upfal, *Probability and Computing* | Probabilistic methods for algorithms | Depth |
 | Pólya, *How to Solve It* | Problem-solving heuristics | Auxiliary |
 | Aigner & Ziegler, *Proofs from THE BOOK* | Mathematical taste and elegance | Auxiliary |
 | Hardy, *A Mathematician's Apology* | Philosophy of mathematical work | Auxiliary |
@@ -1652,8 +1652,8 @@ For the connection to logic, the automata-and-grammars treatment in Hopcroft, Mo
 | Soare, *Turing Computability* | Classical recursion theory at depth | Depth |
 | Hopcroft, Motwani & Ullman, *Intro to Automata Theory* (3rd ed.) | Formal language theory | Reference |
 | Turing (1936), Cook (1971), Karp (1972) primary papers | Founding documents | Reference |
-| Arora & Barak, *Computational Complexity* (free draft) | Bridge forward to §3.3 complexity theory | Auxiliary |
-| Goldreich, *Computational Complexity: A Conceptual Perspective* | Alternative advanced bridge to §3.3 | Auxiliary |
+| Complexity theory bridge: Arora & Barak, *Computational Complexity* (free draft) | Bridge forward to §3.3 complexity theory | Auxiliary |
+| Complexity theory bridge: Goldreich, *Computational Complexity: A Conceptual Perspective* | Alternative advanced bridge to §3.3 | Auxiliary |
 | Davis, ed., *The Undecidable* | Original papers collected | Auxiliary |
 
 **Courses and Lectures**
@@ -1686,7 +1686,7 @@ The **Complexity Zoo** (complexityzoo.net, free) is a comprehensive reference fo
 |---|---|---|
 | JFLAP (free) | jflap.org | Practice |
 | Automata Tutor v3 (free) | automata-tutor.model.in.tum.de | Practice |
-| Complexity Zoo (free) | complexityzoo.net | Reference |
+| Complexity-class lookup via Complexity Zoo (free) | complexityzoo.net | Reference |
 | Aaronson essays (free) | scottaaronson.com | Depth |
 | Simulated Turing machine implementation | Local | Practice |
 
@@ -2104,19 +2104,19 @@ Nordström, Petersson, and Smith's **Programming in Martin-Löf's Type Theory** 
 
 | Book | Role | Type |
 |---|---|---|
-| Pierce, *Types and Programming Languages* (TAPL) | Entry to typed lambda calculi and Curry-Howard | Entry |
-| Pierce (ed.), *Advanced Topics in Types and Programming Languages* (ATTAPL) | Extension: dependent types, effects, linear types | Depth |
+| Type-theory chapters in Pierce, *Types and Programming Languages* (TAPL) | Entry to typed lambda calculi and Curry-Howard | Entry |
+| Advanced type-system chapters in ATTAPL | Dependent types, effects, linear types | Depth |
 | Martin-Löf, *Intuitionistic Type Theory* (Padua notes, free) | Primary source for dependent type theory | Depth |
 | The HoTT Book (free) | Homotopy type theory; contemporary frontier | Depth |
-| Pierce et al., *Software Foundations* Vols. 1–2 (free) | Mechanized PLT and type theory in Coq | Practice |
+| Type-theory track in *Software Foundations* Vols. 1-2 (free) | Mechanized PLT and type theory in Coq | Practice |
 | Wadler et al., *Programming Language Foundations in Agda* (free) | Mechanized PLT in Agda | Practice |
 | de Moura et al., *Theorem Proving in Lean 4* (free) | Lean 4 tutorial | Practice |
 | Avigad & Massot, *Mathematics in Lean* (free) | Mathematical formalization in Lean | Practice |
 | Brady, *Type-Driven Development with Idris* (paid) | Dependent types as programming methodology | Depth |
 | Friedman & Christiansen, *The Little Typer* (paid) | Gentle dependent-types intuition | Auxiliary |
 | Nordström, Petersson & Smith, *Programming in Martin-Löf's Type Theory* (free) | Systematic Martin-Löf type theory | Depth |
-| Harper, *Practical Foundations for Programming Languages* (draft free) | Broader PLT with type-theoretic grounding | Depth |
-| Chlipala, *Certified Programming with Dependent Types* (free) | Coq-based verified software development | Depth |
+| Type-theoretic foundations in Harper, PFPL (draft free) | Broader PLT with type-theoretic grounding | Depth |
+| Dependent-type verification in Chlipala, *Certified Programming with Dependent Types* (free) | Coq-based verified software development | Depth |
 
 **Courses and Lectures**
 
@@ -2132,7 +2132,7 @@ Nordström, Petersson, and Smith's **Programming in Martin-Löf's Type Theory** 
 |---|---|---|
 | OPLSS lectures — Pfenning, Harper, Weirich (free) | YouTube / OPLSS site | Reference |
 | CMU 15-317 Constructive Logic (Harper, free) | CMU course site | Entry |
-| CMU 15-312 Principles of PL (Harper, free) | CMU course site | Depth |
+| Type-theory sequence in CMU 15-312 Principles of PL (Harper, free) | CMU course site | Depth |
 | Lean 4 community tutorials (free) | leanprover-community.github.io | Practice |
 
 **Practice, Tools, and Current Sources**
@@ -2282,7 +2282,7 @@ For Hoare logic and separation logic at depth, Reynolds's **Theories of Programm
 | Baier & Katoen, *Principles of Model Checking* | Standard model checking textbook | Depth |
 | Clarke, Grumberg & Peled, *Model Checking* | Original model checking reference | Reference |
 | Jackson, *Software Abstractions* (revised ed.) | Lightweight formal methods through Alloy | Entry |
-| Chlipala, *Certified Programming with Dependent Types* (free) | Coq-based verification beyond introductory level | Entry |
+| Coq verification chapters in Chlipala, *Certified Programming with Dependent Types* (free) | Coq-based verification beyond introductory level | Entry |
 | Bertot & Castéran, *Coq'Art* | Comprehensive Coq reference | Reference |
 | Nipkow & Klein, *Concrete Semantics with Isabelle/HOL* (free; paid print) | Isabelle-based semantics and verification | Practice |
 | Leino, *Program Proofs* (paid) | Dafny-based program verification | Entry |
@@ -2329,7 +2329,7 @@ Hillel Wayne maintains excellent **TLA+ tutorials** (learntla.com, free) that ar
 | TLA+ Toolbox / VS Code TLA+ extension (free) | lamport.azurewebsites.net | Practice |
 | Coq + Proof General or VSCoq (free) | coq.inria.fr | Practice |
 | Alloy Analyzer (free) | alloytools.org | Practice |
-| SPIN model checker (free) | spinroot.com | Practice |
+| Model checking practice with SPIN (free) | spinroot.com | Practice |
 | Facebook Infer (free) | fbinfer.com | Practice |
 | Dafny (free) | dafny.org | Practice |
 | Verus (free) | verus-lang.github.io | Auxiliary |
@@ -2643,7 +2643,7 @@ For **channel coding**: implement a simple Hamming (7,4) code, introduce random 
 | Trap | Why it misleads | Better response |
 |---|---|---|
 | Treating cross-entropy loss as an arbitrary choice | Many ML practitioners use cross-entropy loss because it works, without understanding that it is the negative log-likelihood under the model distribution — equivalently, the KL divergence from data distribution to model distribution plus a constant. This makes cross-entropy seem like one of several options rather than the principled information-theoretic training objective it is. | Derive cross-entropy loss from first principles as maximum likelihood estimation: write the log-likelihood of the training data under the categorical model, take the negative, observe that it equals cross-entropy. Then observe that minimizing cross-entropy is minimizing KL divergence from data distribution to model. The derivation takes fifteen minutes and makes all subsequent encounters with the loss function interpretable. |
-| Confusing entropy with KL divergence with cross-entropy | These are three different quantities that are closely related and frequently conflated. Entropy H(P) measures uncertainty in a distribution. KL divergence D_KL(P||Q) measures how much P differs from Q, asymmetrically. Cross-entropy H(P,Q) = H(P) + D_KL(P||Q) measures the expected code length under model Q for data from P. Conflating them produces wrong intuitions about what training objectives optimize. | Learn all three explicitly with concrete examples before using any of them. Compute entropy, KL divergence, and cross-entropy for two specific distributions (e.g., a fair coin and a biased coin with probability 0.7) and verify the algebraic relationships among them. |
+| Confusing entropy with KL divergence with cross-entropy | These are three different quantities that are closely related and frequently conflated. Entropy H(P) measures uncertainty in a distribution. KL divergence D_KL(P\|\|Q) measures how much P differs from Q, asymmetrically. Cross-entropy H(P,Q) = H(P) + D_KL(P\|\|Q) measures the expected code length under model Q for data from P. Conflating them produces wrong intuitions about what training objectives optimize. | Learn all three explicitly with concrete examples before using any of them. Compute entropy, KL divergence, and cross-entropy for two specific distributions (e.g., a fair coin and a biased coin with probability 0.7) and verify the algebraic relationships among them. |
 | Applying continuous information theory without understanding the measure-theoretic subtleties | Differential entropy h(X) for continuous variables can be negative (unlike discrete entropy), is not invariant under reparameterization, and cannot be directly compared to discrete entropy. Many presentations of information theory smooth over these differences, leading to incorrect conclusions when continuous distributions are analyzed. | Read the relevant sections of Cover-Thomas on differential entropy carefully, particularly the discussion of how differential entropy changes under transformation. When computing mutual information for continuous variables, understand that only mutual information (not differential entropy alone) is invariant under reparameterization. |
 | Skipping the source and channel coding theorems as "just communications" | The source coding theorem and channel coding theorem are the most important results in information theory, but learners with ML focus sometimes skip them because they seem unrelated to learning. This misses that the fundamental limits they establish apply to any information processing — including learning — and that the proofs introduce the probabilistic method, random coding arguments, and the concept of typicality that reappear throughout ML theory. | Read at least the statement and proof sketch of both theorems in MacKay's book, even if you never work with communication systems. The random coding argument that proves the channel coding theorem is one of the most elegant applications of the probabilistic method and is worth understanding for that reason alone. |
 | Missing the connection to minimum description length | Minimum description length (MDL) is the statistical model selection principle that chooses the model that most compresses the data — the shortest description of both the model and the data given the model. MDL provides an information-theoretic foundation for regularization and for Bayesian model selection, connecting information theory to statistics in a way that neither field makes clear on its own. | Read MacKay's chapters on MDL and on the relationship between compression and inference. Then ask: what does L1 regularization correspond to in MDL terms? (A Laplacian prior on weights.) What does early stopping correspond to? (Implicit model complexity limitation.) These connections make regularization techniques interpretable. |
@@ -2915,7 +2915,7 @@ The xv6 labs are the primary hands-on resource. Beyond them, several tools for o
 | Resource | Platform | Type |
 |---|---|---|
 | strace (free) | Linux | Practice |
-| perf (free) | Linux kernel tools | Practice |
+| Linux perf for OS tracing (free) | Linux kernel tools | Practice |
 | Brendan Gregg BPF scripts and bpftrace (free) | GitHub / brendangregg.com | Practice |
 | Linux Kernel Documentation (free) | docs.kernel.org | Reference |
 | man7.org Linux man-pages (free) | man7.org | Reference |
@@ -3164,7 +3164,7 @@ Petrov's **Database Internals** (O'Reilly, 2019) covers storage engine implement
 | Ramakrishnan & Gehrke, *Database Management Systems* (3rd ed.) | Standard foundational entry | Entry |
 | Garcia-Molina, Ullman & Widom, *Database Systems: The Complete Book* | Broader foundational entry | Entry |
 | Silberschatz, Korth & Sudarshan, *Database System Concepts* (7th ed.) | Traditional comprehensive alternative | Entry |
-| Kleppmann, *Designing Data-Intensive Applications* | Distributed data systems for practitioners | Depth |
+| Database chapters in Kleppmann, *Designing Data-Intensive Applications* | Distributed data systems for practitioners | Depth |
 | Hellerstein & Stonebraker, "Architecture of a Database System" (free) | Architectural consolidation | Depth |
 | Bailis, Hellerstein & Stonebraker (eds.), *Readings in Database Systems* (free) | Foundational paper anthology | Reference |
 | Petrov, *Database Internals* | Storage engine implementation | Practice |
@@ -3197,7 +3197,7 @@ The **Use The Index, Luke!** website (use-the-index-luke.com, free) is the most 
 | PostgreSQL Internals documentation (free) | postgresql.org/docs | Reference |
 | SQLite source code and documentation (free) | sqlite.org | Reference |
 | Use The Index, Luke! (free) | use-the-index-luke.com | Reference |
-| Jepsen analyses (free) | jepsen.io | Reference |
+| Jepsen database consistency analyses (free) | jepsen.io | Reference |
 | CMU BusTub educational DBMS (free) | github.com/cmu-db/bustub | Practice |
 | DuckDB internals documentation and DiDi course (free) | duckdb.org | Reference |
 | CMU 15-445 programming projects (free) | CMU course site | Practice |
@@ -3353,7 +3353,7 @@ The **CVE database** (cve.mitre.org, free) and the **NIST National Vulnerability
 |---|---|---|
 | Burp Suite Community Edition (free) | portswigger.net | Practice |
 | libsodium documentation (free) | libsodium.org | Practice |
-| Wireshark (free) | wireshark.org | Practice |
+| Wireshark for security traffic analysis (free) | wireshark.org | Practice |
 | AFL++ / libFuzzer (free) | GitHub | Practice |
 | CVE / NVD databases (free) | cve.mitre.org / nvd.nist.gov | Reference |
 | Google Project Zero blog (free) | googleprojectzero.blogspot.com | Reference |
@@ -4482,7 +4482,7 @@ The Lipton and Steinhardt paper **"Troubling Trends in Machine Learning Scholars
 |---|---|---|
 | Stanford CS229 Machine Learning (notes free) | cs229.stanford.edu | Entry |
 | Caltech CS156 Learning from Data (free) | YouTube | Entry |
-| fast.ai Practical Deep Learning (free) | fast.ai | Entry |
+| fast.ai as practical ML entry (free) | fast.ai | Entry |
 | Google Machine Learning Crash Course (free) | developers.google.com | Entry |
 | DataTalksClub Machine Learning Zoomcamp (free) | GitHub / YouTube | Practice |
 | DeepLearning.AI Machine Learning in Production (certificate / graded work paid) | DeepLearning.AI / Coursera | Practice |
@@ -4925,7 +4925,7 @@ The primary literature is the authoritative source. The papers that matter most:
 | Hoffmann et al., Chinchilla paper (2022, free) | Compute-optimal training | Depth |
 | Ouyang et al., InstructGPT paper (2022, free) | RLHF alignment pipeline | Depth |
 | Rafailov et al., DPO paper (2023, free) | Direct preference optimization | Depth |
-| Phuong & Hutter, "Formal Algorithms for Transformers" (2022, free) | Precise architectural reference | Reference |
+| Transformer architecture reference: Phuong & Hutter (2022, free) | Precise architectural reference | Reference |
 | Chip Huyen, *AI Engineering* (paid) | Foundation-model application engineering | Practice |
 
 **Courses and Lectures**
@@ -4945,7 +4945,7 @@ The primary literature is the authoritative source. The papers that matter most:
 | Hugging Face NLP Course (free) | huggingface.co/course | Practice |
 | Hugging Face Agents Course (free) | huggingface.co/learn | Practice |
 | Cohere LLM University (free) | docs.cohere.com | Auxiliary |
-| Karpathy, Neural Networks: Zero to Hero (free) | YouTube | Auxiliary |
+| Karpathy LLM-adjacent modules from Neural Networks: Zero to Hero (free) | YouTube | Auxiliary |
 
 **Practice, Tools, and Current Sources**
 
@@ -4970,7 +4970,7 @@ The **OpenAI API, Anthropic API, Google AI API** provide access to frontier clos
 | HELM (free) | crfm.stanford.edu/helm | Reference |
 | Chatbot Arena / LMSYS (free) | lmsys.org / lmarena.ai | Auxiliary |
 | vLLM (free) | vllm.ai | Practice |
-| Weights & Biases (free tier) | wandb.ai | Auxiliary |
+| Experiment tracking with Weights & Biases (free tier) | wandb.ai | Auxiliary |
 
 #### Traps
 
@@ -5215,9 +5215,9 @@ For technical depth, Ngo, Chan, and Mindermann's **"The Alignment Problem from a
 | Ngo, Chan & Mindermann, "The Alignment Problem from a Deep Learning Perspective" (free) | Technical alignment treatment | Depth |
 | Amodei et al., "Concrete Problems in AI Safety" (2016, free) | Foundational technical safety articulation | Depth |
 | Christiano, "Deep RL from Human Preferences" (2017, free) | RLHF foundational paper | Depth |
-| Ouyang et al., InstructGPT paper (2022, free) | RLHF at language model scale | Depth |
+| RLHF case study: Ouyang et al., InstructGPT paper (2022, free) | RLHF at language model scale | Depth |
 | Bai et al., Constitutional AI paper (2022, free) | Constitutional AI approach | Depth |
-| Rafailov et al., DPO paper (2023, free) | Direct preference optimization | Depth |
+| Preference optimization case study: Rafailov et al., DPO paper (2023, free) | Direct preference optimization | Depth |
 | Casper et al., "Open Problems and Fundamental Limitations of RLHF" (free) | Systematic critique of RLHF | Depth |
 | Hubinger et al., "Risks from Learned Optimization" (2019, free) | Inner alignment and mesa-optimization | Depth |
 
@@ -6634,7 +6634,7 @@ Humble and Farley's **Continuous Delivery** (Addison-Wesley, 2010) situates test
 | Beck, *Test-Driven Development: By Example* | TDD foundational text | Entry |
 | Khorikov, *Unit Testing: Principles, Practices, and Patterns* | Contemporary unit testing principles | Practice |
 | Freeman & Pryce, *Growing Object-Oriented Software, Guided by Tests* | TDD outside-in approach | Depth |
-| Humble & Farley, *Continuous Delivery* | Testing in deployment pipeline | Depth |
+| *Continuous Delivery* testing chapters (§7.4 reference) | Testing in deployment pipeline | Depth |
 | Osherove, *The Art of Unit Testing* (3rd ed.) | Practical unit testing reference | Entry |
 
 **Courses, Papers, and Current Sources**
@@ -6779,12 +6779,12 @@ Skelton and Pais's **Team Topologies: Organizing Business and Technology Teams f
 
 | Book | Role | Type |
 |---|---|---|
-| Forsgren, Humble & Kim, *Accelerate* | Empirical foundation; essential | Entry |
-| Kim, Humble, Debois & Willis, *The DevOps Handbook* (2nd ed.) | Practical DevOps implementation | Practice |
-| Humble & Farley, *Continuous Delivery* | Deployment pipeline foundational text | Depth |
+| *Accelerate* / DORA research (§7.4 reference) | Empirical foundation for delivery performance | Entry |
+| *The DevOps Handbook* (§7.4 reference) | Practical DevOps implementation | Practice |
+| *Continuous Delivery* (§7.4 reference) | Deployment pipeline foundational text | Depth |
 | Beck, *Extreme Programming Explained* (2nd ed.) | XP foundational text | Depth |
 | Brooks, *The Mythical Man-Month* (anniversary ed.) | Software management primary text | Depth |
-| Skelton & Pais, *Team Topologies* | Team structure for delivery | Depth |
+| *Team Topologies* | Team structure for delivery | Depth |
 | Kim, *The Phoenix Project* | Novel-format DevOps entry | Practice |
 | Anderson, *Kanban: Successful Evolutionary Change* | Kanban methodology | Depth |
 | Reinertsen, *Principles of Product Development Flow* | Flow-based development theory | Depth |
@@ -7071,7 +7071,7 @@ Richardson's **Microservices Patterns: With Examples in Java** (Manning, 2018) a
 |---|---|---|
 | Fowler, *Refactoring* (2nd ed.) | Foundational refactoring text | Depth |
 | Feathers, *Working Effectively with Legacy Code* | Legacy code improvement | Depth |
-| Beck, *Test-Driven Development: By Example* | Red-green-refactor discipline | Depth |
+| Refactoring-loop reference: Beck, *Test-Driven Development: By Example* | Red-green-refactor discipline | Depth |
 | McConnell, *Code Complete* (2nd ed.) | Construction quality foundations | Depth |
 | Richardson, *Microservices Patterns* | Monolith decomposition patterns | Depth |
 | Tornhill, *Software Design X-Rays* | Behavioral code analysis and hotspot-based debt management | Depth |
@@ -7225,7 +7225,7 @@ Grove's **High Output Management** (Vintage, 1983) — by Intel CEO Andy Grove �
 | Grove, *High Output Management* | Practitioner management classic | Depth |
 | Drucker, *The Effective Executive* | Knowledge worker management | Depth |
 | DeMarco & Lister, *Peopleware* (3rd ed.) | Software management human factors | Depth |
-| Skelton & Pais, *Team Topologies* | Team structure for delivery | Depth |
+| Organizational-design use of *Team Topologies* | Team structure for delivery | Depth |
 | Larson, *Staff Engineer* (mostly free online; paid book) | Staff+ individual contributor leadership | Depth |
 
 **Courses, Papers, and Current Sources**
@@ -7553,7 +7553,7 @@ The novice reader's failure mode is to read code the way one reads prose: linear
 
 The two complementary strategies are top-down and bottom-up reading, and skilled readers combine them. Top-down reading starts from the high-level structure — the entry points, the major modules, the overall architecture — and progressively refines understanding, drilling into details only where needed. It answers "how is this system organized, and where is the part I care about?" Bottom-up reading starts from a specific piece of code — a function, a class, a line where an error occurred — and works outward, understanding what it does, what calls it, what it calls, until enough context is assembled. It answers "what does this specific thing do, and how does it fit in?" Most real code reading interleaves the two: a top-down pass to understand the structure and locate the relevant region, then bottom-up reading within that region to understand the details, with the structural understanding providing the context that makes the details meaningful.
 
-There is little useful history to recount for reading code — the skill is about the present artifact, not its lineage — but one development is worth noting because it has changed the activity: the migration of code reading into tools and, recently, into AI. The text-based reading of the past (printouts, grep, reading files in an editor) gave way to IDE-supported reading (jump to definition, find all references, call hierarchy, type information on hover), which made navigating a large codebase dramatically more efficient by letting the reader follow the structure of the code rather than searching its text. The most recent development is AI-assisted reading: a language model can explain an unfamiliar function, summarize a module, trace how a value flows through a system, and answer questions about a codebase in natural language. This is genuinely useful for orientation in unfamiliar code, and it carries a specific risk addressed below: the explanation can be wrong, and accepting it without verification builds a mental model that may not match the actual code.
+The practice of reading code has been reshaped by tools. The text-based reading of the past (printouts, grep, reading files in an editor) gave way to IDE-supported reading (jump to definition, find all references, call hierarchy, type information on hover), which made navigating a large codebase dramatically more efficient by letting the reader follow the structure of the code rather than searching its text. The most recent development is AI-assisted reading: a language model can explain an unfamiliar function, summarize a module, trace how a value flows through a system, and answer questions about a codebase in natural language. This is genuinely useful for orientation in unfamiliar code, and it carries a specific risk addressed below: the explanation can be wrong, and accepting it without verification builds a mental model that may not match the actual code.
 
 #### Entering, Navigating, and Understanding Unfamiliar Code
 
@@ -7922,7 +7922,7 @@ Reviewing code regularly — whether on a team, in open source, or in study grou
 | Resource | Platform | Type |
 |---|---|---|
 | Visualizing the commit graph (git log --graph) | Git | Practice |
-| Open-source contribution | GitHub / GitLab | Practice |
+| Pull request preparation and review workflow | GitHub / GitLab | Practice |
 | Regular code review practice | Team / open source | Practice |
 | Conventional Commits specification (free) | conventionalcommits.org | Reference |
 
@@ -8036,7 +8036,7 @@ Kernighan and Pike's **The Practice of Programming** (1999), though not solely a
 | Agans, *Debugging: The 9 Indispensable Rules* (2nd ed.) | The most practical methodology text | Entry |
 | Zeller, *Why Programs Fail* (2nd ed.) | Systematic, scientific debugging methodology | Depth |
 | Zeller, *The Debugging Book* (free) | Executable text on automated debugging | Depth |
-| Kernighan & Pike, *The Practice of Programming* | Distilled practical wisdom | Practice |
+| Debugging chapters in Kernighan & Pike, *The Practice of Programming* | Distilled practical wisdom | Practice |
 
 **Practice, Tools, and Projects**
 
@@ -8217,7 +8217,7 @@ The first characteristic is that technical writing is reader-centered, more so t
 
 The second characteristic is that writing is a thinking tool. The novice imagines that writing is the transcription of fully-formed thoughts: you think the thing, then you write it down. The experienced writer knows that writing is where the thinking gets finished, because the precision that writing demands exposes the gaps that thinking tolerated. Writing a design document reveals that the design has an unhandled case; writing an argument reveals that a step does not follow; writing an explanation reveals that you did not understand the thing as well as you believed. This is not a flaw in one's thinking or writing; it is the mechanism by which writing improves thinking, and the writer who embraces it — who writes precisely in order to find the gaps, and treats the discovered gaps as the point rather than an annoyance — uses writing to think better, not just to record thought.
 
-There is no useful history to recount for technical writing as a skill; what is worth noting is the shape of the genres, because each has a purpose that determines its form. Documentation serves a reader trying to use a system, and its form follows the layered structure of §8.7 (overview, tutorial, reference). The design document serves readers evaluating and later understanding a technical decision, and its form presents the problem, the proposed solution, the alternatives considered, and the reasoning. The proposal serves readers deciding whether to do something, and its form makes the case. The commit message and pull request description serve the future reader recovering intent (§8.3, §8.5), and their form explains the why. The incident report serves the organization learning from a failure (§4.10), and its form is the blameless analysis of what happened and why. Each genre's form is determined by its reader's purpose, and knowing the genre means knowing what its reader needs. The recent development that bears on the skill is AI writing assistance, addressed below, which can draft any of these genres and thereby tempts the writer to skip the thinking that writing them is supposed to produce.
+Technical writing is best understood through its genres, because each genre has a purpose that determines its form. Documentation serves a reader trying to use a system, and its form follows the layered structure of §8.7 (overview, tutorial, reference). The design document serves readers evaluating and later understanding a technical decision, and its form presents the problem, the proposed solution, the alternatives considered, and the reasoning. The proposal serves readers deciding whether to do something, and its form makes the case. The commit message and pull request description serve the future reader recovering intent (§8.3, §8.5), and their form explains the why. The incident report serves the organization learning from a failure (§4.10), and its form is the blameless analysis of what happened and why. Each genre's form is determined by its reader's purpose, and knowing the genre means knowing what its reader needs. The recent development that bears on the skill is AI writing assistance, addressed below, which can draft any of these genres and thereby tempts the writer to skip the thinking that writing them is supposed to produce.
 
 #### Clarity, Structure, and the Genres of Technical Writing
 
@@ -8320,7 +8320,7 @@ A specific high-value practice: write the design document before building someth
 
 A career in software is long, and the field it is built on changes continuously. The languages, frameworks, platforms, and even the dominant paradigms of one decade are displaced or supplemented in the next; the specific technical knowledge that makes an engineer valuable at the start of their career is largely obsolete by its middle, replaced several times over. This is the defining condition of a software career: the specific skills depreciate, and the durable value lies in the deeper capabilities that transfer across the changes — the conceptual foundations of the earlier chapters, and the meta-skills of this one. The engineer who understands this builds a career on the things that last; the engineer who does not ties their value to specific technologies and is repeatedly surprised when those technologies fade.
 
-This section is about navigating that long career: the trajectories available (the individual-contributor path and the management path, and the choice between them), what seniority actually means (which is not what novices imagine), the discipline of continuous learning that a changing field requires, and the professional judgment and ethics that the work demands. These are not technical skills, but they determine whether technical skill is deployed well over a career, and they are as learnable as anything else in this chapter — though they are learned mostly through experience, reflection, and the observation of others' careers rather than through study. The aim here is to provide the framework that makes the experience legible, so that the lessons that careers teach slowly can be anticipated and the common mistakes avoided.
+A long software career has several recurring problems: choosing between the individual-contributor path and management, understanding what seniority actually means, continuing to learn as the field changes, and developing the professional judgment and ethics that technical work demands. These are not technical skills in the narrow sense, but they determine whether technical skill is deployed well over a career. They are learned mostly through experience, reflection, and the observation of others' careers, but a framework makes that experience more legible and helps avoid common mistakes.
 
 The framing matters especially now, because the field is being reshaped by AI in ways that change what software careers consist of. The mechanical parts of programming are increasingly automated; the value of an engineer concentrates in the judgment, the understanding, and the capabilities that do not automate. A career built on being able to produce code is more exposed than a career built on the judgment to know what to build, the understanding to know whether it is right, and the ability to navigate the human and organizational dimensions of building software. The durable capabilities have always been the valuable ones; the AI shift makes this more true and more urgent.
 
@@ -8334,7 +8334,7 @@ The short-term incentive is to learn whatever is in demand now — the hot frame
 
 This is the practical argument for the structure of this entire guide: the foundations (the trunk, the theory, the systems and intelligence concepts) are the durable capabilities, and the specific technologies are their depreciating applications. The engineer who has internalized the foundations can follow the field through its changes, learning each new specific technology as an instance of principles they understand. The engineer who has only the specifics is repeatedly made obsolete. Over a long career, the difference between these two is enormous, and it is determined by whether the engineer invested in the foundations when the short-term incentive was to chase the specifics.
 
-The shape of a career also involves a recurring choice about depth versus breadth, and about the individual-contributor path versus management. Early careers are mostly about building competence; mid and later careers involve choices about how to deploy it. Some engineers go deep, becoming the expert in a domain (a staff or principal engineer whose value is technical depth and judgment). Some go broad, becoming able to work across many areas. Some move into management, where the work shifts from building software to enabling teams to build it (§7.6). These are different careers, requiring different skills, and the choice among them — which is not made once but repeatedly, and is reversible more often than people assume — shapes what the rest of the career looks like. There is no history to recount here; the point is the structure of the choices, which is stable even as the specific roles and titles change across companies and eras.
+The shape of a career also involves a recurring choice about depth versus breadth, and about the individual-contributor path versus management. Early careers are mostly about building competence; mid and later careers involve choices about how to deploy it. Some engineers go deep, becoming the expert in a domain (a staff or principal engineer whose value is technical depth and judgment). Some go broad, becoming able to work across many areas. Some move into management, where the work shifts from building software to enabling teams to build it (§7.6). These are different careers, requiring different skills, and the choice among them — which is not made once but repeatedly, and is reversible more often than people assume — shapes what the rest of the career looks like. The important point is the structure of the choices, which is stable even as specific roles and titles change across companies and eras.
 
 #### Trajectories, Seniority, Learning, and Judgment
 
@@ -9279,7 +9279,7 @@ For the philosophy of computation more broadly — what computation is, the stat
 
 | Resource | Role | Type |
 |---|---|---|
-| Hofstadter, *Gödel, Escher, Bach* | Computation, self-reference, and mind | Reference |
+| Philosophy reference: Hofstadter, *Gödel, Escher, Bach* | Computation, self-reference, and mind | Reference |
 | Nagel & Newman, *Gödel's Proof* | The incompleteness theorem and its significance | Entry |
 | Penrose, *The Emperor's New Mind* | The mind-exceeds-computation argument | Depth |
 | SEP: computation, Church-Turing thesis, and computational theories of mind entries (free) | Scholarly entry to philosophy of computation | Entry |

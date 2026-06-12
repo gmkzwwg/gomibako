@@ -1,5 +1,5 @@
 ---
-title: MIT 18.01 Single Variable Calculus Transcripts
+title: 18.01 Transcripts
 layout: print
 categories: Texts
 subclass: Calculus

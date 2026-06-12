@@ -1,5 +1,5 @@
 ---
-title: UC Berkeley MATH 135 Intro to Set Theory Transcripts
+title: MATH 135 Transcripts
 layout: print
 categories: Notes
 subclass: Set Theory

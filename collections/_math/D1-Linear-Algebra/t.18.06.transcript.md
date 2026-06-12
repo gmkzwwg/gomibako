@@ -1,5 +1,5 @@
 ---
-title: MIT 18.06 Linear Algebra Transcripts
+title: 18.06 Transcripts
 layout: print
 categories: Texts
 subclass: Linear Algebra

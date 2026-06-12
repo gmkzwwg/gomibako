@@ -1,5 +1,5 @@
 ---
-title: UC Berkeley CS61A SICP Python Transcripts
+title: CS61A Transcripts
 layout: print
 categories: Texts
 subclass: Programming

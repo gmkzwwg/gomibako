@@ -1,5 +1,5 @@
 ---
-title: Yale ENGL 300 Introduction to Theory of Literature Transcripts
+title: ENGL 300 Transcripts
 layout: print
 categories: Notes
 subclass: Literary Theory

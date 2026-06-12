@@ -1,5 +1,5 @@
 ---
-title: UC Berkeley MATH 125A Mathematical Logic Transcripts
+title: MATH 125A Transcripts
 layout: print
 categories: Notes
 subclass: Logic
