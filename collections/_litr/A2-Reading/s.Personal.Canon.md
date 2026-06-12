@@ -1,6 +1,6 @@
 ---
 title: Building a Starter Personal Canon
-layout: post-bilingual-toggle
+layout: slide-multilingual
 categories: Atlas
 subclass: Reading
 ---
