@@ -4,9 +4,9 @@ categories: Atlas
 subclass: Basics
 ---
 
-
-
 ## Chapter 1 — Better to Run than Curse the Road
+
+**Source:** Most of this guide was reconstructed with the help of AI, because AI is better at planning and reorganizing material. It adopts the structure, original conception, and some resources from the original course.
 
 ### Starting Point
 
@@ -26,7 +26,9 @@ Not necessarily. A degree is useful in certain ways, but it is not the same thin
 
 A degree provides access to resources, learning structure, peers, assessment, and a credential for entering the field. These are real advantages. Pure self-study has to seek substitutes deliberately: a study plan, exercises, projects, feedback, and self-testing.
 
-In some countries, for some employers, and for most graduate programs, academic credentials matter. But if your goal is to understand the discipline, become a technical practitioner, or acquire professional competence, a degree is not directly tied to that goal. It is also worth noting that most people in the world do not have direct access to elite universities, often because of economic conditions, regional limitations, or other constraints. But everyone can still access some of the best learning conditions online. The universities or coding bootcamps closed may offer mediocre courses while producing several times more confusion.
+In some countries, for some employers, and for most graduate programs, academic credentials matter. But if your goal is to understand the discipline, become a technical practitioner, or acquire professional competence, a degree is not directly tied to that goal.
+
+It is also worth noting that most people in the world do not have direct access to elite universities, often because of economic conditions, regional limitations, or other constraints. But everyone can still access some of the best learning conditions online. The universities or coding bootcamps closed may offer mediocre courses while producing several times more confusion.
 
 The areas where self-study is hardest are those that require sustained expert feedback: advanced theory, research-level work, large systems projects, and academic writing. The areas where self-study works best are those with strong public courses, clear exercises, and immediate feedback, because a program either runs or fails.
 
@@ -56,8 +58,9 @@ The amount of background knowledge needed to study computer science is not very 
 
 These things are usually not taught in university, yet many new university students feel frustrated and want to give up precisely because they lack this basic background. Some of this knowledge can be acquired through MIT’s course `The Missing Semester of Your CS Education`, but that course is not designed for absolute beginners.
 
-Compared with most disciplines, this entry threshold is genuinely very low. These basics alone are enough to make your computer skills come alive and begin producing real output. But English and mathematics determine the upper limit of your ability. They are subjects that require continuous investment and continuous learning. Every bit of effort you put into them will return to you in some form later.
+Beyond this, there is another foundation that is very easy to overlook: **the ability to handle errors**. Many beginners feel deeply frustrated the moment they see a screen full of errors after running their code, and they quickly lose the motivation to continue. But the ordinary rhythm of learning computing is: write code → get errors → look up the errors → modify the code → get more errors → modify it again → finally make it run. So before you begin, you need to establish one basic idea: *an error message is not a failure, but a necessary part of the process; the program or runtime environment is telling you where something does not follow the rules.*
 
+Compared with most disciplines, this entry threshold is genuinely very low. These basics alone are enough to make your computer skills come alive and begin producing real output. But English and mathematics determine the upper limit of your ability. They are subjects that require continuous investment and continuous learning. Every bit of effort you put into them will return to you in some form later.
 
 **Q4: Can I learn computer science without a math background?**
 
@@ -77,97 +80,116 @@ A realistic pace for a self-learner is one major topic at a time, with a concret
 
 ### How to Use This Guide
 
-**Q2: What is this guide, and who is it for?**
+**润色查错：**
 
-This is a structured map of computer science as a discipline. It covers programming, mathematics, algorithms, theory, systems, AI, software engineering, practitioner skills, and the major neighboring fields around CS. It is for several kinds of readers:
-1. beginners starting from little background
-2. self-taught programmers filling gaps
-3. working engineers who want depth
-4. AI-focused learners who need foundations
-5. people from adjacent fields who want to understand computation seriously. 
+整体没有明显 typo，主要是几处表达可以更自然、更准确。
 
-It does assume that you are willing to practice, read difficult material, and return to prerequisites when a later topic stops making sense. *The guide is not meant to be read like a novel. It is a map.* You use it to understand the landscape, **choose a path**, and then spend real time with the resources and exercises.
+1. **“几乎所有画像的读者”**
+   建议改为 **“几乎所有类型的读者”**。
+   “用户画像”可以说，但“画像的读者”不自然。
 
-**Do I need to read this in order?**
+2. **“只需要注意完成每节开头的前置课程”**
+   建议改为 **“只需要注意每节开头列出的前置知识或前置课程”**。
+   因为有些 prerequisite 不是课程，而是知识、工具或能力。
 
-No, but you should respect prerequisites.
+3. **“经过这些基础课的‘洗礼’后”**
+   “洗礼”略口语、略夸张。可以改为 **“完成这些基础课程后”** 或 **“经过这些基础课程的训练后”**。
 
-The first two chapters are the foundation for almost everything else. After that, paths can diverge. A systems-oriented learner can move toward Chapter 4. An AI-focused learner can move toward Chapter 5 after the mathematical prerequisites. A working programmer filling gaps can use Chapters 7 and 8 immediately while returning to earlier foundations as needed.
+4. **“全栈应用开发、软件工程师”**
+   建议改为 **“全栈应用开发 / 软件工程师”**。并列关系更清楚。
 
-Use the prerequisites in each section as dependency warnings. If a topic feels opaque, check whether you skipped something it assumes. Moving backward is not failure; it is how serious learning stays efficient.
+5. **“网络开发”**
+   容易和 Web 开发混淆。这里内容是 Socket、协议、网络性能、分布式系统，建议改为 **“网络编程 / 网络系统方向”**。
 
-**How do I choose what to study?**
+6. **“嵌入式 / 低层开发”**
+   建议改为 **“嵌入式 / 底层开发”**。中文技术语境中“底层开发”更常用。
 
-Choose by goal, but do not let the goal erase the foundations.
+7. **“机器人 / 自动驾驶基础方向”**
+   建议改为 **“机器人 / 自动驾驶基础”** 或 **“机器人 / 自动驾驶方向”**。原句略累赘。
 
-If you want to build software: programming, data structures, databases, web/app development, software engineering, debugging, and code reading matter immediately. If you want AI: programming, linear algebra, calculus, probability, statistics, machine learning, deep learning, and systems for deployment matter. If you want theory: discrete mathematics, proof, algorithms, logic, computability, complexity, and formal languages matter.
+**局部润色版：**
 
-The most reliable plan is a spine plus branches. The spine is programming, discrete mathematics, algorithms, and enough systems to understand what code runs on. Branches are chosen by interest: AI, security, graphics, databases, software engineering, theory, robotics, or another domain.
+**Q1: What is this guide, and who is it for?**
 
-**How should I use the resource lists?**
+This is a structured map of computer science as a discipline. It tries to cover all major areas related to computer science and to list high-quality resources for each of them. It is suitable for several kinds of readers:
 
-Do not try to consume every resource.
+1. beginners with almost no background;
+2. self-taught programmers who want to fill gaps in their knowledge;
+3. working engineers who want a deeper understanding;
+4. AI-focused learners who need stronger foundations;
+5. people from adjacent fields who want to understand computation seriously.
 
-Each list is intentionally rich so that different learners can find the right doorway. Pick one primary resource for a topic, one practice source, and at most one auxiliary explanation if the first resource does not land. Finish enough of the primary resource to build momentum before switching.
+The only thing it requires is that you are willing to practice, willing to read difficult material, and willing to return to prerequisites when later topics stop making sense. *This guide is not meant to be read from beginning to end like a novel. It is a map.* You use it to understand the landscape, **choose a path**, and then spend real time working through the resources and exercises.
 
-Use the labels practically:
+**Q2: Do I need to read it in order?**
 
-- `Entry`: start here if the topic is new.
-- `Depth`: use after the entry point, or if you already have background.
-- `Reference`: consult when you need precision, definitions, official behavior, or primary sources.
-- `Practice`: use to build ability through exercises, tools, implementation, or projects.
-- `Auxiliary`: useful for intuition, taste, motivation, context, or a different angle; not the core path.
+No. You only need to pay attention to the prerequisites listed at the beginning of each section. Chapter 2 is the foundation for almost everything else. After that, the paths begin to diverge.
 
-If two resources serve the same purpose, choose the one you are more likely to finish.
+**Q3: What should I choose to study?**
 
-**What is the best way to retain what I learn?**
+Almost every type of reader shares the same *common spine*:
 
-Produce something after every serious study session.
+CS50x / Berkeley CS 61A —— MIT Missing Semester —— MIT 6.042J —— MIT 6.006 —— CSAPP
 
-For programming, write code without looking at the solution. For mathematics, solve problems and write proofs. For systems, run experiments and measure behavior. For papers, write a short summary of the claim, method, evidence, and limitations. For tools, use them on a real task.
+After completing these foundational courses, you should be able to write small programs independently, debug errors, understand common data structures and algorithms, read basic mathematical notation, and form an initial understanding of branches such as operating systems, networks, databases, and AI. The next step should not be to go deeper blindly, but to choose a path according to your goals.
 
-A useful weekly routine:
+* *Web Frontend Development*: MDN Learn Web Development —— The Odin Project —— Full Stack Open —— You Don’t Know JS Yet —— PortSwigger Web Security Academy.
+* *Backend Development*: the backend sections of Full Stack Open —— databases and SQL —— basic system design —— API design, authentication, and authorization —— CMU 15-445/645 —— MIT 6.5840.
+* *Full-Stack Application Development / Software Engineering*: The Odin Project —— Full Stack Open —— Software Engineering at Google —— Refactoring —— reading and maintaining open-source projects —— testing / CI / code review practice —— a complete product project.
+* *DevOps / Operations / SRE*: Linux / shell practice —— computer networking —— Docker —— Kubernetes Tutorials —— AWS / GCP / Azure fundamentals —— observability —— Google SRE Book / Workbook.
+* *Data Analyst*: SQL —— Berkeley Data 8 —— statistical inference —— data visualization —— A/B testing —— business analysis projects.
+* *Data Engineer*: SQL —— data modeling —— batch processing / stream processing —— Airflow / dbt —— cloud data warehouses —— CMU 15-445/645 —— distributed systems.
+* *AI Application Developer*: Python —— API / web fundamentals —— Hugging Face Course —— LLM application frameworks —— RAG / agent projects —— deployment and evaluation.
+* *Machine Learning Engineer*: linear algebra —— probability and statistics —— Stanford CS229 / MIT 6.036 —— MIT 6.S191 —— Full Stack Deep Learning —— MLOps Zoomcamp.
+* *LLM / NLP Engineer*: Stanford CS229 —— MIT 6.S191 —— Stanford CS224N —— Hugging Face LLM Course —— Stanford CS336 —— reproducing LLM papers.
+* *Computer Vision Engineer*: linear algebra —— Stanford CS229 —— MIT 6.S191 —— Stanford CS231n —— vision projects —— deployment and optimization.
+* *Database / Storage Systems Engineer*: CMU 15-445/645 —— reading the source code of SQLite / PostgreSQL —— distributed systems —— storage engine projects —— transactions / logging / replication.
+* *Systems Programmer / Operating Systems Track*: C / Rust —— Nand2Tetris —— deeper work with CS:APP —— MIT 6.1810 —— compiler / networking / distributed systems electives.
+* *Embedded / Low-Level Development*: C —— computer organization —— operating systems fundamentals —— microcontroller projects —— RTOS —— communication protocols.
+* *Network Programming / Network Systems*: computer networking —— socket programming —— protocol implementation projects —— network performance analysis —— distributed systems —— SRE practice.
+* *Cybersecurity*: web security fundamentals —— PortSwigger Web Security Academy —— systems fundamentals —— pwn.college —— MIT 6.858 —— Cryptography I.
+* *Android Mobile Development*: Android Basics with Compose —— official Android Training —— Kotlin —— networking / data storage —— architecture and testing —— a complete app project.
+* *iOS Mobile Development*: Develop in Swift —— Stanford CS193p —— SwiftUI —— networking / data storage —— architecture and testing —— a complete app project.
+* *Game Development*: choose either Unity or Unreal —— Game Programming Patterns —— linear algebra —— physics / animation / input systems —— LearnOpenGL —— small game projects.
+* *Computer Graphics*: linear algebra —— LearnOpenGL —— graphics textbooks —— renderer projects —— GPU / shaders —— physically based rendering.
+* *Robotics / Autonomous Driving Foundations*: linear algebra —— probability —— Modern Robotics —— control —— state estimation —— path planning —— visual perception.
+* *Programming Languages / Compilers*: functional programming —— PLAI —— Nand2Tetris Part II —— compiler courses —— type systems —— program semantics.
 
-- Study one small section.
-- Do the exercises or implement the core idea.
-- Write a short note explaining the idea from memory.
-- Revisit the note a week later and fix what was unclear.
-- Build a small project or solve a problem that uses the idea in a new setting.
+### What Computer Science Is
 
-Retention comes from retrieval and use, not exposure.
+**Q1: What does computer science include?**
 
-**How do I know whether I understand something?**
+Computer science is built on programming, algorithms, and the necessary mathematics. After that, it can be summarized into four directions: computation, systems, intelligence, and applications.
 
-Use production tests, not recognition tests.
+1. **Computation.** What can be computed? By what methods? How many resources does computation require? Are there limits to computation? This includes computability, complexity theory, formal languages, automata, algorithm analysis, logic, type theory, programming language theory, semantics, and formal methods. This is the area where mathematics and computer science are most deeply connected. Algorithms, cryptography, programming language theory, and formal verification all depend heavily on this direction.
 
-Recognition: "I can follow the explanation." Production: "I can solve a new problem, write a working implementation, explain the idea from memory, and identify where it does not apply." Recognition is useful but fragile. Production is what transfers.
+2. **Systems.** How do we build, understand, and operate complex systems made of many interacting parts? This includes computer architecture, operating systems, networks, database systems, distributed systems, concurrent programming, compilers, container orchestration, observability, embedded systems, and high-performance computing. The difficulty here usually does not lie in any single concept, but in keeping a system understandable, controllable, and maintainable when many parts run at the same time, share resources, fail, and affect one another.
 
-After reading a section, close the resource and ask:
+3. **Intelligence.** Can computation produce intelligence? If so, by what mechanisms, and with what limits? This includes artificial intelligence, machine learning, deep learning, large language models, natural language processing, computer vision, reinforcement learning, robotics, knowledge representation, automated reasoning, interpretability, AI safety, and alignment. It is also the area of computer science most directly connected with cognitive science, philosophy, linguistics, and neuroscience.
 
-- Can I restate the idea without copying the wording?
-- Can I solve a nearby problem without the solution?
-- Can I implement the smallest version?
-- Can I explain one common mistake?
-- Can I tell what prerequisite this idea depends on?
+4. **Applications.** This is not “lower-level” work or “just writing business code.” It is the combination of the abilities above in concrete settings. Web development, mobile development, game development, graphics, cybersecurity, cryptography, robotics, scientific computing, human-computer interaction, DevOps, SRE, data analysis, data engineering, AI application development, database engineering, systems programming, and embedded development are all combinations of different directions. For example, machine learning mainly combines intelligence and computation, while depending on data; databases combine systems and part of computation; cybersecurity combines systems, computation, and engineering practice; AI infrastructure involves almost all directions at once.
 
-If not, you have familiarity. That is a starting point, not mastery.
+The importance of data-related research is rising with the development of artificial intelligence. Modern AI depends heavily on the scale, quality, structure, and processing of data. As a result, databases, data engineering, information retrieval, data cleaning, data labeling, data governance, and representation learning are becoming increasingly important. But from the perspective of learning computer science, data is better understood as a core object that runs through multiple directions.
 
-**What should I do when I get stuck?**
+*This guide is organized according to this rough but useful classification.*
 
-First, make the stuckness specific.
+**Q2: What is the relationship between programming and computer science?**
 
-"I do not understand algorithms" is too large to act on. "I can follow Dijkstra's algorithm step by step, but I do not understand why the greedy choice is safe" is actionable.
+Programming is *the most basic and most commonly used tool* for learning computer science. Much of computer science eventually has to be tested, implemented, and used through programs; but programming is not everything. One must also go further and learn what computers can do, how to make them faster and more reliable, how data is stored and transmitted, how programs run inside computers and networks, and whether machines can show some form of intelligence. So learning computer science usually begins with programming, but it should not stop at “being able to write code.”
 
-Use this sequence:
+**Q3: What is the difference between computer science and software engineering?**
 
-1. Write the exact point of confusion.
-2. Work a smaller example by hand.
-3. Check the prerequisite: notation, algebra, proof technique, data structure, or programming concept.
-4. Try a second explanation of the same idea.
-5. Ask for help only after you can state what you tried and where it failed.
-6. Return to the original resource once the missing piece is repaired.
+Computer science is more concerned with *principles*: what computation is, why programs run, why algorithms work, why systems fail, and how data is organized. Software engineering is more concerned with *practice*: how to work with others in real projects and build, modify, and maintain software reliably. The two are closely related and have many overlapping areas.
 
-Do not keep rereading the same paragraph indefinitely. Change scale, change representation, or change resource.
+**Q4: How long is the shelf life of computer science knowledge?**
+
+In computer science, *the most durable knowledge is foundational knowledge*, such as abstraction, recursion, algorithmic efficiency, data structures, probability, operating systems, databases, and networking principles. These do not lose their value just because a framework or tool becomes outdated.
+
+Tools, frameworks, platforms, and fashionable technologies change quickly. A tool that is popular today may no longer be popular a few years later. But if your foundations are solid, switching tools is mostly a matter of becoming familiar with new usage; if you only have tool experience, you can easily lose direction once the tools change.
+
+**Q5: What can I actually do after learning computer science?**
+
+After learning computer science, you can write programs, build websites, develop applications, analyze data, build AI systems, understand networks and computer systems, and automate repetitive work. More importantly, you can *turn ideas into reality and understand the principles behind technology, instead of merely using tools made by other people*.
 
 ### Why Learning CS Feels Hard
 
@@ -209,9 +231,9 @@ Do not try to hold the whole field in your head as a to-do list.
 
 Use three lists:
 
-- Now: the one topic you are actively studying.
-- Next: the next prerequisite or adjacent topic.
-- Later: everything interesting but not currently relevant.
+* Now: the one topic you are actively studying.
+* Next: the next prerequisite or adjacent topic.
+* Later: everything interesting but not currently relevant.
 
 Most anxiety comes from treating the Later list as if it must be solved now. It does not. The purpose of this guide is to show the landscape, not to demand that you cross it all at once.
 
@@ -239,67 +261,15 @@ A bug is not just an obstacle to finishing the project. It is evidence that the 
 
 When a bug is hard, slow down:
 
-- Reproduce it reliably.
-- State what you expected.
-- Observe what actually happened.
-- Form one hypothesis.
-- Test that hypothesis with the smallest experiment.
-- Change one thing at a time.
-- Write down the cause after you find it.
+* Reproduce it reliably.
+* State what you expected.
+* Observe what actually happened.
+* Form one hypothesis.
+* Test that hypothesis with the smallest experiment.
+* Change one thing at a time.
+* Write down the cause after you find it.
 
 This habit is worth more than many hours of passive study.
-
-### What Computer Science Is
-
-**What is the relationship between programming and computer science?**
-
-Programming is the medium through which much of CS is explored, but it is not the whole field.
-
-Computer science studies computation: what can be computed, how efficiently it can be computed, how information is represented, how systems execute programs, how correctness can be reasoned about, how data is stored and transmitted, and how intelligent or interactive systems can be built. Programming is how many of these ideas become concrete.
-
-You can write code without much CS. You can also study some CS mathematically without writing much code. But serious competence usually requires both: the ability to reason abstractly and the ability to make ideas run.
-
-**What is the difference between computer science and software engineering?**
-
-Computer science asks what computation is and what principles govern it. Software engineering asks how to build, maintain, and operate software systems reliably with people, time, constraints, and changing requirements.
-
-They overlap constantly. Algorithms, data structures, databases, operating systems, and programming languages are CS topics that shape engineering practice. Testing, architecture, code review, deployment, observability, and team design are engineering topics that determine whether CS knowledge becomes working software.
-
-The mistake is treating one as a substitute for the other. Theory without engineering judgment produces elegant ideas that fail in practice. Engineering without CS foundations produces systems that work until they hit a hard problem the builder cannot analyze.
-
-**Is CS mostly math, mostly programming, or something else?**
-
-It is a hybrid discipline.
-
-Some parts are mathematical: algorithms, complexity, logic, cryptography, information theory, machine learning foundations. Some parts are experimental: systems, networking, databases, performance, HCI, AI evaluation. Some parts are engineering: software architecture, testing, operations, security practice. Programming cuts across all of them.
-
-The balance depends on the subfield. If you study theory, mathematics dominates. If you study operating systems, implementation and measurement dominate. If you study AI, mathematics, systems, and empirical evaluation all matter.
-
-**What should I learn first?**
-
-Learn enough programming to build and debug small programs. Then learn discrete mathematics and data structures/algorithms. In parallel, build basic tooling habits: terminal, editor, Git, testing, and debugging.
-
-That foundation supports most later choices. After it, choose a direction:
-
-- AI: linear algebra, calculus, probability, statistics, machine learning.
-- Systems: C, computer architecture, operating systems, networking, databases.
-- Theory: proofs, automata, computability, complexity, logic.
-- Software engineering: code reading, testing, architecture, databases, web/app development, operations.
-- Graphics/robotics/scientific computing: linear algebra, calculus, numerical methods, domain tools.
-
-**How durable is CS knowledge?**
-
-The foundations are durable; tools are not.
-
-Proof, recursion, abstraction, complexity, linear algebra, probability, operating-system concepts, database principles, distributed-systems failure modes, and programming-language ideas remain useful for decades. Framework APIs, cloud product names, build tools, and fashionable architectures change quickly.
-
-This does not mean tools are unimportant. You need tools to work. It means tools should be learned on top of foundations, not instead of them.
-
-**What can I actually do with CS knowledge?**
-
-You can build software, understand systems, automate work, analyze data, build AI systems, secure infrastructure, design reliable services, contribute to research, create tools for other fields, and reason about technologies that increasingly shape society.
-
-At a practical level, CS knowledge gives you leverage: the ability to turn ideas into executable systems, to diagnose why systems fail, and to evaluate technical claims instead of merely consuming them.
 
 ### CS and AI in 2026
 
@@ -351,19 +321,19 @@ Use them after you have made a real attempt.
 
 Good uses:
 
-- Ask for a second explanation of a concept.
-- Ask for a smaller example.
-- Ask it to quiz you.
-- Ask it to check your proof or code after you have written it.
-- Ask why a failed attempt is wrong.
-- Ask for edge cases you missed.
+* Ask for a second explanation of a concept.
+* Ask for a smaller example.
+* Ask it to quiz you.
+* Ask it to check your proof or code after you have written it.
+* Ask why a failed attempt is wrong.
+* Ask for edge cases you missed.
 
 Bad uses:
 
-- Ask for the solution before attempting the problem.
-- Submit generated code you do not understand.
-- Treat an AI explanation as equivalent to having worked through the derivation.
-- Use it to avoid debugging.
+* Ask for the solution before attempting the problem.
+* Submit generated code you do not understand.
+* Treat an AI explanation as equivalent to having worked through the derivation.
+* Use it to avoid debugging.
 
 The rule: if AI removes the hard part before you have engaged with it, it is probably weakening learning.
 
@@ -468,7 +438,6 @@ Make predictions, test them, and update the model.
 Before profiling, predict where the program is slow. Before running a concurrent program, predict the possible interleavings. Before training a model, predict what will fail. Before reading the solution, predict the proof strategy. Then compare with reality.
 
 Intuition is compressed experience. Experience compresses only when you reflect on it. The learner who asks "why was my prediction wrong?" after every serious surprise will develop intuition faster than the learner who merely accumulates hours.
-
 
 ## Chapter 2 — Programming and Mathematical Foundations
 
@@ -588,7 +557,6 @@ The three books on programming practice with the most durable insight are **The 
 **Bret Victor's "Inventing on Principle"** (YouTube, 2012) is a 54-minute talk arguing that the gap between writing code and seeing its effect impedes thinking. It demonstrates live-coding environments where changes are immediately reflected in the running program — tools that were prototypes, but that change how programmers think about the relationship between notation and execution.
 
 Reading substantial open-source codebases is one of the most concentrated forms of programming education available and one of the rarest — most programmers never do it deliberately. Recommended starting points in roughly increasing order of size and complexity: the Unix utilities `wc`, `cat`, `grep` (small, well-written C); **Redis** (moderate-sized, well-structured C, a complete production system); **SQLite** (exceptional code quality, extensively documented, a complete relational database in one file); **CPython** (the Python interpreter, larger but very readable). Working through a codebase — not just reading files but understanding the architecture, tracing data through the system — builds capacities that no textbook exercise produces.
-
 
 | Resource | Platform | Type |
 |---|---|---|
@@ -881,7 +849,6 @@ The **Matrix Cookbook** (Petersen and Pedersen, free, 2012) is a reference docum
 Implementing linear algebra from scratch in NumPy is more educational than reading about it. A productive sequence: implement matrix multiplication from loops, verify it against NumPy, time both; implement the Gram-Schmidt process; implement power iteration to find the dominant eigenvector; implement the compact SVD from scratch using the QR algorithm. These implementations are short (each under 50 lines) and the process of making them correct and numerically stable teaches more about the subject than equivalent reading time.
 
 **NumPy's linear algebra documentation** (`numpy.linalg`) and SciPy's documentation are the standard references for computational practice. Understanding which function to use for which problem — `np.linalg.solve` vs. `np.linalg.lstsq`, `np.linalg.eigh` vs. `np.linalg.eig` — requires understanding the mathematical distinctions between symmetric and general matrices, between full-rank and rank-deficient cases, between the symmetric eigenvalue problem and the general one.
-
 
 | Resource | Platform | Type |
 |---|---|---|

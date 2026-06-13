@@ -7,10 +7,6 @@ description               : "Personal rubbish of gmkzwwg"     # Set the default 
 url                       : "https://gmkz.top"                # Set the canonical site URL without a trailing slash.
 baseurl                   : ""                                # Set the subpath if the site is deployed under a project path.
 
-lang                      : "zh-CN"                           # Set the default document language. candidates: zh-CN | en | fr | ja
-locale                    : "zh_CN"                           # Set the default locale for templates and SEO metadata. candidates: zh_CN | en_US | fr_FR | ja_JP
-timezone                  : "Asia/Tokyo"                      # Set the timezone used for date generation. candidates: Etc/UTC | Asia/Tokyo | Asia/Shanghai
-
 author:                                                       # Store default author metadata for the whole site.
   name                    : "gmkzwwg"                         # Set the default author name.
   email                   : "gmkzwwg@outlook.com"             # Set the default author email.
