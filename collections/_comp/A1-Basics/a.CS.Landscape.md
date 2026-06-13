@@ -8,61 +8,64 @@ subclass: Basics
 
 ## Chapter 1 — Better to Run than Curse the Road
 
-This guide is for readers who want a serious map of computer science: what to learn, why it matters, what depends on what, and which resources are worth time. It is not a promise that the path is easy. It is a way to make the difficulty legible, so that effort goes into learning the subject rather than wandering through mismatched resources, skipped prerequisites, and fashionable distractions.
-
-The questions below are grouped by the decision a learner is trying to make: whether this guide is for them, how to use it, how to survive the learning process, what CS actually is, how AI changes the picture, and how to connect study to career and long-term practice.
-
 ### Starting Point
 
-**What is this guide, and who is it for?**
+**Q1: Can I learn computer science?**
 
-This is a structured map of computer science as a discipline. It covers programming, mathematics, algorithms, theory, systems, AI, software engineering, practitioner skills, and the major neighboring fields that shape CS.
+Yes, the only requirement is that you are willing to *treat confusion as part of the work rather than as evidence that you are not suited for it*.
 
-It is for several kinds of readers: beginners starting from little background, self-taught programmers filling gaps, working engineers who want depth, AI-focused learners who need foundations, and people from adjacent fields who want to understand computation seriously. It does not assume a degree or a professional background. It does assume that you are willing to practice, read difficult material, and return to prerequisites when a later topic stops making sense.
+All you need is a common computer, sustained effort, and some curiosity. Many of the best courses, textbooks, tools, documentation, and papers are available online. The problem is that there are too many resources, and finding the right ones can be difficult — this guide tries to help with that. The other challenge is how to sustain planned, consistent effort without the supervision of a school or teacher.
 
-The guide is not meant to be read like a novel. It is a map. You use it to understand the landscape, choose a path, and then spend real time with the resources and exercises.
+You do not need to feel mathematically gifted or already technical. You do need to be willing to work in small steps and not skip the steps that feel slow.
 
-**Can I learn computer science?**
+Also, there are several perhaps counterintuitive truths along this path: *reputation, degrees, and professional background have little necessary relation to ability; school is far from the best place to learn; the best teacher is always yourself; and learning is a way of life, not a one-time act of hard labor.*
 
-Yes, if you are willing to treat confusion as part of the work rather than as evidence that you are not suited for it.
+**Q2: Do I need a computer science degree?**
 
-CS is unusually self-teachable compared with many serious fields. A learner needs a computer, time, and access to public materials; most of the best lectures, textbooks, compilers, interpreters, documentation, and papers are available online. The hard part is not access. The hard part is sustained effort without an institution forcing the pace.
+Not necessarily. A degree is useful in certain ways, but it is not the same thing as knowledge or ability.
 
-A practical test: if you can spend several weeks working through a beginner programming course, write small programs without copying, debug them until you understand the cause of failure, and keep notes on what confused you, then you can start. You do not need to feel mathematically gifted or already technical. You do need to be willing to work in small steps and not skip the steps that feel slow.
+A degree provides access to resources, learning structure, peers, assessment, and a credential for entering the field. These are real advantages. Pure self-study has to seek substitutes deliberately: a study plan, exercises, projects, feedback, and self-testing.
 
-**Do I need a computer science degree?**
+In some countries, for some employers, and for most graduate programs, academic credentials matter. But if your goal is to understand the discipline, become a technical practitioner, or acquire professional competence, a degree is not directly tied to that goal. It is also worth noting that most people in the world do not have direct access to elite universities, often because of economic conditions, regional limitations, or other constraints. But everyone can still access some of the best learning conditions online. The universities or coding bootcamps closed may offer mediocre courses while producing several times more confusion.
 
-No. A degree is useful, but it is not the same thing as the knowledge.
+The areas where self-study is hardest are those that require sustained expert feedback: advanced theory, research-level work, large systems projects, and academic writing. The areas where self-study works best are those with strong public courses, clear exercises, and immediate feedback, because a program either runs or fails.
 
-A degree provides structure, deadlines, instructors, peers, assessment, and a credential. These are real advantages. Self-study has to recreate some of them deliberately: a schedule, exercises, projects, feedback, and some way of checking whether understanding is real.
+**Q3: What background knowledge do I need?**
 
-The credential matters for some employers, some countries, and most graduate programs. If your goal requires that credential, the degree may be worth it. If your goal is understanding the field or becoming a better practitioner, the material itself can be learned outside a degree.
+The amount of background knowledge needed to study computer science is not very large. But to make these requirements fully visible, let us begin with an extreme case: suppose someone has never used a computer before and has only a middle-school level of education. What would they need to know before formally studying computer science?
 
-The areas where self-study is hardest are the ones that need sustained expert feedback: advanced theory, research-level work, large systems projects, and original writing. The areas where self-study works best are the ones with strong public courses, clear exercises, and immediate feedback from programs that run or fail.
+1. **Basic familiarity with computers.**
+   This can usually be acquired by using a computer more often and trying out different functions. Do not be afraid of “breaking” the computer by experimenting with it. A beginner is unlikely to destroy a computer completely, especially through ordinary software use. This includes:
 
-**Do I need paid courses?**
+   * working with `files` and `folders`: understanding what files, folders, paths, and file extensions are;
+   * installing and uninstalling `software`;
+   * using a `browser` to search for problems and find official documentation;
+   * using a `text editor` to edit documents, and using compression tools to compress and extract files;
+   * knowing what `programming tools` and `terminal tools` are used for, and understanding their basic usage;
+   * typing fluently. The English keyboard, uppercase and lowercase letters, and symbol input are all important. Programming uses many symbols, such as `()`, `[]`, `{}`, `;`, and `:`.
 
-No. Paid courses can be useful, but they are not required.
+2. **Basic English reading and writing ability, together with the ability to use an online dictionary.**
+   A large number of tools, error messages, documents, commands, and function names are written in English. With a vocabulary of around 2,000 words, you can already handle most beginner-level programming study reasonably well. This is roughly the level of someone who has studied English as a second language for three years. But English ability will significantly affect your upper limit.
 
-Many of the strongest resources in this guide are free: university courses, open textbooks, official documentation, problem sets, source code, research papers, and interactive tools. Paid resources are included when they are genuinely strong, not because payment implies quality.
+3. **Middle-school level mathematics.**
 
-Use paid resources when they solve a specific problem: you need better structure, graded assignments, feedback, polished explanations, or a format that keeps you moving. Do not use paid resources as a substitute for doing the work. A paid course you passively watch is worse than a free course whose problem sets you complete.
+   * arithmetic operations, parentheses, negative numbers, decimals, fractions, and percentages;
+   * equations and functions;
+   * sets and relations, including concepts such as “belongs to,” “contains,” “intersection,” “union,” and “mapping”;
+   * basic logic, including “and,” “or,” “not,” and “if...then...”.
 
-**What background knowledge do I need?**
+These things are usually not taught in university, yet many new university students feel frustrated and want to give up precisely because they lack this basic background. Some of this knowledge can be acquired through MIT’s course `The Missing Semester of Your CS Education`, but that course is not designed for absolute beginners.
 
-To begin programming, you need basic computer literacy: files and folders, installing software, using a text editor, and running commands in a terminal. If the terminal is unfamiliar, learn just enough to create files, run programs, install packages, and navigate directories.
+Compared with most disciplines, this entry threshold is genuinely very low. These basics alone are enough to make your computer skills come alive and begin producing real output. But English and mathematics determine the upper limit of your ability. They are subjects that require continuous investment and continuous learning. Every bit of effort you put into them will return to you in some form later.
 
-For the mathematical foundations, high-school algebra is the most important prerequisite. You should be able to manipulate equations, read symbols, work with functions, and follow multi-step reasoning. You do not need calculus before discrete mathematics. You do not need prior proof-writing experience before learning proofs.
 
-If algebra is weak, fix it directly. Do not try to learn probability, linear algebra, or machine learning while silently compensating for algebra gaps. A few weeks spent repairing algebra can save months of confusion later.
-
-**Can I learn CS without a math background?**
+**Q4: Can I learn computer science without a math background?**
 
 Yes, but not by avoiding mathematics.
 
-You can start programming before you are mathematically strong. Programming will give you confidence, feedback, and concrete experience. But if you want to understand algorithms, machine learning, cryptography, graphics, formal methods, or theoretical CS, mathematics becomes load-bearing.
+You can begin programming with only a little mathematical background. Programming will give you confidence, feedback, and concrete experience. But if you want to understand algorithms, artificial intelligence, machine learning, cryptography, graphics, formal methods, or theoretical computer science, mathematics becomes the foundation of everything.
 
-The practical sequence is: learn programming first or alongside discrete mathematics; then learn proof, linear algebra, calculus, probability, and statistics as your goals require. Do not try to swallow all mathematics before writing code. Also do not assume programming skill will somehow replace mathematics. They are different muscles.
+The practical sequence is this: learn programming first, or learn programming alongside discrete mathematics; then study proofs, linear algebra, calculus, probability, and statistics according to your goals. Do not try to swallow all of mathematics before writing code. But do not assume that programming ability will automatically replace mathematical ability either.
 
 **How long does it take to learn CS seriously?**
 
@@ -73,6 +76,17 @@ To become productive in programming: months of consistent work. To understand th
 A realistic pace for a self-learner is one major topic at a time, with a concrete output for each topic: programs written, problem sets solved, notes produced, papers summarized, or projects completed. Time spent only watching and reading should not be counted as mastery time.
 
 ### How to Use This Guide
+
+**Q2: What is this guide, and who is it for?**
+
+This is a structured map of computer science as a discipline. It covers programming, mathematics, algorithms, theory, systems, AI, software engineering, practitioner skills, and the major neighboring fields around CS. It is for several kinds of readers:
+1. beginners starting from little background
+2. self-taught programmers filling gaps
+3. working engineers who want depth
+4. AI-focused learners who need foundations
+5. people from adjacent fields who want to understand computation seriously. 
+
+It does assume that you are willing to practice, read difficult material, and return to prerequisites when a later topic stops making sense. *The guide is not meant to be read like a novel. It is a map.* You use it to understand the landscape, **choose a path**, and then spend real time with the resources and exercises.
 
 **Do I need to read this in order?**
 

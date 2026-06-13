@@ -23,6 +23,11 @@
 {% assign show_toc_mode = page.toc | default: "list" %}
 {% assign auto_maximize = true %}
 
+{% when "post-split" %}
+{% assign layout_name = "split mode" %}
+{% assign show_toc_mode = page.toc | default: "list" %}
+{% assign auto_maximize = true %}
+
 {% when "post" %}
 {% assign layout_name = "post mode" %}
 {% assign show_toc_mode = page.toc | default: "list" %}

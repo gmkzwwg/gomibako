@@ -2,7 +2,7 @@
 title: Formal and Informal Fallacies
 categories: Sheet
 subclass: Epistemology
-layout: slide-wiki
+layout: post-split
 ---
 
 
@@ -12,7 +12,7 @@ layout: slide-wiki
 
 ### What is a logical fallacy?
 
-A `logical fallacy` is not, first of all, a label for humiliating an opponent. It is a diagnosis of a defect inside an `argument`. An argument contains at least three elements: a `conclusion`, the `premises` offered in support of that conclusion, and the `inference` by which the premises are supposed to lead to the conclusion. A fallacy occurs in this relation. The premises appear to support the conclusion, but the support is defective; the discourse gives the impression that proof has been supplied, when the real work of proof has not been done.
+A `logical fallacy` is not, first of all, a label for humiliating an opponent. It is a diagnosis of a defect inside an `argument`. An argument contains at least three elements: a `conclusion`, the `premises` offered in support of that conclusion, and the `inference` by which the premises are supposed to lead to the conclusion. A fallacy occurs in this relation. *The premises appear to support the conclusion, but the support is defective; the discourse gives the impression that proof has been supplied, when the real work of proof has not been done.*
 
 **Definition:** A `fallacy` is an invalid, weak, or defective pattern of reasoning within an argument. It is not simply “a wrong sentence,” nor is it “a conclusion I dislike.” If someone says, “All birds can fly; penguins are birds; therefore penguins can fly,” the conclusion is false, but the main error lies in the factual premise that all birds can fly. If someone says, “If it rains, the ground will be wet; the ground is wet; therefore it must have rained,” the premises may both be true, and the conclusion may even accidentally be true, but the inference remains invalid. The ground may be wet because of a sprinkler, cleaning, a leaking pipe, or some other cause. The problem lies not in the topic of rain, but in the movement from “if P, then Q” to “Q, therefore P.”
 
@@ -839,7 +839,7 @@ These three forms are powerful because they move the imagination. They make abst
 
 ### 什么是逻辑谬误？
 
-`逻辑谬误`（*logical fallacy*）首先不是一个用来羞辱对手的标签，而是对`论证`内部缺陷的诊断。一个论证至少包含三个要素：`结论`、用来支持结论的`前提`，以及使前提通向结论的`推理关系`。谬误发生在这个关系之中。前提看似支持结论，实际支持并不成立；话语制造了“已经完成证明”的印象，但真正的证明工作并没有完成。
+`逻辑谬误`（*logical fallacy*）首先不是一个用来羞辱对手的标签，而是对`论证`内部缺陷的诊断。一个论证至少包含三个要素：`结论`、用来支持结论的`前提`，以及使前提通向结论的`推理关系`。谬误发生在这个关系之中。*前提看似支持结论，实际支持并不成立；话语制造了“已经完成证明”的印象，但真正的证明工作并没有完成。*
 
 **定义：** `谬误`是论证中无效、薄弱或有缺陷的推理模式。它不是简单的“一句话说错了”，也不是“我不喜欢的结论”。如果有人说：“所有鸟都会飞；企鹅是鸟；所以企鹅会飞。”这个结论是假的，但主要错误在于“所有鸟都会飞”这个事实前提不准确。若有人说：“如果下雨，地面会湿；地面湿了；所以一定下雨了。”前提可能都是真的，结论甚至可能偶然是真的，但推理仍然无效。地面湿也可能是因为洒水器、清洁、管道漏水或其他原因。问题不在“下雨”这个主题，而在于把“如果 P，则 Q”错误地推进为“Q，所以 P”。
 
