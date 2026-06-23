@@ -1,5 +1,5 @@
 ---
-title: MIT 6.001 SICP Transcripts
+title: 6.001 SICP Transcripts
 layout: print
 categories: Texts
 subclass: Programming

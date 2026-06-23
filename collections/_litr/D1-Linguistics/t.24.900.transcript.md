@@ -1,5 +1,5 @@
 ---
-title: MIT 24.900 Introduction to Linguistics Transcripts
+title: 24.900 Transcripts
 layout: print
 categories: Notes
 subclass: Linguistics

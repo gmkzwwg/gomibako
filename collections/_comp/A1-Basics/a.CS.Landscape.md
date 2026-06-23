@@ -80,35 +80,6 @@ A realistic pace for a self-learner is one major topic at a time, with a concret
 
 ### How to Use This Guide
 
-**润色查错：**
-
-整体没有明显 typo，主要是几处表达可以更自然、更准确。
-
-1. **“几乎所有画像的读者”**
-   建议改为 **“几乎所有类型的读者”**。
-   “用户画像”可以说，但“画像的读者”不自然。
-
-2. **“只需要注意完成每节开头的前置课程”**
-   建议改为 **“只需要注意每节开头列出的前置知识或前置课程”**。
-   因为有些 prerequisite 不是课程，而是知识、工具或能力。
-
-3. **“经过这些基础课的‘洗礼’后”**
-   “洗礼”略口语、略夸张。可以改为 **“完成这些基础课程后”** 或 **“经过这些基础课程的训练后”**。
-
-4. **“全栈应用开发、软件工程师”**
-   建议改为 **“全栈应用开发 / 软件工程师”**。并列关系更清楚。
-
-5. **“网络开发”**
-   容易和 Web 开发混淆。这里内容是 Socket、协议、网络性能、分布式系统，建议改为 **“网络编程 / 网络系统方向”**。
-
-6. **“嵌入式 / 低层开发”**
-   建议改为 **“嵌入式 / 底层开发”**。中文技术语境中“底层开发”更常用。
-
-7. **“机器人 / 自动驾驶基础方向”**
-   建议改为 **“机器人 / 自动驾驶基础”** 或 **“机器人 / 自动驾驶方向”**。原句略累赘。
-
-**局部润色版：**
-
 **Q1: What is this guide, and who is it for?**
 
 This is a structured map of computer science as a discipline. It tries to cover all major areas related to computer science and to list high-quality resources for each of them. It is suitable for several kinds of readers:
