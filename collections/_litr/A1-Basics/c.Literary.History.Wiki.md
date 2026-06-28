@@ -16486,6 +16486,70 @@ The modernist novel does not abandon realism simply by becoming obscure. It chan
 
 **Conrad and Proust therefore open two great modernist routes.** Conrad asks how one can narrate historical evil when every narrator is implicated in language, empire, and delayed perception. Proust asks how time can be lost, recovered, and transformed into art. One descends into colonial darkness; the other descends into memory. **Both discover that the modern novel must become a machine for questioning its own access to truth.**
 
+### Stream of Consciousness (c. 1890s–1920s)
+
+| Concept Knowledge     | Content                                                                                                                                                                                                 |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**        | Narrative technique that represents thought as a moving field of perception, memory, sensation, association, and inner speech rather than as orderly public narration.                                  |
+| **Related forms**     | Interior monologue, free indirect discourse, memory narrative, psychological realism, and modernist consciousness fiction.                                                                               |
+| **Representative use** | **Proust**, **Joyce**, and **Woolf** make consciousness the place where time, selfhood, social pressure, desire, and artistic form are reorganized.                                                       |
+| **Core problem**      | How can fiction represent experience before it has been simplified into plot, statement, or public explanation?                                                                                          |
+| **Reading entrance**  | Read stream of consciousness not as random thought, but as a formal attempt to make the movement of mind itself become narrative structure.                                                              |
+
+Stream of consciousness changes the unit of narrative. Earlier realism often organized fiction around visible action, social relation, and causal plot. Modernist fiction increasingly asks what happens when reality is encountered through memory, distraction, rhythm, sensation, and private association.
+
+This does not mean that plot disappears. **Plot is displaced inward.** The decisive event may be a remembered taste, a walk through a city, an overheard phrase, a bodily sensation, or a sudden return of the past. In *In Search of Lost Time*, memory becomes a structure of recovery. In *Ulysses*, urban life is filtered through changing registers of thought and language. In *Mrs Dalloway* and *To the Lighthouse*, social life and inner time move through one another.
+
+**The importance of stream of consciousness is that it makes modern experience legible as pressure inside the mind.** The modernist novel no longer assumes that reality is fully visible from outside. It asks how much of life occurs before speech, beneath social performance, or after experience has already been altered by memory.
+
+### Fragmentation and Montage (c. 1910s–1930s)
+
+| Concept Knowledge    | Content                                                                                                                                                                             |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Modernist method of building narrative from discontinuous scenes, voices, documents, memories, quotations, and abrupt formal shifts rather than from smooth chronological sequence. |
+| **Historical force** | World War I, urban modernity, mass media, cinema, bureaucracy, empire, and social acceleration weaken older narrative continuities.                                                  |
+| **Representative use** | **Joyce**, **Woolf**, **Dos Passos**, **Eliot**, and other modernists use juxtaposition to show a world experienced as broken, simultaneous, mediated, and difficult to order.       |
+| **Core problem**     | How can literary form register a world that no longer appears continuous, unified, or morally intelligible?                                                                          |
+| **Reading entrance** | Read fragmentation as structure, not as mere difficulty. The break between fragments is often where historical pressure becomes visible.                                             |
+
+Fragmentation is one of the central formal answers to modernity. The modern city does not arrive as a single coherent story. It arrives as advertisement, street noise, newspaper, memory, overheard speech, official language, private anxiety, and sudden visual shock. Modernist fiction turns this broken field into form.
+
+Montage matters because it lets literary sequence imitate collision rather than continuity. In *Ulysses*, styles, episodes, bodies, city routes, mythic echoes, and ordinary actions are placed beside one another until the novel becomes a field of relations. In later modernist and documentary fiction, public language and private life are often cut together to expose the pressure of institutions, war, and mass culture.
+
+**Fragmentation does not simply represent collapse; it creates a new mode of composition after collapse.** The modernist work asks the reader to connect pieces, hear competing voices, and experience the difficulty of total explanation.
+
+### Mythic Method (c. 1910s–1920s)
+
+| Concept Knowledge    | Content                                                                                                                                                                  |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Definition**       | Modernist technique of using myth, ritual pattern, epic analogy, or ancient narrative structure to organize ordinary modern life without returning it to stable heroism. |
+| **Representative use** | **Joyce**’s *Ulysses* places a day in Dublin beside *The Odyssey*; **Eliot** uses ritual and mythic fragments in *The Waste Land*.                                      |
+| **Core function**    | Myth gives shape to modern disorder, but the contrast between ancient pattern and modern life also exposes loss, irony, parody, and diminished heroism.                  |
+| **Core problem**     | Can inherited cultural forms still organize experience after religious, social, and historical certainties have weakened?                                                |
+| **Reading entrance** | Do not read mythic method as decorative allusion. It is a structural device for holding together triviality, ruin, repetition, memory, and cultural depth.               |
+
+Mythic method is not a simple revival of classical prestige. In modernism, myth often works by mismatch. The older structure remains visible, but modern life no longer fits it cleanly. A Dublin advertisement agent can echo Odysseus; a city crowd can echo ritual death and rebirth; domestic fatigue can stand beside epic return.
+
+This method gives modernist fiction a double scale. The daily world becomes larger because it touches inherited forms, while inherited forms become smaller because they are tested against boredom, commerce, sexuality, paralysis, and urban routine. **The result is not heroic restoration, but ironic order.**
+
+For a timeline encyclopedia, mythic method is important because it links modernist fiction to earlier epic, tragedy, ritual, biblical pattern, and classical reception. It shows that modernism is not only rupture. It is also the reuse of old forms under conditions that make their authority uncertain.
+
+### Alienation and Modern Subject (c. 1910s–1940s)
+
+| Concept Knowledge    | Content                                                                                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Modern literary condition in which the self becomes estranged from society, labor, language, law, empire, family, body, or its own consciousness.                                           |
+| **Representative use** | **Kafka**, **Conrad**, **Woolf**, **Joyce**, **Mann**, and later existential and postwar writers turn alienation into a dominant structure of plot and perception.                          |
+| **Historical force** | Bureaucracy, imperial violence, capitalist routine, war trauma, secularization, mass society, and the breakdown of stable social identity.                                                   |
+| **Core problem**     | What happens when the subject can no longer trust institutions, inherited meanings, public language, or even inward self-knowledge?                                                          |
+| **Reading entrance** | Read alienation as a historical form of consciousness, not only as private loneliness. It shows the pressure of modern systems on persons who cannot fully understand or escape those systems. |
+
+Alienation names one of the deepest continuities between modernist fiction and later 20th-century literature. In older fiction, conflict often placed a character against society while still assuming that society could be mapped. In modernist fiction, the map itself becomes unstable. The subject may not know the law, the institution, the city, the empire, or the self that governs experience.
+
+In **Conrad**, alienation emerges through imperial distance, moral opacity, and belated narration. In **Kafka**, it becomes a world of accusation, bureaucracy, metamorphosis, and blocked interpretation. In **Woolf** and **Joyce**, it often appears inside ordinary social life, where public roles and inner rhythms fail to coincide.
+
+**Alienation matters because it turns modern history into a problem of subject formation.** The modern subject is not merely lonely. It is produced by systems it cannot fully see, languages it cannot fully trust, and memories it cannot fully master.
+
 ### Joseph Conrad (1857–1924)
 
 | Author Knowledge         | Content                                                                                                                                                                           |
@@ -17221,6 +17285,62 @@ the scholarly record treat *The Great Gatsby* and *The Sun Also Rises* as closel
 **Literary Knowledge and Developmental Lines:**
 American modern fiction inherits 19th-century realism but compresses and darkens it. The large social panorama remains, but it often appears through a wounded consciousness or symbolic scene. Fitzgerald refines the social novel into an American dream tragedy; Hemingway pares the story down until emotion hides beneath gesture and dialogue. Together they reshape modern prose: one through lyric-symbolic elegance, the other through disciplined omission.
 
+### Lost Generation (c. 1920s)
+
+| Concept Knowledge    | Content                                                                                                                                                                      |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Literary and cultural label for writers and characters shaped by World War I, expatriate dislocation, damaged belief, sexual instability, and moral exhaustion.              |
+| **Representative use** | **Hemingway**, **Fitzgerald**, **Stein**, and related expatriate circles turn generational loss into narrative tone, social scene, and wounded style.                         |
+| **Core works here**  | *The Sun Also Rises*, *In Our Time*, and the wider 1920s fiction of expatriate disillusionment.                                                                              |
+| **Core problem**     | How can people keep living socially, erotically, and stylistically after older languages of honor, religion, nation, and romance no longer feel trustworthy?                  |
+| **Reading entrance** | Read the Lost Generation less as a biographical club than as a literary structure: movement, drinking, irony, travel, and flirtation cover a damaged relation to meaning.     |
+
+The Lost Generation is useful only when it remains a historical-literary concept, not a lifestyle label. Its central problem is not that young people are bored or fashionable. It is that war, mobility, money, tourism, and sexual freedom expose a break between social performance and inward damage.
+
+In Hemingway, this break becomes spare dialogue, wounded masculinity, ritual, and omission. In Fitzgerald, it becomes glamour, party culture, romantic illusion, and retrospective judgment. **The Lost Generation turns modern disillusionment into social form: people keep moving because stillness would expose what has been lost.**
+
+### Jazz Age and American Dream (c. 1920s)
+
+| Concept Knowledge    | Content                                                                                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | 1920s American literary field shaped by jazz, parties, Prohibition, consumer wealth, advertising, celebrity, changing gender codes, and the mythology of self-invention.     |
+| **Representative use** | **Fitzgerald** makes the Jazz Age a symbolic environment where money and desire promise transformation but expose class violence and moral emptiness.                       |
+| **Core work here**   | *The Great Gatsby*.                                                                                                                                                         |
+| **Core problem**     | Can American self-making become genuine freedom, or does it turn desire into performance, exclusion, and fantasy?                                                            |
+| **Reading entrance** | Read Jazz Age fiction through surfaces: houses, cars, clothes, music, parties, and lights are not decoration, but the visible grammar of social aspiration.                  |
+
+The Jazz Age matters because it makes modern American desire audible and visible. Music, speed, spectacle, alcohol, fashion, and money create a world where identity seems performable. A person can change name, clothing, house, accent, habits, and companions. The dream of reinvention becomes theatrical.
+
+But Fitzgerald’s fiction shows that performance has limits. Gatsby can invent a self, but he cannot abolish class memory. He can stage desire, but he cannot control what Daisy means or chooses. **The American dream becomes tragic when self-invention asks society to forget the structures that made reinvention necessary.**
+
+### Iceberg Effect and Omission (c. 1920s onward)
+
+| Concept Knowledge    | Content                                                                                                                                                                 |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Narrative method in which visible action, dialogue, and concrete detail carry pressure from meanings, histories, and emotions that remain largely unstated.              |
+| **Representative use** | **Hemingway** makes omission a principle of modern prose: silence, gesture, repetition, and surface action carry the submerged part of the story.                        |
+| **Related techniques** | Parataxis, understatement, hard dialogue, objective detail, dramatic scene, and refusal of explanatory commentary.                                                       |
+| **Core problem**     | How can fiction represent trauma, shame, fear, desire, and moral knowledge without turning them into explicit explanation?                                               |
+| **Reading entrance** | Read omission actively. What is unsaid is not absent; it is the pressure that gives the visible surface its force.                                                       |
+
+The iceberg effect gives American modern fiction one of its most durable prose styles. Instead of explaining an emotion, the story may show a meal, a wound, a repeated phrase, a change in weather, a pause in dialogue, or a body refusing to move. The reader must infer the hidden structure from the controlled surface.
+
+This method is not merely minimalist taste. It belongs to a historical world in which direct moral speech has become suspect. War trauma, sexual injury, fear, guilt, and fatalism often cannot be spoken without falsifying them. **Omission turns silence into form.**
+
+### Social Protest Novel (c. 1930s)
+
+| Concept Knowledge    | Content                                                                                                                                                                       |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Fiction that represents economic injustice, labor exploitation, dispossession, racial or class violence, and institutional power through narrative form.                       |
+| **Representative use** | **Steinbeck** turns Depression-era migration and labor suffering into social realism, biblical pattern, and collective narrative.                                             |
+| **Core work here**   | *The Grapes of Wrath*.                                                                                                                                                        |
+| **Core problem**     | How can the novel represent systems such as banks, land ownership, labor markets, migration, policing, and hunger without reducing history to individual psychology?          |
+| **Reading entrance** | Read social protest fiction as a shift from private fate to structural pressure. The character matters, but the system around the character also becomes a narrative actor.   |
+
+The social protest novel does not abandon art for message. Its literary problem is difficult: it must make economic abstraction visible without turning fiction into a report. Steinbeck answers by joining family plot, road narrative, biblical cadence, intercalary chapters, and collective voice.
+
+In this form, suffering is individual and systemic at once. The Joads are a family, but their story also exposes a class condition. The road is a plot device, but it is also a historical channel of displacement. **The social protest novel becomes a way to narrate history when history appears as hunger, eviction, movement, and labor.**
+
 ### F. Scott Fitzgerald (1896–1940)
 
 | Author Knowledge       | Content                                                                                                                                                                                                                |
@@ -17490,6 +17610,62 @@ The novel influenced American protest literature, labor fiction, migrant narrati
 European modern fiction and drama develop under the pressure of a civilization losing confidence in itself. The late 19th-century faith in progress, education, bourgeois order, and cultural refinement is tested by decadence, mass politics, war, disease, and the collapse of older metaphysical certainties. The result is fiction that often looks inward, but whose inwardness carries historical weight.
 
 **Thomas Mann** is central to this movement because he does not simply break with 19th-century realism. He absorbs it, ironizes it, and expands it into symbolic and intellectual fiction. His novels and novellas still care about bourgeois life, Bildung, family, art, illness, and society, but these older forms become unstable. In Mann, a vacation, a sanatorium, an erotic fixation, or a disease outbreak becomes an image of European culture itself.
+
+### Disease and Decadence (c. 1890s–1920s)
+
+| Concept Knowledge    | Content                                                                                                                                                                    |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Modern European literary pattern in which illness, aesthetic refinement, erotic fixation, fatigue, and social decline become signs of cultural crisis.                      |
+| **Representative use** | **Mann** turns cholera, tuberculosis, beauty, discipline, and desire into symbols of European civilization under pressure.                                                  |
+| **Core works here**  | *Death in Venice* and *The Magic Mountain*.                                                                                                                                |
+| **Core problem**     | What happens when culture appears refined and intelligent, yet is physically, morally, or historically diseased?                                                            |
+| **Reading entrance** | Read disease in this field as both literal and symbolic. Illness marks the body, but it also exposes time, desire, mortality, and the fragility of civilization.            |
+
+Disease and decadence give European modernism a way to diagnose culture without leaving the body. A fever, plague, sanatorium, beautiful city, erotic obsession, or exhausted artist can carry the pressure of historical decline. The private symptom becomes a civilizational sign.
+
+In Mann, this pattern is not simple moralism. Illness can be dangerous, but it can also intensify perception and detach the subject from ordinary bourgeois life. **Disease becomes literary knowledge when it reveals that refinement and decay may belong to the same cultural order.**
+
+### Intellectual Novel (c. 1900s–1930s)
+
+| Concept Knowledge    | Content                                                                                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Novel form in which ideas, debates, institutions, symbolic settings, and cultural systems become as important as action or individual psychology.                            |
+| **Representative use** | **Mann**, **Musil**, **Broch**, and other European modernists transform the realist novel into a space for philosophy, ideology, education, and civilizational diagnosis.   |
+| **Core work here**   | *The Magic Mountain*.                                                                                                                                                       |
+| **Core problem**     | Can the novel still educate the modern subject when the intellectual traditions of Europe are themselves divided, exhausted, or moving toward catastrophe?                   |
+| **Reading entrance** | Read the intellectual novel as drama of ideas. Its conversations and delays are not digressions; they are the plot of a culture thinking itself into crisis.                 |
+
+The intellectual novel extends the 19th-century realist tradition but changes its center of gravity. Society is still present, yet the decisive conflicts often take the form of argument, education, illness, ideology, music, history, and time. Characters become carriers of positions, but the strongest works avoid reducing them to mere mouthpieces.
+
+This form is especially important for European modernism because it preserves breadth while admitting breakdown. **The intellectual novel asks whether a culture can understand itself before it destroys itself.** In *The Magic Mountain*, the sanatorium is not only a setting; it is a thinking machine for prewar Europe.
+
+### Metatheatre (c. 1910s–1920s)
+
+| Concept Knowledge    | Content                                                                                                                                                                   |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Theater that exposes its own theatricality, authorship, rehearsal, acting, role-making, and representational limits instead of hiding them behind realist illusion.        |
+| **Representative use** | **Pirandello** makes characters, actors, authors, and spectators confront the instability of fiction, identity, and performance.                                           |
+| **Core work here**   | *Six Characters in Search of an Author*.                                                                                                                                  |
+| **Core problem**     | If identity is performed and representation always distorts, what counts as real: person, role, character, actor, author, or scene?                                        |
+| **Reading entrance** | Read metatheatre as philosophical form. It breaks illusion not merely to be clever, but to ask how selves and stories are made.                                            |
+
+Metatheatre is a major modernist answer to the realist stage. Instead of pretending that theater is a transparent window onto life, it makes the stage visible as stage. Rehearsal, interruption, failed acting, unfinished characters, and disputed authorship become dramatic material.
+
+Pirandello’s importance lies in turning this self-consciousness into a theory of identity. **The mask is not simply false; it may be the only form in which a self becomes socially legible.** Modern drama therefore begins to ask whether life itself is theatrical before it ever reaches the stage.
+
+### Epic Theatre (c. 1920s–1940s)
+
+| Concept Knowledge    | Content                                                                                                                                                                      |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Brechtian theater that replaces emotional absorption with critical observation, social analysis, historical distance, and interruption of dramatic illusion.                  |
+| **Representative use** | **Brecht** uses songs, scene titles, direct address, visible construction, historical analogy, and the alienation effect to make social relations appear changeable.          |
+| **Core work here**   | *The Good Person of Szechwan*.                                                                                                                                               |
+| **Core problem**     | How can theater prevent passive catharsis and instead train the audience to judge the social conditions that produce suffering and compromise?                                |
+| **Reading entrance** | Read epic theatre as political form. Its interruptions are not failures of drama; they are devices for turning spectators into analysts.                                      |
+
+Epic theatre changes the audience’s task. Traditional dramatic illusion often asks spectators to identify with characters and move toward emotional release. Brecht wants spectators to notice systems: money, labor, war, gender, morality, law, and survival. The play should make ordinary arrangements look constructed rather than natural.
+
+The alienation effect is therefore not a refusal of feeling. **It is a technique for converting feeling into judgment.** By making the familiar strange, Brechtian drama asks whether the world shown on stage could be organized otherwise.
 
 ### Thomas Mann (1875–1955)
 

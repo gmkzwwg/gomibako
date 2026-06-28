@@ -28,7 +28,7 @@ A degree provides access to resources, learning structure, peers, assessment, an
 
 In some countries, for some employers, and for most graduate programs, academic credentials matter. But if your goal is to understand the discipline, become a technical practitioner, or acquire professional competence, a degree is not directly tied to that goal.
 
-It is also worth noting that most people in the world do not have direct access to elite universities, often because of economic conditions, regional limitations, or other constraints. But everyone can still access some of the best learning conditions online. The universities or coding bootcamps closed may offer mediocre courses while producing several times more confusion.
+It is also worth noting that most people in the world do not have direct access to elite universities, often because of economic conditions, regional limitations, or other constraints. But everyone can still access some of the best learning conditions online. Nearby universities or coding bootcamps may offer mediocre courses while producing several times more confusion.
 
 The areas where self-study is hardest are those that require sustained expert feedback: advanced theory, research-level work, large systems projects, and academic writing. The areas where self-study works best are those with strong public courses, clear exercises, and immediate feedback, because a program either runs or fails.
 
@@ -78,13 +78,19 @@ You can begin programming with only a little mathematical background. Programmin
 
 The practical sequence is this: learn programming first, or learn programming alongside discrete mathematics; then study proofs, linear algebra, calculus, probability, and statistics according to your goals. Do not try to swallow all of mathematics before writing code. But do not assume that programming ability will automatically replace mathematical ability either.
 
-**How long does it take to learn CS seriously?**
+**Q5: How long does it take to study computer science seriously?**
 
-It depends on the target.
+It depends on the goal.
 
-To become productive in programming: months of consistent work. To understand the foundations well enough to move across subfields: one to two years of serious part-time study. To reach real depth in systems, AI, theory, security, graphics, or another specialization: several years. This is normal for a serious discipline.
+To become productive in programming, you need several months of consistent effort. To build foundations solid enough to move across different subfields, you need one to two years of serious study. To reach real depth in systems, AI, theory, security, graphics, or any other specialized direction, you need years of learning and practice. This is normal for a serious discipline.
 
-A realistic pace for a self-learner is one major topic at a time, with a concrete output for each topic: programs written, problem sets solved, notes produced, papers summarized, or projects completed. Time spent only watching and reading should not be counted as mastery time.
+For a self-learner, the realistic pace is to study one major topic at a time. Beyond the learning materials themselves, each topic should also produce something: problem sets, small practice projects, notes, or summaries of papers.
+
+For students who have just graduated from high school, I want to clarify one thing: learning efficiency and time limits will no longer be your main difficulties. This is easy to understand. The only standard of exam-oriented education is *the result of a particular exam at a fixed time*. But learning computer science, like life itself, is an *infinite game*.
+
+In `Finite and Infinite Games`, James P. Carse defines an “infinite game” as a game with no final ending, played not for winning or losing, but for the purpose of continuing the game better. *Finite players want to turn life into a score that can be settled; infinite players want to keep life open as creation.* What you will face is an exploration without a final endpoint, a form of free creation. You can choose the form in which you want to exist and act, rather than being defined as an “object” that acts under supervision and evaluation in order to satisfy a standard.
+
+In the finite game of school, the only important thing is to perform the role of “student” as perfectly as possible. The rules of school are fixed, limited, and closed. But the world is not a performance show. This is especially clear for students learning computing: learning does not merely give you knowledge; it gives you real-world **power**, the **ability to create value**, and even a form of **agency**. Making clear decisions, creating value, exchanging value, and understanding the world are far closer to the essence of life than merely playing the role of a good student.
 
 ### How to Use This Guide
 
@@ -170,253 +176,146 @@ Tools, frameworks, platforms, and fashionable technologies change quickly. A too
 
 After learning computer science, you can write programs, build websites, develop applications, analyze data, build AI systems, understand networks and computer systems, and automate repetitive work. More importantly, you can *turn ideas into reality and understand the principles behind technology, instead of merely using tools made by other people*.
 
-### Why Learning CS Feels Hard
+### Why Learning Computer Science Feels Difficult
 
-**Will it be difficult?**
+**Q1: Is learning computer science really difficult?**
 
-Yes. But the difficulty is usually manageable when it is correctly diagnosed.
+I have already mentioned some of the “difficulties” one may encounter when learning computer science. Here they are again:
 
-CS compounds. Later topics assume earlier habits: tracing execution, manipulating symbols, writing precise definitions, reasoning about edge cases, debugging systematically, and building mental models of invisible processes. When those habits are missing, the topic feels impossible even if the topic itself is appropriate.
+1. not having access to the best learning materials;
+2. underestimating the absence of basic computer skills;
+3. following the wrong learning order or skipping steps, which leads to missing the prerequisites needed for later concepts;
+4. treating “errors” as evidence that one is not suited to learning, rather than as a normal part of the work, and therefore feeling frustrated;
+5. struggling to shift from exam-oriented learning to open-ended learning;
+6. neglecting practical output and hands-on ability, and only studying theory and courses;
+7. failing to invest time and energy consistently;
+8. personal psychological factors such as efficiency anxiety and self-limitation.
 
-The right response is not "try harder" in the abstract. The right response is to identify which prerequisite, practice habit, or resource mismatch is causing the difficulty.
+All these “difficulties” suggest that computer science is not, in itself, an especially difficult discipline. Or more precisely, the real difficulty often does not lie inside computer science as a field. Most people with strong professional ability would agree with this.
 
-**Why did I try before and fail?**
+**Q2: What does learning computer science actually feel like?**
 
-Most failed attempts fail for predictable reasons.
+Learning computer science is a bit like building with Lego.
 
-The resource was mismatched. A famous book can be wrong for your current level. SICP is a masterwork and still too abrupt for many beginners. A C textbook is valuable for systems work and harsh as a first programming experience. A graduate probability text may contain the right material and still be the wrong entry point.
+At first, you are facing a pile of scattered pieces. Each individual piece does not look very difficult. From the shape of these pieces alone, you cannot infer what the final work will look like. Much of the time, you are simply following the instructions step by step, *but you do not know why the pieces have to be put together in this way, or what you will eventually be able to build*.
 
-The path skipped prerequisites. Many learners jump from basic programming to deep learning and then hit linear algebra, calculus, and probability all at once. The problem is not lack of intelligence; it is dependency debt.
+*Mistakes are normal, and repeated attempts are the solution.* If one piece is missing, placed incorrectly, or turned in the wrong direction, the whole structure may get stuck. Learning computer science is similar: one small mistake can stop a program from running, and one concept that has not been fully understood can suddenly make everything that follows feel chaotic.
 
-There was too little active practice. Watching lectures and following tutorials build familiarity. They do not build the ability to produce. You need to solve, implement, debug, and explain without a template.
+Its pleasure is delayed. After repeated attempts, at a moment you may not have expected, the scattered pieces suddenly connect. You begin to see the structure. You begin to understand why this part must be this way and why that part cannot be that way. Gradually, building with Lego changes from patiently following tutorials into a *creative game* in which you can control, combine, and create freely.
 
-Resource collection replaced progress. Searching for the perfect course feels productive. Finishing a good-enough course is usually better.
+So the feeling of learning computer science is not one of moving forward smoothly all the time. It is long periods of confusion, getting stuck, and trying again, in exchange for certain sudden moments of clarity.
 
-Motivation dropped at the predictable point. Early novelty fades just as difficulty rises. Plan for that crossing before it arrives: schedule, study partner, public commitment, project deadline, or community.
+**Q3: How can I remember what I have learned?**
 
-**What should I do if it feels much too difficult?**
+The foundations of computer science are numerous and varied. More importantly, the ultimate goal is to solve problems, not to pass a closed-book exam. So instead of relying on brute-force memorization, one should adopt smarter strategies:
 
-Decide whether the material is mismatched or normally hard.
+1. *Build a personal note-taking system.* Organize concepts, commands, code snippets, error records, project experience, resource links, and your own understanding. Notes are not for copying tutorials. They are for preserving your own thinking: what problem this concept solves, what it is easily confused with, where you once got stuck, and how you eventually understood it. Good notes are continuously updated as you learn, rather than written once and then sealed away.
 
-It is mismatched if you cannot find any foothold: every sentence depends on vocabulary you do not know, examples connect to nothing familiar, and you cannot form a specific question. Step back to prerequisites or find an easier entry resource.
+2. *Write implementations.* Many ideas in computer science only become truly clear when you write them yourself. If you are learning stacks, write a stack. If you are learning hash tables, write a simplified hash table. If you are learning interpreters, write a tiny expression interpreter. If you are learning networking, write a simple server. This is the value of resources such as `build-your-own-x`: by rebuilding tools such as databases, Git, Docker, interpreters, and search engines from scratch, you take apart the things you usually only know how to use.
 
-It is normally hard if you understand pieces but cannot assemble the whole, can follow examples but cannot reproduce them, or get stuck at specific steps. Stay with it, but work smaller: simpler examples, hand traces, easier exercises, and more direct practice.
+3. *Review regularly, but do not merely reread the original material.* Rereading creates familiarity, but familiarity is not the same as mastery. A better method is to wait for some time, close the material, and then try to explain the concept again, rewrite the core code, or solve a similar problem. Spaced repetition and retrieval practice are both widely used to improve long-term memory.
 
-A practical rule: if you have spent an hour and cannot state a specific confusion, step back. If you can state a specific confusion, keep working on that smaller point.
+4. *Record errors.* In computer learning, errors are not garbage information. They are among the most valuable learning materials. A path error, a type error, a failed environment setup, or a wrongly written recursion all show that there is a gap between your model and the real mechanism.
 
-**How do I avoid feeling overwhelmed?**
+5. *Read code, documentation, and good projects.* If you only write your own small programs, it is easy to remain at the toy-project level. By reading real code written by others, you can see how mature programs organize structure, name things, handle errors, split modules, and write tests.
 
-Do not try to hold the whole field in your head as a to-do list.
+6. Accept long-term repetition instead of expecting to finish everything in one pass. Computer science is not knowledge that ends after you study it once.
 
-Use three lists:
+**Q4: How should I practice?**
 
-* Now: the one topic you are actively studying.
-* Next: the next prerequisite or adjacent topic.
-* Later: everything interesting but not currently relevant.
+Write implementations.
 
-Most anxiety comes from treating the Later list as if it must be solved now. It does not. The purpose of this guide is to show the landscape, not to demand that you cross it all at once.
+**Q5: How do I know whether I understand something?**
 
-**What does learning CS actually feel like?**
+You can correctly write an implementation.
 
-It often feels like alternating confusion and sudden compression.
+**Q6: What are some common stereotypes, biases, and misunderstandings about computer science?**
 
-For days or weeks, an idea may feel mechanical: you can follow steps but not see why they work. Then enough examples accumulate and the idea compresses into a mental object you can use. This is normal. Learning CS is not a smooth feeling of daily clarity.
+**❌ People who study computer science can all fix computers:** Learners often become able to “solve” certain software and operating-system problems on their own through practice, but they do not systematically learn how to repair electronic devices.
 
-The dangerous mistake is interpreting confusion as lack of ability. Confusion is data. It tells you where the model is missing.
+**❌ If you were not a “programming god” before university, it is already too late to learn in university:** This idea usually comes from some new university students’ blind admiration for “competitive-programming gods.” They mistake “starting early” for “learning well,” and use this idea as an excuse not to try, comforting themselves when they feel frustrated during learning. Because of the “self-fulfilling prophecy” effect—believing from the beginning that one cannot do it, therefore not trying or investing effort, and finally failing, which then seems to prove the original belief—this claim may occasionally appear to come true. The real situation is that people encounter the path at different times and specialize in different skills. With the right learning path, repeated attempts, and real action, anyone can become a “programming god.”
 
-**How should I practice?**
+**❌ Graduates from prestigious universities are usually technical masters:** This idea confuses a school’s ability to select students with a person’s real technical ability. In reality, ability depends heavily on the individual and usually cannot be determined by labels or reputation.
 
-Practice slightly beyond comfort.
+**❌ Programmers are all isolated, stay-at-home people who only deal with computers:**
+This stereotype comes from the fact that computer work does require long periods of concentration, but it ignores that software development itself is a highly social and collaborative activity.
+In reality, programmers do not only write code; they also understand requirements, explain designs, participate in discussions, accept code reviews, write documentation, and maintain systems together with other people.
 
-Doing ten exercises you can already solve builds speed, not depth. The most useful practice fails at first: a proof that does not close, a program that does not run, an algorithm you cannot derive, a bug whose cause contradicts your expectation.
+**❌ The faster someone types, the higher their level is:** Excellent programmers spend a large amount of time understanding problems, designing structures, reading code, and debugging errors. What truly determines ability is not typing fast, but thinking clearly.
 
-Good practice has feedback. A compiler, test suite, proof checker, problem solution, code review, measurement, or worked answer tells you what was wrong. Practice without feedback easily becomes repetition of mistakes.
+**❌ Excellent programmers rely on memorizing syntax and APIs:** This idea is an imagined opposite created from mocking “copy-and-paste programmers.” Solving problems is the real work. Not remembering every piece of syntax or every API is normal.
 
-**Why is debugging so important?**
+**❌ Hackers are people whose computer screens constantly scroll with letters:** This is a performance style from movies and TV shows. In reality, security research is more often about understanding systems, finding vulnerabilities, testing hypotheses, reading code, analyzing protocols, and writing tools. It is not about watching random text flash across a screen.
 
-Debugging is where wrong mental models become visible.
+**❌ After AI appeared, learning programming and computer science became unnecessary:**
+This idea mistakes “AI can generate code” for “humans no longer need to understand code.” In reality, AI makes first drafts easier to produce, but judging whether something is correct, safe, maintainable, and suitable for real scenarios still requires computer science foundations.
 
-A bug is not just an obstacle to finishing the project. It is evidence that the program does not behave the way your model predicted. If you patch the symptom without understanding the mechanism, the incorrect model remains. If you understand the mechanism, your model improves.
+**❌ The first language must be Python:** Python is indeed suitable for most beginners because its syntax is simple, resources are abundant, and its applications are broad. But the first language can also be JavaScript, Scheme, Java, C, or another language. What matters is the quality of the course, the intensity of practice, and whether you truly understand basic concepts such as variables, functions, control flow, and data structures.
 
-When a bug is hard, slow down:
+**❌ C is very low-level, so everyone must learn C first:** This idea turns one valid path into the only possible entry point. C is very useful for understanding memory, pointers, and systems, but beginners can also first use Python, Scheme, or JavaScript to build programming thinking, and then return to low-level topics later.
 
-* Reproduce it reliably.
-* State what you expected.
-* Observe what actually happened.
-* Form one hypothesis.
-* Test that hypothesis with the smallest experiment.
-* Change one thing at a time.
-* Write down the cause after you find it.
+**❌ If you do not know mathematics, you cannot begin learning computer science:** This idea mistakes “deep study requires mathematics” for “you must finish mathematics before you can start.” In reality, you can first learn programming to gain feedback and confidence, but if you later want to go deep into algorithms, AI, cryptography, graphics, and theory, you must gradually make up the mathematics.
 
-This habit is worth more than many hours of passive study.
+**❌ Building a webpage or an app means you already understand computer science:** This idea mistakes “being able to build something” for “understanding the underlying principles.”
+Projects are important, but if you do not understand algorithms, databases, networks, systems, and security, the fact that a product runs does not mean you truly understand it.
 
-### CS and AI in 2026
+**❌ If copied code from the internet runs, the problem is solved:** Copying code can only solve the immediate problem. Only when you can explain why it runs, where it may go wrong, and how to modify it do you truly own that piece of code.
 
-**Given how capable AI has become, is learning CS still worth it?**
+### Computer Science and AI
 
-Yes. AI changes the value of CS knowledge; it does not eliminate it.
+**Q1: Given how powerful AI has become, is learning computer science still worth it?**
 
-AI tools can produce code, explanations, tests, summaries, and prototypes. That makes shallow code production less scarce. It makes judgment more important: knowing what should be built, whether the generated solution is correct, what assumptions it makes, how it fails, how to test it, how it affects users, and how it fits into a larger system.
+Yes. AI has changed the value of computer science knowledge, but it has not eliminated it.
 
-The less you understand, the more AI output looks equally plausible. The more you understand, the more useful the tool becomes.
+AI tools can generate code, explanations, tests, summaries, and prototypes. This *makes shallow code production less scarce and makes judgment more important*: knowing what should be built, whether the generated solution is correct, what assumptions it depends on, how it may fail, how to test it, how it affects users, and how it fits into a larger system.
 
-**What has AI changed about CS and software development?**
+Learning computer science answers many **foundational** questions: what a computer is, why programs run, why algorithms can be faster or slower, why systems fail, why data must be organized in certain ways, why AI works, and why it fails. AI can help you write code, explain concepts, and generate solutions, but if you have no underlying knowledge at all, it is difficult to judge whether its answer is correct, and you may not even know which layer of the problem it should solve or what kind of solution should be chosen.
 
-It has changed the cost of producing first drafts.
+People without computer science foundations often use AI by giving vague requests and then passively accepting the output. People with foundations can break problems down clearly, give constraints, specify a technical direction, check edge cases, find errors, and continue asking better follow-up questions. In other words, CS knowledge has not been made obsolete by AI; it has become the judgment needed to use AI well.
 
-Boilerplate, routine transformations, simple scripts, test scaffolds, documentation drafts, and common feature implementations are cheaper than before. That shifts work toward specification, review, integration, debugging, evaluation, security, and long-term maintainability.
+AI has indeed changed the role of programmers. In the past, much programming training focused on fluency with syntax, writing templates by hand, memorizing APIs, and quickly implementing common functions. These abilities will become less important, because AI can already produce many first drafts. But this does not mean previous training has completely failed. Rather, the focus of training needs to shift: from “writing all code from scratch by oneself” to “understanding problems, designing systems, verifying results, debugging errors, assessing risks, and maintaining complex projects.”
 
-It also changes learning. AI can explain the same concept five ways, generate small examples, quiz you, and help diagnose errors. It can also let you bypass the exact struggle that would have built the skill. The tool is useful when it supports thinking; it is harmful when it replaces it.
+*AI pushes the programmer community toward greater polarization. Those who understand less are more likely to find AI trustworthy and to follow it blindly, but they may not be able to produce effectively; they may only create superficial demos or half-finished products. For technically strong people with solid foundations, flexible minds, and full engagement, AI is a powerful aid. It helps them reduce inefficient time and devote more mental energy to creating value.*
 
-**Which skills are most at risk, and which become more valuable?**
+Therefore, the AI era has only changed the emphasis of computer science knowledge: it must become more professional and deeper, and it should avoid training only low-level repetitive labor. You still need programming, algorithms, systems, databases, networks, mathematics, and engineering ability. The value of this knowledge is no longer mainly reflected in “Can I handwrite a piece of code?” but in “Can I judge whether this code is correct, reliable, and suitable for a real system?”
 
-Most at risk: routine implementation from clear specifications, boilerplate-heavy work, shallow framework use, and tasks where correctness is easy to check and the solution pattern is common.
+**Q2: Should I learn AI first, or traditional computer science first?**
 
-More valuable: problem framing, system design, mathematical reasoning, debugging, security judgment, performance analysis, data and model evaluation, code review, domain understanding, communication, and the ability to verify AI-generated work.
+If your goal is to use AI tools during the learning process, you can start using them immediately while also learning computer science foundations. AI tools have a low entry barrier and produce visible effects quickly.
 
-The practical implication is simple: do not train only for code production. Train for technical judgment.
+If your goal is to seriously understand or build AI systems, you should first learn, or learn in parallel, the foundations: programming, linear algebra, calculus, probability, statistics, algorithms, and enough systems knowledge to understand large-scale computation. If you skip these, you will soon hit a bottleneck.
 
-**How do I remain competent when AI can produce code?**
+For most AI learners, the best path is neither “traditional computer science first, AI later” nor “AI first, foundations later.” A better path is interleaved learning: study the mathematical and programming foundations, and then use small AI projects to make them concrete.
 
-Keep a no-AI practice zone.
+**Q3: Can I use AI tools while learning? Will using AI heavily prevent me from mastering the material?**
 
-For foundational learning, solve some exercises without AI help. Write small programs from scratch. Debug without immediately asking for the answer. Explain code yourself before asking for an explanation. This preserves the mental models that make AI assistance useful later.
+You can use AI tools, but you need to be careful.
 
-Then use AI professionally as a tool: generate alternatives, ask for edge cases, request tests, compare designs, identify possible bugs, and challenge your assumptions. Always read and understand output before using it.
+AI does not necessarily prevent mastery. What truly weakens learning is letting AI directly complete the parts that most need to be trained before you have thought, tried, encountered errors, and revised.
 
-If you cannot explain what the generated code does, you do not own it yet.
+Research generally points to a clear distinction: *AI can improve task completion efficiency, but it does not necessarily improve conceptual understanding.* In a 2025 CS1 programming-course study, students who used ChatGPT received higher code-quality scores and completed tasks faster, but their gains in conceptual understanding were mixed; the researchers also recommended structured AI integration combined with strategies for cultivating independent problem-solving. Another study of 298 introductory programming students found that students used ChatGPT in very different ways: some directly accepted generated answers, while others asked critical follow-up questions, modified answers, and verified them; the study also noted that generative AI can help introductory programming learners, but can also provide misleading information to novices. (Sources: <https://arxiv.org/abs/2510.00946>; <https://arxiv.org/abs/2407.20792>.)
 
-**Should I learn AI first or traditional CS first?**
+More importantly, AI affects “things you already know” and “new things you are currently learning” differently. A 2026 randomized controlled experiment by Anthropic studied how developers learned an unfamiliar Python asynchronous library with AI assistance. The AI-assisted group scored 17% lower on the later mastery test, but the study also noted that not all AI use reduced learning: those who used AI to ask conceptual questions, request explanations, and analyze code retained learning better. This shows that the issue is not whether AI is used, but whether the learner still *maintains active understanding*. (Source: <https://arxiv.org/abs/2601.20245>.)
 
-If your goal is to use AI tools in ordinary work, you can start using them immediately while learning CS foundations.
+So when learning computer science, AI should be positioned as an *explainer, sparring partner, checker, debugging assistant, and provider of a second explanation*, not as someone who completes assignments for you. You can ask AI to explain error messages, generate smaller examples, check your code, point out edge cases, quiz you, and compare two solutions; but you should not ask it to give you the complete answer before you have tried.
 
-If your goal is to understand or build AI systems seriously, learn the foundations first or alongside AI: programming, linear algebra, calculus, probability, statistics, algorithms, and enough systems to understand computation at scale. Skipping these creates a ceiling very quickly.
+A simple rule is: *try first, then use AI.*
+Read the problem first. Write your idea first. Write an initial version of the code first. Let the program produce errors first. Search for the error yourself once. Then ask AI: “Is my understanding correct?” “What does this error mean?” “Do not give me the answer directly; give me a hint about what I should check next.” Used this way, AI strengthens learning. By contrast, if you start by asking “write the complete code for me,” you may get something that runs, but you will not gain an ability that truly belongs to you.
 
-The best path for most AI-focused learners is not "traditional CS first, AI later" or "AI first, foundations later." It is an interleaved path: learn the mathematical and programming foundations, then use small AI projects to make them concrete.
+Early learning especially needs a *no-AI practice zone*. Basic exercises—variables, loops, functions, recursion, arrays, linked lists, hash tables, simple algorithms, and small projects—should at least partly be completed without AI. These exercises are not training you merely to “produce code”; they are helping you form mental models: how a program runs step by step, how variables change, how functions are called, and how errors arise. If AI walks through all of these processes for you, you may seem to learn faster, but you may actually form ability more slowly.
 
-**Can I use AI tools while learning, or will that undermine learning?**
+Better ways to use AI include:
 
-Use them after you have made a real attempt.
-
-Good uses:
-
-* Ask for a second explanation of a concept.
-* Ask for a smaller example.
-* Ask it to quiz you.
-* Ask it to check your proof or code after you have written it.
-* Ask why a failed attempt is wrong.
-* Ask for edge cases you missed.
-
-Bad uses:
-
-* Ask for the solution before attempting the problem.
-* Submit generated code you do not understand.
-* Treat an AI explanation as equivalent to having worked through the derivation.
-* Use it to avoid debugging.
-
-The rule: if AI removes the hard part before you have engaged with it, it is probably weakening learning.
-
-**Will AI replace software engineers?**
-
-Some software work will shrink, especially routine implementation with clear requirements. Full replacement of software engineers as a profession is a stronger claim than the evidence supports.
-
-Software engineering includes deciding what to build, negotiating ambiguity, understanding users, maintaining systems over time, handling failures, managing tradeoffs, reviewing risk, and taking responsibility for consequences. AI can assist many of these tasks. It does not reliably own them.
-
-The profession is likely to demand fewer people for some kinds of low-complexity work and more judgment from the people who remain. That makes foundations more important, not less.
-
-**How do I understand AI systems rather than just use them?**
-
-Study the machinery underneath.
-
-For modern neural systems, the core foundations are linear algebra, calculus, probability, statistics, optimization, algorithms, and systems. Then study machine learning, deep learning, language models, evaluation, and interpretability.
-
-Understanding AI also requires empirical discipline. Benchmarks, demos, and anecdotes are not the same as reliable evidence. You need to know how models are trained, how they are evaluated, where distribution shift appears, what failure modes are common, and how to test claims about capability.
-
-**What parts of CS matter most in the AI era?**
-
-Linear algebra, probability, statistics, optimization, systems, and evaluation have become especially important. So have software engineering, security, databases, distributed systems, and human-computer interaction, because AI systems have to be deployed, monitored, secured, and used by people.
-
-Algorithms and theory still matter. They may not always be visible in everyday AI tooling, but they shape efficiency, scaling, search, inference, cryptography, verification, and limits.
-
-The most AI-relevant CS knowledge is not a narrow list of model APIs. It is the combination of foundations, systems, and judgment that lets you understand and evaluate the technology.
-
-### Career and Long-Term Practice
-
-**I want to get a job. What should I learn, and in what order?**
-
-For most software engineering roles: programming, data structures and algorithms, Git, debugging, testing, databases, web or backend fundamentals, and projects that demonstrate you can build and maintain working software.
-
-For ML/AI roles: programming plus linear algebra, calculus, probability, statistics, machine learning, deep learning, data handling, and evaluation. Projects should show that you understand the data and the model, not only that you can call an API.
-
-For systems roles: C or Rust, computer architecture, operating systems, networking, concurrency, debugging, profiling, and performance.
-
-For research roles: mathematics, theory, papers, writing, and depth in a specific research area.
-
-Do not build a plan around every technology in job ads. Build the durable base, then learn the local stack required for the role.
-
-**What is the most underrated topic in CS education?**
-
-Systems.
-
-Many learners can write code but do not understand what happens below the language runtime: memory, processes, files, system calls, networks, concurrency, caches, scheduling, and failure. This gap damages debugging, performance work, security reasoning, and deployment.
-
-You do not need to become a kernel engineer. But you should understand enough of the machine and operating system that the runtime is not magic.
-
-**What is the most overrated topic in CS education?**
-
-Memorized sorting-algorithm implementation.
-
-Sorting algorithms are worth studying because they teach asymptotic analysis, divide and conquer, lower bounds, data movement, stability, and real performance tradeoffs. What is overrated is memorizing implementations as if professional value comes from writing quicksort from memory.
-
-The same warning applies more broadly: recognizing a pattern is not the same as understanding it. The goal is to derive, analyze, implement, test, and choose appropriately.
-
-**Is competitive programming worth doing?**
-
-It is useful for algorithmic fluency and interview preparation. It is not a complete CS education.
-
-Competitive programming trains speed on well-defined problems. Professional and research work often involve poorly specified problems, changing requirements, systems that must be maintained, and tradeoffs that have no single correct answer.
-
-Use competitive programming if it serves a goal: interviews, algorithmic speed, or enjoyment. Do not use it as a substitute for systems, software engineering, proof, or project work.
-
-**How important is open-source contribution?**
-
-It is valuable mainly because it forces you to read and change real code written by other people.
-
-The resume signal is secondary. The deeper value is learning to navigate a mature codebase, understand conventions, make small safe changes, communicate with maintainers, and receive code review.
-
-Start with projects you use. Documentation fixes, small bugs, tests, and reproduction cases are legitimate first contributions. The goal is not GitHub activity for its own sake; the goal is exposure to real standards and real feedback.
-
-**How do I get better at debugging?**
-
-Treat debugging as a method, not an emergency.
-
-Write down what you expected. Observe what happened. Form a hypothesis. Test the smallest thing that could disprove it. Change one thing at a time. Use the debugger, logs, tests, traces, and minimization tools. When you find the cause, write the mechanism in one sentence.
-
-The habit that improves debugging fastest is prediction. Before running the program, say what you expect to happen. When the result differs, the gap tells you where the model is wrong.
-
-**How should I think about specialization versus breadth?**
-
-Aim for depth with enough breadth to avoid brittleness.
-
-Breadth without depth produces shallow familiarity. Depth without breadth produces narrow competence that fails when problems cross boundaries. Strong CS practitioners usually have one or two deep areas and enough surrounding knowledge to collaborate, integrate, and recognize when another field matters.
-
-Specialize after the foundations are in place. Early specialization built on missing foundations looks fast at first and becomes slow later.
-
-**What should I read beyond textbooks and courses?**
-
-Read code, papers, documentation, postmortems, design documents, standards, and histories.
-
-Textbooks teach organized knowledge. Papers teach how claims are made. Code teaches how ideas survive contact with implementation. Documentation and standards teach precision. Postmortems teach how systems fail. Histories teach that the field was built by people making choices under constraints.
-
-Do not read all of this at once. Add one non-textbook genre at a time as your studies mature.
-
-**How do I build good intuition, not just knowledge?**
-
-Make predictions, test them, and update the model.
-
-Before profiling, predict where the program is slow. Before running a concurrent program, predict the possible interleavings. Before training a model, predict what will fail. Before reading the solution, predict the proof strategy. Then compare with reality.
-
-Intuition is compressed experience. Experience compresses only when you reflect on it. The learner who asks "why was my prediction wrong?" after every serious surprise will develop intuition faster than the learner who merely accumulates hours.
+| Use                                                           |    Recommended? | Reason                                                    |
+| ------------------------------------------------------------- | --------------: | --------------------------------------------------------- |
+| “Give me the complete answer.”                                | Not recommended | Easily bypasses the thinking process that needs training. |
+| “Explain this error message, but do not change the code yet.” |     Recommended | Trains error-understanding ability.                       |
+| “Give me a smaller example.”                                  |     Recommended | Reduces difficulty without replacing thinking.            |
+| “Check where my code may be wrong.”                           |     Recommended | Works well as a feedback tool.                            |
+| “Give me three hints, but do not give the answer directly.”   |     Recommended | Preserves necessary difficulty.                           |
+| “Explain step by step how this code runs.”                    |     Recommended | Helps build a mental model.                               |
+| “Help me finish this assignment.”                             | Not recommended | May produce a result, but weakens ability formation.      |
+| “Challenge my solution and its edge cases.”                   |     Recommended | Trains technical judgment.                                |
 
 ## Chapter 2 — Programming and Mathematical Foundations
 
