@@ -1,5 +1,5 @@
 ---
-title: English Grammar Quick Reference (英语语法速查表)
+title: English Grammar Quick Reference (英语语法大全速查表)
 layout: post-compact
 categories: Sheet
 subclass: English
@@ -8,55 +8,1519 @@ toc_depth: 4
 
 # English Grammar Quick Reference
 
-## 重要语法索引
+## 目录
 
-| 基础 | [**句子成分：主谓宾、定状补**](#句子成分sentence-components) | [**词性：名动代、形副介**](#词性parts-of-speech) | [**主谓一致**](#主谓一致subject-verb-agreement)
-| 动词 | [**现在分词、过去分词作形容词**](#现在分词过去分词作形容词的区别) | [**现在分词、不定式作名词**](#现在分词不定式作名词的区别) | [**不规则过去式、过去分词表**](#不规则动词过去式过去分词表格) |
-| 动词变化 | [**第三人称单数**](#动词变化规则第三人称单数) | [**现在分词**](#动词变化规则动词-ing-形式) | [**过去式、过去分词**](#动词变化规则动词过去式) |
-| 动词语法 | [**时态**](#16-种时态-16-tenses) | [**被动语态**](#被动语态-passive-voice) | [**虚拟语气**](#虚拟语气subjunctive-mood) |
-| 从句 | [**名词性从句**](#1-名词性从句-noun-clauses) | [**定语从句**](#2-定语从句-relative-clauses) | [**状语从句**](#3-状语从句-adverbial-clauses) | 
-| 名词 | [**名词复数变化规则**](#名词变化规则复数形式plural-form) | [**不可数名词**](#不可数名词uncountable-nouns) | [**名词与冠词**](#冠词article) |
-| 代词 | [**人称代词、物主代词、反身代词**](#人称代词personal-pronouns物主代词possessive-pronouns反身代词reflexive-pronouns) | [**不定代词**](#不定代词indefinite-pronouns) | [**疑问代词**](#疑问代词interrogative-pronouns提出问题询问对象) |
-| 形容词 | [**比较级、最高级**](#形容词的级别degrees-of-adjectives) | [**形容词排序规则**](#形容词的排序规则order-of-adjectives) | [**形容词作名词**](#形容词作名词) |
-| 副词 | [**副词的分类**](#副词的分类) | [**副词与形容词的区别**](#副词与形容词的区别) | [**易混淆的形容词和副词**](#易混淆的形容词和副词) |
-| 介词 | [**介词分类和常见介词**](#介词分类和常见介词) | [**介词搭配**](#介词搭配) | [**介词短语**](#介词短语) |
-| 连词 | [**连词分类和常见连词**](#连词conjunctions) | [**引导从句的连词**](#从属连词subordinating-conjunctions) |  [**表达复杂逻辑关系、句子结构的连词**](#其他类型的连词other-conjunction-types) |
-| 其他 | [**of+名词作形容词**](#of--名词作形容词) | [**固定搭配和习语**](#固定搭配和习语collocations-and-idioms) | [**表达数字**](#数字系统) |
+| 章 | 内容 |
+| -- | ---- |
+| 0 | 英语语法总览 |
+| 1 | 词性和句子成分 |
+| 2 | 名词与名词短语 |
+| 3 | 冠词与限定词 |
+| 4 | 代词与指代 |
+| 5 | 动词、时态、语态与语气 |
+| 6 | 形容词 |
+| 7 | 副词与状语 |
+| 8 | 介词与介词短语 |
+| 9 | 连词与逻辑连接 |
+| 10 | 从句系统 |
+| 11 | 主谓一致 |
+| 12 | 感叹词与应答 |
+| 13 | 数字、日期、时间与货币表达 |
+| 14 | 固定搭配、短语动词与习语 |
 
-## 词性和句子成分 （Parts of Speech and Sentence Components）
+## 0. 英语语法总览（Grammar Overview）
 
-### 句子成分（Sentence Components）
+英语语法的核心不是背零散规则，而是理解几个层级如何组合：**词形变化 → 短语结构 → 句子成分 → 从句连接 → 语篇表达**。本章是全书地图，用来建立整体框架；具体规则、例外和速查表在后续章节展开。
 
-句子成分是指构成一个完整句子所需的各个成分，它们在句子中`发挥不同的语法功能`。
+### 0.1 英语语法地图
 
-| **成分**               | **词性**                             | **定义**                                       | **功能**                                   | **示例**                                                                |
-| ---------------------- | ------------------------------------ | ---------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------- |
-| **主语 Subject**       | `名词`、`代词`、`从句`               | 执行动作或描述的主体。                         | 表示句子的中心人物或事物。                 | **The cat** is sleeping.                                                |
-| **谓语 Predicate**     | `动词`                               | 描述主语的动作或状态。                         | 表达主语的行为或状态。                     | The cat **is sleeping**.                                                |
-| **宾语 Object**        | `名词`、`代词`、`名词短语`、`从句`   | 动作的接受者。                                 | 完成谓语的意义。                           | She reads **a book**.                                                   |
-| **表语 Complement**    | `名词`、`形容词`、`短语构成`、`从句` | 用来描述主语或宾语的成分。                     | 进一步说明主语或宾语。                     | He is **a teacher**. / The soup tastes **delicious**.                   |
-| **定语 Attributive**   | `形容词`、`名词短语`、`从句`         | 修饰名词。                                     | 进一步描述名词的特征。                     | **The red apple** is on the table.                                      |
-| **状语 Adverbial**     | `副词`、`从句`                       | 修饰动词、形容词或其他副词 。                  | 提供额外的上下文信息(时间、地点、方式等)。 | She sings **beautifully**. / He arrived **yesterday**.                  |
-| **补语 Complemment**   | `形容词`、`名词`、`从句`             | 补充说明主语或宾语的成分。                     | 完成句子的意思                             | She is **happy**.(主语补语) / They elected him **president**.(宾语补语) |
-| **同位语 Appositive**  | `名词`、`名词短语`、`从句`           | 直接跟随名词，对其进行解释或补充说明的成分。   | 说明或定义名词。                           | My brother, **a doctor**, is visiting.                                  |
-| **插入语Interjection** | `副词`、`短语`、`从句`               | 表达感情或反应的词或短语，通常独立于句子结构。 | 表达情感、反应或情绪。                     | **Wow!** That’s amazing!                                                |
+| 层级 | 研究对象 | 关键问题 | 对应章节 |
+| ---- | -------- | -------- | -------- |
+| 词形 | nouns, verbs, adjectives, adverbs | 单复数、时态、比较级、派生变化 | 2, 5, 6, 7 |
+| 词类 | noun, verb, pronoun, adjective 等 | 一个词在句中承担什么功能 | 1 |
+| 短语 | noun phrase, verb phrase, prepositional phrase | 多个词如何组成一个语法单位 | 1, 2, 8 |
+| 句子成分 | subject, verb, object, complement, adverbial | 谁做什么，对谁做，补充说明什么 | 1 |
+| 句法结构 | simple, compound, complex sentence | 句子如何扩展、并列、嵌套 | 9, 10 |
+| 时态语态语气 | tense, aspect, voice, mood, modality | 动作何时发生、是否完成、是否被动、态度如何 | 5 |
+| 信息结构 | topic, focus, emphasis | 重点放在哪里，如何强调或对比 | 15, 17 |
+| 语篇语用 | style, register, coherence | 句子在段落、会话、邮件中是否自然 | 20, 21 |
 
-### 词性（Parts of Speech）
+**最小完整句的直觉**：
 
-词性是指单词在句子中所`扮演的语法角色`，决定了它在句子中的`用法和意义`。
+| 结构 | 例子 | 说明 |
+| ---- | ---- | ---- |
+| S + V | Birds fly. | 主语 + 不及物动词 |
+| S + V + O | She reads books. | 主语 + 及物动词 + 宾语 |
+| S + V + C | He is tired. | 主语 + 系动词 + 主语补语 |
+| S + V + O + O | She gave me a book. | 双宾结构 |
+| S + V + O + C | They made him captain. | 宾语补语结构 |
 
-| **词性**                | **定义**                                             | **示例**                                                  | **分类**                                                   | **变化**                                      |
-| ----------------------- | ---------------------------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- | --------------------------------------------- |
-| **名词 Noun**           | 表示人、物、地点、概念或活动的词。                   | **dog**（狗）、**city**（城市）、**happiness**（幸福）    | 分为可数名词、不可数名词；专有名词                         | `单数`、`复数`                                |
-| **动词 Verb**           | 表示动作、状态或发生的词。                           | **run**（跑）、**be**（是）、**have**（有）               | 分为及物动词、不及物动词                                   | `现在分词`、`过去式`、`过去分词`              |
-| **代词 Pronoun**        | 替代名词，指代特定的人或事物的词。                   | **he**（他）、**they**（他们）、**it**（它）              | 人称代词、物主代词、指示代词、关系代词、不定代词、反身代词 | 人称代词:`主格`、`宾格`；物主代词、物主形容词 |
-| **形容词 Adjective**    | 修饰名词，表示特征、性质或状态的词。                 | **happy**（快乐的）、**blue**（蓝色的）、**tall**（高的） | 可按性质分类                                               | `比较级`、`最高级`                            |
-| **副词 Adverb**         | 修饰动词、形容词或其他副词，表示方式、时间、地点等。 | **quickly**（迅速地）、**very**（非常）、**here**（这里） | 可按意义分类                                               | `比较级`、`最高级`                            |
-| **介词 Preposition**    | 表示名词或代词与句中其他成分关系的词。               | **in**（在...里面）、**on**（在...上面）、**at**（在...） | 时间介词、地点介词、方向介词、原因介词                     | 不变化                                        |
-| **连词 Conjunction**    | 连接词、短语或句子的词。                             | **and**（和）、**but**（但是）、**or**（或者）            | 并列连词、从属连词、相关连词                               | 不变化                                        |
-| **感叹词 Interjection** | 表示情感、感叹或呼唤的词。                           | **wow**（哇）、**ouch**（哎呀）                           | 情感、问候、赞同或反对、惊讶、赞美                         | 不变化                                        |
+### 0.2 现代英语的基本特征
 
-## 动词和时态、语态、语气 (Verbs and Tenses, Voice, Mood)
+现代英语既有分析语特征，也保留少量屈折变化。实际学习时，应优先抓住三件事：**语序很重要、功能词很重要、少量词形变化很重要**。
+
+| 特征 | 说明 | 例子 | 学习重点 |
+| ---- | ---- | ---- | -------- |
+| 固定语序 | 主语、谓语、宾语位置改变会改变意思 | The dog bit the man. / The man bit the dog. | SVO 结构 |
+| 功能词发达 | 助动词、介词、冠词、连词承担大量语法信息 | will go, in the room, a book, because | 不要只背实词 |
+| 屈折较少 | 词尾变化有限，但仍关键 | books, walked, runs, bigger | 少量变化必须准确 |
+| 助动词系统强 | 时态、否定、疑问、被动常靠助动词 | do not go, is written, has gone | be/do/have/modal |
+| 名词短语复杂 | 限定词、形容词、名词、介词短语、从句可层层修饰 | the old book on the table that I bought | 名词短语边界 |
+| 从句嵌套能力强 | 一个句子可以放进另一个句子 | I know that he came. | 从句类型 |
+| 语体差异明显 | 口语、学术、商务、文学表达不同 | gonna / going to; however / but | 场合选择 |
+
+### 0.3 英语的分析语特征（Analytic Features）
+
+**分析语**指语法关系主要依靠词序、功能词和句法结构表达，而不是依靠复杂词尾变化。现代英语高度依赖这些手段。
+
+| 分析语特征 | 例子 | 说明 |
+| ---------- | ---- | ---- |
+| 词序表达语法关系 | John loves Mary. / Mary loves John. | 主宾位置决定谁爱谁 |
+| 助动词表达时态/语气 | He will go. / He has gone. | `will`, `has` 承担语法信息 |
+| 介词表达关系 | the book on the table; talk to him | 空间、方向、对象、原因等 |
+| 冠词表达指称 | a book / the book | 是否特指、是否首次出现 |
+| 连词表达逻辑 | because, although, if, while | 因果、让步、条件、时间 |
+
+**学习启示**：
+  - 英语不能像中文一样只靠语义顺着说，必须检查句子成分是否完整。
+  - 介词、冠词、助动词、连词不是“小词”，而是英语语法骨架。
+  - 改写句子时，先保住语序和功能词，再调整词汇。
+
+### 0.4 英语的屈折语特征（Inflectional Features）
+
+英语不像拉丁语、德语那样有复杂变格，但仍保留少量高频屈折。错误往往集中在这些小变化上。
+
+| 屈折类型 | 形式 | 例子 | 常见错误 |
+| -------- | ---- | ---- | -------- |
+| 名词复数 | `-s/-es` 与不规则复数 | books, boxes, children | two book |
+| 名词所有格 | `'s / s'` | John's book, students' books | John book |
+| 动词第三人称单数 | `-s/-es` | she works, he goes | she work |
+| 动词过去式 | `-ed` 与不规则过去式 | worked, went | yesterday go |
+| 过去分词 | 规则/不规则 | written, gone, finished | have went |
+| 现在分词 | `-ing` | running, making | runing |
+| 形容词比较级 | `-er/-est` 或 more/most | bigger, most useful | more better |
+
+**现代英语的结论**：英语是一种以分析结构为主、保留弱屈折的语言。它的难点不在大量词尾变化，而在**词序、功能词、搭配、时态体貌和从句结构**的组合。
+
+### 0.5 英语句子的构造层级
+
+| 层级 | 例子 | 说明 |
+| ---- | ---- | ---- |
+| Word | books | 单词 |
+| Phrase | the old books | 短语，无完整主谓 |
+| Clause | I bought the old books | 从句/分句，有主谓 |
+| Sentence | I bought the old books, but I haven't read them. | 完整句 |
+| Paragraph | Several sentences about one topic | 段落 |
+| Text | essay, email, report, conversation | 语篇 |
+
+**从词到句的扩展示例**：
+
+| 扩展 | 例子 | 增加的信息 |
+| ---- | ---- | ---------- |
+| noun | book | 名词核心 |
+| noun phrase | the book | 限定 |
+| expanded noun phrase | the old grammar book | 形容词/名词修饰 |
+| prepositional phrase | the old grammar book on the desk | 介词短语修饰 |
+| relative clause | the old grammar book that I bought yesterday | 定语从句 |
+| full sentence | The old grammar book that I bought yesterday is useful. | 主谓完整 |
+
+### 0.6 英语语法速查方法
+
+遇到一个句子不会分析时，按下面顺序查，比直接查中文翻译更稳定。
+
+| 步骤 | 问题 | 示例 |
+| ---- | ---- | ---- |
+| 1 | 主句谓语在哪里？ | has been working, was written |
+| 2 | 主语是谁？ | The book / What he said / There |
+| 3 | 动词需要什么补足成分？ | give sb sth, make sb adj, depend on sth |
+| 4 | 名词是否可数、是否需要冠词？ | advice, information, a book, the book |
+| 5 | 时态体貌是否符合时间关系？ | has done vs did; was doing vs did |
+| 6 | 从句是什么类型？ | that-clause, relative clause, if-clause |
+| 7 | 介词和搭配是否固定？ | interested in, depend on, responsible for |
+| 8 | 语体是否合适？ | but/however, gonna/going to, ask/request |
+
+**本文件后续补充原则**：
+  - 每章优先给总览表，再给典型句型、易混辨析和高频错误。
+  - 对原有内容中可用的部分进行压缩、校对和重排；不够准确或密度不足的部分会重写。
+  - 速查表优先服务写作、阅读和改错，不追求术语堆叠。
+
+
+## 1. 词性和句子成分（Parts of Speech and Sentence Components）
+
+英语句子的核心问题不是“这个词是什么意思”，而是“这个词在句子里做什么”。同一个词可以在不同位置承担不同功能：
+
+| 例句 | book 的语法身份 | 判断依据 |
+| ---- | --------------- | -------- |
+| I bought a **book**. | 名词；宾语 | 在限定词 a 后，接受 bought 的动作 |
+| I need to **book** a room. | 动词；谓语的一部分 | 在 to 后用动词原形，表示“预订” |
+| a **book** review | 名词作定语 | 放在另一个名词前，说明 review 的类型 |
+
+因此本章先建立四层框架：词性（word class）说明“词本身能做什么”，短语（phrase）说明“一组词合起来做什么”，句子成分（sentence component）说明“在句子里承担什么功能”，基本句型说明“核心成分如何组合”。
+
+### 1.1 词、短语、从句、句子的层级
+
+| 层级 | 英文 | 说明 | 例子 | 在句中可能承担的功能 |
+| ---- | ---- | ---- | ---- | -------------------- |
+| 词 | word | 最小的自由语法单位 | book, quickly, under | 名词、动词、形容词、副词等 |
+| 短语 | phrase | 以一个核心词为中心，不一定有完整主谓 | a useful book, very quickly, in the room | 主语、宾语、定语、状语、补语等 |
+| 从句 | clause | 含有主语和谓语；可独立也可依附主句 | when I arrived, that he was right | 主语、宾语、表语、定语、状语等 |
+| 句子 | sentence | 表达完整信息，书面上通常以大写开头、句号/问号/感叹号结尾 | I arrived late. | 完整陈述、疑问、命令或感叹 |
+
+**实用判断**：
+
+| 问题 | 如果答案是 yes | 例子 |
+| ---- | ------------- | ---- |
+| 是否只有一个核心词？ | 多半是词或单词性成分 | quickly |
+| 是否围绕一个核心词展开，但没有完整主谓？ | 多半是短语 | very quickly / a book on grammar |
+| 是否有主语和谓语？ | 多半是从句或独立句 | because he was late |
+| 是否能独立表达完整意思？ | 是独立句；否则是从属从句 | He was late. / because he was late |
+
+### 1.2 句子成分总览
+
+句子成分是功能概念，不等同于词性。一个名词短语可以做主语，也可以做宾语、表语、同位语；一个从句也可以做主语、宾语或状语。
+
+| 成分 | 英文 | 核心作用 | 常见形式 | 例句 |
+| ---- | ---- | -------- | -------- | ---- |
+| 主语 | Subject | 句子谈论的对象；通常决定谓语动词的人称和数 | 名词短语、代词、动名词、不定式、从句、形式主语 it/there | **The plan** works. / **What he said** matters. |
+| 谓语 | Predicate | 对主语作陈述；通常以动词短语为核心 | 实义动词、助动词、情态动词、系动词加补语 | She **has finished the report**. |
+| 动词 | Verb | 谓语的核心，决定句型和后续成分 | 及物动词、不及物动词、系动词、双宾动词、宾补动词 | They **made** him angry. |
+| 宾语 | Object | 动作影响、涉及或指向的对象 | 名词短语、代词、动名词、不定式、从句 | I know **the answer**. / I know **that he lied**. |
+| 补语 | Complement | 补足主语、宾语或动词意义，缺少时句义不完整 | 名词、形容词、介词短语、不定式、分词、从句 | She is **ready**. / We found it **useful**. |
+| 定语 | Modifier / Attributive | 修饰名词，说明“哪一个、什么样、多少、谁的” | 形容词、名词、介词短语、分词短语、定语从句 | a **red** car / the book **on the desk** |
+| 状语 | Adverbial | 修饰动词、形容词、副词、整个句子，说明时间、地点、方式、原因、条件等 | 副词、介词短语、不定式、分词短语、状语从句 | She spoke **clearly**. / **If possible**, call me. |
+| 同位语 | Appositive | 对前面的名词作解释、改名或补充 | 名词短语、that 从句 | My friend **Tom** called. / the fact **that he left** |
+| 插入语 | Parenthetical / Disjunct | 表示说话人态度、信息来源或补充说明，不参与核心句型 | 副词、介词短语、分词结构、完整插入句 | **Fortunately**, nobody was hurt. |
+
+**注意**：感叹词（wow, ouch, hey）是词性或语用单位，通常独立于句子结构，不应当和主语、宾语、补语并列为核心句子成分。
+
+### 1.3 主语 Subject
+
+主语通常位于谓语之前，表示句子陈述的对象。但英语也常用形式主语和倒装结构，所以不要只靠位置判断。
+
+| 主语形式 | 例句 | 说明 |
+| -------- | ---- | ---- |
+| 名词短语 | **The new policy** caused confusion. | 最常见 |
+| 代词 | **She** agreed. | 注意主格：I, he, she, we, they |
+| 动名词短语 | **Learning grammar** takes time. | 动作整体作“事情” |
+| 不定式短语 | **To finish this today** would be difficult. | 偏正式或书面 |
+| that 从句 | **That he refused** surprised everyone. | 书面；口语常改用 it 作形式主语 |
+| wh 从句 | **What you need** is practice. | 整个从句作主语 |
+| 形式主语 it | **It** is important to check the data. | 真正主语是后面的 to check... |
+| 存在句 there | **There** is a problem. | there 引出存在信息，真正中心是 a problem |
+
+**主语速查**：
+
+| 现象 | 正确表达 | 常见错误 |
+| ---- | -------- | -------- |
+| 英语完整句通常需要主语 | **It** is raining. | Raining. |
+| 中文话题不能直接当英语主语 | **This book** is easy to read. / **I** find this book easy. | This book reads easy. |
+| 动名词作主语时谓语通常用单数 | **Reading** helps. | Reading help. |
+| there be 的动词跟后面的名词一致 | There **is** a reason. / There **are** reasons. | There is many reasons. |
+
+### 1.4 谓语、动词和动词短语
+
+谓语是句子对主语作出的陈述；动词短语是谓语的核心。英语的时态、体、语态、否定和疑问大多体现在动词短语中。
+
+| 动词短语层次 | 例句 | 说明 |
+| ------------ | ---- | ---- |
+| 实义动词 | She **works**. | 表示主要动作或状态 |
+| 助动词 + 实义动词 | She **does not work**. | do 用于否定、疑问、强调 |
+| 情态动词 + 动词原形 | She **can work** remotely. | can, must, should, may 后接原形 |
+| 完成体 | She **has finished**. | have + 过去分词 |
+| 进行体 | She **is working**. | be + 现在分词 |
+| 被动语态 | The report **was written** yesterday. | be + 过去分词 |
+| 复杂动词短语 | She **must have been working**. | 情态 + 完成 + 进行 |
+
+| 动词类型 | 后面常接什么 | 例句 | 语法重点 |
+| -------- | ------------ | ---- | -------- |
+| 不及物动词 Intransitive Verb | 不直接接宾语 | He **arrived**. | 不可直接加宾语；需用介词时另加 |
+| 及物动词 Transitive Verb | 直接宾语 | He **opened the door**. | 被动语态通常可行：The door was opened. |
+| 系动词 Linking Verb | 主语补语 | She **is a lawyer**. / It **seems strange**. | 后面不是宾语，而是补语 |
+| 双宾动词 Ditransitive Verb | 间接宾语 + 直接宾语 | She **sent me an email**. | 可改为 sent an email to me |
+| 宾补动词 Complex-transitive Verb | 宾语 + 宾语补语 | They **made him captain**. | him 和 captain 指同一对象 |
+
+### 1.5 宾语 Object
+
+宾语是动作直接影响、涉及或指向的对象。是否需要宾语取决于动词，而不是中文意思。
+
+| 宾语类型 | 结构 | 例句 | 说明 |
+| -------- | ---- | ---- | ---- |
+| 直接宾语 Direct Object | V + O | She read **the report**. | 动作直接作用对象 |
+| 间接宾语 Indirect Object | V + IO + DO | She gave **me** **a chance**. | me 是接受者，a chance 是被给予的东西 |
+| 介词宾语 Object of Preposition | Prep + O | We talked about **the issue**. | 介词后必须接宾语 |
+| 从句宾语 Clausal Object | V + clause | I believe **that he is right**. | 整个从句作宾语 |
+| 形式宾语 it | V + it + C + real object | I found **it** hard **to focus**. | it 占位，真正宾语在后面 |
+
+**宾语与介词**：
+
+| 中文想法 | 英语表达 | 说明 |
+| -------- | -------- | ---- |
+| 讨论这个问题 | discuss **the issue** | discuss 是及物动词，不说 discuss about |
+| 等他 | wait **for him** | wait 是不及物动词，需 for |
+| 听音乐 | listen **to music** | listen 后通常接 to |
+| 进入房间 | enter **the room** / go **into the room** | enter 是及物动词；go 需介词 |
+
+### 1.6 补语 Complement
+
+补语用来补足句子核心意义。它不是可随意删除的修饰语；删掉后句子往往不完整或意义改变。
+
+| 补语类型 | 结构 | 例句 | 判断方法 |
+| -------- | ---- | ---- | -------- |
+| 主语补语 Subject Complement | S + linking verb + C | She is **confident**. / He became **a doctor**. | 补语说明主语是什么、怎么样 |
+| 宾语补语 Object Complement | S + V + O + C | We made him **leader**. / I found the task **easy**. | 补语说明宾语是什么、怎么样 |
+| 动词补足成分 Verb Complement | V + required phrase/clause | It depends **on the context**. | 动词搭配要求，缺少则不完整 |
+
+| 补语形式 | 例句 | 说明 |
+| -------- | ---- | ---- |
+| 形容词 | The result seems **reasonable**. | 说明状态或性质 |
+| 名词短语 | She became **a manager**. | 说明身份 |
+| 介词短语 | The key is **in the drawer**. | 说明位置、状态、关系 |
+| 不定式 | I want you **to stay**. | 常见于 want/ask/tell/expect 等 |
+| 现在分词 | I saw him **running**. | 强调动作正在进行 |
+| 过去分词 | I had my phone **repaired**. | 强调被动或完成 |
+| 从句 | The question is **whether we can finish**. | 整个从句作补语 |
+
+**宾语和补语的区别**：
+
+| 句子 | 分析 |
+| ---- | ---- |
+| We elected **him**. | him 是宾语；句子已经完整 |
+| We elected **him president**. | him 是宾语，president 是宾语补语，说明 him 的身份 |
+| She made **a cake**. | a cake 是宾语，被制作出来 |
+| She made **me angry**. | me 是宾语，angry 是宾语补语，说明 me 的状态 |
+
+### 1.7 定语、状语、同位语与插入语
+
+这些成分通常不是五大基本句型的核心，但它们决定句子的精确度和信息密度。
+
+#### 定语 Modifier / Attributive
+
+定语修饰名词，回答“哪一个、什么样、多少、谁的、关于什么”。
+
+| 定语形式 | 位置 | 例句 |
+| -------- | ---- | ---- |
+| 限定词 | 名词前 | **the** book, **my** laptop, **three** options |
+| 形容词 | 名词前；少数可后置 | a **clear** answer / something **important** |
+| 名词 | 名词前 | a **grammar** book, a **sales** team |
+| 介词短语 | 名词后 | the book **on the table** |
+| 分词短语 | 名词前或后 | a **broken** window / people **living nearby** |
+| 不定式 | 名词后 | a plan **to reduce costs** |
+| 定语从句 | 名词后 | the person **who called you** |
+
+#### 状语 Adverbial
+
+状语修饰动作、性质、程度或整句，回答“何时、何地、如何、为什么、在什么条件下、到什么程度”。
+
+| 意义 | 常见形式 | 例句 |
+| ---- | -------- | ---- |
+| 时间 | 副词、介词短语、从句 | We met **yesterday**. / **After the meeting**, we left. |
+| 地点 | 副词、介词短语 | Put it **there**. / She lives **in Tokyo**. |
+| 方式 | 副词、介词短语 | He answered **politely**. |
+| 原因 | 介词短语、从句 | She stayed home **because she was sick**. |
+| 目的 | 不定式、介词短语 | I called **to confirm the time**. |
+| 条件 | 从句、介词短语 | **If it rains**, we will cancel. |
+| 让步 | 从句、介词短语 | **Although it was late**, they continued. |
+| 程度 | 副词 | It is **very** useful. |
+| 句子态度 | 副词、插入语 | **Honestly**, I disagree. |
+
+#### 同位语 Appositive
+
+| 类型 | 例句 | 标点特点 |
+| ---- | ---- | -------- |
+| 限定性同位语 | my friend **Tom** | 不用逗号；Tom 用来限定是哪位朋友 |
+| 非限定性同位语 | Tom, **my friend**, called. | 用逗号；补充说明 |
+| that 同位语从句 | the idea **that grammar matters** | that 说明 idea 的内容，不作从句成分 |
+
+#### 插入语 Parenthetical / Disjunct
+
+| 功能 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 表态度 | **Fortunately**, no one was injured. | 说话人评价整句 |
+| 表信息来源 | **According to the report**, sales increased. | 说明依据 |
+| 表转折/补充 | The plan, **however**, failed. | 插入句中，两边常用逗号 |
+| 表确认 | This is, **I think**, the best option. | 不改变核心句型 |
+
+### 1.8 八大词性总览
+
+词性是单词的类别，但英语中很多词可以跨词性使用，所以判断时要看位置、搭配和功能。
+
+| 词性 | 英文 | 核心功能 | 典型位置/搭配 | 例子 |
+| ---- | ---- | -------- | ------------- | ---- |
+| 名词 | Noun | 表示人、物、地点、概念、活动 | 可作主语、宾语、补语；可被限定词修饰 | book, city, happiness |
+| 代词 | Pronoun | 代替名词或名词短语 | 需注意格、数、人称、指代清楚 | I, me, they, this, who |
+| 动词 | Verb | 表示动作、状态、发生 | 构成谓语核心；有时态、体、语态变化 | run, be, have, seem |
+| 形容词 | Adjective | 修饰名词或作补语 | 名词前；系动词后 | useful, large, ready |
+| 副词 | Adverb | 修饰动词、形容词、副词或整句 | 位置灵活；常表达方式、程度、时间 | quickly, very, here, however |
+| 介词 | Preposition | 表示名词与其他成分的关系 | 后接名词、代词、动名词或名词从句 | in, on, at, for, with |
+| 连词 | Conjunction | 连接词、短语、从句或句子 | 并列、从属、关联结构 | and, but, because, although |
+| 感叹词 | Interjection | 表达情绪、反应、呼唤 | 多独立使用，不参与核心句型 | wow, ouch, hey |
+
+**限定词 Determiner** 是现代语法中非常重要的一类，传统八大词性常把它归入形容词或单独处理。本文件单列“冠词与限定词”一章。
+
+| 限定词类型 | 例子 | 功能 |
+| ---------- | ---- | ---- |
+| 冠词 | a, an, the | 标记泛指、特指、新旧信息 |
+| 指示限定词 | this, that, these, those | 指示远近或上下文对象 |
+| 物主限定词 | my, your, his, her, its, our, their | 表示所属或关联 |
+| 数量限定词 | some, any, many, much, few, little, all | 表示数量或范围 |
+| 数词 | one, two, first, second | 表示数量或顺序 |
+
+### 1.9 短语类型
+
+短语的类别由核心词决定。分析长句时，先找短语边界，再判断短语在句中做什么成分。
+
+| 短语类型 | 英文 | 核心词 | 例子 | 常见功能 |
+| -------- | ---- | ------ | ---- | -------- |
+| 名词短语 | Noun Phrase, NP | 名词/代词 | the old house near the river | 主语、宾语、补语、介词宾语 |
+| 动词短语 | Verb Phrase, VP | 动词 | has been working on it | 谓语核心 |
+| 形容词短语 | Adjective Phrase, AdjP | 形容词 | very difficult to solve | 定语、主语补语、宾语补语 |
+| 副词短语 | Adverb Phrase, AdvP | 副词 | quite slowly, very carefully | 状语、程度修饰 |
+| 介词短语 | Prepositional Phrase, PP | 介词 | in the morning, with a smile | 定语、状语、补语 |
+| 不定式短语 | Infinitive Phrase | to + 动词原形 | to finish the project | 主语、宾语、定语、状语、补语 |
+| 动名词短语 | Gerund Phrase | -ing 动名词 | working from home | 主语、宾语、介词宾语 |
+| 分词短语 | Participle Phrase | 现在分词/过去分词 | standing by the door / written in 2020 | 定语、状语、补语 |
+
+**同一个短语，不同功能**：
+
+| 短语 | 例句 | 功能 |
+| ---- | ---- | ---- |
+| in the room | The key is **in the room**. | 主语补语 |
+| in the room | I found the key **in the room**. | 状语 |
+| in the room | the key **in the room** | 定语 |
+
+### 1.10 五大基本句型
+
+英语核心句型可压缩为五类。长句通常是在这些核心结构上增加定语、状语、从句和插入语。
+
+| 句型 | 结构 | 例句 | 核心判断 |
+| ---- | ---- | ---- | -------- |
+| SV | 主语 + 不及物动词 | The baby **slept**. | 动词后不需要宾语或补语 |
+| SVO | 主语 + 及物动词 + 宾语 | She **opened the window**. | 动作直接作用于宾语 |
+| SVC | 主语 + 系动词 + 主语补语 | The sky **looks clear**. | clear 说明 sky |
+| SVOO | 主语 + 动词 + 间接宾语 + 直接宾语 | He **sent me a message**. | me 是接受者，message 是内容 |
+| SVOC | 主语 + 动词 + 宾语 + 宾语补语 | They **painted the wall white**. | white 说明 wall 的结果状态 |
+
+| 易混结构 | 例句 | 分析 |
+| -------- | ---- | ---- |
+| SVO vs SVC | She became **a teacher**. | a teacher 不是宾语，而是主语补语 |
+| SVOO vs SVO + PP | She gave **me** **a book**. / She gave **a book** **to me**. | 双宾结构可改为介词结构 |
+| SVOC vs SVO + 状语 | I found him **honest**. / I found him **in the library**. | honest 是宾补；in the library 通常是地点状语 |
+| SV vs SVA | He lives **in London**. | 有些语法把必要地点状语单列为 SVA |
+
+### 1.11 句子成分分析步骤
+
+分析英文句子时，优先找核心，不要先被长定语或插入语带偏。
+
+| 步骤 | 要问的问题 | 操作示例 |
+| ---- | ---------- | -------- |
+| 1 | 谓语动词在哪里？ | 找有时态的人称动词：has decided, was built, should leave |
+| 2 | 谁/什么执行或承受这个谓语？ | 谓语前后找主语；被动句主语是承受者 |
+| 3 | 动词类型是什么？ | 及物、不及物、系动词、双宾动词、宾补动词 |
+| 4 | 动词后是否有必需成分？ | 宾语、补语、介词补足成分 |
+| 5 | 哪些成分只是修饰？ | 定语修饰名词；状语修饰动作、性质或整句 |
+| 6 | 从句在做什么功能？ | that he left 可能作主语、宾语、表语或同位语 |
+| 7 | 代词指代是否清楚？ | it/they/this/which 指向哪个名词或事件 |
+
+**示例分析**：
+
+| 句子 | 核心结构 | 分析 |
+| ---- | -------- | ---- |
+| The report on climate risk was released yesterday. | S + V | The report 是主语；on climate risk 是定语；was released 是谓语；yesterday 是状语 |
+| I found the explanation surprisingly clear. | S + V + O + C | I 主语；found 谓语；the explanation 宾语；clear 宾补；surprisingly 修饰 clear |
+| What she needs is a clear deadline. | S + V + C | What she needs 是主语从句；is 系动词；a clear deadline 是主语补语 |
+
+### 1.12 常见错误速查
+
+| 错误类型 | 不自然/错误 | 推荐表达 | 原因 |
+| -------- | ----------- | -------- | ---- |
+| 缺主语 | Is important to review it. | **It** is important to review it. | 英语完整句通常需要主语；it 作形式主语 |
+| 缺谓语 | The solution very useful. | The solution **is** very useful. | 形容词不能单独作谓语 |
+| 句子碎片 | Because he was late. | He missed the meeting **because he was late**. | because 从句不能单独成完整书面句 |
+| 逗号拼接 | It was late, we left. | It was late, **so** we left. / It was late; we left. | 两个独立句不能只用逗号连接 |
+| 主语和谓语不一致 | The results **shows** a trend. | The results **show** a trend. | results 是复数 |
+| 形容词/副词混用 | She speaks English **good**. | She speaks English **well**. | 修饰 speaks 用副词 |
+| 宾语遗漏 | I discussed about the issue. | I discussed **the issue**. | discuss 直接接宾语 |
+| 补语误判为宾语 | She is **happy**. | happy 是主语补语 | 系动词后不是宾语 |
+| 中文话题直译 | This problem we should solve. | We should solve this problem. | 英语普通陈述句通常主语在谓语前 |
+| 修饰语位置不清 | I only told him yesterday. | Only I told him yesterday. / I told only him yesterday. | only 的位置改变焦点 |
+
+## 2. 名词与名词短语（Nouns and Noun Phrases）
+
+名词是英语名词短语的中心词，可以表示人、物、地点、机构、材料、事件、行为、性质、状态和抽象概念。真正写句子时，单个名词很少孤立出现，更多是和限定词、形容词、数量词、介词短语、分词短语、定语从句等组成名词短语。
+
+| 形式 | 例子 | 在句中功能 |
+| ---- | ---- | ---------- |
+| 单个名词 | **Grammar** matters. | 主语 |
+| 限定词 + 名词 | I read **the report**. | 宾语 |
+| 复杂名词短语 | **The latest report on energy prices** was released. | 主语 |
+| 名词性从句 | **What he said** was true. | 主语；本质上起名词短语功能 |
+
+本章重点不是背名词列表，而是解决四个实用问题：名词是否可数、单复数如何变化、名词短语如何扩展、名词在句中如何和动词/限定词配合。
+
+### 2.1 名词分类总览
+
+| 分类 | 英文 | 含义 | 语法重点 | 例子 |
+| ---- | ---- | ---- | -------- | ---- |
+| 普通名词 | Common Noun | 表示一类人、物、地点或概念 | 通常可加限定词；可有单复数或不可数用法 | book, city, problem |
+| 专有名词 | Proper Noun | 表示特定人名、地名、机构、作品、品牌等 | 首字母大写；通常不用冠词，但有例外 | London, Microsoft, the United Nations |
+| 可数名词 | Countable Noun | 可以按个体计数 | 单数通常需要限定词；有复数 | a plan, two plans |
+| 不可数名词 | Uncountable Noun | 不能直接按个体计数 | 通常无复数；不用 a/an；用量词表达单位 | information, water, advice |
+| 集合名词 | Collective Noun | 表示一组成员构成的整体 | 英美用法和语义焦点会影响单复数动词 | team, staff, family |
+| 具体名词 | Concrete Noun | 可感知的实体 | 多数可数，也有物质名词不可数 | table, paper, metal |
+| 抽象名词 | Abstract Noun | 概念、性质、状态、活动 | 常不可数，但可表示一次经历或一种形式 | freedom, success, experience |
+| 物质名词 | Material Noun | 材料、液体、气体、粉末等 | 通常不可数；可用量词或表示种类 | steel, coffee, sugar |
+| 复合名词 | Compound Noun | 由两个或多个词构成一个名词单位 | 复数位置、连字符、重音需注意 | bus stop, editor-in-chief, software engineer |
+
+**速查原则**：
+
+| 判断问题 | 结论 |
+| -------- | ---- |
+| 能不能直接说 one/two/three + 名词？ | 能，多半可数：one idea, two chairs |
+| 能不能直接加 a/an？ | 能，通常是单数可数：a problem |
+| 是否需要 a piece of / a cup of / an item of？ | 多半不可数：a piece of advice |
+| 是否表示材料、信息、抽象概念整体？ | 多半不可数：furniture, evidence, progress |
+| 是否表示具体一次事件、作品、种类、份量？ | 可能转为可数：a success, two coffees, several wines |
+
+### 2.2 可数名词 Countable Nouns
+
+可数名词有单数和复数。单数可数名词不能裸用，通常需要冠词、物主限定词、指示限定词、数词或其他限定词。
+
+| 表达 | 是否自然 | 原因 |
+| ---- | -------- | ---- |
+| I need **a suggestion**. | 正确 | suggestion 是单数可数名词，需要 a |
+| I need **suggestions**. | 正确 | 复数可数名词可裸用，表示泛指 |
+| I need **suggestion**. | 错误 | 单数可数名词缺少限定词 |
+| I need **some suggestions**. | 正确 | some 表示不定数量 |
+
+| 单数可数名词前常见限定方式 | 例子 |
+| -------------------------- | ---- |
+| 不定冠词 | a question, an answer |
+| 定冠词 | the question |
+| 指示限定词 | this question, that answer |
+| 物主限定词 | my question, their answer |
+| 数词 | one question |
+| each/every | each student, every reason |
+| another | another option |
+
+### 2.3 复数形式 Plural Forms
+
+| 规则 | 变化 | 例子 | 注意 |
+| ---- | ---- | ---- | ---- |
+| 一般情况 | 加 -s | book -> books, plan -> plans | 最常见 |
+| 以 s, x, z, ch, sh 结尾 | 加 -es | class -> classes, box -> boxes, wish -> wishes | 便于发音 |
+| 辅音字母 + y | y 变 i 加 -es | city -> cities, policy -> policies | 元音 + y 直接加 -s：day -> days |
+| 以 f / fe 结尾的部分词 | f/fe 变 v 加 -es | leaf -> leaves, life -> lives | 不是全部：roof -> roofs |
+| 以 o 结尾的部分词 | 加 -es 或 -s | tomato -> tomatoes, photo -> photos | 常见外来词多加 -s |
+| 复合名词 | 主要名词变复数 | editors-in-chief, passers-by | 若无明显中心词，末尾加 -s：grown-ups |
+| 字母、数字、缩写 | 常加 -s | CDs, the 1990s, two As | 不要滥用撇号 |
+
+**常见不规则复数**：
+
+| 单数 | 复数 | 说明 |
+| ---- | ---- | ---- |
+| man | men | 元音变化 |
+| woman | women | 注意发音也变化 |
+| child | children | -en 复数 |
+| person | people | people 表示“人们”；persons 用于法律/正式语境 |
+| foot | feet | 元音变化 |
+| tooth | teeth | 元音变化 |
+| basis | bases | -is -> -es |
+| analysis | analyses | -sis -> -ses |
+| crisis | crises | -sis -> -ses |
+| phenomenon | phenomena | 学术词；phenomenons 也可见但不如 phenomena 标准 |
+| criterion | criteria | criterion 是单数，criteria 是复数 |
+| datum | data | 现代英语 data 常作集合/不可数处理，学术严谨写作中也可作复数 |
+
+**单复数同形或特殊复数**：
+
+| 形式 | 例子 | 用法 |
+| ---- | ---- | ---- |
+| 单复数同形 | series, species, aircraft | one series / two series |
+| 只有复数形式 | clothes, belongings, surroundings | 谓语通常用复数 |
+| 形式复数但常作单数 | news, physics, economics, politics | The news is important. |
+| 成双物件 | glasses, scissors, trousers | 常用 a pair of 表示一件/一副 |
+
+### 2.4 不可数名词 Uncountable Nouns
+
+不可数名词表示物质、整体、抽象概念、活动或信息，通常不能直接用 a/an，也不能直接加复数 -s。
+
+| 类别 | 常见不可数名词 | 正确表达 |
+| ---- | -------------- | -------- |
+| 信息/知识 | information, advice, evidence, knowledge, research, news | a piece of information, some advice |
+| 工作/学习 | work, homework, progress, practice, training | a piece of work, much progress |
+| 物质/食物 | water, coffee, bread, rice, cheese, sugar, salt | a glass of water, a slice of bread |
+| 抽象概念 | time, money, luck, help, damage, traffic, behavior | a bit of luck, a lot of traffic |
+| 集合/总称 | furniture, equipment, luggage, baggage, clothing, software | a piece of furniture, an item of clothing |
+| 自然现象 | weather, rain, snow, heat, light | heavy rain, a flash of light |
+
+| 错误 | 正确 | 说明 |
+| ---- | ---- | ---- |
+| an information | a piece of information | information 不直接加 a |
+| many advices | much advice / many pieces of advice | advice 不加复数 -s |
+| several equipments | several pieces of equipment | equipment 不可数 |
+| a furniture | a piece of furniture | furniture 是集合性不可数 |
+| many researches | much research / many studies | research 常不可数；study 可数 |
+| homeworks | homework assignments / pieces of homework | homework 不可数 |
+
+### 2.5 可数与不可数的转换
+
+很多名词不是永久固定为可数或不可数，而是随意义变化。
+
+| 名词 | 不可数用法 | 可数用法 |
+| ---- | ---------- | -------- |
+| coffee | Coffee is expensive. 咖啡这种饮品 | Two coffees, please. 两杯咖啡 |
+| paper | Paper is recyclable. 纸这种材料 | I wrote three papers. 论文/文件 |
+| glass | Glass breaks easily. 玻璃材料 | a glass / two glasses 杯子 |
+| stone | Stone is durable. 石材 | stones on the path 石块 |
+| experience | Experience matters. 经验 | memorable experiences 经历 |
+| success | Success takes effort. 成功这个概念 | The project was a success. 一次成功 |
+| work | Work can be stressful. 工作 | a work of art 一件作品 |
+| business | Business is slow. 生意总体 | several businesses 几家公司 |
+| room | There is no room. 空间 | three rooms 三个房间 |
+| light | Light travels fast. 光 | three lights 三盏灯 |
+
+**标准英语中通常不要复数化的词**：
+
+| 不推荐 | 推荐 |
+| ------ | ---- |
+| informations | pieces of information / information |
+| knowledges | knowledge / areas of knowledge |
+| advices | pieces of advice / advice |
+| evidences | evidence / pieces of evidence |
+| furnitures | furniture / pieces of furniture |
+
+### 2.6 数量表达与量词
+
+不可数名词要表达“一个/几个单位”，通常借助量词结构：
+
+```text
+a / an / number + measure word + of + noun
+```
+
+| 量词类型 | 量词 | 搭配例子 |
+| -------- | ---- | -------- |
+| 通用单位 | a piece of, a bit of, an item of | a piece of advice, an item of clothing |
+| 容器 | a cup of, a glass of, a bottle of, a bowl of | a cup of tea, a bottle of water |
+| 形状/切分 | a slice of, a loaf of, a bar of, a sheet of | a slice of bread, a sheet of paper |
+| 微小单位 | a drop of, a grain of, a pinch of | a drop of water, a grain of rice |
+| 集合单位 | a pair of, a set of, a series of, a group of | a pair of glasses, a series of events |
+| 度量单位 | a liter of, a pound of, a kilogram of, a meter of | a liter of milk, a meter of fabric |
+| 抽象单位 | a sense of, a lack of, a sign of, a degree of | a sense of responsibility, a lack of evidence |
+
+| 表数量的词 | 接可数名词 | 接不可数名词 | 两者都可 |
+| ---------- | ---------- | ------------ | -------- |
+| many / few / a few | many reasons, a few questions | 不用 | - |
+| much / little / a little | 不用 | much time, a little money | - |
+| several | several options | 不用 | - |
+| a number of | a number of reports | 不用 | - |
+| a great deal of | 不用 | a great deal of work | - |
+| some / any | some ideas | some information | 都可 |
+| a lot of / lots of | a lot of people | a lot of traffic | 都可 |
+| plenty of | plenty of examples | plenty of evidence | 都可 |
+| enough | enough chairs | enough time | 都可 |
+| no | no mistakes | no progress | 都可 |
+
+### 2.7 集合名词 Collective Nouns
+
+集合名词可以看作整体，也可以强调成员。美国英语更常把 team, staff, company 等看作单数整体；英国英语中复数动词更常见。
+
+| 表达焦点 | 例句 | 说明 |
+| -------- | ---- | ---- |
+| 整体 | The team **is** ready. | 团队作为一个单位 |
+| 成员 | The team **are** discussing their roles. | 英国英语更常见；强调成员各自行动 |
+| 机构整体 | The company **has** changed its policy. | 公司作为法人/整体 |
+| 员工群体 | The staff **are** working late. | staff 强调成员时可用复数意义 |
+
+| 常见集合名词 | 常见搭配 |
+| ------------ | -------- |
+| team | a team of engineers |
+| staff | the staff, staff members |
+| family | a family of four |
+| committee | a committee meeting |
+| audience | a large audience |
+| public | the public is / are |
+| police | the police are |
+| people | people are |
+
+### 2.8 专有名词 Proper Nouns
+
+专有名词表示独一对象，首字母大写。是否加 the 取决于名称类型和习惯。
+
+| 类型 | 通常不用 the | 通常用 the |
+| ---- | ------------ | ---------- |
+| 人名 | David, Jane Austen | the Smiths 表示一家人 |
+| 城市/国家 | Tokyo, France, China | the United States, the Netherlands |
+| 公司/品牌 | Apple, Google, Toyota | the BBC, the New York Times |
+| 大学 | Harvard University | the University of Oxford |
+| 山峰/湖泊 | Mount Fuji, Lake Geneva | the Alps, the Himalayas |
+| 河流/海洋/沙漠 | - | the Nile, the Pacific, the Sahara |
+| 组织/机构 | NATO | the United Nations, the World Bank |
+
+**专有名词普通化**：
+
+| 用法 | 例句 | 含义 |
+| ---- | ---- | ---- |
+| 表示某一家族成员 | The Smiths are moving. | Smith 一家 |
+| 表示某作品/版本 | I bought a Picasso. | 一幅毕加索作品 |
+| 表示某类典型人物 | He is no Einstein. | 他不是天才型人物 |
+
+### 2.9 性别、职业名词与指代 Gender and Reference
+
+英语名词没有像法语、德语那样系统的语法性别。多数事物、概念、机构和地点本身没有阳性/阴性变化；性别主要体现在自然性别、称谓、职业名词和代词指代中。
+
+| 类型 | 传统/带性别形式 | 更中性或现代常用形式 | 说明 |
+| ---- | --------------- | -------------------- | ---- |
+| 职业 | chairman | chair / chairperson | 正式写作常避免不必要的男性默认 |
+| 职业 | salesman | salesperson / sales representative | 强调岗位，不强调性别 |
+| 职业 | policeman | police officer | 中性表达更通用 |
+| 婚姻状态 | Miss / Mrs. | Ms. | 不必暴露婚姻状态 |
+| 演艺身份 | actor / actress | actor | actor 可中性使用；actress 仍常见 |
+
+| 指代对象 | 常见代词 | 例句 |
+| -------- | -------- | ---- |
+| 明确男性 | he / him / his | David said **he** would call. |
+| 明确女性 | she / her / hers | Maria said **she** would call. |
+| 性别未知或不重要的单数人 | they / them / their | If a student has a question, **they** should ask. |
+| 事物、抽象概念、机构产品 | it / its | The system lost **its** connection. |
+| 公司/团队作为成员群体 | they / their | The company said **they** were hiring. |
+
+**写作建议**：不知道性别时，单数 they 在现代英语中已经很常见，尤其适合说明书、政策文本和泛指场景。极正式文本可改写为复数：Students should submit their forms.
+
+### 2.10 名词的格与所有格 Case and Possessive
+
+现代英语中，普通名词的主格和宾格形式通常相同；格变化主要体现在代词和名词所有格上。
+
+| 格 | 功能 | 名词例句 | 代词变化 |
+| -- | ---- | -------- | -------- |
+| 主格 | 作主语 | **The manager** approved it. | I, he, she, we, they |
+| 宾格 | 作宾语或介词宾语 | I called **the manager**. | me, him, her, us, them |
+| 所有格 | 表示所属、来源、关联、时间等 | **the manager's** decision | my/mine, his, her/hers |
+
+**所有格形式**：
+
+| 名词类型 | 形式 | 例子 |
+| -------- | ---- | ---- |
+| 单数名词 | 加 's | the user's password |
+| 以 s 结尾的单数名词 | 加 's 或只加 '；风格保持一致 | James's book / James' book |
+| 规则复数名词 | 只加 ' | the students' essays |
+| 不规则复数名词 | 加 's | children's books, people's rights |
+| 复合名词 | 最后一个词加 's | my brother-in-law's car |
+| 共同拥有 | 最后一个名词加 's | Alice and Ben's apartment |
+| 分别拥有 | 每个名词都加 's | Alice's and Ben's apartments |
+
+**'s 所有格与 of 结构**：
+
+| 倾向用 's | 倾向用 of | 例子 |
+| --------- | -------- | ---- |
+| 人、机构、群体 | 无生命物体的部分或抽象关系 | Sarah's idea / the roof of the building |
+| 时间、距离、价值 | 正式抽象名词关系 | today's meeting / the importance of accuracy |
+| 固定表达 | 长名词短语 | a week's work / the decision of the committee |
+
+### 2.11 复合名词与名词作定语
+
+名词可以放在另一个名词前作定语，说明类型、用途、材料、领域、地点或对象。名词作定语时通常用单数形式，即使含义是复数。
+
+| 结构 | 例子 | 说明 |
+| ---- | ---- | ---- |
+| 名词 + 名词 | data analysis, project manager | 前一个名词限定后一个名词 |
+| 名词 + 名词 + 名词 | customer support team | 从右往左找中心词：team 是中心 |
+| 数字 + 名词 + 名词 | a five-year plan | year 用单数，因为整体作前置定语 |
+| 名词 + 动名词 | decision-making process | 常用连字符 |
+| 形容词 + 名词复合 | high school student | high school 作为整体修饰 student |
+| 介词短语等价 | company policy = policy of the company | 名词前置更简洁 |
+
+| 错误 | 正确 | 原因 |
+| ---- | ---- | ---- |
+| a five-years plan | a five-year plan | 复合前置定语中的 year 用单数 |
+| a shoes store | a shoe store | 名词作定语通常用单数 |
+| informations system | information system | information 不可数，也常作名词定语 |
+| a two hours meeting | a two-hour meeting / a meeting of two hours | 前置复合形容词用单数 |
+
+**复合名词的书写形式没有完全统一**：
+
+| 形式 | 例子 | 建议 |
+| ---- | ---- | ---- |
+| 分写 | bus stop, credit card | 查词典或遵循领域习惯 |
+| 连字符 | editor-in-chief, decision-making | 用于避免歧义或固定复合 |
+| 合写 | notebook, database, website | 高频固定词常合写 |
+
+### 2.12 名词短语结构 Noun Phrase Structure
+
+名词短语的核心是中心名词或代词，基本结构如下：
+
+```text
+[前置限定/修饰] + 中心名词 + [后置修饰/补足]
+```
+
+| 部分 | 常见内容 | 例子 |
+| ---- | -------- | ---- |
+| 前位限定词 | all, both, half, twice | all the data |
+| 中位限定词 | a, an, the, this, my, each, no | the plan, my idea |
+| 后位限定词 | one, two, many, few, several | the two reports |
+| 前置修饰语 | 形容词、名词、分词、复合修饰语 | a detailed financial report |
+| 中心词 | 名词或代词 | report, idea, they |
+| 后置修饰语 | 介词短语、分词短语、不定式、定语从句、同位语 | the report on inflation that we discussed |
+
+| 名词短语 | 结构分析 |
+| -------- | -------- |
+| the report | the 限定词 + report 中心词 |
+| the latest report | the 限定词 + latest 前置修饰 + report |
+| the latest report on inflation | the + latest + report + on inflation 后置修饰 |
+| the latest report on inflation that we discussed yesterday | the + latest + report + on inflation + that 从句 |
+| all the three major policy changes | all 前位限定 + the 中位限定 + three 后位限定 + major policy 前置修饰 + changes 中心词 |
+
+**限定词顺序速查**：
+
+| 顺序 | 类别 | 例子 |
+| ---- | ---- | ---- |
+| 1 | 前位限定词 | all, both, half |
+| 2 | 中位限定词 | the, a, this, my, no, each, every |
+| 3 | 后位限定词 | one, two, many, several, few |
+| 4 | 形容词/名词修饰语 | important, financial, research |
+| 5 | 中心名词 | report, question, system |
+
+自然表达：**all my many old research notes**  
+不自然：**my all many old research notes**
+
+### 2.13 名词短语的后置修饰
+
+英语名词短语很容易向右扩展。阅读长句时，先找中心名词，再判断后面的短语或从句修饰谁。
+
+| 后置修饰类型 | 例子 | 说明 |
+| ------------ | ---- | ---- |
+| 介词短语 | the book **on the shelf** | 表位置、关系、内容、来源等 |
+| 定语从句 | the person **who approved the plan** | 限定或补充说明名词 |
+| 现在分词短语 | the people **working on the project** | 主动或进行意义 |
+| 过去分词短语 | the report **published yesterday** | 被动或完成意义 |
+| 不定式短语 | the next step **to take** | 未来、目的、需要完成的动作 |
+| 形容词短语后置 | something **important** | -thing/-one/-body 类词后常后置 |
+| 同位语 | Paris, **the capital of France** | 解释或改名 |
+
+| 句子 | 中心名词 | 后置修饰 |
+| ---- | -------- | -------- |
+| The proposal from the finance team was rejected. | proposal | from the finance team |
+| The proposal that the finance team submitted was rejected. | proposal | that the finance team submitted |
+| The proposal submitted by the finance team was rejected. | proposal | submitted by the finance team |
+
+### 2.14 名词短语在句中的功能
+
+| 功能 | 例句 | 分析 |
+| ---- | ---- | ---- |
+| 主语 | **The new policy** caused debate. | 名词短语作主语 |
+| 宾语 | We reviewed **the new policy**. | 名词短语作直接宾语 |
+| 介词宾语 | We talked about **the new policy**. | 名词短语作介词 about 的宾语 |
+| 主语补语 | The issue is **a lack of evidence**. | 说明主语是什么 |
+| 宾语补语 | They elected him **chairperson**. | chairperson 补充说明 him 的身份 |
+| 同位语 | The issue, **a lack of evidence**, remains unresolved. | 解释 issue |
+| 前置定语 | a **company** policy | 名词 company 修饰 policy |
+
+### 2.15 名词常见错误速查
+
+| 错误类型 | 不自然/错误 | 推荐表达 | 原因 |
+| -------- | ----------- | -------- | ---- |
+| 单数可数名词裸用 | I need **suggestion**. | I need **a suggestion**. | 单数可数名词通常需要限定词 |
+| 不可数名词加 a/an | an advice | a piece of advice | advice 不可数 |
+| 不可数名词复数化 | informations, equipments | information, equipment | 标准英语中通常不加 -s |
+| many/much 混用 | much problems | many problems | problem 可数 |
+| few/little 混用 | few progress | little progress | progress 不可数 |
+| 复合定语复数化 | a five-years plan | a five-year plan | 前置复合修饰语用单数形式 |
+| 所有格位置错 | my brother's-in-law car | my brother-in-law's car | 复合名词最后加 's |
+| criteria 当单数 | this criteria | this criterion / these criteria | criterion 单数，criteria 复数 |
+| data 搭配不一致 | the data is / are 混用 | 按文体统一：the data are 更正式；the data is 常见于现代一般用法 | 同一文本中保持一致 |
+| 名词短语边界误读 | the report on prices from 2020 | 明确：the 2020 report on prices / the report from 2020 on prices | 多个后置修饰可能造成歧义 |
+
+## 3. 冠词与限定词（Articles and Determiners）
+
+限定词放在名词短语的开头，用来说明名词的范围、数量、特指程度、所属关系或说话者与名词的距离。冠词（a/an/the）只是限定词的一部分；真正写作时，冠词要和指示限定词、物主限定词、数量限定词、数词等一起考虑。
+
+| 名词短语 | 限定词 | 中心名词 | 含义 |
+| -------- | ------ | -------- | ---- |
+| **a** book | a | book | 任意一本书；第一次引入 |
+| **the** book | the | book | 双方都能识别的那本书 |
+| **this** book | this | book | 说话者附近或当前谈论的这本书 |
+| **my** book | my | book | 属于我或与我有关的书 |
+| **some** books | some | books | 一些书，数量不精确 |
+| **all three books** | all + three | books | 三本书全部 |
+
+本章的核心判断是：这个名词是可数还是不可数？单数还是复数？泛指还是特指？是否需要表达数量、所属、远近或整体范围？
+
+### 3.1 限定词总览
+
+| 类型 | 英文 | 常见词 | 功能 | 例子 |
+| ---- | ---- | ------ | ---- | ---- |
+| 冠词 | Articles | a, an, the, zero article | 表示泛指、特指、新旧信息 | a problem, the problem, problems |
+| 指示限定词 | Demonstratives | this, that, these, those | 表示远近、上下文指向 | this report, those results |
+| 物主限定词 | Possessives | my, your, his, her, its, our, their | 表示所属、关联、责任 | our team, their decision |
+| 数量限定词 | Quantifiers | some, any, no, many, much, few, little, several, enough | 表示数量或范围 | many questions, much time |
+| 分配限定词 | Distributives | each, every, either, neither | 表示每个、任一、两者都不 | each student, every day |
+| 数词 | Numerals | one, two, first, second | 表示数量或顺序 | two options, the first step |
+| 疑问/关系限定词 | Interrogative / Relative Determiners | which, what, whose | 提问或引导从句 | which file, whose idea |
+| 前位限定词 | Predeterminers | all, both, half, twice, double, such, what | 放在主要限定词前 | all the data, such a mistake |
+
+**限定词和代词的区别**：
+
+| 用法 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 限定词 | **This report** is useful. | this 后面有名词 report |
+| 代词 | **This** is useful. | this 单独代替一个名词短语 |
+| 限定词 | I like **some ideas**. | some 修饰 ideas |
+| 代词 | I like **some**. | some 单独指代一部分 |
+
+### 3.2 限定词顺序
+
+一个名词前可以有多个限定成分，但顺序比较固定：
+
+```text
+前位限定词 + 中位限定词 + 后位限定词 + 形容词/名词修饰语 + 中心名词
+```
+
+| 位置 | 常见词 | 例子 |
+| ---- | ------ | ---- |
+| 前位限定词 | all, both, half, double, twice, such, what | all the students, such a problem |
+| 中位限定词 | a/an, the, this/that, my/your, no, each, every, either, neither | my two books, each student |
+| 后位限定词 | one/two, first/second, many, few, several, next, last, other | the next three weeks |
+| 修饰语 | 形容词、名词、分词、复合修饰语 | the next three important policy changes |
+| 中心名词 | 名词 | changes |
+
+| 自然 | 不自然 | 原因 |
+| ---- | ------ | ---- |
+| all **the** students | the all students | all 是前位限定词 |
+| both **my** parents | my both parents | both 通常在物主限定词前 |
+| such **a** mistake | a such mistake | such 在 a/an 前 |
+| the **first two** chapters | the two first chapters | 序数词通常在基数词前 |
+| my **many** old notes | many my old notes | 物主限定词在数量限定词前 |
+
+### 3.3 a / an：不定冠词
+
+a/an 用于单数可数名词，通常表示“一个、某一个、任意一个、某类成员”。选择 a 还是 an 看发音的首音素，不看拼写。
+
+| 用 a | 用 an | 原因 |
+| ---- | ---- | ---- |
+| a book | an apple | book 辅音音素开头；apple 元音音素开头 |
+| a university | an hour | university 读 /ju-/；hour 的 h 不发音 |
+| a European country | an honest answer | European 读 /j-/；honest 的 h 不发音 |
+| a user | an umbrella | user 读 /ju-/；umbrella 元音开头 |
+| a one-time fee | an MBA | one 读 /w/；MBA 读 /em/ |
+
+| 用法 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 第一次引入 | I saw **a dog** outside. | 听者还不知道是哪只狗 |
+| 表示任意一个 | Can I borrow **a pen**? | 哪支笔不重要 |
+| 表示职业/身份 | She is **an engineer**. | 单数可数身份名词前常用 a/an |
+| 表示一类中的一个成员 | A whale is **a mammal**. | 泛指一类成员 |
+| 表示每一单位 | twice **a** week, 60 miles **an** hour | 相当于 per |
+| 表示某种程度或结果 | It was **a success**. | 抽象名词转为一次事件 |
+
+| 错误 | 正确 | 原因 |
+| ---- | ---- | ---- |
+| a information | a piece of information / some information | information 不可数 |
+| an useful tool | a useful tool | useful 首音素是 /ju-/ |
+| a hour | an hour | hour 的 h 不发音 |
+| She is engineer. | She is an engineer. | 职业身份为单数可数名词 |
+
+### 3.4 the：定冠词
+
+the 表示“可识别”。不一定是前文出现过，也可以因为上下文、唯一性、限定修饰或共同知识而可识别。
+
+| 特指来源 | 例句 | 为什么用 the |
+| -------- | ---- | ------------ |
+| 前文提到 | I bought **a book**. **The book** is expensive. | 第二次提到，听者知道是哪本 |
+| 上下文唯一 | Please close **the door**. | 当前场景中双方知道是哪扇门 |
+| 后置限定 | **The book on the desk** is mine. | on the desk 限定出具体对象 |
+| 最高级/序数词 | **the best** answer, **the first** day | 在比较范围内可识别 |
+| 唯一事物 | **the sun**, **the moon**, **the internet** | 常识中唯一或近似唯一 |
+| 机构/服务场所 | I went to **the bank**. | 说话语境中可识别的机构功能 |
+| 整类事物 | **The smartphone** changed communication. | 单数名词表示一类发明/物种/工具 |
+| 形容词名词化 | **the rich**, **the poor**, **the unknown** | 表示一类人或抽象领域 |
+
+**the + 比较级 / 最高级 / 序数词**：
+
+| 结构 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| the + 最高级 | the most important point | 在范围内最高 |
+| the + 序数词 | the second chapter | 排序中具体一个 |
+| the + 比较级..., the + 比较级... | The sooner, the better. | “越……越……” |
+| the + same / only / main / right / wrong | the same issue, the only option | 这些词本身强烈指向特定对象 |
+
+### 3.5 零冠词 Zero Article
+
+零冠词不是“忘了加冠词”，而是名词前有意不用 a/an/the。它常用于复数可数名词和不可数名词的泛指，也用于许多专有名词和固定表达。
+
+| 用法 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 复数可数名词泛指 | **Dogs** are loyal. | 泛指狗这一类 |
+| 不可数名词泛指 | **Water** is essential. | 泛指水这种物质 |
+| 抽象概念 | **Freedom** matters. | 泛指概念 |
+| 学科 | She studies **biology**. | 学科名通常零冠词 |
+| 语言 | He speaks **Japanese**. | 语言名通常零冠词 |
+| 三餐常规活动 | We had **lunch** at noon. | 泛指常规餐 |
+| 球类/运动 | She plays **tennis**. | 运动名通常零冠词 |
+| by + 交通方式 | by bus, by train, by car | 表交通方式，不指具体车辆 |
+| 月份/星期/节日 | in July, on Monday, at Christmas | 通常零冠词 |
+| 专有名词 | Tokyo, China, Harvard University | 多数人名、城市、国家、大学名零冠词 |
+
+| 零冠词 | 加 the 后含义变化 |
+| ------ | ---------------- |
+| go to school | 上学，作为学生参与学校功能 |
+| go to the school | 去那所学校建筑/地点 |
+| be in hospital（英）/ be in the hospital（美） | 住院 |
+| go to prison | 入狱 |
+| go to the prison | 去监狱这个地点 |
+| be at sea | 在海上航行/迷茫 |
+| be at the sea | 在海边/海这个具体地点 |
+
+### 3.6 泛指：a/an、the、零冠词的区别
+
+英语表达“某一类事物”有三种常见方式，语气和适用范围不同。
+
+| 形式 | 例句 | 语气/用法 |
+| ---- | ---- | -------- |
+| a/an + 单数可数名词 | **A dog** needs exercise. | 一个典型成员代表全类；解释定义常用 |
+| the + 单数可数名词 | **The dog** is a loyal animal. | 较正式；把物种/发明/工具看作一类 |
+| 零冠词 + 复数可数名词 | **Dogs** need exercise. | 最自然、最常用的泛指复数 |
+| 零冠词 + 不可数名词 | **Coffee** is popular. | 泛指物质、概念、活动 |
+
+| 不同表达 | 含义差别 |
+| -------- | -------- |
+| I like **coffee**. | 我喜欢咖啡这种饮品 |
+| I like **the coffee**. | 我喜欢这杯/这里的/刚提到的咖啡 |
+| I need **a coffee**. | 我要一杯咖啡 |
+| **Life** is short. | 泛指人生 |
+| **The life of a doctor** is stressful. | 被 of 短语限定，特指某类生活 |
+| He had **a difficult life**. | 一种/一段具体人生经历 |
+
+### 3.7 this / that / these / those：指示限定词
+
+指示限定词表示空间距离、时间距离、文本距离或心理距离。
+
+| 词 | 数 | 距离 | 例子 |
+| ---- | ---- | ---- | ---- |
+| this | 单数 | 近 | this question |
+| that | 单数 | 远 | that question |
+| these | 复数 | 近 | these questions |
+| those | 复数 | 远 | those questions |
+
+| 用法 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 空间距离 | I like **this chair**, not **that chair**. | 近/远 |
+| 时间距离 | **This week** is busy. / **That day** changed everything. | 当前/过去或远离当前 |
+| 上下文指代 | **This argument** is weak. | 指当前正在说的论点 |
+| 情绪距离 | I hate **that tone**. | that 可带疏远或负面态度 |
+
+### 3.8 my / your / his / her / its / our / their：物主限定词
+
+物主限定词放在名词前，表示所属、来源、责任、关联或身体/家庭/组织关系。它们不能和 a/an/the 直接并列。
+
+| 物主限定词 | 例子 | 说明 |
+| ---------- | ---- | ---- |
+| my | my phone | 我的/与我有关 |
+| your | your idea | 你的/你们的 |
+| his | his office | 他的 |
+| her | her decision | 她的 |
+| its | its purpose | 它的；注意没有撇号 |
+| our | our team | 我们的 |
+| their | their results | 他们/她们/它们的 |
+
+| 错误 | 正确 | 原因 |
+| ---- | ---- | ---- |
+| the my book | my book / the book of mine | 物主限定词和 the 不能同位并列 |
+| a my friend | a friend of mine | a 和 my 不能直接并列 |
+| it's price | its price | its 是物主限定词；it's = it is / it has |
+| mine book | my book | mine 是名词性物主代词，不放名词前 |
+
+### 3.9 some / any / no
+
+some, any, no 可修饰复数可数名词和不可数名词。
+
+| 词 | 常见语境 | 例句 | 说明 |
+| ---- | -------- | ---- | ---- |
+| some | 肯定句；期待肯定回答的请求/邀请 | I need **some help**. / Would you like **some coffee**? | 表不定数量 |
+| any | 疑问句、否定句、条件句；“任何” | Do you have **any questions**? / If you need **any help**, call me. | 范围开放 |
+| no | 否定限定词 | There is **no evidence**. | no + 名词，本身是否定 |
+
+| 对比 | 例句 | 含义 |
+| ---- | ---- | ---- |
+| not any | We don't have any time. | 没有时间 |
+| no | We have no time. | 更直接、更强 |
+| some + 单数可数名词 | Some guy called you. | 某个、不认识或不重要的人 |
+| any + 单数可数名词 | Any student can answer this. | 任意一个 |
+
+### 3.10 many / much / few / little / several / enough
+
+| 限定词 | 接可数复数 | 接不可数 | 含义 |
+| ------ | ---------- | -------- | ---- |
+| many | many reasons | 不接 | 多 |
+| much | 不接 | much time | 多；肯定句中常偏正式 |
+| a few | a few options | 不接 | 有几个，偏肯定 |
+| few | few options | 不接 | 几乎没有，偏否定 |
+| a little | 不接 | a little time | 有一点，偏肯定 |
+| little | 不接 | little time | 几乎没有，偏否定 |
+| several | several people | 不接 | 几个，超过 two，但不多 |
+| enough | enough chairs | enough time | 足够 |
+| plenty of | plenty of chairs | plenty of time | 很多、充足 |
+| a lot of / lots of | a lot of books | a lot of work | 口语和中性写作都常用 |
+
+| 易混 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| a few vs few | We have **a few** options. / We have **few** options. | 前者“有几个”，后者“几乎没有” |
+| a little vs little | There is **a little** hope. / There is **little** hope. | 前者“还有一点”，后者“几乎没有” |
+| much vs many | much information / many reports | 看名词是否可数 |
+| less vs fewer | less water / fewer mistakes | 传统规范：不可数用 less，可数复数用 fewer |
+
+### 3.11 all / both / each / every / either / neither
+
+这些限定词处理“整体、两者、每一个、任一个、两者都不”等逻辑关系。
+
+| 限定词 | 范围 | 后接 | 例句 | 谓语倾向 |
+| ------ | ---- | ---- | ---- | -------- |
+| all | 三者以上或整体 | 复数可数/不可数 | **All students** passed. / **All information** is useful. | 复数或单数按名词 |
+| both | 两者全部 | 复数可数 | **Both answers** are correct. | 复数 |
+| each | 两者或以上逐个 | 单数可数 | **Each student** has a card. | 单数 |
+| every | 三者以上整体中的每个 | 单数可数 | **Every student** has a card. | 单数 |
+| either | 两者任一 | 单数可数 | **Either option** is fine. | 单数 |
+| neither | 两者都不 | 单数可数 | **Neither option** is ideal. | 单数；正式语法多用单数 |
+
+| 结构 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| all of / both of + 限定名词短语 | all of the data, both of my parents | of 后通常需要限定词或代词 |
+| each of / either of / neither of + 复数代词/限定名词 | each of them, neither of the options | 谓语常用单数，口语中也可见复数 |
+| every one of | every one of the files | 强调每一个个体 |
+| not every | Not every answer is correct. | 部分否定：不是每个都 |
+
+### 3.12 数词与顺序限定
+
+| 类型 | 例子 | 用法 |
+| ---- | ---- | ---- |
+| 基数词 | one file, two files | 表数量 |
+| 序数词 | the first file, the second chapter | 表顺序；通常和 the 或物主限定词连用 |
+| 分数/倍数 | half the price, twice the size | 可作前位限定 |
+| next / last | the next chapter, last week | 表顺序或时间位置 |
+| another / other | another question, other questions | 表另一个/其他 |
+
+| 表达 | 含义 |
+| ---- | ---- |
+| another two weeks | 另外两周 |
+| the other two weeks | 剩下那两周 |
+| other people | 其他人，泛指 |
+| the other people | 其余那些人，特指 |
+| one more question | 再一个问题 |
+| the next question | 下一个问题 |
+
+### 3.13 专有名词与 the
+
+多数专有名词不用冠词，但一些名称因结构或习惯要用 the。
+
+| 类别 | 通常零冠词 | 通常用 the |
+| ---- | ---------- | ---------- |
+| 人名 | Jane Austen, Barack Obama | the Obamas 表示一家人 |
+| 国家/城市 | Japan, China, Paris, Tokyo | the United States, the Netherlands, the Philippines |
+| 大洲/州/街道 | Asia, California, Oxford Street | the Middle East, the Bronx |
+| 山峰/湖泊 | Mount Fuji, Lake Michigan | the Alps, the Himalayas, the Great Lakes |
+| 河流/海洋/海峡/沙漠 | - | the Nile, the Pacific, the English Channel, the Sahara |
+| 大学 | Harvard University, Oxford University | the University of Tokyo, the University of Oxford |
+| 报刊/机构 | Google, NATO | the BBC, the New York Times, the World Bank |
+| 建筑/地标 | Buckingham Palace | the Eiffel Tower, the White House |
+
+**同一词加不加 the 可能表示不同意义**：
+
+| 表达 | 含义 |
+| ---- | ---- |
+| Congress | 美国国会这个机构名，常零冠词 |
+| the congress | 某一次会议/代表大会 |
+| school | 学校功能：go to school |
+| the school | 具体学校建筑或机构 |
+| church | 宗教活动：go to church |
+| the church | 教堂建筑或教会组织 |
+
+### 3.14 固定场景：餐食、交通、机构、疾病
+
+| 场景 | 零冠词 | 加冠词时 |
+| ---- | ------ | -------- |
+| 三餐 | have breakfast/lunch/dinner | a big dinner, the dinner we had yesterday |
+| 运动 | play football/tennis/chess | the football from yesterday's game（具体球） |
+| 交通方式 | by bus/train/car/air/sea | take a bus, get on the train |
+| 机构功能 | go to school/prison/church/bed | go to the school/prison/church（地点） |
+| 媒体/通信 | on TV, by email | on the radio, on the phone |
+| 疾病 | have flu（英）/ have the flu（美）, have cancer | a cold, a headache, the measles |
+
+### 3.15 冠词选择流程
+
+| 步骤 | 问题 | 选择 |
+| ---- | ---- | ---- |
+| 1 | 名词是专有名词吗？ | 多数零冠词；查是否属于 the United States / the Nile 这类固定 the |
+| 2 | 是单数可数名词吗？ | 需要 a/an、the、this、my、one 等限定词 |
+| 3 | 是复数可数或不可数泛指吗？ | 通常零冠词：Books are useful. / Water is essential. |
+| 4 | 听者能识别具体对象吗？ | 用 the：the book on the desk |
+| 5 | 第一次引入且不特指吗？ | 单数可数用 a/an；复数/不可数用 some 或零冠词 |
+| 6 | 是否强调数量？ | 用 many/much/few/little/several/enough/a lot of 等 |
+| 7 | 是否强调所属或远近？ | 用 my/your/our 或 this/that/these/those |
+
+**短例**：
+
+| 语境 | 推荐表达 | 原因 |
+| ---- | -------- | ---- |
+| 第一次提到一本书 | I bought **a book**. | 单数可数，未特指 |
+| 第二句继续说这本书 | **The book** is useful. | 已知对象 |
+| 泛指书 | **Books** are useful. | 复数泛指零冠词 |
+| 泛指信息 | **Information** is useful. | 不可数泛指零冠词 |
+| 特指这份信息 | **The information** you sent is useful. | 被从句限定 |
+
+### 3.16 常见错误速查
+
+| 错误类型 | 不自然/错误 | 推荐表达 | 原因 |
+| -------- | ----------- | -------- | ---- |
+| 单数可数名词缺限定词 | I need **answer**. | I need **an answer**. | answer 是单数可数名词 |
+| 不可数名词误用 a/an | a research | a study / some research | research 常不可数 |
+| a/an 看字母不看发音 | an university | a university | university 首音素是 /j/ |
+| the 泛滥 | The life is hard. | Life is hard. | 泛指抽象概念通常零冠词 |
+| 泛指复数误加 the | The dogs are loyal animals. | Dogs are loyal animals. | 泛指类别用零冠词更自然 |
+| 特指漏 the | book on the desk is mine | The book on the desk is mine. | 后置修饰限定出具体对象 |
+| 物主限定词与冠词叠用 | the my plan | my plan / the plan of mine | 中位限定词不能这样并列 |
+| much/many 混用 | many information | much information / a lot of information | information 不可数 |
+| few/little 混用 | few evidence | little evidence | evidence 不可数 |
+| every 后接复数 | every students | every student / all students | every 后接单数可数名词 |
+| both 后接单数 | both answer | both answers | both 后接复数 |
+| such/a 顺序错 | a such problem | such a problem | such 是前位限定词 |
+
+## 4. 代词与指代（Pronouns and Reference）
+
+代词用来代替名词、名词短语、从句或整个句子，避免重复，并建立上下文中的指代关系。代词的难点不在“背表格”，而在三件事：格是否正确、先行词是否清楚、数/人称/性别是否一致。
+
+| 原句 | 使用代词后 | 说明 |
+| ---- | ---------- | ---- |
+| Sarah called Sarah's manager because Sarah needed help. | Sarah called **her** manager because **she** needed help. | her/she 指 Sarah |
+| The report was late, and the delay caused problems. | The report was late, and **this** caused problems. | this 指整个前句事件 |
+| I need a pen. Do you have a pen? | I need a pen. Do you have **one**? | one 代替 a pen |
+
+### 4.1 代词总览
+
+| 类型 | 英文 | 常见形式 | 核心用途 | 例句 |
+| ---- | ---- | -------- | -------- | ---- |
+| 人称代词 | Personal Pronouns | I, me, you, he, him, she, her, it, we, us, they, them | 指人、事物或群体 | **They** called **us**. |
+| 物主代词 | Possessive Pronouns | mine, yours, his, hers, ours, theirs | 代替“物主限定词 + 名词” | This is **mine**. |
+| 反身代词 | Reflexive Pronouns | myself, yourself, himself, herself, itself, ourselves, yourselves, themselves | 主语和宾语同指，或加强语气 | She blamed **herself**. |
+| 指示代词 | Demonstrative Pronouns | this, that, these, those | 指近远对象或上下文内容 | **This** is useful. |
+| 不定代词 | Indefinite Pronouns | someone, anything, all, none, each, either | 指不确定的人、物、数量或范围 | **Everyone** agrees. |
+| 相互代词 | Reciprocal Pronouns | each other, one another | 表示彼此关系 | They helped **each other**. |
+| 疑问代词 | Interrogative Pronouns | who, whom, whose, what, which | 提问 | **Who** called? |
+| 关系代词 | Relative Pronouns | who, whom, whose, which, that | 引导定语从句 | the book **that** I bought |
+| 连接代词 | Conjunctive Pronouns | who, what, which, whoever, whatever | 引导名词性从句 | I know **what** happened. |
+| 替代代词 | Substitute Pronouns | one, ones, so, not | 避免重复 | I think **so**. |
+
+### 4.2 人称代词、物主形式、反身代词
+
+| 人称 | 主格 | 宾格 | 物主限定词 | 名词性物主代词 | 反身代词 |
+| ---- | ---- | ---- | ---------- | -------------- | -------- |
+| 第一人称单数 | I | me | my | mine | myself |
+| 第一人称复数 | we | us | our | ours | ourselves |
+| 第二人称单数 | you | you | your | yours | yourself |
+| 第二人称复数 | you | you | your | yours | yourselves |
+| 第三人称单数男性 | he | him | his | his | himself |
+| 第三人称单数女性 | she | her | her | hers | herself |
+| 第三人称单数事物 | it | it | its | its | itself |
+| 第三人称复数/单数 they | they | them | their | theirs | themselves / themself |
+
+| 类别 | 位置 | 例句 | 注意 |
+| ---- | ---- | ---- | ---- |
+| 主格 | 作主语 | **She** knows the answer. | I, he, she, we, they |
+| 宾格 | 作动词宾语或介词宾语 | I called **her**. / for **them** | me, him, her, us, them |
+| 物主限定词 | 名词前 | **Her** answer was clear. | 后面必须有名词 |
+| 名词性物主代词 | 单独代替名词短语 | The answer is **hers**. | mine/yours/his/hers/ours/theirs |
+| 反身代词 | 主语与宾语同指 | He hurt **himself**. | 不能随便代替普通宾格 |
+
+### 4.3 格：I / me, who / whom
+
+英语代词仍保留明显的格变化。判断格时，看代词在自己的小句中做什么成分。
+
+| 功能 | 正确 | 不自然/错误 | 原因 |
+| ---- | ---- | ----------- | ---- |
+| 作主语 | **She and I** joined the meeting. | Her and me joined the meeting. | 主语位置用主格 |
+| 作宾语 | The manager called **her and me**. | The manager called she and I. | 宾语位置用宾格 |
+| 介词后 | between **you and me** | between you and I | 介词 between 后用宾格 |
+| 比较省略 | He is taller than **I am**. / taller than **me** | - | 正式可补全 I am；口语常用 me |
+| who 作主语 | **Who** called you? | Whom called you? | who 在从句中作主语 |
+| whom 作宾语 | **Whom** did you call? | - | 正式；口语常用 who |
+| 介词 + whom | To **whom** did you speak? | - | 正式书面 |
+| 介词后置 | Who did you speak **to**? | - | 现代口语和普通写作更常见 |
+
+**实用判断**：把并列部分拆开。  
+`The manager called Sarah and me.` -> `The manager called me.`，所以用 me，不用 I。
+
+### 4.4 it 的主要用法
+
+it 可以指代事物、动物、婴儿、抽象情况，也可以作形式主语或形式宾语。
+
+| 用法 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 指代前文名词 | I found the file and opened **it**. | it = the file |
+| 指天气/时间/距离 | **It** is raining. / **It** is late. / **It** is five miles away. | 非实义主语 |
+| 形式主语 | **It** is important to check the data. | 真正主语是 to check the data |
+| 形式宾语 | I found **it** hard to focus. | 真正宾语是 to focus |
+| 强调句 | **It was John who** broke the rule. | it-cleft，用来突出 John |
+| 指整个情境 | I missed the train. **It** was frustrating. | it 指前一事件或情况 |
+
+| 结构 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| It is + adj + to do | It is easy to forget this rule. | to do 是真正主语 |
+| It is + adj + that-clause | It is clear that he was wrong. | that 从句是真正主语 |
+| find/make/think + it + adj/n + to do | We made it possible to continue. | it 作形式宾语 |
+| It takes + time + to do | It takes two hours to finish. | 表耗时 |
+
+### 4.5 there 与 it 的区别
+
+there 引出“存在”，it 指代“已知对象/情况”或作形式主语。
+
+| 结构 | 例句 | 功能 |
+| ---- | ---- | ---- |
+| There is/are + 名词 | **There is** a problem. | 引入新信息 |
+| It is + 名词/形容词 | **It is** a serious problem. | 评价或识别已知对象 |
+| There seems/appears to be | **There seems to be** a mistake. | 表存在的可能 |
+| It seems/appears that | **It seems that** he forgot. | 表整个判断 |
+
+| 易错 | 推荐 | 原因 |
+| ---- | ---- | ---- |
+| It has many people in the room. | There are many people in the room. | 表存在用 there be |
+| There is important to check it. | It is important to check it. | 形式主语用 it |
+
+### 4.6 this / that / these / those：指示代词
+
+指示代词可单独代替名词短语或前文内容；如果后面接名词，就是指示限定词。
+
+| 用法 | 代词例句 | 限定词例句 |
+| ---- | -------- | ---------- |
+| 近指单数 | **This** is useful. | **This method** is useful. |
+| 远指单数 | **That** was unexpected. | **That result** was unexpected. |
+| 近指复数 | **These** are new. | **These files** are new. |
+| 远指复数 | **Those** were expensive. | **Those tickets** were expensive. |
+
+| 指代范围 | 例句 | 说明 |
+| -------- | ---- | ---- |
+| 指一个对象 | This is my laptop. | this = 这个对象 |
+| 指前一句话 | He missed the deadline. **This** caused problems. | this = 前句事件 |
+| 指后文内容 | Remember **this**: keep the message short. | this 指冒号后的内容 |
+| 情感距离 | That's ridiculous. | that 可表达疏离、评价 |
+
+### 4.7 反身代词与强调用法
+
+反身代词有两种功能：反身（主语和宾语同一对象）和强调（强调某人亲自）。
+
+| 用法 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 反身宾语 | She introduced **herself**. | she = herself |
+| 介词宾语 | He was talking to **himself**. | 对自己说话 |
+| 固定搭配 | by myself, enjoy yourself, help yourself | 习惯表达 |
+| 强调主语 | The CEO **herself** approved it. | CEO 亲自批准 |
+| 强调宾语 | I spoke to the manager **himself**. | 正是经理本人 |
+
+| 错误 | 正确 | 原因 |
+| ---- | ---- | ---- |
+| Please contact myself. | Please contact me. | 普通宾语用 me |
+| John and myself will attend. | John and I will attend. | 主语位置用 I |
+| I did it by me. | I did it by myself. | by oneself 表“独自” |
+
+### 4.8 相互代词 each other / one another
+
+each other 和 one another 表示“彼此、互相”。传统上 each other 用于两者，one another 用于三者以上；现代英语中二者常可互换。
+
+| 结构 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 动词宾语 | They helped **each other**. | 互相帮助 |
+| 介词宾语 | They looked at **each other**. | 互相看 |
+| 所有格 | They respect **each other's** opinions. | 彼此的意见 |
+| one another | The members supported **one another**. | 多人之间互相支持 |
+
+**注意**：相互代词需要至少两个参与者。`He helped each other` 不成立。
+
+### 4.9 不定代词 Indefinite Pronouns
+
+不定代词表示不明确的人、事物、数量或范围。
+
+| 类别 | 代词 | 例句 | 谓语 |
+| ---- | ---- | ---- | ---- |
+| some 系列 | someone, somebody, something | **Someone** is here. | 单数 |
+| any 系列 | anyone, anybody, anything | **Anything** is possible. | 单数 |
+| no 系列 | no one, nobody, nothing | **Nobody** knows. | 单数 |
+| every 系列 | everyone, everybody, everything | **Everyone** has arrived. | 单数 |
+| 两者 | both, either, neither | **Both** are correct. / **Neither** is ideal. | both 复数；either/neither 常单数 |
+| 个体 | each | **Each** has a role. | 单数 |
+| 全体/部分 | all, some, most, none, any | **Some** are ready. / **Some** is missing. | 依指代对象 |
+| 其他 | another, others, the other, the others | **Others** disagreed. | 依形式 |
+
+| 代词 | 指人 | 指物 | 说明 |
+| ---- | ---- | ---- | ---- |
+| someone/somebody | 是 | 否 | 肯定句常用 |
+| anyone/anybody | 是 | 否 | 疑问、否定、条件或“任何人” |
+| no one/nobody | 是 | 否 | no one 更常分写 |
+| everyone/everybody | 是 | 否 | 单数谓语，可用 they 指代 |
+| something | 否 | 是 | 某事/某物 |
+| anything | 否 | 是 | 任何事/某事 |
+| nothing | 否 | 是 | 没什么 |
+| everything | 否 | 是 | 一切 |
+
+### 4.10 some / any / no / none
+
+这些词既可作限定词，也可作代词。作代词时，后面不直接接名词。
+
+| 形式 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| some | I need some. | 指“一些” |
+| any | Do you have any? | 疑问句或否定句 |
+| no | No students came. | no 是限定词，后接名词 |
+| none | None came. | none 是代词，单独使用 |
+| none of + 名词短语 | None of the answers is/are correct. | 谓语单复数都可见；正式常用单数 |
+
+| 易混 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| no one vs none | **No one** called. / **None** of them called. | no one 指人；none 指“没有一个/一点” |
+| nothing vs none | Nothing happened. / None of the files opened. | nothing 指没有事情；none 指某范围中没有 |
+| any 否定范围 | I don't have any. | not + any = none |
+
+### 4.11 other / another / the other / others / the others
+
+| 形式 | 后接名词？ | 含义 | 例句 |
+| ---- | -------- | ---- | ---- |
+| another | 可接单数名词；也可单独作代词 | 另一个；再一个 | I need **another**. / another question |
+| other | 接复数或不可数名词 | 其他的，泛指 | other people, other information |
+| the other | 可接单数/复数；也可作代词 | 两者中的另一个；其余特定对象 | One is red; **the other** is blue. |
+| others | 单独作代词 | 其他人/物，泛指 | Some agreed; **others** disagreed. |
+| the others | 单独作代词 | 其余那些，特指 | Two left; **the others** stayed. |
+
+| 错误 | 正确 | 原因 |
+| ---- | ---- | ---- |
+| another informations | other information / another piece of information | another 后接单数可数名词 |
+| others people | other people | others 是代词，不能再接名词 |
+| the another one | the other one / another one | the 和 another 不直接并列 |
+
+### 4.12 one / ones / that / those 的替代
+
+one/ones 可代替前文提到的可数名词，that/those 常用于比较结构中避免重复。
+
+| 替代词 | 替代对象 | 例句 | 说明 |
+| ------ | -------- | ---- | ---- |
+| one | 单数可数名词 | I lost my pen. I need **one**. | one = a pen |
+| ones | 复数可数名词 | I prefer the black **ones**. | ones = shoes/files/items 等复数可数名词 |
+| the one | 特指单数 | The blue one is cheaper. | the one = the blue item |
+| that | 单数/不可数名词短语 | The cost is higher than **that** of last year. | 正式比较 |
+| those | 复数名词短语 | These results differ from **those** of 2020. | those = the results |
+
+| 不自然 | 推荐 | 原因 |
+| ------ | ---- | ---- |
+| I need an information. Do you have one? | I need some information. Do you have any? | one 不能代替不可数名词 |
+| The population of Japan is larger than China. | The population of Japan is larger than that of China. | 比较对象要平行 |
+
+### 4.13 so / not 替代从句
+
+so 和 not 可以代替前文或后文的整句内容，常见于 think, hope, believe, suppose, expect, say, do so 等结构。
+
+| 结构 | 例句 | so/not 指什么 |
+| ---- | ---- | ------------- |
+| think so | I think **so**. | 前文命题为真 |
+| hope so | I hope **so**. | 希望前文会发生 |
+| hope not | I hope **not**. | 希望前文不会发生 |
+| say so | She said **so**. | 她这样说 |
+| do so | If you need to cancel, do **so** early. | do so = cancel |
+| not | Maybe he will resign, but I hope **not**. | not = he will not resign |
+
+**注意**：`do so` 多用于有意动作，不自然用于状态。  
+自然：If you want to apply, do so now.  
+不自然：He knows French, and she does so too. -> 推荐：She does too.
+
+### 4.14 疑问代词 Interrogative Pronouns
+
+| 疑问代词 | 问什么 | 例句 | 注意 |
+| -------- | ------ | ---- | ---- |
+| who | 人；主语或身份 | **Who** called? | 作主语 |
+| whom | 人；宾语 | **Whom** did you invite? | 正式；口语常用 who |
+| whose | 所属 | **Whose** is this? / **Whose book** is this? | 可作代词或限定词 |
+| what | 事物、身份、职业、开放范围 | **What** happened? | 开放选择 |
+| which | 特定范围中的哪一个 | **Which** do you prefer? | 有明确选项范围 |
+
+| 对比 | 例句 | 区别 |
+| ---- | ---- | ---- |
+| who vs what | Who is he? / What is he? | who 问身份姓名；what 可问职业/性质 |
+| what vs which | What do you want? / Which do you want? | what 开放；which 在给定范围内选择 |
+| whose 代词/限定词 | Whose is this? / Whose phone is this? | 后接名词时是限定词 |
+
+### 4.15 关系代词 Relative Pronouns
+
+关系代词引导定语从句，并在从句中作主语、宾语、定语或介词宾语。
+
+| 关系代词 | 先行词 | 从句中功能 | 例句 |
+| -------- | ------ | ---------- | ---- |
+| who | 人 | 主语/宾语 | the person **who** called |
+| whom | 人 | 宾语/介词宾语 | the person **whom** we invited |
+| whose | 人/物 | 所属定语 | the writer **whose** book won |
+| which | 物/事 | 主语/宾语 | the file **which** was deleted |
+| that | 人/物 | 主语/宾语 | the file **that** I sent |
+| as | 人/物/整句 | 固定结构或非限制性补充 | such problems **as** we discussed |
+
+| 规则 | 例句 | 说明 |
+| ---- | ---- | ---- |
+| 宾语关系代词可省略 | the book **(that)** I bought | that 在从句中作 bought 的宾语 |
+| 主语关系代词不可省略 | the person **who** called | who 是 called 的主语 |
+| 非限制性定语从句不用 that | My car, **which** is old, still works. | 逗号后不用 that |
+| 介词前置用 whom/which | the person **to whom** I spoke | 正式 |
+| 介词后置更口语 | the person **who/that** I spoke to | 普通表达 |
+
+### 4.16 连接代词与自由关系从句
+
+连接代词引导名词性从句，可作主语、宾语、表语、同位语等。形式和疑问代词相同，但它们嵌在另一个句子里，不是直接提问。
+
+| 连接代词 | 例句 | 从句功能 |
+| -------- | ---- | -------- |
+| who | I know **who called**. | 宾语从句 |
+| whom | I know **whom they chose**. | 宾语从句；正式 |
+| whose | Tell me **whose idea this was**. | 宾语从句 |
+| what | **What he said** matters. | 主语从句 |
+| which | I can't decide **which is better**. | 宾语从句 |
+| whoever | **Whoever arrives first** should call me. | 自由关系从句 |
+| whatever | Take **whatever you need**. | 自由关系从句 |
+| whichever | Choose **whichever works best**. | 自由关系从句 |
+
+| 类型 | 例句 | 区别 |
+| ---- | ---- | ---- |
+| 直接疑问 | What did he say? | 独立问题，疑问语序 |
+| 间接疑问/名词性从句 | I know what he said. | 陈述语序：what + 主语 + 谓语 |
+| 自由关系从句 | What he said was true. | what = the thing that |
+
+### 4.17 先行词、一致与指代清晰
+
+代词通常要有清楚的先行词，并在人称、数、性别或语义上保持一致。
+
+| 规则 | 清楚表达 | 问题表达 | 说明 |
+| ---- | -------- | -------- | ---- |
+| 数一致 | The student submitted **his or her/their** form. | The student submitted their forms. | 单数人可用 singular they；form 数量也要清楚 |
+| 复数一致 | The students submitted **their** forms. | The students submitted his form. | students 是复数 |
+| 性别未知 | If anyone calls, ask **them** to wait. | ask him to wait | 现代英语常用 singular they |
+| 指代最近合理名词 | Sarah told Anna that **she** was late. | 有歧义 | she 可能是 Sarah 或 Anna |
+| this/which 指整句 | Sales fell sharply. **This** surprised investors. | this 指前句事件 | 可以用 this trend/this result 更清楚 |
+
+**消除歧义的方法**：
+
+| 问题 | 改写 |
+| ---- | ---- |
+| Sarah told Anna that she was late. | Sarah told Anna, "I am late." / Sarah told Anna that Anna was late. |
+| The report mentioned the policy, but it was unclear. | The report was unclear about the policy. / The policy was unclear. |
+| When the team met the client, they were angry. | The client was angry when the team met them. |
+
+### 4.18 常见错误速查
+
+| 错误类型 | 不自然/错误 | 推荐表达 | 原因 |
+| -------- | ----------- | -------- | ---- |
+| 主格/宾格混用 | Me and John went. | John and I went. | 主语位置用主格 |
+| 介词后用主格 | between you and I | between you and me | 介词后用宾格 |
+| 反身代词滥用 | Please email myself. | Please email me. | myself 不是礼貌版 me |
+| 物主 its/it's 混用 | it's purpose | its purpose | it's = it is / it has |
+| 单数可数名词用 one 错位 | I need advice. Do you have one? | Do you have any? / a piece of advice? | one 代替单数可数名词 |
+| this 指代不明 | He changed the plan after the meeting. This was bad. | This decision was bad. / This delay was bad. | this 后加名词更清楚 |
+| each other 单数主体 | He helped each other. | They helped each other. | 相互代词需要复数参与者 |
+| every 后代词不一致 | Every student brought their books. | Every student brought their book. | 若每人一本，book 用单数 |
+| who/which 先行词错 | the person which called | the person who/that called | 人用 who/that |
+| 关系代词省略错误 | the man called me is Tom | the man who called me is Tom | 作主语的关系代词不可省略 |
+| 间接疑问语序错 | I know what did he say. | I know what he said. | 名词性从句用陈述语序 |
+| none/no one 混用 | None called me. | No one called me. | 指人且无 of 范围时 no one 更自然 |
+
+## 5. 动词、时态、语态与语气（Verbs, Tense, Voice and Mood）
 
 `动词（Verb）`是英语句子中最重要的成分之一，因为它们表达动作、状态或存在，并且在句子中担任谓语的核心。按`语法功能`可以分为以下四类：
   - **实义动词（Main Verb）**：表示`具体`动作或状态的动词，比如：*run*（跑）、*think*（思考）、*exist*（存在）。实义动词又可以分两类：
@@ -66,7 +1530,7 @@ toc_depth: 4
   - **助动词（Auxiliary Verb）**：用来帮助实义动词表达`时态、语态或语气`。常见的助动词有：*be*, *do*, *have* 等。
   - **情态动词（Modal Verb）**：用来表示说话者的`态度或情感`，如：可能性、能力、许可、建议等。常见情态动词有：*can*, *could*, *may*, *might*, *shall*, *should*, *will*, *would*, *must*, *need*。
 
-`动词变化`是英语语言系统中一个重要的语法特征，并且在世界上很多语言中也都是一种普遍现象。这种现象称为动词的`屈折变化（verb conjugation）`，以表达动作发生的`时间、状态或语法关系`。英语动词有五种基本形式：**动词原型**、**第三人称单数**、**过去式**、**过去分词**、**现在分词**，和两种非谓语用法：**不定式**、**动名词**。
+`动词变化`是英语语言系统中一个重要的语法特征，并且在世界上很多语言中也都是一种普遍现象。这种现象称为动词的`屈折变化（verb conjugation）`，以表达动作发生的`时间、状态或语法关系`。英语动词有五种基本形式：**动词原形**、**第三人称单数**、**过去式**、**过去分词**、**现在分词**，和两种非谓语用法：**不定式**、**动名词**。
 
 | 动词形式         | 例子              | 使用场景                               |
 | ---------------- | ----------------- | -------------------------------------- |
@@ -103,10 +1567,10 @@ toc_depth: 4
 
 | 时态               | 变化                                           | 作用                                                         |
 | ------------------ | ---------------------------------------------- | ------------------------------------------------------------ |
-| 一般过去时         | 动词原型 / `第三人称单数`                      | 习惯性动作<br>普遍真理<br>经常性行为                         |
+| 一般现在时         | 动词原形 / `第三人称单数`                      | 习惯性动作<br>普遍真理<br>经常性行为                         |
 | 一般过去时         | `动词过去式`                                   | 过去时间点发生                                               |
-| 一般将来时         | will + 动词原型                                | 未来将发生<br>计划                                           |
-| 一般过去将来时     | would / should + 动词原型                      | 过去时间点对未来的预期<br>间接引语<br>虚拟语气               |
+| 一般将来时         | will + 动词原形                                | 未来将发生<br>计划                                           |
+| 一般过去将来时     | would / should + 动词原形                      | 过去时间点对未来的预期<br>间接引语<br>虚拟语气               |
 | 现在进行时         | am/is/are + `动词ing `                         | 正在进行                                                     |
 | 过去进行时         | was/were + `动词ing`                           | 过去时间点正在进行                                           |
 | 将来进行时         | will be + `动词ing`                            | 未来时间点正在进行                                           |
@@ -116,18 +1580,18 @@ toc_depth: 4
 | 将来完成时         | will have + `过去分词`                         | 未来某个时间之前已经完成                                     |
 | 过去将来完成时     | would have / should have + `过去分词`          | 过去时间点对将来时间点已经完成的预期<br>强调“完成性”和“结果” |
 | 现在完成进行时     | have/has been + `动词ing`                      | 从过去某个时间开始，一直持续到现在的动作，并可能继续         |
-| 过去完成进行时     | had been> + `动词ing`                          | 过去某个时间之前一直在进行的动作                             |
+| 过去完成进行时     | had been + `动词ing`                          | 过去某个时间之前一直在进行的动作                             |
 | 将来完成进行时     | will have been + `动词ing`                     | 在未来某个时间之前一直在进行的动作                           |
 | 过去将来完成进行时 | would have been / should have been + `动词ing` | 过去时间点对将来时间点之前，一直持续动作的预期               |
 
-#### 1.**一般现在时 (Simple Present)**
+#### 1. 一般现在时 (Simple Present)
    - **结构**: 主语 + `动词原形` (第三人称单数加 -s)
    - **肯定句**: He `plays` football.
    - **否定句**: He `does not (doesn't) play` football.
    - **疑问句**: `Does` he `play` football?
    - **用法**: 表示*习惯性动作、普遍真理、经常性行为*。
 
-##### **【动词变化规则】第三人称单数**
+##### 【动词变化规则】第三人称单数**
    - **一般情况**下：在动词原形后面加 **-s**。
      - 例：play → plays、read → reads
    - **以 s, x, ch, sh, o 结尾**的动词：在词尾加 **-es**。
@@ -140,14 +1604,14 @@ toc_depth: 4
 
 > 动词的第三人称单数形式`只`出现在`一般现在时`。
 
-#### 2.**一般过去时 (Simple Past)**
+#### 2. 一般过去时 (Simple Past)
    - **结构**: 主语 + `动词过去式`
    - **肯定句**: She `went` to the store.
    - **否定句**: She` did not (didn't) go` to the store.
    - **疑问句**: `Did` she `go` to the store?
    - **用法**: 描述*过去某个特定时间发生的动作或事件*。
 
-##### **【动词变化规则】动词过去式、过去分词**
+##### 【动词变化规则】动词过去式、过去分词**
 
 除某些特殊变化外，大部动词的过去式与过去分词相同。
 - **一般规则**：直接在动词原形后加 **-ed**。
@@ -287,14 +1751,14 @@ toc_depth: 4
 
 > 动词的过去式并不仅仅局限于`一般过去时`（Simple Past Tense）中，它还可以出现在其他时态或语法结构中，例如在`某些完成时态`、`条件句`、`虚拟语气`、`间接引语`中等。
 
-#### 3.**一般将来时 (Simple Future)**
+#### 3. 一般将来时 (Simple Future)
    - **结构**: 主语 + `will` + `动词原形`
    - **肯定句**: They `will travel` tomorrow.
    - **否定句**: They `will not (won't) travel` tomorrow.
    - **疑问句**: `Will` they `travel` tomorrow?
    - **用法**: 描述*未来将发生的动作或计划*。
 
-#### 4.**一般过去将来时（Past Future Simple Tense）**
+#### 4. 一般过去将来时（Past Future Simple Tense）
    - **结构**: 主语 + `would / should` + `动词原形`
      - 通常 should 用于表示第一人称主语（如 I 或 We）的过去意图，而 would 则更广泛。
    - **例句**: 
@@ -304,14 +1768,14 @@ toc_depth: 4
      - 表示`在过去`某个`时间点`，`对未来`的动作、计划或状态的`预期、意愿或可能性`。
      - 常用于`间接引语`（reported speech）或`虚拟语气`中。
 
-#### 5.**现在进行时 (Present Continuous)**
+#### 5. 现在进行时 (Present Continuous)
    - **结构**: 主语 + `am/is/are` + `动词ing`
    - **肯定句**: She `is studying` now.
    - **否定句**: She `is not (isn't) studying` now.
    - **疑问句**: `Is` she `studying` now?
    - **用法**: 描述*现在正在进行的动作或事件*。
 
-##### **【动词变化规则】动词 ing 形式**
+##### 【动词变化规则】动词 ing 形式**
 1. **一般规则**：直接在动词后加 **-ing**。
    - 例：*work → working*、*play → playing*
 2. **以不发音的 e 结尾的动词**：去掉 **e** 再加 **-ing**。
@@ -334,21 +1798,21 @@ toc_depth: 4
 
 > 动词 ing 形式可用在`现在分词`（Present Participle）、`动名词`（Gerund）、`形容词性用法`（Adjectival Use）、`名词修饰语`（Noun Modifier）、`固定搭配和表达`（Fixed Phrases）中。
 
-#### 6.**过去进行时 (Past Continuous)**
+#### 6. 过去进行时 (Past Continuous)
    - **结构**: 主语 + `was/were` + `动词ing`
    - **肯定句**: He `was reading` at 8 PM.
    - **否定句**: He `was not (wasn't) reading` at 8 PM.
    - **疑问句**: `Was` he `reading` at 8 PM?
    - **用法**: 描述*过去某一时间正在进行的动作*。
 
-#### 7.**将来进行时 (Future Continuous)**
+#### 7. 将来进行时 (Future Continuous)
    - **结构**: 主语 + `will be` + `动词ing`
    - **肯定句**: They `will be working` at 6 PM.
    - **否定句**: They `will not (won't) be working` at 6 PM.
    - **疑问句**: `Will` they `be working` at 6 PM?
    - **用法**: 描述*未来某一时间正在进行的动作*。
 
-#### 8.**过去将来进行时（Past Future Continuous Tense）**
+#### 8. 过去将来进行时（Past Future Continuous Tense）
    - **结构**: 主语 + `would be` / `should be` + 动词`-ing` 形式
    - **例句**:
      - **He told me** he `would be studying` at this time tomorrow.（他告诉我，他明天这个时候会在学习。）
@@ -358,34 +1822,34 @@ toc_depth: 4
      - 常用于描述在将来某个时间段中，某个动作会正在发生。
      - 过去将来进行时通常表示动作的“延续性”或“进行状态”，而且是`从过去的角度来看未来`某个时间点正在发生的事件。
 
-#### 9.**现在完成时 (Present Perfect)**
+#### 9. 现在完成时 (Present Perfect)
    - **结构**: 主语 + `have/has` + `过去分词`
    - **肯定句**: She `has visited` Japan.
    - **否定句**: She `has not (hasn't) visited` Japan.
    - **疑问句**: `Has` she `visited` Japan?
    - **用法**: 表示*过去的动作对现在有影响*，或者*刚刚完成的动作*。
 
-##### **【动词变化规则】过去分词**
+##### 【动词变化规则】过去分词**
   - **规则变化与过去式相同**。
   - **特殊变化**，参见[【动词变化规则】过去式](#动词变化规则动词过去式过去分词)
 
 > 过去分词（Past Participle）是动词的一种非谓语形式，通常表示已完成的动作或被动状态。在英语语法中，过去分词有多种用法，例如在`完成时态`（Perfect Tenses）中表示已完成的动作，在`被动语态`（Passive Voice）中表示被动状态，或者`作为形容词`用来修饰名词或代词。
 
-#### 10.**过去完成时 (Past Perfect)**
+#### 10. 过去完成时 (Past Perfect)
    - **结构**: 主语 + `had` + `过去分词`
    - **肯定句**: They `had finished` the project before the deadline.
    - **否定句**: They `had not (hadn't) finished` the project before the deadline.
    - **疑问句**: `Had` they `finished` the project before the deadline?
    - **用法**: 描述*在过去某个时间之前已经完成的动作*。
 
-#### 11.**将来完成时 (Future Perfect)**
+#### 11. 将来完成时 (Future Perfect)
    - **结构**: 主语 + `will have` + `过去分词`
    - **肯定句**: She `will have graduated` by next year.
    - **否定句**: She `will not (won't) have graduated` by next year.
    - **疑问句**: `Will` she `have graduated` by next year?
    - **用法**: 描述*在未来某个时间之前已经完成的动作*。
 
-#### 12.**过去将来完成时（Past Future Perfect Tense）**
+#### 12. 过去将来完成时（Past Future Perfect Tense）
   - **结构**: 主语 + `would have / should have` + `过去分词`
    - **例句**:
      - **By the end of last year**, **he thought** he `would have finished` his project.（到去年的年底时，他以为他会完成他的项目。）
@@ -394,21 +1858,21 @@ toc_depth: 4
      - 表示在`过去`某个`时间点`，对`将来某个时间点已经完成的动作或状态的预期`。
      - 强调动作的`“完成性”或“结果”`，常用于表示`假设`、`计划`或`预期`的结果。
 
-#### 13.**现在完成进行时 (Present Perfect Continuous)**
+#### 13. 现在完成进行时 (Present Perfect Continuous)
   - **结构**: 主语 + `have/has been` + `动词ing`
   - **肯定句**: He `has been working` for three hours.
   - **否定句**: He `has not (hasn't) been working` for three hours.
   - **疑问句**: `Has` he `been working` for three hours?
   - **用法**: 描述*从过去某个时间开始，一直持续到现在的动作，并可能继续*。
 
-#### 14.**过去完成进行时 (Past Perfect Continuous)**
+#### 14. 过去完成进行时 (Past Perfect Continuous)
    - **结构**: 主语 + `had been` + `动词ing`
    - **肯定句**: She `had been studying` for two hours before dinner.
    - **否定句**: She `had not (hadn't) been studying` for two hours before dinner.
    - **疑问句**: `Had` she `been studying` for two hours before dinner?
    - **用法**: 描述*过去某个时间之前一直在进行的动作*。
 
-#### 15.**将来完成进行时 (Future Perfect Continuous)**
+#### 15. 将来完成进行时 (Future Perfect Continuous)
    - **结构**: 主语 + `will have been` + `动词ing`
    - **肯定句**: By next year, they `will have been living` here for ten years.
    - **否定句**: By next year, they `will not (won't) have been living` here for ten years.
@@ -425,7 +1889,7 @@ toc_depth: 4
     - 强调动作的“持续性”和“时间长度”，表明动作在过去的将来时间点会一直延续到某个时刻。
     - 过去将来完成进行时常表示在某个时间点之前一直在持续的动作，常用于表示对过去未来某种状态的推测或假设。
 
-###  主动语态和被动语态 (Active Voice and Passive Voice)
+### 主动语态和被动语态 (Active Voice and Passive Voice)
 
 #### **主动语态 (Active Voice)** 
 
@@ -570,1054 +2034,7 @@ toc_depth: 4
   - I wish I **had gone** to the party last night.  
     （我真希望昨晚我去参加派对了。——事实是我没有去参加。）
 
-## 从句 (Subordinate Clause)
-
-### 1. **名词性从句** (Noun Clauses)
-
-名词性从句在句子中**充当主语、宾语或表语**，相当于名词的作用。
-
-**常用引导词**分为三类: 
-  - 连词 **that, whether, if**
-  - 关系代词 **who, what, which** 
-  - 疑问副词 **how, when, where, why**
-
-#### 1.1 **主语从句** (Subject Clauses)
-  - **结构**: What/Whether/That + 从句 + 动词
-  - **例句**: `What he said` is true.（他所说的是真的。）
-
-在正式语体中，主语从句通常放在句首，但在口语中，有时会用形式主语“**it**”引导主句，把从句放在句末，以使句子结构更自然。
-  - 例句：**It** is obvious **that** she likes you.  
-
-
-#### 1.2 **宾语从句** (Object Clauses)
-  - **结构**: 主语 + 动词 + that/what/if/whether + 从句
-  - **例句**: I know `that she is coming`.（我知道她会来。）
-
-**注意**: "**that**" 在口语中有时会省略。
-
-**宾语从句的语序保持陈述句语序**（主语在前，谓语在后），不能使用疑问句语序：
-  - 错误：Do you know **where is he**?
-  - 正确：Do you know **where he is**?
-
-#### 1.3 **表语从句** (Predicative Clauses)
-  - **结构**: 主语 + be 动词 + that/what/who + 从句
-  - **例句**: The problem is `whether we can trust him`.（问题是我们是否能信任他。）
-
-引导表语从句的`疑问词通常表示主语所问的内容`：
-  - 例句：The question is **who will lead the team**.  
-    （问题是谁将带领团队。）
-
-**注意**: 引导表语从句的连词“**that**”通常不能省略。
-
-#### 1.4 **同位语从句** (Appositive Clauses)
-  - **结构**: 从句解释前面的名词
-  - **例句**: The fact `that he passed the exam` surprised everyone.（他通过考试这一事实让大家感到惊讶。）
-
-**同位语从句与定语从句的区别**:
-- **同位语从句**对名词的内容进行`解释`，**定语从句**`修饰`名词。
-  - 例句：The idea **that we should start early** is good.  
-    （这个我们应该早点开始的想法很好。）—— **同位语从句**（解释“idea”的内容）
-  - 例句：The idea **which he proposed** is good.  
-    （他提出的想法很好。）—— **定语从句**（修饰“idea”）
-
-### 2. **定语从句** (Relative Clauses)
-
-定语从句修饰名词或代词，**提供附加信息**。通常由关系代词（**who, whom, which, that**）或关系副词（**when, where, why**）引导。
-
-#### 2.1 **限制性定语从句** (Restrictive Relative Clauses)
-
-**不可省略，用于提供必要信息**
-- **结构**: 先行词 + who/which/that + 从句。
-- **例句**: The book `that I borrowed` is very interesting.（我借的那本书非常有趣。）
-- **常用引导词**: who, whom, whose, which, that
-  - **who**：指人，作（从句的）`主语`（例: The man `who is speaking`.）
-  - **whom**：指人，作（从句的）`宾语`（例: The man `whom I met`.）
-  - **whose**：指人或物，表示`所有关系`（例: The girl `whose bag is red`.）
-  - **which**：指物，作`主语`或`宾语`（例: The car `which is parked outside`.）
-  - **that**：指人或物，作`主语`或`宾语`（例: The movie `that I watched`.）
-  - **where**：表示地点。
-  - **when**：表示时间。
-  - **why**：表示原因。
-
-#### 2.2 **非限制性定语从句** (Non-restrictive Relative Clauses)
-
-**提供附加信息，可省略，常用逗号隔开**
-  - 结构: 先行词 + , who/which + 从句。
-  - 例句: My sister, `who lives in New York`, is coming to visit.（我住在纽约的姐姐要来看我了。）
-  - 常用引导词: who, whom, whose, which
-
-**注意**: 非限制性定语从句中不能用 "that"。
-
-### 3. **状语从句** (Adverbial Clauses)、
-
-状语从句`修饰整个句子`，表时间、原因、条件、目的、结果等。
-1. **状语从句的语序通常保持正常陈述语序**，即主语在前，谓语在后。
-   - 错误：If **will you** come, tell me.
-   - 正确：If **you will** come, tell me.
-2. **主从句顺序的变化**：状语从句可以放在主句之前或之后。放在主句之前时，通常用逗号分隔：
-   - 例句：**If** it rains, we’ll stay inside.（状语从句在主句之前）
-   - 例句：We’ll stay inside **if** it rains.（状语从句在主句之后）
-3. **虚拟语气的使用**：在某些条件状语从句中，尤其是与过去、未来可能性不大的条件搭配时，需要使用虚拟语气：
-   - 例句：**If** I **were** you, I **would** quit the job.  
-     （如果我是你，我就会辞职。）
-
-#### 3.1 **时间状语从句** (Time Clauses)
-  - **解释**: 表示`动作发生的时间`
-  - **结构**: 主句 + when/while/before/after + 从句
-  - **例句**: I will call you `when I arrive`.（我到达时会给你打电话。）
-  - **常用引导词**: **when, while, before, after, as soon as, since, until, as**
-
-**例句**：
-  - **When**：当……时候
-    - 例句：Call me **when** you arrive.（当你到达时给我打电话。）
-  - **While**：当……时候
-    - 例句：We chatted **while** we were waiting.（我们等候时聊了聊。）
-  - **Before**：在……之前
-    - 例句：Finish your work **before** you leave.（在你离开之前完成工作。）
-  - **After**：在……之后
-    - 例句：Let’s eat **after** we finish the job.（我们完成工作后再吃饭。）
-  - **Until/Till**：直到……为止
-    - 例句：I will wait **until** you come back.（我会等到你回来。）
-  - **As soon as**：一……就
-    - 例句：**As soon as** I finish, I’ll call you.（我一完成就给你打电话。）
-  - **Since**：自从……以来
-    - 例句：I have been happy **since** I met you.（自从遇见你，我一直很快乐。）
-
-#### 3.2 **原因状语从句** (Reason Clauses)
-  - **解释**: 表示`动作发生的原因`
-  - **结构**: 主句 + because/since/as + 从句
-  - **例句**: She stayed home `because she was sick`.（她因为生病待在家里。）
-  - **常用引导词**: **because, since, as, now that, inasmuch as**
-
-#### 3.3 **条件状语从句** (Condition Clauses)
-  - **解释**: 表示`某动作发生的条件`
-  - **结构**: 主句 + if/unless + 从句
-  - **例句**: `If it rains`, we will stay inside.（如果下雨，我们就待在室内。）
-  - **常用引导词**: **if, unless, as long as, provided that**
-
-**例句**：
-  - **If**：如果
-    - 例句：**If** you study hard, you will pass the exam.（如果你努力学习，你就能通过考试。）
-  - **Unless**：除非（相当于“if ... not”）
-    - 例句：**Unless** it stops raining, we can’t go out.（除非雨停了，否则我们不能出去。）
-  - **As long as**：只要
-    - 例句：You can stay **as long as** you are quiet.（只要你安静，你就可以待着。）
-  - **Provided that**：只要（表示条件）
-    - 例句：You can borrow my car **provided that** you drive carefully.（只要你开车小心，你就可以借我的车。）
-
-#### 3.4 **目的状语从句** (Purpose Clauses)
-  - **解释**: 表示`动作的目的`
-  - **结构**: 主句 + so that/in order that + 从句
-  - **常用引导词**: **so that, in order that, in case, lest, for fear that**
-
-**例句**：
-  - **So that/In order that**：以便（表示目的）
-    - 例句：He studied hard **so that** he could pass the exam.（他努力学习以便能通过考试。）
-  - **In case**：以防万一
-    - 例句：Take an umbrella **in case** it rains.（带把伞以防下雨。）  
-  - **Lest**：以免（较为正式）
-    - 例句：He spoke quietly **lest** he should wake the baby.（他说话很轻，以免吵醒孩子。）
-  
-#### 3.5 **结果状语从句** (Result Clauses)
-  - **解释**: 表示`动作导致的结果`
-  - **结构**: 主句 + so...that/such...that + 从句
-  - **常用引导词**: **so…that, such…that**
-
-**例句**：
-  - **So ... that**：如此……以至于
-    - 例句：He was **so tired that** he couldn’t keep his eyes open.（他太累了，以至于眼睛都睁不开。）
-  - **Such ... that**：如此……以至于
-    - 例句：It was **such** a hot day **that** we decided to stay indoors.（天气太热了，我们决定呆在室内。）
-
-#### 3.6 **让步状语从句** (Concession Clauses)
-  - **解释**: 表示尽管某种情况存在，结果却不同
-  - **结构**: 主句 + although/even though/though +
-  - **常用引导词**: **although, though, even though, even if, while, whereas, no matter**
-
-例句：
-  - **Although/Though/Even though**：尽管
-    - 例句：**Although** it was raining, we went out.（尽管下雨，我们还是出门了。）
-  - **Even if**：即使
-    - 例句：**Even if** you are tired, you must finish the task.（即使你很累，你也必须完成任务。）
-  - **While/Whereas**：尽管（表示对比）
-    - 例句：**While** he likes sports, she prefers reading.（虽然他喜欢运动，但她更喜欢读书。）
-  - **No matter + 疑问词**：无论
-    - 例句：**No matter where** you go, I will follow.（无论你去哪儿，我都会跟着。）
-  
-#### 3.7 **方式状语从句** (Manner Clauses)
-  - **解释**: 表示动作进行的方式
-  - **结构**: 主句 + as/like/as if + 从句
-  - **例句**: Do it as I showed you.（照我给你示范的做。）
-  - **常用引导词**: **as, as if, as though**
-
-#### 3.8 **比较状语从句（Adverbial Clause of Comparison）**
-  - **解释**:表示主句与从句的比较关系。
-  - **常用引导词**：**than, as ... as, the more ... the more**
-
-**例句**：
-  - **Than**：比……
-    - 例句：He runs faster **than** I do.（他跑得比我快。）
-  - **As ... as**：和……一样
-    - 例句：She is **as** tall **as** her sister.（她和她姐姐一样高。）
-  - **The more ... the more**：越……越……
-    - 例句：**The more** you read, **the more** you learn.（你读得越多，你学得越多。）
-
-#### 3.9 **地点状语从句（Adverbial Clause of Place）**
-  - **解释**:地点状语从句表示主句动作发生的地点。
-  - **常用引导词****where, wherever**。
-
-**例句**：
-  - **Where**：在……地方
-    - 例句：I will go **where** you go（你去哪儿我就去哪儿。）
-  - **Wherever**：无论在哪里
-    - 例句：You can find peace **wherever** you go.（无论你去哪里，你都能找到宁静。）
-
-### 4. **条件从句** (Conditional Clauses)
-
-表示`假设`的情况，通常用 if 引导。
-
-#### **第一条件句**：表示`现实可能发生`的情况。
-  - **结构**: If + 一般现在时，主句 + will/can + 动词原形
-  - **例句**: `If it rains`, we will stay home.
-
-#### **第二条件句**：表示`不大可能发生`的假设情况。
-  - 结构: If + 一般过去时，主句 + would/could + 动词原形
-  - 例句: `If I were you`, I would take the job.
-
-#### **第三条件句**：表示`过去不可能改变`的假设。
-  - 结构: If + 过去完成时，主句 + would/could have + 过去分词
-  - 例句: If I had known, I would have helped you.
-
-## 名词 (Noun)
-
-| 分类                           | 作用                                                             | 语法特点                                   | 举例                                             |
-| ------------------------------ | ---------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------ |
-| 普通名词（Common Noun）        | 表示同类事物的名称，通常泛指一类人、事物或概念                   | 无                                         | book（书）、dog（狗）、city（城市）              |
-| 专有名词（Proper Noun）        | 特定的人、地点、机构、书名或其他独特事物的名称                   | 首字母通常大写                             | Tom（汤姆）、New York（纽约）、Google（谷歌）    |
-| 集合名词（Collective Noun）    | 表示一组人或事物的集合，既可以指一个整体，也可以指集合中的个体。 | 可能根据表达的意思，决定使用单数、复数动词 | family（家庭）、team（团队）、class（班级）      |
-| 可数名词（Countable Noun）     | 可以计数的个体或单位                                             | 有单数和复数形式                           | apple → apples（苹果）、child → children（孩子） |
-| 不可数名词（Uncountable Noun） | 表示不可计数的物质、抽象概念等                                   | 通常没有复数形式。                         | water（水）、information（信息）、sugar（糖）    |
-| 具体名词（Concrete Noun）      | 表示可以感知的实体事物                                           | 通常可数                                   | table（桌子）、flower（花）、dog（狗）           |
-| 抽象名词（Abstract Noun）      | 表示不可感知的概念、状态、品质或活动                             | 通常不可数                                 | love（爱）、happiness（幸福）、honesty（诚实）   |
-
-### 名词的可数性（Countability）
-
-#### 可数名词（Countable Nouns）
-
-可数名词是指可以单独计数的名词，有单数和复数形式。前面可以用a, an, one, two, three等数词修饰。
-
-##### 【名词变化规则】复数形式（Plural Form）
-
-| **规则**                          | **变化规则**                           | **例子**                                             |
-| --------------------------------- | -------------------------------------- | ---------------------------------------------------- |
-| 一般情况下                        | 在名词后加 **-s**                      | *book → books*（书）、*cat → cats*（猫）             |
-| 以 s, x, ch, sh, o 结尾的名词     | 在名词后加 **-es**                     | *class → classes*（班级）、*watch → watches*（手表） |
-| 以辅音字母 + y 结尾的名词         | 将 **y** 变成 **i**，再加 **-es**      | *baby → babies*（婴儿）、*city → cities*（城市）     |
-| 以元音字母 + y 结尾的名词         | 直接加 **-s**                          | *boy → boys*（男孩）、*day → days*（日子）           |
-| 以 f 或 fe 结尾的名词（部分词汇） | 将 **f / fe** 变成 **v**，再加 **-es** | *leaf → leaves*（叶子）、*wife → wives*（妻子）      |
-| 以 o 结尾的外来词（部分词汇）     | 直接加 **-s**                          | *photo → photos*（照片）、*piano → pianos*（钢琴）   |
-| 不规则复数（需单独记忆）          | 形式变化不规则                         | *child → children*（孩子）、*man → men*（男人）      |
-
-**不规则复数名词 - 元音变化型**
-
-| **单数形式（Singular Form）**   | **复数形式（Plural Form）** | **例句**                             |
-| ------------------------------- | --------------------------- | ------------------------------------ |
-| man                             | men                         | *One **man** → Two **men***          |
-| woman                           | women                       | *One **woman** → Two **women***      |
-| tooth                           | teeth                       | *One **tooth** → Many **teeth***     |
-| foot                            | feet                        | *One **foot** → Two **feet***        |
-| goose                           | geese                       | *A **goose** → Several **geese***    |
-| mouse                           | mice                        | *A **mouse** → Many **mice***        |
-| louse(虱子；寄生虫；卑鄙的家伙) | lice                        | *A **louse** → Many **lice***        |
-| child                           | children                    | *A **child** → Several **children*** |
-| ox                              | oxen                        | *An **ox** → A team of **oxen***     |
-
-**不规则复数名词 - 拼写完全不同**
-
-| **单数形式（Singular Form）** | **复数形式（Plural Form）** | **例句**                              |
-| ----------------------------- | --------------------------- | ------------------------------------- |
-| person                        | people                      | *A **person** → Several **people***   |
-| brother (宗教团体专用)        | brethren                    | *One **brother** → Many **brethren*** |
-| die (骰子)                    | dice                        | *One **die** → Two **dice***          |
-| penny (便士，英货币单位)      | pence                       | *One **penny** → Several **pence***   |
-
-**不规则复数名词 - 单复数同形**
-
-| **单数形式（Singular Form）** | **复数形式（Plural Form）** | **例句**                                              |
-| ----------------------------- | --------------------------- | ----------------------------------------------------- |
-| sheep                         | sheep                       | *One **sheep** → Many **sheep***                      |
-| deer                          | deer                        | *A **deer** → A herd of **deer***                     |
-| fish                          | fish / fishes               | *A **fish** → Many **fish*** / *different **fishes*** |
-| aircraft                      | aircraft                    | *An **aircraft** → Several **aircraft***              |
-| species                       | species                     | *One **species** → Many **species***                  |
-| series                        | series                      | *A **series** → Several **series***                   |
-| salmon                        | salmon                      | *One **salmon** → Many **salmon***                    |
-| trout                         | trout                       | *A **trout** → Many **trout***                        |
-| swine                         | swine                       | *A **swine** → Several **swine***                     |
-
-**不规则复数名词 - 拉丁或希腊词根（源自古典语言）**
-
-| **单数形式（Singular Form）** | **复数形式（Plural Form）** | **例句**                                                |
-| ----------------------------- | --------------------------- | ------------------------------------------------------- |
-| datum 数据                    | data                        | *A single datum * → Several **data***                   |
-| cactus 仙人掌                 | cacti / cactuses            | *One **cactus** → Several **cacti / cactuses***         |
-| focus 重点、震源、意图        | foci / focuses              | *A **focus** → Many **foci / focuses***                 |
-| fungus 真菌                   | fungi / funguses            | *A **fungus** → Several **fungi / funguses***           |
-| radius 半径                   | radii                       | *One **radius** → Many **radii***                       |
-| syllabus 教学大纲             | syllabi / syllabuses        | *One **syllabus** → Several **syllabi / syllabuses***   |
-| stimulus 刺激                 | stimuli                     | *A **stimulus** → Many **stimuli***                     |
-| phenomenon 现象               | phenomena                   | *A **phenomenon** → Many **phenomena***                 |
-| criterion 尺度，标准          | criteria                    | *A **criterion** → Several **criteria***                |
-| bacterium 细菌                | bacteria                    | *A **bacterium** → Many **bacteria***                   |
-| appendix 阑尾；附录           | appendices / appendixes     | *An **appendix** → Several **appendices / appendixes*** |
-| index 索引、指数              | indices / indexes           | *An **index** → Several **indices / indexes***          |
-| basis 基础，要素；基准        | bases                       | *A **basis** → Several **bases***                       |
-| thesis 论文；论题             | theses                      | *A **thesis** → Many **theses***                        |
-
-**根据含义有不同形式**：
-  - *fish* 在表示同一物种的多条鱼时，用复数形式 *fish*；而当表示不同种类的鱼时，可以使用 *fishes*。
-  - 对于某些词汇（如 *index* 和 *appendix*），其复数形式有两种，分别适用于不同的语境。一般来说，*indices* 用于数学或科学环境，而 *indexes* 则用于书籍目录或索引。
-
-#### 不可数名词（Uncountable Nouns）
-
-不可数名词表示不可单独计数的事物，如物质、抽象概念、活动或现象。通常没有复数形式，前面不能用数词修饰。
-
-不可数名词通常没有复数形式，但可以`通过量词来表达其数量`。
-
-**常见不可数名词及其对应的量词**
-
-| **不可数名词**          | **量词**                                     | **例子**                                                                 |
-| ----------------------- | -------------------------------------------- | ------------------------------------------------------------------------ |
-| **water（水）**         | a glass of, a bottle of, a drop of, a jug of | *a glass of water*（一杯水）、*a drop of water*（一滴水）                |
-| **milk（牛奶）**        | a glass of, a bottle of, a carton of         | *a carton of milk*（一盒牛奶）、*a glass of milk*（一杯牛奶）            |
-| **coffee（咖啡）**      | a cup of, a pot of, a mug of                 | *a cup of coffee*（一杯咖啡）、*a mug of coffee*（一大杯咖啡）           |
-| **tea（茶）**           | a cup of, a pot of                           | *a cup of tea*（一杯茶）、*a pot of tea*（一壶茶）                       |
-| **sugar（糖）**         | a spoonful of, a teaspoon of, a bag of       | *a teaspoon of sugar*（一茶匙糖）、*a bag of sugar*（一袋糖）            |
-| **salt（盐）**          | a pinch of, a bag of                         | *a pinch of salt*（一撮盐）、*a bag of salt*（一袋盐）                   |
-| **flour（面粉）**       | a bag of, a pound of                         | *a bag of flour*（一袋面粉）、*a pound of flour*（一磅面粉）             |
-| **bread（面包）**       | a slice of, a loaf of, a piece of            | *a slice of bread*（一片面包）、*a loaf of bread*（一条面包）            |
-| **butter（黄油）**      | a stick of, a pat of, a tub of               | *a stick of butter*（一条黄油）、*a tub of butter*（一桶黄油）           |
-| **cheese（奶酪）**      | a slice of, a piece of, a block of           | *a slice of cheese*（一片奶酪）、*a block of cheese*（一块奶酪）         |
-| **meat（肉）**          | a piece of, a slice of                       | *a piece of meat*（一块肉）、*a slice of meat*（一片肉）                 |
-| **rice（米）**          | a bowl of, a grain of                        | *a bowl of rice*（一碗米）、*a grain of rice*（一粒米）                  |
-| **fruit（水果）**       | a piece of                                   | *a piece of fruit*（一块水果）                                           |
-| **furniture（家具）**   | a piece of                                   | *a piece of furniture*（一件家具）                                       |
-| **luggage（行李）**     | a piece of                                   | *a piece of luggage*（一件行李）                                         |
-| **baggage（行李）**     | a piece of                                   | *a piece of baggage*（一件行李）                                         |
-| **money（钱）**         | a sum of, a piece of                         | *a sum of money*（一笔钱）、*a piece of money*（一部分钱）               |
-| **advice（建议）**      | a piece of                                   | *a piece of advice*（一条建议）                                          |
-| **information（信息）** | a piece of, a bit of                         | *a piece of information*（一则信息）、*a bit of information*（一些信息） |
-| **news（新闻）**        | a piece of                                   | *a piece of news*（一条新闻）                                            |
-| **homework（作业）**    | a piece of                                   | *a piece of homework*（一份作业）                                        |
-| **work（工作）**        | a piece of                                   | *a piece of work*（一份工作）                                            |
-| **equipment（设备）**   | a piece of                                   | *a piece of equipment*（一件设备）                                       |
-| **clothing（衣物）**    | a piece of, an item of                       | *a piece of clothing*（一件衣物）、*an item of clothing*（一件衣物）     |
-| **paper（纸）**         | a sheet of, a piece of                       | *a sheet of paper*（一张纸）、*a piece of paper*（一片纸）               |
-| **glass（玻璃）**       | a piece of, a shard of                       | *a piece of glass*（一块玻璃）、*a shard of glass*（一片玻璃）           |
-| **time（时间）**        | a period of, a bit of, a moment of           | *a period of time*（一段时间）、*a bit of time*（一点时间）              |
-| **luck（运气）**        | a stroke of, a bit of                        | *a stroke of luck*（一丝好运）、*a bit of luck*（一点好运）              |
-| **work（工作）**        | a piece of, an hour of                       | *a piece of work*（一项工作）、*an hour of work*（一小时工作）           |
-| **snow（雪）**          | a flake of, a layer of                       | *a flake of snow*（一片雪花）、*a layer of snow*（一层雪）               |
-| **ice（冰）**           | a block of, a cube of                        | *a block of ice*（一块冰）、*an ice cube*（一块冰块）                    |
-| **rain（雨）**          | a drop of, a shower of                       | *a drop of rain*（一滴雨）、*a shower of rain*（一阵雨）                 |
-| **hair（头发）**        | a strand of, a lock of                       | *a strand of hair*（一缕头发）、*a lock of hair*（一束头发）             |
-| **grass（草）**         | a blade of                                   | *a blade of grass*（一片草）                                             |
-| **lightning（闪电）**   | a bolt of, a flash of                        | *a bolt of lightning*（一道闪电）、*a flash of lightning*（一闪闪电）    |
-| **thunder（雷声）**     | a clap of, a rumble of                       | *a clap of thunder*（一声雷响）、*a rumble of thunder*（一阵雷声）       |
-
-**通用量词（General Quantifiers）**
-
-| **量词（Quantifier）** | **中文解释**       | **例子**                             |
-| ---------------------- | ------------------ | ------------------------------------ |
-| a piece of             | 一片 / 一块 / 一段 | *a piece of advice*（一条建议）      |
-| a bit of               | 一点 / 一些        | *a bit of information*（一些信息）   |
-| a lot of / lots of     | 大量 / 许多        | *a lot of money*（很多钱）           |
-| a great deal of        | 大量的             | *a great deal of work*（大量的工作） |
-| some                   | 一些               | *some water*（一些水）               |
-| much                   | 很多               | *much time*（很多时间）              |
-| little                 | 少量               | *little food*（少量的食物）          |
-| a little               | 一点点             | *a little knowledge*（一点点知识）   |
-| plenty of              | 充足的             | *plenty of evidence*（充足的证据）   |
-| a lack of              | 缺少               | *a lack of information*（缺乏信息）  |
-
-**特定单位量词（Specific Unit Quantifiers）**
-
-| **量词（Quantifier）** | **中文解释**            | **例子**                           |
-| ---------------------- | ----------------------- | ---------------------------------- |
-| a cup of               | 一杯                    | *a cup of tea*（一杯茶）           |
-| a glass of             | 一杯（玻璃杯）          | *a glass of water*（一杯水）       |
-| a bottle of            | 一瓶                    | *a bottle of wine*（一瓶酒）       |
-| a bowl of              | 一碗                    | *a bowl of soup*（一碗汤）         |
-| a drop of              | 一滴                    | *a drop of rain*（一滴雨水）       |
-| a pint of              | 一品脱（液体单位）      | *a pint of milk*（一品脱牛奶）     |
-| a spoonful of          | 一勺                    | *a spoonful of sugar*（一勺糖）    |
-| a bar of               | 一条 / 一块（条状物体） | *a bar of chocolate*（一条巧克力） |
-| a loaf of              | 一条（面包）            | *a loaf of bread*（一条面包）      |
-| a slice of             | 一片（切片）            | *a slice of cheese*（一片奶酪）    |
-| a chunk of             | 一大块                  | *a chunk of meat*（一大块肉）      |
-| a grain of             | 一粒                    | *a grain of rice*（一粒米）        |
-| a pinch of             | 一撮                    | *a pinch of salt*（一撮盐）        |
-| a handful of           | 一把 / 一小撮           | *a handful of sand*（一把沙子）    |
-| a stick of             | 一根 / 一条（长条状）   | *a stick of butter*（一条黄油）    |
-| a sheet of             | 一张                    | *a sheet of paper*（一张纸）       |
-| a tube of              | 一管                    | *a tube of toothpaste*（一管牙膏） |
-| a jug of               | 一壶                    | *a jug of milk*（一壶牛奶）        |
-
-**集合类量词（Collective Quantifiers）**
-
-| **量词（Quantifier）** | **中文解释**        | **例子**                                                        |
-| ---------------------- | ------------------- | --------------------------------------------------------------- |
-| a bunch of             | 一束 / 一串 / 一群  | *a bunch of flowers*（一束花）、*a bunch of grapes*（一串葡萄） |
-| a group of             | 一组 / 一群         | *a group of people*（一群人）                                   |
-| a pile of              | 一堆                | *a pile of clothes*（一堆衣服）                                 |
-| a heap of              | 一堆 / 一大堆       | *a heap of rubbish*（一堆垃圾）                                 |
-| a stack of             | 一摞                | *a stack of papers*（一摞文件）                                 |
-| a bundle of            | 一捆 / 一包         | *a bundle of sticks*（一捆柴火）                                |
-| a set of               | 一套                | *a set of tools*（一套工具）                                    |
-| a pack of              | 一包 / 一群（兽群） | *a pack of cards*（一副牌）、*a pack of wolves*（一群狼）       |
-| a series of            | 一系列              | *a series of events*（一系列事件）                              |
-| a pair of              | 一对 / 一双         | *a pair of shoes*（一双鞋子）、*a pair of glasses*（一副眼镜）  |
-| a range of             | 一组 / 一系列       | *a range of products*（一系列产品）                             |
-| a collection of        | 一组 / 一系列       | *a collection of stamps*（一组邮票）                            |
-| a variety of           | 各种                | *a variety of spices*（各种香料）                               |
-
-**表示量的具体度量词（Measurement Quantifiers）**
-
-| **量词（Quantifier）** | **中文解释** | **例子**                                 |
-| ---------------------- | ------------ | ---------------------------------------- |
-| a liter of             | 一升         | *a liter of juice*（一升果汁）           |
-| a gallon of            | 一加仑       | *a gallon of gasoline*（一加仑汽油）     |
-| a pound of             | 一磅         | *a pound of meat*（一磅肉）              |
-| a kilogram of          | 一千克       | *a kilogram of flour*（一千克面粉）      |
-| an ounce of            | 一盎司       | *an ounce of gold*（一盎司黄金）         |
-| a ton of               | 一吨         | *a ton of coal*（一吨煤）                |
-| a square meter of      | 一平方米     | *a square meter of land*（一平方米土地） |
-| a yard of              | 一码         | *a yard of cloth*（一码布）              |
-| a meter of             | 一米         | *a meter of wire*（一米电线）            |
-
-**常用于不可数名词的抽象量词（Abstract Quantifiers）**
-
-| **量词（Quantifier）** | **搭配的不可数名词（Uncountable Noun）**             | **例句（Example Sentence）**                                                      |
-| ---------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------- |
-| **a bit of**           | advice, information, time, luck, effort              | *I need **a bit of** advice.*（我需要一点建议。）                                 |
-| **a piece of**         | advice, information, news, work, evidence            | *She gave me **a piece of** advice.*（她给了我一条建议。）                        |
-| **a hint of**          | doubt, suspicion, emotion, surprise                  | *There was **a hint of** suspicion in his voice.*（他的声音中带有一丝怀疑。）     |
-| **a touch of**         | class, irony, sadness, sympathy                      | *His speech had **a touch of** irony.*（他的演讲带有一丝讽刺。）                  |
-| **a trace of**         | doubt, emotion, humor, guilt, sadness, bitterness    | *I detected **a trace of** guilt in her words.*（我在她的话中察觉到一丝内疚。）   |
-| **a great deal of**    | information, interest, patience, respect, sympathy   | *He has **a great deal of** patience.*（他非常有耐心。）                          |
-| **an amount of**       | time, effort, money, stress, tension                 | *There is a large **amount of** stress in his job.*（他的工作压力很大。）         |
-| **a sense of**         | achievement, purpose, security, urgency              | *I felt **a sense of** urgency in her words.*（我在她的话中感受到了一种紧迫感。） |
-| **a feeling of**       | pride, freedom, happiness, satisfaction              | *He spoke with **a feeling of** pride.*（他带着一种自豪感说话。）                 |
-| **a sign of**          | hope, progress, change, approval, fatigue            | *The project showed **a sign of** progress.*（项目显示出进展的迹象。）            |
-| **a bit of**           | excitement, hope, concern, joy, anger                | *She showed **a bit of** excitement.*（她表现出了一点兴奋。）                     |
-| **a ray of**           | hope, sunshine, optimism                             | *There was **a ray of** hope for the victims.*（对受害者来说还有一丝希望。）      |
-| **a grain of**         | truth, salt, understanding, sense, knowledge         | *There isn’t **a grain of** truth in his story.*（他的故事里一点真相也没有。）    |
-| **a flash of**         | insight, inspiration, anger, humor, understanding    | *She had **a flash of** inspiration.*（她突然灵感迸发。）                         |
-| **a lack of**          | confidence, communication, motivation, understanding | *There is **a lack of** motivation in the team.*（团队缺乏动力。）                |
-| **a wealth of**        | knowledge, information, experience, talent           | *The professor has **a wealth of** knowledge.*（这位教授知识渊博。）              |
-| **a form of**          | communication, entertainment, education, expression  | *Art is **a form of** expression.*（艺术是一种表达方式。）                        |
-| **an act of**          | kindness, courage, violence, defiance, betrayal      | *His behavior was **an act of** courage.*（他的行为是一种勇气的表现。）           |
-| **a degree of**        | difficulty, understanding, certainty, freedom, risk  | *There is **a degree of** risk involved.*（这其中存在一定的风险。）               |
-| **a type of**          | behavior, crime, relationship, challenge, strategy   | *Procrastination is **a type of** self-sabotage.*（拖延是一种自我妨害的行为。）   |
-| **a stroke of**        | luck, genius, insight                                | *That was **a stroke of** genius.*（那是一种天才的表现。）                        |
-| **a sense of**         | security, humor, relief, belonging                   | *She has **a sense of** humor.*（她很有幽默感。）                                 |
-| **a spark of**         | creativity, interest, imagination, love              | *I saw **a spark of** creativity in his work.*（我在他的作品中看到了一丝创意。）  |
-| **a surge of**         | energy, anger, emotion, relief, joy                  | *He felt **a surge of** anger.*（他感到一阵愤怒。）                               |
-| **a moment of**        | happiness, silence, tension, truth                   | *They shared **a moment of** silence.*（他们一起度过了片刻的沉默。）              |
-| **a sense of**         | pride, loyalty, commitment, responsibility           | *He has **a sense of** responsibility.*（他有责任感。）                           |
-| **a show of**          | strength, support, resistance, defiance              | *The people made **a show of** resistance.*（人们表现出抵抗的态度。）             |
-| **a bit of**           | hope, luck, surprise, joy                            | *There is **a bit of** hope left.*（还留有一点希望。）                            |
-| **a hint of**          | sadness, hesitation, excitement                      | *He spoke with **a hint of** excitement.*（他带着一丝兴奋地说话。）               |
-
-#### 不可数名词的可数用法
-
-1.**表示不同种类（Different Types）**
-
-当不可数名词用来表示**不同种类或品种**时，可以变为复数形式表示多种类型。通常，这种用法出现在**学术、商业**或**日常语言**中，帮助区分不同的类别或形式。
-- **例子**：
-  - *Cheese*（奶酪，通常不可数） → **Cheeses**（不同种类的奶酪）
-    - *There are many **cheeses** from France.*（法国有许多种类的奶酪。）
-  - *Wine*（葡萄酒，不可数） → **Wines**（不同品种的葡萄酒）
-    - *The restaurant offers a variety of **wines**.*（这家餐厅提供各种各样的葡萄酒。）
-  - *Music*（音乐，不可数） → **Musics**（不同风格或种类的音乐）
-    - *Different **musics** are popular in different regions.*（不同种类的音乐在不同地区流行。）
-  - *Fruit*（水果，不可数） → **Fruits**（不同种类的水果）
-    - *Tropical **fruits** are rich in flavor.*（热带水果味道浓郁。）
-
-> **注意**：在表示种类时，名词必须要带有复数形式或与特定的描述词（如 *different, various*）连用，以表示区分。
-
-2.**表示单位或份（Units or Portions）**
-
-不可数名词可以通过加入量词（**a piece of, a glass of, a cup of**）或将其转变为可数形式，表示**具体的单位或份量**。这种用法通常用来表达**可量化的部分**，使不可数名词变得可以计数。
-- **例子**：
-  - *A coffee*（一杯咖啡）
-    - *I'd like **two coffees**, please.*（我想要两杯咖啡。）
-  - *A water*（一瓶水）
-    - *She ordered **three waters** for the table.*（她为桌上的人点了三瓶水。）
-  - *A hair*（一根头发）
-    - *There's **a hair** in my soup!*（我的汤里有一根头发！）
-  - *An ice*（一块冰）
-    - *Could you get me **two ices** for my drink?*（能给我拿两块冰放在饮料里吗？）
-
-> **注意**：这种用法通常用于餐饮、商品或具体单位的描述中。例如，“a coffee” 表示“一杯咖啡”，而不是表示“咖啡”这种物质本身。
-
-3.**表示特定数量（Specific Quantities）**
-
-在某些情境下，不可数名词可以通过添加表示数量的**度量词**（如 *a kilo of, a piece of*）来表达特定数量。这种用法在谈论具体度量时特别常见。
-- **例子**：
-  - *A bread*（一块面包）
-    - *I'd like **two breads**, please.*（我想要两块面包。）
-  - *A cheese*（一块奶酪）
-    - *Can I have **three cheeses** for the party?*（我可以为派对买三块奶酪吗？）
-  - *A chocolate*（一块巧克力）
-    - *We shared **five chocolates**.*（我们分享了五块巧克力。）
-
-> **注意**：这种用法中的“数量词”可以是 *a slice of*、*a bar of*、*a loaf of* 等，用来明确度量的范围和形式。
-
-4.**表示具体事物的特例（Specific Instances）**
-
-有些不可数名词可以通过改变形式或上下文使用来表示**具体实例**或**特定情况**。在这种用法中，不可数名词变为可数名词以描述特定的事件或例子。
-- **例子**：
-  - *Experience*（经验，不可数） → **Experiences**（具体经历）
-    - *She shared her **experiences** in Africa.*（她分享了在非洲的经历。）
-  - *Information*（信息，不可数） → **Informations**（个别信息条目）
-    - *I received several **informations** about the project.*（我收到了一些关于项目的具体信息。）
-  - *Knowledge*（知识，不可数） → **Knowledges**（具体领域的知识）
-    - *He has deep **knowledges** in multiple areas.*（他在多个领域都有深入的知识。）
-
-> **注意**：虽然这些复数形式可能在某些情况下存在，但在大部分标准英语中，类似 *informations* 和 *knowledges* 通常不使用，依然保留不可数形式。在学术或技术用语中，才可能看到这种特殊形式。
-
-5.**修饰限定（限定不可数名词的某种具体情况）**
-
-有些不可数名词在表示**特定情况、表现形式**或**具体上下文**时，会变为可数名词。通过添加限定词或上下文引导，这些名词能够表示特定的状态或实例。
-- **例子**：
-  - *A love*（一段爱情或一种爱的形式）
-    - *It was **a love** that could not be described.*（那是一种无法形容的爱。）
-  - *A success*（一次成功的经历）
-    - *Her first book was **a success**.*（她的第一本书是一次成功的尝试。）
-  - *A life*（一种生活方式或具体的人生经历）
-    - *He led **two very different lives**.*（他过着两种截然不同的生活。）
-
-> **注意**：这种用法通常用于文学、演讲或情感表达中，强调特定的情感、状态或经验，而不是泛指该名词的整体概念。
-
-### 名词的格（Case）
-1. **主格（Nominative Case）**
-   - 名词在句中作**主语**时处于主格形式。
-   - 例：*The **cat** is sleeping.*（猫在睡觉。）
-2. **宾格（Objective Case）**
-   - 名词在句中作**宾语**时处于宾格形式。
-   - 例：*I saw the **dog**.*（我看见了狗。）
-3. **所有格（Possessive Case）**
-   - 所有格表示名词之间的**所属关系**，通常在名词后加上 **'s** 或 **'** 来表示所有格形式。
-
-**所有格变化规则**
- 
-| **名词结尾类型**         | **所有格形式**             | **例子**                                                |
-| ------------------------ | -------------------------- | ------------------------------------------------------- |
-| 以一般字母结尾的单数名词 | 在名词后加 **'s**          | *Tom → Tom's book*（汤姆的书）                          |
-| 以 s 结尾的单数名词      | 通常加 **'s** 或仅加 **'** | *boss → boss's office* / *boss' office*（老板的办公室） |
-| 以 s 结尾的复数名词      | 仅加 **'**                 | *the students → the students' homework*（学生们的作业） |
-
-### 名词短语
-
-### 英语名词短语详解
-
-**名词短语（Noun Phrase）**是由名词及其修饰成分（如限定词、形容词、介词短语、定语从句等）构成的一个短语结构。名词短语的核心是名词（或代词），其他词汇用来修饰、限定或补充这个名词的意义。在句子中，名词短语通常充当主语、宾语、表语、定语或介词宾语等。理解和使用名词短语可以帮助我们更准确、复杂地表达思想和描述事物。
-
-名词短语通常由以下几部分组成：
-1. **中心词（Head Noun）**
-2. **前置修饰语（Premodifiers）**
-3. **后置修饰语（Postmodifiers）**
-
-具体结构如下：
-
-```plaintext
-[限定词 + 前置修饰语] + 中心词 + [后置修饰语]
-```
-
-#### 1. 中心词（Head Noun）
-名词短语的核心部分是**名词或代词**，其余部分都是围绕这个中心词来修饰或补充其意义。
-- **例子**：
-  - *The **boy** ran away.*（男孩跑了。）
-  - *A **book** on the table.*（桌子上的一本书。）
-
-#### 2. 前置修饰语（Premodifiers）
-位于名词之前，用来限定名词的数量、性质或范围，通常包括**限定词（Determiner）**、**形容词（Adjective）**和其他修饰成分。
-- **常见前置修饰语种类**：
-  1. **限定词（Determiner）**：用来指明名词的特定性或数量。
-     - **冠词**：*a, an, the*
-     - **指示代词**：*this, that, these, those*
-     - **物主代词**：*my, your, his, her*
-     - **数量词**：*some, any, many, few*
-  2. **形容词（Adjective）**：描述名词的特征或性质。
-     - **例子**：*beautiful, old, interesting*
-  3. **名词作定语（Noun as Modifier）**：用另一个名词来修饰中心名词。
-     - **例子**：*school bus*（校车），*science teacher*（科学老师）
-- **例子**：
-  - *The **beautiful old house** was sold.*（那座美丽的老房子被卖了。）
-  - *My **younger brother** is in college.*（我弟弟在上大学。）
-
-#### 3. 后置修饰语（Postmodifiers）
-位于名词之后，对名词进行补充说明或进一步限定。常见的后置修饰语包括：
-1. **介词短语（Prepositional Phrase）**
-2. **定语从句（Relative Clause）**
-3. **非谓语动词短语（非限定动词短语，如现在分词、过去分词、不定式短语）**
-4. **名词同位语（Noun Apposition）**
-- **例子**：
-  - *The book **on the table** is mine.*（桌子上的书是我的。）——**介词短语**
-  - *The girl **who is wearing a red dress** is my friend.*（穿红色裙子的女孩是我的朋友。）——**定语从句**
-  - *The car **parked outside** belongs to Mr. Smith.*（停在外面的车属于史密斯先生。）——**过去分词短语**
-  - *My friend, **a talented musician**, is going on a tour.*（我的朋友，一位才华横溢的音乐家，即将巡演。）——**名词同位语**
-
-### 名词短语的常见类型及例子
-
-#### 1. 简单名词短语（Simple Noun Phrase）
-简单名词短语通常只有一个名词或代词，可能带有一个简单的限定词。
-- **例子**：
-  - *A book*（一本书）
-  - *The boy*（那个男孩）
-  - *This idea*（这个主意）
-  - *My friend*（我的朋友）
-  - *Some apples*（一些苹果）
-
-#### 2. 复杂名词短语（Complex Noun Phrase）
-复杂名词短语包含多个修饰成分，如形容词、介词短语、定语从句等。
-- **例子**：
-  - *The **beautiful old house** on the hill*（山上的那座美丽的老房子）
-  - *A **well-written** book about history*（一本关于历史的写得很好的书）
-  - *The **man who lives next door** is a teacher.*（住在隔壁的那个人是一名教师。）
-  - *The **students studying in the library** are very focused.*（在图书馆学习的学生们非常专注。）
-
-#### 3. 名词性定语从句短语（Noun Phrase with Relative Clause）
-名词短语中包含**定语从句**，用来补充说明中心名词，进一步阐述其特征或情况。
-- **例子**：
-  - *The man **who is standing by the door** is my uncle.*（站在门口的那个人是我的叔叔。）
-  - *The movie **that I watched last night** was fantastic.*（我昨晚看的那部电影非常精彩。）
-
-#### 4. 名词性介词短语（Noun Phrase with Prepositional Phrase）
-名词短语中包含**介词短语**，用来描述名词的位置、状态或所属关系。
-- **例子**：
-  - *The house **on the corner** belongs to my family.*（角落上的房子是我家的。）
-  - *The cat **under the table** is sleeping.*（桌子底下的猫在睡觉。）
-
-### 名词短语的常见结构及例子
-以下列出了名词短语的几种常见结构模式及其例子。
-
-| **名词短语结构模式**           | **例子**                                                      | **解释**                                       |
-| ------------------------------ | ------------------------------------------------------------- | ---------------------------------------------- |
-| **限定词 + 名词**              | *the book*（这本书）                                          | 使用冠词或限定词修饰名词。                     |
-| **限定词 + 形容词 + 名词**     | *a beautiful flower*（一朵美丽的花）                          | 在名词前使用形容词修饰名词。                   |
-| **形容词 + 名词**              | *young boy*（年轻的男孩）                                     | 形容词修饰名词，描述其特征。                   |
-| **名词 + 介词短语**            | *the car in the garage*（车库里的汽车）                       | 介词短语作为后置修饰语，描述名词的位置或关系。 |
-| **限定词 + 名词 + 定语从句**   | *the house that Jack built*（杰克建的房子）                   | 定语从句进一步描述或限制名词。                 |
-| **名词 + 过去分词短语**        | *the book written by John*（约翰写的书）                      | 过去分词短语表示被动状态或完成动作。           |
-| **名词 + 现在分词短语**        | *the man standing by the window*（站在窗旁的男人）            | 现在分词短语表示正在进行的动作或状态。         |
-| **名词 + 名词同位语**          | *the city of London*（伦敦城）                                | 同位语进一步解释或说明名词。                   |
-| **量词 + 名词 + 后置修饰语**   | *a bottle of wine in the fridge*（冰箱里的瓶装酒）            | 使用量词引导名词短语，并附加后置修饰语。       |
-| **限定词 + 名词 + 不定式短语** | *the best way to learn*（学习的最好方法）                     | 不定式短语作为名词的补充说明。                 |
-| **名词 + 介词短语 + 定语从句** | *the car in the garage that I bought*（我买的那辆车库里的车） | 介词短语和定语从句同时修饰名词。               |
-
-### 主谓一致（Subject-Verb Agreement）
-
-**主谓一致**是英语语法中一个非常重要的语法规则，指的是**句子的主语与谓语动词在人称（person）和数（number）上必须一致**。即，当主语是单数时，动词也必须是单数形式；当主语是复数时，动词则应使用复数形式。主谓一致规则不仅适用于简单句，还涉及到各种复杂句型中的一致性问题。
-
-**主谓一致的基本规则**：
-  - **单数主语 + 单数动词**：
-    - 例句：The **dog** **barks**. （狗叫。） 
-  - **复数主语 + 复数动词**：
-    - 例句：The **dogs** **bark**. （狗叫。）
-  - **主语是第一人称（I/we）或第二人称（you）时，谓语动词用复数形式**：
-    - 例句：**I go** to school every day.
-    - 例句：**You are** my best friend.
-  - **第三人称单数主语时，动词通常加“s”或“es”**：
-    - 例句：She **likes** music.
-    - 例句：He **goes** to work by bus.
-
-#**特殊主谓一致规则**
-
-
-#### **不定代词作主语**
-当不定代词（如：**someone, everyone, no one, anybody, nobody, something**）作主语时，谓语动词用**单数**形式。
-- **例句**：
-  - **Everyone** **wants** to be happy. （每个人都想要幸福。）
-  - **Something** **is** wrong. （出问题了。）
-- **注意**：这些代词虽然表示的是不特定的人或物，但它们在语法上被视为单数主语。
-
-#### **集体名词作主语**
-集体名词（如：**team, family, class, group, government, staff**）表示一个整体时，通常被视为**单数**主语，谓语动词用单数形式。
-- **例句**：
-  - The **team** **is** winning. （这支队伍正在获胜。）
-  - The **family** **has** a new car. （这家人有了一辆新车。）
-- **注意**：当强调集体名词中的个体成员时，可以视为复数主语，谓语动词用复数形式。
-  - 例句：The **team** **are** arguing among themselves.（这支队伍的队员们正在争论。）
-
-#### **名词短语或主语从句作主语**
-名词短语（如：**the news, the cost of goods**）或由主语从句（如：**What he said**）构成的主语通常视为单数。
-- **例句**：
-  - **The cost of goods** **has** risen significantly. （商品成本大幅上涨。）
-  - **What he said** **makes** sense. （他说的有道理。）
-
-#### **复合主语的主谓一致**
-- **使用“and”连接的复合主语**通常被视为复数，谓语动词用复数形式。
-  - 例句：**Tom and Jerry** **are** friends. （汤姆和杰瑞是朋友。）
-- **使用“and”连接但表示同一概念的复合主语**，谓语动词用单数形式。
-  - 例句：**Bread and butter** **is** my favorite breakfast. （黄油面包是我最喜欢的早餐。）
-
-#### **就近原则（Proximity Agreement）**
-当两个或多个名词或代词通过“**or, either ... or, neither ... nor**”连接时，动词形式与**最靠近的主语**一致。
-- **例句**：
-  - Either **my brothers or my sister is** coming. （不是我兄弟，就是我妹妹要来。）
-  - Neither **the teacher nor the students are** happy. （老师和学生都不高兴。）
-
-#### **量词和数词作主语**
-- **表示时间、金钱、距离等的量词短语**，通常用单数形式。
-  - 例句：**Ten dollars** **is** not enough. （十美元不够。）
-- **表示数量的短语**：
-  - A number of + 复数名词 + 复数动词：
-    - 例句：A number of students **are** present.（一些学生出席。）
-  - The number of + 复数名词 + 单数动词：
-    - 例句：The number of students **is** increasing.（学生人数正在增加。）
-
-#### **与动词形式有关的主谓一致**
-英语动词根据主语的人称和数变化，尤其在一般现在时中，动词需要根据主语的不同进行形式上的变形。
-
-**第三人称单数动词形式（-s 或 -es）**
-- 一般现在时的动词在主语是**第三人称单数**时，需要在动词后加 **-s** 或 **-es**。
-  - 例句：She **reads** books.（她读书。）
-- **规则**：
-  - 直接加“s”：go → goes, read → reads
-  - 以“ch, sh, s, x, o”结尾的动词加“es”：watch → watches
-  - 以辅音字母 + “y”结尾的动词，将“y”变为“i”加“es”：study → studies
-
-**主语是“there is / there are”结构**
-- “**There is**”用于单数主语，“**There are**”用于复数主语。
-  - 例句：**There is** a book on the table.（桌子上有一本书。）
-  - 例句：**There are** many books on the table.（桌子上有许多书。）
-
-#### **英语主谓一致中的常见错误类型**
-- **主语和动词形式不匹配**：
-  - 错误：The books **is** on the table.
-  - 正确：The books **are** on the table.
-- **复合主语的动词形式不一致**：
-  - 错误：Neither my father nor my brothers **is** going.
-  - 正确：Neither my father nor my brothers **are** going.（动词与最接近的主语一致）
-- **集体名词视作复数时动词使用错误**：
-  - 错误：The team **is** arguing among themselves.
-  - 正确：The team **are** arguing among themselves.（当集体名词强调个体成员时）
-
-## 冠词（Article）
-
-**冠词**是英语中用于修饰名词的限定词，它帮助确定名词的`特定性`或数量。在名词短语中，冠词位于名词前面，起到限定名词范围、表示其特指或泛指的作用。掌握冠词的用法，可以更准确地表达名词的意义。英语中主要有三种冠词：**不定冠词（a, an）**、**定冠词（the）**和**零冠词（zero article）**。
-
-### 冠词的分类与用法
-
-#### 1. 不定冠词（Indefinite Article）
-
-**不定冠词**用来表示**泛指**，通常用在**单数可数名词**前，表示一个`未特定指明`的人、物或概念。不定冠词有两种形式：**a** 和 **an**，根据首字母发音的不同来选择。
-- **a**：用于以辅音音素开头的单词之前。
-  - **例子**：
-    - *a book*（一本书）
-    - *a university*（一所大学，注意 *university* 以 /ju:/ 开头，发音以辅音音素开头）
-    - *a European country*（一个欧洲国家）
-- **an**：用于以元音音素（a, e, i, o, u 的元音发音）开头的单词之前。
-  - **例子**：
-    - *an apple*（一个苹果）
-    - *an hour*（一个小时，“hour” 以元音音素 /au/ 开头）
-    - *an honest man*（一个诚实的人，“honest” 以元音音素 /ɒ/ 开头）
-- **用途**：
-  - **表示泛指**：用于提到某个对象或事物，但没有具体指明。
-    - *I need **a pen**.*（我需要一支笔——不特定的任何一支笔。）
-  - **表示类别或身份**：用于表示职业、身份或某个类别的成员。
-    - *He is **a doctor**.*（他是一名医生。）
-    - *She wants to be **an artist**.*（她想成为一名艺术家。）
-- **注意**：
-  1. “a”和“an”取决于单词的**首音素**，而不是首字母。例如：*an MP*（一名国会议员），因为 “MP” 发音以元音音素 /em/ 开头。
-  2. 不定冠词**只能用在单数可数名词**前，不能用于不可数名词（如 *information, water*）和复数名词。
-
-#### 2. 定冠词（Definite Article）
-
-**定冠词 "the"** 用来表示**特指**的名词，表示`说话者和听话者都知道或理解`的`特定`事物、人物或地点。定冠词可以用于**单数、复数可数名词**和**不可数名词**前。
-- **例子**：
-  - *the book*（那本书）
-  - *the students*（那些学生）
-  - *the water*（那水）
-- **用途**：
-  - **特指已知的事物**：表示特定的、之前提到过或上下文中明确指明的事物。
-    - *Please pass me **the salt**.*（请把那盐递给我。——双方都知道是哪一份盐。）
-  - **表示唯一性**：表示世界上或某个范围内独一无二的事物。
-    - *The sun rises in the east.*（太阳从东方升起。）
-    - *The Earth is our home planet.*（地球是我们的家园。）
-  - **表示可识别的事物**：表示地理位置、机构、发明等大家都知道的事物。
-    - *I’m going to **the bank**.*（我要去银行。——特指我们都知道的那家银行。）
-  - **表示复数可数名词的特指**：用于描述特定的一组事物或人。
-    - *The children are playing outside.*（这些孩子在外面玩。）
-- **固定搭配**：
-  - **用在某些特定的地理名词前**：
-    - *the United States*（美国）
-    - *the Himalayas*（喜马拉雅山脉）
-  - **用在表示家庭或家庭成员的复数名词前**：
-    - *the Browns*（布朗一家）
-  - **用在序数词或形容词最高级前`必须使用 the`**：
-    - *the first day*（第一天）
-    - *the best option*（最好的选择）
-
-#### 3. 零冠词（Zero Article）
-
-**零冠词**指在名词前`不使用冠词`，表示该名词具有`泛指意义、抽象意义或习惯用法`。通常用于**复数可数名词**、**不可数名词**以及某些专有名词前。
-- **例子**：
-  - *Books are expensive.*（书很贵。——泛指所有书）
-  - *I love coffee.*（我喜欢咖啡。——泛指所有咖啡）
-  - *Children need love.*（孩子们需要爱。）
-- **用途**：
-  - **表示泛指**：表示整体或类别，而不是特指某个个体。
-    - *Dogs are loyal animals.*（狗是忠诚的动物。）
-  - **用于表示抽象概念的不可数名词前**：
-    - *Happiness is important in life.*（幸福在生活中很重要。）
-  - **表示三餐、球类运动或交通工具**：
-    - *We have lunch at noon.*（我们中午吃午饭。）
-    - *He plays tennis every weekend.*（他每周末打网球。）
-    - *I go to work by bus.*（我乘公交车上班。）
-- **特殊规则**：
-  1. **学科名词**前不加冠词：*I study biology.*（我学生物。）
-  2. **语言名词**前不加冠词：*She speaks Spanish.*（她会说西班牙语。）
-  3. **节假日、月份和星期名词**前不加冠词：*We celebrate Christmas.*（我们庆祝圣诞节。）
-
-### 冠词的使用规则与例外情况
-
-#### 1. **冠词与名词的搭配规则**
-- **单数可数名词**：`必须`使用冠词（或其他限定词，如 *this, my, one*）。
-  - *He is **a** teacher.*
-  - ***The** book on the table is mine.*
-- **不可数名词**：通常不使用冠词（使用`零冠词`），但当表示`特定情况`时使用 *the*。
-  - ***Water** is essential for life.*（水对生命至关重要。）
-  - *Please pass **the water**.*（请把那水递给我。）
-- **复数名词**：一般不用不定冠词（使用`零冠词`），但`可以用 *the* 表示特指`。
-  - ***Books** are expensive nowadays.*（书籍现在很贵。）
-  - ***The books** on the shelf are new.*（架子上的那些书是新的。）
-
-#### 2. **冠词与形容词的搭配**
-
-冠词可以和形容词一起使用，以进一步修饰名词。
-- **例子**：
-  - ***A beautiful flower** bloomed in the garden.*（一朵美丽的花在花园里开放。）
-  - ***An interesting book** caught my attention.*（一本有趣的书吸引了我的注意。）
-
-#### 3. **冠词与专有名词的搭配**
-
-大多数**专有名词**前不使用冠词，但有些特殊情况除外：
-- **地理名词**：
-  - 大洲、国家、城市等通常不用冠词：
-    - *Europe, China, London*
-  - 但复数地名、含有“共和国、王国、联合体”等的国家名词使用 *the*：
-    - *the United States, the Netherlands, the Philippines*
-- **机构与建筑物**：
-  - 使用 *the* 修饰某些表示特定用途的建筑物：
-    - *the Eiffel Tower, the White House*
-- **人名与头衔**：
-  - 头衔或称谓名词前通常不用冠词：
-    - *President Biden*
-  - 当表示整个家庭时，使用 *the*：
-    - *the Kennedys*（肯尼迪一家）
-
-#### 4. **三餐、球类运动和交通工具**
-
-在谈到三餐、球类运动和某些交通工具时，`冠词通常省略`，表示的是常规活动或习惯性的事物，不特指某个具体的饭、运动或交通工具。
-- **三餐**：
-  - *We have **lunch** at noon.*（我们中午吃午饭。）
-  - *She invited me to **dinner**.*（她邀请我吃晚饭。）
-- **球类运动**：
-  - *He plays **football** every weekend.*（他每周末踢足球。）
-  - *Do you like to play **tennis**?*（你喜欢打网球吗？）
-- **交通工具**：
-  - *I go to work by **bus**.*（我乘公交车上班。）
-  - *They traveled to Paris by **train**.*（他们乘火车去巴黎。）
-
-在这些例子中，省略冠词表示的是一种常规活动或习惯，不特指某个具体的饭、运动或交通工具。
-
-#### 5. **专有名词**
-
-冠词通常省略在某些**专有名词**之前，尤其是表示国家、大洲、城市、街道、语言、学科、节日、月份和星期的名词。
-- **国家和城市**：
-  - *He is from **Japan**.*（他来自日本。）
-  - *I live in **London**.*（我住在伦敦。）
-- **语言**：
-  - *She speaks **Spanish** fluently.*（她会说流利的西班牙语。）
-- **学科**：
-  - *I study **biology** at university.*（我在大学学习生物。）
-- **节日和月份**：
-  - *We celebrate **Christmas** every year.*（我们每年庆祝圣诞节。）
-  - *The meeting is in **July**.*（会议在七月份举行。）
-
-#### 5. **某些固定短语**
-
-一些固定搭配或习惯表达中，冠词也被省略，这些短语已经成为英语中约定俗成的用法。
-- **例子**：
-  - *at home*（在家）
-  - *in bed*（在床上）
-  - *go to school*（上学）
-  - *go to work*（上班）
-  - *go to prison*（入狱）
-  - *by car/bus/train*（乘车/公交/火车）
-
-## 代词（Pronoun）
-
-### 人称代词（Personal Pronouns）、物主代词（Possessive Pronouns）、反身代词（Reflexive Pronouns）
-
-`人称代词`表示`说话者、听话者或谈论的对象`。人称代词分为**主格（主语位置）**和**宾格（宾语位置）**两种形式。
-
-`物主代词`用来表示`所属关系`，分为**形容词性物主代词（Possessive Adjectives）**和**名词性物主代词（Possessive Pronouns）**两种形式。
-  - 形容词性物主代词：位于名词之前，作定语修饰名词。
-  - 名词性物主代词：单独使用，用来代替名词，表示所属关系。
-
-`反身代词`表示`主语和宾语是同一个人或事物`，即动作由主语发出又作用于主语自己。反身代词的构成为人称代词 + self/selves。
-
-|        人称        | 主格  | 宾格  | 形容词性物主代词 | 名词性物主代词 | 反身代词（Reflexive Pronouns） |
-| :----------------: | :---: | :---: | :--------------: | :------------: | :----------------------------: |
-|    第一人称单数    |   I   |  me   |        my        |      mine      |             myself             |
-|    第一人称复数    |  we   |  us   |       our        |      ours      |           ourselves            |
-| 第二人称单数/复数  |  you  |  you  |       your       |     yours      |      yourself/yourselves       |
-| 第三人称单数（男） |  he   |  him  |       his        |      his       |            himself             |
-| 第三人称单数（女） |  she  |  her  |       her        |      hers      |            herself             |
-| 第三人称单数（物） |  it   |  it   |       its        |      its       |             itself             |
-|    第三人称复数    | they  | them  |      their       |     theirs     |           themselves           |
-
-### 不定代词（Indefinite Pronouns）
-
-**不定代词**用来表示**不特定的人、事物、数量**或表示**泛指**的概念。它们不指向具体的名词，可以表示一些、所有、每一个或任何等含义。常见的不定代词有 **some, any, no, every** 系列词汇，以及 **each, either, neither** 等。
-
-#### 1. **常见不定代词分类与用法**
-不定代词根据其表示的数量和类别，可以分为以下几组：
-
-| **类别**     | **单数形式**                  | **复数形式**  | **例子**                                                                                                     |
-| ------------ | ----------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------ |
-| **表示数量** | **some, any**                 | **some, any** | *Somebody is knocking on the door.*（有人在敲门。）<br>*Are there any seats left?*（还有座位吗？）           |
-| **表示全部** | **everyone, everything**      | **all, both** | *Everyone likes ice cream.*（每个人都喜欢冰淇淋。）<br>*Both of them are right.*（他们俩都对。）             |
-| **表示否定** | **nobody, nothing, none**     | **none**      | *Nobody knows the answer.*（没人知道答案。）<br>*None of these are useful.*（这些都没用。）                  |
-| **表示选择** | **each, either, neither**     | -             | *Each of them has a ticket.*（他们每个人都有一张票。）<br>*Neither of us is going.*（我们都不去。）          |
-| **表示泛指** | **somebody, anybody, nobody** | **others**    | *Somebody left their bag here.*（有人把包落在这儿了。）<br>*Others are waiting outside.*（其他人在外面等。） |
-
-#### 2. **特殊用法与注意点**
-1. **-body, -one, -thing 系列的不定代词**：
-   - **-body** 和 **-one** 系列通常可以互换使用，表示人，但 **-thing** 表示事物。
-   - *Somebody*（某人）与 *someone*（某人）意义相近，但 *something*（某物）表示非生命的事物。
-   - *Anyone*（任何人）与 *anything*（任何事）在疑问句和否定句中使用。
-2. **复合不定代词的主谓一致**：
-   - 当 **-body, -one, -thing** 系列代词作主语时，谓语动词用**单数形式**：
-     - *Everyone **is** here.*（每个人都在这里。）
-     - *Something **was** wrong.*（有点不对劲。）
-3. **“each” 与 “every” 的区别**：
-   - **each** 强调个体，即“一人一个”或“每一个”。
-   - **every** 强调整体，即“全部的每个”。
-
-### 相互代词（Reciprocal Pronouns）each other、one another
-
-**相互代词**表示**互相的关系**，即两者或多者之间的相互作用。相互代词只有两个：**each other** 和 **one another**。
-
-#### 1. **相互代词的用法**
-- **each other**：表示**两者之间**的相互关系。
-- **one another**：表示**三者或三者以上**的相互关系（但在现代英语中，**each other** 和 **one another** 常可互换）。
-- **例子**：
-  - *John and Mary love **each other**.*（约翰和玛丽彼此相爱。）
-  - *All the students help **one another** with their homework.*（所有学生互相帮助做作业。）
-
-#### 2. **相互代词的所有格形式**
-相互代词可以有所有格形式：**each other's** 和 **one another's**，表示互相拥有的关系。
-- **例子**：
-  - *They respect **each other's** opinions.*（他们尊重彼此的意见。）
-  - *The team members used **one another's** resources.*（队员们使用了彼此的资源。）
-
-### 疑问代词（Interrogative Pronouns）提出问题、询问对象
-
-**疑问代词**用来**引导疑问句**或**表示不确定的事物**，主要用于提出问题或询问不明确的对象。常见的疑问代词包括：**who, whom, whose, what, which**。
-
-#### 1. **常见疑问代词的用法**
-
-| **疑问代词** | **用法**                                                 | **例子**                                         |
-| ------------ | -------------------------------------------------------- | ------------------------------------------------ |
-| **who**      | 询问**人的主语**或**身份**                               | *Who is that man?*（那个人是谁？）               |
-| **whom**     | 询问**人的宾语**（较正式用法）                           | *Whom did you see?*（你看见了谁？）              |
-| **whose**    | 用于询问某物的**归属者**或**所有权**，表示“谁的”         | *Whose book is this?*（这是谁的书？）            |
-| **what**     | 用于询问事物、活动、状态或某人的职业、身份等，表示“什么” | *What is your job?*（你的工作是什么？）          |
-| **which**    | 询问**特定范围中的选择**，表示“哪一个”                   | *Which dress do you prefer?*（你喜欢哪条裙子？） |
-
-#### 2. **注意点**
-1. **who 与 whom 的区别**：
-   - **who** 用作主语，询问“谁”做了某事：
-     - *Who called you?*（谁给你打电话了？）
-   - **whom** 用作宾语，询问“谁”是动作的对象（现代英语中，常用 **who** 代替）：
-     - *Whom are you waiting for?*（你在等谁？）
-2. **what 与 which 的区别**：
-   - **what** 用于泛指、开放性的问题，表示“什么”。
-   - **which** 用于在特定范围内作出选择，表示“哪一个”。
-3. **疑问代词与疑问词的区别**
-   - 疑问代词用于代替名词或名词性成分，通常可以独立使用：
-     - Who is that?（那是谁？）
-   - **疑问词（如 "when", "where", "why", "how"）**主要用来表示时间、地点、原因、方式等，无法替代名词，只能作为疑问句的修饰语使用：
-   - When did you arrive?（你什么时候到的？）
-   - Where are you going?（你要去哪儿？）
-
-### 关系代词（Relative Pronouns）引导定语从句
-
-**关系代词**用于**引导定语从句**，用来**连接先行词与定语从句**，表示对前面名词或代词的补充说明。常见关系代词包括：**who, whom, whose, which, that**。
-
-#### 1. **常见关系代词及其用法**
-
-| **关系代词** | **用法**                                         | **例子**                                                                    |
-| ------------ | ------------------------------------------------ | --------------------------------------------------------------------------- |
-| **who**      | 引导**人**的定语从句，作主语                     | *The boy **who** is playing is my brother.*（正在玩的那个男孩是我弟弟。）   |
-| **whom**     | 引导**人**的定语从句，作宾语（较正式）           | *The girl **whom** you met is my friend.*（你遇到的那个女孩是我朋友。）     |
-| **whose**    | 引导**人的所属关系**                             | *The man **whose** car was stolen is very upset.*（车被偷的那个人很沮丧。） |
-| **which**    | 引导**物**的定语从句，作主语或宾语               | *The book **which** you gave me is great.*（你给我的那本书很棒。）          |
-| **that**     | 引导**人或物**的定语从句，作主语或宾语（更常用） | *The car **that** he drives is new.*（他开的那辆车是新的。）                |
-
-#### 2. **关系代词省略**
-当关系代词在从句中作**宾语**时，可以省略。
-- **例子**：
-  - *The book (that) I bought yesterday is interesting.*（我昨天买的那本书很有趣。）
-
-### 连接代词（Conjunctive Pronouns）引导名词性从句
-
-**连接代词**用来引导**名词性从句**，包括主语从句、宾语从句和表语从句等。常见的连接代词有：**who, whom, whose, what, which**。
-
-#### 常见连接代词及其用法
-
-连接代词主要包括以下几种：**who, whom, whose, what, which**。它们可以用来`引导`不同类型的`名词性从句`，并在从句中担任各种句子成分。
-
-| **连接代词** | **用法**                                 | **例句**                                                                                      |
-| ------------ | ---------------------------------------- | --------------------------------------------------------------------------------------------- |
-| **who**      | 引导名词性从句，表示**不确定的人或身份** | *I wonder **who** she is.*（我想知道她是谁。）                                                |
-| **whom**     | 引导名词性从句，表示**不确定的宾语对象** | *I don’t know **whom** they chose.*（我不知道他们选择了谁。）                                 |
-| **whose**    | 引导名词性从句，表示**不确定的所属关系** | *We need to find out **whose** car is blocking the road.*（我们需要知道是谁的车挡在路上了。） |
-| **what**     | 引导名词性从句，表示**不确定的事物**     | *Can you tell me **what** happened?*（你能告诉我发生了什么吗？）                              |
-| **which**    | 引导名词性从句，表示**特定范围内的选择** | *He didn’t specify **which** book he wanted.*（他没有说他想要哪本书。）                       |
-
-#### 连接代词与疑问代词的区别
-
-连接代词与疑问代词在形式上相同，但用法不同：
-1. **连接代词**引导的是**名词性从句**，在句中充当从句成分（主语、宾语、表语等），而**疑问代词**用于**疑问句**中，表示疑问。
-- **连接代词例子**：
-  - *I don’t know **who** called.*（我不知道是谁打来的。——宾语从句）
-  - *The question is **which** one you prefer.*（问题是你更喜欢哪一个。——表语从句）
-- **疑问代词例子**：
-  - ***Who** called?*（谁打来的？）
-  - ***Which** one do you prefer?*（你更喜欢哪一个？）
-2. **疑问代词**在句中用于直接提问，而**连接代词**用来引导从句表达某个疑问或不确定的内容。
-
-### 连接代词的特殊用法
-1. **连接代词作从句的主语或宾语时不可省略**。
-   - **例子**：
-     - *I wonder **what** she is doing.*（我想知道她在做什么。）
-     - *Do you know **which** is the best choice?*（你知道哪个是最好的选择吗？）
-2. **当连接代词作介词宾语时，介词可以放在从句前或从句后**。
-   - **例子**：
-     - *She asked me **with whom** I went to the party.*（她问我和谁一起去参加了派对。——正式）
-     - *She asked me **whom** I went to the party **with**.*（她问我和谁一起去参加了派对。——常见用法）
-3. **连接代词在句中承担句子成分时，要`根据从句`的具体内容来决定其形式**。
-   - **例子**：
-     - *Tell me **what** you like.*（告诉我你喜欢什么。）
-     - *I can’t decide **which** is better.*（我无法决定哪个更好。）
-
-## 形容词（Adjective）
+## 6. 形容词（Adjectives）
 
 **形容词**是用来`描述、修饰名词`或`代词`的词类，表示名词或代词的**性质、状态、数量、大小、颜色、形状**等特征。
 
@@ -1665,7 +2082,7 @@ toc_depth: 4
    - 例句：This book is **difficult** for me to read. (这本书对我来说很难读。)
 
 
-### **形容词作名词**
+### 形容词作名词
 形容词可以作为名词使用，表示某类人或某类事物。常见的用法如下：
 
 #### **表示一类人（the + 形容词）**
@@ -1924,11 +2341,11 @@ toc_depth: 4
    - **advice of value**（有实际价值的建议）
    - **a topic of great interest**（一个引起极大兴趣的话题）
 
-## 副词（Adverb）
+## 7. 副词与状语（Adverbs and Adverbials）
 
 副词是一种`修饰词`，用来`修饰动词、形容词、其他副词、整个句子或某些词组`。它的作用是`提供更多细节`，表明行为、状态或特征的方式、时间、地点、频率、程度等。以下是副词的主要语法知识点及其用法。
 
-### **副词的分类**
+### 副词的分类
 
 副词可以根据它们的功能或所修饰的内容分为以下几类：
 1. **方式副词（Adverbs of Manner）**
@@ -1965,7 +2382,7 @@ toc_depth: 4
    - 常见例子：**however, therefore, moreover, thus, meanwhile**。
    - 例句：She didn’t like the movie; **however**, she stayed till the end. (她不喜欢这部电影；然而，她还是看到了结尾。)
 
-### **副词的位置**
+### 副词的位置
 
 副词在句子中的位置会影响句子的意思。常见的位置有以下几种：
 1. **放在动词后面**
@@ -1980,7 +2397,7 @@ toc_depth: 4
    - 例句：The movie was **extremely** interesting. (这部电影非常有趣。)
    - 例句：She sang **very** well. (她唱得非常好。)
 
-### **副词的比较级和最高级**
+### 副词的比较级和最高级
 
 某些副词也有比较级和最高级的形式，特别是表示方式和程度的副词。规则变化和形容词相似。
 1. **规则副词的比较级和最高级**：
@@ -2001,16 +2418,16 @@ toc_depth: 4
 | much                | more                     | most                     |
 | far                 | farther / further        | farthest / furthest      |
 
-### **副词与形容词的区别**
+### 副词与形容词的区别
 
 | 区别             | 形容词                                                                                             | 副词                                                                                                                            | 例子                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ---------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| ---------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **修饰对象**     | 修饰`名词`或`代词`。                                                                               | 修饰`动词`、`形容词`、`其他副词`、`整个句子`或`词组`。                                                                          | She is a beautiful girl. (她是一个漂亮的女孩。) —— 形容词“beautiful”修饰名词“girl”。<br>She sings beautifully. (她唱得很美妙。) —— 副词“beautifully”修饰动词“sings”。<br>He runs very fast. (他跑得非常快。) —— 副词“very”修饰副词“fast”。<br>Honestly, I didn’t expect that. (老实说，我没想到会这样。) —— 副词“Honestly”修饰整个句子。                                                                                                                                            |
 | **在句中的位置** | 通常位于`名词`或`代词之前`，或者在`系动词`（be, seem, look, feel 等）`后面`，作`表语`（predicate） | `灵活使用`，位置因所修饰的成分不同而有所变化                                                                                    | The red car is mine. (那辆红色的车是我的。) —— 形容词“red”位于名词“car”之前。<br>She seems happy. (她看起来很开心。) —— 形容词“happy”位于系动词“seems”之后。在动词后面（方式副词）：She dances gracefully. (她跳舞跳得很优雅。)<br>在动词之前（频率副词）：He often visits his parents. (他经常看望父母。)<br>在形容词或其他副词之前（程度副词）：It is extremely cold today. (今天非常冷。)<br>在句首或句尾（时间、地点副词）：Yesterday, I went to the park. (昨天，我去了公园。) |
 | **在句中的作用** | 用来`描述主语或宾语的性质或状态`，通常回答**“**它是什么样的？**”或“**它处于什么状态？**”。         | 用来`描述动作、状态或其他描述词的特征`，通常回答“**如何发生的？**”、“**在何时/何地发生的？**”、“**发生得有多频繁或多严重？**”。 | The food is delicious. (这食物很美味。) —— 形容词描述主语“food”的特征。<br>I found the problem difficult. (我发现这个问题很难。) —— 形容词描述宾语“problem”的特征。<br>She runs quickly. (她跑得很快。) —— 副词描述动作“run”。<br>He is too tired to move. (他太累了，无法动弹。) —— 副词描述形容词“tired”。                                                                                                                                                                        |
 | **构成方式**     | 形容词有时是通过添加后缀（如“`-ful`”, “`-less`”, “`-able`”, “`-ous`”等）构成。                     | 副词通常通过在形容词后加“`-ly`”构成（但有些例外），表示方式或程度。                                                             | 形容词：help → helpful (有帮助的) care → careless (粗心的)<br>副词：quick → quickly (快速地)careful → carefully (小心地)                                                                                                                                                                                                                                                                                                                                                            |
 
-### **特殊用法**
+### 特殊用法
 某些副词可以修饰整个句子，表示说话者的态度或观点。这类副词被称为**句子副词（Sentence Adverbs）**。
 - 例句：**Fortunately**, nobody was hurt. (幸运的是，没人受伤。)
 - 例句：**Honestly**, I didn’t expect this result. (老实说，我没想到这个结果。)
@@ -2065,10 +2482,7 @@ toc_depth: 4
 | **slow**                | **slowly**         | - **slow**: 慢的/缓慢的（形容词）。<br>例：The traffic is **slow**. (交通很慢。)<br>- **slowly**: 慢慢地/缓慢地（副词，表示动作方式）。<br>例：She walked **slowly** down the street. (她慢慢地沿着街道走。)                                        |
 | **close**               | **closely**        | - **close**: 近的/靠近的（形容词或副词，表示距离）。<br>例：Stay **close** to me. (紧挨着我。)<br>- **closely**: 密切地/仔细地（表示程度或方式）。<br>例：She looked **closely** at the document. (她仔细看了那份文件。)                            |
 
-
-
-
-## 介词（Prepositions）
+## 8. 介词与介词短语（Prepositions and Prepositional Phrases）
 
 `介词`是用来表示名词或代词与句子中其他词语之间的关系的词。介词通常表示**时间、地点、方向、方式、原因**等，并且与其后的名词、代词或动名词构成`介词短语`。
 ### 介词分类和常见介词
@@ -2435,14 +2849,11 @@ toc_depth: 4
 | **in comparison with** | Her work is excellent **in comparison with** his. | 与……相比 |
 | **relative to**        | The price is high **relative to** its quality.    | 相对于…… |
 
-
-
-
-## 连词（Conjunctions）
+## 9. 连词与逻辑连接（Conjunctions and Connectors）
 
 `连词`是一种连接词，用来连接单词、短语、从句或句子。它们能够表示**并列关系、因果关系、转折关系、条件关系、时间关系**等，从而使句子结构更加复杂和语意更加清晰。连词根据其功能可分为**并列连词（coordinating conjunctions）**、**从属连词（subordinating conjunctions）**、**关联连词（correlative conjunctions）**等几大类。
 
-### **并列连词（Coordinating Conjunctions）**
+### 并列连词（Coordinating Conjunctions）
 
 并列连词用来`连接结构相同或相似的单词、短语、从句或句子`，表示平行或并列关系。常见的并列连词包括 **and, but, or, so, for, nor, yet**。
 
@@ -2465,7 +2876,7 @@ toc_depth: 4
 
 
 
-### **从属连词（Subordinating Conjunctions）**
+### 从属连词（Subordinating Conjunctions）
 从属连词用来`引导从句`（状语从句、条件从句、原因从句、时间从句等），表示主句与从句之间的关系。从属连词有很多种，常见的包括 **because, if, although, since, when, while, until, as, unless** 等。
 
 **从属连词的用法规则**：
@@ -2495,7 +2906,7 @@ toc_depth: 4
 | **even if**           | 即使             | I will go **even if** it rains.                     | 表示让步条件，表示某种情况发生的可能性。 |
 
 
-### **关联连词（Correlative Conjunctions）**
+### 关联连词（Correlative Conjunctions）
 关联连词是成对出现的连词，用来连接句子或词语中的两个对等部分，常见的包括 **both ... and, either ... or, neither ... nor, not only ... but also** 等。
 
 **关联连词的用法规则**：
@@ -2518,7 +2929,7 @@ toc_depth: 4
 | **hardly ... when**       | 一……就     | **Hardly** had I sat down **when** the phone rang.        | 用于描述一个动作刚发生，另一个动作就紧接着发生。   |
 
 
-### **其他类型的连词（Other Conjunction Types）**
+### 其他类型的连词（Other Conjunction Types）
 
 除了常见的并列连词、从属连词和关联连词之外，还有一些特殊类型的连词，用来`表达复杂的逻辑关系或句子结构`。
 
@@ -2589,7 +3000,314 @@ toc_depth: 4
 | **so ... that**   | 如此……以至于 | He was **so** tired **that** he couldn’t keep his eyes open. | 表示程度和结果，通常用来连接程度与结果从句。 |
 | **such ... that** | 如此……以至于 | It was **such** a beautiful day **that** we went for a walk. | 用于表示程度与结果的连结，通常修饰名词。     |
 
-## 感叹词（Interjections）
+## 10. 从句系统（Clauses）
+
+### 名词性从句（Noun Clauses）
+
+名词性从句在句子中**充当主语、宾语或表语**，相当于名词的作用。
+
+**常用引导词**分为三类: 
+  - 连词 **that, whether, if**
+  - 关系代词 **who, what, which** 
+  - 疑问副词 **how, when, where, why**
+
+#### 1.1 **主语从句** (Subject Clauses)
+  - **结构**: What/Whether/That + 从句 + 动词
+  - **例句**: `What he said` is true.（他所说的是真的。）
+
+在正式语体中，主语从句通常放在句首，但在口语中，有时会用形式主语“**it**”引导主句，把从句放在句末，以使句子结构更自然。
+  - 例句：**It** is obvious **that** she likes you.  
+
+
+#### 1.2 **宾语从句** (Object Clauses)
+  - **结构**: 主语 + 动词 + that/what/if/whether + 从句
+  - **例句**: I know `that she is coming`.（我知道她会来。）
+
+**注意**: "**that**" 在口语中有时会省略。
+
+**宾语从句的语序保持陈述句语序**（主语在前，谓语在后），不能使用疑问句语序：
+  - 错误：Do you know **where is he**?
+  - 正确：Do you know **where he is**?
+
+#### 1.3 **表语从句** (Predicative Clauses)
+  - **结构**: 主语 + be 动词 + that/what/who + 从句
+  - **例句**: The problem is `whether we can trust him`.（问题是我们是否能信任他。）
+
+引导表语从句的`疑问词通常表示主语所问的内容`：
+  - 例句：The question is **who will lead the team**.  
+    （问题是谁将带领团队。）
+
+**注意**: 引导表语从句的连词“**that**”通常不能省略。
+
+#### 1.4 **同位语从句** (Appositive Clauses)
+  - **结构**: 从句解释前面的名词
+  - **例句**: The fact `that he passed the exam` surprised everyone.（他通过考试这一事实让大家感到惊讶。）
+
+**同位语从句与定语从句的区别**:
+- **同位语从句**对名词的内容进行`解释`，**定语从句**`修饰`名词。
+  - 例句：The idea **that we should start early** is good.  
+    （这个我们应该早点开始的想法很好。）—— **同位语从句**（解释“idea”的内容）
+  - 例句：The idea **which he proposed** is good.  
+    （他提出的想法很好。）—— **定语从句**（修饰“idea”）
+
+### 定语从句（Relative Clauses）
+
+定语从句修饰名词或代词，**提供附加信息**。通常由关系代词（**who, whom, which, that**）或关系副词（**when, where, why**）引导。
+
+#### 2.1 **限制性定语从句** (Restrictive Relative Clauses)
+
+**不可省略，用于提供必要信息**
+- **结构**: 先行词 + who/which/that + 从句。
+- **例句**: The book `that I borrowed` is very interesting.（我借的那本书非常有趣。）
+- **常用引导词**: who, whom, whose, which, that
+  - **who**：指人，作（从句的）`主语`（例: The man `who is speaking`.）
+  - **whom**：指人，作（从句的）`宾语`（例: The man `whom I met`.）
+  - **whose**：指人或物，表示`所有关系`（例: The girl `whose bag is red`.）
+  - **which**：指物，作`主语`或`宾语`（例: The car `which is parked outside`.）
+  - **that**：指人或物，作`主语`或`宾语`（例: The movie `that I watched`.）
+  - **where**：表示地点。
+  - **when**：表示时间。
+  - **why**：表示原因。
+
+#### 2.2 **非限制性定语从句** (Non-restrictive Relative Clauses)
+
+**提供附加信息，可省略，常用逗号隔开**
+  - 结构: 先行词 + , who/which + 从句。
+  - 例句: My sister, `who lives in New York`, is coming to visit.（我住在纽约的姐姐要来看我了。）
+  - 常用引导词: who, whom, whose, which
+
+**注意**: 非限制性定语从句中不能用 "that"。
+
+### 状语从句（Adverbial Clauses）
+
+状语从句`修饰整个句子`，表时间、原因、条件、目的、结果等。
+1. **状语从句的语序通常保持正常陈述语序**，即主语在前，谓语在后。
+   - 错误：If **will you** come, tell me.
+   - 正确：If **you will** come, tell me.
+2. **主从句顺序的变化**：状语从句可以放在主句之前或之后。放在主句之前时，通常用逗号分隔：
+   - 例句：**If** it rains, we’ll stay inside.（状语从句在主句之前）
+   - 例句：We’ll stay inside **if** it rains.（状语从句在主句之后）
+3. **虚拟语气的使用**：在某些条件状语从句中，尤其是与过去、未来可能性不大的条件搭配时，需要使用虚拟语气：
+   - 例句：**If** I **were** you, I **would** quit the job.  
+     （如果我是你，我就会辞职。）
+
+#### 3.1 **时间状语从句** (Time Clauses)
+  - **解释**: 表示`动作发生的时间`
+  - **结构**: 主句 + when/while/before/after + 从句
+  - **例句**: I will call you `when I arrive`.（我到达时会给你打电话。）
+  - **常用引导词**: **when, while, before, after, as soon as, since, until, as**
+
+**例句**：
+  - **When**：当……时候
+    - 例句：Call me **when** you arrive.（当你到达时给我打电话。）
+  - **While**：当……时候
+    - 例句：We chatted **while** we were waiting.（我们等候时聊了聊。）
+  - **Before**：在……之前
+    - 例句：Finish your work **before** you leave.（在你离开之前完成工作。）
+  - **After**：在……之后
+    - 例句：Let’s eat **after** we finish the job.（我们完成工作后再吃饭。）
+  - **Until/Till**：直到……为止
+    - 例句：I will wait **until** you come back.（我会等到你回来。）
+  - **As soon as**：一……就
+    - 例句：**As soon as** I finish, I’ll call you.（我一完成就给你打电话。）
+  - **Since**：自从……以来
+    - 例句：I have been happy **since** I met you.（自从遇见你，我一直很快乐。）
+
+#### 3.2 **原因状语从句** (Reason Clauses)
+  - **解释**: 表示`动作发生的原因`
+  - **结构**: 主句 + because/since/as + 从句
+  - **例句**: She stayed home `because she was sick`.（她因为生病待在家里。）
+  - **常用引导词**: **because, since, as, now that, inasmuch as**
+
+#### 3.3 **条件状语从句** (Condition Clauses)
+  - **解释**: 表示`某动作发生的条件`
+  - **结构**: 主句 + if/unless + 从句
+  - **例句**: `If it rains`, we will stay inside.（如果下雨，我们就待在室内。）
+  - **常用引导词**: **if, unless, as long as, provided that**
+
+**例句**：
+  - **If**：如果
+    - 例句：**If** you study hard, you will pass the exam.（如果你努力学习，你就能通过考试。）
+  - **Unless**：除非（相当于“if ... not”）
+    - 例句：**Unless** it stops raining, we can’t go out.（除非雨停了，否则我们不能出去。）
+  - **As long as**：只要
+    - 例句：You can stay **as long as** you are quiet.（只要你安静，你就可以待着。）
+  - **Provided that**：只要（表示条件）
+    - 例句：You can borrow my car **provided that** you drive carefully.（只要你开车小心，你就可以借我的车。）
+
+#### 3.4 **目的状语从句** (Purpose Clauses)
+  - **解释**: 表示`动作的目的`
+  - **结构**: 主句 + so that/in order that + 从句
+  - **常用引导词**: **so that, in order that, in case, lest, for fear that**
+
+**例句**：
+  - **So that/In order that**：以便（表示目的）
+    - 例句：He studied hard **so that** he could pass the exam.（他努力学习以便能通过考试。）
+  - **In case**：以防万一
+    - 例句：Take an umbrella **in case** it rains.（带把伞以防下雨。）  
+  - **Lest**：以免（较为正式）
+    - 例句：He spoke quietly **lest** he should wake the baby.（他说话很轻，以免吵醒孩子。）
+  
+#### 3.5 **结果状语从句** (Result Clauses)
+  - **解释**: 表示`动作导致的结果`
+  - **结构**: 主句 + so...that/such...that + 从句
+  - **常用引导词**: **so…that, such…that**
+
+**例句**：
+  - **So ... that**：如此……以至于
+    - 例句：He was **so tired that** he couldn’t keep his eyes open.（他太累了，以至于眼睛都睁不开。）
+  - **Such ... that**：如此……以至于
+    - 例句：It was **such** a hot day **that** we decided to stay indoors.（天气太热了，我们决定呆在室内。）
+
+#### 3.6 **让步状语从句** (Concession Clauses)
+  - **解释**: 表示尽管某种情况存在，结果却不同
+  - **结构**: 主句 + although/even though/though +
+  - **常用引导词**: **although, though, even though, even if, while, whereas, no matter**
+
+例句：
+  - **Although/Though/Even though**：尽管
+    - 例句：**Although** it was raining, we went out.（尽管下雨，我们还是出门了。）
+  - **Even if**：即使
+    - 例句：**Even if** you are tired, you must finish the task.（即使你很累，你也必须完成任务。）
+  - **While/Whereas**：尽管（表示对比）
+    - 例句：**While** he likes sports, she prefers reading.（虽然他喜欢运动，但她更喜欢读书。）
+  - **No matter + 疑问词**：无论
+    - 例句：**No matter where** you go, I will follow.（无论你去哪儿，我都会跟着。）
+  
+#### 3.7 **方式状语从句** (Manner Clauses)
+  - **解释**: 表示动作进行的方式
+  - **结构**: 主句 + as/like/as if + 从句
+  - **例句**: Do it as I showed you.（照我给你示范的做。）
+  - **常用引导词**: **as, as if, as though**
+
+#### 3.8 **比较状语从句（Adverbial Clause of Comparison）**
+  - **解释**:表示主句与从句的比较关系。
+  - **常用引导词**：**than, as ... as, the more ... the more**
+
+**例句**：
+  - **Than**：比……
+    - 例句：He runs faster **than** I do.（他跑得比我快。）
+  - **As ... as**：和……一样
+    - 例句：She is **as** tall **as** her sister.（她和她姐姐一样高。）
+  - **The more ... the more**：越……越……
+    - 例句：**The more** you read, **the more** you learn.（你读得越多，你学得越多。）
+
+#### 3.9 **地点状语从句（Adverbial Clause of Place）**
+  - **解释**:地点状语从句表示主句动作发生的地点。
+  - **常用引导词****where, wherever**。
+
+**例句**：
+  - **Where**：在……地方
+    - 例句：I will go **where** you go（你去哪儿我就去哪儿。）
+  - **Wherever**：无论在哪里
+    - 例句：You can find peace **wherever** you go.（无论你去哪里，你都能找到宁静。）
+
+### 条件从句（Conditional Clauses）
+
+表示`假设`的情况，通常用 if 引导。
+
+#### **第一条件句**：表示`现实可能发生`的情况。
+  - **结构**: If + 一般现在时，主句 + will/can + 动词原形
+  - **例句**: `If it rains`, we will stay home.
+
+#### **第二条件句**：表示`不大可能发生`的假设情况。
+  - 结构: If + 一般过去时，主句 + would/could + 动词原形
+  - 例句: `If I were you`, I would take the job.
+
+#### **第三条件句**：表示`过去不可能改变`的假设。
+  - 结构: If + 过去完成时，主句 + would/could have + 过去分词
+  - 例句: If I had known, I would have helped you.
+
+## 11. 主谓一致（Subject-Verb Agreement）
+
+
+**主谓一致**是英语语法中一个非常重要的语法规则，指的是**句子的主语与谓语动词在人称（person）和数（number）上必须一致**。即，当主语是单数时，动词也必须是单数形式；当主语是复数时，动词则应使用复数形式。主谓一致规则不仅适用于简单句，还涉及到各种复杂句型中的一致性问题。
+
+**主谓一致的基本规则**：
+  - **单数主语 + 单数动词**：
+    - 例句：The **dog** **barks**. （狗叫。） 
+  - **复数主语 + 复数动词**：
+    - 例句：The **dogs** **bark**. （狗叫。）
+  - **主语是第一人称（I/we）或第二人称（you）时，谓语动词用复数形式**：
+    - 例句：**I go** to school every day.
+    - 例句：**You are** my best friend.
+  - **第三人称单数主语时，动词通常加“s”或“es”**：
+    - 例句：She **likes** music.
+    - 例句：He **goes** to work by bus.
+
+### 特殊主谓一致规则
+
+
+#### **不定代词作主语**
+当不定代词（如：**someone, everyone, no one, anybody, nobody, something**）作主语时，谓语动词用**单数**形式。
+- **例句**：
+  - **Everyone** **wants** to be happy. （每个人都想要幸福。）
+  - **Something** **is** wrong. （出问题了。）
+- **注意**：这些代词虽然表示的是不特定的人或物，但它们在语法上被视为单数主语。
+
+#### **集体名词作主语**
+集体名词（如：**team, family, class, group, government, staff**）表示一个整体时，通常被视为**单数**主语，谓语动词用单数形式。
+- **例句**：
+  - The **team** **is** winning. （这支队伍正在获胜。）
+  - The **family** **has** a new car. （这家人有了一辆新车。）
+- **注意**：当强调集体名词中的个体成员时，可以视为复数主语，谓语动词用复数形式。
+  - 例句：The **team** **are** arguing among themselves.（这支队伍的队员们正在争论。）
+
+#### **名词短语或主语从句作主语**
+名词短语（如：**the news, the cost of goods**）或由主语从句（如：**What he said**）构成的主语通常视为单数。
+- **例句**：
+  - **The cost of goods** **has** risen significantly. （商品成本大幅上涨。）
+  - **What he said** **makes** sense. （他说的有道理。）
+
+#### **复合主语的主谓一致**
+- **使用“and”连接的复合主语**通常被视为复数，谓语动词用复数形式。
+  - 例句：**Tom and Jerry** **are** friends. （汤姆和杰瑞是朋友。）
+- **使用“and”连接但表示同一概念的复合主语**，谓语动词用单数形式。
+  - 例句：**Bread and butter** **is** my favorite breakfast. （黄油面包是我最喜欢的早餐。）
+
+#### **就近原则（Proximity Agreement）**
+当两个或多个名词或代词通过“**or, either ... or, neither ... nor**”连接时，动词形式与**最靠近的主语**一致。
+- **例句**：
+  - Either **my brothers or my sister is** coming. （不是我兄弟，就是我妹妹要来。）
+  - Neither **the teacher nor the students are** happy. （老师和学生都不高兴。）
+
+#### **量词和数词作主语**
+- **表示时间、金钱、距离等的量词短语**，通常用单数形式。
+  - 例句：**Ten dollars** **is** not enough. （十美元不够。）
+- **表示数量的短语**：
+  - A number of + 复数名词 + 复数动词：
+    - 例句：A number of students **are** present.（一些学生出席。）
+  - The number of + 复数名词 + 单数动词：
+    - 例句：The number of students **is** increasing.（学生人数正在增加。）
+
+#### **与动词形式有关的主谓一致**
+英语动词根据主语的人称和数变化，尤其在一般现在时中，动词需要根据主语的不同进行形式上的变形。
+
+**第三人称单数动词形式（-s 或 -es）**
+- 一般现在时的动词在主语是**第三人称单数**时，需要在动词后加 **-s** 或 **-es**。
+  - 例句：She **reads** books.（她读书。）
+- **规则**：
+  - 直接加“s”：go → goes, read → reads
+  - 以“ch, sh, s, x, o”结尾的动词加“es”：watch → watches
+  - 以辅音字母 + “y”结尾的动词，将“y”变为“i”加“es”：study → studies
+
+**主语是“there is / there are”结构**
+- “**There is**”用于单数主语，“**There are**”用于复数主语。
+  - 例句：**There is** a book on the table.（桌子上有一本书。）
+  - 例句：**There are** many books on the table.（桌子上有许多书。）
+
+#### **英语主谓一致中的常见错误类型**
+- **主语和动词形式不匹配**：
+  - 错误：The books **is** on the table.
+  - 正确：The books **are** on the table.
+- **复合主语的动词形式不一致**：
+  - 错误：Neither my father nor my brothers **is** going.
+  - 正确：Neither my father nor my brothers **are** going.（动词与最接近的主语一致）
+- **集体名词视作复数时动词使用错误**：
+  - 错误：The team **is** arguing among themselves.
+  - 正确：The team **are** arguing among themselves.（当集体名词强调个体成员时）
+
+## 12. 感叹词与应答（Interjections and Responses）
 
 感叹词是用来表达情感、感受或情绪的词语，它们通常独立于句子结构之外，并且能够传达不同的情感，如惊讶、愤怒、喜悦、失望等。
 
@@ -2736,11 +3454,7 @@ toc_depth: 4
 - **Yay!**（耶！）
 - **Hmm!**（嗯！）
 
-## 固定搭配和习语（Collocations and Idioms）
-
-参见 [Summary of English Collocations and Idioms]({{site.url}}/note/02-english/en-idioms/)。
-
-## 数字系统
+## 13. 数字、日期、时间与货币表达（Numbers, Dates, Time and Currency）
 
 
 英语中的数字表达具有其特有的规则和用法。无论是在口语还是书面表达中，理解和正确使用数字都非常重要。以下我将对英语中的数字进行详细讲解，包括基础数字、复合数字、序数、分数、小数、百分比及其特殊用法和常见搭配。
@@ -2905,65 +3619,6 @@ toc_depth: 4
   - 美式英语通常使用 **“and”** 来连接整数和小数部分，如 **$3.50**：three **and** fifty cents。
   - 英式英语更常使用 **“point”** 表示小数。
 
+## 14. 固定搭配、短语动词与习语（Collocations, Phrasal Verbs and Idioms）
 
-## 一、英语是分析语（Analytic Language）
-**分析语**是指一种语言中单词之间的语法关系主要通过**词序**、**助词**或**功能词**来表达，而不是依靠词缀（如前缀或后缀）的变化来表示。例如，汉语和英语在某些方面都具有典型的分析语特征。
-
-### 分析语的特点
-1. **单词形式不变**：分析语的词形变化较少，语法关系主要通过独立的功能词（如介词、助动词）和句法结构来表达。
-2. **依靠词序**：在分析语中，词序是表达语法关系的关键。例如，主语和宾语的位置会影响句子的意义：
-   - 英语的 **“The dog bites the man”**（狗咬人）和 **“The man bites the dog”**（人咬狗）就完全不同。
-3. **使用助动词和介词表达语法功能**：英语中常用助动词（如“be, have, do”）来表达时态、语态等语法功能。
-   - 如“**He is running**”中的“is”用来表示进行时。
-
-### 英语作为分析语的例子
-1. **词序的重要性**：英语中主语、动词和宾语的位置通常固定：
-   - **“John loves Mary”**（约翰爱玛丽）与 **“Mary loves John”**（玛丽爱约翰）的意义不同。
-2. **功能词的使用**：
-   - 如所有格的表示：**“the book of John”**（约翰的书）中的“of”表示所有格，而不是通过词形变化来表示（不同于一些屈折语中通过词尾的变化，如拉丁语中的所有格后缀）。
-3. **时态和语态的表达**：
-   - 例如：**“He will go”** 中的“will”表示未来时，而不是通过动词本身的变化来表示。
-
-总之，英语中的大多数语法关系（如时态、所有格、主语-宾语关系）是通过词序和功能词来表达的，这使它符合**分析语**的定义。
-
-## 二、英语是屈折语（Inflectional Language）
-屈折语是指一种语言依靠**词形变化（Inflection）**来表达语法关系和意义的语言。英语虽然不像拉丁语或德语那样在词形变化上非常复杂，但仍然保留了一定的屈折变化，这使得它被归为屈折语的范畴。
-
-### 屈折语的特点
-1. **词形变化**：屈折语使用**词缀变化（如动词的时态变化、名词的复数形式等）**来表达语法意义。
-2. **词尾的屈折变化**：一个词可能通过改变词尾（如添加后缀 -ed, -s, -ing 等）来表达不同的时态、语气或性数变化。
-3. **多个语法意义融合在同一个词缀中**：屈折语的词缀通常同时表达多个语法意义，例如动词的时态和数可以同时通过一个词缀来表示。
-
-### 英语作为屈折语的例子
-尽管现代英语的屈折系统相比古英语大大简化，但仍然保留了以下几个重要的屈折变化：
-1. **动词屈折变化**：
-   - **时态变化**：通过添加词缀来表示时态。
-     - **“walk”** → **“walked”**（表示过去时）
-     - **“play”** → **“playing”**（表示进行时）
-   - **第三人称单数形式**：
-     - **“She runs”** 中“runs”表示第三人称单数的屈折形式。
-2. **名词复数形式**：
-   - 许多名词通过在词尾添加 **-s / -es** 来表示复数：
-     - **“cat”** → **“cats”**
-     - **“box”** → **“boxes”**
-3. **形容词比较级和最高级**：
-   - 形容词通过词形变化表示比较级和最高级：
-     - **“big”** → **“bigger”** → **“biggest”**
-4. **名词的所有格形式**：
-   - 英语中名词的所有格可以通过在词尾添加 **-’s** 来表示：
-     - **“John’s car”**（约翰的车）
-
-### 英语屈折语特征的衰退
-相比于古英语，现代英语的屈折特征大幅度减少。古英语中，动词和名词的词尾变化非常复杂，有时态、格、数的多种形式。而现代英语的屈折变化主要集中在动词时态和名词复数形式上。因此，现代英语被认为是**轻度屈折语（weakly inflected language）**。
-
-## 三、英语的综合特征
-- 英语在其演变过程中，经历了从**屈折语（Old English）**到**分析语（Modern English）**的演变过程。
-- 早期英语（古英语）包含更多的屈折特征，如复杂的名词、动词、形容词变格和时态变化。
-- 随着时间推移，屈折特征逐渐消失，语法关系逐渐依靠词序和功能词来表达，从而发展出更多分析语的特征。
-
-### 结论
-综上所述，**现代英语**被归类为**分析语和屈折语**，是因为：
-1. **分析语特征**：主要依靠词序和功能词（如助动词、介词）来表达语法关系，而不是依靠复杂的词形变化。
-2. **屈折语特征**：虽然屈折特征已经大大简化，但仍然保留了部分词形变化（如动词时态、名词复数、形容词比较级等）。
-
-英语因此被认为是一种**弱屈折的分析语（Weakly Inflectional Analytic Language）**。如果你对某种具体的语法现象有疑问或想了解更多英语在不同历史时期的语言特征变化，可以告诉我！
+参见 [Summary of English Collocations and Idioms]({{site.url}}/note/02-english/en-idioms/)。

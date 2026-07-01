@@ -17913,6 +17913,32 @@ This does not make Soviet literature merely documentary. Some of its greatest wo
 
 scholarly accounts explicitly identifies a strong Russian literary tradition in which literature speaks for those whose voices have been silenced: **Dostoevsky**, **Akhmatova**, and later **Solzhenitsyn** are presented as part of this line. It also notes that this function is not unique to Russia, but becomes especially intense in Russian and Soviet history because of political repression. 
 
+### Soviet Witness Literature (c. 1930s–1960s)
+
+| Concept Knowledge    | Content                                                                                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Literature that preserves memory, grief, moral truth, and forbidden historical experience under state violence, censorship, prison, exile, or ideological coercion.   |
+| **Representative use** | **Akhmatova**, **Bulgakov**, **Pasternak**, **Platonov**, and later **Solzhenitsyn** make literary form answer the pressure of official silence.                    |
+| **Core problem**     | How can literature speak for the arrested, exiled, executed, censored, and silenced when public language has been captured by power?                                  |
+| **Reading entrance** | Read witness literature as more than document. Its formal restraint, indirection, memory work, and symbolic density are part of its ethical force.                    |
+
+Soviet witness literature changes the function of literary form. A poem, novel, manuscript, memory, or hidden cycle may become the place where forbidden truth survives. The writer is not simply expressing private feeling; the writer is preserving a reality that public institutions deny.
+
+**Witness becomes literary when memory is shaped without being falsified.** Akhmatova’s lyric cycle, Bulgakov’s satirical fantasy, and later camp testimony all show different ways literature can resist erasure without becoming only a record.
+
+### Censorship and Manuscript Culture (c. 1920s–1960s)
+
+| Concept Knowledge    | Content                                                                                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Definition**       | Literary condition in which writing circulates through concealment, memory, delayed publication, private copying, suppressed manuscripts, or posthumous recovery. |
+| **Representative use** | *Requiem* survives through memorization; *The Master and Margarita* becomes inseparable from its history of censorship and delayed publication.                  |
+| **Core problem**     | What happens to authorship, form, and truth when publication itself is dangerous or impossible?                                                                     |
+| **Reading entrance** | Read the material history of these works as part of their meaning. Hidden, burned, remembered, or delayed texts carry a different literary charge.                 |
+
+Censorship does not merely block literature from the outside. It changes literary form from within. Writers learn to code, delay, fragment, allegorize, remember, and hide. Readers learn to infer, preserve, repeat, and protect.
+
+In this field, the manuscript is not only a draft object. **It becomes a site of danger and survival.** The delayed life of the text becomes part of the text’s historical identity.
+
 ### Anna Akhmatova (1889–1966)
 
 | Author Knowledge          | Content                                                                                                                                     |
@@ -18061,6 +18087,32 @@ By the early 20th century, realism and naturalism had become important in Japan,
 **Literary Knowledge and Developmental Lines:**
 Japanese modern literature often works through tension: modern psychology and older aesthetic distance; Western realism and Japanese ellipsis; urban modernity and seasonal landscape; erotic desire and emotional restraint; visible plot and hidden feeling. In Kawabata especially, ambiguity may come partly from modernist technique and partly from Japanese aesthetic inheritance. scholarly accounts explicitly frames *Snow Country* through this double question: are its ambiguities the result of modernist prose, or do they also come from a Japanese aesthetic that may elude Western readers? 
 
+### Japanese Perceptual Modernism (c. 1920s–1960s)
+
+| Concept Knowledge    | Content                                                                                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Modernist prose mode that organizes fiction around perception, atmosphere, visual framing, silence, seasonal space, and suggestive gaps rather than explicit plot. |
+| **Representative use** | **Kawabata** turns reflection, snow, distance, voice, gesture, and landscape into structures of knowledge and estrangement.                                      |
+| **Core problem**     | How can fiction make feeling visible when direct explanation would make the feeling too stable or too crude?                                                     |
+| **Reading entrance** | Read perception as structure. A window, reflection, sleeve, light, snowfield, or sound may carry the burden that plot or confession carries elsewhere.            |
+
+Japanese perceptual modernism joins imported modernist technique with older resources of suggestion, seasonal attention, and aesthetic incompletion. It does not simply copy Joyce, Woolf, or Proust. It makes modernism quieter, more visual, and more dependent on gaps.
+
+**Its central claim is that the way a scene is perceived may be more important than the event itself.** This makes Kawabata’s fiction modern without making it formally identical to European stream of consciousness.
+
+### Aesthetic Distance (c. 1930s–1960s)
+
+| Concept Knowledge    | Content                                                                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Literary relation in which beauty is intensely perceived but kept at a distance from ethical responsibility, mutual love, or social commitment.                       |
+| **Representative use** | In *Snow Country*, Shimamura repeatedly transforms Komako and Yoko into aesthetic experience rather than entering reciprocal relation with them.                      |
+| **Core problem**     | Can beauty become a way of knowing, or does it become a way of refusing the claims of another person?                                                                 |
+| **Reading entrance** | Read aesthetic distance as both formal and ethical. The refined gaze may create beauty, but it may also preserve inequality and emotional waste.                      |
+
+Aesthetic distance is one of the most useful concepts for reading Kawabata. The prose often makes the world exquisitely visible, but visibility does not guarantee intimacy. A beautiful image can sharpen feeling while also holding life away from action.
+
+**The danger is that aesthetic refinement can become moral evasion.** In *Snow Country*, seeing beautifully is not the same as loving well.
+
 ### Yasunari Kawabata (1899–1972)
 
 | Author Knowledge       | Content                                                                                                                                            |
@@ -18142,6 +18194,32 @@ The Harlem Renaissance belongs to American modernism, but it changes the meaning
 the scholarly record places **Jean Toomer**, **Langston Hughes**, and **Zora Neale Hurston** among Harlem Renaissance writers and emphasizes that their modernism drew from American culture, especially jazz, African American folklore, and protest against Jim Crow laws and lynching.  This is the crucial point: Harlem Renaissance writers did not merely add Black subjects to existing literary forms. They challenged the hierarchy that had excluded Black speech, music, bodies, and urban life from the category of “serious” literature.
 
 The movement also contained internal debates. Should Black art conform to middle-class respectability in order to prove equality? Should it imitate white poetic standards? Should it elevate folk culture or distance itself from it? **Langston Hughes**’s essay “The Negro Artist and the Racial Mountain” becomes central here because it rejects the desire to write “white” and insists that Black artists should draw from the lives, speech, music, and expressive power of ordinary Black people. scholarly accounts quotes and explains this argument at length, especially Hughes’s contrast between bourgeois aspirations toward “Nordic culture” and the “low-down folks” whose joy, religion, jazz, and individuality resist American standardization. 
+
+### Vernacular Modernism (c. 1910s–1930s)
+
+| Concept Knowledge    | Content                                                                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Modernist practice that makes everyday speech, dialect, oral performance, folk idiom, and excluded cultural materials into serious literary form.                    |
+| **Representative use** | **Hughes**, **Hurston**, **Toomer**, and other Harlem Renaissance writers make Black speech, folklore, music, and urban life central to American modernism.         |
+| **Core problem**     | Who gets to define literary language, and what happens when excluded voices become formal authority rather than local color?                                         |
+| **Reading entrance** | Read vernacular modernism as innovation, not simplification. Its plainness, speech rhythms, and oral forms are deliberate artistic choices.                          |
+
+Vernacular modernism widens the map of modernism. Modernist experiment is not only allusion, difficulty, fragmentation, or European tradition. It can also be the remaking of poetry and prose through speech forms that elite culture had treated as marginal.
+
+For the Harlem Renaissance, this is a decisive shift. **Black vernacular culture becomes not material to be corrected, but a source of form, rhythm, authority, and modern identity.**
+
+### Jazz and Blues Poetics (c. 1920s–1930s)
+
+| Concept Knowledge    | Content                                                                                                                                                           |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Literary use of jazz and blues structures, rhythms, repetitions, refrains, improvisatory movement, call-and-response, and performance voice.                       |
+| **Representative use** | **Hughes** gives American poetry a blues and jazz architecture; McKay and Cullen define contrasting routes through inherited lyric and militant address.         |
+| **Core problem**     | How can poetry preserve the social memory, pain, pleasure, endurance, and improvisational intelligence of Black music?                                            |
+| **Reading entrance** | Read musical form as poetic method. Jazz and blues are not background themes; they organize line, voice, repetition, and emotional movement.                       |
+
+Jazz and blues poetics turn music into literary structure. The poem may repeat like a blues stanza, move like performance, or hold pain and pleasure together in one voice. This gives Harlem Renaissance poetry a public sound without reducing it to slogan.
+
+**The blues is especially important because it transforms suffering into form without pretending that suffering has disappeared.** Hughes’s modernism depends on that double movement: pain remains, but it sings.
 
 ### Langston Hughes (1901–1967)
 
@@ -18435,6 +18513,32 @@ This is why fantasy is not simply “less serious” than realism. Realism assum
 **Literary Knowledge and Developmental Lines:**
 Fantasy literature is important because it connects several traditions: the fairy tale’s magical pattern, the Gothic’s fear and uncertainty, Romanticism’s inward imagination, children’s literature’s freedom of play, and modernism / postmodernism’s interest in unstable language and self-reference. Hoffmann makes the fantastic uncanny and psychologically ambiguous; Carroll makes it logical, linguistic, comic, and recursive. Together, they prepare later fantasy not only as world-building, but as a theory of perception.
 
+### Fantastic Mode (c. 1800s onward)
+
+| Concept Knowledge    | Content                                                                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Literary mode in which ordinary reality is interrupted by events that cannot be fully settled as supernatural, psychological, dreamlike, comic, or linguistic.       |
+| **Representative use** | **Hoffmann** makes the impossible unstable; **Carroll** turns logic and language into fantasy; later writers extend this instability into modern and postmodern form. |
+| **Core problem**     | What happens when the reader cannot confidently decide which rules govern reality?                                                                                    |
+| **Reading entrance** | Read the fantastic as hesitation, not only as magic. Its force often lies in uncertainty about perception, language, mind, and world.                                  |
+
+The fantastic mode differs from simple fairy-tale magic. A fairy tale may accept enchantment as part of the world. The fantastic often places the impossible inside a recognizable world and makes interpretation unstable.
+
+**The fantastic matters because it turns uncertainty into form.** It lets literature test whether reality is governed by social rules, dream rules, aesthetic rules, madness, language, or some hidden supernatural order.
+
+### Secondary World Fantasy (c. 1890s–1950s)
+
+| Concept Knowledge    | Content                                                                                                                                                         |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Fantasy form that builds an internally coherent invented world with its own geography, history, languages, peoples, myths, laws, and moral conflicts.           |
+| **Representative use** | **Tolkien** gives modern fantasy its major model of deep world-building through Middle-earth, invented languages, epic history, and mythic backstory.          |
+| **Core problem**     | How can an invented world feel historically and morally real rather than merely decorative?                                                                      |
+| **Reading entrance** | Read secondary world fantasy as world-making. Map, language, genealogy, myth, landscape, and object-history become part of literary structure.                  |
+
+Secondary world fantasy changes fantasy from episode to environment. The point is not only that magic happens, but that a whole world has enough depth to make magic, history, danger, and moral choice feel native to that world.
+
+**World-building becomes literary when invention acquires memory.** Tolkien’s importance lies not simply in creating another setting, but in making that setting feel older than the story being told.
+
 ### E. T. A. Hoffmann (1776–1822)
 
 | Author Knowledge      | Content                                                                                                                                                           |
@@ -18688,6 +18792,19 @@ The novel becomes the central model for modern epic fantasy: quest fellowship, d
 Scientific adventure fiction develops in the 19th century when science, transport, empire, print culture, popular education, and global mapping become central to the modern imagination. The world appears measurable and traversable: one can go under the sea, around the world, into the earth, across Africa by balloon, or toward the moon by projectile. Scientific adventure turns this new world into plot.
 
 The distinction between **Verne** and **Wells** is important. the scholarly record contrasts them clearly: **Verne** tends to extol marvelous inventions and draw broad social satire, while **H. G. Wells** later offers subtler parables of political and philosophical criticism, helped by his scientific education under the influence of **T. H. Huxley**.  Verne is therefore not simply “the prophet of technology.” He is a writer of scientific enthusiasm, geographic imagination, and satirical adventure.
+
+### Scientific Extrapolation (c. 1860s onward)
+
+| Concept Knowledge    | Content                                                                                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Definition**       | Speculative method that extends existing scientific knowledge, technology, geography, or social tendency into imagined narrative consequences.                     |
+| **Representative use** | **Verne** turns science and travel into organized adventure; later science fiction turns extrapolation toward society, ecology, gender, information, and power.  |
+| **Core problem**     | What happens when knowledge becomes a story engine rather than only background information?                                                                         |
+| **Reading entrance** | Read extrapolation as narrative logic. The question is not whether a prediction comes true, but how a known tendency is pushed into imaginative consequence.       |
+
+Scientific extrapolation gives early science fiction its distinctive discipline. It does not simply invent marvels; it asks how machines, maps, measurements, and institutions might reorganize travel, danger, labor, or human ambition.
+
+In Verne, extrapolation often remains adventure-shaped: the world becomes measurable and traversable. **Science becomes plot when knowledge gives characters a new route through the world.**
 
 ### Jules Verne (1828–1905)
 
@@ -19479,6 +19596,19 @@ This does not mean that the earlier science-fiction tradition disappears. **Le G
 **Literary Knowledge and Developmental Lines:**
 The key change is from **technological extrapolation** to **social estrangement**. A New Wave or social-SF work often invents an alien world not to display gadgets, but to make ordinary assumptions strange. What if sex were not permanent? What if property were abolished but scarcity remained? What if language could become a weapon? What if reality were manufactured? What if species difference were added to race and gender as another axis of power? The genre’s old question—“What if?”—becomes less mechanical and more anthropological.
 
+### Cognitive Estrangement (c. 1960s onward)
+
+| Concept Knowledge    | Content                                                                                                                                                                |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Science-fiction effect in which an invented world makes ordinary assumptions strange while remaining rationally or systematically intelligible.                         |
+| **Representative use** | **Le Guin**, **Dick**, **Delany**, and **Butler** use alien worlds, altered realities, language systems, gender systems, and power structures to estrange the familiar. |
+| **Core problem**     | How can fiction make readers recognize their own society by first making it unfamiliar?                                                                                |
+| **Reading entrance** | Read cognitive estrangement as the bridge between world-building and criticism. The strange world is a mirror that works by displacement.                              |
+
+Cognitive estrangement is especially useful for New Wave and social science fiction because the invented difference is rarely only technological. A changed planet, body, language, kinship system, or economy exposes assumptions that ordinary realism may leave invisible.
+
+**The strongest social science fiction uses invention as analysis.** It does not flee reality; it changes the angle from which reality can be seen.
+
 ### Ursula K. Le Guin (1929–2018)
 
 | Author Knowledge                       | Content                                                                                                                                                  |
@@ -19693,6 +19823,19 @@ Cyberpunk emerges after Golden Age science fiction and New Wave social science f
 scholarly accounts connects cyberpunk to **Donna Haraway**’s cyborg thinking: the cyborg breaks binaries such as human / machine and male / female, and cyberpunk becomes a genre especially suited to thinking about identity performance across physical and virtual worlds. It also identifies **William Gibson**’s *Neuromancer* as a foundational cyberpunk novel centered on cyberspace and hackers. 
 
 Cyberpunk’s “punk” side matters as much as its “cyber” side. Its protagonists are often not astronauts, scientists, imperial explorers, or enlightened reformers. They are damaged specialists, criminals, addicts, mercenaries, freelance hackers, and people who survive at the edge of systems they cannot control. **Cyberpunk turns the science-fiction hero into a street-level operator inside information capitalism.**
+
+### Cyberspace and Cyborg Identity (c. 1980s–1990s)
+
+| Concept Knowledge    | Content                                                                                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**       | Cyberpunk concept cluster in which virtual space, data networks, bodily modification, artificial intelligence, and identity performance become narrative terrain. |
+| **Representative use** | **Gibson** makes cyberspace a literary landscape and the modified body a sign of information-age power, damage, style, and survival.                            |
+| **Core problem**     | What happens to selfhood when bodies, machines, data, corporations, and virtual environments become inseparable?                                                 |
+| **Reading entrance** | Read cyberpunk bodies and networks together. The matrix is not only a place to enter; it changes what a person, body, job, crime, and memory can be.             |
+
+Cyberspace turns information into setting. Data is no longer an invisible system behind the story; it becomes a space with architecture, danger, property, and desire. The hacker moves through information as earlier adventure heroes moved through sea, forest, desert, or city.
+
+Cyborg identity gives cyberpunk its bodily pressure. **The body is no longer natural ground; it is interface, commodity, weapon, and scar.** Gibson’s world matters because it makes networked life feel lived before it becomes normal.
 
 ### William Gibson (1948–)
 
