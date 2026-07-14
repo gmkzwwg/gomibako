@@ -1,5 +1,5 @@
 ---
-title: 西方哲学史大纲
+title: History of Western Philosophy (西方哲学史)
 categories: Notes
 subclass: History
 ---

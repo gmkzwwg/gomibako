@@ -1,7 +1,7 @@
 ---
 title: Mental Defense (心理防御)
 abbreviation: Mental Defense
-categories: Notes
+categories: Sheet
 subclass: Psychoanalysis
 status: 精修完成
 ---

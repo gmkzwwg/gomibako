@@ -1,5 +1,5 @@
 ---
-title: Summary of Dan Koe 
+title: Dan Koe Notes (Dan Koe 笔记)
 layout: slide-wiki
 categories: Notes
 subclass: Economy

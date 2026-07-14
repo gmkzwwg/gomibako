@@ -1,6 +1,6 @@
 ---
 title: Writing Style (写作风格)
-categories: Notes
+categories: Atlas
 subclass: Style
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Quick Tutorial of Philosophy Language
+title: Philosophy Methodology Quick Reference (哲学方法论速查)
 layout: slide-linear
-categories: Notes
+categories: Sheet
 subclass: Methodology
 ---
 ## Part 1｜为什么哲学首先是一种方法训练？

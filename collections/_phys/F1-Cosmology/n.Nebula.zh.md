@@ -1,6 +1,6 @@
 ---
 title: Nebula (星云)
-categories: Sheet
+categories: Notes
 subclass: Cosmology
 ---
 
