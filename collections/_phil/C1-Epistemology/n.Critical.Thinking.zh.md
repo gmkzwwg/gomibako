@@ -1,6 +1,7 @@
 ---
 title: Critical Thinking (批判性思维)
 categories: Notes
+tags: [Chinese, Philosophy, Epistemology]
 subclass: Epistemology
 ---
 

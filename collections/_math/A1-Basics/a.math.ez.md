@@ -1,6 +1,7 @@
 ---
 title: Mathematics - Learning Atlas
 categories: Atlas
+tags: [English, Chinese, Mathematics]
 subclass: Basics
 ---
 

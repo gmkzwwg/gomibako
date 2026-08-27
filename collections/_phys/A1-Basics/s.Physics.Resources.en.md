@@ -1,6 +1,7 @@
 ---
 title: Physics - Resource Reference
 categories: Sheet
+tags: [English, Physics, Reference]
 subclass: Basics
 ---
 

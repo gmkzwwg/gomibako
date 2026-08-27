@@ -1,6 +1,7 @@
 ---
 title: Project Control and Management for Software Projects
 categories: Atlas
+tags: [English, Computer, Project Control]
 subclass: Project Control
 ---
 

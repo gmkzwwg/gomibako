@@ -2,6 +2,7 @@
 title:  Ontology of Literature
 layout: slide-multilingual
 categories: Notes
+tags: [English, Chinese, Literature, Ontology]
 subclass: Basics
 ---
 

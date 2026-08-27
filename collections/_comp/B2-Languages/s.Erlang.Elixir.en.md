@@ -2,6 +2,7 @@
 title: Erlang / Elixir - Quick Reference
 abbreviation: Erlang / Elixir
 categories: Sheet
+tags: [English, Computer, Reference, Languages, Erlang, Elixir]
 subclass: Languages
 ---
 

@@ -1,6 +1,7 @@
 ---
 title:  Mathematical Logic
 categories: Notes
+tags: [English, Mathematics, Logic]
 subclass: Logic
 ---
 

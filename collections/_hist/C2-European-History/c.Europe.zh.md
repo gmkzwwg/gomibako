@@ -3,6 +3,7 @@ title: Europe History (欧洲史)
 abbreviation: Europe History
 layout: slide-simple
 categories: Chron
+tags: [Chinese, History, Timeline, European History]
 subclass: European History
 ---
 

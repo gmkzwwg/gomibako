@@ -1,5 +1,6 @@
 ---
 categories: Notes
+tags: [Chinese, Psychology, Personality]
 title: Traumatic Personality (创伤型人格)
 subclass: Personality
 ---

@@ -2,6 +2,7 @@
 title: Our Cosmos
 layout: slide-wiki
 categories: Sheet
+tags: [English, Chinese, Physics, Reference, Cosmology]
 subclass: Cosmology
 toc: list
 ---

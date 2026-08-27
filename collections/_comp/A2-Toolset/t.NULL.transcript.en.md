@@ -2,6 +2,7 @@
 title: 6.NULL Transcripts
 layout: print
 categories: Texts
+tags: [English, Computer, Text, Toolset]
 subclass: Toolset
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Napoleon Bonaparte
 categories: Chron
+tags: [English, Chinese, History, Timeline, European History]
 subclass: European History
 layout: slide-multilingual
 ---

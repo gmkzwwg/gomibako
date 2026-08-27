@@ -2,6 +2,7 @@
 title: LLM Prompt Engineering for Workflows Enhancement
 layout: post-bilingual
 categories: Notes
+tags: [English, Chinese, Computer, LLM]
 subclass: LLMs
 abbreviation: Prompt Engineering
 date: 2026-4-4

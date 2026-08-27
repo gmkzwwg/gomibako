@@ -2,6 +2,7 @@
 title: Program Logics
 layout: post
 categories: Notes
+tags: [English, Computer, Formal Methods]
 subclass: Formal Methods
 reference:
   - Hoare Logic

@@ -2,6 +2,7 @@
 title: Programming Language Analysis
 layout: slide-multilingual
 categories: Notes
+tags: [English, Chinese, Computer, Languages, Programming, Analysis]
 subclass: Languages
 ---
 

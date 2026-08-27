@@ -2,6 +2,7 @@
 title: West Asia History (西亚史)
 abbreviation: West Asia History
 categories: Chron
+tags: [Chinese, History, Timeline, Asian History]
 subclass: Asian History
 todos:  
   - 精修

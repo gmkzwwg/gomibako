@@ -2,6 +2,7 @@
 title: Timeline of the Principal Post-1945 Wars
 layout: post-bilingual
 categories: Chron
+tags: [English, History, Timeline, War History, War]
 subclass: War History
 abbreviation: Post-WWII Wars
 todos: read

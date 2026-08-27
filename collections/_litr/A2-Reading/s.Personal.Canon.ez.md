@@ -2,6 +2,7 @@
 title: Building a Starter Personal Canon
 layout: slide-multilingual
 categories: Sheet
+tags: [English, Chinese, Literature, Reference, Reading]
 subclass: Reading
 ---
 

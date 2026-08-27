@@ -1,6 +1,7 @@
 ---
 title: French Pronunciation Tips
 categories: Sheet
+tags: [English, French, Reference]
 subclass: French
 ---
 

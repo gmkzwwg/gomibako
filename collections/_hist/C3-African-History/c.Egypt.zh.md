@@ -1,6 +1,7 @@
 ---
 title: Egypt History (埃及史)
 categories: Chron
+tags: [Chinese, History, Timeline, African History]
 subclass: African History
 ---
 

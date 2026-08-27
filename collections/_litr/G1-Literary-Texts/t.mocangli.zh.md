@@ -1,6 +1,7 @@
 ---
 title: Mo Cangli Storyline (默苍离主要剧情)
 categories: Texts
+tags: [Chinese, Literature, Text, Literary Texts]
 subclass: Literary Texts
 ---
 

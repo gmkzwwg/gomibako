@@ -1,6 +1,7 @@
 ---
 title: Cognitive Bias
 categories: Sheet
+tags: [English, Chinese, Philosophy, Reference, Epistemology, Cognition]
 subclass: Epistemology
 layout: print
 ---

@@ -2,6 +2,7 @@
 title: 18.06 Transcripts
 layout: print
 categories: Texts
+tags: [English, Mathematics, Text, Linear Algebra, Algebra]
 subclass: Linear Algebra
 ---
 

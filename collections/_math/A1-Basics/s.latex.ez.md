@@ -1,6 +1,7 @@
 ---
 title: Writing Mathematical Formulas in LaTeX 
 categories: Sheet
+tags: [English, Chinese, Mathematics, Reference, Writing]
 subclass: Basics
 ---
 

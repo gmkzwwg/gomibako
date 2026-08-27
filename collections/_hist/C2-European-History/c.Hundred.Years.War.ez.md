@@ -1,6 +1,7 @@
 ---
 title: The Hundred Years' War
 categories: Chron
+tags: [English, Chinese, History, Timeline, European History, War]
 subclass: European History
 layout: slide-multilingual
 ---

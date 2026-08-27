@@ -1,6 +1,7 @@
 ---
 title: Mathematical Analysis
 categories: Notes
+tags: [English, Chinese, Mathematics, Analysis]
 subclass: Analysis
 ---
 

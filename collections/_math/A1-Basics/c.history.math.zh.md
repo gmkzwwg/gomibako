@@ -1,6 +1,7 @@
 ---
 title: History of Mathematics (数学史和数学思想)
 categories: Chron
+tags: [Chinese, Mathematics, Timeline, History]
 subclass: Basics
 ---
 

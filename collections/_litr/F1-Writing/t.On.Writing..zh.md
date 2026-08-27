@@ -1,6 +1,7 @@
 ---
 title: Writers on Writing (作家谈写作)
 categories: Texts
+tags: [Chinese, Literature, Text, Writing]
 subclass: Writing
 ---
 

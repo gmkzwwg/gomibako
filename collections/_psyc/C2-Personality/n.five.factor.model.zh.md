@@ -1,5 +1,6 @@
 ---
 categories: Notes
+tags: [Chinese, Psychology, Personality]
 title: Five-Factor Model (大五人格模型)
 subclass: Personality
 ---

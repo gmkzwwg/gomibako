@@ -1,6 +1,7 @@
 ---
 title: Linguistics (语言学)
 categories: Notes
+tags: [Chinese, Literature, Linguistics]
 subclass: Linguistics
 ---
 

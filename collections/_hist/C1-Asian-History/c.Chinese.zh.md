@@ -3,6 +3,7 @@ title: Chinese History (中国史)
 abbreviation: Chinese History
 layout: slide-simple
 categories: Chron
+tags: [Chinese, History, Timeline, Asian History]
 subclass: Asian History
 todos: 精修+原文+结尾重建
 ---

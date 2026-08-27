@@ -1,6 +1,7 @@
 ---
 title: Physics - Learning Atlas
 categories: Atlas
+tags: [English, Physics]
 date: 2026-05-03
 subclass: Basics
 ---

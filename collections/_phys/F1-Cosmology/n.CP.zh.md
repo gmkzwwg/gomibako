@@ -1,6 +1,7 @@
 ---
 title: Cosmological Principle (宇宙学原理)
 categories: Notes
+tags: [Chinese, Physics, Cosmology]
 subclass: Cosmology
 ---
 

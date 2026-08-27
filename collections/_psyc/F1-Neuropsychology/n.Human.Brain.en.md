@@ -1,6 +1,7 @@
 ---
 title: How the Human Brain Evolved, Develops, and Organizes Itself
 categories: Notes
+tags: [English, Psychology, Neuropsychology, Brain]
 subclass: Neuropsychology
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Formal and Informal Fallacies
 categories: Sheet
+tags: [English, Chinese, Philosophy, Reference, Epistemology]
 subclass: Epistemology
 layout: post-split
 ---

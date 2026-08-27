@@ -2,6 +2,7 @@
 title: Japanese Grammar Quick Reference (日语语法速查表)
 layout: post-compact
 categories: Sheet
+tags: [Chinese, Japanese, Reference]
 subclass: Japanese
 ---
 

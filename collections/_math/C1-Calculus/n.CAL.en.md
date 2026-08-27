@@ -2,6 +2,7 @@
 title: Calculus
 layout: post
 categories: Notes
+tags: [English, Mathematics, Calculus]
 subclass: Calculus
 reference:
   - Calculus

@@ -2,6 +2,7 @@
 title: Family Constellations (家庭系统排列)
 layout: post
 categories: Notes
+tags: [Chinese, Psychology, Psychopathology]
 subclass: Psychopathology
 ---
 

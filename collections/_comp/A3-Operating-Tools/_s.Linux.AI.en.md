@@ -2,6 +2,7 @@
 title: Linux AI Tools - Quick Reference
 layout: post
 categories: Sheet
+tags: [English, Computer, Reference, Operating Tools, Linux, AI]
 subclass: Operating Tools
 abbreviation: Linux AI
 toc_before_content: compact

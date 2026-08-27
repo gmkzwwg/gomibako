@@ -2,6 +2,7 @@
 title: C - Quick Reference
 abbreviation: C
 categories: Sheet
+tags: [English, Computer, Reference, Languages]
 subclass: Languages
 ---
 

@@ -2,6 +2,7 @@
 title: Claude vs ChatGPT Comparison (Claude 与 ChatGPT 对比)
 layout: post
 categories: Texts
+tags: [Chinese, Computer, Text, LLM]
 abbreviation: LLMs Comparing
 subclass: LLMs
 ---

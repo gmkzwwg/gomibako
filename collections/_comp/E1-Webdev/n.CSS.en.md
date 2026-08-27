@@ -1,6 +1,7 @@
 ---
 title: CSS - Quick Reference
 categories: Notes
+tags: [English, Computer, Web Development, CSS]
 subclass: Webdev
 ---
 

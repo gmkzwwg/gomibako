@@ -2,6 +2,7 @@
 title: Games People Play Transcripts
 layout: print
 categories: Texts
+tags: [English, Mathematics, Text, Game Theory]
 subclass: Game Theory
 ---
 

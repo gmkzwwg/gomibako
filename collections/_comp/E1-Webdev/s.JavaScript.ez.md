@@ -2,6 +2,7 @@
 title: JavaScript - Quick Reference
 abbreviation: JavaScript
 categories: Sheet
+tags: [English, Chinese, Computer, Reference, Web Development, JavaScript]
 subclass: Webdev
 ---
 

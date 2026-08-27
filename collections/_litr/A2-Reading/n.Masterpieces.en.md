@@ -2,6 +2,7 @@
 title: Notes on Masterpieces
 layout: slide-simple
 categories: Notes
+tags: [English, Literature, Reading]
 subclass: Reading
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: History of Western Philosophy (西方哲学史)
 categories: Notes
+tags: [Chinese, Philosophy, History]
 subclass: History
 ---
 

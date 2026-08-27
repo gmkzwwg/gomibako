@@ -2,6 +2,7 @@
 title: Reconstruction of the 1990–1991 Gulf War
 layout: post-bilingual
 categories: Notes
+tags: [English, History, War History, War]
 abbreviation: Gulf War
 subclass: War History
 todos: read

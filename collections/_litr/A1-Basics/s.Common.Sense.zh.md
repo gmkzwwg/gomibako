@@ -2,6 +2,7 @@
 title: Literature Knowledge (文学基础常识)
 layout: slide-simple
 categories: Sheet
+tags: [Chinese, Literature, Reference]
 subclass: Basics
 ---
 

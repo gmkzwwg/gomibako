@@ -2,6 +2,7 @@
 title: Recent Economic Analysis (近期经济学分析)
 layout: slide-linear
 categories: Notes
+tags: [Chinese, Economy, Analysis]
 subclass: Economy
 ---
 

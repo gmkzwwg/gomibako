@@ -2,6 +2,7 @@
 title: Linux Tools Developing - Quick Reference
 layout: post
 categories: Sheet
+tags: [English, Computer, Reference, Operating Tools, Linux]
 subclass: Operating Tools
 abbreviation: Linux Developing
 toc_before_content: compact

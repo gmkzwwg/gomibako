@@ -2,6 +2,7 @@
 title: Metamathematics Introduction
 layout: post
 categories: Texts
+tags: [English, Mathematics, Text]
 subclass: Basics
 ---
 

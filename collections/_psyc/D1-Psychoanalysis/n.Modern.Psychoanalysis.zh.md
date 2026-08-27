@@ -1,6 +1,7 @@
 ---
 title: Modern Psychoanalysis (现代精神分析)
 categories: Notes
+tags: [Chinese, Psychology, Psychoanalysis]
 subclass: Psychoanalysis
 status: 完成精修
 ---

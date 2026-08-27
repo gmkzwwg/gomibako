@@ -1,6 +1,7 @@
 ---
 title: Literature as Vanguard Art
 categories: Notes
+tags: [English, Chinese, Literature, Writing]
 subclass: Writing
 ---
 

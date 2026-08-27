@@ -1,6 +1,7 @@
 ---
 title: Elementary Mathematics Quick Reference (基础数学速查表)
 categories: Sheet
+tags: [Chinese, Mathematics, Reference]
 subclass: Basics
 toc_depth: 2
 ---

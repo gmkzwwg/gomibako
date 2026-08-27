@@ -1,6 +1,7 @@
 ---
 title: English Collocations and Idioms
 categories: Sheet
+tags: [English, Chinese, Reference]
 subclass: English
 ---
 

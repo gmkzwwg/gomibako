@@ -2,6 +2,7 @@
 title: Andrej Karpathy Notes
 layout: slide-linear
 categories: Notes
+tags: [English, Chinese, Computer, LLM]
 subclass: LLMs
 ---
 

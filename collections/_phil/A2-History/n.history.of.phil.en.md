@@ -1,6 +1,7 @@
 ---
 title: Outline of History of Western Philosophy
 categories: Notes
+tags: [English, Philosophy, History]
 subclass: History
 ---
 

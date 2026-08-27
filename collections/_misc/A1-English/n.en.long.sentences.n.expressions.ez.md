@@ -1,6 +1,7 @@
 ---
 title: Long Sentences in English
 categories: Notes
+tags: [English, Chinese]
 subclass: English
 ---
 

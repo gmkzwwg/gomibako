@@ -1,5 +1,6 @@
 ---
 categories: Notes
+tags: [English, Chinese, Physics, Cosmology]
 title: Fermi Paradox
 subclass: Cosmology
 ---

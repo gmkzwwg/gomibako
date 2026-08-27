@@ -1,6 +1,7 @@
 ---
 title: Units Commonly Used in Astronomy and Cosmology
 categories: Sheet
+tags: [English, Physics, Reference, Cosmology]
 subclass: Cosmology
 ---
 

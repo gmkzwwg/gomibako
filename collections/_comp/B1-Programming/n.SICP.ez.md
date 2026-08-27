@@ -1,6 +1,7 @@
 ---
 title: SICP Annotated
 categories: Notes
+tags: [English, Chinese, Computer, Programming]
 subclass: Programming
 ---
 

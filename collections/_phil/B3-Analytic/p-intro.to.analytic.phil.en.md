@@ -1,6 +1,7 @@
 ---
 title: Introduction to Analytic Philosophy
 categories: Notes
+tags: [English, Philosophy, Analytic]
 subclass: Analytic
 ---
 

@@ -2,6 +2,7 @@
 title: TypeScript - Quick Reference
 abbreviation: TypeScript
 categories: Sheet
+tags: [English, Computer, Reference, Web Development, TypeScript]
 subclass: Webdev
 ---
 

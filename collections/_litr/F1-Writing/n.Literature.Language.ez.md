@@ -1,6 +1,7 @@
 ---
 title: Literary Language
 categories: Notes
+tags: [English, Chinese, Literature, Writing]
 subclass: Writing
 ---
 

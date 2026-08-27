@@ -2,6 +2,7 @@
 title: Mysticism (神秘主义)
 layout: slide-wiki
 categories: Sheet
+tags: [Chinese, Reference, Religion]
 subclass: Religion
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Expository Language (说明性语言)
 categories: Notes
+tags: [Chinese, Literature, Writing]
 subclass: Writing
 ---
 

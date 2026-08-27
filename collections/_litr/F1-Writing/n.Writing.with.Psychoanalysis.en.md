@@ -1,6 +1,7 @@
 ---
 title: Writing with Psychoanalysis
 categories: Notes
+tags: [English, Literature, Writing, Psychoanalysis]
 subclass: Writing
 todos: 清理格式、校订
 ---

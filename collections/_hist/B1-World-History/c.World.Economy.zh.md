@@ -2,6 +2,7 @@
 title: World Economy History (世界经济史)
 abbreviation: World Economy History
 categories: Chron
+tags: [Chinese, History, Timeline, World History, Economy]
 subclass: World History
 ---
 

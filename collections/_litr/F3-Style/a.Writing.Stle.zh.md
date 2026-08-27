@@ -1,6 +1,7 @@
 ---
 title: Writing Style (写作风格)
 categories: Atlas
+tags: [Chinese, Literature, Style, Writing]
 subclass: Style
 ---
 

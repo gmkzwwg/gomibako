@@ -1,6 +1,7 @@
 ---
 title: History of Western Historiography
 categories: Notes
+tags: [English, History, Historiography]
 subclass: Historiography
 ---
 

@@ -2,6 +2,7 @@
 title: Western Philosophy - Learning Atlas
 layout: post-bilingual
 categories: Atlas
+tags: [English, Chinese, Philosophy]
 subclass: Basics
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Mathematics - Resource Reference
 categories: Sheet
+tags: [English, Mathematics, Reference]
 subclass: Basics
 ---
 

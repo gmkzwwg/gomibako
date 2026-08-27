@@ -1,6 +1,7 @@
 ---
 title: Latin Words in English
 categories: Sheet
+tags: [English, Latin, Reference]
 subclass: English
 ---
 

@@ -2,6 +2,7 @@
 title: Common Lisp - Quick Reference
 abbreviation: Common Lisp
 categories: Sheet
+tags: [English, Computer, Reference, Languages, Lisp]
 subclass: Languages
 ---
 

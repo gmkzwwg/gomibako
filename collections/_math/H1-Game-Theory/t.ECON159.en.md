@@ -2,6 +2,7 @@
 title: ECON 159 Transcripts
 layout: print
 categories: Texts
+tags: [English, Mathematics, Text, Game Theory]
 subclass: Game Theory
 ---
 

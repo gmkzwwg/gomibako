@@ -1,6 +1,7 @@
 ---
 title: Psychology - Learning Atlas
 categories: Atlas
+tags: [English, Chinese, Psychology]
 subclass: Basics
 ---
 

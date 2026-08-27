@@ -2,6 +2,7 @@
 title: Serious Literature Under Constraint
 layout: post
 categories: Notes
+tags: [English, Literature, Writing]
 subclass: Writing
 ---
 

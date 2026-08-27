@@ -1,6 +1,7 @@
 ---
 title: History - Learning Atlas
 categories: Atlas
+tags: [English, History]
 subclass: Basics
 ---
 

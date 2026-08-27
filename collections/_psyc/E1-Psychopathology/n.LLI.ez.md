@@ -1,5 +1,6 @@
 ---
 categories: Notes
+tags: [English, Chinese, Psychology, Psychopathology]
 abbreviation: LLI
 title: Low Latent Inhibition
 subclass: Psychopathology

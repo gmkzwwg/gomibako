@@ -2,6 +2,7 @@
 title: Constructive Analysis
 layout: post
 categories: Notes
+tags: [English, Mathematics, Analysis]
 subclass: Analysis
 reference:
   - Bishop

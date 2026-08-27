@@ -1,6 +1,7 @@
 ---
 title: Linear Algebra
 categories: Notes
+tags: [English, Mathematics, Linear Algebra, Algebra]
 subclass: Linear Algebra
 ---
 

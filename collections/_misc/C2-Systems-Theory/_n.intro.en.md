@@ -2,6 +2,7 @@
 title: Key Questions and Answers
 layout: slide-linear
 categories: Notes
+tags: [English, Systems Theory]
 subclass: Systems Theory
 ---
 

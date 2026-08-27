@@ -2,6 +2,7 @@
 title: Notes on Masterpieces (名著精讲)
 layout: slide-simple
 categories: Notes
+tags: [Chinese, Literature, Reading]
 subclass: Reading
 ---
 

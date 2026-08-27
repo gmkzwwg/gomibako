@@ -2,6 +2,7 @@
 title: Meta-Information
 layout: slide-linear
 categories: Notes
+tags: [English, Cybernetics]
 subclass: Cybernetics
 ---
 

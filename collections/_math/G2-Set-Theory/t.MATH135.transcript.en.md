@@ -2,6 +2,7 @@
 title: MATH 135 Transcripts
 layout: print
 categories: Texts
+tags: [English, Mathematics, Text, Set Theory]
 subclass: Set Theory
 ---
 

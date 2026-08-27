@@ -2,6 +2,7 @@
 title: Human Thought Wiki (人类思想百科)
 layout: slide-wiki
 categories: Sheet
+tags: [Chinese, Philosophy, Reference]
 subclass: Basics
 ---
 

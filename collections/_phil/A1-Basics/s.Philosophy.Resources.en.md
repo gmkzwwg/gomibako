@@ -1,6 +1,7 @@
 ---
 title: Philosophy - Resource Reference
 categories: Sheet
+tags: [English, Philosophy, Reference]
 subclass: Basics
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Web Development - Macro-view and Principles
 categories: Atlas
+tags: [English, Computer, Web Development]
 subclass: Webdev
 ---
 

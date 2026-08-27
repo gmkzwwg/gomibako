@@ -2,6 +2,7 @@
 title: Study of Short Stories
 layout: post-parallel
 categories: Texts
+tags: [English, Chinese, Literature, Text, Literary Texts]
 subclass: Literary Texts
 ---
 

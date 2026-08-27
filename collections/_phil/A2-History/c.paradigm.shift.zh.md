@@ -1,6 +1,7 @@
 ---
 title: Philosophical Paradigm Shifts (哲学范式转变)
 categories: Chron
+tags: [Chinese, Philosophy, Timeline, History]
 subclass: History
 ---
 

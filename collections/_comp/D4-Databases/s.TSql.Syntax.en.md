@@ -1,6 +1,7 @@
 ---
 title: T-SQL Quick Reference
 categories: Sheet
+tags: [English, Computer, Reference, Databases, Database]
 subclass: Databases
 ---
 

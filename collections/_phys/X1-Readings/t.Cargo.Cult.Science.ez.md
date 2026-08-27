@@ -3,6 +3,7 @@ title: Cargo Cult Science
 layout: post-parallel
 author: RICHARD P. FEYNMAN
 categories: Texts
+tags: [English, Chinese, Physics, Text]
 subclass: Readings
 ---
 

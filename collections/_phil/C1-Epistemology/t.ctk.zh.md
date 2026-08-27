@@ -1,6 +1,7 @@
 ---
 title: Contemporary Theories of Knowledge (当代知识理论)
 categories: Texts
+tags: [Chinese, Philosophy, Text, Epistemology]
 subclass: Epistemology
 ---
 

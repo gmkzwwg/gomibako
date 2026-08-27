@@ -1,6 +1,7 @@
 ---
 title: The Principles of Naming
 categories: Notes
+tags: [English, Literature, Writing]
 subclass: Writing
 ---
 

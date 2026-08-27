@@ -2,6 +2,7 @@
 title: CS61A Transcripts
 layout: print
 categories: Texts
+tags: [English, Computer, Text, Programming]
 subclass: Programming
 ---
 

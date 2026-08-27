@@ -2,6 +2,7 @@
 title: Japanese Histor (日本史)
 layout: post
 categories: Chron
+tags: [Chinese, Japanese, History, Timeline, Asian History, Japan]
 subclass: Asian History
 abbreviation: Japanese History
 ---

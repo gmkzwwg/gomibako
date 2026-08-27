@@ -2,6 +2,7 @@
 title: International Political Economy (国际政治经济学)
 layout: slide-linear
 categories: Notes
+tags: [Chinese, Economy]
 subclass: Economy
 ---
 

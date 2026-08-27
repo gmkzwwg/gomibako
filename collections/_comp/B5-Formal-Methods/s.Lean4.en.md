@@ -2,6 +2,7 @@
 title: Lean4 - Quick Reference
 abbreviation: Lean4
 categories: Sheet
+tags: [English, Computer, Reference, Formal Methods]
 subclass: Formal Methods
 ---
 

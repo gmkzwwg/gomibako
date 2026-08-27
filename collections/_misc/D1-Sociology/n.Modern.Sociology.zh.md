@@ -2,6 +2,7 @@
 title: Modern Sociology (现代社会学)
 layout: slide-linear
 categories: Notes
+tags: [Chinese, Sociology]
 subclass: Sociology
 ---
 

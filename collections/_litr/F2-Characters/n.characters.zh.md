@@ -1,6 +1,7 @@
 ---
 title: Character Depth (人物深度塑造)
 categories: Notes
+tags: [Chinese, Literature, Characters]
 subclass: Characters
 ---
 
