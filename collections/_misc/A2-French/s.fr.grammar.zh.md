@@ -2,7 +2,6 @@
 title: French Grammar Quick Reference (法语语法大全速查表)
 layout: post-compact
 categories: Sheet
-tags: [Chinese, French, Reference]
 subclass: French
 toc_depth: 4
 ---

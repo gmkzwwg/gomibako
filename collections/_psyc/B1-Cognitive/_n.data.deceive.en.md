@@ -2,7 +2,6 @@
 title: How Data Deceives
 layout: post
 categories: Notes
-tags: [English, Psychology, Cognitive, Cognition]
 subclass: Cognitive
 ---
 

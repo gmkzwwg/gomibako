@@ -3,7 +3,6 @@ title: Software Foundations Personal Annotated
 abbreviation: SF Annotated
 layout: post-parallel
 categories: Texts
-tags: [English, Chinese, Computer, Text, Formal Methods]
 subclass: Formal Methods
 ---
 

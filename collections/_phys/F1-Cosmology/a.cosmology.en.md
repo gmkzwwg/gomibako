@@ -1,7 +1,6 @@
 ---
 title: Cosmology - Learning Atlas
 categories: Atlas
-tags: [English, Physics, Cosmology]
 subclass: Cosmology
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Computer Science - Problem-driven History 
 categories: Chron
-tags: [English, Computer, Timeline, History]
 subclass: Basics
 ---
 

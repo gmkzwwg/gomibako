@@ -1,7 +1,6 @@
 ---
 title: Thinking Models (思维模型)
 categories: Notes
-tags: [Chinese, Philosophy, Epistemology]
 subclass: Epistemology
 ---
 

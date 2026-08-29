@@ -2,7 +2,6 @@
 title: Linguistics and LLM Prompting
 layout: post
 categories: Notes
-tags: [English, Literature, Linguistics, LLM]
 subclass: Linguistics
 ---
 

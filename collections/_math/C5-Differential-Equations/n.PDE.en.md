@@ -1,7 +1,6 @@
 ---
 title: Partial Differential Equation
 categories: Notes
-tags: [English, Mathematics, Differential Equations]
 subclass: Differential Equations
 ---
 

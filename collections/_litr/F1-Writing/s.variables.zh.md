@@ -1,7 +1,6 @@
 ---
 title: Writing Variables Reference (写作变量速查)
 categories: Sheet
-tags: [Chinese, Literature, Reference, Writing]
 subclass: Writing
 ---
 

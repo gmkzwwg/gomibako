@@ -2,7 +2,6 @@
 title: Linux Shell Programming
 layout: post
 categories: Sheet
-tags: [English, Computer, Reference, Operating Tools, Programming, Linux]
 subclass: Operating Tools
 abbreviation: Linux Shell
 toc: list

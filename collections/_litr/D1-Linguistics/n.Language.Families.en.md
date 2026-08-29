@@ -1,7 +1,6 @@
 ---
 title: Comparative Lecture Notes on the World's Language Families
 categories: Notes
-tags: [English, Literature, Linguistics]
 abbreviation: Language Families
 subclass: Linguistics
 ---

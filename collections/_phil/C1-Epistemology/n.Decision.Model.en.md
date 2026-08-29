@@ -1,7 +1,6 @@
 ---
 title: Decision Model
 categories: Notes
-tags: [English, Philosophy, Epistemology]
 subclass: Epistemology
 ---
 

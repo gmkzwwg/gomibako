@@ -3,7 +3,6 @@ title: Chinese Thoughts (中国思想史)
 abbreviation: Chinese Thougts
 layout: post
 categories: Notes
-tags: [Chinese, History, Asian History]
 subclass: Asian History
 status: 精修完成
 ---

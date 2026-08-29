@@ -1,7 +1,6 @@
 ---
 title: Linguistics - Learning Atlas
 categories: Atlas
-tags: [English, Chinese, Literature, Linguistics]
 subclass: Linguistics
 ---
 

@@ -2,7 +2,6 @@
 title: Measure Theory
 layout: post
 categories: Notes
-tags: [English, Mathematics, Analysis]
 subclass: Analysis
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Sentences in Works of Different Forms
 categories: Texts
-tags: [English, Chinese, Literature, Text, Style]
 subclass: Style
 todos: 
   - 继续添加

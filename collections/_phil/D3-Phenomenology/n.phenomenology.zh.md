@@ -1,7 +1,6 @@
 ---
 title: Phenomenology (现象学)
 categories: Notes
-tags: [Chinese, Philosophy, Phenomenology]
 subclass: Phenomenology
 ---
 

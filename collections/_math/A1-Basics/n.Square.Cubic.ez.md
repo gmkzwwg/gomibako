@@ -2,7 +2,6 @@
 title: Why the World Cannot Simply Be Scaled Up
 layout: post-bilingual
 categories: Notes
-tags: [English, Chinese, Mathematics]
 subclass: Basics
 ---
 

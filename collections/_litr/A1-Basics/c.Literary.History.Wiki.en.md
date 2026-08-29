@@ -2,7 +2,6 @@
 title: Literature History Timeline
 layout: slide-wiki
 categories: Chron
-tags: [English, Literature, Timeline, History]
 subclass: Basics
 ---
 

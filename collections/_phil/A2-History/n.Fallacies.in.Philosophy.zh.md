@@ -1,7 +1,6 @@
 ---
 title: Fallacies in Philosophy Tradition (哲学谬误史)
 categories: Notes
-tags: [Chinese, Philosophy, History]
 subclass: History
 ---
 

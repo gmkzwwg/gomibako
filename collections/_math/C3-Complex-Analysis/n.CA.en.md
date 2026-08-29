@@ -1,7 +1,6 @@
 ---
 title: Complex Analysis
 categories: Notes
-tags: [English, Mathematics, Complex Analysis, Analysis]
 subclass: Complex Analysis
 ---
 

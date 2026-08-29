@@ -2,7 +2,6 @@
 title: Haskell - Quick Reference
 abbreviation: Haskell
 categories: Sheet
-tags: [English, Chinese, Computer, Reference, Languages, Haskell]
 subclass: Languages
 ---
 

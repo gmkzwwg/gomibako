@@ -2,7 +2,6 @@
 title: ENGL 300 Transcripts
 layout: print
 categories: Texts
-tags: [English, Literature, Text, Literary Theory]
 subclass: Literary Theory
 ---
 

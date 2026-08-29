@@ -3,7 +3,6 @@ title: Rocq - Quick Reference
 abbreviation: Rocq
 layout: print
 categories: Sheet
-tags: [English, Computer, Reference, Formal Methods]
 date: 2026-05-08
 subclass: Formal Methods
 ---

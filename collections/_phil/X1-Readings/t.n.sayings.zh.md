@@ -1,7 +1,6 @@
 ---
 title: Philosophers' Sayings (哲学家语录)
 categories: Texts
-tags: [Chinese, Philosophy, Text]
 subclass: Readings
 ---
 

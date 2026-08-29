@@ -1,7 +1,6 @@
 ---
 title: Introduction to Western Philosophy
 categories: Notes
-tags: [English, Chinese, Philosophy]
 subclass: Basics
 ---
 

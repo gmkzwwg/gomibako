@@ -2,7 +2,6 @@
 title: Literary Theory and Literary Criticism - The Atlas
 layout: slide-multilingual
 categories: Atlas
-tags: [English, Chinese, Literature, Literary Theory]
 subclass: Literary Theory
 ---
 

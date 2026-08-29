@@ -1,7 +1,6 @@
 ---
 title: TrueNAS SCALE 24.04 Minimal Tutorial
 categories: Notes
-tags: [English, Computer, Operating Tools]
 subclass: Operating Tools
 ---
 

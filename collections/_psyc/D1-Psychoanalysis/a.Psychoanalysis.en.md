@@ -1,7 +1,6 @@
 ---
 title: Psychoanalysis - Learning Atlas
 categories: Atlas
-tags: [English, Psychology, Psychoanalysis]
 subclass: Psychoanalysis
 ---
 

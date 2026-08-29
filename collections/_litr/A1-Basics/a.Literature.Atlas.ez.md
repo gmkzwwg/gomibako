@@ -2,7 +2,6 @@
 title: Literature - Learning Atlas
 layout: slide-multilingual
 categories: Atlas
-tags: [English, Chinese, Literature]
 subclass: Basics
 ---
 

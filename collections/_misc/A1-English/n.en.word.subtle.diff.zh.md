@@ -1,7 +1,6 @@
 ---
 title: English Word Nuances (英语近义词辨析)
 categories: Notes
-tags: [Chinese, English]
 subclass: English
 ---
 

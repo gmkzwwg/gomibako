@@ -1,7 +1,6 @@
 ---
 title: Computer Systems (计算机系统)
 categories: Notes
-tags: [Chinese, Computer, Computer Systems]
 subclass: Computer Systems
 ---
 

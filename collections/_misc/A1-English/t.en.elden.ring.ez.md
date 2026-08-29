@@ -1,7 +1,6 @@
 ---
 title: Elden Ring Dialogue in Order
 categories: Texts
-tags: [English, Chinese, Text]
 subclass: English
 ---
 

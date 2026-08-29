@@ -1,7 +1,6 @@
 ---
 title: Web Development Principles and Practical Skills
 categories: Notes
-tags: [English, Computer, Web Development]
 subclass: Webdev
 ---
 

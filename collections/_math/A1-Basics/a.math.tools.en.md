@@ -1,7 +1,6 @@
 ---
 title: Learn Mathematics with Modern Tools and Workflows
 categories: Atlas
-tags: [English, Mathematics]
 subclass: Basics
 ---
 

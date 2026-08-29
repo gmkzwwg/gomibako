@@ -2,7 +2,6 @@
 title: English Grammar Quick Reference
 layout: post-compact
 categories: Sheet
-tags: [English, Chinese, Reference]
 subclass: English
 toc_depth: 4
 ---

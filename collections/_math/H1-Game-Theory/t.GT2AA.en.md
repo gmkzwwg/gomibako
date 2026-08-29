@@ -2,7 +2,6 @@
 title: Game Theory 2 Advanced Applications Transcripts
 layout: print
 categories: Texts
-tags: [English, Mathematics, Text, Game Theory]
 subclass: Game Theory
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Computer Science - Resource Atlas
 categories: Sheet
-tags: [English, Computer, Reference]
 subclass: Basics
 ---
 

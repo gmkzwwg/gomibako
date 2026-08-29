@@ -1,7 +1,6 @@
 ---
 title: Western Literary Theory (西方文学理论)
 categories: Notes
-tags: [Chinese, Literature, Literary Theory]
 subclass: Literary Theory
 ---
 

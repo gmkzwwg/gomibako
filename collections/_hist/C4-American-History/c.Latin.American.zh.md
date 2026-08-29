@@ -3,7 +3,6 @@ title: Latin American History (拉美史)
 abbreviation: Latin American History
 layout: post
 categories: Chron
-tags: [Chinese, History, Timeline, American History, Latin America]
 subclass: American History
 todos: 精修
 ---

@@ -1,7 +1,6 @@
 ---
 title: Rationality (理性和理性主义)
 categories: Notes
-tags: [Chinese, Philosophy, Epistemology]
 subclass: Epistemology
 ---
 

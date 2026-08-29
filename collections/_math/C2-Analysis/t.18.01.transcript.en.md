@@ -2,7 +2,6 @@
 title: 18.01 Transcripts
 layout: print
 categories: Texts
-tags: [English, Mathematics, Text, Calculus, Analysis]
 subclass: Calculus
 ---
 

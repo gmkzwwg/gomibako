@@ -2,7 +2,6 @@
 title: Algebraic Number Theory
 layout: post
 categories: Notes
-tags: [English, Mathematics, Number Theory]
 subclass: Number Theory
 ---
 

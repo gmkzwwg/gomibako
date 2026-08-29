@@ -2,7 +2,6 @@
 title: Scientific Methodology
 layout: slide-linear
 categories: Notes
-tags: [English, Scientific Method]
 subclass: Scientific Method
 ---
 

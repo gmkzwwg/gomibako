@@ -2,7 +2,6 @@
 title: A New History of Western Philosophy Annotated
 layout: post-bilingual
 categories: Texts
-tags: [English, Chinese, Philosophy, Text, History]
 subclass: History
 ---
 

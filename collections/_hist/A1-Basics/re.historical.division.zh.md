@@ -1,7 +1,6 @@
 ---
 title: World History Periodization (世界历史分期)
 categories: Sheet
-tags: [English, History, Reference]
 subclass: Basics
 ---
 

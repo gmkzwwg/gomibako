@@ -2,7 +2,6 @@
 title: MATH 125A Transcripts
 layout: print
 categories: Texts
-tags: [English, Mathematics, Text, Logic]
 subclass: Logic
 ---
 

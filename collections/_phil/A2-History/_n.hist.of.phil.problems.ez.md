@@ -2,7 +2,6 @@
 title: Core Problems of Philosophy
 layout: post
 categories: Notes
-tags: [English, Chinese, Philosophy, History]
 subclass: History
 ---
 

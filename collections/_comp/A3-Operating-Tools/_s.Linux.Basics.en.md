@@ -2,7 +2,6 @@
 title: Linux Basics - Quick Reference
 layout: post
 categories: Sheet
-tags: [English, Computer, Reference, Operating Tools, Linux]
 subclass: Operating Tools
 abbreviation: Linux Basics
 toc_before_content: compact

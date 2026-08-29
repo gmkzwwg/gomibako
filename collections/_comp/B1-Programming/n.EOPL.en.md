@@ -1,7 +1,6 @@
 ---
 title: EOPL Annotated
 categories: Notes
-tags: [English, Computer, Programming]
 subclass: Programming
 ---
 

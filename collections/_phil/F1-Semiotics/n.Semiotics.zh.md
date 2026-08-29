@@ -1,7 +1,6 @@
 ---
 title: Modern Semiotics (现代符号学)
 categories: Notes
-tags: [Chinese, Philosophy, Semiotics]
 subclass: Semiotics
 status: 粗校完成
 ---

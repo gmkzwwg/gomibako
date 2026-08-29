@@ -3,7 +3,6 @@ title: American History (美国史)
 abbreviation: American History
 layout: post
 categories: Chron
-tags: [Chinese, History, Timeline, American History]
 subclass: American History
 status: 精修完成
 ---

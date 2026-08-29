@@ -1,7 +1,6 @@
 ---
 title: Modern HTML - Quick Reference
 categories: Notes
-tags: [English, Computer, Web Development, HTML]
 subclass: Webdev
 ---
 

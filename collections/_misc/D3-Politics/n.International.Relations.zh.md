@@ -2,7 +2,6 @@
 title: International Relations (国际关系学)
 layout: slide-linear
 categories: Notes
-tags: [Chinese, Politics]
 subclass: Politics
 ---
 

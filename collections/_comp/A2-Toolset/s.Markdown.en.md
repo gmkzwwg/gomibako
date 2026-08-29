@@ -2,7 +2,6 @@
 title: Markdown - Quick Reference
 layout: post
 categories: Sheet
-tags: [English, Computer, Reference, Toolset, Markdown]
 subclass: Toolset
 ---
 

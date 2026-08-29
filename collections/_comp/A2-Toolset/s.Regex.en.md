@@ -1,7 +1,6 @@
 ---
 title: Regex - Basic Syntax and Practical Usage
 categories: Sheet
-tags: [English, Computer, Reference, Toolset, Regex]
 subclass: Toolset
 ---
 

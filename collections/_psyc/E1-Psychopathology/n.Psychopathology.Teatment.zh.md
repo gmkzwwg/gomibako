@@ -1,7 +1,6 @@
 ---
 title: Psychopathology and Treatment (精神疾病和药物)
 categories: Notes
-tags: [Chinese, Psychology, Psychopathology]
 subclass: Psychopathology
 ---
 

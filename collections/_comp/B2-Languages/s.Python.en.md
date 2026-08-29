@@ -2,7 +2,6 @@
 title: Python - Quick Reference
 abbreviation: Python
 categories: Sheet
-tags: [English, Computer, Reference, Languages, Python]
 subclass: Languages
 ---
 

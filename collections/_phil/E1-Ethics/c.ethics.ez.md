@@ -1,7 +1,6 @@
 ---
 title: Western Ethics from Antiquity to the Present
 categories: Chron
-tags: [English, Chinese, Philosophy, Timeline, Ethics]
 subclass: Ethics
 ---
 

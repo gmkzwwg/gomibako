@@ -2,7 +2,6 @@
 title: CTMCP Annotated
 layout: slide-multilingual
 categories: Notes
-tags: [English, Chinese, Computer, Programming]
 subclass: Programming
 ---
 

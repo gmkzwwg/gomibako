@@ -1,6 +1,5 @@
 ---
 categories: Sheet
-tags: [Chinese, English, Reference]
 title: English Surnames Reference (英语姓氏源流)
 subclass: English
 ---

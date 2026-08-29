@@ -1,6 +1,5 @@
 ---
 categories: Notes
-tags: [Chinese, Religion]
 title: World Religions (世界宗教)
 subclass: Religion
 ---

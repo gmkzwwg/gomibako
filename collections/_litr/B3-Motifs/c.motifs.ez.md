@@ -1,7 +1,6 @@
 ---
 title: Motifs of World Literature Tradition
 categories: Chron
-tags: [English, Chinese, Literature, Timeline, Motifs]
 subclass: Motifs
 ---
 

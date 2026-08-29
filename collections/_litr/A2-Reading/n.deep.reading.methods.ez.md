@@ -1,6 +1,5 @@
 ---
 categories: Notes
-tags: [English, Chinese, Literature, Reading, Analysis]
 title: Deep Reading Methods for Literary Analysis and Craft
 subclass: Reading
 ---

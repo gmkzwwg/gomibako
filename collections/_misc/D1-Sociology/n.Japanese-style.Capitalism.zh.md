@@ -2,7 +2,6 @@
 title: Japanese Coordinated Capitalism (日式协调资本主义)
 layout: slide-linear
 categories: Notes
-tags: [Chinese, Japanese, Sociology, Style]
 subclass: Sociology
 ---
 

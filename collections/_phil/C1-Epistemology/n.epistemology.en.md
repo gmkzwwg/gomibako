@@ -1,7 +1,6 @@
 ---
 title: Modern Epistemology
 categories: Notes
-tags: [English, Philosophy, Epistemology]
 subclass: Epistemology
 ---
 

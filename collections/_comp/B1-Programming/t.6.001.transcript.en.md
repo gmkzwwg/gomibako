@@ -2,7 +2,6 @@
 title: 6.001 SICP Transcripts
 layout: print
 categories: Texts
-tags: [English, Computer, Text, Programming]
 subclass: Programming
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Real Analysis
 categories: Notes
-tags: [English, Mathematics, Analysis]
 subclass: Analysis
 ---
 

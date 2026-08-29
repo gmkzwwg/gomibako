@@ -1,7 +1,6 @@
 ---
 title: Classic Style
 categories: Notes
-tags: [English, Chinese, Literature, Style]
 subclass: Style
 ---
 

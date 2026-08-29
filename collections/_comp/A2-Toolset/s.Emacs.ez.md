@@ -2,7 +2,6 @@
 title: Emacs - Quick Reference
 layout: slide-multilingual
 categories: Sheet
-tags: [English, Chinese, Computer, Reference, Toolset, Emacs]
 subclass: Toolset
 ---
 

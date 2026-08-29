@@ -1,7 +1,6 @@
 ---
 title: Manjaro + i3wm Workstation Setup
 categories: Notes
-tags: [English, Computer, Operating Tools]
 subclass: Operating Tools
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Lolita The Annotated
 categories: Texts
-tags: [English, Literature, Text, Literary Texts]
 subclass: Literary Texts
 ---
 

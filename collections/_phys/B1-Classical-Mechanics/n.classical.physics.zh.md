@@ -1,7 +1,6 @@
 ---
 title: Classical Physics (经典物理学)
 categories: Notes
-tags: [Chinese, Physics, Classical Mechanics, Mechanics]
 subclass: Classical Mechanics
 ---
 

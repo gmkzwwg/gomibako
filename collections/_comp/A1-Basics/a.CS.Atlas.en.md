@@ -1,7 +1,6 @@
 ---
 title: Computer Science - Learning Atlas
 categories: Atlas
-tags: [English, Computer]
 subclass: Basics
 ---
 

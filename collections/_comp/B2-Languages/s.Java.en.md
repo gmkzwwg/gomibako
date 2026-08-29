@@ -2,7 +2,6 @@
 title: Java - Quick Reference
 abbreviation: Java
 categories: Sheet
-tags: [English, Computer, Reference, Languages, Java]
 subclass: Languages
 ---
 

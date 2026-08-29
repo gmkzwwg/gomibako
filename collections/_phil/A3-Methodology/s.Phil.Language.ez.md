@@ -2,7 +2,6 @@
   
 title: Philosophy Language - A Reference Card and Tutorial  
 categories: Sheet
-tags: [English, Chinese, Philosophy, Reference, Methodology]
 subclass: Methodology
 ---  
   

@@ -2,7 +2,6 @@
 title: Learner-Centered Use of Large Language Models
 layout: post-bilingual
 categories: Notes
-tags: [English, Chinese, Computer, LLM]
 subclass: LLMs
 abbreviation: Learner-Centered LLMs
 todos: drafting

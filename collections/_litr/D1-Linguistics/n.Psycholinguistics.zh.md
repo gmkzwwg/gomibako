@@ -1,7 +1,6 @@
 ---
 title: Psycholinguistics (心理语言学)
 categories: Notes
-tags: [Chinese, Literature, Linguistics]
 subclass: Linguistics
 ---
 

@@ -2,7 +2,6 @@
 title: Principles of Serious Literature
 layout: slide-multilingual
 categories: Sheet
-tags: [English, Chinese, Literature, Reference]
 subclass: Basics
 ---
 

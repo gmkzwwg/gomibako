@@ -2,7 +2,6 @@
 title: Classical Sociology (古典社会学)
 layout: slide-linear
 categories: Notes
-tags: [Chinese, Sociology]
 subclass: Sociology
 ---
 

@@ -2,7 +2,6 @@
 title: Scientific Analysis Frameworks
 layout: slide-linear
 categories: Notes
-tags: [English, Scientific Method, Analysis]
 subclass: Scientific Method
 ---
 

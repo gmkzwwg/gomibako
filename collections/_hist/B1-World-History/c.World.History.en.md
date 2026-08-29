@@ -1,7 +1,6 @@
 ---
 title: World History
 categories: Chron
-tags: [English, History, Timeline, World History]
 subclass: World History
 ---
 

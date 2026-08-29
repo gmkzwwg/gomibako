@@ -1,7 +1,6 @@
 ---
 title: Narratology - Learning Atlas
 categories: Atlas
-tags: [English, Chinese, Literature, Narratology]
 subclass: Narratology
 ---
 

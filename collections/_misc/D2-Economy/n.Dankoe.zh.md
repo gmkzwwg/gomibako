@@ -2,7 +2,6 @@
 title: Dan Koe Notes (Dan Koe 笔记)
 layout: slide-wiki
 categories: Notes
-tags: [Chinese, Economy]
 subclass: Economy
 ---
 

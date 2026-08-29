@@ -1,7 +1,6 @@
 ---
 title: World Mythology Systems
 categories: Notes
-tags: [English, Chinese, Literature, Mythology]
 subclass: Mythology
 ---
 

@@ -2,7 +2,6 @@
 title: Discipline Meta-Information
 layout: slide-linear
 categories: Notes
-tags: [English, Communication]
 subclass: Communication
 ---
 

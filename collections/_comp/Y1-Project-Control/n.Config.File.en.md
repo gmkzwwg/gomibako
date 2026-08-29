@@ -1,7 +1,6 @@
 ---
 title: Project Control - Configuration of Projects
 categories: Notes
-tags: [English, Computer, Project Control]
 subclass: Project Control
 ---
 

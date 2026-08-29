@@ -2,7 +2,6 @@
 title: 24.900 Transcripts
 layout: print
 categories: Texts
-tags: [English, Literature, Text, Linguistics]
 subclass: Linguistics
 ---
 

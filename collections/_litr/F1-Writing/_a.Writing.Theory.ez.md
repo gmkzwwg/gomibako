@@ -2,7 +2,6 @@
 title: Becoming a 21st-Century Avant-Garde Writer
 layout: post
 categories: Atlas
-tags: [English, Chinese, Literature, Writing]
 subclass: Writing
 ---
 

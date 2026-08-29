@@ -2,7 +2,6 @@
 title: PHIL 176 Transcripts
 layout: print
 categories: Texts
-tags: [English, Philosophy, Text, Ethics]
 subclass: Ethics
 ---
 

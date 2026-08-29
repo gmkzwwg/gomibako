@@ -2,7 +2,6 @@
 title: Financial Capital (金融资本)
 layout: slide-linear
 categories: Notes
-tags: [Chinese, Sociology]
 subclass: Sociology
 ---
 

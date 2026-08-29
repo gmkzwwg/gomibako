@@ -2,7 +2,6 @@
 title: Mathematical Symbol Reference Table
 layout: post
 categories: Sheet
-tags: [English, Chinese, Mathematics, Reference]
 subclass: Basics
 ---
 

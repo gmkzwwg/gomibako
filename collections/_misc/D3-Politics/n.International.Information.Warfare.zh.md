@@ -2,7 +2,6 @@
 title: International Information Warfare (国际信息战)
 layout: slide-linear
 categories: Notes
-tags: [Chinese, Politics]
 subclass: Politics
 ---
 

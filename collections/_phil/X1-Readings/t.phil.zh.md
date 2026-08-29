@@ -1,7 +1,6 @@
 ---
 title: Philosophy Readings (哲学读本)
 categories: Texts
-tags: [Chinese, Philosophy, Text]
 subclass: Readings
 ---
 

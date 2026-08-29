@@ -1,6 +1,5 @@
 ---
 categories: Notes
-tags: [English, Literature, Style]
 title: Modernizing Ancient Novels - A Comprehensive Tutorial
 subclass: Style
 ---

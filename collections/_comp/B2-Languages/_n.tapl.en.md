@@ -2,7 +2,6 @@
 title: Programming Languages TAPL
 layout: post
 categories: Notes
-tags: [English, Computer, Languages, Programming]
 subclass: Languages
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Sky Chart and Star Atlas (天区图和星图)
 categories: Sheet
-tags: [Chinese, Physics, Reference, Cosmology]
 subclass: Cosmology
 ---
 

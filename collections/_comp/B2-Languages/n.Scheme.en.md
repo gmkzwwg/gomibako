@@ -2,7 +2,6 @@
 title: Scheme - Quick Reference
 abbreviation: Scheme
 categories: Notes
-tags: [English, Computer, Languages, Scheme]
 subclass: Languages
 ---
 

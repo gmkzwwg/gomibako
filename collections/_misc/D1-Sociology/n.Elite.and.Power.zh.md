@@ -2,7 +2,6 @@
 title: Elite and Power (精英和权力)
 layout: slide-linear
 categories: Notes
-tags: [Chinese, Sociology]
 subclass: Sociology
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Computer Science - Landscape
 categories: Atlas
-tags: [English, Computer]
 subclass: Basics
 ---
 

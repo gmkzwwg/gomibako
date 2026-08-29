@@ -2,7 +2,6 @@
 title: Learning How to Learn Transcripts
 layout: print
 categories: Texts
-tags: [English, Chinese, Text, Learning]
 subclass: Learning
 ---
 

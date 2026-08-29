@@ -2,7 +2,6 @@
 title: Modern Capitalism (现代资本主义)
 layout: slide-linear
 categories: Notes
-tags: [Chinese, Sociology]
 subclass: Sociology
 ---
 
