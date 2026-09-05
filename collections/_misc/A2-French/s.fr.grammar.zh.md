@@ -9206,76 +9206,3842 @@ indicatif 与 subjonctif 的区别，不是“真实 vs 不真实”这么简单
 
 ## 27. 一致配合总章（Accords）
 
+一致配合是法语书写中最集中的“无声语法”：许多词尾口语中听不出差别，但书面必须标明性别和数量。本章把限定词、形容词、动词和过去分词的规则统一成可执行的检查流程。
+
 ### 27.1 一致配合地图
+
+| 配合项 | 配合中心 | 例句 |
+|---|---|---|
+| 限定词 | 后面的名词 | cette nouvelle idée |
+| 普通形容词 | 所修饰的名词/代词 | des solutions efficaces |
+| 变位动词 | 主语 | Les résultats changent. |
+| être + 过去分词 | 主语 | Elles sont arrivées. |
+| 被动态过去分词 | 被动句主语 | Les lettres sont envoyées. |
+| avoir + 过去分词 | 通常不配合；前置 COD 时配合 | les lettres que j'ai écrites |
+| 代词式动词过去分词 | 依 COD/COI 判断 | Elles se sont vues / parlé. |
+
+#### 过去分词判断流程
+
+1. 没有助动词、过去分词作形容词：与所修饰名词配合。
+2. 助动词是 `être`：通常与主语配合。
+3. 助动词是 `avoir`：寻找 COD；只有 COD 位于过去分词之前才配合。
+4. 动词是代词式：虽然用 `être`，仍先判断 `se` 是 COD、COI，还是另有 COD。
+5. 后接不定式：检查 `fait/laisser` 及感官动词等特殊规则。
+
+| 形式 | 快速判断 | 例句 |
+|---|---|---|
+| une porte fermée | 形容词用法 | fermée ↔ porte |
+| Marie est partie | être 复合时态 | partie ↔ Marie |
+| Marie a fermé la porte | avoir，COD 后置 | fermé 不变 |
+| la porte que Marie a fermée | avoir，COD 前置 | fermée ↔ porte |
+| Marie s'est lavée | se = COD | lavée ↔ Marie |
+| Marie s'est lavé les mains | les mains 后置 COD，se = COI | lavé 不变 |
+
 ### 27.2 限定词与名词配合
+
+冠词、指示词、主有词、疑问词和部分不定限定词必须与名词的性数一致。
+
+| 类型 | 阳性单数 | 阴性单数 | 复数 |
+|---|---|---|---|
+| 定冠词 | le livre | la table | les livres/tables |
+| 不定冠词 | un livre | une table | des livres/tables |
+| 指示限定词 | ce/cet livre | cette table | ces livres/tables |
+| 主有词 | mon livre | ma table | mes livres/tables |
+| 疑问/感叹 | quel livre | quelle table | quels livres / quelles tables |
+| 不定限定词 | tout livre | toute personne | tous les livres / toutes les personnes |
+
+#### 元音前的形式不是性别改变
+
+| 形式 | 例句 | 原因 |
+|---|---|---|
+| cet | cet homme, cet ancien bâtiment | 阳性元音/哑音 h 前便于发音 |
+| mon/ton/son | mon amie, ton école, son histoire | 阴性元音/哑音 h 前避免元音相撞 |
+
+`mon amie` 中 `amie` 仍是阴性；形容词仍按阴性配合：`mon amie française`。
+
+#### 一个限定词统领多个名词
+
+| 结构 | 推荐表达 |
+|---|---|
+| 同性同数并列 | les langues et cultures européennes |
+| 性别不同，需清晰 | le directeur et la directrice |
+| 每项归属不同 | son frère et sa sœur |
+| 单一复数限定可共同统领 | ces livres et revues |
+
+为避免歧义，性别不同或限定关系不同的并列名词通常重复限定词。
+
 ### 27.3 形容词与名词配合
+
+普通形容词与所修饰名词作性数配合。
+
+| 基本形式 | 阳性单数 | 阴性单数 | 阳性复数 | 阴性复数 |
+|---|---|---|---|---|
+| petit | petit | petite | petits | petites |
+| heureux | heureux | heureuse | heureux | heureuses |
+| actif | actif | active | actifs | actives |
+| ancien | ancien | ancienne | anciens | anciennes |
+| national | national | nationale | nationaux | nationales |
+
+| 位置 | 例句 | 配合不变 |
+|---|---|---|
+| 名词前 | une petite maison | petite ↔ maison |
+| 名词后 | une maison moderne | moderne ↔ maison |
+| 表语 | La maison est moderne. | moderne ↔ 主语 maison |
+| 同位/补充 | Fatiguées, elles sont rentrées. | fatiguées ↔ elles |
+
+#### 一个形容词修饰多个名词
+
+| 情况 | 例句 | 规则 |
+|---|---|---|
+| 两个阴性名词 | une veste et une chemise neuves | 阴性复数 |
+| 两个阳性名词 | un livre et un cahier neufs | 阳性复数 |
+| 不同性别 | un livre et une revue neufs | 传统标准用阳性复数 |
+| 分别修饰 | une veste neuve et un pantalon neuf | 各自配合 |
+
+#### 形容词用作副词时不变
+
+| 固定用法 | 例句 | 说明 |
+|---|---|---|
+| coûter cher | Ces chaussures coûtent cher. | cher 修饰 coûter |
+| parler fort/bas | Elles parlent fort. | fort 修饰 parler |
+| voir clair | Elles voient clair. | clair 修饰 voir |
+| sentir bon/mauvais | Ces fleurs sentent bon. | bon 修饰 sentir |
+| travailler dur | Elles travaillent dur. | dur 修饰 travailler |
+
+对比：`des chaussures chères` 中 `chères` 修饰名词，必须配合；`Ces chaussures coûtent cher` 中 `cher` 是副词用法，不变。
+
+#### possible 的高频边界
+
+| 结构 | 例句 | 规则 |
+|---|---|---|
+| 普通形容词 | toutes les solutions possibles | 与名词配合 |
+| le plus de...possible | recueillir le plus d'informations possible | 表“尽可能多”，通常不变 |
+| 名词 + possible | une erreur possible / des erreurs possibles | 普通配合 |
+
 ### 27.4 主语与动词配合
+
+动词按主语的人称和数量变位，而不是按离动词最近的名词机械配合。
+
+| 主语 | 例句 |
+|---|---|
+| 单数名词 | Le résultat change. |
+| 复数名词 | Les résultats changent. |
+| 名词 + de + 复数 | La liste des candidats est prête. |
+| 每个/无人 | Chaque candidat répond. / Personne ne répond. |
+| la plupart | La plupart sont partis. |
+| beaucoup de + 复数 | Beaucoup d'étudiants travaillent. |
+| beaucoup de + 不可数 | Beaucoup de temps est nécessaire. |
+
+#### 并列主语与人称优先
+
+| 并列主语 | 动词人称 | 例句 |
+|---|---|---|
+| 两个第三人称 | 第三人称复数 | Paul et Léa viennent. |
+| moi + 其他人 | 第一人称复数 | Paul et moi venons. |
+| toi/vous + 第三人称 | 第二人称复数 | Toi et Paul venez. |
+| ni...ni / ou...ou | 依实际是共同还是二选一 | Ni Paul ni Léa ne viennent. |
+
+`ou` 强调二选一时可用单数：`Paul ou Léa viendra`；若各项都可能共同成立或表示类别并列，常用复数。`ni...ni` 的单复数也依意义，但两个独立的人都被排除时复数最自然。
+
+#### 集合、比例和数量
+
+| 主语结构 | 常见配合 | 例句 |
+|---|---|---|
+| la majorité/la moitié de + 复数 | 单复数均可，依整体或成员焦点 | La majorité des élèves a/ont compris. |
+| un groupe/une série de | 通常与集合核心单数配合 | Un groupe de touristes arrive. |
+| 80 % des étudiants | 复数 | 80 % des étudiants ont répondu. |
+| 80 % de la population | 单数 | 80 % de la population a répondu. |
+| plus d'un | 单数 | Plus d'un candidat a protesté. |
+| moins de deux | 复数 | Moins de deux heures suffisent. |
+
+正式写作中，先确定真正的主语核心，再保持全文一致；集合名词出现单复数变体时，不要在同一句中摇摆。
+
+#### on、ce 与礼貌 vous
+
+| 主语 | 动词 | 其他配合 |
+|---|---|---|
+| on | 始终第三人称单数 | 若明确指“我们”，形容词可按实际性数：On est contents. |
+| c'est | 通常单数框架 | C'est une bonne idée. |
+| ce sont | 正式复数识别 | Ce sont mes collègues. |
+| vous 指一个人 | 第二人称复数动词 | Vous êtes arrivé/arrivée，按所指者性别配合。 |
+
 ### 27.5 qui 作主语时的动词配合
+
+关系代词 `qui` 是从句主语，动词与 `qui` 的先行词在人称和数量上配合。
+
+| 先行词 | 例句 | 动词形式 |
+|---|---|---|
+| le voisin | le voisin qui habite ici | 第三人称单数 |
+| les voisins | les voisins qui habitent ici | 第三人称复数 |
+| moi | C'est moi qui suis responsable. | 第一人称单数 |
+| toi | C'est toi qui as commencé. | 第二人称单数 |
+| nous | C'est nous qui avons appelé. | 第一人称复数 |
+| vous | C'est vous qui décidez. | 第二人称复数 |
+
+#### 主句表语与先行词
+
+| 结构 | 正确表达 |
+|---|---|
+| C'est moi qui... | C'est moi qui ai envoyé le message. |
+| C'est toi qui... | C'est toi qui dois répondre. |
+| C'est elle qui... | C'est elle qui a gagné. |
+| Ce sont eux qui... | Ce sont eux qui ont décidé. |
+
+不要因为 `qui` 表面上是第三人称形式就一律使用第三人称：`moi qui suis`，不是 `moi qui est`。
+
 ### 27.6 être + 过去分词配合
+
+使用助动词 `être` 的复合时态中，过去分词通常与主语配合；被动态中也与承受动作的主语配合。
+
+| 主语 | 例句 |
+|---|---|
+| Paul | Paul est parti. |
+| Marie | Marie est partie. |
+| Paul et Marc | Paul et Marc sont partis. |
+| Marie et Léa | Marie et Léa sont parties. |
+| Paul et Marie | Paul et Marie sont partis. |
+
+| 时态 | 例句 | 配合中心 |
+|---|---|---|
+| passé composé | Elles sont arrivées. | elles |
+| plus-que-parfait | Elles étaient arrivées. | elles |
+| futur antérieur | Elles seront arrivées. | elles |
+| conditionnel passé | Elles seraient arrivées. | elles |
+| infinitif passé | Après être arrivées, elles ont appelé. | 隐含主语 elles |
+
+#### 被动态
+
+| 主动句 | 被动句 |
+|---|---|
+| Paul écrit la lettre. | La lettre est écrite par Paul. |
+| Paul a écrit les lettres. | Les lettres ont été écrites par Paul. |
+| On annoncera les décisions. | Les décisions seront annoncées. |
+
+被动态的时态由 `être` 表示，过去分词始终与被动主语配合：`ont été écrites` 中 `été` 不变，`écrites` 与 `les lettres` 配合。
+
+#### 过去分词作形容词
+
+| 例句 | 说明 |
+|---|---|
+| une porte fermée | fermée 修饰 porte |
+| des documents signés | signés 修饰 documents |
+| Les fenêtres restent ouvertes. | ouvertes 作主语表语 |
+| Une fois terminées, les vérifications seront archivées. | terminées 与 vérifications 配合 |
+
+代词式动词虽然也用 `être`，但不能直接套用“永远与主语配合”，详见 27.9。
+
 ### 27.7 avoir + 过去分词配合
+
+使用 `avoir` 时，过去分词不与主语配合。默认规则是保持阳性单数形式。
+
+| 结构 | 例句 | 结果 |
+|---|---|---|
+| 无 COD | Elles ont beaucoup travaillé. | travaillé 不变 |
+| COD 在过去分词后 | Elles ont écrit des lettres. | écrit 不变 |
+| COI | Elles ont parlé à Paul. | parlé 不变 |
+| 介词补语 | Elles ont parlé du projet. | parlé 不变 |
+
+| 主语变化 | 过去分词不随主语变化 |
+|---|---|
+| Il a écrit. | écrit |
+| Elle a écrit. | écrit |
+| Ils ont écrit. | écrit |
+| Elles ont écrit. | écrit |
+
+只有当 `avoir` 动词的 COD 位于过去分词之前时，才与该 COD 配合。
+
 ### 27.8 前置 COD 与过去分词
-### 27.9 代词式动词过去分词配合
-### 27.10 fait + infinitif 不变
+
+#### 三种高频前置 COD
+
+| 前置方式 | 例句 | 配合 |
+|---|---|---|
+| 关系代词 que | les lettres que j'ai écrites | écrites ↔ lettres |
+| COD 代词 le/la/les | Je les ai écrites. | écrites ↔ les = lettres |
+| 疑问/感叹前置 | Quelles lettres as-tu écrites ? | écrites ↔ quelles lettres |
+
+| COD 性数 | 例句 |
+|---|---|
+| 阳性单数 | Le rapport ? Je l'ai lu. |
+| 阴性单数 | La lettre ? Je l'ai lue. |
+| 阳性复数 | Les rapports ? Je les ai lus. |
+| 阴性复数 | Les lettres ? Je les ai lues. |
+
+#### 先辨 COD 与 COI
+
+| 结构 | 例句 | 是否配合 |
+|---|---|---|
+| voir qqn → le/la/les | Les personnes que j'ai vues. | 配合 |
+| parler à qqn → lui/leur | Les personnes à qui j'ai parlé. | 不配合 |
+| écrire qqch à qqn | Les lettres que je leur ai écrites. | 与 lettres 配合 |
+| répondre à qqch/qqn | Les questions auxquelles j'ai répondu. | répondu 不变 |
+
+#### en 通常不触发配合
+
+| 例句 | 规则 |
+|---|---|
+| Des erreurs, j'en ai fait. | en 代替数量/部分，过去分词通常不变 |
+| Des pommes, j'en ai acheté trois. | acheté 不与 en 配合 |
+| Combien de lettres avez-vous écrites ? | combien de lettres 是前置 COD，与 écrites 配合 |
+
+不要把 `combien de lettres` 与代词 `en` 混为一谈：前者是明确的前置 COD，后者通常不触发配合。
+
+#### 中性 le/l' 不触发配合
+
+当 `le/l'` 替代一个形容词、判断或整个命题时，它是中性成分，过去分词保持不变：
+
+| 例句 | l' 替代内容 |
+|---|---|
+| Elle est plus compétente que je ne l'avais cru. | “她很有能力”这一判断 |
+| La situation est moins grave qu'on ne l'avait pensé. | 整个判断 |
+
+#### 非人称动词和数量补语
+
+| 类型 | 例句 | 规则 |
+|---|---|---|
+| 非人称 falloir | les efforts qu'il a fallu | fallu 不变 |
+| 非人称 faire | les chaleurs qu'il a fait | fait 不变 |
+| 价格/重量/时长 | les cent euros que cela a coûté | que 是数量补语，不是 COD |
+| 真正 COD | les efforts que ce travail m'a coûtés | efforts 是 coûter 的 COD，配合 |
+
+### 27.9 代词式动词的过去分词配合
+
+代词式动词的复合时态都用 `être`，但过去分词不能一律与主语配合。实用判断顺序如下：
+
+1. 找出动词的普通支配结构：`laver qqn`、`parler à qqn`、`se souvenir de qqch`。
+2. 判断 `se` 是 COD 还是 COI。
+3. 若 `se` 是 COD 且位于过去分词前，与主语配合。
+4. 若 `se` 是 COI，寻找另一个 COD；只有该 COD 前置时才配合。
+5. 本质代词式或被动意义的动词通常与主语配合。
+
+#### se 是 COD：与主语配合
+
+| 普通结构 | 代词式结构 | 配合 |
+|---|---|---|
+| laver qqn | Elle s'est lavée. | se = elle，COD 前置 |
+| voir qqn | Ils se sont vus. | se = ils，COD 前置 |
+| rencontrer qqn | Elles se sont rencontrées. | se = elles，COD 前置 |
+| féliciter qqn | Ils se sont félicités. | se = ils，COD 前置 |
+
+这里的主语既可能是动作发出者，也可能是相互动作的参与者；关键不是“自反”还是“相互”，而是动词直接支配 `qqn`。
+
+#### se 是 COI 或另有后置 COD：不配合
+
+| 支配结构 | 例句 | 结果 |
+|---|---|---|
+| parler à qqn | Ils se sont parlé. | se = COI，parlé 不变 |
+| téléphoner à qqn | Elles se sont téléphoné. | se = COI |
+| sourire à qqn | Ils se sont souri. | se = COI |
+| plaire à qqn | Elles se sont plu. | se = COI |
+| succéder à qqn | Les crises se sont succédé. | se = COI |
+| laver qqch à qqn | Elle s'est lavé les mains. | les mains 是后置 COD |
+| casser qqch à qqn | Elle s'est cassé la jambe. | la jambe 是后置 COD |
+| rendre compte à soi-même | Elles se sont rendu compte de l'erreur. | compte 是后置 COD |
+
+身体部位句尤其容易误写：`Elle s'est lavée` 没有另一个 COD，因此配合；`Elle s'est lavé les mains` 的 COD 是后置的 `les mains`，因此不配合。
+
+#### 另一个 COD 前置：与该 COD 配合
+
+| 例句 | 判断 |
+|---|---|
+| Les lettres qu'elles se sont écrites étaient longues. | écrire qqch à qqn；lettres 是前置 COD |
+| Les histoires qu'ils se sont racontées étaient drôles. | raconter qqch à qqn；histoires 是前置 COD |
+| Les cadeaux qu'ils se sont offerts étaient utiles. | offrir qqch à qqn；cadeaux 是前置 COD |
+| Les privilèges qu'elles se sont arrogés ont été supprimés. | s'arroger qqch；privilèges 是前置 COD |
+
+对比：`Elles se sont écrit des lettres` 中 COD `des lettres` 位于后面，`écrit` 不变。
+
+#### 本质代词式与被动意义
+
+| 类型 | 例句 | 配合 |
+|---|---|---|
+| 本质代词式 | Elles se sont souvenues de l'adresse. | 与主语配合 |
+| 本质代词式 | Ils se sont aperçus de l'erreur. | 与主语配合 |
+| 状态变化 | Elle s'est évanouie. | 与主语配合 |
+| 被动/中动意义 | Ces maisons se sont bien vendues. | 与主语配合 |
+| 被动/中动意义 | Les portes se sont ouvertes. | 与主语配合 |
+
+#### 代词式动词速判表
+
+| 问题 | 是 | 否 |
+|---|---|---|
+| 动词本质上只能或通常以代词式使用？ | 通常与主语配合 | 继续判断 |
+| 普通结构是“动词 + qqn/qqch”吗？ | se 可能是 COD，前置则配合 | 继续判断 |
+| 普通结构是“动词 + à qqn”吗？ | se 是 COI，本身不触发配合 | 检查其他 COD |
+| 有另一个 COD 吗？ | 前置则配合，后置则不配合 | 通常不配合 |
+
+### 27.10 fait + infinitif 与不定式结构
+
+#### fait + infinitif 始终不变
+
+过去分词 `fait` 后接不定式构成使役结构时，不论前面是什么性数，都保持 `fait`。
+
+| 例句 | 说明 |
+|---|---|
+| Les voitures que j'ai fait réparer sont prêtes. | voitures 虽前置，fait 不变 |
+| Elle s'est fait couper les cheveux. | 代词式使役，fait 不变 |
+| Ils se sont fait arrêter. | fait 不与主语配合 |
+| Les mesures qu'on a fait appliquer sont efficaces. | fait + appliquer，不变 |
+
+`faite réparer`、`faits venir`、`faites construire` 在这一结构中都应改为 `fait réparer`、`fait venir`、`fait construire`。
+
+#### laissé + infinitif
+
+按 1990 年拼写建议，`laissé` 后接不定式时仿照 `fait`，保持不变；现代写作采用这一规则最稳定。
+
+| 推荐写法 | 说明 |
+|---|---|
+| Elle s'est laissé convaincre. | laissé + infinitif 不变 |
+| Les enfants qu'on a laissé jouer sont rentrés. | enfants 执行 jouer，laissé 仍不变 |
+| Les portes qu'il a laissé fermer étaient lourdes. | laissé 不变 |
+
+旧式规范中可见按不定式主语关系配合的写法。阅读旧文时要能识别，自己写作则宜统一采用不变形式。
+
+#### 感官动词 + infinitif
+
+传统规范中，`vu/entendu/regardé` 等后接不定式时，要判断前置 COD 是否执行不定式动作。
+
+| 例句 | 判断 | 配合 |
+|---|---|---|
+| Les chanteuses que j'ai entendues chanter. | chanteuses 执行 chanter | entendues 与 chanteuses 配合 |
+| Les chansons que j'ai entendu chanter. | chansons 被人演唱 | entendu 不变 |
+| Les acteurs que j'ai vus jouer. | acteurs 执行 jouer | vus 配合 |
+| Les pièces que j'ai vu jouer. | pièces 被人上演 | vu 不变 |
+
+快速提问：“谁做不定式动作？”若先行词是动作执行者，传统规则配合；若是动作承受者，不配合。复杂句容易产生分析歧义，正式写作可改写为两个分句。
+
 ### 27.11 颜色形容词配合
-### 27.12 数词和 demi、nu、ci-joint 等特殊配合
+
+颜色词先分成“普通颜色形容词”“名词借作颜色”“复合颜色表达”三类。
+
+#### 普通颜色形容词：正常配合
+
+| 阳性单数 | 阴性单数 | 阳性复数 | 阴性复数 |
+|---|---|---|---|
+| bleu | bleue | bleus | bleues |
+| vert | verte | verts | vertes |
+| noir | noire | noirs | noires |
+| blanc | blanche | blancs | blanches |
+| gris | grise | gris | grises |
+
+例：`une robe bleue`、`des chemises blanches`、`des yeux verts`。
+
+#### 名词借作颜色：通常不变
+
+| 不变颜色词 | 例句 |
+|---|---|
+| orange | des robes orange |
+| marron | des chaussures marron |
+| kaki | des vestes kaki |
+| citron | des rideaux citron |
+| turquoise | des eaux turquoise |
+
+可把它理解为“橙色的、栗色的、卡其色的”，原来的名词形式不变。
+
+#### 已形容词化的常见例外：正常配合
+
+| 颜色词 | 例句 |
+|---|---|
+| rose | des chemises roses |
+| mauve | des fleurs mauves |
+| pourpre | des étoffes pourpres |
+| écarlate | des robes écarlates |
+| fauve | des teintes fauves |
+
+#### 复合颜色表达：整体不变
+
+| 结构 | 例句 |
+|---|---|
+| 颜色 + 明暗形容词 | des yeux bleu clair |
+| 颜色 + 深浅形容词 | des robes vert foncé |
+| 两种颜色组合 | des tissus bleu-vert |
+| 颜色 + 名词补充 | des murs blanc cassé |
+
+不要写成 `des yeux bleus clairs` 或 `des robes vertes foncées`；这里描述的是一种复合色调，整个表达保持不变。
+
+#### 每件多色与分组单色
+
+| 例句 | 含义 |
+|---|---|
+| des drapeaux bleu, blanc, rouge | 每面旗都同时有蓝、白、红三色 |
+| des drapeaux bleus, blancs et rouges | 一些蓝旗、一些白旗、一些红旗 |
+
+前者各颜色共同描述同一件物品，通常不配合；后者是三个分别配合的形容词组。
+
+### 27.12 数词及特殊形式的配合
+
+#### 基数词
+
+基数词原则上不配合。真正需要检查的是 `un/une`、`vingt`、`cent`、`mille`、`million/milliard`。
+
+| 项目 | 规则 | 例句 |
+|---|---|---|
+| un/une | 与所计名词的性别一致 | vingt et une pages |
+| vingt | 被乘且后面没有另一个数时加 s | quatre-vingts euros |
+| vingt + 其他数 | 不加 s | quatre-vingt-deux euros |
+| vingt + mille | 不加 s | quatre-vingt mille habitants |
+| cent | 被乘且后面没有另一个数时加 s | trois cents euros |
+| cent + 其他数 | 不加 s | trois cent cinq euros |
+| mille | 始终不加 s | deux mille personnes |
+| million/milliard | 是名词，正常变复数 | deux millions d'euros |
+
+`million`、`milliard` 是名词，因此前面的 `vingt/cent` 若正好结束其数字组，可以保留复数：`quatre-vingts millions`、`deux cents milliards`。
+
+当数字表示页码、年份、门牌、编号等序号时，`vingt`、`cent` 通常不加复数词尾：`la page quatre-vingt`、`l'année mille neuf cent`。序数词则像形容词一样配合：`le premier chapitre`、`la première partie`、`les premières pages`。
+
+#### demi、mi、nu
+
+| 位置与形式 | 规则 | 例句 |
+|---|---|---|
+| demi- + 名词 | 名词前不变，通常用连字符 | une demi-heure, deux demi-journées |
+| 名词 + et demi | 在名词后只配合性别，不加 s | deux heures et demie, trois ans et demi |
+| mi- + 名词 | 始终不变，通常用连字符 | à mi-chemin, la mi-janvier |
+| nu- + 名词 | 名词前不变，固定用法有连字符 | marcher nu-pieds, sortir nu-tête |
+| 名词 + nu | 名词后正常配合 | les pieds nus, la tête nue |
+
+`demie` 在 `deux heures et demie` 中是阴性，但即使前面是复数也没有 `s`。
+
+#### ci-joint、ci-inclus、ci-annexé
+
+这些形式可按副词或形容词理解，实际用法存在变体。以下模板最便于稳定书写：
+
+| 位置/用法 | 推荐处理 | 例句 |
+|---|---|---|
+| 句首，引出所附内容 | 不变 | Ci-joint les documents demandés. |
+| 动词后作副词式说明 | 可保持不变 | Vous trouverez ci-joint les documents. |
+| 明确作名词的形容词 | 配合 | Vous trouverez ci-jointe la facture. |
+| 位于名词后 | 配合 | les pièces ci-jointes |
+| ci-inclus/ci-annexé | 同样按功能判断 | les pièces ci-incluses / ci-annexées |
+
+在同一份公文中选定一种模板并保持一致。若要最大限度避免争议，可用名词后置形式：`la facture ci-jointe`、`les documents ci-annexés`。
+
+#### excepté、passé、vu、étant donné 等
+
+一些过去分词位于名词前时可转化为介词或副词，因而不变；明确位于名词后作形容词时则配合。
+
+| 前置、不变 | 后置、配合 |
+|---|---|
+| Tout le monde est venu, excepté Marie. | Marie exceptée, tout le monde est venu. |
+| Passé dix heures, la porte est fermée. | Dix heures passées, la porte est fermée. |
+| Vu les circonstances, nous partirons. | les circonstances vues sous cet angle |
+| y compris les taxes | les taxes comprises dans le prix |
+| non compris les frais | les frais non compris |
+
+`étant donné` 既可不变，也可与后面的名词配合：`étant donné les circonstances` / `étant données les circonstances`。正式文本中应统一选择；不变形式在介词式用法中很常见。
+
+#### tout：限定词、代词与副词
+
+| 用法 | 规则 | 例句 |
+|---|---|---|
+| 限定词 | 与名词配合 | tout le jour, toute la nuit, tous les jours |
+| 代词 | 按所指对象变化 | Tout va bien. / Tous sont venus. |
+| 副词，修饰阳性形容词 | 不变 | Ils sont tout petits. |
+| 副词，阴性形容词以元音或哑音 h 开头 | 不变 | Elles sont tout étonnées / tout heureuses. |
+| 副词，阴性形容词以辅音或嘘音 h 开头 | 与性数配合 | Elle est toute petite. / Elles sont toutes honteuses. |
+
+这里 `tout` 作副词表示“完全、很”。不要把 `Elles sont toutes étonnées`（她们全都惊讶，`toutes` 可作代词）与 `Elles sont tout étonnées`（她们非常惊讶，副词不变）混为一谈。
+
+#### même、quelque 与 quel que
+
+| 形式 | 功能与规则 | 例句 |
+|---|---|---|
+| même 形容词/代词 | 与所指名词或代词配合 | les mêmes idées, eux-mêmes, elles-mêmes |
+| même 副词 | 表“甚至”，不变 | Même les enfants ont compris. |
+| quelques | 不定限定词“几个”，配合 | quelques jours, quelques idées |
+| quelque + 数字 | 副词“约”，不变 | quelque trois cents personnes |
+| quelque + 形容词 + que | 让步副词，不变 | Quelque difficiles qu'elles soient... |
+| quel que | 两个词；quel 与后面的主语配合 | Quel que soit le résultat. / Quelles que soient les raisons. |
+
+判断口诀：能替换成“几个”的是 `quelques`；能替换成“无论什么样”的通常是 `quel... que`；修饰形容词、表示“无论多么”的是不可变的 `quelque`。
+
 ### 27.13 一致配合常见错误速查
+
+| 错误 | 正确 | 原因 |
+|---|---|---|
+| Cette homme est gentil. | Cet homme est gentil. | 阳性元音前用 cet |
+| Mon amie est français. | Mon amie est française. | 表语与阴性主语配合 |
+| Une veste et une chemise neuf. | Une veste et une chemise neuves. | 两个阴性名词 → 阴性复数 |
+| Ces chaussures coûtent chères. | Ces chaussures coûtent cher. | cher 作副词，不变 |
+| La liste des candidats sont prête. | La liste des candidats est prête. | 主语核心是单数 liste |
+| Paul et moi viennent. | Paul et moi venons. | moi 参与并列 → 第一人称复数 |
+| Plus d'un candidats ont protesté. | Plus d'un candidat a protesté. | plus d'un 后名词和动词通常单数 |
+| On sommes contents. | On est contents. | on 的动词始终第三人称单数 |
+| C'est moi qui est responsable. | C'est moi qui suis responsable. | qui 与先行词 moi 配合 |
+| Elles sont arrivé hier. | Elles sont arrivées hier. | être + 过去分词与主语配合 |
+| Les lettres ont été envoyé. | Les lettres ont été envoyées. | 被动过去分词与主语配合 |
+| Elles ont écrites des lettres. | Elles ont écrit des lettres. | avoir + 后置 COD，不配合 |
+| Les lettres que j'ai écrit. | Les lettres que j'ai écrites. | 前置 COD lettres |
+| Je les ai écrit.（les = lettres） | Je les ai écrites. | COD 代词前置 |
+| Les personnes auxquelles j'ai parlées. | Les personnes auxquelles j'ai parlé. | parler à：关系成分是 COI |
+| Des erreurs, j'en ai faites. | Des erreurs, j'en ai fait. | en 通常不触发配合 |
+| Les cent euros que cela a coûtés. | Les cent euros que cela a coûté. | cent euros 是数量补语 |
+| Elle s'est lavé. | Elle s'est lavée. | se 是前置 COD |
+| Elle s'est lavée les mains. | Elle s'est lavé les mains. | les mains 是后置 COD |
+| Ils se sont parlés. | Ils se sont parlé. | parler à：se 是 COI |
+| Elles se sont téléphonées. | Elles se sont téléphoné. | téléphoner à：se 是 COI |
+| Elles se sont rendues compte. | Elles se sont rendu compte. | compte 是后置 COD |
+| Les lettres qu'elles se sont écrit. | Les lettres qu'elles se sont écrites. | lettres 是前置 COD |
+| Les voitures que j'ai faites réparer. | Les voitures que j'ai fait réparer. | fait + infinitif 始终不变 |
+| Elle s'est faite couper les cheveux. | Elle s'est fait couper les cheveux. | 代词式使役中 fait 不变 |
+| des robes oranges | des robes orange | 名词借作颜色通常不变 |
+| des yeux bleus clairs | des yeux bleu clair | 复合颜色整体不变 |
+| quatre-vingt euros | quatre-vingts euros | vingt 正好结束被乘数字组 |
+| quatre-vingts-deux euros | quatre-vingt-deux euros | 后面还有数，vingt 不加 s |
+| trois cents cinq euros | trois cent cinq euros | 后面还有数，cent 不加 s |
+| deux milles personnes | deux mille personnes | mille 不变 |
+| une demie-heure | une demi-heure | demi 在名词前不变 |
+| deux heures et demi | deux heures et demie | demi 在名词后配合性别 |
+| marcher les pieds nu | marcher les pieds nus | nu 在名词后正常配合 |
+| les pièces ci-joint | les pièces ci-jointes | 位于名词后作形容词 |
+| des filles tout petites | des filles toutes petites | 阴性辅音前，副词 tout 配合 |
+| quelques difficiles qu'elles soient | quelque difficiles qu'elles soient | 让步副词 quelque 不变 |
+
+#### 最终校对顺序
+
+1. 圈出每个限定词和形容词，确认所依附名词的性数。
+2. 圈出每个变位动词，找到真正的主语核心。
+3. 遇到过去分词，先看助动词是 `être` 还是 `avoir`。
+4. `avoir` 结构只寻找前置 COD，不因主语性数而配合。
+5. 代词式动词先还原为普通支配结构，判断 `se` 是 COD 还是 COI。
+6. 后接不定式时优先检查 `fait`、`laissé` 和感官动词规则。
+7. 最后单独检查颜色词、数词及 `demi/nu/ci-joint/tout/quelque`。
 
 ## 28. 时态配合、间接引语与叙事（Concordance des temps et discours rapporté）
 
+时态配合不是“主句过去，从句一律过去”，而是从一个参照时刻判断从句事件与它同时、先于还是后于。间接引语还要同时调整人称、限定词、时间地点表达和句型。本章把这些变化统一为可执行的时间轴。
+
 ### 28.1 时态配合总览
-### 28.2 现在主句后的从句时态
+
+#### 三种相对时间关系
+
+| 从句事件与参照时刻的关系 | 现在参照点 | 过去参照点 |
+|---|---|---|
+| 同时 | présent | imparfait |
+| 先发生 | passé composé / 其他合适过去时 | plus-que-parfait |
+| 后发生 | futur simple | conditionnel présent（过去将来） |
+| 后来将已完成 | futur antérieur | conditionnel passé（过去将来完成） |
+
+以 `dire` 为例：
+
+| 参照点 | 例句 | 时间关系 |
+|---|---|---|
+| 现在 | Elle dit qu'elle travaille. | 工作与“说”同时 |
+| 现在 | Elle dit qu'elle a terminé. | 完成先于“说” |
+| 现在 | Elle dit qu'elle viendra. | 来晚于“说” |
+| 过去 | Elle a dit qu'elle travaillait. | 工作与过去的“说”同时 |
+| 过去 | Elle a dit qu'elle avait terminé. | 完成先于过去的“说” |
+| 过去 | Elle a dit qu'elle viendrait. | 来晚于过去的“说” |
+
+#### 时态配合判断流程
+
+1. 找出主句动词，确定叙述参照点是现在、将来还是过去。
+2. 判断从句事件相对该参照点是同时、先发生还是后发生。
+3. 选择表达该关系的时态，而不是照抄原句形式。
+4. 检查事实到说话当前是否仍成立；持续事实可以保留现在时。
+5. 最后检查语式：某些结构要求 `subjonctif`，不能只考虑时态。
+
+#### 时态与语式是两个问题
+
+| 主句 | 从句 | 说明 |
+|---|---|---|
+| Je sais qu'il vient. | indicatif présent | savoir 肯定事实 |
+| Je doute qu'il vienne. | subjonctif présent | douter 触发虚拟式 |
+| Je savais qu'il venait. | indicatif imparfait | 过去参照下同时 |
+| Je doutais qu'il vienne. | subjonctif présent | 现代法语仍常用现在虚拟式 |
+| Je regrettais qu'il soit parti. | subjonctif passé | 从句动作先发生 |
+
+现代通用法语在过去主句后通常仍用 `subjonctif présent/passé`：`Il fallait que tu viennes`、`Elle regrettait que nous soyons partis`。`subjonctif imparfait/plus-que-parfait` 主要见于古典或刻意文学化的文本，不是日常写作必需形式。
+
+#### 不要机械回溯的情况
+
+| 情况 | 例句 | 原因 |
+|---|---|---|
+| 普遍真理 | Le professeur a rappelé que la Terre tourne autour du Soleil. | 现在仍为真 |
+| 持续到当前的事实 | Léa m'a dit qu'elle habite à Lyon. | 转述者确认现在仍住在那里 |
+| 只描述过去当时 | Léa m'a dit qu'elle habitait à Lyon. | 不说明现在是否仍然如此 |
+| 将来仍以当前为参照 | Hier, il a annoncé qu'il viendra demain. | 若“明天”仍是转述者的明天，可保留将来时 |
+| 完整移入过去视点 | Il a annoncé qu'il viendrait le lendemain. | 以后于过去的宣布为参照 |
+
+`présent` 与 `imparfait`、`futur` 与 `conditionnel` 的选择有时改变视角，不是简单的正误关系。速查表给出默认转换，实际写作还要看事实有效期和转述时刻。
+
+### 28.2 现在或将来主句后的从句时态
+
+主句在现在或将来时，从句通常不发生“回溯变时”，直接按真实时间关系选时态。
+
+#### 现在主句
+
+| 时间关系 | 结构 | 例句 |
+|---|---|---|
+| 同时状态/动作 | présent | Je sais qu'il travaille chez lui. |
+| 先发生、已完成 | passé composé | Je sais qu'il a envoyé le dossier. |
+| 过去背景/习惯 | imparfait | Je sais qu'il travaillait à Paris à cette époque. |
+| 比另一个过去动作更早 | plus-que-parfait | Je sais qu'il avait déjà quitté Paris avant 2020. |
+| 后发生 | futur simple | Je sais qu'il viendra demain. |
+| 即将发生 | futur proche | Je crois qu'il va pleuvoir. |
+| 将来某时已完成 | futur antérieur | Je pense qu'il aura fini avant midi. |
+
+从句的过去不只一种：`a travaillé` 把事件看作完成整体，`travaillait` 描写过去背景或状态，`avait travaillé` 则要求另一个过去参照点。
+
+#### 将来主句
+
+| 例句 | 分析 |
+|---|---|
+| Je vérifierai qu'il comprend bien la consigne. | 理解与未来的检查同时，présent 可表示当时状态 |
+| Je vérifierai qu'il a bien reçu le message. | 接收先于未来的检查 |
+| Je saurai demain s'il viendra. | 来晚于“知道”或仍属将来 |
+| Je vous préviendrai quand il sera arrivé. | 到达先于未来的通知，futur antérieur |
+
+时间从句中的将来形式还取决于连词：`quand/lorsque/dès que` 后可用将来时，条件 `si` 后通常不用 futur，详见第 26 章。
+
+#### 主句触发虚拟式时
+
+| 时间关系 | 形式 | 例句 |
+|---|---|---|
+| 与主句同时或之后 | subjonctif présent | Je veux qu'il vienne demain. |
+| 先于主句、动作已完成 | subjonctif passé | Je regrette qu'il soit parti. |
+| 将来主句 + 同时/之后 | subjonctif présent | Il faudra que vous répondiez. |
+| 将来主句 + 先完成 | subjonctif passé | Il faudra que vous ayez terminé avant midi. |
+
+虚拟式现在本身可以指现在或将来；法语通常不另造“虚拟式将来”。
+
 ### 28.3 过去主句后的从句时态
+
+过去主句会建立一个过去参照点。默认时态关系是“同时用未完成过去时，先时用愈过去时，后时用条件式”。
+
+#### 默认关系
+
+| 相对关系 | 从句时态 | 例句 |
+|---|---|---|
+| 与过去主句同时 | imparfait | Je pensais qu'il dormait. |
+| 先于过去主句 | plus-que-parfait | Je pensais qu'il était déjà parti. |
+| 后于过去主句 | conditionnel présent | Je pensais qu'il reviendrait. |
+| 后于主句且届时已完成 | conditionnel passé | Elle disait qu'elle aurait fini avant midi. |
+
+`conditionnel` 在这里首先表达“过去视点中的将来”，不一定表示条件、礼貌或不确定：`Il a promis qu'il reviendrait` 就是“他承诺以后会回来”。
+
+#### 常见直接时态到过去转述时态
+
+| 原话中的时态 | 过去时报告动词后的常规形式 | 例子 |
+|---|---|---|
+| présent | imparfait | « Je suis prêt. » -> Il a dit qu'il était prêt. |
+| passé composé | plus-que-parfait | « J'ai fini. » -> Il a dit qu'il avait fini. |
+| imparfait | imparfait | « Je dormais. » -> Il a dit qu'il dormait. |
+| plus-que-parfait | plus-que-parfait | « J'avais fini. » -> Il a dit qu'il avait fini. |
+| futur simple | conditionnel présent | « Je viendrai. » -> Il a dit qu'il viendrait. |
+| futur antérieur | conditionnel passé | « J'aurai fini. » -> Il a dit qu'il aurait fini. |
+| conditionnel | conditionnel | « Je viendrais. » -> Il a dit qu'il viendrait. |
+
+#### 同为过去，不等于同一时间
+
+| 例句 | 时间线 |
+|---|---|
+| Il a expliqué qu'il travaillait. | 工作与解释大致同时 |
+| Il a expliqué qu'il avait travaillé. | 工作先于解释并被看作已完成 |
+| Il a expliqué qu'il travaillerait. | 工作晚于解释 |
+| Il a expliqué qu'il aurait terminé avant lundi. | 完成晚于解释，但早于未来的 lundi 界点 |
+
+#### 可以保留的时态
+
+| 保留形式 | 适用情况 | 例句 |
+|---|---|---|
+| présent | 普遍真理或当前仍成立 | Elle a confirmé que le musée est fermé le lundi. |
+| passé composé | 转述者从当前角度突出结果；口语中可见 | Il m'a dit qu'il a perdu ses clés. |
+| futur simple | 事件相对当前仍在将来，且保持当前视点 | Il a confirmé qu'il arrivera demain. |
+
+正式的过去视点叙述通常使用 `avait perdu`、`arriverait le lendemain`。保留 `passé composé/futur` 并非一概错误，但必须有清楚的当前视角；没有这种语境时，按默认回溯规则最稳妥。
+
+#### 过去主句后的虚拟式
+
+| 关系 | 现代常用形式 | 例句 |
+|---|---|---|
+| 同时或之后 | subjonctif présent | Il voulait que je parte immédiatement. |
+| 先发生 | subjonctif passé | Il regrettait que je sois parti si tôt. |
+| 文学对应形式 | subjonctif imparfait / plus-que-parfait | Il voulait que je partisse.（文学） |
+
+不要把直陈式回溯表直接套到虚拟式：现代法语说 `Il fallait qu'elle vienne`，不是日常场景中的 `qu'elle vînt`。
+
 ### 28.4 直接引语与间接引语
+
+#### 三种转述方式
+
+| 方式 | 形式 | 例句 |
+|---|---|---|
+| 直接引语 `discours direct` | 保留说话者原句和指示中心 | Paul a dit : « Je partirai demain. » |
+| 间接引语 `discours indirect` | 作为报告动词的从句或不定式补语 | Paul a dit qu'il partirait le lendemain. |
+| 自由间接引语 `discours indirect libre` | 省去报告框架，保留人物视角和语气 | Paul partirait le lendemain. Pourquoi rester ici ? |
+
+自由间接引语主要用于文学叙事：人称和时态服从第三人称叙事，但疑问、感叹和语气又像人物内心话。实用写作的重点是前两类。
+
+#### 直接引语的书写
+
+| 结构 | 例句 |
+|---|---|
+| 报告语在前 | Elle a répondu : « Je ne sais pas. » |
+| 报告语插入 | « Je ne sais pas, a-t-elle répondu. » |
+| 报告语在后 | « Je ne sais pas », a-t-elle répondu. |
+| 对话轮次 | — Vous partez ?<br>— Oui, demain. |
+
+法语规范排版通常使用角引号 `« »`，引号内侧留空格；报告语在前常用冒号。不同出版社的对话破折号和标点细则会有差异，同一文本内应统一。
+
+#### 转为间接引语时要检查的五项
+
+1. 句型：陈述用 `que`，是非疑问用 `si`，特殊疑问保留或改造疑问词，命令多用 `de + infinitif`。
+2. 人称：`je/tu/nous/vous` 按原说话者、听话者和当前转述者重新确定。
+3. 物主和指示：`mon/ton/notre` 等随指代关系变化。
+4. 时态：根据报告动词的时间和事件的相对先后调整。
+5. 时间地点：只有指示中心改变时，才把 `demain/ici` 等换成 `le lendemain/là`。
+
+#### 常用报告动词及语气
+
+| 功能 | 动词 | 例句框架 |
+|---|---|---|
+| 中性转述 | dire, déclarer, expliquer | Il explique que... |
+| 强调真实性 | affirmer, confirmer, assurer | Elle confirme que... |
+| 公布信息 | annoncer, préciser, signaler | Ils annoncent que... |
+| 转述立场但不背书 | prétendre | Il prétend que... |
+| 回答 | répondre, répliquer | Elle répond que... / si... |
+| 提问 | demander, vouloir savoir | Il demande si... / pourquoi... |
+| 命令请求 | ordonner, demander, prier | Il lui demande de... |
+| 建议提醒 | conseiller, recommander, rappeler | Elle conseille de... |
+
+`prétendre que` 常暗示转述者对说法有所保留；`confirmer que` 则表示核实。选择报告动词时不要只替换 `dire`，还要保持原话的言语功能。
+
 ### 28.5 陈述句转述
+
+陈述句转为间接引语时用 `que/qu'`，从句采用普通陈述语序，不保留引号和冒号。
+
+#### 基本转换
+
+| 直接引语 | 现在报告 | 过去报告 |
+|---|---|---|
+| Léa dit : « Je suis prête. » | Léa dit qu'elle est prête. | Léa a dit qu'elle était prête. |
+| Léa dit : « J'ai terminé. » | Léa dit qu'elle a terminé. | Léa a dit qu'elle avait terminé. |
+| Léa dit : « Je viendrai. » | Léa dit qu'elle viendra. | Léa a dit qu'elle viendrait. |
+| Léa dit : « Je ne peux pas venir. » | Léa dit qu'elle ne peut pas venir. | Léa a dit qu'elle ne pouvait pas venir. |
+
+#### 人称与物主转换
+
+原话：`Marie dit à Paul : « Je t'enverrai mon adresse. »`
+
+| 转述时刻 | 间接引语 | 变化 |
+|---|---|---|
+| 现在 | Marie dit à Paul qu'elle lui enverra son adresse. | je -> elle；te -> lui；mon -> son |
+| 过去 | Marie a dit à Paul qu'elle lui enverrait son adresse. | 另加 futur -> conditionnel |
+
+转换不是按词形机械替换，而是按人物关系重新指代：
+
+| 原话成分 | 可能的间接形式 | 取决于 |
+|---|---|---|
+| je | il / elle / moi / nous | 原说话者是谁、谁在转述 |
+| tu | il / elle / me / lui | 原听话者是谁及句法功能 |
+| nous | ils / elles / nous | 转述者是否仍属于该群体 |
+| mon/ma/mes | son/sa/ses / mon/ma/mes | 所有者是否改变 |
+| notre/nos | leur/leurs / notre/nos | 转述者是否属于“我们” |
+
+`son adresse` 可能指 Marie，也可能因上下文被误解为 Paul 的地址。需要消除歧义时可写 `sa propre adresse`、`l'adresse de Marie`。
+
+#### 否定、情态与语式保留
+
+| 直接引语 | 间接引语 |
+|---|---|
+| « Je ne viendrai pas. » | Elle dit qu'elle ne viendra pas. |
+| « Je dois partir. » | Elle a dit qu'elle devait partir. |
+| « Il faut que vous répondiez. » | Elle a dit qu'il fallait que nous répondions. |
+| « Je regrette qu'il soit parti. » | Elle a dit qu'elle regrettait qu'il soit parti. |
+
+否定仍围绕变位动词；虚拟式是否出现仍由其触发结构决定。
+
+#### 省略 que 的错误
+
+汉语和英语可直接并列“他说他会来”，法语标准间接陈述通常必须保留 `que`：
+
+- `Il dit qu'il viendra.`
+- `Elle pense que nous avons raison.`
+- `Ils ont expliqué qu'ils étaient en retard.`
+
+只有改用冒号和直接引语时才不用 `que`：`Il dit : « Je viendrai. »`
+
 ### 28.6 疑问句转述
+
+间接疑问是嵌入主句的从句。它不保留 `est-ce que`，通常不用主语代词倒装，也不因本身是疑问内容而自动加问号。
+
+#### 是非疑问：用 si
+
+| 直接疑问 | 间接疑问 |
+|---|---|
+| « Tu viens ? » | Il demande si je viens. |
+| « Est-ce que Paul est là ? » | Elle demande si Paul est là. |
+| « Viendra-t-elle demain ? » | Il demande si elle viendra demain. |
+| « Avez-vous terminé ? » | Elle a demandé si nous avions terminé. |
+
+`si` 在元音前通常不省音，只有 `si + il/ils` 写成 `s'il/s'ils`：`Je demande si elle vient`，但 `Je demande s'il vient`。
+
+间接疑问的 `si` 不等于条件句的 `si`，因此后面可以出现将来时：`Je ne sais pas s'il viendra demain.`
+
+#### 特殊疑问：保留疑问词，恢复陈述语序
+
+| 直接疑问 | 间接疑问 |
+|---|---|
+| « Où habite-t-il ? » | Je demande où il habite. |
+| « Pourquoi êtes-vous partis ? » | Elle demande pourquoi nous sommes partis. |
+| « Quand viendra Léa ? » | Il demande quand Léa viendra. |
+| « Comment as-tu fait ? » | Elle veut savoir comment j'ai fait. |
+| « À qui parles-tu ? » | Il demande à qui je parle. |
+| « Quel livre choisis-tu ? » | Elle demande quel livre je choisis. |
+
+基本规则是 `疑问词 + 主语 + 动词`，不能写 `où habite-t-il`。名词主语在部分简短结构中可见后置，如 `Je me demande combien coûte ce livre`；学习和实用写作优先采用清楚的陈述语序：`combien ce livre coûte`。
+
+#### que / qu'est-ce que -> ce que
+
+| 直接疑问 | 间接疑问 | 功能 |
+|---|---|---|
+| « Que fais-tu ? » | Il demande ce que je fais. | ce que 是 COD |
+| « Qu'est-ce que vous voulez ? » | Elle demande ce que nous voulons. | 去掉 est-ce que |
+| « Qu'est-ce qui se passe ? » | Il demande ce qui se passe. | ce qui 是主语 |
+| « Qui est-ce que tu vois ? » | Elle demande qui je vois. | qui 是 COD |
+| « Qui est-ce qui vient ? » | Il demande qui vient. | qui 是主语 |
+
+不能说 `Il demande que je fais`；这里的 `que` 不是陈述连词，而应使用中性疑问结构 `ce que`。
+
+#### 间接疑问不定式
+
+主语与主句相同或无需说出时，可用 `疑问词 + infinitif`：
+
+| 完整从句 | 不定式结构 |
+|---|---|
+| Je ne sais pas ce que je dois faire. | Je ne sais pas quoi faire. |
+| Nous ignorons où nous devons aller. | Nous ignorons où aller. |
+| Elle se demande comment elle peut répondre. | Elle se demande comment répondre. |
+| Il ne sait pas quelle option il doit choisir. | Il ne sait pas quelle option choisir. |
+
+`quoi + infinitif` 常对应独立的“做什么”；名词明确时保留 `quel + nom`：`quel train prendre`。
+
+#### 问号的判断
+
+| 整句功能 | 标点 |
+|---|---|
+| Je voudrais savoir où il habite. | 整句是陈述，用句号 |
+| Savez-vous où il habite ? | 整句是直接疑问，用问号 |
+| Elle demande : « Où habite-t-il ? » | 引号内是直接疑问，用问号 |
+
 ### 28.7 命令句转述
+
+命令、请求、建议和禁止通常转成报告动词加 `de + infinitif`。不定式的逻辑主语由报告动词的宾语表示。
+
+#### 基本结构
+
+| 直接命令 | 间接转述 |
+|---|---|
+| Paul me dit : « Viens ! » | Paul me dit de venir. |
+| Paul m'a dit : « Attends ici. » | Paul m'a dit d'attendre là. |
+| Elle nous demande : « Répondez vite. » | Elle nous demande de répondre vite. |
+| Le médecin lui conseille : « Reposez-vous. » | Le médecin lui conseille de se reposer. |
+| Il leur ordonne : « Partez immédiatement. » | Il leur ordonne de partir immédiatement. |
+
+#### 否定命令
+
+否定不定式的基本次序是 `de ne pas + infinitif`：
+
+| 直接命令 | 间接转述 |
+|---|---|
+| « Ne viens pas. » | Il me dit de ne pas venir. |
+| « Ne touchez à rien. » | Elle nous demande de ne toucher à rien. |
+| « Ne lui téléphonez plus. » | Il leur conseille de ne plus lui téléphoner. |
+| « Ne le faites jamais. » | Elle m'a dit de ne jamais le faire. |
+
+#### 命令式代词恢复普通位置
+
+肯定命令式中的代词位于动词后，转成不定式后恢复到动词前。
+
+| 直接命令 | 间接转述 |
+|---|---|
+| Paul me dit : « Donne-moi le dossier. » | Paul me dit de lui donner le dossier. |
+| « Montrez-le-nous. » | Elle vous demande de nous le montrer. |
+| « Levez-vous. » | Il leur demande de se lever. |
+| « N'en parle pas. » | Elle me conseille de ne pas en parler. |
+
+第一例中原话的 `moi` 指 Paul，所以转述后是 `lui`；这再次说明人称必须按角色关系转换。
+
+#### 常用支配结构
+
+| 动词 | 结构 | 例句 |
+|---|---|---|
+| dire/demander/conseiller à qqn | de + infinitif | Elle lui demande de patienter. |
+| ordonner/interdire/permettre à qqn | de + infinitif | On leur interdit d'entrer. |
+| prier qqn | de + infinitif | Je vous prie de répondre. |
+| proposer à qqn | de + infinitif | Il nous propose de partir. |
+| exiger/vouloir | que + subjonctif | Il exige que nous partions. |
+| recommander | de + infinitif / que + subjonctif | Elle recommande de réserver / que nous réservions. |
+
+报告动词的介词必须一并掌握：`demander à Paul de venir`，不能写成 `demander Paul de venir`。
+
 ### 28.8 时间和地点状语转换
+
+时间地点词以说话者的“此时、此地”为中心。转述时中心不变，表达可以不变；转述发生在别的时间地点，则需改成相对过去参照点的形式。
+
+#### 常见转换表
+
+| 原话 | 转述中心改变后的常见形式 |
+|---|---|
+| aujourd'hui | ce jour-là |
+| hier | la veille |
+| avant-hier | l'avant-veille / deux jours auparavant |
+| demain | le lendemain |
+| après-demain | le surlendemain / deux jours plus tard |
+| maintenant | alors / à ce moment-là |
+| ce matin / ce soir | ce matin-là / ce soir-là |
+| cette semaine | cette semaine-là |
+| la semaine dernière | la semaine précédente / d'avant |
+| la semaine prochaine | la semaine suivante / d'après |
+| il y a trois jours | trois jours auparavant / plus tôt |
+| dans trois jours | trois jours plus tard |
+| ici | là / à cet endroit |
+
+#### 完整转换示例
+
+原话：`Le 10 juin, Léa a dit : « J'ai terminé hier et je partirai d'ici demain. »`
+
+| 转述时机 | 表达 |
+|---|---|
+| 仍在 10 juin、仍在原地 | Léa a dit qu'elle avait terminé hier et qu'elle partirait d'ici demain. |
+| 数日后、在另一地点 | Léa a dit qu'elle avait terminé la veille et qu'elle partirait de là le lendemain. |
+
+`hier/demain/ici` 是否变化取决于转述场景，而不只取决于报告动词是不是过去时。
+
+#### 绝对日期通常不变
+
+| 原话 | 转述 |
+|---|---|
+| « Je partirai le 12 juin. » | Il a dit qu'il partirait le 12 juin. |
+| « Le magasin ferme le lundi. » | Elle a rappelé que le magasin ferme le lundi. |
+| « Nous nous sommes rencontrés en 2024. » | Ils ont dit qu'ils s'étaient rencontrés en 2024. |
+
+明确日期不会随转述时刻移动，通常比 `le lendemain` 更不易产生歧义。
+
+#### venir / aller 与指示中心
+
+`venir` 表示向说话者或所采用的视点靠近，`aller` 表示离开该中心。转述后要按新的视点判断，不能机械互换：
+
+- `Paul m'a dit : « Je viendrai chez toi. »` -> `Paul m'a dit qu'il viendrait chez moi.`
+- `Paul a dit : « J'irai chez Léa. »` -> `Paul a dit qu'il irait chez Léa.`
+- 从 Léa 的视点也可以说 `Paul a dit qu'il viendrait chez elle`，表示朝 Léa 所在处来。
+
+地点动词的选择反映叙述视角；只要目的地和视角清楚，不能仅凭直接或间接引语判定。
+
 ### 28.9 叙事中的 passé composé / imparfait / plus-que-parfait
+
+三种过去时不是把同一事件换词尾，而是从不同角度组织叙事：`passé composé` 推进事件，`imparfait` 铺设背景，`plus-que-parfait` 回到更早一层。
+
+#### 核心分工
+
+| 时态 | 叙事功能 | 典型问题 | 例句 |
+|---|---|---|---|
+| passé composé | 完成事件、变化、事件链 | “发生了什么？” | Paul est entré et a fermé la porte. |
+| imparfait | 背景、状态、持续过程、习惯 | “当时是什么情况？” | Il pleuvait et la rue était vide. |
+| plus-que-parfait | 先于过去参照点的事件 | “此前发生过什么？” | Marie était déjà partie. |
+
+#### 前景与背景
+
+| 背景 `imparfait` | 插入事件 `passé composé` |
+|---|---|
+| Je lisais | quand le téléphone a sonné. |
+| Il pleuvait | quand nous sommes sortis. |
+| Les enfants dormaient | quand Paul est rentré. |
+| Nous parlions du projet | lorsqu'elle a proposé une solution. |
+
+进行中的背景通常没有明确起止边界；一次性的插入事件有边界并推动故事向前。
+
+#### 事件链与状态描写
+
+| 事件链 | 状态描写 |
+|---|---|
+| Il a ouvert la porte, est entré et s'est assis. | La porte était ouverte, la pièce semblait vide et une lampe brillait. |
+| Elle a lu le message puis a appelé Paul. | Elle connaissait déjà Paul et voulait lui parler. |
+
+连续动作不能因为中文都可译成“在……着”就一律使用 `imparfait`。只要叙述的是依次完成的步骤，通常用 `passé composé`。
+
+#### 习惯与一次事件
+
+| 习惯/重复背景 | 一次或有界整体 |
+|---|---|
+| Tous les matins, il prenait le bus. | Ce matin-là, il a pris le bus. |
+| En été, nous allions souvent à la mer. | L'été dernier, nous sommes allés trois fois à la mer. |
+| Elle travaillait le samedi. | Elle a travaillé samedi dernier. |
+
+重复动作也能用 `passé composé`，只要次数或时间段被看作完整整体：`Pendant ce mois-là, il a pris le bus tous les jours.`
+
+#### 持续时间不自动决定时态
+
+| 视角 | 例句 | 含义 |
+|---|---|---|
+| 过程正在持续 | Il travaillait depuis deux heures quand j'ai appelé. | 打电话时已工作两小时，仍在进行 |
+| 完整有界事件 | Il a travaillé pendant deux heures. | 两小时工作被看作完成整体 |
+| 过去状态 | Elle était malade depuis lundi quand je l'ai appelée. | 过去参照点时病情仍持续 |
+| 已结束的一段状态 | Elle a été malade pendant trois jours. | 三天生病期已经结束 |
+
+`depuis` 常与持续到参照点的 `présent/imparfait` 连用；`pendant` 常给出完整时段，但最终仍由叙述视角决定。
+
+#### plus-que-parfait：过去之前
+
+构成：`avoir/être` 的 imparfait + 过去分词。
+
+| 过去参照点 | 更早事件 | 完整句 |
+|---|---|---|
+| je suis arrivé | elle était partie | Quand je suis arrivé, elle était déjà partie. |
+| il était fatigué | il avait mal dormi | Il était fatigué parce qu'il avait mal dormi. |
+| nous n'avons pas pu entrer | Paul avait perdu la clé | Nous n'avons pas pu entrer parce que Paul avait perdu la clé. |
+| elle a reconnu le lieu | elle y était venue autrefois | Elle a reconnu le lieu où elle était venue autrefois. |
+
+plus-que-parfait 必须有明示或可推断的过去参照点；它不是“很久以前”，而是“比另一个过去更早”。
+
+#### 高频动词的视角差异
+
+| imparfait | passé composé | 常见差异 |
+|---|---|---|
+| je savais | j'ai su | 我知道 / 我得知了 |
+| je connaissais | j'ai connu | 我认识、了解 / 我曾经历或结识 |
+| je pouvais | j'ai pu | 我有能力、条件允许 / 我成功做到了 |
+| je voulais | j'ai voulu | 我想要 / 我决定、试图要 |
+| je ne voulais pas | je n'ai pas voulu | 我不想 / 我拒绝了 |
+| j'avais peur | j'ai eu peur | 我处于害怕状态 / 我突然或一度害怕 |
+
+词汇意义与时态视角共同作用。`J'ai pu ouvrir la porte` 常暗示“成功打开了”，而 `Je pouvais ouvrir la porte` 只说明当时具备可能性。
+
+#### 典型叙事段落
+
+> Il pleuvait et la rue était presque vide. Paul est sorti du métro, a regardé autour de lui et a appelé Léa. Elle n'a pas répondu : elle avait oublié son téléphone au bureau.
+
+| 成分 | 时态 | 功能 |
+|---|---|---|
+| pleuvait, était | imparfait | 天气和场景背景 |
+| est sorti, a regardé, a appelé | passé composé | 依次推进的前景事件 |
+| n'a pas répondu | passé composé | 发生的结果 |
+| avait oublié | plus-que-parfait | 解释更早的原因 |
+
+#### 叙事现在时
+
+法语也可用 `présent de narration` 增强现场感：`En 1789, la Révolution éclate.` 新闻标题、历史概述和口头故事都可能使用。选用后应保持时间框架清楚，不要无信号地在 `présent`、`passé composé`、`passé simple` 之间跳换。
+
 ### 28.10 文学叙事中的 passé simple
+
+`passé simple` 主要用于小说、历史叙述、传记和正式书面叙事中的完成事件。现代日常口语通常用 `passé composé` 表达同一前景功能。
+
+#### 与其他过去时的分工
+
+| 文学叙事 | 日常叙事 | 功能 |
+|---|---|---|
+| Il entra. | Il est entré. | 完成并推进叙事的事件 |
+| Il regarda autour de lui. | Il a regardé autour de lui. | 事件链下一步 |
+| La rue était vide. | La rue était vide. | 背景仍用 imparfait |
+| Elle était déjà partie. | Elle était déjà partie. | 更早事件仍可用 plus-que-parfait |
+| Quand il eut fini, il sortit. | Quand il a fini, il est sorti. | 前一动作完成后，后一动作发生 |
+
+passé simple 与 imparfait 的对立，基本对应 passé composé 与 imparfait 的对立：前者推进，后者铺设背景。
+
+#### 高频形式识别
+
+| 动词 | je | tu | il/elle | nous | vous | ils/elles |
+|---|---|---|---|---|---|---|
+| parler | parlai | parlas | parla | parlâmes | parlâtes | parlèrent |
+| finir | finis | finis | finit | finîmes | finîtes | finirent |
+| prendre | pris | pris | prit | prîmes | prîtes | prirent |
+| faire | fis | fis | fit | fîmes | fîtes | firent |
+| boire | bus | bus | but | bûmes | bûtes | burent |
+| venir | vins | vins | vint | vînmes | vîntes | vinrent |
+| être | fus | fus | fut | fûmes | fûtes | furent |
+| avoir | eus | eus | eut | eûmes | eûtes | eurent |
+
+阅读时最重要的是第三人称形式：`il parla, il finit, il prit, il fit, il vint, il fut, il eut`；复数常见 `ils parlèrent, finirent, prirent, vinrent, furent, eurent`。
+
+#### 常见词尾系列
+
+| 系列 | 词尾 | 常见动词 |
+|---|---|---|
+| -a 系 | -ai, -as, -a, -âmes, -âtes, -èrent | 多数 -er 动词 |
+| -i 系 | -is, -is, -it, -îmes, -îtes, -irent | finir, prendre, faire 等 |
+| -u 系 | -us, -us, -ut, -ûmes, -ûtes, -urent | boire, lire, savoir, pouvoir 等 |
+| -in 系 | -ins, -ins, -int, -înmes, -întes, -inrent | venir, tenir 及其派生词 |
+
+具体词干需随动词记忆：`lire -> il lut`、`savoir -> il sut`、`pouvoir -> il put`、`devoir -> il dut`、`voir -> il vit`、`naître -> il naquit`、`mourir -> il mourut`。
+
+#### passé antérieur
+
+`passé antérieur = avoir/être 的 passé simple + participe passé`，表示先于另一个 passé simple 的完成动作，多见于时间从句。
+
+| 结构 | 例句 |
+|---|---|
+| quand + passé antérieur | Quand il eut terminé, il sortit. |
+| dès que + passé antérieur | Dès qu'elle fut arrivée, la réunion commença. |
+| après que + passé antérieur | Après qu'ils eurent signé, ils partirent. |
+| à peine...que | À peine eut-il fermé la porte que le téléphone sonna. |
+
+用 `être` 时过去分词仍与主语配合：`elle fut arrivée`、`ils furent partis`。
+
+注意重音：`il eut terminé` 是直陈式 passé antérieur；`qu'il eût terminé` 是文学性的 plus-que-parfait du subjonctif。普通文学叙事的 `quand` 从句用直陈式：`quand il eut terminé`。
+
+#### 文学叙事中的直接对话
+
+叙述部分可用 passé simple，人物对话仍按真实会话使用 présent、passé composé、futur 等：
+
+> Paul entra et demanda : « Est-ce que Léa est déjà partie ? »
+
+不要把引号中的日常话机械改成 passé simple。叙述者时间和人物说话时间是两个层次。
+
 ### 28.11 常见错误速查
+
+时态有视角弹性。下表中的改法针对右栏注明的目标语境；脱离语境把所有现在时、将来时都判错，会制造新的错误。
+
+| 不合目标语境的表达 | 推荐表达 | 目标语境/原因 |
+|---|---|---|
+| Il dit qu'il viendrait demain. | Il dit qu'il viendra demain. | 现在报告的直接将来事实 |
+| Il a dit qu'il viendra le lendemain. | Il a dit qu'il viendrait le lendemain. | 完整采用过去转述视点 |
+| Il a dit qu'il est malade. | Il a dit qu'il était malade. | 只描述过去当时的状态 |
+| Je savais qu'il a déjà fini. | Je savais qu'il avait déjà fini. | 完成先于过去的“知道” |
+| Elle disait qu'elle finira avant midi. | Elle disait qu'elle aurait fini avant midi. | 过去视点中的将来完成 |
+| Il voulait que je partirais. | Il voulait que je parte. | vouloir que 触发虚拟式 |
+| Il fallait qu'elle venait. | Il fallait qu'elle vienne. | falloir que 触发虚拟式 |
+| Il doutait qu'elle était venue. | Il doutait qu'elle soit venue. | 先时关系用过去虚拟式 |
+| Il dit il viendra. | Il dit qu'il viendra. | 间接陈述必须用 que |
+| Il demande est-ce que je viens. | Il demande si je viens. | 是非间接疑问用 si |
+| Il demande si est-ce que Paul vient. | Il demande si Paul vient. | si 后不保留 est-ce que |
+| Il demande si viendra-t-elle. | Il demande si elle viendra. | 间接疑问不用代词倒装 |
+| Il demande où habite-t-il. | Il demande où il habite. | 恢复陈述语序 |
+| Je ne sais pas qu'est-ce qu'il veut. | Je ne sais pas ce qu'il veut. | qu'est-ce que -> ce que |
+| Elle demande ce que se passe. | Elle demande ce qui se passe. | 疑问成分作主语用 ce qui |
+| Je demande qu'il viendra ou non. | Je demande s'il viendra ou non. | “是否”用 si |
+| Je ne sais pas s'il viendrait demain. | Je ne sais pas s'il viendra demain. | 现在视点下的真实将来 |
+| Paul m'a dit que viens. | Paul m'a dit de venir. | 命令转述用 de + infinitif |
+| Paul m'a dit de ne venir pas. | Paul m'a dit de ne pas venir. | 否定不定式语序 |
+| Elle a demandé Paul de partir. | Elle a demandé à Paul de partir. | demander à qqn de faire |
+| Paul m'a dit de me donner le dossier. | Paul m'a dit de lui donner le dossier. | 原话“donne-moi”中的 moi 指 Paul |
+| （一周后转述原话）Il a dit qu'il viendrait demain. | Il a dit qu'il viendrait le lendemain. | demain 不再指原说话者的次日 |
+| Il pleuvait quand soudain Paul entrait. | Il pleuvait quand soudain Paul est entré. | 单次插入事件推进叙事 |
+| Il a ouvert la porte, entrait et s'asseyait. | Il a ouvert la porte, est entré et s'est assis. | 依次完成的事件链 |
+| Quand je suis arrivé, elle a déjà parti. | Quand je suis arrivé, elle était déjà partie. | 更早动作 + être 助动词 |
+| Il était fatigué parce qu'il a mal dormi. | ...parce qu'il avait mal dormi. | 睡不好先于过去的疲倦 |
+| Tous les matins, il a pris le bus. | Tous les matins, il prenait le bus. | 无界的过去习惯背景 |
+| Hier, j'ai travaillé quand Paul a appelé. | Hier, je travaillais quand Paul a appelé. | 电话发生时工作正在进行 |
+| J'ai travaillé depuis deux heures quand il est arrivé. | Je travaillais depuis deux heures quand il est arrivé. | 到过去参照点仍在持续 |
+| Il sorta de la maison. | Il sortit de la maison. | sortir 的 passé simple 是 sortit |
+| Ils finissèrent le travail. | Ils finirent le travail. | finir 的 passé simple 复数是 finirent |
+| Il fût surpris. | Il fut surpris. | passé simple 的 fut 无重音 |
+| Quand il eût terminé, il sortit. | Quand il eut terminé, il sortit. | passé antérieur 的 eut 无重音 |
+
+#### 最终检查流程
+
+1. 为每个复句确定参照点：现在、将来还是过去。
+2. 标出从句事件相对参照点的同时、先时、后时关系。
+3. 转述时检查句型连接词：`que / si / 疑问词 / de + infinitif`。
+4. 重新确认人称、宾语代词和物主词分别指谁。
+5. 判断 `hier/demain/ici/venir` 的指示中心是否真的改变。
+6. 叙事中用完成过去时推进事件，用 imparfait 描写背景，用 plus-que-parfait 回溯更早事件。
+7. 文学文本再检查 passé simple、passé antérieur 与人物直接对话是否处于不同时间层次。
 
 ## 29. 数字、日期、时间、货币与度量（Nombres, dates, heure, monnaie, mesures）
 
+数字表达既涉及数词构成，也涉及连字符、复数、介词和法语排版。实际使用时要同时确认三个层面：数字本身怎样读、在句中怎样配合、写成数字时采用什么格式。
+
 ### 29.1 基数词
+
+#### 0—19：基础词形
+
+| 数字 | 法语 | 数字 | 法语 |
+|---|---|---|---|
+| 0 | zéro | 10 | dix |
+| 1 | un / une | 11 | onze |
+| 2 | deux | 12 | douze |
+| 3 | trois | 13 | treize |
+| 4 | quatre | 14 | quatorze |
+| 5 | cinq | 15 | quinze |
+| 6 | six | 16 | seize |
+| 7 | sept | 17 | dix-sept |
+| 8 | huit | 18 | dix-huit |
+| 9 | neuf | 19 | dix-neuf |
+
+`onze` 传统上阻止省音和连读：`le onze novembre`、`les onze joueurs`，不写 `l'onze`。
+
+#### 20—69：十位数规则
+
+| 整十 | 法语 | +1 | +2 示例 |
+|---|---|---|---|
+| 20 | vingt | vingt et un | vingt-deux |
+| 30 | trente | trente et un | trente-deux |
+| 40 | quarante | quarante et un | quarante-deux |
+| 50 | cinquante | cinquante et un | cinquante-deux |
+| 60 | soixante | soixante et un | soixante-deux |
+
+在传统常用拼写中，21、31、41、51、61 用 `et un`，其余个位数直接连接：`vingt-deux`、`trente-cinq`、`soixante-neuf`。1990 年建议拼写把所有组成部分都用连字符连接：`vingt-et-un`，详见 29.4。
+
+#### 百、千、百万以上
+
+| 数字 | 常见读法 |
+|---|---|
+| 100 | cent |
+| 101 | cent un |
+| 110 | cent dix |
+| 125 | cent vingt-cinq |
+| 200 | deux cents |
+| 201 | deux cent un |
+| 1 000 | mille |
+| 1 001 | mille un |
+| 1 100 | mille cent |
+| 10 000 | dix mille |
+| 100 000 | cent mille |
+| 1 000 000 | un million |
+| 1 000 000 000 | un milliard |
+
+`mille` 前通常不说 `un`：`mille personnes`，不是 `un mille personnes`。但 `un millier de personnes` 中 `millier` 是普通名词。
+
+#### un / une
+
+只有数字 1 会按所计名词的性别变化，包括复合数末尾的 1：
+
+| 阳性名词 | 阴性名词 |
+|---|---|
+| un livre | une page |
+| vingt et un livres | vingt et une pages |
+| cent un candidats | cent une candidates |
+
+在纯数字、电话号码和数学读法中通常使用默认形式 `un`；明确修饰阴性名词时用 `une`。
+
+#### 大数分组
+
+| 数量级 | 法语名词 | 例句 |
+|---|---|---|
+| 10³ | mille | trois mille habitants |
+| 10⁶ | million | trois millions d'habitants |
+| 10⁹ | milliard | trois milliards d'euros |
+| 10¹² | billion | un billion（法语长级数） |
+
+法语的 `billion` 传统上表示 10¹²，不等于现代英语常见的 *billion*（10⁹）。国际、财经或科技文本优先直接写数字或使用 `milliard`，避免跨语言误解。
+
 ### 29.2 序数词
+
+序数词表示顺序，通常在基数词后加 `-ième`，并像形容词一样与名词配合。
+
+#### 构成
+
+| 基数词 | 序数词 | 例句 |
+|---|---|---|
+| un/une | premier / première | le premier jour, la première fois |
+| deux | deuxième / second, seconde | le deuxième chapitre |
+| trois | troisième | la troisième page |
+| quatre | quatrième | le quatrième étage |
+| cinq | cinquième | la cinquième tentative |
+| neuf | neuvième | le neuvième mois |
+| dix | dixième | la dixième place |
+| vingt et un | vingt et unième | la vingt et unième page |
+| cent | centième | le centième anniversaire |
+| mille | millième | la millième partie |
+
+拼写变化：末尾无声 `e` 通常脱落，`quatre -> quatrième`；`cinq` 加 `u`，成为 `cinquième`；`neuf` 的 `f` 变为 `v`，成为 `neuvième`。
+
+#### deuxième 与 second
+
+| 形式 | 常见用法 |
+|---|---|
+| deuxième | 中性、最通用，不暗示总数 |
+| second/seconde | 传统上可暗示两项中的第二项，但现代用法不总严格区分 |
+
+不知道总数或追求稳定表达时，优先使用 `deuxième`。固定名称和习惯表达中保留 `second`：`la Seconde Guerre mondiale`、`une seconde chance`。
+
+#### 缩写
+
+| 完整形式 | 推荐缩写 |
+|---|---|
+| premier | 1er |
+| première | 1re |
+| premiers | 1ers |
+| premières | 1res |
+| deuxième | 2e |
+| deuxièmes | 2es |
+
+`1ère`、`2ème` 很常见，但规范排版通常推荐更简洁的 `1re`、`2e`。上标属于版式选择，纯 Markdown 可直接写普通基线字符。
+
+#### 罗马数字与读法
+
+| 场景 | 写法 | 读法 |
+|---|---|---|
+| 世纪 | le XXIe siècle | le vingt et unième siècle |
+| 卷册 | tome II | tome deux |
+| 君主 | Louis XIV | Louis quatorze |
+| 第一位君主 | François Ier | François premier |
+| 章节/部分 | chapitre IV / partie III | chapitre quatre / partie trois |
+
+君主、教皇和卷册后的罗马数字通常按基数词读，第一位例外常读 `premier`：`Napoléon Ier`。
+
 ### 29.3 70、80、90 的系统
+
+法国通行体系以 60 和 20 为组合基础；比利时、瑞士等地存在更规则的地区形式。
+
+#### 法国标准常用形式
+
+| 数字 | 法语 | 数字 | 法语 |
+|---|---|---|---|
+| 70 | soixante-dix | 80 | quatre-vingts |
+| 71 | soixante et onze | 81 | quatre-vingt-un |
+| 72 | soixante-douze | 82 | quatre-vingt-deux |
+| 79 | soixante-dix-neuf | 89 | quatre-vingt-neuf |
+| 90 | quatre-vingt-dix | 91 | quatre-vingt-onze |
+| 99 | quatre-vingt-dix-neuf | 100 | cent |
+
+关键点：
+
+- 71 有 `et`：`soixante et onze`；81、91 没有 `et`。
+- 80 正好结束时写 `quatre-vingts`；后面再接数字时去掉 `s`。
+- 81 是 `quatre-vingt-un`，不是 `quatre-vingt et un`。
+
+#### 地区形式
+
+| 数字 | 比利时常见 | 瑞士部分地区常见 | 法国通行 |
+|---|---|---|---|
+| 70 | septante | septante | soixante-dix |
+| 80 | quatre-vingts | huitante（地区差异明显） | quatre-vingts |
+| 90 | nonante | nonante | quatre-vingt-dix |
+
+`septante`、`nonante` 是规范的地区法语，不是错误。`huitante` 主要见于瑞士部分地区；`octante` 现代已较少使用。面向特定地区时遵循当地习惯，面向国际学习者时应至少能识别两套体系。
+
+#### 快速拆解
+
+| 数字 | 结构 | 结果 |
+|---|---|---|
+| 74 | 60 + 14 | soixante-quatorze |
+| 77 | 60 + 17 | soixante-dix-sept |
+| 84 | 4 × 20 + 4 | quatre-vingt-quatre |
+| 95 | 4 × 20 + 15 | quatre-vingt-quinze |
+
+听写时先确定十位系统，再处理个位，不要把 `soixante-quinze` 听成 65。
+
 ### 29.4 数字的连字符和复数
+
+#### 两套可见拼写
+
+| 体系 | 原则 | 示例 |
+|---|---|---|
+| 传统拼写 | 小于 100 的复合数使用连字符，`et` 周围不用 | vingt et un, trois cent vingt-deux |
+| 1990 年建议拼写 | 数词内部所有组成部分都用连字符 | vingt-et-un, trois-cent-vingt-deux |
+
+两套拼写均可见并被接受。正式文本应统一，不要在同一数字中混用。本文为便于识别，主要沿用广泛可见的传统形式，同时接受 1990 年形式。
+
+#### vingt 与 cent
+
+| 条件 | 正确形式 | 原因 |
+|---|---|---|
+| 被乘且数字在此结束 | quatre-vingts | 4 × 20，后无其他数 |
+| 后面还有个位/十位数 | quatre-vingt-deux | 数字尚未结束 |
+| 后接 mille | quatre-vingt mille | mille 仍属数词组合 |
+| 后接名词 million | quatre-vingts millions | million 是名词 |
+| 被乘且数字在此结束 | deux cents | 2 × 100，后无其他数 |
+| 后面还有其他数 | deux cent trois | 数字尚未结束 |
+| 后接 mille | deux cent mille | cent 不加 s |
+| 后接名词 million | deux cents millions | million 是名词 |
+
+#### mille、million、milliard
+
+| 词 | 词性与复数 | 例句 |
+|---|---|---|
+| mille | 数词，始终不加 s | deux mille, cent mille |
+| millier | 名词，正常复数 | des milliers de personnes |
+| million | 名词，正常复数 | deux millions d'euros |
+| milliard | 名词，正常复数 | trois milliards d'habitants |
+
+`million/milliard` 后接所计对象时用 `de`：`un million de personnes`。`mille` 直接接名词：`mille personnes`。
+
+#### 数字作编号时
+
+基数词表示页码、年份、门牌、线路等顺序编号时，`vingt/cent` 通常保持不变：
+
+| 场景 | 写法 |
+|---|---|
+| page 80 | la page quatre-vingt |
+| année 1900 | l'année mille neuf cent |
+| numéro 200 | le numéro deux cent |
+
+这里可理解为省略了 `quatre-vingtième/centième`，因此不按“正好 80/200 个物体”的数量复数处理。
+
+#### 数字排版
+
+| 内容 | 法语常用格式 | 避免 |
+|---|---|---|
+| 千位分组 | 1 234 567 | 1,234,567 |
+| 小数 | 3,14 | 3.14（一般法语正文） |
+| 四位年份 | 2026 | 2 026 |
+| 页码/编号 | page 1234 | page 1 234 也可依版式 |
+
+连续数字通常每三位用不换行空格分组；年份、邮编、编号等标识符通常不作普通数量分组。数字本身不要在行末被拆开。
+
 ### 29.5 日期表达
+
+#### 询问和回答日期
+
+| 功能 | 标准表达 | 口语表达 |
+|---|---|---|
+| 今天几号？ | Quelle est la date aujourd'hui ? | On est le combien ? |
+| 今天星期几/几号？ | Quel jour sommes-nous ? | On est quel jour ? |
+| 回答完整日期 | Nous sommes le 30 août 2026. | On est le 30 août. |
+| 某事件日期 | La réunion aura lieu le 5 septembre. | C'est le 5 septembre. |
+
+日期前通常用 `le`：`le 14 juillet`、`le 30 août 2026`。表格、信头、公文日期栏可省略完整句框架。
+
+#### 每月第一天
+
+| 日期 | 正确读写 |
+|---|---|
+| 1 May | le 1er mai / le premier mai |
+| 1 January | le 1er janvier |
+| 2 May | le 2 mai / le deux mai |
+| 21 June | le 21 juin / le vingt et un juin |
+
+只有每月 1 日用序数词 `premier`；其他日期使用基数词，不说 `le deuxième mai`。
+
+#### 数字日期格式
+
+| 格式 | 示例 | 说明 |
+|---|---|---|
+| 法语常见短格式 | 30/08/2026 | 日/月/年 |
+| 带连字符 | 30-08-2026 | 依机构版式 |
+| ISO 8601 | 2026-08-30 | 年-月-日，跨系统最清楚 |
+| 完整文字 | 30 août 2026 | 正文和正式文件最不易歧义 |
+
+`03/04/2026` 在法语环境通常指 2026 年 4 月 3 日，但在采用月/日/年的地区可能被理解为 3 月 4 日。跨国文本优先写月份或使用 ISO 格式。
+
+#### 年份读法与介词
+
+| 年份 | 常见读法 |
+|---|---|
+| 1789 | mille sept cent quatre-vingt-neuf |
+| 1900 | mille neuf cent |
+| 1999 | mille neuf cent quatre-vingt-dix-neuf |
+| 2000 | deux mille |
+| 2026 | deux mille vingt-six |
+
+| 结构 | 例句 |
+|---|---|
+| 在某年 | en 2026 |
+| 从某年到某年 | de 2020 à 2026 |
+| 自某年起 | depuis 2020 |
+| 截至某年 | jusqu'en 2026 |
+| 某年以前/以后 | avant 2020 / après 2020 |
+
 ### 29.6 星期、月份、季节、年份
+
+#### 星期和月份
+
+法语的星期、月份通常小写。
+
+| 星期 | 月份 |
+|---|---|
+| lundi | janvier |
+| mardi | février |
+| mercredi | mars |
+| jeudi | avril |
+| vendredi | mai |
+| samedi | juin |
+| dimanche | juillet |
+|  | août |
+|  | septembre |
+|  | octobre |
+|  | novembre |
+|  | décembre |
+
+#### 星期前是否用冠词
+
+| 结构 | 含义 | 例句 |
+|---|---|---|
+| lundi | 某个具体星期一 | Je viendrai lundi. |
+| le lundi | 每逢星期一 | Le musée est fermé le lundi. |
+| un lundi | 某个星期一 | Nous nous sommes rencontrés un lundi. |
+| ce lundi | 本周/所指星期一 | La réunion a lieu ce lundi. |
+| lundi prochain/dernier | 下/上一个星期一 | Elle arrive lundi prochain. |
+| du lundi au vendredi | 从周一到周五 | Le bureau ouvre du lundi au vendredi. |
+
+在日期中直接写 `lundi 5 mai`；表示重复习惯才常用 `le lundi`。
+
+#### 月份和季节介词
+
+| 时间 | 结构 | 例句 |
+|---|---|---|
+| 月份 | en + mois | en janvier, en août |
+| 月份另一表达 | au mois de | au mois de mai |
+| 月初/月末 | début/fin + mois | début juin, fin décembre |
+| 春季 | au printemps | au printemps prochain |
+| 夏、秋、冬 | en été/automne/hiver | en été, en automne, en hiver |
+| 指定季节 | cet/前置冠词 | cet été, l'hiver dernier |
+
+季节名通常小写。注意 `au printemps`，但 `en été`。
+
+#### an 与 année
+
+| an | année |
+|---|---|
+| 数年龄、数量和简单时长 | 强调整段时期、过程或评价 |
+| J'ai vingt ans. | Cette année a été difficile. |
+| Il y a trois ans. | J'ai travaillé toute l'année. |
+| un contrat de deux ans | une bonne année |
+| l'an 2026 | les années 1990 |
+
+类似区别也见 `jour/journée`、`soir/soirée`、`matin/matinée`：短形式偏时间单位或时点，`-ée` 形式偏完整时段及其经历。
+
+#### 年代与世纪
+
+| 内容 | 表达 |
+|---|---|
+| 1990 年代 | les années 1990 / les années quatre-vingt-dix |
+| 20 世纪 | le XXe siècle |
+| 21 世纪初 | au début du XXIe siècle |
+| 18 世纪末 | à la fin du XVIIIe siècle |
+
+在 `les années quatre-vingt`、`la page quatre-vingt` 等编号意义中，`vingt` 不加 `s`。
+
 ### 29.7 时间读法
+
+#### 询问和整点
+
+| 功能 | 表达 |
+|---|---|
+| 几点了？ | Quelle heure est-il ? |
+| 一点 | Il est une heure. |
+| 两点 | Il est deux heures. |
+| 正午 | Il est midi. |
+| 午夜 | Il est minuit. |
+
+只能说 `Il est une heure`，不能因形式主语 `il` 使用 `un heure`；`heure` 是阴性。
+
+#### 24 小时制与会话读法
+
+| 数字时间 | 正式/交通读法 | 日常会话读法 |
+|---|---|---|
+| 08 h 00 | huit heures | huit heures |
+| 09 h 15 | neuf heures quinze | neuf heures et quart |
+| 09 h 30 | neuf heures trente | neuf heures et demie |
+| 09 h 45 | neuf heures quarante-cinq | dix heures moins le quart |
+| 13 h 00 | treize heures | une heure de l'après-midi |
+| 18 h 50 | dix-huit heures cinquante | sept heures moins dix |
+| 00 h 00 | zéro heure / minuit | minuit |
+| 12 h 00 | douze heures / midi | midi |
+
+交通、日程和正式广播常按 24 小时制直接读分钟；日常会话常用 `et quart`、`et demie`、`moins le quart`。
+
+#### demi 的配合
+
+| 表达 | 规则 |
+|---|---|
+| une heure et demie | demie 与阴性 heure 配合 |
+| deux heures et demie | 仍为阴性单数形式，不加 s |
+| midi et demi | midi 是阳性，demi 不变 |
+| minuit et demi | minuit 是阳性，demi 不变 |
+| une demi-heure | demi 在名词前不变，并用连字符 |
+
+#### 时间介词
+
+| 功能 | 结构 | 例句 |
+|---|---|---|
+| 在几点 | à | Le train part à 8 h 20. |
+| 从几点到几点 | de...à / entre...et | de 9 h à 17 h / entre 9 h et 17 h |
+| 大约 | vers | Venez vers 15 h. |
+| 几点以前/以后 | avant/après | avant midi, après 18 h |
+| 从某时起 | dès / à partir de | dès 8 h, à partir de lundi |
+| 直到 | jusqu'à | jusqu'à 22 h |
+
+`entre` 与 `et` 搭配：`entre 9 h et 10 h`；`de` 与 `à` 搭配：`de 9 h à 10 h`。
+
+#### 上午、下午、晚上
+
+| 表达 | 例句 |
+|---|---|
+| du matin | à huit heures du matin |
+| de l'après-midi | à trois heures de l'après-midi |
+| du soir | à huit heures du soir |
+
+采用 24 小时制时通常不再补 `du matin/du soir`：`20 h` 已经明确。
+
+#### 时间排版
+
+法国正式排版常写 `9 h 30`，数字与 `h` 之间、`h` 与分钟之间留空格；不必写 `9:30` 或 `9h30`。界面、电子设备和国际系统可能使用冒号，正文内保持一种格式即可。
+
 ### 29.8 时长和频率
+
+#### 六个高频时长表达
+
+| 表达 | 核心意义 | 例句 |
+|---|---|---|
+| depuis | 从过去持续到参照点 | J'habite ici depuis trois ans. |
+| pendant | 一个有界时段 | J'ai travaillé pendant trois heures. |
+| pour | 计划、预定时长 | Je pars à Lyon pour trois jours. |
+| en | 完成某事所需时间 | J'ai terminé le travail en trois heures. |
+| dans | 从现在起多久以后 | Je partirai dans trois heures. |
+| il y a | 距今多久以前 | Je suis arrivé il y a trois heures. |
+
+#### depuis 的时态
+
+| 参照点 | 例句 |
+|---|---|
+| 持续到现在 | Je travaille ici depuis 2020. |
+| 持续到过去某时 | Je travaillais depuis deux heures quand il a appelé. |
+| ça fait...que | Ça fait trois ans que j'habite ici. |
+| il y avait...que | Cela faisait trois ans que j'habitais là. |
+
+动作仍持续时，法语通常用现在时加 `depuis`，不照英语使用完成时。
+
+#### pendant、pour、en、dans
+
+| 例句 | 含义对比 |
+|---|---|
+| J'ai lu pendant deux heures. | 阅读持续了两小时，不说明是否读完 |
+| J'ai lu ce livre en deux heures. | 两小时内读完了整本书 |
+| Je pars pour deux heures. | 计划离开两小时 |
+| Je pars dans deux heures. | 两小时以后出发 |
+
+`après deux heures` 表示“在某个两小时阶段之后”，通常需有参照内容：`Après deux heures de travail, nous avons fait une pause.` 单纯表示“从现在起两小时后”用 `dans deux heures`。
+
+#### 频率
+
+| 频率 | 表达 |
+|---|---|
+| 每天 | tous les jours / chaque jour |
+| 每周一次 | une fois par semaine |
+| 每月两次 | deux fois par mois |
+| 每隔一天 | tous les deux jours / un jour sur deux |
+| 经常/有时/很少 | souvent / parfois / rarement |
+| 每逢星期一 | le lundi / tous les lundis |
+| 一直 | tout le temps / constamment |
+
+`chaque` 后接单数：`chaque semaine`；`tous les` 后接复数：`toutes les semaines`。
+
 ### 29.9 电话号码和编号
+
+#### 法国电话号码
+
+法国本土号码通常写成五组两位数：
+
+`01 23 45 67 89`
+
+可读作：`zéro un, vingt-trois, quarante-cinq, soixante-sept, quatre-vingt-neuf`。为避免听错，也可以逐位读。
+
+| 情况 | 写法 | 说明 |
+|---|---|---|
+| 法国国内 | 01 23 45 67 89 | 保留开头 0 |
+| 国际格式 | +33 1 23 45 67 89 | 国家码 +33 后去掉国内 0 |
+| 口头确认 | Vous pouvez répéter chiffre par chiffre ? | 请求逐位重复 |
+
+`+33 (0)1...` 有时用于同时展示国内和国际形式，但实际从国外拨号时括号中的 `0` 不拨。
+
+#### 逐位读与分组读
+
+| 类型 | 常见读法 |
+|---|---|
+| 电话号码 | 两位分组或逐位 |
+| 邮编 | 可整体或分组：75005 |
+| 验证码、密码 | 通常逐位 |
+| 房间号、航班号 | 按机构习惯整体或逐位 |
+| 小数和精密数据 | 小数点后优先逐位，避免歧义 |
+
+口头核对可用 `chiffre par chiffre`（逐位）、`deux fois le même chiffre` 或 `double zéro`。不要默认所有数字都按普通数量读。
+
+#### 地址和编号
+
+| 场景 | 表达 |
+|---|---|
+| 门牌地址 | 15, rue Victor-Hugo |
+| 邮编城市 | 75005 Paris |
+| 房间 | la chambre 204 |
+| 公交线路 | le bus 42 / la ligne 4 |
+| 页码 | à la page 80 |
+| 章节 | au chapitre 3 |
+| 楼层 | au troisième étage |
+| 底层 | au rez-de-chaussée |
+
+法国的 `premier étage` 通常是 `rez-de-chaussée` 上面的一层；与把地面层称作 first floor 的地区交流时要确认。
+
 ### 29.10 小数、分数、百分比
+
+#### 小数
+
+法语正文使用小数逗号 `virgule`。
+
+| 数字 | 读法 |
+|---|---|
+| 0,5 | zéro virgule cinq |
+| 1,25 | un virgule vingt-cinq / un virgule deux cinq |
+| 3,14 | trois virgule quatorze |
+| 12,007 | douze virgule zéro zéro sept |
+
+普通数值可把小数部分作为一个数读；测量值、代码或精度重要的数据宜逐位读，避免 `1,15` 与 `1,05` 混淆。
+
+| 法语格式 | 英语环境常见格式 | 含义 |
+|---|---|---|
+| 1 234,56 | 1,234.56 | 一千二百三十四点五六 |
+| 0,001 | 0.001 | 千分之一 |
+
+电子表格、编程语言和国际数据库可能要求小数点。语言文本遵循法语格式，机器输入则遵循系统规定，不要未经确认互换。
+
+#### 分数
+
+| 分数 | 法语 | 例句 |
+|---|---|---|
+| 1/2 | un demi / la moitié | une demi-heure, la moitié du gâteau |
+| 1/3 | un tiers | un tiers des participants |
+| 2/3 | deux tiers | les deux tiers du budget |
+| 1/4 | un quart | un quart d'heure |
+| 3/4 | trois quarts | trois quarts de litre |
+| 1/5 | un cinquième | un cinquième de la population |
+| 3/10 | trois dixièmes | trois dixièmes de seconde |
+
+分母 2、3、4 有高频专用词 `demi, tiers, quart`；从 5 起通常用序数词。分子大于 1 时，作为名词的分母通常变复数：`deux tiers`、`trois quarts`、`cinq dixièmes`。
+
+#### 带分数的数量
+
+| 结构 | 例句 |
+|---|---|
+| 一又二分之一 | un et demi |
+| 一个半小时 | une heure et demie |
+| 两个半小时 | deux heures et demie |
+| 一公斤半 | un kilo et demi |
+| 两公斤半 | deux kilos et demi |
+
+名词后的 `demi` 只配合性别，不加复数 `s`。
+
+#### 百分比
+
+| 数值 | 读法 |
+|---|---|
+| 1 % | un pour cent |
+| 20 % | vingt pour cent |
+| 0,5 % | zéro virgule cinq pour cent |
+| 100 % | cent pour cent |
+
+`pour cent` 分写并保持不变；普通名词 `pourcentage` 则正常变化：`un faible pourcentage`、`plusieurs pourcentages`。
+
+| 结构 | 例句 |
+|---|---|
+| 占……百分比 | 20 % des clients |
+| 税率/比例为 | un taux de 20 % |
+| 增加百分之五 | augmenter de 5 % |
+| 从 20% 升至 25% | passer de 20 % à 25 % |
+| 增加五个百分点 | augmenter de 5 points de pourcentage |
+
+从 20 % 到 25 % 是增加 `5 points de pourcentage`，相对增幅则是 25 %；两者不要混写。
+
+#### 比率、范围和简单运算
+
+| 内容 | 表达 |
+|---|---|
+| 二比一 | deux contre un / deux pour un |
+| 三人中有一人 | une personne sur trois |
+| 10% 到 15% | de 10 % à 15 % / entre 10 % et 15 % |
+| 2 + 3 = 5 | deux plus trois égale cinq / font cinq |
+| 6 - 2 = 4 | six moins deux égale quatre |
+| 3 × 4 = 12 | trois fois quatre égale douze |
+| 12 ÷ 3 = 4 | douze divisé par trois égale quatre |
+| 10² | dix au carré |
+| 10³ | dix au cube |
+| 10⁶ | dix puissance six |
+
+与时间范围相同，`entre` 配 `et`，`de` 配 `à`：不能混成 `entre 10 % à 15 %`。
+
 ### 29.11 货币表达
+
+#### euro 与 centime
+
+| 金额 | 读法 |
+|---|---|
+| 1 € | un euro |
+| 2 € | deux euros |
+| 0,50 € | cinquante centimes |
+| 10,50 € | dix euros cinquante / dix euros et cinquante centimes |
+| 1 250 € | mille deux cent cinquante euros |
+
+`euro` 作为普通名词有复数 `euros`，但符号 `€` 不变化。欧元的官方细分单位名可见 `cent`，法语日常和一般文本通常说 `centime`，可避免与数字 `cent` 混淆。
+
+#### 金额排版
+
+| 推荐格式 | 说明 |
+|---|---|
+| 10 € | 货币符号置于数值后并留空格 |
+| 10,50 € | 使用小数逗号 |
+| 1 250,00 € | 千位用空格分组 |
+| 10 $ US | 需要时标明美元种类 |
+| 100 CHF | 使用货币代码可避免符号歧义 |
+
+在法语正文中避免英语式 `€10`、`1,250.00 €`。财务系统、发票软件可能有固定模板，应优先遵循机构格式。
+
+#### 大额金额
+
+| 数量 | 表达 |
+|---|---|
+| 1 000 € | mille euros |
+| 1 000 000 € | un million d'euros |
+| 1 500 000 € | un million et demi d'euros / 1,5 million d'euros |
+| 2 000 000 € | deux millions d'euros |
+| 3 000 000 000 € | trois milliards d'euros |
+
+`mille` 后直接接 `euros`；`million/milliard` 是名词，后接 `d'euros`。按传统数的配合，绝对值小于 2 时名词保持单数：`1,5 million`。
+
+#### 其他货币
+
+| 货币 | 单复数示例 |
+|---|---|
+| dollar américain | un dollar américain / deux dollars américains |
+| franc suisse | un franc suisse / cent francs suisses |
+| livre sterling | une livre sterling / dix livres sterling |
+| yen | un yen / mille yens |
+| yuan | un yuan / cent yuans |
+
+货币代码 `USD, CHF, GBP, JPY, CNY` 不加复数词尾。跨国合同和报价宜同时给出代码，避免 `$` 指美元、加元或其他货币的歧义。
+
+#### 价格、付款与找零
+
+| 功能 | 例句 |
+|---|---|
+| 询价 | Combien ça coûte ? / Quel est le prix ? |
+| 报价 | Ça coûte 25 euros. / Le prix est de 25 euros. |
+| 单价 | trois euros le kilo / 2 euros pièce |
+| 付款 | payer en espèces / par carte / par virement |
+| 找零 | rendre la monnaie |
+| 换开钱 | faire de la monnaie |
+| 币种 | payer en euros / convertir en francs suisses |
+
+`monnaie` 可表示货币或找零，`devise` 常指外币或币种，`espèces` 表示现金。
+
 ### 29.12 度量单位、温度、尺寸
+
+#### 数值与单位符号
+
+| 规则 | 正确 | 避免 |
+|---|---|---|
+| 数字与单位间留空格 | 5 km | 5km |
+| 单位符号不加复数 s | 10 kg | 10 kgs |
+| 单位符号通常不加句点 | 20 cm | 20 cm. |
+| 小数用逗号 | 1,5 L | 1.5 L |
+| 摄氏温度留空格 | 20 °C | 20°C |
+
+单位全称是普通名词，要按数量配合；单位符号是国际符号，保持不变。
+
+#### 高频单位
+
+| 类别 | 全称 | 符号 | 例句/读法 |
+|---|---|---|---|
+| 长度 | millimètre, centimètre, mètre, kilomètre | mm, cm, m, km | 5 km = cinq kilomètres |
+| 质量 | milligramme, gramme, kilogramme, tonne | mg, g, kg, t | 500 g = cinq cents grammes |
+| 容量 | millilitre, centilitre, litre | mL, cL, L | 1,5 L = un litre et demi |
+| 面积 | mètre carré, hectare | m², ha | 20 m² = vingt mètres carrés |
+| 体积 | mètre cube | m³ | 3 m³ = trois mètres cubes |
+| 温度 | degré Celsius | °C | 20 °C = vingt degrés Celsius |
+| 速度 | kilomètre par heure | km/h | 90 km/h = quatre-vingt-dix kilomètres à l'heure |
+
+符号大小写有意义：`m` 是米，`L` 是升；不要自行添加复数或改变字母。
+
+#### 小数数量的名词单复数
+
+传统规范以 2 为复数起点：
+
+| 数量 | 全称写法 |
+|---|---|
+| 0,5 | zéro virgule cinq litre |
+| 1 | un litre |
+| 1,5 | un litre et demi / 1,5 litre |
+| 2 | deux litres |
+| 2,5 | deux litres et demi / 2,5 litres |
+
+实际技术文本常直接使用不变符号 `0,5 L`、`1,5 L`，最简洁也最不易产生单复数争议。
+
+#### 尺寸
+
+| 功能 | 表达 |
+|---|---|
+| 长三米 | mesurer trois mètres de long |
+| 宽两米 | mesurer deux mètres de large |
+| 高一米半 | mesurer un mètre et demi de haut |
+| 三米乘两米 | mesurer 3 m sur 2 m |
+| 长宽高 | 3 m × 2 m × 1,5 m（L × l × h） |
+| 面积二十平方米 | avoir une superficie de 20 m² |
+
+形容尺寸可用 `de long/de large/de haut/de profondeur`；名词形式为 `longueur, largeur, hauteur, profondeur`。
+
+#### 温度
+
+| 场景 | 表达 |
+|---|---|
+| 气温 20 度 | Il fait 20 degrés. |
+| 温度是 20°C | La température est de 20 °C. |
+| 零下 5 度 | Il fait moins cinq degrés. |
+| 零上/零下 | au-dessus / au-dessous de zéro |
+| 水温达到 25°C | L'eau atteint 25 °C. |
+
+天气气温通常用 `il fait`，测量对象的温度用 `être de/atteindre`，不说 `Il est 20 degrés`。
+
+#### 单价、速度和密度
+
+| 数值 | 读法 |
+|---|---|
+| 3 €/kg | trois euros le kilo / par kilogramme |
+| 90 km/h | quatre-vingt-dix kilomètres à l'heure |
+| 20 hab./km² | vingt habitants par kilomètre carré |
+| 5 L/100 km | cinq litres aux cent kilomètres |
+
+`par` 表每单位比率，日常单价也常用定冠词：`deux euros le litre`。
+
 ### 29.13 数字常见错误速查
+
+| 错误 | 正确 | 原因 |
+|---|---|---|
+| dix et sept | dix-sept | 17 不用 et |
+| vingt et deux | vingt-deux | 22 不用 et |
+| soixante-onze | soixante et onze | 71 在传统拼写中有 et |
+| quatre-vingt et un | quatre-vingt-un | 81 不用 et |
+| quatre-vingts-un | quatre-vingt-un | 后有其他数，vingt 不加 s |
+| deux cents trois | deux cent trois | 后有其他数，cent 不加 s |
+| deux milles personnes | deux mille personnes | mille 始终不加 s |
+| un mille personnes | mille personnes | 数词 mille 前通常不用 un |
+| deux million d'euros | deux millions d'euros | million 是可数名词 |
+| deux millions personnes | deux millions de personnes | million 后用 de |
+| le 1 mai | le 1er mai | 每月第一天用 premier |
+| le deuxième mai | le 2 mai | 其余日期使用基数词 |
+| le 5 Mai | le 5 mai | 月份通常小写 |
+| Je viendrai le lundi.（某个星期一） | Je viendrai lundi. | 具体星期不用定冠词 |
+| Je viens lundi.（每逢星期一） | Je viens le lundi. | 重复习惯用 le |
+| en printemps | au printemps | 春季固定用 au |
+| au été | en été | 夏季固定用 en |
+| à 2026 | en 2026 | 年份前用 en |
+| les 1990s | les années 1990 | 法语年代格式 |
+| Il est une heures. | Il est une heure. | 1 后名词单数 |
+| Il est deux heure. | Il est deux heures. | 2 后名词复数 |
+| deux heures et demi | deux heures et demie | demi 与 heure 配合性别 |
+| midi et demie | midi et demi | midi 是阳性 |
+| Le train part à 9h30. | Le train part à 9 h 30. | 正式时间排版留空格 |
+| entre 9 h à 10 h | entre 9 h et 10 h | entre 与 et 搭配 |
+| J'habite ici pendant trois ans.（仍住在这里） | J'habite ici depuis trois ans. | 持续至今用 depuis |
+| Je partirai après deux heures.（从现在计时） | Je partirai dans deux heures. | “多久以后”用 dans |
+| J'ai fini ce travail pendant deux heures. | J'ai fini ce travail en deux heures. | 表完成所需时间用 en |
+| 从国外拨 +33 01... | 拨 +33 1... | 国家码后去掉国内前导 0 |
+| 3.14（法语正文） | 3,14 | 法语使用小数逗号 |
+| trois quart | trois quarts | 分子大于 1，分母名词复数 |
+| vingt pour cents | vingt pour cent | pour cent 分写且不变 |
+| 从 20 % 到 25 %，增加 5 % | 增加 5 points de pourcentage | 百分点与相对百分比不同 |
+| €10 | 10 € | 法语货币符号通常后置 |
+| 1 euros | 1 euro | 1 后名词单数 |
+| deux millions euros | deux millions d'euros | million 后用 de |
+| payer avec espèces | payer en espèces | 固定介词 en |
+| 5 kms | 5 km | 单位符号不加复数 s |
+| 20°C | 20 °C | 数值与温标符号间留空格 |
+| 10 kg. | 10 kg | 单位符号不加句点 |
+| 1.5 L（法语正文） | 1,5 L | 法语使用小数逗号 |
+| trois mètre carré | trois mètres carrés | 单位全称正常变复数 |
+| Il est 20 degrés. | Il fait 20 degrés. | 天气温度用 il fait |
+| entre 10 % à 15 % | entre 10 % et 15 % | entre 与 et 搭配 |
+
+#### 最终检查流程
+
+1. 先确定数字是在计数，还是充当日期、页码、年份、电话等标识符。
+2. 拼写数词时检查 `et`、连字符以及 `vingt/cent/mille` 的复数规则。
+3. 日期检查日/月顺序、每月 `1er`、月份小写和正确介词。
+4. 时间检查 `heure(s)`、`demi/demie`、介词及 `9 h 30` 的排版。
+5. 时长根据“持续至今、完整时段、完成耗时、多久以后”选择 `depuis/pendant/en/dans`。
+6. 小数使用逗号，金额和单位符号放在数字后并保留空格。
+7. 最后确认百分比与百分点、单位全称与符号、国内号码与国际号码没有混用。
 
 ## 30. 语体、礼貌与实际会话句型（Registre, politesse et interaction）
 
+一句话可以语法完全正确，却因场合、关系或媒介不合适而显得生硬、失礼或做作。法语语体选择主要取决于四项：说话双方的关系、权力与距离、交流目的、口头或书面媒介。本章把这些条件和可直接使用的表达对应起来。
+
 ### 30.1 语体层级总览
+
+#### 常用层级
+
+| 语体 | 法语名称 | 典型场景 | 主要特征 |
+|---|---|---|---|
+| 正式/雅语 | soutenu | 公文、演讲、文学、郑重通信 | 词汇精确，完整否定，复杂句式，常用倒装或名词化 |
+| 中性标准语 | courant / standard | 工作、学校、新闻、陌生人交流 | 规范但自然，适用范围最广 |
+| 熟人语 | familier | 朋友、家人、随意消息 | 口语缩略、ne 省略、ça/on、高频口语词 |
+| 大众口语 | populaire | 强烈口语身份或社会语域 | 非标准构造、地方或群体特征明显 |
+| 粗俗语 | vulgaire | 强烈情绪、冒犯或群体内部表达 | 粗口、禁忌词；跨关系使用风险高 |
+
+学习者首先要稳定掌握 `courant/standard`。它既不会像过度正式语那样产生距离，也不会像熟人语那样依赖关系和场景。
+
+#### 同一意图的语体梯度
+
+| 意图 | 正式 | 中性 | 熟人 |
+|---|---|---|---|
+| 不理解 | Je ne saisis pas votre raisonnement. | Je ne comprends pas. | Je comprends pas. |
+| 询问来不来 | Viendrez-vous ? | Est-ce que vous viendrez ? | Tu viens ? |
+| 请求等待 | Je vous prie de bien vouloir patienter. | Pouvez-vous patienter un instant, s'il vous plaît ? | Attends deux secondes. |
+| 表示不知道 | Je l'ignore. | Je ne sais pas. | J'sais pas. |
+| 表示离开 | Je dois vous quitter. | Je dois partir. | Faut que j'y aille. |
+
+`familier` 不等于“更地道”，`soutenu` 也不等于“更高级”。最自然的表达是与场合匹配的表达。
+
+#### 语体信号
+
+| 维度 | 正式/标准 | 熟人口语 |
+|---|---|---|
+| 否定 | Je ne sais pas. | Je sais pas. |
+| 疑问 | Pourriez-vous préciser ? | Tu peux préciser ? |
+| 主语 | Nous allons commencer. | On va commencer. |
+| 指示 | Cela dépend. | Ça dépend. |
+| 连接 | cependant, par conséquent | mais, donc, du coup |
+| 词汇 | véhicule, résider, acquérir | voiture, habiter, acheter |
+| 句子 | 从属关系明确、成分完整 | 省略、重复、话题前置较多 |
+
+#### 场景选择
+
+| 场景 | 默认选择 | 可调整条件 |
+|---|---|---|
+| 初次联系陌生人 | vous + 中性标准语 | 对方主动改用 tu |
+| 客户、行政机构 | vous + 中性偏正式 | 长期合作后可变得较自然 |
+| 同事内部 | 依组织文化，先观察 | 团队明确使用 tu/on |
+| 教师与学生 | 依年龄、地区和机构 | 不要凭另一语言习惯推断 |
+| 朋友、同龄熟人 | tu + 中性或熟人语 | 严肃议题可提升正式度 |
+| 公开文章 | 标准或正式书面语 | 品牌、论坛、社交媒体可更口语化 |
+
+#### 保持语体一致
+
+同一句或同一封邮件中突然从郑重结构跳到强口语，会产生割裂：
+
+| 不协调 | 协调改写 |
+|---|---|
+| Je vous prie de bien vouloir répondre, ça serait cool. | Je vous prie de bien vouloir répondre. |
+| Salut Monsieur Dupont, veuillez agréer mes salutations distinguées. | Bonjour Monsieur Dupont, cordialement. |
+| Nous procéderons à l'examen du dossier et on vous tient au courant. | Nous examinerons le dossier et nous vous tiendrons au courant. |
+
+语体一致不要求所有词都同样正式，而是称呼、句法、词汇和结尾不能相互冲突。
+
 ### 30.2 tu / vous
+
+#### 基本功能
+
+| 代词 | 功能 | 动词形式 |
+|---|---|---|
+| tu | 单数、亲近或明确采用熟人称呼 | 第二人称单数：tu viens |
+| vous | 复数，不论关系 | 第二人称复数：vous venez |
+| vous | 单数礼貌、距离或制度关系 | 仍用第二人称复数：vous venez |
+
+`vous` 不只是“尊称”，也可能单纯表示多人。判断形容词和过去分词时还要看实际所指者。
+
+#### 单数礼貌 vous 的配合
+
+| 所指者 | 例句 |
+|---|---|
+| 一位男性 | Monsieur, vous êtes arrivé en avance. |
+| 一位女性 | Madame, vous êtes arrivée en avance. |
+| 多位男性或混合群体 | Vous êtes arrivés en avance. |
+| 多位女性 | Mesdames, vous êtes arrivées en avance. |
+
+动词始终是复数形式 `êtes`，但形容词、过去分词按实际性数配合。
+
+#### 限定词和命令式转换
+
+| tu 系列 | vous 系列 |
+|---|---|
+| ton nom / ta carte / tes documents | votre nom / votre carte / vos documents |
+| Tu peux entrer. | Vous pouvez entrer. |
+| Entre. | Entrez. |
+| Assieds-toi. | Asseyez-vous. |
+| Ne t'inquiète pas. | Ne vous inquiétez pas. |
+
+从 `tu` 切换到 `vous` 时，主语、反身代词、物主限定词和命令式词尾必须一起改变。
+
+#### 选择 tu 还是 vous
+
+| 因素 | 更倾向 tu | 更倾向 vous |
+|---|---|---|
+| 关系 | 家人、朋友、双方已熟悉 | 初次见面、关系疏远 |
+| 场合 | 私下、休闲、团队内部约定 | 客户服务、行政、正式场合 |
+| 年龄与组织文化 | 同龄年轻人、明确扁平文化 | 年龄差距、等级或传统机构 |
+| 互动信号 | 对方先使用 tu 或提出互称 tu | 对方持续使用 vous |
+
+这些只是倾向，不是跨地区、职业和代际都固定的规则。无法判断时先用 `vous`，再跟随对方明确的选择。
+
+#### 提议互称 tu
+
+| 功能 | 表达 |
+|---|---|
+| 可以互称 tu 吗？ | On peut se tutoyer ? |
+| 我们互称 tu 吧。 | On peut se dire tu. |
+| 你可以对我用 tu。 | Vous pouvez me tutoyer. |
+| 我更习惯用 vous。 | Je préfère qu'on se vouvoie, si cela ne vous dérange pas. |
+
+动词 `tutoyer` 表示对某人用 `tu`，`vouvoyer` 表示用 `vous`。
+
+#### 称呼
+
+| 场景 | 自然形式 |
+|---|---|
+| 不知道姓名 | Bonjour Madame. / Bonjour Monsieur. |
+| 知道姓氏 | Bonjour Madame Martin. / Monsieur Dupont, ... |
+| 正式信函未知收件人 | Madame, Monsieur, |
+| 熟人 | Bonjour Claire. / Salut Paul. |
+| 职衔重要 | Docteur, Maître, Madame la Directrice 等，依行业习惯 |
+
+`Monsieur/Madame + 姓氏` 是一般模式；不要从英语机械复制 `Mr./Mrs. + 名`。称呼规范受行业和地区影响，已知对方自我介绍方式时优先跟随。
+
 ### 30.3 on / nous
+
+#### on 表示“我们”
+
+现代口语中，`on` 经常替代主语 `nous`；正式书面语通常保留 `nous`。
+
+| 中性书面 | 日常口语 |
+|---|---|
+| Nous allons commencer. | On va commencer. |
+| Nous avons terminé. | On a terminé. |
+| Nous nous retrouvons à huit heures. | On se retrouve à huit heures. |
+| Nous prendrons le train. | On prendra le train. |
+
+`on` 无论指几个人，变位动词始终是第三人称单数：`on est, on a, on va, on fait`。
+
+#### 形容词和过去分词
+
+`on` 明确等于“我们”时，表语和使用 `être` 的过去分词可按实际所指者配合。
+
+| 群体 | 例句 |
+|---|---|
+| 两位或多位男性/混合 | On est prêts. / On est partis. |
+| 两位或多位女性 | On est prêtes. / On est parties. |
+| 性别不明确的泛指 | Quand on est fatigué, on se repose. |
+
+在仅表示不特定人的泛指用法中，传统书写通常采用阳性单数表语。
+
+#### on 对应的其他代词和物主词
+
+| 功能 | on = nous | 例句 |
+|---|---|---|
+| 反身 | se | On se prépare. |
+| 物主 | notre/nos | On a oublié nos billets. |
+| 重读地点 | chez nous | On se retrouve chez nous. |
+| 泛指反身重读 | soi | On doit avoir confiance en soi. |
+
+不要写 `on avons`、`on nous prépare`（想表达“我们做准备”时）或 `on a oublié ses billets`（明确指“我们的票”时）。
+
+#### on 的其他功能
+
+| 功能 | 例句 | 近似含义 |
+|---|---|---|
+| 泛指任何人 | On ne peut pas tout prévoir. | 人们/任何人 |
+| 未知施事 | On a volé mon vélo. | 有人偷了…… |
+| 避免指出施事 | On a décidé de reporter la réunion. | 已决定…… |
+| 被动替代 | On parle français ici. | 这里说法语 |
+
+正式文本若需要明确责任主体，应写出 `le comité a décidé`，不要用 `on` 隐去关键施事。
+
+#### nous, on 与 l'on
+
+| 形式 | 用法 |
+|---|---|
+| nous | 正式书面、强调群体身份、与 vous 对比 |
+| on | 中性口语、泛指、未知施事 |
+| nous, on... | 口语话题强调：Nous, on préfère partir tôt. |
+| l'on | 书面语中为节奏或避免元音相接：si l'on, lorsque l'on |
+
+`l'on` 中的 `l'` 没有冠词意义，是书面润音形式；不是必须形式，也不应在全文机械替换所有 `on`。
+
 ### 30.4 口语省略和书面标准形式
+
+口语有稳定规律，但录音中的形式不等于正式书写形式。需要先识别，再按媒介决定是否保留。
+
+#### 高频转换
+
+| 熟人口语 | 中性/正式书写 | 变化 |
+|---|---|---|
+| Je sais pas. | Je ne sais pas. | 恢复 ne |
+| Y a un problème. | Il y a un problème. | 恢复 il |
+| T'as compris ? | Tu as compris ? | 恢复 tu + 元音 |
+| J'suis prêt. | Je suis prêt. | 恢复 je |
+| Faut partir. | Il faut partir. | 恢复非人称 il |
+| C'est pas possible. | Ce n'est pas possible. | cela/ce 框架 + ne |
+| On va y aller. | Nous allons y aller. | on -> nous，依书面需求 |
+| Qu'est-ce qu'il fait ? | Que fait-il ? / Qu'est-ce qu'il fait ? | 正式倒装可选 |
+| Tu viens quand ? | Quand est-ce que tu viens ? | 疑问词回到句首 |
+| J'ai que dix euros. | Je n'ai que dix euros. | 恢复限制结构 ne...que |
+
+`T'as`、`J'suis` 常用于对白、聊天或刻意记录发音，不是一般正式文本的拼写。
+
+#### ne 的省略
+
+| 场景 | 建议 |
+|---|---|
+| 日常口语 | `Je sais pas` 很常见 |
+| 工作会话 | 可省略，但完整形式更稳妥 |
+| 正式发言 | 通常保留 `ne` |
+| 邮件、报告、论文 | 保留 `ne` |
+| 小说对白 | 按人物语体决定 |
+
+省略 `ne` 后仍需保留 `pas/plus/jamais/rien/personne/que` 等核心标记：`Je vois rien` 是熟人口语，标准写作改为 `Je ne vois rien`。
+
+#### 口语疑问
+
+| 类型 | 例句 | 语体 |
+|---|---|---|
+| 陈述语序 + 语调 | Tu viens ? | 熟人/中性口语 |
+| 疑问词后置 | Tu viens quand ? | 日常口语 |
+| est-ce que | Quand est-ce que tu viens ? | 中性、稳定 |
+| 倒装 | Quand viens-tu ? | 正式或精练书面 |
+
+倒装不是所有礼貌场景的必需品；`Est-ce que vous pouvez... ?` 在服务和工作场合完全自然。
+
+#### 话题前置与重复
+
+口语常先提出话题，再用代词接回：
+
+| 口语自然表达 | 紧凑书面表达 |
+|---|---|
+| Ce livre, je l'ai déjà lu. | J'ai déjà lu ce livre. |
+| Paul, il vient demain. | Paul vient demain. |
+| Moi, je ne suis pas d'accord. | Pour ma part, je ne suis pas d'accord. |
+
+这种“名词 + 代词”在口语中有强调或组织信息的作用，不应一概当作错误；正式写作通常删去无功能重复。
+
+#### 填充语和话语标记
+
+| 形式 | 常见功能 | 正式替代/处理 |
+|---|---|---|
+| euh | 思考停顿 | 书面删除 |
+| ben / bah | 回应、犹豫、反驳 | eh bien 或删除 |
+| enfin | 修正、总结、缓和 | enfin / plus précisément，按含义 |
+| quoi | 句末强化或收束 | 书面删除或明确结论 |
+| du coup | 口语结果/承接 | donc, par conséquent, ainsi |
+| en fait | 修正预期、补充实情 | en réalité, plus précisément |
+
+填充语本身不是错误，但连续重复会削弱信息结构。正式转写应保留意义，删除纯停顿。
+
 ### 30.5 礼貌请求
+
+礼貌不仅靠 `s'il vous plaît`，还靠请求结构、条件式、理由、时间边界和给对方选择空间。
+
+#### 请求强度梯度
+
+| 形式 | 例句 | 常见效果 |
+|---|---|---|
+| 直接命令 | Envoyez-moi le document. | 清楚但有指令感，适合职责明确或紧急场景 |
+| 命令 + 礼貌词 | Envoyez-moi le document, s'il vous plaît. | 礼貌但仍直接 |
+| pouvoir 现在时 | Pouvez-vous m'envoyer le document ? | 中性工作请求 |
+| pouvoir 条件式 | Pourriez-vous m'envoyer le document ? | 更缓和、最通用 |
+| 非人称条件式 | Serait-il possible de m'envoyer le document ? | 较正式，降低对人的直接压力 |
+| 能力/安排询问 | Auriez-vous la possibilité de me l'envoyer ? | 很缓和，适合协商 |
+| 郑重公文 | Je vous prie de bien vouloir me transmettre le document. | 正式、距离感强 |
+
+大多数陌生人和工作场景可直接使用 `Pourriez-vous..., s'il vous plaît ?`。过度叠加缓和成分会显得冗长：`Serait-il éventuellement possible, si cela ne vous dérange pas, de peut-être...` 应删减。
+
+#### 请求行动与请求许可
+
+| 意图 | 中性 | 更正式 |
+|---|---|---|
+| 请对方做事 | Pouvez-vous fermer la porte ? | Pourriez-vous fermer la porte ? |
+| 自己能否做事 | Est-ce que je peux entrer ? | Puis-je entrer ? |
+| 征求同意 | Ça vous convient si je viens à dix heures ? | Cela vous conviendrait-il si je venais à dix heures ? |
+| 请求使用物品 | Je peux utiliser cette chaise ? | Pourrais-je utiliser cette chaise ? |
+
+`Pouvez-vous... ?` 形式上问能力，实际常是请求；`Puis-je... ?` 问的是说话者自己的许可。
+
+#### 餐馆、商店和服务场景
+
+| 过于直接或不自然 | 自然表达 |
+|---|---|
+| Je veux un café. | Je voudrais un café, s'il vous plaît. |
+| Donnez-moi l'addition. | L'addition, s'il vous plaît. / Pourrais-je avoir l'addition ? |
+| Où sont les toilettes ? | Excusez-moi, où sont les toilettes, s'il vous plaît ? |
+| Répétez. | Pourriez-vous répéter, s'il vous plaît ? |
+| Parlez plus lentement. | Pourriez-vous parler un peu plus lentement ? |
+
+`Je veux` 语法正确，但在接受服务时常显得像宣告要求；`je voudrais/j'aimerais` 更自然。
+
+#### 给出理由和期限
+
+| 功能 | 例句 |
+|---|---|
+| 简短理由 | Pourriez-vous répondre aujourd'hui ? Nous devons finaliser le dossier demain. |
+| 明确期限 | Pourriez-vous me l'envoyer avant vendredi à 17 h ? |
+| 询问可行性 | Cette échéance vous paraît-elle réaliste ? |
+| 提供替代 | Si vendredi n'est pas possible, lundi matin conviendrait également. |
+| 表明紧急 | Il s'agit d'une demande urgente en raison de... |
+
+模糊地写 `dès que possible` 容易导致双方预期不同；有实际期限时直接给出日期和时间。
+
+#### veuillez 与 merci de
+
+| 结构 | 典型用途 | 例句 |
+|---|---|---|
+| veuillez + infinitif | 公告、表格、公文指示 | Veuillez signer à la dernière page. |
+| merci de + infinitif | 简短提示或预先感谢，也可能有指令感 | Merci de fermer la porte. |
+| je vous remercie de bien vouloir | 正式请求 | Je vous remercie de bien vouloir confirmer votre présence. |
+
+`Veuillez` 和 `Merci de` 并不一定比疑问句更温和；它们常预设对方会执行。协商性请求宜用 `Pourriez-vous... ?`。
+
+#### 接受、拒绝和协商请求
+
+| 功能 | 表达 |
+|---|---|
+| 接受 | Bien sûr. / Avec plaisir. / Oui, c'est possible. |
+| 确认行动 | Je vous l'envoie avant midi. |
+| 需要时间 | Je vais vérifier et je reviens vers vous cet après-midi. |
+| 礼貌拒绝 | Je suis désolé, mais ce ne sera pas possible. |
+| 说明限制 | Malheureusement, je ne suis pas disponible à cette heure-là. |
+| 提供替代 | En revanche, je peux vous proposer jeudi matin. |
+| 请求澄清 | Pourriez-vous préciser ce dont vous avez besoin ? |
+
+只说 `Non` 在信息上足够，在协作场景中却常过硬；简短原因加替代方案更有效。
+
 ### 30.6 感谢、道歉、同意、不同意
+
+#### 感谢
+
+| 程度/场景 | 表达 |
+|---|---|
+| 简短 | Merci. / Merci beaucoup. |
+| 指明事项 | Merci pour votre aide. / Merci de votre réponse. |
+| 感谢已完成动作 | Merci d'avoir répondu si rapidement. |
+| 正式 | Je vous remercie pour votre aide. / Je vous remercie de votre réponse. |
+| 强调 | Je vous en remercie sincèrement. |
+| 预先感谢 | Je vous remercie par avance de votre retour. |
+
+`merci pour + nom` 很自然；`merci de + nom/infinitif passé` 也常见。`merci de + infinitif présent` 可能表示要求：`Merci de patienter` 是“请稍候”，不是感谢已经等候。
+
+#### 回应感谢
+
+| 表达 | 语体 |
+|---|---|
+| Je vous en prie. | 中性礼貌 |
+| Avec plaisir. | 友好、中性 |
+| De rien. | 中性日常 |
+| Pas de problème. / Pas de souci. | 较口语 |
+| Tout le plaisir est pour moi. | 较郑重 |
+
+#### 道歉和引起注意
+
+| 场景 | 表达 |
+|---|---|
+| 轻微碰撞、打断 | Pardon. / Excusez-moi. |
+| 请求让路 | Excusez-moi, je peux passer ? |
+| 承认失误 | Je suis désolé(e) pour cette erreur. |
+| 对造成的情况道歉 | Je suis désolé(e) que vous ayez dû attendre. |
+| 正式道歉 | Veuillez nous excuser pour ce retard. |
+| 强调承担责任 | Toutes mes excuses. C'est une erreur de ma part. |
+| 请求原谅 | Je vous prie de m'excuser. |
+
+`Je m'excuse` 在现代口语中很常见，但有时会被理解为“我自己原谅自己”。需要郑重时优先用 `Je vous prie de m'excuser`、`Veuillez m'excuser` 或 `Je suis désolé(e)`。
+
+#### 同意
+
+| 程度 | 表达 |
+|---|---|
+| 简单同意 | D'accord. / Oui. |
+| 强烈同意 | Tout à fait. / Absolument. / Exactement. |
+| 同意某人 | Je suis d'accord avec vous. |
+| 同意某点 | Je suis d'accord sur ce point. |
+| 同意做某事 | Je suis d'accord pour reporter la réunion. |
+| 正式认同 | Je partage votre analyse / votre avis. |
+
+固定结构是 `être d'accord avec qqn`、`sur qqch`、`pour + infinitif`。
+
+#### 不同意与缓和
+
+| 强度 | 表达 |
+|---|---|
+| 温和保留 | Je ne suis pas tout à fait convaincu(e). |
+| 提出另一视角 | On pourrait aussi considérer que... |
+| 部分同意 | Je suis d'accord sur le principe, mais... |
+| 明确不同意 | Je ne partage pas cet avis. |
+| 正式反驳 | Cette conclusion ne me paraît pas suffisamment étayée. |
+| 强烈但仍礼貌 | Je ne peux pas être d'accord avec cette proposition. |
+
+`Je ne pense pas que ce soit la meilleure solution` 中，否定的 `penser que` 通常引出虚拟式。先承认对方观点再指出分歧，常比直接说 `Vous avez tort` 更适合合作场景。
+
+#### 回应否定疑问
+
+| 问句 | 肯定相反事实 | 否定确认 |
+|---|---|---|
+| Tu ne viens pas ? | Si, je viens. | Non, je ne viens pas. |
+| Vous n'avez pas reçu le message ? | Si, je l'ai reçu. | Non, je ne l'ai pas reçu. |
+
+`si` 专门反驳否定预设，相当于“不是，我确实……”。
+
+#### 请求澄清和确认理解
+
+| 功能 | 表达 |
+|---|---|
+| 没听清 | Excusez-moi, je n'ai pas bien entendu. |
+| 没理解 | Je ne suis pas sûr(e) d'avoir bien compris. |
+| 请求重复 | Pourriez-vous répéter ? |
+| 请求改述 | Pourriez-vous reformuler ce point ? |
+| 核对 | Si j'ai bien compris, vous proposez de... |
+| 确认词义 | Qu'entendez-vous exactement par ce terme ? |
+
+与其假装理解，不如用一句复述确认；这在电话、会议和行政场景尤其重要。
+
 ### 30.7 电话、邮件、会议常用句型
+
+#### 接打电话
+
+| 环节 | 表达 |
+|---|---|
+| 接听私人电话 | Allô ? |
+| 接听工作电话 | Société X, bonjour. Marie Dupont à l'appareil. |
+| 自我介绍 | Bonjour, Paul Martin à l'appareil. |
+| 找人 | Pourrais-je parler à Madame Leroy, s'il vous plaît ? |
+| 询问来电者 | Puis-je savoir qui est à l'appareil ? |
+| 请稍候 | Ne quittez pas, s'il vous plaît. |
+| 转接 | Je vous passe le service concerné. |
+| 对方不在 | Elle n'est pas disponible pour le moment. |
+| 留言 | Voulez-vous laisser un message ? |
+| 请求回电 | Pourriez-vous lui demander de me rappeler ? |
+| 线路问题 | Je vous entends mal. / La communication a été coupée. |
+| 打错号码 | Je suis désolé, ce n'est pas le bon numéro. |
+| 结束 | Merci de votre appel. Bonne journée, au revoir. |
+
+`Allô` 主要用于电话接通，不作为面对面问候。工作电话先报机构或姓名，可减少对方反复确认。
+
+#### 电话中拼写和核对
+
+| 功能 | 表达 |
+|---|---|
+| 请拼写 | Pourriez-vous épeler votre nom ? |
+| 逐位读 | Pouvez-vous me donner le numéro chiffre par chiffre ? |
+| 核对 | Je vous confirme : 06 12 34 56 78, c'est bien cela ? |
+| 没听清数字 | Vous avez dit quinze ou cinquante ? |
+| 重复邮件地址 | Je répète votre adresse électronique : ... |
+
+#### 职业邮件结构
+
+| 部分 | 常用表达 |
+|---|---|
+| 主题 | Objet : Confirmation de rendez-vous |
+| 已知姓名问候 | Bonjour Madame Dupont, / Monsieur Martin, |
+| 未知收件人 | Madame, Monsieur, |
+| 说明目的 | Je vous contacte au sujet de... |
+| 承接往来 | À la suite de notre échange... / Comme convenu... |
+| 提出请求 | Pourriez-vous me confirmer que... ? |
+| 发送附件 | Vous trouverez en pièce jointe le document demandé. |
+| 表示可联系 | Je reste à votre disposition pour toute précision. |
+| 普通职业结尾 | Cordialement, / Bien cordialement, |
+| 郑重结尾 | Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées. |
+
+#### 邮件语体搭配
+
+| 开头 | 正文 | 结尾 |
+|---|---|---|
+| Salut Claire, | 熟人语、tu | À bientôt, / Bonne journée, |
+| Bonjour Paul, | 中性、依关系用 tu 或 vous | Bien à toi / Bien cordialement |
+| Bonjour Madame Dupont, | 中性职业语、vous | Cordialement, |
+| Madame, Monsieur, | 正式完整句、vous | 郑重结尾公式 |
+
+不要把 `Salut` 与公文式 `Je vous prie d'agréer...` 混用。`Merci d'avance` 简洁但可能产生催促感；涉及对方额外劳动时，可写具体请求并说明期限和理由。
+
+#### 简洁职业邮件模板
+
+> Bonjour Madame Dupont,
+>
+> Je vous contacte au sujet de la réunion prévue le 8 septembre. Pourriez-vous me confirmer l'horaire avant jeudi, s'il vous plaît ?
+>
+> Je vous remercie par avance de votre réponse.
+>
+> Bien cordialement,
+>
+> Paul Martin
+
+一封有效邮件通常只需“来意、所需行动、期限、必要背景”。礼貌不等于堆叠长公式。
+
+#### 会议开始与组织议程
+
+| 功能 | 表达 |
+|---|---|
+| 开始 | Si tout le monde est prêt, nous pouvons commencer. |
+| 说明目的 | L'objectif de cette réunion est de... |
+| 列议程 | Nous avons trois points à examiner. |
+| 转入下一项 | Passons au point suivant. |
+| 控制时间 | Il nous reste dix minutes. |
+| 暂缓 | Je propose de reporter ce point à la prochaine réunion. |
+| 总结 | Pour résumer, nous avons décidé de... |
+| 明确行动 | Paul enverra le document avant vendredi. |
+
+#### 发言、打断和澄清
+
+| 功能 | 表达 |
+|---|---|
+| 请求发言 | Je voudrais ajouter un point. |
+| 礼貌打断 | Excusez-moi de vous interrompre, mais... |
+| 返回主题 | Pour revenir à la question principale... |
+| 邀请意见 | Qu'en pensez-vous ? / Avez-vous des remarques ? |
+| 请求具体化 | Pourriez-vous donner un exemple concret ? |
+| 确认决定 | Sommes-nous d'accord pour retenir cette option ? |
+| 表示未决定 | Ce point reste à trancher. |
+
+#### 线上会议
+
+| 情况 | 表达 |
+|---|---|
+| 确认声音 | Vous m'entendez bien ? |
+| 麦克风静音 | Votre micro est coupé. |
+| 声音中断 | Le son coupe. / Je vous entends par intermittence. |
+| 共享屏幕 | Je vais partager mon écran. |
+| 看不到内容 | Le document ne s'affiche pas. |
+| 暂时离开 | Je dois m'absenter deux minutes. |
+
+会议结束前应把决定、负责人和期限说成完整句，避免只以 `On verra` 结束而没有可执行结论。
+
 ### 30.8 学术和正式写作常用连接
+
+正式写作的核心不是使用最长的词，而是让论点、证据、限制和结论之间的关系明确。连接词必须服务于逻辑，不能替代逻辑。
+
+#### 组织结构
+
+| 功能 | 中性正式表达 | 示例 |
+|---|---|---|
+| 引入主题 | cette section examine / il s'agit de | Cette section examine les effets de la réforme. |
+| 宣布结构 | dans un premier temps... puis... | Dans un premier temps, nous définirons les termes. |
+| 第一、第二、最后 | premièrement, deuxièmement, enfin | Premièrement, les données restent limitées. |
+| 转入下一点 | en ce qui concerne / quant à | Quant aux coûts, ils ont augmenté. |
+| 总结 | en somme, en conclusion, pour résumer | En somme, les deux méthodes sont complémentaires. |
+
+`d'abord, ensuite, enfin` 适用于大多数说明文；不必为了显得正式而把每段都写成 `premièrement/deuxièmement/troisièmement`。
+
+#### 逻辑关系
+
+| 关系 | 正式/中性连接 | 例句 |
+|---|---|---|
+| 添加 | de plus, en outre, par ailleurs | En outre, cette méthode réduit les coûts. |
+| 对比 | en revanche, à l'inverse, tandis que | La première méthode est rapide ; en revanche, elle est coûteuse. |
+| 转折 | cependant, néanmoins, toutefois | Les résultats sont encourageants ; toutefois, ils restent provisoires. |
+| 原因 | car, puisque, dans la mesure où | Cette option est préférable dans la mesure où elle limite les risques. |
+| 解释/佐证 | en effet | Cette hypothèse paraît plausible ; en effet, plusieurs études la confirment. |
+| 结果 | donc, ainsi, par conséquent, de ce fait | Les données sont incomplètes ; par conséquent, aucune conclusion définitive n'est possible. |
+| 让步 | certes...mais, bien que, malgré | Certes, l'échantillon est réduit, mais la tendance est nette. |
+| 举例 | par exemple, notamment, en particulier | Plusieurs secteurs, notamment l'énergie, sont concernés. |
+| 改述 | autrement dit, en d'autres termes | Autrement dit, la mesure reporte le coût. |
+| 限定 | dans une certaine mesure, sous réserve de | Ces résultats sont valables sous réserve de vérifications supplémentaires. |
+
+`par contre` 在现代法语中很常见且并非语法错误；非常正式的文本常偏好 `en revanche`。`du coup` 适合口语承接，报告和论文中通常改为具体的因果连接词。
+
+#### 让步结构不要混用
+
+| 结构 | 语式/词类 | 例句 |
+|---|---|---|
+| malgré + nom | 名词短语 | Malgré les difficultés, le projet continue. |
+| bien que + subjonctif | 虚拟式从句 | Bien que les données soient limitées, ... |
+| même si + indicatif | 直陈式从句 | Même si les données sont limitées, ... |
+| en dépit de + nom | 正式名词短语 | En dépit de ces limites, ... |
+
+不能写 `malgré que les données sont...` 作为普通标准结构；改用 `malgré les données...` 或 `bien que...soient`。
+
+#### 引用观点和证据
+
+| 功能 | 表达 |
+|---|---|
+| 中性归属 | Selon Dupont, ... / D'après cette étude, ... |
+| 报告结论 | L'étude montre / indique / révèle que... |
+| 强调作者行为 | Dupont souligne / observe / affirme que... |
+| 从资料得出 | Il ressort de ces données que... |
+| 与观点保持距离 | L'auteur avance l'hypothèse que... |
+| 交叉支持 | Ces résultats concordent avec ceux de... |
+| 指出冲突 | Cette conclusion contredit les observations de... |
+
+`affirmer` 的确信程度高于 `suggérer`；`prétendre` 可能暗示不信任。报告他人观点时，动词选择本身就是立场标记。
+
+#### 谨慎表达结论
+
+| 过强 | 更严谨 |
+|---|---|
+| Cette étude prouve que... | Cette étude montre / suggère que... |
+| Il est certain que... | Il est probable / possible que... |
+| Tous les utilisateurs préfèrent... | La majorité des participants interrogés préfèrent... |
+| Cette méthode est la meilleure. | Cette méthode paraît la plus adaptée dans ce contexte. |
+| X cause Y. | X est associé à Y.（若只有相关证据） |
+
+常用缓和工具包括 `sembler, paraître, pouvoir, probablement, dans ce contexte, selon les données disponibles`。缓和不是逃避结论，而是让结论强度与证据匹配。
+
+#### 非人称、主动和被动
+
+| 形式 | 适用场景 | 例句 |
+|---|---|---|
+| nous + 动词 | 明确作者行动 | Nous analyserons trois hypothèses. |
+| 本文/研究作主语 | 聚焦文本贡献 | Cette étude compare deux méthodes. |
+| 非人称 il | 提出必要或观察 | Il convient de distinguer ces deux cas. |
+| 被动态 | 施事未知或不重要 | Les données ont été recueillies en 2025. |
+
+不要为了“正式”而把所有句子改成被动或名词化。`Nous avons analysé les données` 往往比 `Une analyse des données a été effectuée par nos soins` 更清楚。
+
+#### 段落骨架
+
+一个实用段落可按以下顺序组织：
+
+1. 主题句：本段要证明或说明什么。
+2. 证据或例子：数据、来源、观察。
+3. 分析：证据如何支持主题句。
+4. 限制或反例：结论在哪些条件下成立。
+5. 过渡句：与下一段的关系。
+
+连接词应出现在真正存在逻辑转折或因果的地方。每句都以 `De plus/Cependant/Donc` 开头，会让文本显得机械。
+
+#### 高频假朋友连接词
+
+| 法语词 | 实际常见义 | 不是英语中的 |
+|---|---|---|
+| actuellement | 目前 | actually（事实上） |
+| éventuellement | 可能、必要时 | eventually（最终） |
+| finalement | 最终、结果 | finally 也可对应，但须看语境 |
+| en effet | 的确、因为/解释如下 | 并非所有 in fact |
+| en fait | 实际上、准确地说 | 可对应 actually/in fact |
+
 ### 30.9 避免过度直译的表达
+
+#### 身体状态和年龄：常用 avoir
+
+| 直译错误 | 自然法语 |
+|---|---|
+| Je suis vingt ans. | J'ai vingt ans. |
+| Je suis faim / soif. | J'ai faim / soif. |
+| Je suis chaud / froid. | J'ai chaud / froid. |
+| Je suis peur. | J'ai peur. |
+| Je suis besoin de partir. | J'ai besoin de partir. |
+| Je suis raison. | J'ai raison. |
+| Je suis sommeil. | J'ai sommeil. |
+
+`être chaud` 可以描述物体温度，也可能对人产生与“感到热”完全不同的含义；表达体感用 `avoir chaud`。
+
+#### 高频动词支配
+
+| 错误/直译 | 正确搭配 |
+|---|---|
+| demander une question | poser une question |
+| demander quelqu'un une question | poser une question à quelqu'un |
+| répondre quelqu'un | répondre à quelqu'un |
+| attendre pour quelqu'un | attendre quelqu'un |
+| chercher pour mes clés | chercher mes clés |
+| contacter avec Paul | contacter Paul / prendre contact avec Paul |
+| aider à Paul | aider Paul |
+| écouter la radio / entendre un bruit | 主动听 écouter；听见 entendre |
+| regarder un film / voir un accident | 主动看 regarder；看见 voir |
+| discuter sur le problème | discuter du problème |
+| dépendre sur | dépendre de |
+| épouser avec Paul | épouser Paul / se marier avec Paul |
+| entrer la pièce | entrer dans la pièce |
+
+动词后是否有介词是词汇支配的一部分，不能按另一语言逐词补 `to/for/with/about`。
+
+#### 常用固定表达
+
+| 直译 | 自然表达 |
+|---|---|
+| faire une décision | prendre une décision |
+| faire un risque | prendre un risque |
+| ouvrir/fermer la lumière | allumer/éteindre la lumière |
+| retourner maison | rentrer à la maison / retourner à la maison |
+| introduire moi-même | me présenter |
+| faire du sens | avoir du sens |
+| prendre attention | faire attention |
+| avoir une douche | prendre une douche |
+| donner un examen（参加考试） | passer un examen |
+| prendre un examen（出题/监考） | faire passer un examen |
+| prendre une promenade | faire une promenade / se promener |
+
+`faire du sens` 在部分地区和受英语影响的用法中可见；面向法国标准书面语时优先用 `avoir du sens`。
+
+#### manquer 的方向
+
+| 法语 | 字面结构 | 中文含义 |
+|---|---|---|
+| Tu me manques. | 你使我感到缺失 | 我想你 |
+| Mes amis me manquent. | 我的朋友们使我感到缺失 | 我想念朋友们 |
+| Il me manque un document. | 对我来说缺一个文件 | 我还缺一份文件 |
+| J'ai manqué le train. | 我错过了火车 | 我没赶上火车 |
+| Je manque de temps. | 我缺少时间 | 我时间不足 |
+
+不要把英语 *I miss you* 的主宾顺序直接复制成 `Je te manque`；后者表示“你想我”。
+
+#### savoir 与 connaître
+
+| savoir | connaître |
+|---|---|
+| 知道事实：Je sais qu'il vient. | 认识人：Je connais Paul. |
+| 会做：Je sais nager. | 熟悉地点/作品：Je connais Paris. |
+| 知道答案：Je sais la réponse. | 对某领域有了解：Je connais bien ce sujet. |
+
+`Je sais Paul`、`Je connais nager` 都不成立。
+
+#### c'est 与 il/elle est
+
+| 结构 | 例句 |
+|---|---|
+| c'est + 限定名词 | C'est un médecin compétent. |
+| il/elle est + 无冠词职业/国籍/形容词 | Elle est médecin. / Elle est française. |
+| c'est + 专名/重读代词 | C'est Marie. / C'est moi. |
+| il/elle 指已知对象 + 形容词 | Elle est très compétente. |
+
+不能说 `Elle est une médecin` 来单纯说明职业；有修饰或分类意义时可说 `Elle est une médecin reconnue`，更自然的介绍仍常是 `C'est une médecin reconnue`。
+
+#### 冠词和泛指
+
+| 直译错误 | 自然表达 |
+|---|---|
+| J'aime café. | J'aime le café. |
+| Internet change société. | Internet change la société. |
+| Je suis un étudiant.（只报身份） | Je suis étudiant. |
+| C'est professeur. | C'est un professeur. |
+| Je vais à travail. | Je vais au travail. |
+
+法语名词通常需要限定词；职业作 `être` 的表语时又常使用零冠词。这两条必须同时掌握。
+
+#### 高频假朋友
+
+| 法语词 | 实际含义 | 容易误解为 |
+|---|---|---|
+| actuellement | 目前 | actually |
+| éventuellement | 可能、必要时 | eventually |
+| assister à | 出席、观看；`assister qqn` 可在正式语中表示协助 | assist 的所有用法 |
+| librairie | 书店 | library 图书馆 |
+| bibliothèque | 图书馆/书柜 | bookstore |
+| location | 租赁 | location 地点 |
+| sensible | 敏感的 | sensible 明智的 |
+| déception | 失望 | deception 欺骗 |
+| supporter | 忍受；支持球队 | support 人或论点（常用 soutenir） |
+| prévenir | 通知、警告；预防 | prevent（阻止常用 empêcher） |
+| réaliser | 完成、实现；现代也可表意识到 | 英语 realize 的所有场景 |
+
+表达“意识到”时 `se rendre compte de/que` 最稳定：`Je me suis rendu compte de mon erreur.`
+
+#### 副词和语序
+
+| 错误 | 正确 |
+|---|---|
+| J'aime très ce film. | J'aime beaucoup ce film. |
+| Je très aime ce film. | J'aime beaucoup ce film. |
+| Il parle français bien. | Il parle bien français. |
+| C'est beaucoup intéressant. | C'est très intéressant. |
+| Je pense oui. | Je pense que oui. |
+
+`très` 修饰形容词或副词，`beaucoup` 常修饰动词或比较级：`très utile`、`j'aime beaucoup`、`beaucoup plus clair`。
+
+#### 时间表达
+
+| 目标含义 | 错误 | 正确 |
+|---|---|---|
+| 已住三年且仍在住 | J'habite ici pendant trois ans. | J'habite ici depuis trois ans. |
+| 三年前到达 | Je suis arrivé depuis trois ans. | Je suis arrivé il y a trois ans. |
+| 三小时后出发 | Je pars après trois heures. | Je pars dans trois heures. |
+| 两小时完成 | J'ai fini pendant deux heures. | J'ai fini en deux heures. |
+
 ### 30.10 语体常见错误速查
+
+| 不合适或错误 | 推荐表达 | 原因/场景 |
+|---|---|---|
+| Salut Monsieur Dupont, veuillez agréer... | Bonjour Monsieur Dupont, cordialement. | 开头与结尾语体冲突 |
+| Tu pouvez envoyer votre dossier ? | Tu peux envoyer ton dossier ? | tu 系列必须一致 |
+| Vous peux signer ici ? | Vous pouvez signer ici ? | vous 用第二人称复数动词 |
+| Madame, vous êtes arrivé. | Madame, vous êtes arrivée. | 单数礼貌 vous 按实际性别配合 |
+| On sommes prêts. | On est prêts. | on 的动词第三人称单数 |
+| On a oublié ses billets.（on = nous） | On a oublié nos billets. | 物主关系是“我们的” |
+| Nous, on va commencer.（正式报告） | Nous allons commencer. | 删除口语话题重复 |
+| J'ai pas reçu le document.（正式邮件） | Je n'ai pas reçu le document. | 正式书写保留 ne |
+| Y a un problème.（正式文本） | Il y a un problème. | 恢复非人称 il |
+| Faut répondre avant lundi.（公文） | Il faut répondre avant lundi. | 恢复形式主语 |
+| Je veux un café.（服务场景） | Je voudrais un café, s'il vous plaît. | 条件式请求更自然 |
+| Pouvez-vous de répéter ? | Pouvez-vous répéter ? | pouvoir 后直接接不定式 |
+| Pourriez-vous m'envoyez le fichier ? | Pourriez-vous m'envoyer le fichier ? | 情态动词后用不定式 |
+| Si vous pourriez répondre... | Si vous pouviez répondre... / Pourriez-vous répondre... ? | 条件 si 后不用条件式 |
+| Merci pour répondre. | Merci de répondre. / Merci d'avoir répondu. | merci + de + infinitif |
+| Je suis d'accord de reporter. | Je suis d'accord pour reporter. | être d'accord pour + infinitif |
+| Je suis d'accord à vous. | Je suis d'accord avec vous. | 与某人意见一致用 avec |
+| Pardon pour vous interrompre. | Pardon de vous interrompre. | pardon de + infinitif |
+| Tu ne viens pas ? Oui, je viens. | Si, je viens. | 反驳否定问句用 si |
+| Allô, Madame !（面对面） | Bonjour Madame. | allô 用于电话 |
+| Je veux parler avec Madame Leroy. | Je voudrais parler à Madame Leroy. | 电话请求 + parler à |
+| Vous avez fait un mauvais numéro. | Ce n'est pas le bon numéro. | 更自然的电话表达 |
+| Ci-joint vous trouvez le document. | Vous trouverez le document en pièce jointe. | 避免直译语序 |
+| Je reste à votre disposition si vous avez des questions ? | ...si vous avez des questions. | 陈述句用句号 |
+| Malgré il pleut, nous sortons. | Malgré la pluie, nous sortons. | malgré 后接名词 |
+| Bien qu'il est tard... | Bien qu'il soit tard... | bien que + subjonctif |
+| Même s'il soit tard... | Même s'il est tard... | même si + indicatif |
+| Les données sont limitées, du coup...（论文） | ...par conséquent / de ce fait... | 用正式因果连接 |
+| Actuellement, je suis d'accord.（想说“其实”） | En fait, je suis d'accord. | actuellement = 目前 |
+| Éventuellement, il a accepté.（想说“最终”） | Finalement, il a accepté. | éventuellement = 可能 |
+| Je suis vingt ans. | J'ai vingt ans. | 年龄用 avoir |
+| Je suis chaud.（我觉得热） | J'ai chaud. | 体感用 avoir |
+| Je suis besoin d'aide. | J'ai besoin d'aide. | 固定结构 avoir besoin de |
+| Je te manque.（我想你） | Tu me manques. | manquer 的主宾方向相反 |
+| Je demande une question. | Je pose une question. | 固定搭配 poser une question |
+| J'attends pour Paul. | J'attends Paul. | attendre 直接支配宾语 |
+| Je cherche pour mes clés. | Je cherche mes clés. | chercher 直接支配宾语 |
+| Je contacte avec Paul. | Je contacte Paul. | contacter 直接支配宾语 |
+| Je discute sur ce problème. | Je discute de ce problème. | discuter de |
+| Cela fait du sens. | Cela a du sens. | 法国标准语优先用 avoir du sens |
+| J'ai fait une décision. | J'ai pris une décision. | 固定搭配 prendre une décision |
+| J'ai ouvert la lumière. | J'ai allumé la lumière. | 灯光用 allumer/éteindre |
+| Je vais introduire moi-même. | Je vais me présenter. | 自我介绍用 se présenter |
+| J'ai assisté à la réunion.（想说“协助会议”） | J'ai aidé à organiser la réunion. | assister à = 出席；协助要明确对象或行动 |
+| Je vais à la librairie pour emprunter un livre. | Je vais à la bibliothèque... | librairie 是书店 |
+| Je sais bien Paris. | Je connais bien Paris. | 熟悉人地点用 connaître |
+| Elle est une médecin.（只报职业） | Elle est médecin. | 职业表语通常零冠词 |
+| C'est médecin. | C'est un médecin. | c'est + 名词需要限定词 |
+| J'aime café. | J'aime le café. | 类别泛指用定冠词 |
+| J'aime très ce livre. | J'aime beaucoup ce livre. | beaucoup 修饰动词 |
+| C'est beaucoup utile. | C'est très utile. | très 修饰形容词 |
+| Je suis arrivé depuis trois ans. | Je suis arrivé il y a trois ans. | 已完成动作的“以前”用 il y a |
+
+#### 最终检查流程
+
+1. 先确定关系、场合和媒介，选择 `tu/vous` 及语体层级。
+2. 检查主语、动词、反身代词和物主词是否随 `tu/vous/on/nous` 一致变化。
+3. 正式书写恢复 `ne, il, je/tu` 等口语中可省略的成分。
+4. 请求中确认谁执行动作、是否需要条件式、期限是否明确。
+5. 邮件和电话检查称呼、来意、行动要求、结尾是否处于同一语体。
+6. 正式论证检查连接词是否表达真实逻辑，结论强度是否超过证据。
+7. 最后逐项排查另一语言带来的介词、冠词、词序、固定搭配和假朋友。
 
 ## 31. 固定搭配、常用结构与习语（Collocations, locutions et structures）
 
+固定搭配应作为完整语法单位学习。知道单词 `attention` 不等于会说 `faire attention à`；知道 `compte` 也不能自动推出 `tenir compte de`、`rendre compte de` 和 `se rendre compte de` 的差别。本章以“词组 + 支配结构 + 典型语境”为最小单位。
+
 ### 31.1 固定搭配总览
+
+#### 五类词块
+
+| 类型 | 特征 | 例子 |
+|---|---|---|
+| 搭配 `collocation` | 词义可理解，但词语组合有习惯选择 | prendre une décision, forte pluie |
+| 动词短语 `locution verbale` | 整体承担一个动词意义 | avoir lieu, faire face à |
+| 介词短语 `locution prépositive` | 多词共同充当介词 | en raison de, à partir de |
+| 句型 `structure` | 保留固定骨架，可替换槽位 | il faut + infinitif / que + subjonctif |
+| 习语 `expression idiomatique` | 整体义不能完全逐词推出 | coûter les yeux de la tête |
+
+#### 固定程度
+
+| 固定程度 | 例子 | 学习重点 |
+|---|---|---|
+| 高度固定 | avoir lieu | 不能随意把 avoir 换成 faire |
+| 半固定 | prendre une décision importante | 核心动词固定，名词可带修饰 |
+| 构式化 | rendre qqch + adjectif | 保留句法骨架，更换宾语和形容词 |
+| 自由组合 | lire un long document | 按普通词义和语法构成 |
+
+判断标准不是“能否理解”，而是母语使用者是否习惯这样组合。`faire une décision` 每个词都能理解，但标准搭配是 `prendre une décision`。
+
+#### 搭配条目必须记录什么
+
+| 信息 | 示例：tenir compte de qqch |
+|---|---|
+| 核心形式 | tenir compte de |
+| 宾语类型 | de + nom / pronom |
+| 代词替换 | en tenir compte |
+| 典型时态 | Nous en tiendrons compte. |
+| 否定 | Nous n'en avons pas tenu compte. |
+| 语体 | 中性、工作和正式写作都常用 |
+| 易混项 | se rendre compte de = 意识到 |
+
+只记中文“考虑”不够；必须同时记 `de` 和代词 `en`。
+
+#### 本章符号
+
+| 符号 | 含义 | 示例 |
+|---|---|---|
+| qqn | quelqu'un，某人 | aider qqn |
+| qqch | quelque chose，某事物 | tenir compte de qqch |
+| inf | infinitif，不定式 | décider de + inf |
+| que + ind. | que + indicatif | constater que... |
+| que + subj. | que + subjonctif | faire en sorte que... |
+
+#### 同一名词搭配不同动词
+
+| 名词 | 搭配 | 含义 |
+|---|---|---|
+| décision | prendre une décision | 作出决定 |
+| décision | appliquer/exécuter une décision | 执行决定 |
+| décision | annuler/contester une décision | 撤销/质疑决定 |
+| question | poser une question | 提问 |
+| question | soulever une question | 提出一个需要讨论的问题 |
+| question | aborder/examiner une question | 讨论/审视问题 |
+| attention | faire attention à | 小心、注意 |
+| attention | attirer l'attention sur | 使人注意某点 |
+| attention | prêter attention à | 留意、重视 |
+
+搭配体现的是事物之间的典型关系。学习名词时，应连同最常支配它的两三个动词一起记忆。
+
+#### 搭配选择流程
+
+1. 先确定要表达的动作或关系，而不是先翻译单个名词。
+2. 查明核心动词及固定介词。
+3. 确认名词是否需要冠词、是否有固定单复数。
+4. 检查宾语能否替换为 `le/lui/y/en`，以及代词应放在哪里。
+5. 最后检查语体：习语、熟人口语和正式搭配不能随意互换。
+
 ### 31.2 avoir 搭配
+
+#### 身体状态、感受和年龄
+
+| 搭配 | 含义 | 例句 |
+|---|---|---|
+| avoir faim / soif | 饿/渴 | J'ai faim. / Nous avons soif. |
+| avoir chaud / froid | 感到热/冷 | Elle a froid. |
+| avoir sommeil | 困 | Les enfants ont sommeil. |
+| avoir peur de | 害怕 | Il a peur de parler en public. |
+| avoir honte de | 羞愧 | Elle a honte de son comportement. |
+| avoir mal à | 某处疼 | J'ai mal à la tête. |
+| avoir ... ans | ……岁 | Il a trente ans. |
+| avoir bonne/mauvaise mine | 气色好/差 | Tu as bonne mine aujourd'hui. |
+
+`avoir mal à` 后的身体部位通常用定冠词并发生缩合：`au dos`、`à la gorge`、`aux yeux`。
+
+#### 需要、愿望和能力边界
+
+| 搭配 | 结构 | 例句 |
+|---|---|---|
+| avoir besoin de | de + nom / inf | J'ai besoin d'aide / de partir. |
+| avoir envie de | de + nom / inf | Elle a envie de voyager. |
+| avoir hâte de | de + inf | Nous avons hâte de vous revoir. |
+| avoir le temps de | de + inf | Je n'ai pas le temps de cuisiner. |
+| avoir l'occasion de | de + inf | J'ai eu l'occasion de le rencontrer. |
+| avoir la possibilité de | de + inf | Vous aurez la possibilité de modifier le dossier. |
+| avoir du mal à | à + inf | Il a du mal à se concentrer. |
+| avoir tendance à | à + inf | Elle a tendance à parler vite. |
+
+对比：`avoir besoin de` 表必要，`avoir envie de` 表愿望；`avoir du mal à faire` 表做某事困难，不是“做坏事”。
+
+#### 判断、态度和心理状态
+
+| 搭配 | 例句 |
+|---|---|
+| avoir raison / tort | Vous avez raison. / J'ai eu tort. |
+| avoir confiance en qqn/qqch | J'ai confiance en elle. |
+| avoir confiance dans + 制度/事物 | Nous avons confiance dans ce système. |
+| avoir un doute sur | J'ai un doute sur ce chiffre. |
+| avoir l'impression de/que | J'ai l'impression d'oublier quelque chose / qu'il pleut. |
+| avoir conscience de/que | Il a conscience du risque / que la situation est grave. |
+| avoir connaissance de | Avez-vous connaissance de ce document ? |
+| avoir peur que + subj. | J'ai peur qu'il soit trop tard. |
+
+`avoir peur de + infinitif` 通常主语相同：`J'ai peur de tomber`；主语不同时用 `avoir peur que + subjonctif`：`J'ai peur qu'il tombe`。
+
+#### 权利、机会和资源
+
+| 搭配 | 支配 | 例句 |
+|---|---|---|
+| avoir droit à | à + nom | Vous avez droit à un remboursement. |
+| avoir accès à | à + nom | Tous les étudiants ont accès à la plateforme. |
+| avoir recours à | à + nom | Nous avons recours à un spécialiste. |
+| avoir affaire à | à + nom/personne | Vous avez affaire à un problème complexe. |
+| avoir intérêt à | à + inf | Vous avez intérêt à conserver le reçu. |
+| avoir la chance de | de + inf | J'ai eu la chance de travailler avec elle. |
+
+`avoir intérêt à` 常带“最好这样做，否则可能不利”的意味；比单纯 `il est utile de` 更有劝告甚至警告色彩。
+
+#### 高频名词搭配
+
+| 搭配 | 例句 |
+|---|---|
+| avoir une idée | J'ai une idée. |
+| avoir un problème | Nous avons un problème technique. |
+| avoir une question | J'ai une question à vous poser. |
+| avoir un rendez-vous | Elle a rendez-vous à dix heures. |
+| avoir le choix | Vous avez le choix entre deux options. |
+| avoir de la chance | Tu as de la chance. |
+| avoir lieu | La réunion aura lieu lundi. |
+| avoir pour but/objectif de | Ce projet a pour objectif de réduire les coûts. |
+| avoir la responsabilité de | Il a la responsabilité de valider les comptes. |
+| avoir l'habitude de | Nous avons l'habitude de travailler ensemble. |
+
+`avoir une question` 表“有一个问题想问”，真正“提问”是 `poser une question`。
+
+#### 三个高频特殊结构
+
+| 结构 | 含义 | 例句 |
+|---|---|---|
+| avoir beau + inf | 尽管怎么做仍然…… | Il a beau essayer, il n'y arrive pas. |
+| avoir à + inf | 有……要做；较正式的必须 | J'ai un rapport à finir. / Vous aurez à justifier ce choix. |
+| n'avoir qu'à + inf | 只需；有时带不耐烦 | Vous n'avez qu'à cliquer ici. |
+
+`avoir beau` 后主句通常表达未达到预期结果。`n'avoir qu'à` 对陌生人使用可能显得把问题说得过于简单，应注意语气。
+
+#### avoir affaire à vs avoir à faire
+
+| 形式 | 含义 | 例句 |
+|---|---|---|
+| avoir affaire à | 面对、与……打交道 | Nous avons affaire à un expert. |
+| avoir à faire | 有事情要做 | J'ai beaucoup à faire aujourd'hui. |
+
+二者发音接近但结构不同；前者的固定名词是 `affaire`，后者是 `avoir à + faire`。
+
 ### 31.3 faire 搭配
+
+#### 日常活动
+
+| 搭配 | 含义/例句 |
+|---|---|
+| faire du sport / du yoga / du ski | 做运动、瑜伽、滑雪 |
+| faire de la musique / du piano | 从事音乐、弹钢琴 |
+| faire la cuisine | 做饭 |
+| faire le ménage | 打扫 |
+| faire la vaisselle | 洗餐具 |
+| faire les courses | 采购日用品 |
+| faire des études | 上大学、接受高等教育 |
+| faire une promenade / se promener | 散步 |
+| faire un voyage | 旅行 |
+| faire une pause | 休息一下 |
+
+活动名词前冠词是搭配的一部分：`faire du sport`、`faire la cuisine`、`faire les courses`，不能一律使用同一种冠词。
+
+#### 努力、错误和进展
+
+| 搭配 | 例句 |
+|---|---|
+| faire un effort | Il faut faire un effort. |
+| faire des progrès | Elle a fait beaucoup de progrès. |
+| faire une erreur / une faute | J'ai fait une erreur de calcul. |
+| faire un choix | Nous devons faire un choix. |
+| faire une tentative | Ils ont fait plusieurs tentatives. |
+| faire une proposition | Je voudrais faire une proposition. |
+| faire une remarque | Elle a fait une remarque pertinente. |
+| faire la différence | Son expérience a fait la différence. |
+
+`faire un choix` 和 `prendre une décision` 都成立，但前者聚焦选择选项，后者聚焦作出决定。
+
+#### 注意、信任和关系
+
+| 搭配 | 支配 | 例句 |
+|---|---|---|
+| faire attention à | à + nom / inf | Faites attention à la marche / à ne pas tomber. |
+| faire confiance à | à + qqn/qqch | Je fais confiance à cette équipe. |
+| faire partie de | de + 集合 | Elle fait partie du comité. |
+| faire face à | à + 困难 | Nous devons faire face à la crise. |
+| faire appel à | à + 人/资源 | Ils ont fait appel à un avocat. |
+| faire référence à | à + 内容 | Ce passage fait référence à la loi. |
+| faire connaissance avec | avec + qqn | J'ai fait connaissance avec mes voisins. |
+
+代词替换：`faire attention à cela -> y faire attention`；`faire appel à Paul -> faire appel à lui`，人称重读代词通常不能机械换成 `y`。
+
+#### 正式与工作搭配
+
+| 搭配 | 含义 | 例句 |
+|---|---|---|
+| faire preuve de | 表现出 | Elle a fait preuve de patience. |
+| faire état de | 提到、报告 | Le rapport fait état de plusieurs incidents. |
+| faire l'objet de | 成为……对象 | Le contrat fait l'objet d'une révision. |
+| faire le point sur | 梳理现状 | Faisons le point sur le projet. |
+| faire le lien entre | 建立联系 | L'étude fait le lien entre les deux facteurs. |
+| faire parvenir qqch à qqn | 送达 | Merci de me faire parvenir le formulaire. |
+| faire savoir à qqn que/si | 告知 | Faites-nous savoir si vous êtes disponible. |
+| faire en sorte de/que | 设法确保 | Faites en sorte de finir / que tout soit prêt. |
+
+`faire en sorte que` 后通常用虚拟式；同一主语、可直接控制的动作常用 `faire en sorte de + infinitif`。
+
+#### 天气、时间和测量
+
+| 结构 | 例句 |
+|---|---|
+| il fait beau / mauvais | Il fait beau aujourd'hui. |
+| il fait chaud / froid | Il fait très froid dehors. |
+| il fait 20 degrés | Il fait 20 degrés. |
+| il fait jour / nuit | Il fait déjà nuit. |
+| faire + 尺寸/重量（口语） | La table fait deux mètres de long. |
+| faire + 价格/总数（口语） | Ça fait vingt euros. |
+
+天气用非人称 `il fait`；人的体感用 `avoir chaud/froid`。
+
+#### faire + infinitif
+
+| 结构 | 含义 | 例句 |
+|---|---|---|
+| faire + inf | 使、让、安排 | Je fais réparer la voiture. |
+| faire + inf + à/par qqn | 说明执行者 | Je fais vérifier le texte par un collègue. |
+| se faire + inf | 让自己接受某动作/遭遇 | Elle s'est fait couper les cheveux. |
+
+使役结构的代词顺序和过去分词规则详见第 17、27 章；要把 `faire réparer` 当作一个动词链处理。
+
 ### 31.4 prendre / mettre / rendre / donner 搭配
+
+#### prendre：取得、承担、进入某状态
+
+| 搭配 | 含义 | 例句 |
+|---|---|---|
+| prendre une décision | 作决定 | Nous devons prendre une décision. |
+| prendre rendez-vous | 预约 | Je voudrais prendre rendez-vous avec le médecin. |
+| prendre des notes | 记笔记 | Prenez des notes pendant la réunion. |
+| prendre la parole | 发言 | Elle a pris la parole en premier. |
+| prendre position | 表明立场 | Le comité refuse de prendre position. |
+| prendre part à | 参加 | Cent personnes ont pris part au débat. |
+| prendre contact avec | 联系 | Prenez contact avec le service client. |
+| prendre soin de | 照顾；注意维护 | Prenez soin de vous / de ce matériel. |
+| prendre en compte | 考虑 | Il faut prendre en compte les coûts. |
+| prendre conscience de | 意识到 | Elle a pris conscience du danger. |
+| prendre connaissance de | 阅读并知悉 | J'ai pris connaissance de votre message. |
+| prendre en charge | 负责处理；承担费用 | Le service prend en charge le dossier. |
+
+`prendre conscience de` 是逐渐或突然意识到；`prendre connaissance de` 是通过阅读、告知等方式获知内容。
+
+| 其他高频搭配 | 例句 |
+|---|---|
+| prendre le temps de | Prenez le temps de relire le contrat. |
+| prendre l'habitude de | Il a pris l'habitude de marcher le matin. |
+| prendre goût à | Elle a pris goût à la lecture. |
+| prendre peur | Le cheval a pris peur. |
+| prendre fin | La réunion a pris fin à midi. |
+| prendre effet | La mesure prendra effet le 1er janvier. |
+| prendre la responsabilité de | Il a pris la responsabilité de l'équipe. |
+| s'y prendre | Je ne sais pas comment m'y prendre. |
+
+`s'y prendre` 表“采用某种方式着手处理”：`Comment faut-il s'y prendre ?`，其中 `y` 是固定成分，不能删除。
+
+#### mettre：放置、投入、使进入状态
+
+| 搭配 | 含义 | 例句 |
+|---|---|---|
+| mettre en place | 建立、部署 | Nous mettons en place un nouveau système. |
+| mettre en œuvre | 实施 | Le gouvernement met en œuvre la réforme. |
+| mettre au point | 研发、完善 | L'équipe a mis au point une méthode. |
+| mettre à jour | 更新 | Pensez à mettre le logiciel à jour. |
+| mettre en évidence | 突显、证明 | Les données mettent en évidence une différence. |
+| mettre en cause | 质疑；牵涉责任 | Le rapport met en cause la direction. |
+| remettre en question | 质疑、重新审视 | Cette découverte remet en question la théorie. |
+| mettre en danger | 使处于危险 | Cette décision met des emplois en danger. |
+| mettre en valeur | 突出价值 | Le graphique met en valeur la tendance. |
+| mettre en relation | 建立联系 | Je vais vous mettre en relation avec le service. |
+| mettre en commun | 汇集共享 | Nous avons mis nos ressources en commun. |
+| mettre à disposition | 提供使用 | Les documents sont mis à disposition du public. |
+
+`mise en place`、`mise en œuvre` 等名词形式同样高频：`la mise en œuvre du projet`。
+
+| 结构 | 例句 | 说明 |
+|---|---|---|
+| mettre du temps à + inf | Il a mis deux heures à répondre. | 花费时间才完成 |
+| se mettre à + inf | Elle s'est mise à rire. | 开始做某事 |
+| mettre fin à | Ils ont mis fin au contrat. | 主动终止 |
+| prendre fin | Le contrat a pris fin. | 事物结束 |
+| mettre qqn au courant de | Je vous mettrai au courant de la situation. | 让某人知情；持续通报常用 tenir au courant |
+
+`mettre quelqu'un au courant de la situation` 正确；持续“让某人了解进展”更常说 `tenir quelqu'un au courant`：`Tenez-moi au courant.`
+
+#### rendre：归还、使变得、履行社会行为
+
+| 搭配 | 含义 | 例句 |
+|---|---|---|
+| rendre qqch à qqn | 归还 | Rendez-moi mon livre. |
+| rendre qqch + adjectif | 使……变得 | Cette mesure rend le système plus simple. |
+| rendre possible/impossible | 使可能/不可能 | Internet rend ce travail possible. |
+| rendre public | 公布 | Le rapport sera rendu public demain. |
+| rendre service à | 帮忙 | Pouvez-vous me rendre un service ? |
+| rendre visite à | 拜访 | Nous rendons visite à nos voisins. |
+| rendre hommage à | 致敬 | La cérémonie rend hommage aux victimes. |
+| rendre justice à | 公正评价；还以公道 | Cette photo ne lui rend pas justice. |
+| rendre grâce à | 感谢、颂谢；较正式/宗教 | Ils ont rendu grâce à ceux qui les avaient aidés. |
+
+`visiter` 通常直接接地点：`visiter Paris/un musée`；拜访某人用 `rendre visite à Paul`，不是普通意义下的 `visiter Paul`。
+
+#### rendre compte 与 se rendre compte
+
+| 结构 | 含义 | 例句 |
+|---|---|---|
+| rendre compte de qqch à qqn | 向某人汇报 | Elle rend compte de ses travaux au directeur. |
+| rendre compte de qqch | 反映、说明 | Ce chiffre rend compte de la situation. |
+| se rendre compte de/que | 意识到 | Je me suis rendu compte de mon erreur / qu'il était tard. |
+
+`se rendre compte` 的复合时态写 `Elle s'est rendu compte`，`rendu` 不与主语配合，因为 `compte` 是后置 COD。
+
+#### se rendre à
+
+| 含义 | 例句 |
+|---|---|
+| 前往 | Je dois me rendre à la mairie. |
+| 投降 | Les soldats se sont rendus. |
+| 接受理由/证据 | Il s'est rendu à l'évidence. |
+
+前往某地的 `se rendre à` 比 `aller à` 更正式。
+
+#### donner：给予、引发、提供
+
+| 搭配 | 含义 | 例句 |
+|---|---|---|
+| donner un conseil | 给建议 | Elle m'a donné un bon conseil. |
+| donner son avis | 发表意见 | Chacun peut donner son avis. |
+| donner une réponse | 给出答复 | Nous vous donnerons une réponse demain. |
+| donner un exemple | 举例 | Pouvez-vous donner un exemple ? |
+| donner rendez-vous à | 与某人约定见面 | Il m'a donné rendez-vous devant la gare. |
+| donner un coup de main à | 帮一把 | Tu peux me donner un coup de main ? |
+| donner accès à | 使可访问 | Ce code donne accès au bâtiment. |
+| donner droit à | 使有权获得 | Ce billet donne droit à une réduction. |
+| donner envie à qqn de | 使某人想做 | Ce livre me donne envie de voyager. |
+| donner l'impression de/que | 给人……印象 | Il donne l'impression d'être calme. |
+| donner lieu à | 导致、引发 | Cette erreur a donné lieu à une enquête. |
+| donner naissance à | 产生；生育 | Le projet a donné naissance à une entreprise. |
+| donner suite à | 跟进、回应 | Nous donnerons suite à votre demande. |
+| donner sur | 朝向 | La fenêtre donne sur le jardin. |
+
+`donner raison/tort à qqn` 表认定某人正确/错误：`Le tribunal lui a donné raison.`
+
 ### 31.5 常用动词 + 名词搭配
+
+#### 沟通与论证
+
+| 动词 + 名词 | 含义 | 例句 |
+|---|---|---|
+| poser une question | 提问 | Elle a posé une question précise. |
+| apporter/fournir une réponse | 给出回答、解决方案 | Le rapport apporte une réponse partielle. |
+| formuler une demande | 提出正式请求 | Vous devez formuler votre demande par écrit. |
+| présenter un argument | 提出论点 | L'auteur présente trois arguments. |
+| avancer une hypothèse | 提出假设 | Les chercheurs avancent une nouvelle hypothèse. |
+| tirer une conclusion | 得出结论 | Il est trop tôt pour tirer une conclusion. |
+| émettre un avis / des réserves | 发表意见/保留意见 | Le comité a émis un avis favorable. |
+| exprimer un doute / une inquiétude | 表达疑虑/担忧 | Plusieurs experts ont exprimé des doutes. |
+| prononcer un discours | 发表演讲 | La présidente a prononcé un discours. |
+| tenir une réunion | 举行会议 | Le comité tiendra une réunion lundi. |
+
+#### 研究、调查和项目
+
+| 搭配 | 常见语境 |
+|---|---|
+| mener une étude / une enquête / une recherche | 组织并推进完整研究过程 |
+| effectuer/réaliser une analyse | 执行分析 |
+| recueillir des données / des témoignages | 收集数据/证词 |
+| analyser/interpréter des résultats | 分析/解释结果 |
+| vérifier une hypothèse | 验证假设 |
+| conduire un entretien / une négociation | 主持访谈/谈判 |
+| lancer / mener / achever un projet | 启动/推进/完成项目 |
+| atteindre un objectif | 达到目标 |
+| obtenir un résultat | 取得结果 |
+| respecter un délai / un budget | 遵守期限/预算 |
+
+`faire une recherche` 可用于一般“查找资料”，系统研究更常用 `mener des recherches`、`effectuer une recherche`。
+
+#### 行政、商业和法律
+
+| 搭配 | 例句 |
+|---|---|
+| déposer une demande / un dossier | Elle a déposé une demande de permis. |
+| déposer/présenter sa candidature | Vous pouvez déposer votre candidature en ligne. |
+| passer une commande | Nous avons passé une commande hier. |
+| conclure un contrat / un accord | Les parties ont conclu un accord. |
+| signer / résilier un contrat | Il souhaite résilier son contrat. |
+| souscrire un abonnement / une assurance | J'ai souscrit une assurance. |
+| remplir un formulaire / une condition | Remplissez ce formulaire. / Il remplit les conditions. |
+| satisfaire à une exigence | Le produit satisfait aux normes. |
+| respecter une règle / un engagement | Chacun doit respecter ses engagements. |
+| porter plainte contre qqn | Elle a porté plainte contre son employeur. |
+| commettre une infraction / un crime | Il a commis une infraction. |
+| subir un dommage / une perte | L'entreprise a subi de lourdes pertes. |
+
+注意 `satisfaire à une exigence`、`répondre à un critère` 中的 `à`；`remplir une condition` 则直接接宾语。
+
+#### 变化、成功和影响
+
+| 搭配 | 例句 |
+|---|---|
+| connaître une hausse / une baisse | Les prix ont connu une forte hausse. |
+| connaître un succès / des difficultés | Le produit connaît un grand succès. |
+| enregistrer une hausse / une perte | Le secteur a enregistré une baisse de 5 %. |
+| subir une pression / une transformation | L'organisation subit une forte pression. |
+| exercer une influence / une pression sur | Ce facteur exerce une influence sur les résultats. |
+| produire un effet / des résultats | La mesure a produit des effets inattendus. |
+| entraîner/provoquer une conséquence | La panne a entraîné un retard. |
+| remporter un succès / une victoire / un marché | L'équipe a remporté la victoire. |
+| essuyer un échec / un refus / des critiques | Le projet a essuyé un échec. |
+
+`connaître` 不只表示认识，也可与事件名词搭配，表示经历某种发展：`connaître une croissance rapide`。
+
+#### 动词选择不能只靠逐词翻译
+
+| 较笼统或不自然 | 更精确/典型的搭配 |
+|---|---|
+| faire une conclusion | tirer une conclusion |
+| faire une enquête（一般表达可成立） | mener une enquête（强调系统开展） |
+| faire un contrat | conclure/signer un contrat |
+| faire une plainte | porter plainte / déposer une plainte |
+| recevoir un succès | connaître/remporter un succès |
+| recevoir une perte | subir/essuyer une perte |
+
+不同动词突出不同阶段：`lancer une enquête` 是启动，`mener une enquête` 是开展，`clore une enquête` 是结束。
+
 ### 31.6 常用形容词 + 名词搭配
+
+#### 强度、规模与质量
+
+| 搭配 | 含义 |
+|---|---|
+| une forte pluie / demande / pression | 大雨、强劲需求、巨大压力 |
+| un vent fort / un fort accent | 强风、浓重口音 |
+| un grand nombre / une grande quantité | 大量 |
+| un large public / éventail / consensus | 广泛受众、范围、共识 |
+| une vaste région / enquête | 广大地区、大规模调查 |
+| un prix / niveau / risque élevé | 高价、高水平、高风险 |
+| un faible coût / taux / risque | 低成本、低比率、低风险 |
+| une haute qualité / précision | 高质量、高精度 |
+
+英语 *high* 不能一律译为 `haut`：通常说 `un prix élevé`、`une température élevée`，但说 `une haute qualité`。
+
+#### 评价与后果
+
+| 搭配 | 例句 |
+|---|---|
+| une grave erreur / crise | Il s'agit d'une grave erreur. |
+| de lourdes conséquences / pertes | La décision aura de lourdes conséquences. |
+| un problème majeur / complexe | C'est un problème majeur. |
+| une question délicate / centrale | Le financement reste une question délicate. |
+| une preuve solide | Nous disposons de preuves solides. |
+| un argument convaincant | Elle présente un argument convaincant. |
+| une nette amélioration | On observe une nette amélioration. |
+| un profond changement | La société connaît un profond changement. |
+| une vive inquiétude / réaction | Cette annonce suscite une vive inquiétude. |
+
+`gros problème` 在日常语中很自然；正式分析常根据意义选 `problème grave, majeur, complexe`，信息更准确。
+
+#### 关系与合作
+
+| 搭配 | 例句 |
+|---|---|
+| une étroite collaboration | Les équipes travaillent en étroite collaboration. |
+| un lien étroit avec/entre | Il existe un lien étroit entre ces facteurs. |
+| une relation directe / indirecte | Aucune relation directe n'est démontrée. |
+| un accord complet / partiel | Les parties sont parvenues à un accord partiel. |
+| une responsabilité partagée | Il s'agit d'une responsabilité partagée. |
+| un intérêt commun | Nous défendons un intérêt commun. |
+
+#### 副词 + 形容词/过去分词
+
+| 搭配 | 例句 |
+|---|---|
+| fortement recommandé / déconseillé | Cette option est fortement recommandée. |
+| étroitement lié à | Les deux phénomènes sont étroitement liés. |
+| largement utilisé / répandu | Cette méthode est largement utilisée. |
+| hautement qualifié / improbable | Nous recrutons du personnel hautement qualifié. |
+| profondément préoccupé / modifié | Le secteur a été profondément modifié. |
+| pleinement conscient / satisfait | Elle est pleinement consciente du risque. |
+| clairement défini / établi | L'objectif doit être clairement défini. |
+| directement applicable / accessible | La règle est directement applicable. |
+
+`très recommandé` 可以理解，但标准搭配通常是 `fortement recommandé`；`très lié` 常改为 `étroitement lié`。
+
 ### 31.7 常用介词短语
+
+#### 原因、条件和让步
+
+| 短语 | 语义 | 例句 |
+|---|---|---|
+| à cause de | 通常负面原因 | Le vol est annulé à cause du brouillard. |
+| grâce à | 正面原因 | Nous avons réussi grâce à votre aide. |
+| en raison de | 中性/正式原因 | La séance est reportée en raison d'un incident. |
+| du fait de | 由于某事实 | Le coût augmente du fait de la pénurie. |
+| faute de | 因缺少 | Faute de temps, nous avons abrégé la réunion. |
+| compte tenu de | 考虑到 | Compte tenu des risques, nous refusons. |
+| en cas de | 如果发生 | En cas d'urgence, appelez ce numéro. |
+| à condition de | 条件是，同一主语 | Vous pouvez entrer à condition de présenter une pièce d'identité. |
+| sous réserve de | 以……为保留条件 | Accord sous réserve de validation. |
+| à défaut de | 若缺少/否则 | À défaut de réponse, la demande sera classée. |
+| malgré / en dépit de | 尽管 | Malgré la pluie / en dépit des difficultés. |
+
+`grâce à` 通常用于积极结果；讽刺语境可反用，但正式写作应避免无意产生讽刺。
+
+#### 目的和手段
+
+| 短语 | 结构 | 例句 |
+|---|---|---|
+| afin de | + inf | Afin de réduire les coûts, nous automatisons le processus. |
+| en vue de | + nom / inf | Une réunion est prévue en vue de préparer l'accord. |
+| dans le but de | + inf | L'étude est menée dans le but d'évaluer le risque. |
+| de manière/façon à | + inf | Organisez les données de manière à faciliter la lecture. |
+| au moyen de | + nom | Le paiement s'effectue au moyen d'une carte. |
+| par le biais de | + nom | Nous avons été informés par le biais du service juridique. |
+
+同一主语常用 `afin de + infinitif`；主语不同时用 `afin que + subjonctif`：`Je répète afin que tout le monde comprenne`。
+
+#### 主题、参照和范围
+
+| 短语 | 例句 |
+|---|---|
+| au sujet de / à propos de | Je vous écris au sujet de votre demande. |
+| en ce qui concerne | En ce qui concerne le budget, aucune décision n'est prise. |
+| quant à | Quant aux délais, ils restent inchangés. |
+| en matière de | La loi impose des obligations en matière de sécurité. |
+| dans le domaine de | Elle travaille dans le domaine de l'énergie. |
+| par rapport à | Les ventes ont augmenté par rapport à l'an dernier. |
+| à l'égard de | L'entreprise a des obligations à l'égard de ses salariés. |
+| conformément à | Conformément au contrat, le paiement est dû lundi. |
+| contrairement à | Contrairement aux prévisions, les prix ont baissé. |
+| en fonction de | Le tarif varie en fonction de la durée. |
+
+`par rapport à` 应有明确参照项，不要把它当成可以替代所有“关于”的万能词。
+
+#### 框架、组织和内部关系
+
+| 短语 | 例句 |
+|---|---|
+| dans le cadre de | dans le cadre du projet européen |
+| au sein de | au sein de l'équipe / de l'organisation |
+| à l'intérieur de | à l'intérieur du bâtiment |
+| autour de | un débat autour de cette question |
+| aux dépens de | réduire les coûts aux dépens de la qualité |
+| au titre de | recevoir une aide au titre de ce programme |
+
+`au sein de` 常用于组织或群体内部，`à l'intérieur de` 更适合具体空间，也可用于抽象边界。
+
+#### 时间和阶段
+
+| 短语 | 含义 | 例句 |
+|---|---|---|
+| à partir de | 从某时/点开始 | à partir du 1er octobre |
+| à compter de | 自……起，行政正式 | à compter de la date de signature |
+| lors de | 在某次事件时 | lors de la réunion |
+| au cours de | 在一段过程期间 | au cours de l'année |
+| à l'issue de | 在结束时/之后 | à l'issue des négociations |
+| d'ici | 截止到；从此到彼 | répondre d'ici vendredi |
+| au fur et à mesure de | 随着 | au fur et à mesure de l'avancement |
+| à la suite de | 在……之后；由于 | à la suite de votre message |
+
+`suite à` 在行政和商务文本中很常见；较讲究的连续散文常偏好完整形式 `à la suite de`、`en réponse à` 或具体原因表达。
+
+#### 地点
+
+| 短语 | 例句 |
+|---|---|
+| à côté de | La pharmacie est à côté de la gare. |
+| en face de | Le café est en face du musée. |
+| près de / loin de | Nous habitons près du centre. |
+| au bord de | Ils vivent au bord de la mer. |
+| autour de | Les enfants sont assis autour de la table. |
+| au-delà de / en deçà de | au-delà de la frontière / en deçà des attentes |
+
+#### 缩合检查
+
+多词介词最后的 `à/de` 仍与定冠词缩合：
+
+| 基本形式 | 缩合后 |
+|---|---|
+| à cause de + le retard | à cause du retard |
+| grâce à + les efforts | grâce aux efforts |
+| au sujet de + les résultats | au sujet des résultats |
+| conformément à + le contrat | conformément au contrat |
+| à l'issue de + les négociations | à l'issue des négociations |
+
 ### 31.8 常用句型：il faut, il y a, c'est, ça fait
+
+#### il faut：必要、需要
+
+| 结构 | 用法 | 例句 |
+|---|---|---|
+| il faut + nom | 需要某物 | Il faut du temps et de la patience. |
+| il faut + inf | 泛指或上下文可知谁执行 | Il faut vérifier les chiffres. |
+| il faut que + subj. | 明确从句主语 | Il faut que vous vérifiiez les chiffres. |
+| il faut + pronom COI + nom | 某人需要某物 | Il me faut une copie du contrat. |
+| il ne faut pas + inf | 不应、禁止 | Il ne faut pas toucher à ce bouton. |
+
+`falloir` 只用于非人称第三人称单数：`il faut, il fallait, il a fallu, il faudra, il faudrait`。
+
+| 时间/语气 | 例句 |
+|---|---|
+| 现在必要 | Il faut partir. |
+| 过去当时必要 | Il fallait partir avant midi. |
+| 一次实际需要 | Il a fallu attendre deux heures. |
+| 将来必要 | Il faudra réserver. |
+| 缓和建议/假设 | Il faudrait vérifier ce point. |
+
+`Il faudrait` 常用于温和建议，不等于过去时：`Il faudrait peut-être reporter la réunion.`
+
+#### il y a：存在和“多久以前”
+
+| 功能 | 例句 |
+|---|---|
+| 存在 | Il y a un problème. |
+| 复数存在 | Il y a plusieurs solutions. |
+| 过去背景 | Il y avait beaucoup de monde. |
+| 过去出现 | Il y a eu un accident. |
+| 将来存在 | Il y aura une réunion demain. |
+| 条件情况 | Il y aurait moins de risques. |
+| 多久以前 | Je l'ai vu il y a trois jours. |
+
+否定后不定冠词和部分冠词通常变为 `de`：`Il n'y a pas de problème`、`Il n'y a plus d'eau`。
+
+| 变换 | 例句 |
+|---|---|
+| 中性疑问 | Est-ce qu'il y a une pharmacie ici ? |
+| 正式倒装 | Y a-t-il une solution ? |
+| 口语 | Il y a une pharmacie ? / Y a une pharmacie ? |
+| en 替代数量/事物 | Des solutions, il y en a plusieurs. |
+| 否定 en | Il n'y en a pas. |
+
+`y` 和 `en` 都是结构必需成分：不能说 `Il a un problème` 来表达无人称“有一个问题”，也不能说 `Il en a` 来替代 `Il y en a` 的存在结构。
+
+#### c'est：识别、评价和聚焦
+
+| 结构 | 例句 |
+|---|---|
+| c'est + nom propre/pronom | C'est Marie. / C'est moi. |
+| c'est + déterminant + nom | C'est un médecin. / C'est mon voisin. |
+| c'est + adjectif，中性评价 | C'est utile / difficile / dommage. |
+| ce sont + 复数名词/代词 | Ce sont mes collègues. / Ce sont eux. |
+| c'est...qui | C'est Paul qui a appelé. |
+| c'est...que | C'est ce document que je cherche. |
+| c'est à qqn de + inf | C'est à vous de décider. |
+| ce qui...c'est... | Ce qui compte, c'est le résultat. |
+| ce que...c'est... | Ce que je veux, c'est une réponse claire. |
+
+日常口语常把复数识别也放进 `c'est`：`C'est mes amis.` 正式书写通常用 `Ce sont mes amis.`
+
+#### c'est vs il/elle est
+
+| c'est | il/elle est |
+|---|---|
+| 引入或识别：C'est une bonne idée. | 描述已知名词：Cette idée ? Elle est bonne. |
+| 名词带限定词：C'est un ingénieur. | 职业零冠词：Il est ingénieur. |
+| 中性评价：C'est important. | 指具体对象：Ce document ? Il est incomplet. |
+| 人物识别：C'est Léa. | 描写人物：Elle est compétente. |
+
+#### c'est que 与 il s'agit de
+
+| 结构 | 用法 | 例句 |
+|---|---|---|
+| c'est que | 解释原因或真实情况 | Si je refuse, c'est que le risque est trop élevé. |
+| le fait est que | 正式指出事实 | Le fait est que nous manquons de données. |
+| il s'agit de + nom/inf | 说明所涉及内容 | Il s'agit d'un problème urgent / de vérifier les comptes. |
+| il ne s'agit pas de...mais de... | 澄清焦点 | Il ne s'agit pas de punir, mais de prévenir. |
+
+`il s'agit` 是固定非人称结构，不能把 `il` 换成具体人称：不说 `je m'agis de`。
+
+#### ça fait：时长、总数和效果
+
+| 结构 | 含义 | 例句 |
+|---|---|---|
+| ça fait + durée + que | 已经持续多久 | Ça fait trois ans que j'habite ici. |
+| ça faisait + durée + que | 到过去某时已持续多久 | Ça faisait une heure que j'attendais. |
+| ça fait + somme | 合计 | Deux cafés, ça fait six euros. |
+| ça fait combien ? | 合计多少 | Ça fait combien en tout ? |
+| ça fait du bien / du mal | 有益/有害；让人舒服/难受 | Marcher me fait du bien. |
+| ça fait plaisir / peur | 让人高兴/害怕 | Ça me fait plaisir de vous voir. |
+| ça fait longtemps | 很久了 | Ça fait longtemps qu'on ne s'est pas vus. |
+
+较正式写作把 `ça` 改成具体主语或 `cela`：`Cette mesure fait du tort aux petites entreprises`、`Cela fait trois ans que...`。
+
+#### voici / voilà
+
+| 结构 | 用法 | 例句 |
+|---|---|---|
+| voici | 呈现靠近说话者或即将说明的内容 | Voici votre reçu. / Voici les résultats. |
+| voilà | 指示较远或刚说明完的内容 | Voilà votre train. / Voilà pourquoi je refuse. |
+| en voici / en voilà | 与 en 组合 | Vous cherchez un exemple ? En voici un. |
+| me/te/le/la voici/voilà | 宾语代词置于前 | Le voici. / Nous voilà prêts. |
+
+现代口语中 `voilà` 的使用范围很广，也常用作总结或结束说明：`Voilà, c'est tout.`
+
 ### 31.9 常用习语和语域
+
+#### 中性会话词块
+
+| 表达 | 含义 | 例句 |
+|---|---|---|
+| ça marche | 可以、有效、说定了 | Rendez-vous à huit heures ? Ça marche. |
+| ça dépend de | 取决于 | Ça dépend du prix. |
+| ça vaut le coup de | 值得 | Ça vaut le coup d'essayer. |
+| ça y est | 好了；终于发生 | Ça y est, j'ai terminé. |
+| tant mieux / tant pis | 那太好了/那就遗憾了 | Il peut venir ? Tant mieux. |
+| peu importe | 无所谓 | Peu importe la méthode, il faut un résultat. |
+| tout à fait | 完全正确/完全地 | Je suis tout à fait d'accord. |
+| pas forcément | 不一定 | Ce n'est pas forcément vrai. |
+| en tout cas | 无论如何；至少 | En tout cas, merci d'être venu. |
+| à vrai dire | 说实话、准确说 | À vrai dire, je ne sais pas. |
+| au fait | 对了；关于此事 | Au fait, as-tu appelé Paul ? |
+| quand même / tout de même | 仍然、毕竟、加强语气 | Il pleut, mais je vais sortir quand même. |
+| on ne sait jamais | 世事难料、以防万一 | Prends un parapluie, on ne sait jamais. |
+| je n'y peux rien | 我对此无能为力 | C'est la règle, je n'y peux rien. |
+
+`quand même` 的实际语气依上下文可表示让步、惊讶、不满或强调，不能只背一个中文译法。
+
+#### 熟人语和口语表达
+
+| 表达 | 含义 | 语域说明 |
+|---|---|---|
+| en avoir assez de | 受够了 | 中性到口语 |
+| en avoir marre de | 受够了 | 熟人口语 |
+| en avoir ras le bol de | 忍无可忍 | 强烈口语 |
+| ça me prend la tête | 让我烦、费脑 | 熟人口语 |
+| se prendre la tête | 纠结；争吵 | 熟人口语，依语境 |
+| avoir le cafard | 情绪低落 | 形象口语 |
+| ça roule | 没问题、进展顺利 | 熟人口语 |
+| pas de souci | 没问题 | 日常口语 |
+| bosser | 工作 | 熟人口语，标准词 travailler |
+| bouffer | 吃 | 很口语，部分场景粗俗 |
+
+工作邮件和陌生人交流优先用 `cela me préoccupe`、`j'en ai assez`、`travailler` 等中性表达。
+
+#### 身体部位习语
+
+| 习语 | 整体含义 | 例句 |
+|---|---|---|
+| donner un coup de main | 帮忙 | Tu peux me donner un coup de main ? |
+| coûter les yeux de la tête | 贵得离谱 | Cette voiture coûte les yeux de la tête. |
+| avoir un mot sur le bout de la langue | 话到嘴边想不起来 | J'ai son nom sur le bout de la langue. |
+| garder la tête froide | 保持冷静 | Il faut garder la tête froide. |
+| avoir la tête ailleurs | 心不在焉 | Aujourd'hui, j'ai la tête ailleurs. |
+| mettre les pieds dans le plat | 直捅尴尬问题 | Il a encore mis les pieds dans le plat. |
+| tourner autour du pot | 绕圈子不说重点 | Arrête de tourner autour du pot. |
+| donner sa langue au chat | 放弃猜答案 | Je donne ma langue au chat. |
+
+这些表达多适合会话和非正式叙述。正式报告应直接说明 `le coût est très élevé`、`il a abordé un sujet délicat sans précaution`。
+
+#### 事件与行为习语
+
+| 习语 | 含义 | 支配 |
+|---|---|---|
+| poser un lapin à qqn | 爽约、放鸽子 | Elle m'a posé un lapin. |
+| tomber dans les pommes | 晕倒 | Il est tombé dans les pommes. |
+| mettre la main à la pâte | 亲自动手帮忙 | Tout le monde a mis la main à la pâte. |
+| prendre son temps | 不着急、慢慢做 | Prenez votre temps. |
+| perdre son temps | 浪费时间 | Ne perdons pas notre temps. |
+| passer à autre chose | 转向别的事 | Il faut passer à autre chose. |
+| finir par + inf | 最终做了 | Elle a fini par accepter. |
+| être sur le point de + inf | 正要做 | Le train est sur le point de partir. |
+| faillir + inf | 差点发生 | J'ai failli tomber. |
+| manquer de + inf | 差点；险些 | Il a manqué de rater son train. |
+
+`manquer de + infinitif` 表“差点”，`manquer de + nom` 表“缺少”：`manquer de tomber` 与 `manquer de temps` 结构相同但意义不同。
+
+#### 语域替换
+
+| 熟人表达 | 中性表达 | 正式表达 |
+|---|---|---|
+| J'en ai marre. | J'en ai assez. | Cette situation n'est plus acceptable. |
+| Ça me prend la tête. | Cela me préoccupe / me fatigue. | Cette question mobilise des efforts excessifs. |
+| Ça coûte les yeux de la tête. | C'est très cher. | Le coût est particulièrement élevé. |
+| Il a posé un lapin. | Il n'est pas venu au rendez-vous. | Il ne s'est pas présenté au rendez-vous convenu. |
+| On tourne autour du pot. | On évite le sujet. | La question centrale n'est pas abordée directement. |
+
 ### 31.10 搭配学习方法
+
+#### 不记单词，记可变句型
+
+| 只记单词 | 可调用的词块 |
+|---|---|
+| compte = 账/考虑 | tenir compte de qqch -> en tenir compte |
+| attention = 注意 | faire attention à qqch -> y faire attention |
+| décision = 决定 | prendre/appliquer/contester une décision |
+| besoin = 需要 | avoir besoin de qqch -> en avoir besoin |
+
+#### 搭配卡片模板
+
+| 字段 | 示例 |
+|---|---|
+| 表达 | faire face à qqch |
+| 核心义 | 面对并应对 |
+| 典型名词 | un problème, une crise, des difficultés |
+| 代词 | y faire face |
+| 完成时 | Nous avons fait face à plusieurs difficultés. |
+| 否定 | Il ne peut pas y faire face seul. |
+| 名词形式 | faire face -> 无需强造名词；可用 gestion/réponse 依语境 |
+| 语域 | 中性、正式均可 |
+
+#### 一次学习四种变换
+
+以 `tenir compte de ce risque` 为例：
+
+| 变换 | 结果 |
+|---|---|
+| 人称/时态 | Nous tiendrons compte de ce risque. |
+| 代词 | Nous en tiendrons compte. |
+| 否定 | Nous n'en avons pas tenu compte. |
+| 疑问 | En avez-vous tenu compte ? |
+
+如果一个搭配只能在词表里认出，却不能完成这四种变换，就还没有进入主动语法。
+
+#### 成组对比
+
+| 组 | 区别 |
+|---|---|
+| avoir confiance en / faire confiance à | 状态信任 / 把信任给予某人 |
+| prendre conscience de / se rendre compte de | 意识过程，前者较正式 / 高频通用 |
+| mettre fin à / prendre fin | 主动终止 / 自行结束 |
+| rendre visite à / visiter | 拜访人 / 参观地点 |
+| avoir besoin de / avoir envie de | 必要 / 愿望 |
+| depuis / pendant / en / dans | 持续 / 时段 / 完成耗时 / 多久以后 |
+
+把易混搭配放在同一张表中，比按字母顺序孤立记忆更有效。
+
+#### 验证搭配的步骤
+
+1. 在可靠词典中检查动词条目的介词和例句。
+2. 检查例句是否与自己的语义和语体相同。
+3. 观察名词前冠词、单复数和典型修饰词。
+4. 用至少一个代词替换句测试支配：`de -> en`、`à + 物 -> y`。
+5. 自己写一个真实句子，并在隔日主动回忆。
+
+高频出现并不自动等于适合正式写作；语料中的聊天、广告、行政公文和文学对白必须分开判断。
+
 ### 31.11 固定搭配常见错误速查
+
+下表既包括语法错误，也包括逐词可以理解但不符合目标语境中典型搭配的表达。
+
+| 错误 | 正确 | 搭配规则 |
+|---|---|---|
+| Je suis faim. | J'ai faim. | avoir faim |
+| Elle est vingt ans. | Elle a vingt ans. | avoir + âge |
+| Je suis peur de parler. | J'ai peur de parler. | avoir peur de |
+| J'ai mal dans la tête. | J'ai mal à la tête. | avoir mal à + 身体部位 |
+| J'ai besoin à partir. | J'ai besoin de partir. | avoir besoin de |
+| Nous avons envie à voyager. | Nous avons envie de voyager. | avoir envie de |
+| J'ai hâte à vous voir. | J'ai hâte de vous voir. | avoir hâte de |
+| Il a du mal de dormir. | Il a du mal à dormir. | avoir du mal à |
+| J'ai confiance à elle. | J'ai confiance en elle. | avoir confiance en |
+| Je fais confiance en elle. | Je lui fais confiance. | faire confiance à qqn |
+| J'ai peur qu'il vient. | J'ai peur qu'il vienne. | peur que + subjonctif |
+| Nous avons affaire avec un expert. | Nous avons affaire à un expert. | avoir affaire à |
+| Il a beau d'essayer... | Il a beau essayer... | avoir beau + inf 直接连接 |
+| Je fais attention de la marche. | Je fais attention à la marche. | faire attention à |
+| Elle fait partie dans l'équipe. | Elle fait partie de l'équipe. | faire partie de |
+| Nous faisons face de la crise. | Nous faisons face à la crise. | faire face à |
+| Ils ont fait appel d'un avocat. | Ils ont fait appel à un avocat. | faire appel à |
+| Ce texte fait référence de la loi. | Ce texte fait référence à la loi. | faire référence à |
+| Elle a fait preuve à patience. | Elle a fait preuve de patience. | faire preuve de |
+| Faites en sorte que tout est prêt. | ...que tout soit prêt. | faire en sorte que + subjonctif |
+| J'ai fait une décision. | J'ai pris une décision. | prendre une décision |
+| Prenez attention à ce point. | Faites/Prêtez attention à ce point. | faire/prêter attention à |
+| Il faut prendre compte des coûts. | Il faut prendre en compte les coûts. | prendre en compte |
+| J'ai pris connaissance sur le dossier. | J'ai pris connaissance du dossier. | prendre connaissance de |
+| Comment tu prends pour faire cela ? | Comment t'y prends-tu pour faire cela ? | s'y prendre |
+| Nous mettons en place de ce système. | Nous mettons en place ce système. | mettre en place + COD |
+| Ils ont mis fin du contrat. | Ils ont mis fin au contrat. | mettre fin à |
+| Elle s'est mise de rire. | Elle s'est mise à rire. | se mettre à + inf |
+| Mettez-moi à courant. | Mettez-moi au courant. | au courant |
+| J'ai visité Paul hier.（普通拜访） | J'ai rendu visite à Paul hier. | rendre visite à une personne |
+| Pouvez-vous faire un service pour moi ? | Pouvez-vous me rendre un service ? | rendre service à qqn |
+| Elle s'est rendue compte de l'erreur. | Elle s'est rendu compte de l'erreur. | rendu 不与主语配合 |
+| Je me rends compte à ce problème. | Je me rends compte de ce problème. | se rendre compte de |
+| Cette clé donne accès du bâtiment. | Cette clé donne accès au bâtiment. | donner accès à |
+| Cela donne envie à voyager. | Cela donne envie de voyager. | donner envie de + inf |
+| Nous donnerons suite de votre demande. | Nous donnerons suite à votre demande. | donner suite à |
+| La fenêtre donne au jardin. | La fenêtre donne sur le jardin. | donner sur |
+| J'ai fait une question. | J'ai posé une question. | poser une question |
+| Nous avons fait une conclusion. | Nous avons tiré une conclusion. | tirer une conclusion |
+| Ils ont fait un contrat. | Ils ont conclu/signé un contrat. | conclure/signer un contrat |
+| Elle a fait une plainte. | Elle a porté/déposé plainte. | porter/déposer plainte |
+| Le projet a reçu un échec. | Le projet a connu/essuyé un échec. | connaître/essuyer un échec |
+| une pluie lourde | une forte pluie | 搭配形容词 forte |
+| un haut prix | un prix élevé | high price -> prix élevé |
+| des conséquences fortes | de lourdes/graves conséquences | 后果的典型修饰词 |
+| très recommandé | fortement recommandé | 典型程度副词 |
+| Grâce de votre aide... | Grâce à votre aide... | grâce à |
+| À cause au retard... | À cause du retard... | à cause de + le -> du |
+| Compte tenu les risques... | Compte tenu des risques... | compte tenu de |
+| Conformément avec le contrat... | Conformément au contrat... | conformément à |
+| Par rapport de l'an dernier... | Par rapport à l'an dernier... | par rapport à |
+| Au sujet à votre demande... | Au sujet de votre demande... | au sujet de |
+| Afin que tout le monde comprend... | ...comprenne... | afin que + subjonctif |
+| Malgré aux difficultés... | Malgré les difficultés... | malgré 后直接接名词短语 |
+| Il faut de partir. | Il faut partir. | il faut + inf，无 de |
+| Il faut que tu pars. | Il faut que tu partes. | il faut que + subjonctif |
+| Il faut je parte. | Il faut que je parte. | 明确主语需 que 从句 |
+| Il a beaucoup de personnes ici. | Il y a beaucoup de personnes ici. | 存在句 il y a |
+| Il n'y a pas des solutions. | Il n'y a pas de solutions. | 否定后 de |
+| Est-ce qu'il y a-t-il une erreur ? | Est-ce qu'il y a une erreur ? / Y a-t-il une erreur ? | 两种疑问结构不叠加 |
+| C'est médecin. | C'est un médecin. | c'est + 限定名词 |
+| Il est un médecin.（只报职业） | Il est médecin. | 职业表语零冠词 |
+| C'est à vous décider. | C'est à vous de décider. | c'est à qqn de + inf |
+| Je m'agis d'un problème. | Il s'agit d'un problème. | il s'agit 是非人称固定结构 |
+| Ça fait trois ans depuis que j'habite ici. | Ça fait trois ans que j'habite ici. | ça fait + durée + que |
+| Cette promenade me fait bien. | Cette promenade me fait du bien. | faire du bien à qqn |
+| Ça dépend à la météo. | Ça dépend de la météo. | dépendre de |
+| J'en ai marre avec ce bruit. | J'en ai marre de ce bruit. | en avoir marre de |
+| Elle a posé un lapin de moi. | Elle m'a posé un lapin. | poser un lapin à qqn |
+| Il est tombé aux pommes. | Il est tombé dans les pommes. | 固定习语 |
+| Arrête de tourner autour le pot. | ...autour du pot. | autour de + le -> du |
+
+#### 最终检查流程
+
+1. 圈出支撑动词 `avoir/faire/prendre/mettre/rendre/donner`，确认后面的名词确属该搭配。
+2. 检查固定介词，并尝试用 `y/en/lui` 替换验证支配。
+3. 核对名词前的冠词和数量：`faire du sport`、`prendre une décision`、`faire les courses`。
+4. 区分动作与状态：`mettre fin à / prendre fin`、`faire confiance à / avoir confiance en`。
+5. 使用 `il faut/il y a/c'est/ça fait` 时保留完整骨架和所需语式。
+6. 习语先确认整体义和语域，不按字面替换其中单词。
+7. 最后检查搭配是否适合当前场景，而不只判断单句语法能否成立。
 
 ## 32. 综合改错速查（Révision et erreurs fréquentes）
 
