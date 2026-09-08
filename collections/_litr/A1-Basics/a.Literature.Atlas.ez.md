@@ -7,7 +7,7 @@ subclass: Basics
 
 # English
 
-## How to Become a Modern Literary Master: A Foundational Curriculum
+## A Foundational Curriculum
 
 ### Part One: Foundations — What Literature Is, What Literary Study Is
 

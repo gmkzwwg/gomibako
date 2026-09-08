@@ -25,7 +25,6 @@ But it is a lookup table, not a curriculum. It is organized by topic, which is h
 
 **The main risk the document itself carries.** It is longer than you can execute and it will feel like the responsible thing is to complete it. That instinct is exactly the failure mode Part 1 identified in your original question, and I have handed you a much better-furnished room to enact it in. The volume of reading and drills is a menu, and menus are not obligations.
 
-
 ## Part 2: Reading
 
 Assuming that you are a novelist working in English, oriented primarily toward the Western tradition. That settles most of the branching. What follows is the reading half of the loop: the modes, the protocols, the technical inheritance you should not reinvent, and the architecture that holds it.
