@@ -4,7 +4,7 @@ categories: Chron
 subclass: Ethics
 ---
 
-![]({{site.img}}/phil/Ethics/ethics_timeline.svg)
+![]({{site.img}}/philosophy/ethics-history-timeline.svg)
 
 ## Executive summary
 

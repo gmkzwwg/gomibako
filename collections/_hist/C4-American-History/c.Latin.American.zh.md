@@ -7,7 +7,7 @@ subclass: American History
 todos: 精修
 ---
 
-![]({{site.img}}/hist/latin.america.png)
+![]({{site.img}}/history/maps/latin-american-colonization-and-independence-map.png)
 
 ## 前哥伦布美洲的生态适应、文明形成与区域政治秩序﹝约前15000年-1492年﹞
 

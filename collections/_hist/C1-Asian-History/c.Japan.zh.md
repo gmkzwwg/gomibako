@@ -13,7 +13,7 @@ abbreviation: Japanese History
 
 *日本史通常的分期标准是政治中心的位置。*
 
-![]({{site.img}}/hist/japan_history_periodization.svg)
+![]({{site.img}}/history/timelines/japanese-history-periodization-timeline.svg)
 
 ## 旧石器时代
 

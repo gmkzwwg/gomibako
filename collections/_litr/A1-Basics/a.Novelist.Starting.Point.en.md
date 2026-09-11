@@ -1,6 +1,6 @@
 ---
 title: The Starting Point of Becoming a Novelist
-layout: posts
+layout: post
 categories: Atlas
 subclass: Basics
 ---

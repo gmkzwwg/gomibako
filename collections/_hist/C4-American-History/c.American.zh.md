@@ -7,7 +7,7 @@ subclass: American History
 status: 精修完成
 ---
 
-![]({{site.img}}/hist/america.expansion.png)
+![]({{site.img}}/history/maps/united-states-territorial-expansion-map.png)
 
 ## 北美原住民世界与大西洋因果链﹝约前21000年-1607年﹞
 

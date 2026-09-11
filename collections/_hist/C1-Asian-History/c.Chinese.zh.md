@@ -9,7 +9,7 @@ todos: 精修+原文+结尾重建
 
 ## 中国历史分期
 
-![all]({{site.img}}/hist/china_history_regional_flow.svg)
+![all]({{site.img}}/history/timelines/chinese-history-regional-flow-diagram.svg)
 
 ## 史前文化
 

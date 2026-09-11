@@ -93,7 +93,7 @@ The link between LLI and creativity first gained attention in the early 2000s th
 
 > LLI 与创造力之间的联系最早在 21 世纪初通过卡森（Carson）、彼得森（Peterson）和希金斯（Higgins）的研究引起关注。在一项具有里程碑意义的发现中，卡森等人（2003）表明，与创造力较低的同龄人相比，**高创造性个体具有减弱的潜在抑制的可能性要大得多**。在他们的研究中，创造性成就通过量表进行衡量（使用真实世界的创造性成果清单），而潜在抑制则通过标准的实验任务进行评估。他们发现，在功能良好、高智商（High-IQ）的大学生中，创造性成就最高者的低潜在抑制发生率比成就平平的学生高出 7 倍。这种显著差异在图 1 中得到了体现，该图对比了高创造性成就组与普通成就组中低 LI 个体与高 LI 个体的比例：
 
-![https://pmc.ncbi.nlm.nih.gov/articles/PMC6102953/]({{site.url}}{{site.baseulr}}/images/psyc/lli1.jpg)
+![https://pmc.ncbi.nlm.nih.gov/articles/PMC6102953/]({{site.url}}{{site.baseurl}}/images/psychology/latent-inhibition-and-creative-achievement-bar-chart.png)
 
 _Figure 1: Distribution of latent inhibition levels among individuals with low versus high creative achievement. In Carson et al. (2003), eminent creative achievers were far more likely to have **reduced (low) latent inhibition** (dark bars) than controls, suggesting a strong association between **LLI and creative potential**. High latent inhibition (light bars) was relatively uncommon in the highly creative group._
 
@@ -105,7 +105,7 @@ Empirical support for the “LLI + IQ = creativity” model comes not only from 
 
 > 支持“LLI + IQ = 创造力”模型的实证证据不仅来自卡森最初的研究，还来自后续的复制和扩展研究。例如，Kéri (2011) 发现，潜在抑制的降低与任务中更高的创造性表现相关，但这种相关性特别存在于那些在智商和/或工作记忆测量中得分较高的个体中。在一个青年样本中，那些取得卓越创造性成就（如创作出高度原创的艺术或研究成果）的人，绝大多数是那些既拥有高于平均水平的智力，又拥有极低潜在抑制的人。与此同时，具有低 LI 但认知能力平平的个体并未表现出创造优势，甚至可能面临认知困难的风险。这符合以下观点：原始信息的涌入 (LLI) 需要一个装备精良的认知系统才能进行有利的加工。图 2 提供了这一观点的概念图，作为创造力和精神病理学“共享脆弱性模型”的一部分：
 
-![https://pmc.ncbi.nlm.nih.gov/articles/PMC6102953/]({{site.url}}{{site.baseulr}}/images/psyc/lli2.png)
+![https://pmc.ncbi.nlm.nih.gov/articles/PMC6102953/]({{site.url}}{{site.baseurl}}/images/psychology/creativity-and-psychopathology-shared-vulnerability-diagram.png)
 
 _Figure 2: “Shared Vulnerability” model (adapted from Carson) illustrating how **attenuated latent inhibition** and related factors (novelty-seeking, hyperconnectivity) form a core susceptibility trait. If coupled with **protective factors** like high IQ, strong working memory, and cognitive flexibility (left triangle), the outcome may be high creativity. If coupled with **risk factors** like low IQ, working memory deficits, or perseverative thinking (right triangle), the outcome may be psychopathology. In essence, **LLI can contribute to genius or mental illness depending on the individual’s broader cognitive context**._
 

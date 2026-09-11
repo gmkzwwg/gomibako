@@ -84,7 +84,7 @@ New page with HTML5 + CSS 3:
 
 [Link](https://example.com) and autolink <https://example.com>, as well as email <a href="mailto:test@example.com">mail</a>.
 
-![Alt text]({{site.img}}/phys/cosmos/observable-universe-logarithmic-map.png "title")
+![Alt text]({{site.img}}/astronomy/cosmology/observable-universe-logarithmic-map.png "title")
 
 Blockquote for bilingual support. Click Bilingual Button or set page.bilingual `false` to show.
 > Blockquote: used for bilingual folding test. First paragraph.

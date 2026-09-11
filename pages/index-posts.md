@@ -16,7 +16,7 @@ permalink: /posts
 
 <h1 class="ascii_title">瞧！那个垃圾</h1>
 
-<img src="images/sumimaro.png" alt="sumimaro" style="float: right; max-width: 150px; margin: 5px;">
+<img src="{{site.img}}/memes/monkey-apology-meme.png" alt="sumimaro" style="float: right; max-width: 150px; margin: 5px;">
 
 #### 为什么我这么愚蠢？
 

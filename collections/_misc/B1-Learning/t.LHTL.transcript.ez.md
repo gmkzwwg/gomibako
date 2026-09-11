@@ -317,7 +317,7 @@ It's the same in many disciplines, just looking at someone else's painting doesn
 
 > **最终，通过`练习`，您可以扩展与您的块相连接的神经元网络，确保它不仅牢固，而且可以通过`多种途径访问`。**正如您从这个自上而下、自下而上的插图中所看到的，学习以两种方式进行。有一种`自下而上的分块过程`，通过练习和重复，您既可以建立也可以加强每一个块，以便在需要时轻松调用它。同时也有一种`自上而下的大图景过程`，让您看到自己所学内容及其位置。两种过程在掌握材料方面都至关重要。情境是自下而上和自上而下学习相结合的地方。
 
-![]({{site.img}}/lhtl/01.png)
+![]({{site.img}}/learning/top-down-and-bottom-up-learning-diagram.png)
 
 **To clarify here, chunking may involve your learning how to use a certain problem-solving technique.** Context means learning when to use that technique instead of some other technique. Doing a rapid two-minute picture walk through a chapter in a book before you begin studying it, glancing at pictures and section headings, can allow you to gain a sense of the big picture. So can listening to a very well organized lecture. These kinds of activities can help you know `where to put the chunks` you're constructing, `how the chunks relate to one another`, just as you see here, with the image of the man in the car.
 
