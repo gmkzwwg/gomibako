@@ -1,6 +1,6 @@
 ---
 title: Study of Short Stories
-layout: post-parallel
+layout: post-horizonal
 categories: Texts
 subclass: Literary Texts
 ---

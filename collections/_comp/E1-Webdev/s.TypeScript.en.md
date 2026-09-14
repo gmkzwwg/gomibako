@@ -5,7 +5,7 @@ categories: Sheet
 subclass: Webdev
 ---
 
-## Part 1 — Mental Model: Value Level, Type Level, Erasure, JavaScript Runtime 
+## P1 — Mental Model: Value Level, Type Level, Erasure, JavaScript Runtime 
 
 ### Core Model
 
@@ -522,7 +522,7 @@ TypeScript’s practical essence is **type-level modeling over JavaScript runtim
 | Runtime data           | Untrusted until checked by JavaScript code or a validation library.                                            |
 | Good TypeScript design | Precise static models, explicit trust boundaries, minimal escape hatches, and configuration-aware assumptions. |
 
-## Part 2 — Core Syntax and Type Reference: Primitives, Objects, Functions, Unions, Classes 
+## P2 — Core Syntax and Type Reference: Primitives, Objects, Functions, Unions, Classes 
 
 ### Primitive, Literal, Top, and Bottom Types
 
@@ -1783,7 +1783,7 @@ Common nullability pitfalls:
 | Treating optional and `undefined` as identical  | They overlap but are not always identical | Choose absent vs present-but-empty intentionally |
 | Forgetting DOM queries can return `null`        | DOM is dynamic                            | Check query result                               |
 | Returning `null` and `undefined` inconsistently | API drift                                 | Pick one absence convention per boundary         |
-## Part 3 — Type Operators and Type-Level Programming: `keyof`, `typeof`, Mapped Types, Conditional Types 
+## P3 — Type Operators and Type-Level Programming: `keyof`, `typeof`, Mapped Types, Conditional Types 
 
 ### Type-Level Programming Frame
 
@@ -3183,7 +3183,7 @@ const translatedLabels: Partial<Record<Locale, string>> = {
 | Config object contract      | `const x = {...} satisfies Contract`   |
 | Literal source of truth     | `as const`                             |
 | Trust boundary              | `unknown` plus guard or parser         |
-## Part 4 — TypeScript by Task Pattern: Data Modeling, State, Validation, Derivation, APIs 
+## P4 — TypeScript by Task Pattern: Data Modeling, State, Validation, Derivation, APIs 
 
 ### Task-Pattern Frame
 
@@ -5268,7 +5268,7 @@ const user = await callEndpoint("createUser", {
 | Exhaustiveness              | `const exhaustive: never = value`                                     |
 | Config checking             | `const config = {...} satisfies Config`                               |
 | Type-only module dependency | `import type { T } from "./x"`                                        |
-## Part 5 — Project and Tooling Reference: `tsconfig`, Modules, Runtime Boundaries, Migration 
+## P5 — Project and Tooling Reference: `tsconfig`, Modules, Runtime Boundaries, Migration 
 
 ### Project-Level Mental Model
 
@@ -6294,7 +6294,7 @@ For a migration project, a more staged approach may be necessary:
 | Is this a library?                                                         | Emit declarations and test published output                                   |
 | Is a fast transpiler used?                                                 | Add separate `tsc --noEmit`                                                   |
 | Are strictness flags meaningful?                                           | Confirm `strict`, nullability, indexed access, and optional-property behavior |
-## Part 6 — Common Mistakes and Sharp Edges: Unsoundness, `any`, Assertions, Runtime Confusion 
+## P6 — Common Mistakes and Sharp Edges: Unsoundness, `any`, Assertions, Runtime Confusion 
 
 ### Sharp-Edges Frame
 

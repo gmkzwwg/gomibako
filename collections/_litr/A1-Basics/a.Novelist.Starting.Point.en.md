@@ -5,7 +5,7 @@ categories: Atlas
 subclass: Basics
 ---
 
-## Part 1: What is this
+## P1: What is this
 
 **What it is actually good for.** Those two parts are a *map of the technical territory* and a *diagnostic vocabulary*. That is a real and specific value: you now have **names for things**, which means **when a draft fails you can locate the failure instead of experiencing it as a general sense of wrongness**. Most people writing first novels lack exactly this and lose years to undiagnosable dissatisfaction. The document is also reasonably complete as a survey — I don't think there's a major technical level of the novel that goes unmentioned.
 
@@ -25,7 +25,7 @@ But it is a lookup table, not a curriculum. It is organized by topic, which is h
 
 **The main risk the document itself carries.** It is longer than you can execute and it will feel like the responsible thing is to complete it. That instinct is exactly the failure mode Part 1 identified in your original question, and I have handed you a much better-furnished room to enact it in. The volume of reading and drills is a menu, and menus are not obligations.
 
-## Part 2: Reading
+## P2: Reading
 
 Assuming that you are a novelist working in English, oriented primarily toward the Western tradition. That settles most of the branching. What follows is the reading half of the loop: the modes, the protocols, the technical inheritance you should not reinvent, and the architecture that holds it.
 
@@ -160,7 +160,7 @@ Rule: never take a note you cannot imagine using. Rule: the observation bank sho
 * Do not read only prestige. Read the well-made popular novel too, because plot engineering is a real skill and literary fiction is on average bad at it.
 * Do not confuse annotation with study. The test of a reading session is whether anything transferred to your hands.
 
-## Part 3: Writing
+## P3: Writing
 
 Reading gives you a repertoire. This part is about the manufacture of text: the levels at which a novel is built, the drills that develop each level, the drafting protocol, the revision system, the feedback architecture, and the economics. I have tried to make every item actionable or falsifiable.
 

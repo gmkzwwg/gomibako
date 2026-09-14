@@ -1,6 +1,6 @@
 ---
 title: Cargo Cult Science
-layout: post-parallel
+layout: post-horizonal
 author: RICHARD P. FEYNMAN
 categories: Texts
 subclass: Readings

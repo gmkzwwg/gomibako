@@ -7,7 +7,7 @@ layout: print
 
 # English
 
-## Part 1 Why Cognitive Bias Is Not Ordinary Error
+## P1 Why Cognitive Bias Is Not Ordinary Error
 
 ### Why can’t cognitive bias be defined simply as “human error”?
 
@@ -97,7 +97,7 @@ The first task, then, is to restrict the concept. A cognitive bias is not any er
 
 The deeper formulation is this: **cognitive bias is the directional trace left by a finite mind trying to turn an excessive, ambiguous, fast-moving world into something perceivable, meaningful, actionable, and memorable.** That is why it belongs not only to error theory, but to a broader theory of human cognition.
 
-## Part 2 Why Bias Is Both an Error and a Cognitive Energy-Saving Strategy
+## P2 Why Bias Is Both an Error and a Cognitive Energy-Saving Strategy
 
 ### Why is it misleading to treat every bias as a mental defect?
 
@@ -207,7 +207,7 @@ If the problem is what to remember, the relevant biases concern reconstruction: 
 
 This framework does not replace Pohl’s academic distinction between thinking, judgment, and memory. It reorganizes the material by function. Pohl’s taxonomy clarifies where a bias appears in cognitive activity; the functional structure clarifies what problem the biased strategy is trying to solve. Used together, they give the project its two axes: **domain of occurrence** and **problem-solving function**.
 
-## Part 3 How Does Dual-System Theory Explain Cognitive Bias?
+## P3 How Does Dual-System Theory Explain Cognitive Bias?
 
 ### Why is dual-system theory useful for understanding bias?
 
@@ -315,7 +315,7 @@ The common thread is that an immediate impression is not merely a preliminary fe
 
 The theory can be condensed into one sentence: **cognitive bias often begins when the mind mistakes the ease, coherence, familiarity, or emotional force of an internal process for evidence about the external world.**
 
-## Part 4 How Does the Mind Filter the World Under Information Overload?
+## P4 How Does the Mind Filter the World Under Information Overload?
 
 ### Why must attention filter before judgment begins?
 
@@ -437,7 +437,7 @@ The same filter that selects information also prepares the stories that will lat
 
 Part 5 turns to this second stage. The question is no longer only “What do we notice?” but “What do we make of what we notice?” Biases of meaning do not merely filter the world; they complete it.
 
-## Part 5 How Does the Mind Complete the World When Meaning Is Missing?
+## P5 How Does the Mind Complete the World When Meaning Is Missing?
 
 ### Why does the mind need to complete incomplete information?
 
@@ -563,7 +563,7 @@ A coherent story may ignore base rates. A representative case may obscure preval
 
 Part 6 turns to that problem directly. The question will no longer be only “How does the mind complete meaning?” but “Why does intuitive meaning so often resist statistical structure?” The mind wants the world to be readable. Statistics often teaches that the world is less readable than it feels.
 
-## Part 6 Why Are Probability, Statistics, and Bayesian Reasoning So Counterintuitive?
+## P6 Why Are Probability, Statistics, and Bayesian Reasoning So Counterintuitive?
 
 ### Why does probability become difficult after the mind has already found meaning?
 
@@ -707,7 +707,7 @@ Probability judgment estimates what is likely. Decision-making asks what should 
 
 Part 7 moves from probability to choice. The question is no longer only “What is likely?” but “How does the mind turn likelihood, loss, gain, time, risk, and uncertainty into action?” If Part 6 shows how intuitive meaning resists statistical structure, Part 7 shows how emotion, reference points, and commitment reshape the act of choosing.
 
-## Part 7 How Do Decision Biases Form When the Mind Must Act Quickly?
+## P7 How Do Decision Biases Form When the Mind Must Act Quickly?
 
 ### Why is decision-making different from probability judgment?
 
@@ -863,7 +863,7 @@ Decision-making turns cognition outward into action. But action is rarely anonym
 
 Part 8 moves into that territory. The question becomes: why does the self judge itself differently from others, why do groups intensify bias, and why does one’s own view so often feel like reality rather than perspective?
 
-## Part 8 Why Are Judgments About the Self, Others, and Groups So Easily Distorted?
+## P8 Why Are Judgments About the Self, Others, and Groups So Easily Distorted?
 
 ### Why do self and social judgments require a separate part?
 
@@ -1009,7 +1009,7 @@ The self must remember itself. Groups must remember themselves. Once self and so
 
 This prepares Part 9. Memory bias is not merely about forgetting details. It is about how the mind reconstructs the past so that the present self and its social world remain meaningful. The next problem is therefore not only “What happened?” but “What kind of past does the mind need in order to keep judging, acting, and belonging as it does?”
 
-## Part 9 Why Does Memory Reconstruct the Past Instead of Preserving It?
+## P9 Why Does Memory Reconstruct the Past Instead of Preserving It?
 
 ### Why is memory not a recording system?
 
@@ -1159,7 +1159,7 @@ This means debiasing cannot be a simple instruction to “think rationally.” B
 
 Part 10 therefore has to ask a practical and limited question: not how to eliminate bias altogether, but how to build procedures, environments, records, formats, and feedback systems that reduce predictable distortions.
 
-## Part 10 How Can Bias Be Reduced Without Pretending It Can Be Eliminated?
+## P10 How Can Bias Be Reduced Without Pretending It Can Be Eliminated?
 
 ### Why can’t debiasing mean becoming unbiased?
 
@@ -1359,7 +1359,7 @@ The final lesson is practical. Do not trust the mind less. Trust it more careful
 
 # 中文
 
-## Part 1 认知偏差为什么不是普通错误？
+## P1 认知偏差为什么不是普通错误？
 
 ### 为什么不能把认知偏差简单定义为“人类错误”？
 
@@ -1449,7 +1449,7 @@ Pohl 处理认知幻觉时，明确反对过早得出关于人类理性的悲观
 
 更深一层的表达是：**认知偏差是有限心智试图把一个过量、暧昧、快速变化的世界转化为可感知、可解释、可行动、可记忆对象时留下的方向性痕迹。**它不只属于错误理论，也属于更广义的人类认知理论。
 
-## Part 2 为什么偏差既是错误，也是认知节能策略？
+## P2 为什么偏差既是错误，也是认知节能策略？
 
 ### 为什么把所有偏差都说成心智缺陷会误导理解？
 
@@ -1559,7 +1559,7 @@ Pohl 处理认知幻觉时，明确反对过早得出关于人类理性的悲观
 
 这个框架并不替代 Pohl 关于思维、判断和记忆的学术区分，而是按功能重新组织材料。Pohl 的分类说明偏差出现在认知活动的哪个领域；功能性结构说明这种偏差策略试图解决什么问题。两者合用，构成这个项目的两条轴线：**发生领域**与**问题解决功能**。
 
-## Part 3 双系统理论怎样解释认知偏差的发生？
+## P3 双系统理论怎样解释认知偏差的发生？
 
 ### 为什么双系统理论有助于理解偏差？
 
@@ -1667,7 +1667,7 @@ Pohl 处理认知幻觉时，明确反对过早得出关于人类理性的悲观
 
 这个理论可以压缩成一句话：**认知偏差常常始于心智把内部加工的轻松感、连贯性、熟悉感或情绪强度，误认为关于外部世界的证据。**
 
-## Part 4 信息过载时，大脑怎样过滤世界？
+## P4 信息过载时，大脑怎样过滤世界？
 
 ### 为什么判断开始之前，注意力就必须先过滤？
 
@@ -1789,7 +1789,7 @@ Pohl 处理认知幻觉时，明确反对过早得出关于人类理性的悲观
 
 Part 5 进入第二阶段。问题不再只是“我们注意到什么”，而是“我们如何解释自己注意到的东西”。意义类偏差不只是过滤世界，而是把世界补全。
 
-## Part 5 意义不足时，大脑怎样补全世界？
+## P5 意义不足时，大脑怎样补全世界？
 
 ### 为什么心智必须补全不完整信息？
 
@@ -1915,7 +1915,7 @@ Part 5 进入第二阶段。问题不再只是“我们注意到什么”，而�
 
 Part 6 将直接进入这个问题。问题不再只是“心智如何补全意义”，而是“为什么直觉意义常常抵抗统计结构”。心智希望世界可读；统计经常提醒人，世界并没有感觉中那么可读。
 
-## Part 6 为什么概率、统计和贝叶斯推理特别反直觉？
+## P6 为什么概率、统计和贝叶斯推理特别反直觉？
 
 ### 为什么心智已经找到意义之后，概率反而变得困难？
 
@@ -2059,7 +2059,7 @@ Gigerenzer 及相关研究者则指出，一些所谓偏差可能被人工任务
 
 Part 7 将从概率转向选择。问题不再只是“什么更可能”，而是“心智如何把可能性、损失、收益、时间、风险和不确定性转化为行动”。如果 Part 6 显示直觉意义如何抵抗统计结构，那么 Part 7 将显示情绪、参考点和承诺如何重塑选择行为。
 
-## Part 7 必须快速行动时，决策偏差怎样形成？
+## P7 必须快速行动时，决策偏差怎样形成？
 
 ### 为什么决策不同于概率判断？
 
@@ -2215,7 +2215,7 @@ Part 7 将从概率转向选择。问题不再只是“什么更可能”，而�
 
 Part 8 将进入这片区域。问题变成：为什么自我评价自己与评价他人不同，为什么群体会强化偏差，为什么自己的观点常常显得像现实本身，而不是一种视角。
 
-## Part 8 自我、他人和群体判断为什么容易失真？
+## P8 自我、他人和群体判断为什么容易失真？
 
 ### 为什么自我与社会判断需要单独成章？
 
@@ -2361,7 +2361,7 @@ Part 8 将进入这片区域。问题变成：为什么自我评价自己与评�
 
 这引向 Part 9。记忆偏差不只是忘记细节，而是心智如何重构过去，使当前自我和它所在的社会世界继续保持意义。下一个问题因此不只是“发生了什么”，而是“心智需要怎样的过去，才能继续以现在这种方式判断、行动和归属”。
 
-## Part 9 记忆为什么会重构过去，而不是保存过去？
+## P9 记忆为什么会重构过去，而不是保存过去？
 
 ### 为什么记忆不是录音录像系统？
 
@@ -2511,7 +2511,7 @@ Pohl 用部分匹配和语义相关性解释这个现象。当替换词与预期
 
 Part 10 因此要提出一个实际而有限的问题：不是如何彻底消除偏差，而是如何建立程序、环境、记录、信息格式和反馈系统，来减少可预测的扭曲。
 
-## Part 10 怎样减少偏差，而不是假装消除偏差？
+## P10 怎样减少偏差，而不是假装消除偏差？
 
 ### 为什么纠偏不能意味着变成“无偏的人”？
 

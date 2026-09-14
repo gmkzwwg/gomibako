@@ -2,13 +2,13 @@
 title: Formal and Informal Fallacies
 categories: Sheet
 subclass: Epistemology
-layout: post-split
+layout: post-vertical
 ---
 
 
 # English
 
-## Part 1 Why Is a Fallacy Not the Same Thing as a False Conclusion?
+## P1 Why Is a Fallacy Not the Same Thing as a False Conclusion?
 
 ### What is a logical fallacy?
 
@@ -50,7 +50,7 @@ This is why fallacy analysis should not become a game of accusation. To identify
 
 The practical value of fallacy study lies here. It trains the reader to ask not only whether a conclusion is attractive, offensive, familiar, or popular, but whether it has actually been argued for.
 
-## Part 2 Why Must Argument Be Understood as Dialogue?
+## P2 Why Must Argument Be Understood as Dialogue?
 
 ### Why can natural-language argument not be judged by propositional form alone?
 
@@ -92,7 +92,7 @@ The central danger is `dialectical shift`: a dialogue silently changes type whil
 
 **Key judgment:** To evaluate an argument well, one must first identify the dialogue in which it occurs. Without that context, criticism becomes too crude: it either condemns reasonable moves as fallacious, or excuses fallacious moves as merely “rhetorical.”
 
-## Part 3 How Do We Move from Formal Fallacies to Informal Fallacies?
+## P3 How Do We Move from Formal Fallacies to Informal Fallacies?
 
 ### What is a formal fallacy?
 
@@ -156,7 +156,7 @@ This is why fallacy analysis should proceed in stages. First, reconstruct the ar
 
 A fallacy label without reconstruction can itself become bad reasoning. It allows the critic to appear analytical while avoiding the harder task of showing why the support does not support the conclusion.
 
-## Part 4 How Do Relevance Fallacies Pull Discussion Away from the Issue?
+## P4 How Do Relevance Fallacies Pull Discussion Away from the Issue?
 
 ### What is relevance?
 
@@ -208,7 +208,7 @@ The opposite discipline is sometimes called `steelmanning`: reconstructing the s
 
 **Key judgment:** A refutation must answer the opponent’s real commitment, not a convenient substitute. The sharper the attack, the more important the reconstruction.
 
-## Part 5 When Are Appeals to Emotion Reasonable, and When Do They Become Fallacious?
+## P5 When Are Appeals to Emotion Reasonable, and When Do They Become Fallacious?
 
 ### Is emotion always wrong in argument?
 
@@ -258,7 +258,7 @@ The distinction between force, threat, warning, and legal consequence also matte
 
 **Key judgment:** Force becomes fallacious when it is offered as a substitute for reasons in a dialogue where reasons are required. It may also be morally or legally wrong, but moral wrongness and logical fallacy are not identical categories.
 
-## Part 6 What Is the Relation Between Authority, Expertise, and Evidence?
+## P6 What Is the Relation Between Authority, Expertise, and Evidence?
 
 ### Why is appeal to authority both necessary and dangerous?
 
@@ -333,7 +333,7 @@ In public discussion, authority should be neither worshipped nor dismissed. Anti
 
 **Key judgment:** The rational use of authority lies between blind trust and reflexive suspicion. Expert opinion can guide inquiry, but it must remain answerable to evidence, field limits, and critical questions.
 
-## Part 7 Why Are Induction, Statistics, and Causal Judgment So Error-Prone?
+## P7 Why Are Induction, Statistics, and Causal Judgment So Error-Prone?
 
 ### What is hasty generalization?
 
@@ -421,7 +421,7 @@ Finally, it requires proportional conclusions. Evidence may support “possibly,
 
 **Key judgment:** Statistics do not remove the need for judgment. They relocate judgment into sampling, definition, comparison, interpretation, and the strength of the conclusion.
 
-## Part 8 How Does Natural Language Produce Fallacies?
+## P8 How Does Natural Language Produce Fallacies?
 
 ### How do ambiguity, vagueness, and equivocation occur?
 
@@ -506,7 +506,7 @@ For contextomy, ask: Has the quotation preserved the statement’s original argu
 
 **Key judgment:** Language does not merely express arguments. It can build, hide, distort, strengthen, or falsify them before the explicit reasoning even begins.
 
-## Part 9 How Should Fallacy Knowledge Be Used in Public Discussion?
+## P9 How Should Fallacy Knowledge Be Used in Public Discussion?
 
 ### Why can “you committed a fallacy” itself become bad reasoning?
 
@@ -609,7 +609,7 @@ Fallacy knowledge, used well, slows down the impulse to win too quickly. It asks
 
 **Key judgment:** The most valuable reader of fallacies is not the person who can name the most errors in others, but the person who can keep reasoning answerable to evidence, context, and dialogue even when the topic is controversial.
 
-## Part 10 How Is Argumentative Procedure Manipulated?
+## P10 How Is Argumentative Procedure Manipulated?
 
 ### Why is fallacy sometimes a failure of procedure rather than a bad sentence?
 
@@ -683,7 +683,7 @@ The analysis of authority also helps here. A fallacy can consist not merely in f
 
 **Key judgment:** Rational argument needs vulnerability to criticism. A claim that can explain every possible outcome may explain nothing.
 
-## Part 11 How Are Facts, Values, and Norms Confused?
+## P11 How Are Facts, Values, and Norms Confused?
 
 ### Why can facts and values not be simply deduced from each other?
 
@@ -757,7 +757,7 @@ A more disciplined form would unpack it. If the issue is factual, what evidence 
 
 **Key judgment:** The cure is not to despise common sense, tradition, nature, or law. The cure is to prevent any of them from pretending to be complete arguments by themselves.
 
-## Part 12 Why Are Analogy, Slippery Slope, and Thought Experiments Both Powerful and Dangerous?
+## P12 Why Are Analogy, Slippery Slope, and Thought Experiments Both Powerful and Dangerous?
 
 ### Why is analogy such a powerful form of reasoning?
 
@@ -835,7 +835,7 @@ These three forms are powerful because they move the imagination. They make abst
 
 # 中文
 
-## Part 1 为什么谬误不是“错误结论”的同义词？
+## P1 为什么谬误不是“错误结论”的同义词？
 
 ### 什么是逻辑谬误？
 
@@ -877,7 +877,7 @@ These three forms are powerful because they move the imagination. They make abst
 
 谬误研究的实践价值就在这里。它训练读者追问的，不只是一个结论是否诱人、冒犯、熟悉或流行，而是它是否真的被论证过。
 
-## Part 2 为什么必须把论证理解为对话？
+## P2 为什么必须把论证理解为对话？
 
 ### 为什么自然语言论证不能只看命题形式？
 
@@ -919,7 +919,7 @@ These three forms are powerful because they move the imagination. They make abst
 
 **关键判断：** 要准确评价一个论证，必须先识别它所处的对话类型。离开这个语境，批评会变得粗糙：要么把合理动作误判为谬误，要么把谬误动作宽宥成“只是修辞”。
 
-## Part 3 如何从形式谬误进入非形式谬误？
+## P3 如何从形式谬误进入非形式谬误？
 
 ### 什么是形式谬误？
 
@@ -983,7 +983,7 @@ $$
 
 没有重建的谬误标签，本身也可能变成坏论证。它让批评者看起来很会分析，却回避了更困难的任务：说明为什么这些支持并没有真正支持结论。
 
-## Part 4 相关性谬误如何把讨论带离问题？
+## P4 相关性谬误如何把讨论带离问题？
 
 ### 什么是相关性？
 
@@ -1035,7 +1035,7 @@ $$
 
 **关键判断：** 反驳必须回应对手真实承诺，而不是一个方便攻击的替代品。攻击越尖锐，重建就越重要。
 
-## Part 5 情绪诉求什么时候合理，什么时候成为谬误？
+## P5 情绪诉求什么时候合理，什么时候成为谬误？
 
 ### 情绪在论证中一定错误吗？
 
@@ -1085,7 +1085,7 @@ $$
 
 **关键判断：** 当强制在一个本应要求理由的对话中替代理由时，它就成为谬误。它还可能在道德或法律上错误，但道德错误与逻辑谬误并不是同一类判断。
 
-## Part 6 权威、专家与证据之间是什么关系？
+## P6 权威、专家与证据之间是什么关系？
 
 ### 诉诸权威为什么既必要又危险？
 
@@ -1160,7 +1160,7 @@ $$
 
 **关键判断：** 理性使用权威，位于盲目信任与反射性怀疑之间。专家意见可以引导探究，但必须继续接受证据、领域边界和批判性问题的约束。
 
-## Part 7 归纳、统计和因果判断为什么容易出错？
+## P7 归纳、统计和因果判断为什么容易出错？
 
 ### 什么是草率概括？
 
@@ -1247,7 +1247,7 @@ $$
 
 **关键判断：** 统计不会取消判断的必要。它只是把判断重新安置到抽样、定义、比较、解释和结论强度之中。
 
-## Part 8 自然语言怎样制造谬误？
+## P8 自然语言怎样制造谬误？
 
 ### 歧义、模糊和偷换概念如何发生？
 
@@ -1332,7 +1332,7 @@ $$
 
 **关键判断：** 语言不只是表达论证。它可以在显性推理开始之前，就建构、隐藏、扭曲、强化或伪造论证。
 
-## Part 9 如何在公共讨论中使用谬误知识？
+## P9 如何在公共讨论中使用谬误知识？
 
 ### 为什么“你犯了谬误”本身也可能变成坏论证？
 
@@ -1435,7 +1435,7 @@ $$
 
 **关键判断：** 最有价值的谬误学习者，不是最会给别人错误命名的人，而是在争议话题中仍能让推理接受证据、语境和对话责任约束的人。
 
-## Part 10 论证程序怎样被操控？
+## P10 论证程序怎样被操控？
 
 ### 为什么谬误有时不是坏句子，而是程序失败？
 
@@ -1509,7 +1509,7 @@ $$
 
 **关键判断：** 理性论证需要能够被批评击中。一个能解释所有可能结果的主张，可能什么都没有解释。
 
-## Part 11 事实、价值与规范怎样被混淆？
+## P11 事实、价值与规范怎样被混淆？
 
 ### 为什么事实与价值不能彼此简单推出？
 
@@ -1583,7 +1583,7 @@ $$
 
 **关键判断：** 解决办法不是蔑视常识、传统、自然或法律。解决办法是阻止它们把自己伪装成完整论证。
 
-## Part 12 类比、滑坡和思想实验为什么既有力又危险？
+## P12 类比、滑坡和思想实验为什么既有力又危险？
 
 ### 为什么类比如此有说服力？
 

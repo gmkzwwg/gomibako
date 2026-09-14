@@ -4,7 +4,7 @@ categories: Notes
 subclass: Historiography
 ---
 
-## Part 1. Why Is Historiography Not a List of Historians and Schools?
+## P1. Why Is Historiography Not a List of Historians and Schools?
 
 ### What does `historiography` study when it studies history-writing?
 
@@ -137,7 +137,7 @@ To study historiography is to learn that every research operation has a history.
 This does not weaken historical research. It makes it more exact. A researcher who understands the history of method can choose tools more deliberately. A source can be read for what it was meant to say, what it accidentally reveals, what it suppresses, and what later institutions made it mean. A narrative can distinguish event, structure, experience, memory, and representation. An explanation can avoid both single-cause reduction and vague complexity. A claim can mark the difference between certainty, probability, inference, and speculation.
 
 Historiography is therefore not an ornamental preface to “real history.” It is the discipline that makes historical research self-conscious. It shows that history is neither mere storytelling nor pure data recovery. It is a structured inquiry into the past through surviving traces, governed by changing but criticizable standards of evidence, method, explanation, and public accountability. The development of Western historiography is the development of those standards: their invention, expansion, misuse, critique, and renewal.
-## Part 2. How Did Greek Historiography Emerge from Myth, Memory, and Inquiry?
+## P2. How Did Greek Historiography Emerge from Myth, Memory, and Inquiry?
 
 ### Why does Greek historiography begin with inquiry rather than with archives?
 
@@ -284,7 +284,7 @@ The fourth is that sources require mediation. The Greeks did not develop modern 
 That problem would be transformed by **Rome**, by Christianity, by medieval universal history, by Renaissance philology, by Reformation polemic, by Enlightenment comparison, by Rankean archives, and by modern social and cultural theory. Yet the Greek beginning remained decisive. It introduced the idea that the past is not only remembered; it can be questioned. It is not only celebrated; it can be explained. It is not only inherited; it can be made accountable to inquiry.
 Part 3 follows the revised structure. The methodological bridge is that *From Reliable Sources* treats Greek and Roman traditions as part of the long Western inheritance of historical method, while also noting that Roman historians strongly tied history to state purposes, moral judgment, and civic memory. 
 
-## Part 3. How Did Roman Historiography Turn History into Civic Memory and Imperial Judgment?
+## P3. How Did Roman Historiography Turn History into Civic Memory and Imperial Judgment?
 
 ### Why did Roman historiography inherit Greek inquiry but change its purpose?
 
@@ -451,7 +451,7 @@ The fourth was the close tie between history and power. Roman historians wrote a
 **Conclusion:** Roman historiography turned Greek inquiry toward civic memory, moral judgment, and imperial reflection. It did not abandon causality or evidence, but it placed them inside the life of the commonwealth and the fate of empire. Its greatness lies in the intensity with which it connected character, institution, power, and decline. Its limit lies in the narrowness of the social world it most often made visible.
 
 The next transformation would come from Christianity. Roman historiography had made history a drama of civic virtue, state power, and imperial destiny. Christian historiography would relocate that drama inside sacred time. The question would no longer be only how Rome rose, corrupted itself, and ruled; it would become how human history as a whole could be understood under providence, salvation, and final judgment.
-## Part 4. How Did Christian Historiography Transform Time and Causality?
+## P4. How Did Christian Historiography Transform Time and Causality?
 
 ### Why did Christianity change the meaning of historical time?
 
@@ -631,7 +631,7 @@ The fourth was the idea that history has moral and spiritual stakes beyond polit
 
 The next stage would not abandon Christianity, but would thicken its social and institutional forms. Medieval historiography would carry Christian time into monasteries, courts, crusades, kingdoms, cities, saints’ cults, peoples, and local communities. History would remain sacred, but it would also become more deeply tied to dynastic legitimacy, territorial identity, collective memory, and the documentary practices of medieval society.
 
-## Part 5. How Did Medieval Historiography Organize Peoples, Dynasties, Crusades, and Communities?
+## P5. How Did Medieval Historiography Organize Peoples, Dynasties, Crusades, and Communities?
 
 ### Why should medieval historiography not be reduced to Christian universal history?
 
@@ -856,7 +856,7 @@ But those limitations are also historically meaningful. They show what medieval 
 **Key judgment:** Medieval historiography did not move in a straight line from sacred credulity toward modern criticism. It developed a dense culture of memory, documentation, legitimacy, and institutional preservation. Modern historical method later transformed these materials, but it also depended on them.
 
 The next major transition would come through Renaissance humanism. Medieval scholars had copied, preserved, moralized, and adapted antiquity. Renaissance humanists would intensify the return to classical texts and make language itself into a sharper historical instrument. Philology would become criticism. Antiquity would no longer be only an inherited authority; it would become a textual field to be dated, corrected, compared, and used against medieval tradition.
-## Part 6. Why Did Renaissance Humanism Make Textual Criticism Historically Powerful?
+## P6. Why Did Renaissance Humanism Make Textual Criticism Historically Powerful?
 
 ### Why was the Renaissance not simply a return to antiquity?
 
@@ -1017,7 +1017,7 @@ This return to sources did not produce agreement. It made disagreement more inte
 Renaissance humanism therefore stands between medieval learned culture and early modern source criticism. It did not yet create the full apparatus of professional historical research. It did, however, make several later developments possible: the historical dating of language, the exposure of anachronism, the comparison of manuscripts, the critique of inherited authority, the recovery of textual origins, and the use of antiquity as a standard against which later claims could be tested.
 
 The next stage would show the paradox more forcefully. Reformation polemic often produced partisan, apologetic, and aggressively selective history. Yet precisely because each confession had to prove its continuity with the true church, polemic pushed scholars to refine evidence. The struggle over religious truth became one of the major engines of modern source criticism.
-## Part 7. How Did Reformation Polemic and Learned Scholarship Create Modern Source Criticism?
+## P7. How Did Reformation Polemic and Learned Scholarship Create Modern Source Criticism?
 
 ### Why did the Reformation make history a weapon?
 
@@ -1206,7 +1206,7 @@ Their fourth legacy was the institutionalization of scholarship. Religious order
 **Conclusion:** Reformation polemic and early modern learned scholarship created a decisive bridge between Renaissance philology and modern historical criticism. They did not produce neutral history. They produced something perhaps more historically important: a world in which the past had to be argued from evidence, and in which evidence itself became subject to technical scrutiny. Confessional conflict sharpened historical tools because each side needed the past to bear institutional truth.
 
 The next phase would widen the horizon again. Early modern historians would confront expanding states, overseas worlds, global comparison, antiquarian collections, administrative archives, and universal history. Historical writing would no longer be concerned only with church continuity or classical recovery. It would begin to ask how Europe, empire, commerce, peoples, and the wider world could be placed inside one historical field.
-## Part 8. How Did Early Modern Historians Respond to New States, New Worlds, and Universal History?
+## P8. How Did Early Modern Historians Respond to New States, New Worlds, and Universal History?
 
 ### Why did early modern historiography need a wider frame than Reformation polemic?
 
@@ -1407,7 +1407,7 @@ The fourth legacy was the unresolved problem of Europe’s place in world histor
 **Conclusion:** Early modern historiography widened the historical field before it fully transformed historical theory. It responded to new states, new worlds, and new information by multiplying sources and expanding comparison. It remained confessional, dynastic, civic, imperial, providential, and Eurocentric in many forms, yet it also developed the materials and methods that made later historical thought possible.
 
 The next step is Enlightenment historiography. There, the accumulated evidence of travel, commerce, empire, antiquity, law, and comparison would be reorganized into histories of civilization, progress, manners, and secular causality. The question would no longer be only how to defend a church, state, dynasty, or city through the past. It would become how to explain humanity’s different ways of living within a single comparative history.
-## Part 9. How Did Enlightenment Historiography Turn History into Civilization, Progress, and Comparison?
+## P9. How Did Enlightenment Historiography Turn History into Civilization, Progress, and Comparison?
 
 ### Why did Enlightenment historiography need a new object called `civilization`?
 
@@ -1620,7 +1620,7 @@ Its fifth legacy was the tension between philosophy and evidence. Enlightenment 
 **Conclusion:** Enlightenment historiography transformed the past into a comparative history of human societies. It replaced providential explanation with reason, nature, law, commerce, manners, and social development. It widened history beyond rulers and battles, brought non-European civilizations into view, and gave historians the ambition to write humanity’s history. Its power lay in breadth and critique. Its weakness lay in overconfidence, uneven evidence, and the tendency to convert comparison into hierarchy.
 
 The next transformation would come through Romanticism and national history. Enlightenment writers had often treated history as the development of civilization, reason, and sociability. Romantic historians would answer with individuality, feeling, peoplehood, memory, and national spirit. The past would no longer appear mainly as a comparative field of progress. It would become the birthplace of identity.
-## Part 10. Why Did Romantic and National Historians Give the Past Emotional and Political Force?
+## P10. Why Did Romantic and National Historians Give the Past Emotional and Political Force?
 
 ### Why did Romantic historiography react against Enlightenment abstraction?
 
@@ -1873,7 +1873,7 @@ Its fifth legacy was the preparation of historicism. By insisting that each age 
 **Conclusion:** Romantic and national historians gave the past emotional and political force by making it the ground of collective identity. They recovered language, memory, folklore, medieval culture, heroic agency, and national continuity. They resisted Enlightenment abstraction and made historical difference vivid. Yet they also created powerful myths of unity, destiny, and belonging. Their contribution to historiography is inseparable from this tension: they deepened historical imagination while exposing history to the passions of nationhood.
 
 The next stage will turn from Romantic nation-making to professional discipline. **Ranke** and nineteenth-century historicism did not simply reject Romantic history; they sought to give the study of particular pasts a stricter evidentiary foundation. The archive, the seminar, the footnote, and the trained criticism of sources would now become the marks of historical seriousness.
-## Part 11. Why Did Ranke and Historicism Professionalize Historical Knowledge?
+## P11. Why Did Ranke and Historicism Professionalize Historical Knowledge?
 
 ### Why did nineteenth-century history need professional discipline?
 
@@ -2080,7 +2080,7 @@ Their limits are equally important. Rankean history privileged state archives, d
 **Conclusion:** Rankean historicism professionalized historical knowledge by transforming the study of the past into a disciplined practice of source-based reconstruction. It did not give history a final method. It gave history a professional foundation: the archive, source criticism, contextual understanding, and public accountability through evidence. Later historiography would criticize its narrowness, but it would rarely escape its discipline.
 
 The next stage turns to positivism and social theory. Once historians had learned to reconstruct the past through documents, another question became unavoidable: was history only the recovery of unique events, or could it explain broader laws and structures of social change? The nineteenth century answered this question through positivism, sociology, political economy, and eventually Marxism.
-## Part 12. Why Did Positivism and Social Theory Try to Make History Scientific?
+## P12. Why Did Positivism and Social Theory Try to Make History Scientific?
 
 ### Why did nineteenth-century historians begin to ask whether history could be a science?
 
@@ -2273,7 +2273,7 @@ Their fifth legacy was pseudo-objectivity. By treating data and categories as ne
 **Conclusion:** Positivism and social theory tried to make history scientific by giving it causal ambition, empirical discipline, and structural explanation. They moved historical thought beyond the archive of high politics and toward society as a whole. Their confidence was often excessive, and their categories sometimes deterministic, Eurocentric, or falsely neutral. Yet without them, modern historiography would lack many of its most powerful questions: how societies change, how structures constrain action, how data reveal collective patterns, and how history can explain more than the visible decisions of elites.
 
 The next chapter turns to Marxism and economic history. Positivism asked whether society could be known scientifically. Marxism answered by locating the motor of historical change in production, class relations, contradiction, and struggle. It would give modern historiography one of its most influential and contested explanatory models.
-## Part 13. How Did Marxism and Economic History Change the Object of Explanation?
+## P13. How Did Marxism and Economic History Change the Object of Explanation?
 
 ### Why did Marxism change what historians tried to explain?
 
@@ -2486,7 +2486,7 @@ Their sixth legacy was a set of dangers: reductionism, determinism, conceptual r
 **Conclusion:** Marxism and economic history transformed the object of explanation by moving the historian’s gaze from the visible surface of politics to the organization of material life. They made class, production, labor, capitalism, exploitation, and social conflict central to historical inquiry. They also forced historians to confront the relation between structure and agency, economy and culture, data and experience, theory and source. Modern historiography cannot be understood without this shift. Even where Marxism is rejected, the questions it imposed remain part of the discipline’s working grammar.
 
 The next chapter turns from Marxism and economic history to the broader discovery of masses, society, and world history. Once social and economic structures became visible, historians began to ask how ordinary people, collective life, imperial systems, and global connections could be written into history without reducing them to either state narratives or economic laws.
-## Part 14. How Did Historians Discover Masses, Society, and World History?
+## P14. How Did Historians Discover Masses, Society, and World History?
 
 ### Why did nineteenth-century social change make older political history insufficient?
 
@@ -2701,7 +2701,7 @@ Its fifth legacy was methodological tension. Aggregate data can obscure experien
 **Conclusion:** The discovery of masses, society, and world history changed historiography by making the ordinary, the collective, and the connected historically central. It challenged the dominance of diplomatic, dynastic, and national narratives. It required historians to read new sources, adopt new methods, and think across new scales. It also prepared the way for the Annales School, where society would not only become a subject of history but would transform the very rhythm of historical time.
 
 The next chapter turns to the interwar crisis of historiography. The expansion of social and economic history did not occur in a peaceful intellectual vacuum. The First World War, revolution, fascism, Soviet Marxism, liberal crisis, and debates over responsibility and ideology forced historians to confront the political uses of method more directly. Historiography became not only a question of sources and subjects, but a struggle over the meaning of modern civilization itself.
-## Part 15. Why Did the Interwar Crisis Turn Historiography into a Struggle over Ideology?
+## P15. Why Did the Interwar Crisis Turn Historiography into a Struggle over Ideology?
 
 ### Why did the First World War break nineteenth-century confidence in historical progress?
 
@@ -2894,7 +2894,7 @@ The interwar crisis also pushed historians toward broader methods. Diplomatic hi
 **Conclusion:** The interwar crisis turned historiography into a struggle over ideology because the past had become politically dangerous. Nationalism, fascism, Soviet Marxism, liberalism, and civilizational pessimism all fought over historical meaning. The First World War destroyed easy confidence in progress; war-guilt debates politicized archives; fascism converted history into myth; Soviet Marxism turned historical materialism into doctrine; liberal historians learned that liberty was fragile; the crisis of historicism made standpoint and judgment unavoidable.
 
 The legacy of the period was not a single method, but a sharper awareness of method’s political stakes. Historians had to ask not only whether a source was genuine, but who needed it, who published it, what ideology it served, what causal model organized it, and what moral consequences followed from the interpretation. The next stage, postwar historiography, would inherit this crisis under darker conditions. After fascism, the Holocaust, decolonization, and Cold War, history would have to become at once more social-scientific, more international, more self-critical, and more attentive to the violence hidden inside modern civilization.
-## Part 16. How Did Postwar Historiography Expand through Science, Numbers, and Social Structures?
+## P16. How Did Postwar Historiography Expand through Science, Numbers, and Social Structures?
 
 ### Why did postwar historiography need new methods after catastrophe?
 
@@ -3127,7 +3127,7 @@ Its sixth legacy was a new set of problems. Structures could become deterministi
 **Conclusion:** Postwar historiography expanded through science, numbers, and social structures because the older forms of history could no longer explain modern catastrophe, mass society, decolonization, bureaucracy, economic change, and everyday life. Social science gave historians new tools; the Annales School gave them new temporal scales; quantitative methods gave them access to collective patterns; Marxist and social historians gave ordinary people historical agency; area studies and decolonization widened the world. The result was one of the greatest expansions in the discipline’s history.
 
 The next transformation would emerge from the limits of this expansion. Once social history had unseated great men and great events, historians returned to culture, language, symbols, micro-events, identity, and representation with new questions. The new cultural history and microhistory did not abandon structures, but they insisted that structures are never experienced outside meaning.
-## Part 17. How Did New Social History, Microhistory, and Cultural History Change Historical Evidence?
+## P17. How Did New Social History, Microhistory, and Cultural History Change Historical Evidence?
 
 ### Why did social history create the need for cultural history?
 
@@ -3362,7 +3362,7 @@ The sixth was a new danger: interpretive excess. Cultural historians could overr
 **Conclusion:** New social history, microhistory, and cultural history changed historical evidence by asking not only what sources report, but how they produce meaning. Social history had expanded the field to ordinary people, structures, and collective life. Microhistory returned to the small scale to show how large structures appear in dense cases. New cultural history made language, symbols, discourse, representation, gender, ritual, and meaning central to historical explanation. Together, they moved historiography beyond the opposition between facts and interpretation. Evidence became something to be read not only for information, but for the historical worlds of meaning that made information possible.
 
 The next chapter turns to gender, postcolonial history, memory, and oral history. These fields would radicalize questions already opened here: who counts as a historical subject, whose voice survives in the archive, what happens when experience is mediated by trauma or domination, and how historians should write lives that were recorded mainly through silence, violence, or hostile classification.
-## Part 18. How Did Gender, Postcolonial History, Memory, and Oral History Change Historical Subjects?
+## P18. How Did Gender, Postcolonial History, Memory, and Oral History Change Historical Subjects?
 
 ### Why did the question shift from “what happened?” to “who has a history?”
 
@@ -3607,7 +3607,7 @@ The sixth was a new caution about universal categories. Woman, nation, civilizat
 **Conclusion:** Gender history, postcolonial history, memory studies, and oral history changed historiography by asking who can become a historical subject and under what conditions. They exposed the politics of archives, the instability of categories, the historical value of memory, and the need to read sources produced under domination with special care. They did not abandon evidence. They made evidence more demanding. Written documents, oral testimony, silence, ritual, memory, and representation all became parts of a wider evidentiary field.
 
 The next chapter turns to the postmodern challenge and contemporary pluralization. Once historians had recognized that sources are mediated, categories are historical, archives are political, and narratives shape meaning, the discipline had to confront a sharper question: if historical knowledge is always constructed through language, evidence, and standpoint, what kind of truth can history still claim?
-## Part 19. What Remains of Historical Truth after Postmodernism and Contemporary Pluralization?
+## P19. What Remains of Historical Truth after Postmodernism and Contemporary Pluralization?
 
 ### Why did postmodernism pose a sharper challenge than earlier methodological debates?
 

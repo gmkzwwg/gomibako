@@ -19,6 +19,33 @@ excerpt: "This is excerpt." # string
 abstract: "This is abstract. Abstract is blank by default." # string
 ---
 
+## Layout 名称与用途
+
+在页面的 YAML front matter 中设置 `layout: 名称` 即可使用，无需填写 `.html` 后缀。
+
+| Layout | 一句话说明 |
+| --- | --- |
+| `default` | 提供站点通用页面框架，统一加载页眉、正文容器、页脚、目录及公共资源。 |
+| `index` | 在通用框架中显示终端风格的首页界面与导航菜单。 |
+| `index-posts` | 显示页面正文及可配置的文章列表。 |
+| `index-collections` | 按 collection 分组列出文档，并提供 collection 筛选。 |
+| `index-categories` | 按 categories 分类组织所选 collection 的文档，并提供分类筛选。 |
+| `index-subclass` | 在各 collection 内按 subclass 分组列出文档，并支持子类与未分类筛选。 |
+| `index-tags` | 按 tags 标签组织所选 collection 的文档，并提供标签筛选。 |
+| `index-todos` | 汇总所选 collection 中带有非空 todos 字段的文档及其待办内容。 |
+| `post` | 使用标准文章容器显示正文，适合普通文章与笔记。 |
+| `post-bilingual` | 为文章启用双语内容折叠与展开功能。 |
+| `post-compact` | 使用标准文章容器并自动最大化阅读区域。 |
+| `post-horizonal` | 将正文块与紧随其后的引用块排成多栏对照，并自动最大化阅读区域。 |
+| `post-vertical` | 识别一级标题标记的语言分区并逐块并排对照，支持切换单语言阅读。 |
+| `print` | 使用独立的打印页面和样式呈现正文，并按配置支持公式与 Mermaid 图表。 |
+| `slide-simple` | 按正文中最高层级的标题分页，以精简控制按钮浏览幻灯片。 |
+| `slide-linear` | 按正文中最高层级的标题顺序分页，提供目录、首尾跳转和自动播放。 |
+| `slide-multilingual` | 将一级标题划分的语言分区作为独立页面，通过语言菜单切换。 |
+| `slide-annotation` | 按标题分页，以原文入口和注释翻页按钮浏览内容。 |
+| `slide-tree` | 按一级标题与二级标题构建树状幻灯片，支持章节和小节之间导航。 |
+| `slide-wiki` | 在树状幻灯片基础上提供置于开头的 Wiki 风格目录入口。 |
+
 
 <div class="fa47-test">
   <button><i class="fa fa-terminal"></i><span>Prompt</span></button>
@@ -333,7 +360,8 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - `post`：普通文章模式，负责大多数笔记和文章的基础阅读体验。相关文件：`src/_layouts/post.html`。
 - `post-compact`：紧凑文章模式，适合信息密度更高、装饰更少的阅读场景。相关文件：`src/_layouts/post-compact.html`。
 - `post-bilingual`：双语折叠模式，通常把 `blockquote` 作为译文、补充说明或第二语言内容，可通过按钮统一展开/折叠。相关文件：`src/_layouts/post-bilingual.html`、`src/assets/js/bilingual.js`。
-- `post-parallel`：平行文本模式，把正文与后续 blockquote 自动重组为多栏对照，适合原文、译文、注释并排阅读。相关文件：`src/_layouts/post-parallel.html`、`src/assets/js/parallel-text-column.js`。
+- `post-horizonal`：平行文本模式，把正文与后续 blockquote 自动重组为多栏对照，适合原文、译文、注释并排阅读。相关文件：`src/_layouts/post-horizonal.html`、`src/assets/js/parallel-text.js`。
+- `post-vertical`：语言分区对照模式，以 `# 中文`、`# English` 等一级标题识别语言分区并逐块并排显示，支持切换单语言阅读。相关文件：`src/_layouts/post-vertical.html`、`src/assets/js/bilingual-toggle.js`。
 - `post-list`：文章列表模式，支持多种列表样式、分类分组、折叠分组和 meta 显示控制。相关文件：`src/_layouts/post-list.html`、`src/_includes/post-list.html`。
 - `print`：打印专用布局，使用更接近纸面排版的字体、表格、代码块和引用样式。相关文件：`src/_layouts/print.html`。
 
@@ -371,7 +399,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 - `toc_chart`：图表式目录，把 `h2` 和下属 `h3` 做成视觉分组，适合长笔记、课程笔记和知识地图。相关文件：`src/_includes/toc_chart.html`。
 - compact TOC：`toc_chart` 的紧凑模式，把多个 `h3` 以内联方式排列，减少目录占用空间。相关文件：`src/_includes/toc_chart.html`。
 - header TOC 按钮：根据 layout 和 front matter 决定是否显示目录按钮。相关文件：`src/_includes/header.html`。
-- 正文前目录：部分 layout 支持在正文前直接插入目录。相关文件：`src/_layouts/post.html`、`src/_layouts/post-bilingual.html`、`src/_layouts/post-parallel.html`。
+- 正文前目录：部分 layout 支持在正文前直接插入目录。相关文件：`src/_layouts/post.html`、`src/_layouts/post-bilingual.html`、`src/_layouts/post-horizonal.html`。
 
 ### 6. 阅读增强
 

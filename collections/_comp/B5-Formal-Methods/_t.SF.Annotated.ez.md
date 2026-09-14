@@ -1,7 +1,7 @@
 ---
 title: Software Foundations Personal Annotated
 abbreviation: SF Annotated
-layout: post-parallel
+layout: post-horizonal
 categories: Texts
 subclass: Formal Methods
 ---

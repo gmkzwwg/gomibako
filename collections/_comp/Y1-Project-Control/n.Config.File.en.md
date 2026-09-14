@@ -4,7 +4,7 @@ categories: Notes
 subclass: Project Control
 ---
 
-## Part 1. Configuration Is Project Management, Not Just Programming
+## P1. Configuration Is Project Management, Not Just Programming
 
 A project does not become difficult to maintain only because its code becomes complicated. It also becomes difficult when its **configuration system** becomes unclear.
 
@@ -397,7 +397,7 @@ Validated enough to catch mistakes early.
 
 This is why configuration design belongs in a Project Management series. It is not only about syntax. It is about keeping a project understandable as people, features, environments, and exceptions multiply.
 
-## Part 2. Separate Configuration by Scope
+## P2. Separate Configuration by Scope
 
 A configuration system becomes hard to maintain when every setting lives at the same level.
 
@@ -859,7 +859,7 @@ When adding a new configuration setting, ask four questions:
 
 If these questions cannot be answered, the setting is not ready to be added.
 
-## Part 3. Define the Override Order
+## P3. Define the Override Order
 
 A configuration system is not complete until it answers one question:
 
@@ -1497,7 +1497,7 @@ For each setting, ask:
 
 If these questions are not answered, the setting may work today but confuse the project later.
 
-## Part 4. Use Namespaces to Express Responsibility
+## P4. Use Namespaces to Express Responsibility
 
 A configuration file becomes difficult to maintain when many unrelated settings are placed at the same level.
 
@@ -2079,7 +2079,7 @@ When adding a new configuration key, ask:
 
 If the answer is unclear, the setting probably needs a better namespace or a better name.
 
-## Part 5. Separate Project Configuration, Environment Configuration, and Secrets
+## P5. Separate Project Configuration, Environment Configuration, and Secrets
 
 A configuration system should not treat every value as the same kind of value.
 
@@ -2634,7 +2634,7 @@ Which files are safe to commit?
 
 If the configuration system answers these questions clearly, the project becomes easier to deploy, review, and hand over.
 
-## Part 6. Make Configuration Self-Documenting
+## P6. Make Configuration Self-Documenting
 
 A configuration file should not require constant explanation from the original author.
 
@@ -3109,7 +3109,7 @@ A self-documenting configuration file should follow these rules:
 
 A good configuration file should feel like a small operating manual for the project.
 
-## Part 7. Validate Configuration Instead of Guessing
+## P7. Validate Configuration Instead of Guessing
 
 A configuration file is only useful if the project can trust it.
 
@@ -3763,7 +3763,7 @@ A maintainable project should validate configuration according to these rules:
 
 The purpose of validation is not to make the project rigid. It is to make the project safe to change.
 
-## Part 8. Design for Growth Without Over-Engineering
+## P8. Design for Growth Without Over-Engineering
 
 A configuration system should grow with the project.
 
@@ -4428,7 +4428,7 @@ flat file
 
 Each step should solve a real maintenance problem.
 
-## Part 9. Common Configuration Patterns Across Project Types
+## P9. Common Configuration Patterns Across Project Types
 
 Configuration design is project-specific, but many patterns appear again and again.
 
@@ -5157,7 +5157,7 @@ Ask:
 
 A maintainable configuration system is not one universal template. It is a small set of well-chosen patterns that match the project’s actual needs.
 
-## Part 10. Complete Compact Examples
+## P10. Complete Compact Examples
 
 The previous parts described principles separately: scope, override order, namespaces, secrets, validation, and growth. This part combines them into small complete examples.
 
@@ -5814,7 +5814,7 @@ Avoid exposing implementation accidents as public config.
 
 The exact structure changes by project. The principles stay the same.
 
-## Part 11. Practical Checklist for Maintainable Configuration
+## P11. Practical Checklist for Maintainable Configuration
 
 A configuration system should be reviewed like any other important part of a project.
 
@@ -6311,7 +6311,7 @@ what is safe to change
 
 Configuration is not just a technical detail. It is a management interface for the project.
 
-## Part 12. Conclusion: Configuration as a Project Management Interface
+## P12. Conclusion: Configuration as a Project Management Interface
 
 Configuration design is often treated as a minor engineering detail. It should not be.## Project Control and Management
 

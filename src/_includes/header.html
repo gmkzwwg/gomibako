@@ -18,13 +18,13 @@
 {% assign show_toc_mode = page.toc | default: "list" %}
 {% assign auto_maximize = true %}
 
-{% when "post-parallel" %}
-{% assign layout_name = "parallel mode" %}
+{% when "post-horizonal" %}
+{% assign layout_name = "horizonal mode" %}
 {% assign show_toc_mode = page.toc | default: "list" %}
 {% assign auto_maximize = true %}
 
-{% when "post-split" %}
-{% assign layout_name = "split mode" %}
+{% when "post-vertical" %}
+{% assign layout_name = "vertical mode" %}
 {% assign show_toc_mode = page.toc | default: "list" %}
 {% assign auto_maximize = true %}
 
@@ -155,7 +155,7 @@
       </li>
       {% endif %}
 
-      {% if page.layout == "post-parallel" %}
+      {% if page.layout == "post-horizonal" %}
       <li class="cli-header__action">
         <button class="cli-header__button" type="button" data-action="toggle-parallel"
           aria-label="Toggle parallel text view">

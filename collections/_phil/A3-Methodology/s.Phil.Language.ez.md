@@ -16,7 +16,7 @@ Some philosophical terms have more than one valid use. This reference card disti
 The rule is simple: do not transfer a term without asking what problem it originally solved, what later traditions changed, and what new problem the term is now being used to solve.  
 (基本规则是：不要直接转用一个术语；应先追问它原先解决什么问题，后来传统改变了什么，现在又被用来解决什么新问题。)  
   
-## Part 1. Greek Beginnings: Being, Logos, Truth  
+## P1. Greek Beginnings: Being, Logos, Truth  
   
 This chapter treats early Greek philosophical language as a **toolkit for making things thinkable**. It is not a neutral list of “ancient terms.” It is a system for handling several basic problems: change, order, knowledge, appearance, truth, action, and the good life. The original terms matter because philosophical concepts often carry older semantic tensions that disappear in smooth translation. Greek, Latin, German, and French terms should not be replaced too quickly by simple glosses, because their original forms often preserve conceptual resonances needed for reading and writing philosophy.  
   
@@ -372,7 +372,7 @@ The guiding thesis is therefore:
   
 Later philosophy does not simply abandon this grammar. It translates it, contests it, narrows it, reverses it, and reactivates it. That is why a quick reference must not reduce these terms to vocabulary items. They are conceptual instruments. They tell philosophy where a problem is located and what kind of answer can count as an answer.  
   
-## Part 2. Latin Metaphysics: Substance, Essence, Law  
+## P2. Latin Metaphysics: Substance, Essence, Law  
   
 This chapter explains how Greek philosophical vocabulary becomes a Latin metaphysical, theological, juridical, and institutional grammar. The shift from Greek to Latin is not merely linguistic. It changes what philosophical concepts are asked to do. Greek philosophy had built a grammar of **Being**, **Logos**, **Form**, **Nature**, and **Truth**. Latin metaphysics reorganizes this inheritance around **Substance**, **Essence**, **Existence**, **Law**, **Will**, **Intellect**, and **Order**.  
   
@@ -751,7 +751,7 @@ The guiding thesis is:
   
 This grammar remains active even after explicit scholastic metaphysics declines. Modern philosophy still asks whether something is essential or accidental, actual or possible, natural or legal, personal or impersonal, necessary or contingent. Existentialism later reverses essence and existence. Heidegger later reopens being against the metaphysical tradition. Foucault later asks how truth and knowledge become historically authorized. These later movements do not simply leave Latin metaphysics behind. They inherit its distinctions and transform their function.  
   
-## Part 3. Early Modern Philosophy: Subject, Method, Representation  
+## P3. Early Modern Philosophy: Subject, Method, Representation  
   
 This chapter explains the early modern transformation of philosophical language. Latin metaphysics had organized thought around **Substance**, **Essence**, **Existence**, **Law**, and **Order**. Early modern philosophy does not simply reject that inheritance. It relocates the center of philosophical pressure. The decisive question becomes: **how can a finite knowing subject secure truth?** (一个有限的认识主体如何确保真理？)  
   
@@ -1190,7 +1190,7 @@ This grammar remains active throughout modern thought. Kant asks what makes such
   
 The early modern subject therefore does not disappear. It becomes the problem that later philosophy must inherit, deepen, and criticize.  
   
-## Part 4. Kantian Critique: Conditions of Possibility  
+## P4. Kantian Critique: Conditions of Possibility  
   
 This chapter explains the Kantian transformation of philosophical language. Early modern philosophy had asked how a subject can secure knowledge through method, doubt, representation, and certainty. Kant changes the level of the question. He does not merely ask whether knowledge is certain. He asks: **what must already be in place for experience and knowledge to be possible at all?** (为了使经验与知识成为可能，必须已经具备什么条件？)  
   
@@ -1606,7 +1606,7 @@ The Kantian question therefore becomes one of the major engines of modern though
 **What must be presupposed for something to appear, count, or be known as something?**  
 (为了使某物能够作为某物而显现、被承认或被认识，必须预设什么？)  
   
-## Part 5. German Idealism: Spirit, Negation, Dialectic  
+## P5. German Idealism: Spirit, Negation, Dialectic  
   
 This chapter explains how German Idealism transforms Kantian critique into a philosophy of activity, history, and self-development. Kant had asked what conditions make experience and knowledge possible. German Idealism asks whether those conditions can themselves be understood as dynamic, self-generating, social, and historical.  
   
@@ -2027,7 +2027,7 @@ The German Idealist question remains one of the central tools of philosophical r
 **What process, opposition, or mediation had to occur for this concept, institution, or form of life to become what it is?**  
 (为了使这个概念、制度或生活形式成为其所是，必须发生什么过程、对立或中介？)  
   
-## Part 6. Marx and Nietzsche: Suspicion, Value, Genealogy  
+## P6. Marx and Nietzsche: Suspicion, Value, Genealogy  
   
 This chapter explains how nineteenth-century critique transforms German Idealism. Hegel had made reason historical through **Spirit**, **Dialectic**, **Mediation**, **Recognition**, and **Aufhebung**. Marx and Nietzsche inherit this historical grammar, but they redirect it against idealist reconciliation. Their question is sharper: **what material, social, bodily, affective, and power-laden forces produce the ideas that present themselves as truth?** (那些自称为真理的观念，是由哪些物质、社会、身体、情感和权力力量生产出来的？)  
   
@@ -2523,7 +2523,7 @@ The Marx-Nietzsche question remains one of the most powerful tools for philosoph
 **What appears as truth, morality, or nature here, and what historical force made it appear that way?**  
 (这里什么东西表现为真理、道德或自然？又是什么历史力量使它以这种方式显现？)  
   
-## Part 7. Phenomenology: Intentionality, World, Lived Experience  
+## P7. Phenomenology: Intentionality, World, Lived Experience  
   
 This chapter explains how phenomenology transforms the modern problem of knowledge. Early modern philosophy asked how the subject represents the object. Kant asked what conditions make experience possible. German Idealism made those conditions dynamic and historical. Marx and Nietzsche introduced suspicion toward concepts, values, and consciousness itself. Phenomenology enters this field with a different methodological demand: **return to the things themselves**. (回到事情本身。)  
   
@@ -2907,7 +2907,7 @@ The phenomenological question remains one of the most useful tools for reading p
 **How is this object, value, body, other, or world given before it is explained?**  
 (这个对象、价值、身体、他者或世界，在被解释之前是如何被给予的？)  
   
-## Part 8. Heidegger: Dasein, Being, Time  
+## P8. Heidegger: Dasein, Being, Time  
   
 This chapter explains Heidegger’s transformation of phenomenology into existential ontology. Husserlian phenomenology had asked how objects are given to consciousness. Heidegger radicalizes the question: before any subject represents an object, there is already a way of being in which beings matter, show up, withdraw, threaten, invite use, and become intelligible. The central question is therefore not first **how consciousness knows objects**, but **what it means for beings to be**. (核心问题不是意识如何认识对象，而是存在者之“存在”意味着什么。)  
   
@@ -3412,7 +3412,7 @@ The Heideggerian question remains one of the strongest tools for philosophical r
 **What mode of Being is silently presupposed when this text speaks of objects, subjects, truth, technology, or world?**  
 (当这个文本谈论对象、主体、真理、技术或世界时，它默默预设了什么存在方式？)  
   
-## Part 9. Existentialism: Freedom, Project, Bad Faith  
+## P9. Existentialism: Freedom, Project, Bad Faith  
   
 This chapter explains existentialist language as a practical grammar of finite freedom. Heidegger had analyzed **Dasein (此在; de: Dasein)** through being-in-the-world, thrownness, projection, anxiety, authenticity, and being-toward-death. Existentialism inherits this terrain but shifts the center of pressure. The decisive question becomes: **if human existence is not secured by a fixed essence, divine order, rational system, or natural telos, how must one live, choose, and take responsibility?** (如果人的存在不再由固定本质、神圣秩序、理性体系或自然目的保证，那么人必须如何生活、选择并承担责任？)  
   
@@ -3833,7 +3833,7 @@ This grammar becomes crucial for later philosophy. Feminist existentialism uses 
 **Even if the subject is historically produced, how does it live, choose, resist, or evade within that production?**  
 (即使主体是历史地被生产出来的，它仍如何在这种生产中生活、选择、抵抗或逃避？)  
   
-## Part 10. Analytic Philosophy: Argument, Logic, Reference  
+## P10. Analytic Philosophy: Argument, Logic, Reference  
   
 This chapter explains analytic philosophy as a language of argumentative control. Earlier chapters moved through Being, essence, subjectivity, critique, phenomenology, existential freedom, and genealogy. Analytic philosophy changes the toolset. Its primary question is not first **how Being is disclosed**, **how consciousness intends**, or **how values are historically produced**. Its core question is: **what exactly is being claimed, what follows from it, and under what conditions would it be true or false?** (核心问题是：究竟提出了什么主张？什么从中推出？在什么条件下它为真或为假？)  
   
@@ -4455,7 +4455,7 @@ The analytic question remains one of the strongest tools for philosophical readi
 **What exactly is the claim, what supports it, what follows from it, and what would show it to be wrong?**  
 (确切主张是什么？什么支持它？什么从中推出？什么会显示它是错误的？)  
   
-## Part 11. Hermeneutics and Critical Theory: Interpretation, Society, Emancipation  
+## P11. Hermeneutics and Critical Theory: Interpretation, Society, Emancipation  
   
 This chapter explains two related but distinct traditions: **Hermeneutics** and **Critical Theory**. Both reject the idea that knowledge is a neutral gaze at isolated objects. Hermeneutics asks how understanding is historically situated. Critical Theory asks how reason, society, and knowledge become entangled with domination. The shared problem is this: **understanding is never innocent, but neither can critique proceed without some claim to better understanding**. (理解从不中立无辜，但批判也不能不提出某种更好的理解要求。)  
   
@@ -4968,7 +4968,7 @@ The hermeneutic-critical question remains a durable tool for philosophical readi
 **What horizon makes this meaning intelligible, and what forms of power may be shaping that horizon?**  
 (什么视域使这个意义成为可理解之物？又有哪些权力形式可能正在塑造这个视域？)  
   
-## Part 12. Structuralism and Post-Structuralism: Sign, Difference, Decentering  
+## P12. Structuralism and Post-Structuralism: Sign, Difference, Decentering  
   
 This chapter explains how structuralism and post-structuralism transform the problem of meaning. Hermeneutics had asked how meaning is historically understood through tradition, horizon, and interpretation. Critical Theory had asked how understanding is distorted by ideology, domination, and instrumental reason. Structuralism changes the question: **what underlying system makes meaning possible before any individual speaker, author, or subject intends it?** (在任何个体说话者、作者或主体意图之前，是什么底层系统使意义成为可能？)  
   
@@ -5541,7 +5541,7 @@ The structuralist/post-structuralist question remains one of the strongest tools
 **What system of differences makes this meaning possible, and what instability does that same system conceal?**  
 (什么差异系统使这个意义成为可能？而同一个系统又遮蔽了什么不稳定性？)  
   
-## Part 13. Foucault: Archaeology, Genealogy, Power/Knowledge  
+## P13. Foucault: Archaeology, Genealogy, Power/Knowledge  
   
 This chapter explains **Michel Foucault** as the point where several previous lines converge: **Nietzschean genealogy**, **structuralist discourse analysis**, **critical suspicion**, and **historical epistemology**. Foucault does not mainly ask whether a proposition is true, whether consciousness intends an object, or whether a text has a hidden meaning. His central question is: **under what historical conditions can something become an object of knowledge, a target of power, and a form of subjectivity?** (在什么历史条件下，某物能够成为知识对象、权力目标和主体形式？)  
   
@@ -6130,7 +6130,7 @@ This grammar is indispensable for contemporary analysis. It applies to prisons, 
 **What kind of subject does this truth require and produce?**  
 (这种真理要求并生产什么样的主体？)  
   
-## Part 14. Derrida and Deconstruction: Presence, Trace, Iterability  
+## P14. Derrida and Deconstruction: Presence, Trace, Iterability  
   
 This chapter isolates **Jacques Derrida** from the broader post-structuralist field. The previous chapter introduced **différance**, **trace**, **supplement**, **deconstruction**, and **logocentrism** as general tools. This part deepens them as a method of philosophical reading. Foucault asks how discourse, institutions, power, and knowledge produce subjects and truths. Derrida asks a more textual and quasi-transcendental question: **what must a system of meaning exclude, subordinate, or defer in order to appear stable, present, and self-grounded?** (一个意义系统为了显得稳定、在场并自我奠基，必须排除、贬低或延迟什么？)  
   
@@ -6620,7 +6620,7 @@ The Derridean question remains one of the strongest tools for philosophical read
 **What must this text subordinate or exclude in order to make its meaning appear present, stable, and authoritative? What supplement does it need, what trace does it carry, and where does its own logic begin to undo the hierarchy it claims to secure?**  
 (这个文本为了使其意义显得在场、稳定且具有权威性，必须贬低或排除什么？它需要什么补充，携带什么痕迹，又在何处因自身逻辑而开始瓦解它声称要保证的等级结构？)  
   
-## Part 15. Psychoanalysis and Lacan: Unconscious, Desire, Symbolic Order  
+## P15. Psychoanalysis and Lacan: Unconscious, Desire, Symbolic Order  
   
 This chapter explains psychoanalysis as a philosophy of the divided subject. Earlier chapters treated subjectivity through **self-consciousness**, **freedom**, **being-in-the-world**, **discourse**, **power**, and **textual instability**. Psychoanalysis adds a different wound to the modern subject: **the subject is not master in its own house**. (主体并不是自身家中的主人。)  
   
@@ -7223,7 +7223,7 @@ The Lacanian question remains one of the strongest tools for philosophical readi
 **What does this subject say it wants, what lack actually organizes that wanting, and what signifier or fantasy keeps the desire in motion?**  
 (这个主体声称自己想要什么？实际上是什么缺失组织了这种想要？又是什么能指或幻想使欲望持续运动？)  
   
-## Part 16. Feminism, Gender, and Queer Theory: Body, Sex, Performativity  
+## P16. Feminism, Gender, and Queer Theory: Body, Sex, Performativity  
   
 This chapter explains feminist, gender, and queer theory as a reorganization of philosophical language around **embodiment**, **sexual difference**, **social reproduction**, **normativity**, **performativity**, and **intersectional power**. Earlier chapters analyzed subjectivity through freedom, Being, language, discourse, power, deconstruction, and unconscious desire. Feminist and queer theory ask a sharper question: **whose body, whose labor, whose desire, whose vulnerability, and whose experience was silently treated as secondary when philosophy spoke in universal terms?** (当哲学以普遍术语说话时，谁的身体、谁的劳动、谁的欲望、谁的脆弱性和谁的经验被默默视为次要？)  
   
@@ -7759,7 +7759,7 @@ The feminist-queer question remains one of the strongest tools for philosophical
 **Whose body, labor, desire, and standpoint must be hidden or disciplined for this concept to appear universal, natural, and neutral?**  
 (为了使这个概念显得普遍、自然且中立，谁的身体、劳动、欲望和立场必须被隐藏或规训？)  
   
-## Part 17. Postcolonial Theory: Empire, Orientalism, Subalternity  
+## P17. Postcolonial Theory: Empire, Orientalism, Subalternity  
   
 This chapter explains **Postcolonial Theory** as a critique of modernity from the side of empire. Earlier chapters showed that the universal subject was gendered, embodied, sexualized, and regulated. Postcolonial theory adds another decisive pressure: **modernity was not only European reason, democracy, science, and capitalism; it was also colonial conquest, racial classification, slavery, extraction, missionary knowledge, imperial administration, and global inequality**. (现代性不只是欧洲理性、民主、科学和资本主义；它也是殖民征服、种族分类、奴隶制、资源榨取、传教知识、帝国行政和全球不平等。)  
   
@@ -8312,7 +8312,7 @@ The postcolonial question remains one of the strongest tools for philosophical r
 **What empire, archive, racial order, or global hierarchy must be forgotten for this concept to appear universal, civilized, and progressive?**  
 (为了使这个概念显得普遍、文明且进步，什么帝国、档案、种族秩序或全球等级必须被遗忘？)  
   
-## Part 18. Pragmatism and Ordinary Language Philosophy: Practice, Use, Form of Life  
+## P18. Pragmatism and Ordinary Language Philosophy: Practice, Use, Form of Life  
   
 This chapter explains **Pragmatism** and **Ordinary Language Philosophy** as two traditions that return philosophy from abstract foundations to **practice**, **use**, **habit**, **inquiry**, **language-games**, and **forms of life**. After postcolonial theory, the danger is that philosophical critique may remain at the level of large structures: empire, archive, discourse, race, capital, gender, power. Pragmatism and ordinary language philosophy add another discipline: **ask how a concept actually works in practice, in inquiry, in ordinary use, and in shared forms of life**. (追问一个概念实际上如何在实践、探究、日常使用和共享生活形式中运作。)  
   
@@ -8857,7 +8857,7 @@ The pragmatist-ordinary-language question remains one of the strongest tools for
 **What does this concept do in practice, what form of life makes it intelligible, and what philosophical confusion appears when it is treated as an abstract essence rather than a tool of use?**  
 (这个概念在实践中做什么？什么生活形式使它成为可理解的？当它被当作抽象本质而非使用工具时，会出现什么哲学混乱？)  
   
-## Part 19. Contemporary Critical Vocabulary: Technology, Data, Platform, Anthropocene  
+## P19. Contemporary Critical Vocabulary: Technology, Data, Platform, Anthropocene  
   
 This chapter explains contemporary critical vocabulary for a world increasingly organized by **technology**, **data**, **platforms**, **algorithms**, **automation**, **surveillance**, **infrastructure**, **artificial intelligence**, and **ecological crisis**. **Heidegger** for technology as enframing, **Critical Theory** for instrumental reason, **Foucault** for power/knowledge and governmentality, **Derrida** for archive, trace, iterability, and signature, **feminism** for bodies and hidden labor, **postcolonial theory** for extractive global hierarchy, and **pragmatism** for use, consequences, and practice.  
   
@@ -9490,7 +9490,7 @@ The contemporary critical question remains one of the strongest tools for philos
 **What world must be represented, extracted, optimized, automated, and made disposable for this technical system to appear efficient, intelligent, and inevitable?**  
 (为了使这个技术系统显得高效、智能且不可避免，什么世界必须被表征、榨取、优化、自动化并变得可抛弃？)  
   
-## Part 20. Methodological Synthesis: Genealogy, Diagnosis, Use  
+## P20. Methodological Synthesis: Genealogy, Diagnosis, Use  
   
 This final methodological chapter explains how to use the previous vocabulary as a working instrument. The point is not to memorize terms as labels. The point is to ask what each term is designed to do. A philosophical concept is not a decorative word. It is a tool that solves a specific problem, reveals a specific structure, blocks a specific confusion, or opens a specific mode of reading.  
   
@@ -9970,7 +9970,7 @@ The final practical question is:
 **What problem is this concept built to diagnose, what history does it carry, what does it reveal, what does it conceal, and what happens when it is used here and now?**  
 (这个概念被建构出来是为了诊断什么问题？它携带什么历史？它揭示什么？它遮蔽什么？当它在此时此地被使用时，会发生什么？)  
   
-## Part 21. Operational Quick Reference: Choosing the Right Philosophical Language  
+## P21. Operational Quick Reference: Choosing the Right Philosophical Language  
   
 This chapter is a compact decision system. It answers one practical question:  
   
