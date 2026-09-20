@@ -1,5 +1,6 @@
 ---
 title: Rationality (理性和理性主义)
+layout: post
 categories: Notes
 subclass: Epistemology
 ---
