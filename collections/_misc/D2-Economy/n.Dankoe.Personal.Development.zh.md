@@ -1,6 +1,6 @@
 ---
 title: Dan Koe Personal Development (Dan Koe 个人提升)
-layout: post
+layout: print
 categories: Notes
 subclass: Economy
 ---
