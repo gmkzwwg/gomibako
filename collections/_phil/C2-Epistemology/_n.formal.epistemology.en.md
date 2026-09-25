@@ -2,7 +2,7 @@
 title: Formal Epistemology
 layout: post
 categories: Notes
-subclass: Formal Epistemology
+subclass: Epistemology
 reference:
   - Bayesian confirmation
   - epistemic logic

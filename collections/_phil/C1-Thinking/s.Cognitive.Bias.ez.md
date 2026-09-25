@@ -1,8 +1,8 @@
 ---
 title: Cognitive Bias
 categories: Sheet
-subclass: Epistemology
-layout: print
+subclass: Thinking
+layout: post-vertical
 ---
 
 # English

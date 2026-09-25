@@ -132,7 +132,7 @@ ui:                                                            # Group all theme
     encrypted_text        : false                             # Enable or disable encrypted-text rendering globally. Boolean.
     search                : false                             # Enable or disable site search globally. Boolean.
     sitemap               : true                              # Enable or disable sitemap-related UI globally. Boolean.
-    todos                 : true                              # Allow TODO summary globally; each page must still set todos: true.
+    todos                 : true                              # Enable the header Todo panel on post/post-*/slide-* layouts; page.todos: false disables it.
   icons:                                                       # Group icon-system settings.
     provider              : "fontawesome"                     # Select the icon library used by the theme. candidates: fontawesome | lucide | none
     style                 : "solid"                           # Select the default icon style. candidates: solid | regular | brands
@@ -194,7 +194,7 @@ defaults:                                                      # Define default 
       toc_depth           : null                              # Use site.ui.toc.depth unless the page overrides it.
       math                : null                              # Use site.ui.features.math unless the page overrides it.
       mermaid             : null                              # Use site.ui.features.mermaid unless the page overrides it.
-      todos               : null                              # Enable TODO summary only when explicitly set to true and site.ui.features.todos is enabled.
+      todos               : null                              # Todo notes: string or YAML list. Null scans the body only; false disables the panel; true is a legacy enable flag.
 
       categories          : []                                # Set an empty category list by default.
       tags                : []                                # Set an empty tag list by default.

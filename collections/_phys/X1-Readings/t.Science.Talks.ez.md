@@ -1,10 +1,11 @@
 ---
-title: Cargo Cult Science
+title: Talks about Philosophy of Science
 layout: post-horizonal
-author: RICHARD P. FEYNMAN
 categories: Texts
 subclass: Readings
 ---
+
+## Cargo Cult Science - RICHARD P. FEYNMAN
 
 *Some remarks on science, pseudoscience, and learning how to not fool yourself. Caltech’s 1974 commencement address.*
 

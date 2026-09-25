@@ -1,0 +1,28 @@
+<dialog class="post-todos" id="post-todos" aria-labelledby="post-todos-title">
+  <div class="post-todos__header">
+    <h2 id="post-todos-title">Todo</h2>
+    <button class="cli-header__button" type="button" data-todo-close aria-label="Close todos">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </button>
+  </div>
+  <ul class="post-todos__list" data-todo-items>
+    {% unless page.todos == true or page.todos == false %}
+      {% assign todo_type = page.todos | jsonify | slice: 0, 1 %}
+      {% if todo_type == "[" %}
+        {% for todo in page.todos %}
+          {% assign todo_text = todo | strip %}
+          {% if todo_text != "" and todo != true and todo != false %}
+            <li class="post-todos__note">{{ todo_text | escape }}</li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% assign todo_text = page.todos | default: "" | strip %}
+        {% if todo_text != "" %}
+          <li class="post-todos__note">{{ todo_text | escape }}</li>
+        {% endif %}
+      {% endif %}
+    {% endunless %}
+  </ul>
+  <p class="post-todos__empty" data-todo-empty hidden>No todos in this article.</p>
+</dialog>
+<script src="{{ '/src/assets/js/post-todos.js' | relative_url }}"></script>

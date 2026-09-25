@@ -224,6 +224,16 @@
       </li>
       {% endif %}
 
+      {% if todos_enabled %}
+      <li class="cli-header__action">
+        <button class="cli-header__button" type="button" data-todo-toggle aria-controls="post-todos"
+          aria-haspopup="dialog" aria-expanded="false" aria-label="Open todos" title="Todo">
+          <i class="fa fa-check-square-o cli-header__icon" aria-hidden="true"></i>
+          <span class="cli-header__label">Todo</span>
+        </button>
+      </li>
+      {% endif %}
+
       {% if show_toc_button %}
       <li class="cli-header__action">
         <button class="cli-header__button" type="button" data-action="toggle-toc" aria-controls="popup_toc"
@@ -241,6 +251,10 @@
     </ul>
   </nav>
 </header>
+
+{% if todos_enabled %}
+{% include post-todos.html %}
+{% endif %}
 
 {% if show_toc_button %}
 <div class="toc" data-toc-root>

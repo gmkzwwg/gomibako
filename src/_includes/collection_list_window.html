@@ -8,8 +8,10 @@
         role="dialog"
         aria-modal="false"
         aria-label="Archive"
+        data-post-index
+        data-index-hidden-enabled
     >
-        <!-- titlebar: only category buttons on the left + close button on the right -->
+        <!-- titlebar: collections on the left, Hidden and close on the right -->
         <div
             class="archive-window__titlebar js-archive-window-drag-handle"
             id="archive-window-drag-handle"
@@ -69,6 +71,18 @@
 
             <div class="archive-window__titlebar-actions">
                 <button
+                    class="archive-window__hidden-toggle"
+                    type="button"
+                    data-index-hidden-toggle
+                    aria-controls="archive-window-content"
+                    aria-pressed="false"
+                    aria-label="Show hidden articles"
+                    title="Show hidden articles"
+                >
+                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                    <span>Hidden</span>
+                </button>
+                <button
                     class="archive-window__close-button"
                     type="button"
                     aria-label="Close archive window"
@@ -89,6 +103,7 @@
                                     class="archive-collection-section js-archive-collection-section"
                                     id="archive-section-{{ collection.label }}"
                                     data-collection-label="{{ collection.label }}"
+                                    data-index-collection
                                 >
                                     <h3 class="archive-collection-section__title">
                                         {% if collection.alias %}
@@ -109,7 +124,7 @@
                                     {% for current_subclass in all_subclasses %}
                                         {% assign clean_subclass = current_subclass | strip %}
                                         {% if clean_subclass != '' %}
-                                            <div class="archive-post-group">
+                                            <div class="archive-post-group" data-index-group>
                                                 <div class="archive-post-group__label">
                                                     [{{ clean_subclass }}]
                                                 </div>
@@ -121,6 +136,9 @@
                                                             <a
                                                                 class="archive-post-link"
                                                                 href="{{ post.url | relative_url }}"
+                                                                data-index-item
+                                                                data-index-hidden="{% if post.hidden == true %}true{% else %}false{% endif %}"
+                                                                data-index-values="{{ collection.label | escape }}"
                                                             >
                                                                 {% include document-title.html document=post %}
                                                             </a>
@@ -140,6 +158,7 @@
                             class="archive-collection-section js-archive-collection-section"
                             id="archive-section-{{ collection.label }}"
                             data-collection-label="{{ collection.label }}"
+                            data-index-collection
                         >
                             <h3 class="archive-collection-section__title">
                                 {% if collection.alias %}
@@ -160,7 +179,7 @@
                             {% for current_subclass in all_subclasses %}
                                 {% assign clean_subclass = current_subclass | strip %}
                                 {% if clean_subclass != '' %}
-                                    <div class="archive-post-group">
+                                    <div class="archive-post-group" data-index-group>
                                         <div class="archive-post-group__label">
                                             [{{ clean_subclass }}]
                                         </div>
@@ -172,6 +191,9 @@
                                                     <a
                                                         class="archive-post-link"
                                                         href="{{ post.url | relative_url }}"
+                                                        data-index-item
+                                                        data-index-hidden="{% if post.hidden == true %}true{% else %}false{% endif %}"
+                                                        data-index-values="{{ collection.label | escape }}"
                                                     >
                                                         {% include document-title.html document=post %}
                                                     </a>
@@ -184,6 +206,7 @@
                         </section>
                     {% endfor %}
                 {% endif %}
+                <p class="post-index__empty" data-index-empty hidden>No visible posts. Toggle Hidden to include hidden posts.</p>
             </div>
         </div>
 
@@ -277,7 +300,7 @@ function getArchiveWindowVisibleMetrics() {
     sections.forEach(function (section) {
         if (!section.hidden) {
             visibleSectionCount += 1;
-            visiblePostCount += section.querySelectorAll(".archive-post-link").length;
+            visiblePostCount += section.querySelectorAll(".archive-post-link:not([hidden])").length;
         }
     });
 
@@ -304,17 +327,11 @@ function updateArchiveWindowStatus(collectionTitle, collectionLabel) {
 }
 
 function applyArchiveCollectionVisibility(collectionLabel) {
-    const { sections } = getArchiveWindowDom();
-    const normalizedLabel = collectionLabel || "all";
-
-    sections.forEach(function (section) {
-        const shouldShow =
-            normalizedLabel === "all" ||
-            section.dataset.collectionLabel === normalizedLabel;
-
-        section.hidden = !shouldShow;
-        section.classList.toggle("is-hidden", !shouldShow);
-    });
+    const { panel } = getArchiveWindowDom();
+    if (!panel) return;
+    panel.dispatchEvent(new CustomEvent("post-index:filter", {
+        detail: { filterValue: collectionLabel || "all" }
+    }));
 }
 
 function showArchiveCollection(collectionLabel, collectionTitle) {
@@ -545,6 +562,15 @@ function open_collection_list() {
     initArchiveWindowDrag();
     openCollectionList();
 }
+
+getArchiveWindowDom().panel.addEventListener("post-index:updated", function () {
+    const { buttons } = getArchiveWindowDom();
+    const activeButton = Array.from(buttons).find(button => button.getAttribute("aria-pressed") === "true");
+    updateArchiveWindowStatus(
+        activeButton ? activeButton.dataset.collectionTitle : "All",
+        activeButton ? activeButton.dataset.collectionLabel : "all"
+    );
+});
 
 function close_collection_list() {
     closeCollectionList();

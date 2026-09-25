@@ -1,7 +1,7 @@
 ---
 title: Critical Thinking (批判性思维)
 categories: Notes
-subclass: Epistemology
+subclass: Thinking
 ---
 
 ## P1. 批判性思维为什么不是一种聪明技巧，而是一种自我约束？

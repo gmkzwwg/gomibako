@@ -202,6 +202,8 @@ flowchart TD
 
 ### F04 · P1 · TODO 数据和内容状态尚未构成发酵流程
 
+更新（CHANGE-003）：页内 fm 与正文提示已合并为 Todo 面板，以下证据记录的是初始基线；跨文档任务身份、持久化状态仍未实施。
+
 证据：`index-todos.html` / `post-index/item.html` 读取 front matter；`todo-summary.js` 读取正文。前者默认不遍历 posts，后者只处理当前页面。`default.html` 实际条件是全局启用且 `page.todos != false`，而 `_config.yml` 注释描述为必须显式 `todos: true`。
 
 建议将“功能开关”和“任务列表”拆开，例如 `features.todo_summary` 与 `tasks`；明确任务与内容成熟度不同。先兼容旧字段，再逐步迁移；保留正文片段跳转能力。把待办改造成“下一步可以做什么”的队列，而不是继续增加浮窗。
@@ -494,6 +496,31 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_psyc/D1-Psychoanalysis/a.Psychoanalysis.en.md` | Psychoanalysis - Learning Atlas | Psychoanalysis | Learning Atlas |
 | `collections/_psyc/E1-Psychopathology/n.Chimp.Paradox.ez.md` | Chimp Paradox - How to Manage Emotion Without Suppressing It | Chimp Paradox | How to Manage Emotion Without Suppressing It |
 
+### 2026-09-25 · CHANGE-002 · 列表弹窗支持 Hidden 筛选
+
+- 目的：让页眉打开的 collections list 和 post list 与六个索引页使用一致的 `hidden: true` 筛选规则。
+- 行为：两个弹窗均在 `archive-window__close-button` 左侧新增眼睛图标与 Hidden 按钮。默认不显示隐藏文章；开启时按钮显示下划线并更新 `aria-pressed`、操作提示，隐藏文章以较低透明度显示。
+- 筛选：每个弹窗独立保存本页内的开关状态，与页眉的索引开关互不影响。collections 的 All/单集合切换与 Hidden 求交集；自动隐藏空 subclass、空 collection 和空分类分组；无可见文章时显示提示。关闭再打开保留 Hidden 状态，collections 仍按原逻辑回到 All；刷新页面恢复默认关闭。
+- 统计：状态栏仅统计当前可见文章；post list 中属于多个分类的同一文章按 URL 去重计数。
+- 代码：修改 `src/_includes/collection_list_window.html`、`src/_includes/post_list_window.html`、`src/_includes/post-index/filter-script.html`、`src/_layouts/default.html`、六个 `index-*` layout，以及 `src/_sass/components/_collection_list.scss` 和 `src/_sass/layouts/_post-index.scss`。共用筛选脚本改由 default 统一加载一次；先绑定列表内部按钮，再查找页眉按钮，避免全局第一个按钮控制全部列表。`post-index:filter` 接收集合筛选条件，`post-index:updated` 通知弹窗更新统计。
+- 内容和 URL：本次不修改文章 front matter、正文或路径；保留用户原有及同步进行的文章编辑。Hidden 延续现有的列表展示语义，原文路由继续生成。
+- 验证：30 个 Jekyll 渲染夹具通过，覆盖配置集合顺序/无顺序两个分支、六个索引页、七种 post-list 样式、关闭分类筛选和普通页面；验证严格布尔值、按钮位置、单次脚本加载和编译后的 CSS。60 个基于真实生成 DOM 的 Node 交互场景通过，覆盖按钮隔离、分类联动、计数去重、全隐藏/空集合、开关窗口保留状态和重复初始化。整站 production 构建通过；生成后的首页、六个索引页及报告页均检查了按钮范围、隐藏条目标记和筛选脚本单次加载。
+- 验证边界：本地 Firefox headless 启动失败，未完成真实浏览器视觉与拖动手感验证；交互检查使用临时 DOM 适配器运行实际控制脚本，测试夹具保存在 `/tmp/gomibako-popup-hidden-20260925/`，未引入项目测试依赖。
+- 回退：一起恢复上述 12 个源码文件；尤其应同时还原脚本的统一加载位置与六个索引 layout 的 include，避免漏载或重复加载。未提交或部署。
+
+### 2026-09-25 · CHANGE-003 · 合并页内 Todo 功能
+
+- 目的：把 fm `todos` 和正文 `TODO:` 汇总为页眉的一处轻量入口，替换原来的独立自动浮窗。
+- 行为：`post`、`post-*`、`slide-*` 共用 header 的 Todo 按钮；点击打开原生 dialog，先展示 fm 待办，再显示正文片段链接。正文仅高亮 `TODO:` 标签，保留原来的加粗、链接等行内结构；点击条目关闭面板、聚焦并滚动到原文。支持关闭按钮、Esc 和遮罩关闭，空内容显示提示。
+- 字段：`todos` 支持字符串、多行字符串和 YAML 列表；空白/null/布尔列表项不生成待办。缺省或旧值 `true` 只启用正文扫描，`false` 关闭本页功能；保留 `site.ui.features.todos` 全局开关并纠正配置注释。
+- 扫描边界：仅当前文章 `.post-content`；忽略代码、脚本、表单、数学/SVG、HTML 注释和 `data-todo-ignore`，不扫描弹窗中的其他文章名称。正文任务仍为静态写作提示，不增加完成状态、持久化、跨页爬取或 DOM 常驻观察器。
+- 幻灯片：两种引擎在缓存正文前发送 `content:prepare`，保存完整文章的高亮锚点；增加 `reveal(id)` 以切换到待办所在页。树状引擎补发 `content:rendered`；带 TODO 的前导段落和标题保留可定位入口，分页重建不会重复生成待办。双语折叠和窄屏左右语言模式会展开/切换到目标内容。
+- 文件：新增 `src/_includes/post-todos.html`、`src/assets/js/post-todos.js`、`src/_sass/components/_post-todos.scss`；删除实际旧文件 `src/assets/js/todo-summary.js`（仓库没有名为 todo.js 的文件）；修改 header/default、主题 Sass 入口、两个幻灯片引擎、`_config.yml`、`pages/test.md` 和本报告。旧 TodoSummary API、配置对象、浮动重开按钮、拖动和 JS 注入样式不再提供。
+- 兼容：文章数据与 URL 不迁移；`/todos` 仍提供已有的跨文章 fm 待办总览。首页、六个索引页与 print 不增加当前文章 Todo 按钮；`todos: false` 的报告页继续关闭该功能。
+- 验证：21 个 Jekyll 页面夹具和 jsdom 交互通过，覆盖全部 11 个现有文章/幻灯片布局、fm 字段类型、非文章布局、正文多任务与行内格式、跳过代码/注释、跨页/标题/前导任务定位、折叠详情展开、焦点及面板开关、重复打开与幻灯片重建；另用真实双语折叠、竖排语言及并排阅读脚本验证 3 种阅读模式。整站 production 构建另行复核。
+- 测试边界：jsdom 安装在 `/tmp/gomibako-todos-20260925/`，未改动项目依赖；未进行真实浏览器视觉验收。
+- 回退：需同时恢复旧脚本、default 的加载入口和这次 header/样式/幻灯片接入。未提交或部署。
+
 ### 后续记录模板
 
 ```text
@@ -511,7 +538,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 ## 9. 工程与核心代码逐文件索引
 
-当前全仓库索引共 819 个文件。本节覆盖 104 个 src 文件、7 个工程文件、原有 12 个页面与本报告。文件名相近不表示职责相同，尤其注意两套索引、三种双语机制和两种时间线。
+当前全仓库索引共 821 个文件。本节覆盖 106 个 src 文件、7 个工程文件、原有 12 个页面与本报告。文件名相近不表示职责相同，尤其注意两套索引、三种双语机制和两种时间线。
 
 ### 9.1 工程、构建与部署（7）
 
@@ -547,13 +574,13 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 | 文件 | 功能与作用 | 接入关系与修改注意 |
 | --- | --- | --- |
-| `src/_layouts/default.html` | 通用站点外壳；解析标题、功能开关、TOC、正文、评论和页脚。 新增可见标题下方的 subtitle，空值与隐藏标题时不生成；保留 abbreviation。 | 读取 page/site.ui；集中加载特效及阅读脚本，并嵌入两个全站目录弹窗。几乎所有页面共用，影响范围最大。 |
-| `src/_layouts/index-categories.html` | 收集并去重选定集合的 categories，按类别展示文档。 | 复用 post-index/filter-nav、item、filter-script；当前默认学科列表不含 posts。 |
-| `src/_layouts/index-collections.html` | 按学科 collection 分组显示知识文档，提供集合筛选。 | 依次采用页面集合名单、全局集合顺序或全部集合；复用 post-index/item 与筛选组件。 |
-| `src/_layouts/index-posts.html` | 文章索引薄布局：显示页面正文并调用通用文章列表。 | 继承 default；依赖 post-list.html，默认读取 site.posts。 |
-| `src/_layouts/index-subclass.html` | 在每个学科内按 subclass 分组，提供全局子类筛选和未分类组。 | /notes 主入口；与集合弹窗、specific-collection 有相近分组逻辑，修改分类语义需同步。 |
-| `src/_layouts/index-tags.html` | 按 tags 聚合选定集合文档，生成标签筛选。 | 复用 post-index 组件；当前内容没有显式 tags，因此模板存在但列表为空。 |
-| `src/_layouts/index-todos.html` | 遍历集合并筛选非空 front matter todos，显示文档与任务文本。 | 复用 post-index/item；默认只覆盖八个学科，不扫描正文 TODO；当前没有实际接入通用筛选控件。 |
+| `src/_layouts/default.html` | 通用站点外壳；解析标题、功能开关、TOC、正文、评论和页脚。 新增可见标题下方的 subtitle，空值与隐藏标题时不生成；保留 abbreviation。 | 读取 page/site.ui；集中加载特效及阅读脚本，并嵌入两个全站目录弹窗。几乎所有页面共用，影响范围最大。 统一加载 post-index/filter-script，为索引和两个弹窗初始化筛选。 |
+| `src/_layouts/index-categories.html` | 收集并去重选定集合的 categories，按类别展示文档。 | 复用 post-index/filter-nav、item、filter-script；当前默认学科列表不含 posts。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
+| `src/_layouts/index-collections.html` | 按学科 collection 分组显示知识文档，提供集合筛选。 | 依次采用页面集合名单、全局集合顺序或全部集合；复用 post-index/item 与筛选组件。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
+| `src/_layouts/index-posts.html` | 文章索引薄布局：显示页面正文并调用通用文章列表。 | 继承 default；依赖 post-list.html，默认读取 site.posts。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
+| `src/_layouts/index-subclass.html` | 在每个学科内按 subclass 分组，提供全局子类筛选和未分类组。 | /notes 主入口；与集合弹窗、specific-collection 有相近分组逻辑，修改分类语义需同步。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
+| `src/_layouts/index-tags.html` | 按 tags 聚合选定集合文档，生成标签筛选。 | 复用 post-index 组件；当前内容没有显式 tags，因此模板存在但列表为空。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
+| `src/_layouts/index-todos.html` | 遍历集合并筛选非空 front matter todos，显示文档与任务文本。 | 复用 post-index/item；默认只覆盖八个学科，不扫描正文 TODO；当前没有实际接入通用筛选控件。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index.html` | 终端风格首页，渲染入口菜单、状态栏和自动播放的模拟终端文本。 | 继承 default；菜单来自 page.shell_menu 或 site.ui.index_shell.menu；大量动画场景与逻辑内联。这里是视觉模拟，不是真实命令执行。 |
 | `src/_layouts/post-bilingual.html` | 双语折叠文章的薄正文容器。 | 继承 default；真正的 bilingual.js 加载由 default 根据布局名决定，header 提供总切换按钮。 |
 | `src/_layouts/post-compact.html` | 紧凑阅读的薄正文容器。 | 继承 default；header 根据布局名自动最大化内容区，布局文件本身不实现最大化。 |
@@ -568,19 +595,19 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/_layouts/slide-tree.html` | 按 h1 大节与 h2 小节组织树状幻灯片。 | default + jekyll-slide-tree.js，mode=tree；章节/小节导航与小地图。当前内容未显式使用此布局，但引擎也用于 wiki。 |
 | `src/_layouts/slide-wiki.html` | 树状幻灯片的 Wiki 目录预设。 | default + 树状引擎 mode=wiki；脚本 URL 过滤器拼写错误；headingText 直接插入标题字符串，宜改用 jsonify。 |
 
-### 9.4 模板组件（27）
+### 9.4 模板组件（28）
 
 | 文件 | 功能与作用 | 接入关系与修改注意 |
 | --- | --- | --- |
-| `src/_includes/collection_list_window.html` | 全量知识集合弹窗，按 collection/subclass 展示链接及统计。 弹窗文档名称通过 document-title 保留主副标题。 | 含 Liquid 循环、拖动、居中、切换和窗口开关脚本；暴露 open_collection_list 等函数；当前 HTML 体积主要来源。 |
+| `src/_includes/collection_list_window.html` | 全量知识集合弹窗，按 collection/subclass 展示链接及统计。 弹窗文档名称通过 document-title 保留主副标题。 | 含 Liquid 循环、拖动、居中、切换和窗口开关脚本；暴露 open_collection_list 等函数；当前 HTML 体积主要来源。 支持独立 Hidden 开关、集合交集筛选、空分组折叠及可见文章计数。 |
 | `src/_includes/comment.html` | 评论提供方分发器，支持 Disqus、Giscus、Utterances。 | 仅 default 判定评论启用后加载；当前 provider 为 Disqus，页面默认 show_comments=false。 |
 | `src/_includes/context_menu.html` | 自定义右键菜单 DOM 与脚本入口。 | 依赖 context-menu.js；提供复制文本、主页、回到顶部、打印。 |
 | `src/_includes/document-title.html` | 将文档 title 与非空 subtitle 组成完整名称并进行 HTML 转义。 | 文章列表、知识索引、集合弹窗与页面 title/OG 共用；fallback 支持页面默认标题；页面正文总标题分开渲染两个字段。 |
 | `src/_includes/footer.html` | 页脚社交链接、RSS、版权与说明。 | 由 default 的 footer 开关控制；读取 site.social；按钮标签配置路径与全局配置不一致。 |
 | `src/_includes/head.html` | 生成标题、description、canonical、Open Graph、favicon 和资源标签。 浏览器 title 与 og:title 通过 document-title 保留主副标题。 | 加载主题 CSS、字体、图标、可选 SJCL/数学/Mermaid；还内联 KaTeX 原式切换，页面级 math/mermaid 覆盖未接通。 |
-| `src/_includes/header.html` | 终端式页眉、布局模式、文章/知识目录按钮、目录、最大化、双语和解密入口。 | 内联事件分派、自动最大化和 SJCL 解密；布局相关逻辑较集中，调用多个 window API。 |
+| `src/_includes/header.html` | 终端式页眉、布局模式、文章/知识目录按钮、目录、最大化、双语和解密入口。 | 内联事件分派、自动最大化和 SJCL 解密；布局相关逻辑较集中，调用多个 window API。 post/post-*/slide-* 支持 Todo 按钮与原生待办面板。 |
 | `src/_includes/post-index/filter-nav.html` | 根据传入项目生成 All 和分类筛选按钮。 | 将 ;; 和 :: 分隔的字符串解析为按钮；与 filter-script 的数据属性约定配套。 |
-| `src/_includes/post-index/filter-script.html` | 给知识索引绑定客户端筛选；隐藏无匹配条目、组和分隔线。 | 监听 DOMContentLoaded；范围限 [data-post-index]，筛选已生成 DOM。 |
+| `src/_includes/post-index/filter-script.html` | 给知识索引绑定客户端筛选；隐藏无匹配条目、组和分隔线。 | 监听 DOMContentLoaded；范围限 [data-post-index]，筛选已生成 DOM。 由 default 加载一次；优先绑定列表内部 Hidden 按钮，支持 post-index:filter / post-index:updated 事件。 |
 | `src/_includes/post-index/group.html` | 通用分组标题、条目列表和空状态包装。 | 调用 item.html；未发现当前活动模板/内容对它的引用，属于可复用但尚未接入的组件。 |
 | `src/_includes/post-index/item.html` | 知识索引单条链接、可选学科/子类/分类/标签徽标和任务列表。 索引链接通过 document-title 保留主副标题。 | 所有知识索引共用；通过 data-index-values 参与筛选，兼容字符串/列表 todos。 |
 | `src/_includes/post-index/specific-collection.html` | 在正文内嵌入单一学科的 subclass 索引。 | 接收 collection；未分类在前、不显示集合标题和筛选栏；被学科 atlas 等内容使用。 |
@@ -596,11 +623,12 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/_includes/post-list/minimal.html` | 日期、标题与可选摘要组成的简约文章列表。 列表标题通过 document-title 保留主副标题。 | 支持分类过滤；复用列表元信息。 |
 | `src/_includes/post-list/timeline.html` | 按文章年份分段的时间线列表。 列表标题通过 document-title 保留主副标题。 | 使用传入文章顺序与日期；与转换正文列表的 timeline-list.js 是不同功能。 |
 | `src/_includes/post-meta.html` | 显示作者、日期、分类、标签、子类、状态和 abstract。 | 由 default 引入；status 仅展示，不控制发布；reference 尚未在此消费。 |
-| `src/_includes/post_list_window.html` | 个人文章弹窗，采用 category-book 列表。 | 复用 post-list.html 和 archive-window 样式；含拖动、开关脚本，暴露 open_post_list/close_post_list。 |
+| `src/_includes/post-todos.html` | 当前文章 Todo dialog、fm 待办列表及轻量控制脚本加载。 | header 在支持布局且 todos_enabled 时引入；转义 fm 内容并跳过空值/布尔值。 |
+| `src/_includes/post_list_window.html` | 个人文章弹窗，采用 category-book 列表。 | 复用 post-list.html 和 archive-window 样式；含拖动、开关脚本，暴露 open_post_list/close_post_list。 支持独立 Hidden 开关、空分类折叠、空列表提示及按文章 URL 去重的可见计数。 |
 | `src/_includes/toc_chart.html` | 解析 h1/h2/h3，输出分栏图表目录；支持 compact 形式。 | 由 header/default/print 调用；并非任意深度目录，深度规则与 toc_list 不同。 |
 | `src/_includes/toc_list.html` | 从渲染后标题生成嵌套或扁平目录，支持级别、清理标签等参数。 | header、default 正文前目录和 print 共用；保留 allejo/jekyll-toc 来源与 MIT 许可说明。 |
 
-### 9.5 Sass 模块（22）
+### 9.5 Sass 模块（23）
 
 | 文件 | 功能与作用 | 接入关系与修改注意 |
 | --- | --- | --- |
@@ -610,18 +638,19 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/_sass/abstracts/_mixins.scss` | 滚动条、链接、淡入、闪烁、ASCII 项目符号等可复用样式片段。 | 被多个组件和基础样式引用，修改会跨组件传播。 |
 | `src/_sass/abstracts/_variables.scss` | 终端色板、正文/代码配色、字号、间距、边框和鼠标光标变量。 | 主题大多使用编译期 Sass 值，配置中的主题声明不会自动更改这些变量。 |
 | `src/_sass/base/_base.scss` | 全局重置、光标、Markdown 标题/段落/引用/列表/表格/代码/图片和响应式基础排版。 | 普通阅读页的基础层；CSS 范围较广，需关注脚本生成的 DOM。 |
-| `src/_sass/components/_collection_list.scss` | 目录窗口、遮罩、标题栏、集合按钮、正文、状态栏和拖动/开关动画。 | 集合弹窗与文章弹窗都使用 archive-window 系列类名。 |
+| `src/_sass/components/_collection_list.scss` | 目录窗口、遮罩、标题栏、集合按钮、正文、状态栏和拖动/开关动画。 | 集合弹窗与文章弹窗都使用 archive-window 系列类名。 新增关闭按钮左侧 Hidden 操作按钮、激活下划线及窄屏尺寸。 |
 | `src/_sass/components/_comment.scss` | Disqus 容器的少量主题样式。 | 其他评论提供方主要由嵌入组件自行渲染。 |
 | `src/_sass/components/_context_menu.scss` | 右键菜单的主题变量、位置、按钮、焦点与禁用状态。 | 配套 context_menu.html / context-menu.js。 |
 | `src/_sass/components/_footer.scss` | 页脚、社交导航、文字说明布局。 | 配套 footer.html。 |
 | `src/_sass/components/_header.scss` | 页眉、按钮、令牌输入、辅助隐藏类和最大化容器样式。 | 配套 header.html；包含不同屏宽的布局。 |
 | `src/_sass/components/_post-list.scss` | 文章卡片、极简、年份时间线、书目、分类折叠的整套样式。 | 选择器多限定于 post-list-shell；正文与弹窗共用。 |
 | `src/_sass/components/_post-meta.scss` | 文章元信息与摘要区域样式。 | 配套 post-meta.html；注意和列表中的同名类的范围关系。 |
+| `src/_sass/components/_post-todos.scss` | Todo dialog、任务列表、正文标签高亮和焦点样式。 | 由主题入口编译；原生 dialog 支持窄屏尺寸，打印时隐藏面板。 |
 | `src/_sass/components/_toc_chart.scss` | h1/h2/h3 分栏图表目录以及 compact 模式样式。 | 配套 toc_chart.html。 |
 | `src/_sass/components/_toc_list.scss` | 传统弹出目录及目录列表样式。 | 配套 toc_list.html 与 header 的目录容器。 |
 | `src/_sass/layouts/_index.scss` | 首页终端窗口、菜单、输出区、光标和状态栏样式。 | 配套 index.html；有 reduced-motion 媒体规则，但不覆盖所有 JS 动画。 |
 | `src/_sass/layouts/_post-content.scss` | 普通页面背景、外层容器、正文区域、显示状态及响应式宽度。 新增 .post-heading--with-subtitle 和右对齐、小字号、自动换行的副标题样式。 | default/post 布局骨架；与 header 中最大化状态有关。 |
-| `src/_sass/layouts/_post-index.scss` | 知识索引分组、侧栏标签、条目、筛选按钮、任务和响应式样式。 | index-* 与 post-index 组件共享。 |
+| `src/_sass/layouts/_post-index.scss` | 知识索引分组、侧栏标签、条目、筛选按钮、任务和响应式样式。 | index-* 与 post-index 组件共享。 Hidden 样式同时覆盖索引和两个弹窗，并降低隐藏文章链接的透明度。 |
 | `src/_sass/layouts/_print.scss` | 独立打印页排版、目录以及 screen/print 媒体规则。 新增打印标题区域 subtitle 样式。 | 由 print.scss 单独编译；普通页右键 window.print 不会自动切换到 print 布局。 |
 | `src/_sass/vendor/_copy-code.scss` | 旧 .copy-code-button 复制按钮的展示样式。 | 仍由主题引入；当前主要代码增强使用 cbe-*，后续核查兼容需求再清理。 |
 | `src/_sass/vendor/_math-toggle.scss` | 公式显示/TeX 源码切换容器及原式样式。 | 配套 head.html 中 enableKatexToggle。 |
@@ -645,8 +674,8 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/assets/js/code-block-enhancement.js` | 识别独立代码块，采样样式并重组工具栏，提供复制与外部运行入口。 | 普通布局加载；API CodeBlockEnhancement；MutationObserver；跳过 Mermaid/数学；同时写全局 updateConfig。 |
 | `src/assets/js/context-menu.js` | 定位并控制自定义右键菜单，执行复制、主页、回顶、打印。 | 由 context_menu.html 加载；支持 data-native-menu 保留原菜单；主页路径硬编码为 /。 |
 | `src/assets/js/image-viewer.js` | 图片遮罩查看器，支持缩放、拖动、滚轮、触摸双击/捏合和关闭。 | 普通布局无条件加载；观察新图片；配置为脚本内局部对象，没有统一外部配置 API。 |
-| `src/assets/js/jekyll-slide-linear.js` | 共享的顺序分页引擎，实现 linear/simple/language/annotation、目录、键盘、拖动控件和自动播放。 | 供四种 slide 预设；API JSDLinearSlides/updateLinearConfig；渲染后发送 content:rendered。 |
-| `src/assets/js/jekyll-slide-tree.js` | 按 h1/h2 解析树状幻灯片，提供小地图、章节/小节跳转和 wiki 目录。 | 供 slide-tree/wiki；API JSDTreeSlides/updateTreeConfig；克隆节点且不收录章节前导内容。 |
+| `src/assets/js/jekyll-slide-linear.js` | 共享的顺序分页引擎，实现 linear/simple/language/annotation、目录、键盘、拖动控件和自动播放。 | 供四种 slide 预设；API JSDLinearSlides/updateLinearConfig；渲染后发送 content:rendered。 新增 content:prepare 与 reveal(id)，保留待办锚点并跨页定位。 |
+| `src/assets/js/jekyll-slide-tree.js` | 按 h1/h2 解析树状幻灯片，提供小地图、章节/小节跳转和 wiki 目录。 | 供 slide-tree/wiki；API JSDTreeSlides/updateTreeConfig；克隆节点且不收录章节前导内容。 新增 content:prepare 与 reveal(id)，保留待办锚点并跨页定位。 |
 | `src/assets/js/matrix-ascii-anime.js` | 将 .ascii_title/.post_abbreviation 在适用宽屏转换为按字符组变化的 ASCII 字形动画。 | default 随机加载两个 ASCII 版本之一；API AsciiMatrixFlow；保留源元素并可恢复，写全局 updateConfig。 |
 | `src/assets/js/matrix-ascii-breath.js` | ASCII 标题的整体字符循环呼吸效果版本。 | 与 anime 为替代实现，共用选择器和 AsciiMatrixFlow/updateConfig；不应在同页同时作为两个独立实例加载。 |
 | `src/assets/js/matrix-hacked-splash.js` | 开屏 ASCII 面孔 canvas 与浮动闪词，含启动、结束和遮罩清理。 | default 同步加载并提供首屏遮罩；API HackedSplash；与字符爆破等待逻辑关联。 |
@@ -656,7 +685,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/assets/js/parallel-text.js` | 将原文块与连续引用块转为可调整列比例的并排阅读行。 | post-horizonal；API parallelTextColumns；可恢复原文、刷新、调整字号/间距；默认跳过表格。 |
 | `src/assets/js/sjcl.js` | 压缩的 Stanford JavaScript Crypto Library，实现页面片段解密所需密码学能力。 | 仅 encrypted_text 启用时由 head 加载；header 把元素 id 中载荷交给 sjcl.json.decrypt；第三方库应独立管理。 |
 | `src/assets/js/timeline-list.js` | 识别时间线标记后的 Markdown 列表，生成摘要、轴线和详情。 | 普通布局与 print 使用；API JekyllTimeline；监听 content:rendered 以适应线性幻灯片切换。 |
-| `src/assets/js/todo-summary.js` | 扫描正文 TODO:，插入高亮标记并生成可拖动汇总面板或指定目标文本。 | API TodoSummary；支持跳转/清除；无任务完成持久化，也不读取 front matter todos。 |
+| `src/assets/js/post-todos.js` | 统一页眉 Todo 面板：读取静态 fm 列表，扫描正文标签并提供定位链接。 | 配合 post-todos include；保留行内结构；content:prepare/rendered 与幻灯片 reveal(id) 保证跨页定位，不再提供旧 TodoSummary API。 |
 | `src/assets/js/watermark.js` | 以重复 SVG 背景绘制文字水印，监听窗口、主题及相关 DOM 变化。 | page.watermark=true 时加载；API Watermark；是视觉覆盖层。 |
 
 ### 9.8 字体、光标和主题图像（13）

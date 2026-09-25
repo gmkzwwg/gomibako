@@ -415,10 +415,10 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 ### 7. 写作辅助
 
 - drafts：使用 `collections/_drafts` 保存草稿，配合 Jekyll drafts 工作流。相关目录：`collections/_drafts/`。
-- TODO 高亮：自动扫描正文中的 `TODO:` 并高亮。相关文件：`src/assets/js/todo-summary.js`。
-- TODO 汇总浮窗：将页面内 TODO 汇总到右下角浮窗，方便写作时查看未完成点。相关文件：`src/assets/js/todo-summary.js`、`src/_includes/todo_summary.html`。
-- TODO 跳转：点击汇总列表中的 TODO，可以跳到正文对应位置。相关文件：`src/assets/js/todo-summary.js`。
-- TODO 浮窗控制：浮窗可关闭、重新打开、拖动。相关文件：`src/assets/js/todo-summary.js`。
+- Todo 面板：在 `post`、`post-*`、`slide-*` 的页眉点击 Todo，统一查看 front matter `todos` 与正文 TODO 链接；面板默认关闭，可用关闭按钮、Esc 或点击外部关闭。
+- `todos` 可以是字符串或 YAML 列表；缺省时只扫描正文，`false` 关闭本页功能，旧的 `true` 仅作为启用标志。全局开关为 `site.ui.features.todos`。
+- 正文 `TODO:` 标签自动高亮；点击面板链接定位并聚焦原文，幻灯片会切换到目标页。代码块、行内代码、HTML 注释及 `data-todo-ignore` 区域不会收录。
+- 相关文件：`src/_includes/post-todos.html`、`src/assets/js/post-todos.js`、`src/_sass/components/_post-todos.scss`。旧的独立浮窗、拖动控制和 TodoSummary API 已移除。
 
 ### 8. 终端与 Matrix 视觉
 

@@ -1,7 +1,7 @@
 ---
 title: Thinking Models (思维模型)
 categories: Notes
-subclass: Epistemology
+subclass: Thinking
 ---
 
 ## 一元论

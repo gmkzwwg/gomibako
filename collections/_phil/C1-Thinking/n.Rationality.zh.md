@@ -2,7 +2,7 @@
 title: Rationality (理性和理性主义)
 layout: post
 categories: Notes
-subclass: Epistemology
+subclass: Thinking
 ---
 
 ## P1 为什么同一个物种会同时如此聪明又如此糊涂？

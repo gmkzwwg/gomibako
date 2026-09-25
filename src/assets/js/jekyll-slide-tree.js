@@ -341,6 +341,7 @@
 
       if (tag === 'H1') {
         currentMajor = createMajor(node.textContent || '');
+        currentMajor.headingNode = node.cloneNode(true);
         majors.push(currentMajor);
         currentSub = null;
         return;
@@ -350,19 +351,36 @@
         if (!currentMajor) return;
         currentMajor.seenFirstH2 = true;
         currentSub = createSub(node.textContent || '');
+        currentSub.headingNode = node.cloneNode(true);
         currentMajor.subs.push(currentSub);
         return;
       }
 
-      if (!currentMajor || !currentMajor.seenFirstH2 || !currentSub) return;
+      // Keep TODO-bearing preambles reachable even before the first h1/h2.
+      if (!currentSub && node.querySelector?.('.post-todo-mark')) {
+        if (!currentMajor) {
+          currentMajor = createMajor('');
+          majors.push(currentMajor);
+        }
+        currentMajor.seenFirstH2 = true;
+        currentSub = createSub('');
+        currentMajor.subs.push(currentSub);
+      }
+      if (!currentSub) return;
       currentSub.nodes.push(node.cloneNode(true));
     });
 
+    majors.forEach(major => {
+      if (!major.subs.length && major.headingNode?.querySelector('.post-todo-mark')) {
+        major.subs.push(createSub(''));
+      }
+    });
     const validMajors = majors.filter(function (major) {
       return major.subs.length > 0;
     }).map(function (major) {
       return {
         title: major.title,
+        headingNode: major.headingNode,
         subs: major.subs
       };
     });
@@ -375,7 +393,9 @@
           majorIndex: majorIndex,
           subIndex: subIndex,
           majorTitle: major.title,
+          majorHeadingNode: major.headingNode,
           heading: sub.title,
+          headingNode: sub.headingNode,
           nodes: sub.nodes
         });
       });
@@ -460,6 +480,18 @@
     if (globalIndex < 0) return;
     state.currentGlobal = globalIndex;
     render();
+  }
+
+  function reveal(id) {
+    if (!state.data) return false;
+    const selector = '#' + CSS.escape(id);
+    const contains = node => node && node.nodeType === 1 && (node.id === id || node.querySelector(selector));
+    const index = state.data.slides.findIndex(slide =>
+      contains(slide.majorHeadingNode) || contains(slide.headingNode) || slide.nodes.some(contains));
+    if (index < 0) return false;
+    state.currentGlobal = index;
+    render();
+    return true;
   }
 
   function goPrevSlide() {
@@ -707,6 +739,9 @@
       return;
     }
     state.dom.widgetTitle.textContent = slide.majorTitle || 'Section';
+    if (slide.majorHeadingNode?.querySelector('.post-todo-mark')) {
+      state.dom.widgetTitle.replaceChildren(...slide.majorHeadingNode.cloneNode(true).childNodes);
+    }
     state.dom.widgetCount.textContent = slide.subIndex + 1 + '/' + getSlideCountInMajor(slide.majorIndex);
   }
 
@@ -719,6 +754,9 @@
 
     if (slide.type !== 'index' || slide.heading) {
       state.dom.heading.textContent = slide.heading || '';
+      if (slide.headingNode?.querySelector('.post-todo-mark')) {
+        state.dom.heading.replaceChildren(...slide.headingNode.cloneNode(true).childNodes);
+      }
       state.dom.root.appendChild(state.dom.heading);
     }
 
@@ -737,6 +775,7 @@
 
     renderWidgetTitle(slide);
     renderMap();
+    document.dispatchEvent(new CustomEvent('content:rendered', {detail: {container: state.dom.body}}));
   }
 
   function onKeyDown(event) {
@@ -932,6 +971,7 @@
     state.target = findTarget();
     if (!state.target) return false;
 
+    document.dispatchEvent(new CustomEvent('content:prepare', {detail: {container: state.target}}));
     state.data = parseSlides(state.target);
     if (!state.data || !state.data.majors.length || !state.data.totalSlides) {
       state.data = null;
@@ -961,6 +1001,7 @@
   window.JSDTreeSlides = {
     rebuild: rebuild,
     destroy: destroy,
+    reveal: reveal,
     getState: function () {
       const slide = state.data ? getCurrentSlide() : null;
       return {

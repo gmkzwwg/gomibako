@@ -1,7 +1,7 @@
 ---
 title: Decision Model
 categories: Notes
-subclass: Epistemology
+subclass: Thinking
 ---
 
 Decision models provide formal frameworks to analyze and guide decision-making under uncertainty.  This report reviews the **core theory and taxonomy** of decision models, including **normative, descriptive, and prescriptive** approaches and key formalisms such as Expected Utility, Bayesian decision theory, Prospect Theory, Bounded Rationality, Reinforcement Learning (RL), Game Theory, Multi-Criteria Decision Analysis (MCDA), Stochastic Control, Markov Decision Processes (MDPs) and POMDPs, and Agent-Based Models (ABMs).  For each model we give definitions, key equations, assumptions, strengths, limitations, and original references.  We then present **practical applications** in (a) political/military decision-making (e.g. crisis management, deterrence, intelligence analysis, command-and-control, wargaming), (b) economic decision-making (corporate strategy, investment, pricing, supply chain; monetary/fiscal policy and DSGE models), and (c) strategic games (classical game examples, AI game-playing agents, reinforcement learning in games, multi-agent learning).  Each example is described in terms of model setup, decision variables, objective, constraints, data and solution methods, with insights and outcomes.  We include **diagrams** (mermaid flowcharts/timelines) and **tables** comparing models, assumptions, and performance.  Finally, we discuss open problems, limitations, ethical issues (e.g. bias, accountability), and implementation challenges in applying these models.  The treatment is rigorous and detailed, with emphasis on original sources and seminal works.

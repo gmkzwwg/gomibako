@@ -1,7 +1,7 @@
 ---
 title: Formal and Informal Fallacies
 categories: Sheet
-subclass: Epistemology
+subclass: Thinking
 layout: post-vertical
 ---
 

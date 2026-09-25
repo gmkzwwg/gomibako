@@ -415,10 +415,15 @@
           key: 'slide-' + slides.length,
           menuTitle: node.textContent.trim(),
           heading: node.textContent.trim(),
+          headingNode: node.cloneNode(true),
           nodes: []
         };
         slides.push(current);
         return;
+      }
+      if (!current && node.querySelector?.('.post-todo-mark')) {
+        current = {key: 'intro', heading: '', nodes: []};
+        slides.push(current);
       }
       if (current) current.nodes.push(node.cloneNode(true));
     });
@@ -437,10 +442,15 @@
           key: 'lang-' + slides.length,
           menuTitle: node.textContent.trim(),
           heading: '',
+          headingNode: node.cloneNode(true),
           nodes: []
         };
         slides.push(current);
         return;
+      }
+      if (!current && node.querySelector?.('.post-todo-mark')) {
+        current = {key: 'intro', heading: '', nodes: []};
+        slides.push(current);
       }
       if (current) current.nodes.push(node.cloneNode(true));
     });
@@ -667,10 +677,12 @@ function notifyContentRendered(container) {
       : state.config.mode !== 'language' && Boolean((slide.heading || '').trim());
 
     let heading = null;
-    if (showHeading) {
+    const todoHeading = slide.headingNode?.querySelector('.post-todo-mark');
+    if (showHeading || todoHeading) {
       heading = document.createElement('div');
       heading.className = 'jsd-heading';
       heading.textContent = slide.heading || '';
+      if (todoHeading) heading.replaceChildren(...slide.headingNode.cloneNode(true).childNodes);
       state.dom.root.appendChild(heading);
     }
 
@@ -705,6 +717,17 @@ function notifyContentRendered(container) {
     if (!state.slides.length) return;
     state.currentIndex = normalizeIndex(index);
     renderCurrent();
+  }
+
+  function reveal(id) {
+    const selector = '#' + CSS.escape(id);
+    const contains = node => node.nodeType === 1 && (node.id === id || node.querySelector(selector));
+    const index = state.slides.findIndex(slide =>
+      (slide.headingNode && contains(slide.headingNode)) || slide.nodes.some(contains));
+    if (index < 0) return false;
+    clearAutoplay();
+    goTo(index);
+    return true;
   }
 
   function firstSlide() {
@@ -936,6 +959,7 @@ function notifyContentRendered(container) {
     const nextTarget = findTarget();
     if (!nextTarget) return false;
     if (state.target !== nextTarget) {
+      document.dispatchEvent(new CustomEvent('content:prepare', {detail: {container: nextTarget}}));
       state.target = nextTarget;
       state.originalHTML = nextTarget.innerHTML;
     } else if (!state.originalHTML) {
@@ -1028,6 +1052,7 @@ function notifyContentRendered(container) {
     first: firstSlide,
     last: lastSlide,
     goTo: goTo,
+    reveal: reveal,
     startAutoplay: startAutoplay,
     stopAutoplay: clearAutoplay,
     toggleAutoplay: toggleAutoplay
