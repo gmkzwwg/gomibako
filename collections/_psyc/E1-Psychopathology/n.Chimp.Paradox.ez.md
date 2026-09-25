@@ -1,5 +1,6 @@
 ---
-title: Chimp Paradox - How to Manage Emotion Without Suppressing It
+title: "Chimp Paradox"
+subtitle: "How to Manage Emotion Without Suppressing It"
 layout: post-bilingual
 categories: Notes
 abbreviation: Chimp Paradox

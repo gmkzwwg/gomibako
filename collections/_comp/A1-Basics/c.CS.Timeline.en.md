@@ -1,5 +1,6 @@
 ---
-title: Computer Science - Problem-driven History 
+title: "Computer Science" 
+subtitle: "Problem-driven History"
 categories: Chron
 subclass: Basics
 ---

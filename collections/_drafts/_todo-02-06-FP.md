@@ -1,6 +1,7 @@
 ---
 text_indent: true
-title: "First Principles Thinking: Concept and Origins"
+title: "First Principles Thinking"
+subtitle: "Concept and Origins"
 layout: post
 categories: Drafts
 subclass: Drafts

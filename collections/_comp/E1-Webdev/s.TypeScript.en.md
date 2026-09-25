@@ -1,5 +1,6 @@
 ---
-title: TypeScript - Quick Reference
+title: "TypeScript"
+subtitle: "Quick Reference"
 abbreviation: TypeScript
 categories: Sheet
 subclass: Webdev

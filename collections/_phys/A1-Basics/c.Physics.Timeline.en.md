@@ -1,5 +1,6 @@
 ---
-title: Physics - Problem-Driven History
+title: "Physics"
+subtitle: "Problem-Driven History"
 categories: Chron
 date: 2026-05-03
 subclass: Basics

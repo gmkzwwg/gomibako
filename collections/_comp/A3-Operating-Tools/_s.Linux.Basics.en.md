@@ -1,5 +1,6 @@
 ---
-title: Linux Basics - Quick Reference
+title: "Linux Basics"
+subtitle: "Quick Reference"
 layout: post
 categories: Sheet
 subclass: Operating Tools

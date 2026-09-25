@@ -1,5 +1,6 @@
 ---
-title: Linux AI Tools - Quick Reference
+title: "Linux AI Tools"
+subtitle: "Quick Reference"
 layout: post
 categories: Sheet
 subclass: Operating Tools

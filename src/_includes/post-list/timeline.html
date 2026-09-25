@@ -14,13 +14,13 @@
         </section>
       {% endunless %}
 
-      <section class="post-timeline__year-group">
+      <section class="post-timeline__year-group" data-index-group>
         <h2 class="post-timeline__year">{{ post_year }}</h2>
         <div class="post-timeline__items">
       {% assign current_year = post_year %}
     {% endif %}
 
-    <article class="post-timeline__item">
+    <article class="post-timeline__item" data-index-item data-index-hidden="{% if post.hidden == true %}true{% else %}false{% endif %}">
       <span class="post-timeline__marker" aria-hidden="true"></span>
 
       <div class="post-timeline__content">
@@ -29,7 +29,7 @@
         </time>
 
         <h3 class="post-title post-title--timeline">
-          <a class="post-title__link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <a class="post-title__link" href="{{ post.url | relative_url }}">{% include document-title.html document=post %}</a>
         </h3>
 
         {% if show_excerpt and excerpt != "" %}

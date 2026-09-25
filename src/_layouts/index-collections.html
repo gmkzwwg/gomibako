@@ -44,7 +44,7 @@ layout: default
   </div>
 {% endif %}
 
-<section class="post-index post-index--collections" data-post-index aria-label="Posts by collection">
+<section class="post-index post-index--collections" data-post-index data-index-hidden-enabled aria-label="Posts by collection">
   {% include post-index/filter-nav.html
     enabled=page.index.filters
     items=filter_items

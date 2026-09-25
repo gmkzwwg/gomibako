@@ -1,4 +1,9 @@
 {% assign auto_maximize = false %}
+{% assign hidden_index_layouts = "index-categories,index-collections,index-posts,index-subclass,index-tags,index-todos" | split: "," %}
+{% assign show_hidden_toggle = false %}
+{% if hidden_index_layouts contains page.layout %}
+{% assign show_hidden_toggle = true %}
+{% endif %}
 
 {% case page.layout %}
 {% when "collection" %}
@@ -126,6 +131,16 @@
     </div>
 
     <ul class="cli-header__actions" aria-label="Header actions">
+
+      {% if show_hidden_toggle %}
+      <li class="cli-header__action">
+        <button class="cli-header__button" type="button" data-index-hidden-toggle
+          aria-pressed="false" aria-label="Show hidden articles" title="Show hidden articles">
+          <i class="fa fa-eye-slash cli-header__icon" aria-hidden="true"></i>
+          <span class="cli-header__label">Hidden</span>
+        </button>
+      </li>
+      {% endif %}
 
       {% if page.maximize != false %}
       <li class="cli-header__action cli-header__action--maximize">

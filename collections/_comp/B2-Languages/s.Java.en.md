@@ -1,5 +1,6 @@
 ---
-title: Java - Quick Reference
+title: "Java"
+subtitle: "Quick Reference"
 abbreviation: Java
 categories: Sheet
 subclass: Languages

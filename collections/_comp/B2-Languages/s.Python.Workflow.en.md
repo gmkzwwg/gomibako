@@ -1,5 +1,6 @@
 ---
-title: Python - Common Workflows
+title: "Python"
+subtitle: "Common Workflows"
 abbreviation: Python
 categories: Sheet
 subclass: Languages

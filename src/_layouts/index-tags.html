@@ -78,7 +78,7 @@ layout: default
   </div>
 {% endif %}
 
-<section class="post-index post-index--tags" data-post-index aria-label="Posts by tag">
+<section class="post-index post-index--tags" data-post-index data-index-hidden-enabled aria-label="Posts by tag">
   {% include post-index/filter-nav.html
     enabled=page.index.filters
     items=filter_items

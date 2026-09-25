@@ -1,5 +1,6 @@
 ---
-title: Markdown - Quick Reference
+title: "Markdown"
+subtitle: "Quick Reference"
 layout: post
 categories: Sheet
 subclass: Toolset

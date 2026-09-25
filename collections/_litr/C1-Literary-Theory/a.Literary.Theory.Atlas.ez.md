@@ -1,5 +1,6 @@
 ---
-title: Literary Theory and Literary Criticism - The Atlas
+title: "Literary Theory and Literary Criticism"
+subtitle: "The Atlas"
 layout: slide-multilingual
 categories: Atlas
 subclass: Literary Theory

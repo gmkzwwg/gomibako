@@ -1,4 +1,5 @@
 ---
-title: Rust Quick Reference
+title: "Rust"
+subtitle: "Quick Reference"
 categories: Sheet
 ---

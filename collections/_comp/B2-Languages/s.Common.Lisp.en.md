@@ -1,5 +1,6 @@
 ---
-title: Common Lisp - Quick Reference
+title: "Common Lisp"
+subtitle: "Quick Reference"
 abbreviation: Common Lisp
 categories: Sheet
 subclass: Languages

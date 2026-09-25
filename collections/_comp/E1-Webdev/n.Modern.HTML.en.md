@@ -1,5 +1,6 @@
 ---
-title: Modern HTML - Quick Reference
+title: "Modern HTML"
+subtitle: "Quick Reference"
 categories: Notes
 subclass: Webdev
 ---

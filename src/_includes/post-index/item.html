@@ -26,6 +26,7 @@
 <li
   class="post-index__item"
   data-index-item
+  data-index-hidden="{% if post.hidden == true %}true{% else %}false{% endif %}"
   data-index-values="{{ index_values | escape }}"
 >
   <div class="post-index__row">
@@ -62,7 +63,7 @@
     {% endif %}
 
     <a class="post-index__link" href="{{ post.url | relative_url }}">
-      {{ post.title | default: post.name }}
+      {% include document-title.html document=post %}
     </a>
   </div>
 

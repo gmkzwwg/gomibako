@@ -1,4 +1,5 @@
 ---
-title: Kotlin Quick Reference
+title: "Kotlin"
+subtitle: "Quick Reference"
 categories: Sheet
 ---

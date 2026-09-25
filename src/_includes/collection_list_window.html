@@ -122,7 +122,7 @@
                                                                 class="archive-post-link"
                                                                 href="{{ post.url | relative_url }}"
                                                             >
-                                                                {{ post.title }}
+                                                                {% include document-title.html document=post %}
                                                             </a>
                                                         {% endif %}
                                                     {% endfor %}
@@ -173,7 +173,7 @@
                                                         class="archive-post-link"
                                                         href="{{ post.url | relative_url }}"
                                                     >
-                                                        {{ post.title }}
+                                                        {% include document-title.html document=post %}
                                                     </a>
                                                 {% endif %}
                                             {% endfor %}

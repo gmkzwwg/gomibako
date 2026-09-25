@@ -1,5 +1,6 @@
 ---
-title: Linguistics - Learning Atlas
+title: "Linguistics"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Linguistics
 ---

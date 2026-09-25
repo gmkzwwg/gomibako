@@ -1,5 +1,6 @@
 ---
-title: C++ - Quick Reference
+title: "C++"
+subtitle: "Quick Reference"
 abbreviation: C++
 categories: Sheet
 subclass: Languages

@@ -1,5 +1,6 @@
 ---
-title: Mathematics - Learning Atlas
+title: "Mathematics"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Basics
 ---

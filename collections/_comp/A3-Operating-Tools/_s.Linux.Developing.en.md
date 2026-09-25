@@ -1,5 +1,6 @@
 ---
-title: Linux Tools Developing - Quick Reference
+title: "Linux Tools Developing"
+subtitle: "Quick Reference"
 layout: post
 categories: Sheet
 subclass: Operating Tools

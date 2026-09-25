@@ -6,7 +6,16 @@
       const groups = Array.from(root.querySelectorAll("[data-index-group]"));
       const collections = Array.from(root.querySelectorAll("[data-index-collection]"));
 
-      if (buttons.length === 0 || items.length === 0) return;
+      if (root.dataset.indexInitialized === "true") return;
+      root.dataset.indexInitialized = "true";
+
+      const hiddenEnabled = root.hasAttribute("data-index-hidden-enabled");
+      const hiddenToggle = hiddenEnabled
+        ? root.querySelector("[data-index-hidden-toggle]") ||
+          document.querySelector(".cli-header__actions [data-index-hidden-toggle]")
+        : null;
+      let showHidden = !hiddenEnabled;
+      let activeFilter = "all";
 
       function setHidden(element, hidden) {
         element.hidden = hidden;
@@ -35,7 +44,8 @@
 
       function updateItems(filterValue) {
         items.forEach(function (item) {
-          setHidden(item, !itemMatchesFilter(item, filterValue));
+          const excludedByHidden = !showHidden && item.dataset.indexHidden === "true";
+          setHidden(item, excludedByHidden || !itemMatchesFilter(item, filterValue));
         });
       }
 
@@ -78,10 +88,32 @@
       }
 
       function applyFilter(filterValue) {
+        activeFilter = filterValue;
+        root.classList.toggle("is-showing-hidden", showHidden);
         updateButtons(filterValue);
         updateItems(filterValue);
         updateGroups();
         updateCollectionsAndDividers();
+        const emptyMessage = root.querySelector("[data-index-empty]");
+        if (emptyMessage) setHidden(emptyMessage, items.some(function (item) { return !item.hidden; }));
+        root.dispatchEvent(new CustomEvent("post-index:updated"));
+      }
+
+      // Floating collection windows retain their animated collection switcher.
+      root.addEventListener("post-index:filter", function (event) {
+        applyFilter(event.detail.filterValue || "all");
+      });
+
+      if (hiddenToggle) {
+        hiddenToggle.addEventListener("click", function () {
+          showHidden = !showHidden;
+          hiddenToggle.setAttribute("aria-pressed", String(showHidden));
+          hiddenToggle.classList.toggle("is-active", showHidden);
+          const label = showHidden ? "Hide hidden articles" : "Show hidden articles";
+          hiddenToggle.setAttribute("aria-label", label);
+          hiddenToggle.title = label;
+          applyFilter(activeFilter);
+        });
       }
 
       buttons.forEach(function (button) {

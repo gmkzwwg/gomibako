@@ -1,5 +1,6 @@
 ---
-title: Western Philosophy - Learning Atlas
+title: "Western Philosophy"
+subtitle: "Learning Atlas"
 layout: post-bilingual
 categories: Atlas
 subclass: Basics

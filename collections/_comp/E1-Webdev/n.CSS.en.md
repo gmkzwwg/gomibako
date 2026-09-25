@@ -1,5 +1,6 @@
 ---
-title: CSS - Quick Reference
+title: "CSS"
+subtitle: "Quick Reference"
 categories: Notes
 subclass: Webdev
 ---

@@ -14,6 +14,11 @@ Priority:
 <!-- disable when page.title is empty or "" -->
 {% assign resolved_title = page.title | default: "" | strip %}
 {% assign resolved_abbreviation = page.abbreviation | default: "" | strip %}
+{% assign resolved_subtitle = page.subtitle | default: "" | strip %}
+{% assign title_anchor_text = resolved_title %}
+{% if resolved_subtitle != "" %}
+{% assign title_anchor_text = title_anchor_text | append: " " | append: resolved_subtitle %}
+{% endif %}
 
 {% assign title_region_enabled = true %}
 {% assign show_title_enabled = site.ui.features.title %}
@@ -243,6 +248,7 @@ Valid modes: list | chart | compact | false | nil
   {% include collection_list_window.html %}
   <!-- POST LIST Window-->
   {% include post_list_window.html %}
+  {% include post-index/filter-script.html %}
 
   <!-- [[MAIN CONTENT]] -->
   <div class="container" id="ctner">
@@ -253,15 +259,22 @@ Valid modes: list | chart | compact | false | nil
     <div class="div_article" id="div_atcl">
       <article id="main_atcl" itemscope itemtype="http://schema.org/BlogPosting">
 
-        <!-- PAGE TITLE -->
+        <!-- PAGE TITLE AND OPTIONAL SUBTITLE -->
+        {% if show_abbreviation_enabled or show_title_enabled %}
+        <div class="post-heading{% if resolved_subtitle != "" %} post-heading--with-subtitle{% endif %}">
         {% if show_abbreviation_enabled %}
         <h1 class="post_abbreviation" id="{{ resolved_abbreviation | slugify }}">
           {{ resolved_abbreviation }}
         </h1>
         {% elsif show_title_enabled %}
-        <h1 class="post_title" id="{{ resolved_title | slugify }}">
+        <h1 class="post_title" id="{{ title_anchor_text | slugify }}">
           {{ resolved_title }}
         </h1>
+        {% endif %}
+        {% if resolved_subtitle != "" %}
+        <p class="subtitle">{{ resolved_subtitle | escape }}</p>
+        {% endif %}
+        </div>
         {% endif %}
 
         <!-- PAGE METADATA -->

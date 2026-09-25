@@ -1,5 +1,6 @@
 ---
-title: Computer Science - Learning Atlas
+title: "Computer Science"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Basics
 ---

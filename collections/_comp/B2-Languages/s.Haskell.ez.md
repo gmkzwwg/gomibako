@@ -1,5 +1,6 @@
 ---
-title: Haskell - Quick Reference
+title: "Haskell"
+subtitle: "Quick Reference"
 abbreviation: Haskell
 categories: Sheet
 subclass: Languages

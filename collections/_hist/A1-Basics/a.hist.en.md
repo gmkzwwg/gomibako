@@ -1,5 +1,6 @@
 ---
-title: History - Learning Atlas
+title: "History"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Basics
 ---

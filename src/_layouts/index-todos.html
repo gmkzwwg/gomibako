@@ -20,7 +20,7 @@ layout: default
   </div>
 {% endif %}
 
-<section class="post-index post-index--todos" aria-label="Todo list">
+<section class="post-index post-index--todos" data-post-index data-index-hidden-enabled aria-label="Todo list">
   {% if collections_to_render %}
     {% for collection_label in collections_to_render %}
       {% assign current_collection = nil %}
@@ -35,7 +35,7 @@ layout: default
         {% assign group_title = current_collection.alias | default: current_collection.label %}
         {% assign group_id = current_collection.label | slugify %}
 
-        <section class="post-index__section" aria-labelledby="post-index-{{ group_id }}">
+        <section class="post-index__section" data-index-group aria-labelledby="post-index-{{ group_id }}">
           <header class="post-index__heading">
             <h4 class="post-index__title" id="post-index-{{ group_id }}">
               {{ group_title }}
@@ -63,7 +63,7 @@ layout: default
       {% assign group_title = collection.alias | default: collection.label %}
       {% assign group_id = collection.label | slugify %}
 
-      <section class="post-index__section" aria-labelledby="post-index-{{ group_id }}">
+      <section class="post-index__section" data-index-group aria-labelledby="post-index-{{ group_id }}">
         <header class="post-index__heading">
           <h4 class="post-index__title" id="post-index-{{ group_id }}">
             {{ group_title }}
@@ -87,3 +87,4 @@ layout: default
     {% endfor %}
   {% endif %}
 </section>
+{% include post-index/filter-script.html %}

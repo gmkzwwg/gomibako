@@ -1,5 +1,6 @@
 ---
-title: Philosophy - Resource Reference
+title: "Philosophy"
+subtitle: "Resource Reference"
 categories: Sheet
 subclass: Basics
 ---

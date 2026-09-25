@@ -1,5 +1,6 @@
 ---
-title: Emacs - Quick Reference
+title: "Emacs"
+subtitle: "Quick Reference"
 layout: slide-multilingual
 categories: Sheet
 subclass: Toolset

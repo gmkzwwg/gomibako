@@ -1,0 +1,5 @@
+{%- comment -%}Full, escaped title for navigation and metadata; page headings render the two fields separately.{%- endcomment -%}
+{%- assign document_title = include.document.title | default: include.fallback | default: include.document.name | default: "" | strip -%}
+{%- assign document_subtitle = include.document.subtitle | default: "" | strip -%}
+{{- document_title | escape -}}
+{%- if document_subtitle != "" %} — {{ document_subtitle | escape }}{% endif -%}

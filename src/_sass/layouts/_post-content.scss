@@ -83,6 +83,26 @@
     }
   }
 }
+// Keep the subtitle visually attached to the page title, outside the article body.
+.post-heading--with-subtitle {
+  margin: 2.4rem 20px 1.8rem;
+
+  > h1 {
+    margin: 0;
+  }
+
+  > .subtitle {
+    margin: 0.65rem 5% 0 0;
+    color: $color-primary;
+    font-size: $font-size-subtitle;
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: right;
+    text-transform: none;
+    overflow-wrap: anywhere;
+  }
+}
+
 // used to toggle absence of elements
 .show {
   visibility: visible !important;
@@ -110,6 +130,11 @@
   }
 }
 @media screen and (max-width: 400px) {
+  .post-heading--with-subtitle {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
   .page .container .div_article .post-content {
     padding: 5px 5px 60px 5px;
   }

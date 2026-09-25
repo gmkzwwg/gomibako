@@ -31,11 +31,11 @@
         {% assign cover_url = cover | relative_url %}
       {% endif %}
 
-      <article class="post-card">
-        <a class="post-card__link" href="{{ post.url | relative_url }}" aria-label="{{ post.title | escape }}">
+      <article class="post-card" data-index-item data-index-hidden="{% if post.hidden == true %}true{% else %}false{% endif %}">
+        <a class="post-card__link" href="{{ post.url | relative_url }}" aria-label="{% include document-title.html document=post %}">
           {% if cover %}
             <div class="post-card__media">
-              <img class="post-card__image" src="{{ cover_url }}" alt="{{ post.title | escape }}">
+              <img class="post-card__image" src="{{ cover_url }}" alt="{% include document-title.html document=post %}">
             </div>
           {% endif %}
 
@@ -45,7 +45,7 @@
             </time>
 
             <h2 class="post-title post-title--card">
-              <span class="post-title__link">{{ post.title }}</span>
+              <span class="post-title__link">{% include document-title.html document=post %}</span>
             </h2>
 
             {% if show_excerpt and excerpt != "" %}

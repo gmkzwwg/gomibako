@@ -10,13 +10,19 @@
   <div class="archive-window__backdrop" onclick="close_post_list()"></div>
 
   <section class="archive-window__panel" id="post-list-window-panel" role="dialog" aria-modal="false"
-    aria-label="Posts">
+    aria-label="Posts" data-post-index data-index-hidden-enabled>
     <div class="archive-window__titlebar" id="post-list-window-drag-handle">
       <div class="archive-window__titlebar-buttons" aria-label="Post list">
         All Posts by {{ site.ui.brand.owner | default: site.owner | escape }}.
       </div>
 
       <div class="archive-window__titlebar-actions">
+        <button class="archive-window__hidden-toggle" type="button" data-index-hidden-toggle
+          aria-controls="post-list-window-content" aria-pressed="false"
+          aria-label="Show hidden articles" title="Show hidden articles">
+          <i class="fa fa-eye-slash" aria-hidden="true"></i>
+          <span>Hidden</span>
+        </button>
         <button class="archive-window__close-button" type="button" aria-label="Close post list"
           onclick="close_post_list()">
           <i class="fa fa-times" aria-hidden="true"></i>
@@ -35,6 +41,7 @@
         group_open=post_window_group_open
         group_title_tag=post_window_group_title_tag
         %}
+        <p class="post-index__empty" data-index-empty hidden>No visible posts. Toggle Hidden to include hidden posts.</p>
       </div>
     </div>
 
@@ -285,6 +292,16 @@
 
       dragState.initialized = true;
     }
+
+    getDom().panel.addEventListener("post-index:updated", function () {
+      const { panel } = getDom();
+      const visibleUrls = new Set(
+        Array.from(panel.querySelectorAll("[data-index-item]"))
+          .filter(item => !item.hidden)
+          .map(item => item.querySelector(".post-title__link").getAttribute("href"))
+      );
+      document.getElementById("post-list-window-status-meta").textContent = visibleUrls.size + " posts";
+    });
 
     window.open_post_list = function () {
       initPostListWindow();

@@ -5,5 +5,9 @@ layout: default
 {{content}}
 
 {% if page.post_list_style != false %}
+<section data-post-index data-index-hidden-enabled aria-label="Posts">
 {% include post-list.html %}
+<p class="post-index__empty" data-index-empty hidden>No visible posts. Toggle Hidden to include hidden posts.</p>
+</section>
 {% endif %}
+{% include post-index/filter-script.html %}

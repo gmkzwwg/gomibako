@@ -1,5 +1,6 @@
 ---
-title: Mathematics - Resource Reference
+title: "Mathematics"
+subtitle: "Resource Reference"
 categories: Sheet
 subclass: Basics
 ---

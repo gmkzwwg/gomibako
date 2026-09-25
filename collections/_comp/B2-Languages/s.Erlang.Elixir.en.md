@@ -1,5 +1,6 @@
 ---
-title: Erlang / Elixir - Quick Reference
+title: "Erlang / Elixir"
+subtitle: "Quick Reference"
 abbreviation: Erlang / Elixir
 categories: Sheet
 subclass: Languages

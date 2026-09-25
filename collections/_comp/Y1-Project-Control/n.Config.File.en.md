@@ -1,5 +1,6 @@
 ---
-title: Project Control - Configuration of Projects
+title: "Project Control"
+subtitle: "Configuration of Projects"
 categories: Notes
 subclass: Project Control
 ---

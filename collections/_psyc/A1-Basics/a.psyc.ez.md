@@ -1,5 +1,6 @@
 ---
-title: Psychology - Learning Atlas
+title: "Psychology"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Basics
 ---

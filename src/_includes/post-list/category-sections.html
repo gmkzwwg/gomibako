@@ -70,7 +70,7 @@
         {% assign details_open = true %}
       {% endif %}
 
-      <section class="post-category-group post-category-group--{{ item_style | slugify }}" id="category-{{ category_slug }}">
+      <section class="post-category-group post-category-group--{{ item_style | slugify }}" id="category-{{ category_slug }}" data-index-group>
         {% if group_collapsible %}
           <details class="post-category-group__details"{% if details_open %} open{% endif %}>
             <summary class="post-category-group__header">

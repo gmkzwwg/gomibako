@@ -88,7 +88,7 @@ layout: default
   </div>
 {% endif %}
 
-<section class="post-index post-index--subclass" data-post-index aria-label="Posts by subclass">
+<section class="post-index post-index--subclass" data-post-index data-index-hidden-enabled aria-label="Posts by subclass">
   {% include post-index/filter-nav.html
     enabled=page.index.filters
     items=global_filter_items

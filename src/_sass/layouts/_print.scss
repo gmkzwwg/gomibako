@@ -14,6 +14,15 @@
 
   &__header {
     margin: 0 0 3rem; // Separate title block from content.
+
+    > .subtitle {
+      margin: 0.65rem 0 0;
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.6;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
   }
 
   &__title {

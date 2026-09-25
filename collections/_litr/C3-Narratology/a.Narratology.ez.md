@@ -1,5 +1,6 @@
 ---
-title: Narratology - Learning Atlas
+title: "Narratology"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Narratology
 ---

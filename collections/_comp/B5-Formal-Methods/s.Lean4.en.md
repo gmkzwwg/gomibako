@@ -1,5 +1,6 @@
 ---
-title: Lean4 - Quick Reference
+title: "Lean4"
+subtitle: "Quick Reference"
 abbreviation: Lean4
 categories: Sheet
 subclass: Formal Methods

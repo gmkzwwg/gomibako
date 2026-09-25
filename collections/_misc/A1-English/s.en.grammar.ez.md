@@ -1,5 +1,6 @@
 ---
-title: English Grammar Quick Reference
+title: "English Grammar"
+subtitle: "Quick Reference"
 layout: post-compact
 categories: Sheet
 subclass: English

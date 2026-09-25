@@ -1,5 +1,6 @@
 ---
-title: Regex - Basic Syntax and Practical Usage
+title: "Regex"
+subtitle: "Basic Syntax and Practical Usage"
 categories: Sheet
 subclass: Toolset
 ---

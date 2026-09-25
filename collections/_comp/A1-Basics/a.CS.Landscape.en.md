@@ -1,5 +1,6 @@
 ---
-title: Computer Science - Landscape
+title: "Computer Science"
+subtitle: "Landscape"
 categories: Atlas
 subclass: Basics
 ---

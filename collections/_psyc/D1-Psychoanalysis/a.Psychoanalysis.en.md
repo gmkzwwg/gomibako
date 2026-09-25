@@ -1,5 +1,6 @@
 ---
-title: Psychoanalysis - Learning Atlas
+title: "Psychoanalysis"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Psychoanalysis
 ---

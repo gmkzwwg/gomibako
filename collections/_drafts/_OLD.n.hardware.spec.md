@@ -1,5 +1,6 @@
 ---
-title: Linux - Check Hardware Information and Specification
+title: "Linux"
+subtitle: "Check Hardware Information and Specification"
 categories: Notes
 subclass: Operating Tools
 ---

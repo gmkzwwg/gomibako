@@ -1,6 +1,7 @@
 ---
 categories: Notes
-title: Modernizing Ancient Novels - A Comprehensive Tutorial
+title: "Modernizing Ancient Novels"
+subtitle: "A Comprehensive Tutorial"
 subclass: Style
 ---
 

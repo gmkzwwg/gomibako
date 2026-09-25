@@ -1,5 +1,6 @@
 ---
-title: Scheme - Quick Reference
+title: "Scheme"
+subtitle: "Quick Reference"
 abbreviation: Scheme
 categories: Notes
 subclass: Languages

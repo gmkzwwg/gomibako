@@ -1,5 +1,6 @@
 ---
-title: JavaScript - Quick Reference
+title: "JavaScript"
+subtitle: "Quick Reference"
 abbreviation: JavaScript
 categories: Sheet
 subclass: Webdev

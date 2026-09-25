@@ -1,5 +1,6 @@
 ---
-title: Cosmology - Learning Atlas
+title: "Cosmology"
+subtitle: "Learning Atlas"
 categories: Atlas
 subclass: Cosmology
 ---

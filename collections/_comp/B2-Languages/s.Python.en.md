@@ -1,5 +1,6 @@
 ---
-title: Python - Quick Reference
+title: "Python"
+subtitle: "Quick Reference"
 abbreviation: Python
 categories: Sheet
 subclass: Languages

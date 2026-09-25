@@ -2,6 +2,7 @@
 <html lang="{{ page.lang | default: site.lang | default: 'zh-CN' }}">
 <head>
   {% assign resolved_title = page.title | default: site.title | strip %}
+  {% assign resolved_subtitle = page.subtitle | default: "" | strip %}
   {% assign page_description = page.description | default: site.description | strip_html | strip_newlines | truncate: 160 %}
 
   {% assign math_enabled = site.ui.features.math %}
@@ -23,7 +24,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ resolved_title | escape }}</title>
+  <title>{% include document-title.html document=page fallback=resolved_title %}</title>
   <meta name="description" content="{{ page_description | escape }}">
   <meta name="referrer" content="no-referrer">
 
@@ -85,6 +86,9 @@
   <article class="print-page__article">
     <header class="print-page__header">
       <h1 class="print-page__title">{{ resolved_title }}</h1>
+      {% if resolved_subtitle != "" %}
+        <p class="subtitle">{{ resolved_subtitle | escape }}</p>
+      {% endif %}
 
       {% if page.date or page.author %}
         <div class="print-page__meta">

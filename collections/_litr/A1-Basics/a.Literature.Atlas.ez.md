@@ -1,5 +1,6 @@
 ---
-title: Literature - Learning Atlas
+title: "Literature"
+subtitle: "Learning Atlas"
 layout: slide-multilingual
 categories: Atlas
 subclass: Basics

@@ -1,5 +1,6 @@
 ---
-title: T-SQL Quick Reference
+title: "T-SQL"
+subtitle: "Quick Reference"
 categories: Sheet
 subclass: Databases
 ---

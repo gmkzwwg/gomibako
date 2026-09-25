@@ -221,3 +221,24 @@
     display: none !important; // Ensure filtered groups, items, and dividers are actually hidden.
   }
 }
+// Hidden front matter is a view preference on indexes and floating lists.
+[data-post-index][data-index-hidden-enabled] {
+  [hidden] {
+    display: none !important;
+  }
+
+  &:not(.is-showing-hidden) [data-index-hidden="true"] {
+    display: none !important;
+  }
+
+  .archive-post-link[data-index-hidden="true"],
+  [data-index-hidden="true"] .post-index__link,
+  [data-index-hidden="true"] .post-title {
+    opacity: 0.8;
+  }
+}
+
+.cli-header__button[data-index-hidden-toggle][aria-pressed="true"] {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

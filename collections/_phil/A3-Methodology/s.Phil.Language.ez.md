@@ -1,6 +1,7 @@
 ---
   
-title: Philosophy Language - A Reference Card and Tutorial  
+title: "Philosophy Language"  
+subtitle: "A Reference Card and Tutorial"
 categories: Sheet
 subclass: Methodology
 ---  

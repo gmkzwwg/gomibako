@@ -31,13 +31,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{{ resolved_title | escape }}</title>
+<title>{% include document-title.html document=page fallback=resolved_title %}</title>
 <meta name="description" content="{{ page_description | escape }}">
 <meta name="referrer" content="no-referrer">
 
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 
-<meta property="og:title" content="{{ resolved_title | escape }}">
+<meta property="og:title" content="{% include document-title.html document=page fallback=resolved_title %}">
 <meta property="og:description" content="{{ page_description | escape }}">
 <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">

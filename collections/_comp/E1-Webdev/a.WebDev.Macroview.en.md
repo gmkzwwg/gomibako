@@ -1,5 +1,6 @@
 ---
-title: Web Development - Macro-view and Principles
+title: "Web Development"
+subtitle: "Macro-view and Principles"
 categories: Atlas
 subclass: Webdev
 ---

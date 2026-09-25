@@ -1,5 +1,6 @@
 ---
-title: Rocq - Quick Reference
+title: "Rocq"
+subtitle: "Quick Reference"
 abbreviation: Rocq
 layout: print
 categories: Sheet
