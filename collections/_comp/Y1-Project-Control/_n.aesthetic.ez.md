@@ -2,7 +2,7 @@
 title: Coding Aesthetic
 categories: Notes
 subclass: Project Control
-todo: 用代码理解代码美学，真正地看到权衡利弊，而不是单纯对概念泛泛而谈
+todos: 用代码理解代码美学，真正地看到权衡利弊，而不是单纯对概念泛泛而谈
 ---
 
 ## Naming

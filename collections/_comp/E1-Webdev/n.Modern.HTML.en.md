@@ -3397,7 +3397,7 @@ Selected mode: `template-first` — HTML is primarily declarative, structural, d
 
 Use this as a baseline for a public content page, documentation page, or server-rendered application shell.
 
-```html id="html5-base-template"
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -3502,6 +3502,7 @@ Use this as a baseline for a public content page, documentation page, or server-
 </body>
 </html>
 ```
+{: #html5-base-template}
 
 | Reuse this template when                                                      | Adjust before reuse                                                                |
 | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
@@ -3515,7 +3516,7 @@ Use this as a baseline for a public content page, documentation page, or server-
 
 Use this for technical articles, tutorials, policy pages, standards notes, or long-form documentation.
 
-```html id="html5-article-template"
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -3668,6 +3669,7 @@ Use this for technical articles, tutorials, policy pages, standards notes, or lo
 </body>
 </html>
 ```
+{: #html5-article-template}
 
 | Reuse this template when                                              | Adjust before reuse                                                          |
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -3681,7 +3683,7 @@ Use this for technical articles, tutorials, policy pages, standards notes, or lo
 
 Use this when collecting ordinary user input. Keep labels visible and treat client validation as user assistance only.
 
-```html id="html5-contact-form-pattern"
+```html
 <form action="/contact" method="post" autocomplete="on">
   <div class="form-field">
     <label for="contact-name">Full name</label>
@@ -3738,6 +3740,7 @@ Use this when collecting ordinary user input. Keep labels visible and treat clie
   <button type="submit">Send message</button>
 </form>
 ```
+{: #html5-contact-form-pattern}
 
 | Template decision                    | Reason                                          |
 | ------------------------------------ | ----------------------------------------------- |
@@ -3754,7 +3757,7 @@ Use this when collecting ordinary user input. Keep labels visible and treat clie
 
 Use this for content images that need responsive delivery, modern format fallback, and a meaningful text alternative.
 
-```html id="html5-responsive-image-pattern"
+```html
 <figure>
   <picture>
     <source
@@ -3790,6 +3793,7 @@ Use this for content images that need responsive delivery, modern format fallbac
   <figcaption>Analytics dashboard used by operations teams.</figcaption>
 </figure>
 ```
+{: #html5-responsive-image-pattern}
 
 | Template decision          | Reason                                         |
 | -------------------------- | ---------------------------------------------- |
@@ -3807,7 +3811,7 @@ Use this for content images that need responsive delivery, modern format fallbac
 
 Use this for third-party embeds, previews, video players, maps, payment widgets, or isolated internal tools.
 
-```html id="html5-secure-iframe-pattern"
+```html
 <iframe
   title="Product onboarding video"
   src="https://video.example.com/embed/onboarding"
@@ -3821,10 +3825,11 @@ Use this for third-party embeds, previews, video players, maps, payment widgets,
 >
 </iframe>
 ```
+{: #html5-secure-iframe-pattern}
 
 For untrusted user-generated HTML previews, use a much more restrictive baseline:
 
-```html id="html5-untrusted-preview-iframe-pattern"
+```html
 <iframe
   title="User-generated HTML preview"
   src="/preview/sandboxed/preview-123"
@@ -3834,6 +3839,7 @@ For untrusted user-generated HTML previews, use a much more restrictive baseline
   referrerpolicy="no-referrer"
 ></iframe>
 ```
+{: #html5-untrusted-preview-iframe-pattern}
 
 | Embed situation           | Recommended posture                                                           |
 | ------------------------- | ----------------------------------------------------------------------------- |
@@ -3849,7 +3855,7 @@ For untrusted user-generated HTML previews, use a much more restrictive baseline
 
 Use this for genuine tabular data. Do not use table markup for visual layout.
 
-```html id="html5-table-pattern"
+```html
 <table>
   <caption>HTML release checklist</caption>
   <thead>
@@ -3883,6 +3889,7 @@ Use this for genuine tabular data. Do not use table markup for visual layout.
   </tbody>
 </table>
 ```
+{: #html5-table-pattern}
 
 | Template decision   | Reason                               |
 | ------------------- | ------------------------------------ |
@@ -3898,7 +3905,7 @@ Use this for genuine tabular data. Do not use table markup for visual layout.
 
 Use this when adding interaction that can start from native HTML instead of custom widgets.
 
-```html id="html5-native-interaction-pattern"
+```html
 <section aria-labelledby="export-title">
   <h2 id="export-title">Export data</h2>
 
@@ -3941,6 +3948,7 @@ Use this when adding interaction that can start from native HTML instead of cust
   });
 </script>
 ```
+{: #html5-native-interaction-pattern}
 
 | Native primitive       | Best use                           |
 | ---------------------- | ---------------------------------- |
@@ -3956,7 +3964,7 @@ Use this when adding interaction that can start from native HTML instead of cust
 
 Use this as a curated `head` block for pages that need strong metadata, CSS, scripts, and limited performance hints.
 
-```html id="html5-resource-head-pattern"
+```html
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -4002,6 +4010,7 @@ Use this as a curated `head` block for pages that need strong metadata, CSS, scr
   </script>
 </head>
 ```
+{: #html5-resource-head-pattern}
 
 | Loading choice  | Use when                                                        |
 | --------------- | --------------------------------------------------------------- |

@@ -1,0 +1,101 @@
+---
+layout: default
+---
+
+{% comment %}
+  Index published Markdown/HTML pages and collection documents by source folder.
+  folders_to_show: a path string, or an ordered list of paths / {path, title}.
+  Paths are relative to the project root; subfolders are included by default.
+  index.sort_by defaults to title; index.reverse reverses items within each folder;
+  index.recursive: false restricts each folder to its immediate children.
+  Overlapping or repeated folders list each document only in its first group.
+{% endcomment %}
+
+{% assign folders = page.folders_to_show %}
+{% assign folders_type = folders | jsonify | slice: 0, 1 %}
+{% unless folders_type == "[" %}
+  {% assign folders = "" | split: "," | push: folders %}
+{% endunless %}
+
+{% assign folder_candidates = site.pages %}
+{% for collection in site.collections %}
+  {% if collection.output %}
+    {% assign folder_candidates = folder_candidates | concat: collection.docs %}
+  {% endif %}
+{% endfor %}
+{% assign folder_sort = page.index.sort_by | default: "title" %}
+{% assign folder_candidates = folder_candidates | sort: folder_sort %}
+{% if page.index.reverse == true %}
+  {% assign folder_candidates = folder_candidates | reverse %}
+{% endif %}
+{% assign article_extensions = site.markdown_ext | default: "markdown,mkdown,mkdn,mkd,md" | append: ",html,htm" | split: "," %}
+{% assign folder_filters = "" %}
+{% assign listed_paths = "" %}
+
+{% capture folder_groups %}
+  {% for folder in folders %}
+    {% assign folder_parts = folder.path | default: folder | strip | split: "/" %}
+    {% assign folder_path = "" %}
+    {% unless folder_parts contains ".." %}
+      {% for part in folder_parts %}
+        {% if part != "" and part != "." %}
+          {% if folder_path != "" %}{% assign folder_path = folder_path | append: "/" %}{% endif %}
+          {% assign folder_path = folder_path | append: part %}
+        {% endif %}
+      {% endfor %}
+    {% endunless %}
+
+    {% if folder_path != "" %}
+      {% assign folder_prefix = folder_path | append: "/" %}
+      {% assign folder_prefix_length = folder_prefix | size %}
+      {% assign folder_title = folder.title | default: folder_path %}
+      {% assign folder_value = "folder-" | append: forloop.index %}
+      {% capture folder_items %}
+        {% for folder_post in folder_candidates %}
+          {% assign source_path = folder_post.path %}
+          {% if folder_post.collection and site.collections_dir != "" and site.collections_dir != nil %}
+            {% assign source_path = site.collections_dir | append: "/" | append: source_path %}
+          {% endif %}
+          {% assign source_prefix = source_path | slice: 0, folder_prefix_length %}
+          {% assign source_extension = source_path | split: "." | last | downcase %}
+          {% if source_prefix == folder_prefix and article_extensions contains source_extension and folder_post.url != page.url and folder_post.published != false %}
+            {% assign relative_path = source_path | remove_first: folder_prefix %}
+            {% assign include_folder_post = true %}
+            {% if page.index.recursive == false and relative_path contains "/" %}
+              {% assign include_folder_post = false %}
+            {% endif %}
+            {% capture path_token %}|{{ source_path }}|{% endcapture %}
+            {% if include_folder_post %}
+              {% unless listed_paths contains path_token %}
+                {% assign listed_paths = listed_paths | append: path_token %}
+                {% include post-index/item.html post=folder_post collection_label=folder_title index_values=folder_value show_todos=false %}
+              {% endunless %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endcapture %}
+      {% assign folder_items = folder_items | strip %}
+
+      {% if folder_items != "" %}
+        {% capture folder_filter %}{{ folder_value }}::{{ folder_title }};;{% endcapture %}
+        {% assign folder_filters = folder_filters | append: folder_filter %}
+        <section class="post-index__group" data-index-group="{{ folder_value }}" aria-labelledby="{{ folder_value }}">
+          <header class="post-index__group-header">
+            <h2 class="post-index__group-title" id="{{ folder_value }}">{{ folder_title | escape }}</h2>
+          </header>
+          <ul class="post-index__list">{{ folder_items }}</ul>
+        </section>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}
+
+{% if content and content != "" %}
+  <div class="post-index__intro">{{ content }}</div>
+{% endif %}
+
+<section class="post-index post-index--folders" data-post-index data-index-hidden-enabled aria-label="Posts by folder">
+  {% include post-index/filter-nav.html enabled=page.index.filters items=folder_filters all_label="All" label="Folder filters" %}
+  {{ folder_groups }}
+  <p class="post-index__empty" data-index-empty hidden>No visible posts in these folders. Toggle Hidden to include hidden posts.</p>
+</section>

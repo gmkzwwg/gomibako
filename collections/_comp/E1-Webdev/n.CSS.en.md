@@ -2929,7 +2929,7 @@ Selected mode: `template-first` — CSS is primarily declarative and styling-ori
 
 Use this template as a starting `styles.css` for a modern site, product UI, documentation page, dashboard, or component library. It emphasizes explicit cascade layers, restrained reset behavior, semantic tokens, accessible focus styles, layout primitives, and narrow utilities.
 
-```css id="css-architecture-template"
+```css
 @layer reset, tokens, base, layout, components, utilities, overrides;
 
 /* Reset: keep this intentionally small and reviewable. */
@@ -3301,6 +3301,7 @@ Use this template as a starting `styles.css` for a modern site, product UI, docu
   }
 }
 ```
+{: #css-architecture-template}
 
 Use this template when a project needs a **complete CSS foundation**: page layout, components, forms, tokens, utilities, and accessibility defaults.
 
@@ -3310,7 +3311,7 @@ Use this template when a project needs a **complete CSS foundation**: page layou
 
 Use this template when building a reusable product section, landing-page block, dashboard panel group, or component-library demo. It demonstrates local component adaptation with `@container`, not only viewport breakpoints.
 
-```html id="responsive-component-template-html"
+```html
 <section class="feature-section stack" aria-labelledby="feature-title">
   <div class="feature-section__header stack">
     <p class="eyebrow">Platform</p>
@@ -3347,8 +3348,9 @@ Use this template when building a reusable product section, landing-page block, 
   </div>
 </section>
 ```
+{: #responsive-component-template-html}
 
-```css id="responsive-component-template-css"
+```css
 @layer tokens, base, layout, components, utilities;
 
 @layer tokens {
@@ -3547,6 +3549,7 @@ Use this template when building a reusable product section, landing-page block, 
   }
 }
 ```
+{: #responsive-component-template-css}
 
 Use this template when a component may appear in multiple contexts: full-width page, sidebar, modal, dashboard column, or embedded card group. The key feature is local adaptation through `container-type` and `@container`.
 
@@ -3556,7 +3559,7 @@ Use this template when a component may appear in multiple contexts: full-width p
 
 Use this pattern when typography should scale smoothly without many breakpoints.
 
-```css id="fluid-typography-pattern"
+```css
 @layer tokens {
   :root {
     --step--1: clamp(0.875rem, 0.84rem + 0.18vw, 1rem);
@@ -3591,6 +3594,7 @@ Use this pattern when typography should scale smoothly without many breakpoints.
   }
 }
 ```
+{: #fluid-typography-pattern}
 
 Reuse this for content-heavy pages, product UIs, documentation, marketing sections, and dashboards. Adjust only the min/preferred/max values, not the pattern.
 
@@ -3600,7 +3604,7 @@ Reuse this for content-heavy pages, product UIs, documentation, marketing sectio
 
 Use this pattern for product cards, article cards, metrics panels, documentation tiles, and dashboard blocks.
 
-```css id="responsive-card-grid-pattern"
+```css
 @layer layout {
   .card-grid {
     display: grid;
@@ -3610,14 +3614,16 @@ Use this pattern for product cards, article cards, metrics panels, documentation
   }
 }
 ```
+{: #responsive-card-grid-pattern}
 
-```html id="responsive-card-grid-html"
+```html
 <section class="card-grid" style="--card-min: 20rem">
   <article class="card stack">...</article>
   <article class="card stack">...</article>
   <article class="card stack">...</article>
 </section>
 ```
+{: #responsive-card-grid-html}
 
 The important part is `min(100%, var(--card-min))`. It prevents a minimum track size from forcing horizontal overflow in narrow containers.
 
@@ -3627,7 +3633,7 @@ The important part is `min(100%, var(--card-min))`. It prevents a minimum track 
 
 Use this pattern for links styled as buttons and real buttons. Use `<button>` for actions and `<a>` for navigation.
 
-```css id="accessible-button-pattern"
+```css
 @layer components {
   .button {
     --button-bg: var(--color-accent);
@@ -3694,11 +3700,13 @@ Use this pattern for links styled as buttons and real buttons. Use `<button>` fo
   }
 }
 ```
+{: #accessible-button-pattern}
 
-```html id="accessible-button-html"
+```html
 <button class="button" type="button">Save changes</button>
 <a class="button button--secondary" href="/settings">Open settings</a>
 ```
+{: #accessible-button-html}
 
 *Common Pitfalls: Do not use `aria-disabled="true"` alone on an anchor unless click behavior is also suppressed with JavaScript; CSS only changes presentation.*
 
@@ -3706,7 +3714,7 @@ Use this pattern for links styled as buttons and real buttons. Use `<button>` fo
 
 Use this pattern when a site needs light/dark mode, local theme scopes, or design-system semantic colors.
 
-```css id="theme-system-pattern"
+```css
 @layer tokens {
   :root {
     color-scheme: light;
@@ -3758,12 +3766,14 @@ Use this pattern when a site needs light/dark mode, local theme scopes, or desig
   }
 }
 ```
+{: #theme-system-pattern}
 
-```html id="theme-system-html"
+```html
 <html lang="en" data-theme="dark">
   ...
 </html>
 ```
+{: #theme-system-html}
 
 Use this when explicit theme selection should override system preference. Remove `data-theme` to let system preference decide.
 
@@ -3773,7 +3783,7 @@ Use this when explicit theme selection should override system preference. Remove
 
 Use this pattern when a card must work in a grid cell, sidebar, modal, drawer, and full-width content area.
 
-```css id="container-query-card-pattern"
+```css
 @layer components {
   .media-card {
     container-type: inline-size;
@@ -3815,8 +3825,9 @@ Use this pattern when a card must work in a grid cell, sidebar, modal, drawer, a
   }
 }
 ```
+{: #container-query-card-pattern}
 
-```html id="container-query-card-html"
+```html
 <article class="media-card">
   <img class="media-card__image" src="article.jpg" alt="Developer workstation with CSS layout sketches">
   <div class="media-card__body">
@@ -3825,6 +3836,7 @@ Use this pattern when a card must work in a grid cell, sidebar, modal, drawer, a
   </div>
 </article>
 ```
+{: #container-query-card-html}
 
 *Common Pitfalls: Query the component’s available space, not the viewport, when the same component appears in multiple layout contexts.*
 
@@ -3832,7 +3844,7 @@ Use this pattern when a card must work in a grid cell, sidebar, modal, drawer, a
 
 Use this pattern for documentation pages, admin panels, settings pages, and dashboards with persistent local navigation.
 
-```css id="sticky-app-shell-pattern"
+```css
 @layer layout {
   .app-shell {
     display: grid;
@@ -3869,8 +3881,9 @@ Use this pattern for documentation pages, admin panels, settings pages, and dash
   }
 }
 ```
+{: #sticky-app-shell-pattern}
 
-```html id="sticky-app-shell-html"
+```html
 <div class="app-shell">
   <aside class="app-shell__sidebar">
     <nav aria-label="Settings navigation">...</nav>
@@ -3881,6 +3894,7 @@ Use this pattern for documentation pages, admin panels, settings pages, and dash
   </main>
 </div>
 ```
+{: #sticky-app-shell-html}
 
 *Common Pitfalls: `position: sticky` often fails because of the wrong scroll ancestor, missing inset, insufficient space, or an ancestor with unintended overflow.*
 
@@ -3888,7 +3902,7 @@ Use this pattern for documentation pages, admin panels, settings pages, and dash
 
 Use this pattern for ordinary forms where visual validation should follow real form semantics.
 
-```css id="form-layout-pattern"
+```css
 @layer components {
   .form {
     display: grid;
@@ -3944,8 +3958,9 @@ Use this pattern for ordinary forms where visual validation should follow real f
   }
 }
 ```
+{: #form-layout-pattern}
 
-```html id="form-layout-html"
+```html
 <form class="form" action="/account" method="post">
   <div class="field">
     <label class="field__label" for="email">Email address</label>
@@ -3965,6 +3980,7 @@ Use this pattern for ordinary forms where visual validation should follow real f
   <button class="button" type="submit">Save account</button>
 </form>
 ```
+{: #form-layout-html}
 
 *Common Pitfalls: CSS can show error styling, but server-side validation and accessible error messaging still need to exist outside CSS.*
 

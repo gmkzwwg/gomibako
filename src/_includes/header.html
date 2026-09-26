@@ -1,5 +1,5 @@
 {% assign auto_maximize = false %}
-{% assign hidden_index_layouts = "index-categories,index-collections,index-posts,index-subclass,index-tags,index-todos" | split: "," %}
+{% assign hidden_index_layouts = "index-categories,index-collections,index-folder,index-posts,index-subclass,index-tags,index-todos" | split: "," %}
 {% assign show_hidden_toggle = false %}
 {% if hidden_index_layouts contains page.layout %}
 {% assign show_hidden_toggle = true %}
@@ -12,6 +12,10 @@
 
 {% when "index" %}
 {% assign layout_name = "index mode" %}
+{% assign show_toc_mode = page.toc | default: false %}
+
+{% when "index-folder" %}
+{% assign layout_name = "folder index" %}
 {% assign show_toc_mode = page.toc | default: false %}
 
 {% when "post-bilingual" %}
@@ -225,7 +229,7 @@
       {% endif %}
 
       {% if todos_enabled %}
-      <li class="cli-header__action">
+      <li class="cli-header__action" data-todo-action hidden>
         <button class="cli-header__button" type="button" data-todo-toggle aria-controls="post-todos"
           aria-haspopup="dialog" aria-expanded="false" aria-label="Open todos" title="Todo">
           <i class="fa fa-check-square-o cli-header__icon" aria-hidden="true"></i>

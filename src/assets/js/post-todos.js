@@ -4,10 +4,16 @@
   const panel = document.getElementById('post-todos');
   const toggle = document.querySelector('[data-todo-toggle]');
   if (!panel || !toggle) return;
+  const action = toggle.closest('[data-todo-action]');
   const list = panel.querySelector('[data-todo-items]');
+  const hasNotes = Boolean(list.querySelector('.post-todos__note'));
   const entries = new Map();
   const skip = 'script,style,noscript,textarea,input,select,button,pre,code,svg,math,[data-todo-ignore],.post-todo-mark';
   let nextId = 0;
+
+  function updateToggle() {
+    action.hidden = !hasNotes && entries.size === 0;
+  }
 
   function collect(container) {
     if (!container) return;
@@ -42,6 +48,7 @@
       const text = range.toString().split(/TODO:|[\r\n]/)[0].trim();
       entries.set(mark.id, 'TODO: ' + text);
     });
+    updateToggle();
   }
 
   function collectArticle() {
@@ -98,6 +105,7 @@
   });
 
   // Index the complete source before slide engines cache and replace it.
+  updateToggle();
   document.addEventListener('content:prepare', event => collect(event.detail.container));
   document.addEventListener('content:rendered', event => collect(event.detail.container));
   document.addEventListener('DOMContentLoaded', collectArticle, {once: true});

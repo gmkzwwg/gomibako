@@ -12,16 +12,16 @@ permalink: /
 shell_menu:
   - label: POSTS
     href: /posts
-  - label: TODOS
-    href: /todos
   - label: NOTES
     href: /notes
+  - label: TEXTS
+    href: /texts
+  - label: TODOS
+    href: /todos
   - label: TESTS
     href: /test
   - label: ABOUT
     href: /cv
-  - label: HELP
-    href: https://github.com/gmkzwwg
 ---
 
 `LIFE SYSTEM FAILED SUCCESSFULLY:`

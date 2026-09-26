@@ -203,13 +203,17 @@ Internal section link:
 
 [Return to the top](#top)
 
-Image:
+Image (syntax example; replace the placeholder path with an existing image):
 
+```markdown
 ![A notebook on a desk](./assets/notebook.jpg "Example image title")
+```
 
-Linked image:
+Linked image (syntax example):
 
+```markdown
 [![Markdown logo](./assets/markdown-logo.png)](https://daringfireball.net/projects/markdown/)
+```
 
 ### 6. Tables
 

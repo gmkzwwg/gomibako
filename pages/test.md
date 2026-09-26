@@ -78,7 +78,7 @@ abstract: "This is abstract. Abstract is blank by default." # string
 
 # Heading 1
 
-Other Tests: [test-slide](/slide)
+Other Tests: [test-slide]({{ '/test-slide' | relative_url }})
 
 **Paragraph** 
   - **bold**, *italic*, ~~strikethrough~~, `inline code`
@@ -415,7 +415,7 @@ Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文
 ### 7. 写作辅助
 
 - drafts：使用 `collections/_drafts` 保存草稿，配合 Jekyll drafts 工作流。相关目录：`collections/_drafts/`。
-- Todo 面板：在 `post`、`post-*`、`slide-*` 的页眉点击 Todo，统一查看 front matter `todos` 与正文 TODO 链接；面板默认关闭，可用关闭按钮、Esc 或点击外部关闭。
+- Todo 面板：仅在 fm 有实际待办或正文有可收录的 `TODO:` 时显示按钮；在 `post`、`post-*`、`slide-*` 的页眉点击 Todo，统一查看 front matter `todos` 与正文 TODO 链接；面板默认关闭，可用关闭按钮、Esc 或点击外部关闭。
 - `todos` 可以是字符串或 YAML 列表；缺省时只扫描正文，`false` 关闭本页功能，旧的 `true` 仅作为启用标志。全局开关为 `site.ui.features.todos`。
 - 正文 `TODO:` 标签自动高亮；点击面板链接定位并聚焦原文，幻灯片会切换到目标页。代码块、行内代码、HTML 注释及 `data-todo-ignore` 区域不会收录。
 - 相关文件：`src/_includes/post-todos.html`、`src/assets/js/post-todos.js`、`src/_sass/components/_post-todos.scss`。旧的独立浮窗、拖动控制和 TodoSummary API 已移除。

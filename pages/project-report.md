@@ -375,7 +375,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | 首页内容和菜单 | `pages/index.md`、`src/_layouts/index.html` | `_sass/layouts/_index.scss`、内联终端动画 |
 | 正式文章列表 | `pages/index-posts.md`、`post-list.html`、`post-list/*` | 文章弹窗复用、日期/分类顺序、ID 唯一性 |
 | 学科导航和筛选 | `index-subclass/collections/categories/tags`、`post-index/*` | `collection_list_window.html`、集合顺序、字段空值 |
-| TODO/回顾总览 | `index-todos.html`、`post-index/item.html`、`todo-summary.js` | posts 覆盖范围、旧 `todo/todos`、持久化策略 |
+| TODO/回顾总览 | `post-todos.html/js`、`index-todos.html`、`post-index/item.html` | posts 覆盖范围、旧 `todo/todos`、持久化策略 |
 | 中英/多语言阅读 | 三个 `post-*` 布局及 `bilingual*.js`、`parallel-text.js` | 引用语义、数学、目录、移动端与完整原文 |
 | 幻灯片 | `slide-*` 与 `jekyll-slide-*` | 导言完整性、章节锚点、动态增强刷新 |
 | 样式和字号 | `_variables.scss`、`_fonts.scss`、`_base.scss`、组件 Sass | JS 注入的样式、打印独立样式 |
@@ -517,9 +517,295 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 - 幻灯片：两种引擎在缓存正文前发送 `content:prepare`，保存完整文章的高亮锚点；增加 `reveal(id)` 以切换到待办所在页。树状引擎补发 `content:rendered`；带 TODO 的前导段落和标题保留可定位入口，分页重建不会重复生成待办。双语折叠和窄屏左右语言模式会展开/切换到目标内容。
 - 文件：新增 `src/_includes/post-todos.html`、`src/assets/js/post-todos.js`、`src/_sass/components/_post-todos.scss`；删除实际旧文件 `src/assets/js/todo-summary.js`（仓库没有名为 todo.js 的文件）；修改 header/default、主题 Sass 入口、两个幻灯片引擎、`_config.yml`、`pages/test.md` 和本报告。旧 TodoSummary API、配置对象、浮动重开按钮、拖动和 JS 注入样式不再提供。
 - 兼容：文章数据与 URL 不迁移；`/todos` 仍提供已有的跨文章 fm 待办总览。首页、六个索引页与 print 不增加当前文章 Todo 按钮；`todos: false` 的报告页继续关闭该功能。
-- 验证：21 个 Jekyll 页面夹具和 jsdom 交互通过，覆盖全部 11 个现有文章/幻灯片布局、fm 字段类型、非文章布局、正文多任务与行内格式、跳过代码/注释、跨页/标题/前导任务定位、折叠详情展开、焦点及面板开关、重复打开与幻灯片重建；另用真实双语折叠、竖排语言及并排阅读脚本验证 3 种阅读模式。整站 production 构建另行复核。
+- 验证：21 个 Jekyll 页面夹具和 jsdom 交互通过，覆盖全部 11 个现有文章/幻灯片布局、fm 字段类型、非文章布局、正文多任务与行内格式、跳过代码/注释、跨页/标题/前导任务定位、折叠详情展开、焦点及面板开关、重复打开与幻灯片重建；另用真实双语折叠、竖排语言及并排阅读脚本验证 3 种阅读模式。整站 production 构建通过（66.518 秒）。
 - 测试边界：jsdom 安装在 `/tmp/gomibako-todos-20260925/`，未改动项目依赖；未进行真实浏览器视觉验收。
 - 回退：需同时恢复旧脚本、default 的加载入口和这次 header/样式/幻灯片接入。未提交或部署。
+
+### 2026-09-26 · CHANGE-004 · 按源文件夹生成文章索引
+
+- 目的：为用户迁入 `transcripts/` 与 `textbooks/` 的文本建立统一目录，也供其他任意源文件夹复用。
+- 文件：新增 `src/_layouts/index-folder.html`、`pages/index-texts.md`；header 为新布局接入 Hidden 和 folder index 模式；`post-index/filter-nav.html` 在最终输出时统一转义标签/属性，避免带特殊字符的文件夹名称破坏显示或筛选。复用既有 item、filter-nav、filter-script 和样式。
+- 用法：单目录用 `folders_to_show: transcripts`；多个目录用有序 YAML 列表，例如 `folders_to_show: [transcripts, textbooks]`。需要自定义显示名时使用 `- path: transcripts` / `title: Transcripts` 的对象形式。路径相对项目根目录，支持 `./` 与首尾斜杠。
+- 排序：文件夹严格按 fm 列表顺序出现；各文件夹内默认按 title 升序，可设 `index.sort_by: path` 或其他可排序字段，`index.reverse: true` 倒序。`index.recursive: false` 只列当前目录直属文章；默认包括子目录。重复或交叉路径只在首次匹配的分组中收录同一文档。
+- 收录：合并 `site.pages` 与 output=true 的 collection 文档，按带斜杠的路径前缀精确匹配，避免 transcripts 误收 transcripts-extra。Markdown/HTML 有效文章可收录，CSS、无 front matter 的静态文件、未发布内容及索引页自身排除。collection 路径自动补上 site.collections_dir；旧文件是否进入 Jekyll 仍遵循站点现有发布规则。
+- 展示：`/texts` 先列 Transcripts，再列 Textbooks；沿用主副标题链接、子类徽标、Hidden、文件夹筛选和空列表提示。无需新插件或额外前端脚本。
+- 验证：11 种渲染夹具覆盖单/多路径、对象显示名、目录顺序、路径规范化、直属/递归、重复/交叉目录、collection、静态/未发布文件、空目录、排序、关闭筛选、索引自排除、特殊字符和 baseurl；jsdom 验证文件夹筛选与 Hidden 交集、空分组/空状态及与弹窗按钮的隔离。整站 production 构建通过（63.118 秒）；/texts 实际收录 19 篇 transcripts 和 3 篇 textbooks，22 个文章目标均存在。
+- 索引维护：依用户最新整理重建第 10 节的目录和收录状态，并登记 pages 中的人工文章类型索引；这些移动/重命名属于用户已有修改，本次未搬动正文文件。
+- 回退：移除新 layout/页面，恢复 header 与 filter-nav 的本次小改动。未提交或部署。
+
+### 2026-09-26 · AUDIT-001 · 链接检查
+
+> 以下为修复前的历史清单；当前修复结果与仍缺失的图片见本节后面的 CHANGE-006。
+
+- 检查对象：本地 production 产物的 **289 个 HTML 页面**、CSS 资源路径，共核对 **89,095 次站内 href/src 等引用**；解码路径、处理相对地址、clean URL 和片段 ID，按目标去重。新 `/texts` 的 **22 个文章链接全部有效**。
+- 发现 **33 个缺失页面/资源目标**和 **1 个静态锚点错误**。其中 **21 个缺失目标来自 HTML/CSS/Markdown 教程的实际渲染示例**，其余 **12 个**是旧地址、缺图或把解释文字误写成链接等问题；下面给出完整目标和源文件定位。
+- 另查 Markdown 源文件链接：**267 处引用全部找不到原路径**，涉及 **187 个不同目标**，集中在 `pages/文章类型检索索引.md`。该文件从 collections 移到 pages 后，相对路径基准改变，部分被引用文件也已迁移。它无 front matter，因此属于原始 Markdown 说明中的源链接，不与上面的 HTML 站内目标混计。
+- 范围与处理：这是本地静态检查，**未逐一请求 2,266 个外部 URL**，也不声称已验证线上服务器重定向或所有脚本运行后生成的锚点。按“查找失效链接”的要求记录问题；没有擅自删除示例、补写缺失图片或批量改写正在整理的文章。
+
+#### 缺失的站内页面与资源
+
+| 失效目标（已解码） | 来源文件与行 | 判断 / 建议 |
+| --- | --- | --- |
+| `/api` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:1961,3460,3969` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/assets/docs.css` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:3540,3983` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/assets/docs.js` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:3541,3987` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/assets/fonts/inter-var.woff2` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:1749,2763,3442,3977` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/assets/search.js` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:3993` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/assets/site.css` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:366,2741,2841,3448` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/assets/site.js` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:369,3451` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/assets/vendor.js` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:1712,2754,3986` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/comp/n.CSS.en/article.jpg` | `collections/_comp/E1-Webdev/n.CSS.en.md:3821` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/comp/s.Markdown.en/assets/markdown-logo.png` | `collections/_comp/A2-Toolset/s.Markdown.en.md:212` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/comp/s.Markdown.en/assets/notebook.jpg` | `collections/_comp/A2-Toolset/s.Markdown.en.md:208` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/docs` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:377,458,463,515,534` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/docs/getting-started` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:3480` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/docs/security` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:3487,3575` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/favicon.ico` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:445,465,1738,2078,3423` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/litr/t.On.Writing.zh/文体家（Stylist），简单说来就是能够形成作家创作风格的作家，这种风格使他/她区别于其他作家而具有独创性，能为读者所辨识出来。文体家与一般作家不同之处，在于其能够就表现领域、呈现方式、作品体式、叙述手法等等方面做出突破性的创新。` | `collections/_litr/F1-Writing/t.On.Writing.zh.md:982` | 将解释文字放进了链接 URL；应确认是否改为脚注或普通说明。 |
+| `/litr/t.On.Writing.zh/约翰·厄普代克（John Updike，1932年3月18日－2009年1月27日），美国长篇小说、短篇小说作家、诗人。一生发表了大量体裁多样的作品，包括系列小说“兔子四部曲”“贝克三部曲”以及一些短篇小说集、诗集和评论集等。其中，《兔子富了》和《兔子歇了》使他分别于1982年和1991年两度获得普利策小说奖。厄普代克被公认为美国最优秀的小说家之一，他的文风对许多作家产生了巨大影响。2009年1月27日，因肺癌在马萨诸塞州去世，终年77岁。<br>` | `collections/_litr/F1-Writing/t.On.Writing.zh.md:978` | 将解释文字放进了链接 URL；应确认是否改为脚注或普通说明。 |
+| `/math/s.Math.Symbols.ez/f` | `collections/_math/A1-Basics/s.Math.Symbols.ez.md:4602` | 相对地址 f 无对应文件；检查数学示例是否误写成 Markdown 链接。 |
+| `/n.LA` | `pages/catelog.md:35` | 旧顶层文章地址；应对照当前学科目录确认目标后更新。 |
+| `/n.ML` | `pages/catelog.md:36` | 旧顶层文章地址；应对照当前学科目录确认目标后更新。 |
+| `/n.SICP` | `pages/catelog.md:81` | 旧顶层文章地址；应对照当前学科目录确认目标后更新。 |
+| `/note/02-english/en-idioms/` | `collections/_misc/A1-English/s.en.grammar.ez.md` | 旧笔记路径；当前产物没有对应英语习语页。 |
+| `/privacy` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:1496,2252,3496` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/settings` | `collections/_comp/E1-Webdev/n.CSS.en.md:3700,3982` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/site.webmanifest` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:446,466,1739,2079,3424` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/slide` | `pages/test.md:81,370,371,372,373` | 测试说明中的旧入口；当前幻灯片示例为 /test-slide。 |
+| `/src/figures/hist.14cbc.png` | `collections/_hist/C1-Asian-History/c.West.Asia.zh.md:1273` | 图片文件不存在于该地址；需补图或找到现有图片后改路径。 |
+| `/src/figures/hist.assyria.png` | `collections/_hist/C1-Asian-History/c.West.Asia.zh.md:718` | 图片文件不存在于该地址；需补图或找到现有图片后改路径。 |
+| `/status` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:3498` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/support` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:506,516,1003,1555,3461` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/terms` | `collections/_comp/E1-Webdev/n.Modern.HTML.en.md:3497` | 教程里的渲染示例引用了未提供的演示页面/素材；可隔离示例或明确标注。 |
+| `/textbooks/t.Kenny.ez/_page_119_Figure_1.jpeg` | `textbooks/t.Kenny.ez.md:1750` | 图片文件不存在于该地址；需补图或找到现有图片后改路径。 |
+| `/textbooks/t.Kenny.ez/_page_125_Figure_3.jpeg` | `textbooks/t.Kenny.ez.md:1822` | 图片文件不存在于该地址；需补图或找到现有图片后改路径。 |
+
+#### 缺失的静态锚点
+
+| 链接 | 来源文件与行 | 判断 / 建议 |
+| --- | --- | --- |
+| `/posts/游戏意识/#资源思维利用资源获得资源交换资源` | `collections/_posts/2026-04-14-游戏意识.md:39` | 手写目录链接与生成标题 ID 不一致；应采用当前标题的完整 slug（包含开头的编号）。 |
+
+#### 人工文章索引中的失效 Markdown 链接
+
+以下每一行都来自 `pages/文章类型检索索引.md`。建议路径只在当前目录中能唯一匹配现存文件时给出，尚未执行替换。
+
+| 原目标 | 源文件行号 | 可确认的当前相对路径 |
+| --- | --- | --- |
+| `_comp/A2-Toolset/t.NULL.transcript.en.md` | 27 | `../transcripts/t.NULL.transcript.en.md` |
+| `_comp/B1-Programming/n.CTMCP.ez.md` | 28 | `../collections/_comp/B1-Programming/n.CTMCP.ez.md` |
+| `_comp/B1-Programming/n.EOPL.en.md` | 29 | `../collections/_comp/B1-Programming/n.EOPL.en.md` |
+| `_comp/B1-Programming/n.SICP.ez.md` | 30 | `../collections/_comp/B1-Programming/n.SICP.ez.md` |
+| `_comp/B1-Programming/t.6.001.transcript.en.md` | 31 | `../transcripts/t.6.001.transcript.en.md` |
+| `_comp/B1-Programming/t.CS61A.transcript.en.md` | 32 | `../transcripts/t.CS61A.transcript.en.md` |
+| `_comp/B2-Languages/_n.tapl.en.md` | 33 | `../collections/_comp/B2-Languages/_n.tapl.en.md` |
+| `_comp/B5-Formal-Methods/_t.SF.Annotated.ez.md` | 34 | `../collections/_comp/B5-Formal-Methods/_t.SF.Annotated.ez.md` |
+| `_comp/D1-Computer-Systems/_n.csapp.zh.md` | 35 | `../collections/_comp/D1-Computer-Systems/_n.csapp.zh.md` |
+| `_comp/F1-AI/AI4Everyone.md` | 36, 344 | `../transcripts/t.AI4Everyone.md` |
+| `_comp/F1-AI/Agentic.AI.md` | 37, 345 | `../transcripts/t.Agentic.AI.md` |
+| `_comp/F1-AI/Generative.AI4Everyone.md` | 38, 346 | `../transcripts/t.Generative.AI4Everyone.md` |
+| `_comp/F3-LLMs/n.Andrej.Karpathy.ez.md` | 39, 347 | `../collections/_comp/F3-LLMs/n.Andrej.Karpathy.ez.md` |
+| `_comp/F3-LLMs/n.Anthropic.Lec.ez.md` | 40, 348 | `../collections/_comp/F3-LLMs/n.Anthropic.Lec.ez.md` |
+| `_drafts/_todo2024-2-16-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC.md` | 46 | 需人工确认重命名后的目标 |
+| `_litr/A2-Reading/n.Masterpieces.en.md` | 52, 236 | `../collections/_litr/A2-Reading/n.Masterpieces.en.md` |
+| `_litr/A2-Reading/n.Masterpieces.zh.md` | 53, 237 | `../collections/_litr/A2-Reading/n.Masterpieces.zh.md` |
+| `_litr/C1-Literary-Theory/t.ENGL300.transcript.en.md` | 54 | `../transcripts/t.ENGL300.transcript.en.md` |
+| `_litr/C3-Narratology/n.narratology.en.md` | 55 | `../collections/_litr/C3-Narratology/n.narratology.en.md` |
+| `_litr/D1-Linguistics/t.24.900.transcript.en.md` | 56 | `../transcripts/t.24.900.transcript.en.md` |
+| `_litr/F1-Writing/t.On.Writing..zh.md` | 57 | 需人工确认重命名后的目标 |
+| `_litr/F3-Style/t.excerpt.sentences.ez.md` | 58 | `../collections/_litr/F3-Style/t.excerpt.sentences.ez.md` |
+| `_litr/G1-Literary-Texts/t.Short.Stories.ez.md` | 59 | `../collections/_litr/G1-Literary-Texts/t.Short.Stories.ez.md` |
+| `_litr/G1-Literary-Texts/t.lolita.annotated.en.md` | 60 | `../textbooks/t.lolita.annotated.en.md` |
+| `_litr/G1-Literary-Texts/t.mocangli.zh.md` | 61 | `../transcripts/t.mocangli.zh.md` |
+| `_math/C2-Analysis/t.18.01.transcript.en.md` | 67 | `../transcripts/t.18.01.transcript.en.md` |
+| `_math/D1-Linear-Algebra/t.18.06.transcript.en.md` | 68 | `../transcripts/t.18.06.transcript.en.md` |
+| `_math/G1-Logic/t.MATH125A.transcript.en.md` | 69 | `../transcripts/t.MATH125A.transcript.en.md` |
+| `_math/G2-Set-Theory/t.MATH135.transcript.en.md` | 70 | `../transcripts/t.MATH135.transcript.en.md` |
+| `_math/H1-Game-Theory/t.ECON159.en.md` | 71 | `../transcripts/t.ECON159.en.md` |
+| `_math/H1-Game-Theory/t.GT2AA.en.md` | 72 | 需人工确认重命名后的目标 |
+| `_math/H1-Game-Theory/t.Games.Played.en.md` | 73 | `../transcripts/t.Games.Played.en.md` |
+| `_misc/A1-English/n.en.long.sentences.n.expressions.ez.md` | 79 | `../collections/_misc/A1-English/n.en.long.sentences.n.expressions.ez.md` |
+| `_misc/A1-English/t.en.elden.ring.ez.md` | 80 | `../transcripts/t.en.elden.ring.ez.md` |
+| `_misc/B1-Learning/t.LHTL.transcript.ez.md` | 81 | `../transcripts/t.LHTL.transcript.ez.md` |
+| `_misc/D2-Economy/n.Dankoe.zh.md` | 82, 363 | `../collections/_misc/D2-Economy/n.Dankoe.zh.md` |
+| `_phil/A2-History/t.Kenny.ez.md` | 88 | `../textbooks/t.Kenny.ez.md` |
+| `_phil/C1-Epistemology/t.ctk.zh.md` | 89 | `../textbooks/t.ctk.zh.md` |
+| `_phil/E1-Ethics/t.PHIL176.transcripts.en.md` | 90 | `../transcripts/t.PHIL176.transcripts.en.md` |
+| `_phil/F1-Semiotics/n.Semiotics.zh.md` | 91, 375 | `../collections/_phil/F1-Semiotics/n.Semiotics.zh.md` |
+| `_phil/X1-Readings/t.n.sayings.zh.md` | 92 | `../collections/_phil/X1-Readings/t.n.sayings.zh.md` |
+| `_phil/X1-Readings/t.phil.zh.md` | 93 | `../collections/_phil/X1-Readings/t.phil.zh.md` |
+| `_phys/X1-Readings/t.Cargo.Cult.Science.ez.md` | 99 | 需人工确认重命名后的目标 |
+| `_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh.md` | 105, 377 | `../collections/_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh.md` |
+| `_psyc/D1-Psychoanalysis/s.Mental.Defense.zh.md` | 106, 318, 378 | `../collections/_psyc/D1-Psychoanalysis/s.Mental.Defense.zh.md` |
+| `_psyc/E1-Psychopathology/n.Chimp.Paradox.ez.md` | 107 | `../collections/_psyc/E1-Psychopathology/n.Chimp.Paradox.ez.md` |
+| `_hist/A2-Historiography/n.Historiography.History.en.md` | 115, 350 | `../collections/_hist/A2-Historiography/n.Historiography.History.en.md` |
+| `_litr/A1-Basics/a.Novelist.Starting.Point.en.md` | 116, 352, 390 | `../collections/_litr/A1-Basics/a.Novelist.Starting.Point.en.md` |
+| `_litr/D1-Linguistics/n.Linguistics.zh.md` | 117, 353 | `../collections/_litr/D1-Linguistics/n.Linguistics.zh.md` |
+| `_litr/D1-Linguistics/n.Psycholinguistics.zh.md` | 118, 354 | `../collections/_litr/D1-Linguistics/n.Psycholinguistics.zh.md` |
+| `_math/A1-Basics/n.Math.Methodology.zh.md` | 119, 355 | `../collections/_math/A1-Basics/n.Math.Methodology.zh.md` |
+| `_misc/D1-Sociology/n.AI.and.Sociology.zh.md` | 120, 356 | `../collections/_misc/D1-Sociology/n.AI.and.Sociology.zh.md` |
+| `_misc/D1-Sociology/n.Classical.Sociology.zh.md` | 121, 357 | `../collections/_misc/D1-Sociology/n.Classical.Sociology.zh.md` |
+| `_misc/D1-Sociology/n.Elite.and.Power.zh.md` | 122, 358 | `../collections/_misc/D1-Sociology/n.Elite.and.Power.zh.md` |
+| `_misc/D1-Sociology/n.Financial.Capita.zh.md` | 123, 359 | `../collections/_misc/D1-Sociology/n.Financial.Capita.zh.md` |
+| `_misc/D1-Sociology/n.Japanese-style.Capitalism.zh.md` | 124, 360 | `../collections/_misc/D1-Sociology/n.Japanese-style.Capitalism.zh.md` |
+| `_misc/D1-Sociology/n.Modern.Capitalism.zh.md` | 125, 361 | `../collections/_misc/D1-Sociology/n.Modern.Capitalism.zh.md` |
+| `_misc/D1-Sociology/n.Modern.Sociology.zh.md` | 126, 362 | `../collections/_misc/D1-Sociology/n.Modern.Sociology.zh.md` |
+| `_misc/D2-Economy/n.Global.Economy.zh.md` | 127, 364 | `../collections/_misc/D2-Economy/n.Global.Economy.zh.md` |
+| `_misc/D2-Economy/n.International.Political.Economy.zh.md` | 128, 365 | `../collections/_misc/D2-Economy/n.International.Political.Economy.zh.md` |
+| `_misc/D3-Politics/n.International.Information.Warfare.zh.md` | 129, 366 | `../collections/_misc/D3-Politics/n.International.Information.Warfare.zh.md` |
+| `_misc/D3-Politics/n.International.Relations.zh.md` | 130, 367 | `../collections/_misc/D3-Politics/n.International.Relations.zh.md` |
+| `_phil/A3-Methodology/n.Fallacies.in.Philosophy.zh.md` | 131, 368 | `../collections/_phil/A3-Methodology/n.Fallacies.in.Philosophy.zh.md` |
+| `_phil/A3-Methodology/s.Phil.Methodoloy.zh.md` | 132, 370, 388 | `../collections/_phil/A3-Methodology/s.Phil.Methodoloy.zh.md` |
+| `_phil/C1-Epistemology/n.Critical.Thinking.zh.md` | 133, 371 | `../collections/_phil/C1-Thinking/n.Critical.Thinking.zh.md` |
+| `_phil/C1-Epistemology/n.Rationality.zh.md` | 134, 372, 388 | `../collections/_phil/C1-Thinking/n.Rationality.zh.md` |
+| `_litr/A1-Basics/c.Literary.History.Wiki.en.md` | 142 | `../collections/_litr/A1-Basics/c.Literary.History.Wiki.en.md` |
+| `_phil/A1-Basics/s.Thoughts.Wiki.zh.md` | 143 | `../collections/_phil/A1-Basics/s.Thoughts.Wiki.zh.md` |
+| `_comp/B2-Languages/n.PL.Analysis.ez.md` | 151, 189, 328 | `../collections/_comp/B2-Languages/n.PL.Analysis.ez.md` |
+| `_comp/B2-Languages/n.Scheme.en.md` | 152, 190, 329 | `../collections/_comp/B2-Languages/n.Scheme.en.md` |
+| `_comp/B2-Languages/s.C.en.md` | 153, 191, 330 | `../collections/_comp/B2-Languages/s.C.en.md` |
+| `_comp/B2-Languages/s.Common.Lisp.en.md` | 154, 192, 331 | `../collections/_comp/B2-Languages/s.Common.Lisp.en.md` |
+| `_comp/B2-Languages/s.Cpp.en.md` | 155, 193, 332 | `../collections/_comp/B2-Languages/s.Cpp.en.md` |
+| `_comp/B2-Languages/s.Erlang.Elixir.en.md` | 156, 194, 333 | `../collections/_comp/B2-Languages/s.Erlang.Elixir.en.md` |
+| `_comp/B2-Languages/s.Haskell.ez.md` | 157, 195, 334 | `../collections/_comp/B2-Languages/s.Haskell.ez.md` |
+| `_comp/B2-Languages/s.Java.en.md` | 158, 196, 335 | `../collections/_comp/B2-Languages/s.Java.en.md` |
+| `_comp/B2-Languages/s.Python.Workflow.en.md` | 159, 197, 336 | `../collections/_comp/B2-Languages/s.Python.Workflow.en.md` |
+| `_comp/B2-Languages/s.Python.en.md` | 160, 198, 337 | `../collections/_comp/B2-Languages/s.Python.en.md` |
+| `_comp/B5-Formal-Methods/s.Lean4.en.md` | 161, 199, 338 | `../collections/_comp/B5-Formal-Methods/s.Lean4.en.md` |
+| `_comp/B5-Formal-Methods/s.Rocq.en.md` | 162, 200, 339 | `../collections/_comp/B5-Formal-Methods/s.Rocq.en.md` |
+| `_comp/E1-Webdev/a.WebDev.Macroview.en.md` | 163, 202, 340 | `../collections/_comp/E1-Webdev/a.WebDev.Macroview.en.md` |
+| `_comp/E1-Webdev/n.CSS.en.md` | 164, 203, 341 | `../collections/_comp/E1-Webdev/n.CSS.en.md` |
+| `_comp/E1-Webdev/n.Modern.HTML.en.md` | 165, 204, 342 | `../collections/_comp/E1-Webdev/n.Modern.HTML.en.md` |
+| `_comp/E1-Webdev/s.TypeScript.en.md` | 166, 207, 343 | `../collections/_comp/E1-Webdev/s.TypeScript.en.md` |
+| `_comp/Y1-Project-Control/n.Config.File.en.md` | 167, 208, 349 | `../collections/_comp/Y1-Project-Control/n.Config.File.en.md` |
+| `_hist/C1-Asian-History/c.West.Asia.zh.md` | 168, 220, 351 | `../collections/_hist/C1-Asian-History/c.West.Asia.zh.md` |
+| `_phil/A3-Methodology/s.Phil.Language.ez.md` | 169, 302, 369 | `../collections/_phil/A3-Methodology/s.Phil.Language.ez.md` |
+| `_phil/C1-Epistemology/s.Cognitive.Bias.ez.md` | 170, 306, 373, 386 | `../collections/_phil/C1-Thinking/s.Cognitive.Bias.ez.md` |
+| `_phil/C1-Epistemology/s.Fallacies.ez.md` | 171, 307, 374, 386 | `../collections/_phil/C1-Thinking/s.Fallacies.ez.md` |
+| `_comp/A1-Basics/a.CS.Atlas.en.md` | 177 | `../collections/_comp/A1-Basics/a.CS.Atlas.en.md` |
+| `_comp/A1-Basics/c.CS.Timeline.en.md` | 178 | `../collections/_comp/A1-Basics/c.CS.Timeline.en.md` |
+| `_comp/A1-Basics/s.CS.Resources.en.md` | 179 | `../collections/_comp/A1-Basics/s.CS.Resources.en.md` |
+| `_comp/A2-Toolset/s.Emacs.ez.md` | 180 | `../collections/_comp/A2-Toolset/s.Emacs.ez.md` |
+| `_comp/A2-Toolset/s.Markdown.en.md` | 181 | `../collections/_comp/A2-Toolset/s.Markdown.en.md` |
+| `_comp/A2-Toolset/s.Regex.en.md` | 182 | `../collections/_comp/A2-Toolset/s.Regex.en.md` |
+| `_comp/A3-Operating-Tools/_s.Linux.AI.en.md` | 183 | `../collections/_comp/A3-Operating-Tools/_s.Linux.AI.en.md` |
+| `_comp/A3-Operating-Tools/_s.Linux.Basics.en.md` | 184 | `../collections/_comp/A3-Operating-Tools/_s.Linux.Basics.en.md` |
+| `_comp/A3-Operating-Tools/_s.Linux.Developing.en.md` | 185 | `../collections/_comp/A3-Operating-Tools/_s.Linux.Developing.en.md` |
+| `_comp/A3-Operating-Tools/_s.Linux.Ops.en.md` | 186 | `../collections/_comp/A3-Operating-Tools/_s.Linux.Ops.en.md` |
+| `_comp/A3-Operating-Tools/n.Win.Tools.en.md` | 187 | `../collections/_comp/A3-Operating-Tools/n.Win.Tools.en.md` |
+| `_comp/A3-Operating-Tools/s.Linux.Shell.en.md` | 188 | `../collections/_comp/A3-Operating-Tools/s.Linux.Shell.en.md` |
+| `_comp/D4-Databases/s.TSql.Syntax.en.md` | 201 | `../collections/_comp/D4-Databases/s.TSql.Syntax.en.md` |
+| `_comp/E1-Webdev/n.WebDev.Principles.en.md` | 205 | `../collections/_comp/E1-Webdev/n.WebDev.Principles.en.md` |
+| `_comp/E1-Webdev/s.JavaScript.ez.md` | 206 | `../collections/_comp/E1-Webdev/s.JavaScript.ez.md` |
+| `_hist/A1-Basics/a.hist.en.md` | 214 | `../collections/_hist/A1-Basics/a.hist.en.md` |
+| `_hist/A1-Basics/re.historical.division.zh.md` | 215 | `../collections/_hist/A1-Basics/re.historical.division.zh.md` |
+| `_hist/B1-World-History/c.World.Economy.zh.md` | 216 | `../collections/_hist/B1-World-History/c.World.Economy.zh.md` |
+| `_hist/B1-World-History/c.World.History.en.md` | 217 | `../collections/_hist/B1-World-History/c.World.History.en.md` |
+| `_hist/C1-Asian-History/c.Chinese.zh.md` | 218 | 需人工确认重命名后的目标 |
+| `_hist/C1-Asian-History/c.Japan.zh.md` | 219 | `../collections/_hist/C1-Asian-History/c.Japan.zh.md` |
+| `_hist/C1-Asian-History/n.Chinese.Thoughts.zh.md` | 221 | `../collections/_hist/C1-Asian-History/n.Chinese.Thoughts.zh.md` |
+| `_hist/C2-European-History/c.Europe.zh.md` | 222 | `../collections/_hist/C2-European-History/c.Europe.zh.md` |
+| `_hist/C2-European-History/c.Hundred.Years.War.ez.md` | 223 | `../collections/_hist/C2-European-History/c.Hundred.Years.War.ez.md` |
+| `_hist/C3-African-History/c.Egypt.zh.md` | 224 | `../collections/_hist/C3-African-History/c.Egypt.zh.md` |
+| `_hist/C4-American-History/c.American.zh.md` | 225 | `../collections/_hist/C4-American-History/c.American.zh.md` |
+| `_hist/C4-American-History/c.Latin.American.zh.md` | 226 | `../collections/_hist/C4-American-History/c.Latin.American.zh.md` |
+| `_hist/D1-War-History/c.Post-WWII.Wars.en.md` | 227 | `../collections/_hist/D1-War-History/c.Post-WWII.Wars.en.md` |
+| `_litr/A1-Basics/a.Literature.Atlas.ez.md` | 233 | `../collections/_litr/A1-Basics/a.Literature.Atlas.ez.md` |
+| `_litr/A1-Basics/n.Literature.Ontology.ez.md` | 234 | `../collections/_litr/A1-Basics/n.Literature.Ontology.ez.md` |
+| `_litr/A1-Basics/s.Common.Sense.zh.md` | 235 | `../collections/_litr/A1-Basics/s.Common.Sense.zh.md` |
+| `_litr/B3-Motifs/c.motifs.ez.md` | 238 | `../collections/_litr/B3-Motifs/c.motifs.ez.md` |
+| `_litr/C1-Literary-Theory/a.Literary.Theory.Atlas.ez.md` | 239 | `../collections/_litr/C1-Literary-Theory/a.Literary.Theory.Atlas.ez.md` |
+| `_litr/C3-Narratology/a.Narratology.ez.md` | 240 | `../collections/_litr/C3-Narratology/a.Narratology.ez.md` |
+| `_litr/D1-Linguistics/a.Linguistics.ez.md` | 241 | `../collections/_litr/D1-Linguistics/a.Linguistics.ez.md` |
+| `_litr/D1-Linguistics/n.Language.Families.en.md` | 242 | `../collections/_litr/D1-Linguistics/n.Language.Families.en.md` |
+| `_litr/E1-Mythology/n.myths.ez.md` | 243 | `../collections/_litr/E1-Mythology/n.myths.ez.md` |
+| `_litr/F1-Writing/n.Expository.Language.zh.md` | 244 | `../collections/_litr/F1-Writing/n.Expository.Language.zh.md` |
+| `_litr/F1-Writing/n.Literature.Language.ez.md` | 245 | `../collections/_litr/F1-Writing/n.Literature.Language.ez.md` |
+| `_litr/F1-Writing/n.naming.en.md` | 246 | `../collections/_litr/F1-Writing/n.naming.en.md` |
+| `_litr/F1-Writing/s.variables.zh.md` | 247 | `../collections/_litr/F1-Writing/s.variables.zh.md` |
+| `_litr/F3-Style/a.Writing.Stle.zh.md` | 248 | `../collections/_litr/F3-Style/a.Writing.Stle.zh.md` |
+| `_litr/F3-Style/n.Classic.Style.ez.md` | 249 | `../collections/_litr/F3-Style/n.Classic.Style.ez.md` |
+| `_math/A1-Basics/a.math.ez.md` | 255 | `../collections/_math/A1-Basics/a.math.ez.md` |
+| `_math/A1-Basics/a.math.tools.en.md` | 256 | `../collections/_math/A1-Basics/a.math.tools.en.md` |
+| `_math/A1-Basics/c.history.math.zh.md` | 257 | `../collections/_math/A1-Basics/c.history.math.zh.md` |
+| `_math/A1-Basics/s.Math.Resources.en.md` | 258 | `../collections/_math/A1-Basics/s.Math.Resources.en.md` |
+| `_math/A1-Basics/s.Math.Symbols.ez.md` | 259 | `../collections/_math/A1-Basics/s.Math.Symbols.ez.md` |
+| `_math/A1-Basics/s.elementary.mathematics.zh.md` | 260 | `../collections/_math/A1-Basics/s.elementary.mathematics.zh.md` |
+| `_math/A1-Basics/s.latex.ez.md` | 261 | `../collections/_math/A1-Basics/s.latex.ez.md` |
+| `_math/G1-Logic/n.mathematical.logic.en.md` | 262 | `../collections/_math/G1-Logic/n.mathematical.logic.en.md` |
+| `_phys/A1-Basics/a.Physics.Atlas.en.md` | 263 | `../collections/_phys/A1-Basics/a.Physics.Atlas.en.md` |
+| `_phys/A1-Basics/c.Physics.Timeline.en.md` | 264 | `../collections/_phys/A1-Basics/c.Physics.Timeline.en.md` |
+| `_phys/A1-Basics/s.Physics.Resources.en.md` | 265 | `../collections/_phys/A1-Basics/s.Physics.Resources.en.md` |
+| `_phys/F1-Cosmology/a.cosmology.en.md` | 266 | `../collections/_phys/F1-Cosmology/a.cosmology.en.md` |
+| `_phys/F1-Cosmology/n.CP.zh.md` | 267 | `../collections/_phys/F1-Cosmology/n.CP.zh.md` |
+| `_phys/F1-Cosmology/n.Fermi.Paradox.ez.md` | 268, 384 | `../collections/_phys/F1-Cosmology/n.Fermi.Paradox.ez.md` |
+| `_phys/F1-Cosmology/n.Nebula.zh.md` | 269 | `../collections/_phys/F1-Cosmology/n.Nebula.zh.md` |
+| `_phys/F1-Cosmology/s.Our.Cosmos.ez.md` | 270 | `../collections/_phys/F1-Cosmology/s.Our.Cosmos.ez.md` |
+| `_phys/F1-Cosmology/s.Star.Atlas.zh.md` | 271 | `../collections/_phys/F1-Cosmology/s.Star.Atlas.zh.md` |
+| `_phys/F1-Cosmology/s.Units.and.Ratios.en.md` | 272 | `../collections/_phys/F1-Cosmology/s.Units.and.Ratios.en.md` |
+| `_misc/A1-English/n.en.word.subtle.diff.zh.md` | 278 | `../collections/_misc/A1-English/n.en.word.subtle.diff.zh.md` |
+| `_misc/A1-English/s.en.grammar.ez.md` | 279 | `../collections/_misc/A1-English/s.en.grammar.ez.md` |
+| `_misc/A1-English/s.en.idioms.ez.md` | 280 | `../collections/_misc/A1-English/s.en.idioms.ez.md` |
+| `_misc/A1-English/s.en.latin.words.en.md` | 281 | `../collections/_misc/A1-English/s.en.latin.words.en.md` |
+| `_misc/A1-English/s.en.surnames.origins.zh.md` | 282 | `../collections/_misc/A1-English/s.en.surnames.origins.zh.md` |
+| `_misc/A2-French/s.fr.grammar.zh.md` | 283 | `../collections/_misc/A2-French/s.fr.grammar.zh.md` |
+| `_misc/A2-French/s.fr.pronunciation.en.md` | 284 | `../collections/_misc/A2-French/s.fr.pronunciation.en.md` |
+| `_misc/A3-Japanese/s.jp.grammar.zh.md` | 285 | `../collections/_misc/A3-Japanese/s.jp.grammar.zh.md` |
+| `_misc/C1-Cybernetics/_n.intro.en.md` | 286 | `../collections/_misc/C1-Cybernetics/_n.intro.en.md` |
+| `_misc/C2-Systems-Theory/_n.intro.en.md` | 287 | `../collections/_misc/C2-Systems-Theory/_n.intro.en.md` |
+| `_misc/C5-Communication/_n.intro.en.md` | 288 | `../collections/_misc/C5-Communication/_n.intro.en.md` |
+| `_misc/E2-Religion/n.religion.zh.md` | 289 | `../collections/_misc/E2-Religion/n.religion.zh.md` |
+| `_misc/E2-Religion/s.Mysticism.zh.md` | 290 | `../collections/_misc/E2-Religion/s.Mysticism.zh.md` |
+| `_phil/A1-Basics/a.phil.ez.md` | 296 | `../collections/_phil/A1-Basics/a.phil.ez.md` |
+| `_phil/A1-Basics/n.intro.to.phil.ez.md` | 297 | `../collections/_phil/A1-Basics/n.intro.to.phil.ez.md` |
+| `_phil/A1-Basics/s.Philosophy.Resources.en.md` | 298 | `../collections/_phil/A1-Basics/s.Philosophy.Resources.en.md` |
+| `_phil/A2-History/c.paradigm.shift.zh.md` | 299 | `../collections/_phil/A2-History/c.paradigm.shift.zh.md` |
+| `_phil/A2-History/n.history.of.phil.en.md` | 300 | `../collections/_phil/A2-History/n.history.of.phil.en.md` |
+| `_phil/A2-History/n.history.of.phil.zh.md` | 301 | `../collections/_phil/A2-History/n.history.of.phil.zh.md` |
+| `_phil/C1-Epistemology/n.Decision.Model.en.md` | 303 | `../collections/_phil/C1-Thinking/n.Decision.Model.en.md` |
+| `_phil/C1-Epistemology/n.epistemology.en.md` | 304 | `../collections/_phil/C2-Epistemology/n.epistemology.en.md` |
+| `_phil/C1-Epistemology/n.thinking.models.zh.md` | 305 | `../collections/_phil/C1-Thinking/n.thinking.models.zh.md` |
+| `_psyc/A1-Basics/a.psyc.ez.md` | 308 | `../collections/_psyc/A1-Basics/a.psyc.ez.md` |
+| `_psyc/C2-Personality/n.five.factor.model.zh.md` | 309 | `../collections/_psyc/C2-Personality/n.five.factor.model.zh.md` |
+| `_psyc/D1-Psychoanalysis/a.Psychoanalysis.en.md` | 310 | `../collections/_psyc/D1-Psychoanalysis/a.Psychoanalysis.en.md` |
+| `_psyc/D1-Psychoanalysis/n1.Sigmund.Freud.ez.md` | 311 | `../collections/_psyc/D1-Psychoanalysis/n1.Sigmund.Freud.ez.md` |
+| `_psyc/D1-Psychoanalysis/n2.Carl.Jung.ez.md` | 312 | `../collections/_psyc/D1-Psychoanalysis/n2.Carl.Jung.ez.md` |
+| `_psyc/D1-Psychoanalysis/n3.Alfred.Adler.ez.md` | 313 | `../collections/_psyc/D1-Psychoanalysis/n3.Alfred.Adler.ez.md` |
+| `_psyc/D1-Psychoanalysis/n4.Anna.Freud.ez.md` | 314 | `../collections/_psyc/D1-Psychoanalysis/n4.Anna.Freud.ez.md` |
+| `_psyc/D1-Psychoanalysis/n5.Melanie.Klein.ez.md` | 315 | `../collections/_psyc/D1-Psychoanalysis/n5.Melanie.Klein.ez.md` |
+| `_psyc/D1-Psychoanalysis/n6.Donald.Winnicott.ez.md` | 316 | `../collections/_psyc/D1-Psychoanalysis/n6.Donald.Winnicott.ez.md` |
+| `_psyc/D1-Psychoanalysis/n7.Jacques.Lacan.ez.md` | 317 | `../collections/_psyc/D1-Psychoanalysis/n7.Jacques.Lacan.ez.md` |
+| `_psyc/E1-Psychopathology/n.LLI.ez.md` | 319 | `../collections/_psyc/E1-Psychopathology/n.LLI.ez.md` |
+| `_psyc/E1-Psychopathology/n.Psychopathology.Teatment.zh.md` | 320 | `../collections/_psyc/E1-Psychopathology/n.Psychopathology.Teatment.zh.md` |
+| `_posts/2026-09-13-%E9%98%85%E8%AF%BB%E9%9D%9E%E6%9A%B4%E5%8A%9B%E6%B2%9F%E9%80%9A.md` | 376 | 需人工确认重命名后的目标 |
+| `_drafts/1212-12-12-%E6%BF%80%E6%B4%BB%E5%AD%A6%E4%B9%A0%E6%BD%9C%E5%8A%9B%E7%9A%84%E9%AD%94%E6%B3%95%E4%B9%A6.md` | 382 | 需人工确认重命名后的目标 |
+| `_drafts/%E6%88%91%E7%9A%84%E6%96%87%E5%AD%A6%E8%AF%AD%E8%A8%80.md` | 382 | 需人工确认重命名后的目标 |
+
+### 2026-09-26 · CHANGE-005 · Todo 按实际内容显示入口
+
+- 行为：页眉 Todo 操作项在初始 HTML 中隐藏，避免加载时闪现或留下按钮间距；仅在 fm `todos` 经空值/布尔值过滤后存在实际条目，或正文扫描收录了 `TODO:` 时显示。
+- 空值：未设置 todos、null、空字符串、空数组以及旧开关值 `true` 本身不构成待办；代码、注释和 `data-todo-ignore` 中的示例仍不触发入口。原有全局开关和 `todos: false` 保持生效。
+- 幻灯片：是否显示依据完整原文收录的待办，切到无待办的一页也不会丢失其他页的入口；通过 content:rendered 加入新待办时会更新按钮。
+- 文件：`src/_includes/header.html` 默认隐藏操作项；`src/assets/js/post-todos.js` 根据有效 fm 条目和正文索引更新可见性；`src/_sass/components/_header.scss` 确保 hidden 不被 inline-flex 覆盖；同步更新使用说明。
+- 验证：Jekyll 夹具构建及 Sass 编译通过，22 个可见性场景与原有 21 个 Todo 交互回归通过；JavaScript 语法检查通过。未执行额外整站重建，未提交或部署。
+
+### 2026-09-26 · CHANGE-006 · 修复迁移链接与教程中的误渲染
+
+- 目的：修复能通过当前文件、标题/正文、重命名记录或构建产物确定目标的失效链接；无法确认的图片保留原引用并列出。
+- 源文件索引：修复 `pages/文章类型检索索引.md` 的 **267 处引用、187 个不同 Markdown 目标**，以 pages 为相对路径基准，指向当前 collections、transcripts、textbooks 和 `_posts/_ideas`。覆盖课程文本迁移、Chinese → China、Game Theory 2、Science Talks、On Writing 多余句点及草稿重命名；带空格/中文的路径采用 URL 编码。保留 2026-09-14 的历史分类和统计，补充本次路径校准日期。
+- 页面入口：`pages/catelog.md` 的线性代数、数学分析、SICP 分别改为 `/math/n.LA.en/`、`/math/n.ML.ez/`、`/comp/n.SICP.ez/`；`pages/test.md` 的幻灯片入口改为 `/test-slide`；`collections/_misc/A1-English/s.en.grammar.ez.md` 的搭配/习语链接改为 `/misc/s.en.idioms.ez/`。这些入口和图片路径使用 relative_url，兼容 baseurl。
+- 历史地图：`collections/_hist/C1-Asian-History/c.West.Asia.zh.md` 的两处 `/src/figures/` 引用改为现存 `/images/history/maps/` 图片。`hist.assyria.png` 的 Git 历史文件与 `ancient-anatolia-and-near-east-map.png` 的 SHA-256 完全一致；`hist.14cbc.png` 依据图片内容和 `images/rename-map.csv` 确认对应 `middle-east-fourteenth-century-bce-map.png`。
+- 正文误链接：`collections/_litr/F1-Writing/t.On.Writing.zh.md` 将误写成 Markdown 引用链接定义的两段解释恢复为普通带编号正文，保留文字并避免错误套用其他文章的 `[1]` / `[2]`；`collections/_math/A1-Basics/s.Math.Symbols.ez.md` 转义 Lie 括号公式的方括号，防止 `[X,Y](f)` 被识别成到 `f` 的链接，渲染后的公式字符保持不变；`collections/_posts/2026-04-14-游戏意识.md` 的资源思维链接与实际标题 ID 对齐。
+- 教程代码：`collections/_comp/E1-Webdev/n.Modern.HTML.en.md` 的 9 个、`n.CSS.en.md` 的 16 个带 `id` 代码块，统一改为标准语言围栏 + Kramdown 块属性，保留 25 个原始 ID 和全部示例内容。修复 HTML 被意外插入正文、请求示例资源的问题；`collections/_comp/A2-Toolset/s.Markdown.en.md` 的两个占位图片例子改为明确标注的 Markdown 语法代码块。共消除 **21 个教程示例产生的缺失目标**。
+- 验证：修改后的完整源文件副本通过 production 构建（70.076 秒）。核对 **289 个 HTML 页面**及 CSS，共 **89,120 次站内引用**；缺失页面/资源目标从 **33 个降为 2 个**，静态锚点错误从 **1 个降为 0 个**。267 处 Markdown 源链接全部指向存在的文件；单独检查 25 个代码块 ID 保留、示例不再产生真实失效 URL、Lie 括号公式渲染文字完整。
+- 尚未修复：下面两张教材插图在当前文件和相应文件名的 Git 历史中均未找到，无法确定原图路径；根据附近正文只能判断图示主题，不能据此认定某张替代图就是原图。
+
+| 源文件与行 | 缺失图片 | 正文提供的线索 |
+| --- | --- | --- |
+| `textbooks/t.Kenny.ez.md:1750` | `_page_119_Figure_1.jpeg` | 直言命题的对当方阵（square of opposition）。 |
+| `textbooks/t.Kenny.ez.md:1822` | `_page_125_Figure_3.jpeg` | 必然、可能、不可能之间关系的模态对当方阵。 |
+
+- 检查边界：本次验证本地构建的站内目标、静态锚点和仓库源文件链接；未逐一请求外部 URL，也未验证线上服务器重定向。上述两处需要找回教材原图或提供可核对的原图来源。
+- 回退：恢复本次 11 个内容文件及本报告的对应改动即可；未新增应用依赖、未提交、未部署。
 
 ### 后续记录模板
 
@@ -538,7 +824,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 ## 9. 工程与核心代码逐文件索引
 
-当前全仓库索引共 821 个文件。本节覆盖 106 个 src 文件、7 个工程文件、原有 12 个页面与本报告。文件名相近不表示职责相同，尤其注意两套索引、三种双语机制和两种时间线。
+当前全仓库索引共 823 个文件。本节覆盖 107 个 src 文件、7 个工程文件和 15 个 pages 文件；第 10 节包含 collections、transcripts 与 textbooks。文件名相近不表示职责相同，尤其注意两套索引、三种双语机制和两种时间线。
 
 ### 9.1 工程、构建与部署（7）
 
@@ -552,7 +838,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `_config.yml` | 站点身份、路由、UI、front matter 默认值、八个集合、评论、资源、构建和本地服务配置。 | 最主要的全局配置文件；部分 UI 项尚未被消费，详见 F06。 |
 | `robots.txt` | 针对若干爬虫及部分路径的抓取规则。 | 静态输出；不会阻止构建或代替访问控制，/catelog/ 与当前 /catelog 路由形态需核对。 |
 
-### 9.2 页面入口（原有 12 + 本报告）
+### 9.2 页面与说明入口（15）
 
 | 文件 | 功能与作用 | 接入关系与修改注意 |
 | --- | --- | --- |
@@ -562,6 +848,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `pages/index-categories.md` | 按类别浏览八个学科的索引配置。 | permalink=/categories；控制显示的子类和标签等元信息。 |
 | `pages/index-collections.md` | 按八个学科集合浏览的索引配置。 | permalink=/collections；设定集合名单、筛选和条目徽标。 |
 | `pages/index-posts.md` | 个人文章索引配置与导语。 | permalink=/posts；指定 category-book，控制分类折叠、日期及元信息展示。 |
+| `pages/index-texts.md` | Transcripts 与 Textbooks 的统一文章目录。 | permalink=/texts；layout=index-folder，顺序由 folders_to_show 控制。 |
 | `pages/index-subclass.md` | 按子类组织的知识笔记总入口配置。 | permalink=/notes，layout=index-subclass；使用全局集合顺序。 |
 | `pages/index-tags.md` | 按标签浏览八个学科的索引配置。 | permalink=/tags；当前内容没有 tags，因此无条目。 |
 | `pages/index-todos.md` | TODO 总览入口及各测试/索引页面的辅助导航。 | permalink=/todos；实际任务聚合逻辑在 index-todos 布局，默认不含 posts。 |
@@ -569,14 +856,16 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `pages/project-report.md` | 本项目架构分析、逐文件职责索引、问题与演进建议、持续改动日志。 | permalink=/project-report/；本次唯一新增项目文件，后续随实现更新。 |
 | `pages/test-slide.md` | 幻灯片引擎的多语言说明、配置文档和长内容演示。 | permalink=/test-slide，layout=slide-multilingual；需与脚本实际版本保持一致。 |
 | `pages/test.md` | Markdown/HTML、布局、图标、数学、图表、加密等人工展示和测试文档。 | permalink=/test，layout=post-bilingual；有过时字段和 /slide 链接，不是自动化测试。 |
+| `pages/文章类型检索索引.md` | 资料来源、文章形态与 Wiki 类文档的人工检索说明。 | 用户由 collections 移入 pages；无 front matter，仍作为静态 Markdown 处理，内部历史统计不等于当前文件数。 |
 
-### 9.3 布局（20）
+### 9.3 布局（21）
 
 | 文件 | 功能与作用 | 接入关系与修改注意 |
 | --- | --- | --- |
 | `src/_layouts/default.html` | 通用站点外壳；解析标题、功能开关、TOC、正文、评论和页脚。 新增可见标题下方的 subtitle，空值与隐藏标题时不生成；保留 abbreviation。 | 读取 page/site.ui；集中加载特效及阅读脚本，并嵌入两个全站目录弹窗。几乎所有页面共用，影响范围最大。 统一加载 post-index/filter-script，为索引和两个弹窗初始化筛选。 |
 | `src/_layouts/index-categories.html` | 收集并去重选定集合的 categories，按类别展示文档。 | 复用 post-index/filter-nav、item、filter-script；当前默认学科列表不含 posts。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index-collections.html` | 按学科 collection 分组显示知识文档，提供集合筛选。 | 依次采用页面集合名单、全局集合顺序或全部集合；复用 post-index/item 与筛选组件。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
+| `src/_layouts/index-folder.html` | 按 front matter 指定的源文件夹顺序索引普通页面与输出 collection 文档。 | folders_to_show 支持路径或 path/title 列表；复用 post-index 的条目/筛选脚本与 Hidden，支持子目录、排序、去重及空状态。 |
 | `src/_layouts/index-posts.html` | 文章索引薄布局：显示页面正文并调用通用文章列表。 | 继承 default；依赖 post-list.html，默认读取 site.posts。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index-subclass.html` | 在每个学科内按 subclass 分组，提供全局子类筛选和未分类组。 | /notes 主入口；与集合弹窗、specific-collection 有相近分组逻辑，修改分类语义需同步。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index-tags.html` | 按 tags 聚合选定集合文档，生成标签筛选。 | 复用 post-index 组件；当前内容没有显式 tags，因此模板存在但列表为空。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
@@ -685,7 +974,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/assets/js/parallel-text.js` | 将原文块与连续引用块转为可调整列比例的并排阅读行。 | post-horizonal；API parallelTextColumns；可恢复原文、刷新、调整字号/间距；默认跳过表格。 |
 | `src/assets/js/sjcl.js` | 压缩的 Stanford JavaScript Crypto Library，实现页面片段解密所需密码学能力。 | 仅 encrypted_text 启用时由 head 加载；header 把元素 id 中载荷交给 sjcl.json.decrypt；第三方库应独立管理。 |
 | `src/assets/js/timeline-list.js` | 识别时间线标记后的 Markdown 列表，生成摘要、轴线和详情。 | 普通布局与 print 使用；API JekyllTimeline；监听 content:rendered 以适应线性幻灯片切换。 |
-| `src/assets/js/post-todos.js` | 统一页眉 Todo 面板：读取静态 fm 列表，扫描正文标签并提供定位链接。 | 配合 post-todos include；保留行内结构；content:prepare/rendered 与幻灯片 reveal(id) 保证跨页定位，不再提供旧 TodoSummary API。 |
+| `src/assets/js/post-todos.js` | 统一页眉 Todo 面板：读取静态 fm 列表，扫描正文标签并提供定位链接。 | 配合 post-todos include；保留行内结构；content:prepare/rendered 与幻灯片 reveal(id) 保证跨页定位，不再提供旧 TodoSummary API；仅有实际待办时显示页眉入口。 |
 | `src/assets/js/watermark.js` | 以重复 SVG 背景绘制文字水印，监听窗口、主题及相关 DOM 变化。 | page.watermark=true 时加载；API Watermark；是视觉覆盖层。 |
 
 ### 9.8 字体、光标和主题图像（13）
@@ -706,502 +995,501 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/assets/img/logo-bug.png` | 主题虫形标识图。 | head.html 实际使用的 favicon；当前声明 MIME 为 image/x-icon，而文件是 PNG。 |
 | `src/assets/img/logo-terminal.png` | 主题终端标识图。 | 当前代码未找到实际入口引用；保留资源，是否历史用途需再确认。 |
 
-## 10. 内容文件逐项索引（438）
+## 10. 内容文件逐项索引（437）
 
-标题优先取 front matter，无标题时取正文首个标题或文件名。角色依目录和已有元数据描述；不将文件前缀猜测写成既定类型。生成状态来自本次实际 Jekyll 读入及输出，未读入的内容仍属于知识资产。目录中的下划线不是成熟度字段。
+当前路径与收录状态在 CHANGE-004 中按用户整理后的目录重新核对。标题取 front matter 或正文首个标题；仅描述文档角色与现有元数据，不代表内容事实核查。收录依据本次 Jekyll Site#read，静态 Markdown 不混同于已生成的文章页。
 
-### 10.1 计算机（77）
-
-| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
-| --- | --- | --- | --- |
-| `collections/_comp/A1-Basics/a.CS.Atlas.en.md` | Computer Science — Learning Atlas | 计算机知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_comp/A1-Basics/a.CS.Landscape.en.md` | Computer Science — Landscape | 计算机知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_comp/A1-Basics/c.CS.Timeline.en.md` | Computer Science — Problem-driven History | 计算机知识文档；类别：Chron；分组：Basics | 生成页面；layout=post |
-| `collections/_comp/A1-Basics/s.CS.Resources.en.md` | Computer Science — Resource Atlas | 计算机知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_comp/A2-Toolset/s.Emacs.ez.md` | Emacs — Quick Reference | 计算机知识文档；类别：Sheet；分组：Toolset | 生成页面；layout=slide-multilingual |
-| `collections/_comp/A2-Toolset/s.Markdown.en.md` | Markdown — Quick Reference | 计算机知识文档；类别：Sheet；分组：Toolset | 生成页面；layout=post |
-| `collections/_comp/A2-Toolset/s.Regex.en.md` | Regex — Basic Syntax and Practical Usage | 计算机知识文档；类别：Sheet；分组：Toolset | 生成页面；layout=post |
-| `collections/_comp/A2-Toolset/t.NULL.transcript.en.md` | 6.NULL Transcripts | 计算机知识文档；类别：Texts；分组：Toolset | 生成页面；layout=print |
-| `collections/_comp/A3-Operating-Tools/_s.Linux.AI.en.md` | Linux AI Tools — Quick Reference | 计算机知识文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
-| `collections/_comp/A3-Operating-Tools/_s.Linux.Basics.en.md` | Linux Basics — Quick Reference | 计算机知识文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
-| `collections/_comp/A3-Operating-Tools/_s.Linux.Developing.en.md` | Linux Tools Developing — Quick Reference | 计算机知识文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
-| `collections/_comp/A3-Operating-Tools/_s.Linux.Ops.en.md` | Linux Operating — Quick Reference | 计算机知识文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
-| `collections/_comp/A3-Operating-Tools/n.Manjaro.i3wm.en.md` | Manjaro + i3wm Workstation Setup | 计算机知识文档；类别：Notes；分组：Operating Tools | 生成页面；layout=post |
-| `collections/_comp/A3-Operating-Tools/n.TrueNAS.DIY.en.md` | TrueNAS SCALE 24.04 Minimal Tutorial | 计算机知识文档；类别：Notes；分组：Operating Tools | 生成页面；layout=post |
-| `collections/_comp/A3-Operating-Tools/n.Win.Tools.en.md` | Best Windows 11 Tweak Tools | 计算机知识文档；类别：Notes；分组：Operating Tools | 生成页面；layout=post |
-| `collections/_comp/A3-Operating-Tools/s.Linux.Shell.en.md` | Linux Shell Programming | 计算机知识文档；类别：Sheet；分组：Operating Tools | 生成页面；layout=post |
-| `collections/_comp/B1-Programming/n.CTMCP.ez.md` | CTMCP Annotated | 计算机知识文档；类别：Notes；分组：Programming | 生成页面；layout=slide-multilingual |
-| `collections/_comp/B1-Programming/n.EOPL.en.md` | EOPL Annotated | 计算机知识文档；类别：Notes；分组：Programming | 生成页面；layout=post |
-| `collections/_comp/B1-Programming/n.SICP.ez.md` | SICP Annotated | 计算机知识文档；类别：Notes；分组：Programming | 生成页面；layout=post |
-| `collections/_comp/B1-Programming/t.6.001.transcript.en.md` | 6.001 SICP Transcripts | 计算机知识文档；类别：Texts；分组：Programming | 生成页面；layout=print |
-| `collections/_comp/B1-Programming/t.CS61A.transcript.en.md` | CS61A Transcripts | 计算机知识文档；类别：Texts；分组：Programming | 生成页面；layout=print |
-| `collections/_comp/B2-Languages/_n.tapl.en.md` | Programming Languages TAPL | 计算机知识文档；类别：Notes；分组：Languages | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B2-Languages/_s.Kotlin.en.md` | Kotlin — Quick Reference | 计算机知识文档；类别：Sheet；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B2-Languages/_s.Rust.en.md` | Rust — Quick Reference | 计算机知识文档；类别：Sheet；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B2-Languages/n.PL.Analysis.ez.md` | Programming Language Analysis | 计算机知识文档；类别：Notes；分组：Languages | 生成页面；layout=slide-multilingual |
-| `collections/_comp/B2-Languages/n.Scheme.en.md` | Scheme — Quick Reference | 计算机知识文档；类别：Notes；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.C.en.md` | C — Quick Reference | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.Common.Lisp.en.md` | Common Lisp — Quick Reference | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.Cpp.en.md` | C++ — Quick Reference | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.Erlang.Elixir.en.md` | Erlang / Elixir — Quick Reference | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.Haskell.ez.md` | Haskell — Quick Reference | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.Java.en.md` | Java — Quick Reference | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.Python.Workflow.en.md` | Python — Common Workflows | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B2-Languages/s.Python.en.md` | Python — Quick Reference | 计算机知识文档；类别：Sheet；分组：Languages | 生成页面；layout=post |
-| `collections/_comp/B3-Semantics/_n.denotational.operational.semantics.en.md` | Denotational and Operational Semantics | 计算机知识文档；类别：Notes；分组：Semantics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B4-Type-Systems/_n.program.synthesis.en.md` | Program Synthesis | 计算机知识文档；类别：Notes；分组：Type Systems；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B4-Type-Systems/_n.type.systems.en.md` | Type Systems | 计算机知识文档；类别：Notes；分组：Type Systems；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B5-Formal-Methods/_n.Coq.Art.en.md` | Coq Art Notes | 计算机知识文档；类别：Notes；分组：Formal Methods；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B5-Formal-Methods/_n.program.logics.en.md` | Program Logics | 计算机知识文档；类别：Notes；分组：Formal Methods；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B5-Formal-Methods/_t.SF.Annotated.ez.md` | Software Foundations Personal Annotated | 计算机知识文档；类别：Texts；分组：Formal Methods | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B5-Formal-Methods/s.Lean4.en.md` | Lean4 — Quick Reference | 计算机知识文档；类别：Sheet；分组：Formal Methods | 生成页面；layout=post |
-| `collections/_comp/B5-Formal-Methods/s.Rocq.en.md` | Rocq — Quick Reference | 计算机知识文档；类别：Sheet；分组：Formal Methods | 生成页面；layout=print |
-| `collections/_comp/B6-Compilers/_n.compilers.en.md` | Compilers | 计算机知识文档；类别：Notes；分组：Compilers；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/C1-Algorithms/_n.algorithms.data.structures.en.md` | Algorithms and Data Structures | 计算机知识文档；类别：Notes；分组：Algorithms；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/C2-Complexity/_n.computational.complexity.en.md` | Computational Complexity | 计算机知识文档；类别：Notes；分组：Complexity；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/C3-Computation/_n.computability.recursion.en.md` | Computability and Recursion Theory | 计算机知识文档；类别：Notes；分组：Computation；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/C3-Computation/_n.quantum.computing.en.md` | Quantum Computing | 计算机知识文档；类别：Notes；分组：Computation；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/C3-Computation/_n.theory.of.computation.en.md` | Theory of Computation | 计算机知识文档；类别：Notes；分组：Computation；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/C4-Cryptography/_n.cryptography.en.md` | Cryptography | 计算机知识文档；类别：Notes；分组：Cryptography；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/D1-Computer-Systems/_n.csapp.zh.md` | Computer Systems (计算机系统) | 计算机知识文档；类别：Notes；分组：Computer Systems | 未读入：文件名以 _ 开头 |
-| `collections/_comp/D2-Operating-Systems/_n.operating.systems.en.md` | Operating Systems | 计算机知识文档；类别：Notes；分组：Operating Systems；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/D3-Networks/_n.computer.networks.en.md` | Computer Networks | 计算机知识文档；类别：Notes；分组：Networks；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/D4-Databases/s.TSql.Syntax.en.md` | T-SQL — Quick Reference | 计算机知识文档；类别：Sheet；分组：Databases | 生成页面；layout=post |
-| `collections/_comp/D5-Distributed-Systems/_n.distributed.systems.en.md` | Distributed Systems | 计算机知识文档；类别：Notes；分组：Distributed Systems；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/E1-Webdev/a.WebDev.Macroview.en.md` | Web Development — Macro-view and Principles | 计算机知识文档；类别：Atlas；分组：Webdev | 生成页面；layout=post |
-| `collections/_comp/E1-Webdev/n.CSS.en.md` | CSS — Quick Reference | 计算机知识文档；类别：Notes；分组：Webdev | 生成页面；layout=post |
-| `collections/_comp/E1-Webdev/n.Modern.HTML.en.md` | Modern HTML — Quick Reference | 计算机知识文档；类别：Notes；分组：Webdev | 生成页面；layout=post |
-| `collections/_comp/E1-Webdev/n.WebDev.Principles.en.md` | Web Development Principles and Practical Skills | 计算机知识文档；类别：Notes；分组：Webdev | 生成页面；layout=post |
-| `collections/_comp/E1-Webdev/s.JavaScript.ez.md` | JavaScript — Quick Reference | 计算机知识文档；类别：Sheet；分组：Webdev | 生成页面；layout=post |
-| `collections/_comp/E1-Webdev/s.TypeScript.en.md` | TypeScript — Quick Reference | 计算机知识文档；类别：Sheet；分组：Webdev | 生成页面；layout=post |
-| `collections/_comp/F1-AI/AI4Everyone.md` | AI for Everyone Course Transcripts | 计算机知识文档；类别：Notes；分组：AI | 生成页面；layout=print |
-| `collections/_comp/F1-AI/Agentic.AI.md` | Agentic AI Course Transcripts | 计算机知识文档；类别：Notes；分组：AI | 生成页面；layout=print |
-| `collections/_comp/F1-AI/Generative.AI4Everyone.md` | Generative AI for Everyone Course Transcripts | 计算机知识文档；类别：Notes；分组：AI | 生成页面；layout=print |
-| `collections/_comp/F1-Machine-Learning/_n.deep.learning.en.md` | Deep Learning | 计算机知识文档；类别：Notes；分组：Deep Learning；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/F1-Machine-Learning/_n.machine.learning.en.md` | Machine Learning | 计算机知识文档；类别：Notes；分组：Machine Learning；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/F1-Machine-Learning/_n.reinforcement.learning.en.md` | Reinforcement Learning | 计算机知识文档；类别：Notes；分组：Machine Learning；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/F3-LLMs/_n.Learner-Centered.LLMs.ez.md` | Learner-Centered Use of Large Language Models | 计算机知识文档；类别：Notes；分组：LLMs | 未读入：文件名以 _ 开头 |
-| `collections/_comp/F3-LLMs/_n.Prompt.Engineering.ez.md` | LLM Prompt Engineering for Workflows Enhancement | 计算机知识文档；类别：Notes；分组：LLMs | 未读入：文件名以 _ 开头 |
-| `collections/_comp/F3-LLMs/_n.Vibe.Coding.ez.md` | Vibe Coding with LLMs | 计算机知识文档；类别：Notes；分组：LLMs | 未读入：文件名以 _ 开头 |
-| `collections/_comp/F3-LLMs/n.Andrej.Karpathy.ez.md` | Andrej Karpathy Notes | 计算机知识文档；类别：Notes；分组：LLMs | 生成页面；layout=slide-linear |
-| `collections/_comp/F3-LLMs/n.Anthropic.Lec.ez.md` | Anthropic Lecture Notes | 计算机知识文档；类别：Notes；分组：LLMs | 生成页面；layout=slide-linear |
-| `collections/_comp/F3-LLMs/t.LLMs.Comparing.zh.md` | Claude vs ChatGPT Comparison (Claude 与 ChatGPT 对比) | 计算机知识文档；类别：Texts；分组：LLMs | 生成页面；layout=post |
-| `collections/_comp/F4-AI-Safety/_n.mechanistic.interpretability.alignment.en.md` | Mechanistic Interpretability and AI Alignment | 计算机知识文档；类别：Notes；分组：AI Safety；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/Y1-Project-Control/_a.Project.Control.en.md` | Project Control and Management for Software Projects | 计算机知识文档；类别：Atlas；分组：Project Control | 未读入：文件名以 _ 开头 |
-| `collections/_comp/Y1-Project-Control/_n.aesthetic.ez.md` | Coding Aesthetic | 计算机知识文档；类别：Notes；分组：Project Control | 未读入：文件名以 _ 开头 |
-| `collections/_comp/Y1-Project-Control/_n.debug.en.md` | Coding Debug Tips | 计算机知识文档；类别：Notes；分组：Project Control；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_comp/Y1-Project-Control/n.Config.File.en.md` | Project Control — Configuration of Projects | 计算机知识文档；类别：Notes；分组：Project Control | 生成页面；layout=post |
-
-### 10.2 草稿（44）
+### 10.1 计算机（70）
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_drafts/1212-12-12-激活学习潜力的魔法书.md` | 激活学习潜力的魔法书 | 写作草稿；分组：Ongoing | 未读入：草稿构建关闭 |
-| `collections/_drafts/1980-1-1-改变我一生的女孩子：一个小偷的遗书.md` | GBWYSDNVZ-YFDDZDYS | 写作草稿；类别：长篇小说；状态：写了一半 | 未读入：草稿构建关闭 |
-| `collections/_drafts/2111-11-11-永生者日记.md` | 永生者日记 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/_2111-11-11-愚人日记.md` | 2111 11 11 愚人日记 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_OLD.missing.semester.of.cs.md` | sample results | 写作草稿；类别：Notes；分组：Readings | 未读入：草稿构建关闭 |
-| `collections/_drafts/_OLD.n.hardware.spec.md` | Linux — Check Hardware Information and Specification | 写作草稿；类别：Notes；分组：Operating Tools | 未读入：草稿构建关闭 |
-| `collections/_drafts/_OLD.n.prompt.engineering.md` | LLM Prompt Engineering for Study Assistance | 写作草稿；类别：Notes；分组：LLMs | 未读入：草稿构建关闭 |
-| `collections/_drafts/_OLD.reading.list.md` | 阅读之前 | 写作草稿；类别：Notes；分组：Readings | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-01-20-苦难才是人类的精神食粮.md` | 1) 生物底层：痛觉不是“感受”，而是生存边界的测绘系统 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-02-06-FP.md` | First Principles Thinking — Concept and Origins | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-11-11-是否应该提防低概率事件.md` | 11 11 是否应该提防低概率事件 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-11-13-挖洞人和捕猎人.md` | 挖洞人和捕猎人 | 写作草稿；类别：短篇小说；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-xx-xx-为何互联网全是争论？.md` | 挑错的位置 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-xx-xx-沉迷游戏.md` | xx xx 沉迷游戏 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-xx-xx-结论成瘾症.md` | xx xx 结论成瘾症 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo-xx-xx-饭圈思维的毒性究竟有多猛？.md` | 饭圈思维之毒，比蛇蝎更甚 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_todo2024-2-16-阅读笔记百年孤独.md` | 第一部分：作为读者 — 这本书的七层解码 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_中文之美与外来句式.md` | 中文之美与外来句式 | 写作草稿；类别：Drafts；分组：Drafts；仅元数据占位 | 未读入：草稿构建关闭 |
-| `collections/_drafts/_乖不是孩子的优秀品质.md` | 乖不是孩子的优秀品质 | 写作草稿；类别：Drafts；分组：Drafts | 未读入：草稿构建关闭 |
-| `collections/_drafts/_诚实边界和易错点.md` | 诚实边界和易错点 | 写作草稿；类别：Drafts；分组：Drafts；仅元数据占位 | 未读入：草稿构建关闭 |
-| `collections/_drafts/s.tips.for.better.human.md` | 增加人类学习和工作能力的神经心理学和脑科学小技巧 | 写作草稿；类别：Sheet；分组：Learning-Psychology | 未读入：草稿构建关闭 |
-| `collections/_drafts/s.补刀.md` | Dota类游戏补刀进化史的元分析 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/todo-01-17-入门和系统学习中的常见误区.md` | 一、概念层面的误区 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/todo-xx-xx-世上无天才.md` | 世上无天才 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/中式高级哲学.md` | 中式高级哲学 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/人机鉴定指南.md` | 人机鉴定指南 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/如何理解男性困境.md` | 如何理解男性困境 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/孩子和修道院.md` | 孩子和修道院 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/广场与屁股.md` | 广场与屁股 | 写作草稿；仅元数据占位 | 未读入：草稿构建关闭 |
-| `collections/_drafts/心理学家和情人.md` | 心理学家和情人 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/成年人诊断报告.md` | 成年人诊断报告 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/我的文学语言.md` | 第二层的早期馊主意 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/提高自学上限的方法论.md` | Self-Education Guide to PhD-Level Mastery in Math, Theoretical Physics, and Theoretical Computer Science | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/数据如何说谎.md` | 数据如何说谎 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/树干和钉子.md` | 树干和钉子 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/步行者和跑道.md` | 步行者与跑道 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/清晰表达观点.md` | 如何清晰地说明观点 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/盘肠与食客.md` | 盘肠与食客 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/罗恩夫妇的一天.md` | 罗恩夫妇的一天 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/自我批判怪.md` | IDEA | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/良好状态.md` | 执行摘要 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/蝉与常青叶.md` | 蝉与常青叶 | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/行动之难，难！.md` | xinlixue | 写作草稿 | 未读入：草稿构建关闭 |
-| `collections/_drafts/认知焚诀.md` | 认知焚诀 | 写作草稿 | 未读入：草稿构建关闭 |
+| `collections/_comp/A1-Basics/a.CS.Atlas.en.md` | Computer Science — Learning Atlas | 计算机文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_comp/A1-Basics/a.CS.Landscape.en.md` | Computer Science — Landscape | 计算机文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_comp/A1-Basics/c.CS.Timeline.en.md` | Computer Science — Problem-driven History | 计算机文档；类别：Chron；分组：Basics | 已读入文章页；layout=post |
+| `collections/_comp/A1-Basics/s.CS.Resources.en.md` | Computer Science — Resource Atlas | 计算机文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_comp/A2-Toolset/s.Emacs.ez.md` | Emacs — Quick Reference | 计算机文档；类别：Sheet；分组：Toolset | 已读入文章页；layout=slide-multilingual |
+| `collections/_comp/A2-Toolset/s.Markdown.en.md` | Markdown — Quick Reference | 计算机文档；类别：Sheet；分组：Toolset | 已读入文章页；layout=post |
+| `collections/_comp/A2-Toolset/s.Regex.en.md` | Regex — Basic Syntax and Practical Usage | 计算机文档；类别：Sheet；分组：Toolset | 已读入文章页；layout=post |
+| `collections/_comp/A3-Operating-Tools/_s.Linux.AI.en.md` | Linux AI Tools — Quick Reference | 计算机文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
+| `collections/_comp/A3-Operating-Tools/_s.Linux.Basics.en.md` | Linux Basics — Quick Reference | 计算机文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
+| `collections/_comp/A3-Operating-Tools/_s.Linux.Developing.en.md` | Linux Tools Developing — Quick Reference | 计算机文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
+| `collections/_comp/A3-Operating-Tools/_s.Linux.Ops.en.md` | Linux Operating — Quick Reference | 计算机文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
+| `collections/_comp/A3-Operating-Tools/n.Manjaro.i3wm.en.md` | Manjaro + i3wm Workstation Setup | 计算机文档；类别：Notes；分组：Operating Tools | 已读入文章页；layout=post |
+| `collections/_comp/A3-Operating-Tools/n.TrueNAS.DIY.en.md` | TrueNAS SCALE 24.04 Minimal Tutorial | 计算机文档；类别：Notes；分组：Operating Tools | 已读入文章页；layout=post |
+| `collections/_comp/A3-Operating-Tools/n.Win.Tools.en.md` | Best Windows 11 Tweak Tools | 计算机文档；类别：Notes；分组：Operating Tools | 已读入文章页；layout=post |
+| `collections/_comp/A3-Operating-Tools/s.Linux.Shell.en.md` | Linux Shell Programming | 计算机文档；类别：Sheet；分组：Operating Tools | 已读入文章页；layout=post |
+| `collections/_comp/B1-Programming/n.CTMCP.ez.md` | CTMCP Annotated | 计算机文档；类别：Notes；分组：Programming | 已读入文章页；layout=slide-multilingual |
+| `collections/_comp/B1-Programming/n.EOPL.en.md` | EOPL Annotated | 计算机文档；类别：Notes；分组：Programming | 已读入文章页；layout=post |
+| `collections/_comp/B1-Programming/n.SICP.ez.md` | SICP Annotated | 计算机文档；类别：Notes；分组：Programming | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/_n.tapl.en.md` | Programming Languages TAPL | 计算机文档；类别：Notes；分组：Languages | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B2-Languages/_s.Kotlin.en.md` | Kotlin — Quick Reference | 计算机文档；类别：Sheet | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B2-Languages/_s.Rust.en.md` | Rust — Quick Reference | 计算机文档；类别：Sheet | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B2-Languages/n.PL.Analysis.ez.md` | Programming Language Analysis | 计算机文档；类别：Notes；分组：Languages | 已读入文章页；layout=slide-multilingual |
+| `collections/_comp/B2-Languages/n.Scheme.en.md` | Scheme — Quick Reference | 计算机文档；类别：Notes；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.C.en.md` | C — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.Common.Lisp.en.md` | Common Lisp — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.Cpp.en.md` | C++ — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.Erlang.Elixir.en.md` | Erlang / Elixir — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.Haskell.ez.md` | Haskell — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.Java.en.md` | Java — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.Python.Workflow.en.md` | Python — Common Workflows | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B2-Languages/s.Python.en.md` | Python — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
+| `collections/_comp/B3-Semantics/_n.denotational.operational.semantics.en.md` | Denotational and Operational Semantics | 计算机文档；类别：Notes；分组：Semantics | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B4-Type-Systems/_n.program.synthesis.en.md` | Program Synthesis | 计算机文档；类别：Notes；分组：Type Systems | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B4-Type-Systems/_n.type.systems.en.md` | Type Systems | 计算机文档；类别：Notes；分组：Type Systems | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B5-Formal-Methods/_n.Coq.Art.en.md` | Coq Art Notes | 计算机文档；类别：Notes；分组：Formal Methods | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B5-Formal-Methods/_n.program.logics.en.md` | Program Logics | 计算机文档；类别：Notes；分组：Formal Methods | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B5-Formal-Methods/_t.SF.Annotated.ez.md` | Software Foundations Personal Annotated | 计算机文档；类别：Texts；分组：Formal Methods | 未读入：文件名以 _ 开头 |
+| `collections/_comp/B5-Formal-Methods/s.Lean4.en.md` | Lean4 — Quick Reference | 计算机文档；类别：Sheet；分组：Formal Methods | 已读入文章页；layout=post |
+| `collections/_comp/B5-Formal-Methods/s.Rocq.en.md` | Rocq — Quick Reference | 计算机文档；类别：Sheet；分组：Formal Methods | 已读入文章页；layout=print |
+| `collections/_comp/B6-Compilers/_n.compilers.en.md` | Compilers | 计算机文档；类别：Notes；分组：Compilers | 未读入：文件名以 _ 开头 |
+| `collections/_comp/C1-Algorithms/_n.algorithms.data.structures.en.md` | Algorithms and Data Structures | 计算机文档；类别：Notes；分组：Algorithms | 未读入：文件名以 _ 开头 |
+| `collections/_comp/C2-Complexity/_n.computational.complexity.en.md` | Computational Complexity | 计算机文档；类别：Notes；分组：Complexity | 未读入：文件名以 _ 开头 |
+| `collections/_comp/C3-Computation/_n.computability.recursion.en.md` | Computability and Recursion Theory | 计算机文档；类别：Notes；分组：Computation | 未读入：文件名以 _ 开头 |
+| `collections/_comp/C3-Computation/_n.quantum.computing.en.md` | Quantum Computing | 计算机文档；类别：Notes；分组：Computation | 未读入：文件名以 _ 开头 |
+| `collections/_comp/C3-Computation/_n.theory.of.computation.en.md` | Theory of Computation | 计算机文档；类别：Notes；分组：Computation | 未读入：文件名以 _ 开头 |
+| `collections/_comp/C4-Cryptography/_n.cryptography.en.md` | Cryptography | 计算机文档；类别：Notes；分组：Cryptography | 未读入：文件名以 _ 开头 |
+| `collections/_comp/D1-Computer-Systems/_n.csapp.zh.md` | Computer Systems (计算机系统) | 计算机文档；类别：Notes；分组：Computer Systems | 未读入：文件名以 _ 开头 |
+| `collections/_comp/D2-Operating-Systems/_n.operating.systems.en.md` | Operating Systems | 计算机文档；类别：Notes；分组：Operating Systems | 未读入：文件名以 _ 开头 |
+| `collections/_comp/D3-Networks/_n.computer.networks.en.md` | Computer Networks | 计算机文档；类别：Notes；分组：Networks | 未读入：文件名以 _ 开头 |
+| `collections/_comp/D4-Databases/s.TSql.Syntax.en.md` | T-SQL — Quick Reference | 计算机文档；类别：Sheet；分组：Databases | 已读入文章页；layout=post |
+| `collections/_comp/D5-Distributed-Systems/_n.distributed.systems.en.md` | Distributed Systems | 计算机文档；类别：Notes；分组：Distributed Systems | 未读入：文件名以 _ 开头 |
+| `collections/_comp/E1-Webdev/a.WebDev.Macroview.en.md` | Web Development — Macro-view and Principles | 计算机文档；类别：Atlas；分组：Webdev | 已读入文章页；layout=post |
+| `collections/_comp/E1-Webdev/n.CSS.en.md` | CSS — Quick Reference | 计算机文档；类别：Notes；分组：Webdev | 已读入文章页；layout=post |
+| `collections/_comp/E1-Webdev/n.Modern.HTML.en.md` | Modern HTML — Quick Reference | 计算机文档；类别：Notes；分组：Webdev | 已读入文章页；layout=post |
+| `collections/_comp/E1-Webdev/n.WebDev.Principles.en.md` | Web Development Principles and Practical Skills | 计算机文档；类别：Notes；分组：Webdev | 已读入文章页；layout=post |
+| `collections/_comp/E1-Webdev/s.JavaScript.ez.md` | JavaScript — Quick Reference | 计算机文档；类别：Sheet；分组：Webdev | 已读入文章页；layout=post |
+| `collections/_comp/E1-Webdev/s.TypeScript.en.md` | TypeScript — Quick Reference | 计算机文档；类别：Sheet；分组：Webdev | 已读入文章页；layout=post |
+| `collections/_comp/F1-Machine-Learning/_n.deep.learning.en.md` | Deep Learning | 计算机文档；类别：Notes；分组：Deep Learning | 未读入：文件名以 _ 开头 |
+| `collections/_comp/F1-Machine-Learning/_n.machine.learning.en.md` | Machine Learning | 计算机文档；类别：Notes；分组：Machine Learning | 未读入：文件名以 _ 开头 |
+| `collections/_comp/F1-Machine-Learning/_n.reinforcement.learning.en.md` | Reinforcement Learning | 计算机文档；类别：Notes；分组：Machine Learning | 未读入：文件名以 _ 开头 |
+| `collections/_comp/F3-LLMs/_n.Learner-Centered.LLMs.ez.md` | Learner-Centered Use of Large Language Models | 计算机文档；类别：Notes；分组：LLMs | 未读入：文件名以 _ 开头 |
+| `collections/_comp/F3-LLMs/_n.Prompt.Engineering.ez.md` | LLM Prompt Engineering for Workflows Enhancement | 计算机文档；类别：Notes；分组：LLMs | 未读入：文件名以 _ 开头 |
+| `collections/_comp/F3-LLMs/_n.Vibe.Coding.ez.md` | Vibe Coding with LLMs | 计算机文档；类别：Notes；分组：LLMs | 未读入：文件名以 _ 开头 |
+| `collections/_comp/F3-LLMs/n.Andrej.Karpathy.ez.md` | Andrej Karpathy Notes | 计算机文档；类别：Notes；分组：LLMs | 已读入文章页；layout=slide-linear |
+| `collections/_comp/F3-LLMs/n.Anthropic.Lec.ez.md` | Anthropic Lecture Notes | 计算机文档；类别：Notes；分组：LLMs | 已读入文章页；layout=slide-linear |
+| `collections/_comp/F4-AI-Safety/_n.mechanistic.interpretability.alignment.en.md` | Mechanistic Interpretability and AI Alignment | 计算机文档；类别：Notes；分组：AI Safety | 未读入：文件名以 _ 开头 |
+| `collections/_comp/Y1-Project-Control/_a.Project.Control.en.md` | Project Control and Management for Software Projects | 计算机文档；类别：Atlas；分组：Project Control | 未读入：文件名以 _ 开头 |
+| `collections/_comp/Y1-Project-Control/_n.aesthetic.ez.md` | Coding Aesthetic | 计算机文档；类别：Notes；分组：Project Control | 未读入：文件名以 _ 开头 |
+| `collections/_comp/Y1-Project-Control/_n.debug.en.md` | Coding Debug Tips | 计算机文档；类别：Notes；分组：Project Control | 未读入：文件名以 _ 开头 |
+| `collections/_comp/Y1-Project-Control/n.Config.File.en.md` | Project Control — Configuration of Projects | 计算机文档；类别：Notes；分组：Project Control | 已读入文章页；layout=post |
 
-### 10.3 历史（22）
-
-| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
-| --- | --- | --- | --- |
-| `collections/_hist/A1-Basics/a.hist.en.md` | History — Learning Atlas | 历史知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_hist/A1-Basics/re.historical.division.zh.md` | World History Periodization (世界历史分期) | 历史知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_hist/A2-Historiography/n.Historiography.History.en.md` | History of Western Historiography | 历史知识文档；类别：Notes；分组：Historiography | 生成页面；layout=post |
-| `collections/_hist/B1-World-History/c.World.Economy.zh.md` | World Economy History (世界经济史) | 历史知识文档；类别：Chron；分组：World History | 生成页面；layout=post |
-| `collections/_hist/B1-World-History/c.World.History.en.md` | World History | 历史知识文档；类别：Chron；分组：World History | 生成页面；layout=post |
-| `collections/_hist/C1-Asian-History/c.China.zh.md` | Chinese History (中国史) | 历史知识文档；类别：Chron；分组：Asian History | 生成页面；layout=slide-simple |
-| `collections/_hist/C1-Asian-History/c.Japan.zh.md` | Japanese Histor (日本史) | 历史知识文档；类别：Chron；分组：Asian History | 生成页面；layout=post |
-| `collections/_hist/C1-Asian-History/c.West.Asia.zh.md` | West Asia History (西亚史) | 历史知识文档；类别：Chron；分组：Asian History | 生成页面；layout=post |
-| `collections/_hist/C1-Asian-History/n.Chinese.Thoughts.zh.md` | Chinese Thoughts (中国思想史) | 历史知识文档；类别：Notes；分组：Asian History；状态：精修完成 | 生成页面；layout=post |
-| `collections/_hist/C2-European-History/c.Europe.zh.md` | Europe History (欧洲史) | 历史知识文档；类别：Chron；分组：European History | 生成页面；layout=slide-simple |
-| `collections/_hist/C2-European-History/c.Hundred.Years.War.ez.md` | The Hundred Years' War | 历史知识文档；类别：Chron；分组：European History | 生成页面；layout=slide-multilingual |
-| `collections/_hist/C2-European-History/c.Napoleon.ez.md` | Napoleon Bonaparte | 历史知识文档；类别：Chron；分组：European History | 生成页面；layout=slide-multilingual |
-| `collections/_hist/C3-African-History/c.Egypt.zh.md` | Egypt History (埃及史) | 历史知识文档；类别：Chron；分组：African History | 生成页面；layout=post |
-| `collections/_hist/C4-American-History/c.American.zh.md` | American History (美国史) | 历史知识文档；类别：Chron；分组：American History；状态：精修完成 | 生成页面；layout=post |
-| `collections/_hist/C4-American-History/c.Latin.American.zh.md` | Latin American History (拉美史) | 历史知识文档；类别：Chron；分组：American History | 生成页面；layout=post |
-| `collections/_hist/D1-War-History/c.Post-WWII.Wars.en.md` | Timeline of the Principal Post-1945 Wars | 历史知识文档；类别：Chron；分组：War History | 生成页面；layout=post-bilingual |
-| `collections/_hist/D1-War-History/n.1979.Soviet-Afghan.War.en.md` | Reconstruction of the 1979-1989 Soviet-Afghan War | 历史知识文档；类别：Notes；分组：War History | 生成页面；layout=post-bilingual |
-| `collections/_hist/D1-War-History/n.1991.Gulf.War.en.md` | Reconstruction of the 1990–1991 Gulf War | 历史知识文档；类别：Notes；分组：War History | 生成页面；layout=post-bilingual |
-| `collections/_hist/D2-Intellectual-History/_n.intellectual.history.en.md` | Intellectual History | 历史知识文档；类别：Notes；分组：Intellectual History；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_hist/D3-Science-History/_n.history.of.science.en.md` | History of Science | 历史知识文档；类别：Notes；分组：Science History；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_hist/D4-Economic-History/_n.economic.history.en.md` | Economic History | 历史知识文档；类别：Notes；分组：Economic History；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_hist/X1-Readings/_t.hobsbawm.xuzhuoyun.en.md` | Big Picture History | 历史知识文档；类别：Texts；分组：Readings；仅元数据占位 | 未读入：文件名以 _ 开头 |
-
-### 10.4 文学与语言（48）
-
-| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
-| --- | --- | --- | --- |
-| `collections/_litr/A1-Basics/a.Literature.Atlas.ez.md` | Literature — Learning Atlas | 文学与语言知识文档；类别：Atlas；分组：Basics | 生成页面；layout=slide-multilingual |
-| `collections/_litr/A1-Basics/a.Novelist.Starting.Point.en.md` | The Starting Point of Becoming a Novelist | 文学与语言知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_litr/A1-Basics/c.Literary.History.Wiki.en.md` | Literature History Timeline | 文学与语言知识文档；类别：Chron；分组：Basics | 生成页面；layout=slide-wiki |
-| `collections/_litr/A1-Basics/n.Literature.Ontology.ez.md` | Ontology of Literature | 文学与语言知识文档；类别：Notes；分组：Basics | 生成页面；layout=slide-multilingual |
-| `collections/_litr/A1-Basics/s.Common.Sense.zh.md` | Literature Knowledge (文学基础常识) | 文学与语言知识文档；类别：Sheet；分组：Basics | 生成页面；layout=slide-simple |
-| `collections/_litr/A1-Basics/s.Literature.Principles.ez.md` | Principles of Serious Literature | 文学与语言知识文档；类别：Sheet；分组：Basics | 生成页面；layout=slide-multilingual |
-| `collections/_litr/A2-Reading/n.Masterpieces.en.md` | Notes on Masterpieces | 文学与语言知识文档；类别：Notes；分组：Reading | 生成页面；layout=slide-simple |
-| `collections/_litr/A2-Reading/n.Masterpieces.zh.md` | Notes on Masterpieces (名著精讲) | 文学与语言知识文档；类别：Notes；分组：Reading | 生成页面；layout=slide-simple |
-| `collections/_litr/A2-Reading/n.deep.reading.methods.ez.md` | Deep Reading Methods for Literary Analysis and Craft | 文学与语言知识文档；类别：Notes；分组：Reading | 生成页面；layout=post |
-| `collections/_litr/A2-Reading/s.Personal.Canon.ez.md` | Building a Starter Personal Canon | 文学与语言知识文档；类别：Sheet；分组：Reading | 生成页面；layout=slide-multilingual |
-| `collections/_litr/B3-Motifs/c.motifs.ez.md` | Motifs of World Literature Tradition | 文学与语言知识文档；类别：Chron；分组：Motifs | 生成页面；layout=post |
-| `collections/_litr/C1-Literary-Theory/a.Literary.Theory.Atlas.ez.md` | Literary Theory and Literary Criticism — The Atlas | 文学与语言知识文档；类别：Atlas；分组：Literary Theory | 生成页面；layout=slide-multilingual |
-| `collections/_litr/C1-Literary-Theory/n.lit.theory.zh.md` | Western Literary Theory (西方文学理论) | 文学与语言知识文档；类别：Notes；分组：Literary Theory | 生成页面；layout=post |
-| `collections/_litr/C1-Literary-Theory/t.ENGL300.transcript.en.md` | ENGL 300 Transcripts | 文学与语言知识文档；类别：Texts；分组：Literary Theory | 生成页面；layout=print |
-| `collections/_litr/C2-Criticism/_n.literary.criticism.en.md` | Literary Criticism | 文学与语言知识文档；类别：Notes；分组：Criticism；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/C3-Narratology/a.Narratology.ez.md` | Narratology — Learning Atlas | 文学与语言知识文档；类别：Atlas；分组：Narratology | 生成页面；layout=post |
-| `collections/_litr/C3-Narratology/n.narratology.en.md` | Narratology — the Theory of Narrative | 文学与语言知识文档；类别：Notes；分组：Narratology | 生成页面；layout=post |
-| `collections/_litr/D1-Linguistics/_n.cognitive.linguistics.en.md` | Cognitive Linguistics | 文学与语言知识文档；类别：Notes；分组：Linguistics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/D1-Linguistics/_n.linguistics.and.llms.en.md` | Linguistics and LLM Prompting | 文学与语言知识文档；类别：Notes；分组：Linguistics | 未读入：文件名以 _ 开头 |
-| `collections/_litr/D1-Linguistics/_t.chomsky.syntax.en.md` | Chomsky Syntax | 文学与语言知识文档；类别：Texts；分组：Linguistics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/D1-Linguistics/_t.pinker.language.instinct.en.md` | The Language Instinct | 文学与语言知识文档；类别：Texts；分组：Linguistics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/D1-Linguistics/_t.saussure.course.en.md` | Saussure Course in General Linguistics | 文学与语言知识文档；类别：Texts；分组：Linguistics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/D1-Linguistics/a.Linguistics.ez.md` | Linguistics — Learning Atlas | 文学与语言知识文档；类别：Atlas；分组：Linguistics | 生成页面；layout=post |
-| `collections/_litr/D1-Linguistics/n.Language.Families.en.md` | Comparative Lecture Notes on the World's Language Families | 文学与语言知识文档；类别：Notes；分组：Linguistics | 生成页面；layout=post |
-| `collections/_litr/D1-Linguistics/n.Linguistics.zh.md` | Linguistics (语言学) | 文学与语言知识文档；类别：Notes；分组：Linguistics | 生成页面；layout=post |
-| `collections/_litr/D1-Linguistics/n.Psycholinguistics.zh.md` | Psycholinguistics (心理语言学) | 文学与语言知识文档；类别：Notes；分组：Linguistics | 生成页面；layout=post |
-| `collections/_litr/D1-Linguistics/t.24.900.transcript.en.md` | 24.900 Transcripts | 文学与语言知识文档；类别：Texts；分组：Linguistics | 生成页面；layout=print |
-| `collections/_litr/E1-Mythology/n.myths.ez.md` | World Mythology Systems | 文学与语言知识文档；类别：Notes；分组：Mythology | 生成页面；layout=post |
-| `collections/_litr/F1-Writing/_a.Writing.Theory.ez.md` | Becoming a 21st-Century Avant-Garde Writer | 文学与语言知识文档；类别：Atlas；分组：Writing | 未读入：文件名以 _ 开头 |
-| `collections/_litr/F1-Writing/_n.Limitation.of.Literature.en.md` | Serious Literature Under Constraint | 文学与语言知识文档；类别：Notes；分组：Writing | 未读入：文件名以 _ 开头 |
-| `collections/_litr/F1-Writing/_t.strunk.white.zinsser.en.md` | Strunk White and Zinsser | 文学与语言知识文档；类别：Texts；分组：Writing；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/F1-Writing/n.Beyond.Arts.ez.md` | Literature as Vanguard Art | 文学与语言知识文档；类别：Notes；分组：Writing | 生成页面；layout=post |
-| `collections/_litr/F1-Writing/n.Expository.Language.zh.md` | Expository Language (说明性语言) | 文学与语言知识文档；类别：Notes；分组：Writing | 生成页面；layout=post |
-| `collections/_litr/F1-Writing/n.Literature.Language.ez.md` | Literary Language | 文学与语言知识文档；类别：Notes；分组：Writing | 生成页面；layout=post |
-| `collections/_litr/F1-Writing/n.Writing.with.Psychoanalysis.en.md` | Writing with Psychoanalysis | 文学与语言知识文档；类别：Notes；分组：Writing | 生成页面；layout=post |
-| `collections/_litr/F1-Writing/n.naming.en.md` | The Principles of Naming | 文学与语言知识文档；类别：Notes；分组：Writing | 生成页面；layout=post |
-| `collections/_litr/F1-Writing/s.variables.zh.md` | Writing Variables Reference (写作变量速查) | 文学与语言知识文档；类别：Sheet；分组：Writing | 生成页面；layout=post |
-| `collections/_litr/F1-Writing/t.On.Writing..zh.md` | Writers on Writing (作家谈写作) | 文学与语言知识文档；类别：Texts；分组：Writing | 生成页面；layout=post |
-| `collections/_litr/F2-Characters/n.characters.zh.md` | Character Depth (人物深度塑造) | 文学与语言知识文档；类别：Notes；分组：Characters | 生成页面；layout=post |
-| `collections/_litr/F3-Style/a.Writing.Stle.zh.md` | Writing Style (写作风格) | 文学与语言知识文档；类别：Atlas；分组：Style | 生成页面；layout=post |
-| `collections/_litr/F3-Style/n.Classic.Style.ez.md` | Classic Style | 文学与语言知识文档；类别：Notes；分组：Style | 生成页面；layout=post |
-| `collections/_litr/F3-Style/n.modernizing.en.md` | Modernizing Ancient Novels — A Comprehensive Tutorial | 文学与语言知识文档；类别：Notes；分组：Style | 生成页面；layout=post |
-| `collections/_litr/F3-Style/t.excerpt.sentences.ez.md` | Sentences in Works of Different Forms | 文学与语言知识文档；类别：Texts；分组：Style | 生成页面；layout=post |
-| `collections/_litr/F4-Formal-Constraint/_t.david.foster.wallace.en.md` | David Foster Wallace | 文学与语言知识文档；类别：Texts；分组：Formal Constraint；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/F4-Formal-Constraint/_t.oulipo.formal.constraint.en.md` | OuLiPo and Formal Constraint | 文学与语言知识文档；类别：Texts；分组：Formal Constraint；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_litr/G1-Literary-Texts/t.Short.Stories.ez.md` | Study of Short Stories | 文学与语言知识文档；类别：Texts；分组：Literary Texts | 生成页面；layout=post-horizonal |
-| `collections/_litr/G1-Literary-Texts/t.lolita.annotated.en.md` | Lolita The Annotated | 文学与语言知识文档；类别：Texts；分组：Literary Texts | 生成页面；layout=post |
-| `collections/_litr/G1-Literary-Texts/t.mocangli.zh.md` | Mo Cangli Storyline (默苍离主要剧情) | 文学与语言知识文档；类别：Texts；分组：Literary Texts | 生成页面；layout=post |
-
-### 10.5 数学（55）
+### 10.2 历史（22）
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_math/A1-Basics/_todo.metamathematics.intro.en.md` | Metamathematics Introduction | 数学知识文档；类别：Texts；分组：Basics | 未读入：文件名以 _ 开头 |
-| `collections/_math/A1-Basics/a.math.ez.md` | Mathematics — Learning Atlas | 数学知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_math/A1-Basics/a.math.tools.en.md` | Learn Mathematics with Modern Tools and Workflows | 数学知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_math/A1-Basics/c.history.math.zh.md` | History of Mathematics (数学史和数学思想) | 数学知识文档；类别：Chron；分组：Basics | 生成页面；layout=post |
-| `collections/_math/A1-Basics/n.Math.Methodology.zh.md` | Mathematics Methodology Wiki (数学方法百科) | 数学知识文档；类别：Notes；分组：Basics | 生成页面；layout=slide-linear |
-| `collections/_math/A1-Basics/n.Square.Cubic.ez.md` | Why the World Cannot Simply Be Scaled Up | 数学知识文档；类别：Notes；分组：Basics | 生成页面；layout=post-bilingual |
-| `collections/_math/A1-Basics/s.Math.Resources.en.md` | Mathematics — Resource Reference | 数学知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_math/A1-Basics/s.Math.Symbols.ez.md` | Mathematical Symbol Reference Table | 数学知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_math/A1-Basics/s.elementary.mathematics.zh.md` | Elementary Mathematics Quick Reference (基础数学速查表) | 数学知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_math/A1-Basics/s.latex.ez.md` | Writing Mathematical Formulas in LaTeX | 数学知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_math/B1-Arithmetic/_n.arithmetic.en.md` | Arithmetic | 数学知识文档；类别：Notes；分组：Arithmetic；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/B2-Number-Theory/n.Algebraic.Number.Theory.en.md` | Algebraic Number Theory | 数学知识文档；类别：Notes；分组：Number Theory | 生成页面；layout=post |
-| `collections/_math/B2-Number-Theory/n.Number.Theory.en.md` | Number Theory | 数学知识文档；类别：Notes；分组：Number Theory | 生成页面；layout=post |
-| `collections/_math/C1-Calculus/n.CAL.en.md` | Calculus | 数学知识文档；类别：Notes；分组：Calculus | 生成页面；layout=post |
-| `collections/_math/C2-Analysis/n.ConsA.en.md` | Constructive Analysis | 数学知识文档；类别：Notes；分组：Analysis | 生成页面；layout=post |
-| `collections/_math/C2-Analysis/n.ML.ez.md` | Mathematical Analysis | 数学知识文档；类别：Notes；分组：Analysis | 生成页面；layout=post |
-| `collections/_math/C2-Analysis/n.MT.en.md` | Measure Theory | 数学知识文档；类别：Notes；分组：Analysis | 生成页面；layout=post |
-| `collections/_math/C2-Analysis/n.RA.en.md` | Real Analysis | 数学知识文档；类别：Notes；分组：Analysis | 生成页面；layout=post |
-| `collections/_math/C2-Analysis/t.18.01.transcript.en.md` | 18.01 Transcripts | 数学知识文档；类别：Texts；分组：Calculus | 生成页面；layout=print |
-| `collections/_math/C3-Complex-Analysis/n.CA.en.md` | Complex Analysis | 数学知识文档；类别：Notes；分组：Complex Analysis | 生成页面；layout=post |
-| `collections/_math/C4-Functional-Analysis/n.FA.en.md` | Funtioncal Analysis | 数学知识文档；类别：Notes；分组：Functional Analysis；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/C4-Functional-Analysis/n.HA.en.md` | Harmonic Analysis | 数学知识文档；类别：Notes；分组：Functional Analysis；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/C5-Differential-Equations/_n.calculus.of.variations.en.md` | Calculus of Variations | 数学知识文档；类别：Notes；分组：Differential Equations；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/C5-Differential-Equations/n.ODE.en.md` | Ordinary Differential Equation | 数学知识文档；类别：Notes；分组：Differential Equations | 生成页面；layout=post |
-| `collections/_math/C5-Differential-Equations/n.PDE.en.md` | Partial Differential Equation | 数学知识文档；类别：Notes；分组：Differential Equations | 生成页面；layout=post |
-| `collections/_math/D1-Linear-Algebra/n.LA.en.md` | Linear Algebra | 数学知识文档；类别：Notes；分组：Linear Algebra | 生成页面；layout=post |
-| `collections/_math/D1-Linear-Algebra/t.18.06.transcript.en.md` | 18.06 Transcripts | 数学知识文档；类别：Texts；分组：Linear Algebra | 生成页面；layout=print |
-| `collections/_math/D3-Abstract-Algebra/n.AA.en.md` | Abstract Algebra | 数学知识文档；类别：Notes；分组：Abstract Algebra；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/D4-Galois-Theory/_n.galois.theory.en.md` | Galois Theory | 数学知识文档；类别：Notes；分组：Galois Theory；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/D5-Commutative-Algebra/n.commutative.algebra.en.md` | Commutative Algebra | 数学知识文档；类别：Notes；分组：Commutative Algebra；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/D6-Homological-Algebra/n.homological.algebra.en.md` | Homological Algebra | 数学知识文档；类别：Notes；分组：Homological Algebra；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/D7-Lie-Algebra/n.lie.algebra.en.md` | Lie Algebra | 数学知识文档；类别：Notes；分组：Lie Algebra；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/E1-Topology/_n.algebraic.topology.en.md` | Algebraic Topology | 数学知识文档；类别：Notes；分组：Topology；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/E1-Topology/_n.point.set.topology.en.md` | Point-Set Topology | 数学知识文档；类别：Notes；分组：Topology；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/E2-Geometry/_n.differential.geometry.manifolds.en.md` | Differential Geometry and Manifolds | 数学知识文档；类别：Notes；分组：Geometry；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/E2-Geometry/_n.riemannian.geometry.en.md` | Riemannian Geometry | 数学知识文档；类别：Notes；分组：Geometry；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/E3-Algebraic-Geometry/n.algebraic.geometry.en.md` | Algebraic Geometry | 数学知识文档；类别：Notes；分组：Algebraic Geometry；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/F1-Probability/_n.probability.first.pass.en.md` | Probability, first pass | 数学知识文档；类别：Notes；分组：Probability；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/F2-Statistics/_n.mathematical.statistics.en.md` | Mathematical Statistics | 数学知识文档；类别：Notes；分组：Statistics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/F3-Stochastic-Processes/_n.stochastic.processes.en.md` | Stochastic Processes and Martingales | 数学知识文档；类别：Notes；分组：Stochastic Processes；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/G1-Logic/n.mathematical.logic.en.md` | Mathematical Logic | 数学知识文档；类别：Notes；分组：Logic | 生成页面；layout=post |
-| `collections/_math/G1-Logic/t.MATH125A.transcript.en.md` | MATH 125A Transcripts | 数学知识文档；类别：Texts；分组：Logic | 生成页面；layout=print |
-| `collections/_math/G2-Set-Theory/n.set.theory.en.md` | Axiomatic Set Theory | 数学知识文档；类别：Notes；分组：Set Theory；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/G2-Set-Theory/t.MATH135.transcript.en.md` | MATH 135 Transcripts | 数学知识文档；类别：Texts；分组：Set Theory | 生成页面；layout=print |
-| `collections/_math/G3-Proof/_n.discrete.math.and.proof.en.md` | Discrete Mathematics and Proof | 数学知识文档；类别：Notes；分组：Proof；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/G4-Model-Theory/n.model.theory.en.md` | Model Theory | 数学知识文档；类别：Notes；分组：Model Theory；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/G5-Proof-Theory/n.proof.theory.en.md` | Proof Theory | 数学知识文档；类别：Notes；分组：Proof Theory；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/G6-Recursion-Theory/n.recursive.theory.en.md` | Recursive Theory | 数学知识文档；类别：Notes；分组：Recursion Theory；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/G7-Type-Theory/_n.curry.howard.lambek.en.md` | Curry-Howard-Lambek Correspondence | 数学知识文档；类别：Notes；分组：Type Theory；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/G7-Type-Theory/_n.homotopy.type.theory.en.md` | Homotopy Type Theory | 数学知识文档；类别：Notes；分组：Type Theory；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/G8-Category-Theory/_t.lawvere.1969.en.md` | Lawvere 1969 | 数学知识文档；类别：Texts；分组：Category Theory；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_math/G8-Category-Theory/n.category.theory.en.md` | Category Theory | 数学知识文档；类别：Notes；分组：Category Theory；仅元数据占位 | 生成页面；layout=post |
-| `collections/_math/H1-Game-Theory/t.ECON159.en.md` | ECON 159 Transcripts | 数学知识文档；类别：Texts；分组：Game Theory | 生成页面；layout=print |
-| `collections/_math/H1-Game-Theory/t.GT2AA.en.md` | Game Theory 2 Advanced Applications Transcripts | 数学知识文档；类别：Texts；分组：Game Theory | 生成页面；layout=print |
-| `collections/_math/H1-Game-Theory/t.Games.Played.en.md` | Games People Play Transcripts | 数学知识文档；类别：Texts；分组：Game Theory | 生成页面；layout=print |
+| `collections/_hist/A1-Basics/a.hist.en.md` | History — Learning Atlas | 历史文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_hist/A1-Basics/re.historical.division.zh.md` | World History Periodization (世界历史分期) | 历史文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_hist/A2-Historiography/n.Historiography.History.en.md` | History of Western Historiography | 历史文档；类别：Notes；分组：Historiography | 已读入文章页；layout=post |
+| `collections/_hist/B1-World-History/c.World.Economy.zh.md` | World Economy History (世界经济史) | 历史文档；类别：Chron；分组：World History | 已读入文章页；layout=post |
+| `collections/_hist/B1-World-History/c.World.History.en.md` | World History | 历史文档；类别：Chron；分组：World History | 已读入文章页；layout=post |
+| `collections/_hist/C1-Asian-History/c.China.zh.md` | Chinese History (中国史) | 历史文档；类别：Chron；分组：Asian History | 已读入文章页；layout=slide-simple |
+| `collections/_hist/C1-Asian-History/c.Japan.zh.md` | Japanese History (日本史) | 历史文档；类别：Chron；分组：Asian History | 已读入文章页；layout=post |
+| `collections/_hist/C1-Asian-History/c.West.Asia.zh.md` | West Asia History (西亚史) | 历史文档；类别：Chron；分组：Asian History | 已读入文章页；layout=post |
+| `collections/_hist/C1-Asian-History/n.Chinese.Thoughts.zh.md` | Chinese Thoughts (中国思想史) | 历史文档；类别：Notes；分组：Asian History；状态：精修完成 | 已读入文章页；layout=post |
+| `collections/_hist/C2-European-History/c.Europe.zh.md` | Europe History (欧洲史) | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-simple |
+| `collections/_hist/C2-European-History/c.Hundred.Years.War.ez.md` | The Hundred Years' War | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-multilingual |
+| `collections/_hist/C2-European-History/c.Napoleon.ez.md` | Napoleon Bonaparte | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-multilingual |
+| `collections/_hist/C3-African-History/c.Egypt.zh.md` | Egypt History (埃及史) | 历史文档；类别：Chron；分组：African History | 已读入文章页；layout=post |
+| `collections/_hist/C4-American-History/c.American.zh.md` | American History (美国史) | 历史文档；类别：Chron；分组：American History；状态：精修完成 | 已读入文章页；layout=post |
+| `collections/_hist/C4-American-History/c.Latin.American.zh.md` | Latin American History (拉美史) | 历史文档；类别：Chron；分组：American History | 已读入文章页；layout=post |
+| `collections/_hist/D1-War-History/c.Post-WWII.Wars.en.md` | Timeline of the Principal Post-1945 Wars | 历史文档；类别：Chron；分组：War History | 已读入文章页；layout=post-bilingual |
+| `collections/_hist/D1-War-History/n.1979.Soviet-Afghan.War.en.md` | Reconstruction of the 1979-1989 Soviet-Afghan War | 历史文档；类别：Notes；分组：War History | 已读入文章页；layout=post-bilingual |
+| `collections/_hist/D1-War-History/n.1991.Gulf.War.en.md` | Reconstruction of the 1990–1991 Gulf War | 历史文档；类别：Notes；分组：War History | 已读入文章页；layout=post-bilingual |
+| `collections/_hist/D2-Intellectual-History/_n.intellectual.history.en.md` | Intellectual History | 历史文档；类别：Notes；分组：Intellectual History | 未读入：文件名以 _ 开头 |
+| `collections/_hist/D3-Science-History/_n.history.of.science.en.md` | History of Science | 历史文档；类别：Notes；分组：Science History | 未读入：文件名以 _ 开头 |
+| `collections/_hist/D4-Economic-History/_n.economic.history.en.md` | Economic History | 历史文档；类别：Notes；分组：Economic History | 未读入：文件名以 _ 开头 |
+| `collections/_hist/X1-Readings/_t.hobsbawm.xuzhuoyun.en.md` | Big Picture History | 历史文档；类别：Texts；分组：Readings | 未读入：文件名以 _ 开头 |
 
-### 10.6 跨学科（38）
+### 10.3 文学与语言（44）
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_misc/A1-English/n.en.long.sentences.n.expressions.ez.md` | Long Sentences in English | 跨学科知识文档；类别：Notes；分组：English | 生成页面；layout=post |
-| `collections/_misc/A1-English/n.en.word.subtle.diff.zh.md` | English Word Nuances (英语近义词辨析) | 跨学科知识文档；类别：Notes；分组：English | 生成页面；layout=post |
-| `collections/_misc/A1-English/s.en.grammar.ez.md` | English Grammar — Quick Reference | 跨学科知识文档；类别：Sheet；分组：English | 生成页面；layout=post-compact |
-| `collections/_misc/A1-English/s.en.idioms.ez.md` | English Collocations and Idioms | 跨学科知识文档；类别：Sheet；分组：English | 生成页面；layout=post |
-| `collections/_misc/A1-English/s.en.latin.words.en.md` | Latin Words in English | 跨学科知识文档；类别：Sheet；分组：English | 生成页面；layout=post |
-| `collections/_misc/A1-English/s.en.surnames.origins.zh.md` | English Surnames Reference (英语姓氏源流) | 跨学科知识文档；类别：Sheet；分组：English | 生成页面；layout=post |
-| `collections/_misc/A1-English/t.en.elden.ring.ez.md` | Elden Ring Dialogue in Order | 跨学科知识文档；类别：Texts；分组：English | 生成页面；layout=post |
-| `collections/_misc/A2-French/s.fr.grammar.zh.md` | French Grammar Quick Reference (法语语法大全速查表) | 跨学科知识文档；类别：Sheet；分组：French | 生成页面；layout=post-compact |
-| `collections/_misc/A2-French/s.fr.pronunciation.en.md` | French Pronunciation Tips | 跨学科知识文档；类别：Sheet；分组：French | 生成页面；layout=post |
-| `collections/_misc/A3-Japanese/s.jp.grammar.zh.md` | Japanese Grammar Quick Reference (日语语法速查表) | 跨学科知识文档；类别：Sheet；分组：Japanese | 生成页面；layout=post-compact |
-| `collections/_misc/B1-Learning/n.Human.Learning.zh.md` | Human Learning （学习机制） | 跨学科知识文档；类别：Notes；分组：Learning | 生成页面；layout=print |
-| `collections/_misc/B1-Learning/t.LHTL.transcript.ez.md` | Learning How to Learn Transcripts | 跨学科知识文档；类别：Texts；分组：Learning | 生成页面；layout=print |
-| `collections/_misc/B1-Learning/t.MS.transcript.en.md` | Mindshift Transcripts | 跨学科知识文档；类别：Texts；分组：Learning；仅元数据占位 | 生成页面；layout=print |
-| `collections/_misc/B2-Scientific-Method/_n.scientific.analysis.frameworks.en.md` | Scientific Analysis Frameworks | 跨学科知识文档；类别：Notes；分组：Scientific Method | 未读入：文件名以 _ 开头 |
-| `collections/_misc/B2-Scientific-Method/_n.scientific.methodology.en.md` | Scientific Methodology | 跨学科知识文档；类别：Notes；分组：Scientific Method | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C1-Cybernetics/_n.intro.en.md` | Meta-Information | 跨学科知识文档；类别：Notes；分组：Cybernetics | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C1-Cybernetics/_t.wiener.human.use.en.md` | The Human Use of Human Beings | 跨学科知识文档；类别：Texts；分组：Cybernetics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C2-Systems-Theory/_n.intro.en.md` | Key Questions and Answers | 跨学科知识文档；类别：Notes；分组：Systems Theory | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C2-Systems-Theory/_t.bateson.mind.nature.en.md` | Bateson Mind and Nature | 跨学科知识文档；类别：Texts；分组：Systems Theory；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C3-Information-Theory/_n.information.theory.en.md` | Information Theory | 跨学科知识文档；类别：Notes；分组：Information Theory；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C5-Communication/_n.complexity.science.en.md` | Complexity Science | 跨学科知识文档；类别：Notes；分组：Complexity；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C5-Communication/_n.intro.en.md` | Discipline Meta-Information | 跨学科知识文档；类别：Notes；分组：Communication | 未读入：文件名以 _ 开头 |
-| `collections/_misc/C5-Communication/_t.mcluhan.kittler.en.md` | McLuhan and Kittler | 跨学科知识文档；类别：Texts；分组：Communication；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_misc/D1-Sociology/n.AI.and.Sociology.zh.md` | AI and Sociology (AI 和社会学) | 跨学科知识文档；类别：Notes；分组：Sociology | 生成页面；layout=slide-linear |
-| `collections/_misc/D1-Sociology/n.Classical.Sociology.zh.md` | Classical Sociology (古典社会学) | 跨学科知识文档；类别：Notes；分组：Sociology | 生成页面；layout=slide-linear |
-| `collections/_misc/D1-Sociology/n.Elite.and.Power.zh.md` | Elite and Power (精英和权力) | 跨学科知识文档；类别：Notes；分组：Sociology | 生成页面；layout=slide-linear |
-| `collections/_misc/D1-Sociology/n.Financial.Capita.zh.md` | Financial Capital (金融资本) | 跨学科知识文档；类别：Notes；分组：Sociology | 生成页面；layout=slide-linear |
-| `collections/_misc/D1-Sociology/n.Japanese-style.Capitalism.zh.md` | Japanese Coordinated Capitalism (日式协调资本主义) | 跨学科知识文档；类别：Notes；分组：Sociology | 生成页面；layout=slide-linear |
-| `collections/_misc/D1-Sociology/n.Modern.Capitalism.zh.md` | Modern Capitalism (现代资本主义) | 跨学科知识文档；类别：Notes；分组：Sociology | 生成页面；layout=slide-linear |
-| `collections/_misc/D1-Sociology/n.Modern.Sociology.zh.md` | Modern Sociology (现代社会学) | 跨学科知识文档；类别：Notes；分组：Sociology | 生成页面；layout=slide-linear |
-| `collections/_misc/D2-Economy/n.Dankoe.Personal.Development.zh.md` | Dan Koe Personal Development (Dan Koe 个人提升) | 跨学科知识文档；类别：Notes；分组：Economy | 生成页面；layout=print |
-| `collections/_misc/D2-Economy/n.Dankoe.zh.md` | Dan Koe Notes (Dan Koe 笔记) | 跨学科知识文档；类别：Notes；分组：Economy | 生成页面；layout=slide-wiki |
-| `collections/_misc/D2-Economy/n.Global.Economy.zh.md` | Recent Economic Analysis (近期经济学分析) | 跨学科知识文档；类别：Notes；分组：Economy | 生成页面；layout=slide-linear |
-| `collections/_misc/D2-Economy/n.International.Political.Economy.zh.md` | International Political Economy (国际政治经济学) | 跨学科知识文档；类别：Notes；分组：Economy | 生成页面；layout=slide-linear |
-| `collections/_misc/D3-Politics/n.International.Information.Warfare.zh.md` | International Information Warfare (国际信息战) | 跨学科知识文档；类别：Notes；分组：Politics | 生成页面；layout=slide-linear |
-| `collections/_misc/D3-Politics/n.International.Relations.zh.md` | International Relations (国际关系学) | 跨学科知识文档；类别：Notes；分组：Politics | 生成页面；layout=slide-linear |
-| `collections/_misc/E2-Religion/n.religion.zh.md` | World Religions (世界宗教) | 跨学科知识文档；类别：Notes；分组：Religion | 生成页面；layout=post |
-| `collections/_misc/E2-Religion/s.Mysticism.zh.md` | Mysticism (神秘主义) | 跨学科知识文档；类别：Sheet；分组：Religion | 生成页面；layout=slide-wiki |
+| `collections/_litr/A1-Basics/a.Literature.Atlas.ez.md` | Literature — Learning Atlas | 文学与语言文档；类别：Atlas；分组：Basics | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/A1-Basics/a.Novelist.Starting.Point.en.md` | The Starting Point of Becoming a Novelist | 文学与语言文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_litr/A1-Basics/c.Literary.History.Wiki.en.md` | Literature History Timeline | 文学与语言文档；类别：Chron；分组：Basics | 已读入文章页；layout=slide-wiki |
+| `collections/_litr/A1-Basics/n.Literature.Ontology.ez.md` | Ontology of Literature | 文学与语言文档；类别：Notes；分组：Basics | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/A1-Basics/s.Common.Sense.zh.md` | Literature Knowledge (文学基础常识) | 文学与语言文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-simple |
+| `collections/_litr/A1-Basics/s.Literature.Principles.ez.md` | Principles of Serious Literature | 文学与语言文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/A2-Reading/n.Masterpieces.en.md` | Notes on Masterpieces | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=slide-simple |
+| `collections/_litr/A2-Reading/n.Masterpieces.zh.md` | Notes on Masterpieces (名著精讲) | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=slide-simple |
+| `collections/_litr/A2-Reading/n.deep.reading.methods.ez.md` | Deep Reading Methods for Literary Analysis and Craft | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=post |
+| `collections/_litr/A2-Reading/s.Personal.Canon.ez.md` | Building a Starter Personal Canon | 文学与语言文档；类别：Sheet；分组：Reading | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/B3-Motifs/c.motifs.ez.md` | Motifs of World Literature Tradition | 文学与语言文档；类别：Chron；分组：Motifs | 已读入文章页；layout=post |
+| `collections/_litr/C1-Literary-Theory/a.Literary.Theory.Atlas.ez.md` | Literary Theory and Literary Criticism — The Atlas | 文学与语言文档；类别：Atlas；分组：Literary Theory | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/C1-Literary-Theory/n.lit.theory.zh.md` | Western Literary Theory (西方文学理论) | 文学与语言文档；类别：Notes；分组：Literary Theory | 已读入文章页；layout=post |
+| `collections/_litr/C2-Criticism/_n.literary.criticism.en.md` | Literary Criticism | 文学与语言文档；类别：Notes；分组：Criticism | 未读入：文件名以 _ 开头 |
+| `collections/_litr/C3-Narratology/a.Narratology.ez.md` | Narratology — Learning Atlas | 文学与语言文档；类别：Atlas；分组：Narratology | 已读入文章页；layout=post |
+| `collections/_litr/C3-Narratology/n.narratology.en.md` | Narratology — the Theory of Narrative | 文学与语言文档；类别：Notes；分组：Narratology | 已读入文章页；layout=post |
+| `collections/_litr/D1-Linguistics/_n.cognitive.linguistics.en.md` | Cognitive Linguistics | 文学与语言文档；类别：Notes；分组：Linguistics | 未读入：文件名以 _ 开头 |
+| `collections/_litr/D1-Linguistics/_n.linguistics.and.llms.en.md` | Linguistics and LLM Prompting | 文学与语言文档；类别：Notes；分组：Linguistics | 未读入：文件名以 _ 开头 |
+| `collections/_litr/D1-Linguistics/_t.chomsky.syntax.en.md` | Chomsky Syntax | 文学与语言文档；类别：Texts；分组：Linguistics | 未读入：文件名以 _ 开头 |
+| `collections/_litr/D1-Linguistics/_t.pinker.language.instinct.en.md` | The Language Instinct | 文学与语言文档；类别：Texts；分组：Linguistics | 未读入：文件名以 _ 开头 |
+| `collections/_litr/D1-Linguistics/_t.saussure.course.en.md` | Saussure Course in General Linguistics | 文学与语言文档；类别：Texts；分组：Linguistics | 未读入：文件名以 _ 开头 |
+| `collections/_litr/D1-Linguistics/a.Linguistics.ez.md` | Linguistics — Learning Atlas | 文学与语言文档；类别：Atlas；分组：Linguistics | 已读入文章页；layout=post |
+| `collections/_litr/D1-Linguistics/n.Language.Families.en.md` | Comparative Lecture Notes on the World's Language Families | 文学与语言文档；类别：Notes；分组：Linguistics | 已读入文章页；layout=post |
+| `collections/_litr/D1-Linguistics/n.Linguistics.zh.md` | Linguistics (语言学) | 文学与语言文档；类别：Notes；分组：Linguistics | 已读入文章页；layout=post |
+| `collections/_litr/D1-Linguistics/n.Psycholinguistics.zh.md` | Psycholinguistics (心理语言学) | 文学与语言文档；类别：Notes；分组：Linguistics | 已读入文章页；layout=post |
+| `collections/_litr/E1-Mythology/n.myths.ez.md` | World Mythology Systems | 文学与语言文档；类别：Notes；分组：Mythology | 已读入文章页；layout=post |
+| `collections/_litr/F1-Writing/_a.Writing.Theory.ez.md` | Becoming a 21st-Century Avant-Garde Writer | 文学与语言文档；类别：Atlas；分组：Writing | 未读入：文件名以 _ 开头 |
+| `collections/_litr/F1-Writing/_n.Limitation.of.Literature.en.md` | Serious Literature Under Constraint | 文学与语言文档；类别：Notes；分组：Writing | 未读入：文件名以 _ 开头 |
+| `collections/_litr/F1-Writing/_t.strunk.white.zinsser.en.md` | Strunk White and Zinsser | 文学与语言文档；类别：Texts；分组：Writing | 未读入：文件名以 _ 开头 |
+| `collections/_litr/F1-Writing/n.Beyond.Arts.ez.md` | Literature as Vanguard Art | 文学与语言文档；类别：Notes；分组：Writing | 已读入文章页；layout=post |
+| `collections/_litr/F1-Writing/n.Expository.Language.zh.md` | Expository Language (说明性语言) | 文学与语言文档；类别：Notes；分组：Writing | 已读入文章页；layout=post |
+| `collections/_litr/F1-Writing/n.Literature.Language.ez.md` | Literary Language | 文学与语言文档；类别：Notes；分组：Writing | 已读入文章页；layout=post |
+| `collections/_litr/F1-Writing/n.Writing.with.Psychoanalysis.en.md` | Writing with Psychoanalysis | 文学与语言文档；类别：Notes；分组：Writing | 已读入文章页；layout=post |
+| `collections/_litr/F1-Writing/n.naming.en.md` | The Principles of Naming | 文学与语言文档；类别：Notes；分组：Writing | 已读入文章页；layout=post |
+| `collections/_litr/F1-Writing/s.variables.zh.md` | Writing Variables Reference (写作变量速查) | 文学与语言文档；类别：Sheet；分组：Writing | 已读入文章页；layout=post |
+| `collections/_litr/F1-Writing/t.On.Writing.zh.md` | Writers on Writing (作家谈写作) | 文学与语言文档；类别：Texts；分组：Writing | 已读入文章页；layout=post |
+| `collections/_litr/F2-Characters/n.characters.zh.md` | Character Depth (人物深度塑造) | 文学与语言文档；类别：Notes；分组：Characters | 已读入文章页；layout=post |
+| `collections/_litr/F3-Style/a.Writing.Stle.zh.md` | Writing Style (写作风格) | 文学与语言文档；类别：Atlas；分组：Style | 已读入文章页；layout=post |
+| `collections/_litr/F3-Style/n.Classic.Style.ez.md` | Classic Style | 文学与语言文档；类别：Notes；分组：Style | 已读入文章页；layout=post |
+| `collections/_litr/F3-Style/n.modernizing.en.md` | Modernizing Ancient Novels — A Comprehensive Tutorial | 文学与语言文档；类别：Notes；分组：Style | 已读入文章页；layout=post |
+| `collections/_litr/F3-Style/t.excerpt.sentences.ez.md` | Sentences in Works of Different Forms | 文学与语言文档；类别：Texts；分组：Style | 已读入文章页；layout=post |
+| `collections/_litr/F4-Formal-Constraint/_t.david.foster.wallace.en.md` | David Foster Wallace | 文学与语言文档；类别：Texts；分组：Formal Constraint | 未读入：文件名以 _ 开头 |
+| `collections/_litr/F4-Formal-Constraint/_t.oulipo.formal.constraint.en.md` | OuLiPo and Formal Constraint | 文学与语言文档；类别：Texts；分组：Formal Constraint | 未读入：文件名以 _ 开头 |
+| `collections/_litr/G1-Literary-Texts/t.Short.Stories.ez.md` | Study of Short Stories | 文学与语言文档；类别：Texts；分组：Literary Texts | 已读入文章页；layout=post-horizonal |
 
-### 10.7 哲学（42）
-
-| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
-| --- | --- | --- | --- |
-| `collections/_phil/A1-Basics/a.phil.ez.md` | Western Philosophy — Learning Atlas | 哲学知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post-bilingual |
-| `collections/_phil/A1-Basics/n.intro.to.phil.ez.md` | Introduction to Western Philosophy | 哲学知识文档；类别：Notes；分组：Basics | 生成页面；layout=post |
-| `collections/_phil/A1-Basics/s.Philosophy.Resources.en.md` | Philosophy — Resource Reference | 哲学知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_phil/A1-Basics/s.Thoughts.Wiki.zh.md` | Human Thought Wiki (人类思想百科) | 哲学知识文档；类别：Sheet；分组：Basics | 生成页面；layout=slide-wiki |
-| `collections/_phil/A2-History/_n.hist.of.phil.problems.ez.md` | Core Problems of Philosophy | 哲学知识文档；类别：Notes；分组：History | 未读入：文件名以 _ 开头 |
-| `collections/_phil/A2-History/c.paradigm.shift.zh.md` | Philosophical Paradigm Shifts (哲学范式转变) | 哲学知识文档；类别：Chron；分组：History | 生成页面；layout=post |
-| `collections/_phil/A2-History/n.history.of.phil.en.md` | Outline of History of Western Philosophy | 哲学知识文档；类别：Notes；分组：History | 生成页面；layout=post |
-| `collections/_phil/A2-History/n.history.of.phil.zh.md` | History of Western Philosophy (西方哲学史) | 哲学知识文档；类别：Notes；分组：History | 生成页面；layout=post |
-| `collections/_phil/A2-History/t.Kenny.ez.md` | A New History of Western Philosophy Annotated | 哲学知识文档；类别：Texts；分组：History | 生成页面；layout=post-bilingual |
-| `collections/_phil/A3-Methodology/n.Fallacies.in.Philosophy.zh.md` | P1 什么样的推理才算真正支持了结论？ | 哲学知识文档 | 未作文章处理；静态复制为 /phil.md |
-| `collections/_phil/A3-Methodology/s.Phil.Language.ez.md` | Philosophy Language — A Reference Card and Tutorial | 哲学知识文档；类别：Sheet；分组：Methodology | 生成页面；layout=post |
-| `collections/_phil/A3-Methodology/s.Phil.Methodoloy.zh.md` | Philosophy Methodology Quick Reference (哲学方法论速查) | 哲学知识文档；类别：Sheet；分组：Methodology | 生成页面；layout=slide-linear |
-| `collections/_phil/A4-Metaphysics/_n.metaphysics.en.md` | Metaphysics | 哲学知识文档；类别：Notes；分组：Metaphysics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/A5-Ontology/_n.ontology.en.md` | Ontology | 哲学知识文档；类别：Notes；分组：Ontology；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/B1-Logic/_n.philosophical.logic.en.md` | Philosophical Logic | 哲学知识文档；类别：Notes；分组：Logic；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/B2-Language/_n.philosophy.of.language.en.md` | Philosophy of Language | 哲学知识文档；类别：Notes；分组：Language；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/B3-Analytic/p-intro.to.analytic.phil.en.md` | Introduction to Analytic Philosophy | 哲学知识文档；类别：Notes；分组：Analytic | 生成页面；layout=post |
-| `collections/_phil/C1-Epistemology/n.Critical.Thinking.zh.md` | Critical Thinking (批判性思维) | 哲学知识文档；类别：Notes；分组：Epistemology | 生成页面；layout=post |
-| `collections/_phil/C1-Epistemology/n.Decision.Model.en.md` | Decision Model | 哲学知识文档；类别：Notes；分组：Epistemology | 生成页面；layout=post |
-| `collections/_phil/C1-Epistemology/n.Rationality.zh.md` | Rationality (理性和理性主义) | 哲学知识文档；类别：Notes；分组：Epistemology | 生成页面；layout=post |
-| `collections/_phil/C1-Epistemology/n.epistemology.en.md` | Modern Epistemology | 哲学知识文档；类别：Notes；分组：Epistemology | 生成页面；layout=post |
-| `collections/_phil/C1-Epistemology/n.thinking.models.zh.md` | Thinking Models (思维模型) | 哲学知识文档；类别：Notes；分组：Epistemology | 生成页面；layout=post |
-| `collections/_phil/C1-Epistemology/s.Cognitive.Bias.ez.md` | Cognitive Bias | 哲学知识文档；类别：Sheet；分组：Epistemology | 生成页面；layout=print |
-| `collections/_phil/C1-Epistemology/s.Fallacies.ez.md` | Formal and Informal Fallacies | 哲学知识文档；类别：Sheet；分组：Epistemology | 生成页面；layout=post-vertical |
-| `collections/_phil/C1-Epistemology/t.ctk.zh.md` | Contemporary Theories of Knowledge (当代知识理论) | 哲学知识文档；类别：Texts；分组：Epistemology | 生成页面；layout=post |
-| `collections/_phil/C2-Formal-Epistemology/_n.formal.epistemology.en.md` | Formal Epistemology | 哲学知识文档；类别：Notes；分组：Formal Epistemology；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/C3-Science-Philosophy/_n.philosophy.of.science.en.md` | Philosophy of Science | 哲学知识文档；类别：Notes；分组：Science Philosophy；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/C4-Math-Philosophy/_n.philosophy.of.mathematics.en.md` | Philosophy of Mathematics | 哲学知识文档；类别：Notes；分组：Math Philosophy；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/D1-Mind/_n.philosophy.of.mind.en.md` | Philosophy of Mind | 哲学知识文档；类别：Notes；分组：Mind；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/D2-Cognitive-Science/_n.cognitive.science.philosophy.en.md` | Cognitive Science Philosophy | 哲学知识文档；类别：Notes；分组：Cognitive Science；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/D3-Phenomenology/n.phenomenology.zh.md` | Phenomenology (现象学) | 哲学知识文档；类别：Notes；分组：Phenomenology | 生成页面；layout=post |
-| `collections/_phil/E1-Ethics/c.ethics.ez.md` | Western Ethics from Antiquity to the Present | 哲学知识文档；类别：Chron；分组：Ethics | 生成页面；layout=post |
-| `collections/_phil/E1-Ethics/t.PHIL176.transcripts.en.md` | PHIL 176 Transcripts | 哲学知识文档；类别：Texts；分组：Ethics | 生成页面；layout=print |
-| `collections/_phil/E2-Political-Philosophy/_n.political.philosophy.en.md` | Political Philosophy | 哲学知识文档；类别：Notes；分组：Political Philosophy；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/E3-Legal-Philosophy/_n.legal.philosophy.en.md` | Legal Philosophy | 哲学知识文档；类别：Notes；分组：Legal Philosophy；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/E4-Aesthetics/_n.aesthetics.en.md` | Aesthetics | 哲学知识文档；类别：Notes；分组：Aesthetics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/F1-Semiotics/n.Semiotics.zh.md` | Modern Semiotics (现代符号学) | 哲学知识文档；类别：Notes；分组：Semiotics；状态：粗校完成 | 生成页面；layout=post |
-| `collections/_phil/F2-Structuralism/_n.structuralism.en.md` | Structuralism | 哲学知识文档；类别：Notes；分组：Structuralism；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/F3-Poststructuralism/_n.poststructuralism.en.md` | Poststructuralism | 哲学知识文档；类别：Notes；分组：Poststructuralism；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/X1-Readings/_t.frege.russell.tractatus.en.md` | Frege, Russell, Tractatus | 哲学知识文档；类别：Texts；分组：Readings；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phil/X1-Readings/t.n.sayings.zh.md` | Philosophers' Sayings (哲学家语录) | 哲学知识文档；类别：Texts；分组：Readings | 生成页面；layout=post |
-| `collections/_phil/X1-Readings/t.phil.zh.md` | Philosophy Readings (哲学读本) | 哲学知识文档；类别：Texts；分组：Readings | 生成页面；layout=post |
-
-### 10.8 物理（26）
+### 10.4 数学（49）
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_phys/A1-Basics/a.Physics.Atlas.en.md` | Physics — Learning Atlas | 物理知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_phys/A1-Basics/c.Physics.Timeline.en.md` | Physics — Problem-Driven History | 物理知识文档；类别：Chron；分组：Basics | 生成页面；layout=post |
-| `collections/_phys/A1-Basics/s.Physics.Resources.en.md` | Physics — Resource Reference | 物理知识文档；类别：Sheet；分组：Basics | 生成页面；layout=post |
-| `collections/_phys/A2-Math-Methods/_n.mathematical.methods.en.md` | Mathematical Methods for Physics | 物理知识文档；类别：Notes；分组：Math Methods；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/B1-Classical-Mechanics/n.classical.physics.zh.md` | Classical Physics (经典物理学) | 物理知识文档；类别：Notes；分组：Classical Mechanics | 生成页面；layout=post |
-| `collections/_phys/B2-Electromagnetism/_n.electromagnetism.en.md` | Electromagnetism | 物理知识文档；类别：Notes；分组：Electromagnetism；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/B3-Thermodynamics/_n.thermodynamics.en.md` | Thermodynamics | 物理知识文档；类别：Notes；分组：Thermodynamics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/B4-Statistical-Mechanics/_n.statistical.mechanics.en.md` | Statistical Mechanics | 物理知识文档；类别：Notes；分组：Statistical Mechanics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/B5-Continuum-Mechanics/_n.continuum.mechanics.fluids.en.md` | Continuum Mechanics and Fluids | 物理知识文档；类别：Notes；分组：Continuum Mechanics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/C1-Special-Relativity/_n.special.relativity.en.md` | Special Relativity | 物理知识文档；类别：Notes；分组：Special Relativity；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/C2-General-Relativity/_n.general.relativity.en.md` | General Relativity | 物理知识文档；类别：Notes；分组：General Relativity；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/D1-Quantum-Mechanics/_n.quantum.mechanics.en.md` | Quantum Mechanics | 物理知识文档；类别：Notes；分组：Quantum Mechanics；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/D2-Quantum-Foundations/_n.foundations.quantum.mechanics.en.md` | Foundations of Quantum Mechanics | 物理知识文档；类别：Notes；分组：Quantum Foundations；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/E1-QFT/_n.quantum.field.theory.en.md` | Quantum Field Theory | 物理知识文档；类别：Notes；分组：QFT；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/E2-Standard-Model/_n.standard.model.en.md` | Standard Model | 物理知识文档；类别：Notes；分组：Standard Model；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/F1-Cosmology/a.cosmology.en.md` | Cosmology — Learning Atlas | 物理知识文档；类别：Atlas；分组：Cosmology | 生成页面；layout=post |
-| `collections/_phys/F1-Cosmology/n.CP.zh.md` | Cosmological Principle (宇宙学原理) | 物理知识文档；类别：Notes；分组：Cosmology | 生成页面；layout=post |
-| `collections/_phys/F1-Cosmology/n.Fermi.Paradox.ez.md` | Fermi Paradox | 物理知识文档；类别：Notes；分组：Cosmology | 生成页面；layout=post |
-| `collections/_phys/F1-Cosmology/n.Nebula.zh.md` | Nebula (星云) | 物理知识文档；类别：Notes；分组：Cosmology | 生成页面；layout=post |
-| `collections/_phys/F1-Cosmology/s.Our.Cosmos.ez.md` | Our Cosmos | 物理知识文档；类别：Sheet；分组：Cosmology | 生成页面；layout=slide-wiki |
-| `collections/_phys/F1-Cosmology/s.Star.Atlas.zh.md` | Sky Chart and Star Atlas (天区图和星图) | 物理知识文档；类别：Sheet；分组：Cosmology | 生成页面；layout=post |
-| `collections/_phys/F1-Cosmology/s.Units.and.Ratios.en.md` | Units Commonly Used in Astronomy and Cosmology | 物理知识文档；类别：Sheet；分组：Cosmology | 生成页面；layout=post |
-| `collections/_phys/F2-String-Theory/_n.string.theory.en.md` | String Theory | 物理知识文档；类别：Notes；分组：String Theory；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/F3-Quantum-Gravity/_n.quantum.gravity.en.md` | Quantum Gravity | 物理知识文档；类别：Notes；分组：Quantum Gravity；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/X1-Readings/_t.road.to.reality.en.md` | The Road to Reality | 物理知识文档；类别：Texts；分组：Readings；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_phys/X1-Readings/t.Cargo.Cult.Science.ez.md` | Cargo Cult Science | 物理知识文档；类别：Texts；分组：Readings | 生成页面；layout=post-horizonal |
+| `collections/_math/A1-Basics/_todo.metamathematics.intro.en.md` | Metamathematics Introduction | 数学文档；类别：Texts；分组：Basics | 未读入：文件名以 _ 开头 |
+| `collections/_math/A1-Basics/a.math.ez.md` | Mathematics — Learning Atlas | 数学文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_math/A1-Basics/a.math.tools.en.md` | Learn Mathematics with Modern Tools and Workflows | 数学文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_math/A1-Basics/c.history.math.zh.md` | History of Mathematics (数学史和数学思想) | 数学文档；类别：Chron；分组：Basics | 已读入文章页；layout=post |
+| `collections/_math/A1-Basics/n.Math.Methodology.zh.md` | Mathematics Methodology Wiki (数学方法百科) | 数学文档；类别：Notes；分组：Basics | 已读入文章页；layout=slide-linear |
+| `collections/_math/A1-Basics/n.Square.Cubic.ez.md` | Why the World Cannot Simply Be Scaled Up | 数学文档；类别：Notes；分组：Basics | 已读入文章页；layout=post-bilingual |
+| `collections/_math/A1-Basics/s.Math.Resources.en.md` | Mathematics — Resource Reference | 数学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_math/A1-Basics/s.Math.Symbols.ez.md` | Mathematical Symbol Reference Table | 数学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_math/A1-Basics/s.elementary.mathematics.zh.md` | Elementary Mathematics Quick Reference (基础数学速查表) | 数学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_math/A1-Basics/s.latex.ez.md` | Writing Mathematical Formulas in LaTeX | 数学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_math/B1-Arithmetic/_n.arithmetic.en.md` | Arithmetic | 数学文档；类别：Notes；分组：Arithmetic | 未读入：文件名以 _ 开头 |
+| `collections/_math/B2-Number-Theory/n.Algebraic.Number.Theory.en.md` | Algebraic Number Theory | 数学文档；类别：Notes；分组：Number Theory | 已读入文章页；layout=post |
+| `collections/_math/B2-Number-Theory/n.Number.Theory.en.md` | Number Theory | 数学文档；类别：Notes；分组：Number Theory | 已读入文章页；layout=post |
+| `collections/_math/C1-Calculus/n.CAL.en.md` | Calculus | 数学文档；类别：Notes；分组：Calculus | 已读入文章页；layout=post |
+| `collections/_math/C2-Analysis/n.ConsA.en.md` | Constructive Analysis | 数学文档；类别：Notes；分组：Analysis | 已读入文章页；layout=post |
+| `collections/_math/C2-Analysis/n.ML.ez.md` | Mathematical Analysis | 数学文档；类别：Notes；分组：Analysis | 已读入文章页；layout=post |
+| `collections/_math/C2-Analysis/n.MT.en.md` | Measure Theory | 数学文档；类别：Notes；分组：Analysis | 已读入文章页；layout=post |
+| `collections/_math/C2-Analysis/n.RA.en.md` | Real Analysis | 数学文档；类别：Notes；分组：Analysis | 已读入文章页；layout=post |
+| `collections/_math/C3-Complex-Analysis/n.CA.en.md` | Complex Analysis | 数学文档；类别：Notes；分组：Complex Analysis | 已读入文章页；layout=post |
+| `collections/_math/C4-Functional-Analysis/n.FA.en.md` | Funtioncal Analysis | 数学文档；类别：Notes；分组：Functional Analysis | 已读入文章页；layout=post |
+| `collections/_math/C4-Functional-Analysis/n.HA.en.md` | Harmonic Analysis | 数学文档；类别：Notes；分组：Functional Analysis | 已读入文章页；layout=post |
+| `collections/_math/C5-Differential-Equations/_n.calculus.of.variations.en.md` | Calculus of Variations | 数学文档；类别：Notes；分组：Differential Equations | 未读入：文件名以 _ 开头 |
+| `collections/_math/C5-Differential-Equations/n.ODE.en.md` | Ordinary Differential Equation | 数学文档；类别：Notes；分组：Differential Equations | 已读入文章页；layout=post |
+| `collections/_math/C5-Differential-Equations/n.PDE.en.md` | Partial Differential Equation | 数学文档；类别：Notes；分组：Differential Equations | 已读入文章页；layout=post |
+| `collections/_math/D1-Linear-Algebra/n.LA.en.md` | Linear Algebra | 数学文档；类别：Notes；分组：Linear Algebra | 已读入文章页；layout=post |
+| `collections/_math/D3-Abstract-Algebra/n.AA.en.md` | Abstract Algebra | 数学文档；类别：Notes；分组：Abstract Algebra | 已读入文章页；layout=post |
+| `collections/_math/D4-Galois-Theory/_n.galois.theory.en.md` | Galois Theory | 数学文档；类别：Notes；分组：Galois Theory | 未读入：文件名以 _ 开头 |
+| `collections/_math/D5-Commutative-Algebra/n.commutative.algebra.en.md` | Commutative Algebra | 数学文档；类别：Notes；分组：Commutative Algebra | 已读入文章页；layout=post |
+| `collections/_math/D6-Homological-Algebra/n.homological.algebra.en.md` | Homological Algebra | 数学文档；类别：Notes；分组：Homological Algebra | 已读入文章页；layout=post |
+| `collections/_math/D7-Lie-Algebra/n.lie.algebra.en.md` | Lie Algebra | 数学文档；类别：Notes；分组：Lie Algebra | 已读入文章页；layout=post |
+| `collections/_math/E1-Topology/_n.algebraic.topology.en.md` | Algebraic Topology | 数学文档；类别：Notes；分组：Topology | 未读入：文件名以 _ 开头 |
+| `collections/_math/E1-Topology/_n.point.set.topology.en.md` | Point-Set Topology | 数学文档；类别：Notes；分组：Topology | 未读入：文件名以 _ 开头 |
+| `collections/_math/E2-Geometry/_n.differential.geometry.manifolds.en.md` | Differential Geometry and Manifolds | 数学文档；类别：Notes；分组：Geometry | 未读入：文件名以 _ 开头 |
+| `collections/_math/E2-Geometry/_n.riemannian.geometry.en.md` | Riemannian Geometry | 数学文档；类别：Notes；分组：Geometry | 未读入：文件名以 _ 开头 |
+| `collections/_math/E3-Algebraic-Geometry/n.algebraic.geometry.en.md` | Algebraic Geometry | 数学文档；类别：Notes；分组：Algebraic Geometry | 已读入文章页；layout=post |
+| `collections/_math/F1-Probability/_n.probability.first.pass.en.md` | Probability, first pass | 数学文档；类别：Notes；分组：Probability | 未读入：文件名以 _ 开头 |
+| `collections/_math/F2-Statistics/_n.mathematical.statistics.en.md` | Mathematical Statistics | 数学文档；类别：Notes；分组：Statistics | 未读入：文件名以 _ 开头 |
+| `collections/_math/F3-Stochastic-Processes/_n.stochastic.processes.en.md` | Stochastic Processes and Martingales | 数学文档；类别：Notes；分组：Stochastic Processes | 未读入：文件名以 _ 开头 |
+| `collections/_math/G1-Logic/n.mathematical.logic.en.md` | Mathematical Logic | 数学文档；类别：Notes；分组：Logic | 已读入文章页；layout=post |
+| `collections/_math/G2-Set-Theory/n.set.theory.en.md` | Axiomatic Set Theory | 数学文档；类别：Notes；分组：Set Theory | 已读入文章页；layout=post |
+| `collections/_math/G3-Proof/_n.discrete.math.and.proof.en.md` | Discrete Mathematics and Proof | 数学文档；类别：Notes；分组：Proof | 未读入：文件名以 _ 开头 |
+| `collections/_math/G4-Model-Theory/n.model.theory.en.md` | Model Theory | 数学文档；类别：Notes；分组：Model Theory | 已读入文章页；layout=post |
+| `collections/_math/G5-Proof-Theory/n.proof.theory.en.md` | Proof Theory | 数学文档；类别：Notes；分组：Proof Theory | 已读入文章页；layout=post |
+| `collections/_math/G6-Recursion-Theory/n.recursive.theory.en.md` | Recursive Theory | 数学文档；类别：Notes；分组：Recursion Theory | 已读入文章页；layout=post |
+| `collections/_math/G7-Type-Theory/_n.curry.howard.lambek.en.md` | Curry-Howard-Lambek Correspondence | 数学文档；类别：Notes；分组：Type Theory | 未读入：文件名以 _ 开头 |
+| `collections/_math/G7-Type-Theory/_n.homotopy.type.theory.en.md` | Homotopy Type Theory | 数学文档；类别：Notes；分组：Type Theory | 未读入：文件名以 _ 开头 |
+| `collections/_math/G8-Category-Theory/_t.lawvere.1969.en.md` | Lawvere 1969 | 数学文档；类别：Texts；分组：Category Theory | 未读入：文件名以 _ 开头 |
+| `collections/_math/G8-Category-Theory/n.category.theory.en.md` | Category Theory | 数学文档；类别：Notes；分组：Category Theory | 已读入文章页；layout=post |
+| `collections/_math/H1-Game-Theory/t.Game.Theory.2.en.md` | Game Theory 2 Advanced Applications Transcripts | 数学文档；类别：Texts；分组：Game Theory | 已读入文章页；layout=print |
 
-### 10.9 个人文章（59）
-
-| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
-| --- | --- | --- | --- |
-| `collections/_posts/2012-05-09-逆时间和故事.md` | 逆时间和故事 | 个人文章；类别：短篇小说；状态：回炉重造 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2015-12-14-论说教的冲动.md` | 论说教的冲动 — 为什么我们总忍不住教别人做人 | 个人文章；类别：散文随笔；状态：合二为一 | 生成页面；layout=post |
-| `collections/_posts/2015-12-21-女孩等待着.md` | 女孩，等待着 | 个人文章；类别：短篇小说；状态：回炉重造 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2016-02-12-问剑崖上.md` | 随手挥剑·问剑崖上 | 个人文章；类别：短篇小说；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2016-08-19-白羊数和伐木工.md` | 白羊树和伐木工 | 个人文章；类别：短篇小说；状态：草稿预览 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2016-09-09-熊孩子语录.md` | 熊孩子语录 | 个人文章；类别：短篇小说；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2016-11-10-不要随便交朋友.md` | 不要随便交朋友 | 个人文章；类别：散文随笔；状态：合二为一 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2016-12-24-鸡蛋和锤子.md` | 鸡蛋和锤子 | 个人文章；类别：短篇小说；状态：回炉重造 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2016-12-31-城堡里的猫和魔法毛线球.md` | 城堡里的猫和魔法毛线球 | 个人文章；类别：短篇小说；状态：合二为一 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2017-03-13-木偶和木偶师.md` | 木偶和木偶师 | 个人文章；类别：短篇小说；状态：回炉重造 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2017-12-26-毛选总结.md` | 《毛泽东选集》精华总结 | 个人文章；类别：阅读笔记；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2018-12-26-毛选认知.md` | 《毛泽东选集》认知提升 | 个人文章；类别：阅读笔记；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2019-11-13-我的美术老师.md` | 我的美术老师 | 个人文章；类别：短篇小说；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2019-12-26-毛选箴言.md` | 《毛泽东选集》箴言摘抄 | 个人文章；类别：阅读笔记；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2020-12-26-错误阅读毛选.md` | 阅读《毛选》的错误方式 | 个人文章；类别：阅读笔记；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2022-01-01-阅读荷马史诗.md` | 荷马史诗《伊利亚特》《奥德赛》阅读笔记 | 个人文章；类别：阅读笔记；状态：等待精修 | 生成页面；layout=post |
-| `collections/_posts/2022-02-23-梦唐搞冲 copy.md` | 白日梦家唐稽呵德的搞笑冲锋 | 个人文章；类别：散文随笔；状态：写了一半 | 生成页面；layout=slide-linear |
-| `collections/_posts/2022-02-23-梦唐搞冲.md` | 白日梦家唐稽呵德的搞笑冲锋 | 个人文章；类别：散文随笔；状态：写了一半 | 生成页面；layout=post |
-| `collections/_posts/2023-01-14-开场即巅峰.md` | 开场即巅峰 — 论艺术形式的兴衰律与门阀化机制 | 个人文章；类别：地球观察；状态：合二为一 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2023-07-30-阅读洛丽塔.md` | 纳博科夫《洛丽塔》阅读笔记 | 个人文章；类别：阅读笔记；状态：等待精修 | 生成页面；layout=post |
-| `collections/_posts/2023-12-20-一个高留存的阅读方法.md` | 一个高留存的简单阅读方法 | 个人文章；类别：学习方法；状态：写了一半 | 生成页面；layout=slide-multilingual |
-| `collections/_posts/2024-04-18-一个高效笔记模式.md` | 一个模式化的高效笔记系统 | 个人文章；类别：学习方法；状态：写了一半 | 生成页面；layout=slide-multilingual |
-| `collections/_posts/2024-05-12-一个特种兵学习.md` | 一个理想化的特种兵学习流程 | 个人文章；类别：学习方法；状态：写了一半 | 生成页面；layout=slide-multilingual |
-| `collections/_posts/2024-07-14-阅读红楼梦.md` | 曹雪芹《红楼梦》阅读笔记 | 个人文章；类别：阅读笔记；状态：等待精修 | 生成页面；layout=post |
-| `collections/_posts/2024-09-01-阅读金瓶梅.md` | 兰陵笑笑生《金瓶梅》阅读笔记 | 个人文章；类别：阅读笔记；状态：等待精修 | 生成页面；layout=post |
-| `collections/_posts/2025-05-22-阅读笔记伤逝.md` | 鲁迅《伤逝》阅读笔记 | 个人文章；类别：阅读笔记；状态：写了一半 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2025-05-28-阅读笔记素食者.md` | 韩江《素食者》三部曲阅读笔记 | 个人文章；类别：阅读笔记；状态：写了一半 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2025-06-27-应试数学的学习方法.md` | 应试数学的学习方法 | 个人文章；类别：学习方法；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2025-09-30-阅读有限游戏无限游戏.md` | 詹姆斯·卡斯《有限游戏和无限游戏》阅读笔记 | 个人文章；类别：阅读笔记；状态：等待精修 | 生成页面；layout=post |
-| `collections/_posts/2025-10-24-技能五子棋.md` | 《技能五子棋》的喜剧内核是对东亚困境的反叛 | 个人文章；类别：散文随笔；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2025-12-31-世界各种类人才的调查报告.md` | 世界各种类人才的调查报告 | 个人文章；类别：散文随笔；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2026-01-08-赛博普罗米修斯.md` | 赛博普罗米修斯 — 程序员掌握先进生产力 | 个人文章；类别：学习方法；状态：回炉重造 | 生成页面；layout=post |
-| `collections/_posts/2026-01-09-衡水模式的真正失败.md` | “衡水模式”的真正失败之处 | 个人文章；类别：地球观察；状态：合二为一 | 生成页面；layout=post |
-| `collections/_posts/2026-01-10-游戏反成保护伞.md` | 为何游戏反成为青少年的心理保护伞 | 个人文章；类别：游戏经验；状态：合二为一 | 生成页面；layout=post |
-| `collections/_posts/2026-02-03-OCE.md` | 组织层级指数、组织形态谱及其哲学原理 | 个人文章；类别：地球观察；状态：合二为一 | 生成页面；layout=post |
-| `collections/_posts/2026-03-09-神经科学学习理念.md` | 神经科学带来的学习理念革新 | 个人文章；类别：学习方法；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2026-04-09-游戏高手拥有更好的学习方法.md` | 游戏高手的顶级学习方法 | 个人文章；类别：游戏经验；状态：合二为一 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2026-04-10-技术高手与大师.md` | 技术与高手 — 如何在任何领域表现出色 | 个人文章；类别：游戏经验；状态：写了一半 | 生成页面；layout=post |
-| `collections/_posts/2026-04-14-游戏意识.md` | 游戏中的“意识”是什么？ | 个人文章；类别：游戏经验；状态：写了一半 | 生成页面；layout=post |
-| `collections/_posts/2026-04-15-新鲜和重复对游戏的意义.md` | 新鲜和重复对游戏的意义 | 个人文章；类别：游戏经验；状态：写了一半 | 生成页面；layout=post |
-| `collections/_posts/2026-04-19-认知越低越自洽.md` | 认知越低者思维越自洽 | 个人文章；类别：地球观察；状态：合二为一 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2026-04-20-更愿意相信对自己有利的事情.md` | 为何人们更愿相信对自己有利之事？ | 个人文章；类别：地球观察；状态：合二为一 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2026-04-21-论江郎才尽.md` | 论江郎才尽 | 个人文章；类别：地球观察；状态：合二为一 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2026-04-23-类比带来的交流混乱.md` | 网络争论观察 1 — 类比带来的交流混乱 | 个人文章；类别：地球观察；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2026-04-24-二十岁的迷茫.md` | 当迷茫成为二十岁的“标配” | 个人文章；类别：地球观察；状态：草稿预览 | 生成页面；layout=slide-annotation |
-| `collections/_posts/2026-05-21-何为女性友好型语言.md` | 网络争论观察 2 — 何为“女性友好型语言” | 个人文章；类别：地球观察；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2026-06-11-拒绝民科式讨论.md` | 网络争论观察 3 — 几乎人人都在用“民科思维”讨论 | 个人文章；类别：地球观察；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2026-06-12-反驳他人为何舒适.md` | 网络争论观察 4 — 为什么“反驳他人”让人感觉舒适 | 个人文章；类别：地球观察；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2026-06-15-遥远的外星来信.md` | 一封遥远的外星来信 | 个人文章；类别：短篇小说 | 生成页面；layout=post |
-| `collections/_posts/2026-09-10-这次AI革命会彻底替代人类吗.md` | 这次 AI 科技革命会彻底替代人类吗？ | 个人文章；类别：地球观察；状态：草稿预览 | 生成页面；layout=post |
-| `collections/_posts/2026-09-12-删除游戏就是成熟吗.md` | 删掉游戏意味着成熟吗？ | 个人文章；类别：游戏经验；状态：写了一半 | 生成页面；layout=post |
-| `collections/_posts/2026-09-13-阅读非暴力沟通.md` | 罗森伯格《非暴力沟通》阅读笔记 | 个人文章；类别：阅读笔记；状态：写了一半 | 生成页面；layout=post-vertical |
-| `collections/_posts/todo-04-16-贝叶斯城的大图书馆.md` | 贝叶斯城的大图书馆 | 个人文章；类别：短篇小说；状态：写了一半 | 未读入：缺合法日期文件名前缀 |
-| `collections/_posts/todo-04-22-写还是不写.md` | 写？还是不写？问题老大了 | 个人文章；类别：散文随笔；状态：合二为一 | 未读入：缺合法日期文件名前缀 |
-| `collections/_posts/todo-2021-01-10-草台班子宇宙.md` | todo-2021-01-10-草台班子宇宙 | 个人文章 | 未读入：缺合法日期文件名前缀 |
-| `collections/_posts/东亚思维鉴别：赞美的失格.md` | 东亚思维鉴别：赞美的失格 | 个人文章 | 未读入：缺合法日期文件名前缀 |
-| `collections/_posts/为什么应该阅读英文原版.md` | 为什么要读原版：原著、教材、学术语言与知识进入方式 | 个人文章 | 未读入：缺合法日期文件名前缀 |
-| `collections/_posts/游戏理论.md` | 执行总纲 | 个人文章 | 未读入：缺合法日期文件名前缀 |
-| `collections/_posts/游戏高手论.md` | 游戏技术与科学技术的底层逻辑不同 | 个人文章 | 未读入：缺合法日期文件名前缀 |
-
-### 10.10 心理学（26）
+### 10.5 跨学科（35）
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_psyc/A1-Basics/a.psyc.ez.md` | Psychology — Learning Atlas | 心理学知识文档；类别：Atlas；分组：Basics | 生成页面；layout=post |
-| `collections/_psyc/B1-Cognitive/_n.cognitive.science.basics.en.md` | Cognitive Science Basics | 心理学知识文档；类别：Notes；分组：Cognitive；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_psyc/B1-Cognitive/_n.data.deceive.en.md` | How Data Deceives | 心理学知识文档；类别：Notes；分组：Cognitive | 未读入：文件名以 _ 开头 |
-| `collections/_psyc/B2-Learning/_n.learning.psychology.en.md` | Learning Psychology | 心理学知识文档；类别：Notes；分组：Learning；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_psyc/C1-Behavior/n.male.displays.en.md` | Sexual Dysfunction and Compensatory Masculinity Performance | 心理学知识文档；类别：Notes；分组：Behavior | 生成页面；layout=post |
-| `collections/_psyc/C2-Personality/n.Traumatic.Personality.zh.md` | Traumatic Personality (创伤型人格) | 心理学知识文档；类别：Notes；分组：Personality | 生成页面；layout=post |
-| `collections/_psyc/C2-Personality/n.five.factor.model.zh.md` | Five-Factor Model (大五人格模型) | 心理学知识文档；类别：Notes；分组：Personality | 生成页面；layout=post |
-| `collections/_psyc/C3-Social-Psychology/_n.social.psychology.en.md` | Social Psychology | 心理学知识文档；类别：Notes；分组：Social Psychology；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_psyc/C4-Developmental/_n.developmental.psychology.en.md` | Developmental Psychology | 心理学知识文档；类别：Notes；分组：Developmental；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_psyc/D1-Psychoanalysis/_t.lacanian.subject.en.md` | The Lacanian Subject | 心理学知识文档；类别：Texts；分组：Lacan；仅元数据占位 | 未读入：文件名以 _ 开头 |
-| `collections/_psyc/D1-Psychoanalysis/a.Psychoanalysis.en.md` | Psychoanalysis — Learning Atlas | 心理学知识文档；类别：Atlas；分组：Psychoanalysis | 生成页面；layout=post |
-| `collections/_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh copy.md` | Modern Psychoanalysis (现代精神分析) | 心理学知识文档；类别：Notes；分组：Psychoanalysis；状态：完成精修 | 生成页面；layout=post |
-| `collections/_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh.md` | Modern Psychoanalysis (现代精神分析) | 心理学知识文档；类别：Notes；分组：Psychoanalysis；状态：完成精修 | 生成页面；layout=post |
-| `collections/_psyc/D1-Psychoanalysis/n1.Sigmund.Freud.ez.md` | The Theory Architecture of Sigmund Freud | 心理学知识文档；类别：Notes；分组：Psychoanalysis | 生成页面；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n2.Carl.Jung.ez.md` | The Theory Architecture of Carl Jung | 心理学知识文档；类别：Notes；分组：Psychoanalysis | 生成页面；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n3.Alfred.Adler.ez.md` | The Theory Architecture of Alfred Adler | 心理学知识文档；类别：Notes；分组：Psychoanalysis | 生成页面；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n4.Anna.Freud.ez.md` | The Theory Architecture of Anna Freud | 心理学知识文档；类别：Notes；分组：Psychoanalysis | 生成页面；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n5.Melanie.Klein.ez.md` | The Theory Architecture of Melanie Klein | 心理学知识文档；类别：Notes；分组：Psychoanalysis | 生成页面；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n6.Donald.Winnicott.ez.md` | The Theory Architecture of Donald Winnicott | 心理学知识文档；类别：Notes；分组：Psychoanalysis | 生成页面；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n7.Jacques.Lacan.ez.md` | The Theory Architecture of Jacques Lacan | 心理学知识文档；类别：Notes；分组：Lacan | 生成页面；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/s.Mental.Defense.zh.md` | Mental Defense (心理防御) | 心理学知识文档；类别：Sheet；分组：Psychoanalysis；状态：精修完成 | 生成页面；layout=post |
-| `collections/_psyc/E1-Psychopathology/n.Chimp.Paradox.ez.md` | Chimp Paradox — How to Manage Emotion Without Suppressing It | 心理学知识文档；类别：Notes；分组：Psychopathology | 生成页面；layout=post-bilingual |
-| `collections/_psyc/E1-Psychopathology/n.Family.Constellations.zh.md` | Family Constellations (家庭系统排列) | 心理学知识文档；类别：Notes；分组：Psychopathology | 生成页面；layout=post |
-| `collections/_psyc/E1-Psychopathology/n.LLI.ez.md` | Low Latent Inhibition | 心理学知识文档；类别：Notes；分组：Psychopathology | 生成页面；layout=post-bilingual |
-| `collections/_psyc/E1-Psychopathology/n.Psychopathology.Teatment.zh.md` | Psychopathology and Treatment (精神疾病和药物) | 心理学知识文档；类别：Notes；分组：Psychopathology | 生成页面；layout=post |
-| `collections/_psyc/F1-Neuropsychology/n.Human.Brain.en.md` | How the Human Brain Evolved, Develops, and Organizes Itself | 心理学知识文档；类别：Notes；分组：Neuropsychology | 生成页面；layout=post |
+| `collections/_misc/A1-English/n.en.long.sentences.n.expressions.ez.md` | Long Sentences in English | 跨学科文档；类别：Notes；分组：English | 已读入文章页；layout=post |
+| `collections/_misc/A1-English/n.en.word.subtle.diff.zh.md` | English Word Nuances (英语近义词辨析) | 跨学科文档；类别：Notes；分组：English | 已读入文章页；layout=post |
+| `collections/_misc/A1-English/s.en.grammar.ez.md` | English Grammar — Quick Reference | 跨学科文档；类别：Sheet；分组：English | 已读入文章页；layout=post-compact |
+| `collections/_misc/A1-English/s.en.idioms.ez.md` | English Collocations and Idioms | 跨学科文档；类别：Sheet；分组：English | 已读入文章页；layout=post |
+| `collections/_misc/A1-English/s.en.latin.words.en.md` | Latin Words in English | 跨学科文档；类别：Sheet；分组：English | 已读入文章页；layout=post |
+| `collections/_misc/A1-English/s.en.surnames.origins.zh.md` | English Surnames Reference (英语姓氏源流) | 跨学科文档；类别：Sheet；分组：English | 已读入文章页；layout=post |
+| `collections/_misc/A2-French/s.fr.grammar.zh.md` | French Grammar Quick Reference (法语语法大全速查表) | 跨学科文档；类别：Sheet；分组：French | 已读入文章页；layout=post-compact |
+| `collections/_misc/A2-French/s.fr.pronunciation.en.md` | French Pronunciation Tips | 跨学科文档；类别：Sheet；分组：French | 已读入文章页；layout=post |
+| `collections/_misc/A3-Japanese/s.jp.grammar.zh.md` | Japanese Grammar Quick Reference (日语语法速查表) | 跨学科文档；类别：Sheet；分组：Japanese | 已读入文章页；layout=post-compact |
+| `collections/_misc/B1-Learning/n.Human.Learning.zh.md` | Human Learning （学习机制） | 跨学科文档；类别：Notes；分组：Learning | 已读入文章页；layout=print |
+| `collections/_misc/B2-Scientific-Method/_n.scientific.analysis.frameworks.en.md` | Scientific Analysis Frameworks | 跨学科文档；类别：Notes；分组：Scientific Method | 未读入：文件名以 _ 开头 |
+| `collections/_misc/B2-Scientific-Method/_n.scientific.methodology.en.md` | Scientific Methodology | 跨学科文档；类别：Notes；分组：Scientific Method | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C1-Cybernetics/_n.intro.en.md` | Meta-Information | 跨学科文档；类别：Notes；分组：Cybernetics | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C1-Cybernetics/_t.wiener.human.use.en.md` | The Human Use of Human Beings | 跨学科文档；类别：Texts；分组：Cybernetics | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C2-Systems-Theory/_n.intro.en.md` | Key Questions and Answers | 跨学科文档；类别：Notes；分组：Systems Theory | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C2-Systems-Theory/_t.bateson.mind.nature.en.md` | Bateson Mind and Nature | 跨学科文档；类别：Texts；分组：Systems Theory | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C3-Information-Theory/_n.information.theory.en.md` | Information Theory | 跨学科文档；类别：Notes；分组：Information Theory | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C5-Communication/_n.complexity.science.en.md` | Complexity Science | 跨学科文档；类别：Notes；分组：Complexity | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C5-Communication/_n.intro.en.md` | Discipline Meta-Information | 跨学科文档；类别：Notes；分组：Communication | 未读入：文件名以 _ 开头 |
+| `collections/_misc/C5-Communication/_t.mcluhan.kittler.en.md` | McLuhan and Kittler | 跨学科文档；类别：Texts；分组：Communication | 未读入：文件名以 _ 开头 |
+| `collections/_misc/D1-Sociology/n.AI.and.Sociology.zh.md` | AI and Sociology (AI 和社会学) | 跨学科文档；类别：Notes；分组：Sociology | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D1-Sociology/n.Classical.Sociology.zh.md` | Classical Sociology (古典社会学) | 跨学科文档；类别：Notes；分组：Sociology | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D1-Sociology/n.Elite.and.Power.zh.md` | Elite and Power (精英和权力) | 跨学科文档；类别：Notes；分组：Sociology | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D1-Sociology/n.Financial.Capita.zh.md` | Financial Capital (金融资本) | 跨学科文档；类别：Notes；分组：Sociology | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D1-Sociology/n.Japanese-style.Capitalism.zh.md` | Japanese Coordinated Capitalism (日式协调资本主义) | 跨学科文档；类别：Notes；分组：Sociology | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D1-Sociology/n.Modern.Capitalism.zh.md` | Modern Capitalism (现代资本主义) | 跨学科文档；类别：Notes；分组：Sociology | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D1-Sociology/n.Modern.Sociology.zh.md` | Modern Sociology (现代社会学) | 跨学科文档；类别：Notes；分组：Sociology | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D2-Economy/n.Dankoe.Personal.Development.zh.md` | Dan Koe Personal Development (Dan Koe 个人提升) | 跨学科文档；类别：Notes；分组：Economy | 已读入文章页；layout=print |
+| `collections/_misc/D2-Economy/n.Dankoe.zh.md` | Dan Koe Notes (Dan Koe 笔记) | 跨学科文档；类别：Notes；分组：Economy | 已读入文章页；layout=slide-wiki |
+| `collections/_misc/D2-Economy/n.Global.Economy.zh.md` | Recent Economic Analysis (近期经济学分析) | 跨学科文档；类别：Notes；分组：Economy | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D2-Economy/n.International.Political.Economy.zh.md` | International Political Economy (国际政治经济学) | 跨学科文档；类别：Notes；分组：Economy | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D3-Politics/n.International.Information.Warfare.zh.md` | International Information Warfare (国际信息战) | 跨学科文档；类别：Notes；分组：Politics | 已读入文章页；layout=slide-linear |
+| `collections/_misc/D3-Politics/n.International.Relations.zh.md` | International Relations (国际关系学) | 跨学科文档；类别：Notes；分组：Politics | 已读入文章页；layout=slide-linear |
+| `collections/_misc/E2-Religion/n.religion.zh.md` | World Religions (世界宗教) | 跨学科文档；类别：Notes；分组：Religion | 已读入文章页；layout=post |
+| `collections/_misc/E2-Religion/s.Mysticism.zh.md` | Mysticism (神秘主义) | 跨学科文档；类别：Sheet；分组：Religion | 已读入文章页；layout=slide-wiki |
 
-### 10.11 内容治理文档（1）
+### 10.6 哲学（40）
 
-| 文件 | 功能与作用 | 本次构建状态 |
-| --- | --- | --- |
-| `collections/文章类型检索索引.md` | 按明确资料对象、候选来源、Wiki/速查形式组织文章的人工索引，含来源判断边界；旧统计日期为 2026-09-14，不应当作本次文件数。 | 无 front matter；按原始 Markdown 静态复制。 |
+| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
+| --- | --- | --- | --- |
+| `collections/_phil/A1-Basics/a.phil.ez.md` | Western Philosophy — Learning Atlas | 哲学文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post-bilingual |
+| `collections/_phil/A1-Basics/n.intro.to.phil.ez.md` | Introduction to Western Philosophy | 哲学文档；类别：Notes；分组：Basics | 已读入文章页；layout=post |
+| `collections/_phil/A1-Basics/s.Philosophy.Resources.en.md` | Philosophy — Resource Reference | 哲学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_phil/A1-Basics/s.Thoughts.Wiki.zh.md` | Human Thought Wiki (人类思想百科) | 哲学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-wiki |
+| `collections/_phil/A2-History/_n.hist.of.phil.problems.ez.md` | Core Problems of Philosophy | 哲学文档；类别：Notes；分组：History | 未读入：文件名以 _ 开头 |
+| `collections/_phil/A2-History/c.paradigm.shift.zh.md` | Philosophical Paradigm Shifts (哲学范式转变) | 哲学文档；类别：Chron；分组：History | 已读入文章页；layout=post |
+| `collections/_phil/A2-History/n.history.of.phil.en.md` | Outline of History of Western Philosophy | 哲学文档；类别：Notes；分组：History | 已读入文章页；layout=post |
+| `collections/_phil/A2-History/n.history.of.phil.zh.md` | History of Western Philosophy (西方哲学史) | 哲学文档；类别：Notes；分组：History | 已读入文章页；layout=post |
+| `collections/_phil/A3-Methodology/n.Fallacies.in.Philosophy.zh.md` | P1 什么样的推理才算真正支持了结论？ | 哲学文档 | 已读入文章页；layout=post |
+| `collections/_phil/A3-Methodology/s.Phil.Language.ez.md` | How to Use Layered Terms   | 哲学文档 | 已读入文章页；layout=post |
+| `collections/_phil/A3-Methodology/s.Phil.Methodoloy.zh.md` | Philosophy Methodology Quick Reference (哲学方法论速查) | 哲学文档；类别：Sheet；分组：Methodology | 已读入文章页；layout=slide-linear |
+| `collections/_phil/A4-Metaphysics/_n.metaphysics.en.md` | Metaphysics | 哲学文档；类别：Notes；分组：Metaphysics | 未读入：文件名以 _ 开头 |
+| `collections/_phil/A5-Ontology/_n.ontology.en.md` | Ontology | 哲学文档；类别：Notes；分组：Ontology | 未读入：文件名以 _ 开头 |
+| `collections/_phil/B1-Logic/_n.philosophical.logic.en.md` | Philosophical Logic | 哲学文档；类别：Notes；分组：Logic | 未读入：文件名以 _ 开头 |
+| `collections/_phil/B2-Language/_n.philosophy.of.language.en.md` | Philosophy of Language | 哲学文档；类别：Notes；分组：Language | 未读入：文件名以 _ 开头 |
+| `collections/_phil/B3-Analytic/p-intro.to.analytic.phil.en.md` | Introduction to Analytic Philosophy | 哲学文档；类别：Notes；分组：Analytic | 已读入文章页；layout=post |
+| `collections/_phil/C1-Thinking/n.Critical.Thinking.zh copy.md` | Critical Thinking (批判性思维) | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
+| `collections/_phil/C1-Thinking/n.Critical.Thinking.zh.md` | Critical Thinking (批判性思维) | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
+| `collections/_phil/C1-Thinking/n.Decision.Model.en.md` | Decision Model | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
+| `collections/_phil/C1-Thinking/n.Rationality.zh.md` | Rationality (理性和理性主义) | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
+| `collections/_phil/C1-Thinking/n.thinking.models.zh.md` | Thinking Models (思维模型) | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
+| `collections/_phil/C1-Thinking/s.Cognitive.Bias.ez.md` | Cognitive Bias | 哲学文档；类别：Sheet；分组：Thinking | 已读入文章页；layout=post-vertical |
+| `collections/_phil/C1-Thinking/s.Fallacies.ez.md` | Formal and Informal Fallacies | 哲学文档；类别：Sheet；分组：Thinking | 已读入文章页；layout=post-vertical |
+| `collections/_phil/C2-Epistemology/_n.formal.epistemology.en.md` | Formal Epistemology | 哲学文档；类别：Notes；分组：Epistemology | 未读入：文件名以 _ 开头 |
+| `collections/_phil/C2-Epistemology/n.epistemology.en.md` | Modern Epistemology | 哲学文档；类别：Notes；分组：Epistemology | 已读入文章页；layout=post |
+| `collections/_phil/C3-Science-Philosophy/_n.philosophy.of.science.en.md` | Philosophy of Science | 哲学文档；类别：Notes；分组：Science Philosophy | 未读入：文件名以 _ 开头 |
+| `collections/_phil/C4-Math-Philosophy/_n.philosophy.of.mathematics.en.md` | Philosophy of Mathematics | 哲学文档；类别：Notes；分组：Math Philosophy | 未读入：文件名以 _ 开头 |
+| `collections/_phil/D1-Mind/_n.philosophy.of.mind.en.md` | Philosophy of Mind | 哲学文档；类别：Notes；分组：Mind | 未读入：文件名以 _ 开头 |
+| `collections/_phil/D2-Cognitive-Science/_n.cognitive.science.philosophy.en.md` | Cognitive Science Philosophy | 哲学文档；类别：Notes；分组：Cognitive Science | 未读入：文件名以 _ 开头 |
+| `collections/_phil/D3-Phenomenology/n.phenomenology.zh.md` | Phenomenology (现象学) | 哲学文档；类别：Notes；分组：Phenomenology | 已读入文章页；layout=post |
+| `collections/_phil/E1-Ethics/c.ethics.ez.md` | Western Ethics from Antiquity to the Present | 哲学文档；类别：Chron；分组：Ethics | 已读入文章页；layout=post |
+| `collections/_phil/E2-Political-Philosophy/_n.political.philosophy.en.md` | Political Philosophy | 哲学文档；类别：Notes；分组：Political Philosophy | 未读入：文件名以 _ 开头 |
+| `collections/_phil/E3-Legal-Philosophy/_n.legal.philosophy.en.md` | Legal Philosophy | 哲学文档；类别：Notes；分组：Legal Philosophy | 未读入：文件名以 _ 开头 |
+| `collections/_phil/E4-Aesthetics/_n.aesthetics.en.md` | Aesthetics | 哲学文档；类别：Notes；分组：Aesthetics | 未读入：文件名以 _ 开头 |
+| `collections/_phil/F1-Semiotics/n.Semiotics.zh.md` | Modern Semiotics (现代符号学) | 哲学文档；类别：Notes；分组：Semiotics；状态：粗校完成 | 已读入文章页；layout=post |
+| `collections/_phil/F2-Structuralism/_n.structuralism.en.md` | Structuralism | 哲学文档；类别：Notes；分组：Structuralism | 未读入：文件名以 _ 开头 |
+| `collections/_phil/F3-Poststructuralism/_n.poststructuralism.en.md` | Poststructuralism | 哲学文档；类别：Notes；分组：Poststructuralism | 未读入：文件名以 _ 开头 |
+| `collections/_phil/X1-Readings/_t.frege.russell.tractatus.en.md` | Frege, Russell, Tractatus | 哲学文档；类别：Texts；分组：Readings | 未读入：文件名以 _ 开头 |
+| `collections/_phil/X1-Readings/t.n.sayings.zh.md` | Philosophers' Sayings (哲学家语录) | 哲学文档；类别：Texts；分组：Readings | 已读入文章页；layout=post |
+| `collections/_phil/X1-Readings/t.phil.zh.md` | Philosophy Readings (哲学读本) | 哲学文档；类别：Texts；分组：Readings | 已读入文章页；layout=post |
+
+### 10.7 物理（26）
+
+| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
+| --- | --- | --- | --- |
+| `collections/_phys/A1-Basics/a.Physics.Atlas.en.md` | Physics — Learning Atlas | 物理文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_phys/A1-Basics/c.Physics.Timeline.en.md` | Physics — Problem-Driven History | 物理文档；类别：Chron；分组：Basics | 已读入文章页；layout=post |
+| `collections/_phys/A1-Basics/s.Physics.Resources.en.md` | Physics — Resource Reference | 物理文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
+| `collections/_phys/A2-Math-Methods/_n.mathematical.methods.en.md` | Mathematical Methods for Physics | 物理文档；类别：Notes；分组：Math Methods | 未读入：文件名以 _ 开头 |
+| `collections/_phys/B1-Classical-Mechanics/n.classical.physics.zh.md` | Classical Physics (经典物理学) | 物理文档；类别：Notes；分组：Classical Mechanics | 已读入文章页；layout=post |
+| `collections/_phys/B2-Electromagnetism/_n.electromagnetism.en.md` | Electromagnetism | 物理文档；类别：Notes；分组：Electromagnetism | 未读入：文件名以 _ 开头 |
+| `collections/_phys/B3-Thermodynamics/_n.thermodynamics.en.md` | Thermodynamics | 物理文档；类别：Notes；分组：Thermodynamics | 未读入：文件名以 _ 开头 |
+| `collections/_phys/B4-Statistical-Mechanics/_n.statistical.mechanics.en.md` | Statistical Mechanics | 物理文档；类别：Notes；分组：Statistical Mechanics | 未读入：文件名以 _ 开头 |
+| `collections/_phys/B5-Continuum-Mechanics/_n.continuum.mechanics.fluids.en.md` | Continuum Mechanics and Fluids | 物理文档；类别：Notes；分组：Continuum Mechanics | 未读入：文件名以 _ 开头 |
+| `collections/_phys/C1-Special-Relativity/_n.special.relativity.en.md` | Special Relativity | 物理文档；类别：Notes；分组：Special Relativity | 未读入：文件名以 _ 开头 |
+| `collections/_phys/C2-General-Relativity/_n.general.relativity.en.md` | General Relativity | 物理文档；类别：Notes；分组：General Relativity | 未读入：文件名以 _ 开头 |
+| `collections/_phys/D1-Quantum-Mechanics/_n.quantum.mechanics.en.md` | Quantum Mechanics | 物理文档；类别：Notes；分组：Quantum Mechanics | 未读入：文件名以 _ 开头 |
+| `collections/_phys/D2-Quantum-Foundations/_n.foundations.quantum.mechanics.en.md` | Foundations of Quantum Mechanics | 物理文档；类别：Notes；分组：Quantum Foundations | 未读入：文件名以 _ 开头 |
+| `collections/_phys/E1-QFT/_n.quantum.field.theory.en.md` | Quantum Field Theory | 物理文档；类别：Notes；分组：QFT | 未读入：文件名以 _ 开头 |
+| `collections/_phys/E2-Standard-Model/_n.standard.model.en.md` | Standard Model | 物理文档；类别：Notes；分组：Standard Model | 未读入：文件名以 _ 开头 |
+| `collections/_phys/F1-Cosmology/a.cosmology.en.md` | Cosmology — Learning Atlas | 物理文档；类别：Atlas；分组：Cosmology | 已读入文章页；layout=post |
+| `collections/_phys/F1-Cosmology/n.CP.zh.md` | Cosmological Principle (宇宙学原理) | 物理文档；类别：Notes；分组：Cosmology | 已读入文章页；layout=post |
+| `collections/_phys/F1-Cosmology/n.Fermi.Paradox.ez.md` | Fermi Paradox | 物理文档；类别：Notes；分组：Cosmology | 已读入文章页；layout=post |
+| `collections/_phys/F1-Cosmology/n.Nebula.zh.md` | Nebula (星云) | 物理文档；类别：Notes；分组：Cosmology | 已读入文章页；layout=post |
+| `collections/_phys/F1-Cosmology/s.Our.Cosmos.ez.md` | Our Cosmos | 物理文档；类别：Sheet；分组：Cosmology | 已读入文章页；layout=slide-wiki |
+| `collections/_phys/F1-Cosmology/s.Star.Atlas.zh.md` | Sky Chart and Star Atlas (天区图和星图) | 物理文档；类别：Sheet；分组：Cosmology | 已读入文章页；layout=post |
+| `collections/_phys/F1-Cosmology/s.Units.and.Ratios.en.md` | Units Commonly Used in Astronomy and Cosmology | 物理文档；类别：Sheet；分组：Cosmology | 已读入文章页；layout=post |
+| `collections/_phys/F2-String-Theory/_n.string.theory.en.md` | String Theory | 物理文档；类别：Notes；分组：String Theory | 未读入：文件名以 _ 开头 |
+| `collections/_phys/F3-Quantum-Gravity/_n.quantum.gravity.en.md` | Quantum Gravity | 物理文档；类别：Notes；分组：Quantum Gravity | 未读入：文件名以 _ 开头 |
+| `collections/_phys/X1-Readings/_t.road.to.reality.en.md` | The Road to Reality | 物理文档；类别：Texts；分组：Readings | 未读入：文件名以 _ 开头 |
+| `collections/_phys/X1-Readings/t.Science.Talks.ez.md` | Talks about Philosophy of Science | 物理文档；类别：Texts；分组：Readings | 已读入文章页；layout=post-horizonal |
+
+### 10.8 个人文章与构思（103）
+
+| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
+| --- | --- | --- | --- |
+| `collections/_posts/2012-05-09-逆时间和故事.md` | 逆时间和故事 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2015-12-14-论说教的冲动.md` | 论说教的冲动 — 为什么我们总忍不住教别人做人 | 个人文章与构思文档；类别：散文随笔；状态：合二为一 | 已读入文章页；layout=post |
+| `collections/_posts/2015-12-21-女孩等待着.md` | 女孩，等待着 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2016-02-12-问剑崖上.md` | 随手挥剑·问剑崖上 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2016-08-19-白羊数和伐木工.md` | 白羊树和伐木工 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2016-09-09-熊孩子语录.md` | 熊孩子语录 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2016-11-10-不要随便交朋友.md` | 不要随便交朋友 | 个人文章与构思文档；类别：散文随笔；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2016-12-24-鸡蛋和锤子.md` | 鸡蛋和锤子 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2016-12-31-城堡里的猫和魔法毛线球.md` | 城堡里的猫和魔法毛线球 | 个人文章与构思文档；类别：短篇小说；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2017-03-13-木偶和木偶师.md` | 木偶和木偶师 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2017-12-26-毛选总结.md` | 《毛泽东选集》精华总结 | 个人文章与构思文档；类别：阅读笔记；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2018-12-26-毛选认知.md` | 《毛泽东选集》认知提升 | 个人文章与构思文档；类别：阅读笔记；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2019-11-13-我的美术老师.md` | 我的美术老师 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2019-12-26-毛选箴言.md` | 《毛泽东选集》箴言摘抄 | 个人文章与构思文档；类别：阅读笔记；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2020-12-26-错误阅读毛选.md` | 阅读《毛选》的错误方式 | 个人文章与构思文档；类别：阅读笔记；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2022-01-01-阅读荷马史诗.md` | 荷马史诗《伊利亚特》《奥德赛》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
+| `collections/_posts/2022-02-23-梦唐搞冲 copy.md` | 白日梦家唐稽呵德的搞笑冲锋 | 个人文章与构思文档；类别：散文随笔；状态：写了一半 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2022-02-23-梦唐搞冲.md` | 爱做白日梦的唐稽呵德的搞笑冲锋 | 个人文章与构思文档；类别：散文随笔；状态：写了一半 | 已读入文章页；layout=post |
+| `collections/_posts/2023-01-14-开场即巅峰.md` | 开场即巅峰 — 论技艺的兴衰律与门阀化机制 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2023-07-30-阅读洛丽塔.md` | 纳博科夫《洛丽塔》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
+| `collections/_posts/2023-12-20-一个高留存的阅读方法.md` | 一个高留存的简单阅读方法 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-multilingual |
+| `collections/_posts/2024-04-18-一个高效笔记模式.md` | 一个模式化的高效笔记系统 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-multilingual |
+| `collections/_posts/2024-05-12-一个特种兵学习.md` | 一个理想化的特种兵学习流程 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-multilingual |
+| `collections/_posts/2024-07-14-阅读红楼梦.md` | 曹雪芹《红楼梦》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
+| `collections/_posts/2024-09-01-阅读金瓶梅.md` | 兰陵笑笑生《金瓶梅》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
+| `collections/_posts/2025-05-22-阅读笔记伤逝.md` | 鲁迅《伤逝》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2025-05-28-阅读笔记素食者.md` | 韩江《素食者》三部曲阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2025-06-27-应试数学的学习方法.md` | 应试数学的学习方法 | 个人文章与构思文档；类别：学习方法；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2025-09-30-阅读有限游戏无限游戏.md` | 詹姆斯·卡斯《有限游戏和无限游戏》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
+| `collections/_posts/2025-10-24-技能五子棋.md` | 《技能五子棋》的喜剧内核是对东亚困境的反叛 | 个人文章与构思文档；类别：散文随笔；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2025-12-31-世界各种类人才的调查报告.md` | 世界各种类人才的调查报告 | 个人文章与构思文档；类别：散文随笔；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2026-01-08-赛博普罗米修斯.md` | 赛博普罗米修斯 — 程序员掌握先进生产力 | 个人文章与构思文档；类别：学习方法；状态：回炉重造 | 已读入文章页；layout=post |
+| `collections/_posts/2026-01-09-衡水模式的真正失败.md` | “衡水模式”的真正失败之处 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=post |
+| `collections/_posts/2026-01-10-游戏反成保护伞.md` | 为何游戏反成为青少年的心理保护伞 | 个人文章与构思文档；类别：游戏经验；状态：合二为一 | 已读入文章页；layout=post |
+| `collections/_posts/2026-02-03-OCE.md` | 组织层级指数、组织形态谱及其哲学原理 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=post |
+| `collections/_posts/2026-03-09-神经科学学习理念.md` | 神经科学带来的学习理念革新 | 个人文章与构思文档；类别：学习方法；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2026-04-09-游戏高手拥有更好的学习方法.md` | 游戏高手的顶级学习方法 | 个人文章与构思文档；类别：游戏经验；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-04-10-技术高手与大师.md` | 技术与高手 — 如何在任何领域表现出色 | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
+| `collections/_posts/2026-04-14-游戏意识.md` | 游戏中的“意识”是什么？ | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
+| `collections/_posts/2026-04-15-新鲜和重复对游戏的意义.md` | 新鲜和重复对游戏的意义 | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
+| `collections/_posts/2026-04-19-认知越低越自洽.md` | 认知越低者思维越自洽 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-04-20-更愿意相信对自己有利的事情.md` | 为何人们更愿相信对自己有利之事？ | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-04-21-论江郎才尽.md` | 论江郎才尽 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-04-23-类比带来的交流混乱.md` | 网络争论观察 1 — 类比带来的交流混乱 | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2026-04-24-二十岁的迷茫.md` | 当迷茫成为二十岁的“标配” | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-05-21-何为女性友好型语言.md` | 网络争论观察 2 — 何为“女性友好型语言” | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2026-06-11-拒绝民科式讨论.md` | 网络争论观察 3 — 几乎人人都在用“民科思维”讨论 | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2026-06-12-反驳他人为何舒适.md` | 网络争论观察 4 — 为什么“反驳他人”让人感觉舒适 | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2026-06-15-遥远的外星来信.md` | 一封遥远的外星来信 | 个人文章与构思文档；类别：短篇小说 | 已读入文章页；layout=post |
+| `collections/_posts/2026-09-10-这次AI革命会彻底替代人类吗.md` | 这次 AI 科技革命会彻底替代人类吗？ | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
+| `collections/_posts/2026-09-12-删除游戏就是成熟吗.md` | 删掉游戏意味着成熟吗？ | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
+| `collections/_posts/2026-09-13-阅读非暴力沟通.md` | 罗森伯格《非暴力沟通》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=post-vertical |
+| `collections/_posts/_ideas/_OLD.missing.semester.of.cs.md` | sample results | 文章构思/写作草稿；类别：Notes；分组：Readings | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/_OLD.n.hardware.spec.md` | Linux — Check Hardware Information and Specification | 文章构思/写作草稿；类别：Notes；分组：Operating Tools | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/_OLD.n.prompt.engineering.md` | LLM Prompt Engineering for Study Assistance | 文章构思/写作草稿；类别：Notes；分组：LLMs | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/_OLD.reading.list.md` | 阅读之前 | 文章构思/写作草稿；类别：Notes；分组：Readings | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/s.tips.for.better.human.md` | 增加人类学习和工作能力的神经心理学和脑科学小技巧 | 文章构思/写作草稿；类别：Sheet；分组：Learning-Psychology | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/s.补刀.md` | Dota类游戏补刀进化史的元分析 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/世上无天才.md` | 世上无天才 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/东亚思维鉴别：赞美的失格.md` | 东亚思维鉴别：赞美的失格 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/中式高级哲学.md` | 中式高级哲学 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/中文之美与外来句式.md` | 中文之美与外来句式 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/为什么应该阅读英文原版.md` | 为什么要读原版：原著、教材、学术语言与知识进入方式 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/为何互联网全是争论？.md` | 挑错的位置 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/乖不是孩子的优秀品质.md` | 乖不是孩子的优秀品质 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/人机鉴定指南.md` | 人机鉴定指南 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/入门和系统学习中的常见误区.md` | 一、概念层面的误区 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/写还是不写.md` | 写？还是不写？问题老大了 | 文章构思/写作草稿；类别：散文随笔；状态：合二为一 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/如何理解男性困境.md` | 如何理解男性困境 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/学习力 MAX 的魔法书.md` | 学习力 MAX 的魔法书 | 文章构思/写作草稿；分组：Ongoing | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/孩子和修道院.md` | 孩子和修道院 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/广场与屁股.md` | 广场与屁股 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/心理学家和情人.md` | 心理学家和情人 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/愚人日记.md` | 2111 11 11 愚人日记 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/成年人诊断报告.md` | 成年人诊断报告 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/我的文学语言.md` | 第二层的早期馊主意 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/挖洞人和捕猎人.md` | 挖洞人和捕猎人 | 文章构思/写作草稿；类别：短篇小说；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/提高自学上限的方法论.md` | Self-Education Guide to PhD-Level Mastery in Math, Theoretical Physics, and Theoretical Computer Science | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/改变我一生的女孩子：一个小偷的遗书.md` | GBWYSDNVZ-YFDDZDYS | 文章构思/写作草稿；类别：长篇小说；状态：写了一半 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/数据如何说谎.md` | 数据如何说谎 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/是否应该提防低概率事件.md` | 11 11 是否应该提防低概率事件 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/树干和钉子.md` | 树干和钉子 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/步行者和跑道.md` | 步行者与跑道 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/永生者日记.md` | 永生者日记 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/沉迷游戏.md` | xx xx 沉迷游戏 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/清晰表达观点.md` | 如何清晰地说明观点 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/游戏理论.md` | 执行总纲 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/游戏高手论.md` | 游戏技术与科学技术的底层逻辑不同 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/盘肠与食客.md` | 盘肠与食客 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/第一性原理.md` | First Principles Thinking — Concept and Origins | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/结论成瘾症.md` | xx xx 结论成瘾症 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/罗恩夫妇的一天.md` | 罗恩夫妇的一天 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/自我批判怪.md` | IDEA | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/良好状态.md` | 执行摘要   | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/苦难才是人类的精神食粮.md` | 1) 生物底层：痛觉不是“感受”，而是生存边界的测绘系统 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/草台班子宇宙.md` | 草台班子宇宙 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/蝉与常青叶.md` | 蝉与常青叶 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/行动之难，难！.md` | xinlixue | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/认知焚诀.md` | 认知焚诀 | 文章构思/写作草稿 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/诚实边界和易错点.md` | 诚实边界和易错点 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/贝叶斯城的大图书馆.md` | 贝叶斯城的大图书馆 | 文章构思/写作草稿；类别：短篇小说；状态：写了一半 | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/阅读笔记百年孤独.md` | 第一部分：作为读者 — 这本书的七层解码 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+| `collections/_posts/_ideas/饭圈思维的毒性究竟有多猛？.md` | 饭圈思维之毒，比蛇蝎更甚 | 文章构思/写作草稿；类别：Drafts；分组：Drafts | 未读入：_ideas 目录及未按日期命名的构思文件 |
+
+### 10.9 心理学（26）
+
+| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
+| --- | --- | --- | --- |
+| `collections/_psyc/A1-Basics/a.psyc.ez.md` | Psychology — Learning Atlas | 心理学文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
+| `collections/_psyc/B1-Cognitive/_n.cognitive.science.basics.en.md` | Cognitive Science Basics | 心理学文档；类别：Notes；分组：Cognitive | 未读入：文件名以 _ 开头 |
+| `collections/_psyc/B1-Cognitive/_n.data.deceive.en.md` | How Data Deceives | 心理学文档；类别：Notes；分组：Cognitive | 未读入：文件名以 _ 开头 |
+| `collections/_psyc/B2-Learning/_n.learning.psychology.en.md` | Learning Psychology | 心理学文档；类别：Notes；分组：Learning | 未读入：文件名以 _ 开头 |
+| `collections/_psyc/C1-Behavior/n.male.displays.en.md` | Sexual Dysfunction and Compensatory Masculinity Performance | 心理学文档；类别：Notes；分组：Behavior | 已读入文章页；layout=post |
+| `collections/_psyc/C2-Personality/n.Traumatic.Personality.zh.md` | Traumatic Personality (创伤型人格) | 心理学文档；类别：Notes；分组：Personality | 已读入文章页；layout=post |
+| `collections/_psyc/C2-Personality/n.five.factor.model.zh.md` | Five-Factor Model (大五人格模型) | 心理学文档；类别：Notes；分组：Personality | 已读入文章页；layout=post |
+| `collections/_psyc/C3-Social-Psychology/_n.social.psychology.en.md` | Social Psychology | 心理学文档；类别：Notes；分组：Social Psychology | 未读入：文件名以 _ 开头 |
+| `collections/_psyc/C4-Developmental/_n.developmental.psychology.en.md` | Developmental Psychology | 心理学文档；类别：Notes；分组：Developmental | 未读入：文件名以 _ 开头 |
+| `collections/_psyc/D1-Psychoanalysis/_t.lacanian.subject.en.md` | The Lacanian Subject | 心理学文档；类别：Texts；分组：Lacan | 未读入：文件名以 _ 开头 |
+| `collections/_psyc/D1-Psychoanalysis/a.Psychoanalysis.en.md` | Psychoanalysis — Learning Atlas | 心理学文档；类别：Atlas；分组：Psychoanalysis | 已读入文章页；layout=post |
+| `collections/_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh copy.md` | Modern Psychoanalysis (现代精神分析) | 心理学文档；类别：Notes；分组：Psychoanalysis；状态：完成精修 | 已读入文章页；layout=post |
+| `collections/_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh.md` | Modern Psychoanalysis (现代精神分析) | 心理学文档；类别：Notes；分组：Psychoanalysis；状态：完成精修 | 已读入文章页；layout=post |
+| `collections/_psyc/D1-Psychoanalysis/n1.Sigmund.Freud.ez.md` | The Theory Architecture of Sigmund Freud | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/n2.Carl.Jung.ez.md` | The Theory Architecture of Carl Jung | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/n3.Alfred.Adler.ez.md` | The Theory Architecture of Alfred Adler | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/n4.Anna.Freud.ez.md` | The Theory Architecture of Anna Freud | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/n5.Melanie.Klein.ez.md` | The Theory Architecture of Melanie Klein | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/n6.Donald.Winnicott.ez.md` | The Theory Architecture of Donald Winnicott | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/n7.Jacques.Lacan.ez.md` | The Theory Architecture of Jacques Lacan | 心理学文档；类别：Notes；分组：Lacan | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/s.Mental.Defense.zh.md` | Mental Defense (心理防御) | 心理学文档；类别：Sheet；分组：Psychoanalysis；状态：精修完成 | 已读入文章页；layout=post |
+| `collections/_psyc/E1-Psychopathology/n.Chimp.Paradox.ez.md` | Chimp Paradox — How to Manage Emotion Without Suppressing It | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post-bilingual |
+| `collections/_psyc/E1-Psychopathology/n.Family.Constellations.zh.md` | Family Constellations (家庭系统排列) | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post |
+| `collections/_psyc/E1-Psychopathology/n.LLI.ez.md` | Low Latent Inhibition | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post-bilingual |
+| `collections/_psyc/E1-Psychopathology/n.Psychopathology.Teatment.zh.md` | Psychopathology and Treatment (精神疾病和药物) | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post |
+| `collections/_psyc/F1-Neuropsychology/n.Human.Brain.en.md` | How the Human Brain Evolved, Develops, and Organizes Itself | 心理学文档；类别：Notes；分组：Neuropsychology | 已读入文章页；layout=post |
+
+### 10.10 课程/材料转录（19）
+
+| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
+| --- | --- | --- | --- |
+| `transcripts/t.18.01.transcript.en.md` | 18.01 Transcripts | 课程/材料转录文档；类别：Texts；分组：Calculus | 已读入文章页；layout=print |
+| `transcripts/t.18.06.transcript.en.md` | 18.06 Transcripts | 课程/材料转录文档；类别：Texts；分组：Linear Algebra | 已读入文章页；layout=print |
+| `transcripts/t.24.900.transcript.en.md` | 24.900 Transcripts | 课程/材料转录文档；类别：Texts；分组：Linguistics | 已读入文章页；layout=print |
+| `transcripts/t.6.001.transcript.en.md` | 6.001 SICP Transcripts | 课程/材料转录文档；类别：Texts；分组：Programming | 已读入文章页；layout=print |
+| `transcripts/t.AI4Everyone.md` | AI for Everyone Course Transcripts | 课程/材料转录文档；类别：Notes；分组：AI | 已读入文章页；layout=print |
+| `transcripts/t.Agentic.AI.md` | Agentic AI Course Transcripts | 课程/材料转录文档；类别：Notes；分组：AI | 已读入文章页；layout=print |
+| `transcripts/t.CS61A.transcript.en.md` | CS61A Transcripts | 课程/材料转录文档；类别：Texts；分组：Programming | 已读入文章页；layout=print |
+| `transcripts/t.ECON159.en.md` | ECON 159 Transcripts | 课程/材料转录文档；类别：Texts；分组：Game Theory | 已读入文章页；layout=print |
+| `transcripts/t.ENGL300.transcript.en.md` | ENGL 300 Transcripts | 课程/材料转录文档；类别：Texts；分组：Literary Theory | 已读入文章页；layout=print |
+| `transcripts/t.Games.Played.en.md` | Games People Play Transcripts | 课程/材料转录文档；类别：Texts；分组：Game Theory | 已读入文章页；layout=print |
+| `transcripts/t.Generative.AI4Everyone.md` | Generative AI for Everyone Course Transcripts | 课程/材料转录文档；类别：Notes；分组：AI | 已读入文章页；layout=print |
+| `transcripts/t.LHTL.transcript.ez.md` | Learning How to Learn Transcripts | 课程/材料转录文档；类别：Texts；分组：Learning | 已读入文章页；layout=print |
+| `transcripts/t.MATH125A.transcript.en.md` | MATH 125A Transcripts | 课程/材料转录文档；类别：Texts；分组：Logic | 已读入文章页；layout=print |
+| `transcripts/t.MATH135.transcript.en.md` | MATH 135 Transcripts | 课程/材料转录文档；类别：Texts；分组：Set Theory | 已读入文章页；layout=print |
+| `transcripts/t.MS.transcript.en.md` | Mindshift Transcripts | 课程/材料转录文档；类别：Texts；分组：Learning | 已读入文章页；layout=print |
+| `transcripts/t.NULL.transcript.en.md` | 6.NULL Transcripts | 课程/材料转录文档；类别：Texts；分组：Toolset | 已读入文章页；layout=print |
+| `transcripts/t.PHIL176.transcripts.en.md` | PHIL 176 Transcripts | 课程/材料转录文档；类别：Texts；分组：Ethics | 已读入文章页；layout=print |
+| `transcripts/t.en.elden.ring.ez.md` | Elden Ring Dialogue in Order | 课程/材料转录文档；类别：Texts；分组：English | 已读入文章页；layout=post |
+| `transcripts/t.mocangli.zh.md` | Mo Cangli Storyline (默苍离主要剧情) | 课程/材料转录文档；类别：Texts；分组：Literary Texts | 已读入文章页；layout=post |
+
+### 10.11 教材/注释文本（3）
+
+| 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
+| --- | --- | --- | --- |
+| `textbooks/t.Kenny.ez.md` | A New History of Western Philosophy Annotated | 教材/注释文本文档；类别：Texts；分组：History | 已读入文章页；layout=post-bilingual |
+| `textbooks/t.ctk.zh.md` | Contemporary Theories of Knowledge (当代知识理论) | 教材/注释文本文档；类别：Texts；分组：Epistemology | 已读入文章页；layout=post |
+| `textbooks/t.lolita.annotated.en.md` | Lolita The Annotated | 教材/注释文本文档；类别：Texts；分组：Literary Texts | 已读入文章页；layout=post |
 
 ## 11. 媒体与资源逐项索引（257）
 

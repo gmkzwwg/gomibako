@@ -4916,4 +4916,4 @@ there be 和 here be 结构中，真正主语通常在动词后面，谓语要�
 | 习语堆砌 | The project is a piece of cake and a game changer and a win-win. | The project is simple and useful. | 习语过多显得不自然 |
 | 习语语域不合 | The experiment was a piece of cake. | The experiment was straightforward. | 学术语境用直接表达 |
 
-更多固定搭配和习语可参见 [Summary of English Collocations and Idioms]({{site.url}}/note/02-english/en-idioms/)。
+更多固定搭配和习语可参见 [Summary of English Collocations and Idioms]({{ '/misc/s.en.idioms.ez/' | relative_url }})。

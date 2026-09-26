@@ -32,8 +32,8 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 #### A. Basic Instruments
 
 * **[C]** Discrete Mathematics & Proof — *solid* `proof habits, induction, relations, functions, combinatorics; the minimum shared language of CS, logic, and mathematics`
-* **[C]** Linear Algebra, first pass (Axler) — *solid* [Link]({{ '/n.LA' | relative_url }}) `structure, vector spaces, linear maps; later revisited categorically in Trunk 1.4`
-* **[C]** Mathematical Analysis I–II — *solid* `Tao or Rudin; rigor, limits, continuity, compactness, metric spaces` [Link]({{ '/n.ML' | relative_url }})
+* **[C]** Linear Algebra, first pass (Axler) — *solid* [Link]({{ '/math/n.LA.en/' | relative_url }}) `structure, vector spaces, linear maps; later revisited categorically in Trunk 1.4`
+* **[C]** Mathematical Analysis I–II — *solid* `Tao or Rudin; rigor, limits, continuity, compactness, metric spaces` [Link]({{ '/math/n.ML.ez/' | relative_url }})
 * **[C]** Probability, first pass (Blitzstein or Ross) — *solid* `uncertainty, conditional probability, expectation; intuition early, measure-theoretic version waits`
 * **[S]** Cognitive Science Basics — *intro* `attention, working memory, cognitive biases, predictive processing; minimum empirical constraint on claims about human cognition`
 * **[S]** Introductory Epistemology — *intro* `knowledge, justification, skepticism, evidence; conceptual ground before formal epistemology`
@@ -78,7 +78,7 @@ Notation: **[C]** core, **[S]** secondary, **[D]** DLC/flexible. Depth tags: *in
 
 #### 1.3 Programming Languages & Type Theory
 
-* **[C]** SICP — *solid* `programming as the construction of interpreters and abstractions; metacircular evaluator as the on-ramp to lambda calculus and semantics` [Link]({{ '/n.SICP' | relative_url }})
+* **[C]** SICP — *solid* `programming as the construction of interpreters and abstractions; metacircular evaluator as the on-ramp to lambda calculus and semantics` [Link]({{ '/comp/n.SICP.ez/' | relative_url }})
 * **[C]** Programming Languages (TAPL) — *solid*
 * **[C]** Lambda Calculus & Combinatory Logic — *solid* `direct continuation of SICP's metacircular evaluator`
 * **[C]** Software Foundations Vol. 1 (Rocq) — *solid*

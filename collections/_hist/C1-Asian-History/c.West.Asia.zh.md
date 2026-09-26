@@ -715,7 +715,7 @@ Timeline:
   
 ### [两河] 早亚述城邦与卡尼什贸易网络 约前2025年-前18世纪
 
-![assyria](/src/figures/hist.assyria.png)
+![assyria]({{ '/images/history/maps/ancient-anatolia-and-near-east-map.png' | relative_url }})
 
 **早亚述城邦**（*Old Assyrian city-state*）以底格里斯河中游的**亚述城**（*Aššur / Assur*）为中心。此时的亚述还不是后来横扫近东的军事帝国，而是一座以神庙、城邦公社、王权和商人集团共同支撑的城市。它的力量首先不是战车和攻城器，而是道路、驴队、银、锡、纺织品、契约、印章和泥板账簿。
 
@@ -1270,7 +1270,7 @@ Timeline:
 
 这一时期的赫梯留下大量楔形文字（cuneiform）文书，包括王室编年、外交条约、附庸誓约、法律、祭祀文本、祈祷文和国际通信。`阿马尔那书信`（*Amarna Letters*）、赫梯王室档案、埃及铭文和叙利亚城邦材料共同展示了晚期青铜时代的大国外交。赫梯帝国是一个深度参与国际体系的强权：它既能攻入叙利亚，也能与埃及缔结和平条约；既能扶立米坦尼王子，也会因瘟疫、继承、边疆和粮食压力而逐渐走向崩溃。
 
-![14cbc](/src/figures/hist.14cbc.png)
+![14cbc]({{ '/images/history/maps/middle-east-fourteenth-century-bce-map.png' | relative_url }})
 
 Timeline:
 * 约前1450年-前1400年

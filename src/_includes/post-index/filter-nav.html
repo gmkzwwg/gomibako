@@ -2,13 +2,13 @@
 {% assign all_label = include.all_label | default: "All" %}
 
 {% if include.enabled != false and filter_items and filter_items != "" %}
-  <nav class="post-index__filters" aria-label="{{ include.label | default: 'Index filters' }}">
+  <nav class="post-index__filters" aria-label="{{ include.label | default: 'Index filters' | escape }}">
     <button
       class="post-index__filter-button is-active"
       type="button"
       data-index-filter="all"
     >
-      {{ all_label }}
+      {{ all_label | escape }}
     </button>
 
     {% assign filter_entries = filter_items | split: ";;" %}
@@ -25,9 +25,9 @@
           <button
             class="post-index__filter-button"
             type="button"
-            data-index-filter="{{ filter_value }}"
+            data-index-filter="{{ filter_value | escape }}"
           >
-            {{ filter_label }}
+            {{ filter_label | escape }}
           </button>
         {% endif %}
       {% endif %}
