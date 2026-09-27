@@ -807,6 +807,19 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 - 检查边界：本次验证本地构建的站内目标、静态锚点和仓库源文件链接；未逐一请求外部 URL，也未验证线上服务器重定向。上述两处需要找回教材原图或提供可核对的原图来源。
 - 回退：恢复本次 11 个内容文件及本报告的对应改动即可；未新增应用依赖、未提交、未部署。
 
+### 2026-09-27 · CHANGE-007 · 首页终端降耗与红色字符画入侵效果
+
+- 目的：保留原有模拟终端文案与交互，减少持续输出带来的不必要工作，加入短暂的“被黑”视觉打断。
+- 问题与修复：旧实现逐字符重建文本节点并安排滚动，短时间可积压多个滚动帧；页面隐藏、终端滚出视口及离开页面时仍持续调度。现在每次追加 2–3 个字符到同一文本节点，滚动请求合并到最多一个 requestAnimationFrame；输出流程只有一个可暂停/恢复的 timeout，时钟也随可见性暂停，恢复时不补跑积压输出。继续保留 96 行上限。
+- 附加降耗：复用时钟格式化器；状态值相同时不重复改写 DOM；移除状态栏的 backdrop-filter；光标动画与 JS 一起暂停。模拟日志关闭 aria-live，避免不断播报虚构的终端输出。系统启用 prefers-reduced-motion 时保持静态终端；关闭该偏好后从原位置继续。
+- 新效果：启动序列结束后，按 **18–32 秒的可见播放时间**随机间隔触发；临时隐藏终端菜单、日志和状态文字，居中显示红色字符画，按 **亮 350ms → 灭 350ms → 亮 350ms → 灭 350ms** 播放两次，约 1.4 秒后恢复。文字节点与输入位置原样保留，图片期间暂停新日志输出；两幅图按 1 → 2 → 1 循环。
+- 边界：切后台、滚出视口、pagehide 或启用减少动态效果时，立即退出正在进行的入侵并恢复文字；pageshow/可见性恢复不创建重复循环。菜单获得键盘焦点时跳过本次入侵，避免导航消失。空字符画库不会阻止正常输出；大幅字符画只在显示和尺寸变化时测量，并等比缩小到终端内。
+- 字符画库：新增 `src/_data/index_shell.yml` 的 `ascii_art`，默认两段 YAML 多行占位。直接替换每个 `|-` 下的字符，保留四格基础缩进；内部空格、换行、反斜杠、尖括号均作为纯文本保留。Liquid escape + template + textContent 避免字符画被当作 HTML。频率在 `src/_layouts/index.html` 的 `INTRUSION_GAP_MS` 修改；闪烁周期由 `FLASH_CYCLE_MS` 控制。
+- 文件：修改 `src/_layouts/index.html`、`src/_sass/layouts/_index.scss`，新增上述数据文件；本报告更新两条职责说明并登记新文件。
+- 验证：首页 Jekyll production 夹具与站点 Sass 编译通过，JavaScript 语法检查通过。Chrome 138 的 **15 个浏览器检查**通过，覆盖两次实际 CSS 明灭、顺序循环、节点/文字保留、后台与离屏暂停、往返缓存、打断恢复、动态/初始减少动画偏好、空库、观察器兼容降级、焦点保护、窄屏大图缩放、稳定文本节点与十分钟运行的 96 行上限；检查桌面和 360px 窄屏截图。
+- 开销对比：在同一浏览器、固定随机数和 **20 秒可控时钟场景**下，滚动高度读取 **266 → 127 次**，调度回调 **549 → 286 次**，同时排队的滚动帧峰值 **4 → 1**。这些是终端的调度/DOM 计数，不是整站 CPU 百分比；浏览器测试对时钟和可见性事件作了可控模拟。此次未改动 default 全局加载的其他 Matrix 特效。
+- 回退：恢复 layout 与 Sass 的本次改动并移除字符画数据文件即可。未新增运行时依赖、未提交、未部署。
+
 ### 后续记录模板
 
 ```text
@@ -824,7 +837,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 ## 9. 工程与核心代码逐文件索引
 
-当前全仓库索引共 823 个文件。本节覆盖 107 个 src 文件、7 个工程文件和 15 个 pages 文件；第 10 节包含 collections、transcripts 与 textbooks。文件名相近不表示职责相同，尤其注意两套索引、三种双语机制和两种时间线。
+当前报告的逐文件索引共 824 个文件（沿用 CHANGE-004 基线并登记新增配置，不等同于实时仓库文件数）。本节覆盖 108 个 src 文件、7 个工程文件和 15 个 pages 文件；第 10 节包含 collections、transcripts 与 textbooks。文件名相近不表示职责相同，尤其注意两套索引、三种双语机制和两种时间线。
 
 ### 9.1 工程、构建与部署（7）
 
@@ -870,7 +883,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/_layouts/index-subclass.html` | 在每个学科内按 subclass 分组，提供全局子类筛选和未分类组。 | /notes 主入口；与集合弹窗、specific-collection 有相近分组逻辑，修改分类语义需同步。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index-tags.html` | 按 tags 聚合选定集合文档，生成标签筛选。 | 复用 post-index 组件；当前内容没有显式 tags，因此模板存在但列表为空。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index-todos.html` | 遍历集合并筛选非空 front matter todos，显示文档与任务文本。 | 复用 post-index/item；默认只覆盖八个学科，不扫描正文 TODO；当前没有实际接入通用筛选控件。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
-| `src/_layouts/index.html` | 终端风格首页，渲染入口菜单、状态栏和自动播放的模拟终端文本。 | 继承 default；菜单来自 page.shell_menu 或 site.ui.index_shell.menu；大量动画场景与逻辑内联。这里是视觉模拟，不是真实命令执行。 |
+| `src/_layouts/index.html` | 终端风格首页，渲染入口菜单、状态栏、模拟日志和两次闪烁的红色字符画。 | 继承 default；菜单来自 page.shell_menu 或 site.ui.index_shell.menu；合并打字/滚动调度，隐藏/离屏/reduced-motion 时暂停；从 site.data.index_shell.ascii_art 读取字符画。这里是视觉模拟，不是真实命令执行。 |
 | `src/_layouts/post-bilingual.html` | 双语折叠文章的薄正文容器。 | 继承 default；真正的 bilingual.js 加载由 default 根据布局名决定，header 提供总切换按钮。 |
 | `src/_layouts/post-compact.html` | 紧凑阅读的薄正文容器。 | 继承 default；header 根据布局名自动最大化内容区，布局文件本身不实现最大化。 |
 | `src/_layouts/post-horizonal.html` | 原文与随后引用块并排对照的正文容器。 | default 加载 parallel-text.js，header 自动最大化并提供切换；horizonal 是现有拼写，更名须兼容旧内容。 |
@@ -937,7 +950,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/_sass/components/_post-todos.scss` | Todo dialog、任务列表、正文标签高亮和焦点样式。 | 由主题入口编译；原生 dialog 支持窄屏尺寸，打印时隐藏面板。 |
 | `src/_sass/components/_toc_chart.scss` | h1/h2/h3 分栏图表目录以及 compact 模式样式。 | 配套 toc_chart.html。 |
 | `src/_sass/components/_toc_list.scss` | 传统弹出目录及目录列表样式。 | 配套 toc_list.html 与 header 的目录容器。 |
-| `src/_sass/layouts/_index.scss` | 首页终端窗口、菜单、输出区、光标和状态栏样式。 | 配套 index.html；有 reduced-motion 媒体规则，但不覆盖所有 JS 动画。 |
+| `src/_sass/layouts/_index.scss` | 首页终端窗口、菜单、日志、光标、状态栏及红色字符画覆盖层样式。 | 配套 index.html；原文字用 visibility 保持布局，覆盖层闪两次；支持等比缩放、暂停光标与 reduced-motion；状态栏不再使用背景模糊。 |
 | `src/_sass/layouts/_post-content.scss` | 普通页面背景、外层容器、正文区域、显示状态及响应式宽度。 新增 .post-heading--with-subtitle 和右对齐、小字号、自动换行的副标题样式。 | default/post 布局骨架；与 header 中最大化状态有关。 |
 | `src/_sass/layouts/_post-index.scss` | 知识索引分组、侧栏标签、条目、筛选按钮、任务和响应式样式。 | index-* 与 post-index 组件共享。 Hidden 样式同时覆盖索引和两个弹窗，并降低隐藏文章链接的透明度。 |
 | `src/_sass/layouts/_print.scss` | 独立打印页排版、目录以及 screen/print 媒体规则。 新增打印标题区域 subtitle 样式。 | 由 print.scss 单独编译；普通页右键 window.print 不会自动切换到 print 布局。 |
@@ -994,6 +1007,12 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/assets/fonts/fontawesome-webfont.woff2` | Font Awesome 图标字体的 WOFF2 格式。 | 本地图标字体资源；当前 CDN 加载链路没有直接引用这份本地副本。 |
 | `src/assets/img/logo-bug.png` | 主题虫形标识图。 | head.html 实际使用的 favicon；当前声明 MIME 为 image/x-icon，而文件是 PNG。 |
 | `src/assets/img/logo-terminal.png` | 主题终端标识图。 | 当前代码未找到实际入口引用；保留资源，是否历史用途需再确认。 |
+
+### 9.9 首页特效数据（1）
+
+| 文件 | 功能与作用 | 接入关系与修改注意 |
+| --- | --- | --- |
+| `src/_data/index_shell.yml` | 首页终端入侵效果的 ASCII 字符画库，默认两幅占位，按顺序循环播放。 | 修改 ascii_art 的两个 YAML 多行文本即可；保持四格基础缩进；index.html 会转义并按纯文本呈现、按窗口等比缩小。 |
 
 ## 10. 内容文件逐项索引（437）
 

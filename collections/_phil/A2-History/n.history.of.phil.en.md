@@ -4,6 +4,8 @@ categories: Notes
 subclass: History
 ---
 
+<!-- P1 哲学史中真正有价值的东西 当代/科学时代对待哲学真正的态度（不要因为结论过时就全盘否定，正确运用） 哲学的真正学习法和用法 -->
+
 **Resources:**
 1. *A New History of Western Philosophy*, Anthony Kenny
 2. *The Philosophers Toolkit*, Julian Baggini; Peter S. Fosl

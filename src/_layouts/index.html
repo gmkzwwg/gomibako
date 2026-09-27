@@ -53,7 +53,7 @@ Recommended page front matter:
     {% endif %}
   </nav>
 
-  <div class="index-shell__screen" aria-live="polite" aria-atomic="false">
+  <div class="index-shell__screen" aria-live="off">
     <div class="index-shell__log" id="index-shell-log"></div>
   </div>
 
@@ -69,6 +69,13 @@ Recommended page front matter:
       <span id="index-shell-clock">--:--:--</span>
     </div>
   </footer>
+
+  <div class="index-shell__intrusion" id="index-shell-intrusion" aria-hidden="true" hidden>
+    <div class="index-shell__art" id="index-shell-art"></div>
+  </div>
+  {% for art in site.data.index_shell.ascii_art %}
+    <template data-shell-art>{{ art | escape }}</template>
+  {% endfor %}
 </section>
 
 <div class="post-content">
@@ -88,11 +95,32 @@ Recommended page front matter:
     const stateEl = document.getElementById("index-shell-state");
     const uptimeEl = document.getElementById("index-shell-uptime");
     const clockEl = document.getElementById("index-shell-clock");
+    const intrusionEl = document.getElementById("index-shell-intrusion");
+    const artEl = document.getElementById("index-shell-art");
 
     if (!log || !modeEl || !jobsEl || !stateEl || !uptimeEl || !clockEl) return;
 
     const MAX_LINES = 96;
+    const INTRUSION_GAP_MS = [20000, 30000];
+    const FLASH_CYCLE_MS = 700; // Two cycles: on/off, on/off, then restore.
+    // Edit the two literal text entries in src/_data/index_shell.yml.
+    const ASCII_ARTS = Array.from(root.querySelectorAll("template[data-shell-art]"))
+      .map((template) => template.content.textContent)
+      .filter((art) => art.trim());
     const startedAt = Date.now();
+    const clockFormatter = new Intl.DateTimeFormat([], { hour12: false, timeStyle: "medium" });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let pageActive = true;
+    let inViewport = !("IntersectionObserver" in window);
+    let paused = true;
+    let pausedAt = performance.now();
+    let pendingWait = null;
+    let clockTimer = null;
+    let scrollFrame = null;
+    let nextIntrusionAt = Infinity;
+    let artIndex = 0;
+    let intrusionActive = false;
+    let state = "ready";
 
     const COLORS = {
       boot: "#b7ff7a",
@@ -520,7 +548,94 @@ const AMBIENT_LINES = [
     }
 
     function sleep(ms) {
-      return new Promise((resolve) => window.setTimeout(resolve, ms));
+      // The output sequence owns one resumable timeout, even during an intrusion.
+      return new Promise((resolve) => {
+        pendingWait = { resolve, remaining: ms, started: 0, timer: null };
+        resumeWait();
+      });
+    }
+
+    function resumeWait() {
+      if (paused || !pendingWait || pendingWait.timer !== null) return;
+      const wait = pendingWait;
+      wait.started = performance.now();
+      wait.timer = window.setTimeout(() => {
+        pendingWait = null;
+        wait.resolve();
+      }, wait.remaining);
+    }
+
+    function intrusionDelay() {
+      return INTRUSION_GAP_MS[0] + Math.random() * (INTRUSION_GAP_MS[1] - INTRUSION_GAP_MS[0]);
+    }
+
+    function restoreTerminal() {
+      intrusionActive = false;
+      root.classList.remove("is-intruded");
+      if (intrusionEl) intrusionEl.hidden = true;
+    }
+
+    function fitArt() {
+      if (!intrusionActive) return;
+      // Measure only on an intrusion or resize, never on the typing path.
+      const scale = Math.min(1,
+        intrusionEl.clientWidth / Math.max(1, artEl.scrollWidth),
+        intrusionEl.clientHeight / Math.max(1, artEl.scrollHeight));
+      artEl.style.setProperty("--index-shell-art-scale", String(scale));
+    }
+
+    async function delay(ms) {
+      await sleep(ms);
+      if (performance.now() < nextIntrusionAt) return;
+      nextIntrusionAt = performance.now() + intrusionDelay();
+      // Keep menu links stable while the visitor is using the keyboard.
+      if (!ASCII_ARTS.length || !intrusionEl || !artEl || root.contains(document.activeElement)) return;
+
+      artEl.textContent = ASCII_ARTS[artIndex];
+      artIndex = (artIndex + 1) % ASCII_ARTS.length;
+      intrusionActive = true;
+      intrusionEl.style.setProperty("--index-shell-flash-duration", FLASH_CYCLE_MS + "ms");
+      intrusionEl.hidden = false;
+      root.classList.add("is-intruded");
+      fitArt();
+      try {
+        await sleep(FLASH_CYCLE_MS * 2);
+      } finally {
+        restoreTerminal();
+        nextIntrusionAt = performance.now() + intrusionDelay();
+      }
+    }
+
+    function syncPlayback() {
+      const shouldPause = !pageActive || document.hidden || !inViewport || reducedMotion.matches;
+      root.classList.toggle("is-paused", shouldPause);
+      setState(state);
+      if (shouldPause === paused) return;
+      paused = shouldPause;
+
+      if (paused) {
+        pausedAt = performance.now();
+        if (pendingWait && pendingWait.timer !== null) {
+          window.clearTimeout(pendingWait.timer);
+          pendingWait.timer = null;
+          pendingWait.remaining = Math.max(0, pendingWait.remaining - (pausedAt - pendingWait.started));
+        }
+        if (clockTimer !== null) window.clearInterval(clockTimer);
+        clockTimer = null;
+        if (scrollFrame !== null) window.cancelAnimationFrame(scrollFrame);
+        scrollFrame = null;
+        // A tab switch, scroll away or motion preference change must never leave a blank terminal.
+        if (intrusionActive) {
+          restoreTerminal();
+          if (pendingWait) pendingWait.remaining = 0;
+        }
+      } else {
+        nextIntrusionAt += performance.now() - pausedAt;
+        updateStatusTime();
+        clockTimer = window.setInterval(updateStatusTime, 1000);
+        resumeWait();
+        stickBottom();
+      }
     }
 
     function colorOf(type) {
@@ -545,7 +660,9 @@ const AMBIENT_LINES = [
     }
 
     function stickBottom() {
-      window.requestAnimationFrame(() => {
+      if (paused || scrollFrame !== null) return;
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollFrame = null;
         log.scrollTop = log.scrollHeight;
       });
     }
@@ -557,19 +674,20 @@ const AMBIENT_LINES = [
     }
 
     function setMode(value) {
-      modeEl.textContent = "mode: " + value;
+      setText(modeEl, "mode: " + value);
     }
 
     function setJobs(value) {
-      jobsEl.textContent = "jobs: " + value;
+      setText(jobsEl, "jobs: " + value);
     }
 
     function setState(value) {
-      stateEl.textContent = "state: " + value;
+      state = value;
+      setText(stateEl, "state: " + (reducedMotion.matches ? "reduced motion" : value));
     }
 
-    function formatClock(date) {
-      return date.toLocaleTimeString([], { hour12: false });
+    function setText(element, value) {
+      if (element.textContent !== value) element.textContent = value;
     }
 
     function formatUptime(ms) {
@@ -584,8 +702,8 @@ const AMBIENT_LINES = [
     function updateStatusTime() {
       const now = new Date();
 
-      clockEl.textContent = formatClock(now);
-      uptimeEl.textContent = "uptime: " + formatUptime(Date.now() - startedAt);
+      setText(clockEl, clockFormatter.format(now));
+      setText(uptimeEl, "uptime: " + formatUptime(Date.now() - startedAt));
     }
 
     function createPromptLine(promptText) {
@@ -598,6 +716,8 @@ const AMBIENT_LINES = [
 
       const typed = document.createElement("span");
       typed.className = "index-shell__typed";
+      const typedText = document.createTextNode("");
+      typed.appendChild(typedText);
 
       const cursor = document.createElement("span");
       cursor.className = "index-shell__cursor";
@@ -611,19 +731,21 @@ const AMBIENT_LINES = [
       trimLines();
       stickBottom();
 
-      return { typed, cursor };
+      return { typedText, cursor };
     }
 
     async function typeCommand(command) {
       const ui = createPromptLine(pick(PROMPTS));
 
-      for (let index = 0; index < command.length; index += 1) {
-        ui.typed.textContent += command[index];
+      for (let index = 0; index < command.length;) {
+        const end = Math.min(command.length, index + 2 + Math.floor(Math.random() * 2));
+        ui.typedText.appendData(command.slice(index, end));
+        index = end;
         stickBottom();
-        await sleep(16 + Math.random() * 28);
+        await delay(55 + Math.random() * 30);
       }
 
-      await sleep(110 + Math.random() * 180);
+      await delay(110 + Math.random() * 180);
       ui.cursor.remove();
       stickBottom();
     }
@@ -636,12 +758,12 @@ const AMBIENT_LINES = [
 
       for (const item of scene.lines) {
         appendLine(item[0], item[1]);
-        await sleep(90 + Math.random() * 190);
+        await delay(90 + Math.random() * 190);
       }
 
       if (Math.random() < 0.44) {
         appendLine("info", "process exited with code " + (Math.random() < 0.86 ? "0" : "1"));
-        await sleep(100 + Math.random() * 160);
+        await delay(100 + Math.random() * 160);
       }
 
       setJobs(0);
@@ -655,7 +777,7 @@ const AMBIENT_LINES = [
 
       for (const item of BOOT_LINES) {
         appendLine(item[0], item[1]);
-        await sleep(100 + Math.random() * 180);
+        await delay(100 + Math.random() * 180);
       }
 
       await typeCommand('watch -n 2 "tail -f /var/log/ruin.log"');
@@ -669,15 +791,14 @@ const AMBIENT_LINES = [
       for (let index = 0; index < count; index += 1) {
         const item = pick(AMBIENT_LINES);
         appendLine(item[0], item[1]);
-        await sleep(80 + Math.random() * 150);
+        await delay(80 + Math.random() * 150);
       }
     }
 
     async function mainLoop() {
-      updateStatusTime();
-      window.setInterval(updateStatusTime, 1000);
-
+      await sleep(0);
       await bootSequence();
+      nextIntrusionAt = performance.now() + intrusionDelay();
 
       while (true) {
         await runScene(pick(SCENES));
@@ -686,10 +807,30 @@ const AMBIENT_LINES = [
           await ambientNoise();
         }
 
-        await sleep(360 + Math.random() * 820);
+        await delay(360 + Math.random() * 820);
       }
     }
 
+    document.addEventListener("visibilitychange", syncPlayback);
+    reducedMotion.addEventListener("change", syncPlayback);
+    window.addEventListener("pagehide", () => { pageActive = false; syncPlayback(); });
+    window.addEventListener("pageshow", () => { pageActive = true; syncPlayback(); });
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        inViewport = entries[0].isIntersecting;
+        syncPlayback();
+      });
+      observer.observe(root);
+    }
+    if ("ResizeObserver" in window) {
+      const observer = new ResizeObserver(fitArt);
+      observer.observe(root);
+    } else {
+      window.addEventListener("resize", fitArt, { passive: true });
+    }
+    appendLine("sys", "shell ready; awaiting playback.");
+    updateStatusTime();
+    syncPlayback();
     mainLoop();
   })();
 </script>

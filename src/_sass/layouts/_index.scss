@@ -13,6 +13,7 @@
 $index-shell-line: 1px solid rgba(15, 202, 28, 0.28);
 
 .index-shell {
+  position: relative;
   inline-size: 100%;
 
   block-size: calc(56svh - 7rem);
@@ -80,6 +81,52 @@ $index-shell-line: 1px solid rgba(15, 202, 28, 0.28);
   text-align: left;
 
   contain: content;
+}
+
+.index-shell.is-intruded {
+  .index-shell__log,
+  .index-shell__menubar,
+  .index-shell__statusbar {
+    visibility: hidden;
+  }
+}
+
+.index-shell__intrusion {
+  position: absolute;
+  inset: 12px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  pointer-events: none;
+  animation: index-shell-intrusion-blink var(--index-shell-flash-duration, 700ms) steps(1, end) 2 both;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.index-shell__art {
+  flex: none;
+  inline-size: max-content;
+  margin: 0;
+  color: #ff3344;
+  font: 16px / 1.15 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: pre;
+  text-align: left;
+  letter-spacing: 0;
+  text-shadow: none;
+  transform: scale(var(--index-shell-art-scale, 1));
+}
+
+.index-shell.is-paused .index-shell__cursor {
+  animation-play-state: paused;
+}
+
+@keyframes index-shell-intrusion-blink {
+  0%, 49.99% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 .index-shell__line {
@@ -168,7 +215,6 @@ $index-shell-line: 1px solid rgba(15, 202, 28, 0.28);
   border-block-start: $index-shell-line;
   border-block-end: $index-shell-line;
   background: rgba(15, 202, 28, 0.18);
-  backdrop-filter: blur(1px);
 
   font-size: 12px;
   color: #baffba;
@@ -231,5 +277,10 @@ $index-shell-line: 1px solid rgba(15, 202, 28, 0.28);
 @media (prefers-reduced-motion: reduce) {
   .index-shell__cursor {
     animation: none !important;
+  }
+
+  .index-shell__intrusion {
+    display: none;
+    animation: none;
   }
 }
