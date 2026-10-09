@@ -1,6 +1,6 @@
 ---
 title: Technical Talks
-layout: print
+layout: post-vertical
 categories: Notes
 subclass: Software Engineering
 ---
