@@ -8008,4 +8008,3 @@ Use an introduction to moral philosophy to understand the arguments behind famil
 | Using a limit theorem as a universal claim about minds | The theorem has a specified model and assumptions; the philosophical inference adds premises. | Separate the proved result from the additional argument. |
 | Treating intelligent behavior as a settled account of consciousness | Task performance and subjective experience are different targets of explanation. | State which property is being tested and how the evidence bears on it. |
 | Assuming optimization chooses the right values | A score incorporates priorities and may omit rights, context, or affected people. | Justify objectives and constraints, and assign responsibility for their use. |
-
