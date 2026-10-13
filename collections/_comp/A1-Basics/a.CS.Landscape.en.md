@@ -115,7 +115,7 @@ No. You only need to pay attention to the prerequisites listed at the beginning 
 
 Almost every type of reader shares the same *common spine*:
 
-CS50x / Berkeley CS 61A —— MIT Missing Semester —— MIT 6.042J —— MIT 6.006 —— CSAPP
+Choose [CS50x](https://cs50.harvard.edu/x/) or [Berkeley CS61A](https://cs61a.org/) as a first programming sequence (§2.1), rather than completing both by default. Learn the relevant [Missing Semester](https://missing.csail.mit.edu/2020/) tools alongside your projects (§8.2); use discrete mathematics (§2.2) to prepare for algorithm proofs in courses such as MIT 6.006 (§2.6), and CSAPP (§4.1) when you are ready to understand machine-level behavior. These are related choices, not a rigid chain that must be finished before you can build anything.
 
 After completing these foundational courses, you should be able to write small programs independently, debug errors, understand common data structures and algorithms, read basic mathematical notation, and form an initial understanding of branches such as operating systems, networks, databases, and AI. The next step should not be to go deeper blindly, but to choose a path according to your goals.
 
@@ -393,6 +393,8 @@ Reading, tracing, executing, testing, and proving each reveal something differen
 
 #### Resources
 
+Choose one introductory sequence rather than collecting several first courses. Use CS50 for a broad introduction with programming assignments, HtDP for systematic problem decomposition and data design, or CS61A with Composing Programs for abstraction through programs. SICP is especially rewarding once you can already write and debug small programs. For a later move into C, pair the concise examples in K&R with [Modern C](https://gustedt.gitlabpages.inria.fr/modern-c/), whose C23 edition supplies a current language treatment and example code. Modern C assumes more independence than a first programming course; neither book replaces repeated implementation and debugging practice.
+
 **Books and Texts**
 
 The canonical entry to programming as conceptual practice has been, for forty years, Abelson and Sussman's **Structure and Interpretation of Computer Programs** (SICP, 2nd ed., 1996, free online). Its distinctive feature is that it frontloads conceptual substance — recursion, higher-order functions, data abstraction, interpreters — before any conventional language features appear. Scheme is used not because Scheme matters but because its syntax is minimal enough to vanish, leaving the concepts unobscured. SICP's reputation for producing programmers who understand what they are doing has held for four decades. The cost is real: it expects mathematical maturity and sustained engagement with abstract material. Learners who are not prepared find it discouraging.
@@ -407,13 +409,14 @@ The three books on programming practice with the most durable insight are **The 
 
 | Book | Role | Type |
 |---|---|---|
-| Abelson & Sussman, *SICP* (free) | Canonical conceptual entry | Entry |
-| Felleisen et al., *How to Design Programs* (free) | Systematic design methodology | Entry |
-| Kernighan & Ritchie, *The C Programming Language* | Imperative programming at machine level | Depth |
+| Gustedt, [*Modern C* (C23 edition)](https://gustedt.gitlabpages.inria.fr/modern-c/) | Current C for readers with programming experience; free text and example code | Depth |
+| [Abelson & Sussman, *SICP* (free)](https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html) | Canonical conceptual entry | Entry |
+| [Felleisen et al., *How to Design Programs* (free)](https://htdp.org/) | Systematic design methodology | Entry |
+| [Kernighan & Ritchie, *The C Programming Language* (2nd ed., 1988)](https://www.cs.princeton.edu/~bwk/cbook.html) | Classic concise C examples; historical language edition, paired with a current text | Depth |
 | *The Rust Programming Language* (free) | Modern systems programming | Depth |
 | Van Roy & Haridi, *Concepts, Techniques, and Models* | Unified paradigm framework | Depth |
 | Hunt & Thomas, *The Pragmatic Programmer* | Practitioner habits and craft | Auxiliary |
-| Fowler, *Refactoring* (2nd ed.) | Systematic code improvement | Auxiliary |
+| [Fowler, *Refactoring* (2nd ed.)](https://martinfowler.com/books/refactoring.html) | Systematic code improvement | Auxiliary |
 | Brooks, *The Mythical Man-Month* | Software project dynamics | Auxiliary |
 | Seibel, *Coders at Work* | How mature programmers actually think | Auxiliary |
 
@@ -429,10 +432,10 @@ The three books on programming practice with the most durable insight are **The 
 
 | Course | Platform | Type |
 |---|---|---|
-| Berkeley CS 61A + *Composing Programs* (free) | Berkeley / course site | Entry |
+| [Berkeley CS 61A + *Composing Programs* (free)](https://cs61a.org/) | Berkeley / course site | Entry |
 | MIT 6.009 *Fundamentals of Programming* (free) | MIT OCW | Entry |
 | Nand to Tetris Parts I & II (free) | nand2tetris.org / Coursera | Depth |
-| Harvard CS50x (free; optional paid certificate) | Harvard / edX / CS50 site | Auxiliary |
+| [Harvard CS50x (free; optional paid certificate)](https://cs50.harvard.edu/x/) | Harvard / edX / CS50 site | Auxiliary |
 
 **Practice, Tools, and Code**
 
@@ -519,6 +522,8 @@ A useful learning test combines several activities: define a small structure, dr
 
 #### Resources
 
+For a first study of discrete mathematics, choose one text or course with proof exercises and work through it in order. Use Mathematics for Computer Science for the connection between proofs and computing; use [Berkeley CS 70](https://www.eecs70.org/) for a sequence connecting discrete mathematics and probability. The course notes and problems are the main entry here, not a promise of a complete public video course. Algebraic combinatorics is a later specialization, not an equivalent substitute for an introductory discrete-mathematics course.
+
 **Books and Texts**
 
 The current canonical entry is Lehman, Leighton, and Meyer's **Mathematics for Computer Science** (MIT 6.042J, free PDF), developed for MIT's introductory mathematics course for CS students. The book's distinguishing feature is that it treats proof technique as the central subject rather than as background: the first substantial chapter is about proofs, and the mathematical content (number theory, graph theory, probability, counting) is developed within a framework that constantly asks how claims are established, not just what the claims are. It is unusually well-written for the genre, with a direct voice that takes the philosophical content of mathematical reasoning seriously. The companion MIT 6.042J lectures (free on MIT OpenCourseWare and YouTube) are of high quality and are worth using alongside the text, especially for topics where a worked example helps more than additional reading.
@@ -539,7 +544,7 @@ Pólya's **How to Solve It** is the heterodox text that belongs alongside the te
 
 | Book | Role | Type |
 |---|---|---|
-| Lehman, Leighton, Meyer, *Mathematics for Computer Science* (free) | Current canonical entry | Entry |
+| [Lehman, Leighton, Meyer, *Mathematics for Computer Science* (free)](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/) | Current canonical entry | Entry |
 | Velleman, *How to Prove It* (3rd ed.) | Focused proof-technique entry | Entry |
 | Levin, *Discrete Mathematics: An Open Introduction* (free) | Gentle open discrete math entry | Auxiliary |
 | Hammack, *Book of Proof* (free) | Proof-writing bridge for beginners | Auxiliary |
@@ -557,12 +562,12 @@ Pólya's **How to Solve It** is the heterodox text that belongs alongside the te
 
 **MIT 6.042J on OCW** covers a slightly different syllabus from the most recent textbook edition; reading them together and reconciling the differences is itself a useful exercise in mathematical flexibility. The lectures emphasize different aspects than the text at various points, which means watching lectures on a topic after reading about it often resolves confusions that additional reading would not.
 
-For **combinatorics specifically**, the lectures from MIT 18.212 (Algebraic Combinatorics) and Stanford's CS 70 (Discrete Mathematics and Probability Theory) offer alternative expositions at comparable level. CS 70 is particularly strong on the probability material and on the connection between combinatorics and computation.
+MIT 18.212 treats algebraic combinatorics and is best approached after introductory discrete mathematics. Berkeley CS 70 connects discrete mathematics with probability through course notes and problems. They are useful at different stages rather than interchangeable courses at the same level.
 
 | Course | Platform | Type |
 |---|---|---|
-| MIT 6.042J lectures + problem sets (free) | MIT OCW / YouTube | Entry |
-| Stanford CS 70 *Discrete Math and Probability* (free) | Stanford / YouTube | Entry |
+| [MIT 6.042J lectures + problem sets (free)](https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/) | MIT OCW / YouTube | Entry |
+| [Berkeley CS 70 *Discrete Mathematics and Probability Theory* (free materials)](https://www.eecs70.org/) | Berkeley course notes and exercises | Entry |
 
 **Practice, Tools, and Code**
 
@@ -651,6 +656,8 @@ A compact exercise is to fit a line to a small set of noisy points. Write the de
 
 #### Resources
 
+Use Strang as the main sequence if your goal is to calculate with matrices and understand the geometry behind the operations. Watch the relevant 3Blue1Brown explanation when a geometric idea is unclear, then return to exercises involving actual matrices. Move to Axler when you want a proof-based treatment of vector spaces and linear maps; use numerical linear algebra later to study how finite-precision algorithms behave. These resources answer different questions, so finishing all of them is not a prerequisite for using linear algebra.
+
 **Books and Texts**
 
 The canonical entry is Gilbert Strang's **Introduction to Linear Algebra** (6th ed., 2023), best used alongside his **MIT 18.06 lectures** (free on MIT OpenCourseWare and YouTube). Strang organizes the subject around the four fundamental subspaces and builds geometric intuition throughout; the lectures are worth watching even if you have read the book, because the emphasis differs in ways that deepen understanding. His approach is unusual in that computation and geometry are developed together rather than separately — every matrix operation is accompanied by its geometric meaning. For most learners this is the right starting point, and many practitioners return to it as a reference throughout their careers.
@@ -669,10 +676,10 @@ The **Matrix Cookbook** (Petersen and Pedersen, free, 2012) is a reference docum
 
 | Book | Role | Type |
 |---|---|---|
-| Strang, *Introduction to Linear Algebra* (6th ed.) + MIT 18.06 (free) | Canonical entry; geometric and computational | Entry |
+| [Strang, *Introduction to Linear Algebra* (6th ed.) + MIT 18.06 (free)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) | Canonical entry; geometric and computational | Entry |
 | Axler, *Linear Algebra Done Right* (4th ed., free online) | Structural depth; linear maps over matrices | Depth |
 | Trefethen & Bau, *Numerical Linear Algebra* | Numerical computation and stability | Reference |
-| Deisenroth, Faisal & Ong, *Mathematics for Machine Learning* Ch. 2–5 (free) | ML-specific bridge; matrix calculus | Entry |
+| [Deisenroth, Faisal & Ong, *Mathematics for Machine Learning* Ch. 2–5 (free)](https://mml-book.github.io/) | ML-specific bridge; matrix calculus | Entry |
 | Horn & Johnson, *Matrix Analysis* (2nd ed.) | Advanced matrix theory | Reference |
 | Golub & Van Loan, *Matrix Computations* (4th ed.) | Computational algorithms reference | Reference |
 | Petersen & Pedersen, *The Matrix Cookbook* (free) | Matrix derivative reference | Reference |
@@ -692,10 +699,10 @@ The **Matrix Cookbook** (Petersen and Pedersen, free, 2012) is a reference docum
 
 | Course | Platform | Type |
 |---|---|---|
-| MIT 18.06 Linear Algebra (Strang, free) | MIT OCW / YouTube | Entry |
-| MIT 18.065 Matrix Methods (Strang, free) | MIT OCW / YouTube | Depth |
-| 3Blue1Brown, *Essence of Linear Algebra* (free) | YouTube | Practice |
-| fast.ai Computational Linear Algebra (Rachel Thomas, free) | fast.ai / YouTube | Practice |
+| [MIT 18.06 Linear Algebra (Strang, free)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) | MIT OCW / YouTube | Entry |
+| [MIT 18.065 Matrix Methods (Strang, free)](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) | MIT OCW / YouTube | Depth |
+| [3Blue1Brown, *Essence of Linear Algebra* (free)](https://www.3blue1brown.com/topics/linear-algebra) | YouTube | Practice |
+| [fast.ai Computational Linear Algebra (Rachel Thomas, free)](https://course.fast.ai/) | fast.ai / YouTube | Practice |
 | LAFF, *Linear Algebra: Foundations to Frontiers* | edX / UT Austin | Practice |
 
 **Practice, Tools, and Code**
@@ -811,7 +818,7 @@ For **numerical methods** — the computational implementation of calculus — T
 | MIT OCW 18.01 + 18.02 (free) | Free alternative with complete problem sets | Entry |
 | Hubbard & Hubbard, *Vector Calculus, Linear Algebra, and Differential Forms* | Unified multivariable treatment | Depth |
 | Marsden & Tromba, *Vector Calculus* | Multivariable calculus at depth | Depth |
-| Deisenroth, Faisal & Ong, *Mathematics for Machine Learning* Ch. 5 (free) | Matrix calculus; chain rule for ML | Entry |
+| [Deisenroth, Faisal & Ong, *Mathematics for Machine Learning* Ch. 5 (free)](https://mml-book.github.io/) | Matrix calculus; chain rule for ML | Entry |
 | Spivak, *Calculus* (4th ed.) | Rigorous single-variable with proofs | Depth |
 | Abbott, *Understanding Analysis* (2nd ed.) | Accessible real analysis entry | Entry |
 | Tao, *Analysis I* and *Analysis II* (free online) | Real analysis from first principles | Depth |
@@ -832,7 +839,7 @@ For **numerical methods** — the computational implementation of calculus — T
 |---|---|---|
 | MIT 18.01 Single Variable Calculus (free) | MIT OCW | Entry |
 | MIT 18.02 Multivariable Calculus (free) | MIT OCW | Entry |
-| Karpathy, *Neural Networks: Zero to Hero* (free) | YouTube / GitHub | Practice |
+| [Karpathy, *Neural Networks: Zero to Hero* (free)](https://karpathy.ai/zero-to-hero.html) | YouTube / GitHub | Practice |
 
 **Practice, Tools, and Code**
 
@@ -848,7 +855,7 @@ Implementing automatic differentiation from scratch is the most important calcul
 |---|---|---|
 | 3Blue1Brown, *Essence of Calculus* (free) | YouTube | Practice |
 | Paul's Online Math Notes (free) | tutorial.math.lamar.edu | Reference |
-| Karpathy, micrograd (free) | GitHub | Practice |
+| [Karpathy, micrograd (free)](https://github.com/karpathy/micrograd) | GitHub | Practice |
 | SymPy (free) | Python / sympy.org | Practice |
 | Wolfram Alpha (free tier) | wolframalpha.com | Practice |
 
@@ -957,13 +964,13 @@ For **rigorous probability foundations**, Williams's **Probability with Martinga
 | Wasserman, *All of Statistics* (2004) | Concise statistical inference for CS | Depth |
 | McElreath, *Statistical Rethinking* (2nd ed.) | Bayesian reasoning habits; generative models | Depth |
 | Cover & Thomas, *Elements of Information Theory* (2nd ed.) | Information theory reference | Reference |
-| MacKay, *Information Theory, Inference, and Learning Algorithms* (free) | Unified probability, inference, ML | Depth |
+| [MacKay, *Information Theory, Inference, and Learning Algorithms* (free)](https://www.inference.org.uk/mackay/itila/) | Unified probability, inference, ML | Depth |
 | Mitzenmacher & Upfal, *Probability and Computing* (2nd ed.) | Probability for algorithms and CS | Depth |
 | Shalev-Shwartz & Ben-David, *Understanding Machine Learning* (free) | Statistical learning theory | Depth |
 | Vershynin, *High-Dimensional Probability* (free) | Concentration inequalities; modern theory | Depth |
 | Gelman et al., *Bayesian Data Analysis* (3rd ed.) | Comprehensive Bayesian reference | Reference |
 | Williams, *Probability with Martingales* | Measure-theoretic foundations | Depth |
-| Murphy, *Probabilistic Machine Learning: An Introduction* (free) | Comprehensive probabilistic ML | Auxiliary |
+| [Murphy, *Probabilistic Machine Learning: An Introduction* (free)](https://probml.github.io/pml-book/) | Comprehensive probabilistic ML | Auxiliary |
 | Bishop, *Pattern Recognition and Machine Learning* | Classical probabilistic ML reference | Auxiliary |
 | Koller & Friedman, *Probabilistic Graphical Models* | Graphical models reference | Auxiliary |
 
@@ -1296,8 +1303,8 @@ For learners who want the philosophical and historical context alongside the tec
 |---|---|---|
 | Stanford CS 157 Computational Logic (free) | Stanford / course site | Entry |
 | MIT 6.045 / 18.404 Theory of Computation (free) | MIT OCW | Entry |
-| *Theorem Proving in Lean 4* (free) | leanprover-community.github.io | Practice |
-| *Software Foundations* Vol. 1 in Coq (free) | softwarefoundations.cis.upenn.edu | Practice |
+| [*Theorem Proving in Lean 4* (free)](https://lean-lang.org/theorem_proving_in_lean4/) | leanprover-community.github.io | Practice |
+| [*Software Foundations* Vol. 1 in Rocq/Coq (free)](https://softwarefoundations.cis.upenn.edu/) | softwarefoundations.cis.upenn.edu | Practice |
 | OPLSS lectures — Pfenning on proof theory (free) | YouTube / OPLSS site | Depth |
 
 **Practice, Tools, and Current Sources**
@@ -1662,6 +1669,8 @@ A useful exercise is to define a tiny expression language, write an evaluator an
 
 #### Resources
 
+For an implementation-first route, choose PLAI or EOPL and build the evaluators as you read. For a proof-first route, choose TAPL and write typing derivations and induction proofs. Software Foundations adds machine-checked exercises: begin with Logical Foundations before Programming Language Foundations. The [current series](https://softwarefoundations.cis.upenn.edu/) uses Rocq, formerly called Coq; use the prover version specified by the selected volume. Older Coq editions remain useful when their text, exercise files, and environment are kept together.
+
 **Books and Texts**
 
 Pierce's **Types and Programming Languages** (TAPL, 2002) develops typed lambda calculi, subtyping, recursive types, and polymorphism through formal rules, examples, and proofs. It assumes comfort with induction and mathematical notation. Work through small typing derivations and preservation arguments before moving to richer systems. **Advanced Topics in Types and Programming Languages** (ATTAPL, 2005) collects further treatments, including dependent types, effects, and typed low-level programming.
@@ -1676,20 +1685,20 @@ Krishnamurthi's **Programming Languages: Application and Interpretation** (PLAI,
 
 Reynolds's **Theories of Programming Languages** (1998) provides a detailed treatment of language semantics and program reasoning. For separation logic specifically, use his later [2002 paper](https://www.cs.cmu.edu/~jcr/index.html), rather than attributing that later development to the 1998 book.
 
-For **proof assistant-based programming language theory**, Pierce et al.'s **Software Foundations** series (free at softwarefoundations.cis.upenn.edu) provides structured exercises. Volume 1 (*Logical Foundations*) teaches Coq while introducing logic and proof; Volume 2 (*Programming Language Foundations*) formalizes operational semantics, type systems, and Hoare logic in Coq. The series is the standard treatment of PLT in mechanized form and is increasingly required reading for anyone who intends to do formal verification work.
+For mechanized programming-language theory, Software Foundations provides a sequence of checked exercises. Logical Foundations introduces logic, induction, and proof construction; Programming Language Foundations develops operational semantics, type systems, and Hoare logic. Use the current Rocq files with their specified environment, or keep an older Coq edition together with its compatible tools.
 
 For **process calculi and concurrent languages**, Milner's **Communicating and Mobile Systems: the Pi-Calculus** (Cambridge, 1999) is the primary source for the pi-calculus, and Sangiorgi and Walker's **The Pi-Calculus: A Theory of Mobile Processes** (Cambridge, 2001) is the comprehensive reference.
 
 | Book | Role | Type |
 |---|---|---|
-| Pierce, *Types and Programming Languages* (TAPL) | Canonical entry; type systems | Entry |
+| [Pierce, *Types and Programming Languages* (TAPL)](https://www.cis.upenn.edu/~bcpierce/tapl/) | Canonical entry; type systems | Entry |
 | Pierce (ed.), *Advanced Topics in Types and Programming Languages* (ATTAPL) | Extension of TAPL | Depth |
-| Harper, *Practical Foundations for Programming Languages* (PFPL, draft free) | Broader comprehensive alternative | Depth |
+| [Harper, *Practical Foundations for Programming Languages* (PFPL, draft free)](https://www.cs.cmu.edu/~rwh/pfpl/) | Broader comprehensive alternative | Depth |
 | Winskel, *The Formal Semantics of Programming Languages* | Operational and denotational semantics | Depth |
 | Friedman & Wand, *Essentials of Programming Languages* (EOPL) | Implementation-first accessible entry | Practice |
-| Krishnamurthi, *PLAI* (free; optional paid print) | Implementation-first PL concepts | Entry |
+| [Krishnamurthi, *PLAI* (free; optional paid print)](https://www.plai.org/) | Implementation-first PL concepts | Entry |
 | Reynolds, *Theories of Programming Languages* | Denotational + axiomatic at depth | Depth |
-| Pierce et al., *Software Foundations* Vols. 1–2 (free) | Mechanized PLT in Coq | Practice |
+| [Pierce et al., *Software Foundations* Vols. 1–2 (free)](https://softwarefoundations.cis.upenn.edu/) | Mechanized PLT in Rocq/Coq | Practice |
 | Milner, *Communicating and Mobile Systems* | Pi-calculus primary source | Depth |
 
 **Courses and Lectures**
@@ -1700,14 +1709,14 @@ For **process calculi and concurrent languages**, Milner's **Communicating and M
 
 **Oregon Programming Languages Summer School (OPLSS)**, held annually in Eugene, archives lecture series freely on YouTube. OPLSS attracts leading researchers and the lecture series covers topics from introductory PLT through the research frontier. Specific lecture series to prioritize: Frank Pfenning on proof theory and type theory; Andrew Pitts on nominal techniques; Paul-André Melliès on linear logic and game semantics.
 
-**Software Foundations** exercises in Coq, available at softwarefoundations.cis.upenn.edu, constitute a self-paced course that develops mechanized proof skills alongside PLT content. Working through Volume 2 produces both PLT knowledge and Coq competence simultaneously.
+The Software Foundations exercises can serve as a self-paced course. Complete the introductory proof exercises before Volume 2, then construct the progress and preservation arguments rather than only reading their finished scripts.
 
 | Course | Platform | Type |
 |---|---|---|
 | Penn CIS 500 Software Foundations (Pierce, free) | Penn course site | Entry |
 | CMU 15-312 Principles of PL (Harper, free) | CMU course site | Depth |
 | OPLSS lectures (free) | YouTube / OPLSS site | Reference |
-| Software Foundations exercises in Coq (free) | softwarefoundations.cis.upenn.edu | Practice |
+| [Software Foundations exercises in Rocq/Coq (free)](https://softwarefoundations.cis.upenn.edu/) | softwarefoundations.cis.upenn.edu | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -1725,7 +1734,7 @@ The **POPLmark Challenge** (poplmark.org) proposed benchmark proofs for PLT meta
 |---|---|---|
 | PLT Redex (free) | Racket / racket-lang.org | Practice |
 | Programming Languages Zoo (free) | plzoo.andrej.com | Practice |
-| Software Foundations in Coq (free) | softwarefoundations.cis.upenn.edu | Practice |
+| [Software Foundations in Rocq/Coq (free)](https://softwarefoundations.cis.upenn.edu/) | softwarefoundations.cis.upenn.edu | Practice |
 | POPLmark challenge solutions (free) | poplmark.org | Practice |
 | Lean 4 / Mathlib PLT formalizations (free) | leanprover-community.github.io | Reference |
 
@@ -1818,13 +1827,13 @@ Nordström, Petersson, and Smith's **Programming in Martin-Löf's Type Theory** 
 
 | Book | Role | Type |
 |---|---|---|
-| Type-theory chapters in Pierce, *Types and Programming Languages* (TAPL) | Entry to typed lambda calculi and Curry-Howard | Entry |
+| [Type-theory chapters in Pierce, *Types and Programming Languages* (TAPL)](https://www.cis.upenn.edu/~bcpierce/tapl/) | Entry to typed lambda calculi and Curry-Howard | Entry |
 | Advanced type-system chapters in ATTAPL | Dependent types, effects, linear types | Depth |
 | Martin-Löf, *Intuitionistic Type Theory* (Padua notes, free) | Primary source for dependent type theory | Depth |
 | The HoTT Book (free) | Homotopy type theory; contemporary frontier | Depth |
-| Type-theory track in *Software Foundations* Vols. 1-2 (free) | Mechanized PLT and type theory in Coq | Practice |
+| [Type-theory track in *Software Foundations* Vols. 1-2 (free)](https://softwarefoundations.cis.upenn.edu/) | Mechanized PLT and type theory in Rocq/Coq | Practice |
 | Wadler et al., *Programming Language Foundations in Agda* (free) | Mechanized PLT in Agda | Practice |
-| de Moura et al., *Theorem Proving in Lean 4* (free) | Lean 4 tutorial | Practice |
+| [de Moura et al., *Theorem Proving in Lean 4* (free)](https://lean-lang.org/theorem_proving_in_lean4/) | Lean 4 tutorial | Practice |
 | Avigad & Massot, *Mathematics in Lean* (free) | Mathematical formalization in Lean | Practice |
 | Brady, *Type-Driven Development with Idris* (paid) | Dependent types as programming methodology | Depth |
 | Friedman & Christiansen, *The Little Typer* (paid) | Gentle dependent-types intuition | Auxiliary |
@@ -1865,7 +1874,7 @@ Construct small proofs and inspect the resulting terms or proof states. When a s
 |---|---|---|
 | Lean 4 + mathlib (free) | elan / github.com/leanprover | Practice |
 | Agda + PLFA (free) | agda.readthedocs.io | Practice |
-| Coq + Software Foundations (free) | coq.inria.fr / softwarefoundations.cis.upenn.edu | Practice |
+| [Rocq/Coq + Software Foundations (free)](https://softwarefoundations.cis.upenn.edu/) | coq.inria.fr / softwarefoundations.cis.upenn.edu | Practice |
 | Lean Zulip (free) | leanprover.zulipchat.com | Reference |
 | mathlib4 source (free) | github.com/leanprover-community/mathlib4 | Reference |
 
@@ -1946,6 +1955,8 @@ Start by modeling the two-worker counter, obtaining a failing trace, and changin
 
 #### Resources
 
+Choose the kind of feedback you need first. For a concurrent design, begin with Learn TLA+ and inspect counterexamples to a small model. For a proof about program behavior, begin with Software Foundations and complete its proof exercises. The [current Software Foundations volumes](https://softwarefoundations.cis.upenn.edu/) use Rocq, formerly Coq; install the version required by the volume rather than mixing old Coq exercises with an arbitrary new environment. Use Specifying Systems or advanced verification books to deepen a method after this first working example.
+
 **Books and Texts**
 
 **Software Foundations** provides a Rocq/Coq-based sequence: *Logical Foundations* for logic and proof construction, *Programming Language Foundations* for semantics, types, and Hoare logic, and *Verified Functional Algorithms* for algorithm verification. For Lean, *Theorem Proving in Lean 4* teaches the proof environment, while *Functional Programming in Lean* teaches programming. They cover different parts of the preparation and are not interchangeable verification curricula.
@@ -1966,15 +1977,15 @@ Reynolds's **Theories of Programming Languages** develops program reasoning. For
 
 | Book | Role | Type |
 |---|---|---|
-| Pierce et al., *Software Foundations* Vols. 1–3 (free) | Standard Coq-based entry to FM and verification | Entry |
-| Lamport, *Specifying Systems* (free) | Canonical TLA+ reference by its designer | Entry |
+| [Pierce et al., *Software Foundations* Vols. 1–3 (free)](https://softwarefoundations.cis.upenn.edu/) | Standard Rocq/Coq-based entry to FM and verification | Entry |
+| [Lamport, *Specifying Systems* (free)](https://lamport.azurewebsites.net/tla/book.html) | Canonical TLA+ reference by its designer | Entry |
 | Wayne, *Practical TLA+* | Engineer-oriented TLA+ introduction | Entry |
 | Baier & Katoen, *Principles of Model Checking* | Standard model checking textbook | Depth |
 | Clarke, Grumberg & Peled, *Model Checking* | Original model checking reference | Reference |
 | Jackson, *Software Abstractions* (revised ed.) | Lightweight formal methods through Alloy | Entry |
 | Coq verification chapters in Chlipala, *Certified Programming with Dependent Types* (free) | Coq-based verification beyond introductory level | Entry |
 | Bertot & Castéran, *Coq'Art* | Comprehensive Coq reference | Reference |
-| Nipkow & Klein, *Concrete Semantics with Isabelle/HOL* (free; paid print) | Isabelle-based semantics and verification | Practice |
+| [Nipkow & Klein, *Concrete Semantics with Isabelle/HOL* (free; paid print)](https://concrete-semantics.org/) | Isabelle-based semantics and verification | Practice |
 | Leino, *Program Proofs* (paid) | Dafny-based program verification | Entry |
 
 **Courses and Lectures**
@@ -1989,10 +2000,10 @@ Reynolds's **Theories of Programming Languages** develops program reasoning. For
 
 | Course | Platform | Type |
 |---|---|---|
-| Software Foundations (Coq exercises, free) | softwarefoundations.cis.upenn.edu | Practice |
+| [Software Foundations (Rocq/Coq exercises, free)](https://softwarefoundations.cis.upenn.edu/) | softwarefoundations.cis.upenn.edu | Practice |
 | CMU 15-414/615 Bug Catching (free) | CMU course site | Depth |
 | OPLSS formal verification lectures (free) | YouTube / OPLSS site | Depth |
-| MIT 6.5840 Distributed Systems labs (free) | MIT course site | Auxiliary |
+| [MIT 6.5840 Distributed Systems labs (free)](https://pdos.csail.mit.edu/6.824/schedule.html) | MIT course site | Auxiliary |
 
 **Practice, Tools, and Current Sources**
 
@@ -2000,7 +2011,7 @@ Use a tool to check a property you can state precisely. Begin with a small model
 
 **TLA+ Toolbox** or **VS Code TLA+ extension** (free at lamport.azurewebsites.net): install, work through the tutorial in Wayne's *Practical TLA+*, and write a TLA+ specification for a small concurrent algorithm. Seeing the model checker find a counterexample to a plausible-seeming invariant gives a concrete example of what TLA+ is useful for.
 
-**Coq** (free at coq.inria.fr) with the **Proof General** Emacs interface or **VSCoq** for VS Code: install, work through Volume 2 of Software Foundations, and formalize the type soundness proof for the STLC. The experience of having Coq reject a proof because a case is missing makes type soundness concrete in a way that reading does not.
+Use the Rocq/Coq installation and editor setup specified by your Software Foundations edition. After the introductory volume, formalize the STLC type-soundness argument in Volume 2. Inspect the remaining proof state when a case or hypothesis is missing; this feedback explains what the informal argument left implicit.
 
 **Alloy Analyzer** (free at alloytools.org): install, work through Jackson's *Software Abstractions* Chapters 1-5, and model a small file system or address book. The automatic counterexample generation makes specification errors immediately visible.
 
@@ -2123,7 +2134,7 @@ For **categorical logic and programming language semantics**, Lambek and Scott's
 |---|---|---|
 | Awodey, *Category Theory* (2nd ed.) | Standard accessible entry | Entry |
 | Mac Lane, *Categories for the Working Mathematician* (2nd ed.) | Canonical mathematical reference | Reference |
-| Milewski, *Category Theory for Programmers* (free) | Programmer-oriented introduction | Entry |
+| [Milewski, *Category Theory for Programmers* (free)](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/) | Programmer-oriented introduction | Entry |
 | Pierce, *Basic Category Theory for Computer Scientists* | Brief CS-oriented entry | Entry |
 | Barr & Wells, *Category Theory for Computing Science* (free) | Comprehensive CS-oriented text | Depth |
 | Riehl, *Category Theory in Context* (free) | Graduate-level treatment | Depth |
@@ -2147,7 +2158,7 @@ The **Topos Institute** produces talks and seminars on applied category theory, 
 
 | Course | Platform | Type |
 |---|---|---|
-| Milewski, Category Theory for Programmers lectures (free) | YouTube | Entry |
+| [Milewski, Category Theory for Programmers lectures (free)](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/) | YouTube | Entry |
 | ACT School lectures (free) | YouTube / ACT site | Entry |
 | Emily Riehl lectures on category theory (free) | YouTube | Depth |
 | The Catsters category theory videos (free) | YouTube | Auxiliary |
@@ -2165,7 +2176,7 @@ Working through the Haskell `Functor`, `Applicative`, and `Monad` typeclasses wi
 
 | Resource | Platform | Type |
 |---|---|---|
-| nLab (free) | ncatlab.org | Reference |
+| [nLab (free)](https://ncatlab.org/nlab/show/HomePage) | ncatlab.org | Reference |
 | Haskell typeclass implementations (functor laws, monad laws) | Local | Practice |
 | Agda category theory formalization | Local / agda.readthedocs.io | Practice |
 | Catlab.jl (free) | Julia package | Practice |
@@ -2272,7 +2283,7 @@ Moser and Chen's **A Student's Guide to Coding and Information Theory** (Cambrid
 | Book | Role | Type |
 |---|---|---|
 | Cover & Thomas, *Elements of Information Theory* (2nd ed.) | Canonical mathematical reference | Reference |
-| MacKay, *Information Theory, Inference, and Learning Algorithms* (free) | ML-oriented entry; unified treatment | Entry |
+| [MacKay, *Information Theory, Inference, and Learning Algorithms* (free)](https://www.inference.org.uk/mackay/itila/) | ML-oriented entry; unified treatment | Entry |
 | Li & Vitányi, *Introduction to Kolmogorov Complexity* (4th ed.) | Algorithmic information theory | Depth |
 | Richardson & Urbanke, *Modern Coding Theory* | LDPC and turbo codes | Depth |
 | Shannon, "A Mathematical Theory of Communication" (1948, free) | Founding paper; historically central | Auxiliary |
@@ -2405,13 +2416,15 @@ The same model also helps identify security boundaries. Architectural permission
 
 #### Resources
 
+If you can already program and want to understand what your program makes the machine do, start with CSAPP and the [CMU 15-213 Fall 2015 sequence](https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html). Its readings, lectures, and labs connect representation, machine code, memory, and processes. Use the lab's specified environment. Choose Computer Organization and Design instead when your immediate goal is datapaths and processor construction; reserve A Quantitative Approach for comparing architectures using workload and performance evidence.
+
 **Books and Texts**
 
 Bryant and O'Hallaron's **Computer Systems: A Programmer's Perspective** connects machine-level code, memory, linking, and concurrency to software behavior. Patterson and Hennessy's **Computer Organization and Design** adds datapaths, control, and pipeline implementation; choose an ISA edition that matches your exercises. **Computer Architecture: A Quantitative Approach** develops quantitative comparisons at greater depth. Drepper's **What Every Programmer Should Know About Memory** offers a detailed memory-system perspective, with processor-specific advice to check against the hardware in use.
 
 | Book | Role | Type |
 |---|---|---|
-| Bryant & O'Hallaron, *Computer Systems: A Programmer's Perspective* (3rd ed.) | Systems from a programmer's perspective | Entry |
+| [Bryant & O'Hallaron, *Computer Systems: A Programmer's Perspective* (3rd ed.)](https://csapp.cs.cmu.edu/) | Systems from a programmer's perspective | Entry |
 | Patterson & Hennessy, *Computer Organization and Design* (RISC-V ed.) | Hardware-oriented entry | Entry |
 | Hennessy & Patterson, *Computer Architecture: A Quantitative Approach* (6th ed.) | Graduate-level reference | Reference |
 | Drepper, *What Every Programmer Should Know About Memory* (free) | Memory hierarchy at depth | Depth |
@@ -2423,7 +2436,7 @@ Bryant and O'Hallaron's **Computer Systems: A Programmer's Perspective** connect
 
 | Course | Platform | Type |
 |---|---|---|
-| CMU 15-213 Introduction to Computer Systems (free) | CMU / YouTube | Entry |
+| [CMU 15-213 Introduction to Computer Systems (free)](https://www.cs.cmu.edu/afs/cs/academic/class/15213-f15/www/schedule.html) | CMU / YouTube | Entry |
 | Berkeley CS 61C Computer Architecture (free) | Berkeley / YouTube | Entry |
 | MIT 6.004 Computation Structures (free) | MIT OCW / edX | Depth |
 
@@ -2433,7 +2446,7 @@ Use **Compiler Explorer** to inspect generated instructions, **Cachegrind** to s
 
 | Resource | Platform | Type |
 |---|---|---|
-| Godbolt Compiler Explorer (free) | godbolt.org | Practice |
+| [Godbolt Compiler Explorer (free)](https://godbolt.org/) | godbolt.org | Practice |
 | Cachegrind / Valgrind (free) | valgrind.org | Practice |
 | perf (Linux, free) | Linux kernel tools | Practice |
 | Agner Fog optimization manuals (free) | agner.org | Reference |
@@ -2529,27 +2542,29 @@ For performance, separate CPU work from waiting and contention. CPU-bound work c
 
 #### Resources
 
+For a first operating-systems course, use [OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/) as the main explanation of mechanisms: read a chapter, predict the behavior of its example, and use the associated homework or project to test that prediction. Its treatment of persistence is particularly useful for connecting file-system structures to crash recovery. Once C pointers, processes, and basic architecture are familiar, follow the [MIT 6.1810 Fall 2024 xv6 sequence](https://pdos.csail.mit.edu/6.1810/2024/schedule.html), including its own book, code, and lab instructions. Start with utilities and system calls before page tables and copy-on-write. Use Linux Kernel Development for historical implementation choices, and current kernel documentation for current interfaces.
+
 **Books and Texts**
 
-**Operating Systems: Three Easy Pieces** explains virtualization, concurrency, and persistence through the problems each mechanism solves. Pair selected chapters with **xv6**, a small teaching kernel, and its accompanying book. **Linux Kernel Development** provides a historical Linux implementation perspective; its 2010 edition is not a specification of present kernels and did not predate every form of container. Gregg's **Systems Performance** develops measurement and diagnosis. APUE and **The Linux Programming Interface** serve as system-programming references.
+OSTEP's virtualization, concurrency, and persistence chapters provide the main conceptual sequence. Tanenbaum and Bos offer a broader textbook alternative. Gregg's Systems Performance is most useful when you have a running system and a measurement question. APUE and The Linux Programming Interface explain system-programming interfaces; Linux Kernel Development supplies a historical implementation perspective from its 2010 edition.
 
 | Book | Role | Type |
 |---|---|---|
-| Arpaci-Dusseau, *Operating Systems: Three Easy Pieces* (free) | Virtualization, concurrency, and persistence | Entry |
-| MIT 6.S081 + xv6 codebase (free) | Teaching-kernel implementation exercises | Practice |
-| Robert Love, *Linux Kernel Development* (3rd ed.) | Bridge from teaching kernel to production kernel | Depth |
-| Brendan Gregg, *Systems Performance* (2nd ed.) | Performance analysis at the systems level | Depth |
+| [Arpaci-Dusseau, *Operating Systems: Three Easy Pieces* (free)](https://pages.cs.wisc.edu/~remzi/OSTEP/) | Virtualization, concurrency, and persistence | Entry |
+| [MIT 6.1810 Fall 2024 + xv6 book, code, and labs (free)](https://pdos.csail.mit.edu/6.1810/2024/schedule.html) | Teaching-kernel implementation; use the matching course repository | Practice |
+| Robert Love, *Linux Kernel Development* (3rd ed.) | Historical Linux implementation perspective (2010); current interfaces require current documentation | Reference |
+| [Brendan Gregg, *Systems Performance* (2nd ed.)](https://www.brendangregg.com/systems-performance-2nd-edition-book.html) | Performance analysis at the systems level | Depth |
 | Stevens & Rago, *Advanced Programming in the UNIX Environment* | Unix system programming reference | Reference |
-| Kerrisk, *The Linux Programming Interface* (paid) | Linux system programming reference | Reference |
+| [Kerrisk, *The Linux Programming Interface* (paid)](https://man7.org/tlpi/) | Linux system programming reference | Reference |
 | Tanenbaum & Bos, *Modern Operating Systems* | Comprehensive reference; broader than OSTEP | Reference |
 
 **Courses and Lectures**
 
-MIT's xv6 course has appeared under **6.S081** and **6.1810**; the [6.1810 materials](https://pdos.csail.mit.edu/6.1810/2025/overview.html) describe an undergraduate course with implementation labs. Match the source, book, and assignments to the selected offering. **Berkeley CS 162** provides another route through processes, synchronization, memory, and filesystems. Implementing and explaining a mechanism are complementary activities, not a competition over a fixed number of lab hours.
+MIT's xv6 course has appeared under **6.S081** and **6.1810**; the [6.1810 materials](https://pdos.csail.mit.edu/6.1810/2024/schedule.html) describe an undergraduate course with implementation labs. Match the source, book, and assignments to the selected offering. **Berkeley CS 162** provides another route through processes, synchronization, memory, and filesystems. Implementing and explaining a mechanism are complementary activities, not a competition over a fixed number of lab hours.
 
 | Course | Platform | Type |
 |---|---|---|
-| MIT 6.S081 Operating System Engineering (free) | MIT / YouTube | Entry |
+| [MIT 6.1810 Operating System Engineering, Fall 2024 (free materials)](https://pdos.csail.mit.edu/6.1810/2024/schedule.html) | MIT schedule, readings, and implementation labs | Practice |
 | Berkeley CS 162 Operating Systems (free) | YouTube | Entry |
 
 **Practice, Tools, and Current Sources**
@@ -2561,8 +2576,8 @@ MIT's xv6 course has appeared under **6.S081** and **6.1810**; the [6.1810 mater
 | strace (free) | Linux | Practice |
 | Linux perf for OS tracing (free) | Linux kernel tools | Practice |
 | Brendan Gregg BPF scripts and bpftrace (free) | GitHub / brendangregg.com | Practice |
-| Linux Kernel Documentation (free) | docs.kernel.org | Reference |
-| man7.org Linux man-pages (free) | man7.org | Reference |
+| [Linux Kernel Documentation (free)](https://docs.kernel.org/) | docs.kernel.org | Reference |
+| [man7.org Linux man-pages (free)](https://man7.org/linux/man-pages/) | man7.org | Reference |
 | OSDev Wiki (free) | wiki.osdev.org | Auxiliary |
 | LWN.net (free access after delay) | lwn.net | Reference |
 
@@ -2651,16 +2666,18 @@ The fourth change is the ability to make informed protocol design decisions. Mos
 
 #### Resources
 
+Choose Kurose and Ross for an application-first explanation of how network layers support services; choose Peterson and Davie when you want to reason about the system design behind those layers. After basic C++ programming and networking concepts, the [Stanford CS144 materials](https://cs144.github.io/) provide an implementation route. Pair a small socket program with a packet capture before attempting a TCP implementation. Read the relevant RFC when you need exact behavior, after you can explain the purpose of the mechanism.
+
 **Books and Texts**
 
 Kurose and Ross's **Computer Networking: A Top-Down Approach** begins with applications and develops the supporting protocols. Peterson and Davie's **Computer Networks: A Systems Approach** emphasizes system design. Fall and Stevens's second edition of **TCP/IP Illustrated, Volume 1** studies packet-level behavior. Read historical protocol descriptions alongside the applicable specifications: RFC 9293 consolidates the TCP specification that began with RFC 793; TLS 1.3 and QUIC are specified separately.
 
 | Book | Role | Type |
 |---|---|---|
-| Kurose & Ross, *Computer Networking: A Top-Down Approach* (8th ed.) | Applications through network mechanisms | Entry |
-| Peterson & Davie, *Computer Networks: A Systems Approach* (free online) | Systems-engineering perspective | Entry |
+| [Kurose & Ross, *Computer Networking: A Top-Down Approach* (8th ed.)](https://gaia.cs.umass.edu/kurose_ross/) | Applications through network mechanisms | Entry |
+| [Peterson & Davie, *Computer Networks: A Systems Approach* (free online)](https://book.systemsapproach.org/) | Systems-engineering perspective | Entry |
 | Bonaventure, *Computer Networking: Principles, Protocols and Practice* (free online) | Open textbook alternative | Auxiliary |
-| Grigorik, *High Performance Browser Networking* (free online) | Web networking and performance bridge | Auxiliary |
+| [Grigorik, *High Performance Browser Networking* (free online)](https://hpbn.co/) | Web networking and performance bridge | Auxiliary |
 | Fall & Stevens, *TCP/IP Illustrated, Volume 1* (2nd ed.) | Deep TCP/IP reference | Reference |
 | Saltzer, Reed & Clark, "End-to-End Arguments in System Design" (1981, free) | Foundational architectural paper | Depth |
 | Major RFCs: 791 (IPv4), 8200 (IPv6), 9293 (TCP), 1034/1035 (DNS), 8446 (TLS 1.3), 9000 (QUIC) | Authoritative protocol specifications | Reference |
@@ -2671,10 +2688,10 @@ Kurose and Ross's **Computer Networking: A Top-Down Approach** begins with appli
 
 | Course | Platform | Type |
 |---|---|---|
-| Stanford CS 144 Introduction to Computer Networking (free) | Stanford / course site | Entry |
+| [Stanford CS 144 Introduction to Computer Networking (free)](https://cs144.github.io/) | Stanford / course site | Entry |
 | Princeton COS 461 Computer Networks (free) | Princeton / course site | Entry |
-| Beej's Guide to Network Programming (free) | beej.us | Practice |
-| Beej's Guide to Network Concepts (free) | beej.us | Auxiliary |
+| [Beej's Guide to Network Programming (free)](https://beej.us/guide/bgnet/) | beej.us | Practice |
+| [Beej's Guide to Network Concepts (free)](https://beej.us/guide/bgnet0/) | beej.us | Auxiliary |
 | Julia Evans networking, DNS, and HTTP zines (paid) | wizardzines.com | Auxiliary |
 
 **Practice, Tools, and Current Sources**
@@ -2685,7 +2702,7 @@ Use **Wireshark** to inspect captured traffic, remembering that encryption hides
 |---|---|---|
 | Wireshark (free) | wireshark.org | Practice |
 | curl with verbose flags (free) | curl.se | Practice |
-| Stanford CS 144 TCP implementation project | Course site | Practice |
+| [Stanford CS 144 TCP implementation project](https://cs144.github.io/) | Course site | Practice |
 | Cloudflare blog (free) | blog.cloudflare.com | Reference |
 | APNIC blog (free) | blog.apnic.net | Reference |
 | QUIC implementation projects: quiche, ngtcp2, MsQuic (free) | GitHub | Reference |
@@ -2779,6 +2796,8 @@ Choose storage and deployment from workload requirements: point queries or scans
 
 #### Resources
 
+For a first implementation-oriented path, use [CMU 15-445 Fall 2025](https://15445.courses.cs.cmu.edu/fall2025/schedule.html) with Database System Concepts, seventh edition, and the projects linked by that offering. Start with the C++ preparation and relational/SQL material; the buffer-pool and later projects assume systems-programming ability. Berkeley CS186 offers another coherent route, not additional compulsory coursework. Read Architecture of a Database System after you can explain a query's path through storage and execution; use Database Internals for deeper storage questions. DDIA complements this with cross-system trade-offs rather than replacing database implementation training.
+
 **Books and Texts**
 
 Ramakrishnan and Gehrke, Garcia-Molina and colleagues, and Silberschatz and colleagues offer broad database texts covering models, queries, storage, and transactions. Choose one as a primary route and use the others for alternative explanations. **Designing Data-Intensive Applications** connects these ideas to distributed services. Hellerstein, Stonebraker, and Hamilton's **Architecture of a Database System**, the **Red Book**, and Petrov's **Database Internals** add architecture, original papers, and storage implementation perspectives.
@@ -2787,10 +2806,10 @@ Ramakrishnan and Gehrke, Garcia-Molina and colleagues, and Silberschatz and coll
 |---|---|---|
 | Ramakrishnan & Gehrke, *Database Management Systems* (3rd ed.) | Database models and mechanisms | Entry |
 | Garcia-Molina, Ullman & Widom, *Database Systems: The Complete Book* | Broader foundational entry | Entry |
-| Silberschatz, Korth & Sudarshan, *Database System Concepts* (7th ed.) | Traditional comprehensive alternative | Entry |
-| Database chapters in Kleppmann, *Designing Data-Intensive Applications* | Distributed data systems for practitioners | Depth |
-| Hellerstein, Stonebraker & Hamilton, "Architecture of a Database System" (free) | Architectural consolidation | Depth |
-| Bailis, Hellerstein & Stonebraker (eds.), *Readings in Database Systems* (free) | Foundational paper anthology | Reference |
+| [Silberschatz, Korth & Sudarshan, *Database System Concepts* (7th ed.)](https://www.db-book.com/) | Traditional comprehensive alternative | Entry |
+| [Database chapters in Kleppmann & Riccomini, *Designing Data-Intensive Applications* (2nd ed.)](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/) | Distributed data systems for practitioners | Depth |
+| [Hellerstein, Stonebraker & Hamilton, "Architecture of a Database System" (free)](https://dsf.berkeley.edu/papers/fntdb07-architecture.pdf) | Architectural consolidation | Depth |
+| [Bailis, Hellerstein & Stonebraker (eds.), *Readings in Database Systems* (free)](http://www.redbook.io/) | Foundational paper anthology | Reference |
 | Petrov, *Database Internals* | Storage engine implementation | Practice |
 | Gray & Reuter, *Transaction Processing: Concepts and Techniques* | Deep transaction reference | Reference |
 
@@ -2800,7 +2819,7 @@ Ramakrishnan and Gehrke, Garcia-Molina and colleagues, and Silberschatz and coll
 
 | Course | Platform | Type |
 |---|---|---|
-| CMU 15-445/645 Database Systems (Pavlo, free) | YouTube / CMU course site | Entry |
+| [CMU 15-445/645 Database Systems (Pavlo, free)](https://15445.courses.cs.cmu.edu/fall2025/schedule.html) | YouTube / CMU course site | Entry |
 | Berkeley CS 186 Introduction to Database Systems (free) | Berkeley course site | Entry |
 
 **Practice, Tools, and Current Sources**
@@ -2809,14 +2828,14 @@ Ramakrishnan and Gehrke, Garcia-Molina and colleagues, and Silberschatz and coll
 
 | Resource | Platform | Type |
 |---|---|---|
-| PostgreSQL EXPLAIN / EXPLAIN ANALYZE | PostgreSQL / psql | Practice |
+| [PostgreSQL EXPLAIN / EXPLAIN ANALYZE](https://www.plai.org/) | PostgreSQL / psql | Practice |
 | PostgreSQL Internals documentation (free) | postgresql.org/docs | Reference |
-| SQLite source code and documentation (free) | sqlite.org | Reference |
-| Use The Index, Luke! (free) | use-the-index-luke.com | Reference |
+| [SQLite source code and documentation (free)](https://www.sqlite.org/docs.html) | sqlite.org | Reference |
+| [Use The Index, Luke! (free)](https://use-the-index-luke.com/) | use-the-index-luke.com | Reference |
 | Jepsen database consistency analyses (free) | jepsen.io | Reference |
-| CMU BusTub educational DBMS (free) | github.com/cmu-db/bustub | Practice |
+| [CMU BusTub educational DBMS (free)](https://github.com/cmu-db/bustub) | github.com/cmu-db/bustub | Practice |
 | DuckDB internals documentation and DiDi course (free) | duckdb.org | Reference |
-| CMU 15-445 programming projects (free) | CMU course site | Practice |
+| [CMU 15-445 programming projects (free)](https://15445.courses.cs.cmu.edu/fall2025/schedule.html) | CMU course site | Practice |
 
 #### Traps
 
@@ -2911,17 +2930,19 @@ To practice, draw the trust boundaries of a small service and follow one request
 
 #### Resources
 
+Choose the starting resource by the security question. Anderson explains how technical mechanisms interact with people and institutions; Katz and Lindell are for definitions and proofs of cryptographic security. For hands-on web security, use PortSwigger's Web Security Academy and its isolated labs, then consult OWASP guidance to organize checks. Cryptopals develops cryptographic reasoning through implementation exercises. The older web-security books remain useful for mechanisms and historical attacks, but current browser and protocol behavior must be checked against current documentation.
+
 **Books and Texts**
 
 Anderson's **Security Engineering** connects technical mechanisms to people, institutions, and incentives. Katz and Lindell's **Introduction to Modern Cryptography** develops formal definitions and proofs; Aumasson's **Serious Cryptography** offers an implementation-oriented route. OWASP's testing and verification materials organize application checks. **The Web Application Hacker's Handbook** and **The Tangled Web** provide historical web-security depth, with browser and protocol details to check against newer documentation. NIST publishes the normative post-quantum standards.
 
 | Book | Role | Type |
 |---|---|---|
-| Anderson, *Security Engineering* (3rd ed., free) | Comprehensive foundational reference | Reference |
+| [Anderson, *Security Engineering* (3rd ed., free)](https://www.cl.cam.ac.uk/~rja14/book.html) | Comprehensive foundational reference | Reference |
 | Katz & Lindell, *Introduction to Modern Cryptography* (3rd ed.) | Cryptographic theory | Depth |
 | Aumasson, *Serious Cryptography* | Accessible cryptographic practice | Entry |
-| *Crypto 101* (free) | Friendly practical cryptography supplement | Auxiliary |
-| Boneh & Shoup, *A Graduate Course in Applied Cryptography* (free) | Graduate cryptographic theory | Depth |
+| [*Crypto 101* (free)](https://www.crypto101.io/) | Friendly practical cryptography supplement | Auxiliary |
+| [Boneh & Shoup, *A Graduate Course in Applied Cryptography* (free)](https://toc.cryptobook.us/) | Graduate cryptographic theory | Depth |
 | OWASP Testing Guide (free) | Web application security | Reference |
 | OWASP ASVS (free) | Application security verification | Reference |
 | Stuttard & Pinto, *The Web Application Hacker's Handbook* (2nd ed.) | Web security attack perspective | Depth |
@@ -2936,10 +2957,10 @@ Anderson's **Security Engineering** connects technical mechanisms to people, ins
 |---|---|---|
 | Stanford CS255 / Dan Boneh Coursera Cryptography (free) | Stanford / Coursera | Entry |
 | MIT 6.858 Computer Systems Security (free) | MIT OCW | Entry |
-| PortSwigger Web Security Academy (free) | portswigger.net/web-security | Practice |
-| Cryptopals (free) | cryptopals.com | Practice |
+| [PortSwigger Web Security Academy (free)](https://portswigger.net/web-security) | portswigger.net/web-security | Practice |
+| [Cryptopals (free)](https://cryptopals.com/) | cryptopals.com | Practice |
 | OWASP WebGoat / HackTheBox (free tiers) | Various | Practice |
-| pwn.college (free) | pwn.college | Practice |
+| [pwn.college (free)](https://pwn.college/) | pwn.college | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -3048,13 +3069,15 @@ Practice on a small replicated service. Record calls and responses, interrupt co
 
 #### Resources
 
+For engineers who already know basic storage and networking, use [DDIA, second edition](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/), by Martin Kleppmann and Chris Riccomini, as the main guide to data-system trade-offs. The first edition remains useful, but its authorship and chapter numbering differ. Pair the conceptual reading with Kleppmann's distributed-systems lectures, then undertake MIT 6.5840's implementation labs using one offering's instructions and tests. Choose Lynch or Cachin and coauthors when your goal is to state failure assumptions and prove algorithm properties, rather than to survey engineering choices.
+
 **Books and Texts**
 
 **Designing Data-Intensive Applications** organizes distributed data systems around engineering choices. Van Steen and Tanenbaum's **Distributed Systems** offers a broader treatment of naming, communication, coordination, replication, and faults. Lynch's **Distributed Algorithms** develops explicit models and proofs. Read a topic at the level needed for the claim you are making: implementation decisions and impossibility proofs require different kinds of detail.
 
 | Book | Role | Type |
 |---|---|---|
-| Kleppmann, *Designing Data-Intensive Applications* | Contemporary engineering-oriented entry | Entry |
+| [Kleppmann & Riccomini, *Designing Data-Intensive Applications* (2nd ed.)](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/) | Contemporary engineering-oriented entry | Entry |
 | Tanenbaum & van Steen, *Distributed Systems* (4th ed., free) | Comprehensive academic reference | Entry |
 | Lynch, *Distributed Algorithms* | Mathematical treatment of distributed algorithms | Depth |
 | Cachin, Guerraoui & Rodrigues, *Introduction to Reliable and Secure Distributed Programming* | Rigorous algorithmic foundations | Depth |
@@ -3065,8 +3088,8 @@ Practice on a small replicated service. Record calls and responses, interrupt co
 
 | Course | Platform | Type |
 |---|---|---|
-| MIT 6.5840 Distributed Systems (free) | MIT / YouTube | Entry |
-| Kleppmann Cambridge distributed systems lectures (free) | YouTube | Entry |
+| [MIT 6.5840 Distributed Systems (free)](https://pdos.csail.mit.edu/6.824/schedule.html) | MIT / YouTube | Entry |
+| [Kleppmann, Cambridge distributed-systems materials (2021–22)](https://www.cl.cam.ac.uk/teaching/2122/ConcDisSys/materials.html) | Course notes, exercises, and linked public lecture videos | Entry |
 
 **Papers and Current Sources**
 
@@ -3088,7 +3111,7 @@ Use the **Raft lab** to connect protocol rules to persistent state and recovery.
 
 | Resource | Platform | Type |
 |---|---|---|
-| MIT 6.5840 Raft lab | pdos.csail.mit.edu/6.5840 | Practice |
+| [MIT 6.5840 Raft lab](https://pdos.csail.mit.edu/6.824/schedule.html) | pdos.csail.mit.edu/6.5840 | Practice |
 | TLA+ with Raft specification | lamport.azurewebsites.net + GitHub | Practice |
 | Jepsen analyses (free) | jepsen.io | Reference |
 | Jepsen consistency models (free) | jepsen.io/consistency | Reference |
@@ -3184,14 +3207,16 @@ The same ideas help design a small configuration or query language. Define valid
 
 #### Resources
 
+If this is your first language implementation, start with [Crafting Interpreters](https://craftinginterpreters.com/): build the Java tree-walk interpreter, then the C bytecode virtual machine. Basic programming, recursive data structures, and C memory management are useful preparation. This route makes parsing, scope, closures, and runtime storage concrete, but does not provide a full optimizing native-code compiler. Continue with Engineering a Compiler for analysis and optimization, or Appel for a complete project in one implementation language. [Cornell CS6120's self-guided course](https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/) adds videos, readings, and implementation tasks at an advanced level. Keep the Dragon Book and The Garbage Collection Handbook for the topics where you need a systematic reference.
+
 **Books and Texts**
 
 **Crafting Interpreters** builds a tree-walking interpreter and a bytecode virtual machine. **Engineering a Compiler** develops analysis, optimization, and code generation; Appel's **Modern Compiler Implementation** organizes a compiler project. The **Dragon Book** covers front ends as well as substantial optimization and code-generation material. **The Garbage Collection Handbook** studies memory-management algorithms, and Muchnick's **Advanced Compiler Design and Implementation** provides detailed optimization treatments. Choose complementary chapters rather than ranking the entire books as interchangeable.
 
 | Book | Role | Type |
 |---|---|---|
-| Nystrom, *Crafting Interpreters* (free) | Accessible entry with two working implementations | Practice |
-| Cooper & Torczon, *Engineering a Compiler* (3rd ed.) | Compiler analysis, optimization, and code generation | Entry |
+| [Nystrom, *Crafting Interpreters* (free)](https://craftinginterpreters.com/) | Accessible entry with two working implementations | Practice |
+| Cooper & Torczon, *Engineering a Compiler* (3rd ed.) | Analysis, optimization, and code generation after introductory implementation | Depth |
 | Appel, *Modern Compiler Implementation* (ML/Java/C) | Complete-project alternative primary text | Practice |
 | Aho, Lam, Sethi & Ullman, *Compilers* (Dragon Book) | Syntax, semantics, optimization, and code generation | Reference |
 | Jones, Hosking & Moss, *The Garbage Collection Handbook* (2nd ed.) | GC algorithms reference | Reference |
@@ -3204,7 +3229,7 @@ The same ideas help design a small configuration or query language. Define valid
 | Course | Platform | Type |
 |---|---|---|
 | Stanford CS 143 Compilers (free) | Stanford / course site | Entry |
-| Cornell CS 6120 Advanced Compilers (free) | cs.cornell.edu/courses/cs6120 | Depth |
+| [Cornell CS 6120 Advanced Compilers, self-guided course (free)](https://www.cs.cornell.edu/courses/cs6120/2025fa/self-guided/) | Cornell videos, readings, and implementation tasks | Depth |
 
 **Practice, Tools, and Current Sources**
 
@@ -3212,8 +3237,8 @@ Use **Compiler Explorer** to compare source with generated output and **LLVM Kal
 
 | Resource | Platform | Type |
 |---|---|---|
-| Compiler Explorer (free) | godbolt.org | Practice |
-| LLVM Kaleidoscope tutorial (free) | llvm.org/docs/tutorial | Practice |
+| [Compiler Explorer (free)](https://godbolt.org/) | godbolt.org | Practice |
+| [LLVM Kaleidoscope tutorial (free)](https://llvm.org/docs/tutorial/) | llvm.org/docs/tutorial | Practice |
 | OpenJDK HotSpot source | github.com/openjdk/jdk | Reference |
 | V8 source and blog | github.com/v8/v8, v8.dev/blog | Reference |
 | Go runtime source | github.com/golang/go/tree/master/src/runtime | Reference |
@@ -3303,6 +3328,8 @@ Practice with a small sales stream containing out-of-order and duplicate records
 
 #### Resources
 
+Start with Streaming Systems when event time, windows, and late data are the concepts you need to understand. Use Kafka: The Definitive Guide for Kafka's operational model, not as a substitute for those general concepts. Build one small pipeline, replay its input, introduce late records, and observe the output. Then use the documentation for the exact Kafka, Flink, or Beam version you chose. This makes the difference between a stream-processing model and a product API visible.
+
 **Books and Texts**
 
 **Streaming Systems** explains time, windows, triggers, and evolving results. **Kafka: The Definitive Guide** covers a particular log platform; **Designing Event-Driven Systems** connects messaging to application architecture. **Stream Processing with Apache Flink** develops processor-specific mechanisms. Use the conceptual material across systems, but check API, connector, and recovery details against the version you run.
@@ -3322,9 +3349,9 @@ The **Dataflow model paper** separates computation from windowing, triggering, a
 |---|---|---|
 | Akidau et al., "The Dataflow Model" (VLDB 2015, free) | Formal foundations | Depth |
 | Kreps, "The Log" essay (free) | Foundational essay on event logs | Depth |
-| Apache Flink documentation (free) | Authoritative stateful streaming reference | Reference |
-| Apache Kafka documentation (free) | Authoritative Kafka reference | Reference |
-| Apache Beam documentation (free) | Unified programming model reference | Reference |
+| [Apache Flink documentation (free)](https://nightlies.apache.org/flink/flink-docs-stable/) | Authoritative stateful streaming reference | Reference |
+| [Apache Kafka documentation (free)](https://kafka.apache.org/documentation/) | Authoritative Kafka reference | Reference |
+| [Apache Beam documentation (free)](https://beam.apache.org/documentation/) | Unified programming model reference | Reference |
 | Confluent blog (free) | Contemporary streaming content at scale | Reference |
 | Materialize blog (free) | Streaming database and differential dataflow | Reference |
 
@@ -3334,9 +3361,9 @@ Build a five-minute event-time aggregation with an explicit lateness policy. Sen
 
 | Resource | Platform | Type |
 |---|---|---|
-| Kafka Quickstart (free) | kafka.apache.org | Practice |
+| [Kafka Quickstart (free)](https://kafka.apache.org/documentation/) | kafka.apache.org | Practice |
 | Kafka Streams documentation (free) | kafka.apache.org/documentation/streams | Reference |
-| Flink Quickstart (free) | flink.apache.org | Practice |
+| [Flink Quickstart (free)](https://nightlies.apache.org/flink/flink-docs-stable/) | flink.apache.org | Practice |
 | Kafka consumer lag monitoring | kafka-consumer-groups.sh | Practice |
 | Flink web UI | local Flink cluster | Practice |
 | Apache Beam Playground (free) | beam.apache.org | Practice |
@@ -3429,6 +3456,8 @@ Design application state according to its lifetime. Disposable caches may be loc
 
 #### Resources
 
+Before a cluster course, be comfortable with processes, networking, and running a container. Use the Kubernetes tutorials with kind or minikube for a first deployment and recovery experiment; pair them with Kubernetes: Up and Running for explanations. Kubernetes Patterns becomes more useful after you have operated a small application. Save Kubernetes the Hard Way for studying the components and their configuration. KubeCon talks and the CNCF Landscape are sources for later investigation, not a first-course sequence.
+
 **Books and Texts**
 
 **Kubernetes: Up and Running** introduces workload objects and their relationships. **Designing Distributed Systems**, **Kubernetes Patterns**, and **Cloud Native Patterns** explain recurring application structures. **Production Kubernetes** studies operation and tenancy; **Terraform: Up and Running** addresses infrastructure provisioning; **Team Topologies** adds organizational design. These resources solve different problems, so select the relevant part instead of treating the whole list as a prerequisite.
@@ -3459,13 +3488,13 @@ Use a local **kind** or **minikube** cluster to inspect Pods, controller status,
 
 | Resource | Platform | Type |
 |---|---|---|
-| Kubernetes documentation (free) | kubernetes.io/docs | Reference |
-| Kubernetes official tutorials (free) | kubernetes.io/docs/tutorials | Practice |
+| [Kubernetes documentation (free)](https://kubernetes.io/docs/) | kubernetes.io/docs | Reference |
+| [Kubernetes official tutorials (free)](https://kubernetes.io/docs/tutorials/) | kubernetes.io/docs/tutorials | Practice |
 | Certified Kubernetes Administrator curriculum (exam paid) | cncf.io | Auxiliary |
-| *Kubernetes the Hard Way* (free) | github.com/kelseyhightower | Practice |
+| [*Kubernetes the Hard Way* (free)](https://github.com/kelseyhightower/kubernetes-the-hard-way) | github.com/kelseyhightower | Practice |
 | kind / minikube (free) | kind.sigs.k8s.io / minikube.sigs.k8s.io | Practice |
 | kubectl (free) | kubectl.docs.kubernetes.io | Practice |
-| CNCF Landscape (free) | landscape.cncf.io | Reference |
+| [CNCF Landscape (free)](https://landscape.cncf.io/) | landscape.cncf.io | Reference |
 | Engineering blogs (Spotify, Shopify, Stripe) | Various | Reference |
 
 #### Traps
@@ -3555,14 +3584,16 @@ Reliability accounting makes priorities reviewable. Preserve the original SLI de
 
 #### Resources
 
+For a first reliability project, use the SRE Workbook with a small service: define one user-visible objective, collect a useful signal, and test whether an alert identifies a failure requiring action. Read the SRE book for the reasoning behind these practices and Observability Engineering for investigating behavior from telemetry. Public incident reports are useful case studies after this preparation; compare the evidence and constraints instead of copying another organization's tool choices.
+
 **Books and Texts**
 
 **Site Reliability Engineering** and **The Site Reliability Workbook** explain service objectives, operations, and budget policies. **Observability Engineering** develops investigative use of telemetry; **Distributed Systems Observability** offers a shorter entry. **Accelerate** examines organizational delivery practices, while chaos and resilience engineering texts explore experimentation and adaptation. Read empirical associations with their study design rather than treating them as guaranteed causal effects for every team.
 
 | Book | Role | Type |
 |---|---|---|
-| Beyer et al., *Site Reliability Engineering* (free) | Service objectives and operational engineering | Entry |
-| Beyer, Murphy et al., *The Site Reliability Workbook* (free) | Practical SRE companion | Depth |
+| [Beyer et al., *Site Reliability Engineering* (free)](https://sre.google/books/) | Service objectives and operational engineering | Entry |
+| [Beyer, Murphy et al., *The Site Reliability Workbook* (free)](https://sre.google/workbook/table-of-contents/) | Practical SRE companion | Depth |
 | Majors, Fong-Jones & Miranda, *Observability Engineering* | Telemetry and production investigation | Entry |
 | Forsgren, Humble & Kim, *Accelerate* | DORA research; empirical reliability practices | Depth |
 | Rosenthal et al., *Chaos Engineering* | Deliberate fault injection | Depth |
@@ -3578,12 +3609,12 @@ Cook's **How Complex Systems Fail** and Allspaw's incident-analysis writings enc
 | Cook, "How Complex Systems Fail" (free) | Foundational failure analysis essay | Depth |
 | Allspaw's writings on incident response (free) | adaptivecapacitylabs.com | Depth |
 | Sigelman et al., "Dapper" paper (free) | Distributed tracing architecture paper | Depth |
-| OpenTelemetry documentation (free) | opentelemetry.io | Reference |
+| [OpenTelemetry documentation (free)](https://opentelemetry.io/docs/) | opentelemetry.io | Reference |
 | AWS Builders' Library (free) | aws.amazon.com/builders-library | Reference |
 | Rob Ewaschuk, "My Philosophy on Alerting" (free) | linuxczar.net/sysadmin/philosophy-on-alerting | Auxiliary |
 | Principles of Chaos Engineering (free) | principlesofchaos.org | Reference |
 | SREcon talks (free) | USENIX YouTube | Reference |
-| sre.google (SRE books and supporting material) | sre.google | Reference |
+| [sre.google (SRE books and supporting material)](https://sre.google/books/) | sre.google | Reference |
 
 **Practice, Tools, and Current Sources**
 
@@ -3595,7 +3626,7 @@ Instrument a small service with an SLI, a latency histogram, structured events, 
 | Public postmortems: GitHub, Stripe, Discord (free) | Various | Practice |
 | Prometheus + Grafana (free) | prometheus.io / grafana.com | Practice |
 | Jaeger / Zipkin (free) | jaegertracing.io / zipkin.io | Practice |
-| OpenTelemetry Demo (free) | opentelemetry.io/docs/demo | Practice |
+| [OpenTelemetry Demo (free)](https://opentelemetry.io/docs/demo/) | opentelemetry.io/docs/demo | Practice |
 | Chaos Monkey / Chaos Mesh (free) | GitHub / chaos-mesh.org | Practice |
 
 #### Traps
@@ -3683,6 +3714,8 @@ These habits transfer beyond supercomputers. Data layout, bounded dependencies, 
 
 #### Resources
 
+For CPU parallelism, start with An Introduction to Parallel Programming and compare a serial implementation with a parallel one on the same workload. For GPU programming, choose Programming Massively Parallel Processors and its associated examples; use CUDA documentation for the selected toolchain. Numerical linear algebra becomes essential when accuracy and conditioning affect the result. Performance manuals and profiling tools answer focused questions after you have a correct baseline, not before.
+
 **Books and Texts**
 
 Pacheco and Malensek introduce parallel programming; Hager and Wellein develop performance engineering. **Programming Massively Parallel Processors** develops GPU programming, alongside the applicable CUDA documentation. Trefethen and Bau, Demmel, and Higham supply numerical analysis at different depths. **Using MPI** and the MPI specification explain communication semantics; JaJa develops parallel algorithms. Keep programming-model correctness, hardware cost, and numerical accuracy visible while reading.
@@ -3709,8 +3742,8 @@ Pacheco and Malensek introduce parallel programming; Hager and Wellein develop p
 | MIT 6.172 Performance Engineering (free) | MIT OCW / YouTube | Entry |
 | Caltech CS 179 GPU Programming (free) | Caltech course site | Entry |
 | Supercomputing (SC) tutorials (access varies) | SC archive / YouTube | Reference |
-| LLNL HPC Tutorials (free) | hpc-tutorials.llnl.gov | Entry |
-| HPC Carpentry lessons (free) | hpc-carpentry.org | Practice |
+| [LLNL HPC Tutorials (free)](https://hpc-tutorials.llnl.gov/) | hpc-tutorials.llnl.gov | Entry |
+| [HPC Carpentry lessons (free)](https://www.hpc-carpentry.org/) | hpc-carpentry.org | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -3818,7 +3851,7 @@ Choose further reading by the question you need to answer. Pearl's **Heuristics*
 
 | Book | Role | Type |
 |---|---|---|
-| Russell & Norvig, *Artificial Intelligence: A Modern Approach* (4th ed.) | Canonical comprehensive text | Entry |
+| [Russell & Norvig, *Artificial Intelligence: A Modern Approach* (4th ed.)](https://aima.cs.berkeley.edu/) | Canonical comprehensive text | Entry |
 | Pearl, *Heuristics: Intelligent Search Strategies* | Heuristic search foundations | Depth |
 | Brachman & Levesque, *Knowledge Representation and Reasoning* | KR formal foundations | Reference |
 | Ghallab, Nau & Traverso, *Automated Planning: Theory and Practice* | Planning standard text | Depth |
@@ -3837,10 +3870,10 @@ The published materials for **Berkeley CS188**, **Stanford CS221**, and **MIT 6.
 
 | Course | Platform | Type |
 |---|---|---|
-| Stanford CS221 AI (free) | Stanford / YouTube | Entry |
-| Berkeley CS188 AI (free) | Berkeley / YouTube | Entry |
+| [Stanford CS221 AI (free)](https://stanford-cs221.github.io/) | Stanford / YouTube | Entry |
+| [Berkeley CS188 AI (free)](https://inst.eecs.berkeley.edu/~cs188/) | Berkeley / YouTube | Entry |
 | MIT 6.034 AI (free) | MIT OCW | Entry |
-| CS50 AI with Python (free; edX verified certificate paid) | Harvard / edX | Practice |
+| [CS50 AI with Python (free; edX verified certificate paid)](https://cs50.harvard.edu/ai/) | Harvard / edX | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -3945,6 +3978,8 @@ Implement linear or logistic regression once, compare analytical gradients with 
 
 #### Resources
 
+For a practical first sequence after Python basics, use Géron's [Hands-On Machine Learning with Scikit-Learn and PyTorch](https://github.com/ageron/handson-mlp): the official repository provides chapter notebooks and exercise solutions. Work through an end-to-end tabular project, including preprocessing, validation, and error analysis, before moving to neural networks. Pair it with An Introduction to Statistical Learning when you need clearer statistical interpretation; use Murphy or Bishop for deeper probabilistic derivations. The book is paid and the companion repository is public. These are alternative emphases, not four books to finish before building a model.
+
 **Books and Texts**
 
 For a first pass, **An Introduction to Statistical Learning** connects models to worked examples. Bishop's **Pattern Recognition and Machine Learning** and Murphy's **Probabilistic Machine Learning** develop the probabilistic formulation in more depth. **The Elements of Statistical Learning** is useful when comparing classical methods and their assumptions; these books need not all be read in sequence.
@@ -3953,13 +3988,14 @@ For learning theory, use Shalev-Shwartz and Ben-David's **Understanding Machine 
 
 | Book | Role | Type |
 |---|---|---|
+| Géron, [*Hands-On Machine Learning with Scikit-Learn and PyTorch*](https://github.com/ageron/handson-mlp) | End-to-end ML projects; paid book, public notebooks and exercise solutions | Practice |
 | Bishop, *Pattern Recognition and Machine Learning* | Probabilistic ML foundation | Entry |
-| Murphy, *Probabilistic Machine Learning* (2 vols., free) | Contemporary probabilistic ML | Entry |
-| Hastie, Tibshirani & Friedman, *The Elements of Statistical Learning* (free) | Classical algorithms, statistical view | Reference |
-| James et al., *An Introduction to Statistical Learning* (free) | Accessible undergraduate entry | Entry |
+| [Murphy, *Probabilistic Machine Learning* (2 vols., free)](https://probml.github.io/pml-book/) | Contemporary probabilistic ML | Entry |
+| [Hastie, Tibshirani & Friedman, *The Elements of Statistical Learning* (free)](https://hastie.su.domains/ElemStatLearn/) | Classical algorithms, statistical view | Reference |
+| [James et al., *An Introduction to Statistical Learning* (free)](https://www.statlearning.com/) | Accessible undergraduate entry | Entry |
 | Shalev-Shwartz & Ben-David, *Understanding Machine Learning* | Statistical learning theory | Depth |
 | Mohri, Rostamizadeh & Talwalkar, *Foundations of Machine Learning* (2nd ed.) | Graduate-level learning theory | Reference |
-| Boyd & Vandenberghe, *Convex Optimization* (free) | Optimization theory standard | Reference |
+| [Boyd & Vandenberghe, *Convex Optimization* (free)](https://web.stanford.edu/~boyd/cvxbook/) | Optimization theory standard | Reference |
 | Chip Huyen, *Designing Machine Learning Systems* (paid) | Production ML system design | Depth |
 | Lipton & Steinhardt, "Troubling Trends in ML Scholarship" (free) | Evaluation methodology and research hygiene | Auxiliary |
 
@@ -3969,9 +4005,9 @@ For learning theory, use Shalev-Shwartz and Ben-David's **Understanding Machine 
 
 | Course | Platform | Type |
 |---|---|---|
-| Stanford CS229 Machine Learning (notes free) | cs229.stanford.edu | Entry |
-| Caltech CS156 Learning from Data (free) | YouTube | Entry |
-| fast.ai as practical ML entry (free) | fast.ai | Entry |
+| [Stanford CS229 Machine Learning (notes free)](https://cs229.stanford.edu/) | cs229.stanford.edu | Entry |
+| [Caltech CS156 Learning from Data (free)](https://work.caltech.edu/telecourse.html) | YouTube | Entry |
+| [fast.ai as practical ML entry (free)](https://course.fast.ai/) | fast.ai | Entry |
 | Google Machine Learning Crash Course (free) | developers.google.com | Entry |
 | DataTalksClub Machine Learning Zoomcamp (free) | GitHub / YouTube | Practice |
 | DeepLearning.AI Machine Learning in Production (certificate / graded work paid) | DeepLearning.AI / Coursera | Practice |
@@ -3984,11 +4020,11 @@ A tabular competition can provide practice with validation and feature construct
 
 | Resource | Platform | Type |
 |---|---|---|
-| scikit-learn documentation (free) | scikit-learn.org | Practice |
+| [scikit-learn documentation (free)](https://scikit-learn.org/stable/user_guide.html) | scikit-learn.org | Practice |
 | TensorFlow Playground (free) | playground.tensorflow.org | Auxiliary |
 | Made With ML (free) | madewithml.com | Practice |
 | NumPy scratch implementations (linear regression, MLP) | Local | Practice |
-| Karpathy, micrograd (free) | GitHub | Practice |
+| [Karpathy, micrograd (free)](https://github.com/karpathy/micrograd) | GitHub | Practice |
 | Kaggle tabular competitions (free) | kaggle.com | Practice |
 
 #### Traps
@@ -4075,6 +4111,8 @@ Learn to investigate failures through several measurements: training and validat
 
 #### Resources
 
+For a first systematic explanation of neural networks, prefer Prince's [Understanding Deep Learning](https://udlbook.github.io/udlbook/) when you have basic linear algebra, calculus, and probability. Work through the diagrams, derivations, and [companion notebooks and exercises](https://github.com/udlbook/udlbook) together. If you learn more readily from a working application, start with fast.ai instead; use Bishop and Bishop for a more mathematical treatment, or D2L when you want explanations closely paired with runnable implementations. Géron's book in §5.2 is a practical bridge from classical ML. Goodfellow and coauthors remain valuable for foundations, but their 2016 book is not a guide to later transformer architectures.
+
 **Books and Texts**
 
 Bishop and Bishop's **Deep Learning: Foundations and Concepts** covers mathematical foundations and architectures including transformers and diffusion models. Goodfellow, Bengio, and Courville's [**Deep Learning**](https://www.deeplearningbook.org/) remains useful for optimization, regularization, convolutional networks, and representation learning; its 2016 edition predates the transformer. **Dive into Deep Learning** and Howard/Gugger's book provide code alongside explanations.
@@ -4083,10 +4121,11 @@ Use Phuong and Hutter's **“Formal Algorithms for Transformers”** when you ne
 
 | Book | Role | Type |
 |---|---|---|
-| Bishop & Bishop, *Deep Learning: Foundations and Concepts* (2024) | Architectures and training foundations | Entry |
-| Goodfellow, Bengio & Courville, *Deep Learning* (free) | Mathematical foundations; pre-2017 architecture | Entry |
-| Howard & Gugger, *Deep Learning for Coders* + fast.ai (free) | Practical top-down entry | Practice |
-| Zhang, Lipton, Li & Smola, *Dive into Deep Learning* (free) | Interactive book with code and math | Entry |
+| Prince, [*Understanding Deep Learning*](https://udlbook.github.io/udlbook/) | First systematic model explanations with mathematics, diagrams, and exercises; online text | Entry |
+| [Bishop & Bishop, *Deep Learning: Foundations and Concepts* (2024)](https://www.bishopbook.com/) | Architectures and training foundations | Entry |
+| [Goodfellow, Bengio & Courville, *Deep Learning* (free)](https://www.deeplearningbook.org/) | Mathematical foundations; pre-2017 architecture | Entry |
+| [Howard & Gugger, *Deep Learning for Coders* + fast.ai (free)](https://course.fast.ai/) | Practical top-down entry | Practice |
+| [Zhang, Lipton, Li & Smola, *Dive into Deep Learning* (free)](https://d2l.ai/) | Interactive book with code and math | Entry |
 | Roberts, Yaida & Hanin, *Principles of Deep Learning Theory* (free) | Theoretical foundations | Depth |
 | Phuong & Hutter, "Formal Algorithms for Transformers" (free) | Transformer architecture precise reference | Reference |
 
@@ -4096,12 +4135,12 @@ Use Phuong and Hutter's **“Formal Algorithms for Transformers”** when you ne
 
 | Course | Platform | Type |
 |---|---|---|
-| fast.ai Practical Deep Learning (free) | fast.ai | Entry |
-| Stanford CS231n CNN for Visual Recognition (free) | cs231n.github.io | Entry |
+| [fast.ai Practical Deep Learning (free)](https://course.fast.ai/) | fast.ai | Entry |
+| [Stanford CS231n CNN for Visual Recognition (free)](https://cs231n.stanford.edu/) | cs231n.github.io | Entry |
 | MIT 6.S191 Introduction to Deep Learning (free) | MIT OCW / YouTube | Entry |
-| Karpathy, Neural Networks: Zero to Hero (free) | YouTube | Practice |
-| Stanford CS224N NLP with Deep Learning (free) | Stanford / YouTube | Entry |
-| Full Stack Deep Learning (free) | fullstackdeeplearning.com | Practice |
+| [Karpathy, Neural Networks: Zero to Hero (free)](https://karpathy.ai/zero-to-hero.html) | YouTube | Practice |
+| [Stanford CS224N NLP with Deep Learning (free)](https://web.stanford.edu/class/cs224n/) | Stanford / YouTube | Entry |
+| [Full Stack Deep Learning (free)](https://fullstackdeeplearning.com/) | fullstackdeeplearning.com | Practice |
 
 **Practice, Tools, and Current Sources**
 
@@ -4111,9 +4150,9 @@ Use model libraries such as **Hugging Face Transformers** to compare your implem
 
 | Resource | Platform | Type |
 |---|---|---|
-| Karpathy micrograd + nanoGPT (free) | GitHub | Practice |
-| PyTorch tutorials (free) | pytorch.org | Practice |
-| JAX documentation (free) | docs.jax.dev | Practice |
+| [Karpathy micrograd + nanoGPT (free)](https://karpathy.ai/zero-to-hero.html) | GitHub | Practice |
+| [PyTorch tutorials (free)](https://pytorch.org/tutorials/) | pytorch.org | Practice |
+| [JAX documentation (free)](https://docs.jax.dev/en/latest/) | docs.jax.dev | Practice |
 | Hugging Face ecosystem (free) | huggingface.co | Practice |
 | Paper authors’ code and project pages | Links in original papers | Reference |
 | Weights & Biases (free tier) | wandb.ai | Practice |
@@ -4205,6 +4244,8 @@ Treat reward design and evaluation as separate responsibilities. A learner may e
 
 #### Resources
 
+Begin with Sutton and Barto's tabular examples and David Silver's lectures. Implement a small prediction or control problem where you can inspect every state value. Move to CS285 only after the MDP, Bellman update, and evaluation protocol are clear and you can train a neural network. Use Spinning Up or CleanRL to compare implementations of a chosen algorithm; a reference implementation is most useful when you can explain its update rule and experimental settings.
+
 **Books and Texts**
 
 Sutton and Barto's **Reinforcement Learning: An Introduction** develops bandits, dynamic programming, Monte Carlo methods, temporal-difference learning, and function approximation. Start with the tabular examples, where you can inspect every value and compare an update with its equation. Bertsekas's books connect these ideas to optimal control and give a more mathematical treatment.
@@ -4213,7 +4254,7 @@ Agarwal, Jiang, Kakade, and Sun's **Reinforcement Learning: Theory and Algorithm
 
 | Book | Role | Type |
 |---|---|---|
-| Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed., free) | Canonical foundational text | Entry |
+| [Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed., free)](http://incompleteideas.net/book/the-book-2nd.html) | Canonical foundational text | Entry |
 | Bertsekas, *Reinforcement Learning and Optimal Control* | Optimal control connection; mathematical depth | Depth |
 | Bertsekas, *Dynamic Programming and Optimal Control* (2 vols.) | DP foundations at depth | Reference |
 | Agarwal, Jiang, Kakade & Sun, *RL: Theory and Algorithms* (free) | Contemporary theory | Depth |
@@ -4226,8 +4267,8 @@ Agarwal, Jiang, Kakade, and Sun's **Reinforcement Learning: Theory and Algorithm
 
 | Course | Platform | Type |
 |---|---|---|
-| Berkeley CS285 Deep RL (free) | YouTube / course site | Entry |
-| David Silver RL lectures (free) | YouTube | Entry |
+| [Berkeley CS285 Deep RL (free)](https://rail.eecs.berkeley.edu/deeprlcourse/) | YouTube / course site | Entry |
+| [David Silver RL lectures (free)](https://www.davidsilver.uk/teaching/) | YouTube | Entry |
 | University of Alberta Reinforcement Learning Specialization | Coursera; check access conditions | Entry |
 | Hugging Face Deep RL Course (free) | huggingface.co/learn | Practice |
 
@@ -4240,9 +4281,9 @@ Henderson et al.'s **“Deep Reinforcement Learning that Matters”** discusses 
 | Resource | Platform | Type |
 |---|---|---|
 | OpenAI Spinning Up (free) | spinningup.openai.com | Practice |
-| Gymnasium (free) | gymnasium.farama.org | Practice |
-| Stable Baselines3 (free) | stable-baselines3.readthedocs.io | Practice |
-| CleanRL (free) | GitHub | Practice |
+| [Gymnasium (free)](https://gymnasium.farama.org/) | gymnasium.farama.org | Practice |
+| [Stable Baselines3 (free)](https://stable-baselines3.readthedocs.io/) | stable-baselines3.readthedocs.io | Practice |
+| [CleanRL (free)](https://docs.cleanrl.dev/) | GitHub | Practice |
 | RL Baselines3 Zoo (free) | rl-baselines3-zoo.readthedocs.io | Practice |
 | Safety-Gymnasium (free) | safety-gymnasium.readthedocs.io | Auxiliary |
 | Henderson et al., "Deep RL that Matters" (free) | Deep RL reproducibility landmark | Depth |
@@ -4339,6 +4380,8 @@ For a difficult task, compare one attempt with several attempts under a fixed to
 
 #### Resources
 
+After Python and basic neural-network training, choose either Karpathy's Zero to Hero videos or Raschka's [Build a Large Language Model (From Scratch)](https://sebastianraschka.com/llms-from-scratch/) as a continuous implementation sequence. Raschka's [official code](https://github.com/rasbt/LLMs-from-scratch) follows the book from data and attention to a GPT model, training, and fine-tuning; it suits readers who prefer a written project with chapter checkpoints. There is substantial overlap, so completing both is optional. Continue to [CS336 Spring 2025](https://cs336.stanford.edu/spring2025/) when you are comfortable with PyTorch, deep learning, mathematics, and systems programming. Use the Hugging Face course instead when the immediate goal is working with pretrained models. Check compute requirements for each experiment.
+
 **Books and Texts**
 
 Jurafsky and Martin's online **Speech and Language Processing** connects tokenization, language modeling, and neural architectures to the broader history of NLP. Use the deep learning texts in §5.3 for any missing background. Bommasani et al.'s **“On the Opportunities and Risks of Foundation Models”** explains the 2021 framing of foundation models; its examples should be read in that historical context.
@@ -4347,7 +4390,8 @@ Read papers in order of dependency: the transformer for architecture, BERT and G
 
 | Resource | Role | Type |
 |---|---|---|
-| Jurafsky & Martin, *Speech and Language Processing* (3rd ed., free) | LM and transformer foundations | Entry |
+| Raschka, [*Build a Large Language Model (From Scratch)*](https://sebastianraschka.com/llms-from-scratch/) | Continuous GPT implementation project; paid book with public code and video materials | Practice |
+| [Jurafsky & Martin, *Speech and Language Processing* (online draft)](https://web.stanford.edu/~jurafsky/slp3/) | LM and transformer foundations | Entry |
 | Bommasani et al., "On the Opportunities and Risks of Foundation Models" (free) | Comprehensive framing report | Entry |
 | Vaswani et al., "Attention Is All You Need" (2017, free) | Transformer landmark paper | Depth |
 | Brown et al., GPT-3 paper (2020, free) | Few-shot prompting experiments | Depth |
@@ -4364,12 +4408,12 @@ Read papers in order of dependency: the transformer for architecture, BERT and G
 
 | Course | Platform | Type |
 |---|---|---|
-| Stanford CS336 Language Modeling from Scratch | cs336.stanford.edu | Depth |
+| [Stanford CS336 Language Modeling from Scratch, Spring 2025](https://cs336.stanford.edu/spring2025/) | Stanford lectures and assignments; requires ML and systems preparation | Depth |
 | Berkeley LLM Agents course (free) | rdi.berkeley.edu | Depth |
-| Hugging Face LLM Course (free) | huggingface.co/learn/llm-course | Practice |
+| [Hugging Face LLM Course (free)](https://huggingface.co/learn/llm-course/chapter1/1) | huggingface.co/learn/llm-course | Practice |
 | Hugging Face Agents Course (free) | huggingface.co/learn | Practice |
 | Cohere LLM University (free) | docs.cohere.com | Auxiliary |
-| Karpathy LLM-adjacent modules from Neural Networks: Zero to Hero (free) | YouTube | Auxiliary |
+| [Karpathy LLM-adjacent modules from Neural Networks: Zero to Hero (free)](https://karpathy.ai/zero-to-hero.html) | YouTube | Auxiliary |
 
 **Practice, Tools, and Current Sources**
 
@@ -4379,14 +4423,14 @@ For an application experiment, compare a local model or hosted models on the sam
 
 | Resource | Platform | Type |
 |---|---|---|
-| Karpathy, nanoGPT (free) | GitHub | Practice |
+| [Karpathy, nanoGPT (free)](https://github.com/karpathy/nanoGPT) | GitHub | Practice |
 | OpenAI Cookbook (free; API usage may be paid) | GitHub / cookbook.openai.com | Practice |
 | Anthropic Cookbook (free; API usage may be paid) | GitHub | Practice |
 | Prompt Engineering Guide (free) | dair.ai / promptingguide.ai | Auxiliary |
 | Hugging Face Transformers / TRL (free) | huggingface.co | Practice |
 | LM-Evaluation-Harness (free) | GitHub / EleutherAI | Practice |
 | HELM (free) | crfm.stanford.edu/helm | Reference |
-| Human-preference evaluation: Arena | arena.ai | Auxiliary |
+| [Human-preference evaluation: Arena](https://www.arena.education/) | arena.ai | Auxiliary |
 | vLLM (free) | vllm.ai | Practice |
 | Experiment tracking with Weights & Biases (free tier) | wandb.ai | Auxiliary |
 
@@ -4467,6 +4511,8 @@ Use internal analysis together with ordinary evaluation. A proposed mechanism ca
 
 #### Resources
 
+Choose Molnar for explaining predictions of general machine-learning models; choose ARENA after you can implement a transformer and want to investigate internal mechanisms. Begin with a small, reproducible experiment and its controls before reading a sequence of large-model interpretability papers. Distill's visual explanations help formulate questions, while TransformerLens and SAELens support experiments; using a tool is not itself evidence that an interpretation is correct.
+
 **Books and Survey Articles**
 
 Molnar's **Interpretable Machine Learning** introduces the broader field, including feature importance and explanations of individual predictions. Distill's **Feature Visualization** and **Circuits** articles show how visual examples and interventions can support hypotheses about neural computation. Keep the distinction between describing a feature and showing how the model uses it.
@@ -4475,7 +4521,7 @@ For transformers, read **“A Mathematical Framework for Transformer Circuits”
 
 | Resource | Role | Type |
 |---|---|---|
-| Molnar, *Interpretable Machine Learning* (3rd ed., free) | Broad interpretability landscape | Entry |
+| [Molnar, *Interpretable Machine Learning* (3rd ed., free)](https://christophm.github.io/interpretable-ml-book/) | Broad interpretability landscape | Entry |
 | Distill Feature Visualization + Circuits series (free) | Feature visualization and circuit analysis | Practice |
 | Elhage et al., "Mathematical Framework for Transformer Circuits" (2021, free) | Transformer interpretability foundation | Depth |
 | Olsson et al., "In-context Learning and Induction Heads" (2022, free) | Foundational circuit discovery | Depth |
@@ -4492,7 +4538,7 @@ The [**ARENA curriculum**](https://www.arena.education/) provides publicly avail
 
 | Course | Platform | Type |
 |---|---|---|
-| ARENA mechanistic interpretability tutorials (free) | arena.education | Practice |
+| [ARENA mechanistic interpretability tutorials (free)](https://www.arena.education/) | arena.education | Practice |
 | Nanda YouTube lectures (free) | YouTube | Entry |
 | AI Safety Fundamentals alignment reading materials (free) | aisafetyfundamentals.com | Entry |
 
@@ -4504,13 +4550,13 @@ A manageable project is to reproduce an induction pattern in a small attention-o
 
 | Resource | Platform | Type |
 |---|---|---|
-| TransformerLens (free) | `pip install transformer-lens` | Practice |
-| SAELens (free) | GitHub / pip | Practice |
+| [TransformerLens (free)](https://github.com/TransformerLensOrg/TransformerLens) | `pip install transformer-lens` | Practice |
+| [SAELens (free)](https://github.com/jbloomAus/SAELens) | GitHub / pip | Practice |
 | Neuroscope (free) | neuroscope.io | Practice |
 | Neuronpedia (free) | neuronpedia.org | Practice |
 | Gemma Scope (free) | deepmind.google | Reference |
 | Anthropic Transformer Circuits Thread (free, ongoing) | transformer-circuits.pub | Reference |
-| ARENA tutorial notebooks (free) | arena.education | Practice |
+| [ARENA tutorial notebooks (free)](https://www.arena.education/) | arena.education | Practice |
 
 #### Traps
 
@@ -4594,6 +4640,8 @@ For a small assistant application, write down one intended outcome, one tempting
 Read research claims according to their evidence. A theorem has assumptions; a controlled demonstration establishes a possibility under its setup; a benchmark estimates performance under a protocol; a forecast adds uncertain extrapolation. Comparing these carefully makes it possible to investigate future risks and present failures without treating either as a substitute for the other.
 
 #### Resources
+
+For an initial account of the problems and their history, choose The Alignment Problem or Human Compatible according to whether you prefer case histories or an argument about objectives. For technical study, use the organized AI Safety Fundamentals readings with the ML prerequisites in §5.2–§5.5. Select one failure mechanism and follow its evidence into experiments. Superintelligence, research agendas, career guides, and incident databases serve different purposes and should not be treated as interchangeable introductions.
 
 **Books and Texts**
 
@@ -4728,14 +4776,16 @@ For a performance experiment, capture a frame and identify a costly pass. Change
 
 #### Resources
 
+If you have not yet built a renderer, begin with Scratchapixel or a structured introductory graphics course and implement a small image-producing program. Use LearnOpenGL for a rasterization route; use PBRT when you are ready to connect light transport, sampling, and substantial renderer code. Real-Time Rendering is more useful for comparing techniques once the graphics pipeline is familiar. Check the API and edition used by each tutorial rather than mixing example code across versions.
+
 **Books and Texts**
 
 Use **Physically Based Rendering** to connect sampling and light transport with an implementation, and **Real-Time Rendering** to study techniques under a frame budget. **Computer Graphics: Principles and Practice** and Lengyel's mathematics text provide broader foundations. Select chapters around a small renderer rather than trying to read every reference first. Munzner's visualization text addresses a different question: whether visual encodings help people understand data.
 
 | Book | Role | Type |
 |---|---|---|
-| Pharr, Jakob & Humphreys, *Physically Based Rendering* (4th ed., free) | Light transport, sampling, and implementation | Entry |
-| Akenine-Möller et al., *Real-Time Rendering* (4th ed.) | Real-time rendering canonical reference | Reference |
+| [Pharr, Jakob & Humphreys, *Physically Based Rendering* (4th ed., free)](https://pbr-book.org/4ed/contents) | Light transport, sampling, and implementation | Entry |
+| [Akenine-Möller et al., *Real-Time Rendering* (4th ed.)](https://www.realtimerendering.com/) | Real-time rendering canonical reference | Reference |
 | Hughes et al., *Computer Graphics: Principles and Practice* (3rd ed.) | Comprehensive foundational textbook | Reference |
 | Lengyel, *Mathematics for 3D Game Programming and Computer Graphics* | Graphics mathematics | Entry |
 | Gregory, *Game Engine Architecture* (3rd ed.) | Game engine systems | Depth |
@@ -4754,10 +4804,10 @@ The published **Stanford CS148/CS348b** and **Berkeley CS184/284** materials com
 | Stanford CS148/CS348b (free) | Stanford course site | Entry |
 | UC Berkeley CS184/284 (free) | Berkeley course site | Entry |
 | Cem Yuksel YouTube lectures (free) | YouTube | Practice |
-| The Book of Shaders (free) | thebookofshaders.com | Practice |
-| LearnOpenGL (free) | learnopengl.com | Practice |
-| Scratchapixel (free) | scratchapixel.com | Entry |
-| WebGPU Fundamentals (free) | webgpufundamentals.org | Practice |
+| [The Book of Shaders (free)](https://thebookofshaders.com/) | thebookofshaders.com | Practice |
+| [LearnOpenGL (free)](https://learnopengl.com/) | learnopengl.com | Practice |
+| [Scratchapixel (free)](https://www.scratchapixel.com/) | scratchapixel.com | Entry |
+| [WebGPU Fundamentals (free)](https://webgpufundamentals.org/) | webgpufundamentals.org | Practice |
 | Vulkan Tutorial / Khronos Vulkan Learn (free) | vulkan-tutorial.com / vulkan.org | Practice |
 
 **Practice, Tools, and Current Sources**
@@ -4766,7 +4816,7 @@ Inspect a PBRT integrator, modify a small shader, or build a controlled scene in
 
 | Resource | Platform | Type |
 |---|---|---|
-| PBRT source code (free) | github.com/mmp/pbrt-v4 | Practice |
+| [PBRT source code (free)](https://github.com/mmp/pbrt-v4) | github.com/mmp/pbrt-v4 | Practice |
 | RenderDoc (free) | renderdoc.org | Practice |
 | Shadertoy (free) | shadertoy.com | Practice |
 | Blender (free) | blender.org | Practice |
@@ -4858,6 +4908,8 @@ This practice connects HCI to systems correctness: the interface communicates wh
 
 #### Resources
 
+Start with Norman to analyze an everyday interaction, then use Interaction Design or CS147 to plan observation, prototyping, and evaluation. For a web-interface project, Krug provides a more focused usability route. Use Inclusive Components alongside an actual keyboard and screen-reader check. Interface guidelines and pattern collections are references for a design decision; they do not replace observing whether people can complete the intended task.
+
 **Books and Texts**
 
 Norman's **The Design of Everyday Things** develops vocabulary for actions, mappings, feedback, and conceptual models. **Interaction Design** supplies a broader account of research and design methods; Krug and Nielsen offer practical approaches to web usability and evaluation. Read cognitive claims alongside their experimental scope, and use **Inclusive Components** and WCAG to connect design intentions to actual interaction behavior.
@@ -4871,7 +4923,7 @@ Norman's **The Design of Everyday Things** develops vocabulary for actions, mapp
 | Cooper et al., *About Face* (4th ed.) | Interaction design depth | Depth |
 | Lupton, *Thinking with Type* (3rd ed.) | Typography for designers | Depth |
 | Wickens et al., *Engineering Psychology and Human Performance* | Cognitive science foundations | Depth |
-| Pickering, *Inclusive Components* (free) | Accessible component patterns | Entry |
+| [Pickering, *Inclusive Components* (free)](https://inclusive-components.design/) | Accessible component patterns | Entry |
 | Microsoft Inclusive Design Toolkit (free) | Inclusive design framework and design exercises | Auxiliary |
 | Tidwell, Brewer & Valencia, *Designing Interfaces* (3rd ed.) | Interaction patterns reference | Reference |
 | Brignull, Deceptive Patterns website (free) | Documented deceptive interaction patterns | Reference |
@@ -4900,8 +4952,8 @@ Paper prototypes or tools such as **Figma** can expose a proposed flow before fu
 | Apple Human Interface Guidelines (free) | developer.apple.com/design | Reference |
 | Material Design 3 (free) | m3.material.io | Reference |
 | GOV.UK Design System (free) | design-system.service.gov.uk | Reference |
-| WCAG 2.2 documentation (free) | w3.org | Reference |
-| Nielsen's 10 Usability Heuristics (free) | nngroup.com | Reference |
+| [WCAG 2.2 documentation (free)](https://www.w3.org/TR/WCAG22/) | w3.org | Reference |
+| [Nielsen's 10 Usability Heuristics (free)](https://www.nngroup.com/articles/ten-usability-heuristics/) | nngroup.com | Reference |
 | CHI papers and author versions | dl.acm.org / author pages | Reference |
 
 #### Traps
@@ -4991,17 +5043,19 @@ For an analysis, write the question and intended decision before choosing a meth
 
 #### Resources
 
+Choose Fundamentals of Data Engineering for the lifecycle and responsibilities of a pipeline, then use Data Engineering Zoomcamp for a sustained implementation project. Begin locally with a small dataset and a queryable output before adding distributed processing. The PySpark documentation below supports an exercise: read typed input, handle invalid records explicitly, aggregate it, and verify that rerunning the job does not silently duplicate output. For statistical analysis or causal questions, choose the statistical texts separately; a functioning pipeline does not establish a valid inference.
+
 **Books and Texts**
 
 Reis and Housley's **Fundamentals of Data Engineering** maps the data lifecycle; **Designing Data-Intensive Applications** explains storage, distributed execution, and recovery. For analysis, use Tukey for exploration and Gelman/Hill for modeling and model checks. Cunningham's **Causal Inference: The Mixtape** supplies worked causal designs; Imbens/Rubin develops their formal basis. Choose the book for the question, since operating a pipeline and identifying a causal effect require different arguments.
 
 | Book | Role | Type |
 |---|---|---|
-| Kleppmann, *Designing Data-Intensive Applications* | Distributed foundations of data engineering | Depth |
+| [Kleppmann & Riccomini, *Designing Data-Intensive Applications* (2nd ed.)](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/) | Distributed foundations of data engineering | Depth |
 | Reis & Housley, *Fundamentals of Data Engineering* | Comprehensive data engineering ecosystem | Entry |
 | Tukey, *Exploratory Data Analysis* | Foundational data analysis philosophy | Entry |
 | Gelman & Hill, *Data Analysis Using Regression and Multilevel Models* | Applied statistical modeling | Depth |
-| Cunningham, *Causal Inference: The Mixtape* (free) | Causal inference methods for practitioners | Depth |
+| [Cunningham, *Causal Inference: The Mixtape* (free)](https://mixtape.scunning.com/) | Causal inference methods for practitioners | Depth |
 | Imbens & Rubin, *Causal Inference for Statistics, Social, and Biomedical Sciences* | Formal causal inference | Depth |
 | Huyen, *Designing Machine Learning Systems* | ML infrastructure and data pipelines | Depth |
 
@@ -5012,10 +5066,10 @@ Reis and Housley's **Fundamentals of Data Engineering** maps the data lifecycle;
 | Course | Platform | Type |
 |---|---|---|
 | Stanford CS 246 Mining Massive Datasets (free) | Stanford / YouTube | Depth |
-| MIT Missing Semester (free) | missing.csail.mit.edu; supporting tooling | Auxiliary |
+| [MIT Missing Semester (free)](https://missing.csail.mit.edu/2020/) | missing.csail.mit.edu; supporting tooling | Auxiliary |
 | dbt Learn (free) | courses.getdbt.com | Practice |
 | Kaggle Learn (free) | kaggle.com/learn | Entry |
-| DataTalksClub Data Engineering Zoomcamp (free) | DataTalksClub / GitHub / YouTube | Practice |
+| [DataTalksClub Data Engineering Zoomcamp (free)](https://github.com/DataTalksClub/data-engineering-zoomcamp) | DataTalksClub / GitHub / YouTube | Practice |
 | Dagster University and documentation (free) | dagster.io / docs.dagster.io | Practice |
 
 **Practice, Tools, and Current Sources**
@@ -5031,8 +5085,8 @@ Use **DuckDB**, pandas, or Polars to inspect transformations and join cardinalit
 | Apache Parquet documentation (free) | parquet.apache.org | Reference |
 | Polars user guide (free) | docs.pola.rs | Practice |
 | DataHub metadata platform (free / paid cloud) | docs.datahub.com | Reference |
-| PySpark documentation and local examples (free) | spark.apache.org/docs | Practice |
-| Apache Kafka documentation (free) | kafka.apache.org | Practice |
+| [PySpark documentation and local examples (free)](https://spark.apache.org/docs/latest/api/python/getting_started/index.html) | spark.apache.org/docs | Practice |
+| [Apache Kafka documentation (free)](https://kafka.apache.org/documentation/) | kafka.apache.org | Practice |
 | Jupyter + pandas + matplotlib (free) | jupyter.org | Practice |
 
 #### Traps
@@ -5116,16 +5170,18 @@ Report the operating conditions, task success, interventions, timing, and uncert
 
 #### Resources
 
+Use Modern Robotics as a first continuous route if you know linear algebra and basic calculus: work a planar kinematics example, implement it, then extend the model. For localization and uncertain sensing, continue with Probabilistic Robotics and Stachniss's lectures; for dynamics and control, use Underactuated Robotics. ROS 2 and simulator tutorials teach integration, not the mathematical models themselves. Choose their versions together and keep the first experiment small enough to inspect.
+
 **Books and Texts**
 
 Lynch and Park's **Modern Robotics** connects kinematics, dynamics, planning, and control with exercises and code. Use **Probabilistic Robotics** for state estimation, and LaValle's **Planning Algorithms** for configuration spaces and search. The other robotics texts offer complementary formulations. Work through a planar example before treating three-dimensional notation as a prerequisite to every exercise.
 
 | Book | Role | Type |
 |---|---|---|
-| Lynch & Park, *Modern Robotics* (free) | Contemporary foundational text | Entry |
+| [Lynch & Park, *Modern Robotics* (free)](https://modernrobotics.northwestern.edu/nu-gm-book-resource/) | Contemporary foundational text | Entry |
 | Thrun, Burgard & Fox, *Probabilistic Robotics* | Probabilistic estimation; SLAM | Depth |
 | Siciliano et al., *Robotics: Modelling, Planning and Control* | Comprehensive classical reference | Reference |
-| LaValle, *Planning Algorithms* (free) | Motion planning foundational text | Depth |
+| [LaValle, *Planning Algorithms* (free)](https://lavalle.pl/planning/) | Motion planning foundational text | Depth |
 | Murray, Li & Sastry, *Mathematical Introduction to Robotic Manipulation* (free) | Lie group kinematics and manipulation | Depth |
 | Spong, Hutchinson & Vidyasagar, *Robot Modeling and Control* (2nd ed.) | Robot dynamics and control | Depth |
 | Siegwart, Nourbakhsh & Scaramuzza, *Introduction to Autonomous Mobile Robots* (2nd ed.) | Mobile robotics foundation | Depth |
@@ -5136,8 +5192,8 @@ The **Modern Robotics** course materials support the textbook sequence. **Undera
 
 | Course | Platform | Type |
 |---|---|---|
-| Modern Robotics course materials | modernrobotics.northwestern.edu | Entry |
-| MIT Underactuated Robotics (free materials) | underactuated.mit.edu | Depth |
+| [Modern Robotics course materials](https://modernrobotics.northwestern.edu/nu-gm-book-resource/) | modernrobotics.northwestern.edu | Entry |
+| [MIT Underactuated Robotics (free materials)](https://underactuated.mit.edu/) | underactuated.mit.edu | Depth |
 | Stanford CS223A Introduction to Robotics (free) | Stanford / YouTube | Entry |
 | Cyrill Stachniss SLAM lectures (free) | YouTube | Practice |
 
@@ -5147,12 +5203,12 @@ Use a simulator such as **Drake**, **Gazebo**, or **MuJoCo** for controlled expe
 
 | Resource | Platform | Type |
 |---|---|---|
-| ROS 2 documentation and tutorials (free) | docs.ros.org; select the matching distribution | Practice |
+| [ROS 2 documentation and tutorials (free)](https://docs.ros.org/en/jazzy/Tutorials.html) | docs.ros.org; select the matching distribution | Practice |
 | Drake (free) | drake.mit.edu | Practice |
 | NVIDIA Isaac Sim (free; hardware requirements; NVIDIA ecosystem) | developer.nvidia.com/isaac-sim | Practice |
 | Gazebo simulator (free) | gazebosim.org | Practice |
 | Foxglove documentation (free tier / paid platform) | docs.foxglove.dev | Practice |
-| Gymnasium + MuJoCo (free) | gymnasium.farama.org | Practice |
+| [Gymnasium + MuJoCo (free)](https://gymnasium.farama.org/) | gymnasium.farama.org | Practice |
 | GTSAM (free) | gtsam.org | Practice |
 | Cyrill Stachniss SLAM Python notebooks (free) | GitHub | Practice |
 | Physical robot build project | Local hardware | Practice |
@@ -5244,12 +5300,15 @@ Preserve equations, units, input data, boundary conditions, code versions, solve
 
 #### Resources
 
+For a first numerical-computing sequence after calculus, linear algebra, and basic programming, prefer Driscoll and Braun's [Fundamentals of Numerical Computation, Python edition](https://fncbook.com/python/). Its worked examples, algorithms, and exercises connect mathematical problems to executable calculations. Use the [matching language edition](https://fncbook.com/usage/) if you prefer Julia or MATLAB; chapter and exercise numbering can differ. Heath is a broader survey alternative. Continue with Trefethen and Bau for numerical linear algebra, Higham for error and stability analysis, and Hairer or LeVeque for differential equations. These specialist references need not precede the first numerical experiment.
+
 **Books and Texts**
 
 Heath's **Scientific Computing: An Introductory Survey** provides a broad route through numerical problems; its SIAM edition is the revised second edition. **Numerical Linear Algebra** and Higham's **Accuracy and Stability of Numerical Algorithms** deepen the distinction between conditioning and computation. Use the ODE, PDE, optimization, and Monte Carlo references for the problem you are solving. Read the assumptions with the algorithm, not after a failure.
 
 | Book | Role | Type |
 |---|---|---|
+| Driscoll & Braun, [*Fundamentals of Numerical Computation*, Python edition](https://fncbook.com/python/) | First numerical-computing sequence with algorithms, examples, and exercises; free online | Entry |
 | Trefethen & Bau, *Numerical Linear Algebra* | Numerical LA canonical text | Depth |
 | Higham, *Accuracy and Stability of Numerical Algorithms* (2nd ed.) | Error analysis reference | Reference |
 | Heath, *Scientific Computing: An Introductory Survey* (revised 2nd ed.) | Broad numerical-methods introduction | Entry |
@@ -5257,7 +5316,7 @@ Heath's **Scientific Computing: An Introductory Survey** provides a broad route 
 | LeVeque, *Finite Difference Methods for ODEs and PDEs* | PDE finite difference | Depth |
 | Strang & Fix, *An Analysis of the Finite Element Method* (2nd ed.) | FEM mathematical foundation | Depth |
 | Nocedal & Wright, *Numerical Optimization* (2nd ed.) | Optimization canonical reference | Reference |
-| Boyd & Vandenberghe, *Convex Optimization* (free) | Convex optimization | Depth |
+| [Boyd & Vandenberghe, *Convex Optimization* (free)](https://web.stanford.edu/~boyd/cvxbook/) | Convex optimization | Depth |
 | Robert & Casella, *Monte Carlo Statistical Methods* (2nd ed.) | Monte Carlo foundation | Depth |
 | Brunton & Kutz, *Data-Driven Science and Engineering* | Scientific machine learning | Depth |
 | Golub & Van Loan, *Matrix Computations* (4th ed.) | Matrix computation reference | Reference |
@@ -5271,7 +5330,7 @@ Heath's **Scientific Computing: An Introductory Survey** provides a broad route 
 | MIT 18.335 Introduction to Numerical Methods (free) | MIT / GitHub | Entry |
 | MIT 18.085/18.086 Mathematical Methods for Engineers (free) | MIT OCW | Entry |
 | Software Carpentry (free lessons) | software-carpentry.org | Entry |
-| Scientific Python Lectures (free) | lectures.scientific-python.org | Entry |
+| [Scientific Python Lectures (free)](https://lectures.scientific-python.org/) | lectures.scientific-python.org | Entry |
 
 **Practice, Tools, and Current Sources**
 
@@ -5373,6 +5432,8 @@ For a proposed application, write down the input representation, oracle or gate 
 
 #### Resources
 
+For a CS-oriented first treatment, use Mermin and calculate small state-vector and measurement examples by hand. Use Nielsen and Chuang when you need a broader account of information and error correction, or Hidary when you want implementation examples alongside algorithms. Pair these with current IBM Quantum Learning materials for the software environment. Cloud-device access is separate from access to lessons or local simulation; a hardware account is not required for every conceptual exercise.
+
 **Books and Texts**
 
 Mermin's **Quantum Computer Science** develops the subject for readers with a computing background. Nielsen and Chuang provide a broader reference for circuits, information, and error correction. Hidary's **Quantum Computing: An Applied Approach** connects algorithms with implementation examples. Preskill's notes and Aaronson's work deepen error-correction and complexity questions. Separate durable mathematical explanations from hardware and software examples tied to an edition.
@@ -5393,7 +5454,7 @@ Use the published **MIT quantum computing** materials, **Preskill's notes**, or 
 |---|---|---|
 | MIT 8.370/18.435 Quantum Computing (free) | MIT OCW / edX | Entry |
 | Preskill Ph 219 Quantum Computation (free) | theory.caltech.edu | Depth |
-| IBM Quantum Learning (free materials) | quantum.cloud.ibm.com/learning/en | Practice |
+| [IBM Quantum Learning (free materials)](https://quantum.cloud.ibm.com/learning) | quantum.cloud.ibm.com/learning/en | Practice |
 | Aaronson quantum complexity course (free) | scottaaronson.com | Depth |
 
 **Practice, Tools, and Current Sources**
@@ -5403,11 +5464,11 @@ Use the published **MIT quantum computing** materials, **Preskill's notes**, or 
 | Resource | Platform | Type |
 |---|---|---|
 | Qiskit SDK and simulators (free software) | qiskit.org / github.com/Qiskit | Practice |
-| IBM Quantum Learning / legacy Qiskit Textbook archive | quantum.cloud.ibm.com/learning/en / GitHub archive | Practice |
+| [IBM Quantum Learning / legacy Qiskit Textbook archive](https://quantum.cloud.ibm.com/learning) | quantum.cloud.ibm.com/learning/en / GitHub archive | Practice |
 | PennyLane (free) | pennylane.ai | Practice |
 | Microsoft Quantum Katas (free) | quantum.microsoft.com / GitHub | Practice |
 | PennyLane Codebook (free) | pennylane.ai/codebook | Practice |
-| Quantum Country (free) | quantum.country | Auxiliary |
+| [Quantum Country (free)](https://quantum.country/) | quantum.country | Auxiliary |
 | Quirk circuit simulator (free) | algassert.com/quirk | Practice |
 | Cirq (free) | github.com/quantumlib/Cirq | Practice |
 | QuTiP (free) | qutip.org | Practice |
@@ -5499,22 +5560,24 @@ Then measure one slow task and identify its critical dependency. Use browser tra
 
 #### Resources
 
+For a first web-development path, choose The Odin Project and complete its projects; use MDN to understand the HTML, CSS, and JavaScript you use. Full Stack Open is a strong next route for readers who already program and have basic web, database, and Git knowledge. Eloquent JavaScript supplies sustained language exercises. JavaScript: The Good Parts is useful for selected historical language-design observations, but predates modern JavaScript and should not supply the default current style or API guidance.
+
 **Books and Texts**
 
 Use **MDN Web Docs** for practical explanations and browser behavior, and the linked standards when precise protocol or API semantics matter. **Designing Data-Intensive Applications** supplies database and distributed-system depth; Fowler explains recurring application patterns. Use **OWASP's testing guidance and ASVS** to specify relevant security checks. Read architecture books against the application's actual scale and coordination needs.
 
 | Book/Resource | Role | Type |
 |---|---|---|
-| Kleppmann, *Designing Data-Intensive Applications* | Backend and distributed systems depth | Depth |
+| [Kleppmann & Riccomini, *Designing Data-Intensive Applications* (2nd ed.)](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/) | Backend and distributed systems depth | Depth |
 | Fowler, *Patterns of Enterprise Application Architecture* | Architectural patterns vocabulary | Depth |
 | OWASP Testing Guide + ASVS (free) | Application security reference | Reference |
 | Newman, *Building Microservices* (2nd ed.) | Microservices architecture | Depth |
-| MDN Web Docs (free) | Web-platform explanations and reference | Reference |
-| React Docs (free) | Modern React official learning path | Practice |
-| TypeScript Handbook (free) | TypeScript language reference | Reference |
-| Crockford, *JavaScript: The Good Parts* | JavaScript conceptual foundation | Auxiliary |
+| [MDN Web Docs (free)](https://developer.mozilla.org/en-US/docs/Learn_web_development) | Web-platform explanations and reference | Reference |
+| [React Docs (free)](https://react.dev/learn) | Modern React official learning path | Practice |
+| [TypeScript Handbook (free)](https://www.typescriptlang.org/docs/handbook/intro.html) | TypeScript language reference | Reference |
+| Crockford, *JavaScript: The Good Parts* | Selected historical JavaScript design observations; pair with modern MDN or Eloquent JavaScript | Reference |
 | Beck, *Test-Driven Development* | Testing discipline foundation | Depth |
-| Haverbeke, *Eloquent JavaScript* (online edition, free) | JavaScript and programming exercises | Entry |
+| [Haverbeke, *Eloquent JavaScript* (online edition, free)](https://eloquentjavascript.net/) | JavaScript and programming exercises | Entry |
 | Osmani, *Learning JavaScript Design Patterns* (free) | JavaScript patterns | Depth |
 
 **Courses and Lectures**
@@ -5523,8 +5586,8 @@ Use **MDN Web Docs** for practical explanations and browser behavior, and the li
 
 | Course | Platform | Type |
 |---|---|---|
-| The Odin Project (free) | theodinproject.com | Practice |
-| Full Stack Open (free) | fullstackopen.com | Entry |
+| [The Odin Project (free)](https://www.theodinproject.com/paths) | theodinproject.com | Practice |
+| [Full Stack Open (free)](https://fullstackopen.com/en/) | fullstackopen.com | Entry |
 | Josh W Comeau CSS for JS Developers | joshwcomeau.com | Depth |
 | PostgreSQL documentation (free) | postgresql.org/docs | Reference |
 
@@ -5536,7 +5599,7 @@ Use browser developer tools and **curl** to inspect a request directly, then rel
 |---|---|---|
 | Browser DevTools (free, built-in) | Chrome / Firefox / Safari | Practice |
 | Postman / Insomnia / curl (free) | Various | Practice |
-| PostgreSQL + EXPLAIN ANALYZE (free) | postgresql.org | Practice |
+| [PostgreSQL + EXPLAIN ANALYZE (free)](https://www.plai.org/) | postgresql.org | Practice |
 | Playwright / Cypress (free) | playwright.dev / cypress.io | Practice |
 | Discourse / GitLab / Cal.com source | GitHub | Reference |
 | Chrome Lighthouse (free, built-in) | Chrome DevTools | Practice |
@@ -5624,6 +5687,8 @@ Next, propose one service extraction without implementing it. Write down the exp
 
 #### Resources
 
+Start with Fundamentals of Software Architecture when you need a vocabulary for comparing system structures, and pair it with one Architecture of Open Source Applications case. Draw the dependencies in a small system you know and explain one trade-off. Read Evans when domain concepts and boundaries are the difficulty; read Newman when distribution is justified by a concrete need. Pattern catalogs and cloud architecture centers are references to consult after the problem is explicit.
+
 **Books and Texts**
 
 Richards and Ford provide an overview of architectural concerns; Evans develops domain modeling; Fowler examines enterprise application patterns. Read these against a small system whose requirements you understand. *The Architecture of Open Source Applications*, edited by Brown and Wilson, supplies concrete case studies. *Building Microservices* and *Software Architecture: The Hard Parts* are more useful once you can identify an actual distribution problem. The second edition of *Building Evolutionary Architectures* is by Ford, Parsons, Kua, and Sadalage.
@@ -5640,7 +5705,7 @@ Richards and Ford provide an overview of architectural concerns; Evans develops 
 | Ford, Parsons, Kua & Sadalage, *Building Evolutionary Architectures* (2nd ed.) | Checking architectural properties during change | Practice |
 | Shaw & Garlan, *Software Architecture: Perspectives on an Emerging Discipline* | Architectural styles and their historical formulation | Depth |
 | Gamma et al., *Design Patterns* | GoF design patterns | Reference |
-| Brown & Wilson, *The Architecture of Open Source Applications* (free; paid print optional) | Real-world open-source architecture case studies | Practice |
+| [Brown & Wilson, *The Architecture of Open Source Applications* (free; paid print optional)](https://aosabook.org/en/) | Real-world open-source architecture case studies | Practice |
 
 **Courses, Papers, and Current Sources**
 
@@ -5651,7 +5716,7 @@ Use [Mary Shaw’s KWIC teaching material](https://www.cs.cmu.edu/~ModProb/KWICh
 | Fowler, martinfowler.com (free) | martinfowler.com | Reference |
 | ThoughtWorks Technology Radar (free) | thoughtworks.com/radar | Reference |
 | Nygard, original ADR proposal (free) | cognitect.com | Reference |
-| MADR format (free) | adr.github.io | Reference |
+| [MADR format (free)](https://adr.github.io/madr/) | adr.github.io | Reference |
 | AWS Well-Architected Framework (free) | docs.aws.amazon.com | Reference |
 | Azure Architecture Center / Cloud Design Patterns (free) | learn.microsoft.com | Reference |
 
@@ -5746,12 +5811,15 @@ For a small application, choose one important failure path, such as cancellation
 
 #### Resources
 
+Begin with systematic test-case design in The Art of Software Testing, then use Beck's examples to practice short feedback cycles. For automated input generation, add [The Fuzzing Book](https://www.fuzzingbook.org/): follow the introductory Python examples, generate test inputs, inspect failures, and reduce a failing case. Its executable explanations complement test-framework documentation rather than replacing test oracles and requirements analysis. Continue to The Debugging Book (§8.6) when the problem is explaining and localizing a failure. Select chapters by their prerequisites; do not start with the most advanced generators.
+
 **Books and Texts**
 
 Myers, Sandler, and Badgett develop systematic test-case design in *The Art of Software Testing*. Beck demonstrates the TDD cycle through examples; Freeman and Pryce develop an outside-in approach. Khorikov discusses test value and coupling to implementation. Osherove’s *The Art of Unit Testing*, third edition, is written with Vladimir Khorikov and uses JavaScript examples. Compare the assumptions of these approaches rather than treating one testing style as mandatory.
 
 | Book | Role | Type |
 |---|---|---|
+| Zeller et al., [*The Fuzzing Book*](https://www.fuzzingbook.org/) | Executable explanations of automated test generation; free online | Practice |
 | Myers, Sandler & Badgett, *The Art of Software Testing* (3rd ed.) | Systematic test-case design | Depth |
 | Beck, *Test-Driven Development: By Example* | TDD foundational text | Entry |
 | Khorikov, *Unit Testing: Principles, Practices, and Patterns* | Contemporary unit testing principles | Practice |
@@ -5778,10 +5846,10 @@ Use the test runner already suited to your project, then add parameterized bound
 |---|---|---|
 | JUnit / pytest / Jest documentation | Language-specific test frameworks | Practice |
 | Coverage tools: JaCoCo / Coverage.py / Istanbul (free) | Language-specific | Practice |
-| Hypothesis (Python, free) | hypothesis.works | Practice |
-| fast-check (JavaScript, free) | GitHub | Practice |
+| [Hypothesis (Python, free)](https://hypothesis.readthedocs.io/) | hypothesis.works | Practice |
+| [fast-check (JavaScript, free)](https://fast-check.dev/) | GitHub | Practice |
 | Playwright Test (free) | playwright.dev | Practice |
-| Pact contract testing (free) | pact.io | Practice |
+| [Pact contract testing (free)](https://docs.pact.io/) | pact.io | Practice |
 | PIT mutation testing (Java, free) | pitest.org | Practice |
 | Stryker (JS/TS mutation testing, free) | stryker-mutator.io | Practice |
 
@@ -5865,6 +5933,8 @@ The practical skill is choosing an appropriate next source of information. A req
 
 #### Resources
 
+Choose the reading around a change you can follow from request to release. Brooks is useful for asking how coordination and scheduling assumptions fail; Continuous Delivery is useful for examining the release path; Team Topologies is useful for team boundaries. Pair one of these with a small process observation, such as where a change waits and why. Use Accelerate and DORA for research questions and evidence, keeping the study context separate from prescriptions for your team.
+
 **Books and Texts**
 
 Brooks describes coordination problems in large projects; Beck’s *Extreme Programming Explained* develops a set of interacting practices. *Continuous Delivery* follows a change through release, while *Team Topologies* examines team boundaries. *Accelerate* is useful for its research questions and historical findings; use subsequent DORA material to check definitions that have changed. These books provide different perspectives, not a required sequence for every project.
@@ -5874,13 +5944,13 @@ Brooks describes coordination problems in large projects; Beck’s *Extreme Prog
 | *Accelerate* / DORA research (§7.4 reference) | Empirical foundation for delivery performance | Entry |
 | *The DevOps Handbook* (§7.4 reference) | Practical DevOps implementation | Practice |
 | *Continuous Delivery* (§7.4 reference) | Deployment pipeline foundational text | Depth |
-| Beck, *Extreme Programming Explained* (2nd ed.) | XP foundational text | Depth |
+| [Beck, *Extreme Programming Explained* (2nd ed.)](https://www.plai.org/) | XP foundational text | Depth |
 | Brooks, *The Mythical Man-Month* (anniversary ed.) | Software management primary text | Depth |
 | *Team Topologies* | Team structure for delivery | Depth |
 | Kim, Behr & Spafford, *The Phoenix Project* | Fictional case of delivery and operations coordination | Practice |
 | Anderson, *Kanban: Successful Evolutionary Change* | Kanban methodology | Depth |
 | Reinertsen, *Principles of Product Development Flow* | Flow-based development theory | Depth |
-| Winters, Manshreck & Wright, *Software Engineering at Google* (free online; paid print) | Large-scale engineering practice | Depth |
+| [Winters, Manshreck & Wright, *Software Engineering at Google* (free online; paid print)](https://abseil.io/resources/swe-book) | Large-scale engineering practice | Depth |
 
 **Courses, Papers, and Current Sources**
 
@@ -5985,6 +6055,8 @@ A useful operational document states how to recognize a particular failure and w
 
 #### Resources
 
+Use Continuous Delivery as the main explanation of how a release pipeline gathers evidence. Build a small pipeline that tests, packages, and deploys one application, then add a recovery exercise. Use The DevOps Handbook for the organizational practices around that work; The Phoenix Project is a narrative introduction rather than an implementation manual. Platform documentation should supply the exact commands for your chosen environment, while the SRE Workbook helps connect deployment to operation.
+
 **Books and Texts**
 
 Humble and Farley’s *Continuous Delivery* explains the pipeline as evidence about a release. *The DevOps Handbook* examines technical and organizational practices; *The Phoenix Project* provides a fictional setting for discussing work queues and handoffs. Morris’s *Infrastructure as Code* addresses managing infrastructure changes. Read examples in the context of their platform and scale rather than copying the entire tool stack.
@@ -6004,7 +6076,7 @@ The [SRE Workbook chapter on canarying](https://sre.google/workbook/canarying-re
 | Resource | Platform | Type |
 |---|---|---|
 | State of DevOps reports (free) | dora.dev | Reference |
-| Google SRE book and workbook (free) | sre.google | Depth |
+| [Google SRE book and workbook (free)](https://sre.google/books/) | sre.google | Depth |
 
 **Practice, Tools, and Current Sources**
 
@@ -6016,7 +6088,7 @@ Build a small pipeline in a disposable environment before adopting an orchestrat
 | Terraform / OpenTofu documentation | developer.hashicorp.com / opentofu.org | Practice |
 | Argo CD (free) | argoproj.io | Practice |
 | Argo Rollouts (free) | argoproj.github.io | Practice |
-| OpenTelemetry documentation (free) | opentelemetry.io | Practice |
+| [OpenTelemetry documentation (free)](https://opentelemetry.io/docs/) | opentelemetry.io | Practice |
 | Backstage Software Catalog (free) | backstage.io | Practice |
 | OpenFeature (free) | openfeature.dev | Practice |
 | Flagsmith (open source) | flagsmith.com | Practice |
@@ -6103,14 +6175,17 @@ You also learn when to leave code alone. A low-cost inconvenience in a retiring 
 
 #### Resources
 
+For changing a tested module, start with Fowler's Refactoring and its online catalog. If dependencies prevent you from testing the behavior, use Feathers first to introduce characterization tests and seams. Tornhill's Software Design X-Rays helps select places to investigate from development history. Read Tornhill and Borg's [Code Red study](https://arxiv.org/abs/2203.04374) as an optional empirical case: it analyzes 39 proprietary production codebases using particular quality measures and maintenance records. Its associations are evidence to examine, not proof that one refactoring will cause the reported improvement in any project.
+
 **Books and Texts**
 
 Fowler’s *Refactoring* develops small structural transformations; Feathers’s *Working Effectively with Legacy Code* explains how to make existing behavior accessible to tests. Beck connects refactoring with a short testing cycle. Tornhill’s *Software Design X-Rays* uses development history to locate investigation candidates. Read these with one existing module in view so that a proposed improvement has an observable purpose.
 
 | Book | Role | Type |
 |---|---|---|
-| Fowler, *Refactoring* (2nd ed.) | Foundational refactoring text | Depth |
-| Feathers, *Working Effectively with Legacy Code* | Legacy code improvement | Depth |
+| Tornhill & Borg, [*Code Red* (2022)](https://arxiv.org/abs/2203.04374) | Optional empirical study of 39 proprietary codebases; associations with measurement and sample limits | Reference |
+| [Fowler, *Refactoring* (2nd ed.)](https://martinfowler.com/books/refactoring.html) | Foundational refactoring text | Depth |
+| [Feathers, *Working Effectively with Legacy Code*](https://www.informit.com/store/working-effectively-with-legacy-code-9780131177055) | Legacy code improvement | Depth |
 | Refactoring-loop reference: Beck, *Test-Driven Development: By Example* | Red-green-refactor discipline | Depth |
 | McConnell, *Code Complete* (2nd ed.) | Construction quality foundations | Depth |
 | Richardson, *Microservices Patterns* | Monolith decomposition patterns | Depth |
@@ -6126,7 +6201,7 @@ Read [Cunningham’s WyCash report](https://c2.com/doc/oopsla92.html) for the de
 | Fowler, "Technical Debt Quadrant" (free) | martinfowler.com | Reference |
 | Fowler, "Strangler Fig Application" (free) | martinfowler.com | Reference |
 | Spolsky, "Things You Should Never Do" (free) | joelonsoftware.com | Depth |
-| Fowler, online refactoring catalog | refactoring.com/catalog | Reference |
+| [Fowler, online refactoring catalog](https://refactoring.com/catalog/) | refactoring.com/catalog | Reference |
 
 **Practice, Tools, and Current Sources**
 
@@ -6224,6 +6299,8 @@ You also learn to read management advice as a proposal with assumptions. Ask wha
 
 #### Resources
 
+Choose The Manager's Path when the immediate question is a change in responsibility, such as mentoring or becoming a manager. Choose An Elegant Puzzle when you already face staffing, organization, and execution trade-offs. Use Hackman and Edmondson to examine the research behind team conditions, not to turn a single vocabulary into a universal management recipe. Apply one idea to a concrete conversation or decision and seek feedback before generalizing from the result.
+
 **Books and Texts**
 
 Fournier’s *The Manager’s Path* describes changes in responsibility; Larson’s *An Elegant Puzzle* examines organizational decisions. Hackman and Edmondson provide research perspectives on team conditions and learning. Scott supplies a vocabulary for feedback, while *Peopleware* and Grove’s *High Output Management* offer practitioner observations. Separate the evidence and context of a claim from the usefulness of its vocabulary.
@@ -6240,7 +6317,7 @@ Fournier’s *The Manager’s Path* describes changes in responsibility; Larson�
 | Drucker, *The Effective Executive* | Knowledge worker management | Depth |
 | DeMarco & Lister, *Peopleware* (3rd ed.) | Software management human factors | Depth |
 | Organizational-design use of *Team Topologies* | Team structure for delivery | Depth |
-| Larson, *Staff Engineer*; companion essays online | Technical leadership outside management | Depth |
+| [Larson, *Staff Engineer*; companion essays online](https://staffeng.com/book) | Technical leadership outside management | Depth |
 
 **Courses, Papers, and Current Sources**
 
@@ -6339,6 +6416,8 @@ A working language portfolio can remain small. Add a language when it supports a
 
 #### Resources
 
+To compare languages, implement the same small task in two languages with different approaches to state or composition, using Seven Languages or SICP to guide the comparison. For learning one language deeply, choose its sustained tutorial and reference instead. For C, [Modern C's C23 edition](https://gustedt.gitlabpages.inria.fr/modern-c/) supplies a current text and examples; see §2.1 for how it complements K&R. Comparing several languages does not require treating every syntax feature as a new programming concept.
+
 **Books and Texts**
 
 *Seven Languages in Seven Weeks* and *Seven More Languages in Seven Weeks* provide comparative exercises; their titles should not be read as proficiency schedules. *SICP* develops procedures, state, and interpreters. Scott and Sebesta offer systematic comparisons of language concepts. For a language you use, consult its own reference alongside a tutorial: the [Python expression reference](https://docs.python.org/3/reference/expressions.html), [JavaScript remainder documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder), and [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/2/basic-types.html) support the semantic distinctions discussed above. The [Rust Book's discussion of unsafe code](https://doc.rust-lang.org/book/ch20-01-unsafe-rust.html) explains where additional programmer obligations arise.
@@ -6346,10 +6425,10 @@ A working language portfolio can remain small. Add a language when it supports a
 | Book | Role | Type |
 |---|---|---|
 | Tate; Tate et al., *Seven Languages* / *Seven More Languages in Seven Weeks* | Comparative paradigm exercises | Entry |
-| Abelson & Sussman, *SICP* (free) | Deep treatment of programs and languages | Depth |
+| [Abelson & Sussman, *SICP* (free)](https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html) | Deep treatment of programs and languages | Depth |
 | Scott, *Programming Language Pragmatics* (4th ed.) | Features-to-implementation reference | Practice |
 | Sebesta, *Concepts of Programming Languages* (12th ed.) | Comparative language concepts textbook | Reference |
-| The Rust Book (free) | Ownership, types, and Rust programming | Entry |
+| [The Rust Book (free)](https://doc.rust-lang.org/book/) | Ownership, types, and Rust programming | Entry |
 
 **Courses and Lectures**
 
@@ -6368,7 +6447,7 @@ Reimplement one small task in two languages and explain the differences. Formatt
 |---|---|---|
 | Multi-paradigm reimplementation exercise | Local | Practice |
 | Formatters and linters (gofmt, clippy, Black, Prettier) | Language-specific | Practice |
-| Compiler Explorer (free) | godbolt.org | Practice |
+| [Compiler Explorer (free)](https://godbolt.org/) | godbolt.org | Practice |
 | Rosetta Code (free) | rosettacode.org | Reference |
 | Effective Go (free) | go.dev | Reference |
 | Advent of Code (free; donations optional) | adventofcode.com | Practice |
@@ -6443,13 +6522,15 @@ Automation can preserve a repeated procedure as well as save keystrokes. Turn a 
 
 #### Resources
 
+Use [Missing Semester's 2020 course](https://missing.csail.mit.edu/2020/) as a coherent starting sequence for the shell, editing, debugging, and version control, completing the exercises with a real small project. Its archived sequence is useful even as newer course offerings change topics. Use The Linux Command Line when shell syntax and scripting need a slower treatment. Choose additional tools only when they solve a repeated task; setting up an elaborate editor is not a prerequisite to programming.
+
 **Books and Texts**
 
 *The Linux Command Line* introduces shell work; *The Unix Programming Environment* explains composition through older tools and examples. *Practical Vim* is relevant if you choose modal editing, while the administration handbook is a reference for system tasks. Read the manual for the tool and version in use. The [Bash pipeline reference](https://www.gnu.org/software/bash/manual/html_node/Pipelines) specifies stream connections and exit status.
 
 | Book | Role | Type |
 |---|---|---|
-| Shotts, *The Linux Command Line* (2nd ed., free) | Comprehensive shell introduction | Entry |
+| [Shotts, *The Linux Command Line* (2nd ed., free)](https://linuxcommand.org/tlcl.php) | Comprehensive shell introduction | Entry |
 | Kernighan & Pike, *The Unix Programming Environment* | Unix philosophy foundation | Depth |
 | Neil, *Practical Vim* (2nd ed.) | Modal editing philosophy and practice | Practice |
 | Nemeth et al., *UNIX and Linux System Administration Handbook* (5th ed.) | System-level reference | Reference |
@@ -6460,7 +6541,7 @@ MIT's *Missing Semester* organizes practical work with shells, editors, version 
 
 | Course | Platform | Type |
 |---|---|---|
-| MIT Missing Semester (free) | missing.csail.mit.edu | Entry |
+| [MIT Missing Semester (free)](https://missing.csail.mit.edu/2020/) | missing.csail.mit.edu | Entry |
 
 **Practice, Tools, and Projects**
 
@@ -6547,17 +6628,19 @@ Practice by tracing one feature in software you use. Write its entry point, the 
 
 #### Resources
 
+Use Code Reading with a small repository: find an entry point, trace one operation through calls and data, and check the trace with a debugger or test. Choose Working Effectively with Legacy Code when the next step is a safe modification but test coverage is poor. Its characterization tests record current behavior; its seams let you substitute dependencies so that behavior becomes testable. This explains why the book remains useful despite older language examples. AOSA is a companion for connecting those implementation details to larger design choices.
+
 **Books and Texts**
 
 Spinellis's *Code Reading* uses real programs to teach navigation and comprehension; *Code Quality* adds evaluation of their structure. Feathers focuses on understanding and changing systems with limited test support. *The Architecture of Open Source Applications* connects implementation choices to design explanations. Petzold's *Code* supports background understanding of computing layers rather than source-reading technique itself.
 
 | Book | Role | Type |
 |---|---|---|
-| Spinellis, *Code Reading: The Open Source Perspective* | Techniques and cases for reading source | Depth |
+| [Spinellis, *Code Reading: The Open Source Perspective*](https://www.spinellis.gr/codereading/) | Techniques and cases for reading source | Depth |
 | Spinellis, *Code Quality: The Open Source Perspective* | What makes code good or bad | Depth |
-| Feathers, *Working Effectively with Legacy Code* | Reading and modifying undocumented code | Depth |
+| [Feathers, *Working Effectively with Legacy Code*](https://www.informit.com/store/working-effectively-with-legacy-code-9780131177055) | Reading and modifying undocumented code | Depth |
 | Petzold, *Code* (2nd ed.) | Layered bottom-up comprehension model | Depth |
-| Brown & Wilson, *The Architecture of Open Source Applications* (free; paid print optional) | Real-world codebase and architecture reading cases | Practice |
+| [Brown & Wilson, *The Architecture of Open Source Applications* (free; paid print optional)](https://aosabook.org/en/) | Real-world codebase and architecture reading cases | Practice |
 
 **Practice, Tools, and Projects**
 
@@ -6650,6 +6733,8 @@ Revisit a working function and ask a reader to explain its contract and failure 
 
 #### Resources
 
+For improving code you already write, begin with The Practice of Programming and revise one working program's names, interfaces, tests, and error handling. Use Ousterhout to examine whether a module actually reduces complexity for its callers. Read Clean Code as a collection of context-dependent style judgments, particularly its Java-oriented examples; compare a prescription against readability, change cost, and the language's idioms. Code Complete is a reference for specific construction questions, not a requirement to memorize a large rule set.
+
 **Books and Texts**
 
 Kernighan and Pike connect style, interfaces, testing, and debugging. McConnell provides a broad construction reference. Ousterhout emphasizes interfaces and complexity; Martin offers detailed style prescriptions. Compare their advice on one program instead of treating either as a universal rulebook. Hunt and Thomas discuss broader working habits, and Knuth's *Literate Programming* examines how explanation and code can be organized together.
@@ -6657,9 +6742,9 @@ Kernighan and Pike connect style, interfaces, testing, and debugging. McConnell 
 | Book | Role | Type |
 |---|---|---|
 | Kernighan & Pike, *The Practice of Programming* | Style, interfaces, testing, and debugging | Practice |
-| Ousterhout, *A Philosophy of Software Design* (2nd ed.) | Complexity and deep modules | Depth |
+| [Ousterhout, *A Philosophy of Software Design* (2nd ed.)](https://web.stanford.edu/~ouster/cgi-bin/book.php) | Complexity and deep modules | Depth |
 | McConnell, *Code Complete* (2nd ed.) | Encyclopedic construction reference | Reference |
-| Martin, *Clean Code* | Widely-read craft handbook; read critically | Entry |
+| Martin, *Clean Code* | Context-dependent craft and style opinions, with Java-oriented examples; compare with other approaches | Reference |
 | Hunt & Thomas, *The Pragmatic Programmer* (20th Anniversary) | Craft and mindset of the working programmer | Entry |
 | Knuth, *Literate Programming* | The foundational vision of code as communication | Depth |
 
@@ -6755,16 +6840,18 @@ Practice in a disposable repository: stage a file, edit it again, and compare bo
 
 #### Resources
 
+Start with Pro Git's recording-changes and branching chapters, and reproduce each operation in a disposable local repository. Use Learn Git Branching to predict the commit graph before running a command. Read Git from the Bottom Up when objects and references remain confusing. For collaboration, apply Google's code-review guidance to one small change whose purpose, tests, and alternatives you can explain; learning commands and reviewing a change are distinct skills.
+
 **Books and Texts**
 
 *Pro Git* connects the [staging workflow](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository), [object model](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects), and [branching and merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging). Wiegley's guide and *Think Like (a) Git* provide alternative explanations. Google's [review guidance](https://google.github.io/eng-practices/review/reviewer/looking-for.html) discusses what to inspect in a change; adapt the process to the task and team rather than copying every organizational convention.
 
 | Book | Role | Type |
 |---|---|---|
-| Chacon & Straub, *Pro Git* (2nd ed., free) | Git workflow and object model | Reference |
+| [Chacon & Straub, *Pro Git* (2nd ed., free)](https://git-scm.com/book/en/v2) | Git workflow and object model | Reference |
 | Wiegley, "Git from the Bottom Up" (free) | Graph model from the ground up | Depth |
 | "Think Like (a) Git" (free) | The mental model for Git fluency | Entry |
-| Google "How to do a code review" (free) | Code review practice, concise and applicable | Practice |
+| [Google "How to do a code review" (free)](https://google.github.io/eng-practices/review/) | Code review practice, concise and applicable | Practice |
 
 **Courses and Interactive Tools**
 
@@ -6772,8 +6859,8 @@ Learn Git Branching makes changes to the commit graph visible. Pair it with a sm
 
 | Course | Platform | Type |
 |---|---|---|
-| Learn Git Branching (free) | learngitbranching.js.org | Practice |
-| MIT Missing Semester: Version Control (free) | missing.csail.mit.edu | Entry |
+| [Learn Git Branching (free)](https://learngitbranching.js.org/) | learngitbranching.js.org | Practice |
+| [MIT Missing Semester: Version Control (free)](https://missing.csail.mit.edu/2020/version-control/) | missing.csail.mit.edu | Entry |
 | GitHub Skills (free) | github.com/skills | Practice |
 | Atlassian Git Tutorials (free) | atlassian.com/git/tutorials | Entry |
 
@@ -6869,6 +6956,8 @@ Practice on a small known defect without looking at its fix. Keep an investigati
 
 #### Resources
 
+Choose Agans for a concise set of investigation habits and The Debugging Book for executable explanations of techniques such as tracing and reducing failures. Begin with a deterministic bug and keep a record of each hypothesis and observation. Follow the dependency order of the selected book chapters. Pair this with The Fuzzing Book (§7.2) when you need to generate inputs that expose failures; debugging then asks why the failure occurs and where to intervene.
+
 **Books and Texts**
 
 Agans's *Debugging* organizes practical investigation habits. Zeller's *Why Programs Fail* develops systematic methods, and [The Debugging Book's input-reduction chapter](https://www.debuggingbook.org/html/DeltaDebugger.html) gives executable examples of reducing failures and explains minimality. Kernighan and Pike connect debugging to testing and program design. Apply a method to an actual defect and record where its assumptions hold.
@@ -6877,7 +6966,7 @@ Agans's *Debugging* organizes practical investigation habits. Zeller's *Why Prog
 |---|---|---|
 | Agans, *Debugging: The 9 Indispensable Rules* | Practical investigation habits | Entry |
 | Zeller, *Why Programs Fail* (2nd ed.) | Systematic, scientific debugging methodology | Depth |
-| Zeller, *The Debugging Book* (free) | Executable text on automated debugging | Depth |
+| [Zeller, *The Debugging Book* (free)](https://www.debuggingbook.org/) | Executable text on automated debugging | Depth |
 | Debugging chapters in Kernighan & Pike, *The Practice of Programming* | Distilled practical wisdom | Practice |
 
 **Practice, Tools, and Projects**
@@ -6970,13 +7059,15 @@ Choose one claim and prepare a short reading note: the claim, supporting passage
 
 #### Resources
 
+Use Keshav's guide on one paper for which you know the background: first identify the question and claimed contribution, then reconstruct one central argument or experiment. Use a search index such as Semantic Scholar or DBLP to discover related work; use the authors' project and repository links to identify the actual implementation and data. Discovery and reproduction are different tasks. Proceedings and preprint servers are collections to search, not preselected sequences of equally reliable or equally accessible readings.
+
 **Guides, Specifications, and Literature**
 
 Keshav's [How to Read a Paper](https://svr-sk818-web.cl.cam.ac.uk/keshav/publications/htrap.html) gives the three-pass method; Mitzenmacher's guide supplies complementary questions. Read [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119.html) together with [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174.html) for requirement language. For empirical work, use the evaluation and testing discussions in §5.2 and §7.2 to ask about data, baselines, and independent checks.
 
 | Resource | Role | Type |
 |---|---|---|
-| Keshav, "How to Read a Paper" (free) | Three-pass reading strategy | Entry |
+| [Keshav, "How to Read a Paper" (free)](https://svr-sk818-web.cl.cam.ac.uk/keshav/publications/htrap.html) | Three-pass reading strategy | Entry |
 | Mitzenmacher, "How to Read a Research Paper" (free) | Complementary paper-reading guidance | Entry |
 | RFC 2119 and RFC 8174 (free) | Requirement levels and capitalization | Reference |
 | Empirical evaluation and reproducibility (§5.2, §7.2) | Checking data, baselines, and independent evidence | Depth |
@@ -6991,7 +7082,7 @@ A reading group can compare specific interpretations and evidence. arXiv hosts p
 | arXiv (free) | arxiv.org | Reference |
 | Major conference proceedings (often free) | Conference sites / DBLP | Reference |
 | OpenReview (free) | openreview.net | Reference |
-| ACL Anthology (free) | aclanthology.org | Reference |
+| [ACL Anthology (free)](https://aclanthology.org/) | aclanthology.org | Reference |
 | RFC index (free) | rfc-editor.org | Reference |
 | Papers We Love (free) | paperswelove.org | Auxiliary |
 
@@ -7004,8 +7095,8 @@ Use scholarly search and citation links to locate related work, and DBLP to chec
 | Semantic Scholar / Google Scholar (free) | semanticscholar.org / scholar.google.com | Practice |
 | Connected Papers | connectedpapers.com | Practice |
 | Paper-associated code and data | Authors' repositories / artifact records | Reference |
-| DBLP (free) | dblp.org | Reference |
-| Zotero (free) | zotero.org | Practice |
+| [DBLP (free)](https://dblp.org/) | dblp.org | Reference |
+| [Zotero (free)](https://www.zotero.org/) | zotero.org | Practice |
 
 #### Traps
 
@@ -7081,6 +7172,8 @@ Test a document by asking another person to use it without extra explanation. Ca
 
 #### Resources
 
+For an immediate technical-writing exercise, use Google's Technical Writing lessons to revise an explanation of code you understand. Ask a reader with the intended background to carry out the instructions. Use Diataxis to decide whether a document should teach a task, guide a task, explain an idea, or provide reference information. Zinsser and Williams help revise prose; style guides answer local wording questions after the document's purpose and audience are clear.
+
 **Books and Texts**
 
 Zinsser discusses clear nonfiction; Pinker examines explanations that assume too much reader knowledge; Williams analyzes sentence-level clarity. Strunk and White provide concise English style advice, but individual prescriptions should be evaluated in context. Use these books to revise actual documents and seek feedback from the intended readers.
@@ -7098,8 +7191,8 @@ Google's [Technical Writing One](https://developers.google.com/tech-writing/one)
 
 | Resource | Platform | Type |
 |---|---|---|
-| Google Technical Writing courses (free) | developers.google.com/tech-writing | Practice |
-| Diataxis documentation framework (free) | diataxis.fr | Reference |
+| [Google Technical Writing courses (free)](https://developers.google.com/tech-writing) | developers.google.com/tech-writing | Practice |
+| [Diataxis documentation framework (free)](https://diataxis.fr/) | diataxis.fr | Reference |
 | Write the Docs guide (free) | writethedocs.org | Auxiliary |
 | Microsoft Writing Style Guide (free) | learn.microsoft.com | Reference |
 | Writing in public (blog, docs, forums) | Various | Practice |
@@ -7178,6 +7271,8 @@ Keep a brief record of a few consequential tasks and revisit their outcomes. Use
 
 #### Resources
 
+Choose a career resource for a decision you actually face: Fournier for management responsibilities, Larson for senior individual-contributor work, and Orosz for a broader set of engineering-career examples. Compare the advice with the size, incentives, and expectations of your workplace. Use published career ladders to formulate questions, not to infer that every employer uses the same progression. Keep the ACM Code of Ethics alongside these readings when judging obligations to users and colleagues.
+
 **Books and Texts**
 
 Fournier and Larson describe management and senior individual-contributor work; Orosz offers career examples across engineering roles. Use them to generate questions about a specific workplace. Newport's career-capital argument is one perspective on developing valuable skills, not a universal prediction of satisfaction. O'Neil supplies cases of harmful algorithmic decisions. The [ACM Code of Ethics](https://www.acm.org/binaries/content/assets/about/acm-code-of-ethics-booklet.pdf) sets out professional principles including honesty, avoiding harm, and respecting privacy.
@@ -7185,10 +7280,10 @@ Fournier and Larson describe management and senior individual-contributor work; 
 | Book | Role | Type |
 |---|---|---|
 | Fournier, *The Manager's Path* | Career trajectory map; both paths | Entry |
-| Larson, *Staff Engineer* | The senior IC path | Depth |
+| [Larson, *Staff Engineer*](https://staffeng.com/book) | The senior IC path | Depth |
 | Orosz, *The Software Engineer's Guidebook* | Contemporary career navigation | Entry |
 | Newport, *So Good They Can't Ignore You* | Career capital framing | Depth |
-| ACM Code of Ethics (free) | Professional ethical obligations | Reference |
+| [ACM Code of Ethics (free)](https://www.acm.org/code-of-ethics) | Professional ethical obligations | Reference |
 | O'Neil, *Weapons of Math Destruction* | Algorithmic harm awareness | Depth |
 
 **Communities and Ongoing Sources**
@@ -7275,6 +7370,8 @@ As an exercise, explain a recursive list sum in three ways: its input-output con
 
 #### Resources
 
+If mathematical CS still feels abstract, work through induction and recursion in Foundations of Computer Science before selecting recurrence or summation exercises from Concrete Mathematics. Use TAOCP for a specific algorithmic question after the prerequisites are in place. The Natural Number Game offers a separate introduction to proof-assistant interaction; it does not replace learning to construct a mathematical argument. nLab and the HoTT book are later references for particular foundational questions.
+
 **Foundational and Bridging Texts**
 
 *Concrete Mathematics* develops sums, recurrences, and combinatorics through problems used in algorithm analysis. Read it alongside the induction and recursion treatment in Aho and Ullman's *Foundations of Computer Science*. *The Art of Computer Programming* is a detailed reference for algorithms and their analysis; *Selected Papers on Computer Science* adds historical and methodological reflections. Choose chapters around a question rather than treating these works as prerequisites to all programming.
@@ -7293,10 +7390,10 @@ Wadler's [“Propositions as Types”](https://homepages.inf.ed.ac.uk/wadler/pap
 |---|---|---|
 | Wadler, "Propositions as Types" (free) | Correspondences between logical and programming constructs | Depth |
 | Lean + mathlib (free) | Writing and checking formal mathematical proofs | Practice |
-| Natural Number Game (free) | Guided exercises constructing arithmetic proofs | Practice |
+| [Natural Number Game (free)](https://adam.math.hhu.de/#/g/leanprover-community/nng4) | Guided exercises constructing arithmetic proofs | Practice |
 | *Homotopy Type Theory* book (free) | Univalent foundations and homotopy type theory | Depth |
-| Milewski, *Category Theory for Programmers* (free; paid print optional) | Category-theoretic structures in programming | Auxiliary |
-| nLab (free) | Advanced reference for categories, types, and foundations | Reference |
+| [Milewski, *Category Theory for Programmers* (free; paid print optional)](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/) | Category-theoretic structures in programming | Auxiliary |
+| [nLab (free)](https://ncatlab.org/nlab/show/HomePage) | Advanced reference for categories, types, and foundations | Reference |
 | Borwein & Bailey, *Mathematics by Experiment* | Computational exploration and mathematical conjectures | Practice |
 
 #### Traps
@@ -7359,6 +7456,8 @@ A useful exercise is to compare a reset and a bit flip as mappings, then explain
 
 #### Resources
 
+Begin with Feynman's computation lectures for the connection between physical mechanisms and information processing. Use MacKay when probability and information-theoretic quantities need a clearer mathematical treatment. Read Landauer and Bennett after you can distinguish a logical operation from its physical implementation and specify what is being erased. The popular accounts below are useful for wider questions and motivation, while technical conclusions should be traced to models and derivations.
+
 **Foundational and Bridging Texts**
 
 Feynman's lectures connect physical models with computation. Landauer and Bennett supply the thermodynamic arguments; Bennett's [later explanatory note](https://arxiv.org/abs/physics/0210005) also discusses common misinterpretations. The [Bérut et al. experiment](https://www.physics.rutgers.edu/~morozov/677_f2017/Physics_677_2017_files/Berut_Lutz_Nature2012.pdf) provides a concrete realization to compare with the idealized bound. Jaynes and MacKay develop connections among probability, inference, and physical entropy. Read the assumptions of a physical model alongside its equations.
@@ -7369,7 +7468,7 @@ Feynman's lectures connect physical models with computation. Landauer and Bennet
 | Landauer, "Irreversibility and Heat Generation" (1961) | Logical irreversibility and thermodynamic cost | Depth |
 | Bennett, "The Thermodynamics of Computation" (1982) | Reversible computation and thermodynamic accounting | Depth |
 | Jaynes, "Information Theory and Statistical Mechanics" (1957, free) | Information-theoretic methods in statistical mechanics | Depth |
-| MacKay, *Information Theory, Inference, and Learning Algorithms* (free) | Probability, inference, coding, and physical connections | Depth |
+| [MacKay, *Information Theory, Inference, and Learning Algorithms* (free)](https://www.inference.org.uk/mackay/itila/) | Probability, inference, coding, and physical connections | Depth |
 | SEP, "Computation in Physical Systems" (free) | Conceptual accounts of physical computation | Reference |
 
 **Quantum Information and the Deeper Connections**
@@ -7445,6 +7544,8 @@ Try explaining a familiar task, such as adding two numbers, at Marr's three leve
 
 #### Resources
 
+For learning to build and test models, prefer the Neuromatch Academy Computational Neuroscience sequence once basic Python, linear algebra, and probability are familiar. Read Marr alongside it to distinguish the problem being solved, the representation and algorithm, and the physical implementation. Boden supplies historical breadth. Fodor, Searle, Dreyfus, and Clark help compare claims about mind, but their arguments are not substitutes for neuroscience experiments or a model-building curriculum.
+
 **Foundational and Bridging Texts**
 
 Boden's *Mind as Machine* traces the interaction among AI, psychology, linguistics, and neuroscience. Its discussion of levels of explanation helps place Marr's *Vision* in context. Fodor develops a symbolic account of thought; Searle and Dreyfus challenge different assumptions of computational accounts. Read each argument with its target and premises in view. Hofstadter connects formal systems and self-reference with questions about mind, but is not a substitute for empirical cognitive science.
@@ -7469,7 +7570,7 @@ Boden's *Mind as Machine* traces the interaction among AI, psychology, linguisti
 | Lakoff & Johnson, *Philosophy in the Flesh* | An embodied account of concepts and reasoning | Depth |
 | Clark, *Being There* / *Supersizing the Mind* | Embodied and extended accounts of cognition | Depth |
 | Computational neuroscience reviews (current) | Comparisons of model and biological observations | Reference |
-| Neuromatch Academy Computational Neuroscience (free) | Computational-neuroscience exercises and tutorials | Practice |
+| [Neuromatch Academy Computational Neuroscience (free)](https://compneuro.neuromatch.io/) | Computational-neuroscience exercises and tutorials | Practice |
 | Cognitive Computational Neuroscience proceedings (free/current) | Research on computational accounts of cognition | Reference |
 | Allen Brain Map / Allen Institute open data (free) | Neuroscience observations for computational analysis | Practice |
 
@@ -7532,13 +7633,15 @@ When reading a claim about human language, ask what population, data, task, and 
 
 #### Resources
 
+Use Speech and Language Processing as the main instructional route, following a concrete task such as tokenization or language modeling through examples and evaluation. Read Syntactic Structures for the historical argument about grammar, with the formal-language distinctions in §3.2 alongside it. The ACL Anthology is for finding particular papers once a question is clear. Opinion articles and debates can help formulate that question, but should not carry the introductory technical explanation.
+
 **Foundational and Bridging Texts**
 
 Jurafsky and Martin's [*Speech and Language Processing* materials](https://web.stanford.edu/~jurafsky/slp3/) connect linguistic tasks with computational methods. Chomsky's *Syntactic Structures* supplies historical context for formal grammar; automata texts explain the machine–language correspondences precisely. Pinker presents an account emphasizing an innate language faculty. Treat it as a position to understand alongside other acquisition research, rather than as the definition of linguistics.
 
 | Resource | Role | Type |
 |---|---|---|
-| Jurafsky & Martin, *Speech and Language Processing* (online draft) | Linguistic tasks and computational methods | Depth |
+| [Jurafsky & Martin, *Speech and Language Processing* (online draft)](https://web.stanford.edu/~jurafsky/slp3/) | Linguistic tasks and computational methods | Depth |
 | Chomsky, *Syntactic Structures* (1957) | Historical development of formal grammar | Depth |
 | Theory of computation texts (§3.2) | Formal languages and their recognizing machines | Depth |
 | Pinker, *The Language Instinct* | An account emphasizing an innate language faculty | Entry |
@@ -7552,7 +7655,7 @@ Use debate essays to identify competing claims, then look for experiments that d
 | Chomsky et al., "The False Promise of ChatGPT" (2023) | A skeptical argument about language-model explanation | Reference |
 | LLM linguistic-probing literature (§5.6) | Experiments on linguistic information and behavior | Reference |
 | Manning and synthetic-position work | Accounts connecting linguistic structure and learned models | Reference |
-| ACL Anthology (free) | Primary papers and evaluation methods | Reference |
+| [ACL Anthology (free)](https://aclanthology.org/) | Primary papers and evaluation methods | Reference |
 | Opitz et al., "Natural Language Processing RELIES on Linguistics" (free) | An argument for linguistic knowledge in NLP | Reference |
 | Language Log (free) | Public discussion of linguistic evidence and claims | Auxiliary |
 | Language acquisition debate (cognitive science) | Evidence and theories about learning language | Depth |
@@ -7615,6 +7718,8 @@ Work through the second-price example with several valuations and competing bids
 
 #### Resources
 
+With basic probability, optimization, and proof skills, start with Roughgarden's Twenty Lectures and work out a small auction or routing game before reading the general result. Use Osborne if game-theory vocabulary is the obstacle. Roth provides institutional examples of market design; Algorithmic Game Theory supplies deeper references. Evaluate a mechanism by its assumptions about information and incentives as well as its computation, rather than treating a theorem as a ready-made policy.
+
 **Foundational and Bridging Texts**
 
 Roughgarden's *Twenty Lectures* offers a route from auctions to routing and equilibrium computation. Nisan and colleagues provide a broader reference. Osborne develops game-theory foundations, while Roth connects matching and market design to institutional requirements. Work through a small game or mechanism before interpreting a general theorem about it.
@@ -7622,7 +7727,7 @@ Roughgarden's *Twenty Lectures* offers a route from auctions to routing and equi
 | Resource | Role | Type |
 |---|---|---|
 | Nisan, Roughgarden, Tardos & Vazirani, *Algorithmic Game Theory* (free) | Reference on algorithms, incentives, and equilibria | Reference |
-| Roughgarden, *Twenty Lectures on Algorithmic Game Theory* | A lecture-based introduction with worked arguments | Entry |
+| [Roughgarden, *Twenty Lectures on Algorithmic Game Theory*](https://timroughgarden.org/f13/f13.html) | A lecture-based introduction with worked arguments | Entry |
 | Roth, *Who Gets What — and Why* | Matching and market design in institutions | Entry |
 | Osborne, *An Introduction to Game Theory* | Players, strategies, information, and equilibrium | Depth |
 
@@ -7700,6 +7805,8 @@ As a reading exercise, take one privacy or fairness claim and identify its unit 
 
 #### Resources
 
+Choose the technical route by the question: Dwork and Roth for a precise privacy guarantee, or Fairness and Machine Learning for criteria, measurement, and the social context of prediction. Both benefit from probability and mathematical maturity. Use Lessig and Solove for the legal and institutional framing. Primary legal texts and policy reports are references to consult for a specific jurisdiction and date; their existence does not make them beginner textbooks.
+
 **Foundational and Bridging Texts**
 
 Lessig and Solove explain how architectures and information practices affect governance and privacy. Dwork and Roth's [differential-privacy text](https://privacytools.seas.harvard.edu/sites/g/files/omnuum6656/files/privacytools/files/the_algorithmic_foundations_of_differential_privacy.pdf) defines the technical guarantee and its composition. Barocas, Hardt, and Narayanan develop fairness criteria and their relation to social questions; the [Kleinberg–Mullainathan–Raghavan paper](https://arxiv.org/abs/1609.05807) is a source for conditional incompatibility results. O'Neil offers cases for examining objectives, data, and institutional consequences.
@@ -7709,7 +7816,7 @@ Lessig and Solove explain how architectures and information practices affect gov
 | Lessig, *Code: And Other Laws of Cyberspace* (v2.0) | How technical architecture shapes governance | Depth |
 | Solove, *Understanding Privacy* | Different privacy interests and information practices | Depth |
 | Dwork & Roth, *The Algorithmic Foundations of Differential Privacy* (free) | Definitions, mechanisms, and composition guarantees | Depth |
-| Barocas, Hardt & Narayanan, *Fairness and Machine Learning* (free) | Fairness criteria, assumptions, and social context | Depth |
+| [Barocas, Hardt & Narayanan, *Fairness and Machine Learning* (free)](https://fairmlbook.org/) | Fairness criteria, assumptions, and social context | Depth |
 | O'Neil, *Weapons of Math Destruction* | Cases involving data-driven institutional decisions | Entry |
 
 **Intellectual Property, AI, and Ongoing Developments**
@@ -7790,6 +7897,8 @@ For practice, implement a small sequence-alignment example and vary the scoring 
 
 #### Resources
 
+For a first computational-biology path, pair Bioinformatics Algorithms with selected Rosalind exercises and learn the necessary molecular-biology background as it appears. Durbin and coauthors become especially useful when sequence tasks call for probabilistic models. Read the AlphaFold2 paper and practical guide after you can distinguish a prediction, its confidence measures, and an experimental structure. Historical works and genetic-algorithm texts answer different questions and are not prerequisites for the sequence-analysis path.
+
 **Foundational and Bridging Texts**
 
 Schrödinger's *What Is Life?* provides historical context, not a substitute for modern molecular biology. Alberts and colleagues supply that biological background. Compeau and Pevzner and the Rosalind exercises connect sequence problems to algorithms; Durbin and colleagues develop probabilistic sequence models. Crick's [1970 central-dogma paper](https://www.nature.com/articles/227561a0) clarifies the original information-transfer claim.
@@ -7797,7 +7906,7 @@ Schrödinger's *What Is Life?* provides historical context, not a substitute for
 | Resource | Role | Type |
 |---|---|---|
 | Schrödinger, *What Is Life?* (1944) | Historical questions about physical explanations of life | Depth |
-| Compeau & Pevzner, *Bioinformatics Algorithms*; Rosalind exercises | Sequence problems and algorithmic exercises | Practice |
+| [Compeau & Pevzner, *Bioinformatics Algorithms*; Rosalind exercises](https://www.bioinformaticsalgorithms.org/) | Sequence problems and algorithmic exercises | Practice |
 | Durbin et al., *Biological Sequence Analysis* | Probabilistic models for biological sequences | Depth |
 | Alberts et al., *Molecular Biology of the Cell* | Cell biology needed to interpret computational results | Reference |
 
@@ -7812,8 +7921,8 @@ Read the [AlphaFold2 paper](https://www.nature.com/articles/s41586-021-03819-2) 
 | Adleman, DNA computing paper (1994, free) | A small molecular computation experiment | Depth |
 | ML-in-biology literature (current) | Task-specific methods and evidence in biology | Reference |
 | AlphaFold Protein Structure Database (free) | Predicted structures with associated confidence information | Practice |
-| EMBL-EBI AlphaFold practical guide (free) | Interpreting predictions and their limitations | Practice |
-| Rosalind platform (free) | Exercises connecting biological questions and algorithms | Practice |
+| [EMBL-EBI AlphaFold practical guide (free)](https://www.ebi.ac.uk/training/online/courses/alphafold/) | Interpreting predictions and their limitations | Practice |
+| [Rosalind platform (free)](https://rosalind.info/problems/locations/) | Exercises connecting biological questions and algorithms | Practice |
 
 #### Traps
 
@@ -7875,6 +7984,8 @@ Build one small generator with a few interpretable parameters. Save its inputs a
 
 #### Resources
 
+To start making generative work, choose the p5.js examples and an appropriate Coding Train sequence, modifying each sketch rather than only replaying it. Use Reas and Fry or Pearson to develop a more sustained practice. Read Boden when you want to discuss what kind of novelty a program produces. Galleries and current debates are useful for comparison and criticism, but do not replace a sequence of small programming and design exercises.
+
 **Foundational and Bridging Texts**
 
 Boden's *The Creative Mind* develops the three forms of creativity discussed above; *Mind as Machine* places systems such as AARON in their research context. The Whitney Museum's [AARON materials](https://whitney.org/exhibitions/harold-cohen-aaron/art) show examples and explain selected rules. Reas and Fry and Pearson provide routes into making generative work. Birkhoff and computational-aesthetics research should be read as attempts to formalize selected criteria, with attention to what the measures omit.
@@ -7893,8 +8004,8 @@ Choose one environment and make a small work before comparing many tools. The [p
 | Resource | Role | Type |
 |---|---|---|
 | Processing / p5.js / openFrameworks (free) | Environments for interactive and generative work | Practice |
-| p5.js reference and examples (free) | Documented examples for browser-based work | Practice |
-| The Coding Train (free; optional paid support) | Guided creative-coding projects | Auxiliary |
+| [p5.js reference and examples (free)](https://p5js.org/) | Documented examples for browser-based work | Practice |
+| [The Coding Train (free; optional paid support)](https://thecodingtrain.com/tracks) | Guided creative-coding projects | Auxiliary |
 | OpenProcessing (free; paid Plus options) | Examples to inspect, modify, and discuss | Practice |
 | SuperCollider / TidalCycles / Sonic Pi (free) | Algorithmic composition and live coding | Practice |
 | Generative AI tools (§5.3, §5.5) | Model-assisted generation, selection, and revision | Practice |
@@ -7967,6 +8078,8 @@ For a final exercise, choose one claim from this guide and reconstruct it: the q
 
 #### Resources
 
+Start with the Stanford Encyclopedia entry closest to your question and identify the competing claims and their assumptions. For incompleteness, use Nagel and Newman with the formal account in §3.1–§3.2; for machine intelligence, read Turing's paper in its original argumentative context. Read Penrose, Dennett, or Chalmers as developed positions to compare. A philosophical argument that invokes a technical theorem must preserve that theorem's assumptions.
+
 **Foundations: The Philosophy of Computation**
 
 Nagel and Newman introduce incompleteness; use the formal conditions in §3.1–§3.2 to keep the statement precise. Hofstadter connects self-reference, formal systems, and mind. Penrose argues for a particular conclusion about minds and computation, rather than presenting a consequence accepted by everyone who accepts Gödel's theorem. The Stanford Encyclopedia entries map distinctions and competing arguments; consult the original technical results when a philosophical conclusion depends on them.
@@ -7987,7 +8100,7 @@ Read Turing's [1950 paper](https://www.cs.toronto.edu/~frank/csc2501/Readings/R1
 | Turing, "Computing Machinery and Intelligence" (1950, free) | A proposed behavioral comparison and replies to objections | Depth |
 | Chalmers, *The Conscious Mind* | An account of the explanatory problem of consciousness | Depth |
 | Nagel, "What Is It Like to Be a Bat?" (1974, free) | The subjective character of experience | Depth |
-| Dennett, *Consciousness Explained* | A competing account of consciousness and explanation | Depth |
+| [Dennett, *Consciousness Explained*](https://www.plai.org/) | A competing account of consciousness and explanation | Depth |
 
 **Ethics: What We Ought to Do**
 
@@ -7998,8 +8111,8 @@ Use an introduction to moral philosophy to understand the arguments behind famil
 | Bostrom, *Superintelligence* (§5.7) | Arguments about risks of highly capable AI | Depth |
 | Moral philosophy introductions (consequentialism, deontology, virtue ethics) | Reasons behind different ethical approaches | Reference |
 | AI ethics literature (§5.7, §9.6) | Ethical analysis of computational systems and institutions | Reference |
-| SEP, "Ethics of Artificial Intelligence and Robotics" (free) | An overview of problems and competing approaches | Reference |
-| ACM Code of Ethics (§8.9, free) | Professional duties applied to concrete decisions | Reference |
+| [SEP, "Ethics of Artificial Intelligence and Robotics" (free)](https://plato.stanford.edu/entries/ethics-ai/) | An overview of problems and competing approaches | Reference |
+| [ACM Code of Ethics (§8.9, free)](https://www.acm.org/code-of-ethics) | Professional duties applied to concrete decisions | Reference |
 
 #### Traps
 
