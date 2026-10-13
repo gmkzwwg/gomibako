@@ -1,6 +1,5 @@
 ---
-title: "Physics"
-subtitle: "Learning Atlas"
+title: "Physics Learning Atlas"
 categories: Atlas
 date: 2026-05-03
 subclass: Basics

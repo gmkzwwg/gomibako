@@ -1,6 +1,5 @@
 ---
-title: "Physics"
-subtitle: "Resource Reference"
+title: "Physics Learning Resources"
 categories: Sheet
 subclass: Basics
 ---

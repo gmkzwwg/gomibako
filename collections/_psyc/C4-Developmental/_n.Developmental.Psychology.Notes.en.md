@@ -1,0 +1,9 @@
+---
+title: "Developmental Psychology Notes"
+layout: post
+categories: Notes
+subclass: Developmental
+reference:
+  - Developmental Psychology
+---
+

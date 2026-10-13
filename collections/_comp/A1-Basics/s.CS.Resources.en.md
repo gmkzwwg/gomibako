@@ -1,6 +1,5 @@
 ---
-title: "Computer Science"
-subtitle: "Resource Atlas"
+title: "Computer Science Learning Resources"
 categories: Sheet
 subclass: Basics
 ---
