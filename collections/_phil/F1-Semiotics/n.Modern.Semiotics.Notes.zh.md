@@ -2,7 +2,6 @@
 title: "Modern Semiotics Study Notes"
 categories: Notes
 subclass: Semiotics
-status: 粗校完成
 ---
 
 > Source: Daniel Chandler, *Semiotics: The Basics, 4th ed*
