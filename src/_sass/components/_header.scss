@@ -1,0 +1,220 @@
+@use "abstracts/variables"as *;
+@use "abstracts/fonts"as *;
+@use "abstracts/mixins"as *;
+@use "abstracts/animations"as *;
+.cli-header {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 3;
+
+  width: 100%;
+  border: $border-secondary;
+  border-bottom: $border-normal;
+  background-color: rgba($color-primary, 0.2);
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    min-height: $header-height;
+    padding: 0 0.75rem;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__prompt {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    min-width: 0;
+    color: $color-primary;
+    font-size: $header-button-text-size;
+    overflow: hidden;
+  }
+
+  &__title,
+  &__owner
+   {
+    color: $color-primary;
+    @include simple_link_style;
+  }
+  &__mode {
+    color: $color-muted;
+    @include simple_link_style;
+  }
+
+  &__title {
+    flex: 0 0 auto;
+  }
+
+  &__mode {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.35rem;
+
+    flex: 0 1 auto;
+    max-width: 60%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+  }
+
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    margin: 0;
+    padding: 0.15rem 0.25rem;
+    border: 0;
+    background: transparent;
+
+    color: $color-primary;
+    font: inherit;
+    line-height: 1;
+    text-decoration: none;
+    
+
+    @include simple_link_style;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+
+    &:focus-visible {
+      outline: 1px solid currentColor;
+      outline-offset: 3px;
+    }
+  }
+
+  &__icon {
+    font-size: $header-button-icon-size;
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  &__label {
+    display: inline-block;
+    margin: 0;
+
+    font-style: normal;
+    font-size: $header-button-text-size;
+    text-transform: uppercase;
+  }
+
+  &__token-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    flex: 0 0 auto;
+    margin-inline-start: 0.35rem;
+  }
+
+  &__token-input {
+    width: 7rem;
+    min-width: 5.5rem;
+    height: 1.65rem;
+
+    padding: 0 0.35rem;
+    border: $border-normal;
+    background-color: rgba($color-primary, 0.08);
+    color: $color-primary;
+
+    font: inherit;
+    line-height: 1;
+    
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+#ctner.is-maximized,
+.page .container.is-maximized {
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .page .container .cli-header {
+    border-top: 0;
+    border-inline: 0;
+  }
+  .cli-header {
+    &__mode,
+    &__label {
+      display: none;
+    }
+    &__actions {
+      max-width: 70%;
+    }
+
+    &__action--maximize {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cli-header {
+    &__mode,
+    &__label {
+      display: none;
+    }
+
+    &__actions {
+      gap: 0.15rem;
+      max-width: 55%;
+    }
+
+    &__button {
+      padding-inline: 0.2rem;
+    }
+
+    &__token-input {
+      width: 5.5rem;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@use "../abstracts/variables" as *;
+
+.post-todos {
+  position: fixed;
+  inset: 4rem 1rem auto auto;
+  width: min(30rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 6rem);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
+  border: $border-secondary;
+  background: $color-post-background;
+  color: $color-primary;
+  font: inherit;
+
+  &::backdrop { background: rgba(0, 0, 0, 0.25); }
+  [hidden] { display: none !important; }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+
+    h2 { margin: 0; font-size: 1rem; }
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 1.3rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+
+    li + li { margin-top: 0.5rem; }
+    a { color: inherit; }
+  }
+
+  &__note { white-space: pre-line; }
+  &__empty { margin: 0; color: $color-muted; }
+}
+
+.post-todo-mark {
+  padding: 0 0.15em;
+  background: rgba(255, 236, 153, 0.85);
+  color: #171717;
+  scroll-margin: 4rem;
+
+  &:focus,
+  &:target { outline: 2px solid $color-primary; outline-offset: 3px; }
+}
+
+@media print {
+  .post-todos { display: none !important; }
+}

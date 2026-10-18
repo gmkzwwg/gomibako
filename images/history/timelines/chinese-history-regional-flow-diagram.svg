@@ -1,0 +1,373 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="2502" viewBox="0 0 1200 2502">
+<rect width="100%" height="100%" fill="#ffffff" />
+
+<style>
+  .header { font: 700 12px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#1E2A38; }
+  .section { font: 700 15px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#1E2A38; }
+  .sectionDate { font: 400 11px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#5A6775; }
+  .box { font: 700 12px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#18212F; }
+  .boxSmall { font: 700 11px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#18212F; }
+  .boxTiny { font: 700 10px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#18212F; }
+  .date { font: 400 10px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#5A6775; }
+
+  .boxUnified { font: 800 16px "Noto Sans CJK SC","PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif; fill:#111827; }
+</style>
+
+<rect x="92.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="229.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="366.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="503.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="640.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="777.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="914.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="1051.0" y="12.0" width="137.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="12.0" width="72.0" height="42.0" fill="#F6F8FB" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="60.0" width="1176.0" height="220.0" rx="10" fill="#EEF6FF" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="60.0" width="72.0" height="220.0" rx="10" fill="#DDEBFC" stroke="none" />
+<line x1="92.0" y1="60.0" x2="92.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="60.0" x2="229.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="60.0" x2="366.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="60.0" x2="503.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="60.0" x2="640.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="60.0" x2="777.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="60.0" x2="914.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="60.0" x2="1051.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="60.0" x2="1188.0" y2="280.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="651.2" y="125.1" width="114.6" height="28.4" rx="8" fill="#B7D6F3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="238.8" y="155.8" width="391.3" height="15.0" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="382.7" y="144.6" width="103.6" height="25.4" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="782.7" y="178.2" width="395.4" height="15.0" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="933.4" y="250.8" width="98.1" height="15.0" rx="8" fill="#B7D6F3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="933.4" y="265.0" width="98.1" height="9.5" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="290.0" width="1176.0" height="180.0" rx="10" fill="#F4FAEE" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="290.0" width="72.0" height="180.0" rx="10" fill="#E4F1D8" stroke="none" />
+<line x1="92.0" y1="290.0" x2="92.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="290.0" x2="229.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="290.0" x2="366.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="290.0" x2="503.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="290.0" x2="640.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="290.0" x2="777.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="290.0" x2="914.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="290.0" x2="1051.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="290.0" x2="1188.0" y2="470.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="101.8" y="291.5" width="254.3" height="176.3" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="238.8" y="342.5" width="350.2" height="121.0" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="522.4" y="342.5" width="98.1" height="119.6" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="555.3" y="342.5" width="170.7" height="123.1" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="654.0" y="354.6" width="111.8" height="113.9" rx="8" fill="#B7D6F3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="782.7" y="291.5" width="395.4" height="175.6" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="371.7" y="375.8" width="258.4" height="92.7" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="321.0" y="334.7" width="117.3" height="80.6" rx="8" fill="#D6E2BD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="480.0" width="1176.0" height="250.0" rx="10" fill="#EDF8F6" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="480.0" width="72.0" height="250.0" rx="10" fill="#DBF0EB" stroke="none" />
+<line x1="92.0" y1="480.0" x2="92.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="480.0" x2="229.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="480.0" x2="366.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="480.0" x2="503.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="480.0" x2="640.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="480.0" x2="777.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="480.0" x2="914.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="480.0" x2="1051.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="480.0" x2="1188.0" y2="730.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="238.8" y="485.5" width="939.3" height="5.3" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="238.8" y="488.5" width="939.3" height="96.6" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="238.8" y="596.0" width="939.3" height="87.8" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="487.1" width="374.9" height="166.5" rx="8" fill="#F1CBB0" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="234.7" y="686.8" width="532.4" height="18.4" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1062.2" y="687.3" width="117.3" height="16.6" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="834.8" y="691.0" width="207.7" height="20.7" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="238.8" y="708.2" width="939.3" height="20.3" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="740.0" width="1176.0" height="560.0" rx="10" fill="#FFF6EE" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="740.0" width="72.0" height="560.0" rx="10" fill="#FDE5CB" stroke="none" />
+<line x1="92.0" y1="740.0" x2="92.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="740.0" x2="229.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="740.0" x2="366.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="740.0" x2="503.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="740.0" x2="640.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="740.0" x2="777.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="740.0" x2="914.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="740.0" x2="1051.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="740.0" x2="1188.0" y2="1300.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="106.0" y="883.6" width="662.6" height="301.7" rx="8" fill="#E7C283" fill-opacity="0.38" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="252.5" y="1188.3" width="516.0" height="29.9" rx="8" fill="#E7C283" fill-opacity="0.38" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="403.2" y="1190.3" width="228.3" height="42.3" rx="8" fill="#D9C6EA" fill-opacity="0.38" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="252.5" y="1221.2" width="516.0" height="52.6" rx="8" fill="#E7C283" fill-opacity="0.38" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="252.5" y="1235.6" width="379.0" height="46.4" rx="8" fill="#D9C6EA" fill-opacity="0.38" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="741.6" y="741.5" width="437.9" height="209.1" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="741.6" y="953.6" width="437.9" height="118.5" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="741.6" y="1075.0" width="437.9" height="44.4" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="741.6" y="1122.4" width="437.9" height="110.2" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="782.7" y="1235.6" width="396.8" height="62.9" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="259.4" y="741.5" width="350.2" height="21.7" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="307.4" y="745.6" width="414.6" height="62.9" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="108.7" y="782.7" width="246.1" height="64.9" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="371.7" y="741.5" width="32.4" height="118.5" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1065.0" y="741.5" width="114.6" height="58.8" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="256.7" y="811.5" width="492.7" height="85.5" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="412.8" y="883.6" width="29.6" height="32.0" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="108.7" y="879.4" width="246.1" height="44.4" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="500.5" y="879.4" width="131.0" height="64.9" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="451.2" y="881.5" width="40.6" height="91.7" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="412.8" y="906.2" width="29.6" height="32.0" rx="8" fill="#D6E2BD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="500.5" y="906.2" width="40.6" height="83.5" rx="8" fill="#D6E2BD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="648.5" y="908.3" width="120.0" height="21.7" rx="8" fill="#B7D6F3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="451.2" y="912.4" width="40.6" height="40.2" rx="8" fill="#D6E2BD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="363.5" y="926.8" width="158.4" height="46.4" rx="8" fill="#F1CBB0" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="171.7" y="926.8" width="183.1" height="56.7" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="1310.0" width="1176.0" height="180.0" rx="10" fill="#F8F0FC" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="1310.0" width="72.0" height="180.0" rx="10" fill="#E9D8F3" stroke="none" />
+<line x1="92.0" y1="1310.0" x2="92.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="1310.0" x2="229.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="1310.0" x2="366.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="1310.0" x2="503.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="1310.0" x2="640.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="1310.0" x2="777.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="1310.0" x2="914.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="1310.0" x2="1051.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="1310.0" x2="1188.0" y2="1490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="238.8" y="1311.5" width="940.7" height="17.4" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="238.8" y="1331.9" width="940.7" height="156.6" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="1311.5" width="300.9" height="87.0" rx="8" fill="#F1CBB0" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="108.7" y="1376.1" width="139.2" height="112.4" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1059.5" y="1331.9" width="120.0" height="120.7" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1065.0" y="1398.2" width="57.0" height="87.6" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="1500.0" width="1176.0" height="250.0" rx="10" fill="#FDF0F4" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="1500.0" width="72.0" height="250.0" rx="10" fill="#F7D7E2" stroke="none" />
+<line x1="92.0" y1="1500.0" x2="92.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="1500.0" x2="229.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="1500.0" x2="366.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="1500.0" x2="503.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="1500.0" x2="640.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="1500.0" x2="777.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="1500.0" x2="914.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="1500.0" x2="1051.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="1500.0" x2="1188.0" y2="1750.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="97.7" y="1501.5" width="259.8" height="247.0" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="464.9" y="1501.5" width="213.2" height="52.6" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="697.8" y="1501.5" width="183.1" height="101.2" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="938.9" y="1501.5" width="103.6" height="243.5" rx="8" fill="#B7D6F3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1060.8" y="1501.5" width="44.7" height="59.5" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="941.7" y="1508.4" width="100.9" height="122.0" rx="8" fill="#B7D6F3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="944.4" y="1536.2" width="103.6" height="184.5" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="440.2" y="1557.1" width="262.5" height="42.1" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="815.6" y="1560.5" width="73.5" height="132.4" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="700.5" y="1605.7" width="268.0" height="128.9" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="467.6" y="1602.2" width="207.7" height="35.2" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="785.5" y="1501.5" width="122.8" height="149.8" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="503.3" y="1638.3" width="136.5" height="15.0" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="492.3" y="1654.3" width="166.6" height="28.2" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="327.9" y="1654.3" width="188.5" height="94.2" rx="8" fill="#C9D1EC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1060.8" y="1595.2" width="44.7" height="104.6" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1122.5" y="1605.7" width="57.0" height="142.8" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="1760.0" width="1176.0" height="340.0" rx="10" fill="#FFF8E9" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="1760.0" width="72.0" height="340.0" rx="10" fill="#F4E7BA" stroke="none" />
+<line x1="92.0" y1="1760.0" x2="92.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="1760.0" x2="229.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="1760.0" x2="366.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="1760.0" x2="503.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="1760.0" x2="640.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="1760.0" x2="777.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="1760.0" x2="914.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="1760.0" x2="1051.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="1760.0" x2="1188.0" y2="2100.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="97.7" y="1761.5" width="259.8" height="172.9" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="481.3" y="1761.5" width="698.2" height="175.0" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="374.5" y="1844.6" width="122.8" height="198.4" rx="8" fill="#D9C6EA" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="1122.5" y="1781.8" width="57.0" height="289.0" rx="8" fill="#C8D8A8" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="171.7" y="1926.7" width="596.8" height="123.8" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="755.3" y="1939.5" width="424.2" height="159.0" rx="8" fill="#A8D9CC" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="2023.7" width="621.5" height="66.3" rx="8" fill="#F1CBB0" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="2110.0" width="1176.0" height="250.0" rx="10" fill="#EFF4F8" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="2110.0" width="72.0" height="250.0" rx="10" fill="#DDE7F0" stroke="none" />
+<line x1="92.0" y1="2110.0" x2="92.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="2110.0" x2="229.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="2110.0" x2="366.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="2110.0" x2="503.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="2110.0" x2="640.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="2110.0" x2="777.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="2110.0" x2="914.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="2110.0" x2="1051.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="2110.0" x2="1188.0" y2="2360.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="97.7" y="2111.5" width="1081.8" height="34.8" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="234.7" y="2149.3" width="944.8" height="104.6" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="2149.3" width="213.2" height="101.1" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="2241.0" width="240.6" height="15.0" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="2253.9" width="1081.8" height="104.6" rx="8" fill="#B9CDDD" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="12.0" y="2370.0" width="1176.0" height="120.0" rx="10" fill="#F6F6F6" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="12.0" y="2370.0" width="72.0" height="120.0" rx="10" fill="#E2E2E2" stroke="none" />
+<line x1="92.0" y1="2370.0" x2="92.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="229.0" y1="2370.0" x2="229.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="366.0" y1="2370.0" x2="366.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="503.0" y1="2370.0" x2="503.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="640.0" y1="2370.0" x2="640.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="777.0" y1="2370.0" x2="777.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="914.0" y1="2370.0" x2="914.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1051.0" y1="2370.0" x2="1051.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<line x1="1188.0" y1="2370.0" x2="1188.0" y2="2490.0" stroke="#E6EBF1" stroke-width="0.7" />
+<rect x="234.7" y="2371.5" width="944.8" height="35.9" rx="8" fill="#B9C6D3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="2390.4" width="207.7" height="15.0" rx="8" fill="#E7C283" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<rect x="97.7" y="2410.4" width="1081.8" height="78.1" rx="8" fill="#B9C6D3" fill-opacity="0.68" stroke="#d6dee6" stroke-width="0.7" />
+<text x="160.5" y="26.0" text-anchor="middle" dominant-baseline="middle" class="header">东北</text>
+<text x="160.5" y="40.0" text-anchor="middle" dominant-baseline="middle" class="header">草原</text>
+<text x="297.5" y="26.0" text-anchor="middle" dominant-baseline="middle" class="header">燕赵</text>
+<text x="297.5" y="40.0" text-anchor="middle" dominant-baseline="middle" class="header">华北</text>
+<text x="434.5" y="26.0" text-anchor="middle" dominant-baseline="middle" class="header">关陇</text>
+<text x="434.5" y="40.0" text-anchor="middle" dominant-baseline="middle" class="header">河西</text>
+<text x="571.5" y="33.0" text-anchor="middle" dominant-baseline="middle" class="header">中原</text>
+<text x="708.5" y="26.0" text-anchor="middle" dominant-baseline="middle" class="header">齐鲁</text>
+<text x="708.5" y="40.0" text-anchor="middle" dominant-baseline="middle" class="header">淮海</text>
+<text x="845.5" y="26.0" text-anchor="middle" dominant-baseline="middle" class="header">江汉</text>
+<text x="845.5" y="40.0" text-anchor="middle" dominant-baseline="middle" class="header">江淮</text>
+<text x="982.5" y="33.0" text-anchor="middle" dominant-baseline="middle" class="header">东南</text>
+<text x="1119.5" y="26.0" text-anchor="middle" dominant-baseline="middle" class="header">巴蜀</text>
+<text x="1119.5" y="40.0" text-anchor="middle" dominant-baseline="middle" class="header">高原</text>
+<text x="48.0" y="33.0" text-anchor="middle" dominant-baseline="middle" class="header">时间</text>
+<text x="48.0" y="161.5" text-anchor="middle" dominant-baseline="middle" class="section">春秋</text>
+<text x="48.0" y="178.5" text-anchor="middle" dominant-baseline="middle" class="sectionDate">前770—前476</text>
+<text x="708.5" y="132.5" text-anchor="middle" dominant-baseline="middle" class="box">齐桓公</text>
+<text x="708.5" y="146.1" text-anchor="middle" dominant-baseline="middle" class="box">齐</text>
+<text x="434.5" y="160.2" text-anchor="middle" dominant-baseline="middle" class="box">晋文公</text>
+<text x="434.5" y="166.4" text-anchor="middle" dominant-baseline="middle" class="box">晋</text>
+<text x="434.5" y="151.4" text-anchor="middle" dominant-baseline="middle" class="box">秦穆公</text>
+<text x="434.5" y="163.2" text-anchor="middle" dominant-baseline="middle" class="box">秦</text>
+<text x="980.4" y="182.6" text-anchor="middle" dominant-baseline="middle" class="box">楚庄王</text>
+<text x="980.4" y="188.8" text-anchor="middle" dominant-baseline="middle" class="box">楚</text>
+<text x="982.4" y="255.2" text-anchor="middle" dominant-baseline="middle" class="box">吴王阖闾</text>
+<text x="982.4" y="261.4" text-anchor="middle" dominant-baseline="middle" class="box">吴</text>
+<text x="982.4" y="267.2" text-anchor="middle" dominant-baseline="middle" class="box">越王勾践</text>
+<text x="982.4" y="272.2" text-anchor="middle" dominant-baseline="middle" class="box">越</text>
+<text x="48.0" y="371.5" text-anchor="middle" dominant-baseline="middle" class="section">战国</text>
+<text x="48.0" y="388.5" text-anchor="middle" dominant-baseline="middle" class="sectionDate">前475—前221</text>
+<text x="228.9" y="372.6" text-anchor="middle" dominant-baseline="middle" class="box">燕</text>
+<text x="228.9" y="386.6" text-anchor="middle" dominant-baseline="middle" class="date">前475—前222</text>
+<text x="413.9" y="396.0" text-anchor="middle" dominant-baseline="middle" class="box">赵</text>
+<text x="413.9" y="410.0" text-anchor="middle" dominant-baseline="middle" class="date">前403—前228</text>
+<text x="571.4" y="402.3" text-anchor="middle" dominant-baseline="middle" class="box">韩</text>
+<text x="640.6" y="397.1" text-anchor="middle" dominant-baseline="middle" class="box">魏</text>
+<text x="640.6" y="411.1" text-anchor="middle" dominant-baseline="middle" class="date">前403—前225</text>
+<text x="709.9" y="411.6" text-anchor="middle" dominant-baseline="middle" class="box">齐</text>
+<text x="980.4" y="372.3" text-anchor="middle" dominant-baseline="middle" class="box">楚</text>
+<text x="980.4" y="386.3" text-anchor="middle" dominant-baseline="middle" class="date">前475—前223</text>
+<text x="500.9" y="415.2" text-anchor="middle" dominant-baseline="middle" class="box">秦</text>
+<text x="500.9" y="429.2" text-anchor="middle" dominant-baseline="middle" class="date">前356—前221</text>
+<text x="379.6" y="375.0" text-anchor="middle" dominant-baseline="middle" class="boxSmall">中山</text>
+<text x="48.0" y="588.0" text-anchor="middle" dominant-baseline="middle" class="section">秦汉三国</text>
+<text x="48.0" y="605.0" text-anchor="middle" dominant-baseline="middle" class="section">西晋</text>
+<text x="48.0" y="622.0" text-anchor="middle" dominant-baseline="middle" class="sectionDate">前221—316</text>
+<text x="708.5" y="488.1" text-anchor="middle" dominant-baseline="middle" class="boxUnified">秦</text>
+<text x="708.5" y="529.8" text-anchor="middle" dominant-baseline="middle" class="boxUnified">西汉</text>
+<text x="708.5" y="543.8" text-anchor="middle" dominant-baseline="middle" class="date">前206—8</text>
+<text x="708.5" y="632.9" text-anchor="middle" dominant-baseline="middle" class="boxUnified">东汉</text>
+<text x="708.5" y="646.9" text-anchor="middle" dominant-baseline="middle" class="date">25—220</text>
+<text x="285.1" y="563.4" text-anchor="middle" dominant-baseline="middle" class="box">匈奴</text>
+<text x="285.1" y="577.4" text-anchor="middle" dominant-baseline="middle" class="date">前209—155</text>
+<text x="500.9" y="696.0" text-anchor="middle" dominant-baseline="middle" class="box">魏</text>
+<text x="1120.9" y="695.6" text-anchor="middle" dominant-baseline="middle" class="box">蜀汉</text>
+<text x="938.6" y="701.4" text-anchor="middle" dominant-baseline="middle" class="box">吴</text>
+<text x="708.5" y="718.4" text-anchor="middle" dominant-baseline="middle" class="box">西晋</text>
+<text x="48.0" y="1003.0" text-anchor="middle" dominant-baseline="middle" class="section">十六国 /</text>
+<text x="48.0" y="1020.0" text-anchor="middle" dominant-baseline="middle" class="section">南北朝</text>
+<text x="48.0" y="1037.0" text-anchor="middle" dominant-baseline="middle" class="sectionDate">317—589</text>
+<text x="437.3" y="1034.5" text-anchor="middle" dominant-baseline="middle" class="boxSmall" fill-opacity="0.88">北魏</text>
+<text x="510.5" y="1203.2" text-anchor="middle" dominant-baseline="middle" class="boxSmall" fill-opacity="0.88">东魏</text>
+<text x="517.4" y="1211.5" text-anchor="middle" dominant-baseline="middle" class="boxSmall" fill-opacity="0.88">西魏</text>
+<text x="510.5" y="1247.5" text-anchor="middle" dominant-baseline="middle" class="boxSmall" fill-opacity="0.88">北齐</text>
+<text x="442.0" y="1258.8" text-anchor="middle" dominant-baseline="middle" class="boxSmall" fill-opacity="0.88">北周</text>
+<text x="960.5" y="839.0" text-anchor="middle" dominant-baseline="middle" class="box">东晋</text>
+<text x="960.5" y="853.0" text-anchor="middle" dominant-baseline="middle" class="date">317—420</text>
+<text x="960.5" y="1005.9" text-anchor="middle" dominant-baseline="middle" class="box">宋</text>
+<text x="960.5" y="1019.9" text-anchor="middle" dominant-baseline="middle" class="date">420—479</text>
+<text x="960.5" y="1097.2" text-anchor="middle" dominant-baseline="middle" class="box">齐</text>
+<text x="960.5" y="1170.5" text-anchor="middle" dominant-baseline="middle" class="box">梁</text>
+<text x="960.5" y="1184.5" text-anchor="middle" dominant-baseline="middle" class="date">502—557</text>
+<text x="981.1" y="1260.0" text-anchor="middle" dominant-baseline="middle" class="box">陈</text>
+<text x="981.1" y="1274.0" text-anchor="middle" dominant-baseline="middle" class="date">557—589</text>
+<text x="434.5" y="752.4" text-anchor="middle" dominant-baseline="middle" class="box">前赵</text>
+<text x="514.7" y="770.1" text-anchor="middle" dominant-baseline="middle" class="box">后赵</text>
+<text x="514.7" y="784.1" text-anchor="middle" dominant-baseline="middle" class="date">319—351</text>
+<text x="231.8" y="808.2" text-anchor="middle" dominant-baseline="middle" class="box">前燕</text>
+<text x="231.8" y="822.2" text-anchor="middle" dominant-baseline="middle" class="date">337—370</text>
+<text x="387.9" y="800.8" text-anchor="middle" dominant-baseline="middle" class="boxTiny">前凉</text>
+<text x="1122.3" y="770.9" text-anchor="middle" dominant-baseline="middle" class="box">成汉</text>
+<text x="503.0" y="847.2" text-anchor="middle" dominant-baseline="middle" class="box">前秦</text>
+<text x="503.0" y="861.2" text-anchor="middle" dominant-baseline="middle" class="date">351—394</text>
+<text x="427.6" y="899.6" text-anchor="middle" dominant-baseline="middle" class="boxTiny">后凉</text>
+<text x="231.8" y="901.6" text-anchor="middle" dominant-baseline="middle" class="box">后燕</text>
+<text x="566.0" y="904.9" text-anchor="middle" dominant-baseline="middle" class="box">后秦</text>
+<text x="566.0" y="918.9" text-anchor="middle" dominant-baseline="middle" class="date">384—417</text>
+<text x="471.5" y="927.4" text-anchor="middle" dominant-baseline="middle" class="boxTiny">西秦</text>
+<text x="427.6" y="922.2" text-anchor="middle" dominant-baseline="middle" class="boxTiny">南凉</text>
+<text x="520.8" y="948.0" text-anchor="middle" dominant-baseline="middle" class="boxTiny">北凉</text>
+<text x="708.5" y="919.1" text-anchor="middle" dominant-baseline="middle" class="box">南燕</text>
+<text x="471.5" y="932.5" text-anchor="middle" dominant-baseline="middle" class="boxTiny">西凉</text>
+<text x="442.7" y="943.0" text-anchor="middle" dominant-baseline="middle" class="box">夏</text>
+<text x="442.7" y="957.0" text-anchor="middle" dominant-baseline="middle" class="date">407—431</text>
+<text x="263.2" y="948.1" text-anchor="middle" dominant-baseline="middle" class="box">北燕</text>
+<text x="263.2" y="962.1" text-anchor="middle" dominant-baseline="middle" class="date">407—436</text>
+<text x="48.0" y="1391.5" text-anchor="middle" dominant-baseline="middle" class="section">隋唐</text>
+<text x="48.0" y="1408.5" text-anchor="middle" dominant-baseline="middle" class="sectionDate">581—907</text>
+<text x="709.2" y="1320.2" text-anchor="middle" dominant-baseline="middle" class="boxUnified">隋</text>
+<text x="709.2" y="1403.2" text-anchor="middle" dominant-baseline="middle" class="boxUnified">唐</text>
+<text x="709.2" y="1417.2" text-anchor="middle" dominant-baseline="middle" class="date">618—907</text>
+<text x="248.1" y="1348.0" text-anchor="middle" dominant-baseline="middle" class="box">突厥</text>
+<text x="248.1" y="1362.0" text-anchor="middle" dominant-baseline="middle" class="date">581—744</text>
+<text x="178.3" y="1425.3" text-anchor="middle" dominant-baseline="middle" class="box">渤海</text>
+<text x="178.3" y="1439.3" text-anchor="middle" dominant-baseline="middle" class="date">698—907</text>
+<text x="1119.5" y="1392.2" text-anchor="middle" dominant-baseline="middle" class="box">吐蕃</text>
+<text x="1093.5" y="1442.0" text-anchor="middle" dominant-baseline="middle" class="boxSmall">南诏</text>
+<text x="48.0" y="1616.5" text-anchor="middle" dominant-baseline="middle" class="section">五代十国</text>
+<text x="48.0" y="1633.5" text-anchor="middle" dominant-baseline="middle" class="sectionDate">907—979</text>
+<text x="227.6" y="1618.0" text-anchor="middle" dominant-baseline="middle" class="box">辽</text>
+<text x="227.6" y="1632.0" text-anchor="middle" dominant-baseline="middle" class="date">907—979</text>
+<text x="571.5" y="1520.8" text-anchor="middle" dominant-baseline="middle" class="box">后梁</text>
+<text x="571.5" y="1534.8" text-anchor="middle" dominant-baseline="middle" class="date">907—923</text>
+<text x="789.3" y="1545.1" text-anchor="middle" dominant-baseline="middle" class="box">吴</text>
+<text x="789.3" y="1559.1" text-anchor="middle" dominant-baseline="middle" class="date">907—937</text>
+<text x="990.7" y="1623.2" text-anchor="middle" dominant-baseline="middle" class="box">吴越</text>
+<text x="1083.1" y="1531.2" text-anchor="middle" dominant-baseline="middle" class="boxTiny">前蜀</text>
+<text x="992.2" y="1569.4" text-anchor="middle" dominant-baseline="middle" class="boxSmall">闽</text>
+<text x="996.2" y="1628.5" text-anchor="middle" dominant-baseline="middle" class="boxSmall">南汉</text>
+<text x="571.5" y="1578.1" text-anchor="middle" dominant-baseline="middle" class="box">后唐</text>
+<text x="852.4" y="1626.7" text-anchor="middle" dominant-baseline="middle" class="boxTiny">荆南</text>
+<text x="834.5" y="1663.2" text-anchor="middle" dominant-baseline="middle" class="box">南唐</text>
+<text x="834.5" y="1677.2" text-anchor="middle" dominant-baseline="middle" class="date">937—975</text>
+<text x="571.5" y="1619.8" text-anchor="middle" dominant-baseline="middle" class="box">后晋</text>
+<text x="846.9" y="1576.4" text-anchor="middle" dominant-baseline="middle" class="boxSmall">楚</text>
+<text x="571.5" y="1645.8" text-anchor="middle" dominant-baseline="middle" class="boxSmall">后汉</text>
+<text x="575.6" y="1668.4" text-anchor="middle" dominant-baseline="middle" class="box">后周</text>
+<text x="422.1" y="1694.4" text-anchor="middle" dominant-baseline="middle" class="box">北汉</text>
+<text x="422.1" y="1708.4" text-anchor="middle" dominant-baseline="middle" class="date">951—979</text>
+<text x="1083.1" y="1647.5" text-anchor="middle" dominant-baseline="middle" class="boxTiny">后蜀</text>
+<text x="1151.0" y="1677.1" text-anchor="middle" dominant-baseline="middle" class="boxSmall">大理</text>
+<text x="48.0" y="1921.5" text-anchor="middle" dominant-baseline="middle" class="section">宋辽金夏</text>
+<text x="48.0" y="1938.5" text-anchor="middle" dominant-baseline="middle" class="sectionDate">960—1279</text>
+<text x="227.6" y="1841.0" text-anchor="middle" dominant-baseline="middle" class="box">辽</text>
+<text x="227.6" y="1855.0" text-anchor="middle" dominant-baseline="middle" class="date">960—1125</text>
+<text x="830.4" y="1842.0" text-anchor="middle" dominant-baseline="middle" class="box">北宋</text>
+<text x="830.4" y="1856.0" text-anchor="middle" dominant-baseline="middle" class="date">960—1127</text>
+<text x="435.9" y="1943.8" text-anchor="middle" dominant-baseline="middle" class="box">西夏</text>
+<text x="1151.0" y="1926.3" text-anchor="middle" dominant-baseline="middle" class="boxSmall">大理</text>
+<text x="470.1" y="1981.6" text-anchor="middle" dominant-baseline="middle" class="box">金</text>
+<text x="470.1" y="1995.6" text-anchor="middle" dominant-baseline="middle" class="date">1115—1234</text>
+<text x="967.4" y="2012.0" text-anchor="middle" dominant-baseline="middle" class="box">南宋</text>
+<text x="967.4" y="2026.0" text-anchor="middle" dominant-baseline="middle" class="date">1127—1279</text>
+<text x="408.4" y="2049.8" text-anchor="middle" dominant-baseline="middle" class="box">蒙古</text>
+<text x="408.4" y="2063.8" text-anchor="middle" dominant-baseline="middle" class="date">1206—1271</text>
+<text x="48.0" y="2226.5" text-anchor="middle" dominant-baseline="middle" class="section">元明清</text>
+<text x="48.0" y="2243.5" text-anchor="middle" dominant-baseline="middle" class="sectionDate">1271—1912</text>
+<text x="638.6" y="2128.9" text-anchor="middle" dominant-baseline="middle" class="boxUnified">元</text>
+<text x="707.1" y="2194.6" text-anchor="middle" dominant-baseline="middle" class="boxUnified">明</text>
+<text x="707.1" y="2208.6" text-anchor="middle" dominant-baseline="middle" class="date">1368—1644</text>
+<text x="204.3" y="2192.9" text-anchor="middle" dominant-baseline="middle" class="box">北元</text>
+<text x="204.3" y="2206.9" text-anchor="middle" dominant-baseline="middle" class="date">1368—1635</text>
+<text x="218.0" y="2248.5" text-anchor="middle" dominant-baseline="middle" class="box">后金</text>
+<text x="638.6" y="2299.2" text-anchor="middle" dominant-baseline="middle" class="boxUnified">清</text>
+<text x="638.6" y="2313.2" text-anchor="middle" dominant-baseline="middle" class="date">1636—1912</text>
+<text x="48.0" y="2421.5" text-anchor="middle" dominant-baseline="middle" class="section">近现代</text>
+<text x="48.0" y="2438.5" text-anchor="middle" dominant-baseline="middle" class="sectionDate">1912—2026</text>
+<text x="707.1" y="2389.4" text-anchor="middle" dominant-baseline="middle" class="box">中华民国</text>
+<text x="201.6" y="2397.9" text-anchor="middle" dominant-baseline="middle" class="boxTiny">伪满洲国</text>
+<text x="638.6" y="2442.5" text-anchor="middle" dominant-baseline="middle" class="box">中华人民共和国</text>
+<text x="638.6" y="2456.5" text-anchor="middle" dominant-baseline="middle" class="date">1949—2026</text>
+
+</svg>
