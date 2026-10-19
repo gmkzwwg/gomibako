@@ -688,6 +688,692 @@ The movement of Greek scholars and manuscripts, including migration after the Ot
 
 By the end of this period, mathematical work had acquired wider computational resources and more ways to circulate. It also carried unresolved tensions into the next: unknowns could be manipulated without a uniform symbolism; exact constructions did not always yield convenient numbers; infinite procedures needed control; and numerical descriptions of change still needed a firmer relation to physical causes. The next developments would depend on reorganizing these resources as much as on adding further results.
 
+## The Renaissance to the Mid-Seventeenth Century: Symbolic Algebra and the Mathematization of Nature (c. 1500–1650)
+
+A method can become more powerful by changing what it allows a mathematician to represent. Letters can stand for whole classes of quantities; an unfamiliar number can make an otherwise obstructed calculation possible; an equation can describe a curve; a geometrical relation can organize observations of moving bodies. Between about 1500 and 1650, these possibilities increasingly reinforced one another.
+
+The changes drew on the translations, computational traditions, and teaching institutions of earlier centuries. They also produced new difficulties. An algebraic formula might pass through quantities whose meaning was disputed. An elegant astronomical arrangement might conflict with observations or established physical explanations. A precisely demonstrated law might apply only under ideal conditions. Mathematical success therefore raised two connected questions: what transformations are legitimate, and what do their results tell us about the objects being studied?
+
+### 1. Solving Cubic and Quartic Equations (Early Sixteenth Century)
+
+Medieval mathematicians had constructed solutions of cubic equations and developed numerical procedures for finding them. A different challenge remained: could their roots be expressed by a finite combination of arithmetic operations and root extractions? The sixteenth-century breakthroughs answered this question for the cubic and quartic, while revealing how much remained uncertain about the roots themselves.
+
+Scipione del Ferro found a method for a class of cubic equations early in the century. Niccolò Tartaglia independently developed methods that helped him defeat Antonio Maria Fior in a mathematical contest in 1535. Such contests could establish a teacher's reputation and make an undisclosed procedure professionally valuable. Competition encouraged discovery, but secrecy made the circulation and attribution of discoveries contentious.
+
+Tartaglia disclosed a rule to Girolamo Cardano under a promise of secrecy. After learning of del Ferro's earlier work, Cardano published cubic methods in the *Ars magna* of 1545, acknowledging predecessors but provoking a bitter dispute. The book also presented Ludovico Ferrari's method for quartic equations. The mathematics emerged through several people's work, even though the cubic formula subsequently became closely associated with Cardano's name.
+
+The central device was to transform one difficult equation into easier auxiliary equations. In modern notation, a change of variable removes the squared term from a general cubic, leaving a form such as
+
+$$
+x^3+px=q.
+$$
+
+Set $x=u+v$. Expansion gives
+
+$$
+x^3=u^3+v^3+3uvx.
+$$
+
+If $3uv=-p$ and $u^3+v^3=q$, the desired cubic follows. The two unknown cubes therefore have a known sum and product:
+
+$$
+u^3+v^3=q,\qquad u^3v^3=-\frac{p^3}{27}.
+$$
+
+They are roots of the quadratic $z^2-qz-p^3/27=0$. Solving it leads to
+
+$$
+x=
+\sqrt[3]{\frac q2+\sqrt{\frac{q^2}{4}+\frac{p^3}{27}}}
++
+\sqrt[3]{\frac q2-\sqrt{\frac{q^2}{4}+\frac{p^3}{27}}},
+$$
+
+with the cube roots chosen so that $uv=-p/3$. This unified symbolic derivation is a modern presentation; the historical treatments distinguished cases according to the signs and meanings of their terms.
+
+The quartic required another carefully chosen auxiliary quantity. After removing its cubic term, write
+
+$$
+y^4+py^2+qy+r=0.
+$$
+
+Introducing $m$ gives
+
+$$
+(y^2+m)^2=(2m-p)y^2-qy+(m^2-r).
+$$
+
+For the nondegenerate case, choose $m$ so that the quadratic expression on the right becomes a square. Its discriminant must vanish:
+
+$$
+q^2=4(2m-p)(m^2-r).
+$$
+
+This is a cubic equation in $m$. Once an appropriate value is found, taking the two square-root signs reduces the quartic to quadratic equations. Exceptional cases need separate handling, but the strategy is clear: solve a higher-degree problem by arranging an identity whose remaining condition has lower degree.
+
+These methods did more than supply isolated answers. They demonstrated the productive use of substitutions, auxiliary unknowns, and the deliberate cancellation of terms. Yet a formula did not settle which quantities counted as numbers, which roots were admissible, or how several possible root choices should be coordinated. The apparent completion of one task exposed the incompleteness of another.
+
+### 2. Copernicus Reorganizes the Planetary System (1543)
+
+Why do planets sometimes appear to reverse their direction against the stars? In a geocentric model, combinations of circular motions could reproduce these appearances. Copernicus reorganized the problem by making Earth itself a moving planet. Some of the motion seen from Earth could then arise from the observer's motion rather than from a separate reversal of the observed planet.
+
+In *De revolutionibus orbium coelestium*, published in 1543, Earth's annual revolution helped connect phenomena that had previously required more separate treatment. When Earth overtakes an outer planet, the changing line of sight can produce apparent retrograde motion. The ordering of the planets and their relative orbital dimensions became parts of a coordinated arrangement. The gain lay in relationships among phenomena, not simply in replacing a complicated picture with a few effortless calculations.
+
+Copernicus retained combinations of uniform circular motions. His model was not the later system of planets moving on single elliptical paths, and it did not immediately eliminate the machinery needed to compute planetary positions. A change in the centre and organization of a model does not automatically remove every difficulty in its numerical implementation.
+
+More seriously, what would make the new arrangement physically credible? If Earth rotates, why does a falling object not visibly miss the place beneath it? If Earth travels around the Sun, why do nearby stars not shift detectably against more distant ones over the year? These objections drew on accepted accounts of motion and on the limits of observation.
+
+The stellar objection concerned annual parallax. A change in the observer's position should change the direction to a sufficiently nearby star. Making the stars much farther away could reduce the apparent shift below detectable levels, but this enlarged the universe beyond what many contemporaries were prepared to accept. Failure to observe a shift did not logically disprove terrestrial motion; its significance depended on assumptions about stellar distances and observational sensitivity.
+
+Copernicus thus supplied a powerful reorganization without settling every physical question it raised. A model can unify observations and still require an account of why bodies move as it proposes. The mathematical arrangement, the accuracy of its predictions, and its physical interpretation had to be assessed together, but they were not identical achievements.
+
+### 3. Bombelli Makes Complex Quantities Calculable (1572)
+
+An equation can have an obvious real answer while a general solution formula seems to pass through impossibility. This was the revealing difficulty examined by Rafael Bombelli in his *Algebra*, published in 1572.
+
+Consider
+
+$$
+x^3=15x+4.
+$$
+
+The number 4 plainly works: $64=60+4$. But the cubic formula, with $p=-15$ and $q=4$, produces
+
+$$
+x=\sqrt[3]{2+\sqrt{-121}}+\sqrt[3]{2-\sqrt{-121}}.
+$$
+
+Rejecting every square root of a negative number would make the formula unusable even though the equation has a real solution. The troublesome quantities could no longer be dismissed merely as signals that the original problem was impossible.
+
+Using the modern symbol $i$, with $i^2=-1$, the expressions under the cube roots become $2+11i$ and $2-11i$. Now calculate:
+
+$$
+(2+i)^3=2+11i,\qquad (2-i)^3=2-11i.
+$$
+
+Selecting these cube roots gives
+
+$$
+x=(2+i)+(2-i)=4.
+$$
+
+Their product is 5, so they also satisfy the condition $uv=-p/3$ from the derivation. The imaginary contributions cancel, while the operations involving them have performed essential work.
+
+The calculation depends on more than a lucky guess. Multiplication must distribute consistently, and replacing $i^2$ by $-1$ must produce repeatable results. Once such rules are available, expressions involving negative square roots can be compared, multiplied, and checked. Bombelli made this arithmetic sufficiently explicit to function as a mathematical tool.
+
+There are still choices to control. A complex number has several cube roots, and choosing one root from each expression independently need not preserve $uv=5$. The formula is not an instruction to combine any two values indiscriminately. Even in modern notation, the relation between the auxiliary quantities remains part of the method.
+
+Nor does finding 4 exhaust the equation. Factorization gives
+
+$$
+x^3-15x-4=(x-4)(x^2+4x+1),
+$$
+
+so the other roots are $-2+\sqrt3$ and $-2-\sqrt3$. All three roots are real, although the radical route to them encounters complex quantities. This situation made the separation between the character of an answer and the character of intermediate calculations especially difficult to ignore.
+
+Operational success came before a generally accepted geometrical representation or a complete foundation for complex arithmetic. Acceptance of negative, irrational, and complex numbers also proceeded unevenly. Their usefulness put pressure on inherited meanings of “number,” but did not instantly replace those meanings with the modern number system.
+
+### 4. Viète: Letters for General Relations (Late Sixteenth Century)
+
+An unknown can be abbreviated without making algebra fully general. A symbol may stand for the particular quantity sought in one problem while all the given quantities remain specific numbers. François Viète's analytic work, especially his introduction of 1591, gave letters a more systematic role: they could designate known quantities as well as unknowns.
+
+His convention used vowels for unknowns and consonants for known quantities. The important distinction was not the choice of alphabetic positions. It was that the known data could remain unspecified throughout a derivation. A procedure could then reveal how an answer depends on the data, rather than only calculate an answer after numerical values had been supplied.
+
+Suppose two quantities have a given sum $S$ and product $P$. In modern notation, if one is $x$, the other is $S-x$, and therefore
+
+$$
+x(S-x)=P,\qquad x^2-Sx+P=0.
+$$
+
+The resulting expression
+
+$$
+x=\frac{S\pm\sqrt{S^2-4P}}2
+$$
+
+handles a whole family of problems. It also exposes a condition that individual numerical calculations can obscure: real solutions require $S^2\geq4P$. When $S=10$ and $P=21$, the quantities are 3 and 7; with the same sum and product 30, no real pair exists.
+
+The algebra thus does two kinds of work. It computes when particular values are inserted, and it compares possible cases before any values are chosen. Expanding
+
+$$
+(z-a)(z-b)=z^2-(a+b)z+ab
+$$
+
+also makes relations between roots and coefficients available for investigation. Symbols preserve the structure of the calculation while its particular ingredients vary.
+
+Viète's quantities were nevertheless not arbitrary elements of a modern algebraic system. His analytic art retained the requirement of dimensional homogeneity: terms equated or added should represent compatible kinds of magnitude. In the sum-and-product example, $S$ has the dimension of a length if $x$ does, while $P$ has the dimension of an area. All terms of the quadratic then have the same dimension.
+
+Such restrictions were part of what made symbolic reasoning intelligible and trustworthy, though they also limited how freely expressions could be interpreted. Writing a letter did not automatically authorize it to stand for every positive, negative, or complex value. The rules governing the quantities still mattered.
+
+The change was therefore deeper than shorter notation. Algebra could retain relationships that would disappear into particular arithmetic, expose a condition for solvability, and suggest a transformation worth trying. Its language was becoming an instrument of discovery as well as a record of completed work.
+
+### 5. Kepler: Letting Observations Change the Orbit (1609–1619)
+
+A planet is observed as a direction in the sky, not as a point on a conveniently visible orbit. Recovering its path requires relating observations made at different times to the changing position of Earth. The problem combines geometry, measurement, and a model of the observer's own motion.
+
+Johannes Kepler worked with the exceptionally precise observations accumulated by Tycho Brahe, especially those of Mars. This precision made discrepancies consequential. An arrangement that looked satisfactory at a coarser scale could fail when compared with observations whose uncertainty was much smaller. Kepler's investigation involved repeated constructions, calculations, and revisions; the ellipse did not simply announce itself in a plot of the data.
+
+The two laws published in the *Astronomia nova* of 1609 changed both the shape of the orbit and the description of motion along it. The path is an ellipse with the Sun at one focus, rather than at its centre. A line joining Sun and planet sweeps out equal areas in equal times. The planet therefore moves more rapidly near the Sun and more slowly farther away.
+
+The area law is not a claim that equal lengths of orbit are traversed in equal times. Nearer the Sun, a greater angular sweep is needed to enclose a given area. Geometry supplies a way to relate position and elapsed time without assuming uniform motion around the orbit.
+
+This was conceptually powerful but computationally demanding. Given a time, one still had to determine the corresponding point on an ellipse. Specifying an area does not usually allow the position to be read off through one elementary construction. The law simplified the organization of the motion while leaving substantial numerical work.
+
+In *Harmonices mundi* of 1619, Kepler supplied a further relation among different planets:
+
+$$
+\frac{T^2}{a^3}=\text{a common constant},
+$$
+
+where $T$ is the orbital period and $a$ the semimajor axis. The relation concerns the semimajor axis, not the planet's continuously changing distance from the Sun. As a simple illustration, in units where an orbit with $a=1$ has $T=1$, an orbit with $a=4$ would have $T=8$. Distance and period are related by a definite power law rather than simple proportionality.
+
+Kepler sought physical causes as well as mathematical descriptions, including ideas about an influence exerted by the Sun. His proposals did not amount to the later dynamics of universal gravitation. The laws established relationships that a more adequate causal theory would need to explain.
+
+His belief in a divinely ordered cosmos helped motivate the search for harmony, but did not dictate which mathematical form observations would support. Earlier preferences for particular geometrical arrangements had to be revised. The achievement depended on allowing accurate evidence to change the form in which order was sought.
+
+### 6. Galileo: Idealization, Experiment, and Mathematical Motion (Early Seventeenth Century)
+
+A falling body accelerates, but what increases uniformly: its speed with time, its speed with distance, or something else? These possibilities lead to different predictions. A mathematical account of motion begins by making such alternatives precise enough to compare.
+
+Galileo developed an account of uniformly accelerated fall in which speed increases by equal amounts in equal times. For motion beginning from rest, the mean-speed relation discussed in the preceding period then gives, in modern notation,
+
+$$
+v=gt,\qquad s=\frac12gt^2.
+$$
+
+The distance is proportional to the square of elapsed time. Consequently, distances travelled during successive equal time intervals are in the ratio $1:3:5:7:\cdots$: these are the successive differences between the squares $1,4,9,16,\ldots$.
+
+This prediction supplies a testable structure. It is stronger than saying merely that a body falls faster as it descends. Timing a rapid fall directly, however, was difficult. Galileo's investigations of inclined planes slowed the motion enough to make comparisons more manageable. A rolling ball is not identical to a body in free fall, and its acceleration needs a separate physical interpretation; nevertheless, motion along a fixed incline could be used to investigate the relation between distance and time.
+
+The argument also required a decision about resistance. Air and contact with surfaces affect observed motion, and bodies of different shapes can fall very differently. To identify a simpler relation, Galileo considered limiting situations in which such disturbing effects were reduced or set aside. The idealization specified what the mathematical relation concerned.
+
+Thought experiments helped test the coherence of competing explanations. If a heavy body must fall faster simply because it is heavier, attaching a slower light body seems both to impede it and to create a still heavier combination that should fall faster. The tension challenges the proposed explanation. It does not, by itself, measure acceleration or prove that every actual fall is unaffected by its surroundings.
+
+The same method of separating components made projectile motion tractable. Suppose a body is launched horizontally with speed $u$, horizontal speed remains constant, and vertical motion begins from rest with constant downward acceleration $g$. Using downward displacement $y$ as positive,
+
+$$
+x=ut,\qquad y=\frac12gt^2.
+$$
+
+Eliminating time gives
+
+$$
+y=\frac{g}{2u^2}x^2,
+$$
+
+the equation of a parabola. The geometrical path follows from combining two specified motions. This calculation uses modern algebraic notation to display the relationship Galileo treated geometrically.
+
+Its assumptions matter. Air resistance can alter both components, and over sufficiently large distances the curvature of Earth and changing direction of gravity cannot be ignored. The result does not claim that every cannonball follows an exact parabola. It identifies a simple model and thereby makes departures from that model questions for further investigation.
+
+In the *Two New Sciences* of 1638, mathematical demonstrations and discussions of observation formed parts of the same inquiry. Neither could do the other's work. Demonstration traced consequences of the chosen account; experiment helped determine whether that account captured the relevant behaviour. The difficulty was to simplify a physical problem enough to reason about it while retaining the features responsible for the phenomenon.
+
+### 7. Logarithms and the Labour of Calculation (From 1614)
+
+Astronomy, navigation, and surveying could require long sequences of multiplications and divisions involving many digits. A theoretically sound method might still be slow to use and vulnerable to arithmetic errors. Could the operations themselves be replaced by cheaper ones?
+
+A simple numerical pattern suggests how. Correspond the numbers $1,2,4,8,16,\ldots$ with the counts $0,1,2,3,4,\ldots$ of successive doublings. Multiplying 4 by 8 corresponds to adding their counts, $2+3=5$, which identifies 32. Division similarly corresponds to subtraction. The difficulty is to extend the correspondence to the much denser range of values that real calculations require.
+
+John Napier published his logarithmic tables in 1614. His construction related two motions: one uniform, the other slowing in proportion to the distance still to be traversed. Equal ratios in the changing distances corresponded to equal differences in the uniform motion. This supplied a continuous version of the correspondence between geometric and arithmetic progressions.
+
+Napier's original tables concerned sines scaled to a large radius. Their normalization was different from the common logarithms familiar today. The modern definition of a logarithm as an exponent is a convenient way to explain the resulting relation, but should not be substituted for his actual starting point. Joost Bürgi developed a related computational approach independently.
+
+Henry Briggs helped develop and tabulate base-ten logarithms. In that system,
+
+$$
+\log_{10}(ab)=\log_{10}a+\log_{10}b,\qquad
+\log_{10}(a/b)=\log_{10}a-\log_{10}b
+$$
+
+for positive $a$ and $b$. Root extraction could also be replaced by division of the logarithm. A reusable table allowed these transformations to benefit many separate calculations.
+
+For example, to multiply 2.34 by 5.67 using a table, look up approximately
+
+$$
+\log_{10}(2.34)=0.36922,\qquad
+\log_{10}(5.67)=0.75358.
+$$
+
+Add to obtain $1.12280$, then find the number corresponding to that logarithm. The result is approximately 13.268, compared with the exact product 13.2678. For this small example ordinary multiplication is straightforward; the advantage becomes substantial in repeated computations with larger numbers and more digits.
+
+The work has been redistributed rather than abolished. Someone must construct accurate tables, check them, and print the digits correctly. The user must keep track of powers of ten and interpolate when a required value falls between entries. Rounding and transcription errors can accumulate, and a mistaken table entry can mislead many users.
+
+Logarithms therefore belong to the history of mathematical concepts and to the history of organized numerical labour. They made a class of expensive operations easier by building a correspondence that others could repeatedly use. Their success depended as much on trustworthy numerical infrastructure as on the identity that justified the substitution.
+
+### 8. Descartes and Fermat: Equations as a Way into Geometry (1630s)
+
+A geometrical condition may be easy to state but difficult to turn into a construction. Find all points satisfying a relation among distances, for example, and there may be no obvious auxiliary line that reveals the answer. Algebra offered a method for keeping track of the condition while the required figure was still unknown.
+
+René Descartes and Pierre de Fermat developed influential approaches to this task in the 1630s. Descartes published *La Géométrie* in 1637; Fermat's work circulated through manuscripts and correspondence. Their methods differed, and the familiar modern diagram with two perpendicular, labelled axes is not a literal description of every construction they used.
+
+The central possibility was to describe an unknown point by lengths measured relative to chosen reference lines. Geometrical relations among those lengths could then be translated into an equation. Solving or transforming the equation could reveal the locus, after which its meaning had to be interpreted geometrically.
+
+Consider a modern example. Which points are equally distant from a fixed point and a fixed line? Choose the point $(0,a)$, the line $y=-a$, and $a>0$. For a point $(x,y)$, equality of the squared distances gives
+
+$$
+x^2+(y-a)^2=(y+a)^2.
+$$
+
+Cancelling equal terms yields
+
+$$
+x^2=4ay.
+$$
+
+A verbal condition has become a quadratic equation defining a parabola. Conversely, a point satisfying that equation has the required equal distances. The argument works in both directions, so it characterizes the locus rather than merely finding some points on it.
+
+The method can also turn an intersection into an equation-solving problem. Intersect this parabola with a line $y=mx+b$. Substitution gives
+
+$$
+x^2-4amx-4ab=0.
+$$
+
+Depending on the coefficients, the quadratic has two, one repeated, or no real roots. These cases correspond to crossing the parabola twice, tangency, or no real intersection. Questions about a diagram become questions about roots, and facts about roots acquire geometrical meaning.
+
+Descartes also showed how choosing a unit segment allowed multiplication, division, and root extraction to be represented by constructions of lengths. Products did not always have to be interpreted as new areas, and cubes did not always have to designate solid volumes. This helped loosen restrictions that had tied algebraic degree directly to geometrical dimension.
+
+The new approach nevertheless had boundaries. Descartes classified curves and distinguished those he accepted as geometrical from others generated through less acceptable motions or relations. The project did not begin with arbitrary real-valued functions or all the curves that later analysis would study. Signed coordinates and the uniform conventions of modern analytic geometry also took time to become established.
+
+Algebra did not make geometrical judgment unnecessary. A chosen coordinate system could simplify or complicate a problem; transformations could introduce candidates that needed checking; a root still had to correspond to an admissible point. Synthetic arguments could reveal a relation more directly than an elaborate calculation. The advance was a systematic passage between representations, giving mathematicians another route when a construction was difficult to see.
+
+### 9. Perspective and Projective Geometry: What Survives a Change of View?
+
+A circular rim can appear elliptical, parallel edges can seem to converge, and equal intervals can appear unequal in a perspective drawing. Lengths and angles change. What remains sufficiently stable to support a geometrical theory?
+
+Perspective supplied both practical problems and a mathematical setting for this question. Imagine projecting points from a fixed centre onto a plane. A straight line, in a nondegenerate situation, projects onto another straight line: its points and the centre lie in one plane, which cuts the image plane in a line. Thus collinearity can survive a transformation that changes distances dramatically.
+
+Girard Desargues pursued relations of this kind in his work on conics, including the *Brouillon project* of 1639. Conic sections could be studied through their relation under projection, rather than exclusively through separate metrical definitions of ellipse, parabola, and hyperbola. What appeared to be different figures could share the same organization of points and lines.
+
+The theorem associated with his name captures this emphasis. If two triangles are positioned so that the lines joining corresponding vertices meet at one point, then the three intersections of corresponding sides lie on one line, with the usual provisions for nondegenerate configurations. The hypothesis concerns concurrence, and the conclusion concerns collinearity. Neither specifies a particular side length or angle.
+
+Blaise Pascal's work of 1640 supplied a striking theorem for conics. Take six points $A,B,C,D,E,F$ on a conic. Let $AB$ meet $DE$ at $P$, $BC$ meet $EF$ at $Q$, and $CD$ meet $FA$ at $R$, extending the sides as needed. Then $P,Q,R$ are collinear. The theorem relates a figure assembled from six points to a line that is not obvious from the original construction.
+
+A recurring difficulty was how to treat parallel lines. A projection can turn intersecting lines into parallel ones or reverse that appearance. Desargues used points at infinity to bring these cases into a common account. In modern language, a direction is represented by a point shared by the parallel lines in that direction. This is an extension of the geometrical framework, not a claim that two ordinary parallel lines eventually meet at a very distant physical location.
+
+The framework was not yet presented with the later axiomatic precision of projective geometry. Desargues's unusual terminology and compressed exposition made his work hard to read, and its circulation was limited. A powerful unifying idea did not guarantee immediate adoption.
+
+Coordinate methods unified problems by translating them into equations. Projective methods sought relations preserved when a figure was transformed. These approaches could eventually interact, but they began by directing attention to different features. Geometry was acquiring several ways to decide which aspects of a figure mattered.
+
+### 10. Mathematical Certainty and the Explanation of Nature
+
+The developments of this period made mathematics increasingly persuasive as a language of natural knowledge. Yet the conviction that nature has mathematical order left open what that order consists of and how it should be discovered.
+
+For Kepler, geometrical and harmonic relationships belonged to the intelligibility of a world created by God. Galileo also connected the understanding of nature with mathematical relationships, while insisting on the relevance of observation and reasoning about physical circumstances. Descartes sought explanations through matter, motion, and mechanical interaction, supported by a philosophical account of reason and certainty. These positions shared ambitions without forming a single doctrine.
+
+Such commitments could guide research productively. Belief in an intelligible order encouraged the search for simple relations beneath complicated appearances. A commitment to mechanical explanation demanded more than a catalogue of successful numerical predictions. But the same commitments could favour a particular arrangement or mechanism before adequate evidence supported it.
+
+Kepler's earlier attempts to relate planetary spacing to regular solids show how a mathematically attractive idea could generate investigation without providing a lasting explanation of the observed system. Descartes's celestial vortices offered a mechanical picture of planetary motion, but their plausibility as a picture did not establish their quantitative adequacy. The aspiration to explain and the success of a particular explanation require separate judgments.
+
+The distinction can be made precisely. Given certain geometrical assumptions, a conclusion may follow necessarily. Whether a physical system satisfies those assumptions is a further question. The parabolic trajectory follows from uniform horizontal motion and constant vertical acceleration; its application to a particular projectile depends on how well those conditions are met. Mathematical certainty belongs to the implication, while physical reliability also depends on evidence for the premises.
+
+The period transformed the resources available for both kinds of inquiry. Algebra could express general relations, unfamiliar quantities could make calculations possible, and equations could connect geometry with motion. Observations and experiments could then challenge the choices made in building the model. None of these resources worked automatically: symbols needed interpretation, computations needed checking, and demonstrations needed correctly specified assumptions.
+
+By the mid-seventeenth century, curves, motion, and numerical processes could increasingly be studied within related mathematical languages. Yet finding a tangent, measuring a curved region, and following a continuously changing quantity still called for varied methods. The next major task would be to connect these problems through more general operations, while confronting new questions about infinite processes and the meaning of their results.
+
+## The Later Seventeenth and Eighteenth Centuries: Calculus, Probability, and the Expansion of Analysis (c. 1650–1800)
+
+How can a quantity be understood through the way it changes? How can many small contributions determine a whole? And how can reasoning remain useful when the outcome of an event is unknown? During this period, mathematicians turned these questions into increasingly general methods.
+
+Calculus connected rates of change with accumulation. Probability related possible outcomes to fair expectations and, later, observations to uncertain causes. Analysis extended these methods through functions, series, and differential equations. Their effectiveness encouraged applications far beyond the problems that had first suggested them. It also made unresolved assumptions harder to avoid: what is an infinitesimal, when is an infinite operation legitimate, and what justifies applying a mathematical result to experience?
+
+### 1. Preparing Calculus: Separate Problems Begin to Converge
+
+Finding a tangent, locating a maximum, measuring a curved region, and determining instantaneous speed initially called for different techniques. Their later unity should not conceal the ingenuity of the methods developed before a common calculus existed.
+
+Bonaventura Cavalieri's method of indivisibles, published in 1635, compared figures through collections of parallel sections. Corresponding sections could establish relations between areas or volumes without first measuring each figure separately. The method extended the power of geometrical comparison, but raised a conceptual difficulty: how should a collection of lines be related to an area, when an individual line has no area? Its success did not depend on the naive assertion that adding enough zeros produces a positive quantity; the comparison of entire collections required its own principles.
+
+Fermat approached tangents and extreme values through relations between nearby configurations. A simple example in modern symbols shows the computational idea. For a rectangle whose two adjacent sides sum to $L$, write its area as
+
+$$
+A(x)=x(L-x).
+$$
+
+Changing one side to $x+e$ changes the area by
+
+$$
+A(x+e)-A(x)=e(L-2x)-e^2.
+$$
+
+Dividing the difference by $e$ and suppressing the remaining term involving $e$ singles out $x=L/2$. Here the identity $A(x)=L^2/4-(x-L/2)^2$ confirms that this candidate gives the maximum for positive side lengths. Fermat's procedure, often called adequality, was not formulated as the modern definition of a derivative. The interpretation of its auxiliary quantity and comparison has remained a historical question. Nevertheless, it gave a systematic route to a candidate maximum that could be checked geometrically.
+
+John Wallis developed arithmetic treatments of quadrature through powers and infinite processes. Patterns among known cases suggested extensions, sometimes through interpolation between exponents. This could reveal results beyond the reach of a familiar diagram, while making the justification of the extension a separate problem.
+
+Isaac Barrow's geometrical investigations supplied important connections between tangents and areas. An area accumulated as a boundary moves has a rate of growth related to the height of that boundary. Conversely, a curve whose tangent behaviour is known can provide information about accumulation.
+
+The emerging connection was deeper than a shared use of very small quantities. The local problem of determining change and the global problem of recovering a quantity from its changes could be inverse problems. A general method would have to turn that relationship into reusable operations rather than a collection of ingenious special constructions.
+
+### 2. Fair Division and Uncertain Outcomes (From the 1650s)
+
+Suppose a game must stop before anyone wins. How should the stake be divided? Dividing it according to the points already won can ignore how close each player is to securing the prize. The relevant question is what each player's remaining opportunity is worth.
+
+The correspondence between Pascal and Fermat in 1654 made this problem of points a central example of mathematical reasoning about chance. Huygens's treatise of 1657 organized related reasoning through the value of expectations. Combinatorial counting and recursive arguments could agree on a fair division even though no one knew who would have won.
+
+Consider an illustrative game with independent rounds, each equally likely to be won by A or B. A needs one more win, while B needs two. Imagine recording the next two round results even if the game would finish after the first. The four sequences AA, AB, BA, and BB are equally likely. A wins in the first three; B wins only in the last.
+
+Padding the record after the game ends does not change its winner. It makes all the records equally long and therefore comparable under the probability assumptions. A's share of the stake is consequently $3/4$, and B's is $1/4$. A stake of 64 units should be divided into 48 and 16.
+
+The same result follows without listing all the sequences. With probability $1/2$, A wins the next round and takes everything. Otherwise, each player then needs one win and has half the remaining chance:
+
+$$
+P(\text{A wins})=\frac12+\frac12\cdot\frac12=\frac34.
+$$
+
+This recursive argument works backwards from simpler situations. Expectation assigns a numerical value to a contingent outcome; it does not claim that a single play will produce that average payment.
+
+What supports the assumption of equal probabilities? It may come from the design of the game, symmetry, and an agreed model of its operation. Ignorance alone is insufficient. In two fair coin tosses, the three possible head counts—zero, one, or two—are not equally probable. One head corresponds to two equally likely sequences, while each other count corresponds to one.
+
+The problem therefore involved both mathematics and modelling. Once elementary outcomes and their probabilities were specified, counting and recursion imposed clear constraints. Specifying those outcomes correctly was itself part of the reasoning. Probability made uncertainty tractable by structuring it, not by treating every description of what might happen as equally likely.
+
+### 3. Newton's Fluents, Fluxions, and Inverse Problems (From the 1660s)
+
+Newton's investigations of the 1660s combined geometry, algebra, motion, and infinite series. Quantities could be conceived as generated continuously: a point traces a line, a changing height determines an area, and a moving body traverses a distance. He developed the language of fluents for flowing quantities and fluxions for their rates of change.
+
+If two fluents satisfy $y=x^3$, their rates are related by
+
+$$
+\dot y=3x^2\dot x.
+$$
+
+When $\dot x\ne0$, the ratio $\dot y/\dot x=3x^2$ gives the slope of the curve. The same calculation can describe geometrical inclination or relative rates of change. Motion provides an organizing interpretation, but the resulting method reaches beyond the trajectory of a physical body.
+
+The inverse task is to recover a fluent from its fluxion. If $x$ increases uniformly at unit rate and the fluxion of an accumulated quantity is $x^2$, then that quantity is $x^3/3$ plus a constant. An initial condition determines the constant. Recovering change therefore requires both an operation and information that the rate alone does not contain.
+
+Why should this inverse operation measure an area? In modern terms, let $A(x)$ be the area accumulated under a continuous nonnegative curve from a fixed starting point to $x$. Moving the boundary a small distance $h$ adds a narrow region. Its area divided by $h$ lies between the smallest and largest heights on that interval. As the interval shrinks, continuity makes those heights approach the height at $x$.
+
+Thus the rate of growth of area is the curve's height. This supplies the connection expressed today by
+
+$$
+A'(x)=f(x),\qquad
+\int_a^b f(x)\,dx=F(b)-F(a)\quad\text{when }F'=f.
+$$
+
+The notation and explicit continuity condition are modern. The historical advance was recognizing the central role of this inversion and organizing calculations around it.
+
+Newton's work with series greatly enlarged the available calculations. His generalized binomial expansion handled non-integer powers, giving, for example,
+
+$$
+(1+x)^{1/2}=1+\frac{x}{2}-\frac{x^2}{8}+\frac{x^3}{16}-\cdots
+$$
+
+for $|x|<1$. Complicated expressions could be replaced by powers whose rates and accumulations were easier to calculate. The resulting series also offered numerical approximations.
+
+Newton did not present all of this work promptly in a single published textbook. Manuscripts, correspondence, and later publications transmitted different aspects of his methods. His explanations also changed, from early manipulations of small increments toward fluxions and limiting ratios. The computational unification was decisive, while the best account of what made its operations legitimate remained under development.
+
+### 4. Leibniz: Differentials, Integrals, and Composable Rules (1670s–1680s)
+
+A useful general method needs a language in which its steps can be combined. Leibniz's development of calculus in the 1670s gave notation an active role in reasoning. The symbols $dx$, $dy$, and $\int$ helped express local change and accumulation as operations with recognizable relationships.
+
+Finite differences already suggested an inverse connection. If successive differences are $a_1-a_0$, $a_2-a_1$, and so on, their sum collapses:
+
+$$
+(a_1-a_0)+(a_2-a_1)+\cdots+(a_n-a_{n-1})=a_n-a_0.
+$$
+
+Leibniz's investigations connected such patterns with curves, tangents, and quadratures. His integral sign, an elongated form of S, emphasized summation; the differential notation kept track of the quantities whose changes were being compared.
+
+A crucial rule concerns a product:
+
+$$
+d(uv)=u\,dv+v\,du.
+$$
+
+Both factors can change. For finite increments, expanding $(u+\Delta u)(v+\Delta v)-uv$ gives two first-order terms and the additional product $\Delta u\,\Delta v$. Differential reasoning retained the first-order contribution. Explaining exactly why the extra term could be omitted was part of the foundational task, but the resulting rule made complicated expressions systematically manageable.
+
+Together with the rule for a composition, it allowed calculations to be built from simpler ones. For example,
+
+$$
+y=(x^2+1)^3
+\quad\Longrightarrow\quad
+\frac{dy}{dx}=3(x^2+1)^2\cdot2x.
+$$
+
+The outer dependence and the inner dependence are handled in turn. A new curve no longer necessarily demands a new geometrical construction of its tangent.
+
+Inverting a differentiation rule can generate an integration rule. The product rule yields integration by parts,
+
+$$
+\int u\,dv=uv-\int v\,du,
+$$
+
+with constants or endpoint terms supplied as appropriate. An accumulation that is difficult in one form can be transformed into another. Not every integral becomes easy, but the rules provide a shared repertoire for attacking it.
+
+Leibniz published his differential calculus in 1684 and work on integration in 1686. The Bernoullis and other mathematicians developed and taught the methods, helping establish their circulation. Newton and Leibniz had arrived independently at their principal methods through different investigations; their subsequent priority dispute made publication, chronology, and national loyalties contentious.
+
+Their notations encouraged different emphases without imposing an absolute division. Fluxions highlighted generation and rates; differentials made relations among changing quantities particularly convenient to manipulate. Neither notation automatically solved the problem of foundations. Both helped convert local discoveries into an extensible body of mathematical practice.
+
+### 5. Newton's Mechanics: Terrestrial and Celestial Motion (1687)
+
+Why should the Moon's orbit and a stone's fall belong to the same theory? Their appearances differ, but both can be understood as changes of motion under an attraction. An orbiting body need not be carried around by a separate celestial mechanism: its continuing motion and its continual deflection can together produce an orbit.
+
+In the *Principia* of 1687, Newton organized mechanics around laws of motion. A body maintains uniform straight motion unless acted on by a force; force changes its momentum; interacting bodies exert equal and opposite forces on one another. These principles distinguished motion itself from the change of motion that requires dynamical explanation.
+
+Universal gravitation supplied a quantitative attraction. In modern notation, the force between two point masses is
+
+$$
+F=G\frac{Mm}{r^2}.
+$$
+
+Using this relation for extended bodies requires further justification. Newton's results for spherically symmetric bodies made it possible, under the appropriate conditions, to treat their external gravitational action as concentrated at their centres. That reduction was a mathematical achievement, not something guaranteed by writing down the inverse-square formula.
+
+The connection with Kepler's period law can be seen in a circular two-body orbit. Let $r$ be the constant separation. Both bodies move about their common centre of mass, and their relative acceleration has magnitude $G(M+m)/r^2$. Equating this with the centripetal acceleration gives
+
+$$
+\frac{4\pi^2r}{T^2}=\frac{G(M+m)}{r^2},
+\qquad
+T^2=\frac{4\pi^2r^3}{G(M+m)}.
+$$
+
+For an elliptical relative orbit, the corresponding formula uses its semimajor axis in place of $r$. When a planet's mass is small compared with the Sun's, the period-to-size relation is approximately common to the different planets. The approximation now has a reason and a condition of validity.
+
+A central force also accounts for equal areas in equal times. The inverse-square dependence selects conic trajectories, with bound, nondegenerate motion giving ellipses and other initial conditions allowing unbound paths. Kepler's relations could thus become consequences of dynamics rather than independent descriptions of the heavens.
+
+The *Principia* largely presented its demonstrations geometrically, using limiting arguments rather than the later routine language of differential equations. Its reach was nevertheless central to the subsequent development of analysis and mechanics.
+
+The actual solar system contains more than two mutually attracting bodies. A planet's path is perturbed by other planets; the Moon is influenced by both Earth and Sun. The two-body solution therefore provided an organizing approximation, not a complete exact solution of every astronomical motion. Perturbation methods and numerical calculation became essential.
+
+Nor did the law explain the underlying mechanism of gravitational action. A quantitative account can connect phenomena and predict their development while leaving deeper causal questions open. Newton's synthesis made that distinction unavoidable precisely because its mathematical success was so substantial.
+
+### 6. The Foundational Difficulty: When May a Small Quantity Be Discarded?
+
+Calculus repeatedly produced correct answers through operations that seemed to change the status of a small quantity halfway through the argument. A quantity had to be nonzero to permit division, yet was then discarded as though it were zero. Was this a contradiction, an abbreviation, or an operation requiring a different explanation?
+
+For $y=x^2$, a finite increment $h$ gives
+
+$$
+(x+h)^2-x^2=2xh+h^2.
+$$
+
+If $h\ne0$, division is legitimate:
+
+$$
+\frac{(x+h)^2-x^2}{h}=2x+h.
+$$
+
+The desired derivative is $2x$. But setting $h=0$ in the original quotient produces $0/0$. Calling $h$ “very small” does not make $2x+h$ exactly equal to $2x$. An argument must explain why the final answer is exact despite this intermediate difference.
+
+Newton's method of first and last ratios sought the ratios approached as quantities were generated or vanished. The claim concerned a limiting ratio, not the ratio of two zeros after the quantities had disappeared. Leibniz used infinitesimal differences and distinguished orders of smallness, while also appealing to ways in which infinitesimal reasoning could be supported through arguments involving ordinary quantities.
+
+These approaches were more sophisticated than a careless decision to ignore inconvenient terms. Nevertheless, their explanations and everyday applications were not always aligned, and a common, fully explicit foundation did not immediately emerge.
+
+George Berkeley's *The Analyst* of 1734 pressed the difficulty. The success of a calculation did not establish that each inference in its customary justification was valid. His criticism formed part of a wider religious and philosophical controversy, but the mathematical issue could not be answered merely by pointing to successful applications.
+
+A modern limiting explanation clarifies the elementary example. For every nonzero $h$,
+
+$$
+\left|\frac{(x+h)^2-x^2}{h}-2x\right|=|h|.
+$$
+
+The quotient can therefore be made as close to $2x$ as desired by restricting $|h|$. No division by zero occurs. The derivative is a limit of values, not one more value obtained by substituting zero into the quotient.
+
+This explanation illustrates what a justification must control; it is not a claim that eighteenth-century authors already possessed the later general theory of limits. More complicated questions—higher derivatives, infinite series, and the exchange of limiting operations—required additional work.
+
+The tension between discovery and justification was productive. Calculus had revealed connections worth preserving. Criticism demanded clearer accounts of their conditions rather than abandonment of the methods simply because their first explanations were incomplete.
+
+### 7. Euler and the Bernoullis: Functions, Series, and Differential Equations
+
+Once rates and accumulations could be manipulated systematically, mathematical problems increasingly took the form of equations relating unknown functions to their changes. Jakob and Johann Bernoulli developed methods and applications of the new calculus; Daniel Bernoulli connected analysis with problems in mechanics and fluids. Euler extended and organized these activities on an exceptional scale.
+
+The function became a central object. Instead of studying only a particular geometrical curve, one could investigate expressions, their transformations, and equations satisfied by them. Euler's influential presentation of 1748 emphasized functions as analytical expressions, though the meaning and admissible range of “function” did not remain fixed throughout his work or the century.
+
+A differential equation can determine an unknown function through a rule governing change. Consider the modern example
+
+$$
+y'=y,\qquad y(0)=1.
+$$
+
+Seek a power series $y=a_0+a_1x+a_2x^2+\cdots$. Comparing coefficients after differentiation gives
+
+$$
+(n+1)a_{n+1}=a_n,\qquad a_0=1.
+$$
+
+The coefficients are therefore $a_n=1/n!$, yielding the exponential series. The equation has organized infinitely many coefficients through one recurrence. Subject to convergence and justification of termwise differentiation, this becomes a method of constructing the solution.
+
+Similar strategies served increasingly complex questions about fluids, elastic bodies, and motion. Equations helped organize families of physical problems, while those problems stimulated new analytical techniques. Calculus expanded from relations involving one variable into methods for quantities depending on several variables.
+
+But an infinite series is not simply a polynomial with more terms. The geometric series makes the distinction visible. For $x\ne1$, its finite partial sum satisfies
+
+$$
+1+x+\cdots+x^n=\frac{1-x^{n+1}}{1-x}.
+$$
+
+If $|x|<1$, the remainder involving $x^{n+1}$ tends to zero, giving $1/(1-x)$. At $x=2$, it does not disappear. The ordinary series $1+2+4+\cdots$ diverges, even though formal substitution in the rational expression gives $-1$.
+
+Eighteenth-century mathematicians explored broader associations between series and expressions, so their procedures should not all be judged as inadvertent arithmetic mistakes. Yet a formal association must be distinguished from an ordinary limit of partial sums. Its interpretation and allowed operations need to be stated.
+
+Termwise differentiation, integration, and rearrangement posed related difficulties. A finite identity might remain true for every partial sum while failing to justify the proposed infinite operation. The very methods that made analysis powerful required a better account of what a function was, how a series represented it, and which transformations preserved that representation.
+
+### 8. The Vibrating String and the Meaning of a Function
+
+A taut string can be pulled into a shape and released. If its subsequent motion is governed by a differential equation, what initial shapes must that equation accept? The question brought physical intuition into conflict with restrictive ways of defining a function.
+
+In the 1740s, d'Alembert developed the equation of a vibrating string. For an ideal uniform string with constant tension and small transverse displacement, a modern form is
+
+$$
+\frac{\partial^2 y}{\partial t^2}
+=c^2\frac{\partial^2 y}{\partial x^2},
+$$
+
+where $x$ identifies position along the string, $t$ is time, and $c$ is the wave speed. Spatial curvature determines transverse acceleration. The relation follows under specific mechanical assumptions, rather than describing every possible motion of a real string.
+
+A solution can be written, for sufficiently smooth functions, as
+
+$$
+y(x,t)=F(x-ct)+G(x+ct).
+$$
+
+The two terms describe profiles travelling in opposite directions. Their shapes must be selected to match the initial displacement and velocity; fixed endpoints impose further relations. The unknowns are whole functions, not merely a few constants.
+
+D'Alembert and Euler differed over the admissible initial curves and the conditions required of solutions. Euler argued for a wider range of shapes, including curves assembled from different pieces. Such a curve could be specified geometrically even if no single analytical expression of the preferred kind represented it. The interpretation of a physical initial condition was pressing against the interpretation of a mathematical function.
+
+Daniel Bernoulli approached the problem through superposed normal modes. For a string of length $L$ fixed at both ends, elementary standing waves have spatial factors
+
+$$
+\sin\left(\frac{n\pi x}{L}\right),\qquad n=1,2,3,\ldots.
+$$
+
+Each has its own frequency. Bernoulli proposed that combinations of these modes could account for general string motions. This offered a physical and mathematical picture of a complicated vibration as a mixture of simpler ones.
+
+But could every admissible initial shape be represented by such a trigonometric series? Consider a string plucked into a triangular shape. Each individual sine wave is smooth, while the triangle has a corner. A finite combination cannot reproduce that corner exactly. An infinite combination introduces questions about convergence and about whether the series can still be differentiated as the wave equation requires.
+
+The absence of an ordinary second derivative at a corner does not mean that a plucked string cannot move. It means that the relation between the physical idealization and the chosen mathematical definition of solution needs examination. Later analysis would provide more flexible frameworks; the eighteenth-century controversy exposed the need.
+
+The dispute consequently concerned more than competing formulas. It asked what counts as a function, what it means for a series to represent one, and how much regularity a differential equation may legitimately demand. These questions would remain central well into the nineteenth century.
+
+### 9. Variations and Analytical Mechanics: Seeking General Principles
+
+Ordinary differentiation can help find the best value of a variable. What if the unknown is an entire curve, and the quantity to be optimized depends on the whole curve? The calculus of variations developed methods for this larger problem.
+
+Johann Bernoulli's brachistochrone challenge of 1696 asked for the path along which a body would descend fastest between a starting point and a lower point, starting from rest under uniform gravity without friction. The shortest path need not take the least time. A path that descends more steeply at first can gain speed sooner and compensate for its greater length.
+
+In modern coordinates, let $y$ measure downward distance from the starting height. Conservation of mechanical energy gives speed $v=\sqrt{2gy}$. For a path represented by $y(x)$, the travel time is expressed as
+
+$$
+T[y]=\int\frac{\sqrt{1+y'^2}}{\sqrt{2gy}}\,dx,
+$$
+
+with limits determined by the endpoints. The numerator measures path length locally; the denominator supplies the speed. The problem is to choose the path that minimizes the accumulated time. Its solution is an appropriate arc of a cycloid, rather than a straight line.
+
+Euler's work of the 1740s and Lagrange's subsequent methods organized such problems around integrals of the form
+
+$$
+J[y]=\int_a^b F(x,y,y')\,dx.
+$$
+
+Instead of moving a single point, vary the entire curve: replace $y$ by $y+\varepsilon\eta$, where $\eta$ vanishes at the fixed endpoints. The first-order change, after integration by parts, is
+
+$$
+\delta J=\int_a^b
+\left(\frac{\partial F}{\partial y}
+-\frac{d}{dx}\frac{\partial F}{\partial y'}\right)\eta\,dx.
+$$
+
+For a sufficiently smooth stationary curve, this must vanish for every allowed variation. The resulting Euler–Lagrange equation supplies a common method for finding candidates. Problems about quickest descent, shortest paths, and constrained geometrical quantities could thus be approached through related operations.
+
+Stationarity is not a guarantee of a minimum. Changing $J$ to $-J$ preserves the stationary equation while exchanging minima and maxima. Further analysis of variations, endpoints, and constraints is needed. A slogan that nature always chooses the “least” quantity cannot replace the specification and examination of a particular principle.
+
+Mechanics also acquired more systematic analytical forms. Euler and Lagrange developed equations that could accommodate constraints and coordinates suited to the system. Lagrange's *Méchanique analitique* of 1788 organized this work through principles including virtual work, reducing the need to invent a fresh geometrical argument for each arrangement of interacting bodies. This development should not be conflated with every later formulation of mechanics through an action integral.
+
+Lagrange also sought a different foundation for calculus. In his *Théorie des fonctions analytiques* of 1797, he attempted to obtain differentiation from coefficients in power-series expansions. The coefficient of $h$ in the expansion of $f(x+h)$ would define the first derivative, making calculus an extension of algebra.
+
+The approach placed a substantial burden on the expansion itself. Could every relevant function be expanded, and would the series actually recover its values? The existence of derivatives, even of all orders, does not by itself secure that conclusion. A proposed foundation had shifted the difficulty from infinitesimals to the class of functions and the validity of their representations.
+
+### 10. From Games to Repeated Trials and Inference
+
+A probability model assigns chances to possible observations. Can observations, in turn, teach us what the probabilities are? The transition from games to inference required this direction of reasoning to be made explicit.
+
+Jakob Bernoulli's *Ars conjectandi*, published posthumously in 1713, established a fundamental relation between probability and frequency. In modern form, if independent trials have the same success probability $p$, and $S_n$ counts successes in $n$ trials, then for every fixed $\varepsilon>0$,
+
+$$
+P\left(\left|\frac{S_n}{n}-p\right|>\varepsilon\right)\longrightarrow0
+\quad\text{as }n\longrightarrow\infty.
+$$
+
+The theorem controls the probability of a specified discrepancy. It does not promise that every finite sequence will look representative, or that recent failures make a success more likely on the next independent trial.
+
+The underlying count has binomial probabilities,
+
+$$
+P(S_n=k)=\binom nk p^k(1-p)^{n-k}.
+$$
+
+Exact evaluation becomes cumbersome for large $n$. De Moivre developed approximations, including a normal approximation in the 1730s, that made the central range of such counts more tractable. In modern notation, the standard deviation of the observed proportion is $\sqrt{p(1-p)/n}$. Increasing the number of observations by a factor of 100 reduces this scale by a factor of 10, not 100.
+
+These results assume the probability model. Using them to learn an unknown probability introduces a further question: how should alternative possibilities be weighted before and after observing data?
+
+Bayes's posthumous essay, communicated by Richard Price in 1763, treated an inverse-probability problem. Laplace developed a wider programme of inference from observations during the following decades. Their work addressed relationships among prior assumptions, the chance of the observed data under a hypothesis, and the resulting assessment of the hypothesis.
+
+A modern finite example makes those roles visible. Suppose an urn is selected with equal probability from two possibilities: one contains equal proportions of red and blue balls; the other contains three red for every blue. Draw three times with replacement and observe red each time. The probabilities of these observations are $1/8$ and $27/64$, respectively.
+
+Weighting by the equal prior probabilities gives
+
+$$
+P(\text{second urn}\mid\text{three reds})
+=\frac{27/64}{8/64+27/64}
+=\frac{27}{35}.
+$$
+
+The observations favour the second urn, but do not prove that it was selected. Different initial selection probabilities would give a different answer. Replacement matters too: without it, the draws would not have the same independent structure.
+
+Probability was consequently becoming a method for assessing evidence as well as distributing stakes. Its conclusions remained conditional on the specified alternatives and sampling assumptions. Repeated observations can reduce some random uncertainty, but a biased instrument, an unrepresentative sample, or a changing process can defeat the intended inference. More data do not automatically repair the model through which they are interpreted.
+
+### 11. Experience, Necessity, and Competing Accounts of Certainty
+
+The success of mechanics and analysis sharpened a philosophical question: what kind of certainty had actually been achieved? A demonstrated consequence, an observed regularity, and a justified expectation about future events need not have the same status.
+
+Hume distinguished relations of ideas from matters of fact. In his *Enquiry concerning Human Understanding* of 1748, mathematical reasoning exemplified demonstrative certainty, while claims about events required experience. Repeated observation could establish what had happened without logically entailing that the next case must behave the same way.
+
+An appeal to the past success of prediction does not remove the difficulty: it already assumes that past success is a guide to future performance. Hume's challenge concerned the warrant for this step, rather than a practical instruction to stop observing or calculating. Mathematics can establish what follows from a law, but those deductions alone do not demonstrate that nature must continue to obey it.
+
+Kant sought a different account of necessity. In the *Critique of Pure Reason*, first published in 1781 and revised in 1787, he treated mathematical knowledge as synthetic a priori: it extends knowledge while possessing a necessity not derived from repeated measurements. Mathematical construction in intuition played a central role in his explanation.
+
+Space and time, on this account, are forms through which human sensibility receives appearances; concepts such as causality belong to the understanding's organization of experience. This was an account of the conditions under which experience and objective knowledge are possible. It was not the claim that every particular physical law could be deduced without observation, or that mathematical structures described things independently of all conditions of human knowledge.
+
+These positions did not provide rival algorithms for differentiating a function or predicting an orbit. They interpreted the authority and scope of such achievements differently. Nor should their philosophical conclusions be treated as additional mathematical theorems proved by the success of calculus.
+
+By about 1800, the reach of mathematical methods had expanded much faster than agreement about their foundations. Functions could be specified through expressions, curves, series, or equations; those descriptions did not automatically coincide. Probability could guide inference while depending on assumptions about repeated events. Mechanics could unify phenomena while leaving questions about causes and approximation.
+
+The next period would turn many of these tensions into explicit mathematical problems. Definitions of limits and convergence, the boundaries of algebraic solvability, and the status of geometrical assumptions would become subjects of investigation in their own right.
+
 ## Sources and Historical Notes
 
 **Ancient Civilizations (c. 3000–600 BCE)**
@@ -747,6 +1433,49 @@ The ten subsections follow the ten entries for this period in the Chinese outlin
 The materials preserve results and explanations unevenly. Zu Chongzhi's numerical achievement does not supply the missing contents of the Zhuishu; the sphere commentaries have problems of attribution; later Kerala explanations do not establish every step of Madhava's original discoveries. These limits matter to the account of methods, not merely to biographical detail. Likewise, similar algorithms in different traditions do not by themselves prove a particular route of transmission.
 
 The source transcriptions contain damaged mathematical notation and occasional historical imprecision. Formulas used here have been reconstructed and checked independently. Decimal points, factorials, summation signs, the letter pi, and present-day equation notation serve the exposition; they are not claims about the original appearance of the texts.
+
+**The Renaissance to the Mid-Seventeenth Century (c. 1500–1650)**
+
+The ten subsections correspond in order to the ten entries for this period in the Chinese outline. The sequence follows that outline rather than enforcing strict year-by-year order among overlapping investigations. The equations use modern symbols to expose the reasoning; they do not reproduce the notation of the original editions.
+
+| Subsection | Principal material and its role |
+| --- | --- |
+| 1. Cubic and Quartic Equations | Kline, chapter 13, “Arithmetic and Algebra in the Sixteenth and Seventeenth Centuries,” in [Mathematical Thought][K-source], especially the discussion of third- and fourth-degree equations; “The 'Coss' Tradition in algebra,” §2.3, and “The Philosophy of Algebra,” §6.9 in the [Companion Encyclopedia][C-source]. The unified cubic derivation and the quartic auxiliary equation are modern reconstructions, with sign choices and exceptional cases distinguished from a complete historical case analysis. |
+| 2. Copernicus | K. P. Moesgaard, “Astronomy,” §2.7 in the [Companion Encyclopedia][C-source]; Kline, chapters 12 and 16, on the reorganization of astronomy and its physical difficulties. The Library of Congress preserves [the planetary-system diagram from the 1543 De revolutionibus](https://www.loc.gov/item/92516366/), documenting the arrangement in the published work. |
+| 3. Bombelli | Kline, chapter 13; “Complex Numbers and Vector Algebra,” §6.2, and “The Philosophy of Algebra,” §6.9 in the [Companion Encyclopedia][C-source]. The equation is Bombelli's historical example; the symbol i, factorization, and explicit explanation of compatible cube-root choices are modern aids. |
+| 4. Viète | Kline, chapter 13; “The Philosophy of Algebra,” §6.9, especially “Viéte's Analytic Art and Symbolic Logistic,” in the [Companion Encyclopedia][C-source]. The sum-and-product example illustrates parameter-dependent reasoning; its symbols and discriminant language are not quotations from Viète. |
+| 5. Kepler | Moesgaard, §2.7; Kline, chapter 16, “The Mathematization of Science.” The period-and-distance example uses hypothetical normalized values, not observations of a named planet. The account distinguishes observational laws, numerical implementation, and Kepler's search for physical causes. |
+| 6. Galileo | A. G. Molland, “Medieval and Renaissance Mechanics,” §2.6 in the [Companion Encyclopedia][C-source]; Kline, chapter 16. The Museo Galileo's [experimental-research account](https://www.imss.fi.it/istituto/egalsci.html) identifies the early investigations and their presentation in the 1638 Two New Sciences. The modern projectile equations assume a horizontal launch and downward-positive vertical displacement. Rolling motion on an incline is not equated with free fall. |
+| 7. Logarithms | Wolfgang Kaunzner, “Logarithms,” §2.5 in the [Companion Encyclopedia][C-source], on Napier's motion-based definition, sine tables, and Briggs's decimal tables. The Library of Congress's [record of Napier's 1614 work](https://www.loc.gov/item/04005707/) supplies an original-edition reference. The numerical multiplication example uses modern common logarithms and rounded table values, not Napier's original normalization. |
+| 8. Coordinate Methods | Kline, chapter 15, “Coordinate Geometry”; “Algebraic and analytic geometry,” §7.1 in the [Companion Encyclopedia][C-source]. The focus-directrix example and line intersection are explanatory reconstructions with modern Cartesian coordinates. |
+| 9. Perspective and Projective Geometry | Kline, chapter 14, “The Beginnings of Projective Geometry”; “Projective geometry,” §7.6 in the [Companion Encyclopedia][C-source], on Desargues, Pascal, projection, and difficulties of reception. The interpretation of points at infinity is stated in modern language; a later axiomatic framework is not attributed to the seventeenth-century authors. |
+| 10. Mathematical Certainty and Nature | Kline, chapters 11 and 16; “The Philosophical Context of Medieval and Renaissance Mathematics,” §2.12, and Moesgaard's “Astronomy,” §2.7 in the [Companion Encyclopedia][C-source]. Broad claims about a shared religious or philosophical outlook are qualified by differences among the thinkers and their methods. |
+
+The distinction between a mathematical result and its physical interpretation runs throughout the chapter. Copernicus's reorganization did not immediately settle the mechanics of a moving Earth; Kepler sought causes without possessing the later theory of gravitation; Galileo's demonstrations depend on idealized conditions. Likewise, the practical success of complex arithmetic or literal coefficients should not be read as immediate acceptance of the modern number system.
+
+The cubic and quartic identities, Bombelli calculation, parameter examples, coordinate transformations, and logarithmic approximation have been checked independently. No general theory of complex root selection, arbitrary functions, or projective space is presumed to have existed in its later form.
+
+**The Later Seventeenth and Eighteenth Centuries (c. 1650–1800)**
+
+The eleven subsections follow the eleven entries for this period in the Chinese outline. The opening subsection looks back to preparations before 1650; subsequent developments are grouped by their mathematical connections rather than placed in strict year-by-year order. Modern notation makes the operations explicit without attributing later definitions and terminology to the historical authors.
+
+| Subsection | Principal material and its role |
+| --- | --- |
+| 1. Preparing Calculus | Kirsti Andersen, “Precalculus, 1635–1665,” §3.1 in the [Companion Encyclopedia][C-source], on indivisibles, tangent and extremum procedures, quadrature, and geometrical connections. The rectangle example reconstructs the computational structure of Fermat's method; the separate completed-square identity verifies the maximum. |
+| 2. Fair Division | “Combinatorial Probability,” §10.1, and Glenn Shafer, “The Early Development of Mathematical Probability,” §10.2 in the [Companion Encyclopedia][C-source]. The one-win-versus-two-win game and 64-unit stake are explanatory choices, not quotations from a particular letter. Independent, equally probable rounds are explicit assumptions. |
+| 3. Newton's Fluxions | Niccolò Guicciardini, “Three Traditions in the Calculus: Newton, Leibniz and Lagrange,” §3.2, together with “Infinite Series and Solutions of Ordinary Differential Equations, 1670–1770,” §4.3 in the [Companion Encyclopedia][C-source]. The area-growth argument and fundamental-theorem formula use modern language and an explicit continuity assumption. |
+| 4. Leibniz's Calculus | Guicciardini, §3.2, on differences, summation, notation, and the independence of the two principal developments. The MAA's reproductions of the original [1684 differential-calculus paper](https://old.maa.org/press/periodicals/convergence/mathematical-treasure-leibnizs-papers-on-calculus-differential-calculus) and [1686 integration paper](https://old.maa.org/press/periodicals/convergence/mathematical-treasure-leibnizs-papers-on-calculus-integral-calculus) document the publication sequence. The composite-function example is modern. |
+| 5. Newton's Mechanics | “Classical mechanics,” §8.1, and “Astronomy,” §2.7 in the [Companion Encyclopedia][C-source]. The notation G and the relative two-body derivation are modern. The period formula includes both masses and distinguishes the relative orbit from either body's individual orbit about the centre of mass. |
+| 6. Foundations | Guicciardini, §3.2, especially the discussion of Berkeley and Maclaurin; Berkeley's [The Analyst (1734)](https://www.maths.tcd.ie/pub/HistMath/People/Berkeley/Analyst/Analyst.html), in the Trinity College Dublin transcription based on the first editions. The error identity for the square function is a modern explanation of a limit, not a claim that all contemporary authors used this formulation. |
+| 7. Expansion of Analysis | Guicciardini, §3.2, and §4.3 in the [Companion Encyclopedia][C-source], on functions, series, differential equations, and divergent expressions. The exponential recurrence and geometric partial-sum calculation illustrate the difference between formal operations and convergence-based justification. |
+| 8. Vibrating Strings | “Partial Differential Equations,” §3.15, especially “The First Solutions of PDEs: the Vibrating String,” and “Acoustics,” §9.8 in the [Companion Encyclopedia][C-source]. Modern partial-derivative notation is used. The discussion separates travelling profiles, endpoint conditions, standing modes, and the regularity problems raised by a plucked shape. |
+| 9. Variations and Analytical Mechanics | Craig G. Fraser, “Calculus of variations,” §3.5, “Classical mechanics,” §8.1, and Guicciardini, §3.2 in the [Companion Encyclopedia][C-source]. The first-variation calculation assumes smoothness and fixed endpoints. The brachistochrone integral has an endpoint where the initial speed is zero and is interpreted by a limiting integral. Later Hamiltonian formulations are not assigned to Lagrange's 1788 work. |
+| 10. Repetition and Inference | Shafer, §10.2, and “Combinatorial Probability,” §10.1 in the [Companion Encyclopedia][C-source]; Bayes's [posthumous essay communicated by Price](https://bayes.wustl.edu/Manual/an.essay.pdf), bearing the 1763 journal date. The law-of-large-numbers statement, standard-deviation formula, and two-urn update are modern presentations. The urn example is not Bayes's original continuous-parameter problem. |
+| 11. Accounts of Certainty | “The philosophy of geometry to 1900,” §7.8, and “Philosophies of Probability,” §10.17 in the [Companion Encyclopedia][C-source]; Hume's [Enquiry, Section IV](https://davidhume.org/texts/e/4), and Kant's [Critique of Pure Reason](https://www.gutenberg.org/files/4280/4280-h/4280-h.htm). The philosophical positions are presented as accounts of knowledge, not as mathematical consequences of successful calculation. |
+
+The historical distinctions are essential to the chapter's argument. Newton's explanations evolved; Leibnizian differentials were not simply finite increments with inconvenient terms deleted; eighteenth-century work with divergent series involved questions of meaning as well as convergence. The vibrating-string debate cannot be reduced to one participant already holding every feature of the modern function concept.
+
+The source transcriptions contain damaged equations and inconsistent typography. The displayed identities, derivative rules, series coefficients, two-body relation, wave solutions, and probability calculations have been checked independently. Modern regularity and modelling assumptions identify the scope of the explanations; they are not silently attributed to the earliest authors.
 
 [C-source]: <../../../../todos/_10_materials/HistoryOfMathematics/Companion Encyclopedia of the History and Philosophy of the Mathematical Sciences (I. Grattan-Guinness) (z-library.sk, 1lib.sk, z-lib.sk)/Companion Encyclopedia of the History and Philosophy of the Mathematical Sciences (I. Grattan-Guinness) (z-library.sk, 1lib.sk, z-lib.sk).md>
 [O-source]: <../../../../todos/_10_materials/HistoryOfMathematics/Oxford Handbook of the History of Mathematics (Oxford Handbooks) (Eleanor Robson, Jacqueline Stedall) (z-library.sk, 1lib.sk, z-lib.sk)/Oxford Handbook of the History of Mathematics (Oxford Handbooks) (Eleanor Robson, Jacqueline Stedall) (z-library.sk, 1lib.sk, z-lib.sk).md>
