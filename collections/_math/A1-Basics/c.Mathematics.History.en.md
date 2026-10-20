@@ -1374,6 +1374,1047 @@ By about 1800, the reach of mathematical methods had expanded much faster than a
 
 The next period would turn many of these tensions into explicit mathematical problems. Definitions of limits and convergence, the boundaries of algebraic solvability, and the status of geometrical assumptions would become subjects of investigation in their own right.
 
+## The First Half of the Nineteenth Century: Limits, Solvability, and New Spaces (c. 1800–1860)
+
+A successful calculation can leave several questions unanswered. Does its infinite process converge? Can the required equation be solved by the permitted operations? Does the proposed minimum belong to any admissible object? Are the assumptions of a geometrical argument necessary, or merely one possible choice?
+
+Between about 1800 and 1860, such questions increasingly became mathematical problems in their own right. Analysis investigated the conditions behind its operations. Algebra explained obstacles to formulas. Geometry studied alternatives to inherited assumptions and new ways to describe space. Applications continued to generate these questions: observations required estimates, heat required functions, and physical models required solutions whose existence could no longer simply be assumed.
+
+### 1. Gauss Organizes Number Theory (1801)
+
+Questions about divisibility, integer representations, and remainders had long histories. Gauss's *Disquisitiones arithmeticae* of 1801 reorganized many of them into a systematic theory. Its importance lay both in new results and in concepts that made connections between apparently separate problems available for repeated use.
+
+Congruence supplied a concise language for arithmetic with remainders. The statement
+
+$$
+a\equiv b\pmod m
+$$
+
+means that $m$ divides $a-b$. Addition and multiplication preserve congruence, so a problem involving arbitrarily large integers can sometimes be reduced to a finite collection of residue classes.
+
+For example, the squares of the five residues modulo 5 leave only the remainders 0, 1, and 4. Consequently,
+
+$$
+x^2\equiv3\pmod5
+$$
+
+has no integer solution. This is a proof covering every integer, rather than an unsuccessful search through a long list. More complicated congruences required methods for deciding which residues were possible and how they behaved under changes of modulus.
+
+Quadratic reciprocity connected two such questions: whether one odd prime is a square modulo another, and whether the reverse relation holds. For distinct odd primes, the two questions have the same answer unless both primes leave remainder 3 modulo 4; in that case, their answers are opposite. A question about one modulus could therefore be related to a question about another. Gauss supplied proofs and placed the result within a larger treatment of quadratic residues.
+
+Binary quadratic forms provided another organizing object:
+
+$$
+Q(x,y)=ax^2+bxy+cy^2.
+$$
+
+Instead of asking separately how a particular integer could be represented, one could study the form and the substitutions that preserve its arithmetic information. For instance, replacing $u$ by $x+y$ and $v$ by $y$ transforms $u^2+v^2$ into $x^2+2xy+2y^2$. The inverse substitution is also integral, so the two expressions represent exactly the same integers.
+
+This example illustrates the role of equivalence. Integer substitutions with determinant 1 can change the coefficients without changing the essential representation problem. The discriminant $b^2-4ac$, which is $-4$ for both forms above, remains invariant under these substitutions. Classification and composition of forms then organize much more than isolated numerical identities.
+
+Gauss also worked on astronomical orbits and geodetic measurement, where limited observations had to support accurate conclusions. These activities required approximation, elimination, and careful treatment of error. Pure number theory and observational science remained distinct enterprises, but both rewarded methods that reorganized complicated information into manageable relations.
+
+The systematic approach did not make every integer problem easy. A congruence obstruction can prove impossibility, while passing a congruence test need not prove that a desired integer representation exists. Its value was to identify reusable structures and to distinguish different stages of the reasoning.
+
+### 2. Least Squares and the Modelling of Observational Error
+
+Repeated observations rarely give exactly the same value. More observations can therefore produce more equations than the unknown parameters can satisfy simultaneously. How should disagreement be resolved without selecting whichever observation happens to be convenient?
+
+Legendre published the method of least squares in 1805. Gauss's treatment appeared in 1809, together with his claim to have used the principle earlier. Their work helped make the combination of imperfect observations a systematic mathematical activity.
+
+For observations $y_1,\ldots,y_n$ of a single constant quantity, choose an estimate $\theta$ that minimizes
+
+$$
+S(\theta)=\sum_{i=1}^n(y_i-\theta)^2.
+$$
+
+Differentiation gives $S'(\theta)=2n\theta-2\sum_i y_i$, so the candidate is the arithmetic mean. The squared-error expression is a convex quadratic, which here establishes that the candidate is a minimum rather than merely a stationary value.
+
+An illustrative set of measurements, 2, 3, and 7, gives
+
+$$
+S(\theta)=(2-\theta)^2+(3-\theta)^2+(7-\theta)^2
+=3(\theta-4)^2+14.
+$$
+
+The minimizing estimate is 4. The calculation is exact, but what makes this the appropriate estimate of the measured quantity?
+
+That question concerns the choice of criterion. Squaring prevents positive and negative discrepancies from cancelling and penalizes large discrepancies strongly. Minimizing absolute discrepancies gives a different criterion; for these observations it selects the median, 3. Neither choice becomes mandatory merely because the observations disagree.
+
+Probability can justify a criterion under specified assumptions. In a modern formulation, suppose the errors are independent, normally distributed, centred at zero, and have a common variance $\sigma^2$. The likelihood of the observations, as a function of $\theta$, is proportional to
+
+$$
+\exp\left(-\frac{S(\theta)}{2\sigma^2}\right).
+$$
+
+Maximizing this expression is equivalent to minimizing the squared residuals. This displays one connection between a model of error and a computational procedure; it is not a claim that every historical justification followed this exact route.
+
+For observations of several parameters, least squares yields normal equations. Their solution requires sufficient independent information; uniqueness does not follow if the observations fail to distinguish different parameter choices. Unequal precision can also require unequal weights.
+
+A precise optimum therefore answers a conditional question: which parameters fit best according to this model and this criterion? It does not establish that the model is correct. A systematic instrument error may move every observation in the same direction, while a mistaken physical relation can make the fitted parameters misleading. The mathematics of adjustment had to be accompanied by judgment about what was being observed.
+
+### 3. Fourier: Heat, Boundary Conditions, and Trigonometric Series (1800s–1820s)
+
+What determines how a temperature distribution changes? A body can begin hotter in some regions than others, exchange heat with its surroundings, and conduct heat internally. A mathematical description must combine an evolution law with information about its initial state and boundary.
+
+Fourier presented important work on heat in 1807 and published the *Théorie analytique de la chaleur* in 1822. His programme made the representation of functions part of a physical method: an initial temperature distribution had to be decomposed into components whose subsequent behaviour could be calculated.
+
+For an ideal uniform rod, a modern heat equation is
+
+$$
+\frac{\partial u}{\partial t}
+=\kappa\frac{\partial^2u}{\partial x^2},
+$$
+
+where $u(x,t)$ is temperature and $\kappa>0$ is thermal diffusivity. The model combines a flow of heat proportional to the negative temperature gradient with conservation of heat in a short segment. The difference between the incoming and outgoing flows produces the second spatial derivative. It does not determine a unique history without further conditions.
+
+Suppose the rod occupies $0<x<L$ and both ends are held at zero temperature. Functions $\sin(n\pi x/L)$ vanish at the endpoints. Substitution shows that each component evolves as
+
+$$
+u_n(x,t)=b_n e^{-\kappa(n\pi/L)^2t}
+\sin\left(\frac{n\pi x}{L}\right).
+$$
+
+An initial profile $f(x)$ can therefore be approached through a sine expansion,
+
+$$
+f(x)\sim\sum_{n=1}^{\infty}b_n\sin\left(\frac{n\pi x}{L}\right),
+\qquad
+b_n=\frac2L\int_0^L f(x)\sin\left(\frac{n\pi x}{L}\right)\,dx.
+$$
+
+The coefficient formula uses the orthogonality of distinct sine modes: multiplying by one mode and integrating separates its contribution from the others. When the required representation and operations are justified, the temperature at later times follows by attaching the corresponding exponential decay to each coefficient.
+
+The higher modes decay faster because their exponents contain $n^2$. Fine spatial variations disappear more rapidly than broad ones. This is a physical consequence that the decomposition makes easy to understand.
+
+But writing the coefficients does not prove every assertion about the resulting series. Does it converge to the prescribed initial profile? What happens at a jump? Can it be differentiated twice with respect to position? The damping for positive time helps control high-frequency terms, while the initial instant can demand separate treatment.
+
+Fourier's claims about representing broad classes of functions met objections. A function assembled from separate pieces or containing a discontinuity did not fit comfortably into definitions centred on a single analytical expression. The heat problem nevertheless required a way to discuss such data.
+
+The achievement thus involved more than solving one differential equation. It joined physical modelling, boundary conditions, and decomposition into modes. It also made the distinction between possessing a formal series and establishing its meaning a central problem for analysis.
+
+### 4. Bolzano and Cauchy: Conditions Behind the Operations (1810s–1820s)
+
+Why must a continuous function that changes sign pass through zero? A diagram makes the claim persuasive, but using a drawn curve as the proof leaves the meaning of continuity unexplained. A numerical account must identify which property prevents the function from passing between opposite signs without attaining zero.
+
+Bolzano's work of 1817 sought an analytical justification of this intermediate-value property. Continuity and convergence needed explicit treatment, and arguments about limiting values depended on properties of the real numbers. His work had limited immediate circulation, but it exposed foundational questions that the apparent obviousness of a picture could conceal.
+
+Cauchy's *Cours d'analyse* of 1821 and subsequent teaching organized analysis around variable quantities, limits, continuity, and convergence. Derivatives were approached through limiting ratios; definite integrals through limits of sums. The aim was to derive conclusions from stated properties rather than extend formal rules without examining their application.
+
+This did not amount to the immediate completion of modern analysis. Cauchy still used infinitesimals, understood as variable quantities tending to zero, and the interpretation of parts of his work requires attention to his own definitions. Later distinctions among kinds of convergence were not uniformly explicit in early formulations.
+
+A modern example makes one difficulty precise. On $0\leq x\leq1$, let
+
+$$
+f_n(x)=x^n.
+$$
+
+Every $f_n$ is continuous. For each fixed $x<1$, its value tends to zero, while $f_n(1)=1$ for every $n$. The pointwise limit is therefore
+
+$$
+f(x)=
+\begin{cases}
+0,&0\leq x<1,\\
+1,&x=1.
+\end{cases}
+$$
+
+It is discontinuous. Continuity of the approximating functions alone has not guaranteed continuity of their limit.
+
+The obstacle is where the convergence takes place. For a fixed point below 1, sufficiently large $n$ gives a small value. But however large $n$ is chosen, points sufficiently close to 1 still have values near 1. No single stage makes the error small across the whole interval.
+
+Uniform convergence imposes precisely this stronger requirement: one stage of approximation must control the error at all points under consideration. It supplies a sufficient condition for preserving continuity, though other operations require their own hypotheses. Differentiating a limit is a further problem, not an automatic consequence of preserving function values.
+
+Cauchy and his successors investigated and revised claims about infinite processes rather than establishing every necessary condition at once.
+
+Analysis was changing its standard question. Instead of asking only whether a manipulation produced the expected answer, it increasingly asked which assumptions made the manipulation valid. A theory of real numbers and a more systematic treatment of convergence were still needed to support that programme.
+
+### 5. Abel and Galois: Explaining the Limits of Radical Formulas (1820s–1830s)
+
+The success of cubic and quartic formulas encouraged a natural expectation: perhaps a sufficiently clever substitution would solve the quintic. Repeated failure could mean that the right substitution had not yet been found. How could one prove that an entire class of permissible methods must fail?
+
+Abel's work of 1824 established that the general quintic cannot be solved by radicals. The permitted operations are finite combinations of arithmetic and root extraction applied to the coefficients. The conclusion restricts this kind of expression; it does not say that quintic equations have no roots or cannot be approximated numerically.
+
+Special cases remain solvable. The equation $x^5-2=0$ has the real root $\sqrt[5]{2}$, and its other roots can also be expressed by radicals. The degree alone does not determine the answer for every particular polynomial. This raised a more discriminating question: what property separates the solvable cases from the others?
+
+Galois's work around 1830–1832 investigated the transformations among roots that preserve their algebraic relations. The later publication and interpretation of his writings, notably through Liouville in 1846, helped turn these ideas into a theory. Its mature language of groups and fields developed beyond the form in which Galois first presented it.
+
+In modern terms, consider the field generated by all the roots of a polynomial with rational coefficients. Its symmetries fix the rational numbers and preserve addition and multiplication. They permute the roots, but only in ways compatible with every rational algebraic relation among them. Composing these symmetries gives the Galois group.
+
+For $x^2-2$, exchanging $\sqrt2$ and $-\sqrt2$ preserves the rational relations. Once $\sqrt2$ is itself included among the quantities required to remain fixed, that exchange is no longer allowed. Adding information can reduce the available symmetry. Successive radical adjunctions can be studied through the corresponding structure of these reductions.
+
+The resulting criterion, in its later standard form, is that a polynomial over the rationals is solvable by radicals exactly when its Galois group is solvable. Here “solvable” has a precise structural meaning: there is a chain from the identity subgroup to the whole group, each subgroup normal in the next, whose successive quotient groups are commutative.
+
+Noncommutativity alone is not the obstruction. The permutation group on three objects is noncommutative but has the required chain. For the general quintic, however, the full permutation group on five objects contains the noncommutative simple group of even permutations. Its lack of smaller nontrivial normal subgroups obstructs the required reduction.
+
+This account does not manufacture a formula by another name. It explains why certain formulas can exist and why others cannot. Numerical approximation remains available because it uses a different kind of process, and other classes of functions can express solutions that radicals cannot.
+
+The change in viewpoint was profound: the failure to find a formula became evidence of a structural question, and a theorem of impossibility became a positive explanation of the boundaries of a method.
+
+### 6. Non-Euclidean Geometry: A Failed Contradiction Becomes a New Theory (1820s–1830s)
+
+Euclid's parallel postulate had long appeared less immediate than many of his other starting assumptions. In a familiar equivalent form, it says that through a point outside a line there is exactly one line in the same plane that does not meet the original line. Could this be proved from the remaining assumptions?
+
+One strategy was to deny it and derive a contradiction. The difficulty was that the expected contradiction did not arrive quickly. Instead, the alternative produced connected relations among lines, distances, and angles. A prolonged attempt to prove necessity could become an investigation of possibility.
+
+Lobachevsky and János Bolyai developed such geometry independently in the 1820s and 1830s. Gauss also explored related ideas, but did not publish a comparable systematic account. Their work showed that abandoning the Euclidean parallel assumption did not immediately dissolve geometrical reasoning.
+
+In the geometry now called hyperbolic, more than one line through an external point can avoid meeting a given line. Triangles have angle sums below two right angles, and the deficit is related to their area. Familiar Euclidean properties therefore become questions to be recalculated rather than rules that can be carried over unchanged.
+
+This difference affects scale. In a Euclidean plane, similar triangles can have the same angles at arbitrarily different sizes. In a hyperbolic plane with a fixed curvature scale, the angles constrain the triangle's size. The alternative assumption reorganizes a network of theorems, not merely the appearance of a few exceptional parallels.
+
+Yet deriving many consistent-looking results is not a proof that no contradiction can ever occur. A complete account required a way to compare the alternative geometry with an already accepted mathematical framework. Later models, including Beltrami's work of 1868, made the relations concrete by interpreting hyperbolic objects within other mathematics.
+
+Such a model establishes a relative consistency claim: a contradiction in the interpreted geometry would give a contradiction in the framework used to construct the model. It does not provide an absolute guarantee that mathematics as a whole is contradiction-free. Those later results should not be read back as demonstrations already supplied by the earliest discoverers.
+
+The physical question also remained separate. The existence of several mathematical geometries does not decide which one best describes measured space. Small regions can approximate Euclidean relations closely, and measurements have finite precision. Choosing a physical geometry involves evidence as well as deductions.
+
+The old question—how to prove that Euclid's assumption must hold—had thus opened into two others: which geometrical systems can be developed, and under what circumstances should one of them be used to describe the world?
+
+### 7. Complex Numbers, Paths, and Several Approaches to Analysis
+
+The complex plane gave operations involving imaginary quantities a geometrical interpretation. Addition combined displacements; multiplication multiplied lengths and added angles. Work by Wessel, Argand, Gauss, and others helped make these relationships explicit. Yet a convincing picture of complex arithmetic was only the beginning of a theory of complex functions.
+
+Complex differentiation imposes a stronger condition than differentiating along one real line. The same limiting derivative must result when the increment approaches zero from different directions in the plane. The real and imaginary parts are consequently linked, rather than being two arbitrary real functions placed side by side.
+
+Cauchy's investigations made contour integration a central tool. For a function holomorphic on and inside a suitable simple closed contour, the integral around that contour vanishes. Singularities change the situation. Around the unit circle traversed once counterclockwise,
+
+$$
+\oint\frac{dz}{z}=2\pi i.
+$$
+
+Parameterizing the circle by $z=e^{it}$ gives $dz/z=i\,dt$, so the result follows by integrating from 0 to $2\pi$. The pole at the origin prevents the vanishing theorem from applying to the enclosed region. Residues provided a systematic way to relate such contour integrals to local information at singularities.
+
+Paths introduced another difficulty. Take a point once around the origin, writing $z=e^{i\theta}$ as $\theta$ increases from 0 to $2\pi$. A continuously followed square root is
+
+$$
+w=e^{i\theta/2}.
+$$
+
+It begins at 1 and ends at $-1$, although $z$ has returned to its starting point. A continuously followed logarithm similarly gains $2\pi i$. The value obtained can depend on the path by which it is continued.
+
+Choosing a branch cut allows a single-valued choice on a restricted domain, but does not remove the underlying phenomenon. It identifies where the chosen representation must stop or change. Formulas familiar from real variables therefore cannot always be used globally without considering their domains and branches.
+
+Riemann's work, beginning with his dissertation of 1851, gave these questions a geometric setting. For the square root, two sheets can be connected so that continuation changes sheets rather than assigning contradictory values to one point. On the resulting Riemann surface, the function has a single value at each point of the appropriately constructed domain. The geometry records information that the original plane had suppressed.
+
+Weierstrass developed a complementary emphasis on convergent power series and their continuation. A local expansion can define a function reliably within its convergence region, while overlapping expansions extend it farther. The series $\sum_{n=0}^{\infty}z^n$, for example, represents $1/(1-z)$ only for $|z|<1$, although the rational function is defined at many points outside that disc.
+
+Contour integration, surfaces, and power series illuminated different aspects of the same growing theory. Their development continued beyond the middle of the century. None made questions about convergence, singularities, or global continuation disappear; each supplied methods for formulating and investigating them more precisely.
+
+### 8. Hamilton, Grassmann, and Matrices: Multiplication Need Not Commute (From the 1840s)
+
+Complex multiplication combines scaling with rotation in a plane. Could a similar arithmetic describe directions and rotations in three-dimensional space? Hamilton's attempts to extend complex numbers showed that preserving every familiar algebraic law could obstruct the desired construction.
+
+In 1843 he introduced quaternions, expressions with four real components,
+
+$$
+q=a+bi+cj+dk,
+$$
+
+whose units satisfy
+
+$$
+i^2=j^2=k^2=ijk=-1,\qquad ij=k,\quad ji=-k.
+$$
+
+Associativity and distributivity remain valid, but multiplication is not generally commutative. The order of factors carries information. Quaternions also permit division by every nonzero element, though left and right division must be distinguished.
+
+The significance of order can be seen without quaternion notation. Let $R_x$ be a right-angle rotation about the fixed positive $x$-axis and $R_z$ the corresponding rotation about the fixed positive $z$-axis, using the right-hand convention:
+
+$$
+R_x(x,y,z)=(x,-z,y),\qquad
+R_z(x,y,z)=(-y,x,z).
+$$
+
+Start with the vector $(1,0,0)$. Applying $R_x$ and then $R_z$ produces $(0,1,0)$. Reversing the order produces $(0,0,1)$. The different answers express a difference between the transformations themselves.
+
+To encode a rotation, represent a vector as a pure imaginary quaternion $v=xi+yj+zk$. For a unit quaternion $q$, the operation $v\mapsto qvq^{-1}$ produces another such vector and preserves its length. Composition then corresponds to multiplying the unit quaternions in the appropriate order.
+
+Quaternions supplied one way to encode three-dimensional rotations, but they were not the only route to a broader algebra. Grassmann's *Ausdehnungslehre* of 1844 developed operations on extended magnitudes in arbitrary dimensions. In modern language, the exterior product of two vectors represents an oriented area, and reversing their order reverses its sign:
+
+$$
+u\wedge v=-v\wedge u.
+$$
+
+This structure does different work from ordinary multiplication of lengths. Its interpretation depends on direction, orientation, and the kinds of objects being combined.
+
+Matrix methods likewise organized linear substitutions through arrays of coefficients. Cayley's 1858 memoir treated matrices as objects that could be added and multiplied according to their own laws. Matrix multiplication corresponds to composition of linear transformations; noncommutativity is therefore expected whenever the transformations depend on order.
+
+These systems do not preserve exactly the same properties. A nonzero matrix need not be invertible, whereas a nonzero quaternion is. The task was to determine which laws a system possessed and what those laws allowed one to prove, rather than assume that every useful multiplication must copy integer arithmetic.
+
+The commutative law for integers had not been refuted. The objects and operations had changed. This distinction helped open the way to algebra as the study of structures defined by their operations, with ordinary arithmetic as one important instance.
+
+### 9. Gauss and Riemann: Geometry from Within
+
+A cylinder looks curved in ordinary space, yet a sheet of paper can be rolled into a cylinder without stretching. A spherical surface cannot be flattened in the same way. What kind of curvature distinguishes these cases?
+
+Gauss's work on curved surfaces in the 1820s separated how a surface sits in surrounding space from geometric properties determined by measurements within it. His remarkable theorem established that Gaussian curvature can be computed from the surface's intrinsic metric. Bending that preserves lengths on the surface therefore preserves this curvature.
+
+A plane and a cylinder both have Gaussian curvature zero, despite their different appearances from outside. A sphere of radius $R$ has Gaussian curvature $1/R^2$. Flattening a patch of it onto a plane while preserving all surface lengths is impossible. The obstruction is intrinsic, so changing how one views or positions the surface cannot remove it.
+
+The method used a local rule for measuring short distances. For a surface with coordinates $u,v$, write
+
+$$
+ds^2=E\,du^2+2F\,du\,dv+G\,dv^2.
+$$
+
+The coefficients describe how coordinate changes contribute to distance and angle. They can be calculated from an embedding, but Gauss's result shows that the resulting curvature is determined by these internal measurements.
+
+Riemann's 1854 habilitation lecture extended the question beyond surfaces in ordinary three-dimensional space. A manifold could be described locally by several independent coordinates, while its metric specified lengths. In the modern notation of the resulting theory,
+
+$$
+ds^2=\sum_{i,j=1}^n g_{ij}(x)\,dx^i\,dx^j.
+$$
+
+For a Riemannian metric, the symmetric coefficient matrix is positive definite: every nonzero tangent displacement has positive squared length. Different metrics can give different geometries on the same underlying manifold. Euclidean distance is a special choice rather than a consequence of dimension alone.
+
+These local descriptions do not settle every global question. A sphere has finite area but no edge; a local coordinate chart does not cover it without limitations. Local curvature, the way regions fit together, the presence of a boundary, and the total size of a space must be distinguished. Their systematic separation would require further mathematical development.
+
+Riemann also distinguished the range of conceivable geometries from the question of which metric relations describe physical space. Mathematics can investigate a proposed structure without proving that the universe realizes it. Physical interpretation requires observations and assumptions about measurement.
+
+The question of geometry was expanding from the properties of familiar figures to the structures that make measurement possible. One could now ask what remains unchanged under a different description, which properties belong to a neighbourhood, and which depend on the space as a whole.
+
+### 10. Beyond a Formal Solution: Does the Required Object Exist?
+
+A differential equation can be derived correctly from a proposed minimum even when no admissible function attains that minimum. The distinction became especially consequential in Riemann's use of the Dirichlet principle.
+
+Suppose a function is required to take specified values on the boundary of a planar region. Consider its Dirichlet energy,
+
+$$
+D[u]=\int_{\Omega}
+\left[
+\left(\frac{\partial u}{\partial x}\right)^2+
+\left(\frac{\partial u}{\partial y}\right)^2
+\right]\,dx\,dy.
+$$
+
+If a sufficiently regular minimizer exists, replace $u$ by $u+\varepsilon v$, where $v$ vanishes on the boundary. The first derivative of the energy at $\varepsilon=0$ must vanish. Integration by parts gives $-2\int_{\Omega}v\,\Delta u\,dx\,dy=0$ for every such variation, implying Laplace's equation,
+
+$$
+\frac{\partial^2u}{\partial x^2}
++\frac{\partial^2u}{\partial y^2}=0.
+$$
+
+The minimization problem can therefore provide a route to a harmonic function. Riemann used this connection to support existence results in complex analysis, allowing functions to be characterized by prescribed behaviour rather than by an already available formula.
+
+The vulnerability lies in the words “if a minimizer exists.” The energy is nonnegative, but a lower bound does not by itself establish that some function realizes the least possible value.
+
+A different, elementary functional isolates the logical gap. Among continuous functions on $[0,1]$ satisfying $u(0)=0$ and $u(1)=1$, consider
+
+$$
+J[u]=\int_0^1u(x)^2\,dx.
+$$
+
+The functions $u_n(x)=x^n$ are admissible, and
+
+$$
+J[u_n]=\frac{1}{2n+1}\longrightarrow0.
+$$
+
+Thus the greatest lower bound is zero. Yet no admissible continuous function has integral zero: continuity and the endpoint value 1 force it to stay positive on a small interval near that endpoint.
+
+The approximations improve indefinitely without reaching an admissible minimizer. Their pointwise limit is the discontinuous function encountered earlier in this chapter. The process has lost a property required by the problem.
+
+This example concerns a different functional from the Dirichlet energy. It does not disprove the Dirichlet principle under suitable hypotheses; it disproves the general inference from a lower bound to an attained minimum. Weierstrass's later criticism, publicly presented in 1870, made a related defect in the reasoning explicit. Its consequences belong partly to the next period.
+
+A satisfactory existence argument must control more than the numerical values of an integral. An approximating sequence needs a limit in an appropriate sense, that limit must remain admissible, and its energy must satisfy the required comparison. Later work supplied such conditions or constructed solutions by other methods.
+
+The issue connected several developments of this period. The legitimacy of an infinite process depends on its mode of convergence; an equation's admissible solutions depend on the chosen operations; a geometry depends on its assumptions; an extremum depends on the space of candidates. Mathematical methods had become powerful enough that their conditions and limitations could themselves become objects of systematic theory.
+
+## The Later Nineteenth Century: Rigour, Structure, and Infinity (c. 1860–1900)
+
+The first half of the century had exposed the limits of several familiar expectations. An infinite calculation might fail to justify its result; an equation might resist every radical formula; a geometry might remain coherent after abandoning Euclid's parallel postulate. The next question was how to build dependable mathematics around these discoveries.
+
+Between about 1860 and 1900, mathematicians increasingly made the conditions of an argument part of its subject matter. They constructed number systems, distinguished kinds of convergence, replaced unsuccessful factorization rules with new objects, and compared geometries through transformations and models. Infinity and reasoning themselves became objects of investigation. These developments remained connected to concrete problems in series, arithmetic, geometry, and mechanics; abstraction often arose because an older method had reached a specific obstacle.
+
+### 1. Limits Become Relations Between Controllable Errors
+
+What does it mean to say that a quantity can be made arbitrarily close to another? Calling their difference “infinitely small” does not settle which choices are permitted or how those choices depend on one another.
+
+Weierstrass's teaching, especially in Berlin from the middle of the century, helped make explicit error estimates central to analysis. Earlier mathematicians had already used inequalities and limiting arguments. The change lay in organizing definitions and proofs around their precise logical dependencies.
+
+In modern notation, the statement $\lim_{x\to a}f(x)=L$ means
+
+$$
+\text{for every }\varepsilon>0,\ \text{there exists }\delta>0
+\text{ such that }
+0<|x-a|<\delta\Longrightarrow |f(x)-L|<\varepsilon.
+$$
+
+The requested accuracy $\varepsilon$ comes first. The proof must then supply an input tolerance $\delta$ that works for every allowed $x$ in the specified neighbourhood. A tolerance may depend on the requested accuracy and on the point $a$; it cannot be chosen afterwards to excuse an inconvenient value of $x$.
+
+For example, to show that $x^2$ tends to 4 as $x$ tends to 2, factor the error:
+
+$$
+|x^2-4|=|x-2|\,|x+2|.
+$$
+
+If $|x-2|<1$, then $|x+2|<5$. Given any $\varepsilon>0$, choose
+
+$$
+\delta=\min\left(1,\frac{\varepsilon}{5}\right).
+$$
+
+Then $0<|x-2|<\delta$ implies $|x^2-4|<\varepsilon$. The limit has been established by a rule for controlling errors, without calculating at an unexplained intermediate state between zero and a positive number.
+
+This language also reveals why superficially similar definitions differ. Continuity at each point allows the tolerance to change with the point. Uniform continuity on a domain requires one tolerance to work throughout that domain for each requested accuracy. A theorem about the latter cannot be justified merely by proving the former separately at every point.
+
+Arithmetization sought to ground such arguments in properties of numbers rather than an undefined continuous motion or an unquestioned geometrical picture. It made many formerly implicit steps available for examination and teaching.
+
+Yet writing down quantifiers was not sufficient by itself. An error estimate could show that successive approximations approached one another without proving that the number system contained their destination. The definitions of limits therefore led directly to questions about the real numbers. Rigour required both control of a process and a domain in which its claimed result existed.
+
+### 2. Counterexamples Separate Continuity, Differentiability, and Convergence
+
+A curve drawn by hand tends to look smooth except at a few corners. Was that a reliable guide to all continuous functions? And if every approximation behaves well, must its limit behave well too?
+
+The sequence $f_n(x)=x^n$ on $[0,1]$ already showed the danger. Its pointwise limit is zero below 1 and equals 1 at the endpoint. Each approximating function is continuous, while the limit is not. Near 1, the region where the approximation remains poor shifts as $n$ increases; examining each fixed point misses this failure of common control.
+
+Uniform convergence supplies a stronger condition:
+
+$$
+\text{for every }\varepsilon>0,\ \text{there exists }N
+\text{ such that }
+n\geq N\Longrightarrow |f_n(x)-f(x)|<\varepsilon
+\quad\text{for every }x\text{ in the domain}.
+$$
+
+Why does this preserve continuity? At a chosen point $a$, write
+
+$$
+|f(x)-f(a)|
+\leq |f(x)-f_N(x)|
++|f_N(x)-f_N(a)|
++|f_N(a)-f(a)|.
+$$
+
+Uniform approximation controls the first and third terms by $\varepsilon/3$. Continuity of the selected $f_N$ controls the middle term when $x$ is close enough to $a$. Together they give continuity of $f$. The definition is useful because it supplies exactly the common estimate that the proof needs.
+
+But preservation of values is weaker than preservation of rates of change. On $[0,2\pi]$, let
+
+$$
+g_n(x)=\frac{\sin(nx)}{n}.
+$$
+
+Since $|g_n(x)|\leq1/n$, these functions converge uniformly to zero. Their derivatives are $\cos(nx)$, which at $x=\pi$ alternate between 1 and $-1$. Even uniform convergence of smooth functions therefore does not authorize differentiating the limit term by term. Further hypotheses must control the derivatives.
+
+Continuity itself does not guarantee differentiability. The familiar function $|x|$ has a corner at zero. Much more disturbing were constructions, including the example Weierstrass presented in 1872, of continuous functions differentiable nowhere. In his trigonometric-series approach, rapidly increasing frequencies accompanied decreasing amplitudes: the values could remain uniformly controlled while difference quotients failed to settle. Establishing failure at every point required a proof, not merely a picture of an increasingly jagged curve.
+
+Such examples changed the role of exceptions. They identified distinctions that broad descriptions like “a well-behaved function” concealed. Continuity, differentiability, integrability, and the convergence of a particular series became separate properties with separate implications.
+
+The lesson was not that useful analysis had become impossible. It was that each operation needed the right kind of control. On a closed bounded interval, uniform convergence of continuous functions permits passage to the limit under the integral; differentiation is more demanding. Physical series could also call for weaker forms of convergence adapted to average error. No single convergence condition answered every analytical question.
+
+### 3. Constructing the Real Numbers (The 1870s)
+
+Suppose rational approximations approach the square root of 2 more and more closely. What is their limit, if only rational numbers have been admitted? Repeating the approximation does not produce a rational solution of $x^2=2$.
+
+The rational numbers are dense: another rational always lies between two distinct rationals. Density nevertheless leaves gaps in a different sense. A sequence can become arbitrarily stable under further approximation without approaching any rational number. A theory of limits must distinguish having many numbers nearby from having every required limit inside the system.
+
+Dedekind's *Continuity and Irrational Numbers* of 1872 made one approach explicit. Divide the rationals into a lower class and an upper class, every member of the lower lying below every member of the upper. In a common modern convention, the lower class is nonempty, is not all the rationals, is closed downwards, and has no greatest member. Such a cut represents a real number.
+
+For the positive square root of 2, take the lower class
+
+$$
+A=\{q\in\mathbb Q:q<0\text{ or }q^2<2\}.
+$$
+
+This definition uses only rational comparisons and multiplication. It does not presuppose the irrational number that it is meant to construct. The division cannot be represented by a rational boundary value, but the cut itself supplies a precisely specified object.
+
+Cuts must then be ordered, added, and multiplied, and the familiar laws must be proved for those operations. Merely naming a gap would not establish a number system. The construction succeeds when the resulting objects form an ordered field with the required completeness property.
+
+Another approach, developed in the work of Cantor, Heine, and others, begins with rational Cauchy sequences. A sequence $(a_n)$ is Cauchy when
+
+$$
+\text{for every }\varepsilon>0,\ \text{there exists }N
+\text{ such that }m,n\geq N
+\Longrightarrow |a_m-a_n|<\varepsilon.
+$$
+
+The condition compares later terms with one another, so it does not require naming a limit in advance. Different sequences may encode the same intended number; they are identified when their difference tends to zero. A real number is then represented by an equivalence class, with arithmetic defined through operations on representative sequences and checked to be independent of the representative.
+
+The central gain is completeness. Every real Cauchy sequence has a real limit; equivalently, every nonempty set of reals bounded above has a least upper bound. These statements provide the missing support for convergence and existence arguments.
+
+For example, repeatedly bisecting an interval whose endpoint values have opposite signs produces nested intervals. Their lengths tend to zero. Completeness supplies the common limiting point, and continuity forces the function's value there to be zero. The proof now exposes two distinct requirements: a suitable number system and a suitable function.
+
+These constructions did not discover irrational magnitudes for the first time. They supplied arithmetic foundations for objects long used in calculation and geometry. They also shifted the foundational burden: infinite sets, equivalence classes, and the rules governing them now did work formerly assigned to the intuition of an unbroken line.
+
+### 4. Algebraic Number Theory Repairs Factorization by Changing the Objects
+
+Factoring an expression in a larger number system can simplify an integer problem. But what happens if the larger system no longer obeys the arithmetic rule on which the argument depends?
+
+Consider
+
+$$
+R=\mathbb Z[\sqrt{-5}]
+=\{a+b\sqrt{-5}:a,b\in\mathbb Z\}.
+$$
+
+Here one has
+
+$$
+6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5}).
+$$
+
+Two displayed products alone do not prove a failure of unique factorization: perhaps their factors can be broken down further into a common list. The essential point is that all four factors are irreducible in this ring, and the two lists are not the same up to order and multiplication by invertible elements.
+
+The norm makes this check accessible:
+
+$$
+N(a+b\sqrt{-5})=a^2+5b^2,\qquad N(uv)=N(u)N(v).
+$$
+
+A nonzero element has a positive integer norm. Norm 1 occurs only for the units $1$ and $-1$. There is no element of norm 2 or 3: if $b\neq0$, the norm is at least 5, while if $b=0$, it is an integer square.
+
+The norms of 2, 3, and $1\pm\sqrt{-5}$ are 4, 9, and 6. Any decomposition of one of these elements into two nonunits would require factors of norm 2 or 3. None exist. Thus the factors are irreducible, but the factorizations are different even after reordering factors or changing their signs.
+
+An even sharper failure concerns divisibility. The irreducible element 2 divides the product $(1+\sqrt{-5})(1-\sqrt{-5})$, yet it divides neither factor: dividing either by 2 would leave nonintegral coefficients. The familiar implication “a prime dividing a product divides one factor” cannot simply be transferred from ordinary integers to every irreducible element in an enlarged ring.
+
+Kummer had encountered related failures in cyclotomic arithmetic during the 1840s. His ideal numbers restored a useful divisibility theory and supported results on reciprocity and Fermat's equation for certain exponents. Dedekind's work, published from 1871, developed ideals as explicitly defined collections of algebraic integers.
+
+An ideal is an additive subgroup of a ring that absorbs multiplication by arbitrary ring elements. The principal ideal $(a)$ consists of all multiples of $a$. More generally, $(a,b)$ consists of all combinations $ra+sb$ with coefficients in the ring. An ideal therefore records a divisibility structure even when no single element generates it.
+
+The example above can be resolved at this new level. Write $s=\sqrt{-5}$ and set
+
+$$
+\mathfrak p=(2,1+s),\qquad
+\mathfrak q=(3,1+s),\qquad
+\mathfrak r=(3,1-s).
+$$
+
+An ideal is prime when it is proper and a product belonging to it must have at least one factor belonging to it. The three ideals above are prime, and their products satisfy
+
+$$
+(2)=\mathfrak p^2,\qquad
+(3)=\mathfrak q\mathfrak r,\qquad
+(1+s)=\mathfrak p\mathfrak q,\qquad
+(1-s)=\mathfrak p\mathfrak r.
+$$
+
+Both factorizations of 6 now give the same ideal factorization,
+
+$$
+(6)=\mathfrak p^2\mathfrak q\mathfrak r.
+$$
+
+Multiplication of ideals means taking all finite sums of products of their elements. It allows the common factors missing from element arithmetic to be represented without pretending that new ordinary factors already existed inside $R$.
+
+The general theorem has a defined scope: every nonzero proper ideal in the full ring of algebraic integers of a number field factors uniquely into prime ideals. It is not a theorem about every conceivable ring. Nor does it restore unique factorization of elements in the example. It identifies a different level at which uniqueness holds and makes the original failure something that can itself be measured and studied.
+
+### 5. Models Give Non-Euclidean Geometry a Precise Standing (From the 1860s)
+
+The early non-Euclidean geometers had derived extensive consequences from a different parallel assumption. But the absence of a discovered contradiction left a question open: could the theory's objects and relations be interpreted inside an established mathematical system?
+
+Beltrami's work of 1868, followed by developments associated with Klein and Poincaré, supplied models. Their force came from translating the proposed geometry into specified objects with specified relations, so that its axioms could be checked.
+
+One concrete example is the conformal disc model of the hyperbolic plane. Its points are the points strictly inside the Euclidean unit circle. Its hyperbolic lines appear as diameters or arcs of circles meeting the boundary circle at right angles. The boundary itself does not belong to the plane.
+
+Distances are not measured with the ordinary Euclidean ruler. With curvature normalized to $-1$, the metric is
+
+$$
+ds^2=\frac{4(dx^2+dy^2)}{(1-x^2-y^2)^2}.
+$$
+
+Along a radial line from the centre to Euclidean radius $r$, the hyperbolic distance is
+
+$$
+d(0,r)=\int_0^r\frac{2\,dt}{1-t^2}
+=\log\frac{1+r}{1-r}.
+$$
+
+As $r$ approaches 1, this distance tends to infinity. The finite-looking disc therefore represents an unbounded hyperbolic plane. Its apparent edge is infinitely far away in the model's own metric.
+
+Likewise, a hyperbolic line can look curved on the page while remaining a geodesic in the represented geometry. More than one such line through a point outside a given line can avoid it. The apparent contradiction with Euclidean intuition disappears once the meanings of “line” and “distance” are stated consistently.
+
+A drawing alone is not the proof. One must establish that the defined relations satisfy the intended axioms. Once that has been done, any contradiction derived in the hyperbolic theory would translate into a contradiction in the mathematics used to build the model. This establishes relative consistency, conditional on that underlying framework.
+
+Models also clarify independence. If the shared assumptions have both Euclidean and hyperbolic models, those assumptions alone cannot force the Euclidean parallel postulate. The centuries-long search for its proof had been asking for a consequence that the remaining assumptions did not determine.
+
+Euclidean geometry remained a valid mathematical theory. What changed was its status as the uniquely possible geometry. A separate inquiry concerned which geometry described physical measurements. The coordinate picture used to construct a model could settle a mathematical relation between theories without deciding the geometry of the universe.
+
+### 6. Klein and Lie Organize Problems Through Transformations (Around 1872 and After)
+
+If geometry admitted several systems, what made them parts of a common subject? Klein's Erlangen programme of 1872 proposed studying the properties of configurations that remain unchanged under a chosen group of transformations.
+
+The choice matters. Euclidean motions preserve lengths and angles. Allowing uniform changes of scale preserves angles and ratios of lengths, while losing absolute size. Affine transformations preserve straightness, parallelism, and ratios along a line, but can change angles and the relative lengths of differently directed segments.
+
+For example,
+
+$$
+T(x,y)=(2x,y)
+$$
+
+sends the unit circle to an ellipse. A horizontal unit segment doubles in length, while a vertical one does not. Yet collinear points remain collinear, and the midpoint of any segment maps to the midpoint of its image. Whether the circle and ellipse count as equivalent therefore depends on which transformations the question permits.
+
+Projective geometry admits a larger class of transformations. In the completed projective plane, incidence remains meaningful, while parallelism in a chosen affine chart need not survive. Features lost under a larger group can be recovered by fixing additional structure, such as a distinguished line at infinity.
+
+This gave geometry an organizing method. Specify the transformations, identify their invariants, and ask which configurations can be transformed into one another. A calculation in one coordinate system could reveal a property independent of that coordinate choice.
+
+Lie pursued a related question for differential equations. A transformation that carries solutions to solutions is a symmetry of the equation. Continuous families of such transformations can suggest new variables, reduce the number of variables, or lower the order of an equation.
+
+Take a simple autonomous equation,
+
+$$
+\frac{dy}{dx}=F(y).
+$$
+
+If $y(x)$ is a solution, then so is $y(x+c)$ wherever it is defined. The equation has no preferred origin for $x$. On an interval where $F(y)\neq0$, rewriting it as $dx/dy=1/F(y)$ gives
+
+$$
+x=\int\frac{dy}{F(y)}+C.
+$$
+
+The arbitrary constant corresponds to translation in $x$. Constant solutions with $F(y)=0$ must be checked separately; dividing by $F$ would otherwise erase them. Even this elementary example shows how a symmetry can help explain a familiar integration method and its exceptions.
+
+Lie investigated infinitesimal transformations, obtained by differentiating a continuous family with respect to its parameter near the identity. Their combinations could be studied through differential operators and a bracket operation. Much of the group structure could thus be approached through local algebra, a method developed extensively with Engel in the volumes published in 1888–1893.
+
+There were limits to the unification. Finding useful symmetries could itself be difficult, and symmetries did not guarantee an explicit solution. Local transformation data did not automatically determine global behaviour. Similarly, Klein's framework was especially effective for homogeneous geometries, where transformations relate all points; a manifold with varying curvature need not have that kind of symmetry. The programme organized a large part of geometry without exhausting everything that geometry could ask.
+
+### 7. Cantor Compares Different Infinities (From the 1870s)
+
+Can two infinite collections have different sizes? Counting until both are exhausted cannot answer the question. Cantor made one-to-one correspondence the criterion: two sets have the same cardinality when their elements can be paired with no omissions or repetitions.
+
+The map $n\mapsto2n$ pairs the positive integers with the positive even integers. A proper part can therefore have the same cardinality as the whole. This does not invalidate finite counting; it shows that a property of finite collections cannot be assumed for infinite ones.
+
+The rationals offer a less obvious case. Positive fractions can be arranged by numerator and denominator and visited in order of increasing sum of those two integers. Skipping repeated values lists every positive rational; adding zero and the negatives still gives a list indexed by the natural numbers. Being densely packed on a line therefore does not imply being more numerous than the integers.
+
+Cantor's work grew partly from questions about uniqueness of trigonometric-series representations and the exceptional sets of points at which particular conditions might fail. Studying these sets led beyond the original analytical problems. In 1874 he published a proof that the real numbers could not be listed in this way. The later diagonal method, introduced in 1891, made the obstruction especially transparent.
+
+Suppose a list included every real number in $(0,1)$, with decimal expansions
+
+$$
+r_1=0.d_{11}d_{12}d_{13}\ldots,\qquad
+r_2=0.d_{21}d_{22}d_{23}\ldots,\qquad\ldots
+$$
+
+Choose the decimal digit $b_n$ to be 2 if $d_{nn}=1$, and 1 otherwise. The real number
+
+$$
+b=0.b_1b_2b_3\ldots
+$$
+
+differs from the $n$th listed number at its $n$th decimal place, for every $n$. It belongs to $(0,1)$ but is missing from the supposedly complete list.
+
+Using only the digits 1 and 2 avoids the ambiguity between terminating decimals and expansions ending in repeated 9s. The contradiction does not result from having inspected only a finite portion of the list: its construction specifies a mismatch with every position in any proposed list.
+
+Cardinality thus separated the countably infinite from the uncountable. It also gave existence arguments of a new kind. Integer polynomials can be listed, and each nonzero polynomial has finitely many roots. The algebraic real numbers are therefore countable. Since the reals are not, transcendental numbers must exist in uncountable abundance, even though this counting argument does not identify a particular one.
+
+Order required another distinction. Cardinality ignores arrangement; an ordinal records the order type of a well-ordered set, one in which every nonempty subset has a least element. The natural numbers in their usual order have order type $\omega$. Append one final element and the order type becomes $\omega+1$.
+
+These two ordered sets have the same cardinality, but they are not order-isomorphic: one has a greatest element and the other does not. Putting a single element before an infinite sequence, by contrast, still gives order type $\omega$. Thus
+
+$$
+1+\omega=\omega,\qquad \omega+1\neq\omega.
+$$
+
+Ordinal addition describes placing one ordering after another, so its failure to commute has a precise meaning.
+
+The new freedom raised a foundational difficulty. Cantor's comparison of a set with its collection of all subsets showed that there could be no largest cardinality. What, then, could “the set of everything” mean? Similar difficulties surrounded an unrestricted collection of all ordinals. By the century's end, successful reasoning about particular infinite sets had made it urgent to examine which collections could legitimately be treated as sets at all.
+
+### 8. Poincaré Studies Global Form and the Behaviour of Orbits
+
+A differential equation may determine motion without yielding a manageable formula for its whole history. Celestial mechanics made this difficulty unavoidable. Adding a third gravitating body to the two-body problem introduced interactions that could not generally be absorbed into a simple correction of a fixed ellipse.
+
+Poincaré increasingly asked qualitative questions. Which motions are periodic? Which neighbouring motions stay close? How do families of trajectories fit together? These questions required studying the space of possible states, including velocities as well as positions, rather than only drawing the path of a body in ordinary space.
+
+One method replaces continuous motion with repeated intersections of a transverse section. Starting from a point on that section, follow the trajectory until its next return, if there is one. This defines a return map. A fixed point corresponds to a periodic orbit, and iterating nearby points helps reveal the behaviour of nearby trajectories. A question about an entire motion is thereby converted into a question about a transformation.
+
+Poincaré's own work exposed how misleading an orderly picture could be. Revisions of his prize memoir, published in corrected form in 1890, involved abandoning an erroneous expectation about the coincidence of certain stable and unstable branches. Their intersections could instead produce an intricate pattern, later central to the study of chaotic dynamics.
+
+In a transverse section, stable branches describe states approaching a periodic orbit under forward iteration, while unstable branches describe approach under backward iteration. Intersections can belong to trajectories approaching the same periodic motion in both time directions. Such trajectories are called homoclinic. Iteration produces a complicated web of further intersections.
+
+These are not crossings of two distinct solution trajectories through the same complete state, which would conflict with uniqueness. They concern invariant structures organizing many trajectories. Nor did the discovery amount to a complete modern theory of chaos or a proof that every three-body motion is unstable. It revealed unexpected global complexity within precisely specified equations.
+
+Topology offered ways to study global structure without requiring exact lengths or angles. In his *Analysis situs* of 1895 and subsequent supplements, Poincaré developed methods for translating questions about spaces into algebraic information.
+
+A sphere and a torus both look like a piece of a plane in a sufficiently small neighbourhood. Globally they differ. Every loop on the sphere can be contracted to a point while remaining on the surface. A loop winding around either essential direction of the torus cannot.
+
+Choose a base point and consider loops up to continuous deformation that keeps that point fixed. Following one loop and then another defines a composition; reversing a loop gives its inverse. The resulting fundamental group records information that local coordinate descriptions miss. Homology supplies related, more commutative ways to calculate with cycles and boundaries.
+
+Another invariant is the Euler characteristic,
+
+$$
+\chi=V-E+F
+$$
+
+for an appropriate finite cell decomposition of a closed surface. A tetrahedral decomposition of the sphere gives $4-6+4=2$. A torus obtained by identifying opposite sides of a square has one vertex, two edges, and one face, giving $1-2+1=0$. Different values prove that the surfaces cannot be topologically equivalent.
+
+Equal values, however, do not classify arbitrary spaces. Higher-dimensional examples made it especially dangerous to assume that one convenient invariant captured everything. The early theory required corrections and refinements as intuitive arguments about surfaces were extended to less familiar manifolds. Its strength lay in producing questions and calculable obstructions that survived changes of coordinates and shape.
+
+### 9. Logic and Axioms Become Mathematical Objects
+
+If analysis depended on the order of quantifiers and geometry on the choice of assumptions, reasoning itself could no longer remain entirely in the background. How could its rules be written down clearly enough to inspect?
+
+Boole's work of 1847 and 1854 had already treated logical operations algebraically. Selecting the members of a class twice gives the same class as selecting them once, expressed by the law
+
+$$
+x^2=x.
+$$
+
+This differs from an identity in unrestricted ordinary arithmetic. The symbols are governed by the operation they represent. In a modern numerical representation, the indicator of a class takes only the values 0 and 1; multiplication represents intersection and $1-x$ represents complementation.
+
+The method made some deductions calculable. If membership in $A$ implies membership in $B$, and membership in $B$ implies membership in $C$, then the corresponding class inclusions imply $A\subseteq C$. But an algebra of classes did not by itself make every mathematical argument explicit. Relations involving several objects and nested statements of generality demanded richer means of expression.
+
+Frege's *Begriffsschrift* of 1879 supplied a formal language with an explicit treatment of functions, arguments, and quantification. His larger aim was to give arithmetic a logical foundation. The significance of quantifier structure can be seen in two statements about real numbers:
+
+$$
+\forall x\,\exists y\;(y>x),
+\qquad
+\exists y\,\forall x\;(y>x).
+$$
+
+The first says that every real has a larger real and is true. The second says that one real exceeds every real and is false. The same relation and the same quantifiers produce different claims when their order changes. Informal phrases can conceal this difference; an adequate formal language must preserve it.
+
+Formalization also separates assumptions from permissible inference steps. It becomes possible to ask whether a proposed derivation actually follows the rules, rather than whether each sentence merely seems plausible. Frege's notation was difficult and his immediate influence limited, while the adequacy of his proposed logical foundation remained an additional problem.
+
+Hilbert's *Foundations of Geometry* of 1899 pursued a related clarity within geometry. Its axioms explicitly organized relations of incidence, order, congruence, parallelism, and continuity. A diagram could suggest a theorem, but features visible in the drawing could enter a proof only when the assumptions justified them.
+
+For instance, the behaviour of a line crossing a triangle requires statements about betweenness and intersection. It cannot safely be left to the impression that the line obviously enters and exits the drawn region. Making such relations explicit revealed how much earlier demonstrations had borrowed silently from spatial intuition.
+
+The primitive objects could receive different interpretations provided the stated relations held. A model supplied one such interpretation. To establish independence of an axiom, one could seek a model satisfying the others while violating it. To establish relative consistency, one could interpret the theory in another framework whose consistency was assumed.
+
+These methods did not prove that any imaginable collection of axioms was consistent. They turned consistency and independence into questions requiring their own arguments. Nor were Frege's logical foundation and Hilbert's treatment of geometry identical projects: they assigned different roles to definitions, axioms, and the interpretation of mathematical objects.
+
+By 1900, several of mathematics' strongest tools—limits, infinite sets, structural operations, and axiomatic theories—had made their own foundations newly visible. Precision had resolved old ambiguities while creating further obligations: justify the objects admitted, distinguish the properties preserved, and examine what a system's rules actually permit.
+
+## The Early Twentieth Century: Foundational Debates and Abstract Methods (c. 1900–1930)
+
+The nineteenth century had made infinite sets, function spaces, and abstract structures increasingly useful. Their success sharpened a question: what entitled mathematicians to introduce these objects and reason about them? Around 1900, contradictions in apparently natural formation rules made that question urgent.
+
+There was no single response. Logicists sought to derive arithmetic from logic; intuitionists reconsidered the meaning of mathematical construction; axiomatic set theorists restricted the ways sets could be formed; Hilbert proposed a mathematical study of formal proofs. Meanwhile, integration, algebra, and mathematical physics continued to develop. The foundational debates concerned methods already doing substantial work, and new applications kept presenting problems that those methods had to address.
+
+### 1. Set-Theoretic Paradoxes Expose the Limits of Object Formation
+
+If a property is clearly stated, must there be a set containing exactly the objects with that property? Unrestricted comprehension says yes. Russell's paradox shows why that answer cannot be accepted without qualification.
+
+In modern set notation, suppose one could form
+
+$$
+R=\{x:x\notin x\}.
+$$
+
+An object belongs to $R$ exactly when it is not a member of itself. Now ask whether $R$ belongs to $R$.
+
+If $R\in R$, its defining condition says $R\notin R$. Conversely, if $R\notin R$, it satisfies the condition for membership, so $R\in R$. The defining rule therefore yields
+
+$$
+R\in R\quad\Longleftrightarrow\quad R\notin R.
+$$
+
+The difficulty is not that the answer is unknown. The assumptions produce incompatible answers. Nor does the argument depend on a complicated calculation with very large collections: it attacks the general permission to turn any condition into a set.
+
+Russell discovered the paradox in 1901 and communicated it to Frege in June 1902. Frege's system treated concepts and their extensions through principles intended to support a logical construction of arithmetic. A corresponding contradiction could be derived there. The problem reached into the proposed foundation, rather than merely identifying an unusual set that nobody needed.
+
+Why not simply forbid every set from belonging to itself? That restriction alone would not rescue unrestricted comprehension. If nothing belonged to itself, the displayed condition would appear to collect everything into $R$, and applying the same rule to $R$ would again cause trouble. The rules for forming collections had to change.
+
+Several responses became possible. A hierarchy of types could make certain expressions inadmissible. Axiomatic set theory could allow selection only from sets already available. A distinction between sets and proper classes could let a collection be described without making it an object eligible for every set operation.
+
+These approaches did different mathematical work. None followed merely by attaching a warning to self-reference, and none amounted to a proof that all infinite sets were illegitimate. The paradox identified a defective combination of assumptions. The challenge was to replace that combination while retaining the constructions needed for arithmetic, analysis, and geometry.
+
+### 2. Logicism Seeks Arithmetic in Logic
+
+What is common to three books, three points, and three tones? Their physical properties differ, but each collection can be paired one-to-one with the others. Frege's attempt to analyse number used this independence from the particular objects counted.
+
+A central idea was to characterize number through equinumerosity: two concepts have the same number of instances when those instances can be put into one-to-one correspondence. Successor, arithmetic operations, and induction would then require precise definitions and derivations. The ambition was to explain why arithmetic followed from logical relations rather than treating its basic truths as unexplained facts about counting.
+
+This required more than translating familiar proofs into symbols. The concepts used in the definitions had to be legitimate, and the underlying logical rules had to support the required objects. Russell's paradox exposed a failure in Frege's treatment of extensions. Greater precision had made the difficulty visible, but precision alone had not prevented inconsistency.
+
+Russell and Whitehead pursued a revised logical foundation in the three volumes of *Principia Mathematica*, published in 1910–1913. A major protective device was type theory. In a simple hierarchy, objects occupy one level, properties of those objects a higher level, and properties of those properties a higher level again.
+
+A predicate cannot then be applied indiscriminately to itself. Such an expression fails the rules governing meaningful combinations, much as adding a length directly to an angle fails the conventions of a particular calculation. The hierarchy prevents the Russell construction from being assembled in its unrestricted form.
+
+The actual system was more elaborate than a single ladder of types. Ramification also restricted definitions involving quantification over totalities to which the defined object would belong. These restrictions addressed circularity, but they made it harder to recover familiar mathematics.
+
+Additional principles, notably the axiom of reducibility, were introduced to regain expressive power. Assumptions concerning infinity also raised a philosophical question: if a foundation requires the existence of infinitely many objects, in what sense is that requirement a truth of logic alone?
+
+The achievement was substantial even though the larger claim remained contested. Formal definitions exposed dependencies hidden in ordinary arithmetic, and long derivations showed how much work elementary-looking statements required when informal shortcuts were removed. Logic became a tool for analysing the architecture of a theory.
+
+But eliminating one paradox did not establish the consistency of the entire replacement system. Nor did deriving arithmetic from a list of assumptions establish that every assumption on the list was purely logical. The logicist programme made both questions sharper.
+
+### 3. Measure and Integration Accommodate More Functions
+
+How should an integral treat a function that oscillates between two values in every interval? The question was already present in nineteenth-century analysis, but Borel's work on measurable sets and Lebesgue's integration theory, developed around his 1902 thesis, supplied a different method.
+
+Consider the function on $[0,1]$ defined by
+
+$$
+f(x)=
+\begin{cases}
+1,&x\in\mathbb Q,\\
+0,&x\notin\mathbb Q.
+\end{cases}
+$$
+
+Every interval of positive length contains both rational and irrational points. For any partition, the lower Riemann sum is therefore 0 and the upper sum is 1. Refining the partition never closes the gap, so the function is not Riemann integrable.
+
+Lebesgue's method asks how large the sets carrying particular values are. A simple function taking values $c_k$ on disjoint measurable sets $E_k$ has integral
+
+$$
+\int \sum_{k=1}^{m}c_k\mathbf 1_{E_k}\,d\mu
+=\sum_{k=1}^{m}c_k\,\mu(E_k),
+$$
+
+where $\mu(E_k)$ is the measure of the set and $\mathbf 1_{E_k}$ is its indicator. More general nonnegative measurable functions are approached from below by simple functions. Integrable signed functions are treated through their positive and negative parts.
+
+The decisive change is that a set carrying a value need not be a single interval or a finite union of intervals. Measure provides a suitable extension of length, including countable additivity for disjoint measurable sets.
+
+The rationals in $[0,1]$ have measure zero. To see why, list them as $q_1,q_2,\ldots$ and cover $q_k$ by an interval of length $\varepsilon/2^k$. Their total length is at most $\varepsilon$, however small a positive $\varepsilon$ is requested. Thus the indicator above has Lebesgue integral zero.
+
+A set of measure zero need not be empty, or even sparse in the sense of failing to meet some interval. The rationals are dense. “Almost everywhere” means outside a set of measure zero; it specifies which exceptions an assertion allows, without denying that the exceptional points exist.
+
+The new theory also improved the handling of limits. In a modern statement of dominated convergence, if measurable functions $f_n$ converge almost everywhere to $f$ and satisfy $|f_n|\leq g$ almost everywhere for one integrable function $g$, then their integrals converge to the integral of $f$.
+
+The common bound is essential. On $[0,1]$, let
+
+$$
+h_n(x)=n\,\mathbf 1_{(0,1/n)}(x).
+$$
+
+At every fixed point, $h_n(x)$ eventually becomes zero. Nevertheless, $\int_0^1h_n(x)\,dx=1$ for every $n$. Mass is concentrated into a shrinking interval, and pointwise convergence fails to control the integrals.
+
+Lebesgue integration therefore did more than assign values to previously excluded functions. It connected admissible limit operations to measurable size. It also had boundaries: with the axiom of choice, sets can be constructed to which ordinary Lebesgue measure does not apply. A broader theory of integration still required explicit conditions on its objects and operations.
+
+### 4. Intuitionism Demands a Constructive Meaning for Existence
+
+What has been established when a proof says that an object exists but supplies no way to obtain it? Classical mathematics allows several routes to existence, including a contradiction derived from assuming that no such object exists. Brouwer questioned whether these routes always had the same mathematical meaning.
+
+In his work from 1907 onward, and especially his criticism of logical principles in 1908, mathematics began with acts of construction. Logical language recorded aspects of those acts; its rules could not automatically create mathematical knowledge independently of them.
+
+A constructive reading of an existential assertion asks for a witness together with evidence that it has the required property. A disjunction asks for a justified alternative. On this reading, the unrestricted law of excluded middle,
+
+$$
+P\lor\neg P,
+$$
+
+requires more than the declaration that a proposition cannot be both true and false. It asks for a general justification of one side or the other.
+
+Consider an indefinitely given sequence whose entries are each either 0 or 1. For a finite initial segment, inspection decides whether a 1 occurs. For the whole sequence, the assertion
+
+$$
+(\forall n,\ a_n=0)\ \lor\ (\exists n,\ a_n=1)
+$$
+
+presents a different demand. A search supplies a witness if it encounters a 1. If it has found only zeros so far, however, the finite search does not establish that every later entry is zero. A separate argument might settle a particular sequence, but the ability to inspect each entry does not supply one general decision for all such sequences.
+
+This distinction also affects double negation. A derivation of $\neg\neg\exists x\,P(x)$ refutes the claim that no witness exists. It does not automatically construct a witness. Classical logic permits the passage to $\exists x\,P(x)$; intuitionistic logic does not accept that passage as an unrestricted rule.
+
+The objection did not ban every argument involving contradiction. To prove $\neg P$, one can still show that an assumption of $P$ leads to contradiction. What is restricted is the general conversion of a refutation of $\neg P$ into a positive proof of $P$. Excluded middle also remains valid for propositions for which a decision has actually been justified.
+
+These changes affected familiar existence theorems. A classical extremum proof, for example, might use comparisons that cannot be decided constructively for arbitrary real data. Constructive reformulations could instead ask for an approximation to the extremum, or add hypotheses providing enough information to locate it. The precise content of the result changed with the evidence required.
+
+Heyting's formalization of intuitionistic logic in 1930 made such differences available for systematic study. Brouwer's underlying philosophy was broader than a list of altered inference rules, but formal systems helped compare what different rules could prove.
+
+The cost was substantial revision of classical mathematics. The gain sought was a tighter connection between an assertion and the construction that warranted it. This programme did not simply limit mathematics to finite objects; it reconsidered how infinite processes and their properties could be given.
+
+### 5. Axiomatic Set Theory Regulates How Sets Are Formed
+
+Another response to the paradoxes retained a broad theory of infinite sets while restricting the permissions for constructing them. Zermelo's axiomatization of 1908 replaced unrestricted comprehension with a collection of more controlled principles.
+
+One crucial principle was separation. Given a set $A$, one may form the subset of its elements satisfying an allowed condition:
+
+$$
+B=\{x\in A:P(x)\}.
+$$
+
+The initial set matters. Separation extracts from an established collection; it does not authorize a set of all objects satisfying any condition whatsoever.
+
+Apply it to Russell's property:
+
+$$
+R_A=\{x\in A:x\notin x\}.
+$$
+
+There is no contradiction. Instead, the argument shows that $R_A$ cannot itself belong to $A$. If it did, asking whether it belonged to $R_A$ would reproduce the incompatible conclusions. Thus no set $A$ contains every set. The paradox becomes an argument against a universal set within the restricted theory.
+
+Other axioms supplied constructions that separation alone could not provide. Pairing forms a set from specified objects; union collects the members of members of a set; power set forms its collection of subsets; infinity supplies an infinite set. These are substantive permissions, each with a defined scope.
+
+Fraenkel and Skolem's work in 1922 strengthened and clarified the system. Replacement permits the image of a set under a definable functional assignment to be a set: each input has one assigned output, but the assignment need not be one-to-one. Skolem also stressed expressing the permitted conditions through first-order formulas. A vague appeal to a “definite property” could thereby be replaced by a specified language.
+
+The resulting tradition developed into Zermelo–Fraenkel set theory. With the axiom of choice added, it is commonly called ZFC. This later standard form should not be identified in every detail with Zermelo's original list.
+
+Choice addresses a particular gap. Given a family of nonempty sets, it asserts the existence of a function choosing one element from each. For a finite family, ordinary finite reasoning suffices. For an arbitrary infinite family, a general selection function need not come with an explicit rule.
+
+Zermelo used choice in his 1904 proof of the well-ordering theorem. Its scope and nonconstructive character provoked debate. The nonmeasurable sets associated with Vitali made the stakes tangible: principles useful for broad existence theorems could also produce objects beyond the reach of familiar notions of length.
+
+Axiomatics supplied a shared language in which these dependencies could be investigated. It did not settle them by definition. Writing down axioms neither proved their consistency nor showed that a disputed additional principle followed from the others. Those remained mathematical questions, and their later resolution required further methods.
+
+### 6. Hilbert Makes Proofs Objects of Mathematics
+
+Could one preserve the powerful methods of classical mathematics while giving their use a finite justification? Hilbert's programme, developed especially during the 1920s with collaborators including Bernays and Ackermann, approached this through the structure of proofs.
+
+First, a theory would be formalized. Its symbols, formulas, axioms, and inference rules would be specified. A proof would then be a finite sequence of formulas, each introduced by an allowed step.
+
+For example, an application of modus ponens takes $A$ and $A\to B$ to $B$. In a formal derivation, checking that step means checking the relevant formulas and their positions, without needing to inspect every mathematical object to which $A$ or $B$ might refer.
+
+This creates two levels. Inside arithmetic, one proves statements about numbers. Outside the formal system, one can study strings that represent arithmetic proofs. A statement that no such string ends with $0=1$ concerns the proof system itself. This is metamathematics.
+
+Finite proof objects suggested a possible source of security. Even when a formula quantifies over infinitely many numbers, the written formula and any particular derivation remain finite. Hilbert hoped that finitistic reasoning about such objects could establish that classical methods would never yield a contradiction.
+
+“Finite” did not mean checking proofs only up to some enormous fixed length. There is no bound on how long a proposed proof may be. The desired argument had to cover arbitrary finite derivations through general, justified reasoning about their construction. The exact scope of acceptable finitistic methods was itself a serious issue.
+
+One strategy was to transform proofs using problematic ideal elements into forms whose acceptable conclusions could be justified by more elementary means. But a proposed transformation must preserve the relevant conclusions and must terminate. Describing a procedure for simplifying one step does not prove that every sequence of simplifications eventually finishes.
+
+A further difficulty was avoiding circular reassurance. Interpreting geometry in arithmetic could establish a useful relative consistency result. To secure arithmetic itself, however, assuming the full reliability of the same arithmetic in the external argument would not provide the independent justification being sought.
+
+Hilbert's aim differed from Brouwer's. He wanted to retain much of classical reasoning about infinite totalities, provided its use could receive an appropriate metamathematical guarantee. This was a programme of justification, not a claim that mathematical practice should be reduced to meaningless symbol manipulation.
+
+By the end of the 1920s, proof theory had made progress, but the intended general consistency guarantee had not been achieved. Formalization had made the task precise enough to investigate. It had also created the setting in which the next decade would discover fundamental limits on what such systems could establish.
+
+### 7. Functional Analysis Treats Functions as Points in a Space
+
+An integral equation asks for an unknown function, just as a system of linear equations asks for an unknown vector. Could methods of distance, projection, and linear transformation be extended from finitely many coordinates to whole functions?
+
+Work on integral equations by Fredholm, Hilbert, and Schmidt, together with developments in integration and convergence, made this analogy productive. Fréchet's general spaces, Riesz's synthesis of several approaches, and Banach's work in the 1920s helped turn it into a systematic theory.
+
+A norm measures the size of a vector or function, and $\|f-g\|$ measures their distance. But there is more than one useful choice. On continuous functions over $[0,1]$, the uniform norm is
+
+$$
+\|f\|_\infty=\max_{0\leq x\leq1}|f(x)|.
+$$
+
+It measures the worst discrepancy. An alternative is the mean-square norm,
+
+$$
+\|f\|_2=\left(\int_0^1|f(x)|^2\,dx\right)^{1/2},
+$$
+
+which allows a large discrepancy over a sufficiently small region to have a small total effect.
+
+The choice changes which limits are available. For $n\geq2$, let $f_n$ be zero up to $1/2$, rise linearly from 0 to 1 on $[1/2,1/2+1/n]$, and remain 1 thereafter. Let $h$ be the step function that is zero up to $1/2$ and one above it. Then
+
+$$
+\|f_n-h\|_2^2
+=\int_0^{1/n}(1-nt)^2\,dt
+=\frac{1}{3n}.
+$$
+
+The continuous functions $f_n$ form a Cauchy sequence in this norm, but their limit cannot be represented by a continuous function. A continuous representative would have to be zero throughout the left half and one throughout the right half, which is impossible at their meeting point. The space of continuous functions with the mean-square norm is incomplete.
+
+The space $L^2[0,1]$ repairs this defect by admitting all square-integrable measurable functions, with functions equal almost everywhere identified. This identification matters: functions differing only on a null set have distance zero and must represent the same point if the expression is to be a norm.
+
+The resulting space is complete and has an inner product,
+
+$$
+\langle f,g\rangle=\int_0^1f(x)\overline{g(x)}\,dx.
+$$
+
+It is a Hilbert space. Orthogonality and projection now extend familiar geometry, while the Riesz–Fischer results of 1907 connect square-summable coefficient sequences with mean-square expansions in complete orthonormal systems. A Banach space requires a complete norm, without requiring that the norm come from an inner product.
+
+Completeness makes iteration useful. Suppose an integral operator is given by
+
+$$
+(Ku)(x)=\int_0^1k(x,t)u(t)\,dt,
+$$
+
+with continuous kernel $k$, and let $M=\max_x\int_0^1|k(x,t)|\,dt$. On continuous functions with the uniform norm, the equation
+
+$$
+u=f+\lambda Ku
+$$
+
+can be solved by iterating the right-hand side whenever $|\lambda|M<1$. Successive errors contract by a common factor below 1. Their geometric bound makes the iterates Cauchy, completeness keeps their limit in the space, and the same estimate establishes uniqueness.
+
+The condition has content. If $Ku=\int_0^1u(t)\,dt$, $\lambda=1$, and $f=1$, a solution would have to be constant, say $c$, with $c=1+c$. No solution exists. With $f=0$ instead, every constant is a solution. A familiar-looking linear equation can therefore fail to have either existence or uniqueness at an exceptional parameter.
+
+Infinite-dimensional geometry also loses some finite-dimensional conveniences. An orthonormal sequence has norm 1, but distinct terms have distance $\sqrt2$, so it has no convergent subsequence. Closed bounded sets are not automatically compact. Completeness alone cannot repair every existence argument.
+
+Here completeness means that Cauchy sequences converge within the chosen space. It is distinct from logical completeness, which concerns what a formal theory or proof calculus can establish. The value of functional analysis lay in specifying the space and operators precisely enough to identify which existence and approximation arguments were valid.
+
+### 8. Noether and Her Contemporaries Reorganize Algebra Around Structure
+
+What makes a proof about integers apply to polynomials, and what prevents the transfer? Structural algebra sought hypotheses that explained both similarities and failures, rather than treating each system as an isolated collection of formulas.
+
+Steinitz's work on fields in 1910 helped establish this direction. Noether's work, especially her 1921 paper on ideal theory, made structural conditions central to the treatment of rings and their ideals. Artin and others developed related methods, and van der Waerden's *Moderne Algebra* of 1930–1931 helped give them a common exposition.
+
+A ring carries addition, subtraction, and multiplication with specified laws. A field additionally allows division by every nonzero element. Ideals permit quotient constructions, while homomorphisms describe maps preserving the relevant operations. These notions organize how one system can be related to another.
+
+For example, evaluating a real polynomial at $i$ gives a homomorphism
+
+$$
+\phi:\mathbb R[x]\longrightarrow\mathbb C,\qquad p\longmapsto p(i).
+$$
+
+Its kernel consists of the polynomials divisible by $x^2+1$. Indeed, division by $x^2+1$ leaves a remainder $a+bx$, whose value at $i$ vanishes only when $a=b=0$. Every complex number is the value of such a remainder. Consequently,
+
+$$
+\mathbb R[x]/(x^2+1)\cong\mathbb C.
+$$
+
+The quotient constructs a system in which the class of $x$ satisfies $x^2=-1$. The relation between kernel, quotient, and image explains why the construction works and can be reused in other settings.
+
+A module extends another familiar idea: it resembles a vector space, but its scalars come from a ring. This removes the general permission to divide by a nonzero scalar. The additive group $\mathbb Z/6\mathbb Z$, for example, is a module over the integers; its nonzero element represented by 1 becomes zero when multiplied by 6. Methods that rely on dividing coefficients or choosing a vector-space basis therefore need fresh examination.
+
+Noether's finiteness condition offers a particularly clear example of abstraction doing work. A commutative ring is called Noetherian when every ideal has finitely many generators. Equivalently, every ascending chain
+
+$$
+I_1\subseteq I_2\subseteq I_3\subseteq\cdots
+$$
+
+eventually stabilizes.
+
+The connection has a short proof in one direction. The union of an ascending chain is an ideal. If it has finitely many generators, all those generators already occur in one sufficiently late member $I_N$. That member must therefore equal the whole union, and the chain cannot grow further.
+
+A potentially endless process has been controlled by a property of the system. Noether used such conditions to establish decomposition results for ideals in a setting broader than the rings of integers studied by Dedekind. The generalized results had their own hypotheses and forms; unique factorization into prime ideals was not simply true in every Noetherian ring.
+
+Abstraction could thus shorten proofs and show why the same argument applied in several fields. It did not automatically supply computation. A proof that an ideal is finitely generated need not provide an algorithm for finding generators from an arbitrary description. Structural existence, explicit construction, and effective calculation remained distinct achievements.
+
+### 9. Geometry and Analysis Enter New Physical Theories
+
+Mathematical structures could become tools for physics before their full physical meaning was clear. Conversely, difficulties in physical theory could force mathematicians to reconsider which structures and operations were needed.
+
+General relativity grew from a problem in gravitation. Freely falling bodies respond alike to a gravitational field in a way suggesting that an appropriate local frame can remove certain apparent gravitational effects. Yet tidal effects—the relative acceleration of neighbouring freely falling bodies—cannot generally be removed throughout a region by changing coordinates.
+
+Einstein, assisted by Grossmann in finding the relevant geometry, drew on the tensor calculus developed by Ricci-Curbastro and Levi-Civita. A spacetime metric specifies intervals through
+
+$$
+ds^2=\sum_{\mu,\nu}g_{\mu\nu}\,dx^\mu dx^\nu.
+$$
+
+Unlike the positive-definite metrics of ordinary Riemannian geometry, the spacetime metric has Lorentzian signature, distinguishing temporal and spatial directions. Tensor components change with coordinates, while the geometrical relations they describe remain independent of the chosen labels.
+
+The field equations reached in 1915 related spacetime curvature to matter and energy. In a standard notation without a cosmological term,
+
+$$
+G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu},
+$$
+
+where $G_{\mu\nu}$ is the Einstein tensor constructed from curvature, $T_{\mu\nu}$ describes energy, momentum, and stress, $G$ is Newton's gravitational constant, and $c$ is the speed of light. The metric became an unknown field governed by differential equations, rather than a fixed background chosen before the physical problem began.
+
+Coordinate freedom made calculation harder as well as more general. Different component expressions could describe the same geometry, and the physical meaning of a coordinate singularity required care. The theory's mathematical consistency and its predictions for observations were separate matters; neither followed merely from writing equations in tensor notation.
+
+Quantum theory brought a different break with familiar methods. By the 1920s, the older mixture of classical orbits and added quantization rules could not adequately handle many spectra and transition intensities. Heisenberg's 1925 approach concentrated on quantities associated with transitions between states. Born and Jordan recognized the matrix multiplication implicit in their composition.
+
+Order mattered. In the position representation for one spatial coordinate,
+
+$$
+(Q\psi)(x)=x\psi(x),\qquad
+(P\psi)(x)=-i\hbar\,\psi'(x).
+$$
+
+Here $\hbar$ is Planck's constant divided by $2\pi$. For sufficiently regular test functions, the product rule gives
+
+$$
+(QP-PQ)\psi=i\hbar\,\psi.
+$$
+
+This relation cannot hold for finite square matrices: the trace of $QP-PQ$ is zero, whereas the trace of $i\hbar I$ is nonzero. Infinite-dimensional operators were essential, and their domains could not be ignored.
+
+Schrödinger's wave mechanics of 1926 made differential equations and eigenvalue problems central. For a particle of mass $m$ confined by ideal infinite walls at 0 and $L$, the stationary equation is
+
+$$
+-\frac{\hbar^2}{2m}\psi''=E\psi,\qquad \psi(0)=\psi(L)=0.
+$$
+
+Nonzero solutions have sine shapes and energies
+
+$$
+E_n=\frac{\hbar^2\pi^2n^2}{2mL^2},\qquad n=1,2,\ldots.
+$$
+
+The discreteness comes from the operator together with its boundary conditions. This calculation made an abstract spectral problem physically interpretable.
+
+Matrix and wave methods were brought into a common operator framework through work including that of Dirac and von Neumann. Born's statistical interpretation connected squared wave amplitudes with probabilities. But the rigorous treatment of unbounded operators, continuous spectra, and boundary conditions required more than the manipulation of infinite matrices as if they were finite.
+
+Physics did not merely borrow completed mathematics. It helped determine which operators, spaces, and geometrical distinctions deserved development. At the same time, deriving consequences within a mathematical model remained different from establishing that the model described experimental results. Both tasks continued alongside the unresolved debates about mathematical foundations.
+
 ## Sources and Historical Notes
 
 **Ancient Civilizations (c. 3000–600 BCE)**
@@ -1476,6 +2517,67 @@ The eleven subsections follow the eleven entries for this period in the Chinese 
 The historical distinctions are essential to the chapter's argument. Newton's explanations evolved; Leibnizian differentials were not simply finite increments with inconvenient terms deleted; eighteenth-century work with divergent series involved questions of meaning as well as convergence. The vibrating-string debate cannot be reduced to one participant already holding every feature of the modern function concept.
 
 The source transcriptions contain damaged equations and inconsistent typography. The displayed identities, derivative rules, series coefficients, two-body relation, wave solutions, and probability calculations have been checked independently. Modern regularity and modelling assumptions identify the scope of the explanations; they are not silently attributed to the earliest authors.
+
+**The First Half of the Nineteenth Century (c. 1800–1860)**
+
+The ten subsections correspond in order to the ten entries for this period in the Chinese outline. The chronology includes brief forward references to Beltrami's models of 1868 and Weierstrass's criticism in 1870, explicitly separated from the earlier discoveries whose limitations they clarify. Modern notation and selected examples explain the methods without reproducing the original texts' symbols or assigning later terminology to their authors.
+
+| Subsection | Principal material and its role |
+| --- | --- |
+| 1. Gauss Organizes Number Theory | “Number theory,” §6.10 in the [Companion Encyclopedia][C-source], on congruences, quadratic forms, and the organization of arithmetic. The residue calculation and equivalent forms are elementary explanatory examples. Equality of discriminants alone is not asserted to establish equivalence. |
+| 2. Least Squares | “Theory of Errors,” §10.5 in the [Companion Encyclopedia][C-source], on Legendre, Gauss, residual criteria, and the relationship between adjustment and probability. The measurements 2, 3, and 7 are hypothetical; the likelihood argument is a modern formulation with explicit assumptions. Uniqueness for a linear parameter model requires independent parameter information. |
+| 3. Fourier | I. Grattan-Guinness, “Heat diffusion,” §9.4 in the [Companion Encyclopedia][C-source], on the heat programme, its physical assumptions, and Fourier's publications. The uniform rod with zero endpoint temperatures is a normalized illustration. The coefficient formula and damped modes do not by themselves establish convergence for every initial profile. |
+| 4. Bolzano and Cauchy | “Real-Variable Analysis from Cauchy to Non-Standard Analysis,” §3.3 in the [Companion Encyclopedia][C-source], on analytical foundations, infinitesimals, and convergence. The sequence of powers on the unit interval is a modern exposition of pointwise versus uniform convergence, not a transcription of Cauchy's argument. Later distinctions are not treated as fully explicit in 1821. |
+| 5. Abel and Galois | “The Theory of Equations from Cardano to Galois, 1540–1830,” §6.1 in the [Companion Encyclopedia][C-source], on radical formulas and the changing role of permutations. The splitting-field description and solvable-group criterion use the later standard formulation over the rationals. The generic quintic and particular quintic equations are distinguished. |
+| 6. Non-Euclidean Geometry | “Euclidean and non-Euclidean geometry,” §7.4 in the [Companion Encyclopedia][C-source], on the parallel problem, independent developments, and later models. The model argument establishes relative consistency with its mathematical framework; the failure to find a contradiction in early deductions is not presented as that proof. |
+| 7. Complex Analysis | “Complex Numbers and Vector Algebra,” §6.2, and “Three Traditions in Complex Analysis: Cauchy, Riemann and Weierstrass,” §3.12 in the [Companion Encyclopedia][C-source]. The circle integral, square-root continuation, logarithm, and geometric series are explanatory calculations illustrating singularities, branches, and local representation. |
+| 8. New Algebras | “Complex Numbers and Vector Algebra,” §6.2, and “Matrix Theory,” §6.7 in the [Companion Encyclopedia][C-source]; Hamilton's [On Quaternions](https://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Quatern2/Quatern2.html), presented in 1844 and printed in the 1847 proceedings, restates the multiplication rules and discusses their laws. The coordinate rotation example, quaternion conjugation formula, and exterior-product notation are modern explanations. |
+| 9. Intrinsic Geometry | “Differential Geometry,” §3.4 in the [Companion Encyclopedia][C-source], on Gauss and the metric approach; Riemann's [On the Hypotheses which lie at the Bases of Geometry](https://www.maths.tcd.ie/pub/HistMath/People/Riemann/Geom/WKCGeom.html), in Clifford's translation, for the distinction between possible geometries and physical measurement. The 1854 text was a habilitation lecture, distinct from Riemann's 1851 dissertation. The manifold and metric notation is modern. |
+| 10. Existence and the Dirichlet Principle | “Potential Theory,” §3.17, and “Three Traditions in Complex Analysis,” §3.12 in the [Companion Encyclopedia][C-source], on minimization and existence arguments. The functional involving the integral of the square of a function is a deliberately simpler, independently constructed example of nonattainment; it is neither the Dirichlet energy nor Weierstrass's original counterexample. |
+
+The numerical and algebraic examples distinguish the scope of a method from the existence of an answer: least squares depends on a model; radical impossibility leaves numerical approximation available; changing algebraic operations does not invalidate integer arithmetic; a bounded functional need not attain its infimum. The examples explain these logical distinctions without implying that all contemporary authors expressed them in the same language.
+
+The source transcriptions contain damaged formulas and occasional historical imprecision. The displayed calculations have been checked independently. In particular, the heat equation uses positive diffusivity, rotations follow the right-hand convention about fixed axes, the contour integral has counterclockwise orientation, and the variational calculation assumes enough regularity for differentiation and integration by parts.
+
+**The Later Nineteenth Century (c. 1860–1900)**
+
+The nine subsections correspond in order to the nine entries for this period in the Chinese outline. Earlier work by Kummer and Boole is included to explain developments that matured later in the century. Modern notation makes the mathematical distinctions explicit; the worked examples are explanatory reconstructions unless otherwise identified.
+
+| Subsection | Principal material and its role |
+| --- | --- |
+| 1. Controllable Errors | Detlef Laugwitz, “Real-Variable Analysis from Cauchy to Non-Standard Analysis,” §3.3 in the [Companion Encyclopedia][C-source], on Weierstrass's teaching and the arithmetization of analysis. The estimate for the square function is independently constructed. Uniform continuity requires a common input tolerance for all points, correcting the transcription's erroneous reference to an output tolerance independent of the point. |
+| 2. Counterexamples | Laugwitz, §3.3, on the development of uniform convergence and the separation of analytical properties; Kline's discussion of continuous nowhere differentiable functions in [Mathematical Thought][K-source] identifies Weierstrass's 1872 presentation. The three-term continuity estimate and the sine sequence illustrate the hypotheses needed for different limit operations. The account distinguishes the continuity of a function from the behaviour of a particular series representing it. |
+| 3. Real Numbers | Laugwitz, §3.3, and Joseph W. Dauben, “Set Theory and Point Set Topology,” §3.6 in the [Companion Encyclopedia][C-source]. Dedekind's [Continuity and Irrational Numbers](https://www.gutenberg.org/files/21016/21016-pdf.pdf), in Beman's translation, documents his wish to replace geometrical assumptions with arithmetic foundations. The cut convention, Cauchy-sequence equivalence, and bisection explanation use modern formulations. Completeness of a number system is distinguished from continuity of a function. |
+| 4. Algebraic Number Theory | “Fundamental concepts of abstract algebra,” §6.4, especially its treatment of fields, rings, and ideals, and “Number theory,” §6.10 in the [Companion Encyclopedia][C-source]. The norm argument and four ideal identities are independently checked in the ring of integers of the quadratic field generated by the square root of minus five. Kummer's earlier cyclotomic work is not identified with this particular example. Unique ideal factorization is asserted for full rings of integers of number fields, not arbitrary rings. |
+| 5. Models of Geometry | “Euclidean and non-Euclidean geometry,” §7.4 in the [Companion Encyclopedia][C-source], on Beltrami, models, and relative consistency. The conformal disc metric is a later standard presentation with curvature normalized to minus one; it is distinguished from the straight-chord disc representation also discussed in the source. The radial-distance calculation is independently derived. |
+| 6. Transformations | “Fundamental concepts of abstract algebra,” §6.4, Ian Stewart, “Lie Groups,” §6.5, and J. J. Gray, “Differential Equations and Groups,” §3.16 in the [Companion Encyclopedia][C-source]. Klein's [Erlangen programme](https://wucj.lab.westlake.edu.cn/Others/erlangen_tex.pdf), in Haskell's translation, supplies his formulation in terms of transformation groups and invariants. The affine map and autonomous equation are explanatory examples, including the constant solutions lost through division. Later terminology for Lie algebras is not attributed verbatim to Lie. |
+| 7. Different Infinities | Dauben, §3.6, and “Logic and Set Theory,” §5.4 in the [Companion Encyclopedia][C-source]. Fábio Maia Bertato's [transcription and translation of Cantor's diagonal paper](https://www.rbhm.org.br/index.php/RBHM/article/view/441) identifies the later argument. The decimal proof here is a modern version, with digits chosen to avoid nonunique expansions; it is not Cantor's original 1874 proof or a reproduction of the two-symbol presentation in the later paper. Cardinality and order type are kept distinct. |
+| 8. Global Form and Orbits | “The three-body problem,” §8.9, and E. Scholz, “Topology: Geometric, algebraic,” §7.10 in the [Companion Encyclopedia][C-source]. The research discussion [Did Poincaré Really Discover Chaos?](https://philarchive.org/archive/PARDPRv1) supports the distinction between the memoir's correction, homoclinic intersections, and later claims about chaos. The sphere and torus examples illustrate invariants without suggesting that one invariant classifies arbitrary spaces. The supplements to Analysis situs continued beyond 1900. |
+| 9. Logic and Axioms | “Algebraic Logic from Boole to Schröder, 1840–1900,” §5.1, “Mathematical Logic and Logicism from Peano to Quine, 1890–1940,” §5.2, and “Euclidean and non-Euclidean geometry,” §7.4 in the [Companion Encyclopedia][C-source]. Indicator functions and the two quantified statements are modern explanatory devices. Boole's original calculus is not equated in every detail with later Boolean algebra; Hilbert's 1899 geometry is not presented as already containing the full programme of his later foundational work. |
+
+The examples have been checked independently: norm multiplicativity and the obstruction to further factorization, the four ideal products, the disc-distance integral, the derivative counterexample, preservation of midpoints, and the Euler characteristics. For the ideal example, the quotients by the three displayed ideals are fields with two, three, and three elements respectively, verifying primality.
+
+The materials contain damaged formulas and some overbroad historical formulations. Claims about convergence, unique factorization, geometric consistency, and dynamical instability have therefore been restricted to their stated hypotheses. The discussion of foundational difficulties at the century's end prepares the next period without relocating its later paradoxes and responses into the nineteenth century.
+
+**The Early Twentieth Century (c. 1900–1930)**
+
+The nine subsections follow the nine entries for this period in the Chinese outline. Several programmes developed concurrently; their order here follows the outline rather than implying that one controversy ended before another began. Heyting's 1930 formalization lies at the period's boundary, while the reference to van der Waerden includes the second volume published in 1931. Later results about incompleteness and independence are reserved for subsequent periods.
+
+| Subsection | Principal material and its role |
+| --- | --- |
+| 1. Set-Theoretic Paradoxes | “Mathematical Logic and Logicism from Peano to Quine, 1890–1940,” §5.2, and “Logic and Set Theory,” §5.4 in the [Companion Encyclopedia][C-source]. The [Bertrand Russell Archives record of the letter to Frege](https://bracers.mcmaster.ca/53946) verifies the communication of 16 June 1902. The displayed paradox uses modern set notation; Frege's own treatment of concepts and value-ranges is not identified literally with this notation. |
+| 2. Logicism | §5.2 in the [Companion Encyclopedia][C-source], especially its discussions of Frege, Russell, types, ramification, and the additional axioms of Principia Mathematica. The simple hierarchy is an introductory explanation, not a full specification of the ramified system. The account separates the formal derivation of arithmetic from the disputed claim that every required assumption is purely logical. |
+| 3. Measure and Integration | I. Grattan-Guinness, “Integral, Content and Measure,” §3.7 in the [Companion Encyclopedia][C-source]; the [original publication record of Lebesgue's 1902 thesis](https://zenodo.org/records/2313710) confirms the chronology. The simple-function formula, countable covering, dominated-convergence statement, and concentrating-spike example use modern notation and explicit hypotheses. The damaged integral formula in the transcription has not been reproduced. |
+| 4. Intuitionism | “Constructivism,” §5.6 in the [Companion Encyclopedia][C-source]; Brouwer's [1908 paper in the translation by Mark van Atten and Göran Sundholm](https://arxiv.org/pdf/1511.01113), with their historical introduction, documents the critique of unrestricted excluded middle. The binary-sequence example explains a constructive demand without claiming that every particular sequence is undecidable. Proofs of negations by contradiction are distinguished from unrestricted double-negation elimination. |
+| 5. Axiomatic Set Theory | “Logic and Set Theory,” §5.4, and “Set Theory and Point Set Topology,” §3.6 in the [Companion Encyclopedia][C-source], on Zermelo, choice, Fraenkel, and Skolem. Separation and replacement are given in modern form. Replacement concerns functional images, not only one-to-one assignments. Zermelo's original system is distinguished from later standard ZF and ZFC. |
+| 6. Hilbert's Programme | “Metamathematics and Computability,” §5.5, and “Constructivism,” §5.6 in the [Companion Encyclopedia][C-source]; Hilbert's [On the Infinite](https://lawrencecpaulson.github.io/papers/on-the-infinite.pdf), published in 1926 from a 1925 lecture, makes explicit the project of studying formal proofs and excluding contradictory final formulas. Hilbert's confidence in that project is not treated as evidence that the intended general consistency proof had already been completed. |
+| 7. Functional Analysis | Reinhard Siegmund-Schultze, “Functional Analysis,” §3.9, and “Integral Equations,” §3.10 in the [Companion Encyclopedia][C-source], on Hilbert, Schmidt, Fréchet, Riesz, Fischer, and Banach. The ramp functions and averaging operator are independently constructed examples. The contraction argument uses continuous functions on a compact interval with the uniform norm, a continuous kernel, and a contraction factor strictly below one. Hilbert and Banach spaces are described in their standard modern formulation. |
+| 8. Structural Algebra | “Fundamental concepts of abstract algebra,” §6.4 in the [Companion Encyclopedia][C-source], especially Steinitz and the development of field theory; Noether's [Ideal Theory in Rings](https://arxiv.org/pdf/1401.2577), in Daniel Berlyne's translation of the 1921 paper, supplies the finiteness condition and its chain formulation. The evaluation homomorphism and integer-module example are elementary modern illustrations. Finite generation, vector-space bases, and effective computation are distinguished. |
+| 9. Mathematical Physics | “Relativity,” §9.13, “Quantum mechanics,” §9.15, and “Functional Analysis,” §3.9 in the [Companion Encyclopedia][C-source]. The field equation is stated without a cosmological term; the spacetime metric has Lorentzian signature. The position–momentum calculation is on an appropriate common domain of regular test functions. The particle in a box is a separate spectral example with Dirichlet boundary conditions, not a claim that those same boundary conditions make the momentum operator self-adjoint. |
+
+The calculations have been checked independently: the countable covering bound, concentrating-spike integrals, mean-square ramp error, polynomial quotient examples, operator commutator, finite-matrix trace obstruction, and particle-in-a-box eigenfunctions. The averaging equation illustrates both failure of existence and failure of uniqueness when the contraction condition is absent; it does not assert that this sufficient condition is necessary in all examples.
+
+The materials contain transcription errors and some formulations requiring qualification. In particular, the metric expression in the relativity discussion is a first fundamental form, despite the source's reversed terminology. Infinite-dimensional operators require attention to domains, and a general observable's spectrum is not always a list of ordinary eigenvalues. These issues, like measurability and convergence hypotheses, are part of the mathematical problems rather than merely matters of notation.
 
 [C-source]: <../../../../todos/_10_materials/HistoryOfMathematics/Companion Encyclopedia of the History and Philosophy of the Mathematical Sciences (I. Grattan-Guinness) (z-library.sk, 1lib.sk, z-lib.sk)/Companion Encyclopedia of the History and Philosophy of the Mathematical Sciences (I. Grattan-Guinness) (z-library.sk, 1lib.sk, z-lib.sk).md>
 [O-source]: <../../../../todos/_10_materials/HistoryOfMathematics/Oxford Handbook of the History of Mathematics (Oxford Handbooks) (Eleanor Robson, Jacqueline Stedall) (z-library.sk, 1lib.sk, z-lib.sk)/Oxford Handbook of the History of Mathematics (Oxford Handbooks) (Eleanor Robson, Jacqueline Stedall) (z-library.sk, 1lib.sk, z-lib.sk).md>
