@@ -39,7 +39,7 @@ After learning what it takes to build AI projects, in the third week, you will l
 
 Finally, AI is having a huge impact on society. In the fourth and final week, you will learn about how AI systems can be biased, and how to diminish or eliminate such biases. You also learn how AI is affecting developing economies, and how AI is affecting jobs, and be better able to navigate this rise of AI for yourself and for your organization.
 
-By the end of this four-week course, you'll be more knowledgeable and better qualified than even the CEOs of most large companies, in terms of your understanding of AI technology, as well as your ability to help yourself or help your company or other organization, `navigate the rise of AI`. And so I hope that after this course, you'll be in a position to provide leadership to others as well, as they navigate these issues.
+By the end of this four-week course, you'll be more knowledgeable and better qualified than even the CEOs of most large companies, in terms of your understanding of AI technology, as well as your ability to help yourself or help your company or other organization, `navigate the rise of AI`. And so I hope that after this course, you'll be in a position to provide leadership to others as well, as they `navigate these issues`.
 
 Now, one of the major technologies driving the recent rise of AI is machine learning. But what is machine learning? Let's take a look in the next video.
 
