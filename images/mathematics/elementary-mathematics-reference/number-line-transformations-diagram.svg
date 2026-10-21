@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="710" viewBox="0 0 1060 710" role="img" aria-labelledby="numberline-title numberline-desc">
+<title id="numberline-title">Translation, reflection, and scaling on the number line</title>
+<desc id="numberline-desc">All three axes use the same scale. The original blue point a is at minus one and the violet point b is at two, with distance three. Translation by three moves a to two and b to five, preserving distance and order. Multiplication by minus two moves a to two and b to minus four, reversing order and doubling the distance to six.</desc>
+<style>
+text { font-family: "DejaVu Sans", Arial, sans-serif; fill: #172b4d; }
+.title { font-size: 27px; font-weight: 700; }
+.row-title { font-size: 22px; font-weight: 600; }
+.note { font-size: 19px; fill: #475569; }
+.tick { font-size: 17px; fill: #475569; }
+</style>
+<defs><marker id="line-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker></defs>
+<rect width="1060" height="710" rx="18" fill="#ffffff"/>
+<text class="title" x="40" y="48">Addition and multiplication on the number line</text>
+<text class="note" x="40" y="80">Track the same two points: blue a and violet b.</text>
+<rect x="40" y="100" width="980" height="175" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text class="row-title" x="64" y="134">Original positions</text>
+<text class="note" x="980" y="134" text-anchor="end">a &lt; b</text>
+<line x1="162" y1="185" x2="939" y2="185" stroke="#64748b" stroke-width="2" marker-end="url(#line-arrow)"/>
+<line x1="190" y1="179" x2="190" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="190" y="212" text-anchor="middle">−5</text>
+<line x1="255" y1="179" x2="255" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="255" y="212" text-anchor="middle">−4</text>
+<line x1="320" y1="179" x2="320" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="320" y="212" text-anchor="middle">−3</text>
+<line x1="385" y1="179" x2="385" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="385" y="212" text-anchor="middle">−2</text>
+<line x1="450" y1="179" x2="450" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="450" y="212" text-anchor="middle">−1</text>
+<line x1="515" y1="179" x2="515" y2="191" stroke="#172b4d" stroke-width="2"/>
+<text class="tick" x="515" y="212" text-anchor="middle">0</text>
+<line x1="580" y1="179" x2="580" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="580" y="212" text-anchor="middle">1</text>
+<line x1="645" y1="179" x2="645" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="645" y="212" text-anchor="middle">2</text>
+<line x1="710" y1="179" x2="710" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="710" y="212" text-anchor="middle">3</text>
+<line x1="775" y1="179" x2="775" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="775" y="212" text-anchor="middle">4</text>
+<line x1="840" y1="179" x2="840" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="840" y="212" text-anchor="middle">5</text>
+<line x1="905" y1="179" x2="905" y2="191" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="905" y="212" text-anchor="middle">6</text>
+<circle cx="450" cy="185" r="7" fill="#0369a1"/>
+<text x="450" y="168" text-anchor="middle" style="font-size:20px; font-weight:600; fill:#0369a1">a = −1</text>
+<circle cx="645" cy="185" r="7" fill="#7c3aed"/>
+<text x="645" y="168" text-anchor="middle" style="font-size:20px; font-weight:600; fill:#7c3aed">b = 2</text>
+<path d="M 450 224 v 7 H 645 v -7" fill="none" stroke="#475569" stroke-width="1.5"/>
+<text class="note" x="547.5" y="255" text-anchor="middle">distance = 3</text>
+<rect x="40" y="290" width="980" height="175" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text class="row-title" x="64" y="324">Translation: x ↦ x + 3</text>
+<text class="note" x="980" y="324" text-anchor="end">a′ &lt; b′</text>
+<line x1="162" y1="375" x2="939" y2="375" stroke="#64748b" stroke-width="2" marker-end="url(#line-arrow)"/>
+<line x1="190" y1="369" x2="190" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="190" y="402" text-anchor="middle">−5</text>
+<line x1="255" y1="369" x2="255" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="255" y="402" text-anchor="middle">−4</text>
+<line x1="320" y1="369" x2="320" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="320" y="402" text-anchor="middle">−3</text>
+<line x1="385" y1="369" x2="385" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="385" y="402" text-anchor="middle">−2</text>
+<line x1="450" y1="369" x2="450" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="450" y="402" text-anchor="middle">−1</text>
+<line x1="515" y1="369" x2="515" y2="381" stroke="#172b4d" stroke-width="2"/>
+<text class="tick" x="515" y="402" text-anchor="middle">0</text>
+<line x1="580" y1="369" x2="580" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="580" y="402" text-anchor="middle">1</text>
+<line x1="645" y1="369" x2="645" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="645" y="402" text-anchor="middle">2</text>
+<line x1="710" y1="369" x2="710" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="710" y="402" text-anchor="middle">3</text>
+<line x1="775" y1="369" x2="775" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="775" y="402" text-anchor="middle">4</text>
+<line x1="840" y1="369" x2="840" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="840" y="402" text-anchor="middle">5</text>
+<line x1="905" y1="369" x2="905" y2="381" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="905" y="402" text-anchor="middle">6</text>
+<circle cx="645" cy="375" r="7" fill="#0369a1"/>
+<text x="645" y="358" text-anchor="middle" style="font-size:20px; font-weight:600; fill:#0369a1">a′ = 2</text>
+<circle cx="840" cy="375" r="7" fill="#7c3aed"/>
+<text x="840" y="358" text-anchor="middle" style="font-size:20px; font-weight:600; fill:#7c3aed">b′ = 5</text>
+<path d="M 645 414 v 7 H 840 v -7" fill="none" stroke="#475569" stroke-width="1.5"/>
+<text class="note" x="742.5" y="445" text-anchor="middle">distance = 3</text>
+<rect x="40" y="480" width="980" height="175" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+<text class="row-title" x="64" y="514">Multiplication: x ↦ −2x</text>
+<text class="note" x="980" y="514" text-anchor="end">b′ &lt; a′</text>
+<line x1="162" y1="565" x2="939" y2="565" stroke="#64748b" stroke-width="2" marker-end="url(#line-arrow)"/>
+<line x1="190" y1="559" x2="190" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="190" y="592" text-anchor="middle">−5</text>
+<line x1="255" y1="559" x2="255" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="255" y="592" text-anchor="middle">−4</text>
+<line x1="320" y1="559" x2="320" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="320" y="592" text-anchor="middle">−3</text>
+<line x1="385" y1="559" x2="385" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="385" y="592" text-anchor="middle">−2</text>
+<line x1="450" y1="559" x2="450" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="450" y="592" text-anchor="middle">−1</text>
+<line x1="515" y1="559" x2="515" y2="571" stroke="#172b4d" stroke-width="2"/>
+<text class="tick" x="515" y="592" text-anchor="middle">0</text>
+<line x1="580" y1="559" x2="580" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="580" y="592" text-anchor="middle">1</text>
+<line x1="645" y1="559" x2="645" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="645" y="592" text-anchor="middle">2</text>
+<line x1="710" y1="559" x2="710" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="710" y="592" text-anchor="middle">3</text>
+<line x1="775" y1="559" x2="775" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="775" y="592" text-anchor="middle">4</text>
+<line x1="840" y1="559" x2="840" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="840" y="592" text-anchor="middle">5</text>
+<line x1="905" y1="559" x2="905" y2="571" stroke="#94a3b8" stroke-width="1.5"/>
+<text class="tick" x="905" y="592" text-anchor="middle">6</text>
+<circle cx="645" cy="565" r="7" fill="#0369a1"/>
+<text x="645" y="548" text-anchor="middle" style="font-size:20px; font-weight:600; fill:#0369a1">a′ = 2</text>
+<circle cx="255" cy="565" r="7" fill="#7c3aed"/>
+<text x="255" y="548" text-anchor="middle" style="font-size:20px; font-weight:600; fill:#7c3aed">b′ = −4</text>
+<path d="M 255 604 v 7 H 645 v -7" fill="none" stroke="#475569" stroke-width="1.5"/>
+<text class="note" x="450" y="635" text-anchor="middle">distance = 6</text>
+<text class="note" x="530" y="689" text-anchor="middle">Translation preserves distance; negative scaling also reverses order.</text>
+</svg>

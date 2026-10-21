@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="fractions-title fractions-desc">
+<title id="fractions-title">Equivalent fractions: one half, two fourths, and three sixths</title>
+<desc id="fractions-desc">Three bars of identical length represent one whole each. They are divided into two, four, and six equal parts. In every bar, exactly the left half is shaded blue. The counting unit changes while the quantity remains the same.</desc>
+<style>
+text { font-family: "DejaVu Sans", Arial, sans-serif; fill: #172b4d; }
+.title { font-size: 28px; font-weight: 700; }
+.note { font-size: 19px; fill: #475569; }
+.label { font-size: 26px; font-weight: 600; }
+</style>
+<rect width="960" height="430" rx="18" fill="#ffffff"/>
+<text class="title" x="40" y="48">Equivalent fractions</text>
+<text class="note" x="40" y="80">Each bar represents one whole.</text>
+<text class="label" x="90" y="149" text-anchor="middle">1/2</text>
+<rect x="180" y="120" width="600" height="44" fill="#e2e8f0"/>
+<rect x="180" y="120" width="300" height="44" fill="#0369a1"/>
+<rect x="180" y="120" width="600" height="44" fill="none" stroke="#334155" stroke-width="2"/>
+<line x1="480" y1="120" x2="480" y2="164" stroke="#64748b" stroke-width="2"/>
+<text class="note" x="820" y="149">1 of 2</text>
+<text class="label" x="90" y="229" text-anchor="middle">2/4</text>
+<rect x="180" y="200" width="600" height="44" fill="#e2e8f0"/>
+<rect x="180" y="200" width="300" height="44" fill="#0369a1"/>
+<rect x="180" y="200" width="600" height="44" fill="none" stroke="#334155" stroke-width="2"/>
+<line x1="330" y1="200" x2="330" y2="244" stroke="#bae6fd" stroke-width="2"/>
+<line x1="480" y1="200" x2="480" y2="244" stroke="#64748b" stroke-width="2"/>
+<line x1="630" y1="200" x2="630" y2="244" stroke="#64748b" stroke-width="2"/>
+<text class="note" x="820" y="229">2 of 4</text>
+<text class="label" x="90" y="309" text-anchor="middle">3/6</text>
+<rect x="180" y="280" width="600" height="44" fill="#e2e8f0"/>
+<rect x="180" y="280" width="300" height="44" fill="#0369a1"/>
+<rect x="180" y="280" width="600" height="44" fill="none" stroke="#334155" stroke-width="2"/>
+<line x1="280" y1="280" x2="280" y2="324" stroke="#bae6fd" stroke-width="2"/>
+<line x1="380" y1="280" x2="380" y2="324" stroke="#bae6fd" stroke-width="2"/>
+<line x1="480" y1="280" x2="480" y2="324" stroke="#64748b" stroke-width="2"/>
+<line x1="580" y1="280" x2="580" y2="324" stroke="#64748b" stroke-width="2"/>
+<line x1="680" y1="280" x2="680" y2="324" stroke="#64748b" stroke-width="2"/>
+<text class="note" x="820" y="309">3 of 6</text>
+<text class="note" x="480" y="390" text-anchor="middle">The partition changes. The shaded quantity does not.</text>
+</svg>
