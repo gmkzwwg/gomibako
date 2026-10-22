@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="650" viewBox="0 0 1080 650" role="img" aria-labelledby="triples-title triples-desc">
+<title id="triples-title">Pythagorean triples from rational points on the unit circle</title>
+<desc id="triples-desc">The unit circle is centred at the origin. A line of slope one half passes through S, minus one comma zero, and meets the circle again at P, three fifths comma four fifths. The radius OP has length one and its horizontal and vertical projections have lengths three fifths and four fifths. Multiplying these lengths by five gives the three-four-five right triangle. A side panel gives the rational formulas for the second intersection for a general slope t.</desc>
+<style>
+text { font-family: "DejaVu Sans", Arial, sans-serif; fill: #172b4d; }
+.title { font-size: 28px; font-weight: 700; }
+.subtitle { font-size: 19px; fill: #475569; }
+.label { font-size: 20px; }
+.formula { font-size: 23px; }
+.small { font-size: 18px; fill: #475569; }
+</style>
+<defs>
+<marker id="triples-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker>
+</defs>
+<rect width="1080" height="650" rx="18" fill="#ffffff"/>
+<text class="title" x="40" y="48">From a rational slope to an integer triangle</text>
+<text class="subtitle" x="40" y="80">A line through a known rational point finds another rational point.</text>
+<path d="M 300 355 L 414 355 L 414 203 Z" fill="#e0f2fe"/>
+<circle cx="300" cy="355" r="190" fill="none" stroke="#94a3b8" stroke-width="2.5"/>
+<line x1="55" y1="355" x2="580" y2="355" stroke="#64748b" stroke-width="1.6" marker-end="url(#triples-arrow)"/>
+<line x1="300" y1="580" x2="300" y2="125" stroke="#64748b" stroke-width="1.6" marker-end="url(#triples-arrow)"/>
+<text class="label" x="590" y="362">X</text>
+<text class="label" x="290" y="113">Y</text>
+<text class="small" x="281" y="379">0</text>
+<line x1="490" y1="350" x2="490" y2="360" stroke="#64748b" stroke-width="1.5"/>
+<line x1="295" y1="165" x2="305" y2="165" stroke="#64748b" stroke-width="1.5"/>
+<line x1="295" y1="545" x2="305" y2="545" stroke="#64748b" stroke-width="1.5"/>
+<text class="small" x="510" y="381" text-anchor="middle">1</text>
+<text class="small" x="279" y="171" text-anchor="middle">1</text>
+<text class="small" x="273" y="551" text-anchor="middle">−1</text>
+<line x1="72" y1="374" x2="547" y2="136.5" stroke="#7c3aed" stroke-width="2.5"/>
+<line x1="300" y1="355" x2="414" y2="203" stroke="#0369a1" stroke-width="3"/>
+<line x1="414" y1="203" x2="414" y2="355" stroke="#0369a1" stroke-width="2" stroke-dasharray="6 5"/>
+<line x1="300" y1="355" x2="414" y2="355" stroke="#0369a1" stroke-width="3"/>
+<path d="M 402 355 V 343 H 414" fill="none" stroke="#0369a1" stroke-width="1.5"/>
+<circle cx="110" cy="355" r="6" fill="#7c3aed"/>
+<circle cx="414" cy="203" r="6" fill="#7c3aed"/>
+<circle cx="300" cy="355" r="4" fill="#0369a1"/>
+<text class="label" x="87" y="383" style="fill:#7c3aed">S</text>
+<text class="label" x="430" y="214" style="fill:#7c3aed">P</text>
+<text class="label" x="357" y="383" text-anchor="middle" style="fill:#0369a1">3/5</text>
+<text class="label" x="432" y="286" style="fill:#0369a1">4/5</text>
+<text class="label" x="340" y="274" style="fill:#0369a1">1</text>
+<text class="label" x="400" y="546" style="fill:#64748b">X² + Y² = 1</text>
+<rect x="650" y="120" width="390" height="466" rx="14" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="674" y="157" style="font-size:20px;font-weight:700">Rational slope → rational point</text>
+<text class="small" x="674" y="196">Line through S = (−1, 0)</text>
+<text class="formula" x="674" y="230" style="fill:#7c3aed">Y = t(X + 1)</text>
+<text class="small" x="674" y="279">Second intersection</text>
+<text class="formula" x="674" y="315">X = (1 − t²)/(1 + t²)</text>
+<text class="formula" x="674" y="351">Y = 2t/(1 + t²)</text>
+<line x1="674" y1="379" x2="1016" y2="379" stroke="#cbd5e1"/>
+<text class="small" x="674" y="415">For t = 1/2:</text>
+<text class="formula" x="674" y="451">P = (3/5, 4/5)</text>
+<text class="small" x="674" y="500">Multiply lengths by 5</text>
+<text x="674" y="540" style="font-size:28px;font-weight:600;fill:#0369a1">3² + 4² = 5²</text>
+<text class="subtitle" x="540" y="625" text-anchor="middle">Clear the denominators to pass from rational coordinates to integer sides.</text>
+</svg>
