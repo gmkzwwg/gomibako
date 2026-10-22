@@ -1,8 +1,9 @@
 ---
 title: "International Political Economy Study Notes"
-layout: slide-linear
+layout: post
 categories: Notes
 subclass: Economy
+hidden: true
 ---
 
 ## P1 资本主义是"自然秩序"吗？

@@ -1,6 +1,6 @@
 ---
 title: "Programming Language Design Analysis"
-layout: slide-multilingual
+layout: slide-vertical
 categories: Notes
 subclass: Languages
 ---
