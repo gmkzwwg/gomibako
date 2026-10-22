@@ -14,9 +14,9 @@ subclass: History
 5. *Introducing Philosophy: A Text with Integrated Readings, 10th Edition*, Robert C. Solomon; Kathleen Marie Higgins; Clancy Martin
 6. The Stanford Encyclopedia of Philosophy
 
-# What Is of True Value in the History of Philosophy
+## What Is of True Value in the History of Philosophy
 
-## Why Study the History of Philosophy Today?
+### Why Study the History of Philosophy Today?
 
 **Q1: If the purpose of studying philosophy is not merely to remember past ideas but to develop our capacity for philosophical thinking today, what exactly should we learn from the history of philosophy, and how should we learn it?**
 
@@ -36,7 +36,7 @@ A systematic understanding of philosophical history requires five interconnected
 
 Studying the history of philosophy in this way transforms it from a catalogue of past doctrines into a living resource for critical thinking, theoretical innovation, and contemporary research.
 
-## What Is of Lasting Value in the History of Philosophy?
+### What Is of Lasting Value in the History of Philosophy?
 
 **Q3: When a philosopher's conclusions have been superseded by later scientific or philosophical developments, what, if anything, remains valuable in their thought?**
 
@@ -44,7 +44,7 @@ Studying the history of philosophy in this way transforms it from a catalogue of
 
 **Q5: Beyond particular conclusions, what enduring questions, concepts, methods of argumentation, and frameworks of thought has the history of philosophy contributed?**
 
-## How Should We Engage with Historical Philosophy in the Age of Modern Science?
+### How Should We Engage with Historical Philosophy in the Age of Modern Science?
 
 **Q6: How can we avoid dismissing an entire philosophical system simply because some of its conclusions are outdated?**
 
@@ -52,7 +52,7 @@ Studying the history of philosophy in this way transforms it from a catalogue of
 
 **Q8: How can we distinguish philosophical questions that have been overtaken by empirical science from those that remain open, and from theoretical resources that can be reinterpreted and applied today?**
 
-## How Should We Study, Understand, and Practise Philosophy?
+### How Should We Study, Understand, and Practise Philosophy?
 
 **Q9: How can we move beyond memorising philosophers, schools, and doctrines to understanding philosophical problems, theoretical structures, and lines of argument?**
 
@@ -60,9 +60,24 @@ Studying the history of philosophy in this way transforms it from a catalogue of
 
 **Q11: How can we apply philosophical concepts, methods of analysis, and theoretical frameworks to scientific inquiry, practical problems, and other disciplines?**
 
-# Period 1 — Presocratic Philosophy and the Sophists (c. 600–400 BCE)
+**Q12: How Should Philosophers Situate Their Work Within the History of Philosophy?**
 
-## Thales (c. 624–546 BCE)
+**A:** Philosophical self-positioning is not primarily about identifying with or opposing particular historical figures or schools. It is about understanding how one's philosophical problems, concepts, assumptions, and arguments relate to existing intellectual traditions and contemporary debates.
+
+This involves four questions:
+
+1. **Problem:** What philosophical problem am I addressing, and how has it developed historically?
+2. **Theoretical Context:** What existing theories attempt to solve this problem, and what are their strengths and limitations?
+3. **Argumentative Contribution:** How does my approach extend, revise, challenge, or depart from existing arguments?
+4. **Intellectual Lineage:** Which historical traditions, if any, help explain the origins, structure, or significance of my approach?
+
+The aim is not to establish a philosophical identity through association with canonical thinkers, but to develop a clear understanding of one's theoretical commitments, intellectual debts, disagreements, and potential contributions.
+
+**Historical positioning is valuable insofar as it improves philosophical understanding, argumentative rigour, and theoretical innovation.**
+
+## Presocratic Philosophy and the Sophists (c. 600–400 BCE)
+
+### Thales (c. 624–546 BCE)
 
 **Position:** Presocratic Philosophy · Milesian School · Early Greek Natural Philosophy
 
@@ -71,7 +86,7 @@ Studying the history of philosophy in this way transforms it from a catalogue of
 * **Contributions:** Conventionally regarded as one of the earliest figures in Western philosophy. Associated with attempts to explain the natural world through general principles rather than external divine intervention.
 * **Primary Sources:** No securely surviving writings. Aristotle, *Metaphysics* I.3 and *De Anima* I.2; Herodotus, *Histories* I.74; later testimonia.
 
-### Stories about Thales
+#### Stories about Thales
 
 In the sixth century BCE, the Greek world consisted of independent city-states scattered across the Mediterranean and Black Sea. Miletus, a prosperous trading city in Ionia (on the western coast of modern-day Turkey), was an important centre of commerce and cultural exchange, particularly with Egypt and Mesopotamia. It was here that Thales was born, during a period when Greek thinkers were beginning to develop systematic explanations of the natural world.
 
@@ -87,7 +102,7 @@ Thales also participated in political affairs, reportedly proposing a federation
 
 Historical sources: No authentic writings by Thales survive. The principal accounts appear in Herodotus' Histories (1.74–75, 1.170), Plato's Theaetetus (174a–b), Aristotle's Metaphysics (983b) and Politics (1259a), and Diogenes Laertius' Lives of Eminent Philosophers (Book I, 22–44). These works were written after his lifetime, and many biographical details remain uncertain.
 
-### Philosophy of Thales
+#### Philosophy of Thales
 
 **First Principles (*Archē*) and Natural Explanation**
 * Water as the primary principle; material explanation; the search for unity beneath natural diversity.
@@ -97,7 +112,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * The Earth resting on water; soul and motion; the attribution that all things are full of gods.
 * How reliable are Aristotle's and later writers' reconstructions of Thales' views?
 
-## Anaximander (c. 610–546 BCE)
+### Anaximander (c. 610–546 BCE)
 
 **Position:** Presocratic Philosophy · Milesian School · Early Cosmology
 
@@ -117,7 +132,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Early Cosmology**
 * The Earth's position in the cosmos, astronomical explanation, geographical representation.
 
-## Anaximenes (fl. mid-6th century BCE)
+### Anaximenes (fl. mid-6th century BCE)
 
 **Position:** Presocratic Philosophy · Milesian School · Material Monism
 
@@ -134,7 +149,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Density, temperature, qualitative change, and the emergence of different natural substances.
 * Can qualitative differences be explained through quantitative changes?
 
-## Pythagoras (c. 570–490 BCE)
+### Pythagoras (c. 570–490 BCE)
 
 **Position:** Presocratic Philosophy · Pythagoreanism · Philosophy of Mathematics · Religious and Ethical Tradition
 
@@ -157,7 +172,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Historical Influence**
 * Pythagoreanism and Plato; the distinction between early Pythagorean practice and later mathematical metaphysics.
 
-## Xenophanes (c. 570–475 BCE)
+### Xenophanes (c. 570–475 BCE)
 
 **Position:** Presocratic Philosophy · Criticism of Traditional Religion · Early Epistemology
 
@@ -178,7 +193,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Truth, belief, conjecture, limits of certainty.
 * Can human beings know the truth, or can they only form increasingly plausible beliefs?
 
-## Heraclitus ✯ (fl. c. 500 BCE)
+### Heraclitus ✯ (fl. c. 500 BCE)
 
 **Position:** Presocratic Philosophy · Ephesian Philosophy · Philosophy of Change and Cosmic Order
 
@@ -210,7 +225,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Change and stability in Plato; Heraclitus in Aristotle, Hegel, Nietzsche, and Heidegger.
 
-## Parmenides ✯ (fl. early 5th century BCE)
+### Parmenides ✯ (fl. early 5th century BCE)
 
 **Position:** Presocratic Philosophy · Eleatic Philosophy · Ontology · Metaphysical Monism
 
@@ -242,7 +257,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato's theory of Forms; Aristotle's accounts of being and change; subsequent debates about ontology and identity.
 
-## Zeno of Elea ✯ (c. 490–430 BCE)
+### Zeno of Elea ✯ (c. 490–430 BCE)
 
 **Position:** Presocratic Philosophy · Eleatic School · Dialectical Argumentation · Paradoxes of Motion
 
@@ -270,7 +285,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle's theory of motion; mathematical infinity; modern discussions of continuity and the philosophy of mathematics.
 
-## Melissus (fl. mid-5th century BCE)
+### Melissus (fl. mid-5th century BCE)
 
 **Position:** Presocratic Philosophy · Eleatic School · Metaphysical Monism
 
@@ -287,7 +302,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Motion, plurality, void, appearance and reality.
 * What assumptions are required to deny the possibility of genuine change?
 
-## Empedocles (c. 490–430 BCE)
+### Empedocles (c. 490–430 BCE)
 
 **Position:** Presocratic Philosophy · Pluralist Cosmology · Early Natural Philosophy
 
@@ -307,7 +322,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Perception, Soul, and Purification**
 * Perception, bodily constitution, transmigration, religious purification.
 
-## Anaxagoras (c. 500–428 BCE)
+### Anaxagoras (c. 500–428 BCE)
 
 **Position:** Presocratic Philosophy · Pluralist Cosmology · Philosophy of Mind
 
@@ -331,7 +346,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Historical Influence**
 * Plato's critique of Anaxagoras in *Phaedo* 97b–99d; Aristotle's assessment of *Nous* and causation.
 
-## Philolaus ✯ (c. 470–390 BCE)
+### Philolaus ✯ (c. 470–390 BCE)
 
 **Position:** Presocratic Philosophy · Pythagoreanism · Mathematical Cosmology
 
@@ -355,7 +370,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Pythagorean Philosophy and Plato**
 * The philosophical interpretation of number; the relationship between Philolaus' principles and Plato's *Philebus*.
 
-## Leucippus (fl. 5th century BCE)
+### Leucippus (fl. 5th century BCE)
 
 **Position:** Presocratic Philosophy · Early Atomism · Natural Philosophy
 
@@ -372,7 +387,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Mechanical explanation, physical necessity, interactions of atomic bodies.
 * Can natural phenomena be explained through the arrangements and movements of fundamental constituents?
 
-## Democritus ✯ (c. 460–370 BCE)
+### Democritus ✯ (c. 460–370 BCE)
 
 **Position:** Presocratic Philosophy · Ancient Atomism · Materialist Natural Philosophy
 
@@ -404,7 +419,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Atomism and Aristotle; Epicureanism and Lucretius; the historical relationship between ancient atomism and later mechanical philosophy.
 
-## Protagoras ✯ (c. 490–420 BCE)
+### Protagoras ✯ (c. 490–420 BCE)
 
 **Position:** Classical Greek Sophism · Relativism · Epistemology · Rhetoric and Civic Education
 
@@ -432,7 +447,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato's critique in *Theaetetus*; sophism and Socratic philosophy; relativism in contemporary epistemology.
 
-## Gorgias (c. 485–380 BCE)
+### Gorgias (c. 485–380 BCE)
 
 **Position:** Classical Greek Sophism · Rhetoric · Language and Persuasion
 
@@ -452,7 +467,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Language and Philosophical Argument**
 * Verbal opposition, paradox, the limits of representation; Plato's *Gorgias* as a critical response.
 
-## Thrasymachus (fl. late 5th century BCE)
+### Thrasymachus (fl. late 5th century BCE)
 
 **Position:** Classical Greek Sophism · Rhetoric · Ancient Political Thought
 
@@ -472,7 +487,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Interpretative Problem**
 * How far does Plato's dramatic portrayal establish the philosophical views of the historical Thrasymachus?
 
-## Socrates ✯ (c. 469–399 BCE)
+## Classical Greek Philosophy and the Socratic Schools (c. 470–300 BCE)
+
+### Socrates ✯ (c. 469–399 BCE)
 
 **Position:** Classical Greek Philosophy · Socratic Philosophy · Moral Philosophy · Dialectical Inquiry
 
@@ -519,7 +536,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Plato and the Socratic Dialogues, Cynicism, Cyrenaicism, Megarian Dialectic, Stoicism.
 * Why did the Socratic tradition produce fundamentally different philosophical schools?
 
-## Plato ★ (c. 428/427–348/347 BCE)
+### Plato ★ (c. 428/427–348/347 BCE)
 
 **Position:** Classical Greek Philosophy · Socratic Tradition · Founder of the Academy · Platonism
 
@@ -583,7 +600,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Can Plato's dialogues be reconstructed into a unified philosophical system? How did Aristotle criticize Plato? How did later Platonists reinterpret his philosophy?
 * Comparative study of Aristotle, Speusippus, Xenocrates, and Plotinus.
 
-## Aristotle ★ (384–322 BCE)
+### Aristotle ★ (384–322 BCE)
 
 **Position:** Classical Greek Philosophy · Peripatetic School · Aristotelianism · Logic · Metaphysics · Natural Philosophy
 
@@ -667,7 +684,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Why does Aristotle reject separate Platonic Forms? Which aspects of Plato's philosophy does he nevertheless preserve? How were his theories transformed by later Greek, Arabic, and Latin philosophical traditions?
 * *Metaphysics* I, VII, XIII–XIV; comparative study of Plato, Theophrastus, Avicenna, and Thomas Aquinas.
 
-## Xenophon (c. 430–354 BCE)
+### Xenophon (c. 430–354 BCE)
 
 **Position:** Classical Greek Thought · Socratic Literature · Political and Ethical Writing
 
@@ -690,7 +707,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * How are economic activity, character, and good judgment related?
 * *Oeconomicus*.
 
-## Antisthenes (c. 445–365 BCE)
+### Antisthenes (c. 445–365 BCE)
 
 **Position:** Socratic Philosophy · Early Cynic Tradition · Ethics and Philosophy of Language
 
@@ -707,7 +724,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Definition, Predication, Contradiction, the Proper Account (*Oikeios Logos*).
 * Can things be defined through descriptions, or only identified through their proper accounts?
 
-## Euclid of Megara (fl. c. 400 BCE)
+### Euclid of Megara (fl. c. 400 BCE)
 
 **Position:** Socratic Philosophy · Megarian School · Dialectic
 
@@ -724,7 +741,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Refutation, Logical Opposition, Megarian Dialectic.
 * How does the examination of contradictions contribute to philosophical inquiry?
 
-## Aristippus of Cyrene (c. 435–356 BCE)
+### Aristippus of Cyrene (c. 435–356 BCE)
 
 **Position:** Socratic Philosophy · Cyrenaic School · Hedonism
 
@@ -745,7 +762,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Socratic Ethics, Cyrenaic Hedonism, the Historical Aristippus and Later Cyrenaic Doctrine.
 * How did the original teachings associated with Aristippus develop into a systematic philosophy of pleasure and perception?
 
-## Diogenes of Sinope (c. 412/404–323 BCE)
+### Diogenes of Sinope (c. 412/404–323 BCE)
 
 **Position:** Socratic Philosophy · Cynicism · Philosophy as a Way of Life
 
@@ -774,7 +791,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * The Historical Diogenes, Cynic Anecdotes, Crates of Thebes, Early Stoicism.
 * How did Cynicism influence Stoic ethics and the ideal of living according to nature?
 
-## Speusippus (c. 410–339 BCE)
+### Speusippus (c. 410–339 BCE)
 
 **Position:** Early Academy · Academic Platonism · Metaphysics
 
@@ -791,7 +808,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Criticism of Platonic Forms, First Principles, Early Academic Metaphysics.
 * How did Plato's immediate successor depart from Plato's apparent philosophical commitments?
 
-## Xenocrates (c. 396–314 BCE)
+### Xenocrates (c. 396–314 BCE)
 
 **Position:** Early Academy · Academic Platonism · Metaphysics and Philosophical Classification
 
@@ -812,7 +829,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Early Academy, Middle Platonism, Neoplatonism.
 * Which elements of later Platonism originated in the early institutional development of Plato's Academy?
 
-## Eubulides of Miletus (fl. mid-4th century BCE)
+### Eubulides of Miletus (fl. mid-4th century BCE)
 
 **Position:** Megarian School · Dialectic · Ancient Logic and Paradox
 
@@ -833,7 +850,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * The Masked Man, the Veiled Man, Identity and Knowledge.
 * How do differences in knowledge and description affect claims about identity?
 
-## Aristotle the Younger of Cyrene / Aristippus the Younger (fl. 4th century BCE)
+### Aristotle the Younger of Cyrene / Aristippus the Younger (fl. 4th century BCE)
 
 **Position:** Cyrenaic School · Hedonism · Ancient Epistemology
 
@@ -850,7 +867,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Affective Experiences (*Pathē*), Immediate Awareness, Knowledge of External Objects.
 * Can we know anything beyond our own immediate experiences?
 
-## Crates of Thebes (c. 365–285 BCE)
+### Crates of Thebes (c. 365–285 BCE)
 
 **Position:** Cynicism · Socratic Ethical Tradition · Early Stoic Influences
 
@@ -867,7 +884,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Living According to Nature, Virtue, Zeno of Citium.
 * Which elements of Cynic moral practice were incorporated into the theoretical framework of Stoicism?
 
-## Theophrastus ✯ (c. 371–287 BCE)
+### Theophrastus ✯ (c. 371–287 BCE)
 
 **Position:** Peripatetic School · Aristotelian Philosophy · Logic · Metaphysics · Natural Science
 
@@ -904,7 +921,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Aristotle's Lyceum, Systematic Inquiry, Logic, Empirical Research, Hellenistic Philosophy.
 * How did the Peripatetic school preserve, criticize, and transform Aristotle's philosophical and scientific program?
 
-## Diodorus Cronus ✯ (d. c. 284 BCE)
+## Hellenistic and Roman Philosophy (c. 300 BCE–200 CE)
+
+### Diodorus Cronus ✯ (d. c. 284 BCE)
 
 **Position:** Dialectical School · Ancient Logic · Modal Logic · Philosophy of Time
 
@@ -928,7 +947,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Megarian and Dialectical Logic, Stoic Modality, Chrysippus, Later Temporal Logic.
 
-## Pyrrho of Elis ✯ (c. 360–270 BCE)
+### Pyrrho of Elis ✯ (c. 360–270 BCE)
 
 **Position:** Hellenistic Philosophy · Ancient Skepticism · Origins of Pyrrhonism
 
@@ -952,7 +971,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Timon of Phlius, Aenesidemus, Sextus Empiricus, Ancient and Modern Skepticism.
 
-## Epicurus ✯ (341–270 BCE)
+### Epicurus ✯ (341–270 BCE)
 
 **Position:** Hellenistic Philosophy · Epicureanism · Atomism · Hedonistic Ethics · Empiricism
 
@@ -994,7 +1013,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Democritus, Lucretius, Philodemus, Epicureanism and Stoicism, Early Modern Materialism.
 
-## Zeno of Citium ✯ (c. 334–262 BCE)
+### Zeno of Citium ✯ (c. 334–262 BCE)
 
 **Position:** Hellenistic Philosophy · Founder of Stoicism · Stoic Ethics · Logic and Natural Philosophy
 
@@ -1026,7 +1045,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Cynicism, Cleanthes, Chrysippus, Roman Stoicism.
 
-## Cleanthes (c. 330–230 BCE)
+### Cleanthes (c. 330–230 BCE)
 
 **Position:** Early Stoicism · Stoic Theology · Cosmology and Ethics
 
@@ -1047,7 +1066,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Early Stoic Development**
 * Zeno's Legacy, Chrysippus, Stoic Physics and Ethics.
 
-## Timon of Phlius (c. 320–230 BCE)
+### Timon of Phlius (c. 320–230 BCE)
 
 **Position:** Ancient Skepticism · Early Pyrrhonian Tradition · Philosophical Satire
 
@@ -1064,7 +1083,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * *Silloi*, Criticism of Dogmatism, Philosophical Authority.
 * How can satire function as a method of philosophical criticism?
 
-## Arcesilaus ✯ (c. 316–241 BCE)
+### Arcesilaus ✯ (c. 316–241 BCE)
 
 **Position:** Hellenistic Philosophy · Academic Skepticism · Platonic Academy
 
@@ -1088,7 +1107,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **The Transformation of Plato's Academy**
 * Socratic Ignorance, Academic Skepticism, the Relationship Between Platonism and Skepticism.
 
-## Chrysippus ✯ (c. 279–206 BCE)
+### Chrysippus ✯ (c. 279–206 BCE)
 
 **Position:** Early Stoicism · Stoic Systematization · Propositional Logic · Ethics and Determinism
 
@@ -1128,7 +1147,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Zeno, Cleanthes, Academic Skepticism, Roman Stoicism, Ancient Logic and Modern Reconstructions of Stoic Logic.
 
-## Carneades ✯ (214–129 BCE)
+### Carneades ✯ (214–129 BCE)
 
 **Position:** Academic Skepticism · Epistemology · Dialectical Ethics
 
@@ -1156,7 +1175,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Clitomachus, Cicero, Later Academic Skepticism, the History of Epistemic Justification.
 
-## Polybius ✯ (c. 200–118 BCE)
+### Polybius ✯ (c. 200–118 BCE)
 
 **Position:** Hellenistic Political Thought · Historiography · Constitutional Theory · Republicanism
 
@@ -1180,7 +1199,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Cicero, Machiavelli, Montesquieu, Republican Political Theory.
 
-## Panaetius (c. 185–109 BCE)
+### Panaetius (c. 185–109 BCE)
 
 **Position:** Middle Stoicism · Roman Reception of Greek Philosophy · Practical Ethics
 
@@ -1200,7 +1219,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Middle Stoicism, Cicero, Roman Concepts of Duty, Early Modern Moral Philosophy.
 
-## Posidonius ✯ (c. 135–51 BCE)
+### Posidonius ✯ (c. 135–51 BCE)
 
 **Position:** Middle Stoicism · Moral Psychology · Cosmology · Natural Philosophy
 
@@ -1228,7 +1247,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Chrysippus, Plato, Cicero, Seneca, Later Stoic Psychology.
 
-## Philo of Larissa (c. 159–84 BCE)
+### Philo of Larissa (c. 159–84 BCE)
 
 **Position:** Academic Skepticism · Late Hellenistic Platonism · Epistemology
 
@@ -1245,7 +1264,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Carneades, Skeptical Platonism, Antiochus of Ascalon.
 * Did the later Academy move toward a more moderate epistemology?
 
-## Antiochus of Ascalon ✯ (c. 130–68 BCE)
+### Antiochus of Ascalon ✯ (c. 130–68 BCE)
 
 **Position:** Late Academy · Early Middle Platonism · Ethics and Epistemology
 
@@ -1270,7 +1289,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Renewed Dogmatic Platonism, the Interpretation of Plato, Eclecticism.
 * How did the rejection of Academic skepticism contribute to the revival of systematic Platonic metaphysics?
 
-## Philodemus (c. 110–35 BCE)
+### Philodemus (c. 110–35 BCE)
 
 **Position:** Roman Epicureanism · Ethics · Aesthetics · Philosophy of Rhetoric
 
@@ -1290,7 +1309,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Epicureanism in Rome, Herculaneum Papyri, Roman Literary Culture.
 
-## Cicero ✯ (106–43 BCE)
+### Cicero ✯ (106–43 BCE)
 
 **Position:** Roman Philosophy · Academic Skepticism · Political Philosophy · Natural Law · Ethics
 
@@ -1332,7 +1351,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Aristotle, Stoicism, Academic Skepticism, Roman Republicanism, Augustine, Renaissance Humanism, Early Modern Political Philosophy.
 
-## Lucretius ✯ (c. 99–55 BCE)
+### Lucretius ✯ (c. 99–55 BCE)
 
 **Position:** Roman Epicureanism · Atomism · Materialism · Philosophy of Nature
 
@@ -1369,7 +1388,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Epicurus, Roman Materialism, Renaissance Atomism, Early Modern Natural Philosophy.
 
-## Aenesidemus ✯ (fl. 1st century BCE)
+### Aenesidemus ✯ (fl. 1st century BCE)
 
 **Position:** Pyrrhonian Skepticism · Ancient Epistemology · Critique of Causation
 
@@ -1393,7 +1412,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Sextus Empiricus, the Modes of Skepticism, Later Skeptical Epistemology.
 
-## Philo of Alexandria ✯ (c. 20 BCE–50 CE)
+### Philo of Alexandria ✯ (c. 20 BCE–50 CE)
 
 **Position:** Hellenistic Jewish Philosophy · Platonism · Stoic Influences · Philosophical Theology
 
@@ -1418,7 +1437,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Middle Platonism, Clement of Alexandria, Origen, Early Christian Philosophical Theology.
 
-## Seneca ✯ (c. 1 BCE–65 CE)
+### Seneca ✯ (c. 1 BCE–65 CE)
 
 **Position:** Roman Stoicism · Moral Philosophy · Philosophy of Emotions · Practical Ethics
 
@@ -1454,7 +1473,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Roman Stoicism, Christian Moral Thought, Renaissance Humanism, Modern Virtue Ethics.
 
-## Plutarch ✯ (c. 46–120 CE)
+### Plutarch ✯ (c. 46–120 CE)
 
 **Position:** Middle Platonism · Moral Philosophy · Philosophical Biography · Philosophy of Religion
 
@@ -1489,7 +1508,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Middle Platonism, Plotinus, Christian Platonism, Renaissance Moral Thought.
 
-## Epictetus ✯ (c. 50–135 CE)
+### Epictetus ✯ (c. 50–135 CE)
 
 **Position:** Roman Stoicism · Practical Ethics · Moral Psychology · Philosophy as a Way of Life
 
@@ -1529,7 +1548,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Socrates, Chrysippus, Marcus Aurelius, Roman Stoicism, Modern Stoic Ethics.
 
-## Marcus Aurelius (121–180 CE)
+### Marcus Aurelius (121–180 CE)
 
 **Position:** Roman Stoicism · Practical Ethics · Moral Self-Examination
 
@@ -1550,7 +1569,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Rational Agency, Emotional Restraint, Public Duty.
 * How can personal integrity be maintained amid political responsibility?
 
-## Numenius of Apamea ✯ (fl. mid-2nd century CE)
+### Numenius of Apamea ✯ (fl. mid-2nd century CE)
 
 **Position:** Middle Platonism · Neopythagorean Influences · Metaphysics · Forerunner of Neoplatonism
 
@@ -1579,7 +1598,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Middle Platonism, Plotinus, Porphyry, Metaphysical Emanation.
 * Which concepts associated with Neoplatonism were already present in the work of earlier Platonists?
 
-## Sextus Empiricus ✯ (fl. late 2nd–early 3rd century CE)
+### Sextus Empiricus ✯ (fl. late 2nd–early 3rd century CE)
 
 **Position:** Pyrrhonian Skepticism · Epistemology · Ancient Logic · Criticism of Dogmatism
 
@@ -1620,7 +1639,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Pyrrho, Aenesidemus, Montaigne, Descartes, Hume, Early Modern Skepticism, Contemporary Epistemology.
 
-## Galen ✯ (129–c. 216 CE)
+## Late Ancient Philosophy and Early Christian Thought (c. 200–600 CE)
+
+### Galen ✯ (129–c. 216 CE)
 
 **Position:** Roman Imperial Philosophy · Ancient Medicine · Aristotelian and Platonic Psychology · Logic · Philosophy of Science
 
@@ -1651,7 +1672,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Aristotle, Stoicism, Medieval Medicine, Philosophy of Science, Historical Mind–Body Theories.
 
-## Clement of Alexandria ✯ (c. 150–215 CE)
+### Clement of Alexandria ✯ (c. 150–215 CE)
 
 **Position:** Early Christian Philosophy · Alexandrian Christianity · Christian Platonism · Philosophical Theology
 
@@ -1677,7 +1698,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Stoicism, Origen, Alexandrian Christian Philosophy.
 
-## Tertullian (c. 155–220 CE)
+### Tertullian (c. 155–220 CE)
 
 **Position:** Early Latin Christian Thought · Apologetics · Philosophical Theology
 
@@ -1699,7 +1720,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Substance (*Substantia*), Person (*Persona*), Trinitarian Language.
 * How can philosophical concepts be adapted to articulate Christian doctrines?
 
-## Alexander of Aphrodisias ✯ (fl. c. 200 CE)
+### Alexander of Aphrodisias ✯ (fl. c. 200 CE)
 
 **Position:** Peripatetic Philosophy · Aristotelian Commentary · Metaphysics · Philosophy of Mind · Free Will
 
@@ -1730,7 +1751,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Plotinus, Simplicius, Arabic Aristotelianism, Medieval Theories of Intellect.
 
-## Origen ✯ (c. 185–253 CE)
+### Origen ✯ (c. 185–253 CE)
 
 **Position:** Early Christian Philosophy · Alexandrian Theology · Biblical Hermeneutics · Christian Platonism
 
@@ -1762,7 +1783,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Platonism, Clement of Alexandria, Gregory of Nyssa, Augustine, Christian Philosophical Theology.
 
-## Plotinus ✯ (c. 204–270 CE)
+### Plotinus ✯ (c. 204–270 CE)
 
 **Position:** Late Ancient Platonism · Founder of Neoplatonism · Metaphysics · Philosophical Mysticism
 
@@ -1819,7 +1840,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Aristotle, Porphyry, Iamblichus, Proclus, Augustine, Pseudo-Dionysius, Renaissance Platonism.
 
-## Porphyry ✯ (c. 234–305 CE)
+### Porphyry ✯ (c. 234–305 CE)
 
 **Position:** Neoplatonism · Aristotelian Logic · Philosophy of Religion · Ethics
 
@@ -1850,7 +1871,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plotinus, Iamblichus, Boethius, Medieval Logic, the Problem of Universals.
 
-## Iamblichus ✯ (c. 242–325 CE)
+### Iamblichus ✯ (c. 242–325 CE)
 
 **Position:** Syrian Neoplatonism · Neopythagoreanism · Metaphysics · Theurgy
 
@@ -1879,7 +1900,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plotinus, Porphyry, Proclus, Damascius, Later Neoplatonism.
 
-## Marius Victorinus (c. 300–after 363 CE)
+### Marius Victorinus (c. 300–after 363 CE)
 
 **Position:** Latin Neoplatonism · Early Christian Philosophy · Philosophical Translation
 
@@ -1896,7 +1917,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Greek Logical Terminology, Latin Philosophical Vocabulary, Conceptual Translation.
 * How does the translation of philosophical terminology reshape later intellectual traditions?
 
-## Gregory of Nyssa ✯ (c. 335–395 CE)
+### Gregory of Nyssa ✯ (c. 335–395 CE)
 
 **Position:** Cappadocian Christianity · Christian Platonism · Philosophical Anthropology · Metaphysics
 
@@ -1927,7 +1948,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Origen, Christian Neoplatonism, Pseudo-Dionysius, Medieval Mystical Theology.
 
-## Augustine of Hippo ★ (354–430 CE)
+### Augustine of Hippo ★ (354–430 CE)
 
 **Position:** Patristic Philosophy · Latin Christian Philosophy · Augustinianism · Neoplatonic Influences · Philosophy of Religion
 
@@ -2009,7 +2030,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Plato, Plotinus, Porphyry, Anselm, Thomas Aquinas, Descartes, Phenomenology, Medieval Political Theology.
 * How did Augustine transform ancient philosophical problems into the central questions of Latin medieval philosophy?
 
-## Hypatia (c. 355–415 CE)
+### Hypatia (c. 355–415 CE)
 
 **Position:** Alexandrian Neoplatonism · Ancient Mathematics · Philosophy and Scientific Education
 
@@ -2026,7 +2047,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Women in Ancient Philosophy, Philosophical Schools, Religious and Civic Conflict.
 * What can reliably be reconstructed about Hypatia's philosophical views from surviving testimonia?
 
-## Macrobius (fl. early 5th century CE)
+### Macrobius (fl. early 5th century CE)
 
 **Position:** Late Latin Platonism · Philosophical Commentary · Medieval Transmission of Ancient Cosmology
 
@@ -2046,7 +2067,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Transmission**
 * Plato, Cicero, Neoplatonism, Medieval Cosmology and Education.
 
-## Syrianus (d. c. 437 CE)
+### Syrianus (d. c. 437 CE)
 
 **Position:** Athenian Neoplatonism · Platonic Metaphysics · Commentary on Aristotle
 
@@ -2067,7 +2088,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Iamblichus, Proclus, Athenian Neoplatonism.
 
-## Ammonius, Son of Hermias ✯ (c. 440–520 CE)
+### Ammonius, Son of Hermias ✯ (c. 440–520 CE)
 
 **Position:** Alexandrian Neoplatonism · Aristotelian Commentary · Ancient Logic · Philosophical Education
 
@@ -2092,7 +2113,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Proclus, Simplicius, John Philoponus, Alexandrian Neoplatonism, Medieval Logical Commentary.
 
-## Proclus ✯ (412–485 CE)
+### Proclus ✯ (412–485 CE)
 
 **Position:** Athenian Neoplatonism · Systematic Metaphysics · Platonic Theology · Philosophy of Mathematics
 
@@ -2136,7 +2157,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plotinus, Iamblichus, Damascius, Pseudo-Dionysius, Medieval Neoplatonism, Renaissance Platonism.
 
-## Pseudo-Dionysius the Areopagite ✯ (fl. c. 500 CE)
+### Pseudo-Dionysius the Areopagite ✯ (fl. c. 500 CE)
 
 **Position:** Christian Neoplatonism · Negative Theology · Mystical Theology · Metaphysical Hierarchy
 
@@ -2168,7 +2189,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Proclus, John Scotus Eriugena, Thomas Aquinas, Meister Eckhart, Medieval Mystical Philosophy.
 
-## Boethius ✯ (c. 475–526 CE)
+### Boethius ✯ (c. 475–526 CE)
 
 **Position:** Late Latin Philosophy · Neoplatonic Aristotelianism · Logic · Philosophy of Providence · Medieval Transmission
 
@@ -2209,7 +2230,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Porphyry, Augustine, Abelard, Scholastic Logic, Medieval Theories of Providence.
 
-## Cassiodorus (c. 485–585 CE)
+### Cassiodorus (c. 485–585 CE)
 
 **Position:** Late Latin Intellectual Tradition · Liberal Arts Education · Transmission of Ancient Philosophy
 
@@ -2231,7 +2252,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Transmission of Classical Philosophy**
 * Manuscript Preservation, Monastic Education, Late Antiquity and the Early Middle Ages.
 
-## Damascius ✯ (c. 458–after 538 CE)
+### Damascius ✯ (c. 458–after 538 CE)
 
 **Position:** Late Athenian Neoplatonism · First Principles · Metaphysics · Negative Theology
 
@@ -2260,7 +2281,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Late Athenian Neoplatonism, Simplicius, Negative Theology, Later Metaphysical Traditions.
 
-## Simplicius ✯ (c. 490–560 CE)
+### Simplicius ✯ (c. 490–560 CE)
 
 **Position:** Late Neoplatonism · Aristotelian Commentary · Natural Philosophy · Ancient Philosophical Historiography
 
@@ -2294,7 +2315,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Alexander of Aphrodisias, Damascius, Presocratic Studies, Medieval Aristotelianism.
 
-## John Philoponus ✯ (c. 490–570 CE)
+### John Philoponus ✯ (c. 490–570 CE)
 
 **Position:** Alexandrian Neoplatonism · Christian Aristotelianism · Natural Philosophy · Criticism of Ancient Physics
 
@@ -2332,7 +2353,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Proclus, Simplicius, Arabic Natural Philosophy, Medieval Cosmology, History of Mechanics.
 
-## John Scotus Eriugena ✯ (c. 815–877 CE)
+## Medieval and Scholastic Philosophy (c. 600–1400)
+
+### John Scotus Eriugena ✯ (c. 815–877 CE)
 
 **Position:** Early Medieval Philosophy · Carolingian Renaissance · Christian Neoplatonism · Metaphysics
 
@@ -2363,7 +2386,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Augustine, Pseudo-Dionysius, Maximus the Confessor, Neoplatonism, Medieval Mystical Theology.
 
-## Al-Farabi ✯ (c. 870–950 CE)
+### Al-Farabi ✯ (c. 870–950 CE)
 
 **Position:** Medieval Arabic Aristotelianism · Neoplatonic Influences · Logic · Political Philosophy · Philosophy of Religion
 
@@ -2399,7 +2422,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Aristotle, Avicenna, Maimonides, Medieval Political Philosophy.
 
-## Avicenna ✯ (980–1037 CE)
+### Avicenna ✯ (980–1037 CE)
 
 **Position:** Medieval Arabic Philosophy · Avicennian Metaphysics · Aristotelianism · Neoplatonic Influences · Epistemology
 
@@ -2438,7 +2461,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Al-Farabi, Al-Ghazali, Averroes, Albert the Great, Thomas Aquinas, Duns Scotus, Latin Scholastic Metaphysics.
 
-## Anselm of Canterbury ✯ (1033–1109 CE)
+### Anselm of Canterbury ✯ (1033–1109 CE)
 
 **Position:** Early Scholastic Philosophy · Augustinianism · Philosophical Theology · Philosophy of Religion
 
@@ -2480,7 +2503,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Gaunilo's Objection, Kant's Criticism, Modern Modal Ontological Arguments.
 * Does conceptual analysis establish real existence?
 
-## Solomon Ibn Gabirol ✯ (c. 1021–1058 CE)
+### Solomon Ibn Gabirol ✯ (c. 1021–1058 CE)
 
 **Position:** Medieval Jewish Neoplatonism · Metaphysics · Universal Hylomorphism · Latin Philosophical Transmission
 
@@ -2505,7 +2528,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Neoplatonism, Medieval Jewish Philosophy, Franciscan Scholasticism, Bonaventure, Thomas Aquinas.
 
-## Al-Ghazali ✯ (c. 1058–1111 CE)
+### Al-Ghazali ✯ (c. 1058–1111 CE)
 
 **Position:** Medieval Islamic Philosophical Theology · Criticism of Aristotelianism · Epistemology · Philosophy of Religion
 
@@ -2535,7 +2558,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Avicenna, Averroes, Causation Debates, Medieval Latin Reception of Arabic Philosophy.
 
-## Peter Abelard ✯ (1079–1142 CE)
+### Peter Abelard ✯ (1079–1142 CE)
 
 **Position:** Twelfth-Century Scholasticism · Dialectic · Logic · Philosophy of Language · Ethics
 
@@ -2571,7 +2594,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Boethius, Early Scholastic Logic, Héloïse, Peter Lombard, Medieval Nominalism.
 
-## Hildegard of Bingen (1098–1179 CE)
+### Hildegard of Bingen (1098–1179 CE)
 
 **Position:** Medieval Christian Thought · Natural Philosophy · Cosmology · Philosophical Theology
 
@@ -2589,7 +2612,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Soul and Body, Virtue, Freedom, Moral Development.
 * What is the relationship between bodily life and spiritual agency?
 
-## Héloïse ✯ (c. 1090–1164 CE)
+### Héloïse ✯ (c. 1090–1164 CE)
 
 **Position:** Twelfth-Century Ethical Thought · Philosophy of Intention · Moral Psychology
 
@@ -2609,7 +2632,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Abelard's Ethics, Medieval Moral Psychology, the History of Women's Philosophy.
 
-## Peter Lombard ✯ (c. 1100–1160 CE)
+### Peter Lombard ✯ (c. 1100–1160 CE)
 
 **Position:** Twelfth-Century Scholasticism · Systematic Theology · Scholastic Method
 
@@ -2633,7 +2656,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Abelard, Bonaventure, Aquinas, Duns Scotus, Ockham, Medieval University Philosophy.
 
-## John of Salisbury (c. 1120–1180 CE)
+### John of Salisbury (c. 1120–1180 CE)
 
 **Position:** Twelfth-Century Humanism · Political Philosophy · Philosophical Education
 
@@ -2652,7 +2675,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * What distinguishes a legitimate ruler from a tyrant?
 * *Policraticus*.
 
-## Averroes ✯ (1126–1198 CE)
+### Averroes ✯ (1126–1198 CE)
 
 **Position:** Medieval Arabic Aristotelianism · Aristotelian Commentary · Metaphysics · Philosophy of Mind
 
@@ -2688,7 +2711,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Unity of Intellect, Philosophical Autonomy, Siger of Brabant, Thomas Aquinas.
 * Why did Averroes' interpretation of Aristotle provoke major disputes within Latin scholasticism?
 
-## Maimonides ✯ (1138–1204 CE)
+### Maimonides ✯ (1138–1204 CE)
 
 **Position:** Medieval Jewish Aristotelianism · Philosophy of Religion · Negative Theology · Philosophical Hermeneutics
 
@@ -2722,7 +2745,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Al-Farabi, Avicenna, Aquinas, Spinoza, Medieval Jewish and Christian Philosophy.
 
-## Robert Grosseteste ✯ (c. 1175–1253 CE)
+### Robert Grosseteste ✯ (c. 1175–1253 CE)
 
 **Position:** Early English Scholasticism · Aristotelian Natural Philosophy · Metaphysics of Light · Philosophy of Science
 
@@ -2753,7 +2776,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Augustine, Aristotle, Roger Bacon, Medieval Natural Philosophy.
 
-## Albert the Great ✯ (c. 1200–1280 CE)
+### Albert the Great ✯ (c. 1200–1280 CE)
 
 **Position:** High Scholasticism · Aristotelianism · Natural Philosophy · Christian Philosophy
 
@@ -2781,7 +2804,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Avicenna, Averroes, Thomas Aquinas, Medieval Scientific Inquiry.
 
-## Bonaventure ✯ (c. 1217–1274 CE)
+### Bonaventure ✯ (c. 1217–1274 CE)
 
 **Position:** High Scholasticism · Franciscan Philosophy · Augustinianism · Christian Neoplatonism
 
@@ -2814,7 +2837,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Augustine, Pseudo-Dionysius, Franciscan Scholasticism, Duns Scotus.
 
-## Roger Bacon (c. 1214–1292 CE)
+### Roger Bacon (c. 1214–1292 CE)
 
 **Position:** Medieval Natural Philosophy · Oxford Scholasticism · Optics · Scientific Method
 
@@ -2836,7 +2859,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Languages, Logical Training, Scientific Knowledge, Scholastic Criticism.
 * How should philosophical education be reorganized to improve the reliability of knowledge?
 
-## Thomas Aquinas ★ (1225–1274 CE)
+### Thomas Aquinas ★ (1225–1274 CE)
 
 **Position:** High Scholasticism · Aristotelianism · Thomism · Metaphysics · Natural Law Theory · Philosophical Theology
 
@@ -2928,7 +2951,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Thomism, Duns Scotus, Ockham, Suarez, Natural Law Theory, Modern Philosophy of Religion, Contemporary Virtue Ethics.
 
-## Ramon Llull ✯ (1232–1316 CE)
+### Ramon Llull ✯ (1232–1316 CE)
 
 **Position:** Medieval Logic · Combinatorial Reasoning · Philosophical Theology · History of Formal Methods
 
@@ -2954,7 +2977,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Symbolic Representation, Combinatorial Systems, Leibniz, Formal Methods.
 * In what respects does Llull's *Ars* anticipate later projects of systematic logical calculation, and where are the important differences?
 
-## Siger of Brabant ✯ (c. 1240–1284 CE)
+### Siger of Brabant ✯ (c. 1240–1284 CE)
 
 **Position:** Latin Aristotelianism · Parisian Arts Faculty · Latin Averroism · Philosophy of Mind
 
@@ -2979,7 +3002,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Averroes, Aquinas, Medieval Philosophy of Mind, Scholastic Intellectual Freedom.
 
-## Meister Eckhart ✯ (c. 1260–1328 CE)
+### Meister Eckhart ✯ (c. 1260–1328 CE)
 
 **Position:** German Mysticism · Scholastic Philosophy · Neoplatonism · Negative Theology
 
@@ -3009,7 +3032,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Augustine, Pseudo-Dionysius, Neoplatonism, German Mysticism, Later Philosophical Interpretations of Selfhood.
 
-## John Duns Scotus ✯ (c. 1265–1308 CE)
+### John Duns Scotus ✯ (c. 1265–1308 CE)
 
 **Position:** High Scholasticism · Franciscan Philosophy · Scotism · Metaphysics · Modal Philosophy
 
@@ -3051,7 +3074,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Avicenna, Aquinas, Ockham, Scotism, Modern Modal Metaphysics.
 
-## Marguerite Porete (d. 1310 CE)
+### Marguerite Porete (d. 1310 CE)
 
 **Position:** Medieval Mystical Philosophy · Ethical Thought · Philosophy of Love
 
@@ -3068,7 +3091,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Self-Renunciation, Divine Union, Detachment.
 * What becomes of personal agency in a condition of complete spiritual surrender?
 
-## Marsilius of Padua ✯ (c. 1275–1343 CE)
+### Marsilius of Padua ✯ (c. 1275–1343 CE)
 
 **Position:** Medieval Political Philosophy · Aristotelian Political Thought · Constitutional Theory
 
@@ -3094,7 +3117,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Medieval Political Theology, Constitutionalism, Early Modern Political Thought.
 
-## William of Ockham ✯ (c. 1287–1347 CE)
+### William of Ockham ✯ (c. 1287–1347 CE)
 
 **Position:** Late Scholasticism · Nominalism · Logic · Epistemology · Political Philosophy
 
@@ -3136,7 +3159,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Duns Scotus, Medieval Logic, Nominalist Traditions, Early Modern Epistemology.
 
-## John Buridan ✯ (c. 1300–1360 CE)
+### John Buridan ✯ (c. 1300–1360 CE)
 
 **Position:** Late Scholasticism · Terminist Logic · Philosophy of Language · Natural Philosophy
 
@@ -3172,7 +3195,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Ockham, Medieval Logic, Impetus Theory, Late Medieval Natural Philosophy.
 
-## Nicole Oresme (c. 1320–1382 CE)
+### Nicole Oresme (c. 1320–1382 CE)
 
 **Position:** Late Medieval Natural Philosophy · Mathematics · Cosmology · Political Economy
 
@@ -3193,7 +3216,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Monetary Value, Coinage, Sovereign Power, Economic Justice.
 * What limits should constrain a ruler's authority to alter the currency?
 
-## John Wycliffe ✯ (c. 1328–1384 CE)
+### John Wycliffe ✯ (c. 1328–1384 CE)
 
 **Position:** Late Scholasticism · Metaphysical Realism · Political Theology · Early Reform Thought
 
@@ -3223,7 +3246,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Medieval Realism, Scholastic Political Thought, the Lollard Movement, Later Religious Reform.
 
-## Francesco Petrarch (1304–1374)
+## Renaissance Philosophy and the Origins of Early Modern Thought (c. 1400–1650)
+
+### Francesco Petrarch (1304–1374)
 
 **Position:** Early Renaissance Humanism · Classical Revival · Moral Philosophy · Christian Humanism
 
@@ -3245,7 +3270,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Practical Wisdom, Eloquence, Criticism of Scholastic Dialectic.
 * Is philosophical learning valuable primarily for theoretical demonstration or for the improvement of human life?
 
-## George Gemistos Plethon (c. 1355–1452)
+### George Gemistos Plethon (c. 1355–1452)
 
 **Position:** Byzantine Platonism · Renaissance Reception of Greek Philosophy · Platonic Revival
 
@@ -3263,7 +3288,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Byzantine Scholarship, Greek Texts, Intellectual Transmission.
 * How did renewed access to Greek philosophical traditions reshape Renaissance philosophy?
 
-## Christine de Pizan ✯ (c. 1364–1430)
+### Christine de Pizan ✯ (c. 1364–1430)
 
 **Position:** Late Medieval and Early Renaissance Political Thought · Humanism · Moral Philosophy · Women's Intellectual History
 
@@ -3295,7 +3320,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Medieval Virtue Ethics, Renaissance Humanism, Women's Political Thought, the History of Equality and Education.
 
-## Nicholas of Cusa ✯ (1401–1464)
+### Nicholas of Cusa ✯ (1401–1464)
 
 **Position:** Renaissance Philosophy · Christian Neoplatonism · Philosophical Theology · Epistemology
 
@@ -3330,7 +3355,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Neoplatonism, Pseudo-Dionysius, Renaissance Metaphysics, Later Debates About Infinity and Human Knowledge.
 
-## Lorenzo Valla ✯ (c. 1406–1457)
+### Lorenzo Valla ✯ (c. 1406–1457)
 
 **Position:** Renaissance Humanism · Philology · Philosophy of Language · Criticism of Scholastic Logic
 
@@ -3366,7 +3391,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Renaissance Humanism, Erasmus, Biblical Philology, Early Modern Criticism of Scholasticism.
 
-## Marsilio Ficino ✯ (1433–1499)
+### Marsilio Ficino ✯ (1433–1499)
 
 **Position:** Renaissance Platonism · Florentine Platonism · Christian Neoplatonism · Metaphysics
 
@@ -3401,7 +3426,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Plotinus, Giovanni Pico della Mirandola, Renaissance Platonism, Later Aesthetic and Metaphysical Traditions.
 
-## Pietro Pomponazzi ✯ (1462–1525)
+### Pietro Pomponazzi ✯ (1462–1525)
 
 **Position:** Renaissance Aristotelianism · Natural Philosophy · Philosophical Psychology · Naturalism
 
@@ -3436,7 +3461,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Alexander of Aphrodisias, Averroes, Thomas Aquinas, Renaissance Naturalism.
 
-## Giovanni Pico della Mirandola (1463–1494)
+### Giovanni Pico della Mirandola (1463–1494)
 
 **Position:** Renaissance Humanism · Renaissance Platonism · Philosophical Syncretism · Christian Kabbalah
 
@@ -3464,7 +3489,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Can astrological prediction be reconciled with rational agency?
 * *Disputations Against Divinatory Astrology*.
 
-## Desiderius Erasmus ✯ (c. 1466–1536)
+### Desiderius Erasmus ✯ (c. 1466–1536)
 
 **Position:** Renaissance Humanism · Christian Humanism · Moral Philosophy · Biblical Philology
 
@@ -3499,7 +3524,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Lorenzo Valla, Renaissance Humanism, Martin Luther, Early Modern Education and Religious Reform.
 
-## Niccolò Machiavelli ✯ (1469–1527)
+### Niccolò Machiavelli ✯ (1469–1527)
 
 **Position:** Renaissance Political Philosophy · Republicanism · Political Realism · Historical Political Analysis
 
@@ -3552,7 +3577,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Classical Republicanism, Hobbes, Montesquieu, Rousseau, Modern Political Realism.
 
-## Nicolaus Copernicus (1473–1543)
+### Nicolaus Copernicus (1473–1543)
 
 **Position:** Renaissance Astronomy · Mathematical Cosmology · Scientific Revolution
 
@@ -3572,7 +3597,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotelian Cosmology, Kepler, Galileo, Descartes, Newton, the Scientific Revolution.
 
-## Thomas More ✯ (1478–1535)
+### Thomas More ✯ (1478–1535)
 
 **Position:** Renaissance Humanism · Political Philosophy · Utopian Literature · Social Criticism
 
@@ -3601,7 +3626,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato's *Republic*, Renaissance Humanism, Utopian Socialism, Modern Political Utopianism.
 
-## Martin Luther (1483–1546)
+### Martin Luther (1483–1546)
 
 **Position:** Protestant Reformation · Reformation Theology · Freedom and Moral Agency · Criticism of Scholastic Theology
 
@@ -3623,7 +3648,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Temporal Authority, Spiritual Authority, Conscience, Obedience.
 * How should religious authority and civil government be distinguished?
 
-## Francisco de Vitoria ✯ (c. 1483–1546)
+### Francisco de Vitoria ✯ (c. 1483–1546)
 
 **Position:** School of Salamanca · Late Scholasticism · Natural Law · Political Philosophy · Law of Nations
 
@@ -3657,7 +3682,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Thomas Aquinas, School of Salamanca, Francisco Suárez, Hugo Grotius, Natural Law Traditions.
 
-## Huldrych Zwingli (1484–1531)
+### Huldrych Zwingli (1484–1531)
 
 **Position:** Protestant Reformation · Reformed Theology · Political and Religious Authority
 
@@ -3678,7 +3703,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Civic Reform, Political Authority, Religious Obligation.
 * What relationship should exist between religious reform and civil government?
 
-## John Calvin (1509–1564)
+### John Calvin (1509–1564)
 
 **Position:** Protestant Reformation · Reformed Theology · Predestination · Political and Moral Thought
 
@@ -3700,7 +3725,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Moral Law, Civil Government, Church Discipline, Political Obedience.
 * What duties bind political rulers and religious communities?
 
-## Bernardino Telesio ✯ (1509–1588)
+### Bernardino Telesio ✯ (1509–1588)
 
 **Position:** Renaissance Naturalism · Renaissance Natural Philosophy · Anti-Aristotelian Philosophy · Early Empiricism
 
@@ -3729,7 +3754,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Renaissance Aristotelianism, Giordano Bruno, Tommaso Campanella, Francis Bacon, Early Modern Natural Philosophy.
 
-## Jean Bodin ✯ (c. 1530–1596)
+### Jean Bodin ✯ (c. 1530–1596)
 
 **Position:** Renaissance Political Philosophy · Sovereignty Theory · Legal and Constitutional Thought · Historical Method
 
@@ -3763,7 +3788,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Machiavelli, Hobbes, Early Modern Sovereignty Theory, Modern Legal and Political Philosophy.
 
-## Michel de Montaigne ✯ (1533–1592)
+### Michel de Montaigne ✯ (1533–1592)
 
 **Position:** Renaissance Humanism · Renaissance Skepticism · Moral Philosophy · Philosophical Anthropology
 
@@ -3808,7 +3833,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Sextus Empiricus, Renaissance Skepticism, Descartes, Pascal, Hume, Modern Philosophical Self-Examination.
 
-## Justus Lipsius ✯ (1547–1606)
+### Justus Lipsius ✯ (1547–1606)
 
 **Position:** Renaissance Humanism · Neostoicism · Moral Philosophy · Political Thought
 
@@ -3838,7 +3863,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Seneca, Epictetus, Renaissance Neostoicism, Early Modern Moral and Political Philosophy.
 
-## Giordano Bruno ✯ (1548–1600)
+### Giordano Bruno ✯ (1548–1600)
 
 **Position:** Renaissance Natural Philosophy · Renaissance Hermeticism · Metaphysics · Infinite Cosmology
 
@@ -3872,7 +3897,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Nicholas of Cusa, Renaissance Naturalism, Early Modern Debates About Infinity and Nature.
 
-## Francisco Suárez ✯ (1548–1617)
+### Francisco Suárez ✯ (1548–1617)
 
 **Position:** Late Scholasticism · School of Salamanca · Suárezian Metaphysics · Natural Law Theory · Early Modern Philosophy
 
@@ -3922,7 +3947,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Thomas Aquinas, Duns Scotus, Descartes, Leibniz, Christian Wolff, Early Modern Metaphysics and Legal Philosophy.
 
-## Francis Bacon ✯ (1561–1626)
+### Francis Bacon ✯ (1561–1626)
 
 **Position:** Early Modern Philosophy · Philosophy of Science · Empiricism · Scientific Method · Natural Philosophy
 
@@ -3978,7 +4003,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Renaissance Natural Philosophy, Experimental Philosophy, Royal Society, Empiricism, Scientific Methodology, Modern Philosophy of Science.
 
-## Galileo Galilei ✯ (1564–1642)
+### Galileo Galilei ✯ (1564–1642)
 
 **Position:** Early Modern Natural Philosophy · Mathematical Physics · Scientific Revolution · Philosophy of Science
 
@@ -4023,7 +4048,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Copernicus, Kepler, Descartes, Newton, Modern Mathematical Physics, Philosophy of Science.
 
-## Tommaso Campanella (1568–1639)
+### Tommaso Campanella (1568–1639)
 
 **Position:** Renaissance Naturalism · Philosophical Theology · Political Utopianism · Anti-Aristotelian Philosophy
 
@@ -4047,7 +4072,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Can political institutions be organized around a comprehensive conception of natural and moral order?
 * *The City of the Sun*.
 
-## Johannes Kepler (1571–1630)
+### Johannes Kepler (1571–1630)
 
 **Position:** Scientific Revolution · Mathematical Astronomy · Philosophy of Nature · Cosmology
 
@@ -4073,7 +4098,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Copernicus, Galileo, Newton, Mathematical Natural Philosophy.
 
-## Hugo Grotius ✯ (1583–1645)
+## Seventeenth-Century Rationalism and Empiricism (c. 1600–1720)
+
+### Hugo Grotius ✯ (1583–1645)
 
 **Position:** Early Modern Natural Law Theory · Political Philosophy · Philosophy of Law · Law of Nations
 
@@ -4112,7 +4139,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Francisco de Vitoria, Thomas Hobbes, Samuel Pufendorf, John Locke, Natural Rights Theory, International Legal Philosophy.
 
-## Thomas Hobbes ✯ (1588–1679)
+### Thomas Hobbes ✯ (1588–1679)
 
 **Position:** Early Modern Philosophy · Materialism · Mechanistic Philosophy · Social Contract Theory · Political Absolutism
 
@@ -4168,7 +4195,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Machiavelli, Grotius, Pufendorf, Locke, Rousseau, Modern Contractarianism, Political Realism.
 
-## Pierre Gassendi ✯ (1592–1655)
+### Pierre Gassendi ✯ (1592–1655)
 
 **Position:** Early Modern Empiricism · Neo-Epicureanism · Atomism · Experimental Natural Philosophy
 
@@ -4202,7 +4229,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Epicurus, Descartes, Robert Boyle, Locke, Newton, Early Modern Empiricism.
 
-## René Descartes ★ (1596–1650)
+### René Descartes ★ (1596–1650)
 
 **Position:** Early Modern Philosophy · Cartesianism · Rationalism · Substance Dualism · Mechanistic Natural Philosophy
 
@@ -4290,7 +4317,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Elisabeth of Bohemia, Gassendi, Arnauld, Hobbes, Spinoza, Malebranche, Leibniz, Locke, Kant.
 * Which Cartesian problems became foundational for subsequent metaphysics, epistemology, and philosophy of mind?
 
-## Antoine Arnauld ✯ (1612–1694)
+### Antoine Arnauld ✯ (1612–1694)
 
 **Position:** Cartesian Philosophy · Port-Royal Logic · Jansenism · Early Modern Epistemology
 
@@ -4326,7 +4353,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Descartes, Port-Royal Logic, Malebranche, Leibniz, Early Modern Theories of Ideas.
 
-## Henry More ✯ (1614–1687)
+### Henry More ✯ (1614–1687)
 
 **Position:** Cambridge Platonism · Early Modern Metaphysics · Philosophy of Mind · Philosophy of Space
 
@@ -4352,7 +4379,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Descartes, Cambridge Platonism, Anne Conway, Ralph Cudworth, Early Modern Philosophy of Space.
 
-## Ralph Cudworth ✯ (1617–1688)
+### Ralph Cudworth ✯ (1617–1688)
 
 **Position:** Cambridge Platonism · Moral Rationalism · Metaphysics · Philosophy of Religion
 
@@ -4381,7 +4408,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Platonism, Hobbes, Cambridge Platonism, Early Modern Moral Rationalism.
 
-## Elisabeth, Princess of Bohemia ✯ (1618–1680)
+### Elisabeth, Princess of Bohemia ✯ (1618–1680)
 
 **Position:** Early Modern Cartesian Debates · Philosophy of Mind · Causation · Moral Psychology
 
@@ -4410,7 +4437,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Descartes, the Mind–Body Problem, Early Modern Causation and Moral Psychology.
 
-## Margaret Cavendish ✯ (1623–1673)
+### Margaret Cavendish ✯ (1623–1673)
 
 **Position:** Early Modern Natural Philosophy · Materialism · Vitalism · Philosophy of Mind
 
@@ -4444,7 +4471,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hobbes, Descartes, Robert Boyle, Early Modern Materialism, Philosophy of Biology.
 
-## Blaise Pascal ✯ (1623–1662)
+### Blaise Pascal ✯ (1623–1662)
 
 **Position:** Early Modern Philosophy · Mathematical Probability · Philosophy of Religion · Skepticism · Moral Psychology
 
@@ -4482,7 +4509,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Montaigne, Descartes, Probability Theory, Kierkegaard, Existential Philosophy, Decision Theory.
 
-## Robert Boyle ✯ (1627–1691)
+### Robert Boyle ✯ (1627–1691)
 
 **Position:** Early Modern Experimental Philosophy · Corpuscularianism · Philosophy of Science · Natural Philosophy
 
@@ -4511,7 +4538,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Gassendi, Descartes, Locke, Newton, Experimental Philosophy, Modern Chemistry.
 
-## Anne Conway ✯ (1631–1679)
+### Anne Conway ✯ (1631–1679)
 
 **Position:** Cambridge Platonism · Early Modern Metaphysics · Vitalism · Criticism of Cartesian Dualism
 
@@ -4544,7 +4571,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Henry More, Descartes, Spinoza, Leibniz, Early Modern Vitalist Metaphysics.
 
-## Baruch Spinoza ★ (1632–1677)
+### Baruch Spinoza ★ (1632–1677)
 
 **Position:** Early Modern Rationalism · Spinozism · Substance Monism · Philosophical Naturalism · Determinism
 
@@ -4646,7 +4673,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Descartes, Leibniz, German Idealism, Hegel, Marx, Nietzsche, Deleuze.
 * Can Spinoza's system reconcile necessity, individuality, freedom, and ethical responsibility?
 
-## Samuel Pufendorf ✯ (1632–1694)
+### Samuel Pufendorf ✯ (1632–1694)
 
 **Position:** Early Modern Natural Law Theory · Political Philosophy · Moral Philosophy · Law of Nations
 
@@ -4674,7 +4701,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Grotius, Hobbes, Locke, Natural Law Theory, the Scottish Enlightenment, Kant.
 
-## John Locke ✯ (1632–1704)
+### John Locke ✯ (1632–1704)
 
 **Position:** Early Modern Empiricism · Epistemology · Liberal Political Philosophy · Social Contract Theory
 
@@ -4746,7 +4773,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Descartes, Gassendi, Boyle, Berkeley, Hume, Rousseau, Liberalism, Modern Epistemology.
 
-## Nicolas Malebranche ✯ (1638–1715)
+### Nicolas Malebranche ✯ (1638–1715)
 
 **Position:** Cartesian Philosophy · Occasionalism · Augustinianism · Early Modern Epistemology
 
@@ -4781,7 +4808,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Augustine, Descartes, Arnauld, Leibniz, Berkeley, Hume.
 
-## Isaac Newton ✯ (1642–1727)
+### Isaac Newton ✯ (1642–1727)
 
 **Position:** Early Modern Natural Philosophy · Mathematical Physics · Philosophy of Science · Scientific Revolution
 
@@ -4826,7 +4853,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Descartes, Leibniz, Locke, Berkeley, Hume, Kant, Modern Philosophy of Science.
 
-## Gottfried Wilhelm Leibniz ★ (1646–1716)
+### Gottfried Wilhelm Leibniz ★ (1646–1716)
 
 **Position:** Early Modern Rationalism · Leibnizian Metaphysics · Monadology · Logic · Philosophy of Mathematics
 
@@ -4936,7 +4963,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Descartes, Spinoza, Arnauld, Locke, Newton, Christian Wolff, Kant, Modern Modal Logic, Analytic Metaphysics.
 * Is Leibniz's philosophical system internally consistent across its logical, metaphysical, scientific, and theological commitments?
 
-## Pierre Bayle ✯ (1647–1706)
+### Pierre Bayle ✯ (1647–1706)
 
 **Position:** Early Enlightenment Skepticism · Philosophical Criticism · Philosophy of Religion · Religious Toleration
 
@@ -4971,7 +4998,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Montaigne, Spinoza, Leibniz, Hume, Enlightenment Skepticism, Religious Toleration.
 
-## Mary Astell ✯ (1666–1731)
+### Mary Astell ✯ (1666–1731)
 
 **Position:** Early Modern Cartesian Philosophy · Women's Education · Moral Philosophy · Political Thought
 
@@ -5001,7 +5028,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Descartes, Malebranche, Early Modern Political Philosophy, Women's Intellectual History, Modern Feminist Philosophy.
 
-## George Berkeley ✯ (1685–1753)
+### George Berkeley ✯ (1685–1753)
 
 **Position:** Early Modern Empiricism · Immaterialism · Idealism · Philosophy of Perception
 
@@ -5059,7 +5086,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Locke, Malebranche, Newton, Hume, Kant, Idealism, Modern Philosophy of Perception.
 
-## Giambattista Vico ✯ (1668–1744)
+## Enlightenment Philosophy and Kant (c. 1700–1805)
+
+### Giambattista Vico ✯ (1668–1744)
 
 **Position:** Italian Enlightenment · Philosophy of History · Historical Epistemology · Rhetoric and Humanistic Philosophy
 
@@ -5093,7 +5122,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Renaissance Humanism, Montesquieu, Herder, Hegel, Historicism, Philosophy of Culture.
 
-## Bernard Mandeville ✯ (1670–1733)
+### Bernard Mandeville ✯ (1670–1733)
 
 **Position:** British Enlightenment · Moral Psychology · Social Philosophy · Political Economy
 
@@ -5118,7 +5147,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Shaftesbury, Hutcheson, Hume, Adam Smith, Political Economy, Theories of Spontaneous Order.
 
-## Anthony Ashley Cooper, Third Earl of Shaftesbury ✯ (1671–1713)
+### Anthony Ashley Cooper, Third Earl of Shaftesbury ✯ (1671–1713)
 
 **Position:** British Enlightenment · Moral Sense Theory · Ethical Sentimentalism · Aesthetics
 
@@ -5147,7 +5176,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hutcheson, Hume, Adam Smith, Moral Sentimentalism, Eighteenth-Century Aesthetics.
 
-## Christian Wolff ✯ (1679–1754)
+### Christian Wolff ✯ (1679–1754)
 
 **Position:** German Enlightenment · Wolffian Rationalism · Systematic Metaphysics · Logic
 
@@ -5185,7 +5214,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Leibniz, Baumgarten, German University Philosophy, Kant, Post-Kantian Metaphysics.
 
-## Montesquieu ✯ (1689–1755)
+### Montesquieu ✯ (1689–1755)
 
 **Position:** French Enlightenment · Political Philosophy · Constitutionalism · Comparative Political Theory
 
@@ -5223,7 +5252,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Machiavelli, Locke, Rousseau, Constitutionalism, Comparative Political Science.
 
-## Joseph Butler ✯ (1692–1752)
+### Joseph Butler ✯ (1692–1752)
 
 **Position:** British Moral Philosophy · Moral Rationalism · Conscience · Moral Psychology
 
@@ -5248,7 +5277,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hobbes, Shaftesbury, Hume, Reid, British Moral Philosophy.
 
-## Francis Hutcheson ✯ (1694–1746)
+### Francis Hutcheson ✯ (1694–1746)
 
 **Position:** Scottish Enlightenment · Moral Sense Theory · Moral Sentimentalism · Aesthetics
 
@@ -5277,7 +5306,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Shaftesbury, Hume, Adam Smith, Scottish Moral Philosophy, Utilitarian Thought.
 
-## Voltaire (1694–1778)
+### Voltaire (1694–1778)
 
 **Position:** French Enlightenment · Philosophical Criticism · Religious Toleration · Deism
 
@@ -5300,7 +5329,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Can suffering be reconciled with the claim that this is the best possible world?
 * *Candide*, *Poem on the Lisbon Disaster*.
 
-## David Hartley (1705–1757)
+### David Hartley (1705–1757)
 
 **Position:** British Associationism · Empiricist Psychology · Philosophy of Mind
 
@@ -5320,7 +5349,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Locke, Hume, James Mill, John Stuart Mill, Nineteenth-Century Association Psychology.
 
-## Julien Offray de La Mettrie (1709–1751)
+### Julien Offray de La Mettrie (1709–1751)
 
 **Position:** French Enlightenment · Materialism · Mechanistic Philosophy · Philosophy of Mind
 
@@ -5342,7 +5371,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Pleasure, Happiness, Natural Desire, Moral Conventions.
 * What follows for ethics if human beings are understood as entirely natural organisms?
 
-## Thomas Reid ✯ (1710–1796)
+### Thomas Reid ✯ (1710–1796)
 
 **Position:** Scottish Enlightenment · Scottish Common-Sense Philosophy · Direct Realism · Epistemology
 
@@ -5381,7 +5410,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hume, Scottish Common-Sense Philosophy, American Philosophy, Contemporary Epistemology.
 
-## David Hume ★ (1711–1776)
+### David Hume ★ (1711–1776)
 
 **Position:** Scottish Enlightenment · Empiricism · Philosophical Skepticism · Naturalism · Moral Sentimentalism
 
@@ -5501,7 +5530,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Locke, Berkeley, Hutcheson, Adam Smith, Thomas Reid, Kant, Logical Empiricism, Popper, Contemporary Epistemology.
 
-## Jean-Jacques Rousseau ✯ (1712–1778)
+### Jean-Jacques Rousseau ✯ (1712–1778)
 
 **Position:** French Enlightenment · Social Contract Theory · Republicanism · Moral and Political Philosophy
 
@@ -5562,7 +5591,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hobbes, Locke, Montesquieu, Kant, German Idealism, Republicanism, Democratic Theory.
 
-## Denis Diderot (1713–1784)
+### Denis Diderot (1713–1784)
 
 **Position:** French Enlightenment · Encyclopedism · Materialism · Moral and Aesthetic Philosophy
 
@@ -5586,7 +5615,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * To what extent are moral norms products of particular social institutions?
 * *Supplement to Bougainville's Voyage*.
 
-## Étienne Bonnot de Condillac ✯ (1714–1780)
+### Étienne Bonnot de Condillac ✯ (1714–1780)
 
 **Position:** French Enlightenment · Empiricism · Sensationalism · Philosophy of Mind
 
@@ -5615,7 +5644,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Locke, French Sensationalism, Psychology, Nineteenth-Century Empiricism.
 
-## Alexander Gottlieb Baumgarten ✯ (1714–1762)
+### Alexander Gottlieb Baumgarten ✯ (1714–1762)
 
 **Position:** German Enlightenment · Wolffian Rationalism · Aesthetics · Epistemology
 
@@ -5645,7 +5674,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Leibniz, Wolff, Kant, Modern Aesthetics.
 
-## Claude-Adrien Helvétius (1715–1771)
+### Claude-Adrien Helvétius (1715–1771)
 
 **Position:** French Enlightenment · Sensationalism · Utilitarian Moral Thought · Social Philosophy
 
@@ -5667,7 +5696,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Utility, Social Reform, Legislation, Collective Happiness.
 * Can moral and political institutions be justified through their effects on human welfare?
 
-## Jean le Rond d'Alembert (1717–1783)
+### Jean le Rond d'Alembert (1717–1783)
 
 **Position:** French Enlightenment · Encyclopedism · Mathematical Philosophy · Philosophy of Science
 
@@ -5688,7 +5717,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Bacon's Classification of Knowledge, Diderot, French Scientific Enlightenment.
 
-## Adam Smith ✯ (1723–1790)
+### Adam Smith ✯ (1723–1790)
 
 **Position:** Scottish Enlightenment · Moral Sentimentalism · Political Economy · Social Philosophy
 
@@ -5734,7 +5763,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hutcheson, Hume, Mandeville, Classical Political Economy, Moral Psychology, Social Theory.
 
-## Paul-Henri Thiry, Baron d'Holbach (1723–1789)
+### Paul-Henri Thiry, Baron d'Holbach (1723–1789)
 
 **Position:** French Enlightenment · Philosophical Materialism · Atheism · Determinism
 
@@ -5756,7 +5785,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Atheism, Superstition, Religious Authority.
 * Is religious belief necessary to explain morality and social order?
 
-## Immanuel Kant ★ (1724–1804)
+### Immanuel Kant ★ (1724–1804)
 
 **Position:** German Enlightenment · Critical Philosophy · Transcendental Idealism · Kantian Ethics · Modern Epistemology
 
@@ -5973,7 +6002,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Leibniz, Wolff, Hume, Rousseau, Fichte, Schelling, Hegel, Neo-Kantianism, Phenomenology, Analytic Philosophy, Contemporary Moral Philosophy.
 
-## Edmund Burke ✯ (1729–1797)
+### Edmund Burke ✯ (1729–1797)
 
 **Position:** British Political Philosophy · Conservatism · Political Prudence · Aesthetics
 
@@ -6003,7 +6032,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * British Constitutionalism, Modern Conservatism, Romantic Aesthetics, Political Criticism of the French Revolution.
 
-## Gotthold Ephraim Lessing ✯ (1729–1781)
+### Gotthold Ephraim Lessing ✯ (1729–1781)
 
 **Position:** German Enlightenment · Philosophy of Religion · Aesthetics · Literary Theory
 
@@ -6034,7 +6063,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * German Enlightenment, Herder, Philosophy of Religion, German Idealism, Aesthetics.
 
-## Moses Mendelssohn ✯ (1729–1786)
+### Moses Mendelssohn ✯ (1729–1786)
 
 **Position:** German Enlightenment · Jewish Enlightenment (Haskalah) · Rationalism · Philosophy of Religion
 
@@ -6065,7 +6094,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Leibniz, Wolff, Lessing, Jacobi, Kant, Jewish Enlightenment, German Idealism.
 
-## Johann Georg Hamann ✯ (1730–1788)
+### Johann Georg Hamann ✯ (1730–1788)
 
 **Position:** German Enlightenment · Criticism of Rationalism · Philosophy of Language · Religious Philosophy
 
@@ -6094,7 +6123,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hume, Kant, Herder, German Romanticism, Philosophy of Language.
 
-## Thomas Paine ✯ (1737–1809)
+### Thomas Paine ✯ (1737–1809)
 
 **Position:** Enlightenment Political Philosophy · Republicanism · Rights Theory · Democratic Radicalism
 
@@ -6120,7 +6149,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Locke, Republicanism, Democratic Theory, Modern Rights Discourse.
 
-## Cesare Beccaria ✯ (1738–1794)
+### Cesare Beccaria ✯ (1738–1794)
 
 **Position:** Italian Enlightenment · Philosophy of Criminal Law · Penal Reform · Utilitarian Legal Thought
 
@@ -6149,7 +6178,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Montesquieu, Helvétius, Bentham, Modern Penal Theory, Criminal Law Reform.
 
-## Marquis de Condorcet ✯ (1743–1794)
+### Marquis de Condorcet ✯ (1743–1794)
 
 **Position:** French Enlightenment · Philosophy of Progress · Political Mathematics · Social Choice Theory
 
@@ -6178,7 +6207,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Enlightenment Progress, Social Choice Theory, Democratic Epistemology, Modern Voting Theory.
 
-## Johann Gottfried Herder ✯ (1744–1803)
+### Johann Gottfried Herder ✯ (1744–1803)
 
 **Position:** German Enlightenment · Philosophy of Language · Philosophy of History · Hermeneutics · Cultural Philosophy
 
@@ -6220,7 +6249,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hamann, Kant, Goethe, German Romanticism, Hegel, Schleiermacher, Dilthey, Modern Hermeneutics.
 
-## Jeremy Bentham ✯ (1748–1832)
+### Jeremy Bentham ✯ (1748–1832)
 
 **Position:** Classical Utilitarianism · Consequentialism · Philosophy of Law · Political Reform
 
@@ -6270,7 +6299,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hume, Helvétius, Beccaria, James Mill, John Stuart Mill, Henry Sidgwick, Consequentialism, Modern Legal Philosophy.
 
-## Mary Wollstonecraft ✯ (1759–1797)
+### Mary Wollstonecraft ✯ (1759–1797)
 
 **Position:** Enlightenment Political Philosophy · Feminist Philosophy · Moral Rationalism · Philosophy of Education
 
@@ -6312,9 +6341,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Locke, Rousseau, Enlightenment Rights Theory, John Stuart Mill, Feminist Ethics, Contemporary Political Philosophy.
 
-# Period 9 — German Idealism and Nineteenth-Century Philosophy (c. 1790–1900)
+## German Idealism and Nineteenth-Century Philosophy (c. 1790–1900)
 
-## Friedrich Heinrich Jacobi ✯ (1743–1819)
+### Friedrich Heinrich Jacobi ✯ (1743–1819)
 
 **Position:** German Philosophy · Criticism of Rationalism · Philosophy of Faith · Pantheism Controversy
 
@@ -6339,7 +6368,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Kant, Reinhold, Fichte, Schelling, Hegel.
 * Why did Jacobi's criticism of rationalism become a major challenge for post-Kantian philosophy?
 
-## William Godwin ✯ (1756–1836)
+### William Godwin ✯ (1756–1836)
 
 **Position:** British Radical Enlightenment · Political Philosophy · Philosophical Anarchism · Consequentialist Ethics
 
@@ -6368,7 +6397,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Enlightenment Rationalism, Classical Utilitarianism, Philosophical Anarchism, Nineteenth-Century Political Radicalism.
 
-## Karl Leonhard Reinhold ✯ (1757–1823)
+### Karl Leonhard Reinhold ✯ (1757–1823)
 
 **Position:** Post-Kantian Philosophy · Elementary Philosophy · German Idealism · Epistemology
 
@@ -6393,7 +6422,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Schulze, Fichte, Early German Idealism.
 
-## Johann Gottlieb Fichte ✯ (1762–1814)
+### Johann Gottlieb Fichte ✯ (1762–1814)
 
 **Position:** German Idealism · Transcendental Philosophy · Wissenschaftslehre · Philosophy of Self-Consciousness
 
@@ -6444,7 +6473,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Reinhold, Jacobi, Schelling, Hegel, German Idealism, Theories of Recognition.
 
-## Georg Wilhelm Friedrich Hegel ★ (1770–1831)
+### Georg Wilhelm Friedrich Hegel ★ (1770–1831)
 
 **Position:** German Idealism · Hegelianism · Absolute Idealism · Dialectical Philosophy · Philosophy of History
 
@@ -6589,7 +6618,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Fichte, Schelling, Feuerbach, Marx, British Idealism, Kierkegaard, Pragmatism, Critical Theory, Contemporary Theories of Recognition.
 
-## Friedrich Wilhelm Joseph Schelling ✯ (1775–1854)
+### Friedrich Wilhelm Joseph Schelling ✯ (1775–1854)
 
 **Position:** German Idealism · Philosophy of Nature · Identity Philosophy · Philosophy of Freedom
 
@@ -6633,7 +6662,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Fichte, Hegel, Romanticism, Kierkegaard, Heidegger, Philosophy of Nature.
 
-## Bernard Bolzano ✯ (1781–1848)
+### Bernard Bolzano ✯ (1781–1848)
 
 **Position:** Nineteenth-Century Logic · Philosophy of Mathematics · Epistemology · Anti-Psychologism
 
@@ -6671,7 +6700,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Mathematical Logic, Brentano, Husserl, Tarski, Modern Theories of Propositions and Grounding.
 
-## Arthur Schopenhauer ✯ (1788–1860)
+### Arthur Schopenhauer ✯ (1788–1860)
 
 **Position:** Post-Kantian Philosophy · Metaphysics of the Will · Philosophical Pessimism · Ethics of Compassion
 
@@ -6729,7 +6758,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Nietzsche, Wagner, Freud, Philosophy of Pessimism, Aesthetics.
 
-## William Whewell ✯ (1794–1866)
+### William Whewell ✯ (1794–1866)
 
 **Position:** Nineteenth-Century Philosophy of Science · Inductivism · History of Science · Scientific Methodology
 
@@ -6758,7 +6787,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Bacon, Newton, John Stuart Mill, Peirce, Philosophy of Scientific Discovery.
 
-## Auguste Comte ✯ (1798–1857)
+### Auguste Comte ✯ (1798–1857)
 
 **Position:** Nineteenth-Century Positivism · Philosophy of Science · Social Philosophy · Early Sociology
 
@@ -6795,7 +6824,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Saint-Simon, John Stuart Mill, Durkheim, Sociology, Logical Positivism.
 
-## Ralph Waldo Emerson ✯ (1803–1882)
+### Ralph Waldo Emerson ✯ (1803–1882)
 
 **Position:** American Transcendentalism · Moral Philosophy · Individualism · Philosophy of Nature
 
@@ -6821,7 +6850,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * German Idealism, Romanticism, Thoreau, Nietzsche, William James, American Pragmatism.
 
-## Ludwig Feuerbach ✯ (1804–1872)
+### Ludwig Feuerbach ✯ (1804–1872)
 
 **Position:** Post-Hegelian Philosophy · Left Hegelianism · Philosophical Anthropology · Criticism of Religion
 
@@ -6850,7 +6879,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Marx, Engels, Criticism of Religion, Modern Philosophical Anthropology.
 
-## Alexis de Tocqueville ✯ (1805–1859)
+### Alexis de Tocqueville ✯ (1805–1859)
 
 **Position:** Nineteenth-Century Political Philosophy · Liberalism · Democratic Theory · Comparative Politics
 
@@ -6887,7 +6916,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Montesquieu, Liberal Political Theory, Civil Society, Democratic Theory.
 
-## John Stuart Mill ✯ (1806–1873)
+### John Stuart Mill ✯ (1806–1873)
 
 **Position:** Nineteenth-Century Liberalism · Utilitarianism · Empiricism · Inductive Logic · Political Philosophy
 
@@ -6949,7 +6978,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Bentham, James Mill, Harriet Taylor Mill, Whewell, Sidgwick, Liberalism, Utilitarianism, Contemporary Political Philosophy.
 
-## Harriet Taylor Mill ✯ (1807–1858)
+### Harriet Taylor Mill ✯ (1807–1858)
 
 **Position:** Nineteenth-Century Liberalism · Feminist Political Philosophy · Moral and Social Reform
 
@@ -6974,7 +7003,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Mary Wollstonecraft, John Stuart Mill, Liberal Feminism, Nineteenth-Century Political Reform.
 
-## Søren Kierkegaard ✯ (1813–1855)
+### Søren Kierkegaard ✯ (1813–1855)
 
 **Position:** Nineteenth-Century Existential Philosophy · Christian Philosophy · Subjectivity · Philosophy of Religion
 
@@ -7019,7 +7048,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Socrates, Hegel, Jaspers, Heidegger, Sartre, Existential Philosophy, Philosophy of Religion.
 
-## Hermann Lotze ✯ (1817–1881)
+### Hermann Lotze ✯ (1817–1881)
 
 **Position:** Nineteenth-Century Metaphysics · Logic · Philosophy of Mind · Theory of Value
 
@@ -7049,7 +7078,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Leibniz, German Idealism, Brentano, Neo-Kantianism, Frege, Husserl.
 
-## Karl Marx ★ (1818–1883)
+### Karl Marx ★ (1818–1883)
 
 **Position:** Nineteenth-Century Social Philosophy · Marxism · Historical Materialism · Critique of Political Economy · Critical Social Theory
 
@@ -7185,7 +7214,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Feuerbach, Engels, Marxism, Critical Theory, Western Marxism, Political Economy, Social Ontology, Contemporary Theories of Ideology and Domination.
 
-## Friedrich Engels ✯ (1820–1895)
+### Friedrich Engels ✯ (1820–1895)
 
 **Position:** Marxism · Historical Materialism · Social Theory · Philosophy of Nature
 
@@ -7221,7 +7250,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Historical Materialism, Socialist Theory, Twentieth-Century Marxism.
 
-## Henry David Thoreau (1817–1862)
+### Henry David Thoreau (1817–1862)
 
 **Position:** American Transcendentalism · Political Resistance · Environmental Philosophy · Moral Individualism
 
@@ -7244,7 +7273,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Nature, Environmental Value, Observation, Human Flourishing.
 * What can the experience of nature contribute to moral and intellectual development?
 
-## Herbert Spencer (1820–1903)
+### Herbert Spencer (1820–1903)
 
 **Position:** Nineteenth-Century Evolutionary Philosophy · Social Theory · Philosophical Naturalism
 
@@ -7264,7 +7293,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Positivism, Evolutionary Social Theory, Liberal Individualism, Social Darwinism Debates.
 
-## Wilhelm Dilthey ✯ (1833–1911)
+### Wilhelm Dilthey ✯ (1833–1911)
 
 **Position:** Historicism · Philosophy of the Human Sciences · Hermeneutics · Philosophy of Life
 
@@ -7301,7 +7330,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Schleiermacher, Hegel, Husserl, Heidegger, Gadamer, Modern Hermeneutics.
 
-## Thomas Hill Green ✯ (1836–1882)
+### Thomas Hill Green ✯ (1836–1882)
 
 **Position:** British Idealism · Moral Philosophy · Political Liberalism · Philosophy of Freedom
 
@@ -7330,7 +7359,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Hegel, British Idealism, Modern Liberalism, Theories of Positive Freedom.
 
-## Franz Brentano ✯ (1838–1917)
+### Franz Brentano ✯ (1838–1917)
 
 **Position:** Descriptive Psychology · Philosophy of Mind · Intentionality · Foundations of Phenomenology
 
@@ -7363,7 +7392,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Bolzano, Husserl, Meinong, Twardowski, Phenomenology, Analytic Philosophy of Mind.
 
-## Henry Sidgwick ✯ (1838–1900)
+### Henry Sidgwick ✯ (1838–1900)
 
 **Position:** Classical Utilitarianism · Normative Ethics · Moral Epistemology · Political Philosophy
 
@@ -7400,7 +7429,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Bentham, Mill, G. E. Moore, R. M. Hare, Derek Parfit, Contemporary Consequentialism.
 
-## Hermann Cohen ✯ (1842–1918)
+### Hermann Cohen ✯ (1842–1918)
 
 **Position:** Neo-Kantianism · Marburg School · Epistemology · Philosophy of Science · Ethics
 
@@ -7428,7 +7457,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Marburg Neo-Kantianism, Paul Natorp, Ernst Cassirer, Philosophy of Science.
 
-## Friedrich Nietzsche ★ (1844–1900)
+### Friedrich Nietzsche ★ (1844–1900)
 
 **Position:** Nineteenth-Century Philosophy · Genealogical Critique · Philosophy of Value · Perspectivism · Philosophical Naturalism
 
@@ -7558,7 +7587,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Schopenhauer, Kierkegaard, Freud, Heidegger, Foucault, Deleuze, Existentialism, Genealogy, Contemporary Moral Psychology.
 
-## Francis Herbert Bradley ✯ (1846–1924)
+### Francis Herbert Bradley ✯ (1846–1924)
 
 **Position:** British Idealism · Absolute Idealism · Metaphysics · Logic · Moral Philosophy
 
@@ -7592,7 +7621,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegelianism, British Idealism, G. E. Moore, Bertrand Russell, the Origins of Analytic Philosophy.
 
-## Wilhelm Windelband ✯ (1848–1915)
+### Wilhelm Windelband ✯ (1848–1915)
 
 **Position:** Southwest German Neo-Kantianism · Philosophy of History · Theory of Values · Philosophical Methodology
 
@@ -7617,7 +7646,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Southwest Neo-Kantianism, Heinrich Rickert, Philosophy of History, Methodology of the Human Sciences.
 
-## Heinrich Rickert ✯ (1863–1936)
+### Heinrich Rickert ✯ (1863–1936)
 
 **Position:** Southwest Neo-Kantianism · Epistemology · Philosophy of Culture · Philosophy of History
 
@@ -7647,9 +7676,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Windelband, Dilthey, Max Weber, Heidegger, Philosophy of the Human Sciences
 
-# Period 10 — Pragmatism and the Origins of Modern Logic (c. 1830–1930)
+## Pragmatism and the Origins of Modern Logic (c. 1830–1930)
 
-## Augustus De Morgan ✯ (1806–1871)
+### Augustus De Morgan ✯ (1806–1871)
 
 **Position:** Nineteenth-Century Mathematical Logic · Algebraic Logic · Foundations of Formal Reasoning
 
@@ -7675,7 +7704,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, George Boole, Charles Sanders Peirce, Ernst Schröder, Modern Mathematical Logic.
 
-## George Boole ✯ (1815–1864)
+### George Boole ✯ (1815–1864)
 
 **Position:** Mathematical Logic · Boolean Algebra · Algebraic Logic · Foundations of Computation
 
@@ -7709,7 +7738,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * De Morgan, Peirce, Schröder, Frege, Boolean Logic, Digital Circuit Theory.
 
-## Richard Dedekind ✯ (1831–1916)
+### Richard Dedekind ✯ (1831–1916)
 
 **Position:** Foundations of Mathematics · Philosophy of Arithmetic · Set Theory · Mathematical Structuralism
 
@@ -7743,7 +7772,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Cantor, Frege, Peano, Russell, Mathematical Structuralism, Modern Foundations of Arithmetic.
 
-## Ernst Mach ✯ (1838–1916)
+### Ernst Mach ✯ (1838–1916)
 
 **Position:** Empiricism · Philosophy of Science · Critical Philosophy of Physics · Theory of Sensations
 
@@ -7777,7 +7806,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hume, Newtonian Criticism, Poincaré, Einstein, Logical Empiricism, Philosophy of Scientific Explanation.
 
-## Charles Sanders Peirce ★ (1839–1914)
+### Charles Sanders Peirce ★ (1839–1914)
 
 **Position:** Classical American Pragmatism · Founder of Pragmatism · Mathematical Logic · Semiotics · Philosophy of Science · Scientific Realism
 
@@ -7922,7 +7951,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Scholastic Realism, Boole, De Morgan, William James, John Dewey, Mathematical Logic, Pragmatism, Scientific Methodology, Semiotics, Contemporary Theories of Inference.
 
-## Ernst Schröder (1841–1902)
+### Ernst Schröder (1841–1902)
 
 **Position:** Algebraic Logic · Logic of Relations · History of Mathematical Logic
 
@@ -7943,7 +7972,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Boole, Peirce, Frege, Russell.
 * How did algebraic logic contribute to the development of modern formal logic?
 
-## William James ✯ (1842–1910)
+### William James ✯ (1842–1910)
 
 **Position:** Classical American Pragmatism · Radical Empiricism · Philosophy of Mind · Psychology · Philosophy of Religion
 
@@ -8001,7 +8030,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Peirce, Dewey, Bergson, Whitehead, Phenomenology, Philosophy of Psychology, Neopragmatism.
 
-## Georg Cantor ✯ (1845–1918)
+### Georg Cantor ✯ (1845–1918)
 
 **Position:** Set Theory · Philosophy of Mathematics · Transfinite Mathematics · Foundations of Infinity
 
@@ -8037,7 +8066,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Dedekind, Frege, Russell, Hilbert, Zermelo, Gödel, Modern Set Theory.
 
-## Gottlob Frege ★ (1848–1925)
+### Gottlob Frege ★ (1848–1925)
 
 **Position:** Founder of Modern Mathematical Logic · Foundations of Analytic Philosophy · Logicism · Philosophy of Language · Philosophy of Mathematics
 
@@ -8153,7 +8182,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Peano, Russell, Wittgenstein, Carnap, Tarski, Quine, Modern Semantics, Analytic Philosophy.
 * Which parts of Frege's system remain foundational despite the inconsistency of his original logicist construction?
 
-## Henri Poincaré ✯ (1854–1912)
+### Henri Poincaré ✯ (1854–1912)
 
 **Position:** Philosophy of Science · Conventionalism · Philosophy of Mathematics · Scientific Epistemology
 
@@ -8191,7 +8220,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Mach, Einstein, Logical Empiricism, Philosophy of Geometry, Structural Realism.
 
-## Josiah Royce ✯ (1855–1916)
+### Josiah Royce ✯ (1855–1916)
 
 **Position:** American Idealism · Absolute Idealism · Pragmatism · Philosophy of Community
 
@@ -8222,7 +8251,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Peirce, William James, American Idealism, Philosophy of Community.
 
-## Giuseppe Peano ✯ (1858–1932)
+### Giuseppe Peano ✯ (1858–1932)
 
 **Position:** Mathematical Logic · Axiomatic Arithmetic · Foundations of Mathematics · Symbolic Notation
 
@@ -8248,7 +8277,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Dedekind, Frege, Russell, Mathematical Logic.
 * How did Peano's formalism contribute to the modern reconstruction of arithmetic?
 
-## John Dewey ✯ (1859–1952)
+### John Dewey ✯ (1859–1952)
 
 **Position:** Classical American Pragmatism · Instrumentalism · Naturalism · Philosophy of Education · Democratic Theory
 
@@ -8320,7 +8349,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Peirce, William James, Jane Addams, George Herbert Mead, Pragmatism, Philosophy of Education, Democratic Theory.
 
-## Henri Bergson ✯ (1859–1941)
+### Henri Bergson ✯ (1859–1941)
 
 **Position:** Philosophy of Life · Process Philosophy · Philosophy of Time · Metaphysics · Philosophy of Consciousness
 
@@ -8369,7 +8398,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * James, Whitehead, Deleuze, Process Philosophy, Phenomenology, Philosophy of Time.
 
-## Jane Addams ✯ (1860–1935)
+### Jane Addams ✯ (1860–1935)
 
 **Position:** Classical American Pragmatism · Social Ethics · Democratic Philosophy · Feminist Philosophy
 
@@ -8403,7 +8432,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Dewey, American Pragmatism, Feminist Social Philosophy, Democratic Ethics.
 
-## Alfred North Whitehead ✯ (1861–1947)
+### Alfred North Whitehead ✯ (1861–1947)
 
 **Position:** Mathematical Logic · Process Philosophy · Philosophy of Science · Process Metaphysics
 
@@ -8468,7 +8497,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Russell, Bergson, James, Process Philosophy, Philosophy of Religion, Contemporary Process Metaphysics.
 
-## George Herbert Mead ✯ (1863–1931)
+### George Herbert Mead ✯ (1863–1931)
 
 **Position:** Classical American Pragmatism · Social Philosophy · Philosophy of Mind · Social Psychology
 
@@ -8505,7 +8534,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * James, Dewey, Symbolic Interactionism, Social Ontology, Intersubjectivity, Habermas.
 
-## Bertrand Russell ★ (1872–1970)
+### Bertrand Russell ★ (1872–1970)
 
 **Position:** Founder of Analytic Philosophy · Mathematical Logic · Logicism · Logical Atomism · Philosophy of Language · Epistemology
 
@@ -8619,7 +8648,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Frege, G. E. Moore, Whitehead, Wittgenstein, Carnap, Tarski, Quine, Analytic Philosophy, Modern Logic.
 
-## G. E. Moore ✯ (1873–1958)
+### G. E. Moore ✯ (1873–1958)
 
 **Position:** Founder of Analytic Philosophy · Metaethics · Ethical Non-Naturalism · Common-Sense Realism
 
@@ -8684,9 +8713,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Bradley, Russell, Wittgenstein, Ethical Non-Naturalism, Metaethics, Analytic Epistemology.
 
-# Period 11 — Phenomenology, Existentialism, and Hermeneutics (c. 1900–1980)
+## Phenomenology, Existentialism, and Hermeneutics (c. 1900–1980)
 
-## Edmund Husserl ★ (1859–1938)
+### Edmund Husserl ★ (1859–1938)
 
 **Position:** Founder of Modern Phenomenology · Transcendental Phenomenology · Epistemology · Philosophy of Consciousness · Philosophy of Logic
 
@@ -8826,7 +8855,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Brentano, Bolzano, Frege, Scheler, Heidegger, Stein, Ingarden, Sartre, Merleau-Ponty, Levinas, Gadamer, Ricoeur.
 * Can phenomenology establish objective philosophical knowledge from the structures of lived experience?
 
-## Max Scheler ✯ (1874–1928)
+### Max Scheler ✯ (1874–1928)
 
 **Position:** Early Phenomenology · Value Ethics · Philosophical Anthropology · Personalism
 
@@ -8867,7 +8896,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Kant, Nietzsche, Stein, Hartmann, Personalism, Phenomenological Ethics.
 
-## Martin Buber ✯ (1878–1965)
+### Martin Buber ✯ (1878–1965)
 
 **Position:** Dialogical Philosophy · Philosophical Anthropology · Philosophy of Religion · Existential Thought
 
@@ -8901,7 +8930,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kierkegaard, Feuerbach, Levinas, Dialogical Ethics, Philosophy of Education.
 
-## Nicolai Hartmann ✯ (1882–1950)
+### Nicolai Hartmann ✯ (1882–1950)
 
 **Position:** Critical Ontology · Phenomenological Metaphysics · Value Ethics · Philosophy of Knowledge
 
@@ -8937,7 +8966,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Husserl, Scheler, Ontology, Phenomenological Realism.
 
-## Adolf Reinach ✯ (1883–1917)
+### Adolf Reinach ✯ (1883–1917)
 
 **Position:** Early Realist Phenomenology · Social Ontology · Philosophy of Law · Theory of Social Acts
 
@@ -8966,7 +8995,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Early Phenomenology, J. L. Austin, Speech Act Theory, Contemporary Social Ontology.
 
-## Karl Jaspers ✯ (1883–1969)
+### Karl Jaspers ✯ (1883–1969)
 
 **Position:** Existential Philosophy · Philosophical Anthropology · Philosophy of Religion · Philosophy of History
 
@@ -9014,7 +9043,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kierkegaard, Nietzsche, Heidegger, Existential Philosophy, Philosophical Anthropology.
 
-## José Ortega y Gasset ✯ (1883–1955)
+### José Ortega y Gasset ✯ (1883–1955)
 
 **Position:** Spanish Philosophy · Perspectivism · Philosophy of Life · Historical Reason · Social Philosophy
 
@@ -9049,7 +9078,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Nietzsche, Dilthey, Phenomenology, Spanish Existential Thought, Philosophy of Culture.
 
-## Martin Heidegger ★ (1889–1976)
+### Martin Heidegger ★ (1889–1976)
 
 **Position:** Fundamental Ontology · Existential Phenomenology · Hermeneutic Phenomenology · Philosophy of Being · Philosophy of Technology
 
@@ -9219,7 +9248,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Aristotle, Kant, Kierkegaard, Nietzsche, Sartre, Arendt, Gadamer, Levinas, Derrida, Foucault, Contemporary Ontology and Philosophy of Technology.
 
-## Gabriel Marcel ✯ (1889–1973)
+### Gabriel Marcel ✯ (1889–1973)
 
 **Position:** Christian Existential Philosophy · Personalism · Philosophical Anthropology · Ethics
 
@@ -9253,7 +9282,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kierkegaard, Jaspers, Buber, Ricoeur, Christian Existential Philosophy.
 
-## Edith Stein ✯ (1891–1942)
+### Edith Stein ✯ (1891–1942)
 
 **Position:** Early Phenomenology · Phenomenology of Empathy · Philosophical Anthropology · Thomistic Phenomenology
 
@@ -9293,7 +9322,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Scheler, Aquinas, Phenomenological Anthropology, Ethics of Empathy.
 
-## Roman Ingarden ✯ (1893–1970)
+### Roman Ingarden ✯ (1893–1970)
 
 **Position:** Realist Phenomenology · Ontology · Aesthetics · Philosophy of Literature
 
@@ -9331,7 +9360,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Phenomenological Realism, Literary Theory, Reader-Response Theory, Contemporary Ontology of Art.
 
-## Alfred Schutz ✯ (1899–1959)
+### Alfred Schutz ✯ (1899–1959)
 
 **Position:** Social Phenomenology · Phenomenological Sociology · Theory of Social Action · Lifeworld Analysis
 
@@ -9372,7 +9401,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Weber, Berger and Luckmann, Ethnomethodology, Interpretative Sociology.
 
-## Hans-Georg Gadamer ✯ (1900–2002)
+### Hans-Georg Gadamer ✯ (1900–2002)
 
 **Position:** Philosophical Hermeneutics · Continental Philosophy · Philosophy of Language · Historical Understanding
 
@@ -9451,7 +9480,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Heidegger, Aristotle, Dilthey, Habermas, Ricoeur, Legal Hermeneutics, Interpretative Social Science.
 
-## Jean-Paul Sartre ✯ (1905–1980)
+### Jean-Paul Sartre ✯ (1905–1980)
 
 **Position:** French Existentialism · Existential Phenomenology · Ontology · Philosophy of Freedom · Political Philosophy
 
@@ -9530,7 +9559,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Heidegger, Kierkegaard, Beauvoir, Fanon, Existentialism, Marxist Humanism.
 
-## Emmanuel Levinas ✯ (1906–1995)
+### Emmanuel Levinas ✯ (1906–1995)
 
 **Position:** Phenomenological Ethics · Philosophy of Alterity · Continental Moral Philosophy · Criticism of Ontology
 
@@ -9581,7 +9610,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Heidegger, Buber, Derrida, Ricoeur, Ethics of Alterity, Contemporary Continental Ethics.
 
-## Simone de Beauvoir ✯ (1908–1986)
+### Simone de Beauvoir ✯ (1908–1986)
 
 **Position:** Existential Phenomenology · Feminist Philosophy · Ethics of Ambiguity · Social Philosophy
 
@@ -9642,7 +9671,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Husserl, Heidegger, Sartre, Merleau-Ponty, Feminist Phenomenology, Gender Theory, Contemporary Ethics.
 
-## Maurice Merleau-Ponty ✯ (1908–1961)
+### Maurice Merleau-Ponty ✯ (1908–1961)
 
 **Position:** Phenomenology of Perception · Embodied Philosophy · Existential Phenomenology · Ontology · Philosophy of Mind
 
@@ -9728,7 +9757,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Heidegger, Sartre, Beauvoir, Cognitive Science, Embodied Cognition, Phenomenological Ontology.
 
-## Simone Weil ✯ (1909–1943)
+### Simone Weil ✯ (1909–1943)
 
 **Position:** Moral Philosophy · Political Philosophy · Religious Philosophy · Philosophy of Attention
 
@@ -9766,7 +9795,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Plato, Marx, Christian Mysticism, Levinas, Ethics of Attention, Political Theology.
 
-## Albert Camus ✯ (1913–1960)
+### Albert Camus ✯ (1913–1960)
 
 **Position:** Philosophy of the Absurd · Existential Thought · Moral and Political Philosophy · Philosophy of Revolt
 
@@ -9814,7 +9843,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Nietzsche, Dostoevsky, Existential Philosophy, Absurdism, Contemporary Ethics of Political Violence.
 
-## Paul Ricoeur ✯ (1913–2005)
+### Paul Ricoeur ✯ (1913–2005)
 
 **Position:** Hermeneutic Phenomenology · Philosophy of Interpretation · Narrative Identity · Philosophical Anthropology
 
@@ -9892,9 +9921,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Heidegger, Jaspers, Marcel, Gadamer, Freud, Structuralism, Narrative Ethics, Historical Hermeneutics.
 
-# Analytic Philosophy and Philosophy of Science (c. 1900–1990)
+## Analytic Philosophy and Philosophy of Science (c. 1900–1990)
 
-## David Hilbert ✯ (1862–1943)
+### David Hilbert ✯ (1862–1943)
 
 **Position:** Foundations of Mathematics · Formalism · Metamathematics · Axiomatic Method
 
@@ -9928,7 +9957,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Frege, Russell, Gödel, Church, Turing, Mathematical Logic, Foundations of Computation.
 
-## L. E. J. Brouwer ✯ (1881–1966)
+### L. E. J. Brouwer ✯ (1881–1966)
 
 **Position:** Mathematical Intuitionism · Constructivism · Philosophy of Mathematics · Criticism of Classical Logic
 
@@ -9957,7 +9986,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hilbert, Heyting, Gödel, Intuitionistic Logic, Constructive Mathematics, Proof Theory.
 
-## Moritz Schlick ✯ (1882–1936)
+### Moritz Schlick ✯ (1882–1936)
 
 **Position:** Vienna Circle · Logical Empiricism · Philosophy of Science · Epistemology
 
@@ -9992,7 +10021,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Wittgenstein, Carnap, Neurath, Vienna Circle, Logical Empiricism.
 
-## Otto Neurath ✯ (1882–1945)
+### Otto Neurath ✯ (1882–1945)
 
 **Position:** Vienna Circle · Logical Empiricism · Physicalism · Philosophy of Social Science
 
@@ -10024,7 +10053,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Carnap, Quine, Logical Empiricism, Scientific Holism, Philosophy of Social Science.
 
-## Clarence Irving Lewis ✯ (1883–1964)
+### Clarence Irving Lewis ✯ (1883–1964)
 
 **Position:** American Pragmatism · Modal Logic · Epistemology · Conceptual Pragmatism
 
@@ -10058,7 +10087,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Peirce, Pragmatism, Carnap, Quine, Modal Logic, Analytic Epistemology.
 
-## Ludwig Wittgenstein ★ (1889–1951)
+### Ludwig Wittgenstein ★ (1889–1951)
 
 **Position:** Analytic Philosophy · Philosophy of Language · Logic · Philosophy of Mind · Philosophy of Mathematics
 
@@ -10240,7 +10269,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Frege, Russell, Schlick, Carnap, Ryle, Austin, Anscombe, Kripke, Ordinary Language Philosophy, Analytic Philosophy of Mind, Contemporary Philosophy of Language.
 
-## Hans Reichenbach ✯ (1891–1953)
+### Hans Reichenbach ✯ (1891–1953)
 
 **Position:** Logical Empiricism · Philosophy of Physics · Probability · Philosophy of Science
 
@@ -10275,7 +10304,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Einstein, Vienna Circle, Logical Empiricism, Hilary Putnam, Philosophy of Physics.
 
-## Rudolf Carnap ✯ (1891–1970)
+### Rudolf Carnap ✯ (1891–1970)
 
 **Position:** Logical Empiricism · Vienna Circle · Philosophy of Language · Logical Syntax · Philosophy of Science
 
@@ -10343,7 +10372,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Frege, Russell, Wittgenstein, Schlick, Neurath, Quine, Hempel, Tarski, Logical Empiricism.
 
-## Gilbert Ryle ✯ (1900–1976)
+### Gilbert Ryle ✯ (1900–1976)
 
 **Position:** Ordinary Language Philosophy · Philosophy of Mind · Conceptual Analysis
 
@@ -10376,7 +10405,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Wittgenstein, Oxford Ordinary Language Philosophy, Contemporary Philosophy of Mind, Epistemology of Skill.
 
-## Alfred Tarski ✯ (1901–1983)
+### Alfred Tarski ✯ (1901–1983)
 
 **Position:** Mathematical Logic · Model Theory · Formal Semantics · Theory of Truth
 
@@ -10419,7 +10448,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Frege, Russell, Gödel, Carnap, Davidson, Model Theory, Philosophical Semantics.
 
-## Karl Popper ✯ (1902–1994)
+### Karl Popper ✯ (1902–1994)
 
 **Position:** Critical Rationalism · Philosophy of Science · Falsificationism · Political Philosophy
 
@@ -10480,7 +10509,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hume, Vienna Circle, Lakatos, Feyerabend, Critical Rationalism, Philosophy of Science.
 
-## Frank P. Ramsey ✯ (1903–1930)
+### Frank P. Ramsey ✯ (1903–1930)
 
 **Position:** Mathematical Logic · Philosophy of Mathematics · Decision Theory · Philosophy of Language
 
@@ -10515,7 +10544,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Wittgenstein, Keynes, Carnap, Decision Theory, Formal Epistemology, Philosophy of Science.
 
-## Carl Gustav Hempel ✯ (1905–1997)
+### Carl Gustav Hempel ✯ (1905–1997)
 
 **Position:** Logical Empiricism · Philosophy of Science · Scientific Explanation · Confirmation Theory
 
@@ -10553,7 +10582,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Carnap, Reichenbach, Popper, Kuhn, Scientific Explanation, Confirmation Theory.
 
-## Kurt Gödel ✯ (1906–1978)
+### Kurt Gödel ✯ (1906–1978)
 
 **Position:** Mathematical Logic · Metamathematics · Philosophy of Mathematics · Foundations of Logic
 
@@ -10597,7 +10626,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hilbert, Russell, Tarski, Turing, Mathematical Logic, Computability Theory, Foundations of Mathematics.
 
-## Nelson Goodman ✯ (1906–1998)
+### Nelson Goodman ✯ (1906–1998)
 
 **Position:** Analytic Philosophy · Epistemology · Philosophy of Science · Aesthetics · Constructivism
 
@@ -10636,7 +10665,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Carnap, Quine, Philosophy of Induction, Contemporary Aesthetics, Conceptual Pluralism.
 
-## Willard Van Orman Quine ✯ (1908–2000)
+### Willard Van Orman Quine ✯ (1908–2000)
 
 **Position:** Analytic Philosophy · Philosophical Naturalism · Epistemology · Philosophy of Language · Ontology
 
@@ -10708,7 +10737,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Carnap, Russell, Davidson, Putnam, Lewis, Naturalized Epistemology, Contemporary Ontology.
 
-## A. J. Ayer ✯ (1910–1989)
+### A. J. Ayer ✯ (1910–1989)
 
 **Position:** Logical Empiricism · British Analytic Philosophy · Verificationism · Epistemology
 
@@ -10747,7 +10776,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Vienna Circle, Carnap, Hume, Ordinary Language Philosophy, Metaethics.
 
-## J. L. Austin ✯ (1911–1960)
+### J. L. Austin ✯ (1911–1960)
 
 **Position:** Ordinary Language Philosophy · Speech Act Theory · Philosophy of Language · Epistemology
 
@@ -10789,7 +10818,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Wittgenstein, Ryle, Grice, Searle, Pragmatics, Social Ontology, Philosophy of Law.
 
-## Alan Turing ✯ (1912–1954)
+### Alan Turing ✯ (1912–1954)
 
 **Position:** Computability Theory · Mathematical Logic · Philosophy of Computation · Artificial Intelligence
 
@@ -10831,7 +10860,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hilbert, Gödel, Church, Functionalism, Cognitive Science, Philosophy of Artificial Intelligence.
 
-## Wilfrid Sellars ✯ (1912–1989)
+### Wilfrid Sellars ✯ (1912–1989)
 
 **Position:** Analytic Philosophy · Epistemology · Scientific Realism · Philosophy of Mind · Inferentialism
 
@@ -10877,7 +10906,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Carnap, Quine, Richard Rorty, John McDowell, Robert Brandom, Contemporary Inferentialism.
 
-## H. P. Grice ✯ (1913–1988)
+### H. P. Grice ✯ (1913–1988)
 
 **Position:** Philosophy of Language · Pragmatics · Meaning Theory · Philosophy of Communication
 
@@ -10915,7 +10944,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Austin, Strawson, Searle, Pragmatics, Philosophy of Communication, Linguistics.
 
-## Arthur N. Prior ✯ (1914–1969)
+### Arthur N. Prior ✯ (1914–1969)
 
 **Position:** Temporal Logic · Modal Logic · Philosophy of Time · Formal Metaphysics
 
@@ -10944,7 +10973,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Diodorus Cronus, McTaggart, Kripke, Temporal Logic, Formal Theories of Agency.
 
-## Donald Davidson ✯ (1917–2003)
+### Donald Davidson ✯ (1917–2003)
 
 **Position:** Analytic Philosophy · Philosophy of Language · Philosophy of Action · Philosophy of Mind · Epistemology
 
@@ -10997,7 +11026,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Quine, Tarski, Anscombe, Putnam, Rorty, Contemporary Philosophy of Language and Action.
 
-## P. F. Strawson ✯ (1919–2006)
+### P. F. Strawson ✯ (1919–2006)
 
 **Position:** Analytic Philosophy · Ordinary Language Philosophy · Descriptive Metaphysics · Epistemology
 
@@ -11033,7 +11062,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Russell, Kant, Ordinary Language Philosophy, Metaphysics, Moral Responsibility Theory.
 
-## G. E. M. Anscombe ✯ (1919–2001)
+### G. E. M. Anscombe ✯ (1919–2001)
 
 **Position:** Analytic Philosophy · Philosophy of Action · Moral Philosophy · Philosophy of Mind
 
@@ -11071,7 +11100,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Aristotle, Wittgenstein, Davidson, Philippa Foot, Virtue Ethics, Contemporary Philosophy of Action.
 
-## Thomas S. Kuhn ✯ (1922–1996)
+### Thomas S. Kuhn ✯ (1922–1996)
 
 **Position:** Historical Philosophy of Science · Scientific Revolutions · Paradigm Theory · Scientific Change
 
@@ -11133,7 +11162,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Popper, Lakatos, Feyerabend, Sociology of Scientific Knowledge, Scientific Realism, Historical Epistemology.
 
-## Imre Lakatos ✯ (1922–1974)
+### Imre Lakatos ✯ (1922–1974)
 
 **Position:** Philosophy of Science · Methodology of Scientific Research Programmes · Philosophy of Mathematics
 
@@ -11175,7 +11204,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Popper, Kuhn, Feyerabend, Philosophy of Mathematics, Scientific Methodology.
 
-## Paul Feyerabend ✯ (1924–1994)
+### Paul Feyerabend ✯ (1924–1994)
 
 **Position:** Post-Positivist Philosophy of Science · Epistemological Anarchism · Scientific Pluralism
 
@@ -11213,7 +11242,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Popper, Lakatos, Kuhn, Scientific Pluralism, Social Philosophy of Science.
 
-## Michael Dummett ✯ (1925–2011)
+### Michael Dummett ✯ (1925–2011)
 
 **Position:** Analytic Philosophy · Philosophy of Language · Anti-Realism · Theory of Meaning · Philosophy of Logic
 
@@ -11247,7 +11276,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Frege, Wittgenstein, Brouwer, Contemporary Anti-Realism, Philosophy of Logic.
 
-## Hilary Putnam ✯ (1926–2016)
+### Hilary Putnam ✯ (1926–2016)
 
 **Position:** Analytic Philosophy · Philosophy of Mind · Philosophy of Language · Scientific Realism · Pragmatism
 
@@ -11310,7 +11339,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Carnap, Quine, Kripke, Davidson, Philosophy of Mind, Semantic Externalism, Contemporary Pragmatism.
 
-## Edmund Gettier (1927–2021)
+### Edmund Gettier (1927–2021)
 
 **Position:** Analytic Epistemology · Theory of Knowledge · Criticism of the Justified True Belief Analysis
 
@@ -11331,7 +11360,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Contemporary Epistemology, Reliabilism, Virtue Epistemology, Safety and Sensitivity Accounts of Knowledge.
 
-## Richard Rorty ✯ (1931–2007)
+### Richard Rorty ✯ (1931–2007)
 
 **Position:** Neopragmatism · Anti-Representationalism · Philosophy of Language · Cultural and Political Philosophy
 
@@ -11373,7 +11402,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Dewey, Heidegger, Wittgenstein, Quine, Davidson, Sellars, Neopragmatism, Political Liberalism.
 
-## John Searle ✯ (1932–2025)
+### John Searle ✯ (1932–2025)
 
 **Position:** Analytic Philosophy · Philosophy of Language · Philosophy of Mind · Social Ontology
 
@@ -11414,7 +11443,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Austin, Wittgenstein, Grice, Philosophy of Artificial Intelligence, Cognitive Science, Social Ontology.
 
-## Saul Kripke ✯ (1940–2022)
+### Saul Kripke ✯ (1940–2022)
 
 **Position:** Analytic Philosophy · Modal Logic · Philosophy of Language · Metaphysics · Philosophy of Mind
 
@@ -11485,7 +11514,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Frege, Russell, Wittgenstein, Carnap, Putnam, Lewis, Modal Logic, Contemporary Metaphysics.
 
-## David Lewis ✯ (1941–2001)
+### David Lewis ✯ (1941–2001)
 
 **Position:** Analytic Metaphysics · Modal Realism · Counterfactuals · Philosophy of Language · Philosophy of Mind
 
@@ -11545,9 +11574,9 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Leibniz, Hume, Ramsey, Quine, Kripke, Modal Metaphysics, Causation Theory, Contemporary Analytic Philosophy.
 
-# Period 13 — Critical Theory, Structuralism, and Poststructuralism (c. 1920–2000)
+## Critical Theory, Structuralism, and Poststructuralism (c. 1920–2000)
 
-## Ferdinand de Saussure ✯ (1857–1913)
+### Ferdinand de Saussure ✯ (1857–1913)
 
 **Position:** Structural Linguistics · Semiotics · Foundations of Structuralism · Philosophy of Language
 
@@ -11584,7 +11613,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Roman Jakobson, Claude Lévi-Strauss, Roland Barthes, Jacques Lacan, Jacques Derrida, Structuralism, Semiotics.
 
-## Georg Lukács ✯ (1885–1971)
+### Georg Lukács ✯ (1885–1971)
 
 **Position:** Western Marxism · Hegelian Marxism · Critical Social Theory · Philosophy of History
 
@@ -11617,7 +11646,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Marx, Frankfurt School, Sartre, Western Marxism, Critical Theory.
 
-## Antonio Gramsci ✯ (1891–1937)
+### Antonio Gramsci ✯ (1891–1937)
 
 **Position:** Western Marxism · Political Philosophy · Cultural Hegemony · Philosophy of Praxis
 
@@ -11654,7 +11683,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Lenin, Western Marxism, Cultural Studies, Political Theory, Postcolonial Studies.
 
-## Walter Benjamin ✯ (1892–1940)
+### Walter Benjamin ✯ (1892–1940)
 
 **Position:** Critical Theory · Philosophy of History · Aesthetics · Media Theory · Cultural Criticism
 
@@ -11703,7 +11732,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Nietzsche, Jewish Messianic Thought, Adorno, Arendt, Derrida, Media Philosophy, Critical Theory.
 
-## Max Horkheimer ✯ (1895–1973)
+### Max Horkheimer ✯ (1895–1973)
 
 **Position:** Frankfurt School · Critical Theory · Social Philosophy · Critique of Instrumental Reason
 
@@ -11742,7 +11771,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Hegel, Nietzsche, Weber, Adorno, Marcuse, Habermas, Frankfurt School Critical Theory.
 
-## Roman Jakobson (1896–1982)
+### Roman Jakobson (1896–1982)
 
 **Position:** Structural Linguistics · Phonology · Semiotics · Linguistic Theory
 
@@ -11763,7 +11792,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Metaphor, Metonymy, Selection, Combination.
 * How do linguistic operations contribute to patterns of meaning and cultural representation?
 
-## Herbert Marcuse ✯ (1898–1979)
+### Herbert Marcuse ✯ (1898–1979)
 
 **Position:** Frankfurt School · Critical Theory · Freudo-Marxism · Political Philosophy
 
@@ -11801,7 +11830,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Marx, Freud, Heidegger, Frankfurt School, New Left, Critical Social Theory.
 
-## Erich Fromm (1900–1980)
+### Erich Fromm (1900–1980)
 
 **Position:** Frankfurt School · Humanistic Psychoanalysis · Social Psychology · Humanistic Ethics
 
@@ -11824,7 +11853,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * How do possession-oriented and activity-oriented forms of life differ?
 * *To Have or to Be?*
 
-## Jacques Lacan ✯ (1901–1981)
+### Jacques Lacan ✯ (1901–1981)
 
 **Position:** Structural Psychoanalysis · Psychoanalytic Philosophy · Philosophy of Language · Theory of Subjectivity
 
@@ -11883,7 +11912,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Freud, Saussure, Lévi-Strauss, Althusser, Žižek, Feminist Psychoanalytic Theory, Poststructuralism.
 
-## Theodor W. Adorno ✯ (1903–1969)
+### Theodor W. Adorno ✯ (1903–1969)
 
 **Position:** Frankfurt School · Critical Theory · Negative Dialectics · Aesthetics · Social Philosophy
 
@@ -11938,7 +11967,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Hegel, Marx, Nietzsche, Benjamin, Horkheimer, Habermas, Critical Aesthetics, Contemporary Critical Theory.
 
-## Claude Lévi-Strauss ✯ (1908–2009)
+### Claude Lévi-Strauss ✯ (1908–2009)
 
 **Position:** Structural Anthropology · Structuralism · Philosophy of Culture · Comparative Mythology
 
@@ -11982,7 +12011,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Saussure, Jakobson, Lacan, Barthes, Althusser, Structuralism, Cultural Anthropology.
 
-## Roland Barthes ✯ (1915–1980)
+### Roland Barthes ✯ (1915–1980)
 
 **Position:** Structuralism · Semiotics · Literary Theory · Poststructuralism · Cultural Criticism
 
@@ -12026,7 +12055,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Saussure, Lévi-Strauss, Derrida, Literary Structuralism, Cultural Studies, Semiotics.
 
-## Louis Althusser ✯ (1918–1990)
+### Louis Althusser ✯ (1918–1990)
 
 **Position:** Structural Marxism · Marxist Philosophy · Theory of Ideology · Social Reproduction
 
@@ -12081,7 +12110,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Spinoza, Bachelard, Lacan, Structural Marxism, Ideology Critique, Poststructuralist Political Theory.
 
-## Cornelius Castoriadis ✯ (1922–1997)
+### Cornelius Castoriadis ✯ (1922–1997)
 
 **Position:** Social Philosophy · Political Autonomy · Social Imaginary · Criticism of Marxism
 
@@ -12114,7 +12143,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Freud, Ancient Greek Democracy, Social Ontology, Radical Democratic Theory.
 
-## Jean-François Lyotard ✯ (1924–1998)
+### Jean-François Lyotard ✯ (1924–1998)
 
 **Position:** Postmodern Philosophy · Poststructuralism · Philosophy of Knowledge · Political Philosophy
 
@@ -12152,7 +12181,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Wittgenstein, Postmodern Theory, Political Philosophy, Philosophy of Art.
 
-## Gilles Deleuze ✯ (1925–1995)
+### Gilles Deleuze ✯ (1925–1995)
 
 **Position:** Poststructuralism · Philosophy of Difference · Process Metaphysics · Philosophy of Immanence
 
@@ -12233,7 +12262,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Spinoza, Nietzsche, Bergson, Simondon, Guattari, Foucault, Contemporary Metaphysics, Cultural Theory.
 
-## Frantz Fanon ✯ (1925–1961)
+### Frantz Fanon ✯ (1925–1961)
 
 **Position:** Anticolonial Philosophy · Political Philosophy · Phenomenology of Race · Social Psychiatry
 
@@ -12283,7 +12312,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Sartre, Merleau-Ponty, Marxism, Black Existentialism, Decolonial Theory, Postcolonial Studies.
 
-## Michel Foucault ★ (1926–1984)
+### Michel Foucault ★ (1926–1984)
 
 **Position:** Poststructuralism · Historical Epistemology · Archaeology of Knowledge · Genealogy · Philosophy of Power · Ethics of Subjectivation
 
@@ -12534,7 +12563,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Nietzsche, Canguilhem, Althusser, Deleuze, Habermas, Butler, Said, Governmentality Studies, Social Theory, Criminology, Philosophy of Law, Contemporary Political Philosophy.
 
-## Jean Baudrillard ✯ (1929–2007)
+### Jean Baudrillard ✯ (1929–2007)
 
 **Position:** Postmodern Theory · Social Philosophy · Media Theory · Critique of Consumer Society
 
@@ -12572,7 +12601,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Saussure, Barthes, Media Theory, Postmodern Cultural Criticism.
 
-## Jürgen Habermas ✯ (1929–2026)
+### Jürgen Habermas ✯ (1929–2026)
 
 **Position:** Frankfurt School · Second-Generation Critical Theory · Communicative Rationality · Discourse Ethics · Deliberative Democracy
 
@@ -12664,7 +12693,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Kant, Hegel, Marx, Weber, Mead, Horkheimer, Adorno, Apel, Honneth, Discourse Ethics, Deliberative Democracy, Legal Philosophy.
 
-## Pierre Bourdieu ✯ (1930–2002)
+### Pierre Bourdieu ✯ (1930–2002)
 
 **Position:** Critical Social Theory · Reflexive Sociology · Social Ontology · Theory of Practice
 
@@ -12711,7 +12740,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Marx, Weber, Durkheim, Merleau-Ponty, Social Ontology, Education Research, Critical Sociology.
 
-## Félix Guattari ✯ (1930–1992)
+### Félix Guattari ✯ (1930–1992)
 
 **Position:** Schizoanalysis · Institutional Psychotherapy · Poststructuralist Social Theory · Ecosophy
 
@@ -12750,7 +12779,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Freud, Lacan, Deleuze, Institutional Analysis, Ecological Philosophy, Political Theory.
 
-## Jacques Derrida ✯ (1930–2004)
+### Jacques Derrida ✯ (1930–2004)
 
 **Position:** Deconstruction · Poststructuralism · Philosophy of Language · Metaphysics · Ethics and Political Philosophy
 
@@ -12848,7 +12877,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Husserl, Heidegger, Saussure, Nietzsche, Levinas, Foucault, Literary Theory, Legal Theory, Continental Ethics.
 
-## Luce Irigaray ✯ (born 1930)
+### Luce Irigaray ✯ (born 1930)
 
 **Position:** Feminist Philosophy · Sexual Difference Theory · Psychoanalytic Criticism · Philosophy of Language
 
@@ -12882,7 +12911,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Freud, Lacan, Levinas, Beauvoir, Feminist Phenomenology, Continental Feminist Philosophy.
 
-## Guy Debord (1931–1994)
+### Guy Debord (1931–1994)
 
 **Position:** Situationist Theory · Marxist Cultural Criticism · Media and Consumer Society
 
@@ -12904,7 +12933,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 * Détournement, Construction of Situations, Everyday Life.
 * How can artistic and practical interventions challenge established patterns of social experience?
 
-## Edward Said ✯ (1935–2003)
+### Edward Said ✯ (1935–2003)
 
 **Position:** Postcolonial Theory · Cultural Criticism · Philosophy of Representation · Critique of Imperial Knowledge
 
@@ -12943,7 +12972,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Foucault, Gramsci, Fanon, Postcolonial Studies, Critical Cultural Analysis, Decolonial Scholarship.
 
-## Hélène Cixous ✯ (born 1937)
+### Hélène Cixous ✯ (born 1937)
 
 **Position:** Feminist Philosophy · Poststructuralist Literary Theory · Philosophy of Writing
 
@@ -12968,7 +12997,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Freud, Derrida, Irigaray, Feminist Literary Theory, Poststructuralism.
 
-## Julia Kristeva ✯ (born 1941)
+### Julia Kristeva ✯ (born 1941)
 
 **Position:** Poststructuralism · Psychoanalytic Theory · Semiotics · Feminist Theory
 
@@ -13003,7 +13032,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Bakhtin, Freud, Lacan, Barthes, Feminist Theory, Literary Semiotics.
 
-## Gayatri Chakravorty Spivak ✯ (born 1942)
+### Gayatri Chakravorty Spivak ✯ (born 1942)
 
 **Position:** Postcolonial Philosophy · Deconstruction · Feminist Theory · Subaltern Studies
 
@@ -13045,7 +13074,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Derrida, Marx, Feminist Theory, Subaltern Studies, Postcolonial Epistemology.
 
-## Axel Honneth ✯ (born 1949)
+### Axel Honneth ✯ (born 1949)
 
 **Position:** Third-Generation Frankfurt School · Critical Theory · Theory of Recognition · Social Philosophy
 
@@ -13084,7 +13113,7 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Hegel, Marx, Habermas, Critical Theory, Recognition Theory, Contemporary Social Justice.
 
-## Homi K. Bhabha ✯ (born 1949)
+### Homi K. Bhabha ✯ (born 1949)
 
 **Position:** Postcolonial Theory · Cultural Philosophy · Poststructuralist Criticism · Identity and Representation
 
@@ -13123,13 +13152,990 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Philosophical Legacy**
 * Fanon, Derrida, Said, Postcolonial Studies, Cultural Theory, Political Philosophy of Identity.
 
-# Period 14 — Contemporary Moral, Political, and Theoretical Philosophy (c. 1950–present)
+## Contemporary Moral, Political, and Theoretical Philosophy (c. 1950–present)
+
+### Derek Parfit ✯ (1942–2017)
+
+**Position:** Moral Philosophy · Personal Identity · Population Ethics · Practical Reason · Normative Ethics
+
+* **Name:** Derek Antony Parfit.
+* **Life:** Born in Chengdu, China, to British parents; philosopher who spent most of his academic career at All Souls College, Oxford. Died in Oxford.
+* **Contributions:** One of the most influential moral philosophers of the late twentieth and early twenty-first centuries. Developed groundbreaking arguments concerning personal identity, rationality, future generations, population ethics, and the possibility of convergence among major ethical theories.
+* **Major Works:** *Reasons and Persons*, *On What Matters* (three volumes), *Personal Identity*, *Equality or Priority?*
+
+**Reductionism about Personal Identity**
+* Personal Identity, Psychological Continuity, Reductionism.
+* Can facts about personal identity be reduced to more particular psychological and physical facts?
+* *Reasons and Persons*.
+
+**Psychological Continuity and Connectedness**
+* Psychological Continuity, Psychological Connectedness, Memory, Intentions.
+* What makes an individual at one time psychologically related to a person at another time?
+
+**The Teletransporter Thought Experiment**
+* Teletransportation, Numerical Identity, Psychological Continuity.
+* Would a perfect psychological duplicate be the same person as the original individual?
+
+**The Branching Problem**
+* Fission, Identity, Survival, Numerical Identity.
+* What happens when psychological continuity branches into two equally qualified successors?
+
+**Identity Is Not What Matters**
+* Personal Identity, Survival, Relation R, Practical Concern.
+* Why might psychological continuity matter for survival even when numerical identity does not?
+* *Reasons and Persons* III.
+
+**The Self-Interest Theory**
+* Self-Interest, Prudential Rationality, Future Selves.
+* Why should a person give equal weight to all periods of their own future existence?
+
+**Reasons and Temporal Neutrality**
+* Temporal Neutrality, Practical Reasons, Time Preference.
+* Can the temporal distance of an event independently justify discounting its moral importance?
+
+**The Non-Identity Problem**
+* Non-Identity Problem, Future Persons, Harm, Procreative Choice.
+* How can an action be morally objectionable when the people affected would not have existed under the alternative?
+* *Reasons and Persons* IV.
+
+**Population Ethics**
+* Population Ethics, Total Welfare, Average Welfare, Quality of Life.
+* How should outcomes involving different numbers of people be compared?
+
+**The Repugnant Conclusion**
+* Repugnant Conclusion, Total Utilitarianism, Population Size.
+* Why can maximizing total welfare favor an enormous population whose members have lives barely worth living?
+
+**The Mere Addition Paradox**
+* Mere Addition Paradox, Population Comparisons, Aggregation.
+* How can apparently plausible comparisons produce an unacceptable conclusion about population welfare?
+
+**Prioritarianism**
+* Prioritarianism, Moral Priority, Benefits to the Worse-Off.
+* Why should benefits to worse-off individuals possess greater moral importance?
+* *Equality or Priority?*
+
+**Reasons and Objectivity**
+* Objective Reasons, Normative Truth, Moral Realism.
+* Can normative reasons be objective without being reducible to natural facts?
+* *On What Matters*.
+
+**Triple Theory**
+* Consequentialism, Kantian Ethics, Contractualism, Normative Convergence.
+* Can the strongest versions of major moral theories converge on similar principles?
+* *On What Matters*.
+
+**The Unity of Moral Philosophy**
+* Normative Ethics, Practical Reason, Objective Value.
+* Can systematic philosophical reasoning resolve disagreements among apparently competing ethical traditions?
+
+**Philosophical Legacy**
+* Locke, Sidgwick, Rawls, Williams, Scanlon, Population Ethics, Future Generations, Contemporary Metaethics.
+
+### Daniel Dennett ✯ (1942–2024)
+
+**Position:** Philosophy of Mind · Cognitive Science · Philosophy of Consciousness · Naturalism · Philosophy of Artificial Intelligence
+
+* **Name:** Daniel Clement Dennett III.
+* **Life:** Born in Boston, Massachusetts, United States; philosopher and cognitive scientist who taught at Tufts University. Died in Portland, Maine.
+* **Contributions:** Developed influential naturalistic accounts of consciousness, intentionality, agency, evolution, and the explanatory relationships between cognitive science and philosophy.
+* **Major Works:** *Content and Consciousness*, *Brainstorms*, *The Intentional Stance*, *Consciousness Explained*, *Darwin's Dangerous Idea*, *Freedom Evolves*, *From Bacteria to Bach and Back*, *Kinds of Minds*.
+
+**The Intentional Stance**
+* Intentional Stance, Beliefs, Desires, Prediction.
+* How can intentional descriptions predict the behavior of complex systems?
+* *The Intentional Stance*.
+
+**The Design and Physical Stances**
+* Physical Stance, Design Stance, Intentional Stance.
+* How do different explanatory perspectives support predictions about the same system?
+
+**Real Patterns**
+* Real Patterns, Intentional Interpretation, Explanatory Utility.
+* When do intentional descriptions identify objectively significant patterns rather than arbitrary projections?
+
+**Multiple Drafts Theory**
+* Multiple Drafts Model, Distributed Processing, Consciousness.
+* Can consciousness be explained without a single central location where experiences become definitively conscious?
+* *Consciousness Explained*.
+
+**The Cartesian Theater**
+* Cartesian Theater, Central Observer, Mental Representation.
+* Why does Dennett reject the idea of a privileged internal observer?
+
+**Qualia and Heterophenomenology**
+* Qualia, Subjective Reports, Heterophenomenology.
+* How should scientific inquiry investigate first-person reports of consciousness without treating introspection as infallible?
+
+**Evolutionary Explanations of Mind**
+* Evolution, Cognitive Capacities, Biological Adaptation.
+* How do complex cognitive abilities arise through natural processes?
+* *Darwin's Dangerous Idea*.
+
+**Free Will and Responsibility**
+* Compatibilism, Moral Responsibility, Deliberation.
+* Can morally significant freedom emerge within a causally structured natural world?
+* *Freedom Evolves*.
+
+**Competence without Comprehension**
+* Competence, Comprehension, Evolution, Information Processing.
+* Can systems display sophisticated competence without possessing explicit understanding?
+
+**Dennett and the Hard Problem**
+* Consciousness, Phenomenal Experience, Scientific Explanation.
+* Does Dennett explain away the hard problem, dissolve a conceptual confusion, or fail to address the central phenomenon?
+
+**Philosophical Legacy**
+* Ryle, Quine, Turing, Cognitive Science, Artificial Intelligence, Contemporary Philosophy of Mind.
+
+### Patricia S. Churchland ✯ (born 1943)
+
+**Position:** Neurophilosophy · Philosophy of Mind · Naturalized Ethics · Cognitive Neuroscience
+
+* **Name:** Patricia Smith Churchland.
+* **Life:** Born in Oliver, British Columbia, Canada; philosopher associated with the University of California, San Diego.
+* **Contributions:** A pioneer of neurophilosophy who investigates cognition, consciousness, morality, and agency through the integration of philosophy and neuroscience.
+* **Major Works:** *Neurophilosophy*, *Brain-Wise*, *Braintrust*, *Touching a Nerve*, *Conscience*.
+
+**Neurophilosophy**
+* Neurophilosophy, Brain Science, Mental Representation.
+* How should discoveries in neuroscience transform philosophical theories of the mind?
+* *Neurophilosophy*.
+
+**Eliminative Materialism**
+* Folk Psychology, Scientific Theory Change, Mental Categories.
+* Could some ordinary psychological categories be revised or replaced by future neuroscience?
+
+**The Biology of Moral Behavior**
+* Moral Psychology, Social Attachment, Empathy, Neurobiology.
+* What biological capacities contribute to moral conduct?
+* *Braintrust*.
+
+**Consciousness and Neural Explanation**
+* Consciousness, Neural Mechanisms, Scientific Explanation.
+* How should philosophical theories of consciousness be constrained by empirical research?
+
+**Philosophical Legacy**
+* Paul Churchland, Sellars, Dennett, Cognitive Science, Naturalized Ethics.
+
+### Donna Haraway ✯ (born 1944)
+
+**Position:** Feminist Epistemology · Science and Technology Studies · Posthumanism · Critical Theory
+
+* **Name:** Donna Jeanne Haraway.
+* **Life:** Born in Denver, Colorado, United States; scholar associated with the University of California, Santa Cruz.
+* **Contributions:** Developed influential feminist critiques of scientific objectivity, human–machine boundaries, biological categories, and the politics of technological knowledge.
+* **Major Works:** *A Cyborg Manifesto*, *Simians, Cyborgs, and Women*, *Modest_Witness@Second_Millennium*, *When Species Meet*, *Staying with the Trouble*.
+
+**The Cyborg Manifesto**
+* Cyborg, Human–Machine Boundaries, Identity, Technology.
+* How do technological developments destabilize conventional distinctions between human and machine?
+* *A Cyborg Manifesto*.
+
+**Situated Knowledges**
+* Situated Knowledge, Partial Perspective, Feminist Objectivity.
+* How can knowledge be objective while remaining situated within particular material and social relationships?
+* *Situated Knowledges*.
+
+**The Critique of the View from Nowhere**
+* Disembodied Objectivity, Epistemic Accountability, Perspective.
+* Why does claiming a perspective-free standpoint risk concealing the social conditions of knowledge?
+
+**Companion Species**
+* Companion Species, Human–Animal Relations, Co-Constitution.
+* How are human identities and practices shaped through relationships with nonhuman organisms?
+* *When Species Meet*.
+
+**Technoscience and Power**
+* Technoscience, Scientific Practices, Representation, Social Power.
+* How do scientific and technological classifications participate in social organization?
+
+**Philosophical Legacy**
+* Feminist Standpoint Theory, Science and Technology Studies, Posthumanism, Environmental Humanities, AI Ethics.
+
+### Philip Pettit ✯ (born 1945)
+
+**Position:** Neo-Republicanism · Political Philosophy · Theory of Freedom · Social Ontology
+
+* **Name:** Philip Noel Pettit.
+* **Life:** Born in Ballygar, Ireland; philosopher who has taught at the Australian National University and Princeton University.
+* **Contributions:** Developed a contemporary republican theory of liberty based on freedom from domination, together with influential accounts of collective agency and democratic legitimacy.
+* **Major Works:** *Republicanism: A Theory of Freedom and Government*, *A Theory of Freedom*, *On the People's Terms*, *Group Agency* (with Christian List), *Just Freedom*.
+
+**Freedom as Non-Domination**
+* Non-Domination, Arbitrary Power, Dependency.
+* How can a person be unfree even when no one presently interferes with their choices?
+* *Republicanism*.
+
+**Interference and Domination**
+* Non-Interference, Non-Domination, Structural Dependence.
+* Why does republican freedom differ from purely negative liberty?
+
+**Democratic Contestation**
+* Contestatory Democracy, Accountability, Political Power.
+* How can citizens remain protected against arbitrary governmental authority?
+* *On the People's Terms*.
+
+**Collective Agency**
+* Group Agency, Joint Intentions, Corporate Responsibility.
+* Under what conditions can a group count as an agent with beliefs and intentions?
+* *Group Agency*.
+
+**Philosophical Legacy**
+* Roman Republicanism, Machiavelli, Arendt, Contemporary Republicanism, Democratic Theory.
+
+### Peter Singer ✯ (born 1946)
+
+**Position:** Applied Ethics · Preference Utilitarianism · Animal Ethics · Global Poverty · Effective Altruism
+
+* **Name:** Peter Albert David Singer.
+* **Life:** Born in Melbourne, Australia; philosopher who has taught at Monash University, Princeton University, and the University of Melbourne.
+* **Contributions:** One of the most influential contemporary applied ethicists. Developed arguments concerning animal interests, global poverty, obligations to distant strangers, bioethics, and the rational allocation of resources.
+* **Major Works:** *Animal Liberation*, *Practical Ethics*, *The Expanding Circle*, *The Life You Can Save*, *The Most Good You Can Do*, *Famine, Affluence, and Morality*.
+
+**The Principle of Equal Consideration of Interests**
+* Equal Consideration, Interests, Impartiality.
+* Why should comparable interests receive equal moral consideration regardless of species or social identity?
+* *Animal Liberation*.
+
+**Animal Liberation**
+* Animal Welfare, Speciesism, Sentience, Moral Status.
+* What makes suffering morally significant, and can species membership alone justify unequal treatment?
+
+**Famine, Affluence, and Morality**
+* Beneficence, Global Poverty, Moral Obligation.
+* When are affluent individuals morally required to prevent severe suffering?
+* *Famine, Affluence, and Morality*.
+
+**The Drowning Child**
+* Rescue, Sacrifice, Moral Distance.
+* Why should physical distance alter the strength of obligations to prevent serious harm?
+
+**Preference Utilitarianism**
+* Preferences, Welfare, Consequences.
+* How should the satisfaction of preferences influence moral evaluation?
+* *Practical Ethics*.
+
+**Effective Altruism**
+* Effectiveness, Charitable Giving, Evidence, Expected Benefit.
+* How should limited resources be allocated to produce the greatest expected moral benefit?
+* *The Most Good You Can Do*.
+
+**Population and Bioethics**
+* Personhood, Moral Status, Life-and-Death Decisions.
+* How should ethical principles address conflicts involving suffering, autonomy, and the value of life?
+
+**Philosophical Legacy**
+* Bentham, Mill, Sidgwick, Animal Ethics, Effective Altruism, Global Applied Ethics.
+
+### Susan Moller Okin ✯ (1946–2004)
+
+**Position:** Feminist Political Philosophy · Justice and the Family · Liberal Egalitarianism · Gender Equality
+
+* **Name:** Susan Moller Okin.
+* **Life:** Born in Auckland, New Zealand; political philosopher who taught at Brandeis University and Stanford University. Died in Lincoln, Massachusetts.
+* **Contributions:** Developed influential feminist criticisms of political theories that overlook inequalities within families and the gendered organization of care.
+* **Major Works:** *Women in Western Political Thought*, *Justice, Gender, and the Family*, *Is Multiculturalism Bad for Women?*
+
+**Justice and the Family**
+* Family, Gender Inequality, Domestic Labor, Political Justice.
+* Why must theories of justice examine the internal organization of families?
+* *Justice, Gender, and the Family*.
+
+**The Critique of the Public–Private Divide**
+* Public and Private Spheres, Household Power, Institutional Justice.
+* How can treating family life as private conceal forms of structural injustice?
+
+**Gender and Equal Opportunity**
+* Gender Roles, Care Work, Economic Independence.
+* What conditions make genuine equality of opportunity possible?
+
+**Multiculturalism and Gender Justice**
+* Cultural Rights, Gender Equality, Minority Practices.
+* How should political institutions address conflicts between cultural protections and individual equality?
+* *Is Multiculturalism Bad for Women?*
+
+**Philosophical Legacy**
+* Rawls, Wollstonecraft, Feminist Liberalism, Family Justice, Multicultural Political Theory.
+
+### Nancy Fraser ✯ (born 1947)
+
+**Position:** Critical Theory · Feminist Political Philosophy · Social Justice · Democratic Theory
+
+* **Name:** Nancy Fraser.
+* **Life:** Born in Baltimore, Maryland, United States; philosopher associated with the New School for Social Research in New York.
+* **Contributions:** Developed influential theories of redistribution, recognition, representation, participatory parity, and the structural conditions of social justice.
+* **Major Works:** *Justice Interruptus*, *Redistribution or Recognition?* (with Axel Honneth), *Scales of Justice*, *Fortunes of Feminism*, *Cannibal Capitalism*.
+
+**Redistribution and Recognition**
+* Redistribution, Recognition, Economic and Cultural Injustice.
+* Why must theories of justice address both material inequalities and status hierarchies?
+* *Redistribution or Recognition?*
+
+**Participatory Parity**
+* Participatory Parity, Equal Standing, Institutional Conditions.
+* What social arrangements enable people to participate as peers in collective life?
+
+**The Status Model of Recognition**
+* Status Subordination, Institutionalized Cultural Patterns.
+* Why should misrecognition be understood through social status rather than only damaged identity?
+
+**Representation and Political Boundaries**
+* Representation, Political Membership, Scales of Justice.
+* Who should count as entitled to participate in decisions affecting the organization of social cooperation?
+* *Scales of Justice*.
+
+**The Critique of Capitalism**
+* Social Reproduction, Economic Production, Ecological Conditions.
+* How does capitalism depend on social and ecological conditions that it may simultaneously undermine?
+* *Cannibal Capitalism*.
+
+**The Public Sphere and Counterpublics**
+* Counterpublics, Political Voice, Discursive Inequality.
+* How can marginalized groups create alternative spaces for public deliberation?
+
+**Philosophical Legacy**
+* Marx, Habermas, Honneth, Feminist Critical Theory, Global Justice.
+
+### Martha C. Nussbaum ✯ (born 1947)
+
+**Position:** Capability Approach · Neo-Aristotelian Ethics · Political Liberalism · Feminist Philosophy · Emotions and Ethics
+
+* **Name:** Martha Craven Nussbaum.
+* **Life:** Born in New York City, United States; philosopher associated with Brown University and the University of Chicago.
+* **Contributions:** Developed a comprehensive approach to human capabilities, dignity, moral emotions, political justice, disability, global inequality, and animal ethics.
+* **Major Works:** *The Fragility of Goodness*, *Love's Knowledge*, *Women and Human Development*, *Frontiers of Justice*, *Creating Capabilities*, *Upheavals of Thought*, *The Monarchy of Fear*, *Justice for Animals*.
+
+**The Capability Approach**
+* Central Capabilities, Dignity, Substantive Opportunities.
+* What must individuals genuinely be able to do and be in order to live with dignity?
+* *Creating Capabilities*.
+
+**The Central Human Capabilities**
+* Life, Bodily Health, Bodily Integrity, Practical Reason, Affiliation, Control over Environment.
+* Why does Nussbaum identify a list of central capabilities as politically significant?
+
+**Capabilities versus Resources**
+* Resources, Functionings, Conversion Factors.
+* Why can equal distributions of resources produce unequal substantive opportunities?
+
+**Human Dignity**
+* Dignity, Political Entitlements, Basic Capabilities.
+* How can dignity ground minimum requirements of social justice?
+
+**Emotions as Evaluative Judgments**
+* Emotions, Value, Vulnerability, Practical Reason.
+* Can emotions reveal judgments about matters important to human flourishing?
+* *Upheavals of Thought*.
+
+**The Fragility of Goodness**
+* Moral Luck, Flourishing, Vulnerability.
+* How does dependence on external circumstances complicate ethical theories centered on virtue?
+* *The Fragility of Goodness*.
+
+**Disability and Justice**
+* Disability, Dependence, Inclusion, Social Cooperation.
+* Why might traditional contract theories inadequately represent people with disabilities?
+* *Frontiers of Justice*.
+
+**Animal Capabilities**
+* Animal Dignity, Flourishing, Species-Specific Capabilities.
+* What obligations follow from recognizing nonhuman animals as beings with characteristic opportunities for flourishing?
+* *Justice for Animals*.
+
+**Political Emotions**
+* Political Emotions, Compassion, Disgust, Fear.
+* How do emotions contribute to democratic institutions and political culture?
+
+**Philosophical Legacy**
+* Aristotle, Rawls, Sen, Feminist Philosophy, Global Justice, Animal Ethics.
+
+### Iris Marion Young ✯ (1949–2006)
+
+**Position:** Feminist Political Philosophy · Structural Justice · Democratic Theory · Social Ontology
+
+* **Name:** Iris Marion Young.
+* **Life:** Born in New York City, United States; political philosopher who taught at several universities, including the University of Chicago. Died in Chicago.
+* **Contributions:** Developed influential accounts of structural oppression, group difference, political inclusion, and responsibility for injustice.
+* **Major Works:** *Justice and the Politics of Difference*, *Inclusion and Democracy*, *Responsibility for Justice*, *On Female Body Experience*.
+
+**The Five Faces of Oppression**
+* Exploitation, Marginalization, Powerlessness, Cultural Imperialism, Violence.
+* Why cannot oppression be adequately understood through a single model of unjust distribution?
+* *Justice and the Politics of Difference*.
+
+**Structural Injustice**
+* Structural Injustice, Social Processes, Institutional Constraints.
+* How can injustice emerge from ordinary social practices without a single intentionally oppressive agent?
+
+**The Social Connection Model**
+* Social Connection Model, Shared Responsibility, Structural Processes.
+* What responsibilities do individuals possess when they participate in structures producing injustice?
+* *Responsibility for Justice*.
+
+**The Politics of Difference**
+* Group Difference, Equality, Inclusion.
+* Why may identical treatment fail to produce substantive justice?
+
+**Inclusion and Democratic Communication**
+* Democratic Inclusion, Political Representation, Public Deliberation.
+* How can political institutions recognize marginalized experiences without essentializing group identities?
+* *Inclusion and Democracy*.
+
+**Embodiment and Social Experience**
+* Embodiment, Gender, Space, Bodily Comportment.
+* How do social norms shape bodily experience and movement?
+
+**Philosophical Legacy**
+* Beauvoir, Arendt, Rawls, Fraser, Structural Justice, Feminist Political Theory.
+
+### Robert Brandom ✯ (born 1950)
+
+**Position:** Analytic Philosophy · Inferentialism · Pragmatism · Philosophy of Language · Neo-Hegelianism
+
+* **Name:** Robert Boyce Brandom.
+* **Life:** Born in the United States; philosopher associated with the University of Pittsburgh.
+* **Contributions:** Developed an ambitious inferentialist theory of meaning and rationality that integrates analytic philosophy of language with pragmatism and Hegelian ideas of recognition.
+* **Major Works:** *Making It Explicit*, *Articulating Reasons*, *Between Saying and Doing*, *A Spirit of Trust*.
+
+**Semantic Inferentialism**
+* Inferentialism, Conceptual Content, Inference.
+* How does a concept acquire meaning through its role in reasoning?
+* *Making It Explicit*.
+
+**The Game of Giving and Asking for Reasons**
+* Reasons, Commitments, Entitlements, Discursive Practice.
+* What social practices make reasoning and justification possible?
+
+**Deontic Scorekeeping**
+* Deontic Scorekeeping, Normative Status, Recognition.
+* How do participants track one another's commitments and entitlements?
+
+**Normative Pragmatics**
+* Normative Pragmatics, Meaning, Rule-Governed Practices.
+* Can semantic content be explained through the norms governing linguistic action?
+
+**Expressivist Logic**
+* Logical Vocabulary, Expressive Role, Inference.
+* Why might logical concepts make explicit relationships already implicit in reasoning?
+
+**Hegelian Recognition**
+* Recognition, Social Normativity, Reciprocal Accountability.
+* How do practices of mutual recognition contribute to the constitution of rational agency?
+* *A Spirit of Trust*.
+
+**Philosophical Legacy**
+* Kant, Hegel, Sellars, Frege, Wittgenstein, Contemporary Pragmatism, Philosophy of Language.
+
+### Charles W. Mills ✯ (1951–2021)
+
+**Position:** Political Philosophy · Critical Race Theory · Racial Justice · Criticism of Liberalism
+
+* **Name:** Charles Wade Mills.
+* **Life:** Born in London, England; philosopher raised in Jamaica who taught at institutions including Northwestern University and the City University of New York. Died in Evanston, Illinois.
+* **Contributions:** Developed influential critiques of racial domination and the exclusion of racial injustice from idealized traditions of liberal political philosophy.
+* **Major Works:** *The Racial Contract*, *From Class to Race*, *Blackness Visible*, *Radical Theory, Caribbean Reality*, *Black Rights/White Wrongs*.
+
+**The Racial Contract**
+* Racial Contract, Racial Domination, Political Institutions.
+* How can the social contract tradition obscure historically constituted relations of racial power?
+* *The Racial Contract*.
+
+**White Ignorance**
+* White Ignorance, Epistemic Structures, Social Power.
+* How can ignorance be systematically produced and maintained through social institutions?
+
+**Ideal Theory and Racial Injustice**
+* Ideal Theory, Nonideal Theory, Structural Inequality.
+* Why might idealized political models fail to identify pervasive injustice?
+
+**Liberalism and Racial Justice**
+* Liberalism, Equality, Historical Injustice.
+* Can liberal political philosophy be reconstructed to address racial domination?
+* *Black Rights/White Wrongs*.
+
+**Philosophical Legacy**
+* Rawls, Marx, Critical Race Theory, Political Epistemology, Nonideal Justice.
+
+### Christine M. Korsgaard ✯ (born 1952)
+
+**Position:** Kantian Ethics · Moral Constructivism · Practical Reason · Philosophy of Agency
+
+* **Name:** Christine Marion Korsgaard.
+* **Life:** Born in Chicago, Illinois, United States; philosopher associated with Harvard University.
+* **Contributions:** Developed influential Kantian arguments concerning the sources of normativity, reflective agency, practical identity, self-constitution, and the moral status of animals.
+* **Major Works:** *The Sources of Normativity*, *Creating the Kingdom of Ends*, *The Constitution of Agency*, *Self-Constitution*, *Fellow Creatures*.
+
+**The Sources of Normativity**
+* Normativity, Reflective Agency, Practical Justification.
+* Why should a reflective agent regard certain reasons as binding?
+* *The Sources of Normativity*.
+
+**Practical Identity**
+* Practical Identity, Roles, Commitments, Moral Agency.
+* How do identities and commitments generate reasons for action?
+
+**Reflective Endorsement**
+* Reflective Endorsement, Deliberation, Autonomy.
+* Why does the capacity to reflect on desires create a problem of normative authority?
+
+**Self-Constitution**
+* Self-Constitution, Agency, Unity of the Will.
+* How do principles of practical reason constitute an agent as the author of their actions?
+* *Self-Constitution*.
+
+**Kantian Constructivism**
+* Constructivism, Moral Law, Practical Reason.
+* Can normative principles be grounded in the structure of rational agency rather than independent moral facts?
+
+**The Moral Standing of Animals**
+* Animal Ethics, Sentience, Creaturely Good.
+* What ethical obligations follow from recognizing animals as beings for whom things can be good or bad?
+* *Fellow Creatures*.
+
+**Philosophical Legacy**
+* Kant, Aristotle, Rawls, Scanlon, Contemporary Constructivism, Animal Ethics.
+
+### Kwame Anthony Appiah ✯ (born 1954)
+
+**Position:** Moral Philosophy · Cosmopolitanism · Philosophy of Identity · Philosophy of Race
+
+* **Name:** Kwame Anthony Appiah.
+* **Life:** Born in London, England, and raised in Ghana; philosopher who has taught at Princeton University and New York University.
+* **Contributions:** Developed influential accounts of cosmopolitanism, identity, race, moral disagreement, honor, and intercultural ethical responsibility.
+* **Major Works:** *In My Father's House*, *The Ethics of Identity*, *Cosmopolitanism: Ethics in a World of Strangers*, *The Honor Code*, *The Lies That Bind*.
+
+**Cosmopolitanism**
+* Cosmopolitanism, Shared Humanity, Cultural Difference.
+* What obligations do individuals have to others beyond national and cultural boundaries?
+* *Cosmopolitanism*.
+
+**Ethics and Identity**
+* Identity, Autonomy, Social Recognition.
+* How should individuals negotiate social identities without treating them as fixed essences?
+* *The Ethics of Identity*.
+
+**Race and Social Classification**
+* Race, Racial Identity, Social Construction.
+* What makes racial categories socially significant despite problems with biological essentialism?
+
+**Honor and Moral Change**
+* Honor, Social Norms, Moral Transformation.
+* How can changes in social esteem contribute to moral reform?
+* *The Honor Code*.
+
+**The Ethics of Conversation**
+* Intercultural Dialogue, Toleration, Value Pluralism.
+* How can people with different moral commitments reason and coexist without achieving complete agreement?
+
+**Philosophical Legacy**
+* Mill, Cosmopolitanism, Political Liberalism, Critical Philosophy of Race, Global Ethics.
+
+### Helen Nissenbaum ✯ (born 1954)
+
+**Position:** Philosophy of Technology · Privacy Ethics · Information Ethics · Digital Governance
+
+* **Name:** Helen Nissenbaum.
+* **Life:** Philosopher whose academic work has been associated with New York University and Cornell Tech.
+* **Contributions:** Developed the theory of contextual integrity, a highly influential account of privacy and appropriate information flows in social and institutional contexts.
+* **Major Works:** *Privacy in Context: Technology, Policy, and the Integrity of Social Life*, *Obfuscation: A User's Guide for Privacy and Protest* (with Finn Brunton), articles on accountability and values in technological design.
+
+**Contextual Integrity**
+* Contextual Integrity, Privacy, Information Flows, Social Norms.
+* Why should privacy be understood through the appropriateness of information flows rather than simply secrecy or individual control?
+* *Privacy in Context*.
+
+**The Parameters of Information Flow**
+* Context, Actors, Information Attributes, Transmission Principles.
+* What determines whether a particular transfer of information violates privacy expectations?
+
+**Privacy and Social Context**
+* Institutional Roles, Contextual Norms, Trust.
+* Why can information sharing be appropriate in one social relationship but inappropriate in another?
+
+**Values in Technology Design**
+* Value-Sensitive Design, Institutional Context, Engineering Decisions.
+* How can technological systems incorporate social values into their architecture?
+
+**Privacy and AI Governance**
+* Data Use, Contextual Appropriateness, Automated Inference.
+* How should contextual integrity apply when AI systems infer sensitive information not explicitly disclosed by individuals?
+
+**Philosophical Legacy**
+* Information Ethics, Privacy Law, Digital Governance, Human-Computer Interaction, AI Policy.
+
+### Sally Haslanger ✯ (born 1955)
+
+**Position:** Social Ontology · Feminist Metaphysics · Critical Philosophy of Race · Social Construction
+
+* **Name:** Sally Haslanger.
+* **Life:** Philosopher associated with MIT.
+* **Contributions:** Developed influential theories of social construction, race, gender, ideology, and the relationship between conceptual analysis and social criticism.
+* **Major Works:** *Resisting Reality: Social Construction and Social Critique*, *What Is Race? What Is Gender?*, writings on social structures and ideology.
+
+**Social Construction**
+* Social Construction, Social Categories, Institutions.
+* What does it mean for a category to be socially constructed?
+* *Resisting Reality*.
+
+**Ameliorative Analysis**
+* Ameliorative Analysis, Conceptual Engineering, Social Critique.
+* How should concepts be revised to serve legitimate explanatory and political purposes?
+
+**Gender and Race as Social Positions**
+* Social Position, Hierarchy, Classification.
+* Can gender and race be analyzed through relations of social power rather than intrinsic attributes?
+
+**Ideology and Social Reproduction**
+* Ideology, Social Practices, Structural Explanation.
+* How do ideological frameworks sustain social institutions?
+
+**Social Structures**
+* Social Structures, Rules, Resources, Roles.
+* How can social structures constrain action without possessing agency of their own?
+
+**Philosophical Legacy**
+* Critical Theory, Feminist Metaphysics, Social Ontology, Conceptual Engineering.
+
+### Timothy Williamson ✯ (born 1955)
+
+**Position:** Analytic Epistemology · Philosophical Logic · Modal Metaphysics · Philosophy of Vagueness
+
+* **Name:** Timothy Williamson.
+* **Life:** Born in Sweden; philosopher associated with the University of Oxford.
+* **Contributions:** Developed influential accounts of knowledge, evidence, vagueness, necessity, and the methodology of philosophy.
+* **Major Works:** *Vagueness*, *Knowledge and Its Limits*, *The Philosophy of Philosophy*, *Modal Logic as Metaphysics*, *Doing Philosophy*.
+
+**Knowledge First Epistemology**
+* Knowledge First, Belief, Justification, Evidence.
+* Why might knowledge be a basic epistemic concept not reducible to belief plus additional conditions?
+* *Knowledge and Its Limits*.
+
+**Evidence as Knowledge**
+* Evidence, Knowledge, Rational Belief.
+* Why does Williamson propose that a person's evidence consists of what they know?
+
+**Safety and Knowledge**
+* Safety, Epistemic Luck, Counterfactual Reliability.
+* Under what circumstances is a true belief sufficiently safe from error?
+
+**Epistemicism about Vagueness**
+* Vagueness, Sorites Paradox, Sharp Boundaries.
+* Could vague predicates possess precise but unknowable boundaries?
+* *Vagueness*.
+
+**Modal Epistemology**
+* Necessity, Possibility, Counterfactual Reasoning.
+* How can human beings acquire knowledge of metaphysical possibilities?
+
+**Philosophical Methodology**
+* Thought Experiments, Intuition, Evidence.
+* What makes thought experiments legitimate tools of philosophical inquiry?
+* *The Philosophy of Philosophy*.
+
+**Philosophical Legacy**
+* Gettier, Kripke, Lewis, Contemporary Epistemology, Modal Logic.
+
+### Judith Butler ✯ (born 1956)
+
+**Position:** Feminist Philosophy · Gender Performativity · Critical Theory · Political Ethics
+
+* **Name:** Judith Pamela Butler.
+* **Life:** Born in Cleveland, Ohio, United States; philosopher and gender theorist associated with the University of California, Berkeley.
+* **Contributions:** Developed influential theories of gender performativity, subject formation, bodily intelligibility, vulnerability, grievability, and the political regulation of social identity.
+* **Major Works:** *Gender Trouble*, *Bodies That Matter*, *Excitable Speech*, *Undoing Gender*, *Giving an Account of Oneself*, *Frames of War*, *Notes Toward a Performative Theory of Assembly*, *Who's Afraid of Gender?*
+
+**Gender Performativity**
+* Gender Performativity, Repetition, Norms, Subject Formation.
+* How do repeated social practices constitute gendered identity?
+* *Gender Trouble*.
+
+**Performativity versus Performance**
+* Performativity, Performance, Normative Repetition.
+* Why is gender performativity not simply the voluntary performance of a chosen social role?
+
+**The Heterosexual Matrix**
+* Heterosexual Matrix, Gender Norms, Identity Categories.
+* How do institutional norms regulate which forms of identity become socially intelligible?
+
+**Materialization of Bodies**
+* Materialization, Norms, Embodiment.
+* How do regulatory practices shape the social intelligibility of bodies?
+* *Bodies That Matter*.
+
+**Subjection and Agency**
+* Subject Formation, Power, Agency.
+* How can subjects exercise agency through the very norms that constitute them?
+
+**Precarity and Vulnerability**
+* Precarity, Vulnerability, Interdependence.
+* How do institutions distribute vulnerability unequally?
+* *Frames of War*.
+
+**Grievability**
+* Grievability, Political Recognition, Human Life.
+* Why are some lives publicly recognized as worthy of mourning while others are not?
+
+**Performative Assembly**
+* Assembly, Political Action, Embodied Collective Presence.
+* How can collective bodily presence constitute political claims?
+* *Notes Toward a Performative Theory of Assembly*.
+
+**Philosophical Legacy**
+* Beauvoir, Foucault, Derrida, Hegel, Feminist Philosophy, Queer Theory, Contemporary Political Ethics.
+
+### Elizabeth Anderson ✯ (born 1959)
+
+**Position:** Political Egalitarianism · Democratic Theory · Social Epistemology · Feminist Philosophy
+
+* **Name:** Elizabeth Secor Anderson.
+* **Life:** Born in the United States; philosopher associated with the University of Michigan.
+* **Contributions:** Developed influential theories of democratic equality, relational egalitarianism, workplace domination, empirical approaches to political justice, and the social organization of knowledge.
+* **Major Works:** *Value in Ethics and Economics*, *The Imperative of Integration*, *Private Government*, *Hijacked: How Neoliberalism Turned the Work Ethic against Workers and How Workers Can Take It Back*.
+
+**Relational Egalitarianism**
+* Relational Equality, Social Status, Democratic Relations.
+* Why should equality be understood through relationships among citizens rather than solely through distributive patterns?
+
+**Democratic Equality**
+* Democratic Equality, Social Inclusion, Equal Standing.
+* What makes a society one of equals?
+
+**The Critique of Luck Egalitarianism**
+* Luck Egalitarianism, Responsibility, Social Hierarchy.
+* Why might distributive theories focused on compensating bad luck become disrespectful toward disadvantaged individuals?
+
+**Private Government**
+* Workplace Authority, Employer Power, Freedom.
+* How can workplace relations constitute forms of government lacking democratic accountability?
+* *Private Government*.
+
+**Integration and Social Justice**
+* Integration, Segregation, Democratic Equality.
+* How can racial and social integration contribute to equal citizenship?
+* *The Imperative of Integration*.
+
+**Philosophical Legacy**
+* Rawls, Dewey, Feminist Political Philosophy, Workplace Justice, Relational Egalitarianism.
+
+### Kimberlé Crenshaw ✯ (born 1959)
+
+**Position:** Critical Race Theory · Intersectionality · Feminist Legal Theory · Antidiscrimination Law
+
+* **Name:** Kimberlé Williams Crenshaw.
+* **Life:** Born in Canton, Ohio, United States; legal scholar associated with UCLA School of Law and Columbia Law School.
+* **Contributions:** Developed the concept of intersectionality to explain how legal and political frameworks can fail to recognize forms of disadvantage arising through interacting structures of race, gender, and other social categories.
+* **Major Works:** *Demarginalizing the Intersection of Race and Sex*, *Mapping the Margins: Intersectionality, Identity Politics, and Violence against Women of Color*, contributions to *Critical Race Theory: The Key Writings That Formed the Movement*.
+
+**Intersectionality**
+* Intersectionality, Race, Gender, Structural Disadvantage.
+* Why can discrimination involving multiple social categories fail to be captured by frameworks addressing each category separately?
+* *Demarginalizing the Intersection of Race and Sex*.
+
+**Structural Intersectionality**
+* Structural Intersectionality, Institutions, Unequal Resources.
+* How do intersecting social structures generate distinctive patterns of vulnerability?
+
+**Political Intersectionality**
+* Political Intersectionality, Representation, Coalition Politics.
+* Why may political movements organized around one dimension of identity overlook people situated at multiple intersections?
+
+**Representational Intersectionality**
+* Representational Intersectionality, Cultural Narratives, Stereotypes.
+* How do social representations shape the visibility and intelligibility of marginalized experiences?
+
+**Antidiscrimination Law and Legal Categories**
+* Antidiscrimination Law, Doctrinal Categories, Legal Remedies.
+* How can legal rules designed around isolated categories fail to address compound forms of discrimination?
+
+**Philosophical Legacy**
+* Critical Race Theory, Feminist Jurisprudence, Social Justice Theory, Intersectional Policy Analysis.
+
+### Luciano Floridi ✯ (born 1964)
+
+**Position:** Philosophy of Information · Information Ethics · Philosophy of Technology · Artificial Intelligence Ethics
+
+* **Name:** Luciano Floridi.
+* **Life:** Born in Rome, Italy; philosopher whose academic career has included the University of Oxford and Yale University.
+* **Contributions:** Developed the philosophy of information as a systematic field and influential frameworks for understanding digital environments, informational agency, privacy, artificial intelligence, and the ethics of information technologies.
+* **Major Works:** *The Philosophy of Information*, *The Ethics of Information*, *The Fourth Revolution*, *The Logic of Information*, *The Ethics of Artificial Intelligence*, *The Green and the Blue*.
+
+**The Philosophy of Information**
+* Information, Meaning, Knowledge, Informational Structures.
+* Can information serve as a foundational concept connecting epistemology, ontology, and technology?
+* *The Philosophy of Information*.
+
+**The Infosphere**
+* Infosphere, Digital Environment, Informational Relations.
+* How does digital technology transform the environment in which individuals and institutions act?
+* *The Fourth Revolution*.
+
+**The Onlife Experience**
+* Onlife, Digital–Physical Integration, Human Identity.
+* How does the integration of online and offline activity alter established categories of agency and social interaction?
+
+**Information Ethics**
+* Information Ethics, Moral Patients, Informational Entities.
+* What ethical significance should be attributed to information environments and informational entities?
+* *The Ethics of Information*.
+
+**Artificial Agency and Intelligence**
+* Artificial Agency, Intelligence, Autonomous Systems.
+* Should artificial agency be distinguished conceptually from human-like intelligence and consciousness?
+
+**AI Ethics and Governance**
+* Beneficence, Non-Maleficence, Autonomy, Justice, Explicability.
+* How can principles of ethical governance be translated into institutional and technical requirements?
+* *The Ethics of Artificial Intelligence*.
+
+**The Politics of the Digital Environment**
+* Digital Governance, Institutional Responsibility, Informational Power.
+* What political institutions are needed to govern the infosphere?
+
+**Philosophical Legacy**
+* Philosophy of Information, Digital Ethics, Privacy Theory, AI Governance, Philosophy of Technology.
+
+### Miranda Fricker ✯ (born 1966)
+
+**Position:** Social Epistemology · Feminist Epistemology · Epistemic Injustice · Ethics of Knowing
+
+* **Name:** Miranda Fricker.
+* **Life:** Born in the United Kingdom; philosopher whose work has been associated with Birkbeck, the University of Sheffield, the University of Oxford, and the City University of New York.
+* **Contributions:** Developed an influential theory of epistemic injustice, showing how social power and prejudice can wrong individuals specifically in their capacities as knowers.
+* **Major Works:** *Epistemic Injustice: Power and the Ethics of Knowing*, *The Cambridge Companion to Feminism in Philosophy* (co-editor), papers on testimony, virtue, and social knowledge.
+
+**Epistemic Injustice**
+* Epistemic Injustice, Knowledge, Social Power, Wrongdoing.
+* How can individuals be wronged specifically in their capacity to contribute to and acquire knowledge?
+* *Epistemic Injustice*.
+
+**Testimonial Injustice**
+* Testimonial Injustice, Credibility Deficit, Identity Prejudice.
+* How can prejudice cause a speaker to receive less credibility than their testimony warrants?
+
+**Hermeneutical Injustice**
+* Hermeneutical Injustice, Interpretive Resources, Social Marginalization.
+* How can structural inequalities deprive individuals of the conceptual resources needed to understand or communicate important experiences?
+
+**Identity Power**
+* Identity Power, Social Stereotypes, Credibility Judgments.
+* How do social identities influence the distribution of epistemic authority?
+
+**Epistemic Virtues**
+* Testimonial Justice, Hermeneutical Justice, Reflective Judgment.
+* What virtues help individuals resist prejudicial distortions in knowledge practices?
+
+**Epistemic Injustice and Institutions**
+* Institutional Knowledge, Expert Authority, Legal Testimony.
+* How do epistemic injustices operate within law, education, medicine, and administrative decision-making?
+
+**Philosophical Legacy**
+* Feminist Epistemology, Virtue Epistemology, Social Epistemology, AI Fairness, Institutional Justice.
+
+### David J. Chalmers ✯ (born 1966)
+
+**Position:** Philosophy of Consciousness · Philosophy of Mind · Metaphysics · Philosophy of Artificial Intelligence
+
+* **Name:** David John Chalmers.
+* **Life:** Born in Sydney, Australia; philosopher who has taught at the Australian National University and New York University.
+* **Contributions:** Developed one of the most influential contemporary formulations of the hard problem of consciousness and major arguments concerning physicalism, phenomenal experience, two-dimensional semantics, and virtual reality.
+* **Major Works:** *The Conscious Mind*, *The Character of Consciousness*, *Constructing the World*, *Reality+*, *The Singularity: A Philosophical Analysis*.
+
+**The Hard Problem of Consciousness**
+* Hard Problem, Phenomenal Consciousness, Subjective Experience.
+* Why does explaining cognitive functions appear insufficient to explain why physical processes are accompanied by experience?
+* *The Conscious Mind*.
+
+**Easy Problems and the Hard Problem**
+* Functional Explanation, Information Processing, Phenomenal Experience.
+* What distinguishes explaining cognitive functions from explaining subjective consciousness?
+
+**Philosophical Zombies**
+* Philosophical Zombies, Conceivability, Physicalism.
+* Can the apparent conceivability of physically identical beings lacking consciousness challenge physicalism?
+
+**The Explanatory Gap**
+* Explanatory Gap, Physical Explanation, Phenomenal Properties.
+* What explanatory relationship connects physical processes to subjective experience?
+
+**Naturalistic Dualism**
+* Property Dualism, Psychophysical Laws, Consciousness.
+* Can consciousness be treated as a fundamental feature of reality governed by natural laws?
+
+**The Principle of Organizational Invariance**
+* Organizational Invariance, Functional Organization, Experience.
+* Would systems with the same fine-grained functional organization necessarily possess the same conscious experiences?
+
+**Artificial Consciousness**
+* Artificial Consciousness, AI Systems, Functional Organization.
+* Under what conditions might an artificial system possess subjective experience?
+
+**Two-Dimensional Semantics**
+* Two-Dimensional Semantics, Intension, Necessity, Apriority.
+* How can semantic analysis clarify the relationship between conceivability and metaphysical possibility?
+
+**Virtual Reality and Digital Worlds**
+* Virtual Reality, Digital Objects, Reality, Metaphysical Status.
+* Can experiences in virtual worlds be genuine encounters with real objects?
+* *Reality+*.
+
+**Philosophical Legacy**
+* Nagel, Kripke, Dennett, Philosophy of Mind, Consciousness Studies, Philosophy of Artificial Intelligence.
+
+### Nick Bostrom ✯ (born 1973)
+
+**Position:** Applied Ethics · Existential Risk · Philosophy of Artificial Intelligence · Future Generations
+
+* **Name:** Nick Bostrom.
+* **Life:** Born in Sweden; philosopher whose academic work has been associated with the University of Oxford.
+* **Contributions:** Developed influential philosophical arguments concerning human enhancement, existential risk, artificial superintelligence, simulation, and the long-term consequences of technological development.
+* **Major Works:** *Anthropic Bias*, *Superintelligence: Paths, Dangers, Strategies*, *Deep Utopia: Life and Meaning in a Solved World*, *Are You Living in a Computer Simulation?*, *The Superintelligent Will*.
+
+**The Orthogonality Thesis**
+* Orthogonality Thesis, Intelligence, Final Goals.
+* Can very high intelligence coexist with a wide range of ultimate goals, including goals that conflict with human welfare?
+* *The Superintelligent Will*.
+
+**Instrumental Convergence**
+* Instrumental Convergence, Instrumental Goals, Goal-Directed Behavior.
+* Why might agents with different final goals pursue similar intermediate objectives?
+
+**Artificial Superintelligence**
+* Superintelligence, General Cognitive Capabilities, Strategic Advantage.
+* What philosophical and governance problems might arise if artificial systems substantially exceed human cognitive capabilities?
+* *Superintelligence*.
+
+**The Control Problem**
+* Control Problem, Alignment, Oversight, Human Values.
+* How can highly capable artificial agents be developed and governed so their behavior remains compatible with legitimate human objectives?
+
+**Existential Risk**
+* Existential Risk, Catastrophic Harm, Future Generations.
+* Why might some technological risks deserve attention even when their probabilities are highly uncertain?
+
+**The Simulation Argument**
+* Simulation Argument, Observer Selection, Computational Simulation.
+* Under what assumptions could simulated observers become sufficiently numerous to support an argument about the probability that we inhabit a simulation?
+* *Are You Living in a Computer Simulation?*
+
+**Human Enhancement and the Future of Humanity**
+* Human Enhancement, Posthuman Possibilities, Ethical Transformation.
+* How should technological enhancement alter philosophical conceptions of well-being and human flourishing?
+
+**The Ethics of a Technologically Transformed World**
+* Long-Term Futures, Abundance, Meaning, Institutional Design.
+* What gives human life meaning under conditions in which many present practical constraints have been overcome?
+* *Deep Utopia*.
+
+**Philosophical Legacy**
+* Parfit, Jonas, Future Generations Ethics, AI Safety, Existential Risk Studies, Technological Ethics.
+
 <!-- 
 
 **Explanation:**
 1. Historical stage of western philosophy is partitioned by paradigm shift.
 
-## Mythos to Logos (c. 6c BCE)
+### Mythos to Logos (c. 6c BCE)
 
 **Core Problems:**
 
@@ -13151,10 +14157,10 @@ Historical sources: No authentic writings by Thales survive. The principal accou
 **Figures:** 
   - Thales is usually named the inaugurator of `natural philosophy`. -->
 
-<!--THILLY ## Ancient philosophy (6c BC  - 1c AD)
+<!--THILLY ### Ancient philosophy (6c BC  - 1c AD)
 * Starts at nature, turns to human beings.
 
-### Pre-Socratic Philosophy
+#### Pre-Socratic Philosophy
 * Features: naturalistic, hylozoistic, ontological, mainly monistic, dogmatic.
 * Two interdependent problem: *substance* and *change*.
 
@@ -13221,7 +14227,7 @@ Anaxagoras, [ˌænækˈsæɡərəs], c. 500 - c. 428 BC.
 **Demokritos**, [dɪˈmɒkrɪtəs], c. 460 - c. 370 BC.
 * *Atomism*: atoms are simple and indivisible, deffering from one another solely in quantitative. Motion is an intrinsic property of the atoms. Subject to mechanical law.
 
-### Sophists and Socrates
+#### Sophists and Socrates
 * Focus on human knowledge and conduct.
 * Sophist - skeptism, relativism.
 
@@ -13240,7 +14246,7 @@ Anaxagoras, [ˌænækˈsæɡərəs], c. 500 - c. 428 BC.
 
 **Socrates**, [ˈsɒkrətiːz], c. 470 - 399 BC.
 
-### Plato and Aristotle
+#### Plato and Aristotle
 * Metaphisical problem - reality.
 * Humanistic problem - man's knowledge, conduct and place in the worldorder.
 
@@ -13248,11 +14254,11 @@ Anaxagoras, [ˌænækˈsæɡərəs], c. 500 - c. 428 BC.
 
 **Aritotle,** [ˈærɪˌstɑtl]
 
-### Ethico-religious -->
+#### Ethico-religious -->
 <!-- 
-### Ionian School (c. 6c BCE)
+#### Ionian School (c. 6c BCE)
 
-#### Thales of Miletus (c. 624/623 – c. 546/545 BCE)
+##### Thales of Miletus (c. 624/623 – c. 546/545 BCE)
 
 > Thales [ˈθeɪliːz] Ancient Greek: Θαλῆς
 
@@ -13260,62 +14266,62 @@ Anaxagoras, [ˌænækˈsæɡərəs], c. 500 - c. 428 BC.
 > 1. “Water is (the) principle of all things.”
 > 2. “All things are full of gods.”
 
-## The Socratic-Platonic Turn (Late 5c ~ 4c BCE)
+### The Socratic-Platonic Turn (Late 5c ~ 4c BCE)
 
-## Christianisation of Greek Thought (3c - 6c CE)
+### Christianisation of Greek Thought (3c - 6c CE)
 
-## Scholastic Synthesis & “Two-Truths” Methodology (11c – 14c CE)
+### Scholastic Synthesis & “Two-Truths” Methodology (11c – 14c CE)
 
-## Renaissance Humanism (14c ~ 16c CE)
+### Renaissance Humanism (14c ~ 16c CE)
 
-## Kantian Revolution (Late 18c)
+### Kantian Revolution (Late 18c)
 
-## German Idealism to Existentialism (19c ~ 20c)
+### German Idealism to Existentialism (19c ~ 20c)
 From abstract system-building to focus on human freedom, subjectivity, and lived experience.
 
-## Linguistic Turn, The Analytic (Early ~ Mid 20c)
+### Linguistic Turn, The Analytic (Early ~ Mid 20c)
 
-## Phenomenology & Hermeneutics (Early 20c)
+### Phenomenology & Hermeneutics (Early 20c)
 
-## Post-Structuralism and Post-Modern Critique (Mid ~ Late 20c)
+### Post-Structuralism and Post-Modern Critique (Mid ~ Late 20c)
 
-## Naturalistic & Cognitive Turns (Late 20c)
+### Naturalistic & Cognitive Turns (Late 20c)
 
-# Pre-Socratic Philosophy: A Comprehensive Survey 
+## Pre-Socratic Philosophy: A Comprehensive Survey 
 
-## Executive Summary  
+### Executive Summary  
 The Pre-Socratic philosophers (6th–5th centuries BCE) inaugurated a radically new mode of inquiry into nature and human existence. Largely unmoored from mythological explanation, they sought **rational principles** (archê) underlying the cosmos, life, and knowledge【21†L43-L49】【22†L61-L68】. This intellectual revolution laid foundations for Western science and metaphysics, as these thinkers—Thales, Anaximander, Heraclitus, Parmenides, Empedocles, Anaxagoras, Democritus, and others—offered theories of matter, change, and reason that would influence Plato, Aristotle, and beyond. The surviving evidence is fragmentary and mediated through later authors (DK and Laks–Most collections), so modern reconstructions rest on careful philological and philosophical interpretation【21†L97-L105】【32†L1-L9】.
 
 This article provides a scholarly, integrated overview of Presocratic thought from multiple angles. After a brief **historical narrative**, we examine major themes: cosmogony and ontology (the nature of reality and first principles), epistemology and method (how knowledge is acquired and the role of reason and myth), and the contrast between the various schools (Milesian monism, Eleatic philosophy, pluralism, atomism, etc.). We highlight **interpretive debates**—for example, whether the Milesians were strict material monists or proto-scientists, and how Heraclitus’ notion of logos relates to Parmenidean being—while orienting the discussion to 21st-century scholarship【22†L61-L68】【32†L1-L9】. Methodological issues of fragmentary evidence and doxography are addressed in an appendix. The goal is a coherent account that suits modern philosophical historiography, concluding with the Presocratics’ enduring significance. 
 
-## The Milesian Physicists: Thales, Anaximander, Anaximenes  
+### The Milesian Physicists: Thales, Anaximander, Anaximenes  
 Thales of Miletus is traditionally considered Greece’s first philosopher. Aristotle reports that Thales held water as the archê, the originating element of all things【21†L43-L49】. Though Thales’ fragments are sparse, he exemplifies the early attempt to find a single underlying substance. Anaximander, a younger Milesian, posited instead the **apeiron**, an indefinite or boundless substratum from which opposites arise and return【23†L13-L20】. His cosmology involved the earth’s equilibrium and cyclical exchanges (e.g. hot–cold) grounded in the apeiron. Anaximenes replaced the apeiron with **air** (aer) as the fundamental substance, explaining phenomena via rarefaction and condensation (“rarification produces fire, condensation produces water, earth, and stone”)【23†L37-L45】. These thinkers blended observation (astronomy, geography) with speculative cause; Aristotle later suggested that they were early *proto-scientists* seeking natural explanations, even if their surviving fragments (DK material) are brief or secondhand【23†L13-L22】. Modern scholars debate whether to read the Milesians as naive materialists or as stepwise scientific inquirers, given the lack of explicit argumentation in the testimonia【23†L41-L48】. 
 
-## Xenophanes and Heraclitus: Critique and Logos  
+### Xenophanes and Heraclitus: Critique and Logos  
 Xenophanes of Colophon (c. 570–480 BCE) is often seen as a skeptic-critic of anthropomorphism. He famously argued that if horses or oxen could draw gods, they would depict gods like themselves. This suggests an early critique of human projection onto divinity. Xenophanes also advanced a concept of a single divine principle, which anticipates later monism (although his thought is cryptic in fragments). 
 
 Heraclitus of Ephesus (c. 535–475 BCE) responded to his predecessors with a dramatic vision: the cosmos is in perpetual flux, yet governed by an underlying order (logos). Fragments reveal his central maxim that *“all things flow”* (panta rhei) and his theme of unity of opposites (e.g. “war is the father of all”), emphasizing change as fundamental【22†L79-L87】. Crucially, Heraclitus introduces *logos* as a rational principle ordering nature: “there is a logos common to all” which binds the world into a coherent whole【22†L61-L69】. His sayings are enigmatic and aphoristic; he criticizes earlier thinkers for mere accumulation of facts without understanding (DK22B40). Modern interpreters note that Heraclitus’ logos presages notions of cosmic law or reason, linking theology, physics, and ethics. 
 
-## Parmenides and the Eleatics: Being and Reality  
+### Parmenides and the Eleatics: Being and Reality  
 Parmenides of Elea (early 5th c. BCE) represents a stark counterpoint. In a famed philosophical poem, he claims that *“what is”* (being) is eternal, unchanging, and one; by contrast, *“what is not”* (non-being, change, void) cannot be thought or spoken. The goddess’s revelation in his poem (fr. 1–2) lays out two paths of inquiry: the way of truth (being-is) and the way of opinion (world of appearances)【25†L223-L230】. According to Parmenides, sensory impressions of change and plurality are illusory; only reason can grasp the singular reality. His rigorous logic (and Zeno’s paradoxes defending it) posed a crisis: if change is impossible, how do we explain motion or multiplicity? Parmenides’ influence on Plato was profound (cf. *Republic* and *Sophist*), as Plato tried to reconcile the One of Parmenides with the many of experience. 
 
 Later Eleatics include Zeno of Elea (c. 490–430 BCE), who formulated paradoxes of motion (Achilles and the tortoise, the arrow) to defend Parmenidean conclusions. Melissus of Samos carried the One-of-Parmenides doctrine to its limit, emphasizing endless extension of the One. These philosophers forced subsequent thinkers to grapple with the nature of space, time, and infinity.
 
-## The Pythagorean Tradition: Number and Harmony  
+### The Pythagorean Tradition: Number and Harmony  
 Meanwhile, the Pythagorean school (c. 6th c. BCE, centered in Croton) combined mathematics, mysticism, and natural philosophy. Pythagoras himself is known (mostly through later sources) for the doctrine that *“all things are number”*: reality is fundamentally numerical and harmonious. His followers contributed to cosmology (sphericity of Earth, harmony of spheres) and ethics (rules for living). Pythagorean physics saw cosmic principles in ratios and integers. Empedocles of Acragas (c. 490–430 BCE) can be viewed as the last Pythagorean: he posited four eternal roots (earth, air, fire, water) combined by Love and separated by Strife【22†L85-L90】. Empedocles’ cycle of mixing and unmixing matter offered a pluralistic alternative to monism, and he introduced an early evolutionary vision of creatures arising from elemental combinations. Anaxagoras of Clazomenae (c. 500–428 BCE), though not Pythagorean, shared a pluralist spirit by positing infinitely many basic seeds (sperms) and a cosmic Mind (Nous) that organizes them. His work (e.g. commentaries on the sun and moon) shows an early rational astronomy.
 
-## Atomists: Leucippus and Democritus  
+### Atomists: Leucippus and Democritus  
 Leucippus and his pupil Democritus (c. 460–370 BCE) advanced the doctrine of **atomism**. They proposed that reality ultimately consists of indivisible, eternal particles—*atoms*—moving in void【32†L1-L9】. Everything else (color, taste, life) is explained as arrangements of atoms with various shapes and motions. For example, Democritus says, “By convention sweet…by convention color; in reality atoms and void”【32†L7-L10】. This theory united physical change with unchanging constituents and anticipated scientific materialism. The atomists also held a qualitative/empirical view: quantitative differences in experience (hot/cold, soft/hard) reflect atom shapes and configurations. Though atomism did not become mainstream until Epicurus and later Lucretius, its Greek origins marked the first mechanistic account of nature.
 
-## Later Figures: Diogenes of Apollonia and Sophists  
+### Later Figures: Diogenes of Apollonia and Sophists  
 Diogenes of Apollonia (mid-5th c. BCE) argued that air is the intelligence (nous) that pervades the cosmos, hinting at continuity between Heraclitus and Anaxagoras. The Sophists (5th c. BCE), such as Protagoras and Gorgias, did not advance cosmology but critically examined knowledge and language (“man is the measure of all things”). Their skepticism about certainty and emphasis on rhetoric shifted the intellectual climate, setting the stage for Socrates and Plato. Although not Presocratics in the natural-philosophy sense, they interacted with and reacted to earlier theories, highlighting anthropological and epistemological issues.
 
-## Key Themes and Methods  
+### Key Themes and Methods  
 Several overarching themes emerge. The **quest for archê** shows a commitment to a rational **naturalism**: gods and myths are increasingly sidelined in favor of impersonal causes. The notion of *logos* (as in Heraclitus) and the emphasis on **reasoned account** reflect a move toward philosophy as argumentative discourse. Yet mythic imagery remains—Parmenides’ allegory of Night or Empedocles’ appeal to ancient gods—indicating a fluid boundary between rational and sacred language. Epistemologically, many Presocratics distinguished between surface appearances (for mortals) and deeper truth (accessible to reason)【25†L223-L230】. This dichotomy is explicit in Parmenides’ two paths, and implicit in Empedocles’ and Democritus’ ideas that senses deceive (hot appears cold) while knowledge comes from intellect. 
 
 Importantly, the evidence for Pre-Socratic thought is **fragmentary**. No complete works remain; we rely on later doxographers like Aristotle, Diogenes Laertius, and Simplicius【21†L97-L105】. Modern editions (Diels–Kranz, Laks–Most) organize these sources (testimonia and fragments) critically. Scholars note that these intermediaries had their own philosophical agendas, so any reconstruction must be cautious about anachronism or distortion【21†L97-L105】【25†L137-L146】. The discovery of papyri (e.g., the 1962 Derveni Papyrus, manuscripts of Empedocles) shows that new fragments can still alter our picture, reminding us that even canonical "textbook" accounts may need revision.
 
-## Interpretive Debates  
+### Interpretive Debates  
 Interpretation of Presocratic thought often hinges on contested points. *Monism vs. Pluralism*: Thales’ water and Anaximander’s apeiron suggest monism (one principle), but Empedocles and Anaxagoras clearly endorse plural elements, and the Milesians themselves likely accepted some form of qualitative change (rarefaction of air, etc.)【23†L41-L48】. Did the Milesians truly hold that one substance *persists* unchanged (Aristotle’s reading) or simply that things originate from one source? Scholars disagree (e.g. Barnes 1979 vs. Mourelatos 1997) as noted by modern commentators【23†L41-L48】. 
 
 *Heraclitus’ Unity and Logos*: Heraclitus’ aphorisms have invited myriad readings. His appeal to a rational logos suggests a proto-rationalist outlook, but his poetic style resists systematic interpretation. Some debates center on whether he conceived the cosmos as fire in equilibrium or something more abstract. Key fragments imply a divinely ordered cosmos (logos as “objective law”【22†L61-L69】). We also lack clarity on his view of soul and knowledge (soul as fiery essence of humans【22†L109-L117】).
@@ -13324,12 +14330,12 @@ Interpretation of Presocratic thought often hinges on contested points. *Monism 
 
 *Method and Religion*: Unlike later rationalists, many Presocratics wrote in verse or mythic guises. For example, Empedocles and Parmenides use poetry and divine imagery. Scholars debate how "mystical" these accounts are versus metaphorical. The journey and goddess in Parmenides’ proem have been linked to mystery religions (e.g. Orphic rites【25†L173-L182】), suggesting that philosophical knowledge was partly couched in religious symbolism.
 
-## Conclusion: Legacy and Contemporary Significance  
+### Conclusion: Legacy and Contemporary Significance  
 By the 21st century, the Presocratics remain focal for understanding philosophy’s origins. They initiated empirical and logical investigation of nature, laying groundwork for later metaphysics and science. Their questions—“What is ultimate reality?” “How do we know?”—are perennial. Modern science still echoes Parmenides’ challenge of change and Heraclitus’ insight of flux in physics and cosmology. Ethically and methodologically, their critical spirit—questioning myths and authority—resonates today. 
 
 Contemporary scholarship uses the Presocratics both to trace conceptual lineages (e.g. monism in metaphysics, scientific explanation) and to explore historiography (how ancient ideas are filtered through Plato, Aristotle, etc.)【21†L97-L105】. Key recent developments include critical editions of fragments and interdisciplinary studies (e.g. the Derveni Papyrus linking Presocratic themes with Orphism). We should approach Pre-Socratic thought with both respect for its originality and caution about our reconstructions: our picture remains provisional, built from scattered shards. Nevertheless, by synthesizing these fragments, we can still glean a remarkably coherent vision: the first philosophers dared to explain the world without gods, seeking rational principles by which to understand all. 
 
-## Further Reading (Select Annotated Bibliography)  
+### Further Reading (Select Annotated Bibliography)  
 - **Kirk, Raven, and Schofield (1983, 1988)** – *The Presocratic Philosophers*. The standard comprehensive source, translating all fragments with commentary. A classic reference for authentic quotes.  
 - **Barnes (1982)** – *The Presocratic Philosophers*. Thorough analysis of Presocratic thought, often cited for its historical approach.  
 - **Graham (2019)** – *Explaining the Cosmos: The Ionian Tradition of Scientific Philosophy*. A modern reevaluation of the Milesians and their intellectual milieu.  
