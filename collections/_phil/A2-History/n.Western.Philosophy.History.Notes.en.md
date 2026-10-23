@@ -1,10 +1,8 @@
 ---
-title: "An Outline of the History of Western Philosophy"
+title: "Notes on the History of Western Philosophy"
 categories: Notes
 subclass: History
 ---
-
-<!-- P1 哲学史中真正有价值的东西 当代/科学时代对待哲学真正的态度（不要因为结论过时就全盘否定，正确运用） 哲学的真正学习法和用法 -->
 
 **Resources:**
 1. *A New History of Western Philosophy*, Anthony Kenny
@@ -18,16 +16,14 @@ subclass: History
 
 ### Why Study the History of Philosophy Today?
 
-**Q1: If the purpose of studying philosophy is not merely to remember past ideas but to develop our capacity for philosophical thinking today, what exactly should we learn from the history of philosophy, and how should we learn it?**
-
-**Q2: Why and How Should Contemporary Philosophers Study the History of Philosophy?**
+**Q1: Why and How Should Contemporary Philosophers Study the History of Philosophy?To be more precise, If the purpose of studying philosophy is not merely to remember past ideas but to develop our capacity for philosophical thinking today, what exactly should we learn from the history of philosophy, and how should we learn it?**
 
 **A:** The history of philosophy should be understood not merely as a chronology of thinkers and schools, but as an **intellectual laboratory, a repository of conceptual tools, and an evolving network of philosophical problems and arguments**. Its value lies not simply in preserving past conclusions, but in revealing how philosophical questions arise, how theories are constructed, and how ideas develop through criticism and reinterpretation.
 
 A systematic understanding of philosophical history requires five interconnected approaches:
 
-1. **History of Problems (Problemgeschichte).** Begin with the questions philosophers sought to answer, rather than the schools or doctrines to which they belonged. Trace the historical development of fundamental problems, such as the relationship between mind and matter, the foundations of knowledge, the nature of reality, the grounds of normativity, and the relationship between language and the world. Many contemporary debates reformulate earlier problems under new theoretical or scientific conditions.
-2. **History of Concepts (Begriffsgeschichte).** Trace the origins, transformations, and relationships of philosophical concepts, such as substance and attribute, a priori and a posteriori, appearance and reality, analytic and synthetic judgments, and fact and value. Concepts should be understood within their theoretical contexts rather than treated as fixed definitions detached from their intellectual histories.
+1. **History of Problems (*Problemgeschichte*).** Begin with the questions philosophers sought to answer, rather than the schools or doctrines to which they belonged. Trace the historical development of fundamental problems, such as the relationship between mind and matter, the foundations of knowledge, the nature of reality, the grounds of normativity, and the relationship between language and the world. Many contemporary debates reformulate earlier problems under new theoretical or scientific conditions.
+2. **History of Concepts (*Begriffsgeschichte*).** Trace the origins, transformations, and relationships of philosophical concepts, such as substance and attribute, a priori and a posteriori, appearance and reality, analytic and synthetic judgments, and fact and value. Concepts should be understood within their theoretical contexts rather than treated as fixed definitions detached from their intellectual histories.
 3. **History of Arguments.** Reconstruct the reasoning behind philosophical positions rather than merely memorising their conclusions. Study influential methods of philosophical inquiry, including Plato's dialectic, Aristotle's syllogistic logic, Descartes' methodological doubt, Kant's transcendental arguments, Husserl's phenomenological reduction, and Foucault's genealogy. The central task is to understand how an argument proceeds from its assumptions to its conclusions, and how its validity and limitations can be assessed.
 4. **Historical Contextualisation.** Understand the intellectual, scientific, political, and cultural circumstances in which philosophical ideas emerged. Identify the debates to which a philosopher was responding, the assumptions available at the time, and the ways subsequent thinkers adopted, challenged, or transformed those ideas. Historical understanding should neither imply uncritical acceptance nor justify dismissing an entire philosophical system because some of its conclusions have become outdated.
 5. **Thematic and Structural Organisation.** Organise philosophical history through interconnected **chains of problems**, rather than relying exclusively on chronological periods. Major lines of inquiry include metaphysics and ontology, epistemology, philosophy of mind, philosophy of language, ethics, political philosophy, and freedom and responsibility. Chronology provides historical context, while thematic connections reveal the logical continuity, conceptual transformations, and enduring disagreements within philosophical thought.
@@ -36,29 +32,381 @@ A systematic understanding of philosophical history requires five interconnected
 
 Studying the history of philosophy in this way transforms it from a catalogue of past doctrines into a living resource for critical thinking, theoretical innovation, and contemporary research.
 
+**Further refinements:** five points sharpen this answer.
+
+1. **Keep the two reconstructions apart.** Historical reconstruction asks what a text meant in its own setting; rational reconstruction asks whether its arguments work by our best current standards. Collapse toward the first and you get antiquarianism, accurate but philosophically inert. Collapse toward the second and you get anachronism, or what Herbert Butterfield called "Whig history" (1931): judging the past by how far it led to the present.
+2. **Name the genres you are combining.** Richard Rorty's "The Historiography of Philosophy: Four Genres" (1984) distinguishes rational reconstruction (risk: forcing old texts into current debates), historical reconstruction (risk: no verdict on truth), *Geistesgeschichte*, which asks how philosophy's central questions came to be central (risk: a grand narrative that selects its evidence), and doxography, a catalogue of what each thinker held on fixed topics (risk: imposing headings the thinkers did not share). His central claim is that you should do both of the first two, but separately ([Rorty 1984](https://www.cambridge.org/core/books/truth-and-progress/historiography-of-philosophy-four-genres/2C0E4EF1D47F85F76D80B12EF32A3217)). Approach 3 above is rational reconstruction, approach 4 is historical reconstruction, and approaches 1, 2 and 5 drift toward *Geistesgeschichte* when done well and toward doxography when done badly. The balance has recently shifted: Christia Mercer argued in 2019 that contextualism had quietly replaced rational reconstruction among English-speaking historians of early modern philosophy, a claim that is itself contested ([Mercer 2019, via Daily Nous](https://dailynous.com/?p=25191)).
+3. **Treat "perennial problems" as a hypothesis.** R. G. Collingwood (*An Autobiography*, 1939) argued that Plato's *Republic* and Hobbes's *Leviathan* are not rival answers to one question about "the state", because the Greek polis and the modern state are different objects. Quentin Skinner ("Meaning and Understanding in the History of Ideas", 1969) named three traps: the mythology of doctrines (crediting authors with views on topics they could not have addressed), of coherence (forcing a tidy system onto exploratory texts), and of prolepsis (reading a text through the significance it acquired later). A useful test: can you state the problem without concepts the earlier thinker lacked? Descartes' mind–body problem depends on matter as mere extension; for Aristotle the soul is the form of a living body, so the interaction problem cannot arise in Cartesian form, which is exactly why contemporary hylomorphists find him useful.
+4. **Add reception history as a sixth approach.** Hans-Georg Gadamer's *Truth and Method* (1960) argued that every reading stands inside a history of earlier readings (*Wirkungsgeschichte*). Many late-20th-century analytic philosophers met Kant through Strawson's reading; Aristotle reached the Latin West partly through Arabic commentators such as Avicenna and Averroes. The canon is itself a historical product: the scheme of "Continental Rationalists versus British Empiricists" is largely a later textbook construction (Louis Loeb, *From Descartes to Hume*, 1981), and recent scholarship has restored figures such as Elisabeth of Bohemia, Anne Conway, Margaret Cavendish and Émilie du Châtelet.
+5. **Learn by practice, through primary texts.** The answer says what to study; Q9 and Q10 below say what to do while studying. A workable reading sequence: Plato's *Meno*, *Republic* and *Theaetetus*, and Aristotle's *Physics* II, *De Anima* and *Nicomachean Ethics*; Epictetus, Sextus Empiricus and Augustine; Anselm, Aquinas and Ockham; Descartes' *Meditations* with the *Objections and Replies*, then Hobbes, Spinoza, Locke, Leibniz, Berkeley and Hume; Kant's *Prolegomena* and *Critique of Pure Reason*, Hegel, Mill, Kierkegaard, Marx and Nietzsche; Frege, Russell, Husserl, Wittgenstein, Heidegger, Quine, Beauvoir and Rawls. Read each with one guide, such as Anthony Kenny's *A New History of Western Philosophy* (2004–07), Peter Adamson's *History of Philosophy without any gaps*, or the *Stanford Encyclopedia of Philosophy*.
+
 ### What Is of Lasting Value in the History of Philosophy?
 
 **Q3: When a philosopher's conclusions have been superseded by later scientific or philosophical developments, what, if anything, remains valuable in their thought?**
 
+**A:** A superseded conclusion usually leaves five things behind: the **problem** it addressed, the **argument** that led to it, the **concepts** it built, the **method** it used, and an **instructive failure** showing which assumption went wrong. Often a sixth survives too: the view turns out to be correct within a limited domain. The key move is to separate a conclusion from the question it answered, the inference pattern that produced it, and the conceptual apparatus it used, and to judge each on its own.
+
+1. **The problem.** Zeno's paradoxes of motion are standardly answered with the calculus of limits and Cantor's theory of the continuum. Yet the questions they opened, such as whether infinitely many tasks can be completed in finite time, remain live (James Thomson's "Tasks and Super-Tasks", 1954).
+2. **The argument form.** Descartes' physics of vortices and his pineal-gland account of interaction are gone. His dream and evil-demon arguments survive intact as sceptical scenarios, rebuilt as Putnam's "brain in a vat" (1981).
+3. **The concepts.** Aristotle's physics was replaced, but his distinction between efficient and final (functional) explanation still structures how biology talks about functions. Leibniz's theodicy is rarely held, but his "possible worlds" became the semantics of modal logic (Kripke, 1959–63).
+4. **The method.** Kant's transcendental argument (showing that something must hold because it is a condition of experience) outlived most of his specific conclusions. Socrates' method of refuting definitions by counterexample is still the engine of Gettier's 1963 paper on knowledge.
+5. **The instructive failure.** Kant held that Euclidean geometry is synthetic a priori knowledge of space. Non-Euclidean geometries and general relativity (1915) showed physical space need not be Euclidean. The failure forced a distinction between pure geometry (mathematics) and physical geometry (empirical), and Reichenbach (1920) reworked Kant's idea into "relativized" a priori principles, a line Michael Friedman later developed in *Dynamics of Reason* (2001).
+6. **Correctness within a domain.** Hegel argued, in the introduction to his *Lectures on the History of Philosophy*, that refuting a philosophy shows its principle is one-sided, not empty: the refuted system is demoted from an account of the whole to a partial moment. You need not accept Hegel's teleology to use the heuristic. Carlo Rovelli gives a vivid case, arguing that Aristotle's physics is a correct approximation of Newtonian physics for motion in fluids, in the same sense that Newton's theory approximates Einstein's; on his reading it lasted because it was empirically well grounded, not because it was dogma ([Rovelli 2015, arXiv](https://arxiv.org/abs/1312.4057)).
+
+**Worked cases:**
+
+* **Aristotle.** Superseded: natural places, celestial spheres, much of his biology. Survives: virtue and practical wisdom; form and matter; syllogistic as a valid fragment of logic. Lives on in virtue ethics after Anscombe (1958) and in neo-Aristotelian metaphysics.
+* **Descartes.** Superseded: vortex physics; interaction via the pineal gland. Survives: methodical doubt; the problem of knowing the external world; analytic geometry. Lives on in the epistemology of scepticism and the dualism debate.
+* **Kant.** Superseded: Euclidean geometry and Newtonian physics as a priori; logic "complete since Aristotle". Survives: the transcendental argument; constitutive vs regulative principles; autonomy. Lives on in the relativized a priori and in Kantian ethics (Rawls, Korsgaard).
+* **Leibniz.** Superseded: monads; pre-established harmony. Survives: possible worlds; identity of indiscernibles; sufficient reason; the dream of a logical calculus. Lives on in modal semantics, the metaphysics of identity, and the history of logic and computing.
+* **Hume.** Superseded: details of his associationist "science of man". Survives: the problem of induction; the is–ought gap; causation as regularity. Lives on in Bayesian epistemology, metaethics and causal inference.
+* **Democritus.** Superseded: specific atom shapes explaining tastes and colours. Survives: explaining visible properties by invisible microstructure. Lives on in the explanatory strategy of physics and chemistry.
+
+Kant's confidence about logic is itself a lesson. In the preface to the second edition of the *Critique of Pure Reason* (1787), he said logic had not needed to advance since Aristotle. Frege's *Begriffsschrift* (1879) refuted that within a century, while leaving Aristotle's syllogistic standing as a correct, limited fragment.
+
 **Q4: How can we distinguish the historical, theoretical, and methodological value of a philosophical system?**
 
+**A:** The three are independent dimensions, each answered by a different question and different evidence. A system can score high on one and low on another, so judge each separately before forming an overall view.
+
+1. **Historical value.** Test question: how different would later thought, science or institutions be without it? Evidence: reception, influence, and what later thinkers took from it or reacted against.
+2. **Theoretical value.** Test question: would a competent philosopher today defend a version of it? Evidence: current debate, and how its claims fare against the best objections.
+3. **Methodological value.** Test question: can I use its way of asking or arguing on problems its author never considered? Evidence: whether the procedure transfers and still produces results.
+
+Bernard Williams drew a related line in the preface to *Descartes: The Project of Pure Enquiry* (1978). The *history of ideas* is history first and asks what a text meant; the *history of philosophy* is philosophy first and asks what is true or coherent in it. Historical value belongs to the first, theoretical value to the second, and methodological value can be assessed in both.
+
+**Where the three come apart** (illustrative judgements, offered to be argued with, not settled facts):
+
+* **Aristotle's physics.** Historical very high; theoretical low as physics; methodological medium. It dominated natural philosophy for two millennia, and its survey of predecessors' views and puzzles is still a model.
+* **Descartes' *Meditations*.** Historical very high; theoretical low for substance dualism but high for the sceptical problem; methodological high. Few now hold his dualism, but methodical doubt and the first-person starting point remain tools.
+* **Spinoza's *Ethics*.** Historical medium–high; theoretical medium; methodological mixed. His monism and theory of the emotions are revived; the geometric method set an ideal of rigour, but the definitions did most of the work.
+* **Hegel's *Phenomenology*.** Historical very high; theoretical and methodological contested. It shaped Marx, existentialism and critical theory; Brandom and McDowell revived it, while others still dismiss it.
+* **Logical positivism.** Historical high in the 20th century; theoretical low; methodological high. The verification principle failed, partly by its own standard, but its demand for clarity and formal analysis of science endured.
+* **Socrates' *elenchus*.** Historical high; theoretical medium; methodological very high. His intellectualism about weakness of will is still debated, and refutation by counterexample is standard practice.
+* **Hume's *Enquiry*.** High on all three: a rare case where they align.
+
+**Four mistakes to avoid:**
+
+1. **Inferring truth from influence.** High historical value says nothing about theoretical value; Aristotle's physics shaped natural philosophy for two millennia and is false as physics.
+2. **Inferring no method from false conclusions.** Logical positivism's main thesis failed while its methods reshaped philosophy of science.
+3. **Treating methods as neutral.** Methods carry assumptions. Cartesian doubt presupposes that a solitary first-person standpoint is the right place to start; Husserl's phenomenological reduction presupposes we can grasp essences by reflection.
+4. **Forgetting a fourth kind: heuristic value.** Some views are worth studying because they were *fruitful*: they generated research even when wrong. Imre Lakatos called such a line of inquiry a "progressive research programme".
+
 **Q5: Beyond particular conclusions, what enduring questions, concepts, methods of argumentation, and frameworks of thought has the history of philosophy contributed?**
+
+**A:** The tradition's most durable legacy is a toolkit in five layers: questions, concepts, argument forms, methods, and frameworks. Each layer outlived most of the particular conclusions it first served.
+
+**Questions:**
+
+* **Being:** What exists, and what is it to exist? (Parmenides; Aristotle's "being as being")
+* **Change and persistence:** How can a thing change and remain itself? (Heraclitus; the Ship of Theseus in Plutarch)
+* **Universals:** Are there properties shared by many things, and where are they? (Plato, Aristotle, Ockham's nominalism)
+* **Knowledge:** What is knowledge, as opposed to true opinion? (Plato's *Theaetetus* and *Meno*)
+* **Justification:** Does every belief need a reason, and where does the chain end? (the Agrippan trilemma, preserved by Sextus Empiricus)
+* **Mind:** How is thinking related to the body? (Aristotle's *De Anima*, Descartes)
+* **Language:** How do words hook onto things? (Plato's *Cratylus*, Frege)
+* **Ethics:** How should one live, and what makes actions right? (Socrates onward)
+* **Politics:** What makes authority legitimate? (Plato, Hobbes, Locke, Rousseau)
+* **Freedom:** Is free action compatible with causal determination? (the Stoics, Augustine, Hobbes, Kant)
+
+**Concepts** (where each was formed → how it lives on):
+
+* **Form and matter** (Aristotle) → structure-based metaphysics; theories of organisation.
+* **Potentiality and actuality** (Aristotle) → dispositions and powers; modal metaphysics.
+* **Substance and accident** (Aristotle; reworked by Descartes, Spinoza) → objects and properties; bundle theories.
+* **Essence and existence** (Avicenna, Aquinas) → modal essentialism (Kripke; Kit Fine, 1994).
+* **Truths of reason vs truths of fact** (Leibniz; Hume's "relations of ideas" vs "matters of fact") → Kant's analytic/synthetic; Quine's attack (1951); Kripke's necessary a posteriori.
+* **Primary and secondary qualities** (Galileo, Locke) → Sellars's "scientific" vs "manifest" image.
+* **Intentionality** (Scholastics; revived by Brentano, 1874) → philosophy of mind; cognitive science.
+* **Sense and reference** (Frege, 1892) → semantics; intension vs extension in logic and computing.
+* **Autonomy** (Kant) → informed consent; political liberalism.
+* **Social contract** (Hobbes, Locke, Rousseau) → Rawls (1971); game-theoretic accounts of cooperation.
+
+**Argument forms:**
+
+* **Reductio ad absurdum.** Assume the opposite and derive a contradiction. Classic instance: Zeno against plurality and motion; now standard in logic and mathematics.
+* **Regress argument.** Show that a demand for grounds can never be met. Classic instance: Agrippa, and Aristotle on demonstration; descendant: foundationalism vs coherentism vs infinitism.
+* **Counterexample to an analysis.** Find a case that fits the definition but not the concept. Classic instance: Socrates on piety and courage; descendant: Gettier (1963).
+* **Thought experiment.** Imagine a case to test a principle. Classic instance: Gyges' ring (*Republic* II) and Descartes' wax; descendant: Jackson's Mary (1982).
+* **Parity argument.** Show the opponent's reasoning proves too much. Classic instance: Gaunilo's island against Anselm; descendant: "companions in guilt" arguments in metaethics.
+* **Transcendental argument.** X is a condition of experience, so X holds. Classic instance: Kant; descendant: Strawson, and debates since Stroud (1968).
+
+**Methods:**
+
+* ***Elenchus* (Socrates):** test a proposed definition against the speaker's other beliefs.
+* **Dialectic of puzzles (Aristotle):** set out reputable opinions and puzzles, then save as many as possible.
+* ***Quaestio* or disputation (medieval schools; Aquinas):** objections, counter-authority, answer, replies to each objection.
+* **Methodical doubt (Descartes):** suspend whatever can be doubted to find what cannot.
+* **Genetic analysis of ideas (Locke, Hume):** trace each idea to its origin in experience.
+* **Transcendental method (Kant):** ask what must be true for experience to be possible.
+* **Dialectic (Hegel):** develop a concept until its one-sidedness forces a richer one.
+* **Genealogy (Nietzsche, 1887; Foucault):** show how a value or practice came to be, to loosen its claim to necessity.
+* **Phenomenological reduction (Husserl, 1913):** bracket existence claims to describe the structures of experience.
+* **Logical analysis (Frege; Russell's "On Denoting", 1905):** reveal logical form beneath grammatical form.
+* **Reflective equilibrium (Goodman, 1955; Rawls, 1971):** adjust principles and case judgements against each other until they cohere.
+
+The scholastic *quaestio* deserves special mention. Its structure (state the strongest objections first, then answer each) is still the best template for a disciplined philosophical essay.
+
+**Frameworks**, the large-scale views that decide which problems look urgent:
+
+* **Platonic:** an intelligible order behind appearances.
+* **Aristotelian:** nature as teleological and knowable through its forms.
+* **Mechanical philosophy (17th century):** matter in motion, no final causes.
+* **Kantian critical philosophy:** the conditions of possible experience.
+* **Hegelian historicism:** reason developing through history.
+* **Positivism:** only empirical and logical knowledge counts.
+* **Pragmatism:** meaning and truth tied to practice.
+* **Phenomenology:** start from lived experience.
+* **Naturalism:** philosophy continuous with science, as in Quine.
+
+Learning a framework means learning which questions it makes natural and which it makes invisible.
 
 ### How Should We Engage with Historical Philosophy in the Age of Modern Science?
 
 **Q6: How can we avoid dismissing an entire philosophical system simply because some of its conclusions are outdated?**
 
+**A:** Treat a system as a structure of claims that support one another, find out what the outdated conclusion actually supports and depends on, and keep whatever does not depend on it. This is a procedure you can run explicitly, not just an attitude of generosity:
+
+1. **Map the dependencies.** Write out which claims serve as premises for which. Mark the load-bearing ones: those many other claims rest on.
+2. **Classify the outdated element.** Is it an *empirical premise* (Aristotle's celestial spheres), a *conclusion* drawn from otherwise reasonable premises (Kant on Euclidean space), or a *framework assumption* (Descartes' mechanism)? Each fails in a different way and takes different things down with it.
+3. **Trace both directions.** Downstream: what else falls with it? Upstream: if the premises behind it still look plausible, the fault lies in one specific step, and the rest may stand.
+4. **Test detachability.** Can the argument be restated without the outdated element and still work?
+5. **Ask what problem it solved.** If the problem survives, the system's response remains a candidate solution even if this one move fails.
+6. **Distinguish internal from external criticism.** Does the system fail by its own standards, or only by ours? Internal failure points to a structural flaw; external failure may only mark new evidence.
+
+**A model case of detachment, and its cost.** P. F. Strawson's *The Bounds of Sense* (1966) is the classic exercise. He separated what he called Kant's "analytical argument" about the conditions of any possible experience from transcendental idealism, which he judged incoherent. The detached argument fuelled decades of work on transcendental arguments, starting with Barry Stroud's critique (1968).
+
+But detachment has a price. Henry Allison's *Kant's Transcendental Idealism* (1983) argued that the idealism is essential, and that Strawson's extraction changes what the argument proves. The lesson: detachment is a hypothesis about the system's structure, and it must be checked against the text.
+
+**Dismissals that were later reversed:**
+
+* **Aristotle's ethics.** After the Scientific Revolution, moral philosophy turned to rules and principles. Elizabeth Anscombe's "Modern Moral Philosophy" (1958) argued that the modern moral "ought" was a survival of a divine-law framework, and urged a return to Aristotle. Virtue ethics (Foot, MacIntyre, Hursthouse) followed.
+* **Hegel.** Russell and Moore's revolt against British Idealism around 1900 made Hegel a byword for obscurity in analytic philosophy. Sellars, Robert Brandom and John McDowell (*Mind and World*, 1994) later recovered Hegelian ideas about concepts and normativity.
+* **Medieval philosophy.** Histories that jumped from Aristotle to Descartes missed medieval logic and semantics, whose theories of reference are now recognised as sophisticated.
+
+**The opposite error is apologetics:** treating every failure as a misreading, so the system becomes immune to criticism. Two checks keep charity honest. A charitable reading must still be supported by the text, and it must fit passages you did not use to build it. If it only works by ignoring half the evidence, it is advocacy, not interpretation.
+
 **Q7: How can we evaluate historical philosophical ideas in light of modern science, logic, and philosophical research while remaining sensitive to their historical contexts?**
 
+**A:** Work in separate passes and ask three distinct questions. Most unfair verdicts come from answering the third question while believing you have answered the second.
+
+1. **Meaning.** What question was the text answering, and what was the author *doing* in writing it: refuting, defending, provoking? (Collingwood's question-and-answer logic; Skinner's attention to the act performed by a text.)
+2. **Rationality in context.** Given the evidence, concepts and instruments of the time, was the view well supported?
+3. **Correctness now.** By current science, logic and philosophical argument, does it hold?
+
+The second and third questions come apart in every combination:
+
+* **Well supported then, largely correct now:** Aristotle placing dolphins apart from fish, because they breathe air and bear live young.
+* **Poorly supported then, largely correct now:** Aristarchus's heliocentrism (3rd century BCE); stellar parallax, the decisive evidence, was not observed until Bessel in 1838.
+* **Well supported then, incorrect now:** Ptolemaic astronomy, the best predictive model for some 1,400 years; Kant's Euclidean space.
+* **Poorly supported then, incorrect now:** Thales' claim that everything is water.
+
+Two lessons follow. A view can be fully rational and false, so falsity alone is no charge against the thinker. And a view can be true but held for poor reasons, so later vindication does not make the earlier thinker right in the same sense: modern atoms are not Democritus's indivisible atoms.
+
+**Reading for context.** Thomas Kuhn describes the turning point of his career in the preface to *The Essential Tension* (1977). Reading Aristotle's *Physics*, he first found it absurd; then he realised Aristotle's *kinēsis* meant change of every kind, including growth and alteration, not just movement through space, and the text suddenly made sense. His resulting maxim, paraphrased: when an important thinker seems absurd, ask how a sensible person could have written it. When you find the answer, passages you thought you understood may change meaning too. Three concrete practices follow:
+
+1. **Read the opponents and correspondents.** Descartes' *Objections and Replies* (1641), the Leibniz–Clarke correspondence (1715–16) and Elisabeth of Bohemia's letters to Descartes (1643) show what contemporaries found weak.
+2. **Know the science of the period.** Locke worked with Boyle's corpuscular chemistry; Hume subtitled his *Treatise* as an attempt to bring the experimental method of reasoning into moral subjects; Kant took Newton's physics as the model of secure knowledge.
+3. **Watch for false friends** in key terms:
+
+* ***eudaimonia*:** not "happiness" but flourishing, a whole life going well rather than a feeling.
+* ***aretē*:** not "virtue" in the narrow moral sense but excellence of any kind, including a knife's or a horse's.
+* ***ousia*:** not "substance" as stuff but what a thing most fundamentally is.
+* ***epistēmē*, *scientia*:** not "science" in the modern sense but demonstrative knowledge from first principles.
+* ***kinēsis*:** not "motion" but any change: growth, alteration, locomotion.
+* ***idea*:** not simply a thought in the mind; for Plato, a mind-independent Form; for Locke, any immediate object of thought.
+* ***logos*:** not just "word" or "reason" but account, ratio, argument or rational principle, depending on context.
+
+**Evaluating rigorously:**
+
+* **Formalise where it helps, and note the cost.** Formal reconstruction exposes structure, but it fixes one interpretation and can import assumptions. Alvin Plantinga's modal ontological argument (1974), for instance, depends on the modal system S5, where whatever is possibly necessary is necessary.
+* **"Modern logic" is plural.** Classical first-order logic is one standard among several. Reading Hegel's talk of contradiction through paraconsistent logic (Graham Priest) gives a different verdict than reading it through classical logic.
+* **Let science test empirical premises, not conceptual claims.** Benjamin Libet's experiments (1983) on the timing of decisions bear on what happens in the brain; whether that threatens free will depends on a conceptual question about what freedom requires (Alfred Mele, *Free*, 2014).
+* **Apply the same humility to ourselves.** Larry Laudan's "pessimistic meta-induction" (1981) notes that many past successful theories were later rejected. "Outdated" is always relative to a present that will itself be outdated.
+
 **Q8: How can we distinguish philosophical questions that have been overtaken by empirical science from those that remain open, and from theoretical resources that can be reinterpreted and applied today?**
+
+**A:** Ask what would settle the question. If observation and measurement would settle it once its key terms are fixed, it has passed, or can pass, to science. If it is normative, modal, conceptual, or about the standards of inquiry itself, it stays philosophical. Many questions split: science takes a sharpened version and leaves a philosophical residue. The third category in the question cuts across the other two: almost any historical theory can be mined for reusable resources, whether or not its original question is still open.
+
+```mermaid
+flowchart TD
+    Q["A question inherited from past philosophy"] --> T{"Would observation settle it,<br/>once its terms are fixed?"}
+    T -- yes --> E["Empirical<br/>Hand it over to science<br/>e.g. elements of matter, geocentrism"]
+    T -- partly --> S["Split<br/>Science answers a sharpened version,<br/>philosophy keeps the residue<br/>e.g. consciousness, free will"]
+    T -- no --> P["Philosophical<br/>Normative, modal, conceptual,<br/>or about standards of inquiry<br/>e.g. rightness, induction"]
+    E --> R["Whatever the verdict: mine the theory<br/>for concepts, arguments and methods"]
+    S --> R
+    P --> R
+```
+
+**A question can leave philosophy in three ways:**
+
+1. **Answered.** Observation settles it. Is the earth at the centre of the cosmos?
+2. **Dissolved.** A presupposition turns out false, so the question lapses. Debates over the "vital force" that animates living matter ended when molecular biology showed none was needed.
+3. **Transformed.** A vague question is made precise, and the precise version is answered. Hilbert asked for a mechanical procedure to decide all mathematical statements (the *Entscheidungsproblem*). Church and Turing (1936) answered no, but only after defining "mechanical procedure" formally. Whether that definition captures the intuitive notion, the Church–Turing thesis, is not a theorem; it remains a conceptual claim.
+
+Bertrand Russell argued in *The Problems of Philosophy* (1912) that once definite knowledge of a subject becomes possible, the subject leaves philosophy and becomes a science, so philosophy looks unproductive by construction. David Chalmers updates the point: there has been little collective convergence on philosophy's big questions, but much of what was once "philosophy" has moved elsewhere and progressed there ([Chalmers 2015](https://stafforini.com/works/chalmers-2015-why-isn-there/)).
+
+**Examples by status:**
+
+* **What are the basic elements of matter?** (Thales; Empedocles' four elements) *Overtaken.* Chemistry and particle physics took it; what "fundamental" means stays in the metaphysics of science.
+* **Is the earth at the centre?** (Aristotle; Ptolemy) *Overtaken* by astronomy.
+* **Can there be a vacuum?** (Aristotle denied it) *Mostly overtaken* by Torricelli (1643) and later physics.
+* **Is physical space Euclidean?** (Kant held it was, a priori) *Overtaken in physical form* by general relativity; the status of geometry as a priori was transformed, not settled.
+* **Would someone born blind, newly sighted, recognise by sight a cube known by touch?** (Molyneux to Locke, 1688) *Partly overtaken.* Held et al. (2011) found newly sighted patients failed to match seen with felt shapes at first but learned within days; critics argue they may not yet have seen 3D shape well enough for the test to bear on the question ([Schwenkler 2012](https://pmc.ncbi.nlm.nih.gov/articles/PMC3485845)).
+* **What is life?** (Aristotle's soul as form of a living body; vitalism) *Mostly dissolved* by molecular biology; the definition of life remains conceptual, for instance in astrobiology.
+* **How is consciousness related to the brain?** (Descartes; Leibniz's mill, *Monadology* §17) *Split.* Neuroscience finds neural correlates; why physical processes are accompanied by experience stays open.
+* **Is there free will?** (Stoics; Augustine; Hobbes; Kant) *Split.* Experiments address how decisions arise; whether freedom is compatible with causation is conceptual.
+* **What makes actions right?** (Socrates onward) *Open.* Facts inform moral judgement but cannot settle it alone (Hume's is–ought gap).
+* **Is inductive inference justified?** (Hume) *Open.* Bayesian tools reframe it without dissolving it.
+* **Do numbers exist?** (Plato) *Open*, in the philosophy of mathematics.
+
+**Five tests for a philosophical residue**, when a question looks "answered by science":
+
+1. Does it ask what *ought* to be, not what is? Then data alone will not close it.
+2. Does it ask what *must* or *could* be (necessity, possibility, essence)? Observation reports what is actual.
+3. Is the dispute really about what a term should mean? Then more data will not resolve it.
+4. Is it about the standards of inquiry themselves (what counts as evidence, explanation or knowledge)? Science cannot settle these without assuming some answer, though Quine's naturalised epistemology (1969) argues the circle is acceptable.
+5. Did the science answer *the original* question, or a sharpened neighbour of it? Compare Molyneux's question with the experiment designed to test it.
+
+**Reusable resources, whatever the question's status:**
+
+* **Stoic theory of emotions as judgements** → cognitive behavioural therapy; Albert Ellis and Aaron Beck both credited Epictetus.
+* **Aristotle's practical wisdom (*phronēsis*)** → accounts of clinical and professional judgement.
+* **Hobbes's state of nature** → game-theoretic models of cooperation and the prisoner's dilemma.
+* **Leibniz's possible worlds** → modal logic; David Lewis's counterfactual theory of causation (1973).
+* **Hume on causation** → counterfactual and structural models of causal inference (Judea Pearl, *Causality*, 2000).
+* **Kant's constitutive principles** → the relativized a priori in philosophy of science.
+* **Spinoza on the affects** → affective neuroscience (Antonio Damasio, *Looking for Spinoza*, 2003).
 
 ### How Should We Study, Understand, and Practise Philosophy?
 
 **Q9: How can we move beyond memorising philosophers, schools, and doctrines to understanding philosophical problems, theoretical structures, and lines of argument?**
 
+**A:** Organise what you learn around questions, not names. For each problem, build a map of the possible positions, the arguments that push people between them, and the concepts that define the space; then place each philosopher on that map.
+
+**The unit of understanding is the argument.** "Descartes was a dualist" is doxography. Understanding means knowing *why* he concluded that mind and body are distinct (the conceivability argument of *Meditation* VI, and the argument that body is divisible while mind is not), *what it cost* (Elisabeth of Bohemia's question of how an unextended mind can move an extended body), and *what the alternatives were* (Hobbes's materialism in the Third Objections; Spinoza's single substance). A thesis is understood only contrastively: for every claim, ask "as opposed to what?" and "who denied it, and why?"
+
+**Map the logical space.** Take one problem and lay out the possible answers before attaching names to them. The mind–body problem is a good first case: the positions answer how many basic kinds of thing there are (one or two), and which (mental, physical, or neither). Each position comes with a signature argument and a signature objection:
+
+```mermaid
+flowchart LR
+    Root["How many basic kinds of thing?"] --> D["Dualism: two kinds"]
+    Root --> M["Monism: one kind"]
+    D --> SD["Substance dualism<br/>Descartes"]
+    D --> PD["Property dualism<br/>Chalmers"]
+    M --> I["Idealism: only the mental<br/>Berkeley"]
+    M --> N["Neutral monism: neither<br/>Russell, cf. Spinoza"]
+    M --> Ph["Physicalism: only the physical"]
+    Ph --> IT["Identity theory<br/>Place 1956, Smart 1959"]
+    Ph --> F["Functionalism<br/>Putnam 1967"]
+    Ph --> El["Eliminativism<br/>the Churchlands"]
+```
+
+* **Substance dualism (Descartes).** For: mind can be clearly conceived without body. Against: how do two utterly different substances interact?
+* **Property dualism (Chalmers).** For: physically identical "zombies" without experience are conceivable. Against: mental properties seem to make no causal difference.
+* **Identity theory (Place 1956, Smart 1959).** For: simplicity; mental states are brain states. Against: the same mental state could be realised in different physical systems (Putnam 1967).
+* **Functionalism (Putnam).** For: mental states are defined by their causal role, so many materials can realise them. Against: functional duplicates might differ in felt experience (inverted spectrum; Block's "China brain", 1978).
+* **Eliminativism (the Churchlands).** For: everyday psychology is a failing theory, like alchemy. Against: denying beliefs seems to undercut the act of asserting it.
+* **Idealism (Berkeley).** For: we never encounter anything but perceptions. Against: it makes the regularity of nature hard to explain without God.
+* **Neutral monism (Russell 1921).** For: one underlying stuff appears as mental or physical depending on organisation. Against: the neutral stuff is hard to characterise without collapsing into one side.
+
+Once the space is mapped, history becomes legible: you see which positions were invented when, which were unavailable to earlier thinkers, and which arguments moved the field.
+
+**A reconstruction sheet for every text.** Fill one in for each substantial text you read. It converts reading into understanding and leaves you with notes you can compare across centuries:
+
+1. **Question.** What problem is the author addressing, in their own formulation?
+2. **Thesis.** One sentence.
+3. **Argument.** Numbered premises leading to the conclusion; mark premises the author leaves implicit.
+4. **Key concepts.** Define them in the author's terms; flag false friends.
+5. **Opponents.** Whom is this written against?
+6. **Strongest objection,** then the author's best reply.
+7. **Legacy.** Who took it up, transformed it, or refuted it?
+
+**Reading practices:**
+
+* **Primary text first, with one reliable guide.** Then read secondary literature that disagrees with that guide.
+* **Read slowly and short.** A few pages read deeply teach more than a survey. Good starting texts: Plato's *Meno*, Descartes' *Meditations*, Hume's *Enquiry* sections 4–7, Kant's *Prolegomena*, Frege's "On Sense and Reference".
+* **Use problem-organised references as maps.** The *Stanford Encyclopedia of Philosophy* is organised by problem and position, which makes it a good companion to chronological reading.
+* **Compare across epochs on purpose.** Every few weeks, set two treatments of one problem side by side: Plato's *Theaetetus* and Gettier on knowledge; Hobbes and Rawls on legitimacy; Augustine and Frankfurt on freedom of the will.
+
 **Q10: How can we develop the ability to independently reconstruct, critically evaluate, and extend philosophical arguments?**
 
+**A:** These are three distinct skills, each trained by its own exercise. Reconstruction trains charity and precision; evaluation trains finding the weakest point; extension trains seeing what an argument's structure can do elsewhere.
+
+**Reconstruction.** Put the argument in standard form: numbered premises, then the conclusion. Check whether it is valid. If not, add the *minimal* missing premise that makes it valid, and prefer the version the author would most plausibly accept; charity constrains both validity and plausibility. Watch for equivocation, where a key word shifts meaning between premises. J. S. Mill's proof of utility (*Utilitarianism*, ch. 4) is the textbook case: critics since G. E. Moore have argued it slides from "desirable" as *able to be desired* to "desirable" as *worth desiring*.
+
+A worked example, Descartes' argument for the real distinction of mind and body (*Meditation* VI):
+
+1. I can clearly and distinctly conceive my mind existing without my body.
+2. Whatever I can clearly and distinctly conceive, God can bring about just as I conceive it.
+3. If God can make A exist without B, then A and B are really distinct.
+4. Therefore, mind and body are really distinct.
+
+The argument is valid, so evaluation targets the premises. Antoine Arnauld (Fourth Objections) attacked premise 1: one can conceive a right-angled triangle without conceiving that it satisfies Pythagoras' theorem, yet the two cannot come apart. Perhaps Descartes' conception of mind is merely incomplete. Premise 2, with God removed, became the modern debate over whether conceivability implies possibility (Kripke; Chalmers).
+
+**Evaluation:**
+
+* **Validity:** does the conclusion follow?
+* **Counterexample:** find a case where a premise is false.
+* **Parity ("proves too much"):** build a parallel argument with an absurd conclusion. Gaunilo's "perfect island" against Anselm's ontological argument is the model.
+* **Dialectical status:** does a premise assume what is in dispute (begging the question)?
+* **Find the crux:** which single premise does the opponent most need to reject? Focus there.
+* **Count the costs:** David Lewis held that philosophical theories are rarely refuted outright; instead each has a price, and you compare prices.
+
+**Extension:**
+
+* **Abstract the schema.** The regress argument applies to justification, explanation, reasons for action, and metaphysical grounding alike.
+* **Transfer it.** Apply the structure to a domain its author never considered.
+* **Vary one premise.** Drop Kant's assumption that a priori principles are fixed, and you get Reichenbach's relativized a priori.
+* **Cross it with a modern tool.** John Earman's *Hume's Abject Failure* (2000) re-examined Hume's argument about miracles with probability theory.
+
+**A practice regimen:**
+
+1. **Weekly:** reconstruct one short classic passage (three pages at most) in standard form.
+2. **Weekly:** write the strongest objection to it and the author's best reply.
+3. **Monthly:** a 1,500-word critical note on one classic paper.
+4. **Study model papers** (list below) for how they set up a debate in a page or two.
+5. **Argue with someone.** A reading group, a tutor, or Claude asked to defend the position you are attacking.
+6. **Learn formal logic:** propositional and first-order logic, basic modal logic, and elementary probability for Bayesian epistemology. P. D. Magnus's free textbook *forall x* is a good start.
+
+**Model papers, and the move each one teaches:**
+
+* **Gettier, "Is Justified True Belief Knowledge?" (1963):** refute an analysis with two counterexamples, in three pages.
+* **Frankfurt, "Alternate Possibilities and Moral Responsibility" (1969):** refute a principle with a constructed case.
+* **Thomson, "A Defense of Abortion" (1971):** grant the opponent's premise and still block the conclusion.
+* **Nagel, "What Is It Like to Be a Bat?" (1974):** isolate what a theory leaves out.
+* **Jackson, "Epiphenomenal Qualia" (1982):** a knowledge argument built on a thought experiment.
+* **Quine, "Two Dogmas of Empiricism" (1951):** attack a distinction everyone presupposed.
+
 **Q11: How can we apply philosophical concepts, methods of analysis, and theoretical frameworks to scientific inquiry, practical problems, and other disciplines?**
+
+**A:** Philosophy applies to other fields in four ways. Knowing which of the four you are doing keeps the application honest.
+
+1. **Conceptual clarification** sharpens a term already in use. Example: "cause" in epidemiology and machine learning, from Hume's regularities and Lewis's counterfactuals to Pearl's structural causal models.
+2. **Foundational analysis** exposes what a method presupposes. Example: interpretations of probability (Ramsey 1926, de Finetti 1937) behind Bayesian vs frequentist statistics.
+3. **Normative evaluation** sets standards for right practice. Example: the Belmont Report (1979) on research ethics, built on respect for persons, beneficence and justice.
+4. **Formalisation** turns a vague question into a precise one. Example: Hilbert's decision problem answered by Church and Turing (1936); Tarski's definition of truth (1933) founding model theory.
+
+**Science.** Philosophy of science supplies the questions scientists face whenever they argue about method. What separates science from pseudoscience (Popper, 1934)? Can any single hypothesis be tested in isolation, or only together with auxiliary assumptions (Duhem, 1906; Quine)? How do theories change, and are successive theories comparable (Kuhn, 1962)? Should we believe in unobservable entities, or only in a theory's predictive success (the realism debate)? In practice these questions shape experimental design, the reading of evidence, and judgements about when a result is robust.
+
+**Mathematics.** The foundational debates of 1900–1930 still bear on mathematical practice. Logicism (Frege, Russell) tried to reduce mathematics to logic; formalism (Hilbert) treated it as rule-governed symbol manipulation; intuitionism (Brouwer) accepted only constructive proofs. Gödel's incompleteness theorems (1931) set limits on Hilbert's programme. Intuitionistic logic later met computation in the Curry–Howard correspondence, where proofs are programs and propositions are types; Martin-Löf's type theory and proof assistants such as Coq (now Rocq), Agda and Lean descend from this line. Whether numbers exist (Gödel's Platonism against Hartry Field's nominalism, 1980) remains open.
+
+**Computing and AI.** A direct line runs from Leibniz's dream of a reasoning calculus through Boole (1854) and Frege (1879) to Turing (1936). Knowledge representation borrowed from philosophical ontology: Aristotle's categories and Porphyry's tree of genus and species prefigure class hierarchies. Turing's "Computing Machinery and Intelligence" (1950) reframed "Can machines think?" as a testable question; Searle's Chinese Room (1980) argued that symbol manipulation is not understanding. The frame problem (McCarthy and Hayes, 1969) began in AI and became a philosophical problem about relevance. Algorithmic fairness is now a meeting ground: Kleinberg and colleagues (2016) and Chouldechova (2017) proved that several intuitive fairness criteria cannot all be met at once, except in special cases such as equal base rates or perfect prediction, which forces a normative choice no algorithm can make.
+
+**Literature.** Plato's critique of imitation (*Republic* X) and Aristotle's *Poetics* (plot, *mimesis*, *catharsis*) founded the theory of fiction. Hermeneutics, from Schleiermacher and Dilthey to Gadamer and Ricoeur, is a general theory of interpretation that literary study still uses. Analytic aesthetics asks what makes a statement true "in" a fiction (David Lewis, "Truth in Fiction", 1978) and treats fiction as rule-governed make-believe (Kendall Walton, 1990). Narrative identity, the idea that a self is partly constituted by the story it can tell of itself, links ethics and literature (MacIntyre, *After Virtue*, 1981; Ricoeur, *Oneself as Another*, 1990). Martha Nussbaum's *Love's Knowledge* (1990) argues that some moral knowledge is available only in literary form.
+
+**Practical problems:**
+
+* **Law:** legal positivism versus natural law (H. L. A. Hart, *The Concept of Law*, 1961); the mental element of crime draws on theories of intention and responsibility.
+* **Medicine:** Beauchamp and Childress (1979) organised clinical ethics around autonomy, beneficence, non-maleficence and justice, principles with Kantian and utilitarian roots.
+* **Public policy:** cost–benefit analysis inherits utilitarian assumptions; Rawls's difference principle offers a rival standard for judging inequality.
+* **Personal life:** Stoic and Aristotelian ethics were designed as practical guides to living, and are read that way again.
+
+**Three cautions:**
+
+1. **Application requires domain knowledge.** Pronouncements from outside a field without its details are rightly ignored by practitioners.
+2. **A label is not an analysis.** Calling something "Kantian" or "Foucauldian" adds nothing unless the concept changes what you can see or do.
+3. **The traffic runs both ways.** Game theory reshaped social contract theory; cognitive science reshaped philosophy of mind; experimental philosophy tests intuitions empirically, as in Joshua Knobe's 2003 finding that judgements of intentional action depend on moral evaluation.
 
 **Q12: How Should Philosophers Situate Their Work Within the History of Philosophy?**
 
@@ -74,6 +422,43 @@ This involves four questions:
 The aim is not to establish a philosophical identity through association with canonical thinkers, but to develop a clear understanding of one's theoretical commitments, intellectual debts, disagreements, and potential contributions.
 
 **Historical positioning is valuable insofar as it improves philosophical understanding, argumentative rigour, and theoretical innovation.**
+
+**Further refinements:** three additions make positioning more rigorous, followed by two warnings.
+
+1. **Start from the exact question.** Collingwood held that a statement's meaning depends on the question it answers. So positioning begins by stating your question precisely, then checking whether your predecessors were asking the same one. If they were not (see the refinements to Q1–Q2 on perennial problems), say how the questions differ; that difference is often your contribution.
+2. **Explain why your rivals failed.** Alasdair MacIntyre (*Whose Justice? Which Rationality?*, 1988) argued that inquiry happens within traditions. One tradition shows itself superior to another when it can explain, in its own terms, why the rival ran into the difficulties it did, and solve problems the rival could not. Applied to your own work: do not just note that earlier approaches fail; diagnose the assumption that made them fail, and show your view does not share it.
+3. **Make your presuppositions explicit.** Gadamer argued that understanding always starts from inherited presuppositions (*Vorurteile*, "pre-judgements"); they are conditions of understanding, not just obstacles. Positioning includes stating which presuppositions you bring: a naturalist framework, a commitment to formal methods, a phenomenological starting point.
+4. **Beware false novelty.** Search older literature before claiming an idea is new. Gettier-style cases, for example, have precedents in Russell's stopped-clock example (*Human Knowledge*, 1948) and in the 8th-century Buddhist philosopher Dharmottara.
+5. **Beware name-dropping.** A lineage claim ("a broadly Kantian approach") is a thesis that needs an argument, not an appeal to authority.
+
+**A positioning worksheet**, to answer for any paper or project:
+
+1. **Problem:** What exactly is the question, in one sentence?
+2. **History of the problem:** When did it arise, and how has its formulation changed?
+3. **Main rival views:** What are the two to four standard answers?
+4. **Shared assumption:** What do the rivals all take for granted?
+5. **Diagnosis:** Why do the rivals run into the difficulties they do?
+6. **Contribution type:** Do I extend, revise, challenge, or reframe?
+7. **Lineage:** Which tradition explains where my approach comes from?
+8. **Debts:** Whose concepts or arguments do I use?
+9. **Disagreements:** Whom do I reject, and on which premise?
+10. **My presuppositions:** What am I assuming that a rival tradition would not?
+
+### Sources and Further Readings
+
+* R. G. Collingwood, *An Autobiography* (1939), chapters on the logic of question and answer.
+* Quentin Skinner, "Meaning and Understanding in the History of Ideas", *History and Theory* 8 (1969): 3–53 ([record](https://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/year/2008/docId/16706)).
+* Richard Rorty, J. B. Schneewind and Quentin Skinner (eds.), *Philosophy in History* (Cambridge, 1984), especially Rorty's "Four Genres" and the essays by Charles Taylor and Alasdair MacIntyre ([Rorty chapter](https://www.cambridge.org/core/books/truth-and-progress/historiography-of-philosophy-four-genres/2C0E4EF1D47F85F76D80B12EF32A3217)).
+* Bernard Williams, *Descartes: The Project of Pure Enquiry* (1978), preface; and "Philosophy as a Humanistic Discipline" (2000).
+* Hans-Georg Gadamer, *Truth and Method* (1960), part II.
+* Tom Sorell and G. A. J. Rogers (eds.), *Analytic Philosophy and History of Philosophy* (Oxford, 2005).
+* Mogens Lærke, Justin E. H. Smith and Eric Schliesser (eds.), *Philosophy and Its History: Aims and Methods in the Study of Early Modern Philosophy* (Oxford, 2013).
+* Christia Mercer, "The Contextualist Revolution in Early Modern Philosophy", *Journal of the History of Philosophy* 57 (2019): 529–548 ([discussion](https://dailynous.com/?p=25191)).
+* David Chalmers, "Why Isn't There More Progress in Philosophy?", *Philosophy* 90 (2015): 3–31 ([abstract and PDF](https://stafforini.com/works/chalmers-2015-why-isn-there/)).
+* Carlo Rovelli, "Aristotle's Physics: A Physicist's Look", *Journal of the American Philosophical Association* 1 (2015): 23–40 ([arXiv](https://arxiv.org/abs/1312.4057)).
+* John Schwenkler, "On the Matching of Seen and Felt Shape by Newly Sighted Subjects" (2012) ([PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC3485845)).
+
+Other references are standard works cited from general scholarly knowledge; check page numbers and editions against the texts themselves.
 
 ## Presocratic Philosophy and the Sophists (c. 600–400 BCE)
 

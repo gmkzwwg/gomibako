@@ -2228,13 +2228,615 @@ Because $c\ge0$, the number $cx$ lies in the same interval. Hence $|f(x)-cx|\le 
 
 ## 5. Powers, Exponentials, and Logarithms
 
-**Review scope:** Integer, rational, and real powers; roots; exponential and logarithmic laws; change of base; exponential equations and inequalities; growth, decay, and logarithmic scales.
+Repeated multiplication begins with a whole-number count. A real exponent asks for something more: a consistent way to interpolate between those counts. Logarithms reverse this dependence and turn multiplication into addition. The resulting functions connect arithmetic, geometric scaling, continuous change, and numerical calculation.
 
-**Proposed entries:** Extending the exponent; powers and roots; exponential functions; logarithms as inverses; linearizing multiplication and growth; approximation and numerical evaluation.
+The main questions are therefore structural as well as computational: **Which laws survive an extension of the exponent, what choices make the functions single-valued, and why is the base $e$ natural?**
 
-**Advanced standpoint:** Logarithms connect multiplication of positive numbers with addition. Exponential functions connect repeated scaling with continuous growth. Definitions through limits, integrals, and differential equations will be compared through links to Chapters 10–11.
+### 5.1 Extending the Exponent
 
-**Questions to keep visible:** Which power laws require positive real bases? What changes over the complex numbers? Why does a useful numerical approximation still require an error estimate?
+What should $a^0$, $a^{-1}$, or $a^{1/2}$ mean? Begin with $a>0$ and require the familiar law $a^{r+s}=a^r a^s$ to remain valid.
+
+For positive integers, $a^n$ is repeated multiplication. The same law forces
+
+$$
+a^0=1,\qquad a^{-n}=\frac1{a^n}.
+$$
+
+For an integer $m$ and a positive integer $n$, define
+
+$$
+a^{m/n}=\left(\sqrt[n]{a}\right)^m,
+$$
+
+where the root is the unique positive one. This definition is independent of the representation of the rational number: passing to a common denominator gives the same positive root. **Extend the operation by preserving its laws and fixing the root convention.**
+
+**Worked example 5.1A — Read a fractional exponent as a sequence of operations.**
+
+Evaluate
+
+$$
+\left(\frac{16}{81}\right)^{-3/4}.
+$$
+
+The positive fourth root is $2/3$. Cube it and take its reciprocal:
+
+$$
+\left(\frac{16}{81}\right)^{-3/4}
+=\left(\frac23\right)^{-3}
+=\left(\frac32\right)^3
+=\frac{27}{8}.
+$$
+
+The negative exponent specifies a reciprocal, not a negative output. Using $-6/8$ instead of $-3/4$ gives the same answer because the base is positive and the root choices agree.
+
+An irrational exponent cannot be interpreted as a finite number of multiplications or root extractions. For $a>1$, a precise construction is
+
+$$
+a^x=\sup\{a^q:q\in\mathbb Q,\ q\le x\}.
+$$
+
+The set is nonempty and bounded above by $a^N$ for any integer $N>x$, so real completeness supplies the supremum. For $0<a<1$, define $a^x=(1/a)^{-x}$; for $a=1$, define $1^x=1$.
+
+Why does this agree with approximation by rationals? If $m=\lfloor nx\rfloor$, then
+
+$$
+a^{m/n}\le a^x\le a^{(m+1)/n}.
+$$
+
+The ratio of the bounds is $a^{1/n}$. Writing $a^{1/n}=1+u_n$, the integer binomial inequality gives
+
+$$
+a=(1+u_n)^n\ge1+nu_n,
+\qquad
+0\le u_n\le\frac{a-1}{n}.
+$$
+
+Thus the relative gap tends to zero. This is the mechanism behind the unique continuous extension from rational to real exponents; the general treatment of limits belongs to Chapter 10.
+
+For positive bases $a,b$ and real exponents $r,s$, the resulting laws are
+
+$$
+a^{r+s}=a^r a^s,\qquad
+a^{r-s}=\frac{a^r}{a^s},\qquad
+(a^r)^s=a^{rs},\qquad
+(ab)^r=a^r b^r.
+$$
+
+*Checking rational exponents alone does not establish these statements for all real exponents.* The passage uses completeness and the continuity of the extension. This is the first point at which the theory of powers goes beyond finite algebra.
+
+Related: [number systems and completeness](#11-number-systems-and-closure); [limits and infinity](#10-limits-continuity-and-infinity).
+
+### 5.2 Powers and Roots
+
+Which parts of the preceding theory remain valid when the base can be zero or negative? The answer depends on the exponent and on the meaning of “root.”
+
+For an even positive integer $n$, the real function $\sqrt\lbrack n\rbrack {x}$ is defined for $x\ge0$ and selects the nonnegative root. For odd $n$, it is defined for every real $x$ and selects the unique real root. Consequently,
+
+$$
+\sqrt{x^2}=|x|,
+\qquad
+\sqrt[3]{x^3}=x.
+$$
+
+The equation $y^2=9$ has two real solutions, while the expression $\sqrt9$ has one value, $3$. **Distinguish a root function from the full solution set of a power equation.**
+
+For a negative real base and a reduced rational exponent $m/n$, a real value is available when $n$ is odd, using the real odd root. An even denominator gives no real value. There is no real-valued exponential on all real exponents with a negative base and the addition law: such a function would have to satisfy $a=(a^{1/2})^2\ge0$.
+
+*The positive-base hypotheses in the power laws cannot simply be dropped.* For example,
+
+$$
+\bigl((-1)^2\bigr)^{1/2}=1,
+\qquad
+(-1)^{2(1/2)}=-1.
+$$
+
+Both expressions are meaningful, but they are unequal: the first has forgotten the sign before taking the principal square root. Similarly, $\sqrt{uv}=\sqrt u\,\sqrt v$ is a real identity under $u,v\ge0$; it is not an unrestricted rule for complex square roots.
+
+At base zero, $0^r=0$ for $r>0$, while negative exponents are undefined. In this real-power setting, $0^0$ is left undefined; conventions used in particular discrete formulas require separate explanation.
+
+**Worked example 5.2A — An odd-root substitution retains negative inputs.**
+
+Solve, with real cube roots understood,
+
+$$
+x^{2/3}+x^{1/3}-2=0.
+$$
+
+Set $u=\sqrt\lbrack 3\rbrack {x}$. This is a bijective substitution on $\mathbb R$, and $x^{2/3}=u^2$. The equation becomes
+
+$$
+u^2+u-2=(u+2)(u-1)=0.
+$$
+
+Hence $u=-2$ or $u=1$, giving $x=-8$ or $x=1$. Both satisfy the original equation. *Imposing $u\ge0$ would incorrectly discard a valid solution.*
+
+A `power function` fixes the exponent and varies the base: $x\mapsto x^r$. On $x>0$, it is strictly increasing for $r>0$, strictly decreasing for $r<0$, and constant for $r=0$. When $r\ne0$, its inverse on $(0,\infty)$ is $x\mapsto x^{1/r}$. An exponential function instead fixes the base and varies the exponent.
+
+Related: [inverse branches](#43-composition-and-inverse-functions); [reversible equation transformations](#33-reversible-transformations); [complex roots](#6-trigonometry-and-the-complex-plane).
+
+### 5.3 Exponential Functions
+
+What distinguishes repeated scaling from repeated addition? In equal input steps, a linear function has equal output differences, whereas an exponential function has equal output ratios.
+
+For $a>0$, the `exponential function` $f(x)=a^x$ satisfies
+
+$$
+f(0)=1,\qquad
+f(x+h)=a^h f(x),\qquad
+f(-x)=\frac1{f(x)}.
+$$
+
+For $a>1$ it is strictly increasing; for $0<a<1$ it is strictly decreasing. In both cases its domain is $\mathbb R$, its image is $(0,\infty)$, and the graph passes through $(0,1)$ without ever reaching the horizontal axis. The case $a=1$ is constant and has no inverse on $\mathbb R$.
+
+For $a>1$, the limits are $a^x\to\infty$ as $x\to\infty$ and $a^x\to0$ as $x\to-\infty$; they reverse for $0<a<1$. In particular, a decaying exponential approaches zero without becoming zero at a finite input.
+
+**Worked example 5.3A — Turn an exponential equation into a polynomial.**
+
+Solve
+
+$$
+4^x-3\cdot2^x-4=0.
+$$
+
+Because $4^x=(2^x)^2$, put $u=2^x>0$. Then
+
+$$
+u^2-3u-4=(u-4)(u+1)=0.
+$$
+
+Only $u=4$ is in the image of the substitution. Since $2^x=2^2$ and the exponential is injective, the unique solution is $x=2$. **Reduce the equation algebraically, then enforce the image of the new variable.**
+
+The addition law also characterizes exponential dependence. Suppose a continuous function $F:\mathbb R\to(0,\infty)$ satisfies
+
+$$
+F(t+s)=F(t)F(s).
+$$
+
+Then $F(0)=1$, and writing $a=F(1)$ forces $F(m/n)=a^{m/n}$ for rational inputs. Continuity determines all remaining values, so $F(t)=a^t$.
+
+This is the `exponential functional equation`. It describes a normalized process whose multiplier for an elapsed time depends only on the length of that time, not on its starting point. *Measurements at integer times alone do not determine what happens between them; a law of evolution and a regularity assumption supply that additional information.*
+
+Related: [composition and function laws](#43-composition-and-inverse-functions); [sequences](#9-sequences-finite-sums-and-counting); [continuous growth](#55-linearizing-multiplication-and-growth).
+
+### 5.4 Logarithms as Inverses
+
+If the multiplier is known but the exponent is not, which operation recovers it? For $a>0$, $a\ne1$, and $x>0$, define
+
+$$
+\log_a x=y\quad\Longleftrightarrow\quad a^y=x.
+$$
+
+The `logarithm` is the inverse of a bijection $\mathbb R\to(0,\infty)$. Thus
+
+$$
+\log_a1=0,\qquad
+\log_a a=1,\qquad
+a^{\log_a x}=x,\qquad
+\log_a(a^t)=t.
+$$
+
+It is strictly increasing for $a>1$ and strictly decreasing for $0<a<1$. The base $1$ is excluded because $1^t$ cannot distinguish exponents.
+
+The main laws follow from exponentiation. If $x=a^u$ and $y=a^v$, then $xy=a^{u+v}$; applying the inverse gives the product law. The quotient and power laws follow in the same way:
+
+$$
+\log_a(xy)=\log_a x+\log_a y,\qquad
+\log_a\frac{x}{y}=\log_a x-\log_a y,\qquad
+\log_a(x^r)=r\log_a x
+$$
+
+for $x,y>0$ and real $r$. **Taking logarithms turns products into sums and powers into scalar multiples.** There is no corresponding rule splitting the logarithm of a sum: $\log_2(1+1)=1$, whereas $\log_2 1+\log_2 1=0$.
+
+The domain conditions remain essential. For $x\ne0$,
+
+$$
+\log_a(x^2)=2\log_a|x|,
+$$
+
+but $2\log_a x$ is defined only for $x>0$. A product may be positive even when both its factors are negative; that does not make the separate real logarithms meaningful.
+
+To `change base`, take a logarithm to any other base $b>0$, $b\ne1$, in $x=a^{\log_a x}$:
+
+$$
+\log_a x=\frac{\log_b x}{\log_b a}.
+$$
+
+Thus different logarithmic bases differ only by a nonzero constant factor. The `natural logarithm`, denoted $\ln$, uses the base $e>1$ explained in Section 5.5, giving $\log_a x=\ln x/\ln a$. This also makes the reversal of monotonicity for $a<1$ transparent, since then $\ln a<0$.
+
+**Worked example 5.4A — Combining logarithms without enlarging the domain.**
+
+Solve
+
+$$
+\log_2(x-1)+\log_2(x-3)=3.
+$$
+
+The original domain is $x>3$. Within it, the equation is equivalent to
+
+$$
+\log_2\bigl((x-1)(x-3)\bigr)=3,
+\qquad
+(x-1)(x-3)=8.
+$$
+
+Hence $x^2-4x-5=(x-5)(x+1)=0$. Only $x=5$ belongs to the domain. At $x=-1$, the product of the two arguments is positive, but neither original logarithm exists over the reals. **Keep the domain from before the logarithms were combined.**
+
+**Worked example 5.4B — An inequality with a decreasing logarithm.**
+
+Solve
+
+$$
+\log_{1/2}(x-1)\ge\log_{1/2}(3-x).
+$$
+
+Both arguments are positive exactly when $1<x<3$. Since this logarithm is decreasing, the inequality reverses when we compare its arguments:
+
+$$
+x-1\le3-x,\qquad x\le2.
+$$
+
+The solution set is $(1,2\rbrack $. *Cancelling logarithms as if every logarithmic function were increasing would reverse the answer.*
+
+**A complex preview.** Over $\mathbb C$, the exponential has period $2\pi i$, so it is not globally injective. The logarithms of a nonzero complex number $z$ are
+
+$$
+\ln|z|+i(\theta+2\pi k),
+\qquad k\in\mathbb Z,
+$$
+
+where $\theta$ is one argument of $z$. Choosing $\theta\in(-\pi,\pi\rbrack $ specifies the `principal value` $\operatorname{Log}z$, but this choice is discontinuous across the negative real axis. A continuous logarithm branch needs a suitable domain restriction.
+
+Principal values do not satisfy the product law without qualification:
+
+$$
+\operatorname{Log}\bigl((-1)(-1)\bigr)=0,
+\qquad
+\operatorname{Log}(-1)+\operatorname{Log}(-1)=2\pi i.
+$$
+
+The values differ by a full turn. *Real logarithm laws cannot be transferred to chosen complex branches without checking arguments.* Chapter 6 develops the rotation formula behind this phenomenon.
+
+Related: [domain and image](#42-domain-codomain-and-image); [inverse functions](#43-composition-and-inverse-functions); [complex arguments](#6-trigonometry-and-the-complex-plane).
+
+### 5.5 Linearizing Multiplication and Growth
+
+Why should one base be called natural? Instead of choosing it in advance, start with the area under a familiar curve:
+
+$$
+L(x)=\int_1^x\frac{dt}{t},
+\qquad x>0.
+$$
+
+The integral denotes `signed area`: positive for $x>1$, zero at $1$, and negative for $0<x<1$, where the limits are reversed.
+
+The essential geometric fact is that the transformation $(t,y)\mapsto(at,y/a)$ preserves area and carries the hyperbola $y=1/t$ onto itself. Widths multiply by $a$ while heights divide by $a$. Therefore the area from $a$ to $ab$ equals the area from $1$ to $b$. Splitting at $a$ gives, for all $a,b>0$,
+
+$$
+L(ab)=\int_1^a\frac{dt}{t}+\int_a^{ab}\frac{dt}{t}
+=L(a)+L(b).
+$$
+
+**The logarithmic law is a consequence of the scaling symmetry of the hyperbola.** This explains why an area, which initially seems unrelated to exponents, can measure multiplication additively.
+
+![Equal shaded areas under y=1/t on the intervals from 1 to 2 and from 3 to 6, illustrating that scaling width by 3 and height by one third preserves logarithmic area.]({{site.img}}/mathematics/elementary-mathematics-reference/logarithm-hyperbola-area-diagram.svg)
+
+The function $L$ is continuous and strictly increasing. Also, $L(2^n)=nL(2)$ is unbounded above, and $L(1/x)=-L(x)$ makes it unbounded below. Hence there is a unique number $e$ with $L(e)=1$. The addition law and continuity identify $L$ with $\log_e$, so $L(x)=\ln x$.
+
+This gives the natural logarithm its normalization. A short interval near $x$ has area approximately its width divided by $x$, leading to
+
+$$
+\frac{d}{dx}\ln x=\frac1x.
+$$
+
+The inverse function then satisfies $\frac{d}{dt}e^t=e^t$. The same functions are also characterized by
+
+$$
+e^t=\lim_{n\to\infty}\left(1+\frac tn\right)^n
+\qquad(t\ge0).
+$$
+
+Here a fixed total scaling increment is divided into increasingly many small steps; Problem 5.F justifies the limit. Area, a functional equation, a differential equation, and a limit are connected descriptions, whose general foundations are developed in Chapters 10–11.
+
+A positive quantity with constant continuous relative growth rate $k$ has the form
+
+$$
+Y(t)=Y_0e^{kt},
+\qquad
+\ln\frac{Y(t)}{Y_0}=kt,
+\qquad Y_0>0.
+$$
+
+Positive $k$ gives growth, and negative $k$ gives decay. Over a time interval $\Delta t$, the multiplier is $e^{k\Delta t}$. A fractional increase $r>-1$ per unit time corresponds to $k=\ln(1+r)$ in those time units, not generally to $k=r$.
+
+**Worked example 5.5A — Doubling time and the meaning of a rate.**
+
+An idealized quantity increases by $5\%$ per unit time. Under the continuous exponential model,
+
+$$
+Y(t)=Y_0(1.05)^t,
+\qquad
+k=\ln1.05\approx0.04879016.
+$$
+
+Its doubling time satisfies $(1.05)^T=2$, so
+
+$$
+T=\frac{\ln2}{\ln1.05}\approx14.2067.
+$$
+
+If the process is inspected only after whole periods, the first observation at or above twice the initial amount is period $15$. *The finite increase $0.05$ and the continuous rate $\ln1.05$ describe the same multiplier in different ways; they are not equal.* For decay with $k<0$, the analogous `half-life` is $\ln2/|k|$.
+
+![The same exponential growth Y divided by Y zero equals 2 to the t shown on a linear vertical axis and a logarithmic vertical axis, where equal ratios occupy equal distances and the curve becomes a line.]({{site.img}}/mathematics/elementary-mathematics-reference/exponential-logarithmic-scales-diagram.svg)
+
+A `semilog plot` uses a logarithmic axis for one variable: $\ln(Y/Y_0)=kt$ makes exponential growth a straight line. A `log–log plot` uses logarithmic axes for both variables: the power law $Y/Y_0=(x/x_0)^p$ becomes
+
+$$
+\ln(Y/Y_0)=p\ln(x/x_0).
+$$
+
+Ratios to reference quantities keep logarithm arguments dimensionless. Equal distances on a logarithmic axis represent equal ratios. *A roughly straight plot over a limited data range suggests a model; it does not establish an exact law.*
+
+The calculus form of the same idea is the `logarithmic derivative`. For a positive differentiable function $Y$,
+
+$$
+\frac{d}{dt}\ln Y(t)=\frac{Y^{\prime}(t)}{Y(t)}.
+$$
+
+It measures relative change rather than absolute change and converts a product's logarithmic derivative into a sum. For a nonzero function of either sign, the corresponding local identity uses $\ln|Y|$. Problem 5.G previews its use with a variable exponent.
+
+Related: [ratios and scaling](#14-ratios-and-scaling); [linear coordinates](#7-geometry-coordinates-and-linear-structure); [calculus and differential equations](#11-calculus-differential-equations-and-approximation).
+
+### 5.6 Approximation and Numerical Evaluation
+
+How can a logarithm be calculated rather than merely requested from a table or calculator? A usable method needs both an expression that converges and a bound on what has been omitted.
+
+For $|z|<1$, the finite geometric identity applied to $1/(1-z^2)$, followed by integration, gives
+
+$$
+\ln\frac{1+z}{1-z}
+=2\sum_{j=0}^{N}\frac{z^{2j+1}}{2j+1}+R_N,
+\qquad
+|R_N|
+\le
+\frac{2|z|^{2N+3}}{(2N+3)(1-z^2)}.
+$$
+
+Indeed, the remainder is the integral of $2t^{2N+2}/(1-t^2)$ from $0$ to $z$. Bounding its denominator below by $1-z^2$ gives the displayed estimate. This derives the series and its error from a finite identity, without assuming that an infinite sum can be integrated freely.
+
+For a given $x>0$, choose $z=(x-1)/(x+1)$; then $(1+z)/(1-z)=x$. The method works for every positive $x$, but convergence becomes slow when $|z|$ is close to $1$.
+
+**Worked example 5.6A — Six terms with a certified error.**
+
+For $\ln2$, take $z=1/3$ and $N=5$:
+
+$$
+S_5=2\sum_{j=0}^{5}\frac{1}{(2j+1)3^{2j+1}}
+\approx0.693147073759785.
+$$
+
+Every omitted term is positive, and
+
+$$
+0<\ln2-S_5
+\le\frac{2(1/3)^{13}}{13(1-1/9)}
+<1.086\times10^{-7}.
+$$
+
+Exact rational evaluation of the sum and bound gives the enclosing interval
+
+$$
+0.69314707<\ln2<0.69314719.
+$$
+
+Every number in this interval rounds to $0.693147$ at six decimal places. **The remainder bound certifies those digits; a plausible decimal display alone does not.**
+
+For efficient `range reduction`, write $x=2^k m$ with an integer $k$ and $1\le m<2$. Then
+
+$$
+\ln x=k\ln2+\ln m,
+\qquad
+0\le\frac{m-1}{m+1}<\frac13.
+$$
+
+Only logarithms near $1$ need fresh evaluation. If the errors in $\ln2$ and $\ln m$ are at most $\delta_2,\delta_m$, the resulting error is at most $|k|\delta_2+\delta_m$.
+
+The corresponding expansion for the exponential is
+
+$$
+e^u=\sum_{j=0}^{\infty}\frac{u^j}{j!}.
+$$
+
+Its derivation and convergence are treated in Chapter 11. For $0\le u\le1$, truncation after degree $N$ has the useful bound
+
+$$
+0\le e^u-\sum_{j=0}^{N}\frac{u^j}{j!}
+\le
+\frac{u^{N+1}}{(N+1)!}\,
+\frac1{1-u/(N+2)}.
+$$
+
+After the first omitted term, each successive term is at most $u/(N+2)$ times its predecessor, so a geometric tail bounds the error. Larger positive arguments can be reduced using $e^x=(e^{x/m})^m$, and negative ones using reciprocals. *Restoring the scale also changes the error:* a relative error $\varepsilon$ in $e^{x/m}$ becomes $(1+\varepsilon)^m-1$ after raising the approximation to the $m$th power.
+
+Small increments require separate care. For $u\ge0$,
+
+$$
+0\le u-\ln(1+u)
+=\int_0^u\frac{t}{1+t}\,dt
+\le\frac{u^2}{2}.
+$$
+
+This quantifies the approximation $\ln(1+u)\approx u$. But if a numerical system rounds $1+u$ to $1$ before taking its logarithm, information has already been lost. Using $z=u/(2+u)$ in the logarithm series avoids first forming that rounded sum. Likewise, evaluating $e^u-1$ through $u+u^2/2!+\cdots$ avoids subtracting two nearly equal rounded numbers.
+
+**Choose an expression whose arithmetic preserves the information needed, and carry an explicit error estimate through the calculation.**
+
+Related: [measured quantities and error](#16-exact-values-and-measured-quantities); [numerical root finding](#36-exact-formulas-and-numerical-root-finding); [series and approximation](#11-calculus-differential-equations-and-approximation).
+
+### 5.7 Classical Problems and Extensions
+
+Try the problems before reading the solution notes. Problem 5.G is an optional calculus connection using the product and chain rules developed in Chapter 11.
+
+**5.A — Irrational numbers can produce a rational power.** Prove that there exist positive irrational numbers $a,b$ such that $a^b$ is rational. Consider $u=(\sqrt2)^{\sqrt2}$ and split into the two possibilities for $u$. Explain why the power law used in the argument is legitimate.
+
+**5.B — A variable logarithmic base.** Solve
+
+$$
+\log_x2\le1
+$$
+
+over the reals. State the restrictions on the base before separating cases.
+
+**5.C — The centre of a multiplicative interval.** A positive quantity is known to lie between $a$ and $b$, with $0<a<b$. For a representative value $c\in\lbrack a,b\rbrack $, define the worst multiplicative discrepancy to be
+
+$$
+M(c)=\max\left(\frac ca,\frac bc\right).
+$$
+
+Find the choice minimizing $M(c)$. Explain why it is the midpoint on a logarithmic scale, and calculate it for $a=4,b=9$.
+
+**5.D — Continuous multiplicative functions are power functions.** Let $H:(0,\infty)\to(0,\infty)$ be continuous and satisfy $H(xy)=H(x)H(y)$. Show that $H(x)=x^c$ for some real constant $c$. Use $F(t)=\ln H(e^t)$ to transform the problem into an additive one.
+
+**5.E — Counting digits without expanding a large integer.** Derive a formula for the number of decimal digits of a positive integer $N$. Then determine the number of digits of $2^{1000}$ using the certified bound
+
+$$
+0.30102999566<\log_{10}2<0.30102999567.
+$$
+
+Explain why replacing the logarithm by $0.30$ gives a wrong answer.
+
+**5.F — From small discrete steps to continuous scaling.** Use the area under $1/t$ to prove, for $u\ge0$,
+
+$$
+\frac{u}{1+u}\le\ln(1+u)\le u.
+$$
+
+Deduce that for every fixed $t\ge0$,
+
+$$
+\lim_{n\to\infty}\left(1+\frac tn\right)^n=e^t.
+$$
+
+What does this say about the origin of the base $e$ when $t=1$?
+
+**5.G — A variable base and a variable exponent.** For $x>0$, differentiate $y=x^x$ using its logarithm and find its global minimum. Explain why neither the rule for a fixed exponent nor the rule for a fixed base can be applied unchanged.
+
+**Solution notes**
+
+**5.A.** If $u=(\sqrt2)^{\sqrt2}$ is rational, choose $a=b=\sqrt2$. If it is irrational, choose $a=u$ and $b=\sqrt2$; then
+
+$$
+a^b=\bigl((\sqrt2)^{\sqrt2}\bigr)^{\sqrt2}
+=(\sqrt2)^2=2.
+$$
+
+In each case both $a,b$ are positive and irrational, and $a^b$ is rational. The nested-power law is valid because the base is positive. **The case split proves existence without needing to decide which case occurs.** The irrationality of $\sqrt2$ was established in Chapter 1.
+
+**5.B.** The base conditions are $x>0$ and $x\ne1$. If $0<x<1$, the logarithm is decreasing and
+
+$$
+\log_x2\le\log_x x
+\quad\Longleftrightarrow\quad
+2\ge x,
+$$
+
+which holds throughout that interval. If $x>1$, it is increasing, so the condition becomes $2\le x$. The solution is
+
+$$
+(0,1)\cup[2,\infty).
+$$
+
+*Multiplying $\ln2/\ln x\le1$ by $\ln x$ without checking its sign would lose an entire interval of solutions.*
+
+**5.C.** The two positive ratios have fixed product $b/a$. Their maximum is therefore at least $\sqrt{b/a}$, with equality exactly when they are equal:
+
+$$
+\frac ca=\frac bc
+\quad\Longleftrightarrow\quad
+c=\sqrt{ab}.
+$$
+
+This value lies in $\lbrack a,b\rbrack $ and attains the lower bound. On taking logarithms,
+
+$$
+\ln c=\frac{\ln a+\ln b}{2}.
+$$
+
+Thus the `geometric mean` is the arithmetic midpoint in logarithmic coordinates. For $4$ and $9$, the representative is $6$ and the worst factor is $3/2$. **Additive and multiplicative notions of centrality lead to different means.**
+
+**5.D.** The assumptions make $F$ continuous, and
+
+$$
+F(s+t)=\ln H(e^s e^t)
+=\ln\bigl(H(e^s)H(e^t)\bigr)
+=F(s)+F(t).
+$$
+
+Set $c=F(1)$. Additivity gives $F(m/n)=cm/n$ for rational inputs. For a real $t$, choose rationals $q_n\to t$; continuity gives $F(t)=\lim F(q_n)=ct$. Writing $x=e^t$ now yields
+
+$$
+\ln H(x)=c\ln x,
+\qquad H(x)=x^c.
+$$
+
+Conversely, every real power on positive inputs has the required properties. **Logarithms convert a multiplicative functional equation into an additive one.** This is a concrete `group isomorphism`: the bijection $\ln:(0,\infty)\to\mathbb R$ carries multiplication to addition, including the identity $1\mapsto0$ and reciprocals to negatives.
+
+**5.E.** Having $d$ decimal digits means $10^{d-1}\le N<10^d$. Taking common logarithms gives
+
+$$
+d=\lfloor\log_{10}N\rfloor+1.
+$$
+
+For $N=2^{1000}$, the supplied bound gives
+
+$$
+301.02999566<\log_{10}N<301.02999567,
+$$
+
+so $d=302$. Replacing $\log_{10}2$ by $0.30$ would give $301$ digits. *An error that looks small before multiplication by $1000$ can change the integer part afterward.* For a digit count, an enclosing interval must determine the floor, not just approximate the logarithm.
+
+**5.F.** On the interval from $1$ to $1+u$, the height $1/t$ lies between $1/(1+u)$ and $1$. Multiplying by the interval width $u$ proves the two bounds. Put $u=t/n$ and multiply by $n$:
+
+$$
+\frac{t}{1+t/n}
+\le n\ln(1+t/n)\le t.
+$$
+
+Both bounds tend to $t$, so the squeeze principle and continuity of the exponential give the claimed limit. At $t=1$,
+
+$$
+e=\lim_{n\to\infty}(1+1/n)^n.
+$$
+
+**The limit is a consequence of the logarithmic area law and its normalization.** It need not be introduced as an unexplained special number. For $t>0$, the finite-step multiplier is strictly below $e^t$, since $1/s<1$ inside the area interval except at its first endpoint.
+
+**5.G.** Since $x>0$, take logarithms:
+
+$$
+\ln y=x\ln x,\qquad
+\frac{y^{\prime}}{y}=\ln x+1.
+$$
+
+Hence
+
+$$
+\frac{d}{dx}x^x=x^x(\ln x+1).
+$$
+
+The positive factor $x^x$ leaves the derivative's sign controlled by $\ln x+1$. It is negative on $(0,e^{-1})$, zero at $e^{-1}$, and positive on $(e^{-1},\infty)$. Thus the unique global minimum is
+
+$$
+(e^{-1})^{e^{-1}}=e^{-1/e}.
+$$
+
+The derivative includes the variation of both the base and the exponent. More generally, for differentiable $u(x)>0$ and $v(x)$,
+
+$$
+\frac{d}{dx}u(x)^{v(x)}
+=u(x)^{v(x)}
+\left(v^{\prime}(x)\ln u(x)
++v(x)\frac{u^{\prime}(x)}{u(x)}\right).
+$$
+
+**Logarithmic differentiation separates the two sources of change before recombining them.**
 
 ## 6. Trigonometry and the Complex Plane
 
@@ -2406,7 +3008,25 @@ The worked examples and seven chapter-end problems have independently written so
 Both Chapter 4 SVGs are original mathematical plots. The inverse diagram distinguishes selected branches from excluded branches and uses equal coordinate scales so that reflection in $y=x$ is represented faithfully. The absolute-quadratic diagram shows four selected levels; the full classification, including negative parameters, is proved algebraically in the text.
 
 
-**Draft status:** Chapters 1–4 are written, including worked examples and chapter-end problems with solutions. Chapters 5–13 remain the agreed chapter plan.
+**Chapter 5: source map and explanatory additions**
+
+| Entry | Principal connection to [Klein][Klein] | Treatment in this reference |
+| --- | --- | --- |
+| 5.1 Extending the exponent | Part III, I.1, “Systematic Account of Algebraic Analysis,” on integer, rational, and irrational exponents and the positive-root convention; I.2 on the need to justify passages to limits. | The supremum construction and shrinking rational brackets explain the real extension using completeness. A rigorous real theory does not require complex analysis; the complex viewpoint answers additional questions about branches. |
+| 5.2 Powers and roots | Part III, I.1 and I.4, “The Standpoint of Function Theory,” on principal values and the difficulties of unrestricted powers. | Reduced rational exponents, zero and negative bases, inverse branches, and failures of nested-power rules are stated under modern real conventions. The odd-root substitution is supplementary. |
+| 5.3 Exponential functions | Part III, I.2: geometric progressions, small multiplicative steps, and the connection between difference equations and continuous exponentials. | Equal-ratio behaviour, the continuous exponential functional equation, and exponential-to-polynomial substitution supply the elementary review. No claim is made that discrete observations alone determine a continuous model. |
+| 5.4 Logarithms as inverses | Part III, I.1 on inversion; I.2 on change of normalization; I.4 on complex logarithms, periodicity, and principal values. | Real laws are derived with their argument and base conditions. The complex preview distinguishes a principal value from a continuous branch on a restricted domain; full complex-function theory is not assumed. |
+| 5.5 Linearizing multiplication and growth | Part III, I.2–3, especially the transition from rectangles to hyperbolic area and the area-preserving scaling used to derive the product law. | The area definition, normalization at $e$, and continuous-growth limit follow Klein's central connecting argument. Growth-rate comparisons, semilog and log–log coordinates, dimensionless ratios, and logarithmic derivatives are supplementary applications and calculus connections. |
+| 5.6 Approximation and numerical evaluation | Part III, I.1–2 on calculating logarithms, logarithmic and exponential series, and the distinction between formal manipulations and justified convergence. | The symmetric logarithm expansion is derived from a finite geometric identity with an explicit remainder. Range reduction, exponential tail bounds, and cancellation checks are independently supplied numerical explanations. |
+
+The seven worked examples and seven chapter-end problems have independently written solutions. The irrational-power existence proof, variable-base inequality, geometric-mean problem, multiplicative functional equation, digit count, and variable-exponent differentiation are supplementary classical material. The optional calculus problem is labelled explicitly; Chapters 10–11 provide the general foundations for the limit and differentiation results previewed here.
+
+The supplied transcription has missing equations and at least one relevant numerical error: in I.2 it prints $(1.0001)^{10000}=2.748146$. Independent evaluation gives approximately $2.718145926825225$. The value in the transcription is not reused. The history of tables motivates geometric progressions without identifying every original logarithmic system with a modern unscaled $\log_a x$.
+
+The two SVGs are original mathematical plots. The hyperbola diagram shows equal areas on $\lbrack 1,2\rbrack $ and $\lbrack 3,6\rbrack $, related by reciprocal horizontal and vertical scaling. The second diagram places the same exponential values on linear and logarithmic vertical scales. The decimal enclosure for $\ln2$ is checked with exact rational arithmetic; the digit-count bound for $\log_{10}2$ is checked independently.
+
+
+**Draft status:** Chapters 1–5 are written, including worked examples and chapter-end problems with solutions. Chapters 6–13 remain the agreed chapter plan.
 
 
 [Klein]: <../../../../todos/_10_materials/HistoryOfMathematics/Elementary Mathematics from an Advanced Standpoint Arithmetic, Algebra, Analysis (Felix Klein) (z-library.sk, 1lib.sk, z-lib.sk)/Elementary Mathematics from an Advanced Standpoint Arithmetic, Algebra, Analysis (Felix Klein) (z-library.sk, 1lib.sk, z-lib.sk).md>
