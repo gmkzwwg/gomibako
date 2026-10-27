@@ -22,7 +22,7 @@ Since around the turn of the century literary studies has turned against the “
 
 #### The similarity between Literary Theory and philosophy
 
-- Asking fundamental questions.
+* Asking fundamental questions.
 * Building systems.
 * Focus on Human Experience.
 * Both rely on theoretical frameworks to explain phenomena.

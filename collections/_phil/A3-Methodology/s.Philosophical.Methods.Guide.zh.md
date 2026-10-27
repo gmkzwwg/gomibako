@@ -1,7 +1,7 @@
 ---
 title: "A Guide to Philosophical Methods"
 layout: slide-linear
-categories: Sheet
+categories: Notes
 subclass: Methodology
 ---
 

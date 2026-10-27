@@ -5,6 +5,157 @@ categories: Atlas
 subclass: Basics
 ---
 
+# Foundation
+
+**Literary Studies** examines literary works as artistic, linguistic, historical, philosophical, and social phenomena. Its research encompasses literary form and language, interpretation and aesthetic experience, historical development, textual transmission, and the institutions through which literature is produced and received.
+
+The following thirteen fields are organised into six areas according to their primary research concerns. These divisions are not mutually exclusive: several fields share concepts, methods, and objects of study.
+
+## I. Theoretical Foundations
+
+This area investigates the nature of literature, the principles of literary construction, and the philosophical basis of artistic value.
+
+| Field | Central Concern | Key Research Questions | Core Concepts |
+|---|---|---|---|
+| **Literary Theory** | The conceptual frameworks used to understand literature, meaning, representation, and cultural power. | What constitutes literature? How is literary meaning produced? How do language, ideology, and social structures shape texts? | Formalism, structuralism, poststructuralism, Marxism, feminism, psychoanalysis |
+| **Poetics** | The principles, conventions, and formal structures through which literary works are constructed. | What makes a literary work a coherent artistic construction? How do form and content interact? What conventions govern literary composition? | Literary form, composition, convention, defamiliarisation, formal unity, narrative poetics |
+| **Literary Aesthetics** | The nature of literary art, aesthetic experience, and artistic value. | What makes literature aesthetically valuable? How do literary works produce aesthetic pleasure or emotional engagement? What distinguishes artistic merit from personal preference? | Aesthetic experience, beauty, the sublime, artistic value, aesthetic judgement |
+
+### Recommended Readings
+
+**Literary Theory**
+1. **Peter Barry — *Beginning Theory: An Introduction to Literary and Cultural Theory* (4th ed., 2017).** A comprehensive introductory textbook covering major theoretical schools, their concepts, and practical applications.
+2. **Jonathan Culler — *Literary Theory: A Very Short Introduction* (2nd ed., 2011).** A concise conceptual introduction to literature, language, interpretation, narrative, and identity.
+3. **Lois Tyson — *Critical Theory Today: A User-Friendly Guide* (4th ed., 2023).** A modern, application-oriented textbook explaining major critical approaches through analyses of literary works.
+
+**Poetics**
+1. **Aristotle — *Poetics* (4th century BCE; translated by Malcolm Heath, Penguin Classics, 1996).** A foundational treatment of artistic imitation, tragedy, plot, character, and the organisation of dramatic action.
+2. **Jonathan Culler — *Structuralist Poetics: Structuralism, Linguistics and the Study of Literature* (1975; 2nd ed., 2002).** A major theoretical account of literary conventions, literary competence, and the structural principles of literary forms.
+3. **Shlomith Rimmon-Kenan — *Narrative Fiction: Contemporary Poetics* (2nd ed., 2002).** A systematic study of narrative fiction through events, characters, time, focalisation, narration, and reading.
+
+**Literary Aesthetics**
+1. **Monroe C. Beardsley — *Aesthetics: Problems in the Philosophy of Criticism* (1958; 2nd ed., 1981).** A foundational work in analytic aesthetics addressing artistic value, aesthetic experience, and critical judgement.
+2. **Peter Lamarque — *The Philosophy of Literature* (2008).** A systematic examination of literary value, interpretation, fiction, authorship, and the philosophical significance of literature.
+3. **Eileen John and Dominic McIver Lopes, eds. — *The Philosophy of Literature: Contemporary and Classic Readings* (2004).** An anthology combining foundational and modern philosophical discussions of fiction, interpretation, emotion, metaphor, and literary value.
+
+## II. Literary Form and Expression
+
+This area examines the identifiable structures and techniques through which literary works organise material and achieve their effects.
+
+| Field | Central Concern | Key Research Questions | Core Concepts |
+|---|---|---|---|
+| **Genre Theory** | The conventions, classification, development, and transformation of literary genres. | What defines a genre? How do works conform to or challenge genre conventions? How do genres emerge, interact, and evolve? | Genre, subgenre, generic conventions, hybridity, genre expectations |
+| **Narratology** | The structures and mechanisms through which stories are narrated, represented, and understood. | Who narrates, and through whose perspective are events presented? How are narrative time and information organised? How do narrative structures influence interpretation? | Story and discourse, narrator, focalisation, narrative time, narrative levels, unreliable narration |
+| **Stylistics** | The linguistic features of texts and their contribution to meaning and literary effects. | How do vocabulary, syntax, and discourse patterns shape interpretation? How are character voices and consciousness represented? What linguistic features distinguish an author's style? | Diction, syntax, register, foregrounding, modality, metaphor, speech and thought presentation |
+
+### Recommended Readings
+
+**Genre Theory**
+1. **Alastair Fowler — *Kinds of Literature: An Introduction to the Theory of Genres and Modes* (1982).** A classic study of literary genres, modes, conventions, and their historical transformations.
+2. **John Frow — *Genre* (2nd ed., 2015).** A comprehensive modern introduction treating genres as dynamic systems that organise communication, interpretation, and cultural expectations.
+
+**Narratology**
+1. **Gérard Genette — *Narrative Discourse: An Essay in Method* (English translation, 1980).** A foundational structuralist analysis of narrative time, mood, voice, and the relationships between story and narrative discourse.
+2. **Shlomith Rimmon-Kenan — *Narrative Fiction: Contemporary Poetics* (2nd ed., 2002).** A systematic introductory framework for analysing fictional narrative, particularly useful for the study of novels.
+3. **H. Porter Abbott — *The Cambridge Introduction to Narrative* (3rd ed., 2020).** A modern textbook covering classical narratology alongside later developments in narrative theory and interpretation.
+
+**Stylistics**
+1. **Geoffrey Leech and Mick Short — *Style in Fiction: A Linguistic Introduction to English Fictional Prose* (2nd ed., 2007).** A foundational textbook demonstrating how linguistic analysis explains stylistic effects in novels and short stories.
+2. **Paul Simpson — *Stylistics: A Resource Book for Students* (3rd ed., 2026).** A comprehensive modern textbook covering linguistic structures, narrative style, point of view, speech and thought presentation, cognitive stylistics, and corpus methods.
+3. **Michael Burke, ed. — *The Routledge Handbook of Stylistics* (2nd ed., 2023).** An advanced reference covering established and contemporary approaches, including cognitive, corpus-based, pragmatic, and multimodal stylistics.
+
+## III. Interpretation and Reception
+
+This area examines how literary meaning is understood, how readers participate in interpretation, and how reception changes across contexts.
+
+| Field | Central Concern | Key Research Questions | Core Concepts |
+|---|---|---|---|
+| **Hermeneutics** | The philosophical conditions and processes of textual understanding and interpretation. | How is interpretation possible? How do prior assumptions and historical circumstances influence understanding? How can competing interpretations be justified? | Hermeneutic circle, pre-understanding, historical situatedness, fusion of horizons |
+| **Reception Theory** | The reception, interpretation, and evaluation of literature by readers and audiences across different contexts. | How do readers' expectations shape interpretation? How do textual gaps invite reader participation? Why does a work's reception change across historical periods? | Horizon of expectations, implied reader, interpretive gaps, reception history, reader response |
+
+### Recommended Readings
+
+**Hermeneutics**
+1. **Hans-Georg Gadamer — *Truth and Method* (1960; English translation, 1975; 2nd revised English ed., 1989).** A foundational work of philosophical hermeneutics examining historical understanding, tradition, prejudice, and the fusion of horizons.
+2. **Lawrence K. Schmidt — *Understanding Hermeneutics* (2006).** An accessible introduction tracing the development of modern hermeneutics through its major philosophers and conceptual debates.
+3. **Michael N. Forster and Kristin Gjesdal, eds. — *The Cambridge Companion to Hermeneutics* (2019).** A comprehensive scholarly collection examining the history and contemporary applications of hermeneutics across philosophy and the humanities.
+
+**Reception Theory**
+1. **Wolfgang Iser — *The Act of Reading: A Theory of Aesthetic Response* (English translation, 1978).** A foundational account of the reading process, textual indeterminacy, and the interaction between text and reader.
+2. **Hans Robert Jauss — *Toward an Aesthetic of Reception* (English translation, 1982).** A foundational formulation of reception aesthetics, particularly the historical role of readers' expectations in literary interpretation and evaluation.
+3. **Robert C. Holub — *Reception Theory: A Critical Introduction* (1984).** A systematic introduction to the origins, major theorists, competing models, and intellectual context of reception theory.
+
+These three works establish the classical foundations of reception theory. They should be supplemented by recent scholarship when studying contemporary empirical reader-response research and reception across digital media.
+
+## IV. Historical and Comparative Studies
+
+This area situates literary works within historical developments and examines relationships among different literary traditions.
+
+| Field | Central Concern | Key Research Questions | Core Concepts |
+|---|---|---|---|
+| **Literary History** | The historical development of literary forms, movements, traditions, and institutions. | How have literary forms and conventions changed over time? How do historical events and intellectual movements influence literature? How are literary periods and canons established? | Literary periods, movements, traditions, periodisation, canon formation, historical change |
+| **Comparative Literature** | Literary relationships across languages, cultures, national traditions, and artistic media. | How do literary works and traditions influence one another? How are themes and forms transformed across cultures? What changes when literature is translated or adapted? | Intertextuality, literary influence, translation, adaptation, world literature, cross-cultural comparison |
+
+### Recommended Readings
+
+**Literary History**
+1. **John Sutherland — *A Little History of Literature* (2013).** An accessible historical overview introducing major literary works, writers, developments, and changing conceptions of literature across different periods.
+2. **Stephen Greenblatt et al., eds. — *The Norton Anthology of English Literature* (11th ed., 2024).** A comprehensive collection of primary texts and historical introductions tracing the development of English literature from its early traditions to the present.
+3. **Robert L. Caserio and Clement Hawes, eds. — *The Cambridge History of the English Novel* (2012).** A scholarly history of the English novel that emphasises changes in narrative form, literary techniques, and the development of fictional traditions.
+
+**Comparative Literature**
+1. **David Damrosch — *What Is World Literature?* (2003).** An influential study of how literary works circulate, acquire new meanings, and enter different cultural contexts through translation and reception.
+2. **David Damrosch, Natalie Melas, and Mbongiseni Buthelezi, eds. — *The Princeton Sourcebook in Comparative Literature: From the European Enlightenment to the Global Present* (2009).** An extensive collection of foundational and modern writings on the history, methods, and purposes of comparative literature.
+3. **Ben Hutchinson — *Comparative Literature: A Very Short Introduction* (2018).** A concise modern overview of comparative literary studies, their intellectual history, research methods, and contemporary debates.
+
+## V. Texts and Literary Institutions
+
+This area studies the textual, material, and social conditions through which literary works are preserved, circulated, and made available to readers.
+
+| Field | Central Concern | Key Research Questions | Core Concepts |
+|---|---|---|---|
+| **Philology and Textual Scholarship** | The historical study of language, textual transmission, manuscripts, editions, and textual authenticity. | How can a reliable text be established from different manuscripts or editions? How have texts changed through transmission? How do historical linguistic features affect interpretation? | Philology, textual criticism, manuscripts, critical editions, textual variants, textual transmission |
+| **Sociology of Literature and Book History** | The social, institutional, economic, and material conditions of literary production, circulation, and consumption. | How do publishers, markets, institutions, and technologies shape literature? Who determines which works are published and recognised? How do books reach different reading communities? | Literary field, cultural production, publishing history, authorship, readership, literary institutions |
+
+### Recommended Readings
+
+**Philology and Textual Scholarship**
+1. **David C. Greetham — *Textual Scholarship: An Introduction* (1994).** A systematic introduction to bibliography, palaeography, textual criticism, manuscript studies, and scholarly editing.
+2. **Neil Fraistat and Julia Flanders, eds. — *The Cambridge Companion to Textual Scholarship* (2013).** A modern collection examining editorial theory, textual transmission, material texts, and the implications of digital scholarship.
+
+**Sociology of Literature and Book History**
+1. **Raymond Williams — *The Long Revolution* (1961).** A foundational work in cultural materialism exploring the relationships among literature, culture, communication, education, and social change.
+2. **Pierre Bourdieu — *The Rules of Art: Genesis and Structure of the Literary Field* (French original, 1992; English translation, 1996).** A major sociological analysis of literary production, cultural authority, artistic autonomy, and the relationships among writers, institutions, and markets.
+3. **Leslie Howsam, ed. — *The Cambridge Companion to the History of the Book* (2014).** A comprehensive introduction to the material history of books, publishing, textual circulation, reading practices, and methods of book-historical research.
+
+## VI. Critical Practice
+
+This area concerns the systematic interpretation and evaluation of individual literary works through textual analysis and critical argument.
+
+| Field | Central Concern | Key Research Questions | Core Concepts |
+|---|---|---|---|
+| **Literary Criticism** | The analysis, interpretation, and evaluation of literary works using textual evidence and critical methods. | How does a particular work achieve its literary effects? Which interpretations are best supported by the text? What are its artistic achievements, contradictions, and limitations? | Close reading, textual analysis, interpretation, critical argument, textual evidence, evaluation |
+
+### Recommended Readings
+
+**Literary Criticism**
+1. **Terry Eagleton — *How to Read Literature* (2013).** A practical introduction to close reading through detailed examinations of openings, characterisation, narrative, interpretation, and literary value.
+2. **Lois Tyson — *Using Critical Theory: How to Read and Write About Literature* (4th ed., 2025).** A modern application-oriented textbook showing how different critical theories can be used to interpret literary texts and construct written arguments.
+3. **Dan Sinykin and Johanna Winant, eds. — *Close Reading for the Twenty-First Century* (2025).** A contemporary guide to close reading, combining methodological explanation, examples of scholarly analysis, and structured exercises in critical argumentation.
+
+## Recommended Learning Sequence
+
+| Stage | Areas | Learning Priorities | Suggested Core Texts |
+|---|---|---|---|
+| **1. Theoretical Foundations** | I | Literary form, theoretical approaches, aesthetic value, and the distinction between description, interpretation, and evaluation. | Barry, *Beginning Theory*; Lamarque, *The Philosophy of Literature* |
+| **2. Form and Expression** | II | Genre conventions, narrative structure, narrator, focalisation, linguistic style, and literary techniques. | Rimmon-Kenan, *Narrative Fiction*; Simpson, *Stylistics*; Frow, *Genre* |
+| **3. Interpretation and Reception** | III | Hermeneutic principles, reader participation, interpretive uncertainty, and historical changes in reception. | Schmidt, *Understanding Hermeneutics*; Holub, *Reception Theory* |
+| **4. Historical and Comparative Studies** | IV | Literary periodisation, movements, traditions, intertextuality, translation, and cross-cultural comparison. | Sutherland, *A Little History of Literature*; Hutchinson, *Comparative Literature* |
+| **5. Textual and Social Foundations** | V | Manuscripts, textual variants, publishing history, literary institutions, and the social organisation of literature. | Fraistat and Flanders, *The Cambridge Companion to Textual Scholarship*; Howsam, *The Cambridge Companion to the History of the Book* |
+| **Throughout** | VI | Close reading, evidence-based interpretation, comparative analysis, and critical evaluation. | Eagleton, *How to Read Literature*; Sinykin and Winant, *Close Reading for the Twenty-First Century* |
+
+**For the systematic study of novels**, the most immediately applicable fields are Poetics, Genre Theory, Narratology, and Stylistics. These provide the concepts needed to analyse narrative construction, perspective, information control, characterisation, and language. Literary Theory, Hermeneutics, and Literary Criticism support the interpretation and evaluation of those formal features; the remaining fields supply historical, comparative, textual, and institutional perspectives when the research question requires them.
+
 # English
 
 ## A Foundational Curriculum

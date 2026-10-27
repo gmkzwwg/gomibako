@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="610" viewBox="0 0 960 610" role="img" aria-labelledby="title desc">
+<title id="title">A coloring invariant for the mutilated chessboard</title>
+<desc id="desc">Two diagonally opposite dark corners are removed from an eight by eight board. Thirty dark and thirty-two light squares remain. Every domino covering edge-adjacent squares contains one square of each color, so no domino tiling exists.</desc>
+<rect width="960" height="610" fill="white"/>
+<g font-family="DejaVu Sans, sans-serif">
+<text x="35" y="40" font-size="26" fill="#172a3a" font-weight="bold" text-anchor="start">A coloring invariant rules out the tiling</text>
+<text x="35" y="71" font-size="16" fill="#536777" font-weight="normal" text-anchor="start">An 8 × 8 board with two diagonally opposite corners removed.</text>
+<rect x="57" y="132" width="40" height="40" rx="0" fill="#fff8f4" stroke="#b75e43" stroke-width="1.3" stroke-dasharray="4 3"/>
+<line x1="68" y1="143" x2="86" y2="161" stroke="#b75e43" stroke-width="2"/>
+<line x1="86" y1="143" x2="68" y2="161" stroke="#b75e43" stroke-width="2"/>
+<rect x="99" y="130" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="130" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="130" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="130" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="130" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="130" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="363" y="130" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="55" y="174" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="99" y="174" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="174" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="174" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="174" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="174" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="174" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="363" y="174" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="55" y="218" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="99" y="218" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="218" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="218" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="218" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="218" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="218" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="363" y="218" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="55" y="262" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="99" y="262" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="262" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="262" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="262" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="262" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="262" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="363" y="262" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="55" y="306" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="99" y="306" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="306" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="306" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="306" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="306" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="306" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="363" y="306" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="55" y="350" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="99" y="350" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="350" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="350" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="350" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="350" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="350" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="363" y="350" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="55" y="394" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="99" y="394" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="394" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="394" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="394" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="394" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="394" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="363" y="394" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="55" y="438" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="99" y="438" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="143" y="438" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="187" y="438" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="231" y="438" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="275" y="438" width="44" height="44" rx="0" fill="#2374ab" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="319" y="438" width="44" height="44" rx="0" fill="#eaf2f7" stroke="#b7c9d6" stroke-width="1.3" />
+<rect x="365" y="440" width="40" height="40" rx="0" fill="#fff8f4" stroke="#b75e43" stroke-width="1.3" stroke-dasharray="4 3"/>
+<line x1="376" y1="451" x2="394" y2="469" stroke="#b75e43" stroke-width="2"/>
+<line x1="394" y1="451" x2="376" y2="469" stroke="#b75e43" stroke-width="2"/>
+<text x="231" y="517" font-size="15" fill="#536777" font-weight="normal" text-anchor="middle">Opposite corners have the same color.</text>
+<text x="480" y="144" font-size="21" fill="#172a3a" font-weight="bold" text-anchor="start">Every domino contributes</text>
+<rect x="480" y="170" width="60" height="60" rx="0" fill="#2374ab" stroke="#536777" stroke-width="1.3" />
+<rect x="540" y="170" width="60" height="60" rx="0" fill="#eaf2f7" stroke="#536777" stroke-width="1.3" />
+<text x="625" y="196" font-size="19" fill="#172a3a" font-weight="bold" text-anchor="start">1 dark + 1 light</text>
+<text x="625" y="222" font-size="16" fill="#536777" font-weight="normal" text-anchor="start">Color difference: 0</text>
+<text x="480" y="278" font-size="19" fill="#172a3a" font-weight="bold" text-anchor="start">After removing the two corners</text>
+<rect x="480" y="296" width="185" height="90" rx="8" fill="#2374ab" />
+<rect x="690" y="296" width="185" height="90" rx="8" fill="#eaf2f7" />
+<text x="572.5" y="331" font-size="16" fill="white" font-weight="normal" text-anchor="middle">Dark squares</text>
+<text x="572.5" y="370" font-size="31" fill="white" font-weight="bold" text-anchor="middle">30</text>
+<text x="782.5" y="331" font-size="16" fill="#172a3a" font-weight="normal" text-anchor="middle">Light squares</text>
+<text x="782.5" y="370" font-size="31" fill="#172a3a" font-weight="bold" text-anchor="middle">32</text>
+<text x="480" y="429" font-size="23" fill="#172a3a" font-weight="bold" text-anchor="start">Dark − light = −2</text>
+<text x="480" y="461" font-size="16" fill="#536777" font-weight="normal" text-anchor="start">Every union of dominoes has difference 0.</text>
+<rect x="35" y="550" width="890" height="39" rx="8" fill="#eaf2f7" />
+<text x="480" y="576" font-size="18" fill="#172a3a" font-weight="bold" text-anchor="middle">Equal area does not remove a color imbalance.</text>
+</g>
+</svg>

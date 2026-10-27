@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="590" viewBox="0 0 960 590" role="img" aria-labelledby="title desc">
+<title id="title">Group weights and Simpson reversal</title>
+<desc id="desc">Algorithm A succeeds in nine of ten easy tasks and thirty of one hundred hard tasks. Algorithm B succeeds in eighty of one hundred easy tasks and two of ten hard tasks. A has the higher rate in each group, but its pooled rate is thirty-nine over one hundred ten, below B at eighty-two over one hundred ten. Equal weighting of easy and hard tasks instead gives sixty percent for A and fifty percent for B.</desc>
+<rect width="960" height="100%" fill="white"/>
+<g font-family="DejaVu Sans, sans-serif">
+<text x="35.000" y="38.000" font-size="24" fill="#172a3a" text-anchor="start" font-weight="bold">A higher rate in each group, a lower pooled rate</text>
+<text x="35.000" y="67.000" font-size="15" fill="#536777" text-anchor="start" font-weight="normal">Constructed task data; all panels use the same percentage scale.</text>
+<rect x="38.000" y="84.000" width="16.000" height="16.000" rx="0" fill="#2374ab"/>
+<text x="64.000" y="98.000" font-size="14" fill="#2374ab" text-anchor="start" font-weight="normal">Algorithm A</text>
+<rect x="235.000" y="84.000" width="16.000" height="16.000" rx="0" fill="#7651b5"/>
+<text x="261.000" y="98.000" font-size="14" fill="#7651b5" text-anchor="start" font-weight="normal">Algorithm B</text>
+<text x="177.000" y="137.000" font-size="18" fill="#172a3a" text-anchor="middle" font-weight="bold">Easy tasks</text>
+<line x1="65.000" y1="408.000" x2="295.000" y2="408.000" stroke="#dce5ec" stroke-width="1"/>
+<text x="55.000" y="412.000" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">0%</text>
+<line x1="65.000" y1="349.250" x2="295.000" y2="349.250" stroke="#dce5ec" stroke-width="1"/>
+<text x="55.000" y="353.250" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">25%</text>
+<line x1="65.000" y1="290.500" x2="295.000" y2="290.500" stroke="#dce5ec" stroke-width="1"/>
+<text x="55.000" y="294.500" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">50%</text>
+<line x1="65.000" y1="231.750" x2="295.000" y2="231.750" stroke="#dce5ec" stroke-width="1"/>
+<text x="55.000" y="235.750" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">75%</text>
+<line x1="65.000" y1="173.000" x2="295.000" y2="173.000" stroke="#dce5ec" stroke-width="1"/>
+<text x="55.000" y="177.000" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">100%</text>
+<rect x="109.000" y="196.500" width="60.000" height="211.500" rx="0" fill="#2374ab"/>
+<text x="139.000" y="185.500" font-size="15" fill="#2374ab" text-anchor="middle" font-weight="bold">90%</text>
+<text x="139.000" y="431.000" font-size="14" fill="#2374ab" text-anchor="middle" font-weight="bold">A</text>
+<text x="139.000" y="454.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">9 / 10</text>
+<rect x="210.000" y="220.000" width="60.000" height="188.000" rx="0" fill="#7651b5"/>
+<text x="240.000" y="209.000" font-size="15" fill="#7651b5" text-anchor="middle" font-weight="bold">80%</text>
+<text x="240.000" y="431.000" font-size="14" fill="#7651b5" text-anchor="middle" font-weight="bold">B</text>
+<text x="240.000" y="454.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">80 / 100</text>
+<text x="487.000" y="137.000" font-size="18" fill="#172a3a" text-anchor="middle" font-weight="bold">Hard tasks</text>
+<line x1="375.000" y1="408.000" x2="605.000" y2="408.000" stroke="#dce5ec" stroke-width="1"/>
+<text x="365.000" y="412.000" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">0%</text>
+<line x1="375.000" y1="349.250" x2="605.000" y2="349.250" stroke="#dce5ec" stroke-width="1"/>
+<text x="365.000" y="353.250" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">25%</text>
+<line x1="375.000" y1="290.500" x2="605.000" y2="290.500" stroke="#dce5ec" stroke-width="1"/>
+<text x="365.000" y="294.500" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">50%</text>
+<line x1="375.000" y1="231.750" x2="605.000" y2="231.750" stroke="#dce5ec" stroke-width="1"/>
+<text x="365.000" y="235.750" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">75%</text>
+<line x1="375.000" y1="173.000" x2="605.000" y2="173.000" stroke="#dce5ec" stroke-width="1"/>
+<text x="365.000" y="177.000" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">100%</text>
+<rect x="419.000" y="337.500" width="60.000" height="70.500" rx="0" fill="#2374ab"/>
+<text x="449.000" y="326.500" font-size="15" fill="#2374ab" text-anchor="middle" font-weight="bold">30%</text>
+<text x="449.000" y="431.000" font-size="14" fill="#2374ab" text-anchor="middle" font-weight="bold">A</text>
+<text x="449.000" y="454.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">30 / 100</text>
+<rect x="520.000" y="361.000" width="60.000" height="47.000" rx="0" fill="#7651b5"/>
+<text x="550.000" y="350.000" font-size="15" fill="#7651b5" text-anchor="middle" font-weight="bold">20%</text>
+<text x="550.000" y="431.000" font-size="14" fill="#7651b5" text-anchor="middle" font-weight="bold">B</text>
+<text x="550.000" y="454.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">2 / 10</text>
+<text x="797.000" y="137.000" font-size="18" fill="#172a3a" text-anchor="middle" font-weight="bold">Pooled tasks</text>
+<line x1="685.000" y1="408.000" x2="915.000" y2="408.000" stroke="#dce5ec" stroke-width="1"/>
+<text x="675.000" y="412.000" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">0%</text>
+<line x1="685.000" y1="349.250" x2="915.000" y2="349.250" stroke="#dce5ec" stroke-width="1"/>
+<text x="675.000" y="353.250" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">25%</text>
+<line x1="685.000" y1="290.500" x2="915.000" y2="290.500" stroke="#dce5ec" stroke-width="1"/>
+<text x="675.000" y="294.500" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">50%</text>
+<line x1="685.000" y1="231.750" x2="915.000" y2="231.750" stroke="#dce5ec" stroke-width="1"/>
+<text x="675.000" y="235.750" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">75%</text>
+<line x1="685.000" y1="173.000" x2="915.000" y2="173.000" stroke="#dce5ec" stroke-width="1"/>
+<text x="675.000" y="177.000" font-size="11" fill="#536777" text-anchor="end" font-weight="normal">100%</text>
+<rect x="729.000" y="324.682" width="60.000" height="83.318" rx="0" fill="#2374ab"/>
+<text x="759.000" y="313.682" font-size="15" fill="#2374ab" text-anchor="middle" font-weight="bold">35.5%</text>
+<text x="759.000" y="431.000" font-size="14" fill="#2374ab" text-anchor="middle" font-weight="bold">A</text>
+<text x="759.000" y="454.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">39 / 110</text>
+<rect x="830.000" y="232.818" width="60.000" height="175.182" rx="0" fill="#7651b5"/>
+<text x="860.000" y="221.818" font-size="15" fill="#7651b5" text-anchor="middle" font-weight="bold">74.5%</text>
+<text x="860.000" y="431.000" font-size="14" fill="#7651b5" text-anchor="middle" font-weight="bold">B</text>
+<text x="860.000" y="454.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">82 / 110</text>
+<rect x="35.000" y="487.000" width="890.000" height="74.000" rx="9" fill="#eef3f7"/>
+<text x="480.000" y="516.000" font-size="18" fill="#172a3a" text-anchor="middle" font-weight="bold">Equal task weights: 50% easy + 50% hard → A = 60%, B = 50%</text>
+<text x="480.000" y="542.000" font-size="15" fill="#536777" text-anchor="middle" font-weight="normal">The observed pooled rates give the two algorithms different task mixtures.</text>
+</g>
+</svg>

@@ -7,8 +7,9 @@ abbreviation: Linux Basics
 toc_before_content: compact
 todos: 
   - 补完
+  - 一篇简要的文章，写这些工具都能做到什么，用来干什么，适合做什么。
+  - 然后写ch的标准是，如果熟练使用这些工具，应该会哪些操作。
 ---
-
 
 ## Navigation & Paths
 

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650" role="img" aria-labelledby="title desc">
+<title id="title">Bayes rule for a hypothetical inspection</title>
+<desc id="desc">A model gives one percent defective items, a ninety-five percent flag rate for defective items and a five percent flag rate for sound items. In expected frequencies per ten thousand items, ninety-five defective and four hundred ninety-five sound items are flagged. The posterior defect probability given a flag is ninety-five divided by five hundred ninety, or about sixteen point one percent. Counts are expectations under the model, not observed batch totals.</desc>
+<rect width="960" height="100%" fill="white"/>
+<g font-family="DejaVu Sans, sans-serif">
+<text x="35.000" y="38.000" font-size="25" fill="#172a3a" text-anchor="start" font-weight="bold">Follow both routes to a flag</text>
+<text x="35.000" y="67.000" font-size="15" fill="#536777" text-anchor="start" font-weight="normal">Hypothetical inspection model; counts below are expectations per 10 000 items.</text>
+<line x1="205.000" y1="309.000" x2="325.000" y2="172.000" stroke="#2374ab" stroke-width="2"/>
+<line x1="205.000" y1="309.000" x2="325.000" y2="427.000" stroke="#17877d" stroke-width="2"/>
+<text x="227.000" y="214.000" font-size="16" fill="#2374ab" text-anchor="start" font-weight="bold">0.01</text>
+<text x="232.000" y="388.000" font-size="16" fill="#17877d" text-anchor="start" font-weight="bold">0.99</text>
+<line x1="495.000" y1="172.000" x2="680.000" y2="120.000" stroke="#b66d0c" stroke-width="2"/>
+<line x1="495.000" y1="172.000" x2="680.000" y2="255.000" stroke="#536777" stroke-width="2"/>
+<line x1="495.000" y1="427.000" x2="680.000" y2="385.000" stroke="#b66d0c" stroke-width="2"/>
+<line x1="495.000" y1="427.000" x2="680.000" y2="520.000" stroke="#536777" stroke-width="2"/>
+<text x="535.000" y="129.000" font-size="15" fill="#b66d0c" text-anchor="start" font-weight="bold">0.95</text>
+<text x="535.000" y="238.000" font-size="15" fill="#536777" text-anchor="start" font-weight="normal">0.05</text>
+<text x="535.000" y="376.000" font-size="15" fill="#b66d0c" text-anchor="start" font-weight="bold">0.05</text>
+<text x="535.000" y="500.000" font-size="15" fill="#536777" text-anchor="start" font-weight="normal">0.95</text>
+<rect x="35.000" y="267.000" width="170.000" height="84.000" rx="9" fill="#eef3f7"/>
+<text x="120.000" y="302.000" font-size="18" fill="#172a3a" text-anchor="middle" font-weight="bold">10 000 items</text>
+<text x="120.000" y="328.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">prior population</text>
+<rect x="325.000" y="135.000" width="170.000" height="74.000" rx="9" fill="#eef6f8" stroke="#2374ab" stroke-width="1.6"/>
+<text x="410.000" y="164.000" font-size="17" fill="#2374ab" text-anchor="middle" font-weight="bold">Defective</text>
+<text x="410.000" y="190.000" font-size="18" fill="#2374ab" text-anchor="middle" font-weight="normal">100</text>
+<rect x="325.000" y="390.000" width="170.000" height="74.000" rx="9" fill="#eef6f8" stroke="#17877d" stroke-width="1.6"/>
+<text x="410.000" y="419.000" font-size="17" fill="#17877d" text-anchor="middle" font-weight="bold">Sound</text>
+<text x="410.000" y="445.000" font-size="18" fill="#17877d" text-anchor="middle" font-weight="normal">9900</text>
+<rect x="680.000" y="85.000" width="245.000" height="70.000" rx="9" fill="#fff4e1" stroke="#b66d0c" stroke-width="1.6"/>
+<text x="802.500" y="113.000" font-size="17" fill="#b66d0c" text-anchor="middle" font-weight="bold">Flagged: 95</text>
+<text x="802.500" y="138.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">0.01 × 0.95 = 0.0095</text>
+<rect x="680.000" y="220.000" width="245.000" height="70.000" rx="9" fill="#f2f5f7"/>
+<text x="802.500" y="248.000" font-size="17" fill="#172a3a" text-anchor="middle" font-weight="bold">Not flagged: 5</text>
+<text x="802.500" y="273.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">0.01 × 0.05 = 0.0005</text>
+<rect x="680.000" y="350.000" width="245.000" height="70.000" rx="9" fill="#fff4e1" stroke="#b66d0c" stroke-width="1.6"/>
+<text x="802.500" y="378.000" font-size="17" fill="#b66d0c" text-anchor="middle" font-weight="bold">Flagged: 495</text>
+<text x="802.500" y="403.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">0.99 × 0.05 = 0.0495</text>
+<rect x="680.000" y="485.000" width="245.000" height="70.000" rx="9" fill="#f2f5f7"/>
+<text x="802.500" y="513.000" font-size="17" fill="#172a3a" text-anchor="middle" font-weight="bold">Not flagged: 9405</text>
+<text x="802.500" y="538.000" font-size="13" fill="#536777" text-anchor="middle" font-weight="normal">0.99 × 0.95 = 0.9405</text>
+<rect x="35.000" y="585.000" width="890.000" height="44.000" rx="8" fill="#eef3f7"/>
+<text x="480.000" y="613.000" font-size="19" fill="#172a3a" text-anchor="middle" font-weight="bold">P(defective | flagged) = 95 / (95 + 495) = 19 / 118 ≈ 16.1%</text>
+</g>
+</svg>
