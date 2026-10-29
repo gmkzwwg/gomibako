@@ -9,6 +9,8 @@ toc_depth: 2
 
 This reference connects elementary review with the wider mathematics that explains familiar rules. It supports two uses: recovering essential knowledge quickly and understanding why the methods work, where their assumptions enter, and how they connect to other subjects.
 
+For guided review, the [graded practice collection](#14-a-graded-practice-collection) organizes 65 problems by subject and difficulty, with an approach and solution immediately below each.
+
 The organizing thread is the passage between numbers, symbols, geometry, functions, and approximation. An advanced standpoint should explain an elementary operation, expose its assumptions, or connect it to another problem. More specialized results appear as short, clearly identified extensions.
 
 ## 1. Numbers, Operations, and Measurement
@@ -8747,7 +8749,978 @@ For $c_i=1$ and $w_i=\sigma_i^2$, these coefficients sum to one and minimize the
 
 **A sharp inequality and a constrained minimum are two forms of the same geometric statement.** Rescaling by $\sqrt{w_i}$ identifies the relevant direction, while the equality condition constructs the optimal coefficients.
 
-## 14. Sources, Scope, and Editorial Notes
+## 14. A Graded Practice Collection
+
+What can you recall without looking, and what can you reconstruct when memory fails? These 65 problems turn the reference into a practice route. Each of the thirteen groups follows a subject chapter and moves from basic operations to a classical argument or a connection with more advanced mathematics.
+
+The five levels are **1 — Recall**, **2 — Apply**, **3 — Reason**, **4 — Connect**, and **5 — Challenge**. Difficulty is relative to the subject: a calculus recall problem still requires calculus. **Begin with Levels 1–2 in the subjects you are reviewing; move upward when you can calculate independently and explain the conditions.** Groups J and K can wait until Chapters 10–11. The challenge problems are extensions, not an entrance examination for further study.
+
+Each problem is followed immediately by an **Approach** and a **Solution**. The approach identifies the main idea; the solution supplies the calculation or proof, including domain restrictions, equality cases, and checks where they matter. Read them together to recover both the rule and its use. Routine problems deliberately revisit basic operations; later problems connect methods, establish completeness, or change the viewpoint.
+
+| Group | Subject | Review |
+| --- | --- | --- |
+| A | Numbers, fractions, ratios, and measurement | [Chapter 1](#1-numbers-operations-and-measurement) |
+| B | Divisibility and integers | [Chapter 2](#2-divisibility-congruence-and-integer-structure) |
+| C | Algebra and equations | [Chapter 3](#3-algebraic-expressions-polynomials-and-equations) |
+| D | Functions and graphs | [Chapter 4](#4-functions-graphs-and-transformations) |
+| E | Powers, logarithms, and growth | [Chapter 5](#5-powers-exponentials-and-logarithms) |
+| F | Trigonometry and complex numbers | [Chapter 6](#6-trigonometry-and-the-complex-plane) |
+| G | Geometry and coordinates | [Chapter 7](#7-geometry-coordinates-and-linear-structure) |
+| H | Inequalities and optimization | [Chapter 8](#8-inequalities-bounds-and-optimization) |
+| I | Sequences, sums, and counting | [Chapter 9](#9-sequences-finite-sums-and-counting) |
+| J | Limits and convergence | [Chapter 10](#10-limits-continuity-and-infinity) |
+| K | Calculus and approximation | [Chapter 11](#11-calculus-differential-equations-and-approximation) |
+| L | Probability and random processes | [Chapter 12](#12-probability-data-and-statistical-reasoning) |
+| M | Proof, invariants, and existence | [Chapter 13](#13-methods-proof-and-cross-topic-connections) |
+
+### 14.1 A — Numbers, Fractions, Ratios, and Measurement
+
+#### A1 — Recall: signs, brackets, and fractions
+
+Without a calculator, evaluate
+
+$$
+-3^2+(-3)^2+\left(\frac56-\frac34\right)\div\frac12.
+$$
+
+Explain why the first two terms have different signs. Then convert $1.2\ \mathrm{km}+350\ \mathrm m$ into metres, and $1.2\ \mathrm{m}^2$ into square centimetres.
+
+**Approach.** Apply the order of operations before combining fractions; convert a square unit by squaring the length factor.
+
+**Solution.** Exponentiation precedes the leading minus sign, so $-3^2=-9$, whereas $(-3)^2=9$. The fraction difference is $1/12$, and dividing it by $1/2$ multiplies it by $2$. The result is $1/6$. The length is $1200+350=1550\ \mathrm m$. Since $1\ \mathrm m=100\ \mathrm{cm}$, the area is $1.2\cdot100^2=12000\ \mathrm{cm}^2$. *A conversion factor for length must be squared when converting area.*
+
+#### A2 — Apply: reversing a percentage change
+
+A price rises by $20\%$ and then falls by $20\%$. What fraction of the original price remains? A different price falls by $20\%$: by what percentage must the reduced price rise to recover the original? Explain why the two percentages do not simply cancel.
+
+**Approach.** Represent each percentage change by a multiplier. To undo a change, find the reciprocal multiplier.
+
+**Solution.** The successive price factors are $6/5$ and $4/5$, with product $24/25=0.96$: the final price is $4\%$ below the original. After a $20\%$ decrease, the required recovery factor is $1/(4/5)=5/4$, a $25\%$ increase. **Reverse a percentage change by taking the reciprocal of its multiplier.** The bases of the percentage calculations differ.
+
+#### A3 — Reason: two workers, one job
+
+One worker completes a job in six hours and another in four hours. Assume constant rates and that their contributions add without interference. How long do they need together? Derive the formula for individual completion times $a,b>0$, and explain why neither the arithmetic mean nor the sum of the times answers the question.
+
+**Approach.** Add rates measured in jobs per hour, then invert the combined rate.
+
+**Solution.** The combined rate is $1/6+1/4=5/12$ jobs per hour. One job therefore takes $12/5$ hours, or $2$ hours $24$ minutes. In general,
+
+$$
+T=\frac1{1/a+1/b}=\frac{ab}{a+b}.
+$$
+
+A time is the reciprocal of a rate for a fixed amount of work; adding times does not add simultaneous contributions. The answer is smaller than either individual time, as it should be under the model assumptions.
+
+#### A4 — Connect: a mixture and a balance equation
+
+A $20\%$ solution and a $50\%$ solution are mixed to make $12$ litres of a $30\%$ solution. Percentages here mean volume of solute per volume of solution; assume volumes add and no solute is lost. How many litres of each are needed? Generalize to concentrations $0\le p<c<q\le1$ and final volume $V>0$. Explain the weighted-average interpretation.
+
+**Approach.** Conserve both total volume and solute volume; the concentration is a volume-weighted average.
+
+**Solution.** If $x$ litres come from the $20\%$ solution, solute balance gives $0.2x+0.5(12-x)=0.3\cdot12$. Hence $x=8$, leaving $4$ litres of the stronger solution. In general, the volumes of the $p$ and $q$ solutions are
+
+$$
+V_p=V\frac{q-c}{q-p},\qquad
+V_q=V\frac{c-p}{q-p}.
+$$
+
+They are positive, add to $V$, and satisfy $c=(V_p/V)p+(V_q/V)q$. **The desired concentration is a weighted average, with volume fractions as weights.** The additive-volume assumption is part of this mathematical model.
+
+#### A5 — Challenge: an Egyptian fraction with two terms
+
+Find every pair of positive integers $x\le y$ satisfying
+
+$$
+\frac1x+\frac1y=\frac16.
+$$
+
+Explain why your list is complete. Then replace $6$ by a positive integer $m$ and describe a procedure that finds every pair. The useful question is: can addition of reciprocals be converted into multiplication of integers?
+
+**Approach.** Clear the denominators, then complete a product. Enumerate positive factor pairs instead of guessing denominators.
+
+**Solution.** Both denominators exceed $6$, and multiplying and rearranging gives
+
+$$
+xy=6x+6y
+\quad\Longleftrightarrow\quad
+(x-6)(y-6)=36.
+$$
+
+The positive factor pairs with the first factor no larger than the second are $(1,36),(2,18),(3,12),(4,9),(6,6)$. Thus
+
+$$
+(x,y)=(7,42),(8,24),(9,18),(10,15),(12,12).
+$$
+
+For general $m$, the equation becomes $(x-m)(y-m)=m^2$, with both factors positive. Every solution with $x\le y$ is therefore
+
+$$
+x=m+d,\qquad y=m+\frac{m^2}{d},
+\qquad d\mid m^2,\quad 1\le d\le m.
+$$
+
+Conversely, each such divisor gives a solution. **A reversible factorization turns an infinite-looking search into a complete finite enumeration.**
+
+### 14.2 B — Divisibility and Integers
+
+#### B1 — Recall: prime factors, gcd, and lcm
+
+Factor $84$ and $126$ into primes. Find their greatest common divisor and least common multiple. Check the identity $\gcd(a,b)\operatorname{lcm}(a,b)=ab$ for these positive integers, and explain it using prime exponents.
+
+**Approach.** Write prime powers explicitly. For each prime, use the smaller exponent for the gcd and the larger for the lcm.
+
+**Solution.** The factorizations are $84=2^2\cdot3\cdot7$ and $126=2\cdot3^2\cdot7$. The gcd is $2\cdot3\cdot7=42$ and the lcm is $2^2\cdot3^2\cdot7=252$. Their product is $10584=84\cdot126$. For each prime, the gcd takes the minimum exponent and the lcm the maximum; their sum is the sum of the original exponents.
+
+#### B2 — Apply: large powers through small cycles
+
+Find the last decimal digit of $7^{2026}$ and the remainder of $3^{100}$ on division by $7$, without expanding either power. State the cycles you use.
+
+**Approach.** Find repeating residue cycles, then reduce the exponent modulo the cycle length.
+
+**Solution.** The powers of $7$ modulo $10$ cycle through $7,9,3,1$. Since $2026\equiv2\pmod4$, the last digit is $9$. Powers of $3$ modulo $7$ cycle through $3,2,6,4,5,1$. Since $100\equiv4\pmod6$, the remainder is $4$.
+
+#### B3 — Reason: an obstruction before a search
+
+Prove that the square of any integer is congruent to $0$ or $1$ modulo $4$. Deduce that no integers $x,y$ satisfy $x^2+y^2=4k+3$ for an integer $k$. Why does failure to find small solutions give less information than this argument?
+
+**Approach.** Separate even and odd integers. Classify the possible residues before testing any candidates.
+
+**Solution.** An even square is $4r^2$, and an odd square is $(2r+1)^2=4r(r+1)+1$. Two squares can therefore have only residues $0,1,2$ modulo $4$, never $3$. **A modular obstruction excludes every integer pair at once.** A finite unsuccessful search cannot do that without an additional bound on possible solutions.
+
+#### B4 — Connect: all integer solutions and feasible solutions
+
+Find every integer solution of $7x+11y=100$. Then impose $x,y\ge0$. Interpret the surviving solutions as combinations of coins with values $7$ and $11$ units. A complete answer must distinguish the unrestricted family from the nonnegative solutions.
+
+**Approach.** Use a congruence to obtain one variable, parametrize every integer solution, then impose nonnegativity.
+
+**Solution.** Modulo $7$, the equation gives $4y\equiv2\pmod7$, hence $y\equiv4\pmod7$. Substitution yields the complete family
+
+$$
+x=8+11t,\qquad y=4-7t,\qquad t\in\mathbb Z.
+$$
+
+Nonnegativity requires $t\ge0$ and $t\le0$, so only $(x,y)=(8,4)$ remains. It represents eight $7$-unit coins and four $11$-unit coins. *Integer solvability and feasibility under nonnegative constraints are different questions.*
+
+#### B5 — Challenge: infinitely many primes in one residue class
+
+Prove that infinitely many primes are congruent to $3$ modulo $4$. If there were only $p_1,\ldots,p_r$, investigate $N=4p_1\cdots p_r-1$. You may use prime factorization. *It is not enough to claim that $N$ itself is prime.*
+
+**Approach.** Construct a number outside the proposed list and examine its prime factors modulo four.
+
+**Solution.** The list is nonempty because $3$ is such a prime. The number $N=4p_1\cdots p_r-1>1$ is odd and is divisible by none of the listed primes. Every odd prime is $1$ or $3$ modulo $4$. If all prime factors of $N$ were $1$ modulo $4$, their product, including multiplicities, would be $1$ modulo $4$, contradicting $N\equiv3\pmod4$. Thus some prime factor is $3$ modulo $4$ and is absent from the list. This contradiction proves infinitude. **The constructed number supplies a new prime factor; it need not itself be prime.**
+
+### 14.3 C — Algebra and Equations
+
+#### C1 — Recall: identities and factorization
+
+Expand $(x+2)^2-(x-2)^2$. Factor $x^2-5x+6$ and $x^3-8$ over the integers. Check each factorization by multiplication, and identify the identity or coefficient relation used.
+
+**Approach.** Use difference of squares, the sum and product of quadratic roots, and difference of cubes.
+
+**Solution.** Expansion gives $8x$. The factorizations are
+
+$$
+x^2-5x+6=(x-2)(x-3),\qquad
+x^3-8=(x-2)(x^2+2x+4).
+$$
+
+The first uses two numbers with sum $5$ and product $6$; the second uses the difference-of-cubes identity. Multiplication recovers the original expressions for every real or complex $x$.
+
+#### C2 — Apply: cancellation can change a problem
+
+Solve over the reals:
+
+$$
+\text{(a)}\quad\frac{x^2-9}{x-3}=6,
+\qquad
+\text{(b)}\quad(x-3)(x+2)=0.
+$$
+
+For (a), retain the original domain after simplifying. For (b), explain what would be lost by dividing immediately by $x-3$.
+
+**Approach.** Record the original domain before cancellation. For a product equal to zero, consider both factors.
+
+**Solution.** In (a), $x\ne3$ and the equation simplifies to $x+3=6$, whose only candidate is the excluded value $3$. There is **no solution**. In (b), the zero-product rule gives $x=3$ or $x=-2$. Dividing by $x-3$ would discard the first solution. **Simplifying an expression does not erase the original domain.**
+
+#### C3 — Reason: squaring and checking
+
+Solve $\sqrt{x+2}=x$ over the reals. State the sign condition before squaring, list the candidates, and check them in the original equation. Identify the implication that would fail if the sign condition were dropped.
+
+**Approach.** Retain the nonnegative sign of a square root when squaring, then test the candidates.
+
+**Solution.** The equation requires $x\ge0$. Squaring gives $x^2=x+2$, or $(x-2)(x+1)=0$. Only $x=2$ satisfies the sign restriction and the original equation. At $x=-1$, the two sides are $1$ and $-1$. Squaring preserves equality but, without the sign condition, its converse fails.
+
+#### C4 — Connect: roots described by a parameter
+
+Determine all real $t$ for which
+
+$$
+x^2-2tx+t+2=0
+$$
+
+has two distinct positive real roots. Use the discriminant, the sum, and the product of the roots. What happens at the boundary value of the allowed parameter interval?
+
+**Approach.** Combine a positive discriminant with the signs of the root sum and product.
+
+**Solution.** The discriminant is $4(t-2)(t+1)$, the root sum is $2t$, and the product is $t+2$. Two distinct positive roots require and, together, are guaranteed by
+
+$$
+(t-2)(t+1)>0,\qquad 2t>0,\qquad t+2>0.
+$$
+
+The intersection is $t>2$. Indeed, positive product makes the two real roots have the same nonzero sign, and positive sum makes that sign positive. At $t=2$, the polynomial is $(x-2)^2$, so the roots coincide.
+
+#### C5 — Challenge: a radical and its polynomial
+
+Put $\alpha=\sqrt2+\sqrt3$. Find a monic polynomial with integer coefficients satisfied by $\alpha$. Prove that a rational root of any monic polynomial with integer coefficients must be an integer. Use that result, together with $3<\alpha<4$, to prove that $\alpha$ is irrational; justify the bounds as well.
+
+**Approach.** Eliminate the radicals by squaring. A denominator argument for monic integer polynomials then turns irrationality into an integer-exclusion problem.
+
+**Solution.** Since $\alpha^2=5+2\sqrt6$, we obtain $(\alpha^2-5)^2=24$, hence
+
+$$
+\alpha^4-10\alpha^2+1=0.
+$$
+
+Suppose a monic integer polynomial of degree $d\ge1$ has rational root $p/q$ in lowest terms, with $q>0$. Multiplication by $q^d$ shows that $q$ divides $p^d$. Coprimality forces $q=1$, proving the claim. For the bounds, $\sqrt6>2$ gives $\alpha^2>9$, so $\alpha>3$; and each of $\sqrt2,\sqrt3$ is less than $2$, so $\alpha<4$. A rational $\alpha$ would therefore be an integer strictly between $3$ and $4$, which is impossible. This links a familiar radical to the notion of an `algebraic integer`.
+
+### 14.4 D — Functions and Graphs
+
+#### D1 — Recall: domain and image
+
+For the real function $f(x)=\sqrt{4-x^2}$, find the largest possible domain and the image. Sketch the graph and justify that every value in the claimed image is attained.
+
+**Approach.** Require a nonnegative radicand, then solve backward to check that every proposed output occurs.
+
+**Solution.** The domain is $\lbrack-2,2\rbrack$ and the image is $\lbrack0,2\rbrack$. The graph is the upper semicircle $x^2+y^2=4$, $y\ge0$. Conversely, for every $y$ in the claimed image, $x=\sqrt{4-y^2}$ is in the domain and satisfies $f(x)=y$. **An image requires attainability as well as bounds.**
+
+#### D2 — Apply: a transformed graph
+
+Sketch $g(x)=|x-2|-1$. Find its vertex, intercepts, image, and intervals of increase and decrease. Explain the graph using translations of $y=|x|$.
+
+**Approach.** Translate the absolute-value graph, then read its two linear branches.
+
+**Solution.** Move the graph of $|x|$ two units right and one unit down. Its vertex is $(2,-1)$; its horizontal intercepts are $(1,0),(3,0)$, and its vertical intercept is $(0,1)$. The image is $\lbrack-1,\infty)$, and the function is strictly decreasing on $(-\infty,2\rbrack$ and strictly increasing on $\lbrack2,\infty)$.
+
+#### D3 — Reason: solving backward
+
+Let $f(x)=(2x-1)/(x+3)$ on $\mathbb R\setminus\lbrace-3\rbrace$. Determine its image and its inverse, including the inverse's domain. Verify one composition directly. Why does solving for $x$ also prove that the proposed image is complete?
+
+**Approach.** Solve the output equation for the input. Check excluded values and verify the resulting inverse.
+
+**Solution.** Rearrangement gives $(2-y)x=1+3y$. The value $y=2$ would require $0=7$, and every $y\ne2$ gives
+
+$$
+g(y)=\frac{1+3y}{2-y}.
+$$
+
+Moreover $g(y)+3=7/(2-y)\ne0$, so this input is permitted. Direct substitution gives $f(g(y))=y$ for $y\ne2$; solving the same linear equation also shows its uniqueness. Thus the image is $\mathbb R\setminus\lbrace2\rbrace$ and $f^{-1}=g$ on that set. Exclusion, construction, and uniqueness together establish the inverse.
+
+#### D4 — Connect: counting roots after a substitution
+
+For every real $a$, determine the number of distinct real solutions of
+
+$$
+x^2-a|x|+1=0.
+$$
+
+Use $u=|x|$, but retain the restriction on $u$. Explain why a nonnegative discriminant alone does not settle the original problem.
+
+**Approach.** Replace absolute value by a nonnegative variable and classify the signs of the substituted roots.
+
+**Solution.** The substituted equation is $u^2-au+1=0$ with $u\ge0$. Its product of roots is $1$, so any real roots have the same sign and are never zero. For $a<2$ there are no permitted roots: if $-2<a<2$ the roots are nonreal, and if $a\le-2$ they are negative. At $a=2$, $u=1$ gives two distinct solutions $x=\pm1$. For $a>2$, both quadratic roots are distinct and positive, giving four distinct solutions
+
+$$
+x=\pm\frac{a+\sqrt{a^2-4}}2,
+\qquad
+x=\pm\frac{a-\sqrt{a^2-4}}2.
+$$
+
+**A substitution carries a range restriction as well as an algebraic equation.**
+
+#### D5 — Challenge: a function that reverses its own action
+
+Suppose $f:\mathbb R\to\mathbb R$ satisfies $f(f(x))=x$ for every real $x$. Prove that $f$ is both injective and surjective. If it is strictly increasing, prove that $f(x)=x$ everywhere. Finally, construct a continuous, strictly decreasing example that is not affine, and verify the identity. This extends the concrete inverse examples of Chapter 4.
+
+**Approach.** Use the defining identity twice to prove bijectivity. Compare ordered inputs for the increasing case; join two reciprocal negative slopes for a decreasing example.
+
+**Solution.** If $f(a)=f(b)$, applying $f$ gives $a=b$, so $f$ is injective. Every $y$ equals $f(f(y))$, so it is surjective. If $f$ is strictly increasing and $f(x)>x$, applying $f$ gives $x=f(f(x))>f(x)$, a contradiction; the case $f(x)<x$ similarly contradicts itself. Thus $f(x)=x$ everywhere. A decreasing example is
+
+$$
+f(x)=
+\begin{cases}
+-2x,&x\ge0,\\
+-x/2,&x<0.
+\end{cases}
+$$
+
+Both branches meet at zero, the whole function is strictly decreasing, and applying the opposite branch on the second application gives $f(f(x))=x$. Its two slopes differ, so it is not affine. *Being its own inverse does not force a function to be the identity; order matters.*
+
+### 14.5 E — Powers, Logarithms, and Growth
+
+#### E1 — Recall: negative and fractional powers
+
+Evaluate $16^{-3/4}$ and $\sqrt{(-5)^2}$. For nonzero real $a,b$, simplify
+
+$$
+\frac{(a^3b^{-2})^2}{ab^{-1}}.
+$$
+
+Name the power laws used and explain the sign of the square root.
+
+**Approach.** Interpret a negative exponent as a reciprocal and a fractional exponent through a positive root. Track exponents under products and quotients.
+
+**Solution.** The values are $16^{-3/4}=1/(16^{1/4})^3=1/8$ and $\sqrt{(-5)^2}=|-5|=5$. The symbolic expression is $a^6b^{-4}/(ab^{-1})=a^5/b^3$. Integer power laws permit these manipulations for nonzero real $a,b$. A real square root denotes the nonnegative root.
+
+#### E2 — Apply: a logarithmic equation
+
+Solve
+
+$$
+\log_3(x-2)+\log_3x=1.
+$$
+
+State the domain before combining the logarithms. Why is solving the resulting quadratic without returning to that domain insufficient?
+
+**Approach.** State both logarithm domains before using the product law, then retain only admissible quadratic roots.
+
+**Solution.** The domain is $x>2$. Combining logarithms gives $\log_3(x(x-2))=1$, hence $x^2-2x-3=0$. The candidates are $3$ and $-1$, of which only $3$ is permitted. Although the product $x(x-2)$ is also positive at $-1$, the two original logarithms are not real there.
+
+#### E3 — Reason: a positive substitution
+
+Solve $4^x-2^x-2=0$ for real $x$. Use $u=2^x$, retain its range, and explain why one algebraic root does not correspond to a real $x$.
+
+**Approach.** Turn the exponential equation into a quadratic using a substitution whose values are strictly positive.
+
+**Solution.** With $u=2^x>0$, the equation becomes $u^2-u-2=(u-2)(u+1)=0$. Only $u=2$ lies in the range of the exponential, so $x=1$ is the unique real solution.
+
+#### E4 — Connect: reciprocal logarithms
+
+Solve
+
+$$
+\log_2x+\log_x2=\frac52.
+$$
+
+State both argument and base conditions. Convert the equation into one in $u=\log_2x$, and verify every answer in the original equation.
+
+**Approach.** Use change of base to express the two logarithms as reciprocal quantities.
+
+**Solution.** The conditions are $x>0$ and $x\ne1$. Writing $u=\log_2x\ne0$, change of base gives $\log_x2=1/u$. Thus $2u^2-5u+2=0$, so $u=2$ or $u=1/2$. The answers are $x=4$ and $x=\sqrt2$. Their respective pairs of logarithms are $(2,1/2)$ and $(1/2,2)$.
+
+#### E5 — Challenge: the greatest product from an integer sum
+
+For an integer $N\ge4$, choose a finite list of positive integers whose sum is $N$, with the number of entries also free to vary. Describe a choice with the greatest possible product, and prove optimality. Find the greatest product for $N=2026$ without expanding it. Investigate whether an optimal list needs a $1$, a part at least $5$, or three parts equal to $2$. How would taking logarithms reinterpret the objective?
+
+**Approach.** Improve a partition by replacing inefficient parts while preserving their sum. Stop when only a small list of possibilities remains.
+
+**Solution.** There are only finitely many partitions of the fixed integer $N$, so a maximum exists. A maximizing list has no $1$: merging a $1$ with another part strictly increases the product. A part $r\ge5$ can be replaced by $3$ and $r-3$, because $3(r-3)>r$. A part $4$ can be replaced by $2,2$ without changing the product. Finally, three $2$'s have product $8$, smaller than the product $9$ of two $3$'s with the same sum. Hence some optimal list consists of $3$'s and at most two $2$'s. The residue of $N$ fixes the result:
+
+$$
+P_N=
+\begin{cases}
+3^{N/3},&N\equiv0\pmod3,\\
+4\cdot3^{(N-4)/3},&N\equiv1\pmod3,\\
+2\cdot3^{(N-2)/3},&N\equiv2\pmod3.
+\end{cases}
+$$
+
+Each expression is achieved by the described list, and every list can be improved or preserved by the reductions until it has that form. For $2026=3\cdot674+4$, the greatest product is $4\cdot3^{674}$. Taking logarithms changes the product objective into the sum of the logarithms of the parts, while the integer sum constraint remains. **Local replacements can certify a global optimum.**
+
+### 14.6 F — Trigonometry and Complex Numbers
+
+#### F1 — Recall: radians and signs
+
+Convert $210^\circ$ into radians and find its sine, cosine, and tangent exactly. Use the unit circle to explain the signs rather than relying only on a memorized table.
+
+**Approach.** Reduce to a standard reference angle and use the signs of the unit-circle coordinates.
+
+**Solution.** The angle is $7\pi/6$, in the third quadrant with reference angle $\pi/6$. Thus
+
+$$
+\sin\frac{7\pi}6=-\frac12,\qquad
+\cos\frac{7\pi}6=-\frac{\sqrt3}2,\qquad
+\tan\frac{7\pi}6=\frac1{\sqrt3}.
+$$
+
+Both coordinates are negative, while their ratio is positive.
+
+#### F2 — Apply: all angles, not just a principal value
+
+Solve $2\sin^2x-\sin x-1=0$ for $0\le x<2\pi$. Explain how the algebraic roots lead to all the angles in the specified interval.
+
+**Approach.** First solve a quadratic for the sine value, then list every angle with that value in the interval.
+
+**Solution.** Factor as $(2\sin x+1)(\sin x-1)=0$. The permitted angles are $\pi/2$, $7\pi/6$, and $11\pi/6$. A single inverse-sine value would not list all solutions in the interval.
+
+#### F3 — Reason: an inverse-tangent addition
+
+Prove
+
+$$
+\arctan\frac12+\arctan\frac13=\frac\pi4.
+$$
+
+Here $\arctan$ takes values in $(-\pi/2,\pi/2)$. Use the tangent addition formula and then justify the angle, rather than concluding equality solely from equal tangents.
+
+**Approach.** Compute the tangent of the sum, but also locate the sum in an interval where tangent is injective.
+
+**Solution.** Put $\alpha=\arctan(1/2)$ and $\beta=\arctan(1/3)$. Each lies strictly between $0$ and $\pi/4$, so $0<\alpha+\beta<\pi/2$. The addition formula gives
+
+$$
+\tan(\alpha+\beta)=\frac{1/2+1/3}{1-(1/2)(1/3)}=1.
+$$
+
+Tangent is injective on this interval, hence $\alpha+\beta=\pi/4$. **An inverse-trigonometric identity includes a branch argument.**
+
+#### F4 — Connect: roots as a regular polygon
+
+Find all complex solutions of $z^4=-16$ in both polar and Cartesian form. Plot them conceptually in the complex plane, identify the polygon they form, and find its area. Check the sum and product of the roots against the polynomial $z^4+16$.
+
+**Approach.** Separate modulus and argument. Equal argument increments reveal the geometry of the roots.
+
+**Solution.** The roots have modulus $2$ and arguments $\pi/4+k\pi/2$ for $k=0,1,2,3$. Thus they are $2e^{i(\pi/4+k\pi/2)}$, or all four numbers $\pm\sqrt2\pm i\sqrt2$. They form a square with side $2\sqrt2$ and area $8$. Opposite roots cancel, giving sum zero; multiplying conjugate pairs gives product $4\cdot4=16$, in agreement with the coefficients of $z^4+16$.
+
+#### F5 — Challenge: a product of chords
+
+For each integer $n\ge2$, prove
+
+$$
+\prod_{k=1}^{n-1}2\sin\frac{k\pi}{n}=n.
+$$
+
+Interpret the factors as distances from one vertex of a regular $n$-gon on the unit circle to all its other vertices. Use the roots of unity to turn the product of distances into a polynomial calculation.
+
+**Approach.** Express each chord as a distance to a root of unity, and evaluate the remaining polynomial factor at one.
+
+**Solution.** Put $\zeta=e^{2\pi i/n}$. Removing the root $1$ from $z^n-1$ gives the polynomial identity
+
+$$
+1+z+\cdots+z^{n-1}=\prod_{k=1}^{n-1}(z-\zeta^k).
+$$
+
+At $z=1$, taking absolute values yields $n=\prod_{k=1}^{n-1}|1-\zeta^k|$. Each distance is $2\sin(k\pi/n)$, because the sine is positive for $1\le k<n$. This proves the formula and the chord interpretation. **Polynomial factorization can encode a geometric product that would be awkward to compute one chord at a time.**
+
+### 14.7 G — Geometry and Coordinates
+
+#### G1 — Recall: one right triangle, several measurements
+
+A right triangle has legs $6$ and $8$. Find its hypotenuse, area, altitude to the hypotenuse, and inradius. If every length is multiplied by $3/2$, what is the new area? Explain why area and length have different scale factors.
+
+**Approach.** Use Pythagoras and two area decompositions. Apply the square of the length multiplier to the area.
+
+**Solution.** Pythagoras gives hypotenuse $10$, and the area is $6\cdot8/2=24$. If the altitude to the hypotenuse is $h$, then $10h/2=24$, so $h=24/5$. The semiperimeter is $s=12$; decomposing the triangle into three triangles whose common altitude is the inradius $r$ gives area $rs$, hence $r=2$. The enlarged area is $24(3/2)^2=54$.
+
+#### G2 — Apply: a locus from equal distances
+
+Let $A=(1,2)$ and $B=(5,4)$. Find their midpoint and the equation of the locus of points equidistant from $A$ and $B$. Derive the equation by expanding squared distances, and check its perpendicularity to $AB$.
+
+**Approach.** Equate squared distances. The quadratic terms cancel, leaving a line whose normal identifies its direction.
+
+**Solution.** The midpoint is $(3,3)$. Equality of squared distances gives
+
+$$
+(x-1)^2+(y-2)^2=(x-5)^2+(y-4)^2,
+$$
+
+which reduces to $2x+y=9$. Its normal vector $(2,1)$ is parallel to $B-A=(4,2)$, so this line is perpendicular to $AB$, and it passes through the midpoint. It is the perpendicular bisector.
+
+#### G3 — Reason: a line meets a circle
+
+For real $k$, determine when the line $y=x+k$ meets the unit circle in zero, one, or two points. Find the points of tangency in the one-point cases. Give both a quadratic-discriminant argument and a distance-from-the-origin argument.
+
+**Approach.** Compare an algebraic intersection test with the perpendicular distance from the circle centre to the line.
+
+**Solution.** Substitution gives $2x^2+2kx+k^2-1=0$, with discriminant $8-4k^2$. There are two intersections if $|k|<\sqrt2$, one if $|k|=\sqrt2$, and none if $|k|>\sqrt2$. In the tangent cases the point is $(-k/2,k/2)$. Geometrically, the distance from the origin to $y-x-k=0$ is $|k|/\sqrt2$; comparing this with the radius $1$ gives the same classification.
+
+#### G4 — Connect: the midpoint parallelogram
+
+Let $A,B,C,D$ be the vertices, in order, of a convex quadrilateral, and let $E,F,G,H$ be the midpoints of $AB,BC,CD,DA$. Prove that $EFGH$ is a parallelogram and that its area is half the area of $ABCD$. Find one proof using triangle similarity and one using vectors or coordinates. This is `Varignon's theorem`.
+
+**Approach.** Use the triangle midpoint theorem for parallelism and area ratios; then express the same relations through diagonal vectors.
+
+**Solution.** The triangle midpoint theorem gives $EF\parallel AC$ and $HG\parallel AC$, with both lengths equal to $AC/2$. Likewise $FG$ and $EH$ are parallel to $BD$ and have half its length. Thus $EFGH$ is a parallelogram. Each corner triangle has one quarter the area of the corresponding triangle of three original vertices: for example, $AEH$ has one quarter the area of $ABD$. The four corresponding original triangles have total area twice that of $ABCD$, so the four corner triangles occupy half the quadrilateral. The remaining parallelogram has the other half.
+
+For a vector proof, write $u\times v=u_xv_y-u_yv_x$ for the planar determinant. Adjacent side vectors of the midpoint parallelogram are $(C-A)/2$ and $(D-B)/2$, giving area $|(C-A)\times(D-B)|/4$. The coordinate area formula for the ordered convex quadrilateral is $|(C-A)\times(D-B)|/2$. **The synthetic midpoint relation and the vector identity express the same affine structure.**
+
+#### G5 — Challenge: the napkin-ring problem
+
+A cylindrical hole of radius $a$ is drilled through the centre of a solid sphere of radius $R$, along a diameter, where $0\le a<R$. The remaining ring has height $h=2\sqrt{R^2-a^2}$. Prove that its volume is $\pi h^3/6$, independent of the original sphere's radius when $h$ is fixed. Compare horizontal cross-sectional areas with those of a suitable sphere; alternatively integrate those areas. The case $a=0$ is the undrilled limiting case.
+
+**Approach.** Compare cross sections at equal heights. The difference of disk areas depends only on the remaining height.
+
+**Solution.** Measure height $z$ from the centre. For $|z|\le h/2$, the remaining cross section is an annulus of area
+
+$$
+A(z)=\pi(R^2-z^2)-\pi a^2
+=\pi\left(\frac{h^2}{4}-z^2\right).
+$$
+
+Outside that height range no part of the ring remains. These are exactly the cross-sectional areas of a sphere of radius $h/2$, at the same heights. By `Cavalieri's principle`, or by integrating these equal areas, the volumes agree:
+
+$$
+V=\frac{4\pi}{3}\left(\frac h2\right)^3
+=\frac{\pi h^3}{6}.
+$$
+
+**Compare slices before attempting to subtract complicated solid volumes.** The cancellation of $R^2-a^2$ explains the apparently surprising independence from $R$.
+
+### 14.8 H — Inequalities and Optimization
+
+#### H1 — Recall: absolute value as an interval
+
+Solve $|2x-3|<5$ over the reals. Express the answer as an interval and check both boundary points in the original inequality.
+
+**Approach.** Translate absolute distance into a double inequality and check whether its endpoints are included.
+
+**Solution.** The inequality is equivalent to $-5<2x-3<5$, hence $-1<x<4$. Both endpoints make the absolute value equal to $5$, so neither is included.
+
+#### H2 — Apply: a rational sign chart
+
+Solve
+
+$$
+\frac{x-1}{x+2}\ge0.
+$$
+
+Mark zeros and excluded points separately. Explain why multiplying by $x+2$ without a sign case split is unsafe.
+
+**Approach.** Split the real line at the numerator zero and denominator zero, keeping their roles distinct.
+
+**Solution.** The critical values are $-2$, where the expression is undefined, and $1$, where it is zero. The signs on the three intervening intervals are positive, negative, positive. The solution is
+
+$$
+(-\infty,-2)\ \cup\ \lbrack1,\infty).
+$$
+
+Multiplication by the denominator would reverse the inequality when $x<-2$; a calculation that assumes one sign for all $x$ loses a case.
+
+#### H3 — Reason: a minimum and its equality case
+
+Find the minimum of $x+4/x$ for $x>0$. Give a proof by AM–GM and a proof by rewriting the difference from the proposed minimum. Determine exactly when equality holds.
+
+**Approach.** Use equal factors in AM–GM, or subtract the proposed minimum and expose a nonnegative square.
+
+**Solution.** AM–GM gives $x+4/x\ge2\sqrt{x(4/x)}=4$, with equality exactly when $x=4/x$, or $x=2$ in the positive domain. Alternatively,
+
+$$
+x+\frac4x-4=\frac{(x-2)^2}{x}\ge0.
+$$
+
+The second proof makes both the nonnegative gap and the equality condition explicit.
+
+#### H4 — Connect: a sharp range under a constraint
+
+If $x,y\ge0$ and $x+y=1$, find the complete range of $x^3+y^3$, including every equality case at both ends. How does the answer change if $x,y>0$? Distinguish a maximum from a supremum.
+
+**Approach.** Use the fixed sum to rewrite the cubic expression in terms of the product, then inspect both boundaries.
+
+**Solution.** The identity gives $x^3+y^3=1-3xy$. Since $0\le xy\le1/4$, the range is $\lbrack1/4,1\rbrack$. The minimum occurs only at $x=y=1/2$; the maximum occurs at $(0,1)$ and $(1,0)$. All intermediate values occur because $x^3+(1-x)^3$ is continuous on $\lbrack0,1\rbrack$. With $x,y>0$, the range becomes $\lbrack1/4,1)$: the minimum is still attained, but $1$ is only a supremum, approached as one variable tends to zero.
+
+#### H5 — Challenge: Schur's inequality
+
+Prove that, for $x,y,z\ge0$,
+
+$$
+x^3+y^3+z^3+3xyz
+\ge x^2y+x^2z+y^2x+y^2z+z^2x+z^2y.
+$$
+
+Find every equality case. The expression is symmetric, so you may assume $x\ge y\ge z$. Can the difference be arranged into products whose signs are then visible?
+
+**Approach.** Exploit symmetry to order the variables. Regroup the difference into terms whose signs follow from that order.
+
+**Solution.** By symmetry, order the variables as $x\ge y\ge z\ge0$. Denote the difference between the left and right sides by $D$. Expanding and regrouping gives
+
+$$
+\begin{aligned}
+D&=x(x-y)(x-z)+y(y-x)(y-z)+z(z-x)(z-y)\\
+&=(x-y)^2(x+y-z)+z(x-z)(y-z)\ge0.
+\end{aligned}
+$$
+
+If $x=0$, all variables are zero. Otherwise $x+y-z>0$, so equality first requires $x=y$; the remaining term is then $z(x-z)^2$. Thus equality holds exactly when all three variables are equal, or when one is zero and the other two are equal, including permutations. **Ordering variables can reveal a nonnegative decomposition without changing a symmetric problem.**
+
+### 14.9 I — Sequences, Sums, and Counting
+
+#### I1 — Recall: arithmetic and geometric progressions
+
+Find the twentieth term and the sum of the first twenty terms of $5,8,11,\ldots$. Find the tenth term and the sum of the first ten terms of $3,6,12,\ldots$. State your indexing convention.
+
+**Approach.** Distinguish a constant difference from a constant ratio and check the first-term index.
+
+**Solution.** With the first term indexed by $1$, the arithmetic progression has $a_n=5+3(n-1)$, giving $a_{20}=62$ and sum $20(5+62)/2=670$. The geometric progression has $b_n=3\cdot2^{n-1}$, giving $b_{10}=1536$ and sum $3(2^{10}-1)=3069$.
+
+#### I2 — Apply: consecutive odd numbers
+
+Prove $1+3+\cdots+(2n-1)=n^2$ for every integer $n\ge1$. Give an induction proof and a geometric explanation using the border added to a square.
+
+**Approach.** Identify the same increment in an induction step and in the border of a growing square.
+
+**Solution.** The identity holds at $n=1$. If the sum through $2n-1$ is $n^2$, adding the next odd number gives $n^2+2n+1=(n+1)^2$, completing induction. Geometrically, enlarging an $(n-1)\times(n-1)$ square of unit cells to an $n\times n$ square adds an L-shaped border of $n+(n-1)=2n-1$ cells. The same difference-of-squares identity drives both proofs.
+
+#### I3 — Reason: shift a recurrence
+
+Let $u_0=1$ and $u_{n+1}=2u_n+3$ for $n\ge0$. Find a closed formula and verify it. Which constant shift turns the recurrence into a geometric progression?
+
+**Approach.** Subtract a fixed point to remove the constant term and obtain a geometric progression.
+
+**Solution.** The fixed point is $-3$. Put $v_n=u_n+3$; then $v_{n+1}=2v_n$ and $v_0=4$. Therefore $u_n=4\cdot2^n-3$. It gives $u_0=1$ and satisfies the original recurrence. **Subtracting a fixed point removes the constant term from an affine recurrence.**
+
+#### I4 — Connect: count the missing objects
+
+How many ordered triples of integers $(x,y,z)$ satisfy $x+y+z=12$ and $0\le x,y,z\le5$? Solve once by introducing deficits from $5$, and once by inclusion–exclusion. Explain why the deficit substitution makes the upper bounds automatic.
+
+**Approach.** Count deficits from the upper bounds. Use inclusion–exclusion as an independent count.
+
+**Solution.** The deficits $u=5-x$, $v=5-y$, $w=5-z$ are nonnegative and sum to $3$. Each is automatically at most $3$, hence at most $5$, so the correspondence is reversible without extra exclusions. Stars and bars gives $\binom52=10$. Alternatively, begin with $\binom{14}2=91$ nonnegative solutions of the original sum. For each variable at least $6$, subtract $\binom82=28$; add back the three solutions where two specified variables are at least $6$. The count is $91-3\cdot28+3=10$.
+
+#### I5 — Challenge: balanced parentheses and reflection
+
+A string contains $n$ opening and $n$ closing parentheses, where $n\ge1$. Call it balanced if every initial segment contains at least as many opening as closing parentheses. Prove that the number of balanced strings is
+
+$$
+C_n=\frac1{n+1}\binom{2n}{n}.
+$$
+
+Encode opening and closing parentheses as steps $+1$ and $-1$. Construct a reversible correspondence between unbalanced strings and a simpler class of paths. These numbers are the `Catalan numbers`.
+
+**Approach.** Count invalid paths by reversing the steps through their first forbidden level, and prove that the transformation has an inverse.
+
+**Solution.** There are $\binom{2n}{n}$ unrestricted strings. In an unbalanced string, locate the first partial sum equal to $-1$ and reverse every step up to that visit. The resulting path ends at $2$, so it has $n+1$ upward and $n-1$ downward steps. Conversely, any such path must visit $+1$; reversing its steps through the first such visit recovers an unbalanced path and its first visit to $-1$. This is a bijection, so the invalid count is $\binom{2n}{n+1}$. Therefore
+
+$$
+C_n=\binom{2n}{n}-\binom{2n}{n+1}
+=\frac1{n+1}\binom{2n}{n}.
+$$
+
+**Count a constrained family by constructing a reversible correspondence for its complement.** The first counts are $1,2,5,14$ for $n=1,2,3,4$.
+
+### 14.10 J — Limits and Convergence
+
+#### J1 — Recall: two basic limit transformations
+
+Evaluate
+
+$$
+\lim_{n\to\infty}\frac{n^2+3n}{2n^2-1},
+\qquad
+\lim_{x\to0}\frac{\sqrt{1+x}-1}{x}.
+$$
+
+Divide by a dominant power in the first and rationalize in the second. Explain why the second expression need not be defined at $x=0$ for its limit to exist.
+
+**Approach.** Use algebraic transformations valid near the limiting input, then apply elementary limit laws.
+
+**Solution.** Dividing numerator and denominator by $n^2$ gives the first limit $1/2$. For $x\ne0$ sufficiently close to zero, rationalization gives
+
+$$
+\frac{\sqrt{1+x}-1}{x}=\frac1{\sqrt{1+x}+1}\longrightarrow\frac12.
+$$
+
+A limit concerns inputs approaching the point, not necessarily the value at the point itself.
+
+#### J2 — Apply: plausible tests that fail
+
+Show that $a_n=(-1)^n$ is bounded but does not converge. Then show that $b_n=\sqrt n$ satisfies $b_{n+1}-b_n\to0$ but does not converge to a finite real number. Which additional requirements appear in the Cauchy condition that are missing from the condition on consecutive terms?
+
+**Approach.** Use subsequences for the first counterexample and distant pairs of terms for the second.
+
+**Solution.** Even and odd subsequences of $a_n$ are constantly $1$ and $-1$, so they cannot share a limit, although $|a_n|=1$. For the second sequence,
+
+$$
+\sqrt{n+1}-\sqrt n=\frac1{\sqrt{n+1}+\sqrt n}\longrightarrow0,
+$$
+
+but $\sqrt n$ is unbounded. The Cauchy condition requires every pair of sufficiently late terms to be close, with one threshold working for all those pairs. For instance, $b_{4n}-b_n=\sqrt n$ is large even though consecutive differences are small. *Small individual steps can accumulate without bound.*
+
+#### J3 — Reason: existence, uniqueness, and an enclosure
+
+Prove that $x^3+2x-2=0$ has exactly one real root. Show that it lies strictly between $3/4$ and $4/5$. Separate the roles of continuity, monotonicity, and exact endpoint arithmetic.
+
+**Approach.** Separate existence, uniqueness, and approximation: use continuity, monotonicity, and rational endpoint values respectively.
+
+**Solution.** Write $f(x)=x^3+2x-2$. It is continuous, and
+
+$$
+f(3/4)=-\frac5{64}<0,\qquad
+f(4/5)=\frac{14}{125}>0.
+$$
+
+The intermediate value theorem supplies a root in the indicated interval. For any $y>x$,
+
+$$
+f(y)-f(x)=(y-x)(y^2+xy+x^2+2)>0,
+$$
+
+because the quadratic expression $y^2+xy+x^2$ is nonnegative. Thus $f$ is strictly increasing on all of $\mathbb R$, giving uniqueness. The interval has exact width $1/20$.
+
+#### J4 — Connect: a convergent series and a usable bound
+
+Prove that
+
+$$
+S=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^2}
+$$
+
+converges absolutely. Let $S_N$ be its first $N$ terms. Establish the alternating-series bound $|S-S_N|\le1/(N+1)^2$, and find the least positive integer $N$ for which this displayed upper bound is strictly less than $10^{-4}$. Do not assume that this is the least $N$ for the actual error. No exact evaluation of $S$ is required.
+
+**Approach.** Prove absolute convergence by a telescoping comparison, then apply the alternating remainder bound with the requested strict tolerance.
+
+**Solution.** For $n\ge2$, $1/n^2\le1/(n(n-1))$. The comparison series telescopes, so $\sum_{n=1}^{\infty}1/n^2$ converges, establishing absolute convergence. The positive terms $1/n^2$ decrease to zero, and the alternating-series estimate gives
+
+$$
+|S-S_N|\le\frac1{(N+1)^2}.
+$$
+
+Requiring this displayed upper bound to be strictly less than $10^{-4}$ gives $N+1>100$, so the least positive integer is $N=100$. At $N=99$, this upper bound equals the tolerance. **An upper-bound threshold is not a calculation of the exact error or its first successful index.** A sharper estimate may certify a smaller truncation.
+
+#### J5 — Challenge: a moving obstruction to uniform convergence
+
+On $\lbrack0,1\rbrack$, let
+
+$$
+f_n(x)=\frac{nx}{1+n^2x^2},\qquad n\ge1.
+$$
+
+Find the pointwise limit and the exact supremum of $f_n$ on this interval. Decide whether convergence is uniform, and then repeat the uniform-convergence question on $\lbrack\delta,1\rbrack$ for fixed $0<\delta<1$. Can one input depending on $n$ defeat a conclusion about every fixed input?
+
+**Approach.** Study fixed inputs first, then find an input that moves with the index and keeps the error large.
+
+**Solution.** At $x=0$ all terms vanish. At each fixed $x>0$, $0\le f_n(x)\le1/(nx)\to0$, so the pointwise limit is zero everywhere. With $t=nx\ge0$, the inequality $2t\le1+t^2$ gives $f_n(x)\le1/2$, with equality at $x=1/n$. Thus the supremum is $1/2$ for every $n$, and convergence on $\lbrack0,1\rbrack$ is not uniform. On $\lbrack\delta,1\rbrack$,
+
+$$
+0\le f_n(x)\le\frac1{n\delta}\longrightarrow0
+$$
+
+uniformly. **Uniform convergence controls inputs that move with the index, as well as each fixed input.**
+
+### 14.11 K — Calculus and Approximation
+
+#### K1 — Recall: derivative rules
+
+Differentiate $3x^4-2x+1$, $\sin(2x)$, and $\ln(x^2+1)$. State each real domain and identify every use of the chain rule.
+
+**Approach.** Identify the outer and inner functions before applying the chain rule.
+
+**Solution.** All three functions have domain $\mathbb R$. Their derivatives are $12x^3-2$, $2\cos(2x)$, and $2x/(x^2+1)$. The last two use the chain rule, with inner derivatives $2$ and $2x$ respectively. The logarithm is defined everywhere because $x^2+1>0$.
+
+#### K2 — Apply: recognize a logarithmic derivative
+
+Find an antiderivative of $(2x+1)/(x^2+x+1)$ on $\mathbb R$, and evaluate its integral from $0$ to $1$. Explain why the denominator is always positive and check the antiderivative by differentiation.
+
+**Approach.** Recognize the numerator as the derivative of the denominator and check the logarithm domain.
+
+**Solution.** Completing the square gives $x^2+x+1=(x+1/2)^2+3/4>0$. Its derivative is the numerator, so an antiderivative is $\ln(x^2+x+1)+C$ on all of $\mathbb R$. The fundamental theorem gives the definite integral $\ln3-\ln1=\ln3$. Differentiating the antiderivative checks the result.
+
+#### K3 — Reason: the nearest point need not be the vertex
+
+Find every point on the parabola $y=x^2$ closest to $(0,1)$. Minimize squared distance, prove that your minimum is global, and compare the result with the distance to the vertex. Can completing a square replace the derivative calculation?
+
+**Approach.** Minimize squared distance. Completing a square supplies a global certificate, while derivatives locate candidates.
+
+**Solution.** Squared distance from $(x,x^2)$ to $(0,1)$ is
+
+$$
+D(x)=x^2+(x^2-1)^2
+=\left(x^2-\frac12\right)^2+\frac34.
+$$
+
+The global minimum is $3/4$, attained exactly at $x=\pm1/\sqrt2$. The nearest points are $(\pm1/\sqrt2,1/2)$, and the minimum distance is $\sqrt3/2$, smaller than the distance $1$ to the vertex. Differentiation gives $D^{\prime}(x)=2x(2x^2-1)$; merely finding the critical point $x=0$ would not identify the minimum. **A nonnegative decomposition proves global optimality directly.**
+
+#### K4 — Connect: an improper integral with a parameter
+
+For real $a>-1$, evaluate
+
+$$
+\int_0^1 x^a\ln x\,dx.
+$$
+
+Work first on $\lbrack\varepsilon,1\rbrack$ and then let $\varepsilon\downarrow0$. Justify the boundary term. What happens when $a=-1$? *A formal antiderivative alone does not establish convergence.*
+
+**Approach.** Integrate by parts on a closed truncated interval and estimate the lower-endpoint terms before taking a limit.
+
+**Solution.** Put $b=a+1>0$. On $\lbrack\varepsilon,1\rbrack$, integration by parts gives
+
+$$
+\int_\varepsilon^1x^a\ln x\,dx
+=-\frac1{b^2}-\frac{\varepsilon^b\ln\varepsilon}{b}
++\frac{\varepsilon^b}{b^2}.
+$$
+
+Both endpoint terms tend to zero. For the logarithmic one, put $t=-\ln\varepsilon$; then $|\varepsilon^b\ln\varepsilon|=t e^{-bt}\to0$. For example, $e^{bt}\ge (bt)^2/2$ bounds this quantity by $2/(b^2t)$ for $t>0$. Consequently the integral is $-1/(a+1)^2$. At $a=-1$, the truncated integral is $-(\ln\varepsilon)^2/2\to-\infty$, so it does not converge to a finite value. **Evaluate the finite-endpoint identity first, then justify the limiting boundary term.**
+
+#### K5 — Challenge: a reduction formula and Wallis's product
+
+Define
+
+$$
+I_n=\int_0^{\pi/2}\sin^n x\,dx\qquad(n=0,1,2,\ldots).
+$$
+
+Derive $I_n=(n-1)I_{n-2}/n$ for $n\ge2$ and compute $I_0,I_1$. Use the ordering of consecutive integrands to prove $I_{2m+1}/I_{2m}\to1$. Deduce `Wallis's product`
+
+$$
+\lim_{m\to\infty}\prod_{k=1}^{m}
+\frac{(2k)^2}{(2k-1)(2k+1)}=\frac\pi2.
+$$
+
+The task is to justify a limit of finite products, not to manipulate an unspecified infinite product formally.
+
+**Approach.** Combine an integration-by-parts recurrence with a squeeze between adjacent integrals. Only then pass from finite products to a limit.
+
+**Solution.** We have $I_0=\pi/2$ and $I_1=1$. For $n\ge2$, integration by parts with $u=\sin^{n-1}x$ and $dv=\sin x\,dx$ has zero boundary terms and gives
+
+$$
+I_n=(n-1)\int_0^{\pi/2}\sin^{n-2}x\cos^2x\,dx
+=(n-1)(I_{n-2}-I_n).
+$$
+
+Thus $I_n=(n-1)I_{n-2}/n$. Since $0\le\sin x\le1$, for $m\ge1$ we have $I_{2m+1}\le I_{2m}\le I_{2m-1}$. The recurrence implies
+
+$$
+\frac{2m}{2m+1}\le\frac{I_{2m+1}}{I_{2m}}\le1,
+$$
+
+so the ratio tends to $1$. Iterating the recurrence gives
+
+$$
+I_{2m}=\frac\pi2\prod_{k=1}^{m}\frac{2k-1}{2k},
+\qquad
+I_{2m+1}=\prod_{k=1}^{m}\frac{2k}{2k+1}.
+$$
+
+Their ratio is $2/\pi$ times the finite product in the question. The established ratio limit therefore proves Wallis's product. **A reduction formula supplies the exact expressions; an inequality justifies their limiting relation.**
+
+### 14.12 L — Probability and Random Processes
+
+#### L1 — Recall: count equally likely outcomes
+
+Two fair dice are rolled independently. Find the probability that their sum is $9$, and the probability that their maximum is $5$. Use ordered outcomes; explain why the possible sums are not equally likely.
+
+**Approach.** Count ordered pairs of die outcomes. Express a maximum condition as a difference of two square counts.
+
+**Solution.** There are $36$ equally likely ordered outcomes. Sum $9$ occurs at $(3,6),(4,5),(5,4),(6,3)$, so its probability is $1/9$. Maximum $5$ means both dice are at most $5$, but not both at most $4$, giving probability $(25-16)/36=1/4$. Different sums correspond to different numbers of ordered outcomes.
+
+#### L2 — Apply: sampling without replacement
+
+An urn contains three red balls and two blue balls. Draw two uniformly without replacement. Find the probability of one ball of each colour, the probability that the second ball is red, and the probability that the second is red conditional on the first being blue. Are the two colour observations independent?
+
+**Approach.** Track the changed urn composition after the first draw, and distinguish marginal from conditional probabilities.
+
+**Solution.** Among the $\binom52=10$ unordered pairs of balls, $3\cdot2=6$ contain one of each colour, so the probability is $3/5$. Conditioning on the first draw gives
+
+$$
+P(\text{second red})=\frac35\frac24+\frac25\frac34=\frac35.
+$$
+
+Given a first blue draw, three of the four remaining balls are red, so the conditional probability is $3/4$. This differs from $3/5$, proving dependence. Identical marginal probabilities for the two draws do not imply independence.
+
+#### L3 — Reason: learn which box was chosen
+
+Box A contains two red balls and one blue ball; box B contains one red ball and two blue balls. Choose a box with probability $1/2$ each and draw uniformly from it. Given that the first ball is red, find the probability that A was selected. Without replacing that ball, draw again from the same box. Given the first red draw, what is the probability of a second red draw?
+
+**Approach.** Use Bayes's rule to update the box probabilities, then condition again on the remaining contents.
+
+**Solution.** The probability of the first red draw is $(1/2)(2/3)+(1/2)(1/3)=1/2$. Bayes's rule gives $P(A\mid\text{first red})=2/3$. If A was chosen, the remaining red probability is $1/2$; if B was chosen, it is zero. Thus
+
+$$
+P(\text{second red}\mid\text{first red})
+=\frac23\frac12+\frac13\cdot0=\frac13.
+$$
+
+**Update both the uncertainty about the box and the composition of the selected box.**
+
+#### L4 — Connect: wait for a pattern
+
+A fair coin is tossed independently until the first occurrence of two consecutive heads, HH. Find the expected number of tosses, counting both tosses in the final pair. Repeat for the first occurrence of HT. Why can two patterns with equal probability in a fixed pair have different waiting times? Use states that record the relevant recent history, and justify that the expectations are finite.
+
+**Approach.** Describe the relevant recent history by two states and condition on the next toss. Bound the waiting time to justify finite expectations.
+
+**Solution.** The expectations are finite. For either target considered separately, each disjoint two-toss block matches it with probability $1/4$, independently of the other blocks. The expected number of blocks until a match is $4$. The pattern can occur before that block ends, so its expected waiting time is at most $8$ tosses.
+
+For HH, let $E_0$ be the expected remaining tosses with no usable leading H, and $E_1$ the expectation when the last toss was H and the pattern is not yet complete. First-step conditioning gives
+
+$$
+E_0=1+\frac12E_0+\frac12E_1,
+\qquad E_1=1+\frac12E_0.
+$$
+
+Hence $E_0=6$ and $E_1=4$. For HT, the analogous equations are
+
+$$
+F_0=1+\frac12F_0+\frac12F_1,
+\qquad F_1=1+\frac12F_1,
+$$
+
+giving $F_1=2$ and $F_0=4$. After a leading H, an unsuccessful T resets the HH search, whereas an unsuccessful H preserves a leading H in the HT search. **Waiting times depend on how partial matches survive, not only on the probability of a fixed block.**
+
+#### L5 — Challenge: a fair decision from a biased coin
+
+A coin has an unknown probability $p$ of heads, with $0<p<1$, and independent tosses. Toss it in disjoint pairs. On HT output $0$; on TH output $1$; on HH or TT discard the pair and repeat. Prove that the procedure terminates with probability one and that its output is fair. Find the expected number of individual tosses and the value of $p$ that minimizes it. Identify which assumptions make the argument work.
+
+**Approach.** Pair outcomes of equal probability, use independent restarts, and calculate a geometric waiting time.
+
+**Solution.** Each accepted pair has total probability $q=2p(1-p)>0$, and HT and TH each have probability $p(1-p)$. Independent fresh pairs imply that the probability of no acceptance in the first $k$ pairs is $(1-q)^k\to0$. For either output, its eventual probability is
+
+$$
+\sum_{k=0}^{\infty}(1-q)^k p(1-p)
+=\frac{p(1-p)}q=\frac12.
+$$
+
+The number of pairs used is geometric with mean $1/q$, so the expected number of tosses is $2/q=1/(p(1-p))$. Since $p(1-p)=1/4-(p-1/2)^2\le1/4$, this expectation is at least $4$, with equality only at $p=1/2$. Independence and a fixed common bias justify both the pair probabilities and the fresh restarts. *At the excluded endpoints $p=0,1$, the procedure never accepts.*
+
+### 14.13 M — Proof, Invariants, and Existence
+
+#### M1 — Recall: negate the whole statement
+
+Negate each statement precisely: (a) for every real $x$ there is a real $y$ with $y^2=x$; (b) a real sequence $(a_n)$ is bounded above, meaning that there exists $M\in\mathbb R$ such that $a_n\le M$ for every $n\ge1$. Give a counterexample to (a). Distinguish an unbounded sequence from a sequence tending to $+\infty$.
+
+**Approach.** Reverse the quantifiers and negate the final relation; retain the order of the new quantifiers.
+
+**Solution.** The first negation is: there exists a real $x$ such that, for every real $y$, $y^2\ne x$. Taking $x=-1$ verifies it. The second negation is: for every real $M$, there is an integer $n\ge1$ such that $a_n>M$. This does not say that all sufficiently late terms exceed $M$. For example, the sequence equal to $0$ at odd indices and to $n$ at even indices is unbounded above but does not tend to $+\infty$.
+
+#### M2 — Apply: both directions of an equivalence
+
+Prove that an integer $n$ is odd if and only if $n^2$ is odd. Use a direct proof in one direction and a contrapositive in the other. Explain why proving only one implication would not establish the equivalence.
+
+**Approach.** Prove one implication directly and the converse through its contrapositive.
+
+**Solution.** If $n=2k+1$, then $n^2=2(2k^2+2k)+1$, which is odd. For the converse, use the contrapositive: if $n$ is not odd, it is even, say $n=2k$, so $n^2=4k^2$ is even. These establish both directions. A single implication would leave open whether its converse holds.
+
+#### M3 — Reason: an invariant hidden by an operation
+
+Begin with the integers $1,2,\ldots,10$. Repeatedly remove any two current numbers $a,b$ and replace them with $a+b+ab$, until one number remains. Prove that the final number is independent of the choices and determine it. Look for a transformation that converts the replacement into multiplication.
+
+**Approach.** Add one to each current number and look for a product preserved by the replacement.
+
+**Solution.** The replacement obeys $a+b+ab+1=(a+1)(b+1)$. Thus the product of one plus each current number is invariant under every step. Initially it is $2\cdot3\cdots11=11!$. If the last number is $L$, then $L+1=11!$, hence
+
+$$
+L=11!-1=39916799.
+$$
+
+Each step decreases the number of entries by one, so the process ends after nine steps. **A change of variables exposes multiplication hidden inside the operation.**
+
+#### M4 — Connect: pigeonholes and a sharp distance bound
+
+Five distinct points lie in a closed unit square. Prove that two of them have distance at most $\sqrt2/2$. Show by a configuration of five points that the constant cannot be decreased. Explain how points on the subdivision boundaries are assigned to your regions.
+
+**Approach.** Partition into four regions, apply the pigeonhole principle, and then construct a configuration attaining the bound.
+
+**Solution.** Assign each coordinate to either $\lbrack0,1/2\rbrack$ or $(1/2,1\rbrack$, producing four disjoint regions whose closures are squares of side $1/2$. Two of the five points belong to the same region. Their distance is at most the diagonal $\sqrt{(1/2)^2+(1/2)^2}=\sqrt2/2$. For sharpness, take the four corners and the centre of the original square: the smallest pairwise distance is exactly $\sqrt2/2$. **The attaining configuration proves that the upper bound cannot be decreased.**
+
+#### M5 — Challenge: six people and two kinds of pairs
+
+Among six people, every pair either knows each other or does not; the relation is symmetric. Prove that there are either three people who all know one another or three who are pairwise strangers. Show that five people do not suffice by constructing a counterexample. Recast the result as a statement about two colours on the edges of a complete graph.
+
+**Approach.** Use a majority of the five relations from one vertex. For sharpness, use a five-cycle and its complementary edge set.
+
+**Solution.** Choose one person. Among the other five, at least three have the same relation to that person. If the chosen person knows all three, either some pair among them knows each other, giving a mutual-acquaintance triple with the chosen person, or all three are pairwise strangers. If the chosen person knows none of them, interchange the roles of acquaintance and stranger in that argument.
+
+For five people, arrange them on a pentagon and let exactly adjacent pairs know one another. The acquaintance graph is a five-cycle and has no triangle; the stranger graph, consisting of the diagonals, is also a five-cycle and has no triangle. Thus five do not suffice. In graph language, every red–blue colouring of the edges of the complete graph on six vertices has a monochromatic triangle, while a colouring on five vertices can avoid one. This is a first example of `Ramsey theory`: a sufficiently large structure forces a pattern even when its individual choices are unrestricted.
+
+## 15. Sources, Scope, and Editorial Notes
 
 **Primary material:** Felix Klein, [Elementary Mathematics from an Advanced Standpoint: Arithmetic, Algebra, Analysis][Klein]. Its organization and connecting arguments guide the advanced perspective; the reference supplies elementary reminders that Klein often assumes his readers already know.
 
@@ -8767,10 +9740,11 @@ For $c_i=1$ and $w_i=\sigma_i^2$, these coefficients sum to one and minimize the
 | 11 | Part III, III: calculus and Taylor's theorem; Part III, II: oscillations and trigonometric series; the transcendence supplement. |
 | 12 | Supplementary coverage, using appropriate probability and error-theory material from the supplied [Companion Encyclopedia][Companion] and [Mathematical Thought][Kline], with standard elementary derivations checked independently. |
 | 13 | Klein's introduction and discussion of mathematical organization, supplemented by the proof and problem-solving coverage in the Chinese reference. |
+| 14 | A supplementary graded practice collection following Chapters 1–13, with independently written formulations, approaches, and solutions. It is not a transcription of an exercise set in Klein. |
 
 The supplied historical works provide context and selected bridges where appropriate. Modern definitions and later developments are identified as such. Missing or damaged equations in the transcriptions will be reconstructed and checked; historical claims will not be treated as current mathematical definitions.
 
-Each substantive entry combines a compact review statement, explicit hypotheses, an explanation, an advanced connection, a pitfall or counterexample, and links to related entries. In-text worked examples show the reasoning where it is needed. Chapter-end classical problems extend the methods, with the complete problem list preceding separate solution notes so that readers can try the questions first. Longer proofs are reserved for results that illuminate several topics.
+Each substantive entry combines a compact review statement, explicit hypotheses, an explanation, an advanced connection, a pitfall or counterexample, and links to related entries. In-text worked examples show the reasoning where it is needed. In Chapters 1–13, chapter-end classical problems extend the methods, with the complete problem list preceding separate solution notes. The graded practice collection in Chapter 14 places the approach and solution immediately below each question for continuous reading. Longer proofs are reserved for results that illuminate several topics.
 
 The notation follows the established reading convention: selected terms in inline code, methods and important conclusions in bold, and obstacles or limitations in italics. Mathematical notation remains in math delimiters. Source locations and editorial remarks are collected in this final chapter.
 
@@ -8990,7 +9964,13 @@ The eight worked examples and eight chapter-end problems have independently writ
 
 The chessboard SVG is an original diagram. The corner colors and remaining counts, reciprocal factorization, exact root residual, Bezout coefficients, telescoping remainder, fixed-point formula, and best-constant equality cases are checked independently. The source descriptions locate the mathematical connections without reproducing damaged transcription formulas or historical claims unrelated to the chapter.
 
-**Draft status:** Chapters 1–13 are written, including worked examples and chapter-end problems with solutions. Chapter 14 collects the source maps and editorial notes.
+**Chapter 14: practice scope and explanatory additions**
+
+The 65 exercises are grouped by the thirteen subject chapters, with five levels in each group. Elementary calculations deliberately reinforce earlier rules; the more demanding problems develop classical connections through factorization, prime divisors, inverse functions, integer optimization, roots of unity, geometric slices, symmetric inequalities, reflection counting, uniform convergence, integral recurrences, random waiting times, invariants, and finite graph arguments. Each problem is immediately followed by its approach and solution. The progression is relative to each subject; the analysis and calculus groups assume the corresponding chapters.
+
+These formulations and explanations are supplementary practice material, not quotations from the supplied sources or claims that all these problems appear in Klein. The elementary review and advanced connections follow the scope of the preceding chapters. Numerical results, algebraic identities, selected finite counts, recurrence formulas, and the document structure have been checked; theoretical arguments state the assumptions needed for their conclusions.
+
+**Draft status:** Chapters 1–13 contain the subject reference, worked examples, and chapter-end problems. Chapter 14 adds 65 graded exercises with approaches and solutions directly beneath the questions. Chapter 15 collects the source maps and editorial notes.
 
 
 [Klein]: <../../../../todos/_10_materials/HistoryOfMathematics/Elementary Mathematics from an Advanced Standpoint Arithmetic, Algebra, Analysis (Felix Klein) (z-library.sk, 1lib.sk, z-lib.sk)/Elementary Mathematics from an Advanced Standpoint Arithmetic, Algebra, Analysis (Felix Klein) (z-library.sk, 1lib.sk, z-lib.sk).md>
