@@ -1,5 +1,5 @@
 ---
-title: "Western Literary Theory Notes"
+title: "Western Literary Theory Brief Intro"
 categories: Notes
 subclass: Literary Theory
 ---

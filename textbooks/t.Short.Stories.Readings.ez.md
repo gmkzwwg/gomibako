@@ -1,6 +1,6 @@
 ---
 title: "Short Story Readings and Annotations"
-layout: post-horizonal
+layout: post-horizontal
 categories: Texts
 subclass: Literary Texts
 ---

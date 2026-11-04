@@ -35,8 +35,8 @@ Priority:
 {% assign show_title_enabled = false %}
 {% when "post-bilingual" %}
 {% assign bilingual_mode_enabled = true %}
-{% when "post-horizonal" %}
-{% assign horizonal_mode_enabled = true %}
+{% when "post-horizontal" %}
+{% assign horizontal_mode_enabled = true %}
 {% endcase %}
 
 {% if title_region_enabled and site.ui.features.abbreviation and resolved_abbreviation != "" %}
@@ -207,8 +207,8 @@ Valid modes: list | chart | compact | false | nil
   {% if bilingual_mode_enabled %}
   <script defer src="{{ '/src/assets/js/bilingual.js' | relative_url }}"></script>
   {% endif %}
-  <!-- HORIZONAL LAYOUT: PARALLEL TEXT -->
-  {% if horizonal_mode_enabled %}
+  <!-- horizontal LAYOUT: PARALLEL TEXT -->
+  {% if horizontal_mode_enabled %}
   <script defer src="{{ '/src/assets/js/parallel-text.js' | relative_url }}"></script>
   {% endif %}
 
