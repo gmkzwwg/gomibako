@@ -4,8 +4,6 @@ categories: Chron
 subclass: Basics
 ---
 
-# A History of Mathematical Ideas
-
 ## Ancient Civilizations: Counting, Measurement, and Procedures of Calculation (c. 3000–600 BCE)
 
 Long before mathematics became a subject organized around definitions and theorems, people faced problems that required more than counting visible objects. Grain had to be measured, land assessed, labor allocated, and obligations recorded. A result needed to survive beyond the moment of calculation: someone else might have to inspect it, repeat it, or use it to make another decision.
@@ -2752,7 +2750,6 @@ Nor do relative consistency arguments evade the second incompleteness theorem. T
 By this point, mathematics studied not only numbers, spaces, and transformations, but also the reach of proofs and algorithms themselves. Its standards of reliability had become more discriminating. A calculation error, a counterexample, an unstable approximation, an undecidable problem, and an independent statement call for different responses. Making those differences precise allowed limitations to generate new methods and new questions.
 
 ## Outline
-
 
 数学的发展伴随着三个问题：什么可以作为数学对象，怎样找到答案，以及怎样确信答案成立。计算与证明、实际问题与抽象研究相互推动；旧方法遇到的障碍，往往成为新概念的起点。
 
