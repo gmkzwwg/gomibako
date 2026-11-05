@@ -5,7 +5,7 @@ categories: Notes
 subclass: Literary Theory
 ---
 
-## Introduction · 引言
+## Introduction
 
 David Damrosch's two books appeared fifteen years apart and belong to different genres. *What Is World Literature?* (2003) is a theoretical *monograph* that argues for a new definition through an extended series of *case studies*. *How to Read World Literature* (second edition, 2018) is a methodological handbook that converts that definition into skills a reader can actually practice. **The two books are in fact two stages of a single project: the first asks what world literature *is*; the second asks how, given that answer, we ought to *read*.** To master the system, it is best to begin with the problem it was designed to solve, then see how it *redefines its object*, and finally follow how that redefinition is *cashed out* as concrete methods of reading.
 
@@ -17,7 +17,7 @@ David Damrosch's two books appeared fifteen years apart and belong to different 
 > - *cash out (as)*：把（抽象原则）落实为（具体可操作的东西）；兑现。
 > - *methodological* \[ˌmeθədəˈlɒdʒɪkl\]：adj. 方法论的；方法上的。
 
-## I. The Problem and the Definition · 问题与定义
+## I. The Problem and the Definition
 
 Damrosch begins with Goethe. In January 1827 the seventy-seven-year-old poet told his disciple Eckermann that national literature had become a rather meaningless term and that the epoch of *Weltliteratur* was at hand. Twenty years later Marx and Engels placed the word in the context of the world market: national *one-sidedness* and narrow-mindedness were becoming ever more impossible, and from the many national and local literatures a world literature was arising. **From the very start, then, the concept had a double identity: a humanistic ideal and an economic fact.** It also carried a difficulty from the start: if world literature means the *sum total* of all the world's literatures, it is too vast to grasp. Claudio Guillén mocked the idea as worthy only of a *deluded* archivist who happened to be a multimillionaire.
 
@@ -77,7 +77,7 @@ It is worth placing this point within a larger *intellectual genealogy*. Damrosc
 > - *polysystem theory*：多元系统论。佐哈尔提出，把一个文化中的文学（包括译入文学）看作多个相互竞争的子系统构成的动态整体。
 > - *refraction* \[rɪˈfrækʃn\]：n. 折射。勒菲弗尔用以说明翻译总是按接受文化的规范改变原作的面貌，而非忠实映照。
 
-## II. The Threefold Definition · 三重定义
+## II. The Threefold Definition
 
 The conclusion of *What Is World Literature?* offers a threefold definition that serves as the *backbone* of the whole book. **First, world literature is an *elliptical refraction* of national literatures.** Almost every work is born within some national or local context, and when it enters world literature it still bears the marks of its origin, but these marks are increasingly *diffused* and refracted the farther the work travels. The refraction is double: the work is received into the space of a foreign culture, a space shaped by the host's own national tradition and by the present needs of its writers. The receiving culture may use the foreign work as a positive model for its own future, as a primitive or decadent strand to be *rooted out* at home, or as an image of radical otherness against which it defines itself. **World literature is therefore always as much about the host culture's values and needs as about the work's source culture.**
 
@@ -150,7 +150,7 @@ This point directly opposes the modernist conception of style. Robert Frost said
 > - *microcanon*：微型经典。个人或小群体在阅读中形成的、带有个性的作品组合。
 > - *extensively / intensively*：广泛地 / 深入地。
 
-## III. Ethics in the Case Studies: Between Assimilation and Exoticism · 个案中的伦理：在同化与异国情调之间
+## III. Ethics in the Case Studies: Between Assimilation and Exoticism
 
 Behind the threefold definition runs an ethical thread that traverses the whole book: **how to hold a tension between two extremes, *assimilation* and *exoticism*.** Damrosch calls his book "an essay in definition, a celebration of new opportunities, and a *gallery of cautionary tales*," and these cautionary tales are distributed across three parts: circulation, translation, and production.
 
@@ -221,7 +221,7 @@ The production part treats a phenomenon peculiar to the present: **works written
 > - *allegory* \[ˈæləɡəri\]：n. 寓言；讽喻。
 > - *endorsement* \[ɪnˈdɔːsmənt\]：n. 认同；赞同；背书。
 
-## IV. The Question of Scale: Specialists, Generalists, and Scholarly Tact · 尺度问题：专家、通才与学术分寸
+## IV. The Question of Scale: Specialists, Generalists, and Scholarly Tact
 
 The theory must also answer a practical difficulty: who can possibly know enough? Here Damrosch stands in contrast to Franco Moretti. Moretti proposes *distant reading*: abandon close reading and assemble, from other people's research, a map of the global *waves* by which forms spread. Damrosch sees in this a problem like the one structuralism met when it applied linguistic models directly to complex texts: deep structures could be *elucidated*, but literary effects are often achieved by highly individual means. **What he wants is to "see both the forest and the trees."**
 
@@ -245,7 +245,7 @@ His solution has several layers. **First, control the scale through case studies
 > - *plane* \[pleɪn\]：n.（几何中的）平面。取“三点确定一个平面”之意，说明少数精心组合的作品足以界定一个比较领域。
 > - *subvert* \[səbˈvɜːt\]：v. 颠覆；破坏。
 
-## V. From Definition to Skills: *How to Read World Literature* · 从定义到技能：《如何阅读世界文学》
+## V. From Definition to Skills: *How to Read World Literature*
 
 The second book turns the theory above into a series of skills to be learned in order. It opens by citing Moretti: world literature "is not an object, it's a *problem*," and the world system is "one, but *unequal*." It also mentions Emily Apter's *Against World Literature* and its emphasis on the politics of *untranslatability*. **This shows that the Damrosch of 2018 faces inequality and power more squarely than the Damrosch of 2003.** His basic conviction, however, is unchanged: great works have an exceptional ability to transcend the boundaries of the cultures that produced them, and they also offer a privileged mode of access into the deepest qualities of those cultures, because works of art *refract* their cultures rather than simply reflecting them. He further distinguishes two routes into world literature. By production, some works are *born as* world literature, like Goethe's *Faust*; by circulation, others *become* world literature later, like Sophocles and Du Fu, who never expected to be read by foreigners. Reading itself is described as an extension of the *hermeneutic circle*: everyone starts from the works read in childhood; each new work adds to our overall view, and our overall view in turn shapes how we make sense of the next work.
 
@@ -293,7 +293,7 @@ The same chapter compares Du Fu with Wordsworth. Stephen Owen argues that Chines
 > - *precursor* \[priˈkɜːsə(r)\]：n. 先驱；前身。
 > - 引文出处：Robert Herrick, “To the Virgins, to Make Much of Time”；Horace, *Odes* 1.11；Borges, “Kafka and His Precursors”。
 
-## VI. Place in the Theoretical Landscape and Limits · 学术谱系中的位置与局限
+## VI. Place in the Theoretical Landscape and Limits
 
 Seen within contemporary theories of world literature, **Damrosch represents a *middle path*.** Moretti stresses the world system, quantification, and distant reading; Casanova stresses the Bourdieusian struggle over *literary capital* and the center's power of *consecration*; both are concerned with structure. Gayatri Spivak's *planetarity* and Apter's untranslatability are concerned with ethical and political *incommensurability*. Damrosch attends to particular works, particular translations, and particular readers in circulation; he insists on close reading and holds a *cautious optimism* about translation and cross-cultural understanding.
 
@@ -318,7 +318,7 @@ Seen within contemporary theories of world literature, **Damrosch represents a *
 > - *take for granted*：视为理所当然。
 > - 引文出处：Emily Apter, *Against World Literature*（2013）；Aamir Mufti, *Forget English! Orientalisms and World Literatures*（2016）；Gayatri Chakravorty Spivak, *Death of a Discipline*（2003）。
 
-## VII. A Reading Procedure for Direct Application · 可以直接应用的阅读程序
+## VII. A Reading Procedure for Direct Application
 
 Taken together, the two books yield a reading procedure that can be applied directly. Faced with a work from a foreign place or a distant time, one can ask the following questions in order.
 
