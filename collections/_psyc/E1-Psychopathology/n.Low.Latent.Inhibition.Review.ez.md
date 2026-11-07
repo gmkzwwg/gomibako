@@ -3,7 +3,7 @@ categories: Notes
 abbreviation: LLI
 title: "A Review of Low Latent Inhibition"
 subclass: Psychopathology
-layout: post-bilingual
+layout: post-parallel
 ---
 
 ### Definition and Foundations of Latent Inhibition (LI)

@@ -1,6 +1,6 @@
 ---
 title: "The Ontology of Literature"
-layout: slide-multilingual
+layout: slide-linear
 categories: Notes
 subclass: Basics
 ---

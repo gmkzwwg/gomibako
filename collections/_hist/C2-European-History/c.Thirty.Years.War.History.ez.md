@@ -2,7 +2,7 @@
 title: "A History of the Thirty Years' War"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

@@ -2,7 +2,7 @@
 title: "A History of the Weimar Republic and the Nazi Rise to Power"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

@@ -2,7 +2,7 @@
 title: "Napoleon Bonaparte Biography"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

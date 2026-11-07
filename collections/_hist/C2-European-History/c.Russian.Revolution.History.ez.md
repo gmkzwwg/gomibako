@@ -2,7 +2,7 @@
 title: "A History of the Russian Revolution and Civil War"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

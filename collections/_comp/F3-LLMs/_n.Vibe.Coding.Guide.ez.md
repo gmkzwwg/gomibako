@@ -1,6 +1,6 @@
 ---
 title: "Vibe Coding with Large Language Models"
-layout: post-bilingual
+layout: post-parallel
 categories: Notes
 subclass: LLMs
 abbreviation: Learner-Centered LLMs

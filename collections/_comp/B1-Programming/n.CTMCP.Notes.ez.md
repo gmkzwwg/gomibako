@@ -1,6 +1,6 @@
 ---
 title: "Concepts, Techniques, and Models of Computer Programming Reading Notes"
-layout: slide-multilingual
+layout: slide-linear
 categories: Notes
 subclass: Programming
 ---

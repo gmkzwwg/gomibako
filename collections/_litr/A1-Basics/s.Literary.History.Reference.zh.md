@@ -1,6 +1,6 @@
 ---
 title: "Literary History Reference"
-layout: slide-simple
+layout: slide-linear
 categories: Sheet
 subclass: Basics
 ---

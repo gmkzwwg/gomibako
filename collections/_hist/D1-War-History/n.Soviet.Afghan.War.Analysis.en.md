@@ -1,6 +1,6 @@
 ---
 title: "The Soviet-Afghan War 1979–1989"
-layout: post-bilingual
+layout: post-parallel
 categories: Notes
 abbreviation: Soviet-Afghan War
 subclass: War History

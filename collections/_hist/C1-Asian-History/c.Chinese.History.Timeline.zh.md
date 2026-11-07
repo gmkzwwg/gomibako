@@ -1,7 +1,7 @@
 ---
 title: "Chinese History Timeline"
 abbreviation: Chinese History
-layout: slide-simple
+layout: slide-linear
 categories: Chron
 subclass: Asian History
 ---

@@ -1,6 +1,6 @@
 ---
 title: A New History of Western Philosophy Annotated
-layout: post-bilingual
+layout: post-parallel
 categories: Texts
 subclass: History
 ---
@@ -27,7 +27,7 @@ A historian of philosophy should make clear which of these two tasks he is *addr
 > - *correspondingly* [ˌkɔːrəˈspɑːndɪŋli]：adv. 相应地；对应地。
 > - *essential* [ɪˈsenʃl]：adj. 本质性的；必要的。
 
-Both of them, however, studied its history for philosophical rather than historical reasons. Moreover, they shared a particular view of *philosophical progress*, in which the problems that define the *philosophical enterprise* are seen and understood ever more clearly, and in which their answers become more and more *apparent*. Aristotle in the first book of his *Metaphysics*, and Hegel in his *Lectures on the History of Philosophy* saw the teachings of the earlier philosophers they recorded as *halting steps* in the direction of a vision they were themselves to *expound*.
+Both of them, however, studied its history for philosophical rather than historical reasons. Moreover, they shared a particular view of *philosophical progress*, in which the problems that define the *philosophical enterprise* are seen and understood ever more clearly, and in which their answers become more and more *apparent*. Aristotle in the first book of his *Metaphysics*, and Hegel in his *Lectures on the History of Philosophy* saw the teachings of the earlier philosophers they recorded as *halting spost-parallelpost-parallelteps* in the direction of a vision they were themselves to *expound*.
 
 > 然而，他们研究哲学史的动机都是哲学性的，而非单纯的历史兴趣。二人还共享一种关于*哲学进步*的特定观念：界定*哲学事业*的问题会被日益清晰地看到并理解，相应的答案也会逐渐*显明*。亚里士多德在《*形而上学*》第一卷，黑格尔在《*哲学史讲演录*》中，都把他们所记录的早期哲学家的学说视为迈向自身所要*阐发*愿景的*蹒跚步伐*。
 

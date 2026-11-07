@@ -1,5 +1,5 @@
 ---
-layout: slide-multilingual
+layout: slide-linear
 permalink: /test-slide
 show_context_menu: false
 author: 垃圾残渣

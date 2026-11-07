@@ -1,1075 +1,659 @@
-(function () {
+/*
+ * simple-slide.js — single-file Markdown/Jekyll slide reader
+ * API: window.simpleSlide.toggle('.post-content')
+ * Views: original <-> slides. Slides open on the index page.
+ * v1.3: use existing .post-meta as the sticky navigation host; no width measurement.
+ * No dependencies; original DOM nodes are preserved, never serialized.
+ */
+(function (win, doc) {
   'use strict';
+  if (!win || !doc) return;
 
-  const CONFIG = {
-    mode: 'linear',
-    targetSelectors: [
-      '#main-content',
-      '.post-content',
-      '.page-content',
-      'article',
-      'main',
-      '.markdown-body',
-      '.content',
-      '#content'
-    ],
-    widgetPosition: { right: 20, bottom: 20 },
-    opacityIdle: 0.4,
-    opacityHover: 0.7,
-    dragHandleLabel: '✥',
-    buttonFontScale: 1.22,
-    mobileBreakpoint: 768,
+  const DEFAULTS = {
+    targetSelector: '.post-content',
+    autoStart: true,
+    indexPage: { headingText: "Here's Index" },
+    indexLabel: 'index',
+    previousLabel: '◂ prev',
+    nextLabel: 'next ▸',
+    viewOriginalLabel: 'View Original',
+    fromBeginningLabel: 'From Beginning',
+    navTop: 1,
+    metaSelector: '.post-meta', // Reuse article metadata as the navigation host.
+    menuMaxHeight: 1200, // v1.2: 320px; increased by 120%.
     titleScale: 1.8,
-    headingPadding: { top: 16, right: 24, bottom: 12, left: 24 },
-    bodyPadding: { top: 0, right: 48, bottom: 0, left: 48 },
-    indexPage: {
-      enabled: true,
-      position: 'last',
-      menuTitle: 'Index',
-      headingText: "Here's Index"
-    },
+    headingPadding: [16, 24, 12, 24],
+    bodyPadding: [0, 48, 0, 48],
+    mobileBreakpoint: 768,
     animationMs: 260,
-    autoplayInterval: 5,
-    menuMaxHeight: 240,
-    controls: {
-      menu: { show: false, label: '≣' },
-      first: { show: false, label: '«' },
-      prev: { show: true, label: '‹' },
-      next: { show: true, label: '›' },
-      last: { show: false, label: '»' },
-      autoplay: { show: false, label: '▸' }
-    },
-    labels: {
-      languageMenu: 'Language',
-      annotationOriginal: 'Original',
-      annotationNext: 'Annotation'
-    }
+    animation: 'fade',
+    styleId: 'simple-slide-style'
   };
 
-  const state = {
-    userConfig: {},
-    config: deepClone(CONFIG),
-    target: null,
-    originalHTML: '',
-    slides: [],
-    currentIndex: 0,
-    dom: {},
-    drag: null,
-    autoplayTimer: null,
-    resizeTimer: null,
-    menuSignature: '',
-    resizeBound: false,
-    keyBound: false,
-    outsideClickBound: false,
-    dragCleanup: null
+  const options = Object.assign({}, DEFAULTS, win.SimpleSlideConfig || {});
+  let active = false;
+  let target = null;
+  let originals = null; // DocumentFragment stores the *same* source nodes.
+  let slideRoot = null;
+  let nav = null;
+  let slides = [];
+  let currentPage = 0; // 0 = index; 1..N = content pages.
+  let started = false;
+  let metaHost = null;
+  let metaOriginals = null; // Preserve real metadata nodes, including event listeners.
+  let metaCreated = false;
+  let menuButton = null;
+  let menuPanel = null;
+
+  const cssLength = value => (typeof value === 'number' ? value + 'px' : String(value));
+  const safeLength = (value, fallback) => {
+    const n = Number(value);
+    return Number.isFinite(n) && n >= 0 ? n : fallback;
   };
-
-  function deepClone(obj) {
-    return JSON.parse(JSON.stringify(obj));
-  }
-
-  function merge(target, source) {
-    if (!source || typeof source !== 'object') return target;
-    Object.keys(source).forEach(function (key) {
-      const value = source[key];
-      if (value && typeof value === 'object' && !Array.isArray(value)) {
-        if (!target[key] || typeof target[key] !== 'object' || Array.isArray(target[key])) {
-          target[key] = {};
-        }
-        merge(target[key], value);
-      } else {
-        target[key] = value;
-      }
-    });
-    return target;
-  }
-
-  function buildConfig() {
-    const conf = deepClone(CONFIG);
-    merge(conf, state.userConfig || {});
-    applyModePreset(conf);
-    if (state.userConfig && state.userConfig.controls) merge(conf.controls, state.userConfig.controls);
-    return conf;
-  }
-
-  function applyModePreset(conf) {
-    if (conf.mode === 'simple') {
-      conf.controls = {
-        menu: { show: false, label: '≣' },
-        first: { show: false, label: '«' },
-        prev: { show: true, label: '‹' },
-        next: { show: true, label: '›' },
-        last: { show: false, label: '»' },
-        autoplay: { show: false, label: '▸' }
-      };
-      return;
-    }
-    if (conf.mode === 'language') {
-      conf.controls = {
-        menu: { show: true, label: conf.labels.languageMenu || 'Language' },
-        first: { show: false, label: '«' },
-        prev: { show: false, label: '‹' },
-        next: { show: false, label: '›' },
-        last: { show: false, label: '»' },
-        autoplay: { show: false, label: '▸' }
-      };
-      return;
-    }
-    if (conf.mode === 'annotation') {
-      conf.controls = {
-        menu: { show: false, label: '≣' },
-        first: { show: true, label: conf.labels.annotationOriginal || 'Original' },
-        prev: { show: false, label: '‹' },
-        next: { show: true, label: conf.labels.annotationNext || 'Annotation' },
-        last: { show: false, label: '»' },
-        autoplay: { show: false, label: '▸' }
-      };
-      return;
-    }
-    conf.controls = {
-      menu: { show: false, label: '≣' },
-      first: { show: false, label: '«' },
-      prev: { show: true, label: '‹' },
-      next: { show: true, label: '›' },
-      last: { show: false, label: '»' },
-      autoplay: { show: false, label: '▸' }
-    };
-  }
-
-  function isMobile() {
-    return window.matchMedia('(max-width: ' + state.config.mobileBreakpoint + 'px)').matches;
-  }
-
-  function getPaddingString(obj, forceZero) {
-    if (forceZero) return '0px';
-    const top = Number(obj.top || 0);
-    const right = Number(obj.right || 0);
-    const bottom = Number(obj.bottom || 0);
-    const left = Number(obj.left || 0);
-    return top + 'px ' + right + 'px ' + bottom + 'px ' + left + 'px';
-  }
+  const cssPadding = values => (Array.isArray(values) && values.length === 4
+    ? values.map(v => cssLength(v)).join(' ') : '0');
 
   function injectStyle() {
-    const existing = document.getElementById('jsd-linear-style');
-    if (existing) existing.remove();
-
-    const mobile = isMobile();
-    const style = document.createElement('style');
-    style.id = 'jsd-linear-style';
+    if (doc.getElementById(options.styleId)) return;
+    const style = doc.createElement('style');
+    style.id = options.styleId;
     style.textContent = `
-      .jsd-linear-root {
-        width: 100%;
-        min-height: inherit;
+      .ssv-root { display:block; min-width:0; width:100%; box-sizing:border-box; }
+      .ssv-root, .ssv-root * { box-sizing:border-box; }
+      /* The existing metadata element supplies native width and horizontal
+         positioning. Sticky preserves these bounds and pins during article scroll. */
+      .post-meta.ssv-meta-host {
+        display:block !important;
+        position:sticky !important;
+        top:${cssLength(options.navTop)} !important;
+        z-index:9998 !important;
+        min-width:0 !important;
+        max-width:100% !important;
+        box-sizing:border-box !important;
+        overflow:visible !important;
+        isolation:isolate;
       }
-      .jsd-slide-top-anchor {
-        display: block;
-        width: 100%;
-        height: 0;
-        overflow: hidden;
-        scroll-margin-top: 0px;
+      .ssv-meta-host > .ssv-nav.ssv-nav {
+        position:relative !important; top:auto !important; left:auto !important;
+        right:auto !important; bottom:auto !important;
+        width:100% !important; max-width:100% !important;
+        display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+        align-items:start; justify-items:stretch; z-index:9998; gap:0;
+        box-sizing:border-box !important; margin:0 !important; padding:0 !important;
+        min-width:0 !important; border:0 !important;
+        background:transparent !important; transform:none !important;
+        pointer-events:auto; color:var(--ssv-text, inherit);
+        font-family:var(--ssv-font-family, inherit);
+        font-weight:var(--ssv-font-weight, inherit);
+        line-height:var(--ssv-line-height, normal);
       }
-      .jsd-heading {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-        font-weight: 700;
-        font-size: calc(1em * ${state.config.titleScale});
-        line-height: 1.25;
-        padding: ${getPaddingString(state.config.headingPadding, mobile)};
+      .ssv-nav.ssv-nav > button {
+        appearance:none !important; -webkit-appearance:none !important;
+        display:block !important; position:static !important;
+        width:100% !important; max-width:100% !important; min-width:0 !important;
+        min-height:0 !important; flex:none !important;
+        box-sizing:border-box !important; margin:0 !important; padding:7px 2px !important;
+        border:0 !important; border-radius:0 !important;
+        background:transparent !important; box-shadow:none !important;
+        color:inherit !important; font:inherit !important;
+        font-size:var(--ssv-nav-font-size, 14px) !important;
+        line-height:1.25 !important; text-transform:none !important;
+        letter-spacing:normal !important; white-space:nowrap !important;
+        overflow:hidden !important; text-overflow:ellipsis !important;
+        cursor:pointer; pointer-events:auto;
       }
-      .jsd-slide-body {
-        width: 100%;
-        box-sizing: border-box;
-        padding: ${getPaddingString(state.config.bodyPadding, mobile)};
+      .ssv-nav-prev { text-align:left !important; }
+      .ssv-nav-index { text-align:center !important; }
+      .ssv-nav-next { text-align:right !important; }
+      .ssv-index-actions > button {
+        appearance:none !important; -webkit-appearance:none !important;
+        display:inline-block !important; position:static !important;
+        width:auto !important; min-width:0 !important; max-width:100% !important;
+        margin:0 !important; padding:7px 5px !important;
+        cursor:pointer; font:inherit !important; font-size:0.92em !important;
+        line-height:1.2 !important; white-space:normal !important;
+        color:inherit !important; background:transparent !important;
+        border:0 !important; border-radius:0 !important; box-shadow:none !important;
       }
-      .jsd-slide-anim-fade {
-        animation: jsdLinearFade ${state.config.animationMs}ms ease;
+      .ssv-nav > button:hover, .ssv-index-actions button:hover { text-decoration:underline; }
+      .ssv-nav > button:focus-visible, .ssv-index-actions button:focus-visible,
+      .ssv-index-list a:focus-visible, .ssv-nav-menu button:focus-visible {
+        outline:2px solid currentColor; outline-offset:-2px;
       }
-      .jsd-slide-anim-up {
-        animation: jsdLinearUp ${state.config.animationMs}ms ease;
+      .ssv-nav-menu.ssv-nav-menu {
+        display:block; position:absolute !important; left:50% !important; top:calc(100% + 6px) !important;
+        right:auto !important; bottom:auto !important;
+        transform:translateX(-50%) !important;
+        width:min(360px,100%) !important; min-width:0 !important;
+        max-width:100% !important; max-height:${safeLength(options.menuMaxHeight,704)}px !important;
+        overflow-y:auto; overflow-x:hidden;
+        background:var(--ssv-surface, #fff) !important;
+        color:var(--ssv-text, #222) !important;
+        border:1px solid var(--ssv-border-color, currentColor) !important;
+        border-radius:var(--ssv-border-radius, 4px) !important;
+        box-sizing:border-box !important;
+        box-shadow:0 5px 16px rgba(0,0,0,.10);
+        pointer-events:auto; padding:4px 0; z-index:1;
+        font-size:var(--ssv-menu-font-size, 14px);
+        font-family:var(--ssv-font-family, inherit);
       }
-      .jsd-slide-anim-zoom {
-        animation: jsdLinearZoom ${state.config.animationMs}ms ease;
+      .ssv-nav-menu[hidden] { display:none !important; }
+      .ssv-nav-menu.ssv-nav-menu button {
+        display:block !important; width:100% !important; min-width:0 !important;
+        max-width:100% !important; box-sizing:border-box !important;
+        appearance:none !important; -webkit-appearance:none !important;
+        border:0 !important; border-radius:0 !important;
+        margin:0 !important; padding:9px 12px !important;
+        text-align:left !important; background:transparent !important;
+        color:inherit !important; font:inherit !important; line-height:1.3 !important;
+        white-space:normal !important; overflow-wrap:anywhere;
+        text-transform:none !important; cursor:pointer;
       }
-      @keyframes jsdLinearFade {
-        from { opacity: 0; }
-        to { opacity: 1; }
+      .ssv-nav-menu.ssv-nav-menu button:hover,
+      .ssv-nav-menu.ssv-nav-menu button[aria-current="page"] {
+        background:var(--ssv-hover-color, rgba(127,127,127,.12)) !important;
       }
-      @keyframes jsdLinearUp {
-        from { opacity: 0; transform: translateY(14px); }
-        to { opacity: 1; transform: translateY(0); }
+      .ssv-viewport { width:100%; min-width:0; padding-top:52px; }
+      .ssv-heading {
+        text-align:center; font-weight:700; line-height:1.25;
+        font-size:calc(1em * ${Number(options.titleScale) || 1.8});
+        padding:${cssPadding(options.headingPadding)};
+        margin:0 0 0.8em; max-width:100%;
       }
-      @keyframes jsdLinearZoom {
-        from { opacity: 0; transform: scale(0.985); }
-        to { opacity: 1; transform: scale(1); }
+      .ssv-body { width:100%; min-width:0; padding:${cssPadding(options.bodyPadding)}; }
+      .ssv-index-list { display:flex; flex-direction:column; margin:0; padding:0; list-style:none; gap:0; }
+      .ssv-index-list li { list-style:none; margin:0; padding:0; }
+      .ssv-index-list a { display:block; padding:9px 12px; text-decoration:none; color:inherit; }
+      .ssv-index-list a:hover { background:rgba(127,127,127,0.1); text-decoration:underline; }
+      .ssv-index-number { display:inline-block; min-width:2.8em; font-weight:700; }
+      .ssv-index-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin:12px 0 24px; }
+      @keyframes ssvFade { from {opacity:0} to {opacity:1} }
+      .ssv-fade { animation:ssvFade ${safeLength(options.animationMs,260)}ms ease both; }
+      @media (max-width:${safeLength(options.mobileBreakpoint,768)}px) {
+        .ssv-heading, .ssv-body { padding:0; }
       }
-      .jsd-linear-toolbar {
-        position: fixed;
-        right: ${state.config.widgetPosition.right}px;
-        bottom: ${state.config.widgetPosition.bottom}px;
-        display: inline-flex;
-        align-items: stretch;
-        gap: 0;
-        box-sizing: border-box;
-        opacity: ${state.config.opacityIdle};
-        transition: opacity 180ms ease;
-        z-index: 9999;
-        border: 1px solid currentColor;
-        background: inherit;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        color: inherit;
-        user-select: none;
-      }
-      .jsd-linear-toolbar:hover,
-      .jsd-linear-toolbar.is-active,
-      .jsd-linear-toolbar.is-open,
-      .jsd-linear-toolbar.is-playing {
-        opacity: ${state.config.opacityHover};
-      }
-      .jsd-linear-drag {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 18px;
-        padding: 0 4px;
-        border-right: 1px solid currentColor;
-        cursor: move;
-        touch-action: none;
-        line-height: 1;
-        font-size: 1.05em;
-      }
-      .jsd-linear-controls {
-        display: inline-flex;
-        align-items: stretch;
-        position: relative;
-      }
-      .jsd-linear-button {
-        appearance: none;
-        -webkit-appearance: none;
-        border: 0;
-        border-left: 1px solid currentColor;
-        background: transparent;
-        color: inherit;
-        padding: 6px 10px;
-        min-height: 30px;
-        line-height: 1;
-        cursor: pointer;
-        font-family: inherit;
-        font-weight: inherit;
-        font-size: calc(1em * ${state.config.buttonFontScale});
-        white-space: nowrap;
-      }
-      .jsd-linear-controls .jsd-linear-button:first-child {
-        border-left: 0;
-      }
-      .jsd-linear-button:focus-visible {
-        outline: 1px solid currentColor;
-        outline-offset: -1px;
-      }
-      .jsd-linear-button.is-active {
-        font-weight: 700;
-      }
-      .jsd-linear-menu {
-        position: absolute;
-        right: 0;
-        bottom: calc(100% + 6px);
-        min-width: 180px;
-        max-height: ${Number(state.config.menuMaxHeight || 240)}px;
-        overflow: auto;
-        border: 1px solid currentColor;
-        background: inherit;
-        color: inherit;
-        display: none;
-        scrollbar-width: thin;
-        scrollbar-color: currentColor rgba(127, 127, 127, 0.1);
-      }
-      .jsd-linear-menu::-webkit-scrollbar {
-        width: 4.5px;
-        height: 4.5px;
-      }
-      .jsd-linear-menu::-webkit-scrollbar-thumb {
-        background-color: currentColor;
-        border-radius: 999px;
-      }
-      .jsd-linear-menu::-webkit-scrollbar-track {
-        background-color: rgba(127, 127, 127, 0.1);
-        border-radius: 999px;
-      }
-      .jsd-linear-menu::-webkit-scrollbar-corner {
-        background: transparent;
-      }
-      .jsd-linear-menu.is-open {
-        display: block;
-        background: inherit;
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-      }
-      .jsd-linear-menu-item {
-        width: 100%;
-        display: block;
-        border: 0;
-        border-bottom: 1px solid currentColor;
-        background: rgba(0, 0, 0, 1);
-        color: inherit;
-        padding: 8px 10px;
-        text-align: left;
-        cursor: pointer;
-        font: inherit;
-      }
-      .jsd-linear-menu-item:last-child {
-        border-bottom: 0;
-      }
-      .jsd-linear-menu-item.is-current {
-        font-weight: 700;
-      }
-      .jsd-index-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        width: 100%;
-        box-sizing: border-box;
-      }
-      .jsd-index-item {
-        display: block;
-        width: 100%;
-      }
-      .jsd-index-button {
-        width: 100%;
-        display: block;
-        text-align: left;
-        box-sizing: border-box;
-        border: none;
-        background: transparent;
-        color: inherit;
-        padding: 10px 12px;
-        font: inherit;
-        cursor: pointer;
-      }
-      .jsd-index-button:focus-visible {
-        outline: 1px solid currentColor;
-        outline-offset: -1px;
-      }
-      .jsd-index-button-num {
-        display: inline-block;
-        min-width: 2.6em;
-        font-weight: 700;
-      }
-      .jsd-linear-empty {
-        display: none;
-      }
-    `;
-    document.head.appendChild(style);
+      @media (prefers-reduced-motion: reduce) {
+        .ssv-fade { animation:none !important; }
+      }`;
+    (doc.head || doc.documentElement).appendChild(style);
   }
 
-  function findTarget() {
-    const selectors = state.config.targetSelectors || [];
-    for (let i = 0; i < selectors.length; i += 1) {
-      const node = document.querySelector(selectors[i]);
-      if (node) return node;
+  function resolveTarget(input) {
+    if (input && input.nodeType === 1) return input;
+    if (typeof input === 'string') {
+      try { return doc.querySelector(input); } catch (_) { return null; }
     }
-    return null;
+    if (target && target.isConnected) return target;
+    try { return doc.querySelector(options.targetSelector); } catch (_) { return null; }
   }
 
-  function isDirectHeading(node, level) {
-    return node && node.nodeType === 1 && node.tagName && node.tagName.toUpperCase() === 'H' + level;
+  function headingEligible(el) {
+    // Section headings in a quotation, table, or code example are not slide boundaries.
+    return !el.closest('blockquote, table, pre, code, [data-simple-slide-ignore]');
   }
 
-  function getDirectHeadingLevels(container) {
-    return Array.from(container.childNodes)
-      .filter(function (node) {
-        return node.nodeType === 1 && /^H[1-6]$/.test(node.tagName);
-      })
-      .map(function (node) {
-        return Number(node.tagName.slice(1));
-      });
-  }
+  function parseSlides(fragment) {
+    const headings = Array.from(fragment.querySelectorAll('h1,h2,h3,h4,h5,h6'))
+      .filter(headingEligible);
+    const minLevel = headings.length
+      ? Math.min(...headings.map(h => Number(h.tagName.slice(1)))) : null;
+    const boundaries = minLevel
+      ? headings.filter(h => Number(h.tagName.slice(1)) === minLevel) : [];
 
-  function getMinHeadingLevel(container) {
-    const directLevels = getDirectHeadingLevels(container);
-    if (directLevels.length) return Math.min.apply(Math, directLevels);
-    return null;
-  }
+    if (!boundaries.length) {
+      const range = doc.createRange();
+      range.selectNodeContents(fragment);
+      const template = range.cloneContents();
+      range.detach?.();
+      return [{ title: 'Page 1', template, hasHeading: false }];
+    }
 
-  function parseLinearSlides(container) {
-    const level = getMinHeadingLevel(container);
-    const nodes = Array.from(container.childNodes);
-    const slides = [];
-    let current = null;
-
-    if (!level) {
-      const fallback = {
-        key: 'slide-0',
-        menuTitle: '',
-        heading: '',
-        nodes: nodes.map(function (node) { return node.cloneNode(true); })
+    // Ranges handle nested headings without flattening/losing surrounding markup.
+    // By design, everything preceding the first section heading is excluded.
+    return boundaries.map((heading, index) => {
+      const range = doc.createRange();
+      range.setStartBefore(heading);
+      if (index + 1 < boundaries.length) range.setEndBefore(boundaries[index + 1]);
+      else range.setEnd(fragment, fragment.childNodes.length);
+      const template = range.cloneContents();
+      range.detach?.();
+      return {
+        title: heading.textContent.trim() || `Page ${index + 1}`,
+        template,
+        hasHeading: true,
+        headingLevel: minLevel
       };
-      slides.push(fallback);
-      return slides;
-    }
-
-    nodes.forEach(function (node) {
-      if (isDirectHeading(node, level)) {
-        current = {
-          key: 'slide-' + slides.length,
-          menuTitle: node.textContent.trim(),
-          heading: node.textContent.trim(),
-          headingNode: node.cloneNode(true),
-          nodes: []
-        };
-        slides.push(current);
-        return;
-      }
-      if (!current && node.querySelector?.('.post-todo-mark')) {
-        current = {key: 'intro', heading: '', nodes: []};
-        slides.push(current);
-      }
-      if (current) current.nodes.push(node.cloneNode(true));
-    });
-
-    return slides;
-  }
-
-  function parseLanguageSlides(container) {
-    const nodes = Array.from(container.childNodes);
-    const slides = [];
-    let current = null;
-
-    nodes.forEach(function (node) {
-      if (isDirectHeading(node, 1)) {
-        current = {
-          key: 'lang-' + slides.length,
-          menuTitle: node.textContent.trim(),
-          heading: '',
-          headingNode: node.cloneNode(true),
-          nodes: []
-        };
-        slides.push(current);
-        return;
-      }
-      if (!current && node.querySelector?.('.post-todo-mark')) {
-        current = {key: 'intro', heading: '', nodes: []};
-        slides.push(current);
-      }
-      if (current) current.nodes.push(node.cloneNode(true));
-    });
-
-    if (!slides.length) return parseLinearSlides(container);
-    return slides;
-  }
-
-  function parseSlidesFromOriginal() {
-    const scratch = document.createElement('div');
-    scratch.innerHTML = state.originalHTML;
-    if (state.config.mode === 'language') return parseLanguageSlides(scratch);
-    return parseLinearSlides(scratch);
-  }
-
-  function shouldAddIndexPage() {
-    const cfg = state.config.indexPage || {};
-    if (cfg.enabled === false) return false;
-    const position = String(cfg.position || 'last').toLowerCase();
-    return position === 'first' || position === 'last';
-  }
-
-  function getIndexPosition() {
-    const cfg = state.config.indexPage || {};
-    const position = String(cfg.position || 'last').toLowerCase();
-    if (position === 'first') return 'first';
-    if (position === 'none') return 'none';
-    return 'last';
-  }
-
-  function createIndexSlide() {
-    const cfg = state.config.indexPage || {};
-    const headingText = typeof cfg.headingText === 'string' ? cfg.headingText : '';
-    return {
-      key: 'index-slide',
-      type: 'index',
-      menuTitle: String(cfg.menuTitle || 'Index'),
-      heading: headingText,
-      nodes: []
-    };
-  }
-
-  function applyIndexPage(slides) {
-    const nextSlides = Array.isArray(slides) ? slides.slice() : [];
-    if (!shouldAddIndexPage()) return nextSlides;
-    const indexSlide = createIndexSlide();
-    if (getIndexPosition() === 'first') nextSlides.unshift(indexSlide);
-    else nextSlides.push(indexSlide);
-    return nextSlides;
-  }
-
-  function clearAutoplay() {
-    if (state.autoplayTimer) {
-      window.clearInterval(state.autoplayTimer);
-      state.autoplayTimer = null;
-    }
-    if (state.dom.toolbar) state.dom.toolbar.classList.remove('is-playing');
-    if (state.dom.autoplaybutton) state.dom.autoplaybutton.classList.remove('is-active');
-  }
-
-  function startAutoplay() {
-    clearAutoplay();
-    const seconds = Number(state.config.autoplayInterval || 0);
-    if (!(seconds > 0) || state.slides.length < 2) return;
-    state.autoplayTimer = window.setInterval(function () {
-      nextSlide();
-    }, seconds * 1000);
-    if (state.dom.toolbar) state.dom.toolbar.classList.add('is-playing');
-    if (state.dom.autoplaybutton) state.dom.autoplaybutton.classList.add('is-active');
-  }
-
-  function toggleAutoplay() {
-    if (state.autoplayTimer) {
-      clearAutoplay();
-    } else {
-      startAutoplay();
-    }
-  }
-
-  function closeMenu() {
-    if (state.dom.menu) state.dom.menu.classList.remove('is-open');
-    if (state.dom.toolbar) state.dom.toolbar.classList.remove('is-open');
-  }
-
-  function openMenu() {
-    if (!state.dom.menu) return;
-    state.dom.menu.classList.add('is-open');
-    if (state.dom.toolbar) state.dom.toolbar.classList.add('is-open');
-  }
-
-  function toggleMenu() {
-    if (!state.dom.menu) return;
-    if (state.dom.menu.classList.contains('is-open')) closeMenu();
-    else openMenu();
-  }
-
-  function getMenuItemTitle(slide, index) {
-    const title = (slide.menuTitle || slide.heading || '').trim();
-    if (title) return title;
-    return 'Page ' + (index + 1);
-  }
-
-  function getMenuSignature() {
-    return state.slides.map(function (slide, index) {
-      return slide.key + ':' + getMenuItemTitle(slide, index);
-    }).join('|');
-  }
-
-  function updateMenuCurrent() {
-    if (!state.dom.menu) return;
-    Array.from(state.dom.menu.children).forEach(function (item) {
-      const itemIndex = Number(item.getAttribute('data-index'));
-      item.classList.toggle('is-current', itemIndex === state.currentIndex);
     });
   }
 
-  function renderMenu() {
-    if (!state.dom.menu) return;
-    const signature = getMenuSignature();
-    if (state.menuSignature === signature && state.dom.menu.children.length) {
-      updateMenuCurrent();
-      return;
-    }
-
-    state.menuSignature = signature;
-    state.dom.menu.innerHTML = '';
-    state.slides.forEach(function (slide, index) {
-      const item = document.createElement('button');
-      item.type = 'button';
-      item.className = 'jsd-linear-menu-item' + (index === state.currentIndex ? ' is-current' : '');
-      item.textContent = getMenuItemTitle(slide, index);
-      item.setAttribute('data-index', String(index));
-      state.dom.menu.appendChild(item);
-    });
+  function emit(name, container) {
+    doc.dispatchEvent(new win.CustomEvent(name, {
+      detail: { container, source: 'simple-slide' }
+    }));
   }
 
-  function getAnimationClass() {
-    const classes = ['jsd-slide-anim-fade', 'jsd-slide-anim-up', 'jsd-slide-anim-zoom'];
-    return classes[Math.floor(Math.random() * classes.length)];
-  }
-
-  function ensureTopAnchor() {
-    if (!state.dom.root) return null;
-    const anchor = document.createElement('span');
-    anchor.className = 'jsd-slide-top-anchor';
-    anchor.setAttribute('aria-hidden', 'true');
-    anchor.tabIndex = -1;
-    state.dom.root.appendChild(anchor);
-    state.dom.topAnchor = anchor;
-    return anchor;
-  }
-
-  function scrollToPageTop() {
-    window.requestAnimationFrame(function () {
-      const anchor = state.dom.topAnchor || (state.dom.root ? state.dom.root.querySelector('.jsd-slide-top-anchor') : null);
-      if (!anchor) return;
-      try {
-        anchor.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'auto' });
-      } catch (e) {
-        const top = anchor.getBoundingClientRect().top + window.pageYOffset;
-        window.scrollTo(0, Math.max(0, top));
-      }
-    });
-  }
-
-  function renderIndexBody(body) {
-    const list = document.createElement('div');
-    list.className = 'jsd-index-list';
-
-    let contentNumber = 0;
-
-    state.slides.forEach(function (slide, index) {
-      if (slide.type === 'index') return;
-      contentNumber += 1;
-
-      const item = document.createElement('div');
-      item.className = 'jsd-index-item';
-
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'jsd-index-button';
-
-      const num = document.createElement('span');
-      num.className = 'jsd-index-button-num';
-      num.textContent = String(contentNumber) + '.';
-
-      const title = document.createElement('span');
-      title.className = 'jsd-index-button-title';
-      const rawTitle = (slide.menuTitle || slide.heading || '').trim();
-      title.textContent = rawTitle || 'Page ' + contentNumber;
-
-      button.appendChild(num);
-      button.appendChild(title);
-      button.addEventListener('click', function () {
-        goTo(index);
-        scrollToPageTop();
-      });
-
-      item.appendChild(button);
-      list.appendChild(item);
-    });
-
-    body.appendChild(list);
-  }
-function notifyContentRendered(container) {
-  if (!container) return;
-
-  document.dispatchEvent(new CustomEvent('content:rendered', {
-    detail: {
-      container: container,
-      source: 'jsd-linear-slides'
-    }
-  }));
-}
-  function renderCurrent() {
-    const slide = state.slides[state.currentIndex];
-    if (!slide || !state.dom.root) return;
-
-    state.dom.root.innerHTML = '';
-    ensureTopAnchor();
-
-    const showHeading = slide.type === 'index'
-      ? Boolean((slide.heading || '').trim())
-      : state.config.mode !== 'language' && Boolean((slide.heading || '').trim());
-
-    let heading = null;
-    const todoHeading = slide.headingNode?.querySelector('.post-todo-mark');
-    if (showHeading || todoHeading) {
-      heading = document.createElement('div');
-      heading.className = 'jsd-heading';
-      heading.textContent = slide.heading || '';
-      if (todoHeading) heading.replaceChildren(...slide.headingNode.cloneNode(true).childNodes);
-      state.dom.root.appendChild(heading);
-    }
-
-    const body = document.createElement('div');
-    body.className = 'jsd-slide-body ' + getAnimationClass();
-
-    if (slide.type === 'index') {
-      renderIndexBody(body);
-    } else {
-      slide.nodes.forEach(function (node) {
-        body.appendChild(node.cloneNode(true));
-      });
-    }
-
-    state.dom.root.appendChild(body);
-    state.dom.heading = heading;
-    state.dom.body = body;
-    renderMenu();
-
-    notifyContentRendered(body);
-  }
-
-  function normalizeIndex(index) {
-    const total = state.slides.length;
-    if (!total) return 0;
-    let next = index % total;
-    if (next < 0) next += total;
-    return next;
-  }
-
-  function goTo(index) {
-    if (!state.slides.length) return;
-    state.currentIndex = normalizeIndex(index);
-    renderCurrent();
-  }
-
-  function reveal(id) {
-    const selector = '#' + CSS.escape(id);
-    const contains = node => node.nodeType === 1 && (node.id === id || node.querySelector(selector));
-    const index = state.slides.findIndex(slide =>
-      (slide.headingNode && contains(slide.headingNode)) || slide.nodes.some(contains));
-    if (index < 0) return false;
-    clearAutoplay();
-    goTo(index);
-    return true;
-  }
-
-  function firstSlide() {
-    goTo(0);
-  }
-
-  function prevSlide() {
-    goTo(state.currentIndex - 1);
-  }
-
-  function nextSlide() {
-    goTo(state.currentIndex + 1);
-  }
-
-  function lastSlide() {
-    if (!state.slides.length) return;
-    goTo(state.slides.length - 1);
-  }
-
-  function updateToolbarState() {
-    if (!state.dom.toolbar) return;
-    if (state.autoplayTimer) state.dom.toolbar.classList.add('is-playing');
-    else state.dom.toolbar.classList.remove('is-playing');
-  }
-
-  function createButton(key, text, handler) {
-    const button = document.createElement('button');
+  function createButton(text, className, handler, ariaLabel) {
+    const button = doc.createElement('button');
     button.type = 'button';
-    button.className = 'jsd-linear-button jsd-linear-button-' + key;
     button.textContent = text;
+    button.className = className;
+    if (ariaLabel) button.setAttribute('aria-label', ariaLabel);
     button.addEventListener('click', handler);
     return button;
   }
 
-  function attachDragging(toolbar, handle) {
-    if (typeof state.dragCleanup === 'function') state.dragCleanup();
-
-    const onPointerDown = function (event) {
-      if (event.button !== undefined && event.button !== 0 && event.pointerType !== 'touch') return;
-      const rect = toolbar.getBoundingClientRect();
-      state.drag = {
-        pointerId: event.pointerId,
-        pointerX: event.clientX,
-        pointerY: event.clientY,
-        startLeft: rect.left,
-        startTop: rect.top
-      };
-      toolbar.classList.add('is-active');
-      toolbar.style.left = rect.left + 'px';
-      toolbar.style.top = rect.top + 'px';
-      toolbar.style.right = 'auto';
-      toolbar.style.bottom = 'auto';
-      try { handle.setPointerCapture(event.pointerId); } catch (e) { /* ignore */ }
-      event.preventDefault();
-    };
-
-    const onPointerMove = function (event) {
-      if (!state.drag || state.drag.pointerId !== event.pointerId) return;
-      const dx = event.clientX - state.drag.pointerX;
-      const dy = event.clientY - state.drag.pointerY;
-      toolbar.style.left = state.drag.startLeft + dx + 'px';
-      toolbar.style.top = state.drag.startTop + dy + 'px';
-    };
-
-    const onPointerEnd = function (event) {
-      if (!state.drag || state.drag.pointerId !== event.pointerId) return;
-      try { handle.releasePointerCapture(event.pointerId); } catch (e) { /* ignore */ }
-      state.drag = null;
-      toolbar.classList.remove('is-active');
-    };
-
-    handle.addEventListener('pointerdown', onPointerDown);
-    handle.addEventListener('pointermove', onPointerMove);
-    handle.addEventListener('pointerup', onPointerEnd);
-    handle.addEventListener('pointercancel', onPointerEnd);
-
-    state.dragCleanup = function () {
-      handle.removeEventListener('pointerdown', onPointerDown);
-      handle.removeEventListener('pointermove', onPointerMove);
-      handle.removeEventListener('pointerup', onPointerEnd);
-      handle.removeEventListener('pointercancel', onPointerEnd);
-    };
+  // Reuse the site's already-correct post-meta box instead of deriving
+  // its dimensions from nested article/content containers.
+  function findMetaHost(content) {
+    const article = content.closest('article') || content.parentElement;
+    if (!article) return null;
+    let candidates;
+    try { candidates = article.querySelectorAll(options.metaSelector || '.post-meta'); }
+    catch (_) { candidates = article.querySelectorAll('.post-meta'); }
+    return Array.from(candidates).find(node => !content.contains(node)) || null;
   }
 
-  function buildToolbar() {
-    if (state.dom.toolbar) state.dom.toolbar.remove();
+  function mountNav(content, controls) {
+    const found = findMetaHost(content);
+    let host = found;
+    let created = false;
+    if (!host) {
+      host = doc.createElement('aside');
+      host.className = 'post-meta';
+      host.setAttribute('aria-label', 'Slide navigation');
+      content.parentNode.insertBefore(host, content);
+      created = true;
+    }
+    const contents = doc.createDocumentFragment();
+    while (host.firstChild) contents.appendChild(host.firstChild);
+    host.classList.add('ssv-meta-host');
+    host.appendChild(controls);
+    return { host, contents, created };
+  }
 
-    const toolbar = document.createElement('div');
-    toolbar.className = 'jsd-linear-toolbar';
+  function restoreNavHost() {
+    if (!metaHost) return;
+    nav?.remove();
+    if (metaCreated) metaHost.remove();
+    else {
+      metaHost.classList.remove('ssv-meta-host');
+      if (metaOriginals) metaHost.appendChild(metaOriginals);
+    }
+    metaHost = null;
+    metaOriginals = null;
+    metaCreated = false;
+  }
 
-    const drag = document.createElement('div');
-    drag.className = 'jsd-linear-drag';
-    drag.textContent = state.config.dragHandleLabel || '✥';
+  function hasVisiblePaint(color) {
+    if (!color || color === 'transparent') return false;
+    const rgba = color.match(/^rgba?\(([^)]+)\)/i);
+    if (!rgba) return color !== 'none';
+    const parts = rgba[1].split(',');
+    return parts.length < 4 || Number(parts[3].trim()) > 0.01;
+  }
 
-    const controls = document.createElement('div');
-    controls.className = 'jsd-linear-controls';
+  // Derive dropdown colours from actual site styles. No geometry observation:
+  // position and size are entirely controlled by the native post-meta box.
+  function syncTheme() {
+    if (!nav || !metaHost || !target) return;
+    const metaStyle = win.getComputedStyle(metaHost);
+    const article = target.closest('article') || target;
+    const articleStyle = win.getComputedStyle(article);
+    let surface = '';
+    for (let el = metaHost; el; el = el.parentElement) {
+      const candidate = win.getComputedStyle(el).backgroundColor;
+      if (hasVisiblePaint(candidate)) { surface = candidate; break; }
+    }
+    if (!surface) surface = win.getComputedStyle(doc.body).backgroundColor;
+    if (!hasVisiblePaint(surface)) surface = '#fff';
+    const color = metaStyle.color || articleStyle.color || '#222';
+    nav.style.setProperty('--ssv-text', color);
+    nav.style.setProperty('--ssv-surface', surface);
+    nav.style.setProperty('--ssv-border-color', `color-mix(in srgb, ${color} 24%, transparent)`);
+    nav.style.setProperty('--ssv-hover-color', `color-mix(in srgb, ${color} 10%, transparent)`);
+    nav.style.setProperty('--ssv-border-radius', articleStyle.borderRadius !== '0px' ? articleStyle.borderRadius : '4px');
+    nav.style.setProperty('--ssv-font-family', metaStyle.fontFamily);
+    nav.style.setProperty('--ssv-font-weight', metaStyle.fontWeight);
+    nav.style.setProperty('--ssv-line-height', metaStyle.lineHeight);
+    nav.style.setProperty('--ssv-menu-font-size', metaStyle.fontSize);
+    const width = metaHost.clientWidth;
+    const size = Math.min((parseFloat(metaStyle.fontSize)||16)*.92, Math.max(9,width/17));
+    nav.style.setProperty('--ssv-nav-font-size', size + 'px');
+  }
 
-    const menu = document.createElement('div');
-    menu.className = 'jsd-linear-menu';
-    menu.addEventListener('click', function (event) {
-      const item = event.target && event.target.closest ? event.target.closest('.jsd-linear-menu-item') : null;
-      if (!item || !menu.contains(item)) return;
-      const index = Number(item.getAttribute('data-index'));
-      if (Number.isNaN(index)) return;
-      goTo(index);
-      closeMenu();
+  function closeMenu() {
+    if (!menuPanel || menuPanel.hidden) return;
+    menuPanel.hidden = true;
+    menuButton?.setAttribute('aria-expanded', 'false');
+  }
+
+  function fitMenuToViewport() {
+    if (!menuPanel || menuPanel.hidden) return;
+    const top = menuPanel.getBoundingClientRect().top;
+    const remaining = Math.max(40, (win.innerHeight || doc.documentElement.clientHeight) - top - 10);
+    const maximum = safeLength(options.menuMaxHeight, 704);
+    menuPanel.style.setProperty('max-height', Math.min(remaining, maximum) + 'px', 'important');
+  }
+
+  function toggleMenu() {
+    if (!menuPanel || !menuButton) return;
+    menuPanel.hidden = !menuPanel.hidden;
+    menuButton.setAttribute('aria-expanded', String(!menuPanel.hidden));
+    if (!menuPanel.hidden) { syncTheme(); updateMenuCurrent(); fitMenuToViewport(); }
+  }
+
+  function updateMenuCurrent() {
+    if (!menuPanel) return;
+    menuPanel.querySelectorAll('[data-ssv-page]').forEach(button => {
+      if (Number(button.dataset.ssvPage) === currentPage) {
+        button.setAttribute('aria-current', 'page');
+      } else {
+        button.removeAttribute('aria-current');
+      }
     });
+  }
 
-    controls.appendChild(menu);
+  function onOutsidePointer(event) {
+    if (nav && !nav.contains(event.target)) closeMenu();
+  }
 
-    if (state.config.controls.menu.show) {
-      const menubutton = createButton('menu', state.config.controls.menu.label, toggleMenu);
-      controls.appendChild(menubutton);
-      state.dom.menubutton = menubutton;
-    } else {
-      state.dom.menubutton = null;
-    }
+  function onMenuKey(event) {
+    if (event.key !== 'Escape' || !menuPanel || menuPanel.hidden) return;
+    closeMenu();
+    menuButton?.focus();
+    event.preventDefault();
+  }
 
-    if (state.config.controls.first.show) {
-      controls.appendChild(createButton('first', state.config.controls.first.label, function () {
-        firstSlide();
-      }));
-    }
+  function makeNav(sectionSlides) {
+    const bar = doc.createElement('nav');
+    bar.className = 'ssv-nav';
+    bar.setAttribute('aria-label', 'Slide navigation');
+    const previous = createButton(options.previousLabel, 'ssv-nav-prev', prev, 'Previous page');
+    const index = createButton(options.indexLabel, 'ssv-nav-index', toggleMenu, 'Choose a section');
+    const following = createButton(options.nextLabel, 'ssv-nav-next', next, 'Next page');
+    index.setAttribute('aria-haspopup', 'true');
+    index.setAttribute('aria-expanded', 'false');
+    index.setAttribute('aria-controls', 'ssv-section-menu');
+    const dropdown = doc.createElement('div');
+    dropdown.className = 'ssv-nav-menu';
+    dropdown.id = 'ssv-section-menu';
+    dropdown.setAttribute('role', 'group');
+    dropdown.setAttribute('aria-label', 'Sections');
+    dropdown.hidden = true;
 
-    if (state.config.controls.prev.show) {
-      controls.appendChild(createButton('prev', state.config.controls.prev.label, function () {
-        prevSlide();
-      }));
-    }
-
-    if (state.config.controls.next.show) {
-      controls.appendChild(createButton('next', state.config.controls.next.label, function () {
-        nextSlide();
-      }));
-    }
-
-    if (state.config.controls.last.show) {
-      controls.appendChild(createButton('last', state.config.controls.last.label, function () {
-        lastSlide();
-      }));
-    }
-
-    if (state.config.controls.autoplay.show) {
-      const autoplaybutton = createButton('autoplay', state.config.controls.autoplay.label, function () {
-        toggleAutoplay();
-        updateToolbarState();
+    const addEntry = (label, page, handler) => {
+      const button = createButton(label, 'ssv-nav-menu-item', () => {
+        closeMenu();
+        handler();
       });
-      controls.appendChild(autoplaybutton);
-      state.dom.autoplaybutton = autoplaybutton;
-    } else {
-      state.dom.autoplaybutton = null;
-    }
-
-    toolbar.appendChild(drag);
-    toolbar.appendChild(controls);
-    document.body.appendChild(toolbar);
-
-    state.dom.toolbar = toolbar;
-    state.dom.controls = controls;
-    state.dom.menu = menu;
-    state.menuSignature = '';
-
-    attachDragging(toolbar, drag);
+      button.dataset.ssvPage = String(page);
+      dropdown.appendChild(button);
+    };
+    addEntry('Index', 0, showIndex);
+    sectionSlides.forEach((section, indexNumber) => {
+      addEntry(section.title, indexNumber + 1, () => goTo(indexNumber));
+    });
+    bar.append(previous, index, following, dropdown);
+    menuButton = index;
+    menuPanel = dropdown;
+    return bar;
   }
 
-  function mountRoot() {
-    const root = document.createElement('div');
-    root.className = 'jsd-linear-root';
-    state.target.innerHTML = '';
-    state.target.appendChild(root);
-    state.dom.root = root;
+  function makeIndex(viewport) {
+    const heading = doc.createElement('h1');
+    heading.className = 'ssv-heading';
+    heading.textContent = options.indexHeading != null
+      ? String(options.indexHeading)
+      : String(options.indexPage?.headingText ?? "Here's Index");
+    viewport.appendChild(heading);
+
+    const actions = doc.createElement('div');
+    actions.className = 'ssv-index-actions';
+    actions.append(
+      createButton(options.viewOriginalLabel, '', () => disable(), 'Show original article'),
+      createButton(options.fromBeginningLabel, '', () => goTo(0), 'Start from the first section')
+    );
+    viewport.appendChild(actions);
+
+    const body = doc.createElement('div');
+    body.className = 'ssv-body';
+    const list = doc.createElement('ol');
+    list.className = 'ssv-index-list';
+    slides.forEach((slide, i) => {
+      const item = doc.createElement('li');
+      const anchor = doc.createElement('a');
+      anchor.href = '#simple-slide-page-' + (i + 1);
+      const number = doc.createElement('span');
+      number.className = 'ssv-index-number';
+      number.textContent = (i + 1) + '.';
+      const title = doc.createElement('span');
+      title.textContent = slide.title;
+      anchor.append(number, title);
+      anchor.addEventListener('click', event => {
+        event.preventDefault();
+        goTo(i);
+      });
+      item.appendChild(anchor);
+      list.appendChild(item);
+    });
+    body.appendChild(list);
+    viewport.appendChild(body);
+    return body;
   }
 
-  function onResize() {
-    window.clearTimeout(state.resizeTimer);
-    state.resizeTimer = window.setTimeout(function () {
-      if (!state.slides.length || !state.dom.root) return;
-      injectStyle();
-      renderCurrent();
-    }, 120);
+  function makeContent(viewport, pageIndex) {
+    const slide = slides[pageIndex];
+    const body = doc.createElement('div');
+    body.className = 'ssv-body';
+    if (options.animation !== 'none') body.classList.add('ssv-fade');
+    const fragment = slide.template.cloneNode(true);
+    // Preserve actual heading markup, including links, emphasis, code and IDs.
+    if (slide.hasHeading) {
+      const firstHeading = fragment.querySelector('h' + slide.headingLevel);
+      if (firstHeading) firstHeading.classList.add('ssv-heading');
+    }
+    body.appendChild(fragment);
+    viewport.appendChild(body);
+    return body;
   }
 
-  function onKeydown(event) {
-    const tag = event.target && event.target.tagName ? event.target.tagName.toUpperCase() : '';
-    const editable = event.target && (event.target.isContentEditable || tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT');
-    if (editable) return;
-
-    if (event.key === 'ArrowLeft') {
-      prevSlide();
-      return;
-    }
-    if (event.key === 'ArrowRight') {
-      nextSlide();
-      return;
-    }
-    if (event.key === 'Home') {
-      firstSlide();
-      return;
-    }
-    if (event.key === 'End') {
-      lastSlide();
-      return;
-    }
-    if (event.key === 'Escape') {
-      closeMenu();
-    }
+  function render() {
+    if (!active || !slideRoot) return;
+    const oldViewport = slideRoot.querySelector('.ssv-viewport');
+    if (oldViewport) oldViewport.remove();
+    const viewport = doc.createElement('section');
+    viewport.className = 'ssv-viewport';
+    viewport.setAttribute('aria-label', currentPage === 0 ? 'Index' : `Page ${currentPage}`);
+    const body = currentPage === 0
+      ? makeIndex(viewport)
+      : makeContent(viewport, currentPage - 1);
+    slideRoot.appendChild(viewport);
+    updateMenuCurrent();
+    emit('content:rendered', body);
   }
 
-  function onOutsideClick(event) {
-    if (!state.dom.toolbar || !state.dom.toolbar.contains(event.target)) closeMenu();
+  function scrollToTop() {
+    if (!active || !slideRoot) return;
+    // Scrolling after rendering avoids landing halfway into the next slide.
+    const top = slideRoot.getBoundingClientRect().top + win.scrollY;
+    win.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
   }
 
-  function bindGlobals() {
-    if (!state.resizeBound) {
-      window.addEventListener('resize', onResize);
-      state.resizeBound = true;
-    }
-    if (!state.keyBound) {
-      document.addEventListener('keydown', onKeydown);
-      state.keyBound = true;
-    }
-    if (!state.outsideClickBound) {
-      document.addEventListener('click', onOutsideClick);
-      state.outsideClickBound = true;
-    }
-  }
-
-  function initState() {
-    const nextTarget = findTarget();
-    if (!nextTarget) return false;
-    if (state.target !== nextTarget) {
-      document.dispatchEvent(new CustomEvent('content:prepare', {detail: {container: nextTarget}}));
-      state.target = nextTarget;
-      state.originalHTML = nextTarget.innerHTML;
-    } else if (!state.originalHTML) {
-      state.originalHTML = nextTarget.innerHTML;
-    }
-    state.slides = applyIndexPage(parseSlidesFromOriginal());
-    state.currentIndex = 0;
+  function goTo(index) {
+    if (!active) return false;
+    const numeric = Number(index);
+    if (!Number.isInteger(numeric) || numeric < 0 || numeric >= slides.length) return false;
+    currentPage = numeric + 1;
+    render();
+    scrollToTop();
     return true;
   }
 
-  function rebuild(nextConfig) {
-    if (nextConfig && typeof nextConfig === 'object') {
-      merge(state.userConfig, nextConfig);
+  function showIndex() {
+    if (!active) return false;
+    currentPage = 0;
+    render();
+    scrollToTop();
+    return true;
+  }
+
+  function next() {
+    if (!active) return false;
+    currentPage = (currentPage + 1) % (slides.length + 1);
+    render();
+    scrollToTop();
+    return true;
+  }
+
+  function prev() {
+    if (!active) return false;
+    currentPage = (currentPage + slides.length) % (slides.length + 1);
+    render();
+    scrollToTop();
+    return true;
+  }
+
+  function enable(input) {
+    const nextTarget = resolveTarget(input);
+    if (!nextTarget) return false;
+    if (active && target === nextTarget) return true;
+    if (active) disable();
+
+    // Ask any existing plugins to undo their own transformations before capture.
+    emit('content:prepare', nextTarget);
+
+    const fragment = doc.createDocumentFragment();
+    let tentativeRoot = null;
+    let tentativeControls = null;
+    let mountedMeta = null;
+    while (nextTarget.firstChild) fragment.appendChild(nextTarget.firstChild);
+    try {
+      const parsed = parseSlides(fragment);
+      const root = doc.createElement('div');
+      root.className = 'ssv-root';
+      tentativeRoot = root;
+      const controls = makeNav(parsed);
+      tentativeControls = controls;
+      nextTarget.appendChild(root);
+      injectStyle();
+      mountedMeta = mountNav(nextTarget, controls);
+
+      originals = fragment;
+      target = nextTarget;
+      slideRoot = root;
+      nav = controls;
+      metaHost = mountedMeta.host;
+      metaOriginals = mountedMeta.contents;
+      metaCreated = mountedMeta.created;
+      slides = parsed;
+      currentPage = 0; // Always open on Index, not on the first content page.
+      active = true;
+      doc.addEventListener('pointerdown', onOutsidePointer, true);
+      doc.addEventListener('keydown', onMenuKey);
+      win.addEventListener('resize', fitMenuToViewport, { passive: true });
+      syncTheme();
+      render();
+      return true;
+    } catch (error) {
+      // The exception path also restores the exact source nodes and state.
+      if (active && target === nextTarget) disable();
+      else {
+        tentativeControls?.remove();
+        if (mountedMeta) {
+          if (mountedMeta.created) mountedMeta.host.remove();
+          else {
+            mountedMeta.host.classList.remove('ssv-meta-host');
+            mountedMeta.host.appendChild(mountedMeta.contents);
+          }
+        }
+        tentativeRoot?.remove();
+        nextTarget.insertBefore(fragment, nextTarget.firstChild);
+        menuButton = null;
+        menuPanel = null;
+      }
+      throw error;
     }
-    state.config = buildConfig();
+  }
 
-    clearAutoplay();
+  function disable() {
+    if (!active || !target) return false;
+    const restoredTarget = target;
+    // Remove only nodes created by this script. The originals were never cloned.
     closeMenu();
+    restoreNavHost();
+    if (slideRoot && slideRoot.parentNode) slideRoot.remove();
+    if (originals) restoredTarget.insertBefore(originals, restoredTarget.firstChild);
+    doc.removeEventListener('pointerdown', onOutsidePointer, true);
+    doc.removeEventListener('keydown', onMenuKey);
+    win.removeEventListener('resize', fitMenuToViewport);
+    active = false;
+    target = null;
+    originals = null;
+    slideRoot = null;
+    nav = null;
+    menuButton = null;
+    menuPanel = null;
+    slides = [];
+    currentPage = 0;
+    emit('content:restored', restoredTarget);
+    return true;
+  }
 
-    if (!initState()) return null;
+  function toggle(input) {
+    const selected = resolveTarget(input);
+    if (active && (!input || selected === target)) return disable();
+    return enable(input);
+  }
 
-    injectStyle();
-    mountRoot();
-    buildToolbar();
-    bindGlobals();
-    renderCurrent();
-    return api;
+  function refresh() {
+    if (!active || !originals) return false;
+    const previousPage = currentPage;
+    slides = parseSlides(originals);
+    currentPage = Math.min(previousPage, slides.length);
+    render();
+    return true;
+  }
+
+  function updateConfig(changes) {
+    if (changes && typeof changes === 'object') Object.assign(options, changes);
+    const wasActive = active;
+    const oldTarget = target;
+    if (wasActive) disable();
+    doc.getElementById(options.styleId)?.remove();
+    if (wasActive) enable(oldTarget);
+    return getConfig();
   }
 
   function destroy() {
-    clearAutoplay();
-    closeMenu();
-    window.clearTimeout(state.resizeTimer);
-    state.resizeTimer = null;
-
-    if (typeof state.dragCleanup === 'function') state.dragCleanup();
-    state.dragCleanup = null;
-
-    if (state.resizeBound) {
-      window.removeEventListener('resize', onResize);
-      state.resizeBound = false;
-    }
-    if (state.keyBound) {
-      document.removeEventListener('keydown', onKeydown);
-      state.keyBound = false;
-    }
-    if (state.outsideClickBound) {
-      document.removeEventListener('click', onOutsideClick);
-      state.outsideClickBound = false;
-    }
-
-    if (state.dom.toolbar) state.dom.toolbar.remove();
-
-    const style = document.getElementById('jsd-linear-style');
-    if (style) style.remove();
-
-    if (state.target && typeof state.originalHTML === 'string') {
-      state.target.innerHTML = state.originalHTML;
-    }
-
-    state.dom = {};
-    state.slides = [];
-    state.currentIndex = 0;
-    state.menuSignature = '';
+    disable();
+    doc.getElementById(options.styleId)?.remove();
   }
 
   function getState() {
     return {
-      currentIndex: state.currentIndex,
-      totalSlides: state.slides.length,
-      mode: state.config.mode,
-      slideTitles: state.slides.map(function (slide, index) {
-        return getMenuItemTitle(slide, index);
-      }),
-      autoplay: Boolean(state.autoplayTimer)
+      mode: active ? 'slide' : 'original',
+      currentPage, // 0 = index, 1..N = content pages
+      currentSlideIndex: active && currentPage > 0 ? currentPage - 1 : -1,
+      contentPages: slides.length,
+      totalPages: active ? slides.length + 1 : 0,
+      titles: slides.map(slide => slide.title)
     };
   }
 
-  function getConfig() {
-    return deepClone(state.config);
-  }
+  function getConfig() { return Object.assign({}, options); }
 
   const api = {
-    rebuild: rebuild,
-    destroy: destroy,
-    getState: getState,
-    getConfig: getConfig,
-    next: nextSlide,
-    prev: prevSlide,
-    first: firstSlide,
-    last: lastSlide,
-    goTo: goTo,
-    reveal: reveal,
-    startAutoplay: startAutoplay,
-    stopAutoplay: clearAutoplay,
-    toggleAutoplay: toggleAutoplay
+    toggle, enable, disable, refresh, destroy, updateConfig,
+    next, prev, goTo, showIndex, fromBeginning: () => goTo(0),
+    getState, getConfig
   };
-
-  window.updateLinearConfig = function (nextConfig) {
-    return rebuild(nextConfig || {});
-  };
-  window.JSDLinearSlides = api;
+  win.simpleSlide = api;
 
   function boot() {
-    rebuild({});
+    if (started) return;
+    started = true;
+    if (options.autoStart) enable(options.targetSelector);
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once: true });
-  } else {
-    boot();
-  }
-})();
+  if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', boot, { once: true });
+  else boot();
+})(window, document);

@@ -1,6 +1,6 @@
 ---
 title: "Emacs Quick Reference"
-layout: slide-multilingual
+layout: slide-linear
 categories: Sheet
 subclass: Toolset
 ---

@@ -2,7 +2,7 @@
 categories: Notes
 title: LLM Prompt Engineering for Study Assistance
 subclass: LLMs
-layout: post-bilingual
+layout: post-parallel
 ---
 
 ## Basic Techniques for Effective Prompts

@@ -30,13 +30,9 @@ Priority:
 {% endif %}
 
 {% case page.layout %}
-{% when "slide-annotation", "slide-linear", "slide-multilingual", "slide-simple", "slide-tree", "slide-wiki" %}
+{% when "slide-linear", "slide-tree", "slide-wiki" %}
 {% assign title_region_enabled = false %}
 {% assign show_title_enabled = false %}
-{% when "post-bilingual" %}
-{% assign bilingual_mode_enabled = true %}
-{% when "post-horizontal" %}
-{% assign horizontal_mode_enabled = true %}
 {% endcase %}
 
 {% if title_region_enabled and site.ui.features.abbreviation and resolved_abbreviation != "" %}
@@ -201,17 +197,6 @@ Valid modes: list | chart | compact | false | nil
   <script defer src="{{ '/src/assets/js/image-viewer.js' | relative_url }}"></script>
   <!-- CODE BLOCK ENHANCEMENT -->
   <script defer src="{{ '/src/assets/js/code-block-enhancement.js' | relative_url }}"></script>
- 
-  <!-- [LAYOUT SPECIFIC] -->
-  <!-- BILINGUAL MODE -->
-  {% if bilingual_mode_enabled %}
-  <script defer src="{{ '/src/assets/js/bilingual.js' | relative_url }}"></script>
-  {% endif %}
-  <!-- horizontal LAYOUT: PARALLEL TEXT -->
-  {% if horizontal_mode_enabled %}
-  <script defer src="{{ '/src/assets/js/parallel-text.js' | relative_url }}"></script>
-  {% endif %}
-
 </head>
 
 <body class=" page">

@@ -1,6 +1,6 @@
 ---
 title: "Principles of Serious Literature"
-layout: slide-multilingual
+layout: slide-linear
 categories: Sheet
 subclass: Basics
 ---

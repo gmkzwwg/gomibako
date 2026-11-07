@@ -2,7 +2,7 @@
 title: "A Guide to Cognitive Biases"
 categories: Sheet
 subclass: Thinking
-layout: post-vertical
+layout: post-bilingual
 ---
 
 # English

@@ -2,7 +2,7 @@
 title: "A History of the European Revolutions of 1848"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

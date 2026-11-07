@@ -2,7 +2,7 @@
 title: "A Guide to Formal and Informal Fallacies"
 categories: Sheet
 subclass: Thinking
-layout: post-vertical
+layout: post-bilingual
 ---
 
 

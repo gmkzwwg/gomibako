@@ -1,6 +1,6 @@
 ---
 title: "LLM Prompt Engineering Guide"
-layout: post-bilingual
+layout: post-parallel
 categories: Notes
 subclass: LLMs
 abbreviation: Prompt Engineering

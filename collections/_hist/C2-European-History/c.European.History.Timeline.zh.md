@@ -1,7 +1,7 @@
 ---
 title: "European History Timeline"
 abbreviation: Europe History
-layout: slide-simple
+layout: slide-linear
 categories: Chron
 subclass: European History
 ---

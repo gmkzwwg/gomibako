@@ -1,7 +1,7 @@
 ---
 title: "The Chimp Paradox Reading Notes"
 subtitle: "How to Manage Emotion Without Suppressing It"
-layout: post-bilingual
+layout: post-parallel
 categories: Notes
 abbreviation: Chimp Paradox
 subclass: Psychopathology

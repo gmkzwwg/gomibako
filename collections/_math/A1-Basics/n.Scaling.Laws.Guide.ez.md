@@ -1,6 +1,6 @@
 ---
 title: "Scaling Laws and the Square-Cube Law"
-layout: post-bilingual
+layout: post-parallel
 categories: Notes
 subclass: Basics
 ---

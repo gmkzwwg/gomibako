@@ -1,6 +1,6 @@
 ---
 title: "Literature Learning Atlas"
-layout: slide-multilingual
+layout: slide-linear
 categories: Atlas
 subclass: Basics
 ---

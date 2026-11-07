@@ -1,6 +1,6 @@
 ---
 title: Stephen Pinker - Human Nature, Language, Reason, and the Progress of Civilization
-layout: post-vertical
+layout: post-parallel
 layout: print
 categories: Notes
 language: [en, zh-CN]

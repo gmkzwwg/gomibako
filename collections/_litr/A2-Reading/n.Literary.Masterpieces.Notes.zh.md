@@ -1,6 +1,6 @@
 ---
 title: "Reading Notes on Literary Masterpieces"
-layout: slide-simple
+layout: slide-linear
 categories: Notes
 subclass: Reading
 ---

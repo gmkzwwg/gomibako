@@ -2,7 +2,7 @@
 title: "A History of the French Revolution"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

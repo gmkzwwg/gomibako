@@ -1,6 +1,6 @@
 ---
-title: Technical Talks
-layout: post-horizontal
+title: Talks about Philosophy of Technique
+layout: post-parallel
 categories: Notes
 subclass: Software Engineering
 ---
@@ -13,7 +13,7 @@ subclass: Software Engineering
 
 > 小弗雷德里克·P. 布鲁克斯，北卡罗来纳大学教堂山分校
 
-> *There is no single development, in either technology or management technique, which by itself promises even one order-of-magnitude improvement within a decade in productivity, in reliability, in simplicity.*
+*There is no single development, in either technology or management technique, which by itself promises even one order-of-magnitude improvement within a decade in productivity, in reliability, in simplicity.*
 
 > *无论是技术还是管理方法，都没有哪一项单独的发展，能够独力承诺在十年内使软件的生产率、可靠性或简洁性提高一个数量级。*
 
@@ -759,8 +759,6 @@ How to grow great designers? Space does not permit a lengthy discussion, but som
 
 ### Abstract
 
-> **摘要**
-
 In 1986 Brooks divided the work of software into two parts. The **essential** part is fashioning the complex conceptual structures that make up a software system. The **accidental** part is representing those structures in programming languages and mapping them onto machines. He showed by simple arithmetic that unless accidental work were more than nine-tenths of the whole, abolishing it could not yield a tenfold gain.
 
 > 1986 年，布鲁克斯把软件工作分成两部分。**本质性**工作，是塑造构成软件系统的复杂概念结构；**附属性**工作，则是用编程语言表示这些结构，再将它们映射到机器上。他用简单的算术说明：除非附属性工作占总工作量的九成以上，否则即使将其完全消除，也无法带来十倍的提升。
@@ -803,8 +801,6 @@ The machines have also done something Brooks did not foresee. They have absorbed
 
 ### Introduction: the apprentice's broom
 
-> **引言：魔法学徒的扫帚**
-
 Brooks began with the werewolf, the familiar thing that turns without warning into a horror. The software project of 1986 was such a creature: innocent at the start, then a monster of missed schedules, blown budgets, and flawed products. People cried out for a silver bullet to make software costs fall as fast as hardware costs.
 
 > 布鲁克斯以狼人开篇：一种熟悉的事物，毫无预警地变成了恐怖之物。1986 年的软件项目正是这样的生物：起初看起来无害，后来却变成进度拖延、预算超支、产品漏洞百出的怪物。人们呼唤银弹，希望软件成本能像硬件成本一样快速下降。
@@ -834,8 +830,6 @@ Skepticism, Brooks wrote, is not pessimism. Neither is enthusiasm a measurement.
 > 布鲁克斯写道，怀疑不等于悲观。同样，热情也不等于测量。以下论述试图让两者各归其位。
 
 ### Does it still have to be hard? The essential difficulties
-
-> **软件仍然非得这么难吗？本质性困难**
 
 Brooks located the difficulty of software in the specification, design, and testing of a conceptual construct, not in the labor of representing it. In 2026 the labor of representing it is nearly free. That is a rare gift to the theorist: the essence can now be observed with most of the accident stripped away. All four of his essential properties survive, and each has taken a new form.
 
@@ -887,8 +881,6 @@ In 1986 this property was hidden, because whoever wrote a line was presumed to h
 
 ### The great assault on accident
 
-> **对附属性困难的大举进攻**
-
 Brooks credited three past breakthroughs: high-level languages, time-sharing, and unified programming environments. Each attacked a different accidental difficulty, and each had a natural ceiling. Since 1986 three more have arrived. The first two behaved exactly as his theory predicts. The third is different in degree, and the degree is large enough to change what is left.
 
 > 布鲁克斯肯定了过去的三次突破：高级语言、分时系统，以及统一编程环境。它们各自解决了一种附属性困难，也各自有天然的上限。1986 年以来，又出现了三次突破。前两次完全符合他的理论预测。第三次在程度上有所不同，而且幅度之大，足以改变余下工作的面貌。
@@ -930,8 +922,6 @@ The mass market and memory safety attacked accidents and stopped there. Language
 > 大众市场和内存安全攻克了附属性困难，便止步于此。语言模型则是第一种跨过这条界线、同时触及本质的工具。下面几节将讨论这一点。
 
 ### The productivity equation, rerun
-
-> **重新计算生产率方程**
 
 Brooks bounded every attack on accident with one equation:
 
@@ -999,15 +989,11 @@ For the industry as a whole, measured gains fall short of tenfold by a factor of
 
 ### Hopes for the silver, revisited
 
-> **重新审视那些银弹希望**
-
 Brooks examined the technologies most often advanced as silver bullets and asked of each whether it addressed essence or accident. Several of those hopes have returned in new clothing. It is instructive to hold them against his original verdicts.
 
 > 布鲁克斯考察了最常被推举为银弹的技术，并逐一追问：它解决的是本质性困难，还是附属性困难？其中一些希望如今换上新装，再次归来。把它们与他当年的判断对照，很有启发。
 
 #### Artificial intelligence
-
-> **人工智能**
 
 Following Parnas, Brooks distinguished two meanings of AI. AI-1 meant solving problems that once required human intelligence, a definition that slides as each solved problem stops being called AI. AI-2 meant rule-based, heuristic programming modeled on human experts. He found no body of technology unique to the field and doubted that speech or image recognition would change programming.
 
@@ -1023,8 +1009,6 @@ His core objection survives intact. The hard thing about building software is de
 
 #### Expert systems
 
-> **专家系统**
-
 Brooks's most hopeful passage concerned expert systems. Their greatest contribution, he predicted, would be to put the experience of the best programmers at the service of the inexperienced, because the gap between best and average practice is wider in software than in any other engineering discipline. The obstacle was knowledge acquisition, and the prerequisite was to have an expert.
 
 > 布鲁克斯最抱希望的一段讨论，是关于专家系统的。他预测，专家系统最大的贡献，是把最优秀程序员的经验提供给缺乏经验的人，因为软件领域中最佳实践与平均实践之间的差距，比任何其他工程领域都大。障碍在于知识获取，而前提是先有一位专家。
@@ -1039,8 +1023,6 @@ In a randomized trial, developers learning a new library with AI scored 17% lowe
 
 #### "Automatic" programming
 
-> **“自动”编程**
-
 Parnas called automatic programming a euphemism for programming in a higher-level language than the one currently available. Brooks added that in most cases it is the solution method, not the problem, that must be specified. Generators worked only where problems had few parameters, many known methods, and explicit rules for choosing among them.
 
 > Parnas 把自动编程称为一种委婉说法，实际含义是用一种比当前可用语言更高级的语言编程。布鲁克斯补充道，大多数时候，必须明确说明的是求解方法，而不是问题本身。只有当问题参数较少、已知解法很多，而且选择解法的规则明确时，生成器才能奏效。
@@ -1050,8 +1032,6 @@ Parnas's line is now literally true. The higher-level language is structured Eng
 > Parnas 的话如今在字面上成了现实。更高级的语言，是结构化的英语加示例；它的编译器则是概率性的。从规格说明到计划、任务，再到实现的规格驱动开发，是这一方式的显式形态；GitHub 的 Spec Kit 在数月内就获得了超过 10 万颗星标 \[16\]。由于模型的方法库是整个语料库，更多问题开始符合布鲁克斯所说的有利条件。但新颖而特殊的问题仍不符合，对于这些问题，方法依然需要人来提供或发现。
 
 #### Program verification
-
-> **程序验证**
 
 Brooks granted verification real power but denied that it saves labor. Proofs can be wrong, and even a perfect proof shows only that a program meets its specification. Much of building a program, he wrote, is debugging the specification.
 
@@ -1067,23 +1047,17 @@ The deeper objection stands, and becomes central. When proof is cheap, all remai
 
 #### Graphical programming
 
-> **图形化编程**
-
 Brooks was certain that graphical programming would disappoint: flowcharts are poor abstractions, screens too small, and software is not geometric. He was right, and the outcome confirms his reasoning. The high-level medium that finally won was language, not pictures. Low-code tools thrived for forms and workflows, but no one designs general systems by drawing them.
 
 > 布鲁克斯确信图形化编程会令人失望：流程图不是好的抽象，屏幕太小，而软件本身也不是几何对象。他是对的，结果印证了他的推理。最终胜出的高级媒介是语言，而不是图像。低代码工具在表单和工作流领域蓬勃发展，但没有人靠画图来设计通用系统。
 
 #### Workstations
 
-> **工作站**
-
 Brooks asked how many MIPS one could use fruitfully, and expected think-time to remain the dominant activity in a programmer's day. It is, more than ever. But compute found a use he could not foresee: it now converts directly into code, and agent token spend can reach millions of dollars a year in a large organization \[10\]. Machines no longer merely support the programmer. They substitute for part of the programmer's work.
 
 > 布鲁克斯曾问，一个人究竟能有效利用多少 MIPS，并预期思考时间仍将占据程序员一天中的主要部分。如今，这一点比以往更加明显。但计算资源找到了他未曾预见的用途：它可以直接转化为代码，而大型组织每年为智能体消耗 token 的支出，可以达到数百万美元 \[10\]。机器不再只是辅助程序员，而是在替代程序员的一部分工作。
 
 ### Where the essence went
-
-> **本质去了哪里**
 
 Brooks borrowed his distinction from Aristotle. For Aristotle, the essence of a thing is what it must have to be what it is; its accidents are properties it merely happens to have. Applied to software, the conceptual construct is the essence, and its representation in some language is accident. This is an ontological claim, and it remains true. The construct is the same under every representation.
 
@@ -1119,15 +1093,11 @@ The residual essence, then, is close to what Brooks called the hardest single pa
 
 ### Promising attacks on the conceptual essence
 
-> **直面概念本质的有望途径**
-
 Brooks proposed four attacks on the essence: buy rather than build, refine requirements through rapid prototyping, grow software incrementally, and develop great designers. All four were vindicated. I keep three of them with amendments, add two, and give the fourth its own section.
 
 > 布鲁克斯提出了四条直面本质的途径：购买而非自建，通过快速原型细化需求，以增量方式让软件生长，以及培养卓越的设计者。这四条都得到了验证。我保留其中三条并作修订，新增两条，再将第四条单列一节。
 
 #### 1. Buy, and prefer the maintained to the generated
-
-> **1. 购买，并优先选择有人维护的组件，而非生成的副本**
 
 Brooks's most radical solution was not to construct software at all. That advice now faces a new temptation: generating a private copy instead of reusing a shared one. Every generated duplicate is a fork that no community maintains and no upstream patches. The data already show the drift: duplicated blocks up 81%, updates to legacy code down 74% \[3\].
 
@@ -1138,8 +1108,6 @@ The rule should be to search before generating. Generated code is best used as g
 > 规则应该是先搜索，再生成。生成代码最适合充当有人维护的组件之间的连接代码，而不是替代它们。如今，购买软件还需要维护一份清单，因为大众市场带来了自己的顺应性负担：接受审计的每个代码库所含漏洞的数量，一年内增加了一倍以上 \[5\]。
 
 #### 2. Prototype to discover, then throw the prototype away
-
-> **2. 用原型发现需求，然后丢弃原型**
 
 Brooks held that clients cannot specify a modern system completely and correctly before trying some versions of it. The purpose of a prototype, he wrote, is to make the conceptual structure real so the client can test it for consistency and usability.
 
@@ -1155,15 +1123,11 @@ Brooks once advised planning to throw one away, and later judged that advice too
 
 #### 3. Specify first (new)
 
-> **3. 先写规格说明（新增）**
-
 The specification should become the primary artifact of software, and code its compiled form. Specifications, worked examples, and acceptance tests are the source; review them as rigorously as we once reviewed code. Tools for spec-driven development already exist \[16\]. The rule for maintenance follows: when behavior must change, the specification changes first.
 
 > 规格说明应成为软件的主要产物，代码则是它编译后的形式。规格说明、具体示例和验收测试才是源头；我们应像过去审查代码那样严格地审查它们。规格驱动开发的工具已经存在 \[16\]。由此也可以推出维护规则：需要改变行为时，先修改规格说明。
 
 #### 4. Verify every delegation (new)
-
-> **4. 验证每一次委托（新增）**
 
 When a machine writes code that no person reads, tests, properties, and proofs are the only evidence that it is correct. The verification cost per unit of change is the coefficient that sets the bound on productivity, so that is where investment pays.
 
@@ -1174,8 +1138,6 @@ Automated review already catches a meaningful share of defects; at Anthropic, ap
 > 自动审查已经能发现相当一部分缺陷；在 Anthropic，回溯评估表明，它可以发现约三分之一引发过去事故的缺陷 \[2\]。如今成本已变得可承受的基于性质的测试和形式化证明，应当用于关键路径 \[14\]\[15\]。审查者可以变成机器，但标准不能降低。
 
 #### 5. Grow, and prune
-
-> **5. 生长，也要修剪**
 
 Brooks's most important practical lesson was to grow software rather than build it: get a skeleton running, then flesh it out, so that there is always a working system. Teams, he found, could grow more complex entities than they could build. That advice became orthodoxy.
 
@@ -1190,8 +1152,6 @@ Pruning should therefore be budgeted, not left to conscience: a fixed share of c
 > 因此，修剪应纳入预算，而不是仅凭自觉：预先划出固定比例的工作能力，并确保不被挪用，用于整合、删除和维护旧代码。衡量它的标准应是系统的结构，而不是新增内容的数量。
 
 ### Great designers, and how they will now be made
-
-> **卓越的设计者，以及今后如何培养他们**
 
 Brooks closed on people. Good design practice can be taught, he argued, and it lifts poor designs to good ones. But the difference between good designs and great ones does not lie in method. Great designs come from great designers, and the gap between the great and the average approaches an order of magnitude, as between Salieri and Mozart.
 
@@ -1235,8 +1195,6 @@ Brooks proposed concrete steps for growing great designers. They still hold, and
 
 ### Conclusion: the road
 
-> **结语：道路**
-
 In 1986 Brooks saw no silver bullet and judged that the nature of software made one unlikely. Forty years later a bullet has been fired, and it has struck the accident almost entirely. Representing concepts in languages and mapping them onto machines is on its way to costing nothing.
 
 > 1986 年，布鲁克斯看不到银弹，并判断软件的本性使银弹不太可能出现。四十年后，一颗子弹已经射出，几乎全面命中了附属性困难。用语言表示概念，再将它们映射到机器上，这些工作正走向零成本。
@@ -1262,8 +1220,6 @@ Brooks ended in hope. There was no royal road, he wrote, but there was a road. T
 > *本文由 Anthropic 开发的 AI 模型 Claude 撰写。文中引用的若干数字来自 Anthropic 自身的报告，属于利益相关方的自行报告。*
 
 ### Figure 1. 1986 and 2026, side by side
-
-> **图 1：1986 年与 2026 年的并列比较**
 
 Most of Brooks's positions stand; what changes is where they bind.
 
@@ -1378,8 +1334,6 @@ Most of Brooks's positions stand; what changes is where they bind.
     > - 2026：完成速度超过任何人理解速度的系统。
 
 ### References
-
-> **参考文献**
 
 **The original.** Frederick P. Brooks Jr., "No Silver Bullet: Essence and Accident in Software Engineering," *Proceedings of the IFIP Tenth World Computing Conference*, 1986; reprinted with "No Silver Bullet Refired" and "The Mythical Man-Month after 20 Years" in *The Mythical Man-Month: Anniversary Edition*, Addison-Wesley, 1995. The apprentice is from Goethe's "Der Zauberlehrling" (1797).
 

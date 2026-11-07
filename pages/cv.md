@@ -1,5 +1,5 @@
 ---
-layout: slide-multilingual
+layout: slide-linear
 title_selector: h1
 title: Curriculum Vitae
 post_list: false

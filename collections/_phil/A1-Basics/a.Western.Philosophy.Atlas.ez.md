@@ -1,6 +1,6 @@
 ---
 title: "Western Philosophy Learning Atlas"
-layout: post-bilingual
+layout: post-parallel
 categories: Atlas
 subclass: Basics
 ---

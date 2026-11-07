@@ -92,7 +92,7 @@ flowchart TD
 
 `pages/*.md` 或集合文档的 `layout` 选择具体布局。除 `print` 外，现有布局均通过 `default.html` 获得站点外壳。`default` 再引入 `head`、`header`、两个目录弹窗、元信息、可选评论和页脚。
 
-普通阅读链路：`post*` → `.post-content` → `default`。其中 `post-bilingual` 由 `default` 加载引用块折叠脚本，`post-horizonal` 加载并排对照脚本，`post-vertical` 自行加载按语言标题分区的对照脚本。`post-compact` 的自动最大化实际在 `header.html` 中决定，不能只看那个几行长的布局文件。
+普通阅读链路：`post*` → `.post-content` → `default`。其中 `post-parallel` 由 `default` 加载引用块折叠脚本，`post-horizonal` 加载并排对照脚本，`post-bilingual` 自行加载按语言标题分区的对照脚本。`post-compact` 的自动最大化实际在 `header.html` 中决定，不能只看那个几行长的布局文件。
 
 索引分成两套：
 
@@ -237,7 +237,7 @@ Liquid 官方文档说明 `default` 会替换 `false`，较新文档还提供 `a
 
 ### F07 · P2 · 两处 URL 过滤器拼写错误被宽松构建掩盖
 
-`slide-multilingual.html:9`、`slide-wiki.html:9` 使用 `reltaive_url`。当前 `baseurl` 为空且 Liquid 未启用严格过滤器检查，根站部署下脚本地址仍可能可用；子路径部署会失去预期的路径处理。
+`slide-linear.html:9`、`slide-wiki.html:9` 使用 `reltaive_url`。当前 `baseurl` 为空且 Liquid 未启用严格过滤器检查，根站部署下脚本地址仍可能可用；子路径部署会失去预期的路径处理。
 
 建议修正拼写，并用非空 `baseurl` 做构建检查；严格模式先针对模板逐步启用，避免未经评估地改变整库内容的解析行为。
 
@@ -245,7 +245,7 @@ Liquid 官方文档说明 `default` 会替换 `false`，较新文档还提供 `a
 
 `matrix-ascii-anime.js`、`matrix-ascii-breath.js`、`bilingual-toggle.js`、`code-block-enhancement.js` 都直接赋值 `window.updateConfig`。ASCII 两个版本虽随机只加载一个，仍会与其他组件覆盖同名函数。各脚本已有独立命名空间 API，适合直接使用。
 
-建议统一调用 `AsciiMatrixFlow.updateConfig`、`BilingualMDLayout.updateConfig`、`CodeBlockEnhancement.updateConfig`；将 `post-vertical.html` 中的裸调用也改为对应命名空间。此处确认了覆盖机制，没有据此声称所有页面当前都初始化失败。
+建议统一调用 `AsciiMatrixFlow.updateConfig`、`BilingualMDLayout.updateConfig`、`CodeBlockEnhancement.updateConfig`；将 `post-bilingual.html` 中的裸调用也改为对应命名空间。此处确认了覆盖机制，没有据此声称所有页面当前都初始化失败。
 
 验收：调整某个组件配置不会改动其他组件；脚本加载顺序改变时行为仍明确。
 
@@ -857,7 +857,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | --- | --- | --- |
 | `pages/404.md` | 不存在页面的提示入口。 | permalink=/404；layout=default；后续核对 Pages 的 404.html 输出与返回链接。 |
 | `pages/catelog.md` | 跨学科长期学习路线、知识目录与规划长文。 | permalink=/catelog，layout=print；包含部分旧知识 URL；catelog 是现有文件/路由拼写，迁移需保留兼容。 |
-| `pages/cv.md` | 多语言、带个人风格的自我介绍/CV 页面。 | permalink=/cv，layout=slide-multilingual；并非常规结构化简历数据。 |
+| `pages/cv.md` | 多语言、带个人风格的自我介绍/CV 页面。 | permalink=/cv，layout=slide-linear；并非常规结构化简历数据。 |
 | `pages/index-categories.md` | 按类别浏览八个学科的索引配置。 | permalink=/categories；控制显示的子类和标签等元信息。 |
 | `pages/index-collections.md` | 按八个学科集合浏览的索引配置。 | permalink=/collections；设定集合名单、筛选和条目徽标。 |
 | `pages/index-posts.md` | 个人文章索引配置与导语。 | permalink=/posts；指定 category-book，控制分类折叠、日期及元信息展示。 |
@@ -867,8 +867,8 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `pages/index-todos.md` | TODO 总览入口及各测试/索引页面的辅助导航。 | permalink=/todos；实际任务聚合逻辑在 index-todos 布局，默认不含 posts。 |
 | `pages/index.md` | 首页文案与入口菜单。 | permalink=/，layout=index；shell_menu 指向文章、待办、笔记、测试、自我介绍等入口。 |
 | `pages/project-report.md` | 本项目架构分析、逐文件职责索引、问题与演进建议、持续改动日志。 | permalink=/project-report/；本次唯一新增项目文件，后续随实现更新。 |
-| `pages/test-slide.md` | 幻灯片引擎的多语言说明、配置文档和长内容演示。 | permalink=/test-slide，layout=slide-multilingual；需与脚本实际版本保持一致。 |
-| `pages/test.md` | Markdown/HTML、布局、图标、数学、图表、加密等人工展示和测试文档。 | permalink=/test，layout=post-bilingual；有过时字段和 /slide 链接，不是自动化测试。 |
+| `pages/test-slide.md` | 幻灯片引擎的多语言说明、配置文档和长内容演示。 | permalink=/test-slide，layout=slide-linear；需与脚本实际版本保持一致。 |
+| `pages/test.md` | Markdown/HTML、布局、图标、数学、图表、加密等人工展示和测试文档。 | permalink=/test，layout=post-parallel；有过时字段和 /slide 链接，不是自动化测试。 |
 | `pages/文章类型检索索引.md` | 资料来源、文章形态与 Wiki 类文档的人工检索说明。 | 用户由 collections 移入 pages；无 front matter，仍作为静态 Markdown 处理，内部历史统计不等于当前文件数。 |
 
 ### 9.3 布局（21）
@@ -884,16 +884,16 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `src/_layouts/index-tags.html` | 按 tags 聚合选定集合文档，生成标签筛选。 | 复用 post-index 组件；当前内容没有显式 tags，因此模板存在但列表为空。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index-todos.html` | 遍历集合并筛选非空 front matter todos，显示文档与任务文本。 | 复用 post-index/item；默认只覆盖八个学科，不扫描正文 TODO；当前没有实际接入通用筛选控件。 Hidden 与分类筛选由 default 统一初始化，不再单独加载筛选脚本。 |
 | `src/_layouts/index.html` | 终端风格首页，渲染入口菜单、状态栏、模拟日志和两次闪烁的红色字符画。 | 继承 default；菜单来自 page.shell_menu 或 site.ui.index_shell.menu；合并打字/滚动调度，隐藏/离屏/reduced-motion 时暂停；从 site.data.index_shell.ascii_art 读取字符画。这里是视觉模拟，不是真实命令执行。 |
-| `src/_layouts/post-bilingual.html` | 双语折叠文章的薄正文容器。 | 继承 default；真正的 bilingual.js 加载由 default 根据布局名决定，header 提供总切换按钮。 |
+| `src/_layouts/post-parallel.html` | 双语折叠文章的薄正文容器。 | 继承 default；真正的 bilingual.js 加载由 default 根据布局名决定，header 提供总切换按钮。 |
 | `src/_layouts/post-compact.html` | 紧凑阅读的薄正文容器。 | 继承 default；header 根据布局名自动最大化内容区，布局文件本身不实现最大化。 |
 | `src/_layouts/post-horizonal.html` | 原文与随后引用块并排对照的正文容器。 | default 加载 parallel-text.js，header 自动最大化并提供切换；horizonal 是现有拼写，更名须兼容旧内容。 |
-| `src/_layouts/post-vertical.html` | 按 h1 语言标签分区的双语对照页。 | 加载 bilingual-toggle.js 并设置语言标题选择器；header 自动最大化；裸 updateConfig 调用存在重名覆盖边界。 |
+| `src/_layouts/post-bilingual.html` | 按 h1 语言标签分区的双语对照页。 | 加载 bilingual-toggle.js 并设置语言标题选择器；header 自动最大化；裸 updateConfig 调用存在重名覆盖边界。 |
 | `src/_layouts/post.html` | 普通文章/知识笔记正文容器。 | 继承 default；提供 .post-content，是多数 DOM 增强的作用域。 |
 | `src/_layouts/print.html` | 独立打印/朴素阅读文档壳，带标题、可选目录、公式、Mermaid 和时间线。 标题下方支持 subtitle；浏览器名称经 document-title 组合。 | 不继承 default；使用 print.css，独立配置资源和功能，普通布局中的开关不会自然传播到这里。 |
-| `src/_layouts/slide-annotation.html` | 原文入口与逐段注释阅读的幻灯片预设。 | default + 线性引擎 mode=annotation；Texts/Notes 按钮，关闭目录页。 |
+| `src/_layouts/slide-linear.html` | 原文入口与逐段注释阅读的幻灯片预设。 | default + 线性引擎 mode=annotation；Texts/Notes 按钮，关闭目录页。 |
 | `src/_layouts/slide-linear.html` | 顺序幻灯片预设，支持菜单、首尾跳转和自动播放。 | default + jekyll-slide-linear.js，mode=linear；目录页在开头。 |
-| `src/_layouts/slide-multilingual.html` | 将语言分区作为独立页面切换的幻灯片预设。 | default + 线性引擎 mode=language；脚本路径过滤器误写 reltaive_url。 |
-| `src/_layouts/slide-simple.html` | 按标题顺序分页的简化幻灯片预设。 | default + jekyll-slide-linear.js，mode=simple；配置首/前/后按钮及目录页。 |
+| `src/_layouts/slide-linear.html` | 将语言分区作为独立页面切换的幻灯片预设。 | default + 线性引擎 mode=language；脚本路径过滤器误写 reltaive_url。 |
+| `src/_layouts/slide-linear.html` | 按标题顺序分页的简化幻灯片预设。 | default + jekyll-slide-linear.js，mode=simple；配置首/前/后按钮及目录页。 |
 | `src/_layouts/slide-tree.html` | 按 h1 大节与 h2 小节组织树状幻灯片。 | default + jekyll-slide-tree.js，mode=tree；章节/小节导航与小地图。当前内容未显式使用此布局，但引擎也用于 wiki。 |
 | `src/_layouts/slide-wiki.html` | 树状幻灯片的 Wiki 目录预设。 | default + 树状引擎 mode=wiki；脚本 URL 过滤器拼写错误；headingText 直接插入标题字符串，宜改用 jsonify。 |
 
@@ -970,8 +970,8 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | 文件 | 功能与作用 | 接入关系与修改注意 |
 | --- | --- | --- |
 | `src/assets/js/anticopy.js` | 可配置地拦截复制、选中、快捷键、拖动和右键，观察新增图片。 | page.anticopy=true 时由 default 加载；API 为 AntiCopy，可启用/禁用/恢复；属于前端交互限制。 |
-| `src/assets/js/bilingual-toggle.js` | 识别语言 h1，把首对语言区块按内容块对齐；支持窄屏单语言和恢复双语。 | post-vertical；API BilingualMDLayout；额外暴露同名全局 updateConfig。 |
-| `src/assets/js/bilingual.js` | 扫描引用块并折叠/展开译文，支持逐块标记、全局切换和可选 DOM 自动刷新。 | post-bilingual；API BilingualToggle；默认不插入逐块按钮，header 提供总开关。 |
+| `src/assets/js/bilingual-toggle.js` | 识别语言 h1，把首对语言区块按内容块对齐；支持窄屏单语言和恢复双语。 | post-bilingual；API BilingualMDLayout；额外暴露同名全局 updateConfig。 |
+| `src/assets/js/bilingual.js` | 扫描引用块并折叠/展开译文，支持逐块标记、全局切换和可选 DOM 自动刷新。 | post-parallel；API BilingualToggle；默认不插入逐块按钮，header 提供总开关。 |
 | `src/assets/js/chinese-text-indent.js` | 统计汉字占比，为中文主导段落应用首行缩进。 | text_indent 开关；API ChineseTextIndent；跳过列表、表格、引用、代码、数学和显式豁免元素。 |
 | `src/assets/js/code-block-enhancement.js` | 识别独立代码块，采样样式并重组工具栏，提供复制与外部运行入口。 | 普通布局加载；API CodeBlockEnhancement；MutationObserver；跳过 Mermaid/数学；同时写全局 updateConfig。 |
 | `src/assets/js/context-menu.js` | 定位并控制自定义右键菜单，执行复制、主页、回顶、打印。 | 由 context_menu.html 加载；支持 data-native-menu 保留原菜单；主页路径硬编码为 /。 |
@@ -1026,7 +1026,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_comp/A1-Basics/a.CS.Landscape.en.md` | Computer Science — Landscape | 计算机文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
 | `collections/_comp/A1-Basics/c.CS.Timeline.en.md` | Computer Science — Problem-driven History | 计算机文档；类别：Chron；分组：Basics | 已读入文章页；layout=post |
 | `collections/_comp/A1-Basics/s.CS.Resources.en.md` | Computer Science — Resource Atlas | 计算机文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
-| `collections/_comp/A2-Toolset/s.Emacs.ez.md` | Emacs — Quick Reference | 计算机文档；类别：Sheet；分组：Toolset | 已读入文章页；layout=slide-multilingual |
+| `collections/_comp/A2-Toolset/s.Emacs.ez.md` | Emacs — Quick Reference | 计算机文档；类别：Sheet；分组：Toolset | 已读入文章页；layout=slide-linear |
 | `collections/_comp/A2-Toolset/s.Markdown.en.md` | Markdown — Quick Reference | 计算机文档；类别：Sheet；分组：Toolset | 已读入文章页；layout=post |
 | `collections/_comp/A2-Toolset/s.Regex.en.md` | Regex — Basic Syntax and Practical Usage | 计算机文档；类别：Sheet；分组：Toolset | 已读入文章页；layout=post |
 | `collections/_comp/A3-Operating-Tools/_s.Linux.AI.en.md` | Linux AI Tools — Quick Reference | 计算机文档；类别：Sheet；分组：Operating Tools | 未读入：文件名以 _ 开头 |
@@ -1037,13 +1037,13 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_comp/A3-Operating-Tools/n.TrueNAS.DIY.en.md` | TrueNAS SCALE 24.04 Minimal Tutorial | 计算机文档；类别：Notes；分组：Operating Tools | 已读入文章页；layout=post |
 | `collections/_comp/A3-Operating-Tools/n.Win.Tools.en.md` | Best Windows 11 Tweak Tools | 计算机文档；类别：Notes；分组：Operating Tools | 已读入文章页；layout=post |
 | `collections/_comp/A3-Operating-Tools/s.Linux.Shell.en.md` | Linux Shell Programming | 计算机文档；类别：Sheet；分组：Operating Tools | 已读入文章页；layout=post |
-| `collections/_comp/B1-Programming/n.CTMCP.ez.md` | CTMCP Annotated | 计算机文档；类别：Notes；分组：Programming | 已读入文章页；layout=slide-multilingual |
+| `collections/_comp/B1-Programming/n.CTMCP.ez.md` | CTMCP Annotated | 计算机文档；类别：Notes；分组：Programming | 已读入文章页；layout=slide-linear |
 | `collections/_comp/B1-Programming/n.EOPL.en.md` | EOPL Annotated | 计算机文档；类别：Notes；分组：Programming | 已读入文章页；layout=post |
 | `collections/_comp/B1-Programming/n.SICP.ez.md` | SICP Annotated | 计算机文档；类别：Notes；分组：Programming | 已读入文章页；layout=post |
 | `collections/_comp/B2-Languages/_n.tapl.en.md` | Programming Languages TAPL | 计算机文档；类别：Notes；分组：Languages | 未读入：文件名以 _ 开头 |
 | `collections/_comp/B2-Languages/_s.Kotlin.en.md` | Kotlin — Quick Reference | 计算机文档；类别：Sheet | 未读入：文件名以 _ 开头 |
 | `collections/_comp/B2-Languages/_s.Rust.en.md` | Rust — Quick Reference | 计算机文档；类别：Sheet | 未读入：文件名以 _ 开头 |
-| `collections/_comp/B2-Languages/n.PL.Analysis.ez.md` | Programming Language Analysis | 计算机文档；类别：Notes；分组：Languages | 已读入文章页；layout=slide-multilingual |
+| `collections/_comp/B2-Languages/n.PL.Analysis.ez.md` | Programming Language Analysis | 计算机文档；类别：Notes；分组：Languages | 已读入文章页；layout=slide-linear |
 | `collections/_comp/B2-Languages/n.Scheme.en.md` | Scheme — Quick Reference | 计算机文档；类别：Notes；分组：Languages | 已读入文章页；layout=post |
 | `collections/_comp/B2-Languages/s.C.en.md` | C — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
 | `collections/_comp/B2-Languages/s.Common.Lisp.en.md` | Common Lisp — Quick Reference | 计算机文档；类别：Sheet；分组：Languages | 已读入文章页；layout=post |
@@ -1102,19 +1102,19 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_hist/A2-Historiography/n.Historiography.History.en.md` | History of Western Historiography | 历史文档；类别：Notes；分组：Historiography | 已读入文章页；layout=post |
 | `collections/_hist/B1-World-History/c.World.Economy.zh.md` | World Economy History (世界经济史) | 历史文档；类别：Chron；分组：World History | 已读入文章页；layout=post |
 | `collections/_hist/B1-World-History/c.World.History.en.md` | World History | 历史文档；类别：Chron；分组：World History | 已读入文章页；layout=post |
-| `collections/_hist/C1-Asian-History/c.China.zh.md` | Chinese History (中国史) | 历史文档；类别：Chron；分组：Asian History | 已读入文章页；layout=slide-simple |
+| `collections/_hist/C1-Asian-History/c.China.zh.md` | Chinese History (中国史) | 历史文档；类别：Chron；分组：Asian History | 已读入文章页；layout=slide-linear |
 | `collections/_hist/C1-Asian-History/c.Japan.zh.md` | Japanese History (日本史) | 历史文档；类别：Chron；分组：Asian History | 已读入文章页；layout=post |
 | `collections/_hist/C1-Asian-History/c.West.Asia.zh.md` | West Asia History (西亚史) | 历史文档；类别：Chron；分组：Asian History | 已读入文章页；layout=post |
 | `collections/_hist/C1-Asian-History/n.Chinese.Thoughts.zh.md` | Chinese Thoughts (中国思想史) | 历史文档；类别：Notes；分组：Asian History；状态：精修完成 | 已读入文章页；layout=post |
-| `collections/_hist/C2-European-History/c.Europe.zh.md` | Europe History (欧洲史) | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-simple |
-| `collections/_hist/C2-European-History/c.Hundred.Years.War.ez.md` | The Hundred Years' War | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-multilingual |
-| `collections/_hist/C2-European-History/c.Napoleon.ez.md` | Napoleon Bonaparte | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-multilingual |
+| `collections/_hist/C2-European-History/c.Europe.zh.md` | Europe History (欧洲史) | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-linear |
+| `collections/_hist/C2-European-History/c.Hundred.Years.War.ez.md` | The Hundred Years' War | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-linear |
+| `collections/_hist/C2-European-History/c.Napoleon.ez.md` | Napoleon Bonaparte | 历史文档；类别：Chron；分组：European History | 已读入文章页；layout=slide-linear |
 | `collections/_hist/C3-African-History/c.Egypt.zh.md` | Egypt History (埃及史) | 历史文档；类别：Chron；分组：African History | 已读入文章页；layout=post |
 | `collections/_hist/C4-American-History/c.American.zh.md` | American History (美国史) | 历史文档；类别：Chron；分组：American History；状态：精修完成 | 已读入文章页；layout=post |
 | `collections/_hist/C4-American-History/c.Latin.American.zh.md` | Latin American History (拉美史) | 历史文档；类别：Chron；分组：American History | 已读入文章页；layout=post |
-| `collections/_hist/D1-War-History/c.Post-WWII.Wars.en.md` | Timeline of the Principal Post-1945 Wars | 历史文档；类别：Chron；分组：War History | 已读入文章页；layout=post-bilingual |
-| `collections/_hist/D1-War-History/n.1979.Soviet-Afghan.War.en.md` | Reconstruction of the 1979-1989 Soviet-Afghan War | 历史文档；类别：Notes；分组：War History | 已读入文章页；layout=post-bilingual |
-| `collections/_hist/D1-War-History/n.1991.Gulf.War.en.md` | Reconstruction of the 1990–1991 Gulf War | 历史文档；类别：Notes；分组：War History | 已读入文章页；layout=post-bilingual |
+| `collections/_hist/D1-War-History/c.Post-WWII.Wars.en.md` | Timeline of the Principal Post-1945 Wars | 历史文档；类别：Chron；分组：War History | 已读入文章页；layout=post-parallel |
+| `collections/_hist/D1-War-History/n.1979.Soviet-Afghan.War.en.md` | Reconstruction of the 1979-1989 Soviet-Afghan War | 历史文档；类别：Notes；分组：War History | 已读入文章页；layout=post-parallel |
+| `collections/_hist/D1-War-History/n.1991.Gulf.War.en.md` | Reconstruction of the 1990–1991 Gulf War | 历史文档；类别：Notes；分组：War History | 已读入文章页；layout=post-parallel |
 | `collections/_hist/D2-Intellectual-History/_n.intellectual.history.en.md` | Intellectual History | 历史文档；类别：Notes；分组：Intellectual History | 未读入：文件名以 _ 开头 |
 | `collections/_hist/D3-Science-History/_n.history.of.science.en.md` | History of Science | 历史文档；类别：Notes；分组：Science History | 未读入：文件名以 _ 开头 |
 | `collections/_hist/D4-Economic-History/_n.economic.history.en.md` | Economic History | 历史文档；类别：Notes；分组：Economic History | 未读入：文件名以 _ 开头 |
@@ -1124,18 +1124,18 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_litr/A1-Basics/a.Literature.Atlas.ez.md` | Literature — Learning Atlas | 文学与语言文档；类别：Atlas；分组：Basics | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/A1-Basics/a.Literature.Atlas.ez.md` | Literature — Learning Atlas | 文学与语言文档；类别：Atlas；分组：Basics | 已读入文章页；layout=slide-linear |
 | `collections/_litr/A1-Basics/a.Novelist.Starting.Point.en.md` | The Starting Point of Becoming a Novelist | 文学与语言文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
 | `collections/_litr/A1-Basics/c.Literary.History.Wiki.en.md` | Literature History Timeline | 文学与语言文档；类别：Chron；分组：Basics | 已读入文章页；layout=slide-wiki |
-| `collections/_litr/A1-Basics/n.Literature.Ontology.ez.md` | Ontology of Literature | 文学与语言文档；类别：Notes；分组：Basics | 已读入文章页；layout=slide-multilingual |
-| `collections/_litr/A1-Basics/s.Common.Sense.zh.md` | Literature Knowledge (文学基础常识) | 文学与语言文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-simple |
-| `collections/_litr/A1-Basics/s.Literature.Principles.ez.md` | Principles of Serious Literature | 文学与语言文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-multilingual |
-| `collections/_litr/A2-Reading/n.Masterpieces.en.md` | Notes on Masterpieces | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=slide-simple |
-| `collections/_litr/A2-Reading/n.Masterpieces.zh.md` | Notes on Masterpieces (名著精讲) | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=slide-simple |
+| `collections/_litr/A1-Basics/n.Literature.Ontology.ez.md` | Ontology of Literature | 文学与语言文档；类别：Notes；分组：Basics | 已读入文章页；layout=slide-linear |
+| `collections/_litr/A1-Basics/s.Common.Sense.zh.md` | Literature Knowledge (文学基础常识) | 文学与语言文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-linear |
+| `collections/_litr/A1-Basics/s.Literature.Principles.ez.md` | Principles of Serious Literature | 文学与语言文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-linear |
+| `collections/_litr/A2-Reading/n.Masterpieces.en.md` | Notes on Masterpieces | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=slide-linear |
+| `collections/_litr/A2-Reading/n.Masterpieces.zh.md` | Notes on Masterpieces (名著精讲) | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=slide-linear |
 | `collections/_litr/A2-Reading/n.deep.reading.methods.ez.md` | Deep Reading Methods for Literary Analysis and Craft | 文学与语言文档；类别：Notes；分组：Reading | 已读入文章页；layout=post |
-| `collections/_litr/A2-Reading/s.Personal.Canon.ez.md` | Building a Starter Personal Canon | 文学与语言文档；类别：Sheet；分组：Reading | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/A2-Reading/s.Personal.Canon.ez.md` | Building a Starter Personal Canon | 文学与语言文档；类别：Sheet；分组：Reading | 已读入文章页；layout=slide-linear |
 | `collections/_litr/B3-Motifs/c.motifs.ez.md` | Motifs of World Literature Tradition | 文学与语言文档；类别：Chron；分组：Motifs | 已读入文章页；layout=post |
-| `collections/_litr/C1-Literary-Theory/a.Literary.Theory.Atlas.ez.md` | Literary Theory and Literary Criticism — The Atlas | 文学与语言文档；类别：Atlas；分组：Literary Theory | 已读入文章页；layout=slide-multilingual |
+| `collections/_litr/C1-Literary-Theory/a.Literary.Theory.Atlas.ez.md` | Literary Theory and Literary Criticism — The Atlas | 文学与语言文档；类别：Atlas；分组：Literary Theory | 已读入文章页；layout=slide-linear |
 | `collections/_litr/C1-Literary-Theory/n.lit.theory.zh.md` | Western Literary Theory (西方文学理论) | 文学与语言文档；类别：Notes；分组：Literary Theory | 已读入文章页；layout=post |
 | `collections/_litr/C2-Criticism/_n.literary.criticism.en.md` | Literary Criticism | 文学与语言文档；类别：Notes；分组：Criticism | 未读入：文件名以 _ 开头 |
 | `collections/_litr/C3-Narratology/a.Narratology.ez.md` | Narratology — Learning Atlas | 文学与语言文档；类别：Atlas；分组：Narratology | 已读入文章页；layout=post |
@@ -1178,7 +1178,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_math/A1-Basics/a.math.tools.en.md` | Learn Mathematics with Modern Tools and Workflows | 数学文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post |
 | `collections/_math/A1-Basics/c.history.math.zh.md` | History of Mathematics (数学史和数学思想) | 数学文档；类别：Chron；分组：Basics | 已读入文章页；layout=post |
 | `collections/_math/A1-Basics/n.Math.Methodology.zh.md` | Mathematics Methodology Wiki (数学方法百科) | 数学文档；类别：Notes；分组：Basics | 已读入文章页；layout=slide-linear |
-| `collections/_math/A1-Basics/n.Square.Cubic.ez.md` | Why the World Cannot Simply Be Scaled Up | 数学文档；类别：Notes；分组：Basics | 已读入文章页；layout=post-bilingual |
+| `collections/_math/A1-Basics/n.Square.Cubic.ez.md` | Why the World Cannot Simply Be Scaled Up | 数学文档；类别：Notes；分组：Basics | 已读入文章页；layout=post-parallel |
 | `collections/_math/A1-Basics/s.Math.Resources.en.md` | Mathematics — Resource Reference | 数学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
 | `collections/_math/A1-Basics/s.Math.Symbols.ez.md` | Mathematical Symbol Reference Table | 数学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
 | `collections/_math/A1-Basics/s.elementary.mathematics.zh.md` | Elementary Mathematics Quick Reference (基础数学速查表) | 数学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
@@ -1267,7 +1267,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_phil/A1-Basics/a.phil.ez.md` | Western Philosophy — Learning Atlas | 哲学文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post-bilingual |
+| `collections/_phil/A1-Basics/a.phil.ez.md` | Western Philosophy — Learning Atlas | 哲学文档；类别：Atlas；分组：Basics | 已读入文章页；layout=post-parallel |
 | `collections/_phil/A1-Basics/n.intro.to.phil.ez.md` | Introduction to Western Philosophy | 哲学文档；类别：Notes；分组：Basics | 已读入文章页；layout=post |
 | `collections/_phil/A1-Basics/s.Philosophy.Resources.en.md` | Philosophy — Resource Reference | 哲学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=post |
 | `collections/_phil/A1-Basics/s.Thoughts.Wiki.zh.md` | Human Thought Wiki (人类思想百科) | 哲学文档；类别：Sheet；分组：Basics | 已读入文章页；layout=slide-wiki |
@@ -1288,8 +1288,8 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_phil/C1-Thinking/n.Decision.Model.en.md` | Decision Model | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
 | `collections/_phil/C1-Thinking/n.Rationality.zh.md` | Rationality (理性和理性主义) | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
 | `collections/_phil/C1-Thinking/n.thinking.models.zh.md` | Thinking Models (思维模型) | 哲学文档；类别：Notes；分组：Thinking | 已读入文章页；layout=post |
-| `collections/_phil/C1-Thinking/s.Cognitive.Bias.ez.md` | Cognitive Bias | 哲学文档；类别：Sheet；分组：Thinking | 已读入文章页；layout=post-vertical |
-| `collections/_phil/C1-Thinking/s.Fallacies.ez.md` | Formal and Informal Fallacies | 哲学文档；类别：Sheet；分组：Thinking | 已读入文章页；layout=post-vertical |
+| `collections/_phil/C1-Thinking/s.Cognitive.Bias.ez.md` | Cognitive Bias | 哲学文档；类别：Sheet；分组：Thinking | 已读入文章页；layout=post-bilingual |
+| `collections/_phil/C1-Thinking/s.Fallacies.ez.md` | Formal and Informal Fallacies | 哲学文档；类别：Sheet；分组：Thinking | 已读入文章页；layout=post-bilingual |
 | `collections/_phil/C2-Epistemology/_n.formal.epistemology.en.md` | Formal Epistemology | 哲学文档；类别：Notes；分组：Epistemology | 未读入：文件名以 _ 开头 |
 | `collections/_phil/C2-Epistemology/n.epistemology.en.md` | Modern Epistemology | 哲学文档；类别：Notes；分组：Epistemology | 已读入文章页；layout=post |
 | `collections/_phil/C3-Science-Philosophy/_n.philosophy.of.science.en.md` | Philosophy of Science | 哲学文档；类别：Notes；分组：Science Philosophy | 未读入：文件名以 _ 开头 |
@@ -1343,16 +1343,16 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `collections/_posts/2012-05-09-逆时间和故事.md` | 逆时间和故事 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2012-05-09-逆时间和故事.md` | 逆时间和故事 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2015-12-14-论说教的冲动.md` | 论说教的冲动 — 为什么我们总忍不住教别人做人 | 个人文章与构思文档；类别：散文随笔；状态：合二为一 | 已读入文章页；layout=post |
-| `collections/_posts/2015-12-21-女孩等待着.md` | 女孩，等待着 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2015-12-21-女孩等待着.md` | 女孩，等待着 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2016-02-12-问剑崖上.md` | 随手挥剑·问剑崖上 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=post |
-| `collections/_posts/2016-08-19-白羊数和伐木工.md` | 白羊树和伐木工 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2016-08-19-白羊数和伐木工.md` | 白羊树和伐木工 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2016-09-09-熊孩子语录.md` | 熊孩子语录 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=post |
-| `collections/_posts/2016-11-10-不要随便交朋友.md` | 不要随便交朋友 | 个人文章与构思文档；类别：散文随笔；状态：合二为一 | 已读入文章页；layout=slide-annotation |
-| `collections/_posts/2016-12-24-鸡蛋和锤子.md` | 鸡蛋和锤子 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
-| `collections/_posts/2016-12-31-城堡里的猫和魔法毛线球.md` | 城堡里的猫和魔法毛线球 | 个人文章与构思文档；类别：短篇小说；状态：合二为一 | 已读入文章页；layout=slide-annotation |
-| `collections/_posts/2017-03-13-木偶和木偶师.md` | 木偶和木偶师 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2016-11-10-不要随便交朋友.md` | 不要随便交朋友 | 个人文章与构思文档；类别：散文随笔；状态：合二为一 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2016-12-24-鸡蛋和锤子.md` | 鸡蛋和锤子 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2016-12-31-城堡里的猫和魔法毛线球.md` | 城堡里的猫和魔法毛线球 | 个人文章与构思文档；类别：短篇小说；状态：合二为一 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2017-03-13-木偶和木偶师.md` | 木偶和木偶师 | 个人文章与构思文档；类别：短篇小说；状态：回炉重造 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2017-12-26-毛选总结.md` | 《毛泽东选集》精华总结 | 个人文章与构思文档；类别：阅读笔记；状态：草稿预览 | 已读入文章页；layout=post |
 | `collections/_posts/2018-12-26-毛选认知.md` | 《毛泽东选集》认知提升 | 个人文章与构思文档；类别：阅读笔记；状态：草稿预览 | 已读入文章页；layout=post |
 | `collections/_posts/2019-11-13-我的美术老师.md` | 我的美术老师 | 个人文章与构思文档；类别：短篇小说；状态：草稿预览 | 已读入文章页；layout=post |
@@ -1361,15 +1361,15 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_posts/2022-01-01-阅读荷马史诗.md` | 荷马史诗《伊利亚特》《奥德赛》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
 | `collections/_posts/2022-02-23-梦唐搞冲 copy.md` | 白日梦家唐稽呵德的搞笑冲锋 | 个人文章与构思文档；类别：散文随笔；状态：写了一半 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2022-02-23-梦唐搞冲.md` | 爱做白日梦的唐稽呵德的搞笑冲锋 | 个人文章与构思文档；类别：散文随笔；状态：写了一半 | 已读入文章页；layout=post |
-| `collections/_posts/2023-01-14-开场即巅峰.md` | 开场即巅峰 — 论技艺的兴衰律与门阀化机制 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2023-01-14-开场即巅峰.md` | 开场即巅峰 — 论技艺的兴衰律与门阀化机制 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2023-07-30-阅读洛丽塔.md` | 纳博科夫《洛丽塔》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
-| `collections/_posts/2023-12-20-一个高留存的阅读方法.md` | 一个高留存的简单阅读方法 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-multilingual |
-| `collections/_posts/2024-04-18-一个高效笔记模式.md` | 一个模式化的高效笔记系统 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-multilingual |
-| `collections/_posts/2024-05-12-一个特种兵学习.md` | 一个理想化的特种兵学习流程 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-multilingual |
+| `collections/_posts/2023-12-20-一个高留存的阅读方法.md` | 一个高留存的简单阅读方法 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2024-04-18-一个高效笔记模式.md` | 一个模式化的高效笔记系统 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2024-05-12-一个特种兵学习.md` | 一个理想化的特种兵学习流程 | 个人文章与构思文档；类别：学习方法；状态：写了一半 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2024-07-14-阅读红楼梦.md` | 曹雪芹《红楼梦》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
 | `collections/_posts/2024-09-01-阅读金瓶梅.md` | 兰陵笑笑生《金瓶梅》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
-| `collections/_posts/2025-05-22-阅读笔记伤逝.md` | 鲁迅《伤逝》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=slide-annotation |
-| `collections/_posts/2025-05-28-阅读笔记素食者.md` | 韩江《素食者》三部曲阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2025-05-22-阅读笔记伤逝.md` | 鲁迅《伤逝》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2025-05-28-阅读笔记素食者.md` | 韩江《素食者》三部曲阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2025-06-27-应试数学的学习方法.md` | 应试数学的学习方法 | 个人文章与构思文档；类别：学习方法；状态：草稿预览 | 已读入文章页；layout=post |
 | `collections/_posts/2025-09-30-阅读有限游戏无限游戏.md` | 詹姆斯·卡斯《有限游戏和无限游戏》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：等待精修 | 已读入文章页；layout=post |
 | `collections/_posts/2025-10-24-技能五子棋.md` | 《技能五子棋》的喜剧内核是对东亚困境的反叛 | 个人文章与构思文档；类别：散文随笔；状态：草稿预览 | 已读入文章页；layout=post |
@@ -1379,22 +1379,22 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_posts/2026-01-10-游戏反成保护伞.md` | 为何游戏反成为青少年的心理保护伞 | 个人文章与构思文档；类别：游戏经验；状态：合二为一 | 已读入文章页；layout=post |
 | `collections/_posts/2026-02-03-OCE.md` | 组织层级指数、组织形态谱及其哲学原理 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=post |
 | `collections/_posts/2026-03-09-神经科学学习理念.md` | 神经科学带来的学习理念革新 | 个人文章与构思文档；类别：学习方法；状态：草稿预览 | 已读入文章页；layout=post |
-| `collections/_posts/2026-04-09-游戏高手拥有更好的学习方法.md` | 游戏高手的顶级学习方法 | 个人文章与构思文档；类别：游戏经验；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-04-09-游戏高手拥有更好的学习方法.md` | 游戏高手的顶级学习方法 | 个人文章与构思文档；类别：游戏经验；状态：合二为一 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2026-04-10-技术高手与大师.md` | 技术与高手 — 如何在任何领域表现出色 | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
 | `collections/_posts/2026-04-14-游戏意识.md` | 游戏中的“意识”是什么？ | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
 | `collections/_posts/2026-04-15-新鲜和重复对游戏的意义.md` | 新鲜和重复对游戏的意义 | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
-| `collections/_posts/2026-04-19-认知越低越自洽.md` | 认知越低者思维越自洽 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
-| `collections/_posts/2026-04-20-更愿意相信对自己有利的事情.md` | 为何人们更愿相信对自己有利之事？ | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
-| `collections/_posts/2026-04-21-论江郎才尽.md` | 论江郎才尽 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-04-19-认知越低越自洽.md` | 认知越低者思维越自洽 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2026-04-20-更愿意相信对自己有利的事情.md` | 为何人们更愿相信对自己有利之事？ | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-linear |
+| `collections/_posts/2026-04-21-论江郎才尽.md` | 论江郎才尽 | 个人文章与构思文档；类别：地球观察；状态：合二为一 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2026-04-23-类比带来的交流混乱.md` | 网络争论观察 1 — 类比带来的交流混乱 | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
-| `collections/_posts/2026-04-24-二十岁的迷茫.md` | 当迷茫成为二十岁的“标配” | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=slide-annotation |
+| `collections/_posts/2026-04-24-二十岁的迷茫.md` | 当迷茫成为二十岁的“标配” | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=slide-linear |
 | `collections/_posts/2026-05-21-何为女性友好型语言.md` | 网络争论观察 2 — 何为“女性友好型语言” | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
 | `collections/_posts/2026-06-11-拒绝民科式讨论.md` | 网络争论观察 3 — 几乎人人都在用“民科思维”讨论 | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
 | `collections/_posts/2026-06-12-反驳他人为何舒适.md` | 网络争论观察 4 — 为什么“反驳他人”让人感觉舒适 | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
 | `collections/_posts/2026-06-15-遥远的外星来信.md` | 一封遥远的外星来信 | 个人文章与构思文档；类别：短篇小说 | 已读入文章页；layout=post |
 | `collections/_posts/2026-09-10-这次AI革命会彻底替代人类吗.md` | 这次 AI 科技革命会彻底替代人类吗？ | 个人文章与构思文档；类别：地球观察；状态：草稿预览 | 已读入文章页；layout=post |
 | `collections/_posts/2026-09-12-删除游戏就是成熟吗.md` | 删掉游戏意味着成熟吗？ | 个人文章与构思文档；类别：游戏经验；状态：写了一半 | 已读入文章页；layout=post |
-| `collections/_posts/2026-09-13-阅读非暴力沟通.md` | 罗森伯格《非暴力沟通》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=post-vertical |
+| `collections/_posts/2026-09-13-阅读非暴力沟通.md` | 罗森伯格《非暴力沟通》阅读笔记 | 个人文章与构思文档；类别：阅读笔记；状态：写了一半 | 已读入文章页；layout=post-bilingual |
 | `collections/_posts/_ideas/_OLD.missing.semester.of.cs.md` | sample results | 文章构思/写作草稿；类别：Notes；分组：Readings | 未读入：_ideas 目录及未按日期命名的构思文件 |
 | `collections/_posts/_ideas/_OLD.n.hardware.spec.md` | Linux — Check Hardware Information and Specification | 文章构思/写作草稿；类别：Notes；分组：Operating Tools | 未读入：_ideas 目录及未按日期命名的构思文件 |
 | `collections/_posts/_ideas/_OLD.n.prompt.engineering.md` | LLM Prompt Engineering for Study Assistance | 文章构思/写作草稿；类别：Notes；分组：LLMs | 未读入：_ideas 目录及未按日期命名的构思文件 |
@@ -1464,17 +1464,17 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 | `collections/_psyc/D1-Psychoanalysis/a.Psychoanalysis.en.md` | Psychoanalysis — Learning Atlas | 心理学文档；类别：Atlas；分组：Psychoanalysis | 已读入文章页；layout=post |
 | `collections/_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh copy.md` | Modern Psychoanalysis (现代精神分析) | 心理学文档；类别：Notes；分组：Psychoanalysis；状态：完成精修 | 已读入文章页；layout=post |
 | `collections/_psyc/D1-Psychoanalysis/n.Modern.Psychoanalysis.zh.md` | Modern Psychoanalysis (现代精神分析) | 心理学文档；类别：Notes；分组：Psychoanalysis；状态：完成精修 | 已读入文章页；layout=post |
-| `collections/_psyc/D1-Psychoanalysis/n1.Sigmund.Freud.ez.md` | The Theory Architecture of Sigmund Freud | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n2.Carl.Jung.ez.md` | The Theory Architecture of Carl Jung | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n3.Alfred.Adler.ez.md` | The Theory Architecture of Alfred Adler | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n4.Anna.Freud.ez.md` | The Theory Architecture of Anna Freud | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n5.Melanie.Klein.ez.md` | The Theory Architecture of Melanie Klein | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n6.Donald.Winnicott.ez.md` | The Theory Architecture of Donald Winnicott | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-multilingual |
-| `collections/_psyc/D1-Psychoanalysis/n7.Jacques.Lacan.ez.md` | The Theory Architecture of Jacques Lacan | 心理学文档；类别：Notes；分组：Lacan | 已读入文章页；layout=slide-multilingual |
+| `collections/_psyc/D1-Psychoanalysis/n1.Sigmund.Freud.ez.md` | The Theory Architecture of Sigmund Freud | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-linear |
+| `collections/_psyc/D1-Psychoanalysis/n2.Carl.Jung.ez.md` | The Theory Architecture of Carl Jung | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-linear |
+| `collections/_psyc/D1-Psychoanalysis/n3.Alfred.Adler.ez.md` | The Theory Architecture of Alfred Adler | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-linear |
+| `collections/_psyc/D1-Psychoanalysis/n4.Anna.Freud.ez.md` | The Theory Architecture of Anna Freud | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-linear |
+| `collections/_psyc/D1-Psychoanalysis/n5.Melanie.Klein.ez.md` | The Theory Architecture of Melanie Klein | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-linear |
+| `collections/_psyc/D1-Psychoanalysis/n6.Donald.Winnicott.ez.md` | The Theory Architecture of Donald Winnicott | 心理学文档；类别：Notes；分组：Psychoanalysis | 已读入文章页；layout=slide-linear |
+| `collections/_psyc/D1-Psychoanalysis/n7.Jacques.Lacan.ez.md` | The Theory Architecture of Jacques Lacan | 心理学文档；类别：Notes；分组：Lacan | 已读入文章页；layout=slide-linear |
 | `collections/_psyc/D1-Psychoanalysis/s.Mental.Defense.zh.md` | Mental Defense (心理防御) | 心理学文档；类别：Sheet；分组：Psychoanalysis；状态：精修完成 | 已读入文章页；layout=post |
-| `collections/_psyc/E1-Psychopathology/n.Chimp.Paradox.ez.md` | Chimp Paradox — How to Manage Emotion Without Suppressing It | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post-bilingual |
+| `collections/_psyc/E1-Psychopathology/n.Chimp.Paradox.ez.md` | Chimp Paradox — How to Manage Emotion Without Suppressing It | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post-parallel |
 | `collections/_psyc/E1-Psychopathology/n.Family.Constellations.zh.md` | Family Constellations (家庭系统排列) | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post |
-| `collections/_psyc/E1-Psychopathology/n.LLI.ez.md` | Low Latent Inhibition | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post-bilingual |
+| `collections/_psyc/E1-Psychopathology/n.LLI.ez.md` | Low Latent Inhibition | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post-parallel |
 | `collections/_psyc/E1-Psychopathology/n.Psychopathology.Teatment.zh.md` | Psychopathology and Treatment (精神疾病和药物) | 心理学文档；类别：Notes；分组：Psychopathology | 已读入文章页；layout=post |
 | `collections/_psyc/F1-Neuropsychology/n.Human.Brain.en.md` | How the Human Brain Evolved, Develops, and Organizes Itself | 心理学文档；类别：Notes；分组：Neuropsychology | 已读入文章页；layout=post |
 
@@ -1506,7 +1506,7 @@ F03 的目录体积优化可以在 A 阶段并行推进；阶段表表示依赖�
 
 | 文件 | 标题 / 内容对象 | 角色与已有元数据 | 本次构建状态 |
 | --- | --- | --- | --- |
-| `textbooks/t.Kenny.ez.md` | A New History of Western Philosophy Annotated | 教材/注释文本文档；类别：Texts；分组：History | 已读入文章页；layout=post-bilingual |
+| `textbooks/t.Kenny.ez.md` | A New History of Western Philosophy Annotated | 教材/注释文本文档；类别：Texts；分组：History | 已读入文章页；layout=post-parallel |
 | `textbooks/t.ctk.zh.md` | Contemporary Theories of Knowledge (当代知识理论) | 教材/注释文本文档；类别：Texts；分组：Epistemology | 已读入文章页；layout=post |
 | `textbooks/t.lolita.annotated.en.md` | Lolita The Annotated | 教材/注释文本文档；类别：Texts；分组：Literary Texts | 已读入文章页；layout=post |
 

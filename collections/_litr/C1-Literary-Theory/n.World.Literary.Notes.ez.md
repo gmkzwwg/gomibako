@@ -1,6 +1,6 @@
 ---
 title: "World Literature Study Notes"
-layout: post-bilingual
+layout: post-parallel
 categories: Notes
 subclass: Literary Theory
 ---

@@ -1,5 +1,5 @@
 ---
-layout: post-bilingual
+layout: post-parallel
 title: Jekyll Markdown + HTML Feature Test
 author: 垃圾残渣
 show_date: true
@@ -34,18 +34,17 @@ abstract: "This is abstract. Abstract is blank by default." # string
 | `index-tags` | 按 tags 标签组织所选 collection 的文档，并提供标签筛选。 |
 | `index-todos` | 汇总所选 collection 中带有非空 todos 字段的文档及其待办内容。 |
 | `post` | 使用标准文章容器显示正文，适合普通文章与笔记。 |
-| `post-bilingual` | 为文章启用双语内容折叠与展开功能。 |
+| `post-parallel` | 为文章启用双语内容折叠与展开功能。 |
 | `post-compact` | 使用标准文章容器并自动最大化阅读区域。 |
 | `post-horizonal` | 将正文块与紧随其后的引用块排成多栏对照，并自动最大化阅读区域。 |
-| `post-vertical` | 识别一级标题标记的语言分区并逐块并排对照，支持切换单语言阅读。 |
+| `post-bilingual` | 识别一级标题标记的语言分区并逐块并排对照，支持切换单语言阅读。 |
 | `print` | 使用独立的打印页面和样式呈现正文，并按配置支持公式与 Mermaid 图表。 |
-| `slide-simple` | 按正文中最高层级的标题分页，以精简控制按钮浏览幻灯片。 |
+| `slide-linear` | 按正文中最高层级的标题分页，以精简控制按钮浏览幻灯片。 |
 | `slide-linear` | 按正文中最高层级的标题顺序分页，提供目录、首尾跳转和自动播放。 |
-| `slide-multilingual` | 将一级标题划分的语言分区作为独立页面，通过语言菜单切换。 |
-| `slide-annotation` | 按标题分页，以原文入口和注释翻页按钮浏览内容。 |
+| `slide-linear` | 将一级标题划分的语言分区作为独立页面，通过语言菜单切换。 |
+| `slide-linear` | 按标题分页，以原文入口和注释翻页按钮浏览内容。 |
 | `slide-tree` | 按一级标题与二级标题构建树状幻灯片，支持章节和小节之间导航。 |
 | `slide-wiki` | 在树状幻灯片基础上提供置于开头的 Wiki 风格目录入口。 |
-
 
 <div class="fa47-test">
   <button><i class="fa fa-terminal"></i><span>Prompt</span></button>
@@ -80,13 +79,13 @@ abstract: "This is abstract. Abstract is blank by default." # string
 
 Other Tests: [test-slide]({{ '/test-slide' | relative_url }})
 
-**Paragraph** 
-  - **bold**, *italic*, ~~strikethrough~~, `inline code`
-  - ==highlight== (requires the kramdown extension), $$H_2~O$$ (quires katex)
+**Paragraph**
+* **bold**, *italic*, ~~strikethrough~~, `inline code`
+* ==highlight== (requires the kramdown extension), $$H_2~O$$ (quires katex)
 
 **Line break** *(two trailing spaces)*  
 New line.
-  - Line break in lists *(two trailing spaces)*  
+* Line break in lists *(two trailing spaces)*  
     New line.
 
 New Paragraph *(separated by a blank line)*.
@@ -100,6 +99,16 @@ New Paragraph *(separated by a blank line)*.
 > Multi-line quote *(two trailing spaces)*  
 > continuing the same block.
 {: data-bt="0"}
+
+Blockquote-with-lists
+* list1
+* list2
+  * list2.1
+
+> Blockquote-with-lists
+> * list1
+> * list2
+>   * list2.1
 
 Values: tags {{page.tags}}
 
@@ -151,7 +160,6 @@ Blockquote for bilingual support. Click Bilingual Button or set page.bilingual `
 `Português (Portuguese)` — Olá, mundo! Esta é uma **página de teste multilíngue**. *Mercy* de **Overwatch** é muito *fofa*.
 
 `Italiano (Italian)` — Ciao, mondo! Questa è una **pagina di test multilingue**. *Mercy* di **Overwatch** è molto *carina*.
-
 
 #### Heading 4
 
@@ -225,18 +233,19 @@ timeline
 ## Lists and Tables
 
 ### Ordered and Unordered Lists
+
 - Unordered 1
-- Unordered 2
-  - Nested 2.1
-  - Nested 2.2
+* Unordered 2
+  * Nested 2.1
+  * Nested 2.2
   > Third paragraph used for bilingual folding test.
   {: .lang-alt}
 1. Ordered 1
 2. Ordered 2
    1. Nested 2.1
    > Fourth paragraph used for bilingual folding test.
-- [x] Task done
-- [ ] Task todo
+* [x] Task done
+* [ ] Task todo
 > Fifth paragraph used for bilingual folding test.
 
 ### Definition Lists (kramdown)
@@ -252,7 +261,7 @@ Term A
 2. Term C
    1. Term C 1.1
    : Definition
-   - Term C 1.2
+   * Term C 1.2
    : Definition
 
 ### Tables
@@ -350,113 +359,112 @@ Footnote example[^1] and the second one[^two].
 
 Jump to the [custom anchor](#custom-id)。
 
-
 ## Gomibako 功能总览
 
 Gomibako 是一个基于 Jekyll 的个人知识库系统。它不只是发布文章，还扩展了阅读增强、知识库导航、幻灯片展示、写作辅助和终端风格视觉系统。
 
 ### 1. 文章与阅读布局
 
-- `post`：普通文章模式，负责大多数笔记和文章的基础阅读体验。相关文件：`src/_layouts/post.html`。
-- `post-compact`：紧凑文章模式，适合信息密度更高、装饰更少的阅读场景。相关文件：`src/_layouts/post-compact.html`。
-- `post-bilingual`：双语折叠模式，通常把 `blockquote` 作为译文、补充说明或第二语言内容，可通过按钮统一展开/折叠。相关文件：`src/_layouts/post-bilingual.html`、`src/assets/js/bilingual.js`。
-- `post-horizonal`：平行文本模式，把正文与后续 blockquote 自动重组为多栏对照，适合原文、译文、注释并排阅读。相关文件：`src/_layouts/post-horizonal.html`、`src/assets/js/parallel-text.js`。
-- `post-vertical`：语言分区对照模式，以 `# 中文`、`# English` 等一级标题识别语言分区并逐块并排显示，支持切换单语言阅读。相关文件：`src/_layouts/post-vertical.html`、`src/assets/js/bilingual-toggle.js`。
-- `post-list`：文章列表模式，支持多种列表样式、分类分组、折叠分组和 meta 显示控制。相关文件：`src/_layouts/post-list.html`、`src/_includes/post-list.html`。
-- `print`：打印专用布局，使用更接近纸面排版的字体、表格、代码块和引用样式。相关文件：`src/_layouts/print.html`。
+* `post`：普通文章模式，负责大多数笔记和文章的基础阅读体验。相关文件：`src/_layouts/post.html`。
+* `post-compact`：紧凑文章模式，适合信息密度更高、装饰更少的阅读场景。相关文件：`src/_layouts/post-compact.html`。
+* `post-parallel`：双语折叠模式，通常把 `blockquote` 作为译文、补充说明或第二语言内容，可通过按钮统一展开/折叠。相关文件：`src/_layouts/post-parallel.html`、`src/assets/js/bilingual.js`。
+* `post-horizonal`：平行文本模式，把正文与后续 blockquote 自动重组为多栏对照，适合原文、译文、注释并排阅读。相关文件：`src/_layouts/post-horizonal.html`、`src/assets/js/parallel-text.js`。
+* `post-bilingual`：语言分区对照模式，以 `# 中文`、`# English` 等一级标题识别语言分区并逐块并排显示，支持切换单语言阅读。相关文件：`src/_layouts/post-bilingual.html`、`src/assets/js/bilingual-toggle.js`。
+* `post-list`：文章列表模式，支持多种列表样式、分类分组、折叠分组和 meta 显示控制。相关文件：`src/_layouts/post-list.html`、`src/_includes/post-list.html`。
+* `print`：打印专用布局，使用更接近纸面排版的字体、表格、代码块和引用样式。相关文件：`src/_layouts/print.html`。
 
 ### 2. 幻灯片系统
 
-- `slide-linear`：线性幻灯片，把文章内容拆成前后翻页的演示结构，带菜单、上一页、下一页、首页、末页和自动播放控制。相关文件：`src/_layouts/slide-linear.html`、`src/assets/js/jekyll-slide-linear.js`。
-- `slide-simple`：简化幻灯片，只保留基本前后翻页，适合轻量展示。相关文件：`src/_layouts/slide-simple.html`、`src/assets/js/jekyll-slide-linear.js`。
-- `slide-annotation`：注释型幻灯片，用于在正文和注释之间切换，适合讲解、批注、文本分析。相关文件：`src/_layouts/slide-annotation.html`、`src/assets/js/jekyll-slide-linear.js`。
-- `slide-tree`：树状幻灯片，用层级结构组织页面，适合知识树、课程纲要、系统性笔记。相关文件：`src/_layouts/slide-tree.html`、`src/assets/js/jekyll-slide-tree.js`。
-- `slide-wiki`：wiki 型幻灯片，偏向索引先行和结构化跳转，适合概念网络式内容。相关文件：`src/_layouts/slide-wiki.html`、`src/assets/js/jekyll-slide-tree.js`。
-- `slide-multilingual`：多语言幻灯片模式，用于语言材料或多版本文本展示。相关文件：`src/_layouts/slide-multilingual.html`、`src/assets/js/jekyll-slide-linear.js`。
+* `slide-linear`：线性幻灯片，把文章内容拆成前后翻页的演示结构，带菜单、上一页、下一页、首页、末页和自动播放控制。相关文件：`src/_layouts/slide-linear.html`、`src/assets/js/jekyll-slide-linear.js`。
+* `slide-linear`：简化幻灯片，只保留基本前后翻页，适合轻量展示。相关文件：`src/_layouts/slide-linear.html`、`src/assets/js/jekyll-slide-linear.js`。
+* `slide-linear`：注释型幻灯片，用于在正文和注释之间切换，适合讲解、批注、文本分析。相关文件：`src/_layouts/slide-linear.html`、`src/assets/js/jekyll-slide-linear.js`。
+* `slide-tree`：树状幻灯片，用层级结构组织页面，适合知识树、课程纲要、系统性笔记。相关文件：`src/_layouts/slide-tree.html`、`src/assets/js/jekyll-slide-tree.js`。
+* `slide-wiki`：wiki 型幻灯片，偏向索引先行和结构化跳转，适合概念网络式内容。相关文件：`src/_layouts/slide-wiki.html`、`src/assets/js/jekyll-slide-tree.js`。
+* `slide-linear`：多语言幻灯片模式，用于语言材料或多版本文本展示。相关文件：`src/_layouts/slide-linear.html`、`src/assets/js/jekyll-slide-linear.js`。
 
 ### 3. 知识库导航
 
-- 多 collection 知识库：用 `phil`、`litr`、`hist`、`psyc`、`math`、`comp`、`phys`、`misc` 等 collection 组织不同学科笔记。相关文件：`_config.yml`。
-- collection 顺序与 alias：通过 `_config.yml` 控制 collection 展示顺序和短名称，比如 `PHIL`、`MATH`、`COMP`。相关文件：`_config.yml`。
-- 浮动 archive 窗口：点击 header 中的 archive 按钮后打开浮动窗口，按 collection 和 subclass 浏览文章。相关文件：`src/_includes/collection_list.html`。
-- subclass 分组：将 collection 内文章按 `subclass` 分组，适合学科内部进一步分类。相关文件：`src/_includes/collection_list.html`、`src/_includes/post_by_subclass.html`。
-- archive 拖动窗口：archive 面板可以拖动，并带有状态栏和文章数量统计。相关文件：`src/_includes/collection_list.html`、`src/_sass/components/_collection_list.scss`。
+* 多 collection 知识库：用 `phil`、`litr`、`hist`、`psyc`、`math`、`comp`、`phys`、`misc` 等 collection 组织不同学科笔记。相关文件：`_config.yml`。
+* collection 顺序与 alias：通过 `_config.yml` 控制 collection 展示顺序和短名称，比如 `PHIL`、`MATH`、`COMP`。相关文件：`_config.yml`。
+* 浮动 archive 窗口：点击 header 中的 archive 按钮后打开浮动窗口，按 collection 和 subclass 浏览文章。相关文件：`src/_includes/collection_list.html`。
+* subclass 分组：将 collection 内文章按 `subclass` 分组，适合学科内部进一步分类。相关文件：`src/_includes/collection_list.html`、`src/_includes/post_by_subclass.html`。
+* archive 拖动窗口：archive 面板可以拖动，并带有状态栏和文章数量统计。相关文件：`src/_includes/collection_list.html`、`src/_sass/components/_collection_list.scss`。
 
 ### 4. 文章列表系统
 
-- `minimal`：简洁列表，只突出标题和少量 meta。相关文件：`src/_includes/post-list/minimal.html`。
-- `card-grid`：卡片网格列表，适合更视觉化的文章入口。相关文件：`src/_includes/post-list/card-grid.html`。
-- `timeline`：时间线列表，适合按时间组织的文章展示。相关文件：`src/_includes/post-list/timeline.html`。
-- `book`：书目式列表，适合读书笔记或长文目录。相关文件：`src/_includes/post-list/book.html`。
-- `category-card`：按分类分组的卡片列表。相关文件：`src/_includes/post-list/category-card.html`。
-- `category-minimal`：按分类分组的简洁列表。相关文件：`src/_includes/post-list/category-minimal.html`。
-- `category-book`：按分类分组的书目式列表。相关文件：`src/_includes/post-list/category-book.html`。
-- 列表统一调度：通过 `post-list.html` 接收页面 front matter 参数，控制样式、日期格式、excerpt、meta、分组折叠等。相关文件：`src/_includes/post-list.html`、`src/_sass/components/_post-list.scss`。
+* `minimal`：简洁列表，只突出标题和少量 meta。相关文件：`src/_includes/post-list/minimal.html`。
+* `card-grid`：卡片网格列表，适合更视觉化的文章入口。相关文件：`src/_includes/post-list/card-grid.html`。
+* `timeline`：时间线列表，适合按时间组织的文章展示。相关文件：`src/_includes/post-list/timeline.html`。
+* `book`：书目式列表，适合读书笔记或长文目录。相关文件：`src/_includes/post-list/book.html`。
+* `category-card`：按分类分组的卡片列表。相关文件：`src/_includes/post-list/category-card.html`。
+* `category-minimal`：按分类分组的简洁列表。相关文件：`src/_includes/post-list/category-minimal.html`。
+* `category-book`：按分类分组的书目式列表。相关文件：`src/_includes/post-list/category-book.html`。
+* 列表统一调度：通过 `post-list.html` 接收页面 front matter 参数，控制样式、日期格式、excerpt、meta、分组折叠等。相关文件：`src/_includes/post-list.html`、`src/_sass/components/_post-list.scss`。
 
 ### 5. 目录系统
 
-- `toc_list`：普通树状目录，从渲染后的 heading 生成嵌套列表。相关文件：`src/_includes/toc_list.html`。
-- `toc_chart`：图表式目录，把 `h2` 和下属 `h3` 做成视觉分组，适合长笔记、课程笔记和知识地图。相关文件：`src/_includes/toc_chart.html`。
-- compact TOC：`toc_chart` 的紧凑模式，把多个 `h3` 以内联方式排列，减少目录占用空间。相关文件：`src/_includes/toc_chart.html`。
-- header TOC 按钮：根据 layout 和 front matter 决定是否显示目录按钮。相关文件：`src/_includes/header.html`。
-- 正文前目录：部分 layout 支持在正文前直接插入目录。相关文件：`src/_layouts/post.html`、`src/_layouts/post-bilingual.html`、`src/_layouts/post-horizonal.html`。
+* `toc_list`：普通树状目录，从渲染后的 heading 生成嵌套列表。相关文件：`src/_includes/toc_list.html`。
+* `toc_chart`：图表式目录，把 `h2` 和下属 `h3` 做成视觉分组，适合长笔记、课程笔记和知识地图。相关文件：`src/_includes/toc_chart.html`。
+* compact TOC：`toc_chart` 的紧凑模式，把多个 `h3` 以内联方式排列，减少目录占用空间。相关文件：`src/_includes/toc_chart.html`。
+* header TOC 按钮：根据 layout 和 front matter 决定是否显示目录按钮。相关文件：`src/_includes/header.html`。
+* 正文前目录：部分 layout 支持在正文前直接插入目录。相关文件：`src/_layouts/post.html`、`src/_layouts/post-parallel.html`、`src/_layouts/post-horizonal.html`。
 
 ### 6. 阅读增强
 
-- 图片查看器：点击文章图片后进入全屏查看，支持滚轮缩放、拖动、双击、双指缩放和 Esc 关闭。相关文件：`src/assets/js/image-viewer.js`。
-- 代码块增强：把普通代码块重构为统一组件，显示语言标签，提供复制按钮和可选在线运行按钮。相关文件：`src/assets/js/code-block-enhancement.js`。
-- 公式渲染：支持 KaTeX / MathJax 渲染数学公式。相关文件：`src/_includes/head.html`。
-- 公式源码切换：点击公式可在渲染结果和原始 TeX 之间切换，便于学习和编辑。相关文件：`src/_includes/head.html`、`src/_sass/vendor/_math_toggle.scss`。
-- Mermaid 图表：支持 Markdown 中的 Mermaid 代码块渲染为图表。相关文件：`src/_includes/head.html`。
-- 中文段落缩进：可通过 front matter 开启中文段落 `2em` 缩进。相关文件：`src/_layouts/default.html`。
-- 最大化阅读：header 按钮可切换容器最大化，提升长文阅读空间。相关文件：`src/_includes/header.html`。
-- 自定义右键菜单：替换浏览器默认右键菜单，提供复制文本、回首页、回顶部、打印等操作。相关文件：`src/assets/js/context-menu.js`、`src/_includes/context_menu.html`。
+* 图片查看器：点击文章图片后进入全屏查看，支持滚轮缩放、拖动、双击、双指缩放和 Esc 关闭。相关文件：`src/assets/js/image-viewer.js`。
+* 代码块增强：把普通代码块重构为统一组件，显示语言标签，提供复制按钮和可选在线运行按钮。相关文件：`src/assets/js/code-block-enhancement.js`。
+* 公式渲染：支持 KaTeX / MathJax 渲染数学公式。相关文件：`src/_includes/head.html`。
+* 公式源码切换：点击公式可在渲染结果和原始 TeX 之间切换，便于学习和编辑。相关文件：`src/_includes/head.html`、`src/_sass/vendor/_math_toggle.scss`。
+* Mermaid 图表：支持 Markdown 中的 Mermaid 代码块渲染为图表。相关文件：`src/_includes/head.html`。
+* 中文段落缩进：可通过 front matter 开启中文段落 `2em` 缩进。相关文件：`src/_layouts/default.html`。
+* 最大化阅读：header 按钮可切换容器最大化，提升长文阅读空间。相关文件：`src/_includes/header.html`。
+* 自定义右键菜单：替换浏览器默认右键菜单，提供复制文本、回首页、回顶部、打印等操作。相关文件：`src/assets/js/context-menu.js`、`src/_includes/context_menu.html`。
 
 ### 7. 写作辅助
 
-- drafts：使用 `collections/_drafts` 保存草稿，配合 Jekyll drafts 工作流。相关目录：`collections/_drafts/`。
-- Todo 面板：仅在 fm 有实际待办或正文有可收录的 `TODO:` 时显示按钮；在 `post`、`post-*`、`slide-*` 的页眉点击 Todo，统一查看 front matter `todos` 与正文 TODO 链接；面板默认关闭，可用关闭按钮、Esc 或点击外部关闭。
-- `todos` 可以是字符串或 YAML 列表；缺省时只扫描正文，`false` 关闭本页功能，旧的 `true` 仅作为启用标志。全局开关为 `site.ui.features.todos`。
-- 正文 `TODO:` 标签自动高亮；点击面板链接定位并聚焦原文，幻灯片会切换到目标页。代码块、行内代码、HTML 注释及 `data-todo-ignore` 区域不会收录。
-- 相关文件：`src/_includes/post-todos.html`、`src/assets/js/post-todos.js`、`src/_sass/components/_post-todos.scss`。旧的独立浮窗、拖动控制和 TodoSummary API 已移除。
+* drafts：使用 `collections/_drafts` 保存草稿，配合 Jekyll drafts 工作流。相关目录：`collections/_drafts/`。
+* Todo 面板：仅在 fm 有实际待办或正文有可收录的 `TODO:` 时显示按钮；在 `post`、`post-*`、`slide-*` 的页眉点击 Todo，统一查看 front matter `todos` 与正文 TODO 链接；面板默认关闭，可用关闭按钮、Esc 或点击外部关闭。
+* `todos` 可以是字符串或 YAML 列表；缺省时只扫描正文，`false` 关闭本页功能，旧的 `true` 仅作为启用标志。全局开关为 `site.ui.features.todos`。
+* 正文 `TODO:` 标签自动高亮；点击面板链接定位并聚焦原文，幻灯片会切换到目标页。代码块、行内代码、HTML 注释及 `data-todo-ignore` 区域不会收录。
+* 相关文件：`src/_includes/post-todos.html`、`src/assets/js/post-todos.js`、`src/_sass/components/_post-todos.scss`。旧的独立浮窗、拖动控制和 TodoSummary API 已移除。
 
 ### 8. 终端与 Matrix 视觉
 
-- Matrix 背景雨：全站背景 canvas 动画，使用配置中的字符集生成下落效果。相关文件：`src/_includes/matrix_bg.html`。
-- Matrix 字母爆炸：页面上随机生成坠落字符，并在特定高度爆炸成粒子。相关文件：`src/assets/js/matrix-letter-bomb.js`、`src/_includes/matrix_letter_bomb.html`。
-- 文字 glitch：随机对标题、摘要、meta 和按钮文字施加 scramble、blink、error 等效果。相关文件：`src/assets/js/text-glitch.js`。
-- hacked splash：页面开场视觉效果，模拟 hacked / terminal 风格启动动画。相关文件：`src/assets/js/hacked-splash.js`、`src/_includes/hacked_splash.html`。
-- 赛博终端首页：首页是一个全屏终端窗口，包含伪命令、伪日志、状态栏、菜单栏、光标、故障演出和 CRT 效果。相关文件：`src/_layouts/index.html`。
+* Matrix 背景雨：全站背景 canvas 动画，使用配置中的字符集生成下落效果。相关文件：`src/_includes/matrix_bg.html`。
+* Matrix 字母爆炸：页面上随机生成坠落字符，并在特定高度爆炸成粒子。相关文件：`src/assets/js/matrix-letter-bomb.js`、`src/_includes/matrix_letter_bomb.html`。
+* 文字 glitch：随机对标题、摘要、meta 和按钮文字施加 scramble、blink、error 等效果。相关文件：`src/assets/js/text-glitch.js`。
+* hacked splash：页面开场视觉效果，模拟 hacked / terminal 风格启动动画。相关文件：`src/assets/js/hacked-splash.js`、`src/_includes/hacked_splash.html`。
+* 赛博终端首页：首页是一个全屏终端窗口，包含伪命令、伪日志、状态栏、菜单栏、光标、故障演出和 CRT 效果。相关文件：`src/_layouts/index.html`。
 
 ### 9. 内容保护与发布控制
 
-- 加密文本：使用 SJCL 加密局部内容，页面 header 提供 token 输入后解密。相关文件：`src/assets/js/sjcl.js`、`src/_includes/header.html`。
-- anti-copy：可选禁用复制、选中、拖动图片、保存快捷键、查看源代码快捷键等。相关文件：`src/assets/js/anticopy.js`。
-- 水印：可选全屏 SVG 平铺水印，继承正文颜色和字体。相关文件：`src/assets/js/watermark.js`。
-- 评论系统：统一支持 Disqus、Giscus、Utterances 三种 provider。相关文件：`src/_includes/comment.html`、`_config.yml`。
-- SEO 信息：生成 title、description、canonical、Open Graph、favicon 等基础元信息。相关文件：`src/_includes/head.html`。
+* 加密文本：使用 SJCL 加密局部内容，页面 header 提供 token 输入后解密。相关文件：`src/assets/js/sjcl.js`、`src/_includes/header.html`。
+* anti-copy：可选禁用复制、选中、拖动图片、保存快捷键、查看源代码快捷键等。相关文件：`src/assets/js/anticopy.js`。
+* 水印：可选全屏 SVG 平铺水印，继承正文颜色和字体。相关文件：`src/assets/js/watermark.js`。
+* 评论系统：统一支持 Disqus、Giscus、Utterances 三种 provider。相关文件：`src/_includes/comment.html`、`_config.yml`。
+* SEO 信息：生成 title、description、canonical、Open Graph、favicon 等基础元信息。相关文件：`src/_includes/head.html`。
 
 ### 10. 配置化主题层
 
-- UI 配置：集中控制 labels、导航按钮、控制按钮、背景、TOC、typography、layout、archive、features 等。相关文件：`_config.yml`。
-- collection 配置：集中定义 collection 输出、permalink、排序方式、alias。相关文件：`_config.yml`。
-- 资源配置：集中定义 KaTeX、MathJax、Mermaid、Font Awesome 的版本与加载策略。相关文件：`_config.yml`。
-- Jekyll 构建配置：集中定义 source、destination、collections_dir、layouts_dir、includes_dir、sass_dir、markdown、kramdown、plugins 等。相关文件：`_config.yml`。
-- 页面级覆盖：多数功能允许通过 page front matter 覆盖全局配置。相关文件：`_config.yml`、`src/_layouts/default.html`。
+* UI 配置：集中控制 labels、导航按钮、控制按钮、背景、TOC、typography、layout、archive、features 等。相关文件：`_config.yml`。
+* collection 配置：集中定义 collection 输出、permalink、排序方式、alias。相关文件：`_config.yml`。
+* 资源配置：集中定义 KaTeX、MathJax、Mermaid、Font Awesome 的版本与加载策略。相关文件：`_config.yml`。
+* Jekyll 构建配置：集中定义 source、destination、collections_dir、layouts_dir、includes_dir、sass_dir、markdown、kramdown、plugins 等。相关文件：`_config.yml`。
+* 页面级覆盖：多数功能允许通过 page front matter 覆盖全局配置。相关文件：`_config.yml`、`src/_layouts/default.html`。
 
 ### 11. 页面元信息与页脚
 
-- post meta：显示 author、date、categories、tags、subclass、version。相关文件：`src/_includes/post-meta.html`。
-- abstract：支持页面摘要块。相关文件：`src/_includes/post-meta.html`。
-- footer：支持 email、GitHub、GitLab、LinkedIn、X / Twitter、Mastodon、ORCID、website、RSS。相关文件：`src/_includes/footer.html`。
-- copyright：从配置中读取版权年份和声明。相关文件：`src/_includes/footer.html`、`_config.yml`。
+* post meta：显示 author、date、categories、tags、subclass、version。相关文件：`src/_includes/post-meta.html`。
+* abstract：支持页面摘要块。相关文件：`src/_includes/post-meta.html`。
+* footer：支持 email、GitHub、GitLab、LinkedIn、X / Twitter、Mastodon、ORCID、website、RSS。相关文件：`src/_includes/footer.html`。
+* copyright：从配置中读取版权年份和声明。相关文件：`src/_includes/footer.html`、`_config.yml`。
 
 ### 总结
 
 Gomibako 的特色可以概括为三条主线：
 
-- 知识组织：collections、subclass、archive window、post list variants、drafts。
-- 阅读体验：TOC、图片查看器、代码工具、公式切换、Mermaid、双语、平行文本、幻灯片、打印版。
-- 个人风格：Matrix、terminal、glitch、hacked splash、赛博终端首页。
+* 知识组织：collections、subclass、archive window、post list variants、drafts。
+* 阅读体验：TOC、图片查看器、代码工具、公式切换、Mermaid、双语、平行文本、幻灯片、打印版。
+* 个人风格：Matrix、terminal、glitch、hacked splash、赛博终端首页。
 
 一句话概括：Gomibako 是一个基于 Jekyll 的个人知识库、阅读界面、幻灯片生成器、写作辅助器和赛博终端主题网站。

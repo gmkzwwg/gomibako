@@ -1,6 +1,6 @@
 ---
 title: "The Gulf War 1990–1991"
-layout: post-bilingual
+layout: post-parallel
 categories: Notes
 abbreviation: Gulf War
 subclass: War History

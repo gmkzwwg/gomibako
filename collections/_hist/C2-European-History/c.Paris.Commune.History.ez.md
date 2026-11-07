@@ -2,7 +2,7 @@
 title: "A History of the Paris Commune"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

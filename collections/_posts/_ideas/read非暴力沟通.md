@@ -1,6 +1,5 @@
 ---
 title: 罗森伯格《非暴力沟通》阅读笔记
-layout: post-vertical
 categories: 阅读笔记
 author: 垃圾残渣
 status: 写了一半

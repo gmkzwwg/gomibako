@@ -1,5 +1,5 @@
 ---
-title: "Western Literary Theory Brief Intro"
+title: "Narrative Genre and Style Study Notes"
 categories: Notes
 subclass: Literary Theory
 ---

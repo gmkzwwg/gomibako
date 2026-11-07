@@ -2,7 +2,7 @@
 title: "A History of the Crimean War"
 categories: Chron
 subclass: European History
-layout: slide-multilingual
+layout: slide-linear
 ---
 
 ## English

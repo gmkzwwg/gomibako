@@ -1,6 +1,6 @@
 ---
 title: "Literary Theory and Criticism Atlas"
-layout: slide-multilingual
+layout: slide-linear
 categories: Atlas
 subclass: Literary Theory
 ---

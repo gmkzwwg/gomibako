@@ -1,6 +1,6 @@
 ---
 title: "Building a Personal Literary Canon"
-layout: slide-multilingual
+layout: slide-linear
 categories: Sheet
 subclass: Reading
 ---

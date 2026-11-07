@@ -1,6 +1,6 @@
 ---
 title: "Major Wars Since 1945"
-layout: post-bilingual
+layout: post-parallel
 categories: Chron
 subclass: War History
 abbreviation: Post-WWII Wars

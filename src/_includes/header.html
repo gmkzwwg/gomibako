@@ -27,13 +27,8 @@
 {% assign show_toc_mode = page.toc | default: "list" %}
 {% assign auto_maximize = true %}
 
-{% when "post-horizontal" %}
-{% assign layout_name = "horizontal mode" %}
-{% assign show_toc_mode = page.toc | default: "list" %}
-{% assign auto_maximize = true %}
-
-{% when "post-vertical" %}
-{% assign layout_name = "vertical mode" %}
+{% when "post-parallel" %}
+{% assign layout_name = "parallel mode" %}
 {% assign show_toc_mode = page.toc | default: "list" %}
 {% assign auto_maximize = true %}
 
@@ -45,20 +40,8 @@
 {% assign layout_name = "post list mode" %}
 {% assign show_toc_mode = page.toc | default: false %}
 
-{% when "slide-annotation" %}
-{% assign layout_name = "annotation mode" %}
-{% assign show_toc_mode = false %}
-
 {% when "slide-linear" %}
 {% assign layout_name = "linear slide" %}
-{% assign show_toc_mode = false %}
-
-{% when "slide-multilingual" %}
-{% assign layout_name = "multilingual mode" %}
-{% assign show_toc_mode = false %}
-
-{% when "slide-simple" %}
-{% assign layout_name = "simple slide" %}
 {% assign show_toc_mode = false %}
 
 {% when "slide-tree" %}
@@ -160,9 +143,9 @@
       </li>
       {% endif %}
 
-      {% if page.layout == "post-bilingual" %}
+      {% if page.layout == "slide-linear" %}
       <li class="cli-header__action">
-        <button class="cli-header__button" type="button" data-action="toggle-bilingual"
+        <button class="cli-header__button" type="button" data-action="toggle-slide"
           aria-label="Toggle bilingual view">
           <i class="fa fa-language cli-header__icon" aria-hidden="true"></i>
           {% if show_button_labels %}
@@ -174,11 +157,11 @@
       </li>
       {% endif %}
 
-      {% if page.layout == "post-horizontal" %}
+      {% if page.layout == "post-parallel" %}
       <li class="cli-header__action">
         <button class="cli-header__button" type="button" data-action="toggle-parallel"
           aria-label="Toggle parallel text view">
-          <i class="fa fa-columns cli-header__icon" aria-hidden="true"></i>
+          <i class="fa fa-language cli-header__icon" aria-hidden="true"></i>
           {% if show_button_labels %}
           <span class="cli-header__label">
             {{ site.ui.labels.parallel_mode | default: "Parallel" | escape }}
@@ -301,9 +284,9 @@
     'decrypt': handleDecrypt,
     'open-collections': () => window.open_collection_list?.(),
     'open-posts': () => window.open_post_list?.(),
-    'toggle-bilingual': () => window.BilingualToggle?.toggleAll?.(),
     'toggle-maximize': handleMaximize,
     'toggle-parallel': () => window.parallelTextColumns?.toggle?.('.post-content'),
+    'toggle-slide': () => window.simpleSlide?.toggle?.('.post-content'),
     'toggle-toc': handleToc
   };
 

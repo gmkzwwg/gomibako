@@ -1,6 +1,6 @@
 ---
 title: "Hermeneutics and Reception Theory Study Notes"
-layout: slide-simple
+layout: slide-linear
 categories: Notes
 subclass: Literary Theory
 ---

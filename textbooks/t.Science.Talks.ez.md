@@ -1,6 +1,6 @@
 ---
 title: Talks about Philosophy of Science
-layout: post-horizontal
+layout: post-parallel
 categories: Texts
 subclass: Readings
 ---
